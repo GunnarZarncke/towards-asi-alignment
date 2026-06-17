@@ -746,6 +746,19 @@ When we discuss successor creation, the successor may be selected by a lab-marke
 The real agent may be composite.
 If we miss that, we may align the mask and leave the optimizer untouched.
 
+\section{What Would Change This View}
+\label{sec:wwctv-composite-agent}
+
+This chapter argues that the effective optimizer may be a composite process and that alignment must target it rather than the convenient artifact.
+The following observations would weaken that view.
+
+\begin{itemize}
+\item Composite surplus is rarely positive outside toy systems---$\Sigma(C)$ and $\Delta L_C$ stay near zero in deployed loops---so model-only alignment suffices empirically.
+\item Aligning components reliably yields aligned composites, so the composite frame adds no safety beyond local guarantees.
+\item The operational tests (boundary loss, control reach, intentional compression, composite surplus) fail to single out real composites without flagging nearly everything.
+\item Inferred composite goal models prove too unstable to support governance or correction.
+\end{itemize}
+
 \section*{Chapter summary}
 
 An AI system should not be evaluated only as a model or artifact, because the effective optimizer may be a composite process spanning models, tools, users, memory, institutions, markets, and feedback loops; serious alignment must therefore identify and govern the dynamically coherent system whose boundary, memory, control reach, selection pressure, and successor dynamics actually determine future action.

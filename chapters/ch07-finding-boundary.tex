@@ -1016,6 +1016,20 @@ We must track the model, the deployed product, the human-AI team, the lab, the m
 The danger is not that there are many boundaries.
 The danger is choosing one by convenience and forgetting the others.
 
+\section{What Would Change This View}
+\label{sec:wwctv-finding-boundary}
+
+This chapter argues that boundary discovery is the first operational step in alignment, and that boundaries are testable $\epsilon$-hypotheses rather than given objects.
+The following observations would weaken that argument.
+
+\begin{itemize}
+\item The boundary residual fails to discriminate agents from coupled non-agents in real deployment logs.
+\item Conditional-independence tests prove too sensitive to representation choice to yield stable boundaries.
+\item Product diagrams and labels already identify the alignment-relevant object reliably, so discovery adds nothing operational.
+\item $\epsilon$-boundaries are unstable: small changes in $\epsilon$ flip which system counts as the agent, with no safety-relevant convergence.
+\item Adversarial perturbation recovers boundaries no better than passive observation, even for systems that model the observer.
+\end{itemize}
+
 \section{Summary}
 \label{sec:summary-finding-boundary}
 

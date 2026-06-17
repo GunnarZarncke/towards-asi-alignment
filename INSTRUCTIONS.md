@@ -774,9 +774,27 @@ Example:
 
 ---
 
-## 10. Chapter Template
+## 10. Chapter Structure
 
-Each chapter file must follow this template.
+Chapters come in two shapes. Both must satisfy the same small set of **required elements**; the section layout is otherwise flexible.
+
+### Required elements (every chapter, including integrated drafts)
+
+Regardless of which shape a chapter uses, it must contain:
+
+1. `\chapter{...}` + `\label{ch:short-label}`.
+2. A `chapterthesis` environment stating the core claim in one paragraph.
+3. Decision relevance somewhere early — why the chapter matters for alignment work.
+4. At least one **failure mode / counterexample** discussion (where the model breaks, overreaches, or needs refinement).
+5. A **`\section{What Would Change This View}`** — a short, skimmable list of evidence, argument, or empirical results that would weaken *this chapter's* central claim. Use this exact section title for consistency. A close equivalent (e.g. "Where the Argument Is Shaky") is acceptable only if renamed to this title.
+6. A summary (5–8 bullets, or an equivalent short closing section).
+7. BibLaTeX citations throughout (`\autocite`/`\cite`); never hand-format references. Wrap per-chapter bibliographies in `refsection` and end with `\printbibliography[heading=subbibliography,title={Chapter References}]`.
+
+Everything else — section names, ordering, how prose and formalism interleave — is at the author's discretion.
+
+### Shape A — scaffold chapters (recommended default for new stubs)
+
+When drafting a chapter from scratch, the following template is the recommended starting point. It satisfies all required elements:
 
 ```latex
 \chapter{Chapter Title}
@@ -786,38 +804,26 @@ Each chapter file must follow this template.
 One paragraph stating the chapter's core claim.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\section{Why This Matters}        % decision relevance
 
-Explain the decision relevance.
+\section{Plain-Language Model}    % the idea without equations
 
-\section{Plain-Language Model}
+\section{Formal Model}            % variables, assumptions, equations
 
-Explain the idea without equations.
+\section{Worked Example}          % one concrete example
 
-\section{Formal Model}
+\section{Counterexample or Failure Mode}  % where it breaks (required element 4)
 
-Introduce variables, assumptions, and equations.
+\section{What Would Change This View}      % disconfirming evidence (required element 5)
 
-\section{Worked Example}
+\section{Summary}                 % 5–8 bullets
 
-Give one concrete example.
-
-\section{Counterexample or Failure Mode}
-
-Give at least one case where the model fails, overreaches, or needs refinement.
-
-\section{What Would Change This View}
-
-List evidence, argument, or empirical results that would weaken the chapter.
-
-\section{Summary}
-
-End with 5 to 8 bullets.
-
-\section*{Chapter References}
-
-Use BibLaTeX citations throughout. Do not manually format references.
+\section*{Chapter References}     % BibLaTeX; do not hand-format
 ```
+
+### Shape B — integrated drafts
+
+When a full author-supplied draft is integrated, keep its native narrative structure rather than forcing it into Shape A. Do **not** split interleaved prose/formalism into separate "Plain-Language Model" and "Formal Model" sections just to match the template. You must still ensure all **required elements** above are present — in particular, add a `\section{What Would Change This View}` before the summary if the draft lacks one.
 
 Define custom environments in `book.tex` or `metadata/preamble.tex`:
 
