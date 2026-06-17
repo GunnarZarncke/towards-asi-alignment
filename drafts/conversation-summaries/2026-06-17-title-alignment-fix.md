@@ -25,4 +25,4 @@ User found a typo: the book title and PDF output should be **Towards Superintell
 - `dist/pdf/towards-superintelligence-alignment.pdf`
 
 ## Commits
-- (pending this session)
+- `4d7007e` Fix book title typo: Alignments → Alignment.
