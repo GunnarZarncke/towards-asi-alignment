@@ -70,7 +70,7 @@ PARTS = [
         ("ch41-value-change-at-stake", "When Value Change Is the Thing at Stake", "value-change-at-stake"),
         ("ch42-unconscious-value-drift", "The End of Unconscious Value Drift", "unconscious-value-drift"),
         ("ch43-bearers-of-value", "The Bearers of Value", "bearers-of-value"),
-        ("ch44-towards-alignments", "Towards Superintelligence Alignments", "towards-alignments"),
+        ("ch44-towards-alignment", "Towards Superintelligence Alignment", "towards-alignment"),
     ]),
 ]
 

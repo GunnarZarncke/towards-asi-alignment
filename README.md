@@ -1,4 +1,4 @@
-# Towards Superintelligence Alignments
+# Towards Superintelligence Alignment
 
 **Boundaries, Value Bundles, and the Correction of Civilization**
 
@@ -48,7 +48,7 @@ Body text introduces every central concept from first principles. Internal proje
 | Structure | 10 parts, **44 chapters**, 8 appendices |
 | Chapters | All **stub** (see `metadata/book.yml`) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
-| PDF | Builds from `book.tex` → `dist/pdf/towards-superintelligence-alignments.pdf` |
+| PDF | Builds from `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
 | Word target | ~350k (see `metadata/book.yml`) |
 
 **Next milestone** (`INSTRUCTIONS.md` §25): preface, executive overview, roadmap, Chapters 1–2, appendices A and F.
@@ -69,7 +69,7 @@ make wordcount      # approximate chapter word counts
 make todos          # list [STUB] / TODO markers
 ```
 
-Output: `dist/pdf/towards-superintelligence-alignments.pdf`
+Output: `dist/pdf/towards-superintelligence-alignment.pdf`
 
 ---
 

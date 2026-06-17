@@ -1,12 +1,12 @@
 # Instructions for an AI Agent Writing the Book
 
-# *Towards Superintelligence Alignments*
+# *Towards Superintelligence Alignment*
 
 ## 0. Mission
 
 Write a full book-length manuscript titled:
 
-**Towards Superintelligence Alignments: Boundaries, Value Bundles, and the Correction of Civilization**
+**Towards Superintelligence Alignment: Boundaries, Value Bundles, and the Correction of Civilization**
 
 The book must be self-contained. It must not assume the reader already knows the author’s previous project names, papers, conversations, or internal terminology. Concepts originating in prior work may be cited in chapter references, but the body text must introduce them from first principles. Other authors' related work must be explained in sufficient degree for the intended audience to follow. This includes providing key formulas (but not their derivation).  
 
@@ -656,7 +656,7 @@ Yudkowsky's List of Lethalities appears **only in Chapter 40**, as an adversaria
 41. When Value Change Is the Thing at Stake — `ch41-value-change-at-stake.tex`
 42. The End of Unconscious Value Drift — `ch42-unconscious-value-drift.tex`
 43. The Bearers of Value — `ch43-bearers-of-value.tex` (inserts **Merging With Artificial Entities** and **What Cannot Be Solved Technically** as sections)
-44. Towards Superintelligence Alignments — `ch44-towards-alignments.tex`
+44. Towards Superintelligence Alignment — `ch44-towards-alignment.tex`
 
 ---
 
@@ -957,7 +957,7 @@ Requirements:
 
 - Build with `latexmk` (biber backend); run `./build.sh` or `make pdf`.
 - The build must place book outputs under `dist/` — the PDF at
-  `dist/pdf/towards-superintelligence-alignments.pdf`. The root `book.pdf` and the
+  `dist/pdf/towards-superintelligence-alignment.pdf`. The root `book.pdf` and the
   LaTeX aux files are intermediates and are not committed (`clean.sh` / `make clean`
   removes them).
 - `make check` runs the structure and citation checks; `make wordcount` and
@@ -1471,7 +1471,7 @@ Record all results in `review/`.
 The final output must include:
 
 ```text
-dist/pdf/towards-superintelligence-alignments.pdf
+dist/pdf/towards-superintelligence-alignment.pdf
 ```
 
 Optionally also produce:

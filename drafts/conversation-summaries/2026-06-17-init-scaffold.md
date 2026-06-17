@@ -10,7 +10,7 @@ User asked to **start the project** per `INSTRUCTIONS.md` (first milestone, §24
 - Added metadata ledgers (`claims`, `assumptions`, `uncertainty`, `notation`, `terminology`, `book.yml`), skeleton `.bib` files, review templates, and utility scripts (`check_structure.py`, `check_citations.py`, `wordcount.py`, `extract_todos.py`, `init_scaffold.py`, `make_chapter_stub.py`).
 - Added build tooling: `build.sh`, `clean.sh`, `Makefile`, `latexmkrc`; expanded `README.md`, `LICENSE`, `.gitignore`, `.editorconfig`.
 - Updated `AGENTS.md` build/README sections (were TBD).
-- Verified build: 128-page PDF at `dist/pdf/towards-superintelligence-alignments.pdf`; `make check` passes.
+- Verified build: 128-page PDF at `dist/pdf/towards-superintelligence-alignment.pdf`; `make check` passes.
 
 ### Build adjustments (TeX Live 2025 basic)
 

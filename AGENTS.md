@@ -43,6 +43,8 @@ When editing existing text:
 
 Every changed line should trace directly to the user's request.
 
+- **Ask before expanding scope.** Open files, roadmap order, and untracked drafts are not instructions. On “commit” or “end of session,” stage only what this task authorized; mention other drafts in the log and ask.
+
 ### Goal-driven execution
 
 **Define success criteria. Loop until verified.**
@@ -100,7 +102,7 @@ Place figures in `figures/` and reference as `figures/<file>`. External `.bib` f
 make check        # structure + citation checks
 ```
 
-Output: `dist/pdf/towards-superintelligence-alignments.pdf`
+Output: `dist/pdf/towards-superintelligence-alignment.pdf`
 
 ### README
 
@@ -114,6 +116,6 @@ See `README.md` for thesis, manuscript status, chapter map, build instructions, 
 
 ## Git
 
-- **Do not commit unless the user asks.**
+- **Do not commit unless the user asks.** Stage only authorized changes—not every draft in the working tree.
 - Do not commit venv directories, LaTeX aux/log files, or secrets.
 - Commit source `.tex`, `.py`, and `build.sh`; PDFs are build outputs (regenerate with `build.sh`).

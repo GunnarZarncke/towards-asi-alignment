@@ -1,4 +1,4 @@
-title: "Towards Superintelligence Alignments"
+title: "Towards Superintelligence Alignment"
 subtitle: "Boundaries, Value Bundles, and the Correction of Civilization"
 author: "Gunnar Zarncke"
 status: scaffold
@@ -265,7 +265,7 @@ chapters:
     formal_density: low
     reviewer_needed: [philosophy, alignment]
   ch44:
-    title: "Towards Superintelligence Alignments"
+    title: "Towards Superintelligence Alignment"
     status: stub
     word_target: 8000
     formal_density: low
