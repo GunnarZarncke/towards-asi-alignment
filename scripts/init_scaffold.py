@@ -59,7 +59,7 @@ PARTS = [
         ("ch34-parasites-correction-system", "Parasites in the Correction System", "parasites-correction-system"),
         ("ch35-alignment-attractor", "The Alignment Attractor", "alignment-attractor"),
     ]),
-    ("part09-adversarial-measurement", "Safety Cases, Adversaries, and Open Cruxes", [
+    ("part09-safety-cases", "Safety Cases, Adversaries, and Open Cruxes", [
         ("ch36-passive-observation-not-enough", "Passive Observation Is Not Enough", "passive-observation-not-enough"),
         ("ch37-goal-laundering", "Detecting Goal Laundering", "goal-laundering"),
         ("ch38-multiscale-decomposition", "Multi-Scale Decomposition", "multiscale-decomposition"),

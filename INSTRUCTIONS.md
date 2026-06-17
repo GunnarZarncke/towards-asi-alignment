@@ -86,31 +86,18 @@ Do not assume the reader knows these sources. Introduce every concept independen
 
 ### 3.0 Source map
 
-Canonical LaTeX sources and built PDFs live in sibling repositories (paths relative to this repo):
+The full source map — book-local `context/` PDFs, their `context/extracts/`
+markdown, the originating sibling repository, and the canonical TeX/PDF paths — is
+maintained in **`metadata/source-canon.md`**. That file is the durable record;
+consult it for exact paths. (This instructions file is a temporary writing brief
+and will be removed once the manuscript is complete.)
 
-* **`../brain-to-values/papers/`** — value bundles, free-energy loops, unit-of-caring, consciousness/agency backbone
-* **`../agency-detect/docs/papers/`** — UAD, capability, intentional stance, attractor basins, construction/successor work
-
-The `context/*.pdf` copies are book-local snapshots for agents and offline reading. Rebuild from TeX when formulas or claims must be verified exactly.
-
-| Book copy (`context/`) | Extract | Repo | TeX source | Built PDF |
-|------------------------|---------|------|------------|-----------|
-| `unsupervised-agent-discovery.pdf` | `extracts/unsupervised-agent-discovery.md` | agency-detect | `../agency-detect/docs/papers/unsupervised-agent-discovery/unsupervised-agent-discovery.tex` | `../agency-detect/docs/papers/unsupervised-agent-discovery/unsupervised-agent-discovery.pdf` |
-| `uad_literature_review.pdf` | `extracts/uad-literature-review.md` | agency-detect | `../agency-detect/docs/papers/uad-literature-review/uad_literature_review.tex` | `../agency-detect/docs/papers/uad-literature-review/uad_literature_review.pdf` |
-| `acausal_trade_uad_formalization.pdf` | `extracts/acausal-trade-uad-formalization.md` | agency-detect | `../agency-detect/docs/papers/acausal-trade-uad-formalization/acausal_trade_uad_formalization.tex` | `../agency-detect/docs/papers/acausal-trade-uad-formalization/acausal_trade_uad_formalization.pdf` |
-| `endogenized-intentional-stance.pdf` | `extracts/endogenized-intentional-stance.md` | agency-detect | `../agency-detect/docs/papers/endogenized-intentional-stance/endogenized-intentional-stance.tex` | `../agency-detect/docs/papers/endogenized-intentional-stance/endogenized-intentional-stance.pdf` |
-| `bitwise_iq.pdf` | `extracts/bitwise-iq.md` | agency-detect | `../agency-detect/docs/papers/bitwise-iq/bitwise_iq.tex` | `../agency-detect/docs/papers/bitwise-iq/bitwise_iq.pdf` |
-| `preference-capability.pdf` | `extracts/preference-capability.md` | agency-detect | `../agency-detect/docs/papers/preference-capability/preference-capability.tex` | `../agency-detect/docs/papers/preference-capability/preference-capability.pdf` |
-| `attractor-basins.pdf` | `extracts/attractor-basins.md` | agency-detect | `../agency-detect/docs/papers/attractor-basins/attractor-basins.tex` | `../agency-detect/docs/papers/attractor-basins/attractor-basins.pdf` |
-| `construction_without_understanding.pdf` | `extracts/construction-without-understanding.md` | agency-detect | `../agency-detect/docs/papers/construction-without-understanding/construction_without_understanding.tex` | `../agency-detect/docs/papers/construction-without-understanding/construction_without_understanding.pdf` |
-| `loop-hub-value-model.pdf` | `extracts/loop-hub-value-model.md` | brain-to-values | `../brain-to-values/papers/loop-hub-value-model/loop-hub-value-model.tex` | `../brain-to-values/papers/loop-hub-value-model/loop-hub-value-model.pdf` |
-| `lhcv-model-v2.pdf` | `extracts/lhcv-model-v2.md` | brain-to-values | `../brain-to-values/papers/loop-hub-control-value/lhcv-model-v2.tex` | `../brain-to-values/papers/loop-hub-control-value/lhcv-model-v2.pdf` |
-| `unit-of-caring.pdf` | `extracts/unit-of-caring.md` | brain-to-values | `../brain-to-values/papers/unit-of-caring/unit-of-caring.tex` | `../brain-to-values/papers/unit-of-caring/unit-of-caring.pdf` |
-| `value-bundle-drift.pdf` | `extracts/value-bundle-drift.md` | brain-to-values | `../brain-to-values/papers/value-bundle-drift/value-bundle-drift.tex` | `../brain-to-values/papers/value-bundle-drift/value-bundle-drift.pdf` |
-| `free_energy_loops.pdf` | `extracts/free-energy-loops.md` | brain-to-values | `../brain-to-values/papers/free-energy-loops/free_energy_loops.tex` | `../brain-to-values/papers/free-energy-loops/free_energy_loops.pdf` |
-| `status_regulation_as_free_energy_loops.pdf` | `extracts/status-regulation-as-free-energy-loops.md` | brain-to-values | `../brain-to-values/papers/status-regulation-loops/status_regulation_as_free_energy_loops.tex` | `../brain-to-values/papers/status-regulation-loops/status_regulation_as_free_energy_loops.pdf` |
-| `consciousness_agency_backbone.pdf` | `extracts/consciousness-agency-backbone.md` | brain-to-values | `../brain-to-values/papers/consciousness-agency-backbone/consciousness_agency_backbone.tex` | `../brain-to-values/papers/consciousness-agency-backbone/consciousness_agency_backbone.pdf` |
-| `Literature Review of Units of Caring, Pain & Suffering Measurement, and Aggregation.pdf` | `extracts/literature-review-of-units-of-caring-pain-suffering-measurement-and-aggregation.md` | — | *(no TeX in canonical repos; context-only)* | — |
+Summary: canonical LaTeX sources and built PDFs live in sibling repositories
+(`../brain-to-values/papers/` for value bundles, free-energy loops, unit-of-caring,
+consciousness/agency backbone; `../agency-detect/docs/papers/` for UAD, capability,
+intentional stance, attractor basins, construction/successor work). The
+`context/*.pdf` copies are book-local snapshots for agents and offline reading;
+rebuild from TeX when formulas or claims must be verified exactly.
 
 ### 3.1 Project and platform framing
 
@@ -425,11 +412,11 @@ An agent is a bounded dynamical process whose internal states help predict and c
 
 Formal starting point:
 
-[
+\[
 I(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon
-]
+\]
 
-where (I) is internal state, (E) external state, (S) sensory interface, (A) active interface, and (\epsilon) allowed leakage.
+where $I$ is internal state, $E$ external state, $S$ sensory interface, $A$ active interface, and $\epsilon$ allowed leakage.
 
 ### 6.2 Boundary
 
@@ -441,9 +428,9 @@ Capability is the degree to which a system can predict and control relevant futu
 
 Use:
 
-[
+\[
 B = I_{\text{pred}} + I_{\text{ctrl}} - \beta H(I) - \gamma S
-]
+\]
 
 ### 6.4 Value bundle
 
@@ -469,9 +456,9 @@ A bearer map specifies what entities, states, or processes a value bundle applie
 
 Use:
 
-[
+\[
 \Phi_k:z_{\text{world}}\mapsto \text{bundle relevance}
-]
+\]
 
 ### 6.6 Goal inference
 
@@ -479,13 +466,12 @@ Goal inference is the process of finding latent objectives or value-bundle struc
 
 Use:
 
-[
+\[
 \hat B,\hat W,\hat\Phi
-======================
-
+=
 \arg\max_{B,W,\Phi}
-P(A_{1:T}\mid I_{1:T},B,W,\Phi)P(B,W,\Phi)
-]
+P(A_{1:T}\mid I_{1:T},B,W,\Phi)\,P(B,W,\Phi)
+\]
 
 ### 6.7 Goal transport
 
@@ -493,12 +479,11 @@ Goal transport is the preservation of goal-relevant structure across transformat
 
 Use:
 
-[
+\[
 \Delta L_{\text{transport}}
-===========================
-
+=
 L(M_T\mid X)-L(M_0\mid X)-\lambda DL(T)
-]
+\]
 
 Explain that semantic transport is weak, bundle transport is stronger, bearer transport is stronger still, and correction transport is central.
 
@@ -508,9 +493,9 @@ A correction channel is the causal route by which humans and institutions observ
 
 Use:
 
-[
+\[
 W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}
-]
+\]
 
 ### 6.9 Correction-channel integrity
 
@@ -518,14 +503,14 @@ Correction-channel integrity is the effective capacity of the correction chain a
 
 Use:
 
-[
+\[
 CCI=
 \min_i I(X_i;X_{i+1})
 -\lambda_L L
 -\lambda_M M
 -\lambda_R R
 -\lambda_O O
-]
+\]
 
 ### 6.10 Successor
 
@@ -677,141 +662,43 @@ Yudkowsky's List of Lethalities appears **only in Chapter 40**, as an adversaria
 
 ## 8. LaTeX Project Structure
 
-Create a Git repository with the following folder structure.
+The repository root is `towards-asi-alignment/`. The README repository map is the
+maintained overview of the layout; the tree below is illustrative and names files
+only as examples or where the convention matters. Do not treat it as an exhaustive
+manifest.
+
+Key conventions:
+
+- One part file per part (`parts/partNN-slug.tex`), one chapter file per chapter
+  (`chapters/chNN-slug.tex`); the `NN` ordering must match the include order in
+  `book.tex`. Part slugs follow the part title (e.g. `part09-safety-cases.tex`).
+- Appendices `appA`–`appH` in `appendices/`.
+- Durable project data lives in `metadata/` (e.g. `book.yml`, `source-canon.md`,
+  the claims/assumptions/uncertainty ledgers, `terminology.md`, `notation.md`,
+  `preamble.tex`).
+- Bibliography by category under `references/` (see §11).
+- Build helpers in `scripts/` and at the repo root (`build.sh`, `clean.sh`,
+  `Makefile`, `latexmkrc`).
+- Build outputs go to `dist/` (PDF in `dist/pdf/`); the root `book.pdf` and LaTeX
+  aux files are not committed.
 
 ```text
-towards-superintelligence-alignments/
-├── README.md
-├── LICENSE
-├── Makefile
-├── build.sh
-├── clean.sh
-├── latexmkrc
-├── book.tex
-├── book.pdf
-├── .gitignore
-├── .editorconfig
-├── metadata/
-│   ├── book.yml
-│   ├── source-canon.md
-│   ├── terminology.md
-│   ├── notation.md
-│   ├── assumptions-ledger.md
-│   ├── claims-ledger.md
-│   ├── uncertainty-ledger.md
-│   └── open-problems.md
-├── frontmatter/
-│   ├── titlepage.tex
-│   ├── dedication.tex
-│   ├── preface.tex
-│   ├── introduction.tex
-│   ├── executive-overview.tex
-│   ├── roadmap.tex
-│   └── acknowledgements.tex
-├── parts/
-│   ├── part01-reframing.tex
-│   ├── part02-agents-boundaries.tex
-│   ├── part03-capability-growth.tex
-│   ├── part04-value-bundles.tex
-│   ├── part05-goal-inference.tex
-│   ├── part06-correction-channels.tex
-│   ├── part07-successors.tex
-│   ├── part08-attractor-basins.tex
-│   ├── part09-adversarial-measurement.tex
-│   └── part10-civilizational-limit.tex
-├── chapters/
-│   ├── ch01-wrong-object.tex
-│   ├── ch02-artificial-civilization.tex
-│   ├── ch03-dynamical-guarantee.tex
-│   ├── ch04-fixed-values-wrong-target.tex
-│   ├── ch05-assumptions-scope-failure-coverage.tex
-│   ├── ch06-agent-without-anthropomorphism.tex
-│   ├── ch07-finding-boundary.tex
-│   ├── ch08-grow-split-merge.tex
-│   ├── ch09-composite-agent.tex
-│   ├── ch10-strategic-opacity.tex
-│   ├── ch11-capability-without-task-ontology.tex
-│   ├── ch12-boundary-expansion.tex
-│   ├── ch13-coordination-bottleneck.tex
-│   ├── ch14-intelligence-deepens-misalignment.tex
-│   ├── ch15-values-compressed-control.tex
-│   ├── ch16-value-bundle-model.tex
-│   ├── ch17-low-dimensional-value-learning.tex
-│   ├── ch18-bearer-maps.tex
-│   ├── ch19-tradeoffs-bundle-geometry.tex
-│   ├── ch20-reward-to-bundle-inference.tex
-│   ├── ch21-compression-test-intention.tex
-│   ├── ch22-goal-transport.tex
-│   ├── ch23-transport-types.tex
-│   ├── ch24-correction-causal-channel.tex
-│   ├── ch25-correction-channel-integrity.tex
-│   ├── ch26-extrapolative-correction.tex
-│   ├── ch27-manipulation-false-consent.tex
-│   ├── ch28-successor-central-test.tex
-│   ├── ch29-conserved-properties.tex
-│   ├── ch30-self-modeling-self-opacity.tex
-│   ├── ch31-certification-without-construction.tex
-│   ├── ch32-selection-environment.tex
-│   ├── ch33-multi-agent-strategic-coupling.tex
-│   ├── ch34-parasites-correction-system.tex
-│   ├── ch35-alignment-attractor.tex
-│   ├── ch36-passive-observation-not-enough.tex
-│   ├── ch37-goal-laundering.tex
-│   ├── ch38-multiscale-decomposition.tex
-│   ├── ch39-safety-case.tex
-│   ├── ch40-lethality-stress-test-open-issues.tex
-│   ├── ch41-value-change-at-stake.tex
-│   ├── ch42-unconscious-value-drift.tex
-│   ├── ch43-bearers-of-value.tex
-│   └── ch44-towards-alignments.tex
-├── appendices/
-│   ├── appA-notation.tex
-│   ├── appB-worked-example-agent-boundary.tex
-│   ├── appC-value-bundle-inference.tex
-│   ├── appD-correction-channel-audit.tex
-│   ├── appE-successor-certification.tex
-│   ├── appF-glossary.tex
-│   ├── appG-safety-case-template.tex
-│   └── appH-research-program.tex
-├── figures/
-│   ├── source/
-│   ├── generated/
-│   └── tikz/
-├── tables/
-│   ├── chapter-map.tex
-│   ├── notation-table.tex
-│   ├── assumptions-table.tex
-│   ├── failure-modes-table.tex
-│   └── artifacts-table.tex
-├── references/
-│   ├── main.bib
-│   ├── internal-project-sources.bib
-│   ├── external-alignment.bib
-│   ├── neuroscience-values.bib
-│   ├── dynamical-systems.bib
-│   ├── governance-institutions.bib
-│   └── philosophy.bib
-├── scripts/
-│   ├── build.py
-│   ├── check_structure.py
-│   ├── check_citations.py
-│   ├── extract_todos.py
-│   ├── wordcount.py
-│   └── make_chapter_stub.py
-├── drafts/
-│   ├── chapter-notes/          # deferred chapter stubs (removed from spine)
-│   ├── rejected-fragments/
-│   └── conversation-summaries/
-├── review/
-│   ├── reviewer-guide.md
-│   ├── claim-checklist.md
-│   ├── chapter-review-template.md
-│   ├── technical-review-template.md
-│   └── policy-legibility-review-template.md
-└── dist/
-    ├── pdf/
-    ├── epub/
-    └── html/
+towards-asi-alignment/
+├── README.md, LICENSE
+├── book.tex                     # root LaTeX file (includes everything)
+├── build.sh, clean.sh, Makefile, latexmkrc
+├── metadata/                    # book.yml, source-canon.md, ledgers, preamble.tex …
+├── frontmatter/                 # titlepage, preface, introduction, executive-overview, roadmap …
+├── parts/                       # part01-reframing.tex … part10-civilizational-limit.tex
+├── chapters/                    # ch01-….tex … ch44-….tex
+├── appendices/                  # appA-notation.tex … appH-research-program.tex
+├── figures/                     # source/, generated/, tikz/
+├── tables/                      # chapter-map.tex, notation-table.tex, artifacts-table.tex …
+├── references/                  # main.bib + category .bib files (see §11)
+├── scripts/                     # build/check/wordcount/extract/import utilities
+├── drafts/                      # chapter-notes/, rejected-fragments/, conversation-summaries/
+├── review/                      # reviewer guide and templates
+└── dist/                        # build outputs: pdf/ (epub/, html/ optional)
 ```
 
 ---
@@ -958,7 +845,12 @@ Maintain separate `.bib` files by source type:
 5. `governance-institutions.bib`
 6. `philosophy.bib`
 
-The agent must create a unified `main.bib` or include all files from `book.tex`.
+**Recommended setup (already in use):** load the category files directly with one
+`\addbibresource{...}` per file in `book.tex`, rather than concatenating everything
+into one bibliography. Keep `references/main.bib` as a thin index plus a home for
+manual or uncategorized entries; do not duplicate category entries into it. This
+keeps `import_source_map_refs.py` (which regenerates the category files) the single
+writer of the categorized bibliography and avoids merge drift.
 
 To populate or refresh bibliography entries from the source map (§3.0), run:
 
@@ -1057,64 +949,19 @@ chapters:
 
 ## 13. Build Script
 
-Create `build.sh`:
+The build helpers already exist at the repo root: `build.sh`, `clean.sh`,
+`Makefile`, and `latexmkrc`. Use them rather than reinventing the commands; the
+README quick-start documents the day-to-day invocations.
 
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
+Requirements:
 
-mkdir -p dist/pdf
-
-latexmk -pdf -interaction=nonstopmode -halt-on-error book.tex
-
-cp book.pdf dist/pdf/towards-superintelligence-alignments.pdf
-
-echo "Built dist/pdf/towards-superintelligence-alignments.pdf"
-```
-
-Create `clean.sh`:
-
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
-
-latexmk -C
-rm -rf dist/pdf/*.pdf
-rm -f *.bbl *.bcf *.run.xml *.toc *.lof *.lot *.idx *.ilg *.ind
-```
-
-Create a `Makefile`:
-
-```makefile
-.PHONY: all pdf clean check wordcount todos
-
-all: pdf
-
-pdf:
-	./build.sh
-
-clean:
-	./clean.sh
-
-check:
-	python scripts/check_structure.py
-	python scripts/check_citations.py
-
-wordcount:
-	python scripts/wordcount.py
-
-todos:
-	python scripts/extract_todos.py
-```
-
-Create `latexmkrc`:
-
-```perl
-$pdf_mode = 1;
-$interaction = 'nonstopmode';
-$bibtex_use = 2;
-$out_dir = '.';
-```
+- Build with `latexmk` (biber backend); run `./build.sh` or `make pdf`.
+- The build must place book outputs under `dist/` — the PDF at
+  `dist/pdf/towards-superintelligence-alignments.pdf`. The root `book.pdf` and the
+  LaTeX aux files are intermediates and are not committed (`clean.sh` / `make clean`
+  removes them).
+- `make check` runs the structure and citation checks; `make wordcount` and
+  `make todos` are also available.
 
 ---
 
@@ -1224,141 +1071,136 @@ The manuscript must develop these formal objects in sequence.
 
 ### 18.1 Agent boundary
 
-[
+\[
 I(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon
-]
+\]
 
 ### 18.2 Capability measure
 
-[
+\[
 B = I_{\text{pred}} + I_{\text{ctrl}} - \beta H(I) - \gamma S
-]
+\]
 
 ### 18.3 Competence growth
 
-[
+\[
 \frac{\dot w_A}{w_A}
---------------------
-
-# \frac{\dot w_H}{w_H}
-
+=
+\frac{\dot w_H}{w_H}
++
 \eta(B_A-B_H)
-]
+\]
 
 ### 18.4 Value-bundle inference
 
-[
+\[
 \hat B,\hat W,\hat\Phi
-======================
-
+=
 \arg\max_{B,W,\Phi}
-P(A_{1:T}\mid I_{1:T},B,W,\Phi)P(B,W,\Phi)
-]
+P(A_{1:T}\mid I_{1:T},B,W,\Phi)\,P(B,W,\Phi)
+\]
 
 ### 18.5 Bundle response geometry
 
-[
+\[
 G_B=
 \left(
 \frac{\partial \pi}{\partial B_i},
 \frac{\partial^2\pi}{\partial B_i\partial B_j}
 \right)
-]
+\]
 
 ### 18.6 Bearer map
 
-[
+\[
 \Phi_k:z_{\text{world}}\mapsto \text{bundle relevance}
-]
+\]
 
 ### 18.7 Intentional compression gain
 
-[
+\[
 \Delta L =
 L_{\text{intentional}}
-----------------------
-
-## L_{\text{mechanistic}}
-
+-
+L_{\text{mechanistic}}
+-
 \lambda DL(R)
-]
+\]
 
 ### 18.8 Goal transport
 
-[
+\[
 \Delta L_{\text{transport}}
-===========================
-
-## L(M_T\mid X)
-
-## L(M_0\mid X)
-
+=
+L(M_T\mid X)
+-
+L(M_0\mid X)
+-
 \lambda DL(T)
-]
+\]
 
 ### 18.9 Transport decomposition
 
-[
+\[
 \Delta L_T=
 \Delta L_{\text{semantic}}
 +\Delta L_{\text{bundle}}
 +\Delta L_{\text{bearer}}
 +\Delta L_{\text{correction}}
 +\Delta L_{\text{successor}}
-]
+\]
 
 ### 18.10 Correction chain
 
-[
+\[
 W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}
-]
+\]
 
 ### 18.11 Correction-channel integrity
 
-[
+\[
 CCI=
 \min_i I(X_i;X_{i+1})
 -\lambda_L L
 -\lambda_M M
 -\lambda_R R
 -\lambda_O O
-]
+\]
 
 ### 18.12 Successor certification
 
-[
+\[
 \forall A'\in \text{Succ}(A):
 A'\in \mathcal S_{\text{certified}}
-]
+\]
 
 ### 18.13 Cooperation condition
 
-[
+\[
 \kappa_{ij}=
 \frac{b_{ij}p_{ij}\rho_{ij}}{c_{ij}}
-
 > 1
-> ]
+\]
 
 ### 18.14 Cooperation percolation
 
-[
+\[
 \varphi>\varphi_c=
 \frac{\langle d\rangle}{\langle d^2\rangle-\langle d\rangle}
-]
+\]
 
 ### 18.15 Parasite-persistence criterion
 
-[
+\[
 C_X < H(A_Y)-\frac{\lambda_Y H(I_Y)}{\beta}
-]
+\]
 
 ### 18.16 Safety-case guarantee
 
-[
+\[
 \forall A\in\mathcal C:
 P(\text{catastrophic drift}\mid A)<\delta
-]
+\]
 
 ---
 
@@ -1643,7 +1485,7 @@ The final repository must be buildable from scratch with:
 
 ```bash
 git clone <repo>
-cd towards-superintelligence-alignments
+cd towards-asi-alignment
 make pdf
 ```
 

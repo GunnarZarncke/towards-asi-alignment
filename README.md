@@ -153,6 +153,10 @@ Citations use **BibLaTeX** (`biblatex` + `biber`). Files are split by category:
 | `governance-institutions.bib` | Governance and institutions |
 | `philosophy.bib` | Philosophy of mind and ethics |
 
+`book.tex` loads each category file directly via `\addbibresource`; `main.bib` is a
+thin index for manual or uncategorized entries. Add new citations to the matching
+category file (or regenerate them with the importer below), not to `main.bib`.
+
 To refresh entries from the source-map sibling repos:
 
 ```bash
