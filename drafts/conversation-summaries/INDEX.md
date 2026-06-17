@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-17 | Session end: introduction draft | [2026-06-17-session-end-introduction.md](2026-06-17-session-end-introduction.md) |
 | 2026-06-17 | Session end: refs import + README | [2026-06-17-session-end-refs-readme.md](2026-06-17-session-end-refs-readme.md) |
 | 2026-06-17 | Source map references import | [2026-06-17-source-map-references-import.md](2026-06-17-source-map-references-import.md) |
 | 2026-06-17 | Session end: structure + INSTRUCTIONS sync | [2026-06-17-session-end-structure-instructions.md](2026-06-17-session-end-structure-instructions.md) |

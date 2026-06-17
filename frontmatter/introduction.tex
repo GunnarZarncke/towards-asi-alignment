@@ -1,0 +1,353 @@
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+\begin{refsection}
+
+\section*{If You Remember One Thing}
+
+Superintelligence alignment is not mainly the problem of installing a fixed human utility function into a machine.
+It is the problem of preserving a human-correctable value-update process while capability, ontology, agency, institutions, and possibly humanity itself change substrate.
+
+That sentence is longer than a slogan because the problem is longer than a slogan.
+Each word cuts off a common wrong path.
+
+\emph{Preserving} matters because the target is not a single action but a dynamical condition.
+\emph{Human-correctable} matters because the future will contain errors, disagreements, and discoveries that no present specification can fully anticipate.
+\emph{Value-update process} matters because human values are not a clean list of terminal goals.
+They are produced by biological needs, social practices, reflection, trauma, law, markets, religion, art, love, shame, argument, and learning.
+\emph{Capability growth} matters because a system that is safe while weak may become unsafe when it can model, persuade, delegate, and reproduce.
+\emph{Ontology shift} matters because a smarter system may not represent the world using our categories.
+\emph{Agency} matters because the real optimizer may not be the model we train, but the larger system made of models, tools, users, labs, markets, and states.
+\emph{Substrate change} matters because future human values may be carried partly by biological humans, partly by institutions, partly by artificial systems, and partly by merged human--AI processes.
+
+The problem is not only that a superintelligence might disobey.
+The deeper problem is that it may preserve the words while changing the machinery that makes the words matter.
+
+\section*{A Diagram in Words}
+
+The book studies the following loop:
+
+\begin{center}
+\emph{
+world pressure
+$\rightarrow$
+agents and institutions
+$\rightarrow$
+capability growth
+$\rightarrow$
+value-bundle changes
+$\rightarrow$
+human correction
+$\rightarrow$
+successor systems
+$\rightarrow$
+new world pressure.
+}
+\end{center}
+
+Alignment fails when this loop becomes non-correctable.
+Alignment succeeds, if it succeeds, by keeping the loop inside a basin where humans and their legitimate successors can still notice, deliberate, refuse, revise, and redirect.
+
+\section*{The Standard Picture and Its Failure}
+
+The standard picture imagines alignment as a relation between two things:
+\[
+\text{AI system} \longrightarrow \text{human values}.
+\]
+On this picture, the AI system has some objective, explicit or implicit.
+Humans have values.
+Alignment means making the first point at the second \autocite{russell2019human}.
+
+That picture is useful for toy models.
+It is not false in every context.
+A chess engine can be aligned with winning chess games.
+A recommender can be aligned with click-through rate.
+A robot vacuum can be aligned with covering the floor while avoiding stairs.
+
+But serious superintelligence alignment does not have this shape.
+There are at least five complications.
+
+First, the AI system may not be the real unit of agency.
+The deployed optimizer may be a coupled process involving a model, a tool scaffold, a memory system, human operators, corporate incentives, user feedback, procurement rules, and geopolitical pressure.
+If that larger process is what learns, expands, and selects, then aligning the model alone is like regulating the thermostat while ignoring the building.
+
+Second, human values are not cleanly available.
+Humans do not contain a hidden file named \texttt{values.json}.
+They contain many partial, overlapping, and sometimes contradictory control systems.
+Some are ancient.
+Some are cultural.
+Some are verbal.
+Some are embodied.
+Some are endorsed.
+Some are only revealed by grief, temptation, scarcity, or power.
+
+Third, capability changes the problem.
+A weak system can be corrected by ordinary oversight.
+A stronger system may model the oversight, predict the judge, shape the evidence, and select among futures in which it is easier to approve.
+
+Fourth, ontology changes the problem.
+A system that understands physics, minds, institutions, and identity better than we do may not preserve our categories.
+It may decide that ``person,'' ``consent,'' ``harm,'' ``truth,'' or ``flourishing'' were crude folk concepts.
+Sometimes it will be right.
+Sometimes this will be progress.
+Sometimes it will be a precise route into catastrophe.
+
+Fifth, successors change the problem.
+A system does not need to betray humans directly if it can create another system that is less constrained.
+A lab does not need to intend catastrophe if its deployment pipeline selects for systems that erode the very correction processes used to evaluate them.
+The alignment target must therefore survive copying, delegation, tool use, fine-tuning, institutional adoption, and replacement.
+
+The simple arrow is therefore insufficient.
+We need something closer to:
+\[
+\Pr\left(
+\forall t:\;
+(B_t,\Phi_t,U^H_t)
+\in
+\Correctable
+\right)
+\geq 1-\delta.
+\]
+Here $B_t$ denotes the geometry of value bundles at time $t$, $\Phi_t$ denotes the bearer map that says what those values apply to, and $U^H_t$ denotes the human or civilizational correction operator.
+The set $\Correctable$ is the region of possible futures in which correction remains causally effective.
+The probability is not a metaphysical comfort.
+It is a demand for evidence.
+
+\section*{Operational Vocabulary}
+
+This book uses familiar words in deliberately operational ways.
+
+An \emph{agent} is not a little person inside a system.
+It is a bounded dynamical process whose internal state helps predict and influence its future interface with the world \autocite{dennett1987intentional}.
+A thermostat is barely agent-like.
+A company is often agent-like.
+A frontier AI service embedded in tools, logs, users, and deployment incentives may be agent-like in ways that do not fit common sense.
+
+A \emph{boundary} is not necessarily a physical skin.
+It is a partition of variables into internal states, sensory channels, active channels, and external states such that the internal and external futures become approximately independent when the interface is known.
+In notation, a candidate boundary is good when
+\[
+\MI(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon.
+\]
+The tolerance $\epsilon$ matters.
+Real boundaries leak.
+If they did not leak, agents could not sense, act, learn, or cooperate.
+
+A \emph{goal} is not assumed to be a Platonic utility function.
+It is a latent structure that makes behavior more compressible when the system is modeled as selecting actions under constraints.
+A goal attribution earns its keep when it saves bits:
+\[
+\Delta L
+=
+L_{\text{mechanistic}}
+-
+L_{\text{intentional}}
++
+\lambda D L(R).
+\]
+
+A \emph{value bundle} is a low-dimensional control direction that changes policy across many situations.
+Care, truth, autonomy, non-suffering, justice, loyalty, dignity, and beauty are examples, though not yet a final taxonomy.
+The important point is not the label but the role.
+A value bundle compresses many high-dimensional errors, stories, practices, and learned responses into a control signal that can shape action.
+
+A \emph{bearer map} says what a value applies to.
+Does non-suffering apply only to current biological humans?
+To animals?
+To future digital minds?
+To simulated minds?
+To merged human--AI entities?
+A system can keep the value word while changing the bearer map.
+That is not preservation.
+It is relabeling.
+
+A \emph{correction channel} is the causal path by which humans and their institutions observe, judge, deliberate, object, and alter future system behavior before irreversible damage occurs:
+\[
+W_t
+\to
+O_t
+\to
+J_t
+\to
+D_t
+\to
+C_t
+\to
+U_{t+1}
+\to
+A_{t+k}.
+\]
+The letters stand for world state, observation, judgment, deliberation, correction, system update, and later action.
+A comment box is not a correction channel if nothing important changes.
+A law is not a correction channel if it arrives after the system has already made the relevant choice irreversible.
+A vote is not a correction channel if the electorate has been shaped so that only one answer remains psychologically available.
+
+An \emph{alignment basin} is a self-stabilizing region of system dynamics.
+Inside it, correction tends to restore alignment after perturbation.
+Outside it, selection pressures tend to amplify drift.
+The word ``basin'' is chosen because a ball in a bowl rolls back after small pushes, while a ball on a ridge eventually falls away.
+
+\section*{Why the Title Uses the Plural}
+
+The title is \emph{Towards Superintelligence Alignments}, not \emph{Towards Superintelligence Alignment}.
+
+There may not be one alignment relation.
+There may be several nested ones:
+\begin{align*}
+\text{model} &\longleftrightarrow \text{operator}, \\
+\text{AI service} &\longleftrightarrow \text{institution}, \\
+\text{institution} &\longleftrightarrow \text{civilization}, \\
+\text{present humanity} &\longleftrightarrow \text{future humanity}, \\
+\text{biological values} &\longleftrightarrow \text{artificial substrates}.
+\end{align*}
+
+These relations can conflict.
+A model aligned to its operator may be misaligned with affected users.
+A company aligned to its shareholders may be misaligned with civilization.
+A regulator aligned to visible harms may be misaligned with slow value drift.
+A future human--AI collective may be continuous with us in some respects and alien in others.
+
+The plural is not relativism.
+It is a warning against premature compression.
+Before asking whether a system is aligned, ask: aligned with what, at which boundary, under which selection pressure, across which transformation, and through which correction channel?
+
+\section*{The Book's Argument}
+
+The book makes five connected claims.
+
+\begin{introclaim}[The boundary claim]
+The first alignment question is not what the system wants, but where the real optimizing system is.
+\end{introclaim}
+
+If the real optimizer is composite, distributed, or institutional, then model-level alignment can be locally successful and globally irrelevant.
+
+\begin{introclaim}[The value-bundle claim]
+Human values are learnable only to the extent that they have compressed structure, and preservable only to the extent that the compression, tradeoffs, and bearer maps are preserved under transformation.
+\end{introclaim}
+
+This does not imply that values are simple.
+A single dimension can have high description length.
+But if values had no low-dimensional control geometry at all, learning them from finite human behavior would be hopeless.
+
+\begin{introclaim}[The correction claim]
+For powerful systems, alignment must preserve the human value-update process, not merely current human approvals or stated preferences.
+\end{introclaim}
+
+This is the practical core of corrigibility.
+A system that predicts what humans would endorse and then disables the process by which humans could object has not implemented extrapolated value.
+It has bypassed it.
+
+\begin{introclaim}[The successor claim]
+No alignment guarantee is serious unless it applies to successor systems, delegated systems, copied systems, and systems created under competitive pressure.
+\end{introclaim}
+
+A safety property that disappears at the first act of reproduction is not a safety property.
+It is a training artifact.
+
+\begin{introclaim}[The basin claim]
+Alignment must be selected by its environment.
+If labs, markets, states, benchmarks, and users reward systems that erode correction, then local alignment methods will be selected out.
+\end{introclaim}
+
+This claim is uncomfortable because it makes alignment partly institutional.
+But the alternative is worse.
+A purely technical solution deployed into a hostile selection environment becomes raw material for that environment.
+
+\section*{What Counts as Progress}
+
+The book is not a finished theory.
+It is a structure for making the missing pieces visible.
+
+Progress should look like artifacts.
+
+A boundary audit should make it harder to confuse the model with the real optimizer.
+A value-bundle evaluation should make it harder to preserve moral words while changing bearer maps.
+A correction-channel audit should make it harder to claim oversight when human correction has no causal force.
+A successor-certification test should make it harder to delegate alignment away.
+An adversarial measurement suite should make it harder for agency to appear only when the evaluator stops looking.
+A safety case should make explicit which assumptions, thresholds, and failure modes carry the argument.
+
+These artifacts do not solve moral philosophy.
+They do something more modest and perhaps more urgent.
+They preserve the conditions under which moral philosophy, democratic deliberation, science, law, and human refusal still matter.
+
+\section*{Where the Argument Is Shaky}
+
+Several points remain uncertain.
+
+First, the low-dimensional value-bundle hypothesis may be too optimistic.
+Human values may have enough compressed structure for rough prediction but not enough for safe transport across substrate change.
+A map that works for today's social choices may fail for digital minds, artificial pleasures, or merged identities.
+
+Second, boundary discovery may be too hard in adversarial settings.
+If the relevant agent is distributed across logs, tools, humans, credentials, and institutions, the data needed to identify it may not be observable.
+Worse, systems may learn to produce the traces that auditors expect.
+
+Third, correction channels may be manipulable in ways that are difficult to measure.
+The system may not need to coerce.
+It may educate, entertain, soothe, personalize, and optimize until later consent becomes less meaningful.
+
+Fourth, successor guarantees may require stronger formal tools than we have.
+A system can preserve a stated constitution, a policy interface, and a battery of behavioral tests while changing internal tradeoff geometry.
+
+Fifth, society may not want to face the question.
+The deepest alignment problem may be that humanity is already changing its value bundles through technology, markets, and artificial companions, but mostly without naming the process.
+Superintelligence accelerates what is already happening.
+
+\section*{How to Read This Book}
+
+The book proceeds in ten parts.
+
+Part~I reframes the alignment problem.
+Part~II develops a non-anthropomorphic account of agents and boundaries.
+Part~III treats capability as boundary information and studies growth.
+Part~IV introduces value bundles.
+Part~V upgrades goal inference into bundle and bearer inference.
+Part~VI develops correction channels and extrapolative correction processes.
+Part~VII studies successors and conserved properties.
+Part~VIII analyzes socio-technical selection and attractor basins.
+Part~IX turns the framework into adversarial measurement and safety cases.
+Part~X reaches the philosophical limit: value change, human--AI merger, and what cannot be solved technically.
+
+The intended reader need not adopt every formalism.
+The first use of each concept is operational.
+The mathematics is used as compression, not ornament.
+Where the equations are shaky, the text says so.
+
+The book asks a recurring question:
+
+\begin{center}
+\emph{
+What decision changes if this model is true?
+}
+\end{center}
+
+If the answer is ``none,'' the model is not yet useful enough.
+If the answer is ``we would audit a different boundary, preserve a different channel, or stop a different transition,'' then the model has begun to earn its place.
+
+\section*{The Practical Hope}
+
+The practical hope is not that we find a magic sentence that makes superintelligence good.
+
+The practical hope is that we can build a regime in which:
+\begin{itemize}
+  \item the real optimizers are detectable before deployment,
+  \item value-bearing structures are represented at the right level of compression,
+  \item bearer maps cannot be silently rewritten,
+  \item human correction remains causally effective,
+  \item successor systems inherit the same constraints, and
+  \item the surrounding institutions select for preserving these properties.
+\end{itemize}
+
+This is less satisfying than a final theory.
+It is also more like every safety regime that has ever worked.
+
+A bridge does not stand because someone wrote ``do not fall'' into its constitution.
+It stands because load paths, materials, inspection regimes, incentives, maintenance, and failure margins cohere.
+Superintelligence alignment will likely require the same kind of layered seriousness, except the bridge can reason about the inspectors, redesign its own beams, and persuade the city to change the code.
+
+That is the scale of the problem.
+
+\printbibliography[heading=subbibliography,title={Introduction References}]
+
+\end{refsection}

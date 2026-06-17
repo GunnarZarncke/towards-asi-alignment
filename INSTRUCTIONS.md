@@ -704,6 +704,7 @@ towards-superintelligence-alignments/
 │   ├── titlepage.tex
 │   ├── dedication.tex
 │   ├── preface.tex
+│   ├── introduction.tex
 │   ├── executive-overview.tex
 │   ├── roadmap.tex
 │   └── acknowledgements.tex
@@ -850,6 +851,7 @@ The root file should include:
 \input{frontmatter/titlepage}
 \input{frontmatter/dedication}
 \input{frontmatter/preface}
+\input{frontmatter/introduction}
 \input{frontmatter/executive-overview}
 \input{frontmatter/roadmap}
 \input{frontmatter/acknowledgements}
