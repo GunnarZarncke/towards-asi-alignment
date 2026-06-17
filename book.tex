@@ -1,0 +1,93 @@
+\documentclass[11pt,oneside,openany]{memoir}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{makeidx}
+
+\input{metadata/preamble}
+
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxbibnames=99,
+  giveninits=true,
+  uniquename=false,
+]{biblatex}
+\addbibresource{references/main.bib}
+\addbibresource{references/internal-project-sources.bib}
+\addbibresource{references/external-alignment.bib}
+\addbibresource{references/neuroscience-values.bib}
+\addbibresource{references/dynamical-systems.bib}
+\addbibresource{references/governance-institutions.bib}
+\addbibresource{references/philosophy.bib}
+
+\hypersetup{
+  pdftitle={Towards Superintelligence Alignments},
+  pdfauthor={Gunnar Zarncke},
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black,
+}
+
+\title{Towards Superintelligence Alignments\\[0.5em]
+  \large Boundaries, Value Bundles, and the Correction of Civilization}
+\author{Gunnar Zarncke}
+\date{\today}
+
+\makeindex
+
+\begin{document}
+
+\frontmatter
+
+\input{frontmatter/titlepage}
+\input{frontmatter/dedication}
+\input{frontmatter/preface}
+\input{frontmatter/executive-overview}
+\input{frontmatter/roadmap}
+\input{frontmatter/acknowledgements}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+\input{parts/part01-reframing}
+\input{parts/part02-agents-boundaries}
+\input{parts/part03-capability-growth}
+\input{parts/part04-value-bundles}
+\input{parts/part05-goal-inference}
+\input{parts/part06-correction-channels}
+\input{parts/part07-successors}
+\input{parts/part08-attractor-basins}
+\input{parts/part09-adversarial-measurement}
+\input{parts/part10-civilizational-limit}
+
+\appendix
+\input{appendices/appA-notation}
+\input{appendices/appB-worked-example-agent-boundary}
+\input{appendices/appC-value-bundle-inference}
+\input{appendices/appD-correction-channel-audit}
+\input{appendices/appE-successor-certification}
+\input{appendices/appF-glossary}
+\input{appendices/appG-safety-case-template}
+\input{appendices/appH-research-program}
+
+\backmatter
+\printbibliography
+\printindex
+
+\end{document}

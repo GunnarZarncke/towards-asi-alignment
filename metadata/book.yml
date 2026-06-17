@@ -1,0 +1,278 @@
+title: "Towards Superintelligence Alignments"
+subtitle: "Boundaries, Value Bundles, and the Correction of Civilization"
+author: "Gunnar Zarncke"
+status: scaffold
+milestone: first
+word_target_total: 350000
+
+chapters:
+  ch01:
+    title: "The Wrong Object of Alignment"
+    status: stub
+    word_target: 7000
+    formal_density: low
+    reviewer_needed: [alignment, governance]
+  ch02:
+    title: "From Artificial Intelligence to Artificial Civilization"
+    status: stub
+    word_target: 7000
+    formal_density: low
+    reviewer_needed: [alignment, governance]
+  ch03:
+    title: "Alignment as a Dynamical Guarantee"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, dynamical-systems]
+  ch04:
+    title: "Why Fixed Values Are the Wrong Target"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment, philosophy]
+  ch05:
+    title: "What Is an Agent Without Anthropomorphism?"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, information-theory]
+  ch06:
+    title: "Finding the Boundary"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, information-theory]
+  ch07:
+    title: "Agents That Grow, Split, and Merge"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment]
+  ch08:
+    title: "The Real Agent May Be Composite"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch09:
+    title: "Agency Under Strategic Opacity"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, game-theory]
+  ch10:
+    title: "Measuring Capability Without Task Ontology"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, information-theory]
+  ch11:
+    title: "Capability Growth Is Boundary Expansion"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment]
+  ch12:
+    title: "The Coordination Bottleneck"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment, economics]
+  ch13:
+    title: "When Intelligence Deepens Misalignment"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment]
+  ch14:
+    title: "Values Are Compressed Control Signals"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [neuroscience, alignment]
+  ch15:
+    title: "The Value-Bundle Model"
+    status: stub
+    word_target: 9000
+    formal_density: high
+    reviewer_needed: [neuroscience, alignment]
+  ch16:
+    title: "Why Low Dimensionality Makes Value Learning Possible"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, information-theory]
+  ch17:
+    title: "Bearers: What Values Apply To"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [philosophy, alignment]
+  ch18:
+    title: "Tradeoffs and Bundle Geometry"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, mathematics]
+  ch19:
+    title: "From Reward Inference to Bundle Inference"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment]
+  ch20:
+    title: "The Compression Test for Intention"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, information-theory]
+  ch21:
+    title: "Inferring Goal Transport"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment]
+  ch22:
+    title: "Semantic, Bundle, Bearer, and Correction Transport"
+    status: stub
+    word_target: 9000
+    formal_density: high
+    reviewer_needed: [alignment, information-theory]
+  ch23:
+    title: "Correction Is a Causal Channel"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch24:
+    title: "Correction-Channel Integrity"
+    status: stub
+    word_target: 9000
+    formal_density: high
+    reviewer_needed: [information-theory, control-theory]
+  ch25:
+    title: "From Obedience to Extrapolative Correction"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch26:
+    title: "Manipulation, Domestication, and False Consent"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch27:
+    title: "Successor Creation as the Central Alignment Test"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment]
+  ch28:
+    title: "Conserved Properties Across Successors"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, information-theory]
+  ch29:
+    title: "Better Self-Modeling Can Be Worse"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment, philosophy]
+  ch30:
+    title: "Certification Without Construction"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch31:
+    title: "Alignment Is Selected or Destroyed by Its Environment"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch32:
+    title: "Cooperation, Privacy, and Opacity"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment, game-theory]
+  ch33:
+    title: "Percolation of Cooperation"
+    status: stub
+    word_target: 7000
+    formal_density: high
+    reviewer_needed: [alignment, dynamical-systems]
+  ch34:
+    title: "Parasites in the Correction System"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch35:
+    title: "The Alignment Attractor"
+    status: stub
+    word_target: 8000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch36:
+    title: "Passive Observation Is Not Enough"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment]
+  ch37:
+    title: "Detecting Goal Laundering"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment]
+  ch38:
+    title: "Multi-Scale Decomposition"
+    status: stub
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, information-theory]
+  ch39:
+    title: "Tripwires and Stop Conditions"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch40:
+    title: "A Safety Case for Superintelligence Alignment"
+    status: stub
+    word_target: 10000
+    formal_density: medium
+    reviewer_needed: [alignment, governance]
+  ch41:
+    title: "When Value Change Is the Thing at Stake"
+    status: stub
+    word_target: 7000
+    formal_density: low
+    reviewer_needed: [philosophy, alignment]
+  ch42:
+    title: "Merging With Artificial Entities"
+    status: stub
+    word_target: 7000
+    formal_density: low
+    reviewer_needed: [philosophy, alignment]
+  ch43:
+    title: "The End of Unconscious Value Drift"
+    status: stub
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [philosophy, neuroscience]
+  ch44:
+    title: "What Cannot Be Solved Technically"
+    status: stub
+    word_target: 7000
+    formal_density: low
+    reviewer_needed: [philosophy, governance]
+  ch45:
+    title: "Towards Superintelligence Alignments"
+    status: stub
+    word_target: 8000
+    formal_density: low
+    reviewer_needed: [alignment, governance]

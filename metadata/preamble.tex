@@ -1,0 +1,50 @@
+% Custom environments and book styling
+
+\usepackage{tcolorbox}
+
+\newtcolorbox{chapterthesis}{
+  colback=blue!5!white,
+  colframe=blue!50!black,
+  fonttitle=\bfseries,
+  title=Chapter Thesis
+}
+
+\newtcolorbox{decisionbox}{
+  colback=green!5!white,
+  colframe=green!50!black,
+  fonttitle=\bfseries,
+  title=Decision Relevance
+}
+
+\newtcolorbox{failurebox}{
+  colback=red!5!white,
+  colframe=red!50!black,
+  fonttitle=\bfseries,
+  title=Failure Mode
+}
+
+\newtcolorbox{assumptionbox}{
+  colback=orange!5!white,
+  colframe=orange!50!black,
+  fonttitle=\bfseries,
+  title=Assumption
+}
+
+\newtcolorbox{formalbox}{
+  colback=gray!5!white,
+  colframe=gray!50!black,
+  fonttitle=\bfseries,
+  title=Formal Model
+}
+
+\newtcolorbox{examplebox}{
+  colback=cyan!5!white,
+  colframe=cyan!50!black,
+  fonttitle=\bfseries,
+  title=Worked Example
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{assumption}{Assumption}[chapter]
+\newtheorem{claim}{Claim}[chapter]
