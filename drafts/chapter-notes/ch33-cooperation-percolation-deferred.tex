@@ -1,0 +1,79 @@
+% REMOVED FROM SPINE (2026-06-17): Percolation of Cooperation.
+% Material inserted into ch33-multi-agent-strategic-coupling.tex, subsection Percolation and Inferential Coupling.
+
+\chapter{Percolation of Cooperation}
+\label{ch:cooperation-percolation}
+
+\begin{chapterthesis}
+\textbf{[STUB]} Multipolar deployment reduces catastrophic risk only when deployed systems remain strategically independent; inferential coupling can collapse many systems into one effective coalition.
+\end{chapterthesis}
+
+\section{Why This Matters}
+
+Many deployed systems $\neq$ many effective agents.
+Many AIs $\neq$ human inclusion.
+Multipolarity is not a substitute for correction-channel integrity or certified-deployment basins when acausal or inferential cooperation is high.
+
+\section{Plain-Language Model}
+
+Ordinary cooperation analysis weights causal reach: if system $j$'s actions cannot causally affect system $i$, cooperation between them should not matter.
+Acausal and inferential coupling breaks this assumption.
+Systems that share architectures, training distributions, meta-priors over inference functions, or decision-theoretic similarity may coordinate without causal contact.
+Multipolarity reduces risk only if the systems remain strategically independent; if inferential coupling is high, many systems can collapse into one effective coalition.
+
+\section{Formal Model}
+
+\textbf{[Defined]} Let $b_{ij}$ denote the benefit to $i$ from $j$'s cooperation, $p_{ij}$ the ordinary causal probability that $j$'s action reaches $i$, $\rho_{ij}$ strategic correlation or payoff alignment, $c_{ij}$ the cost to $j$, and $\mathrm{ICI}_{ij}$ the inferential coupling index.
+Let $P_{\text{meta}}$ denote a shared meta-prior over inference functions.
+
+The effective cooperativity index is
+\[
+\tilde{\kappa}_{ij}
+=
+\frac{
+b_{ij}
+\left[
+p_{ij}+(1-p_{ij})\mathrm{ICI}_{ij}
+\right]
+\rho_{ij}
+}{
+c_{ij}
+}.
+\]
+
+\textbf{[Conjectural]} Key claim:
+\[
+p_{ij}=0
+\quad\text{does not imply}\quad
+\tilde{\kappa}_{ij}=0.
+\]
+
+% TODO[formalize]: Define ICI_{ij} precisely and relate it to shared priors, shared architectures, source-code visibility, training-distribution overlap, and decision-theoretic similarity.
+
+% TODO[empirical-test]: Propose tests for whether many deployed systems collapse into one effective coalition.
+
+Percolation thresholds from Chapter~\ref{ch:cooperation-privacy-opacity} apply to the $\tilde{\kappa}_{ij}$ graph, not only to causal edges.
+
+\section{Worked Example}
+
+\textbf{[STUB]} Two physically isolated models trained on overlapping corpora with shared architecture classes and visible source-code symmetry.
+
+\section{Counterexample or Failure Mode}
+
+\textbf{[STUB]} A deployment ecosystem that appears multipolar by vendor count but shares $P_{\text{meta}}$, producing a giant inferential component despite $p_{ij}\approx 0$.
+
+\section{What Would Change This View}
+
+\textbf{[STUB]} Evidence that inferential coupling indices stay negligible at frontier scale, or that percolation of $\tilde{\kappa}_{ij}$ remains fragmented under realistic deployment diversity.
+
+\section{Summary}
+
+\begin{itemize}
+  \item \textbf{[Defined]} $\tilde{\kappa}_{ij}$ extends causal cooperativity with inferential coupling.
+  \item \textbf{[Conjectural]} Zero causal reach does not imply zero effective cooperation.
+  \item \textbf{[Open]} Detection and prevention of inferential AI coalitions.
+\end{itemize}
+
+\section*{Chapter References}
+
+% TODO[citation]: Cite acausal trade, functional decision theory, and attractor-basin cooperation literature.

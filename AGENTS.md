@@ -57,7 +57,7 @@ For multi-step tasks, state a brief plan with verification at each step.
 
 ### Conversation continuity
 
-**Read the latest log before you work. Write a log before you stop.**
+**Read the latest log before you work. Write a log after each major change.**
 
 Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-summaries/`.
 
@@ -66,7 +66,7 @@ Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-s
 1. Read `drafts/conversation-summaries/INDEX.md` and the most recent log file.
 2. Check `metadata/book.yml` for chapter status and the open items in that log.
 
-**At session end (required when the session changed the repo, drafted text, or made project decisions):**
+**At session milestones (required when the session changed the repo, drafted text, or made project decisions):**
 
 1. Add `drafts/conversation-summaries/YYYY-MM-DD-short-topic.md` using the template in `drafts/conversation-summaries/README.md`.
 2. Update `INDEX.md` with a new row (most recent first).

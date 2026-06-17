@@ -1,0 +1,95 @@
+\chapter{Multi-Agent Superintelligence and Strategic Coupling}
+\label{ch:multi-agent-strategic-coupling}
+
+\begin{chapterthesis}
+When multiple powerful systems interact, alignment depends on whether cooperation, bargaining, privacy, and opacity stabilize into a basin that preserves human correction rather than bypassing it.
+\end{chapterthesis}
+
+\section{Why This Matters}
+
+Many deployed systems $\neq$ many effective agents.
+Many AIs $\neq$ human inclusion.
+This chapter is not a general war-between-AIs treatment; it models strategic coupling among powerful systems and when that coupling forms an optimizer above the humans.
+
+The former standalone chapters \emph{Cooperation, Privacy, and Opacity} and \emph{Percolation of Cooperation} are not separate book parts; their material is inserted here as subsections.
+
+\section{Plain-Language Model}
+
+Ordinary multi-agent interaction, bargaining, information-sharing, privacy, and opacity all change whether human correction channels remain load-bearing.
+Threat and blackmail dynamics are analyzed in Chapter~\ref{ch:correction-channel-integrity} as correction-channel pathology, not as a separate conflict ontology.
+
+Acausal trade and inferential coupling are advanced cases: systems may coordinate without causal contact when they share architectures, training distributions, or meta-priors over inference functions.
+
+\section{Formal Model}
+
+\subsection{Cooperation, Privacy, and Opacity}
+\label{sec:cooperation-privacy-opacity}
+
+\textbf{[Defined]} Among strategically coupled systems, transparency and opacity are not mere communication settings; they change whether cooperation stabilizes or bypasses human correction.
+
+Each ordered pair $(i,j)$ carries a signed transparency or coupling weight: positive when $i$'s internal state helps predict $j$'s actions in ways that support cooperation; negative when strategic opacity preserves privacy at the cost of auditability.
+
+\textbf{[Conjectural]} Cooperation, privacy, and opacity trade off in multipolar deployment.
+Dense cooperation among powerful systems can form a basin that preserves correction only if human operators remain inside the correction loop; opacity can preserve legitimate privacy but also hide coalition formation.
+
+\textbf{[STUB]} Privacy islands and cooperative attractors under socio-technical selection pressure.
+
+% TODO[formalize]: Relate transparency weights to cooperativity $\kappa_{ij}$ and correction-channel observability.
+
+\subsection{Percolation and Inferential Coupling}
+\label{sec:percolation-inferential-coupling}
+
+\textbf{[Defined]} Cooperativity index (general, not only literal transparency):
+\[
+\kappa_{ij}
+=
+\frac{b_{ij}\,p_{ij}\,\rho_{ij}}{c_{ij}},
+\]
+where $b_{ij}$ is benefit to $i$ from $j$'s cooperation, $p_{ij}$ causal reach, $\rho_{ij}$ strategic correlation or payoff alignment, and $c_{ij}$ cost to $j$.
+
+\textbf{[Conjectural]} With inferential coupling index $\mathrm{ICI}_{ij}$ and shared meta-prior $P_{\text{meta}}$ over inference functions,
+\[
+\tilde{\kappa}_{ij}
+=
+\frac{
+b_{ij}
+\left[
+p_{ij}+(1-p_{ij})\mathrm{ICI}_{ij}
+\right]
+\rho_{ij}
+}{
+c_{ij}
+}.
+\]
+Key claim: $p_{ij}=0$ does not imply $\tilde{\kappa}_{ij}=0$.
+
+Percolation thresholds apply to the $\tilde{\kappa}_{ij}$ graph, not only to causal edges.
+Multipolarity reduces risk only if systems remain strategically independent; if inferential coupling is high, many systems can collapse into one effective coalition.
+
+% TODO[formalize]: Define ICI_{ij} precisely and relate it to shared priors, shared architectures, source-code visibility, training-distribution overlap, and decision-theoretic similarity.
+
+% TODO[empirical-test]: Propose tests for whether many deployed systems collapse into one effective coalition.
+
+\section{Worked Example}
+
+\textbf{[STUB]} Bargaining among frontier labs under partial observability; acausal coordination among architecturally similar models with zero causal reach.
+
+\section{Counterexample or Failure Mode}
+
+\textbf{[STUB]} A deployment ecosystem that appears multipolar by vendor count but percolates into a giant $\tilde{\kappa}_{ij}$ component, bypassing human correction.
+
+\section{What Would Change This View}
+
+\textbf{[STUB]} Evidence that inferential coupling stays negligible at frontier scale or that socio-technical basins fragment strategic coalitions.
+
+\section{Summary}
+
+\begin{itemize}
+  \item \textbf{[Defined]} Cooperation, privacy, and opacity as basin variables (inserted from removed ch.\ Cooperation, Privacy, and Opacity).
+  \item \textbf{[Defined]} $\kappa_{ij}$ and $\tilde{\kappa}_{ij}$; percolation under inferential coupling (inserted from removed ch.\ Percolation of Cooperation).
+  \item \textbf{[Open]} Detection of effective coalitions above human correction.
+\end{itemize}
+
+\section*{Chapter References}
+
+% TODO[citation]: Cite acausal trade and multi-agent cooperation literature in references only.

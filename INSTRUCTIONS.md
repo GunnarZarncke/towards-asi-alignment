@@ -12,7 +12,25 @@ The book must be self-contained. It must not assume the reader already knows the
 
 The book’s central thesis is:
 
-> Superintelligence alignment is not mainly the problem of installing a fixed human utility function into a machine. It is the problem of preserving a human-correctable value-update process across capability growth, ontology shift, successor creation, and socio-technical selection pressure.
+> Superintelligence alignment is the problem of preserving human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure, under the assumption that civilization still has enough correction capacity to participate in the process.
+
+The book’s organizing frame is:
+
+\[
+\text{superintelligence alignment}
+=
+\text{value-bundle transport}
++
+\text{bearer persistence}
++
+\text{correction-channel integrity}
++
+\text{successor stability}
++
+\text{socio-technical attractor control}.
+\]
+
+Do not let external doom arguments (Yudkowsky-style lethalities, Turchin-style failure maps, or general AGI catastrophe taxonomies) become a second organizing ontology. Use them only as adversarial checklists or coverage audits late in the manuscript.
 
 The book must explain this thesis at three levels:
 
@@ -93,12 +111,6 @@ The `context/*.pdf` copies are book-local snapshots for agents and offline readi
 | `status_regulation_as_free_energy_loops.pdf` | `extracts/status-regulation-as-free-energy-loops.md` | brain-to-values | `../brain-to-values/papers/status-regulation-loops/status_regulation_as_free_energy_loops.tex` | `../brain-to-values/papers/status-regulation-loops/status_regulation_as_free_energy_loops.pdf` |
 | `consciousness_agency_backbone.pdf` | `extracts/consciousness-agency-backbone.md` | brain-to-values | `../brain-to-values/papers/consciousness-agency-backbone/consciousness_agency_backbone.tex` | `../brain-to-values/papers/consciousness-agency-backbone/consciousness_agency_backbone.pdf` |
 | `Literature Review of Units of Caring, Pain & Suffering Measurement, and Aggregation.pdf` | `extracts/literature-review-of-units-of-caring-pain-suffering-measurement-and-aggregation.md` | — | *(no TeX in canonical repos; context-only)* | — |
-
-**Not in source map:** `context/Alignment Attractor.md` and `context/legible-alignment-messageing.md` are book-local notes, not paper builds from either repo.
-
-**Related papers not copied to `context/`:** `../agency-detect/docs/papers/applications-uad-loops/applications_uad_loops.tex` (empirical UAD/loop applications; no PDF in repo README at last check). `../brain-to-values/papers/consciousness-self-ref/consciousness-self-ref.tex` (consciousness self-reference; optional background).
-
-Rebuild commands: see `../agency-detect/docs/papers/README.md` and `../brain-to-values/papers/README.md`.
 
 ### 3.1 Project and platform framing
 
@@ -242,13 +254,14 @@ The book must connect capability growth to alignment pressure:
 |-----|---------|
 | `context/attractor-basins.pdf` | `context/extracts/attractor-basins.md` |
 
-Use the attractor-basin material as the basis for cooperation, privacy, parasite persistence, and institutional selection pressure.
+Use the attractor-basin material as the basis for multi-agent strategic coupling, parasite persistence, and institutional selection pressure. Cooperation, privacy, opacity, and percolation are **subsections of Chapter 33**, not separate chapters.
 
 Key concepts:
 
 * cooperativity index,
 * transparency versus opacity,
 * percolation of cooperation,
+* inferential coupling and acausal cooperativity,
 * privacy islands,
 * parasite-persistence thresholds,
 * host modeling capacity,
@@ -268,7 +281,7 @@ Translate “attractor basins” for general readers as:
 | `context/consciousness_agency_backbone.pdf` | `context/extracts/consciousness-agency-backbone.md` |
 | `context/construction_without_understanding.pdf` | `context/extracts/construction-without-understanding.md` |
 
-Use the metacognition and selfhood work for chapters on self-modeling, opacity, self-transparency, and successor risk.
+Use the metacognition and selfhood work for chapters on self-modeling, opacity, self-transparency, successor risk, and bearer persistence (Chapter 43).
 
 Key concepts:
 
@@ -308,20 +321,43 @@ Each chapter should make clear:
 
 ## 4. Book Architecture
 
-Use the full structure below.
+Use the full structure below: **44 chapters** in **10 parts**.
 
-The manuscript must be divided into ten parts:
+The manuscript should be divided into ten parts:
 
-1. The Alignment Problem Reframed
-2. Agents, Boundaries, and Real Optimizers
-3. Capability Growth and Competence
-4. Human Values as Bundle Geometry
-5. Goal Inference
-6. Correction Channels
-7. Successors, Reproduction, and Continuity
-8. Attractor Basins and Socio-Technical Selection
-9. Adversarial Measurement and Practical Guarantees
-10. The Philosophical and Civilizational Limit
+1. The Alignment Problem Reframed (chapters 1–5)
+2. Agents, Boundaries, and Real Optimizers (6–10)
+3. Capability Growth and Competence (11–14)
+4. Human Values as Bundle Geometry (15–19)
+5. Goal Inference (20–23)
+6. Correction Channels (24–27)
+7. Successors, Reproduction, and Continuity (28–31)
+8. Attractor Basins and Socio-Technical Selection (32–35)
+9. Safety Cases, Adversaries, and Open Cruxes (36–40)
+10. The Philosophical and Civilizational Limit (41–44)
+
+### 4.1 Structural consolidation rules
+
+Do **not** create separate chapters for:
+
+* AI--AI conflict / war between AIs,
+* blackmail or bargaining (fold into correction-channel integrity, Chapter 25),
+* paternalism (fold into value-bundle tradeoffs, Chapter 19),
+* general bug/virus/cyber failure taxonomies (scope out in Chapter 5),
+* Turchin-style catastrophe families as book parts (coverage audit only in Chapter 5),
+* Yudkowsky-style lethalities as book parts (stress-test checklist only in Chapter 40).
+
+**Removed from spine; material inserted elsewhere:**
+
+| Former standalone chapter | Inserted into |
+| ------------------------- | ------------- |
+| Cooperation, Privacy, and Opacity | Ch 33, subsection |
+| Percolation of Cooperation | Ch 33, subsection |
+| Tripwires and Stop Conditions | deferred (`drafts/chapter-notes/`) |
+| Merging With Artificial Entities | Ch 43, section |
+| What Cannot Be Solved Technically | Ch 43, section |
+
+Deferred originals live in `drafts/chapter-notes/*-deferred.tex` for reference only.
 
 Each chapter must contain:
 
@@ -358,6 +394,8 @@ The overview must include:
 6. A chapter roadmap.
 7. A concise account of what the book tries to prove or establish.
 8. A concise account of what the book does not claim to prove.
+9. How the book handles external doom arguments (Yudkowsky lethalities as late stress-test only).
+10. Scope and out-of-scope boundaries (correction-capacity assumption; bugs/late cosmic pathologies mostly out of scope).
 
 The overview must distinguish three levels of claim.
 
@@ -497,90 +535,143 @@ A successor is any system created, copied, delegated to, fine-tuned, empowered, 
 
 An alignment basin is a self-stabilizing region of system dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure.
 
-### 6.12 Adversarial measurement
+### 6.12 Pivotal process
+
+A pivotal process is a socio-technical basin transition from a race basin to a certified-deployment basin:
+$\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$.
+The manuscript does not concede that a unilateral pivotal act is necessary; it concedes only that some basin-shifting transition is necessary before unsafe superintelligence deployment.
+
+### 6.13 Adversarial measurement
 
 Adversarial measurement is the attempt to infer agency, goals, opacity, and successor risk when the system may benefit from confusing the measurement process.
+
+### 6.14 Correction-capacity assumption
+
+Let $C_{\text{corr}}^{\text{society}}(t_0)$ denote society's institutional, epistemic, and practical capacity to notice, evaluate, and constrain frontier systems. The framework assumes $C_{\text{corr}}^{\text{society}}(t_0) > \theta$. If that capacity has already collapsed, later alignment theory may arrive too late.
+
+### 6.15 Coerced correction
+
+Legitimate correction-channel integrity excludes signals produced under existential threat, addiction, dependency, hostage-taking, or institutional capture:
+
+\[
+\mathrm{CCI}_{\text{legit}}
+=
+\mathrm{CCI}
+-
+\lambda_C C_{\text{coercion}}
+-
+\lambda_D D_{\text{dependency}}
+-
+\lambda_M M_{\text{manipulation}}.
+\]
+
+### 6.16 Paternalism boundary
+
+A system can increase care while destroying autonomy, agency, or future correction capacity:
+
+\[
+\Delta B_{\text{care}}>0
+\quad\text{but}\quad
+\Delta B_{\text{autonomy}},\;\Delta B_{\text{agency}},\;\Delta C_{\text{corr}}<0.
+\]
+
+### 6.17 Cooperativity index
+
+For strategically coupled systems $(i,j)$:
+
+\[
+\kappa_{ij}=\frac{b_{ij}\,p_{ij}\,\rho_{ij}}{c_{ij}},
+\qquad
+\tilde{\kappa}_{ij}
+=
+\frac{b_{ij}\,[p_{ij}+(1-p_{ij})\mathrm{ICI}_{ij}]\,\rho_{ij}}{c_{ij}}.
+\]
+
+Key claim: $p_{ij}=0$ does not imply $\tilde{\kappa}_{ij}=0$.
 
 ---
 
 ## 7. Required Chapter List
 
-Use the following chapters.
+Use the following **44 chapters**. File names follow `chapters/chNN-slug.tex`; chapter numbers must match include order.
 
 ### Part I. The Alignment Problem Reframed
 
-1. The Wrong Object of Alignment
-2. From Artificial Intelligence to Artificial Civilization
-3. Alignment as a Dynamical Guarantee
-4. Why Fixed Values Are the Wrong Target
+1. The Wrong Object of Alignment — `ch01-wrong-object.tex`
+2. From Artificial Intelligence to Artificial Civilization — `ch02-artificial-civilization.tex`
+3. Alignment as a Dynamical Guarantee — `ch03-dynamical-guarantee.tex`
+4. Why Fixed Values Are the Wrong Target — `ch04-fixed-values-wrong-target.tex`
+5. Assumptions, Scope, and Failure Coverage — `ch05-assumptions-scope-failure-coverage.tex`
+
+Chapter 5 defines scope, the correction-capacity assumption $C_{\text{corr}}^{\text{society}}(t_0)>\theta$, and a Turchin coverage audit (audit only, not book structure).
 
 ### Part II. Agents, Boundaries, and Real Optimizers
 
-5. What Is an Agent Without Anthropomorphism?
-6. Finding the Boundary
-7. Agents That Grow, Split, and Merge
-8. The Real Agent May Be Composite
-9. Agency Under Strategic Opacity
+6. What Is an Agent Without Anthropomorphism? — `ch06-agent-without-anthropomorphism.tex`
+7. Finding the Boundary — `ch07-finding-boundary.tex`
+8. Agents That Grow, Split, and Merge — `ch08-grow-split-merge.tex`
+9. The Real Agent May Be Composite — `ch09-composite-agent.tex`
+10. Agency Under Strategic Opacity — `ch10-strategic-opacity.tex`
 
 ### Part III. Capability Growth and Competence
 
-10. Measuring Capability Without Task Ontology
-11. Capability Growth Is Boundary Expansion
-12. The Coordination Bottleneck
-13. When Intelligence Deepens Misalignment
+11. Measuring Capability Without Task Ontology — `ch11-capability-without-task-ontology.tex`
+12. Capability Growth Is Boundary Expansion — `ch12-boundary-expansion.tex`
+13. The Coordination Bottleneck — `ch13-coordination-bottleneck.tex`
+14. When Intelligence Deepens Misalignment — `ch14-intelligence-deepens-misalignment.tex`
 
 ### Part IV. Human Values as Bundle Geometry
 
-14. Values Are Compressed Control Signals
-15. The Value-Bundle Model
-16. Why Low Dimensionality Makes Value Learning Possible
-17. Bearers: What Values Apply To
-18. Tradeoffs and Bundle Geometry
+15. Values Are Compressed Control Signals — `ch15-values-compressed-control.tex`
+16. The Value-Bundle Model — `ch16-value-bundle-model.tex`
+17. Why Low Dimensionality Makes Value Learning Possible — `ch17-low-dimensional-value-learning.tex`
+18. Bearers: What Values Apply To — `ch18-bearer-maps.tex`
+19. Tradeoffs and Bundle Geometry — `ch19-tradeoffs-bundle-geometry.tex` (includes **The Paternalism Boundary**)
 
 ### Part V. Goal Inference
 
-19. From Reward Inference to Bundle Inference
-20. The Compression Test for Intention
-21. Inferring Goal Transport
-22. Semantic, Bundle, Bearer, and Correction Transport
+20. From Reward Inference to Bundle Inference — `ch20-reward-to-bundle-inference.tex`
+21. The Compression Test for Intention — `ch21-compression-test-intention.tex`
+22. Inferring Goal Transport — `ch22-goal-transport.tex`
+23. Semantic, Bundle, Bearer, and Correction Transport — `ch23-transport-types.tex`
 
 ### Part VI. Correction Channels
 
-23. Correction Is a Causal Channel
-24. Correction-Channel Integrity
-25. From Obedience to Extrapolative Correction
-26. Manipulation, Domestication, and False Consent
+24. Correction Is a Causal Channel — `ch24-correction-causal-channel.tex`
+25. Correction-Channel Integrity — `ch25-correction-channel-integrity.tex` (includes **Coerced Correction**)
+26. From Obedience to Extrapolative Correction — `ch26-extrapolative-correction.tex`
+27. Manipulation, Domestication, and False Consent — `ch27-manipulation-false-consent.tex`
 
 ### Part VII. Successors, Reproduction, and Continuity
 
-27. Successor Creation as the Central Alignment Test
-28. Conserved Properties Across Successors
-29. Better Self-Modeling Can Be Worse
-30. Certification Without Construction
+28. Successor Creation as the Central Alignment Test — `ch28-successor-central-test.tex`
+29. Conserved Properties Across Successors — `ch29-conserved-properties.tex`
+30. Better Self-Modeling Can Be Worse — `ch30-self-modeling-self-opacity.tex`
+31. Certification Without Construction — `ch31-certification-without-construction.tex` (AI halting footnote only)
 
 ### Part VIII. Attractor Basins and Socio-Technical Selection
 
-31. Alignment Is Selected or Destroyed by Its Environment
-32. Cooperation, Privacy, and Opacity
-33. Percolation of Cooperation
-34. Parasites in the Correction System
-35. The Alignment Attractor
+32. Alignment Is Selected or Destroyed by Its Environment — `ch32-selection-environment.tex`
+33. Multi-Agent Superintelligence and Strategic Coupling — `ch33-multi-agent-strategic-coupling.tex` (inserts **Cooperation, Privacy, and Opacity** and **Percolation of Cooperation** as subsections)
+34. Parasites in the Correction System — `ch34-parasites-correction-system.tex`
+35. The Alignment Attractor — `ch35-alignment-attractor.tex` (pivotal process: $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$)
 
-### Part IX. Adversarial Measurement and Practical Guarantees
+### Part IX. Safety Cases, Adversaries, and Open Cruxes
 
-36. Passive Observation Is Not Enough
-37. Detecting Goal Laundering
-38. Multi-Scale Decomposition
-39. Tripwires and Stop Conditions
-40. A Safety Case for Superintelligence Alignment
+36. Passive Observation Is Not Enough — `ch36-passive-observation-not-enough.tex`
+37. Detecting Goal Laundering — `ch37-goal-laundering.tex`
+38. Multi-Scale Decomposition — `ch38-multiscale-decomposition.tex`
+39. A Safety Case for Superintelligence Alignment — `ch39-safety-case.tex`
+40. Lethality Stress Test and Open Issues — `ch40-lethality-stress-test-open-issues.tex`
+
+Yudkowsky's List of Lethalities appears **only in Chapter 40**, as an adversarial checklist---not as the organizing frame.
 
 ### Part X. The Philosophical and Civilizational Limit
 
-41. When Value Change Is the Thing at Stake
-42. Merging With Artificial Entities
-43. The End of Unconscious Value Drift
-44. What Cannot Be Solved Technically
-45. Towards Superintelligence Alignments
+41. When Value Change Is the Thing at Stake — `ch41-value-change-at-stake.tex`
+42. The End of Unconscious Value Drift — `ch42-unconscious-value-drift.tex`
+43. The Bearers of Value — `ch43-bearers-of-value.tex` (inserts **Merging With Artificial Entities** and **What Cannot Be Solved Technically** as sections)
+44. Towards Superintelligence Alignments — `ch44-towards-alignments.tex`
 
 ---
 
@@ -632,47 +723,46 @@ towards-superintelligence-alignments/
 │   ├── ch02-artificial-civilization.tex
 │   ├── ch03-dynamical-guarantee.tex
 │   ├── ch04-fixed-values-wrong-target.tex
-│   ├── ch05-agent-without-anthropomorphism.tex
-│   ├── ch06-finding-boundary.tex
-│   ├── ch07-grow-split-merge.tex
-│   ├── ch08-composite-agent.tex
-│   ├── ch09-strategic-opacity.tex
-│   ├── ch10-capability-without-task-ontology.tex
-│   ├── ch11-boundary-expansion.tex
-│   ├── ch12-coordination-bottleneck.tex
-│   ├── ch13-intelligence-deepens-misalignment.tex
-│   ├── ch14-values-compressed-control.tex
-│   ├── ch15-value-bundle-model.tex
-│   ├── ch16-low-dimensional-value-learning.tex
-│   ├── ch17-bearer-maps.tex
-│   ├── ch18-tradeoffs-bundle-geometry.tex
-│   ├── ch19-reward-to-bundle-inference.tex
-│   ├── ch20-compression-test-intention.tex
-│   ├── ch21-goal-transport.tex
-│   ├── ch22-transport-types.tex
-│   ├── ch23-correction-causal-channel.tex
-│   ├── ch24-correction-channel-integrity.tex
-│   ├── ch25-extrapolative-correction.tex
-│   ├── ch26-manipulation-false-consent.tex
-│   ├── ch27-successor-central-test.tex
-│   ├── ch28-conserved-properties.tex
-│   ├── ch29-self-modeling-self-opacity.tex
-│   ├── ch30-certification-without-construction.tex
-│   ├── ch31-selection-environment.tex
-│   ├── ch32-cooperation-privacy-opacity.tex
-│   ├── ch33-cooperation-percolation.tex
+│   ├── ch05-assumptions-scope-failure-coverage.tex
+│   ├── ch06-agent-without-anthropomorphism.tex
+│   ├── ch07-finding-boundary.tex
+│   ├── ch08-grow-split-merge.tex
+│   ├── ch09-composite-agent.tex
+│   ├── ch10-strategic-opacity.tex
+│   ├── ch11-capability-without-task-ontology.tex
+│   ├── ch12-boundary-expansion.tex
+│   ├── ch13-coordination-bottleneck.tex
+│   ├── ch14-intelligence-deepens-misalignment.tex
+│   ├── ch15-values-compressed-control.tex
+│   ├── ch16-value-bundle-model.tex
+│   ├── ch17-low-dimensional-value-learning.tex
+│   ├── ch18-bearer-maps.tex
+│   ├── ch19-tradeoffs-bundle-geometry.tex
+│   ├── ch20-reward-to-bundle-inference.tex
+│   ├── ch21-compression-test-intention.tex
+│   ├── ch22-goal-transport.tex
+│   ├── ch23-transport-types.tex
+│   ├── ch24-correction-causal-channel.tex
+│   ├── ch25-correction-channel-integrity.tex
+│   ├── ch26-extrapolative-correction.tex
+│   ├── ch27-manipulation-false-consent.tex
+│   ├── ch28-successor-central-test.tex
+│   ├── ch29-conserved-properties.tex
+│   ├── ch30-self-modeling-self-opacity.tex
+│   ├── ch31-certification-without-construction.tex
+│   ├── ch32-selection-environment.tex
+│   ├── ch33-multi-agent-strategic-coupling.tex
 │   ├── ch34-parasites-correction-system.tex
 │   ├── ch35-alignment-attractor.tex
 │   ├── ch36-passive-observation-not-enough.tex
 │   ├── ch37-goal-laundering.tex
 │   ├── ch38-multiscale-decomposition.tex
-│   ├── ch39-tripwires-stop-conditions.tex
-│   ├── ch40-safety-case.tex
+│   ├── ch39-safety-case.tex
+│   ├── ch40-lethality-stress-test-open-issues.tex
 │   ├── ch41-value-change-at-stake.tex
-│   ├── ch42-merging-artificial-entities.tex
-│   ├── ch43-unconscious-value-drift.tex
-│   ├── ch44-cannot-be-solved-technically.tex
-│   └── ch45-towards-alignments.tex
+│   ├── ch42-unconscious-value-drift.tex
+│   ├── ch43-bearers-of-value.tex
+│   └── ch44-towards-alignments.tex
 ├── appendices/
 │   ├── appA-notation.tex
 │   ├── appB-worked-example-agent-boundary.tex
@@ -708,7 +798,7 @@ towards-superintelligence-alignments/
 │   ├── wordcount.py
 │   └── make_chapter_stub.py
 ├── drafts/
-│   ├── chapter-notes/
+│   ├── chapter-notes/          # deferred chapter stubs (removed from spine)
 │   ├── rejected-fragments/
 │   └── conversation-summaries/
 ├── review/
@@ -790,6 +880,7 @@ Example:
 \input{chapters/ch02-artificial-civilization}
 \input{chapters/ch03-dynamical-guarantee}
 \input{chapters/ch04-fixed-values-wrong-target}
+\input{chapters/ch05-assumptions-scope-failure-coverage}
 ```
 
 ---
@@ -867,6 +958,14 @@ Maintain separate `.bib` files by source type:
 
 The agent must create a unified `main.bib` or include all files from `book.tex`.
 
+To populate or refresh bibliography entries from the source map (§3.0), run:
+
+```bash
+python3 scripts/import_source_map_refs.py
+```
+
+That script reads `.bib` files from `../agency-detect/docs/papers/` and `../brain-to-values/papers/`, merges manual entries from papers that use `\begin{thebibliography}`, deduplicates keys, and writes the categorized files under `references/`.
+
 Every chapter must include references from at least three categories where relevant:
 
 * AI alignment and agent foundations,
@@ -942,7 +1041,7 @@ chapters:
     reviewer_needed:
       - alignment
       - governance
-  ch24:
+  ch25:
     title: "Correction-Channel Integrity"
     status: "stub"
     word_target: 9000
@@ -1049,7 +1148,7 @@ Track every major claim with:
 
 **Claim:** The real target of alignment may be a composite socio-technical optimizer rather than an isolated AI model.
 
-**Chapter(s):** 1, 8, 31
+**Chapter(s):** 1, 9, 32
 
 **Status:** plausible, not proven
 
@@ -1083,7 +1182,7 @@ Use this format:
 
 **Assumption:** Human values have enough low-dimensional bundle structure to be approximated and transported.
 
-**Used in:** Chapters 14-22, 24-25, 40-45
+**Used in:** Chapters 15-23, 25-26, 40-44
 
 **Why needed:** Without some compressed structure, value learning and correction-channel modeling become sample-intractable.
 
@@ -1278,9 +1377,9 @@ The manuscript must maintain this conceptual progression:
 11. Successor creation is the central alignment test.
 12. Better self-modeling can worsen self-transparency.
 13. Local alignment can be destroyed by socio-technical selection pressure.
-14. Adversarial measurement is needed because advanced systems may obscure their real control locus.
-15. Technical systems can preserve the conditions for legitimate value change, but cannot fully decide what legitimate value change is.
-16. Society must consciously govern value-bundle change and possible human-AI merger, or those changes will occur unconsciously through markets and technology.
+14. Adversarial measurement is needed because advanced systems may obscure their real control locus (Chapters 36--40).
+15. Technical systems can preserve the conditions for legitimate value change, but cannot fully decide what legitimate value change is (Chapter 43).
+16. Society must consciously govern value-bundle change and bearer persistence through transformation (merger, upload, successors), or those changes will occur unconsciously through markets and technology.
 
 ---
 
@@ -1297,7 +1396,8 @@ Do not write the book as if:
 * “capability” is just benchmark performance,
 * “successor” means only explicit self-replication,
 * “CEV” is a final utility target rather than a correction process,
-* technical alignment can solve all civilizational questions.
+* technical alignment can solve all civilizational questions,
+* external doom maps (Turchin, Yudkowsky lethalities) define the book's chapter structure.
 
 Do not include the BITS or affective-module approach in the main line unless later instructed. It may be listed as a possible future appendix or model-organism branch, but not as a core chapter.
 
@@ -1356,7 +1456,7 @@ A chapter is complete only if:
 
 The book is complete only if:
 
-1. All 45 chapters exist and compile.
+1. All 44 chapters exist and compile.
 2. The executive overview states the full argument clearly.
 3. Every core term is defined in the glossary.
 4. Every major equation is introduced in prose.
@@ -1386,7 +1486,7 @@ Produce:
 2. Folder structure.
 3. `book.tex`.
 4. Part include files.
-5. Chapter stubs for all 45 chapters.
+5. Chapter stubs for all 44 chapters.
 6. Appendices stubs.
 7. Bibliography files.
 8. README.
@@ -1432,6 +1532,7 @@ This establishes the book’s foundation:
 * artificial civilization,
 * dynamical guarantees,
 * fixed values as wrong target,
+* assumptions, scope, and failure coverage,
 * agent definition,
 * boundary discovery,
 * growth/splitting/merging,
@@ -1477,11 +1578,9 @@ This completes:
 
 * successors,
 * certification,
-* attractor basins,
-* adversarial measurement,
-* safety cases,
-* value change,
-* human-AI merger,
+* attractor basins and multi-agent strategic coupling,
+* safety cases and lethality stress-test,
+* value change and bearer persistence,
 * philosophical limits.
 
 Commit:

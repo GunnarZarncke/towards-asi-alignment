@@ -23,7 +23,7 @@ REQUIRED = [
 ]
 
 PARTS = [f"parts/part{i:02d}-" for i in range(1, 11)]
-CHAPTER_COUNT = 45
+CHAPTER_COUNT = 44
 APPENDIX_COUNT = 8
 
 
