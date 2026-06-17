@@ -4,6 +4,10 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-18 | Session end: Chapters 8–10 drafts (Part II) | [2026-06-18-session-end-ch08-ch09-ch10-drafts.md](2026-06-18-session-end-ch08-ch09-ch10-drafts.md) |
+| 2026-06-18 | Chapter 10 strategic opacity draft | [2026-06-18-ch10-strategic-opacity-draft.md](2026-06-18-ch10-strategic-opacity-draft.md) |
+| 2026-06-18 | Chapter 9 composite agent draft | [2026-06-18-ch09-composite-agent-draft.md](2026-06-18-ch09-composite-agent-draft.md) |
+| 2026-06-18 | Chapter 8 grow split merge draft | [2026-06-18-ch08-grow-split-merge-draft.md](2026-06-18-ch08-grow-split-merge-draft.md) |
 | 2026-06-18 | Session end: Chapters 4, 6, 7 drafts | [2026-06-18-session-end-ch04-ch06-ch07-drafts.md](2026-06-18-session-end-ch04-ch06-ch07-drafts.md) |
 | 2026-06-18 | Chapter 7 finding boundary draft | [2026-06-18-ch07-finding-boundary-draft.md](2026-06-18-ch07-finding-boundary-draft.md) |
 | 2026-06-18 | Chapter 6 agent without anthropomorphism draft | [2026-06-18-ch06-agent-without-anthropomorphism-draft.md](2026-06-18-ch06-agent-without-anthropomorphism-draft.md) |
