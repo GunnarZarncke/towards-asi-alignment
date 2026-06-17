@@ -4,6 +4,11 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-18 | Session end: Chapters 4, 6, 7 drafts | [2026-06-18-session-end-ch04-ch06-ch07-drafts.md](2026-06-18-session-end-ch04-ch06-ch07-drafts.md) |
+| 2026-06-18 | Chapter 7 finding boundary draft | [2026-06-18-ch07-finding-boundary-draft.md](2026-06-18-ch07-finding-boundary-draft.md) |
+| 2026-06-18 | Chapter 6 agent without anthropomorphism draft | [2026-06-18-ch06-agent-without-anthropomorphism-draft.md](2026-06-18-ch06-agent-without-anthropomorphism-draft.md) |
+| 2026-06-18 | Chapter 4 fixed values draft | [2026-06-18-ch04-fixed-values-draft.md](2026-06-18-ch04-fixed-values-draft.md) |
+| 2026-06-17 | Chapter 40 lethality stress-test draft | [2026-06-17-ch40-lethality-stress-test-draft.md](2026-06-17-ch40-lethality-stress-test-draft.md) |
 | 2026-06-17 | Title alignment typo fix | [2026-06-17-title-alignment-fix.md](2026-06-17-title-alignment-fix.md) |
 | 2026-06-17 | Chapter 3 dynamical guarantee draft | [2026-06-17-ch03-dynamical-guarantee-draft.md](2026-06-17-ch03-dynamical-guarantee-draft.md) |
 | 2026-06-17 | Instructions redundancy + consistency cleanup | [2026-06-17-instructions-redundancy-cleanup.md](2026-06-17-instructions-redundancy-cleanup.md) |
