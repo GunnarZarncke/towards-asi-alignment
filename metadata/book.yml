@@ -8,13 +8,13 @@ word_target_total: 350000
 chapters:
   ch01:
     title: "The Wrong Object of Alignment"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: low
     reviewer_needed: [alignment, governance]
   ch02:
     title: "From Artificial Intelligence to Artificial Civilization"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: low
     reviewer_needed: [alignment, governance]
