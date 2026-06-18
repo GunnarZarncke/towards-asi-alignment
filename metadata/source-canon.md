@@ -10,6 +10,7 @@ source paths (the temporary `INSTRUCTIONS.md` writing brief only summarizes it).
 - `context/Alignment Attractor.md` — executive summary and platform framing
 - `context/legible-alignment-messageing.md` — legibility constraints for funders and policy-adjacent readers
 - `context/writing-style-gunnar.md` — author voice and calibration
+- `context/lw-references.md` — chapter-indexed curated LessWrong and external alignment references (URLs, summaries); consult when wiring chapter citations; not auto-imported into `.bib` (see `INSTRUCTIONS.md` §11)
 
 ## PDF extracts
 

@@ -2,7 +2,7 @@ title: "Towards Superintelligence Alignment"
 subtitle: "Boundaries, Value Bundles, and the Correction of Civilization"
 author: "Gunnar Zarncke"
 status: scaffold
-milestone: first
+milestone: third
 word_target_total: 350000
 
 chapters:
@@ -20,13 +20,13 @@ chapters:
     reviewer_needed: [alignment, governance]
   ch03:
     title: "Alignment as a Dynamical Guarantee"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, dynamical-systems]
   ch04:
     title: "Why Fixed Values Are the Wrong Target"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment, philosophy]
@@ -38,31 +38,31 @@ chapters:
     reviewer_needed: [alignment, governance]
   ch06:
     title: "What Is an Agent Without Anthropomorphism?"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, information-theory]
   ch07:
     title: "Finding the Boundary"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch08:
     title: "Agents That Grow, Split, and Merge"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment]
   ch09:
     title: "The Real Agent May Be Composite"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch10:
     title: "Agency Under Strategic Opacity"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, game-theory]
@@ -242,7 +242,7 @@ chapters:
     reviewer_needed: [alignment, governance]
   ch40:
     title: "Lethality Stress Test and Open Issues"
-    status: stub
+    status: draft
     word_target: 9000
     formal_density: medium
     reviewer_needed: [alignment, philosophy]

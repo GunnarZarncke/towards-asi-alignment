@@ -5,6 +5,9 @@ Reads .bib files referenced by canonical TeX papers in ../agency-detect and
 ../brain-to-values, deduplicates by citation key, categorizes entries, and
 writes references/*.bib for the book.
 
+Chapter-indexed LessWrong references in context/lw-references.md are NOT
+imported here; add those to references/*.bib manually (see INSTRUCTIONS.md §11).
+
 Run from repo root: python3 scripts/import_source_map_refs.py
 """
 

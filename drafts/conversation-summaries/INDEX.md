@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-18 | Session end: LW refs, roadmap removal, status sync | [2026-06-18-session-end-lw-refs-roadmap-status.md](2026-06-18-session-end-lw-refs-roadmap-status.md) |
 | 2026-06-18 | Session end: WWCTV sections + INSTRUCTIONS chapter structure | [2026-06-18-what-would-change-this-view-sections.md](2026-06-18-what-would-change-this-view-sections.md) |
 | 2026-06-18 | Session end: Chapters 8–10 drafts (Part II) | [2026-06-18-session-end-ch08-ch09-ch10-drafts.md](2026-06-18-session-end-ch08-ch09-ch10-drafts.md) |
 | 2026-06-18 | Chapter 10 strategic opacity draft | [2026-06-18-ch10-strategic-opacity-draft.md](2026-06-18-ch10-strategic-opacity-draft.md) |

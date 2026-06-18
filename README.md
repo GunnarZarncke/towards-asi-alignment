@@ -36,7 +36,7 @@ External doom taxonomies (Yudkowsky-style lethalities, Turchin-style failure map
 | Funders and policy-adjacent readers | Decision triggers, scope assumptions, legibility constraints |
 | Capable generalists | A self-contained map without prior project jargon |
 
-Body text introduces every central concept from first principles. Internal project names (e.g. "UAD") may appear only in references, not as explanatory shortcuts.
+Body text introduces every central concept from first principles. 
 
 ---
 
@@ -44,14 +44,14 @@ Body text introduces every central concept from first principles. Internal proje
 
 | Item | Status |
 |------|--------|
-| Milestone | **First** — scaffold complete |
+| Milestone | **Third** in progress — Parts I–II largely drafted (Ch. 5 partial) |
 | Structure | 10 parts, **44 chapters**, 8 appendices |
-| Chapters | All **stub** (see `metadata/book.yml`) |
+| Chapters | **10 drafted**, **1 partial** (Ch. 5), **33 stub** (see `metadata/book.yml`) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
 | PDF | Builds from `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
 | Word target | ~350k (see `metadata/book.yml`) |
 
-**Next milestone** (`INSTRUCTIONS.md` §25): preface, executive overview, roadmap, Chapters 1–2, appendices A and F.
+**Next milestone** (`INSTRUCTIONS.md` §25–26): finish Ch. 5; preface and executive overview still stubs; appendices A and F.
 
 For agent session continuity, see `drafts/conversation-summaries/INDEX.md`.
 
@@ -90,7 +90,7 @@ metadata/
 
 chapters/                   # ch01–ch44 (one .tex file per chapter)
 parts/                      # 10 part include files
-frontmatter/                # title page, executive overview, roadmap
+frontmatter/                # title page, introduction, executive overview
 appendices/                 # 8 appendix stubs
 references/                 # BibLaTeX by category (see below)
 tables/                     # chapter map, notation, artifacts
@@ -123,7 +123,7 @@ drafts/conversation-summaries/  # agent session logs
 | IX. Safety Cases, Adversaries, and Open Cruxes | 36–40 | Observation limits, goal laundering, safety case, lethality stress test |
 | X. The Philosophical and Civilizational Limit | 41–44 | Value change, drift, bearers, closing synthesis |
 
-Full titles and file names: `tables/chapter-map.tex`, `INSTRUCTIONS.md` §7, `metadata/book.yml`.
+Full titles and status: `metadata/book.yml` (source of truth), `tables/chapter-map.tex` (maintainer table; not in PDF).
 
 ---
 

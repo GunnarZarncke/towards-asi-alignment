@@ -99,6 +99,9 @@ intentional stance, attractor basins, construction/successor work). The
 `context/*.pdf` copies are book-local snapshots for agents and offline reading;
 rebuild from TeX when formulas or claims must be verified exactly.
 
+For chapter-indexed LessWrong and external alignment references, see
+`context/lw-references.md` (§11).
+
 ### 3.1 Project and platform framing
 
 **Sources:**
@@ -378,7 +381,7 @@ The overview must include:
 3. A diagram-in-words.
 4. A list of assumptions.
 5. A list of rejected simplifications.
-6. A chapter roadmap.
+6. A brief part-level overview (ten parts; no separate status table in the PDF---use `metadata/book.yml`).
 7. A concise account of what the book tries to prove or establish.
 8. A concise account of what the book does not claim to prove.
 9. How the book handles external doom arguments (Yudkowsky lethalities as late stress-test only).
@@ -688,7 +691,7 @@ towards-asi-alignment/
 ├── book.tex                     # root LaTeX file (includes everything)
 ├── build.sh, clean.sh, Makefile, latexmkrc
 ├── metadata/                    # book.yml, source-canon.md, ledgers, preamble.tex …
-├── frontmatter/                 # titlepage, preface, introduction, executive-overview, roadmap …
+├── frontmatter/                 # titlepage, preface, introduction, executive-overview …
 ├── parts/                       # part01-reframing.tex … part10-civilizational-limit.tex
 ├── chapters/                    # ch01-….tex … ch44-….tex
 ├── appendices/                  # appA-notation.tex … appH-research-program.tex
@@ -740,7 +743,6 @@ The root file should include:
 \input{frontmatter/preface}
 \input{frontmatter/introduction}
 \input{frontmatter/executive-overview}
-\input{frontmatter/roadmap}
 \input{frontmatter/acknowledgements}
 
 \mainmatter
@@ -865,6 +867,18 @@ python3 scripts/import_source_map_refs.py
 ```
 
 That script reads `.bib` files from `../agency-detect/docs/papers/` and `../brain-to-values/papers/`, merges manual entries from papers that use `\begin{thebibliography}`, deduplicates keys, and writes the categorized files under `references/`.
+
+### LessWrong and external alignment references
+
+**`context/lw-references.md`** is a chapter-indexed curated list of LessWrong and related forum posts (URLs, summaries, relevance notes). When wiring chapter references or choosing external citations for a draft, consult the entries for that chapter first.
+
+This file is **not** read by `import_source_map_refs.py`. To cite an entry in the manuscript:
+
+1. Check whether a BibLaTeX key already exists in `references/*.bib` (search by author/title).
+2. If missing, add a record to the appropriate category file (usually `references/external-alignment.bib`) with a stable citation key.
+3. Use `\autocite{key}` in the chapter body or Chapter References section.
+
+Keep `lw-references.md` human-edited in `context/`; update it when adding major external references to a chapter. Do not regenerate or overwrite it from scripts.
 
 Every chapter must include references from at least three categories where relevant:
 
@@ -1358,11 +1372,12 @@ Write:
 
 1. Preface.
 2. Executive overview.
-3. Roadmap.
-4. Chapter 1.
-5. Chapter 2.
-6. Appendix A: notation.
-7. Appendix F: glossary.
+3. Chapter 1.
+4. Chapter 2.
+5. Appendix A: notation.
+6. Appendix F: glossary.
+
+The standalone Roadmap frontmatter chapter was removed from the PDF; chapter status lives in `metadata/book.yml` and `tables/chapter-map.tex` (maintainer reference only).
 
 Commit:
 
