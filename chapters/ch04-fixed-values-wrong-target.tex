@@ -97,6 +97,7 @@ The same word can hide different update rules.
 
 Verbal values are compression artifacts.
 They carry signal, but they are lossy.
+This is why apparently simple instructions are dangerous to optimize directly: as Yudkowsky's hidden complexity of wishes argues, a short specification silently relies on a vast set of unstated constraints that a powerful optimizer is free to violate \autocite{yudkowsky2007wishes}.
 
 \subsection{Values as generative control structure}
 
@@ -187,6 +188,7 @@ Let $\Phi_k$ be the bearer map for bundle $B_k$:
 \]
 where $z_{\text{world}}$ is a representation of entities, states, and relations in the world.
 $\Phi_k(z)$ says how much the value bundle $B_k$ applies to $z$.
+Defining value over $z_{\text{world}}$ rather than over raw physical states is deliberate: it is Wentworth's pointers problem, the observation that human values are functions of latent variables inside a human world-model, so a system that fixes the values while drifting on the latents has changed what the values mean \autocite{wentworth2020pointers}.
 
 For example, the non-suffering bundle must answer: whose suffering counts?
 Adult humans?
@@ -410,6 +412,7 @@ should be part of the correction process, not a hidden implementation detail.
 One response to fixed-value failure is extrapolation.
 Do not satisfy what humans currently want.
 Satisfy what humans would want if they knew more, thought faster, were more coherent, and had more time to deliberate.
+This is Yudkowsky's coherent extrapolated volition, framed as an initial dynamic rather than a fixed objective \autocite{yudkowsky2011cevdynamic}; the danger this section identifies is collapsing that ongoing process into a one-shot prediction the system then optimizes.
 
 This is closer to the right target.
 But it has a dangerous strong form.
@@ -753,7 +756,7 @@ It is to prevent artificial optimization from destroying the conditions under wh
 
 \section*{Chapter References}
 
-This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; coherent extrapolated volition, corrigibility, and the difficulty of specifying human values \autocite{yudkowsky2004cev,soares2015corrigibility,russell2019human}; the value-bundle and bottleneck framing in the surrounding research program \autocite{zarncke2025loop-hub-value,zarncke2026value-bottleneck}; and broader traditions in moral and political philosophy \autocite{rawls1971,dewey1938logic,sen2009justice,anderson1993value}.
+This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; coherent extrapolated volition, corrigibility, and the difficulty of specifying human values \autocite{yudkowsky2004cev,soares2015corrigibility,russell2019human}; the fragility-of-value argument that motivates treating value structure as something a powerful optimizer can easily lose \autocite{yudkowsky2009valuefragile}; the value-bundle and bottleneck framing in the surrounding research program \autocite{zarncke2025loop-hub-value,zarncke2026value-bottleneck}; and broader traditions in moral and political philosophy \autocite{rawls1971,dewey1938logic,sen2009justice,anderson1993value}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

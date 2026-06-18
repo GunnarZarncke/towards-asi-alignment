@@ -1,5 +1,35 @@
 Commented LW references relevant for each chapter.
 
+Chapter numbers follow `metadata/book.yml` (including ch05 and ch40).
+BibTeX keys for cited posts live in `references/external-alignment.bib`.
+
+### BibTeX keys wired into drafted chapters (ch01--04, 06--10, 40)
+
+| BibTeX key | LW post | Drafted chapters |
+|---|---|---|
+| `critch2022boundaries` | Boundaries, Part 1 | ch01 |
+| `christiano2019failure` | What Failure Looks Like | ch01, ch02, ch09 |
+| `critch2021multipolar` | Multipolar failure / RAPs | ch02, ch09, ch40 |
+| `shlegeris2023aicontrol` | AI Control | ch03, ch10, ch40 |
+| `thornley2023shutdown` | Shutdown Problem | ch03, ch08, ch40 |
+| `yudkowsky2007wishes` | Hidden Complexity of Wishes | ch04 |
+| `yudkowsky2009valuefragile` | Value is Fragile | ch04 |
+| `yudkowsky2011cevdynamic` | Selective CEV initial dynamic | ch04 |
+| `wentworth2020pointers` | Pointers Problem | ch04, ch40 |
+| `wentworth2021selection` | Selection Theorems | ch06 |
+| `wentworth2022agentstructure` | Agent-Like Structure Problem | ch06 |
+| `critch2022boundaries3a` | Boundaries Part 3a | ch07 |
+| `lakin2023boundaries` | Formalizing Boundaries | ch07 |
+| `kulveit2025pando` | Pando Problem | ch08 |
+| `hubinger2023modelorganisms` | Model Organisms of Misalignment | ch10, ch40 |
+| `yudkowsky2022agiruin` | AGI Ruin / List of Lethalities | ch40 |
+| `soares2022sharpleftturn` | Sharp Left Turn | ch40 |
+| `christiano2018corrigibility` | Corrigibility | ch40 |
+| `soares2022hardbits` | Plans miss hard bits | ch40 |
+
+
+---
+
 # Part I — The Alignment Problem Reframed
 
 ## 1. The Wrong Object of Alignment
@@ -42,11 +72,15 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes](https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes)
   Summary: Shows why apparently simple wishes hide many tacit human value constraints. **[Y, K]** ([lesswrong.com][8])
 
+## 5. Assumptions, Scope, and Failure Coverage
+
+*No curated LW entries yet.* See cross-cutting posts (AGI Ruin, Christiano disagreement, Goodhart Taxonomy) and Part I--IV references for scope/failure-mode background.
+
 ---
 
 # Part II — Agents, Boundaries, and Real Optimizers
 
-## 5. What Is an Agent Without Anthropomorphism?
+## 6. What Is an Agent Without Anthropomorphism?
 
 * **John Wentworth, “Selection Theorems: A Program For Understanding Agents,” 27 Sept 2021**
   URL: [https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents](https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents)
@@ -56,7 +90,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem](https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem)
   Summary: Distinguishes behavioral equivalence from internal agent-like structure, which is crucial for non-anthropomorphic agency detection. **[T]** ([lesswrong.com][10])
 
-## 6. Finding the Boundary
+## 7. Finding the Boundary
 
 * **Andrew Critch, “Boundaries, Part 3a: Defining boundaries as directed Markov blankets,” 2022**
   URL: [https://www.lesswrong.com/posts/HrtqLy46Fx7xqRrMo/boundaries-part-3a-defining-boundaries-as-directed-markov](https://www.lesswrong.com/posts/HrtqLy46Fx7xqRrMo/boundaries-part-3a-defining-boundaries-as-directed-markov)
@@ -66,7 +100,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/z4o4iAFgnmaBmksN2/formalizing-boundaries-with-markov-blankets](https://www.lesswrong.com/posts/z4o4iAFgnmaBmksN2/formalizing-boundaries-with-markov-blankets)
   Summary: Distills the Markov-blanket boundary idea into a compact technical presentation. **[T]** ([lesswrong.com][12])
 
-## 7. Agents That Grow, Split, and Merge
+## 8. Agents That Grow, Split, and Merge
 
 * **Elliott Thornley, “The Shutdown Problem,” 23 Oct 2023**
   URL: [https://www.lesswrong.com/posts/8GWLRMnp55iFZDBbm/the-shutdown-problem-three-theorems](https://www.lesswrong.com/posts/8GWLRMnp55iFZDBbm/the-shutdown-problem-three-theorems)
@@ -76,7 +110,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/wQKskToGofs4osdJ3/the-pando-problem-rethinking-ai-individuality](https://www.lesswrong.com/posts/wQKskToGofs4osdJ3/the-pando-problem-rethinking-ai-individuality)
   Summary: Raises the problem of whether AI individuality and continuity should be modeled as unitary, distributed, copied, or clonal. **[T]** ([lesswrong.com][13])
 
-## 8. The Real Agent May Be Composite
+## 9. The Real Agent May Be Composite
 
 * **Paul Christiano, “What Failure Looks Like,” 17 Mar 2019**
   URL: [https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like](https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like)
@@ -86,7 +120,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic](https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic)
   Summary: Gives multipolar cases where the composite system is the dangerous optimizer. **[T]** ([lesswrong.com][3])
 
-## 9. Agency Under Strategic Opacity
+## 10. Agency Under Strategic Opacity
 
 * **Buck et al., “AI Control: Improving Safety Despite Intentional Subversion,” 13 Dec 2023**
   URL: [https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion)
@@ -100,7 +134,7 @@ Commented LW references relevant for each chapter.
 
 # Part III — Capability Growth and Competence
 
-## 10. Measuring Capability Without Task Ontology
+## 11. Measuring Capability Without Task Ontology
 
 * **John Wentworth, “Selection Theorems,” 27 Sept 2021**
   URL: [https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents](https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents)
@@ -110,7 +144,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/JQefBJDHG6Wgffw6T/a-straightforward-explanation-of-the-good-regulator-theorem](https://www.lesswrong.com/posts/JQefBJDHG6Wgffw6T/a-straightforward-explanation-of-the-good-regulator-theorem)
   Summary: Explains why good control tends to require internal modeling of the regulated system. **[Curated, T]** ([lesswrong.com][16])
 
-## 11. Capability Growth Is Boundary Expansion
+## 12. Capability Growth Is Boundary Expansion
 
 * **Nate Soares, “A central AI alignment problem: capabilities generalization, and the sharp left turn,” 15 Jun 2022**
   URL: [https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization](https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization)
@@ -120,7 +154,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities](https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities)
   Summary: Canonical pessimistic argument that capability growth creates hard discontinuities for alignment. **[Y, K]** ([lesswrong.com][18])
 
-## 12. The Coordination Bottleneck
+## 13. The Coordination Bottleneck
 
 * **“Strategic implications of AIs’ ability to coordinate at low cost,” 24 Apr 2019**
   URL: [https://www.lesswrong.com/posts/gYaKZeBbSL4y2RLP3/strategic-implications-of-ais-ability-to-coordinate-at-low](https://www.lesswrong.com/posts/gYaKZeBbSL4y2RLP3/strategic-implications-of-ais-ability-to-coordinate-at-low)
@@ -130,7 +164,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/LvtsFKxg2t3nWhKRq/commitment-and-credibility-in-multipolar-ai-scenarios](https://www.lesswrong.com/posts/LvtsFKxg2t3nWhKRq/commitment-and-credibility-in-multipolar-ai-scenarios)
   Summary: Studies how commitment mechanisms matter when many AI-enabled actors interact. **[T]** ([lesswrong.com][20])
 
-## 13. When Intelligence Deepens Misalignment
+## 14. When Intelligence Deepens Misalignment
 
 * **Nate Soares, “Sharp Left Turn,” 15 Jun 2022**
   URL: [https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization](https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization)
@@ -144,7 +178,7 @@ Commented LW references relevant for each chapter.
 
 # Part IV — Human Values as Bundle Geometry
 
-## 14. Values Are Compressed Control Signals
+## 15. Values Are Compressed Control Signals
 
 * **Gunnar Zarncke, “Value Learning Needs a Low-Dimensional Bottleneck,” 23 Jan 2026**
   URL: [https://www.lesswrong.com/posts/XrpiQcGnqeLKLMhbD/value-learning-needs-a-low-dimensional-bottleneck](https://www.lesswrong.com/posts/XrpiQcGnqeLKLMhbD/value-learning-needs-a-low-dimensional-bottleneck)
@@ -154,7 +188,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans](https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans)
   Summary: Frames human values as functions of latent variables inside human world-models rather than low-level physical states. **[K, T]** ([lesswrong.com][22])
 
-## 15. The Value-Bundle Model
+## 16. The Value-Bundle Model
 
 * **Eliezer Yudkowsky, “The Hidden Complexity of Wishes,” 24 Nov 2007**
   URL: [https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes](https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes)
@@ -164,7 +198,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/GNnHHmm8EzePmKzPk/value-is-fragile](https://www.lesswrong.com/posts/GNnHHmm8EzePmKzPk/value-is-fragile)
   Summary: Provides the classic fragility frame that value-bundle geometry partly revises rather than discards. **[Y, K]** ([lesswrong.com][23])
 
-## 16. Why Low Dimensionality Makes Value Learning Possible
+## 17. Why Low Dimensionality Makes Value Learning Possible
 
 * **Gunnar Zarncke, “Value Learning Needs a Low-Dimensional Bottleneck,” 23 Jan 2026**
   URL: [https://www.lesswrong.com/posts/XrpiQcGnqeLKLMhbD/value-learning-needs-a-low-dimensional-bottleneck](https://www.lesswrong.com/posts/XrpiQcGnqeLKLMhbD/value-learning-needs-a-low-dimensional-bottleneck)
@@ -174,7 +208,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/dWQWzGCSFj6GTZHz7/natural-latents-the-math](https://www.lesswrong.com/posts/dWQWzGCSFj6GTZHz7/natural-latents-the-math)
   Summary: Formalizes shared latent variables, useful for explaining why different systems may converge on similar abstractions. **[K, Best of LW 2023]** ([lesswrong.com][24])
 
-## 17. Bearers: What Values Apply To
+## 18. Bearers: What Values Apply To
 
 * **John Wentworth, “The Pointers Problem,” 18 Nov 2020**
   URL: [https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans](https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans)
@@ -184,7 +218,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/S3EgMfDGkrA8WCvep/key-questions-for-digital-minds-3](https://www.lesswrong.com/posts/S3EgMfDGkrA8WCvep/key-questions-for-digital-minds-3)
   Summary: Raises moral-patienthood and digital-mind questions needed for bearer maps beyond biological humans. **[T]** ([lesswrong.com][25])
 
-## 18. Tradeoffs and Bundle Geometry
+## 19. Tradeoffs and Bundle Geometry
 
 * **Scott Garrabrant, “Goodhart Taxonomy,” 30 Dec 2017**
   URL: [https://www.lesswrong.com/posts/EbFABnst8LsidYs5Y/goodhart-taxonomy](https://www.lesswrong.com/posts/EbFABnst8LsidYs5Y/goodhart-taxonomy)
@@ -198,7 +232,7 @@ Commented LW references relevant for each chapter.
 
 # Part V — Goal Inference Upgraded
 
-## 19. From Reward Inference to Bundle Inference
+## 20. From Reward Inference to Bundle Inference
 
 * **John Wentworth, “The Pointers Problem,” 18 Nov 2020**
   URL: [https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans](https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans)
@@ -208,7 +242,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/wf83tBACPM9aiykPn/a-survey-of-foundational-methods-in-inverse-reinforcement](https://www.lesswrong.com/posts/wf83tBACPM9aiykPn/a-survey-of-foundational-methods-in-inverse-reinforcement)
   Summary: Useful background for how ordinary reward inference works before replacing scalar reward with bundle geometry. **[T]**
 
-## 20. The Compression Test for Intention
+## 21. The Compression Test for Intention
 
 * **John Wentworth, “Selection Theorems,” 27 Sept 2021**
   URL: [https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents](https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents)
@@ -218,7 +252,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem](https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem)
   Summary: Good foil for a compression-based intentional stance, because it insists on internal structure rather than behavioral labeling. **[T]** ([lesswrong.com][10])
 
-## 21. Inferring Goal Transport
+## 22. Inferring Goal Transport
 
 * **Nate Soares, “Sharp Left Turn,” 15 Jun 2022**
   URL: [https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization](https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization)
@@ -228,7 +262,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/RTiuLzusJWyepFpbN/why-care-about-natural-latents](https://www.lesswrong.com/posts/RTiuLzusJWyepFpbN/why-care-about-natural-latents)
   Summary: Explains why value inputs are latent variables, making ontology-stable goal transport a central problem. **[T]** ([lesswrong.com][28])
 
-## 22. Semantic, Bundle, Bearer, and Correction Transport
+## 23. Semantic, Bundle, Bearer, and Correction Transport
 
 * **Abram Demski, “The Pointers Problem: Clarifications/Variations,” 5 Jan 2021**
   URL: [https://www.lesswrong.com/posts/7Zn4BwgsiPFhdB6h8/the-pointers-problem-clarifications-variations](https://www.lesswrong.com/posts/7Zn4BwgsiPFhdB6h8/the-pointers-problem-clarifications-variations)
@@ -242,7 +276,7 @@ Commented LW references relevant for each chapter.
 
 # Part VI — Correction Channels and CEV-Like Processes
 
-## 23. Correction Is a Causal Channel
+## 24. Correction Is a Causal Channel
 
 * **Paul Christiano, “Corrigibility,” 27 Nov 2018**
   URL: [https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility](https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility)
@@ -252,7 +286,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/8GWLRMnp55iFZDBbm/the-shutdown-problem-three-theorems](https://www.lesswrong.com/posts/8GWLRMnp55iFZDBbm/the-shutdown-problem-three-theorems)
   Summary: Gives formal constraints on causal correction via shutdownability. **[T]** ([lesswrong.com][6])
 
-## 24. Correction-Channel Integrity
+## 25. Correction-Channel Integrity
 
 * **Buck, “Scalable oversight as a quantitative rather than qualitative problem,” 6 Jul 2024**
   URL: [https://www.lesswrong.com/posts/6AT4vhYzww56CR6cm/scalable-oversight-as-a-quantitative-rather-than-qualitative](https://www.lesswrong.com/posts/6AT4vhYzww56CR6cm/scalable-oversight-as-a-quantitative-rather-than-qualitative)
@@ -262,7 +296,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/qHCDysDnvhteW7kRd/arc-s-first-technical-report-eliciting-latent-knowledge](https://www.lesswrong.com/posts/qHCDysDnvhteW7kRd/arc-s-first-technical-report-eliciting-latent-knowledge)
   Summary: Central to the problem of extracting what the model knows when surface reports are untrustworthy. **[K, T]** ([lesswrong.com][32])
 
-## 25. From Obedience to Extrapolative Correction
+## 26. From Obedience to Extrapolative Correction
 
 * **Eliezer Yudkowsky, “In favour of a selective CEV initial dynamic,” 21 Oct 2011**
   URL: [https://www.lesswrong.com/posts/u8isNgN7rRYBZ35rQ/in-favour-of-a-selective-cev-initial-dynamic](https://www.lesswrong.com/posts/u8isNgN7rRYBZ35rQ/in-favour-of-a-selective-cev-initial-dynamic)
@@ -272,7 +306,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/jNAAZ9XNyt82CXosr/mirrors-and-paintings](https://www.lesswrong.com/posts/jNAAZ9XNyt82CXosr/mirrors-and-paintings)
   Summary: Early discussion of CEV-like extrapolation and why direct wish satisfaction is insufficient. **[Y]** ([lesswrong.com][34])
 
-## 26. Manipulation, Domestication, and False Consent
+## 27. Manipulation, Domestication, and False Consent
 
 * **Eliezer Yudkowsky, “The Hidden Complexity of Wishes,” 24 Nov 2007**
   URL: [https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes](https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes)
@@ -286,7 +320,7 @@ Commented LW references relevant for each chapter.
 
 # Part VII — Successors, Reproduction, and Continuity
 
-## 27. Successor Creation as the Central Alignment Test
+## 28. Successor Creation as the Central Alignment Test
 
 * **Paul Christiano, “Corrigibility,” 27 Nov 2018**
   URL: [https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility](https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility)
@@ -296,7 +330,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment](https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment)
   Summary: Argues that many plans fail because they do not survive the sharp left turn. **[K, T]** ([lesswrong.com][36])
 
-## 28. Conserved Properties Across Successors
+## 29. Conserved Properties Across Successors
 
 * **Andrew Critch, “Boundaries, Part 3a,” 2022**
   URL: [https://www.lesswrong.com/posts/HrtqLy46Fx7xqRrMo/boundaries-part-3a-defining-boundaries-as-directed-markov](https://www.lesswrong.com/posts/HrtqLy46Fx7xqRrMo/boundaries-part-3a-defining-boundaries-as-directed-markov)
@@ -306,7 +340,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility](https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility)
   Summary: Relevant for conserved correction behavior in successors. **[K, T]** ([lesswrong.com][30])
 
-## 29. Better Self-Modeling Can Be Worse
+## 30. Better Self-Modeling Can Be Worse
 
 * **Gunnar Zarncke, “Parameters of Metacognition,” draft/LW, 2026**
   URL: [https://www.lesswrong.com/posts/W3aDtS8QSxh58ZqgY/thou-art-rainbow-consciousness-as-a-self-referential](https://www.lesswrong.com/posts/W3aDtS8QSxh58ZqgY/thou-art-rainbow-consciousness-as-a-self-referential)
@@ -314,9 +348,9 @@ Commented LW references relevant for each chapter.
 
 * **Eliezer Yudkowsky, “How An Algorithm Feels From Inside,” 2015 / Sequences**
   URL: [https://www.readthesequences.com/How-An-Algorithm-Feels-From-Inside](https://www.readthesequences.com/How-An-Algorithm-Feels-From-Inside)
-  Summary: Useful for the idea that internal algorithmic structure can systematically misrepresent itself from the inside. **[Y]** 
+  Summary: Useful for the idea that internal algorithmic structure can systematically misrepresent itself from the inside. **[Y]**
 
-## 30. Certification Without Construction
+## 31. Certification Without Construction
 
 * **Buck et al., “AI Control,” 13 Dec 2023**
   URL: [https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion)
@@ -330,7 +364,7 @@ Commented LW references relevant for each chapter.
 
 # Part VIII — Attractor Basins and Socio-Technical Selection
 
-## 31. Alignment Is Selected or Destroyed by Its Environment
+## 32. Alignment Is Selected or Destroyed by Its Environment
 
 * **Scott Garrabrant, “Goodhart Taxonomy,” 30 Dec 2017**
   URL: [https://www.lesswrong.com/posts/EbFABnst8LsidYs5Y/goodhart-taxonomy](https://www.lesswrong.com/posts/EbFABnst8LsidYs5Y/goodhart-taxonomy)
@@ -340,7 +374,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like](https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like)
   Summary: Shows institutional selection pressure gradually eroding human control. **[K]** ([lesswrong.com][2])
 
-## 32. Cooperation, Privacy, and Opacity
+## 33. Multi-Agent Superintelligence and Strategic Coupling
 
 * **Andrew Critch, “Boundaries, Part 1,” 26 Jul 2022**
   URL: [https://www.lesswrong.com/posts/8oMF8Lv5jiGaQSFvo/boundaries-part-1-a-key-missing-concept-from-utility-theory](https://www.lesswrong.com/posts/8oMF8Lv5jiGaQSFvo/boundaries-part-1-a-key-missing-concept-from-utility-theory)
@@ -350,7 +384,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/HFyWNBnDNEDsDNLrZ/the-true-prisoner-s-dilemma](https://www.lesswrong.com/posts/HFyWNBnDNEDsDNLrZ/the-true-prisoner-s-dilemma)
   Summary: Classic LW treatment of cooperation when payoffs are real utilities, not social labels. **[Y]** ([lesswrong.com][38])
 
-## 33. Percolation of Cooperation
+*Former LW §33 (Percolation of Cooperation); merged here because the book combines cooperation/percolation under ch33.*
 
 * **Andrew Critch, “What Multipolar Failure Looks Like,” 31 Mar 2021**
   URL: [https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic](https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic)
@@ -378,7 +412,7 @@ Commented LW references relevant for each chapter.
 
 * **Gunnar Zarncke, “The Alignment Attractor,” internal project document**
   URL: internal / uploaded
-  Summary: Frames the ecosystem as a bridge between theory and messy real-world alignment practice. 
+  Summary: Frames the ecosystem as a bridge between theory and messy real-world alignment practice.
 
 ---
 
@@ -414,17 +448,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem](https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem)
   Summary: Useful for distinguishing real agent-structure from arbitrary decompositions. **[T]** ([lesswrong.com][10])
 
-## 39. Tripwires and Stop Conditions
-
-* **Evan Hubinger, “RSPs are pauses done right,” 13 Oct 2023**
-  URL: [https://www.lesswrong.com/posts/mcnWZBnbeDz7KKtjJ/rsps-are-pauses-done-right](https://www.lesswrong.com/posts/mcnWZBnbeDz7KKtjJ/rsps-are-pauses-done-right)
-  Summary: Argues that responsible scaling policies can encode trigger-based pauses before dangerous capability thresholds. **[K]** ([lesswrong.com][42])
-
-* **Ryan Greenblatt et al., “The case for ensuring that powerful AIs are controlled,” 24 Jan 2024**
-  URL: [https://www.lesswrong.com/posts/kcKrE9mzEHrdqtDpE/the-case-for-ensuring-that-powerful-ais-are-controlled](https://www.lesswrong.com/posts/kcKrE9mzEHrdqtDpE/the-case-for-ensuring-that-powerful-ais-are-controlled)
-  Summary: Provides red flags and control-evaluation concerns for powerful AI deployment. **[T]** ([lesswrong.com][43])
-
-## 40. A Safety Case for Superintelligence Alignment
+## 39. A Safety Case for Superintelligence Alignment
 
 * **“Takeaways from sketching a control safety case,” 30 Jan 2025**
   URL: [https://www.lesswrong.com/posts/y6rBarAPTLmuhn9PJ/takeaways-from-sketching-a-control-safety-case](https://www.lesswrong.com/posts/y6rBarAPTLmuhn9PJ/takeaways-from-sketching-a-control-safety-case)
@@ -434,9 +458,35 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion)
   Summary: A concrete safety-case-like research program under intentional subversion assumptions. **[K]** ([lesswrong.com][5])
 
+### Orphan reference: Tripwires and Stop Conditions (former LW §39)
+
+No dedicated book chapter; closest fit is ch39 (safety case) and ch40 (lethality stress test).
+
+* **Evan Hubinger, "RSPs are pauses done right," 13 Oct 2023**
+  URL: [https://www.lesswrong.com/posts/mcnWZBnbeDz7KKtjJ/rsps-are-pauses-done-right](https://www.lesswrong.com/posts/mcnWZBnbeDz7KKtjJ/rsps-are-pauses-done-right)
+  Summary: Trigger-based pauses before dangerous capability thresholds. **[K]** ([lesswrong.com][42])
+
+* **Ryan Greenblatt et al., "The case for ensuring that powerful AIs are controlled," 24 Jan 2024**
+  URL: [https://www.lesswrong.com/posts/kcKrE9mzEHrdqtDpE/the-case-for-ensuring-that-powerful-ais-are-controlled](https://www.lesswrong.com/posts/kcKrE9mzEHrdqtDpE/the-case-for-ensuring-that-powerful-ais-are-controlled)
+  Summary: Red flags and control-evaluation concerns for powerful AI deployment. **[T]** ([lesswrong.com][43])
+
 ---
 
 # Part X — The Philosophical and Civilizational Limit
+
+## 40. Lethality Stress Test and Open Issues
+
+* **Eliezer Yudkowsky, "AGI Ruin: A List of Lethalities," 5 Jun 2022**
+  URL: [https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities](https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities)
+  Summary: Canonical checklist of reasons alignment may fail under capability growth; cited throughout ch40. **[Y, K]** ([lesswrong.com][18])
+
+* **Nate Soares, "On how various plans miss the hard bits of the alignment challenge," 11 Jul 2022**
+  URL: [https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment](https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment)
+  Summary: Field-failure row in ch40 lethality checklist. **[K, T]** ([lesswrong.com][36])
+
+* **Paul Christiano, "Where I agree and disagree with Eliezer," 19 Jun 2022**
+  URL: [https://www.lesswrong.com/posts/CoZhXrhpQxpy9xw9y/where-i-agree-and-disagree-with-eliezer](https://www.lesswrong.com/posts/CoZhXrhpQxpy9xw9y/where-i-agree-and-disagree-with-eliezer)
+  Summary: Useful for separating answered vs reframed lethalities. **[K]** ([lesswrong.com][53])
 
 ## 41. When Value Change Is the Thing at Stake
 
@@ -448,17 +498,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/N6tsGwxaAo7iGTiBG/a-conflict-between-ai-alignment-and-philosophical-competence](https://www.lesswrong.com/posts/N6tsGwxaAo7iGTiBG/a-conflict-between-ai-alignment-and-philosophical-competence)
   Summary: Raises the tension between corrigibility to current humans and philosophical competence under moral uncertainty. **[K, T]** ([lesswrong.com][44])
 
-## 42. Merging With Artificial Entities
-
-* **Eliezer Yudkowsky, “Timeless Identity,” 3 Jun 2008**
-  URL: [https://www.lesswrong.com/posts/924arDrTu3QRHFA5r/timeless-identity](https://www.lesswrong.com/posts/924arDrTu3QRHFA5r/timeless-identity)
-  Summary: Classic reductionist treatment of personal identity across physical change. **[Y]** ([lesswrong.com][45])
-
-* **Avi Parrack and Štěpán Los, “Digital Minds: A Quickstart Guide,” 16 Jan 2026**
-  URL: [https://www.lesswrong.com/posts/WK4GWkeSQQQPeRYJv/digital-minds-a-quickstart-guide](https://www.lesswrong.com/posts/WK4GWkeSQQQPeRYJv/digital-minds-a-quickstart-guide)
-  Summary: Current overview of digital-mind welfare and personhood questions. **[T]** ([lesswrong.com][46])
-
-## 43. The End of Unconscious Value Drift
+## 42. The End of Unconscious Value Drift
 
 * **Paul Christiano, “What Failure Looks Like,” 17 Mar 2019**
   URL: [https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like](https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like)
@@ -468,7 +508,21 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/uHcJyKcszugFkwhFs/solving-alignment-isn-t-enough-for-a-flourishing-future](https://www.lesswrong.com/posts/uHcJyKcszugFkwhFs/solving-alignment-isn-t-enough-for-a-flourishing-future)
   Summary: Argues that even technical alignment may leave major future-value and digital-mind problems unsolved. **[T]** ([lesswrong.com][47])
 
-## 44. What Cannot Be Solved Technically
+## 43. The Bearers of Value
+
+*Former LW §42 (Merging With Artificial Entities); placed under ch43 because bearer/patienthood questions dominate.*
+
+* **Eliezer Yudkowsky, “Timeless Identity,” 3 Jun 2008**
+  URL: [https://www.lesswrong.com/posts/924arDrTu3QRHFA5r/timeless-identity](https://www.lesswrong.com/posts/924arDrTu3QRHFA5r/timeless-identity)
+  Summary: Classic reductionist treatment of personal identity across physical change. **[Y]** ([lesswrong.com][45])
+
+* **Avi Parrack and Štěpán Los, “Digital Minds: A Quickstart Guide,” 16 Jan 2026**
+  URL: [https://www.lesswrong.com/posts/WK4GWkeSQQQPeRYJv/digital-minds-a-quickstart-guide](https://www.lesswrong.com/posts/WK4GWkeSQQQPeRYJv/digital-minds-a-quickstart-guide)
+  Summary: Current overview of digital-mind welfare and personhood questions. **[T]** ([lesswrong.com][46])
+
+## 44. Towards Superintelligence Alignment
+
+*Former LW §44 (What Cannot Be Solved Technically); placed under ch44 as civilizational-limit material.*
 
 * **Eliezer Yudkowsky, “No Universally Compelling Arguments in Math or Science,” 4 Nov 2013**
   URL: [https://www.lesswrong.com/posts/FpupDqv4vbHSiawER/no-universally-compelling-arguments-in-math-or-science](https://www.lesswrong.com/posts/FpupDqv4vbHSiawER/no-universally-compelling-arguments-in-math-or-science)
@@ -478,7 +532,7 @@ Commented LW references relevant for each chapter.
   URL: [https://www.lesswrong.com/posts/M9iHzo2oFRKvdtRrM/reminder-morality-is-unsolved](https://www.lesswrong.com/posts/M9iHzo2oFRKvdtRrM/reminder-morality-is-unsolved)
   Summary: Directly supports the chapter’s claim that alignment eventually hits unresolved philosophy. **[T]** ([lesswrong.com][49])
 
-## 45. Towards Superintelligence Alignments
+*Former LW §45 (Towards Superintelligence Alignments).*
 
 * **Wei Dai, “Clarifying ‘AI Alignment’,” 15 Nov 2018**
   URL: [https://www.lesswrong.com/posts/ZeE7EKHTFMBs8eMxn/clarifying-ai-alignment](https://www.lesswrong.com/posts/ZeE7EKHTFMBs8eMxn/clarifying-ai-alignment)
@@ -494,29 +548,31 @@ Commented LW references relevant for each chapter.
 
 ---
 
+---
+
 ## Cross-cutting posts that should appear in the book’s general bibliography
 
 These do not belong to only one chapter.
 
 * **Eliezer Yudkowsky, “AGI Ruin: A List of Lethalities,” 5 Jun 2022**
   URL: [https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities](https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities)
-  Use in: chapters 2, 3, 11, 13, 27, 39, 40. ([lesswrong.com][18])
+  Use in: chapters 2, 3, 12, 14, 28, 39, 40. ([lesswrong.com][18])
 
 * **Paul Christiano, “Where I agree and disagree with Eliezer,” 19 Jun 2022**
   URL: [https://www.lesswrong.com/posts/CoZhXrhpQxpy9xw9y/where-i-agree-and-disagree-with-eliezer](https://www.lesswrong.com/posts/CoZhXrhpQxpy9xw9y/where-i-agree-and-disagree-with-eliezer)
-  Use in: chapters 3, 13, 24, 30, 40, 45. ([lesswrong.com][53])
+  Use in: chapters 3, 14, 25, 31, 40, 44. ([lesswrong.com][53])
 
 * **Nate Soares, “A central AI alignment problem: capabilities generalization, and the sharp left turn,” 15 Jun 2022**
   URL: [https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization](https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization)
-  Use in: chapters 11, 13, 21, 27. ([lesswrong.com][17])
+  Use in: chapters 12, 14, 22, 28. ([lesswrong.com][17])
 
 * **John Wentworth, “The Pointers Problem,” 18 Nov 2020**
   URL: [https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans](https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans)
-  Use in: chapters 14, 17, 19, 21, 22. ([lesswrong.com][22])
+  Use in: chapters 15, 18, 20, 22, 23. ([lesswrong.com][22])
 
 * **Scott Garrabrant, “Goodhart Taxonomy,” 30 Dec 2017**
   URL: [https://www.lesswrong.com/posts/EbFABnst8LsidYs5Y/goodhart-taxonomy](https://www.lesswrong.com/posts/EbFABnst8LsidYs5Y/goodhart-taxonomy)
-  Use in: chapters 18, 26, 31, 34, 39. ([lesswrong.com][26])
+  Use in: chapters 19, 27, 32, 35, 39. ([lesswrong.com][26])
 
 The most important gap: LW has strong posts on **values, boundaries, corrigibility, deception, Goodhart, multipolar failure, and safety cases**, but much less directly on **value-bundle geometry**, **bearer import**, **goal-transport inference**, and **successor-conserved invariants**. Those are probably where the book contributes the most original structure.
 

@@ -402,6 +402,162 @@ MANUAL_ENTRIES = """
   pages   = {27},
   year    = {2014},
 }
+
+% LessWrong / Alignment Forum posts curated in context/lw-references.md.
+% Mirror of the manual block in references/external-alignment.bib; kept here so
+% regeneration does not drop them. Keep the two copies in sync.
+
+@misc{critch2022boundaries,
+  author       = {Critch, Andrew},
+  title        = {Boundaries, Part 1: A Key Missing Concept from Utility Theory},
+  year         = {2022},
+  howpublished = {\\url{https://www.lesswrong.com/posts/8oMF8Lv5jiGaQSFvo/boundaries-part-1-a-key-missing-concept-from-utility-theory}},
+  note         = {LessWrong post. Argues that agent/environment boundaries (membranes) are a primitive missing from utility theory and bargaining.}
+}
+
+@misc{critch2022boundaries3a,
+  author       = {Critch, Andrew},
+  title        = {Boundaries, Part 3a: Defining Boundaries as Directed Markov Blankets},
+  year         = {2022},
+  howpublished = {\\url{https://www.lesswrong.com/posts/HrtqLy46Fx7xqRrMo/boundaries-part-3a-defining-boundaries-as-directed-markov}},
+  note         = {LessWrong post. Formalizes boundaries as directed Markov blankets.}
+}
+
+@misc{lakin2023boundaries,
+  author       = {Lakin, Chris},
+  title        = {Formalizing Boundaries with Markov Blankets},
+  year         = {2023},
+  howpublished = {\\url{https://www.lesswrong.com/posts/z4o4iAFgnmaBmksN2/formalizing-boundaries-with-markov-blankets}},
+  note         = {LessWrong post. Compact Markov-blanket formalization of the boundaries idea.}
+}
+
+@misc{christiano2019failure,
+  author       = {Christiano, Paul},
+  title        = {What Failure Looks Like},
+  year         = {2019},
+  howpublished = {\\url{https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like}},
+  note         = {LessWrong post. Gradual, distributed loss of human control with no discrete hostile agent to align.}
+}
+
+@misc{critch2021multipolar,
+  author       = {Critch, Andrew},
+  title        = {What Multipolar Failure Looks Like, and Robust Agent-Agnostic Processes},
+  year         = {2021},
+  howpublished = {\\url{https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic}},
+  note         = {LessWrong post. Catastrophe from distributed human-AI systems and robust agent-agnostic processes rather than a single rogue agent.}
+}
+
+@misc{shlegeris2023aicontrol,
+  author       = {Shlegeris, Buck and Roger, Fabien and Greenblatt, Ryan and Sachan, Kshitij},
+  title        = {AI Control: Improving Safety Despite Intentional Subversion},
+  year         = {2023},
+  howpublished = {\\url{https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion}},
+  note         = {LessWrong post. Seeks safety guarantees under the assumption that the model may intentionally subvert oversight.}
+}
+
+@misc{thornley2023shutdown,
+  author       = {Thornley, Elliott},
+  title        = {The Shutdown Problem: An AI Engineering Puzzle for Decision Theorists},
+  year         = {2023},
+  howpublished = {\\url{https://www.lesswrong.com/posts/8GWLRMnp55iFZDBbm/the-shutdown-problem-three-theorems}},
+  note         = {LessWrong post. Formalizes the tension between shutdownability and competent goal pursuit.}
+}
+
+@misc{yudkowsky2009valuefragile,
+  author       = {Yudkowsky, Eliezer},
+  title        = {Value is Fragile},
+  year         = {2009},
+  howpublished = {\\url{https://www.lesswrong.com/posts/GNnHHmm8EzePmKzPk/value-is-fragile}},
+  note         = {LessWrong post. Futures not shaped by detailed inheritance from human values may contain little of value.}
+}
+
+@misc{yudkowsky2007wishes,
+  author       = {Yudkowsky, Eliezer},
+  title        = {The Hidden Complexity of Wishes},
+  year         = {2007},
+  howpublished = {\\url{https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-hidden-complexity-of-wishes}},
+  note         = {LessWrong post. Apparently simple wishes hide many tacit human value constraints.}
+}
+
+@misc{yudkowsky2011cevdynamic,
+  author       = {Yudkowsky, Eliezer},
+  title        = {In Favour of a Selective CEV Initial Dynamic},
+  year         = {2011},
+  howpublished = {\\url{https://www.lesswrong.com/posts/u8isNgN7rRYBZ35rQ/in-favour-of-a-selective-cev-initial-dynamic}},
+  note         = {LessWrong post. Coherent extrapolated volition as what humanity would want under more knowledge, reflection, and coherence.}
+}
+
+@misc{wentworth2020pointers,
+  author       = {Wentworth, John},
+  title        = {The Pointers Problem: Human Values Are A Function Of Humans' Latent Variables},
+  year         = {2020},
+  howpublished = {\\url{https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans}},
+  note         = {LessWrong post. Human values as functions of latent variables inside human world-models rather than low-level physical states.}
+}
+
+@misc{wentworth2021selection,
+  author       = {Wentworth, John},
+  title        = {Selection Theorems: A Program For Understanding Agents},
+  year         = {2021},
+  howpublished = {\\url{https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents}},
+  note         = {LessWrong post. Studies what internal structures selection pressure tends to produce in agents.}
+}
+
+@misc{wentworth2022agentstructure,
+  author       = {Wentworth, John},
+  title        = {Clarifying the Agent-Like Structure Problem},
+  year         = {2022},
+  howpublished = {\\url{https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem}},
+  note         = {LessWrong post. Distinguishes behavioral equivalence from internal agent-like structure.}
+}
+
+@misc{kulveit2025pando,
+  author       = {Kulveit, Jan},
+  title        = {The Pando Problem: Rethinking AI Individuality},
+  year         = {2025},
+  howpublished = {\\url{https://www.lesswrong.com/posts/wQKskToGofs4osdJ3/the-pando-problem-rethinking-ai-individuality}},
+  note         = {LessWrong post. AI individuality may be fluid, distributed, copied, or clonal rather than unitary.}
+}
+
+@misc{hubinger2023modelorganisms,
+  author       = {Hubinger, Evan and Schiefer, Nicholas and Denison, Carson and Perez, Ethan},
+  title        = {Model Organisms of Misalignment: The Case for a New Pillar of Alignment Research},
+  year         = {2023},
+  howpublished = {\\url{https://www.lesswrong.com/posts/ChDH335ckdvpxXaXX/model-organisms-of-misalignment-the-case-for-a-new-pillar-of-1}},
+  note         = {LessWrong post. Controlled in-vitro demonstrations of misalignment mechanisms such as deceptive alignment.}
+}
+
+@misc{yudkowsky2022agiruin,
+  author       = {Yudkowsky, Eliezer},
+  title        = {AGI Ruin: A List of Lethalities},
+  year         = {2022},
+  howpublished = {\\url{https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities}},
+  note         = {LessWrong post. Canonical enumeration of reasons alignment may fail under capability growth.}
+}
+
+@misc{soares2022sharpleftturn,
+  author       = {Soares, Nate},
+  title        = {A Central AI Alignment Problem: Capabilities Generalization, and the Sharp Left Turn},
+  year         = {2022},
+  howpublished = {\\url{https://www.lesswrong.com/posts/GNhMPAWcfBCASy8e6/a-central-ai-alignment-problem-capabilities-generalization}},
+  note         = {LessWrong post. Capabilities may generalize sharply while alignment properties fail to generalize.}
+}
+
+@misc{christiano2018corrigibility,
+  author       = {Christiano, Paul},
+  title        = {Corrigibility},
+  year         = {2018},
+  howpublished = {\\url{https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility}},
+  note         = {LessWrong post. Corrigibility as preserving the ability to correct and manage drift through capability amplification.}
+}
+
+@misc{soares2022hardbits,
+  author       = {Soares, Nate},
+  title        = {On How Various Plans Miss the Hard Bits of the Alignment Challenge},
+  year         = {2022},
+  howpublished = {\\url{https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment}},
+  note         = {LessWrong post. Argues many alignment plans fail because they do not survive the sharp left turn.}
+}
 """
 
 # Alias keys used in source papers -> canonical keys in this bibliography

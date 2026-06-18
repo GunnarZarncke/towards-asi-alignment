@@ -38,6 +38,7 @@ Some amplify.
 Some are treated as background even though they shape the effective optimization process more than the model weights do.
 
 If we align the wrong object, we can get local success and global failure.
+This pattern---each component behaving acceptably while the aggregate drifts---is the failure mode Christiano describes, in which no single model is obviously the thing to align \autocite{christiano2019failure}.
 
 A model can pass behavioral tests while the product around it selects for manipulation.
 A tool-using agent can obey its system prompt while the scaffolding gives it incentives to preserve access, route around friction, and accumulate resources.
@@ -126,6 +127,7 @@ A useful boundary is one where internal and external futures are approximately s
 If this quantity is small, then knowing the sensory and active interface explains much of the coupling between inside and outside.
 The boundary is not perfect.
 It is good enough for prediction and control.
+Treating this interface---rather than any given physical object---as the alignment-relevant boundary follows Critch's argument that such boundaries are a primitive missing from utility theory \autocite{critch2022boundaries}; Chapter~\ref{ch:finding-boundary} makes the construction precise.
 
 A second test asks whether modeling the process as goal-directed compresses behavior \autocite{dennett1987intentional,shalizi2001computational}:
 \[
