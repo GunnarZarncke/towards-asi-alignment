@@ -25,4 +25,4 @@ User provided a full draft for Chapter 3 (Alignment as a Dynamical Guarantee) an
 - `references/external-alignment.bib`, `references/governance-institutions.bib`, `references/dynamical-systems.bib`
 
 ## Commits
-- (none — user did not request commit)
+- `a182511` Draft Chapter 3 on alignment as a dynamical guarantee.

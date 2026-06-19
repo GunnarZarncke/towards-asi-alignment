@@ -26,4 +26,4 @@ Integrated chapters lacked explicit "What Would Change This View" sections. User
 - `drafts/conversation-summaries/INDEX.md`
 
 ## Commits
-- (filled in after commit)
+- `09cafdf` Add disconfirming sections to Ch. 2–10 and relax chapter structure rules.

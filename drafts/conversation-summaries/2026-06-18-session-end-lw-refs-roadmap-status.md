@@ -28,4 +28,4 @@ User added `context/lw-references.md` to source-map reference instructions; remo
 - `INSTRUCTIONS.md` §11
 
 ## Commits
-- (filled in after commit)
+- `aa02b61` Document LW references workflow and remove stale roadmap from the book.

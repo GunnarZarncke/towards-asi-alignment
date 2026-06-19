@@ -112,11 +112,7 @@ Needs development \\
 \end{longtable}
 \normalsize
 
-% TODO[formalize]: Define ICI_{ij} precisely and relate it to shared priors, shared architectures, source-code visibility, training-distribution overlap, and decision-theoretic similarity.
-
-% TODO[empirical-test]: Propose tests for whether many deployed systems collapse into one effective coalition.
-
-% TODO[formalize]: Specify conditions under which a pivotal process shifts the deployment ecosystem from a race basin to a certified-deployment basin.
+% Formalization: ICI and coalition tests — ch33; pivotal process — ch35. Cross-chapter index: metadata/TODO.md.
 
 % TODO[open-crux]: Clarify when correction-channel preservation is reflectively stable rather than merely externally enforced.
 
@@ -124,7 +120,10 @@ Needs development \\
 
 \section{Open Problem Ledger}
 
+The priority themes in recent field syntheses align with several rows below: value-bundle and bearer-map transport, high-capacity correction channels, ontology-shift tests, deception-resistant evaluation, and dynamic safety cases \autocite{iaisr2025,casper2023rlhflimits,deblanc2011ontological,park2024deception}.
+
 \begin{enumerate}
+  \item \textbf{[Open]} Can value-bearing objectives survive ontology shift without silent drift? \autocite{deblanc2011ontological,everitt2016selfmodification}
   \item \textbf{[Open]} Can value-bundle geometry be empirically recovered?
   \item \textbf{[Open]} Can bearer maps be transported across substrates?
   \item \textbf{[Open]} Can correction-channel integrity be preserved under superhuman optimization?
@@ -150,8 +149,8 @@ The checklist above is anchored on Yudkowsky's \emph{AGI Ruin: A List of Lethali
 The ``capability generalizes farther than alignment'' row responds to Soares's sharp-left-turn argument that competence can generalize out of distribution while alignment does not \autocite{soares2022sharpleftturn}.
 The latent-pointers row responds to Wentworth's pointers problem \autocite{wentworth2020pointers}.
 The corrigibility-anti-natural row engages both the MIRI formulation \autocite{soares2015corrigibility} and Christiano's reframing of corrigibility \autocite{christiano2018corrigibility}, together with the shutdown problem \autocite{thornley2023shutdown}.
-The deception, boxing, and uncheckable-outputs rows draw on the AI-control agenda for safety under intentional subversion \autocite{shlegeris2023aicontrol} and on model organisms of misalignment for studying deception empirically \autocite{hubinger2023modelorganisms}.
+The deception, boxing, and uncheckable-outputs rows draw on the AI-control agenda for safety under intentional subversion \autocite{shlegeris2023aicontrol} and on model organisms of misalignment and alignment-faking evidence for studying deception empirically \autocite{hubinger2023modelorganisms,park2024deception,casper2023rlhflimits}.
 The multipolar-failure row responds to Critch's account of robust agent-agnostic processes \autocite{critch2021multipolar}.
-The field-failure row engages Soares's argument that many alignment plans miss the hard bits of the challenge \autocite{soares2022hardbits}.
+The field-failure row engages Soares's argument that many alignment plans miss the hard bits of the challenge \autocite{soares2022hardbits} and the International AI Safety Report synthesis of open risks \autocite{iaisr2025}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]

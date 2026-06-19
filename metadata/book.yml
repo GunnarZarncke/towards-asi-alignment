@@ -68,25 +68,25 @@ chapters:
     reviewer_needed: [alignment, game-theory]
   ch11:
     title: "Measuring Capability Without Task Ontology"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch12:
     title: "Capability Growth Is Boundary Expansion"
-    status: stub
-    word_target: 7000
-    formal_density: medium
-    reviewer_needed: [alignment]
+    status: draft
+    word_target: 8000
+    formal_density: high
+    reviewer_needed: [alignment, information-theory]
   ch13:
     title: "The Coordination Bottleneck"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment, economics]
   ch14:
     title: "When Intelligence Deepens Misalignment"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment]

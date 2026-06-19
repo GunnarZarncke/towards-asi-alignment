@@ -4,6 +4,16 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-18 | Session end: Part III complete | [2026-06-18-session-end-part03-complete.md](2026-06-18-session-end-part03-complete.md) |
+| 2026-06-18 | Chapter 11 measuring capability draft | [2026-06-18-ch11-measuring-capability-draft.md](2026-06-18-ch11-measuring-capability-draft.md) |
+| 2026-06-18 | Session end: Part III drafts, structure | [2026-06-18-session-end-part03-drafts-structure.md](2026-06-18-session-end-part03-drafts-structure.md) |
+| 2026-06-18 | Part III chapter file correction | [2026-06-18-part03-chapter-file-correction.md](2026-06-18-part03-chapter-file-correction.md) |
+| 2026-06-18 | Chapter 14 section structure fix | [2026-06-18-ch14-section-structure-fix.md](2026-06-18-ch14-section-structure-fix.md) |
+| 2026-06-18 | Chapter 14 intelligence deepens misalignment draft | [2026-06-18-ch14-intelligence-deepens-misalignment-draft.md](2026-06-18-ch14-intelligence-deepens-misalignment-draft.md) |
+| 2026-06-18 | Deep research citation inserts | [2026-06-18-deep-research-citation-inserts.md](2026-06-18-deep-research-citation-inserts.md) |
+| 2026-06-18 | Chapter 12 coordination bottleneck draft | [2026-06-18-ch12-coordination-bottleneck-draft.md](2026-06-18-ch12-coordination-bottleneck-draft.md) |
+| 2026-06-18 | Deep research report in source map | [2026-06-18-deep-research-source-map.md](2026-06-18-deep-research-source-map.md) |
+| 2026-06-18 | Chapter 11 boundary expansion draft | [2026-06-18-ch11-boundary-expansion-draft.md](2026-06-18-ch11-boundary-expansion-draft.md) |
 | 2026-06-18 | LW BibTeX citations + lw-references renumber | [2026-06-18-lw-bibtex-citations-renumber.md](2026-06-18-lw-bibtex-citations-renumber.md) |
 | 2026-06-18 | Session end: LW refs, roadmap removal, status sync | [2026-06-18-session-end-lw-refs-roadmap-status.md](2026-06-18-session-end-lw-refs-roadmap-status.md) |
 | 2026-06-18 | Session end: WWCTV sections + INSTRUCTIONS chapter structure | [2026-06-18-what-would-change-this-view-sections.md](2026-06-18-what-would-change-this-view-sections.md) |

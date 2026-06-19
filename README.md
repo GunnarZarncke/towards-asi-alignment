@@ -188,7 +188,7 @@ Conventional commit prefixes: `init:`, `chapter:`, `refs:`, `formal:`, `review:`
 
 ## Known open problems
 
-See `metadata/open-problems.md` and `metadata/uncertainty-ledger.md`. Examples:
+See `metadata/open-problems.md` and `metadata/uncertainty-ledger.md`. Editorial and cross-chapter chores: `metadata/TODO.md`. Inline markers: `make todos`. Examples:
 
 1. Are human values sufficiently low-dimensional for tractable learning?
 2. Can bearer maps survive radical ontology shift?

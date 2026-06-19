@@ -212,7 +212,14 @@ where $\Omega(C)$ penalizes excessive complexity, such as including too many var
 Without this penalty, the trivial solution is often too large.
 If we include every variable inside $C$, there is no outside left to predict.
 The boundary residual becomes meaningless.
-A boundary-finding method needs compression pressure \autocite{tishby2000ib,bialek2001predictability}.
+A boundary-finding method needs compression pressure \autocite{tishby2000ib,bialek2001predictability,strouse2016ib,kolchinsky2017ib}.
+A related representation objective is the information bottleneck,
+\[
+\min_{p(z\mid x)} \MI(X;Z)-\beta \MI(Z;Y),
+\]
+where $X$ denotes raw observations, $Z$ latent representations, and $Y$ value- or control-relevant variables.
+The point is not compression alone but which causal structure remains in $Z$ \autocite{scholkopf2021causalreps,pearl2009causality}.
+The gap for alignment is to extend such representations to nonstationary, self-modifying, and deception-resistant boundaries.
 
 A more complete objective includes predictive usefulness:
 \[
@@ -1055,7 +1062,7 @@ Only after finding the boundary can we ask what crosses it, what is preserved in
 
 \section*{Chapter References}
 
-This chapter builds on the good regulator theorem and Markov blankets \autocite{conant1970regulator,friston2010free,kirchhoff2018markov,ramstead2022bayesian}; information bottleneck and complexity measures \autocite{tishby2000ib,bialek2001predictability}; inverse reinforcement learning \autocite{ng2000irl,ziebart2008maxent}; object-centric and unsupervised agent discovery \autocite{burgess2019monet,greff2019iodine,locatello2020slot,zarncke2025uad}; empowerment as control information \autocite{salge2014empowerment}; and causal inference \autocite{pearl2009causality}.
+This chapter builds on the good regulator theorem and Markov blankets \autocite{conant1970regulator,friston2010free,kirchhoff2018markov,ramstead2022bayesian,biehl2020fepcritique}; information bottleneck and complexity measures \autocite{tishby2000ib,bialek2001predictability,strouse2016ib,kolchinsky2017ib}; causal representation learning \autocite{scholkopf2021causalreps,pearl2009causality}; inverse reinforcement learning \autocite{ng2000irl,ziebart2008maxent}; object-centric and unsupervised agent discovery \autocite{burgess2019monet,greff2019iodine,locatello2020slot,zarncke2025uad}; and empowerment as control information \autocite{salge2014empowerment}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

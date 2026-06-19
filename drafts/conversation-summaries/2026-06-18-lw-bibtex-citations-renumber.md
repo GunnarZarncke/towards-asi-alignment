@@ -29,4 +29,4 @@ User confirmed: add BibTeX entries for LessWrong references, cite them in drafte
 - `chapters/ch01`–`ch04`, `ch06`–`ch10`, `ch40` — cited drafts
 
 ## Commits
-- (none — user did not request commit)
+- `adb0804` Add LessWrong BibTeX entries and cite them in drafted chapters.
