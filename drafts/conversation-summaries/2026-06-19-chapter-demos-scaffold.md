@@ -25,4 +25,4 @@ User asked to turn a toy value-bundle HTML demo into a working mini app served b
 - `src/demos/ch16-value-bundle-simulator/` — first demo
 
 ## Commits
-- (pending this session end)
+- `e51d250` — Add experimental chapter demo scaffold with value bundle simulator.
