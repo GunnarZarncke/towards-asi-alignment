@@ -158,13 +158,13 @@ chapters:
     reviewer_needed: [information-theory, control-theory]
   ch26:
     title: "From Obedience to Extrapolative Correction"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch27:
     title: "Manipulation, Domestication, and False Consent"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
