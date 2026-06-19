@@ -4,6 +4,10 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-19 | Session end: Chapter 26 commit | [2026-06-19-session-end-ch26-commit.md](2026-06-19-session-end-ch26-commit.md) |
+| 2026-06-19 | Chapter 27 manipulation / false consent draft | [2026-06-19-ch27-manipulation-false-consent-draft.md](2026-06-19-ch27-manipulation-false-consent-draft.md) |
+| 2026-06-19 | Chapter 26 extrapolative correction draft | [2026-06-19-ch26-extrapolative-correction-draft.md](2026-06-19-ch26-extrapolative-correction-draft.md) |
+| 2026-06-19 | Lean proof spine implementation (formal/) | [2026-06-19-lean-proof-spine-implementation.md](2026-06-19-lean-proof-spine-implementation.md) |
 | 2026-06-19 | Frontmatter status, roadmap, TL;DR plain language | [2026-06-19-frontmatter-status-tldr.md](2026-06-19-frontmatter-status-tldr.md) |
 | 2026-06-19 | Chapter 25 correction-channel integrity draft | [2026-06-19-ch25-correction-channel-integrity-draft.md](2026-06-19-ch25-correction-channel-integrity-draft.md) |
 | 2026-06-19 | Chapter 24 correction causal channel draft | [2026-06-19-ch24-correction-causal-channel-draft.md](2026-06-19-ch24-correction-causal-channel-draft.md) |

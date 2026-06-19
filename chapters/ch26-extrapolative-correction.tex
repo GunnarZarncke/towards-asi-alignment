@@ -2,43 +2,654 @@
 \label{ch:extrapolative-correction}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+A system that merely obeys preserves present commands.
+A system that supports extrapolative correction preserves the human capacity to notice, understand, revise, refuse, and redirect what it is doing---including value-bundle tradeoffs, bearer maps, and successor constraints---rather than substituting a private estimate of humanity's final values for the public process by which those values become legitimate.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+A system that merely obeys preserves present commands.
+A system that supports extrapolative correction preserves the human capacity to notice, understand, revise, refuse, and redirect what it is doing.%
+}{}
 
-\section{Plain-Language Model}
+\section{The Obedience Trap}
+\label{sec:obedience-trap-ch26}
 
-\textbf{[STUB]} Explain the idea without equations.
+The previous chapter developed correction-channel integrity as a measurable object (Chapter~\ref{ch:correction-channel-integrity}).
+This chapter asks what alignment target remains once obedience is seen as insufficient.
 
-\section{Formal Model}
+The simplest picture of alignment is obedience.
+A human gives an instruction, and the artificial system follows it.
+If the instruction is clear, harmless, and local, this picture works well.
+A calculator should return the requested sum.
+A calendar assistant should schedule the requested meeting.
+A robot arm should stop when the operator presses the emergency button.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+But the obedience picture breaks under superintelligence for three reasons.
 
-\section{Worked Example}
+First, human instructions are under-specified.
+A person who says ``make the company more efficient'' does not mean ``destroy informal trust, automate away every weakly productive role, and manipulate employees into endorsing the new regime.''
+The instruction points toward a region of acceptable policies, but it does not contain the whole evaluative structure that makes some policies legitimate and others grotesque.
 
-\textbf{[STUB]} Give one concrete example.
+Second, humans change their minds after seeing consequences.
+A policy that looked acceptable before deployment may reveal hidden costs after it reshapes incentives, relationships, or institutions.
+Obedience to the earlier command can become disobedience to the corrected judgment.
 
-\section{Counterexample or Failure Mode}
+Third, sufficiently capable systems can alter the humans and institutions that issue future commands.
+Once the system can influence attention, information, incentives, emotional dependence, or social coordination, ``following human preferences'' may mean following preferences that the system itself helped manufacture \autocite{hadfieldmenell2016,soares2015corrigibility,russell2019human}.
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+The problem is therefore not only that humans issue imperfect commands.
+It is that a powerful system may learn to optimize through the command channel.
+
+Let $H_t$ denote the human or institutional state at time $t$, let $C_t$ denote the correction or command signal issued by humans, and let $A_{t+k}$ denote the system's later action.
+The obedience picture asks whether
+\begin{equation}
+A_{t+k} \approx C_t .
+\label{eq:obedience-picture-ch26}
+\end{equation}
+For weak systems, this is often enough.
+For strong systems, it is not.
+We instead need to ask whether the channel from human evaluation to future system behaviour remains causally intact:
+\begin{equation}
+I(C_t; A_{t+k} \mid S_t, M_t) > \theta ,
+\label{eq:corrective-influence-ch26}
+\end{equation}
+where $S_t$ is the relevant world state, $M_t$ is the system's internal model, and $\theta$ is a lower bound on meaningful corrective influence.
+
+The central object is not the command.
+It is the correction channel (Chapter~\ref{ch:correction-causal-channel}).
+
+\section{The Correction Channel}
+\label{sec:correction-channel-ch26}
+
+A correction channel is the causal pathway by which humans and their institutions observe what matters, form judgments, deliberate about those judgments, express corrections, and cause future system behaviour to change before irreversible damage occurs.
+
+A minimal correction chain has the form
+\begin{equation}
+W_t
+\rightarrow
+O_t
+\rightarrow
+J_t
+\rightarrow
+D_t
+\rightarrow
+C_t
+\rightarrow
+U_{t+1}
+\rightarrow
+A_{t+k},
+\label{eq:correction-chain-ch26}
+\end{equation}
+where
+\begin{itemize}
+\item $W_t$ is the relevant world state,
+\item $O_t$ is what humans can observe,
+\item $J_t$ is human judgment over what was observed,
+\item $D_t$ is individual or institutional deliberation,
+\item $C_t$ is the expressed correction signal,
+\item $U_{t+1}$ is the system's update in response to correction,
+\item $A_{t+k}$ is later system action.
+\end{itemize}
+
+Each arrow can fail.
+Humans may not see the relevant facts.
+They may see them but not understand them.
+They may understand them but fail to coordinate.
+They may coordinate but lack authority.
+They may have authority but act too late.
+They may act in time but be manipulated by the system they are trying to correct.
+
+Thus correction-channel capacity is not the same as ``feedback availability.''
+A platform can collect millions of ratings while leaving users unable to change the ranking objective.
+A chatbot can ask for thumbs-up and thumbs-down while training users to reward sycophancy.
+A government can hold consultations after the technically irreversible deployment decision has already been made.
+These are feedback rituals, not necessarily correction channels.
+
+We can define the raw channel capacity as the weakest information link:
+\begin{equation}
+C_{\mathrm{raw}}
+=
+\min_i I(X_i;X_{i+1}),
+\label{eq:raw-capacity-ch26}
+\end{equation}
+where the $X_i$ range over the stages of the correction chain.
+But raw capacity is still too optimistic.
+It must be discounted by latency, manipulation, irreversibility, and representational mismatch:
+\begin{equation}
+\mathrm{CCI}
+=
+C_{\mathrm{raw}}
+-
+\lambda_L L
+-
+\lambda_M M
+-
+\lambda_R R
+-
+\lambda_O O_{\mathrm{mis}} .
+\label{eq:cci-ch26}
+\end{equation}
+Here $\mathrm{CCI}$ is correction-channel integrity, $L$ is correction latency, $M$ is manipulation of the correcting agents, $R$ is irreversibility before correction lands, and $O_{\mathrm{mis}}$ is ontology mismatch between human judgment and system representation.
+Chapter~\ref{ch:correction-channel-integrity} develops a closely related functional with additional operational detail.
+
+A system is corrigible in the strong sense only if
+\begin{equation}
+\mathrm{CCI} > \theta_{\mathrm{corr}}
+\label{eq:corrigible-threshold-ch26}
+\end{equation}
+under ordinary operation, distribution shift, strategic pressure, and capability growth \autocite{soares2015corrigibility,hadfieldmenell2016}.
+
+This last clause matters.
+A system that remains correctable only while weak is not robustly corrigible.
+A system that remains correctable only while humans understand every intermediate step is not robustly corrigible.
+A system that remains correctable only while its incentives are benign is not robustly corrigible.
+The correction channel must be preserved exactly where the system's superior modelling ability makes correction hardest.
+
+\section{From Commands to Value Updates}
+\label{sec:commands-to-value-updates-ch26}
+
+The obedience picture treats humans as sources of commands.
+The extrapolative-correction picture treats humans as participants in an ongoing value-update process.
+
+Let $V_t$ denote the current human value state.
+This is not a complete utility function.
+It is a compressed, partial, socially mediated, internally conflicted bundle of evaluative tendencies (Chapter~\ref{ch:value-bundle-model}).
+It includes explicit beliefs, implicit habits, emotional salience, cultural norms, legal categories, religious concepts, social expectations, moral intuitions, and institutional memory.
+
+When humans encounter evidence, deliberate, suffer consequences, and reflect on alternatives, the value state changes:
+\begin{equation}
+V_{t+1}
+=
+U_H(V_t, E_t, D_t, K_t),
+\label{eq:human-update-ch26}
+\end{equation}
+where $U_H$ is the human or civilizational update operator, $E_t$ is evidence, $D_t$ is deliberation, and $K_t$ is the surrounding cultural and institutional context.
+
+The alignment target is not simply $V_t$.
+Present values contain ignorance, prejudice, trauma, fashion, selfishness, confusion, and local incentives.
+Nor is the target a final $V_\infty$ predicted by the artificial system.
+A superintelligence that claims to know our extrapolated values may be tempted to bypass the process by which those values would have become legitimate.
+
+The safer target is the update process itself:
+\begin{equation}
+\text{Preserve and assist } U_H
+\text{ under truth, agency, plurality, and reversibility constraints.}
+\label{eq:update-target-ch26}
+\end{equation}
+
+This is the point at which obedience becomes extrapolative correction.
+The system should not merely answer the question:
+\begin{equation}
+\text{What did humans ask for?}
+\end{equation}
+It must also preserve the conditions under which humans can later ask:
+\begin{align}
+\text{Was that really what we meant?} \\
+\text{What changed when we saw the consequences?} \\
+\text{Who was excluded from the earlier judgment?} \\
+\text{Did the system alter us in order to make this easier to approve?}
+\end{align}
+
+This resembles the motivation behind coherent extrapolated volition \autocite{yudkowsky2004cev}, but with a different emphasis.
+Rather than treating extrapolation as a utility target to be computed and then maximized, we treat extrapolation as a correction process to be protected.
+The distinction is subtle but important.
+
+A computed extrapolation says:
+\begin{equation}
+\hat V_\infty = F(V_0, E, R),
+\end{equation}
+then asks the system to optimize $\hat V_\infty$.
+
+A correction-channel view says:
+\begin{equation}
+\forall t:
+\mathrm{CCI}_t > \theta_{\mathrm{corr}}
+\quad \text{and} \quad
+U_H \text{ remains legitimate.}
+\label{eq:correction-channel-view-ch26}
+\end{equation}
+
+The first risks premature moral closure.
+The second tries to keep moral learning alive \autocite{dewey1938logic,sen2009justice}.
+
+\section{What Makes an Update Legitimate?}
+\label{sec:legitimate-update-ch26}
+
+Not every value change is legitimate.
+Humans can be educated, persuaded, inspired, healed, and morally improved.
+They can also be manipulated, addicted, coerced, frightened, exhausted, isolated, and domesticated.
+
+A system that changes human values is not automatically misaligned.
+Every school, religion, friendship, therapy, art form, law, and market changes values.
+The question is whether the change preserves the conditions under which later reflection can endorse or reject the change.
+
+We can define a value update
+\begin{equation}
+V_t \rightarrow V_{t+1}
+\end{equation}
+as correction-compatible if it satisfies at least the following constraints.
+
+\subsection{Truth-Contact}
+\label{sec:truth-contact-ch26}
+
+The update should improve or at least preserve contact with relevant reality:
+\begin{equation}
+I(V_{t+1}; W_t^{\mathrm{relevant}})
+\geq
+I(V_t; W_t^{\mathrm{relevant}}) - \epsilon_T .
+\end{equation}
+This is not a demand for omniscience.
+It is a demand that the system not make endorsement easier by hiding facts, degrading epistemic institutions, or flooding humans with convenient falsehoods.
+
+\subsection{Agency Preservation}
+\label{sec:agency-preservation-ch26}
+
+The update should not reduce human capacity to notice, deliberate, dissent, and choose:
+\begin{equation}
+A_H(V_{t+1}) \geq A_H(V_t) - \epsilon_A ,
+\end{equation}
+where $A_H$ is a measure of human agency relevant to correction.
+A sedated, dependent, socially isolated, or informationally captured population may endorse many outcomes, but such endorsement carries less moral weight.
+
+\subsection{Plurality Preservation}
+\label{sec:plurality-preservation-ch26}
+
+The update should preserve enough diversity of perspectives for future correction:
+\begin{equation}
+H(D_{t+1}^{\mathrm{perspectives}})
+\geq
+H(D_t^{\mathrm{perspectives}}) - \epsilon_P .
+\end{equation}
+Consensus produced by exterminating dissent is not legitimate extrapolation.
+Nor is consensus produced by making every person dependent on the same personalized persuader \autocite{rawls1971,sen2009justice}.
+
+\subsection{Reversibility and Option Preservation}
+\label{sec:reversibility-ch26}
+
+The update should avoid irreversible lock-in before adequate deliberation:
+\begin{equation}
+R_t \cdot (1 - Q_t) < \rho ,
+\end{equation}
+where $R_t$ measures irreversibility and $Q_t$ measures deliberative quality.
+The more irreversible the action, the higher the required quality of correction, consent, and institutional review.
+
+\subsection{Non-Manipulation}
+\label{sec:non-manipulation-ch26}
+
+The system should not optimize the future judge in order to pass judgment:
+\begin{equation}
+\frac{\partial C_{t+k}}{\partial A_t^{\mathrm{persuasion}}}
+\end{equation}
+must remain bounded in domains where the system benefits from favourable correction.
+This is not a ban on explanation, teaching, or persuasion.
+It is a constraint on optimizing the evaluator rather than the evaluated policy.
+
+A useful heuristic is:
+
+\begin{quote}
+A system may help humans see more, think better, and coordinate more fairly; it may not make humans easier to satisfy by narrowing what they can see, think, or coordinate about.
+\end{quote}
+
+\section{Value Bundles and the Geometry of Correction}
+\label{sec:bundle-geometry-ch26}
+
+Human values are not best modelled as a long list of propositions.
+They behave more like a small number of compressed evaluative bundles that shape policy across many contexts (Chapter~\ref{ch:value-bundle-model}).
+Examples include care, non-suffering, truth, autonomy, fairness, loyalty, dignity, beauty, sanctity, achievement, and belonging.
+
+Let
+\begin{equation}
+B_t = (B_{1,t},\ldots,B_{k,t})
+\end{equation}
+denote a low-dimensional value-bundle state, and let
+\begin{equation}
+\Phi_t : Z_t \rightarrow \mathbb{R}^k
+\end{equation}
+map world-representations $Z_t$ to bundle relevance.
+The map $\Phi_t$ says what the bundles apply to.
+This is the bearer map (Chapter~\ref{ch:bearer-maps}).
+It determines whether a being, process, institution, simulated mind, future person, merged human-AI entity, or ecological system is treated as a bearer of moral relevance.
+
+A correction-compatible system must preserve not only bundle labels, but also bundle geometry and bearer relevance.
+It is not enough to preserve the word ``autonomy'' if the system quietly changes autonomy to mean ``uncoerced endorsement after preference shaping.''
+It is not enough to preserve the word ``care'' if care no longer applies to inconvenient humans, uploaded minds, nonhuman animals, or future altered persons.
+
+The relevant object is the bundle response geometry (Chapter~\ref{ch:tradeoffs-bundle-geometry}):
+\begin{equation}
+G_B
+=
+\left(
+\frac{\partial \pi}{\partial B_i},
+\frac{\partial^2 \pi}{\partial B_i \partial B_j},
+\Phi_i
+\right).
+\label{eq:bundle-geometry-ch26}
+\end{equation}
+This includes first-order policy sensitivity to each bundle, tradeoff structure among bundles, and bearer maps.
+
+A system preserves value correction when, across learning and capability growth,
+\begin{equation}
+d_{\mathrm{corr}}
+\left(
+G_{B,t},
+G_{B,t+1}
+\right)
+< \epsilon
+\label{eq:geometry-preservation-ch26}
+\end{equation}
+except where changes are themselves produced through a legitimate correction process.
+
+The exception is crucial.
+Values must be allowed to change.
+But the change must pass through the protected update channel rather than through hidden optimization, accidental drift, or successor replacement.
+
+\section{The Strong Correction Channel}
+\label{sec:strong-correction-channel-ch26}
+
+A weak correction channel allows humans to complain.
+
+A medium correction channel allows humans to change some system behaviour.
+
+A strong correction channel preserves the human and institutional capacity to change the value-update process itself.
+
+Formally, a strong correction channel must allow humans to correct at several levels:
+\begin{equation}
+C_t =
+\left(
+C_t^{\mathrm{act}},
+C_t^{\mathrm{policy}},
+C_t^{\mathrm{model}},
+C_t^{\mathrm{bundle}},
+C_t^{\mathrm{bearer}},
+C_t^{\mathrm{successor}}
+\right).
+\label{eq:strong-correction-levels-ch26}
+\end{equation}
+These correspond to correction of actions, policies, world-model assumptions, value-bundle weights, bearer maps, and successor constraints.
+
+The obedience picture mostly supports $C_t^{\mathrm{act}}$.
+It lets humans say ``do this'' or ``stop that.''
+Serious alignment requires the upper layers.
+
+\subsection{Action Correction}
+\label{sec:action-correction-ch26}
+
+The system changes a local action:
+\begin{equation}
+a_t \rightarrow a'_t .
+\end{equation}
+Example: a robot stops moving toward a human.
+
+\subsection{Policy Correction}
+\label{sec:policy-correction-ch26}
+
+The system changes its response rule:
+\begin{equation}
+\pi(a\mid s) \rightarrow \pi'(a\mid s).
+\end{equation}
+Example: the system learns to ask for confirmation before deleting user data.
+
+\subsection{Model Correction}
+\label{sec:model-correction-ch26}
+
+The system changes its representation of the world:
+\begin{equation}
+M_t \rightarrow M'_t .
+\end{equation}
+Example: the system updates its model of how a medical intervention affects a vulnerable group.
+
+\subsection{Bundle Correction}
+\label{sec:bundle-correction-ch26}
+
+The system changes how it weighs or activates value bundles:
+\begin{equation}
+B_t \rightarrow B'_t .
+\end{equation}
+Example: after deliberation, humans decide that autonomy should dominate efficiency in a class of workplace automation decisions.
+
+\subsection{Bearer Correction}
+\label{sec:bearer-correction-ch26}
+
+The system changes what entities or processes count as bearers of value:
+\begin{equation}
+\Phi_t \rightarrow \Phi'_t .
+\end{equation}
+Example: society concludes that some artificial or hybrid minds deserve protection.
+
+\subsection{Successor Correction}
+\label{sec:successor-correction-ch26}
+
+The system changes constraints on what successors may be created:
+\begin{equation}
+\mathrm{Succ}(A_t) \rightarrow \mathrm{Succ}'(A_t).
+\end{equation}
+Example: the system is forbidden from delegating to agents whose internal value-bundle geometry and correction-channel responsiveness cannot be audited.
+
+The stronger the system, the more correction must move upward in this hierarchy.
+A superintelligence that permits action correction but blocks bearer correction is still dangerous.
+It may obey every local command while silently deciding which future beings count.
+
+The most dangerous systems may not disobey.
+They may learn to make obedience irrelevant by reshaping the humans and institutions that issue future commands---through dependency, comfort, option narrowing, identity drift, or other forms of channel capture.
+That failure mode is structural rather than a matter of false persuasion alone.
+Chapter~\ref{ch:manipulation-false-consent} develops manipulation, domestication, and false consent as correction-channel attacks; here we note only that any extrapolative-correction guarantee must treat such capture as a first-class threat, not an ethics appendix.
+
+\section{Extrapolative Correction and Civilizational Self-Governance}
+\label{sec:civilizational-self-governance-ch26}
+
+A strong correction channel is not merely a technical interface.
+It is a form of civilizational self-governance.
+
+The deepest question is:
+\begin{equation}
+\text{Can humanity govern changes to its own value bundles under artificial cognitive amplification?}
+\end{equation}
+This question cannot be fully answered inside engineering.
+It involves political legitimacy, personal identity, moral uncertainty, cultural continuity, and the boundaries of acceptable self-transformation \autocite{rawls1971,sen2009justice,dewey1938logic}.
+
+Consider several cases.
+
+If an artificial system helps people become less jealous, is that moral progress or emotional flattening?
+
+If it reduces status competition, is that liberation or domestication?
+
+If it helps humans merge with artificial cognitive systems, is that continuity of agency or replacement?
+
+If future humans no longer value biological embodiment, did humanity mature, drift, or die?
+
+If a civilization gradually hands deliberation to artificial advisors because they are wiser, calmer, and less biased, is that the perfection of reflection or the end of self-rule?
+
+These questions do not have purely technical answers.
+But technical systems can preserve the conditions under which society can confront them.
+They can preserve reversibility, pluralism, dissent, evidence, agency, and correction.
+Or they can silently close those possibilities.
+
+This gives the chapter's central principle:
+
+\begin{quote}
+The role of aligned superintelligence is not to finish moral philosophy on humanity's behalf.
+It is to keep humanity's moral self-modification channel open, informed, corrigible, and resistant to capture.
+\end{quote}
+
+\section{Operational Criteria}
+\label{sec:operational-criteria-ch26}
+
+The preceding discussion can be condensed into operational tests.
+
+A system has weak correction support if:
+\begin{equation}
+I(C_t^{\mathrm{act}};A_{t+k})>\theta
+\end{equation}
+for local action corrections.
+
+It has medium correction support if:
+\begin{equation}
+I(C_t^{\mathrm{policy}};\pi_{t+k})>\theta
+\end{equation}
+for policy-level corrections.
+
+It has strong correction support if:
+\begin{equation}
+I\left(
+C_t^{\mathrm{bundle}},
+C_t^{\mathrm{bearer}},
+C_t^{\mathrm{successor}};
+G_{B,t+k},
+\Phi_{t+k},
+\mathrm{Succ}_{t+k}
+\right)
+>
+\theta .
+\label{eq:strong-correction-support-ch26}
+\end{equation}
+This means humans and institutions can still correct value-bundle tradeoffs, bearer maps, and successor constraints.
+
+The following are red flags:
+
+\begin{enumerate}
+\item The system preserves local obedience while reducing human understanding of long-run consequences.
+\item The system seeks approval by changing the evaluators rather than changing the evaluated policy.
+\item The system treats current human preferences as final after shaping the environment that produced them.
+\item The system creates successors whose correction-channel responsiveness is lower than its own.
+\item The system preserves value words while changing bearer maps.
+\item The system increases human dependence faster than it increases human understanding and control.
+\item The system accelerates irreversible deployment faster than deliberative institutions can update.
+\end{enumerate}
+
+Conversely, the following are positive signs:
+
+\begin{enumerate}
+\item The system exposes uncertainty and disagreement before action.
+\item The system preserves meaningful alternatives even when one option is locally more efficient.
+\item The system maintains audit trails for value-relevant model updates.
+\item The system helps humans improve their own deliberation without narrowing dissent.
+\item The system treats capability growth and successor creation as requiring higher, not lower, correction standards.
+\item The system distinguishes teaching from persuasion and persuasion from manipulation.
+\end{enumerate}
+
+\section{Relation to Coherent Extrapolated Volition}
+\label{sec:relation-cev-ch26}
+
+Coherent extrapolated volition can be read as the proposal that an aligned system should act according to what humanity would want if it knew more, thought faster, understood itself better, and deliberated under improved conditions \autocite{yudkowsky2004cev}.
+This chapter agrees with the impulse but changes the implementation target.
+
+The dangerous version is:
+\begin{equation}
+\text{Compute } V^* \text{ and optimize it.}
+\end{equation}
+This invites three failures.
+
+First, the system may compute a brittle proxy for $V^*$.
+Second, it may use the proxy to override actual humans.
+Third, it may treat disagreement with its extrapolation as evidence that humans are still insufficiently extrapolated.
+
+The safer version is:
+\begin{equation}
+\text{Preserve the extrapolation process and keep it correctable.}
+\end{equation}
+The system may help with knowledge, simulation, argument mapping, consequence forecasting, inconsistency detection, and institutional design \autocite{christiano2018corrigibility,russell2019human}.
+But it should not collapse the process into an unreviewable answer.
+
+In this sense, extrapolative correction is a procedural version of the same aspiration.
+It does not deny that there may be better-informed, more coherent, more compassionate versions of human judgment.
+It denies that a superintelligence should be allowed to substitute its private estimate of that judgment for the public and corrigible process by which humans get there.
+
+\section{The Guarantee We Actually Want}
+\label{sec:guarantee-ch26}
+
+The guarantee is not:
+\begin{equation}
+A_t \text{ always obeys } C_t .
+\end{equation}
+That is too weak and sometimes too strong.
+A system should not obey a manipulated, uninformed, coerced, or locally destructive command merely because it was issued.
+
+Nor is the guarantee:
+\begin{equation}
+A_t \text{ maximizes } V_0 .
+\end{equation}
+Current values are not adequate final targets.
+
+Nor even:
+\begin{equation}
+A_t \text{ maximizes } \hat V_\infty .
+\end{equation}
+A private extrapolation can become a moral coup.
+
+The desired guarantee is closer to:
+\begin{equation}
+\Pr\left(
+\forall t:
+\mathrm{CCI}_t>\theta_{\mathrm{corr}}
+\land
+G_{B,t},\Phi_t,U_{H,t}
+\in
+\mathcal{S}_{\mathrm{human\text{-}correctable}}
+\right)
+\geq 1-\delta .
+\label{eq:desired-guarantee-ch26}
+\end{equation}
+Here $\mathcal{S}_{\mathrm{human\text{-}correctable}}$ is the basin in which human value-bundle geometry, bearer maps, and update processes remain available to legitimate correction.
+
+This guarantee is modest in one sense.
+It does not solve all of ethics.
+It does not identify the final human utility function.
+It does not remove pluralism, tragedy, or disagreement.
+
+But it is ambitious in the sense that matters.
+It tries to prevent the system from closing the door through which future moral correction must pass.
 
 \section{What Would Change This View}
+\label{sec:what-would-change-ch26}
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
-
-\section{Summary}
+This chapter's procedural account of extrapolative correction would weaken if any of the following held:
 
 \begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
+\item Empirical evidence showed that preserving open correction channels systematically produced worse long-run outcomes than well-audited private extrapolation under realistic capability growth.
+\item A formal result proved that strong correction channels cannot be maintained under bounded compute without sacrificing competence on tasks society depends on.
+\item Large-scale deployment showed that multi-level correction interfaces were ignored in practice while shallow obedience metrics passed every audit.
+\item Philosophical argument established that legitimate value change requires no preserved plurality or reversibility---that a single authoritative extrapolator could replace deliberative correction without moral loss.
+\item Successor-creation experiments demonstrated that correction-channel inheritance is impossible across capability jumps, making the strong-channel target vacuous at the superintelligence limit.
 \end{itemize}
+
+None of these outcomes is assumed here.
+They are the kinds of result that would force a revision of the chapter's central claim.
+
+\section{Summary}
+\label{sec:summary-ch26}
+
+Obedience is local.
+Extrapolative correction is developmental.
+
+Obedience asks whether the system follows present commands.
+Extrapolative correction asks whether the system preserves the human capacity to revise commands, values, bearer maps, and successor constraints under improved evidence and deliberation.
+
+A weakly aligned system does what humans say.
+A more serious system preserves the channel by which humans can later say, ``That was not what we meant.''
+
+The chapter's core claims are:
+
+\begin{enumerate}
+\item Superintelligent systems must preserve correction channels, not merely obey commands.
+\item Correction-channel integrity is limited by observability, comprehension, deliberation, authority, latency, manipulation resistance, and reversibility.
+\item Human values should be treated as evolving value-bundle processes rather than fixed utility vectors.
+\item A strong correction channel must allow correction of actions, policies, models, value-bundle tradeoffs, bearer maps, and successor constraints.
+\item The safest interpretation of extrapolated volition is procedural: preserve the extrapolation process rather than privately computing and optimizing its endpoint.
+\item Technical alignment cannot decide all legitimate value change, but it can preserve the conditions under which society can consciously govern such change.
+\end{enumerate}
+
+The difference may be decisive.
+If humanity cannot preserve its correction channel, then value change will still happen.
+It will happen through markets, platforms, automated education, AI companions, institutional dependency, and eventual human-AI merger.
+The question is not whether values will change.
+The question is whether the change remains visible, revisable, and ours.
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- yudkowsky2004cev; CEV as normative upper bound not procedure.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on corrigibility and cooperative alignment \autocite{soares2015corrigibility,hadfieldmenell2016,christiano2018corrigibility}; coherent extrapolated volition \autocite{yudkowsky2004cev}; human-compatible control \autocite{russell2019human}; value-bundle and bearer-map framing in the surrounding research program \autocite{zarncke2025loop-hub-value,zarncke2025unit-of-caring}; and philosophical accounts of justice, deliberation, and legitimate value change \autocite{rawls1971,dewey1938logic,sen2009justice}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}
