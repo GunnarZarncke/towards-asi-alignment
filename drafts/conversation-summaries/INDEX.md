@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-19 | Frontmatter status, roadmap, TL;DR plain language | [2026-06-19-frontmatter-status-tldr.md](2026-06-19-frontmatter-status-tldr.md) |
 | 2026-06-19 | Chapter 25 correction-channel integrity draft | [2026-06-19-ch25-correction-channel-integrity-draft.md](2026-06-19-ch25-correction-channel-integrity-draft.md) |
 | 2026-06-19 | Chapter 24 correction causal channel draft | [2026-06-19-ch24-correction-causal-channel-draft.md](2026-06-19-ch24-correction-causal-channel-draft.md) |
 | 2026-06-19 | Chapter 23 transport types draft | [2026-06-19-ch23-transport-types-draft.md](2026-06-19-ch23-transport-types-draft.md) |

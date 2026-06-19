@@ -12,15 +12,14 @@ LaTeX monograph by Gunnar Zarncke on superintelligence alignment: a self-contain
 
 Superintelligence alignment is the problem of preserving **human-correctable value-bearing processes** across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure—under the assumption that civilization still has enough **correction capacity** to participate in the process.
 
-The book's organizing frame:
+The book's organizing frame asks whether, as capability grows, we can preserve:
 
 ```
-superintelligence alignment
-  = value-bundle transport
-  + bearer persistence
-  + correction-channel integrity
-  + successor stability
-  + socio-technical attractor control
+value-bundle transport     — value directions survive transformation, not just labels
+bearer persistence         — values still apply to the right persons, beings, situations
+correction-channel integrity — human judgment still causally changes future system action
+successor stability        — delegates and copies inherit correction and value geometry
+socio-technical attractor control — deployment conditions keep correction viable
 ```
 
 External doom taxonomies (Yudkowsky-style lethalities, Turchin-style failure maps, and similar) are **not** a second organizing ontology. They appear late as adversarial checklists and coverage audits—especially in Chapter 40 (*Lethality Stress Test and Open Issues*).

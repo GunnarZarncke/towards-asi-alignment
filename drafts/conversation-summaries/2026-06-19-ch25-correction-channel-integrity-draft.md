@@ -26,4 +26,4 @@ User provided a full draft for Chapter 25 and asked to integrate it into `chapte
 - `metadata/book.yml`
 
 ## Commits
-- (none)
+- `eb177f8` — Draft Part IV chapters 15–25 on value bundles and correction.
