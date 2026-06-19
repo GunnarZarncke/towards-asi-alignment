@@ -54,8 +54,20 @@ Transform writing tasks into verifiable goals:
 - "Draft section X" → covers outline items Y; terms defined or paraphrased; legibility checklist satisfied.
 - "Revise for funders" → executive surface, decision triggers, and artifact conductivity present.
 - "Fix LaTeX/build" → `build.sh` succeeds; citations and figures resolve.
+- "Draft or integrate chapter N" → relevant Lean spine module reviewed; claim strength matches proof / counterexample / bridge status (see **Chapter work — Lean spine** below).
 
 For multi-step tasks, state a brief plan with verification at each step.
+
+### Chapter work — Lean spine
+
+When **drafting, revising, or integrating** a chapter (including Shape B integrated drafts):
+
+1. Read the module map in [`formal/README.md`](formal/README.md) and identify proof-spine nodes for that chapter number.
+2. Skim the matching `formal/AlignmentProofSpine/*.lean` module(s) for predicates, theorems, and `MB*` bridges the chapter uses or implies.
+3. Calibrate manuscript claim strength to Lean status: **proof**, **counterexample**, or **bridge** — do not say "Lean proves ASI alignment."
+4. If prose and spine diverge, note the gap in the session log and `metadata/TODO.md`; change Lean only when the task explicitly includes formal work.
+
+See also `INSTRUCTIONS.md` §21 (chapter writing process).
 
 ### Conversation continuity
 
@@ -103,6 +115,10 @@ make check        # structure + citation checks
 ```
 
 Output: `dist/pdf/towards-superintelligence-alignment.pdf`
+
+### Formal proof spine (`formal/`)
+
+Self-contained Lean 4 skeleton of the book's logical dependencies (`lake build` in `formal/`). When working on or integrating a chapter, review the matching modules per **Chapter work — Lean spine** above and `formal/README.md`.
 
 ### README
 

@@ -2,7 +2,7 @@
 
 **Boundaries, Value Bundles, and the Correction of Civilization**
 
-LaTeX monograph by Gunnar Zarncke on superintelligence alignment: a self-contained framework for preserving human-correctable value-bearing processes as capability grows, ontologies shift, successors are created, and multi-agent selection pressure intensifies.
+A self-contained framework for preserving human-correctable value-bearing processes as capability grows, ontologies shift, successors are created, and multi-agent selection pressure intensifies.
 
 > This is a research manuscript in progress. It develops a conceptual and formal framework; it is not a claim that alignment is solved. Claims are marked as established, plausible, or open throughout the ledgers and chapter structure.
 
@@ -103,7 +103,19 @@ context/                    # source PDFs, extracts, messaging constraints
 scripts/                    # build, check, extract, import utilities
 review/                     # reviewer guide and templates
 drafts/conversation-summaries/  # agent session logs
+
+formal/                     # self-contained Lean 4 proof spine (no Mathlib)
+  AlignmentProofSpine.lean  # root module; see formal/README.md
+  AlignmentProofSpine/      # Core + per-layer theorem modules (P01–P45, MB1–MB8)
 ```
+
+The `formal/` directory holds a compact, machine-checked Lean formalization of
+the argument's **logical skeleton** (boundaries → capability → transport →
+correction → successors → adversarial → certification). It proves the non-empirical
+steps and keeps empirical/philosophical claims explicit as bridge `axiom`s
+(`MB1`–`MB8`). Build with `cd formal && lake build`. See
+[`formal/README.md`](formal/README.md) and
+[`LeanProofSpineImplementationBrief.md`](LeanProofSpineImplementationBrief.md).
 
 ---
 
@@ -170,8 +182,9 @@ Every chapter should cite from at least three categories where relevant. Run `ma
 
 1. Read `INSTRUCTIONS.md` before large writing or structural changes.
 2. Follow `AGENTS.md` for agent sessions; match voice in `context/writing-style-gunnar.md`.
-3. Use `review/reviewer-guide.md` and templates under `review/` for structured feedback.
-4. Update ledgers in `metadata/` as claims and assumptions mature.
+3. When drafting or integrating a chapter, review the matching Lean proof-spine modules (`formal/README.md` module map; see `AGENTS.md`).
+4. Use `review/reviewer-guide.md` and templates under `review/` for structured feedback.
+5. Update ledgers in `metadata/` as claims and assumptions mature.
 
 **Git workflow**
 

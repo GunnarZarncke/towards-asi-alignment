@@ -12,6 +12,19 @@ source paths (the temporary `INSTRUCTIONS.md` writing brief only summarizes it).
 - `context/writing-style-gunnar.md` — author voice and calibration
 - `context/lw-references.md` — chapter-indexed curated LessWrong and external alignment references (URLs, summaries); consult when wiring chapter citations; not auto-imported into `.bib` (see `INSTRUCTIONS.md` §11)
 - `context/towards-asi-alignment-deep-research-report.md` — external literature synthesis (German); maps field gaps to book thesis; chapter-indexed addition guide below
+- `context/lean_proof_dependency_graph.dot` — conjectured Lean proof dependency graph for the alignment proof spine (Graphviz; node numbering follows the graph, not `LeanProofSpineImplementationBrief.md` §4)
+
+## Formal proof spine (`formal/`)
+
+Machine-checked logical skeleton of the alignment argument. Builds with `cd formal && lake build` (Lean 4, no Mathlib). See `formal/README.md` for module map and the proof / counterexample / bridge taxonomy.
+
+| Artifact | Role |
+|----------|------|
+| `formal/AlignmentProofSpine.lean` | Root Lean 4 module |
+| `formal/AlignmentProofSpine/*.lean` | Layer modules (`P01`–`P45`, bridges `MB1`–`MB8`) |
+| `formal/README.md` | Build, status, book-facing interpretation |
+| `LeanProofSpineImplementationBrief.md` | Agent spec and theorem inventory (brief numbering is the implementation target) |
+| `context/lean_proof_dependency_graph.dot` | Conjectured dependency DAG (Graphviz); cross-check against brief §4 when extending the spine |
 
 ## External literature syntheses
 

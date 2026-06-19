@@ -25,6 +25,14 @@ and makes one distinction explicit and machine-checked:
   these measurement procedures. These are the eight `MB1`–`MB8` bridges plus the
   model-selection convention `S07`. They are **never hidden** inside definitions.
 
+**Toy vs. target strength.** The current spine is deliberately compact. Many
+counterexamples are finite `Bool` separations (one predicate defined as `True`,
+another as equality); several “theorems” are definitional; abstract quantities
+use integer proxies. The strengthening roadmap lives in `metadata/TODO.md`
+(§ Lean proof spine). Priority: derive certification conclusions from spine
+inputs (capacity slack, correction channel, successor invariance) rather than
+assuming them as bare hypotheses.
+
 > The book must not say "Lean proves ASI alignment." It may say "Lean proves
 > that, *if* these boundary, bundle, correction, successor, and adversarial
 > conditions hold, *then* the certification argument has the advertised logical
@@ -52,8 +60,10 @@ LEAN_PATH=.lake/build/lib/lean lean --root=. /tmp/chk.lean
 ```
 
 `P34` (host-capacity aliasing) and the other non-bridge results print only
-`propext` / `Quot.sound` (or abstract carriers); `certified_class_safety_from_bridges`
-additionally lists `MB6`/`MB7`, making its dependence on the bridges visible.
+`propext` / `Quot.sound` (or abstract carriers). `certified_class_safety_spine_derived`
+derives `Risk A ≤ δ` from `Control A ≤ CorrectionCapacity A + δ` via `P13` (no
+bare `hrisk` hypothesis). `certified_class_safety_from_spine_and_bridges` additionally
+lists `MB6`/`MB7`.
 
 ## Module map
 
@@ -64,10 +74,10 @@ additionally lists `MB6`/`MB7`, making its dependence on the bridges visible.
 | `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43` (B-IQ / control–correction arithmetic) | 11–14, 33 |
 | `AlignmentProofSpine/Bundles.lean` | `P14`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples) | 15–23 |
 | `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26` | 24–27 |
-| `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29` | 28–31 |
+| `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P33`, `P34`, `P37` | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
-| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P39`, `P40`, top-level `certified_class_safety_spine` / `certified_class_safety_from_bridges` | 1–5, 35, 39, 44 |
+| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P39`, `P40`, **`certified_class_safety_spine_derived`** (risk from capacity slack) | 1–5, 35, 39, 44 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
 
 ## Three kinds of result (for the book)
@@ -96,5 +106,23 @@ additionally lists `MB6`/`MB7`, making its dependence on the bridges visible.
 * The host-capacity aliasing theorem `P34` is proved against a from-scratch
   pigeonhole (`finPigeonhole`) instead of Mathlib's `Fintype.card_le_of_injective`,
   keeping the project Mathlib-free.
+* **`Risk` is defined** as `Control − CorrectionCapacity` (`RiskGap`). The primary
+  certification theorems derive `Risk A ≤ δ` from capacity slack
+  (`P13_risk_gap_bounded_by_capacity_slack`); legacy theorems that take `hrisk`
+  explicitly remain for interface compatibility.
+* **`CorrectionCapacity`** is **`ChainCapacity`** of per-system link capacities
+  (`CorrectionLinkCapacities A`), i.e. weakest-link graph capacity (Ch. 24–25).
+  `P24_correction_capacity_le_each_link` ties it to every edge; bridges supply
+  the measured list and integrity→channel topology.
+* **BIQ → control ceiling:** per-system profile (`IpredSys`, `IctrlSys`, `CactSys`, …)
+  with `Control A ≤ IctrlSys A ≤ CactSys A` (`Control_le_IctrlSys`, `P10`). If
+  correction covers the actuator ceiling plus slack (`BIQDerivedCapacitySlack`),
+  `risk_bound_from_biq_ceiling` / `certified_class_safety_from_biq_ceiling` derive
+  the risk bound without a separate control hypothesis.
+* **Successor-safe chains** (`SuccessorSafeChain`) propagate risk bounds: if
+  `RiskGap A ≤ δ` and each step is `SuccessorSafe` with non-increasing control
+  and non-decreasing correction capacity (`SuccessorSafe_risk_monotone`, target of
+  `MB5`), then `RiskGap B ≤ δ` for every `B` on the chain
+  (`risk_bound_along_successor_safe_chain`).
 * Numbering follows the **brief** (§4/§5), which is the implementation target; the
   `.dot` graph uses a different, conjectural numbering.

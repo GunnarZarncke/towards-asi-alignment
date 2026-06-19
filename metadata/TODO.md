@@ -44,6 +44,14 @@ Canonical home is the chapter that *owns* the object; other chapters should refe
 | Transparency ↔ $\kappa_{ij}$ ↔ correction observability | ch33 only | — |
 | ch40 open cruxes (reflective stability of correction; delegating superhuman plan evaluation) | ch40 only | `metadata/uncertainty-ledger.md` items 7–8 |
 
+### Lean proof spine (`formal/`)
+
+**Current state:** toy / separation proofs. Many results are finite `Bool` counterexamples, definitional restatements, or predicates over abstract `axiom` carriers. The spine checks the *logical shape* of the argument; it does not yet match full book information-theoretic definitions (CMI blankets, CCI penalties, bearer maps on world states, etc.).
+
+- [ ] **Strengthen proof spine** — replace toy counterexamples with constructive finite models tied to bundle/bearer geometry; replace definitional theorems with non-trivial lemmas; tighten bridges (probabilistic `MB1`, qualified `MB7`).
+- [ ] **Derive full certification chain** — ~~link BIQ ceiling (`P10`) to control via `Control_le_IctrlSys` / `BIQDerivedCapacitySlack`~~ *(done)*; ~~tie `CorrectionCapacity` to weakest-link graph capacity (`P24` / `CorrectionLinkCapacities`)~~ *(done: `CorrectionCapacity = ChainCapacity`, `WeakestLinkDerivedCapacitySlack`)*; extend with adversarial aliasing (`P34`/`MB7`), and safety-case support (`P40`). ~~Propagate bounds along successor-safe chains (`P27`/`SuccessorSafeChain`).~~ *(done)*
+- [ ] **Wire spine into manuscript** — Ch. 39 safety case / appendix cites each theorem as *proof*, *counterexample*, or *bridge* per `formal/README.md`.
+
 ---
 
 ## Build / tooling

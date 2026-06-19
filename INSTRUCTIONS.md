@@ -827,6 +827,8 @@ One paragraph stating the chapter's core claim.
 
 When a full author-supplied draft is integrated, keep its native narrative structure rather than forcing it into Shape A. Do **not** split interleaved prose/formalism into separate "Plain-Language Model" and "Formal Model" sections just to match the template. You must still ensure all **required elements** above are present — in particular, add a `\section{What Would Change This View}` before the summary if the draft lacks one.
 
+**Lean spine review:** before finishing integration, read `formal/README.md` (module map), skim the matching `formal/AlignmentProofSpine/*.lean` module(s), and calibrate claims to **proof** / **counterexample** / **bridge** status. Record prose–spine mismatches in the session log or `metadata/TODO.md`.
+
 Define custom environments in `book.tex` or `metadata/preamble.tex`:
 
 ```latex
@@ -1277,14 +1279,15 @@ For each chapter:
 4. Write a 1-page chapter outline.
 5. Write the plain-language section first.
 6. Write the formal section second.
-7. Add a worked example.
-8. Add at least one counterexample.
-9. Add one “shaky point” section.
-10. Add references.
-11. Update claims, assumptions, and uncertainty ledgers.
-12. Compile the book.
-13. Fix all LaTeX errors.
-14. Commit changes.
+7. **Review the Lean proof spine** for this chapter: `formal/README.md` module map → matching `formal/AlignmentProofSpine/*.lean`; calibrate claims to proof / counterexample / bridge; note mismatches in the session log or `metadata/TODO.md`.
+8. Add a worked example.
+9. Add at least one counterexample.
+10. Add one “shaky point” section.
+11. Add references.
+12. Update claims, assumptions, and uncertainty ledgers.
+13. Compile the book.
+14. Fix all LaTeX errors.
+15. Commit changes.
 
 Use this commit pattern:
 

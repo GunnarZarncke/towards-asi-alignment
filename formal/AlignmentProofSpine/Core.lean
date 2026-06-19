@@ -64,9 +64,7 @@ axiom UpdateOperator : Type
 
 /-! ## Quantities over systems (abstract, integer-valued) -/
 
-axiom Risk : System → Int
 axiom Control : System → Int
-axiom CorrectionCapacity : System → Int
 axiom CorrectionVisibility : System → Int
 axiom SelfControl : System → Int
 
