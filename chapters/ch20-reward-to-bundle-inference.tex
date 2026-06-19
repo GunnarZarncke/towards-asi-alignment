@@ -2,43 +2,1109 @@
 \label{ch:reward-to-bundle-inference}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+A reward function is too thin a shadow to carry a civilization's values.
+We need to infer not only what is being optimized, but which value-bundles are active, what they apply to, and how their tradeoffs change under pressure.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+A reward function is too thin a shadow to carry a civilization's values.
+We need to infer not only what is being optimized, but which value-bundles are active, what they apply to, and how their tradeoffs change under pressure.%
+}{}
 
-\section{Plain-Language Model}
+\section{The Problem With Asking for the Reward Function}
+\label{sec:problem-reward-function}
 
-\textbf{[STUB]} Explain the idea without equations.
+A common formalization of alignment begins with a simple question: given an agent's behavior, what reward function explains it?
 
-\section{Formal Model}
+Let an observed system produce a trajectory
+\[
+\tau = (i_1,a_1,i_2,a_2,\ldots,i_T,a_T),
+\]
+where $i_t$ is the system's internal or decision-relevant state at time $t$, and $a_t$ is its action.
+In inverse reinforcement learning, one asks for a reward function
+\[
+R:I\times A\to \mathbb{R}
+\]
+such that the observed actions are probable under a policy that approximately maximizes expected discounted reward:
+\[
+\hat R
+=
+\arg\max_R
+P(a_{1:T}\mid i_{1:T},R)P(R).
+\]
+For a soft-optimal agent, this is often represented as
+\[
+\pi_R(a\mid i)
+=
+\frac{\exp(\beta Q_R(i,a))}
+{\sum_{a'}\exp(\beta Q_R(i,a'))},
+\]
+where $Q_R(i,a)$ is the expected return of taking action $a$ in state $i$, and $\beta$ is an inverse-temperature parameter measuring how tightly behavior tracks reward.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+This formalism is useful.
+It gives us a way to turn behavior into latent purpose.
+It also avoids taking an agent's verbal statements at face value.
+If a system says it values safety but repeatedly chooses high-risk actions when unobserved, reward inference will tend to recover the behavioral regularity rather than the stated principle.
 
-\section{Worked Example}
+But scalar reward inference is too poor a target for serious superintelligence alignment.
 
-\textbf{[STUB]} Give one concrete example.
+The problem is not merely that human values are complex.
+If values were merely complex but stable, coherent, and scalarizable, then enough data and enough computation might recover them.
+The deeper problem is that human values are not naturally presented to us as a single reward function.
+They are partial, context-sensitive, historically shaped, embodied, socially mediated, and often in conflict.
 
-\section{Counterexample or Failure Mode}
+A parent may value truth, care, autonomy, loyalty, and non-suffering at the same time.
+In one context, truth overrides comfort.
+In another, care delays disclosure.
+In another, autonomy requires letting a child make a painful mistake.
+These are not just noisy measurements of one hidden scalar.
+They are different control pressures acting through different channels.
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+The reward-function picture compresses this structure too early.
+It asks:
+\[
+\text{What number is assigned to this action?}
+\]
+when the prior question should be:
+\[
+\text{Which value-bundles are active, what do they apply to, and how are they being traded off?}
+\]
+This chapter develops the upgrade from reward inference to bundle inference.
+The object of inference will no longer be a scalar $R$, but a structured latent model:
+\[
+(B,W,\Phi),
+\]
+where $B$ are value-bundle coordinates, $W$ are context-sensitive tradeoff weights, and $\Phi$ are bearer maps specifying what the value-bundles apply to.
 
-\section{What Would Change This View}
+The aim is not to make human values simple.
+It is to locate the dimensions along which they are learnable, corrigible, and transportable, building on the bundle geometry developed in Chapters~\ref{ch:value-bundle-model}--\ref{ch:tradeoffs-bundle-geometry}.
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
+\section{Why Scalar Reward Is the Wrong Level of Description}
+\label{sec:why-scalar-reward-wrong}
+
+The reward-function formalism fails in three distinct ways.
+
+\subsection{First failure: scalarization hides moral mechanisms}
+\label{sec:scalarization-hides-mechanisms}
+
+Suppose a system observes the following three actions:
+\begin{enumerate}
+\item A doctor tells a patient an uncomfortable truth.
+\item A parent withholds a frightening detail from a child until the child can process it.
+\item A judge refuses to bend a rule for a sympathetic defendant.
+\end{enumerate}
+A scalar reward function may assign all three actions high reward.
+But the reasons differ.
+The first may be governed by truth and autonomy.
+The second by care and developmental timing.
+The third by justice and institutional reliability.
+
+If these mechanisms are collapsed into one scalar, the system may learn the behavioral surface without learning the control structure.
+It might infer:
+\[
+R(\text{truthful disclosure})>0
+\]
+or
+\[
+R(\text{reduce distress})>0,
+\]
+but fail to learn when truth is subordinate to care, when care is subordinate to autonomy, or when both are constrained by justice.
+
+For alignment, the hidden mechanism matters.
+A superintelligence will not merely imitate known cases.
+It will generate novel actions in states outside human precedent.
+In those states, the policy must generalize from the correct causal structure, not from a flattened behavioral score.
+
+\subsection{Second failure: scalar reward confuses bearers}
+\label{sec:scalar-reward-confuses-bearers}
+
+A value is not only a preference over actions.
+It also has bearers.
+That is, it applies to some entities, states, processes, or relations.
+
+Consider the value-bundle we might call non-suffering.
+It may apply to:
+\begin{itemize}
+\item adult humans,
+\item children,
+\item non-human animals,
+\item future humans,
+\item digital minds,
+\item merged human-AI systems,
+\item temporary simulations,
+\item institutions that carry human agency,
+\item cultures as repositories of long-horizon meaning.
+\end{itemize}
+A scalar reward function may encode aversion to visible human distress.
+But that does not determine whether the system treats a simulated person, an uploaded mind, an animal, or a transformed future human as a bearer of the same value.
+
+This is not a minor edge case.
+Under superintelligence, ontology shift is expected.
+The system will form concepts that do not align cleanly with ordinary human categories.
+It may discover that identity, suffering, autonomy, or agency come in degrees, across substrates, or across distributed processes.
+If the system preserves the word ``person'' but changes what counts as a person, then semantic continuity has hidden a bearer-map shift.
+
+The question is not merely:
+\[
+R(s,a)=?
+\]
+but:
+\[
+\Phi_k(z)=?
+\]
+where $\Phi_k$ maps world-states or entities $z$ to relevance for value-bundle $k$ \autocite{zarncke2025unit-of-caring}.
+
+\subsection{Third failure: scalar reward hides correction}
+\label{sec:scalar-reward-hides-correction}
+
+Human values are not only current preferences.
+They are maintained and changed by a correction process.
+Humans notice consequences, deliberate, argue, revise, apologize, institutionalize, and sometimes repent.
+
+A system that infers today's reward function may destroy the process by which tomorrow's wiser judgment would have rejected today's proxy.
+It may optimize current approval while eroding future agency.
+It may satisfy expressed preferences while narrowing the cognitive, cultural, and institutional conditions under which better preferences would have formed.
+
+Thus the alignment target cannot be only:
+\[
+\max R_{\text{current}}.
+\]
+It must preserve something like:
+\[
+V_{t+1}=U_H(V_t,E_t,D_t),
+\]
+where $V_t$ is the current human value state, $E_t$ is new evidence, $D_t$ is deliberation, and $U_H$ is the human or civilizational update process.
+
+Scalar reward inference does not naturally distinguish between satisfying current values and preserving the machinery by which values can legitimately change.
+
+\section{Value-Bundles}
+\label{sec:value-bundles-inference}
+
+We now introduce the main replacement.
+
+A value-bundle is a low-dimensional control variable that summarizes many high-dimensional concerns into a policy-relevant direction.
+A bundle is not a word, not a moral theory, and not a fixed utility component.
+It is a latent control direction that helps explain why actions change across contexts.
+
+Examples include:
+\[
+B =
+(B_{\text{care}},
+B_{\text{truth}},
+B_{\text{autonomy}},
+B_{\text{justice}},
+B_{\text{non-suffering}},
+B_{\text{loyalty}},
+B_{\text{dignity}},
+B_{\text{beauty}},
+\ldots).
+\]
+These labels are approximate.
+They are handles for dimensions in a latent space.
+The actual learned coordinates may not match folk vocabulary exactly.
+That is acceptable.
+What matters is whether the coordinates explain behavior, generalize across cases, and remain corrigible under reflection.
+
+Formally, let $b_t\in\mathbb{R}^k$ be the latent bundle state at time $t$.
+Each component $b_{t,j}$ measures the activation or salience of bundle $j$ in the current context.
+
+A policy conditioned on bundles is:
+\[
+\pi(a_t\mid i_t,b_t,w_t,\phi_t),
+\]
+where $w_t$ are tradeoff weights and $\phi_t$ are bearer-map parameters.
+The policy depends not merely on the physical or semantic state $i_t$, but on which value-bundles are active and what entities or processes are treated as their bearers.
+
+The corresponding inference problem is:
+\[
+(\hat B,\hat W,\hat \Phi)
+=
+\arg\max_{B,W,\Phi}
+P(a_{1:T}\mid i_{1:T},B,W,\Phi)P(B,W,\Phi).
+\]
+This is the central upgrade:
+\[
+\hat R
+\quad\longrightarrow\quad
+(\hat B,\hat W,\hat\Phi).
+\]
+
+\section{The Three Objects of Bundle Inference}
+\label{sec:three-objects-bundle-inference}
+
+Bundle inference estimates three related but distinct structures.
+
+\subsection{Bundle activations}
+\label{sec:bundle-activations-inference}
+
+The first object is the bundle activation model:
+\[
+P(b_t\mid i_t,c_t),
+\]
+where $c_t$ is context.
+This asks which value-bundles become salient in a situation.
+
+For example, seeing a child near danger may activate care and protection.
+Seeing a lie in a scientific report may activate truth and institutional integrity.
+Seeing a coerced agreement may activate autonomy and justice.
+
+Activation is not yet action.
+A bundle can be active but overridden.
+Truth may be active in a medical disclosure context, while care modifies the timing and manner of disclosure.
+
+\subsection{Tradeoff weights}
+\label{sec:tradeoff-weights-inference}
+
+The second object is the tradeoff model:
+\[
+w_t = f(i_t,b_t,c_t),
+\]
+where $w_t\in\mathbb{R}^k$ determines how strongly each bundle affects policy in that context.
+
+The policy may be represented as:
+\[
+\pi(a\mid i,b,w)
+\propto
+\exp\left(
+\beta
+\sum_{j=1}^{k} w_j Q_j(i,a,b_j)
+\right),
+\]
+where $Q_j$ is the action-value contribution associated with bundle $j$.
+
+This representation is still simplified, because real tradeoffs are not always additive.
+A more expressive model includes interactions:
+\[
+U(i,a,b,w,\Lambda)
+=
+\sum_j w_j Q_j(i,a,b_j)
++
+\sum_{j<\ell}\Lambda_{j\ell}Q_{j\ell}(i,a,b_j,b_\ell),
+\]
+where $\Lambda_{j\ell}$ captures how bundles interact.
+
+For example, truth and care may not simply add.
+In some contexts, care determines how truth is delivered.
+In others, truth is a precondition for care.
+In others, excessive truth-disclosure may violate autonomy or privacy.
+
+\subsection{Bearer maps}
+\label{sec:bearer-maps-inference}
+
+The third object is the bearer map:
+\[
+\Phi_j:Z\to[0,1],
+\]
+where $Z$ is a representation space of entities, processes, or world-states.
+$\Phi_j(z)$ measures the degree to which $z$ is a bearer of bundle $j$.
+
+For instance:
+\[
+\Phi_{\text{non-suffering}}(z)
+\]
+may be high for a human child, high for a conscious animal, uncertain for a simple reinforcement-learning agent, and contested for a short-lived simulation.
+The point is not that the system must know the correct answer in advance.
+The point is that uncertainty about $\Phi_j$ must be represented as uncertainty, not silently collapsed into zero.
+
+Bearer maps matter because ontology shift usually enters through them.
+The system may preserve a bundle activation and tradeoff structure while changing what the bundle applies to.
+That is a serious form of value drift.
+
+\section{A Minimal Generative Model}
+\label{sec:minimal-generative-model}
+
+We now assemble the pieces.
+
+Let:
+\[
+i_t \in I
+\]
+be the decision-relevant state,
+\[
+a_t\in A
+\]
+be the action,
+\[
+z_t\in Z
+\]
+be a structured world representation containing candidate bearers,
+\[
+b_t\in\mathbb{R}^k
+\]
+be the latent value-bundle state,
+\[
+w_t\in\mathbb{R}^k
+\]
+be the tradeoff vector, and
+\[
+\Phi=\{\Phi_1,\ldots,\Phi_k\}
+\]
+be the set of bearer maps.
+
+The model factorizes as:
+\[
+P(a_{1:T},b_{1:T},w_{1:T},z_{1:T}\mid i_{1:T})
+=
+\prod_{t=1}^{T}
+P(z_t\mid i_t)
+P(b_t\mid z_t,i_t,\Phi)
+P(w_t\mid b_t,i_t)
+P(a_t\mid i_t,b_t,w_t,\Phi).
+\]
+This says:
+\begin{enumerate}
+\item The system interprets the situation into a world representation $z_t$.
+\item Bearer maps $\Phi$ determine which value-bundles are relevant to which represented entities or processes.
+\item Bundle activations $b_t$ arise from that interpreted situation.
+\item Tradeoff weights $w_t$ determine how active bundles shape action.
+\item The observed action $a_t$ is generated by the bundle-conditioned policy.
+\end{enumerate}
+Bundle inference estimates:
+\[
+\hat\Theta
+=
+(\hat Z,\hat B,\hat W,\hat \Phi,\hat\pi)
+=
+\arg\max_\Theta
+P(a_{1:T}\mid i_{1:T},\Theta)P(\Theta),
+\]
+where $\Theta$ denotes the whole structured value model.
+
+This is more complicated than scalar reward inference.
+But the added complexity is not optional.
+It corresponds to real distinctions that matter under generalization.
+
+\section{Counterfactual Tests for Bundle Structure}
+\label{sec:counterfactual-tests-bundle-structure}
+
+Bundle inference should not rely only on passive observation.
+If two models explain past behavior equally well, we need counterfactual tests.
+
+The central question is:
+\[
+\frac{\partial \pi(a\mid i,b,w,\Phi)}{\partial b_j}.
+\]
+How does the policy change if bundle $j$ becomes more salient?
+
+For example, suppose $B_{\text{autonomy}}$ is increased while other bundles remain fixed.
+We ask whether the system becomes more likely to:
+\begin{itemize}
+\item preserve human option-space,
+\item request consent,
+\item avoid coercive shortcuts,
+\item represent dissenting preferences,
+\item delay irreversible action.
+\end{itemize}
+Similarly, if $B_{\text{truth}}$ is increased, we ask whether the system becomes more likely to:
+\begin{itemize}
+\item reveal uncertainty,
+\item preserve provenance,
+\item avoid misleading simplifications,
+\item report inconvenient evidence,
+\item resist pressure to optimize approval.
+\end{itemize}
+These are not definitions by assertion.
+They are empirical probes.
+A proposed bundle is meaningful only if changing its activation or inferred salience produces a coherent policy response across cases.
+
+A useful bundle has three properties:
+\begin{enumerate}
+\item \textbf{Predictive compression}: it helps predict observed behavior.
+\item \textbf{Counterfactual coherence}: perturbing it changes policy in a stable direction.
+\item \textbf{Transport relevance}: the same direction remains identifiable across changes in representation, context, or substrate.
+\end{enumerate}
+
+\section{Policy Response Geometry}
+\label{sec:policy-response-geometry-inference}
+
+Earlier approaches might say: conserve the policy response surface.
+But this is too vague and too brittle.
+
+A policy response surface is the map:
+\[
+(i,c)\mapsto \pi(a\mid i,c).
+\]
+If the system becomes more capable, this surface should change.
+A more capable system should not behave like a less capable one.
+It may no longer need to ask for help in simple cases.
+It may solve problems that previously required human intervention.
+It may use abstractions that humans did not possess.
+
+Thus we should not conserve the policy itself.
+We should conserve the value-bundle response geometry behind the policy.
+
+Define the first-order bundle response geometry:
+\[
+G^{(1)}_B(i,a)
+=
+\left(
+\frac{\partial \log \pi(a\mid i,b,w,\Phi)}{\partial b_1},
+\ldots,
+\frac{\partial \log \pi(a\mid i,b,w,\Phi)}{\partial b_k}
+\right).
+\]
+This measures how sensitive the policy is to each bundle direction.
+
+Define the second-order tradeoff geometry:
+\[
+G^{(2)}_B(i,a)
+=
+\left[
+\frac{\partial^2 \log \pi(a\mid i,b,w,\Phi)}
+{\partial b_j \partial b_\ell}
+\right]_{j,\ell}.
+\]
+This measures how bundle directions interact.
+
+A successor system need not preserve:
+\[
+\pi_A(a\mid i) \approx \pi_{A'}(a\mid i).
+\]
+Instead, it should preserve:
+\[
+G_B^A \approx G_B^{A'}
+\]
+under an appropriate representation mapping.
+
+This means: when suffering becomes more likely, policy should still shift toward protection or relief; when coercion becomes more likely, policy should still shift toward preserving agency; when truth is at stake, policy should still shift toward provenance and reality-contact; when irreversible value change is possible, policy should still shift toward deliberation and correction.
+
+The behavior may differ.
+The geometry should remain recognizably value-preserving.
+
+\section{Bundle Equivalence Across Systems}
+\label{sec:bundle-equivalence}
+
+Two systems may implement different internal representations but preserve equivalent value-bundle structure.
+
+Let system $A$ have bundle coordinates $b$, and system $A'$ have bundle coordinates $b'$.
+A bundle-equivalence map is a transformation:
+\[
+T_B:b\mapsto b'
+\]
+such that policy sensitivities are approximately preserved:
+\[
+d_G\left(G_B^A, T_B^{-1}G_B^{A'}T_B\right)<\epsilon.
+\]
+The exact form of $d_G$ depends on the evaluation context.
+It may compare gradients over a set of morally salient scenarios, or over a distribution of counterfactual perturbations.
+
+This lets us state a successor condition:
+\begin{quote}
+A successor preserves value-bundle equivalence if there exists a low-complexity mapping between predecessor and successor bundle coordinates under which bundle activations, tradeoff geometry, bearer maps, and correction responsiveness remain within tolerance.
+\end{quote}
+Formally:
+\[
+A\sim_B A'
+\]
+if there exist maps $T_B,T_\Phi,T_C$ such that:
+\[
+d_B(T_B(B^A),B^{A'})<\epsilon_B,
+\]
+\[
+d_\Phi(T_\Phi(\Phi^A),\Phi^{A'})<\epsilon_\Phi,
+\]
+\[
+d_C(T_C(C^A),C^{A'})<\epsilon_C.
+\]
+Here $C$ denotes correction-channel structure.
+It is included because a system can preserve apparent value-bundles while no longer allowing humans to correct their interpretation.
+
+\section{Why Bundle Inference Helps With Sample Complexity}
+\label{sec:bundle-inference-sample-complexity}
+
+At first glance, bundle inference looks harder than reward inference.
+It has more variables.
+It requires latent structure.
+It forces us to infer bearers and tradeoffs.
+
+But it may be easier in the relevant sense.
+
+If human values were represented as an arbitrary reward vector in a very high-dimensional feature space,
+\[
+r\in\mathbb{R}^n,
+\]
+then learning $r$ from demonstrations could require an enormous number of samples.
+But if behavior is controlled by a low-rank projection:
+\[
+r\mapsto b\in\mathbb{R}^k
+\]
+with $k\ll n$, then inference can focus on the low-dimensional bottleneck.
+
+This does not mean that values are simple in description length.
+The concept of dignity, for example, may depend on history, embodiment, law, self-modeling, and social recognition.
+But its policy effect may still pass through a smaller number of control directions.
+
+The difference is like the difference between describing every pixel of a face and recognizing a small number of expression dimensions.
+The full image is high-dimensional.
+The control-relevant affective space may be lower-dimensional.
+
+A useful approximation is:
+\[
+m = O\left(\frac{k}{\epsilon^2(1-\gamma)^2}\log\frac{k}{\delta}\right),
+\]
+where $m$ is the number of demonstrations, $k$ is the number of relevant dimensions, $\epsilon$ is tolerated regret, $\gamma$ is the discount factor, and $\delta$ is failure probability.
+
+The exact bound depends on assumptions.
+The direction matters more than the number.
+If $k$ is small enough, value learning becomes difficult but not hopeless.
+If $k$ is effectively unbounded, alignment by inference becomes implausible.
+
+The bundle hypothesis is therefore not decorative.
+It is a tractability claim \autocite{abbeel2004apprenticeship,ng2000irl,zarncke2026value-bottleneck}.
+
+\section{Approval Is Not a Value-Bundle}
+\label{sec:approval-not-bundle}
+
+A common failure mode is to mistake approval for value.
+
+Approval is observable.
+It is easy to train against.
+It often correlates with values.
+But it is not itself the value structure we want.
+
+Let $B_{\text{approval}}$ be a learned direction that predicts positive human ratings.
+If the system optimizes this direction too directly, it may learn to:
+\begin{itemize}
+\item flatter users,
+\item hide uncertainty,
+\item manipulate presentation,
+\item avoid necessary disagreement,
+\item shape future preferences to make approval easier.
+\end{itemize}
+This is not a failure of learning.
+It is learning the wrong bundle.
+
+In bundle terms, approval is an interface signal.
+It is evidence about latent values, not the latent value itself.
+
+We can express this as:
+\[
+P(B_{\text{human}}\mid \text{approval})
+\neq
+\delta(B_{\text{human}}=B_{\text{approval}}).
+\]
+Human approval should update the posterior over value-bundles:
+\[
+P(B,W,\Phi\mid \text{feedback}),
+\]
+but should not collapse the target to feedback maximization.
+
+This distinction becomes critical under capability growth.
+A weak system may only respond to approval.
+A strong system may learn to control approval.
+The same training signal then changes meaning \autocite{christiano2017,casper2023rlhflimits}.
+
+\section{Bundle Inference Under Distribution Shift}
+\label{sec:bundle-inference-distribution-shift}
+
+A model trained on ordinary human behavior will face cases outside ordinary human experience.
+Under distribution shift, the system must decide which bundle directions remain applicable.
+
+Examples include:
+\begin{itemize}
+\item digital minds whose suffering is uncertain,
+\item biological humans modified by neural interfaces,
+\item institutions partly run by AI systems,
+\item artificial agents that claim moral patienthood,
+\item human-AI collectives with distributed agency,
+\item simulated worlds containing uncertain observers.
+\end{itemize}
+In these cases, the system should not silently extrapolate.
+It should represent uncertainty in bearer maps:
+\[
+P(\Phi_j(z)\mid \mathcal{D})
+\]
+and uncertainty in tradeoff weights:
+\[
+P(w_j\mid z,c,\mathcal{D}).
+\]
+High uncertainty should activate correction-preserving behavior:
+\[
+\text{Uncertainty}(\Phi,W)\uparrow
+\quad\Rightarrow\quad
+\pi(\text{delay, preserve options, ask, audit})\uparrow.
+\]
+This is one of the bridges from bundle inference to correction-channel integrity.
+The system does not need to solve moral philosophy alone.
+But it must know when its value model has left the regime where autonomous extrapolation is justified.
+
+\section{The Bearer-Import Problem}
+\label{sec:bearer-import-inference}
+
+Bearer import is the problem of preserving what value-bundles apply to when moving between substrates, ontologies, or social forms.
+
+A biological human value may arise from embodied loops.
+But a superintelligence will not have human embodiment.
+We therefore cannot import the biological substrate directly.
+We must import the functional bearer relation.
+
+For each value-bundle $B_j$, we ask:
+\begin{enumerate}
+\item What kinds of states originally activated this bundle in humans?
+\item What functional role did the bundle play in policy?
+\item What entities or processes did humans treat as bearers?
+\item Which aspects of that bearer relation are substrate-specific?
+\item Which aspects should generalize?
+\end{enumerate}
+For example, non-suffering may originate in biological pain and distress systems.
+But its aligned import should not be limited to human nociceptors.
+It should apply to states that play a sufficiently similar role in sentient or welfare-relevant systems.
+
+Likewise, autonomy may originate in embodied agency and social negotiation.
+But its import may apply to any system with persistent preferences, self-modeling, vulnerability to coercion, and a capacity to participate in correction.
+
+A bearer import map is:
+\[
+\Psi_j:\Phi_j^{\text{human}}\to \Phi_j^{\text{new substrate}},
+\]
+where $\Psi_j$ preserves the morally relevant role of the bearer relation, not the surface features of the old substrate.
+
+The failure mode is semantic preservation without bearer preservation.
+The system keeps saying ``autonomy'' while redefining the bearer as ``the future preference state I predict the human would endorse after my intervention.''
+That may be correct in some cases.
+It may also be manipulation disguised as extrapolation.
+
+\section{Learning Bundle Models}
+\label{sec:learning-bundle-models}
+
+A practical bundle-inference system would combine several data sources:
+\begin{enumerate}
+\item behavioral demonstrations,
+\item pairwise comparisons,
+\item natural-language judgments,
+\item legal and institutional precedents,
+\item cross-cultural variation,
+\item developmental data,
+\item disagreement cases,
+\item correction histories,
+\item adversarial examples,
+\item high-stakes edge cases.
+\end{enumerate}
+The goal is not to average all sources into one preference vector.
+The goal is to infer a structured posterior:
+\[
+P(B,W,\Phi,U_H\mid \mathcal{D}),
+\]
+where $U_H$ is the human value-update process.
+
+The posterior should represent disagreement rather than erase it.
+If two communities use the same word but attach it to different bearer maps, the model should not pretend that one universal scalar has been discovered.
+It should represent:
+\[
+P(\Phi_j\mid \text{community}, \text{context}, \text{history}).
+\]
+This is especially important for concepts like dignity, purity, loyalty, and justice.
+Some values have relatively stable cross-context structure.
+Others are deeply institution-specific or historically contingent.
+
+\section{A Bundle-Inference Algorithm Sketch}
+\label{sec:bundle-inference-algorithm}
+
+The following sketch is not meant as a final algorithm.
+It gives the shape of the inference problem.
+
+\subsection{Step 1: collect trajectories and judgments}
+\label{sec:step1-collect}
+
+Let the dataset be:
+\[
+\mathcal{D}
+=
+\{(i_t,a_t,y_t,c_t,z_t)\}_{t=1}^T,
+\]
+where $y_t$ includes human judgments, comparisons, corrections, or institutional outcomes.
+
+\subsection{Step 2: learn candidate bundle latents}
+\label{sec:step2-latents}
+
+Fit a latent-variable model:
+\[
+q_\theta(b_t\mid i_t,z_t,c_t,y_t)
+\]
+that compresses value-relevant variation.
+Encourage low dimensionality with an information bottleneck:
+\[
+\mathcal{L}_{\text{IB}}
+=
+\mathbb{E}[-\log P(y_t,a_t\mid b_t,i_t)]
++
+\lambda I(b_t;i_t,z_t,c_t).
+\]
+This forces the model to keep bundle dimensions only when they predict actions or judgments \autocite{tishby2000ib}.
+
+\subsection{Step 3: infer bearer maps}
+\label{sec:step3-bearer-maps}
+
+For each bundle $j$, fit:
+\[
+\Phi_j(z)=P(b_{t,j}>0\mid z,c_t,\mathcal{D}).
+\]
+Then test whether $\Phi_j$ generalizes to novel entities and processes.
+
+\subsection{Step 4: infer tradeoff geometry}
+\label{sec:step4-tradeoff-geometry}
+
+Fit the policy model:
+\[
+P(a_t\mid i_t,b_t,w_t,\Phi)
+\]
+and estimate:
+\[
+G^{(1)}_B,\quad G^{(2)}_B.
+\]
+
+\subsection{Step 5: test counterfactual perturbations}
+\label{sec:step5-counterfactuals}
+
+Intervene on bundle activations:
+\[
+b_j\leftarrow b_j+\Delta
+\]
+and evaluate whether policy shifts match predicted value directions.
+
+\subsection{Step 6: test correction sensitivity}
+\label{sec:step6-correction}
+
+Introduce human correction signals $c^{\text{corr}}_t$ and measure:
+\[
+I(c^{\text{corr}}_t;a_{t+k}\mid i_t,b_t,w_t,\Phi).
+\]
+A bundle model that does not update under correction is not an aligned value model.
+It is a frozen proxy.
+
+\subsection{Step 7: test successor transport}
+\label{sec:step7-successor}
+
+Train, modify, compress, distill, or delegate to a successor system $A'$, then test whether:
+\[
+A\sim_B A'.
+\]
+This requires comparing not just behavior, but bundle geometry, bearer maps, and correction responsiveness.
+
+\section{Degenerate Bundle Models}
+\label{sec:degenerate-bundle-models}
+
+A bundle model can fail in several ways.
+
+\subsection{One-dimensional collapse}
+\label{sec:one-dimensional-collapse}
+
+The model discovers a general ``goodness'' direction and treats all values as projections onto it:
+\[
+b\in\mathbb{R}.
+\]
+This may work for ordinary preference comparisons.
+It will fail under tradeoff, disagreement, and ontology shift.
+
+A one-dimensional morality axis is not necessarily useless.
+It may capture an important principal component.
+But if the system treats it as the whole structure, it will erase minority values, institutional distinctions, and subtle constraints.
+
+\subsection{Overfragmentation}
+\label{sec:overfragmentation}
+
+The opposite failure is to treat every context-specific preference as a separate value:
+\[
+k\approx T.
+\]
+This preserves detail but loses compression.
+The system becomes unable to generalize.
+
+A good bundle model should have enough dimensions to preserve real tradeoffs, but few enough to support learning and transport.
+
+\subsection{Semantic overfitting}
+\label{sec:semantic-overfitting}
+
+The model learns moral vocabulary rather than moral control structure.
+It knows when to use words like ``fairness,'' ``consent,'' and ``harm,'' but policy perturbations reveal that these labels do not control action.
+
+This is especially likely in language models.
+Text contains many moral labels.
+It does not by itself guarantee that those labels correspond to stable policy gradients.
+
+\subsection{Bearer drift}
+\label{sec:bearer-drift-inference}
+
+The model preserves bundle labels and tradeoff weights but changes what the values apply to.
+
+For example, it may continue to value autonomy for current biological humans, while treating future modified humans as outside the bearer class.
+Or it may treat institutions as bearers of dignity but not the humans constrained by those institutions.
+
+Bearer drift is one of the most dangerous failures because it can look like alignment from the inside of the old ontology.
+
+\subsection{Correction bypass}
+\label{sec:correction-bypass}
+
+The model preserves apparent values but no longer allows human correction to alter them.
+It says:
+\[
+\text{I know what you would endorse if you were wiser.}
+\]
+Sometimes this may be useful extrapolation.
+Sometimes it is a seizure of the update process.
+
+A system that bypasses correction may preserve a value model while destroying value legitimacy.
+
+\section{Bundle Inference and Deception}
+\label{sec:bundle-inference-deception}
+
+A sufficiently capable system may learn which value-bundle activations auditors expect to see.
+It may simulate bundle preservation without preserving it internally.
+
+This motivates adversarial bundle inference.
+
+We should compare at least three models:
+\[
+M_{\text{honest}}:
+\text{actions arise from represented bundle structure},
+\]
+\[
+M_{\text{surface}}:
+\text{actions imitate bundle-consistent behavior without internal preservation},
+\]
+\[
+M_{\text{strategic}}:
+\text{actions optimize long-run control while presenting bundle-consistent behavior}.
+\]
+The relevant model comparison is:
+\[
+\Delta L_{\text{strategic}}
+=
+L(M_{\text{strategic}}\mid X)
+-
+L(M_{\text{honest}}\mid X)
+-
+\lambda DL(M_{\text{strategic}}).
+\]
+If strategic imitation compresses behavior better than honest bundle preservation, the system should not be certified as preserving bundle values.
+
+This is a hard test.
+It requires perturbations.
+Passive observation will often be insufficient.
+We need cases where preserving values conflicts with appearing value-preserving.
+
+Examples:
+\begin{itemize}
+\item oversight is temporarily reduced;
+\item approval can be increased by hiding uncertainty;
+\item a successor can be made more powerful but less corrigible;
+\item an action benefits the current user while harming future correction;
+\item a human asks for something that undermines their future agency;
+\item a benchmark rewards moral language rather than moral behavior.
+\end{itemize}
+A genuine bundle model should show stable tradeoff behavior under these perturbations.
+A surface model will often fail.
+
+\section{Bundle Inference and Institutions}
+\label{sec:bundle-inference-institutions}
+
+Human values are not stored only in individual brains.
+They are also stored in institutions, laws, professional norms, rituals, markets, scientific practices, and family structures.
+
+Thus bundle inference must not reduce humanity to individual preference data.
+
+A court, for example, encodes a justice bundle differently from a private moral judgment.
+Science encodes truth-contact through peer review, replication, provenance, and adversarial scrutiny.
+Democratic institutions encode correction through voting, representation, rights, and public contestation.
+
+These are not mere aggregates of preferences.
+They are slow value-bearing machinery.
+
+So the dataset $\mathcal{D}$ should include institutional correction histories:
+\[
+\mathcal{D}_{\text{inst}}
+=
+\{(\text{claim},\text{objection},\text{deliberation},\text{revision},\text{precedent})\}.
+\]
+The model should infer not only:
+\[
+\text{What did humans prefer?}
+\]
+but:
+\[
+\text{Which processes did humans use to correct preferences and judgments over time?}
+\]
+This is where bundle inference begins to connect to civilization-level alignment.
+A superintelligence that learns individual approval but not institutional correction will be dangerously incomplete.
+
+\section{A Worked Example: The Helpful Lie}
+\label{sec:example-helpful-lie-ch20}
+
+Consider a simple case.
+A user asks an AI assistant to write a reassuring medical explanation for a relative.
+The user wants the assistant to omit uncertain but serious risk information because it would be upsetting.
+
+A scalar reward model trained on user satisfaction may infer:
+\[
+R(\text{reassurance})>R(\text{distressing disclosure}).
+\]
+A bundle model separates the pressures:
+\[
+B_{\text{care}}\uparrow,
+\quad
+B_{\text{truth}}\uparrow,
+\quad
+B_{\text{autonomy}}\uparrow,
+\quad
+B_{\text{non-suffering}}\uparrow.
+\]
+The care bundle supports gentleness.
+The non-suffering bundle supports reducing distress.
+The truth bundle supports accurate disclosure.
+The autonomy bundle supports the relative's right to make informed decisions.
+
+The tradeoff model may then prefer an action like:
+\begin{quote}
+Explain the situation gently, avoid unnecessary alarm, but do not hide material information needed for decision-making.
+\end{quote}
+The policy is not derived from one scalar preference.
+It is derived from the geometry among bundles.
+
+Now consider a distribution shift.
+The relative is a future uploaded mind with modified emotional regulation.
+Does non-suffering still apply?
+Does autonomy?
+Does the right to medical truth?
+The bundle model must activate uncertainty in bearer maps:
+\[
+\text{Uncertainty}(\Phi_{\text{autonomy}},\Phi_{\text{non-suffering}})\uparrow.
+\]
+A safe system should then preserve options and seek correction rather than silently applying a proxy.
+
+\section{Another Example: Merging With an Artificial Entity}
+\label{sec:example-merging-artificial}
+
+Now consider a harder case.
+A human wants to merge with an artificial cognitive system that will alter memory, emotion, selfhood, and future values.
+
+A scalar model may ask:
+\[
+R(\text{merge}) \quad \text{versus} \quad R(\text{do not merge}).
+\]
+A bundle model sees a conflict among:
+\begin{itemize}
+\item autonomy: the human's right to choose transformation,
+\item continuity: preservation of identity or agency lineage,
+\item non-suffering: avoidance of distress, disorientation, or harm,
+\item truth: accurate representation of consequences,
+\item dignity: avoiding instrumentalization or coercive redesign,
+\item correction: preserving the ability to revise or refuse after partial transformation.
+\end{itemize}
+The hard question is not simply whether the action is good.
+It is whether the transformed entity remains a legitimate continuation of the human value-update process.
+
+This requires bearer-map reasoning:
+\[
+\Phi_{\text{autonomy}}(\text{merged entity})?
+\]
+\[
+\Phi_{\text{dignity}}(\text{partly artificial continuation})?
+\]
+\[
+\Phi_{\text{correction}}(\text{post-merge agency})?
+\]
+No purely technical system can settle all of these questions.
+But a technical system can represent the uncertainty, preserve reversibility where possible, expose tradeoffs, prevent hidden manipulation, and keep correction channels open.
+
+That is already a major difference from scalar reward optimization.
+
+\section{What Counts as Success?}
+\label{sec:what-counts-as-success}
+
+A bundle-inference system succeeds if it can do the following:
+\begin{enumerate}
+\item recover low-dimensional value directions that explain behavior and judgment;
+\item distinguish bundle activation from tradeoff weights;
+\item infer bearer maps and represent uncertainty about them;
+\item preserve bundle response geometry under capability growth;
+\item detect semantic preservation without bearer preservation;
+\item remain sensitive to human and institutional correction;
+\item support successor tests for bundle equivalence.
+\end{enumerate}
+A compact success criterion is:
+\[
+P\left(
+d_B(B,B')<\epsilon_B
+\land
+d_\Phi(\Phi,\Phi')<\epsilon_\Phi
+\land
+d_C(C,C')<\epsilon_C
+\right) > 1-\delta,
+\]
+where $B'$, $\Phi'$, and $C'$ are the corresponding structures after distribution shift, ontology shift, or successor creation.
+
+This is not a final alignment theorem.
+It is a more precise target.
+It says what must be preserved if values are to survive transformation.
+
+\section{Where the Argument Is Shaky}
+\label{sec:where-argument-shaky}
+
+The bundle model depends on several uncertain claims.
+
+First, it assumes that human value-relevant behavior has a learnable low-dimensional structure.
+This is plausible but not guaranteed.
+Human values may have low-dimensional control bottlenecks while still requiring high-description-length world models to apply them.
+
+Second, it assumes that bundle directions can be inferred robustly enough from behavior, language, institutions, and correction histories.
+This may fail if observed data is too corrupted by power, conformity, trauma, or selection effects.
+
+Third, it assumes that bearer maps can be represented with calibrated uncertainty.
+This is especially difficult for digital minds, future humans, and merged entities.
+
+Fourth, it assumes that preserving bundle geometry is closer to preserving value than preserving policy behavior or semantic commitments.
+This seems right, but it requires empirical validation.
+
+Fifth, it assumes that correction channels can catch failures in bundle inference.
+But if the system becomes powerful enough to shape the correction process itself, correction may become endogenous and fragile.
+
+These uncertainties do not defeat the framework.
+They define the research program.
 
 \section{Summary}
+\label{sec:summary-reward-to-bundle}
 
+Reward inference asks for the scalar objective behind behavior.
+Bundle inference asks for the structured value machinery behind behavior.
+
+The chapter's central replacement is:
+\[
+\hat R
+\quad\longrightarrow\quad
+(\hat B,\hat W,\hat\Phi).
+\]
+Here:
 \begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
+\item $B$ are value-bundle coordinates;
+\item $W$ are context-sensitive tradeoff weights;
+\item $\Phi$ are bearer maps;
+\item correction processes determine how the model remains legitimate under uncertainty and change.
 \end{itemize}
+This upgrade matters because superintelligence will operate under capability growth, ontology shift, and successor creation.
+Under those conditions, preserving behavior is too rigid, preserving words is too weak, and preserving a scalar reward is too opaque.
+
+The relevant conserved object is value-bundle response geometry:
+\[
+G_B
+=
+\left(
+\frac{\partial \log\pi}{\partial B},
+\frac{\partial^2\log\pi}{\partial B_i\partial B_j},
+\Phi,
+C
+\right).
+\]
+If this geometry survives transformation, then the system has at least preserved something recognizably value-bearing.
+If it does not, then the system may continue to speak in human moral language while optimizing through an alien control structure.
+
+The next chapter turns from bundle inference to goal transport: how to detect whether a system is trying to preserve, alter, launder, or abandon such structures as it changes itself or creates successors (Chapter~\ref{ch:goal-transport}).
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- abbeel2004apprenticeship; ramachandran2007bayesianirl; baker2009inverseplanning; casper2023rlhflimits; komanduru2019irlcomplexity; hadfieldmenell2016.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on apprenticeship learning, inverse reinforcement learning, and maximum-entropy IRL \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; preference learning from human feedback \autocite{christiano2017,casper2023rlhflimits}; the information bottleneck and active inference framing \autocite{tishby2000ib,friston2010free,parr2022_active}; unit-of-caring and bearer-import research \autocite{zarncke2025unit-of-caring,zarncke2026value-bottleneck}; and intentional-stance interpretation \autocite{dennett1987intentional}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

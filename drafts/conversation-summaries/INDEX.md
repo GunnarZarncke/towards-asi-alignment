@@ -4,6 +4,17 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-19 | Chapter 25 correction-channel integrity draft | [2026-06-19-ch25-correction-channel-integrity-draft.md](2026-06-19-ch25-correction-channel-integrity-draft.md) |
+| 2026-06-19 | Chapter 24 correction causal channel draft | [2026-06-19-ch24-correction-causal-channel-draft.md](2026-06-19-ch24-correction-causal-channel-draft.md) |
+| 2026-06-19 | Chapter 23 transport types draft | [2026-06-19-ch23-transport-types-draft.md](2026-06-19-ch23-transport-types-draft.md) |
+| 2026-06-19 | Chapter 22 inferring goal transport draft | [2026-06-19-ch22-goal-transport-draft.md](2026-06-19-ch22-goal-transport-draft.md) |
+| 2026-06-19 | Chapter 21 compression test for intention draft | [2026-06-19-ch21-compression-test-intention-draft.md](2026-06-19-ch21-compression-test-intention-draft.md) |
+| 2026-06-19 | Chapter 20 reward-to-bundle inference draft | [2026-06-19-ch20-reward-to-bundle-inference-draft.md](2026-06-19-ch20-reward-to-bundle-inference-draft.md) |
+| 2026-06-19 | Chapter 19 tradeoffs bundle geometry draft | [2026-06-19-ch19-tradeoffs-bundle-geometry-draft.md](2026-06-19-ch19-tradeoffs-bundle-geometry-draft.md) |
+| 2026-06-19 | Chapter 18 bearer maps draft | [2026-06-19-ch18-bearer-maps-draft.md](2026-06-19-ch18-bearer-maps-draft.md) |
+| 2026-06-19 | Chapter 17 low-dimensional value learning draft | [2026-06-19-ch17-low-dimensional-value-learning-draft.md](2026-06-19-ch17-low-dimensional-value-learning-draft.md) |
+| 2026-06-19 | Chapter 16 value-bundle model draft | [2026-06-19-ch16-value-bundle-model-draft.md](2026-06-19-ch16-value-bundle-model-draft.md) |
+| 2026-06-19 | Chapter 15 values compressed control draft | [2026-06-19-ch15-values-compressed-control-draft.md](2026-06-19-ch15-values-compressed-control-draft.md) |
 | 2026-06-18 | Session end: Part III complete | [2026-06-18-session-end-part03-complete.md](2026-06-18-session-end-part03-complete.md) |
 | 2026-06-18 | Chapter 11 measuring capability draft | [2026-06-18-ch11-measuring-capability-draft.md](2026-06-18-ch11-measuring-capability-draft.md) |
 | 2026-06-18 | Session end: Part III drafts, structure | [2026-06-18-session-end-part03-drafts-structure.md](2026-06-18-session-end-part03-drafts-structure.md) |

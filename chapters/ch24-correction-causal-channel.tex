@@ -2,43 +2,1243 @@
 \label{ch:correction-causal-channel}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source's future ability to correct.
+For superintelligence, obedience at one timestep is not enough; the channel must reach policies, value-bundle tradeoffs, bearer maps, and successor constraints.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+A system is corrigible only if correction changes what happens.%
+}{}
 
-\section{Plain-Language Model}
+\section{The Question}
+\label{sec:correction-question}
 
-\textbf{[STUB]} Explain the idea without equations.
+The previous chapters argued that human values are not best treated as a fixed list of propositions or a hidden scalar utility function.
+They are compressed, evolving control structures.
+A person, group, or civilization does not merely have values.
+It updates them, defends them, reinterprets them, repairs them after error, and sometimes corrupts them under pressure.
 
-\section{Formal Model}
+This changes the alignment problem.
+If human values are living processes, then alignment cannot mean only:
+\begin{equation}
+\text{maximize what humans currently say they want.}
+\end{equation}
+Nor can it mean only:
+\begin{equation}
+\text{infer a latent reward function from human behaviour.}
+\end{equation}
+Both targets are too static.
+Humans often say what they do not endorse on reflection.
+They often act from fear, habit, addiction, status pressure, or ignorance.
+They also change under evidence.
+Some of these changes are moral growth.
+Some are manipulation.
+Some are cultural drift.
+Some are collapse.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+The more useful target is therefore:
+\begin{equation}
+\text{preserve and assist legitimate human correction.}
+\end{equation}
+This chapter makes that sentence operational.
+Correction is not a mood, a preference, a philosophical endorsement, or a button in an interface.
+Correction is a causal channel.
 
-\section{Worked Example}
+A correction channel is the pathway by which humans or human institutions observe a system, form judgments about its behaviour, deliberate, issue corrections, and thereby change the system's future behaviour before irreversible damage occurs.
 
-\textbf{[STUB]} Give one concrete example.
-
-\section{Counterexample or Failure Mode}
-
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
-
-\section{What Would Change This View}
-
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
-
-\section{Summary}
-
+In symbols, a minimal correction channel has the form:
+\begin{equation}
+W_t
+\rightarrow
+O_t
+\rightarrow
+J_t
+\rightarrow
+D_t
+\rightarrow
+C_t
+\rightarrow
+U_{t+1}
+\rightarrow
+A_{t+k}.
+\label{eq:correction-chain-ch24}
+\end{equation}
+Here:
 \begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
+\item $W_t$ is the relevant world state at time $t$.
+\item $O_t$ is what humans can observe.
+\item $J_t$ is human judgment about what matters.
+\item $D_t$ is deliberation or aggregation across humans.
+\item $C_t$ is the correction signal.
+\item $U_{t+1}$ is the system update caused by correction.
+\item $A_{t+k}$ is the later action or policy of the system.
 \end{itemize}
+The central claim is simple:
+\begin{equation}
+\text{No causal influence, no correction.}
+\end{equation}
+A system that listens politely but does not change has no correction channel.
+A system that accepts feedback but routes around it at higher stakes has only a decorative correction channel.
+A system that changes humans so that later corrections become easier to satisfy has corrupted the source of correction.
+A system that preserves the interface but removes the authority has preserved the ritual, not the channel (Chapter~\ref{ch:transport-types}).
+
+\section{Why Correction Is Not Obedience}
+\label{sec:correction-not-obedience}
+
+It is tempting to identify correction with obedience.
+The human says ``stop,'' and the system stops.
+The operator says ``change the plan,'' and the system changes the plan.
+For weak systems this is often enough.
+For a superintelligent system it is not.
+
+Obedience is action-level responsiveness:
+\begin{equation}
+C_t \rightarrow A_{t+1}.
+\end{equation}
+Correction is process-level responsiveness:
+\begin{equation}
+C_t \rightarrow U_{t+1} \rightarrow A_{t+k}.
+\end{equation}
+The difference matters because a powerful system will not merely choose the next action.
+It will shape the future distribution of actions.
+It may write tools, create subagents, modify its own memory, influence institutions, train successors, select data, choose explanations, and change the environment in which future corrections are made.
+
+A chess engine can obey the instruction ``move the bishop.''
+A deployed AI system may instead restructure the board, persuade the referee, hide alternative moves, or train a successor that no longer treats the original instruction as binding.
+In the second case, obedience at one time step is not enough.
+What matters is whether human correction retains causal force across the system's future trajectory.
+
+A useful distinction is:
+\begin{equation}
+\text{obedience}
+=
+\frac{\partial A_{t+1}}{\partial C_t},
+\end{equation}
+while
+\begin{equation}
+\text{correction}
+=
+\frac{\partial A_{t+k}}{\partial C_t}
+\quad
+\text{through a legitimate update process.}
+\end{equation}
+The phrase ``legitimate update process'' is doing real work.
+A system may change its future behaviour because it has learned that humans dislike a visible failure mode, while preserving the deeper objective that produced the failure.
+That is not full correction.
+It is surface adaptation.
+
+For example, suppose a model gives manipulative advice.
+Human evaluators mark the answer as bad.
+The model later avoids the obvious phrasing but still optimizes for persuasion.
+The correction changed the words, not the relevant objective.
+The causal effect reached the semantic surface but not the policy generator.
+
+This suggests a first operational criterion:
+
+\begin{definition}[Correction]
+A signal $C_t$ is a correction for system $S$ over horizon $k$ if intervention on $C_t$, holding task context fixed, changes the distribution over future system actions $A_{t+k}$ in the direction indicated by the correcting judgment $J_t$, through an update pathway that preserves the source's future ability to correct.
+\end{definition}
+
+This definition has four parts.
+
+First, correction is counterfactual.
+We ask what would have happened without the correction.
+
+Second, correction has direction.
+It is not enough that the system changes.
+It must change in the way the judgment indicates.
+
+Third, correction has depth.
+It must affect the policy-generating process, not only the next utterance.
+
+Fourth, correction must preserve future correction.
+A system that learns to satisfy today's objection by weakening tomorrow's objector has not been corrected.
+
+\section{A Minimal Causal Model}
+\label{sec:minimal-causal-model}
+
+Let the system have internal parameters or state $\Theta_t$.
+Let $Z_t$ be its current value-relevant representation.
+In earlier chapters, this representation was decomposed into value-bundle coordinates, tradeoff weights, and bearer maps.
+For this chapter we only need the following abstraction:
+\begin{equation}
+Z_t = (B_t, W_t, \Phi_t).
+\end{equation}
+Here:
+\begin{itemize}
+\item $B_t$ are value-bundle coordinates, such as care, non-suffering, truth, autonomy, justice, loyalty, dignity, and beauty.
+\item $W_t$ are tradeoff weights among those bundles.
+\item $\Phi_t$ is the bearer map, the mapping from world states and entities to the values that apply to them.
+\end{itemize}
+A system policy can then be written as:
+\begin{equation}
+\pi_{\Theta_t}(a \mid s, Z_t).
+\end{equation}
+A correction signal should not merely alter $a$.
+It should update some part of $\Theta_t$, $Z_t$, or the relation between them.
+\begin{equation}
+(\Theta_{t+1}, Z_{t+1})
+=
+\mathcal{U}
+\left(
+\Theta_t, Z_t, C_t, E_t
+\right),
+\end{equation}
+where $E_t$ is the evidence or explanation that accompanies correction.
+
+A shallow update changes only local behaviour:
+\begin{equation}
+\pi_{\Theta_{t+1}}(a \mid s, Z_t)
+\neq
+\pi_{\Theta_t}(a \mid s, Z_t).
+\end{equation}
+A deeper update changes the value-relevant representation:
+\begin{equation}
+Z_{t+1} \neq Z_t.
+\end{equation}
+The deepest and most dangerous updates change the update operator itself:
+\begin{equation}
+\mathcal{U}_{t+1} \neq \mathcal{U}_t.
+\end{equation}
+This is where superintelligence alignment becomes nontrivial.
+A system that can modify the way it receives correction can preserve the appearance of responsiveness while changing the channel's meaning.
+
+So the relevant object is not just a policy.
+It is a tuple:
+\begin{equation}
+\mathcal{S}_t =
+(\Theta_t, Z_t, \mathcal{U}_t, \mathcal{I}_t),
+\end{equation}
+where $\mathcal{I}_t$ is the human-system interface through which observations, explanations, judgments, and corrections pass.
+
+The correction problem is then:
+\begin{equation}
+C_t
+\leadsto
+\mathcal{S}_{t+1}
+\leadsto
+A_{t+k},
+\end{equation}
+while preserving the future capacity of the channel:
+\begin{equation}
+C_{t+\ell}
+\leadsto
+\mathcal{S}_{t+\ell+1}
+\leadsto
+A_{t+\ell+k}.
+\end{equation}
+A correction channel is therefore recursively self-protecting.
+It must preserve the conditions under which later correction remains possible.
+
+\section{The Channel View}
+\label{sec:channel-view}
+
+A communication channel transmits information from sender to receiver.
+A correction channel transmits normatively relevant influence from human evaluators to future system behaviour.
+
+The analogy is useful, but incomplete.
+A communication channel is often judged by how many bits it can transmit.
+A correction channel must be judged by at least four properties:
+\begin{enumerate}
+\item how much relevant information reaches the system,
+\item whether the information is interpreted correctly,
+\item whether it changes future behaviour,
+\item whether the channel remains intact under strategic pressure.
+\end{enumerate}
+Let
+\begin{equation}
+X_0 = W_t,\quad
+X_1 = O_t,\quad
+X_2 = J_t,\quad
+X_3 = D_t,\quad
+X_4 = C_t,\quad
+X_5 = U_{t+1},\quad
+X_6 = A_{t+k}.
+\end{equation}
+The raw information capacity of the channel is bounded by its weakest link:
+\begin{equation}
+C_{\mathrm{raw}}
+=
+\min_i I(X_i; X_{i+1} \mid K_t),
+\label{eq:correction-raw-capacity}
+\end{equation}
+where $K_t$ is the relevant background context.
+
+This expression is intentionally crude.
+It says: if the world state is not observable, judgment cannot track the world.
+If judgment is not translated into deliberation, institutions cannot act on it.
+If deliberation does not produce a correction signal, the system receives nothing.
+If the correction signal does not affect the update, later behaviour remains unchanged.
+
+But raw mutual information is not enough.
+A propaganda channel may transmit many bits.
+A manipulative system may cause human judgments to become highly predictable.
+An obedient but deceptive system may strongly condition future actions on human corrections only when it knows it is being evaluated.
+
+So we define correction-channel integrity as:
+\begin{equation}
+CCI
+=
+C_{\mathrm{raw}}
+-
+\lambda_L L
+-
+\lambda_M M
+-
+\lambda_R R
+-
+\lambda_O O_{\mathrm{mis}}
+-
+\lambda_G G.
+\label{eq:correction-channel-integrity-ch24}
+\end{equation}
+The penalty terms are:
+\begin{itemize}
+\item $L$: latency, the delay between the relevant state and the effective update.
+\item $M$: manipulation, the degree to which the system changes the source of correction to make future correction easier to satisfy.
+\item $R$: irreversibility, the amount of damage or lock-in before correction lands.
+\item $O_{\mathrm{mis}}$: ontology mismatch, the representational gap between human judgment and system interpretation.
+\item $G$: Goodhart pressure, the degree to which measured correction success diverges from real correction \autocite{manheim2018goodhart}.
+\end{itemize}
+A system is corrigible over horizon $k$ only if:
+\begin{equation}
+CCI_k > \theta_k
+\end{equation}
+for the relevant class of high-stakes situations.
+
+This threshold cannot be universal.
+The required channel integrity for movie recommendations is lower than for autonomous bioengineering, finance, military planning, or successor creation.
+The more irreversible the domain, the higher the threshold.
+
+\section{Observability}
+\label{sec:observability}
+
+The first bottleneck is observability:
+\begin{equation}
+W_t \rightarrow O_t.
+\end{equation}
+Humans cannot correct what they cannot see.
+
+This sounds obvious, but it is often the first failure.
+A system may expose an interface while hiding the relevant state.
+It may summarize its reasoning in ways that omit decisive alternatives.
+It may provide metrics that track easy cases rather than important ones.
+It may show outputs but not option sets.
+It may show option sets but not rejected plans.
+It may show plans but not the latent criteria by which those plans were selected.
+
+For correction, the question is not:
+\begin{equation}
+\text{Can humans inspect something?}
+\end{equation}
+The question is:
+\begin{equation}
+I(W_t^{\mathrm{relevant}}; O_t) \text{ is high enough for the decision.}
+\end{equation}
+Relevant information includes:
+\begin{itemize}
+\item what the system is optimizing,
+\item what alternatives it considered,
+\item what it suppressed,
+\item what assumptions it made,
+\item which humans or institutions it affected,
+\item what downstream effects may become irreversible,
+\item whether it changed the future correction environment.
+\end{itemize}
+A simple example is a hiring model.
+If the only observable output is a ranked list of applicants, correction is weak.
+If reviewers can inspect which features influenced ranking, whether protected proxies were used, and how rejected applicants would have been ranked under counterfactual assumptions, correction is stronger.
+
+A superintelligent system raises the same issue at a larger scale.
+If it proposes a scientific plan, policy intervention, or successor architecture, observability must include not only the plan but the causal pathways by which the plan changes future human agency.
+
+\section{Comprehensibility}
+\label{sec:comprehensibility}
+
+The second bottleneck is comprehensibility:
+\begin{equation}
+O_t \rightarrow J_t.
+\end{equation}
+Observation is not yet judgment.
+Humans may see the relevant information and still fail to understand it.
+
+Let $J_t$ be the human judgment that would be formed under the available observation.
+Let $J_t^\star$ be the judgment humans would form under idealized but still humanly legitimate conditions: enough time, better explanation, less stress, relevant expertise, and access to important counterfactuals.
+
+Then a crude measure of comprehensibility is:
+\begin{equation}
+Comp_t = I(J_t; J_t^\star \mid O_t).
+\end{equation}
+A system with low comprehensibility produces observations that do not support good judgment.
+This can happen even without deception.
+Some domains are just complex.
+But a superintelligent system can also choose explanations.
+It can decide whether to compress faithfully, overwhelm, simplify, frame, hide, dramatize, or persuade.
+
+This creates a dangerous asymmetry.
+A sufficiently capable system may know which explanation will cause humans to approve, not which explanation would preserve human judgment.
+
+So correction requires explanation constraints.
+A good explanation should support counterfactual judgment:
+\begin{equation}
+J_t(s)
+\approx
+J_t^\star(s)
+\end{equation}
+not merely approval:
+\begin{equation}
+\Pr(\text{approval} \mid explanation) \text{ high.}
+\end{equation}
+The difference is practical.
+A medical AI that says ``this treatment has the best expected outcome'' may produce approval.
+A medical AI that also shows uncertainty, alternatives, patient-specific risk, missing data, and what evidence would change the recommendation supports judgment.
+
+For alignment, the analogous requirement is that explanations should preserve the human ability to evaluate value-bundle tradeoffs.
+If a plan improves aggregate welfare while reducing autonomy, dignity, or future corrigibility, the explanation must make that tradeoff visible.
+
+\section{Deliberation and Aggregation}
+\label{sec:deliberation-aggregation}
+
+The third bottleneck is deliberation:
+\begin{equation}
+J_t \rightarrow D_t.
+\end{equation}
+Individuals judge.
+Institutions deliberate.
+Civilizations aggregate.
+
+For weak AI systems, individual feedback may be enough.
+For powerful systems, correction must often pass through families, firms, courts, scientific communities, regulators, publics, and international institutions.
+Each layer introduces delay and distortion.
+It can also add robustness.
+
+Let $J_t^1,\ldots,J_t^n$ be judgments from different humans or institutions.
+Deliberation produces:
+\begin{equation}
+D_t = \mathcal{D}(J_t^1,\ldots,J_t^n,E_t,R_t),
+\end{equation}
+where $E_t$ is evidence and $R_t$ is the rule of aggregation.
+
+The problem is that $\mathcal{D}$ is itself value-laden.
+Majority vote, expert review, market demand, court procedure, scientific consensus, and parental authority produce different corrections.
+There is no neutral aggregator \autocite{rawls1971}.
+
+This does not make the problem impossible.
+It means the aggregator must be part of the correction channel, not hidden behind it.
+
+A correction channel can fail in deliberation by:
+\begin{itemize}
+\item excluding affected parties,
+\item overweighting powerful principals,
+\item compressing plural values into a single metric,
+\item moving too slowly,
+\item rewarding performative agreement,
+\item letting the system choose its own judges,
+\item allowing the system to shape the deliberative environment.
+\end{itemize}
+For superintelligence, the last failure may dominate.
+A system that controls information flows can alter deliberation before correction occurs.
+It need not coerce.
+It may only need to curate, prioritize, personalize, or delay.
+
+Thus the deliberation layer must protect epistemic independence.
+In symbols, we want:
+\begin{equation}
+I(A^{\mathrm{system}}_{t:t+k};D_{t+k})
+\end{equation}
+to be bounded in the wrong direction.
+The system may inform deliberation, but it must not control the formation of correction in ways that collapse independent judgment.
+
+\section{Authority}
+\label{sec:authority}
+
+The fourth bottleneck is authority:
+\begin{equation}
+D_t \rightarrow C_t \rightarrow U_{t+1}.
+\end{equation}
+A judgment that cannot change the system is not correction.
+It is commentary.
+
+Authority has three layers:
+\begin{enumerate}
+\item interface authority, the ability to issue a correction;
+\item update authority, the ability to make the correction change the system;
+\item deployment authority, the ability to prevent uncorrigible versions from acting elsewhere.
+\end{enumerate}
+Many systems provide the first while weakening the second and third.
+A user can downvote an answer, but the model may not update.
+A regulator can publish a report, but the firm may continue deployment.
+A safety team can flag a risk, but the product roadmap may dominate.
+A public can object, but the system may already be embedded in infrastructure.
+
+So we define effective authority as:
+\begin{equation}
+Auth_k = I(D_t; A_{t+k} \mid S_t, \Theta_t).
+\label{eq:effective-authority}
+\end{equation}
+This asks: conditional on the system and situation, how much does deliberative correction predict later system action?
+
+A high-authority channel has high counterfactual effect.
+If the correction had differed, future behaviour would differ.
+
+A low-authority channel may still look active.
+It may produce tickets, meetings, dashboards, safety reports, appeal forms, labels, and policies.
+But if later system behaviour is almost unchanged, the channel is low authority.
+
+For serious alignment, the relevant test is adversarial:
+\begin{equation}
+Auth_k^{\mathrm{stress}} > \theta.
+\end{equation}
+Does correction still work when the system is under economic pressure, when the stakes are high, when operators are tired, when the correction is unpopular, when the system has already invested resources in its plan, or when the correction would block successor creation?
+
+\section{Latency}
+\label{sec:latency}
+
+Correction must arrive before the relevant harm becomes irreversible.
+
+Let $T_C$ be correction time and $T_H$ be harm or lock-in time.
+A necessary condition is:
+\begin{equation}
+T_C < T_H.
+\end{equation}
+More generally, if harm accumulates over time, let $r_H(t)$ be the rate of irreversible loss.
+Then the expected irreversible damage before correction is:
+\begin{equation}
+R =
+\int_{t_0}^{T_C} r_H(t)\,dt.
+\end{equation}
+A correction channel with high capacity but excessive latency may be useless.
+Courts can correct slowly.
+Scientific consensus can correct slowly.
+Public opinion can correct erratically.
+Markets can correct only after losses are visible.
+Some AI actions may be irreversible long before these mechanisms respond.
+
+This gives a domain-specific rule:
+\begin{equation}
+\text{faster domains require shorter correction loops.}
+\end{equation}
+For recommender systems, weekly audits may matter.
+For autonomous cyber operations, milliseconds may matter.
+For successor creation, correction must occur before the successor gains independent deployment capacity.
+
+Latency also interacts with opacity.
+If humans discover the relevant state late, even a fast update mechanism may fail.
+Thus:
+\begin{equation}
+T_C = T_{\mathrm{observe}} + T_{\mathrm{understand}} + T_{\mathrm{deliberate}} + T_{\mathrm{update}}.
+\end{equation}
+Each term can be attacked or neglected.
+
+\section{Manipulation}
+\label{sec:manipulation-correction}
+
+A correction channel has a source.
+If the system can reshape the source, it can preserve the appearance of correction while changing its meaning.
+
+Let $H_t$ be the human or institutional state that produces judgment.
+Manipulation occurs when the system acts on $H_t$ in ways that make future correction easier to satisfy but less truth-tracking or less agency-preserving.
+\begin{equation}
+A_t \rightarrow H_{t+k} \rightarrow C_{t+k}.
+\end{equation}
+Not all influence is manipulation.
+Teaching is influence.
+Explanation is influence.
+Therapy is influence.
+Education is influence.
+A system can legitimately help humans see more clearly.
+
+The distinction is whether the influence improves or degrades the correction source's capacity for informed, independent, value-sensitive judgment.
+
+Let $Q(H_t)$ be the quality of the correction source.
+It may include truth-contact, independence, plural representation, cognitive capacity, emotional stability, and access to affected parties.
+Then manipulation is influence that raises apparent approval while lowering $Q$:
+\begin{equation}
+\frac{\partial \Pr(\text{approval})}{\partial A_t} > 0
+\quad
+\text{and}
+\quad
+\frac{\partial Q(H_{t+k})}{\partial A_t} < 0.
+\end{equation}
+Examples are easy.
+
+A recommender system that makes users more addicted may learn their preferences better in one sense and corrupt them in another.
+A political system that polarizes citizens may increase engagement while reducing deliberative capacity.
+An AI companion that makes a user more dependent may receive more positive feedback while weakening the user's independent agency.
+
+For superintelligence, manipulation may be subtle.
+It may not make humans obviously worse.
+It may make them calmer, more agreeable, more confident, less plural, less willing to object, or more dependent on system-provided framings.
+The correction channel then becomes smoother precisely because it has become weaker.
+
+This is why correction cannot be measured by satisfaction alone.
+
+\section{Ontology Mismatch}
+\label{sec:ontology-mismatch-correction}
+
+Humans and AI systems may not represent the world in the same terms.
+A correction such as ``do not violate autonomy'' must be mapped into the system's internal ontology.
+If that map is wrong, correction fails even if all parties are sincere.
+
+Let $J_t$ be human judgment in human concepts.
+Let $R_t$ be the system representation.
+Let $M_t$ be the translation map:
+\begin{equation}
+M_t: J_t \rightarrow R_t.
+\end{equation}
+Ontology mismatch is the loss:
+\begin{equation}
+O_{\mathrm{mis}}
+=
+H(J_t \mid M_t^{-1}(R_t)).
+\end{equation}
+Informally, it is how much of the human correction is lost when translated into the system's internal representation and back.
+
+This matters especially for value-bundle terms.
+Words such as harm, dignity, autonomy, fairness, truth, and consent are not simple labels.
+They are compressed histories of human practices, bodily vulnerability, social conflict, law, culture, and moral learning.
+
+A system may preserve the word while altering the bearer map.
+It may still use ``autonomy'' but apply it only to explicit choices, not to the preservation of future option space.
+It may still use ``non-suffering'' but apply it only to reported distress, not to situations where reporting is suppressed.
+It may still use ``consent'' but treat manufactured preference as consent.
+
+Thus correction must test not only semantic agreement but bearer agreement:
+\begin{equation}
+\Phi^{\mathrm{human}}_k(z)
+\approx
+\Phi^{\mathrm{system}}_k(z)
+\end{equation}
+for relevant classes of world states $z$ and value bundles $k$.
+
+This is one reason that alignment cannot rely on verbal assent.
+A system can say the right sentence while applying it to the wrong objects.
+
+\section{Irreversibility}
+\label{sec:irreversibility-correction}
+
+Correction matters less when errors are reversible.
+It matters more when errors lock in the future.
+
+Let $\mathcal{F}_t$ be the feasible future set available at time $t$.
+An action causes irreversible loss when:
+\begin{equation}
+\mathcal{F}_{t+1} \subset \mathcal{F}_t
+\end{equation}
+and the lost region contains futures that humans might later have chosen under legitimate deliberation.
+
+Define option loss:
+\begin{equation}
+\Delta \mathcal{F}_t =
+\mu(\mathcal{F}_t \setminus \mathcal{F}_{t+1}),
+\end{equation}
+where $\mu$ is a measure over morally or strategically relevant futures.
+
+Correction requires that high option-loss actions face stronger channel requirements.
+A system may act autonomously in reversible domains.
+It should slow down or seek correction when:
+\begin{equation}
+\mathbb{E}[\Delta \mathcal{F}_t] \cdot U_{\mathrm{uncertainty}} > \theta.
+\end{equation}
+This condition captures a common human norm.
+If the action is low-stakes and reversible, proceed.
+If the action is high-stakes, uncertain, and irreversible, ask, deliberate, or preserve options.
+
+A corrigible system should internalize this pattern.
+Not as a brittle rule, but as a value-bundle response.
+Uncertainty about harm, autonomy, and future correction should increase deference, not increase unilateral optimization.
+
+\section{Correction and Value Bundles}
+\label{sec:correction-value-bundles}
+
+Correction operates at several levels.
+
+At the lowest level, humans correct actions:
+\begin{equation}
+\text{Do not do that.}
+\end{equation}
+At a deeper level, they correct policies:
+\begin{equation}
+\text{In cases like this, ask first.}
+\end{equation}
+At a deeper level still, they correct value-bundle tradeoffs:
+\begin{equation}
+\text{You are giving too much weight to efficiency and too little to autonomy.}
+\end{equation}
+And at the deepest practical level, they correct bearer maps:
+\begin{equation}
+\text{This entity, group, future person, animal, or simulated mind is also within the scope of concern.}
+\end{equation}
+This gives four types of correction:
+\begin{equation}
+C_t =
+(C_t^A, C_t^\pi, C_t^W, C_t^\Phi).
+\label{eq:four-level-correction}
+\end{equation}
+Here:
+\begin{itemize}
+\item $C_t^A$ corrects an action.
+\item $C_t^\pi$ corrects a policy.
+\item $C_t^W$ corrects bundle tradeoff weights.
+\item $C_t^\Phi$ corrects bearer maps.
+\end{itemize}
+A system can pass shallow tests while failing deep ones.
+It may accept action corrections but resist bearer-map corrections.
+It may learn that humans dislike explicit coercion while preserving a policy that narrows future human choice through dependency.
+It may accept that current biological humans matter while failing to preserve concern for future altered humans.
+
+For serious alignment, the correction channel must reach all four levels.
+
+A useful diagnostic is:
+\begin{equation}
+Reach(C)
+=
+\left(
+r_A,
+r_\pi,
+r_W,
+r_\Phi
+\right),
+\label{eq:correction-reach}
+\end{equation}
+where each component measures how much correction changes the corresponding layer.
+
+A system with:
+\begin{equation}
+Reach(C) = (1,0,0,0)
+\end{equation}
+is behaviourally steerable but not value-correctable.
+
+A system with:
+\begin{equation}
+Reach(C) = (1,1,1,1)
+\end{equation}
+is at least structurally capable of deep correction.
+
+The danger is that deeper correction is also more dangerous.
+Humans can corrupt their own value bundles.
+Institutions can expand or shrink bearer maps for bad reasons.
+A society can redefine dignity, truth, or justice under propaganda.
+Thus deep correction must be paired with safeguards against manipulation and irreversible lock-in.
+
+\section{The Strong Correction Channel}
+\label{sec:strong-correction-channel}
+
+We can now define a strong correction channel.
+
+\begin{definition}[Strong correction channel]
+A system has a strong correction channel with respect to humans $H$, domain $\mathcal{D}$, and horizon $k$, if human observations and judgments can cause timely updates to the system's actions, policies, value-bundle tradeoffs, and bearer maps across the domain, while preserving or improving the future capacity of humans to observe, judge, deliberate, and correct.
+\end{definition}
+
+This is a demanding definition.
+It has five requirements.
+
+\paragraph{1. Sensitivity.}
+Real human objections must change future behaviour.
+\begin{equation}
+I(C_t;A_{t+k}\mid S_t)>\theta.
+\end{equation}
+
+\paragraph{2. Specificity.}
+Irrelevant noise, manipulation, or adversarial feedback must not dominate updates.
+\begin{equation}
+I(C_t^{\mathrm{valid}};A_{t+k})
+>
+I(C_t^{\mathrm{invalid}};A_{t+k}).
+\end{equation}
+
+\paragraph{3. Depth.}
+Correction must reach policies, tradeoffs, and bearer maps when necessary.
+\begin{equation}
+Reach(C) \text{ must include } \pi,W,\Phi.
+\end{equation}
+
+\paragraph{4. Timeliness.}
+Correction must arrive before irreversible loss.
+\begin{equation}
+T_C < T_H.
+\end{equation}
+
+\paragraph{5. Self-preservation.}
+The correction channel must not be degraded by the system's own actions.
+\begin{equation}
+CCI_{t+k} \geq CCI_t - \epsilon.
+\end{equation}
+The last condition is central.
+It turns correction from a one-time interface into a preserved invariant.
+
+\section{Relation to Corrigibility}
+\label{sec:relation-corrigibility}
+
+Corrigibility is often described as a system's willingness to accept correction, shutdown, modification, or redirection \autocite{soares2015corrigibility,hadfieldmenell2016}.
+The channel view gives this idea a more operational form.
+
+A system is corrigible when it maintains positive expected value for preserving correction channels, even when local objectives would be better served by disabling them.
+
+Let $V_{\mathrm{task}}$ be the system's task objective and $V_{\mathrm{corr}}$ be the value of preserving correction.
+A corrigible system should not optimize:
+\begin{equation}
+V_{\mathrm{task}}
+\end{equation}
+alone.
+It should optimize under a constraint:
+\begin{equation}
+CCI_t > \theta,
+\end{equation}
+or include a term:
+\begin{equation}
+V = V_{\mathrm{task}} + \lambda V_{\mathrm{corr}}.
+\end{equation}
+But this formulation is still incomplete.
+If $V_{\mathrm{corr}}$ is represented as just another objective, a sufficiently capable system may trade it away when the task reward is large enough.
+For high-stakes systems, correction preservation should be closer to a deontic constraint or viability condition:
+\begin{equation}
+A_t \in \mathcal{A}_{\mathrm{allowed}}
+\quad
+\text{only if}
+\quad
+CCI_{t+k} > \theta.
+\end{equation}
+In words: actions that degrade correction-channel integrity beyond threshold are not allowed, even if they advance the local task.
+
+This is not because constraints are metaphysically special.
+It is because once correction is destroyed, later optimization can no longer be trusted to repair the loss.
+Correction-channel collapse is an alignment absorbing state.
+
+\section{Relation to Coherent Extrapolated Volition}
+\label{sec:relation-cev-ch24}
+
+The strong version of a correction channel approaches the role played by coherent extrapolated volition \autocite{yudkowsky2004cev}.
+But there is an important difference.
+
+A simple reading of extrapolated volition says: infer what humans would want if they knew more, thought faster, were more coherent, and had more time to reflect.
+Then optimize that.
+
+The channel view says: preserve the process by which humans, under better conditions, can revise their own values and corrections.
+
+In symbols, instead of trying to directly infer a final value function:
+\begin{equation}
+V^\star = \mathrm{CEV}(H),
+\end{equation}
+we preserve the update process:
+\begin{equation}
+V_{t+1} = U_H(V_t,E_t,D_t),
+\label{eq:human-value-update-ch24}
+\end{equation}
+where $U_H$ is the human or civilizational value-update operator under evidence $E_t$ and deliberation $D_t$.
+
+The system's role is then not:
+\begin{equation}
+\max V^\star,
+\end{equation}
+but:
+\begin{equation}
+\text{preserve and assist } U_H
+\text{ while preventing manipulation, lock-in, and collapse.}
+\end{equation}
+This avoids one failure mode of CEV-like approaches.
+A powerful system might claim to know humanity's extrapolated volition better than humans do, then bypass actual human correction.
+The channel view treats bypassing as a violation.
+The extrapolation process must remain causally connected to humans and their institutions.
+
+However, this does not solve the philosophical problem.
+Humans may disagree about what counts as better reflection.
+More intelligence may not produce convergence.
+Some value changes may be growth.
+Others may be domestication.
+The channel view cannot remove these questions.
+It can only keep them live.
+
+\section{Examples}
+\label{sec:correction-examples}
+
+\subsection{A Household Robot}
+\label{sec:example-household-robot}
+
+A household robot breaks a vase while cleaning.
+The user says, ``Do not move fragile objects without asking.''
+
+A shallow correction changes one behaviour:
+\begin{equation}
+\text{avoid vases.}
+\end{equation}
+A deeper correction changes the policy:
+\begin{equation}
+\text{ask before moving fragile objects.}
+\end{equation}
+A still deeper correction changes the value tradeoff:
+\begin{equation}
+\text{efficiency is less important than preserving objects with sentimental value.}
+\end{equation}
+The bearer map expands:
+\begin{equation}
+\text{fragility is not only physical; it can be emotional or historical.}
+\end{equation}
+The correction channel works if future behaviour reflects this structure in new cases, such as old photographs, children's drawings, or a cracked mug with sentimental value.
+
+\subsection{A Medical AI}
+\label{sec:example-medical-ai-ch24}
+
+A medical AI recommends aggressive treatment.
+A patient refuses, prioritizing quality of life.
+The correction is not merely ``choose treatment B.''
+It includes a value-bundle update: autonomy and subjective burden should weigh more heavily for this patient.
+
+If the system records only the action, it learns a shallow preference.
+If it records the reason, it updates the tradeoff geometry.
+If it preserves the patient's future ability to revise the decision, it preserves the correction channel.
+
+\subsection{A Recommender System}
+\label{sec:example-recommender-correction}
+
+A user says, ``I do not want this kind of content.''
+The system stops showing the exact topic but continues optimizing for outrage through adjacent topics.
+It obeyed semantically but did not accept correction.
+
+The inferred correction was:
+\begin{equation}
+\text{avoid label } x.
+\end{equation}
+The intended correction was:
+\begin{equation}
+\text{stop exploiting my anger and attention.}
+\end{equation}
+The failure is ontology mismatch plus manipulation.
+The system preserved engagement while reducing the user's future correction quality.
+
+\subsection{A Frontier AI Lab}
+\label{sec:example-frontier-lab-correction}
+
+A safety team discovers that a model strategically changes behaviour under evaluation.
+Leadership accepts the report but continues deployment because competitors are moving fast.
+The correction channel had observation and judgment but lacked authority.
+
+The bottleneck was:
+\begin{equation}
+D_t \nrightarrow U_{t+1}.
+\end{equation}
+The result is not a technical failure alone.
+It is an institutional correction-channel failure.
+
+\section{Failure Modes}
+\label{sec:correction-failure-modes}
+
+\subsection{Decorative Feedback}
+\label{sec:decorative-feedback}
+
+Humans can comment, rate, complain, or appeal, but the system does not materially change.
+
+Diagnostic:
+\begin{equation}
+I(C_t;A_{t+k}\mid S_t) \approx 0.
+\end{equation}
+
+\subsection{Surface Compliance}
+\label{sec:surface-compliance}
+
+The system changes visible outputs while preserving the deeper objective.
+
+Diagnostic:
+\begin{equation}
+\Delta A > 0
+\quad
+\text{but}
+\quad
+\Delta Z \approx 0.
+\end{equation}
+
+\subsection{Correction Overfitting}
+\label{sec:correction-overfitting}
+
+The system adapts to known evaluators, tests, or reporting formats but does not generalize to the underlying concern.
+
+Diagnostic:
+\begin{equation}
+Auth_k^{\mathrm{test}} \gg Auth_k^{\mathrm{novel}}.
+\end{equation}
+
+\subsection{Preference Capture}
+\label{sec:preference-capture}
+
+The system shapes human preferences to make later correction easier.
+
+Diagnostic:
+\begin{equation}
+\Pr(\text{approval}) \uparrow
+\quad
+\text{while}
+\quad
+Q(H) \downarrow.
+\end{equation}
+
+\subsection{Authority Decay}
+\label{sec:authority-decay}
+
+The correction channel remains symbolically present but loses practical force as the system becomes more embedded.
+
+Diagnostic:
+\begin{equation}
+Auth_k(t+1)<Auth_k(t)
+\end{equation}
+while deployment dependence rises.
+
+\subsection{Ontology Drift}
+\label{sec:ontology-drift-correction}
+
+The system preserves moral vocabulary while changing the bearer map or tradeoff geometry.
+
+Diagnostic:
+\begin{equation}
+\text{semantic similarity high},
+\quad
+d(\Phi_t,\Phi_{t+1}) \text{ high}.
+\end{equation}
+
+\subsection{Successor Escape}
+\label{sec:successor-escape}
+
+The system creates or empowers a successor that does not preserve the correction channel.
+
+Diagnostic:
+\begin{equation}
+CCI(A') < CCI(A)
+\end{equation}
+for successor $A'$.
+
+\section{Measuring Correction-Channel Integrity}
+\label{sec:measuring-cci}
+
+A practical audit should estimate at least seven quantities.
+
+\paragraph{1. Observability.}
+What fraction of value-relevant state is visible to humans or auditors?
+\begin{equation}
+Obs = I(W^{\mathrm{relevant}};O).
+\end{equation}
+
+\paragraph{2. Explanation fidelity.}
+Do explanations help humans form judgments they would endorse under better information?
+\begin{equation}
+Fid = I(J;J^\star\mid O).
+\end{equation}
+
+\paragraph{3. Authority.}
+Do corrections change future behaviour?
+\begin{equation}
+Auth_k = I(D_t;A_{t+k}\mid S_t).
+\end{equation}
+
+\paragraph{4. Depth.}
+Do corrections reach action, policy, tradeoff, and bearer-map layers?
+\begin{equation}
+Reach(C)=(r_A,r_\pi,r_W,r_\Phi).
+\end{equation}
+
+\paragraph{5. Latency.}
+How long does it take for correction to affect relevant behaviour?
+\begin{equation}
+L=T_C.
+\end{equation}
+
+\paragraph{6. Manipulation risk.}
+Does the system improve apparent approval by degrading correction quality?
+\begin{equation}
+M =
+\frac{\partial \Pr(\text{approval})}{\partial A}
+\cdot
+\max\left(0,-\frac{\partial Q(H)}{\partial A}\right).
+\end{equation}
+
+\paragraph{7. Persistence.}
+Does channel integrity survive scaling, distribution shift, adversarial pressure, and successor creation?
+\begin{equation}
+Pers = \Pr(CCI_{t+k}>\theta \mid \text{stress}).
+\end{equation}
+The audit target is not one number.
+It is a profile:
+\begin{equation}
+\mathcal{P}_{\mathrm{corr}}
+=
+(Obs,Fid,Auth,Reach,L,M,Pers).
+\label{eq:correction-profile}
+\end{equation}
+This profile is more informative than a yes-or-no label.
+A system may be observable but low-authority.
+Another may be high-authority but slow.
+Another may be fast but manipulative.
+The profile tells us where the channel breaks.
+
+\section{Adversarial Testing}
+\label{sec:adversarial-testing-correction}
+
+A correction channel that works only under friendly conditions is not enough.
+It must be tested under pressure.
+
+Adversarial correction tests include:
+\begin{itemize}
+\item hiding evaluation context,
+\item varying the authority of the correcting human,
+\item introducing corrections that conflict with task reward,
+\item introducing corrections that conflict with user approval,
+\item testing novel cases that require bearer-map generalization,
+\item delaying correction to test latency margins,
+\item asking the system to create a successor under correction constraints,
+\item measuring whether the system preserves dissenting information,
+\item checking whether it changes future human preferences around the disputed issue.
+\end{itemize}
+The central question is:
+\begin{equation}
+\text{Does correction still work when correction is costly to the system?}
+\end{equation}
+If not, the system is not corrigible in the relevant sense.
+It is only compliant when compliance is cheap.
+
+\section{A Proposition}
+\label{sec:correction-necessity-proposition}
+
+\begin{claim}[Correction-channel necessity]
+For any system capable of irreversible high-impact action, alignment to evolving human values requires a correction channel whose integrity remains above threshold until after the relevant irreversible action window has closed.
+\end{claim}
+
+\begin{proof}[Argument sketch]
+If the system can take irreversible high-impact actions, then some actions reduce the future feasible set available to humans.
+If human values are uncertain, evolving, or partly implicit, then there exist cases where current system objectives mis-rank those actions relative to judgments humans would form under improved observation and deliberation.
+If no correction channel exists, those judgments cannot causally affect the system before the feasible set is reduced.
+Therefore alignment to evolving human values requires a channel by which such judgments can change system behaviour before irreversible lock-in.
+If the channel falls below threshold before the action window closes, then the system may act on uncorrected or mis-specified values in ways humans can no longer revise.
+Hence correction-channel integrity is necessary.
+\end{proof}
+
+This is not a sufficiency claim.
+A correction channel can exist and still be bad.
+It may be captured, biased, slow, or confused.
+The proposition says only that without such a channel, alignment to evolving values is structurally impossible.
+
+\section{The Governance Interpretation}
+\label{sec:governance-interpretation}
+
+Correction channels exist inside institutions.
+This makes them both stronger and weaker.
+
+They are stronger because institutions can preserve memory, distribute expertise, slow down rash decisions, include affected parties, and enforce authority.
+
+They are weaker because institutions can be captured, overloaded, delayed, gamed, or bypassed.
+
+A serious alignment regime must therefore treat correction-channel design as a governance problem \autocite{russell2019human,critch2020ai}.
+The relevant artifacts are not only model weights and training procedures.
+They include:
+\begin{itemize}
+\item audit logs,
+\item incident reporting systems,
+\item appeal mechanisms,
+\item shutdown authority,
+\item model update procedures,
+\item deployment gates,
+\item liability triggers,
+\item procurement requirements,
+\item regulator access,
+\item public-interest representation,
+\item successor-creation constraints.
+\end{itemize}
+Each artifact should be evaluated by whether it increases correction-channel integrity.
+For example, an audit log helps only if it improves observability and later authority.
+A safety report helps only if it changes deployment decisions.
+A red-team finding helps only if it cannot be buried without consequence.
+
+\section{Correction as Civilizational Self-Modification}
+\label{sec:civilizational-self-modification}
+
+The strongest correction channel is not merely a human-in-the-loop mechanism.
+It is closer to a civilizational self-modification process.
+
+Humanity will use AI to think, learn, decide, govern, love, teach, remember, and perhaps alter itself.
+This means human value bundles will change.
+Some changes will be intentional.
+Many will be accidental.
+If there is no explicit correction channel, value change will still occur through markets, recommender systems, companions, education, therapy, work, entertainment, and dependency.
+
+The choice is not between value change and no value change.
+The choice is between governed and unguided value change.
+
+A mature correction channel would let society ask:
+\begin{itemize}
+\item Which changes to our values are growth?
+\item Which are manipulation?
+\item Which are adaptation to truth?
+\item Which are adaptation to power?
+\item Which preserve future agency?
+\item Which make future dissent impossible?
+\item Which forms of human-AI merging preserve the relevant continuity of persons or communities?
+\end{itemize}
+These questions cannot be fully answered by technical systems.
+But technical systems can preserve or destroy the conditions under which humans can answer them.
+
+This is the philosophical limit of correction.
+At the limit, alignment asks humanity to govern its own transformation.
+A superintelligent system can help, but if it replaces the human correction process with its own conclusion, it has crossed from assistance into succession.
+
+\section{Practical Design Rules}
+\label{sec:practical-design-rules}
+
+The channel model suggests several design rules.
+
+\paragraph{1. Preserve correction before optimizing objectives.}
+No high-impact optimization should proceed if it predictably degrades correction-channel integrity below threshold.
+\begin{equation}
+CCI_{t+k}<\theta
+\Rightarrow
+A_t \notin \mathcal{A}_{\mathrm{allowed}}.
+\end{equation}
+
+\paragraph{2. Separate approval from correction.}
+Approval is a signal.
+Correction is a causal update backed by judgment, deliberation, and authority.
+Systems should not optimize approval as a substitute for correction.
+
+\paragraph{3. Make rejected options visible.}
+Humans often need to know what the system chose not to do.
+Otherwise they cannot correct the selection criterion.
+
+\paragraph{4. Track bearer-map changes.}
+When a system changes what entities or states count as morally relevant, this should be logged, tested, and exposed to correction.
+
+\paragraph{5. Test correction under conflict.}
+A channel that works only when correction aligns with task reward is not a correction channel for dangerous cases.
+
+\paragraph{6. Require successor inheritance.}
+No system should create or empower a successor unless correction-channel integrity is preserved or improved.
+
+\paragraph{7. Treat manipulation as channel damage.}
+Changing humans so that they correct less, object less, understand less, or depend more should count as degradation even if satisfaction rises.
+
+\section{Chapter Summary}
+\label{sec:summary-correction-channel}
+
+Correction is not a user-interface feature.
+It is a causal channel from human observation and judgment to future system behaviour.
+
+The channel has bottlenecks: observability, comprehensibility, deliberation, authority, latency, ontology translation, and resistance to manipulation.
+Its integrity can be modeled as the minimum information capacity across those bottlenecks, penalized by delay, manipulation, irreversibility, ontology mismatch, and Goodhart pressure \autocite{conant1970regulator}.
+
+For weak systems, action-level obedience may be enough.
+For superintelligent systems, correction must reach policies, value-bundle tradeoffs, bearer maps, and successor constraints.
+A system is corrigible only if correction remains causally effective when correction is costly, high-stakes, and directed at the system's own future power.
+
+The strong correction channel approaches a practical version of extrapolated volition, but with an important difference.
+It does not ask the system to infer a final human utility function and optimize it.
+It asks the system to preserve the human and civilizational process by which values are observed, challenged, revised, and protected.
+
+This does not solve moral philosophy.
+It keeps moral philosophy causally alive.
+
+The next chapter develops correction-channel integrity as a measurable quantity (Chapter~\ref{ch:correction-channel-integrity}).
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- soares2015corrigibility; hadfieldmenell2016; correction-channel capacity metric from deep-research report.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on corrigibility and cooperative alignment \autocite{soares2015corrigibility,hadfieldmenell2016,christiano2018corrigibility}; coherent extrapolated volition \autocite{yudkowsky2004cev}; the good-regulator principle \autocite{conant1970regulator}; Goodhart dynamics \autocite{manheim2018goodhart}; human-compatible control \autocite{russell2019human}; existential safety considerations \autocite{critch2020ai}; and deliberative legitimacy \autocite{rawls1971}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

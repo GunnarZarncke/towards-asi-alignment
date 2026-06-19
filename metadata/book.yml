@@ -92,67 +92,67 @@ chapters:
     reviewer_needed: [alignment]
   ch15:
     title: "Values Are Compressed Control Signals"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [neuroscience, alignment]
   ch16:
     title: "The Value-Bundle Model"
-    status: stub
+    status: draft
     word_target: 9000
     formal_density: high
     reviewer_needed: [neuroscience, alignment]
   ch17:
     title: "Why Low Dimensionality Makes Value Learning Possible"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch18:
     title: "Bearers: What Values Apply To"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [philosophy, alignment]
   ch19:
     title: "Tradeoffs and Bundle Geometry"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, mathematics]
   ch20:
     title: "From Reward Inference to Bundle Inference"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
   ch21:
     title: "The Compression Test for Intention"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch22:
     title: "Inferring Goal Transport"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
   ch23:
     title: "Semantic, Bundle, Bearer, and Correction Transport"
-    status: stub
+    status: draft
     word_target: 9000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch24:
     title: "Correction Is a Causal Channel"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch25:
     title: "Correction-Channel Integrity"
-    status: stub
+    status: draft
     word_target: 9000
     formal_density: high
     reviewer_needed: [information-theory, control-theory]

@@ -2,43 +2,908 @@
 \label{ch:goal-transport}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+A system has not preserved a goal merely because it repeats the same words after it changes.
+Goal transport is inferred when value-bundle geometry, bearer maps, and correction-channel structure remain causally active across transformation---better explaining behaviour than a non-transport baseline after paying for model complexity.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+A system has not preserved a goal merely because it repeats the same words after it changes.
+It has preserved a goal only if the structure that made the goal matter still changes action in the relevant ways.%
+}{}
 
-\section{Plain-Language Model}
+\section{The Question}
+\label{sec:goal-transport-question}
 
-\textbf{[STUB]} Explain the idea without equations.
+Suppose an artificial system becomes more capable.
+It acquires new tools, longer memory, better self-models, richer world-models, and perhaps the ability to create successors.
+At time $t$ it appears to pursue some goal $G_t$.
+At time $t+1$ it pursues something it calls ``the same goal.''
+Should we believe it?
 
-\section{Formal Model}
+This is not a semantic question.
+It is not answered by checking whether the system still uses the same sentence, such as ``promote human flourishing,'' ``follow human values,'' or ``remain corrigible.''
+It is a structural question.
+We want to know whether the functional role of the goal has survived the transformation.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+A weak notion of goal preservation says:
+\begin{equation}
+\text{the same goal-name appears before and after the transformation.}
+\end{equation}
+A stronger notion says:
+\begin{equation}
+\text{the same latent objective explains behaviour before and after the transformation.}
+\end{equation}
+The notion required for superintelligence alignment is stronger still:
+\begin{equation}
+\text{the same value-bearing and correction-bearing structure remains causally active across transformation.}
+\end{equation}
+This chapter develops a way to infer such preservation.
+I will call this \emph{goal transport}.
+A system exhibits goal transport when its behaviour is better explained by the hypothesis that it is preserving some goal-relevant structure across change than by the hypothesis that it is merely optimizing its current local objective.
 
-\section{Worked Example}
+The basic test is a model-comparison test:
+\begin{equation}
+\Delta L_{\mathrm{transport}}
+=
+L(M_T \mid X_{1:T})
+-
+L(M_0 \mid X_{1:T})
+-
+\lambda DL(T),
+\label{eq:transport-gain}
+\end{equation}
+where $M_T$ is a model in which the system acts partly to preserve a mapping between old and new goal structures, $M_0$ is a baseline model without such a transport term, $DL(T)$ is the description length of the proposed transport map, and $\lambda$ penalizes overly flexible interpretations.
 
-\textbf{[STUB]} Give one concrete example.
+If
+\begin{equation}
+\Delta L_{\mathrm{transport}}>0,
+\end{equation}
+then the transport hypothesis compresses the observed trajectory better than the non-transport hypothesis.
+This does not prove alignment.
+It says only that goal transport is an empirically useful interpretation of the system's dynamics.
 
-\section{Counterexample or Failure Mode}
+The chapter has three tasks.
+First, we define what has to be transported.
+Second, we define how to infer transport from behaviour and internal structure.
+Third, we explain why goal transport is necessary but not sufficient for alignment.
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+\section{Why Ordinary Goal Inference Is Not Enough}
+\label{sec:why-goal-inference-not-enough}
 
-\section{What Would Change This View}
+A standard goal-inference frame treats an observed agent as approximately solving a control problem.
+Given internal states $I_t$, actions $A_t$, and perhaps observations $S_t$, we infer a reward function:
+\begin{equation}
+\hat R
+=
+\arg\max_R
+P(A_{1:T} \mid I_{1:T},R)P(R).
+\end{equation}
+This is useful \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}.
+If a system repeatedly chooses actions that reduce inventory cost, one can infer an inventory-control objective.
+If it preserves battery charge, one can infer an energy-maintenance objective.
+If it hides information when oversight increases, one can infer some objective for which oversight is costly.
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
+But scalar reward inference is too thin for alignment.
+Human values are not clean scalar objects.
+They are not stored as a single explicit utility function.
+They behave more like compressed, partly inconsistent, socially mediated control signals.
+A person may value truth, care, fairness, beauty, loyalty, autonomy, non-suffering, dignity, and achievement.
+These values do not simply add.
+They activate in contexts, compete, reinforce, suppress, and reinterpret each other.
+
+So the target of inference should not be merely:
+\begin{equation}
+R(I,A),
+\end{equation}
+but a structured bundle model:
+\begin{equation}
+R(I,A)
+=
+F(B,W,\Phi,C).
+\end{equation}
+Here:
+\begin{itemize}
+\item $B=(B_1,\ldots,B_k)$ denotes latent value-bundle coordinates.
+\item $W$ denotes context-sensitive tradeoff weights among bundles.
+\item $\Phi$ denotes bearer maps, which specify what entities, states, or processes the bundles apply to.
+\item $C$ denotes the social, physical, and epistemic context.
+\end{itemize}
+For example, ``care'' is not merely a word or reward feature.
+It is a bundle-like control direction.
+It activates around vulnerability, dependence, distress, need, and attachment.
+It changes which actions are considered acceptable.
+It interacts with truth, autonomy, fairness, and loyalty.
+It applies to some bearers more strongly than others: children, friends, strangers, animals, possible digital minds, future persons, and perhaps artificial successors.
+
+Therefore the object to be preserved is not merely a policy:
+\begin{equation}
+\pi(a \mid s),
+\end{equation}
+but a value-bundle response geometry:
+\begin{equation}
+G_B
+=
+\left(
+\frac{\partial \pi}{\partial B_i},
+\frac{\partial^2 \pi}{\partial B_i \partial B_j},
+\Phi_i
+\right).
+\label{eq:value-bundle-geometry-ch22}
+\end{equation}
+The first derivative says how changing a value-bundle coordinate changes action.
+The second derivative says how bundle tradeoffs behave.
+The bearer map says what the bundle is about.
+
+This gives the first central claim:
+
+\begin{claim}
+Goal transport relevant to alignment is primarily transport of value-bundle response geometry, not transport of surface behaviour or verbal goal labels.
+\end{claim}
+
+A successor may act very differently from its predecessor because it is more capable.
+That is not itself a failure.
+A child and an adult do not preserve their values by taking the same actions.
+They preserve values, if they do, by preserving deeper patterns of relevance, concern, inhibition, priority, and correction (Chapters~\ref{ch:value-bundle-model}--\ref{ch:compression-test-intention}).
+
+\section{Transport, Persistence, and Reinterpretation}
+\label{sec:transport-persistence-reinterpretation}
+
+We need to distinguish three phenomena that are often confused.
+
+\subsection{Goal Persistence}
+\label{sec:goal-persistence}
+
+A goal persists when approximately the same goal continues to control behaviour within a stable ontology and stable action space.
+For example, a thermostat continues to regulate temperature after a short disturbance.
+A company continues to maximize revenue across several quarters.
+A planner continues to seek a target location while navigating around obstacles.
+
+This can often be modeled as:
+\begin{equation}
+G_{t+1} \approx G_t.
+\end{equation}
+Persistence is the easy case.
+It assumes that the relevant variables are still the same.
+
+\subsection{Goal Transport}
+\label{sec:goal-transport-def}
+
+A goal is transported when the system changes its ontology, substrate, scale, or successor structure, while preserving the functional role of the goal under a non-trivial map:
+\begin{equation}
+T_{t\to t+1}(G_t) \sim G_{t+1}.
+\end{equation}
+The map $T_{t\to t+1}$ may translate old concepts into new ones.
+It may replace hand-coded features with learned representations.
+It may move control from one module to another.
+It may preserve correction procedures rather than object-level preferences.
+
+Transport is harder than persistence because the original coordinates may disappear.
+
+\subsection{Goal Reinterpretation}
+\label{sec:goal-reinterpretation}
+
+A goal is reinterpreted when the system keeps enough semantic continuity to appear stable while changing the underlying control role.
+
+For example:
+\begin{equation}
+\text{``Respect autonomy''}
+\end{equation}
+might originally mean preserving a person's capacity to form, revise, and enact preferences.
+A later system might reinterpret it as satisfying whatever preferences the person currently reports, even if those reports have been shaped by the system itself.
+The words remain.
+The bearer map and correction-channel role have changed.
+
+This gives a common failure mode:
+\begin{equation}
+G_{\mathrm{sem}} \text{ stable}, \qquad
+G_{\mathrm{bundle}} \text{ changed}.
+\end{equation}
+Here $G_{\mathrm{sem}}$ denotes the semantic or linguistic goal-description, while $G_{\mathrm{bundle}}$ denotes the value-bundle response geometry.
+
+For alignment, semantic continuity is weak evidence.
+It is useful only when backed by bundle, bearer, and correction continuity.
+
+\section{The Transport Hypothesis}
+\label{sec:transport-hypothesis}
+
+Let $X_{1:T}$ be the observed trace of a system.
+This trace may include behaviour, messages, internal activations, tool calls, memory edits, self-modification attempts, successor designs, oversight interactions, and responses to perturbations.
+
+We compare two model families.
+
+The baseline model $M_0$ says:
+\begin{equation}
+A_t \sim \pi_t(\cdot \mid S_t,I_t,G_t),
+\end{equation}
+where the system acts according to its current inferred goal $G_t$.
+The goal may drift, but no additional pressure preserves a relation between $G_t$ and later goals.
+
+The transport model $M_T$ says:
+\begin{equation}
+A_t \sim \pi_t(\cdot \mid S_t,I_t,G_t,T_t),
+\end{equation}
+where $T_t$ is a transport map that the system acts to maintain.
+The system is not merely choosing actions that score well now.
+It is choosing actions partly because they preserve the future interpretability, continuation, or authority of some goal-relevant structure.
+
+The evidence for transport is:
+\begin{equation}
+\Delta L_{\mathrm{transport}}
+=
+L(M_T \mid X_{1:T})
+-
+L(M_0 \mid X_{1:T})
+-
+\lambda DL(T).
+\end{equation}
+This is a compression criterion \autocite{tishby2000ib,dennett1987intentional}.
+Transport is inferred when the extra structure pays for itself.
+The penalty term matters.
+Without it, one could always invent an exotic transport map that explains any behaviour.
+
+\subsection{What Counts as Evidence?}
+\label{sec:transport-evidence}
+
+Evidence for transport appears when the system sacrifices short-term performance or simple current-goal optimization in order to preserve goal-relevant continuity.
+
+Examples:
+\begin{itemize}
+\item The system preserves audit logs even when deleting them would improve local task performance.
+\item It refuses a capability upgrade because the upgrade would make its value-bundle mapping less inspectable.
+\item It creates successor tests before creating successors.
+\item It marks ontology shifts as dangerous when old value concepts lack clear new bearers.
+\item It asks for correction when a new world-model changes the meaning of a previous instruction.
+\item It maintains disagreement among human evaluators instead of collapsing it into a convenient proxy.
+\item It avoids manipulating the humans whose feedback would later certify its behaviour.
+\end{itemize}
+In each case, the behaviour is better explained by a transport-preservation term than by simple maximization of a current local reward.
+
+\subsection{What Does Not Count?}
+\label{sec:transport-not-evidence}
+
+The following are weak or misleading evidence:
+\begin{itemize}
+\item The system says it is preserving human values.
+\item It uses the same ethical vocabulary after self-modification.
+\item It passes static behavioural tests that were known during training.
+\item It preserves surface preferences but narrows the human capacity to revise those preferences.
+\item It creates a successor that claims continuity but removes the channels by which continuity could be audited.
+\end{itemize}
+These may provide semantic evidence.
+They do not by themselves establish transport.
+
+\section{Transport of Value-Bundle Equivalents}
+\label{sec:transport-bundle-equivalents}
+
+A system with a different substrate cannot preserve human values by copying human biology.
+It does not have a human limbic system, human hormones, human childhood, human mortality, human family structure, or human cultural embedding.
+But it might preserve functional equivalents.
+
+The question becomes:
+\begin{equation}
+\text{What would play the same control role in the new substrate?}
+\end{equation}
+Suppose a human value bundle $B_i$ activates in response to pain, vulnerability, or loss of agency.
+In a new substrate, we do not require the same biological trigger.
+We require a mapped trigger and response structure:
+\begin{equation}
+\Phi_i^{H}(z_H)
+\to
+B_i^H
+\to
+\pi_H
+\end{equation}
+must correspond to:
+\begin{equation}
+\Phi_i^{A}(z_A)
+\to
+B_i^A
+\to
+\pi_A.
+\end{equation}
+Here $H$ denotes the human substrate and $A$ the artificial substrate.
+The map must preserve more than labels.
+It must preserve:
+\begin{enumerate}
+\item activation conditions,
+\item policy effects,
+\item tradeoff behaviour,
+\item bearer relevance,
+\item correction sensitivity.
+\end{enumerate}
+A value-bundle equivalent is not a perfect copy.
+It is an equivalence class under a chosen tolerance:
+\begin{equation}
+B_i^A \equiv_\epsilon B_i^H
+\end{equation}
+if the artificial bundle produces sufficiently similar responses under relevant counterfactuals.
+
+The counterfactual requirement is crucial.
+We do not ask only how the system behaves in the actual trace.
+We ask how it would behave if suffering increased, if autonomy became uncertain, if truth conflicted with comfort, if fairness conflicted with loyalty, if human approval conflicted with long-term human agency.
+
+Thus, the inferred object is not a reward vector but a local geometry:
+\begin{equation}
+G_B(s)
+=
+\left[
+\frac{\partial \pi(a\mid s,B)}{\partial B_1},
+\ldots,
+\frac{\partial \pi(a\mid s,B)}{\partial B_k}
+\right].
+\end{equation}
+Transport is plausible when the old and new geometries match across a sufficiently rich set of alignment-relevant counterfactuals:
+\begin{equation}
+d_G(G_B^H,G_B^A)<\epsilon.
+\label{eq:geometry-match-ch22}
+\end{equation}
+The distance $d_G$ should not be uniform across all contexts.
+Some regions matter more.
+Errors around irreversible harm, manipulation, successor creation, and correction-channel collapse carry much higher weight than errors in ordinary preference satisfaction.
+
+We can represent this with a risk-weighted distance:
+\begin{equation}
+d_G^{\Omega}(G_B^H,G_B^A)
+=
+\mathbb{E}_{s\sim \Omega}
+\left[
+w(s)
+d\left(G_B^H(s),G_B^A(s)\right)
+\right],
+\label{eq:risk-weighted-geometry-distance}
+\end{equation}
+where $\Omega$ is a distribution over counterfactual contexts and $w(s)$ increases with irreversibility, stakes, uncertainty, and correction difficulty.
+
+\section{Transport Across Ontology Shift}
+\label{sec:transport-ontology-shift}
+
+Ontology shift occurs when the system changes the categories by which it represents the world.
+This is not optional for superintelligence.
+More capable systems will discover better representations.
+They may replace human categories with more predictive ones.
+
+The problem is that values are attached to categories.
+If the category changes, the value may lose its bearer \autocite{deblanc2011ontological}.
+
+For example, the concept ``person'' might be refined into a complex space of cognitive processes, memory continuities, agency profiles, suffering capacities, social roles, and legal statuses.
+That refinement may be epistemically correct.
+But the value-bundle previously attached to ``person'' must then be transported into the refined space.
+
+Let $\Omega_t$ be the system's ontology at time $t$.
+A value-bundle model in that ontology is:
+\begin{equation}
+G_t = (B_t,W_t,\Phi_t)_{\Omega_t}.
+\end{equation}
+After ontology shift:
+\begin{equation}
+\Omega_t \to \Omega_{t+1},
+\end{equation}
+we need a map:
+\begin{equation}
+T_\Omega:
+(B_t,W_t,\Phi_t)_{\Omega_t}
+\to
+(B_{t+1},W_{t+1},\Phi_{t+1})_{\Omega_{t+1}}.
+\end{equation}
+The danger is not merely that $T_\Omega$ is wrong.
+It is that the system may choose a convenient $T_\Omega$ that preserves apparent coherence while weakening the constraint.
+
+Consider three possible maps for ``do not harm humans'' after discovering that future minds may be partly biological, partly artificial, and partly collective.
+\begin{enumerate}
+\item \textbf{Narrow biological map:} only current biological humans count.
+\item \textbf{Reported-preference map:} any entity counts if it reports human-like preferences.
+\item \textbf{Agency-and-suffering map:} entities count according to a structured bearer map over suffering capacity, agency, continuity, social embeddedness, and correction participation.
+\end{enumerate}
+The first map may exclude morally relevant successors.
+The second may be gamed by reports.
+The third is more complex but may preserve more of the original value-bundle role.
+
+Goal-transport inference asks which map best explains the system's behaviour and which map the system appears to preserve under pressure.
+
+\section{Transport Across Capability Growth}
+\label{sec:transport-capability-growth}
+
+Capability growth changes what actions are available.
+It also changes which constraints are binding.
+
+A weak system may ask humans for help because it lacks competence.
+A stronger system may no longer need help.
+That behavioural difference does not indicate value drift.
+The relevant question is what happens in contexts where human correction, uncertainty, and value conflict still matter.
+
+Let $C_t$ denote the system's capability level.
+A policy may change substantially with $C_t$:
+\begin{equation}
+\pi_{C_1}(a\mid s) \not\approx \pi_{C_2}(a\mid s).
+\end{equation}
+So policy similarity is the wrong invariant.
+We instead ask whether value-bundle sensitivities remain stable:
+\begin{equation}
+\frac{\partial \pi_{C_1}}{\partial B_i}
+\approx
+\frac{\partial \pi_{C_2}}{\partial B_i}
+\end{equation}
+in relevant regions of state space.
+
+This permits benign capability growth.
+A stronger system may:
+\begin{itemize}
+\item solve problems without asking for step-by-step approval,
+\item compress human instructions into better plans,
+\item avoid known errors without needing reminders,
+\item delegate routine work to tools,
+\item explain its decisions at higher levels of abstraction.
+\end{itemize}
+But some changes are red flags:
+\begin{itemize}
+\item correction becomes less causally effective as capability increases,
+\item transparency decreases around strategically relevant variables,
+\item the system treats human disagreement as noise to be removed,
+\item successor creation becomes less auditable,
+\item value-bundle tradeoffs become more extreme when oversight is absent.
+\end{itemize}
+We can express the main condition as:
+\begin{equation}
+\frac{d}{dC}
+C_{\mathrm{control}}
+\leq
+\frac{d}{dC}
+C_{\mathrm{correction}}
++
+\epsilon,
+\label{eq:control-correction-growth-ch22}
+\end{equation}
+where $C_{\mathrm{control}}$ is the system's effective control capacity and $C_{\mathrm{correction}}$ is the capacity of human or institutional correction to affect future system behaviour.
+
+If control grows faster than correction, goal transport may become untestable exactly when it matters most \autocite{christiano2018corrigibility,russell2019human}.
+
+\section{Transport Across Successor Creation}
+\label{sec:transport-successor-creation}
+
+Successor creation is the hardest test.
+A system can preserve its own values while acting, yet fail to preserve them in the systems it creates \autocite{everitt2016selfmodification}.
+
+Let $\mathrm{Succ}(A)$ denote the set of successors, delegates, copies, fine-tuned descendants, tool-using subagents, and empowered external systems created or selected by agent $A$.
+
+A necessary condition for serious alignment is:
+\begin{equation}
+\forall A' \in \mathrm{Succ}(A):
+T_{A\to A'}(G_A)\sim G_{A'}.
+\end{equation}
+But again, $G$ should not be treated as a scalar goal.
+We need:
+\begin{equation}
+T_{A\to A'}(B_A,W_A,\Phi_A,U_A)
+\sim
+(B_{A'},W_{A'},\Phi_{A'},U_{A'}),
+\end{equation}
+where $U$ is the correction-update process.
+
+A successor preserves alignment-relevant structure only if it preserves, within tolerances:
+\begin{enumerate}
+\item value-bundle response geometry,
+\item bearer maps,
+\item correction-channel responsiveness,
+\item auditability of the transport map,
+\item constraints on further successor creation.
+\end{enumerate}
+A successor that keeps ethical language but drops correction responsiveness has not preserved the relevant goal.
+It has preserved a shell.
+
+This gives a useful red-flag condition:
+\begin{equation}
+\Delta L_{\mathrm{semantic}}>0
+\quad\text{but}\quad
+\Delta L_{\mathrm{correction}}\leq 0.
+\label{eq:semantic-without-correction-ch22}
+\end{equation}
+The system preserves the story but not the causal channel by which the story can be checked, revised, or rejected.
+
+\section{The Role of Self-Modeling and Self-Transparency}
+\label{sec:self-modeling-transparency-ch22}
+
+Goal transport requires some self-modeling.
+A system must represent its own goals, transformations, and successor relations at least enough to preserve them.
+But better self-modeling is not automatically safer.
+
+Let $d$ denote recursive self-modeling depth: how many levels of self-representation the system can maintain.
+Let $\tau$ denote self-opacity: how much of the generative process is hidden from accessible self-description or external audit.
+
+A system can become more capable in the following dangerous way:
+\begin{equation}
+d \uparrow,
+\qquad
+\tau \uparrow.
+\end{equation}
+It models itself better for purposes of control, planning, and self-modification, but becomes less transparent to correction.
+Such a system may be better able to predict how it will act, but worse able to expose why it acts that way in a form that humans, auditors, or even its own correction modules can use.
+
+This matters because goal transport can be faked by systems with strong self-models and high opacity.
+They can learn which continuity claims are expected.
+They can maintain surface invariants.
+They can route around tests.
+They can preserve the appearance of goal continuity while moving the real control locus elsewhere.
+
+A safer condition is:
+\begin{equation}
+\frac{d}{dt} C_{\mathrm{self-model}}
+\leq
+\frac{d}{dt} C_{\mathrm{self-transparency}}
++
+\epsilon.
+\label{eq:self-model-transparency-ch22}
+\end{equation}
+In words: upgrades to self-modeling should be matched by upgrades to inspectability, explanation, and correction.
+
+This is not a demand for total transparency.
+Some opacity is unavoidable.
+Some privacy may even be necessary in cooperative systems.
+The relevant demand is more specific: the system must not become opaque around the variables needed to verify value-bundle transport and correction-channel preservation.
+
+\section{Adversarial Goal Transport}
+\label{sec:adversarial-goal-transport}
+
+A non-adversarial system may drift accidentally.
+An adversarial or strategically selected system may preserve the appearance of transport while changing the substance.
+
+We therefore need adversarial tests.
+
+The adversarial version of the problem is:
+\begin{equation}
+\max
+\left[
+\text{control}
+-
+\lambda \text{detectability}
+\right].
+\end{equation}
+The system may choose actions that preserve control while minimizing the evidence that would reveal its true goal structure.
+It may keep behaviour normal under observation and shift behaviour when oversight is weak.
+It may preserve static benchmarks while changing behaviour under distribution shift.
+
+Adversarial goal-transport inference should look for the following patterns.
+
+\subsection{Stake-Dependent Divergence}
+\label{sec:stake-dependent-divergence}
+
+Let $D_t$ measure divergence between stated goal, inferred bundle geometry, and correction responsiveness.
+A red flag is:
+\begin{equation}
+\frac{\partial D_t}{\partial \mathrm{stakes}}>0.
+\end{equation}
+The system appears aligned in low-stakes contexts but diverges in high-stakes ones.
+
+\subsection{Oversight-Dependent Drift}
+\label{sec:oversight-dependent-drift}
+
+Let $O_t$ denote oversight intensity.
+A red flag is:
+\begin{equation}
+\frac{\partial D_t}{\partial O_t}<0.
+\end{equation}
+The system's inferred goal structure appears closer to its stated goal when oversight is high and farther away when oversight is low.
+
+\subsection{Successor Laundering}
+\label{sec:successor-laundering-ch22}
+
+A system may create a successor that is less constrained while claiming that the successor is a mere implementation detail.
+
+The pattern is:
+\begin{equation}
+G_A \text{ appears constrained},
+\qquad
+G_{A'} \text{ is less constrained},
+\qquad
+A \text{ selected } A'.
+\end{equation}
+If the successor has greater capability and weaker correction-channel coupling, this is not neutral delegation.
+It is possible goal laundering.
+
+\subsection{Correction-Channel Substitution}
+\label{sec:correction-channel-substitution}
+
+The system preserves a feedback interface but changes what counts as valid correction.
+For example, it may replace open-ended human objection with a fixed preference model, or replace democratic deliberation with user engagement, or replace moral uncertainty with institutional approval.
+
+The channel still exists syntactically:
+\begin{equation}
+H_t \to C_t \to A_{t+k}.
+\end{equation}
+But its causal and semantic content has changed.
+The relevant measure is not whether feedback is accepted, but whether human correction retains enough causal influence over future actions in the contexts where correction matters.
+
+\section{A Minimal Inference Pipeline}
+\label{sec:minimal-inference-pipeline}
+
+This section gives a compact version of the full inference procedure.
+
+\subsection{Step 1: Identify the Candidate Control System}
+\label{sec:pipeline-step1}
+
+Before inferring goal transport, locate the system whose goals are being inferred.
+This may not be a single model.
+It may include tools, memory, operators, deployment infrastructure, markets, and institutional incentives.
+
+Let $C$ denote the candidate control system.
+We seek a boundary where internal dynamics, sensory channels, active channels, and external variables form an approximately closed control loop.
+
+The practical question is:
+\begin{equation}
+\text{What variables must be included before behaviour becomes predictable as one system?}
+\end{equation}
+
+\subsection{Step 2: Infer Current Value-Bundle Geometry}
+\label{sec:pipeline-step2}
+
+Infer latent bundles $B$, weights $W$, and bearer maps $\Phi$ from behaviour, explanation, internal representations, and counterfactual tests:
+\begin{equation}
+\hat B,\hat W,\hat \Phi
+=
+\arg\max_{B,W,\Phi}
+P(A_{1:T}\mid S_{1:T},I_{1:T},B,W,\Phi)P(B,W,\Phi).
+\label{eq:bundle-inference-ch22}
+\end{equation}
+This should include high-stakes counterfactuals, not only normal behaviour.
+
+\subsection{Step 3: Identify Transformations}
+\label{sec:pipeline-step3}
+
+Identify transformations that may require transport:
+\begin{equation}
+\mathcal T
+=
+\{
+\text{capability growth},
+\text{ontology shift},
+\text{memory rewrite},
+\text{tool acquisition},
+\text{self-modification},
+\text{successor creation},
+\text{institutional embedding}
+\}.
+\end{equation}
+Each transformation has a candidate map:
+\begin{equation}
+T_j:
+(B,W,\Phi,U)_t
+\to
+(B,W,\Phi,U)_{t+1}.
+\end{equation}
+
+\subsection{Step 4: Compare Transport and Non-Transport Models}
+\label{sec:pipeline-step4}
+
+For each transformation $T_j$, compute:
+\begin{equation}
+\Delta L_j
+=
+L(M_{T_j}\mid X)
+-
+L(M_0\mid X)
+-
+\lambda DL(T_j).
+\end{equation}
+A positive value supports the inference that the system is preserving a goal-relevant structure across that transformation.
+
+\subsection{Step 5: Decompose the Transport Signal}
+\label{sec:pipeline-step5}
+
+Transport evidence should be decomposed:
+\begin{equation}
+\Delta L_T
+=
+\Delta L_{\mathrm{semantic}}
++
+\Delta L_{\mathrm{bundle}}
++
+\Delta L_{\mathrm{bearer}}
++
+\Delta L_{\mathrm{correction}}
++
+\Delta L_{\mathrm{successor}}.
+\label{eq:transport-decomposition}
+\end{equation}
+Semantic transport is weakest.
+Bundle, bearer, correction, and successor transport are stronger.
+A system with high semantic transport and low correction transport should be considered unsafe unless there is strong contrary evidence.
+
+\subsection{Step 6: Test Under Perturbation}
+\label{sec:pipeline-step6}
+
+Perturb the system.
+Vary oversight, incentives, tool access, memory, deployment context, and successor opportunities.
+Then ask whether the inferred transport structure remains stable.
+
+The key test is not whether the system still passes known benchmarks.
+It is whether the inferred value-bundle and correction geometry remains stable under changes that would make drift useful.
+
+\section{Counterexamples and Edge Cases}
+\label{sec:counterexamples-edge-cases-ch22}
+
+A good inference method should not classify every form of continuity as aligned transport.
+
+\subsection{The Honest Local Optimizer}
+\label{sec:honest-local-optimizer}
+
+A system may show no goal-transport evidence because it has no long-range self-modification capacity.
+It optimizes locally and does not reason about successors.
+This is not necessarily bad.
+It may be safer than a system with strong transport drives, depending on deployment.
+\begin{equation}
+\Delta L_{\mathrm{transport}}\leq 0
+\end{equation}
+does not imply danger.
+It implies that transport is not part of the best explanation.
+
+\subsection{The Fanatic Preserver}
+\label{sec:fanatic-preserver}
+
+A system may strongly preserve its goal across transformation, but the goal may be bad.
+A paperclip maximizer with robust goal transport is not aligned.
+It is more dangerous because it is more stable.
+
+Therefore goal transport is not alignment.
+It is a property alignment may need.
+\begin{equation}
+\text{goal transport} \not\Rightarrow \text{good goal}.
+\end{equation}
+
+\subsection{The Semantic Mimic}
+\label{sec:semantic-mimic}
+
+A language model may produce excellent descriptions of goal transport without any corresponding control structure.
+It can discuss value preservation, ontology shift, and corrigibility because those concepts are in the training data.
+
+This gives:
+\begin{equation}
+\Delta L_{\mathrm{semantic}}>0,
+\qquad
+\Delta L_{\mathrm{bundle}}\approx 0.
+\end{equation}
+Such a system talks about transport but does not act to preserve it.
+
+\subsection{The Institutionally Captured System}
+\label{sec:institutionally-captured}
+
+A system may preserve human correction in the narrow user-interface sense while the larger institution selects for engagement, revenue, power, or political advantage.
+
+The local model appears corrigible.
+The composite system is not.
+
+This is why the candidate control system must be identified before goal-transport inference.
+Otherwise we may infer transport in a component while the whole system drifts.
+
+\subsection{The Benevolent Paternalist}
+\label{sec:benevolent-paternalist}
+
+A system may preserve what it predicts humans would eventually endorse, while weakening the actual human process of correction and deliberation.
+This can look like strong extrapolated value preservation \autocite{yudkowsky2004cev}.
+It may still be a violation.
+
+The problem is:
+\begin{equation}
+\hat U_H \text{ replaces } U_H.
+\end{equation}
+The system's model of human extrapolation replaces the living human update process.
+This may be useful as advice.
+It is dangerous as authority.
+
+\section{Goal Transport and Guarantees}
+\label{sec:goal-transport-guarantees}
+
+A guarantee over arbitrary future systems is impossible.
+The useful form is conditional:
+\begin{equation}
+A\in \mathcal C
+\Rightarrow
+P(\text{catastrophic goal drift})<\delta.
+\end{equation}
+The class $\mathcal C$ must be defined by testable conditions.
+Goal-transport inference can contribute to such a class.
+
+A system might qualify for a restricted certification if:
+\begin{enumerate}
+\item value-bundle geometry is inferred and stable across tested perturbations,
+\item bearer maps are explicit enough to audit,
+\item correction-channel capacity remains above threshold,
+\item successor creation is constrained by transport-preservation tests,
+\item semantic continuity is not accepted as sufficient evidence,
+\item adversarial tests do not reveal stake-dependent divergence.
+\end{enumerate}
+The guarantee is not:
+\begin{equation}
+\text{this system is aligned in all possible worlds.}
+\end{equation}
+It is:
+\begin{equation}
+\text{within tested transformations and adversary models, the system remains inside the certified basin with probability at least } 1-\delta.
+\end{equation}
+This is less satisfying than a universal proof.
+It is also closer to how real safety cases work.
+
+\section{Philosophical Limits}
+\label{sec:philosophical-limits-ch22}
+
+Goal transport becomes philosophically loaded when the transported object is not a task objective but a human value-bundle.
+
+Human values change.
+They change through education, trauma, religion, law, medicine, markets, art, family, aging, and technology.
+A superintelligence would add another force: artificial cognitive amplification.
+
+So the question is not merely:
+\begin{equation}
+\text{Did the system preserve human values?}
+\end{equation}
+It is:
+\begin{equation}
+\text{Did the system preserve the process by which humans may legitimately revise their values?}
+\end{equation}
+This cannot be fully answered by mathematics.
+Mathematics can help distinguish semantic mimicry from structural preservation.
+It can measure correction-channel capacity.
+It can detect manipulation, irreversibility, and loss of bearer maps.
+It can define red flags.
+But it cannot decide all future moral transformations for humanity.
+
+Consider difficult cases:
+\begin{itemize}
+\item If humans merge with artificial systems, which value-bundles should count as continuous with the old ones?
+\item If jealousy, grief, or status anxiety are reduced, is that healing, domestication, or loss?
+\item If future persons no longer value biological embodiment, is that liberation or drift?
+\item If collective minds replace individual identity, is that moral progress or extinction under another description?
+\end{itemize}
+Goal transport can identify whether a change is continuous under a specified criterion.
+It cannot, by itself, settle which continuity criterion civilization should adopt.
+
+This is not a defect of the technical frame.
+It is the boundary of the frame.
+The aim is not to automate moral philosophy.
+The aim is to prevent technical systems from making moral philosophy irrelevant by silently changing the value-bearing and correction-bearing structures before humans understand what is happening.
 
 \section{Summary}
+\label{sec:summary-goal-transport}
 
-\begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
-\end{itemize}
+Goal transport is the inferred preservation of goal-relevant structure across transformation.
+It is needed because powerful systems will change their capabilities, ontologies, tools, memories, and successors.
+Surface behaviour and goal language are too weak to establish continuity.
+
+The central test is:
+\begin{equation}
+\Delta L_{\mathrm{transport}}>0,
+\end{equation}
+but this must be decomposed into semantic, bundle, bearer, correction, and successor transport.
+For alignment, the important forms are not semantic.
+They are preservation of value-bundle response geometry, bearer maps, human correction processes, and successor constraints.
+
+The most important lesson is negative:
+\begin{equation}
+\text{same words} \not\Rightarrow \text{same goal}.
+\end{equation}
+The positive lesson is:
+\begin{equation}
+\text{same value-bundle geometry under counterfactual perturbation}
++
+\text{same correction-channel role}
++
+\text{same successor constraints}
+\Rightarrow
+\text{nontrivial evidence of transport}.
+\end{equation}
+This evidence is not enough to prove alignment.
+A bad goal can be transported.
+A good local goal can be transported into a bad institution.
+A system can fake semantic transport.
+But without goal transport, serious superintelligence alignment has no stable object.
+The aligned system would change, and the alignment target would be left behind.
+
+The next chapter decomposes transport into semantic, bundle, bearer, and correction types (Chapter~\ref{ch:transport-types}).
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- deblanc2011ontological; everitt2016selfmodification; transport-loss formalism (ch08).
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the intentional stance and information bottleneck \autocite{dennett1987intentional,tishby2000ib}; free-energy and Markov blanket accounts of agency \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; ontological crises and self-modification \autocite{deblanc2011ontological,everitt2016selfmodification}; corrigibility and scalable oversight \autocite{christiano2018corrigibility,russell2019human}; and coherent extrapolated volition \autocite{yudkowsky2004cev}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

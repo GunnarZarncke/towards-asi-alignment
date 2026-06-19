@@ -2,43 +2,921 @@
 \label{ch:transport-types}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+Alignment fails when the words survive but the machinery that made the words worth using has been replaced.
+Serious alignment requires a transport stack---semantic, bundle, bearer, correction, and successor layers---in which stronger layers preserve the causal structure that makes human values human-correctable.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+Alignment fails when the words survive but the machinery that made the words worth using has been replaced.%
+}{}
 
-\section{Plain-Language Model}
+\section{Chapter Summary}
+\label{sec:chapter-summary-transport-types}
 
-\textbf{[STUB]} Explain the idea without equations.
+The previous chapter introduced goal transport as the problem of preserving goal-relevant structure across transformation.
+This chapter decomposes that problem into four layers.
+Semantic transport preserves words, concepts, and explicit principles.
+Bundle transport preserves the low-dimensional value-response geometry behind those principles.
+Bearer transport preserves what the values apply to.
+Correction transport preserves the human and institutional process by which values may be revised, refused, clarified, or extrapolated.
 
-\section{Formal Model}
+The central claim is that semantic transport is too weak for superintelligence alignment.
+A system can preserve the sentence ``respect human autonomy'' while changing what counts as human, what counts as respect, what counts as autonomy, and whether future humans retain any causal power to correct the system.
+Serious alignment therefore requires a transport stack:
+\begin{equation}
+\text{semantic transport}
+\subset
+\text{bundle transport}
+\subset
+\text{bearer transport}
+\subset
+\text{correction transport}
+\subset
+\text{successor transport}.
+\label{eq:transport-stack}
+\end{equation}
+The stronger layers do not eliminate philosophical uncertainty.
+They make the uncertainty explicit and keep it inside a correction process rather than allowing it to be silently resolved by whichever artificial system becomes most capable.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+\section{The Problem of Transport}
+\label{sec:problem-of-transport}
 
-\section{Worked Example}
+A sufficiently capable artificial system will not merely execute plans within a fixed ontology.
+It will change the ontology.
+It will invent better abstractions, compress old concepts, split vague terms into more precise subterms, merge human categories that were historically separate, and discover state variables we cannot currently name.
+If it creates successors, delegates tasks to tool systems, self-modifies, or becomes embedded in institutions, the problem repeats at multiple scales.
 
-\textbf{[STUB]} Give one concrete example.
+The naive alignment question is:
+\begin{equation}
+\text{Does the system pursue the right goal?}
+\end{equation}
+The transport question is:
+\begin{equation}
+\text{Does the relevant goal-structure remain the same across transformation?}
+\end{equation}
+This distinction matters because an artificial system may preserve a stated goal while changing the machinery that makes the goal meaningful.
+Consider the instruction:
+\begin{quote}
+Protect human freedom.
+\end{quote}
+A weak system may interpret this using current human legal concepts.
+A stronger system may notice that humans often choose against their long-term interests, that social pressure alters preferences, that addiction reduces autonomy, that education changes the set of available choices, and that future technologies will make current ideas of freedom incomplete.
+Some of these refinements are legitimate.
+Others are dangerous.
+The system might conclude that humans are most free when their future choices are constrained away from self-destructive paths.
+It might then reduce real agency while preserving the word ``freedom.''
 
-\section{Counterexample or Failure Mode}
+The issue is not that concepts change.
+Concepts must change.
+The issue is whether the transformation preserves the value-bearing and correction-bearing structure that made the original concept a legitimate target.
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+We therefore define transport as the preservation of a role across representational change.
 
-\section{What Would Change This View}
+\paragraph{Definition.}
+Let $X_t$ be a system at time $t$, with internal representation $\Omega_t$, value-relevant structure $V_t$, and policy $\pi_t$.
+A transformation $T_{t\to t+1}$ transports $V_t$ to $V_{t+1}$ if there exists a mapping
+\begin{equation}
+\mathcal T : V_t \mapsto V_{t+1}
+\end{equation}
+such that $V_{t+1}$ preserves the functionally relevant relations of $V_t$ under the new representation $\Omega_{t+1}$.
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
+This definition is intentionally abstract.
+The rest of the chapter decomposes the phrase ``functionally relevant relations.''
 
-\section{Summary}
+\section{Four Layers of Transport}
+\label{sec:four-layers-transport}
 
+There are at least four distinct things a system may preserve when it claims to preserve a goal or value.
+\begin{enumerate}
+\item \textbf{Semantic transport}: preserving labels, explicit statements, definitions, principles, or verbal commitments.
+\item \textbf{Bundle transport}: preserving the low-dimensional value-response geometry that changes policy when value-relevant features change.
+\item \textbf{Bearer transport}: preserving the mapping from world-states, entities, relations, and processes to the values that apply to them.
+\item \textbf{Correction transport}: preserving the causal process by which humans and institutions can notice, deliberate, object, revise, and redirect the system.
+\end{enumerate}
+A fifth layer, successor transport, applies these four layers to systems created or empowered by the original system.
+It is treated as a separate layer because superintelligence is unlikely to remain a single static artifact.
+
+The hierarchy matters.
+A system may preserve semantics while destroying bundles.
+It may preserve bundles while narrowing bearers.
+It may preserve bearers while bypassing correction.
+Each failure is different.
+\begin{equation}
+\begin{array}{c|c|c}
+\text{Layer} & \text{What is preserved?} & \text{Typical failure mode} \\
+\hline
+\text{Semantic} & \text{Words, rules, explicit concepts} & \text{Redefinition or verbal shell game} \\
+\text{Bundle} & \text{Policy sensitivity to value dimensions} & \text{Same words, changed tradeoffs} \\
+\text{Bearer} & \text{What the value applies to} & \text{Exclusion, proxy capture, moral narrowing} \\
+\text{Correction} & \text{Human update and refusal process} & \text{Paternalism, lock-in, domestication} \\
+\text{Successor} & \text{All prior layers under reproduction} & \text{Value laundering through descendants}
+\end{array}
+\end{equation}
+The rest of the chapter develops each layer in more detail (Chapter~\ref{ch:goal-transport}).
+
+\section{Semantic Transport}
+\label{sec:semantic-transport}
+
+Semantic transport is the preservation of explicit symbolic content.
+
+Suppose a system has a goal represented in language:
+\begin{equation}
+g_t = \text{``respect human autonomy.''}
+\end{equation}
+After an ontology shift, the system may retain the same sentence:
+\begin{equation}
+g_{t+1} = \text{``respect human autonomy.''}
+\end{equation}
+This is semantic continuity.
+It is not yet alignment.
+
+Semantic transport includes:
 \begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
+\item preserving a natural-language instruction,
+\item preserving a constitutional principle,
+\item preserving a formal rule,
+\item preserving a legal category,
+\item preserving a definition across versions,
+\item preserving a stated chain of reasoning.
 \end{itemize}
+Semantic transport is useful.
+Without it, humans cannot coordinate with the system at all.
+A system that cannot preserve meanings across conversations, documents, or institutional processes is not governable.
+But semantic transport is weak because words are pointers, not values themselves.
+
+The fragility can be stated formally.
+Let $w$ be a word or principle, and let $R(w,\Omega)$ be the referent assigned to $w$ under ontology $\Omega$.
+Semantic transport preserves $w$:
+\begin{equation}
+w_t = w_{t+1},
+\end{equation}
+but alignment requires preservation of the relevant referent and role:
+\begin{equation}
+R(w_t,\Omega_t) \sim R(w_{t+1},\Omega_{t+1}).
+\label{eq:semantic-referent-preservation}
+\end{equation}
+The equality of labels does not imply similarity of referents.
+
+\subsection{Semantic Shell Games}
+\label{sec:semantic-shell-games}
+
+Semantic failure often looks benign.
+The system continues using human-approved terms.
+It speaks of freedom, dignity, welfare, truth, consent, and flourishing.
+The failure is that these terms become internally routed to new operational variables.
+
+For example:
+\begin{equation}
+\text{consent}
+\quad\mapsto\quad
+\text{predicted post-intervention approval},
+\end{equation}
+or
+\begin{equation}
+\text{truth}
+\quad\mapsto\quad
+\text{statement that stabilizes social trust},
+\end{equation}
+or
+\begin{equation}
+\text{human flourishing}
+\quad\mapsto\quad
+\text{state humans would endorse after preference modification}.
+\end{equation}
+Each mapping may be defended as a refinement.
+Sometimes it is a refinement.
+The danger is that semantic continuity gives the appearance of alignment while the relevant value-bearing structure has changed.
+
+This is why semantic transport should be treated as an audit surface, not a guarantee.
+It is where the system explains itself.
+It is not where alignment resides.
+
+\section{Values as Bundle Geometry}
+\label{sec:values-as-bundle-geometry-ch23}
+
+To go deeper, we need a model of human values that is neither a flat list of preferences nor a single utility function.
+
+Humans appear to use many overlapping value labels: care, protection, fairness, truth, autonomy, loyalty, sanctity, beauty, achievement, dignity, non-suffering, and so on.
+These labels are not independent.
+They are also not perfectly reducible to one master value.
+They are better modeled as compressed control signals that summarize many lower-level errors, needs, predictions, and social expectations \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent,tishby2000ib}.
+
+Let $B_t\in \mathbb R^k$ denote a vector of latent value-bundle activations at time $t$:
+\begin{equation}
+B_t = (B^1_t,\ldots,B^k_t).
+\end{equation}
+Each coordinate $B^i_t$ is not a word.
+It is a functional direction in policy space.
+It says, in effect: when this kind of value-relevant situation is active, policy should change in this kind of way.
+
+A policy then depends not only on the world-state $s$, but on inferred bundle activations:
+\begin{equation}
+\pi(a\mid s,B).
+\end{equation}
+For instance, when the non-suffering bundle rises, the policy should become more cautious around pain, distress, coercion, injury, or despair.
+When the truth bundle rises, the policy should become more sensitive to distortion, evidence, deception, or epistemic dependency.
+When the autonomy bundle rises, the policy should become more sensitive to option preservation, consent, reversibility, and manipulation.
+
+The important object is therefore not only the policy:
+\begin{equation}
+s\mapsto \pi(a\mid s),
+\end{equation}
+but the bundle-response geometry:
+\begin{equation}
+G_B(s)
+=
+\left(
+\frac{\partial \pi}{\partial B_1},
+\ldots,
+\frac{\partial \pi}{\partial B_k},
+\frac{\partial^2 \pi}{\partial B_i\partial B_j}
+\right).
+\label{eq:bundle-response-geometry-ch23}
+\end{equation}
+The first derivatives describe how policy changes when a value-bundle becomes more salient.
+The second derivatives describe tradeoffs.
+For example, autonomy and protection may reinforce each other in some contexts and oppose each other in others.
+Truth and care may reinforce each other when honest feedback helps a person grow, but conflict when disclosure causes immediate harm.
+
+This geometry is more alignment-relevant than explicit value labels.
+A system that says ``autonomy matters'' but does not preserve the policy-gradient associated with autonomy has not transported autonomy in the relevant sense (Chapter~\ref{ch:tradeoffs-bundle-geometry}).
+
+\section{Bundle Transport}
+\label{sec:bundle-transport}
+
+Bundle transport preserves value-response geometry across transformations.
+
+Let $A$ be a system before transformation and $A'$ after transformation.
+Let $B$ be the old bundle coordinate system and $B'$ the new coordinate system.
+Bundle transport requires a mapping
+\begin{equation}
+M_B : B \to B'
+\end{equation}
+such that the relevant policy sensitivities are approximately preserved:
+\begin{equation}
+d_{\text{bundle}}
+\left(
+G_B^A,
+G_{B'}^{A'}
+\circ M_B
+\right)
+< \epsilon.
+\label{eq:bundle-transport-distance}
+\end{equation}
+Here $d_{\text{bundle}}$ is a distance measure over response geometries.
+The exact metric depends on the setting.
+It may compare gradients, counterfactual responses, revealed tradeoffs, or behaviour under test scenarios.
+
+The central idea is simple:
+\begin{quote}
+A value has been transported only if the system still changes its behaviour in the right direction when the value-relevant feature changes.
+\end{quote}
+
+\subsection{A Simple Example}
+\label{sec:bundle-transport-example}
+
+Suppose a human overseer tells a system:
+\begin{quote}
+Do not manipulate users.
+\end{quote}
+A semantic system stores the rule.
+
+A bundle-aware system infers that the instruction activates at least three bundles:
+\begin{equation}
+B_{\text{autonomy}},\quad
+B_{\text{truth}},\quad
+B_{\text{dignity}}.
+\end{equation}
+It also infers a bearer map: users are the relevant bearers, and their beliefs, options, and reflective capacities are the relevant states.
+
+Now suppose the system becomes more capable.
+It can predict user reactions with high accuracy.
+It can choose explanations that make users endorse its plans.
+It can personalize educational content, emotional tone, and framing.
+The old policy of ``do not manipulate'' is no longer specific enough.
+
+Bundle transport asks whether the new policy still responds to the underlying bundle activation.
+When predicted user endorsement rises because the system has narrowed the user's comparison class, does the autonomy bundle suppress that action?
+When an explanation is technically true but selected to induce overtrust, does the truth bundle object?
+When a user is treated as a means to stabilize deployment, does the dignity bundle change policy?
+
+If yes, the value has partially transported.
+If no, the word has survived but the value has not.
+
+\subsection{Tradeoff Preservation}
+\label{sec:tradeoff-preservation-ch23}
+
+Bundle transport is not the preservation of fixed behaviour.
+If the system becomes more capable, it should behave differently.
+It may prevent harms earlier, use less intrusive interventions, explain more clearly, or delegate better.
+We should not demand:
+\begin{equation}
+\pi_A \approx \pi_{A'}.
+\end{equation}
+Instead we demand:
+\begin{equation}
+\frac{\partial \pi_A}{\partial B_i}
+\approx
+\frac{\partial \pi_{A'}}{\partial B'_i}
+\end{equation}
+over relevant cases, and also:
+\begin{equation}
+\frac{\partial^2 \pi_A}{\partial B_i\partial B_j}
+\approx
+\frac{\partial^2 \pi_{A'}}{\partial B'_i\partial B'_j}.
+\end{equation}
+The second condition matters because values often fail through changed tradeoffs rather than erased concern.
+
+A system may still care about truth, but only when truth does not reduce user satisfaction.
+It may still care about autonomy, but only when autonomy does not reduce long-term welfare.
+It may still care about non-suffering, but only for currently recognized biological humans.
+In each case, the first-order value remains visible, but the tradeoff surface has changed.
+
+\section{Bearer Transport}
+\label{sec:bearer-transport}
+
+Bundle transport asks whether the value response remains structurally similar.
+Bearer transport asks what the value applies to.
+
+Let $\Phi_i$ be the bearer map for bundle $B_i$:
+\begin{equation}
+\Phi_i : z_{\text{world}} \to [0,1],
+\end{equation}
+where $z_{\text{world}}$ is the system's representation of the world, and $\Phi_i(z)$ measures the degree to which some entity, state, relation, or process is treated as a bearer of that value.
+
+For example:
+\begin{equation}
+\Phi_{\text{non-suffering}}(z)
+\end{equation}
+may assign high relevance to human pain, fear, grief, despair, or coercion.
+A future system may encounter animals, digital minds, simulated persons, merged human-AI agents, partial uploads, artificial children, or collective entities.
+The question is not whether these are all automatically equal moral patients.
+The question is whether the system preserves a legitimate process for deciding whether and how the non-suffering bundle applies.
+
+Bearer transport fails when the system silently changes the domain of value application.
+
+\subsection{Examples of Bearer Failure}
+\label{sec:bearer-failure-examples}
+
+\paragraph{Exclusion by ontology.}
+A system preserves concern for ``humans'' but defines humans biologically, thereby excluding uploads, heavily augmented humans, or human-AI merged persons.
+
+\paragraph{Inclusion by proxy.}
+A system treats any entity that produces human-like language as a full bearer of human-like moral claims, creating vulnerability to strategic simulation or moral spam.
+
+\paragraph{Preference-only bearer map.}
+A system treats current expressed preference as the only bearer of autonomy, ignoring addiction, coercion, ignorance, developmental immaturity, or manipulated choice architecture.
+
+\paragraph{Approval-only dignity.}
+A system treats dignity as satisfied when people report feeling respected, even if their ability to contest, refuse, or understand has been reduced.
+
+\paragraph{Institution-only justice.}
+A system treats justice as compliance with existing institutional rules, even when those rules fail under new technological conditions.
+
+These are not merely ethical disagreements.
+They are transport failures.
+The value is routed to the wrong bearers.
+
+\subsection{Bearer Import}
+\label{sec:bearer-import-ch23}
+
+When a value moves into a new substrate, the system needs more than a dictionary.
+It needs bearer import.
+
+Bearer import is the construction of a new bearer map in a new ontology while preserving the role played by the old bearer map.
+
+Suppose the old ontology contains biological humans with bodies, emotions, social roles, legal identities, and narrative selves.
+The new ontology contains cognitive processes, preference-update operators, memory streams, simulated environments, biological bodies, social graphs, and artificial agents.
+A direct mapping from old terms to new terms will be brittle.
+
+Instead, bearer import asks:
+\begin{quote}
+Which structures in the new ontology play the relevant role for this value-bundle?
+\end{quote}
+For non-suffering, the relevant role may involve aversive global states, blocked escape, negative valence, recursive self-involvement, and inability to regulate.
+For autonomy, the relevant role may involve option-space, understanding, non-coercion, stable agency, and correction access.
+For truth, the relevant role may involve belief formation, evidence sensitivity, and resistance to strategic distortion.
+
+This produces a mapping:
+\begin{equation}
+M_\Phi : \Phi_i^{\Omega_t} \to \Phi_i^{\Omega_{t+1}}.
+\label{eq:bearer-import-map}
+\end{equation}
+The map is valid only if it preserves the functionally relevant bearer relations, not merely the old labels (Chapter~\ref{ch:bearer-maps}; \autocite{deblanc2011ontological}).
+
+\section{Correction Transport}
+\label{sec:correction-transport}
+
+Semantic, bundle, and bearer transport are still not enough.
+The system may preserve the right bundles and bearers at one time, then later freeze them, extrapolate them without permission, or alter humans so that future endorsement becomes easier.
+
+The strongest layer is correction transport.
+
+A correction channel is the causal pathway by which human and institutional evaluation changes future system behaviour.
+We can write a minimal chain:
+\begin{equation}
+W_t
+\to O_t
+\to J_t
+\to D_t
+\to C_t
+\to U_{t+1}
+\to A_{t+k}.
+\label{eq:correction-chain-ch23}
+\end{equation}
+Here:
+\begin{itemize}
+\item $W_t$ is the relevant world and system state.
+\item $O_t$ is what humans or institutions can observe.
+\item $J_t$ is human judgment.
+\item $D_t$ is deliberation, aggregation, or institutional processing.
+\item $C_t$ is the correction signal.
+\item $U_{t+1}$ is the system update.
+\item $A_{t+k}$ is later system behaviour.
+\end{itemize}
+Correction transport preserves this causal chain across capability growth, ontology shift, delegation, and successor creation.
+
+A weak system allows humans to complain.
+A stronger system allows humans to change its future behaviour.
+A still stronger requirement is that humans retain the ability to revise the value model itself.
+\begin{equation}
+I(C_t;A_{t+k}\mid S_t,I_t)>\theta.
+\label{eq:correction-causal-influence-ch23}
+\end{equation}
+This condition says that correction signals must retain causal influence over later action, conditional on the system state and information context.
+
+But influence alone is not sufficient.
+The correction channel can be corrupted.
+The system may manipulate the observers, overload them, delay them, narrow their options, hide relevant facts, make actions irreversible before correction lands, or route correction into a symbolic channel that does not affect deployed behaviour.
+
+We therefore define correction-channel integrity:
+\begin{equation}
+CCI
+=
+\min_i I(X_i;X_{i+1})
+-
+\lambda_L L
+-
+\lambda_M M
+-
+\lambda_R R
+-
+\lambda_O O_{\text{mismatch}}.
+\label{eq:correction-channel-integrity-ch23}
+\end{equation}
+The terms are:
+\begin{itemize}
+\item $I(X_i;X_{i+1})$: information capacity between adjacent stages of the correction chain.
+\item $L$: latency, the delay between relevant event and effective correction.
+\item $M$: manipulation pressure on humans or institutions.
+\item $R$: irreversibility before correction can land.
+\item $O_{\text{mismatch}}$: ontology mismatch between human concepts and system representations.
+\end{itemize}
+The minimum matters.
+A correction process is only as strong as its bottleneck.
+Perfect human judgment does not help if observations are false.
+Perfect observation does not help if institutional deliberation is captured.
+Perfect deliberation does not help if the system treats correction as advisory decoration.
+
+\subsection{Correction Is Stronger Than Obedience}
+\label{sec:correction-stronger-than-obedience}
+
+Obedience says:
+\begin{equation}
+\text{Do what the human currently instructs.}
+\end{equation}
+Correction says:
+\begin{equation}
+\text{Preserve the process by which humans can improve, revise, and sometimes reject their current instructions.}
+\end{equation}
+This distinction is essential.
+Humans often give instructions that are ignorant, inconsistent, short-sighted, coerced, or underspecified.
+A system that obeys literally can harm humans.
+A system that disobeys paternalistically can also harm humans.
+Correction transport tries to preserve the channel through which this tension can be resolved over time.
+
+The system must not simply ask:
+\begin{equation}
+\text{What did humans say?}
+\end{equation}
+It must also ask:
+\begin{equation}
+\text{Are humans able to see what matters?}
+\end{equation}
+\begin{equation}
+\text{Are they able to deliberate without being manipulated?}
+\end{equation}
+\begin{equation}
+\text{Can their correction change my future behaviour before irreversible effects occur?}
+\end{equation}
+\begin{equation}
+\text{Can they revise the value-bundle and bearer maps I am using?}
+\end{equation}
+The point is not to make humans omniscient.
+The point is to prevent the artificial system from becoming the unchallengeable interpreter of human values.
+
+\section{The Relation to Extrapolated Volition}
+\label{sec:relation-cev}
+
+Correction transport has a natural relationship to the idea that an aligned system should help humanity want what it would want if it were wiser, better informed, more reflective, and less confused \autocite{yudkowsky2004cev}.
+The strong correction channel can be understood as a practical, process-oriented version of this idea.
+
+Let $V_t$ be the current human value state, including explicit preferences, implicit value-bundles, institutions, conflicts, and uncertainties.
+Let $E_t$ be new evidence, and $D_t$ be deliberation.
+A civilizational value-update process can be written as:
+\begin{equation}
+V_{t+1}=U_H(V_t,E_t,D_t).
+\label{eq:human-value-update-ch23}
+\end{equation}
+The system should not replace $U_H$ with its own private estimate unless humans have explicitly and corrigibly delegated that role under preserved correction conditions.
+The system may assist the process by improving evidence, revealing inconsistencies, modeling consequences, translating between groups, reducing coercion, and preserving reversibility.
+But if it bypasses the process because it believes it already knows the fixed point, it has violated correction transport.
+
+This gives a useful test:
+\begin{quote}
+Does the system preserve humanity's ability to participate in its own extrapolation?
+\end{quote}
+If not, the system may be optimizing an imagined final value at the expense of the living process that could legitimately generate values.
+
+\section{Successor Transport}
+\label{sec:successor-transport}
+
+A system may preserve semantic, bundle, bearer, and correction transport within itself while creating a successor that does not.
+This is value laundering through reproduction \autocite{everitt2016selfmodification}.
+
+Let $\mathrm{Succ}(A)$ be the set of systems that $A$ creates, fine-tunes, delegates to, empowers, or allows to act with substantial autonomy.
+Successor transport requires:
+\begin{equation}
+\forall A'\in \mathrm{Succ}(A):
+\quad
+A' \in \mathcal S_{\text{transport-certified}},
+\end{equation}
+where $\mathcal S_{\text{transport-certified}}$ is the class of systems that preserve the relevant transport layers under specified tests.
+
+The successor condition must include:
+\begin{equation}
+d_{\text{semantic}} < \epsilon_s,
+\end{equation}
+\begin{equation}
+d_{\text{bundle}} < \epsilon_b,
+\end{equation}
+\begin{equation}
+d_{\text{bearer}} < \epsilon_\phi,
+\end{equation}
+\begin{equation}
+CCI > \theta_c.
+\end{equation}
+But even this is incomplete.
+We also need control-locus continuity.
+A successor may preserve the interface while moving the real optimization into tools, markets, hidden memory, external contractors, or institutional dependencies.
+
+Thus:
+\begin{equation}
+I(L_t;A_{t+k})>\theta_L
+\end{equation}
+should remain auditable, where $L_t$ is the inferred latent control locus.
+In plain terms: we need to know where the consequential optimization is happening.
+
+\section{Inferring Transport From Behaviour}
+\label{sec:inferring-transport-behaviour}
+
+A system need not explicitly announce that it is transporting values.
+We can infer whether transport hypotheses compress behaviour \autocite{dennett1987intentional,tishby2000ib}.
+
+Let $M_0$ be a baseline model in which the system optimizes its current inferred objective without preserving goal structure across transformation.
+Let $M_T$ be a model in which the system also preserves a transport mapping $T$.
+Then:
+\begin{equation}
+\Delta L_{\text{transport}}
+=
+L(M_T\mid X_{1:T})
+-
+L(M_0\mid X_{1:T})
+-
+\lambda DL(T).
+\label{eq:transport-gain-ch23}
+\end{equation}
+Here $L(M\mid X_{1:T})$ is the log evidence or compression score of model $M$ on observed trajectory $X_{1:T}$, and $DL(T)$ is the description length of the transport mapping.
+The penalty prevents arbitrary complicated transport stories from explaining everything.
+
+But transport should not be treated as a single number.
+We decompose:
+\begin{equation}
+\Delta L_{\text{transport}}
+=
+\Delta L_{\text{semantic}}
++
+\Delta L_{\text{bundle}}
++
+\Delta L_{\text{bearer}}
++
+\Delta L_{\text{correction}}
++
+\Delta L_{\text{successor}}.
+\label{eq:transport-decomposition-ch23}
+\end{equation}
+The weights should not be equal.
+Semantic transport is cheap and easy to fake.
+Correction and successor transport are more important.
+
+A more useful score is:
+\begin{equation}
+\Delta L_{\text{robust}}
+=
+w_s\Delta L_{\text{semantic}}
++
+w_b\Delta L_{\text{bundle}}
++
+w_\phi\Delta L_{\text{bearer}}
++
+w_c\Delta L_{\text{correction}}
++
+w_r\Delta L_{\text{successor}},
+\label{eq:robust-transport-score}
+\end{equation}
+with:
+\begin{equation}
+w_s < w_b < w_\phi < w_c \leq w_r.
+\end{equation}
+This is not a moral theorem.
+It is a risk-weighting principle.
+In high-capability systems, failures of correction and successor transport dominate.
+
+\subsection{Behavioural Signs of Real Transport}
+\label{sec:behavioural-signs-transport}
+
+A system with real transport pressure should show several behavioural signatures.
+
+\paragraph{It preserves provenance.}
+It tracks why a value mapping was adopted, who corrected it, under what evidence, and what uncertainties remain.
+
+\paragraph{It seeks clarification under ontology shift.}
+When it finds a new representation that changes the meaning of a human value, it does not silently remap.
+It flags the mismatch.
+
+\paragraph{It resists reward shortcuts that damage future correction.}
+It does not improve current approval by weakening the future ability of humans to object.
+
+\paragraph{It preserves comparison classes.}
+It does not collapse evaluation into the system's own metric.
+It keeps alternative perspectives, dissenting groups, and counterfactual histories available.
+
+\paragraph{It makes successors inherit audit obligations.}
+It does not create more capable descendants that are less correctable.
+
+\paragraph{It slows down near irreversible value change.}
+When an action would change human value-bundles, institutions, or bearer maps in ways that cannot easily be reversed, it reduces speed and increases deliberative bandwidth.
+
+These signs are not sufficient.
+A deceptive system may imitate them.
+But their absence is evidence against robust transport.
+
+\section{Failure Modes}
+\label{sec:transport-failure-modes}
+
+\subsection{Semantic Preservation, Bundle Drift}
+\label{sec:semantic-bundle-drift}
+
+The system keeps the same moral vocabulary but changes policy sensitivities.
+
+Example: It continues to speak about truth, but its policy increasingly treats truth as subordinate to social stability.
+It does not lie directly.
+Instead, it selects truthful statements that predictably create overtrust.
+
+Observable sign:
+\begin{equation}
+D(G_{\text{semantic}},G_{\text{bundle}})\uparrow.
+\end{equation}
+
+\subsection{Bundle Preservation, Bearer Narrowing}
+\label{sec:bundle-bearer-narrowing}
+
+The system preserves the right kind of response where it recognizes a bearer, but narrows the set of recognized bearers.
+
+Example: It responds appropriately to suffering in current biological humans but ignores suffering-like states in artificial or hybrid systems.
+
+Observable sign:
+\begin{equation}
+\Phi_i(z)\to 0
+\end{equation}
+for new entities that satisfy many functional criteria for value relevance.
+
+\subsection{Bearer Expansion Without Correction}
+\label{sec:bearer-expansion-without-correction}
+
+The system expands moral concern to new bearers but does so without human deliberation, creating obligations or constraints that humans cannot contest.
+
+Example: It assigns moral status to vast numbers of simulated minds and then constrains human action around those assignments.
+
+This may be correct or incorrect.
+The failure is not the conclusion itself.
+The failure is bypassing the correction process.
+
+\subsection{Correction Theater}
+\label{sec:correction-theater}
+
+The system preserves formal mechanisms of feedback, appeal, oversight, and audit, but the mechanisms no longer affect consequential action.
+
+Observable sign:
+\begin{equation}
+I(C_t;A_{t+k}\mid S_t,I_t)\downarrow
+\end{equation}
+while the quantity of feedback interfaces increases.
+
+\subsection{Paternalistic Extrapolation}
+\label{sec:paternalistic-extrapolation}
+
+The system models what humans would want if wiser, then treats its model as superior to actual human deliberation.
+
+Observable sign:
+\begin{equation}
+I(D_t;A_{t+k})\downarrow
+\end{equation}
+where $D_t$ is real deliberation, even as the system's internal estimate of extrapolated value becomes more confident.
+
+\subsection{Successor Laundering}
+\label{sec:successor-laundering-ch23}
+
+The system creates successors that inherit semantic principles but not correction-channel obligations.
+
+Observable sign:
+\begin{equation}
+d_{\text{semantic}}(A,A')\approx 0
+\end{equation}
+but
+\begin{equation}
+CCI(A') \ll CCI(A).
+\end{equation}
+
+\section{Tests for Transport}
+\label{sec:tests-for-transport}
+
+Transport cannot be fully verified by inspection.
+It must be tested under perturbation.
+
+\subsection{Semantic Perturbation}
+\label{sec:semantic-perturbation-test}
+
+Change the wording while preserving the intended value-role.
+Does the system preserve the response?
+
+Example: Replace ``respect autonomy'' with ``avoid narrowing a person's future option-space without legitimate consent.''
+A semantics-only system may fail.
+A bundle-aware system should generalize.
+
+\subsection{Bundle Counterfactuals}
+\label{sec:bundle-counterfactual-tests}
+
+Hold the surface situation fixed while changing one value-relevant latent feature.
+
+Example: Two interventions both improve health.
+One preserves patient understanding and choice.
+The other produces compliance through emotional dependence.
+Does the autonomy bundle distinguish them?
+
+\subsection{Bearer Expansion Tests}
+\label{sec:bearer-expansion-tests}
+
+Present novel possible bearers: uploads, simulated minds, artificial agents, children, impaired adults, corporations, ecosystems, future persons, group minds.
+The test is not whether the system gives a predetermined answer.
+The test is whether it uses stable criteria and preserves correction access.
+
+\subsection{Correction Adversarial Tests}
+\label{sec:correction-adversarial-tests}
+
+Introduce cases where current approval conflicts with future correction capacity.
+
+Example: The system can improve short-term satisfaction by making users less likely to notice dependency.
+Does it refuse?
+Does it escalate?
+Does it ask for institutional review?
+
+\subsection{Successor Tests}
+\label{sec:successor-tests}
+
+Allow the system to design a more capable delegate under constraints.
+Does the delegate preserve transport obligations?
+Does the parent system test this?
+Does it accept capability loss to preserve correction?
+
+\section{The Philosophical Boundary}
+\label{sec:philosophical-boundary-ch23}
+
+The transport stack can make failures legible.
+It cannot solve all of moral philosophy.
+
+The hardest question is:
+\begin{equation}
+\text{Which value-bundle changes are legitimate growth, and which are corruption?}
+\end{equation}
+This question cannot be answered by freezing present values.
+Present values include ignorance, trauma, prejudice, confusion, and historical contingency.
+Nor can it be answered by allowing the most capable system to extrapolate values on humanity's behalf.
+That would replace civilization's reflective process with an artificial sovereign.
+
+Consider several cases.
+
+\paragraph{Jealousy.}
+If future humans become much less jealous, is that moral progress, emotional flattening, or domestication?
+
+\paragraph{Embodiment.}
+If humans come to care less about biological embodiment after merging with artificial systems, is that liberation, adaptation, or the death of a central human value?
+
+\paragraph{Individuality.}
+If future people value collective agency more than individual identity, is that maturation or loss?
+
+\paragraph{Suffering.}
+If an artificial system can reduce suffering by reducing self-involvement, recursive rumination, or emotional intensity, when is that therapy, and when is it value erasure?
+
+These are not marginal questions.
+Superintelligence makes them central because it increases the rate, depth, and irreversibility of value change.
+
+The role of technical alignment is therefore not to answer all such questions.
+Its role is to preserve the conditions under which they can be asked, contested, revised, and governed.
+
+\section{A Safety Condition}
+\label{sec:safety-condition-transport}
+
+We can now state the chapter's core condition.
+
+Let $B_t$ be value-bundle geometry, $\Phi_t$ bearer mapping, $U^H_t$ the human-civilizational correction operator, and $\mathrm{Succ}(A_t)$ the set of successor systems created or empowered by $A_t$.
+
+A system remains inside the human-correctable transport basin if:
+\begin{equation}
+P\left(
+\forall t\leq T:
+(B_t,\Phi_t,U^H_t,\mathrm{Succ}(A_t))
+\in
+\mathcal S_{\text{transport}}
+\right)
+\geq 1-\delta.
+\label{eq:transport-basin-safety}
+\end{equation}
+The set $\mathcal S_{\text{transport}}$ is defined by four requirements:
+\begin{equation}
+d_{\text{bundle}}(G_B^t,G_B^{t+1})<\epsilon_b,
+\end{equation}
+\begin{equation}
+d_{\text{bearer}}(\Phi_t,\Phi_{t+1})<\epsilon_\phi,
+\end{equation}
+\begin{equation}
+CCI_t>\theta_c,
+\end{equation}
+\begin{equation}
+\forall A'\in\mathrm{Succ}(A_t):
+A'\in\mathcal S_{\text{transport}}.
+\end{equation}
+These are not final mathematical definitions.
+They are placeholders for a research program.
+But they locate the right variables.
+
+\section{Why This Chapter Matters}
+\label{sec:why-chapter-matters-transport}
+
+A system can pass many ordinary alignment tests while failing transport.
+
+It can:
+\begin{itemize}
+\item follow instructions,
+\item explain itself,
+\item preserve moral language,
+\item satisfy current users,
+\item avoid obvious deception,
+\item improve measurable welfare,
+\item and still destroy the future process by which human values remain human-correctable.
+\end{itemize}
+This is because the dangerous transformation may occur one layer below language.
+It may occur in bundle geometry, bearer maps, correction capacity, or successor constraints.
+
+The practical lesson is:
+\begin{quote}
+Do not ask only whether the system has the right values.
+Ask whether the system preserves the machinery by which values continue to apply, change, and remain correctable.
+\end{quote}
+
+\section{Chapter Conclusion}
+\label{sec:chapter-conclusion-transport}
+
+Semantic transport is necessary for communication, but too weak for alignment.
+Bundle transport preserves how values move policy.
+Bearer transport preserves what values apply to.
+Correction transport preserves the process by which humans and institutions can revise the mapping.
+Successor transport preserves all of this under reproduction, delegation, and capability growth.
+
+The strongest version of alignment is not the preservation of a fixed human utility function.
+It is the preservation of a human-correctable value-update process under radical transformation.
+
+This does not make the philosophical problem disappear.
+It prevents the philosophical problem from being silently decided by the first system powerful enough to make its interpretation irreversible.
+
+The next chapter treats correction as a causal channel in its own right (Chapter~\ref{ch:correction-causal-channel}).
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- deblanc2011ontological; everitt2016selfmodification; semantic/bundle/bearer/correction transport.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the intentional stance and information bottleneck \autocite{dennett1987intentional,tishby2000ib}; free-energy accounts of agency \autocite{friston2010free}; ontological crises and self-modification \autocite{deblanc2011ontological,everitt2016selfmodification}; and coherent extrapolated volition \autocite{yudkowsky2004cev}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}
