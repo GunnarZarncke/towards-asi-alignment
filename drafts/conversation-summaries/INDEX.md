@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-19 | Chapter demos scaffold (value bundle simulator) | [2026-06-19-chapter-demos-scaffold.md](2026-06-19-chapter-demos-scaffold.md) |
 | 2026-06-19 | Lean cert chain + Lean-review agent rule (session end) | [2026-06-19-lean-spine-cert-chain-session-end.md](2026-06-19-lean-spine-cert-chain-session-end.md) |
 | 2026-06-19 | Lean spine risk derivation + strengthen TODO | [2026-06-19-lean-spine-risk-derivation.md](2026-06-19-lean-spine-risk-derivation.md) |
 | 2026-06-19 | Session end: Chapter 26 commit | [2026-06-19-session-end-ch26-commit.md](2026-06-19-session-end-ch26-commit.md) |

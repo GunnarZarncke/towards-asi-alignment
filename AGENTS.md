@@ -120,6 +120,10 @@ Output: `dist/pdf/towards-superintelligence-alignment.pdf`
 
 Self-contained Lean 4 skeleton of the book's logical dependencies (`lake build` in `formal/`). When working on or integrating a chapter, review the matching modules per **Chapter work — Lean spine** above and `formal/README.md`.
 
+### Chapter demos (`src/`)
+
+Experimental interactive toys—one mini app per chapter under `src/demos/chNN-slug/`. Not part of the manuscript or PDF. See `src/README.md`; run with `python3 serve.py` from `src/`.
+
 ### README
 
 See `README.md` for thesis, manuscript status, chapter map, build instructions, and review guidelines.
