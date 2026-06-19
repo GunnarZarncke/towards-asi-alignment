@@ -1,0 +1,4 @@
+{
+  "port": 8766,
+  "module": "app:app"
+}

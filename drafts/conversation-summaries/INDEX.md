@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-20 | Chapter 9 UAD coalition board demo | [2026-06-20-ch09-uad-coalition-board-demo.md](2026-06-20-ch09-uad-coalition-board-demo.md) |
 | 2026-06-19 | Chapter demos scaffold (value bundle simulator) | [2026-06-19-chapter-demos-scaffold.md](2026-06-19-chapter-demos-scaffold.md) |
 | 2026-06-19 | Lean cert chain + Lean-review agent rule (session end) | [2026-06-19-lean-spine-cert-chain-session-end.md](2026-06-19-lean-spine-cert-chain-session-end.md) |
 | 2026-06-19 | Lean spine risk derivation + strengthen TODO | [2026-06-19-lean-spine-risk-derivation.md](2026-06-19-lean-spine-risk-derivation.md) |

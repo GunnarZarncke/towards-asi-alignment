@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapter 9 — UAD coalition board</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #f6f6f6;
+        color: #111;
+        line-height: 1.45;
+      }
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 32px 16px 48px;
+      }
+      h1 {
+        font-size: 1.35rem;
+        margin: 0 0 8px;
+      }
+      p {
+        max-width: 62ch;
+        color: #444;
+      }
+      a {
+        color: inherit;
+      }
+      .cta {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        background: #222;
+        color: #fff;
+        text-decoration: none;
+      }
+      .meta {
+        margin-top: 16px;
+        font-size: 0.9rem;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Chapter 9 — UAD coalition board</h1>
+      <p>
+        Post numbers and words, group submissions manually, or run a dummy UAD
+        detector to surface stable-sum coalitions among players.
+      </p>
+      <p>
+        This demo uses a Python backend (FastAPI). Start it with
+        <code>python3 serve.py</code> from <code>src/</code>.
+      </p>
+      <a class="cta" href="http://127.0.0.1:8766/">Open interactive board</a>
+      <p class="meta">
+        Admin mode: append <code>?admin=dev</code> to the board URL.
+      </p>
+    </main>
+  </body>
+</html>
