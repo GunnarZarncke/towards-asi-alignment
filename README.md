@@ -47,7 +47,7 @@ Body text introduces every central concept from first principles.
 | Structure | 10 parts, **44 chapters**, 8 appendices |
 | Chapters | **10 drafted**, **1 partial** (Ch. 5), **33 stub** (see `metadata/book.yml`) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
-| PDF | Builds from `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
+| PDF | [**Download latest draft**](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
 | Word target | ~350k (see `metadata/book.yml`) |
 
 **Next milestone** (`INSTRUCTIONS.md` §25–26): finish Ch. 5; preface and executive overview still stubs; appendices A and F.
