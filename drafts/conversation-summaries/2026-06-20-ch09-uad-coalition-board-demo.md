@@ -33,4 +33,4 @@ Build and integrate an interactive UAD coalition posting-board demo under the st
 - `../agency-detect/agency_detect/`
 
 ## Commits
-- (this session)
+- `e674ae9` — Add Chapter 9 UAD coalition board demo with agency-detect wiring.
