@@ -29,9 +29,13 @@ and makes one distinction explicit and machine-checked:
 counterexamples are finite `Bool` separations (one predicate defined as `True`,
 another as equality); several “theorems” are definitional; abstract quantities
 use integer proxies. The strengthening roadmap lives in `metadata/TODO.md`
-(§ Lean proof spine). Priority: derive certification conclusions from spine
-inputs (capacity slack, correction channel, successor invariance) rather than
-assuming them as bare hypotheses.
+(§ Lean proof spine — **chapter ↔ Lean mapping gaps**). Bridges `MB1`–`MB8` are
+**out of scope** for Lean completion (empirical / philosophical imports); in-scope
+work is aligning **drafted chapter formalism** to spine structure.
+
+Priority: derive certification conclusions from spine inputs (capacity slack,
+correction channel, successor invariance) rather than assuming them as bare
+hypotheses.
 
 > The book must not say "Lean proves ASI alignment." It may say "Lean proves
 > that, *if* these boundary, bundle, correction, successor, and adversarial
