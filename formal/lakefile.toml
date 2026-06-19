@@ -1,0 +1,10 @@
+name = "AlignmentProofSpine"
+defaultTargets = ["AlignmentProofSpine"]
+
+# Self-contained Lean 4 proof spine for *Towards Superintelligence Alignment*.
+# Deliberately depends only on the Lean core library (no Mathlib) so the module
+# builds quickly and offline. See README.md in this folder for the mapping from
+# theorems to the book's proof-spine identifiers.
+
+[[lean_lib]]
+name = "AlignmentProofSpine"
