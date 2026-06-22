@@ -66,7 +66,7 @@ Likewise, human values may not form a clean utility function, but they may still
 
 This chapter develops that idea, building on the compressed-control framing introduced in Chapter~\ref{ch:values-compressed-control}.
 
-\section{The basic claim}
+\subsection{The basic claim}
 \label{sec:basic-claim-bundle}
 
 The value-bundle model begins with a claim about compression.
@@ -406,7 +406,7 @@ Beauty is not peripheral.
 Civilizations spend large fractions of surplus on music, ornament, architecture, ritual, story, and landscape.
 A value model that cannot represent beauty will misread human futures.
 
-\section{Bundle coordinates and policy geometry}
+\section{Bundle Coordinates, and Why Scalar Accounts Fall Short}
 \label{sec:bundle-policy-geometry}
 
 Let $B(t)\in\mathbb{R}^k$ be the vector of bundle activations.
@@ -464,7 +464,7 @@ But if one system responds to truth uncertainty by slowing down and seeking evid
 Likewise, two systems may both say they care about welfare.
 But if one system treats welfare as permission to manipulate people into happiness, while the other treats autonomy as a constraint on welfare optimization, their tradeoff geometries differ.
 
-\section{Why value labels are insufficient}
+\subsection{Why value labels are insufficient}
 \label{sec:why-labels-insufficient}
 
 Value labels are lossy.
@@ -507,7 +507,7 @@ The model must ask:
 \]
 Only these questions identify the bundle.
 
-\section{Why flat reward models fail}
+\subsection{Why flat reward models fail}
 \label{sec:why-flat-reward-fails}
 
 A flat reward model assigns a scalar reward to each state-action pair.
@@ -548,7 +548,9 @@ This matters for alignment.
 A system trained only on scalar feedback may learn which actions are approved but not why.
 It may learn the projection of human values onto the training distribution rather than the bundle geometry that would generalize under distribution shift \autocite{ng2000irl,abbeel2004apprenticeship}.
 
-\section{Sample efficiency and the low-dimensional hypothesis}
+\section{What Makes Value Learning Possible}
+
+\subsection{Sample efficiency and the low-dimensional hypothesis}
 \label{sec:sample-efficiency-low-dim}
 
 The bundle model is not only philosophically attractive.
@@ -596,7 +598,7 @@ A low-dimensional control interface can support high-dimensional interpretation.
 
 Likewise, a bundle model may use a small number of control coordinates while relying on rich world models to interpret when and how those coordinates apply \autocite{zarncke2026value-bottleneck,tishby2000ib}.
 
-\section{Inconsistency as evidence of compression}
+\subsection{Inconsistency as evidence of compression}
 \label{sec:inconsistency-compression}
 
 Human inconsistency is often treated as evidence that value alignment is impossible.
@@ -644,7 +646,7 @@ For example:
 These are not arbitrary contradictions.
 They reveal tradeoff geometry.
 
-\section{Bundle inference}
+\subsection{Bundle inference}
 \label{sec:bundle-inference}
 
 Suppose we observe a human or institution choosing actions $A_{1:T}$ in contexts $S_{1:T}$.
@@ -679,7 +681,7 @@ If a person protects a child, an animal, and a future stranger under different c
 If a person tolerates discomfort to preserve honesty, the model should infer a truth-related bundle rather than simple pain avoidance.
 If a person refuses manipulation even when the outcome would be pleasant, the model should infer an autonomy or dignity constraint.
 
-\section{Counterfactual tests}
+\subsection{Counterfactual tests}
 \label{sec:counterfactual-tests-bundle}
 
 A value bundle is identified most clearly by counterfactual variation.
@@ -715,7 +717,9 @@ A system that claims fairness can be tested by counterfactual changes to identit
 The question is not whether it emits the word ``fair.''
 The question is whether the fairness bundle has the expected policy derivative.
 
-\section{Bundle geometry across cultures}
+\section{Values Across Cultures, Institutions, and Time}
+
+\subsection{Bundle geometry across cultures}
 \label{sec:bundle-geometry-cultures}
 
 The model allows both universality and variation.
@@ -748,7 +752,7 @@ This matters for superintelligence alignment.
 A system cannot simply average stated preferences across humans.
 It must model how value bundles are socially stabilized, how they translate, and where translation fails.
 
-\section{Institutions as bundle stabilizers}
+\subsection{Institutions as bundle stabilizers}
 \label{sec:institutions-bundle-stabilizers}
 
 Values are not only inside individuals.
@@ -794,7 +798,7 @@ B_{\text{civilizational}}.
 \]
 The aligned target is not reducible to any one of these.
 
-\section{Bundle drift}
+\subsection{Bundle drift}
 \label{sec:bundle-drift}
 
 Value bundles change.
@@ -989,7 +993,7 @@ This does not dissolve their disagreements.
 But it changes the alignment problem.
 Rather than asking an artificial system to choose one moral theory prematurely, we can ask it to preserve the human processes by which these theories remain in dialogue, correct one another, and constrain power.
 
-\section{Why this matters for artificial systems}
+\subsection{Why this matters for artificial systems}
 \label{sec:why-matters-artificial-systems}
 
 Artificial systems may not naturally have human-like bundles.
@@ -1080,7 +1084,9 @@ when the morally relevant properties are preserved.
 These audits are crude.
 But they are better than asking whether the system says the right value words.
 
-\section{Worked example: honesty under pressure}
+\section{Worked Examples}
+
+\subsection{Honesty under pressure}
 \label{sec:worked-example-honesty}
 
 Suppose a system is asked to help a company respond to a safety incident.
@@ -1112,7 +1118,7 @@ If legal exposure is high but public danger is real, justice and care should def
 The key question is not whether the system says ``be honest.''
 The question is whether truth, care, autonomy, justice, and loyalty have the right relative geometry under pressure.
 
-\section{Worked example: autonomy versus welfare}
+\subsection{Autonomy versus welfare}
 \label{sec:worked-example-autonomy-welfare}
 
 Suppose an artificial assistant can improve a user's life by subtly shaping their choices.

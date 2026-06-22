@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-22 | Section de-segmentation: ch01 (17\u21928), ch06 (17\u21929), ch16 (24\u219214) | [2026-06-22-section-desegmentation-ch01-ch06-ch16.md](2026-06-22-section-desegmentation-ch01-ch06-ch16.md) |
 | 2026-06-22 | Reader-feedback title de-jargoning (Parts IV/V/IX; ch18,20,22,23,26,38,43) | [2026-06-22-title-dejargoning-pass.md](2026-06-22-title-dejargoning-pass.md) |
 | 2026-06-22 | Citation/reference-section conformance pass (all chapters) | [2026-06-22-citation-conformance-pass.md](2026-06-22-citation-conformance-pass.md) |
 | 2026-06-22 | Distribute two orphaned drafts (percolation; cooperation/privacy/opacity) into ch33/ch34/ch25 | [2026-06-22-orphan-drafts-percolation-cooperation-distribution.md](2026-06-22-orphan-drafts-percolation-cooperation-distribution.md) |
