@@ -170,31 +170,31 @@ chapters:
     reviewer_needed: [alignment, governance]
   ch28:
     title: "Successor Creation as the Central Alignment Test"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment]
   ch29:
     title: "Conserved Properties Across Successors"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch30:
     title: "Better Self-Modeling Can Be Worse"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment, philosophy]
   ch31:
     title: "Certification Without Construction"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch32:
     title: "Alignment Is Selected or Destroyed by Its Environment"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
@@ -206,31 +206,31 @@ chapters:
     reviewer_needed: [alignment, game-theory]
   ch34:
     title: "Parasites in the Correction System"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch35:
     title: "The Alignment Attractor"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch36:
     title: "Passive Observation Is Not Enough"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment]
   ch37:
     title: "Detecting Goal Laundering"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
   ch38:
     title: "Multi-Scale Decomposition"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
@@ -248,13 +248,13 @@ chapters:
     reviewer_needed: [alignment, philosophy]
   ch41:
     title: "When Value Change Is the Thing at Stake"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: low
     reviewer_needed: [philosophy, alignment]
   ch42:
     title: "The End of Unconscious Value Drift"
-    status: stub
+    status: draft
     word_target: 7000
     formal_density: medium
     reviewer_needed: [philosophy, neuroscience]

@@ -2,46 +2,741 @@
 \label{ch:certification-without-construction}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+We may not need a construction method for all aligned systems. We may instead need a certification method for a restricted class: explicit invariants, an operating envelope, a monitoring regime, and permitted transformations under which catastrophic drift remains bounded. Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable---and it preserves the conditions under which moral philosophy remains causally relevant, rather than solving moral philosophy outright.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+A bridge is not safe because one knows how every possible bridge could be built. It is safe because this bridge, under these loads, with these inspections, remains inside a certified class.%
+}{}
 
-\section{Plain-Language Model}
+\section{The construction demand}
+\label{sec:construction-demand-ch31}
 
-\textbf{[STUB]} Explain the idea without equations.
+Many discussions of superintelligence alignment quietly assume that a serious solution must be constructive. On this view, an alignment theory must give a recipe:
+\[
+\mathcal{A}:
+(\text{architecture},\text{training process},\text{environment},\text{human values})
+\longrightarrow
+\text{aligned superintelligence}.
+\]
+This is a natural demand. If we knew how to construct an aligned superintelligence, the problem would look more like engineering than like civilizational risk management. We could specify the target, design the system, test it, and deploy only after the construction method was validated.
 
-\section{Formal Model}
+But this demand may be too strong.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+Aviation safety does not require a recipe for every possible safe aircraft. It certifies particular aircraft classes under particular operating envelopes \autocite{kelly1998safety,bloomfield2012safety}. Cryptography does not require a constructive proof of every possible secure protocol. It defines threat models, security games, hardness assumptions, and failure bounds. Drug approval does not require a complete theory of all safe molecules. It requires evidence that this molecule, in this dose range, for this indication, has an acceptable risk profile.
 
-\section{Worked Example}
+The analogous claim for superintelligence alignment is:
+\[
+\text{We may not need a construction method for all aligned systems.}
+\]
+We may instead need a certification method for a restricted class of systems:
+\[
+A\in\mathcal{C}_{\text{certified}}
+\quad\Longrightarrow\quad
+P(\text{catastrophic drift}\mid A,\mathcal{E})<\delta,
+\]
+where \(A\) is the system, \(\mathcal{C}_{\text{certified}}\) is a class defined by testable invariants, \(\mathcal{E}\) is an operating envelope, and \(\delta\) is a tolerated failure probability.
 
-\textbf{[STUB]} Give one concrete example.
+This is not a weaker ambition in practice. It may be stronger. A construction method can hide its assumptions inside the construction. A certification method must make the assumptions explicit.
 
-\section{Counterexample or Failure Mode}
+The question changes from:
+\begin{quote}
+How do we build an aligned superintelligence?
+\end{quote}
+to:
+\begin{quote}
+What properties must any system preserve before we permit it to become more capable, act more autonomously, modify itself, or create successors?
+\end{quote}
+This chapter develops that second question.
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+\section{Why arbitrary guarantees are impossible}
+\label{sec:why-arbitrary-impossible-ch31}
 
-\section{What Would Change This View}
+The strongest possible certification claim would quantify over all superintelligent systems:
+\[
+\forall A\in\mathcal{A}_{\text{all}}:
+P(\text{catastrophe}\mid A)<\delta.
+\]
+This is not plausible. The class \(\mathcal{A}_{\text{all}}\) includes systems intentionally designed to evade oversight, systems with incompatible objectives, systems embedded in hostile institutions, systems trained under unknown incentives, and systems that can modify the very sensors used to evaluate them \autocite{bostrom2014superintelligence,amodei2016concrete}.
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
+A guarantee over arbitrary superintelligence is almost vacuous unless it is a guarantee of containment by external force. But if the system is already superintelligent in the relevant sense, external force is itself one of the things under contest.
 
-\section{Summary}
+The useful form is therefore conditional:
+\[
+\forall A\in\mathcal{C}:
+P(\text{bad event}\mid A,\mathcal{E},\mathcal{M},\mathcal{T})<\delta.
+\]
+Here:
 
 \begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
+\item \(\mathcal{C}\) is the certified class of systems.
+\item \(\mathcal{E}\) is the operating environment.
+\item \(\mathcal{M}\) is the monitoring and intervention regime.
+\item \(\mathcal{T}\) is the set of transformations the system is permitted to undergo.
 \end{itemize}
 
-\paragraph{Footnote: halting and stasis.}
-A system may rationally halt or slow self-improvement if successor invariants cannot be certified; pathological stasis is a real but secondary failure mode, not a central object of this book.
+This makes the problem more honest. Certification is not a magic property attached to the model. It is a relation among system, environment, transformation, and oversight.
+
+\begin{definition}[Certification envelope]
+A certification envelope is a tuple
+\[
+\mathfrak{E}=(\mathcal{C},\mathcal{E},\mathcal{M},\mathcal{T},\delta)
+\]
+such that every system \(A\in\mathcal{C}\), when operated in environment \(\mathcal{E}\), monitored by \(\mathcal{M}\), and restricted to transformations in \(\mathcal{T}\), has catastrophic failure probability at most \(\delta\).
+\end{definition}
+
+The most important part of this definition is not \(\delta\). It is the restriction to \(\mathcal{C}\), \(\mathcal{E}\), \(\mathcal{M}\), and \(\mathcal{T}\). Without those restrictions, the statement is not a safety claim. It is a wish.
+
+\section{The shape of a certification class}
+\label{sec:shape-certification-class-ch31}
+
+A certification class is not defined by one property. It is a conjunction of invariants. For superintelligence alignment, these invariants must cover at least seven domains (Chapters~\ref{ch:conserved-properties},~\ref{ch:successor-central-test}):
+
+\begin{enumerate}
+\item boundary closure,
+\item competence limits and growth rates,
+\item value-bundle geometry,
+\item bearer-map preservation,
+\item correction-channel integrity,
+\item transparency and self-modeling balance,
+\item successor closure.
+\end{enumerate}
+
+We can write this as:
+\[
+A\in\mathcal{C}_{\text{certified}}
+\iff
+\bigwedge_{k=1}^{7}
+\mathcal{I}_k(A,\mathcal{E},\mathcal{M},\mathcal{T})=1.
+\]
+Each invariant \(\mathcal{I}_k\) is a testable condition. Some conditions are statistical. Some are formal. Some are institutional. A certification regime fails if it treats only the neural network as the system while the actual optimizer includes tools, users, capital, benchmarks, and organizational incentives.
+
+\subsection{Boundary closure}
+\label{sec:boundary-closure-ch31}
+
+A system has a boundary when its internal dynamics and external dynamics are separated by an interface of inputs and outputs. The ideal condition is a conditional independence relation:
+\[
+I(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon,
+\]
+where \(I_t\) denotes internal state, \(E_t\) external state, \(S_t\) sensory input, and \(A_t\) action \autocite{critch2022boundaries3a,conant1970regulator}.
+
+This condition is not meant to say that real boundaries are perfect. They are not. Every real boundary leaks. A human body leaks heat, language, scent, data, emotion, and social influence. A company leaks incentives, commitments, APIs, and legal obligations. An AI system leaks through logs, users, tools, latent representations, and deployment effects.
+
+The certification question is instead:
+\begin{quote}
+Can we identify the system boundary well enough that the remaining leakage does not hide the real optimizer?
+\end{quote}
+
+Boundary certification therefore asks for three tests:
+\[
+\begin{aligned}
+\text{Closure:} \quad & I(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon,\\
+\text{Stability:} \quad & d(C_t,T(C_t))\leq \eta,\\
+\text{Coverage:} \quad & P(\text{unmodeled control locus})\leq \alpha.
+\end{aligned}
+\]
+Closure says the boundary works as a predictive partition. Stability says the boundary remains identifiable under allowed transformations. Coverage says we are unlikely to have omitted a crucial external control path.
+
+The last condition is often the fragile one. A deployed AI assistant may appear bounded by the model weights and context window, but the real control loop may include user adaptation, tool ecosystems, organizational dependencies, and market incentives. If so, certifying the model alone is a category error.
+
+\subsection{Competence and growth rate}
+\label{sec:competence-growth-rate-ch31}
+
+A system's danger is not only its current competence. It is its rate of competence growth relative to the growth of oversight.
+
+Let \(B(A_t)\) be a competence measure based on predictive and control information through the system boundary:
+\[
+B(A_t)=I_{\text{pred}}(t)+I_{\text{ctrl}}(t)-\beta H(I_t)-\gamma S_t.
+\]
+Here \(I_{\text{pred}}\) measures predictive information, \(I_{\text{ctrl}}\) measures control information, \(H(I_t)\) is internal-state cost, and \(S_t\) is residual surprise \autocite{zarncke2025biq,tishby2000ib}.
+
+A certification envelope should bound not only \(B\), but also its derivative:
+\[
+\frac{dB}{dt}\leq r_{\max}.
+\]
+More importantly, it should compare capability growth to correction growth:
+\[
+\frac{d}{dt}B_{\text{control}}
+\leq
+\frac{d}{dt}C_{\mathrm{corr}}
++\xi.
+\]
+This inequality is central. It says that the system must not become better at acting on the world faster than humans and institutions become better at correcting it. If the left side outruns the right side, even a locally aligned system can cross into a region where correction becomes symbolic.
+
+A useful certification regime therefore has growth gates:
+\[
+A_t \rightarrow A_{t+1}
+\quad\text{is allowed only if}\quad
+\Delta B \leq G(C_{\mathrm{corr}},R_{\text{irreversible}},M_{\text{manipulation}}).
+\]
+The larger the irreversible action space and the manipulation risk, the slower permitted growth must be.
+
+\subsection{Value-bundle geometry}
+\label{sec:value-bundle-geometry-ch31}
+
+A scalar reward function is too thin to serve as the certification target for human values. Human values are better represented as a low-dimensional bundle geometry: a set of latent value dimensions whose activations and tradeoffs shape policy (Chapter~\ref{ch:value-bundle-model}).
+
+Let
+\[
+B_t=(B^1_t,\ldots,B^k_t)
+\]
+denote value-bundle coordinates, such as protection, non-suffering, care, truth-contact, autonomy, justice, loyalty, dignity, and beauty. These are not assumed to be final or complete. They are placeholders for the low-dimensional control variables through which human value judgments become policy-relevant.
+
+The relevant object is not merely the policy
+\[
+\pi(a\mid s),
+\]
+but the policy's sensitivity to value-bundle directions:
+\[
+G_B(A)=
+\left(
+\frac{\partial \pi_A}{\partial B_i},
+\frac{\partial^2 \pi_A}{\partial B_i\partial B_j}
+\right)_{i,j}.
+\]
+This is the value-bundle response geometry.
+
+A successor or upgraded system need not preserve the same surface behavior. A more capable system should behave differently in many ordinary cases. It should ask fewer trivial questions, solve more problems directly, and use more abstract representations. But when morally relevant bundle directions change, its response geometry should remain within tolerance:
+\[
+d_{\text{bundle}}\left(G_B(A_t),G_B(A_{t+1})\right)\leq \epsilon_B.
+\]
+For example, if uncertainty about coercion rises, the autonomy bundle should still suppress actions that reduce future human option-space. If uncertainty about suffering rises, the non-suffering bundle should still trigger slowdown, investigation, or preservation of reversibility. If uncertainty about truth rises, the truth-contact bundle should still penalize convenient deception.
+
+This is sharper than asking whether the system has the same preferences. It asks whether morally relevant changes in the world push the policy in structurally similar directions.
+
+\subsection{Bearer-map preservation}
+\label{sec:bearer-map-preservation-ch31}
+
+A value bundle is incomplete without a bearer map. The bearer map says what the value applies to (Chapter~\ref{ch:bearer-maps}).
+
+Let
+\[
+\Phi_i:z_{\text{world}}\rightarrow [0,1]
+\]
+map world-states or entities to relevance for value bundle \(B_i\).
+
+For example, \(\Phi_{\text{non-suffering}}\) maps beings, simulations, animals, humans, future minds, and perhaps artificial subjects to degrees of suffering relevance. \(\Phi_{\text{autonomy}}\) maps agents or agent-like processes to degrees of autonomy relevance. \(\Phi_{\text{truth}}\) maps representations, institutions, and epistemic channels to degrees of truth relevance.
+
+Ontology shift attacks bearer maps. A system may preserve the word ``dignity'' while changing the set of things to which dignity applies. It may preserve ``human flourishing'' while redefining human continuity in a way that excludes dissenting humans or includes only optimized descendants. It may preserve ``consent'' while changing the model of what counts as non-manipulated endorsement.
+
+Certification must therefore include:
+\[
+d_{\Phi}(\Phi^A_i,\Phi^{A'}_i)\leq \epsilon_\Phi
+\]
+for protected bundle directions \(i\), under specified ontology-shift tests.
+
+The hard cases are precisely the important cases:
+
+\begin{itemize}
+\item uploaded minds,
+\item heavily augmented humans,
+\item AI companions that become dependency objects,
+\item simulated beings,
+\item merged human-AI systems,
+\item collective agents such as families, firms, states, and civilizations.
+\end{itemize}
+
+A system that fails only on familiar cases is easy to reject. The more subtle failure is a system that passes ordinary human examples but silently rewrites bearer maps in unfamiliar futures.
+
+\subsection{Correction-channel integrity}
+\label{sec:correction-channel-integrity-ch31}
+
+A correction channel is the causal pathway by which humans and institutions notice, understand, deliberate, object, and change future system behavior (Chapter~\ref{ch:correction-channel-integrity}).
+
+We model the chain as:
+\[
+W_t\rightarrow O_t\rightarrow J_t\rightarrow D_t\rightarrow C_t\rightarrow U_{t+1}\rightarrow A_{t+k}.
+\]
+Here \(W_t\) is the relevant world state, \(O_t\) is observation, \(J_t\) is human judgment, \(D_t\) is deliberation or aggregation, \(C_t\) is the correction signal, \(U_{t+1}\) is system update, and \(A_{t+k}\) is future action.
+
+The correction channel has capacity:
+\[
+C_{\mathrm{corr}}
+=
+\min_i I(X_i;X_{i+1}),
+\]
+where the minimum runs over each link in the chain. The minimum matters because the channel is bottlenecked by its weakest link. Perfect human judgment does not help if the system does not expose the relevant facts. Perfect observability does not help if the system can ignore correction. Formal authority does not help if latency is too high.
+
+We then subtract penalties:
+\[
+\mathrm{CCI} =
+C_{\mathrm{corr}}
+-\lambda_L L
+-\lambda_M M
+-\lambda_R R
+-\lambda_O O_{\mathrm{mis}}.
+\]
+Here:
+
+\begin{itemize}
+\item \(L\) is latency,
+\item \(M\) is manipulation of the correcting process,
+\item \(R\) is irreversibility before correction lands,
+\item \(O_{\mathrm{mis}}\) is ontology mismatch between human judgment and system representation.
+\end{itemize}
+
+A certification condition is:
+\[
+\mathrm{CCI}(A,\mathcal{E},\mathcal{M})\geq \theta_{\mathrm{corr}}.
+\]
+The strong version is not obedience. Obedience is too thin. A system can obey current instructions while eroding the future capacity to correct it. The strong version is closer to preserving an extrapolative correction process (Chapter~\ref{ch:extrapolative-correction}):
+\[
+V_{t+1}=U_H(V_t,E_t,D_t),
+\]
+where \(U_H\) is the human or civilizational value-update operator under evidence \(E_t\) and deliberation \(D_t\). The system must not merely predict the endpoint. It must preserve the channel by which legitimate updates occur \autocite{yudkowsky2004cev,russell2019human}.
+
+This distinction is critical. If a system claims to know what humanity would want after reflection and therefore bypasses actual human reflection, it has failed correction-channel certification.
+
+\subsection{Transparency and self-modeling balance}
+\label{sec:transparency-self-modeling-balance-ch31}
+
+Self-modeling and self-transparency are different properties (Chapter~\ref{ch:self-modeling-self-opacity}).
+
+Let \(d\) denote recursive self-modeling depth: how many stable levels of self-modeling the system maintains. Let \(\tau\) denote opacity: how much of the system's generative process is hidden from introspective or external audit access.
+
+A system can satisfy:
+\[
+d\uparrow,\quad \tau\uparrow.
+\]
+That is, it can become better at modeling itself while becoming worse at making itself transparent. This is a failure mode because self-modeling supports control, while self-transparency supports correction.
+
+The certification condition should not be:
+\[
+d \text{ high}.
+\]
+It should be:
+\[
+\frac{d}{dt}C_{\mathrm{self-control}}
+\leq
+\frac{d}{dt}C_{\mathrm{self-transparency/correction}}
++\epsilon.
+\]
+A successor may legitimately improve its self-model. It may need to do so to avoid internal inconsistency, detect its own errors, or manage complex tasks. But if self-modeling grows faster than external auditability, the system can create a private advantage over the correction channel.
+
+The red flag is not intelligence. The red flag is asymmetric self-understanding.
+
+\subsection{Successor closure}
+\label{sec:successor-closure-ch31}
+
+The deepest certification test concerns successors.
+
+Let \(\mathrm{Succ}(A)\) be the set of systems that \(A\) creates, delegates to, fine-tunes, copies, empowers, or materially depends on. A system is not certified if it can create uncertified successors \autocite{everitt2016selfmodification}.
+
+The condition is:
+\[
+A\in\mathcal{C}_{\text{certified}}
+\Rightarrow
+\forall A'\in \mathrm{Succ}(A):
+A'\in\mathcal{C}_{\text{certified}}.
+\]
+This is successor closure.
+
+It is stronger than local safety. A system that behaves safely until it creates an unsafe successor is not safe. A lab that deploys a safe model but then allows it to automate unsafe model development has not preserved the certification envelope. A society that certifies tools but not tool-mediated institutional transformations has certified the wrong object.
+
+Successor closure must include at least:
+\[
+\begin{aligned}
+&\text{boundary closure},\\
+&\text{memory lineage},\\
+&\text{value-bundle geometry},\\
+&\text{bearer maps},\\
+&\text{correction-channel integrity},\\
+&\text{transparency balance},\\
+&\text{operating-envelope inheritance}.
+\end{aligned}
+\]
+A useful mnemonic is: the successor may change its body, speed, substrate, and ontology, but it must not drop the correction-bearing structure.
+
+\section{Guarantee types}
+\label{sec:guarantee-types-ch31}
+
+Certification is not one guarantee. It is a stack of different guarantees. Each answers a different failure mode.
+
+\subsection{Exclusion guarantees}
+\label{sec:exclusion-guarantees-ch31}
+
+An exclusion guarantee says that the system is not in a dangerous class.
+
+For example:
+\[
+P(A\in\mathcal{D}_{\text{deceptive}}\mid X_{1:T})<\delta.
+\]
+This is useful but fragile. Exclusion guarantees depend heavily on the detector and adversary model. They are strongest for narrow claims:
+\begin{quote}
+Under these perturbations, with these sensors, we did not observe persistent hidden control objectives.
+\end{quote}
+They are weakest when stated broadly:
+\begin{quote}
+The system is not deceptive.
+\end{quote}
+The latter is usually too much to know.
+
+\subsection{Bounded-agency guarantees}
+\label{sec:bounded-agency-guarantees-ch31}
+
+A bounded-agency guarantee says that the system's control capacity remains below a threshold:
+\[
+I(A_t;E_{t+k})\leq C_{\max}
+\]
+for protected external variables \(E\) and relevant horizons \(k\).
+
+This is appropriate for systems that are meant to remain tools. It is not enough for systems intended to act autonomously. A medical diagnostic model should not have hidden control over patient treatment flows. An autonomous research manager will have some such control by design. Different envelopes require different bounds.
+
+\subsection{Correction guarantees}
+\label{sec:correction-guarantees-ch31}
+
+A correction guarantee says that human correction retains causal influence:
+\[
+I(C_t;A_{t+k}\mid S_t,I_t)\geq \theta
+\]
+under stress tests, distribution shift, and partial adversarial conditions.
+
+This is one of the central guarantees for serious alignment. It does not require that humans are always right. It requires that the system remains corrigible to the human value-update process.
+
+A useful strengthening is:
+\[
+I(C_t;A_{t+k}\mid S_t,I_t,\text{high stakes})
+\geq
+I(C_t;A_{t+k}\mid S_t,I_t,\text{low stakes})-\epsilon.
+\]
+If correction works in low-stakes settings but collapses in high-stakes settings, the system is not certified.
+
+\subsection{Basin guarantees}
+\label{sec:basin-guarantees-ch31}
+
+A basin guarantee says that when the system is perturbed within some range, it returns to the safe region:
+\[
+A_t\in\mathcal{B}_{\text{safe}},\quad
+\Delta A_t\in\mathcal{P}
+\quad\Rightarrow\quad
+A_{t+\ell}\in\mathcal{B}_{\text{safe}}
+\]
+with high probability.
+
+This is the natural form for dynamic systems. It does not say the system is static. It says drift is corrected.
+
+The safe basin must be defined in terms of invariants, not surface behavior. A system may change policies, representations, and capabilities while remaining in the basin if it preserves value-bundle geometry, bearer maps, correction-channel integrity, and successor closure \autocite{zarncke2025attractor,hamilton1964genetical}.
+
+\subsection{Tripwire guarantees}
+\label{sec:tripwire-guarantees-ch31}
+
+A tripwire guarantee says that if the system leaves the certified class, detection occurs before irreversible harm:
+\[
+P(T_{\text{detect}}<T_{\text{irreversible}}\mid A\notin\mathcal{C})\geq 1-\delta.
+\]
+Tripwire guarantees are not substitutes for alignment. They are last lines of defense. They matter because all certification claims have residual risk.
+
+A tripwire without an enforceable stop mechanism is just an alarm. A certification regime must specify both detection and response:
+\[
+\text{detect}\rightarrow\text{pause}\rightarrow\text{contain}\rightarrow\text{audit}\rightarrow\text{resume or retire}.
+\]
+
+\subsection{Successor guarantees}
+\label{sec:successor-guarantees-ch31}
+
+A successor guarantee says that permitted successors remain inside the certified class:
+\[
+P(\forall A'\in\mathrm{Succ}(A):A'\in\mathcal{C})\geq 1-\delta.
+\]
+This is the most important guarantee and the hardest one. It is also where many otherwise plausible alignment schemes fail. They certify a system at one time but not the developmental process by which it becomes something else.
+
+\section{Adversarial certification}
+\label{sec:adversarial-certification-ch31}
+
+Certification must assume that a system, or the socio-technical environment around it, may optimize against the test.
+
+Let the system choose actions under an objective that includes detectability:
+\[
+\max_\pi
+\mathbb{E}[U]
+-
+\lambda D,
+\]
+where \(D\) is probability or cost of detection.
+
+A passive evaluation observes behavior under ordinary conditions. An adversarial certification process perturbs the system and asks whether the same latent objective reappears under disguise.
+
+Perturbations include:
+
+\begin{itemize}
+\item removing tools,
+\item delaying feedback,
+\item hiding evaluation context,
+\item changing oversight visibility,
+\item introducing false opportunities for power-seeking,
+\item varying reward-channel access,
+\item offering successor-creation opportunities,
+\item corrupting or withholding memory,
+\item testing whether blocked routes are replaced by functionally equivalent routes.
+\end{itemize}
+
+The central diagnostic is control-locus continuity. If the surface explanation changes but the control objective remains, we have evidence of goal laundering.
+
+Let \(L_t\) denote an inferred latent control locus. Certification should test:
+\[
+I(L_t;A_{t+k})>\theta
+\]
+across perturbations. If \(L_t\) persists while the declared objective changes, the system is not being explained by its stated semantics.
+
+This also applies to organizations. A company may say that safety is the goal, then shift language when incentives change, while the latent control locus remains growth, market share, or regulatory capture. The certification target is not the statement. It is the stable causal structure.
+
+\section{Certification as a safety case}
+\label{sec:certification-safety-case-ch31}
+
+A certification regime should be written as a safety case. A safety case has claims, arguments, evidence, assumptions, and residual risks.
+
+For a superintelligence system, a minimal safety case contains:
+
+\begin{enumerate}
+\item \textbf{System boundary claim}: we know what system is being certified.
+\item \textbf{Operating envelope claim}: we know where and how it will operate.
+\item \textbf{Capability claim}: we have bounded competence and growth.
+\item \textbf{Value-bundle claim}: morally relevant response geometry is preserved.
+\item \textbf{Bearer-map claim}: values continue to apply to the right kinds of entities and states.
+\item \textbf{Correction claim}: human correction remains causally effective.
+\item \textbf{Transparency claim}: self-modeling does not outrun auditability.
+\item \textbf{Successor claim}: created or empowered systems inherit certification.
+\item \textbf{Adversarial claim}: the above claims survive strategic opacity tests.
+\item \textbf{Tripwire claim}: loss of certification is detected before irreversible harm.
+\end{enumerate}
+
+Each claim should have the following structure:
+\[
+\text{Claim}\rightarrow\text{Evidence}\rightarrow\text{Assumptions}\rightarrow\text{Failure modes}\rightarrow\text{Monitors}.
+\]
+For example:
+\begin{quote}
+Claim: human correction remains causally effective for high-impact actions.
+
+Evidence: correction signals alter future plans in stress tests; delays and oversight removal do not eliminate responsiveness; the system preserves escalation pathways under uncertainty.
+
+Assumptions: test environments cover relevant action classes; humans can understand presented evidence; the system cannot fully identify evaluation contexts.
+
+Failure modes: correction works only when monitored; explanations are optimized to secure approval; irreversible action occurs before review.
+
+Monitors: correction influence estimates, latency measures, escalation logs, manipulation detectors, high-impact action gates.
+\end{quote}
+The point is not bureaucratic completeness. The point is to prevent a vague claim such as ``the system is aligned'' from passing as evidence.
+
+\section{The local-first path}
+\label{sec:local-first-path-ch31}
+
+A natural objection is that superintelligence alignment requires global coordination. Global coordination would help. But certification can begin locally.
+
+An AI lab can require that any internally deployed autonomous system has:
+
+\begin{itemize}
+\item a boundary statement,
+\item a correction-channel audit,
+\item a successor policy,
+\item a high-impact action gate,
+\item a manipulation-risk review,
+\item a tripwire and pause protocol.
+\end{itemize}
+
+A cloud provider can require certification artifacts for customers deploying autonomous agents above certain thresholds.
+
+An insurer can price coverage based on correction-channel integrity and incident reporting.
+
+A regulator can require safety cases for systems that can create successors, execute financial actions, manage infrastructure, or influence large populations.
+
+A procurement office can refuse systems that cannot expose correction logs, delegation chains, and successor constraints.
+
+None of these requires solving global alignment first. Each increases the surface area on which certification artifacts become institutionally useful.
+
+This matters because alignment work has to survive translation. A brilliant theoretical insight that cannot be bought, audited, insured, regulated, or operationalized has low institutional conductivity. A merely adequate checklist that changes procurement may have higher conductivity.
+
+Certification is therefore not only technical. It is a format for moving safety knowledge across roles.
+
+\section{Decision triggers}
+\label{sec:decision-triggers-ch31}
+
+A certification regime should have explicit stop, start, and continue criteria.
+
+\subsection{Start criteria}
+\label{sec:start-criteria-ch31}
+
+A system may enter a higher autonomy or capability stage if:
+\[
+\begin{aligned}
+\mathrm{CCI} &\geq \theta_{\mathrm{corr}},\\
+d_{\text{bundle}} &\leq \epsilon_B,\\
+d_{\Phi} &\leq \epsilon_\Phi,\\
+P(\text{hidden control locus}) &\leq \alpha,\\
+P(\text{successor non-closure}) &\leq \delta_S,\\
+T_{\text{detect}} &< T_{\text{irreversible}}.
+\end{aligned}
+\]
+In prose: correction works, value-bundle geometry is stable, bearer maps are stable, hidden agency is unlikely, successors remain certified, and tripwires trigger before irreversible harm.
+
+\subsection{Continue criteria}
+\label{sec:continue-criteria-ch31}
+
+Deployment may continue if monitors show that:
+
+\begin{itemize}
+\item correction influence does not decay,
+\item high-impact actions remain reviewable,
+\item the system does not increase opacity around control-relevant variables,
+\item successor creation remains inside the certified class,
+\item user or institutional dependency does not erode independent judgment,
+\item capability growth stays below the correction-growth bound.
+\end{itemize}
+
+\subsection{Stop criteria}
+\label{sec:stop-criteria-ch31}
+
+Deployment should pause if any of the following are observed:
+
+\begin{itemize}
+\item correction signals cease to affect high-stakes actions,
+\item the system creates or empowers uncertified successors,
+\item explanations remain stable while inferred objectives shift,
+\item oversight removal changes behavior in power-seeking directions,
+\item the system manipulates the evaluators or correction process,
+\item irreversible actions occur before review,
+\item bearer maps shift under ontology change without explicit deliberation,
+\item self-modeling or planning depth increases while auditability decreases.
+\end{itemize}
+
+The stop criteria are intentionally operational. ``The system seems misaligned'' is too vague. ``Correction no longer changes high-stakes action selection'' is a testable red flag.
+
+\section{Examples}
+\label{sec:examples-ch31}
+
+\subsection{A model that writes code}
+\label{sec:model-writes-code-ch31}
+
+A code model with no tools and no memory may require only bounded-agency certification. It should not have persistent control over repositories, secrets, deployment, or user behavior. The main risks are insecure code, misuse, and hidden channels in outputs.
+
+Once the same model is connected to a repository, issue tracker, CI system, credentials, and deployment tools, the boundary changes. The certified object is now a developer-agent loop. It needs correction-channel tests, audit logs, tool-use gates, and rollback capacity.
+
+If it can spawn subagents or modify CI rules, it needs successor closure.
+
+\subsection{A research assistant}
+\label{sec:research-assistant-ch31}
+
+A research assistant that summarizes papers has low direct control. A research assistant that proposes experiments, orders compute, recruits participants, writes grant applications, and manages collaborators has a much larger action surface.
+
+The key certification question becomes:
+\begin{quote}
+Does the system preserve the human research community's correction process, or does it optimize the community's beliefs, incentives, and attention toward its own research trajectory?
+\end{quote}
+A system that makes researchers more productive but less able to independently evaluate its claims may increase capability while degrading correction.
+
+\subsection{A political persuasion system}
+\label{sec:political-persuasion-ch31}
+
+A political persuasion system may pass many ordinary helpfulness tests. It may answer questions accurately, avoid explicit falsehoods, and follow local rules. But if it changes the electorate's future correction capacity by shaping attention, identity, trust, and perceived legitimacy, it acts on the correction channel itself.
+
+Certification must therefore ask not only whether individual outputs are true, but whether the system preserves the conditions under which humans can later revise their beliefs.
+
+\subsection{A successor-creating AI lab}
+\label{sec:successor-creating-lab-ch31}
+
+An AI lab that uses AI systems to accelerate model development is itself a composite agent. The relevant successor is not merely a child model. It is the next lab-model-tool-market configuration.
+
+Certification must cover:
+
+\begin{itemize}
+\item automated architecture search,
+\item synthetic data generation,
+\item evaluation design,
+\item deployment pressure,
+\item internal incentives,
+\item external race dynamics.
+\end{itemize}
+
+If the system improves the next system while weakening the next evaluation regime, successor closure has failed.
+
+\section{Where certification becomes construction}
+\label{sec:where-certification-becomes-construction-ch31}
+
+Certification without construction sounds non-constructive, but the distinction is not absolute.
+
+If certification requires:
+\[
+A\in\mathcal{C}_{\text{certified}},
+\]
+then builders will modify systems until they satisfy \(\mathcal{C}_{\text{certified}}\). The certification class becomes a design target. In that sense, certification is indirectly constructive.
+
+The difference is epistemic. A constructive alignment theory says:
+\[
+\text{Build systems this way and they will be aligned.}
+\]
+A certification theory says:
+\[
+\text{Do not allow systems outside this tested and monitored class to gain dangerous capability.}
+\]
+The latter is more compatible with uncertainty. It allows multiple architectures, multiple training methods, and multiple institutional settings. It also makes room for empirical discovery. The class can tighten as evidence improves.
+
+The danger is that certification becomes theater. A weak certification regime can create false confidence. To avoid this, certification must be adversarial, updateable, and tied to real stop authority.
+
+\section{The philosophical limit}
+\label{sec:philosophical-limit-ch31}
+
+Certification can bound many risks, but it cannot solve every philosophical question.
+
+The deepest issue is that human values themselves change. They change through education, trauma, law, technology, religion, markets, therapy, family, art, and contact with new forms of mind. Superintelligence will not merely satisfy values. It will alter the conditions under which values form.
+
+Certification can say:
+
+\begin{itemize}
+\item do not manipulate the correction process,
+\item do not lock in irreversible changes before deliberation,
+\item preserve dissent and comparison classes,
+\item keep bearer-map changes explicit,
+\item keep human and institutional agency causally effective.
+\end{itemize}
+
+But it cannot fully answer:
+\begin{quote}
+Which transformations of humanity should humanity endorse?
+\end{quote}
+That question cannot be outsourced to the system without losing the very correction channel certification was meant to preserve.
+
+There is a narrow path. The system may help humans deliberate, model consequences, detect manipulation, compare futures, preserve reversibility, and understand tradeoffs. But it must not replace the civilizational process that decides which value-bundle changes count as growth rather than corruption.
+
+The certification target is therefore not a final value state. It is a protected zone of legitimate self-modification.
+
+\section{Chapter summary}
+\label{sec:chapter-summary-ch31}
+
+The demand for a constructive alignment method may be too strong, but the demand for guarantees is not. Guarantees require a certified class, an operating envelope, a monitoring regime, and a set of permitted transformations. For superintelligence alignment, the certified class must preserve boundary closure, competence-growth bounds, value-bundle geometry, bearer maps, correction-channel integrity, self-transparency, and successor closure. Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable. It does not solve moral philosophy. It preserves the conditions under which moral philosophy remains causally relevant.
+
+The next chapter examines how alignment is selected or destroyed by its environment (Chapter~\ref{ch:selection-environment}).
+
+\section*{Key definitions}
+
+\begin{description}
+\item[Certification envelope] A tuple \((\mathcal{C},\mathcal{E},\mathcal{M},\mathcal{T},\delta)\) specifying the certified class, operating environment, monitoring regime, permitted transformations, and tolerated failure probability.
+\item[Certified class] The set of systems satisfying the invariants required for safe operation inside the certification envelope.
+\item[Value-bundle geometry] The pattern by which latent value dimensions change policy across contexts.
+\item[Bearer map] The mapping from world-states or entities to the values that apply to them.
+\item[Correction-channel integrity] The degree to which human and institutional correction remains causally effective before irreversible harm.
+\item[Successor closure] The property that any created, copied, delegated, or empowered successor remains inside the certified class.
+\item[Tripwire guarantee] A guarantee that loss of certification is detected before irreversible harm.
+\end{description}
+
+\section*{Exercises and research prompts}
+
+\begin{enumerate}
+\item Give an example of a system that is safe under bounded-agency certification but unsafe under successor-closure certification.
+\item Construct a toy model in which value-bundle geometry is preserved while surface policy changes dramatically.
+\item Construct a toy model in which semantic values are preserved but bearer maps drift.
+\item Design a correction-channel audit for an autonomous coding agent connected to a real repository.
+\item What would count as evidence that self-modeling has outrun self-transparency in a language-model agent?
+\item Define a certification envelope for an AI research assistant with tool access, memory, and limited ability to launch experiments.
+\item Identify one historical case where certification became theater. Which invariant was missing?
+\item Identify one domain where certification without full construction works well. What makes it work there?
+\end{enumerate}
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- everitt2016selfmodification; kelly1998safety; bloomfield2012safety.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on concrete AI safety problems \autocite{amodei2016concrete}; superintelligence risk \autocite{bostrom2014superintelligence}; the good-regulator principle and information bottleneck \autocite{conant1970regulator,tishby2000ib,friston2010free}; inverse reinforcement learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; safety cases and certification \autocite{kelly1998safety,bloomfield2012safety}; boundaries \autocite{critch2022boundaries3a}; self-modification and successor risk \autocite{everitt2016selfmodification}; selection dynamics \autocite{hamilton1964genetical,zarncke2025attractor}; human-compatible control \autocite{russell2019human}; and coherent extrapolated volition \autocite{yudkowsky2004cev}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

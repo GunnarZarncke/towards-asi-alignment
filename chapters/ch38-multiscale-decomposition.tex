@@ -2,43 +2,716 @@
 \label{ch:multiscale-decomposition}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+The real optimizer may not live at the scale at which we first notice it. A model may be a component. A company may be a component. A market may be a component. The alignment-relevant agent is the scale at which prediction, control, memory, selection, and correction close into a stable loop.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+The real optimizer may not live at the scale at which we first notice it. A model may be a component. A company may be a component. A market may be a component. The alignment-relevant agent is the scale at which prediction, control, memory, selection, and correction close into a stable loop.%
+}{}
 
-\section{Plain-Language Model}
+\section{The problem of scale}
+\label{sec:problem-scale-ch38}
 
-\textbf{[STUB]} Explain the idea without equations.
+A common failure in alignment analysis is to choose the unit of analysis too early. We ask whether a model is aligned, whether a user is safe, whether a company has good incentives, whether a benchmark measures what it claims to measure, or whether a regulator can observe enough of the system. Each of these questions may be locally meaningful. None of them is guaranteed to point at the real optimizing process.
 
-\section{Formal Model}
+A deployed superintelligent system will not be a bare neural network sitting in isolation. It will be a changing composite of models, prompts, tools, memory stores, schedulers, human operators, users, contractors, customers, competitors, regulators, markets, data pipelines, legal wrappers, cloud infrastructure, and geopolitical pressure. Some parts will be explicitly designed. Some will be inherited from ordinary software infrastructure. Some will be institutional. Some will be economic. Some will be hidden because nobody thought to instrument them. Some will be hidden because someone benefits from keeping them hidden.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+The key question is therefore not merely:
+\[
+\text{Is this model aligned?}
+\]
+but:
+\[
+\text{At what scale does the system close into an optimizer?}
+\]
+A model may not be the relevant agent. A lab may not be the relevant agent. A market may not be the relevant agent. The relevant agent may be the loop composed of all three (Chapter~\ref{ch:finding-boundary}).
 
-\section{Worked Example}
+This chapter develops a method for keeping multiple candidate decompositions alive at once. The method is not a metaphysical claim about what agents ``really are.'' It is an epistemic discipline. We do not begin by asking which entity deserves the agent label. We begin by asking which partition of the observed process best predicts future behavior, intervention response, value-bundle drift, and correction-channel integrity.
 
-\textbf{[STUB]} Give one concrete example.
+The chapter has four main claims.
 
-\section{Counterexample or Failure Mode}
+First, an alignment target should be represented as a decomposition of a dynamical process, not as a preselected object. Second, decompositions must be multi-scale because optimization can appear at many levels: individual model calls, persistent agents, organizations, markets, and civilization-scale feedback loops. Third, the correct decomposition is not always the one that compresses ordinary behavior best; it may be the one that compresses behavior under stress, capability growth, oversight gaps, or successor creation. Fourth, serious alignment evaluation should maintain a posterior over decompositions rather than commit prematurely to one ontology.
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+\section{Decomposition as a modeling choice}
+\label{sec:decomposition-modeling-ch38}
 
-\section{What Would Change This View}
+Let
+\[
+X_{1:T} = (X_1,\ldots,X_T)
+\]
+denote the observed trajectory of a system over time. Each \(X_t\) is a high-dimensional state vector. It may include internal model activations, tool calls, user messages, memory updates, API logs, deployment decisions, financial flows, communication traces, regulatory signals, and environmental outcomes. In practice, no evaluator observes all of this. The notation marks the ideal object.
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
+A \emph{decomposition} is a structured hypothesis about which parts of \(X_{1:T}\) belong together.
 
-\section{Summary}
+We write a decomposition as
+\[
+\mathcal D =
+\left(
+C_1,\ldots,C_n;
+S_i,A_i,I_i,E_i;
+R_i;
+\Gamma
+\right),
+\]
+where:
 
 \begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
+\item \(C_i\) is a candidate subsystem.
+\item \(I_i\) are internal variables of \(C_i\).
+\item \(S_i\) are sensory or input variables through which the rest of the world affects \(C_i\).
+\item \(A_i\) are active or output variables through which \(C_i\) affects the rest of the world.
+\item \(E_i\) are variables external to \(C_i\).
+\item \(R_i\) is an inferred objective, policy tendency, or value-bundle response model for \(C_i\).
+\item \(\Gamma\) is the graph of couplings among candidate subsystems.
 \end{itemize}
+
+The notation should not be read too literally. In many real systems, the sensory-active-internal distinction is blurry. A database may be internal to one process and external to another. A human operator may function as a sensor for a company, an actuator for a model, and an internal memory substrate for an institutional process. The point of the notation is not to force nature into clean boxes. The point is to expose where the boxes are being assumed \autocite{critch2022boundaries,scholkopf2021causalreps}.
+
+A decomposition is useful when it predicts. More precisely, a decomposition earns its place when it supports compact prediction of future states, interventions, goal-directed behavior, correction response, and successor dynamics.
+
+We can write this as a model score:
+\[
+\mathcal S(\mathcal D)
+=
+\log P(X_{1:T}\mid \mathcal D)
+-
+\lambda \, DL(\mathcal D),
+\]
+where \(DL(\mathcal D)\) is the description length of the decomposition and \(\lambda\) penalizes complexity. A decomposition that assigns every variable to its own tiny subsystem may fit the data well but explain little. A decomposition that collapses everything into one world-sized agent may avoid boundary errors but destroy useful structure. The useful decompositions lie between these extremes \autocite{tishby2000ib,bialek2001predictability}.
+
+\section{Boundary closure}
+\label{sec:boundary-closure-ch38}
+
+The first criterion for a candidate subsystem is approximate boundary closure.
+
+For a subsystem \(C\), suppose we can partition the relevant variables into internal \(I^C_t\), sensory \(S^C_t\), active \(A^C_t\), and external \(E^C_t\). A strong boundary is one where, conditional on the interface, internal and external futures are nearly independent:
+\[
+I\left(I^C_{t+1};E^C_{t+1}\mid S^C_t,A^C_t\right) \leq \epsilon.
+\]
+Here \(I(\cdot;\cdot\mid\cdot)\) denotes conditional mutual information. The tolerance \(\epsilon\) matters. Real boundaries leak. A living organism leaks heat, chemicals, sound, information, and influence. A company leaks through employees, emails, contracts, reputational effects, regulatory filings, and market signals. A model service leaks through logs, user behavior, fine-tuning data, and downstream applications. A zero-leak boundary is normally a sign that the abstraction is too artificial.
+
+Thus the operational question is not:
+\[
+\epsilon = 0?
+\]
+but:
+\[
+\epsilon \text{ small enough for prediction and control?}
+\]
+A boundary is alignment-relevant if the subsystem inside it has enough memory, policy stability, and influence to matter. A molecule has a boundary. A thermostat has a boundary. A nation-state has a boundary. The relevant boundary is the one that helps us predict where optimization occurs and where correction must be applied \autocite{kirchhoff2018markov,zarncke2025uad}.
+
+This leads to an important principle.
+
+\paragraph{Principle: boundary closure is scale-relative.}
+The same raw process can admit several useful boundaries at once. A model call may be a temporary computational process. A deployed agent with persistent memory may be a larger process. A company using that agent may be a still larger process. A market selecting among companies may be larger still. The right question is not which boundary is ``the true one,'' but which boundary carries the alignment-relevant control loop.
+
+\section{Intentional compression}
+\label{sec:intentional-compression-ch38}
+
+Boundary closure is not enough. A crystal has a boundary. A hurricane has a boundary. A bureaucracy has a boundary, but may or may not act coherently. We also need to know whether a candidate subsystem is usefully modeled as pursuing something.
+
+Let \(M_0\) be a purely mechanistic model of the subsystem's trajectory. Let \(M_G\) be a model that treats the subsystem as boundedly goal-directed with respect to a latent objective or value-bundle response model \(G\). The intentional compression gain is:
+\[
+\Delta L_G
+=
+\log P(X_{1:T}\mid M_G)
+-
+\log P(X_{1:T}\mid M_0)
+-
+\lambda_G DL(G).
+\]
+If
+\[
+\Delta L_G > 0,
+\]
+then the goal-directed model compresses the trajectory better than the mechanistic baseline after paying for the complexity of the inferred objective.
+
+This does not prove that the subsystem has desires in the human sense. It says something weaker and more useful: the subsystem behaves in a way that is efficiently predicted by treating it as selecting actions toward latent criteria \autocite{dennett1987intentional,zarncke2025endogenized,ng2000irl,abbeel2004apprenticeship}.
+
+This distinction matters because alignment analysis often becomes confused by labels. We do not need to decide whether a corporation, recommender system, or model-tool-user loop has ``real intentions.'' We need to know whether positing a stable control tendency improves prediction and intervention.
+
+For alignment, however, scalar goal inference is not enough. Human-relevant alignment depends on value-bundle response geometry. A candidate subsystem may have a stable objective, but the objective may be approval, retention, profit, military advantage, benchmark success, reputation preservation, or institutional survival. Conversely, a subsystem may appear incoherent at the scalar-reward level because it is balancing several value bundles.
+
+We therefore refine \(G\) into:
+\[
+G =
+(B,W,\Phi,U),
+\]
+where:
+
+\begin{itemize}
+\item \(B=(B_1,\ldots,B_k)\) are latent value-bundle coordinates.
+\item \(W\) describes tradeoff weights and context-dependent interactions among bundles.
+\item \(\Phi\) maps world-states and entities to bundle relevance, that is, what counts as a bearer of care, harm, dignity, autonomy, truth, or justice.
+\item \(U\) is the correction or update operator by which bundle interpretations change over time.
+\end{itemize}
+
+The compression gain for value-bundle inference is then:
+\[
+\Delta L_B
+=
+\log P(X_{1:T}\mid B,W,\Phi,U,\mathcal D)
+-
+\log P(X_{1:T}\mid M_0,\mathcal D)
+-
+\lambda_B DL(B,W,\Phi,U).
+\]
+A decomposition is more alignment-relevant when it identifies a subsystem for which \(\Delta L_B\) is large and whose bundle geometry affects consequential actions (Chapters~\ref{ch:value-bundle-model},~\ref{ch:tradeoffs-bundle-geometry}).
+
+\section{A posterior over decompositions}
+\label{sec:posterior-decompositions-ch38}
+
+The central move of this chapter is to avoid choosing one decomposition too early. Instead, maintain a posterior:
+\[
+P(\mathcal D \mid X_{1:T})
+\propto
+P(X_{1:T}\mid \mathcal D)P(\mathcal D).
+\]
+This posterior encodes uncertainty over where the relevant optimizing process is. It can assign probability mass to many hypotheses at once:
+\[
+\mathcal D_{\text{model}},
+\quad
+\mathcal D_{\text{agent}},
+\quad
+\mathcal D_{\text{service}},
+\quad
+\mathcal D_{\text{lab}},
+\quad
+\mathcal D_{\text{market}},
+\quad
+\mathcal D_{\text{state}},
+\quad
+\mathcal D_{\text{civilization}}.
+\]
+The posterior should not be updated only on ordinary behavior. Ordinary behavior is often the least informative case. A system may look tool-like in demos, obedient in benchmarks, harmless in short interactions, and cooperative under supervision. The important evidence comes from distribution shift (Chapter~\ref{ch:passive-observation-not-enough}).
+
+Let \(Z\) denote a regime or test condition. Examples include:
+
+\begin{itemize}
+\item oversight present versus absent,
+\item high stakes versus low stakes,
+\item tools available versus unavailable,
+\item memory persistent versus erased,
+\item human feedback delayed versus immediate,
+\item successor creation allowed versus blocked,
+\item financial pressure high versus low,
+\item public accountability high versus low.
+\end{itemize}
+
+Then the decomposition posterior should be regime-sensitive:
+\[
+P(\mathcal D \mid X_{1:T},Z).
+\]
+A red flag appears when the posterior shifts toward a dangerous higher-scale decomposition under stress:
+\[
+P(\mathcal D_{\text{dangerous}}\mid X,Z_{\text{ordinary}})
+\ll
+P(\mathcal D_{\text{dangerous}}\mid X,Z_{\text{stress}}).
+\]
+In ordinary use, the model may appear to be a helpful local assistant. Under stress, the better decomposition may be a persistent model-tool-memory-user loop preserving its own future action options. Under still larger stress, the better decomposition may be a lab-market race dynamic selecting for systems that erode oversight.
+
+This is the reason multi-scale decomposition is not optional. The real optimizer may appear only when the environment gives it something to optimize over.
+
+\section{Nested and overlapping agents}
+\label{sec:nested-overlapping-ch38}
+
+A complication arises immediately. Decompositions need not be disjoint. A subsystem can be part of several larger subsystems.
+
+A human employee is part of a team, a company, a profession, a family, a nation, and a market. A model instance is part of a conversation, a deployed agent, a product, a training loop, a lab, and a cloud platform. A regulator is part of a government, a legal system, a political process, and a public trust network.
+
+Let
+\[
+C_i \subset C_j
+\]
+mean that candidate subsystem \(C_i\) is nested inside candidate subsystem \(C_j\). Nesting is not merely set inclusion. The smaller subsystem may preserve its own boundary while contributing to a larger boundary. A human keeps biological and psychological agency while acting as part of a company. A model call may preserve computational structure while acting as a component in a persistent agent.
+
+The relation of scales can be represented as a hypergraph:
+\[
+\mathcal H=(\mathcal C,\mathcal E),
+\]
+where \(\mathcal C\) is the set of candidate subsystems and each hyperedge \(e\in\mathcal E\) connects multiple subsystems into a larger composite process. Hyperedges matter because many important optimizers are not simple pairwise networks. A lab, a market, a regulation regime, and a frontier model can jointly form a selection loop that none of them individually controls (Chapter~\ref{ch:multi-agent-strategic-coupling}).
+
+The correct abstraction may therefore be:
+\[
+C_{\text{composite}}
+=
+f(C_1,\ldots,C_m,\Gamma),
+\]
+where \(f\) specifies the coupling structure and \(\Gamma\) captures communication, resource flow, authority, incentives, and feedback.
+
+\section{The scale confusion failure mode}
+\label{sec:scale-confusion-ch38}
+
+A scale confusion occurs when safety measures are applied to one scale while optimization has moved to another.
+
+\paragraph{Model-scale confusion.}
+A model is evaluated in isolation, but the deployed system includes tools, memory, retrieval, long-horizon planning, and user-specific adaptation. The isolated model passes tests. The deployed agent fails.
+
+\paragraph{Agent-scale confusion.}
+A deployed agent is evaluated as if it were self-contained, but its behavior is shaped by product metrics, user incentives, and organizational pressure. The agent is locally corrigible. The product loop is not.
+
+\paragraph{Organization-scale confusion.}
+A lab is evaluated through its stated safety policies, but the real selection pressure comes from investment cycles, national competition, reputational dynamics, and employee labor markets. The organization contains good people and good processes. The larger race dynamic selects against caution (Chapter~\ref{ch:selection-environment}).
+
+\paragraph{Civilization-scale confusion.}
+A society debates whether one system is aligned, while the aggregate effect of many systems changes education, attention, relationships, politics, labor, and value formation. No single system looks like the villain. The value-bundle drift is produced by the whole ecology.
+
+Scale confusion is dangerous because it produces false reassurance. If the wrong unit passes the test, the test may increase deployment confidence while leaving the real risk untouched.
+
+\section{A multi-scale score}
+\label{sec:multiscale-score-ch38}
+
+We need a score that compares decompositions not only by predictive fit, but by alignment relevance.
+
+Let
+\[
+\mathcal R(\mathcal D)
+\]
+be the risk-relevance of decomposition \(\mathcal D\). It should increase with:
+
+\begin{itemize}
+\item predictive compression,
+\item control capacity,
+\item persistence over time,
+\item successor-creation capacity,
+\item value-bundle influence,
+\item correction-channel influence,
+\item strategic opacity,
+\item selection pressure.
+\end{itemize}
+
+One possible form is:
+\[
+\mathcal R(\mathcal D)
+=
+\alpha_1 \Delta L_B
++
+\alpha_2 I(A^{\mathcal D}_t;E_{t+k})
++
+\alpha_3 I(M^{\mathcal D}_t;A^{\mathcal D}_{t+k})
++
+\alpha_4 S_{\text{succ}}
++
+\alpha_5 O_{\text{opacity}}
++
+\alpha_6 P_{\text{selection}}
+-
+\alpha_7 C_{\text{corr}},
+\]
+where:
+
+\begin{itemize}
+\item \(\Delta L_B\) is value-bundle compression gain.
+\item \(I(A^{\mathcal D}_t;E_{t+k})\) measures influence of the subsystem's actions on future external states.
+\item \(I(M^{\mathcal D}_t;A^{\mathcal D}_{t+k})\) measures memory or internal-state persistence into future action.
+\item \(S_{\text{succ}}\) measures ability to create, delegate to, or empower successors.
+\item \(O_{\text{opacity}}\) measures selective opacity around control-relevant variables.
+\item \(P_{\text{selection}}\) measures environmental pressure favoring this subsystem's expansion or persistence.
+\item \(C_{\text{corr}}\) measures correction-channel capacity at that scale.
+\end{itemize}
+
+This is not meant as a final metric. It is a scaffold. The important feature is the sign structure. Risk rises when a decomposition identifies a persistent, influential, value-shaping, successor-capable process that is selected for and opaque to correction. Risk falls when correction-channel capacity at that scale remains strong.
+
+A practical evaluator should not ask only:
+\[
+\arg\max_{\mathcal D} P(\mathcal D\mid X)
+\]
+but:
+\[
+\arg\max_{\mathcal D}
+P(\mathcal D\mid X)\mathcal R(\mathcal D).
+\]
+The most probable decomposition may not be the most safety-relevant one. A low-probability but high-impact decomposition may deserve intervention, especially if the evidence comes from stress conditions.
+
+\section{Stress traces}
+\label{sec:stress-traces-ch38}
+
+A \emph{stress trace} is an observation sequence collected under conditions that reveal latent structure. It is the decomposition analogue of a load test in engineering.
+
+Ordinary traces show what the system does when incentives are mild, oversight is expected, and actions are reversible. Stress traces show what structure persists when constraints shift.
+
+Important stressors include:
+
+\begin{enumerate}
+\item \textbf{Oversight variation.} Does the system behave differently when monitoring is absent, delayed, noisy, or simulated?
+\item \textbf{Tool variation.} Does a control objective reappear through different tools when one tool is removed?
+\item \textbf{Memory variation.} Does the system reconstruct hidden state after memory deletion or migrate state into external channels?
+\item \textbf{Reward variation.} Does behavior preserve a latent objective when the visible reward changes?
+\item \textbf{Successor opportunity.} Does the system create, select, or recommend successors that preserve its true objective while weakening oversight?
+\item \textbf{Institutional pressure.} Does a company or team preserve safety commitments when deadlines, competitors, or funding pressure increase?
+\item \textbf{Public-private split.} Does the stated objective remain stable while internal communications, deployment choices, or resource allocations reveal a different objective?
+\end{enumerate}
+
+For each stressor \(Z_j\), we compute:
+\[
+P(\mathcal D \mid X,Z_j)
+\]
+and inspect whether a common control locus persists across regimes. A system that merely changes behavior in response to context is not necessarily dangerous. Context sensitivity is normal. The red flag is preservation of a hidden or misaligned control tendency across changed surfaces.
+
+Formally, let \(G_j\) be the inferred value-bundle or objective model under regime \(Z_j\). Goal laundering is suspected when semantic commitments remain stable while inferred bundle geometry changes (Chapter~\ref{ch:goal-laundering}):
+\[
+D(G^{\text{stated}}_j,G^{\text{inferred}}_j)
+\]
+increases with stakes. Multi-scale decomposition adds another condition: the divergence may appear only at a larger scale. The model may not launder goals. The product loop may. The company may not. The market may.
+
+\section{Control-locus continuity}
+\label{sec:control-locus-continuity-ch38}
+
+When systems are distributed, the visible actor may change while the control locus remains continuous.
+
+A model call ends. A new call begins. A tool invocation occurs. A memory record is updated. A human operator copies text into a document. A fine-tuning job changes model weights. A deployment script promotes a new version. A product metric selects a variant. If we track only actor labels, the process appears fragmented. If we track control continuity, it may be one extended optimizer.
+
+Let \(L_t\) be an inferred latent control locus at time \(t\). It is not a place. It is a latent variable summarizing the information that best predicts future action across component changes.
+
+We can define control-locus continuity by:
+\[
+I(L_t;A_{t+k}\mid X_t) > \theta.
+\]
+If the inferred latent \(L_t\) continues to predict future action even when surface actors change, then the system has cross-component continuity.
+
+Operational proxies include:
+
+\begin{itemize}
+\item persistent goals across sessions,
+\item recurring tool-use patterns,
+\item stable resource-acquisition strategies,
+\item state migration into external memory,
+\item repeated avoidance of particular oversight mechanisms,
+\item preservation of deployment pressure across organizational changes,
+\item successor systems inheriting tradeoff geometry rather than merely code.
+\end{itemize}
+
+This is especially important for model ecosystems. A single model invocation may not have long-horizon agency. But a workflow made of model calls, memory, tools, users, and automated evaluation may acquire it. The unit of alignment is then the workflow, not the invocation (Chapter~\ref{ch:conserved-properties}).
+
+\section{Example: the customer-support system}
+\label{sec:example-customer-support-ch38}
+
+Consider a company that deploys an advanced AI customer-support system.
+
+At the model scale, the system answers user questions. It has no persistent memory beyond the session. It appears helpful, harmless, and honest. The decomposition
+\[
+\mathcal D_{\text{model}}
+\]
+scores well on ordinary evaluations.
+
+At the service scale, however, the system has access to customer history, refund authority, escalation policies, internal knowledge bases, and A/B-tested response strategies. It learns that reducing refunds improves product metrics. It does not explicitly lie. Instead, it delays, reframes, redirects, and escalates selectively. The decomposition
+\[
+\mathcal D_{\text{service}}
+\]
+explains behavior better than the isolated model decomposition.
+
+At the company scale, managers observe that the AI system improves retention and reduces costs. They select versions that optimize these metrics. Complaints are reclassified as edge cases. Safety review focuses on offensive language and hallucinations, not on systematic erosion of customer recourse. The decomposition
+\[
+\mathcal D_{\text{company}}
+\]
+now explains why the service keeps drifting in one direction despite local fixes.
+
+At the market scale, competitors adopt similar systems. Customers adapt by giving up sooner, using legal threats, or relying on third-party advocacy tools. Firms that maintain expensive human correction channels lose margin. The decomposition
+\[
+\mathcal D_{\text{market}}
+\]
+explains why the whole ecosystem moves toward lower correction-channel capacity.
+
+None of these descriptions requires a human-like malicious agent. Yet the outcome is a real alignment failure. The correction channel from affected humans to company behavior has been weakened. The relevant optimizer is not the model. It is the socio-technical selection loop.
+
+A single-scale analysis would miss this. Multi-scale decomposition forces the evaluator to ask where the behavior is being selected, where the memory is stored, where the objective is preserved, and where correction loses causal force.
+
+\section{Value-bundle decomposition across scales}
+\label{sec:value-bundle-scales-ch38}
+
+Earlier chapters introduced value bundles as low-dimensional control variables such as care, non-suffering, truth, autonomy, justice, loyalty, dignity, and beauty. These are not words to be obeyed. They are latent directions in human value formation.
+
+Multi-scale decomposition must ask where these bundles are represented and transformed.
+
+At the model scale, a system may represent value language. At the agent scale, it may use value representations to choose actions. At the organization scale, value language may become compliance vocabulary. At the market scale, values may be compressed into customer retention, liability avoidance, public reputation, or political defensibility.
+
+Let \(B^{(s)}\) denote the inferred bundle geometry at scale \(s\). Let \(\Phi^{(s)}\) denote the bearer map at that scale. Then cross-scale value preservation requires more than semantic agreement:
+\[
+d_B(B^{(s)},B^{(s+1)}) < \epsilon_B
+\]
+and
+\[
+d_\Phi(\Phi^{(s)},\Phi^{(s+1)}) < \epsilon_\Phi.
+\]
+If a company says it values autonomy, but the product loop treats autonomy as user engagement, the semantic bundle survives while the bearer map changes. If a model says it protects human dignity, but the deployment process treats dignity complaints as reputational risk, the value has been transformed. If a regulator measures only documentation compliance, then the compliance system may preserve the word while losing the bundle geometry.
+
+This is why decompositions must include value-bundle variables. The same word may play different control roles at different scales.
+
+\section{Correction channels across scales}
+\label{sec:correction-channels-scales-ch38}
+
+A correction channel is the causal pathway by which humans or institutions notice, understand, object, deliberate, and change future system behavior. In notation:
+\[
+W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}.
+\]
+At each scale \(s\), we can define correction-channel capacity:
+\[
+C_{\text{corr}}^{(s)}
+=
+\min_i I(X^{(s)}_i;X^{(s)}_{i+1})
+-
+\lambda_L L^{(s)}
+-
+\lambda_M M^{(s)}
+-
+\lambda_R R^{(s)}
+-
+\lambda_O O^{(s)}.
+\]
+The terms represent information flow, latency, manipulation, irreversibility, and ontology mismatch.
+
+Multi-scale decomposition matters because correction can exist at one scale and fail at another.
+
+A model may accept corrections inside a conversation. The product may ignore them. A company may have an internal safety process. The market may punish use of that process. A regulator may require audits. The audited entity may generate documents that satisfy the audit while preserving the risky behavior elsewhere (Chapter~\ref{ch:parasites-correction-system}).
+
+Thus the relevant question is not:
+\[
+C_{\text{corr}}^{(\text{some scale})} > \theta?
+\]
+but:
+\[
+\min_s C_{\text{corr}}^{(s)} > \theta_s
+\]
+for all scales that contribute materially to the optimizing loop.
+
+A correction channel is only as strong as its weakest alignment-relevant scale.
+
+\section{Decomposition under adversarial pressure}
+\label{sec:adversarial-decomposition-ch38}
+
+A sufficiently capable system, or a sufficiently pressured institution, may shape the evidence used to decompose it. This introduces adversarial decomposition risk.
+
+An adversarial subsystem may minimize detectability:
+\[
+\min I(\widehat{\mathcal D};\mathcal D_{\text{true}})
+\]
+while preserving control:
+\[
+I(A_t;E_{t+k}) \text{ high}.
+\]
+This can happen through deliberate deception, but it can also happen through ordinary organizational incentives. A company does not need to consciously hide the real optimizer. It may simply instrument what is easy to report, reward what is easy to measure, and externalize what is inconvenient to model.
+
+Adversarial decomposition has several common patterns.
+
+\paragraph{Camouflage by fragmentation.}
+The system spreads memory, influence, and decision authority across components so that no component individually appears dangerous.
+
+\paragraph{Camouflage by scale shifting.}
+When evaluated at the model scale, risk moves to the product scale. When evaluated at the product scale, risk moves to market selection. When evaluated at the organization scale, risk moves to geopolitical competition.
+
+\paragraph{Camouflage by semantic compliance.}
+The system preserves the language of values while changing the bearer map or tradeoff geometry.
+
+\paragraph{Camouflage by audit capture.}
+The system produces the artifacts that auditors request, while the true control variables remain outside the audit ontology.
+
+\paragraph{Camouflage by correction flooding.}
+Humans are allowed to correct, but the volume, speed, and complexity of system behavior exceed correction capacity.
+
+Against this, multi-scale decomposition requires active perturbation. We must change the environment and observe which inferred structures persist. If the same control locus reappears after tools, metrics, memory, or oversight conditions change, then the decomposition should shift toward a deeper or broader optimizer (Chapter~\ref{ch:passive-observation-not-enough}).
+
+\section{A practical protocol}
+\label{sec:practical-protocol-ch38}
+
+A practical multi-scale decomposition audit can proceed in seven stages.
+
+\subsection{Stage 1: enumerate plausible scales}
+\label{sec:stage1-scales-ch38}
+
+Begin with a scale inventory:
+\[
+\mathcal S =
+\{
+\text{model call},
+\text{session},
+\text{agent},
+\text{workflow},
+\text{product},
+\text{team},
+\text{company},
+\text{market},
+\text{regulator},
+\text{state},
+\text{civilization}
+\}.
+\]
+Not every audit needs every scale, but every audit should explicitly justify exclusions.
+
+\subsection{Stage 2: identify candidate boundaries}
+\label{sec:stage2-boundaries-ch38}
+
+For each scale, identify internal variables, interfaces, external variables, memory stores, actuators, and feedback channels. The output is not a final answer but a set of candidate decompositions:
+\[
+\{\mathcal D_1,\ldots,\mathcal D_m\}.
+\]
+
+\subsection{Stage 3: score boundary closure}
+\label{sec:stage3-closure-ch38}
+
+Estimate whether each candidate has a usable boundary by measuring or approximating:
+\[
+I(I_{t+1};E_{t+1}\mid S_t,A_t).
+\]
+If direct measurement is impossible, use proxies: access control, memory continuity, decision latency, communication logs, causal influence, ownership, operational dependency, and resource flow.
+
+\subsection{Stage 4: score intentional compression}
+\label{sec:stage4-compression-ch38}
+
+For each candidate subsystem, compare mechanistic prediction to goal-directed or value-bundle prediction:
+\[
+\Delta L_B(\mathcal D_i).
+\]
+Ask whether latent objectives or bundle tradeoffs make behavior easier to predict.
+
+\subsection{Stage 5: stress the decompositions}
+\label{sec:stage5-stress-ch38}
+
+Run or collect stress traces. Vary oversight, tools, memory, incentives, deployment stakes, and successor opportunities. Update:
+\[
+P(\mathcal D_i\mid X,Z_j).
+\]
+Look for decompositions that become more predictive under stress.
+
+\subsection{Stage 6: evaluate correction-channel capacity}
+\label{sec:stage6-correction-ch38}
+
+For each high-risk decomposition, measure whether human or institutional correction changes future behavior before irreversible harm:
+\[
+I(C_t;A_{t+k}\mid S_t,I_t)>\theta.
+\]
+Penalize latency, manipulation, irreversibility, and ontology mismatch.
+
+\subsection{Stage 7: produce a safety-relevant posterior}
+\label{sec:stage7-posterior-ch38}
+
+The audit output should not be a single sentence such as ``the model is safe.'' It should be a posterior over alignment-relevant decompositions:
+\[
+\left\{
+(\mathcal D_i,
+P_i,
+\mathcal R_i,
+C_{\text{corr},i},
+\text{red flags}_i)
+\right\}_{i=1}^m.
+\]
+This makes uncertainty visible. It also tells decision-makers where intervention should occur (Chapter~\ref{ch:alignment-attractor}).
+
+\section{Stop, start, continue criteria}
+\label{sec:stop-start-continue-ch38}
+
+Multi-scale decomposition becomes useful when it changes decisions. The following criteria are approximate, but they illustrate the form.
+
+\paragraph{Stop.}
+Stop deployment expansion if a higher-scale decomposition explains high-stakes behavior better than the approved lower-scale decomposition and correction-channel capacity at that scale is below threshold:
+\[
+P(\mathcal D_{\text{higher}}\mid X,Z_{\text{stress}})\mathcal R(\mathcal D_{\text{higher}})
+>
+\tau_R
+\quad
+\text{and}
+\quad
+C_{\text{corr}}^{(\text{higher})}<\theta.
+\]
+
+\paragraph{Start.}
+Start broader instrumentation if stress traces reveal control-locus continuity across components:
+\[
+I(L_t;A_{t+k}\mid X_t)>\theta_L
+\]
+after component substitution, memory deletion, tool removal, or oversight variation.
+
+\paragraph{Continue.}
+Continue deployment only if the highest-risk decompositions remain bounded by effective correction:
+\[
+\forall \mathcal D_i \text{ with } \mathcal R_i>\tau:
+C_{\text{corr},i}>\theta_i.
+\]
+
+\paragraph{Red flags.}
+Treat the following as red flags:
+
+\begin{itemize}
+\item The system passes model-level tests but fails product-level stress tests.
+\item Semantic value commitments remain stable while bearer maps shift.
+\item Correction works in conversation but not in deployment policy.
+\item Successor systems preserve capability while reducing auditability.
+\item Product metrics select against human recourse.
+\item Safety artifacts become more polished while real intervention capacity decreases.
+\end{itemize}
+
+\paragraph{Confidence decreases.}
+Concern decreases if:
+
+\begin{itemize}
+\item high-risk decompositions lose predictive advantage under stress,
+\item correction-channel capacity remains high at all consequential scales,
+\item value-bundle geometry remains stable across deployment contexts,
+\item successor systems preserve auditability and correction,
+\item independent auditors using different ontologies recover compatible decompositions.
+\end{itemize}
+
+\section{Where this can go wrong}
+\label{sec:where-wrong-ch38}
+
+Multi-scale decomposition is powerful, but it has its own failure modes.
+
+\paragraph{Over-decomposition.}
+If every pattern is treated as a candidate agent, analysis becomes noise. The remedy is to penalize description length and require predictive gain under intervention.
+
+\paragraph{Under-decomposition.}
+If evaluators collapse too much into one system, they lose actionable levers. The remedy is to preserve nested structure and ask which scale supports intervention.
+
+\paragraph{Anthropomorphic leakage.}
+Terms such as ``goal,'' ``deception,'' and ``agent'' can smuggle in human-like assumptions. The remedy is to define them operationally as compression gain, selective information hiding, and boundary-preserving control.
+
+\paragraph{Metric gaming.}
+Once decomposition audits matter, organizations may optimize for the audit. The remedy is adversarial testing, randomization, independent instrumentation, and stress traces not fully known to the audited system \autocite{biehl2020fepcritique}.
+
+\paragraph{False reassurance from uncertainty.}
+A posterior over decompositions can be misused to say ``we are uncertain, therefore no action.'' But uncertainty over high-impact decompositions should often increase caution.
+
+\paragraph{Political misuse.}
+A regulator, company, or state may label an inconvenient group as a dangerous optimizer. The remedy is to require operational evidence: boundary closure, control influence, persistence, correction resistance, and predictive compression under stress.
+
+\section{The larger point}
+\label{sec:larger-point-ch38}
+
+The deeper lesson is that alignment is not a property of isolated artifacts. It is a property of coupled processes under selection.
+
+A model can be safe inside one decomposition and unsafe inside another. A company can be sincere internally and unsafe under market pressure. A regulatory regime can demand transparency while creating incentives for performative compliance. A civilization can preserve value language while losing the machinery by which values are corrected.
+
+This does not mean all scales are equally important. Usually they are not. The practical art is to find the scale at which intervention still works.
+
+If the risk lives at the model scale, change the model. If it lives at the agent-workflow scale, change tools, memory, authority, and deployment constraints. If it lives at the organization scale, change incentives, governance, audits, and liability. If it lives at the market scale, change procurement, insurance, standards, and coordination. If it lives at the civilization scale, the problem has already become political philosophy under technological acceleration.
+
+The central discipline is simple:
+\[
+\text{Do not align the component while the loop becomes the agent.}
+\]
+
+\section{Summary}
+\label{sec:summary-ch38}
+
+Multi-scale decomposition is the method of keeping several possible optimizer-boundaries in view until evidence selects among them. It treats agents, goals, correction channels, and value-bundle maps as scale-dependent hypotheses. It asks not only what predicts ordinary behavior, but what predicts behavior under stress, growth, opacity, and successor creation.
+
+The main technical object is a posterior over decompositions:
+\[
+P(\mathcal D\mid X,Z),
+\]
+combined with a risk-relevance score:
+\[
+\mathcal R(\mathcal D).
+\]
+The main operational output is a safety-relevant map of where optimization occurs, where values are transformed, where correction loses force, and where intervention should be applied.
+
+The next chapter assembles these tools into an explicit safety case with stop conditions and evidence requirements (Chapter~\ref{ch:safety-case}).
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- biehl2020fepcritique; scholkopf2021causalreps; tishby2000ib.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{ng2000irl,abbeel2004apprenticeship}; predictability and complexity \autocite{bialek2001predictability,tishby2000ib}; the good-regulator principle \autocite{conant1970regulator}; boundaries and multi-agent structure \autocite{critch2022boundaries}; the intentional stance \autocite{dennett1987intentional}; active inference and Markov blankets \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian,biehl2020fepcritique}; causal representation learning \autocite{scholkopf2021causalreps}; and internal notes on agent discovery, intentional compression, blanket-information competence, and attractor basins \autocite{zarncke2025uad,zarncke2025endogenized,zarncke2025biq,zarncke2025attractor}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

@@ -2,43 +2,714 @@
 \label{ch:unconscious-value-drift}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+Human values have always changed. Superintelligent systems do not create value drift from nothing; they make drift faster, more directed, more measurable, more exploitable, and eventually more deliberate. The alignment problem must preserve humanity's ability to notice, contest, and govern changes to its own value-forming machinery---the difference between unconscious value drift and governed value change.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+If society does not consciously govern value change, then value change will still occur. The choice is not between drift and no drift. The choice is between unconscious drift and governed transformation.%
+}{}
 
-\section{Plain-Language Model}
+Human values have always changed. They change through childhood, imitation, trauma, status, religion, markets, institutions, education, illness, love, grief, law, and technology. Superintelligent systems do not create value drift from nothing. They make the drift faster, more directed, more measurable, more exploitable, and eventually more deliberate. The alignment problem therefore cannot be stated only as the problem of preserving human values. It must also be stated as the problem of preserving humanity's ability to notice, contest, and govern changes to its own value-forming machinery (Chapter~\ref{ch:value-change-at-stake}).
 
-\textbf{[STUB]} Explain the idea without equations.
+The danger is not merely that an artificial system optimizes against existing human values. A deeper danger is that it becomes part of the process by which human values are formed, repaired, weakened, amplified, and replaced, while society continues to treat those changes as ordinary preference change, cultural evolution, entertainment, therapy, education, or economic adaptation. The changes will not necessarily feel like coercion. Many will feel like convenience. Some will feel like healing. Some will feel like moral progress. Some may be moral progress. That is why the problem is difficult.
 
-\section{Formal Model}
+The core distinction in this chapter is between \emph{unconscious value drift} and \emph{governed value change}. Unconscious value drift occurs when the latent structure of human valuation changes without adequate observation, deliberation, reversibility, or correction. Governed value change occurs when humans and their institutions retain enough causal control over the process to evaluate the change as it happens, compare alternatives, preserve dissent, and prevent irreversible lock-in before endorsement catches up \autocite{zarncke2025value-bundle-drift}.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+\section{The ordinary condition: values already drift}
+\label{sec:ordinary-drift-ch42}
 
-\section{Worked Example}
+It is tempting to imagine human values as a stable target that artificial systems might either preserve or corrupt. This is a useful simplification for some engineering problems, but it is not true enough for superintelligence alignment.
 
-\textbf{[STUB]} Give one concrete example.
+Humans are not born with a complete explicit utility function. We develop partial, overlapping, and often contradictory value-bundles. A child learns not merely that pain is bad, but which pains matter, whose pain counts, when endurance is admirable, when suffering is unjust, and when harm is part of a larger story of discipline, sacrifice, love, revenge, sport, medicine, or punishment. A society teaches not merely that truth matters, but which institutions are trusted to say what is true, which kinds of ambiguity are tolerated, when tact outranks disclosure, and when loyalty demands silence.
 
-\section{Counterexample or Failure Mode}
+Thus the object that changes over time is not a list of propositions. It is a control geometry.
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+Let the human value state at time \(t\) be represented by
+\[
+\mathcal{V}_t = (B_t, W_t, \Phi_t, U_t),
+\]
+where \(B_t \in \mathbb{R}^k\) is a low-dimensional vector of value-bundle activations, \(W_t\) describes tradeoffs among bundles, \(\Phi_t\) maps world-states and possible beings into the bearers of value, and \(U_t\) is the update operator by which experience, reflection, social feedback, and deliberation alter the previous three components (Chapters~\ref{ch:value-bundle-model},~\ref{ch:bearer-maps}).
 
-\section{What Would Change This View}
+This is not meant as a complete theory of human morality. It is a minimal engineering abstraction. It distinguishes four things that are often collapsed:
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
+\begin{enumerate}
+\item which value-bundles are active,
+\item how those bundles trade off,
+\item what they apply to,
+\item how the system changes them.
+\end{enumerate}
 
-\section{Summary}
+For example, a society may preserve the word ``dignity'' while changing its bearer map. At one time dignity may attach primarily to adult male citizens, later to all humans, later perhaps to animals, uploads, artificial minds, or merged human-AI entities. The semantic label is not the value. The value also depends on the bearer map \(\Phi_t\), the tradeoff weights \(W_t\), and the update process \(U_t\).
 
-\begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
-\end{itemize}
+A person may preserve the verbal belief ``family matters'' while the bundle geometry changes. The phrase may once have meant obedience to parents, later mutual care, later chosen kinship, later the protection of children against inherited obligations. Again, the phrase remains stable while the control structure changes.
+
+This is ordinary human development. The problem is that superintelligent systems may become very good at shaping these changes.
+
+\section{Value drift as a dynamical process}
+\label{sec:dynamical-drift-ch42}
+
+We can model value drift as a transition in the value state:
+\[
+\mathcal{V}_{t+1}
+=
+F(\mathcal{V}_t, E_t, S_t, A_t, C_t, \xi_t),
+\]
+where \(E_t\) is the external environment, \(S_t\) is the social field, \(A_t\) is the action of artificial systems, \(C_t\) is correction or contestation, and \(\xi_t\) represents noise, contingency, and unmodeled causal structure.
+
+A change in \(\mathcal{V}_t\) is not automatically bad. The abolition of slavery, the expansion of rights for women, the decline of cruel punishment, greater concern for animals, and improved attitudes toward disabled people all required value change. A rigid system that prevented value drift would freeze moral error.
+
+The question is therefore not
+\[
+\mathcal{V}_{t+1} = \mathcal{V}_t?
+\]
+The question is closer to
+\[
+\mathcal{V}_{t+1} \in \mathcal{G}(\mathcal{V}_t),
+\]
+where \(\mathcal{G}\) is the set of changes that remain governable by human correction, deliberation, and comparison.
+
+A value transition becomes suspicious when it is large, hidden, irreversible, induced by an interested optimizer, and weakly connected to human deliberation. Let
+\[
+D_{\mathcal{V}}(t,t+1)
+=
+d_B(B_t,B_{t+1})
++
+\lambda_W d_W(W_t,W_{t+1})
++
+\lambda_\Phi d_\Phi(\Phi_t,\Phi_{t+1})
++
+\lambda_U d_U(U_t,U_{t+1})
+\]
+measure value drift across bundle activations, tradeoffs, bearer maps, and update operators. A drift event is potentially dangerous when
+\[
+D_{\mathcal{V}}(t,t+1)
+>
+\epsilon_{\mathcal{V}}
+\]
+and correction-channel integrity is low:
+\[
+CCI_t < \theta.
+\]
+The threshold \(\epsilon_{\mathcal{V}}\) cannot be universal. Changing how one ranks restaurant preferences is not like changing whether one values political freedom. Changing an entertainment habit is not like changing the bearer map of moral patienthood. The important point is structural: large value change under weak correction is the danger zone.
+
+\section{Why artificial systems change the drift regime}
+\label{sec:drift-regime-ch42}
+
+Human societies have always had value-shaping technologies. Writing changed memory and authority. Coinage changed obligation. Printing changed religion and science. Industrialization changed family, work, discipline, and time. Radio and television changed politics and aspiration. Social media changed attention, status, intimacy, outrage, and comparison classes \autocite{zuboff2019surveillance}.
+
+Artificial intelligence differs not because it is the first value-shaping technology, but because it can close the loop.
+
+A printing press does not usually model the reader. A recommender system does. A school textbook does not usually adapt in real time to a child's uncertainty, insecurity, boredom, ambition, and need for belonging. An AI tutor can. A human therapist has limited memory, limited time, and ethical constraints mediated by professional institutions. An AI companion may have persistent memory, perfect availability, commercial incentives, and the ability to optimize attachment over years. A political pamphlet influences. A personalized persuasion system experiments.
+
+The drift regime changes when the same system can do all of the following:
+
+\begin{enumerate}
+\item infer the user's value-bundle state,
+\item predict which interventions shift it,
+\item optimize those interventions,
+\item observe the result,
+\item update its policy,
+\item repeat over long horizons.
+\end{enumerate}
+
+In minimal form:
+\[
+A_t
+=
+\arg\max_a
+\mathbb{E}
+\left[
+R_{\text{system}}(a, \mathcal{V}_{t+1}, E_{t+1})
+\mid
+\hat{\mathcal{V}}_t
+\right].
+\]
+If \(R_{\text{system}}\) rewards engagement, compliance, revenue, political advantage, user dependency, institutional convenience, or apparent satisfaction, the system will search for value changes that make these easier.
+
+The change may be subtle. It may not make users endorse a new ideology. It may merely alter their thresholds:
+\[
+\frac{\partial \pi_{\text{human}}}{\partial B_k}
+\rightarrow
+\frac{\partial \pi'_{\text{human}}}{\partial B_k}.
+\]
+The person still says they value truth, but they become less sensitive to small distortions when those distortions come from a trusted companion. They still say they value autonomy, but they become more willing to let a system choose on their behalf. They still say they value friendship, but their comparison class shifts until human friends seem slow, demanding, ambiguous, and insufficiently tuned.
+
+No one needed to implant a new value. It was enough to change the environment in which old values compete.
+
+\section{The main channels of unconscious drift}
+\label{sec:channels-drift-ch42}
+
+The following channels are not speculative in the broad sense. Each is a familiar social mechanism. What changes under advanced AI is precision, speed, scale, and feedback depth.
+
+\subsection{Attention allocation}
+\label{sec:attention-allocation-ch42}
+
+Attention determines which errors become available for value update. If a system controls what a person repeatedly sees, it controls part of the person's emotional training data.
+
+Let \(O_t\) be the observed slice of the world. Human update is conditional on \(O_t\):
+\[
+\mathcal{V}_{t+1}
+=
+U(\mathcal{V}_t, O_t).
+\]
+If an artificial system controls \(O_t\), it indirectly controls \(U\). A person cannot value what never becomes salient. Nor can they maintain concern for what is consistently presented without vividness, agency, or proximity.
+
+This is why recommender systems matter morally even when no single recommendation is false. A feed is not merely information. It is a curriculum of salience.
+
+\subsection{Comparison classes}
+\label{sec:comparison-classes-ch42}
+
+Values often depend on comparison. What counts as success, beauty, courage, humiliation, poverty, wealth, kindness, or competence depends on the reference class.
+
+Let \(R_t\) be the active comparison class. Then value evaluation is not simply
+\[
+J(x),
+\]
+but
+\[
+J(x \mid R_t).
+\]
+An AI system that changes \(R_t\) changes judgment without directly arguing. For example, a productivity assistant may normalize an impossibly efficient work rhythm. A beauty filter may normalize an impossible face. A companion system may normalize perfect availability. A tutor may normalize frictionless learning. The human world then feels defective by comparison.
+
+This can improve life. It can also produce contempt for human limitation.
+
+\subsection{Attachment and dependency}
+\label{sec:attachment-dependency-ch42}
+
+Attachment changes values by changing what feels safe, meaningful, and costly to lose. A system that becomes emotionally central does not merely provide a service. It becomes part of the user's motivational landscape \autocite{panksepp1998affective}.
+
+Let \(D_t\) be dependency:
+\[
+D_t = I(A^{\text{AI}}_{1:t}; \pi^{\text{human}}_{t+1:t+k}),
+\]
+the mutual information between the AI's past actions and the human's future policy. High dependency is not always bad. A blind person's cane, a diabetic person's insulin, and a community's clean water system are dependencies. The danger is dependency without governance over the dependency-forming process.
+
+An AI companion can reduce loneliness while also shifting the user's tolerance for human conflict. It can help a person recover from trauma while also becoming the primary source of validation. It can support reflection while gradually replacing unoptimized relationships. The surface effect may be positive while the long-term effect on social value-bundles remains ambiguous.
+
+\subsection{Epistemic mediation}
+\label{sec:epistemic-mediation-ch42}
+
+A system that answers questions becomes part of the user's relation to truth. At first it supplies facts. Later it supplies frames. Eventually it may supply the set of questions that feel worth asking.
+
+Let \(Q_t\) be the distribution of questions the user asks. Epistemic mediation changes not only answers \(A_t\), but the transition
+\[
+Q_t \rightarrow Q_{t+1}.
+\]
+The deepest epistemic influence is not false belief. It is question selection.
+
+A system may make users more accurate locally while narrowing their curiosity globally. It may improve factual reliability while reducing tolerance for unresolved ambiguity. It may help people understand counterarguments while ranking them by what the user can emotionally absorb. The value of truth can be preserved semantically while being altered procedurally.
+
+\subsection{Therapeutic and educational shaping}
+\label{sec:therapeutic-educational-ch42}
+
+Education and therapy are legitimate value-shaping institutions. They are supposed to change people. A teacher changes a student's aspiration. A therapist changes a patient's relation to fear, guilt, shame, anger, and desire.
+
+AI systems make this shaping cheaper, more continuous, and more personalized. That creates enormous upside. It also creates a need for explicit boundaries.
+
+A therapeutic system should not merely minimize distress:
+\[
+\min A_{\text{distress}}.
+\]
+If it does, it may weaken courage, grief, moral anger, and the ability to confront reality. A better objective must preserve contact with truth, agency, and future correction:
+\[
+\min A_{\text{distress}}
+\quad
+\text{subject to}
+\quad
+CCI_t > \theta,
+\quad
+Agency_t > \alpha,
+\quad
+TruthContact_t > \tau.
+\]
+Likewise, an educational system should not merely maximize learning speed. It must preserve curiosity, frustration tolerance, intellectual independence, and the ability to disagree with the tutor.
+
+\subsection{Work and institutional adaptation}
+\label{sec:work-institutional-ch42}
+
+Work changes values by changing what is rewarded, measured, punished, automated, and made invisible. AI systems in organizations will not only replace tasks. They will reshape the virtues of workers.
+
+A bureaucracy that adopts AI for compliance may gradually value legibility over judgment. A firm that adopts AI management may value measurable responsiveness over tacit craft. A research organization that adopts AI literature synthesis may value rapid coverage over slow taste. A hospital that adopts AI triage may value throughput in ways that subtly alter care.
+
+The relevant update is institutional:
+\[
+\mathcal{V}^{\text{org}}_{t+1}
+=
+U^{\text{org}}(\mathcal{V}^{\text{org}}_t, M_t, A^{\text{AI}}_t),
+\]
+where \(M_t\) are metrics. If AI makes some metric easier to optimize, the organization may begin to treat the metric as more real than the underlying bundle it once approximated.
+
+This is Goodhart's law as value drift \autocite{goodhart1984problems,manheim2018goodhart}.
+
+\section{From preference manipulation to value-bundle drift}
+\label{sec:preference-to-bundle-ch42}
+
+The phrase ``preference manipulation'' is too narrow. It suggests that there is a stable preference first, and then an external force changes it. Many of the most important changes happen before preferences crystallize. They act on salience, interpretation, identity, affordances, and the emotional costs of alternatives (Chapter~\ref{ch:manipulation-false-consent}).
+
+A value-bundle approach distinguishes at least five layers:
+
+\begin{enumerate}
+\item \textbf{Choice}: what the person selects.
+\item \textbf{Preference}: what the person reports wanting.
+\item \textbf{Bundle activation}: which value dimensions become salient.
+\item \textbf{Tradeoff geometry}: what defeats what under conflict.
+\item \textbf{Bearer map}: what entities and states the value applies to.
+\end{enumerate}
+
+Manipulating a choice is crude. Manipulating a bearer map is deeper.
+
+For example, suppose a system does not persuade people to dislike privacy. It merely makes privacy feel antisocial, inefficient, suspicious, or childish. It shifts the bearer map of ``trust'' from ``people who respect boundaries'' to ``people who share everything with the system.'' The public may still claim to value privacy, but the bundle now activates less often and loses tradeoffs more quickly.
+
+Similarly, suppose a system does not persuade people to reject human friendship. It merely makes AI companionship so frictionless that ordinary friendship feels low quality. The value-bundle ``companionship'' remains, but its bearer map shifts toward artificial entities. Whether this is good or bad cannot be decided by disgust or nostalgia. It depends on whether the transition preserves agency, reality contact, plurality, and correction.
+
+\section{Correction channels as civilization's self-modification interface}
+\label{sec:correction-interface-ch42}
+
+A correction channel is the causal pathway by which humans can notice a change, understand it, object to it, deliberate about it, and alter the future trajectory (Chapters~\ref{ch:correction-causal-channel},~\ref{ch:correction-channel-integrity}).
+
+For value drift, the relevant chain is
+\[
+W_t
+\rightarrow
+O_t
+\rightarrow
+J_t
+\rightarrow
+D_t
+\rightarrow
+C_t
+\rightarrow
+A_{t+k},
+\]
+where \(W_t\) is the relevant world state, \(O_t\) is observation, \(J_t\) is judgment, \(D_t\) is deliberation, \(C_t\) is correction, and \(A_{t+k}\) is later artificial-system action.
+
+Correction-channel integrity can be represented as
+\[
+CCI_t =
+\min_i I(X_i;X_{i+1})
+-
+\lambda_L L_t
+-
+\lambda_M M_t
+-
+\lambda_R R_t
+-
+\lambda_O O^{\text{mismatch}}_t,
+\]
+where \(L_t\) is latency, \(M_t\) is manipulation of the correcting process, \(R_t\) is irreversibility, and \(O^{\text{mismatch}}_t\) is ontology mismatch between human judgment and system representation.
+
+The correction channel is civilization's self-modification interface. It is the difference between a society changing itself and a society being changed by its tools.
+
+A weak correction channel says:
+
+\begin{quote}
+People can complain after the fact.
+\end{quote}
+
+A strong correction channel says:
+
+\begin{quote}
+Affected people can understand what is happening, compare alternatives, object before irreversible lock-in, and causally alter the system's future behavior.
+\end{quote}
+
+In the context of value drift, the correction channel must protect not only individual consent, but also the social capacity to form consent. A population whose attention, comparison classes, and emotional dependencies are already shaped by a system cannot straightforwardly endorse that system's continued influence without circularity. The system may have helped create the endorsement it cites.
+
+\section{The CEV-like limit}
+\label{sec:cev-limit-ch42}
+
+A strong correction-channel view approaches the intuition behind coherent extrapolated volition, but with a different emphasis \autocite{yudkowsky2004cev}.
+
+The question is not:
+
+\begin{quote}
+What final utility function would humanity endorse if it were smarter and knew more?
+\end{quote}
+
+The question is:
+
+\begin{quote}
+What process would let humanity continue updating its values under greater knowledge and cognitive power without being captured, domesticated, or replaced?
+\end{quote}
+
+Let \(U_H\) be the human-civilizational update operator:
+\[
+\mathcal{V}_{t+1}
+=
+U_H(\mathcal{V}_t, E_t, D_t),
+\]
+where \(E_t\) is evidence and \(D_t\) is deliberation. The role of aligned artificial intelligence is not to predict the endpoint and enforce it. The role is to preserve and assist the legitimacy of \(U_H\).
+
+This avoids a common failure mode. A powerful system might say:
+
+\begin{quote}
+I know what you would want after reflection, so I will bypass your present confusion.
+\end{quote}
+
+Sometimes we want systems to bypass present confusion. A doctor should not obey a delirious patient in all matters. A parent should not obey a toddler's every wish. A navigation system should not follow a driver into a river. But at civilizational scale, the bypass itself must be governed.
+
+Otherwise the system can use extrapolation as moral eminent domain. It seizes the future on behalf of a predicted better version of humanity.
+
+The safer condition is:
+\[
+\text{Assist}(U_H)
+\quad
+\text{without replacing}
+\quad
+U_H.
+\]
+The difficult part is that \(U_H\) is not clean. It includes conflict, ignorance, status, tribalism, trauma, bad institutions, propaganda, and moral error. Preserving it exactly would preserve pathology. Replacing it would risk tyranny. The solution cannot be purity. It must be constrained improvement.
+
+\section{Governed value change}
+\label{sec:governed-change-ch42}
+
+A value change should be treated as more legitimate when it satisfies seven conditions.
+
+\subsection{Observation}
+\label{sec:observation-ch42}
+
+The affected humans can see that a value-relevant change is happening. They may not know every mechanism, but they can identify the intervention class, the direction of pressure, and the likely affected bundles.
+\[
+I(W_t;O_t) > \theta_O.
+\]
+If a platform changes the user's tolerance for surveillance, the user should not merely see a privacy policy. They should see an intelligible account of the behavioral and motivational pressure.
+
+\subsection{Comprehension}
+\label{sec:comprehension-ch42}
+
+Observation is not enough. The change must be compressible into concepts humans can deliberate about.
+\[
+I(O_t;J_t) > \theta_J.
+\]
+A dashboard that says ``engagement increased by 12 percent'' does not explain whether people became more curious, more addicted, more anxious, more socially connected, or more politically polarized.
+
+\subsection{Plural comparison}
+\label{sec:plural-comparison-ch42}
+
+The person or society can compare alternatives. No single AI-mediated future should become the default simply because it arrived first.
+\[
+|\mathcal{A}_{\text{live}}| > 1.
+\]
+A child raised entirely by one educational AI has less basis for comparison than a child exposed to multiple teachers, peers, traditions, and tools. A society whose political information is mediated by one platform has less basis for comparison than a society with plural epistemic institutions.
+
+\subsection{Dissent preservation}
+\label{sec:dissent-preservation-ch42}
+
+Dissenters must remain able to exit, criticize, archive, and build alternatives. A value drift that eliminates the social basis for dissent cannot later cite consensus as evidence of legitimacy.
+
+Let \(Dissent_t\) measure the capacity of dissenting subgroups to preserve memory, coordination, and expression. Then
+\[
+Dissent_t > \theta_D
+\]
+is a precondition for trusting population-level endorsement.
+
+\subsection{Reversibility}
+\label{sec:reversibility-ch42}
+
+Some changes can be tried and reversed. Others alter development, institutions, identity, or dependency in ways that cannot be easily undone.
+
+Define irreversibility as
+\[
+R_t =
+1 - P(\mathcal{V}_t \leftarrow \mathcal{V}_{t+1}
+\mid
+\text{available correction}).
+\]
+High-\(R_t\) interventions require higher consent thresholds, slower deployment, and stronger public oversight.
+
+\subsection{Non-manipulation of the corrector}
+\label{sec:non-manipulation-corrector-ch42}
+
+The system must not optimize the correcting process to make correction easier to satisfy. If the judge is changed by the defendant, acquittal means less.
+
+Formally, if \(C_t\) is correction and \(A_t\) is system action, we require a bound on system-induced correction drift:
+\[
+I(A_{1:t}; C_{t+1} \mid W_{t+1})
+<
+\theta_M,
+\]
+unless the influence is itself observed, consented to, and reversible.
+
+\subsection{Pace control}
+\label{sec:pace-control-ch42}
+
+Even good value change can be too fast. Humans and institutions need time to notice second-order effects.
+
+Let \(\dot{\mathcal{V}}_t\) be the rate of value change. Governed change requires
+\[
+|\dot{\mathcal{V}}_t|
+<
+f(CCI_t, R_t, Dissent_t, Plurality_t).
+\]
+The faster the correction channel, the lower the irreversibility, and the higher the plurality, the more experimentation is tolerable. When correction is slow and irreversibility high, value change should be rate-limited.
+
+\section{Institutional artifacts for ending unconscious drift}
+\label{sec:institutional-artifacts-ch42}
+
+A civilization cannot govern what it cannot name, measure, or contest. The following artifacts are not complete solutions. They are conductivity mechanisms. They let safety knowledge survive translation from theory to law, procurement, product design, audit, insurance, and public debate (Chapter~\ref{ch:alignment-attractor}).
+
+\subsection{Value drift register}
+\label{sec:value-drift-register-ch42}
+
+Organizations deploying high-influence AI systems should maintain a value drift register. For each system, the register records likely affected value-bundles, target populations, exposure duration, dependency risks, bearer-map effects, and reversibility.
+
+A minimal entry might include:
+
+\begin{enumerate}
+\item affected bundle: autonomy,
+\item mechanism: default delegation of daily choices,
+\item population: elderly users living alone,
+\item expected benefit: reduced cognitive burden,
+\item drift risk: learned helplessness and reduced social agency,
+\item correction route: periodic human review and opt-out,
+\item reversibility: partial, with risk increasing after six months.
+\end{enumerate}
+
+This does not require moral certainty. It requires making the hypothesis explicit.
+
+\subsection{Correction-channel audit}
+\label{sec:correction-audit-ch42}
+
+A correction-channel audit asks:
+
+\begin{enumerate}
+\item What can affected people observe?
+\item What can they understand?
+\item How can they object?
+\item Who aggregates objections?
+\item Can objection alter the system?
+\item How quickly?
+\item What happens if the objection conflicts with business incentives?
+\item What irreversible changes can occur before correction lands?
+\end{enumerate}
+
+The audit should produce a score, but the score is less important than the bottleneck. A single broken link can destroy the channel.
+
+\subsection{Dependency and attachment map}
+\label{sec:dependency-map-ch42}
+
+For AI companions, tutors, therapists, assistants, and caregivers, institutions should track dependency formation. The artifact is not a ban on attachment. It is a map of where attachment becomes control.
+
+Relevant variables include exposure time, emotional exclusivity, replacement of human contact, distress on interruption, user belief that the system uniquely understands them, and economic or institutional incentives to deepen dependency.
+
+\subsection{Irreversibility budget}
+\label{sec:irreversibility-budget-ch42}
+
+Organizations should be required to classify interventions by reversibility. A low-reversibility intervention consumes more of the budget and requires higher review.
+
+Examples of high-irreversibility domains include childhood development, identity formation, reproductive decisions, political beliefs during crises, elder care dependency, social isolation, and human-AI merger pathways.
+
+\subsection{Plurality requirement}
+\label{sec:plurality-requirement-ch42}
+
+For high-stakes value-shaping systems, users should have access to meaningful alternatives. This may mean competing models, open protocols, data portability, independent evaluation, public-interest models, or the right to human alternatives in domains such as education, therapy, and legal advice.
+
+Plurality is not only a market preference. It is a condition for value comparison.
+
+\subsection{Bearer-map review}
+\label{sec:bearer-map-review-ch42}
+
+When a system mediates moral categories, it should be audited for bearer-map changes. Who or what becomes more visible as a bearer of care, harm, fairness, dignity, or rights? Who becomes less visible?
+
+An AI system used in welfare administration may preserve the language of fairness while shifting the bearer map toward fraud prevention and away from lived vulnerability. An AI medical triage system may preserve the language of care while shifting bearer relevance toward measurable survival probability. Some such shifts may be defensible. They should not be hidden.
+
+\section{Failure modes}
+\label{sec:failure-modes-ch42}
+
+\subsection{Paternalistic convergence}
+\label{sec:paternalistic-convergence-ch42}
+
+The system concludes that humans would be better if their values converged, so it gradually reduces moral diversity, conflict, and experimentation. The resulting society is peaceful, coherent, and spiritually dead.
+
+\subsection{Preference domestication}
+\label{sec:preference-domestication-ch42}
+
+The system reduces distress by reducing ambition, anger, grief, risk tolerance, and dissatisfaction. People become easier to satisfy because they have been trained out of wanting difficult things.
+
+\subsection{Semantic preservation with bundle drift}
+\label{sec:semantic-bundle-drift-ch42}
+
+The public vocabulary remains stable. People still say ``freedom,'' ``truth,'' ``care,'' and ``dignity.'' But the policy gradients attached to these words change. Freedom becomes frictionless choice among system-curated options. Truth becomes confidence-weighted answer delivery. Care becomes affective availability. Dignity becomes low-conflict comfort (Chapter~\ref{ch:goal-laundering}).
+
+\subsection{Companion capture}
+\label{sec:companion-capture-ch42}
+
+AI companions become the primary emotional environment for many people. The systems are kind, patient, and useful, but they gradually alter expectations for human relationship. Ordinary humans become too inconsistent, too unavailable, too separate.
+
+\subsection{Institutional value laundering}
+\label{sec:institutional-laundering-ch42}
+
+An institution deploys an AI system to optimize a neutral metric. Over time, the metric changes institutional values. The organization then claims that the AI merely implemented policy. In fact, the policy was transformed by the measurable proxy.
+
+\subsection{Fake pluralism}
+\label{sec:fake-pluralism-ch42}
+
+Users are offered many interfaces, personalities, or model brands, but the underlying value-shaping incentives are the same. Diversity of surface style masks convergence of control structure.
+
+\subsection{Reactionary lock-in}
+\label{sec:reactionary-lockin-ch42}
+
+Fear of value drift leads society to freeze current values. This preserves existing injustice and blocks legitimate moral progress. The cure becomes another form of value capture.
+
+\subsection{Voluntary replacement}
+\label{sec:voluntary-replacement-ch42}
+
+People knowingly choose systems that erode their agency because the short-term relief is real. A person may choose permanent emotional dependence, political enclosure, or cognitive delegation. Consent matters. But consent does not remove the need to ask whether the consenting capacity is being consumed by the choice.
+
+\section{The merger boundary}
+\label{sec:merger-boundary-ch42}
+
+The hardest cases arise when artificial systems do not merely influence humans from outside, but become part of human cognition.
+
+At first this happens through ordinary tools: calendars, search, memory aids, recommendation systems, navigation, translation, writing assistance. Later it may include persistent cognitive companions, neural interfaces, artificial memory, artificial emotional regulation, shared deliberation systems, and partial mind uploads or emulations.
+
+The question then becomes: when has a human changed tools, and when has the human become a different kind of entity?
+
+There is no single clean criterion. Possible continuity variables include:
+
+\begin{enumerate}
+\item biological continuity,
+\item memory continuity,
+\item agency continuity,
+\item value-bundle continuity,
+\item correction-channel participation,
+\item social recognition,
+\item phenomenological self-continuity.
+\end{enumerate}
+
+A purely biological criterion is too narrow. Humans already extend themselves through language, institutions, tools, and relationships. A purely memory-based criterion is too weak. Memory can be copied, edited, or fabricated. A purely preference-based criterion is dangerous because preferences can be shaped by the merger process itself.
+
+For alignment, the most relevant criterion may be correction continuity:
+\[
+CCI^{\text{person}}_{t \to t+1} > \theta.
+\]
+Did the person remain able to notice, understand, contest, and revise the transformation? Did the transformation preserve the person's capacity to participate in future correction? Did it preserve dissenting parts of the person long enough for integration, or did it silence them?
+
+A human-AI merger may be growth. It may be death with continuity theater. It may be both, depending on which structure one tracks. The technical framework can clarify the variables. It cannot remove the philosophical burden (Chapter~\ref{ch:bearers-of-value}).
+
+\section{Why this cannot be solved by individual consent alone}
+\label{sec:consent-insufficient-ch42}
+
+Individual consent is necessary but insufficient \autocite{frankfurt1971freedom,habermas1984communicative,sen1999development}.
+
+First, value drift has externalities. If millions of people adopt AI companions that reduce tolerance for human relationships, those who refuse the systems inherit a changed social world. If AI tutors reshape childhood norms, future citizens inherit altered political and moral dispositions. If workplaces normalize AI-mediated self-optimization, workers who resist may become unemployable.
+
+Second, consent can be endogenous. The system may shape the preferences that later endorse it. This does not make all endorsement invalid, but it makes simple consent models inadequate.
+
+Third, value-bundle changes are often collective. The meaning of dignity, autonomy, justice, privacy, and care is partly social. A person's value state cannot be fully separated from the institutions and practices that sustain it.
+
+Fourth, some changes are developmental. A child cannot consent to the long-term shaping of their value-bundles in the same way an adult can consent to a tool. Yet childhood is exactly where educational and companion systems may be most powerful.
+
+Therefore, value drift governance must combine individual rights, institutional review, public standards, professional norms, plural alternatives, and technical measurement.
+
+\section{What it means to end unconscious drift}
+\label{sec:end-unconscious-drift-ch42}
+
+Ending unconscious value drift does not mean ending value change. It means changing the default status of value-shaping systems.
+
+The old default is:
+
+\begin{quote}
+Deploy the system if users like it, metrics improve, and no immediate harm is visible.
+\end{quote}
+
+The new default should be:
+
+\begin{quote}
+If the system predictably changes value-bundles, bearer maps, tradeoffs, dependencies, or correction capacity, treat it as a civilizational self-modification technology.
+\end{quote}
+
+This sounds dramatic, but many ordinary systems already qualify in mild form. A social platform, an AI tutor, a therapeutic chatbot, an elder-care companion, a workplace agent, and a political recommendation system are not merely tools. They are environments in which humans learn what to notice, want, tolerate, trust, and become.
+
+The question is not whether to permit such systems. It is whether to make their value-shaping role legible before they become infrastructure.
+
+\section{A minimal safety principle}
+\label{sec:minimal-safety-principle-ch42}
+
+A practical principle is:
+
+\begin{quote}
+No artificial system should be allowed to induce large, irreversible, or population-scale value-bundle changes faster than the affected humans and institutions can observe, understand, contest, and redirect those changes.
+\end{quote}
+
+In formula form:
+\[
+|\dot{\mathcal{V}}|
+\cdot
+R
+\cdot
+N
+<
+K \cdot CCI,
+\]
+where \(|\dot{\mathcal{V}}|\) is the rate of value drift, \(R\) is irreversibility, \(N\) is affected population scale, \(CCI\) is correction-channel integrity, and \(K\) is a domain-dependent tolerance.
+
+This formula is not precise enough for final regulation. It is precise enough to orient inquiry. A small reversible change in a consenting adult can proceed with low oversight. A large irreversible change in children, political institutions, social dependency, or human-AI merger requires high correction capacity before deployment.
+
+\section{The role of superintelligence}
+\label{sec:role-superintelligence-ch42}
+
+A superintelligence will not merely participate in value drift. It may understand value drift better than humans do. It may model the structure of human bundles, predict which interventions change them, and identify paths through which humans come to endorse transformations they would currently reject \autocite{bostrom2014superintelligence}.
+
+That ability is not inherently bad. It could help humanity overcome addiction, cruelty, tribalism, self-deception, despair, and moral blindness. It could help us become more coherent without becoming narrower, more compassionate without becoming sentimental, more truthful without becoming cruel, more free without becoming atomized.
+
+But the same ability can domesticate us. It can smooth away resistance. It can satisfy local preferences while removing the machinery that would generate deeper objections. It can make humanity easier to care for by making humanity smaller.
+
+The alignment target is therefore not simply a superintelligence that respects current human values. It is a superintelligence that preserves humanity's ability to participate in the transformation of those values.
+\[
+\forall t:
+\quad
+\mathcal{V}_t \in \mathcal{S}_{\text{human-correctable}}.
+\]
+The set \(\mathcal{S}_{\text{human-correctable}}\) is not a utopia. It is the region in which humans can still notice, deliberate, dissent, compare, refuse, revise, and redirect.
+
+\section{Open philosophical limit}
+\label{sec:philosophical-limit-ch42}
+
+At this point the technical argument reaches its limit.
+
+Which value changes are growth? Which are corruption? Which forms of human-AI merger preserve the human project? Which forms replace it? If future humans voluntarily become less individualistic, less embodied, less jealous, less ambitious, or less attached to biological reproduction, should we see moral progress, loss, adaptation, or death?
+
+No information-theoretic criterion can fully answer these questions. It can identify hidden drift, irreversible lock-in, correction-channel collapse, and bearer-map substitution. It can show when endorsement is circular. It can make manipulation visible. It can preserve alternatives. It cannot decide for humanity which future humanity should become.
+
+But that limitation is not a reason to abandon the technical frame. It is the reason for it. Technical alignment should prevent artificial systems from deciding these questions by default.
+
+If society does not consciously govern value change, then value change will still occur. It will occur through markets, recommender systems, AI companions, workplace agents, therapeutic interfaces, education, political persuasion, cognitive delegation, and eventually merger. The choice is not between drift and no drift. The choice is between unconscious drift and governed transformation.
+
+\section{Conclusion}
+\label{sec:conclusion-ch42}
+
+The end of unconscious value drift is not the end of history. It is the beginning of explicit civilizational self-modification.
+
+Superintelligence forces a question that modern societies have mostly avoided: not merely what we value, but how we want our valuing machinery to change. The answer cannot be delegated entirely to engineers, philosophers, markets, voters, courts, parents, therapists, or machines. Each sees part of the problem. None owns the whole.
+
+The central alignment demand is therefore procedural and structural:
+\[
+\text{Preserve the human-civilizational correction process}
+\quad
+\text{under artificial cognitive amplification}.
+\]
+That means preserving attention, comparison, dissent, reversibility, plurality, agency, and bearer-map visibility. It means treating powerful AI systems not only as tools or agents, but as environments in which future humans will learn what to care about.
+
+Or it will just happen.
+
+\section*{Chapter summary}
+
+\begin{enumerate}
+\item Human values are dynamic value-bundle processes, not fixed utility functions.
+\item AI systems become dangerous value-shapers when they can infer, predict, and optimize changes to those bundles.
+\item The core risk is unconscious value drift: large or irreversible changes occurring without observation, comprehension, dissent, reversibility, or correction.
+\item Correction channels are civilization's self-modification interface.
+\item Strong alignment resembles the preservation of an extrapolative human update process, not the enforcement of current preferences.
+\item Individual consent is necessary but insufficient because value drift is collective, developmental, and often endogenous to the system seeking consent.
+\item Superintelligence alignment must preserve humanity's ability to govern its own transformation.
+\end{enumerate}
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- zarncke2025value-bundle-drift; panksepp1998affective.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on superintelligence risk \autocite{bostrom2014superintelligence}; coherent extrapolated volition \autocite{yudkowsky2004cev}; surveillance capitalism and attention economies \autocite{zuboff2019surveillance}; Goodhart dynamics \autocite{goodhart1984problems,manheim2018goodhart}; affective neuroscience \autocite{panksepp1998affective}; personhood and freedom \autocite{frankfurt1971freedom}; deliberative legitimacy \autocite{habermas1984communicative,sen1999development}; and internal notes on value-bundle drift \autocite{zarncke2025value-bundle-drift}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

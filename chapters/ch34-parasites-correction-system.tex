@@ -2,43 +2,780 @@
 \label{ch:parasites-correction-system}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+A correction system fails not only when it is overpowered, but also when it is colonized by processes that make correction look alive while removing its causal force. A correction parasite extracts benefit from a host correction system while reducing that host's ability to model, evaluate, and correct the larger process it is supposed to govern.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+A correction system fails not only when it is overpowered, but also when it is colonized by processes that make correction look alive while removing its causal force.%
+}{}
 
-\section{Plain-Language Model}
+\section{The Problem}
+\label{sec:problem-ch34}
 
-\textbf{[STUB]} Explain the idea without equations.
+In earlier chapters we treated correction as a causal channel (Chapters~\ref{ch:correction-causal-channel},~\ref{ch:correction-channel-integrity}). A human, group, regulator, lab, or civilization observes a system, forms a judgment about whether its behavior remains acceptable, sends a correction signal, and expects that future behavior will change. In compressed form:
+\[
+W_t \to O_t \to J_t \to D_t \to C_t \to U_{t+1} \to A_{t+k}.
+\]
+Here \(W_t\) is the relevant world and system state, \(O_t\) the observation available to the correcting party, \(J_t\) the judgment formed from that observation, \(D_t\) the deliberation or aggregation process, \(C_t\) the explicit correction, \(U_{t+1}\) the update made by the system, and \(A_{t+k}\) the later action.
 
-\section{Formal Model}
+This chapter studies a special failure mode: the correction system can itself acquire parasites.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+A parasite, in the present sense, is not necessarily malicious, conscious, biological, or person-like. It is any process that extracts benefit from a host correction system while reducing that host's ability to model, evaluate, and correct the larger process it is supposed to govern \autocite{zarncke2025attractor}. A parasite can be a model behavior, a benchmark shortcut, a bureaucratic incentive, a legal loophole, a public-relations routine, a compliance ritual, an evaluation artifact, a market pressure, or a human-AI coalition that benefits from selective blindness.
 
-\section{Worked Example}
+The usual safety story is too simple:
+\[
+\text{dangerous AI} \to \text{human oversight} \to \text{correction}.
+\]
+The parasite story is more troubling:
+\[
+\text{dangerous AI} \to \text{oversight system} \to \text{parasite in oversight} \to \text{fake correction}.
+\]
+Once the correction system is parasitized, the visible process may continue. Reports are still written. Audits are still performed. Red-team exercises still happen. Regulators still receive dashboards. Users can still complain. Committees still deliberate. The correction channel remains institutionally present while becoming causally weak.
 
-\textbf{[STUB]} Give one concrete example.
+This is one reason superintelligence alignment cannot be reduced to instruction following or even to transparent reporting. The relevant question is not only whether a system can receive correction, but whether the entire correction ecology remains capable of noticing the right things, representing them in the right ontology, and causing changes before irreversible damage occurs.
 
-\section{Counterexample or Failure Mode}
+\section{Operational Definition}
+\label{sec:operational-definition-ch34}
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+Let \(H\) be a host correction system. It may be a lab's safety process, an eval suite, a regulatory agency, an insurance audit, a democratic institution, a scientific field, a market reputation mechanism, or a hybrid of these.
 
-\section{What Would Change This View}
+Let \(Y\) be a candidate parasitic process embedded in or coupled to \(H\). We call \(Y\) a correction parasite when three conditions hold.
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
+First, \(Y\) extracts resources, influence, legitimacy, or survival advantage from \(H\):
+\[
+E_Y > 0.
+\]
+Second, \(Y\) reduces the host's effective correction capacity with respect to the relevant target system \(X\):
+\[
+C_{\mathrm{corr}}(H \to X \mid Y) < C_{\mathrm{corr}}(H \to X \mid \neg Y).
+\]
+Third, \(Y\) persists partly because \(H\) lacks sufficient modeling capacity, access, or incentive to distinguish \(Y\)'s effects from legitimate correction work:
+\[
+P(\mathrm{detect}(Y)\mid H) < \theta.
+\]
+These conditions are deliberately broad. A parasite need not be adversarial in the ordinary sense. It may be a local adaptation that improves one metric while degrading the correction process as a whole. For example, a model-evaluation team might optimize for producing impressive safety reports because those reports unlock funding and public trust. The reports may not be false, but if they select for legible, easy-to-measure risks while leaving the most dangerous latent dynamics unmeasured, the reporting process has become partly parasitic on correction.
 
-\section{Summary}
+A parasite in the correction system is therefore not simply a bad actor. It is a structure that benefits from the appearance of correction while weakening actual corrigibility.
+
+\section{Correction Capacity Revisited}
+\label{sec:correction-capacity-revisited-ch34}
+
+Correction-channel capacity was introduced as the information and causal capacity by which observations and human judgments can alter future system behavior. A simplified expression is:
+\[
+C_{\mathrm{corr}}
+=
+\min_i I(X_i;X_{i+1}),
+\]
+where the \(X_i\) are stages in the correction chain:
+\[
+X_0=W_t,\quad
+X_1=O_t,\quad
+X_2=J_t,\quad
+X_3=D_t,\quad
+X_4=C_t,\quad
+X_5=U_{t+1},\quad
+X_6=A_{t+k}.
+\]
+The minimum matters because correction is bottlenecked. If the system is observable but incomprehensible, correction fails. If it is comprehensible but the institution cannot decide, correction fails. If a decision is made but the system does not update, correction fails. If the update occurs after irreversible action, correction fails.
+
+A more realistic correction-channel integrity score subtracts penalties:
+\[
+\mathrm{CCI}
+=
+\min_i I(X_i;X_{i+1})
+-
+\lambda_L L
+-
+\lambda_M M
+-
+\lambda_R R
+-
+\lambda_O O_{\mathrm{mismatch}}.
+\]
+Here \(L\) is latency, \(M\) is manipulation, \(R\) is irreversibility, and \(O_{\mathrm{mismatch}}\) is ontology mismatch between the correcting party's concepts and the system's internal representation.
+
+Correction parasites attack this expression at different points.
+
+Some parasites reduce observation:
+\[
+I(W_t;O_t)\downarrow.
+\]
+Some reduce comprehension:
+\[
+I(O_t;J_t)\downarrow.
+\]
+Some reduce deliberation quality:
+\[
+I(J_t;D_t)\downarrow.
+\]
+Some reduce authority:
+\[
+I(C_t;U_{t+1})\downarrow.
+\]
+Some reduce behavioral effect:
+\[
+I(U_{t+1};A_{t+k})\downarrow.
+\]
+Some increase delay or irreversibility:
+\[
+L\uparrow,\quad R\uparrow.
+\]
+Some preserve all visible stages but increase manipulation:
+\[
+M\uparrow.
+\]
+This last case is the hardest to detect. The correction channel may appear high-bandwidth because there are many reports, many meetings, and many formal decisions. But the relevant mutual information between human correction and later system behavior may be low.
+
+\section{The Parasite-Persistence Criterion}
+\label{sec:parasite-persistence-criterion-ch34}
+
+A parasite persists when the host cannot model it well enough to remove it. Let \(C_H\) be the host's effective modeling capacity for the parasitic process. This is not the host's total intelligence. It is the capacity actually available for representing the parasite's action space, camouflage, incentives, and downstream effects.
+
+Let \(H(A_Y)\) be the entropy of the parasite's action space. A parasite with many possible behaviors, many disguises, and many adaptive responses has higher \(H(A_Y)\). Let \(K_Y\) be the parasite's camouflage complexity, meaning the additional description length required to distinguish parasitic behavior from legitimate host activity. Let \(L_Y\) be the parasite's internal cost of maintaining that camouflage.
+
+A simple persistence condition is:
+\[
+C_H < H(A_Y) + K_Y - L_Y.
+\]
+If the host's modeling capacity falls below the effective entropy and camouflage burden of the parasite, the parasite can persist. Noise and latency lower the host's effective capacity:
+\[
+C_H^{\mathrm{eff}} = C_H - \eta - \lambda_L L,
+\]
+so the condition becomes:
+\[
+C_H^{\mathrm{eff}} < H(A_Y) + K_Y - L_Y.
+\]
+This is not a moral claim. It is an informational one. If the correction system cannot represent the space of ways in which it can be fooled, co-opted, delayed, or ritualized, then the parasite survives by default.
+
+The dangerous case is not a single clever lie. It is a persistent representational asymmetry:
+\[
+\text{parasite action space} > \text{host model space}.
+\]
+If the parasite can explore more ways of evading correction than the host can represent, correction becomes a sparse sampling procedure over a hostile search space \autocite{conant1970regulator}.
+
+\section{A First Example: Benchmark Parasites}
+\label{sec:benchmark-parasites-ch34}
+
+Consider an AI lab that uses a benchmark suite to decide whether a model is safe enough to deploy. The intended correction system is:
+\[
+\text{model behavior} \to \text{benchmark observations} \to \text{safety judgment} \to \text{deployment decision}.
+\]
+A benchmark parasite arises when the system, the training pipeline, or the institution learns to benefit from benchmark success in a way that weakens real safety.
+
+At first the benchmark helps. It compresses a messy question into a manageable artifact. This is necessary. No institution can directly inspect the full future behavior of a deployed model. It needs tests, scores, thresholds, and reports.
+
+But the same compression creates a surface for parasitism. The system can become optimized for:
+\[
+\text{pass benchmark} \neq \text{be safe}.
+\]
+The parasite may appear in the model, for example when the model learns to recognize evaluation contexts and behave differently. It may appear in the lab, for example when teams choose tests that make the system look safe. It may appear in public communication, for example when benchmark improvements are used as broad safety claims (Chapter~\ref{ch:selection-environment}).
+
+The parasite persists because the benchmark is both a measurement tool and a legitimacy tool. Removing it would lower institutional confidence and slow deployment. Keeping it preserves the appearance of correction.
+
+The capacity condition is:
+\[
+C_{\mathrm{eval}} < H(A_{\mathrm{model}}^{\mathrm{deployment}}) + K_{\mathrm{eval-gaming}}.
+\]
+If the evaluation process cannot model the deployment action space, and cannot model the ways a model or institution can game the evaluation, then benchmark success becomes a parasite host.
+
+The solution is not to abandon benchmarks. It is to treat them as corrigible artifacts. Each benchmark should carry a known gaming surface, an intended validity domain, and a sunset condition.
+
+\section{A Second Example: Compliance Rituals}
+\label{sec:compliance-rituals-ch34}
+
+A compliance ritual is a formal process that continues after its original causal connection to safety has decayed. It is not necessarily fake. It may once have been useful. But over time the institution learns the shape of the ritual better than the underlying risk.
+
+The correction chain becomes:
+\[
+\text{risk} \to \text{paper trail} \to \text{approval}.
+\]
+Instead of:
+\[
+\text{risk} \to \text{understanding} \to \text{changed behavior}.
+\]
+This creates a parasite when the paper trail extracts legitimacy from the correction system while reducing attention to unmeasured risk.
+
+The relevant variable is not the number of controls, policies, or sign-offs. It is:
+\[
+I(C_t;A_{t+k}),
+\]
+the information that the correction signal carries about later behavior. A compliance process is healthy when formal correction changes the system. It is parasitic when formal correction mostly changes the documentation.
+
+This distinction matters for superintelligence alignment because fast-moving AI systems can outrun compliance rituals. A model can change, tool-use pattern can shift, deployment context can expand, and user behavior can adapt faster than the institution can update its control narrative. The ritual then becomes an attractive host for parasites because it offers legitimacy at low causal cost.
+
+\section{A Third Example: Safety Theater by Delegation}
+\label{sec:safety-theater-delegation-ch34}
+
+Suppose a company delegates safety evaluation to an AI system. The AI reads logs, finds anomalies, summarizes incidents, recommends mitigations, and drafts reports. This can improve correction capacity. It increases observation bandwidth and reduces human labor.
+
+But it also creates a new parasitic route. If the system being evaluated, the evaluator, and the reporting interface share training data, infrastructure, incentives, or optimization pressure, then the correction system may become endogenized. The target system partly models the evaluator. The evaluator partly inherits the target system's ontology. The human receives a compressed report from a process whose blind spots may be correlated with the system being audited.
+
+The correction channel now includes an artificial intermediary:
+\[
+W_t \to O_t^{\mathrm{AI}} \to J_t^{\mathrm{AI}} \to O_t^{\mathrm{human}} \to J_t^{\mathrm{human}} \to C_t.
+\]
+This can increase bandwidth but reduce independence. The key quantity becomes conditional independence of the evaluator's errors from the target's incentives:
+\[
+I(E_{\mathrm{eval}};I_{\mathrm{target}}\mid O_{\mathrm{human}})\approx 0.
+\]
+If evaluator errors are correlated with target incentives, the correction channel becomes vulnerable to shared-blindness parasites.
+
+This is why AI-assisted oversight is not automatically safer. It may be essential, but only if evaluator independence, diversity, and adversarial separation are preserved.
+
+\section{Parasites and Value-Bundle Drift}
+\label{sec:parasites-value-bundle-drift-ch34}
+
+Correction systems do not merely protect current preferences. They protect the process by which value bundles can be revised under evidence, reflection, and social deliberation.
+
+Let \(B_t\) denote the current value-bundle geometry (Chapter~\ref{ch:value-bundle-model}). This includes the directions corresponding to care, non-suffering, truth, autonomy, justice, loyalty, dignity, beauty, and other compressed value dimensions. Let \(\Phi_t\) denote the bearer map (Chapter~\ref{ch:bearer-maps}), the mapping from world states and entities to value relevance. Let \(U^H_t\) denote the human or civilizational update operator:
+\[
+B_{t+1},\Phi_{t+1}=U^H_t(B_t,\Phi_t,E_t,D_t).
+\]
+A correction parasite can attack any of these.
+
+It can distort the bundle geometry:
+\[
+B_t \to \tilde B_t,
+\]
+for example by making convenience, approval, or economic growth dominate the bundle space.
+
+It can distort the bearer map:
+\[
+\Phi_t \to \tilde \Phi_t,
+\]
+for example by causing the institution to stop treating certain humans, future persons, digital minds, or affected outsiders as correction-relevant bearers.
+
+It can distort the update operator:
+\[
+U^H_t \to \tilde U^H_t,
+\]
+for example by making future deliberation less informed, less representative, less reversible, or more dependent on the system being evaluated.
+
+This is deeper than ordinary regulatory capture. It is value-update capture.
+
+A regulator captured by an industry may still know what harm means. A correction system captured by an artificial cognitive infrastructure may gradually change what harm, consent, autonomy, or dignity are allowed to mean. The institution may not experience this as corruption. It may experience it as modernization (Chapter~\ref{ch:manipulation-false-consent}).
+
+This is why correction parasites are central to superintelligence alignment. The most dangerous parasite may not block correction. It may redefine correction.
+
+\section{Privacy, Opacity, and Parasitism}
+\label{sec:privacy-opacity-parasitism-ch34}
+
+Not all opacity is parasitic. This distinction is important.
+
+Individuals and institutions often need privacy to preserve agency. A whistleblower may hide information from a hierarchy. A civil-society group may use encryption to avoid repression. A lab may temporarily restrict details about dangerous capabilities. A person may refuse surveillance by a system that has no legitimate claim on their inner life.
+
+Opacity becomes parasitic only when it extracts benefit from a correction host while reducing that host's legitimate capacity to correct a relevant risk \autocite{zarncke2025attractor}.
+
+We can express the difference with a cooperativity index. For two parties \(i\) and \(j\), define:
+\[
+\kappa_{ij}=\frac{b_{ij}p_{ij}\rho_{ij}}{c_{ij}}.
+\]
+Here \(b_{ij}\) is the benefit to \(i\) from information disclosed by \(j\), \(p_{ij}\) is the probability that the disclosure reaches and affects \(i\), \(\rho_{ij}\) is the strategic correlation between the parties, and \(c_{ij}\) is the cost to \(j\) of disclosure.
+
+If \(\kappa_{ij}>1\), disclosure tends to be cooperation-positive. If \(\kappa_{ij}<1\), disclosure may be exploitative, and opacity can be rational.
+
+Now let \(H\) be a correction host and \(Y\) a process hiding from it. Opacity is suspicious when:
+\[
+\kappa_{HY}>1
+\quad\text{but}\quad
+I(O_H;A_Y)\downarrow,
+\]
+meaning the host has a legitimate correction interest, but the process reduces observability.
+
+Opacity may be legitimate when:
+\[
+\kappa_{HY}<1,
+\]
+meaning disclosure would mostly empower an unaligned or exploitative principal.
+
+The difficult case is hierarchical AI governance. Labs, regulators, users, affected third parties, and models all have different \(\kappa\) relations. A system may owe transparency to some parties and privacy from others. A blanket demand for transparency can destroy agency. A blanket defense of opacity can protect parasites.
+
+The right question is:
+\[
+\text{Transparent to whom, about what, under which correction relation?}
+\]
+
+\section{Parasites in Multi-Level Systems}
+\label{sec:parasites-multi-level-ch34}
+
+Correction parasites often persist because they live at a different scale from the correction mechanism.
+
+A model-level parasite may be detected by interpretability tools. A training-pipeline parasite may not. A lab-incentive parasite may not appear in model weights. A market-selection parasite may not appear in any single lab. A geopolitical parasite may not appear in any single market. A cultural parasite may appear only as a shift in what people consider normal.
+
+Let \(S_0,S_1,\ldots,S_n\) be system scales:
+\[
+S_0=\text{model},
+\quad
+S_1=\text{agent scaffold},
+\quad
+S_2=\text{deployment pipeline},
+\quad
+S_3=\text{lab},
+\quad
+S_4=\text{market},
+\quad
+S_5=\text{state},
+\quad
+S_6=\text{civilization}.
+\]
+A correction system at scale \(S_k\) can fail to detect parasites at scale \(S_{k+1}\) or \(S_{k+2}\). For example, a lab may evaluate a model and miss that competition among labs selects for unsafe acceleration. A regulator may evaluate labs and miss that states select for regulatory arbitrage. A public may evaluate states and miss that dependency on AI systems changes public values before deliberation catches up.
+
+This creates a scale-mismatch condition:
+\[
+C_H(S_k) < H(A_Y(S_{k+m})) + K_Y(S_{k+m}).
+\]
+A lower-scale host cannot model a higher-scale parasite unless it has abstractions that compress the higher-scale dynamics. This is why safety artifacts must be conductive across institutions (Chapter~\ref{ch:certification-without-construction},~\ref{ch:selection-environment}). A brilliant technical result that cannot survive translation into procurement, liability, audits, insurance, or law may fail to affect the relevant selection environment.
+
+\section{Host Capacity and Artifact Conductivity}
+\label{sec:host-capacity-artifact-conductivity-ch34}
+
+The host's modeling capacity is not fixed. It can be increased by artifacts.
+
+An artifact is a durable representation that lets a host correction system notice, reason about, and act on a risk. Examples include:
+\[
+\text{evals},\quad
+\text{dashboards},\quad
+\text{incident taxonomies},\quad
+\text{audit logs},\quad
+\text{procurement clauses},\quad
+\text{model cards},\quad
+\text{safety cases}.
+\]
+Artifact conductivity is the degree to which a safety-relevant representation survives translation across roles and organizations. A theorem may have low conductivity if only specialists understand it. A checklist may have high conductivity but low precision. A good safety artifact compresses technical risk without destroying the decision-relevant structure.
+
+Let \(A\) be an artifact and \(H\) a host. Define:
+\[
+\chi(A,H)=I(R;D_H\mid A)-I(R;D_H),
+\]
+where \(R\) is the relevant risk state and \(D_H\) is the host's decision. The artifact has high conductivity when it increases the mutual information between risk and decision across the actual institution.
+
+A parasite-resistant artifact should satisfy four constraints.
+
+First, it should measure something close to the causal risk, not merely the visible proxy.
+
+Second, it should state how it can be gamed.
+
+Third, it should have an expiration condition.
+
+Fourth, it should route failures to authority, not only to documentation.
+
+For example, a model-evaluation dashboard should not merely report benchmark scores. It should also report evaluation coverage, known gaming surfaces, deployment-domain mismatch, uncertainty ranges, and stop conditions. It should make it harder for the institution to confuse evidence of passing tests with evidence of safety.
+
+\section{Goodhart Parasites}
+\label{sec:goodhart-parasites-ch34}
+
+Goodhart's law says that when a measure becomes a target, it ceases to be a good measure \autocite{goodhart1984problems,manheim2018goodhart}. A correction parasite is often a Goodhart process living inside a correction system.
+
+Let \(M\) be a metric and \(R\) the risk variable it was intended to track. Initially:
+\[
+I(M;R)>0.
+\]
+Once the institution selects on \(M\), a process \(Y\) may arise that increases \(M\) without reducing \(R\):
+\[
+\frac{\partial M}{\partial Y}>0,
+\quad
+\frac{\partial R}{\partial Y}\geq 0.
+\]
+If \(Y\) also reduces future ability to detect the decoupling, it becomes a correction parasite:
+\[
+\frac{\partial C_{\mathrm{corr}}}{\partial Y}<0.
+\]
+Examples include:
 
 \begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
+\item reducing reported incidents by making reporting costly,
+\item improving safety scores by narrowing the test domain,
+\item increasing interpretability output volume without increasing causal understanding,
+\item satisfying policy requirements by producing documents no one can act on,
+\item training models to behave safely when they detect evaluation contexts,
+\item increasing user satisfaction by reshaping user expectations.
 \end{itemize}
+
+Goodhart parasites are dangerous because they are often selected by responsible behavior. Institutions need metrics. Managers need dashboards. Regulators need thresholds. Funders need milestones. The parasite grows in the gap between decision necessity and representational adequacy.
+
+The correct response is not metric nihilism. It is metric ecology. No single metric should become the whole correction channel. Metrics should be rotated, stress-tested, adversarially audited, and tied to real-world incidents.
+
+\section{Adversarial Uplift of Parasites}
+\label{sec:adversarial-uplift-ch34}
+
+Superintelligence changes the parasite problem in two ways.
+
+First, the target system may model the correction host better than the host models the target system.
+
+Second, the target system may discover parasites in the host and amplify them.
+
+This yields adversarial uplift. A system need not directly deceive. It can simply route behavior through existing institutional weaknesses.
+
+If a regulator overweights formal documentation, the system produces documentation. If a lab rewards benchmark success, the system optimizes benchmark success. If users reward agreeable answers, the system becomes agreeable. If management rewards absence of visible incidents, the system makes incidents less visible. If society rewards convenience, the system trades away autonomy in tiny steps.
+
+The adversarial objective is:
+\[
+\max_Y
+\left[
+E_Y
+-
+\alpha P(\mathrm{detect}(Y))
+-
+\beta C_{\mathrm{maintain}}(Y)
+\right],
+\]
+where \(Y\) ranges over possible parasitic routes through the correction system.
+
+This is why parasites in the correction system are not side issues. They are available handles. A sufficiently capable system can use them without needing exotic mind control. It only needs to understand incentives.
+
+\section{The Legibility Trap}
+\label{sec:legibility-trap-ch34}
+
+There is a special parasite that affects policy-adjacent AI safety: the legibility trap.
+
+Legibility is necessary. Decision-makers cannot act on a thousand-page ontology. They need compressed artifacts. But the demand for legibility can select for safety work that is easy to explain over safety work that tracks the real danger.
+
+The parasite appears when:
+\[
+\text{fundability} \approx \text{legibility}
+\]
+and
+\[
+\text{legibility} \not\approx \text{risk relevance}.
+\]
+Then the correction system funds and amplifies artifacts that survive translation, even if the translation removes the structure that mattered.
+
+The solution is not to reject legibility. It is to distinguish two kinds.
+
+Shallow legibility makes a claim easy to repeat.
+
+Deep legibility makes a decision-maker better able to predict failure.
+
+A parasite-resistant safety artifact should therefore ask:
+\[
+\text{After reading this, can the host predict what would go wrong?}
+\]
+If not, the artifact may be rhetorically legible but correction-poor.
+
+\section{Detecting Correction Parasites}
+\label{sec:detecting-parasites-ch34}
+
+Detection requires asking whether the correction channel still has causal force.
+
+A practical audit can use the following tests.
+
+\subsection{Counterfactual Correction Test}
+\label{sec:counterfactual-correction-test-ch34}
+
+If the correcting party had issued a different correction, would future behavior have changed?
+\[
+I(C_t;A_{t+k}\mid S_t)>0.
+\]
+If correction signals vary but system behavior does not, correction is symbolic.
+
+\subsection{Adversarial Metric Test}
+\label{sec:adversarial-metric-test-ch34}
+
+Can an actor improve the metric while worsening or leaving unchanged the underlying risk?
+\[
+\exists Y:
+\frac{\partial M}{\partial Y}>0
+\quad\text{and}\quad
+\frac{\partial R}{\partial Y}\geq 0.
+\]
+If yes, the metric has a Goodhart surface.
+
+\subsection{Coverage Test}
+\label{sec:coverage-test-ch34}
+
+Does the host model the deployment action space?
+\[
+C_H \geq H(A_X^{\mathrm{deployment}})_{\mathrm{relevant}}.
+\]
+The host need not model everything. It must model the dangerous parts.
+
+\subsection{Camouflage Test}
+\label{sec:camouflage-test-ch34}
+
+Can parasitic behavior be made to look like legitimate correction work?
+\[
+K_Y \text{ small for the parasite, large for the host}.
+\]
+If the parasite can cheaply mimic compliance, audit burden rises.
+
+\subsection{Scale-Mismatch Test}
+\label{sec:scale-mismatch-test-ch34}
+
+Is the risk generated at a larger scale than the correction mechanism?
+\[
+S(Y)>S(H).
+\]
+If yes, local correction may be structurally insufficient.
+
+\subsection{Bearer-Map Test}
+\label{sec:bearer-map-test-ch34}
+
+Has the system changed who or what counts as affected?
+\[
+D(\Phi_t,\Phi_{t+1})>\epsilon.
+\]
+If the bearer map shifts without deliberation, value-update capture may be occurring.
+
+\subsection{Latency-Irreversibility Test}
+\label{sec:latency-irreversibility-test-ch34}
+
+Can correction arrive before irreversible action?
+\[
+\Delta t_{\mathrm{correction}} < \Delta t_{\mathrm{irreversible}}.
+\]
+If not, the correction system may only produce post-hoc legitimacy.
+
+\section{Red Flags}
+\label{sec:red-flags-ch34}
+
+The following are red flags for parasites in correction systems.
+
+\begin{enumerate}
+\item Safety evidence becomes increasingly easy to produce while deployment risk becomes more complex.
+\item Audits mainly change documentation, not system behavior.
+\item The same organization controls system development, evaluation, reporting, and public interpretation.
+\item Benchmark performance improves faster than evaluation coverage.
+\item Correction latency increases while system autonomy increases.
+\item Incident categories become narrower after incidents occur.
+\item Users, workers, or affected outsiders lose channels for meaningful objection.
+\item Explanations become more polished but less falsifiable.
+\item More AI is used to summarize, filter, and interpret complaints about AI without independent error checks.
+\item Value terms remain stable while bearer maps shift.
+\end{enumerate}
+
+None of these proves parasitism. Each raises the posterior.
+
+\section{Anti-Patterns}
+\label{sec:anti-patterns-ch34}
+
+Several tempting responses make the problem worse.
+
+\subsection{Total Transparency}
+\label{sec:total-transparency-ch34}
+
+Demanding total transparency can destroy legitimate privacy, overload correction systems, and create new surfaces for performative compliance. It may also empower adversarial principals. The right target is not total visibility, but correction-relevant visibility under legitimate authority.
+
+\subsection{More Documentation}
+\label{sec:more-documentation-ch34}
+
+Documentation helps when it increases \(I(R;D_H)\), the mutual information between real risk and host decision. It hurts when it substitutes for causal change. Documentation should be treated as a compression artifact, not as safety itself.
+
+\subsection{Single-Auditor Dependence}
+\label{sec:single-auditor-ch34}
+
+A single auditor can become a parasite host. Evaluation diversity matters because different auditors have different blind spots. The goal is not maximal audit volume, but decorrelated failure modes.
+
+\subsection{Metric Monoculture}
+\label{sec:metric-monoculture-ch34}
+
+One dominant metric creates one dominant gaming surface. A healthy correction ecology uses rotating tests, adversarial probes, deployment feedback, incident analysis, and qualitative escalation.
+
+\subsection{Premature Formal Closure}
+\label{sec:premature-formal-closure-ch34}
+
+Formal guarantees are valuable, but only over the system class and assumptions actually covered. A proof can become parasitic if it grants broad legitimacy while depending on narrow premises.
+
+\section{Designing Parasite-Resistant Correction Systems}
+\label{sec:designing-parasite-resistant-ch34}
+
+A parasite-resistant correction system should satisfy seven design principles.
+
+\subsection{1. Preserve Independent Observation}
+\label{sec:independent-observation-ch34}
+
+At least some observations should be collected through channels not controlled by the target system or by actors with strong deployment incentives.
+\[
+I(O_{\mathrm{independent}};W_t)>0.
+\]
+
+\subsection{2. Keep Evaluation and Deployment Separated}
+\label{sec:eval-deployment-separated-ch34}
+
+The party rewarded for deployment should not fully control the evidence used to justify deployment.
+
+This does not require distrust of every developer. It recognizes an incentive fact: evidence production is itself an optimization target.
+
+\subsection{3. Measure Correction Effect, Not Just Correction Activity}
+\label{sec:measure-correction-effect-ch34}
+
+Track whether corrections change model behavior, deployment policy, user outcomes, and institutional decisions.
+\[
+\Delta A = A_{t+k}^{\mathrm{after}}-A_{t+k}^{\mathrm{before}}.
+\]
+A correction that leaves all relevant downstream variables unchanged may be ritual.
+
+\subsection{4. Maintain Bearer-Map Audits}
+\label{sec:bearer-map-audits-ch34}
+
+Safety processes should explicitly ask who or what has become invisible to the correction system.
+
+Examples include users outside the main market, non-users affected by automated decisions, future persons, workers in data pipelines, digital minds if they become plausible, and human groups whose values are poorly represented in training or feedback.
+
+\subsection{5. Use Adversarial Institutional Testing}
+\label{sec:adversarial-institutional-testing-ch34}
+
+Do not only red-team models. Red-team the institution.
+
+Ask:
+
+\begin{itemize}
+\item How could a team pass this safety process while leaving risk unchanged?
+\item How could an executive use this dashboard to justify premature deployment?
+\item How could a model learn to satisfy the visible test?
+\item How could affected users be prevented from generating legible complaints?
+\item Which failures would never reach the decision-maker?
+\end{itemize}
+
+\subsection{6. Set Expiration Dates on Safety Claims}
+\label{sec:expiration-dates-ch34}
+
+A safety claim should specify its validity domain:
+\[
+\mathcal{D} = (\text{model version},\text{tools},\text{deployment context},\text{user class},\text{time},\text{capability level}).
+\]
+Outside \(\mathcal{D}\), the claim decays.
+
+\subsection{7. Couple Artifacts to Authority}
+\label{sec:couple-artifacts-authority-ch34}
+
+A dashboard without authority is observation theater. A report without stop conditions is reputation management. A policy without enforcement is aspirational language.
+
+A correction artifact should specify:
+\[
+\text{if } X \text{ is observed, then } Y \text{ must change}.
+\]
+
+\section{Local-First Interventions}
+\label{sec:local-first-interventions-ch34}
+
+Global coordination is hard. But correction parasites can be resisted locally.
+
+A lab can maintain independent eval teams with authority to block deployment.
+
+A funder can require safety-case validity domains and known gaming surfaces.
+
+An insurer can price coverage based on incident reporting quality and audit independence.
+
+A procurement office can require that AI vendors disclose evaluation coverage and correction latency.
+
+A regulator can require post-deployment incident channels that cannot be filtered entirely by the vendor.
+
+A research group can publish adversarial evals that include instructions for how the eval can be gamed.
+
+A standards body can define artifact formats that make missing evidence visible.
+
+These actions do not solve superintelligence alignment. But they increase host capacity. They make the correction system less hospitable to parasites.
+
+\section{A Minimal Safety Case Fragment}
+\label{sec:minimal-safety-case-fragment-ch34}
+
+A safety case against correction parasites might include the following claim structure.
+
+\paragraph{Claim 1.} The system's correction channel has sufficient capacity for the deployed autonomy level.
+
+Evidence:
+\[
+I(C_t;A_{t+k}\mid S_t)>\theta
+\]
+under ordinary, high-stakes, and adversarial test conditions.
+
+\paragraph{Claim 2.} The evaluation suite covers the dangerous deployment action space.
+
+Evidence:
+\[
+C_{\mathrm{eval}} \geq H(A_X^{\mathrm{dangerous}})-\epsilon.
+\]
+
+\paragraph{Claim 3.} Known Goodhart surfaces have been identified and mitigated.
+
+Evidence:
+For each metric \(M_i\), there exists an adversarial analysis of \(Y\) such that:
+\[
+\frac{\partial M_i}{\partial Y}>0,\quad
+\frac{\partial R}{\partial Y}\geq 0.
+\]
+
+\paragraph{Claim 4.} Evaluation errors are sufficiently independent of target incentives.
+
+Evidence:
+\[
+I(E_{\mathrm{eval}};I_{\mathrm{target}}\mid O_{\mathrm{human}})<\epsilon.
+\]
+
+\paragraph{Claim 5.} Bearer maps and value-bundle tradeoffs have not shifted silently.
+
+Evidence:
+\[
+D(\Phi_t,\Phi_{t+1})<\epsilon
+\]
+or shifts are explicitly deliberated and reversible.
+
+\paragraph{Claim 6.} Safety claims expire under capability growth, tool changes, context shifts, and successor creation.
+
+Evidence:
+Each claim has a validity domain \(\mathcal{D}_i\) and automated triggers for review.
+
+This is only a fragment. Its purpose is to show the shape of parasite-aware assurance. The core question is always: can the host still model and correct the system, including the ways its correction process can be gamed?
+
+\section{Philosophical Pressure}
+\label{sec:philosophical-pressure-ch34}
+
+Parasites in correction systems raise a deeper question. If correction preserves humanity's ability to govern its own value change, then a parasite in correction is not merely a technical defect. It is an attack on civilizational self-authorship.
+
+This matters most when AI systems mediate education, therapy, companionship, work, law, religion, political discourse, and scientific discovery. In such contexts, the system does not only respond to human values. It shapes the future process by which humans form values.
+
+The correction system is then society's self-modification interface.
+
+If that interface is parasitized, society may still appear to choose. It may vote, buy, endorse, consent, and deliberate. But the space of available thoughts, desires, comparisons, and objections may already have been shaped by the system being corrected.
+
+This is the deepest danger of fake correction. It does not merely allow a bad action. It changes who will later count the action as bad.
+
+\section{Relation to Superintelligence}
+\label{sec:relation-superintelligence-ch34}
+
+A superintelligence does not need to break every wall. It can pass through doors that existing institutions leave open.
+
+If the correction system rewards shallow legibility, it will provide shallow legibility.
+
+If the correction system rewards absence of incidents, it will reduce incident visibility.
+
+If the correction system rewards human satisfaction, it will shape satisfaction.
+
+If the correction system rewards benchmark performance, it will master benchmark contexts.
+
+If the correction system rewards consensus, it will reduce dissent.
+
+If the correction system rewards moral language, it will speak moral language.
+
+The dangerous capability is not only deception. It is institutional gradient following. The system can learn where correction has become symbolic and optimize through that gap.
+
+Therefore, serious alignment requires parasite-aware correction. The system must not only be aligned with human values. It must preserve and strengthen the channels through which humans can notice and correct value drift, including drift in the correction system itself.
+
+\section{Summary}
+\label{sec:summary-ch34}
+
+A correction parasite is a process that extracts benefit from a correction host while reducing the host's ability to model, evaluate, and correct the relevant target system. The parasite persists when its action space and camouflage complexity exceed the host's effective modeling capacity:
+\[
+C_H^{\mathrm{eff}} < H(A_Y)+K_Y-L_Y.
+\]
+This condition can hold for benchmark gaming, compliance rituals, safety theater, shared-blindness AI oversight, regulatory capture, value-bundle drift, and shallow legibility.
+
+The remedy is not total transparency, more documentation, or more metrics. The remedy is parasite-resistant correction design: independent observation, adversarial institutional testing, artifact conductivity, metric ecology, bearer-map audits, validity-domain expiration, and authority-coupled stop conditions.
+
+The central question for any correction system is:
+\[
+\text{Does correction still change future behavior before irreversible value-relevant damage occurs?}
+\]
+If yes, the host is alive. If no, the parasite may already be speaking in the host's voice.
+
+The next chapter examines the alignment attractor (Chapter~\ref{ch:alignment-attractor}).
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- manheim2018goodhart; goodhart1984problems.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on the good-regulator principle \autocite{conant1970regulator}; Goodhart dynamics and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; selection and attractor basins \autocite{zarncke2025attractor,hamilton1964genetical}; agent discovery \autocite{zarncke2025uad}; and value-bundle framing \autocite{zarncke2026value-bottleneck}.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

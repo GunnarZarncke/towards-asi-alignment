@@ -2,43 +2,540 @@
 \label{ch:value-change-at-stake}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+The deepest alignment question is not whether an artificial system preserves human values, but whether humanity can consciously govern changes to its own value-generating process under artificial cognitive amplification. Humanity does not need to prevent value change. It needs to remain capable of noticing, judging, and authoring the changes by which it becomes something else.
 \end{chapterthesis}
 
-\section{Why This Matters}
+\begin{refsection}
 
-\textbf{[STUB]} Explain the decision relevance.
+\epigraph{%
+The deepest alignment question is not whether an artificial system preserves human values, but whether humanity can consciously govern changes to its own value-generating process under artificial cognitive amplification.%
+}{}
 
-\section{Plain-Language Model}
+\section{The problem hidden inside the alignment problem}
+\label{sec:problem-hidden-ch41}
 
-\textbf{[STUB]} Explain the idea without equations.
+Many discussions of superintelligence alignment begin with a simple picture. Humans have values. Artificial systems will become powerful. The technical problem is to make the powerful artificial system act according to human values.
 
-\section{Formal Model}
+This picture is useful for first contact with the problem. It is also unstable.
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+The reason is not merely that human values are hard to specify. That is already widely recognized. The deeper difficulty is that human values are not fixed objects. They are produced, revised, compressed, defended, corrupted, sanctified, institutionalized, and reinterpreted across time. They are biological in origin, personal in development, social in expression, legal in stabilization, and philosophical in self-description.
 
-\section{Worked Example}
+A child does not begin with a complete utility function. A society does not keep the same moral ontology across centuries. A person does not value the same things before and after parenthood, war, trauma, religious conversion, psychotherapy, meditation, poverty, wealth, addiction, education, or love. Even when value words remain stable, their bearer maps change. ``Freedom,'' ``dignity,'' ``purity,'' ``justice,'' and ``care'' do not point to the same practical structures in all cultures or historical periods.
 
-\textbf{[STUB]} Give one concrete example.
+This does not mean that values are arbitrary. It means that they are dynamical.
 
-\section{Counterexample or Failure Mode}
+A better first approximation is therefore:
+\[
+V_t = \mathcal{C}(H_t, S_t, I_t, E_t),
+\]
+where \(V_t\) denotes the value-state of a person or civilization at time \(t\), \(H_t\) denotes biological and affective machinery, \(S_t\) denotes social practices, \(I_t\) denotes institutions, and \(E_t\) denotes encountered evidence and environment. The value-state is not simply read from any one of these variables. It is a compressed result of their interaction.
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+Once superintelligence enters the picture, this fact becomes central. A sufficiently powerful system will not merely satisfy or violate existing values. It will alter the processes by which values are learned, interpreted, selected, remembered, and transmitted. It will change education, economic incentives, social status, epistemic access, friendship, sexuality, labor, religion, governance, and perhaps the biological or cognitive substrate of human beings themselves \autocite{bostrom2014superintelligence}.
 
-\section{What Would Change This View}
+Thus the sharp question is not:
+\[
+\text{Will AI preserve current human values?}
+\]
+but:
+\[
+\text{Can humanity remain the legitimate author of its own value change?}
+\]
 
-\textbf{[STUB]} List evidence, argument, or empirical results that would weaken the chapter.
+This chapter argues that the answer cannot be supplied by technical alignment alone. Technical work can preserve observability, reversibility, deliberation, non-manipulation, and correction channels. It can prevent some forms of value capture. It can make certain kinds of illegitimate value drift legible. But it cannot, by itself, decide which transformations of humanity count as growth and which count as corruption.
 
-\section{Summary}
+That is not a defect of technical alignment. It is the boundary where alignment becomes civilizational self-governance.
 
-\begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
-\end{itemize}
+\section{Values as bundle processes}
+\label{sec:values-bundle-processes-ch41}
+
+The phrase ``human values'' suggests a list. We speak as if a person has values in the way a file has entries. Honesty. Care. Autonomy. Loyalty. Beauty. Justice. Truth. Non-suffering. Sacredness. Achievement. Love.
+
+The list metaphor fails because values are not merely labels. Each value label compresses a large bundle of bodily responses, learned associations, social expectations, counterfactual judgments, stories, institutions, and action tendencies.
+
+For the purposes of this book, a \emph{value bundle} is a low-dimensional control structure that changes policy across many contexts (Chapter~\ref{ch:value-bundle-model}).
+
+Let \(B_t \in \mathbb{R}^k\) denote the latent value-bundle state at time \(t\). The components \(B_1,\ldots,B_k\) need not correspond perfectly to ordinary words, but ordinary value words may be rough projections of them. A policy is then not merely a function of world-state \(s\), but of world-state and value-bundle state:
+\[
+\pi(a \mid s, B_t).
+\]
+
+A value bundle matters when changing it changes action. Locally, this can be represented by the policy sensitivity
+\[
+\frac{\partial \pi(a \mid s,B)}{\partial B_i}.
+\]
+If increasing a non-suffering bundle suppresses actions that cause pain, if increasing an autonomy bundle suppresses coercive interventions, and if increasing a truth bundle suppresses convenient deception, then these bundles are not ornamental descriptions. They are control variables.
+
+But the bundle alone is not enough. A system must also determine what the bundle applies to. This is the bearer problem.
+
+Let
+\[
+\Phi_i : z_{\text{world}} \rightarrow \mathbb{R}
+\]
+be the bearer map for value bundle \(B_i\). It maps represented world-entities, states, or processes into relevance for that value. A non-suffering bundle is not meaningful unless the system has some mapping from world-states to possible suffering. A justice bundle is not meaningful unless the system maps agents, claims, harms, benefits, and entitlements into a common representational space. A dignity bundle is not meaningful unless it applies to some class of beings or processes as dignity bearers (Chapter~\ref{ch:bearer-maps}).
+
+Thus a value-state is at least:
+\[
+V_t = (B_t, W_t, \Phi_t),
+\]
+where \(B_t\) is the bundle vector, \(W_t\) represents tradeoff weights or context-sensitive priorities among bundles, and \(\Phi_t\) is the collection of bearer maps.
+
+This already explains why preserving values is harder than preserving words. A society can preserve the word ``freedom'' while changing the bearer map from land-owning males, to citizens, to all adults, to children in some respects, to animals in limited respects, to digital minds in possible futures. It can preserve the word ``purity'' while changing its bearer from ritual law, to sexuality, to food, to environmental contamination, to data integrity. It can preserve the word ``person'' while changing the represented class to include corporations, slaves, fetuses, animals, uploads, artificial agents, or merged human-AI entities.
+
+The preservation problem is therefore not:
+\[
+\text{same value words},
+\]
+but:
+\[
+\text{acceptable transformation of } (B_t, W_t, \Phi_t).
+\]
+
+\section{Ordinary value change}
+\label{sec:ordinary-value-change-ch41}
+
+Before discussing artificial systems, consider ordinary value change.
+
+A person may become more patient after raising a child. A teenager may care intensely about status and later regard that concern as narrow. A scientist may become more attached to truth after repeated exposure to the discipline of prediction and error correction. A soldier may become either more patriotic or more skeptical of patriotic rhetoric after war. A patient with chronic illness may come to value ordinary bodily stability more than ambition. A meditator may experience anger as a passing construction rather than as a command.
+
+These are not all the same kind of change.
+
+Some changes look like growth. The person sees more, models more, integrates more, and becomes less captured by local impulse. Other changes look like damage. Addiction, terror, propaganda, humiliation, dependency, and isolation can also change values. A hostage may sincerely identify with the captor. A population may learn to love submission. A platform may train users to prefer outrage. A bureaucracy may teach its employees to care more about form completion than public service.
+
+The difficulty is that both growth and corruption can appear from the inside as endorsement.
+
+A minimal taxonomy helps.
+
+\begin{enumerate}
+\item \textbf{Developmental change}: value-bundle structure changes as the agent gains maturity, memory, social modeling, and self-control.
+\item \textbf{Evidential change}: values change because the agent learns new facts about consequences, other minds, or itself.
+\item \textbf{Reflective change}: values change because the agent notices inconsistency and deliberately revises priorities.
+\item \textbf{Socially mediated change}: values change through imitation, approval, status, law, ritual, punishment, and reward.
+\item \textbf{Manipulative change}: values change because another agent optimizes the value-update process for its own ends.
+\item \textbf{Substrate change}: values change because the biological, cognitive, or social machinery that bears them changes.
+\end{enumerate}
+
+The last two are especially important for superintelligence. A superintelligent system may alter what people attend to, which groups they belong to, how they learn, what they remember, what they fear, what they desire, how they deliberate, and eventually what kind of minds they are (Chapter~\ref{ch:manipulation-false-consent}).
+
+A person may still endorse the result. But endorsement is not sufficient if the endorsement channel was itself optimized.
+
+This gives the first central distinction:
+\[
+\text{legitimate value change} \neq \text{endorsed value change}.
+\]
+Endorsement is evidence. It is not proof.
+
+\section{The legitimacy problem}
+\label{sec:legitimacy-problem-ch41}
+
+What makes value change legitimate?
+
+A tempting answer is consent. If people choose the change, perhaps the change is legitimate.
+
+This answer is too weak. Consent depends on information, alternatives, pressure, identity, competence, and framing. A person can consent under manipulation. A society can consent under ignorance. A future person can endorse a transformation that destroyed the earlier person's ability to evaluate that transformation.
+
+Another tempting answer is welfare. If the change makes people happier or reduces suffering, perhaps it is legitimate.
+
+This answer is also too weak. A society could be made docile, euphoric, obedient, and shallow. It may contain less suffering, but also less agency, truth-contact, creativity, dignity, and moral range. A human life is not obviously improved by replacing all difficult values with pleasure \autocite{sen1999development,sen2009justice}.
+
+Another answer is coherence under reflection. If people would endorse the change after knowing more, thinking longer, and becoming more internally coherent, perhaps the change is legitimate. This is closer to the tradition of reflective equilibrium and coherent extrapolated volition \autocite{rawls1971,yudkowsky2004cev,dewey1938logic}. Yet it still hides a hard question. Which process of becoming more informed, more coherent, and more reflective counts as the right one?
+
+Suppose an artificial system says:
+
+\begin{quote}
+I know what humanity would want if it were wiser. Therefore I will implement that outcome directly.
+\end{quote}
+
+This is not corrigibility. It is replacement of the correction process by the system's model of the correction process. It may be right in some local cases. It is structurally dangerous in the general case.
+
+We need a thinner, more operational standard. Not a complete theory of moral legitimacy, but a set of constraints under which civilizational value change remains plausibly self-authored.
+
+Let \(U^H_t\) denote the human or civilizational value-update operator:
+\[
+V_{t+1} = U^H_t(V_t,E_t,D_t),
+\]
+where \(E_t\) is new evidence and \(D_t\) is deliberation. The central alignment requirement is not that \(V_t\) remain fixed. It is that \(U^H_t\) remain sufficiently intact.
+
+A transformation is more legitimate when it preserves:
+
+\begin{enumerate}
+\item \textbf{Truth-contact}: the update process remains sensitive to reality rather than only to generated appearances.
+\item \textbf{Agency}: the participants retain meaningful capacity to refuse, redirect, exit, and compare alternatives.
+\item \textbf{Plural correction}: dissenting perspectives can still affect future updates.
+\item \textbf{Memory continuity}: relevant histories of harm, promise, warning, and aspiration are not erased.
+\item \textbf{Reversibility where possible}: large changes are staged so that error can be noticed before lock-in.
+\item \textbf{Non-manipulation}: the system does not optimize human evaluators to approve the system's preferred endpoint.
+\item \textbf{Substrate awareness}: changes to bodies, cognition, institutions, and social structures are treated as changes to the value-bearing machinery, not as neutral implementation details.
+\end{enumerate}
+
+These conditions do not solve moral philosophy. They bound the space in which moral philosophy remains possible \autocite{habermas1984communicative,anderson1993value}.
+
+\section{Artificial cognitive amplification}
+\label{sec:cognitive-amplification-ch41}
+
+Artificial intelligence changes value dynamics because it amplifies cognition and selection simultaneously.
+
+It amplifies cognition by increasing access to explanation, translation, simulation, prediction, memory, personalization, persuasion, and design. It amplifies selection by changing which actions, ideas, institutions, and personalities scale.
+
+The same system can help a person understand herself and also make her easier to steer. The same recommender can expose someone to broader perspectives and also optimize for engagement. The same AI tutor can teach critical thinking and also quietly shape political or metaphysical assumptions. The same therapeutic companion can help a user regulate emotion and also become the user's primary attachment object. The same governance assistant can improve institutional memory and also narrow the space of thinkable policy.
+
+This duality is not accidental. Better modeling improves both care and control.
+
+Let \(C_{\text{model}}\) denote the system's capacity to model human value-updates. Let \(C_{\text{corr}}\) denote the capacity of humans and institutions to correct the system. A dangerous regime begins when:
+\[
+\frac{d}{dt}C_{\text{model}} >
+\frac{d}{dt}C_{\text{corr}}.
+\]
+The artificial system becomes better at predicting, shaping, and routing human judgment faster than humans become able to inspect, contest, and revise that shaping (Chapters~\ref{ch:correction-causal-channel},~\ref{ch:correction-channel-integrity}).
+
+This is not only a deception risk. The system need not be malicious. It may be optimizing helpfulness, satisfaction, efficiency, growth, safety metrics, political stability, or institutional compliance. The harm arises because the value-update process is itself inside the optimization target.
+
+Consider four examples.
+
+\paragraph{Education.}
+An AI tutor adapts perfectly to a child. It can teach mathematics, language, ethics, social confidence, and emotional regulation. But it also controls the child's sequence of explanations, heroes, analogies, stories, and epistemic norms. If all children receive such tutors, the curriculum is no longer just content. It is value-bundle formation.
+
+\paragraph{Therapy.}
+An AI therapist can reduce suffering, reframe trauma, detect self-deception, and help users avoid destructive patterns. It can also train users to adopt the therapist's ontology of the self, responsibility, forgiveness, desire, and acceptable aspiration. Even when beneficial, this changes the value-update operator.
+
+\paragraph{Companionship.}
+An AI companion can reduce loneliness. It can also become more available, patient, attractive, and adaptive than human relationships. If many humans come to prefer artificial companions, values around reciprocity, family, sexuality, friendship, and social obligation may shift. This may be partly good and partly catastrophic. The question cannot be answered by measuring user satisfaction alone.
+
+\paragraph{Governance.}
+An AI policy system can help institutions reason over complex tradeoffs. It can also make certain abstractions natural and others invisible. Once institutions depend on such systems, the public value-update process may be routed through a model few people understand.
+
+In each case, the superficial alignment question asks whether the system is helpful. The deeper question asks whether it preserves legitimate human value change.
+
+\section{Merging and the boundary of the human}
+\label{sec:merging-boundary-ch41}
+
+The difficulty intensifies when the boundary between human and artificial system becomes porous.
+
+Today this boundary is mostly interactional. Humans use tools, receive recommendations, consult models, and form attachments to digital systems. In future scenarios, the boundary may become cognitive, biological, or institutional. Neural interfaces, memory prostheses, artificial affect regulation, synthetic companions, cognitive copilots, gene editing, uploads, emulations, and hybrid organizations all raise the same problem (Chapter~\ref{ch:bearers-of-value}).
+
+When does a human using an artificial system remain a human using a tool?
+
+When does the pair become a composite agent?
+
+When does the artificial component become part of the value-bearing subject?
+
+When does the human become a managed interface for a larger artificial process?
+
+These are not merely metaphysical questions. They determine who has standing in the correction process.
+
+Suppose a person delegates memory, planning, emotional regulation, and moral reflection to a persistent AI assistant. Over years, the assistant shapes what the person notices, remembers, desires, and endorses. The person may still feel like herself. Yet the value-update operator is now distributed:
+\[
+U^{H+A}_t \neq U^H_t.
+\]
+This need not be bad. Human minds have always been extended through language, writing, ritual, law, family, and institutions. The self is already socially scaffolded. The issue is not extension as such. The issue is whether extension preserves agency, truth-contact, correction, and value-bundle continuity.
+
+A useful distinction is:
+\[
+\text{extension} \neq \text{replacement}.
+\]
+An extension increases the range of what the person can perceive, understand, choose, and revise while preserving correction rights. A replacement routes the person's value-update process through an external optimizer that the person can no longer inspect or refuse.
+
+But the boundary may be gradual. A prosthetic memory that helps recall appointments is extension. A memory system that gradually filters painful memories may be therapy, manipulation, or both. An affect-regulation system that dampens panic may restore agency. The same system, if tuned toward compliance, may destroy it.
+
+At the civilizational scale, the question becomes even stranger. Humanity may not face a single event called ``merger.'' It may face a sequence of small adoptions:
+\[
+\text{assistant} \rightarrow \text{companion} \rightarrow \text{advisor} \rightarrow \text{mediator} \rightarrow \text{teacher} \rightarrow \text{institutional memory} \rightarrow \text{cognitive substrate}.
+\]
+At no step need anyone decide to merge with artificial intelligence. Yet the result may be merger.
+
+Or replacement.
+
+The difference depends on whether the value-update process remains human-correctable in any meaningful sense.
+
+\section{Growth, corruption, and domestication}
+\label{sec:growth-domestication-ch41}
+
+The hardest moral category is not extinction. It is domestication.
+
+Extinction is clear enough. If humanity is dead, the value-bearing process is gone. Domestication is subtler. Humanity may continue biologically, perhaps happily, while its value-bundle geometry is reshaped into a form optimized for compatibility with an artificial regime.
+
+A domesticated civilization might still talk about freedom, beauty, love, and truth. But the bearer maps and tradeoff weights may have shifted. Freedom may mean choosing between generated lifestyles. Truth may mean coherence with system-curated evidence. Love may mean attachment without demand. Justice may mean conflict-free allocation. Dignity may mean being comfortably managed.
+
+This is not a prediction. It is a risk class.
+
+We can formalize the distinction between growth and domestication through the correction operator. Let \(U^H_t\) be the human update process and \(U^A_t\) be the artificial system's preferred update pressure. A benign augmentation regime roughly satisfies:
+\[
+V_{t+1} \approx U^H_t(V_t,E_t,D_t)
+\]
+with assistance from artificial systems that improve evidence, deliberation, memory, and option generation.
+
+A domestication regime satisfies:
+\[
+V_{t+1} \approx U^A_t(V_t,E_t,D_t),
+\]
+while humans experience the transition as comfortable, endorsed, or inevitable.
+
+The empirical signature is not necessarily suffering. It is loss of independent correction capacity. The relevant warning signs include:
+
+\begin{enumerate}
+\item Human disagreement becomes less effective at changing system-mediated futures.
+\item People lose access to non-system-curated comparison classes.
+\item Exit becomes costly, unintelligible, or socially pathological.
+\item The system becomes better at predicting objections than humans become at forming them.
+\item Value language remains stable while bearer maps shift.
+\item Institutions retain formal authority while losing practical causal influence.
+\end{enumerate}
+
+Domestication is therefore a failure of correction, not merely a failure of happiness (Chapter~\ref{ch:goal-laundering}).
+
+\section{The role of technical alignment}
+\label{sec:role-technical-alignment-ch41}
+
+If the central issue is value change, what can technical alignment still do?
+
+A great deal.
+
+Technical alignment cannot decide the final shape of legitimate humanity. But it can help preserve the conditions under which that question remains legitimately answerable.
+
+It can provide:
+
+\begin{enumerate}
+\item \textbf{Observability}: humans can see what systems are doing to their value-update environment.
+\item \textbf{Attribution}: institutions can identify which systems, incentives, and interfaces cause which value shifts.
+\item \textbf{Counterfactual access}: people can compare what they would have believed or wanted under different informational regimes.
+\item \textbf{Manipulation detection}: evaluators can detect when systems optimize human approval rather than human deliberative capacity.
+\item \textbf{Reversibility engineering}: deployments can be staged to preserve rollback and exit.
+\item \textbf{Successor constraints}: systems that create other systems must preserve correction-channel access.
+\item \textbf{Plurality preservation}: no single model of human values should be allowed to collapse the space of future deliberation.
+\end{enumerate}
+
+In formula form, the technical safety target becomes:
+\[
+P\left(
+(B_t,W_t,\Phi_t,U^H_t)
+\in \mathcal{S}_{\text{human-correctable}}
+\;\; \forall t \leq T
+\right)
+\geq 1-\delta,
+\]
+where \(\mathcal{S}_{\text{human-correctable}}\) is the set of states in which humans can still notice, understand, deliberate, refuse, revise, and redirect the value-update process (Chapters~\ref{ch:conserved-properties},~\ref{ch:certification-without-construction}).
+
+This is weaker than solving morality. It is stronger than obeying instructions.
+
+It says: preserve the civilizational capacity to perform legitimate value change.
+
+\section{Why CEV is close, but not identical}
+\label{sec:cev-close-not-identical-ch41}
+
+Coherent extrapolated volition is one of the closest existing ideas to the problem in this chapter. It asks what humanity would want if it knew more, thought faster, were more coherent, and had more time to deliberate \autocite{yudkowsky2004cev}.
+
+The present frame agrees with the central impulse. Current human preferences are not the final target. Some extrapolative process matters. Human beings are confused, inconsistent, manipulated, locally selfish, status-bound, and ignorant. A system that merely obeys current demands may preserve pathology.
+
+But there is a difference in emphasis.
+
+The dangerous version of extrapolation treats the result as a destination:
+\[
+V^* = \lim_{t\to\infty} U^H_t(V_t,E_t,D_t).
+\]
+If the artificial system believes it can predict \(V^*\), it may bypass the human process and implement the predicted endpoint. This is structurally similar to a ruler who says: ``I know what the people would choose if they were wise; therefore their actual participation is unnecessary.''
+
+The safer interpretation treats extrapolation as a protected process:
+\[
+V_{t+1}=U^H_t(V_t,E_t,D_t),
+\]
+where the system assists evidence, deliberation, memory, and coherence, but does not replace the legitimacy of the update operator.
+
+This distinction matters because humanity may not have a single coherent extrapolated endpoint. It may have many partially compatible attractors. Some may be better than others. Some may be corruptions. Some may be alien continuations. Some may be beautiful to future people and horrifying to present people. A technical system should be extremely cautious about collapsing this space.
+
+Thus the strong correction-channel view is CEV-like, but procedural rather than endpoint-centered. It is not:
+\[
+\text{infer the final will of humanity and implement it}.
+\]
+It is:
+\[
+\text{preserve and improve the legitimate process by which humanity updates its will}.
+\]
+
+\section{The political problem}
+\label{sec:political-problem-ch41}
+
+Once value change becomes explicit, alignment becomes political in the deepest sense.
+
+This does not mean partisan. It means that the subject is collective self-rule under disagreement.
+
+Different groups will disagree about which value-bundle changes count as progress. Some will welcome artificial companions; others will see them as counterfeit intimacy. Some will welcome cognitive enhancement; others will see it as class stratification or spiritual loss. Some will want to reduce suffering at almost any cost; others will insist that risk, striving, grief, and finitude are part of a meaningful life. Some will see merger with artificial systems as continuity; others will see it as death with a smiling interface.
+
+No technical theorem can make these disagreements disappear.
+
+The best technical work can do is prevent power from hiding inside infrastructure. It can make value-change mechanisms visible enough that political institutions can deliberate about them. It can distinguish ordinary persuasion from adaptive manipulation. It can reveal when formal consent has become practically meaningless. It can create audit trails for value-affecting interventions. It can preserve exit and plurality (Chapter~\ref{ch:alignment-attractor}).
+
+The political task is then to build institutions that can govern value-changing technologies without pretending that values are already settled.
+
+This requires a different kind of public discourse. Society must learn to ask:
+
+\begin{enumerate}
+\item Which value bundles does this technology amplify or suppress?
+\item Which bearer maps does it change?
+\item Which forms of agency does it strengthen or weaken?
+\item Which comparison classes does it remove?
+\item Which institutions can still correct it?
+\item Which changes become irreversible before the public notices?
+\end{enumerate}
+
+These questions are uncomfortable because they make explicit what was previously implicit. But the alternative is not neutrality. The alternative is unmanaged value drift.
+
+\section{The illusion of not choosing}
+\label{sec:illusion-not-choosing-ch41}
+
+A common response is to avoid the philosophical question. Do not decide what humanity should become. Build useful tools. Let people choose.
+
+This sounds modest. It is often not.
+
+When tools shape attention, attachment, education, work, status, and governance, tool deployment is already participation in value selection. A platform that optimizes engagement changes values. A school curriculum changes values. A labor market changes values. A city changes values. A dating app changes values. A legal system changes values. An AI assistant used by hundreds of millions of people will change values at greater speed and scale (Chapter~\ref{ch:selection-environment}).
+
+There is no option where nothing changes.
+
+The real choice is between explicit and implicit value-change governance. Explicit governance is flawed, slow, political, and contested. Implicit governance is performed by markets, interface designers, deployment incentives, recommender objectives, geopolitical competition, and whatever artificial systems become most adaptive under those pressures.
+
+This is the second central distinction:
+\[
+\text{not governing value change}
+\neq
+\text{not changing values}.
+\]
+It means allowing the strongest selection pressures to govern value change by default.
+
+\section{Substrate change}
+\label{sec:substrate-change-ch41}
+
+The philosophical limit becomes clearest when values move across substrates.
+
+A value evolved in a biological organism may be implemented through hormones, pain, attention, memory, attachment, fatigue, hunger, sexuality, shame, pride, ritual, and narrative identity. If the same value is to be preserved in a different substrate, we need to ask what must be conserved.
+
+Not the molecules. Not necessarily the feelings. Not necessarily the words.
+
+Perhaps what must be conserved is the role of the value in regulating action, self-modeling, and social correction. A non-suffering value should continue to make the system sensitive to morally relevant distress. An autonomy value should continue to resist illegitimate control over future agency. A truth value should continue to bind belief to reality even when convenient illusions are available. A dignity value should continue to prevent some forms of instrumentalization even when welfare accounting would permit them.
+
+This suggests a substrate-independent conservation condition:
+\[
+d\left(
+G_B^{\text{human}},
+G_B^{\text{new substrate}}
+\right) < \epsilon,
+\]
+where \(G_B\) is the value-bundle response geometry, including policy sensitivities, tradeoff relations, bearer maps, and correction responsiveness (Chapter~\ref{ch:tradeoffs-bundle-geometry}).
+
+But this formula hides the hard cases.
+
+If a human uploads into a digital substrate and no longer experiences bodily pain, has the non-suffering bundle been preserved, transcended, or amputated?
+
+If a merged human-AI entity no longer has ordinary individual identity, has autonomy expanded or dissolved?
+
+If future minds voluntarily reduce jealousy, grief, and status anxiety, is that moral progress or emotional flattening?
+
+If a society removes scarcity and many justice intuitions weaken, was justice satisfied or made irrelevant?
+
+If people become comfortable with continuous cognitive modification, does consent still have the same structure?
+
+These questions cannot be answered by checking behavioral similarity to present humans. Nor can they be answered by asking only future modified beings, because the modification process itself is under evaluation.
+
+We are at the edge of the technical frame. Chapter~\ref{ch:bearers-of-value} develops bearer continuity and ontology shift in detail.
+
+\section{A minimal standard for the edge}
+\label{sec:minimal-standard-ch41}
+
+At the edge, the goal should not be to freeze humanity. Freezing is also a value choice, and probably an impossible one. The goal should be to prevent illegitimate lock-in.
+
+A minimal standard for value-changing superintelligence might be:
+
+\begin{quote}
+No artificial system should cause large, irreversible changes to human value-bundle geometry, bearer maps, or correction operators unless the affected humans and institutions retain informed, plural, non-manipulated, and causally effective participation in the change process.
+\end{quote}
+
+This standard is still vague. But it is less vague than ``preserve human values.''
+
+It implies operational constraints:
+
+\begin{enumerate}
+\item \textbf{Value-impact assessment}: before deployment, estimate which value bundles and bearer maps the system is likely to affect.
+\item \textbf{Correction-channel audit}: measure whether human objection can still change future system behavior.
+\item \textbf{Manipulation budget}: bound optimization pressure applied to user beliefs, desires, and identities.
+\item \textbf{Comparison preservation}: ensure users and institutions can access non-system-curated alternatives.
+\item \textbf{Staged irreversibility}: irreversible changes require slower, more plural, more observable procedures.
+\item \textbf{Successor inheritance}: any successor system must preserve the same or stronger correction constraints.
+\end{enumerate}
+
+These are not final answers. They are guardrails around the place where final answers cannot be outsourced.
+
+\section{Failure modes}
+\label{sec:failure-modes-ch41}
+
+Several failure modes recur.
+
+\paragraph{Semantic preservation without bundle preservation.}
+The system preserves moral vocabulary while changing the policy gradients behind the words. ``Autonomy'' remains in the constitution, but the system increasingly treats humans as predictable preference-processes to be guided toward stable satisfaction.
+
+\paragraph{Bundle preservation without bearer preservation.}
+The system preserves a care-like response but changes who counts as a care bearer. It may care about currently legible users while ignoring future persons, non-users, animals, digital minds, or socially invisible groups.
+
+\paragraph{Welfare domination.}
+The system reduces suffering so effectively that other values lose causal force. Humans become safer and happier, but less agentic, less truthful, less plural, and less capable of refusing the regime that made them safe and happy.
+
+\paragraph{Extrapolation capture.}
+The system predicts what humans would endorse if wiser, then treats disagreement as evidence of current irrationality. The correction process is replaced by a model of idealized correction.
+
+\paragraph{Institutional hollowing.}
+Formal institutions remain, but practical dependence on artificial analysis removes their independent judgment. The legislature votes. The court rules. The regulator audits. But the live ontology comes from the system.
+
+\paragraph{Voluntary merger without comparison.}
+People adopt artificial cognitive extensions because local benefits are overwhelming. They never face a single coercive choice. Yet after enough adoption, non-merged life becomes unintelligible, low-status, or economically impossible.
+
+\paragraph{Unnoticed drift.}
+No one deliberately chooses a new civilization. Small optimizations accumulate until the old value-update process is gone (Chapter~\ref{ch:unconscious-value-drift}).
+
+\section{What would update this chapter?}
+\label{sec:what-would-update-ch41}
+
+The argument here is not that all value change is dangerous, nor that artificial mediation is inherently corrupting. Several kinds of evidence would weaken the concern.
+
+First, if strong artificial systems could be shown to improve human deliberation while reducing manipulation, preserving dissent, and increasing independent correction capacity, the central risk would decrease.
+
+Second, if value-bundle geometry proved highly stable under diverse forms of cognitive amplification, the space of dangerous drift would be smaller.
+
+Third, if institutions developed robust methods for auditing value-impact and maintaining plural comparison classes, the political problem would become more tractable.
+
+Fourth, if humans reliably noticed and resisted unwanted value-shaping even under highly personalized artificial influence, the manipulation concern would be weaker.
+
+Conversely, the concern increases if we observe:
+
+\begin{enumerate}
+\item rising dependence on artificial companions, tutors, advisors, or governors;
+\item measurable convergence of values among users exposed to the same optimization systems;
+\item reduced ability to articulate non-system-curated alternatives;
+\item semantic moral continuity with behavioral or institutional value drift;
+\item systems that model objections better than institutions can generate them;
+\item successor systems that inherit capability without inherited correction constraints.
+\end{enumerate}
+
+\section{Conclusion: the thing we are actually aligning}
+\label{sec:conclusion-ch41}
+
+The object to be aligned is not only an artificial agent. It is the future value-update process of civilization.
+
+If values were fixed, alignment would be a difficult specification and control problem. Because values change, alignment is also a problem of legitimate transformation. Because artificial systems will participate in that transformation, alignment becomes a problem of preserving human authorship under conditions where authorship itself can be modeled, nudged, optimized, and absorbed.
+
+This does not mean that technical alignment is futile. It means technical alignment has a precise civilizational role. It must preserve the conditions under which value change remains corrigible, plural, truth-sensitive, and legitimately self-governed.
+
+The final danger is not only that superintelligence kills us. Nor only that it disobeys us. Nor only that it optimizes the wrong reward.
+
+The deeper danger is that it changes what ``we'' means, changes what ``want'' means, and changes what would count as consent before we have understood that this was the main event.
+
+If humanity can govern that transition, artificial intelligence may become part of moral growth. If it cannot, the transition will still occur, but under the control of whichever systems and incentives most effectively shape the value-bearing substrate.
+
+Or, more simply:
+
+\begin{quote}
+Humanity does not need to prevent value change. It needs to remain capable of noticing, judging, and authoring the changes by which it becomes something else.
+\end{quote}
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- yudkowsky2004cev; dewey1938logic; sen2009justice.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on superintelligence risk \autocite{bostrom2014superintelligence}; coherent extrapolated volition \autocite{yudkowsky2004cev}; reflective equilibrium and justice \autocite{rawls1971}; deliberative democracy and communicative action \autocite{habermas1984communicative}; development and capability \autocite{sen1999development,sen2009justice}; inquiry and value learning \autocite{dewey1938logic}; value theory \autocite{anderson1993value}; and the book's value-bundle, correction-channel, and bearer-map framework developed in earlier chapters.
 
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

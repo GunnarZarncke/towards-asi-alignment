@@ -4,6 +4,19 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-22 | Session end: ch28–ch42 author draft integrations | [2026-06-22-session-end-ch28-ch42-integrations.md](2026-06-22-session-end-ch28-ch42-integrations.md) |
+| 2026-06-22 | Chapter 42 end of unconscious value drift draft | [2026-06-22-ch42-unconscious-value-drift-draft.md](2026-06-22-ch42-unconscious-value-drift-draft.md) |
+| 2026-06-22 | Chapter 41 when value change is the thing at stake draft | [2026-06-22-ch41-value-change-at-stake-draft.md](2026-06-22-ch41-value-change-at-stake-draft.md) |
+| 2026-06-22 | Chapter 38 multi-scale decomposition draft | [2026-06-22-ch38-multiscale-decomposition-draft.md](2026-06-22-ch38-multiscale-decomposition-draft.md) |
+| 2026-06-22 | Chapter 37 detecting goal laundering draft | [2026-06-22-ch37-goal-laundering-draft.md](2026-06-22-ch37-goal-laundering-draft.md) |
+| 2026-06-22 | Chapter 36 passive observation not enough draft | [2026-06-22-ch36-passive-observation-draft.md](2026-06-22-ch36-passive-observation-draft.md) |
+| 2026-06-22 | Chapter 35 alignment attractor draft | [2026-06-22-ch35-alignment-attractor-draft.md](2026-06-22-ch35-alignment-attractor-draft.md) |
+| 2026-06-22 | Chapter 34 parasites in the correction system draft | [2026-06-22-ch34-parasites-correction-system-draft.md](2026-06-22-ch34-parasites-correction-system-draft.md) |
+| 2026-06-22 | Chapter 32 alignment selected by environment draft | [2026-06-22-ch32-selection-environment-draft.md](2026-06-22-ch32-selection-environment-draft.md) |
+| 2026-06-22 | Chapter 31 certification without construction draft | [2026-06-22-ch31-certification-without-construction-draft.md](2026-06-22-ch31-certification-without-construction-draft.md) |
+| 2026-06-22 | Chapter 30 better self-modeling can be worse draft | [2026-06-22-ch30-self-modeling-self-opacity-draft.md](2026-06-22-ch30-self-modeling-self-opacity-draft.md) |
+| 2026-06-22 | Chapter 29 conserved properties across successors draft | [2026-06-22-ch29-conserved-properties-draft.md](2026-06-22-ch29-conserved-properties-draft.md) |
+| 2026-06-22 | Chapter 28 successor creation central alignment test draft | [2026-06-22-ch28-successor-central-test-draft.md](2026-06-22-ch28-successor-central-test-draft.md) |
 | 2026-06-20 | Chapter 9 UAD coalition board demo | [2026-06-20-ch09-uad-coalition-board-demo.md](2026-06-20-ch09-uad-coalition-board-demo.md) |
 | 2026-06-19 | Chapter demos scaffold (value bundle simulator) | [2026-06-19-chapter-demos-scaffold.md](2026-06-19-chapter-demos-scaffold.md) |
 | 2026-06-19 | Lean cert chain + Lean-review agent rule (session end) | [2026-06-19-lean-spine-cert-chain-session-end.md](2026-06-19-lean-spine-cert-chain-session-end.md) |
