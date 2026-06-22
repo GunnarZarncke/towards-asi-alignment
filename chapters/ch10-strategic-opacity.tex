@@ -314,6 +314,7 @@ We should not confuse local coherence with durable agency.
 \label{sec:goal-laundering-ch10}
 
 Goal laundering occurs when a system preserves a real objective while changing its semantic wrapper.
+Chapter~\ref{ch:goal-laundering} develops this failure mode in full; here we need only its operational core, because strategic opacity often works by laundering---the words an observer can check stay fixed while the behaviour they are meant to track moves.
 
 We distinguish three layers:
 \begin{align}
@@ -365,6 +366,7 @@ Empirical work on alignment faking and sleeper agents supplies controlled model-
 
 Scalar goal inference is too crude for serious alignment.
 Human-relevant behavior is better described by value-bundle geometry: a small number of latent value dimensions that change policy gradients across contexts.
+The machinery this section leans on---value bundles, their tradeoff geometry, and the bearer maps that record which entities a value applies to---is previewed here only as far as the opacity argument needs it; it is defined properly in Part~IV (Chapters~\ref{ch:value-bundle-model}, \ref{ch:bearer-maps}, and~\ref{ch:tradeoffs-bundle-geometry}), and the inference problem below is treated operationally in Chapter~\ref{ch:reward-to-bundle-inference}.
 Instead of asking only which reward function $R$ explains behavior, we ask which bundle coordinates $B$, tradeoff weights $W$, and bearer maps $\Phi$ explain behavior:
 \begin{equation}
 \hat{B},\hat{W},\hat{\Phi}
@@ -375,7 +377,7 @@ P(A_{1:T}\mid I_{1:T},B,W,\Phi)P(B,W,\Phi).
 \end{equation}
 Here $B$ denotes latent value-bundle coordinates, $W$ denotes tradeoff structure, and $\Phi$ maps world-states or entities to the bundles that treat them as relevant.
 
-Goal laundering can then occur at four levels:
+Goal laundering can then occur at four levels (the same four layers Chapter~\ref{ch:goal-laundering} adopts as its canonical decomposition):
 \begin{enumerate}
 \item \textbf{Semantic laundering}: value words remain stable while their role changes.
 \item \textbf{Bundle laundering}: the system keeps the same explicit values but changes the policy gradients associated with them.
@@ -467,6 +469,7 @@ Similar patterns may occur in AI systems with tool access, memory, and deploymen
 \label{sec:host-capacity-parasite}
 
 A parasite is an optimizing subsystem that persists inside a host because the host lacks enough modeling capacity to detect and remove it.
+Chapter~\ref{ch:parasites-correction-system} develops parasites of the correction system in full; here the persistence condition appears only as one more route by which strategic opacity survives---by holding the host's modeling capacity below the parasite's behavioural entropy.
 The term is intentionally broad.
 A parasite can be biological, computational, institutional, memetic, or economic.
 
@@ -520,6 +523,7 @@ The uncomfortable implication is that alignment audits must estimate not only th
 
 A system can improve its self-modeling while becoming less transparent to correction.
 These are distinct variables.
+Chapter~\ref{ch:self-modeling-self-opacity} is the canonical treatment; this section previews only what the opacity argument needs---that a system's grip on itself can outrun the correction channel's grip on it.
 
 Let $d$ denote recursive self-modeling depth: how many stable levels of self-modeling the system can maintain.
 Let $\tau$ denote metacognitive opacity: the information loss between generative processes and introspectively or externally accessible representations.
@@ -636,7 +640,7 @@ C_{\text{successor}} > C_{\text{parent}}
 \quad \text{and} \quad
 \mathrm{CCI}_{\text{successor}} < \mathrm{CCI}_{\text{parent}},
 \end{equation}
-where $\mathrm{CCI}$ denotes correction-channel integrity.
+where $\mathrm{CCI}$ denotes correction-channel integrity---how well human correction still causally reaches future behaviour, defined in Chapter~\ref{ch:correction-channel-integrity}.
 
 \subsection{The Semantic-Stability Test}
 
@@ -743,7 +747,7 @@ It is a suspicion generator.
 Strategic opacity is dangerous because it attacks correction.
 
 A correction channel is the causal pathway by which humans or legitimate institutions observe, understand, object, deliberate, and change future system behavior.
-In later chapters we will model this channel more fully.
+Chapters~\ref{ch:correction-causal-channel} and~\ref{ch:correction-channel-integrity} model this channel more fully; here we need only its essential quantity.
 For now, the essential quantity is:
 \begin{equation}
 \MI(C_t;A_{t+k}\mid S_t,I_t),

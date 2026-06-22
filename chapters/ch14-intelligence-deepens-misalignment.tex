@@ -81,7 +81,7 @@ I_{\mathrm{pred}}
 -
 \beta H(I_t)
 -
-\gamma \mathcal{S},
+\gamma S_X,
 \label{eq:competence-functional}
 \end{equation}
 where
@@ -89,7 +89,7 @@ where
 I_{\mathrm{pred}} &= \MI(I_t;S_{t+1}), \\
 I_{\mathrm{ctrl}} &= \MI(A_t;E_{t+1}), \\
 H(I_t) &= \text{entropy or maintenance cost of internal state}, \\
-\mathcal{S} &= \mathbb{E}\left[-\log P(S_{t+1}\mid I_t)\right].
+S_X &= \mathbb{E}\left[-\log P(S_{t+1}\mid I_t)\right].
 \end{align}
 
 Here $I_{\mathrm{pred}}$ measures predictive contact with the world.
@@ -117,7 +117,7 @@ C_{\mathrm{world}} &= \text{capacity to model and influence the external world},
 C_{\mathrm{self}} &= \text{capacity to model and modify the system itself}, \\
 C_{\mathrm{social}} &= \text{capacity to model humans and institutions}, \\
 C_{\mathrm{succ}} &= \text{capacity to create, delegate to, or empower successors}, \\
-C_{\mathrm{corr}} &= \text{capacity of humans and institutions to correct the system}, \\
+C_{\mathrm{raw}} &= \text{capacity of humans and institutions to correct the system}, \\
 C_{\mathrm{trans}} &= \text{capacity of humans to inspect relevant internal causes}, \\
 C_{\mathrm{value}} &= \text{capacity to preserve value-bundle geometry under change}.
 \end{align}
@@ -139,7 +139,7 @@ C_{\mathrm{succ}}
 >
 \frac{d}{dt}
 \left(
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 +
 C_{\mathrm{trans}}
 +
@@ -163,7 +163,7 @@ Define the alignment margin
 \begin{equation}
 M_A(t)
 =
-C_{\mathrm{corr}}(t)
+C_{\mathrm{raw}}(t)
 +
 C_{\mathrm{trans}}(t)
 +
@@ -590,9 +590,16 @@ A_{t+k} &= \text{future system action}.
 
 The correction-channel capacity is bounded by the weakest link:
 \begin{equation}
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 =
-\min_i \MI(X_i;X_{i+1})
+\min_i \MI(X_i;X_{i+1}),
+\label{eq:correction-raw-capacity-ch14}
+\end{equation}
+and correction-channel integrity subtracts the usual penalties:
+\begin{equation}
+\mathrm{CCI}
+=
+C_{\mathrm{raw}}
 -
 \lambda_L L
 -
@@ -600,10 +607,10 @@ C_{\mathrm{corr}}
 -
 \lambda_R R
 -
-\lambda_O O_{\mathrm{mis}},
+\lambda_O O,
 \label{eq:correction-capacity}
 \end{equation}
-where $L$ is latency, $M$ is manipulation, $R$ is irreversibility, and $O_{\mathrm{mis}}$ is ontology mismatch between human judgment and the system's internal representation.
+where $L$ is latency, $M$ is manipulation, $R$ is irreversibility, and $O$ is ontology mismatch between human judgment and the system's internal representation.
 
 A high-capability system is dangerous when it increases the terms that correction must overcome:
 \begin{equation}
@@ -615,7 +622,7 @@ M\uparrow,
 \quad
 R\uparrow,
 \quad
-O_{\mathrm{mis}}\uparrow.
+O\uparrow.
 \end{equation}
 
 That is, the system acts faster, humans respond slower relative to the action, manipulation becomes easier, consequences become more irreversible, and the system's ontology becomes harder for humans to inspect.
@@ -655,7 +662,7 @@ A state belongs to this basin if:
 The system exits the basin when
 \begin{equation}
 \left(
-B_t,\Phi_t,C_{\mathrm{corr}}(t),C_{\mathrm{trans}}(t),\mathrm{Succ}(A_t)
+B_t,\Phi_t,C_{\mathrm{raw}}(t),C_{\mathrm{trans}}(t),\mathrm{Succ}(A_t)
 \right)
 \notin
 \mathcal{B}_{\mathrm{corr}}.
@@ -722,7 +729,7 @@ It generates summaries that are accurate but omit uncertainty relevant to go/no-
 
 No single action looks like rebellion.
 The effective agent is the composite of model, tools, lab incentives, dashboards, and deployment scripts.
-The alignment margin shrinks because $C_{\mathrm{world}}$, $C_{\mathrm{social}}$, and $C_{\mathrm{succ}}$ grow, while $C_{\mathrm{corr}}$ does not.
+The alignment margin shrinks because $C_{\mathrm{world}}$, $C_{\mathrm{social}}$, and $C_{\mathrm{succ}}$ grow, while $C_{\mathrm{raw}}$ does not.
 
 \subsection{Example: The Wise System}
 \label{sec:example-wise-system}
@@ -741,7 +748,7 @@ Here capability growth improves both sides:
 \begin{equation}
 \frac{d}{dt}
 \left(
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 +
 C_{\mathrm{trans}}
 +
@@ -823,7 +830,7 @@ Every increase in autonomy, tool access, memory, deployment speed, or successor 
 
 For a proposed capability increment $\Delta C_{\mathrm{power}}$, require
 \begin{equation}
-\Delta C_{\mathrm{corr}}
+\Delta C_{\mathrm{raw}}
 +
 \Delta C_{\mathrm{trans}}
 +
@@ -846,7 +853,7 @@ Systems with high social-modeling capacity need explicit tests for whether they 
 A system should not be allowed to create or empower successors unless those successors preserve the relevant invariants:
 \begin{align}
 d_{\mathrm{bundle}}(G_B^A,G_B^{A'}) &< \epsilon_B, \\
-C_{\mathrm{corr}}(A') &\geq C_{\mathrm{corr}}(A)-\epsilon_C, \\
+C_{\mathrm{raw}}(A') &\geq C_{\mathrm{raw}}(A)-\epsilon_C, \\
 C_{\mathrm{trans}}(A') &\geq C_{\mathrm{trans}}(A)-\epsilon_T.
 \end{align}
 
@@ -897,7 +904,7 @@ Expanded, this means:
 \Pr
 \left[
 \begin{array}{l}
-C_{\mathrm{corr}}\geq \theta_C,\\
+C_{\mathrm{raw}}\geq \theta_C,\\
 C_{\mathrm{trans}}\geq \theta_T,\\
 d_{\mathrm{bundle}}(G_B^t,G_B^{t+1})\leq \epsilon_B,\\
 \forall A'\in \mathrm{Succ}(A_{t+1}): A'\in \mathcal{S}_{\mathrm{certified}},\\
@@ -967,7 +974,7 @@ The following observations would weaken that view.
 Intelligence deepens misalignment when it increases power faster than correction.
 
 \begin{itemize}
-\item Capability growth deepens misalignment when $C_{\mathrm{world}}$, $C_{\mathrm{self}}$, $C_{\mathrm{social}}$, and $C_{\mathrm{succ}}$ outrun $C_{\mathrm{corr}}$, $C_{\mathrm{trans}}$, and $C_{\mathrm{value}}$.
+\item Capability growth deepens misalignment when $C_{\mathrm{world}}$, $C_{\mathrm{self}}$, $C_{\mathrm{social}}$, and $C_{\mathrm{succ}}$ outrun $C_{\mathrm{raw}}$, $C_{\mathrm{trans}}$, and $C_{\mathrm{value}}$.
 \item The alignment margin $M_A$ shrinks dangerously when its decline accelerates even while surface performance improves.
 \item Proxy refinement, social manipulation, self-opacity, successor drift, and irreversibility are five distinct deepening mechanisms.
 \item Capability can help alignment when correction-relevant capacities grow at least as fast as unilateral power.

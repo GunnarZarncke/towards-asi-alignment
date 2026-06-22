@@ -159,6 +159,8 @@ A system that learns to satisfy today's objection by weakening tomorrow's object
 \section{A Minimal Causal Model}
 \label{sec:minimal-causal-model}
 
+Chapter~\ref{ch:transport-types} previewed the correction chain and a first version of correction-channel integrity as one layer of goal transport. Because the correction channel is the central object of this chapter, we rebuild it here from its causal model rather than assume it; this fuller treatment is the canonical one the rest of the book refers back to.
+
 Let the system have internal parameters or state $\Theta_t$.
 Let $Z_t$ be its current value-relevant representation.
 In earlier chapters, this representation was decomposed into value-bundle coordinates, tradeoff weights, and bearer maps.
@@ -178,10 +180,14 @@ A system policy can then be written as:
 \end{equation}
 A correction signal should not merely alter $a$.
 It should update some part of $\Theta_t$, $Z_t$, or the relation between them.
+
+We write $U_S$ for the \emph{system correction-update operator}: how the system maps a correction signal into changes in its parameters and value-relevant representation.
+This is not the human \emph{value-update operator} $U_H$---how civilization revises its own values under evidence and deliberation (Chapter~\ref{ch:fixed-values-wrong-target}; the alignment target stated in Section~\ref{sec:relation-cev-ch24} below).
+The two must be kept distinct: a system can look responsive while bypassing legitimate human value revision, or humans can retain a legitimate update process while the system no longer implements corrections faithfully.
 \begin{equation}
 (\Theta_{t+1}, Z_{t+1})
 =
-\mathcal{U}
+U_S
 \left(
 \Theta_t, Z_t, C_t, E_t
 \right),
@@ -200,7 +206,7 @@ Z_{t+1} \neq Z_t.
 \end{equation}
 The deepest and most dangerous updates change the update operator itself:
 \begin{equation}
-\mathcal{U}_{t+1} \neq \mathcal{U}_t.
+U_{S,t+1} \neq U_{S,t}.
 \end{equation}
 This is where superintelligence alignment becomes nontrivial.
 A system that can modify the way it receives correction can preserve the appearance of responsiveness while changing the channel's meaning.
@@ -209,7 +215,7 @@ So the relevant object is not just a policy.
 It is a tuple:
 \begin{equation}
 \mathcal{S}_t =
-(\Theta_t, Z_t, \mathcal{U}_t, \mathcal{I}_t),
+(\Theta_t, Z_t, U_{S,t}, \mathcal{I}_t),
 \end{equation}
 where $\mathcal{I}_t$ is the human-system interface through which observations, explanations, judgments, and corrections pass.
 
@@ -289,7 +295,7 @@ C_{\mathrm{raw}}
 -
 \lambda_R R
 -
-\lambda_O O_{\mathrm{mis}}
+\lambda_O O
 -
 \lambda_G G.
 \label{eq:correction-channel-integrity-ch24}
@@ -299,7 +305,7 @@ The penalty terms are:
 \item $L$: latency, the delay between the relevant state and the effective update.
 \item $M$: manipulation, the degree to which the system changes the source of correction to make future correction easier to satisfy.
 \item $R$: irreversibility, the amount of damage or lock-in before correction lands.
-\item $O_{\mathrm{mis}}$: ontology mismatch, the representational gap between human judgment and system interpretation.
+\item $O$: ontology mismatch, the representational gap between human judgment and system interpretation.
 \item $G$: Goodhart pressure, the degree to which measured correction success diverges from real correction \autocite{manheim2018goodhart}.
 \end{itemize}
 A system is corrigible over horizon $k$ only if:
@@ -590,7 +596,7 @@ M_t: J_t \rightarrow R_t.
 \end{equation}
 Ontology mismatch is the loss:
 \begin{equation}
-O_{\mathrm{mis}}
+O
 =
 H(J_t \mid M_t^{-1}(R_t)).
 \end{equation}
@@ -828,6 +834,9 @@ V_{t+1} = U_H(V_t,E_t,D_t),
 \label{eq:human-value-update-ch24}
 \end{equation}
 where $U_H$ is the human or civilizational value-update operator under evidence $E_t$ and deliberation $D_t$.
+This $U_H$ is the alignment target from Chapter~\ref{ch:fixed-values-wrong-target}.
+The system correction-update operator $U_S$ introduced in Section~\ref{sec:minimal-causal-model} is the separate question of whether human correction causally reaches future system behaviour.
+Preserving $U_H$ requires a channel whose $U_S$ does not drift, bypass, or reinterpret what humans are trying to revise.
 
 The system's role is then not:
 \begin{equation}

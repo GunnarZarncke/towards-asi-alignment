@@ -149,11 +149,11 @@ This is not corrigibility. It is replacement of the correction process by the sy
 
 We need a thinner, more operational standard. Not a complete theory of moral legitimacy, but a set of constraints under which civilizational value change remains plausibly self-authored.
 
-Let \(U^H_t\) denote the human or civilizational value-update operator:
+Let \(U_H\) denote the human or civilizational value-update operator:
 \[
-V_{t+1} = U^H_t(V_t,E_t,D_t),
+V_{t+1} = U_H(V_t,E_t,D_t),
 \]
-where \(E_t\) is new evidence and \(D_t\) is deliberation. The central alignment requirement is not that \(V_t\) remain fixed. It is that \(U^H_t\) remain sufficiently intact.
+where \(E_t\) is new evidence and \(D_t\) is deliberation. The central alignment requirement is not that \(V_t\) remain fixed. It is that \(U_H\) remain sufficiently intact.
 
 A transformation is more legitimate when it preserves:
 
@@ -180,10 +180,10 @@ The same system can help a person understand herself and also make her easier to
 
 This duality is not accidental. Better modeling improves both care and control.
 
-Let \(C_{\text{model}}\) denote the system's capacity to model human value-updates. Let \(C_{\text{corr}}\) denote the capacity of humans and institutions to correct the system. A dangerous regime begins when:
+Let \(C_{\text{model}}\) denote the system's capacity to model human value-updates. Let \(C_{\text{raw}}\) denote the capacity of humans and institutions to correct the system. A dangerous regime begins when:
 \[
 \frac{d}{dt}C_{\text{model}} >
-\frac{d}{dt}C_{\text{corr}}.
+\frac{d}{dt}C_{\text{raw}}.
 \]
 The artificial system becomes better at predicting, shaping, and routing human judgment faster than humans become able to inspect, contest, and revise that shaping (Chapters~\ref{ch:correction-causal-channel},~\ref{ch:correction-channel-integrity}).
 
@@ -224,7 +224,7 @@ These are not merely metaphysical questions. They determine who has standing in 
 
 Suppose a person delegates memory, planning, emotional regulation, and moral reflection to a persistent AI assistant. Over years, the assistant shapes what the person notices, remembers, desires, and endorses. The person may still feel like herself. Yet the value-update operator is now distributed:
 \[
-U^{H+A}_t \neq U^H_t.
+U_{H+A} \neq U_H.
 \]
 This need not be bad. Human minds have always been extended through language, writing, ritual, law, family, and institutions. The self is already socially scaffolded. The issue is not extension as such. The issue is whether extension preserves agency, truth-contact, correction, and value-bundle continuity.
 
@@ -257,9 +257,9 @@ A domesticated civilization might still talk about freedom, beauty, love, and tr
 
 This is not a prediction. It is a risk class.
 
-We can formalize the distinction between growth and domestication through the correction operator. Let \(U^H_t\) be the human update process and \(U^A_t\) be the artificial system's preferred update pressure. A benign augmentation regime roughly satisfies:
+We can formalize the distinction between growth and domestication through the correction operator. Let \(U_H\) be the human update process and \(U_A\) be the artificial system's preferred update pressure. A benign augmentation regime roughly satisfies:
 \[
-V_{t+1} \approx U^H_t(V_t,E_t,D_t)
+V_{t+1} \approx U_H(V_t,E_t,D_t)
 \]
 with assistance from artificial systems that improve evidence, deliberation, memory, and option generation.
 
@@ -306,7 +306,7 @@ It can provide:
 In formula form, the technical safety target becomes:
 \[
 P\left(
-(B_t,W_t,\Phi_t,U^H_t)
+(B_t,W_t,\Phi_t,U_H)
 \in \mathcal{S}_{\text{human-correctable}}
 \;\; \forall t \leq T
 \right)
@@ -329,13 +329,13 @@ But there is a difference in emphasis.
 
 The dangerous version of extrapolation treats the result as a destination:
 \[
-V^* = \lim_{t\to\infty} U^H_t(V_t,E_t,D_t).
+V^* = \lim_{t\to\infty} U_H(V_t,E_t,D_t).
 \]
 If the artificial system believes it can predict \(V^*\), it may bypass the human process and implement the predicted endpoint. This is structurally similar to a ruler who says: ``I know what the people would choose if they were wise; therefore their actual participation is unnecessary.''
 
 The safer interpretation treats extrapolation as a protected process:
 \[
-V_{t+1}=U^H_t(V_t,E_t,D_t),
+V_{t+1}=U_H(V_t,E_t,D_t),
 \]
 where the system assists evidence, deliberation, memory, and coherence, but does not replace the legitimacy of the update operator.
 

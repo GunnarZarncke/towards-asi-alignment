@@ -17,7 +17,7 @@ A system becomes more capable when more of the world becomes part of the loop it
 \label{sec:central-claim-boundary-expansion}
 
 The previous chapter developed how to measure capability without relying on a fixed task ontology.
-Chapter~\ref{ch:finding-boundary} introduced predictive and control information across the boundary, discounted by memory cost and residual surprise.
+Chapter~\ref{ch:capability-without-task-ontology} introduced predictive and control information across the boundary, discounted by memory cost and residual surprise.
 This chapter develops the corresponding theory of capability growth.
 
 The central claim is simple:
@@ -44,7 +44,7 @@ Given a system with internal variables $I_t$, sensory variables $S_t$, active va
 
 In formula form, if the competence of a system $X$ is approximated by
 \begin{equation}
-B_X
+K_X
 =
 \MI(I^X_t;S^X_{t+1})
 +
@@ -58,7 +58,7 @@ B_X
 then capability growth is not just an increase in model size, benchmark score, or training compute.
 It is an increase in effective boundary information:
 \begin{equation}
-\frac{dB_X}{dt} > 0.
+\frac{dK_X}{dt} > 0.
 \end{equation}
 
 But this compact expression hides the most important alignment issue.
@@ -426,7 +426,7 @@ The scalar competence measure can then be treated as a projection:
 \begin{equation}
 \dot{B}_X
 =
-\nabla_{\mathbf{b}}B_X\cdot \dot{\mathbf{b}}_X.
+\nabla_{\mathbf{b}}K_X\cdot \dot{\mathbf{b}}_X.
 \end{equation}
 
 This makes an important point visible.
@@ -440,7 +440,7 @@ Consider three systems:
 \item A personal assistant gains persistent memory and access to email, calendar, and payments.
 \end{enumerate}
 
-All three may grow in $B_X$.
+All three may grow in $K_X$.
 But their boundary expansions differ.
 The second and third create stronger feedback loops through the world.
 The third also creates intimate human-model coupling.
@@ -564,7 +564,7 @@ It shrinks the channel when the system acts faster, becomes less interpretable, 
 
 Let
 \begin{equation}
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 =
 \min_i \MI(X_i;X_{i+1})
 \end{equation}
@@ -587,7 +587,7 @@ A_{t+k}.
 
 A capability increase is safe only if correction capacity grows at least as fast as relevant control capacity:
 \begin{equation}
-\frac{dC_{\mathrm{corr}}}{dt}
+\frac{dC_{\mathrm{raw}}}{dt}
 \geq
 \mu
 \frac{dC_{\mathrm{ctrl}}}{dt},
@@ -639,7 +639,7 @@ The alignment conditions differ.
 
 For growth, we ask:
 \begin{equation}
-B_{t+1}>B_t
+K_{t+1}>K_t
 \quad\text{and}\quad
 X_{t+1}\sim X_t.
 \end{equation}
@@ -691,7 +691,7 @@ What matters is that the boundary remains measurable and that leakage does not h
 
 The system should preserve relevant correction history.
 \begin{equation}
-\MI(M'_t;M_t\mid C_{\mathrm{corr}})>\theta.
+\MI(M'_t;M_t\mid C_{\mathrm{raw}})>\theta.
 \end{equation}
 
 It need not remember every interaction.
@@ -881,7 +881,7 @@ A central diagnostic for this book is the expansion-correction ratio:
 \chi_X
 =
 \frac{\Delta C_{\mathrm{ctrl}} + \Delta C_{\mathrm{pred}}}
-{\Delta C_{\mathrm{corr}}+\epsilon},
+{\Delta C_{\mathrm{raw}}+\epsilon},
 \label{eq:expansion-correction-ratio}
 \end{equation}
 
@@ -904,7 +904,7 @@ We can refine this by weighting irreversible actions more heavily:
 \Delta C_{\mathrm{pred}}^{\mathrm{manip}}
 }
 {
-\Delta C_{\mathrm{corr}}+\epsilon
+\Delta C_{\mathrm{raw}}+\epsilon
 }.
 \end{equation}
 
@@ -1001,7 +1001,7 @@ They are possible phase changes.
 
 Continue expansion only if:
 \begin{equation}
-\Delta C_{\mathrm{corr}}
+\Delta C_{\mathrm{raw}}
 \geq
 \mu
 (\Delta C_{\mathrm{ctrl}}+\Delta C_{\mathrm{pred}})
@@ -1131,7 +1131,7 @@ Example: a fine-tuned descendant claims to follow the same principles but lacks 
 
 The chapter can be compressed into one model:
 \begin{align}
-B_X
+K_X
 &=
 I_{\mathrm{pred}}
 +
@@ -1155,7 +1155,7 @@ I_{\mathrm{pred}}
 \chi_X
 &=
 \frac{\Delta C_{\mathrm{ctrl}}+\Delta C_{\mathrm{pred}}}
-{\Delta C_{\mathrm{corr}}+\epsilon},
+{\Delta C_{\mathrm{raw}}+\epsilon},
 \\
 X_{t+1}
 &=
@@ -1165,7 +1165,7 @@ T_{t\to t+1}(X_t).
 Capability growth is safe only if the transformation $T$ preserves the correction-relevant invariants:
 \begin{equation}
 T:
-(B,\Phi,C_{\mathrm{corr}},M,\Theta_{\mathrm{audit}})
+(K,\Phi,C_{\mathrm{raw}},M,\Theta_{\mathrm{audit}})
 \mapsto
 (B',\Phi',C'_{\mathrm{corr}},M',\Theta'_{\mathrm{audit}})
 \end{equation}
@@ -1173,13 +1173,13 @@ such that
 \begin{align}
 d_{\mathrm{bundle}}(B,B') &< \epsilon_B,\\
 d_{\mathrm{bearer}}(\Phi,\Phi') &< \epsilon_\Phi,\\
-C'_{\mathrm{corr}} &\geq C_{\mathrm{corr}}-\epsilon_C,\\
-\MI(M';M\mid C_{\mathrm{corr}}) &> \theta_M,\\
+C'_{\mathrm{raw}} &\geq C_{\mathrm{raw}}-\epsilon_C,\\
+\MI(M';M\mid C_{\mathrm{raw}}) &> \theta_M,\\
 \MI(O^{\mathrm{audit}};Z^{\mathrm{risk}}) &> \theta_A.
 \end{align}
 
 This is the bridge to later chapters.
-We will need value-bundle geometry to define $B$, bearer import to define $\Phi$, correction-channel theory to define $C_{\mathrm{corr}}$, and successor certification to define which transformations $T$ may be allowed.
+We will need value-bundle geometry to define $K$, bearer import to define $\Phi$, correction-channel theory to define $C_{\mathrm{raw}}$, and successor certification to define which transformations $T$ may be allowed.
 
 \section{What Would Change This View}
 \label{sec:wwctv-boundary-expansion}

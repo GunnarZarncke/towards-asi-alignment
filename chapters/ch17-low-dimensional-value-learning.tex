@@ -336,9 +336,9 @@ A truth bundle may increase the probability of actions that preserve map-territo
 
 An autonomy bundle may increase the probability of actions that preserve option space, informed consent, personal agency, exit rights, and non-coercive interaction.
 
-The mathematical object is not a moral label but a bundle-response field:
+The mathematical object is not a moral label but a bundle-response field---the bundle gradient $g_B$:
 \[
-G_B(x,c)
+g_B(x,c)
 =
 \left(
 \frac{\partial \pi_H}{\partial B_1},
@@ -346,7 +346,7 @@ G_B(x,c)
 \frac{\partial \pi_H}{\partial B_k}
 \right).
 \]
-The book will use this object repeatedly.
+Together with the interaction curvature, this gradient field composes into the full bundle response geometry $G_B$ assembled in Chapter~\ref{ch:tradeoffs-bundle-geometry}; the book will use these objects repeatedly.
 Alignment does not require preserving every surface policy.
 It requires preserving the relevant value-bundle response geometry, especially under capability growth and ontology shift.
 
@@ -355,23 +355,23 @@ It requires preserving the relevant value-bundle response geometry, especially u
 
 Low dimensionality can be stated as a rank condition.
 
-Let $\Phi\in\mathbb{R}^{N\times n}$ be a matrix of high-dimensional features across $N$ situations.
+Let $F\in\mathbb{R}^{N\times n}$ be a matrix of high-dimensional features across $N$ situations.
 Let $Y\in\mathbb{R}^{N}$ be human evaluations or action logits.
 A flat linear model estimates
 \[
-Y\approx \Phi w.
+Y\approx F w.
 \]
 A low-rank value model instead assumes
 \[
 Y\approx Z\theta,
 \qquad
-Z=g(\Phi)\in\mathbb{R}^{N\times k},
+Z=g(F)\in\mathbb{R}^{N\times k},
 \]
 with $k\ll n$.
 
-In a local linear approximation, if $g(\Phi)=\Phi P$ for some projection $P\in\mathbb{R}^{n\times k}$, then
+In a local linear approximation, if $g(F)=F P$ for some projection $P\in\mathbb{R}^{n\times k}$, then
 \[
-Y\approx \Phi P\theta.
+Y\approx F P\theta.
 \]
 The effective reward vector $w=P\theta$ lies in a $k$-dimensional subspace of $\mathbb{R}^{n}$.
 
@@ -612,7 +612,7 @@ where:
 \begin{itemize}
 \item $B$ is value-bundle geometry,
 \item $\Phi$ is the bearer map from world-states to value relevance,
-\item $U_H$ is the human or civilizational correction operator.
+\item $U_H$ is the human value-update operator by which humans revise values under evidence, reflection, and social correction.
 \end{itemize}
 A system is not aligned merely because it learns $B$.
 It must preserve the human-correctable evolution of $B$, $\Phi$, and their tradeoffs.

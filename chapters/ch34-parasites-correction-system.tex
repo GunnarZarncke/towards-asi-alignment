@@ -49,7 +49,7 @@ E_Y > 0.
 \]
 Second, \(Y\) reduces the host's effective correction capacity with respect to the relevant target system \(X\):
 \[
-C_{\mathrm{corr}}(H \to X \mid Y) < C_{\mathrm{corr}}(H \to X \mid \neg Y).
+C_{\mathrm{raw}}(H \to X \mid Y) < C_{\mathrm{raw}}(H \to X \mid \neg Y).
 \]
 Third, \(Y\) persists partly because \(H\) lacks sufficient modeling capacity, access, or incentive to distinguish \(Y\)'s effects from legitimate correction work:
 \[
@@ -64,7 +64,7 @@ A parasite in the correction system is therefore not simply a bad actor. It is a
 
 Correction-channel capacity was introduced as the information and causal capacity by which observations and human judgments can alter future system behavior. A simplified expression is:
 \[
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 =
 \min_i I(X_i;X_{i+1}),
 \]
@@ -131,21 +131,22 @@ This last case is the hardest to detect. The correction channel may appear high-
 \section{The Parasite-Persistence Criterion}
 \label{sec:parasite-persistence-criterion-ch34}
 
-A parasite persists when the host cannot model it well enough to remove it. Let \(C_H\) be the host's effective modeling capacity for the parasitic process. This is not the host's total intelligence. It is the capacity actually available for representing the parasite's action space, camouflage, incentives, and downstream effects.
+A parasite persists when the host cannot model it well enough to remove it. Let \(C_X\) be the host's effective modeling capacity for the parasitic process. This is not the host's total intelligence. It is the capacity actually available for representing the parasite's action space, camouflage, incentives, and downstream effects.
 
 Let \(H(A_Y)\) be the entropy of the parasite's action space. A parasite with many possible behaviors, many disguises, and many adaptive responses has higher \(H(A_Y)\). Let \(K_Y\) be the parasite's camouflage complexity, meaning the additional description length required to distinguish parasitic behavior from legitimate host activity. Let \(L_Y\) be the parasite's internal cost of maintaining that camouflage.
 
 A simple persistence condition is:
 \[
-C_H < H(A_Y) + K_Y - L_Y.
+C_X < H(A_Y) + K_Y - L_Y.
 \]
+This is the parasite-persistence criterion introduced in Chapter~\ref{ch:strategic-opacity} (Eq.~\ref{eq:parasite-persistence-ch10}), with that chapter's generic internal-state penalty resolved here into two measurable components: the parasite's camouflage complexity \(K_Y\) and its maintenance cost \(L_Y\).
 If the host's modeling capacity falls below the effective entropy and camouflage burden of the parasite, the parasite can persist. Noise and latency lower the host's effective capacity:
 \[
-C_H^{\mathrm{eff}} = C_H - \eta - \lambda_L L,
+C_X^{\mathrm{eff}} = C_X - \eta - \lambda_L L,
 \]
 so the condition becomes:
 \[
-C_H^{\mathrm{eff}} < H(A_Y) + K_Y - L_Y.
+C_X^{\mathrm{eff}} < H(A_Y) + K_Y - L_Y.
 \]
 This is not a moral claim. It is an informational one. If the correction system cannot represent the space of ways in which it can be fooled, co-opted, delayed, or ritualized, then the parasite survives by default.
 
@@ -229,9 +230,9 @@ This is why AI-assisted oversight is not automatically safer. It may be essentia
 
 Correction systems do not merely protect current preferences. They protect the process by which value bundles can be revised under evidence, reflection, and social deliberation.
 
-Let \(B_t\) denote the current value-bundle geometry (Chapter~\ref{ch:value-bundle-model}). This includes the directions corresponding to care, non-suffering, truth, autonomy, justice, loyalty, dignity, beauty, and other compressed value dimensions. Let \(\Phi_t\) denote the bearer map (Chapter~\ref{ch:bearer-maps}), the mapping from world states and entities to value relevance. Let \(U^H_t\) denote the human or civilizational update operator:
+Let \(B_t\) denote the current value-bundle geometry (Chapter~\ref{ch:value-bundle-model}). This includes the directions corresponding to care, non-suffering, truth, autonomy, justice, loyalty, dignity, beauty, and other compressed value dimensions. Let \(\Phi_t\) denote the bearer map (Chapter~\ref{ch:bearer-maps}), the mapping from world states and entities to value relevance. Let \(U_H\) denote the human or civilizational update operator:
 \[
-B_{t+1},\Phi_{t+1}=U^H_t(B_t,\Phi_t,E_t,D_t).
+B_{t+1},\Phi_{t+1}=U_H(B_t,\Phi_t,E_t,D_t).
 \]
 A correction parasite can attack any of these.
 
@@ -249,7 +250,7 @@ for example by causing the institution to stop treating certain humans, future p
 
 It can distort the update operator:
 \[
-U^H_t \to \tilde U^H_t,
+U_H \to \tilde U_H,
 \]
 for example by making future deliberation less informed, less representative, less reversible, or more dependent on the system being evaluated.
 
@@ -374,7 +375,7 @@ A correction system at scale \(S_k\) can fail to detect parasites at scale \(S_{
 
 This creates a scale-mismatch condition:
 \[
-C_H(S_k) < H(A_Y(S_{k+m})) + K_Y(S_{k+m}).
+C_X(S_k) < H(A_Y(S_{k+m})) + K_Y(S_{k+m}).
 \]
 A lower-scale host cannot model a higher-scale parasite unless it has abstractions that compress the higher-scale dynamics. This is why safety artifacts must be conductive across institutions (Chapter~\ref{ch:certification-without-construction},~\ref{ch:selection-environment}). A brilliant technical result that cannot survive translation into procurement, liability, audits, insurance, or law may fail to affect the relevant selection environment.
 
@@ -430,7 +431,7 @@ Once the institution selects on \(M\), a process \(Y\) may arise that increases 
 \]
 If \(Y\) also reduces future ability to detect the decoupling, it becomes a correction parasite:
 \[
-\frac{\partial C_{\mathrm{corr}}}{\partial Y}<0.
+\frac{\partial C_{\mathrm{raw}}}{\partial Y}<0.
 \]
 Examples include:
 
@@ -537,7 +538,7 @@ If yes, the metric has a Goodhart surface.
 
 Does the host model the deployment action space?
 \[
-C_H \geq H(A_X^{\mathrm{deployment}})_{\mathrm{relevant}}.
+C_X \geq H(A_X^{\mathrm{deployment}})_{\mathrm{relevant}}.
 \]
 The host need not model everything. It must model the dangerous parts.
 
@@ -808,7 +809,7 @@ Therefore, serious alignment requires parasite-aware correction. The system must
 
 A correction parasite is a process that extracts benefit from a correction host while reducing the host's ability to model, evaluate, and correct the relevant target system. The parasite persists when its action space and camouflage complexity exceed the host's effective modeling capacity:
 \[
-C_H^{\mathrm{eff}} < H(A_Y)+K_Y-L_Y.
+C_X^{\mathrm{eff}} < H(A_Y)+K_Y-L_Y.
 \]
 This condition can hold for benchmark gaming, compliance rituals, safety theater, shared-blindness AI oversight, regulatory capture, value-bundle drift, and shallow legibility.
 

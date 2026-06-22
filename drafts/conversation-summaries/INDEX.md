@@ -4,6 +4,9 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-23 | Notation propagation into chapters (fix-plans §C: ΔL, \MI, g_B/H_B, F, k, C_X, χ, U_H/V_t, η_g/η_c) | [2026-06-23-notation-propagation.md](2026-06-23-notation-propagation.md) |
+| 2026-06-23 | New ch39b verifiability/ontology chapter + strong per-chapter falsifiers + ch40 hostile critique | [2026-06-23-verifiability-ontology-chapter-and-falsifiers.md](2026-06-23-verifiability-ontology-chapter-and-falsifiers.md) |
+| 2026-06-23 | Ledger cross-check (claims/assumptions/uncertainty) + unused-box removal + `page.i`/label build fixes | [2026-06-23-ledger-crosscheck-and-build-fixes.md](2026-06-23-ledger-crosscheck-and-build-fixes.md) |
 | 2026-06-22 | Fix plans for full-book review + chapter-ending style pass (8 chapters) | [2026-06-22-fix-plans-and-style-pass.md](2026-06-22-fix-plans-and-style-pass.md) |
 | 2026-06-22 | Full-book review (continuity/redundancy/consistency/completeness) → review file, no edits | [2026-06-22-full-book-continuity-review.md](2026-06-22-full-book-continuity-review.md) |
 | 2026-06-22 | Section de-segmentation: ch01 (17\u21928), ch06 (17\u21929), ch16 (24\u219214) | [2026-06-22-section-desegmentation-ch01-ch06-ch16.md](2026-06-22-section-desegmentation-ch01-ch06-ch16.md) |

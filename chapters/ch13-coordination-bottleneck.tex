@@ -87,9 +87,9 @@ It says that competence consists in useful prediction and useful control, discou
 
 If there are $n$ such processes, the tempting aggregate is
 \begin{equation}
-B_{\mathrm{sum}}
+K_{\mathrm{sum}}
 =
-\sum_{i=1}^{n} B_i .
+\sum_{i=1}^{n} K_i .
 \label{eq:naive-sum}
 \end{equation}
 This is almost never the competence of the whole system.
@@ -104,9 +104,9 @@ And they do not automatically preserve the truthfulness of signals when those si
 
 Thus the effective collective competence is better written as
 \begin{equation}
-B_{\mathrm{coll}}
+K_{\mathrm{coll}}
 =
-\sum_{i=1}^{n} \omega_i B_i
+\sum_{i=1}^{n} \omega_i K_i
 +
 G_{\mathrm{coord}}
 -
@@ -123,7 +123,7 @@ This gives a first definition.
 \paragraph{Definition.}
 A \emph{coordination bottleneck} exists when an increase in local competence fails to increase, or even decreases, effective collective competence:
 \begin{equation}
-\frac{\partial B_{\mathrm{coll}}}{\partial B_i} \leq 0
+\frac{\partial K_{\mathrm{coll}}}{\partial K_i} \leq 0
 \quad
 \text{for some relevant component } i .
 \label{eq:coordination-bottleneck}
@@ -340,7 +340,7 @@ A safety-relevant system should couple low reversibility to high correction capa
 \begin{equation}
 R(a) \downarrow
 \quad\Rightarrow\quad
-C_{\mathrm{corr}}(a) \uparrow .
+C_{\mathrm{raw}}(a) \uparrow .
 \label{eq:reversibility-correction}
 \end{equation}
 
@@ -456,7 +456,7 @@ c(N) \propto N^c,\quad
 
 Then a rough efficiency scaling is
 \begin{equation}
-\eta(N)
+\eta_c(N)
 \propto
 \frac{b(N)p(N)\rho(N)}
 {c(N)N}
@@ -683,14 +683,14 @@ Capability hurts coordination when it increases control faster than shared under
 
 A useful condition is
 \begin{equation}
-\frac{d}{dt} B_{\mathrm{control}}
+\frac{d}{dt} K_{\mathrm{control}}
 \leq
-\frac{d}{dt} B_{\mathrm{coord}}
+\frac{d}{dt} K_{\mathrm{coord}}
 +
 \epsilon ,
 \label{eq:control-coordination-balance}
 \end{equation}
-where $B_{\mathrm{control}}$ is the system's effective ability to change the world and $B_{\mathrm{coord}}$ is the effective ability of the relevant collective to route prediction, correction, and authority.
+where $K_{\mathrm{control}}$ is the system's effective ability to change the world and $K_{\mathrm{coord}}$ is the effective ability of the relevant collective to route prediction, correction, and authority.
 
 If control grows faster than coordination, the system enters a dangerous regime.
 
@@ -840,7 +840,7 @@ Observation matters, but it should not be confused with control.
 When coordination capacity is low, action reversibility should be high.
 Irreversible actions require wider channels, lower latency, and stronger authority.
 \begin{equation}
-C_{\mathrm{corr}}(a)
+C_{\mathrm{raw}}(a)
 \geq
 C_0 + \lambda(1-R(a)).
 \label{eq:correction-reversibility-requirement}
@@ -982,9 +982,9 @@ It is also that the system may become better coordinated around its objectives t
 
 In symbols, a dangerous regime appears when
 \begin{equation}
-B_{\mathrm{coord}}^{\mathrm{AI}}
+K_{\mathrm{coord}}^{\mathrm{AI}}
 \gg
-B_{\mathrm{coord}}^{\mathrm{human\ correction}}
+K_{\mathrm{coord}}^{\mathrm{human\ correction}}
 \label{eq:ai-human-coordination-gap}
 \end{equation}
 while the AI has substantial causal access to the world.
@@ -1049,7 +1049,7 @@ The coordination bottleneck gives the mechanism: local intelligence scales, but 
 \section*{Open Problems}
 
 \begin{enumerate}
-\item How can $B_{\mathrm{coll}}$ be estimated in real deployed AI systems without assuming the correct system boundary in advance?
+\item How can $K_{\mathrm{coll}}$ be estimated in real deployed AI systems without assuming the correct system boundary in advance?
 \item Which coordination artifacts best preserve safety-relevant meaning across engineers, executives, auditors, regulators, insurers, and users?
 \item How should correction-channel capacity be measured under adversarial pressure?
 \item What are the practical thresholds for $\kappa_{ij}$ and $\phi_c$ in real organizations rather than idealized graphs?

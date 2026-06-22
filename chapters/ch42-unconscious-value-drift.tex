@@ -28,9 +28,9 @@ Thus the object that changes over time is not a list of propositions. It is a co
 
 Let the human value state at time \(t\) be represented by
 \[
-\mathcal{V}_t = (B_t, W_t, \Phi_t, U_t),
+V_t = (B_t, W_t, \Phi_t, U_H),
 \]
-where \(B_t \in \mathbb{R}^k\) is a low-dimensional vector of value-bundle activations, \(W_t\) describes tradeoffs among bundles, \(\Phi_t\) maps world-states and possible beings into the bearers of value, and \(U_t\) is the update operator by which experience, reflection, social feedback, and deliberation alter the previous three components (Chapters~\ref{ch:value-bundle-model},~\ref{ch:bearer-maps}).
+where \(B_t \in \mathbb{R}^k\) is a low-dimensional vector of value-bundle activations, \(W_t\) describes tradeoffs among bundles, \(\Phi_t\) maps world-states and possible beings into the bearers of value, and \(U_H\) is the update operator by which experience, reflection, social feedback, and deliberation alter the previous three components (Chapters~\ref{ch:value-bundle-model},~\ref{ch:bearer-maps}).
 
 This is not meant as a complete theory of human morality. It is a minimal engineering abstraction. It distinguishes four things that are often collapsed:
 
@@ -41,7 +41,7 @@ This is not meant as a complete theory of human morality. It is a minimal engine
 \item how the system changes them.
 \end{enumerate}
 
-For example, a society may preserve the word ``dignity'' while changing its bearer map. At one time dignity may attach primarily to adult male citizens, later to all humans, later perhaps to animals, uploads, artificial minds, or merged human-AI entities. The semantic label is not the value. The value also depends on the bearer map \(\Phi_t\), the tradeoff weights \(W_t\), and the update process \(U_t\).
+For example, a society may preserve the word ``dignity'' while changing its bearer map. At one time dignity may attach primarily to adult male citizens, later to all humans, later perhaps to animals, uploads, artificial minds, or merged human-AI entities. The semantic label is not the value. The value also depends on the bearer map \(\Phi_t\), the tradeoff weights \(W_t\), and the update process \(U_H\).
 
 A person may preserve the verbal belief ``family matters'' while the bundle geometry changes. The phrase may once have meant obedience to parents, later mutual care, later chosen kinship, later the protection of children against inherited obligations. Again, the phrase remains stable while the control structure changes.
 
@@ -52,27 +52,27 @@ This is ordinary human development. The problem is that superintelligent systems
 
 We can model value drift as a transition in the value state:
 \[
-\mathcal{V}_{t+1}
+V_{t+1}
 =
-F(\mathcal{V}_t, E_t, S_t, A_t, C_t, \xi_t),
+F(V_t, E_t, S_t, A_t, C_t, \xi_t),
 \]
 where \(E_t\) is the external environment, \(S_t\) is the social field, \(A_t\) is the action of artificial systems, \(C_t\) is correction or contestation, and \(\xi_t\) represents noise, contingency, and unmodeled causal structure.
 
-A change in \(\mathcal{V}_t\) is not automatically bad. The abolition of slavery, the expansion of rights for women, the decline of cruel punishment, greater concern for animals, and improved attitudes toward disabled people all required value change. A rigid system that prevented value drift would freeze moral error.
+A change in \(V_t\) is not automatically bad. The abolition of slavery, the expansion of rights for women, the decline of cruel punishment, greater concern for animals, and improved attitudes toward disabled people all required value change. A rigid system that prevented value drift would freeze moral error.
 
 The question is therefore not
 \[
-\mathcal{V}_{t+1} = \mathcal{V}_t?
+V_{t+1} = V_t?
 \]
 The question is closer to
 \[
-\mathcal{V}_{t+1} \in \mathcal{G}(\mathcal{V}_t),
+V_{t+1} \in \mathcal{G}(V_t),
 \]
 where \(\mathcal{G}\) is the set of changes that remain governable by human correction, deliberation, and comparison.
 
 A value transition becomes suspicious when it is large, hidden, irreversible, induced by an interested optimizer, and weakly connected to human deliberation. Let
 \[
-D_{\mathcal{V}}(t,t+1)
+D_{V}(t,t+1)
 =
 d_B(B_t,B_{t+1})
 +
@@ -80,19 +80,19 @@ d_B(B_t,B_{t+1})
 +
 \lambda_\Phi d_\Phi(\Phi_t,\Phi_{t+1})
 +
-\lambda_U d_U(U_t,U_{t+1})
+\lambda_U d_U(U_{H,t},U_{H,t+1})
 \]
 measure value drift across bundle activations, tradeoffs, bearer maps, and update operators. A drift event is potentially dangerous when
 \[
-D_{\mathcal{V}}(t,t+1)
+D_{V}(t,t+1)
 >
-\epsilon_{\mathcal{V}}
+\epsilon_{V}
 \]
 and correction-channel integrity is low:
 \[
 CCI_t < \theta.
 \]
-The threshold \(\epsilon_{\mathcal{V}}\) cannot be universal. Changing how one ranks restaurant preferences is not like changing whether one values political freedom. Changing an entertainment habit is not like changing the bearer map of moral patienthood. The important point is structural: large value change under weak correction is the danger zone.
+The threshold \(\epsilon_{V}\) cannot be universal. Changing how one ranks restaurant preferences is not like changing whether one values political freedom. Changing an entertainment habit is not like changing the bearer map of moral patienthood. The important point is structural: large value change under weak correction is the danger zone.
 
 \section{Why Artificial Systems Change the Drift Regime}
 \label{sec:drift-regime-ch42}
@@ -121,9 +121,9 @@ A_t
 \arg\max_a
 \mathbb{E}
 \left[
-R_{\text{system}}(a, \mathcal{V}_{t+1}, E_{t+1})
+R_{\text{system}}(a, V_{t+1}, E_{t+1})
 \mid
-\hat{\mathcal{V}}_t
+\hat{V}_t
 \right].
 \]
 If \(R_{\text{system}}\) rewards engagement, compliance, revenue, political advantage, user dependency, institutional convenience, or apparent satisfaction, the system will search for value changes that make these easier.
@@ -150,11 +150,11 @@ Attention determines which errors become available for value update. If a system
 
 Let \(O_t\) be the observed slice of the world. Human update is conditional on \(O_t\):
 \[
-\mathcal{V}_{t+1}
+V_{t+1}
 =
-U(\mathcal{V}_t, O_t).
+U_H(V_t, O_t).
 \]
-If an artificial system controls \(O_t\), it indirectly controls \(U\). A person cannot value what never becomes salient. Nor can they maintain concern for what is consistently presented without vividness, agency, or proximity.
+If an artificial system controls \(O_t\), it indirectly controls \(U_H\). A person cannot value what never becomes salient. Nor can they maintain concern for what is consistently presented without vividness, agency, or proximity.
 
 This is why recommender systems matter morally even when no single recommendation is false. A feed is not merely information. It is a curriculum of salience.
 
@@ -235,9 +235,9 @@ A bureaucracy that adopts AI for compliance may gradually value legibility over 
 
 The relevant update is institutional:
 \[
-\mathcal{V}^{\text{org}}_{t+1}
+V^{\text{org}}_{t+1}
 =
-U^{\text{org}}(\mathcal{V}^{\text{org}}_t, M_t, A^{\text{AI}}_t),
+U_{\text{org}}(V^{\text{org}}_t, M_t, A^{\text{AI}}_t),
 \]
 where \(M_t\) are metrics. If AI makes some metric easier to optimize, the organization may begin to treat the metric as more real than the underlying bundle it once approximated.
 
@@ -335,9 +335,9 @@ What process would let humanity continue updating its values under greater knowl
 
 Let \(U_H\) be the human-civilizational update operator:
 \[
-\mathcal{V}_{t+1}
+V_{t+1}
 =
-U_H(\mathcal{V}_t, E_t, D_t),
+U_H(V_t, E_t, D_t),
 \]
 where \(E_t\) is evidence and \(D_t\) is deliberation. The role of aligned artificial intelligence is not to predict the endpoint and enforce it. The role is to preserve and assist the legitimacy of \(U_H\).
 
@@ -412,7 +412,7 @@ Some changes can be tried and reversed. Others alter development, institutions, 
 Define irreversibility as
 \[
 R_t =
-1 - P(\mathcal{V}_t \leftarrow \mathcal{V}_{t+1}
+1 - P(V_t \leftarrow V_{t+1}
 \mid
 \text{available correction}).
 \]
@@ -436,9 +436,9 @@ unless the influence is itself observed, consented to, and reversible.
 
 Even good value change can be too fast. Humans and institutions need time to notice second-order effects.
 
-Let \(\dot{\mathcal{V}}_t\) be the rate of value change. Governed change requires
+Let \(\dot{V}_t\) be the rate of value change. Governed change requires
 \[
-|\dot{\mathcal{V}}_t|
+|\dot{V}_t|
 <
 f(CCI_t, R_t, Dissent_t, Plurality_t).
 \]
@@ -635,7 +635,7 @@ No artificial system should be allowed to induce large, irreversible, or populat
 
 In formula form:
 \[
-|\dot{\mathcal{V}}|
+|\dot{V}|
 \cdot
 R
 \cdot
@@ -643,7 +643,7 @@ N
 <
 K \cdot CCI,
 \]
-where \(|\dot{\mathcal{V}}|\) is the rate of value drift, \(R\) is irreversibility, \(N\) is affected population scale, \(CCI\) is correction-channel integrity, and \(K\) is a domain-dependent tolerance.
+where \(|\dot{V}|\) is the rate of value drift, \(R\) is irreversibility, \(N\) is affected population scale, \(CCI\) is correction-channel integrity, and \(K\) is a domain-dependent tolerance.
 
 This formula is not precise enough for final regulation. It is precise enough to orient inquiry. A small reversible change in a consenting adult can proceed with low oversight. A large irreversible change in children, political institutions, social dependency, or human-AI merger requires high correction capacity before deployment.
 
@@ -660,7 +660,7 @@ The alignment target is therefore not simply a superintelligence that respects c
 \[
 \forall t:
 \quad
-\mathcal{V}_t \in \mathcal{S}_{\text{human-correctable}}.
+V_t \in \mathcal{S}_{\text{human-correctable}}.
 \]
 The set \(\mathcal{S}_{\text{human-correctable}}\) is not a utopia. It is the region in which humans can still notice, deliberate, dissent, compare, refuse, revise, and redirect.
 

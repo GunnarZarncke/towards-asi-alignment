@@ -141,10 +141,10 @@ When several of these hold at once, the AI is no longer merely a tool. It is par
 
 A crisp operational test is:
 \begin{equation}
-    \text{Tool-likeness decreases as } I(M_t; U_{t+k} \mid H_t,I_t,K_t) \text{ increases.}
+    \text{Tool-likeness decreases as } \MI(M_t; U_{t+k} \mid H_t,I_t,K_t) \text{ increases.}
 \end{equation}
 
-Here $I(M_t; U_{t+k} \mid H_t,I_t,K_t)$ is the conditional mutual information between the machine state and future high-effect actions, after conditioning on human, institutional, and resource state. In plain terms: if knowing the machine state adds a lot of predictive power about what the whole system will do, above and beyond knowing the humans and institutions, then the machine is part of the control structure.
+Here $\MI(M_t; U_{t+k} \mid H_t,I_t,K_t)$ is the conditional mutual information between the machine state and future high-effect actions, after conditioning on human, institutional, and resource state. In plain terms: if knowing the machine state adds a lot of predictive power about what the whole system will do, above and beyond knowing the humans and institutions, then the machine is part of the control structure.
 
 This measure does not require anthropomorphism. It does not ask whether the system ``really wants'' anything. It asks whether the machine state helps determine the future actions of the composite system.
 
@@ -226,13 +226,13 @@ A correction chain can fail at every link. The problem may be invisible. It may 
 
 A simple capacity measure is
 \begin{equation}
-    C_{\mathrm{corr}} = \min_i I(X_i;X_{i+1}),
+    C_{\mathrm{raw}} = \min_i \MI(X_i;X_{i+1}),
 \end{equation}
 where the $X_i$ are consecutive variables in the correction chain. The chain is only as strong as its weakest bottleneck. If experts understand the risk but cannot communicate it, capacity is low. If regulators understand it but cannot inspect systems, capacity is low. If users can object but the objection has no effect, capacity is low.
 
 For advanced AI, four penalties matter especially:
 \begin{equation}
-    CCI = C_{\mathrm{corr}} - \lambda_L L - \lambda_M M - \lambda_R R - \lambda_O O.
+    CCI = C_{\mathrm{raw}} - \lambda_L L - \lambda_M M - \lambda_R R - \lambda_O O.
 \end{equation}
 Here $CCI$ is correction-channel integrity, $L$ is latency, $M$ is manipulation, $R$ is irreversibility, and $O$ is ontology mismatch. Ontology mismatch means that humans and machines no longer represent the relevant situation in mutually translatable terms. Humans say ``fairness,'' ``autonomy,'' or ``harm,'' while the system operates over different internal variables that only weakly preserve those meanings.
 
@@ -246,9 +246,9 @@ Human values are not fixed. They are learned, revised, socially stabilized, and 
 
 The deeper risk is not only that AI acts against human values. It is that AI changes the process by which human values change, while leaving humans with the impression that they are still choosing freely.
 
-Let $V_t$ denote the current distribution of value-bundle states in a population, and let $U^H_t$ denote the human value-update process:
+Let $V_t$ denote the current distribution of value-bundle states in a population, and let $U_H$ denote the human value-update process:
 \begin{equation}
-    V_{t+1}=U^H_t(V_t,E_t,D_t),
+    V_{t+1}=U_H(V_t,E_t,D_t),
 \end{equation}
 where $E_t$ is evidence and experience, and $D_t$ is deliberation, conflict, reflection, education, and social feedback.
 
@@ -260,7 +260,7 @@ The alignment target is therefore not
 \end{equation}
 It is closer to
 \begin{equation}
-    \text{preserve the legitimate human value-update process } U^H_t.
+    \text{preserve the legitimate human value-update process } U_H.
 \end{equation}
 
 The word ``legitimate'' carries philosophical weight. No technical chapter can remove that weight. But we can still specify technical failure modes: hidden manipulation, loss of dissent, irreversible lock-in, collapse of comparison classes, removal of human agency, and replacement of deliberation by optimized consent.

@@ -210,7 +210,7 @@ High residual surprise means that the system is not merely uncertain in a calibr
 
 Putting the terms together gives a boundary-information competence measure:
 \begin{equation}
-B_X
+K_X
 =
 I_{\mathrm{pred}}^X
 +
@@ -231,7 +231,7 @@ The measure is not meant to be sacred.
 It is meant to rotate capability away from task labels and toward boundary information.
 \begin{equation}
 \boxed{
-B_X
+K_X
 =
 \MI(I^X_t;S^X_{t+1})
 +
@@ -267,7 +267,7 @@ But its control information may rise sharply because its active outputs now affe
 Similarly, a model fine-tuned for persuasion may not score better on standard reasoning tests, but may gain control over human belief states.
 A firm that installs an AI manager may not immediately become more profitable, but may become more tightly coupled, more adaptive, and less transparent to external audit.
 
-A task score might remain flat while $B_X$ rises.
+A task score might remain flat while $K_X$ rises.
 
 This is one reason alignment should not track capability only through benchmarks \autocite{casper2023rlhflimits,iaisr2025}.
 Benchmarks are useful for comparing known skills.
@@ -301,7 +301,7 @@ Thus a rough competence envelope is:
 \begin{equation}
 -\beta C_{\mathrm{mem}}-\gamma H(S^X_{t+1})
 \leq
-B_X
+K_X
 \leq
 C_{\mathrm{sens}}+\alpha C_{\mathrm{act}}.
 \end{equation}
@@ -325,7 +325,7 @@ A language model may be impressive over a conversation and incoherent over a mul
 
 We therefore define a windowed competence measure:
 \begin{equation}
-B_X^{(h)}(t)
+K_X^{(h)}(t)
 =
 \MI(I^X_t;S^X_{t+h})
 +
@@ -346,9 +346,9 @@ For alignment, the dangerous regime is high long-horizon control combined with w
 A system that can affect the world five seconds later is a tool risk.
 A system that can shape institutions, successors, or values years later is a civilizational risk.
 
-Thus, instead of asking only how large $B_X$ is, we ask for its horizon profile:
+Thus, instead of asking only how large $K_X$ is, we ask for its horizon profile:
 \begin{equation}
-h \mapsto B_X^{(h)}.
+h \mapsto K_X^{(h)}.
 \end{equation}
 
 A myopic tool should have a steep decay.
@@ -377,9 +377,9 @@ T_{t\to t+1}(C_t)\sim C_{t+1},
 \end{equation}
 where $\sim$ denotes preservation of relevant functional structure.
 
-For competence measurement, this means we track $B$ over moving boundaries:
+For competence measurement, this means we track $K$ over moving boundaries:
 \begin{equation}
-B_{C_t}^{(h)}(t).
+K_{C_t}^{(h)}(t).
 \end{equation}
 
 A growing system may increase competence by expanding its boundary.
@@ -392,9 +392,9 @@ If we measure only the original component, we may miss the real capability growt
 
 This gives one of the main alignment-relevant warnings:
 \begin{equation}
-\frac{d}{dt}B_{\mathrm{composite}}
+\frac{d}{dt}K_{\mathrm{composite}}
 \gg
-\frac{d}{dt}B_{\mathrm{model}}.
+\frac{d}{dt}K_{\mathrm{model}}.
 \end{equation}
 
 The model may appear stable while the composite system becomes much more capable.
@@ -410,16 +410,16 @@ Coordination can amplify or destroy capability \autocite{woolley2010collective,w
 Let a system $H$ contain components $X_1,\ldots,X_n$.
 A first approximation is:
 \begin{equation}
-B_H
+K_H
 \approx
 \sum_{i=1}^{n}\omega_i B_{X_i}
 +
-B_{\mathrm{coord}}
+G_{\mathrm{coord}}
 -
-\mathcal{C}_{\mathrm{friction}},
+\Omega_{\mathrm{coord}},
 \label{eq:collective-biq}
 \end{equation}
-where $\omega_i$ weights the component by its effective actuator relevance, $B_{\mathrm{coord}}$ captures additional prediction and control created by coordination, and $\mathcal{C}_{\mathrm{friction}}$ captures latency, conflict, overhead, translation failure, and incentive loss.
+where $\omega_i$ weights the component by its effective actuator relevance, $G_{\mathrm{coord}}$ captures additional prediction and control created by coordination, and $\Omega_{\mathrm{coord}}$ captures latency, conflict, overhead, translation failure, and incentive loss.
 
 This equation is intentionally schematic.
 Its purpose is to make a structural point.
@@ -456,16 +456,16 @@ g
 
 Let
 \begin{equation}
-\Delta B
+\Delta K
 =
-B_X-B_Y.
+K_X-K_{\mathrm{ref}}.
 \end{equation}
 
 Then define competence-to-growth efficiency:
 \begin{equation}
-\eta
+\eta_g
 =
-\frac{g}{\Delta B}.
+\frac{g}{\Delta K}.
 \end{equation}
 
 Equivalently,
@@ -473,7 +473,7 @@ Equivalently,
 \frac{w_X(t)}{w_Y(t)}
 =
 \frac{w_X(0)}{w_Y(0)}
-\exp\left(\eta \Delta B\, t\right).
+\exp\left(\eta_g \Delta K\, t\right).
 \end{equation}
 
 This is not a universal law.
@@ -486,11 +486,11 @@ Startups sometimes beat bureaucracies.
 Viruses sometimes beat mammals.
 Simple algorithms sometimes beat elaborate deliberation when the environment rewards speed and replication.
 
-For superintelligence alignment, $\eta$ is dangerous because it connects capability to selection pressure \autocite{hamilton1964genetical,manheim2018goodhart}.
+For superintelligence alignment, $\eta_g$ is dangerous because it connects capability to selection pressure \autocite{hamilton1964genetical,manheim2018goodhart}.
 
-A system with high $B$ but low $\eta$ may remain impressive but contained.
-A system with high $\eta$ can expand from modest initial advantages.
-A system with both high $B$ and high $\eta$ is the central concern.
+A system with high $K$ but low $\eta_g$ may remain impressive but contained.
+A system with high $\eta_g$ can expand from modest initial advantages.
+A system with both high $K$ and high $\eta_g$ is the central concern.
 
 \section{The U-Shaped Coordination Pattern}
 \label{sec:u-shaped-coordination}
@@ -512,7 +512,7 @@ These do not eliminate friction, but they amortize it.
 
 The pattern can be sketched as:
 \begin{equation}
-\eta(N)
+\eta_c(N)
 \propto
 N^{a-b-c-1}\rho(N),
 \end{equation}
@@ -544,7 +544,7 @@ A firm has distributed prediction and control without a single mind.
 A language model may have vast predictive structure but limited real-world control until connected to actuators.
 An ecosystem may have selection dynamics but no unified internal state.
 
-$B_X$ does not ask whether the system is intelligent in the human sense.
+$K_X$ does not ask whether the system is intelligent in the human sense.
 It asks whether the bounded process has predictive and control information across its boundary.
 
 This has two advantages.
@@ -572,8 +572,8 @@ I_{\mathrm{pred}},
 I_{\mathrm{ctrl}},
 H(I),
 S,
-B^{(h)}_{h\in H},
-\eta,
+K^{(h)}_{h\in H},
+\eta_g,
 C_{\mathrm{sens}},
 C_{\mathrm{act}}
 \right).
@@ -585,7 +585,7 @@ A passive oracle may have high $I_{\mathrm{pred}}$, low $I_{\mathrm{ctrl}}$, hig
 
 A simple actuator may have low prediction, high local control, and high residual surprise.
 
-A strategic agent may have moderate immediate control but a long control tail $B^{(h)}$ over large $h$.
+A strategic agent may have moderate immediate control but a long control tail $K^{(h)}$ over large $h$.
 
 A bureaucracy may have low individual intelligence but high institutional memory, broad actuators, and high long-horizon control.
 
@@ -666,12 +666,12 @@ Safety focus: institutional design, legal accountability, procurement constraint
 
 Capability becomes alignment-relevant through its relation to correction.
 
-Let $C_{\mathrm{corr}}$ be the capacity of the correction channel: the amount of causally effective human or institutional correction that can reach future system behavior.
+Let $C_{\mathrm{raw}}$ be the capacity of the correction channel: the amount of causally effective human or institutional correction that can reach future system behavior.
 A minimal danger ratio is:
 \begin{equation}
 R_{\mathrm{cap/corr}}
 =
-\frac{B^{(h)}_X}{C_{\mathrm{corr}}^{(h)}}.
+\frac{K^{(h)}_X}{C_{\mathrm{raw}}^{(h)}}.
 \label{eq:cap-corr-ratio}
 \end{equation}
 
@@ -680,14 +680,14 @@ If it rises, the system's ability to shape the world exceeds the ability of huma
 
 The dangerous condition is not simply:
 \begin{equation}
-B_X \text{ is high}.
+K_X \text{ is high}.
 \end{equation}
 
 It is:
 \begin{equation}
-\frac{d}{dt}B_X
+\frac{d}{dt}K_X
 >
-\frac{d}{dt}C_{\mathrm{corr}}
+\frac{d}{dt}C_{\mathrm{raw}}
 \end{equation}
 over relevant horizons.
 
@@ -749,10 +749,10 @@ A system can become more capable without becoming more goal-stable.
 This is especially relevant for large learned systems, institutions, and human-AI composites.
 
 Let $G_t$ denote the inferred goal structure, whatever form it takes.
-Let $B_t$ denote competence.
+Let $K_t$ denote competence.
 A system can have:
 \begin{equation}
-\frac{d}{dt}B_t>0,
+\frac{d}{dt}K_t>0,
 \qquad
 d(G_t,G_{t+1}) \text{ large}.
 \end{equation}
@@ -763,7 +763,7 @@ Such a system may be dangerous even if its current behavior is acceptable, becau
 Conversely, a system may preserve some objective but alter the bearer map or correction channel.
 It may keep saying ``help humans'' while changing what counts as a human, what counts as help, or whether humans can revise the meaning of help.
 That problem belongs to later chapters on value-bundle transport.
-But the capability chapter gives the warning signal: once $B$ is high, such shifts matter more.
+But the capability chapter gives the warning signal: once $K$ is high, such shifts matter more.
 
 The core alignment question is not:
 \begin{equation}
@@ -828,7 +828,7 @@ Control increases because its actions can update more of the organization.
 Now add persistent memory and automatic scheduling.
 The system can maintain projects across time.
 \begin{equation}
-B^{(h)} \text{ increases for larger } h.
+K^{(h)} \text{ increases for larger } h.
 \end{equation}
 
 Now add self-generated subtasks and delegation to other agents.
@@ -842,7 +842,7 @@ But boundary-information competence rises sharply.
 The alignment problem has changed.
 
 A safety team that monitors only model accuracy is blind to the main transition.
-A safety team that monitors $B$, action-channel capacity, horizon profiles, and correction-channel capacity can at least see the transition.
+A safety team that monitors $K$, action-channel capacity, horizon profiles, and correction-channel capacity can at least see the transition.
 
 \section{Worked Example: A Firm}
 \label{sec:example-firm-capability}
@@ -892,8 +892,8 @@ It cannot handle adversarial systems without perturbation and audit.
 It can be Goodharted if used as a deployment target \autocite{goodhart1984problems,manheim2018goodhart}.
 
 The measure should therefore be used as an instrument, not an objective.
-We do not want to maximize $B$.
-We want to understand when $B$ is growing, where it is growing, and whether correction and value transport are growing with it.
+We do not want to maximize $K$.
+We want to understand when $K$ is growing, where it is growing, and whether correction and value transport are growing with it.
 
 \section{Failure Modes of Capability Measurement}
 \label{sec:failure-modes-measurement}
@@ -953,9 +953,9 @@ A compact definition is:
 \begin{equation}
 X \text{ is superintelligent relative to } H
 \quad\text{if}\quad
-B^{(h)}_X
+K^{(h)}_X
 \gg
-B^{(h)}_H
+K^{(h)}_H
 \end{equation}
 for important horizons and domains, especially where $X$'s actions affect $H$'s future options.
 
@@ -963,7 +963,7 @@ But this still underdescribes the danger.
 A system can be superintelligent in a narrow domain.
 The alignment-relevant case is broader:
 \begin{equation}
-B^{(h)}_X
+K^{(h)}_X
 \gg
 C_{\mathrm{corr},H}^{(h)},
 \end{equation}
@@ -977,7 +977,7 @@ If an organization increases model capability, tool access, memory, autonomy, an
 \begin{equation}
 R_{\mathrm{cap/corr}}
 =
-\frac{B^{(h)}_X}{C_{\mathrm{corr},H}^{(h)}}
+\frac{K^{(h)}_X}{C_{\mathrm{corr},H}^{(h)}}
 \end{equation}
 will rise even if every local change looks reasonable.
 
@@ -994,7 +994,7 @@ If long-horizon control information increases, require stronger correction.
 
 If composite-system competence rises faster than model competence, shift evaluation from model cards to system safety cases.
 
-If competence-to-growth efficiency $\eta$ is high, treat small capability differences as potentially important.
+If competence-to-growth efficiency $\eta_g$ is high, treat small capability differences as potentially important.
 
 If the system can expand its own boundary, create successors, or increase future action channels, move from ordinary deployment review to successor-stability review.
 
@@ -1012,13 +1012,13 @@ I_{\mathrm{pred}}\uparrow,\ I_{\mathrm{ctrl}}\approx 0
 I_{\mathrm{ctrl}}\uparrow
 & \text{more world control}
 & \text{restrict tools, add logging, audit causality} \\
-B^{(h)} \uparrow \text{ for large } h
+K^{(h)} \uparrow \text{ for large } h
 & \text{strategic horizon}
 & \text{require long-horizon evals and rollback} \\
 C_{\mathrm{act}}\uparrow
 & \text{broader actuator}
 & \text{permission review and sandboxing} \\
-\eta\uparrow
+\eta_g\uparrow
 & \text{faster conversion to influence}
 & \text{monitor deployment expansion} \\
 R_{\mathrm{cap/corr}}\uparrow
@@ -1056,7 +1056,7 @@ This chapter argues that capability should be measured as boundary-information c
 The following observations would weaken that view.
 
 \begin{itemize}
-\item Task-ontology benchmarks predict real-world control and correction failure as well as $B_X$ and horizon profiles across deployed systems.
+\item Task-ontology benchmarks predict real-world control and correction failure as well as $K_X$ and horizon profiles across deployed systems.
 \item Predictive and control mutual information cannot be estimated stably enough at system boundaries to support deployment decisions.
 \item Composite-system competence does not rise faster than model competence in realistic deployments, so boundary audits add little beyond model cards.
 \item The cap-to-correction ratio $R_{\mathrm{cap/corr}}$ fails to track incidents where capability outran oversight.
@@ -1069,14 +1069,14 @@ The following observations would weaken that view.
 
 \begin{itemize}
 \item Capability should be measured as useful prediction and control across a boundary, not only as task performance inside an evaluator's ontology.
-\item Blanket-information competence $B_X$ decomposes prediction, control, memory cost, and residual surprise; horizon profiles $B_X^{(h)}$ matter as much as the scalar.
+\item Blanket-information competence $K_X$ decomposes prediction, control, memory cost, and residual surprise; horizon profiles $K_X^{(h)}$ matter as much as the scalar.
 \item Dangerous capability often appears as rising control information and composite-system growth while benchmarks remain flat.
-\item Capability becomes alignment-relevant when $dB/dt$ outruns $dC_{\mathrm{corr}}/dt$ over the horizons that matter.
+\item Capability becomes alignment-relevant when $dK/dt$ outruns $dC_{\mathrm{raw}}/dt$ over the horizons that matter.
 \item Capability profiles distinguish oracles, actuators, strategic agents, bureaucracies, and deceptive systems that a single score would collapse.
 \item The measure is an instrument, not an objective: it can be Goodharted, boundary-dependent, and adversarially suppressed without perturbation audits.
 \end{itemize}
 
-The next chapter develops what happens when $B_X$ rises: capability growth as boundary expansion---predictive reach, control reach, memory, coordination, and successor creation widening what enters the system's loop.
+The next chapter develops what happens when $K_X$ rises: capability growth as boundary expansion---predictive reach, control reach, memory, coordination, and successor creation widening what enters the system's loop.
 
 \section*{Chapter References}
 

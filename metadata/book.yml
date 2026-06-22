@@ -240,6 +240,13 @@ chapters:
     word_target: 10000
     formal_density: medium
     reviewer_needed: [alignment, governance]
+  ch39b:
+    title: "What Survives an Adversary: Verifiability and Representability"
+    status: draft
+    word_target: 7000
+    formal_density: medium
+    reviewer_needed: [alignment, formal-verification]
+    note: "Minimal seed draft (2026-06-23). Inserted in Part IX between ch39 and ch40; filename '39b' avoids renumbering ch40-ch44. Displayed chapter numbers for Part X shift +1 until a full renumber."
   ch40:
     title: "Lethality Stress Test and Open Issues"
     status: draft

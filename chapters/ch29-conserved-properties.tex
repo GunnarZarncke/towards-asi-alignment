@@ -77,12 +77,14 @@ M_t,
 \Pi_t,
 B_t,
 \Phi_t,
-\mathcal{U}_t,
+U_{S,t},
 \mathcal{T}_t,
 L_t
 \right),
 \]
-where:
+where \(U_{S,t}\) is the \emph{system correction-update operator}---how human or institutional correction changes the system's future behaviour through updates to parameters, representation, or policy (Chapter~\ref{ch:correction-causal-channel}).
+It is distinct from the human \emph{value-update operator} \(U_H\) (\(V_{t+1}=U_H(V_t,E_t,D_t)\); Section~\ref{sec:relation-cev-ch24} and Chapter~\ref{ch:fixed-values-wrong-target}), which governs how civilization revises its own values.
+The remaining components are:
 
 \begin{itemize}
 \item \(C_t\) is the system boundary, including internal, sensory, active, and external variables.
@@ -90,7 +92,6 @@ where:
 \item \(\Pi_t\) is the policy or policy-generating procedure.
 \item \(B_t\) is the value-bundle coordinate system used to compress morally relevant pressures.
 \item \(\Phi_t\) is the bearer map, assigning value relevance to entities, states, and processes.
-\item \(\mathcal{U}_t\) is the correction-update operator by which human or institutional correction changes future behavior.
 \item \(\mathcal{T}_t\) is the transparency policy, meaning what is made visible to which auditors under which conditions.
 \item \(L_t\) is the latent control locus, the structure that actually controls future action.
 \end{itemize}
@@ -472,7 +473,7 @@ where:
 
 The capacity of the correction channel is bounded by the weakest link:
 \[
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 =
 \min_i I(X_i;X_{i+1}),
 \]
@@ -481,7 +482,7 @@ Correction-channel integrity then subtracts penalties for latency, manipulation,
 \[
 \mathrm{CCI}
 =
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 -
 \lambda_L L
 -
@@ -489,7 +490,7 @@ C_{\mathrm{corr}}
 -
 \lambda_R R
 -
-\lambda_O O_{\mathrm{mismatch}}.
+\lambda_O O.
 \]
 Here:
 

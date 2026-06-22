@@ -21,4 +21,4 @@ User asked for frontmatter current-status (WIP, AI-written, book-as-knowledge-ba
 - `tables/chapter-map.tex`
 
 ## Commits
-- (pending this session end)
+- `d8c6464` — Add frontmatter status and plain-language executive TL;DR.

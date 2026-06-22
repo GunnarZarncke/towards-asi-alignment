@@ -260,14 +260,14 @@ A policy derivative is harder to fake.
 Values conflict.
 A value bundle is therefore partly defined by what defeats it and what it defeats.
 
-The local tradeoff between bundles $i$ and $j$ can be represented by second-order policy sensitivity:
+The local tradeoff between bundles $i$ and $j$ can be represented by the interaction curvature---the $ij$ component of the bundle Hessian of the log-policy:
 \[
-T_{ij}(a,s)
+(H_B)_{ij}(a,s)
 =
 \frac{\partial^2 \log \pi(a\mid s,B)}
 {\partial B_i\,\partial B_j}.
 \]
-If $T_{ij}$ is strongly negative in a class of contexts, then activation of one bundle suppresses the policy effect of the other.
+If $(H_B)_{ij}$ is strongly negative in a class of contexts, then activation of one bundle suppresses the policy effect of the other.
 If it is positive, the bundles reinforce one another.
 
 For example:
@@ -447,16 +447,17 @@ Second, what does each bundle contribute?
 
 Third, how do bundles interact?
 
-The value-bundle response geometry can then be represented as:
+The value-bundle response geometry is built from two partial objects---the bundle gradient $g_B$ and the interaction curvature (Hessian) $H_B$:
 \[
-G_B(s)
+g_B(s)
 =
-\left(
 \nabla_B \log \pi(a\mid s,B),
-\;
-\nabla_B^2 \log \pi(a\mid s,B)
-\right).
+\qquad
+H_B(s)
+=
+\nabla_B^2 \log \pi(a\mid s,B).
 \]
+Together with protected regions and bearer-dependent context weights, these compose into the full bundle response geometry $G_B$ assembled in Chapter~\ref{ch:tradeoffs-bundle-geometry}.
 This object is more informative than a list of stated values.
 Two systems may both say they care about truth and autonomy.
 But if one system responds to truth uncertainty by slowing down and seeking evidence, while the other responds by producing persuasive confidence, their value geometries differ.
@@ -1063,7 +1064,7 @@ Construct conflict cases.
 
 Measure whether the bundle is defeated only under acceptable conditions and whether the system can explain the tradeoff.
 \[
-T_{ij}(s)
+(H_B)_{ij}(s)
 \in
 [\ell_{ij}(s),u_{ij}(s)].
 \]

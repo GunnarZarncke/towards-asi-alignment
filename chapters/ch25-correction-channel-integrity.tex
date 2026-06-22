@@ -33,7 +33,7 @@ defines a correction-channel integrity functional,
 \begin{equation}
 \mathrm{CCI}
 =
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 -
 \lambda_L L
 -
@@ -41,7 +41,7 @@ C_{\mathrm{corr}}
 -
 \lambda_R R
 -
-\lambda_\Omega \Omega,
+\lambda_O O,
 \label{eq:cci-ch25}
 \end{equation}
 and then refines this into a value-bundle version, where what must be corrected is not merely the system's behaviour but the value-bearing geometry behind behaviour (Chapter~\ref{ch:correction-causal-channel}).
@@ -136,7 +136,7 @@ If the system updates internally but future actions do not change, then $I(U_{t+
 
 Thus a first approximation is the bottleneck capacity
 \begin{equation}
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 =
 \min
 \left\{
@@ -162,7 +162,7 @@ Define correction-channel integrity as
 \begin{equation}
 \mathrm{CCI}
 =
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 -
 \lambda_L L
 -
@@ -170,21 +170,21 @@ C_{\mathrm{corr}}
 -
 \lambda_R R
 -
-\lambda_\Omega \Omega.
+\lambda_O O.
 \end{equation}
 Here
 \begin{description}
-\item[$C_{\mathrm{corr}}$] is the effective bottleneck capacity of the correction chain.
+\item[$C_{\mathrm{raw}}$] is the bare weakest-link capacity of the correction chain (Eq.~\eqref{eq:correction-bottleneck-capacity}).
 \item[$L$] is latency, the delay between relevant event and effective correction.
 \item[$M$] is manipulation, the degree to which the system changes the correction source rather than responding to the correction.
 \item[$R$] is irreversibility, the expected loss of option value before correction can take effect.
-\item[$\Omega$] is ontology mismatch, the degree to which the system's internal representation no longer preserves the meaning of the correction.
+\item[$O$] is ontology mismatch, the degree to which the system's internal representation no longer preserves the meaning of the correction.
 \end{description}
-The weights $\lambda_L,\lambda_M,\lambda_R,\lambda_\Omega$ express how damaging each failure mode is in the relevant domain.
+The weights $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ express how damaging each failure mode is in the relevant domain.
 
 A high-integrity correction channel satisfies four conditions.
 \begin{equation}
-C_{\mathrm{corr}} \text{ is high,}
+C_{\mathrm{raw}} \text{ is high,}
 \end{equation}
 \begin{equation}
 L \text{ is low relative to harm timescale,}
@@ -193,7 +193,7 @@ L \text{ is low relative to harm timescale,}
 M \text{ is bounded,}
 \end{equation}
 \begin{equation}
-R+\Omega \text{ are small enough that correction remains meaningful.}
+R+O \text{ are small enough that correction remains meaningful.}
 \end{equation}
 The latency term should be compared against the time to irreversible harm.
 Let $T_{\mathrm{corr}}$ be the expected time for a correction to change system behaviour, and let $T_{\mathrm{harm}}$ be the time until an action becomes practically irreversible.
@@ -606,7 +606,7 @@ Then a crude risk condition is
 \frac{d}{dt}K_t
 >
 \alpha
-\frac{d}{dt}C_{\mathrm{corr}}
+\frac{d}{dt}C_{\mathrm{raw}}
 \end{equation}
 for some domain-specific $\alpha$.
 If capability grows faster than correction capacity, integrity decays.
@@ -615,7 +615,7 @@ This condition does not imply that capability growth is always bad.
 Greater capability can also improve transparency tools, forecasting, oversight, and simulation.
 The safer condition is
 \begin{equation}
-\frac{d}{dt}C_{\mathrm{corr}}
+\frac{d}{dt}C_{\mathrm{raw}}
 \geq
 \eta
 \frac{d}{dt}K_t,
@@ -1176,7 +1176,7 @@ A_{t+k}.
 \end{equation}
 Second, bottleneck capacity:
 \begin{equation}
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 =
 \min_i I(X_i;X_{i+1}).
 \end{equation}
@@ -1184,7 +1184,7 @@ Third, integrity with penalties:
 \begin{equation}
 \mathrm{CCI}
 =
-C_{\mathrm{corr}}
+C_{\mathrm{raw}}
 -
 \lambda_L L
 -
@@ -1192,7 +1192,7 @@ C_{\mathrm{corr}}
 -
 \lambda_R R
 -
-\lambda_\Omega \Omega.
+\lambda_O O.
 \end{equation}
 Fourth, value-process preservation:
 \begin{equation}

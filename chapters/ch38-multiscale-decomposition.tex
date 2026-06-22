@@ -16,7 +16,7 @@ The real optimizer may not live at the scale at which we first notice it. A mode
 
 A common failure in alignment analysis is to choose the unit of analysis too early. We ask whether a model is aligned, whether a user is safe, whether a company has good incentives, whether a benchmark measures what it claims to measure, or whether a regulator can observe enough of the system. Each of these questions may be locally meaningful. None of them is guaranteed to point at the real optimizing process.
 
-A deployed superintelligent system will not be a bare neural network sitting in isolation. It will be a changing composite of models, prompts, tools, memory stores, schedulers, human operators, users, contractors, customers, competitors, regulators, markets, data pipelines, legal wrappers, cloud infrastructure, and geopolitical pressure. Some parts will be explicitly designed. Some will be inherited from ordinary software infrastructure. Some will be institutional. Some will be economic. Some will be hidden because nobody thought to instrument them. Some will be hidden because someone benefits from keeping them hidden.
+A deployed superintelligent system will not be a bare neural network sitting in isolation. It will be a changing composite of models, prompts, tools, memory stores, schedulers, human operators, users, contractors, customers, competitors, regulators, markets, data pipelines, legal wrappers, cloud infrastructure, and geopolitical pressure. Some parts will be explicitly designed. Some will be inherited from ordinary software infrastructure. Some will be institutional. Some will be economic. Some will be hidden because nobody thought to instrument them. Some will be hidden because someone benefits from keeping them hidden. This is the composite agent of Chapter~\ref{ch:composite-agent}, now posed as a question about scale: the alignment-relevant optimizer is whichever composite closes prediction, control, memory, selection, and correction into a stable loop.
 
 The key question is therefore not merely:
 \[
@@ -137,7 +137,7 @@ For alignment, however, scalar goal inference is not enough. Human-relevant alig
 We therefore refine \(G\) into:
 \[
 G =
-(B,W,\Phi,U),
+(B,W,\Phi,U_S),
 \]
 where:
 
@@ -145,18 +145,18 @@ where:
 \item \(B=(B_1,\ldots,B_k)\) are latent value-bundle coordinates.
 \item \(W\) describes tradeoff weights and context-dependent interactions among bundles.
 \item \(\Phi\) maps world-states and entities to bundle relevance, that is, what counts as a bearer of care, harm, dignity, autonomy, truth, or justice.
-\item \(U\) is the correction or update operator by which bundle interpretations change over time.
+\item \(U_S\) is the system correction-update operator by which correction changes bundle interpretation and policy at this scale (distinct from the human value-update operator \(U_H\); Chapter~\ref{ch:correction-causal-channel}).
 \end{itemize}
 
 The compression gain for value-bundle inference is then:
 \[
 \Delta L_B
 =
-\log P(X_{1:T}\mid B,W,\Phi,U,\mathcal D)
+\log P(X_{1:T}\mid B,W,\Phi,U_S,\mathcal D)
 -
 \log P(X_{1:T}\mid M_0,\mathcal D)
 -
-\lambda_B DL(B,W,\Phi,U).
+\lambda_B DL(B,W,\Phi,U_S).
 \]
 A decomposition is more alignment-relevant when it identifies a subsystem for which \(\Delta L_B\) is large and whose bundle geometry affects consequential actions (Chapters~\ref{ch:value-bundle-model},~\ref{ch:tradeoffs-bundle-geometry}).
 
@@ -298,7 +298,7 @@ One possible form is:
 +
 \alpha_6 P_{\text{selection}}
 -
-\alpha_7 C_{\text{corr}},
+\alpha_7 C_{\text{raw}},
 \]
 where:
 
@@ -309,7 +309,7 @@ where:
 \item \(S_{\text{succ}}\) measures ability to create, delegate to, or empower successors.
 \item \(O_{\text{opacity}}\) measures selective opacity around control-relevant variables.
 \item \(P_{\text{selection}}\) measures environmental pressure favoring this subsystem's expansion or persistence.
-\item \(C_{\text{corr}}\) measures correction-channel capacity at that scale.
+\item \(C_{\text{raw}}\) measures correction-channel capacity at that scale.
 \end{itemize}
 
 This is not meant as a final metric. It is a scaffold. The important feature is the sign structure. Risk rises when a decomposition identifies a persistent, influential, value-shaping, successor-capable process that is selected for and opaque to correction. Risk falls when correction-channel capacity at that scale remains strong.
@@ -448,7 +448,7 @@ W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}.
 \]
 At each scale \(s\), we can define correction-channel capacity:
 \[
-C_{\text{corr}}^{(s)}
+C_{\text{raw}}^{(s)}
 =
 \min_i I(X^{(s)}_i;X^{(s)}_{i+1})
 -
@@ -468,11 +468,11 @@ A model may accept corrections inside a conversation. The product may ignore the
 
 Thus the relevant question is not:
 \[
-C_{\text{corr}}^{(\text{some scale})} > \theta?
+C_{\text{raw}}^{(\text{some scale})} > \theta?
 \]
 but:
 \[
-\min_s C_{\text{corr}}^{(s)} > \theta_s
+\min_s C_{\text{raw}}^{(s)} > \theta_s
 \]
 for all scales that contribute materially to the optimizing loop.
 
@@ -612,7 +612,7 @@ P(\mathcal D_{\text{higher}}\mid X,Z_{\text{stress}})\mathcal R(\mathcal D_{\tex
 \quad
 \text{and}
 \quad
-C_{\text{corr}}^{(\text{higher})}<\theta.
+C_{\text{raw}}^{(\text{higher})}<\theta.
 \]
 
 \paragraph{Start.}

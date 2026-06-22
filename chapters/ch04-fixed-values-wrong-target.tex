@@ -152,7 +152,7 @@ A fixed utility function fails in at least five ways.
 
 \subsection{It Freezes a Moving Process}
 
-If we encode $U_t$, we encode values as they appear at time $t$.
+If we encode $U_H$, we encode values as they appear at time $t$.
 But humans expect some value change to be legitimate.
 Children become adults.
 Societies abolish practices they once accepted.
@@ -361,10 +361,10 @@ The change should not reduce the person's or civilization's future capacity to n
 A child learning mathematics becomes more able to think.
 A population made dependent on an AI companion for all social interpretation may become less able to judge the companion.
 
-Let $C_{\text{corr}}$ denote correction capacity.
+Let $C_{\text{raw}}$ denote correction capacity.
 Legitimate value change should not systematically reduce it:
 \[
-\Delta C_{\text{corr}} \geq -\epsilon
+\Delta C_{\text{raw}} \geq -\epsilon
 \]
 unless the reduction is itself explicitly understood, reversible, and endorsed under strong safeguards.
 
@@ -590,16 +590,16 @@ It is value-process preservation.
 
 Let the human value process at time $t$ be represented by the tuple
 \[
-\mathcal{V}_t
+V_t
 =
-(B_t, W_t, \Phi_t, U^H_t, C^H_t),
+(B_t, W_t, \Phi_t, U_H, C^H_t),
 \]
 where
 \begin{itemize}
 \item $B_t$ is the value-bundle basis and current activation structure,
 \item $W_t$ is the tradeoff geometry among bundles,
 \item $\Phi_t$ is the bearer map from represented entities and states to value relevance,
-\item $U^H_t$ is the human or civilizational value-update operator,
+\item $U_H$ is the human or civilizational value-update operator,
 \item $C^H_t$ is the correction channel through which humans can notice, object, revise, and redirect.
 \end{itemize}
 
@@ -609,7 +609,7 @@ V_t = V_0.
 \]
 It is something closer to
 \[
-\mathcal{V}_t \in \mathcal{S}_{\text{human-correctable}}
+V_t \in \mathcal{S}_{\text{human-correctable}}
 \quad
 \forall t,
 \]
@@ -697,7 +697,7 @@ It must be a bounded guarantee that the system remains inside a region where hum
 \[
 P\left(
 \forall t \leq T:
-\mathcal{V}_t \in \mathcal{S}_{\text{human-correctable}}
+V_t \in \mathcal{S}_{\text{human-correctable}}
 \right)
 \geq 1-\delta.
 \]
@@ -745,9 +745,9 @@ They include current preferences and verbal principles, but they also include va
 
 The alignment target should therefore shift from preserving a static utility function to preserving a human-correctable value process:
 \[
-\mathcal{V}_t
+V_t
 =
-(B_t, W_t, \Phi_t, U^H_t, C^H_t)
+(B_t, W_t, \Phi_t, U_H, C^H_t)
 \in
 \mathcal{S}_{\text{human-correctable}}.
 \]

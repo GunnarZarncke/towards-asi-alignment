@@ -137,7 +137,7 @@ An artifact conducts when it preserves enough meaning and incentive relevance as
 
 For an artifact \(a\) moving from actor \(i\) to actor \(j\), define
 \[
-\kappa_{ij}(a)
+\chi_{ij}(a)
 =
 \frac{
 b_{ij}(a)\,p_{ij}(a)\,\rho_{ij}(a)
@@ -156,7 +156,7 @@ Here:
 
 The artifact conducts across edge \(i\to j\) when
 \[
-\kappa_{ij}(a)>1.
+\chi_{ij}(a)>1.
 \]
 A brilliant paper may have high intrinsic value but low conductivity if \(p\) is low or \(c\) is high. A simple checklist may have lower intrinsic depth but higher conductivity if it is cheap, legible, and tied to existing decisions.
 
@@ -171,13 +171,13 @@ Consider a network of actors:
 \[
 G=(V,E),
 \]
-where nodes are labs, research groups, funders, auditors, regulators, insurers, standards bodies, companies, and civil-society organizations. An edge \(i\to j\) is open for artifact \(a\) when it conducts, \(\kappa_{ij}(a)>1\). Let
+where nodes are labs, research groups, funders, auditors, regulators, insurers, standards bodies, companies, and civil-society organizations. An edge \(i\to j\) is open for artifact \(a\) when it conducts, \(\chi_{ij}(a)>1\). Let
 \[
-\varphi_a = P(\kappa_{ij}(a)>1)
+\varphi_a = P(\chi_{ij}(a)>1)
 \]
 be the probability that a randomly sampled relevant edge conducts artifact \(a\).
 
-This is the same cooperation graph analyzed in Chapter~\ref{ch:coordination-bottleneck}, with the generic cooperativity index \(\kappa_{ij}\) specialized to artifact conductivity \(\kappa_{ij}(a)\). We therefore inherit its percolation result rather than re-deriving it: a giant component of artifact adoption appears once \(\varphi_a\) exceeds the threshold \(\varphi_c\) of Equation~\eqref{eq:cooperation-percolation}, which the degree distribution of the institutional network fixes.
+This is the same cooperation graph analyzed in Chapter~\ref{ch:coordination-bottleneck}, with the generic cooperativity index \(\kappa_{ij}\) specialized to artifact conductivity \(\chi_{ij}(a)\). We therefore inherit its percolation result rather than re-deriving it: a giant component of artifact adoption appears once \(\varphi_a\) exceeds the threshold \(\varphi_c\) of Equation~\eqref{eq:cooperation-percolation}, which the degree distribution of the institutional network fixes.
 
 What the specialization adds is interpretation. This is the first formal picture of the Alignment Attractor: safety practice becomes field-level rather than local when enough artifacts cross enough institutional boundaries \autocite{zarncke2025attractor,hamilton1964genetical}.
 
@@ -1017,7 +1017,7 @@ The Alignment Attractor is a self-stabilizing ecosystem that converts alignment-
 
 Its central quantity is artifact conductivity:
 \[
-\kappa_{ij}(a)
+\chi_{ij}(a)
 =
 \frac{
 b_{ij}(a)\,p_{ij}(a)\,\rho_{ij}(a)

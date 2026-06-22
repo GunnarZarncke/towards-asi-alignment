@@ -71,7 +71,7 @@ Second, there is the \emph{bearer map}.
 This determines which parts of the world activate which value variables.
 
 Let $Z_t$ be the system's world representation at time $t$.
-Let $B_t \in \mathbb{R}^m$ be its latent value-bundle state, with coordinates
+Let $B_t \in \mathbb{R}^k$ be its latent value-bundle state, with coordinates
 \[
 B_t =
 \left(
@@ -88,7 +88,7 @@ B^{\text{non-suffering}}_t,
 Let $\pi(a \mid s,B,\Phi)$ be the policy induced by state $s$, bundle state $B$, and bearer map $\Phi$.
 The bearer map is a function
 \[
-\Phi_t : Z_t \times C_t \rightarrow [0,1]^m,
+\Phi_t : Z_t \times C_t \rightarrow [0,1]^k,
 \]
 where $C_t$ denotes context, and $\Phi_{t,k}(z,c)$ gives the degree to which represented entity, process, relation, or state $z$ is a bearer of bundle $k$ in context $c$.
 
