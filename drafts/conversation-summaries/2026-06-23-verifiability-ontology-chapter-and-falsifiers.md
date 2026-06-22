@@ -29,4 +29,4 @@ Author asked, across a multi-turn session: (1) tabulate each chapter's "What Wou
 - `chapters/ch40-lethality-stress-test-open-issues.tex` (hostile-critic target)
 
 ## Commits
-- `8ee4956` — Propagate canonical notation, refresh ledgers, and tighten continuity bridges.
+- `54ad1ea` — Propagate canonical notation, refresh ledgers, and tighten continuity bridges.

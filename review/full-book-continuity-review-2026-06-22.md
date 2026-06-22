@@ -1,8 +1,11 @@
 # Full-Book Review — Continuity, Redundancy, Consistency, Completeness
 
-**Date:** 2026-06-22
+**Date:** 2026-06-22 · **Session update:** 2026-06-23
 **Scope:** Whole manuscript (`book.tex`): frontmatter, Parts I–X (ch01–ch44), appendices A–H.
-**Status of this document:** Issue list + suggestions only. **No manuscript files were changed.** Nothing here has been executed; this is for human review and editing.
+
+> **2026-06-23 session.** Many Tier-2 consistency and continuity items were addressed in commit `54ad1ea`. Legend: ✅ fixed this session · 🔶 partial · ⬜ open. Tracking lives in `review/fix-plans-2026-06-22.md` (updated with the same marks).
+
+**Status of this document:** Issue list + suggestions. **Partial execution** — see §8 progress column and §5/§6 status marks. Original review text preserved; marks added 2026-06-23.
 
 Per-part deep-read working notes (with full line-referenced detail) live in `review/_pass/part-01.md … part-10.md`. This file is the consolidated synthesis. Where an item says "see Part N notes," the granular line numbers are in `review/_pass/part-0N.md`.
 
@@ -12,7 +15,7 @@ Per-part deep-read working notes (with full line-referenced detail) live in `rev
 
 - **What was read.** `INSTRUCTIONS.md` (the intended formal spine §18, conceptual spine §19, required chapter elements §10, consolidation rules §4.1), `metadata/book.yml`, `frontmatter/*`, `metadata/notation.md`, `metadata/terminology.md`, `metadata/preamble.tex`, all 44 chapter files, all part files, and the appendix stubs. Structural indexes were built for every `\chapter`/`\section`/`\subsection`, every `\label`/`\ref`, every `eq:` label, every `\index`, and the `chapterthesis`/`epigraph`/`decisionbox`/`failurebox` usage.
 - **How chapters were read.** Each part (4–5 consecutive chapters) was read in full, in order, by a dedicated reviewer pass so that intra-part flow could be judged on the actual prose, not just headings. The lead pass additionally read every part-to-part boundary (closing + opening passages of adjacent chapters) directly, and did the cross-part formula/notation reconciliation that no single part-pass can see.
-- **Known limitations.** (1) The book is ~35,700 lines; this pass prioritized structure, cross-references, formal-object consistency, and narrative flow over line-by-line copy-editing (typos, grammar, citation completeness were only noted opportunistically). (2) `\ref`/`\label` resolution was checked by name-matching, not by a full LaTeX build — a `make pdf` + `make check` is still recommended to catch broken refs and undefined citations mechanically. (3) Bibliographic correctness (whether each `\autocite` key exists and is the right work) was not exhaustively verified. (4) Claims/assumptions/uncertainty ledgers in `metadata/` were not cross-checked against chapter claims.
+- **Known limitations.** (1) The book is ~35,700 lines; this pass prioritized structure, cross-references, formal-object consistency, and narrative flow over line-by-line copy-editing (typos, grammar, citation completeness were only noted opportunistically). (2) `\ref`/`\label` resolution was checked by name-matching, not by a full LaTeX build — a `make pdf` + `make check` is still recommended to catch broken refs and undefined citations mechanically. 🔶 **`./build.sh` run clean post-2026-06-23 edits; `make check` not re-run.** (3) Bibliographic correctness (whether each `\autocite` key exists and is the right work) was not exhaustively verified. (4) Claims/assumptions/uncertainty ledgers in `metadata/` were not cross-checked against chapter claims. ✅ **Ledgers rewritten 2026-06-23** (`claims-`, `assumptions-`, `uncertainty-ledger.md`).
 
 ---
 
@@ -22,7 +25,7 @@ Per-part deep-read working notes (with full line-referenced detail) live in `rev
 2. **All eight appendices (A–H) are 4-line stubs**, including the notation reference (appA) and glossary (appF) that the body text repeatedly leans on, and the safety-case template (appG) that ch39 is supposed to instantiate. Several frontmatter pieces are stubs too (preface, dedication, acknowledgements), and the Executive Overview has multiple `[STUB]` blocks. See §2.
 3. **The required "What Would Change This View" section is missing or mis-titled in ~26 of 44 chapters** — a systematic required-element gap, concentrated in Parts IV, V, VII, VIII, X and in ch01/ch05/ch24/ch25. The exact heading currently exists *only* in chapters that are otherwise stubs (ch33/ch39/ch43/ch44) plus the Part I–III/VI compliant ones. See §3.
 4. **A small set of formal objects is re-derived many times across chapters** instead of being stated once and cross-referenced. The correction chain `W→O→J→D→C→U→A` appears with ~6 chapter-suffixed labels; CCI ~5×; value-bundle response geometry `G_B` ~6×; bundle-inference argmax ~6×; the "seven conserved properties" 3–5×; the CEV contrast 4× in Part VI alone. This is the dominant redundancy theme. See §4.
-5. **Several genuine cross-chapter inconsistencies** (not just duplication): the `ΔL` intentional-gain sign convention is inverted between the Introduction and ch21–23; `B` means *capability* in Part III but *value bundle* in Part IV; `G_B` has three different definitions; the "seven conserved properties" lists do not match across ch28/29/31; the parasite-persistence criterion differs between ch10 and ch34; `κ = bpρ/c` is reused for both *cooperativity* and *artifact conductivity*; the pivotal-process notation ch40 attributes to ch35 is absent from ch35. See §5.
+5. **Several genuine cross-chapter inconsistencies** (not just duplication): the `ΔL` intentional-gain sign convention is inverted between the Introduction and ch21–23; `B` means *capability* in Part III but *value bundle* in Part IV; `G_B` has three different definitions; the "seven conserved properties" lists do not match across ch28/29/31; the parasite-persistence criterion differs between ch10 and ch34; `κ = bpρ/c` is reused for both *cooperativity* and *artifact conductivity*; the pivotal-process notation ch40 attributes to ch35 is absent from ch35. See §5. 🔶 **Most symbol clashes fixed 2026-06-23 (§5 items 1–2, 4–8, 10–11, 15); seven-properties list, goal-laundering stages, pivotal formalization, bundle catalogue, bib keys remain open.**
 
 The conceptual spine itself is sound and the chapter-to-chapter narrative (where chapters are drafted) generally flows well with explicit "previous/next" transitions. The problems are (a) unfinished landing chapters/appendices, (b) a recurring required-section omission, and (c) duplication/notation drift from chapters being drafted independently without a final reconciliation pass.
 
@@ -74,12 +77,14 @@ INSTRUCTIONS §10 requires every chapter to contain a section titled **exactly**
 **Missing entirely:** ch01, ch05, ch15, ch16, ch17, ch18, ch19, ch22, ch24, ch25, ch28, ch29, ch30, ch31, ch32, ch34, ch35, ch38, ch42.
 
 **Present but mis-titled (rename needed):**
-- ch20 "Where the Argument Is Shaky" (L1042)
+- ✅ ch20 "Where the Argument Is Shaky" → retitled **What Would Change This View** (2026-06-23)
 - ch21 "Limits of the Compression Test" (L919)
 - ch23 "The Philosophical Boundary" (L804)
 - ch36 "What evidence would update us?" (L1017)
 - ch37 "A steelman critic" (L802)
 - ch41 "What would update this chapter?" (L490)
+
+🔶 **ch39b** (*What Survives an Adversary*, inserted Part IX) has WWCTV with compliant title (2026-06-23).
 
 This is ~26 chapters missing or mis-titled. Several already contain the right *material* under a different heading (ch17 "Empirical Signatures" is essentially a falsification list; ch29 "Why These Properties Are Not Enough"; ch36/ch37/ch41 as above) and only need retitling/reframing. **Decision needed:** either enforce the exact heading book-wide, or formally bless the prose substitutes as house style and fix the stubs — currently the exact heading exists mostly in the unwritten chapters, which is the worst of both worlds.
 
@@ -126,7 +131,7 @@ Recurring example scenarios used in multiple chapters with the same moral: the *
 - **ch22** states `ΔL_transport` three times within the single chapter (L47, L232, L679).
 - **ch25** states the correction chain three times and CCI three times within the chapter.
 - **Epigraph duplicates `chapterthesis` verbatim** in several chapters (e.g. ch06, ch15, ch20, ch26) — the boxed thesis and the epigraph beneath it are the same words.
-- **`decisionbox`/`failurebox`/`assumptionbox`/`formalbox`/`examplebox`** environments are defined in `metadata/preamble.tex` but **used by no chapter** (chapters use plain `\section`s). Either adopt them or drop them; meanwhile "Decision relevance" as a required element is satisfied via prose, and is genuinely thin/late in a few chapters (ch06, ch15, ch20).
+- **`decisionbox`/`failurebox`/`assumptionbox`/`formalbox`/`examplebox`** environments are defined in `metadata/preamble.tex` but **used by no chapter** (chapters use plain `\section`s). Either adopt them or drop them; meanwhile "Decision relevance" as a required element is satisfied via prose, and is genuinely thin/late in a few chapters (ch06, ch15, ch20). ✅ **Removed from preamble 2026-06-23.**
 
 ---
 
@@ -134,27 +139,27 @@ Recurring example scenarios used in multiple chapters with the same moral: the *
 
 These are correctness issues a careful reader will trip over; they should be reconciled (ideally pinned down once in `appA-notation`).
 
-1. **`ΔL` intentional-gain sign/convention is inverted.** Introduction (L139–147): `ΔL = L_mechanistic − L_intentional + λ DL(R)`, framed as "earns its keep when it saves bits" (L = description length, lower better). ch21 (`eq:intentional-gain-simple`, L55–63): `ΔL_int = L(M_int|X) − L(M_mech|X) − λ DL(G)` with L declared "log evidence/predictive score" (higher better) and `ΔL_int>0` = intention wins. ch22/ch23 follow ch21. INSTRUCTIONS §18.7 gives yet a third ordering. The two L-term order *and* the sign of the `λDL` penalty differ; a reader carrying the Intro formula into ch21 reads every inequality backwards. **Pick one convention book-wide** (state whether L is bits or log-evidence) and fix the Introduction or add a reconciling footnote at `eq:intentional-gain-simple`.
-2. **`G_B` defined three ways:** ch16 `(∇_B log π, ∇²_B log π)` (gradient+Hessian); ch17 gradient field only; ch19 `(J,H,C,Φ)` 4-tuple. Same symbol, three referents. Declare ch19 canonical; have ch16/ch17 cross-ref or use distinct symbols for their partial objects. Related: the "interaction curvature" is `∂²π/∂B∂B` (ch15), `T_ij` on `log π` (ch16), `H_ij` on `μ_π` (ch19) — three names/operators.
-3. **"Seven conserved properties" lists do not match.** ch29 (canonical): boundary closure · memory lineage · value-bundle response geometry · bearer-map continuity · correction-channel capacity · transparency/self-transparency · control-locus continuity. ch28's invariant profile splits correction into two members (`U_H` and CCI) and *drops* control-locus. ch31's certification domains *add* competence/growth-rate and successor-closure and *drop* memory-lineage and control-locus (and a 4th sub-list in ch31 swaps in operating-envelope inheritance). The text calls all of these "the seven." Declare ch29 canonical and make ch28/ch31 quote it or explicitly state they re-package it.
-4. **CCI penalty terms inconsistent.** ch24: five penalties incl. Goodhart `λ_G G`, ontology `O_mis`, capacity `C_raw`. ch25 (the "integrity" chapter): four penalties, drops Goodhart, renames ontology `Ω`, capacity `C_corr` — even though ch25 has a whole "Goodharting the Correction Channel" section. ch26/ch27/ch23/ch36/ch37/ch38 each pick a 4-term variant with the ontology term written `O_mis`/`Ω`/`O_mismatch` and capacity `C_raw`/`C_corr`/`min_i I`. Pick one canonical functional (decide Goodhart in/out; one symbol for ontology; one for capacity).
-5. **`B` symbol clash across parts.** `B` = capability/boundary-information (the "bitwise-IQ" competence functional) in Part III (ch11–13), but `B` = value-bundle activation vector in Part IV+. ch14 already side-steps this by renaming the functional `K`, which then breaks consistency with ch11–13 and the spine. Fix once (rename one of the two objects, or add a prominent notation note at the Part IV opening).
-6. **Residual-surprise glyph drift:** `S_X` (ch11/12) vs `S^(i)` (ch13) vs `\mathcal{S}` (ch14). And `η` is overloaded in ch11 (growth efficiency *and* coordination efficiency). And collective-competence gain/loss is `B_coord`/`C_friction` (ch11) vs `G_coord`/`Ω_coord` (ch13).
-7. **Value-update operator + value-state tuple have ~4 forms each.** Operator: `U_t` (ch15), `U_H` (ch17/18/26/42), `U^H_t` (ch41/Intro). Value-state tuple: `(B_t,Φ_t,U^H_t)` (Intro), `V_t=(B,W,Φ,U^H,C^H)` (ch04, 5-tuple), `V_t=(B_t,W_t,Φ_t)` (ch41, 3-tuple roman), `𝒱_t=(B_t,W_t,Φ_t,U_t)` (ch42, 4-tuple calligraphic). Reconcile.
-8. **`Φ` overloaded inside ch17:** bearer map `Φ_j` (L449, L610) vs feature matrix `Φ∈ℝ^{N×n}` (L358) in the same chapter. Rename the feature matrix. Bundle dimension symbol also drifts: `k` (ch16/17/19) vs `m` (ch18).
-9. **Goal-laundering: four LAYERS vs four STAGES.** ch37 layers = semantic / **bundle** / bearer / correction; ch36 stages = semantic preservation / **proxy substitution** / bearer narrowing / correction capture. Both are presented as "the four", second item differs. Align ch36 to ch37's names (or drop ch36's competing list). Also the laundering index (ch37 GLI) vs goal-laundering signature (ch10) are never reconciled.
-10. **Parasite-persistence criterion differs.** ch10 (matches the spine): `C_X < H(A_Y) − λ_Y H(I_Y)/β`. ch34: `C_H < H(A_Y) + K_Y − L_Y` (camouflage `K_Y`, maintenance `L_Y`). Two non-matching formalizations of the same phenomenon; also host-capacity symbol `C_X` vs `C_H`. Pick one or add a bridging note.
-11. **`κ = bpρ/c` overloaded.** Used for *cooperativity index* (ch10/ch13 canonical/ch33) and for *artifact conductivity* `κ_ij(a)` (ch35). Meanwhile ch34 defines artifact conductivity a *different* way: `χ(A,H)=I(R;D_H|A)−I(R;D_H)`. So "artifact conductivity" itself has two formal definitions (ch34 χ vs ch35 κ(a)), and κ means two different things. Reconcile or cross-ref explicitly. (Also: ch13 re-derives κ without crediting ch10's earlier definition; ch33 cites Hamilton but not ch13's canonical `eq:kappa-coordination`.)
-12. **Pivotal-process notation `B_race → B_certified-deployment` is in ch40 but not ch35.** ch40 (L56, comment L117) attributes the formalization to ch35, but ch35 uses `B_align`/`S_align`/`C_certified` and never states `B_race → B_certified-deployment`. Add it to ch35 or fix ch40's pointer.
-13. **Bundle example-list drift.** The candidate-bundle roster gains/loses members across chapters: +Learning/Legacy (ch15), +legitimacy (ch28), +prudence (ch29), +protection (ch30), +truth-contact (ch31), vs the ch16 catalogue. Align to ch16's canonical roster.
-14. **Bib-key inconsistency:** Critch "boundaries" cited as `critch2022boundaries` (ch28) and `critch2022boundaries3a` (ch29/ch31). Verify `.bib` and unify.
-15. **`\MI` macro not used uniformly:** ch02 writes raw `I(...)` for mutual information where the rest of Part I uses the `\MI` macro.
-16. **Capacity vs integrity used loosely:** "correction-channel capacity" (`C_corr`) and "correction-channel integrity" (CCI = capacity − penalties) are sometimes used interchangeably (ch28/ch29/ch31).
+1. ✅ **`ΔL` intentional-gain sign/convention is inverted.** Introduction (L139–147): `ΔL = L_mechanistic − L_intentional + λ DL(R)`, framed as "earns its keep when it saves bits" (L = description length, lower better). ch21 (`eq:intentional-gain-simple`, L55–63): `ΔL_int = L(M_int|X) − L(M_mech|X) − λ DL(G)` with L declared "log evidence/predictive score" (higher better) and `ΔL_int>0` = intention wins. ch22/ch23 follow ch21. INSTRUCTIONS §18.7 gives yet a third ordering. **Fixed 2026-06-23:** Introduction flipped to ch21 convention.
+2. ✅ **`G_B` defined three ways:** ch16 `(∇_B log π, ∇²_B log π)` (gradient+Hessian); ch17 gradient field only; ch19 `(J,H,C,Φ)` 4-tuple. **Fixed 2026-06-23:** ch16/17 use `g_B`/`H_B`; ch19 canonical `G_B`.
+3. ⬜ **"Seven conserved properties" lists do not match.** ch29 (canonical): boundary closure · memory lineage · value-bundle response geometry · bearer-map continuity · correction-channel capacity · transparency/self-transparency · control-locus continuity. ch28's invariant profile splits correction into two members (`U_H` and CCI) and *drops* control-locus. ch31's certification domains *add* competence/growth-rate and successor-closure and *drop* memory-lineage and control-locus (and a 4th sub-list in ch31 swaps in operating-envelope inheritance). The text calls all of these "the seven." Declare ch29 canonical and make ch28/ch31 quote it or explicitly state they re-package it.
+4. ✅ **CCI penalty terms inconsistent.** ch24: five penalties incl. Goodhart `λ_G G`, ontology `O_mis`, capacity `C_raw`. ch25 (the "integrity" chapter): four penalties, drops Goodhart, renames ontology `Ω`, capacity `C_corr` — even though ch25 has a whole "Goodharting the Correction Channel" section. **Fixed 2026-06-23:** `C_raw`/`CCI` book-wide; Goodhart out of functional; ontology `O`.
+5. ✅ **`B` symbol clash across parts.** `B` = capability/boundary-information in Part III (ch11–13), but `B` = value-bundle activation vector in Part IV+. **Fixed 2026-06-23:** capability renamed to `K` in ch11–13; `B` reserved for value bundle.
+6. ✅ **Residual-surprise glyph drift:** `S_X` (ch11/12) vs `S^(i)` (ch13) vs `\mathcal{S}` (ch14). And `η` is overloaded in ch11 (growth efficiency *and* coordination efficiency). And collective-competence gain/loss is `B_coord`/`C_friction` (ch11) vs `G_coord`/`Ω_coord` (ch13). **Fixed 2026-06-23:** `S_X`, `η_g`/`η_c`, `G_coord`/`Ω_coord`.
+7. ✅ **Value-update operator + value-state tuple have ~4 forms each.** Operator: `U_t` (ch15), `U_H` (ch17/18/26/42), `U^H_t` (ch41/Intro). Value-state tuple: `(B_t,Φ_t,U^H_t)` (Intro), `V_t=(B,W,Φ,U^H,C^H)` (ch04, 5-tuple), `V_t=(B_t,W_t,Φ_t)` (ch41, 3-tuple roman), `𝒱_t=(B_t,W_t,Φ_t,U_t)` (ch42, 4-tuple calligraphic). **Fixed 2026-06-23:** `U_H` + roman `V_t`; system correction operator `U_S` kept distinct in ch24/29/38.
+8. ✅ **`Φ` overloaded inside ch17:** bearer map `Φ_j` (L449, L610) vs feature matrix `Φ∈ℝ^{N×n}` (L358) in the same chapter. Rename the feature matrix. Bundle dimension symbol also drifts: `k` (ch16/17/19) vs `m` (ch18). **Fixed 2026-06-23:** feature matrix → `F`; bundle dim → `k`.
+9. ⬜ **Goal-laundering: four LAYERS vs four STAGES.** ch37 layers = semantic / **bundle** / bearer / correction; ch36 stages = semantic preservation / **proxy substitution** / bearer narrowing / correction capture. Both are presented as "the four", second item differs. Align ch36 to ch37's names (or drop ch36's competing list). Also the laundering index (ch37 GLI) vs goal-laundering signature (ch10) are never reconciled. 🔶 ch10 now forward-refs ch37.
+10. ✅ **Parasite-persistence criterion differs.** ch10 (matches the spine): `C_X < H(A_Y) − λ_Y H(I_Y)/β`. ch34: `C_H < H(A_Y) + K_Y − L_Y` (camouflage `K_Y`, maintenance `L_Y`). **Fixed 2026-06-23:** `C_X` canonical; ch34 inequality bridged to ch10.
+11. ✅ **`κ = bpρ/c` overloaded.** Used for *cooperativity index* (ch10/ch13 canonical/ch33) and for *artifact conductivity* `κ_ij(a)` (ch35). Meanwhile ch34 defines artifact conductivity a *different* way: `χ(A,H)=I(R;D_H|A)−I(R;D_H)`. **Fixed 2026-06-23:** `κ` = cooperativity only; artifact conductivity = `χ`.
+12. 🔶 **Pivotal-process notation `B_race → B_certified-deployment` is in ch40 but not ch35.** ch40 (L56, comment L117) attributes the formalization to ch35, but ch35 uses `B_align`/`S_align`/`C_certified` and never states `B_race → B_certified-deployment`. **2026-06-23:** ch40 comment corrected to mark pending; ch35 content not yet written.
+13. ⬜ **Bundle example-list drift.** The candidate-bundle roster gains/loses members across chapters: +Learning/Legacy (ch15), +legitimacy (ch28), +prudence (ch29), +protection (ch30), +truth-contact (ch31), vs the ch16 catalogue. Align to ch16's canonical roster.
+14. ⬜ **Bib-key inconsistency:** Critch "boundaries" cited as `critch2022boundaries` (ch28) and `critch2022boundaries3a` (ch29/ch31). Verify `.bib` and unify.
+15. ✅ **`\MI` macro not used uniformly:** ch02 writes raw `I(...)` for mutual information where the rest of Part I uses the `\MI` macro. **Fixed 2026-06-23.**
+16. 🔶 **Capacity vs integrity used loosely:** "correction-channel capacity" (`C_corr`) and "correction-channel integrity" (CCI = capacity − penalties) are sometimes used interchangeably (ch28/ch29/ch31). **2026-06-23:** symbols `C_raw`/`CCI` propagated; prose audit in ch28/29/31 ⬜.
 
 ### 5.1 Style consistency (lower severity but pervasive)
 
 - **Section-title capitalization is split book-wide.** Title Case: most of Parts I–III/VI/VII-ch29, ch33/34. Sentence case: ch02, ch04, ch06 (internally mixed), ch09, ch12, ch15, ch28, ch30, ch31, ch35, ch36–38, ch41, ch42. Pick one convention.
-- **Chapter-ending heading is named ≥6 ways:** "Summary", "Chapter Summary", "Chapter summary", "Conclusion", "Chapter Conclusion", "Chapter conclusion" — and some chapters carry both a Conclusion and a Chapter summary (ch12, ch42). Standardize (the de-facto majority is "Summary").
+- **Chapter-ending heading is named ≥6 ways:** "Summary", "Chapter Summary", "Chapter summary", "Conclusion", "Chapter Conclusion", "Chapter conclusion" — and some chapters carry both a Conclusion and a Chapter summary (ch12, ch42). Standardize (the de-facto majority is "Summary"). ✅ **8 outliers normalized to `\section{Summary}`** (commit `d2f7feb`); ch12/ch42 dual endings ⬜.
 - **`\section` vs `\section*` for the summary** is inconsistent (e.g. ch09 uses unnumbered `\section*{Chapter summary}`).
 - **Epigraph style/usage:** `\epigraph{...}{}` (most), `\begin{quote}` (ch02), none (ch05, ch33, ch39, ch40). Empty attribution braces throughout (cosmetic). Several epigraphs duplicate the chapterthesis (see §4.4).
 - **WWCTV `\label` convention** broken in places even where the title is right: ch03 `sec:shaky-points-...`, ch10 `sec:evidence-against-opacity` vs the `sec:wwctv-*` convention elsewhere.
@@ -168,16 +173,16 @@ These are correctness issues a careful reader will trip over; they should be rec
 
 **Continuity defects:**
 
-1. **ch33 is a narrative near-orphan.** It has no outgoing "next chapter" sentence and ch34 opens from the correction chapters, not from ch33; combined with ch33's stub sections, a reader going ch32→ch33→ch34 hits a dense-but-skeletal interlude with no bridges on either side. (Completeness + continuity.)
-2. **ch20 → ch21 hand-off is wrong.** ch20's closing (L1100–1102) says the next chapter is goal transport (`ch:goal-transport` = ch22), skipping ch21 ("The Compression Test for Intention"). Point it at ch21.
-3. **ch12 L20 broken/mis-pointed `\ref`.** "Chapter~\ref{ch:finding-boundary} introduced predictive and control information across the boundary, discounted by memory cost and residual surprise" — that competence functional is introduced in ch11 (immediately previous), not ch7. Almost certainly should be `\ref{ch:capability-without-task-ontology}`.
-4. **ch40 → ch41 (Part IX→X) has no bridge.** ch40 ends at references with no forward sentence; ch41 opens cold. Add a bridge (properly, from a written ch39 summary).
-5. **ch24 silently re-derives ch23's material.** ch23's "Correction Transport" already states the same chain + CCI; ch24 opens by redefining them without acknowledging ch23. Decide whether correction machinery is *introduced* in Part V (and deepened in VI) or *named* in V and *introduced* in VI, and make the cross-refs match. Related: the ch24/ch25 division of labor is blurred (~30–40% conceptual overlap — both define the chain, CCI, the bottleneck MI walk, the strong channel, CEV, failure modes, the audit list). Recommend a sharper split (ch24 conceptual, ch25 operational) rather than a merge.
-6. **Value machinery used before defined.** ch10 uses `B, W, Φ` (bundle/bearer) before any definition (Part IV); ch12/13/14 use `Φ`, `B_k`, the correction chain before Part IV/VI. Mostly acknowledged at chapter ends, but a forward `\ref` at first use would stop a sequential reader being stranded.
-7. **`ch:goal-transport` self/forward refs** in ch28 (L413) and ch18 (L1214) should be verified to resolve to ch22 in a build (goal transport is also developed *inside* ch28, so the cross-ref risks looking self-referential).
-8. **Parts have no introductory prose.** Each `parts/partNN-*.tex` is just `\part{...}` + `\input`s. A 1-paragraph part opener (what this part adds, which chapters, what it assumes) would smooth the larger arc; optional but worth a decision.
-9. **Orphaned construct:** ch30's selfhood bottleneck `β_self = I(G_t;S_t)/H(G_t)` is introduced and cited but not used downstream (ch31 doesn't consume it). Either tie it into certification or mark it exploratory.
-10. **Missing one-directional cross-refs:** ch38 thesis should cite ch09 (composite agent); ch36 §"Cross-scale measurement" should forward-ref ch38; ch37 should cite ch10's laundering signature and ch23's transport stack; ch32 should forward-ref ch35's false attractors.
+1. ⬜ **ch33 is a narrative near-orphan.**
+2. ✅ **ch20 → ch21 hand-off is wrong.** Fixed (prior session).
+3. ✅ **ch12 L20 broken/mis-pointed `\ref`.** Fixed 2026-06-23.
+4. ✅ **ch40 → ch41 (Part IX→X) has no bridge.** Fixed (prior session).
+5. ⬜ **ch24 silently re-derives ch23's material.**
+6. 🔶 **Value machinery used before defined.** ch10 preview frames with forward `\ref`s added 2026-06-23.
+7. ⬜ **`ch:goal-transport` self/forward refs** in ch28 (L413) and ch18 (L1214) should be verified to resolve to ch22 in a build (goal transport is also developed *inside* ch28, so the cross-ref risks looking self-referential).
+8. ⬜ **Parts have no introductory prose.**
+9. ⬜ **Orphaned construct:** ch30's selfhood bottleneck `β_self = I(G_t;S_t)/H(G_t)` is introduced and cited but not used downstream (ch31 doesn't consume it). Either tie it into certification or mark it exploratory.
+10. ✅ **Missing one-directional cross-refs:** ch38→ch09, ch36→ch38, ch37→ch10+ch23, ch32→ch35 added 2026-06-23.
 
 ---
 
@@ -198,18 +203,20 @@ These are correctness issues a careful reader will trip over; they should be rec
 
 ## 8. Prioritized action list (suggestions — not executed)
 
-**Tier 1 — completeness (the book is not finishable without these):**
+**Tier 1 — completeness (the book is not finishable without these):** ⬜
 1. Write **ch44** (conclusion) — synthesize and discharge the Introduction's five claims + Executive Overview preservation problems + "Practical Hope" regime.
 2. Write **ch39** (safety-case synthesis) and **appG** (safety-case template) together; have ch39 ingest ch36/37/38 + Parts I–VIII claims.
 3. Write **ch43** (bearer persistence; deliver the two absorbed sections) and build out **ch33** (worked example, counterexample, WWCTV, decision relevance, bridges).
 4. Flesh out **ch05** and **ch40** to manuscript depth; resolve their inline `% TODO`s and the Turchin citation.
 5. Write the **appendices A–H** (at minimum appA notation and appF glossary, seeded from `metadata/notation.md` and `metadata/terminology.md`) and the **frontmatter stubs** (preface, dedication, acknowledgements) and the Executive-Overview `[STUB]` blocks.
 
-**Tier 2 — required-element + correctness:**
-6. Add/retitle the exact **"What Would Change This View"** section in the ~26 chapters that miss or mis-title it (decide the policy first; §3).
-7. Reconcile the **cross-chapter inconsistencies** in §5 — especially the ΔL sign convention (1), `G_B` (2), the seven conserved properties (3), CCI penalty terms (4), the `B` capability/bundle clash (5), the parasite-persistence criterion (10), and the κ/artifact-conductivity overload (11). Record the canonical notation in **appA**.
-8. Fix the broken/mis-pointed cross-refs: **ch20→ch21** hand-off, **ch12 L20** ref, **ch40→ch41** bridge, **ch40↔ch35** pivotal-process pointer. Run `make pdf` + `make check` to catch any remaining undefined refs/citations mechanically.
+🔶 **ch39b** (*What Survives an Adversary*) seed chapter added 2026-06-23 — addresses verifiability/ontology cruxes; does not replace ch39 synthesis.
 
-**Tier 3 — redundancy + style:**
+**Tier 2 — required-element + correctness:** 🔶
+6. Add/retitle the exact **"What Would Change This View"** section in the ~26 chapters that miss or mis-title it (decide the policy first; §3). 🔶 ch20 retitled; ch39b compliant; ~24 remain.
+7. Reconcile the **cross-chapter inconsistencies** in §5 — especially the ΔL sign convention (1), `G_B` (2), the seven conserved properties (3), CCI penalty terms (4), the `B` capability/bundle clash (5), the parasite-persistence criterion (10), and the κ/artifact-conductivity overload (11). Record the canonical notation in **appA**. ✅ Items 1–2, 4–8, 10–11, 15 done in manuscript; notation.md ✅; appA ⬜; items 3, 9, 13–14 ⬜.
+8. Fix the broken/mis-pointed cross-refs: **ch20→ch21** hand-off, **ch12 L20** ref, **ch40→ch41** bridge, **ch40↔ch35** pivotal-process pointer. Run `make pdf` + `make check` to catch any remaining undefined refs/citations mechanically. ✅ ch20→ch21, ch12 L20, ch40→ch41, one-directional bridges; 🔶 ch40↔ch35 comment-only; 🔶 build clean, `make check` not re-run.
+
+**Tier 3 — redundancy + style:** ⬜
 9. De-duplicate the over-replicated objects in §4: pick a canonical home for the correction chain (ch24), CCI (ch25), `G_B` (ch19), bundle inference (ch16), the seven properties (ch29), CEV (ch26), sample complexity (ch17), and the self-modeling derivation (ch30); reduce the rest to one-line reminders + `\eqref`/`\ref`. Sharpen the ch24/ch25 and ch28/ch31 divisions; trim ch11's coordination sections into ch13; consolidate the merger treatment into ch43.
-10. Standardize style: section-title capitalization, chapter-ending heading name (→ "Summary"), `\section` vs `\section*`, epigraph usage (and stop epigraphs duplicating the chapterthesis), the `sec:wwctv-*` label convention; decide on/remove the unused `decisionbox`/`failurebox` environments and the inline `[Defined]`/`[STUB]` bracket markers in prose; consider 1-paragraph part openers.
+10. Standardize style: section-title capitalization, chapter-ending heading name (→ "Summary"), `\section` vs `\section*`, epigraph usage (and stop epigraphs duplicating the chapterthesis), the `sec:wwctv-*` label convention; decide on/remove the unused `decisionbox`/`failurebox` environments and the inline `[Defined]`/`[STUB]` bracket markers in prose; consider 1-paragraph part openers. 🔶 Summary headings ✅; unused boxes removed ✅; WWCTV partial; capitalization ⬜.

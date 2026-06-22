@@ -32,4 +32,4 @@ Three follow-on cleanup requests after the full-book review/fix-plans work: (1) 
 - `metadata/preamble.tex`, `frontmatter/titlepage.tex`, `metadata/TODO.md`
 
 ## Commits
-- `8ee4956` — Propagate canonical notation, refresh ledgers, and tighten continuity bridges.
+- `54ad1ea` — Propagate canonical notation, refresh ledgers, and tighten continuity bridges.

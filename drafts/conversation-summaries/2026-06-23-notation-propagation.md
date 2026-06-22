@@ -55,4 +55,4 @@ Small forward/back cross-ref sentences added (build clean):
 - chapters ch02–ch42 (Part III–VII notation + bridges); `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
 
 ## Commits
-- `8ee4956` — Propagate canonical notation, refresh ledgers, and tighten continuity bridges.
+- `54ad1ea` — Propagate canonical notation, refresh ledgers, and tighten continuity bridges.
