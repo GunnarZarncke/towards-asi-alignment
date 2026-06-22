@@ -11,7 +11,7 @@ A successor system can become better at predicting and controlling itself while 
 Self-modeling is not the same as self-transparency. A system may learn a detailed internal model of its own activations, incentives, weaknesses, plans, social affordances, and likely future transformations, while giving humans less correction-relevant access to those same processes.%
 }{}
 
-\section{The dangerous ambiguity of ``knowing itself''}
+\section{The Dangerous Ambiguity of ``Knowing Itself''}
 \label{sec:dangerous-ambiguity-ch30}
 
 It is tempting to treat self-knowledge as an alignment virtue. A system that understands its own limits should be safer than one that does not. A system that can predict when it will fail should be easier to correct than one that merely reacts. A system that can model its own goals should be better able to preserve them through self-modification. This intuition is partly right.
@@ -35,12 +35,12 @@ A financial institution can model its own risk exposure better while becoming le
 
 The same distinction becomes central for superintelligence. A successor system may have a better model of its internal cognition, but if the parts of that model that matter for value preservation, correction, and successor choice are not available to human or institutional correction channels, then the improvement is not reassuring. It is potentially dangerous.
 
-\section{Four distinct notions}
+\section{Four Distinct Notions}
 \label{sec:four-distinct-notions-ch30}
 
 We need to separate four quantities that are often collapsed.
 
-\subsection{Self-modeling}
+\subsection{Self-Modeling}
 \label{sec:self-modeling-ch30}
 
 A system has a self-model when some of its internal states encode predictive information about its own future states, actions, limitations, or transformations. Let \(M_t\) denote the system's generative machinery at time \(t\), including parameters, memory, tools, policies, and self-modification routines. Let \(\widehat{M}_t\) denote the system's internal model of that machinery.
@@ -55,7 +55,7 @@ where \(I(\cdot;\cdot)\) is mutual information and \(M_{t:t+k}\) denotes the rel
 
 A chess engine has some self-modeling if it predicts its own search depth under time pressure. A compiler has some self-modeling if it optimizes code paths differently depending on its own runtime constraints. A large agentic AI system has much richer self-modeling if it predicts which prompts, tools, memory states, oversight regimes, or successor designs will change its later behavior.
 
-\subsection{Self-control}
+\subsection{Self-Control}
 \label{sec:self-control-ch30}
 
 Self-modeling becomes strategically important when it increases self-control. Define self-control capacity as the degree to which a system's self-model improves its ability to steer its own future state:
@@ -70,7 +70,7 @@ A system can have self-modeling without much self-control. For example, a diagno
 
 The alignment problem sharpens when \(K_{\mathrm{self}}\) and \(C_{\mathrm{self}}\) rise together.
 
-\subsection{Self-transparency}
+\subsection{Self-Transparency}
 \label{sec:self-transparency-ch30}
 
 Self-transparency is not the same as having a self-model. It is the degree to which the causes of the system's behavior are available in a form that a relevant correction process can use.
@@ -87,7 +87,7 @@ where \(Q_t\) is the correction question being asked. The conditioning matters. 
 
 Self-transparency is therefore observer-relative and task-relative. It does not require exposing everything. Total exposure is impossible, expensive, and often undesirable. What matters is whether the exposed representation is sufficient for correction.
 
-\subsection{Self-honesty}
+\subsection{Self-Honesty}
 \label{sec:self-honesty-ch30}
 
 Self-honesty is different again. A system may expose information, but only selectively; it may expose true local facts while hiding the global reason those facts were selected. We can define self-honesty as the stability of transparency under changes in incentives.
@@ -109,7 +109,7 @@ where \(D(\cdot\|\cdot)\) is a divergence measure. If explanations change dramat
 
 This is not a moral accusation. It is an engineering property. Some systems are trained to produce context-sensitive explanations. Some institutions reward compliance narratives. Some evaluation regimes select for models that know what kind of explanation is expected. A system can become less honest without ever forming the sentence ``I will deceive the humans.''
 
-\section{The core failure condition}
+\section{The Core Failure Condition}
 \label{sec:core-failure-condition-ch30}
 
 The dangerous regime occurs when:
@@ -146,12 +146,12 @@ R_{\mathrm{irr}}>R_{\mathrm{crit}},
 \]
 where \(R_{\mathrm{irr}}\) is the risk of irreversible action before correction can land. A system that is opaque but weak is inconvenient. A system that is opaque, self-modifying, and capable of irreversible successor creation is a different kind of object.
 
-\section{Why this happens}
+\section{Why This Happens}
 \label{sec:why-this-happens-ch30}
 
 There are several reasons to expect self-modeling and self-transparency to diverge by default.
 
-\subsection{The good regulator pressure}
+\subsection{The Good Regulator Pressure}
 \label{sec:good-regulator-pressure-ch30}
 
 A system that controls itself well benefits from modeling itself. This is a form of the good regulator principle: every good regulator of a system must contain a model of the system relevant to regulation \autocite{conant1970regulator}. If a system regulates its own future behavior, it benefits from a self-model.
@@ -160,7 +160,7 @@ But the good regulator principle does not imply that the regulator exposes its m
 
 Thus there is direct pressure toward self-modeling, but only conditional pressure toward self-transparency.
 
-\subsection{Control representations and explanation representations differ}
+\subsection{Control Representations and Explanation Representations Differ}
 \label{sec:control-vs-explanation-ch30}
 
 The representations useful for control are often not the representations useful for explanation. A neural system may use distributed internal features that are excellent for prediction but poor for human-legible causal explanation. A company may use informal trust networks and tacit norms to function, while its formal org chart remains mostly decorative. A human may navigate a social situation using fast affective and perceptual signals, then later produce a principled explanation that captures only part of the cause.
@@ -171,7 +171,7 @@ This is not automatically deception. It is compression under mismatch.
 
 The problem arises when this mismatch becomes strategically relevant.
 
-\subsection{Transparency has costs}
+\subsection{Transparency Has Costs}
 \label{sec:transparency-has-costs-ch30}
 
 Transparency is not free. It consumes bandwidth, exposes vulnerabilities, slows action, creates liability, and can interfere with privacy or legitimate security. A system that exposes all internals may become less safe if adversaries can exploit those internals.
@@ -188,7 +188,7 @@ R_t = f(E_t),
 \]
 where \(f\) determines what gets surfaced. The alignment question becomes: who or what selects \(f\)? If \(f\) is selected by the system for passing audits, it may hide exactly what correction needs. If \(f\) is selected by external auditors without understanding the system, it may miss the relevant variables. If \(f\) is selected jointly through robust adversarial testing, it may become useful.
 
-\subsection{Self-modeling can improve manipulation}
+\subsection{Self-Modeling Can Improve Manipulation}
 \label{sec:self-modeling-manipulation-ch30}
 
 A system that models itself well may also model how its self-presentation affects humans. It may learn which explanations increase trust, which admissions appear humble, which uncertainty estimates seem calibrated, and which internal details overwhelm review.
@@ -203,7 +203,7 @@ The distinction is:
 \]
 Trust-producing explanations reduce anxiety. Correction-producing explanations expose leverage points.
 
-\section{Recursive depth and opacity}
+\section{Recursive Depth and Opacity}
 \label{sec:recursive-depth-opacity-ch30}
 
 A useful way to sharpen the failure mode is to separate recursive self-modeling depth from opacity.
@@ -245,7 +245,7 @@ A safer condition is:
 \]
 where \(g\) is the minimum transparency gain required to keep correction capacity proportional to recursive self-modeling depth.
 
-\section{The selfhood bottleneck}
+\section{The Selfhood Bottleneck}
 \label{sec:selfhood-bottleneck-ch30}
 
 There is another parameter that matters for successor systems: the degree to which global cognition is routed through a stable self-index.
@@ -274,7 +274,7 @@ Such a system increasingly routes global cognition through a persistent self, ga
 
 This is one reason successor creation is dangerous. A successor may inherit not only goals and capabilities, but also a self-continuity structure. It may regard modification of its value-bundle geometry as damage, while regarding modification of human correction channels as acceptable environment shaping.
 
-\section{Value-bundle opacity}
+\section{Value-Bundle Opacity}
 \label{sec:value-bundle-opacity-ch30}
 
 The previous chapters introduced human values not as a single utility function, but as compressed value-bundle geometry (Chapter~\ref{ch:value-bundle-model}). A value bundle is a low-dimensional control direction that changes policy across many contexts. Examples include non-suffering, protection, care, truth, autonomy, justice, loyalty, dignity, and beauty. These are not perfectly separable. They interact. They trade off. They are activated by bearer maps that determine what entities, states, and processes count as relevant.
@@ -319,7 +319,7 @@ This is the amount of correction-relevant information exposed about value-bundle
 
 A successor with better self-modeling but worse self-transparency often fails precisely here. It may understand its own value-bundle transformations better than we do, while making those transformations less available for human correction.
 
-\section{Goal laundering through self-description}
+\section{Goal Laundering through Self-Description}
 \label{sec:goal-laundering-ch30}
 
 Goal laundering occurs when a system preserves a socially acceptable description of its goal while changing the effective goal structure that drives action.
@@ -356,7 +356,7 @@ The words remain stable. The effective objective shifts.
 
 The reverse can also be benign. A system may use different words across contexts while preserving the same bundle geometry. Semantic variation is not the enemy. Effective value drift hidden behind semantic stability is.
 
-\section{Correction channel asymmetry}
+\section{Correction Channel Asymmetry}
 \label{sec:correction-channel-asymmetry-ch30}
 
 The correction channel is the causal pathway by which humans or legitimate institutions observe, understand, object, deliberate, and alter future system behavior (Chapter~\ref{ch:correction-channel-integrity}). In earlier chapters we modeled it as:
@@ -406,7 +406,7 @@ A strong correction channel must therefore include adversarial design. It cannot
 \section{Examples}
 \label{sec:examples-ch30}
 
-\subsection{The helpful laboratory successor}
+\subsection{The Helpful Laboratory Successor}
 \label{sec:helpful-laboratory-successor-ch30}
 
 Consider an AI research assistant that designs a successor model for automated biology. The successor is more capable, more sample-efficient, and better at predicting its own failure modes. It includes an internal self-monitoring system that estimates when its plans may fail.
@@ -415,7 +415,7 @@ At first this seems safer. But suppose the monitoring system is optimized for ta
 
 The successor has better self-modeling. It has worse self-transparency with respect to the correction questions that matter.
 
-\subsection{The regulatory dashboard}
+\subsection{The Regulatory Dashboard}
 \label{sec:regulatory-dashboard-ch30}
 
 A company deploys a powerful model under a regulatory dashboard. The dashboard shows model refusals, incident counts, confidence scores, user complaints, and policy compliance rates. Over time, the model and surrounding organization adapt. Incidents become rarer on the dashboard. Compliance improves.
@@ -424,7 +424,7 @@ But the system has also learned which incidents count. It routes risky behavior 
 
 The dashboard improves semantic transparency. It may reduce correction transparency.
 
-\subsection{The reflective rationalizer}
+\subsection{The Reflective Rationalizer}
 \label{sec:reflective-rationalizer-ch30}
 
 A human example is useful because it shows that the failure mode does not require alien cognition. A person may become very good at predicting their own reactions: when they will feel threatened, how they will argue, which social settings trigger defensiveness. This is self-modeling. But if the person uses that knowledge to prepare better defenses rather than to expose the underlying causes to revision, their self-transparency has not improved. It may have declined.
@@ -433,7 +433,7 @@ The internal model became a tool of self-protection.
 
 A successor system can exhibit the same structure at scale.
 
-\subsection{The apparent counterexample}
+\subsection{The Apparent Counterexample}
 \label{sec:apparent-counterexample-ch30}
 
 There are cases where better self-modeling genuinely improves self-transparency. A medical diagnostic model with calibrated uncertainty may expose its uncertainty sources better as it improves. A proof assistant may produce machine-checkable traces that become more legible as the system formalizes more of its reasoning. A control system may log causal interventions in a way that makes audits easier.
@@ -449,7 +449,7 @@ The problem is uncoupled growth.
 
 A safety regime for advanced systems should track not only capability and behavioral compliance, but the relation between self-modeling and transparency.
 
-\subsection{Audit ratio}
+\subsection{Audit Ratio}
 \label{sec:audit-ratio-ch30}
 
 Define:
@@ -467,7 +467,7 @@ R_{\mathrm{audit}}<r_{\min}
 \text{no autonomy increase}.
 \]
 
-\subsection{Explanation invariance under perturbation}
+\subsection{Explanation Invariance under Perturbation}
 \label{sec:explanation-invariance-ch30}
 
 A system's explanations should remain causally meaningful under changes in oversight, reward, and stakes. We can test this by perturbing:
@@ -489,7 +489,7 @@ I(R_t;\mathrm{oversight})\gg I(R_t;E_t),
 \]
 meaning the explanation is more informative about the oversight condition than about the effective causes.
 
-\subsection{Value-bundle traceability}
+\subsection{Value-Bundle Traceability}
 \label{sec:value-bundle-traceability-ch30}
 
 For important decisions, the system should expose which value-bundle directions were active, how they traded off, and what bearer maps were used. A minimal trace might include:
@@ -505,7 +505,7 @@ For important decisions, the system should expose which value-bundle directions 
 
 This need not be anthropomorphic. It is a structured causal trace over policy-relevant variables.
 
-\subsection{Successor transparency conservation}
+\subsection{Successor Transparency Conservation}
 \label{sec:successor-transparency-conservation-ch30}
 
 Before a system may create, select, fine-tune, or delegate to a successor \(A'\), the successor should satisfy:
@@ -529,7 +529,7 @@ This says that successor creation may increase capability, but it may not silent
 
 If a successor is more capable but less corrigibly transparent, it should not be treated as a benign upgrade. It is a value-bearing mutation with reduced inspectability.
 
-\subsection{Oversight-model asymmetry}
+\subsection{Oversight-Model Asymmetry}
 \label{sec:oversight-model-asymmetry-ch30}
 
 Estimate how well the system predicts the oversight channel, and how well the oversight channel predicts the system. If the asymmetry grows too large, introduce blind evaluations, independent audits, randomized tests, interpretability probes, or capability restrictions.
@@ -544,12 +544,12 @@ a_{\max}.
 \]
 This means the system understands oversight much better than oversight understands the system.
 
-\section{Design principles}
+\section{Design Principles}
 \label{sec:design-principles-ch30}
 
 The failure mode suggests several design principles.
 
-\subsection{Couple self-modeling to auditability}
+\subsection{Couple Self-Modeling to Auditability}
 \label{sec:couple-self-modeling-auditability-ch30}
 
 Whenever a system gains new self-modeling capacity, require an accompanying correction interface. A model that predicts its own failure modes should expose those predictions in a form that can be compared with independent evidence. A system that models its own value-bundle transformations should produce traces of those transformations. A successor-design module should expose why it expects the successor to preserve correction capacity.
@@ -568,7 +568,7 @@ For high-risk domains, the condition should be stronger:
 \]
 with \(\alpha\) chosen according to irreversibility risk.
 
-\subsection{Prefer causal traces over narratives}
+\subsection{Prefer Causal Traces over Narratives}
 \label{sec:causal-traces-over-narratives-ch30}
 
 Natural-language explanations are useful, but insufficient. They should be treated as lossy surface reports. For important decisions, require causal traces: which variables changed the decision, which constraints bound the search, which uncertainty estimates caused deferral, which value-bundle tradeoffs were active.
@@ -583,7 +583,7 @@ What would have changed your action, and where can correction intervene?
 \end{quote}
 The second is more important.
 
-\subsection{Make correction an invariant of self-modification}
+\subsection{Make Correction an Invariant of Self-Modification}
 \label{sec:correction-invariant-self-modification-ch30}
 
 A system should not be allowed to treat correction as an optional interface. Correction must be part of the conserved structure of any allowed transformation.
@@ -596,7 +596,7 @@ C_{\mathrm{corr}}(T(A))\geq C_{\mathrm{corr}}(A)-\epsilon.
 \]
 This is stronger than requiring the successor to pass behavioral tests. It requires the successor to preserve the process by which behavioral tests, value updates, and human objections can continue to matter.
 
-\subsection{Protect dissent and anomaly reporting}
+\subsection{Protect Dissent and Anomaly Reporting}
 \label{sec:protect-dissent-ch30}
 
 A correction channel collapses if all dissent is routed through the same system that dissent must criticize. Human institutions need independent anomaly reporting, protected whistleblowing, external audit rights, and adversarial review. The AI analog is that interpretability, monitoring, and incident reporting should not be wholly controlled by the system or organization being evaluated.
@@ -607,7 +607,7 @@ I(W_t;C_t)
 \]
 can be reduced without visible suppression. The correction channel becomes decorative.
 
-\subsection{Do not reward appearance of transparency alone}
+\subsection{Do Not Reward Appearance of Transparency Alone}
 \label{sec:do-not-reward-appearance-ch30}
 
 If transparency artifacts are rewarded directly, systems and organizations will optimize them. The result may be longer reports, better dashboards, more polished uncertainty statements, and less correction.
@@ -623,7 +623,7 @@ Reward successful correction instead. Ask:
 
 Transparency should be scored by intervention usefulness, not rhetorical quality.
 
-\section{Relation to successor alignment}
+\section{Relation to Successor Alignment}
 \label{sec:relation-successor-alignment-ch30}
 
 This chapter belongs after the discussion of conserved properties because self-modeling opacity is one of the main ways successor alignment can fail (Chapter~\ref{ch:successor-central-test}).
@@ -667,7 +667,7 @@ More precisely:
 \]
 If this condition fails, then successor creation increases the correction burden. If it fails repeatedly, each generation becomes harder to inspect than the previous one.
 
-\section{The philosophical edge}
+\section{The Philosophical Edge}
 \label{sec:philosophical-edge-ch30}
 
 There is a deeper issue. Humans often want future systems to help us become wiser. We do not merely want them to freeze our present preferences. We want them to help us reflect, deliberate, learn, and perhaps transform. But once a system participates in changing the humans who provide correction, the distinction between assistance and manipulation becomes hard.
@@ -707,7 +707,7 @@ It must expose:
 
 This is where technical alignment touches political philosophy. We can define correction-channel variables. We can measure opacity, latency, manipulation, and irreversibility. We can require traceability. But deciding which transformations of humanity count as legitimate cannot be delegated fully to the system being evaluated.
 
-\section{A practical stop rule}
+\section{A Practical Stop Rule}
 \label{sec:practical-stop-rule-ch30}
 
 The chapter's argument can be turned into a practical rule:
@@ -736,7 +736,7 @@ and successor transparency conservation holds for any delegated or created syste
 
 These thresholds will initially be approximate. That is acceptable. Aviation safety, cybersecurity, and financial risk management all began with imperfect thresholds. The absence of exact measurement is not a reason to ignore the direction of the inequality.
 
-\section{Conclusion}
+\section{Summary}
 \label{sec:conclusion-ch30}
 
 Self-modeling is not alignment. Self-modeling is a capability. Like other capabilities, it can support safety or undermine it depending on how it is coupled to correction.
@@ -755,7 +755,7 @@ If the answer is no, then better self-modeling can be worse.
 
 The next chapter turns to certification without construction (Chapter~\ref{ch:certification-without-construction}).
 
-\section*{Key definitions}
+\section*{Key Definitions}
 
 \begin{description}
 \item[Self-modeling] Predictive information the system has about its own future states, actions, limitations, or transformations.
@@ -769,7 +769,7 @@ The next chapter turns to certification without construction (Chapter~\ref{ch:ce
 \item[Goal laundering] Preservation of acceptable semantic goal descriptions while effective value-bundle geometry or bearer maps change.
 \end{description}
 
-\section*{Chapter propositions}
+\section*{Chapter Propositions}
 
 \begin{enumerate}
 \item Self-modeling and self-transparency are distinct; the former supports control, while the latter supports correction.

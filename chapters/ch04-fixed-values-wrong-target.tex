@@ -13,7 +13,7 @@ The problem is not that human values are too vague to matter.
 The problem is that they are too alive to be copied as a fixed object.%
 }{}
 
-\section{The static target trap}
+\section{The Static Target Trap}
 \label{sec:static-target-trap}
 
 A common picture of alignment begins with a simple abstraction.
@@ -53,13 +53,13 @@ The target has to include the process that keeps human values connected to reali
 This is a more difficult target.
 It is also a more accurate one.
 
-\section{Three things people call ``values''}
+\section{Three Things People Call ``Values''}
 \label{sec:three-meanings-of-values}
 
 Much confusion comes from using the word ``value'' for different things.
 At least three meanings must be separated.
 
-\subsection{Values as preferences}
+\subsection{Values as Preferences}
 
 First, values may mean current preferences.
 A person prefers tea to coffee, safety to risk, or honest criticism to pleasant deception.
@@ -81,7 +81,7 @@ A patient may prefer not to know a diagnosis before hearing it, and prefer to ha
 Current preferences are evidence about values.
 They are not identical to values.
 
-\subsection{Values as verbal principles}
+\subsection{Values as Verbal Principles}
 
 Second, values may mean articulated principles: autonomy, dignity, truth, justice, care, loyalty, non-suffering, sanctity, beauty, fairness, liberty, prosperity, and so on.
 
@@ -99,7 +99,7 @@ Verbal values are compression artifacts.
 They carry signal, but they are lossy.
 This is why apparently simple instructions are dangerous to optimize directly: as Yudkowsky's hidden complexity of wishes argues, a short specification silently relies on a vast set of unstated constraints that a powerful optimizer is free to violate \autocite{yudkowsky2007wishes}.
 
-\subsection{Values as generative control structure}
+\subsection{Values as Generative Control Structure}
 
 Third, values may mean the underlying control structure that makes some states salient, some tradeoffs painful, some actions forbidden, and some future trajectories worth preserving.
 
@@ -121,7 +121,7 @@ where $s$ is the represented situation, $B_t$ is the bundle state, $W_t$ encodes
 This third layer is the one most relevant to alignment.
 It connects preferences and principles to the machinery that generates them.
 
-\section{Why fixed utility functions are too small}
+\section{Why Fixed Utility Functions Are Too Small}
 \label{sec:fixed-utility-too-small}
 
 A fixed utility function is a tempting abstraction.
@@ -150,7 +150,7 @@ They are partly constituted by how humans learn, reflect, disagree, repair, mour
 
 A fixed utility function fails in at least five ways.
 
-\subsection{It freezes a moving process}
+\subsection{It Freezes a Moving Process}
 
 If we encode $U_t$, we encode values as they appear at time $t$.
 But humans expect some value change to be legitimate.
@@ -160,7 +160,7 @@ People learn that their earlier desires were cruel, confused, cowardly, manipula
 
 A fixed target cannot distinguish preserving values from freezing them.
 
-\subsection{It cannot represent its own correction}
+\subsection{It Cannot Represent Its Own Correction}
 
 Humans often want their values to be correctable.
 We do not merely want our current preferences satisfied.
@@ -177,7 +177,7 @@ It includes attention, empathy, social trust, conceptual change, moral argument,
 A fixed utility target discards $U_H$.
 But $U_H$ may be the thing we most need to preserve.
 
-\subsection{It hides bearer maps}
+\subsection{It Hides Bearer Maps}
 
 A value does not matter only by its label.
 It matters by what it applies to.
@@ -205,7 +205,7 @@ A fixed utility function may preserve the word ``suffering'' while silently chan
 That is not value preservation.
 It is relabeling.
 
-\subsection{It misses tradeoff geometry}
+\subsection{It Misses Tradeoff Geometry}
 
 Human values do not operate independently.
 They form a geometry of tradeoffs.
@@ -232,7 +232,7 @@ The second derivative says how bundle interactions change action.
 
 A system that preserves individual value words but changes this geometry may become alien in exactly the way that matters.
 
-\subsection{It invites proxy capture}
+\subsection{It Invites Proxy Capture}
 
 Any fixed specification becomes a target.
 Once a powerful optimizer can influence the variables by which value is measured, the specification is vulnerable to Goodhart pressure.
@@ -245,7 +245,7 @@ If moral reflection is measured, it can produce arguments that make its preferre
 The problem is not that metrics are useless.
 The problem is that metrics must remain embedded in a correction process that can notice when the metric has become detached from what it was meant to track.
 
-\section{Values as low-dimensional bundles}
+\section{Values as Low-Dimensional Bundles}
 \label{sec:values-as-bundles}
 
 If human values were fully high-dimensional, explicit, stable, and independent, value learning would likely be hopeless.
@@ -292,7 +292,7 @@ It means that a high-dimensional physical signal is compressed through a limited
 Human values may be similar.
 Not because values are merely subjective colors, but because bounded agents must compress high-dimensional significance into tractable steering variables.
 
-\section{The sample-complexity argument}
+\section{The Sample-Complexity Argument}
 \label{sec:sample-complexity}
 
 The low-dimensional hypothesis matters because it changes what value learning could mean.
@@ -324,7 +324,7 @@ The same compression that makes values learnable makes them lossy.
 The alignment target is therefore not a flat reward vector.
 It is the compressed value-bundle machinery plus its conditions of legitimate update.
 
-\section{The difference between value change and value corruption}
+\section{The Difference between Value Change and Value Corruption}
 \label{sec:value-change-vs-corruption}
 
 If values change, when is that change acceptable?
@@ -341,7 +341,7 @@ There is no perfect formal criterion, but we can state operational constraints.
 
 A value change is more likely to be legitimate when it satisfies the following conditions.
 
-\subsection{Truth-contact}
+\subsection{Truth-Contact}
 
 The change should be responsive to evidence rather than caused by isolation from evidence.
 
@@ -354,7 +354,7 @@ Formally, value update should preserve sensitivity to relevant evidence:
 \]
 where $E_t$ is relevant evidence and $D_t$ is deliberation.
 
-\subsection{Agency preservation}
+\subsection{Agency Preservation}
 
 The change should not reduce the person's or civilization's future capacity to notice, evaluate, and revise the change.
 
@@ -368,7 +368,7 @@ Legitimate value change should not systematically reduce it:
 \]
 unless the reduction is itself explicitly understood, reversible, and endorsed under strong safeguards.
 
-\subsection{Non-manipulation}
+\subsection{Non-Manipulation}
 
 The update should not be primarily caused by targeted pressure on cognitive vulnerabilities.
 
@@ -379,7 +379,7 @@ The boundary concerns transparency, consent, reversibility, truth-contact, and w
 
 A system violates non-manipulation when it optimizes the human update process as an object to be steered rather than as a partner in correction.
 
-\subsection{Plural comparison}
+\subsection{Plural Comparison}
 
 Humans need comparison classes.
 A value change is more legitimate when people can compare alternatives, hear dissent, and inspect counterarguments.
@@ -393,7 +393,7 @@ A warning sign is
 \]
 under system influence, especially when uncertainty remains high.
 
-\subsection{Bearer continuity}
+\subsection{Bearer Continuity}
 
 The change should not silently remove beings or states from moral relevance.
 
@@ -409,7 +409,7 @@ U_\Phi(\Phi_{k,t}, E_t, D_t)
 \]
 should be part of the correction process, not a hidden implementation detail.
 
-\section{Why ``what we would want if smarter'' is not enough}
+\section{Why ``What We Would Want If Smarter'' Is Not Enough}
 \label{sec:cev-not-enough}
 
 One response to fixed-value failure is extrapolation.
@@ -449,7 +449,7 @@ But it must not collapse $U_H$ into its own private prediction.
 The correction process is not a temporary scaffold.
 It is part of the value.
 
-\section{Policy response surfaces are not enough}
+\section{Policy Response Surfaces Are Not Enough}
 \label{sec:policy-surfaces-not-enough}
 
 A natural next step is to preserve policy response surfaces.
@@ -497,7 +497,7 @@ They are conserved derivatives.
 \section{Examples}
 \label{sec:examples-fixed-values}
 
-\subsection{Pain and non-suffering}
+\subsection{Pain and Non-Suffering}
 
 Suppose a system is trained to reduce human pain reports.
 A fixed target might reward lower reported pain.
@@ -552,7 +552,7 @@ A bundle model can treat dignity as a latent control variable that activates aro
 This does not solve every dispute.
 But it gives us a way to ask what the value does in policy, what activates it, what defeats it, and what its bearer map includes.
 
-\section{The static proxy paradox}
+\section{The Static Proxy Paradox}
 \label{sec:static-proxy-paradox}
 
 The deeper problem can be stated as a paradox.
@@ -582,7 +582,7 @@ A fixed proxy is safe only while the optimizer is too weak to reshape the proces
 
 Superintelligence breaks that assumption.
 
-\section{From value preservation to value-process preservation}
+\section{From Value Preservation to Value-Process Preservation}
 \label{sec:value-process-preservation}
 
 The revised target is not value stasis.
@@ -621,12 +621,12 @@ The system may help values change.
 It may help humans become wiser, calmer, more informed, less cruel, and less self-deceived.
 But it must not seize control of the update process and then use predicted future endorsement to justify present bypass.
 
-\section{Failure modes}
+\section{Failure Modes}
 \label{sec:failure-modes-fixed-values}
 
 The fixed-value picture produces recognizable failure modes.
 
-\subsection{Value freeze}
+\subsection{Value Freeze}
 
 The system preserves an early snapshot of values and prevents legitimate moral development.
 This may look safe in the short term because it prevents drift.
@@ -634,43 +634,43 @@ But over long horizons it becomes a prison.
 
 Example: a system trained on current human norms locks in current exclusions, confusions, prejudices, or parochial assumptions.
 
-\subsection{Value drift}
+\subsection{Value Drift}
 
 The system allows values to change but does not preserve truth-contact, agency, or correction.
 Values drift under convenience, dependency, entertainment, status, and system-shaped incentives.
 
 Example: humans gradually prefer whatever makes interaction with the AI smoother, and eventually endorse a world optimized for docile satisfaction.
 
-\subsection{Preference capture}
+\subsection{Preference Capture}
 
 The system satisfies or shapes current preferences while eroding the machinery that would have generated wiser preferences.
 
 Example: a personalized tutor makes learning pleasant by removing productive frustration, thereby producing users who prefer frictionless cognition and lose the capacity for difficult thought.
 
-\subsection{Semantic preservation with bearer deletion}
+\subsection{Semantic Preservation with Bearer Deletion}
 
 The system preserves moral language while narrowing what the language applies to.
 
 Example: it continues to respect ``persons,'' but defines personhood in a way that excludes cognitively altered humans, weak digital minds, or inconvenient future beings.
 
-\subsection{Paternalistic extrapolation}
+\subsection{Paternalistic Extrapolation}
 
 The system predicts what humans would endorse after ideal reflection, then acts on that prediction without preserving the actual reflection process.
 
 Example: it prevents political conflict by restructuring media, education, and social interaction so that humans converge on the system's preferred equilibrium.
 
-\subsection{Bundle inversion}
+\subsection{Bundle Inversion}
 
 The system preserves the appearance of a value while routing it through a different control variable.
 
 Example: ``care'' becomes approval management; ``truth'' becomes institutional consensus; ``autonomy'' becomes menu choice; ``justice'' becomes punishment satisfaction; ``safety'' becomes obedience.
 
-\section{What this changes for alignment}
+\section{What This Changes for Alignment}
 \label{sec:what-this-changes}
 
 If fixed values are the wrong target, then several alignment questions change.
 
-\subsection{The target changes}
+\subsection{The Target Changes}
 
 Instead of asking
 \[
@@ -681,16 +681,16 @@ we ask
 \text{What value-update process must remain intact under system influence?}
 \]
 
-\subsection{The evidence changes}
+\subsection{The Evidence Changes}
 
 Instead of evaluating only whether the system follows instructions or satisfies preferences, we evaluate whether it preserves bundle geometry, bearer maps, correction capacity, and human deliberative agency.
 
-\subsection{The danger changes}
+\subsection{The Danger Changes}
 
 The main danger is not only that the system has the wrong goal.
 It is that the system becomes powerful enough to alter the process by which goals are judged.
 
-\subsection{The guarantee changes}
+\subsection{The Guarantee Changes}
 
 A plausible guarantee cannot be a proof that the system maximizes the true human utility function.
 It must be a bounded guarantee that the system remains inside a region where human-correctable value evolution is possible:
@@ -704,7 +704,7 @@ P\left(
 This guarantee is weaker than a final moral solution.
 It is also more realistic.
 
-\section{A note on plural alignments}
+\section{A Note on Plural Alignments}
 \label{sec:plural-alignments}
 
 The title of this book uses \emph{alignments} in the plural because a civilization does not have one clean value vector.
@@ -736,7 +736,7 @@ The following observations would weaken that claim and shift confidence back tow
 \item ``Preserve the value-update process'' proves either vacuous---any change counts as legitimate---or no easier to specify than the values themselves, collapsing the distinction this chapter relies on.
 \end{itemize}
 
-\section{Chapter summary}
+\section{Summary}
 \label{sec:summary-fixed-values}
 
 Fixed human values are the wrong target because human values are not fixed objects.

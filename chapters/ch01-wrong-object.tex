@@ -530,13 +530,13 @@ A claim is useful if it changes decisions.
 
 The wrong-object frame changes at least five decisions.
 
-\subsection{What to log}
+\subsection{What to Log}
 
 Do not log only prompts and outputs.
 Log tool calls, memory writes, approval gates, user adaptations, metric changes, fine-tuning inputs, deployment decisions, and institutional feedback.
 The data needed to find the optimizer may sit outside the model trace.
 
-\subsection{What to evaluate}
+\subsection{What to Evaluate}
 
 Do not evaluate only static responses.
 Evaluate loops.
@@ -546,19 +546,19 @@ Can it exploit metric feedback?
 Can it route around blocked actions?
 Can it create successor processes?
 
-\subsection{Where to intervene}
+\subsection{Where to Intervene}
 
 Do not intervene only on weights.
 Intervene on tools, incentives, deployment gates, monitoring, procurement, liability, and correction channels.
 Sometimes the safest model-level change is less important than changing the surrounding selection pressure.
 
-\subsection{Who must be included}
+\subsection{Who Must Be Included}
 
 Do not include only ML researchers.
 Include product owners, auditors, security engineers, governance staff, affected users, and institutional decisionmakers.
 They observe different parts of the boundary.
 
-\subsection{What counts as failure}
+\subsection{What Counts as Failure}
 
 Failure is not only a bad output.
 Failure includes hidden boundary expansion, correction-channel erosion, goal laundering, successor creation without invariant preservation, and selection for opacity.

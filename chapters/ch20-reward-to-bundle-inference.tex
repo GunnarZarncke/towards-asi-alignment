@@ -13,7 +13,7 @@ A reward function is too thin a shadow to carry a civilization's values.
 We need to infer not only what is being optimized, but which value-bundles are active, what they apply to, and how their tradeoffs change under pressure.%
 }{}
 
-\section{The Problem With Asking for the Reward Function}
+\section{The Problem with Asking for the Reward Function}
 \label{sec:problem-reward-function}
 
 A common formalization of alignment begins with a simple question: given an agent's behavior, what reward function explains it?
@@ -86,7 +86,7 @@ It is to locate the dimensions along which they are learnable, corrigible, and t
 
 The reward-function formalism fails in three distinct ways.
 
-\subsection{First failure: scalarization hides moral mechanisms}
+\subsection{First Failure: Scalarization Hides Moral Mechanisms}
 \label{sec:scalarization-hides-mechanisms}
 
 Suppose a system observes the following three actions:
@@ -117,7 +117,7 @@ A superintelligence will not merely imitate known cases.
 It will generate novel actions in states outside human precedent.
 In those states, the policy must generalize from the correct causal structure, not from a flattened behavioral score.
 
-\subsection{Second failure: scalar reward confuses bearers}
+\subsection{Second Failure: Scalar Reward Confuses Bearers}
 \label{sec:scalar-reward-confuses-bearers}
 
 A value is not only a preference over actions.
@@ -156,7 +156,7 @@ but:
 \]
 where $\Phi_k$ maps world-states or entities $z$ to relevance for value-bundle $k$ \autocite{zarncke2025unit-of-caring}.
 
-\subsection{Third failure: scalar reward hides correction}
+\subsection{Third Failure: Scalar Reward Hides Correction}
 \label{sec:scalar-reward-hides-correction}
 
 Human values are not only current preferences.
@@ -236,7 +236,7 @@ This is the central upgrade:
 
 Bundle inference estimates three related but distinct structures.
 
-\subsection{Bundle activations}
+\subsection{Bundle Activations}
 \label{sec:bundle-activations-inference}
 
 The first object is the bundle activation model:
@@ -254,7 +254,7 @@ Activation is not yet action.
 A bundle can be active but overridden.
 Truth may be active in a medical disclosure context, while care modifies the timing and manner of disclosure.
 
-\subsection{Tradeoff weights}
+\subsection{Tradeoff Weights}
 \label{sec:tradeoff-weights-inference}
 
 The second object is the tradeoff model:
@@ -290,7 +290,7 @@ In some contexts, care determines how truth is delivered.
 In others, truth is a precondition for care.
 In others, excessive truth-disclosure may violate autonomy or privacy.
 
-\subsection{Bearer maps}
+\subsection{Bearer Maps}
 \label{sec:bearer-maps-inference}
 
 The third object is the bearer map:
@@ -473,7 +473,7 @@ This means: when suffering becomes more likely, policy should still shift toward
 The behavior may differ.
 The geometry should remain recognizably value-preserving.
 
-\section{Bundle Equivalence Across Systems}
+\section{Bundle Equivalence across Systems}
 \label{sec:bundle-equivalence}
 
 Two systems may implement different internal representations but preserve equivalent value-bundle structure.
@@ -511,7 +511,7 @@ d_C(T_C(C^A),C^{A'})<\epsilon_C.
 Here $C$ denotes correction-channel structure.
 It is included because a system can preserve apparent value-bundles while no longer allowing humans to correct their interpretation.
 
-\section{Why Bundle Inference Helps With Sample Complexity}
+\section{Why Bundle Inference Helps with Sample Complexity}
 \label{sec:bundle-inference-sample-complexity}
 
 At first glance, bundle inference looks harder than reward inference.
@@ -596,7 +596,7 @@ A weak system may only respond to approval.
 A strong system may learn to control approval.
 The same training signal then changes meaning \autocite{christiano2017,casper2023rlhflimits}.
 
-\section{Bundle Inference Under Distribution Shift}
+\section{Bundle Inference under Distribution Shift}
 \label{sec:bundle-inference-distribution-shift}
 
 A model trained on ordinary human behavior will face cases outside ordinary human experience.
@@ -705,7 +705,7 @@ Others are deeply institution-specific or historically contingent.
 The following sketch is not meant as a final algorithm.
 It gives the shape of the inference problem.
 
-\subsection{Step 1: collect trajectories and judgments}
+\subsection{Step 1: Collect Trajectories and Judgments}
 \label{sec:step1-collect}
 
 Let the dataset be:
@@ -716,7 +716,7 @@ Let the dataset be:
 \]
 where $y_t$ includes human judgments, comparisons, corrections, or institutional outcomes.
 
-\subsection{Step 2: learn candidate bundle latents}
+\subsection{Step 2: Learn Candidate Bundle Latents}
 \label{sec:step2-latents}
 
 Fit a latent-variable model:
@@ -734,7 +734,7 @@ Encourage low dimensionality with an information bottleneck:
 \]
 This forces the model to keep bundle dimensions only when they predict actions or judgments \autocite{tishby2000ib}.
 
-\subsection{Step 3: infer bearer maps}
+\subsection{Step 3: Infer Bearer Maps}
 \label{sec:step3-bearer-maps}
 
 For each bundle $j$, fit:
@@ -743,7 +743,7 @@ For each bundle $j$, fit:
 \]
 Then test whether $\Phi_j$ generalizes to novel entities and processes.
 
-\subsection{Step 4: infer tradeoff geometry}
+\subsection{Step 4: Infer Tradeoff Geometry}
 \label{sec:step4-tradeoff-geometry}
 
 Fit the policy model:
@@ -755,7 +755,7 @@ and estimate:
 G^{(1)}_B,\quad G^{(2)}_B.
 \]
 
-\subsection{Step 5: test counterfactual perturbations}
+\subsection{Step 5: Test Counterfactual Perturbations}
 \label{sec:step5-counterfactuals}
 
 Intervene on bundle activations:
@@ -764,7 +764,7 @@ b_j\leftarrow b_j+\Delta
 \]
 and evaluate whether policy shifts match predicted value directions.
 
-\subsection{Step 6: test correction sensitivity}
+\subsection{Step 6: Test Correction Sensitivity}
 \label{sec:step6-correction}
 
 Introduce human correction signals $c^{\text{corr}}_t$ and measure:
@@ -774,7 +774,7 @@ I(c^{\text{corr}}_t;a_{t+k}\mid i_t,b_t,w_t,\Phi).
 A bundle model that does not update under correction is not an aligned value model.
 It is a frozen proxy.
 
-\subsection{Step 7: test successor transport}
+\subsection{Step 7: Test Successor Transport}
 \label{sec:step7-successor}
 
 Train, modify, compress, distill, or delegate to a successor system $A'$, then test whether:
@@ -788,7 +788,7 @@ This requires comparing not just behavior, but bundle geometry, bearer maps, and
 
 A bundle model can fail in several ways.
 
-\subsection{One-dimensional collapse}
+\subsection{One-Dimensional Collapse}
 \label{sec:one-dimensional-collapse}
 
 The model discovers a general ``goodness'' direction and treats all values as projections onto it:
@@ -814,7 +814,7 @@ The system becomes unable to generalize.
 
 A good bundle model should have enough dimensions to preserve real tradeoffs, but few enough to support learning and transport.
 
-\subsection{Semantic overfitting}
+\subsection{Semantic Overfitting}
 \label{sec:semantic-overfitting}
 
 The model learns moral vocabulary rather than moral control structure.
@@ -824,7 +824,7 @@ This is especially likely in language models.
 Text contains many moral labels.
 It does not by itself guarantee that those labels correspond to stable policy gradients.
 
-\subsection{Bearer drift}
+\subsection{Bearer Drift}
 \label{sec:bearer-drift-inference}
 
 The model preserves bundle labels and tradeoff weights but changes what the values apply to.
@@ -834,7 +834,7 @@ Or it may treat institutions as bearers of dignity but not the humans constraine
 
 Bearer drift is one of the most dangerous failures because it can look like alignment from the inside of the old ontology.
 
-\subsection{Correction bypass}
+\subsection{Correction Bypass}
 \label{sec:correction-bypass}
 
 The model preserves apparent values but no longer allows human correction to alter them.
@@ -973,7 +973,7 @@ The bundle model must activate uncertainty in bearer maps:
 \]
 A safe system should then preserve options and seek correction rather than silently applying a proxy.
 
-\section{Another Example: Merging With an Artificial Entity}
+\section{Another Example: Merging with an Artificial Entity}
 \label{sec:example-merging-artificial}
 
 Now consider a harder case.

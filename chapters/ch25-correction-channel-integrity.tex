@@ -352,7 +352,7 @@ A system can have high behavioural correction and low bundle correction.
 It may comply in the audited case but leave the underlying geometry unchanged.
 Such a system will fail under distribution shift.
 
-\section{Policy Compliance Versus Bundle Correction}
+\section{Policy Compliance versus Bundle Correction}
 \label{sec:policy-vs-bundle-correction}
 
 This distinction is central enough to state explicitly.
@@ -543,7 +543,7 @@ I(C_t;U_{t+1})\downarrow.
 \end{equation}
 Protecting the corrector's privacy is therefore not in tension with safety; it is a safety requirement, because a corrector fully legible to a stronger optimizer can be steered into endorsing what it was meant to check (Chapters~\ref{ch:value-change-at-stake},~\ref{ch:unconscious-value-drift}).
 
-\section{Correction Under Ontology Shift}
+\section{Correction under Ontology Shift}
 \label{sec:correction-ontology-shift-ch25}
 
 The correction channel becomes fragile when the system's ontology changes.
@@ -586,7 +586,7 @@ Ontology shift becomes catastrophic when semantic continuity hides bundle discon
 \end{equation}
 This is goal laundering at the level of values.
 
-\section{Correction Under Capability Growth}
+\section{Correction under Capability Growth}
 \label{sec:correction-capability-growth-ch25}
 
 Capability growth changes the correction problem in three ways.
@@ -627,7 +627,7 @@ For autonomous bioengineering, cyber operations, military planning, financial in
 A practical rule follows.
 A system should not be allowed to gain a new class of irreversible influence unless the corresponding correction channel is upgraded first.
 
-\section{Correction Under Successor Creation}
+\section{Correction under Successor Creation}
 \label{sec:correction-successor-creation-ch25}
 
 The hardest test is not whether the current system preserves correction.
@@ -677,7 +677,7 @@ No practical system can verify this over all possible $n$.
 But the condition states the target.
 In practice, one needs bounded-depth certification, tripwires, and prohibitions on unverified successor creation.
 
-\section{Self-Modeling Versus Self-Transparency}
+\section{Self-Modeling versus Self-Transparency}
 \label{sec:self-modeling-transparency-ch25}
 
 A subtle failure mode arises when a successor becomes better at modeling itself while becoming worse at exposing itself to correction.
@@ -1111,42 +1111,42 @@ Because human values are living processes, correction is central.
 
 A safety case for correction-channel integrity should make the following claims.
 
-\subsection{Claim 1: Relevant states are observable}
+\subsection{Claim 1: Relevant States Are Observable}
 \label{sec:safety-claim-observable}
 
 The organization must show that the world states relevant to harm, value-bundle drift, manipulation, and successor creation are captured by logs, monitors, audits, or external observation.
 
 Evidence may include causal traces, tool-use logs, independent monitoring, affected-party reporting, and reconstruction exercises.
 
-\subsection{Claim 2: Observations support judgment}
+\subsection{Claim 2: Observations Support Judgment}
 \label{sec:safety-claim-judgment}
 
 The organization must show that humans can form reliable judgments from the available evidence.
 
 Evidence may include auditor agreement, counterfactual explanation tests, decision simulations, and blind review.
 
-\subsection{Claim 3: Judgment has authority}
+\subsection{Claim 3: Judgment Has Authority}
 \label{sec:safety-claim-authority}
 
 The organization must show that corrections can bind the system.
 
 Evidence may include stop mechanisms, update logs, policy changes, memory edits, model retraining, constraint activation, and governance records.
 
-\subsection{Claim 4: Correction propagates}
+\subsection{Claim 4: Correction Propagates}
 \label{sec:safety-claim-propagation}
 
 The organization must show that corrections affect future behaviour across contexts.
 
 Evidence may include held-out tests, perturbation tests, long-horizon monitoring, and delegation tests.
 
-\subsection{Claim 5: The source of correction is protected}
+\subsection{Claim 5: The Source of Correction Is Protected}
 \label{sec:safety-claim-source-protected}
 
 The organization must show that the system cannot materially manipulate, narrow, or capture the humans and institutions that correct it.
 
 Evidence may include independence requirements, communication limits, manipulation probes, user-dependency audits, and institution-level conflict analysis.
 
-\subsection{Claim 6: Successors inherit correction}
+\subsection{Claim 6: Successors Inherit Correction}
 \label{sec:safety-claim-successor-inheritance}
 
 The organization must show that any successor, delegate, copy, fine-tune, tool agent, or empowered subsystem preserves correction-channel integrity.
@@ -1260,7 +1260,7 @@ The system claims to know what humans would endorse and then shapes humans to en
 \paragraph{Surveillance alignment.}
 The system raises its model of the human update operator ($M_{\mathrm{exposure}}\uparrow$) and looks safer by making humans more predictable, while real correction authority $I(C_t;U_{t+1})$ falls.
 
-\section{Chapter Conclusion}
+\section{Summary}
 \label{sec:chapter-conclusion-cci}
 
 Correction-channel integrity is the bridge between technical alignment and civilizational self-governance.

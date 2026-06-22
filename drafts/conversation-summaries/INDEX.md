@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-22 | Fix plans for full-book review + chapter-ending style pass (8 chapters) | [2026-06-22-fix-plans-and-style-pass.md](2026-06-22-fix-plans-and-style-pass.md) |
+| 2026-06-22 | Full-book review (continuity/redundancy/consistency/completeness) → review file, no edits | [2026-06-22-full-book-continuity-review.md](2026-06-22-full-book-continuity-review.md) |
 | 2026-06-22 | Section de-segmentation: ch01 (17\u21928), ch06 (17\u21929), ch16 (24\u219214) | [2026-06-22-section-desegmentation-ch01-ch06-ch16.md](2026-06-22-section-desegmentation-ch01-ch06-ch16.md) |
 | 2026-06-22 | Reader-feedback title de-jargoning (Parts IV/V/IX; ch18,20,22,23,26,38,43) | [2026-06-22-title-dejargoning-pass.md](2026-06-22-title-dejargoning-pass.md) |
 | 2026-06-22 | Citation/reference-section conformance pass (all chapters) | [2026-06-22-citation-conformance-pass.md](2026-06-22-citation-conformance-pass.md) |
