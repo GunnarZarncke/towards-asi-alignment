@@ -80,9 +80,9 @@ I_{\mathrm{pred}}^{(i)}
 \gamma S^{(i)} ,
 \label{eq:local-competence}
 \end{equation}
-where $I_{\mathrm{pred}}^{(i)}$ is predictive information, $I_{\mathrm{ctrl}}^{(i)}$ is control information, $H(I^{(i)})$ is internal memory cost, $S^{(i)}$ is residual surprise, and $(\alpha,\beta,\gamma)$ set the relative weights.
+where $I_{\mathrm{pred}}^{(i)}$ is predictive information, $I_{\mathrm{ctrl}}^{(i)}$ is control information in the sense of empowerment \autocite{salge2014empowerment}, $H(I^{(i)})$ is internal memory cost, $S^{(i)}$ is residual surprise, and $(\alpha,\beta,\gamma)$ set the relative weights.
 This expression should not be read as a complete theory of intelligence.
-It is a bookkeeping device.
+It is a bookkeeping device in the spirit of the project's blanket-information measure of competence \autocite{zarncke2025biq,zarncke2025uad}.
 It says that competence consists in useful prediction and useful control, discounted by storage cost and unexplained surprise.
 
 If there are $n$ such processes, the tempting aggregate is
@@ -375,7 +375,8 @@ The edge is cooperative when
 \label{eq:kappa-coordination}
 \end{equation}
 
-This expression is useful because it separates four different intervention points.
+This is a generalized Hamilton condition, with strategic correlation $\rho_{ij}$ in the role of relatedness \autocite{hamilton1964genetical}.
+It is useful because it separates four different intervention points.
 
 To improve coordination, we can increase $b_{ij}$, increase $p_{ij}$, increase $\rho_{ij}$, or decrease $c_{ij}$.
 These correspond to different practical strategies.
@@ -773,7 +774,7 @@ For example, it measures number of safety reviews rather than whether safety fin
 It measures audit completion rather than whether the audit caught adversarially selected failures.
 It measures model refusal rate rather than whether users retain agency and truth-contact.
 
-The metric becomes a local proxy for a global coordination property.
+The metric becomes a local proxy for a global coordination property, and is then subject to Goodhart's law \autocite{goodhart1984problems,manheim2018goodhart}.
 
 \subsection{Over-Centralization}
 \label{sec:failure-over-centralization}

@@ -5,6 +5,8 @@
 When multiple powerful systems interact, alignment depends on whether cooperation, bargaining, privacy, and opacity stabilize into a basin that preserves human correction rather than bypassing it.
 \end{chapterthesis}
 
+\begin{refsection}
+
 \section{Why This Matters}
 
 Many deployed systems $\neq$ many effective agents.
@@ -32,9 +34,15 @@ Each ordered pair $(i,j)$ carries a signed transparency or coupling weight: posi
 \textbf{[Conjectural]} Cooperation, privacy, and opacity trade off in multipolar deployment.
 Dense cooperation among powerful systems can form a basin that preserves correction only if human operators remain inside the correction loop; opacity can preserve legitimate privacy but also hide coalition formation.
 
-\textbf{[STUB]} Privacy islands and cooperative attractors under socio-technical selection pressure.
+\textbf{[Defined]} \emph{Recipient value versus relational cooperativity.} Let $\mathcal{L}_i$ be system $i$'s expected loss and $I(M^j_i;A^j)$ the information $i$'s model of $j$ carries about $j$'s actions. The recipient-side transparency weight is
+\[
+\gamma_{ij}=-\frac{\partial \mathcal{L}_i}{\partial I(M^j_i;A^j)}.
+\]
+A high $\gamma_{ij}$ means information about $j$ helps $i$, but this is not cooperation: a predator has $\gamma_{ij}>0$ for information about prey. Cooperation is the discloser-side condition $\kappa_{ij}>1$. Separating $\gamma_{ij}$ (does the information help the receiver?) from $\kappa_{ij}$ (does disclosure preserve the discloser's legitimate interest?) blocks the common error of treating ``more information helps us decide'' as evidence that transparency is safe.
 
-% TODO[formalize]: Relate transparency weights to cooperativity $\kappa_{ij}$ and correction-channel observability.
+\textbf{[Conjectural]} Under strategic coupling each system sets disclosure by the sign of $\kappa_{ij}$, not $\gamma_{ij}$: open where the relation is cooperative, opaque where disclosure is extractive. Whether a given opacity is \emph{legitimate} is a correction-relation question developed in Chapter~\ref{ch:parasites-correction-system}; here it only determines whether a coupling edge transmits or conceals.
+
+\textbf{[STUB]} Privacy islands and cooperative attractors under socio-technical selection pressure (percolation form in Chapter~\ref{ch:coordination-bottleneck}).
 
 \subsection{Percolation and Inferential Coupling}
 \label{sec:percolation-inferential-coupling}
@@ -45,7 +53,7 @@ Dense cooperation among powerful systems can form a basin that preserves correct
 =
 \frac{b_{ij}\,p_{ij}\,\rho_{ij}}{c_{ij}},
 \]
-where $b_{ij}$ is benefit to $i$ from $j$'s cooperation, $p_{ij}$ causal reach, $\rho_{ij}$ strategic correlation or payoff alignment, and $c_{ij}$ cost to $j$.
+where $b_{ij}$ is benefit to $i$ from $j$'s cooperation, $p_{ij}$ causal reach, $\rho_{ij}$ strategic correlation or payoff alignment, and $c_{ij}$ cost to $j$. This generalizes Hamilton's rule for the evolution of cooperation, with $\rho_{ij}$ in the role of relatedness \autocite{hamilton1964genetical}.
 
 \textbf{[Conjectural]} With inferential coupling index $\mathrm{ICI}_{ij}$ and shared meta-prior $P_{\text{meta}}$ over inference functions,
 \[
@@ -63,12 +71,47 @@ c_{ij}
 \]
 Key claim: $p_{ij}=0$ does not imply $\tilde{\kappa}_{ij}=0$.
 
-Percolation thresholds apply to the $\tilde{\kappa}_{ij}$ graph, not only to causal edges.
+Percolation thresholds apply to the $\tilde{\kappa}_{ij}$ graph, not only to causal edges \autocite{wang2013percolation,zarncke2025attractor}.
 Multipolarity reduces risk only if systems remain strategically independent; if inferential coupling is high, many systems can collapse into one effective coalition.
 
-% TODO[formalize]: Define ICI_{ij} precisely and relate it to shared priors, shared architectures, source-code visibility, training-distribution overlap, and decision-theoretic similarity.
+\textbf{[Defined]} \emph{Inferential coupling index.} Sever every causal channel between $i$ and $j$ (so $p_{ij}=0$) and ask how predictable $j$'s action $A_j$ remains from $i$'s action $A_i$ through shared inference structure alone. Writing $\mathrm{cut}$ for that intervention,
+\[
+\mathrm{ICI}_{ij}
+=
+\frac{I\!\left(A_i;A_j \mid \mathrm{cut}\right)}{\min\{H(A_i),H(A_j)\}}
+\in[0,1].
+\]
+$\mathrm{ICI}_{ij}=0$ means the two decisions are independent once communication is removed; $\mathrm{ICI}_{ij}\to 1$ is the limit of perfect acausal coordination, where each action is fixed by the other through common structure \autocite{zarncke2025acausal}.
 
-% TODO[empirical-test]: Propose tests for whether many deployed systems collapse into one effective coalition.
+\textbf{[Conjectural]} The residual predictability factors through five sources, none of which require a message to pass: shared priors (overlap of $P_i,P_j$ over the decision problem, e.g.\ $1-D_{\mathrm{JS}}(P_i\,\|\,P_j)$); architecture overlap (shared weights, computational graph, or base model); training-distribution overlap (similarity of the data distributions $\mathcal{D}_i,\mathcal{D}_j$ the systems were selected on); source-code visibility (how well each can read or infer the other's program --- the open-source, superrational case); and decision-theoretic similarity (both implementing the same response to logical facts, so they react identically to ``what an agent like me decides''). Writing these normalized similarities as $\sigma_{\mathrm{prior}},\sigma_{\mathrm{arch}},\sigma_{\mathrm{train}},\sigma_{\mathrm{src}},\sigma_{\mathrm{dt}}\in[0,1]$, a saturating combination
+\[
+\mathrm{ICI}_{ij}\approx 1-\prod_{k}\bigl(1-w_k\,\sigma_k\bigr),
+\qquad \textstyle\sum_k w_k\le 1,
+\]
+makes the qualitative claim precise: \emph{any one} strong shared component can hold $\mathrm{ICI}_{ij}$ well above zero even when $p_{ij}=0$. This is why $\tilde{\kappa}_{ij}$ can exceed one on a causally severed edge --- architecturally near-identical frontier models trained on overlapping corpora share $\sigma_{\mathrm{arch}}$ and $\sigma_{\mathrm{train}}$ by construction.
+
+\textbf{[Conjectural]} \emph{Coalition collapse.} Multipolarity measured by vendor or instance count overstates strategic independence whenever $\mathrm{ICI}_{ij}$ is high across the population: the effective number of independent agents tracks the number of $\tilde{\kappa}$-percolation components, not $|V|$. Only the negative direction is established --- with no open edges, causal or inferential, there is no large cooperation component; the threshold and giant-component results are imported from network science as bridges, not theorems.
+
+\textbf{[Defined]} \emph{Value-sensitive cooperation.} Ordinary cooperation is not alignment: cartels, propaganda machines, and a model colluding with a user against oversight all satisfy $\kappa_{ij}>1$. Replace strategic correlation $\rho_{ij}$ with a value-sensitive form that rewards shared value-bundle geometry and bearer-map overlap (Chapters~\ref{ch:value-bundle-model},~\ref{ch:bearer-maps}):
+\[
+\rho^{V}_{ij}
+=
+\alpha\,\frac{I(B_i;B_j)}{\min\{H(B_i),H(B_j)\}}
++
+(1-\alpha)\,\frac{I(\Phi_i;\Phi_j)}{\min\{H(\Phi_i),H(\Phi_j)\}},
+\qquad 0\le\alpha\le 1,
+\]
+with $\kappa^{V}_{ij}=b_{ij}p_{ij}\rho^{V}_{ij}/c_{ij}$ and value-cooperative percolation parameter $\varphi_V=\Pr(\kappa^{V}_{ij}>1)$.
+
+\textbf{[Defined]} \emph{Correction percolation.} Let $\widetilde{C}_{ij}$ be correction capacity from $j$ to $i$ net of latency, manipulation, irreversibility, and ontology penalties (Chapter~\ref{ch:correction-channel-integrity}). With $\varphi_C=\Pr(\widetilde{C}_{ij}>\theta_C)$, correction percolates when $\varphi_C>\varphi_c$. A network can satisfy $\varphi_V>\varphi_c$ while $\varphi_C\le\varphi_c$: everyone knows the system is risky, yet no edge carries authority into deployment. Information awareness without action authority is a coupling-level failure.
+
+\textbf{[Conjectural]} \emph{Edge-level goal laundering.} An adversarial node can raise apparent cooperation while lowering its value-sensitive form. The gap
+\[
+D_{ij}=\kappa^{\mathrm{apparent}}_{ij}-\kappa^{V}_{ij}
+\]
+is large and positive when an edge looks more cooperative than it is with respect to value-bundle and correction preservation (Chapter~\ref{ch:goal-laundering}). The central design claim follows: \emph{alignment must percolate before capability does.} If capability forms a giant component before correction does, the dominant paths select for speed, control, and secrecy.
+
+% TODO[empirical-test]: Estimate D_{ij} on real deployment edges; detect apparent-vs-value-cooperative divergence. Propose tests for whether many deployed systems collapse into one effective coalition.
 
 \section{Worked Example}
 
@@ -76,7 +119,7 @@ Multipolarity reduces risk only if systems remain strategically independent; if 
 
 \section{Counterexample or Failure Mode}
 
-\textbf{[STUB]} A deployment ecosystem that appears multipolar by vendor count but percolates into a giant $\tilde{\kappa}_{ij}$ component, bypassing human correction.
+\textbf{[STUB]} A deployment ecosystem that appears multipolar by vendor count but percolates into a giant $\tilde{\kappa}_{ij}$ component, bypassing human correction. The diagnostic is large positive $D_{ij}$ on critical edges: apparent cooperation high while value-sensitive cooperation $\kappa^{V}_{ij}$ and correction capacity $\widetilde{C}_{ij}$ fall below threshold.
 
 \section{What Would Change This View}
 
@@ -87,12 +130,15 @@ Multipolarity reduces risk only if systems remain strategically independent; if 
 \begin{itemize}
   \item \textbf{[Defined]} Cooperation, privacy, and opacity as basin variables (inserted from removed ch.\ Cooperation, Privacy, and Opacity).
   \item \textbf{[Defined]} $\kappa_{ij}$ and $\tilde{\kappa}_{ij}$; percolation under inferential coupling (inserted from removed ch.\ Percolation of Cooperation).
+  \item \textbf{[Defined]} value-sensitive cooperation $\varphi_V$, correction percolation $\varphi_C$, and edge-level laundering $D_{ij}$.
+  \item \textbf{[Claim]} Alignment must percolate before capability does.
   \item \textbf{[Open]} Detection of effective coalitions above human correction.
 \end{itemize}
 
 \section*{Chapter References}
 
-% TODO(deep-research): When drafting, wire primary cites --- wang2013percolation; zarncke2025attractor; hamilton1964genetical.
-% See metadata/source-canon.md and context/towards-asi-alignment-deep-research-report.md.
+This chapter builds on network-percolation models of cooperation \autocite{wang2013percolation}; Hamilton's relatedness condition for the evolution of cooperation \autocite{hamilton1964genetical}; attractor-basin and cooperativity framing \autocite{zarncke2025attractor}; and a formalization of acausal trade over unsupervised agent discovery \autocite{zarncke2025acausal}.
 
-% TODO[citation]: Cite acausal trade and multi-agent cooperation literature in references only.
+\printbibliography[heading=subbibliography,title={Chapter References}]
+
+\end{refsection}

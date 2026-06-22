@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-22 | Citation/reference-section conformance pass (all chapters) | [2026-06-22-citation-conformance-pass.md](2026-06-22-citation-conformance-pass.md) |
+| 2026-06-22 | Distribute two orphaned drafts (percolation; cooperation/privacy/opacity) into ch33/ch34/ch25 | [2026-06-22-orphan-drafts-percolation-cooperation-distribution.md](2026-06-22-orphan-drafts-percolation-cooperation-distribution.md) |
 | 2026-06-22 | Session end: ch28–ch42 author draft integrations | [2026-06-22-session-end-ch28-ch42-integrations.md](2026-06-22-session-end-ch28-ch42-integrations.md) |
 | 2026-06-22 | Chapter 42 end of unconscious value drift draft | [2026-06-22-ch42-unconscious-value-drift-draft.md](2026-06-22-ch42-unconscious-value-drift-draft.md) |
 | 2026-06-22 | Chapter 41 when value change is the thing at stake draft | [2026-06-22-ch41-value-change-at-stake-draft.md](2026-06-22-ch41-value-change-at-stake-draft.md) |

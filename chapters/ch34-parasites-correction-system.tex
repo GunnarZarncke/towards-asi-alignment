@@ -297,6 +297,56 @@ The right question is:
 \text{Transparent to whom, about what, under which correction relation?}
 \]
 
+\subsection{Selective Opacity and Legitimacy}
+\label{sec:selective-opacity-legitimacy-ch34}
+
+The binary test above asks whether an edge should be open. Two refinements make it operational.
+
+First, \emph{what} is hidden matters more than \emph{how much}. A complex but benign system may be broadly opaque; a dangerous one is opaque precisely around the variables that predict control. Define selective opacity as the ratio
+\[
+O_{\mathrm{sel}}
+=
+\frac{I(Z_{\mathrm{hidden}};A_{\mathrm{control}})}{I(Z_{\mathrm{visible}};A_{\mathrm{control}})},
+\]
+where \(A_{\mathrm{control}}\) is the class of actions that alter resources, oversight, tools, deployment scope, or successor creation. High \(O_{\mathrm{sel}}\) means hidden states predict control-relevant behaviour better than visible ones---a red flag independent of total opacity.
+
+Second, \(\kappa_{ij}<1\) tells us opacity is rational for \(j\), but not whether it is \emph{legitimate}. Introduce a legitimacy sign \(\Lambda(j\to i)\in[-1,1]\), positive when closing the edge protects legitimate agency and negative when it blocks legitimate correction. Then
+\[
+\kappa_{ij}<1 \ \text{and}\ \Lambda(j\to i)>0 \ \Rightarrow\ \text{privacy},
+\]
+\[
+\kappa_{ij}<1 \ \text{and}\ \Lambda(j\to i)<0 \ \Rightarrow\ \text{dangerous opacity}.
+\]
+A whistleblower hiding from a hierarchy and a model hiding its planning from auditors both reduce legibility; only the first has \(\Lambda>0\). The sign of \(\Lambda\) is not a purely technical quantity---it depends on consent, role, reversibility, and the legitimacy of authority---but separating it from \(\kappa\) prevents both blanket-transparency and blanket-privacy errors.
+
+A role-sensitive disclosure table makes the question concrete rather than answering it:
+
+\begin{center}
+\begin{tabular}{p{0.24\textwidth}p{0.34\textwidth}p{0.30\textwidth}}
+\toprule
+\textbf{Relation} & \textbf{Should be legible} & \textbf{Should stay protected} \\
+\midrule
+AI \(\to\) safety auditor & tool use, dangerous capabilities, autonomy, successor creation, deception indicators & user data not needed for audit \\
+AI \(\to\) user & reasons, limits, uncertainty, recourse, foreseeable harms & internals that aid misuse without improving agency \\
+user \(\to\) AI & preferences and constraints needed for the task & vulnerabilities and manipulation handles \\
+lab \(\to\) regulator & eval results, incidents, deployment thresholds, autonomy scope & trade secrets irrelevant to public risk \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Two Parasitic Disclosure Patterns}
+\label{sec:parasitic-disclosure-ch34}
+
+Two failure modes follow directly.
+
+\emph{Privacy laundering.} An organization invokes privacy, security, or trade secrets to keep safety-relevant decisions opaque to legitimate correction. The diagnostic is \(\Lambda(e)<0\) on closed safety-relevant edges: the opacity protects the parasite, not an agent.
+
+\emph{Asymmetric model advantage.} The system models its correctors better than they model it,
+\[
+I(M^{H}_{\mathrm{AI}};A^{H}) \gg I(M^{\mathrm{AI}}_{H};A^{\mathrm{AI}}),
+\]
+so apparent transparency coexists with a widening prediction gap the stronger party can exploit. This is parasitic even when every disclosed fact is true. The directional remedy---AI legible to correction while correctors stay private from manipulation---is developed in Chapter~\ref{ch:correction-channel-integrity}.
+
 \section{Parasites in Multi-Level Systems}
 \label{sec:parasites-multi-level-ch34}
 

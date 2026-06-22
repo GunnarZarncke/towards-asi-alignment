@@ -171,22 +171,15 @@ Consider a network of actors:
 \[
 G=(V,E),
 \]
-where nodes are labs, research groups, funders, auditors, regulators, insurers, standards bodies, companies, and civil-society organizations. An edge \(i\to j\) is open for artifact \(a\) if
-\[
-\kappa_{ij}(a)>1.
-\]
-Let
+where nodes are labs, research groups, funders, auditors, regulators, insurers, standards bodies, companies, and civil-society organizations. An edge \(i\to j\) is open for artifact \(a\) when it conducts, \(\kappa_{ij}(a)>1\). Let
 \[
 \varphi_a = P(\kappa_{ij}(a)>1)
 \]
-be the probability that a randomly sampled relevant edge conducts artifact \(a\). In a configuration-model approximation with degree distribution \(P(d)\), a giant component of artifact adoption appears when
-\[
-\varphi_a
->
-\frac{\langle d\rangle}
-{\langle d^2\rangle-\langle d\rangle}.
-\]
-This is the first formal picture of the Alignment Attractor. Safety practice becomes field-level rather than local when enough artifacts cross enough institutional boundaries \autocite{zarncke2025attractor,hamilton1964genetical}.
+be the probability that a randomly sampled relevant edge conducts artifact \(a\).
+
+This is the same cooperation graph analyzed in Chapter~\ref{ch:coordination-bottleneck}, with the generic cooperativity index \(\kappa_{ij}\) specialized to artifact conductivity \(\kappa_{ij}(a)\). We therefore inherit its percolation result rather than re-deriving it: a giant component of artifact adoption appears once \(\varphi_a\) exceeds the threshold \(\varphi_c\) of Equation~\eqref{eq:cooperation-percolation}, which the degree distribution of the institutional network fixes.
+
+What the specialization adds is interpretation. This is the first formal picture of the Alignment Attractor: safety practice becomes field-level rather than local when enough artifacts cross enough institutional boundaries \autocite{zarncke2025attractor,hamilton1964genetical}.
 
 If \(\varphi_a \leq \varphi_c\), safety artifacts remain trapped in small clusters. One lab has a good eval. One funder understands a problem. One regulator has a good taxonomy. One research group has a useful theory. But the artifacts do not percolate. The ecosystem remains fragmented.
 
@@ -1032,12 +1025,9 @@ b_{ij}(a)\,p_{ij}(a)\,\rho_{ij}(a)
 c_{ij}(a)
 }.
 \]
-Its field-level transition occurs when enough artifacts conduct across enough institutional edges:
+Its field-level transition occurs when enough artifacts conduct across enough institutional edges, crossing the cooperation-percolation threshold of Chapter~\ref{ch:coordination-bottleneck} (Equation~\eqref{eq:cooperation-percolation}):
 \[
-\varphi_a
->
-\frac{\langle d\rangle}
-{\langle d^2\rangle-\langle d\rangle}.
+\varphi_a > \varphi_c .
 \]
 Its danger is false attraction: reputation without reduction of risk, compliance without feedback, benchmarks without real safety, centralization without correction, and transparency without agency preservation.
 
