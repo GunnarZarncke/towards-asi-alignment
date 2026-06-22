@@ -126,12 +126,12 @@ steps and keeps empirical/philosophical claims explicit as bridge `axiom`s
 | I. The Alignment Problem Reframed | 1–5 | Wrong object, civilization frame, dynamical guarantee, scope |
 | II. Agents, Boundaries, and Real Optimizers | 6–10 | Agent definition, boundaries, composite agency, opacity |
 | III. Capability Growth and Competence | 11–14 | Capability without task ontology, coordination, misalignment |
-| IV. Human Values as Bundle Geometry | 15–19 | Value bundles, low dimensionality, bearers, tradeoffs |
-| V. Goal Inference | 20–23 | Bundle inference, compression test, transport types |
+| IV. Human Values as Needs Smoothed over Time | 15–19 | Value bundles, low dimensionality, bearers, tradeoffs |
+| V. Interpreting a System's Goals | 20–23 | Bundle inference, compression test, transport types |
 | VI. Correction Channels | 24–27 | Causal correction, integrity, extrapolation, manipulation |
 | VII. Successors, Reproduction, and Continuity | 28–31 | Successor test, conserved properties, certification |
 | VIII. Attractor Basins and Socio-Technical Selection | 32–35 | Selection environment, coupling, parasites, attractor |
-| IX. Safety Cases, Adversaries, and Open Cruxes | 36–40 | Observation limits, goal laundering, safety case, lethality stress test |
+| IX. Safety Cases, Adversaries, and Open Questions | 36–40 | Observation limits, goal laundering, safety case, lethality stress test |
 | X. The Philosophical and Civilizational Limit | 41–44 | Value change, drift, bearers, closing synthesis |
 
 Full titles and status: `metadata/book.yml` (source of truth), `tables/chapter-map.tex` (maintainer table; not in PDF).

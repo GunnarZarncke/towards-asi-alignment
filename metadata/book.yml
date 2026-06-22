@@ -109,7 +109,7 @@ chapters:
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch18:
-    title: "Bearers: What Values Apply To"
+    title: "What Values Apply To"
     status: draft
     word_target: 7000
     formal_density: medium
@@ -121,7 +121,7 @@ chapters:
     formal_density: high
     reviewer_needed: [alignment, mathematics]
   ch20:
-    title: "From Reward Inference to Bundle Inference"
+    title: "From Rewards to Values"
     status: draft
     word_target: 8000
     formal_density: high
@@ -133,13 +133,13 @@ chapters:
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch22:
-    title: "Inferring Goal Transport"
+    title: "Has the Goal Really Survived?"
     status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
   ch23:
-    title: "Semantic, Bundle, Bearer, and Correction Transport"
+    title: "When the Words Survive but the Meaning Doesn't"
     status: draft
     word_target: 9000
     formal_density: high
@@ -157,7 +157,7 @@ chapters:
     formal_density: high
     reviewer_needed: [information-theory, control-theory]
   ch26:
-    title: "From Obedience to Extrapolative Correction"
+    title: "Beyond Following Instruction"
     status: draft
     word_target: 8000
     formal_density: medium
@@ -229,7 +229,7 @@ chapters:
     formal_density: high
     reviewer_needed: [alignment]
   ch38:
-    title: "Multi-Scale Decomposition"
+    title: "Checking a System at Every Level"
     status: draft
     word_target: 8000
     formal_density: high
@@ -259,7 +259,7 @@ chapters:
     formal_density: medium
     reviewer_needed: [philosophy, neuroscience]
   ch43:
-    title: "The Bearers of Value"
+    title: "Who Still Counts After Transformation"
     status: stub
     word_target: 8000
     formal_density: low

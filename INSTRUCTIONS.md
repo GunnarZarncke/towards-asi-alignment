@@ -318,12 +318,12 @@ The manuscript should be divided into ten parts:
 1. The Alignment Problem Reframed (chapters 1–5)
 2. Agents, Boundaries, and Real Optimizers (6–10)
 3. Capability Growth and Competence (11–14)
-4. Human Values as Bundle Geometry (15–19)
-5. Goal Inference (20–23)
+4. Human Values as Needs Smoothed over Time (15–19)
+5. Interpreting a System's Goals (20–23)
 6. Correction Channels (24–27)
 7. Successors, Reproduction, and Continuity (28–31)
 8. Attractor Basins and Socio-Technical Selection (32–35)
-9. Safety Cases, Adversaries, and Open Cruxes (36–40)
+9. Safety Cases, Adversaries, and Open Questions (36–40)
 10. The Philosophical and Civilizational Limit (41–44)
 
 ### 4.1 Structural consolidation rules
@@ -608,26 +608,26 @@ Chapter 5 defines scope, the correction-capacity assumption $C_{\text{corr}}^{\t
 13. The Coordination Bottleneck — `ch13-coordination-bottleneck.tex`
 14. When Intelligence Deepens Misalignment — `ch14-intelligence-deepens-misalignment.tex`
 
-### Part IV. Human Values as Bundle Geometry
+### Part IV. Human Values as Needs Smoothed over Time
 
 15. Values Are Compressed Control Signals — `ch15-values-compressed-control.tex`
 16. The Value-Bundle Model — `ch16-value-bundle-model.tex`
 17. Why Low Dimensionality Makes Value Learning Possible — `ch17-low-dimensional-value-learning.tex`
-18. Bearers: What Values Apply To — `ch18-bearer-maps.tex`
+18. What Values Apply To — `ch18-bearer-maps.tex`
 19. Tradeoffs and Bundle Geometry — `ch19-tradeoffs-bundle-geometry.tex` (includes **The Paternalism Boundary**)
 
-### Part V. Goal Inference
+### Part V. Interpreting a System's Goals
 
-20. From Reward Inference to Bundle Inference — `ch20-reward-to-bundle-inference.tex`
+20. From Rewards to Values — `ch20-reward-to-bundle-inference.tex`
 21. The Compression Test for Intention — `ch21-compression-test-intention.tex`
-22. Inferring Goal Transport — `ch22-goal-transport.tex`
-23. Semantic, Bundle, Bearer, and Correction Transport — `ch23-transport-types.tex`
+22. Has the Goal Really Survived? — `ch22-goal-transport.tex`
+23. When the Words Survive but the Meaning Doesn't — `ch23-transport-types.tex`
 
 ### Part VI. Correction Channels
 
 24. Correction Is a Causal Channel — `ch24-correction-causal-channel.tex`
 25. Correction-Channel Integrity — `ch25-correction-channel-integrity.tex` (includes **Coerced Correction**)
-26. From Obedience to Extrapolative Correction — `ch26-extrapolative-correction.tex`
+26. Beyond Following Instruction — `ch26-extrapolative-correction.tex`
 27. Manipulation, Domestication, and False Consent — `ch27-manipulation-false-consent.tex`
 
 ### Part VII. Successors, Reproduction, and Continuity
@@ -644,11 +644,11 @@ Chapter 5 defines scope, the correction-capacity assumption $C_{\text{corr}}^{\t
 34. Parasites in the Correction System — `ch34-parasites-correction-system.tex`
 35. The Alignment Attractor — `ch35-alignment-attractor.tex` (pivotal process: $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$)
 
-### Part IX. Safety Cases, Adversaries, and Open Cruxes
+### Part IX. Safety Cases, Adversaries, and Open Questions
 
 36. Passive Observation Is Not Enough — `ch36-passive-observation-not-enough.tex`
 37. Detecting Goal Laundering — `ch37-goal-laundering.tex`
-38. Multi-Scale Decomposition — `ch38-multiscale-decomposition.tex`
+38. Checking a System at Every Level — `ch38-multiscale-decomposition.tex`
 39. A Safety Case for Superintelligence Alignment — `ch39-safety-case.tex`
 40. Lethality Stress Test and Open Issues — `ch40-lethality-stress-test-open-issues.tex`
 
@@ -658,7 +658,7 @@ Yudkowsky's List of Lethalities appears **only in Chapter 40**, as an adversaria
 
 41. When Value Change Is the Thing at Stake — `ch41-value-change-at-stake.tex`
 42. The End of Unconscious Value Drift — `ch42-unconscious-value-drift.tex`
-43. The Bearers of Value — `ch43-bearers-of-value.tex` (inserts **Merging With Artificial Entities** and **What Cannot Be Solved Technically** as sections)
+43. Who Still Counts After Transformation — `ch43-bearers-of-value.tex` (inserts **Merging With Artificial Entities** and **What Cannot Be Solved Technically** as sections)
 44. Towards Superintelligence Alignment — `ch44-towards-alignment.tex`
 
 ---
