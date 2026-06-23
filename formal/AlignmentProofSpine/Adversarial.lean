@@ -45,10 +45,10 @@ theorem P33_no_open_edges_no_large_component
   rintro ⟨x, y, hxy⟩
   exact hclosed x y hxy
 
-/-- C-PARASITE (P34): host-capacity aliasing. If there are strictly fewer signal
-    classes than attack classes, no detector can injectively map attacks to
-    signals — some attacks must alias. `Attack`/`Signal` are modelled as finite
-    types `Fin nAttack` / `Fin nSignal`. -/
+/-- C-PARASITE (P34): host-capacity aliasing (`C_X` in ch34). If there are strictly
+    fewer signal classes than attack classes, no detector can injectively map
+    attacks to signals — some attacks must alias. `Attack`/`Signal` are modelled
+    as finite types `Fin nAttack` / `Fin nSignal`. -/
 theorem P34_capacity_below_entropy_aliasing
     {nAttack nSignal : Nat}
     (hcard : nSignal < nAttack) :

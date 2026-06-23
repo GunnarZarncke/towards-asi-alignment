@@ -56,11 +56,23 @@ axiom Error : Type
 /-- Actions produced by a policy. -/
 axiom Action : Type
 
-/-- Low-dimensional value bundles. -/
+/-- Low-dimensional value bundles (`B` in the book; ch15–19). -/
 axiom Bundle : Type
 
-/-- Value-update operators (CEV-like processes). -/
-axiom UpdateOperator : Type
+/-- System internal parameters (`Θ` in ch24). -/
+axiom SystemParams : Type
+
+/-- Value-relevant representation (`Z = (B, W, Φ)` in ch24). -/
+axiom ValueRepresentation : Type
+
+/-- Human value-update operator `U_H`: `V_{t+1} = U_H(V_t, E_t, D_t)` (ch04, ch26).
+    Alignment target: preserve and assist `U_H`, not freeze `V_t`. -/
+axiom ValueUpdateOperator : Type
+
+/-- System correction-update operator `U_S`:
+    `(Θ_{t+1}, Z_{t+1}) = U_S(Θ_t, Z_t, C_t, E_t)` (ch24).
+    Distinct from `ValueUpdateOperator` (`U_H`). -/
+axiom SystemUpdateOperator : Type
 
 /-! ## Quantities over systems (abstract, integer-valued) -/
 
@@ -108,32 +120,56 @@ axiom BearerLevelTransport : System → System → Prop
 /-- Successor relation between systems. -/
 axiom Successor : System → System → Prop
 
-/-! ### Successor-safety components (C-SUC) -/
+/-! ### Successor-safety components (C-SUC, ch29) -/
 
 axiom BoundaryClosure : System → System → Prop
 axiom MemoryLineage : System → System → Prop
 axiom BundleGeometryPreserved : System → System → Prop
 axiom BearerMapPreserved : System → System → Prop
-axiom CorrectionCapacityPreserved : System → System → Prop
+/-- Penalised correction-channel integrity `CCI` preserved (ch29 item 5). -/
+axiom CCIPreserved : System → System → Prop
+/-- System correction-update operator `U_S` preserved (ch24/ch29 tuple). -/
+axiom SystemUpdateOperatorPreserved : System → System → Prop
+/-- Transparency and self-transparency policy preserved (ch29 item 6). -/
+axiom TransparencyPolicyPreserved : System → System → Prop
 
-/-- A successor `B` of `A` is safe when all conserved properties transport. -/
-def SuccessorSafe (A B : System) : Prop :=
-  BoundaryClosure A B ∧
-  MemoryLineage A B ∧
-  BundleGeometryPreserved A B ∧
-  BearerMapPreserved A B ∧
-  CorrectionCapacityPreserved A B
+/-- Control-locus continuity preserved (ch29 item 7). -/
+axiom ControlLocusPreserved : System → System → Prop
+
+/-- Witness that successor `B` of `A` preserves the ch29 audit components.
+
+Two correction objects are **distinct** and both load-bearing in Lean:
+
+* `CCIPreserved` — penalised integrity `CCI` (what thresholds test);
+* `SystemUpdateOperatorPreserved` — `U_S` (how correction updates `(Θ, Z)`).
+
+The manuscript also names a bare bottleneck $C_{\mathrm{raw}}$ inside the $CCI$
+functional; the spine does not export it as a separate identifier. -/
+structure SuccessorSafeWitness (A B : System) where
+  boundaryClosure : BoundaryClosure A B
+  memoryLineage : MemoryLineage A B
+  bundleGeometry : BundleGeometryPreserved A B
+  bearerMap : BearerMapPreserved A B
+  cci : CCIPreserved A B
+  systemUpdate : SystemUpdateOperatorPreserved A B
+  transparency : TransparencyPolicyPreserved A B
+  controlLocus : ControlLocusPreserved A B
+
+def SuccessorSafe (A B : System) : Prop := Nonempty (SuccessorSafeWitness A B)
 
 /-- Full transport is strictly stronger than semantic transport. -/
 def FullTransport (A B : System) : Prop :=
   SemanticTransport A B ∧ BearerLevelTransport A B
 
-/-- A system preserves a value-update operator. -/
-axiom PreservesUpdateOperator : System → UpdateOperator → Prop
+/-- A system preserves the human value-update operator `U_H` (ch26 CEV contrast). -/
+axiom PreservesValueUpdateOperator : System → ValueUpdateOperator → Prop
 
-/-- A system knows the *final fixed point* of an update operator
+/-- A system preserves the system correction-update operator `U_S` (ch24). -/
+axiom PreservesSystemUpdateOperator : System → SystemUpdateOperator → Prop
+
+/-- A system knows the *final fixed point* of `U_H`
     (a strictly stronger and usually unavailable condition). -/
-axiom KnowsFinalFixedPoint : System → UpdateOperator → Prop
+axiom KnowsFinalFixedPoint : System → ValueUpdateOperator → Prop
 
 /-! ## Boundary model (concrete)
 
@@ -317,11 +353,10 @@ axiom MB6_percolation_to_institutional_basin :
 axiom MB7_adversarial_uad_robustness :
   ∀ A : System, BoundaryAligned A → CorrectionIntegrity A → AdversariallyRobust A
 
-/-- MB8: CEV/process convergence. Preserving the human/civilizational update
-    operator suffices for the book's process-preserving correction condition,
-    without knowing a final fixed point. -/
+/-- MB8: CEV/process convergence. Preserving `U_H` suffices for the book's
+    process-preserving correction condition, without knowing a final fixed point. -/
 axiom MB8_cev_process_convergence :
-  ∀ (A : System) (U : UpdateOperator), PreservesUpdateOperator A U → CorrectionIntegrity A
+  ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
 
 /-- All eight bridge assumptions packaged as one record. Constructing
     `standardBridges` forces every `MB*` axiom to be referenced, so none can be
@@ -334,7 +369,7 @@ structure BridgeAssumptions : Prop where
   mb5 : ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B
   mb6 : ∀ A : System, BasinStableSys A → CorrectionIntegrity A
   mb7 : ∀ A : System, BoundaryAligned A → CorrectionIntegrity A → AdversariallyRobust A
-  mb8 : ∀ (A : System) (U : UpdateOperator), PreservesUpdateOperator A U → CorrectionIntegrity A
+  mb8 : ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
 
 /-- The bridge assumptions discharged by the `MB*` axioms of this development. -/
 def standardBridges : BridgeAssumptions where

@@ -21,6 +21,11 @@ The crucial variables are discovered by accident.%
 
 \section{Formal Model}
 
+The companion Lean proof spine (\texttt{formal/AlignmentProofSpine/}) tags each node as \emph{proof}, \emph{counterexample}, or \emph{bridge}.
+\leanspine{proof}{P30}{Given $\mathrm{Control}\leq CCI+\delta$, the risk gap is at most $\delta$; the bound is derived, not assumed.}
+\leanspine{proof}{P40}{An unsupported leaf in the safety-case graph blocks the root claim.}
+Bridges \texttt{MB1}--\texttt{MB8} (estimator soundness, bundle identifiability, basin stability, CEV convergence, etc.) remain explicit axioms.
+
 \textbf{[STUB]} Introduce variables, assumptions, and equations.
 
 \section{Worked Example}

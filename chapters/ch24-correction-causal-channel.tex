@@ -153,6 +153,7 @@ U_{t+1}
 A_{t+k}.
 \label{eq:correction-chain-ch24}
 \end{equation}
+\leanspine{proof}{P24}{On the typed chain $W\!\to\!\cdots\!\to\!A$, the weakest link is at most every link MI (\texttt{CorrectionPath.weakestLink}; folded into \texttt{CCI} in Lean).}
 Here:
 \begin{itemize}
 \item $W_t$ is the relevant world state at time $t$.
@@ -196,6 +197,8 @@ U_S
 \right),
 \end{equation}
 where $E_t$ is the evidence or explanation that accompanies correction.
+
+\leanspine{proof}{P23}{If the correction node cannot reach the action node in the channel graph, no correction channel exists (contrapositive).}
 
 A shallow update changes only local behaviour:
 \begin{equation}
@@ -303,6 +306,7 @@ C_{\mathrm{raw}}
 \lambda_G G.
 \label{eq:correction-channel-integrity-ch24}
 \end{equation}
+\leanspine{proof}{P13}{Certification uses $\mathrm{Control}\leq CCI+\delta$; risk is derived from the penalised integrity functional.}
 The penalty terms are:
 \begin{itemize}
 \item $L$: latency, the delay between the relevant state and the effective update.
