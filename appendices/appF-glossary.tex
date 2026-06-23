@@ -1,4 +1,72 @@
-\chapter{Glossary}
+\chapter{Operational Glossary}
 \label{appf-glossary}
 
-\textbf{[STUB]} Appendix content to be written.
+This book uses familiar words in deliberately operational ways.
+
+An \emph{agent} is not a little person inside a system.
+It is a bounded dynamical process whose internal state helps predict and influence its future interface with the world \autocite{dennett1987intentional}.
+A thermostat is barely agent-like.
+A company is often agent-like.
+A frontier AI service embedded in tools, logs, users, and deployment incentives may be agent-like in ways that do not fit common sense.
+
+A \emph{boundary} is not necessarily a physical skin.
+It is a partition of variables into internal states, sensory channels, active channels, and external states such that the internal and external futures become approximately independent when the interface is known.
+In notation, a candidate boundary is good when
+\[
+\MI(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon.
+\]
+Real boundaries leak. If they did not leak, agents could not sense, act, learn, or cooperate.
+
+A \emph{goal} is not assumed to be a Platonic utility function.
+It is a latent structure that makes behavior more compressible when the system is modeled as selecting actions under constraints.
+A goal attribution is successful when it saves bits:
+\[
+\Delta L
+=
+L_{\text{intentional}}
+-
+L_{\text{mechanistic}}
+-
+\lambda D L(R).
+\]
+
+A \emph{value bundle} is a low-dimensional control direction that changes policy across many situations.
+Care, truth, autonomy, non-suffering, justice, loyalty, dignity, and beauty are examples.
+The important point is not the label but the role.
+A value bundle compresses many high-dimensional errors, stories, practices, and learned responses into a control signal that can shape action.
+
+A \emph{bearer map} says what a value applies to.
+Does non-suffering apply only to current biological humans?
+To animals?
+To future digital minds?
+To simulated minds?
+To merged human--AI entities?
+A system can keep the value word while changing the bearer map.
+That is not preservation.
+It is relabeling.
+
+A \emph{correction channel} is the causal path by which humans and their institutions observe, judge, deliberate, object, and alter future system behavior before irreversible damage occurs:
+\[
+W_t
+\to
+O_t
+\to
+J_t
+\to
+D_t
+\to
+C_t
+\to
+U_{t+1}
+\to
+A_{t+k}.
+\]
+The letters stand for world state, observation, judgment, deliberation, correction, system update, and later action.
+A comment box is not a correction channel if nothing important changes.
+A law is not a correction channel if it arrives after the system has already made the relevant choice irreversible.
+A vote is not a correction channel if the electorate has been shaped so that only one answer remains psychologically available.
+
+An \emph{alignment basin} is a self-stabilizing region of system dynamics.
+Inside it, correction tends to restore alignment after perturbation.
+Outside it, selection pressures tend to amplify drift.
+The word ``basin'' is chosen because a ball in a bowl rolls back after small pushes, while a ball on a ridge eventually falls away.

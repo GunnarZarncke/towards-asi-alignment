@@ -8,9 +8,6 @@
 Superintelligence alignment is not mainly the problem of installing a fixed human utility function into a machine.
 It is the problem of preserving a human-correctable value-update process while capability, ontology, agency, institutions, and possibly humanity itself change substrate.
 
-That sentence is longer than a slogan because the problem is longer than a slogan.
-Each word cuts off a common wrong path.
-
 \emph{Preserving} matters because the target is not a single action but a dynamical condition.
 \emph{Human-correctable} matters because the future will contain errors, disagreements, and discoveries that no present specification can fully anticipate.
 \emph{Value-update process} matters because human values are not a clean list of terminal goals.
@@ -98,94 +95,18 @@ A lab does not need to intend catastrophe if its deployment pipeline selects for
 The alignment target must therefore survive copying, delegation, tool use, fine-tuning, institutional adoption, and replacement.
 
 The simple arrow is therefore insufficient.
-We need something closer to:
+What we need is that familiar words stay wired to the machinery that makes them matter:
 \[
-\Pr\left(
 \forall t:\;
-(B_t,\Phi_t,U^H_t)
-\in
-\Correctable
-\right)
-\geq 1-\delta.
+\begin{array}{l}
+\text{Words about values} \;\rightarrow\; \text{still change how trade-offs are made},\\[0.3em]
+\text{Words about persons} \;\rightarrow\; \text{still change who is protected},\\[0.3em]
+\text{Words about safety} \;\rightarrow\; \text{still change what the system actually does}.
+\end{array}
 \]
-Here $B_t$ denotes the geometry of value bundles at time $t$, $\Phi_t$ denotes the bearer map that says what those values apply to, and $U^H_t$ denotes the human or civilizational correction operator.
-The set $\Correctable$ is the region of possible futures in which correction remains causally effective.
-The probability is not a metaphysical comfort.
-It is a demand for evidence.
-
-\section*{Operational Vocabulary}
-
-This book uses familiar words in deliberately operational ways.
-
-An \emph{agent} is not a little person inside a system.
-It is a bounded dynamical process whose internal state helps predict and influence its future interface with the world \autocite{dennett1987intentional}.
-A thermostat is barely agent-like.
-A company is often agent-like.
-A frontier AI service embedded in tools, logs, users, and deployment incentives may be agent-like in ways that do not fit common sense.
-
-A \emph{boundary} is not necessarily a physical skin.
-It is a partition of variables into internal states, sensory channels, active channels, and external states such that the internal and external futures become approximately independent when the interface is known.
-In notation, a candidate boundary is good when
-\[
-\MI(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon.
-\]
-The tolerance $\epsilon$ matters.
-Real boundaries leak.
-If they did not leak, agents could not sense, act, learn, or cooperate.
-
-A \emph{goal} is not assumed to be a Platonic utility function.
-It is a latent structure that makes behavior more compressible when the system is modeled as selecting actions under constraints.
-A goal attribution earns its keep when it saves bits:
-\[
-\Delta L
-=
-L_{\text{intentional}}
--
-L_{\text{mechanistic}}
--
-\lambda D L(R).
-\]
-
-A \emph{value bundle} is a low-dimensional control direction that changes policy across many situations.
-Care, truth, autonomy, non-suffering, justice, loyalty, dignity, and beauty are examples, though not yet a final taxonomy.
-The important point is not the label but the role.
-A value bundle compresses many high-dimensional errors, stories, practices, and learned responses into a control signal that can shape action.
-
-A \emph{bearer map} says what a value applies to.
-Does non-suffering apply only to current biological humans?
-To animals?
-To future digital minds?
-To simulated minds?
-To merged human--AI entities?
-A system can keep the value word while changing the bearer map.
-That is not preservation.
-It is relabeling.
-
-A \emph{correction channel} is the causal path by which humans and their institutions observe, judge, deliberate, object, and alter future system behavior before irreversible damage occurs:
-\[
-W_t
-\to
-O_t
-\to
-J_t
-\to
-D_t
-\to
-C_t
-\to
-U_{t+1}
-\to
-A_{t+k}.
-\]
-The letters stand for world state, observation, judgment, deliberation, correction, system update, and later action.
-A comment box is not a correction channel if nothing important changes.
-A law is not a correction channel if it arrives after the system has already made the relevant choice irreversible.
-A vote is not a correction channel if the electorate has been shaped so that only one answer remains psychologically available.
-
-An \emph{alignment basin} is a self-stabilizing region of system dynamics.
-Inside it, correction tends to restore alignment after perturbation.
-Outside it, selection pressures tend to amplify drift.
-The word ``basin'' is chosen because a ball in a bowl rolls back after small pushes, while a ball on a ridge eventually falls away.
+This is a \emph{dynamical guarantee}: not a snapshot of today's labels, but persistence of their causal role as capability, ontology, agency, and successors change.
+That means preserving the \emph{geometry} of how values trade off, what and who those values apply to, and the \emph{human correction process} by which civilization updates its values under evidence and deliberation.
+Chapter~\ref{ch:dynamical-guarantee} states the claim in formal notation; Appendix~\ref{appf-glossary} gives the operational vocabulary in plain language.
 
 \section*{Which Alignment?}
 
@@ -221,7 +142,7 @@ The first alignment question is not what the system wants, but where the real op
 If the real optimizer is composite, distributed, or institutional, then model-level alignment can be locally successful and globally irrelevant.
 
 \begin{introclaim}[The value-bundle claim]
-Human values are learnable only to the extent that they have compressed structure, and preservable only to the extent that the compression, tradeoffs, and bearer maps are preserved under transformation.
+Human values are learnable only to the extent that they have compressed structure, and preservable only to the extent that the compression, tradeoffs, and map are preserved under transformation.
 \end{introclaim}
 
 This does not imply that values are simple.
@@ -260,7 +181,7 @@ It is a structure for making the missing pieces visible.
 Progress should look like artifacts.
 
 A boundary audit should make it harder to confuse the model with the real optimizer.
-A value-bundle evaluation should make it harder to preserve moral words while changing bearer maps.
+A value-bundle evaluation should make it harder to preserve moral words while changing whom or what the words refer to.
 A correction-channel audit should make it harder to claim oversight when human correction has no causal force.
 A successor-certification test should make it harder to delegate alignment away.
 An adversarial measurement suite should make it harder for agency to appear only when the evaluator stops looking.
@@ -309,7 +230,7 @@ Part~IX turns the framework into adversarial measurement and safety cases.
 Part~X reaches the philosophical limit: value change, human--AI merger, and what cannot be solved technically.
 
 The intended reader need not adopt every formalism.
-The first use of each concept is operational.
+The first use of each concept is operational; see Appendix~\ref{appf-glossary}.
 The mathematics is used as compression, not ornament.
 Where the equations are shaky, the text says so.
 
@@ -332,7 +253,7 @@ The practical hope is that we can build a regime in which:
 \begin{itemize}
   \item the real optimizers are detectable before deployment,
   \item value-bearing structures are represented at the right level of compression,
-  \item bearer maps cannot be silently rewritten,
+  \item meaning cannot be silently changed,
   \item human correction remains causally effective,
   \item successor systems inherit the same constraints, and
   \item the surrounding institutions select for preserving these properties.
