@@ -51,3 +51,4 @@ Author asked, across a multi-turn session: (1) tabulate each chapter's "What Wou
 
 ## Commits
 - `54ad1ea` — Propagate canonical notation, refresh ledgers, and tighten continuity bridges.
+- `f19ba8b` — Add adversarial WWCTV falsifiers book-wide and seed ch33 acausal trade.
