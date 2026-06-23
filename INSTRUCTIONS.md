@@ -6,7 +6,7 @@
 
 Write a full book-length manuscript titled:
 
-**Towards Superintelligence Alignment: Boundaries, Value Bundles, and the Correction of Civilization**
+**Towards Superintelligence Alignment: Boundaries, Values, and Correction**
 
 The book must be self-contained. It must not assume the reader already knows the author’s previous project names, papers, conversations, or internal terminology. Concepts originating in prior work may be cited in chapter references, but the body text must introduce them from first principles. Other authors' related work must be explained in sufficient degree for the intended audience to follow. This includes providing key formulas (but not their derivation).  
 
@@ -833,12 +833,9 @@ Define custom environments in `book.tex` or `metadata/preamble.tex`:
 
 ```latex
 \newtcolorbox{chapterthesis}{...}
-\newtcolorbox{decisionbox}{...}
-\newtcolorbox{failurebox}{...}
-\newtcolorbox{assumptionbox}{...}
-\newtcolorbox{formalbox}{...}
-\newtcolorbox{examplebox}{...}
 ```
+
+(Other box environments were removed from `metadata/preamble.tex` in 2026-06-23; chapters use plain `\section`s for decision relevance and failure modes.)
 
 ---
 

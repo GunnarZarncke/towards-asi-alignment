@@ -1,6 +1,6 @@
 # Towards Superintelligence Alignment
 
-**Boundaries, Value Bundles, and the Correction of Civilization**
+**Boundaries, Values, and Correction**
 
 A self-contained framework for preserving human-correctable value-bearing processes as capability grows, ontologies shift, successors are created, and multi-agent selection pressure intensifies.
 

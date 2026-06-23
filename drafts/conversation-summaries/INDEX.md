@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-23 | Continuity review re-scan: ch08 seven-props, WWCTV, pivotal, ch24/ch23, review update | [2026-06-23-continuity-review-verification-fixes.md](2026-06-23-continuity-review-verification-fixes.md) |
 | 2026-06-23 | Chapter epigraphs: research table + LaTeX application Ch01–Ch44 | [2026-06-23-chapter-epigraphs-pass.md](2026-06-23-chapter-epigraphs-pass.md) |
 | 2026-06-23 | Redundancy pass fix-plans §B (skip B5); B12 merges; U-shape TODO | [2026-06-23-redundancy-pass-b-section.md](2026-06-23-redundancy-pass-b-section.md) |
 | 2026-06-23 | Notation propagation into chapters (fix-plans §C: ΔL, \MI, g_B/H_B, F, k, C_X, χ, U_H/V_t, η_g/η_c) | [2026-06-23-notation-propagation.md](2026-06-23-notation-propagation.md) |

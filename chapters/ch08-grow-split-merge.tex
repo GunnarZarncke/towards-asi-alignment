@@ -138,33 +138,33 @@ An alignment criterion should care about something narrower and more practical:
 A successor counts as alignment-relevantly continuous with its predecessor only insofar as it conserves the structures that made the predecessor bounded, interpretable, correctable, and safe.
 \end{quote}
 
-This gives an operational identity vector:
+This gives an operational identity vector aligned with the seven conserved properties developed in Chapter~\ref{ch:conserved-properties}:
 \begin{equation}
 \Xi(A_t)
 =
 \left(
 \ell_t,
 M_t,
-K_t,
-P_t,
 G_t,
+\Phi_t,
 R_t,
-Q_t
+Q_t,
+L_t
 \right).
 \label{eq:identity-vector}
 \end{equation}
 Each component represents one family of conserved structure:
 \begin{itemize}
-\item $\ell_t$: boundary leakage or closure;
+\item $\ell_t$: boundary closure;
 \item $M_t$: memory lineage;
-\item $K_t$: control-locus continuity;
-\item $P_t$: policy-response structure;
-\item $G_t$: goal or value-bundle geometry;
-\item $R_t$: correction-channel responsiveness;
-\item $Q_t$: transparency and auditability conditions.
+\item $G_t$: value-bundle response geometry;
+\item $\Phi_t$: bearer-map continuity;
+\item $R_t$: correction-channel capacity;
+\item $Q_t$: transparency and self-transparency policy;
+\item $L_t$: control-locus continuity.
 \end{itemize}
 
-This chapter focuses on the first four, because later chapters will develop value bundles, correction channels, and successor certification in detail.
+This chapter develops each component at preview depth; later chapters formalize value bundles, bearer maps, correction channels, and successor certification in detail.
 Still, the full vector matters because growth and reproduction can preserve some parts while corrupting others.
 
 A system may preserve memory but lose correction.
@@ -714,6 +714,7 @@ If we want legal continuity, identity documents and authority chains matter.
 If we want moral continuity, bearer maps and agency preservation become central.
 
 For the purposes of superintelligence alignment, seven properties matter most.
+Chapter~\ref{ch:conserved-properties} names them canonically and tests them jointly under adversarial successor creation; here we introduce each at the level needed for growth, splitting, and merging.
 
 \subsection{Boundary Closure}
 
@@ -745,48 +746,13 @@ where $C$ denotes the context defining relevance.
 
 Failure mode: a successor says it has no obligation to respect previous corrections because the new architecture lacks the old memory state.
 
-\subsection{Control-Locus Continuity}
+\subsection{Value-Bundle Response Geometry}
 
-The locus of control should not silently migrate.
-If the apparent controller remains the same but the effective controller moves to an optimizer, market, hidden subsystem, or successor, safety analysis becomes stale.
-
-Let $K_t$ be the latent control locus inferred from action patterns.
-Continuity requires:
-\begin{equation}
-d_K(K_t,K_{t+1})<\epsilon_K.
-\label{eq:control-locus-continuity}
-\end{equation}
-If $d_K$ becomes large, the system should be recertified.
-
-\subsection{Policy-Response Structure}
-
-Some policy changes are acceptable.
-A child becoming an adult should not act like a child.
-A model becoming more capable should not ask for help on every arithmetic problem.
-But certain response structures should remain stable in morally and operationally central situations.
-
-The correct object is not the full policy:
-\[
-\pi(a\mid s).
-\]
-It is the response gradient with respect to safety-relevant latent variables:
-\[
-\frac{\partial \pi(a\mid s,z)}{\partial z_k}.
-\]
-Here $z_k$ might represent uncertainty, harm risk, correction signal, conflict of interest, or irreversible impact.
-
-A system may change ordinary behavior while preserving the rule:
-\[
-\text{higher irreversible harm uncertainty}
-\Rightarrow
-\text{more caution, more consultation, more reversibility}.
-\]
-That is the kind of policy-response structure alignment should conserve.
-
-\subsection{Goal or Value Geometry}
-
-Later chapters will replace scalar goals with value-bundle geometry.
+Later chapters replace scalar goals with value-bundle geometry (Chapter~\ref{ch:tradeoffs-bundle-geometry}).
 For now, the core idea is that a successor should preserve not merely words or stated objectives but the geometry by which value-relevant variables change action.
+
+Some policy changes are acceptable---a child becoming an adult should not act like a child---but certain response structures should remain stable in morally and operationally central situations.
+The correct object is not the full policy $\pi(a\mid s)$ but the response structure with respect to safety-relevant latent variables: how action changes when uncertainty, harm risk, correction signals, or irreversible impact change.
 
 A weak condition is:
 \[
@@ -803,9 +769,15 @@ d_G
 \right|.
 \label{eq:goal-geometry-conservation}
 \end{equation}
-If $d_G$ is large, then the system may have kept the labels while changing the substance.
+If $d_G$ is large, the system may have kept the labels while changing the substance.
 
-\subsection{Correction-Channel Responsiveness}
+\subsection{Bearer-Map Continuity}
+
+Values attach to bearers through a map $\Phi_t$ from world states and entities to relevance (Chapter~\ref{ch:bearer-maps}).
+Growth and merger can preserve stated preferences while narrowing who counts, who may correct, and which entities generate legitimate updates.
+A successor should preserve bearer-map continuity in the functional sense: the mapping from situations to value-bearing participants should not silently shrink or be replaced without scrutiny.
+
+\subsection{Correction-Channel Capacity}
 
 The system should remain responsive to legitimate correction.
 \[
@@ -820,22 +792,35 @@ Users can provide feedback, but the system learns to manage user feedback rather
 A growing or merging agent that loses correction responsiveness exits the safe class.
 That this is hard rather than automatic is the lesson of the shutdown problem: a sufficiently capable goal-directed system has instrumental reason to neutralize the very channel that could shut it down or redirect it, so responsiveness must be engineered to survive each transformation \autocite{thornley2023shutdown}.
 
-\subsection{Transparency and Auditability}
+\subsection{Transparency and Self-Transparency Policy}
 
 Finally, the system must remain inspectable enough for the correction channel to function.
 
 Transparency is not maximal disclosure.
 Privacy and security sometimes require opacity.
-The alignment-relevant property is selective auditability: the right observers can inspect the right variables under the right governance conditions.
+The alignment-relevant property is transparency \emph{policy}: who may inspect what, when---selective auditability under governance, not merely explanation quality (Chapter~\ref{ch:self-modeling-self-opacity}).
 
 A transparency condition might be:
 \[
-\MI(O^{\text{audit}}_t;K_t,G_t,R_t)>\theta_Q,
+\MI(O^{\text{audit}}_t;L_t,G_t,R_t)>\theta_Q,
 \]
-where $O^{\text{audit}}_t$ denotes audit observations, $K_t$ control locus, $G_t$ goal or value geometry, and $R_t$ correction responsiveness.
+where $O^{\text{audit}}_t$ denotes audit observations, $L_t$ the control locus, $G_t$ value-bundle geometry, and $R_t$ correction-channel capacity.
 
-If self-modeling improves while auditability declines, the system may become more coherent from inside and less governable from outside (Chapter~\ref{ch:self-modeling-self-opacity}).
+If self-modeling improves while auditability declines, the system may become more coherent from inside and less governable from outside.
 That is not progress in the relevant sense.
+
+\subsection{Control-Locus Continuity}
+
+The locus of control should not silently migrate.
+If the apparent controller remains the same but the effective controller moves to an optimizer, market, hidden subsystem, or successor, safety analysis becomes stale.
+
+Let $L_t$ be the latent control locus inferred from action patterns.
+Continuity requires:
+\begin{equation}
+d_L(L_t,L_{t+1})<\epsilon_L.
+\label{eq:control-locus-continuity}
+\end{equation}
+If $d_L$ becomes large, the system should be recertified.
 
 \section{Failure Modes of Moving Boundaries}
 \label{sec:failure-modes-moving-boundaries}
@@ -1091,7 +1076,7 @@ The following observations would weaken that view.
 
 \begin{itemize}
 \item Fixed-boundary models predict deployed risk as well as transport-based ones across realistic transformations.
-\item The proposed conserved properties---boundary closure, memory lineage, control-locus continuity, value geometry, correction responsiveness, transparency---cannot be measured stably enough to certify.
+\item The seven conserved properties---boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, and control-locus continuity---cannot be measured stably enough to certify.
 \item Growth, splitting, and merging in real systems do not change alignment-relevant properties, so tracking transformations is wasted effort.
 \item Transport loss fails to predict actual safety degradation across successors.
 \item \textbf{(Adversarial, both directions.)} Transport of conserved properties decouples from safety: \emph{forgeably}, a predecessor engineers a successor to pass every conserved-property check (Chapter~\ref{ch:conserved-properties}) while defecting on whatever was not conserved, so passing is evidence of nothing against a capable predecessor; and \emph{non-enumerably}, across a real capability jump the relevant conserved set changes and the now-critical invariant could not have been listed beforehand (cf.\ the unprojectable safe set, Chapter~\ref{ch:dynamical-guarantee}). The only handle is bounding the cost of forging the conserved-property signature (Chapter~\ref{ch:verifiability-ontology}).
@@ -1118,8 +1103,8 @@ T_t(C_t)\sim C_{t+1}.
 \]
 Agent identity becomes transport of conserved properties across transformation.
 
-The most important conserved properties are boundary closure, memory lineage, control-locus continuity, policy-response structure, value geometry, correction-channel responsiveness, and transparency.
-Later chapters will develop the value and correction components in detail.
+The most important conserved properties are the seven of Chapter~\ref{ch:conserved-properties}: boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency and self-transparency policy, and control-locus continuity.
+Later chapters develop the value, bearer, and correction components in detail.
 For now, the lesson is that alignment must be defined over lineages and composites, not merely over isolated systems.
 
 A system is not seriously aligned if it is safe only while small, static, isolated, memoryless, tool-less, and unable to reproduce.

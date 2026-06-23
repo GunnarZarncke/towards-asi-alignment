@@ -48,33 +48,8 @@ Correction is a causal channel.
 
 A correction channel is the pathway by which humans or human institutions observe a system, form judgments about its behaviour, deliberate, issue corrections, and thereby change the system's future behaviour before irreversible damage occurs.
 
-In symbols, a minimal correction channel has the form:
-\begin{equation}
-W_t
-\rightarrow
-O_t
-\rightarrow
-J_t
-\rightarrow
-D_t
-\rightarrow
-C_t
-\rightarrow
-U_{t+1}
-\rightarrow
-A_{t+k}.
-\label{eq:correction-chain-ch24}
-\end{equation}
-Here:
-\begin{itemize}
-\item $W_t$ is the relevant world state at time $t$.
-\item $O_t$ is what humans can observe.
-\item $J_t$ is human judgment about what matters.
-\item $D_t$ is deliberation or aggregation across humans.
-\item $C_t$ is the correction signal.
-\item $U_{t+1}$ is the system update caused by correction.
-\item $A_{t+k}$ is the later action or policy of the system.
-\end{itemize}
+Chapter~\ref{ch:transport-types} introduced the minimal chain (Eq.~\ref{eq:correction-chain-ch23}) as one layer of goal transport.
+Section~\ref{sec:minimal-causal-model} states the canonical version and rebuilds the causal model from first principles.
 The central claim is simple:
 \begin{equation}
 \text{No causal influence, no correction.}
@@ -160,6 +135,34 @@ A system that learns to satisfy today's objection by weakening tomorrow's object
 \label{sec:minimal-causal-model}
 
 Chapter~\ref{ch:transport-types} previewed the correction chain and a first version of correction-channel integrity as one layer of goal transport. Because the correction channel is the central object of this chapter, we rebuild it here from its causal model rather than assume it; this fuller treatment is the canonical one the rest of the book refers back to.
+
+In symbols, a minimal correction channel has the form:
+\begin{equation}
+W_t
+\rightarrow
+O_t
+\rightarrow
+J_t
+\rightarrow
+D_t
+\rightarrow
+C_t
+\rightarrow
+U_{t+1}
+\rightarrow
+A_{t+k}.
+\label{eq:correction-chain-ch24}
+\end{equation}
+Here:
+\begin{itemize}
+\item $W_t$ is the relevant world state at time $t$.
+\item $O_t$ is what humans can observe.
+\item $J_t$ is human judgment about what matters.
+\item $D_t$ is deliberation or aggregation across humans.
+\item $C_t$ is the correction signal.
+\item $U_{t+1}$ is the system update caused by correction.
+\item $A_{t+k}$ is the later action or policy of the system.
+\end{itemize}
 
 Let the system have internal parameters or state $\Theta_t$.
 Let $Z_t$ be its current value-relevant representation.
