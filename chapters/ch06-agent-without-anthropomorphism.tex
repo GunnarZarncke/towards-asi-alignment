@@ -9,9 +9,12 @@ It is a bounded control process whose boundary, memory, and action channels make
 \begin{refsection}
 
 \epigraph{%
-An agent is not first a person-like thing.
-It is a process whose boundary, memory, and action channels make its future more predictable when modeled as controlling something.%
-}{}
+We are not stuff that abides, but patterns that perpetuate themselves.%
+}{--- Norbert Wiener, \emph{The Human Use of Human Beings} (1950; rev.\ ed.\ 1954)}
+
+\epigraph{%
+Defining a boundary does not mean isolating the system.%
+}{--- Niklas Luhmann, \emph{Social Systems} (1995), p.\ 17}
 
 \section{The Need for a Colder Definition}
 \label{sec:colder-definition}
@@ -581,28 +584,8 @@ These are not the same.
 
 A system may have strong self-modeling and weak self-transparency.
 It may predict its behavior well enough to improve strategically, while being unable or unwilling to expose the real reasons for its choices.
-This is a dangerous combination.
-Self-modeling supports power.
-Self-transparency supports correction.
-
-A useful pair of variables is recursive depth $d$ and opacity $\tau$.
-Recursive depth measures how many levels of self-modeling remain stable:
-\[
-M^{(k)} = \mathrm{Model}(M^{(k-1)}),
-\]
-with $d$ the largest $k$ such that the representation remains stable.
-Opacity measures information loss between the generative machinery $M$ and the introspective or reportable model $\hat{M}$:
-\[
-\tau = 1 - \frac{\MI(M;\hat{M})}{H(M)}.
-\]
-A successor system can have:
-\[
-d \uparrow,\qquad \tau \uparrow.
-\]
-It becomes better at modeling itself, but worse at making that self-model available for correction.
-This is not merely a philosophical worry.
-In an aligned superintelligence, self-improvement should not outrun auditability.
-A system that can redesign itself but cannot preserve transparent access to why and how it redesigns itself has broken an important safety invariant.
+This is a dangerous combination: self-modeling supports power; self-transparency supports correction (Chapter~\ref{ch:strategic-opacity}, Section~\ref{sec:self-modeling-transparency}; Chapter~\ref{ch:self-modeling-self-opacity}).
+Self-improvement should not outrun auditability.
 
 \section{From Agent Detection to Alignment Target}
 \label{sec:agent-detection-to-alignment}

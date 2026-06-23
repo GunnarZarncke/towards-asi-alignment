@@ -9,8 +9,8 @@ A task-agnostic competence measure rotates evaluation away from benchmark ontolo
 \begin{refsection}
 
 \epigraph{%
-A system is capable not because it scores well on our benchmark, but because it can preserve useful internal structure, predict what matters, and make parts of the world change in ways that are not explained by accident.%
-}{}
+The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point.%
+}{--- Claude Shannon, ``A Mathematical Theory of Communication,'' \emph{Bell System Technical Journal} (July 1948)}
 
 \section{The Problem with Capability Scores}
 \label{sec:problem-capability-scores}
@@ -406,39 +406,8 @@ Many systems are not single compact agents.
 They are hierarchies or networks.
 The competence of such systems is not the sum of component competences.
 Coordination can amplify or destroy capability \autocite{woolley2010collective,wang2013percolation}.
-
-Let a system $H$ contain components $X_1,\ldots,X_n$.
-A first approximation is:
-\begin{equation}
-K_H
-\approx
-\sum_{i=1}^{n}\omega_i B_{X_i}
-+
-G_{\mathrm{coord}}
--
-\Omega_{\mathrm{coord}},
-\label{eq:collective-biq}
-\end{equation}
-where $\omega_i$ weights the component by its effective actuator relevance, $G_{\mathrm{coord}}$ captures additional prediction and control created by coordination, and $\Omega_{\mathrm{coord}}$ captures latency, conflict, overhead, translation failure, and incentive loss.
-
-This equation is intentionally schematic.
-Its purpose is to make a structural point.
-Adding capable parts can lower system competence if coordination costs dominate.
-Conversely, a mediocre component can become dangerous inside a powerful coordination structure.
-
-A single employee with a spreadsheet has limited control.
-A bureaucracy with procedures, budgets, enforcement, and databases can have enormous control even if each human component is bounded.
-A single model call has limited persistence.
-A model connected to scheduling, code repositories, cloud APIs, monitoring dashboards, and human escalation paths can become part of a higher-level control loop.
-
-This is why capability growth often arrives through integration rather than raw intelligence.
-\begin{equation}
-\text{More competence}
-\neq
-\text{larger model only}.
-\end{equation}
-
-It may mean better memory, broader actuators, lower latency, more reliable delegation, tighter feedback, or stronger institutional embedding.
+Adding capable parts can lower system competence if coordination costs dominate; conversely, a mediocre component can become dangerous inside a powerful coordination structure.
+Capability growth often arrives through integration---memory, actuators, delegation, institutional embedding---rather than raw model scale alone (Chapter~\ref{ch:coordination-bottleneck}).
 
 \section{Efficiency: Converting Competence into Growth}
 \label{sec:competence-growth-efficiency}
@@ -492,43 +461,8 @@ A system with high $K$ but low $\eta_g$ may remain impressive but contained.
 A system with high $\eta_g$ can expand from modest initial advantages.
 A system with both high $K$ and high $\eta_g$ is the central concern.
 
-\section{The U-Shaped Coordination Pattern}
-\label{sec:u-shaped-coordination}
-
-Across many natural and artificial systems, one should expect a rough U-shaped pattern in efficiency.
-
-Small systems often coordinate well because everyone can directly observe everyone else.
-A small team, a family, a pair of engineers, or a compact software service may have low raw capacity but high coordination efficiency.
-
-Mid-scale systems often suffer a collapse.
-They are too large for direct mutual awareness and too small or immature for robust institutions.
-Communication becomes lossy.
-Incentives diverge.
-Shared context decays.
-Many organizations fail in this regime.
-
-Large systems can recover some efficiency if they develop institutional scaffolding: protocols, markets, law, standards, APIs, bureaucracy, culture, accounting, contracts, and monitoring.
-These do not eliminate friction, but they amortize it.
-
-The pattern can be sketched as:
-\begin{equation}
-\eta_c(N)
-\propto
-N^{a-b-c-1}\rho(N),
-\end{equation}
-where $N$ is system size, $a$ captures benefit scaling, $b$ captures declining interaction probability, $c$ captures coordination cost, and $\rho(N)$ captures strategic correlation or institutional coherence.
-
-The exact exponents are empirical.
-The qualitative point is robust enough to matter: raw capacity scales differently from usable coordinated competence.
-
-This also changes how we think about AI scaling \autocite{kaplan2020scaling}.
-It is possible that model scaling increases internal capacity while deployment scaling increases action-channel capacity and institutional coherence.
-The second may matter more for real-world risk.
-
-A frontier model in a chat box has one capability profile.
-The same model integrated into a cloud platform, company workflows, financial operations, software deployment, and human management has a different profile.
-The difference is not just convenience.
-It is a change in the effective boundary.
+Many natural and artificial systems show a conjectural U-shaped pattern in coordination efficiency $\eta_c(N)$: small groups coordinate directly; mid-scale systems often collapse; large systems may recover efficiency through institutional scaffolding (Section~\ref{sec:mid-scale-collapse}, Chapter~\ref{ch:coordination-bottleneck}).
+Raw capacity scales differently from usable coordinated competence, and deployment integration may matter as much as model scaling \autocite{kaplan2020scaling}.
 
 \section{Competence Is Not Intelligence}
 \label{sec:competence-not-intelligence}

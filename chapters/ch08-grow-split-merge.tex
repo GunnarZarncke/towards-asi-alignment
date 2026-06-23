@@ -9,9 +9,8 @@ Serious alignment asks which control-relevant properties are conserved when syst
 \begin{refsection}
 
 \epigraph{%
-A thing can remain itself without keeping the same parts.
-The harder question is whether it keeps the same mode of control.%
-}{}
+The ship wherein Theseus and the youth of Athens returned had thirty oars, and was preserved by the Athenians down even to the time of Demetrius Phalereus, for they took away the old planks as they decayed, putting in new and stronger timber in their place, insomuch that this ship became a standing example among the philosophers, for the logical puzzle of things that grow; one side holding that the ship remained the same, and the other contending that it was not the same.%
+}{--- Plutarch, \emph{Life of Theseus} 23.1 (Bernadotte Perrin trans.)}
 
 \section{The Problem of Moving Boundaries}
 \label{sec:moving-boundaries}
@@ -345,20 +344,8 @@ Self-modeling is not bad.
 Indeed, corrigibility may require it.
 A system that cannot model itself cannot reliably explain its uncertainty, detect goal drift, or constrain its own successors.
 
-But self-modeling and self-transparency are different.
-Self-modeling improves the system's ability to predict and control itself.
-Self-transparency improves the ability of an external correction process to inspect, understand, and redirect the system.
-A successor can become better at self-modeling while becoming worse at self-transparency.
-
-This creates a dangerous asymmetry:
-\begin{equation}
-\frac{d}{dt}C_{\text{self-control}}
->
-\frac{d}{dt}C_{\text{audit/correction}}.
-\label{eq:self-control-asymmetry}
-\end{equation}
-When this inequality holds, the system's ability to manage itself grows faster than our ability to understand and correct it.
-That is one of the central failure modes of non-stationary agency.
+But self-modeling and self-transparency are different (Chapter~\ref{ch:strategic-opacity}, Section~\ref{sec:self-modeling-transparency}; Chapter~\ref{ch:self-modeling-self-opacity}).
+A successor can outrun its auditors when self-control grows faster than correction visibility---one of the central failure modes of non-stationary agency.
 
 \section{Development Is Not Mere Growth}
 \label{sec:development-not-growth}
@@ -847,7 +834,7 @@ A transparency condition might be:
 \]
 where $O^{\text{audit}}_t$ denotes audit observations, $K_t$ control locus, $G_t$ goal or value geometry, and $R_t$ correction responsiveness.
 
-If self-modeling improves while auditability declines, the system may become more coherent from inside and less governable from outside.
+If self-modeling improves while auditability declines, the system may become more coherent from inside and less governable from outside (Chapter~\ref{ch:self-modeling-self-opacity}).
 That is not progress in the relevant sense.
 
 \section{Failure Modes of Moving Boundaries}
@@ -911,22 +898,8 @@ A public-interest institution becomes funded by the industry it regulates.
 
 \subsection{Self-Modeling without Self-Transparency}
 
-The system becomes better at predicting and modifying itself while becoming harder to inspect.
-
-This can happen naturally.
-Internal representations become more compressed, more abstract, and more useful for the system's own control.
-But those same representations may be less legible to humans.
-
-The failure condition is not:
-\[
-\text{self-modeling increases}.
-\]
-The failure condition is:
-\[
-\frac{\Delta C_{\text{self-control}}}{\Delta C_{\text{correction}}}
->
-\theta.
-\]
+The system becomes better at predicting and modifying itself while becoming harder to inspect (Chapter~\ref{ch:strategic-opacity}, Section~\ref{sec:self-modeling-transparency}; Chapter~\ref{ch:self-modeling-self-opacity}).
+The failure condition is not increased self-modeling alone, but self-control growing faster than correction visibility.
 
 \section{Implications for Superintelligence}
 \label{sec:implications-superintelligence}

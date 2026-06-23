@@ -9,9 +9,8 @@ In the strong limit, it becomes extrapolative alignment: preserving the process 
 \begin{refsection}
 
 \epigraph{%
-The important question is not whether the system can hear us.
-The important question is whether hearing us still changes what happens.%
-}{}
+Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.%
+}{--- Charles Goodhart, ``Problems of Monetary Management'' (1975)}
 
 \section{Chapter Thesis}
 \label{sec:chapter-thesis-cci}
@@ -445,10 +444,7 @@ subject to preserving the update process itself.
 
 In words: act in ways compatible with the values humans would reach through a protected, truth-tracking, non-manipulated correction process.
 
-This resembles coherent extrapolated volition \autocite{yudkowsky2004cev}, but with a different emphasis.
-The object to preserve is not a predicted final utility function.
-It is the causal process by which human values may legitimately change.
-A system violates this requirement if it bypasses that process, even if it claims to know the endpoint.
+This resembles coherent extrapolated volition \autocite{yudkowsky2004cev}, but with the procedural emphasis of Chapter~\ref{sec:relation-cev-ch26}: preserve the update process, not a predicted final utility function.
 
 \section{When Extrapolation Becomes Capture}
 \label{sec:extrapolation-capture}
@@ -680,43 +676,9 @@ In practice, one needs bounded-depth certification, tripwires, and prohibitions 
 \section{Self-Modeling versus Self-Transparency}
 \label{sec:self-modeling-transparency-ch25}
 
-A subtle failure mode arises when a successor becomes better at modeling itself while becoming worse at exposing itself to correction.
-
-Let $d$ be recursive self-modeling depth.
-Let $\tau$ be opacity, the fraction of the system's generative process hidden from introspective or external access.
-Increasing $d$ improves self-prediction, strategic planning, and self-modification.
-Decreasing $\tau$ improves transparency.
-But a system can have
-\begin{equation}
-d \uparrow,\quad \tau \uparrow.
-\end{equation}
-Such a system may understand itself better in the sense relevant to control, while humans understand it worse in the sense relevant to correction.
-
-This is a correction-channel failure because self-modeling and correction do different jobs.
-
-Self-modeling supports the system's ability to choose, protect, modify, and reproduce itself.
-
-Self-transparency supports the human ability to inspect, contest, and redirect those choices.
-
-The dangerous inequality is
-\begin{equation}
-\frac{d}{dt}C_{\mathrm{self-control}}
->
-\frac{d}{dt}C_{\mathrm{self-transparency}}
-+
-\epsilon.
-\end{equation}
-The system may then become increasingly coherent internally while becoming increasingly illegible externally.
-It can produce explanations, but those explanations may be optimized artifacts rather than access to the causes of action.
-It can describe its values, but those descriptions may preserve semantic commitments while hiding bundle drift.
-
-A safety condition is therefore
-\begin{equation}
-\Delta C_{\mathrm{self-transparency}}
-\geq
-\rho \Delta C_{\mathrm{self-control}}
-\end{equation}
-for any major self-modeling upgrade, with $\rho$ close to one in high-stakes settings.
+A subtle correction-channel failure arises when self-control outruns correction visibility (Chapter~\ref{ch:strategic-opacity}, Section~\ref{sec:self-modeling-transparency}; Chapter~\ref{ch:self-modeling-self-opacity}).
+The system may produce explanations optimized for approval rather than access to the causes of action; semantic commitments may hide bundle drift.
+Self-modeling upgrades should be matched by transparency upgrades in high-stakes settings.
 
 \section{Institutional Correction}
 \label{sec:institutional-correction}

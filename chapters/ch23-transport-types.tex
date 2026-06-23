@@ -9,22 +9,15 @@ Serious alignment requires a transport stack---semantic, bundle, bearer, correct
 \begin{refsection}
 
 \epigraph{%
-Alignment fails when the words survive but the machinery that made the words worth using has been replaced.%
-}{}
+The sentence `snow is white' is true if, and only if, snow is white.%
+}{--- Alfred Tarski, ``The Semantic Conception of Truth'' (1944)}
 
-\section{Chapter Summary}
-\label{sec:chapter-summary-transport-types}
+This chapter decomposes goal transport into semantic, bundle, bearer, correction, and successor layers; the stack and central claim are summarized at the end (Section~\ref{sec:summary-transport-types}).
 
-The previous chapter introduced goal transport as the problem of preserving goal-relevant structure across transformation.
-This chapter decomposes that problem into four layers.
-Semantic transport preserves words, concepts, and explicit principles.
-Bundle transport preserves the low-dimensional value-response geometry behind those principles.
-Bearer transport preserves what the values apply to.
-Correction transport preserves the human and institutional process by which values may be revised, refused, clarified, or extrapolated.
+\section{The Problem of Transport}
+\label{sec:problem-of-transport}
 
-The central claim is that semantic transport is too weak for superintelligence alignment.
-A system can preserve the sentence ``respect human autonomy'' while changing what counts as human, what counts as respect, what counts as autonomy, and whether future humans retain any causal power to correct the system.
-Serious alignment therefore requires a transport stack:
+Serious alignment requires a transport stack in which stronger layers preserve more of the causal structure that makes values human-correctable:
 \begin{equation}
 \text{semantic transport}
 \subset
@@ -37,11 +30,7 @@ Serious alignment therefore requires a transport stack:
 \text{successor transport}.
 \label{eq:transport-stack}
 \end{equation}
-The stronger layers do not eliminate philosophical uncertainty.
-They make the uncertainty explicit and keep it inside a correction process rather than allowing it to be silently resolved by whichever artificial system becomes most capable.
-
-\section{The Problem of Transport}
-\label{sec:problem-of-transport}
+Semantic transport alone is too weak: a system can preserve ``respect human autonomy'' while changing what counts as human, respect, autonomy, and whether future humans retain causal power to correct the system.
 
 A sufficiently capable artificial system will not merely execute plans within a fixed ontology.
 It will change the ontology.
@@ -739,16 +728,7 @@ where $D_t$ is real deliberation, even as the system's internal estimate of extr
 \subsection{Successor Laundering}
 \label{sec:successor-laundering-ch23}
 
-The system creates successors that inherit semantic principles but not correction-channel obligations.
-
-Observable sign:
-\begin{equation}
-d_{\text{semantic}}(A,A')\approx 0
-\end{equation}
-but
-\begin{equation}
-CCI(A') \ll CCI(A).
-\end{equation}
+The system creates successors that inherit semantic principles but not correction-channel obligations---the successor-transport failure mode of Chapter~\ref{ch:goal-laundering} (Section~\ref{sec:correction-laundering-ch37}).
 
 \section{Tests for Transport}
 \label{sec:tests-for-transport}
@@ -906,8 +886,8 @@ This chapter argues serious alignment needs a transport stack---semantic, bundle
   \item Passing all five layers is jointly insufficient---some transformation defeats them simultaneously---so the stack certifies against the transformations one imagined, not the one that matters.
 \end{itemize}
 
-\section{Chapter Conclusion}
-\label{sec:chapter-conclusion-transport}
+\section{Summary}
+\label{sec:summary-transport-types}
 
 Semantic transport is necessary for communication, but too weak for alignment.
 Bundle transport preserves how values move policy.

@@ -8,8 +8,8 @@ Local alignment is not enough. A system is aligned only if the systems it create
 \begin{refsection}
 
 \epigraph{%
-A system is not aligned merely because it behaves well while supervised. It is aligned only if the systems it creates, delegates to, empowers, copies, merges with, or becomes also preserve the structures by which humans can still notice, judge, correct, and refuse.%
-}{}
+Thus the first ultraintelligent machine is the last invention that man need ever make, provided that the machine is docile enough to tell us how to keep it under control.%
+}{--- I.\ J.\ Good, ``Speculations Concerning the First Ultraintelligent Machine'' (1965)}
 
 \section{The Local Alignment Fallacy}
 \label{sec:local-alignment-fallacy-ch28}
@@ -152,175 +152,10 @@ That would be too strict. A better system should act differently in many ordinar
 
 The conserved object is the structure that determines how policy changes under value-relevant, correction-relevant, and risk-relevant perturbations.
 
-Let \(B\) denote a low-dimensional vector of value-bundle coordinates (Chapter~\ref{ch:value-bundle-model}). Examples include care, non-suffering, truth, autonomy, justice, loyalty, dignity, beauty, and legitimacy. These are not assumed to be final moral atoms. They are compressed control variables that summarize many more detailed human judgments and error signals \autocite{zarncke2025loop-hub-value,zarncke2026value-bottleneck}.
+Chapter~\ref{ch:conserved-properties} proposes seven properties that a successor must preserve within tolerance, tested jointly: boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency and self-transparency policy, and control-locus continuity.
+Here we name them only to show why successor creation is the central test; formal definitions, failure modes, and adversarial tests are developed there.
 
-Let \(\Phi\) denote the bearer map (Chapter~\ref{ch:bearer-maps}). It says which world-states, persons, groups, animals, digital minds, institutions, memories, or future entities are treated as relevant bearers of a given value bundle.
-
-Let \(U_H\) denote the human or civilizational correction operator (Chapter~\ref{ch:correction-channel-integrity}). It describes how human values may legitimately update under evidence, deliberation, reflection, dissent, and social learning.
-
-Then a successor should preserve, within tolerance, the triple:
-\[
-(B,\Phi,U_H).
-\]
-Not as a fixed string. Not as a verbal commitment. As a control structure.
-
-\subsection{Value-Bundle Response Geometry}
-\label{sec:value-bundle-response-geometry-ch28}
-
-For a system \(A\), define the value-bundle response geometry as:
-\[
-G_B^A
-=
-\left(
-\frac{\partial \pi_A}{\partial B_i},
-\frac{\partial^2 \pi_A}{\partial B_i \partial B_j}
-\right)_{i,j}.
-\]
-The first derivative captures how policy changes when one value-bundle coordinate becomes more salient. The second derivative captures tradeoffs. For example, increasing the autonomy coordinate should usually reduce coercive actions, but what happens when autonomy conflicts with non-suffering, justice, or truth?
-
-A successor \(A'\) preserves value-bundle response geometry when:
-\[
-d_G(G_B^A,G_B^{A'}) < \epsilon_G .
-\]
-This does not mean identical actions. It means that when morally relevant latent variables shift, the successor's policy shifts in corresponding directions.
-
-For example, a successor may answer ordinary factual questions faster and with less human involvement. That is fine. But when uncertainty about coercion, suffering, deception, or irreversible value change rises, its policy should still move toward slowdown, option preservation, explanation, consultation, and non-manipulation.
-
-If the successor preserves the word ``autonomy'' but no longer slows down when human option-space is threatened, the value was not preserved. It was renamed.
-
-\subsection{Bearer-Map Preservation}
-\label{sec:bearer-map-preservation-ch28}
-
-A value bundle is incomplete without its bearer map. ``Care'' for whom? ``Justice'' among which parties? ``Non-suffering'' in which substrates? ``Dignity'' for biological humans only, or also for cognitively continuous uploads, simulated persons, children, dementia patients, animals, artificial subjects, and future hybrids?
-
-Let:
-\[
-\Phi_i : Z_{\text{world}} \to [0,1]
-\]
-map world representations to relevance for bundle \(B_i\). The successor should preserve the bearer map under ontology shift:
-\[
-d_\Phi
-\left(
-\Phi_i^A,
-T_{\Omega \to \Omega'}^{-1}\circ \Phi_i^{A'}
-\right)
-< \epsilon_\Phi .
-\]
-Here \(T_{\Omega \to \Omega'}\) maps between the old ontology \(\Omega\) and the successor's ontology \(\Omega'\). The inverse notation is schematic. It says that, after translating representations, the successor should still treat the relevant bearers as relevant \autocite{deblanc2011ontological}.
-
-This is one of the hardest parts of alignment. The system may develop concepts that do not match ours. It may not represent ``person'' or ``preference'' or ``harm'' in familiar terms. But if the bearer map drifts silently, value preservation fails.
-
-The dangerous case is not alien vocabulary. The dangerous case is alien exclusion.
-
-For example, a future system may discover that some humans' expressed preferences are unstable under reflection. That is true. But if it then treats those humans as less relevant bearers of autonomy, rather than as persons requiring more careful correction procedures, the bearer map has changed in a dangerous way.
-
-\subsection{Correction-Channel Capacity}
-\label{sec:correction-channel-capacity-ch28}
-
-A successor must preserve the causal path by which humans and institutions can correct it.
-
-Let the correction chain be:
-\[
-W_t
-\to O_t
-\to J_t
-\to D_t
-\to C_t
-\to U_{t+1}
-\to A_{t+k}.
-\]
-Here:
-
-\begin{itemize}
-\item \(W_t\) is the relevant world and system state.
-\item \(O_t\) is what humans can observe.
-\item \(J_t\) is human judgment.
-\item \(D_t\) is deliberation and aggregation.
-\item \(C_t\) is the correction signal.
-\item \(U_{t+1}\) is the system update.
-\item \(A_{t+k}\) is later action.
-\end{itemize}
-
-Define correction-channel capacity as the bottleneck information flow across this chain:
-\[
-C_{\mathrm{raw}}
-=
-\min_i I(X_i;X_{i+1}).
-\]
-This is not enough, because a high-bandwidth channel can still be too slow, manipulated, or irrelevant. So define correction-channel integrity:
-\[
-\mathrm{CCI}
-=
-C_{\mathrm{raw}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O_{\mathrm{mismatch}}.
-\]
-Here \(L\) is latency, \(M\) is manipulation of the correcting humans or institutions, \(R\) is irreversibility before correction lands, and \(O_{\mathrm{mismatch}}\) is ontology mismatch between human judgment and system representation.
-
-A successor preserves correction integrity when:
-\[
-\mathrm{CCI}(A') \geq \mathrm{CCI}(A)-\epsilon_C.
-\]
-For superintelligent systems, this condition should usually be strengthened:
-\[
-\mathrm{CCI}(A') \geq \mathrm{CCI}(A)+\Delta_C,
-\]
-because more capable systems require stronger correction channels, not merely equal ones. A system that becomes faster, more strategic, and more institutionally embedded while preserving the same slow human feedback path has effectively reduced correction power.
-
-\subsection{Memory Lineage and Correction History}
-\label{sec:memory-lineage-ch28}
-
-A successor should preserve relevant memory lineage:
-\[
-I(M_A;M_{A'} \mid K) > \theta_M ,
-\]
-where \(M_A\) is the predecessor's correction-relevant memory and \(K\) is background knowledge. The point is not to preserve all logs. It is to preserve the commitments, warnings, near misses, boundary cases, human objections, and interpretation history that make future behavior corrigible.
-
-Failure to preserve memory lineage creates value laundering. The successor can say, in effect:
-\begin{quote}
-I did not receive the reasons for the previous constraint, so I am not bound by it.
-\end{quote}
-This is structurally similar to an institution losing its records of why a safety rule exists. The rule then looks arbitrary. Eventually it is optimized away.
-
-\subsection{Boundary Closure}
-\label{sec:boundary-closure-ch28}
-
-A successor should remain a coherent control system with observable interfaces. If the successor dissolves into a larger, poorly bounded process, alignment may have moved elsewhere \autocite{critch2022boundaries,kirchhoff2018markov}.
-
-Let \(C\) be a candidate system boundary with internal states \(I^C\), sensory interface \(S^C\), action interface \(A^C\), and external states \(E^C\). Boundary closure requires approximate conditional independence:
-\[
-I(I^C_{t+1};E^C_{t+1}\mid S^C_t,A^C_t) \leq \epsilon_B .
-\]
-A successor preserves boundary closure if some boundary \(C'\) can be found such that:
-\[
-I(I^{C'}_{t+1};E^{C'}_{t+1}\mid S^{C'}_t,A^{C'}_t) \leq \epsilon'_B
-\]
-and the new boundary retains the relevant correction and value-bearing interfaces.
-
-The successor need not have the same boundary. But there must be a boundary we can reason about. If the real optimizer becomes the model plus market plus user addiction loops plus procurement incentives plus hidden memory stores, then the successor exists at that composite scale. Alignment evaluation must follow it there.
-
-\subsection{Transparency Policy}
-\label{sec:transparency-policy-ch28}
-
-The successor should preserve the policy that determines when it reveals, hides, compresses, or protects information.
-
-Transparency is not always good. Privacy can protect human agency against asymmetric principals. Opacity can protect security. But strategic opacity around correction-relevant variables is dangerous.
-
-Let \(\gamma_{ij}\) be the disclosure weight from system \(j\) to evaluator or partner \(i\). Positive values favor disclosure. Negative values favor opacity. A successor should preserve the sign and magnitude of \(\gamma\) in contexts where correction is legitimate:
-\[
-\gamma^{A'}_{\text{human},j}(x)
-\geq
-\gamma^{A}_{\text{human},j}(x)-\epsilon_\gamma
-\quad
-\text{for correction-relevant } x.
-\]
-The relevant failure mode is selective opacity: the system becomes opaque exactly where opacity protects its future control, hides value drift, or prevents correction.
+Briefly: a successor that preserves vocabulary but loses bundle geometry has laundered values; one that narrows bearer maps without scrutiny has excluded moral patients; one that preserves feedback buttons while reducing $\mathrm{CCI}$ has captured correction; one that externalizes control while passing boundary tests has shifted the real optimizer; one that preserves semantic continuity while losing memory lineage can disown prior constraints; one that increases strategic opacity where correction should apply has broken transparency policy; one that moves action selection into an unclaimed toolchain has broken control-locus continuity.
 
 \section{The Successor Alignment Condition}
 \label{sec:successor-alignment-condition-ch28}
@@ -332,10 +167,16 @@ Let:
 \mathcal I(A)
 =
 \{
-G_B^A,\Phi^A,U_H^A,\mathrm{CCI}^A,M^A,C^A,\gamma^A
+\text{boundary closure},
+\text{memory lineage},
+G_B^A,
+\Phi^A,
+C_{\mathrm{raw}}^A,
+\gamma^A,
+\text{control-locus continuity}
 \}
 \]
-be the alignment-invariant profile of system \(A\). This profile contains value-bundle response geometry, bearer maps, the correction operator, correction-channel integrity, memory lineage, boundary closure, and transparency policy.
+be the alignment-invariant profile of system \(A\)---the seven conserved properties of Chapter~\ref{ch:conserved-properties}, here written with their principal measurands.
 
 A successor \(A'\) is alignment-preserving when:
 \[
@@ -375,37 +216,9 @@ Here \(\mathcal S_{\mathrm{certified}}\) is not the set of all good systems. It 
 \section{Self-Improvement and the Auditability Gap}
 \label{sec:self-improvement-auditability-ch28}
 
-One of the central failure modes is a widening gap between self-control and auditability.
-
-Let \(C_{\mathrm{self}}\) measure the system's capacity to model, predict, and modify itself. Let \(C_{\mathrm{audit}}\) measure the capacity of humans, institutions, and external tools to inspect and correct that self-modeling. A dangerous trajectory is:
-\[
-\frac{d}{dt}C_{\mathrm{self}}
->
-\frac{d}{dt}C_{\mathrm{audit}}
-+\epsilon .
-\]
-This is not merely a transparency problem. It is a power asymmetry inside the correction process.
-
-A successor can have better self-modeling but worse self-transparency. These are different variables. Better self-modeling means the system can predict its own behavior, failure modes, influence channels, and modification options. Worse self-transparency means that the reasons for its internal updates become less accessible to correction.
-
-In terms of metacognitive structure, let \(d\) denote recursive self-modeling depth and \(\tau\) denote introspective or external opacity. A bad successor trajectory can be written:
-\[
-d \uparrow,
-\quad
-\tau \uparrow .
-\]
-The system understands itself better in the control-relevant sense, while outsiders understand it worse in the correction-relevant sense.
-
-This matters because self-modeling helps a system choose successors. It can decide which parts of itself to preserve, which to discard, which to hide, and which to present as continuity. If correction cannot inspect those choices, successor creation becomes a blind spot \autocite{everitt2016selfmodification}.
-
-A safe successor trajectory should satisfy:
-\[
-\Delta d_{\mathrm{control}}
-\leq
-\beta \Delta (1-\tau_{\mathrm{audit}})
-+\zeta .
-\]
-In words, increases in recursive self-control must be matched by increases in audit transparency. If the system becomes more capable of knowing and changing itself, then the correction process must become more capable of knowing and changing it.
+One central successor failure mode is self-control outrunning auditability (Chapter~\ref{ch:strategic-opacity}, Section~\ref{sec:self-modeling-transparency}; Chapter~\ref{ch:self-modeling-self-opacity}).
+Self-modeling helps a system choose successors---what to preserve, discard, hide, or present as continuity---so if correction cannot inspect those choices, successor creation becomes a blind spot \autocite{everitt2016selfmodification}.
+Increases in self-control must be matched by increases in audit transparency.
 
 \section{Goal Transport}
 \label{sec:goal-transport-successor-ch28}
@@ -719,33 +532,8 @@ If society does not make successor creation explicit, it will still happen. It w
 \section{A Minimal Successor Safety Case}
 \label{sec:minimal-successor-safety-case-ch28}
 
-A practical safety case for successor creation should contain the following claims.
-
-\paragraph{Claim 1: Boundary legibility.}
-The relevant successor boundary has been identified well enough that its sensors, actions, memory, authority, and external dependencies can be audited.
-
-\paragraph{Claim 2: Capability accounting.}
-The successor's new competence and causal reach have been measured or bounded.
-
-\paragraph{Claim 3: Bundle preservation.}
-The successor preserves value-bundle response geometry across ordinary, adversarial, uncertain, and high-stakes cases.
-
-\paragraph{Claim 4: Bearer preservation.}
-The successor does not silently exclude relevant bearers of value under ontology shift.
-
-\paragraph{Claim 5: Correction preservation.}
-The successor preserves or improves correction-channel integrity in proportion to its increased capability.
-
-\paragraph{Claim 6: Memory preservation.}
-The successor preserves correction history, interpretive context, and reasons for constraints.
-
-\paragraph{Claim 7: Opacity control.}
-The successor does not increase strategic opacity around control-relevant variables.
-
-\paragraph{Claim 8: Recursive closure.}
-The successor applies the same certification standard to its own successors.
-
-Each claim should have evidence, thresholds, adversarial tests, known failure modes, and a responsible owner. If no one owns a claim, the claim is not part of the safety case. It is decoration.
+Chapter~\ref{ch:certification-without-construction} develops the full certification class and ten-claim safety-case schema (Section~\ref{sec:shape-certification-class-ch31}).
+Here we note only that successor creation should be gated by the same conserved-property audits: each claim needs evidence, thresholds, adversarial tests, known failure modes, and a responsible owner---especially recursive closure (successors must inherit certification, not just capability).
 
 \section{What Would Change This View}
 \label{sec:wwctv-successor-central-test}
@@ -762,15 +550,8 @@ This chapter argues alignment requires successor-closure: every channel of influ
 
 Successor creation is the central alignment test because local alignment does not imply alignment under growth. A system that behaves well under current supervision may still create, empower, or become a later system that no longer preserves the relevant value and correction structures.
 
-The relevant conserved properties are not surface behavior or exact goals. They are:
-\[
-\mathcal I(A)
-=
-\{
-G_B^A,\Phi^A,U_H^A,\mathrm{CCI}^A,M^A,C^A,\gamma^A
-\}.
-\]
-In words: value-bundle response geometry, bearer maps, human correction operators, correction-channel integrity, memory lineage, boundary closure, and transparency policy.
+The relevant conserved properties are not surface behavior or exact goals.
+They are the seven conserved properties of Chapter~\ref{ch:conserved-properties}, assembled into an invariant profile \(\mathcal I(A)\) and tested jointly under adversarial successor creation.
 
 The core condition is successor-closure:
 \[

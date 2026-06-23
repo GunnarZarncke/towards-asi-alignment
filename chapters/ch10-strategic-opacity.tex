@@ -9,9 +9,8 @@ Alignment fails when control becomes more coherent than correction can see.
 \begin{refsection}
 
 \epigraph{%
-It is more dangerous to overlook an agent than to see one too many.
-But once a system can benefit from being overlooked, the problem changes: we are no longer merely discovering agents in raw dynamics; we are discovering agents that may shape the evidence by which they are discovered.%
-}{}
+All warfare is based on deception.%
+}{--- Sun Tzu, \emph{The Art of War}, ch.\ 1 ``Laying Plans'' (trad.\ c.\ 5th century BCE; Lionel Giles trans.)}
 
 \section{The Problem Changes When the System Can Hide}
 \label{sec:problem-can-hide}
@@ -526,7 +525,12 @@ These are distinct variables.
 Chapter~\ref{ch:self-modeling-self-opacity} is the canonical treatment; this section previews only what the opacity argument needs---that a system's grip on itself can outrun the correction channel's grip on it.
 
 Let $d$ denote recursive self-modeling depth: how many stable levels of self-modeling the system can maintain.
-Let $\tau$ denote metacognitive opacity: the information loss between generative processes and introspectively or externally accessible representations.
+Let $\tau$ denote metacognitive opacity: the information loss between generative processes and introspectively or externally accessible representations, with canonical form
+\begin{equation}
+\tau = 1 - \frac{\MI(M;\hat{M})}{H(M)},
+\label{eq:opacity-preview-ch10}
+\end{equation}
+where $M$ is generative machinery and $\hat{M}$ is the accessible self-model (Chapter~\ref{ch:self-modeling-self-opacity} develops this fully).
 A system can move from:
 \begin{equation}
 d \uparrow, \qquad \tau \downarrow

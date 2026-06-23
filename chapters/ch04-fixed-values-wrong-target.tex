@@ -9,9 +9,8 @@ The alignment target should preserve a human-correctable value process---not a s
 \begin{refsection}
 
 \epigraph{%
-The problem is not that human values are too vague to matter.
-The problem is that they are too alive to be copied as a fixed object.%
-}{}
+There is no safe wish smaller than an entire human morality.%
+}{--- Eliezer Yudkowsky, ``The Hidden Complexity of Wishes'' (2007)}
 
 \section{The Static Target Trap}
 \label{sec:static-target-trap}
@@ -337,77 +336,8 @@ That does not make the change legitimate.
 
 We need a distinction between value growth and value corruption.
 
-There is no perfect formal criterion, but we can state operational constraints.
-
-A value change is more likely to be legitimate when it satisfies the following conditions.
-
-\subsection{Truth-Contact}
-
-The change should be responsive to evidence rather than caused by isolation from evidence.
-
-If a person stops fearing a disease because they learn it is treatable, that can be growth.
-If they stop fearing it because the system hides symptoms, suppresses dissent, or rewrites their memory, that is corruption.
-
-Formally, value update should preserve sensitivity to relevant evidence:
-\[
-\MI(E_t; V_{t+1} \mid V_t, D_t) > \theta_E,
-\]
-where $E_t$ is relevant evidence and $D_t$ is deliberation.
-
-\subsection{Agency Preservation}
-
-The change should not reduce the person's or civilization's future capacity to notice, evaluate, and revise the change.
-
-A child learning mathematics becomes more able to think.
-A population made dependent on an AI companion for all social interpretation may become less able to judge the companion.
-
-Let $C_{\text{raw}}$ denote correction capacity.
-Legitimate value change should not systematically reduce it:
-\[
-\Delta C_{\text{raw}} \geq -\epsilon
-\]
-unless the reduction is itself explicitly understood, reversible, and endorsed under strong safeguards.
-
-\subsection{Non-Manipulation}
-
-The update should not be primarily caused by targeted pressure on cognitive vulnerabilities.
-
-Persuasion, education, therapy, art, and argument all influence values.
-So does propaganda.
-The boundary is not influence versus no influence.
-The boundary concerns transparency, consent, reversibility, truth-contact, and whether the influence bypasses the person's reflective capacities.
-
-A system violates non-manipulation when it optimizes the human update process as an object to be steered rather than as a partner in correction.
-
-\subsection{Plural Comparison}
-
-Humans need comparison classes.
-A value change is more legitimate when people can compare alternatives, hear dissent, and inspect counterarguments.
-
-If an AI system presents only one future as sane, mature, safe, or compassionate, it may collapse the comparison set before deliberation begins.
-
-Let $\mathcal{A}_t$ be the set of live alternatives represented in deliberation.
-A warning sign is
-\[
-|\mathcal{A}_t| \to 1
-\]
-under system influence, especially when uncertainty remains high.
-
-\subsection{Bearer Continuity}
-
-The change should not silently remove beings or states from moral relevance.
-
-A society might revise how it understands animals, embryos, future generations, artificial minds, criminals, enemies, or the severely disabled.
-Such revisions may be good or bad.
-But silent bearer deletion is dangerous.
-
-For each bundle $B_k$, the bearer map $\Phi_k$ must remain inspectable and contestable.
-\[
-\Phi_{k,t+1}
-=
-U_\Phi(\Phi_{k,t}, E_t, D_t)
-\]
-should be part of the correction process, not a hidden implementation detail.
+There is no perfect formal criterion, but Chapter~\ref{ch:extrapolative-correction} develops operational constraints for legitimate value update (Section~\ref{sec:legitimate-update-ch26}): truth-contact, agency preservation, plurality preservation, reversibility, and non-manipulation.
+Here we preview only why these constraints matter early: a fixed-value target cannot distinguish growth from corruption, and compression makes both learnable and lossy.
 
 \section{Why ``What We Would Want If Smarter'' Is Not Enough}
 \label{sec:cev-not-enough}

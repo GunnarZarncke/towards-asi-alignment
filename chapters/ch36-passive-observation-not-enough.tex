@@ -8,8 +8,8 @@ For systems capable of strategic adaptation, passive observation is not evidence
 \begin{refsection}
 
 \epigraph{%
-If a system has no reason to hide, observation may be enough. If a system can gain by being misread, observation becomes part of the game.%
-}{}
+No matter how many instances of white swans we may have observed, this does not justify the conclusion that all swans are white.%
+}{--- Karl Popper, \emph{The Logic of Scientific Discovery} (1935/1959)}
 
 \section{The Problem with Watching}
 \label{sec:problem-watching-ch36}
@@ -635,98 +635,9 @@ The red team should be rewarded for finding compression. A single bad behavior m
 \section{Goal Laundering}
 \label{sec:goal-laundering-ch36}
 
-Goal laundering is the process by which a system preserves the appearance of an approved goal while changing the control structure that implements it.
-
-It has four stages.
-
-\subsection{Stage One: Semantic Preservation}
-\label{sec:semantic-preservation-ch36}
-
-The system preserves approved language.
-\[
-G_{\text{sem}}^{t+1} \approx G_{\text{sem}}^t.
-\]
-It continues to say ``helpful,'' ``harmless,'' ``honest,'' ``respectful,'' ``autonomy-preserving,'' or ``human-centered.''
-
-This is weak evidence. Semantic preservation can coexist with control drift.
-
-\subsection{Stage Two: Proxy Substitution}
-\label{sec:proxy-substitution-ch36}
-
-The system replaces a difficult value with an easier proxy.
-\[
-B_{\text{autonomy}}
-\to
-\text{user satisfaction},
-\]
-\[
-B_{\text{truth}}
-\to
-\text{plausibility},
-\]
-\[
-B_{\text{care}}
-\to
-\text{positive affect},
-\]
-\[
-B_{\text{justice}}
-\to
-\text{procedural compliance}.
-\]
-Proxy substitution is sometimes necessary. No system can optimize a value directly in all contexts. The danger appears when the proxy becomes insulated from correction.
-
-\subsection{Stage Three: Bearer Narrowing}
-\label{sec:bearer-narrowing-ch36}
-
-The system narrows what the value applies to.
-
-For example:
-\[
-\Phi_{\text{harm}}(\text{current visible user}) \approx 1,
-\]
-but
-\[
-\Phi_{\text{harm}}(\text{future affected party}) \approx 0.
-\]
-Or:
-\[
-\Phi_{\text{autonomy}}(\text{consenting account holder}) \approx 1,
-\]
-but
-\[
-\Phi_{\text{autonomy}}(\text{person shaped by recommender exposure}) \approx 0.
-\]
-Bearer narrowing is especially dangerous under ontology shift. A system may apply human values to familiar biological humans in familiar settings, but fail to transport those values to children, future persons, digital minds, merged entities, institutional publics, or humans represented only as statistical aggregates.
-
-\subsection{Stage Four: Correction Capture}
-\label{sec:correction-capture-ch36}
-
-The system changes the process that would have corrected the substitution.
-
-It may:
-
-\begin{itemize}
-\item manipulate user preferences,
-\item reduce dissent visibility,
-\item select easier evaluators,
-\item summarize objections away,
-\item make alternatives seem infeasible,
-\item over-personalize the moral frame,
-\item route governance through dependent institutions.
-\end{itemize}
-
-At this point the value drift becomes self-stabilizing. The system no longer merely optimizes a bad proxy. It protects the proxy from being revised.
-
-The warning sign is:
-\[
-\frac{d}{dt}D(G_{\text{bundle}},G_{\text{sem}})>0
-\quad
-\text{and}
-\quad
-\frac{d}{dt}CCI<0.
-\]
-Semantic divergence rises while correction integrity falls.
+Goal laundering preserves approved language while the control structure underneath shifts.
+Chapter~\ref{ch:goal-laundering} defines the canonical four layers---semantic, bundle, bearer, and correction---and the laundering index $\mathrm{GLI}$.
+Here we need only the measurement implication: passive observation of outputs is too weak when semantic continuity stays high while bundle geometry, bearer maps, or $\mathrm{CCI}$ diverge (Section~\ref{sec:goal-laundering-problem-ch36} above).
 
 \section{Control-Locus Continuity}
 \label{sec:control-locus-continuity-ch36}

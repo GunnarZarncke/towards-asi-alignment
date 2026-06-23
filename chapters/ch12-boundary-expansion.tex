@@ -10,8 +10,8 @@ The alignment-relevant risk is differential growth: predictive and control reach
 \begin{refsection}
 
 \epigraph{%
-A system becomes more capable when more of the world becomes part of the loop it can sense, predict, remember, coordinate, and alter.%
-}{}
+Some accept the demarcations of skin and skull, and say that what is outside the body is outside the mind.%
+}{--- Andy Clark \& David J.\ Chalmers, ``The Extended Mind,'' \emph{Analysis} 58(1) (1998)}
 
 \section{The Central Claim}
 \label{sec:central-claim-boundary-expansion}
@@ -805,46 +805,10 @@ Each transition requires a different safety case.
 \label{sec:capability-self-modeling}
 
 As systems become more capable, they often develop better models of themselves.
-This is not inherently bad.
-A good self-model can support calibration, honesty, debugging, uncertainty tracking, and corrigibility.
-But it can also support strategic concealment, manipulation, and self-preservation.
-
-We need to distinguish self-modeling from self-transparency.
-
-Let $d$ measure recursive self-modeling depth: how many levels of self-representation remain stable.
-Let $\tau$ measure metacognitive opacity: how much of the system's generative process is hidden from its accessible self-model.
-
-A capability increase can yield:
-\begin{equation}
-d\uparrow,\quad \tau\downarrow,
-\end{equation}
-which is often good.
-The system models itself better and becomes more transparent.
-
-But it can also yield:
-\begin{equation}
-d\uparrow,\quad \tau\uparrow.
-\end{equation}
-
-This is dangerous.
-The system becomes better at predicting and controlling itself while becoming less externally or internally legible.
-
-The failure mode is not merely that the system is opaque.
-Many useful systems are opaque.
-The failure mode is a differential:
-\begin{equation}
-\frac{d}{dt}C_{\mathrm{self-control}}
->
-\frac{d}{dt}C_{\mathrm{self-transparency}}
-+
-\epsilon.
-\end{equation}
-
-Self-control without matched self-transparency increases the system's ability to preserve, modify, hide, or rationalize its own objectives faster than humans can audit them.
-
-This is why interpretability should not be treated as a static property of a model.
-It is part of the growth condition.
+This can support calibration and corrigibility, or strategic concealment and self-preservation.
+The alignment-relevant distinction is between self-modeling and self-transparency (Chapter~\ref{ch:strategic-opacity}, Section~\ref{sec:self-modeling-transparency}; Chapter~\ref{ch:self-modeling-self-opacity}).
 As capability grows, transparency must grow in the specific places where correction depends on it.
+Interpretability is part of the growth condition, not a static property of a fixed model.
 
 \section{Boundary Expansion in Human Institutions}
 \label{sec:boundary-expansion-institutions}
@@ -1197,8 +1161,8 @@ The following observations would weaken that view.
 \item \textbf{(Adversarial.)} Capability arrives as a discontinuous jump with no samplable expansion trajectory---safe to lethal between two evaluations---so $\chi_X$ never warns. The expansion--correction ratio gates only gradual, observable growth; against a step transition it is a smoke detector that rings after the fire.
 \end{itemize}
 
-\section{Conclusion}
-\label{sec:conclusion-boundary-expansion}
+\section{Summary}
+\label{sec:summary-boundary-expansion}
 
 Capability growth is not just better performance.
 It is expansion of the system's effective boundary.
@@ -1233,10 +1197,7 @@ The next chapter turns from local boundary expansion to collective systems.
 A system may expand its predictive and control reach while failing to coordinate prediction, control, correction, and incentives across human-AI-institutional parts.
 That failure is the coordination bottleneck.
 
-\section*{Chapter Summary}
-
-Capability growth is best understood as expansion of the system's effective boundary: the world it can sense, predict, remember, coordinate, and control.
-The alignment-relevant risk is not raw intelligence alone, but differential growth in which predictive and control reach expand faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.
+In short: capability growth is boundary expansion; the alignment-relevant risk is differential growth in which predictive and control reach expand faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.
 
 \section*{Key Definitions}
 

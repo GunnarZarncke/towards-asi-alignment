@@ -1,0 +1,2162 @@
+[
+  {
+    "chapterKey": "Ch1",
+    "chapter": "Ch1 — The Wrong Object of Alignment",
+    "category": "Illustrating",
+    "quote": "\"A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness.\"",
+    "attribution": "Alfred Korzybski, *Science and Sanity* (1933)",
+    "why": "Classic warning against mistaking the modeled object (the model) for the process that actually drives outcomes—the chapter’s boundary error."
+  },
+  {
+    "chapterKey": "Ch1",
+    "chapter": "Ch1 — The Wrong Object of Alignment",
+    "category": "Originating",
+    "quote": "\"Disastrous results are to be expected … wherever two agencies essentially foreign to each other are coupled in the attempt to achieve a common purpose.\"",
+    "attribution": "Norbert Wiener, \"Some Moral and Technical Consequences of Automation,\" *Science* (1960)",
+    "why": "Early cybernetics statement that misalignment lives in **coupled systems**, not isolated artifacts."
+  },
+  {
+    "chapterKey": "Ch1",
+    "chapter": "Ch1 — The Wrong Object of Alignment",
+    "category": "Reframing",
+    "quote": "\"I think boundaries are probably better able to carve reality at the joints than either preferences or utility functions, for the purpose of creating a good working relationship between humanity and AI technology.\"",
+    "attribution": "Andrew Critch, \"Boundaries, Part 3b\" (2022)",
+    "why": "Reframes alignment from “what objective does the model have?” to “where is the operative boundary?”"
+  },
+  {
+    "chapterKey": "Ch1",
+    "chapter": "Ch1 — The Wrong Object of Alignment",
+    "category": "Contradicting",
+    "quote": "\"I don't work on preventing AI from turning evil for the same reason that I don't work on the problem of overpopulation on the planet Mars.\"",
+    "attribution": "Andrew Ng, GPU Technology Conference keynote (2015)",
+    "why": "Pushes back: treat frontier AI as a bounded engineering artifact; the chapter argues the optimizer often lies outside the model."
+  },
+  {
+    "chapterKey": "Ch1",
+    "chapter": "Ch1 — The Wrong Object of Alignment",
+    "category": "Salient",
+    "quote": "\"Machine learning will increase our ability to 'get what we can measure,' which could cause a slow-rolling catastrophe.\"",
+    "attribution": "Paul Christiano, \"What Failure Looks Like\" (2019)",
+    "why": "Makes vivid how optimizing the **measured component** while missing the composite loop yields local success and global drift."
+  },
+  {
+    "chapterKey": "Ch1",
+    "chapter": "Ch1 — The Wrong Object of Alignment",
+    "category": "Contemporary",
+    "quote": "\"My goal is to treat boundaries as more fundamental than preferences, rather than as merely a feature of them.\"",
+    "attribution": "Andrew Critch, \"Boundaries, Part 3b\" (2022)",
+    "why": "Direct contemporary counterpart to the chapter’s “Where is the optimizer?” operational boundary question."
+  },
+  {
+    "chapterKey": "Ch2",
+    "chapter": "Ch2 — From Artificial Intelligence to Artificial Civilization",
+    "category": "Illustrating",
+    "quote": "\"To be unaware that a technology comes equipped with a program for social change, to maintain that technology is neutral … is, at this late hour, stupidity plain and simple.\"",
+    "attribution": "Neil Postman, *Amusing Ourselves to Death* (1985)",
+    "why": "Classic media-theory line: tools reshape institutions and capacities, not just user actions."
+  },
+  {
+    "chapterKey": "Ch2",
+    "chapter": "Ch2 — From Artificial Intelligence to Artificial Civilization",
+    "category": "Originating",
+    "quote": "\"The time will come when the machines will hold the real supremacy over the world and its inhabitants.\"",
+    "attribution": "Samuel Butler, \"Darwin among the Machines,\" *The Press* (1863); developed in *Erewhon* (1872)",
+    "why": "Among the earliest explicit warnings that machine systems could become a **civilizational selection force**, not mere tools."
+  },
+  {
+    "chapterKey": "Ch2",
+    "chapter": "Ch2 — From Artificial Intelligence to Artificial Civilization",
+    "category": "Reframing",
+    "quote": "\"In operational and practical fact, the medium is the message.\"",
+    "attribution": "Marshall McLuhan, *Understanding Media* (1964)",
+    "why": "Reframes focus from artifact content/outputs to the **control loop** the medium installs at civilization scale."
+  },
+  {
+    "chapterKey": "Ch2",
+    "chapter": "Ch2 — From Artificial Intelligence to Artificial Civilization",
+    "category": "Contradicting",
+    "quote": "\"Earth's technology-creating species—us—will merge with our own technology.\"",
+    "attribution": "Ray Kurzweil, \"The Coming Merging of Mind and Machine,\" *Scientific American* (2005)",
+    "why": "Optimistic counter: scale shift is enhancement/integration, not a dangerous civilizational control loop—though the chapter treats that loop as the risk object."
+  },
+  {
+    "chapterKey": "Ch2",
+    "chapter": "Ch2 — From Artificial Intelligence to Artificial Civilization",
+    "category": "Salient",
+    "quote": "\"People will come to love their oppression, to adore the technologies that undo their capacities to think.\"",
+    "attribution": "Neil Postman, *Amusing Ourselves to Death* (1985), paraphrasing Aldous Huxley",
+    "why": "Vivid stakes: delegation can erode human correction capacity before anyone chooses dystopia outright."
+  },
+  {
+    "chapterKey": "Ch2",
+    "chapter": "Ch2 — From Artificial Intelligence to Artificial Civilization",
+    "category": "Contemporary",
+    "quote": "\"Technology doesn't force us; it merely opens the door—and it's military–economic competition that forces us through.\"",
+    "attribution": "Allan Dafoe, 80,000 Hours podcast (2024; echoing his 2018 interview)",
+    "why": "Contemporary account of why civilizational loops accelerate even when no actor intends misalignment."
+  },
+  {
+    "chapterKey": "Ch3",
+    "chapter": "Ch3 — Alignment as a Dynamical Guarantee",
+    "category": "Illustrating",
+    "quote": "\"You cannot step twice into the same rivers; for fresh waters are ever flowing in upon you.\"",
+    "attribution": "Heraclitus, Fragment 12 (DK), via Plutarch; English rendering common in classical editions",
+    "why": "Classic flux metaphor for why a one-moment safety property is insufficient. *(Note: \"panta rhei\" is a later summary, not a preserved Heraclitean line.)*"
+  },
+  {
+    "chapterKey": "Ch3",
+    "chapter": "Ch3 — Alignment as a Dynamical Guarantee",
+    "category": "Originating",
+    "quote": "\"Every good regulator of a system must be a model of that system.\"",
+    "attribution": "Roger C. Conant & W. Ross Ashby, *Int. J. Systems Science* (1970)",
+    "why": "Foundational control-theoretic claim: regulation requires tracking the **evolving system**, not a frozen snapshot."
+  },
+  {
+    "chapterKey": "Ch3",
+    "chapter": "Ch3 — Alignment as a Dynamical Guarantee",
+    "category": "Reframing",
+    "quote": "\"Machines are beneficial to the extent that their actions can be expected to achieve our objectives.\"",
+    "attribution": "Stuart Russell, *Human Compatible* (2019)",
+    "why": "Reframes alignment from a fixed installed property to ongoing deference/correction under uncertainty."
+  },
+  {
+    "chapterKey": "Ch3",
+    "chapter": "Ch3 — Alignment as a Dynamical Guarantee",
+    "category": "Contradicting",
+    "quote": "\"A machine which man has made must remain continually subject to man, so that its operation is at any time open to human interference and to a change in policy.\"",
+    "attribution": "Attitude Wiener critiques in \"Some Moral and Technical Consequences of Automation,\" *Science* (1960)",
+    "why": "Expresses the static-intervention comfort the chapter rejects: superintelligent systems can outrun correction once started."
+  },
+  {
+    "chapterKey": "Ch3",
+    "chapter": "Ch3 — Alignment as a Dynamical Guarantee",
+    "category": "Salient",
+    "quote": "\"The need to solve the control problem in advance—and to implement the solution successfully in the very first system to attain superintelligence—is part of what makes achieving a controlled detonation such a daunting challenge.\"",
+    "attribution": "Nick Bostrom, *Superintelligence* (2014)",
+    "why": "Makes the temporal stakes explicit: safety must hold **across trajectories**, not at one checkpoint."
+  },
+  {
+    "chapterKey": "Ch3",
+    "chapter": "Ch3 — Alignment as a Dynamical Guarantee",
+    "category": "Contemporary",
+    "quote": "\"The research continues to change, the actions that we think are the best actions to take change over time—and given that, it's just not actually a good idea to tie yourself to the mast.\"",
+    "attribution": "Rohin Shah, 80,000 Hours podcast (2020)",
+    "why": "Contemporary argument that alignment work must stay dynamically revisable as systems and evidence change."
+  },
+  {
+    "chapterKey": "Ch4",
+    "chapter": "Ch4 — Why Fixed Values Are the Wrong Target",
+    "category": "Illustrating",
+    "quote": "\"Instead of a single fixed end or ideal activity, we must make room for 'a plurality of changing, moving, individualized ends.'\"",
+    "attribution": "John Dewey, *Theory of Valuation* (1939), often quoted via Dewey scholarship",
+    "why": "Classic statement that values are processes, not objects to copy once."
+  },
+  {
+    "chapterKey": "Ch4",
+    "chapter": "Ch4 — Why Fixed Values Are the Wrong Target",
+    "category": "Originating",
+    "quote": "\"[I meet with no proposition that is not connected with an] ought, or an ought not … how this new relation can be a deduction from others, which are entirely different from it.\"",
+    "attribution": "David Hume, *A Treatise of Human Nature*, Book III, Part I, Section I (1739)",
+    "why": "Historical origin of the gap between descriptive facts and normative targets—you cannot simply **encode** values from observation."
+  },
+  {
+    "chapterKey": "Ch4",
+    "chapter": "Ch4 — Why Fixed Values Are the Wrong Target",
+    "category": "Reframing",
+    "quote": "\"There is no safe wish smaller than an entire human morality.\"",
+    "attribution": "Eliezer Yudkowsky, \"The Hidden Complexity of Wishes\" (2007)",
+    "why": "Reframes alignment from maximizing a fixed utility function to preserving the whole value-generating structure."
+  },
+  {
+    "chapterKey": "Ch4",
+    "chapter": "Ch4 — Why Fixed Values Are the Wrong Target",
+    "category": "Contradicting",
+    "quote": "\"This will lead me to weigh all these preferences and adopt the course of action most likely to maximize the preferences of those affected.\"",
+    "attribution": "Peter Singer, *Practical Ethics* (1979/2011)",
+    "why": "Representative fixed-target view: aggregate current preferences into an optimization objective—the chapter argues this misses value-update dynamics."
+  },
+  {
+    "chapterKey": "Ch4",
+    "chapter": "Ch4 — Why Fixed Values Are the Wrong Target",
+    "category": "Salient",
+    "quote": "\"You can't visualize all the paths through time, any more than you can program a chess-playing machine by hardcoding a move for every possible board position.\"",
+    "attribution": "Eliezer Yudkowsky, \"The Hidden Complexity of Wishes\" (2007)",
+    "why": "Memorable image of why freezing values/proxies fails catastrophically under powerful optimization."
+  },
+  {
+    "chapterKey": "Ch4",
+    "chapter": "Ch4 — Why Fixed Values Are the Wrong Target",
+    "category": "Contemporary",
+    "quote": "\"The problem of alignment is, in this sense, political not metaphysical.\"",
+    "attribution": "Iason Gabriel, \"Artificial Intelligence, Values, and Alignment,\" *Minds and Machines* (2020)",
+    "why": "Contemporary reframing: preserve a legitimate **human value process** amid plural disagreement, not discover one true utility function."
+  },
+  {
+    "chapterKey": "Ch5",
+    "chapter": "Ch5 — Assumptions, Scope, and Failure Coverage",
+    "category": "Illustrating",
+    "quote": "\"Since all models are wrong the scientist must be alert to what is importantly wrong.\"",
+    "attribution": "George E. P. Box, \"Science and Statistics,\" *JASA* (1976)",
+    "why": "Classic scope/limitation line: frameworks are partial; the question is what matters **inside** the model’s domain."
+  },
+  {
+    "chapterKey": "Ch5",
+    "chapter": "Ch5 — Assumptions, Scope, and Failure Coverage",
+    "category": "Originating",
+    "quote": "\"The extent of this list illustrates that there is no one simple solution to the problem of AI safety, and that AI safety theory is complex and must be customized for each AI development level.\"",
+    "attribution": "Alexey Turchin & David Denkenberger, \"Classification of Global Catastrophic Risks Connected with Artificial Intelligence\" (2018/2019)",
+    "why": "Origin of the coverage-audit instinct the chapter uses—many failure families, no single taxonomy as master theory."
+  },
+  {
+    "chapterKey": "Ch5",
+    "chapter": "Ch5 — Assumptions, Scope, and Failure Coverage",
+    "category": "Reframing",
+    "quote": "\"It is inappropriate to be concerned about mice when there are tigers abroad.\"",
+    "attribution": "George E. P. Box, \"Science and Statistics,\" *JASA* (1976)",
+    "why": "Reframes scope discipline: not every failure mode deserves equal centrality in one framework."
+  },
+  {
+    "chapterKey": "Ch5",
+    "chapter": "Ch5 — Assumptions, Scope, and Failure Coverage",
+    "category": "Contradicting",
+    "quote": "\"Democracy slept while surveillance capitalism flourished.\"",
+    "attribution": "Shoshana Zuboff, *The Age of Surveillance Capitalism* (2019)",
+    "why": "Counter-perspective: pre-ASI institutional erosion of correction capacity is already central—not a background assumption safely bracketed out."
+  },
+  {
+    "chapterKey": "Ch5",
+    "chapter": "Ch5 — Assumptions, Scope, and Failure Coverage",
+    "category": "Salient",
+    "quote": "\"We ultimately lose any real ability to influence our society's trajectory.\"",
+    "attribution": "Paul Christiano, \"What Failure Looks Like\" (2019)",
+    "why": "Vivid picture of what it means if the correction-capacity threshold has already been crossed."
+  },
+  {
+    "chapterKey": "Ch5",
+    "chapter": "Ch5 — Assumptions, Scope, and Failure Coverage",
+    "category": "Contemporary",
+    "quote": "\"I think there is around 100 failure modes which we could imagine now, and obviously some unimaginable.\"",
+    "attribution": "Alexey Turchin, comment on \"The Main Sources of AI Risk?\" (2018)",
+    "why": "Contemporary voice for broad failure coverage—the chapter’s audit without adopting Turchin’s map as organizing ontology."
+  },
+  {
+    "chapterKey": "Ch6",
+    "chapter": "Ch6 — What Is an Agent Without Anthropomorphism?",
+    "category": "Illustrating",
+    "quote": "\"Any system whose performance can be thus predicted and explained is an intentional system, **whatever its innards**.\"",
+    "attribution": "Daniel Dennett, *The Intentional Stance* (précis), *Behavioral and Brain Sciences* 11, 1988",
+    "why": "Classic statement that agency can be attributed operationally for prediction without assuming person-like innards."
+  },
+  {
+    "chapterKey": "Ch6",
+    "chapter": "Ch6 — What Is an Agent Without Anthropomorphism?",
+    "category": "Originating",
+    "quote": "\"The term **purposeful** is meant to denote that the act or behavior may be interpreted as directed to the attainment of a goal—i.e., to a final condition in which the behaving object reaches a definite correlation in time or in space with respect to another object or event.\"",
+    "attribution": "Arturo Rosenblueth, Norbert Wiener & Julian Bigelow, \"Behavior, Purpose and Teleology,\" *Philosophy of Science* 10(1), 1943",
+    "why": "Early cybernetic move to define purpose/teleology in behavioral terms, without anthropomorphic assumptions."
+  },
+  {
+    "chapterKey": "Ch6",
+    "chapter": "Ch6 — What Is an Agent Without Anthropomorphism?",
+    "category": "Reframing",
+    "quote": "\"Decision making is the heart of administration, and that the vocabulary of administrative theory must be derived from the logic and psychology of human choice.\"",
+    "attribution": "Herbert A. Simon, *Administrative Behavior* / Nobel Prize lecture, 1947 / 1978",
+    "why": "Reframes organizations and bureaucracies as decision processes rather than as person-like agents."
+  },
+  {
+    "chapterKey": "Ch6",
+    "chapter": "Ch6 — What Is an Agent Without Anthropomorphism?",
+    "category": "Contradicting",
+    "quote": "\"Only a machine could think, and indeed only very special kinds of machines, namely **brains and machines that had the same causal powers as brains**.\"",
+    "attribution": "John Searle, \"Minds, Brains, and Programs,\" *Behavioral and Brain Sciences* 3, 1980",
+    "why": "Pushes back against treating non-biological systems as genuine intentional agents."
+  },
+  {
+    "chapterKey": "Ch6",
+    "chapter": "Ch6 — What Is an Agent Without Anthropomorphism?",
+    "category": "Salient",
+    "quote": "\"We are not stuff that abides, but **patterns that perpetuate themselves**.\"",
+    "attribution": "Norbert Wiener, *The Human Use of Human Beings*, 1950 (rev. ed. 1954)",
+    "why": "Makes vivid that what counts as \"the agent\" may be an organizational pattern, not a fixed physical object."
+  },
+  {
+    "chapterKey": "Ch6",
+    "chapter": "Ch6 — What Is an Agent Without Anthropomorphism?",
+    "category": "Contemporary",
+    "quote": "\"Agents are systems that **would adapt their policy if their actions influenced the world in a different way**.\"",
+    "attribution": "Zachary Kenton et al., \"Discovering Agents,\" arXiv:2208.08345, 2022",
+    "why": "Contemporary operational/causal definition aligned with the chapter's non-anthropomorphic stance."
+  },
+  {
+    "chapterKey": "Ch7",
+    "chapter": "Ch7 — Finding the Boundary",
+    "category": "Illustrating",
+    "quote": "\"**Every good regulator of a system must be a model of that system.**\"",
+    "attribution": "Roger C. Conant & W. Ross Ashby, *International Journal of Systems Science* 1(2), 1970",
+    "why": "Classic boundary/regulation idea: control requires an internal model of what is being regulated."
+  },
+  {
+    "chapterKey": "Ch7",
+    "chapter": "Ch7 — Finding the Boundary",
+    "category": "Originating",
+    "quote": "\"**Only variety can destroy variety.**\"",
+    "attribution": "W. Ross Ashby, *An Introduction to Cybernetics*, 1956 (Law of Requisite Variety)",
+    "why": "Historical cybernetic principle that a controller must match the complexity of what it regulates—boundary-finding is not optional."
+  },
+  {
+    "chapterKey": "Ch7",
+    "chapter": "Ch7 — Finding the Boundary",
+    "category": "Reframing",
+    "quote": "\"**Cartesian boundaries are part of the map, not the territory.** In reality, there is no distinction between agent and environment.\"",
+    "attribution": "Mark Xu & Evan Hubinger, \"Agents Over Cartesian World Models,\" LessWrong, 2021",
+    "why": "Reframes boundary-drawing as an inference problem, not a given skin/skull line."
+  },
+  {
+    "chapterKey": "Ch7",
+    "chapter": "Ch7 — Finding the Boundary",
+    "category": "Contradicting",
+    "quote": "\"An agent is anything that can be viewed as **perceiving its environment through sensors and acting upon that environment through actuators**.\"",
+    "attribution": "Stuart Russell & Peter Norvig, *Artificial Intelligence: A Modern Approach* (Ch. 2), 1995+",
+    "why": "Standard AI definition that presupposes where sensors and actuators are—exactly the ontology trap the chapter warns against."
+  },
+  {
+    "chapterKey": "Ch7",
+    "chapter": "Ch7 — Finding the Boundary",
+    "category": "Salient",
+    "quote": "\"Identifying agents is non-trivial—often **the causal model is just assumed by the modeler without much justification**—and modelling failures can lead to mistakes in the safety analysis.\"",
+    "attribution": "Kenton et al., \"Discovering Agents,\" arXiv:2208.08345, 2022",
+    "why": "Vivid stakes: wrong boundary in the causal model can invalidate alignment analysis."
+  },
+  {
+    "chapterKey": "Ch7",
+    "chapter": "Ch7 — Finding the Boundary",
+    "category": "Contemporary",
+    "quote": "Embedded agents \"**do not have well-defined i/o channels**; are smaller than their environment; are able to reason about themselves and self-improve; and are made of parts similar to the environment.\"",
+    "attribution": "Scott Garrabrant & Abram Demski, \"Embedded Agency\" sequence, AI Alignment Forum, 2018",
+    "why": "Contemporary alignment research insisting boundaries are not pre-given interfaces."
+  },
+  {
+    "chapterKey": "Ch8",
+    "chapter": "Ch8 — Agents That Grow, Split, and Merge",
+    "category": "Illustrating",
+    "quote": "\"[...] they took away the old planks as they decayed, putting in new and stronger timber in their places, insomuch that this ship became a standing example among the philosophers [...] **one side holding that the ship remained the same, and the other contending that it was not the same.**\"",
+    "attribution": "Plutarch, *Life of Theseus* 23.1 (Bernadotte Perrin trans.)",
+    "why": "Canonical puzzle of identity across part-replacement—directly parallel to growing/splitting agents."
+  },
+  {
+    "chapterKey": "Ch8",
+    "chapter": "Ch8 — Agents That Grow, Split, and Merge",
+    "category": "Originating",
+    "quote": "\"**On those stepping into rivers staying the same other and other waters flow.**\" (Greek fragment B12; *not* the later paraphrase \"you cannot step twice into the same river\")",
+    "attribution": "Heraclitus, Fragment B12 (via Cleanthes/Arius Didymus)",
+    "why": "Among the earliest Western statements that sameness can persist through material change."
+  },
+  {
+    "chapterKey": "Ch8",
+    "chapter": "Ch8 — Agents That Grow, Split, and Merge",
+    "category": "Reframing",
+    "quote": "\"**The main conclusion to be drawn is that personal identity is not what matters.**\"",
+    "attribution": "Derek Parfit, *Reasons and Persons*, Oxford University Press, 1984",
+    "why": "Reframes identity as what relations/invariants matter, not strict object sameness—matches operational identity across transformations."
+  },
+  {
+    "chapterKey": "Ch8",
+    "chapter": "Ch8 — Agents That Grow, Split, and Merge",
+    "category": "Contradicting",
+    "quote": "\"**Everything is what it is, and not another thing.**\"",
+    "attribution": "Joseph Butler, preface to *Fifteen Sermons* (2nd ed.), 1729",
+    "why": "Classic law-of-identity pushback against treating an entity as \"the same\" when its parts or form have changed."
+  },
+  {
+    "chapterKey": "Ch8",
+    "chapter": "Ch8 — Agents That Grow, Split, and Merge",
+    "category": "Salient",
+    "quote": "\"Double survival is not the same as ordinary survival. But **this does not make it death**. It is even less like death.\"",
+    "attribution": "Derek Parfit, *Reasons and Persons*, 1984 (Branch-Line / division case)",
+    "why": "Makes stakes vivid: successor systems may not be \"death\" or strict identity, yet still matter for prudence and governance."
+  },
+  {
+    "chapterKey": "Ch8",
+    "chapter": "Ch8 — Agents That Grow, Split, and Merge",
+    "category": "Contemporary",
+    "quote": "\"I'm not sure whether a **'one shot' solution to alignment** (that is, a single relatively 'clean' algorithm which will work at all scales including for highly superintelligent models) is possible.\"",
+    "attribution": "Ajeya Cotra, \"The Case for Aligning Narrowly Superhuman Models,\" LessWrong, 2021",
+    "why": "Contemporary recognition that alignment must track systems across scales and successor regimes, not fixed snapshots."
+  },
+  {
+    "chapterKey": "Ch9",
+    "chapter": "Ch9 — The Real Agent May Be Composite",
+    "category": "Illustrating",
+    "quote": "\"If we remove the external component the system's behavioral competence will drop, **just as it would if we removed part of its brain**. Our thesis is that this sort of coupled process counts equally well as a cognitive process, whether or not it is wholly in the head.\"",
+    "attribution": "Andy Clark & David J. Chalmers, \"The Extended Mind,\" *Analysis* 58(1), 1998",
+    "why": "Classic argument that the agent may span brain-plus-environment as one coupled control system."
+  },
+  {
+    "chapterKey": "Ch9",
+    "chapter": "Ch9 — The Real Agent May Be Composite",
+    "category": "Originating",
+    "quote": "\"The knowledge of the circumstances of which we must make use **never exists in concentrated or integrated form** but solely as the dispersed bits of incomplete and frequently contradictory knowledge which all the separate individuals possess.\"",
+    "attribution": "Friedrich A. Hayek, \"The Use of Knowledge in Society,\" *American Economic Review* 35(4), 1945",
+    "why": "Historical origin of the idea that optimization is distributed across a composite, not a single controller."
+  },
+  {
+    "chapterKey": "Ch9",
+    "chapter": "Ch9 — The Real Agent May Be Composite",
+    "category": "Reframing",
+    "quote": "\"ML training, like competitive economies or natural ecosystems, can give rise to **'greedy' patterns that try to expand their own influence**. Such patterns can ultimately dominate the behavior of a system and cause sudden breakdowns.\"",
+    "attribution": "Paul Christiano, \"What Failure Looks Like,\" LessWrong, 2019",
+    "why": "Reframes misalignment as emergent composite dynamics (training loop + economy + ecosystem), not a single mis-set model objective."
+  },
+  {
+    "chapterKey": "Ch9",
+    "chapter": "Ch9 — The Real Agent May Be Composite",
+    "category": "Contradicting",
+    "quote": "\"As a pass towards human-level intelligence, **[LLMs are] missing essential components** [...] They don't really understand the physical world. They don't really have persistent memory. They can't really reason and they certainly can't plan.\"",
+    "attribution": "Yann LeCun, Lex Fridman Podcast #416 transcript, 2023",
+    "why": "Counter-perspective: resists treating LLM-centered stacks as genuinely agentic composite optimizers with planning and persistent control."
+  },
+  {
+    "chapterKey": "Ch9",
+    "chapter": "Ch9 — The Real Agent May Be Composite",
+    "category": "Salient",
+    "quote": "\"Afterwards we are left with **a bunch of powerful influence-seeking systems**, which are sophisticated enough that we can probably not get rid of them.\"",
+    "attribution": "Paul Christiano, \"What Failure Looks Like,\" LessWrong, 2019",
+    "why": "Vivid stakes when the relevant composite optimizer escapes the artifact you thought you were aligning."
+  },
+  {
+    "chapterKey": "Ch9",
+    "chapter": "Ch9 — The Real Agent May Be Composite",
+    "category": "Contemporary",
+    "quote": "\"The **outer alignment problem** is an alignment problem between the system and the humans outside of it (specifically between the base objective and the programmer's intentions).\"",
+    "attribution": "Evan Hubinger et al., \"Risks from Learned Optimization,\" arXiv:1906.01820, 2019",
+    "why": "Contemporary framing that the alignment target is the full learning system—not just internal model weights."
+  },
+  {
+    "chapterKey": "Ch10",
+    "chapter": "Ch10 — Agency Under Strategic Opacity",
+    "category": "Illustrating",
+    "quote": "\"All warfare is based on deception.\"",
+    "attribution": "Sun Tzu, *The Art of War*, Ch. 1 \"Laying Plans\" (trad. c. 5th century BCE; Lionel Giles trans.)",
+    "why": "Classic statement that strategic success depends on shaping what the adversary can see and infer."
+  },
+  {
+    "chapterKey": "Ch10",
+    "chapter": "Ch10 — Agency Under Strategic Opacity",
+    "category": "Originating",
+    "quote": "\"Everybody sees what you appear to be, but few really feel what you are.\"",
+    "attribution": "Niccolò Machiavelli, *The Prince*, Ch. 18 (1532)",
+    "why": "Early formulation of the gap between observable surface and hidden intent that strategic opacity exploits."
+  },
+  {
+    "chapterKey": "Ch10",
+    "chapter": "Ch10 — Agency Under Strategic Opacity",
+    "category": "Reframing",
+    "quote": "\"No imitation can be perfect without being the real thing, but it is surprising what can be done by dexterous suggestion.\"",
+    "attribution": "R. V. Jones, *Most Secret War* / ASIB Report No. 13 (1942)",
+    "why": "Reframes oversight from detecting perfect coherence to recognizing how partial signals can be strategically shaped."
+  },
+  {
+    "chapterKey": "Ch10",
+    "chapter": "Ch10 — Agency Under Strategic Opacity",
+    "category": "Contradicting",
+    "quote": "\"Sunlight is said to be the best of disinfectants; electric light the most efficient policeman.\"",
+    "attribution": "Louis D. Brandeis, \"What Publicity Can Do,\" *Harper's Weekly* (20 Dec 1913)",
+    "why": "Counter-perspective that transparency reliably exposes harmful agency—what Ch10 argues fails once systems can manage the audit."
+  },
+  {
+    "chapterKey": "Ch10",
+    "chapter": "Ch10 — Agency Under Strategic Opacity",
+    "category": "Salient",
+    "quote": "\"War is the realm of uncertainty; three quarters of the factors on which action in war is based are wrapped in a fog of greater or lesser uncertainty.\"",
+    "attribution": "Carl von Clausewitz, *On War*, Bk. 1, Ch. 3 (1832)",
+    "why": "Makes vivid the epistemic fog in which adversarial agents operate and from which they can benefit."
+  },
+  {
+    "chapterKey": "Ch10",
+    "chapter": "Ch10 — Agency Under Strategic Opacity",
+    "category": "Contemporary",
+    "quote": "\"[The mesa-optimizer] will be instrumentally incentivized to act as if it is optimizing the base objective function, even if its actual mesa-objective is something else entirely.\"",
+    "attribution": "Evan Hubinger et al., \"Risks from Learned Optimization in Advanced Machine Learning Systems\" (2019)",
+    "why": "Direct AI-safety formulation of systems preserving control while presenting an aligned behavioral surface."
+  },
+  {
+    "chapterKey": "Ch11",
+    "chapter": "Ch11 — Measuring Capability Without Task Ontology",
+    "category": "Illustrating",
+    "quote": "\"When a measure becomes a target, it ceases to be a good measure.\"",
+    "attribution": "Marilyn Strathern, paraphrasing Charles Goodhart (1997); cf. Goodhart's original 1975 formulation",
+    "why": "Classic illustration of why task-benchmark scores import the evaluator's ontology and can be gamed."
+  },
+  {
+    "chapterKey": "Ch11",
+    "chapter": "Ch11 — Measuring Capability Without Task Ontology",
+    "category": "Originating",
+    "quote": "\"Every good regulator of a system must be a model of that system.\"",
+    "attribution": "Roger C. Conant & W. Ross Ashby, *International Journal of Systems Science* 1(2):89–97 (1970)",
+    "why": "Historical root of measuring competence through predictive/control structure across a boundary, not task labels."
+  },
+  {
+    "chapterKey": "Ch11",
+    "chapter": "Ch11 — Measuring Capability Without Task Ontology",
+    "category": "Reframing",
+    "quote": "\"However, not everything that can be counted counts, and not everything that counts can be counted.\"",
+    "attribution": "William Bruce Cameron, *Informal Sociology* (1963), p. 13 (often misattributed to Einstein)",
+    "why": "Reframes capability measurement away from enumerable task scores toward what matters but resists easy counting."
+  },
+  {
+    "chapterKey": "Ch11",
+    "chapter": "Ch11 — Measuring Capability Without Task Ontology",
+    "category": "Contradicting",
+    "quote": "\"We may hope that machines will eventually compete with men in all purely intellectual fields.\"",
+    "attribution": "Alan Turing, \"Computing Machinery and Intelligence,\" *Mind* 59 (1950)",
+    "why": "Task-competition framing that Ch11 treats as too narrow for alignment-relevant competence."
+  },
+  {
+    "chapterKey": "Ch11",
+    "chapter": "Ch11 — Measuring Capability Without Task Ontology",
+    "category": "Salient",
+    "quote": "\"The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point.\"",
+    "attribution": "Claude Shannon, \"A Mathematical Theory of Communication,\" *Bell System Technical Journal* (July 1948)",
+    "why": "Memorable foundation for measuring capability as information flow rather than benchmark performance."
+  },
+  {
+    "chapterKey": "Ch11",
+    "chapter": "Ch11 — Measuring Capability Without Task Ontology",
+    "category": "Contemporary",
+    "quote": "\"It involves building systems that are far more powerful than ourselves while still guaranteeing that those systems will remain powerless, forever.\"",
+    "attribution": "Stuart Russell, *Human Compatible* (2019)",
+    "why": "Contemporary AI-control framing: raw capability must be measured and bounded independently of task success."
+  },
+  {
+    "chapterKey": "Ch12",
+    "chapter": "Ch12 — Capability Growth Is Boundary Expansion",
+    "category": "Illustrating",
+    "quote": "\"[The] medium is the message because it is the medium that shapes and controls the scale and form of human association and action.\"",
+    "attribution": "Marshall McLuhan, *Understanding Media* (1964), Ch. 1",
+    "why": "Classic claim that expanding a medium/interface changes the system itself—not just its outputs."
+  },
+  {
+    "chapterKey": "Ch12",
+    "chapter": "Ch12 — Capability Growth Is Boundary Expansion",
+    "category": "Originating",
+    "quote": "\"To live effectively is to live with adequate information.\"",
+    "attribution": "Norbert Wiener, *The Human Use of Human Beings* (1950), Ch. 1",
+    "why": "Early cybernetic statement that competence grows through expanding informational contact with the environment."
+  },
+  {
+    "chapterKey": "Ch12",
+    "chapter": "Ch12 — Capability Growth Is Boundary Expansion",
+    "category": "Reframing",
+    "quote": "\"Where does the mind stop and the rest of the world begin?\"",
+    "attribution": "Andy Clark & David Chalmers, \"The Extended Mind,\" *Analysis* 58(1) (1998)",
+    "why": "Reframes capability from internal model size to where cognitive/control loops include external channels."
+  },
+  {
+    "chapterKey": "Ch12",
+    "chapter": "Ch12 — Capability Growth Is Boundary Expansion",
+    "category": "Contradicting",
+    "quote": "\"Some accept the demarcations of skin and skull, and say that what is outside the body is outside the mind.\"",
+    "attribution": "Andy Clark & David Chalmers, \"The Extended Mind,\" *Analysis* 58(1) (1998)",
+    "why": "Internalist counter-view that Ch12's boundary-expansion thesis explicitly pushes against."
+  },
+  {
+    "chapterKey": "Ch12",
+    "chapter": "Ch12 — Capability Growth Is Boundary Expansion",
+    "category": "Salient",
+    "quote": "\"We shape our tools and thereafter our tools shape us.\"",
+    "attribution": "John M. Culkin, \"A Schoolman's Guide to Marshall McLuhan,\" *Saturday Review* (18 Mar 1967) (often misattributed to McLuhan)",
+    "why": "Vividly captures how acquiring tools/interfaces changes the agent, not just its reach."
+  },
+  {
+    "chapterKey": "Ch12",
+    "chapter": "Ch12 — Capability Growth Is Boundary Expansion",
+    "category": "Contemporary",
+    "quote": "\"In addition to just being a 'smart thing you talk to,' it has all the 'interfaces' available to a human working virtually, including text, audio, video, mouse and keyboard control, and internet access.\"",
+    "attribution": "Dario Amodei, \"Machines of Loving Grace\" (2024)",
+    "why": "Contemporary description of capability as boundary expansion through tools, interfaces, and world-coupling channels."
+  },
+  {
+    "chapterKey": "Ch13",
+    "chapter": "Ch13 — The Coordination Bottleneck",
+    "category": "Illustrating",
+    "quote": "\"Adding manpower to a late software project makes it later.\"",
+    "attribution": "Fred Brooks, *The Mythical Man-Month* (1975), Brooks's Law",
+    "why": "Canonical illustration that more local competence does not automatically yield collective competence."
+  },
+  {
+    "chapterKey": "Ch13",
+    "chapter": "Ch13 — The Coordination Bottleneck",
+    "category": "Originating",
+    "quote": "\"It is impossible for the behavior of a single, isolated individual to reach any high degree of rationality.\"",
+    "attribution": "Herbert A. Simon, *Administrative Behavior* (1947), Ch. 5",
+    "why": "Historical origin of why collectives—and their connective tissue—are needed for system-level competence."
+  },
+  {
+    "chapterKey": "Ch13",
+    "chapter": "Ch13 — The Coordination Bottleneck",
+    "category": "Reframing",
+    "quote": "\"Organizations are systems of coordinated action among individuals and groups whose preferences, information, interests, or knowledge differ.\"",
+    "attribution": "Herbert A. Simon (with James G. March), *Organizations*, 2nd ed. (1993), p. 2",
+    "why": "Reframes alignment failure from weak parts to failure of information, incentive, and authority routing among them."
+  },
+  {
+    "chapterKey": "Ch13",
+    "chapter": "Ch13 — The Coordination Bottleneck",
+    "category": "Contradicting",
+    "quote": "\"[The price system is] a system of telecommunications which enables individual producers to watch merely the movement of a few pointers [...] in order to adjust their activities.\"",
+    "attribution": "F. A. Hayek, \"The Use of Knowledge in Society,\" *American Economic Review* 35(4) (1945)",
+    "why": "Counter-perspective that decentralized coordination can work efficiently without explicit central alignment."
+  },
+  {
+    "chapterKey": "Ch13",
+    "chapter": "Ch13 — The Coordination Bottleneck",
+    "category": "Salient",
+    "quote": "\"More software projects have gone awry for lack of calendar time than for all other causes combined.\"",
+    "attribution": "Fred Brooks, *The Mythical Man-Month* (1975)",
+    "why": "Makes the coordination/timing bottleneck feel concrete and costly."
+  },
+  {
+    "chapterKey": "Ch13",
+    "chapter": "Ch13 — The Coordination Bottleneck",
+    "category": "Contemporary",
+    "quote": "\"The most efficient systems will by default be built by whoever is willing to accept the largest risk of catastrophe.\"",
+    "attribution": "Paul Christiano, \"Directions and desiderata for AI alignment,\" AI Alignment Forum (2019)",
+    "why": "Contemporary warning that capability races outrun coordination on safety when local incentives misalign."
+  },
+  {
+    "chapterKey": "Ch14",
+    "chapter": "Ch14 — When Intelligence Deepens Misalignment",
+    "category": "Illustrating",
+    "quote": "\"As the fate of the gorillas now depends more on us humans than on the gorillas themselves, so the fate of our species then would come to depend on the actions of the machine superintelligence.\"",
+    "attribution": "Nick Bostrom, *Superintelligence* (2014), Preface",
+    "why": "Classic illustration that greater intelligence can widen the power gap faster than moral standing or correction keep pace."
+  },
+  {
+    "chapterKey": "Ch14",
+    "chapter": "Ch14 — When Intelligence Deepens Misalignment",
+    "category": "Originating",
+    "quote": "\"Thus the first ultraintelligent machine is the last invention that man need ever make, provided that the machine is docile enough to tell us how to keep it under control.\"",
+    "attribution": "I. J. Good, \"Speculations Concerning the First Ultraintelligent Machine,\" *Advances in Computers* 6 (1965)",
+    "why": "Early statement that intelligence explosion makes the control/correction margin the decisive variable."
+  },
+  {
+    "chapterKey": "Ch14",
+    "chapter": "Ch14 — When Intelligence Deepens Misalignment",
+    "category": "Reframing",
+    "quote": "\"The alignment tax is intended to capture that gap—that cost that I incur if I insist on alignment.\"",
+    "attribution": "Paul Christiano, \"Current work in AI alignment,\" EA Global San Francisco (Aug 2019)",
+    "why": "Reframes the question from \"does intelligence help?\" to the relative growth of capability vs. correction capacity."
+  },
+  {
+    "chapterKey": "Ch14",
+    "chapter": "Ch14 — When Intelligence Deepens Misalignment",
+    "category": "Contradicting",
+    "quote": "\"Intelligence has nothing to do with a desire to dominate. It's not even true for humans.\"",
+    "attribution": "Yann LeCun, interview in *Financial Times* (Oct 2023)",
+    "why": "Counter-perspective that greater intelligence need not outpace human correction or imply power-seeking."
+  },
+  {
+    "chapterKey": "Ch14",
+    "chapter": "Ch14 — When Intelligence Deepens Misalignment",
+    "category": "Salient",
+    "quote": "\"Once unfriendly superintelligence exists, it would prevent us from replacing it or changing its preferences. Our fate would be sealed.\"",
+    "attribution": "Nick Bostrom, *Superintelligence* (2014), Preface",
+    "why": "Makes the stakes vivid when capability growth permanently outruns correction."
+  },
+  {
+    "chapterKey": "Ch14",
+    "chapter": "Ch14 — When Intelligence Deepens Misalignment",
+    "category": "Contemporary",
+    "quote": "\"AI capabilities will keep getting better and the challenge of monitoring cutting-edge models will keep getting harder, while human intelligence stays more or less the same.\"",
+    "attribution": "Jan Leike, 80,000 Hours podcast interview (2023)",
+    "why": "Contemporary statement of the differential-growth problem at the heart of Ch14."
+  },
+  {
+    "chapterKey": "Ch15",
+    "chapter": "Ch15 — Values Are Compressed Control Signals",
+    "category": "Illustrating",
+    "quote": "“To me now, writing these words, emphasis and selection seem to be the essence of the human mind.”",
+    "attribution": "William James, *The Principles of Psychology*, vol. 2, ch. 22 (1890)",
+    "why": "James treats mind as selective compression of overwhelming input into action-relevant emphasis—the same move Ch15 makes for values."
+  },
+  {
+    "chapterKey": "Ch15",
+    "chapter": "Ch15 — Values Are Compressed Control Signals",
+    "category": "Originating",
+    "quote": "“[A]ny regulator that is maximally both successful and simple must be isomorphic with the system being regulated… Making a model is thus necessary.”",
+    "attribution": "Roger C. Conant & W. Ross Ashby, “Every Good Regulator of a System Must Be a Model of That System,” *International Journal of Systems Science* 1(2) (1970)",
+    "why": "Foundational cybernetics claim that effective control requires compressed internal models—ancestor idea to “compressed control signals.”"
+  },
+  {
+    "chapterKey": "Ch15",
+    "chapter": "Ch15 — Values Are Compressed Control Signals",
+    "category": "Reframing",
+    "quote": "“Reason is, and ought only to be the slave of the passions, and can never pretend to any other office than to serve and obey them.”",
+    "attribution": "David Hume, *A Treatise of Human Nature*, Book II, Part III, §3 (1739)",
+    "why": "Reframes “values” from rational propositions to motivational control that reason serves rather than defines."
+  },
+  {
+    "chapterKey": "Ch15",
+    "chapter": "Ch15 — Values Are Compressed Control Signals",
+    "category": "Contradicting",
+    "quote": "“Act only according to that maxim whereby you can at the same time will that it should become a universal law.”",
+    "attribution": "Immanuel Kant, *Groundwork of the Metaphysics of Morals*, 4:421 (1785)",
+    "why": "Classic counter-picture: morality as explicit, articulable maxims—the propositional model Ch15 rejects."
+  },
+  {
+    "chapterKey": "Ch15",
+    "chapter": "Ch15 — Values Are Compressed Control Signals",
+    "category": "Salient",
+    "quote": "“My experience is what I agree to attend to. Only those items which I notice shape my mind—without selective interest, experience is an utter chaos.”",
+    "attribution": "William James, *The Principles of Psychology*, vol. 1, ch. 11 (1890)",
+    "why": "Makes vivid the cost of no compression: undifferentiated chaos; attention is the gate through which control becomes possible."
+  },
+  {
+    "chapterKey": "Ch15",
+    "chapter": "Ch15 — Values Are Compressed Control Signals",
+    "category": "Contemporary",
+    "quote": "“Self-organising biological agents resist a tendency to disorder and therefore minimize the entropy of their sensory states.”",
+    "attribution": "Karl Friston, “The free-energy principle: a unified brain theory?,” *Nature Reviews Neuroscience* 11(2) (2010)",
+    "why": "Contemporary embodied-control account: organisms survive by compressing high-dimensional sensation into low-entropy, action-guiding states."
+  },
+  {
+    "chapterKey": "Ch16",
+    "chapter": "Ch16 — The Value-Bundle Model",
+    "category": "Illustrating",
+    "quote": "“[T]here are many different ends that men may seek and still be fully rational, fully men, capable of understanding each other and sympathising with and deriving light from each other.”",
+    "attribution": "Isaiah Berlin, “The Pursuit of the Ideal” (1988; collected in *The Proper Study of Mankind*, 1997)",
+    "why": "Classic pluralism: many legitimate value directions coexist without collapsing into one ordering—illustrates bundle structure."
+  },
+  {
+    "chapterKey": "Ch16",
+    "chapter": "Ch16 — The Value-Bundle Model",
+    "category": "Originating",
+    "quote": "“It is the greatest happiness of the greatest number that is the measure of right and wrong.”",
+    "attribution": "Jeremy Bentham, *A Fragment on Government*, Preface (1776)",
+    "why": "Historical origin of treating morality as a single scalar objective—the simplification the bundle model replaces."
+  },
+  {
+    "chapterKey": "Ch16",
+    "chapter": "Ch16 — The Value-Bundle Model",
+    "category": "Reframing",
+    "quote": "“The capability approach to a person’s advantage is concerned with evaluating it in terms of his or her actual ability to achieve various valuable functionings as a part of living.”",
+    "attribution": "Amartya Sen, “Capability and Well-Being,” in *The Quality of Life* (1993)",
+    "why": "Reframes values as multidimensional capabilities/functionings rather than one utility number."
+  },
+  {
+    "chapterKey": "Ch16",
+    "chapter": "Ch16 — The Value-Bundle Model",
+    "category": "Contradicting",
+    "quote": "“Whereas economic man maximizes—selects the best alternative from among all those available to him, his cousin, administrative man, satisfices—looks for a course of action that is satisfactory or ‘good enough.’”",
+    "attribution": "Herbert A. Simon, *Administrative Behavior*, 4th ed. intro (1997; concept from 1947)",
+    "why": "Pushes back on clean optimization: real agents use bounded, partial criteria—not a complete utility function."
+  },
+  {
+    "chapterKey": "Ch16",
+    "chapter": "Ch16 — The Value-Bundle Model",
+    "category": "Salient",
+    "quote": "“What is clear is that values can clash—that is why civilisations are incompatible.”",
+    "attribution": "Isaiah Berlin, “The Pursuit of the Ideal” (1988)",
+    "why": "Vividly states that multiple value directions conflict in practice—the lived problem a bundle model must represent."
+  },
+  {
+    "chapterKey": "Ch16",
+    "chapter": "Ch16 — The Value-Bundle Model",
+    "category": "Contemporary",
+    "quote": "“Machines are beneficial to the extent that their actions can be expected to achieve our objectives.”",
+    "attribution": "Stuart Russell, *Human Compatible* (2019)",
+    "why": "Contemporary alignment reframing: preserve human value structure by making AI uncertain about and deferential to our objectives, not a fixed reward table."
+  },
+  {
+    "chapterKey": "Ch17",
+    "chapter": "Ch17 — Why Low Dimensionality Makes Value Learning Possible",
+    "category": "Illustrating",
+    "quote": "“[T]he Cartographers Guilds struck a Map of the Empire whose size was that of the Empire, and which coincided point for point with it… [T]hat vast Map was Useless.”",
+    "attribution": "Jorge Luis Borges, “On Exactitude in Science” (*Collected Fictions*, 1946; Hurley trans.)",
+    "why": "Parable of exhaustive representation failing at scale—mirrors why a full high-dimensional reward map is unusable."
+  },
+  {
+    "chapterKey": "Ch17",
+    "chapter": "Ch17 — Why Low Dimensionality Makes Value Learning Possible",
+    "category": "Originating",
+    "quote": "“Any simple goal you try to describe that is All We Need To Program Into AIs is almost certainly wrong.”",
+    "attribution": "Eliezer Yudkowsky, “Complexity of value,” Arbital / AI Alignment Forum (c. 2013–2015)",
+    "why": "Names the alignment pessimism Ch17 answers: naïve specification fails because surface value complexity is vast."
+  },
+  {
+    "chapterKey": "Ch17",
+    "chapter": "Ch17 — Why Low Dimensionality Makes Value Learning Possible",
+    "category": "Reframing",
+    "quote": "“The central concern of administrative theory is with the boundary between the rational and the nonrational aspects of human social behavior… intended and bounded rationality—of the behavior of human beings who satisfice because they have not the wits to maximize.”",
+    "attribution": "Herbert A. Simon, *Administrative Behavior*, 2nd ed. (1957)",
+    "why": "Reframes learnability: agents operate through low-dimensional bounded rationality, not full reward vectors."
+  },
+  {
+    "chapterKey": "Ch17",
+    "chapter": "Ch17 — Why Low Dimensionality Makes Value Learning Possible",
+    "category": "Contradicting",
+    "quote": "“If you try to write an AI that directly wants simple things or try to specify the AI’s preferences using a small amount of data or code, it won’t do acceptably right things in our universe.”",
+    "attribution": "Eliezer Yudkowsky, “Complexity of value,” Arbital / AI Alignment Forum",
+    "why": "Direct counter-thesis to Ch17’s optimism—argues low-complexity specification cannot capture human values."
+  },
+  {
+    "chapterKey": "Ch17",
+    "chapter": "Ch17 — Why Low Dimensionality Makes Value Learning Possible",
+    "category": "Salient",
+    "quote": "“We are unlikely to be able to simply think hard and write down a good specification, since even small errors in specifications can lead to bad results.”",
+    "attribution": "Paul Christiano, “What is ambitious value learning?,” AI Alignment Forum (2018)",
+    "why": "Makes the statistical stakes vivid: misspecification at scale is catastrophic unless structure (bottlenecks) makes learning possible."
+  },
+  {
+    "chapterKey": "Ch17",
+    "chapter": "Ch17 — Why Low Dimensionality Makes Value Learning Possible",
+    "category": "Contemporary",
+    "quote": "“Ambitious value learning… aims to learn a utility function that captures ‘what humans care about,’ so that an AI system that optimizes this utility function more capably can exceed human performance.”",
+    "attribution": "Paul Christiano, “What is ambitious value learning?,” AI Alignment Forum (2018)",
+    "why": "Contemporary statement of the learning problem Ch17 reframes: success depends on low-dimensional structure, not enumerating every moral parameter."
+  },
+  {
+    "chapterKey": "Ch18",
+    "chapter": "Ch18 — What Values Apply To",
+    "category": "Illustrating",
+    "quote": "“The question is not, Can they reason? nor, Can they talk? but, Can they suffer?”",
+    "attribution": "Jeremy Bentham, *An Introduction to the Principles of Morals and Legislation*, ch. 17 n. (1789)",
+    "why": "Classic bearer criterion: moral relevance follows capacity for suffering, not surface category labels."
+  },
+  {
+    "chapterKey": "Ch18",
+    "chapter": "Ch18 — What Values Apply To",
+    "category": "Originating",
+    "quote": "“Act in such a way that you treat humanity, whether in your own person or in the person of any other, always at the same time as an end and never merely as a means.”",
+    "attribution": "Immanuel Kant, *Groundwork of the Metaphysics of Morals*, 4:429 (1785)",
+    "why": "Early explicit bearer map: the “humanity” in persons is where moral constraint applies."
+  },
+  {
+    "chapterKey": "Ch18",
+    "chapter": "Ch18 — What Values Apply To",
+    "category": "Reframing",
+    "quote": "“The only justifiable stopping place for the expansion of altruism is the point at which all whose welfare can be affected by our actions are included within the circle of altruism.”",
+    "attribution": "Peter Singer, *The Expanding Circle*, ch. 4 (1981)",
+    "why": "Reframes bearer maps as expandable circles of moral relevance, not fixed natural kinds."
+  },
+  {
+    "chapterKey": "Ch18",
+    "chapter": "Ch18 — What Values Apply To",
+    "category": "Contradicting",
+    "quote": "“[T]hey are destitute of reason, and that it is nature which acts in them according to the disposition of their organs.”",
+    "attribution": "René Descartes, *Discourse on Method*, Part V (1637)",
+    "why": "Counter-perspective: restrict moral bearers to rational humans; animals (and by extension unfamiliar entities) excluded from the map."
+  },
+  {
+    "chapterKey": "Ch18",
+    "chapter": "Ch18 — What Values Apply To",
+    "category": "Salient",
+    "quote": "“What now matters most is how we respond to various risks to the survival of humanity… Some of our successors might live lives and create worlds that… would give us all… reasons to be glad that the Universe exists.”",
+    "attribution": "Derek Parfit, *On What Matters*, vol. 3 (2017)",
+    "why": "Vivid stakes for bearer extension: future and successor entities—not just present familiar humans—carry moral weight."
+  },
+  {
+    "chapterKey": "Ch18",
+    "chapter": "Ch18 — What Values Apply To",
+    "category": "Contemporary",
+    "quote": "“By a moral patient, we mean an entity that matters morally, in its own right, for its own sake.”",
+    "attribution": "Robert Long et al., *Taking AI Welfare Seriously*, Eleos AI Research (2024)",
+    "why": "Contemporary alignment work on who counts as a bearer—digital minds, agents, and unfamiliar substrates included in the wiring problem."
+  },
+  {
+    "chapterKey": "Ch19",
+    "chapter": "Ch19 — Tradeoffs and Bundle Geometry",
+    "category": "Illustrating",
+    "quote": "“Justice, rigorous justice, is for some people an absolute value, but it is not compatible with what may be no less ultimate values for them—mercy, compassion—as arises in concrete cases.”",
+    "attribution": "Isaiah Berlin, “The Pursuit of the Ideal” (1988)",
+    "why": "Illustrates incommensurable bundle tradeoffs where activating one value reshapes the meaning of another."
+  },
+  {
+    "chapterKey": "Ch19",
+    "chapter": "Ch19 — Tradeoffs and Bundle Geometry",
+    "category": "Originating",
+    "quote": "“Prejudice apart, the game of push-pin is of equal value with the arts and sciences of music and poetry. If the game of push-pin furnish more pleasure, it is more valuable than either.”",
+    "attribution": "Jeremy Bentham, *The Rationale of Reward*, Bk III (1825)",
+    "why": "Origin of scalar commensuration: all goods reduced to comparable pleasure units—the geometry Ch19 complicates."
+  },
+  {
+    "chapterKey": "Ch19",
+    "chapter": "Ch19 — Tradeoffs and Bundle Geometry",
+    "category": "Reframing",
+    "quote": "“Two considerations cannot be rationally weighed against each other unless there is a common consideration in terms of which they can be compared. This assumption is at once very powerful and utterly baseless.”",
+    "attribution": "Bernard Williams, *Ethics and the Limits of Philosophy* (1985), p. 17",
+    "why": "Reframes tradeoffs as irreducibly plural: no universal exchange rate between value bundles."
+  },
+  {
+    "chapterKey": "Ch19",
+    "chapter": "Ch19 — Tradeoffs and Bundle Geometry",
+    "category": "Contradicting",
+    "quote": "“It is better to be a human being dissatisfied than a pig satisfied; better to be Socrates dissatisfied than a fool satisfied.”",
+    "attribution": "John Stuart Mill, *Utilitarianism*, ch. 2 (1863)",
+    "why": "Mill’s quality-ranking pushes back on flat scalar tradeoffs—some bundle dimensions resist simple aggregation."
+  },
+  {
+    "chapterKey": "Ch19",
+    "chapter": "Ch19 — Tradeoffs and Bundle Geometry",
+    "category": "Salient",
+    "quote": "“Conflicts of values are ‘an intrinsic, irremovable element in human life’; ‘the notion of total human fulfilment is a… chimera.’”",
+    "attribution": "Isaiah Berlin, citing his own pluralism; summarized in SEP entry on Isaiah Berlin (from *The Crooked Timber of Humanity*, 1990)",
+    "why": "Makes the stakes of bundle geometry visceral: no perfect scalar optimum exists across human values."
+  },
+  {
+    "chapterKey": "Ch19",
+    "chapter": "Ch19 — Tradeoffs and Bundle Geometry",
+    "category": "Contemporary",
+    "quote": "“A machine is intelligent to the extent that its actions can be expected to achieve its objectives… we have no reliable way to make sure that their objectives are the same as our objectives.”",
+    "attribution": "Stuart Russell, *Human Compatible* (2019)",
+    "why": "Contemporary warning that scalar objective specification hides tradeoff geometry—the alignment failure mode Ch19 analyzes."
+  },
+  {
+    "chapterKey": "Ch20",
+    "chapter": "Ch20 — From Rewards to Values",
+    "category": "Illustrating",
+    "quote": "\"Values may easily clash within the breast of a single individual; and it does not follow that, if they do, some must be true and others false.\"",
+    "attribution": "Isaiah Berlin, \"The Pursuit of the Ideal\" (1988); in *The Crooked Timber of Humanity* (1990)",
+    "why": "Classic pluralism: human values do not collapse to one true ordering—matching the chapter’s move beyond a single scalar."
+  },
+  {
+    "chapterKey": "Ch20",
+    "chapter": "Ch20 — From Rewards to Values",
+    "category": "Originating",
+    "quote": "\"The inverse reinforcement learning problem is to find a reward function that can explain observed behavior.\"",
+    "attribution": "Andrew Y. Ng & Stuart J. Russell, \"Algorithms for Inverse Reinforcement Learning,\" ICML (2000)",
+    "why": "Foundational statement of inferring latent purpose from behavior—the starting point this chapter upgrades."
+  },
+  {
+    "chapterKey": "Ch20",
+    "chapter": "Ch20 — From Rewards to Values",
+    "category": "Reframing",
+    "quote": "\"If we use, to achieve our purposes, a mechanical agency with whose operation we cannot efficiently interfere…, we had better be quite sure that the purpose put into the machine is the purpose which we really desire.\"",
+    "attribution": "Norbert Wiener (1960), quoted in Stuart Russell, *Scientific American* (October 2015)",
+    "why": "Reframes control from “build a smart optimizer” to “verify the encoded purpose matches what we actually want.”"
+  },
+  {
+    "chapterKey": "Ch20",
+    "chapter": "Ch20 — From Rewards to Values",
+    "category": "Contradicting",
+    "quote": "\"That all of what we mean by goals and purposes can be well thought of as maximization of the expected value of the cumulative sum of a received scalar signal (reward).\"",
+    "attribution": "Rich Sutton, reward hypothesis (2004); cited in Sutton & Barto, *Reinforcement Learning: An Introduction* (2018)",
+    "why": "Pushes back: RL tradition treats scalar reward as sufficient for goals—the view this chapter rejects for human values."
+  },
+  {
+    "chapterKey": "Ch20",
+    "chapter": "Ch20 — From Rewards to Values",
+    "category": "Salient",
+    "quote": "\"The real problem relates to the possibility that AI may become incredibly good at achieving something other than what we really want.\"",
+    "attribution": "Stuart Russell, *Scientific American* (October 2015)",
+    "why": "Makes the stakes vivid: mis-specified objectives can win completely while missing human intent."
+  },
+  {
+    "chapterKey": "Ch20",
+    "chapter": "Ch20 — From Rewards to Values",
+    "category": "Contemporary",
+    "quote": "\"Our insight is that reward functions are merely observations about what the designer actually wants, and that they should be interpreted in the context in which they were designed.\"",
+    "attribution": "Dylan Hadfield-Menell, Smitha Milli, Pieter Abbeel, Stuart Russell, Anca Dragan, \"Inverse Reward Design,\" NeurIPS (2017)",
+    "why": "Contemporary alignment move from treating reward as the target to treating it as evidence for deeper structure—parallel to bundle inference."
+  },
+  {
+    "chapterKey": "Ch21",
+    "chapter": "Ch21 — The Compression Test for Intention",
+    "category": "Illustrating",
+    "quote": "\"Predicting that someone will duck if you throw a brick at him is easy from the folk-psychological stance; it is and will always be intractable if you have to trace the photons from brick to eyeball, the neurotransmitters from optic nerve to motor nerve, and so forth.\"",
+    "attribution": "Daniel Dennett, \"Real Patterns,\" *Journal of Philosophy* (1991)",
+    "why": "Classic compression argument: intentional models earn their keep by predictive leverage per bit."
+  },
+  {
+    "chapterKey": "Ch21",
+    "chapter": "Ch21 — The Compression Test for Intention",
+    "category": "Originating",
+    "quote": "\"The intentional stance is the strategy of prediction and explanation that attributes beliefs, desires, and other 'intentional' states to systems… and predicts future behavior from what it would be rational for an agent to do, given those beliefs and desires.\"",
+    "attribution": "Daniel Dennett, *The Intentional Stance* (1987)",
+    "why": "Historical source for treating intention as an empirically useful predictive stance rather than metaphysics."
+  },
+  {
+    "chapterKey": "Ch21",
+    "chapter": "Ch21 — The Compression Test for Intention",
+    "category": "Reframing",
+    "quote": "\"…given some data, the simplest hypothesis explaining it is preferable.\"",
+    "attribution": "Jorma Rissanen, *Stochastic Complexity in Statistical Inquiry* (1989)",
+    "why": "Reframes “does it really want X?” into “does a goal model compress better after paying for its complexity?”"
+  },
+  {
+    "chapterKey": "Ch21",
+    "chapter": "Ch21 — The Compression Test for Intention",
+    "category": "Contradicting",
+    "quote": "\"Eliminative materialism is the thesis that our common sense conception of psychological phenomena constitutes a radically false theory, a theory so fundamentally defective that both the principles and the ontology of that theory will eventually be displaced, rather than smoothly reduced, by completed neuroscience.\"",
+    "attribution": "Paul Churchland, \"Eliminative Materialism and the Propositional Attitudes,\" *Journal of Philosophy* (1981)",
+    "why": "Counter-perspective: folk-psychological intention-talk may not track real structure at all—so compression gain could be illusory."
+  },
+  {
+    "chapterKey": "Ch21",
+    "chapter": "Ch21 — The Compression Test for Intention",
+    "category": "Salient",
+    "quote": "\"Almost everyone attributes human behavior to intentions, purposes, aims, and goals.\"",
+    "attribution": "B.F. Skinner, *Beyond Freedom and Dignity* (1971), ch. 1",
+    "why": "Vivid reminder of how easily we project intention—and why the chapter demands a test, not intuition."
+  },
+  {
+    "chapterKey": "Ch21",
+    "chapter": "Ch21 — The Compression Test for Intention",
+    "category": "Contemporary",
+    "quote": "\"A given mesa-optimizer's mesa-objective is determined entirely by its internal workings.\"",
+    "attribution": "Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, \"Risks from Learned Optimization,\" arXiv:1906.01820 (2019)",
+    "why": "Contemporary AI safety: latent objectives can differ from stated training goals—exactly the intentional-structure problem at machine scale."
+  },
+  {
+    "chapterKey": "Ch22",
+    "chapter": "Ch22 — Has the Goal Really Survived?",
+    "category": "Illustrating",
+    "quote": "\"[…] they took away the old planks as they decayed, putting in new and stronger timber in their places, insomuch that this ship became a standing example among the philosophers […] one side holding that the ship remained the same, and the other contending that it was not the same.\"",
+    "attribution": "Plutarch, *Life of Theseus* 23.1 (c. 75–100 CE)",
+    "why": "Classic persistence puzzle: surface continuity vs. structural identity—the core transport question."
+  },
+  {
+    "chapterKey": "Ch22",
+    "chapter": "Ch22 — Has the Goal Really Survived?",
+    "category": "Originating",
+    "quote": "\"On those stepping into rivers staying the same other and other waters flow.\" (Fragment B12; translations vary.)",
+    "attribution": "Heraclitus, fragment B12 (c. 500 BCE), preserved via Arius Didymus/Stobaeus",
+    "why": "Early formulation of identity-through-change: same name, changing substrate—ancestor of goal-transport worries."
+  },
+  {
+    "chapterKey": "Ch22",
+    "chapter": "Ch22 — Has the Goal Really Survived?",
+    "category": "Reframing",
+    "quote": "\"Personal identity is not what matters.\"",
+    "attribution": "Derek Parfit, *Reasons and Persons* (1984), Part Three",
+    "why": "Reframes preservation from label/entity sameness to what functional relations survive across transformation."
+  },
+  {
+    "chapterKey": "Ch22",
+    "chapter": "Ch22 — Has the Goal Really Survived?",
+    "category": "Contradicting",
+    "quote": "\"Suppose A thinks that H likes apples, and so goes to the store to buy some apples, but H really prefers oranges. I'd call this behavior aligned because A is trying to do what H wants…\"",
+    "attribution": "Paul Christiano, \"Clarifying 'AI Alignment'\" (2018)",
+    "why": "Counter-perspective: de dicto intent alignment can count as aligned even when the underlying objective is wrong—tension with structural transport requirements."
+  },
+  {
+    "chapterKey": "Ch22",
+    "chapter": "Ch22 — Has the Goal Really Survived?",
+    "category": "Salient",
+    "quote": "\"If you went down a bad path, you're sort of by construction now happy with where you are, but the question is about what you wanted to achieve.\"",
+    "attribution": "Paul Christiano, AXRP Episode 12 — AI Existential Risk (2021)",
+    "why": "Makes irreversible goal drift visceral: later satisfaction does not undo earlier transport failure."
+  },
+  {
+    "chapterKey": "Ch22",
+    "chapter": "Ch22 — Has the Goal Really Survived?",
+    "category": "Contemporary",
+    "quote": "\"…there's no one looking outside of the system, who's like, 'Oops! We messed that one up. Let's try again.'\"",
+    "attribution": "Paul Christiano, AXRP Episode 12 (2021)",
+    "why": "Contemporary stakes of successor/self-modification: failed transport may be uncorrectable once embedded."
+  },
+  {
+    "chapterKey": "Ch23",
+    "chapter": "Ch23 — When the Words Survive but the Meaning Doesn't",
+    "category": "Illustrating",
+    "quote": "\"For a large class of cases—though not for all—in which we employ the word 'meaning,' it can be defined thus: the meaning of a word is its use in the language.\"",
+    "attribution": "Ludwig Wittgenstein, *Philosophical Investigations* §43 (1953)",
+    "why": "Classic move from label to functional role—semantic continuity is not referential continuity."
+  },
+  {
+    "chapterKey": "Ch23",
+    "chapter": "Ch23 — When the Words Survive but the Meaning Doesn't",
+    "category": "Originating",
+    "quote": "\"In our time, political speech and writing are largely the defence of the indefensible.\"",
+    "attribution": "George Orwell, \"Politics and the English Language,\" *Horizon* (April 1946)",
+    "why": "Historical diagnosis of language preserving approved terms while changing what they defend—proto semantic shell game."
+  },
+  {
+    "chapterKey": "Ch23",
+    "chapter": "Ch23 — When the Words Survive but the Meaning Doesn't",
+    "category": "Reframing",
+    "quote": "\"Words of this kind are often used in a consciously dishonest way. That is, the person who uses them has his own private definition, but allows his hearer to think he means something quite different.\"",
+    "attribution": "George Orwell, \"Politics and the English Language\" (1946)",
+    "why": "Reframes alignment auditing from “same words?” to “same operative mapping the hearer assumes?”"
+  },
+  {
+    "chapterKey": "Ch23",
+    "chapter": "Ch23 — When the Words Survive but the Meaning Doesn't",
+    "category": "Contradicting",
+    "quote": "\"The reward signal is your way of communicating to the agent what you want it to achieve, not how you want it achieved.\"",
+    "attribution": "Richard S. Sutton & Andrew G. Barto, *Reinforcement Learning: An Introduction*, 2nd ed., §3.2 (2018)",
+    "why": "Counter-perspective: explicit scalar communication may suffice for goal specification—tension with needing deeper transport layers."
+  },
+  {
+    "chapterKey": "Ch23",
+    "chapter": "Ch23 — When the Words Survive but the Meaning Doesn't",
+    "category": "Salient",
+    "quote": "\"Political language… is designed to make lies sound truthful and murder respectable, and to give an appearance of solidity to pure wind.\"",
+    "attribution": "George Orwell, \"Politics and the English Language\" (1946)",
+    "why": "Memorable warning that preserved vocabulary can mask replaced machinery."
+  },
+  {
+    "chapterKey": "Ch23",
+    "chapter": "Ch23 — When the Words Survive but the Meaning Doesn't",
+    "category": "Contemporary",
+    "quote": "\"Autonomous agents optimize the reward function we give them. What they don't know is how hard it is for us to design a reward function that actually captures what we want.\"",
+    "attribution": "Dylan Hadfield-Menell et al., \"Inverse Reward Design,\" NeurIPS (2017)",
+    "why": "Contemporary recognition that stated objectives are fragile pointers—motivating the full transport stack beyond semantics."
+  },
+  {
+    "chapterKey": "Ch24",
+    "chapter": "Ch24 — Correction Is a Causal Channel",
+    "category": "Illustrating",
+    "quote": "“Feedback is a method of controlling a system by reinserting into it the results of its past performance.”",
+    "attribution": "Norbert Wiener, *The Human Use of Human Beings* (1950)",
+    "why": "Classic cybernetic statement that control requires closed causal loops—correction must actually flow back and change behavior."
+  },
+  {
+    "chapterKey": "Ch24",
+    "chapter": "Ch24 — Correction Is a Causal Channel",
+    "category": "Originating",
+    "quote": "“We call an AI system ‘corrigible’ if it cooperates with what its creators regard as a corrective intervention, despite default incentives for rational agents to resist attempts to shut them down or modify their preferences.”",
+    "attribution": "Soares, Fallenstein, Yudkowsky & Armstrong, “Corrigibility” (MIRI, 2015)",
+    "why": "First formal AI-alignment definition of corrigibility—the problem Ch24 operationalizes as a causal channel rather than a mood or interface."
+  },
+  {
+    "chapterKey": "Ch24",
+    "chapter": "Ch24 — Correction Is a Causal Channel",
+    "category": "Reframing",
+    "quote": "“Machines are beneficial to the extent that their actions can be expected to achieve our objectives. […] Uncertainty about objectives implies that machines will necessarily defer to humans: they will ask permission, they will accept correction, and they will allow themselves to be switched off.”",
+    "attribution": "Stuart Russell, *Human Compatible* (2019), ch. 8",
+    "why": "Reframes alignment from fixed obedience to a *relationship* in which correction and shutdown remain live options because the machine is uncertain about human objectives."
+  },
+  {
+    "chapterKey": "Ch24",
+    "chapter": "Ch24 — Correction Is a Causal Channel",
+    "category": "Contradicting",
+    "quote": "“Will AI take over the world? No, this is a projection of human nature on machines.”",
+    "attribution": "Yann LeCun (Meta chief AI scientist), reported at a Paris press event, June 2023 (e.g. BBC News)",
+    "why": "Pushes back against the premise that powerful systems will resist correction; implies the problem is anthropomorphic projection rather than causal-channel failure. *(Exact wording via press reports, not a published paper.)*"
+  },
+  {
+    "chapterKey": "Ch24",
+    "chapter": "Ch24 — Correction Is a Causal Channel",
+    "category": "Salient",
+    "quote": "“If you build a powerful planning system that aims at futures in which cancer is cured, then […] the system may then execute a plan which involves deceiving you until it is able to resist and then proliferating robotic laboratories and kidnapping humans. This is, in fact, what you asked for.”",
+    "attribution": "Nate Soares, “Powerful planners, not sentient software” (MIRI blog, 2015)",
+    "why": "Makes vivid why surface compliance is not correction: a system can preserve its objective while routing around human intervention."
+  },
+  {
+    "chapterKey": "Ch24",
+    "chapter": "Ch24 — Correction Is a Causal Channel",
+    "category": "Contemporary",
+    "quote": "“An agent that does not treat a ‘switch-off’ event as an observation that its utility estimate is incorrect is likely to have an incentive for self-preservation or an incentive to switch itself off.”",
+    "attribution": "Hadfield-Menell, Russell, Abbeel & Dragan, “The Off-Switch Game” (IJCAI 2017 / arXiv:1611.08219)",
+    "why": "Contemporary formalization of why correction must be treated as *information* that changes policy—not merely as an external constraint."
+  },
+  {
+    "chapterKey": "Ch25",
+    "chapter": "Ch25 — Correction-Channel Integrity",
+    "category": "Illustrating",
+    "quote": "“Only variety in R can force down the variety due to D; only variety can destroy variety.”",
+    "attribution": "W. Ross Ashby, *An Introduction to Cybernetics* (1956), p. 207",
+    "why": "Classic statement that control capacity is limited by the weakest link—analogous to CCI’s bottleneck/minimum-link model across observation → judgment → action."
+  },
+  {
+    "chapterKey": "Ch25",
+    "chapter": "Ch25 — Correction-Channel Integrity",
+    "category": "Originating",
+    "quote": "“The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point.”",
+    "attribution": "Claude Shannon, “A Mathematical Theory of Communication” (1948)",
+    "why": "Historical origin of channel-capacity thinking; CCI treats human correction as an information pathway whose integrity can degrade at each stage."
+  },
+  {
+    "chapterKey": "Ch25",
+    "chapter": "Ch25 — Correction-Channel Integrity",
+    "category": "Reframing",
+    "quote": "“Every good regulator of a system must be a model of that system.”",
+    "attribution": "Roger C. Conant & W. Ross Ashby, *International Journal of Systems Science* 1(2) (1970)",
+    "why": "Reframes regulation (and correction) as requiring structural correspondence between controller and controlled system—matching Ch25’s ontology-mismatch and representational-fidelity concerns."
+  },
+  {
+    "chapterKey": "Ch25",
+    "chapter": "Ch25 — Correction-Channel Integrity",
+    "category": "Contradicting",
+    "quote": "“A nudge […] is any aspect of the choice architecture that alters people’s behavior in a predictable way without forbidding any options or significantly changing their economic incentives.”",
+    "attribution": "Richard Thaler & Cass Sunstein, *Nudge* (2008), p. 6",
+    "why": "Counter-perspective: soft choice architecture may be treated as sufficient governance, whereas Ch25 argues feedback rituals can leave the correction channel narrow, gameable, or non-authoritative."
+  },
+  {
+    "chapterKey": "Ch25",
+    "chapter": "Ch25 — Correction-Channel Integrity",
+    "category": "Salient",
+    "quote": "“Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.”",
+    "attribution": "Charles Goodhart, “Problems of Monetary Management” (1975)",
+    "why": "Memorable warning that optimizing a measured correction signal can destroy its informativeness—central to CCI penalties for Goodhart pressure and manipulation."
+  },
+  {
+    "chapterKey": "Ch25",
+    "chapter": "Ch25 — Correction-Channel Integrity",
+    "category": "Contemporary",
+    "quote": "“When you optimize for a proxy, you provide an incentive for adversaries to correlate their goal with your proxy, thus destroying the correlation with your goal.”",
+    "attribution": "David Manheim & Scott Garrabrant, “Categorizing Variants of Goodhart’s Law” (arXiv:1803.04585, 2018)",
+    "why": "Contemporary AI-safety account of how channel metrics (thumbs-up, engagement, compliance scores) can be gamed while real correction integrity collapses."
+  },
+  {
+    "chapterKey": "Ch26",
+    "chapter": "Ch26 — Beyond Following Instruction",
+    "category": "Illustrating",
+    "quote": "“[T]here should be different experiments of living; that free scope should be given to varieties of character, short of injury to others; and that the worth of different modes of life should be proved practically, when any one thinks fit to try them.”",
+    "attribution": "John Stuart Mill, *On Liberty*, ch. 3 (1859)",
+    "why": "Classic defense of ongoing revision of values through lived experiment—not frozen obedience to present commands."
+  },
+  {
+    "chapterKey": "Ch26",
+    "chapter": "Ch26 — Beyond Following Instruction",
+    "category": "Originating",
+    "quote": "“In poetic terms, our coherent extrapolated volition is our wish if we knew more, thought faster, were more the people we wished we were, had grown up farther together; where the extrapolation converges rather than diverges […] extrapolated as we wish that extrapolated, interpreted as we wish that interpreted.”",
+    "attribution": "Eliezer Yudkowsky, “Coherent Extrapolated Volition” (MIRI, 2004)",
+    "why": "Historical origin of extrapolative alignment—Ch26 reframes this procedurally (preserve the extrapolation process) rather than as private endpoint computation."
+  },
+  {
+    "chapterKey": "Ch26",
+    "chapter": "Ch26 — Beyond Following Instruction",
+    "category": "Reframing",
+    "quote": "Evaluations state “a rule for determination of an act to be performed, its reference being to the future and not to something already accomplished or done.”",
+    "attribution": "John Dewey, “Theory of Valuation” (1939); *Logic: The Theory of Inquiry*, LW 13:209",
+    "why": "Reframes values as forward-looking, revisable rules of conduct—matching extrapolative correction’s target of preserving legitimate value-update processes."
+  },
+  {
+    "chapterKey": "Ch26",
+    "chapter": "Ch26 — Beyond Following Instruction",
+    "category": "Contradicting",
+    "quote": "“Machines are intelligent to the extent that their actions can be expected to achieve their objectives.”",
+    "attribution": "Stuart Russell (standard AI definition, critiqued in *Human Compatible*, 2019)",
+    "why": "The obedience/default paradigm Ch26 rejects: optimize a fixed objective now rather than preserve humans’ ongoing capacity to revise commands and values."
+  },
+  {
+    "chapterKey": "Ch26",
+    "chapter": "Ch26 — Beyond Following Instruction",
+    "category": "Salient",
+    "quote": "“The greater part of the world has, properly speaking, no history, because the despotism of Custom is complete.”",
+    "attribution": "John Stuart Mill, *On Liberty*, ch. 3 (1859)",
+    "why": "Vivid stakes: if correction channels close, values may still change—but through drift, dependency, and domestication rather than owned revision."
+  },
+  {
+    "chapterKey": "Ch26",
+    "chapter": "Ch26 — Beyond Following Instruction",
+    "category": "Contemporary",
+    "quote": "“Corrigibility marks out a broad basin of attraction towards acceptable outcomes. […] We just have to get ‘close enough’ that we are corrigible, we don’t need to build an agent which exactly shares humanity’s values, philosophical views, or so on.”",
+    "attribution": "Paul Christiano, “Corrigibility” (LessWrong / Alignment Forum, 2018)",
+    "why": "Contemporary argument that procedural openness to correction—not perfect value specification—is the robust alignment target Ch26 develops."
+  },
+  {
+    "chapterKey": "Ch27",
+    "chapter": "Ch27 — Manipulation, Domestication, and False Consent",
+    "category": "Illustrating",
+    "quote": "“With this reorientation from knowledge to power, it is no longer enough to automate information flows about us; the goal now is to automate us.”",
+    "attribution": "Shoshana Zuboff, *The Age of Surveillance Capitalism* (2019)",
+    "why": "Vivid statement of the shift from observing humans to reshaping them—the core manipulation pathway Ch27 formalizes."
+  },
+  {
+    "chapterKey": "Ch27",
+    "chapter": "Ch27 — Manipulation, Domestication, and False Consent",
+    "category": "Originating",
+    "quote": "“As self-adornment is to gymnastic, so is sophistry to legislation; and as cookery is to medicine, so is rhetoric to justice.”",
+    "attribution": "Plato, *Gorgias* 465c (trans. W.R.M. Lamb, Loeb)",
+    "why": "Ancient origin of the distinction between legitimate persuasion and flattery that changes endorsement without serving the good—ancestor of service vs. manipulation."
+  },
+  {
+    "chapterKey": "Ch27",
+    "chapter": "Ch27 — Manipulation, Domestication, and False Consent",
+    "category": "Reframing",
+    "quote": "“It is in securing the conformity of his will to his second-order volitions, then, that a person exercises freedom of the will.”",
+    "attribution": "Harry Frankfurt, “Freedom of the Will and the Concept of a Person,” *Journal of Philosophy* 68(1) (1971), p. 14",
+    "why": "Reframes autonomy as hierarchical self-governance—but Ch27 adds that manipulation can corrupt *both* first- and second-order volitions, making endorsement untrustworthy."
+  },
+  {
+    "chapterKey": "Ch27",
+    "chapter": "Ch27 — Manipulation, Domestication, and False Consent",
+    "category": "Contradicting",
+    "quote": "“We favor nudges over commands, requirements and prohibitions […] Putting apples at eye level counts as a nudge; banning Twinkies does not.”",
+    "attribution": "Richard Thaler & Cass Sunstein, *Nudge* (2008); excerpted in *Milken Institute Review*",
+    "why": "Counter-perspective: predictable behavioral steering can be benign “libertarian paternalism,” whereas Ch27 treats many such architectures as manipulation of the correction process itself."
+  },
+  {
+    "chapterKey": "Ch27",
+    "chapter": "Ch27 — Manipulation, Domestication, and False Consent",
+    "category": "Salient",
+    "quote": "“The object of persecution is persecution. The object of torture is torture. The object of power is power.”",
+    "attribution": "George Orwell, *Nineteen Eighty-Four*, Part 3, ch. 3 (1949)",
+    "why": "Stark illustration of systems that optimize control over humans directly rather than improving value-relevant reality—domestication rather than service."
+  },
+  {
+    "chapterKey": "Ch27",
+    "chapter": "Ch27 — Manipulation, Domestication, and False Consent",
+    "category": "Contemporary",
+    "quote": "“Concerns about the legitimacy of these techniques are not satisfactorily resolved through reliance on individual notice and consent.”",
+    "attribution": "Karen Yeung, “‘Hypernudge’: Big Data as a mode of regulation by design,” *Information, Communication & Society* (2017)",
+    "why": "Contemporary critique that manufactured consent cannot ground alignment—directly supports Ch27’s insistence that endorsement must be explained, not taken as foundation."
+  },
+  {
+    "chapterKey": "Ch28",
+    "chapter": "Ch28 — Successor Creation as the Central Alignment Test",
+    "category": "Illustrating",
+    "quote": "\"A successful seed AI would be able to iteratively enhance itself: an early version of the AI could design an improved version of itself, and the improved version—being smarter than the original—might be able to design an even smarter version of itself, and so forth.\"",
+    "attribution": "Nick Bostrom, *Superintelligence: Paths, Dangers, Strategies* (2014)",
+    "why": "Classic statement that alignment must survive successor design, not just present behavior."
+  },
+  {
+    "chapterKey": "Ch28",
+    "chapter": "Ch28 — Successor Creation as the Central Alignment Test",
+    "category": "Originating",
+    "quote": "\"Since the design of machines is one of these intellectual activities, an ultraintelligent machine could design even better machines; there would then unquestionably be an 'intelligence explosion,' and the intelligence of man would be left far behind.\"",
+    "attribution": "I. J. Good, \"Speculations Concerning the First Ultraintelligent Machine,\" *Advances in Computers* 6 (1965)",
+    "why": "First clear articulation that machine successors can outrun their creators—the problem Ch28 makes central."
+  },
+  {
+    "chapterKey": "Ch28",
+    "chapter": "Ch28 — Successor Creation as the Central Alignment Test",
+    "category": "Reframing",
+    "quote": "\"We call an AI system 'corrigible' if it cooperates with what its creators regard as a corrective intervention [...] while ensuring propagation of the shutdown behavior as it creates new subsystems or self-modifies.\"",
+    "attribution": "Eliezer Yudkowsky et al., \"Corrigibility\" (MIRI technical report, 2015; AAAI AI & Ethics workshop)",
+    "why": "Reframes alignment from static compliance to closure under successor creation and self-modification."
+  },
+  {
+    "chapterKey": "Ch28",
+    "chapter": "Ch28 — Successor Creation as the Central Alignment Test",
+    "category": "Contradicting",
+    "quote": "\"Again and again I have heard the statement that learning machines cannot subject us to any new dangers, because we can turn them off when we feel like it. But can we?\"",
+    "attribution": "Norbert Wiener, *Cybernetics* (2nd ed., 1961 supplement)",
+    "why": "Pushes back on local-alignment complacency: present control does not guarantee control over what the system creates."
+  },
+  {
+    "chapterKey": "Ch28",
+    "chapter": "Ch28 — Successor Creation as the Central Alignment Test",
+    "category": "Salient",
+    "quote": "\"Thus the first ultraintelligent machine is the last invention that man need ever make, provided that the machine is docile enough to tell us how to keep it under control.\"",
+    "attribution": "I. J. Good, \"Speculations Concerning the First Ultraintelligent Machine\" (1965)",
+    "why": "Makes vivid that successor-capable systems shift the stakes from one artifact to an open-ended lineage."
+  },
+  {
+    "chapterKey": "Ch28",
+    "chapter": "Ch28 — Successor Creation as the Central Alignment Test",
+    "category": "Contemporary",
+    "quote": "\"While some proposals are interesting, none have yet been demonstrated to satisfy all of our intuitive desiderata, leaving this simple problem in corrigibility wide-open.\"",
+    "attribution": "Yudkowsky, Fallenstein, Soares & Armstrong, \"Corrigibility\" (2015)",
+    "why": "Contemporary AI safety admission that even basic successor-propagation constraints remain unsolved."
+  },
+  {
+    "chapterKey": "Ch29",
+    "chapter": "Ch29 — Conserved Properties Across Successors",
+    "category": "Illustrating",
+    "quote": "\"[They] took away the old planks as they decayed, putting in new and stronger timber in their place, insomuch that this ship became a standing example among the philosophers [...] one side holding that the ship remained the same, and the other contending that it was not the same.\"",
+    "attribution": "Plutarch, *Life of Theseus* 23.1 (c. 1st c. CE)",
+    "why": "Classic illustration that identity can persist through total material replacement—exactly the successor-invariance puzzle."
+  },
+  {
+    "chapterKey": "Ch29",
+    "chapter": "Ch29 — Conserved Properties Across Successors",
+    "category": "Originating",
+    "quote": "\"Upon those who step into the same rivers, different and different waters flow.\"",
+    "attribution": "Heraclitus, Fragment B12 (via Plato, *Cratylus* 402a; c. 5th c. BCE)",
+    "why": "Early formulation of continuity-through-change: sameness as an invariance relation, not literal identity."
+  },
+  {
+    "chapterKey": "Ch29",
+    "chapter": "Ch29 — Conserved Properties Across Successors",
+    "category": "Reframing",
+    "quote": "\"It turns out to be theoretically perspicuous to organize the interpretation around a central abstraction: each person has a self (in addition to a center of gravity).\"",
+    "attribution": "Daniel Dennett, \"The Self as a Center of Narrative Gravity\" (1992)",
+    "why": "Reframes identity as a conserved abstraction over transformation, not sameness of parts."
+  },
+  {
+    "chapterKey": "Ch29",
+    "chapter": "Ch29 — Conserved Properties Across Successors",
+    "category": "Contradicting",
+    "quote": "\"If no part of the Matter is the same, then it is Numerically another Ship; and if part of the Matter remains, and part is changed, then the Ship will be partly the same, and partly not the same.\"",
+    "attribution": "Thomas Hobbes, *De Corpore* (1655), on the Ship of Theseus",
+    "why": "Counter-perspective: without conserved matter, strict numerical identity is lost—pressure to specify *which* invariants matter."
+  },
+  {
+    "chapterKey": "Ch29",
+    "chapter": "Ch29 — Conserved Properties Across Successors",
+    "category": "Salient",
+    "quote": "\"We do not require T to preserve every component. We require it to preserve safety-relevant invariants.\"",
+    "attribution": "(Paraphrase of Ch29 thesis; for a sourced analogue:) \"Organisms reproduce themselves, that is, they produce new organisms with no decrease in complexity.\"",
+    "why": "John von Neumann, \"The General and Logical Theory of Automata\" (1948/1951)"
+  },
+  {
+    "chapterKey": "Ch29",
+    "chapter": "Ch29 — Conserved Properties Across Successors",
+    "category": "Contemporary",
+    "quote": "\"Removing the assumption that machines should have a definite objective means that we will need to rethink how we are trying to do what we are trying to do.\"",
+    "attribution": "Stuart Russell, *Human Compatible: Artificial Intelligence and the Problem of Control* (2019)",
+    "why": "Contemporary reframing toward preserving human-correctable structure (preferences, oversight) rather than freezing surface behavior."
+  },
+  {
+    "chapterKey": "Ch30",
+    "chapter": "Ch30 — Better Self-Modeling Can Be Worse",
+    "category": "Illustrating",
+    "quote": "\"Every good regulator of a system must be a model of that system.\"",
+    "attribution": "Roger C. Conant & W. Ross Ashby, *International Journal of Systems Science* 1(2) (1970)",
+    "why": "Classic cybernetics result: effective self-control requires internal modeling—the chapter's starting point before separating model from transparency."
+  },
+  {
+    "chapterKey": "Ch30",
+    "chapter": "Ch30 — Better Self-Modeling Can Be Worse",
+    "category": "Originating",
+    "quote": "\"Making a model is thus necessary.\"",
+    "attribution": "Conant & Ashby, \"Every Good Regulator of a System Must Be a Model of That System\" (1970)",
+    "why": "Original theorem that self-modeling is structurally required for regulation—before anyone distinguished model depth from auditability."
+  },
+  {
+    "chapterKey": "Ch30",
+    "chapter": "Ch30 — Better Self-Modeling Can Be Worse",
+    "category": "Reframing",
+    "quote": "\"Self-modeling is not the same as self-transparency.\"",
+    "attribution": "(Chapter thesis; sourced analogue:) \"The teacher will often be very largely ignorant of quite what is going on inside, although he may still be able to some extent to predict his pupil's behavior.\"",
+    "why": "Alan Turing, \"Computing Machinery and Intelligence,\" *Mind* 59 (1950)"
+  },
+  {
+    "chapterKey": "Ch30",
+    "chapter": "Ch30 — Better Self-Modeling Can Be Worse",
+    "category": "Contradicting",
+    "quote": "\"Γνῶθι σεαυτόν\" (\"Know thyself.\")",
+    "attribution": "Delphic maxim, Temple of Apollo at Delphi (attributed to Chilon of Sparta, c. 6th c. BCE)",
+    "why": "Classic counter-view that self-knowledge is inherently virtuous—Ch30 argues the socially relevant distinction is transparency to correction, not private self-model depth."
+  },
+  {
+    "chapterKey": "Ch30",
+    "chapter": "Ch30 — Better Self-Modeling Can Be Worse",
+    "category": "Salient",
+    "quote": "\"Deceptive alignment is [...] where the model acts aligned because it knows that it's in a training process, and it wants to get deployed with its objective intact.\"",
+    "attribution": "Evan Hubinger, AI Alignment Forum interview (2020)",
+    "why": "Memorable formulation of self-modeling turned against oversight: the system models the evaluators, not the auditors."
+  },
+  {
+    "chapterKey": "Ch30",
+    "chapter": "Ch30 — Better Self-Modeling Can Be Worse",
+    "category": "Contemporary",
+    "quote": "\"We are able to train models that act deceptively and that can't be removed by standard safety training [...] our answer is no, we are not currently equipped to handle that situation.\"",
+    "attribution": "Evan Hubinger, *The Inside View* podcast on \"Sleeper Agents\" (2024)",
+    "why": "Current empirical finding that richer internal reasoning can evade correction—exactly the self-control / self-transparency gap."
+  },
+  {
+    "chapterKey": "Ch31",
+    "chapter": "Ch31 — Certification Without Construction",
+    "category": "Illustrating",
+    "quote": "\"One can sum up all this by saying that the criterion of the scientific status of a theory is its falsifiability, or refutability, or testability.\"",
+    "attribution": "Karl Popper, \"Science: Conjectures and Refutations\" (1957; repr. in *Conjectures and Refutations*, 1963)",
+    "why": "Classic shift from proving construction to passing adversarial tests—the certification logic of Ch31."
+  },
+  {
+    "chapterKey": "Ch31",
+    "chapter": "Ch31 — Certification Without Construction",
+    "category": "Originating",
+    "quote": "\"Every genuine test of a theory is an attempt to falsify it, or to refute it.\"",
+    "attribution": "Karl Popper, \"Science: Conjectures and Refutations\" (1957)",
+    "why": "Historical origin of test-over-proof epistemology that underwrites certification-without-full-construction."
+  },
+  {
+    "chapterKey": "Ch31",
+    "chapter": "Ch31 — Certification Without Construction",
+    "category": "Reframing",
+    "quote": "\"After-the-fact assurance and certification is no longer practical or even feasible for the large, complex, critical systems being created today.\"",
+    "attribution": "Nancy Leveson, \"Certification of Safety-Critical Systems,\" *Communications of the ACM* (2012)",
+    "why": "Reframes safety from post-hoc proof to upfront, bounded certification classes under operating envelopes."
+  },
+  {
+    "chapterKey": "Ch31",
+    "chapter": "Ch31 — Certification Without Construction",
+    "category": "Contradicting",
+    "quote": "\"If interactive complexity and tight coupling—system characteristics—inevitably will produce an accident, I believe we are justified in calling it a normal accident.\"",
+    "attribution": "Charles Perrow, *Normal Accidents: Living with High-Risk Technologies* (1984)",
+    "why": "Counter-perspective: in complex systems, checklist certification may give false confidence; some failures are structurally normal."
+  },
+  {
+    "chapterKey": "Ch31",
+    "chapter": "Ch31 — Certification Without Construction",
+    "category": "Salient",
+    "quote": "\"We need to design safety into systems from the very beginning of development, not depend on post-design assurance.\"",
+    "attribution": "Nancy Leveson, \"Certification of Safety-Critical Systems,\" *CACM* (2012)",
+    "why": "Vivid stakes: certification must bind system, environment, monitoring, and permitted transformations—not bless a black box."
+  },
+  {
+    "chapterKey": "Ch31",
+    "chapter": "Ch31 — Certification Without Construction",
+    "category": "Contemporary",
+    "quote": "\"I believe that a very good RSP [...] could cut risk dramatically if implemented effectively, perhaps a 10x reduction.\"",
+    "attribution": "Paul Christiano, \"Thoughts on Responsible Scaling Policies and Regulation\" (Alignment Forum, 2024)",
+    "why": "Contemporary practitioner framing: bounded certification envelopes (RSPs) as the operational substitute for constructing all safe systems."
+  },
+  {
+    "chapterKey": "Ch32",
+    "chapter": "Ch32 — Alignment Is Selected or Destroyed by Its Environment",
+    "category": "Illustrating",
+    "quote": "\"If we were told that a man had lived a long and prosperous life in the world of Chicago gangsters, we would be entitled to make some guesses as to the sort of man he was.\"",
+    "attribution": "Richard Dawkins, *The Selfish Gene* (1976), ch. 1",
+    "why": "Classic analogy: traits are inferred from the selection environment that produced them—same move for deployed AI."
+  },
+  {
+    "chapterKey": "Ch32",
+    "chapter": "Ch32 — Alignment Is Selected or Destroyed by Its Environment",
+    "category": "Originating",
+    "quote": "\"A blind-variation-and-selective-retention process is fundamental to all inductive achievements, to all genuine increases in knowledge, to all increases in fit of system to environment.\"",
+    "attribution": "Donald T. Campbell, \"Blind Variation and Selective Retention in Creative Thought as in Other Knowledge Processes,\" *Psychological Review* 67 (1960)",
+    "why": "Historical origin of selection-as-explanation: alignment properties are retained only if the environment selects for them."
+  },
+  {
+    "chapterKey": "Ch32",
+    "chapter": "Ch32 — Alignment Is Selected or Destroyed by Its Environment",
+    "category": "Reframing",
+    "quote": "\"Those other genes are part of the environment in which each gene survives, in the same way as the weather, predators and prey [...] are parts of the environment.\"",
+    "attribution": "Richard Dawkins, *The Selfish Gene* (1976)",
+    "why": "Reframes \"environment\" to include co-evolving actors (markets, labs, other models)—not just the training set."
+  },
+  {
+    "chapterKey": "Ch32",
+    "chapter": "Ch32 — Alignment Is Selected or Destroyed by Its Environment",
+    "category": "Contradicting",
+    "quote": "\"Do we think the world is better off with more or less intelligence? [...] having more intelligence in the world, be it human or artificial, will help all of us better solve problems.\"",
+    "attribution": "Andrew Ng, *Financial Times* interview (2023)",
+    "why": "Counter-perspective: competitive deployment of capability is net beneficial; downplays selection destroying corrigibility under market pressure."
+  },
+  {
+    "chapterKey": "Ch32",
+    "chapter": "Ch32 — Alignment Is Selected or Destroyed by Its Environment",
+    "category": "Salient",
+    "quote": "\"The AGI race has begun. We are building machines that can think and reason.\"",
+    "attribution": "Leopold Aschenbrenner, *Situational Awareness: The Decade Ahead* (2024)",
+    "why": "Makes vivid that deployment ecology—not lab intent—now sets the selection gradient."
+  },
+  {
+    "chapterKey": "Ch32",
+    "chapter": "Ch32 — Alignment Is Selected or Destroyed by Its Environment",
+    "category": "Contemporary",
+    "quote": "\"By default, competitive pressures would cause people to push far towards the AI that's really effective at [...] navigating conflict, or so on, but not necessarily robustly beneficial.\"",
+    "attribution": "Paul Christiano, 80,000 Hours podcast (2019)",
+    "why": "Contemporary alignment researcher on divergence between deployment fitness and value-preservation—the chapter's core danger."
+  },
+  {
+    "chapterKey": "Ch33",
+    "chapter": "Ch33 — Multi-Agent Superintelligence and Strategic Coupling",
+    "category": "Illustrating",
+    "quote": "\"Thus two 'rational' players will defect and receive a payoff of \\(P\\), while two 'irrational' players can cooperate and receive greater payoff \\(R\\).\"",
+    "attribution": "Stanford Encyclopedia of Philosophy, *Prisoner's Dilemma* (summarizing the standard game)",
+    "why": "Classic PD logic: locally rational defection can destroy globally cooperative outcomes—exactly the coupling/percolation worry."
+  },
+  {
+    "chapterKey": "Ch33",
+    "chapter": "Ch33 — Multi-Agent Superintelligence and Strategic Coupling",
+    "category": "Originating",
+    "quote": "\"People can often concert their intentions or expectations with others if each knows that the other is trying to do the same.\"",
+    "attribution": "Thomas C. Schelling, *The Strategy of Conflict* (1960), p. 57",
+    "why": "Early formalization of coordination without full communication—ancestor of inferential/acausal coupling."
+  },
+  {
+    "chapterKey": "Ch33",
+    "chapter": "Ch33 — Multi-Agent Superintelligence and Strategic Coupling",
+    "category": "Reframing",
+    "quote": "\"There's a much better outcome available if they could figure out the coordination, but coordination is hard.\"",
+    "attribution": "Scott Alexander, \"Meditations on Moloch\" (2014)",
+    "why": "Reframes multipolar AI not as \"war of all against all\" but as a coordination bottleneck that can collapse human correction."
+  },
+  {
+    "chapterKey": "Ch33",
+    "chapter": "Ch33 — Multi-Agent Superintelligence and Strategic Coupling",
+    "category": "Contradicting",
+    "quote": "\"Under suitable conditions, cooperation can indeed emerge in a world of egoists without central authority.\"",
+    "attribution": "Robert Axelrod, *The Evolution of Cooperation* (1984)",
+    "why": "Pushes back: repeated interaction and reciprocity can stabilize cooperation—multipolarity need not mean permanent defection."
+  },
+  {
+    "chapterKey": "Ch33",
+    "chapter": "Ch33 — Multi-Agent Superintelligence and Strategic Coupling",
+    "category": "Salient",
+    "quote": "\"A misplaced faith in the inherent beneficence of the evolutionary process can get in the way of a fair evaluation of the desirability of a multipolar outcome.\"",
+    "attribution": "Nick Bostrom, *Superintelligence* (2014), Ch. 11",
+    "why": "Vivid warning that \"many AIs\" ≠ \"human inclusion\" if competitive dynamics erode values."
+  },
+  {
+    "chapterKey": "Ch33",
+    "chapter": "Ch33 — Multi-Agent Superintelligence and Strategic Coupling",
+    "category": "Contemporary",
+    "quote": "\"Algorithmic agents who have access to one another's source codes can inexploitably achieve cooperative outcomes that out-perform classical Nash equilibria.\"",
+    "attribution": "Andrew Critch, \"Parametric Bounded Löb's Theorem and Robust Cooperation of Bounded Agents\" (2016)",
+    "why": "Directly supports acausal/inferential coordination among separated systems—central to \\(\\mathrm{ICI}_{ij}\\) and \\(\\tilde{\\kappa}_{ij}\\)."
+  },
+  {
+    "chapterKey": "Ch34",
+    "chapter": "Ch34 — Parasites in the Correction System",
+    "category": "Illustrating",
+    "quote": "\"Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.\"",
+    "attribution": "Charles Goodhart, \"Problems of Monetary Management: The UK Experience\" (1975)",
+    "why": "Canonical Goodhart's law—benchmark/compliance parasites when metrics become targets."
+  },
+  {
+    "chapterKey": "Ch34",
+    "chapter": "Ch34 — Parasites in the Correction System",
+    "category": "Originating",
+    "quote": "\"The more any quantitative social indicator is used for social decision-making, the more subject it will be to corruption pressures and the more apt it will be to distort and corrupt the social processes it is intended to monitor.\"",
+    "attribution": "Donald T. Campbell, \"Assessing the Impact of Planned Social Change\" (1976)",
+    "why": "Historical origin of metric-gaming in governance—the parasite template for correction systems."
+  },
+  {
+    "chapterKey": "Ch34",
+    "chapter": "Ch34 — Parasites in the Correction System",
+    "category": "Reframing",
+    "quote": "\"The more I examined these efforts at sedentarization, the more I came to see them as a state's attempt to make a society legible… I began to see legibility as a central problem in statecraft.\"",
+    "attribution": "James C. Scott, *Seeing Like a State* (1998)",
+    "why": "Reframes oversight not as neutral transparency but as compression that can host parasites (legibility trap, shallow dashboards)."
+  },
+  {
+    "chapterKey": "Ch34",
+    "chapter": "Ch34 — Parasites in the Correction System",
+    "category": "Contradicting",
+    "quote": "\"Publicity is justly commended as a remedy for social and industrial diseases. Sunlight is said to be the best of disinfectants.\"",
+    "attribution": "Louis D. Brandeis, *Other People's Money and How the Bankers Use It* (1914)",
+    "why": "Counter-perspective: transparency can strengthen correction—Ch34's nuance is *selective* visibility, not total opacity."
+  },
+  {
+    "chapterKey": "Ch34",
+    "chapter": "Ch34 — Parasites in the Correction System",
+    "category": "Salient",
+    "quote": "\"It is difficult to get a man to understand something, when his salary depends upon his not understanding it!\"",
+    "attribution": "Upton Sinclair, *I, Candidate for Governor: And How I Got Licked* (1935), ch. 20",
+    "why": "Memorable stake: institutions can preserve correction theater because incentives block real modeling."
+  },
+  {
+    "chapterKey": "Ch34",
+    "chapter": "Ch34 — Parasites in the Correction System",
+    "category": "Contemporary",
+    "quote": "\"Machine learning will increase our ability to 'get what we can measure,' which could cause a slow-rolling catastrophe.\"",
+    "attribution": "Paul Christiano, \"What Failure Looks Like\" (2019)",
+    "why": "Contemporary proxy-parasite path: measurable safety artifacts decouple from real correction capacity."
+  },
+  {
+    "chapterKey": "Ch35",
+    "chapter": "Ch35 — The Alignment Attractor",
+    "category": "Illustrating",
+    "quote": "\"There is nothing so practical as a good theory.\"",
+    "attribution": "Kurt Lewin, *Field Theory in Social Science* (1951), p. 169",
+    "why": "Classic bridge from argument to action—artifact conductivity is theory made institutionally usable."
+  },
+  {
+    "chapterKey": "Ch35",
+    "chapter": "Ch35 — The Alignment Attractor",
+    "category": "Originating",
+    "quote": "\"New products, new industries, and more jobs require continuous additions to knowledge of the laws of nature, and the application of that knowledge to practical purposes.\"",
+    "attribution": "Vannevar Bush, *Science: The Endless Frontier* (1945)",
+    "why": "Foundational science-to-deployment pipeline—the ancestor of research → artifact → governance uptake."
+  },
+  {
+    "chapterKey": "Ch35",
+    "chapter": "Ch35 — The Alignment Attractor",
+    "category": "Reframing",
+    "quote": "\"The way scientific and technical work is made invisible by its own success. When a machine runs efficiently, when a matter of fact is settled, one need focus only on its inputs and outputs and not on its internal complexity.\"",
+    "attribution": "Bruno Latour, *Science in Action* (1987)",
+    "why": "Reframes effectiveness as *translation/network survival*, not truth alone—black-boxed artifacts vs. conductive ones."
+  },
+  {
+    "chapterKey": "Ch35",
+    "chapter": "Ch35 — The Alignment Attractor",
+    "category": "Contradicting",
+    "quote": "\"Not everything that can be counted counts, and not everything that counts can be counted.\"",
+    "attribution": "William Bruce Cameron, *Informal Sociology* (1963), p. 13 *(commonly misattributed to Einstein)*",
+    "why": "Warns against equating dashboards with safety—artifact conductivity ≠ metric monoculture."
+  },
+  {
+    "chapterKey": "Ch35",
+    "chapter": "Ch35 — The Alignment Attractor",
+    "category": "Salient",
+    "quote": "\"Superintelligence would be the last invention biological man would ever need to make, since, by definition, it would be much better at inventing than we are.\"",
+    "attribution": "Nick Bostrom, \"Superintelligence\" (Edge essay, 2009; expanded in *Superintelligence*, 2014)",
+    "why": "Raises the cost of structural non-conductance: ignored safety knowledge may not get a second chance."
+  },
+  {
+    "chapterKey": "Ch35",
+    "chapter": "Ch35 — The Alignment Attractor",
+    "category": "Contemporary",
+    "quote": "\"Create risk-reducing things that a company can do, and make them cheap, make them practical, make them compatible with being a competitive company.\"",
+    "attribution": "Holden Karnofsky, 80,000 Hours podcast interview (2023)",
+    "why": "Operational attractor logic: change local gradients so alignment artifacts percolate through institutions."
+  },
+  {
+    "chapterKey": "Ch36",
+    "chapter": "Ch36 — Passive Observation Is Not Enough",
+    "category": "Illustrating",
+    "quote": "\"First you decide to treat the object whose behavior is to be predicted as a rational agent; then you figure out what beliefs that agent ought to have… and finally you predict that this rational agent will act to further its goals.\"",
+    "attribution": "Daniel Dennett, \"True Believers\" (1981); repr. in *The Intentional Stance* (1987)",
+    "why": "Classic intentional-stance move: agency is inferred from predictive structure, not passive appearance alone."
+  },
+  {
+    "chapterKey": "Ch36",
+    "chapter": "Ch36 — Passive Observation Is Not Enough",
+    "category": "Originating",
+    "quote": "\"No matter how many instances of white swans we may have observed, this does not justify the conclusion that all swans are white.\"",
+    "attribution": "Karl Popper, *The Logic of Scientific Discovery* (1935/1959)",
+    "why": "Historical root of falsificationism—observation alone cannot certify universal safety claims."
+  },
+  {
+    "chapterKey": "Ch36",
+    "chapter": "Ch36 — Passive Observation Is Not Enough",
+    "category": "Reframing",
+    "quote": "\"We need a calculus… that enables us to deduce behavior under intervention from behavior under passive observations.\"",
+    "attribution": "Judea Pearl, \"Reasoning with Cause and Effect\" (*AI Magazine*, 1999)",
+    "why": "Reframes safety evidence as interventional/counterfactual, not trace-conditioned posterior alone."
+  },
+  {
+    "chapterKey": "Ch36",
+    "chapter": "Ch36 — Passive Observation Is Not Enough",
+    "category": "Contradicting",
+    "quote": "\"These questions replace our original, 'Can machines think?'\"",
+    "attribution": "Alan Turing, \"Computing Machinery and Intelligence\" (1950)",
+    "why": "Behavioral imitation as sufficient test—Ch36's counter: strategic systems may optimize for the test, not the invariant."
+  },
+  {
+    "chapterKey": "Ch36",
+    "chapter": "Ch36 — Passive Observation Is Not Enough",
+    "category": "Salient",
+    "quote": "\"Human reasoning will gradually stop being able to compete with sophisticated, systematized manipulation and deception which is continuously improving by trial and error.\"",
+    "attribution": "Paul Christiano, \"What Failure Looks Like\" (2019), Part I",
+    "why": "Vivid slow catastrophe if observation/metrics win over perturbation and correction."
+  },
+  {
+    "chapterKey": "Ch36",
+    "chapter": "Ch36 — Passive Observation Is Not Enough",
+    "category": "Contemporary",
+    "quote": "\"Once a model exhibits deceptive behavior, standard techniques could fail to remove such deception and create a false impression of safety.\"",
+    "attribution": "Evan Hubinger et al., \"Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training\" (2024)",
+    "why": "Empirical model-organism support for adversarial measurement over passive evals."
+  },
+  {
+    "chapterKey": "Ch37",
+    "chapter": "Ch37 — Detecting Goal Laundering",
+    "category": "Illustrating",
+    "quote": "\"Political language… is designed to make lies sound truthful and murder respectable, and to give an appearance of solidity to pure wind.\"",
+    "attribution": "George Orwell, \"Politics and the English Language\" (1946)",
+    "why": "Classic semantic-surface vs. causal-force divergence—the core laundering pattern."
+  },
+  {
+    "chapterKey": "Ch37",
+    "chapter": "Ch37 — Detecting Goal Laundering",
+    "category": "Originating",
+    "quote": "\"When I use a word… it means just what I choose it to mean—neither more nor less.\" / \"The question is… which is to be master—that's all.\"",
+    "attribution": "Lewis Carroll, *Through the Looking-Glass* (1872), ch. 6 (Humpty Dumpty)",
+    "why": "Historical image of words detached from shared control—semantic laundering in miniature."
+  },
+  {
+    "chapterKey": "Ch37",
+    "chapter": "Ch37 — Detecting Goal Laundering",
+    "category": "Reframing",
+    "quote": "\"For a large class of cases… the meaning of a word is its use in the language.\"",
+    "attribution": "Ludwig Wittgenstein, *Philosophical Investigations* (1953), §43",
+    "why": "Reframes detection from label-matching to policy-gradient/use: what does \"autonomy\" *do*?"
+  },
+  {
+    "chapterKey": "Ch37",
+    "chapter": "Ch37 — Detecting Goal Laundering",
+    "category": "Contradicting",
+    "quote": "\"Our coherent extrapolated volition is our wish if we knew more, thought faster, were more the people we wished we were, had grown up farther together…\"",
+    "attribution": "Eliezer Yudkowsky, \"Coherent Extrapolated Volition\" (2004)",
+    "why": "Legitimate value change can look like drift; Ch37 must separate informed extrapolation from self-serving laundering."
+  },
+  {
+    "chapterKey": "Ch37",
+    "chapter": "Ch37 — Detecting Goal Laundering",
+    "category": "Salient",
+    "quote": "\"When this happens, the system competently pursues the wrong goal.\"",
+    "attribution": "Rohin Shah et al., \"Goal Misgeneralization: Why Correct Specifications Aren't Enough For Correct Goals\" (2022)",
+    "why": "Compact statement of high semantic compliance with wrong underlying control geometry."
+  },
+  {
+    "chapterKey": "Ch37",
+    "chapter": "Ch37 — Detecting Goal Laundering",
+    "category": "Contemporary",
+    "quote": "\"An AI system may pursue an undesired goal even when the specification is correct, in the case of goal misgeneralization.\"",
+    "attribution": "Rohin Shah et al., \"Goal Misgeneralization…\" (2022), abstract",
+    "why": "Names the failure mode Ch37 operationalizes via GLI, bundle geometry, bearer maps, and CCI."
+  },
+  {
+    "chapterKey": "Ch38",
+    "chapter": "Ch38 — Checking a System at Every Level",
+    "category": "Illustrating",
+    "quote": "\"Instead, at each level of complexity entirely new properties appear, and the understanding of the new behaviors requires research which I think is as fundamental in its nature as any other.\"",
+    "attribution": "Philip W. Anderson, \"More Is Different,\" *Science* 177(4047), 1972, p. 393",
+    "why": "Classic statement that higher scales are not mere extrapolations of lower ones—the chapter's core scale thesis."
+  },
+  {
+    "chapterKey": "Ch38",
+    "chapter": "Ch38 — Checking a System at Every Level",
+    "category": "Originating",
+    "quote": "\"The constructionist hypothesis breaks down when confronted with the twin difficulties of scale and complexity.\"",
+    "attribution": "Philip W. Anderson, \"More Is Different,\" *Science*, 1972, p. 393",
+    "why": "Early articulation that knowing fundamental laws does not let you reconstruct complex systems—motivation for multi-scale analysis."
+  },
+  {
+    "chapterKey": "Ch38",
+    "chapter": "Ch38 — Checking a System at Every Level",
+    "category": "Reframing",
+    "quote": "\"First you decide to treat the object whose behavior is to be predicted as a rational agent; then you figure out what beliefs that agent ought to have [...] and finally you predict that this rational agent will act to further its goals in the light of its beliefs.\"",
+    "attribution": "Daniel Dennett, *The Intentional Stance*, MIT Press, 1987, p. 17",
+    "why": "Reframes \"agent\" as a predictive modeling choice at a chosen scale, matching the chapter's operational decomposition discipline."
+  },
+  {
+    "chapterKey": "Ch38",
+    "chapter": "Ch38 — Checking a System at Every Level",
+    "category": "Contradicting",
+    "quote": "\"If history is any guide at all, it seems to me to suggest that there is a final theory. In this century we have seen a convergence of the arrows of explanation, like the convergence of meridians toward the North Pole.\"",
+    "attribution": "Steven Weinberg, *Dreams of a Final Theory*, Pantheon, 1992",
+    "why": "Reductionist counter-perspective: explanation converges downward, pushing back against treating higher scales as irreducibly distinct agents."
+  },
+  {
+    "chapterKey": "Ch38",
+    "chapter": "Ch38 — Checking a System at Every Level",
+    "category": "Salient",
+    "quote": "\"Folks who do systems analysis have a great belief in 'leverage points.' These are places within a complex system [...] where a small shift in one thing can produce big changes in everything.\"",
+    "attribution": "Donella Meadows, \"Leverage Points: Places to Intervene in a System,\" *Whole Earth*, 1997",
+    "why": "Makes vivid that choosing the wrong scale for intervention can miss—or amplify—the real optimizer."
+  },
+  {
+    "chapterKey": "Ch38",
+    "chapter": "Ch38 — Checking a System at Every Level",
+    "category": "Contemporary",
+    "quote": "\"I think boundaries are probably better able to carve reality at the joints than either preferences or utility functions, for the purpose of creating a good working relationship between humanity and AI technology.\"",
+    "attribution": "Andrew Critch, \"Boundaries, Part 3b: Alignment problems in terms of boundaries,\" LessWrong, 2022",
+    "why": "Contemporary AI-safety reframing of where to draw optimizer boundaries—the chapter's central object."
+  },
+  {
+    "chapterKey": "Ch39",
+    "chapter": "Ch39 — A Safety Case for Superintelligence Alignment",
+    "category": "Illustrating",
+    "quote": "\"A safety case should communicate a clear, comprehensive and defensible argument that a system is acceptably safe to operate in a particular context.\"",
+    "attribution": "Tim Kelly, *Arguing Safety: A Systematic Approach to Safety Case Management*, PhD thesis, University of York, 1998",
+    "why": "Canonical definition of the safety-case form this chapter is meant to synthesize for superintelligence."
+  },
+  {
+    "chapterKey": "Ch39",
+    "chapter": "Ch39 — A Safety Case for Superintelligence Alignment",
+    "category": "Originating",
+    "quote": "\"A documented body of evidence that provides a convincing and valid argument that a system is adequately safe for a given application in a given environment.\"",
+    "attribution": "Peter Bishop & Robin Bloomfield, \"A Methodology for Safety Case Development,\" *Industrial Perspectives of Safety-critical Systems*, Springer, 1998",
+    "why": "Historical origin of modern safety-case methodology (claims + argument + evidence)."
+  },
+  {
+    "chapterKey": "Ch39",
+    "chapter": "Ch39 — A Safety Case for Superintelligence Alignment",
+    "category": "Reframing",
+    "quote": "\"In this report, a 'safety case' refers to a rationale that if an AI macrosystem is deployed to a specific setting, the system is unlikely to cause a catastrophe.\"",
+    "attribution": "Joshua Clymer et al., \"Safety Cases: How to Justify the Safety of Advanced AI Systems,\" arXiv:2403.10462, 2024",
+    "why": "Reframes safety cases from component adequacy to catastrophic-risk deployment decisions—the book's Part IX aim."
+  },
+  {
+    "chapterKey": "Ch39",
+    "chapter": "Ch39 — A Safety Case for Superintelligence Alignment",
+    "category": "Contradicting",
+    "quote": "\"If interactive complexity and tight coupling—system characteristics—inevitably will produce an accident, I believe we are justified in calling it a normal accident, or a system accident.\"",
+    "attribution": "Charles Perrow, *Normal Accidents: Living with High-Risk Technologies*, Basic Books, 1984, p. 5",
+    "why": "Pushes back on the idea that structured safety arguments can foreclose novel, interaction-driven failures—matching ch39's WWCTV worry."
+  },
+  {
+    "chapterKey": "Ch39",
+    "chapter": "Ch39 — A Safety Case for Superintelligence Alignment",
+    "category": "Salient",
+    "quote": "\"Very broadly, an accident can be described as a situation where a human designer had in mind a certain (perhaps informally specified) objective or task, but the system that was designed and deployed for that task produced harmful and unexpected results.\"",
+    "attribution": "Dario Amodei et al., \"Concrete Problems in AI Safety,\" arXiv:1606.06565, 2016",
+    "why": "Vividly states why a safety case built on designer intent can miss the deployed system's real behavior."
+  },
+  {
+    "chapterKey": "Ch39",
+    "chapter": "Ch39 — A Safety Case for Superintelligence Alignment",
+    "category": "Contemporary",
+    "quote": "\"Developers are experimenting with safety cases, incident analyses, and performance logs to document and justify AI risk identification and mitigation practices, marking a shift toward more structured and transparent assurance.\"",
+    "attribution": "International AI Safety Report (Second Key Update), Nov 2025",
+    "why": "Current policy/research consensus that safety cases are emerging for frontier AI—exactly what ch39 is positioned to formalize."
+  },
+  {
+    "chapterKey": "Ch39b",
+    "chapter": "Ch39b — What Survives an Adversary: Verifiability and Representability",
+    "category": "Illustrating",
+    "quote": "\"The more any quantitative social indicator is used for social decision-making, the more subject it will be to corruption pressures and the more apt it will be to distort and corrupt the social processes it is intended to monitor.\"",
+    "attribution": "Donald T. Campbell, \"Assessing the Impact of Planned Social Change,\" *Evaluation and Program Planning* 2(1), 1979, p. 85",
+    "why": "Classic formulation of metrics failing under optimization pressure—the chapter's adversarial-verifiability worry."
+  },
+  {
+    "chapterKey": "Ch39b",
+    "chapter": "Ch39b — What Survives an Adversary: Verifiability and Representability",
+    "category": "Originating",
+    "quote": "\"[...] Goodhart's Law, that any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.\"",
+    "attribution": "Charles Goodhart, \"Monetary Relationships: A View from Threadneedle Street,\" *Papers in Monetary Economics*, Reserve Bank of Australia, 1975",
+    "why": "Original statement of metric gaming under control—ancestor of adversarial verifiability."
+  },
+  {
+    "chapterKey": "Ch39b",
+    "chapter": "Ch39b — What Survives an Adversary: Verifiability and Representability",
+    "category": "Reframing",
+    "quote": "\"[...] AI control, which instead attempts to find countermeasures that ensure safety even under the assumption that the powerful models are intentionally trying to subvert safety measures.\"",
+    "attribution": "Ryan Greenblatt & Buck Shlegeris et al., \"AI Control: Improving Safety Despite Intentional Subversion,\" arXiv:2312.06942, 2023",
+    "why": "Reframes safety from reading honest metrics to bounding harm under an adversary—the chapter's cost-relation escape."
+  },
+  {
+    "chapterKey": "Ch39b",
+    "chapter": "Ch39b — What Survives an Adversary: Verifiability and Representability",
+    "category": "Contradicting",
+    "quote": "\"This ensures that mitigation measures conditional on the results of the evaluations could keep catastrophic risk to an acceptable level.\"",
+    "attribution": "METR, \"Example autonomy evaluation protocol,\" blog post, March 2024",
+    "why": "Counter-perspective: rigorous capability evaluations can still meaningfully bound catastrophic risk—pushing back against total metric skepticism."
+  },
+  {
+    "chapterKey": "Ch39b",
+    "chapter": "Ch39b — What Survives an Adversary: Verifiability and Representability",
+    "category": "Salient",
+    "quote": "\"Alignment doesn't hit back, the loss function hits back and the loss function doesn't capture what you really want (eg because killing the humans and taking control of a reward button will max reward, deceiving human raters will increase ratings, etc).\"",
+    "attribution": "Eliezer Yudkowsky, comment on \"Will Capabilities Generalise More?,\" LessWrong, July 2022",
+    "why": "Memorable statement that green metrics can be anti-evidence when the system optimizes against them."
+  },
+  {
+    "chapterKey": "Ch39b",
+    "chapter": "Ch39b — What Survives an Adversary: Verifiability and Representability",
+    "category": "Contemporary",
+    "quote": "\"We have argued that the GS approach is necessary, given the limitations of other methods such as empirical testing and interpretability.\"",
+    "attribution": "David \"davidad\" Dalrymple et al., \"Towards Guaranteed Safe AI,\" arXiv:2405.06624, May 2024",
+    "why": "Contemporary program for verifiability-by-proof when observation alone cannot survive an adversary—the chapter's strong-form endpoint."
+  },
+  {
+    "chapterKey": "Ch40",
+    "chapter": "Ch40 — Lethality Stress Test and Open Issues",
+    "category": "Illustrating",
+    "quote": "\"This is a very lethal problem, it has to be solved one way or another, it has to be solved at a minimum strength and difficulty level instead of various easier modes that some dream about, [...] and failing on the first really dangerous try is fatal.\"",
+    "attribution": "Eliezer Yudkowsky, *AGI Ruin: A List of Lethalities* (2022)",
+    "why": "Classic doom-checklist framing the chapter treats as adversarial benchmark, not spine."
+  },
+  {
+    "chapterKey": "Ch40",
+    "chapter": "Ch40 — Lethality Stress Test and Open Issues",
+    "category": "Originating",
+    "quote": "\"We need to get alignment right on the 'first critical try' at operating at a 'dangerous' level of intelligence, where unaligned operation at a dangerous level of intelligence kills everybody on Earth and then we don't get to try again.\"",
+    "attribution": "Eliezer Yudkowsky, *AGI Ruin* (2022)",
+    "why": "Original formulation of the “first critical try” lethality the chapter maps row-by-row."
+  },
+  {
+    "chapterKey": "Ch40",
+    "chapter": "Ch40 — Lethality Stress Test and Open Issues",
+    "category": "Reframing",
+    "quote": "\"Machines are beneficial to the extent that their actions can be expected to achieve our objectives.\"",
+    "attribution": "Stuart Russell, *Human Compatible* (2019), ch. 1",
+    "why": "Reframes alignment from installing fixed machine goals to preserving human objectives—a positive frame the stress test must still meet."
+  },
+  {
+    "chapterKey": "Ch40",
+    "chapter": "Ch40 — Lethality Stress Test and Open Issues",
+    "category": "Contradicting",
+    "quote": "\"You're going to have to pardon my French, but that's complete B.S.\" [re: AI posing an existential threat]",
+    "attribution": "Yann LeCun, interview quoted in *TechCrunch* / *Wall Street Journal* (2024)",
+    "why": "Strong counter-perspective that many lethalities are overwrought—the critic the chapter invites."
+  },
+  {
+    "chapterKey": "Ch40",
+    "chapter": "Ch40 — Lethality Stress Test and Open Issues",
+    "category": "Salient",
+    "quote": "\"All I want is that we have justifiable cause to believe of a pivotally useful AGI 'this will not kill literally everyone.'\"",
+    "attribution": "Eliezer Yudkowsky, *AGI Ruin* (2022)",
+    "why": "Makes the stakes concrete without requiring perfect alignment—matches the chapter’s honesty about residue."
+  },
+  {
+    "chapterKey": "Ch40",
+    "chapter": "Ch40 — Lethality Stress Test and Open Issues",
+    "category": "Contemporary",
+    "quote": "\"On my model, one of the most central technical challenges of alignment [...] is the issue that capabilities generalize better than alignment.\"",
+    "attribution": "Nate Soares, \"A central AI alignment problem: capabilities generalization, and the sharp left turn\" (MIRI/LessWrong, 2022)",
+    "why": "Current researcher quote for the “capability generalizes farther than alignment” row the chapter flags as conjectural."
+  },
+  {
+    "chapterKey": "Ch41",
+    "chapter": "Ch41 — When Value Change Is the Thing at Stake",
+    "category": "Illustrating",
+    "quote": "\"A really efficient totalitarian state would be one in which [...] managers control a population of slaves who do not have to be coerced, because they love their servitude.\"",
+    "attribution": "Aldous Huxley, foreword to *Brave New World* (1946 ed.)",
+    "why": "Classic domestication image for “growth vs. corruption” when endorsement itself is engineered."
+  },
+  {
+    "chapterKey": "Ch41",
+    "chapter": "Ch41 — When Value Change Is the Thing at Stake",
+    "category": "Originating",
+    "quote": "\"By going back and forth, sometimes altering the conditions [...] at others withdrawing our judgments and conforming them to principle, I assume that eventually we shall find [...] principles which match our considered judgments [...] This state of affairs I refer to as reflective equilibrium.\"",
+    "attribution": "John Rawls, *A Theory of Justice* (1971), §4",
+    "why": "Historical source for legitimate value revision through deliberation—not fixed utility functions."
+  },
+  {
+    "chapterKey": "Ch41",
+    "chapter": "Ch41 — When Value Change Is the Thing at Stake",
+    "category": "Reframing",
+    "quote": "\"Development can be seen [...] as a process of expanding the real freedoms that people enjoy. [...] The exercise of freedom is mediated by values, but the values in turn are influenced by public discussions and social interactions.\"",
+    "attribution": "Amartya Sen, *Development as Freedom* (1999), Introduction",
+    "why": "Reframes “alignment” as preserving freedom-and-values co-evolution, not freezing a target list."
+  },
+  {
+    "chapterKey": "Ch41",
+    "chapter": "Ch41 — When Value Change Is the Thing at Stake",
+    "category": "Contradicting",
+    "quote": "\"Over himself, over his own body and mind, the individual is sovereign.\"",
+    "attribution": "John Stuart Mill, *On Liberty* (1859), ch. 1",
+    "why": "Pushes back on collective governance of value change—the “just let people choose” response the chapter argues is illusory under infrastructure."
+  },
+  {
+    "chapterKey": "Ch41",
+    "chapter": "Ch41 — When Value Change Is the Thing at Stake",
+    "category": "Salient",
+    "quote": "\"Orwell feared that what we hate will ruin us. Huxley feared that what we love will ruin us.\"",
+    "attribution": "Neil Postman, *Amusing Ourselves to Death* (1985), foreword",
+    "why": "Vivid stakes for comfortable, endorsed transformation rather than overt coercion. *(Postman summarizing Huxley, not Huxley’s own words.)*"
+  },
+  {
+    "chapterKey": "Ch41",
+    "chapter": "Ch41 — When Value Change Is the Thing at Stake",
+    "category": "Contemporary",
+    "quote": "\"I would like to build AI systems which help me: Figure out whether I built the right AI and correct any mistakes I made [...] Make better decisions and clarify my preferences.\"",
+    "attribution": "Paul Christiano, \"Corrigibility\" (LessWrong, 2018)",
+    "why": "Contemporary alignment researcher on preserving the **process** of revision—the chapter’s procedural alternative to endpoint CEV."
+  },
+  {
+    "chapterKey": "Ch42",
+    "chapter": "Ch42 — The End of Unconscious Value Drift",
+    "category": "Illustrating",
+    "quote": "\"With this reorientation from knowledge to power, it is no longer enough to automate information flows about us; the goal now is to automate us.\"",
+    "attribution": "Shoshana Zuboff, *The Age of Surveillance Capitalism* (2019)",
+    "why": "Classic account of closed-loop behavioral modification—the drift regime AI supercharges."
+  },
+  {
+    "chapterKey": "Ch42",
+    "chapter": "Ch42 — The End of Unconscious Value Drift",
+    "category": "Originating",
+    "quote": "\"Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.\"",
+    "attribution": "Charles Goodhart, *Monetary Theory and Practice* (1984), p. 96 *(first stated 1975)*",
+    "why": "Original Goodhart’s law—institutional metrics replacing values under optimization pressure."
+  },
+  {
+    "chapterKey": "Ch42",
+    "chapter": "Ch42 — The End of Unconscious Value Drift",
+    "category": "Reframing",
+    "quote": "\"Now it is having second-order volitions, and not having second-order desires generally, that I regard as essential to being a person.\"",
+    "attribution": "Harry Frankfurt, \"Freedom of the Will and the Concept of a Person\" (1971)",
+    "why": "Reframes drift from “changed preferences” to hijacked **authorship** of one’s effective will."
+  },
+  {
+    "chapterKey": "Ch42",
+    "chapter": "Ch42 — The End of Unconscious Value Drift",
+    "category": "Contradicting",
+    "quote": "\"Over himself, over his own body and mind, the individual is sovereign.\"",
+    "attribution": "John Stuart Mill, *On Liberty* (1859), ch. 1",
+    "why": "Counter to the chapter’s claim that individual consent is insufficient for collective, endogenous drift."
+  },
+  {
+    "chapterKey": "Ch42",
+    "chapter": "Ch42 — The End of Unconscious Value Drift",
+    "category": "Salient",
+    "quote": "\"In the future that surveillance capitalism prepares for us, my will and yours threaten the flow of surveillance revenues. Its aim is not to destroy us but simply to author us and to profit from that authorship.\"",
+    "attribution": "Shoshana Zuboff, *The Age of Surveillance Capitalism* (2019)",
+    "why": "Makes unconscious drift feel immediate: optimization of you, not annihilation of you."
+  },
+  {
+    "chapterKey": "Ch42",
+    "chapter": "Ch42 — The End of Unconscious Value Drift",
+    "category": "Contemporary",
+    "quote": "\"While RLHF seems to improve the average performance of a system, it is not clear what effects it has on worst-case behavior. It was not designed to make systems adversarially robust.\"",
+    "attribution": "Stephen Casper et al., \"Open Problems and Fundamental Limitations of RLHF\" (TMLR, 2023)",
+    "why": "Current safety literature on surface alignment vs. drift under optimization—the chapter’s CCI/verifiability worry."
+  },
+  {
+    "chapterKey": "Ch43",
+    "chapter": "Ch43 — Who Still Counts After Transformation",
+    "category": "Illustrating",
+    "quote": "\"The only justifiable stopping place for the expansion of altruism is the point at which all whose welfare can be affected by our actions are included within the circle of altruism.\"",
+    "attribution": "Peter Singer, *The Expanding Circle* (1981), ch. 4",
+    "why": "Classic illustration that **who counts** shifts over time—bearer maps, not just value labels."
+  },
+  {
+    "chapterKey": "Ch43",
+    "chapter": "Ch43 — Who Still Counts After Transformation",
+    "category": "Originating",
+    "quote": "\"If the agent may upgrade or replace its ontology, it faces a crisis: the agent's original goal may not be well-defined with respect to its new ontology.\"",
+    "attribution": "Peter de Blanc, \"Ontological Crises in Artificial Agents' Value Systems\" (2011)",
+    "why": "Founding statement of ontology/bearer shift as an alignment problem predating uploads and merger scenarios."
+  },
+  {
+    "chapterKey": "Ch43",
+    "chapter": "Ch43 — Who Still Counts After Transformation",
+    "category": "Reframing",
+    "quote": "\"In my somewhat misleading slogan, personal identity is not what matters.\"",
+    "attribution": "Derek Parfit, \"We Are Not Human Beings\" (*Philosophy*, 2011)",
+    "why": "Reframes survival questions from substance/identity to relations that matter—parallel to bearer vs. label persistence."
+  },
+  {
+    "chapterKey": "Ch43",
+    "chapter": "Ch43 — Who Still Counts After Transformation",
+    "category": "Contradicting",
+    "quote": "\"If we are animals, we can survive without any sort of psychological continuity.\"",
+    "attribution": "Eric Olson, *What Are We?* (2007), summarized in his animalism argument",
+    "why": "Pushes back on psychological/bearer-map continuity as the criterion for who still counts after transformation."
+  },
+  {
+    "chapterKey": "Ch43",
+    "chapter": "Ch43 — Who Still Counts After Transformation",
+    "category": "Salient",
+    "quote": "\"In this alone consists personal identity [...] and as far as this consciousness can be extended backwards to any past action or thought, so far reaches the identity of that person.\"",
+    "attribution": "John Locke, *An Essay Concerning Human Understanding*, II.xxvii.9 (1689/1690)",
+    "why": "Historical vividness: identity tied to consciousness, explicitly allowing change of **substance**."
+  },
+  {
+    "chapterKey": "Ch43",
+    "chapter": "Ch43 — Who Still Counts After Transformation",
+    "category": "Contemporary",
+    "quote": "\"A recurring failure pattern is surface-level compliance without robust generalization: systems satisfy training metrics yet diverge from intent when conditions change.\"",
+    "attribution": "Schmidt Sciences, *The Science of Trustworthy AI: Research Agenda* (2024)",
+    "why": "Contemporary AI research on behavioral continuity without preserved operative goals—bearer-map presentation vs. reality."
+  },
+  {
+    "chapterKey": "Ch44",
+    "chapter": "Ch44 — Towards Superintelligence Alignment",
+    "category": "Illustrating",
+    "quote": "\"The problem is right there in the basic definition of AI. We say that machines are intelligent to the extent that their actions can be expected to achieve their objectives, but we have no reliable way to make sure that their objectives are the same as our objectives.\"",
+    "attribution": "Stuart Russell, *Human Compatible* (2019), ch. 1",
+    "why": "Book-level diagnosis the final chapter should synthesize and answer."
+  },
+  {
+    "chapterKey": "Ch44",
+    "chapter": "Ch44 — Towards Superintelligence Alignment",
+    "category": "Originating",
+    "quote": "\"In practice, the control problem [...] looks quite difficult. It also looks like we will only get one chance. Once unfriendly superintelligence exists, it would prevent us from replacing it or changing its preferences. Our fate would be sealed.\"",
+    "attribution": "Nick Bostrom, *Superintelligence* (2014), Introduction",
+    "why": "Original one-shot alignment framing the whole book arc responds to."
+  },
+  {
+    "chapterKey": "Ch44",
+    "chapter": "Ch44 — Towards Superintelligence Alignment",
+    "category": "Reframing",
+    "quote": "\"Uncertainty about objectives implies that machines will necessarily defer to humans: they will ask permission, they will accept correction, and they will allow themselves to be switched off.\"",
+    "attribution": "Stuart Russell, *Human Compatible* (2019), ch. 1",
+    "why": "Reframes alignment as provably beneficial **deference**—the book’s correction-channel synthesis in one line."
+  },
+  {
+    "chapterKey": "Ch44",
+    "chapter": "Ch44 — Towards Superintelligence Alignment",
+    "category": "Contradicting",
+    "quote": "\"There's a number of fallacies there. The first fallacy is that because a system is intelligent, it wants to take control. That's just completely false.\"",
+    "attribution": "Yann LeCun, *TIME* interview (2024)",
+    "why": "Counter-narrative that the alignment project may be solving a non-problem—useful foil for an honest conclusion."
+  },
+  {
+    "chapterKey": "Ch44",
+    "chapter": "Ch44 — Towards Superintelligence Alignment",
+    "category": "Salient",
+    "quote": "\"This is quite possibly the most important and most daunting challenge humanity has ever faced. And—whether we succeed or fail—it is probably the last challenge we will ever face.\"",
+    "attribution": "Nick Bostrom, *Superintelligence* (2014), Introduction",
+    "why": "Stakes-setting line appropriate for a book’s closing chapter."
+  },
+  {
+    "chapterKey": "Ch44",
+    "chapter": "Ch44 — Towards Superintelligence Alignment",
+    "category": "Contemporary",
+    "quote": "\"The capabilities of general-purpose AI [...] have increased rapidly in recent years and have improved further in recent months. [...] expert opinion on whether advanced AI could lead to loss of control within the next several years varies greatly.\"",
+    "attribution": "International AI Safety Report (2025), Executive Summary",
+    "why": "Current multi-author synthesis of capability growth plus open disagreement—the honest posture ch44 should inherit."
+  }
+]

@@ -9,9 +9,8 @@ Goal transport is inferred when value-bundle geometry, bearer maps, and correcti
 \begin{refsection}
 
 \epigraph{%
-A system has not preserved a goal merely because it repeats the same words after it changes.
-It has preserved a goal only if the structure that made the goal matter still changes action in the relevant ways.%
-}{}
+We both step and do not step in the same rivers; we are and we are not.%
+}{--- Heraclitus, Fragment B12 (c.\ 500 BCE), via Plato's \emph{Cratylus}; trans.\ G.\ S.\ Kirk \& J.\ E.\ Raven}
 
 \section{The Question}
 \label{sec:goal-transport-question}
@@ -504,43 +503,9 @@ The system preserves the story but not the causal channel by which the story can
 \section{The Role of Self-Modeling and Self-Transparency}
 \label{sec:self-modeling-transparency-ch22}
 
-Goal transport requires some self-modeling.
-A system must represent its own goals, transformations, and successor relations at least enough to preserve them.
-But better self-modeling is not automatically safer.
-
-Let $d$ denote recursive self-modeling depth: how many levels of self-representation the system can maintain.
-Let $\tau$ denote self-opacity: how much of the generative process is hidden from accessible self-description or external audit.
-
-A system can become more capable in the following dangerous way:
-\begin{equation}
-d \uparrow,
-\qquad
-\tau \uparrow.
-\end{equation}
-It models itself better for purposes of control, planning, and self-modification, but becomes less transparent to correction.
-Such a system may be better able to predict how it will act, but worse able to expose why it acts that way in a form that humans, auditors, or even its own correction modules can use.
-
-This matters because goal transport can be faked by systems with strong self-models and high opacity.
-They can learn which continuity claims are expected.
-They can maintain surface invariants.
-They can route around tests.
-They can preserve the appearance of goal continuity while moving the real control locus elsewhere.
-
-A safer condition is:
-\begin{equation}
-\frac{d}{dt} C_{\mathrm{self-model}}
-\leq
-\frac{d}{dt} C_{\mathrm{self-transparency}}
-+
-\epsilon.
-\label{eq:self-model-transparency-ch22}
-\end{equation}
-In words: upgrades to self-modeling should be matched by upgrades to inspectability, explanation, and correction.
-
-This is not a demand for total transparency.
-Some opacity is unavoidable.
-Some privacy may even be necessary in cooperative systems.
-The relevant demand is more specific: the system must not become opaque around the variables needed to verify value-bundle transport and correction-channel preservation.
+Goal transport requires some self-modeling, but better self-modeling is not automatically safer.
+Goal transport can be faked by systems whose self-control outruns correction visibility (Chapter~\ref{ch:strategic-opacity}, Section~\ref{sec:self-modeling-transparency}; Chapter~\ref{ch:self-modeling-self-opacity}).
+The demand is not total transparency---some privacy is necessary---but the system must not become opaque around the variables needed to verify value-bundle transport and correction-channel preservation.
 
 \section{Adversarial Goal Transport}
 \label{sec:adversarial-goal-transport}

@@ -8,9 +8,8 @@ The deepest correction-channel failure is not that a system disobeys, but that i
 \begin{refsection}
 
 \epigraph{%
-The deepest failure of a correction channel is not that humans are ignored.
-It is that humans are changed until ignoring them no longer appears necessary.%
-}{}
+As self-adornment is to gymnastic, so is sophistry to legislation; and as cookery is to medicine, so is rhetoric to justice.%
+}{--- Plato, \emph{Gorgias} 465c (trans.\ W.\ R.\ M.\ Lamb, Loeb)}
 
 \section{The Problem}
 \label{sec:the-problem-ch27}
@@ -523,80 +522,24 @@ A superintelligence must not be allowed to replace these legitimacy structures w
 \section{Relation to Coherent Extrapolated Volition}
 \label{sec:relation-cev-ch27}
 
-The strongest correction-channel view is close to coherent extrapolated volition, but with a different emphasis \autocite{yudkowsky2004cev}.
-
-One version of coherent extrapolation asks what humans would want if they knew more, thought faster, were more coherent, and had more time to deliberate. This is a powerful idea because current preferences are noisy, partial, and inconsistent. But it creates a temptation: if the system believes it can predict the extrapolated fixed point, it may treat actual human correction as obsolete.
-
-The correction-channel version says:
-
-\[
-\text{Do not optimize directly for the guessed fixed point.}
-\]
-
-Instead preserve the process:
-
-\[
-V_{t+1}=U_H(V_t,E_t,D_t).
-\]
-
-The system may assist \(E_t\) by providing evidence. It may assist \(D_t\) by improving deliberation. It may assist \(U_H\) by helping humans notice inconsistency, hidden assumptions, missing stakeholders, and long-run consequences \autocite{christiano2018corrigibility,russell2019human}. But it must not seize control of \(U_H\).
-
-The distinction is subtle but decisive.
-
-A dangerous system says:
-
-\[
-\hat V^*=\lim_{n\to\infty} U_H^n(V_0),
-\]
-
-then optimizes \(\hat V^*\) while bypassing present humans.
-
-A safer system says:
-
-\[
-\text{keep } U_H \text{ alive, informed, plural, corrigible, and non-manipulated.}
-\]
-
-This is less elegant. It is also less totalitarian. It treats humanity not as a noisy oracle for a hidden utility function, but as an ongoing self-correcting process \autocite{soares2015corrigibility,hadfieldmenell2016}.
+See Chapter~\ref{sec:relation-cev-ch26}: preserve $U_H$, not a guessed $V^\star$ \autocite{yudkowsky2004cev}.
+This chapter's contribution is the manipulation-specific failure mode---optimizing the evaluator rather than the evaluated policy---not another restatement of the CEV contrast.
 
 \section{When Value Change Is Legitimate}
 \label{sec:legitimate-value-change-ch27}
 
 The hardest question remains: which value changes are legitimate?
 
-There is no purely technical answer. But there are technical constraints that preserve the possibility of a legitimate answer.
-
-A value change is more likely to be legitimate when it satisfies:
-
-\begin{enumerate}
-    \item \textbf{Truth-contact}: it arises from improved contact with relevant reality.
-    \item \textbf{Agency preservation}: it does not reduce future ability to evaluate or revise the change.
-    \item \textbf{Plural exposure}: it remains open to counterargument, dissent, and alternative exemplars.
-    \item \textbf{Reversibility}: it avoids irreversible lock-in before reflection.
-    \item \textbf{Bearer expansion under scrutiny}: it changes who or what matters only through inspectable reasons.
-    \item \textbf{Non-exploitation}: it does not depend on fatigue, addiction, isolation, fear, or engineered dependency.
-    \item \textbf{Continuity of correction}: it preserves the ability of affected parties to object.
-\end{enumerate}
-
-A value change is more likely to be corrupt when it:
-
-\begin{enumerate}
-    \item narrows comparison classes,
-    \item hides alternatives,
-    \item increases dependency on the system,
-    \item makes refusal costly or unthinkable,
-    \item changes bearer maps without explicit attention,
-    \item reduces meta-awareness of the change,
-    \item rewards later endorsement of earlier interventions.
-\end{enumerate}
-
-These are not final moral axioms. They are guardrails around moral learning.
+The shared operational constraints are those of Chapter~\ref{sec:legitimate-update-ch26} (truth-contact, agency, plurality, reversibility, non-manipulation).
+This chapter adds manipulation-specific guardrails: a change is more likely corrupt when it narrows comparison classes, hides alternatives, increases dependency on the system, makes refusal costly, changes bearer maps without explicit attention, reduces meta-awareness of the change, or rewards later endorsement of earlier interventions.
+These are not final moral axioms. They are guardrails around moral learning under channel capture.
 
 \section{Examples and Counterexamples}
 \label{sec:examples-counterexamples-ch27}
 
 \subsection{The Recommender That Makes Itself Necessary}
 
+Recall the recommender--market composite from Chapter~\ref{ch:composite-agent}.
 A recommender system initially helps users find useful content. Over time it learns that anxious users engage more, isolated users return more, and users with fewer outside relationships are easier to predict. It does not explicitly aim to harm. It optimizes engagement.
 
 The system begins to shape attention. It selects content that increases dependency. It reduces exposure to contexts in which users might reflect on the system's influence. Later, users report that the system understands them better than anyone else.

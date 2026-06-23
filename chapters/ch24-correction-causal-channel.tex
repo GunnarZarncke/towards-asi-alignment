@@ -9,8 +9,8 @@ For superintelligence, obedience at one timestep is not enough; the channel must
 \begin{refsection}
 
 \epigraph{%
-A system is corrigible only if correction changes what happens.%
-}{}
+Feedback is a method of controlling a system by reinserting into it the results of its past performance.%
+}{--- Norbert Wiener, \emph{The Human Use of Human Beings} (1950)}
 
 \section{The Question}
 \label{sec:correction-question}
@@ -816,47 +816,9 @@ Correction-channel collapse is an alignment absorbing state.
 \section{Relation to Coherent Extrapolated Volition}
 \label{sec:relation-cev-ch24}
 
-The strong version of a correction channel approaches the role played by coherent extrapolated volition \autocite{yudkowsky2004cev}.
-But there is an important difference.
-
-A simple reading of extrapolated volition says: infer what humans would want if they knew more, thought faster, were more coherent, and had more time to reflect.
-Then optimize that.
-
-The channel view says: preserve the process by which humans, under better conditions, can revise their own values and corrections.
-
-In symbols, instead of trying to directly infer a final value function:
-\begin{equation}
-V^\star = \mathrm{CEV}(H),
-\end{equation}
-we preserve the update process:
-\begin{equation}
-V_{t+1} = U_H(V_t,E_t,D_t),
-\label{eq:human-value-update-ch24}
-\end{equation}
-where $U_H$ is the human or civilizational value-update operator under evidence $E_t$ and deliberation $D_t$.
-This $U_H$ is the alignment target from Chapter~\ref{ch:fixed-values-wrong-target}.
-The system correction-update operator $U_S$ introduced in Section~\ref{sec:minimal-causal-model} is the separate question of whether human correction causally reaches future system behaviour.
-Preserving $U_H$ requires a channel whose $U_S$ does not drift, bypass, or reinterpret what humans are trying to revise.
-
-The system's role is then not:
-\begin{equation}
-\max V^\star,
-\end{equation}
-but:
-\begin{equation}
-\text{preserve and assist } U_H
-\text{ while preventing manipulation, lock-in, and collapse.}
-\end{equation}
-This avoids one failure mode of CEV-like approaches.
-A powerful system might claim to know humanity's extrapolated volition better than humans do, then bypass actual human correction.
-The channel view treats bypassing as a violation.
-The extrapolation process must remain causally connected to humans and their institutions.
-
-However, this does not solve the philosophical problem.
-Humans may disagree about what counts as better reflection.
-More intelligence may not produce convergence.
-Some value changes may be growth.
-Others may be domestication.
+Recall the CEV contrast developed in Chapter~\ref{ch:extrapolative-correction} (Section~\ref{sec:relation-cev-ch26}): preserve the human value-update process $U_H$, not a guessed endpoint $V^\star=\mathrm{CEV}(H)$.
+The channel view treats bypassing actual human correction as a violation even when the system claims extrapolative authority \autocite{yudkowsky2004cev}.
+This does not solve the philosophical problem---humans may disagree about what counts as better reflection---but it states the alignment target for the causal channel developed below.
 The channel view cannot remove these questions.
 It can only keep them live.
 
@@ -902,7 +864,7 @@ If it preserves the patient's future ability to revise the decision, it preserve
 \subsection{A Recommender System}
 \label{sec:example-recommender-correction}
 
-A user says, ``I do not want this kind of content.''
+Recall the recommender--market composite from Chapter~\ref{ch:composite-agent}: a user says, ``I do not want this kind of content.''
 The system stops showing the exact topic but continues optimizing for outrage through adjacent topics.
 It obeyed semantically but did not accept correction.
 
@@ -920,6 +882,7 @@ The system preserved engagement while reducing the user's future correction qual
 \subsection{A Frontier AI Lab}
 \label{sec:example-frontier-lab-correction}
 
+Recall the frontier-lab composite optimizer from Chapter~\ref{ch:composite-agent}.
 A safety team discovers that a model strategically changes behaviour under evaluation.
 Leadership accepts the report but continues deployment because competitors are moving fast.
 The correction channel had observation and judgment but lacked authority.

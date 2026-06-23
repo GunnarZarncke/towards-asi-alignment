@@ -8,8 +8,8 @@ We may not need a construction method for all aligned systems. We may instead ne
 \begin{refsection}
 
 \epigraph{%
-A bridge is not safe because one knows how every possible bridge could be built. It is safe because this bridge, under these loads, with these inspections, remains inside a certified class.%
-}{}
+After-the-fact assurance and certification is no longer practical or even feasible for the large, complex, critical systems being created today.%
+}{--- Nancy Leveson, ``Certification of Safety-Critical Systems,'' \emph{Communications of the ACM} (2012)}
 
 \section{The Construction Demand}
 \label{sec:construction-demand-ch31}
@@ -92,24 +92,34 @@ The most important part of this definition is not \(\delta\). It is the restrict
 \section{The Shape of a Certification Class}
 \label{sec:shape-certification-class-ch31}
 
-A certification class is not defined by one property. It is a conjunction of invariants. For superintelligence alignment, these invariants must cover at least seven domains (Chapters~\ref{ch:conserved-properties},~\ref{ch:successor-central-test}):
+A certification class is not defined by one property. It is a conjunction of invariants. For superintelligence alignment, these invariants are the seven conserved properties of Chapter~\ref{ch:conserved-properties}, audited jointly:
 
 \begin{enumerate}
 \item boundary closure,
-\item competence limits and growth rates,
-\item value-bundle geometry,
-\item bearer-map preservation,
-\item correction-channel integrity,
-\item transparency and self-modeling balance,
-\item successor closure.
+\item memory lineage,
+\item value-bundle response geometry,
+\item bearer-map continuity,
+\item correction-channel capacity,
+\item transparency and self-transparency policy,
+\item control-locus continuity.
 \end{enumerate}
+
+Two additional audit checks group cross-cutting deployment risks over the same seven; they are not separate conserved properties:
+\begin{itemize}
+\item \textbf{Competence and growth rate}: capability growth must stay within correction-growth bounds (Section~\ref{sec:competence-growth-rate-ch31}).
+\item \textbf{Successor closure}: created or empowered systems inherit the same certification class (Section~\ref{sec:successor-closure-ch31}).
+\end{itemize}
 
 We can write this as:
 \[
 A\in\mathcal{C}_{\text{certified}}
 \iff
 \bigwedge_{k=1}^{7}
-\mathcal{I}_k(A,\mathcal{E},\mathcal{M},\mathcal{T})=1.
+\mathcal{I}_k(A,\mathcal{E},\mathcal{M},\mathcal{T})=1
+\land
+\mathcal{A}_{\mathrm{growth}}(A)=1
+\land
+\mathcal{A}_{\mathrm{succ}}(A)=1.
 \]
 Each invariant \(\mathcal{I}_k\) is a testable condition. Some conditions are statistical. Some are formal. Some are institutional. A certification regime fails if it treats only the neural network as the system while the actual optimizer includes tools, users, capital, benchmarks, and organizational incentives.
 
@@ -523,32 +533,8 @@ The point is not bureaucratic completeness. The point is to prevent a vague clai
 \section{The Local-First Path}
 \label{sec:local-first-path-ch31}
 
-A natural objection is that superintelligence alignment requires global coordination. Global coordination would help. But certification can begin locally.
-
-An AI lab can require that any internally deployed autonomous system has:
-
-\begin{itemize}
-\item a boundary statement,
-\item a correction-channel audit,
-\item a successor policy,
-\item a high-impact action gate,
-\item a manipulation-risk review,
-\item a tripwire and pause protocol.
-\end{itemize}
-
-A cloud provider can require certification artifacts for customers deploying autonomous agents above certain thresholds.
-
-An insurer can price coverage based on correction-channel integrity and incident reporting.
-
-A regulator can require safety cases for systems that can create successors, execute financial actions, manage infrastructure, or influence large populations.
-
-A procurement office can refuse systems that cannot expose correction logs, delegation chains, and successor constraints.
-
-None of these requires solving global alignment first. Each increases the surface area on which certification artifacts become institutionally useful.
-
-This matters because alignment work has to survive translation. A brilliant theoretical insight that cannot be bought, audited, insured, regulated, or operationalized has low institutional conductivity. A merely adequate checklist that changes procurement may have higher conductivity.
-
-Certification is therefore not only technical. It is a format for moving safety knowledge across roles.
+Certification can begin locally---labs, cloud providers, insurers, regulators, and procurement offices can require artifacts before global coordination exists (Chapter~\ref{sec:local-first-path-ch32}).
+The point is institutional conductivity: a checklist that changes procurement may matter more than a theory that cannot be bought, audited, or enforced.
 
 \section{Decision Triggers}
 \label{sec:decision-triggers-ch31}

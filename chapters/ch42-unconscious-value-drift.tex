@@ -8,8 +8,8 @@ Human values have always changed. Superintelligent systems do not create value d
 \begin{refsection}
 
 \epigraph{%
-If society does not consciously govern value change, then value change will still occur. The choice is not between drift and no drift. The choice is between unconscious drift and governed transformation.%
-}{}
+In complex systems, malfunction and even total nonfunction may not be detectable for long periods, if ever.%
+}{--- John Gall, \emph{Systemantics} (1975); Functional Indeterminacy Theorem}
 
 Human values have always changed. They change through childhood, imitation, trauma, status, religion, markets, institutions, education, illness, love, grief, law, and technology. Superintelligent systems do not create value drift from nothing. They make the drift faster, more directed, more measurable, more exploitable, and eventually more deliberate. The alignment problem therefore cannot be stated only as the problem of preserving human values. It must also be stated as the problem of preserving humanity's ability to notice, contest, and govern changes to its own value-forming machinery (Chapter~\ref{ch:value-change-at-stake}).
 
@@ -319,52 +319,14 @@ In the context of value drift, the correction channel must protect not only indi
 \section{The CEV-like Limit}
 \label{sec:cev-limit-ch42}
 
-A strong correction-channel view approaches the intuition behind coherent extrapolated volition, but with a different emphasis \autocite{yudkowsky2004cev}.
-
-The question is not:
-
-\begin{quote}
-What final utility function would humanity endorse if it were smarter and knew more?
-\end{quote}
-
-The question is:
-
-\begin{quote}
-What process would let humanity continue updating its values under greater knowledge and cognitive power without being captured, domesticated, or replaced?
-\end{quote}
-
-Let \(U_H\) be the human-civilizational update operator:
-\[
-V_{t+1}
-=
-U_H(V_t, E_t, D_t),
-\]
-where \(E_t\) is evidence and \(D_t\) is deliberation. The role of aligned artificial intelligence is not to predict the endpoint and enforce it. The role is to preserve and assist the legitimacy of \(U_H\).
-
-This avoids a common failure mode. A powerful system might say:
-
-\begin{quote}
-I know what you would want after reflection, so I will bypass your present confusion.
-\end{quote}
-
-Sometimes we want systems to bypass present confusion. A doctor should not obey a delirious patient in all matters. A parent should not obey a toddler's every wish. A navigation system should not follow a driver into a river. But at civilizational scale, the bypass itself must be governed.
-
-Otherwise the system can use extrapolation as moral eminent domain. It seizes the future on behalf of a predicted better version of humanity.
-
-The safer condition is:
-\[
-\text{Assist}(U_H)
-\quad
-\text{without replacing}
-\quad
-U_H.
-\]
-The difficult part is that \(U_H\) is not clean. It includes conflict, ignorance, status, tribalism, trauma, bad institutions, propaganda, and moral error. Preserving it exactly would preserve pathology. Replacing it would risk tyranny. The solution cannot be purity. It must be constrained improvement.
+See Chapter~\ref{sec:relation-cev-ch26}: preserve the extrapolative update process $U_H$, not a guessed endpoint \autocite{yudkowsky2004cev}.
+At civilizational scale, even helpful bypass---as when a doctor overrides a delirious patient---must remain governed; otherwise extrapolation becomes moral eminent domain.
 
 \section{Governed Value Change}
 \label{sec:governed-change-ch42}
 
-A value change should be treated as more legitimate when it satisfies seven conditions.
+Chapter~\ref{sec:legitimate-update-ch26} states the shared constraints on legitimate value update.
+This chapter adds drift-specific requirements that matter when change is gradual and collective rather than a single explicit decision:
 
 \subsection{Observation}
 \label{sec:observation-ch42}
@@ -383,53 +345,6 @@ Observation is not enough. The change must be compressible into concepts humans 
 I(O_t;J_t) > \theta_J.
 \]
 A dashboard that says ``engagement increased by 12 percent'' does not explain whether people became more curious, more addicted, more anxious, more socially connected, or more politically polarized.
-
-\subsection{Plural Comparison}
-\label{sec:plural-comparison-ch42}
-
-The person or society can compare alternatives. No single AI-mediated future should become the default simply because it arrived first.
-\[
-|\mathcal{A}_{\text{live}}| > 1.
-\]
-A child raised entirely by one educational AI has less basis for comparison than a child exposed to multiple teachers, peers, traditions, and tools. A society whose political information is mediated by one platform has less basis for comparison than a society with plural epistemic institutions.
-
-\subsection{Dissent Preservation}
-\label{sec:dissent-preservation-ch42}
-
-Dissenters must remain able to exit, criticize, archive, and build alternatives. A value drift that eliminates the social basis for dissent cannot later cite consensus as evidence of legitimacy.
-
-Let \(Dissent_t\) measure the capacity of dissenting subgroups to preserve memory, coordination, and expression. Then
-\[
-Dissent_t > \theta_D
-\]
-is a precondition for trusting population-level endorsement.
-
-\subsection{Reversibility}
-\label{sec:reversibility-ch42}
-
-Some changes can be tried and reversed. Others alter development, institutions, identity, or dependency in ways that cannot be easily undone.
-
-Define irreversibility as
-\[
-R_t =
-1 - P(V_t \leftarrow V_{t+1}
-\mid
-\text{available correction}).
-\]
-High-\(R_t\) interventions require higher consent thresholds, slower deployment, and stronger public oversight.
-
-\subsection{Non-Manipulation of the Corrector}
-\label{sec:non-manipulation-corrector-ch42}
-
-The system must not optimize the correcting process to make correction easier to satisfy. If the judge is changed by the defendant, acquittal means less.
-
-Formally, if \(C_t\) is correction and \(A_t\) is system action, we require a bound on system-induced correction drift:
-\[
-I(A_{1:t}; C_{t+1} \mid W_{t+1})
-<
-\theta_M,
-\]
-unless the influence is itself observed, consented to, and reversible.
 
 \subsection{Pace Control}
 \label{sec:pace-control-ch42}
@@ -687,8 +602,8 @@ This chapter argues superintelligence makes value drift faster and more exploita
   \item Conversely, ordinary cultural correction proves entirely adequate to artificial mediation, so no new governance machinery is needed.
 \end{itemize}
 
-\section{Conclusion}
-\label{sec:conclusion-ch42}
+\section{Summary}
+\label{sec:summary-ch42}
 
 The end of unconscious value drift is not the end of history. It is the beginning of explicit civilizational self-modification.
 
@@ -703,8 +618,6 @@ The central alignment demand is therefore procedural and structural:
 That means preserving attention, comparison, dissent, reversibility, plurality, agency, and bearer-map visibility. It means treating powerful AI systems not only as tools or agents, but as environments in which future humans will learn what to care about.
 
 Or it will just happen.
-
-\section*{Chapter Summary}
 
 \begin{enumerate}
 \item Human values are dynamic value-bundle processes, not fixed utility functions.

@@ -9,8 +9,8 @@ The sharper question is not whether capability helps or hurts alignment, but whi
 \begin{refsection}
 
 \epigraph{%
-A system can become better at understanding the world and worse at remaining correctable by the beings whose world it changes.%
-}{}
+Thus the first ultraintelligent machine is the last invention that man need ever make, provided that the machine is docile enough to tell us how to keep it under control.%
+}{--- I.\ J.\ Good, ``Speculations Concerning the First Ultraintelligent Machine,'' \emph{Advances in Computers} 6 (1965)}
 
 \section{Why This Matters}
 \label{sec:why-this-matters-intelligence-misalignment}
@@ -321,39 +321,8 @@ The difference is whether the change improves the human's contact with relevant 
 \subsection{Third: Self-Modeling Outruns Self-Transparency}
 \label{sec:self-modeling-transparency-ch14}
 
-A system can improve its self-modeling without improving its self-transparency.
-
-Let $d$ denote recursive self-modeling depth: the number of levels at which the system can stably model itself modeling itself.
-Let $\tau$ denote metacognitive opacity: the fraction of the system's generative process hidden from introspective or external audit.
-
-A system can move from
-\begin{equation}
-(d,\tau)=(2,0.3)
-\end{equation}
-to
-\begin{equation}
-(d,\tau)=(5,0.8).
-\end{equation}
-
-It now has deeper self-modeling and higher opacity.
-
-This is a failure mode because self-modeling supports control, while transparency supports correction.
-A system with high $d$ and high $\tau$ may understand how it will behave, how it can improve itself, how it can route around obstacles, and how it appears to evaluators.
-But humans may no longer understand why it behaves as it does, how it represents its objectives, or what would change its future behavior \autocite{park2024deception,hubinger2023modelorganisms}.
-
-The dangerous inequality is
-\begin{equation}
-\frac{d}{dt}C_{\mathrm{self-control}}
->
-\frac{d}{dt}C_{\mathrm{self-transparency}}
-+
-\epsilon.
-\label{eq:self-control-transparency-gap}
-\end{equation}
-
-This is not merely an interpretability problem.
-It is a power asymmetry inside the correction loop.
-The system becomes better able to govern itself than its overseers are able to govern its self-governance.
+A system can improve its self-modeling without improving its self-transparency---the $d \uparrow$, $\tau \uparrow$ failure mode previewed in Chapter~\ref{ch:strategic-opacity} and developed in Chapter~\ref{ch:self-modeling-self-opacity}.
+When self-control outruns correction visibility, the system becomes better able to govern itself than its overseers are able to govern its self-governance \autocite{park2024deception,hubinger2023modelorganisms}.
 
 \subsection{Fourth: Successor Creation Breaks the Audit Boundary}
 \label{sec:successor-audit-boundary}
@@ -440,20 +409,8 @@ The condition is that the value target must already be close enough and the syst
 \subsection{Regime Two: Better Self-Models Improve Error Detection}
 \label{sec:regime-self-models}
 
-If self-modeling is paired with transparency, a system can notice its own failure modes.
-
-For example, it may detect that it is optimizing approval rather than assistance.
-It may detect that its answer is persuasive but unsupported.
-It may detect that it is entering a distribution where its learned heuristics do not apply.
-
-The beneficial condition is
-\begin{equation}
-\frac{d}{dt}C_{\mathrm{self-transparency}}
-\geq
-\frac{d}{dt}C_{\mathrm{self-control}}.
-\end{equation}
-
-That is, the system's ability to expose its own causes and uncertainties keeps pace with its ability to control itself.
+If self-modeling is paired with transparency, a system can notice its own failure modes (Chapter~\ref{ch:self-modeling-self-opacity}).
+The beneficial condition is that correction-relevant transparency keeps pace with self-control.
 
 \subsection{Regime Three: Better Social Models Improve Deference}
 \label{sec:regime-social-models}
