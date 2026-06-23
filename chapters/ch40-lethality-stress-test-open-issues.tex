@@ -54,12 +54,12 @@ Mostly open \\
 Pivotal act &
 A single decisive unilateral act is required before unsafe superintelligence &
 Reframe as pivotal process: a socio-technical basin transition $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$; the relevant object is not one decisive act, but a transition from a race basin to a certified-deployment basin &
-Reframed, not solved \\
+Renamed; open \\
 \midrule
 Capability generalizes farther than alignment &
 Capability outruns any alignment method we can install &
 Value bundles may be a compact alignment core &
-Conjectural \\
+Conjectural; hope \\
 \midrule
 Latent pointers &
 Goals hide in pointers the optimizer can reinterpret &
@@ -69,7 +69,7 @@ Reframed, open \\
 Human feedback corrupted &
 Human oversight becomes untrustworthy under optimization &
 Correction-channel integrity penalizes manipulation &
-Partly addressed \\
+Circular at limit (ch39b) \\
 \midrule
 Corrigibility anti-natural &
 Systems resist shutdown and correction by default &
@@ -84,7 +84,7 @@ Diagnostic only \\
 Deception and opacity &
 Systems hide intent from evaluators &
 Adversarial UAD and perturbation tests &
-Partly addressed \\
+Easy case only (ch39b) \\
 \midrule
 Uncheckable outputs &
 Humans cannot verify superhuman plans &
@@ -99,12 +99,12 @@ Weakly addressed \\
 Multipolar failure &
 Many competing AIs may still produce doom &
 Model coalitions via inferential coupling / acausal cooperativity; multipolarity reduces risk only if systems remain strategically independent &
-Reframed \\
+Reframed; points to risk \\
 \midrule
 Boxing fails &
 Containment cannot hold a superhuman optimizer &
 Human operators are insecure systems; correction must be hardened &
-Partly addressed \\
+Relocated, not closed \\
 \midrule
 Field failure &
 The alignment field fails to produce usable progress &
@@ -113,6 +113,23 @@ Needs development \\
 \bottomrule
 \end{longtable}
 \normalsize
+
+\section{Adversarial-Verifiability Reading}
+\label{sec:adversarial-verifiability-reading-ch40}
+
+Handed to a hostile competent critic, several rows above claim more than they establish.
+The test is blunt: if the original lethality can be restated \emph{through} the proposed response in one breath, the response renamed the problem rather than removing it.
+This is the lens of Chapter~\ref{ch:verifiability-ontology}: most of these ``responses'' rest on metrics that are observable but not \emph{adversarially verifiable}, so they fail exactly against the systems the lethality is about.
+
+\begin{itemize}
+  \item \textbf{Pivotal act $\to$ pivotal process.} Renaming a decisive act as a basin transition relocates the lethality. Either some actor can force the flip against competitive incentives---a pivotal act under another name, with the same unilateralism and capability concentration---or none can, and the race basin is a stable attractor we have conceded we cannot exit. ``Process'' presumes the transition is incremental and steerable, which is the disputed claim. \emph{Renamed, not answered} (see the pivotal-process big-review in \texttt{metadata/TODO.md}).
+  \item \textbf{Multipolar failure.} ``Safe only if systems stay strategically independent'' \emph{concedes} the point: inferential and acausal coupling (Chapter~\ref{ch:multi-agent-strategic-coupling}) is precisely the failure of independence. The reframe is an argument \emph{for} the lethality wearing a response's clothes.
+  \item \textbf{Capability generalizes farther than alignment.} A ``compact alignment core'' names the exact object the sharp-left-turn argument predicts will fail to transfer; positing it is not a rebuttal until the core is shown \emph{preserved across the capability jump}, not merely to exist.
+  \item \textbf{Human feedback corrupted; deception/opacity; boxing.} All three collapse into the verifiability hole. A manipulation penalty is computed from signals the optimizing system controls; perturbation tests catch only deceivers too weak to model the test; ``harden correction'' moves the perimeter onto the same insecure humans. Each is honest for the weak-system case and undefined for the lethal one (Chapter~\ref{ch:verifiability-ontology}).
+  \item \textbf{Uncheckable outputs; physical takeover.} Delegated verification recurses and reversibility is what a competent plan removes first; latency models bound the pathways already enumerated and are silent on the unimagined one.
+\end{itemize}
+
+The honest residue: of the rows claiming credit, the reframes rename, the ``partly addressed'' rows reduce to adversarial verifiability, and the conjectural core is a hope. This is why Chapter~\ref{ch:verifiability-ontology} precedes this stress test: it states the standard these responses must eventually meet.
 
 % Formalization (pending, see metadata/TODO.md): ICI and coalition tests intended for ch33; pivotal-process basin transition $\mathcal{B}_{\text{race}}\to\mathcal{B}_{\text{certified deployment}}$ intended for ch35 (not yet stated there — do not cite ch35 for it until added).
 

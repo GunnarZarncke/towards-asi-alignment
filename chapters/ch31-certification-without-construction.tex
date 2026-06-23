@@ -701,6 +701,16 @@ There is a narrow path. The system may help humans deliberate, model consequence
 
 The certification target is therefore not a final value state. It is a protected zone of legitimate self-modification.
 
+\section{What Would Change This View}
+\label{sec:wwctv-certification-without-construction}
+
+This chapter argues we can certify a restricted class via explicit invariants, an operating envelope, monitoring, and permitted transformations, without a full construction method. The following would weaken it.
+
+\begin{itemize}
+  \item No nontrivial class is both expressive enough to be worth deploying and adversarially certifiable: the certifiable classes are useless and the useful ones uncertifiable.
+  \item Certification is not adversarial-complete---a system satisfies every explicit invariant while drifting catastrophically through a \emph{permitted} transformation no one foresaw---so certification certifies the imagination of its authors (Chapter~\ref{ch:verifiability-ontology}).
+\end{itemize}
+
 \section{Summary}
 \label{sec:chapter-summary-ch31}
 

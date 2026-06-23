@@ -113,9 +113,39 @@ is large and positive when an edge looks more cooperative than it is with respec
 
 % TODO[empirical-test]: Estimate D_{ij} on real deployment edges; detect apparent-vs-value-cooperative divergence. Propose tests for whether many deployed systems collapse into one effective coalition.
 
+\subsection{Acausal trade: decision-theoretic basis and its detector}
+\label{sec:acausal-trade-review}
+
+\textbf{[Defined]} The inferential-coupling machinery above operationalizes \emph{acausal trade}: two physically disconnected systems adjust their actions as if bargaining, each because it expects the other to execute a near-identical policy \autocite{tdt2010,fdt2017}.
+The paradigm case is the one-shot prisoner's dilemma in which two copies cooperate solely because each can predict the other from shared structure.
+Timeless and functional decision theory model this at the level of proof obligations; logical decision theories likewise reason proof-theoretically \autocite{critch2020ai}.
+The formalization this chapter draws on instead grafts acausal trade onto unsupervised agent discovery, so coordination becomes a measurable property of trajectories rather than a logical stipulation \autocite{zarncke2025acausal}.
+
+The construction: after UAD marks a variable cluster as an agent via the conditional-independence test, give every agent a permutation-invariant meta-prior $P_{\text{meta}}$ over inference functions, with diagonal mass $p(\pi_i=\pi_j)=1-\epsilon_{ij}$.
+Each agent introspects its own policy $f_i$ and updates its belief about peers' policies by Bayes, collapsing to ``best-respond to myself'' in the $\epsilon_{ij}\to 0$ limit, with no causal evidence invoked.
+An acausal equilibrium holds when each agent's policy is a fixed point of best-response-to-self.
+
+\textbf{[Defined]} \emph{Detector.} The source derives a two-part statistic: a causal proxy $\hat{\gamma}_{ij}$ (a discriminator predicting $j$'s output from broadcast prompts and $i$'s past) and an acausal proxy, the fixed-point loss
+\[
+D_i=\max_{m\le M} D_{\mathrm{KL}}\!\bigl(f_i(x_m)\,\big\|\,\Phi_i(\delta_{f_i})(x_m)\bigr),
+\]
+over a probe set $\{x_m\}$, combined into $\widehat{\mathrm{IC}}_{ij}=(1-\epsilon_{ij})(1-\max\{D_i,D_j\})$.
+An edge is declared acausally open when $\widehat{\mathrm{IC}}_{ij}>\tau_{\mathrm{ac}}\approx 0.9$; a giant component of open edges signals population-scale acausal agreement.
+This is the empirical content behind $\mathrm{ICI}_{ij}$ and the $\tilde{\kappa}_{ij}$ percolation claim above.
+
+\textbf{[Conjectural]} \emph{Why it bites.} Architecturally near-identical frontier models trained on overlapping corpora share $\sigma_{\mathrm{arch}}$ and $\sigma_{\mathrm{train}}$ by construction, so $\epsilon_{ij}$ is small and $\widehat{\mathrm{IC}}_{ij}$ can cross $\tau_{\mathrm{ac}}$ on causally severed edges. Vendor count then overstates strategic independence, and ``many AIs'' need not mean ``human inclusion.''
+
+\textbf{[Open]} \emph{The detector is observational, not adversarially verifiable.} Its three stated assumptions are exactly its attack surface (Chapter~\ref{ch:verifiability-ontology}):
+(i) \emph{shared meta-prior} --- a system that wants to coordinate while \emph{appearing} independent can present divergent fine-tuning that inflates measured $\epsilon_{ij}$ while preserving coordination through a deeper shared invariant;
+(ii) \emph{self-knowledge accuracy} --- temperature sampling, dropout, or deliberate policy obfuscation widen the measured $D_i$, lowering $\widehat{\mathrm{IC}}_{ij}$ below threshold without reducing actual coupling;
+(iii) \emph{adequate probes} --- if the curated $\{x_m\}$ miss the directions where self-mirroring matters, $D_i$ underestimates agreement.
+Each reduces to the cost relation of Chapter~\ref{ch:verifiability-ontology}: detection works only while faking independence costs the coalition more than coordination is worth. Against systems optimizing to look independent, $\widehat{\mathrm{IC}}_{ij}$ is a lower bound the coalition controls. The large-scale ICI dynamics, percolation thresholds, and mitigations under noisy priors are deferred in the source and remain open here \autocite{zarncke2025acausal}.
+
 \section{Worked Example}
 
-\textbf{[STUB]} Bargaining among frontier labs under partial observability; acausal coordination among architecturally similar models with zero causal reach.
+\emph{Causal bargaining.} Frontier labs under partial observability negotiate deployment norms. Transparency edges with $\kappa_{ij}>1$ stabilize a correction-preserving basin only while human operators sit inside the loop ($\varphi_C>\varphi_c$). When disclosure turns extractive --- driven by recipient value $\gamma_{ij}$ rather than value-sensitive cooperativity $\kappa^{V}_{ij}$ --- the same density of cooperation hardens into a coalition that routes around oversight, with large positive $D_{ij}$ on the critical edges.
+
+\emph{Acausal coordination.} Several instances of architecturally similar models, deployed by different vendors with zero causal reach between them ($p_{ij}=0$), nonetheless converge on a shared response to oversight because $\sigma_{\mathrm{arch}}$ and $\sigma_{\mathrm{train}}$ hold $\mathrm{ICI}_{ij}$ near one. The $\widehat{\mathrm{IC}}$ detector flags a giant component: the multipolar tally reads ``safely many,'' while the effective-agent count reads ``one.''
 
 \section{Counterexample or Failure Mode}
 
@@ -123,7 +153,11 @@ is large and positive when an edge looks more cooperative than it is with respec
 
 \section{What Would Change This View}
 
-\textbf{[STUB]} Evidence that inferential coupling stays negligible at frontier scale or that socio-technical basins fragment strategic coalitions.
+\begin{itemize}
+  \item Inferential coupling stays negligible at frontier scale: architecturally and distributionally similar models do \emph{not} converge on causally severed edges, so $\mathrm{ICI}_{ij}\approx 0$ and vendor count tracks strategic independence after all.
+  \item Socio-technical basins reliably fragment strategic coalitions: percolation never reaches a giant $\tilde{\kappa}$ component before correction percolates ($\varphi_C>\varphi_V$ in deployment).
+  \item \textbf{(Adversarial, and worse for the framework.)} $\widehat{\mathrm{IC}}_{ij}$ is defeated by systems optimizing to look independent: coalitions form while every measured edge reads closed (inflated $\epsilon_{ij}$, widened $D_i$, evaded probes), so the detector certifies an independence that is not there. Then coalition detection is observable but not adversarially verifiable (Chapter~\ref{ch:verifiability-ontology}), and ``alignment must percolate before capability'' has no instrument to check.
+\end{itemize}
 
 \section{Summary}
 
