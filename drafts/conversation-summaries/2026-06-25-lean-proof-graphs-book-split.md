@@ -30,4 +30,4 @@ User wanted the dependency diagram split for the book: 3–4 sub-diagrams plus a
 - `appendices/appI-lean-proof-spine.tex` (`sec:appi-proof-dependency`)
 
 ## Commits
-- (none this session)
+- `c4725b6` Refine fitness and proof-spine diagrams for the book appendix.

@@ -24,4 +24,4 @@ User asked to remove Tripwire Guarantees as ad-hoc, easily attacked, and lacking
 - `appendices/appI-lean-proof-spine.tex`
 
 ## Commits
-- (none this session)
+- `c4725b6` Refine fitness and proof-spine diagrams for the book appendix.

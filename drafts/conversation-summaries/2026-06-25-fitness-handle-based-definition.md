@@ -28,4 +28,4 @@ User asked to rewrite ch32 and update Lean so fitness is defined systematically 
 - `appendices/appI-lean-proof-spine.tex` (`appi:def:spine-selection-channel`, `appi:thm:p31`)
 
 ## Commits
-- (none this session)
+- `c4725b6` Refine fitness and proof-spine diagrams for the book appendix.

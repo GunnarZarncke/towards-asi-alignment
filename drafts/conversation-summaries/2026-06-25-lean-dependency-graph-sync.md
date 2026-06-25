@@ -22,4 +22,4 @@ User asked to update the Lean dependency diagram after recent spine changes (han
 - `context/lean_proof_dependency_graph.png`
 
 ## Commits
-- (none this session)
+- `c4725b6` Refine fitness and proof-spine diagrams for the book appendix.
