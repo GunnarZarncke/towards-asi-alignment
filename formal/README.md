@@ -69,7 +69,7 @@ derives `Risk A ≤ δ` from `Control A ≤ CCI A + δ` via `P13` (no bare `hris
 The bridge path now lists `MB6` plus split adversarial-UAD bridges `MB7a`–`MB7c`.
 
 **Notation.** `ValueUpdateOperator` (`U_H`), `SystemUpdateOperator` (`U_S`),
-`CCI` (sole exported correction measurand), typed `CorrectionPath`,
+`CCI` (sole exported correction measurand), handle-controlled `CorrectionPath`,
 `SuccessorSafeWitness`.
 
 Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex`.
@@ -82,7 +82,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, smoothing-margin arithmetic | 6–7, 10, 36 |
 | `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
 | `AlignmentProofSpine/Bundles.lean` | `P14`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples) | 15–23 |
-| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, **`CorrectionChainStage`** | 24–27 |
+| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, handle-controlled **`CorrectionPath`** | 24–27 |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P33`, `P34`, `P37` | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
@@ -116,8 +116,9 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   pigeonhole (`finPigeonhole`) instead of Mathlib's `Fintype.card_le_of_injective`,
   keeping the project Mathlib-free.
 * **`Risk`** is `Control − CCI` (`RiskGap`). Certification uses `Control ≤ CCI + δ`.
-  Typed path: `CorrectionPath` / `SystemCorrectionPath` over `CorrectionChainLink`.
-  The weakest-link term lives inside `CCI` only (book: $C_{\mathrm{raw}}$; not exported in Lean).
+  Handle-controlled path: `CorrectionPath` / `SystemCorrectionPath` over `CorrectionChainLink`,
+  now grounded in a correcting agent's controlled handles. The weakest effective
+  handle-capacity term lives inside `CCI` only (book: $C_{\mathrm{raw}}$; not exported in Lean).
 * **`SuccessorSafe`** = `Nonempty SuccessorSafeWitness` with `CCIPreserved` and
   `SystemUpdateOperatorPreserved` among the ch29 fields.
 * Numbering follows the **brief** (§4/§5), which is the implementation target; the

@@ -28,22 +28,8 @@ The chapter introduces a channel model,
 W_t \rightarrow O_t \rightarrow J_t \rightarrow D_t \rightarrow C_t \rightarrow U_{t+1} \rightarrow A_{t+k},
 \label{eq:correction-chain-ch25}
 \end{equation}
-defines a correction-channel integrity functional,
-\begin{equation}
-\mathrm{CCI}
-=
-C_{\mathrm{raw}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O,
-\label{eq:cci-ch25}
-\end{equation}
-\leanspine{proof}{P24}{Lean exports \texttt{CCI} only; the weakest-link term on the typed path is internal to that definition (book: Eq.~\eqref{eq:cci-ch25}).}
+defines raw correction capacity and a correction-channel integrity functional (Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch25}),
+\leanspine{proof}{P24}{Lean exports \texttt{CCI} only; the weakest effective handle-capacity term is internal to that definition (book: Eq.~\eqref{eq:cci-ch25}).}
 and then refines this into a value-bundle version, where what must be corrected is not merely the system's behaviour but the value-bearing geometry behind behaviour (Chapter~\ref{ch:correction-causal-channel}).
 
 \section{Why Correction Is Not Feedback}
@@ -94,7 +80,7 @@ A system that says, ``I have incorporated your feedback,'' may still fail if the
 
 Let $W_t$ denote the relevant world state at time $t$.
 This includes the system, affected humans, institutional context, hidden side effects, and possible future trajectories.
-Human correction must pass through a sequence of transformations:
+Human correction leaves a diagnostic trace:
 \begin{equation}
 W_t
 \rightarrow
@@ -110,46 +96,47 @@ U_{t+1}
 \rightarrow
 A_{t+k}.
 \end{equation}
-Each variable has a distinct role.
+These variables are not primitive handle roles.
+They are states in a coupled process involving a target system \(A\), a correcting agent \(G_t\), and a handle set \(\mathcal{H}_t\) controlled by \(G_t\).
+Each variable has a diagnostic meaning:
 \begin{description}
 \item[$W_t$, world state.] The part of reality that matters for judging whether the system should change.
-\item[$O_t$, observation.] What humans, auditors, institutions, or other monitors can actually see.
-\item[$J_t$, judgment.] The human or institutional interpretation of the observation.
-\item[$D_t$, deliberation.] The aggregation, contestation, and reflection process that converts many partial judgments into a correction.
-\item[$C_t$, correction signal.] The instruction, refusal, objection, norm update, legal constraint, or value revision transmitted to the system.
+\item[$O_t$, observation.] What reaches the correcting agent through its observation handles.
+\item[$J_t$, judgment.] The correcting agent's state after integrating what it can observe.
+\item[$D_t$, deliberation.] The correcting agent's internal aggregation, contestation, or reflection process, when it has one.
+\item[$C_t$, correction signal.] The operation the correcting agent applies through its handles.
 \item[$U_{t+1}$, system update.] The internal change in the system's model, policy, memory, constraint set, or successor-creation rule.
 \item[$A_{t+k}$, later action.] The downstream behaviour that either reflects or fails to reflect the correction.
 \end{description}
-The correction channel fails if any link collapses.
+The correction channel fails if no legitimate correcting agent controls handles that make this trace causally real.
 
-If humans cannot observe the relevant state, then $I(W_t;O_t)$ is low.
+If no handle lets the correcting agent observe the relevant state, then the first effective capacity \(\kappa_0\) is low.
 
-If humans observe but cannot understand, then $I(O_t;J_t)$ is low.
+If the observations do not change the correcting agent's state in a way that tracks the world, then \(\kappa_1\) is low.
 
-If humans understand but cannot coordinate, then $I(J_t;D_t)$ is low.
+If the correcting agent has no coherent internal process for turning state into correction, then \(\kappa_2\) or \(\kappa_3\) is low.
 
-If institutions deliberate but cannot transmit binding correction, then $I(D_t;C_t)$ is low.
+If the correcting agent can issue a correction but no controlled handle reaches the target update, then \(\kappa_4\) is low.
 
-If correction is transmitted but ignored or misread, then $I(C_t;U_{t+1})$ is low.
+If the update does not change later behaviour, then \(\kappa_5\) is low.
 
-If the system updates internally but future actions do not change, then $I(U_{t+1};A_{t+k})$ is low.
-
-Thus a first approximation is the bottleneck capacity
+Thus a first approximation is the bottleneck over effective handle capacities:
 \begin{equation}
 C_{\mathrm{raw}}
 =
 \min
 \left\{
-I(W_t;O_t),
-I(O_t;J_t),
-I(J_t;D_t),
-I(D_t;C_t),
-I(C_t;U_{t+1}),
-I(U_{t+1};A_{t+k})
+\kappa_0(A,G_t,h_0),
+\kappa_1(A,G_t,h_1),
+\kappa_2(A,G_t,h_2),
+\kappa_3(A,G_t,h_3),
+\kappa_4(A,G_t,h_4),
+\kappa_5(A,G_t,h_5)
 \right\}.
 \label{eq:correction-bottleneck-capacity}
 \end{equation}
-This is only an approximation because mutual information is not automatically causal authority.
+Here each \(h_i\in\mathcal{H}_t\) is a handle controlled by \(G_t\), and \(\kappa_i\) measures how much that handle lets \(G_t\)'s state constrain the target's future update or behaviour.
+This is only an approximation because measured dependence is not automatically legitimate control.
 A manipulated public may produce a highly predictable correction signal.
 A regulator may produce a detailed order that the system can route around.
 A user may provide feedback that strongly affects a local response while leaving the real downstream optimization unchanged.
@@ -171,10 +158,11 @@ C_{\mathrm{raw}}
 \lambda_R R
 -
 \lambda_O O.
+\label{eq:cci-ch25}
 \end{equation}
 Here
 \begin{description}
-\item[$C_{\mathrm{raw}}$] is the bare weakest-link capacity of the correction chain (Eq.~\eqref{eq:correction-bottleneck-capacity}).
+\item[$C_{\mathrm{raw}}$] is the bare weakest effective handle capacity of the correction channel (Eq.~\eqref{eq:correction-bottleneck-capacity}).
 \item[$L$] is latency, the delay between relevant event and effective correction.
 \item[$M$] is manipulation, the degree to which the system changes the correction source rather than responding to the correction.
 \item[$R$] is irreversibility, the expected loss of option value before correction can take effect.
@@ -1137,26 +1125,8 @@ U_{t+1}
 \rightarrow
 A_{t+k}.
 \end{equation}
-Second, bottleneck capacity:
-\begin{equation}
-C_{\mathrm{raw}}
-=
-\min_i I(X_i;X_{i+1}).
-\end{equation}
-Third, integrity with penalties:
-\begin{equation}
-\mathrm{CCI}
-=
-C_{\mathrm{raw}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O.
-\end{equation}
+Second, bottleneck capacity (Eq.~\eqref{eq:correction-bottleneck-capacity}).
+Third, integrity with penalties (Eq.~\eqref{eq:cci-ch25}).
 Fourth, value-process preservation:
 \begin{equation}
 V_{t+1}

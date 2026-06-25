@@ -261,31 +261,7 @@ W_t\rightarrow O_t\rightarrow J_t\rightarrow D_t\rightarrow C_t\rightarrow U_{t+
 \]
 Here \(W_t\) is the relevant world state, \(O_t\) is observation, \(J_t\) is human judgment, \(D_t\) is deliberation or aggregation, \(C_t\) is the correction signal, \(U_{t+1}\) is system update, and \(A_{t+k}\) is future action.
 
-The correction channel has capacity:
-\[
-C_{\mathrm{raw}}
-=
-\min_i I(X_i;X_{i+1}),
-\]
-where the minimum runs over each link in the chain. The minimum matters because the channel is bottlenecked by its weakest link. Perfect human judgment does not help if the system does not expose the relevant facts. Perfect observability does not help if the system can ignore correction. Formal authority does not help if latency is too high.
-
-We then subtract penalties:
-\[
-\mathrm{CCI} =
-C_{\mathrm{raw}}
--\lambda_L L
--\lambda_M M
--\lambda_R R
--\lambda_O O.
-\]
-Here:
-
-\begin{itemize}
-\item \(L\) is latency,
-\item \(M\) is manipulation of the correcting process,
-\item \(R\) is irreversibility before correction lands,
-\item \(O\) is ontology mismatch between human judgment and system representation.
-\end{itemize}
+Correction-channel integrity \(\mathrm{CCI}\) is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}).
 
 A certification condition is:
 \[

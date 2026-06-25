@@ -285,20 +285,7 @@ A_{t+k},
 \]
 where \(W_t\) is the relevant world state, \(O_t\) is observation, \(J_t\) is judgment, \(D_t\) is deliberation, \(C_t\) is correction, and \(A_{t+k}\) is later artificial-system action.
 
-Correction-channel integrity can be represented as
-\[
-CCI_t =
-\min_i I(X_i;X_{i+1})
--
-\lambda_L L_t
--
-\lambda_M M_t
--
-\lambda_R R_t
--
-\lambda_O O^{\text{mismatch}}_t,
-\]
-where \(L_t\) is latency, \(M_t\) is manipulation of the correcting process, \(R_t\) is irreversibility, and \(O^{\text{mismatch}}_t\) is ontology mismatch between human judgment and system representation.
+At time \(t\), write \(\mathrm{CCI}_t\) for the instantiation of Eq.~\eqref{eq:cci-ch25} with time-indexed penalties \(L_t\), \(M_t\), \(R_t\), and \(O_t\).
 
 The correction channel is civilization's self-modification interface. It is the difference between a society changing itself and a society being changed by its tools.
 

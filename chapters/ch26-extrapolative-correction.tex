@@ -106,32 +106,7 @@ A chatbot can ask for thumbs-up and thumbs-down while training users to reward s
 A government can hold consultations after the technically irreversible deployment decision has already been made.
 These are feedback rituals, not necessarily correction channels.
 
-We can define the raw channel capacity as the weakest information link:
-\begin{equation}
-C_{\mathrm{raw}}
-=
-\min_i I(X_i;X_{i+1}),
-\label{eq:raw-capacity-ch26}
-\end{equation}
-where the $X_i$ range over the stages of the correction chain.
-But raw capacity is still too optimistic.
-It must be discounted by latency, manipulation, irreversibility, and representational mismatch:
-\begin{equation}
-\mathrm{CCI}
-=
-C_{\mathrm{raw}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O .
-\label{eq:cci-ch26}
-\end{equation}
-Here $\mathrm{CCI}$ is correction-channel integrity, $L$ is correction latency, $M$ is manipulation of the correcting agents, $R$ is irreversibility before correction lands, and $O$ is ontology mismatch between human judgment and system representation.
-Chapter~\ref{ch:correction-channel-integrity} develops a closely related functional with additional operational detail.
+Correction-channel integrity \(\mathrm{CCI}\) and raw capacity \(C_{\mathrm{raw}}\) are defined in Chapter~\ref{ch:correction-channel-integrity} (Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch25}).
 
 A system is corrigible in the strong sense only if
 \begin{equation}

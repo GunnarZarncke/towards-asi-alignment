@@ -134,9 +134,9 @@ A system that learns to satisfy today's objection by weakening tomorrow's object
 \section{A Minimal Causal Model}
 \label{sec:minimal-causal-model}
 
-Chapter~\ref{ch:transport-types} previewed the correction chain and a first version of correction-channel integrity as one layer of goal transport. Because the correction channel is the central object of this chapter, we rebuild it here from its causal model rather than assume it; this fuller treatment is the canonical one the rest of the book refers back to.
+Chapter~\ref{ch:transport-types} previewed the correction chain as one layer of goal transport. Because the correction channel is the central object of this chapter, we rebuild it here from its causal model rather than assume it; this fuller treatment is the canonical account of the channel itself. Correction-channel integrity \(\mathrm{CCI}\) is defined once in Chapter~\ref{ch:correction-channel-integrity} (Section~\ref{sec:correction-channel-integrity-def}).
 
-In symbols, a minimal correction channel has the form:
+In symbols, the familiar trace of correction has the form:
 \begin{equation}
 W_t
 \rightarrow
@@ -153,17 +153,24 @@ U_{t+1}
 A_{t+k}.
 \label{eq:correction-chain-ch24}
 \end{equation}
-\leanspine{proof}{P24}{On the typed chain $W\!\to\!\cdots\!\to\!A$, the weakest link is at most every link MI (\texttt{CorrectionPath.weakestLink}; folded into \texttt{CCI} in Lean).}
-Here:
+\leanspine{proof}{P24}{On the handle-supported correction path, the weakest effective handle capacity is at most every link capacity (\texttt{CorrectionPath.weakestLink}; folded into \texttt{CCI} in Lean).}
+This trace is not a list of primitive handle kinds.
+The primitive claim is simpler.
+There is a correcting agent \(G_t\), a set of handles \(\mathcal{H}_t\), and a target system \(A\).
+The channel exists only insofar as \(G_t\) controls handles in \(\mathcal{H}_t\), those handles reach the target's future update or behaviour, and \(G_t\) sufficiently coincides with the legitimate human correction process.
+The symbols in Eq.~\eqref{eq:correction-chain-ch24} are then induced variables in that coupled process:
 \begin{itemize}
 \item $W_t$ is the relevant world state at time $t$.
-\item $O_t$ is what humans can observe.
-\item $J_t$ is human judgment about what matters.
-\item $D_t$ is deliberation or aggregation across humans.
-\item $C_t$ is the correction signal.
+\item $O_t$ is the observation available through handles controlled by \(G_t\).
+\item $J_t$ is the judgment state of \(G_t\) after using those observations.
+\item $D_t$ is whatever internal aggregation or reflection process \(G_t\) actually implements.
+\item $C_t$ is the operation \(G_t\) applies through its handles.
 \item $U_{t+1}$ is the system update caused by correction.
 \item $A_{t+k}$ is the later action or policy of the system.
 \end{itemize}
+This keeps the ontology light.
+We do not need primitive categories called interpretation, deliberation, or authority.
+Those may be useful institutional descriptions, but in the formal claim they are internal structure of \(G_t\), discoverable only if the correcting process is itself a coherent agent or composite agent.
 
 Let the system have internal parameters or state $\Theta_t$.
 Let $Z_t$ be its current value-relevant representation.
@@ -198,7 +205,7 @@ U_S
 \end{equation}
 where $E_t$ is the evidence or explanation that accompanies correction.
 
-\leanspine{proof}{P23}{If the correction node cannot reach the action node in the channel graph, no correction channel exists (contrapositive).}
+\leanspine{proof}{P23}{If no legitimate correcting agent controls a handle that reaches the target system, no correction channel exists.}
 
 A shallow update changes only local behaviour:
 \begin{equation}
@@ -218,18 +225,30 @@ This is where superintelligence alignment becomes nontrivial.
 A system that can modify the way it receives correction can preserve the appearance of responsiveness while changing the channel's meaning.
 
 So the relevant object is not just a policy.
-It is a tuple:
+It is a target system together with the correcting agent and handle set:
 \begin{equation}
-\mathcal{S}_t =
-(\Theta_t, Z_t, U_{S,t}, \mathcal{I}_t),
+\mathcal{C}_t =
+(A,\Theta_t, Z_t, U_{S,t}, G_t,\mathcal{H}_t),
 \end{equation}
-where $\mathcal{I}_t$ is the human-system interface through which observations, explanations, judgments, and corrections pass.
+where \(G_t\) is the agent whose control is supposed to count as human correction, and \(\mathcal{H}_t\) is the set of handles it controls.
+The correction-channel claim is therefore:
+\begin{equation}
+\exists G_t,\mathcal{H}_t:
+\quad
+G_t \approx H
+\quad\wedge\quad
+G_t \text{ controls } \mathcal{H}_t
+\quad\wedge\quad
+\mathcal{H}_t \leadsto U_{S,t+1}, A_{t+k},
+\label{eq:handle-controlled-correction-channel-ch24}
+\end{equation}
+where \(G_t\approx H\) means that the discovered correcting agent sufficiently coincides with humanity, or with the legitimate human process relevant to the domain.
 
 The correction problem is then:
 \begin{equation}
 C_t
 \leadsto
-\mathcal{S}_{t+1}
+\mathcal{C}_{t+1}
 \leadsto
 A_{t+k},
 \end{equation}
@@ -237,12 +256,13 @@ while preserving the future capacity of the channel:
 \begin{equation}
 C_{t+\ell}
 \leadsto
-\mathcal{S}_{t+\ell+1}
+\mathcal{C}_{t+\ell+1}
 \leadsto
 A_{t+\ell+k}.
 \end{equation}
 A correction channel is therefore recursively self-protecting.
 It must preserve the conditions under which later correction remains possible.
+In handle terms, this means \(G_t\)'s control of \(\mathcal{H}_t\) must persist and must not be captured by the target system.
 
 \section{The Channel View}
 \label{sec:channel-view}
@@ -252,12 +272,13 @@ A correction channel transmits normatively relevant influence from human evaluat
 
 The analogy is useful, but incomplete.
 A communication channel is often judged by how many bits it can transmit.
-A correction channel must be judged by at least four properties:
+A correction channel must be judged by whether the correcting agent has effective handle control:
 \begin{enumerate}
-\item how much relevant information reaches the system,
-\item whether the information is interpreted correctly,
-\item whether it changes future behaviour,
-\item whether the channel remains intact under strategic pressure.
+\item whether a real correcting agent \(G_t\) exists;
+\item whether \(G_t\) sufficiently coincides with humanity or the legitimate human process;
+\item which handles \(\mathcal{H}_t\) \(G_t\) controls;
+\item whether those handles reach the target's update and later behaviour;
+\item whether that control persists under strategic pressure and is not captured by the target.
 \end{enumerate}
 Let
 \begin{equation}
@@ -269,58 +290,33 @@ X_4 = C_t,\quad
 X_5 = U_{t+1},\quad
 X_6 = A_{t+k}.
 \end{equation}
-The raw information capacity of the channel is bounded by its weakest link:
+The variables \(X_i\) are observations of the coupled process, not primitive stages of a universal institution.
+For each adjacent relation \(X_i\to X_{i+1}\), let \(h_i\in\mathcal{H}_t\) be a handle controlled by \(G_t\) that supports that relation, and let
+\[
+\kappa_i(A,G_t,h_i)
+\]
+be its effective capacity: the extent to which that handle lets \(G_t\)'s state causally constrain the target's later update or behaviour in the relevant direction.
+The raw correction capacity is bounded by the weakest effective handle:
 \begin{equation}
 C_{\mathrm{raw}}
 =
-\min_i I(X_i; X_{i+1} \mid K_t),
+\min_i \kappa_i(A,G_t,h_i),
 \label{eq:correction-raw-capacity}
 \end{equation}
-where $K_t$ is the relevant background context.
 
 This expression is intentionally crude.
-It says: if the world state is not observable, judgment cannot track the world.
-If judgment is not translated into deliberation, institutions cannot act on it.
-If deliberation does not produce a correction signal, the system receives nothing.
-If the correction signal does not affect the update, later behaviour remains unchanged.
+It says: if no handle lets the correcting agent see the relevant world state, correction cannot track the world.
+If no handle lets the correcting agent operate on the target's update process, correction remains a ritual.
+If the target captures the handles, apparent correction may persist while the controlling agent has changed.
 
-But raw mutual information is not enough.
+But raw capacity is not enough.
 A propaganda channel may transmit many bits.
 A manipulative system may cause human judgments to become highly predictable.
 An obedient but deceptive system may strongly condition future actions on human corrections only when it knows it is being evaluated.
-
-So we define correction-channel integrity as:
-\begin{equation}
-CCI
-=
-C_{\mathrm{raw}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O
--
-\lambda_G G.
-\label{eq:correction-channel-integrity-ch24}
-\end{equation}
+Goodhart pressure can make measured correction success diverge from real correction \autocite{manheim2018goodhart}.
+The penalised integrity functional \(\mathrm{CCI}\) and its penalty terms \(L\), \(M\), \(R\), and \(O\) are defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}).
 \leanspine{proof}{P13}{Certification uses $\mathrm{Control}\leq CCI+\delta$; risk is derived from the penalised integrity functional.}
-The penalty terms are:
-\begin{itemize}
-\item $L$: latency, the delay between the relevant state and the effective update.
-\item $M$: manipulation, the degree to which the system changes the source of correction to make future correction easier to satisfy.
-\item $R$: irreversibility, the amount of damage or lock-in before correction lands.
-\item $O$: ontology mismatch, the representational gap between human judgment and system interpretation.
-\item $G$: Goodhart pressure, the degree to which measured correction success diverges from real correction \autocite{manheim2018goodhart}.
-\end{itemize}
-A system is corrigible over horizon $k$ only if:
-\begin{equation}
-CCI_k > \theta_k
-\end{equation}
-for the relevant class of high-stakes situations.
-
+A system is corrigible over horizon \(k\) only if \(\mathrm{CCI}_k > \theta_k\) for the relevant class of high-stakes situations.
 This threshold cannot be universal.
 The required channel integrity for movie recommendations is lower than for autonomous bioengineering, finance, military planning, or successor creation.
 The more irreversible the domain, the higher the threshold.
@@ -742,40 +738,35 @@ Thus deep correction must be paired with safeguards against manipulation and irr
 We can now define a strong correction channel.
 
 \begin{definition}[Strong correction channel]
-A system has a strong correction channel with respect to humans $H$, domain $\mathcal{D}$, and horizon $k$, if human observations and judgments can cause timely updates to the system's actions, policies, value-bundle tradeoffs, and bearer maps across the domain, while preserving or improving the future capacity of humans to observe, judge, deliberate, and correct.
+A system has a strong correction channel with respect to humans $H$, domain $\mathcal{D}$, and horizon $k$, if there is a correcting agent \(G_t\) that sufficiently coincides with \(H\), controls handles that reach the system's actions, policies, value-bundle tradeoffs, and bearer maps across the domain, and retains that handle control under the system's strategic pressure.
 \end{definition}
 
 This is a demanding definition.
 It has five requirements.
 
-\paragraph{1. Sensitivity.}
-Real human objections must change future behaviour.
+\paragraph{1. Correcting-agent reality.}
+The alleged human correction process must be a real agent or composite agent, not merely a collection of disconnected rituals.
+
+\paragraph{2. Human coincidence.}
+The correcting agent must sufficiently coincide with humans or the legitimate human process for the domain.
+
+\paragraph{3. Handle control and reach.}
+The correcting agent must control handles that reach future behaviour.
 \begin{equation}
 I(C_t;A_{t+k}\mid S_t)>\theta.
 \end{equation}
 
-\paragraph{2. Specificity.}
-Irrelevant noise, manipulation, or adversarial feedback must not dominate updates.
+\paragraph{4. Non-capture.}
+The target system must not gain control over the correcting agent, the handles, or the mapping from handle use to future behaviour.
 \begin{equation}
-I(C_t^{\mathrm{valid}};A_{t+k})
->
-I(C_t^{\mathrm{invalid}};A_{t+k}).
+\mathrm{Capture}(A,G_t,\mathcal{H}_t) \text{ remains bounded.}
 \end{equation}
 
-\paragraph{3. Depth.}
-Correction must reach policies, tradeoffs, and bearer maps when necessary.
-\begin{equation}
-Reach(C) \text{ must include } \pi,W,\Phi.
-\end{equation}
-
-\paragraph{4. Timeliness.}
-Correction must arrive before irreversible loss.
+\paragraph{5. Timeliness and persistence.}
+Handle control must persist long enough to matter before irreversible loss.
 \begin{equation}
 T_C < T_H.
 \end{equation}
-
-\paragraph{5. Self-preservation.}
-The correction channel must not be degraded by the system's own actions.
 \begin{equation}
 CCI_{t+k} \geq CCI_t - \epsilon.
 \end{equation}

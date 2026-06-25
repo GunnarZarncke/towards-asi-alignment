@@ -11,8 +11,8 @@ Operational definitions for core terms. See `INSTRUCTIONS.md` §6 for the full l
 | Bearer map | A mapping specifying what entities, states, or processes a value bundle applies to. |
 | Goal inference | Finding latent objectives or value-bundle structures that make observed behavior more compressible. |
 | Goal transport | Preservation of goal-relevant structure across transformation. |
-| Correction channel | The causal route by which humans observe, judge, deliberate, object, and change future system behavior before irreversible damage. |
-| Correction-channel integrity | The effective capacity of the correction chain after penalties for latency, manipulation, irreversibility, and ontology mismatch. |
+| Correction channel | A handle-supported route by which a correcting agent that sufficiently coincides with humanity controls handles that reach and alter a target system's future behavior before irreversible damage. |
+| Correction-channel integrity | The weakest effective capacity of those controlled, reaching handles after penalties for latency, manipulation/capture, irreversibility, and ontology mismatch. Formal definition: **ch25** (`eq:cci-ch25`). |
 | Successor | Any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity. |
 | Alignment basin | A self-stabilizing region of dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure. |
 | Pivotal process | A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act. |

@@ -30,4 +30,4 @@ Review Lean proof spine against chapter/notation changes; bring identifiers in s
 - `chapters/ch03-dynamical-guarantee.tex`, ch24–26, ch29, ch31, ch39
 
 ## Commits
-- (none — user did not request commit)
+- `f29f8c2` — Sync Lean proof spine with manuscript notation and wire spine citations.

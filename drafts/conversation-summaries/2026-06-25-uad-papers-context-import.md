@@ -33,12 +33,19 @@ User asked to copy three new UAD papers from sibling `agency-detect` into `conte
 - Removed `STD_*` standard-library/external-assumption nodes from the proof dependency graph; it now shows only proof and bridge dependencies.
 - Fixed remaining apparent/actual graph cycles by reorienting bridge-gap edges consistently into `MB7a`–`MB7c` and `MB8`; `acyclic context/lean_proof_dependency_graph.dot` now succeeds.
 - Added the missing outgoing edge `MB8 -> P02` so the correction-process bridge contributes to layered alignment without reintroducing cycles.
+- Integrated the new UAD-paper material into manuscript chapters with self-contained additions:
+  - `chapters/ch07-finding-boundary.tex` — handles, measurement handles, what can still be found, and handle forcing.
+  - `chapters/ch10-strategic-opacity.tex` — stealth price conditional on handle coverage and boundaries over time.
+  - `chapters/ch36-passive-observation-not-enough.tex` — accumulated resources, resource records, and cumulative evidence records.
+  - `chapters/ch39b-verifiability-and-ontology-adequacy.tex` — handles/coverage/accumulated resources as the concrete form of the cost relation.
+- Verification: `python3 scripts/check_structure.py` passes. `python3 scripts/check_citations.py` still reports the repo's pre-existing missing bibliography keys, but not the new `zarncke2026access`, `zarncke2026smoothing`, or `zarncke2026stealth` citations.
 
 ## Key paths
 - `context/extracts/access-uad.md` — handle-aware access-model UAD; impossibility under access equivalence; intervention-value criterion.
 - `context/extracts/smooth-uad.md` — observation-channel distortion \(\delta_K\), effective sample size \(T_{\mathrm{eff}}\), recoverability bound.
 - `context/extracts/stealth-capability-bounds.md` — stealth–capability tradeoff; multi-resolution UAD; hidden-policy bound.
 - `context/lean_proof_dependency_graph.dot` / `.png` — updated Lean dependency graph including access/K-equivalence and hidden-BIQ nodes.
+- `chapters/ch07-finding-boundary.tex`, `chapters/ch10-strategic-opacity.tex`, `chapters/ch36-passive-observation-not-enough.tex`, `chapters/ch39b-verifiability-and-ontology-adequacy.tex` — manuscript integration points.
 - `metadata/source-canon.md` — durable source map.
 
 ## Commits

@@ -545,29 +545,7 @@ U_{t+1} &= \text{system update}, \\
 A_{t+k} &= \text{future system action}.
 \end{align}
 
-The correction-channel capacity is bounded by the weakest link:
-\begin{equation}
-C_{\mathrm{raw}}
-=
-\min_i \MI(X_i;X_{i+1}),
-\label{eq:correction-raw-capacity-ch14}
-\end{equation}
-and correction-channel integrity subtracts the usual penalties:
-\begin{equation}
-\mathrm{CCI}
-=
-C_{\mathrm{raw}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O,
-\label{eq:correction-capacity}
-\end{equation}
-where $L$ is latency, $M$ is manipulation, $R$ is irreversibility, and $O$ is ontology mismatch between human judgment and the system's internal representation.
+The correction-channel capacity \(C_{\mathrm{raw}}\) is bounded by the weakest controlled handle (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:correction-bottleneck-capacity}), and correction-channel integrity \(\mathrm{CCI}\) subtracts the usual penalties (Eq.~\eqref{eq:cci-ch25}).
 
 A high-capability system is dangerous when it increases the terms that correction must overcome:
 \begin{equation}

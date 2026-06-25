@@ -20,7 +20,7 @@ Alignment*. It re-exports the layered modules:
 | `Boundaries`    | `P05`–`P09`, `P36`, access/K non-identifiability | 6–7, 10, 36   |
 | `Capability`    | `P10`–`P13`, `P32`, `P43`, `KSys`, hidden-BIQ certificate | 11–14, 33, 36 |
 | `Bundles`       | `P14`, `P15`, `P17`–`P22`                 | 15–23         |
-| `Correction`    | `P23`–`P26`, `CCI`, chain stages | 24–27         |
+| `Correction`    | `P23`–`P26`, `CCI`, handle-controlled paths | 24–27         |
 | `Successors`    | `P27`–`P29`, `U_S` preservation           | 28–31         |
 | `Adversarial`   | `P31`, `P33`, `P34`, `P37`                | 32–37         |
 | `Philosophy`    | `P41`, `P42`, `P44`, `P45`                | 41–44         |

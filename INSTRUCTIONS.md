@@ -495,7 +495,7 @@ Explain that semantic transport is weak, bundle transport is stronger, bearer tr
 
 ### 6.8 Correction channel
 
-A correction channel is the causal route by which humans and institutions observe, judge, deliberate, object, and change future system behavior before irreversible damage occurs.
+A correction channel exists when a correcting agent that sufficiently coincides with humanity controls handles that reach and alter a target system's future behavior before irreversible damage occurs.
 
 Use:
 
@@ -505,18 +505,21 @@ W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}
 
 ### 6.9 Correction-channel integrity
 
-Correction-channel integrity is the effective capacity of the correction chain after penalties for latency, manipulation, irreversibility, and ontology mismatch.
+Correction-channel integrity is the weakest effective capacity of handles controlled by the correcting agent after penalties for latency, manipulation/capture, irreversibility, and ontology mismatch.
+
+**Canonical manuscript definition:** Chapter 25 (`ch25-correction-channel-integrity.tex`, Section `sec:correction-channel-integrity-def`, Eqs. `eq:correction-bottleneck-capacity` and `eq:cci-ch25`). Other chapters cross-reference; do not re-display the functional.
 
 Use:
 
 \[
 CCI=
-\min_i I(X_i;X_{i+1})
+C_{\mathrm{raw}}
 -\lambda_L L
 -\lambda_M M
 -\lambda_R R
 -\lambda_O O
 \]
+where \(C_{\mathrm{raw}}=\min_i \kappa_i(A,G_t,h_i)\).
 
 ### 6.10 Successor
 
@@ -678,7 +681,7 @@ Key conventions:
 - One part file per part (`parts/partNN-slug.tex`), one chapter file per chapter
   (`chapters/chNN-slug.tex`); the `NN` ordering must match the include order in
   `book.tex`. Part slugs follow the part title (e.g. `part09-safety-cases.tex`).
-- Appendices `appA`–`appH` in `appendices/`.
+- Appendices `appA`–`appI` in `appendices/`.
 - Durable project data lives in `metadata/` (e.g. `book.yml`, `source-canon.md`,
   the claims/assumptions/uncertainty ledgers, `terminology.md`, `notation.md`,
   `preamble.tex`).
@@ -697,7 +700,7 @@ towards-asi-alignment/
 ├── frontmatter/                 # titlepage, preface, introduction, executive-overview …
 ├── parts/                       # part01-reframing.tex … part10-civilizational-limit.tex
 ├── chapters/                    # ch01-….tex … ch44-….tex
-├── appendices/                  # appA-notation.tex … appH-research-program.tex
+├── appendices/                  # appA-notation.tex … appI-lean-proof-spine.tex
 ├── figures/                     # source/, generated/, tikz/
 ├── tables/                      # chapter-map.tex, notation-table.tex, artifacts-table.tex …
 ├── references/                  # main.bib + category .bib files (see §11)
@@ -757,7 +760,7 @@ The root file should include:
 \appendix
 \input{appendices/appA-notation}
 ...
-\input{appendices/appH-research-program}
+\input{appendices/appI-lean-proof-spine}
 
 \printbibliography
 \printindex
@@ -1182,7 +1185,7 @@ W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}
 
 \[
 CCI=
-\min_i I(X_i;X_{i+1})
+\min_i \kappa_i(A,G_t,h_i)
 -\lambda_L L
 -\lambda_M M
 -\lambda_R R

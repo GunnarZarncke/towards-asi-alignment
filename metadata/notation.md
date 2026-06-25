@@ -72,9 +72,10 @@ Canonical symbol reference for the manuscript. See `INSTRUCTIONS.md` §18 for th
 
 | Symbol | Meaning |
 |--------|---------|
-| $W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}$ | **Correction chain**: world → observation → judgment → decision → channel → update → action |
-| $C_{\text{raw}}$ | Bare weakest-link correction capacity $=\min_i I(X_i;X_{i+1})$ |
-| $CCI$ | **Correction-channel integrity** (the penalised value): $CCI=\min_i I(X_i;X_{i+1})-\lambda_L L-\lambda_M M-\lambda_R R-\lambda_O O$ |
+| $G_t,\mathcal{H}_t$ | Correcting agent and controlled handle set for a target system \(A\). |
+| $W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}$ | **Correction trace** induced by \(G_t\)'s controlled handles; not primitive handle roles. |
+| $C_{\text{raw}}$ | Bare weakest effective handle capacity $=\min_i \kappa_i(A,G_t,h_i)$ (canonical: **ch25**, `eq:correction-bottleneck-capacity`) |
+| $CCI$ | **Correction-channel integrity** (the penalised value): $CCI=C_{\text{raw}}-\lambda_L L-\lambda_M M-\lambda_R R-\lambda_O O$ (canonical: **ch25**, `eq:cci-ch25`; do not re-define in other chapters) |
 | $L,M,R,O$ | CCI penalty terms: Latency, Manipulability, Reversibility-loss, Ontology-mismatch (§C4; ontology symbol $O$ — retire $\Omega$/$O_{\text{mis}}$). Goodharting the channel is a *failure mode that lowers $I$ and raises $M$*, **not** a separate penalty term. |
 | $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ | CCI penalty weights |
 | $U_H$ | **Human value-update operator** (§C7): how civilization revises values, $V_{t+1}=U_H(V_t,E_t,D_t)$. Alignment target: preserve and assist $U_H$, not freeze $V_t$. Drop legacy forms $U_t$, $U^H_t$. |
@@ -82,7 +83,7 @@ Canonical symbol reference for the manuscript. See `INSTRUCTIONS.md` §18 for th
 | $V_t$ | **Value-state tuple** (roman; retire $\mathcal V_t$). Full object = ch04 5-tuple $V_t=(B_t,W_t,\Phi_t,U_H,C_H)$; a chapter may project to the sub-tuple it uses (e.g. $(B_t,W_t,\Phi_t)$) *if it says so* (§C7). |
 | $C_H$ | Human correction capacity (component of $V_t$) |
 
-> **Terminology (§C16, settled):** *capacity* = $C_{\text{raw}}$ (the MI weakest-link); *integrity* = $CCI$ (capacity minus penalties). Never use the two interchangeably. **Retired:** $C_{\text{corr}}$ (was ambiguous between raw and penalised). (Distinct from $C^{\text{society}}_{\text{corr}}(t_0)$, the ch05 societal correction-capacity scalar.)
+> **Terminology (§C16, settled):** *capacity* = $C_{\text{raw}}$ (the weakest effective handle capacity); *integrity* = $CCI$ (capacity minus penalties). Never use the two interchangeably. **Retired:** $C_{\text{corr}}$ (was ambiguous between raw and penalised). (Distinct from $C^{\text{society}}_{\text{corr}}(t_0)$, the ch05 societal correction-capacity scalar.)
 
 ## Successors and certification
 

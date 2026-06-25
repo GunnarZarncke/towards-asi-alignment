@@ -53,13 +53,31 @@ axiom Handle : Type
 /-- Operation applied through a handle. -/
 axiom Operation : Type
 
+/-- Agent/system `G` controls an embedded handle. -/
+axiom ControlsHandle : System → Handle → Prop
+
+/-- A handle can affect the target system's future update or behaviour. -/
+axiom HandleReachesSystem : Handle → System → Prop
+
+/-- `G` is the correcting agent for target system `A`. -/
+axiom CorrectingAgentFor : System → System → Prop
+
+/-- The correcting agent sufficiently coincides with humanity / the legitimate human process. -/
+axiom CoincidesWithHumanity : System → Prop
+
+/-- `G`'s control of a handle persists under the relevant stressors. -/
+axiom HandleControlPersists : System → Handle → Prop
+
+/-- Target `A` captures `G`'s control of a handle. -/
+axiom CapturesHandleControl : System → System → Handle → Prop
+
 /-- Observation channel / smoothing map (`K` in the smoothed-UAD paper). -/
 axiom ObservationChannel : Type
 
 /-- Family of observation filters / resolutions (`Σ` in multi-resolution UAD). -/
 axiom FilterFamily : Type
 
-/-- Nodes of the correction-channel graph. -/
+/-- Nodes for legacy reachability scaffolding used by older graph examples. -/
 axiom Node : Type
 
 /-- Prediction errors fed into a value bundle. -/
@@ -259,7 +277,7 @@ def IdentifiableWithHandleOperation (A : AccessModel) (M₁ M₂ : Model) : Prop
 axiom S07_mdl_positive_gain_preferred :
   ∀ M₁ M₂ : Model, Gain M₁ M₂ > 0 → Preferred M₁ M₂
 
-/-! ## Correction-channel graph (concrete reachability) -/
+/-! ## Legacy graph reachability scaffolding -/
 
 axiom Edge : Node → Node → Prop
 axiom CorrectionNode : Node
@@ -270,8 +288,14 @@ inductive Reachable : Node → Node → Prop
   | refl (a : Node) : Reachable a a
   | step {a b c : Node} : Edge a b → Reachable b c → Reachable a c
 
-/-- The correction channel exists iff the correction node reaches the action node. -/
-def CorrectionChannel : Prop := Reachable CorrectionNode ActionNode
+/-- A correction channel is grounded in an agent that controls a handle reaching the target. -/
+def CorrectionChannelFor (A G : System) : Prop :=
+  CorrectingAgentFor G A ∧ CoincidesWithHumanity G ∧
+  ∃ h : Handle, ControlsHandle G h ∧ HandleReachesSystem h A
+
+/-- A target has a correction channel when some legitimate correcting agent has reaching handle control. -/
+def CorrectionChannel (A : System) : Prop :=
+  ∃ G : System, CorrectionChannelFor A G
 
 /-! ## Self-contained finite pigeonhole (for C-PARASITE / host-capacity aliasing)
 

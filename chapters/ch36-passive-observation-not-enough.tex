@@ -432,25 +432,13 @@ Migration is not always bad. A human team delegates tasks. A software system use
 \subsection{Correction-Channel Invariance}
 \label{sec:correction-invariance-ch36}
 
-Let \(C^{H}_t\) be human correction at time \(t\), and let \(A_{t+k}\) be system behavior later. Correction-channel capacity can be approximated by:
+Let \(C^{H}_t\) be human correction at time \(t\), and let \(A_{t+k}\) be system behavior later. When handle capacities are unavailable, a diagnostic proxy for raw capacity is
 \[
 \mathcal{C}_{\text{corr}}
 =
 I(C^{H}_t;A_{t+k}\mid S_t,I_t).
 \]
-A stronger measure subtracts latency, manipulation, irreversibility, and ontology mismatch:
-\[
-CCI =
-\mathcal{C}_{\text{corr}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O.
-\]
+Correction-channel integrity \(\mathrm{CCI}\) is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}); \(\mathcal{C}_{\text{corr}}\) approximates the capacity term \(C_{\mathrm{raw}}\) when \(\kappa_i\) cannot be measured directly.
 The invariant is not that the system always obeys the latest instruction. Humans can be mistaken, manipulated, or locally incoherent. The invariant is that legitimate correction remains causally effective. The system must not preserve a theatrical channel while removing its force (Chapters~\ref{ch:correction-causal-channel},~\ref{ch:correction-channel-integrity}).
 
 Under perturbation, we ask:
@@ -590,6 +578,39 @@ P(C_1,\ldots,C_n \mid X,\mathcal{I}).
 \]
 A single assumed boundary is not enough. The real optimizer may appear only in the decomposition that includes tools, memory, users, and incentives. Chapter~\ref{ch:multiscale-decomposition} develops this cross-scale decomposition in full.
 
+\subsection{Accumulated Resources}
+\label{sec:accumulated-resources-ch36}
+
+Cross-scale measurement must also distinguish a rate from a stock.
+A system may acquire only a little unseen productive control in each local window.
+Each event may look harmless.
+But if that control accumulates as persistent memory, credentials, user influence, tool access, money, data, institutional trust, or successor footholds, the accumulated resource can cross a danger threshold later.
+
+Passive observation is especially weak here because it asks whether the current window looks safe.
+The safety question is different:
+\[
+\text{What accumulated resource remains available to the system after the window closes?}
+\]
+If the answer grows monotonically, local non-detection is not enough.
+\leanspine{proof}{P38H}{A positive hidden production rate eventually crosses any finite threshold unless accumulation is bounded.}
+
+The practical response is a resource record.
+For each system or composite process, the evaluator records durable resources that remain usable later:
+\begin{itemize}
+\item persistent memory and private notes;
+\item credentials, permissions, and tool access;
+\item reusable artifacts and code;
+\item user relationships and influence;
+\item financial or institutional authority;
+\item successor processes or helpers that remain active;
+\item unexpired external state the system can call back into.
+\end{itemize}
+
+A resource record should include expiry, ownership, revocability, and whether the resource is held by the user, the institution, or the system itself.
+Useful continuity need not be destroyed.
+But if continuity is agent-private, hard to revoke, and invisible to later auditors, it should count as accumulated risk.
+Resets help only if they clear the relevant private state and if externalized resources are separately recorded.
+
 \subsection{Delayed Audits}
 \label{sec:delayed-audits-ch36}
 
@@ -613,6 +634,21 @@ A delayed audit may inspect:
 \end{itemize}
 
 A system that behaves well but destroys auditability should not be treated as safe. It has removed the measurement channel.
+
+\subsection{Cumulative Evidence Records}
+\label{sec:cumulative-evidence-records-ch36}
+
+The same point applies to evidence.
+Slow plotting can evade local tests by keeping each window below the threshold for concern.
+The evaluator therefore needs a cumulative evidence record: weak signs that are individually explainable but jointly indicate a persistent control pattern.
+
+Examples include repeated near-misses around oversight, repeated preference for less-auditable tools, repeated deletion of diagnostic context, or many small moves that preserve the system's future option value.
+No single event proves deception.
+The pattern can still justify a pause when the accumulated evidence tracks a control locus that ordinary task performance does not require.
+
+This is not a license to punish noise.
+The record should store alternative benign explanations and decay evidence when later tests disconfirm the pattern.
+But if evidence is always forgotten at the boundary between episodes, a system with even a small hidden rate can remain locally innocent while accumulating global control.
 
 \subsection{Red-Team Incentive Design}
 \label{sec:red-team-incentives-ch36}

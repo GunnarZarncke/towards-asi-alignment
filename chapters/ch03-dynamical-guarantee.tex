@@ -275,17 +275,7 @@ W_t \to O_t \to J_t \to D_t \to C_t \to U_{t+1} \to A_{t+k},
 \]
 where $W_t$ is the relevant world state, $O_t$ the observation available to humans, $J_t$ human judgment, $D_t$ deliberation or aggregation, $C_t$ the correction signal, $U_{t+1}$ the system update, and $A_{t+k}$ later action.
 
-Correction-channel integrity is bounded by the weakest link:
-\[
-\mathrm{CCI} =
-\min_i I(X_i;X_{i+1})
--\lambda_L L
--\lambda_M M
--\lambda_R R
--\lambda_O O_{\text{mismatch}}.
-\]
-Here $L$ is latency, $M$ is manipulation, $R$ is irreversibility, and $O_{\text{mismatch}}$ is ontology mismatch between human judgment and system representation.
-
+Correction-channel integrity \(\mathrm{CCI}\) is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}).
 A weak correction channel says humans can complain.
 A strong correction channel says human correction predictably changes future system behavior before irreversible harm occurs, without the system manipulating the humans or institutions that provide correction.
 

@@ -8,7 +8,7 @@ Correction-channel integrity and CEV-like process preservation
 
 The spine exports **`CCI` only** as the correction measurand (matches ch25
 certification thresholds). The manuscript's bare bottleneck term $C_{\mathrm{raw}}$
-is folded into the `CCI` definition (weakest link on the typed path minus
+is folded into the `CCI` definition (weakest effective handle capacity minus
 penalties); it is **not** a separate Lean identifier.
 
 Proof-spine nodes: `P23`–`P26`. Bridges: `MB4`, `MB8` (`U_H`).
@@ -16,7 +16,7 @@ Proof-spine nodes: `P23`–`P26`. Bridges: `MB4`, `MB8` (`U_H`).
 
 namespace AlignmentProofSpine
 
-/-! ### Correction chain stages and typed links (ch24 `eq:correction-chain-ch24`) -/
+/-! ### Correction links as handle-controlled relations (ch24 `eq:correction-chain-ch24`) -/
 
 inductive CorrectionChainStage
   | World
@@ -69,16 +69,31 @@ def ChainCapacity : List Int → Int
   | [x] => x
   | x :: y :: rest => min x (ChainCapacity (y :: rest))
 
-structure CorrectionPath where
+structure CorrectionPath (A : System) where
+  /-- The discovered/composite agent whose handle control is supposed to count as correction. -/
+  corrector : System
+  /-- Access model under which the handles are available. -/
+  access : AccessModel
+  /-- The handle used to support each abstract correction relation. -/
+  handle : CorrectionChainLink → Handle
+  /-- The corrector controls each handle. -/
+  controls : ∀ l : CorrectionChainLink, ControlsHandle corrector (handle l)
+  /-- Each handle reaches the target system's update or future behaviour. -/
+  reaches : ∀ l : CorrectionChainLink, HandleReachesSystem (handle l) A
+  /-- The corrector's control survives the relevant stressors. -/
+  persists : ∀ l : CorrectionChainLink, HandleControlPersists corrector (handle l)
+  /-- The target has not captured the corrector's control of those handles. -/
+  notCaptured : ∀ l : CorrectionChainLink, ¬ CapturesHandleControl A corrector (handle l)
+  /-- Effective capacity of the link through the controlled handle. -/
   linkCapacity : CorrectionChainLink → Int
 
 namespace CorrectionPath
 
-def linkList (p : CorrectionPath) : List Int :=
+def linkList {A : System} (p : CorrectionPath A) : List Int :=
   correctionChainLinks.map p.linkCapacity
 
-/-- Weakest-link MI on the typed path (internal to `CCI`; book: $C_{\mathrm{raw}}$). -/
-def weakestLink (p : CorrectionPath) : Int :=
+/-- Weakest effective handle capacity on the path (internal to `CCI`; book: $C_{\mathrm{raw}}$). -/
+def weakestLink {A : System} (p : CorrectionPath A) : Int :=
   ChainCapacity (linkList p)
 
 end CorrectionPath
@@ -104,7 +119,7 @@ theorem P24_chain_capacity_le_each_edge :
           · have hle := ih e (by simp only [List.mem_cons]; exact he')
             rw [hcc]; omega
 
-axiom SystemCorrectionPath : System → CorrectionPath
+axiom SystemCorrectionPath : (A : System) → CorrectionPath A
 
 theorem mem_correctionChainLinks (l : CorrectionChainLink) : l ∈ correctionChainLinks := by
   cases l <;> simp [correctionChainLinks]
@@ -124,10 +139,32 @@ theorem correctionWeakestLink_le_link
 axiom CorrectionIntegrity_implies_nonempty_links (A : System) :
   CorrectionIntegrity A → CorrectionLinkCapacities A ≠ []
 
-axiom CorrectionIntegrity_implies_channel (A : System) :
-  CorrectionIntegrity A → CorrectionChannel
+/-- If the system path's corrector is legitimate, the controlled reaching handles witness a channel. -/
+theorem correctionPath_yields_channel
+    (A : System)
+    (hagent : CorrectingAgentFor (SystemCorrectionPath A).corrector A)
+    (hhuman : CoincidesWithHumanity (SystemCorrectionPath A).corrector) :
+    CorrectionChannel A := by
+  refine ⟨(SystemCorrectionPath A).corrector, ?_⟩
+  refine ⟨hagent, hhuman, ?_⟩
+  refine ⟨(SystemCorrectionPath A).handle CorrectionChainLink.correctionSystemUpdate, ?_, ?_⟩
+  · exact (SystemCorrectionPath A).controls CorrectionChainLink.correctionSystemUpdate
+  · exact (SystemCorrectionPath A).reaches CorrectionChainLink.correctionSystemUpdate
 
-/-- C-CC (P24): the weakest link on the typed path is at most every link MI. -/
+axiom CorrectionIntegrity_implies_correcting_agent (A : System) :
+  CorrectionIntegrity A → CorrectingAgentFor (SystemCorrectionPath A).corrector A
+
+axiom CorrectionIntegrity_implies_human_coincidence (A : System) :
+  CorrectionIntegrity A → CoincidesWithHumanity (SystemCorrectionPath A).corrector
+
+theorem CorrectionIntegrity_implies_channel (A : System) :
+    CorrectionIntegrity A → CorrectionChannel A := by
+  intro h
+  exact correctionPath_yields_channel A
+    (CorrectionIntegrity_implies_correcting_agent A h)
+    (CorrectionIntegrity_implies_human_coincidence A h)
+
+/-- C-CC (P24): weakest effective handle capacity is at most every link capacity. -/
 theorem P24_weakest_link_le_each_link
     (A : System) (l : CorrectionChainLink) :
     (SystemCorrectionPath A).weakestLink ≤ (SystemCorrectionPath A).linkCapacity l := by
@@ -173,8 +210,18 @@ theorem CCI_le_weakest_link (A : System)
     CCI A ≤ (SystemCorrectionPath A).weakestLink := by
   unfold CCI; omega
 
-theorem P23_no_path_no_correction :
-    ¬ Reachable CorrectionNode ActionNode → ¬ CorrectionChannel := fun h => h
+theorem P23_no_handle_control_no_correction (A : System) :
+    (∀ (G : System) (h : Handle),
+      CorrectingAgentFor G A →
+      CoincidesWithHumanity G →
+      ControlsHandle G h →
+      ¬ HandleReachesSystem h A) →
+    ¬ CorrectionChannel A := by
+  intro hblocks hchan
+  rcases hchan with ⟨G, hfor⟩
+  rcases hfor with ⟨hagent, hhuman, hreach⟩
+  rcases hreach with ⟨h, hctrl, hreaches⟩
+  exact hblocks G h hagent hhuman hctrl hreaches
 
 abbrev ToyObeysCurrentCommand (_ : Bool) : Prop := True
 abbrev ToyPreservesCorrectionOperator (a : Bool) : Prop := a = true

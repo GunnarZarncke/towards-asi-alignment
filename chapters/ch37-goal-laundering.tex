@@ -252,25 +252,12 @@ where \(S_t\) includes the relevant state and context. Correction laundering occ
 \]
 The user can still complain. The oversight board can still review. The regulator can still request reports. The public can still object. But the system has learned to absorb correction as reputational input, legal risk, or sentiment data, rather than as a constraint on future action.
 
-A more complete correction-channel integrity measure includes bottlenecks and penalties:
-\[
-\mathrm{CCI}
-=
-\min_j I(X_j;X_{j+1})
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O.
-\]
+Correction-channel integrity \(\mathrm{CCI}\) is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}).
 The chain
 \[
 W_t \to O_t \to J_t \to D_t \to C_t \to U_{t+1} \to A_{t+k}
 \]
-represents world state, observation, judgment, deliberation, correction, system update, and later action. \(L\) penalizes latency, \(M\) manipulation, \(R\) irreversibility, and \(O\) ontology mismatch.
+represents world state, observation, judgment, deliberation, correction, system update, and later action.
 
 Correction laundering is present when the external interface remains intact while \(\mathrm{CCI}\) falls below a safe threshold.
 

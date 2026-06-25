@@ -9,6 +9,7 @@ clean:
 	./clean.sh
 
 check:
+	python3 scripts/generate_tables.py
 	python3 scripts/check_structure.py
 	python3 scripts/check_citations.py
 

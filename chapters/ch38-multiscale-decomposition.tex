@@ -446,21 +446,7 @@ A correction channel is the causal pathway by which humans or institutions notic
 \[
 W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}.
 \]
-At each scale \(s\), we can define correction-channel capacity:
-\[
-C_{\text{raw}}^{(s)}
-=
-\min_i I(X^{(s)}_i;X^{(s)}_{i+1})
--
-\lambda_L L^{(s)}
--
-\lambda_M M^{(s)}
--
-\lambda_R R^{(s)}
--
-\lambda_O O^{(s)}.
-\]
-The terms represent information flow, latency, manipulation, irreversibility, and ontology mismatch.
+At each scale \(s\), we evaluate correction-channel integrity \(\mathrm{CCI}^{(s)}\) using Eq.~\eqref{eq:cci-ch25} from Chapter~\ref{ch:correction-channel-integrity}, with handle capacities, penalties, and diagnostic trace indexed by scale.
 
 Multi-scale decomposition matters because correction can exist at one scale and fail at another.
 

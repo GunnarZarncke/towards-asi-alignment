@@ -45,8 +45,8 @@ digraph LeanProofDependencies {
   P37 [label="P37 Decomposition nonmonotonicity\nrefinement need not preserve agency", fillcolor="#FFF6E6"];
 
   // Correction channel and CEV-like process
-  P21 [label="P21 No path, no correction\n¬Reachable(C,A) ⇒ ¬Correction", fillcolor="#FFF0FB"];
-  P22 [label="P22 Weakest-link capacity\nchain capacity ≤ each edge", fillcolor="#FFF0FB"];
+  P21 [label="P21 No handle control, no correction\nno legitimate reaching handle ⇒ ¬Correction", fillcolor="#FFF0FB"];
+  P22 [label="P22 Weakest handle capacity\nhandle path capacity ≤ each link", fillcolor="#FFF0FB"];
   P23 [label="P23 Too-late correction fails\nlatency > irreversibility", fillcolor="#FFF0FB"];
   P24 [label="P24 Obedience ≠ correction preservation", fillcolor="#FFF0FB"];
   P25 [label="P25 Manipulated consent invalid\nchanged judge breaks channel", fillcolor="#FFF0FB"];
@@ -108,7 +108,7 @@ digraph LeanProofDependencies {
   P18 -> P36 [label="C-LAUNDER: semantic continuity insufficient"];
   P14 -> MB2 [label="C-SAMPLE: tractable if identifiable", style=dashed];
 
-  P21 -> P22 [label="C-CC: channel as graph chain"];
+  P21 -> P22 [label="C-CC: channel as handle path"];
   P22 -> P23 [label="C-CC: capacity not enough if late"];
   P21 -> P24 [label="C-CEV: obedience lacks update path"];
   P22 -> P24 [label="C-CEV: preserve operator, not command"];

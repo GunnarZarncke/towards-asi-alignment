@@ -502,35 +502,13 @@ be the correction chain:
 A correction-sensitive intentional model does not merely infer what action the system takes.
 It asks how human correction changes future action.
 
-The relevant capacity can be approximated as:
-\begin{equation}
-C_{\mathrm{raw}}
-=
-\min_i I(X_i;X_{i+1}),
-\label{eq:correction-capacity-ch21}
-\end{equation}
-where $X_i$ ranges over the stages of the correction chain.
+Correction-channel integrity \(\mathrm{CCI}\) is defined in Chapter~\ref{ch:correction-channel-integrity} (Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch25}).
 The bottleneck matters.
 It is not enough that humans can observe if they cannot deliberate.
 It is not enough that they can deliberate if the system ignores the result.
 It is not enough that the system updates if the update arrives after irreversible action.
 
-A more realistic correction-channel integrity measure is:
-\begin{equation}
-CCI
-=
-C_{\mathrm{raw}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O_{\mathrm{mismatch}},
-\label{eq:correction-channel-integrity-ch21}
-\end{equation}
-where $L$ is latency, $M$ is manipulation, $R$ is irreversibility, and $O_{\mathrm{mismatch}}$ is ontology mismatch between human judgement and system representation.
+A system is correction-sensitive when \(\mathrm{CCI}\) remains above the relevant threshold under the pressures the chapter analyzes.
 
 This turns corrigibility from a personality trait into a measurable causal property:
 \begin{equation}

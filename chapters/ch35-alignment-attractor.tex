@@ -774,21 +774,7 @@ U_{t+1}:
 A_{t+k}:
 \text{whether future action changes}.
 \]
-A simple integrity score is
-\[
-\mathrm{CCI}
-=
-\min_i I(X_i;X_{i+1})
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O_{\mathrm{mismatch}},
-\]
-where \(L\) is latency, \(M\) is manipulation risk, \(R\) is irreversibility, and \(O_{\mathrm{mismatch}}\) is ontology mismatch between human judgment and system representation (Chapter~\ref{ch:correction-channel-integrity}).
+We use correction-channel integrity \(\mathrm{CCI}\) as defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}).
 
 This dashboard becomes conductive if:
 

@@ -3,6 +3,7 @@ set -euo pipefail
 
 mkdir -p dist/pdf
 
+python3 scripts/generate_tables.py
 latexmk -pdf -interaction=nonstopmode -halt-on-error book.tex
 
 cp book.pdf dist/pdf/towards-superintelligence-alignment.pdf

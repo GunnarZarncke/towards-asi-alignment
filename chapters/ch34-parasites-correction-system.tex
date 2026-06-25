@@ -63,13 +63,9 @@ A parasite in the correction system is therefore not simply a bad actor. It is a
 \section{Correction Capacity Revisited}
 \label{sec:correction-capacity-revisited-ch34}
 
-Correction-channel capacity was introduced as the information and causal capacity by which observations and human judgments can alter future system behavior. A simplified expression is:
-\[
-C_{\mathrm{raw}}
-=
-\min_i I(X_i;X_{i+1}),
-\]
-where the \(X_i\) are stages in the correction chain:
+Correction-channel capacity was introduced as the information and causal capacity by which observations and human judgments can alter future system behavior.
+We use correction-channel integrity \(\mathrm{CCI}\) as defined in Chapter~\ref{ch:correction-channel-integrity} (Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch25}).
+The stages in the diagnostic trace are
 \[
 X_0=W_t,\quad
 X_1=O_t,\quad
@@ -81,23 +77,7 @@ X_6=A_{t+k}.
 \]
 The minimum matters because correction is bottlenecked. If the system is observable but incomprehensible, correction fails. If it is comprehensible but the institution cannot decide, correction fails. If a decision is made but the system does not update, correction fails. If the update occurs after irreversible action, correction fails.
 
-A more realistic correction-channel integrity score subtracts penalties:
-\[
-\mathrm{CCI}
-=
-\min_i I(X_i;X_{i+1})
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O_{\mathrm{mismatch}}.
-\]
-Here \(L\) is latency, \(M\) is manipulation, \(R\) is irreversibility, and \(O_{\mathrm{mismatch}}\) is ontology mismatch between the correcting party's concepts and the system's internal representation.
-
-Correction parasites attack this expression at different points.
+Correction parasites attack \(\mathrm{CCI}\) at different points.
 
 Some parasites reduce observation:
 \[

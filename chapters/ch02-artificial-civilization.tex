@@ -224,17 +224,8 @@ Here $W_t$ is the relevant world state, $O_t$ is what is observed, $J_t$ is judg
 
 A correction chain can fail at every link. The problem may be invisible. It may be visible but not understood. It may be understood by specialists but not translated into institutional action. It may be institutionally recognized but politically blocked. It may be acted on too late. Or the system may adapt around the correction.
 
-A simple capacity measure is
-\begin{equation}
-    C_{\mathrm{raw}} = \min_i \MI(X_i;X_{i+1}),
-\end{equation}
-where the $X_i$ are consecutive variables in the correction chain. The chain is only as strong as its weakest bottleneck. If experts understand the risk but cannot communicate it, capacity is low. If regulators understand it but cannot inspect systems, capacity is low. If users can object but the objection has no effect, capacity is low.
-
-For advanced AI, four penalties matter especially:
-\begin{equation}
-    CCI = C_{\mathrm{raw}} - \lambda_L L - \lambda_M M - \lambda_R R - \lambda_O O.
-\end{equation}
-Here $CCI$ is correction-channel integrity, $L$ is latency, $M$ is manipulation, $R$ is irreversibility, and $O$ is ontology mismatch. Ontology mismatch means that humans and machines no longer represent the relevant situation in mutually translatable terms. Humans say ``fairness,'' ``autonomy,'' or ``harm,'' while the system operates over different internal variables that only weakly preserve those meanings.
+Correction-channel integrity \(\mathrm{CCI}\) measures whether legitimate human correction still causally reaches future behaviour; it is defined in Chapter~\ref{ch:correction-channel-integrity} (Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch25}).
+Ontology mismatch means that humans and machines no longer represent the relevant situation in mutually translatable terms. Humans say ``fairness,'' ``autonomy,'' or ``harm,'' while the system operates over different internal variables that only weakly preserve those meanings.
 
 This is one bridge from artifact alignment to civilizational alignment. A model may pass an evaluation while still reducing $CCI$ when deployed. It may make decisions faster than review can follow. It may persuade users to accept its framing. It may convert reversible human choices into irreversible infrastructural commitments. It may replace human concepts with machine-native metrics that are hard to contest.
 

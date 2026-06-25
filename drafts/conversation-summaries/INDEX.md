@@ -4,6 +4,10 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-25 | CCI canonical definition — single home in ch25, cross-refs elsewhere | [2026-06-25-cci-canonical-definition.md](2026-06-25-cci-canonical-definition.md) |
+| 2026-06-25 | Handle-controlled correction channel and CCI refactor | [2026-06-25-handle-controlled-correction-channel.md](2026-06-25-handle-controlled-correction-channel.md) |
+| 2026-06-25 | Remove direct UAD paper citations from manuscript prose | [2026-06-25-uad-citation-removal.md](2026-06-25-uad-citation-removal.md) |
+| 2026-06-25 | Lean proof-spine appendix in mathematical form | [2026-06-25-lean-proof-appendix.md](2026-06-25-lean-proof-appendix.md) |
 | 2026-06-25 | Import three new UAD papers from agency-detect into context + extracts | [2026-06-25-uad-papers-context-import.md](2026-06-25-uad-papers-context-import.md) |
 | 2026-06-23 | Lean spine sync: U_H/U_S, CCI-only, SuccessorSafe, spine citations | [2026-06-23-lean-spine-notation-sync.md](2026-06-23-lean-spine-notation-sync.md) |
 | 2026-06-23 | Continuity review re-scan: ch08 seven-props, WWCTV, pivotal, ch24/ch23, review update | [2026-06-23-continuity-review-verification-fixes.md](2026-06-23-continuity-review-verification-fixes.md) |

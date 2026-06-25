@@ -277,3 +277,25 @@ chapters:
     word_target: 8000
     formal_density: low
     reviewer_needed: [alignment, governance]
+
+parts:
+  part01:
+    summary: "Reframes the alignment problem."
+  part02:
+    summary: "Develops a non-anthropomorphic account of agents and boundaries."
+  part03:
+    summary: "Treats capability as boundary information and studies growth."
+  part04:
+    summary: "Introduces value bundles."
+  part05:
+    summary: "Upgrades goal inference into bundle and bearer inference."
+  part06:
+    summary: "Develops correction channels and extrapolative correction processes."
+  part07:
+    summary: "Studies successors and conserved properties."
+  part08:
+    summary: "Analyzes socio-technical selection and attractor basins."
+  part09:
+    summary: "Turns the framework into adversarial measurement, safety cases, and open cruxes."
+  part10:
+    summary: "Reaches the philosophical limit: value change, human--AI merger, and what cannot be solved technically."

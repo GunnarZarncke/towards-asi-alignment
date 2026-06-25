@@ -44,7 +44,7 @@ Body text introduces every central concept from first principles.
 | Item | Status |
 |------|--------|
 | Milestone | **Third** in progress — Parts I–II largely drafted (Ch. 5 partial) |
-| Structure | 10 parts, **44 chapters**, 8 appendices |
+| Structure | 10 parts, **44 chapters**, 9 appendices |
 | Chapters | **10 drafted**, **1 partial** (Ch. 5), **33 stub** (see `metadata/book.yml`) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
 | PDF | [**Download latest draft**](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
@@ -90,7 +90,7 @@ metadata/
 chapters/                   # ch01–ch44 (one .tex file per chapter)
 parts/                      # 10 part include files
 frontmatter/                # title page, introduction, executive overview
-appendices/                 # 8 appendix stubs
+appendices/                 # 9 appendices, including the Lean proof-spine appendix
 references/                 # BibLaTeX by category (see below)
 tables/                     # chapter map, notation, artifacts
 figures/                    # source, generated, tikz
@@ -134,7 +134,7 @@ steps and keeps empirical/philosophical claims explicit as bridge `axiom`s
 | IX. Safety Cases, Adversaries, and Open Questions | 36–40 | Observation limits, goal laundering, safety case, lethality stress test |
 | X. The Philosophical and Civilizational Limit | 41–44 | Value change, drift, bearers, closing synthesis |
 
-Full titles and status: `metadata/book.yml` (source of truth), `tables/chapter-map.tex` (maintainer table; not in PDF).
+Full titles and status: `metadata/book.yml` (source of truth). Roadmap tables in `tables/chapter-map.tex` and `tables/part-roadmap*.tex` are **auto-generated** at build time from `book.yml` and `parts/part*.tex` (`scripts/generate_tables.py`).
 
 ---
 

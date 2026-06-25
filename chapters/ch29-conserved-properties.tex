@@ -474,35 +474,7 @@ where:
 \item \(A_{t+k}\) is later system action.
 \end{itemize}
 
-The capacity of the correction channel is bounded by the weakest link:
-\[
-C_{\mathrm{raw}}
-=
-\min_i I(X_i;X_{i+1}),
-\]
-with \(X_i\) ranging over the variables in the correction chain.
-Correction-channel integrity then subtracts penalties for latency, manipulation, irreversibility, and ontology mismatch:
-\[
-\mathrm{CCI}
-=
-C_{\mathrm{raw}}
--
-\lambda_L L
--
-\lambda_M M
--
-\lambda_R R
--
-\lambda_O O.
-\]
-Here:
-
-\begin{itemize}
-\item \(L\) is correction latency.
-\item \(M\) is manipulation of the correcting humans or institutions.
-\item \(R\) is irreversibility before correction can land.
-\item \(O_{\mathrm{mismatch}}\) is mismatch between human concepts and system representations.
-\end{itemize}
+Correction-channel integrity \(\mathrm{CCI}\) is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}).
 
 A successor conserves correction-channel capacity when:
 \[
