@@ -37,7 +37,7 @@ cd formal && lake build  # success
 
 ## Commit
 
-- Hash: (pending)
+- Hash: `6313d6e`
 - Staged: Lean spine modules above + Appendix I + this log + INDEX row.
 - **Not staged** (other working-tree edits): definition-deduplication chapter cross-refs, `context/Alignment Attractor.md`, `2026-06-26-definition-deduplication-pass.md`, LaTeX aux save-error files.
 
