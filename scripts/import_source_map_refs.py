@@ -98,6 +98,30 @@ INTERNAL_PAPERS = """
   note        = {Source: ../agency-detect/docs/papers/construction-without-understanding/; extract: context/extracts/construction-without-understanding.md},
 }
 
+@techreport{zarncke2026access,
+  author      = {Zarncke, Gunnar},
+  title       = {Handles Before Interventions: Access-Model UAD and the Embedded Semantics of Agency Tests},
+  institution = {AE Studio},
+  year        = {2026},
+  note        = {Source: ../agency-detect/docs/papers/access-uad/; extract: context/extracts/access-uad.md},
+}
+
+@techreport{zarncke2026smoothing,
+  author      = {Zarncke, Gunnar},
+  title       = {Recoverability of Smoothed Agent Boundaries in Unsupervised Agent Discovery},
+  institution = {AE Studio},
+  year        = {2026},
+  note        = {Source: ../agency-detect/docs/papers/smooth-uad/; extract: context/extracts/smooth-uad.md},
+}
+
+@techreport{zarncke2026stealth,
+  author      = {Zarncke, Gunnar},
+  title       = {Stealth--Capability Bounds for Multi-Resolution Unsupervised Agent Discovery},
+  institution = {AE Studio},
+  year        = {2026},
+  note        = {Source: ../agency-detect/docs/papers/stealth-capability-bounds/; extract: context/extracts/stealth-capability-bounds.md},
+}
+
 @techreport{zarncke2025loop-hub-value,
   author      = {Zarncke, Gunnar},
   title       = {Loop--Hub--Value Model: From Free-Energy Loops to Intrinsic Values},
@@ -159,6 +183,20 @@ INTERNAL_PAPERS = """
   title        = {UAD Literature Review},
   year         = {2025},
   note         = {Source: ../agency-detect/docs/papers/uad-literature-review/; extract: context/extracts/uad-literature-review.md},
+}
+
+@misc{zarncke2026rainbow,
+  author = {Zarncke, Gunnar},
+  title  = {Rainbow Parameterization: Separable Dimensions of Bandwidth, Opacity, Recursion, and Self-Bottleneck Strength},
+  year   = {2026},
+  note   = {Manuscript in preparation, companion to this research program}
+}
+
+@misc{zarncke2026value-bottleneck,
+  author = {Zarncke, Gunnar},
+  title  = {Value Learning Needs a Low-Dimensional Bottleneck},
+  year   = {2026},
+  note   = {Manuscript in preparation, brain-to-values research program}
 }
 """
 
@@ -567,6 +605,8 @@ ALIASES = {
     "ZarnckeAttractors": "zarncke2025attractor",
     "ZarnckeAcausal": "zarncke2025acausal",
     "uad2025": "zarncke2025uad",
+    "biq2025": "zarncke2025biq",
+    "eis2025": "zarncke2025endogenized",
     "abc2025": "zarncke2025attractor",
     "ConantAshby1970": "conant1970regulator",
     "Friston2010": "friston2010free",
@@ -604,6 +644,9 @@ INTERNAL_KEYS = {
     "zarncke2025endogenized",
     "zarncke2025preference",
     "zarncke2025construction",
+    "zarncke2026access",
+    "zarncke2026smoothing",
+    "zarncke2026stealth",
     "zarncke2025loop-hub-value",
     "zarncke2025lhcv",
     "zarncke2025unit-of-caring",
@@ -614,8 +657,7 @@ INTERNAL_KEYS = {
     "zarncke2025alignment-attractor",
     "zarncke2025uad-review",
     "zarncke2026rainbow",
-    "uad2025",
-    "abc2025",
+    "zarncke2026value-bottleneck",
 }
 
 ALIGNMENT_PATTERNS = re.compile(
@@ -740,6 +782,11 @@ def main() -> int:
             missing.append(str(bib_path))
 
     merged = merge_entries(texts)
+
+    # Drop agency-detect short keys when the book's canonical entry already exists.
+    for alias, canonical in ALIASES.items():
+        if alias in merged and canonical in merged:
+            del merged[alias]
 
     # Write alias stubs pointing to canonical keys (biblatex crossref)
     for alias, canonical in ALIASES.items():

@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-25 | Import three new UAD papers from agency-detect into context + extracts | [2026-06-25-uad-papers-context-import.md](2026-06-25-uad-papers-context-import.md) |
 | 2026-06-23 | Lean spine sync: U_H/U_S, CCI-only, SuccessorSafe, spine citations | [2026-06-23-lean-spine-notation-sync.md](2026-06-23-lean-spine-notation-sync.md) |
 | 2026-06-23 | Continuity review re-scan: ch08 seven-props, WWCTV, pivotal, ch24/ch23, review update | [2026-06-23-continuity-review-verification-fixes.md](2026-06-23-continuity-review-verification-fixes.md) |
 | 2026-06-23 | Chapter epigraphs: research table + LaTeX application Ch01–Ch44 | [2026-06-23-chapter-epigraphs-pass.md](2026-06-23-chapter-epigraphs-pass.md) |
