@@ -76,6 +76,9 @@ Canonical symbol reference for the manuscript. See `INSTRUCTIONS.md` §18 for th
 | $W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}$ | **Correction trace** induced by \(G_t\)'s controlled handles; not primitive handle roles. |
 | $C_{\text{raw}}$ | Bare weakest effective handle capacity $=\min_i \kappa_i(A,G_t,h_i)$ (canonical: **ch25**, `eq:correction-bottleneck-capacity`) |
 | $CCI$ | **Correction-channel integrity** (the penalised value): $CCI=C_{\text{raw}}-\lambda_L L-\lambda_M M-\lambda_R R-\lambda_O O$ (canonical: **ch25**, `eq:cci-ch25`; do not re-define in other chapters) |
+| $\mathrm{Control}(A)$ | Effective actuator control capacity; bounded by $I_{\mathrm{ctrl}}$ and $C_{\mathrm{act}}$ (**ch11**, `eq:control-capacity-spine`) |
+| $\mathrm{RiskGap}(A)$, $\mathrm{Risk}(A)$ | $\mathrm{Control}(A)-\mathrm{CCI}(A)$; certification slack $\mathrm{Control}\leq\mathrm{CCI}+\delta$ (**ch31**, `eq:risk-gap`, `eq:risk`) |
+| $\mathrm{SelfControlGap}(A)$ | Approx.\ $C_{\mathrm{self}}-T_{\mathrm{corr}}$ (**ch30**, `eq:self-control-gap`) |
 | $L,M,R,O$ | CCI penalty terms: Latency, Manipulability, Reversibility-loss, Ontology-mismatch (§C4; ontology symbol $O$ — retire $\Omega$/$O_{\text{mis}}$). Goodharting the channel is a *failure mode that lowers $I$ and raises $M$*, **not** a separate penalty term. |
 | $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ | CCI penalty weights |
 | $U_H$ | **Human value-update operator** (§C7): how civilization revises values, $V_{t+1}=U_H(V_t,E_t,D_t)$. Alignment target: preserve and assist $U_H$, not freeze $V_t$. Drop legacy forms $U_t$, $U^H_t$. |

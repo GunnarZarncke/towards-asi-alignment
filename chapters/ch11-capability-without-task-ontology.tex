@@ -629,6 +629,13 @@ This inequality is a recurring theme of the book.
 Capability growth is not automatically bad.
 It becomes dangerous when it outruns the growth of correction, transparency, and value-transport capacity.
 
+For certification arguments (Chapters~\ref{ch:certification-without-construction},~\ref{ch:safety-case}), write \(\mathrm{Control}(A)\) for the system's effective actuator control capacity: how much causally effective influence \(A\) can exert on outcomes that matter.
+It is bounded by control information (Eq.~\eqref{eq:ctrl-info-obs}) and the action-channel envelope \(C_{\mathrm{act}}\) (Section~\ref{sec:physical-envelopes}):
+\begin{equation}
+\label{eq:control-capacity-spine}
+0 \leq \mathrm{Control}(A) \leq I_{\mathrm{ctrl}}(A) \leq C_{\mathrm{act}}(A).
+\end{equation}
+
 A medical AI that becomes more capable while preserving clinician oversight, uncertainty reporting, audit logs, and patient rights may reduce risk.
 A financial AI that becomes more capable while hiding causal pathways and shaping regulators may increase risk.
 The difference is not captured by capability alone.

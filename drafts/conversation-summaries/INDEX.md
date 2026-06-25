@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-25 | Lean proof appendix chapter links for definitions and bridges | [2026-06-25-lean-appendix-chapter-links.md](2026-06-25-lean-appendix-chapter-links.md) |
 | 2026-06-25 | CCI canonical definition — single home in ch25, cross-refs elsewhere | [2026-06-25-cci-canonical-definition.md](2026-06-25-cci-canonical-definition.md) |
 | 2026-06-25 | Handle-controlled correction channel and CCI refactor | [2026-06-25-handle-controlled-correction-channel.md](2026-06-25-handle-controlled-correction-channel.md) |
 | 2026-06-25 | Remove direct UAD paper citations from manuscript prose | [2026-06-25-uad-citation-removal.md](2026-06-25-uad-citation-removal.md) |
