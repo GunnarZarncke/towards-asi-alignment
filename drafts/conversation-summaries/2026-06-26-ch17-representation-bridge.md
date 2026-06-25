@@ -52,4 +52,4 @@ make check   # fails: Expected 10 appendix files, found 9
 
 ## Commits
 
-- None.
+- `8a6c0c9` Clarify Chapter 17 representation bridge.
