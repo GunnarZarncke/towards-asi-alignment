@@ -7,10 +7,21 @@ import AlignmentProofSpine.Capability
 Successor stability (book chapters 28–31).
 
 `SuccessorSafe` packages the ch29 audit, including **`CCI`** and **`U_S`** as
-distinct correction conjuncts.
+distinct correction conjuncts. Risk monotonicity along safe steps is derived
+from witness fields plus ch29 linking assumptions (not a single opaque axiom).
 -/
 
 namespace AlignmentProofSpine
+
+/-! ### ch29 linking: audit fields constrain measurands -/
+
+/-- ch29: preserved penalised integrity is non-decreasing along a safe successor step. -/
+axiom CCIPreserved_implies_monotone :
+  ∀ A B : System, CCIPreserved A B → CCI A ≤ CCI B
+
+/-- ch29: preserved control locus implies effective control does not increase. -/
+axiom ControlLocusPreserved_implies_control_antitone :
+  ∀ A B : System, ControlLocusPreserved A B → Control B ≤ Control A
 
 inductive SuccessorChain : System → System → Prop
   | refl (A : System) : SuccessorChain A A
@@ -21,9 +32,12 @@ inductive SuccessorSafeChain : System → System → Prop
   | step {A B C : System} :
       Successor A B → SuccessorSafe A B → SuccessorSafeChain B C → SuccessorSafeChain A C
 
-axiom SuccessorSafe_risk_monotone :
-  ∀ {A B : System}, SuccessorSafe A B →
-    Control B ≤ Control A ∧ CCI A ≤ CCI B
+theorem SuccessorSafe_risk_monotone
+    {A B : System} (hsafe : SuccessorSafe A B) :
+    Control B ≤ Control A ∧ CCI A ≤ CCI B := by
+  obtain ⟨w⟩ := hsafe
+  exact ⟨ControlLocusPreserved_implies_control_antitone A B w.controlLocus,
+         CCIPreserved_implies_monotone A B w.cci⟩
 
 theorem P27_successor_invariant_chain
     (P : System → Prop)

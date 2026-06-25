@@ -7,6 +7,8 @@ import AlignmentProofSpine.Correction
 Capability / B-IQ / control–correction arithmetic (book chapters 11–14, 33).
 
 * Capability at the blanket: `K` (`KSys`; not value-bundle `B`).
+* Effective control `Control` from ch11 control information (integer proxy).
+* Collective competence and coordination loss (ch13).
 * Risk gap: `Control − CCI`.
 -/
 
@@ -43,19 +45,23 @@ axiom IctrlSys_le_Cact (A : System) : IctrlSys A ≤ CactSys A
 axiom BIQSys_mem_penalty_nonneg (A : System) : 0 ≤ betaSys A * HmemSys A
 axiom BIQSys_surp_penalty_nonneg (A : System) : 0 ≤ gammaSys A * SurpriseSys A
 
-theorem P10_biq_sys_upper_bound (A : System) :
-    BIQSys A ≤ CsensSys A + CactSys A :=
-  P10_biq_upper_bound (IpredSys A) (IctrlSys A) (HmemSys A) (SurpriseSys A)
-    (CsensSys A) (CactSys A) (betaSys A) (gammaSys A)
-    (IpredSys_le_Csens A) (IctrlSys_le_Cact A)
-    (BIQSys_mem_penalty_nonneg A) (BIQSys_surp_penalty_nonneg A)
+/-! ### Effective control (ch11 §physical envelopes)
 
-axiom Control_le_IctrlSys (A : System) : Control A ≤ IctrlSys A
+Book: \(0 \leq \mathrm{Control}(A) \leq I_{\mathrm{ctrl}}(A) \leq C_{\mathrm{act}}(A)\).
+The integer spine identifies effective control with measured control information. -/
+
+/-- Effective actuator control capacity (ch11). -/
+noncomputable def Control (A : System) : Int := IctrlSys A
+
+theorem Control_eq_IctrlSys (A : System) : Control A = IctrlSys A := rfl
+
+theorem Control_le_IctrlSys (A : System) : Control A ≤ IctrlSys A := by
+  rw [Control_eq_IctrlSys]
+  exact Int.le_refl _
 
 theorem Control_le_CactSys (A : System) : Control A ≤ CactSys A := by
-  have h1 := Control_le_IctrlSys A
-  have h2 := IctrlSys_le_Cact A
-  omega
+  rw [Control_eq_IctrlSys]
+  exact IctrlSys_le_Cact A
 
 theorem Control_le_biq_actuator_ceiling (A : System) : Control A ≤ CactSys A :=
   Control_le_CactSys A
@@ -63,15 +69,85 @@ theorem Control_le_biq_actuator_ceiling (A : System) : Control A ≤ CactSys A :
 theorem IctrlSys_le_biq_actuator_ceiling (A : System) : IctrlSys A ≤ CactSys A :=
   IctrlSys_le_Cact A
 
+theorem P10_biq_sys_upper_bound (A : System) :
+    BIQSys A ≤ CsensSys A + CactSys A :=
+  P10_biq_upper_bound (IpredSys A) (IctrlSys A) (HmemSys A) (SurpriseSys A)
+    (CsensSys A) (CactSys A) (betaSys A) (gammaSys A)
+    (IpredSys_le_Csens A) (IctrlSys_le_Cact A)
+    (BIQSys_mem_penalty_nonneg A) (BIQSys_surp_penalty_nonneg A)
+
 theorem P11_capacity_monotone_bound
     {Csens₁ Csens₂ Cact₁ Cact₂ : Int}
     (hs : Csens₁ ≤ Csens₂) (ha : Cact₁ ≤ Cact₂) :
     Csens₁ + Cact₁ ≤ Csens₂ + Cact₂ := by omega
 
+/-! ### Collective competence and coordination bottleneck (ch13) -/
+
+/-- ch13 Eq. collective competence: weighted local sum plus gain minus loss. -/
+def CollectiveCompetence (localSum gain loss : Int) : Int :=
+  localSum + gain - loss
+
+/-- The seven coordination-loss terms (ch13 §seven-losses). -/
+structure CoordinationLoss where
+  latency : Int
+  bandwidth : Int
+  translation : Int
+  authority : Int
+  incentive : Int
+  trust : Int
+  irreversibility : Int
+
+def totalCoordinationLoss (l : CoordinationLoss) : Int :=
+  l.latency + l.bandwidth + l.translation + l.authority +
+  l.incentive + l.trust + l.irreversibility
+
+theorem collective_competence_with_loss
+    (localSum gain : Int) (l : CoordinationLoss) :
+    CollectiveCompetence localSum gain (totalCoordinationLoss l) =
+      localSum + gain - totalCoordinationLoss l := rfl
+
 theorem P12_coordination_bottleneck
     {raw eff loss : Int}
     (hdef : eff = raw - loss) (hloss : 0 < loss) :
     eff < raw := by omega
+
+theorem coordination_bottleneck_when_loss_positive
+    (localSum gain loss : Int)
+    (hloss : 0 < loss) :
+    CollectiveCompetence localSum gain loss < localSum + gain := by
+  unfold CollectiveCompetence; omega
+
+/-- ch13: coordination loss can consume a local competence increment entirely. -/
+theorem loss_can_wipe_local_competence_gain
+    (localSum delta loss : Int)
+    (_hdelta : 0 < delta)
+    (hloss : delta ≤ loss) :
+    CollectiveCompetence (localSum + delta) 0 loss ≤ CollectiveCompetence localSum 0 0 := by
+  unfold CollectiveCompetence; omega
+
+theorem collective_competence_drop_when_loss_exceeds_gain
+    (localSum gain loss : Int)
+    (h : gain < loss) :
+    CollectiveCompetence localSum gain loss < localSum := by
+  unfold CollectiveCompetence; omega
+
+/-! ### Cooperativity threshold κ (ch13) -/
+
+def KappaNumerator (b p rho : Int) : Int := b * p * rho
+
+/-- Coordination efficiency exceeds threshold 1 iff `b * p * ρ > c` when `c > 0` (ch13). -/
+theorem P32_kappa_threshold
+    (b p rho c : Int)
+    (_hc : 0 < c) :
+    c < b * p * rho ↔ KappaNumerator b p rho > c := by
+  unfold KappaNumerator; omega
+
+def KappaAboveUnity (b p rho c : Int) : Prop :=
+  0 < c ∧ c < KappaNumerator b p rho
+
+theorem kappa_above_unity_iff (b p rho c : Int) (hc : 0 < c) :
+    KappaAboveUnity b p rho c ↔ KappaNumerator b p rho > c := by
+  unfold KappaAboveUnity KappaNumerator; omega
 
 noncomputable def RiskGap (A : System) : Int := Control A - CCI A
 
@@ -150,12 +226,6 @@ theorem P13_control_outpaces_correction_risk
     (hcorr : CCI B ≤ CCI A) :
     RiskGap A < RiskGap B := by
   unfold RiskGap; omega
-
-def KappaNumerator (b p rho : Int) : Int := b * p * rho
-
-theorem P32_kappa_threshold (b p rho c : Int) :
-    KappaNumerator b p rho > c ↔ b * p * rho > c := by
-  unfold KappaNumerator; exact Iff.rfl
 
 theorem P43_small_step_drift_can_accumulate :
     ∀ K : Int, K > 0 → ∃ x0 xN : Int, xN - x0 > K := by

@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-26 | Lean spine strengthen — Capability, Bundles, transport, Successors, Boundaries | [2026-06-26-lean-spine-strengthen-capability-bundles-transport.md](2026-06-26-lean-spine-strengthen-capability-bundles-transport.md) |
+| 2026-06-26 | Definition deduplication pass (§A cross-refs) | [2026-06-26-definition-deduplication-pass.md](2026-06-26-definition-deduplication-pass.md) |
 | 2026-06-25 | Frontmatter moves — acks, ch1/ch2 reframing, WWCTV shaky | [2026-06-25-frontmatter-moves-acknowledgements.md](2026-06-25-frontmatter-moves-acknowledgements.md) |
 | 2026-06-25 | Frontmatter reorder — Preface/EO/Intro/Status split | [2026-06-25-frontmatter-reorder.md](2026-06-25-frontmatter-reorder.md) |
 | 2026-06-25 | Session end — appendices, ledgers, frontmatter reorder plan | [2026-06-25-session-end-appendices-ledgers-frontmatter-plan.md](2026-06-25-session-end-appendices-ledgers-frontmatter-plan.md) |

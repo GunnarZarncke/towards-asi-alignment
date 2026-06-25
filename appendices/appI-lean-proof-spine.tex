@@ -97,7 +97,8 @@ This is the book-facing form of Lean's \texttt{iterateN}.
 
 \begin{definition}[Boundary quantities]
 \label{appi:def:spine-boundary}
-A boundary \(b\) carries an integer leakage proxy \(L(b)\) and a blanket-witness flag.
+A boundary \(b\) carries an integer leakage proxy \(L(b)\), modelling the boundary residual
+\(\widehat{MI}(I_{t+1};E_{t+1}\mid S_t,A_t)\) from Chapter~\ref{ch:finding-boundary}, and a blanket-witness flag.
 The proof spine uses:
 \begin{align}
 \label{appi:eq:epsilon-boundary}
@@ -107,10 +108,14 @@ The proof spine uses:
 \label{appi:eq:blanket}
 \mathrm{Blanket}(b) &\iff \mathrm{BlanketWitness}(b)\wedge L(b)\leq 0,\\
 \label{appi:eq:no-extra-gain}
-\mathrm{NoExtraExternalGain}(b) &\iff L(b)\leq 0.
+\mathrm{NoExtraExternalGain}(b) &\iff L(b)\leq 0,\\
+\label{appi:eq:positive-margin}
+\mathrm{PositiveMargin}(\Delta,d,e) &\iff 0<\Delta-2d-2e .
 \end{align}
-The semantic predicate \(\mathrm{BoundaryCondition}(b)\) is not defined from leakage alone; it is connected to measurement by Assumption~\ref{appi:ass:mb1}.
-Book references: blanket leakage is introduced in Chapter~\ref{ch:grow-split-merge} (Eq.~\eqref{eq:blanket-leakage}); the \(\epsilon\)-boundary form is used in Chapter~\ref{ch:capability-growth-boundary-expansion} (Eq.~\eqref{eq:epsilon-boundary}).
+A \emph{margin certificate} for \(b\) is a triple \((\Delta,d,e)\) with
+\(L(b)\leq \Delta-2d-2e\) and \(\mathrm{PositiveMargin}(\Delta,d,e)\).
+Estimator soundness connecting measured leakage to \(\mathrm{BoundaryCondition}(b)\) remains Bridge~\ref{appi:ass:mb1}; the certificate is a definitional object only.
+Book references: blanket leakage is introduced in Chapter~\ref{ch:grow-split-merge} (Eq.~\eqref{eq:blanket-leakage}); the \(\epsilon\)-boundary form is defined in Chapter~\ref{ch:finding-boundary} (Eq.~\eqref{eq:epsilon-boundary-ch07}).
 \end{definition}
 
 \begin{definition}[Candidate and identifiability predicates]
@@ -151,6 +156,8 @@ Book reference: the measurement-handle form of non-identifiability is discussed 
 \label{appi:def:spine-capability-risk}
 The B-IQ proxy and the certification risk quantities are:
 \begin{align}
+\label{appi:eq:control}
+\mathrm{Control}(A) &= I_{\mathrm{ctrl}}(A),\\
 \label{appi:eq:biq}
 \mathrm{BIQ} &= I_{\mathrm{pred}}+I_{\mathrm{ctrl}}-\beta H-\gamma S,\\
 \label{appi:eq:risk-gap}
@@ -160,9 +167,11 @@ The B-IQ proxy and the certification risk quantities are:
 \label{appi:eq:self-control-gap}
 \mathrm{SelfControlGap}(A) &= \mathrm{SelfControl}(A)-\mathrm{CorrectionVisibility}(A),\\
 \label{appi:eq:kappa-numerator}
-\kappa_{\mathrm{num}}(b,p,\rho) &= b\,p\,\rho .
+\kappa_{\mathrm{num}}(b,p,\rho) &= b\,p\,\rho,\\
+\label{appi:eq:collective-competence}
+K_{\mathrm{coll}} &= \sum_i \omega_i K_i + G_{\mathrm{coord}} - \Omega_{\mathrm{coord}} .
 \end{align}
-Book definitions: \(\mathrm{BIQ}\) matches blanket-information competence \(K_X\) (Chapter~\ref{ch:capability-without-task-ontology}, Eq.~\eqref{eq:biq}); \(\mathrm{Control}(A)\) (Eq.~\eqref{eq:control-capacity-spine}); \(\mathrm{RiskGap}\) and \(\mathrm{Risk}\) (Chapter~\ref{ch:certification-without-construction}, Eqs.~\eqref{eq:risk-gap}--\eqref{eq:risk}); \(\mathrm{SelfControlGap}\) (Chapter~\ref{ch:self-modeling-self-opacity}, Eq.~\eqref{eq:self-control-gap}).
+Book definitions: \(\mathrm{Control}(A)\) is identified with control information in the integer spine (Chapter~\ref{ch:capability-without-task-ontology}, Eq.~\eqref{eq:control-capacity-spine}); \(\mathrm{BIQ}\) matches blanket-information competence \(K_X\) (Eq.~\eqref{eq:biq}); \(\mathrm{RiskGap}\) and \(\mathrm{Risk}\) (Chapter~\ref{ch:certification-without-construction}, Eqs.~\eqref{eq:risk-gap}--\eqref{eq:risk}); \(\mathrm{SelfControlGap}\) (Chapter~\ref{ch:self-modeling-self-opacity}, Eq.~\eqref{eq:self-control-gap}); \(K_{\mathrm{coll}}\) is collective competence (Chapter~\ref{ch:coordination-bottleneck}, Eq.~\eqref{eq:collective-competence}).
 The \(\kappa\)-numerator matches the cooperative-threshold numerator in Chapter~\ref{ch:coordination-bottleneck} (Eq.~\eqref{eq:kappa-coordination}).
 \end{definition}
 
@@ -211,6 +220,36 @@ A successor \(B\) is successor-safe relative to \(A\) when there is a witness pr
 \mathrm{SuccessorSafe}(A,B)\iff \exists W,\ W\text{ contains all eight preservation fields.}
 \end{equation}
 Book references: successor safety is motivated in Chapter~\ref{ch:successor-central-test}, Sections~\ref{sec:conserved-properties-ch28}--\ref{sec:successor-alignment-condition-ch28}; the seven conserved properties and \(U_S\) are developed in Chapter~\ref{ch:conserved-properties}, especially Section~\ref{sec:seven-conserved-properties-ch29}.
+\end{definition}
+
+\begin{definition}[Transport stack between systems]
+\label{appi:def:spine-transport-stack}
+For systems \(A,B\), the Lean spine uses the four-layer stack from Chapter~\ref{ch:transport-types} (Eq.~\eqref{eq:transport-stack}):
+\begin{align}
+\label{appi:eq:semantic-transport}
+\mathrm{SemanticTransport}(A,B) &\iff \text{semantic labels preserved},\\
+\label{appi:eq:bundle-transport-layer}
+\mathrm{BundleTransportLayer}(A,B) &\iff \mathrm{SemanticTransport}(A,B)\wedge \text{bundle geometry preserved},\\
+\label{appi:eq:bearer-transport-layer}
+\mathrm{BearerTransportLayer}(A,B) &\iff \mathrm{BundleTransportLayer}(A,B)\wedge \text{bearer maps preserved},\\
+\label{appi:eq:correction-transport-layer}
+\mathrm{CorrectionTransportLayer}(A,B) &\iff \mathrm{BearerTransportLayer}(A,B)\wedge \text{correction process preserved},\\
+\label{appi:eq:full-transport}
+\mathrm{FullTransport}(A,B) &\iff \mathrm{CorrectionTransportLayer}(A,B).
+\end{align}
+Each layer component is abstract in Lean; finite constructive separations use explicit profiles in the bundle counterexamples (Theorems~\ref{appi:thm:p15}--\ref{appi:thm:p22b}).
+\end{definition}
+
+\begin{definition}[Successor risk monotonicity links]
+\label{appi:def:spine-successor-monotone}
+Along a successor-safe step \(A\to B\), Lean assumes two ch29 audit links (not bridges):
+\begin{align}
+\label{appi:eq:cci-preserved-monotone}
+\mathrm{CCIPreserved}(A,B) &\Rightarrow \mathrm{CCI}(A)\leq \mathrm{CCI}(B),\\
+\label{appi:eq:control-locus-antitone}
+\mathrm{ControlLocusPreserved}(A,B) &\Rightarrow \mathrm{Control}(B)\leq \mathrm{Control}(A).
+\end{align}
+Risk monotonicity along safe steps is then derived from the successor-safe witness (Corollary~\ref{appi:cor:successor-risk-monotone}).
 \end{definition}
 
 \begin{definition}[Layered alignment]
@@ -295,7 +334,7 @@ They are the empirical, statistical, philosophical, or governance bridges that t
 \label{appi:eq:mb1}
 \forall b,\ \mathrm{EpsBoundary}_{1}(b)\Rightarrow \mathrm{BoundaryCondition}(b).
 \end{equation}
-Book bridge: boundary-estimator soundness is supported by Chapter~\ref{ch:finding-boundary} and the \(\epsilon\)-boundary formulation in Chapter~\ref{ch:capability-growth-boundary-expansion} (Eq.~\eqref{eq:epsilon-boundary}).
+Book bridge: boundary-estimator soundness is supported by Chapter~\ref{ch:finding-boundary} (Eq.~\eqref{eq:epsilon-boundary-ch07}).
 \end{assumption}
 
 \begin{assumption}[MB2: bundle identifiability]
@@ -376,14 +415,14 @@ Book bridge: hidden-BIQ robustness combines CCI from Chapter~\ref{ch:correction-
 \label{appi:eq:mb8}
 \forall A,U,\ \mathrm{PreservesValueUpdateOperator}(A,U)\Rightarrow \mathrm{CorrectionIntegrity}(A).
 \end{equation}
-Book bridge: process convergence is the \(U_H\)-preservation route from Chapter~\ref{ch:extrapolative-correction} and Chapter~\ref{ch:correction-channel-integrity}; the value-update operator is written in Chapter~\ref{ch:compression-test-intention} (Eq.~\eqref{eq:human-value-update-ch21}).
+Book bridge: process convergence is the \(U_H\)-preservation route from Chapter~\ref{ch:extrapolative-correction} and Chapter~\ref{ch:correction-channel-integrity}; the value-update operator is defined in Chapter~\ref{ch:fixed-values-wrong-target} (Eq.~\eqref{eq:human-value-update-ch04}).
 \end{assumption}
 
 \section{Boundary and Access Results}
 
 \begin{lemma}[\texttt{P05}: boundary condition yields candidate]
 \label{appi:lem:p05}
-If \(\mathrm{BoundaryCondition}(b)\), then \(\mathrm{AgentCandidate}(b)\) (Chapter~\ref{ch:finding-boundary}; Chapter~\ref{ch:capability-growth-boundary-expansion}, Eq.~\eqref{eq:epsilon-boundary}).
+If \(\mathrm{BoundaryCondition}(b)\), then \(\mathrm{AgentCandidate}(b)\) (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}).
 \end{lemma}
 \begin{proof}
 Immediate from Definition~\ref{appi:def:spine-identifiability}, equation~\eqref{appi:eq:agent-candidate}.
@@ -399,7 +438,7 @@ By Definition~\ref{appi:def:spine-boundary}, \(\mathrm{Blanket}(b)\) includes \(
 
 \begin{lemma}[\texttt{P07}: exact boundary is a zero boundary]
 \label{appi:lem:p07}
-If \(\mathrm{ExactBoundary}(b)\), then \(\mathrm{EpsBoundary}_{0}(b)\) (Chapter~\ref{ch:capability-growth-boundary-expansion}, Eq.~\eqref{eq:epsilon-boundary}).
+If \(\mathrm{ExactBoundary}(b)\), then \(\mathrm{EpsBoundary}_{0}(b)\) (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}).
 \end{lemma}
 \begin{proof}
 Equations~\eqref{appi:eq:exact-boundary} and \eqref{appi:eq:epsilon-boundary} are the same inequality when \(\epsilon=0\).
@@ -458,6 +497,14 @@ This is the margin form of the handle-forcing discussion in Chapter~\ref{ch:find
 Rearrange the strict inequality using Assumption~\ref{appi:ass:s03}.
 \end{proof}
 
+\begin{lemma}[\texttt{P35M+}: margin certificate yields \(\epsilon\)-boundary]
+\label{appi:lem:p35m-cert}
+If \((\Delta,d,e)\) is a margin certificate for \(b\) with \(d\geq0\) and \(e\geq0\), then \(\mathrm{EpsBoundary}_{\Delta}(b)\) (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}).
+\end{lemma}
+\begin{proof}
+The certificate gives \(L(b)\leq \Delta-2d-2e\leq \Delta\). Use Assumption~\ref{appi:ass:s03}.
+\end{proof}
+
 \section{Capability, Risk, and Accumulation}
 
 \begin{theorem}[\texttt{P10}: B-IQ upper bound]
@@ -493,6 +540,14 @@ If \(C_{\mathrm{eff}}=C_{\mathrm{raw}}-\ell\) and \(\ell>0\), then \(C_{\mathrm{
 Substitute the equality and use ordered arithmetic, Assumption~\ref{appi:ass:s03}.
 \end{proof}
 
+\begin{lemma}[\texttt{P12+}: coordination loss consumes local gain]
+\label{appi:lem:p12-coll}
+If \(\delta>0\) and \(\delta\leq \Omega_{\mathrm{coord}}\), then adding local competence \(\delta\) does not increase collective competence beyond the pre-increment baseline (Chapter~\ref{ch:coordination-bottleneck}, Eq.~\eqref{eq:collective-competence}).
+\end{lemma}
+\begin{proof}
+Expand \eqref{appi:eq:collective-competence} with gain \(G_{\mathrm{coord}}=0\): the post-increment value is \(K_{\mathrm{coll}}+\delta-\Omega_{\mathrm{coord}}\), which is at most \(K_{\mathrm{coll}}\) when \(\delta\leq \Omega_{\mathrm{coord}}\). Use Assumption~\ref{appi:ass:s03}.
+\end{proof}
+
 \begin{theorem}[\texttt{P13}: correction slack bounds risk]
 \label{appi:thm:p13}
 If
@@ -504,7 +559,8 @@ then \(\mathrm{Risk}(A)\leq\delta\).
 This uses \(\mathrm{Control}\), \(\mathrm{CCI}\), and \(\mathrm{Risk}\) as defined in Chapters~\ref{ch:capability-without-task-ontology},~\ref{ch:correction-channel-integrity}, and~\ref{ch:certification-without-construction}.
 \end{theorem}
 \begin{proof}
-By Eqs.~\eqref{eq:risk-gap} and~\eqref{eq:risk}, \(\mathrm{Risk}(A)=\mathrm{Control}(A)-\mathrm{CCI}(A)\). Subtract \(\mathrm{CCI}(A)\) from \eqref{appi:eq:correction-slack} using Assumption~\ref{appi:ass:s03}.
+By Eqs.~\eqref{eq:risk-gap} and~\eqref{eq:risk}, \(\mathrm{Risk}(A)=\mathrm{Control}(A)-\mathrm{CCI}(A)\).
+With \(\mathrm{Control}(A)=I_{\mathrm{ctrl}}(A)\) from \eqref{appi:eq:control}, subtract \(\mathrm{CCI}(A)\) from \eqref{appi:eq:correction-slack} using Assumption~\ref{appi:ass:s03}.
 \end{proof}
 
 \begin{corollary}[\texttt{P10H}: hidden-BIQ certificate bounds risk]
@@ -517,14 +573,15 @@ Apply Theorem~\ref{appi:thm:p13}.
 
 \begin{lemma}[\texttt{P32}: \(\kappa\)-numerator threshold]
 \label{appi:lem:p32}
+For \(c>0\),
 \begin{equation}
 \label{appi:eq:p32}
 \kappa_{\mathrm{num}}(b,p,\rho)>c\iff b\,p\,\rho>c .
 \end{equation}
-Book reference: Chapter~\ref{ch:coordination-bottleneck}, Eq.~\eqref{eq:kappa-coordination}.
+Book reference: Chapter~\ref{ch:coordination-bottleneck}, Eq.~\eqref{eq:kappa-coordination} (cooperativity exceeds unity when the numerator dominates cost).
 \end{lemma}
 \begin{proof}
-Expand the definition \eqref{appi:eq:kappa-numerator}.
+Expand \eqref{appi:eq:kappa-numerator} and use Assumption~\ref{appi:ass:s03}.
 \end{proof}
 
 \begin{lemma}[\texttt{P43}: small steps can accumulate]
@@ -576,7 +633,7 @@ Apply Assumption~\ref{appi:ass:s07}, equation~\eqref{appi:eq:s07}.
 
 \begin{theorem}[\texttt{P21}: transport gain gives transport-model preference]
 \label{appi:thm:p21}
-If \(\mathrm{Gain}(\mathrm{TransportModel},\mathrm{BaselineModel})>0\), then \(\mathrm{Preferred}(\mathrm{TransportModel},\mathrm{BaselineModel})\) (Chapter~\ref{ch:transport-types}, Eqs.~\eqref{eq:transport-stack} and~\eqref{eq:transport-gain-ch23}).
+If \(\mathrm{Gain}(\mathrm{TransportModel},\mathrm{BaselineModel})>0\), then \(\mathrm{Preferred}(\mathrm{TransportModel},\mathrm{BaselineModel})\) (Chapter~\ref{ch:goal-transport}, Eq.~\eqref{eq:transport-gain}; Chapter~\ref{ch:transport-types}, Eq.~\eqref{eq:transport-stack}).
 \end{theorem}
 \begin{proof}
 Apply Assumption~\ref{appi:ass:s07}, equation~\eqref{appi:eq:s07}.
@@ -587,39 +644,39 @@ Apply Assumption~\ref{appi:ass:s07}, equation~\eqref{appi:eq:s07}.
 If \(\mathrm{FullTransport}(A,B)\), then \(\mathrm{SemanticTransport}(A,B)\) (Chapter~\ref{ch:transport-types}, Eq.~\eqref{eq:transport-stack}).
 \end{lemma}
 \begin{proof}
-Full transport is the conjunction of semantic transport and bearer-level transport. Project the first conjunct using Assumption~\ref{appi:ass:s02}.
+By Definition~\ref{appi:def:spine-transport-stack}, \(\mathrm{FullTransport}\) is \(\mathrm{CorrectionTransportLayer}\), which projects to \(\mathrm{BearerTransportLayer}\), then \(\mathrm{BundleTransportLayer}\), then \(\mathrm{SemanticTransport}\). Use Assumption~\ref{appi:ass:s02}.
 \end{proof}
 
 \begin{theorem}[\texttt{P15}: policy equality does not imply bundle equality]
 \label{appi:thm:p15}
-There are two finite toy systems with the same policy output and different bundle geometry.
+There exist finite policy profiles \(\pi_0,\pi_1\) on two errors, two actions, and two bundle coordinates with the same observed action map but different bundle codes and salience (Chapter~\ref{ch:value-bundle-model}, Section~\ref{sec:bundle-tradeoff-geometry}; Chapter~\ref{ch:tradeoffs-bundle-geometry}).
 \end{theorem}
 \begin{proof}
-Use two Boolean cases. Let the observed policy be constant and let the hidden bundle-geometry predicate distinguish the two Boolean values.
+Lean instantiates \(\pi_0,\pi_1\) as \texttt{policyProfile0} and \texttt{policyProfile1}: both map errors to actions \((0,1)\), but bundle codes differ on the second error and salience on the second coordinate differs. This is a finite check in \texttt{Bundles.lean}.
 \end{proof}
 
 \begin{theorem}[\texttt{P17}: same value words do not imply same bearer map]
 \label{appi:thm:p17}
-There are two finite toy systems with the same semantic labels and different bearer maps.
+There exist finite value profiles with identical bundle labels but different bearer relevance maps \(\Phi\) over three world slots (Chapter~\ref{ch:bearer-maps}, Section~\ref{sec:bundle-bearer-map}).
 \end{theorem}
 \begin{proof}
-Use two Boolean cases. Let the label function be constant and let the bearer-map predicate differ.
+Lean uses \texttt{valueProfile0} and \texttt{valueProfile1}: labels agree on both bundles, but the second bundle assigns relevance to a different world index. Verified by case split on bundle and world indices.
 \end{proof}
 
 \begin{theorem}[\texttt{P18}: marginal preservation does not imply tradeoff preservation]
 \label{appi:thm:p18}
-There are two finite toy systems preserving the same marginal values while differing in tradeoff structure.
+There exist finite tradeoff profiles with the same bundle marginals but opposite off-diagonal interaction curvature (Chapter~\ref{ch:tradeoffs-bundle-geometry}, Section~\ref{sec:value-bundle-response-geometry}).
 \end{theorem}
 \begin{proof}
-Use a two-case finite model in which each marginal predicate is fixed while a separate relation encoding tradeoff priority changes.
+Lean uses \texttt{tradeoffProfile0} and \texttt{tradeoffProfile1}: both have marginals \((3,3)\), but the \((0,1)\) interaction entry is \(-1\) in one profile and \(+1\) in the other.
 \end{proof}
 
 \begin{theorem}[\texttt{P22b}: semantic transport does not imply full transport]
 \label{appi:thm:p22b}
-There are systems with semantic transport but not full transport.
+There is a finite transport profile with semantic layer true and bundle, bearer, and correction layers false (Chapter~\ref{ch:transport-types}, Eq.~\eqref{eq:transport-stack}).
 \end{theorem}
 \begin{proof}
-Let semantic transport hold and bearer-level transport fail. Since full transport requires both conjuncts, Assumption~\ref{appi:ass:s02} gives the separation.
+Lean uses \texttt{finTransportSemanticOnly}: semantic preservation holds while the bundle layer fails, so \(\mathrm{FinFullTransport}\) fails even though \(\mathrm{FinSemanticTransport}\) holds. The same layer ordering mirrors Definition~\ref{appi:def:spine-transport-stack}.
 \end{proof}
 
 \section{Correction Channels}
@@ -693,6 +750,14 @@ If a successor has higher self-control and no higher correction visibility, then
 \end{lemma}
 \begin{proof}
 Expand \eqref{appi:eq:self-control-gap} and use Assumption~\ref{appi:ass:s03}.
+\end{proof}
+
+\begin{corollary}[\texttt{SuccessorSafe}: risk monotonicity along a safe step]
+\label{appi:cor:successor-risk-monotone}
+If \(\mathrm{SuccessorSafe}(A,B)\), then \(\mathrm{Control}(B)\leq \mathrm{Control}(A)\) and \(\mathrm{CCI}(A)\leq \mathrm{CCI}(B)\) (Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch29}).
+\end{corollary}
+\begin{proof}
+Extract the successor-safe witness. Apply the ch29 links \eqref{appi:eq:cci-preserved-monotone} and \eqref{appi:eq:control-locus-antitone} to its \(CCI\) and control-locus fields (Definition~\ref{appi:def:spine-successor-monotone}).
 \end{proof}
 
 \section{Adversarial and Socio-Technical Results}
@@ -784,7 +849,7 @@ Apply Bridge~\ref{appi:ass:mb7a} to get access robustness, Bridge~\ref{appi:ass:
 If \(\mathrm{Risk}(A)\leq\delta\) and there is a successor-safe chain from \(A\) to \(B\), then \(\mathrm{Risk}(B)\leq\delta\) (Chapter~\ref{ch:successor-central-test}; Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:successor-guarantees-ch31}).
 \end{corollary}
 \begin{proof}
-Induct along the successor-safe chain as in Theorem~\ref{appi:thm:p27}, using the Lean successor-safe risk monotonicity axiom at each step.
+Induct along the successor-safe chain as in Theorem~\ref{appi:thm:p27}, applying Corollary~\ref{appi:cor:successor-risk-monotone} at each step to preserve the risk bound.
 \end{proof}
 
 \section{Philosophical Boundary Results}

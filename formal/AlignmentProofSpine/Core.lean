@@ -110,7 +110,6 @@ axiom SystemUpdateOperator : Type
 axiom Environment : Type
 axiom defaultEnvironment : Environment
 
-axiom Control : System → Int
 axiom CorrectionVisibility : System → Int
 axiom SelfControl : System → Int
 
@@ -160,11 +159,41 @@ axiom BundleAligned : System → System → Prop
 /-- The bearer map (what values apply to) agrees across two systems. -/
 axiom SameBearerMap : System → System → Prop
 
-/-- Semantic (label-level) transport between systems. -/
-axiom SemanticTransport : System → System → Prop
+/-! ### ch23 transport stack (semantic ⊂ bundle ⊂ bearer ⊂ correction)
 
-/-- The extra strength that distinguishes full transport from merely semantic transport. -/
-axiom BearerLevelTransport : System → System → Prop
+Layer components are abstract; concrete finite separations live in `Bundles.lean`. -/
+
+/-- Semantic (label-level) transport: explicit goals and principles survive (ch23 layer 1). -/
+axiom PreservesSemanticLabels : System → System → Prop
+
+/-- Bundle-response geometry survives representational change (ch23 layer 2). -/
+axiom PreservesBundleResponseGeometry : System → System → Prop
+
+/-- Bearer maps survive: what values apply to which entities (ch23 layer 3). -/
+axiom PreservesBearerAssignment : System → System → Prop
+
+/-- Human correction / update process survives (ch23 layer 4). -/
+axiom PreservesCorrectionProcess : System → System → Prop
+
+/-- Semantic transport between systems. -/
+def SemanticTransport (A B : System) : Prop :=
+  PreservesSemanticLabels A B
+
+/-- Bundle layer: semantic labels and bundle-response geometry. -/
+def BundleTransportLayer (A B : System) : Prop :=
+  SemanticTransport A B ∧ PreservesBundleResponseGeometry A B
+
+/-- Bearer layer: bundle geometry and bearer assignment. -/
+def BearerTransportLayer (A B : System) : Prop :=
+  BundleTransportLayer A B ∧ PreservesBearerAssignment A B
+
+/-- Correction layer: bearer structure and live correction process. -/
+def CorrectionTransportLayer (A B : System) : Prop :=
+  BearerTransportLayer A B ∧ PreservesCorrectionProcess A B
+
+/-- Legacy name used by older notes: bearer-level transport is layer 3. -/
+abbrev BearerLevelTransport (A B : System) : Prop :=
+  BearerTransportLayer A B
 
 /-- Successor relation between systems. -/
 axiom Successor : System → System → Prop
@@ -206,9 +235,9 @@ structure SuccessorSafeWitness (A B : System) where
 
 def SuccessorSafe (A B : System) : Prop := Nonempty (SuccessorSafeWitness A B)
 
-/-- Full transport is strictly stronger than semantic transport. -/
+/-- Full transport through the ch23 correction layer (all four layers). -/
 def FullTransport (A B : System) : Prop :=
-  SemanticTransport A B ∧ BearerLevelTransport A B
+  CorrectionTransportLayer A B
 
 /-- A system preserves the human value-update operator `U_H` (ch26 CEV contrast). -/
 axiom PreservesValueUpdateOperator : System → ValueUpdateOperator → Prop
@@ -229,13 +258,27 @@ The *semantic* boundary predicate `BoundaryCondition` is kept abstract; the
 bridge `MB1` connects an ε-certificate to it. -/
 
 structure Boundary where
-  /-- External predictive gain across the interface (CMI-like proxy). -/
+  /-- External predictive gain across the interface (ch07 boundary residual proxy).
+      Book: \(\widehat{MI}(I_{t+1}; E_{t+1} \mid S_t, A_t)\). -/
   leakage : Int
   /-- Whether a Markov-blanket factorization witness was produced. -/
   blanketWitness : Bool
 
 /-- C-EPS: an ε-boundary has leakage at most `ε`. -/
 def EpsilonBoundary (ε : Int) (b : Boundary) : Prop := b.leakage ≤ ε
+
+/-- Positive smoothed-UAD margin after channel distortion and estimation error (ch07). -/
+def PositiveBoundaryMargin (margin distortion est : Int) : Prop :=
+  0 < margin - 2 * distortion - 2 * est
+
+/-- Certificate that measured leakage sits inside a positive margin (definition only;
+    estimator soundness remains bridge `MB1`). -/
+structure BoundaryMarginCertificate (b : Boundary) where
+  margin : Int
+  distortion : Int
+  estimation : Int
+  hleakage : b.leakage ≤ margin - 2 * distortion - 2 * estimation
+  hpositive : PositiveBoundaryMargin margin distortion estimation
 
 /-- An exact boundary has no external leakage. -/
 def ExactBoundary (b : Boundary) : Prop := b.leakage ≤ 0
