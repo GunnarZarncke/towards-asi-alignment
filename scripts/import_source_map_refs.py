@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Import bibliography entries from INSTRUCTIONS.md source-map sibling repos.
+"""Import bibliography entries from source-map sibling repos.
 
 Reads .bib files referenced by canonical TeX papers in ../agency-detect and
 ../brain-to-values, deduplicates by citation key, categorizes entries, and
 writes references/*.bib for the book.
 
 Chapter-indexed LessWrong references in context/lw-references.md are NOT
-imported here; add those to references/*.bib manually (see INSTRUCTIONS.md §11).
+imported here; add those to references/*.bib manually (see INSTRUCTIONS.md §7).
 
 Run from repo root: python3 scripts/import_source_map_refs.py
 """
@@ -27,7 +27,7 @@ KEY_RE = re.compile(r"@(\w+)\{([^,\s]+),")
 AUTHOR_RE = re.compile(r"author\s*=\s*\{([^}]+)\}", re.IGNORECASE)
 TITLE_RE = re.compile(r"title\s*=\s*\{([^}]+)\}", re.IGNORECASE)
 
-# Canonical .bib paths from INSTRUCTIONS.md §3.0 source map
+# Canonical .bib paths from metadata/source-canon.md source map
 SOURCE_BIBS = [
     AGENCY / "refs.bib",
     AGENCY / "uad-literature-review" / "uad_literature_review.bib",

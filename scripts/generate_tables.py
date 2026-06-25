@@ -195,12 +195,7 @@ def write_part_roadmap(
     parts_meta: dict[str, dict[str, str]],
     part_files: list[Path],
 ) -> None:
-    intro_lines = [GENERATED_HEADER.rstrip(), r"\begin{description}[style=nextline]"]
-    overview_lines = [
-        GENERATED_HEADER.rstrip(),
-        "The book proceeds in ten parts:",
-        r"\begin{itemize}",
-    ]
+    lines = [GENERATED_HEADER.rstrip(), r"\begin{description}[style=nextline]"]
 
     for part_index, part_file in enumerate(part_files, start=1):
         part_key = f"part{part_index:02d}"
@@ -212,22 +207,13 @@ def write_part_roadmap(
         roman = ROMANS[part_index - 1]
         ch_range = format_chapter_range(start, end)
 
-        intro_lines.append(
+        lines.append(
             rf"\item[\textbf{{Part~{roman} --- {latex_escape(part_title)}}}] "
             rf"Chs.~{ch_range}. {latex_escape(summary)}"
         )
-        overview_lines.append(
-            rf"\item \textbf{{Part~{roman}}} ({latex_escape(part_title)}, Chs.~{ch_range}): "
-            rf"{latex_escape(summary)}"
-        )
 
-    intro_lines.extend([r"\end{description}", ""])
-    overview_lines.extend([r"\end{itemize}", ""])
-
-    (TABLES_DIR / "part-roadmap.tex").write_text("\n".join(intro_lines), encoding="utf-8")
-    (TABLES_DIR / "part-roadmap-overview.tex").write_text(
-        "\n".join(overview_lines), encoding="utf-8"
-    )
+    lines.extend([r"\end{description}", ""])
+    (TABLES_DIR / "part-roadmap.tex").write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> int:
@@ -241,7 +227,7 @@ def main() -> int:
     write_chapter_map(entries)
     write_part_roadmap(entries, parts_meta, part_files)
     print(
-        f"Generated tables/chapter-map.tex and tables/part-roadmap*.tex "
+        f"Generated tables/chapter-map.tex and tables/part-roadmap.tex "
         f"({len(entries)} chapters, 10 parts)."
     )
     return 0

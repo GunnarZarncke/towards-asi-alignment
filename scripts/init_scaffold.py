@@ -79,7 +79,7 @@ APPENDICES = [
     ("appB-worked-example-agent-boundary", "Worked Example: Agent Boundary"),
     ("appC-value-bundle-inference", "Value-Bundle Inference"),
     ("appD-correction-channel-audit", "Correction-Channel Audit"),
-    ("appE-successor-certification", "Successor Certification"),
+    ("appE-assumptions", "Assumptions Index"),
     ("appF-glossary", "Glossary"),
     ("appG-safety-case-template", "Safety-Case Template"),
     ("appH-research-program", "Research Program"),

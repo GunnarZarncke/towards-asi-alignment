@@ -1,20 +1,34 @@
-# Instructions for an AI Agent Writing the Book
+# Instructions for Writing and Maintaining the Book
 
-# *Towards Superintelligence Alignment*
+*Towards Superintelligence Alignment: Boundaries, Values, and Correction*
+
+**Role of this file:** Mission, audience, source canon, and editorial rules. 
+
+| Need | Canonical home |
+|------|----------------|
+| Chapter list, status, word targets | `metadata/book.yml` |
+| Build, layout, agent handoff | `AGENTS.md` |
+| Reader-facing status and quick start | `README.md` |
+| Symbol index (generated) and §C reconciliation | `metadata/notation.md` → Appendix A |
+| Assumptions index (generated) | `metadata/assumptions-ledger.md` → Appendix E |
+| Operational terms | `metadata/terminology.md` → Appendix F |
+| Source PDFs, TeX paths, extracts | `metadata/source-canon.md` |
+| Continuity and deduplication plans | `review/fix-plans-2026-06-22.md` |
+| Lean predicates and bridges | `formal/README.md`, Appendix I |
+
+---
 
 ## 0. Mission
 
-Write a full book-length manuscript titled:
+Write a full book-length manuscript titled **Towards Superintelligence Alignment: Boundaries, Values, and Correction**.
 
-**Towards Superintelligence Alignment: Boundaries, Values, and Correction**
+The book must be self-contained. It must not assume the reader already knows the author's previous project names, papers, conversations, or internal terminology. Concepts originating in prior work may be cited in chapter references, but the body text must introduce them from first principles. Other authors' related work must be explained sufficiently for the intended audience to follow, including key formulas where needed (derivations optional).
 
-The book must be self-contained. It must not assume the reader already knows the author’s previous project names, papers, conversations, or internal terminology. Concepts originating in prior work may be cited in chapter references, but the body text must introduce them from first principles. Other authors' related work must be explained in sufficient degree for the intended audience to follow. This includes providing key formulas (but not their derivation).  
-
-The book’s central thesis is:
+**Central thesis:**
 
 > Superintelligence alignment is the problem of preserving human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure, under the assumption that civilization still has enough correction capacity to participate in the process.
 
-The book’s organizing frame is:
+**Organizing frame:**
 
 \[
 \text{superintelligence alignment}
@@ -30,15 +44,15 @@ The book’s organizing frame is:
 \text{socio-technical attractor control}.
 \]
 
-Do not let external doom arguments (Yudkowsky-style lethalities, Turchin-style failure maps, or general AGI catastrophe taxonomies) become a second organizing ontology. Use them only as adversarial checklists or coverage audits late in the manuscript.
+Do not let external doom arguments (Yudkowsky-style lethalities, Turchin-style failure maps, or general AGI catastrophe taxonomies) become a second organizing ontology. Use them only as adversarial checklists or coverage audits late in the manuscript (especially Chapter 40).
 
-The book must explain this thesis at three levels:
+The book must explain the thesis at three levels:
 
 1. **Plain-language overview** for capable generalists, funders, engineers, and policy-adjacent readers.
 2. **Conceptual theory** of agents, values, boundaries, correction channels, successors, and attractor basins.
 3. **Formal treatment** using information theory, dynamical systems, causal channels, value-bundle geometry, and safety-case logic.
 
-The book should aim to become a serious monograph on superintelligence alignment, not a sequence of blog posts. It should be readable, internally coherent, technically careful, and structured so that each chapter can later be expanded, reviewed, cited, or replaced. It should use the writing style outlined in context/writing-style-gunnar.md.
+Use the voice and calibration in `context/writing-style-gunnar.md`. See `AGENTS.md` for agent behavior, Lean spine review, and session logging.
 
 ---
 
@@ -53,7 +67,7 @@ Write for four overlapping audiences:
 
 The book must not depend on the reader accepting unusual ontology. Every central term must either be operationally defined or translated into simpler language.
 
-When introducing a technical term, always ask:
+When introducing a technical term, ask:
 
 * What decision does this term enable?
 * What measurement does it make possible?
@@ -66,1455 +80,199 @@ If the term does not earn its keep, simplify it.
 
 ## 2. Writing Style
 
-See `context/writing-style-gunnar.md`
+See `context/writing-style-gunnar.md`.
 
 Prefer short declarative sentences for core claims. Use longer, qualified sentences when handling uncertainty, counterexamples, or formal dependencies.
 
-Use examples and counterexamples as stress tests. Do not use them merely as decoration.
+Use examples and counterexamples as stress tests, not decoration.
 
-Avoid hype. Avoid culture-war framing. 
+Avoid hype and culture-war framing.
+
+**Legibility-first constraints** (`context/legible-alignment-messageing.md`): in introductions, summaries, chapter openings, and policy-facing sections, make clear what could go wrong, why it matters before deployment, what observable artifacts would reduce risk, what decision changes if the claim is true, and where the argument is weak.
 
 ---
 
 ## 3. Source Canon
 
-Use the following source clusters as the internal basis of the manuscript.
+Do not assume the reader knows internal sources. Introduce every concept independently in the manuscript.
 
-Do not assume the reader knows these sources. Introduce every concept independently.
+**Durable reference data:**
 
-**PDF extracts:** Each PDF under `context/` has a markdown extract in `context/extracts/` (generated by `scripts/extract_pdf_to_md.py`). Prefer the extract for agent reading. Formulas in extracts use `$$...$$` and LaTeX symbol names where auto-conversion succeeded. When in doubt about a formula, consult the PDF or the TeX source (see source map below).
+* **`metadata/source-canon.md`** — book-local PDFs, `context/extracts/` markdown, sibling-repo TeX/PDF paths.
+* **`context/lw-references.md`** — chapter-indexed LessWrong and external alignment posts (manual promotion to `.bib`; see §7).
 
-### 3.0 Source map
+PDF extracts live under `context/extracts/` (regenerate with `python3 scripts/extract_pdf_to_md.py`). Prefer extracts for agent reading; verify formulas against TeX or PDF when stakes are high.
 
-The full source map — book-local `context/` PDFs, their `context/extracts/`
-markdown, the originating sibling repository, and the canonical TeX/PDF paths — is
-maintained in **`metadata/source-canon.md`**. That file is the durable record;
-consult it for exact paths. (This instructions file is a temporary writing brief
-and will be removed once the manuscript is complete.)
+**Thematic clusters** (detail and file paths in `source-canon.md`):
 
-Summary: canonical LaTeX sources and built PDFs live in sibling repositories
-(`../brain-to-values/papers/` for value bundles, free-energy loops, unit-of-caring,
-consciousness/agency backbone; `../agency-detect/docs/papers/` for UAD, capability,
-intentional stance, attractor basins, construction/successor work). The
-`context/*.pdf` copies are book-local snapshots for agents and offline reading;
-rebuild from TeX when formulas or claims must be verified exactly.
+* agent-boundary discovery and access (UAD tradition),
+* predictive-compression intentionality,
+* value bundles, bearer maps, loop-hub / free-energy value models,
+* capability as boundary information (BIQ tradition),
+* attractor basins, cooperation, parasites, selection,
+* metacognition, self-opacity, construction without understanding,
+* Alignment Attractor / artifact conductivity framing.
 
-For chapter-indexed LessWrong and external alignment references, see
-`context/lw-references.md` (§11).
+The body must not use project acronyms as explanatory shortcuts (e.g. "As UAD says…"). Cite traditions in chapter references; define objects in prose.
 
-### 3.1 Project and platform framing
-
-**Sources:**
-
-* `context/Alignment Attractor.md` — executive summary and platform framing (no PDF).
-* `context/legible-alignment-messageing.md` — legibility constraints (see §3.9).
-
-Use the Alignment Attractor material as the origin of the book’s practical framing: the gap between theoretical alignment research and real-world deployment, the need for a structural bridge, and the idea that alignment work must become grounded, cumulative, and testable in messy socio-technical systems.
-
-Key concepts to carry forward:
-
-* alignment as a structural problem,
-* research-to-practice bridge,
-* real-world messiness,
-* self-reinforcing alignment ecosystem,
-* artifact conductivity,
-* practical experiments,
-* institutional feedback loops.
-
-### 3.2 Agent-boundary discovery
-
-**Sources:**
-
-| PDF | Extract |
-|-----|---------|
-| `context/unsupervised-agent-discovery.pdf` | `context/extracts/unsupervised-agent-discovery.md` |
-| `context/uad_literature_review.pdf` | `context/extracts/uad-literature-review.md` |
-| `context/acausal_trade_uad_formalization.pdf` | `context/extracts/acausal-trade-uad-formalization.md` |
-| `context/access-uad.pdf` | `context/extracts/access-uad.md` |
-| `context/smooth-uad.pdf` | `context/extracts/smooth-uad.md` |
-| `context/stealth-capability-bounds.pdf` | `context/extracts/stealth-capability-bounds.md` |
-
-Use the agent-boundary work as the source for operational definitions of agents.
-
-Key concepts:
-
-* raw dynamical systems,
-* no prior ontology,
-* approximate Markov blankets,
-* sensory, active, internal, and external variables,
-* ε-boundaries,
-* non-stationary boundaries,
-* memory localization,
-* goal inference,
-* inter-agent modeling,
-* cooperation and opacity.
-
-The book must not simply say “UAD.” It must introduce the problem as:
-
-> How can we find where optimization is happening without assuming in advance what the agent is?
-
-Then it may name the source tradition in references.
-
-### 3.3 Predictive-compression intentionality
-
-**Sources:**
-
-| PDF | Extract |
-|-----|---------|
-| `context/endogenized-intentional-stance.pdf` | `context/extracts/endogenized-intentional-stance.md` |
-
-Use the predictive-compression formalization as the bridge from “agent” to “goal.”
-
-Key concepts:
-
-* intentional stance as model compression,
-* learned latent dynamics,
-* intentional gain,
-* goal-rational priors,
-* emergent entities,
-* hierarchical aggregation,
-* competing interpretations.
-
-Core idea:
-
-> A system is treated as goal-directed where assuming bounded rationality around latent objectives compresses its behavior better than a non-agentic dynamics model.
-
-### 3.4 Human values and value-bundle models
-
-**Sources:**
-
-| PDF | Extract |
-|-----|---------|
-| `context/loop-hub-value-model.pdf` | `context/extracts/loop-hub-value-model.md` |
-| `context/lhcv-model-v2.pdf` | `context/extracts/lhcv-model-v2.md` |
-| `context/unit-of-caring.pdf` | `context/extracts/unit-of-caring.md` |
-| `context/Literature Review of Units of Caring, Pain & Suffering Measurement, and Aggregation.pdf` | `context/extracts/literature-review-of-units-of-caring-pain-suffering-measurement-and-aggregation.md` |
-| `context/preference-capability.pdf` | `context/extracts/preference-capability.md` |
-| `context/value-bundle-drift.pdf` | `context/extracts/value-bundle-drift.md` |
-| `context/free_energy_loops.pdf` | `context/extracts/free-energy-loops.md` |
-| `context/status_regulation_as_free_energy_loops.pdf` | `context/extracts/status-regulation-as-free-energy-loops.md` |
-
-Use the low-dimensional value-bottleneck and loop-hub-value materials as the basis for the human-values treatment.
-
-Key concepts:
-
-* values as compressed control signals,
-* high-dimensional error loops,
-* low-dimensional hub bottlenecks,
-* value tags,
-* sample complexity of inverse value learning,
-* bundle geometry,
-* bearer maps,
-* tradeoff structure,
-* value transport across substrate changes.
-
-The book must upgrade “goal inference” into “value-bundle inference.”
-
-Do not frame human values as a stable utility function. Frame them as compressed, evolving, socially mediated control bundles.
-
-### 3.5 Capability growth
-
-**Sources:**
-
-| PDF | Extract |
-|-----|---------|
-| `context/bitwise_iq.pdf` | `context/extracts/bitwise-iq.md` |
-| `context/preference-capability.pdf` | `context/extracts/preference-capability.md` |
-
-Use the bitwise intelligence material as the basis for capability growth.
-
-Key concepts:
-
-* competence as information flow across a boundary,
-* predictive information,
-* control information,
-* memory cost,
-* residual surprise,
-* hierarchical aggregation,
-* coordination bottlenecks,
-* efficiency of converting competence into growth,
-* physical envelopes and scaling limits.
-
-The book must connect capability growth to alignment pressure:
-
-> Capability is dangerous when control capacity grows faster than correction-channel capacity.
-
-### 3.6 Attractor basins and socio-technical selection
-
-**Sources:**
-
-| PDF | Extract |
-|-----|---------|
-| `context/attractor-basins.pdf` | `context/extracts/attractor-basins.md` |
-
-Use the attractor-basin material as the basis for multi-agent strategic coupling, parasite persistence, and institutional selection pressure. Cooperation, privacy, opacity, and percolation are **subsections of Chapter 33**, not separate chapters.
-
-Key concepts:
-
-* cooperativity index,
-* transparency versus opacity,
-* percolation of cooperation,
-* inferential coupling and acausal cooperativity,
-* privacy islands,
-* parasite-persistence thresholds,
-* host modeling capacity,
-* self-stabilizing patterns under pressure,
-* socio-technical basins.
-
-Translate “attractor basins” for general readers as:
-
-> self-stabilizing patterns under pressure.
-
-### 3.7 Metacognition, selfhood, and transparency
-
-**Sources:**
-
-| PDF | Extract |
-|-----|---------|
-| `context/consciousness_agency_backbone.pdf` | `context/extracts/consciousness-agency-backbone.md` |
-| `context/construction_without_understanding.pdf` | `context/extracts/construction-without-understanding.md` |
-
-Use the metacognition and selfhood work for chapters on self-modeling, opacity, self-transparency, successor risk, and bearer persistence (Chapter 43).
-
-Key concepts:
-
-* working-memory bandwidth,
-* metacognitive opacity,
-* recursive self-modeling depth,
-* selfhood bottleneck,
-* self-modeling versus self-transparency,
-* why better self-modeling can worsen auditability,
-* consciousness/selfhood as physical self-modeling processes.
-
-Use these concepts carefully. They are not the core of the book, but they become important when discussing advanced AI systems that model themselves, create successors, or merge with humans.
-
-### 3.8 Aintelope and machine consciousness context
-
-**Sources:** institutional background only — see `context/Alignment Attractor.md` (Antelope/AE Studio). No dedicated PDF in `context/`.
-
-Use the Aintelope updates only as institutional/project background and as optional reference material. The current book frame should focus on value-bundle transport, correction-channel integrity, agent-boundary discovery, successor certification, and socio-technical attractor basins.
-
-### 3.9 Legibility-first writing constraints
-
-**Sources:**
-
-* `context/legible-alignment-messageing.md` — legibility-first messaging guidance (no PDF).
-
-Use the legibility-first messaging guidance as the default style for introductions, summaries, chapter openings, and policy-facing sections.
-
-Each chapter should make clear:
-
-* what could go wrong,
-* why it matters before deployment,
-* what observable artifacts would reduce risk,
-* what decision changes if the chapter’s claim is true,
-* where the argument is weak.
+Do not include the BITS or affective-module approach in the main line unless explicitly requested.
 
 ---
 
-## 4. Book Architecture
+## 4. Structural Consolidation (editorial)
 
-Use the full structure below: **44 chapters** in **10 parts**.
+These rules are fixed; do not re-open them when drafting:
 
-The manuscript should be divided into ten parts:
+* No separate chapters for AI–AI war, blackmail-only chapters, paternalism-only chapters, or general bug/virus taxonomies as book structure.
+* Turchin-style failure maps: **coverage audit in Chapter 5 only**, not a second ontology.
+* Yudkowsky lethalities: **stress-test checklist in Chapter 40 only**.
+* Cooperation, privacy, opacity, and percolation: **subsections of Chapter 33**, not standalone chapters.
+* Former standalone topics deferred to `drafts/chapter-notes/*-deferred.tex` (reference only).
 
-1. The Alignment Problem Reframed (chapters 1–5)
-2. Agents, Boundaries, and Real Optimizers (6–10)
-3. Capability Growth and Competence (11–14)
-4. Human Values as Needs Smoothed over Time (15–19)
-5. Interpreting a System's Goals (20–23)
-6. Correction Channels (24–27)
-7. Successors, Reproduction, and Continuity (28–31)
-8. Attractor Basins and Socio-Technical Selection (32–35)
-9. Safety Cases, Adversaries, and Open Questions (36–40)
-10. The Philosophical and Civilizational Limit (41–44)
-
-### 4.1 Structural consolidation rules
-
-Do **not** create separate chapters for:
-
-* AI--AI conflict / war between AIs,
-* blackmail or bargaining (fold into correction-channel integrity, Chapter 25),
-* paternalism (fold into value-bundle tradeoffs, Chapter 19),
-* general bug/virus/cyber failure taxonomies (scope out in Chapter 5),
-* Turchin-style catastrophe families as book parts (coverage audit only in Chapter 5),
-* Yudkowsky-style lethalities as book parts (stress-test checklist only in Chapter 40).
-
-**Removed from spine; material inserted elsewhere:**
-
-| Former standalone chapter | Inserted into |
-| ------------------------- | ------------- |
-| Cooperation, Privacy, and Opacity | Ch 33, subsection |
-| Percolation of Cooperation | Ch 33, subsection |
-| Tripwires and Stop Conditions | deferred (`drafts/chapter-notes/`) |
-| Merging With Artificial Entities | Ch 43, section |
-| What Cannot Be Solved Technically | Ch 43, section |
-
-Deferred originals live in `drafts/chapter-notes/*-deferred.tex` for reference only.
-
-Each chapter must contain:
-
-1. A one-paragraph chapter thesis.
-2. A short “why this matters” section.
-3. A plain-language explanation.
-4. A formal section.
-5. A worked example.
-6. A failure-mode section.
-7. A “what would change my mind” section.
-8. A chapter summary.
-9. A references section.
-
-Where useful, include a “Decision relevance” box:
-
-* Who needs this?
-* What should they measure?
-* What should they stop doing?
-* What should they build?
+When a formal object is re-used in a later chapter, follow `review/fix-plans-2026-06-22.md` §A: one **home** chapter with full definition and `\label`; elsewhere use **reminder**, **simple-reference**, or **elide**—do not re-derive.
 
 ---
 
-## 5. Required Book Overview
+## 5. Terminology, Notation, and Formal Spine
 
-The book must begin with an extended overview before Part I.
+**Do not duplicate definitions in this file.** Maintain a single canonical surface per layer:
 
-The overview must include:
+| Layer | Maintain in | Reader sees |
+|-------|-------------|-------------|
+| Operational terms | `metadata/terminology.md` | Appendix F (glossary) |
+| Symbols and canonical eq homes | `metadata/notation.md` | Appendix A (generated index; points to chapters) |
+| Formal predicates and bridges | `formal/AlignmentProofSpine/*.lean` | Appendix I |
 
-1. A five-bullet TL;DR.
-2. A one-sentence thesis.
-3. A diagram-in-words.
-4. A list of assumptions.
-5. A list of rejected simplifications.
-6. A brief part-level overview (ten parts; no separate status table in the PDF---use `metadata/book.yml`).
-7. A concise account of what the book tries to prove or establish.
-8. A concise account of what the book does not claim to prove.
-9. How the book handles external doom arguments (Yudkowsky lethalities as late stress-test only).
-10. Scope and out-of-scope boundaries (correction-capacity assumption; bugs/late cosmic pathologies mostly out of scope).
+Edit `metadata/assumptions-ledger.md` only; run `./build.sh` to refresh Appendix E. Edit `metadata/notation.md` only for Appendix A.
 
-The overview must distinguish three levels of claim.
+**Capability** is \(K\); **value bundle** is \(B\). **Correction capacity** is \(C_{\text{raw}}\); **correction-channel integrity** is \(\mathrm{CCI}\)—never interchange them. **Fitness** is handle-based deployment mass in Chapter 32, not revenue or benchmark score as primitive terms.
 
-### 5.1 Strong claim
-
-A full superintelligence alignment solution requires preserving value-bundle and correction-channel structure across capability growth, ontology shift, successor creation, and socio-technical selection pressure.
-
-### 5.2 Moderate claim
-
-Even if this is not sufficient for alignment, it identifies key variables that many alignment approaches under-specify.
-
-### 5.3 Weak claim
-
-At minimum, any serious ASI alignment safety case should explicitly address these variables, or explain why they are irrelevant.
-
-The book should defend the weak and moderate claims carefully. It may explore the strong claim but must mark the unproven parts.
+Calibrate manuscript claims to Lean status: **proof**, **counterexample**, or **bridge** (`AGENTS.md`). Do not write that Lean proves ASI alignment.
 
 ---
 
-## 6. Core Definitions to Introduce From Scratch
+## 6. Chapter Requirements
 
-Define these terms operationally. Where needed related these terms to prior definitions. Explain all elements of the formula, where appropriate in footnotes.
+Every chapter must include:
 
-### 6.1 Agent
+1. `\chapter{...}` + `\label{ch:...}`.
+2. A `chapterthesis` environment (one paragraph core claim).
+3. Decision relevance early—why the chapter matters for alignment work.
+4. At least one **failure mode / counterexample**.
+5. **`\section{What Would Change This View}`** — skimmable disconfirmers for *this chapter's* central claim (exact title for consistency).
+6. A summary (roughly 5–8 bullets or equivalent).
+7. BibLaTeX citations; per-chapter `refsection` + `\printbibliography[heading=subbibliography,title={Chapter References}]`.
 
-An agent is a bounded dynamical process whose internal states help predict and control future interaction with its environment.
+**Shape A (new stub):** optional scaffold sections (Why This Matters, Plain-Language Model, Formal Model, Worked Example, …).
 
-Formal starting point:
+**Shape B (integrated draft):** keep native narrative structure; do not force Shape A splits. Still satisfy all required elements above.
 
-\[
-I(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon
-\]
-
-where $I$ is internal state, $E$ external state, $S$ sensory interface, $A$ active interface, and $\epsilon$ allowed leakage.
-
-### 6.2 Boundary
-
-A boundary is not a physical skin. It is a statistical and causal interface that makes internal and external dynamics approximately separable for prediction and control.
-
-### 6.3 Capability
-
-Capability is the degree to which a system can predict and control relevant future states through its boundary, after accounting for memory cost and surprise.
-
-Use:
-
-\[
-B = I_{\text{pred}} + I_{\text{ctrl}} - \beta H(I) - \gamma S
-\]
-
-### 6.4 Value bundle
-
-A value bundle is a low-dimensional latent control direction that changes policy across many contexts.
-
-Example bundles:
-
-* protection,
-* non-suffering,
-* care,
-* truth,
-* autonomy,
-* justice,
-* dignity,
-* loyalty,
-* beauty,
-* learning,
-* legacy.
-
-### 6.5 Bearer map
-
-A bearer map specifies what entities, states, or processes a value bundle applies to.
-
-Use:
-
-\[
-\Phi_k:z_{\text{world}}\mapsto \text{bundle relevance}
-\]
-
-### 6.6 Goal inference
-
-Goal inference is the process of finding latent objectives or value-bundle structures that make observed behavior more compressible.
-
-Use:
-
-\[
-\hat B,\hat W,\hat\Phi
-=
-\arg\max_{B,W,\Phi}
-P(A_{1:T}\mid I_{1:T},B,W,\Phi)\,P(B,W,\Phi)
-\]
-
-### 6.7 Goal transport
-
-Goal transport is the preservation of goal-relevant structure across transformation.
-
-Use:
-
-\[
-\Delta L_{\text{transport}}
-=
-L(M_T\mid X)-L(M_0\mid X)-\lambda DL(T)
-\]
-
-Explain that semantic transport is weak, bundle transport is stronger, bearer transport is stronger still, and correction transport is central.
-
-### 6.8 Correction channel
-
-A correction channel exists when a correcting agent that sufficiently coincides with humanity controls handles that reach and alter a target system's future behavior before irreversible damage occurs.
-
-Use:
-
-\[
-W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}
-\]
-
-### 6.9 Correction-channel integrity
-
-Correction-channel integrity is the weakest effective capacity of handles controlled by the correcting agent after penalties for latency, manipulation/capture, irreversibility, and ontology mismatch.
-
-**Canonical manuscript definition:** Chapter 25 (`ch25-correction-channel-integrity.tex`, Section `sec:correction-channel-integrity-def`, Eqs. `eq:correction-bottleneck-capacity` and `eq:cci-ch25`). Other chapters cross-reference; do not re-display the functional.
-
-Use:
-
-\[
-CCI=
-C_{\mathrm{raw}}
--\lambda_L L
--\lambda_M M
--\lambda_R R
--\lambda_O O
-\]
-where \(C_{\mathrm{raw}}=\min_i \kappa_i(A,G_t,h_i)\).
-
-### 6.10 Successor
-
-A successor is any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity.
-
-### 6.11 Alignment basin
-
-An alignment basin is a self-stabilizing region of system dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure.
-
-### 6.12 Pivotal process
-
-A pivotal process is a socio-technical basin transition from a race basin to a certified-deployment basin:
-$\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$.
-The manuscript does not concede that a unilateral pivotal act is necessary; it concedes only that some basin-shifting transition is necessary before unsafe superintelligence deployment.
-
-### 6.13 Adversarial measurement
-
-Adversarial measurement is the attempt to infer agency, goals, opacity, and successor risk when the system may benefit from confusing the measurement process.
-
-### 6.14 Correction-capacity assumption
-
-Let $C_{\text{corr}}^{\text{society}}(t_0)$ denote society's institutional, epistemic, and practical capacity to notice, evaluate, and constrain frontier systems. The framework assumes $C_{\text{corr}}^{\text{society}}(t_0) > \theta$. If that capacity has already collapsed, later alignment theory may arrive too late.
-
-### 6.15 Coerced correction
-
-Legitimate correction-channel integrity excludes signals produced under existential threat, addiction, dependency, hostage-taking, or institutional capture:
-
-\[
-\mathrm{CCI}_{\text{legit}}
-=
-\mathrm{CCI}
--
-\lambda_C C_{\text{coercion}}
--
-\lambda_D D_{\text{dependency}}
--
-\lambda_M M_{\text{manipulation}}.
-\]
-
-### 6.16 Paternalism boundary
-
-A system can increase care while destroying autonomy, agency, or future correction capacity:
-
-\[
-\Delta B_{\text{care}}>0
-\quad\text{but}\quad
-\Delta B_{\text{autonomy}},\;\Delta B_{\text{agency}},\;\Delta C_{\text{corr}}<0.
-\]
-
-### 6.17 Cooperativity index
-
-For strategically coupled systems $(i,j)$:
-
-\[
-\kappa_{ij}=\frac{b_{ij}\,p_{ij}\,\rho_{ij}}{c_{ij}},
-\qquad
-\tilde{\kappa}_{ij}
-=
-\frac{b_{ij}\,[p_{ij}+(1-p_{ij})\mathrm{ICI}_{ij}]\,\rho_{ij}}{c_{ij}}.
-\]
-
-Key claim: $p_{ij}=0$ does not imply $\tilde{\kappa}_{ij}=0$.
+Before finishing chapter integration, review the matching Lean module per `AGENTS.md` and record prose–spine gaps in the session log or `metadata/TODO.md`.
 
 ---
 
-## 7. Required Chapter List
+## 7. References and Citations
 
-Use the following **44 chapters**. File names follow `chapters/chNN-slug.tex`; chapter numbers must match include order.
+Use BibLaTeX with `biber`. Category files under `references/` are loaded from `book.tex`. `references/manuscript-citations.bib` holds cited keys not yet merged into categories. The global bibliography is built via `metadata/global-nocite.tex` (generated by `scripts/generate_global_nocite.py` at build time).
 
-### Part I. The Alignment Problem Reframed
-
-1. The Wrong Object of Alignment — `ch01-wrong-object.tex`
-2. From Artificial Intelligence to Artificial Civilization — `ch02-artificial-civilization.tex`
-3. Alignment as a Dynamical Guarantee — `ch03-dynamical-guarantee.tex`
-4. Why Fixed Values Are the Wrong Target — `ch04-fixed-values-wrong-target.tex`
-5. Assumptions, Scope, and Failure Coverage — `ch05-assumptions-scope-failure-coverage.tex`
-
-Chapter 5 defines scope, the correction-capacity assumption $C_{\text{corr}}^{\text{society}}(t_0)>\theta$, and a Turchin coverage audit (audit only, not book structure).
-
-### Part II. Agents, Boundaries, and Real Optimizers
-
-6. What Is an Agent Without Anthropomorphism? — `ch06-agent-without-anthropomorphism.tex`
-7. Finding the Boundary — `ch07-finding-boundary.tex`
-8. Agents That Grow, Split, and Merge — `ch08-grow-split-merge.tex`
-9. The Real Agent May Be Composite — `ch09-composite-agent.tex`
-10. Agency Under Strategic Opacity — `ch10-strategic-opacity.tex`
-
-### Part III. Capability Growth and Competence
-
-11. Measuring Capability Without Task Ontology — `ch11-capability-without-task-ontology.tex`
-12. Capability Growth Is Boundary Expansion — `ch12-boundary-expansion.tex`
-13. The Coordination Bottleneck — `ch13-coordination-bottleneck.tex`
-14. When Intelligence Deepens Misalignment — `ch14-intelligence-deepens-misalignment.tex`
-
-### Part IV. Human Values as Needs Smoothed over Time
-
-15. Values Are Compressed Control Signals — `ch15-values-compressed-control.tex`
-16. The Value-Bundle Model — `ch16-value-bundle-model.tex`
-17. Why Low Dimensionality Makes Value Learning Possible — `ch17-low-dimensional-value-learning.tex`
-18. What Values Apply To — `ch18-bearer-maps.tex`
-19. Tradeoffs and Bundle Geometry — `ch19-tradeoffs-bundle-geometry.tex` (includes **The Paternalism Boundary**)
-
-### Part V. Interpreting a System's Goals
-
-20. From Rewards to Values — `ch20-reward-to-bundle-inference.tex`
-21. The Compression Test for Intention — `ch21-compression-test-intention.tex`
-22. Has the Goal Really Survived? — `ch22-goal-transport.tex`
-23. When the Words Survive but the Meaning Doesn't — `ch23-transport-types.tex`
-
-### Part VI. Correction Channels
-
-24. Correction Is a Causal Channel — `ch24-correction-causal-channel.tex`
-25. Correction-Channel Integrity — `ch25-correction-channel-integrity.tex` (includes **Coerced Correction**)
-26. Beyond Following Instruction — `ch26-extrapolative-correction.tex`
-27. Manipulation, Domestication, and False Consent — `ch27-manipulation-false-consent.tex`
-
-### Part VII. Successors, Reproduction, and Continuity
-
-28. Successor Creation as the Central Alignment Test — `ch28-successor-central-test.tex`
-29. Conserved Properties Across Successors — `ch29-conserved-properties.tex`
-30. Better Self-Modeling Can Be Worse — `ch30-self-modeling-self-opacity.tex`
-31. Certification Without Construction — `ch31-certification-without-construction.tex` (AI halting footnote only)
-
-### Part VIII. Attractor Basins and Socio-Technical Selection
-
-32. Alignment Is Selected or Destroyed by Its Environment — `ch32-selection-environment.tex`
-33. Multi-Agent Superintelligence and Strategic Coupling — `ch33-multi-agent-strategic-coupling.tex` (inserts **Cooperation, Privacy, and Opacity** and **Percolation of Cooperation** as subsections)
-34. Parasites in the Correction System — `ch34-parasites-correction-system.tex`
-35. The Alignment Attractor — `ch35-alignment-attractor.tex` (pivotal process: $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$)
-
-### Part IX. Safety Cases, Adversaries, and Open Questions
-
-36. Passive Observation Is Not Enough — `ch36-passive-observation-not-enough.tex`
-37. Detecting Goal Laundering — `ch37-goal-laundering.tex`
-38. Checking a System at Every Level — `ch38-multiscale-decomposition.tex`
-39. A Safety Case for Superintelligence Alignment — `ch39-safety-case.tex`
-40. Lethality Stress Test and Open Issues — `ch40-lethality-stress-test-open-issues.tex`
-
-Yudkowsky's List of Lethalities appears **only in Chapter 40**, as an adversarial checklist---not as the organizing frame.
-
-### Part X. The Philosophical and Civilizational Limit
-
-41. When Value Change Is the Thing at Stake — `ch41-value-change-at-stake.tex`
-42. The End of Unconscious Value Drift — `ch42-unconscious-value-drift.tex`
-43. Who Still Counts After Transformation — `ch43-bearers-of-value.tex` (inserts **Merging With Artificial Entities** and **What Cannot Be Solved Technically** as sections)
-44. Towards Superintelligence Alignment — `ch44-towards-alignment.tex`
-
----
-
-## 8. LaTeX Project Structure
-
-The repository root is `towards-asi-alignment/`. The README repository map is the
-maintained overview of the layout; the tree below is illustrative and names files
-only as examples or where the convention matters. Do not treat it as an exhaustive
-manifest.
-
-Key conventions:
-
-- One part file per part (`parts/partNN-slug.tex`), one chapter file per chapter
-  (`chapters/chNN-slug.tex`); the `NN` ordering must match the include order in
-  `book.tex`. Part slugs follow the part title (e.g. `part09-safety-cases.tex`).
-- Appendices `appA`–`appI` in `appendices/`.
-- Durable project data lives in `metadata/` (e.g. `book.yml`, `source-canon.md`,
-  the claims/assumptions/uncertainty ledgers, `terminology.md`, `notation.md`,
-  `preamble.tex`).
-- Bibliography by category under `references/` (see §11).
-- Build helpers in `scripts/` and at the repo root (`build.sh`, `clean.sh`,
-  `Makefile`, `latexmkrc`).
-- Build outputs go to `dist/` (PDF in `dist/pdf/`); the root `book.pdf` and LaTeX
-  aux files are not committed.
-
-```text
-towards-asi-alignment/
-├── README.md, LICENSE
-├── book.tex                     # root LaTeX file (includes everything)
-├── build.sh, clean.sh, Makefile, latexmkrc
-├── metadata/                    # book.yml, source-canon.md, ledgers, preamble.tex …
-├── frontmatter/                 # titlepage, preface, introduction, executive-overview …
-├── parts/                       # part01-reframing.tex … part10-civilizational-limit.tex
-├── chapters/                    # ch01-….tex … ch44-….tex
-├── appendices/                  # appA-notation.tex … appI-lean-proof-spine.tex
-├── figures/                     # source/, generated/, tikz/
-├── tables/                      # chapter-map.tex, notation-table.tex, artifacts-table.tex …
-├── references/                  # main.bib + category .bib files (see §11)
-├── scripts/                     # build/check/wordcount/extract/import utilities
-├── drafts/                      # chapter-notes/, rejected-fragments/, conversation-summaries/
-├── review/                      # reviewer guide and templates
-└── dist/                        # build outputs: pdf/ (epub/, html/ optional)
-```
-
----
-
-## 9. Main LaTeX File
-
-Create `book.tex` as the root file.
-
-It should use a book-like class. Prefer `memoir` if available, otherwise use `book`.
-
-Required packages:
-
-* `amsmath`
-* `amssymb`
-* `mathtools`
-* `amsthm`
-* `graphicx`
-* `xcolor`
-* `hyperref`
-* `cleveref`
-* `biblatex`
-* `csquotes`
-* `booktabs`
-* `longtable`
-* `tikz`
-* `tcolorbox`
-* `enumitem`
-* `microtype`
-* `makeidx`
-* `glossaries-extra` or a simpler glossary setup if build stability is more important
-
-Use `biblatex` with `biber`.
-
-The root file should include:
-
-```latex
-\input{frontmatter/titlepage}
-\input{frontmatter/dedication}
-\input{frontmatter/preface}
-\input{frontmatter/introduction}
-\input{frontmatter/executive-overview}
-\input{frontmatter/acknowledgements}
-
-\mainmatter
-
-\input{parts/part01-reframing}
-...
-\input{parts/part10-civilizational-limit}
-
-\appendix
-\input{appendices/appA-notation}
-...
-\input{appendices/appI-lean-proof-spine}
-
-\printbibliography
-\printindex
-```
-
-Each `parts/partXX-*.tex` file should define the part and include its chapters.
-
-Example:
-
-```latex
-\part{The Alignment Problem Reframed}
-
-\input{chapters/ch01-wrong-object}
-\input{chapters/ch02-artificial-civilization}
-\input{chapters/ch03-dynamical-guarantee}
-\input{chapters/ch04-fixed-values-wrong-target}
-\input{chapters/ch05-assumptions-scope-failure-coverage}
-```
-
----
-
-## 10. Chapter Structure
-
-Chapters come in two shapes. Both must satisfy the same small set of **required elements**; the section layout is otherwise flexible.
-
-### Required elements (every chapter, including integrated drafts)
-
-Regardless of which shape a chapter uses, it must contain:
-
-1. `\chapter{...}` + `\label{ch:short-label}`.
-2. A `chapterthesis` environment stating the core claim in one paragraph.
-3. Decision relevance somewhere early — why the chapter matters for alignment work.
-4. At least one **failure mode / counterexample** discussion (where the model breaks, overreaches, or needs refinement).
-5. A **`\section{What Would Change This View}`** — a short, skimmable list of evidence, argument, or empirical results that would weaken *this chapter's* central claim. Use this exact section title for consistency. A close equivalent (e.g. "Where the Argument Is Shaky") is acceptable only if renamed to this title.
-6. A summary (5–8 bullets, or an equivalent short closing section).
-7. BibLaTeX citations throughout (`\autocite`/`\cite`); never hand-format references. Wrap per-chapter bibliographies in `refsection` and end with `\printbibliography[heading=subbibliography,title={Chapter References}]`.
-
-Everything else — section names, ordering, how prose and formalism interleave — is at the author's discretion.
-
-### Shape A — scaffold chapters (recommended default for new stubs)
-
-When drafting a chapter from scratch, the following template is the recommended starting point. It satisfies all required elements:
-
-```latex
-\chapter{Chapter Title}
-\label{ch:short-label}
-
-\begin{chapterthesis}
-One paragraph stating the chapter's core claim.
-\end{chapterthesis}
-
-\section{Why This Matters}        % decision relevance
-
-\section{Plain-Language Model}    % the idea without equations
-
-\section{Formal Model}            % variables, assumptions, equations
-
-\section{Worked Example}          % one concrete example
-
-\section{Counterexample or Failure Mode}  % where it breaks (required element 4)
-
-\section{What Would Change This View}      % disconfirming evidence (required element 5)
-
-\section{Summary}                 % 5–8 bullets
-
-\section*{Chapter References}     % BibLaTeX; do not hand-format
-```
-
-### Shape B — integrated drafts
-
-When a full author-supplied draft is integrated, keep its native narrative structure rather than forcing it into Shape A. Do **not** split interleaved prose/formalism into separate "Plain-Language Model" and "Formal Model" sections just to match the template. You must still ensure all **required elements** above are present — in particular, add a `\section{What Would Change This View}` before the summary if the draft lacks one.
-
-**Lean spine review:** before finishing integration, read `formal/README.md` (module map), skim the matching `formal/AlignmentProofSpine/*.lean` module(s), and calibrate claims to **proof** / **counterexample** / **bridge** status. Record prose–spine mismatches in the session log or `metadata/TODO.md`.
-
-Define custom environments in `book.tex` or `metadata/preamble.tex`:
-
-```latex
-\newtcolorbox{chapterthesis}{...}
-```
-
-(Other box environments were removed from `metadata/preamble.tex` in 2026-06-23; chapters use plain `\section`s for decision relevance and failure modes.)
-
----
-
-## 11. Reference System
-
-Use BibLaTeX.
-
-Maintain separate `.bib` files by source type:
-
-1. `internal-project-sources.bib`
-2. `external-alignment.bib`
-3. `neuroscience-values.bib`
-4. `dynamical-systems.bib`
-5. `governance-institutions.bib`
-6. `philosophy.bib`
-
-**Recommended setup (already in use):** load the category files directly with one
-`\addbibresource{...}` per file in `book.tex`, rather than concatenating everything
-into one bibliography. Keep `references/main.bib` as a thin index plus a home for
-manual or uncategorized entries; do not duplicate category entries into it. This
-keeps `import_source_map_refs.py` (which regenerates the category files) the single
-writer of the categorized bibliography and avoids merge drift.
-
-To populate or refresh bibliography entries from the source map (§3.0), run:
+Refresh category bibs from sibling repos when available:
 
 ```bash
 python3 scripts/import_source_map_refs.py
 ```
 
-That script reads `.bib` files from `../agency-detect/docs/papers/` and `../brain-to-values/papers/`, merges manual entries from papers that use `\begin{thebibliography}`, deduplicates keys, and writes the categorized files under `references/`.
+Promote LessWrong and forum posts from `context/lw-references.md` manually into the appropriate `references/*.bib` file.
 
-### LessWrong and external alignment references
+**Citation policy:** body text explains concepts in plain language; chapter references may cite internal project sources. Never use internal project names as unexplained primitives in the body.
 
-**`context/lw-references.md`** is a chapter-indexed curated list of LessWrong and related forum posts (URLs, summaries, relevance notes). When wiring chapter references or choosing external citations for a draft, consult the entries for that chapter first.
-
-This file is **not** read by `import_source_map_refs.py`. To cite an entry in the manuscript:
-
-1. Check whether a BibLaTeX key already exists in `references/*.bib` (search by author/title).
-2. If missing, add a record to the appropriate category file (usually `references/external-alignment.bib`) with a stable citation key.
-3. Use `\autocite{key}` in the chapter body or Chapter References section.
-
-Keep `lw-references.md` human-edited in `context/`; update it when adding major external references to a chapter. Do not regenerate or overwrite it from scripts.
-
-Every chapter must include references from at least three categories where relevant:
-
-* AI alignment and agent foundations,
-* information theory or dynamical systems,
-* human values, moral psychology, neuroscience, philosophy, or governance.
-
-Internal project sources may be cited in chapter reference sections, but the body text must not rely on their names as explanatory shortcuts.
-
-Correct:
-
-> We can operationalize an agent boundary as an approximate conditional-independence relation across an interface.
-
-Incorrect:
-
-> As UAD says, agents are ε-blankets.
-
-Correct:
-
-> The chapter’s source tradition includes prior work on unsupervised agent discovery.
+Each chapter should draw from at least three reference categories where relevant: alignment/agent foundations, information theory or dynamical systems, and values/neuroscience/philosophy/governance.
 
 ---
 
-## 12. Git Workflow
+## 8. Ledgers
 
-Initialize a Git repository.
+Track major claims, assumptions, and open problems in:
 
-Use the following branch structure:
+* `metadata/claims-ledger.md`
+* `metadata/assumptions-ledger.md`
+* `metadata/uncertainty-ledger.md`
+* `metadata/open-problems.md` (research directions; overlaps Appendix H)
 
-```text
-main
-develop
-chapter/ch01-wrong-object
-chapter/ch02-artificial-civilization
-...
-review/technical
-review/legibility
-release/v0.1-outline
-release/v0.2-first-draft
-release/v1.0-complete-manuscript
-```
-
-Commit often.
-
-Use conventional commit messages:
-
-```text
-init: create LaTeX book scaffold
-outline: add full chapter map
-chapter: draft chapter 01 wrong object of alignment
-refs: add bibliography entries for Markov blankets
-formal: add correction-channel integrity equations
-review: address chapter 04 legibility comments
-build: fix latexmk build
-```
-
-Each chapter should progress through states:
-
-```text
-stub -> outline -> rough-draft -> technical-draft -> legibility-pass -> reviewed -> final
-```
-
-Track this in `metadata/book.yml`.
-
-Example:
-
-```yaml
-chapters:
-  ch01:
-    title: "The Wrong Object of Alignment"
-    status: "rough-draft"
-    word_target: 7000
-    formal_density: "low"
-    reviewer_needed:
-      - alignment
-      - governance
-  ch25:
-    title: "Correction-Channel Integrity"
-    status: "stub"
-    word_target: 9000
-    formal_density: "high"
-    reviewer_needed:
-      - information-theory
-      - control-theory
-```
+Update ledgers when a chapter adds or changes a load-bearing claim. Mark status: established, plausible, speculative, or open.
 
 ---
 
-## 13. Build Script
+## 9. Conceptual Spine
 
-The build helpers already exist at the repo root: `build.sh`, `clean.sh`,
-`Makefile`, and `latexmkrc`. Use them rather than reinventing the commands; the
-README quick-start documents the day-to-day invocations.
-
-Requirements:
-
-- Build with `latexmk` (biber backend); run `./build.sh` or `make pdf`.
-- The build must place book outputs under `dist/` — the PDF at
-  `dist/pdf/towards-superintelligence-alignment.pdf`. The root `book.pdf` and the
-  LaTeX aux files are intermediates and are not committed (`clean.sh` / `make clean`
-  removes them).
-- `make check` runs the structure and citation checks; `make wordcount` and
-  `make todos` are also available.
-
----
-
-## 14. README Requirements
-
-Create `README.md` with:
-
-1. Book title.
-2. One-sentence thesis.
-3. Current manuscript status.
-4. Build instructions.
-5. Folder structure.
-6. Chapter status table.
-7. Contribution/review guidelines.
-8. Citation policy.
-9. License.
-10. Known open problems.
-
-The README should include this warning:
-
-> This manuscript develops a conceptual and formal framework for superintelligence alignment. It is not a claim that the alignment problem is solved. The book distinguishes between established claims, plausible hypotheses, and open research problems.
-
----
-
-## 15. Claims Ledger
-
-Create `metadata/claims-ledger.md`.
-
-Track every major claim with:
-
-```markdown
-## Claim ID: C-001
-
-**Claim:** The real target of alignment may be a composite socio-technical optimizer rather than an isolated AI model.
-
-**Chapter(s):** 1, 9, 32
-
-**Status:** plausible, not proven
-
-**Support:**
-- examples from markets, bureaucracies, platforms, and model-tool-user systems
-- boundary formalization via conditional independence
-- multi-agent coordination literature
-
-**Weakest link:**
-- detecting composite agents empirically may be computationally and statistically difficult
-
-**What would update against it:**
-- robust evidence that frontier AI risk remains localized inside model weights and does not depend strongly on deployment loops
-
-**References:**
-- add BibLaTeX keys here
-```
-
-Every chapter must add or update at least one claim.
-
----
-
-## 16. Assumptions Ledger
-
-Create `metadata/assumptions-ledger.md`.
-
-Use this format:
-
-```markdown
-## Assumption ID: A-001
-
-**Assumption:** Human values have enough low-dimensional bundle structure to be approximated and transported.
-
-**Used in:** Chapters 15-23, 25-26, 40-44
-
-**Why needed:** Without some compressed structure, value learning and correction-channel modeling become sample-intractable.
-
-**Failure mode if false:** The framework may preserve a simplified proxy rather than human values.
-
-**Evidence:** moral psychology, affective neuroscience, preference PCA, low-rank alignment findings
-
-**Confidence:** medium
-
-**Tests:** look for elbows in preference-prediction curves; compare low-rank versus high-dimensional models on value-related behavior
-```
-
----
-
-## 17. Uncertainty Ledger
-
-Create `metadata/uncertainty-ledger.md`.
-
-Track open problems and unresolved uncertainties.
-
-At minimum include:
-
-1. Are human values sufficiently low-dimensional?
-2. Can bearer maps survive radical ontology shift?
-3. Can correction-channel integrity be measured under adversarial conditions?
-4. Can successor constraints be enforced before recursive capability growth?
-5. Can composite agent boundaries be detected in real deployment systems?
-6. How much capability growth is safe without proportional transparency growth?
-7. What counts as legitimate value-bundle change?
-8. Where does technical alignment end and civilizational self-governance begin?
-
----
-
-## 18. Required Formal Spine
-
-The manuscript must develop these formal objects in sequence.
-
-### 18.1 Agent boundary
-
-\[
-I(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon
-\]
-
-### 18.2 Capability measure
-
-\[
-B = I_{\text{pred}} + I_{\text{ctrl}} - \beta H(I) - \gamma S
-\]
-
-### 18.3 Competence growth
-
-\[
-\frac{\dot w_A}{w_A}
-=
-\frac{\dot w_H}{w_H}
-+
-\eta(B_A-B_H)
-\]
-
-### 18.4 Value-bundle inference
-
-\[
-\hat B,\hat W,\hat\Phi
-=
-\arg\max_{B,W,\Phi}
-P(A_{1:T}\mid I_{1:T},B,W,\Phi)\,P(B,W,\Phi)
-\]
-
-### 18.5 Bundle response geometry
-
-\[
-G_B=
-\left(
-\frac{\partial \pi}{\partial B_i},
-\frac{\partial^2\pi}{\partial B_i\partial B_j}
-\right)
-\]
-
-### 18.6 Bearer map
-
-\[
-\Phi_k:z_{\text{world}}\mapsto \text{bundle relevance}
-\]
-
-### 18.7 Intentional compression gain
-
-\[
-\Delta L =
-L_{\text{intentional}}
--
-L_{\text{mechanistic}}
--
-\lambda DL(R)
-\]
-
-### 18.8 Goal transport
-
-\[
-\Delta L_{\text{transport}}
-=
-L(M_T\mid X)
--
-L(M_0\mid X)
--
-\lambda DL(T)
-\]
-
-### 18.9 Transport decomposition
-
-\[
-\Delta L_T=
-\Delta L_{\text{semantic}}
-+\Delta L_{\text{bundle}}
-+\Delta L_{\text{bearer}}
-+\Delta L_{\text{correction}}
-+\Delta L_{\text{successor}}
-\]
-
-### 18.10 Correction chain
-
-\[
-W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}
-\]
-
-### 18.11 Correction-channel integrity
-
-\[
-CCI=
-\min_i \kappa_i(A,G_t,h_i)
--\lambda_L L
--\lambda_M M
--\lambda_R R
--\lambda_O O
-\]
-
-### 18.12 Successor certification
-
-\[
-\forall A'\in \text{Succ}(A):
-A'\in \mathcal S_{\text{certified}}
-\]
-
-### 18.13 Cooperation condition
-
-\[
-\kappa_{ij}=
-\frac{b_{ij}p_{ij}\rho_{ij}}{c_{ij}}
-> 1
-\]
-
-### 18.14 Cooperation percolation
-
-\[
-\varphi>\varphi_c=
-\frac{\langle d\rangle}{\langle d^2\rangle-\langle d\rangle}
-\]
-
-### 18.15 Parasite-persistence criterion
-
-\[
-C_X < H(A_Y)-\frac{\lambda_Y H(I_Y)}{\beta}
-\]
-
-### 18.16 Safety-case guarantee
-
-\[
-\forall A\in\mathcal C:
-P(\text{catastrophic drift}\mid A)<\delta
-\]
-
----
-
-## 19. Required Conceptual Spine
-
-The manuscript must maintain this conceptual progression:
+The manuscript should maintain this progression (details live in the drafted chapters):
 
 1. We may be aligning the wrong object.
 2. The real object may be a composite optimizer.
-3. To find it, we need operational agent-boundary discovery.
+3. Operational agent-boundary discovery is required.
 4. Capability is information flow through boundaries.
 5. Capability growth changes boundaries.
-6. Human values are not fixed utilities but compressed value bundles.
-7. Alignment requires transporting value-bundle geometry, bearer maps, and correction processes.
-8. Goal inference must be upgraded into value-bundle and bearer-map inference.
-9. Correction is not obedience. It is a causal channel.
+6. Human values are compressed value bundles, not fixed utilities.
+7. Alignment requires transporting bundle geometry, bearer maps, and correction processes.
+8. Goal inference must become bundle and bearer inference.
+9. Correction is a causal channel, not obedience.
 10. Strong correction resembles an extrapolative civilizational update process.
 11. Successor creation is the central alignment test.
 12. Better self-modeling can worsen self-transparency.
 13. Local alignment can be destroyed by socio-technical selection pressure.
-14. Adversarial measurement is needed because advanced systems may obscure their real control locus (Chapters 36--40).
-15. Technical systems can preserve the conditions for legitimate value change, but cannot fully decide what legitimate value change is (Chapter 43).
-16. Society must consciously govern value-bundle change and bearer persistence through transformation (merger, upload, successors), or those changes will occur unconsciously through markets and technology.
+14. Adversarial measurement is needed at frontier capability.
+15. Technical systems can preserve conditions for legitimate value change but cannot fully decide what legitimate change is.
+16. Society must govern value-bundle change and bearer persistence through transformation, or change will occur unconsciously through markets and technology.
 
 ---
 
-## 20. Things to Avoid
+## 10. Things to Avoid
 
-Do not write the book as if:
+Do not write as if:
 
-* “alignment” means only obedience,
-* “human values” means a utility function,
-* “agent” means a person-like mind,
-* “AI system” means only the model weights,
-* “transparency” is always good,
-* “privacy” is always bad,
-* “capability” is just benchmark performance,
-* “successor” means only explicit self-replication,
-* “CEV” is a final utility target rather than a correction process,
-* technical alignment can solve all civilizational questions,
-* external doom maps (Turchin, Yudkowsky lethalities) define the book's chapter structure.
-
-Do not include the BITS or affective-module approach in the main line unless later instructed. It may be listed as a possible future appendix or model-organism branch, but not as a core chapter.
+* "alignment" means only obedience,
+* "human values" means a utility function,
+* "agent" means a person-like mind,
+* "AI system" means only model weights,
+* "transparency" is always good or "privacy" always bad,
+* "capability" is just benchmark performance,
+* "successor" means only explicit self-replication,
+* CEV is a final utility target rather than a correction process,
+* technical alignment solves all civilizational questions,
+* external doom maps define the book's chapter structure.
 
 ---
 
-## 21. Chapter Writing Process
+## 11. Chapter Writing Process
 
-For each chapter:
+For each new or revised chapter:
 
-1. Read the chapter title and one-sentence summary.
-2. Identify the preceding chapters it depends on.
-3. Identify the concepts that must be introduced before use.
-4. Write a 1-page chapter outline.
-5. Write the plain-language section first.
-6. Write the formal section second.
-7. **Review the Lean proof spine** for this chapter: `formal/README.md` module map → matching `formal/AlignmentProofSpine/*.lean`; calibrate claims to proof / counterexample / bridge; note mismatches in the session log or `metadata/TODO.md`.
-8. Add a worked example.
-9. Add at least one counterexample.
-10. Add one “shaky point” section.
-11. Add references.
-12. Update claims, assumptions, and uncertainty ledgers.
-13. Compile the book.
-14. Fix all LaTeX errors.
-15. Commit changes.
+1. Read `metadata/book.yml` entry and dependent prior chapters.
+2. Outline concepts that must be introduced before use.
+3. Draft plain language, then formalism where needed.
+4. Review Lean spine module (`formal/README.md`); calibrate claim strength.
+5. Add worked example and counterexample.
+6. Add `\section{What Would Change This View}`.
+7. Add references; update ledgers if load-bearing.
+8. Run `./build.sh` and `make check`.
 
-Use this commit pattern:
-
-```bash
-git checkout -b chapter/chXX-short-name
-# write chapter
-make pdf
-make check
-git add .
-git commit -m "chapter: draft chXX short name"
-```
+See `AGENTS.md` for session logs, git rules, and surgical-edit constraints.
 
 ---
 
-## 22. Acceptance Criteria for a Chapter
+## 12. Acceptance Criteria
 
-A chapter is complete only if:
+**Chapter:** readable by a smart non-specialist; introduces concepts before use; includes formal object, example, failure mode, weakest link, references; compiles; no unexplained internal project jargon.
 
-* It can be read independently by a smart non-specialist.
-* It introduces all necessary concepts before using them.
-* It includes at least one formal object.
-* It includes at least one concrete example.
-* It includes a failure mode or counterexample.
-* It states its weakest link.
-* It includes relevant references.
-* It updates the ledgers.
-* It compiles without errors.
-* It does not rely on internal project names as unexplained primitives.
+**Whole book:** all chapters compile; executive overview and introduction discharge front-matter promises; glossary and notation appendices populated; ledgers and bibliography support technical review; safety-case and closing synthesis chapters complete; established vs plausible vs open claims are marked; `./build.sh` succeeds from a clean checkout.
+
+Status and remaining gaps: `metadata/book.yml`, `metadata/TODO.md`, `README.md`.
 
 ---
 
-## 23. Acceptance Criteria for the Whole Book
+## 13. Review Passes (when requested)
 
-The book is complete only if:
+1. **Technical** — equations, definitions, assumptions, references, Lean spine alignment.
+2. **Legibility** — non-specialist can see what could go wrong, why it matters, what to measure, what to do next.
+3. **Adversarial** — strongest objections, duplicate derivations, glossary/notation drift, claim strength vs evidence.
 
-1. All 44 chapters exist and compile.
-2. The executive overview states the full argument clearly.
-3. Every core term is defined in the glossary.
-4. Every major equation is introduced in prose.
-5. Every major claim is recorded in the claims ledger.
-6. Every major assumption is recorded in the assumptions ledger.
-7. Every open problem is recorded in the uncertainty ledger.
-8. The bibliography is complete enough for technical review.
-9. The manuscript includes a safety-case chapter.
-10. The manuscript distinguishes:
-
-    * established claims,
-    * plausible hypotheses,
-    * speculative extensions,
-    * philosophical limits.
-11. The final PDF builds from a clean checkout.
-12. The repository contains instructions for building, reviewing, and extending the book.
-
----
-
-## 24. First Milestone
-
-The first milestone is not the full book. It is a complete scaffold.
-
-Produce:
-
-1. Git repository.
-2. Folder structure.
-3. `book.tex`.
-4. Part include files.
-5. Chapter stubs for all 44 chapters.
-6. Appendices stubs.
-7. Bibliography files.
-8. README.
-9. Build scripts.
-10. Claims, assumptions, uncertainty, notation, and terminology ledgers.
-11. A compiled PDF containing title page, overview, table of contents, and chapter stubs.
-
-Commit:
-
-```text
-init: create full book scaffold
-```
-
----
-
-## 25. Second Milestone
-
-Write:
-
-1. Preface.
-2. Executive overview.
-3. Chapter 1.
-4. Chapter 2.
-5. Appendix A: notation.
-6. Appendix F: glossary.
-
-Chapter status lives in `metadata/book.yml`. Roadmap tables (`tables/chapter-map.tex`, `tables/part-roadmap*.tex`) are auto-generated by `scripts/generate_tables.py` at build time from `book.yml` and `parts/part*.tex`. Summaries still need to updated in current-status.tex.
-
-Commit:
-
-```text
-draft: add overview and first chapters
-```
-
----
-
-## 26. Third Milestone
-
-Write the full Part I and Part II.
-
-This establishes the book’s foundation:
-
-* wrong object of alignment,
-* artificial civilization,
-* dynamical guarantees,
-* fixed values as wrong target,
-* assumptions, scope, and failure coverage,
-* agent definition,
-* boundary discovery,
-* growth/splitting/merging,
-* composite optimizers,
-* strategic opacity.
-
-Commit:
-
-```text
-draft: complete parts i and ii
-```
-
----
-
-## 27. Fourth Milestone
-
-Write Parts III to VI.
-
-This establishes the technical core:
-
-* capability growth,
-* value bundles,
-* bundle inference,
-* bearer maps,
-* goal transport,
-* correction-channel integrity,
-* extrapolative correction,
-* manipulation and false consent.
-
-Commit:
-
-```text
-draft: complete technical core
-```
-
----
-
-## 28. Fifth Milestone
-
-Write Parts VII to X.
-
-This completes:
-
-* successors,
-* certification,
-* attractor basins and multi-agent strategic coupling,
-* safety cases and lethality stress-test,
-* value change and bearer persistence,
-* philosophical limits.
-
-Commit:
-
-```text
-draft: complete full manuscript
-```
-
----
-
-## 29. Review Milestones
-
-After the full draft, run three reviews.
-
-### 29.1 Technical review
-
-Check equations, definitions, assumptions, and references.
-
-### 29.2 Legibility review
-
-Check whether a smart non-specialist can understand:
-
-* what could go wrong,
-* why it matters,
-* what to measure,
-* what to do next.
-
-### 29.3 Adversarial review
-
-Ask:
-
-* Where does this framework fail?
-* Which terms smuggle ontology?
-* Which guarantees are fake?
-* Which measures can be gamed?
-* Which claims are stronger than the evidence?
-
-Record all results in `review/`.
-
----
-
-## 30. Final Output
-
-The final output must include:
-
-```text
-dist/pdf/towards-superintelligence-alignment.pdf
-```
-
-Optionally also produce:
-
-```text
-dist/html/
-dist/epub/
-```
-
-The final repository must be buildable from scratch with:
-
-```bash
-git clone <repo>
-cd towards-asi-alignment
-make pdf
-```
-
-The final manuscript must be book-length, internally coherent, and ready for human review.
-
+Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continuity review.

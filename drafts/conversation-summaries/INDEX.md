@@ -4,6 +4,15 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-25 | Session end — appendices, ledgers, frontmatter reorder plan | [2026-06-25-session-end-appendices-ledgers-frontmatter-plan.md](2026-06-25-session-end-appendices-ledgers-frontmatter-plan.md) |
+| 2026-06-25 | Assumptions appendix E + ledger verification | [2026-06-25-assumptions-appendix-e.md](2026-06-25-assumptions-appendix-e.md) |
+| 2026-06-25 | Assumptions ledger — manuscript + Lean S/MB collation | [2026-06-25-assumptions-ledger-collation.md](2026-06-25-assumptions-ledger-collation.md) |
+| 2026-06-25 | Notation appendix — generated index from notation.md | [2026-06-25-notation-appendix-from-md.md](2026-06-25-notation-appendix-from-md.md) |
+| 2026-06-25 | INSTRUCTIONS.md slim-down — remove obsolete structure, dedupe AGENTS | [2026-06-25-instructions-slim-down.md](2026-06-25-instructions-slim-down.md) |
+| 2026-06-25 | Global bibliography — all chapter cites via nocite + missing bib keys | [2026-06-25-global-bibliography-all-chapter-cites.md](2026-06-25-global-bibliography-all-chapter-cites.md) |
+| 2026-06-25 | Research program appendix — bridges + WWCTV index | [2026-06-25-research-program-appendix.md](2026-06-25-research-program-appendix.md) |
+| 2026-06-25 | Remove Appendix E (successor certification stub) | [2026-06-25-remove-appendix-e-successor-certification.md](2026-06-25-remove-appendix-e-successor-certification.md) |
+| 2026-06-25 | Glossary — selection environment, handles, fitness, preservation | [2026-06-25-glossary-selection-terms.md](2026-06-25-glossary-selection-terms.md) |
 | 2026-06-25 | Lean proof graphs split for book (4 sub-spines + overview) | [2026-06-25-lean-proof-graphs-book-split.md](2026-06-25-lean-proof-graphs-book-split.md) |
 | 2026-06-25 | Lean dependency graph sync to Lean theorem IDs | [2026-06-25-lean-dependency-graph-sync.md](2026-06-25-lean-dependency-graph-sync.md) |
 | 2026-06-25 | Remove Tripwire Guarantees from ch31, Lean, appendix | [2026-06-25-remove-tripwire-guarantees.md](2026-06-25-remove-tripwire-guarantees.md) |

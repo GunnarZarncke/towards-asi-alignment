@@ -1,133 +1,222 @@
 # Assumptions Ledger
 
-**Last cross-check:** 2026-06-23 — reconciled against ch05 (Assumptions, Scope, and Failure Coverage) "Background Assumptions" + "Correction-Capacity Assumption", the chapter `chapterthesis` blocks, and the conceptual spine. Chapter numbers refer to the current 44-chapter map in `metadata/book.yml`.
+Single source for **Appendix E** (assumptions index). Regenerate the typeset appendix with `python3 scripts/generate_assumptions_appendix.py` (also run from `./build.sh`).
 
-A-001 and A-002 are the two load-bearing technical assumptions. A-003–A-005 are the ch05 background/scope assumptions (the framework's preconditions). A-006–A-008 are operational assumptions the measurement program depends on.
+Maintainer detail (failure modes, tests, claim links): sections I–IV below. Claims: `metadata/claims-ledger.md`. Disconfirmers: `metadata/uncertainty-ledger.md`, Appendix H.
+
+**Last verification:** 2026-06-25 — cross-checked chapter assumption statements against this ledger (see §Verification).
 
 ---
 
-## Assumption ID: A-001
+## Verification (2026-06-25)
 
-**Assumption:** Human values have enough low-dimensional bundle structure to be approximated and transported.
+| Chapter source | Ledger coverage |
+|----------------|-----------------|
+| ch05 Background Assumptions + \(C_{\text{corr}}^{\text{society}}\) | A-003, A-004, A-005 |
+| ch02 Minimum Assumptions (civilizational frame) | A-011 |
+| ch03 dynamical guarantee (certified class / basin) | A-010 |
+| ch14 load-bearing co-scaling assumption | A-012 |
+| ch20 WWCTV five bundle-inference dependencies | A-001, A-002, A-006 (split in ch20; one row each here) |
+| ch21 compression test / MDL | A-006; S07 |
+| ch24–27 correction channel | A-002 |
+| ch28–31 successors / certification | A-007, A-010 |
+| ch32–35 selection / basins | A-008 |
+| ch36–40 adversarial measurement | A-009 |
+| ch39b verifiability labels | A-009 |
+| Lean `MB1`–`MB8`, `S07` | MB*, S07 |
+| ch31 safety-case example assumptions (test coverage, human comprehension) | Instance-level; not book-wide A-rows (see ch31 prose) |
+| ch21 “do not assume agent/sensors/goal” | Methodological (non-assumption); intentional model tested, not presupposed |
 
-**Used in:** Chapters 4, 15–22, 24–25, 41–43
+**Added this pass:** A-011 (ch02), A-012 (ch14).
 
-**Why needed:** Without some compressed structure, value learning and correction-channel modeling become sample-intractable.
+---
 
-**Failure mode if false:** The framework may preserve a simplified proxy rather than human values.
+## Quick index
 
-**Evidence:** moral psychology, affective neuroscience, preference PCA, low-rank alignment findings
+| ID | Short name | Home |
+|----|------------|------|
+| A-001 | Low-dimensional value-bundle structure | ch16 |
+| A-002 | Correction channels as causal chains with measurable integrity | ch24 |
+| A-003 | Societal correction capacity above threshold | ch05 |
+| A-004 | Observable / discoverable agent boundaries | ch07 |
+| A-005 | Certifiable deployment + human agency | ch05 |
+| A-006 | Intention / goal transport inferable via compression | ch21 |
+| A-007 | Successor influence through auditable channels | ch28 |
+| A-008 | Selection environment shapes outcomes | ch32 |
+| A-009 | Adversarial verifiability (master crux) | ch39b |
+| A-010 | Projectable dynamical / certified-class guarantees | ch03 |
+| A-011 | Civilizational-frame minimum assumptions | ch02 |
+| A-012 | Correction co-scales with capability (or pause/stop) | ch14 |
+| S07 | MDL: positive gain ⇒ preferred model | ch21 |
+| MB1–MB8 | Lean bridge axioms | appI (+ chapter bridges) |
 
-**Confidence:** medium
+---
 
-**Tests:** look for elbows in preference-prediction curves; compare low-rank versus high-dimensional models on value-related behavior
+## I. Manuscript assumptions (maintainer notes)
 
-**Bears on:** C-004
+### A-001 — Low-dimensional value-bundle structure
 
-## Assumption ID: A-002
+**Assumption:** Human value-relevant variation has enough low-dimensional bundle structure to approximate, learn, and transport.
 
-**Assumption:** Correction channels can be modeled as causal chains with measurable integrity.
+**Also stated in:** ch04, ch15–17, ch20 (WWCTV items 1, 4), ch21, ch41–43.
 
-**Used in:** Chapters 24–27, 34, 40
+**Failure mode if false:** Proxy preservation instead of values. **Lean:** MB2, MB3. **Bears on:** C-004 · **U-01, U-02**
 
-**Why needed:** Without a causal model, alignment reduces to post-hoc outcome evaluation.
+### A-002 — Correction channels as causal chains
 
-**Failure mode if false:** Correction-channel integrity metrics may be gamed or inapplicable under adversarial opacity.
+**Assumption:** Handle-controlled correction pathways with measurable \(\mathrm{CCI}\).
 
-**Evidence:** institutional feedback loops, human-in-the-loop deployment patterns
+**Also stated in:** ch25–27, ch34, ch20 (WWCTV item 5), ch40.
 
-**Confidence:** medium
+**Failure mode if false:** Corrigibility theater; capture. **Lean:** MB4, MB8. **Bears on:** C-005 · **U-03, U-07**
 
-**Tests:** audit correction chains in deployed systems; measure manipulation resistance
+### A-003 — Societal correction capacity
 
-**Bears on:** C-005
+**Assumption:** \(C_{\text{corr}}^{\text{society}}(t_0) > \theta\).
 
-## Assumption ID: A-003
+**Canonical:** ch05 §Correction-Capacity Assumption. **Not an MB axiom.** **Bears on:** C-002, C-005, C-007 · **U-15**
 
-**Assumption:** Civilization still retains enough epistemic, institutional, and physical correction capacity at the relevant time, i.e. \(C_{\text{corr}}^{\text{society}}(t_0) > \theta\); broader pre-ASI risks are treated as assumption threats, not the central object.
+### A-004 — Discoverable boundaries
 
-**Used in:** Chapter 5 (scope); presupposed throughout
+**Assumption:** Boundaries discoverable under approximate observability and adversarial limits.
 
-**Why needed:** The theory "begins after" society can still notice, evaluate, and constrain frontier systems; if that capacity has already collapsed, the alignment theory arrives too late.
+**Also stated in:** ch05, ch09–10, ch36, ch38. **Lean:** MB1, MB7a–b. **Bears on:** C-001, C-003 · **U-05**
 
-**Failure mode if false:** The framework is inapplicable — correction-based alignment has no foothold.
+### A-005 — Certifiable deployment and human agency
 
-**Evidence:** existence of current AI governance, evaluation, and audit institutions (contested adequacy)
+**Assumption:** Deployment can be gated by certification; humans can refuse, revise, coordinate.
 
-**Confidence:** medium-low (an explicit precondition, not argued for)
+**Also stated in:** ch05, ch31–32, ch35. **Lean:** MB6. **Bears on:** C-006, C-007 · **U-11, U-15**
 
-**Tests:** track institutional/epistemic correction capacity indicators over time relative to capability growth
+### A-006 — Compression / transport inferability
 
-**Bears on:** C-002, C-005, C-007
+**Assumption:** Intentional and transport models earn compression gain after complexity cost; ch20 items 2–3 (bundle/bearer inferability).
 
-## Assumption ID: A-004
+**Canonical:** ch21. **Lean:** S07, MB2. **Bears on:** C-009 · **U-09**
 
-**Assumption:** Frontier systems remain observable and measurable enough for boundary discovery and adversarial measurement; agent boundaries are detectable via conditional independence / screening-off in real deployments.
+### A-007 — Successor channel auditability
 
-**Used in:** Chapters 5, 6, 7, 9, 36, 38
+**Assumption:** Successor influence passes through specifiable, auditable channels (seven conserved properties, ch29).
 
-**Why needed:** Boundary-finding, capability measurement, and correction all require that the relevant object can be located and probed.
+**Also stated in:** ch08, ch29–31. **Lean:** MB5. **Bears on:** C-006 · **U-04, U-13**
 
-**Failure mode if false:** Boundary discovery fails; capability and correction metrics attach to the wrong object.
+### A-008 — Selection environment
 
-**Evidence:** interpretability/measurement progress; conditional-independence structure in deployed pipelines
+**Assumption:** Outcomes depend on socio-technical selection (fitness, basins), not weights alone.
 
-**Confidence:** medium-low (boundaries are leaky, non-stationary, and adversarially hidden — ch07, ch10)
+**Also stated in:** ch02 loop, ch35, ch40. **Lean:** MB6. **Bears on:** C-007 · **U-10, U-11**
 
-**Tests:** validate boundary-finding procedure on systems with known structure; measure residual surprise across candidate boundaries
+### A-009 — Adversarial verifiability
 
-**Bears on:** C-001, C-003, C-010
+**Assumption:** At least one core measurand is cheaper to satisfy honestly than to fake under optimization pressure.
 
-## Assumption ID: A-005
+**Also stated in:** ch36, ch39–39b, ch40. **Lean:** MB7b, MB7c. **Bears on:** C-005, C-010, C-044 · **U-03, U-14**
 
-**Assumption:** Deployment can still be conditioned on certification, and humans retain enough agency to refuse, revise, and coordinate.
+### A-010 — Dynamical guarantees
 
-**Used in:** Chapters 5, 31, 32, 35
+**Assumption:** Alignment expressed as certified-class / basin invariants over time, not static \(P(A_t)\).
 
-**Why needed:** Certification-without-construction and selection-environment arguments require that certificates can gate deployment and that humans can act on them.
+**Also stated in:** ch31, ch39. **Lean:** certification scaffolding + MB5–6. **Bears on:** C-002, C-006, C-044 · **U-04, U-13**
 
-**Failure mode if false:** Certification is decorative; the selection environment rewards correction-eroding systems unchecked.
+### A-011 — Civilizational-frame minimum assumptions
 
-**Evidence:** existing deployment-gating regimes (model releases, compliance); contested under competitive pressure
+**Assumption:** (1) AI mediates high-effect decisions; (2) institutions/markets select deployment patterns; (3) mediation changes correction-relevant information; (4) human values/institutions are plastic.
 
-**Confidence:** medium-low
+**Canonical:** ch02 §Minimum Assumptions. Stronger claims deferred to later chapters. **Bears on:** C-001, C-007
 
-**Tests:** observe whether certification/audit actually changes deployment decisions under competition
+### A-012 — Correction co-scaling
 
-**Bears on:** C-006, C-007
+**Assumption:** Correction, oversight, and interpretability can co-scale with capability across real jumps (Part III hinge); otherwise only pause/stop remains.
 
-## Assumption ID: A-006
+**Canonical:** ch14 WWCTV load-bearing bullet. **Bears on:** C-008 · **U-06**
 
-**Assumption:** Intention and goal transport are inferable: modelling a system as pursuing latent objectives can compress its behaviour better than a mechanistic baseline, after paying the objective model's complexity cost.
+---
 
-**Used in:** Chapters 21, 22, 23, 37
+## II. Lean scaffolding
 
-**Why needed:** The compression test and transport stack presuppose that intentional structure leaves a detectable compression signature.
+Abstract carriers in `Core.lean` (`System`, `State`, …) are mathematical interfaces, not empirical assumptions. Criticize **A*** and **MB***, not `System : Type`.
 
-**Failure mode if false:** Goal preservation/laundering cannot be distinguished from mechanism; transport claims are untestable.
+---
 
-**Evidence:** behavioural-compression / intentional-stance modeling; counterfactual-robustness tests
+## III. Lean imported (S01–S09)
 
-**Confidence:** medium (observer-relative; gameable by adversaries)
+Appendix I §Imported Assumptions. Only **S07** is an explicit Lean `axiom`. S09 enters via MB6.
 
-**Tests:** measure compression gain of intentional vs. mechanistic models on adversarial and honest systems
+---
 
-**Bears on:** C-009
+## IV. Lean bridges (MB1–MB8)
 
-## Assumption ID: A-007
+Formal statements: Appendix I; validation program: Appendix H. Lean: `Core.lean` `BridgeAssumptions`.
 
-**Assumption:** Successor influence passes through an enumerable set of channels whose preservation can be specified and certified within tested tolerance.
+| Bridge | Manuscript A-IDs |
+|--------|------------------|
+| MB1 | A-004 |
+| MB2, MB3 | A-001, A-006 |
+| MB4, MB8 | A-002 |
+| MB5 | A-007, A-010 |
+| MB6 | A-005, A-008, A-011 (institutional selection) |
+| MB7a | A-004 |
+| MB7b, MB7c | A-009 |
+| MB8 | A-002 |
 
-**Used in:** Chapters 8, 28, 29, 31
+---
 
-**Why needed:** Successor-closure and certification require that "every channel by which influence passes to a later control system" can be identified and constrained.
+## Appendix index
 
-**Failure mode if false:** Successors leak influence through unmodeled channels; certification gives false assurance.
+Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. One line per assumption; full context in the cited chapter.
 
-**Evidence:** analogy to safety cases and conserved-quantity arguments; not yet demonstrated for self-improving systems
+### Scope and preconditions
 
-**Confidence:** low-medium
+| ID | Assumption | Home |
+|----|------------|------|
+| A-003 | Civilization retains enough correction capacity: $C_{\text{corr}}^{\text{society}}(t_0) > \theta$ | ch05 |
+| A-004 | Frontier systems remain observable enough for boundary discovery and measurement | ch05 |
+| A-005 | Deployment can be conditioned on certification; humans retain agency to refuse, revise, and coordinate | ch05 |
+| A-011 | AI mediates high-effect decisions; selection shapes deployment; mediation changes correction information; values and institutions are plastic | ch02 |
 
-**Tests:** adversarial successor-creation red-teaming against the seven conserved properties
+### Value, inference, and transport
 
-**Bears on:** C-006
+| ID | Assumption | Home |
+|----|------------|------|
+| A-001 | Human values have enough low-dimensional bundle structure to approximate, learn, and transport | ch16 |
+| A-006 | Intentional and transport models earn compression gain after complexity cost (MDL / $\Delta L$) | ch21 |
+
+### Correction, capability, and verification
+
+| ID | Assumption | Home |
+|----|------------|------|
+| A-002 | Correction is a handle-controlled causal chain with measurable integrity ($\mathrm{CCI}$) | ch24 |
+| A-012 | Correction-relevant capacity co-scales with capability across real jumps (else pause/stop) | ch14 |
+| A-009 | At least one safety-relevant measurand is adversarially verifiable under optimization pressure | ch39b |
+
+### Successors, dynamics, and selection
+
+| ID | Assumption | Home |
+|----|------------|------|
+| A-010 | Alignment is a dynamical guarantee over a certified class / basin, not a static property | ch03 |
+| A-007 | Successor influence passes through specifiable, auditable channels | ch28 |
+| A-008 | Alignment outcomes depend on socio-technical selection, not model weights alone | ch32 |
+
+### Lean conventions and bridges
+
+| ID | Assumption | Home |
+|----|------------|------|
+| S07 | Positive description-length gain $\Rightarrow$ preferred model (MDL ordering) | ch21 |
+| MB1 | $\epsilon$-boundary certificates imply genuine boundary separation | ch07 |
+| MB2 | Bundle-gradient equivalence implies bundle alignment | ch16 |
+| MB3 | Bundle transport plus bearer-map agreement implies bearer transport | ch18 |
+| MB4 | Correction-channel integrity implies legitimate correction-operator preservation | ch25 |
+| MB5 | Full transport plus bearer transport implies successor safety | ch28 |
+| MB6 | Socio-technical basin stability implies correction-channel integrity | ch35 |
+| MB7a | Boundary alignment plus adequate access model implies access robustness | ch07 |
+| MB7b | Access robustness plus filter coverage bounds hidden productive B-IQ | ch39b |
+| MB7c | Correction integrity plus bounded hidden B-IQ implies adversarial robustness | ch39b |
+| MB8 | Preserving the human value-update operator $U_H$ implies correction integrity | ch26 |
+
+---
+
+## Maintenance
+
+When a chapter introduces a **new load-bearing assumption**, add a row to the Appendix index (and §I notes), then regenerate Appendix E.
+
+Do not duplicate the Executive Overview or a front-matter list; point readers to chapters + Appendix E.

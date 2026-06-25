@@ -67,7 +67,7 @@ When **drafting, revising, or integrating** a chapter (including Shape B integra
 3. Calibrate manuscript claim strength to Lean status: **proof**, **counterexample**, or **bridge** — do not say "Lean proves ASI alignment."
 4. If prose and spine diverge, note the gap in the session log and `metadata/TODO.md`; change Lean only when the task explicitly includes formal work.
 
-See also `INSTRUCTIONS.md` §21 (chapter writing process).
+See also `INSTRUCTIONS.md` §11 (chapter writing process).
 
 ### Conversation continuity
 
@@ -100,7 +100,7 @@ Do not rely on chat history alone for resume context.
 
 ### Manuscript instructions
 
-- **`INSTRUCTIONS.md`** — full book mission, audience, style, chapter structure, and source clusters. Read relevant sections before large writing tasks.
+- **`INSTRUCTIONS.md`** — editorial mission, audience, style, source canon, and chapter requirements (not the chapter map; see `metadata/book.yml`). Read before large writing tasks.
 
 ### LaTeX
 

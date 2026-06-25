@@ -50,7 +50,7 @@ Body text introduces every central concept from first principles.
 | PDF | [**Download latest draft**](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
 | Word target | ~350k (see `metadata/book.yml`) |
 
-**Next milestone** (`INSTRUCTIONS.md` §25–26): finish Ch. 5; preface and executive overview still stubs; appendices A and F.
+**Open gaps:** see `metadata/TODO.md` and `metadata/book.yml` (e.g. Ch. 5 partial; frontmatter stubs; appendices A and F).
 
 For agent session continuity, see `drafts/conversation-summaries/INDEX.md`.
 
@@ -76,7 +76,7 @@ Output: `dist/pdf/towards-superintelligence-alignment.pdf`
 
 ```text
 book.tex                    # root LaTeX file
-INSTRUCTIONS.md             # full mission, chapter list, source canon, agent spec
+INSTRUCTIONS.md             # editorial mission, style, source canon, chapter requirements
 AGENTS.md                   # agent behavior and handoff rules
 
 metadata/
@@ -90,7 +90,7 @@ metadata/
 chapters/                   # ch01–ch44 (one .tex file per chapter)
 parts/                      # 10 part include files
 frontmatter/                # title page, introduction, executive overview
-appendices/                 # 9 appendices, including the Lean proof-spine appendix
+appendices/                 # 10 appendices, including assumptions index and Lean proof spine
 references/                 # BibLaTeX by category (see below)
 tables/                     # chapter map, notation, artifacts
 figures/                    # source, generated, tikz
@@ -134,7 +134,7 @@ steps and keeps empirical/philosophical claims explicit as bridge `axiom`s
 | IX. Safety Cases, Adversaries, and Open Questions | 36–40 | Observation limits, goal laundering, safety case, lethality stress test |
 | X. The Philosophical and Civilizational Limit | 41–44 | Value change, drift, bearers, closing synthesis |
 
-Full titles and status: `metadata/book.yml` (source of truth). Roadmap tables in `tables/chapter-map.tex` and `tables/part-roadmap*.tex` are **auto-generated** at build time from `book.yml` and `parts/part*.tex` (`scripts/generate_tables.py`).
+Full titles and status: `metadata/book.yml` (source of truth). Roadmap tables in `tables/chapter-map.tex` and `tables/part-roadmap.tex` are **auto-generated** at build time from `book.yml` and `parts/part*.tex` (`scripts/generate_tables.py`).
 
 ---
 
@@ -147,7 +147,7 @@ Prior work lives in sibling repositories and is mirrored under `context/` for of
 | `../agency-detect/docs/papers/` | Unsupervised agent discovery, capability, intentional stance, attractor basins, successors |
 | `../brain-to-values/papers/` | Value bundles, free-energy loops, unit-of-caring, consciousness/agency backbone |
 
-Each PDF under `context/` has a markdown extract in `context/extracts/` (regenerate with `python3 scripts/extract_pdf_to_md.py`). The full source map—TeX paths, PDF paths, extract paths—is in `INSTRUCTIONS.md` §3.0 and `metadata/source-canon.md`.
+Each PDF under `context/` has a markdown extract in `context/extracts/` (regenerate with `python3 scripts/extract_pdf_to_md.py`). The full source map—TeX paths, PDF paths, extract paths—is in `metadata/source-canon.md`.
 
 ---
 

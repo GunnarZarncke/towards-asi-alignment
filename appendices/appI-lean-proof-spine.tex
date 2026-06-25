@@ -6,9 +6,7 @@ It is not a claim that Lean proves the empirical assumptions of the book.
 Lean proves the conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold, then the advertised certification claims follow.
 
 Where a quantity is defined in the main text, the appendix points to that chapter definition.
-The Lean names \(\mathrm{Control}\), \(\mathrm{CCI}\), \(\mathrm{Risk}\), \(\mathrm{SelfControlGap}\), and \(\mathrm{DeploymentMass}\) match the book-facing symbols in Chapters~\ref{ch:capability-without-task-ontology},~\ref{ch:correction-channel-integrity},~\ref{ch:certification-without-construction},~\ref{ch:self-modeling-self-opacity}, and~\ref{ch:selection-environment}.
 
-The numbering below is deliberately explicit.
 Definitions fix the quantities used by later results.
 Assumptions mark imported mathematical conventions, empirical bridges, or philosophical premises.
 Lemmas are local algebraic or logical facts.
@@ -18,12 +16,29 @@ Corollaries are assembled certification consequences.
 \section{Proof dependency structure}
 \label{sec:appi-proof-dependency}
 
-The full Lean dependency graph contains roughly fifty proof nodes and bridge assumptions; it does not fit legibly on one book page.
-The spine is therefore shown in four sub-diagrams---each capturing one coherent part of the argument---followed by an overview diagram that shows how those parts compose into the top certification theorem \texttt{P30T} (\emph{certified\_class\_safety\_from\_spine\_and\_bridges}).
+The structure of the Lean proof derivation is shown in four diagrams and an overview diagram that shows how those parts compose into the top certification theorem \texttt{P30T} (\emph{certified\_class\_safety\_from\_spine\_and\_bridges}).
 
-Solid arrows are proved dependency steps inside Lean.
-Dashed red arrows mark bridge assumptions (\texttt{MB*}) or empirical gaps they fill.
-Octagonal ``export'' nodes summarize what each sub-spine contributes to later stages.
+\paragraph{Node shapes.}
+Rounded rectangles denote proved Lean nodes (\texttt{P05}, \texttt{P13}, \texttt{P30}, and so on).
+Diamonds denote bridge assumptions (\texttt{MB1}--\texttt{MB8}, including the split \texttt{MB7a--c} chain).
+In the sub-spine diagrams, solid octagons mark \emph{export} summaries: quantities and predicates that leave that sub-spine and feed later stages.
+Spine~III also uses dashed octagons for \emph{imports} from Spines~I and~II (for example control capacity from Spine~I and transport counterexamples from Spine~II).
+The overview diagram uses a double octagon for the top composed theorem \texttt{P30T}; its four spine boxes and the main assembly nodes \texttt{P02}/\texttt{P30} are drawn with heavier borders.
+
+\paragraph{Fill colours (by spine or role).}
+Light blue: boundary discovery, B-IQ ceiling, and adversarial measurement (Spine~I).
+Light green: value bundles, bearer maps, and goal transport (Spine~II).
+Light pink: handle-controlled correction (Spine~III core).
+Light purple: successor invariant chains (often grouped with Spine~III).
+Light peach: selection ecology, cooperation, audit aliasing, and normative limits (Spine~IV).
+Light grey: certification assembly (\texttt{P01}, \texttt{P02}, \texttt{P30}, safety-case nodes).
+Pale red diamonds: bridge assumptions.
+Export and import octagons reuse the colour of the spine they belong to (blue, green, purple, or peach borders matching Spines~I--IV).
+
+\paragraph{Edges.}
+Solid grey arrows are proved dependency steps inside Lean.
+Dashed red arrows mark bridge assumptions (\texttt{MB*}) or empirical gaps those bridges are intended to fill; they are not theorems in the development.
+
 Theorem identifiers match \texttt{formal/AlignmentProofSpine/*.lean}.
 The developer reference graph (all nodes) is \texttt{context/lean\_proof\_dependency\_graph.dot}.
 

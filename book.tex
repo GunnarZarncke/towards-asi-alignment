@@ -32,6 +32,7 @@
 \addbibresource{references/dynamical-systems.bib}
 \addbibresource{references/governance-institutions.bib}
 \addbibresource{references/philosophy.bib}
+\addbibresource{references/manuscript-citations.bib}
 
 \hypersetup{
   pdftitle={Towards Superintelligence Alignment},
@@ -83,14 +84,15 @@
 \input{appendices/appB-worked-example-agent-boundary}
 \input{appendices/appC-value-bundle-inference}
 \input{appendices/appD-correction-channel-audit}
-\input{appendices/appE-successor-certification}
+\input{appendices/appE-assumptions}
 \input{appendices/appF-glossary}
 \input{appendices/appG-safety-case-template}
 \input{appendices/appH-research-program}
 \input{appendices/appI-lean-proof-spine}
 
 \backmatter
-\printbibliography
+\input{metadata/global-nocite.tex}
+\printbibliography[title={Bibliography}]
 \printindex
 
 \end{document}

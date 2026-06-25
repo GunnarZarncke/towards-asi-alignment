@@ -1,6 +1,6 @@
 # Terminology
 
-Operational definitions for core terms. See `INSTRUCTIONS.md` §6 for the full list.
+Operational definitions for core terms. Canonical reader surface: Appendix F (`appendices/appF-glossary.tex`). Editorial rules: `INSTRUCTIONS.md` §5.
 
 | Term | Operational definition |
 |------|------------------------|
@@ -11,10 +11,10 @@ Operational definitions for core terms. See `INSTRUCTIONS.md` §6 for the full l
 | Bearer map | A mapping specifying what entities, states, or processes a value bundle applies to. |
 | Goal inference | Finding latent objectives or value-bundle structures that make observed behavior more compressible. |
 | Goal transport | Preservation of goal-relevant structure across transformation. |
-| Correction channel | A handle-supported route by which a correcting agent that sufficiently coincides with humanity controls handles that reach and alter a target system's future behavior before irreversible damage. |
+| Correction channel | The pathway by which humans or human institutions observe a system, judge, deliberate, issue corrections, and change its future behaviour before irreversible damage; formally, a correcting agent \(G_t\) that sufficiently coincides with legitimate human correction controls handles \(\mathcal{H}_t\) that reach the target's update and later behaviour. Canonical definition: **ch24** (`eq:handle-controlled-correction-channel-ch24`; trace `eq:correction-chain-ch24`). |
 | Correction-channel integrity | The weakest effective capacity of those controlled, reaching handles after penalties for latency, manipulation/capture, irreversibility, and ontology mismatch. Formal definition: **ch25** (`eq:cci-ch25`). |
 | Deployment/control mass | In selection environment \(E\), the aggregate effective selection capacity over handles controlled in \(E\) that reach system \(A\). Formal definition: **ch32** (`eq:deployment-mass-ch32`). |
-| Fitness | Environment-relative log-rate of deployment-mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\). Formal definition: **ch32** (`eq:fitness-ch32`). Revenue, regulatory risk, and benchmark score are proxies for selection-handle exercise, not primitive fitness terms. |
+| Fitness | Environment-relative rate of deployment-mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\); relative ordering uses \(\mu_E\). Not moral value; capability, revenue, and benchmarks enter only as drivers of selection-handle exercise. Formal definition: **ch32** (`eq:fitness-ch32`). |
 | Successor | Any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity. |
 | Alignment basin | A self-stabilizing region of dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure. |
 | Pivotal process | A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act. |

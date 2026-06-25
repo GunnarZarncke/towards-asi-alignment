@@ -3,14 +3,14 @@
 Durable record of the manuscript's source material: which prior papers ground each
 part of the book, where their book-local copies and extracts live, and the canonical
 TeX/PDF sources in the sibling repositories. This file is the source of truth for
-source paths (the temporary `INSTRUCTIONS.md` writing brief only summarizes it).
+source paths. `INSTRUCTIONS.md` §3 summarizes themes; this file holds paths and tables.
 
 ## Book-local notes
 
 - `context/Alignment Attractor.md` — executive summary and platform framing
 - `context/legible-alignment-messageing.md` — legibility constraints for funders and policy-adjacent readers
 - `context/writing-style-gunnar.md` — author voice and calibration
-- `context/lw-references.md` — chapter-indexed curated LessWrong and external alignment references (URLs, summaries); consult when wiring chapter citations; not auto-imported into `.bib` (see `INSTRUCTIONS.md` §11)
+- `context/lw-references.md` — chapter-indexed curated LessWrong and external alignment references (URLs, summaries); consult when wiring chapter citations; not auto-imported into `.bib` (see `INSTRUCTIONS.md` §7)
 - `context/towards-asi-alignment-deep-research-report.md` — external literature synthesis (German); maps field gaps to book thesis; chapter-indexed addition guide below
 - `context/lean_proof_dependency_graph.dot` / `.png` — full Lean proof dependency DAG (developer reference)
 - `context/lean_proof_graphs/` — four sub-spine diagrams + overview for the book; rendered to `figures/lean_proof/`

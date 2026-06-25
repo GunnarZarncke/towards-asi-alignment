@@ -8,7 +8,7 @@ This book develops a conceptual and formal framework for superintelligence align
 
 1. **Technical** — formal models, equations, citations, claim strength
 2. **Legibility** — operational definitions, decision triggers, artifact conductivity (see `context/legible-alignment-messageing.md`)
-3. **Chapter** — completeness against the chapter template in `INSTRUCTIONS.md` §10
+3. **Chapter** — completeness against the chapter requirements in `INSTRUCTIONS.md` §6
 
 ## Claim strength
 

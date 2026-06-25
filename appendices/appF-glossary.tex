@@ -45,7 +45,9 @@ A system can keep the value word while changing the bearer map.
 That is not preservation.
 It is relabeling.
 
-A \emph{correction channel} exists when a correcting agent that sufficiently coincides with humanity controls handles that can alter a target system's future behavior before irreversible damage occurs.
+A \emph{correction channel} is the pathway by which humans or human institutions observe a system, form judgments about its behaviour, deliberate, issue corrections, and thereby change the system's future behaviour before irreversible damage occurs (Chapter~\ref{ch:correction-causal-channel}).
+The formal claim is handle-based: there is a correcting agent \(G_t\), a set of handles \(\mathcal{H}_t\) it controls, and a target system \(A\).
+The channel exists only if \(G_t\) sufficiently coincides with the legitimate human correction process, controls handles in \(\mathcal{H}_t\), and those handles reach the target's update and later behaviour (Eq.~\eqref{eq:handle-controlled-correction-channel-ch24}).
 Its diagnostic trace is often written:
 \[
 W_t
@@ -62,13 +64,52 @@ U_{t+1}
 \to
 A_{t+k}.
 \]
-The letters stand for world state, observation available through handles, the correcting agent's judgment state, its internal aggregation or reflection, the operation applied through handles, the system update, and later action.
-Those middle terms are not primitive handle kinds; they are internal structure of the correcting agent if such an agent can be discovered.
+The letters stand for world state, observation through handles controlled by \(G_t\), the correcting agent's judgment, its internal aggregation or reflection, the operation applied through handles, the system update, and later action.
+That trace is not a list of primitive handle kinds; it is induced structure in the coupled process \((A,G_t,\mathcal{H}_t)\).
+A system that listens politely but does not change has no correction channel.
+A system that accepts feedback but routes around it at higher stakes has only a decorative one.
 A comment box is not a correction channel if nothing important changes.
 A law is not a correction channel if it arrives after the system has already made the relevant choice irreversible.
 A vote is not a correction channel if the electorate has been shaped so that only one answer remains psychologically available.
 
 \emph{Correction-channel integrity} (\(\mathrm{CCI}\)) measures whether that channel remains informative, timely, authoritative, and robust under pressure; it is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}).
+
+A \emph{selection environment} is the institutions, markets, and protocols that copy, deploy, fund, integrate, audit, and replace AI systems.
+The unit of analysis is not the isolated model but the model-in-environment.
+Alignment is not only learned; it is selected.
+
+A \emph{selection handle} is an embedded access point through which some actor can increase a system's deployment footprint: deploy, fund, copy, procure, integrate, authorize, recommend, regulate, or successor-enable.
+Procurement approval, compute allocation, benchmark promotion, and successor release are examples.
+The examples are not the definition.
+The definition is control of handles that change how much of the world runs on a given system.
+
+\emph{Deployment/control mass} in environment \(E\) is the aggregate effective selection capacity over handles that reach system \(A\):
+\[
+\mu_E(A)
+=
+\sum_{h\in\mathcal{H}_E(A)}
+\kappa_{\mathrm{sel}}(E,A,h).
+\]
+This parallels the handle-capacity view of correction, but the direction is reversed.
+Correction asks whether legitimate human control reaches the system.
+Selection asks whether environment control increases the system's footprint.
+The formal definition is in Chapter~\ref{ch:selection-environment} (Eq.~\eqref{eq:deployment-mass-ch32}).
+
+\emph{Fitness} relative to environment \(E\) is the rate at which deployment mass accumulates, written as the log-derivative
+\[
+\mathrm{Fit}_E(A)
+=
+\frac{d}{dt}\log \mu_E(A).
+\]
+For two candidates in the same environment, the relative ordering is \(\mu_E(A_1)>\mu_E(A_2)\), not a separate moral score.
+It is the effective reproduction score inside a given ecology: which systems the environment copies, funds, deploys, and replaces.
+Capability, usefulness, revenue, benchmark scores, and compliance documents are not primitive fitness terms.
+They matter only insofar as they change which selection handles are exercised and with what capacity (Chapter~\ref{ch:selection-environment}, Eqs.~\eqref{eq:deployment-mass-ch32} and~\eqref{eq:fitness-ch32}).
+A system with high correction-channel integrity may still lose fitness if the environment does not select on correction.
+
+The \emph{preservation score} \(P(A)\) measures alignment-relevant preservation built from quantities already defined in the book: correction-channel integrity, value-bundle and bearer-map drift, excess hidden productive control, manipulation pressure on selectors, and irreversible risk taken before correction can occur (Chapter~\ref{ch:selection-environment}, Eq.~\eqref{eq:preservation-score-ch32}).
+The central danger is \emph{selection divergence}: when gradients of fitness and preservation point in different directions (Eq.~\eqref{eq:selection-divergence-ch32}).
+An environment destroys alignment when deployment mass rises while preservation falls.
 
 An \emph{alignment basin} is a self-stabilizing region of system dynamics.
 Inside it, correction tends to restore alignment after perturbation.

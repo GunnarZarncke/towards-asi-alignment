@@ -27,7 +27,7 @@ Per-part deep-read working notes (with full line-referenced detail) live in `rev
 4. **Formula/taxonomy deduplication (§A) not started.** Correction chain, CCI, `G_B`, bundle inference, etc. still re-stated across chapters. Dominant redundancy theme. See §4.
 5. **Cross-chapter notation:** ✅ Most symbol clashes fixed 2026-06-23. ✅ Seven-properties ch28/29/31 aligned; ✅ ch08 preview aligned 2026-06-23. ✅ Pivotal-process basins formalized in ch35. 🔶 Goal-laundering ch36 incident taxonomy still uses looser names; bundle catalogue terminology drift tracked in `metadata/TODO.md` §bundle catalogue.
 
-The conceptual spine is sound; narrative flow is generally good where chapters are drafted. Remaining problems: (a) landing chapters/appendices, (b) §A deduplication, (c) appA/INSTRUCTIONS §18 sync.
+The conceptual spine is sound; narrative flow is generally good where chapters are drafted. Remaining problems: (a) landing chapters/appendices, (b) §A deduplication, (c) appA / notation.md sync.
 
 ---
 
@@ -55,7 +55,7 @@ Appendices A–H stub; frontmatter stubs; opening promises undischarged until ch
 
 ## 3. "What Would Change This View"
 
-INSTRUCTIONS §10 requires the exact section title.
+INSTRUCTIONS.md §6 requires the exact section title.
 
 **✅ Compliant (exact title, real content):** all 44 numbered chapters + ch39b, as of 2026-06-23 verification pass.
 

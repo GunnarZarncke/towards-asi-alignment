@@ -20,13 +20,12 @@ REQUIRED = [
     "frontmatter/executive-overview.tex",
     "tables/chapter-map.tex",
     "tables/part-roadmap.tex",
-    "tables/part-roadmap-overview.tex",
     "references/main.bib",
 ]
 
 PARTS = [f"parts/part{i:02d}-" for i in range(1, 11)]
 CHAPTER_COUNT = 45
-APPENDIX_COUNT = 9
+APPENDIX_COUNT = 10
 
 
 def main() -> int:
