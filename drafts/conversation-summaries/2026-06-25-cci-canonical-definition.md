@@ -25,4 +25,4 @@ User asked to define correction-channel integrity (CCI) only once and adapt othe
 - `metadata/notation.md`, `INSTRUCTIONS.md` §6.9
 
 ## Commits
-- (none — user did not request commit)
+- `a800909` Ground correction in handle control and consolidate CCI in ch25.
