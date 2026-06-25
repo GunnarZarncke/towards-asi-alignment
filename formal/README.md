@@ -85,7 +85,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Bundles.lean` | `P14`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples) | 15–23 |
 | `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, handle-controlled **`CorrectionPath`** | 24–27 |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
-| `AlignmentProofSpine/Adversarial.lean` | `P31`, `P33`, `P34`, `P37` | 32–37 |
+| `AlignmentProofSpine/Adversarial.lean` | `P31`, `P33`, `P34`, `P36R`, `P37` | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
 | `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P40`, **`certified_class_safety_spine_derived`** (risk from capacity slack) | 1–5, 35, 39, 44 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |

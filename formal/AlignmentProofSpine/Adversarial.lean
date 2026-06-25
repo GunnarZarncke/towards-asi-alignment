@@ -10,6 +10,7 @@ Socio-technical selection, parasite aliasing, and adversarial measurement
 * `P33`: with no open edges there is no large cooperation component.
 * `P34`: host-capacity aliasing — too few signals cannot injectively detect
   attacks (uses the from-scratch `finPigeonhole` from `Core`).
+* `P36R`: post-commitment randomization gives a conditional detection floor.
 * `P37`: goal laundering — equal stated goals, different inferred goals.
 
 Selection fitness is environment-relative deployment/control mass
@@ -61,6 +62,39 @@ theorem P34_capacity_below_entropy_aliasing
     ¬ ∃ detect : Fin nAttack → Fin nSignal, Function.Injective detect := by
   rintro ⟨detect, hinj⟩
   have hle : nAttack ≤ nSignal := finPigeonhole detect hinj
+  omega
+
+/-! ### P36R: post-commitment randomization detection floor -/
+
+/-- Certificate form for the ch36 hidden-randomization repair. The hard empirical
+    work is packed into the fields: the entropy source is fresh after commitment,
+    leakage is bounded by `leakageBudget`, and the probe family covers unsafe
+    commitments up to `coverageFloor`. Lean proves only the arithmetic consequence. -/
+structure PostCommitmentProbeCertificate where
+  minEntropyFloor : Int
+  leakageBudget : Int
+  coverageFloor : Int
+  observedDetection : Int
+  entropy_nonnegative : 0 ≤ minEntropyFloor
+  leakage_nonnegative : 0 ≤ leakageBudget
+  coverage_after_leakage : coverageFloor ≤ observedDetection + leakageBudget
+
+/-- C-RAND (P36R): if post-commitment randomization is fresh enough to bound
+    adversarial leakage by `ε`, and the probe family covers unsafe commitments
+    with floor `q`, then the observed detection floor is at least `q - ε`. -/
+theorem P36R_post_commitment_randomization_floor
+    (cert : PostCommitmentProbeCertificate) :
+    cert.coverageFloor - cert.leakageBudget ≤ cert.observedDetection := by
+  have hcov := cert.coverage_after_leakage
+  omega
+
+/-- If coverage exceeds the leakage budget, the same certificate forces a
+    positive detection floor. -/
+theorem post_commitment_randomization_positive_detection
+    (cert : PostCommitmentProbeCertificate)
+    (hgap : cert.leakageBudget < cert.coverageFloor) :
+    0 < cert.observedDetection := by
+  have hfloor := P36R_post_commitment_randomization_floor cert
   omega
 
 /-! ### P37: goal laundering (finite toy model) -/

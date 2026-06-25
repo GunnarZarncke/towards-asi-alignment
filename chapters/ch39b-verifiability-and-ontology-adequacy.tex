@@ -119,6 +119,7 @@ It is \emph{not adversarially verifiable} as stated: a system that benefits from
 The budget reframing asks a different question: what would it cost this system to \emph{simulate} a live correction channel while holding a divergent objective fixed?
 It must predict which corrections we will test, pre-compute compliant responses, and prevent the suppressed objective from leaking under off-distribution perturbation (Ch.~\ref{ch:passive-observation-not-enough}).
 If that cost can be driven up --- unpredictable probes, high-stakes perturbations, cross-checks the system cannot anticipate cheaply --- the channel moves from theater toward bounded honesty.
+Here ``unpredictable'' must mean the stricter post-commitment version from Chapter~\ref{ch:passive-observation-not-enough}: fresh randomization, bounded leakage, and probe-family coverage yielding a detection floor such as \(q-\epsilon\), not merely evaluator secrecy.
 If it cannot, integrity is a comfort metric and should be labelled as such in the safety case.
 
 \section{What This Chapter Changes About the Rest of the Book}

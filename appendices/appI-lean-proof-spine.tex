@@ -786,6 +786,14 @@ If there are fewer signal classes than attack classes, then no detector from att
 An injective detector from \(n\) attacks into \(m\) signals would imply \(n\leq m\) by Assumption~\ref{appi:ass:s05}. This contradicts \(m<n\).
 \end{proof}
 
+\begin{theorem}[\texttt{P36R}: post-commitment randomization floor]
+\label{appi:thm:p36r}
+If a hidden-randomization protocol certifies post-commitment freshness, leakage budget \(\epsilon\), and probe-family coverage \(q\), then its detection floor for unsafe commitments is at least \(q-\epsilon\) (Chapter~\ref{ch:passive-observation-not-enough}, Section~\ref{sec:hidden-randomization-ch36}).
+\end{theorem}
+\begin{proof}
+The Lean certificate records the empirical premises as fields: a nonnegative min-entropy floor, a nonnegative leakage budget, and a coverage-after-leakage inequality \(q\leq d+\epsilon\), where \(d\) is the observed detection floor. Integer arithmetic rearranges this to \(q-\epsilon\leq d\). The proof does not establish freshness or coverage for a real audit; those remain measurement obligations.
+\end{proof}
+
 \begin{theorem}[\texttt{P37}: stated goal need not equal inferred goal]
 \label{appi:thm:p37}
 There are two toy systems with the same stated goal but different inferred goals (Chapter~\ref{ch:goal-laundering}, Section~\ref{sec:laundering-index-ch37}).
