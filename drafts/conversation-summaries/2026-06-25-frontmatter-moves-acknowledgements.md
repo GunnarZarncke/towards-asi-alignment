@@ -28,7 +28,7 @@ User: acknowledgements not shown; finish planned frontmatter moves (Diagram/Stan
 - WWCTV: ch07, ch16, ch27, ch28, ch42
 
 ## Commits
-- none (not requested)
+- `a8b58b7` — Split frontmatter from Part I and move reframing into early chapters.
 
 ## Session end (2026-06-25)
 - Lean proof spine: **no frontmatter change** (user confirmed calibrated Preface pointer not needed now).
