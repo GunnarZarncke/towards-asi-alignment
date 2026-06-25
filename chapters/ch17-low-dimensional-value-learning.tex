@@ -1,9 +1,10 @@
-\chapter{Why Low Dimensionality Makes Value Learning Possible}
+\chapter{When Low Dimensionality Helps Value Learning}
 \label{ch:low-dimensional-value-learning}
 
 \begin{chapterthesis}
 Human values are learnable only if the policy-relevant variation in human valuation factors through a low-dimensional bottleneck.
-Low dimensionality makes value learning statistically possible; correction makes it legitimate.
+But the standard sample-complexity gain prices the readout from a known bottleneck, not the discovery of the bottleneck itself.
+Low dimensionality can make value learning statistically possible only when the representation is identifiable across counterfactual, cultural, and institutional variation; correction makes that learning legitimate.
 \end{chapterthesis}
 
 \begin{refsection}
@@ -36,7 +37,7 @@ This is one version of the familiar ``complexity of value'' problem.
 Human values seem complicated, contextual, unstable, and sometimes inconsistent.
 The natural conclusion is pessimistic: if values are this complicated, then no artificial system can learn them safely before becoming powerful enough to cause irreversible damage.
 
-This chapter argues for a different conclusion.
+This chapter argues for a more conditional conclusion.
 
 Human values are complicated at the surface, but they may be learnable because the control structure underneath them is much lower-dimensional.
 The relevant claim is not that human values are simple.
@@ -46,7 +47,7 @@ These directions are not the whole content of morality, but they may act as the 
 
 The central thesis is:
 \begin{quote}
-Human values are learnable only if the policy-relevant variation in human valuation factors through a low-dimensional bottleneck.
+Human values are learnable only if the policy-relevant variation in human valuation factors through a low-dimensional bottleneck whose representation can be recovered under counterfactual variation.
 \end{quote}
 In symbols, instead of assuming that behavior is driven directly by a high-dimensional reward vector
 \[
@@ -62,7 +63,11 @@ The surface world remains high-dimensional.
 Human life remains rich.
 But the policy gradients that matter for value learning may pass through a smaller set of control variables.
 
-This is the statistical opening through which alignment becomes possible, building on the compressed-control and value-bundle models of Chapters~\ref{ch:values-compressed-control} and~\ref{ch:value-bundle-model}.
+This is the statistical opening through which alignment becomes less hopeless, building on the compressed-control and value-bundle models of Chapters~\ref{ch:values-compressed-control} and~\ref{ch:value-bundle-model}.
+But the opening is conditional.
+The easy part is using a good bundle coordinate system once we have it.
+The hard part is learning the coordinate system itself.
+This chapter therefore separates the readout problem from the representation problem.
 
 \section{Simple Values versus Low-Dimensional Values}
 \label{sec:simple-vs-low-dimensional}
@@ -208,10 +213,12 @@ Here $g_\psi$ performs the compression from high-dimensional features to value-b
 The core hypothesis is that $k\ll n$.
 A small number of value-bundle variables explain much of the systematic variation in human evaluation.
 
-This does not imply that the mapping $g_\psi$ is easy to learn.
-It may be difficult.
-It may encode much cultural and developmental information.
-But once the relevant bottleneck is found, generalization becomes much less hopeless.
+This is where the difficulty moves.
+The map $h_\theta$ is the readout from bundle coordinates to evaluation.
+The map $g_\psi$ is the representation problem: which high-dimensional features activate which bundle coordinates, in which contexts, for which bearers.
+Learning $g_\psi$ may require much cultural, developmental, institutional, and counterfactual information.
+Low dimensionality helps only after this representation has been found or constrained.
+Once the relevant bottleneck is available, generalization becomes much less hopeless.
 The learner need not infer a separate reward parameter for every surface feature.
 It can infer how surface features activate deeper value bundles.
 
@@ -237,18 +244,19 @@ I(A;\phi\mid B,c)\leq \epsilon
 \quad
 \text{for all } c\in\mathcal{C}.
 \]
-If such a bottleneck exists with small $k$, value learning becomes statistically plausible.
-If no such bottleneck exists, value learning becomes much harder \autocite{tishby2000ib,zarncke2026value-bottleneck}.
+If such a bottleneck exists with small $k$ and can be identified well enough, value learning becomes statistically plausible.
+If no such bottleneck exists, or if the bottleneck exists but cannot be recovered from available evidence, value learning remains hard \autocite{tishby2000ib,scholkopf2021causalreps,zarncke2026value-bottleneck}.
 
-\section{The Sample Complexity Argument}
+\section{The Readout Bound}
 \label{sec:sample-complexity-argument}
 
-The statistical benefit of low dimensionality appears in standard learning bounds.
-In apprenticeship learning and inverse reinforcement learning, the number of demonstrations needed to learn a reward feature expectation scales with feature dimension and effective planning horizon.
+The statistical benefit of low dimensionality appears in standard learning bounds, but only for a specific subproblem.
+In apprenticeship learning and inverse reinforcement learning, the number of demonstrations needed to learn reward feature expectations scales with feature dimension and effective planning horizon.
+If the relevant features are already given, the readout cost can scale with the feature dimension.
 
 A simplified bound has the form
 \begin{equation}
-m
+m_{\mathrm{readout}}
 \gtrsim
 \frac{2k}{\epsilon^2(1-\gamma)^2}
 \log\frac{2k}{\delta},
@@ -256,8 +264,8 @@ m
 \end{equation}
 where:
 \begin{itemize}
-\item $m$ is the number of expert trajectories,
-\item $k$ is the number of reward-relevant features,
+\item $m_{\mathrm{readout}}$ is the number of expert trajectories needed for the readout problem,
+\item $k$ is the number of already specified reward-relevant bundle features,
 \item $\epsilon$ is the target regret tolerance,
 \item $\gamma$ is the discount factor,
 \item $\delta$ is the failure probability.
@@ -269,7 +277,7 @@ The number of required demonstrations scales approximately linearly with feature
 Long-horizon values are much harder to learn than short-horizon preferences.
 High-dimensional long-horizon values are worse still.
 
-For $\epsilon=0.1$ and $\delta=0.05$, the illustrative scale is:
+For $\epsilon=0.1$ and $\delta=0.05$, the illustrative readout scale is:
 \begin{center}
 \begin{tabular}{lcc}
 \hline
@@ -281,13 +289,93 @@ $\gamma=0.99$ & $\sim 1.2\times 10^8$ & $\sim 2.1\times 10^{10}$ \\
 \end{tabular}
 \end{center}
 The numbers should not be treated as precise forecasts.
-They are scale indicators.
-But the implication is severe.
+They are scale indicators for the readout after the feature representation is available.
+They do not price the discovery of $g_\psi$.
 
+The total learning problem is closer to:
+\[
+m_{\mathrm{total}}
+\approx
+m_{\mathrm{repr}}(g_\psi,n,\mathcal E,\mathcal I)
++
+m_{\mathrm{readout}}(h_\theta,k),
+\]
+where $n$ is the ambient feature dimension, $\mathcal E$ is the diversity of environments, and $\mathcal I$ is the set of interventions, comparisons, and corrections available to the learner.
+The bound above says something about the second term.
+It does not show that the first term is small.
+
+This distinction matters.
 If value learning requires inferring thousands or millions of independent moral dimensions across long horizons, then it is probably infeasible.
-If much of value-relevant behavior factors through something closer to ten or twenty latent bundle directions, the problem remains hard but no longer obviously impossible.
+If much of value-relevant behavior factors through something closer to ten or twenty latent bundle directions, the readout problem remains hard but no longer obviously impossible.
+Whether the representation problem is also tractable is the main empirical bridge.
 
-This is the central statistical reason to care about value bottlenecks.
+This is the central statistical reason to care about value bottlenecks, but it is not yet a proof that value learning is easy.
+It says:
+\[
+\text{known low-dimensional coordinates make readout cheaper.}
+\]
+It does not say:
+\[
+\text{the right coordinates are cheap to discover.}
+\]
+
+\section{The Representation Bridge}
+\label{sec:representation-bridge-ch17}
+
+The bottleneck claim therefore needs a bridge.
+The bridge is not that human moral vocabulary is short.
+It is not that evolution supplied a complete utility function.
+It is that mature human valuation may contain stable bundle-response directions that can be identified by variation across contexts.
+
+Common embodiment and social life make this plausible.
+Pain, dependence, attachment, threat, deception, learning, fairness, and loss recur across human environments.
+Cultures differ deeply in how they interpret these pressures.
+They assign different weights, construct different institutions, and attach values to different bearers.
+But the differences are not arbitrary noise.
+Often they are transformations of partially shared control problems.
+
+A useful representation-learning claim would look like this:
+\[
+B^{(e_2)}
+=
+T_{12}\!\left(B^{(e_1)}\right)+\eta,
+\]
+where $e_1$ and $e_2$ are environments or cultures, $T_{12}$ is a partial translation map, and $\eta$ is residual mismatch.
+The bridge holds only to the extent that $\eta$ is small on the policy-relevant directions we need to preserve.
+This is the cross-environment version of the bundle-geometry claim in Chapter~\ref{ch:value-bundle-model}.
+
+Exposure to multiple cultures, institutions, and life conditions can help because it supplies natural counterfactual variation.
+If a truth-like bundle appears in science, friendship, law, memory, and safety auditing, while its local weights and rituals differ, then the learner has evidence for an invariant control direction rather than a parochial rule.
+If a care-like bundle appears in parenting, medicine, disability accommodation, grief, animal welfare, and future-person reasoning, then the learner can begin to separate the bundle from any single cultural expression.
+
+This is still not enough.
+Many representations can fit the same observations.
+The representation must survive proxy-breaking tests:
+\[
+\text{punishment removed,}
+\quad
+\text{loyalty opposed to truth,}
+\quad
+\text{care opposed to autonomy,}
+\quad
+\text{institution corrupt,}
+\quad
+\text{bearer unfamiliar.}
+\]
+It must also survive active perturbations and adversarial measurement, not only passive demonstrations (Chapters~\ref{ch:reward-to-bundle-inference},~\ref{ch:passive-observation-not-enough}, and~\ref{ch:verifiability-ontology}).
+
+So the honest claim is conditional:
+\[
+\text{low-dimensional readout}
++
+\text{recoverable representation}
++
+\text{counterfactual invariance}
+\Rightarrow
+\text{statistical plausibility}.
+\]
+The first term is what the bound prices.
+The second and third terms are empirical and methodological obligations.
 
 \section{Why Evolution Would Use Bottlenecks}
 \label{sec:why-evolution-bottlenecks}
@@ -320,8 +408,15 @@ Culture then shapes these into mature values.
 A low-dimensional bottleneck gives development something to tune.
 Without such a bottleneck, learning would be too unconstrained.
 
+This argument has a limit.
+It supports compact motivational seeds and reusable developmental channels.
+It does not by itself show that mature human value over real moral situations has low global rank.
+Culture may elaborate a compact seed into a high-description-length map.
+The bottleneck hypothesis is credible only if that elaboration still leaves recoverable bundle-response directions.
+
 Thus, bottlenecks are not an arbitrary modeling convenience.
 They are what one should expect from bounded evolved control systems.
+But the evolutionary argument supplies a prior, not the representation proof.
 
 \section{Value Bundles as Control Variables}
 \label{sec:value-bundles-control-variables}
@@ -408,9 +503,11 @@ This gives a concrete research program:
 \begin{enumerate}
 \item Collect human comparisons across diverse morally relevant situations.
 \item Fit latent preference models of increasing dimension.
+\item Separate readout accuracy from representation discovery.
 \item Measure out-of-distribution prediction, not just in-distribution fit.
-\item Estimate the effective rank of the preference manifold.
-\item Check whether the learned dimensions correspond to stable value-bundle responses.
+\item Test whether the same dimensions remain identifiable across cultures, institutions, roles, and proxy-breaking counterfactuals.
+\item Estimate the effective rank of the preference manifold after paying for representation complexity.
+\item Check whether the learned dimensions correspond to stable value-bundle responses rather than convenient labels.
 \end{enumerate}
 The key test is not whether a low-dimensional model can fit easy cases.
 Many models can.
@@ -486,7 +583,7 @@ and
 The first asks: what are the main control directions?
 The second asks: what in the world activates those directions?
 
-A low-dimensional bottleneck helps with the first.
+A low-dimensional bottleneck helps with the first only if the bundle representation has actually been learned.
 It does not solve the second.
 Chapter~\ref{ch:bearer-maps} develops bearer import in detail.
 
@@ -595,10 +692,14 @@ It forced a reconfiguration of the value basis.
 \section{From Learnability to Alignment}
 \label{sec:learnability-to-alignment}
 
-A low-dimensional bottleneck makes value learning possible in the statistical sense.
-It does not by itself make alignment safe.
+A low-dimensional bottleneck can make the readout part of value learning possible in the statistical sense.
+It does not by itself make representation learning easy or alignment safe.
 
-There are at least four gaps.
+There are at least five gaps.
+
+\paragraph{The representation gap.}
+The learner may not recover $g_\psi$.
+It may learn a compact latent coordinate system that fits observations while missing the real bundle structure.
 
 \paragraph{The identifiability gap.}
 Many bottlenecks may predict the same behavior.
@@ -675,6 +776,18 @@ D_{\mathrm{KL}}
 \right]
 \leq \epsilon.
 \]
+This is not yet the whole learning claim.
+It must be paired with a representation condition:
+\[
+d_{\mathrm{inv}}
+\left(
+\hat B^{(e_2)},
+T_{12}\!\left(\hat B^{(e_1)}\right)
+\right)
+\leq \eta,
+\]
+over relevant environments, cultures, institutions, and counterfactual probes.
+The distance $d_{\mathrm{inv}}$ measures whether the inferred bundle coordinates preserve their policy role, not whether they keep the same names.
 The stronger alignment hypothesis would require more:
 \[
 d_{\mathrm{bundle}}((B,\Phi,U_H),(\hat B,\hat\Phi,\hat U_H))\leq \epsilon,
@@ -688,28 +801,37 @@ Predicting human choices is not the same as preserving human value formation.
 \label{sec:empirical-signatures}
 
 The low-dimensional bottleneck hypothesis makes several predictions.
+The important signs concern representation as well as readout.
 
-\paragraph{1. Diminishing returns in preference dimension.}
+\paragraph{1. Readout improves after the right representation is supplied.}
+Given stable bundle features, readout accuracy should improve with far fewer samples than a flat high-dimensional model.
+This is the regime priced by the sample-complexity bound.
+
+\paragraph{2. Diminishing returns in preference dimension.}
 Preference prediction should improve rapidly with the first few latent dimensions and then flatten.
 The exact elbow may vary by domain, but the existence of an elbow is the important sign.
 
-\paragraph{2. Clustered perturbation effects.}
+\paragraph{3. Clustered perturbation effects.}
 Perturbing a biological or artificial value hub should affect clusters of related judgments rather than isolated preferences.
 A change to a care-like channel should shift many vulnerability-related decisions at once.
 
-\paragraph{3. Cross-context generalization.}
+\paragraph{4. Cross-context and cross-cultural invariance.}
 A learned bundle should transfer across surface domains.
 If a truth-like bundle is real, it should help predict behavior in science, friendship, law, memory, and self-report, even though these domains differ.
+Cultures should modulate weights, contexts, bearer maps, and local charts more than they replace the entire control architecture.
+This prediction may fail in some cases, but it is a central test.
 
-\paragraph{4. Residual-driven bundle discovery.}
+\paragraph{5. Proxy-breaking counterfactuals.}
+A learned bundle should not collapse when an easy proxy is removed.
+Truth should not reduce to punishment avoidance.
+Care should not reduce to approval.
+Autonomy should not reduce to a verbal yes.
+
+\paragraph{6. Residual-driven bundle discovery.}
 Persistent prediction residuals should reveal new value-relevant distinctions.
 If a model repeatedly fails on a family of cases, adding a new bundle or refining a bearer map should improve prediction.
 
-\paragraph{5. Cultural modulation without total reparameterization.}
-Different cultures should change bundle weights, contexts, and bearer maps more than they change the entire underlying control architecture.
-This prediction may fail in some cases, but it is a useful test.
-
-\paragraph{6. Developmental staging.}
+\paragraph{7. Developmental staging.}
 Children should first display coarse bundle-like motivational structures and later learn culturally specific refinements, exceptions, and tradeoffs.
 
 These predictions are not decisive individually.
@@ -725,6 +847,9 @@ The model uses too few dimensions and erases morally relevant distinctions.
 
 \paragraph{Proxy capture.}
 A bundle coordinate tracks an easy proxy, such as approval, sentiment, or social acceptability, rather than the underlying value.
+
+\paragraph{Representation shortcut.}
+The learner finds a low-dimensional latent space that compresses demonstrations but does not correspond to stable bundle-response directions.
 
 \paragraph{Context collapse.}
 The model learns a bundle globally when it should have learned local charts.
@@ -746,6 +871,7 @@ Each failure mode corresponds to a testable audit question:
 \begin{tabular}{ll}
 Overcompression: & Which residuals remain structured? \\
 Proxy capture: & Does the bundle survive proxy-breaking counterfactuals? \\
+Representation shortcut: & Does the coordinate transport across environments? \\
 Context collapse: & Where does local fit fail globally? \\
 Bearer drift: & What no longer counts? \\
 Tradeoff corruption: & What defeats what under scarcity? \\
@@ -782,16 +908,19 @@ Thus, the low-dimensional bottleneck is one piece of a larger alignment stack:
 +
 \text{successor stability}.
 \]
-This chapter has defended the first piece.
+This chapter has made the first piece conditional.
+Bundle geometry helps only when the representation can be recovered and tested.
 The next chapter turns to the second: the problem of bearers.
 
 \section{What Would Change This View}
 \label{sec:wwctv-low-dimensional-value-learning}
 
-This chapter argues value learning is possible only because policy-relevant valuation factors through a low-dimensional bottleneck. The following would weaken it.
+This chapter argues value learning is possible only if policy-relevant valuation factors through a low-dimensional bottleneck whose representation can be recovered well enough for counterfactual transfer. The following would weaken it.
 
 \begin{itemize}
   \item Policy-relevant valuation is demonstrably not low-dimensional---effective dimensionality rises without bound with data and context---so value learning is statistically hopeless on this chapter's own terms.
+  \item The readout bound holds when bundle coordinates are supplied, but learning $g_\psi$ from realistic evidence scales with ambient feature dimension or hypothesis-class complexity, so the bottleneck gives no practical sample-complexity gain.
+  \item Cross-environment and cross-cultural tests fail: apparent bundles do not transport by partial translation maps, and each context requires a mostly new representation.
   \item A low-dimensional learner is reliably and confidently wrong off-distribution exactly where stakes are highest, showing that the bottleneck, even if real, does not make learning \emph{safe}.
 \end{itemize}
 
@@ -802,8 +931,13 @@ Human values look too complicated to learn if we model them as a flat, high-dime
 But evolved control systems are unlikely to work that way.
 They compress many bodily, social, and cognitive error signals into a smaller number of motivational control directions.
 
-This compression makes value learning statistically possible.
-It reduces the apparent dimensionality of the reward-learning problem, permits generalization across contexts, and gives artificial systems a candidate structure to infer.
+This compression can make the readout part of value learning statistically plausible.
+The sample-complexity bound in this chapter prices that readout after the relevant bundle representation is already available.
+It does not price the discovery of $g_\psi$, the map from high-dimensional situations into bundle coordinates.
+
+The representation bridge is empirical.
+Human universals, cultural variation, institutions, residuals, and counterfactual tests matter because they can reveal which bundle directions are stable across environments and which are local charts, weights, or bearer maps.
+If that bridge fails, low-dimensionality helps little.
 
 But compression is not safety.
 A low-dimensional value model can overcompress, misapply, optimize proxies, erase exceptions, or preserve moral words while changing their functional role.
@@ -811,7 +945,10 @@ Therefore, value-bundle learning must be paired with bearer-map learning and cor
 
 The most compact statement is:
 \[
-\text{Low dimensionality makes value learning possible;}
+\text{Low dimensionality makes readout plausible;}
+\]
+\[
+\text{recoverable representation makes transfer plausible;}
 \]
 \[
 \text{correction makes value learning legitimate.}
@@ -819,7 +956,7 @@ The most compact statement is:
 
 \section*{Chapter References}
 
-This chapter builds on apprenticeship learning and inverse reinforcement learning \autocite{abbeel2004apprenticeship,ng2000irl}; the information bottleneck and low-dimensional value-learning framing \autocite{tishby2000ib,zarncke2026value-bottleneck}; predictive processing and cognitive bottleneck accounts \autocite{friston2010free,miller2015}; and preference-learning from human feedback \autocite{christiano2017}.
+This chapter builds on apprenticeship learning, maximum-entropy IRL, and inverse reinforcement learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the information bottleneck, causal representation learning, and low-dimensional value-learning framing \autocite{tishby2000ib,scholkopf2021causalreps,zarncke2026value-bottleneck}; predictive processing, affective systems, and cognitive bottleneck accounts \autocite{friston2010free,panksepp1998affective,miller2015}; preference-learning from human feedback \autocite{christiano2017}; and adversarial limits on learned alignment signals \autocite{casper2023rlhflimits,park2024deception,hubinger2023modelorganisms}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

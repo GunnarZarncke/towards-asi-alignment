@@ -6,7 +6,7 @@ Open problems and unresolved uncertainties tracked across the manuscript.
 
 | # | Open question | Treated in | Bears on |
 |---|----------------|-----------|----------|
-| U-01 | Are human values sufficiently low-dimensional to be learned and transported? | ch15–17 | A-001, C-004 |
+| U-01 | Are human values sufficiently low-dimensional, and are their bundle representations recoverable enough to be learned and transported? | ch15–17 | A-001, C-004 |
 | U-02 | Can bearer maps survive radical ontology shift? | ch18, ch43 | A-001, C-004, C-011 |
 | U-03 | Can correction-channel integrity be measured under adversarial conditions? | ch25, ch27, ch36 | A-002, C-005 |
 | U-04 | Can successor constraints be enforced before recursive capability growth? | ch28, ch31 | A-007, C-006 |

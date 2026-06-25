@@ -103,7 +103,7 @@ chapters:
     formal_density: high
     reviewer_needed: [neuroscience, alignment]
   ch17:
-    title: "Why Low Dimensionality Makes Value Learning Possible"
+    title: "When Low Dimensionality Helps Value Learning"
     status: draft
     word_target: 8000
     formal_density: high

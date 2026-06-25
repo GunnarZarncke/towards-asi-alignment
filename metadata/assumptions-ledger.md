@@ -56,11 +56,11 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 ### A-001 — Low-dimensional value-bundle structure
 
-**Assumption:** Human value-relevant variation has enough low-dimensional bundle structure to approximate, learn, and transport.
+**Assumption:** Human value-relevant variation has enough low-dimensional bundle structure to approximate, learn, and transport, and the representation map into that bundle structure is recoverable enough under counterfactual, cultural, and institutional variation.
 
 **Also stated in:** ch04, ch15–17, ch20 (WWCTV items 1, 4), ch21, ch41–43.
 
-**Failure mode if false:** Proxy preservation instead of values. **Lean:** MB2, MB3. **Bears on:** C-004 · **U-01, U-02**
+**Failure mode if false:** Proxy preservation instead of values; cheap readout from supplied bundle coordinates but no tractable way to discover the right coordinates. **Lean:** MB2, MB3. **Bears on:** C-004 · **U-01, U-02**
 
 ### A-002 — Correction channels as causal chains
 

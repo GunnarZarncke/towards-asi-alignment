@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-26 | Ch17 representation bridge | [2026-06-26-ch17-representation-bridge.md](2026-06-26-ch17-representation-bridge.md) |
 | 2026-06-26 | Ch36 randomization floor proof | [2026-06-26-ch36-randomization-floor-proof.md](2026-06-26-ch36-randomization-floor-proof.md) |
 | 2026-06-26 | Ch36 hidden-randomization circularity | [2026-06-26-ch36-hidden-randomization-circularity.md](2026-06-26-ch36-hidden-randomization-circularity.md) |
 | 2026-06-26 | Lean spine strengthen — Capability, Bundles, transport, Successors, Boundaries | [2026-06-26-lean-spine-strengthen-capability-bundles-transport.md](2026-06-26-lean-spine-strengthen-capability-bundles-transport.md) |

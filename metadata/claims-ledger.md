@@ -78,7 +78,7 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 ## Claim ID: C-004
 
-**Claim:** (Value-bundle claim) Human values are low-dimensional, compressed, context-active control signals (bundles with geometry and bearer maps); they are learnable only to the extent they have compressed structure and preservable only if compression, tradeoffs, and bearer maps survive transformation.
+**Claim:** (Value-bundle claim) Human values are low-dimensional, compressed, context-active control signals (bundles with geometry and bearer maps); they are learnable only to the extent they have compressed structure whose representation can be recovered across counterfactual variation, and preservable only if compression, tradeoffs, and bearer maps survive transformation.
 
 **Chapter(s):** 4, 15, 16, 17, 18, 19, 20
 
@@ -87,13 +87,14 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 **Support:**
 - moral psychology, affective neuroscience, preference low-rank findings
 - value-bundle model (latent control variables, interaction curvature, protected regions)
-- sample-complexity argument: learnability requires a low-dimensional bottleneck
+- readout sample-complexity argument: known low-dimensional bundle coordinates make the readout cheaper
+- representation bridge: cross-context, cross-cultural, institutional, and counterfactual invariance would make bundle discovery tractable
 
 **Weakest link:**
-- the degree of low-dimensionality is unmeasured; bearer maps may not survive radical ontology shift
+- the degree of low-dimensionality is unmeasured; the representation map \(g_\psi\) may be expensive or underidentified; bearer maps may not survive radical ontology shift
 
 **What would update against it:**
-- evidence that policy-relevant human valuation does not factor through any low-dimensional bottleneck, or that bundle geometry is not transportable
+- evidence that policy-relevant human valuation does not factor through any low-dimensional bottleneck, that the bottleneck cannot be recovered from realistic evidence, or that bundle geometry is not transportable
 
 **References:**
 - add BibLaTeX keys here
