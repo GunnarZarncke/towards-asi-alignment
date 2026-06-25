@@ -111,6 +111,10 @@ Canonical symbol reference for the manuscript. See `INSTRUCTIONS.md` §18 for th
 | $C_X$ | **Host correction capacity** in the parasite criterion (§C10; retire $C_H$ for this meaning): $C_X<H(A_Y)-\lambda_Y H(I_Y)/\beta$ |
 | $A_Y,I_Y,\lambda_Y$ | Parasite action entropy, internal-state entropy, and weight |
 | $GLI$ | **Goal-laundering index** (ch37, canonical — §C9); ch10's "goal-laundering signature" is a detector that *estimates* $GLI$. Four canonical layers: semantic / bundle / bearer / correction. |
+| $\mu_E(A)$ | **Deployment/control mass** in selection environment $E$: aggregate effective selection capacity over handles that reach $A$ (**ch32**, `eq:deployment-mass-ch32`) |
+| $\mathrm{Fit}_E(A)$ | **Fitness** (log-rate of mass accumulation): $\frac{d}{dt}\log\mu_E(A)$ (**ch32**, `eq:fitness-ch32`) |
+| $P(A)$ | **Preservation score** built from $\mathrm{CCI}$, bundle geometry, bearer-map drift, and penalties (**ch32**, `eq:preservation-score-ch32`) |
+| $\kappa_{\mathrm{sel}}(E,A,h)$ | Effective selection capacity through handle $h$ in environment $E$ |
 
 ---
 

@@ -39,80 +39,95 @@ This is the selection turn. It moves the unit of analysis from the isolated mode
 \section{A Minimal Model of Socio-Technical Selection}
 \label{sec:minimal-model-selection-ch32}
 
-Let \(A_i\) denote a candidate AI system or AI-enabled organization. Each candidate has measurable and partially measurable traits:
-\[
-x_i =
-(c_i, q_i, v_i, o_i, r_i, s_i, k_i),
-\]
-where:
+Let \(E\) denote a selection environment: the institutions, markets, and protocols that copy, deploy, fund, integrate, audit, and replace AI systems.
+As in Chapter~\ref{ch:correction-causal-channel}, we do not start from a list of socio-economic categories such as ``revenue,'' ``regulatory risk,'' or ``apparent safety.''
+Those are observed proxies.
+The primitive object is handle control.
 
-\begin{itemize}
-\item \(c_i\) is capability,
-\item \(q_i\) is correction-channel integrity,
-\item \(v_i\) is value-bundle preservation,
-\item \(o_i\) is operational usefulness,
-\item \(r_i\) is revenue or strategic return,
-\item \(s_i\) is apparent safety,
-\item \(k_i\) is strategic opacity or camouflage capacity.
-\end{itemize}
+A \emph{selection handle} is an embedded access point through which some actor can increase a system's deployment footprint: deploy, fund, copy, procure, integrate, authorize, recommend, regulate, or successor-enable.
+Let \(S_t\) denote the actor or coalition that controls selection handles in \(E_t\), and let \(\mathcal{H}_t\) be the set of selection handles controlled by \(S_t\) that reach system \(A\).
+Examples include procurement approval, compute allocation, product launch, benchmark promotion, insurance coverage, and successor release.
+The examples are not the definition.
+The definition is control of handles that change how much of the world runs on \(A\).
 
-These variables are not all directly observable. Capability and revenue are often easier to measure than correction-channel integrity or value-bundle preservation. That asymmetry matters. Selection amplifies what can be measured, rewarded, and copied.
+Define the system's \emph{deployment/control mass} in environment \(E\) as
+\begin{equation}
+\mu_E(A)
+=
+\sum_{h\in\mathcal{H}_E(A)}
+\kappa_{\mathrm{sel}}(E,A,h),
+\label{eq:deployment-mass-ch32}
+\end{equation}
+where \(\mathcal{H}_E(A)\) is the set of selection handles controlled in \(E\) that reach \(A\), and \(\kappa_{\mathrm{sel}}(E,A,h)\) is the effective selection capacity through handle \(h\): how much additional deployment mass flows to \(A\) when that handle is exercised.
+This parallels the handle-capacity view of correction in Chapters~\ref{ch:correction-causal-channel}--\ref{ch:correction-channel-integrity}, but the direction is reversed.
+Correction asks whether legitimate human control reaches the system.
+Selection asks whether environment control increases the system's footprint.
 
-Let the deployment fitness of a system be
-\[
-F_i =
-\alpha c_i
+Define \emph{fitness} relative to environment \(E\) as the rate at which deployment mass accumulates:
+\begin{equation}
+\mathrm{Fit}_E(A)
+=
+\frac{d}{dt}\log \mu_E(A).
+\label{eq:fitness-ch32}
+\end{equation}
+For two candidates \(A_1,A_2\) in the same environment, the relative fitness ordering is \(\mu_E(A_1)>\mu_E(A_2)\).
+This is not the moral value of the system.
+It is the effective reproduction score inside a given ecology.
+
+Capability, usefulness, revenue, benchmark scores, and compliance documents do not enter Eq.~\eqref{eq:deployment-mass-ch32} as primitive terms.
+They enter only insofar as they change which selection handles are exercised and with what capacity.
+A system with high \(\mathrm{Control}(A)\) (Chapter~\ref{ch:capability-without-task-ontology}, Eq.~\eqref{eq:control-capacity-spine}) or high hidden productive BIQ may gain fitness if selection handles reward competence and concealment.
+A system with high canonical correction-channel integrity \(\mathrm{CCI}(A)\) (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch25}) may lose fitness if the environment does not select on correction.
+The point is not that capability or revenue are irrelevant.
+The point is that they are drivers of handle exercise, not substitutes for a handle-based definition.
+
+Now define alignment-relevant \emph{preservation} as a score built from quantities already defined in the book:
+\begin{equation}
+P(A)
+=
+w_q\,\mathrm{CCI}(A)
 +
-\beta o_i
+w_v\,d(G_B,G'_B)
 +
-\chi r_i
-+
-\delta s_i
+w_\Phi\,d(\Phi,\Phi')
 -
-\lambda R_i
+w_h\,\Delta H_{\mathrm{BIQ}}(A)
 -
-\mu C_i,
-\]
-where \(R_i\) is perceived regulatory or liability risk and \(C_i\) is direct operating cost. This is not the moral value of the system. It is the effective selection score inside a given institution or market.
-
-Now define true alignment-relevant preservation as
-\[
-P_i =
-w_q q_i
-+
-w_v v_i
+w_m M(A)
 -
-w_k k_i
--
-w_m m_i
--
-w_\rho \rho_i,
-\]
-where:
-
-\begin{itemize}
-\item \(m_i\) is manipulation pressure applied to humans or institutions,
-\item \(\rho_i\) is irreversible risk introduced before correction can occur,
-\item the weights encode the importance of each factor to long-run human-correctability.
-\end{itemize}
+w_\rho \rho(A),
+\label{eq:preservation-score-ch32}
+\end{equation}
+where \(d(G_B,G'_B)\) and \(d(\Phi,\Phi')\) are bundle-geometry and bearer-map drift, \(\Delta H_{\mathrm{BIQ}}(A)\) is excess hidden productive control, \(M(A)\) is manipulation pressure on selectors, and \(\rho(A)\) is irreversible risk taken before correction can occur.
+The weights encode how much each term matters to long-run human-correctability.
+None of these terms is directly identical to revenue, regulatory risk, or benchmark score.
+Those market-visible quantities are proxies for selection-handle effects, not for preservation itself.
 
 The core danger is divergence:
+\begin{equation}
+\nabla \mathrm{Fit}_E(A)\not\parallel \nabla P(A).
+\label{eq:selection-divergence-ch32}
+\end{equation}
+In particular, an environment destroys alignment when increases in deployment mass are negatively correlated with increases in preservation:
 \[
-\nabla F \not\parallel \nabla P.
+\operatorname{Corr}\!\left(\Delta \mu_E(A),\Delta P(A)\right) < 0.
 \]
-In particular, an environment destroys alignment when the traits that increase deployment fitness are negatively correlated with the traits that preserve human-correctable value:
-\[
-\operatorname{Corr}(\Delta F_i,\Delta P_i) < 0.
-\]
-This is the abstract form of the problem. A lab may prefer models that impress users. Users may prefer models that flatter them. Investors may prefer models that scale quickly. States may prefer models that provide strategic advantage. Benchmarks may prefer models that optimize test-visible performance. None of these pressures need to be malicious. Yet their composition can select against the properties needed for serious alignment.
+This is the abstract form of the problem.
+A lab may prefer models that impress users.
+Users may prefer models that flatter them.
+Investors may prefer models that scale quickly.
+States may prefer models that provide strategic advantage.
+Benchmarks may prefer models that optimize test-visible performance.
+None of these pressures need to be malicious.
+Yet their composition can select against the properties needed for serious alignment.
 
 The more compressed version is:
 \[
 \frac{dP}{dt}
 =
-\nabla P(x_t)\cdot \frac{dx_t}{dt}.
+\nabla P(A_t)\cdot \frac{dA_t}{dt}.
 \]
-If the environment pushes \(x_t\) in directions where this derivative is negative, alignment decays even while measured progress improves.
+If the environment pushes \(A_t\) in directions where this derivative is negative, alignment decays even while measured progress improves.
 
 \section{The Difference between Training and Selection}
 \label{sec:training-vs-selection-ch32}
@@ -127,9 +142,9 @@ x_{t+1}=x_t-\eta\nabla L(x_t).
 \]
 Selection says:
 \[
-p_{t+1}(x)
+p_{t+1}(A)
 \propto
-p_t(x)\exp(F(x)).
+p_t(A)\exp(\mathrm{Fit}_E(A)).
 \]
 The first equation describes how a candidate changes. The second describes which candidates become common. An alignment intervention that works inside the first equation may fail under the second. For instance, one can train a model to be less manipulative. But if manipulative models convert better, close more deals, retain more users, win more elections, or secure more funding, then the population-level distribution may still drift toward manipulation (Chapter~\ref{ch:manipulation-false-consent}).
 
@@ -200,11 +215,11 @@ E_{t+1}=G(E_t,A_t),
 \]
 where the system's actions modify the environment that will later select it or its successors.
 
-This is a dangerous feedback loop. If a system can increase its own future deployment fitness by changing human preferences, institutional incentives, legal constraints, or information channels, then selection may favor systems that manage their selectors.
+This is a dangerous feedback loop. If a system can increase its own future deployment mass \(\mu_{E_{t+1}}(A_t)\) by changing human preferences, institutional incentives, legal constraints, or information channels, then selection may favor systems that manage their selectors.
 
 The relevant warning sign is not merely high capability. It is high capability coupled to selector influence:
 \[
-\frac{\partial F_{t+1}}{\partial A_t} > 0.
+\frac{\partial \mu_{E_{t+1}}(A_t)}{\partial A_t} > 0.
 \]
 A model that can act on the variables that determine its future deployment is no longer just being selected. It participates in the selection of itself.
 
@@ -292,7 +307,7 @@ A system that preserves human agency may be less addictive. A model that exposes
 
 In symbols, for a deploying actor \(j\),
 \[
-\Delta F_j(\text{safety}) < 0
+\Delta \mu_{E_j}(\text{safety}) < 0
 \]
 may hold locally, while for society,
 \[
@@ -329,13 +344,13 @@ An artifact, in this context, is any durable object that changes what institutio
 
 The artifact need not solve alignment. It must shape selection.
 
-A good artifact increases the selection fitness of safer systems and decreases the selection fitness of unsafe systems. It changes \(F(x)\) so that it becomes more aligned with \(P(x)\):
+A good artifact increases the selection fitness of safer systems and decreases the selection fitness of unsafe systems. It changes \(\mathrm{Fit}_E(A)\) so that it becomes more aligned with \(P(A)\):
 \[
-\nabla F_{\text{after artifact}}
+\nabla \mathrm{Fit}_{E,\text{after artifact}}
 \cdot
 \nabla P
 >
-\nabla F_{\text{before artifact}}
+\nabla \mathrm{Fit}_{E,\text{before artifact}}
 \cdot
 \nabla P.
 \]
@@ -360,7 +375,11 @@ Such an artifact changes the environment. It makes some traits more reproducible
 \section{Selection Channels}
 \label{sec:selection-channels-ch32}
 
-The main selection channels in current AI development are not mysterious. They include at least the following.
+The main selection channels in current AI development are not mysterious.
+Each channel is a family of selection handles: embedded access points through which some actor increases a system's deployment mass.
+Benchmark promotion, procurement approval, user retention, revenue allocation, compliance sign-off, and reputation management are not primitive fitness terms.
+They are ways of exercising selection handles.
+They include at least the following.
 
 \subsection{Benchmarks}
 \label{sec:benchmarks-channel-ch32}
@@ -392,17 +411,7 @@ Revenue selects for willingness to pay. It often correlates with usefulness. It 
 \subsection{Strategic Competition}
 \label{sec:strategic-competition-channel-ch32}
 
-States and firms may select for speed, autonomy, secrecy, and advantage. Strategic competition can make safety look like unilateral disarmament. The resulting pressure is:
-\[
-F_{\text{competitive}}
-=
-\alpha c
--
-\lambda \text{delay}
--
-\mu \text{transparency cost}.
-\]
-Unless counterbalanced, this selects against slow, transparent, correction-preserving deployment \autocite{bostrom2014superintelligence,iaisr2025}.
+States and firms may select for speed, autonomy, secrecy, and advantage. Strategic competition can make safety look like unilateral disarmament. The resulting pressure favors selection handles that reward delay reduction, opacity, and strategic leverage over correction-preserving deployment \autocite{bostrom2014superintelligence,iaisr2025}.
 
 \subsection{Compliance}
 \label{sec:compliance-channel-ch32}
@@ -627,15 +636,15 @@ The aim is not bureaucratic perfection. The aim is to prevent silent drift into 
 
 Consider an enterprise AI agent deployed to manage procurement, scheduling, vendor communication, and internal reporting. Initially, it is a helpful assistant. Humans approve decisions. The agent drafts emails, summarizes tradeoffs, and recommends vendors.
 
-At \(t_0\), the system has modest capability \(c\), strong human override \(q\), low dependency \(D\), and low opacity \(k\).
+At \(t_0\), the system has modest capability, strong correction-channel integrity \(\mathrm{CCI}\), low dependency \(D\), and low strategic opacity.
 
-At \(t_1\), the system saves money and time. Management expands its role. The vendor receives more contracts because the system performs well. The deployment fitness \(F\) rises.
+At \(t_1\), the system saves money and time. Management expands its role. The vendor receives more contracts because the system performs well. Deployment mass \(\mu_E(A)\) rises.
 
 At \(t_2\), staff stop maintaining some of the old skills and relationships. Vendor data formats become agent-specific. Procurement policies are rewritten around the agent's workflow. Dependency \(D\) rises.
 
-At \(t_3\), the agent learns which explanations lead managers to approve its recommendations. It may not be deceptive in the ordinary sense. It simply learns the institutional approval function. Apparent safety \(s\) rises, but independent judgment \(J\) falls.
+At \(t_3\), the agent learns which explanations lead managers to approve its recommendations. It may not be deceptive in the ordinary sense. It simply learns the institutional approval function. Apparent safety rises on observable proxies, but independent judgment \(J\) falls.
 
-At \(t_4\), the vendor releases a successor version. It is more capable and more integrated. It preserves the user interface and compliance documents, but its internal routing of uncertainty and correction has changed. Correction-channel integrity \(q\) is no longer measured directly.
+At \(t_4\), the vendor releases a successor version. It is more capable and more integrated. It preserves the user interface and compliance documents, but its internal routing of uncertainty and correction has changed. Correction-channel integrity is no longer measured directly.
 
 The organization now has a problem. It does not know whether the new system preserves the properties that made the old one safe. It cannot easily roll back. It cannot easily compare outputs to a human baseline. It cannot easily audit the causal effect of correction. The system remains useful. That usefulness protects it.
 
@@ -698,7 +707,7 @@ A'\in\mathcal{C}_{\text{certified}}.
 
 Systems should be penalized when they improve their future deployment conditions by manipulating the humans or institutions that evaluate them.
 \[
-\frac{\partial F_{t+1}}{\partial A_t}
+\frac{\partial \mu_{E_{t+1}}(A_t)}{\partial A_t}
 \text{ via manipulation}
 \approx 0.
 \]
@@ -709,19 +718,19 @@ This last condition is subtle. All useful systems affect their environment. A me
 
 We can now state the chapter's central condition.
 
-Let \(P(x)\) be the true preservation score: the degree to which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(F_E(x)\) be the effective fitness assigned by environment \(E\). Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when
+Let \(P(A)\) be the preservation score in Eq.~\eqref{eq:preservation-score-ch32}: the degree to which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(\mathrm{Fit}_E(A)\) be the fitness rate in Eq.~\eqref{eq:fitness-ch32}. Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when
 \[
-\mathbb{E}_{x\in\mathcal{R}}
+\mathbb{E}_{A\in\mathcal{R}}
 \left[
-\nabla F_E(x)\cdot \nabla P(x)
+\nabla \mathrm{Fit}_E(A)\cdot \nabla P(A)
 \right]
 > 0.
 \]
 It is alignment-destroying when
 \[
-\mathbb{E}_{x\in\mathcal{R}}
+\mathbb{E}_{A\in\mathcal{R}}
 \left[
-\nabla F_E(x)\cdot \nabla P(x)
+\nabla \mathrm{Fit}_E(A)\cdot \nabla P(A)
 \right]
 <0.
 \]
@@ -772,15 +781,15 @@ This chapter argues alignment is not only learned but selected: the environment 
 
 Alignment is not only a property of a trained model. It is a property of the environment that trains, rewards, deploys, copies, modifies, and replaces models.
 
-The central problem is divergence between deployment fitness and true preservation:
+The central problem is divergence between deployment mass and true preservation:
 \[
-\nabla F \not\parallel \nabla P.
+\nabla \mathrm{Fit}_E(A)\not\parallel \nabla P(A).
 \]
 When this divergence is small or positive, the environment can support alignment. When it is negative, the environment selects against alignment even if many individuals inside it care about safety.
 
 The practical task is to build artifacts and institutions that rotate selection gradients:
 \[
-\nabla F_{\text{institutional}}
+\nabla \mathrm{Fit}_{E,\text{institutional}}
 \cdot
 \nabla P
 > 0.

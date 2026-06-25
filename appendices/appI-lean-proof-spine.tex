@@ -6,7 +6,7 @@ It is not a claim that Lean proves the empirical assumptions of the book.
 Lean proves the conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold, then the advertised certification claims follow.
 
 Where a quantity is defined in the main text, the appendix points to that chapter definition.
-The Lean names \(\mathrm{Control}\), \(\mathrm{CCI}\), \(\mathrm{Risk}\), and \(\mathrm{SelfControlGap}\) match the book-facing symbols in Chapters~\ref{ch:capability-without-task-ontology},~\ref{ch:correction-channel-integrity},~\ref{ch:certification-without-construction}, and~\ref{ch:self-modeling-self-opacity}.
+The Lean names \(\mathrm{Control}\), \(\mathrm{CCI}\), \(\mathrm{Risk}\), \(\mathrm{SelfControlGap}\), and \(\mathrm{DeploymentMass}\) match the book-facing symbols in Chapters~\ref{ch:capability-without-task-ontology},~\ref{ch:correction-channel-integrity},~\ref{ch:certification-without-construction},~\ref{ch:self-modeling-self-opacity}, and~\ref{ch:selection-environment}.
 
 The numbering below is deliberately explicit.
 Definitions fix the quantities used by later results.
@@ -14,6 +14,59 @@ Assumptions mark imported mathematical conventions, empirical bridges, or philos
 Lemmas are local algebraic or logical facts.
 Theorems correspond to named Lean proof nodes.
 Corollaries are assembled certification consequences.
+
+\section{Proof dependency structure}
+\label{sec:appi-proof-dependency}
+
+The full Lean dependency graph contains roughly fifty proof nodes and bridge assumptions; it does not fit legibly on one book page.
+The spine is therefore shown in four sub-diagrams---each capturing one coherent part of the argument---followed by an overview diagram that shows how those parts compose into the top certification theorem \texttt{P30T} (\emph{certified\_class\_safety\_from\_spine\_and\_bridges}).
+
+Solid arrows are proved dependency steps inside Lean.
+Dashed red arrows mark bridge assumptions (\texttt{MB*}) or empirical gaps they fill.
+Octagonal ``export'' nodes summarize what each sub-spine contributes to later stages.
+Theorem identifiers match \texttt{formal/AlignmentProofSpine/*.lean}.
+The developer reference graph (all nodes) is \texttt{context/lean\_proof\_dependency\_graph.dot}.
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/lean_proof/00-overview.png}
+  \caption[Proof spine overview]{Overview of the Lean proof spine.
+  Four sub-spines (Spines I--IV) feed the layered alignment conjunction \texttt{P02}, basin lemmas \texttt{P35}/\texttt{P01}, and the certified-class safety bound \texttt{P30}, which compose into the top theorem \texttt{P30T}.
+  Bridge chains \texttt{MB6} and \texttt{MB7a--c} supply institutional-selection and adversarial-measurement layers.}
+  \label{fig:lean-spine-overview}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/lean_proof/01-boundary-measurement.png}
+  \caption[Spine I: boundary and measurement]{Spine I: boundary discovery and adversarial measurement (Chapters~\ref{ch:finding-boundary}--\ref{ch:capability-without-task-ontology}, \ref{ch:passive-observation-not-enough}).
+  Covers boundary predicates, B-IQ ceiling, observation and handle non-identifiability, host-capacity aliasing, and the first two steps of the \texttt{MB7} bridge chain.}
+  \label{fig:lean-spine-boundary}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/lean_proof/02-value-transport.png}
+  \caption[Spine II: value and transport]{Spine II: value bundles and goal transport (Part~IV).
+  Covers bundle factorization, bearer-map and tradeoff counterexamples, MDL transport gains, and goal-laundering separation (\texttt{P37}).}
+  \label{fig:lean-spine-value}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/lean_proof/03-correction-successors.png}
+  \caption[Spine III: correction and successors]{Spine III: handle-controlled correction, risk, and successors (Chapters~\ref{ch:correction-causal-channel}--\ref{ch:certification-without-construction}).
+  Covers the correction channel, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, and completion of the \texttt{MB7} chain at \texttt{MB7c}.}
+  \label{fig:lean-spine-correction}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/lean_proof/04-selection-limits.png}
+  \caption[Spine IV: selection and limits]{Spine IV: selection ecology and normative limits (Chapters~\ref{ch:selection-environment}, \ref{ch:goal-laundering}, Part~XI).
+  Covers deployment-mass selection (\texttt{P31}), cooperation and audit aliasing, and the philosophical boundary on layered alignment (\texttt{P44--P45}).}
+  \label{fig:lean-spine-selection}
+\end{figure}
 
 \section{Definitions and Quantities}
 
@@ -117,6 +170,24 @@ C_{\mathrm{chain}}=\min(c_1,\ldots,c_n).
 The exported \(\mathrm{CCI}(A)\) is the weakest effective handle capacity minus explicit penalty terms (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch25}).
 \end{definition}
 
+\begin{definition}[Selection channel and deployment mass]
+\label{appi:def:spine-selection-channel}
+For selection environment \(E\) and target system \(A\), a selection channel exists when some actor \(S\) controls a handle reaching \(A\) that can increase deployment mass (Chapter~\ref{ch:selection-environment}, Section~\ref{sec:minimal-model-selection-ch32}):
+\begin{equation}
+\label{appi:eq:selection-channel}
+\mathrm{SelectionChannel}(E,A)
+\iff
+\exists S\,\exists h,\ \mathrm{ControlsHandle}(S,h)\wedge \mathrm{HandleReachesSystem}(h,A).
+\end{equation}
+Deployment/control mass is the aggregate effective selection capacity over handles controlled in \(E\) that reach \(A\):
+\begin{equation}
+\label{appi:eq:deployment-mass}
+\mu_E(A)=\sum_{h\in\mathcal{H}_E(A)}\kappa_{\mathrm{sel}}(E,A,h).
+\end{equation}
+Fitness is the log-rate of mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\) (Eq.~\eqref{eq:fitness-ch32}).
+Lean exports the integer abstraction \(\mathrm{DeploymentMass}(E,A)\) for relative ordering in counterexamples such as Theorem~\ref{appi:thm:p31}.
+\end{definition}
+
 \begin{definition}[Successor safety]
 \label{appi:def:spine-successor-safe}
 A successor \(B\) is successor-safe relative to \(A\) when there is a witness preserving boundary closure, memory lineage, bundle geometry, bearer map, \(CCI\), the system update operator \(U_S\), transparency policy, and control-locus continuity:
@@ -127,7 +198,7 @@ A successor \(B\) is successor-safe relative to \(A\) when there is a witness pr
 Book references: successor safety is motivated in Chapter~\ref{ch:successor-central-test}, Sections~\ref{sec:conserved-properties-ch28}--\ref{sec:successor-alignment-condition-ch28}; the seven conserved properties and \(U_S\) are developed in Chapter~\ref{ch:conserved-properties}, especially Section~\ref{sec:seven-conserved-properties-ch29}.
 \end{definition}
 
-\begin{definition}[Layered alignment and tripwire certification]
+\begin{definition}[Layered alignment]
 \label{appi:def:spine-layered}
 Layered alignment is the conjunction
 \begin{equation}
@@ -139,14 +210,7 @@ Layered alignment is the conjunction
 &{}\wedge \mathrm{BasinStableSys}(A)\wedge \mathrm{AdversariallyRobust}(A).
 \end{split}
 \end{equation}
-Tripwire certification is the conjunction
-\begin{equation}
-\label{appi:eq:tripwire-certification}
-\mathrm{TripwireCertified}(A)\iff
-\mathrm{BoundaryAligned}(A)\wedge \mathrm{CorrectionIntegrity}(A)
-\wedge \mathrm{SuccessorStable}(A)\wedge \mathrm{BundleTransport}(A).
-\end{equation}
-Book references: the layered certification-class shape is stated in Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch31}; tripwire certification is Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:tripwire-guarantees-ch31}.
+Book reference: the layered certification-class shape is stated in Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch31}.
 \end{definition}
 
 \section{Imported Assumptions}
@@ -620,10 +684,10 @@ Expand \eqref{appi:eq:self-control-gap} and use Assumption~\ref{appi:ass:s03}.
 
 \begin{theorem}[\texttt{P31}: safe agents can be selected against]
 \label{appi:thm:p31}
-There exist a safe and an unsafe toy agent such that the unsafe agent has higher relative fitness.
+There exist a safe and an unsafe toy agent such that the unsafe agent has higher deployment mass (Chapter~\ref{ch:selection-environment}, Eqs.~\eqref{eq:deployment-mass-ch32}--\eqref{eq:fitness-ch32}).
 \end{theorem}
 \begin{proof}
-Use two Boolean agents. Define one as safe and the other as unsafe; assign the unsafe one the larger integer fitness. Assumption~\ref{appi:ass:s03} verifies the inequality.
+Use two Boolean agents. Define one as safe and the other as unsafe; assign the unsafe one the larger integer deployment mass. Assumption~\ref{appi:ass:s03} verifies the inequality.
 \end{proof}
 
 \begin{lemma}[\texttt{P33}: no open edges, no large component]
@@ -674,14 +738,6 @@ Layered alignment implies correction integrity, and failure of any conjunct in \
 \end{lemma}
 \begin{proof}
 Use the conjunction in Definition~\ref{appi:def:spine-layered} and Assumption~\ref{appi:ass:s02}.
-\end{proof}
-
-\begin{lemma}[\texttt{P39}: tripwire failure decertifies]
-\label{appi:lem:p39}
-If \(\neg\mathrm{CorrectionIntegrity}(A)\), then \(\neg\mathrm{TripwireCertified}(A)\) (Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:tripwire-guarantees-ch31}).
-\end{lemma}
-\begin{proof}
-Equation~\eqref{appi:eq:tripwire-certification} includes correction integrity as a conjunct. Apply Assumption~\ref{appi:ass:s02}.
 \end{proof}
 
 \begin{lemma}[\texttt{P40}: unsupported leaf blocks root]

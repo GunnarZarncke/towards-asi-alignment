@@ -4,7 +4,8 @@ A compact, **self-contained Lean 4 formalization** of the *logical skeleton* of
 the alignment argument in *Towards Superintelligence Alignment*. It implements
 the spec in [`../LeanProofSpineImplementationBrief.md`](../LeanProofSpineImplementationBrief.md)
 (conjectured dependency structure in
-[`../context/lean_proof_dependency_graph.dot`](../context/lean_proof_dependency_graph.dot)).
+[`../context/lean_proof_dependency_graph.dot`](../context/lean_proof_dependency_graph.dot);
+ book figures in [`../context/lean_proof_graphs/`](../context/lean_proof_graphs/)).
 
 ## What this is and is not
 
@@ -86,7 +87,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P33`, `P34`, `P37` | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
-| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P39`, `P40`, **`certified_class_safety_spine_derived`** (risk from capacity slack) | 1–5, 35, 39, 44 |
+| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P40`, **`certified_class_safety_spine_derived`** (risk from capacity slack) | 1–5, 35, 39, 44 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
 
 ## Three kinds of result (for the book)
@@ -119,7 +120,12 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   Handle-controlled path: `CorrectionPath` / `SystemCorrectionPath` over `CorrectionChainLink`,
   now grounded in a correcting agent's controlled handles. The weakest effective
   handle-capacity term lives inside `CCI` only (book: $C_{\mathrm{raw}}$; not exported in Lean).
+* **`DeploymentMass`** is environment-relative deployment/control mass (book ch32,
+  `eq:deployment-mass-ch32`). Selection uses `SelectionChannel` / `SelectionHandleFor`
+  over the same `Handle` type as correction. Revenue and regulatory risk are not
+  primitive Lean terms.
 * **`SuccessorSafe`** = `Nonempty SuccessorSafeWitness` with `CCIPreserved` and
   `SystemUpdateOperatorPreserved` among the ch29 fields.
-* Numbering follows the **brief** (§4/§5), which is the implementation target; the
-  `.dot` graph uses a different, conjectural numbering.
+* Node IDs match `formal/AlignmentProofSpine/*.lean` theorem names (see module map above).
+  Full graph: `context/lean_proof_dependency_graph.dot`.
+  Book layout: four sub-spines + overview in `context/lean_proof_graphs/` → `figures/lean_proof/` via `scripts/render_lean_graphs.sh` (Appendix I, Section~\ref{sec:appi-proof-dependency}).

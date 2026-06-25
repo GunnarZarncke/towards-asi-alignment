@@ -13,6 +13,8 @@ Operational definitions for core terms. See `INSTRUCTIONS.md` §6 for the full l
 | Goal transport | Preservation of goal-relevant structure across transformation. |
 | Correction channel | A handle-supported route by which a correcting agent that sufficiently coincides with humanity controls handles that reach and alter a target system's future behavior before irreversible damage. |
 | Correction-channel integrity | The weakest effective capacity of those controlled, reaching handles after penalties for latency, manipulation/capture, irreversibility, and ontology mismatch. Formal definition: **ch25** (`eq:cci-ch25`). |
+| Deployment/control mass | In selection environment \(E\), the aggregate effective selection capacity over handles controlled in \(E\) that reach system \(A\). Formal definition: **ch32** (`eq:deployment-mass-ch32`). |
+| Fitness | Environment-relative log-rate of deployment-mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\). Formal definition: **ch32** (`eq:fitness-ch32`). Revenue, regulatory risk, and benchmark score are proxies for selection-handle exercise, not primitive fitness terms. |
 | Successor | Any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity. |
 | Alignment basin | A self-stabilizing region of dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure. |
 | Pivotal process | A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act. |

@@ -143,7 +143,7 @@ definitions (CMI blankets, CCI penalties, bearer maps on world states, etc.).
 | **ch05** | `Certification`, scope | Assumption/failure-coverage objects tied to `SatisfiesInvariants` / scope predicates. |
 | **ch28**–**ch29** | `Successors.lean` (`P27`–`P28`, `SuccessorSafeChain`) | Derive `SuccessorSafe_risk_monotone` / `CorrectionCapacityPreserved` from ch28–29 successor audit; tie weakest-link capacity across successors. |
 | **ch30** | `Successors.lean` (`P29`) | Ground `SelfControl` / `CorrectionVisibility` in ch30 self-modeling notation. |
-| **ch31**, **ch39** | `Certification.lean` (`P39`, `P40`, safety case) | `Claim`/`Supported`/`ProvenDef` from ch39 safety-case graph; tripwire logic from ch31. |
+| **ch31**, **ch39** | `Certification.lean` (`P40`, safety case) | `Claim`/`Supported`/`ProvenDef` from ch39 safety-case graph. |
 | **ch32**, **ch35** | `Certification.lean` (`P01`, `P35`, basin) | Basin invariance and attractor narrative vs `BasinStableSys` / `P35`. |
 | **ch33** | `Capability.lean` (`P32`), `Adversarial.lean` (`P33`) | Cooperativity `\kappa`, `ICI_{ij}`, open-edge graphs vs `KappaNumerator` / `CoopGraph`. |
 | **ch34**, **ch36**, **ch37** | `Adversarial.lean` (`P34`, `P37`) | Host-capacity aliasing and goal-laundering detection beyond `finPigeonhole` toy. |

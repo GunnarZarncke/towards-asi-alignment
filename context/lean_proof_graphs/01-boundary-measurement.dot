@@ -1,0 +1,56 @@
+digraph Spine01BoundaryMeasurement {
+  graph [
+    rankdir=TB,
+    bgcolor="white",
+    splines=true,
+    overlap=false,
+    fontsize=11,
+    fontname="Helvetica",
+    label="Spine I: Boundary discovery and adversarial measurement",
+    labelloc="t"
+  ];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, color="#444444"];
+  edge [fontname="Helvetica", fontsize=8, color="#555555", arrowsize=0.7];
+
+  P05 [label="P05 Boundary predicate", fillcolor="#EAF3FF"];
+  P06 [label="P06 Blanket / no extra gain", fillcolor="#EAF3FF"];
+  P07 [label="P07 Exact boundary", fillcolor="#EAF3FF"];
+  P08 [label="P08 Violation blocks candidate", fillcolor="#EAF3FF"];
+  P09 [label="P09 Observational non-id.", fillcolor="#EAF3FF"];
+  P09A [label="Access non-id.", fillcolor="#EAF3FF"];
+  P09K [label="K-equivalence limit", fillcolor="#EAF3FF"];
+  P36 [label="P36 Handle-operation ref.", fillcolor="#EAF3FF"];
+  P36M [label="Smoothing margin", fillcolor="#EAF3FF"];
+  P10 [label="P10 B-IQ upper bound", fillcolor="#EAF3FF"];
+  P11 [label="P11 Capacity monotonicity", fillcolor="#EAF3FF"];
+  P34 [label="P34 Host-capacity aliasing", fillcolor="#EAF3FF"];
+  P43H [label="Hidden-rate accumulation", fillcolor="#EAF3FF"];
+
+  MB1 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB1 Estimator soundness"];
+  MB7a [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB7a Access-model soundness"];
+  MB7b [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB7b Filter-family coverage"];
+
+  OUT [shape=octagon, style="filled", fillcolor="#DDEEFF", color="#336699",
+       label="Exports to later spines:\nBoundaryAligned, BIQ ceiling,\nmeasurement limits, MB7a–b"];
+
+  P05 -> P06 -> P07;
+  P05 -> P08;
+  P05 -> P10 -> P11;
+  P09 -> P09A -> P36;
+  P09 -> P09K -> P36M;
+  P34 -> P09;
+
+  MB1 -> P05 [style=dashed, color="#CC3333", label="bridge"];
+  MB1 -> P09 [style=dashed, color="#CC3333"];
+  P05 -> MB7a [style=dashed, color="#CC3333"];
+  P09A -> MB7a [style=dashed, color="#CC3333"];
+  MB7a -> MB7b [style=dashed, color="#CC3333", label="MB7 chain"];
+  P09K -> MB7b [style=dashed, color="#CC3333"];
+  P36M -> MB7b [style=dashed, color="#CC3333"];
+  P34 -> MB7b [style=dashed, color="#CC3333"];
+  P43H -> MB7b [style=dashed, color="#CC3333"];
+
+  P11 -> OUT [label="Control side"];
+  MB7b -> OUT [style=dashed, color="#CC3333"];
+  P36 -> OUT [label="handle tests"];
+}

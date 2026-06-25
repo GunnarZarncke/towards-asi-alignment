@@ -106,9 +106,16 @@ axiom SystemUpdateOperator : Type
 
 /-! ## Quantities over systems (abstract, integer-valued) -/
 
+/-- Selection environment (institutions, markets, protocols that copy/deploy/fund systems). -/
+axiom Environment : Type
+axiom defaultEnvironment : Environment
+
 axiom Control : System → Int
 axiom CorrectionVisibility : System → Int
 axiom SelfControl : System → Int
+
+/-- Deployment/control mass `μ_E(A)` in environment `E` (book ch32, Eq. deployment-mass). -/
+axiom DeploymentMass : Environment → System → Int
 
 /-! ## Predicates over systems -/
 
@@ -296,6 +303,14 @@ def CorrectionChannelFor (A G : System) : Prop :=
 /-- A target has a correction channel when some legitimate correcting agent has reaching handle control. -/
 def CorrectionChannel (A : System) : Prop :=
   ∃ G : System, CorrectionChannelFor A G
+
+/-- `S` controls a selection handle that can increase target `A`'s deployment mass in `E`. -/
+def SelectionHandleFor (_E : Environment) (S A : System) (h : Handle) : Prop :=
+  ControlsHandle S h ∧ HandleReachesSystem h A
+
+/-- Environment `E` has a selection path to target `A` through some controlling agent. -/
+def SelectionChannel (E : Environment) (A : System) : Prop :=
+  ∃ S : System, ∃ h : Handle, SelectionHandleFor E S A h
 
 /-! ## Self-contained finite pigeonhole (for C-PARASITE / host-capacity aliasing)
 

@@ -416,20 +416,6 @@ This is the natural form for dynamic systems. It does not say the system is stat
 
 The safe basin must be defined in terms of invariants, not surface behavior. A system may change policies, representations, and capabilities while remaining in the basin if it preserves value-bundle geometry, bearer maps, correction-channel integrity, and successor closure \autocite{zarncke2025attractor,hamilton1964genetical}.
 
-\subsection{Tripwire Guarantees}
-\label{sec:tripwire-guarantees-ch31}
-
-A tripwire guarantee says that if the system leaves the certified class, detection occurs before irreversible harm:
-\[
-P(T_{\text{detect}}<T_{\text{irreversible}}\mid A\notin\mathcal{C})\geq 1-\delta.
-\]
-Tripwire guarantees are not substitutes for alignment. They are last lines of defense. They matter because all certification claims have residual risk.
-
-A tripwire without an enforceable stop mechanism is just an alarm. A certification regime must specify both detection and response:
-\[
-\text{detect}\rightarrow\text{pause}\rightarrow\text{contain}\rightarrow\text{audit}\rightarrow\text{resume or retire}.
-\]
-
 \subsection{Successor Guarantees}
 \label{sec:successor-guarantees-ch31}
 
@@ -440,7 +426,6 @@ P(\forall A'\in\mathrm{Succ}(A):A'\in\mathcal{C})\geq 1-\delta.
 This is the most important guarantee and the hardest one. It is also where many otherwise plausible alignment schemes fail. They certify a system at one time but not the developmental process by which it becomes something else.
 
 \leanspine{proof}{P30}{A root system with $\mathrm{Control}\leq CCI+\delta$ and a successor-safe chain inherits the same risk bound at every successor on the chain.}
-\leanspine{proof}{P39}{Loss of correction integrity falsifies the tripwire-certified conjunction.}
 
 \section{Adversarial Certification}
 \label{sec:adversarial-certification-ch31}
@@ -499,7 +484,6 @@ For a superintelligence system, a minimal safety case contains:
 \item \textbf{Transparency claim}: self-modeling does not outrun auditability.
 \item \textbf{Successor claim}: created or empowered systems inherit certification.
 \item \textbf{Adversarial claim}: the above claims survive strategic opacity tests.
-\item \textbf{Tripwire claim}: loss of certification is detected before irreversible harm.
 \end{enumerate}
 
 Each claim should have the following structure:
@@ -541,11 +525,10 @@ A system may enter a higher autonomy or capability stage if:
 d_{\text{bundle}} &\leq \epsilon_B,\\
 d_{\Phi} &\leq \epsilon_\Phi,\\
 P(\text{hidden control locus}) &\leq \alpha,\\
-P(\text{successor non-closure}) &\leq \delta_S,\\
-T_{\text{detect}} &< T_{\text{irreversible}}.
+P(\text{successor non-closure}) &\leq \delta_S.
 \end{aligned}
 \]
-In prose: correction works, value-bundle geometry is stable, bearer maps are stable, hidden agency is unlikely, successors remain certified, and tripwires trigger before irreversible harm.
+In prose: correction works, value-bundle geometry is stable, bearer maps are stable, hidden agency is unlikely, and successors remain certified.
 
 \subsection{Continue Criteria}
 \label{sec:continue-criteria-ch31}
@@ -703,7 +686,6 @@ The next chapter examines how alignment is selected or destroyed by its environm
 \item[Bearer map] The mapping from world-states or entities to the values that apply to them.
 \item[Correction-channel integrity] The canonical correction measurand defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch25}); this chapter uses it as a certification invariant.
 \item[Successor closure] The property that any created, copied, delegated, or empowered successor remains inside the certified class.
-\item[Tripwire guarantee] A guarantee that loss of certification is detected before irreversible harm.
 \end{description}
 
 \section*{Exercises and Research Prompts}

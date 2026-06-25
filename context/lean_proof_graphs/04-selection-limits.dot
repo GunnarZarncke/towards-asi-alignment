@@ -1,0 +1,41 @@
+digraph Spine04SelectionLimits {
+  graph [
+    rankdir=TB,
+    bgcolor="white",
+    splines=true,
+    overlap=false,
+    fontsize=11,
+    fontname="Helvetica",
+    label="Spine IV: Selection ecology and normative limits",
+    labelloc="t"
+  ];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, color="#444444"];
+  edge [fontname="Helvetica", fontsize=8, color="#555555", arrowsize=0.7];
+
+  P12 [label="P12 Coordination bottleneck", fillcolor="#EAF3FF"];
+  P31 [label="P31 Safe agent selected against", fillcolor="#FFF0EC"];
+  P32 [label="P32 Cooperativity threshold", fillcolor="#FFF0EC"];
+  P33 [label="P33 No open edges", fillcolor="#FFF0EC"];
+  P34 [label="P34 Host-capacity aliasing", fillcolor="#FFF0EC"];
+  P41 [label="P41 Value preservation ≠ legitimacy", fillcolor="#FFF0EC"];
+  P42 [label="P42 Continuity criteria disagree", fillcolor="#FFF0EC"];
+  P43 [label="P43 Small-step drift", fillcolor="#EAF3FF"];
+  P44 [label="P44 Invariants ≠ legitimacy", fillcolor="#FFF0EC"];
+  P45 [label="P45 Philosophical boundary", fillcolor="#FFF0EC"];
+
+  MB6 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6 Institutional selection"];
+
+  OUT [shape=octagon, style="filled", fillcolor="#FFE8E0", color="#993333",
+       label="Exports:\nBasin / CorrectionIntegrity (MB6),\nselection counterexamples,\nnormative limits on P02"];
+
+  P12 -> P31 -> MB6 [style=dashed, color="#CC3333"];
+  P32 -> P33 -> P34;
+  MB6 -> P33 [style=dashed, color="#CC3333", label="percolation"];
+  P41 -> P44;
+  P42 -> P44;
+  P43 -> P44 -> P45;
+
+  MB6 -> OUT [style=dashed, color="#CC3333"];
+  P45 -> OUT [label="limits layered alignment"];
+  P34 -> OUT [label="audit aliasing"];
+}

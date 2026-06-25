@@ -11,22 +11,28 @@ Socio-technical selection, parasite aliasing, and adversarial measurement
 * `P34`: host-capacity aliasing — too few signals cannot injectively detect
   attacks (uses the from-scratch `finPigeonhole` from `Core`).
 * `P37`: goal laundering — equal stated goals, different inferred goals.
+
+Selection fitness is environment-relative deployment/control mass
+(`DeploymentMass`, book ch32). Revenue, regulatory risk, and benchmark score
+are proxies for selection-handle exercise, not primitive fitness terms.
 -/
 
 namespace AlignmentProofSpine
 
 /-! ### P31: selection can disfavor safety (finite toy model) -/
 
-/-- Toy environment with two agents represented by `Bool`. -/
+/-- Toy safe predicate on two Boolean systems. -/
 abbrev ToySafe (a : Bool) : Prop := a = true
-/-- Toy fitness: the unsafe agent (`false`) is fitter. -/
-abbrev ToyFitness (a : Bool) : Int := if a then 0 else 1
+/-- Toy deployment mass: the unsafe agent (`false`) accumulates more mass. -/
+abbrev ToyDeploymentMass (_E : Environment) (a : Bool) : Int := if a then 0 else 1
 
 /-- C-SEL (P31): there exist a safe and an unsafe agent such that the unsafe one
-    is strictly fitter — local safety can be selected against. -/
+    has strictly higher deployment mass — local safety can be selected against. -/
 theorem P31_safe_agent_selected_against :
     ∃ safe risky : Bool,
-      ToySafe safe ∧ ¬ ToySafe risky ∧ ToyFitness risky > ToyFitness safe :=
+      ToySafe safe ∧ ¬ ToySafe risky ∧
+        ToyDeploymentMass defaultEnvironment risky >
+          ToyDeploymentMass defaultEnvironment safe :=
   ⟨true, false, rfl, by decide, by decide⟩
 
 /-! ### P33: no open edges, no large cooperation component -/

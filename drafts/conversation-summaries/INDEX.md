@@ -4,6 +4,10 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-25 | Lean proof graphs split for book (4 sub-spines + overview) | [2026-06-25-lean-proof-graphs-book-split.md](2026-06-25-lean-proof-graphs-book-split.md) |
+| 2026-06-25 | Lean dependency graph sync to Lean theorem IDs | [2026-06-25-lean-dependency-graph-sync.md](2026-06-25-lean-dependency-graph-sync.md) |
+| 2026-06-25 | Remove Tripwire Guarantees from ch31, Lean, appendix | [2026-06-25-remove-tripwire-guarantees.md](2026-06-25-remove-tripwire-guarantees.md) |
+| 2026-06-25 | Fitness handle-based definition — ch32 canonical, Lean DeploymentMass | [2026-06-25-fitness-handle-based-definition.md](2026-06-25-fitness-handle-based-definition.md) |
 | 2026-06-25 | Lean proof appendix chapter links for definitions and bridges | [2026-06-25-lean-appendix-chapter-links.md](2026-06-25-lean-appendix-chapter-links.md) |
 | 2026-06-25 | CCI canonical definition — single home in ch25, cross-refs elsewhere | [2026-06-25-cci-canonical-definition.md](2026-06-25-cci-canonical-definition.md) |
 | 2026-06-25 | Handle-controlled correction channel and CCI refactor | [2026-06-25-handle-controlled-correction-channel.md](2026-06-25-handle-controlled-correction-channel.md) |

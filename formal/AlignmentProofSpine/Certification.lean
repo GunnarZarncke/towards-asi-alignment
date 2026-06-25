@@ -62,14 +62,6 @@ theorem P02_any_layer_failure_blocks_layered_alignment
     {A : System} :
     ¬ SuccessorStable A → ¬ LayeredAlignedDef A := fun hFail h => hFail h.2.2.2.2.1
 
-def CertifiedByTripwires (A : System) : Prop :=
-  BoundaryAligned A ∧ CorrectionIntegrity A ∧ SuccessorStable A ∧ BundleTransport A
-
-theorem P39_tripwire_failure_decertifies
-    {A : System}
-    (h : ¬ CorrectionIntegrity A) :
-    ¬ CertifiedByTripwires A := fun hc => h hc.2.1
-
 axiom Claim : Type
 axiom Supported : Claim → Prop
 axiom LeafUnsupported : Claim → Claim → Prop

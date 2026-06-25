@@ -1,0 +1,56 @@
+digraph Spine00Overview {
+  graph [
+    rankdir=TB,
+    bgcolor="white",
+    splines=true,
+    overlap=false,
+    fontsize=11,
+    fontname="Helvetica",
+    label="Lean proof spine overview: four sub-spines into certified-class safety",
+    labelloc="t"
+  ];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, color="#444444"];
+  edge [fontname="Helvetica", fontsize=8, color="#555555", arrowsize=0.75];
+
+  S1 [label="Spine I\nBoundary & measurement\n(P05–P11, P09, P36, MB1, MB7a–b)\n→ BoundaryAligned, BIQ, handles",
+      fillcolor="#EAF3FF", penwidth=2];
+  S2 [label="Spine II\nValue & transport\n(P14–P22, P37, MB2–3)\n→ BundleTransport, BearerTransport",
+      fillcolor="#EFFBEA", penwidth=2];
+  S3 [label="Spine III\nCorrection & successors\n(P23–P29, P13, MB4–5, MB7c, MB8)\n→ CCI, Risk, SuccessorSafe",
+      fillcolor="#FFF0FB", penwidth=2];
+  S4 [label="Spine IV\nSelection & limits\n(P12, P31–P34, P41–P45, MB6)\n→ basin, normative boundary",
+      fillcolor="#FFF0EC", penwidth=2];
+
+  P02 [label="P02 LayeredAligned\n7 layers: boundary, bundle, bearer,\ncorrection, successor, basin, adversarial",
+       fillcolor="#F2F2F2", penwidth=2];
+  P35 [label="P35 Basin stability", fillcolor="#F2F2F2"];
+  P01 [label="P01 Basin invariant", fillcolor="#F2F2F2"];
+  P30 [label="P30 Certified-class safety\nControl ≤ CCI + δ ⇒ Risk ≤ δ", fillcolor="#F2F2F2", penwidth=2];
+  P40 [label="P40 Safety-case leaves", fillcolor="#F2F2F2"];
+  P30T [label="P30T Top theorem\nLayeredAligned ∧ Risk ≤ δ\n(certified_class_safety_from_spine_and_bridges)",
+        fillcolor="#F2F2F2", shape=doubleoctagon, penwidth=2];
+
+  MB7 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333",
+       label="MB7a→b→c\n(adversarial UAD bridges)"];
+  MB6 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6\nInstitutional selection"];
+
+  S1 -> S2 [label="identifiability\nconstraints"];
+  S1 -> S3 [label="BIQ / control\n+ MB7a–b"];
+  S2 -> S3 [label="transport &\nbearer maps"];
+  S3 -> S4 [label="successor &\nrisk exports"];
+  S4 -> P02 [label="basin + limits"];
+
+  S1 -> MB7 [style=dashed, color="#CC3333"];
+  MB7 -> P02 [style=dashed, color="#CC3333", label="AdversariallyRobust layer"];
+  S4 -> MB6 [style=dashed, color="#CC3333"];
+  MB6 -> P02 [style=dashed, color="#CC3333", label="CorrectionIntegrity\n+ basin layer"];
+  S3 -> P02 [label="correction +\nsuccessor layers"];
+  S2 -> P02 [label="bundle +\nbearer layers"];
+  S1 -> P02 [label="boundary layer"];
+
+  S4 -> P35 -> P01 -> P30;
+  P02 -> P30;
+  S3 -> P30 [label="P13 risk bound"];
+  P40 -> P30;
+  P30 -> P30T;
+}
