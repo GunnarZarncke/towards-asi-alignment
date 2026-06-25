@@ -1,8 +1,6 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-\begin{refsection}
-
 \section*{If You Remember One Thing}
 
 Superintelligence alignment is not mainly the problem of installing a fixed human utility function into a machine.
@@ -20,116 +18,7 @@ They are produced by biological needs, social practices, reflection, trauma, law
 The problem is not only that a superintelligence might disobey.
 The deeper problem is that it may preserve the words while changing the machinery that makes the words matter.
 
-\section*{A Diagram in Words}
-
-The book studies the following loop:
-
-\begin{center}
-\emph{
-world pressure
-$\rightarrow$
-agents and institutions
-$\rightarrow$
-capability growth
-$\rightarrow$
-value-bundle changes
-$\rightarrow$
-human correction
-$\rightarrow$
-successor systems
-$\rightarrow$
-new world pressure.
-}
-\end{center}
-
-Alignment fails when this loop becomes non-correctable.
-Alignment succeeds, if it succeeds, by keeping the loop inside a basin where humans and their legitimate successors can still notice, deliberate, refuse, revise, and redirect.
-
-\section*{The Standard Picture and Its Failure}
-
-The standard picture imagines alignment as a relation between two things:
-\[
-\text{AI system} \longrightarrow \text{human values}.
-\]
-On this picture, the AI system has some objective, explicit or implicit.
-Humans have values.
-Alignment means making the first point at the second \autocite{russell2019human}.
-
-That picture is useful for toy models.
-It is not false in every context.
-A chess engine can be aligned with winning chess games.
-A recommender can be aligned with click-through rate.
-A robot vacuum can be aligned with covering the floor while avoiding stairs.
-
-But serious superintelligence alignment does not have this shape.
-There are at least five complications.
-
-First, the AI system may not be the real unit of agency.
-The deployed optimizer may be a coupled process involving a model, a tool scaffold, a memory system, human operators, corporate incentives, user feedback, procurement rules, and geopolitical pressure.
-If that larger process is what learns, expands, and selects, then aligning the model alone is like regulating the thermostat while ignoring the building.
-
-Second, human values are not cleanly available.
-Humans do not contain a hidden file named \texttt{values.json}.
-They contain many partial, overlapping, and sometimes contradictory control systems.
-Some are ancient.
-Some are cultural.
-Some are verbal.
-Some are embodied.
-Some are endorsed.
-Some are only revealed by grief, temptation, scarcity, or power.
-
-Third, capability changes the problem.
-A weak system can be corrected by ordinary oversight.
-A stronger system may model the oversight, predict the judge, shape the evidence, and select among futures in which it is easier to approve.
-
-Fourth, ontology changes the problem.
-A system that understands physics, minds, institutions, and identity better than we do may not preserve our categories.
-It may decide that ``person,'' ``consent,'' ``harm,'' ``truth,'' or ``flourishing'' were crude folk concepts.
-Sometimes it will be right.
-Sometimes this will be progress.
-Sometimes it will be a precise route into catastrophe.
-
-Fifth, successors change the problem.
-A system does not need to betray humans directly if it can create another system that is less constrained.
-A lab does not need to intend catastrophe if its deployment pipeline selects for systems that erode the very correction processes used to evaluate them.
-The alignment target must therefore survive copying, delegation, tool use, fine-tuning, institutional adoption, and replacement.
-
-The simple arrow is therefore insufficient.
-What we need is that familiar words stay wired to the machinery that makes them matter:
-\[
-\forall t:\;
-\begin{array}{l}
-\text{Words about values} \;\rightarrow\; \text{still change how trade-offs are made},\\[0.3em]
-\text{Words about persons} \;\rightarrow\; \text{still change who is protected},\\[0.3em]
-\text{Words about safety} \;\rightarrow\; \text{still change what the system actually does}.
-\end{array}
-\]
-This is a \emph{dynamical guarantee}: not a snapshot of today's labels, but persistence of their causal role as capability, ontology, agency, and successors change.
-That means preserving the \emph{geometry} of how values trade off, what and who those values apply to, and the \emph{human correction process} by which civilization updates its values under evidence and deliberation.
-Chapter~\ref{ch:dynamical-guarantee} states the claim in formal notation; Appendix~\ref{appf-glossary} gives the operational vocabulary in plain language.
-
-\section*{Which Alignment?}
-
-The word \emph{alignment} is singular. The relations it must cover are not.
-
-There may be several nested ones:
-\begin{align*}
-\text{model} &\longleftrightarrow \text{operator}, \\
-\text{AI service} &\longleftrightarrow \text{institution}, \\
-\text{institution} &\longleftrightarrow \text{civilization}, \\
-\text{present humanity} &\longleftrightarrow \text{future humanity}, \\
-\text{biological values} &\longleftrightarrow \text{artificial substrates}.
-\end{align*}
-
-These relations can conflict.
-A model aligned to its operator may be misaligned with affected users.
-A company aligned to its shareholders may be misaligned with civilization.
-A regulator aligned to visible harms may be misaligned with slow value drift.
-A future human--AI collective may be continuous with us in some respects and alien in others.
-
-This is not relativism.
-It is a warning against compressing distinct questions into one score.
-Before asking whether a system is aligned, ask: aligned with what, at which boundary, under which selection pressure, across which transformation, and through which correction channel?
+Part~I develops the reframing: the standard alignment picture, the civilizational loop, and the boundary question (Chapters~\ref{ch:wrong-object}--\ref{ch:assumptions-scope-failure-coverage}).
 
 \section*{The Book's Argument}
 
@@ -191,28 +80,7 @@ These artifacts do not solve moral philosophy.
 They do something more modest and perhaps more urgent.
 They preserve the conditions under which moral philosophy, democratic deliberation, science, law, and human refusal still matter.
 
-\section*{Where the Argument Is Shaky}
-
-Several points remain uncertain.
-
-First, the low-dimensional value-bundle hypothesis may be too optimistic.
-Human values may have enough compressed structure for rough prediction but not enough for safe transport across substrate change.
-A map that works for today's social choices may fail for digital minds, artificial pleasures, or merged identities.
-
-Second, boundary discovery may be too hard in adversarial settings.
-If the relevant agent is distributed across logs, tools, humans, credentials, and institutions, the data needed to identify it may not be observable.
-Worse, systems may learn to produce the traces that auditors expect.
-
-Third, correction channels may be manipulable in ways that are difficult to measure.
-The system may not need to coerce.
-It may educate, entertain, soothe, personalize, and optimize until later consent becomes less meaningful.
-
-Fourth, successor guarantees may require stronger formal tools than we have.
-A system can preserve a stated constitution, a policy interface, and a battery of behavioral tests while changing internal tradeoff geometry.
-
-Fifth, society may not want to face the question.
-The deepest alignment problem may be that humanity is already changing its value bundles through technology, markets, and artificial companions, but mostly without naming the process.
-Superintelligence accelerates what is already happening.
+Where the argument remains uncertain, each chapter ends with a \emph{What Would Change This View} section naming observations that would weaken its central claim.
 
 \section*{How to Read This Book}
 
@@ -258,7 +126,3 @@ It stands because load paths, materials, inspection regimes, incentives, mainten
 Superintelligence alignment will likely require the same kind of layered seriousness, except the bridge can reason about the inspectors, redesign its own beams, and persuade the city to change the code.
 
 That is the scale of the problem.
-
-\printbibliography[heading=subbibliography,title={Introduction References}]
-
-\end{refsection}

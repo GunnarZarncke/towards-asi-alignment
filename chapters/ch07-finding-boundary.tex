@@ -1080,6 +1080,7 @@ The following observations would weaken that argument.
 \item Product diagrams and labels already identify the alignment-relevant object reliably, so discovery adds nothing operational.
 \item $\epsilon$-boundaries are unstable: small changes in $\epsilon$ flip which system counts as the agent, with no safety-relevant convergence.
 \item Adversarial perturbation recovers boundaries no better than passive observation, even for systems that model the observer.
+\item If the relevant agent is distributed across logs, tools, humans, credentials, and institutions, the data needed to identify it may not be observable; systems may learn to produce the traces auditors expect.
 \item \textbf{(Adversarial.)} The boundary residual is not merely noisy but \emph{steerable}: a system that models the observer shapes its own residual so discovery returns the boundary it wants certified (developed in Chapters~\ref{ch:strategic-opacity},~\ref{ch:passive-observation-not-enough}). Boundary discovery is then observable but not adversarially verifiable (Chapter~\ref{ch:verifiability-ontology}); the only handle is bounding the cost of shaping the residual.
 \end{itemize}
 

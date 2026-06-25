@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-25 | Frontmatter moves — acks, ch1/ch2 reframing, WWCTV shaky | [2026-06-25-frontmatter-moves-acknowledgements.md](2026-06-25-frontmatter-moves-acknowledgements.md) |
+| 2026-06-25 | Frontmatter reorder — Preface/EO/Intro/Status split | [2026-06-25-frontmatter-reorder.md](2026-06-25-frontmatter-reorder.md) |
 | 2026-06-25 | Session end — appendices, ledgers, frontmatter reorder plan | [2026-06-25-session-end-appendices-ledgers-frontmatter-plan.md](2026-06-25-session-end-appendices-ledgers-frontmatter-plan.md) |
 | 2026-06-25 | Assumptions appendix E + ledger verification | [2026-06-25-assumptions-appendix-e.md](2026-06-25-assumptions-appendix-e.md) |
 | 2026-06-25 | Assumptions ledger — manuscript + Lean S/MB collation | [2026-06-25-assumptions-ledger-collation.md](2026-06-25-assumptions-ledger-collation.md) |
