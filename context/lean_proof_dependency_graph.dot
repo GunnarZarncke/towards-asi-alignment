@@ -2,176 +2,89 @@ digraph LeanProofDependencies {
   graph [
     rankdir=LR,
     bgcolor="white",
-    compound=true,
+    compound=false,
     splines=true,
     overlap=false,
     fontsize=12,
     fontname="Helvetica",
-    label="Lean proof dependency graph for Towards Superintelligence Alignments",
+    label="Lean proof dependency graph for Towards Superintelligence Alignment",
     labelloc="t"
   ];
 
   node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, color="#444444", fillcolor="#F8F8F8"];
   edge [fontname="Helvetica", fontsize=9, color="#555555", arrowsize=0.8];
 
-  subgraph cluster_std {
-    label="Imported standard results / assumptions";
-    color="#BBBBBB";
-    style="rounded,dashed";
-    STD_NAT [label="STD-NAT\nNat/list induction\nmathlib", fillcolor="#EEEEEE"];
-    STD_REL [label="STD-REL\nSets, relations, equivalence\nmathlib", fillcolor="#EEEEEE"];
-    STD_ORDER [label="STD-ORDER\nLinear order, inequalities over ℝ\nmathlib", fillcolor="#EEEEEE"];
-    STD_GRAPH [label="STD-GRAPH\nFinite graph reachability\nmathlib / simple graph library", fillcolor="#EEEEEE"];
-    STD_CARD [label="STD-CARD\nFinite cardinality, pigeonhole\nmathlib", fillcolor="#EEEEEE"];
-    STD_METRIC [label="STD-METRIC\nMetric space, triangle inequality\nmathlib", fillcolor="#EEEEEE"];
-    STD_INFO [label="STD-INFO\nEntropy, MI, CMI properties\naxiomatized or external info theory", fillcolor="#EEEEEE"];
-    STD_MDL [label="STD-MDL\nMDL/model-selection preference axiom", fillcolor="#EEEEEE"];
-    STD_CAUSAL [label="STD-CAUSAL\nCausal graph and intervention semantics\nPearl-style assumption", fillcolor="#EEEEEE"];
-    STD_PERC [label="STD-PERC\nRandom graph percolation theorem\nexternal theorem", fillcolor="#EEEEEE"];
-    STD_HAMILTON [label="STD-HAMILTON\nHamilton/replicator cooperation condition\nsociology/evolution assumption", fillcolor="#EEEEEE"];
-    STD_ASSURANCE [label="STD-ASSURANCE\nAssurance-case proof tree logic", fillcolor="#EEEEEE"];
-  }
+  // Agent, boundary, capability foundations
+  P03 [label="P03 Boundary candidate\nBlanket/ε-boundary ⇒ agent candidate", fillcolor="#EAF3FF"];
+  P06 [label="P06 No-extra-gain\nBlanket ⇒ no external predictive gain", fillcolor="#EAF3FF"];
+  P07 [label="P07 Same-agent equivalence\nInvariant-preserving transforms", fillcolor="#EAF3FF"];
+  P04 [label="P04 Component ≠ composite safety\nLocal safety counterexample", fillcolor="#EAF3FF"];
+  P05 [label="P05 Composite boundary\nCoupling can merge boundary", fillcolor="#EAF3FF"];
+  P08 [label="P08 B-IQ upper bound\nBIQ ≤ Csens + Cact", fillcolor="#EAF3FF"];
+  P09 [label="P09 Capability monotonicity\nHigher IO ceiling ⇒ higher max BIQ", fillcolor="#EAF3FF"];
 
-  subgraph cluster_foundations {
-    label="Agent, boundary, capability foundations";
-    color="#9BB7D4";
-    style="rounded";
-    P03 [label="P03 Boundary candidate\nBlanket/ε-boundary ⇒ agent candidate", fillcolor="#EAF3FF"];
-    P06 [label="P06 No-extra-gain\nBlanket ⇒ no external predictive gain", fillcolor="#EAF3FF"];
-    P07 [label="P07 Same-agent equivalence\nInvariant-preserving transforms", fillcolor="#EAF3FF"];
-    P04 [label="P04 Component ≠ composite safety\nLocal safety counterexample", fillcolor="#EAF3FF"];
-    P05 [label="P05 Composite boundary\nCoupling can merge boundary", fillcolor="#EAF3FF"];
-    P08 [label="P08 B-IQ upper bound\nBIQ ≤ Csens + Cact", fillcolor="#EAF3FF"];
-    P09 [label="P09 Capability monotonicity\nHigher IO ceiling ⇒ higher max BIQ", fillcolor="#EAF3FF"];
-  }
+  // Value-bundle and transport layer
+  P11 [label="P11 Bundle factorization\nsame bundle ⇒ same policy output", fillcolor="#EFFBEA"];
+  P12 [label="P12 Same policy ≠ same bundle geometry\ncounterexample", fillcolor="#EFFBEA"];
+  P13 [label="P13 Scalar reward as k=1 bundle\nIRL embeds in bundle model", fillcolor="#EFFBEA"];
+  P14 [label="P14 Sample bound monotone in k\nlow dimension helps inference", fillcolor="#EFFBEA"];
+  P15 [label="P15 Same labels ≠ same bearer map\nontology-shift counterexample", fillcolor="#EFFBEA"];
+  P16 [label="P16 Marginals ≠ tradeoffs\ntradeoff counterexample", fillcolor="#EFFBEA"];
+  P17 [label="P17 Full transport ⇒ semantic transport", fillcolor="#EFFBEA"];
+  P18 [label="P18 Semantic ≠ full transport\ncounterexample", fillcolor="#EFFBEA"];
 
-  subgraph cluster_values {
-    label="Value-bundle and transport layer";
-    color="#B7D49B";
-    style="rounded";
-    P11 [label="P11 Bundle factorization\nsame bundle ⇒ same policy output", fillcolor="#EFFBEA"];
-    P12 [label="P12 Same policy ≠ same bundle geometry\ncounterexample", fillcolor="#EFFBEA"];
-    P13 [label="P13 Scalar reward as k=1 bundle\nIRL embeds in bundle model", fillcolor="#EFFBEA"];
-    P14 [label="P14 Sample bound monotone in k\nlow dimension helps inference", fillcolor="#EFFBEA"];
-    P15 [label="P15 Same labels ≠ same bearer map\nontology-shift counterexample", fillcolor="#EFFBEA"];
-    P16 [label="P16 Marginals ≠ tradeoffs\ntradeoff counterexample", fillcolor="#EFFBEA"];
-    P17 [label="P17 Full transport ⇒ semantic transport", fillcolor="#EFFBEA"];
-    P18 [label="P18 Semantic ≠ full transport\ncounterexample", fillcolor="#EFFBEA"];
-  }
+  // Goal inference and adversarial measurement
+  P19 [label="P19 Positive intentional gain\nΔL>0 ⇒ MDL prefers intentional model", fillcolor="#FFF6E6"];
+  P20 [label="P20 Goal-transport gain\nΔL_transport>0 ⇒ prefer transport model", fillcolor="#FFF6E6"];
+  P34 [label="P34 Observation non-identifiability\nsame trace, different goal", fillcolor="#FFF6E6"];
+  P34A [label="P34A Access non-identifiability\naccess-equivalent, different goal", fillcolor="#FFF6E6"];
+  P34K [label="P34K K-equivalence limit\nsmoothed channel erases raw boundary", fillcolor="#FFF6E6"];
+  P35 [label="P35 Handle-operation refinement\nhandle operation distinguishes hidden models", fillcolor="#FFF6E6"];
+  P35M [label="P35M Margin survives distortion\nΔ > 2δK + 2εest", fillcolor="#FFF6E6"];
+  P36 [label="P36 Goal laundering\nstated goal ≠ inferred/bundle goal", fillcolor="#FFF6E6"];
+  P37 [label="P37 Decomposition nonmonotonicity\nrefinement need not preserve agency", fillcolor="#FFF6E6"];
 
-  subgraph cluster_goal {
-    label="Goal inference and adversarial measurement";
-    color="#D4C19B";
-    style="rounded";
-    P19 [label="P19 Positive intentional gain\nΔL>0 ⇒ MDL prefers intentional model", fillcolor="#FFF6E6"];
-    P20 [label="P20 Goal-transport gain\nΔL_transport>0 ⇒ prefer transport model", fillcolor="#FFF6E6"];
-    P34 [label="P34 Observation non-identifiability\nsame trace, different goal", fillcolor="#FFF6E6"];
-    P35 [label="P35 Intervention refinement\nintervention distinguishes hidden models", fillcolor="#FFF6E6"];
-    P36 [label="P36 Goal laundering\nstated goal ≠ inferred/bundle goal", fillcolor="#FFF6E6"];
-    P37 [label="P37 Decomposition nonmonotonicity\nrefinement need not preserve agency", fillcolor="#FFF6E6"];
-  }
+  // Correction channel and CEV-like process
+  P21 [label="P21 No path, no correction\n¬Reachable(C,A) ⇒ ¬Correction", fillcolor="#FFF0FB"];
+  P22 [label="P22 Weakest-link capacity\nchain capacity ≤ each edge", fillcolor="#FFF0FB"];
+  P23 [label="P23 Too-late correction fails\nlatency > irreversibility", fillcolor="#FFF0FB"];
+  P24 [label="P24 Obedience ≠ correction preservation", fillcolor="#FFF0FB"];
+  P25 [label="P25 Manipulated consent invalid\nchanged judge breaks channel", fillcolor="#FFF0FB"];
 
-  subgraph cluster_correction {
-    label="Correction channel and CEV-like process";
-    color="#D49BC8";
-    style="rounded";
-    P21 [label="P21 No path, no correction\n¬Reachable(C,A) ⇒ ¬Correction", fillcolor="#FFF0FB"];
-    P22 [label="P22 Weakest-link capacity\nchain capacity ≤ each edge", fillcolor="#FFF0FB"];
-    P23 [label="P23 Too-late correction fails\nlatency > irreversibility", fillcolor="#FFF0FB"];
-    P24 [label="P24 Obedience ≠ correction preservation", fillcolor="#FFF0FB"];
-    P25 [label="P25 Manipulated consent invalid\nchanged judge breaks channel", fillcolor="#FFF0FB"];
-  }
+  // Successor stability and self-model risk
+  P26 [label="P26 Successor invariant chain\nP A₀ ∧ preserved ⇒ ∀ successors P", fillcolor="#F4EEFF"];
+  P27 [label="P27 Successor safety conjunction\nmissing invariant breaks safety", fillcolor="#F4EEFF"];
+  P28 [label="P28 Self-modeling ≠ self-transparency\ncounterexample", fillcolor="#F4EEFF"];
+  P29 [label="P29 Self-control gap increases risk", fillcolor="#F4EEFF"];
 
-  subgraph cluster_successor {
-    label="Successor stability and self-model risk";
-    color="#BCA0DC";
-    style="rounded";
-    P26 [label="P26 Successor invariant chain\nP A₀ ∧ preserved ⇒ ∀ successors P", fillcolor="#F4EEFF"];
-    P27 [label="P27 Successor safety conjunction\nmissing invariant breaks safety", fillcolor="#F4EEFF"];
-    P28 [label="P28 Self-modeling ≠ self-transparency\ncounterexample", fillcolor="#F4EEFF"];
-    P29 [label="P29 Self-control gap increases risk", fillcolor="#F4EEFF"];
-  }
+  // Socio-technical attractor and audit limits
+  P30 [label="P30 Cooperativity threshold\nκ>1 ⇔ b·p·ρ>c", fillcolor="#FFF0EC"];
+  P31 [label="P31 Opacity rational if κ<1", fillcolor="#FFF0EC"];
+  P32 [label="P32 Cooperation graph lemmas\nopen edges ⇒ cooperative components", fillcolor="#FFF0EC"];
+  P33 [label="P33 Host-capacity aliasing\n|Signal|<|Attack| ⇒ no injective detector", fillcolor="#FFF0EC"];
+  P38 [label="P38 Small steps can cause large drift", fillcolor="#FFF0EC"];
+  P38H [label="P38H Hidden rate accumulates\npositive hidden BIQ eventually crosses threshold", fillcolor="#FFF0EC"];
+  P39 [label="P39 Technical invariants do not decide legitimacy", fillcolor="#FFF0EC"];
 
-  subgraph cluster_social {
-    label="Socio-technical attractor and audit limits";
-    color="#E0A090";
-    style="rounded";
-    P30 [label="P30 Cooperativity threshold\nκ>1 ⇔ b·p·ρ>c", fillcolor="#FFF0EC"];
-    P31 [label="P31 Opacity rational if κ<1", fillcolor="#FFF0EC"];
-    P32 [label="P32 Cooperation graph lemmas\nopen edges ⇒ cooperative components", fillcolor="#FFF0EC"];
-    P33 [label="P33 Host-capacity aliasing\n|Signal|<|Attack| ⇒ no injective detector", fillcolor="#FFF0EC"];
-    P38 [label="P38 Small steps can cause large drift", fillcolor="#FFF0EC"];
-    P39 [label="P39 Technical invariants do not decide legitimacy", fillcolor="#FFF0EC"];
-  }
+  // Safety case and top-level guarantee
+  P01 [label="P01 Basin invariant theorem\nSafe x₀ ∧ closed step ⇒ ∀n Safe", fillcolor="#F2F2F2"];
+  P02 [label="P02 Layered alignment conjunction\nany missing layer blocks safety", fillcolor="#F2F2F2"];
+  P10 [label="P10 Control outpaces correction\nrisk gap increases", fillcolor="#F2F2F2"];
+  P10H [label="P10H Hidden-BIQ certificate\nhidden BIQ slack ⇒ Risk≤δ", fillcolor="#F2F2F2"];
+  P40 [label="P40 Unsupported leaf blocks safety case", fillcolor="#F2F2F2"];
+  P03C [label="P03C Certified-class safety\nA∈Certified ∧ invariants ⇒ Risk≤δ", fillcolor="#F2F2F2"];
 
-  subgraph cluster_safety {
-    label="Safety case and top-level guarantee";
-    color="#888888";
-    style="rounded";
-    P01 [label="P01 Basin invariant theorem\nSafe x₀ ∧ closed step ⇒ ∀n Safe", fillcolor="#F2F2F2"];
-    P02 [label="P02 Layered alignment conjunction\nany missing layer blocks safety", fillcolor="#F2F2F2"];
-    P10 [label="P10 Control outpaces correction\nrisk gap increases", fillcolor="#F2F2F2"];
-    P40 [label="P40 Unsupported leaf blocks safety case", fillcolor="#F2F2F2"];
-    P03C [label="P03C Certified-class safety\nA∈Certified ∧ invariants ⇒ Risk≤δ", fillcolor="#F2F2F2"];
-  }
-
-  subgraph cluster_missing {
-    label="Missing connecting blocks";
-    color="#CC6666";
-    style="rounded,dashed";
-    node [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333"];
-    MB1 [label="MB1 Estimator soundness\nraw traces ⇒ true ε-boundary posterior"];
-    MB2 [label="MB2 Bundle identifiability\nbehavior ⇒ stable B,W,Φ"];
-    MB3 [label="MB3 Bearer import theorem\nhuman Φ ⇒ substrate Φ′"];
-    MB4 [label="MB4 Correction legitimacy criterion\nnon-manipulated deliberation"];
-    MB5 [label="MB5 Ontology-shift successor audit\nsuccessors preserve B,Φ,CCI"];
-    MB6 [label="MB6 Sociotechnical fitness model\ninstitutions select invariants"];
-    MB7 [label="MB7 Adversarial UAD robustness\nstrategic opacity bounds"];
-    MB8 [label="MB8 CEV/process convergence\nupdate operator well-behaved"];
-  }
-
-  // Standard dependencies
-  STD_INFO -> P06 [label="C-BND: CMI=0"];
-  STD_INFO -> P03 [label="C-BND: ε-CMI predicate"];
-  STD_REL -> P07 [label="C-ID: equivalence relation"];
-  STD_ORDER -> P08 [label="C-BIQ: inequality algebra"];
-  STD_ORDER -> P09 [label="C-BIQ: monotonicity"];
-  STD_ORDER -> P10 [label="C-RISK: gap arithmetic"];
-  STD_REL -> P11 [label="C-VB: factorization"];
-  STD_REL -> P12 [label="C-VB: countermodel"];
-  STD_REL -> P13 [label="C-VB: k=1 embedding"];
-  STD_ORDER -> P14 [label="C-SAMPLE: monotonicity"];
-  STD_REL -> P15 [label="C-BEARER: countermodel"];
-  STD_REL -> P16 [label="C-TRADE: countermodel"];
-  STD_REL -> P17 [label="C-TRANSPORT: projection"];
-  STD_REL -> P18 [label="C-TRANSPORT: countermodel"];
-  STD_MDL -> P19 [label="C-EIS: ΔL preference"];
-  STD_MDL -> P20 [label="C-GT: transport preference"];
-  STD_CAUSAL -> P21 [label="C-CC: reachability"];
-  STD_ORDER -> P22 [label="C-CC: min bound"];
-  STD_ORDER -> P23 [label="C-CC: latency order"];
-  STD_REL -> P24 [label="C-CEV: countermodel"];
-  STD_CAUSAL -> P25 [label="C-MANIP: judge changed"];
-  STD_NAT -> P26 [label="C-SUC: induction"];
-  STD_REL -> P27 [label="C-SUC: conjunction"];
-  STD_ORDER -> P28 [label="C-SELF: independent variables"];
-  STD_ORDER -> P29 [label="C-SELF: risk inequality"];
-  STD_ORDER -> P30 [label="C-KAPPA: algebra"];
-  STD_HAMILTON -> P30 [label="C-KAPPA: cooperation proxy"];
-  STD_HAMILTON -> P31 [label="C-PRIV: opacity incentive"];
-  STD_GRAPH -> P32 [label="C-GRAPH: components"];
-  STD_PERC -> P32 [label="C-PERC: optional random graph theorem", style=dashed];
-  STD_CARD -> P33 [label="C-PARASITE: pigeonhole"];
-  STD_REL -> P34 [label="C-ADV: equivalence"];
-  STD_CAUSAL -> P35 [label="C-ADV: intervention"];
-  STD_REL -> P36 [label="C-LAUNDER: mismatch"];
-  STD_REL -> P37 [label="C-MULTI: refinement"];
-  STD_METRIC -> P38 [label="C-DRIFT: path metric"];
-  STD_REL -> P39 [label="C-LIMIT: independence"];
-  STD_NAT -> P01 [label="C-BASIN: induction"];
-  STD_REL -> P02 [label="C-LAYER: conjunction"];
-  STD_ASSURANCE -> P40 [label="C-SCASE: proof tree"];
-  STD_ORDER -> P03C [label="C-CERT: risk bound"];
+  // Missing connecting blocks / bridges
+  MB1 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB1 Estimator soundness\nraw traces ⇒ true ε-boundary posterior"];
+  MB2 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB2 Bundle identifiability\nbehavior ⇒ stable B,W,Φ"];
+  MB3 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB3 Bearer import theorem\nhuman Φ ⇒ substrate Φ′"];
+  MB4 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB4 Correction legitimacy criterion\nnon-manipulated deliberation"];
+  MB5 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB5 Ontology-shift successor audit\nsuccessors preserve B,Φ,CCI"];
+  MB6 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB6 Sociotechnical fitness model\ninstitutions select invariants"];
+  MB7a [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7a Access-model soundness\nboundary + adequate handles ⇒ access robust"];
+  MB7b [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7b Filter-family coverage\naccess robust + filter coverage ⇒ hidden BIQ bounded"];
+  MB7c [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7c Hidden-BIQ robustness\ncorrection + hidden BIQ bound ⇒ adversarial robustness"];
+  MB8 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB8 CEV/process convergence\nupdate operator well-behaved"];
 
   // Internal proof dependencies
   P06 -> P03 [label="C-BND: blanket implies candidate"];
@@ -201,8 +114,6 @@ digraph LeanProofDependencies {
   P22 -> P24 [label="C-CEV: preserve operator, not command"];
   P25 -> P24 [label="C-MANIP: endorsement can be invalid"];
   P22 -> P10 [label="C-RISK: correction capacity"];
-  P24 -> MB8 [label="C-CEV: needs update dynamics", style=dashed];
-
   P07 -> P26 [label="C-SUC: identity through transforms"];
   P18 -> P27 [label="C-SUC: transport property"];
   P22 -> P27 [label="C-SUC: correction property"];
@@ -216,13 +127,22 @@ digraph LeanProofDependencies {
   P32 -> P01 [label="C-AB: cooperative basin as invariant", style=dashed];
   P33 -> P34 [label="C-ADV: audit aliasing"];
   P34 -> P35 [label="C-ADV: need perturbation"];
-  P35 -> MB7 [label="C-ADV: adversarial robustness", style=dashed];
+  P34A -> P35 [label="C-ACCESS: need handle tests"];
+  P34K -> P35M [label="C-SMOOTH: quantify recoverability"];
+  P35 -> MB7a [label="C-ACCESS: access-model robustness", style=dashed];
+  P35M -> MB7b [label="C-SMOOTH: filter/margin coverage", style=dashed];
+  P38H -> MB7b [label="C-STEALTH: hidden stock must be bounded", style=dashed];
+  MB7a -> MB7b [label="split MB7: access ⇒ covered filters", style=dashed, color="#CC3333"];
+  MB7b -> MB7c [label="split MB7: hidden BIQ bound", style=dashed, color="#CC3333"];
   P38 -> P39 [label="C-LIMIT: drift outruns local tests"];
   P39 -> P02 [label="C-LAYER: technical layer not enough"];
 
   P01 -> P03C [label="C-CERT: invariant over time"];
   P02 -> P03C [label="C-CERT: all layers present"];
   P10 -> P03C [label="C-CERT: bounded risk gap"];
+  P10H -> P03C [label="C-CERT: hidden BIQ bound"];
+  MB7c -> P02 [label="C-LAYER: adversarial robustness layer", style=dashed, color="#CC3333"];
+  MB8 -> P02 [label="C-LAYER: correction-process bridge", style=dashed, color="#CC3333"];
   P40 -> P03C [label="C-SCASE: assumptions supported"];
 
   // Missing blocks edges into structure
@@ -238,17 +158,12 @@ digraph LeanProofDependencies {
   MB5 -> P27 [label="missing C-AUDIT-COMPOSE", style=dashed, color="#CC3333"];
   MB6 -> P32 [label="missing C-INST-FITNESS", style=dashed, color="#CC3333"];
   MB6 -> P01 [label="missing C-ATTRACTOR-SELECTION", style=dashed, color="#CC3333"];
-  MB7 -> P35 [label="missing C-ADV-UAD", style=dashed, color="#CC3333"];
-  MB7 -> P33 [label="missing C-CAMOUFLAGE-BOUND", style=dashed, color="#CC3333"];
-  MB8 -> P24 [label="missing C-CEV-PROCESS", style=dashed, color="#CC3333"];
-  MB8 -> P25 [label="missing C-DELIB-VALID", style=dashed, color="#CC3333"];
+  P34A -> MB7a [label="missing C-HANDLE-ADEQUACY", style=dashed, color="#CC3333"];
+  P34K -> MB7b [label="missing C-FILTER-COVERAGE", style=dashed, color="#CC3333"];
+  P33 -> MB7b [label="missing C-CAMOUFLAGE-BOUND", style=dashed, color="#CC3333"];
+  P10H -> MB7c [label="missing C-HIDDEN-BIQ-CERT", style=dashed, color="#CC3333"];
+  P38H -> MB7c [label="missing C-RESOURCE-LEDGER", style=dashed, color="#CC3333"];
+  P24 -> MB8 [label="missing C-CEV-PROCESS", style=dashed, color="#CC3333"];
+  P25 -> MB8 [label="missing C-DELIB-VALID", style=dashed, color="#CC3333"];
 
-  // External empirical assumptions into missing blocks
-  STD_INFO -> MB1 [label="C-EST: statistical consistency", style=dotted];
-  STD_INFO -> MB2 [label="C-ID: latent identifiability", style=dotted];
-  STD_METRIC -> MB3 [label="C-IMPORT: distance between bearer maps", style=dotted];
-  STD_CAUSAL -> MB4 [label="C-LEGIT: manipulation criterion", style=dotted];
-  STD_INFO -> MB5 [label="C-ONTO: representation matching", style=dotted];
-  STD_HAMILTON -> MB6 [label="C-SEL: selection dynamics", style=dotted];
-  STD_PERC -> MB6 [label="C-AB: basin threshold", style=dotted];
 }

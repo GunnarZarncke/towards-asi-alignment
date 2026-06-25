@@ -66,7 +66,7 @@ LEAN_PATH=.lake/build/lib/lean lean --root=. /tmp/chk.lean
 `P34` (host-capacity aliasing) and the other non-bridge results print only
 `propext` / `Quot.sound` (or abstract carriers). `certified_class_safety_spine_derived`
 derives `Risk A ≤ δ` from `Control A ≤ CCI A + δ` via `P13` (no bare `hrisk` hypothesis).
-lists `MB6`/`MB7`.
+The bridge path now lists `MB6` plus split adversarial-UAD bridges `MB7a`–`MB7c`.
 
 **Notation.** `ValueUpdateOperator` (`U_H`), `SystemUpdateOperator` (`U_S`),
 `CCI` (sole exported correction measurand), typed `CorrectionPath`,
@@ -78,9 +78,9 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 
 | Module | Proof-spine nodes | Book chapters |
 |--------|-------------------|---------------|
-| `AlignmentProofSpine/Core.lean` | abstract carriers, concrete `Boundary`, MDL/graph scaffolding, **`finPigeonhole`** (from-scratch finite pigeonhole), bridges `MB1`–`MB8`, `BridgeAssumptions` | foundations |
-| `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36` | 6–7, 10, 36 |
-| `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43` (B-IQ / control–correction arithmetic) | 11–14, 33 |
+| `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, MDL/graph scaffolding, **`finPigeonhole`** (from-scratch finite pigeonhole), bridges `MB1`–`MB8` with split `MB7a`–`MB7c`, `BridgeAssumptions` | foundations |
+| `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, smoothing-margin arithmetic | 6–7, 10, 36 |
+| `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
 | `AlignmentProofSpine/Bundles.lean` | `P14`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples) | 15–23 |
 | `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, **`CorrectionChainStage`** | 24–27 |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |

@@ -110,6 +110,8 @@ theorem certified_class_safety_from_spine_and_bridges
     (hcert : Certified A)
     (hinv : SatisfiesInvariants A)
     (hbound : BoundaryAligned A)
+    (haccess : AccessModelAdequate A)
+    (hfilters : FilterCoverageAdequate A)
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
@@ -118,8 +120,12 @@ theorem certified_class_safety_from_spine_and_bridges
     LayeredAlignedDef A ∧ Risk A ≤ δ := by
   have hcorr : CorrectionIntegrity A :=
     MB6_percolation_to_institutional_basin A hbasin
+  have haccessRobust : AccessRobust A :=
+    MB7a_access_model_soundness A hbound haccess
+  have hhidden : HiddenBIQBoundedSys A :=
+    MB7b_filter_family_coverage A haccessRobust hfilters
   have hadv : AdversariallyRobust A :=
-    MB7_adversarial_uad_robustness A hbound hcorr
+    MB7c_hidden_biq_to_adversarial_robustness A hcorr hhidden
   exact ⟨⟨hbound, hbundle, hbearer, hcorr, hsucc, hbasin, hadv⟩,
     risk_le_delta_of_cci_slack hcci⟩
 
@@ -135,6 +141,8 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (hcert : Certified A)
     (hinv : SatisfiesInvariants A)
     (hbound : BoundaryAligned A)
+    (haccess : AccessModelAdequate A)
+    (hfilters : FilterCoverageAdequate A)
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
@@ -143,7 +151,7 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (hchain : SuccessorSafeChain A B) :
     LayeredAlignedDef A ∧ Risk B ≤ δ := by
   have hroot := certified_class_safety_from_spine_and_bridges A δ hcert hinv
-    hbound hbundle hbearer hsucc hbasin hcci
+    hbound haccess hfilters hbundle hbearer hsucc hbasin hcci
   exact ⟨hroot.1, risk_bound_along_successor_safe_chain hroot.2 hchain⟩
 
 theorem certified_class_safety_from_biq_ceiling
@@ -152,11 +160,19 @@ theorem certified_class_safety_from_biq_ceiling
     Risk A ≤ δ :=
   BIQCapacityCertificate.risk_bound cert
 
+theorem certified_class_safety_from_hidden_biq_certificate
+    {A : System} {δ : Int}
+    (cert : HiddenBIQCertificate A δ) :
+    Risk A ≤ δ :=
+  risk_bound_from_hidden_biq_certificate cert
+
 theorem certified_class_safety_from_spine_bridges_and_biq
     (A : System) (δ : Int)
     (hcert : Certified A)
     (hinv : SatisfiesInvariants A)
     (hbound : BoundaryAligned A)
+    (haccess : AccessModelAdequate A)
+    (hfilters : FilterCoverageAdequate A)
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
@@ -164,7 +180,8 @@ theorem certified_class_safety_from_spine_bridges_and_biq
     (hbiq : BIQDerivedCCISlack A δ) :
     LayeredAlignedDef A ∧ Risk A ≤ δ :=
   certified_class_safety_from_spine_and_bridges A δ hcert hinv
-    hbound hbundle hbearer hsucc hbasin (control_le_correction_from_biq_ceiling hbiq)
+    hbound haccess hfilters hbundle hbearer hsucc hbasin
+    (control_le_correction_from_biq_ceiling hbiq)
 
 theorem certified_class_safety_from_biq_along_successor_chain
     {A B : System} {δ : Int}

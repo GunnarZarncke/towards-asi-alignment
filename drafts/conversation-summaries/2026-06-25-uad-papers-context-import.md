@@ -23,12 +23,23 @@ User asked to copy three new UAD papers from sibling `agency-detect` into `conte
 
 ## Follow-up (2026-06-25)
 - Fixed duplicate bib keys: `uad2025`/`biq2025`/`eis2025`/`abc2025` are now `crossref` aliases to canonical `zarncke2025*` entries; restored `zarncke2026value-bottleneck`; updated `scripts/import_source_map_refs.py` dedup logic.
+- Lean spine adapted before manuscript integration:
+  - Split `MB7` into `MB7a_access_model_soundness`, `MB7b_filter_family_coverage`, and `MB7c_hidden_biq_to_adversarial_robustness`.
+  - Replaced abstract `Intervention` with `AccessModel`/`Handle`/`Operation` and handle-operation identification.
+  - Added access-equivalence and K-equivalence non-identifiability proofs, smoothing-margin arithmetic, hidden-BIQ certificate risk bound, and slow-plotting accumulation theorem.
+  - `cd formal && lake build` passes.
+- Updated `context/lean_proof_dependency_graph.dot` for the split `MB7a`–`MB7c` bridge path and rendered `context/lean_proof_dependency_graph.png` with Graphviz.
+- Removed redundant Graphviz clusters from the proof dependency graph so the rendered PNG follows the DAG structure rather than cluster layout constraints.
+- Removed `STD_*` standard-library/external-assumption nodes from the proof dependency graph; it now shows only proof and bridge dependencies.
+- Fixed remaining apparent/actual graph cycles by reorienting bridge-gap edges consistently into `MB7a`–`MB7c` and `MB8`; `acyclic context/lean_proof_dependency_graph.dot` now succeeds.
+- Added the missing outgoing edge `MB8 -> P02` so the correction-process bridge contributes to layered alignment without reintroducing cycles.
 
 ## Key paths
 - `context/extracts/access-uad.md` — handle-aware access-model UAD; impossibility under access equivalence; intervention-value criterion.
 - `context/extracts/smooth-uad.md` — observation-channel distortion \(\delta_K\), effective sample size \(T_{\mathrm{eff}}\), recoverability bound.
 - `context/extracts/stealth-capability-bounds.md` — stealth–capability tradeoff; multi-resolution UAD; hidden-policy bound.
+- `context/lean_proof_dependency_graph.dot` / `.png` — updated Lean dependency graph including access/K-equivalence and hidden-BIQ nodes.
 - `metadata/source-canon.md` — durable source map.
 
 ## Commits
-- `bc62549` — Import three new UAD papers into context and deduplicate internal bib keys.
+- `aa7eca8` — Import three new UAD papers into context and deduplicate internal bib keys.

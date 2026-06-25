@@ -132,6 +132,18 @@ theorem BIQCapacityCertificate.risk_bound
     Risk A ≤ δ :=
   risk_bound_from_biq_ceiling cert.toBIQDerivedCCISlack
 
+/-- Certificate form for the stealth-capability result: monitored filters, tags,
+    decay rules, and ledgers jointly bound hidden productive B-IQ tightly enough
+    to imply the same correction-capacity slack used by the safety spine. -/
+structure HiddenBIQCertificate (A : System) (δ : Int) where
+  hidden_biq_le_cci : Control A ≤ CCI A + δ
+
+theorem risk_bound_from_hidden_biq_certificate
+    {A : System} {δ : Int}
+    (h : HiddenBIQCertificate A δ) :
+    Risk A ≤ δ :=
+  risk_le_delta_of_cci_slack h.hidden_biq_le_cci
+
 theorem P13_control_outpaces_correction_risk
     {A B : System}
     (hctrl : Control A < Control B)
@@ -149,5 +161,20 @@ theorem P43_small_step_drift_can_accumulate :
     ∀ K : Int, K > 0 → ∃ x0 xN : Int, xN - x0 > K := by
   intro K hK
   exact ⟨0, K + 1, by omega⟩
+
+/-- Slow plotting: any positive hidden production rate eventually crosses any
+    finite threshold if accumulation is not bounded by decay, reset, or ledgers. -/
+theorem positive_hidden_rate_eventually_crosses
+    (rate threshold : Nat)
+    (hr : 0 < rate) :
+    ∃ n : Nat, threshold < n * rate := by
+  refine ⟨threshold + 1, ?_⟩
+  cases rate with
+  | zero => cases hr
+  | succ r =>
+      have hbase : threshold < threshold + 1 := Nat.lt_succ_self threshold
+      have hmul : threshold + 1 ≤ (threshold + 1) * (r + 1) :=
+        Nat.le_mul_of_pos_right (threshold + 1) (Nat.succ_pos r)
+      exact Nat.lt_of_lt_of_le hbase hmul
 
 end AlignmentProofSpine

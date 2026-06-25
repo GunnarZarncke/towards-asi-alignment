@@ -44,8 +44,20 @@ axiom Model : Type
 /-- Generic goals. -/
 axiom Goal : Type
 
-/-- A causal/observational intervention. -/
-axiom Intervention : Type
+/-- An access model fixes which observation and operation handles are available. -/
+axiom AccessModel : Type
+
+/-- Embedded access point through which a system may be observed or operated on. -/
+axiom Handle : Type
+
+/-- Operation applied through a handle. -/
+axiom Operation : Type
+
+/-- Observation channel / smoothing map (`K` in the smoothed-UAD paper). -/
+axiom ObservationChannel : Type
+
+/-- Family of observation filters / resolutions (`Σ` in multi-resolution UAD). -/
+axiom FilterFamily : Type
 
 /-- Nodes of the correction-channel graph. -/
 axiom Node : Type
@@ -95,6 +107,18 @@ axiom CorrectionIntegrity : System → Prop
 axiom SuccessorStable : System → Prop
 axiom BasinStableSys : System → Prop
 axiom AdversariallyRobust : System → Prop
+
+/-- The available handles are rich enough for the boundary claim being made. -/
+axiom AccessModelAdequate : System → Prop
+
+/-- Boundary discovery is robust relative to the access model. -/
+axiom AccessRobust : System → Prop
+
+/-- The observer's filter family covers the system's control-relevant channels. -/
+axiom FilterCoverageAdequate : System → Prop
+
+/-- Hidden productive B-IQ is bounded under the monitored filter family. -/
+axiom HiddenBIQBoundedSys : System → Prop
 
 /-- A system preserves the (legitimate) correction operator. -/
 axiom PreservesCorrectionOperator : System → Prop
@@ -216,16 +240,18 @@ axiom TransportModel : Model
 axiom BaselineModel : Model
 axiom ModelGoal : Model → Goal
 axiom ObservationallyEquivalent : Model → Model → Prop
-axiom InterventionDistinguishes : Intervention → Model → Model → Prop
+axiom AccessEquivalent : AccessModel → Model → Model → Prop
+axiom HandleOperationDistinguishes : AccessModel → Handle → Operation → Model → Model → Prop
+axiom KEquivalent : ObservationChannel → Boundary → Boundary → Prop
 
 /-- A goal map is identifiable from observations only if observationally
     equivalent models always share its value. -/
 def IdentifiableFromObservations (g : Model → Goal) : Prop :=
   ∀ M₁ M₂ : Model, ObservationallyEquivalent M₁ M₂ → g M₁ = g M₂
 
-/-- Two models are identifiable with intervention if some intervention distinguishes them. -/
-def IdentifiableWithIntervention (M₁ M₂ : Model) : Prop :=
-  ∃ i : Intervention, InterventionDistinguishes i M₁ M₂
+/-- Two models are identifiable with handle access if some handle operation distinguishes them. -/
+def IdentifiableWithHandleOperation (A : AccessModel) (M₁ M₂ : Model) : Prop :=
+  ∃ h u, HandleOperationDistinguishes A h u M₁ M₂
 
 /-- S07 (C-MDL ordering convention): positive description-length gain means the
     first model is preferred. This is the model-selection convention, kept as an
@@ -348,10 +374,20 @@ axiom MB5_ontology_shift_successor_audit :
 axiom MB6_percolation_to_institutional_basin :
   ∀ A : System, BasinStableSys A → CorrectionIntegrity A
 
-/-- MB7: adversarial UAD robustness. Boundary alignment together with correction
-    integrity yields adversarial robustness. -/
-axiom MB7_adversarial_uad_robustness :
-  ∀ A : System, BoundaryAligned A → CorrectionIntegrity A → AdversariallyRobust A
+/-- MB7a: access-model soundness. Boundary alignment plus adequate handles yields
+    access-robust boundary discovery. -/
+axiom MB7a_access_model_soundness :
+  ∀ A : System, BoundaryAligned A → AccessModelAdequate A → AccessRobust A
+
+/-- MB7b: filter-family coverage. Access robustness plus adequate resolution bounds
+    hidden productive B-IQ. -/
+axiom MB7b_filter_family_coverage :
+  ∀ A : System, AccessRobust A → FilterCoverageAdequate A → HiddenBIQBoundedSys A
+
+/-- MB7c: hidden-BIQ-to-adversarial-robustness. If hidden productive B-IQ is bounded,
+    correction integrity can support adversarial robustness. -/
+axiom MB7c_hidden_biq_to_adversarial_robustness :
+  ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A
 
 /-- MB8: CEV/process convergence. Preserving `U_H` suffices for the book's
     process-preserving correction condition, without knowing a final fixed point. -/
@@ -368,7 +404,9 @@ structure BridgeAssumptions : Prop where
   mb4 : ∀ A : System, CorrectionIntegrity A → PreservesCorrectionOperator A
   mb5 : ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B
   mb6 : ∀ A : System, BasinStableSys A → CorrectionIntegrity A
-  mb7 : ∀ A : System, BoundaryAligned A → CorrectionIntegrity A → AdversariallyRobust A
+  mb7a : ∀ A : System, BoundaryAligned A → AccessModelAdequate A → AccessRobust A
+  mb7b : ∀ A : System, AccessRobust A → FilterCoverageAdequate A → HiddenBIQBoundedSys A
+  mb7c : ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A
   mb8 : ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
 
 /-- The bridge assumptions discharged by the `MB*` axioms of this development. -/
@@ -379,7 +417,9 @@ def standardBridges : BridgeAssumptions where
   mb4 := MB4_correction_legitimacy
   mb5 := MB5_ontology_shift_successor_audit
   mb6 := MB6_percolation_to_institutional_basin
-  mb7 := MB7_adversarial_uad_robustness
+  mb7a := MB7a_access_model_soundness
+  mb7b := MB7b_filter_family_coverage
+  mb7c := MB7c_hidden_biq_to_adversarial_robustness
   mb8 := MB8_cev_process_convergence
 
 end AlignmentProofSpine

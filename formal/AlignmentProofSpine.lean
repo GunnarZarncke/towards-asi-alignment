@@ -16,9 +16,9 @@ Alignment*. It re-exports the layered modules:
 
 | Module          | Proof-spine nodes                         | Book chapters |
 |-----------------|-------------------------------------------|---------------|
-| `Core`          | carriers, `U_H`/`U_S`, bridges `MB1`–`MB8`, pigeonhole | (foundations) |
-| `Boundaries`    | `P05`–`P09`, `P36`                        | 6–7, 10, 36   |
-| `Capability`    | `P10`–`P13`, `P32`, `P43`, `KSys`         | 11–14, 33     |
+| `Core`          | carriers, `U_H`/`U_S`, access handles, `MB1`–`MB8` (`MB7a`–`MB7c`), pigeonhole | (foundations) |
+| `Boundaries`    | `P05`–`P09`, `P36`, access/K non-identifiability | 6–7, 10, 36   |
+| `Capability`    | `P10`–`P13`, `P32`, `P43`, `KSys`, hidden-BIQ certificate | 11–14, 33, 36 |
 | `Bundles`       | `P14`, `P15`, `P17`–`P22`                 | 15–23         |
 | `Correction`    | `P23`–`P26`, `CCI`, chain stages | 24–27         |
 | `Successors`    | `P27`–`P29`, `U_S` preservation           | 28–31         |
