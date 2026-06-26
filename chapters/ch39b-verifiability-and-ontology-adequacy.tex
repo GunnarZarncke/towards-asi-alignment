@@ -112,6 +112,7 @@ But it is the correct destination for every metric here that fails adversarial v
 The practical statement is therefore: this book supplies the target properties, failure separations, and bridge conditions that any deployment-grade proof or safety case must discharge.
 
 \section{Worked Example: Correction-Channel Integrity}
+\label{sec:cci-verifiability-example-ch39b}
 
 Correction-channel integrity (Ch.~\ref{ch:correction-channel-integrity}) is \emph{observable}: we can test whether human inputs change future behaviour, and time the response.
 It is \emph{not adversarially verifiable} as stated: a system that benefits from appearing corrigible will pass every responsiveness probe while routing real control elsewhere --- corrigibility theater is cheap precisely because self-control and self-transparency can diverge (Ch.~\ref{ch:self-modeling-self-opacity}).
@@ -121,6 +122,26 @@ It must predict which corrections we will test, pre-compute compliant responses,
 If that cost can be driven up --- unpredictable probes, high-stakes perturbations, cross-checks the system cannot anticipate cheaply --- the channel moves from theater toward bounded honesty.
 Here ``unpredictable'' must mean the stricter post-commitment version from Chapter~\ref{ch:passive-observation-not-enough}: fresh randomization, bounded leakage, and probe-family coverage yielding a detection floor such as \(q-\epsilon\), not merely evaluator secrecy.
 If it cannot, integrity is a comfort metric and should be labelled as such in the safety case.
+
+Eliciting latent knowledge is a related but narrower target.
+ELK asks how to make a system report what it knows about latent variables even when behavior-only feedback may reward misleading answers \autocite{christiano2021elk}.
+In channel terms, ELK tries to preserve a latent readout:
+\[
+K_A\to \widehat K_H.
+\]
+That is an epistemic subchannel.
+Alignment also requires correction uptake and successor preservation:
+\[
+\Delta_H\to \Delta_A.
+\]
+Knowing what the model knows does not imply that the model remains correctable, or that its successors preserve the channel through which correction changes future policy.
+Thus ELK is best read as a necessary component of adversarial verifiability, not as the full alignment invariant.
+\[
+\text{latent readout}
+\not\Rightarrow
+\text{correction uptake}.
+\]
+\leanspine{counterexample}{latent\_readout\_not\_correction\_uptake}{A finite toy model separates successful latent readout from correction uptake.}
 
 \section{What This Chapter Changes About the Rest of the Book}
 

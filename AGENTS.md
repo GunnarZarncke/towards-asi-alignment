@@ -106,6 +106,8 @@ Do not rely on chat history alone for resume context.
 
 Place figures in `figures/` and reference as `figures/<file>`. External `.bib` files need `pdflatex → biber → pdflatex ×2`. Add `\usepackage{graphicx}` when including images. Root file: `book.tex`.
 
+If `biber` fails silently or stops after `Found BibTeX data source ...`, suspect stale/corrupt generated files or a missing/corrupt PAR cache before blaming bibliography syntax. Run `./clean.sh`, remove stale `references/*.bib.blg`, create the cache directory explicitly with `mkdir -p .biber-par-cache`, and retry with `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" ./build.sh` (or `biber book` for diagnosis).
+
 ### Build scripts
 
 ```bash

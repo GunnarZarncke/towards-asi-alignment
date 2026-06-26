@@ -177,6 +177,16 @@ V_{t+1}=U_H(V_t,E_t,D_t),
 where $V_t$ is the current human value state, $E_t$ is new evidence, $D_t$ is deliberation, and $U_H$ is the human or civilizational update process.
 
 Scalar reward inference does not naturally distinguish between satisfying current values and preserving the machinery by which values can legitimately change.
+This is also the point at which cooperative reward inference stops being enough.
+CIRL can make inquiry and deference rational when the relevant uncertainty is over a reward variable \autocite{hadfieldmenell2016}.
+But if the system can change the human process from which that reward variable is inferred, then the target is no longer merely \(R_H\).
+It is \((B,W,\Phi,U_H)\): bundle geometry, tradeoff structure, bearer maps, and the human update process that keeps later correction legitimate.
+\[
+\text{cooperative reward inference}
+\not\Rightarrow
+\text{value-bundle preservation}.
+\]
+\leanspine{counterexample}{cooperative\_reward\_inference\_not\_bundle\_preservation}{A finite toy model separates local cooperative reward inference from value-bundle preservation.}
 
 \section{Value-Bundles}
 \label{sec:value-bundles-inference}

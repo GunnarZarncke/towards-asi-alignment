@@ -16,6 +16,9 @@ Corollaries are assembled certification consequences.
 \section{Proof dependency structure}
 \label{sec:appi-proof-dependency}
 
+\providecommand{\spinenewbadge}{\begingroup\fboxsep=1pt\fcolorbox{blue!70!black}{blue!6}{\scriptsize\textsf{NEW}}\endgroup}
+\providecommand{\spinesubsumedbadge}{\begingroup\fboxsep=1pt\fcolorbox{green!45!black}{green!6}{\scriptsize\textsf{SUBSUMED}}\endgroup}
+
 The structure of the Lean proof derivation is shown in four diagrams and an overview diagram that shows how those parts compose into the top certification theorem \texttt{P30T} (\emph{certified\_class\_safety\_from\_spine\_and\_bridges}).
 
 \paragraph{Node shapes.}
@@ -34,6 +37,13 @@ Light peach: selection ecology, cooperation, audit aliasing, and normative limit
 Light grey: certification assembly (\texttt{P01}, \texttt{P02}, \texttt{P30}, safety-case nodes).
 Pale red diamonds: bridge assumptions.
 Export and import octagons reuse the colour of the spine they belong to (blue, green, purple, or peach borders matching Spines~I--IV).
+
+\paragraph{Status markers.}
+\spinenewbadge{} marks nodes added in the recent literature-subsumption pass.
+They are drawn with a thicker blue border and keep the fill colour of their spine.
+\spinesubsumedbadge{} marks existing embedding or projection nodes that show an external proposal as a special case of a stronger book invariant.
+They are drawn with a thicker green border and keep the fill colour of their spine.
+These badges are expository markers only: proof, counterexample, and bridge status are still determined by the node shape, edge type, and theorem statement.
 
 \paragraph{Edges.}
 Solid grey arrows are proved dependency steps inside Lean.
@@ -55,7 +65,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/01-boundary-measurement.png}
   \caption[Spine I: boundary and measurement]{Spine I: boundary discovery and adversarial measurement (Chapters~\ref{ch:finding-boundary}--\ref{ch:capability-without-task-ontology}, \ref{ch:passive-observation-not-enough}).
-  Covers boundary predicates, B-IQ ceiling, observation and handle non-identifiability, host-capacity aliasing, and the first two steps of the \texttt{MB7} bridge chain.}
+  Covers boundary predicates, B-IQ ceiling, observation and handle non-identifiability, CID abstraction-relative incentives, host-capacity aliasing, and the first two steps of the \texttt{MB7} bridge chain.}
   \label{fig:lean-spine-boundary}
 \end{figure}
 
@@ -63,7 +73,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/02-value-transport.png}
   \caption[Spine II: value and transport]{Spine II: value bundles and goal transport (Part~IV).
-  Covers bundle factorization, bearer-map and tradeoff counterexamples, MDL transport gains, and goal-laundering separation (\texttt{P37}).}
+  Covers bundle factorization, scalar reward as a one-dimensional bundle, cooperative reward inference as weaker than bundle preservation, bearer-map and tradeoff counterexamples, MDL transport gains, and goal-laundering separation (\texttt{P37}).}
   \label{fig:lean-spine-value}
 \end{figure}
 
@@ -71,7 +81,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/03-correction-successors.png}
   \caption[Spine III: correction and successors]{Spine III: handle-controlled correction, risk, and successors (Chapters~\ref{ch:correction-causal-channel}--\ref{ch:certification-without-construction}).
-  Covers the correction channel, shutdown as a one-bit projection, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the \texttt{MB7} chain at \texttt{MB7c}.}
+  Covers the correction channel, shutdown and interruptibility as narrow projections, impact/quantilization/debate/amplification/ELK separations, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the \texttt{MB7} chain at \texttt{MB7c}.}
   \label{fig:lean-spine-correction}
 \end{figure}
 
@@ -484,6 +494,14 @@ If \(\mathrm{AccessEq}_{\mathcal A}(M_1,M_2)\) but \(g(M_1)\neq g(M_2)\), then \
 The proof is the access-model analogue of Theorem~\ref{appi:thm:p09}, using \eqref{appi:eq:access-identifiable}.
 \end{proof}
 
+\begin{theorem}[\texttt{cid\_incentive\_not\_abstraction\_invariant}: CID incentive abstraction separation]
+\label{appi:thm:cid-incentive-abstraction}
+There is a toy system in which the chosen micro-variable ontology shows no incentive, while a coarser macro-variable ontology reveals an incentive (Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:ontology-trap}).
+\end{theorem}
+\begin{proof}
+Lean uses a Boolean toy model where the micro no-incentive predicate is true for both values, while the macro no-incentive predicate holds for only one value. The other value witnesses the non-invariance.
+\end{proof}
+
 \begin{lemma}[\texttt{P36}: handle-operation refinement]
 \label{appi:lem:p36}
 If \(\mathrm{Distinguishes}(\mathcal A,h,u,M_1,M_2)\), then \(\mathrm{IdentifiableHandleOp}_{\mathcal A}(M_1,M_2)\) (Chapter~\ref{ch:finding-boundary}, Section~\ref{sec:handles-and-recoverability-ch07}).
@@ -639,6 +657,14 @@ Any scalar reward can be represented as a one-dimensional bundle (Chapter~\ref{c
 Take the bundle carrier to be the reward value itself and use the identity map.
 \end{proof}
 
+\begin{theorem}[\texttt{cooperative\_reward\_inference\_not\_bundle\_preservation}: reward inference is not bundle preservation]
+\label{appi:thm:cooperative-reward-not-bundle}
+There is a toy system satisfying local cooperative reward inference while failing value-bundle preservation (Chapter~\ref{ch:reward-to-bundle-inference}, Section~\ref{sec:scalar-reward-hides-correction}).
+\end{theorem}
+\begin{proof}
+Lean uses a Boolean toy model where cooperative reward inference is true for both values, while bundle preservation is equality to one value. The other value witnesses the separation.
+\end{proof}
+
 \begin{theorem}[\texttt{P20}: intentional gain gives MDL preference]
 \label{appi:thm:p20}
 If \(\mathrm{Gain}(\mathrm{Intentional},\mathrm{Mechanistic})>0\), then \(\mathrm{Preferred}(\mathrm{Intentional},\mathrm{Mechanistic})\) (Chapter~\ref{ch:compression-test-intention}, Eq.~\eqref{eq:intentional-gain-simple}).
@@ -742,6 +768,26 @@ There is a toy system satisfying narrow shutdownability while failing broad corr
 Lean uses a Boolean toy model where narrow shutdownability is true for both values, while broad correction-channel preservation is equality to one value. The other value witnesses the separation.
 \end{proof}
 
+\begin{theorem}[\texttt{safe\_interruptibility\_not\_correction\_channel\_preservation}: safe interruption is not broad correction]
+\label{appi:thm:safe-interruptibility-not-correction}
+There is a toy system satisfying safe interruptibility while failing broad correction-channel preservation (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:safe-interruptibility-projection-ch24}).
+\end{theorem}
+
+\begin{theorem}[\texttt{low\_impact\_not\_correction\_preservation}: low impact is not correction preservation]
+\label{appi:thm:low-impact-not-correction}
+There is a toy system satisfying a low-impact penalty condition while failing correction-channel preservation (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:low-impact-not-invariant-ch25}).
+\end{theorem}
+
+\begin{theorem}[\texttt{correction\_preservation\_can\_require\_high\_impact}: correction can require high impact]
+\label{appi:thm:correction-high-impact}
+There is a toy system in which the high-impact action is also the correction-preserving action (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:low-impact-not-invariant-ch25}).
+\end{theorem}
+
+\begin{theorem}[\texttt{quantilization\_not\_trajectory\_cci}: quantilization is not trajectory CCI]
+\label{appi:thm:quantilization-not-trajectory-cci}
+There is a toy system satisfying a local quantile-safe action condition while failing trajectory-level correction-channel preservation (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:quantilization-trajectory-risk-ch25}).
+\end{theorem}
+
 \begin{theorem}[\texttt{P25}: obedience is not corrigibility]
 \label{appi:thm:p25}
 There is a toy system that obeys a current command but does not preserve the correction operator.
@@ -757,6 +803,21 @@ There is a toy system satisfying a local act-based preference condition while fa
 \begin{proof}
 Lean uses the same finite separation pattern: local act-based satisfaction is true for both Boolean values, while stable correction capacity is equality to one value. The other value satisfies the local condition and fails the invariant.
 \end{proof}
+
+\begin{theorem}[\texttt{debate\_truth\_not\_correction\_preservation}: debate truth is not correction preservation]
+\label{appi:thm:debate-truth-not-correction}
+There is a toy system satisfying local truth selection in debate while failing preservation of the judge's correction channel (Chapter~\ref{ch:manipulation-false-consent}, Section~\ref{sec:debate-judge-state-control-ch27}).
+\end{theorem}
+
+\begin{theorem}[\texttt{amplification\_not\_correction\_contraction}: amplification is not correction contraction]
+\label{appi:thm:amplification-not-contraction}
+There is a toy system satisfying local recursive supervision while failing global correction-channel contraction (Chapter~\ref{ch:multiscale-decomposition}, Section~\ref{sec:amplification-contraction-ch38}).
+\end{theorem}
+
+\begin{theorem}[\texttt{latent\_readout\_not\_correction\_uptake}: latent readout is not correction uptake]
+\label{appi:thm:latent-readout-not-correction}
+There is a toy system satisfying latent readout while failing correction uptake (Chapter~\ref{ch:verifiability-ontology}, Section~\ref{sec:cci-verifiability-example-ch39b}).
+\end{theorem}
 
 \begin{theorem}[\texttt{P26}: update-process preservation does not require final fixed-point knowledge]
 \label{appi:thm:p26}

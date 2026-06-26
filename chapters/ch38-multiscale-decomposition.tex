@@ -464,6 +464,50 @@ for all scales that contribute materially to the optimizing loop.
 
 A correction channel is only as strong as its weakest alignment-relevant scale.
 
+\section{Amplification Requires Correction-Channel Contraction}
+\label{sec:amplification-contraction-ch38}
+
+Iterated amplification builds training signals for hard tasks by decomposing them into easier subproblems evaluated with human and AI assistance \autocite{christiano2018amplifying}.
+Recursive reward modeling has a similar shape: use AI assistance to help humans evaluate behavior and train stronger reward models \autocite{leike2018scalable}.
+These methods make a crucial bet about decomposition.
+Local oversight improvements must compose into global oversight improvement.
+
+Let \(e_n\) be oversight error after \(n\) amplification levels.
+A schematic error dynamic is:
+\[
+e_{n+1}
+=
+\alpha e_n+\beta b_n+\gamma d_n,
+\]
+where \(b_n\) is correlated blind-spot bias and \(d_n\) is value or ontology drift introduced at that level.
+Amplification is safe only if the update is contractive:
+\[
+\alpha<1,
+\qquad
+\sum_n(\beta b_n+\gamma d_n)\ \text{remains bounded}.
+\]
+If decomposition preserves local correctness while hiding global goal-transport error, the sequence need not contract:
+\[
+e_n\to e_\infty>0
+\quad\text{or}\quad
+e_n\uparrow.
+\]
+
+The missing condition is not merely better decomposition.
+It is correction-channel contraction across the decomposition hierarchy.
+Each level must increase, or at least preserve, the ability of the human correction process to notice and repair errors introduced by the decomposition itself:
+\[
+\mathrm{CCI}^{(n+1)}\geq \mathrm{CCI}^{(n)}-\epsilon_n,
+\qquad
+\sum_n \epsilon_n<\infty.
+\]
+\[
+\text{recursive supervision}
+\not\Rightarrow
+\text{correction-channel contraction}.
+\]
+\leanspine{counterexample}{amplification\_not\_correction\_contraction}{A finite toy model separates local recursive supervision from global correction-channel contraction.}
+
 \section{Decomposition under Adversarial Pressure}
 \label{sec:adversarial-decomposition-ch38}
 

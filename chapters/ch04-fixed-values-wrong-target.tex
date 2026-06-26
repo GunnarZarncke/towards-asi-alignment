@@ -310,6 +310,27 @@ The qualitative point is enough: if $k$ is large, learning becomes much harder; 
 
 Separate identifiability and sample-complexity results warn that many reward functions can explain the same behavior, and that inverse reinforcement learning in finite settings is not cheap \autocite{komanduru2019irlcomplexity,ng2000irl,ramachandran2007bayesianirl}.
 Cooperative inverse reinforcement learning reframes alignment as a game in which the human knows the reward and the system is uncertain, which can encourage inquiry and shutdown tolerance under idealized assumptions \autocite{hadfieldmenell2016}, but surveys of RLHF-style deployment find persistent limits under model error, pluralism, and strategic pressure \autocite{casper2023rlhflimits}.
+The deeper limitation is that CIRL still treats the reward source as if there is a sufficiently stable latent object to infer:
+\[
+R_H=\text{fixed hidden reward variable}.
+\]
+That is a useful idealization for deriving cooperative behavior.
+It is not the full alignment target.
+In this book's terms, the human value source is a bundle process whose ontology, bearer maps, attention, identity, and social context co-evolve:
+\[
+V_H(t)=\{v_1(t),\ldots,v_k(t)\},
+\qquad
+O_H(t),B_H(t),C_H(t)\ \text{co-evolve}.
+\]
+Once the system's action affects both the world and the reward source,
+\[
+a_t\to s_{t+1},
+\qquad
+a_t\to V_H(t+1),
+\]
+the question is underdetermined.
+Is the system learning the reward, eliciting it, stabilizing it, or manufacturing it?
+Cooperative reward inference therefore does not imply value-bundle preservation.
 
 This does not solve alignment.
 A low-dimensional bottleneck helps identifiability, but it does not guarantee correctness.

@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-26 | Alignment work subsumption pass | [2026-06-26-alignment-work-subsumption-pass.md](2026-06-26-alignment-work-subsumption-pass.md) |
+| 2026-06-26 | Bibliography summaries | [2026-06-26-bibliography-summaries.md](2026-06-26-bibliography-summaries.md) |
 | 2026-06-26 | Shutdown, corrigibility, tiling | [2026-06-26-shutdown-corrigibility-tiling.md](2026-06-26-shutdown-corrigibility-tiling.md) |
 | 2026-06-26 | Boundary recovery bridge | [2026-06-26-boundary-recovery-bridge.md](2026-06-26-boundary-recovery-bridge.md) |
 | 2026-06-26 | Appendix count check fix | [2026-06-26-appendix-count-check-fix.md](2026-06-26-appendix-count-check-fix.md) |

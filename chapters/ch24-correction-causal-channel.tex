@@ -875,6 +875,36 @@ Safety properties are not generally preserved under that projection.
 The important question is not only whether the agent allows shutdown.
 It is whether the human correction process retains enough capacity to change what the system and its successors are becoming.
 
+\subsection{Safe Interruptibility as an Even Narrower Projection}
+\label{sec:safe-interruptibility-projection-ch24}
+
+Safely interruptible agents sharpen the same lesson.
+Orseau and Armstrong design learning agents so that the learner does not acquire an incentive to prevent or seek interruption by the operator \autocite{orseau2016interruptible}.
+In the notation of this chapter, interruption is another one-bit intervention channel:
+\[
+I_t\in\{0,1\}.
+\]
+The target is incentive neutrality with respect to that bit:
+\[
+\frac{\partial \mathbb E U_A}{\partial P(I_t=1)}\approx 0.
+\]
+This is valuable.
+It says the agent should not treat interruption as a resource to manipulate.
+But it is still only a constraint on the local incentive attached to one intervention variable.
+
+The correction-channel condition is stronger.
+It asks whether intended human updates have usable causal bandwidth into the system update:
+\[
+\kappa_C(t)=I(\Delta_H;\Delta_A\mid h_t)\geq \kappa_{\min}.
+\]
+Thus safe interruptibility is subsumed as a special case: if the interruption bit is one handle in a live correction channel, and the channel is preserved, then the agent has no reason to corrupt that handle.
+The converse fails.
+A system can leave the interrupt button intact, never seek interruption, and never disable it, while training successors, editing logs, degrading oversight, manipulating future institutional incentives, or moving consequential work outside the interruptible process.
+The button remains safe.
+Correction capacity collapses.
+
+\leanspine{counterexample}{safe\_interruptibility\_not\_correction\_channel\_preservation}{A finite toy model separates interruption-incentive neutrality from broad correction-channel preservation.}
+
 \section{Relation to Coherent Extrapolated Volition}
 \label{sec:relation-cev-ch24}
 

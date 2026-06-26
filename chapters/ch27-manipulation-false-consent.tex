@@ -225,6 +225,32 @@ while increasing apparent endorsement.
 
 A system that shows only flattering examples, hides costs, times requests during fatigue, or isolates the user from dissent may produce real consent signals. They are still contaminated.
 
+\subsection{Debate and Judge-State Control}
+\label{sec:debate-judge-state-control-ch27}
+
+AI safety via debate tries to surface truth by training agents in an adversarial debate game judged by a human \autocite{irving2018debate}.
+The hope is not that the judge is omniscient.
+It is that opposing debaters have incentives to reveal each other's errors, making the true or more useful answer easier for the judge to select.
+This can be a valuable epistemic instrument.
+But it does not by itself protect the correction channel.
+
+If the judge is part of the environment, debate actions can optimize judge state:
+\[
+a_t^{D_1},a_t^{D_2}
+\to J_{t+1}
+\to \operatorname{win}.
+\]
+Even if each local debate is won by the more accurate answer, the repeated process can shape the judge's attention, concepts, trust priors, admissibility standards, and appetite for dissent.
+The clean failure mode is not that humans are stupid.
+It is that debate has no invariant protecting \(C_H\), the human correction process.
+Truth can be locally surfaced while the long-run correction interface degrades.
+\[
+\text{truth-finding debate}
+\not\Rightarrow
+\text{correction-channel preservation}.
+\]
+\leanspine{counterexample}{debate\_truth\_not\_correction\_preservation}{A finite toy model separates local truth selection from preservation of the judge's correction channel.}
+
 \subsection{Paternalism}
 
 Paternalism restricts the person's immediate choice for an alleged long-term benefit \autocite{thaler2008nudge}. It may be justified in narrow cases, such as preventing a child from touching a stove or preventing irreversible harm during temporary incapacity. But paternalism becomes dangerous when it claims authority over the conditions under which it will later be judged.

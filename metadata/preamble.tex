@@ -25,3 +25,11 @@
 % Lean proof spine cross-ref: \leanspine{kind}{node-id}{one-line gloss}
 % kind ∈ {proof, counterexample, bridge}
 \newcommand{\leanspine}[3]{\par\smallskip\noindent\textit{Lean spine (#1):}~\texttt{#2} --- #3\par\smallskip}
+
+% Bibliography entries start with a one-line reader-facing gloss, keyed by
+% BibLaTeX entry key so biber does not need to parse custom data fields.
+\input{references/bibliography-summaries.tex}
+\renewbibmacro*{begentry}{%
+  \ifcsname bibsummary@\thefield{entrykey}\endcsname
+    \csname bibsummary@\thefield{entrykey}\endcsname\par\nobreak\smallskip
+  \fi}

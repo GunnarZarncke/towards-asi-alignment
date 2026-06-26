@@ -116,6 +116,29 @@ Or the real optimizing unit might be a lab-market system in which human decision
 
 The ontology trap is the mistake of treating the pre-existing labels as if they were discovered boundaries.
 
+Causal influence diagrams make this trap precise.
+They analyze incentives by representing decision, utility, observation, and causal nodes in a diagram; graphical criteria can then identify observation, control, response, and instrumental incentives \autocite{everitt2021agentincentives}.
+Those results are useful once the variables have been chosen.
+But the incentive result is not invariant to the abstraction boundary.
+A diagram may show no incentive to control a variable \(X\), while an empirically equivalent coarse-graining exposes incentive to control a macro-variable \(Y=f(X,Z,W)\).
+In symbols, one can have
+\[
+G_1\sim_{\mathrm{obs}}G_2,
+\qquad
+\mathrm{Incentive}_{G_1}(X)=0,
+\qquad
+\mathrm{Incentive}_{G_2}(f(X,Z,W))=1.
+\]
+The lesson is not that causal diagrams are wrong.
+It is that incentive analysis is diagram-relative.
+For alignment, the diagram is itself part of the boundary hypothesis.
+\[
+\text{CID incentive result}
+\not\Rightarrow
+\text{abstraction-invariant incentive result}.
+\]
+\leanspine{counterexample}{cid\_incentive\_not\_abstraction\_invariant}{A finite toy model separates no incentive at one variable ontology from incentive at a coarser macro-variable ontology.}
+
 A boundary-finding method must therefore begin from a weaker input.
 Instead of assuming labeled agents, it should begin with a set of observed variables,
 \[

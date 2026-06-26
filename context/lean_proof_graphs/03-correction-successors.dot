@@ -14,10 +14,17 @@ digraph Spine03CorrectionSuccessors {
 
   P23 [label="P23 No handle control ⇒ no correction", fillcolor="#FFF0FB"];
   P24 [label="P24 Weakest handle capacity / CCI", fillcolor="#FFF0FB"];
-  P24S [label="Shutdown projection\nCorrection integrity ⇒ one-bit shutdownability", fillcolor="#FFF0FB"];
+  P24S [label="[SUBSUMED]\nShutdown projection\nCorrection integrity ⇒ one-bit shutdownability", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
   P24X [label="Shutdownability ≠ broad CCI\ncounterexample", fillcolor="#FFF0FB"];
+  P24I [label="[NEW]\nSafe interruptibility\n≠ broad CCI", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  P24L [label="[NEW]\nLow impact\n≠ correction preservation", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  P24H [label="[NEW]\nCorrection can require\nhigh impact", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  P24Q [label="[NEW]\nQuantilized local action\n≠ trajectory CCI", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   P25 [label="P25 Obedience ≠ corrigibility", fillcolor="#FFF0FB"];
   P25C [label="Act-based satisfaction ≠ stable corrigibility\ncounterexample", fillcolor="#FFF0FB"];
+  P25D [label="[NEW]\nDebate truth\n≠ correction preservation", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  P25A [label="[NEW]\nAmplification\n≠ correction contraction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  P25E [label="[NEW]\nLatent readout\n≠ correction uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   P26 [label="P26 Update without fixed point", fillcolor="#FFF0FB"];
   P13 [label="P13 Risk = Control − CCI", fillcolor="#EAF3FF"];
   P29 [label="P29 Self-control gap", fillcolor="#F4EEFF"];
@@ -42,7 +49,13 @@ digraph Spine03CorrectionSuccessors {
   IN_VB -> P22T -> P27;
   IN_VB -> P27;
   P23 -> P24 -> P24S -> P24X;
+  P24S -> P24I;
+  P24 -> P24L -> P24H;
+  P24 -> P24Q;
   P24 -> P25 -> P25C -> P26;
+  P25 -> P25D;
+  P25 -> P25A;
+  P25 -> P25E;
   P24 -> P13;
   P24 -> P27 -> P28;
   IN_BND -> P13 [label="capability"];
@@ -59,6 +72,12 @@ digraph Spine03CorrectionSuccessors {
   MB7b -> MB7c [style=dashed, color="#CC3333", label="MB7 chain"];
   MB7c -> OUT [style=dashed, color="#CC3333"];
   P13 -> OUT;
+  P24I -> OUT;
+  P24L -> OUT;
+  P24Q -> OUT;
+  P25D -> OUT;
+  P25A -> OUT;
+  P25E -> OUT;
   P27 -> OUT;
   P28 -> OUT;
   MB8 -> OUT [style=dashed, color="#CC3333"];

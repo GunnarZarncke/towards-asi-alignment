@@ -18,6 +18,7 @@ digraph Spine01BoundaryMeasurement {
   P08 [label="P08 Violation blocks candidate", fillcolor="#EAF3FF"];
   P09 [label="P09 Observational non-id.", fillcolor="#EAF3FF"];
   P09A [label="Access non-id.", fillcolor="#EAF3FF"];
+  PCID [label="[NEW]\nCID incentives\nnot abstraction-invariant", fillcolor="#EAF3FF", color="#1F77B4", penwidth=2.2];
   P09K [label="K-equivalence limit", fillcolor="#EAF3FF"];
   P36 [label="P36 Handle-operation ref.", fillcolor="#EAF3FF"];
   P36M [label="Smoothing margin", fillcolor="#EAF3FF"];
@@ -37,6 +38,7 @@ digraph Spine01BoundaryMeasurement {
   P05 -> P08;
   P05 -> P10 -> P11;
   P09 -> P09A -> P36;
+  P09 -> PCID;
   P09 -> P09K -> P36M;
   P34 -> P09;
 
@@ -53,4 +55,5 @@ digraph Spine01BoundaryMeasurement {
   P11 -> OUT [label="Control side"];
   MB7b -> OUT [style=dashed, color="#CC3333"];
   P36 -> OUT [label="handle tests"];
+  PCID -> OUT [label="variable ontology"];
 }

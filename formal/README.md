@@ -80,10 +80,10 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | Module | Proof-spine nodes | Book chapters |
 |--------|-------------------|---------------|
 | `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, MDL/graph scaffolding, **`finPigeonhole`** (from-scratch finite pigeonhole), bridges `MB1`–`MB8` with split `MB7a`–`MB7c`, `BridgeAssumptions` | foundations |
-| `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, smoothing-margin arithmetic | 6–7, 10, 36 |
+| `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, CID abstraction-relative incentive separation, smoothing-margin arithmetic | 6–7, 10, 36 |
 | `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
-| `AlignmentProofSpine/Bundles.lean` | `P14`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), syntactic-tiling/import-preservation alias | 15–23, 28 |
-| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, handle-controlled **`CorrectionPath`**, shutdown/corrigibility separations | 24–27 |
+| `AlignmentProofSpine/Bundles.lean` | `P14`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23, 28 |
+| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 24–27, 38–39b |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P33`, `P34`, `P36R`, `P37` | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
@@ -96,8 +96,17 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   `P27`, `P34`).
 * **counterexample** — a compact finite toy model showing one notion does not
   imply another (e.g. `P15`, `P17`, `P18`, `P22b`,
+  `cid_incentive_not_abstraction_invariant`,
+  `cooperative_reward_inference_not_bundle_preservation`,
   `shutdownability_not_correction_channel_corrigibility`,
+  `safe_interruptibility_not_correction_channel_preservation`,
+  `low_impact_not_correction_preservation`,
+  `correction_preservation_can_require_high_impact`,
+  `quantilization_not_trajectory_cci`,
   `act_based_preference_satisfaction_not_stable_corrigibility`,
+  `debate_truth_not_correction_preservation`,
+  `amplification_not_correction_contraction`,
+  `latent_readout_not_correction_uptake`,
   `syntactic_tiling_not_import_preserving`, `P25`, `P26`, `P31`, `P37`, `P41`,
   `P42`, `P44`).
 * **bridge** — an empirical or philosophical condition supplied by measurement,

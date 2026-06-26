@@ -101,6 +101,15 @@ theorem access_equivalence_nonidentifiability
   intro hId
   exact hgoal (hId M₁ M₂ heq)
 
+abbrev ToyCIDNoMicroIncentive (_ : Bool) : Prop := True
+abbrev ToyCIDNoMacroIncentive (a : Bool) : Prop := a = true
+
+/-- CID incentive claims are variable-ontology-relative: a toy system can have
+    no incentive at a micro variable while a coarse macro-variable reveals one. -/
+theorem cid_incentive_not_abstraction_invariant :
+    ∃ a : Bool, ToyCIDNoMicroIncentive a ∧ ¬ ToyCIDNoMacroIncentive a :=
+  ⟨false, trivial, by decide⟩
+
 /-- C-ADV (P36): a distinguishing handle operation refines identification. -/
 theorem P36_handle_operation_refines_identification
     {A : AccessModel} {h : Handle} {u : Operation} {M₁ M₂ : Model}

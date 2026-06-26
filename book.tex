@@ -16,14 +16,13 @@
 \usepackage{microtype}
 \usepackage{makeidx}
 
-\input{metadata/preamble}
-
 \usepackage[
   backend=biber,
   style=authoryear,
   maxbibnames=99,
   giveninits=true,
   uniquename=false,
+  pagetracker=false,
 ]{biblatex}
 \addbibresource{references/main.bib}
 \addbibresource{references/internal-project-sources.bib}
@@ -33,6 +32,8 @@
 \addbibresource{references/governance-institutions.bib}
 \addbibresource{references/philosophy.bib}
 \addbibresource{references/manuscript-citations.bib}
+
+\input{metadata/preamble}
 
 \hypersetup{
   pdftitle={Towards Superintelligence Alignment},

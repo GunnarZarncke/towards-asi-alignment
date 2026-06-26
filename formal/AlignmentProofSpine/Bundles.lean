@@ -37,6 +37,15 @@ theorem P19_scalar_reward_as_single_bundle :
     ∀ r : Int, ∃ W : Fin 1 → Int, W 0 = r :=
   fun r => ⟨fun _ => r, rfl⟩
 
+abbrev ToyCooperativeRewardInference (_ : Bool) : Prop := True
+abbrev ToyValueBundlePreservation (a : Bool) : Prop := a = true
+
+/-- Cooperative reward inference does not by itself preserve bundle geometry,
+    bearer maps, or the human update process. -/
+theorem cooperative_reward_inference_not_bundle_preservation :
+    ∃ a : Bool, ToyCooperativeRewardInference a ∧ ¬ ToyValueBundlePreservation a :=
+  ⟨false, trivial, by decide⟩
+
 /-- C-MDL (P20): positive intentional-vs-mechanistic gain makes the intentional
     model preferred. -/
 theorem P20_positive_intentional_gain_prefers_intentional

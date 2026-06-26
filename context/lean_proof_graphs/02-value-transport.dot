@@ -16,7 +16,8 @@ digraph Spine02ValueTransport {
   P15 [label="P15 Policy ≠ geometry", fillcolor="#EFFBEA"];
   P17 [label="P17 Labels ≠ bearer map", fillcolor="#EFFBEA"];
   P18 [label="P18 Marginals ≠ tradeoffs", fillcolor="#EFFBEA"];
-  P19 [label="P19 Scalar reward as bundle", fillcolor="#EFFBEA"];
+  P19 [label="[SUBSUMED]\nP19 Scalar reward as bundle", fillcolor="#EFFBEA", color="#2E7D32", penwidth=2.2];
+  PCIRL [label="[NEW]\nCIRL / reward inference\n≠ bundle preservation", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
   P20 [label="P20 Intentional MDL gain", fillcolor="#EFFBEA"];
   P21 [label="P21 Transport gain", fillcolor="#EFFBEA"];
   P22a [label="P22a Full ⇒ semantic transport", fillcolor="#EFFBEA"];
@@ -32,6 +33,7 @@ digraph Spine02ValueTransport {
   P14 -> P15;
   P14 -> P17;
   P14 -> P19 -> P20 -> P21 -> P22a -> P22b;
+  P19 -> PCIRL;
   P17 -> P22b;
   P18 -> P22b;
   P15 -> P37;
@@ -45,5 +47,6 @@ digraph Spine02ValueTransport {
   MB3 -> P22b [style=dashed, color="#CC3333"];
 
   P22b -> OUT;
+  PCIRL -> OUT;
   P37 -> OUT [label="laundering risk"];
 }
