@@ -8,7 +8,7 @@ Open problems and unresolved uncertainties tracked across the manuscript.
 |---|----------------|-----------|----------|
 | U-01 | Are human values sufficiently low-dimensional, and are their bundle representations recoverable enough to be learned and transported? | ch15–17 | A-001, C-004 |
 | U-02 | Can bearer maps survive radical ontology shift? | ch18, ch43 | A-001, C-004, C-011 |
-| U-03 | Can correction-channel integrity be measured under adversarial conditions? | ch25, ch27, ch36 | A-002, C-005 |
+| U-03 | Can correction-channel integrity be measured under adversarial conditions without the reference process itself being captured? | ch25, ch27, ch36 | A-002, C-005 |
 | U-04 | Can successor constraints be enforced before recursive capability growth? | ch28, ch31 | A-007, C-006 |
 | U-05 | Can composite-agent boundaries be detected in real deployment systems? | ch07, ch09, ch38 | A-004, C-001, C-003 |
 | U-06 | How much capability growth is safe without proportional transparency/correction growth? | ch12, ch14, ch30 | C-008 |

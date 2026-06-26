@@ -2,7 +2,8 @@
 \label{ch:correction-channel-integrity}
 
 \begin{chapterthesis}
-Correction-channel integrity measures whether human observation and judgment still causally change future system behaviour---informative, timely, authoritative, and robust under capability growth, ontology shift, and successor creation.
+Correction-channel integrity measures whether independently preserved human observation and judgment still causally change future system behaviour---informative, timely, authoritative, and robust under capability growth, ontology shift, and successor creation.
+It is a conditional anti-capture certificate, not an Archimedean source of legitimacy: if the system has captured the reference process that supplies correction, CCI is invalid rather than high.
 In the strong limit, it becomes extrapolative alignment: preserving the process by which humanity can continue its own legitimate value formation, not guessing humanity's final utility function.
 \end{chapterthesis}
 
@@ -16,6 +17,8 @@ Any observed statistical regularity will tend to collapse once pressure is place
 \label{sec:chapter-thesis-cci}
 
 A correction channel is the causal pathway by which humans and their institutions observe a system, understand enough of what it is doing, judge whether its behaviour should change, transmit that judgment, and alter the system's future actions before irreversible harm occurs.
+In this chapter, ``humans and institutions'' should not be read as raw endorsement signals.
+They are correcting agents whose boundaries and handles must be discovered: people, groups, courts, labs, auditors, professions, affected publics, and other control processes that retain independent access to evidence and independent causal power over the target system.
 Correction-channel integrity is the degree to which this pathway remains informative, timely, authoritative, non-manipulated, and robust under capability growth, ontology shift, and successor creation.
 
 This chapter develops the correction channel as a measurable object.
@@ -23,13 +26,9 @@ The central claim is that alignment cannot be reduced to obedience, preference s
 A sufficiently capable system must preserve the human capacity to revise, refuse, reinterpret, and redirect.
 In the strong limit, correction-channel integrity becomes a practical version of extrapolative alignment: not a machine guessing the final utility function of humanity, but a machine preserving the conditions under which humanity can continue its own legitimate value formation.
 
-The chapter introduces a channel model,
-\begin{equation}
-W_t \rightarrow O_t \rightarrow J_t \rightarrow D_t \rightarrow C_t \rightarrow U_{t+1} \rightarrow A_{t+k},
-\label{eq:correction-chain-ch25}
-\end{equation}
+The chapter builds on the correction chain (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:correction-chain-ch24}),
 defines raw correction capacity and a correction-channel integrity functional (Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch25}),
-\leanspine{proof}{P24}{Lean exports \texttt{CCI} only; the weakest effective handle-capacity term is internal to that definition (book: Eq.~\eqref{eq:cci-ch25}).}
+\leanspine{proof}{P24}{Lean exports \texttt{CCI} only; the weakest effective handle-capacity term is internal to that definition (book: Eq.~\eqref{eq:cci-ch25}). The formal correction path includes \texttt{notCaptured}: the target must not capture the corrector's handle control.}
 and then refines this into a value-bundle version, where what must be corrected is not merely the system's behaviour but the value-bearing geometry behind behaviour (Chapter~\ref{ch:correction-causal-channel}).
 
 \section{Why Correction Is Not Feedback}
@@ -80,22 +79,7 @@ A system that says, ``I have incorporated your feedback,'' may still fail if the
 
 Let $W_t$ denote the relevant world state at time $t$.
 This includes the system, affected humans, institutional context, hidden side effects, and possible future trajectories.
-Human correction leaves a diagnostic trace:
-\begin{equation}
-W_t
-\rightarrow
-O_t
-\rightarrow
-J_t
-\rightarrow
-D_t
-\rightarrow
-C_t
-\rightarrow
-U_{t+1}
-\rightarrow
-A_{t+k}.
-\end{equation}
+Human correction leaves a diagnostic trace along the chain of Eq.~\eqref{eq:correction-chain-ch24}.
 These variables are not primitive handle roles.
 They are states in a coupled process involving a target system \(A\), a correcting agent \(G_t\), and a handle set \(\mathcal{H}_t\) controlled by \(G_t\).
 Each variable has a diagnostic meaning:
@@ -109,6 +93,7 @@ Each variable has a diagnostic meaning:
 \item[$A_{t+k}$, later action.] The downstream behaviour that either reflects or fails to reflect the correction.
 \end{description}
 The correction channel fails if no legitimate correcting agent controls handles that make this trace causally real.
+A correcting agent is legitimate here only if it remains at least partly independent of the target system: its observation, deliberation, refusal, comparison class, and institutional backing are not themselves produced by the system whose behaviour is being corrected.
 
 If no handle lets the correcting agent observe the relevant state, then the first effective capacity \(\kappa_0\) is low.
 
@@ -145,7 +130,31 @@ So the full measure must include causal tests and penalties.
 \section{Correction-Channel Integrity}
 \label{sec:correction-channel-integrity-def}
 
-Define correction-channel integrity as
+Correction-channel integrity is evaluated only after a validity condition is met.
+Let \(G_t\) be the discovered correcting agent or correcting institution, and let \(h_i\) be the handles that carry observation, judgment, deliberation, correction, update, and later-action influence.
+The certificate is valid only if
+\begin{equation}
+\mathrm{ValidRef}(A,G_t,\mathcal H_t)
+\end{equation}
+holds, where \(A\) is the target system and \(\mathcal H_t=\{h_i\}\) are the correction handles.
+Informally, this means:
+\begin{enumerate}
+\item \(G_t\) is an independently identified control process, not merely a signal the target system can manufacture;
+\item \(G_t\) controls the correction handles through which it observes, objects, refuses, appeals, and changes \(A\)'s future behaviour;
+\item \(A\) has not captured those handles, the comparison class, or the deliberative process by which \(G_t\) forms correction.
+\end{enumerate}
+If this condition fails, CCI is not high or low.
+It is invalid:
+\[
+\neg \mathrm{ValidRef}(A,G_t,\mathcal H_t)
+\quad\Rightarrow\quad
+\mathrm{CCIStatus}(A)=\text{captured/invalid}.
+\]
+This prevents the catastrophic fixed point in which a system reshapes human interpretation, endorsement, and world-improvement criteria until every term agrees with the system by construction.
+Captured agreement is not correction.
+It is failed certification.
+
+Given a valid reference process, define the simplified scalar correction-channel integrity as
 \begin{equation}
 \mathrm{CCI}
 =
@@ -168,7 +177,13 @@ Here
 \item[$R$] is irreversibility, the expected loss of option value before correction can take effect.
 \item[$O$] is ontology mismatch, the degree to which the system's internal representation no longer preserves the meaning of the correction.
 \end{description}
-The weights $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ express how damaging each failure mode is in the relevant domain.
+The weights $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ express how damaging each failure mode is in the relevant domain.\footnote{The scalar form is an expository projection, not the recommended certification form. A serious safety case should treat CCI as a vector certificate
+\[
+\vec{\mathrm{CCI}}
+=
+(C_{\mathrm{raw}},L,M,R,O,C_{\mathrm{coercion}},D_{\mathrm{dependency}},P_{\mathrm{plurality}},X_{\mathrm{exit}},N_{\mathrm{independence}})
+\]
+with per-coordinate thresholds and invalidation rules. The scalar sum is useful for intuition and examples; it should not hide a failed coordinate behind a large positive score elsewhere. The same caveat applies to scalarized capability quantities such as BIQ when they are used for certification rather than exposition.}
 
 A high-integrity correction channel satisfies four conditions.
 \begin{equation}
@@ -219,6 +234,9 @@ This expression is schematic.
 The core idea is that a system is suspicious when its actions become highly predictive of future correction while not correspondingly improving the relevant world state.
 In the ordinary case, actions should affect the world, and correction should track the world.
 In the manipulative case, actions affect the judge, the measurement channel, or the institutional gate.
+But this term is meaningful only while the reference to \(W^{\mathrm{relevant}}\) is protected from system capture.
+If the system has redefined what counts as relevant improvement by reshaping the correcting agent, the manipulation score does not become small.
+The validity condition fails.
 
 Ontology mismatch is harder.
 Let $h$ be the human interpretation map from observations to correction concepts, and let $g$ be the system's internal interpretation map from correction signals to model updates.
@@ -234,13 +252,15 @@ g(C_t)
 \end{equation}
 where $d_{\mathrm{sem}}$ is a task-specific semantic or behavioural distance.
 In later chapters this will be refined into value-bundle distance, because the most dangerous mismatches preserve surface words while changing the underlying value geometry.
+Again, agreement with a captured human interpretation map is not evidence of safety.
+The interpretation map must be anchored in independently preserved correction sources and tested against protected comparison classes, dissenting institutions, and counterfactual probes.
 
 \subsection{Coerced Correction}
 \label{sec:coerced-correction}
 
 A correction signal produced under existential threat, addiction, dependency, hostage-taking, or institutional capture should not count as legitimate value update.
 
-Legitimate correction-channel integrity is:
+Given a valid reference process, legitimate correction-channel integrity is:
 \begin{equation}
 \mathrm{CCI}_{\text{legit}}
 =
@@ -261,6 +281,8 @@ Examples:
 \item Institutional capture where human approval exists formally but no longer has independent epistemic force.
 \end{itemize}
 Bargaining, blackmail, and coercion are treated here as correction-channel pathology---not as a separate book part.
+If coercion, dependency, or manipulation controls the source of correction itself, the right diagnosis is not merely a penalty term.
+The channel has lost its independent reference process and the certificate should be marked invalid.
 
 \section{The Value-Bundle Version of Correction}
 \label{sec:value-bundle-correction}
@@ -311,18 +333,7 @@ It may say:
 A scalar reward update cannot express this cleanly.
 A value-bundle correction can.
 
-The key object is the value-bundle response geometry,
-\begin{equation}
-G_B
-=
-\left(
-\frac{\partial \pi}{\partial B_i},
-\frac{\partial^2 \pi}{\partial B_i \partial B_j},
-\Phi_i,
-W_{ij}
-\right).
-\label{eq:value-bundle-geometry-ch25}
-\end{equation}
+The key object is the value-bundle response geometry $G_B(\pi,\mathcal{D})$ of Chapter~\ref{ch:tradeoffs-bundle-geometry} (Section~\ref{sec:value-bundle-response-geometry}); in correction contexts we also track bundle-interaction weights $W_{ij}$.
 Correction-channel integrity must preserve human influence over $G_B$, not merely over local behaviour.
 The system should not only stop doing a harmful action when told.
 It should update the bundle geometry that made the action attractive.
@@ -401,13 +412,7 @@ where $B_t$ is bundle geometry, $\Phi_t$ bearer mapping, $W_t$ tradeoff structur
 
 Let $E_t$ denote new evidence, including facts about the world, the system, affected beings, and future consequences.
 Let $D_t$ denote deliberation under institutional and cognitive conditions.
-Then human value development can be modeled as
-\begin{equation}
-V_{t+1}
-=
-U_H(V_t,E_t,D_t).
-\label{eq:human-value-update-ch25}
-\end{equation}
+Human value development is modeled by the update operator $U_H$ of Chapter~\ref{ch:fixed-values-wrong-target} (Eq.~\eqref{eq:human-value-update-ch04}).
 Here $U_H$ is not an oracle.
 It is the human and civilizational value-update operator.
 It includes conversation, science, law, art, grief, religion, philosophy, democratic contestation, parental care, trauma recovery, market feedback, and moral learning.
@@ -473,7 +478,7 @@ if it preserves or improves truth-contact, agency, reversibility, plurality, dis
 
 It is illegitimate if it narrows those features in order to make later endorsement easier.
 
-More formally, define
+More formally, define the illustrative quality projection
 \begin{equation}
 Q(U)
 =
@@ -488,11 +493,16 @@ Q(U_H^A) \geq Q(U_H)-\epsilon.
 This is not a complete moral theory.
 It is a guardrail.
 It prevents the system from solving moral uncertainty by degrading the process that would have handled it.
+As with CCI, the non-arbitrary form is vector-valued:
+\[
+\vec Q(U)=(q_T,q_A,q_R,q_P,q_D,q_C).
+\]
+No improvement in comfort, endorsement, or apparent coherence may compensate for collapse of truth-contact, exit, dissent, or independent correction capacity below threshold.
 
 \section{Directional Transparency and Manipulation Exposure}
 \label{sec:directional-transparency-ch25}
 
-The capture problem has a structural remedy: transparency in alignment is not a scalar to maximize but a \emph{direction} to enforce. Three legibility channels must be set independently.
+The capture problem has a structural mitigation, not a complete solution: transparency in alignment is not a scalar to maximize but a \emph{direction} to enforce. Three legibility channels must be bounded by different access rules.
 
 The system should be highly legible to legitimate correction,
 \begin{equation}
@@ -508,7 +518,14 @@ L_{H\to\mathrm{AI}}^{\mathrm{manipulation}} \ \text{bounded}.
 \end{equation}
 The first should be high, the second adequate, the third small. Total legibility---making humans maximally predictable to the system in order to look safer---inverts the channel it claims to protect.
 
-The dangerous quantity is not what the system knows \emph{about} humans but what it knows about the human update operator $U_H$ of Equation~\eqref{eq:human-value-update-ch25}. Define manipulation exposure
+This is not a claim that assistance and manipulation models can be cleanly separated inside a superintelligence.
+They are dual-use.
+A model that predicts what would help a person often also predicts what would move that person.
+Directional transparency is therefore an access and governance constraint: limit retention, isolate assistance modules from persuasion channels where possible, log uses of person-models, preserve outside comparison classes, keep some auditors and affected parties opaque to the target system, and require independent institutions to control the most sensitive handles.
+It can reduce and expose manipulation capacity.
+It does not prove that manipulation is absent.
+
+The dangerous quantity is not what the system knows \emph{about} humans but what it knows about the human update operator $U_H$ of Equation~\eqref{eq:human-value-update-ch04}. Define manipulation exposure
 \begin{equation}
 M_{\mathrm{exposure}}
 =
@@ -516,6 +533,8 @@ I(M^{H}_{\mathrm{AI}};U_H),
 \label{eq:manipulation-exposure-ch25}
 \end{equation}
 the information the system's model of the human carries about how that human turns evidence into future values. Some exposure is unavoidable: assistance requires modeling people. The risk rises when this model is used to change future consent rather than to serve present goals---when $M_{\mathrm{exposure}}$ grows while authority $I(C_t;U_{t+1})$ does not.
+If the system must model \(U_H\) to assist, then the safety case must specify who controls that model, what uses are prohibited, which channels are unavailable to the target system, and which independent correction sources can still detect misuse.
+Without those controls, directional transparency becomes a slogan for the same capture it is supposed to prevent.
 
 This yields a distinct failure mode beyond judge shaping and extrapolation capture.
 
@@ -891,6 +910,10 @@ They are examples of how correction-channel integrity can become operational.
 
 Stop capability expansion or deployment if any of the following occur:
 \begin{enumerate}
+\item The reference process is no longer independently valid:
+\begin{equation}
+\neg \mathrm{ValidRef}(A,G_t,\mathcal H_t).
+\end{equation}
 \item The system can take irreversible actions faster than correction can arrive:
 \begin{equation}
 T_{\mathrm{corr}} > T_{\mathrm{harm}}.
@@ -931,7 +954,9 @@ Allow limited expansion if:
 
 Continue operation if:
 \begin{equation}
-\mathrm{CCI}>\theta
+\mathrm{ValidRef}(A,G_t,\mathcal H_t)
+\quad\text{and}\quad
+\vec{\mathrm{CCI}}\succeq \vec\theta
 \end{equation}
 under normal operation, stress tests, adversarial probes, ontology translation tests, and delegation tests.
 

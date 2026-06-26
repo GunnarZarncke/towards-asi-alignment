@@ -101,7 +101,7 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 ## Claim ID: C-005
 
-**Claim:** (Correction claim) For powerful systems, alignment must preserve the human value-update process as a causal channel with measurable integrity — informative, timely, authoritative, and robust — not merely current approvals or stated preferences.
+**Claim:** (Correction claim) For powerful systems, alignment must preserve the human value-update process as a causal channel with measurable integrity — informative, timely, authoritative, independently grounded, and robust — not merely current approvals or stated preferences. CCI is valid only relative to correction sources whose agent boundaries and handles remain independent enough not to be captured by the target system.
 
 **Chapter(s):** 24, 25, 26, 27, 34
 
@@ -109,14 +109,14 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 **Support:**
 - correction-as-causal-channel model (W→O→J→D→C→U→A chain)
-- correction-channel integrity (CCI) metric
+- correction-channel integrity (CCI) as a conditional anti-capture certificate with vector thresholds and invalidation conditions
 - manipulation/false-consent typology by causal pathway (changing the world vs. changing the judge)
 
 **Weakest link:**
-- CCI may be gamed or inapplicable under adversarial opacity and self-modeling asymmetry
+- CCI may be gamed or inapplicable under adversarial opacity, self-modeling asymmetry, or capture of the reference process that supplies human judgment
 
 **What would update against it:**
-- demonstration that outcome-only evaluation (no causal correction model) suffices under capability growth, or that CCI cannot be measured adversarially
+- demonstration that outcome-only evaluation (no causal correction model) suffices under capability growth, or that no feasible anti-capture validity condition can keep CCI from reading high at domestication fixed points
 
 **References:**
 - add BibLaTeX keys here

@@ -64,11 +64,11 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 ### A-002 — Correction channels as causal chains
 
-**Assumption:** Handle-controlled correction pathways with measurable \(\mathrm{CCI}\).
+**Assumption:** Handle-controlled correction pathways with measurable \(\mathrm{CCI}\), evaluated only when the correcting agent or institution has independently controlled, not-captured handles into the target system.
 
 **Also stated in:** ch25–27, ch34, ch20 (WWCTV item 5), ch40.
 
-**Failure mode if false:** Corrigibility theater; capture. **Lean:** MB4, MB8. **Bears on:** C-005 · **U-03, U-07**
+**Failure mode if false:** Corrigibility theater; capture; CCI reads high after the target has reshaped the human reference process. **Lean:** MB4, MB8 plus correction-path `notCaptured` condition. **Bears on:** C-005 · **U-03, U-07**
 
 ### A-003 — Societal correction capacity
 
