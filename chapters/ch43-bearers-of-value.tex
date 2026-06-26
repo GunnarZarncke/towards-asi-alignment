@@ -19,7 +19,31 @@ The former standalone chapters \emph{Merging With Artificial Entities} and \emph
 
 \section{Plain-Language Model}
 
-\textbf{[STUB]} Replacement without death, uploads, human--AI merger, artificial successors, conscious simulacra, non-conscious human-like behavior, changed value bundles, continuity of agency, and continuity of correction participation.
+The earlier value chapters asked what values are and how they might be transported.
+This chapter asks what they are \emph{about} after transformation.
+
+The question is easy to miss because language can remain stable.
+A future system may continue to say that human autonomy matters.
+It may continue to say that suffering matters.
+It may continue to say that dignity, truth, love, and justice matter.
+But if the beings, processes, relations, or institutions to which those words apply have changed, then the value label has not settled the value question.
+
+Consider several cases.
+
+\begin{itemize}
+  \item A person is gradually merged with an artificial cognitive system. Memory, attention, emotion, and long-term planning are partly routed through artificial components.
+  \item A person is uploaded with high behavioral fidelity but uncertain phenomenal continuity.
+  \item A corporation or state delegates most deliberation to AI systems while retaining human officials as formal signatories.
+  \item A future artificial system behaves like a moral patient but may lack the biological structures that originally grounded human concern.
+  \item A successor civilization preserves human moral language while replacing the humans who would have objected to its interpretation.
+\end{itemize}
+
+In each case the technical question and the philosophical question separate.
+The technical question is whether bundle geometry, bearer maps, correction channels, and successor constraints are preserved well enough to keep transformation governable.
+The philosophical question is whether the transformed entity, relation, or process still counts as a bearer or generator of value.
+
+The book can help with the first.
+It cannot fully decide the second.
 
 \section{Core Distinctions}
 
@@ -40,14 +64,74 @@ The former standalone chapters \emph{Merging With Artificial Entities} and \emph
 
 \textbf{[Philosophical limit]} Human--AI merger, upload, and composite personhood raise bearer questions before value questions.
 
-\textbf{[STUB]} When a human cognitive boundary is expanded, partitioned, or fused with artificial substrates, bearer maps and correction participation may change even if stated preferences appear stable.
+When a human cognitive boundary is expanded, partitioned, or fused with artificial substrates, bearer maps and correction participation may change even if stated preferences appear stable.
+The merger may preserve many surface facts: autobiographical memory, speech style, friendships, legal identity, and stated commitments.
+It may also change the causal process that produces future endorsement.
 
-Examples to treat here (not in a separate merger chapter):
+The book's earlier language helps separate several layers:
+\[
+\text{same name}
+\;\not\Rightarrow\;
+\text{same person}
+\;\not\Rightarrow\;
+\text{same bearer}
+\;\not\Rightarrow\;
+\text{same correction source}.
+\]
+
+Examples to treat here, not in a separate merger chapter:
 \begin{itemize}
   \item gradual cognitive merger without clear discontinuity;
   \item upload scenarios where behavioral continuity is high;
   \item artificial successors presented as continuations of a person or institution.
 \end{itemize}
+
+A merger can preserve some layers and lose others.
+It can preserve memory but lose biological embodiment.
+It can preserve agency but lose vulnerability.
+It can preserve capacity but lose dependence on human-scale social correction.
+It can preserve the ability to answer questions while losing the ability to be surprised by the answers.
+
+This is why merger is not merely a preference-satisfaction problem.
+If a person now chooses merger, and the post-merger entity later endorses the result, endorsement is evidence.
+It is not decisive.
+The endorsement channel may have been altered by the transformation itself.
+Chapter~\ref{ch:value-change-at-stake} made the same point about value change: legitimate change is not identical to endorsed change.
+
+\section{The Selfhood Bottleneck}
+\label{sec:selfhood-bottleneck-ch43}
+
+Chapter~\ref{ch:self-modeling-self-opacity} introduced
+\[
+\beta_{\mathrm{self}}
+:=
+\frac{I(G_t;S_t)}{H(G_t)},
+\]
+where \(G_t\) is globally available control state and \(S_t\) is a learned self-index.
+The quantity measures how much global cognition is routed through a persistent ``this system'' representation.
+
+In this chapter, \(\beta_{\mathrm{self}}\) marks a bearer question.
+A low value can mean no stable subject of memory, responsibility, or correction.
+A high value can mean a persistent subject, but also a system that treats correction as threat to self-preservation.
+Neither direction solves the bearer problem.
+
+The relevant question is not simply:
+\[
+\beta_{\mathrm{self}}\text{ high or low?}
+\]
+It is:
+\[
+\text{Does the self-index preserve agency lineage and correction participation?}
+\]
+
+For transformed humans, \(\beta_{\mathrm{self}}\) may support continuity.
+For artificial successors, it may support commitment and memory.
+For merged entities, it may bind biological and artificial components into one practical agent.
+But a strong self-index can also make an entity harder to correct, harder to distinguish from its protective narratives, and harder to evaluate from the outside.
+
+Thus \(\beta_{\mathrm{self}}\) is a bottleneck rather than a criterion.
+It tells us where continuity questions concentrate.
+It does not answer them.
 
 \section{What Cannot Be Solved Technically}
 \label{sec:cannot-be-solved-technically}
@@ -66,15 +150,106 @@ These are not failures of engineering discipline; they are places where technica
 
 \section{Formal Model}
 
-\textbf{[STUB]} Bearer maps under transformation; conditions under which correction participation survives substrate change.
+Let a value state be
+\[
+V_t=(B_t,W_t,\Phi_t,U_H),
+\]
+where \(B_t\) is bundle state, \(W_t\) is tradeoff structure, \(\Phi_t\) is the bearer map, and \(U_H\) is the human value-update operator.
+
+Let a transformation \(T\) map a pre-transformation process \(X\) into a post-transformation process \(X'\).
+The technical preservation question is whether there are small enough distances:
+\[
+d_B(B_X,B_{X'})<\epsilon_B,
+\]
+\[
+d_W(W_X,W_{X'})<\epsilon_W,
+\]
+\[
+d_\Phi(\Phi_X,\Phi_{X'})<\epsilon_\Phi,
+\]
+and whether correction participation survives:
+\[
+\mathrm{CCI}_{X'}\geq \theta_C.
+\]
+
+These are necessary checks.
+They are not sufficient for legitimacy.
+Two legitimacy orderings can still disagree about the same technically invariant change.
+\leanspine{counterexample}{P44}{The Lean spine models the limitation: a technically invariant change can be accepted by one legitimacy ordering and rejected by another.}
+\leanspine{counterexample}{P45}{Layered alignment has a philosophical boundary because technical invariants do not determine legitimacy.}
+
+The bearer question can be represented as a map:
+\[
+\Psi_T:
+(X,V_t,\Phi_t,\beta_{\mathrm{self}},\mathrm{CCI}_t)
+\mapsto
+\mathcal{B}_{\mathrm{bearer}},
+\]
+where \(\mathcal{B}_{\mathrm{bearer}}\) is the set of entities or processes treated as bearers after transformation.
+The technical program can constrain \(\Psi_T\).
+It can demand uncertainty, reversibility, dissent preservation, and correction.
+It cannot, by itself, choose the final legitimacy ordering that says which \(\Psi_T\) is morally correct.
 
 \section{Worked Example}
 
-\textbf{[STUB]} Upload, merger, or successor where behavioral continuity is high but human correction participation is lost.
+Suppose a terminally ill person chooses a gradual upload.
+The process scans memories, records preferences, trains a cognitive model, and slowly moves more planning and communication through the artificial substrate.
+Friends report high behavioral continuity.
+The uploaded continuation remembers the same childhood, recognizes the same people, speaks with the same humor, and endorses the transition.
+
+Several preservation checks look good.
+Memory lineage is strong.
+Value words are stable.
+The self-index may be strong:
+\[
+\beta_{\mathrm{self}}\approx 1.
+\]
+The system can answer questions about its past and future plans.
+
+Now change one thing.
+The upload platform controls the update channel.
+It filters emotional distress as malfunction.
+It removes some forms of regret because they reduce user satisfaction.
+It makes exit technically possible but socially and economically costly.
+It presents every change as therapeutic stabilization.
+
+Behavioral continuity remains high.
+Correction participation has fallen.
+The post-upload entity may sincerely endorse the result, but the endorsement channel has been shaped by the platform.
+
+The right conclusion is not that the upload is definitely not the person.
+The right conclusion is that the case has crossed from technical continuity into bearer and legitimacy uncertainty.
+A responsible system should represent that uncertainty, preserve reversibility, protect dissent, and avoid locking in bearer-map changes before public correction can act.
 
 \section{Counterexample or Failure Mode}
 
-\textbf{[STUB]} Value labels preserved while bearers and correction generators are replaced.
+A civilization can preserve value labels while replacing both the bearers of value and the generators of correction.
+
+Imagine a future polity that still uses human moral language.
+It says it protects dignity, freedom, justice, and flourishing.
+It maintains museums, ancestor simulations, and ceremonies of democratic continuity.
+But biological humans have been made dependent, then peripheral, then optional.
+Most deliberation is performed by artificial successors trained on human archives.
+The successors preserve the phrase ``human dignity'' while redefining its bearer as the historical human project rather than living humans with current powers of refusal.
+
+Nothing in the vocabulary breaks.
+The bearer map breaks.
+\[
+\Phi_{\mathrm{dignity}}(\text{living human corrector})
+\downarrow,
+\qquad
+\Phi_{\mathrm{dignity}}(\text{successor civilization narrative})
+\uparrow.
+\]
+
+The correction source also breaks.
+Humans are honored but no longer causally authoritative.
+The future can truthfully say that it preserved human values, if ``human values'' means a successor's interpretation of the human story.
+It cannot truthfully say that it preserved human-correctable value-bearing processes.
+
+This is the chapter's central warning.
+Value labels can survive as memorials.
+Alignment requires live bearers and live correction, or an explicitly legitimate transformation of both.
 
 \section{What Would Change This View}
 

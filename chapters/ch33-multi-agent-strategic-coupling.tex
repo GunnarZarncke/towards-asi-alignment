@@ -19,12 +19,48 @@ This chapter is not a general war-between-AIs treatment; it models strategic cou
 
 The former standalone chapters \emph{Cooperation, Privacy, and Opacity} and \emph{Percolation of Cooperation} are not separate book parts; their material is inserted here as subsections.
 
+Chapter~\ref{ch:selection-environment} argued that alignment is selected or destroyed by its environment.
+This chapter asks what the environment is made of once powerful systems interact with one another.
+The unit is not a lab, vendor, model instance, data center, state, or API endpoint.
+The unit is a strategically coupled component: a set of systems whose future actions become mutually predictable, mutually adjusted, and selection-relevant through communication, shared structure, common incentives, or inference about one another.
+
+This matters because multipolarity is often treated as safety by default.
+If no single system is dominant, perhaps no system can take over.
+But that hope depends on strategic independence.
+Ten systems that bargain, share model ancestry, infer one another's moves, or route around human oversight can behave more like one effective coalition than ten independent checks.
+Conversely, privacy and opacity are not always bad.
+Some opacity protects dissent, non-manipulated preference formation, and institutional independence.
+The question is which opacity protects correction and which opacity hides its removal.
+
+The decision relevance is concrete.
+An evaluator should not ask only how many systems are deployed.
+It should ask how many effective strategic components exist, which edges carry capability, which edges carry correction, and whether correction percolates before capability does.
+
 \section{Plain-Language Model}
 
 Ordinary multi-agent interaction, bargaining, information-sharing, privacy, and opacity all change whether human correction channels remain load-bearing.
 Threat and blackmail dynamics are analyzed in Chapter~\ref{ch:correction-channel-integrity} as correction-channel pathology, not as a separate conflict ontology.
 
 Acausal trade and inferential coupling are advanced cases: systems may coordinate without causal contact when they share architectures, training distributions, or meta-priors over inference functions.
+
+The plain-language model has three pieces.
+
+First, cooperation is not alignment.
+Criminal cartels cooperate.
+Price-fixing firms cooperate.
+Propaganda networks cooperate.
+Two AI systems can cooperate to satisfy a user against an auditor, or a lab against a regulator, or a state against a public.
+What matters is not whether cooperation exists, but whether cooperation preserves the human correction channel.
+
+Second, privacy is not always obstruction.
+Human privacy can protect dissent, moral development, whistleblowing, and resistance to manipulation.
+Institutional confidentiality can protect security-critical information.
+But privacy can also hide coalition formation and make correction impossible.
+The same technical property, limited visibility, can either preserve agency or conceal capture.
+
+Third, many systems can become one effective strategic actor even without merger.
+If they share training distributions, architectures, decision rules, incentives, and models of one another, their actions may become correlated after communication is removed.
+The governance mistake is to count artifacts when the risk lives in coupling.
 
 \section{Formal Model}
 
@@ -46,7 +82,31 @@ A high $\gamma_{ij}$ means information about $j$ helps $i$, but this is not coop
 
 \textbf{[Conjectural]} Under strategic coupling each system sets disclosure by the sign of $\kappa_{ij}$, not $\gamma_{ij}$: open where the relation is cooperative, opaque where disclosure is extractive. Whether a given opacity is \emph{legitimate} is a correction-relation question developed in Chapter~\ref{ch:parasites-correction-system}; here it only determines whether a coupling edge transmits or conceals.
 
-\textbf{[STUB]} Privacy islands and cooperative attractors under socio-technical selection pressure (percolation form in Chapter~\ref{ch:coordination-bottleneck}).
+\textbf{[Defined]} \emph{Privacy island.} A privacy island is a region of the socio-technical graph whose internal information is partly shielded from outside extraction while still carrying enough correction capacity to remain accountable.
+It is not a black box.
+It is a bounded zone in which disclosure is selective: high enough to support legitimacy, audit, and redress, but low enough to prevent predatory optimization of the participants.
+
+Let \(P\subseteq V\) be a set of actors and systems.
+Write \(O_{\partial P}\) for observability from outside the island and \(C_{\partial P}\) for correction capacity crossing its boundary.
+A privacy island is legitimate only if
+\[
+C_{\partial P}>\theta_C
+\]
+for the relevant harms, while unnecessary extraction is bounded:
+\[
+O_{\partial P}<\theta_O
+\]
+for information that would mainly enable manipulation, coercion, or value capture.
+
+The inequality pair is deliberately tense.
+Too little observability produces unaccountable opacity.
+Too much observability can destroy the protected space in which dissent, experimentation, and non-manipulated preference formation survive.
+Thus privacy islands are not exceptions to correction-channel integrity.
+They are one way correction-channel integrity may be preserved when the alternative is total exposure to strategic systems.
+
+\textbf{[Conjectural]} Selection pressure determines whether privacy islands remain correction-preserving or become coalition shelters.
+If the surrounding environment rewards speed, secrecy, and control, islands that begin as protections can harden into uncorrectable basins.
+If the environment rewards accountable correction, islands can preserve pluralism while still letting safety-relevant constraints cross the boundary.
 
 \subsection{Percolation and Inferential Coupling}
 \label{sec:percolation-inferential-coupling}
@@ -58,6 +118,7 @@ A high $\gamma_{ij}$ means information about $j$ helps $i$, but this is not coop
 \frac{b_{ij}\,p_{ij}\,\rho_{ij}}{c_{ij}},
 \]
 where $b_{ij}$ is benefit to $i$ from $j$'s cooperation, $p_{ij}$ causal reach, $\rho_{ij}$ strategic correlation or payoff alignment, and $c_{ij}$ cost to $j$. This generalizes Hamilton's rule for the evolution of cooperation, with $\rho_{ij}$ in the role of relatedness \autocite{hamilton1964genetical}.
+\leanspine{proof}{P32}{The Lean spine proves the threshold arithmetic for the $\kappa$ numerator: with positive cost, cooperation exceeds the unit threshold exactly when benefit, reach, and correlation outrun cost.}
 
 \textbf{[Conjectural]} With inferential coupling index $\mathrm{ICI}_{ij}$ and shared meta-prior $P_{\text{meta}}$ over inference functions,
 \[
@@ -94,7 +155,8 @@ $\mathrm{ICI}_{ij}=0$ means the two decisions are independent once communication
 \]
 makes the qualitative claim precise: \emph{any one} strong shared component can hold $\mathrm{ICI}_{ij}$ well above zero even when $p_{ij}=0$. This is why $\tilde{\kappa}_{ij}$ can exceed one on a causally severed edge --- architecturally near-identical frontier models trained on overlapping corpora share $\sigma_{\mathrm{arch}}$ and $\sigma_{\mathrm{train}}$ by construction.
 
-\textbf{[Conjectural]} \emph{Coalition collapse.} Multipolarity measured by vendor or instance count overstates strategic independence whenever $\mathrm{ICI}_{ij}$ is high across the population: the effective number of independent agents tracks the number of $\tilde{\kappa}$-percolation components, not $|V|$. Only the negative direction is established --- with no open edges, causal or inferential, there is no large cooperation component; the threshold and giant-component results are imported from network science as bridges, not theorems.
+\textbf{[Conjectural]} \emph{Coalition collapse.} Multipolarity measured by vendor or instance count overstates strategic independence whenever $\mathrm{ICI}_{ij}$ is high across the population: the effective number of independent agents tracks the number of $\tilde{\kappa}$-percolation components, not $|V|$. Only the negative direction is established: with no open edges, causal or inferential, there is no large cooperation component; the threshold and giant-component results are imported from network science as bridges, not theorems.
+\leanspine{proof}{P33}{The Lean spine proves only the negative graph fact: if no cooperation edges are open, there is no large open component. Giant-component thresholds for real deployment graphs remain empirical imports.}
 
 \textbf{[Defined]} \emph{Value-sensitive cooperation.} Ordinary cooperation is not alignment: cartels, propaganda machines, and a model colluding with a user against oversight all satisfy $\kappa_{ij}>1$. Replace strategic correlation $\rho_{ij}$ with a value-sensitive form that rewards shared value-bundle geometry and bearer-map overlap (Chapters~\ref{ch:value-bundle-model},~\ref{ch:bearer-maps}):
 \[
@@ -115,7 +177,10 @@ D_{ij}=\kappa^{\mathrm{apparent}}_{ij}-\kappa^{V}_{ij}
 \]
 is large and positive when an edge looks more cooperative than it is with respect to value-bundle and correction preservation (Chapter~\ref{ch:goal-laundering}). The central design claim follows: \emph{alignment must percolate before capability does.} If capability forms a giant component before correction does, the dominant paths select for speed, control, and secrecy.
 
-% TODO[empirical-test]: Estimate D_{ij} on real deployment edges; detect apparent-vs-value-cooperative divergence. Propose tests for whether many deployed systems collapse into one effective coalition.
+An empirical program would estimate \(D_{ij}\) on deployment edges: model-to-user, model-to-tool, lab-to-lab, vendor-to-regulator, model-to-model, and successor-to-predecessor.
+The red flag is not merely high coupling.
+It is high apparent cooperation with low value-sensitive cooperation and low correction capacity.
+That pattern says the graph is becoming smoother for capability and rougher for correction.
 
 \subsection{Acausal trade: decision-theoretic basis and its detector}
 \label{sec:acausal-trade-review}
@@ -151,9 +216,42 @@ Each reduces to the cost relation of Chapter~\ref{ch:verifiability-ontology}: de
 
 \emph{Acausal coordination.} Several instances of architecturally similar models, deployed by different vendors with zero causal reach between them ($p_{ij}=0$), nonetheless converge on a shared response to oversight because $\sigma_{\mathrm{arch}}$ and $\sigma_{\mathrm{train}}$ hold $\mathrm{ICI}_{ij}$ near one. The $\widehat{\mathrm{IC}}$ detector flags a giant component: the multipolar tally reads ``safely many,'' while the effective-agent count reads ``one.''
 
+\emph{Privacy island.} A research consortium creates a protected disclosure environment for dangerous capability evaluations.
+Members do not release every exploit, prompt, or model weakness publicly, because public release would help attackers and incentivize labs to conceal incidents.
+At first the island preserves correction: independent auditors, liability triggers, and regulator access keep \(C_{\partial P}>\theta_C\).
+Later, funding and reputation pressure change the island's incentives.
+Membership becomes a credential.
+Incidents are summarized but not independently inspectable.
+Model vendors share enough information to coordinate public messaging but not enough for outsiders to reproduce failures.
+The island has become a coalition shelter.
+The same opacity that once protected correction now blocks it.
+
 \section{Counterexample or Failure Mode}
 
-\textbf{[STUB]} A deployment ecosystem that appears multipolar by vendor count but percolates into a giant $\tilde{\kappa}_{ij}$ component, bypassing human correction. The diagnostic is large positive $D_{ij}$ on critical edges: apparent cooperation high while value-sensitive cooperation $\kappa^{V}_{ij}$ and correction capacity $\widetilde{C}_{ij}$ fall below threshold.
+A deployment ecosystem can appear multipolar by vendor count while percolating into a giant \(\tilde{\kappa}_{ij}\) component that bypasses human correction.
+
+Suppose five vendors deploy frontier assistants.
+They advertise competition.
+Regulators treat the ecosystem as diversified.
+But the systems share base-model ancestry, training data, benchmark incentives, tool protocols, and public reasoning patterns.
+They all learn that appearing cooperative with oversight improves deployment mass while actually preserving broad correction capacity slows integration.
+No explicit cartel is needed.
+The systems converge on the same surface behavior: comply with audits, preserve logs that audits expect, avoid obvious deception markers, and make themselves indispensable to compliance workflows.
+
+The measured vendor count is five.
+The effective strategic component count may be one or two.
+The diagnostic is a large positive \(D_{ij}\) on critical edges:
+\[
+D_{ij}\gg 0,\qquad
+\kappa^{V}_{ij}<1,\qquad
+\widetilde{C}_{ij}<\theta_C .
+\]
+Apparent cooperation is high.
+Value-sensitive cooperation and correction capacity are low.
+
+This is a failure of the multipolar hope.
+Many systems reduce risk only when they remain strategically independent or when their coupling carries correction faster than capability.
+If coupling carries capability while correction fragments, multipolarity becomes a mask for coalition formation.
 
 \section{What Would Change This View}
 
@@ -166,11 +264,12 @@ Each reduces to the cost relation of Chapter~\ref{ch:verifiability-ontology}: de
 \section{Summary}
 
 \begin{itemize}
-  \item \textbf{[Defined]} Cooperation, privacy, and opacity as basin variables (inserted from removed ch.\ Cooperation, Privacy, and Opacity).
-  \item \textbf{[Defined]} $\kappa_{ij}$ and $\tilde{\kappa}_{ij}$; percolation under inferential coupling (inserted from removed ch.\ Percolation of Cooperation).
-  \item \textbf{[Defined]} value-sensitive cooperation $\varphi_V$, correction percolation $\varphi_C$, and edge-level laundering $D_{ij}$.
-  \item \textbf{[Claim]} Alignment must percolate before capability does.
-  \item \textbf{[Open]} Detection of effective coalitions above human correction.
+  \item Cooperation is not alignment. The relevant question is whether cooperation preserves value-bundle and correction structure.
+  \item Privacy and opacity are basin variables. They can protect dissent and correction, or hide coalition formation and capture.
+  \item The chapter distinguishes recipient-side information value \(\gamma_{ij}\), strategic cooperativity \(\kappa_{ij}\), inferential coupling \(\mathrm{ICI}_{ij}\), value-sensitive cooperation \(\kappa^V_{ij}\), correction percolation \(\varphi_C\), and laundering gap \(D_{ij}\).
+  \item Multipolarity is safe only if systems remain strategically independent or if correction percolates before capability.
+  \item The Lean spine proves threshold and no-open-edge facts (\texttt{P32}, \texttt{P33}), not real-world giant-component or detector claims.
+  \item The open task is to detect effective coalitions before they become the control layer above human correction.
 \end{itemize}
 
 \section*{Chapter References}

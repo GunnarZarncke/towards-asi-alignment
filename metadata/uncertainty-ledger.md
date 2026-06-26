@@ -17,14 +17,14 @@ Open problems and unresolved uncertainties tracked across the manuscript.
 | U-09 | Is the compression test for intention robust against semantic camouflage and decomposition attacks? | ch21, ch37 | A-006, C-009 |
 | U-10 | What are sufficient conditions for alignment-basin stability under competitive selection? | ch32, ch35 | C-007 |
 | U-11 | Pivotal process: conditions for $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ without unilateral decisive action? | ch35, ch40 | C-007 |
-| U-12 | Can effective AI coalitions / inferential coupling be detected and indexed? | ch33 (stub) | C-001, C-007 |
+| U-12 | Can effective AI coalitions / inferential coupling be detected and indexed adversarially? | ch33 | C-001, C-007 |
 | U-13 | Can successors be certified without full construction understanding? | ch31 | A-007, C-006 |
-| U-14 | Do safety-case templates scale to frontier systems? | ch39 (stub), appG | C-002, C-044 |
+| U-14 | Do safety-case templates scale to frontier systems under adversarial optimization? | ch39, ch39b, appG | C-002, C-044 |
 | U-15 | Can institutional designs reliably preserve correction-channel capacity over time? | ch32, ch34 | A-003, A-005, C-007 |
 
 ## Notes
 
-- U-12 and U-14 are weakly covered because ch33 (multi-agent) and ch39 (safety case) are still stubs; these are tracked in `metadata/TODO.md`.
+- U-12 and U-14 now have manuscript homes in ch33 and ch39, but remain open as adversarial/empirical questions. appG safety-case template is still pending.
 - U-08 and U-11 are partly philosophical / governance questions and are acknowledged as limits (see C-011, status `limit`).
 
 See also `metadata/open-problems.md` (research-direction framing) and `metadata/claims-ledger.md` / `metadata/assumptions-ledger.md` for the claims and assumptions each uncertainty threatens.

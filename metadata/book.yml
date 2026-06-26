@@ -8,7 +8,7 @@ word_target_total: 350000
 chapters:
   ch01:
     title: "The Wrong Object of Alignment"
-    status: draft
+    status: reviewed
     word_target: 7000
     formal_density: low
     reviewer_needed: [alignment, governance]
@@ -32,19 +32,19 @@ chapters:
     reviewer_needed: [alignment, philosophy]
   ch05:
     title: "Assumptions, Scope, and Failure Coverage"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: low
     reviewer_needed: [alignment, governance]
   ch06:
     title: "What Is an Agent Without Anthropomorphism?"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, information-theory]
   ch07:
     title: "Finding the Boundary"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
@@ -62,7 +62,7 @@ chapters:
     reviewer_needed: [alignment, governance]
   ch10:
     title: "Agency Under Strategic Opacity"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, game-theory]
@@ -98,19 +98,19 @@ chapters:
     reviewer_needed: [neuroscience, alignment]
   ch16:
     title: "The Value-Bundle Model"
-    status: draft
+    status: reviewed
     word_target: 9000
     formal_density: high
     reviewer_needed: [neuroscience, alignment]
   ch17:
     title: "When Low Dimensionality Helps Value Learning"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch18:
     title: "What Values Apply To"
-    status: draft
+    status: reviewed
     word_target: 7000
     formal_density: medium
     reviewer_needed: [philosophy, alignment]
@@ -122,7 +122,7 @@ chapters:
     reviewer_needed: [alignment, mathematics]
   ch20:
     title: "From Rewards to Values"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
@@ -134,13 +134,13 @@ chapters:
     reviewer_needed: [alignment, information-theory]
   ch22:
     title: "Has the Goal Really Survived?"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
   ch23:
     title: "When the Words Survive but the Meaning Doesn't"
-    status: draft
+    status: reviewed
     word_target: 9000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
@@ -152,19 +152,19 @@ chapters:
     reviewer_needed: [alignment, governance]
   ch25:
     title: "Correction-Channel Integrity"
-    status: draft
+    status: reviewed
     word_target: 9000
     formal_density: high
     reviewer_needed: [information-theory, control-theory]
   ch26:
     title: "Beyond Following Instruction"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch27:
     title: "Manipulation, Domestication, and False Consent"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
@@ -200,7 +200,7 @@ chapters:
     reviewer_needed: [alignment, governance]
   ch33:
     title: "Multi-Agent Superintelligence and Strategic Coupling"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, game-theory]
@@ -218,31 +218,31 @@ chapters:
     reviewer_needed: [alignment, governance]
   ch36:
     title: "Passive Observation Is Not Enough"
-    status: draft
+    status: reviewed
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment]
   ch37:
     title: "Detecting Goal Laundering"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
   ch38:
     title: "Checking a System at Every Level"
-    status: draft
+    status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
   ch39:
     title: "A Safety Case for Superintelligence Alignment"
-    status: stub
+    status: draft
     word_target: 10000
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch39b:
     title: "What Survives an Adversary: Verifiability and Representability"
-    status: draft
+    status: reviewed
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment, formal-verification]
@@ -267,13 +267,13 @@ chapters:
     reviewer_needed: [philosophy, neuroscience]
   ch43:
     title: "Who Still Counts After Transformation"
-    status: stub
+    status: reviewed
     word_target: 8000
     formal_density: low
     reviewer_needed: [philosophy, alignment]
   ch44:
     title: "Towards Superintelligence Alignment"
-    status: stub
+    status: draft
     word_target: 8000
     formal_density: low
     reviewer_needed: [alignment, governance]

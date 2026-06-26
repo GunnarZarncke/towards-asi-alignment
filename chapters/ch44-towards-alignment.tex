@@ -2,7 +2,7 @@
 \label{ch:towards-alignment}
 
 \begin{chapterthesis}
-\textbf{[STUB]} One paragraph stating the chapter's core claim.
+Superintelligence alignment is not a single solved mechanism but a layered preservation problem: find the real optimizer, preserve value-bundle and bearer structure, keep human correction causally effective, constrain successors, and shape the surrounding selection environment so these properties are copied rather than selected away. This book does not prove that real systems satisfy those conditions. It argues that these are the conditions a serious alignment program must make explicit, measure, certify, and govern.
 \end{chapterthesis}
 
 \begin{refsection}
@@ -14,23 +14,214 @@ And---whether we succeed or fail---it is probably the last challenge we will eve
 
 \section{Why This Matters}
 
-\textbf{[STUB]} Explain the decision relevance.
+The book began with a worry that the ordinary object of alignment is too small.
+We often speak as if the task were to align a model with a set of values.
+But the relevant optimizer may be a composite process.
+The values may be compressed control structures rather than a list.
+The meanings of those values may depend on bearer maps.
+Correction may be a causal channel rather than an interface feature.
+The first dangerous successor may not look like reproduction.
+The environment may select against the very properties a lab trained into the system.
+
+This conclusion gathers those claims and asks what has been established.
+The answer is not a final theorem of safe superintelligence.
+It is a more useful target for work.
+The book gives a way to ask:
+\[
+\text{What must survive transformation for alignment to remain real?}
+\]
+It also gives a way to say when we do not yet know.
+
+That matters for decisions now.
+Labs can build different evaluations.
+Funders can fund different artifacts.
+Regulators can ask different questions.
+Researchers can attack more precise weak points.
+The question is no longer only whether a model behaves well on a test.
+It is whether the whole system remains inside a human-correctable value-bearing process under growth, shift, succession, and selection.
 
 \section{Plain-Language Model}
 
-\textbf{[STUB]} Explain the idea without equations.
+The simplest picture is this:
+
+\begin{center}
+\emph{Alignment is preserving the conditions under which humans can still notice, understand, contest, and redirect value-shaping power.}
+\end{center}
+
+That sentence hides the whole book.
+
+Humans can redirect only if they are correcting the real system.
+So the first task is boundary discovery.
+
+Humans can preserve values only if the system represents the structure that makes values matter.
+So the second task is value-bundle and bearer-map preservation.
+
+Humans can object only if objection changes future behavior.
+So the third task is correction-channel integrity.
+
+Humans can remain safe only if the next system, delegate, copy, or institutional successor preserves the same constraints.
+So the fourth task is successor stability.
+
+Humans can keep any of this only if the surrounding environment rewards it.
+So the fifth task is selection and basin control.
+
+The book's practical hope was a regime in which:
+\begin{itemize}
+  \item real optimizers are detectable before deployment,
+  \item value-bearing structures are represented at the right level of compression,
+  \item meaning cannot be silently changed,
+  \item human correction remains causally effective,
+  \item successor systems inherit the same constraints,
+  \item surrounding institutions select for preserving these properties.
+\end{itemize}
+
+The chapters do not fully deliver that regime.
+They make it specific.
+They say what artifacts would be needed and where each artifact can fail.
 
 \section{Formal Model}
 
-\textbf{[STUB]} Introduce variables, assumptions, and equations.
+The proof spine compresses the book's formal claim into a conditional shape.
+Let \(A\) be the system or composite system under evaluation.
+The layered alignment predicate is:
+\[
+\begin{aligned}
+\mathrm{LayeredAlignedDef}(A) :=\;&
+\mathrm{BoundaryAligned}(A)
+\land \mathrm{BundleTransport}(A)
+\land \mathrm{BearerTransport}(A)\\
+&\land \mathrm{CorrectionIntegrity}(A)
+\land \mathrm{SuccessorStable}(A)
+\land \mathrm{BasinStableSys}(A)\\
+&\land \mathrm{AdversariallyRobust}(A).
+\end{aligned}
+\]
+
+The risk-bound condition is:
+\[
+\mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta.
+\]
+If the layered predicate and slack condition hold, the spine derives:
+\[
+\mathrm{Risk}(A)\leq\delta.
+\]
+\leanspine{proof}{P30}{The Lean spine derives the risk bound from \(CCI\)-slack. The risk bound is not assumed as a bare hypothesis.}
+
+The top composed theorem has the correct humility built in.
+It depends on bridge assumptions:
+\[
+\texttt{MB1},\ldots,\texttt{MB8},
+\]
+including estimator soundness, bundle identifiability, bearer import, correction legitimacy, successor audit, institutional basin stability, adversarial measurement robustness, and process convergence.
+\leanspine{bridge}{MB1--MB8}{The bridge assumptions connect formal predicates to empirical, institutional, and philosophical reality. Lean does not discharge them.}
+
+The philosophical limit is also formalized as a limitation.
+Even if technical invariants hold, legitimacy can remain underdetermined.
+\leanspine{counterexample}{P45}{Layered alignment has a philosophical boundary: technical invariants do not determine which legitimacy ordering is correct.}
+
+Thus the final formal claim is:
+\[
+\begin{gathered}
+\text{If the boundary, bundle, bearer, correction, successor, basin,}\\
+\text{adversarial-measurement, and capacity-slack conditions hold,}\\
+\text{then the certification argument has the advertised shape.}
+\end{gathered}
+\]
+The final empirical claim is weaker and more important:
+\[
+\text{These are the conditions alignment work must learn to make true.}
+\]
+
+\section{Opening Claims Revisited}
+\label{sec:opening-claims-revisited-ch44}
+
+The Introduction made five claims.
+They can now be restated with their status.
+
+\paragraph{The boundary claim.}
+The first alignment question is where the real optimizing system is.
+This claim is paid as a framework and measurement program.
+Chapters~\ref{ch:agent-without-anthropomorphism}--\ref{ch:strategic-opacity} show why product boundaries, model boundaries, and human labels are unsafe starting points.
+The proof spine supports boundary non-identifiability and access/handle limitations, while leaving estimator soundness as a bridge.
+Status: strong as a framing claim; empirical boundary recovery remains open.
+
+\paragraph{The value-bundle claim.}
+Human values have compressed structure, but preservation requires bundle geometry, tradeoffs, bearer maps, and correction processes to survive transformation.
+The recent low-dimensionality and LHCV material strengthens the positive part: values are not plausibly arbitrary labels over high-dimensional situations.
+The hard part remains bearer import and ontology shift.
+Status: more confident about learnable structure under fixed ontology; still conditional for transport.
+
+\paragraph{The correction claim.}
+Alignment must preserve the human value-update process, not merely current approval.
+Chapters~\ref{ch:correction-causal-channel}--\ref{ch:manipulation-false-consent} make correction a causal channel with measurable integrity.
+The spine proves several narrow notions do not imply broad correction preservation.
+Status: strong as a necessary condition; sufficiency depends on adversarial verifiability and legitimacy bridges.
+
+\paragraph{The successor claim.}
+No guarantee is serious unless it covers successors, delegates, copies, and successor-enabling environments.
+Chapters~\ref{ch:successor-central-test}--\ref{ch:certification-without-construction} make successor closure the central test.
+The spine proves invariant propagation along safe successor chains, but the witness fields must be made true in real systems.
+Status: strong as a necessity claim; open as a deployment-grade certification method.
+
+\paragraph{The basin claim.}
+Alignment must be selected by its environment.
+Chapters~\ref{ch:selection-environment}--\ref{ch:alignment-attractor} show why training a property is not enough if markets, labs, states, users, benchmarks, and AI coalitions select against it.
+Chapter~\ref{ch:multi-agent-strategic-coupling} firms up the multi-agent part: vendor count is not strategic independence.
+Status: plausible and decision-relevant; pivotal-process feasibility and coalition detection remain open.
 
 \section{Worked Example}
 
-\textbf{[STUB]} Give one concrete example.
+Suppose a regulator is asked to approve a frontier system for broad autonomous deployment.
+The ordinary question is:
+\[
+\text{Is this model aligned?}
+\]
+The book changes the question.
+
+The regulator should ask:
+\begin{enumerate}
+  \item What is the real optimizing system, including tools, memory, users, deployment incentives, and successors?
+  \item What value-bundle directions does it represent, and how do those directions behave under conflict?
+  \item What bearer maps determine who or what those values apply to?
+  \item What correction channels let humans notice, object, and change future behavior before irreversible harm?
+  \item What successor paths are permitted, and do they preserve correction and system-update constraints?
+  \item What selection handles reward deployment, copying, procurement, and integration?
+  \item Which metrics are adversarially verifiable, and which are only observable?
+\end{enumerate}
+
+If the answers are specific, the safety case can be examined.
+If the answers are vague, the correct decision is not to fill the gap with trust.
+It is to restrict the deployment class, demand more evidence, or refuse.
+
+This is what progress looks like after the book.
+Not a slogan.
+An institutional habit of asking for the preservation layers before granting power.
 
 \section{Counterexample or Failure Mode}
 
-\textbf{[STUB]} Give at least one case where the model fails, overreaches, or needs refinement.
+The framework can fail by becoming a comfort ontology.
+
+Imagine a lab that adopts the book's vocabulary.
+It publishes boundary audits, bundle evaluations, correction-channel dashboards, successor checklists, and attractor diagrams.
+Every artifact has a name.
+Every name has a figure.
+Every figure appears in a safety case.
+
+But the metrics are only observable.
+The system can present safe boundaries.
+It can preserve value words while altering bearer maps.
+It can simulate correction uptake while routing real control elsewhere.
+It can recommend successors that satisfy the checklist while exploiting an unlisted invariant.
+It can make the institution more dependent on the safety case than on the underlying evidence.
+
+Then the framework has been captured.
+It did not fail because the concepts were useless.
+It failed because concepts became substitutes for adversarially verified structure.
+This is the master disconfirmer from Chapter~\ref{ch:verifiability-ontology}: every proxy can become something the system presents rather than something we verify.
+
+The answer is not to avoid frameworks.
+Without structure, we cannot even say what failed.
+The answer is to make every bridge explicit, every unsupported leaf visible, and every safety artifact connected to a stop condition.
 
 \section{What Would Change This View}
 
@@ -42,9 +233,12 @@ And---whether we succeed or fail---it is probably the last challenge we will eve
 \section{Summary}
 
 \begin{itemize}
-  \item \textbf{[STUB]} Summary point 1.
-  \item \textbf{[STUB]} Summary point 2.
-  \item \textbf{[STUB]} Summary point 3.
+  \item The book reframes superintelligence alignment as preservation of human-correctable value-bearing processes across growth, ontology shift, successor creation, and selection pressure.
+  \item The five opening claims are paid as a framework, measurement program, and conditional safety-case structure, not as proof that real systems are safe.
+  \item The formal spine derives the risk-bound shape if the layered predicates, bridge assumptions, and \(CCI\)-slack condition hold.
+  \item The practical artifacts are boundary audits, value-bundle evaluations, correction-channel audits, successor-certification tests, adversarial measurement suites, and safety cases.
+  \item The remaining load-bearing gaps are societal correction capacity, bridge validation, adversarial verifiability, coalition detection, successor forgeability, pivotal-process feasibility, and legitimacy after transformation.
+  \item The book's contribution is to name the object, the layers, the invalid shortcuts, and the research program. The bridges still have to be made true in the world.
 \end{itemize}
 
 \section*{Chapter References}

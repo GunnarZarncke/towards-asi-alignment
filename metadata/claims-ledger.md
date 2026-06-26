@@ -157,11 +157,11 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 **Support:**
 - selection-vs-training distinction; deployment-fitness traps and false attractors
-- multi-agent strategic coupling (cooperation/opacity basins)
+- multi-agent strategic coupling (cooperation/opacity basins, inferential coupling, privacy islands, coalition-collapse failure mode)
 - alignment-attractor model (artifact conductivity across research/engineering/governance)
 
 **Weakest link:**
-- conditions for the benign basin to dominate are not established (open problem); multi-agent chapter (ch33) is still a stub
+- conditions for the benign basin to dominate are not established; effective coalition detection and pivotal-process feasibility remain open
 
 **What would update against it:**
 - evidence that locally aligned systems remain aligned under realistic competitive selection without environmental design
@@ -262,16 +262,18 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 **Chapter(s):** 44 (conclusion)
 
-**Status:** **open — not yet discharged.** ch44 is a stub (`metadata/book.yml`), as is ch39 (safety-case synthesis). The opening promises are currently unpaid; see `metadata/TODO.md` (Opening-promise reconciliation).
+**Status:** draft-discharge complete as of 2026-06-26. ch39 assembles the conditional safety-case structure; ch44 explicitly revisits and softens/discharges the opening promises at manuscript-draft strength. Remaining gaps are bridge validation, adversarial verifiability, and appendix/template follow-through, not absence of a conclusion.
 
 **Support:**
-- n/a until ch44/ch39 are written
+- ch44 §Opening Claims Revisited discharges the five intro claims with status labels
+- ch39 safety-case chapter supplies the sixth progress artifact and proof/bridge/refusal graph
+- ch43 supplies the bearer/merger philosophical limit needed for Part X closure
 
 **Weakest link:**
-- the book has no real conclusion yet; this is the highest-priority completeness gap
+- the conclusion remains conditional on the same bridges named in ch39/ch39b; the safety-case template appendix is still a follow-through artifact
 
 **What would update against it:**
-- writing ch44 and explicitly closing each of the five claims
+- review showing that the opening promises require frontmatter softening beyond ch44's current status labels, or that ch39's safety-case graph omits a load-bearing artifact
 
 **References:**
 - see `review/full-book-continuity-review-2026-06-22.md` §completeness
