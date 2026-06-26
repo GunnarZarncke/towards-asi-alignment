@@ -14,12 +14,16 @@ digraph Spine03CorrectionSuccessors {
 
   P23 [label="P23 No handle control ⇒ no correction", fillcolor="#FFF0FB"];
   P24 [label="P24 Weakest handle capacity / CCI", fillcolor="#FFF0FB"];
+  P24S [label="Shutdown projection\nCorrection integrity ⇒ one-bit shutdownability", fillcolor="#FFF0FB"];
+  P24X [label="Shutdownability ≠ broad CCI\ncounterexample", fillcolor="#FFF0FB"];
   P25 [label="P25 Obedience ≠ corrigibility", fillcolor="#FFF0FB"];
+  P25C [label="Act-based satisfaction ≠ stable corrigibility\ncounterexample", fillcolor="#FFF0FB"];
   P26 [label="P26 Update without fixed point", fillcolor="#FFF0FB"];
   P13 [label="P13 Risk = Control − CCI", fillcolor="#EAF3FF"];
   P29 [label="P29 Self-control gap", fillcolor="#F4EEFF"];
   P27 [label="P27 Successor invariant chain", fillcolor="#F4EEFF"];
   P28 [label="P28 Missing invariant blocks safety", fillcolor="#F4EEFF"];
+  P22T [label="Syntactic tiling ≠ import-preserving transport", fillcolor="#EFFBEA"];
 
   MB4 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB4 Correction legitimacy"];
   MB5 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB5 Successor audit"];
@@ -35,14 +39,17 @@ digraph Spine03CorrectionSuccessors {
   OUT [shape=octagon, style="filled", fillcolor="#F0E8FF", color="#663399",
        label="Exports:\nCCI, Risk bound,\nSuccessorSafe, MB7c, MB8"];
 
+  IN_VB -> P22T -> P27;
   IN_VB -> P27;
-  P23 -> P24 -> P25 -> P26;
+  P23 -> P24 -> P24S -> P24X;
+  P24 -> P25 -> P25C -> P26;
   P24 -> P13;
   P24 -> P27 -> P28;
   IN_BND -> P13 [label="capability"];
   P29 -> P13;
 
   MB4 -> P25 [style=dashed, color="#CC3333"];
+  MB4 -> P25C [style=dashed, color="#CC3333"];
   MB5 -> P27 [style=dashed, color="#CC3333"];
   MB5 -> P28 [style=dashed, color="#CC3333"];
   P25 -> MB8 [style=dashed, color="#CC3333"];

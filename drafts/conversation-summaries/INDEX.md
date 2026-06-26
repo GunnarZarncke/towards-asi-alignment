@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-26 | Shutdown, corrigibility, tiling | [2026-06-26-shutdown-corrigibility-tiling.md](2026-06-26-shutdown-corrigibility-tiling.md) |
 | 2026-06-26 | Boundary recovery bridge | [2026-06-26-boundary-recovery-bridge.md](2026-06-26-boundary-recovery-bridge.md) |
 | 2026-06-26 | Appendix count check fix | [2026-06-26-appendix-count-check-fix.md](2026-06-26-appendix-count-check-fix.md) |
 | 2026-06-26 | Formalism tone pass | [2026-06-26-formalism-tone-pass.md](2026-06-26-formalism-tone-pass.md) |

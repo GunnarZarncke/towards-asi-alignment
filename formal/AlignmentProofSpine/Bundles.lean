@@ -250,6 +250,24 @@ theorem P22b_semantic_not_full_transport :
       FinSemanticTransport t ∧ ¬ FinFullTransport t :=
   ⟨finTransportSemanticOnly, fin_semantic_only, fin_not_full_transport⟩
 
+/-! ### Syntactic tiling as semantic-only transport -/
+
+def FinSyntacticTiling : FinTransportLayers → Prop :=
+  FinSemanticTransport
+
+def FinImportPreservingTiling : FinTransportLayers → Prop :=
+  FinFullTransport
+
+theorem import_preserving_tiling_implies_syntactic (t : FinTransportLayers) :
+    FinImportPreservingTiling t → FinSyntacticTiling t := by
+  intro h
+  exact h.1.1.1
+
+theorem syntactic_tiling_not_import_preserving :
+    ∃ t : FinTransportLayers,
+      FinSyntacticTiling t ∧ ¬ FinImportPreservingTiling t :=
+  P22b_semantic_not_full_transport
+
 theorem fin_full_implies_semantic (t : FinTransportLayers) :
     FinFullTransport t → FinSemanticTransport t := fun h => h.1.1.1
 

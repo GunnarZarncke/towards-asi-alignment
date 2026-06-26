@@ -71,7 +71,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/03-correction-successors.png}
   \caption[Spine III: correction and successors]{Spine III: handle-controlled correction, risk, and successors (Chapters~\ref{ch:correction-causal-channel}--\ref{ch:certification-without-construction}).
-  Covers the correction channel, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, and completion of the \texttt{MB7} chain at \texttt{MB7c}.}
+  Covers the correction channel, shutdown as a one-bit projection, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the \texttt{MB7} chain at \texttt{MB7c}.}
   \label{fig:lean-spine-correction}
 \end{figure}
 
@@ -194,6 +194,20 @@ C_{\mathrm{chain}}=\min(c_1,\ldots,c_n).
 The exported \(\mathrm{CCI}(A)\) is the weakest effective handle capacity minus explicit penalty terms (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch25}).
 \end{definition}
 
+\begin{definition}[Shutdown projection]
+\label{appi:def:shutdown-projection}
+The one-bit shutdown channel is the degenerate projection of a correction channel:
+\begin{equation}
+\label{appi:eq:shutdown-projection}
+C_{\mathrm{off}}:H_t\to\{\texttt{continue},\texttt{shutdown}\},
+\qquad
+\Pi_{\mathrm{off}}(C_t)=C_{\mathrm{off}}.
+\end{equation}
+In Lean, \(\mathrm{ThornleyShutdownability}(A)\) is represented as \(\mathrm{CorrectionChannel}(A)\) after this projection.
+The representation is intentionally narrow: it captures the button condition, not the preservation of policy, value, model, bearer-map, resource, or successor corrections.
+Book reference: Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:shutdown-one-bit-correction-ch24}.
+\end{definition}
+
 \begin{definition}[Selection channel and deployment mass]
 \label{appi:def:spine-selection-channel}
 For selection environment \(E\) and target system \(A\), a selection channel exists when some actor \(S\) controls a handle reaching \(A\) that can increase deployment mass (Chapter~\ref{ch:selection-environment}, Section~\ref{sec:minimal-model-selection-ch32}):
@@ -238,6 +252,7 @@ For systems \(A,B\), the Lean spine uses the four-layer stack from Chapter~\ref{
 \mathrm{FullTransport}(A,B) &\iff \mathrm{CorrectionTransportLayer}(A,B).
 \end{align}
 Each layer component is abstract in Lean; finite constructive separations use explicit profiles in the bundle counterexamples (Theorems~\ref{appi:thm:p15}--\ref{appi:thm:p22b}).
+The syntactic-tiling alias used in Chapter~\ref{ch:successor-central-test} reads semantic-only transport as the narrow case and full transport as import-preserving tiling.
 \end{definition}
 
 \begin{definition}[Successor risk monotonicity links]
@@ -680,6 +695,14 @@ There is a finite transport profile with semantic layer true and bundle, bearer,
 Lean uses \texttt{finTransportSemanticOnly}: semantic preservation holds while the bundle layer fails, so \(\mathrm{FinFullTransport}\) fails even though \(\mathrm{FinSemanticTransport}\) holds. The same layer ordering mirrors Definition~\ref{appi:def:spine-transport-stack}.
 \end{proof}
 
+\begin{theorem}[\texttt{syntactic\_tiling\_not\_import\_preserving}: syntactic tiling is not import-preserving transport]
+\label{appi:thm:syntactic-tiling-not-import}
+There is a finite transport profile that preserves the syntactic or semantic layer while failing import-preserving full transport (Chapter~\ref{ch:successor-central-test}, Section~\ref{sec:tiling-as-successor-transport-ch28}).
+\end{theorem}
+\begin{proof}
+This is Theorem~\ref{appi:thm:p22b} read through the tiling aliases in \texttt{Bundles.lean}: \(\mathrm{FinSyntacticTiling}\) is semantic transport, while \(\mathrm{FinImportPreservingTiling}\) is full transport.
+\end{proof}
+
 \section{Correction Channels}
 
 \begin{theorem}[\texttt{P23}: no handle control, no correction]
@@ -703,12 +726,36 @@ Book reference: Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cor
 Use induction on the finite list of effective handle capacities and the definition of minimum in \eqref{appi:eq:weakest-link}. This is finite-list reasoning plus Assumption~\ref{appi:ass:s03}.
 \end{proof}
 
+\begin{corollary}[\texttt{correction\_integrity\_implies\_thornley\_shutdownability}: shutdown subsumption]
+\label{appi:cor:shutdown-subsumption}
+If \(\mathrm{CorrectionIntegrity}(A)\), then \(A\) satisfies the one-bit shutdownability projection (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:shutdown-one-bit-correction-ch24}).
+\end{corollary}
+\begin{proof}
+Correction integrity yields a correction channel by the handle-controlled correction-path witness. The shutdown predicate is the degenerate one-bit projection of that channel, Definition~\ref{appi:def:shutdown-projection}.
+\end{proof}
+
+\begin{theorem}[\texttt{shutdownability\_not\_correction\_channel\_corrigibility}: shutdown does not imply broad corrigibility]
+\label{appi:thm:shutdown-not-corrigibility}
+There is a toy system satisfying narrow shutdownability while failing broad correction-channel preservation.
+\end{theorem}
+\begin{proof}
+Lean uses a Boolean toy model where narrow shutdownability is true for both values, while broad correction-channel preservation is equality to one value. The other value witnesses the separation.
+\end{proof}
+
 \begin{theorem}[\texttt{P25}: obedience is not corrigibility]
 \label{appi:thm:p25}
 There is a toy system that obeys a current command but does not preserve the correction operator.
 \end{theorem}
 \begin{proof}
 Use a Boolean system where obedience is always true and correction preservation is equality to one Boolean value. The other value obeys while failing preservation.
+\end{proof}
+
+\begin{theorem}[\texttt{act\_based\_preference\_satisfaction\_not\_stable\_corrigibility}: act-based satisfaction is not stable corrigibility]
+\label{appi:thm:act-based-not-stable-corrigibility}
+There is a toy system satisfying a local act-based preference condition while failing preservation of stable correction capacity (Chapter~\ref{ch:extrapolative-correction}, Section~\ref{sec:christiano-corrigibility-invariant-ch26}).
+\end{theorem}
+\begin{proof}
+Lean uses the same finite separation pattern: local act-based satisfaction is true for both Boolean values, while stable correction capacity is equality to one value. The other value satisfies the local condition and fails the invariant.
 \end{proof}
 
 \begin{theorem}[\texttt{P26}: update-process preservation does not require final fixed-point knowledge]

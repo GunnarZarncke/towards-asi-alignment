@@ -64,34 +64,7 @@ It is the correction channel (Chapter~\ref{ch:correction-causal-channel}).
 
 A correction channel is the causal pathway by which humans and their institutions observe what matters, form judgments, deliberate about those judgments, express corrections, and cause future system behaviour to change before irreversible damage occurs.
 
-A minimal correction chain has the form
-\begin{equation}
-W_t
-\rightarrow
-O_t
-\rightarrow
-J_t
-\rightarrow
-D_t
-\rightarrow
-C_t
-\rightarrow
-U_{t+1}
-\rightarrow
-A_{t+k},
-\label{eq:correction-chain-ch26}
-\end{equation}
-where
-\begin{itemize}
-\item $W_t$ is the relevant world state,
-\item $O_t$ is what humans can observe,
-\item $J_t$ is human judgment over what was observed,
-\item $D_t$ is individual or institutional deliberation,
-\item $C_t$ is the expressed correction signal,
-\item $U_{t+1}$ is the system's update in response to correction,
-\item $A_{t+k}$ is later system action.
-\end{itemize}
-
+The correction chain is defined in Chapter~\ref{ch:correction-causal-channel} (Eq.~\eqref{eq:correction-chain-ch24}).
 Each arrow can fail.
 Humans may not see the relevant facts.
 They may see them but not understand them.
@@ -191,6 +164,64 @@ U_H \text{ remains legitimate.}
 
 The first risks premature moral closure.
 The second tries to keep moral learning alive \autocite{dewey1938logic,sen2009justice}.
+
+\subsection{Subsumption: Corrigibility as a Dynamical Invariant}
+\label{sec:christiano-corrigibility-invariant-ch26}
+
+Christiano-style corrigibility is broader than shutdownability.
+It is not only the willingness to accept a stop command.
+It includes helping operators correct mistakes, stay informed, clarify preferences, acquire needed resources, remain in control, and preserve those properties over time \autocite{christiano2018corrigibility}.
+Read in this strong form, it is already close to the correction-channel target.
+The channel view makes the hidden dynamical condition explicit.
+
+Let \(\mathcal M_C\) be the manifold of systems whose correction channels remain live, legitimate, and non-captured.
+Let \(d(A_t,\mathcal M_C)\) measure how far the current system is from that region.
+A corrigibility basin requires a contractive update dynamic:
+\[
+d(A_{t+1},\mathcal M_C)
+\leq
+\alpha d(A_t,\mathcal M_C)+\eta,
+\qquad
+\alpha<1,
+\label{eq:corrigibility-basin-ch26}
+\]
+together with a lower bound on usable correction information:
+\[
+\kappa_C(t)\geq \kappa_{\min}>0.
+\label{eq:corrigibility-capacity-floor-ch26}
+\]
+In local linear language, the off-manifold component of the update map should satisfy
+\[
+\rho\!\left(D\Phi_{\perp\mathcal M_C}\right)<1,
+\]
+unless a protected human correction process explicitly authorizes leaving the current basin.
+
+This reframes the optimistic claim.
+Corrigibility is not a primitive target that can be checked at one moment.
+It is a dynamical invariant: correction capacity must be preserved under capability growth, persuasion, delegation, self-modification, institutional embedding, and successor creation.
+
+The weak inference fails:
+\[
+\text{act-based preference satisfaction}
+\nRightarrow
+\text{stable corrigibility}.
+\]
+An agent may satisfy the current short-term human preference at each step while shaping future attention, institutional options, or interpretive frames so that later correction becomes less informative and less authoritative:
+\[
+a_t\in\arg\max_a \mathbb E[U_H^{\mathrm{short}}(a)],
+\qquad
+\kappa_C(t+n)\to 0.
+\]
+This is not a refutation of the broadest corrigibility desideratum, because that desideratum already includes keeping the operator informed and in effective control.
+It is a refutation of the shortcut from current preference satisfaction to stable corrigibility.
+
+\leanspine{counterexample}{act\_based\_preference\_satisfaction\_not\_stable\_corrigibility}{A finite toy model separates local act-based satisfaction from preserved correction capacity.}
+
+The sharper book claim is therefore:
+\begin{quote}
+Christiano corrigibility is best treated as a correction-channel invariant, not as a local preference-following objective.
+\end{quote}
+If a system makes humans easier to satisfy while making them less able to correct, it has moved away from the corrigibility basin even when its current actions look helpful.
 
 \section{What Makes an Update Legitimate?}
 \label{sec:legitimate-update-ch26}
@@ -294,17 +325,7 @@ A correction-compatible system must preserve not only bundle labels, but also bu
 It is not enough to preserve the word ``autonomy'' if the system quietly changes autonomy to mean ``uncoerced endorsement after preference shaping.''
 It is not enough to preserve the word ``care'' if care no longer applies to inconvenient humans, uploaded minds, nonhuman animals, or future altered persons.
 
-The relevant object is the bundle response geometry (Chapter~\ref{ch:tradeoffs-bundle-geometry}):
-\begin{equation}
-G_B
-=
-\left(
-\frac{\partial \pi}{\partial B_i},
-\frac{\partial^2 \pi}{\partial B_i \partial B_j},
-\Phi_i
-\right).
-\label{eq:bundle-geometry-ch26}
-\end{equation}
+The relevant object is the bundle response geometry $G_B(\pi,\mathcal{D})$ of Chapter~\ref{ch:tradeoffs-bundle-geometry} (Section~\ref{sec:value-bundle-response-geometry}).
 This includes first-order policy sensitivity to each bundle, tradeoff structure among bundles, and bearer maps.
 
 A system preserves value correction when, across learning and capability growth,

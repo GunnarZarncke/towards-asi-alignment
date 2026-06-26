@@ -68,7 +68,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Also stated in:** ch25–27, ch34, ch20 (WWCTV item 5), ch40.
 
-**Failure mode if false:** Corrigibility theater; capture; CCI reads high after the target has reshaped the human reference process. **Lean:** MB4, MB8 plus correction-path `notCaptured` condition. **Bears on:** C-005 · **U-03, U-07**
+**Failure mode if false:** Corrigibility theater; capture; shutdown buttons remain as one-bit rituals while broader correction collapses; CCI reads high after the target has reshaped the human reference process. **Lean:** MB4, MB8 plus correction-path `notCaptured` condition; shutdown and act-based corrigibility separations. **Bears on:** C-005 · **U-03, U-07**
 
 ### A-003 — Societal correction capacity
 
@@ -96,9 +96,9 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 ### A-007 — Successor channel auditability
 
-**Assumption:** Successor influence passes through specifiable, auditable channels (seven conserved properties, ch29).
+**Assumption:** Successor influence passes through specifiable, auditable channels (seven conserved properties, ch29), and syntactic/semantic preservation can be tested separately from import-preserving transport.
 
-**Also stated in:** ch08, ch29–31. **Lean:** MB5. **Bears on:** C-006 · **U-04, U-13**
+**Also stated in:** ch08, ch28–31. **Lean:** MB5; syntactic-tiling/import-preservation separation. **Bears on:** C-006 · **U-04, U-13**
 
 ### A-008 — Selection environment
 

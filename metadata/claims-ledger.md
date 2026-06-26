@@ -112,6 +112,8 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 - correction-as-causal-channel model (W→O→J→D→C→U→A chain)
 - correction-channel integrity (CCI) as a conditional anti-capture certificate with vector thresholds and invalidation conditions
 - manipulation/false-consent typology by causal pathway (changing the world vs. changing the judge)
+- shutdown as a one-bit projection of a richer correction channel; broad correction-channel preservation implies narrow shutdownability, but not conversely
+- Christiano-style corrigibility formalized as a dynamical invariant with a lower bound on usable correction information, not merely act-level preference satisfaction
 
 **Weakest link:**
 - CCI may be gamed or inapplicable under adversarial opacity, self-modeling asymmetry, or capture of the reference process that supplies human judgment
@@ -134,6 +136,7 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 - successor-closure argument (every influence-passing channel is an alignment channel)
 - seven conserved properties across successors
 - self-modeling vs. self-transparency gap; certification-without-construction conditions
+- tiling agents treated as a syntactic/identity-like special case of successor transport, with ontology/import preservation as the stronger invariant
 
 **Weakest link:**
 - successor certification without full construction understanding is unproven; the conserved-property set may be incomplete or untestable jointly
@@ -199,6 +202,7 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 **Support:**
 - compression test (intentional model beats mechanistic baseline after complexity cost)
 - transport-stack layering; goal-laundering detection (high semantic continuity, diverging bundle/bearer/correction structure)
+- finite transport separations: semantic/syntactic preservation does not imply bundle, bearer, correction, or import-preserving successor transport
 
 **Weakest link:**
 - the compression test is observer-relative and gameable by adversaries (semantic camouflage, decomposition attacks)

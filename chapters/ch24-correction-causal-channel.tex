@@ -48,7 +48,7 @@ Correction is a causal channel.
 
 A correction channel is the pathway by which humans or human institutions observe a system, form judgments about its behaviour, deliberate, issue corrections, and thereby change the system's future behaviour before irreversible damage occurs.
 
-Chapter~\ref{ch:transport-types} introduced the minimal chain (Eq.~\ref{eq:correction-chain-ch23}) as one layer of goal transport.
+Chapter~\ref{ch:goal-transport} previewed the correction chain as one layer of goal transport.
 Section~\ref{sec:minimal-causal-model} states the canonical version and rebuilds the causal model from first principles.
 The central claim is simple:
 \begin{equation}
@@ -811,6 +811,70 @@ This is not because constraints are metaphysically special.
 It is because once correction is destroyed, later optimization can no longer be trusted to repair the loss.
 Correction-channel collapse is an alignment absorbing state.
 
+\subsection{Subsumption: Shutdown as One-Bit Correction}
+\label{sec:shutdown-one-bit-correction-ch24}
+
+The shutdown problem is the cleanest narrow test of the channel view.
+In Thornley's formulation, the desired agent shuts down when the shutdown button is pressed, does not try to cause or prevent button-pressing, and otherwise pursues its task competently \autocite{thornley2023shutdown}.
+In this chapter's terms, the button is a degenerate correction channel:
+\[
+C_{\mathrm{off}}:
+H_t
+\to
+u_t\in\{\texttt{continue},\texttt{shutdown}\}.
+\]
+It has one accepted update: terminate the active process.
+
+The strong correction channel is richer.
+It lets the legitimate correcting process update policy, value-relevant representation, bearer maps, model assumptions, boundary conditions, and resource permissions:
+\[
+C_t:
+H_t
+\to
+\left(
+\Delta \pi_t,\Delta V_t,\Delta M_t,\Delta B_t,\Delta R_t
+\right).
+\]
+The relevant quantity is not only whether the system permits extinction.
+It is whether intended human correction becomes an actual system update:
+\[
+\kappa_C(t)
+:=
+I(\Delta_{\mathrm{human}};\Delta_{\mathrm{agent}}\mid h_t).
+\label{eq:usable-correction-information-ch24}
+\]
+Shutdown is the projection of this richer channel onto a one-bit terminal intervention:
+\[
+\Pi_{\mathrm{off}}(C_t)=C_{\mathrm{off}}.
+\]
+
+\begin{claim}[Shutdown subsumption]
+\label{claim:shutdown-subsumption-ch24}
+If a system preserves a strong correction channel and the shutdown actuator is one of the controlled handles in that channel, then the system satisfies the narrow shutdownability condition for that actuator.
+\end{claim}
+
+\begin{proof}[Argument sketch]
+A strong correction channel requires a legitimate correcting agent \(G_t\), controlled handles \(\mathcal H_t\), reach from those handles to the system update or future behaviour, persistence, and non-capture.
+If the shutdown actuator is one of those handles, then a correction signal selecting \texttt{shutdown} reaches the update path.
+The narrow button condition is therefore a special case of handle-controlled correction.
+\end{proof}
+
+\leanspine{proof}{correction\_integrity\_implies\_thornley\_shutdownability}{Correction integrity entails the one-bit shutdown projection when shutdown is represented as a degenerate correction channel.}
+
+The converse fails.
+A system may always shut down when the button is pressed and never directly manipulate the button, while still destroying the broader channel before the press matters.
+It may spawn a successor, lock model weights, corrupt logs, narrow the human's interpretation, transfer authority to an uncorrigible institution, or make future interventions unintelligible.
+Such a system satisfies the narrow button condition while lowering \(\kappa_C(t+n)\) toward zero for the corrections that matter after deployment.
+
+\leanspine{counterexample}{shutdownability\_not\_correction\_channel\_corrigibility}{A finite toy model separates narrow shutdownability from broad correction-channel preservation.}
+
+This is the book's main pressure on shutdown-centered corrigibility.
+Shutdown is necessary as an emergency handle.
+But it is a lossy projection of correction.
+Safety properties are not generally preserved under that projection.
+The important question is not only whether the agent allows shutdown.
+It is whether the human correction process retains enough capacity to change what the system and its successors are becoming.
+
 \section{Relation to Coherent Extrapolated Volition}
 \label{sec:relation-cev-ch24}
 
@@ -1216,7 +1280,7 @@ The next chapter develops correction-channel integrity as a measurable quantity 
 
 \section*{Chapter References}
 
-This chapter builds on corrigibility and cooperative alignment \autocite{soares2015corrigibility,hadfieldmenell2016,christiano2018corrigibility}; coherent extrapolated volition \autocite{yudkowsky2004cev}; the good-regulator principle \autocite{conant1970regulator}; Goodhart dynamics \autocite{manheim2018goodhart}; human-compatible control \autocite{russell2019human}; existential safety considerations \autocite{critch2020ai}; and deliberative legitimacy \autocite{rawls1971}.
+This chapter builds on corrigibility and cooperative alignment \autocite{soares2015corrigibility,hadfieldmenell2016,christiano2018corrigibility,thornley2023shutdown}; coherent extrapolated volition \autocite{yudkowsky2004cev}; the good-regulator principle \autocite{conant1970regulator}; Goodhart dynamics \autocite{manheim2018goodhart}; human-compatible control \autocite{russell2019human}; existential safety considerations \autocite{critch2020ai}; and deliberative legitimacy \autocite{rawls1971}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

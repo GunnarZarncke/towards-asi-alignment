@@ -82,8 +82,8 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, MDL/graph scaffolding, **`finPigeonhole`** (from-scratch finite pigeonhole), bridges `MB1`–`MB8` with split `MB7a`–`MB7c`, `BridgeAssumptions` | foundations |
 | `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, smoothing-margin arithmetic | 6–7, 10, 36 |
 | `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
-| `AlignmentProofSpine/Bundles.lean` | `P14`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples) | 15–23 |
-| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, handle-controlled **`CorrectionPath`** | 24–27 |
+| `AlignmentProofSpine/Bundles.lean` | `P14`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), syntactic-tiling/import-preservation alias | 15–23, 28 |
+| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, handle-controlled **`CorrectionPath`**, shutdown/corrigibility separations | 24–27 |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P33`, `P34`, `P36R`, `P37` | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
@@ -95,8 +95,11 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 * **proof** — a direct logical/arithmetic theorem (e.g. `P01`, `P10`, `P14`,
   `P27`, `P34`).
 * **counterexample** — a compact finite toy model showing one notion does not
-  imply another (e.g. `P15`, `P17`, `P18`, `P22b`, `P25`, `P26`, `P31`, `P37`,
-  `P41`, `P42`, `P44`).
+  imply another (e.g. `P15`, `P17`, `P18`, `P22b`,
+  `shutdownability_not_correction_channel_corrigibility`,
+  `act_based_preference_satisfaction_not_stable_corrigibility`,
+  `syntactic_tiling_not_import_preserving`, `P25`, `P26`, `P31`, `P37`, `P41`,
+  `P42`, `P44`).
 * **bridge** — an empirical or philosophical condition supplied by measurement,
   governance, or future theory (`MB1`–`MB8`, declared as `axiom`).
 

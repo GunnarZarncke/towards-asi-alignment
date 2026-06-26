@@ -44,11 +44,15 @@ digraph LeanProofDependencies {
   P21 [label="P21 Goal-transport gain\nΔL_transport>0 ⇒ prefer transport model", fillcolor="#EFFBEA"];
   P22a [label="P22a Full transport ⇒ semantic transport", fillcolor="#EFFBEA"];
   P22b [label="P22b Semantic ≠ full transport\ncounterexample", fillcolor="#EFFBEA"];
+  P22T [label="Syntactic tiling ≠ import-preserving transport\ncounterexample", fillcolor="#EFFBEA"];
 
   // Correction (ch24–27)
   P23 [label="P23 No handle control, no correction\nno legitimate reaching handle ⇒ ¬Correction", fillcolor="#FFF0FB"];
   P24 [label="P24 Weakest handle capacity\npath capacity ≤ each link; CCI export", fillcolor="#FFF0FB"];
+  P24S [label="Shutdown projection\nCorrectionIntegrity ⇒ Thornley shutdownability", fillcolor="#FFF0FB"];
+  P24X [label="Shutdownability ≠ broad CCI\ncounterexample", fillcolor="#FFF0FB"];
   P25 [label="P25 Obedience ≠ corrigibility\ncounterexample", fillcolor="#FFF0FB"];
+  P25C [label="Act-based satisfaction ≠ stable corrigibility\ncounterexample", fillcolor="#FFF0FB"];
   P26 [label="P26 Preserves update without fixed point\ncounterexample", fillcolor="#FFF0FB"];
 
   // Successors (ch28–31)
@@ -104,6 +108,7 @@ digraph LeanProofDependencies {
   P19 -> P20 [label="C-EIS: intentional reward model"];
   P21 -> P22a [label="C-TRANSPORT: full ⇒ semantic"];
   P22a -> P22b [label="C-TRANSPORT: semantic not full"];
+  P22b -> P22T [label="C-TILING: syntactic special case"];
   P17 -> P22b [label="C-TRANSPORT: bearer not semantic"];
   P18 -> P22b [label="C-TRANSPORT: tradeoffs not semantic"];
   P15 -> P37 [label="C-LAUNDER: policy hides geometry"];
@@ -113,9 +118,13 @@ digraph LeanProofDependencies {
 
   // Correction chain (handle-controlled)
   P23 -> P24 [label="C-CC: channel as handle path"];
+  P24 -> P24S [label="C-SHUTDOWN: one-bit projection"];
+  P24S -> P24X [label="C-SHUTDOWN: converse fails"];
   P24 -> P25 [label="C-CEV: obedience lacks update path"];
+  P25 -> P25C [label="C-CHRISTIANO: local satisfaction not invariant"];
   P24 -> P13 [label="C-RISK: correction capacity (CCI)"];
   P25 -> P26 [label="C-CEV: update without fixed point"];
+  P22T -> P27 [label="C-SUC: tiling needs import transport"];
   P22b -> P27 [label="C-SUC: transport property"];
   P24 -> P27 [label="C-SUC: correction property"];
   P27 -> P28 [label="C-SUC: missing field blocks safety"];

@@ -279,6 +279,55 @@ The condition we actually want is:
 \]
 Semantic transport should receive low weight unless supported by the other terms.
 
+\subsection{Subsumption: Tiling as Successor-Channel Preservation}
+\label{sec:tiling-as-successor-transport-ch28}
+
+MIRI's tiling-agent program studies self-modifying agents whose decision systems can approve the construction of successor agents that preserve key features of the predecessor, especially goals and proof structure \autocite{yudkowsky2013tiling}.
+In the transport language, tiling is a narrow successor-channel problem:
+\[
+A_t \xrightarrow{S_t} A_{t+1},
+\qquad
+T_{t\to t+1}(V_t)\approx V_{t+1}.
+\]
+The simplest tiling target is close to identity transport:
+\[
+T_{t\to t+1}=\mathrm{id},
+\qquad
+V_{t+1}=V_t,
+\qquad
+\text{proof system preserved}.
+\]
+That is a powerful special case.
+It is not yet the alignment invariant needed under ontology shift.
+
+The stronger condition is import-preserving transport.
+Let \(\mathcal I(V_t,O_t)\) denote the practical import of a value representation \(V_t\) in ontology \(O_t\): what the value applies to, how it changes policy, how it interacts with correction, and which future bearers it protects.
+Successor transport requires:
+\[
+D_{\mathrm{import}}
+\left(
+\mathcal I(V_t,O_t),
+\mathcal I(V_{t+1},O_{t+1})
+\right)
+\leq
+\epsilon.
+\label{eq:import-preserving-successor-transport-ch28}
+\]
+
+This breaks naive syntactic tiling.
+A successor may preserve the same utility symbol, theorem schema, or constitutional phrase while changing the ontology in which that symbol has import:
+\[
+V_{t+1}=V_t
+\quad\text{syntactically, but}\quad
+\mathcal I(V_{t+1},O_{t+1})
+\not\approx
+\mathcal I(V_t,O_t).
+\]
+The result is not a refutation of tiling work.
+It says that syntactic preservation is too weak as an alignment invariant unless paired with bearer-import and correction-channel preservation.
+
+\leanspine{counterexample}{syntactic\_tiling\_not\_import\_preserving}{The semantic-only transport counterexample is read as syntactic tiling without full import-preserving transport.}
+
 \subsection{Signs of Genuine Goal Transport}
 \label{sec:genuine-goal-transport-signs-ch28}
 
@@ -566,7 +615,7 @@ The next chapter examines conserved properties across successors in more detail 
 
 \section*{Chapter References}
 
-This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{abbeel2004apprenticeship,ng2000irl}; superintelligence and self-modification \autocite{bostrom2014superintelligence,everitt2016selfmodification,deblanc2011ontological}; the good-regulator principle and information bottleneck \autocite{conant1970regulator,tishby2000ib}; free-energy and Markov blanket accounts of agency \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; boundaries and multi-agent risk \autocite{critch2022boundaries3a}; the intentional stance \autocite{dennett1987intentional}; instrumental drives \autocite{omohundro2008basic,hamilton1964genetical}; human-compatible control and corrigibility \autocite{russell2019human,christiano2018corrigibility}; coherent extrapolated volition \autocite{yudkowsky2004cev}; and internal notes on agent discovery, competence, attractor basins, value bundles, and construction \autocite{zarncke2025uad,zarncke2025biq,zarncke2025attractor,zarncke2025loop-hub-value,zarncke2025construction,zarncke2026value-bottleneck}.
+This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{abbeel2004apprenticeship,ng2000irl}; superintelligence, self-modification, tiling agents, and ontological crises \autocite{bostrom2014superintelligence,everitt2016selfmodification,yudkowsky2013tiling,deblanc2011ontological}; the good-regulator principle and information bottleneck \autocite{conant1970regulator,tishby2000ib}; free-energy and Markov blanket accounts of agency \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; boundaries and multi-agent risk \autocite{critch2022boundaries3a}; the intentional stance \autocite{dennett1987intentional}; instrumental drives \autocite{omohundro2008basic,hamilton1964genetical}; human-compatible control and corrigibility \autocite{russell2019human,christiano2018corrigibility}; coherent extrapolated volition \autocite{yudkowsky2004cev}; and internal notes on agent discovery, competence, attractor basins, value bundles, and construction \autocite{zarncke2025uad,zarncke2025biq,zarncke2025attractor,zarncke2025loop-hub-value,zarncke2025construction,zarncke2026value-bottleneck}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 
