@@ -17,6 +17,7 @@ The author asked to do the part openers and Chapter 40 fixes, treat the Introduc
 - Refreshed `metadata/claims-ledger.md` header/status language for the 45-entry map and draft-complete conclusion; added manual-maintenance notes to both claims and assumptions ledgers; added a TODO to consider structured automation for both ledgers.
 - Fixed the Lean certification presentation defect flagged by review: re-enabled the unused-variable linter in `formal/AlignmentProofSpine/Certification.lean`, separated the narrow numeric `risk_bound_from_cci_slack` leaf from the composed `CertifiedSafetyCase` root, made bridge-composed theorems return the full safety-case package, and updated ch03/ch31/ch39/ch44 plus `formal/README.md` to state that layered/certified evidence makes the bound meaningful but does not prove the arithmetic inequality.
 - Verified the Lean/prose fix with `cd formal && lake build`, `make check`, `ReadLints`, targeted `rg` searches for stale inflated theorem wording, and a full `./build.sh` using a local Biber PAR cache.
+- Strengthened ch27 No-Bypass response to the auditor-regress critique: added `Certified Boundary Separation`, grounding "less captured" in UAD/BIQ-style separation of control loci, low hidden productive control from target to reference, residual world-grounding, and a GSAI/default-deny fallback when separation cannot be certified. Updated C-005/A-002/U-03 accordingly.
 - Verified with `ReadLints`, `rg 'TODO\[open-crux\]'` on ch40, and `make check`.
 
 ## Decisions

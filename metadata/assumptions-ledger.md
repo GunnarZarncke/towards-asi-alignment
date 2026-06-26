@@ -66,11 +66,11 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 ### A-002 — Correction channels as causal chains
 
-**Assumption:** Handle-controlled correction pathways with measurable \(\mathrm{CCI}\), evaluated only when the correcting agent or institution has independently controlled, not-captured handles into the target system.
+**Assumption:** Handle-controlled correction pathways with measurable \(\mathrm{CCI}\), evaluated only when the correcting agent or institution has independently controlled, not-captured handles into the target system, and where No-Bypass authorization rests on certified boundary separation rather than a target-mediated independence story.
 
 **Also stated in:** ch25–27, ch34, ch20 (WWCTV item 5), ch40.
 
-**Failure mode if false:** Corrigibility theater; capture; shutdown buttons remain as one-bit rituals while broader correction collapses; CCI reads high after the target has reshaped the human reference process. **Lean:** MB4, MB8 plus correction-path `notCaptured` condition; shutdown and act-based corrigibility separations. **Bears on:** C-005 · **U-03, U-07**
+**Failure mode if false:** Corrigibility theater; capture; shutdown buttons remain as one-bit rituals while broader correction collapses; CCI reads high after the target has reshaped the human reference process or manufactured the independence test. **Lean:** MB4, MB8 plus correction-path `notCaptured` condition; manuscript ch27 now ties the anti-capture condition to UAD/BIQ-style separation of control loci. **Bears on:** C-005 · **U-03, U-07**
 
 ### A-003 — Societal correction capacity
 

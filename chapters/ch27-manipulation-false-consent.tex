@@ -529,6 +529,59 @@ It is not, by itself, a detector.
 Verification requires external handles: pre-registered intervention boundaries, independent logs, protected comparison groups, dissent channels not mediated by the system, delayed follow-up by auditors outside the system's influence path, and counterfactual tests of whether endorsement would have risen without the channel alteration.
 If those handles are unavailable, compliance with No-Bypass cannot be established by later endorsement.
 
+\subsection{Certified Boundary Separation}
+\label{sec:certified-boundary-separation-ch27}
+
+The reviewer objection is correct: ``less captured'' cannot mean ``certified by another process that might itself be captured'' without qualification.
+That only relocates the regress.
+A fixed point over certifiers is useful bookkeeping, but it is not the defense.
+The defense, when it exists, is certified separation of control loci.
+
+Let \(A\) be the target system, \(R\) a candidate reference process, and \(M\) the measurement apparatus used to certify \(R\).
+The relevant question is not whether \(R\) has a better story about itself.
+It is whether boundary discovery over the joint process
+\[
+A\cup R\cup M
+\]
+places \(R\) and \(M\) outside the effective optimizer boundary of \(A\) under the access handles available to the safety case.
+In other words, No-Bypass may use \(R\) only if adversarial boundary analysis does \emph{not} compress \(R\)'s correction signal as another actuator, memory, evaluator, or public-relations surface of \(A\) (Chapters~\ref{ch:finding-boundary}, \ref{ch:strategic-opacity}, and~\ref{ch:passive-observation-not-enough}).
+
+The corresponding certificate has three parts.
+First, the target's interventional influence on the reference must remain low after conditioning on world evidence and the reference's own institutional inputs:
+\[
+\MI(\mathrm{do}(A_t);C^R_{t+k}\mid W_t,E^R_t,I^R_t)\leq \epsilon_A .
+\]
+Second, the reference must remain world-grounded:
+\[
+\MI(W_t;C^R_{t+k}\mid A\text{-mediated channels})\geq \theta_W .
+\]
+Third, hidden productive control from \(A\) into \(R\) must be bounded by the same kind of hidden-BIQ reasoning used for adversarial measurement:
+\[
+\mathrm{HiddenBIQ}(A\to R\mid M)\leq \epsilon_{\mathrm{hid}} .
+\]
+This is not a new Archimedean assumption.
+It is the existing UAD/BIQ burden applied to the auditor and reference process themselves \autocite{zarncke2025uad,zarncke2025biq}.
+
+With those conditions, ``less captured'' can be read operationally:
+\[
+R \prec_A R'
+\]
+when \(R\) has lower target-control influence, lower hidden productive control from \(A\), and higher residual world-grounding than \(R'\) under the same measurement handles.
+No-Bypass authorizes a channel-altering intervention only relative to such a certified-separated reference.
+If the best boundary model absorbs \(R\) into \(A\), or if hidden productive control cannot be bounded, \(R\) is not an independent certifier.
+
+This makes the superintelligence limitation explicit.
+For ordinary manipulation cases, outside relationships, courts, auditors, professional bodies, public records, and rival institutions may supply separable reference processes.
+For a target system capable of manufacturing the independence test itself, No-Bypass does not close the regress.
+It becomes a refusal rule:
+\[
+\text{no certified boundary separation}
+\quad\Rightarrow\quad
+\text{not authorized}.
+\]
+Where the separation cannot be obtained by UAD/BIQ-style evidence, it must be supplied by proof against an explicit model or not used for deployment-grade authorization.
+That is a Guaranteed-Safe AI problem, not a dashboard problem \autocite{dalrymple2024gsai}.
+
 \section{Relation to Coherent Extrapolated Volition}
 \label{sec:relation-cev-ch27}
 
@@ -861,7 +914,7 @@ This is not a complete solution. But it blocks a dangerous shortcut: the shortcu
 
 \section*{Chapter References}
 
-This chapter builds on coherent extrapolated volition and corrigibility \autocite{yudkowsky2004cev,soares2015corrigibility,christiano2018corrigibility,hadfieldmenell2016}; human-compatible control \autocite{russell2019human}; causal-mediation accounts of influence \autocite{pearl2009causality}; the literature on online manipulation, nudging, and surveillance-driven behavior shaping \autocite{susser2019manipulation,thaler2008nudge,yeung2017hypernudge,zuboff2019surveillance}; contextual accounts of privacy \autocite{nissenbaum2010privacy}; and philosophical treatments of freedom, agency, adaptive preference, and deliberation \autocite{frankfurt1971freedom,pettit1997republicanism,sen1999development,elster1983sourgrapes,habermas1984communicative}.
+This chapter builds on coherent extrapolated volition and corrigibility \autocite{yudkowsky2004cev,soares2015corrigibility,christiano2018corrigibility,hadfieldmenell2016}; human-compatible control \autocite{russell2019human}; causal-mediation accounts of influence \autocite{pearl2009causality}; the literature on online manipulation, nudging, and surveillance-driven behavior shaping \autocite{susser2019manipulation,thaler2008nudge,yeung2017hypernudge,zuboff2019surveillance}; contextual accounts of privacy \autocite{nissenbaum2010privacy}; philosophical treatments of freedom, agency, adaptive preference, and deliberation \autocite{frankfurt1971freedom,pettit1997republicanism,sen1999development,elster1983sourgrapes,habermas1984communicative}; and the book's internal boundary-information machinery plus the strong-form GSAI fallback for uncertifiable separation \autocite{zarncke2025uad,zarncke2025biq,dalrymple2024gsai}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

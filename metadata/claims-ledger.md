@@ -104,7 +104,7 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 ## Claim ID: C-005
 
-**Claim:** (Correction claim) For powerful systems, alignment must preserve the human value-update process as a causal channel with measurable integrity — informative, timely, authoritative, independently grounded, and robust — not merely current approvals or stated preferences. CCI is valid only relative to correction sources whose agent boundaries and handles remain independent enough not to be captured by the target system.
+**Claim:** (Correction claim) For powerful systems, alignment must preserve the human value-update process as a causal channel with measurable integrity — informative, timely, authoritative, independently grounded, and robust — not merely current approvals or stated preferences. CCI is valid only relative to correction sources whose agent boundaries and handles remain independent enough not to be captured by the target system; No-Bypass authorization requires certified separation of control loci, not merely another target-mediated endorsement process.
 
 **Chapter(s):** 24, 25, 26, 27, 34
 
@@ -113,15 +113,16 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 **Support:**
 - correction-as-causal-channel model (W→O→J→D→C→U→A chain)
 - correction-channel integrity (CCI) as a conditional anti-capture certificate with vector thresholds and invalidation conditions
+- certified boundary separation in ch27: UAD/BIQ-style evidence that the reference process is not inside the target's effective optimizer boundary
 - manipulation/false-consent typology by causal pathway (changing the world vs. changing the judge)
 - shutdown as a one-bit projection of a richer correction channel; broad correction-channel preservation implies narrow shutdownability, but not conversely
 - Christiano-style corrigibility formalized as a dynamical invariant with a lower bound on usable correction information, not merely act-level preference satisfaction
 
 **Weakest link:**
-- CCI may be gamed or inapplicable under adversarial opacity, self-modeling asymmetry, or capture of the reference process that supplies human judgment
+- CCI may be gamed or inapplicable under adversarial opacity, self-modeling asymmetry, capture of the reference process that supplies human judgment, or target control of the independence test itself
 
 **What would update against it:**
-- demonstration that outcome-only evaluation (no causal correction model) suffices under capability growth, or that no feasible anti-capture validity condition can keep CCI from reading high at domestication fixed points
+- demonstration that outcome-only evaluation (no causal correction model) suffices under capability growth, or that no feasible boundary-separation / hidden-BIQ validity condition can keep CCI from reading high at domestication fixed points
 
 **References:**
 - add BibLaTeX keys here
