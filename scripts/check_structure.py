@@ -25,7 +25,7 @@ REQUIRED = [
 
 PARTS = [f"parts/part{i:02d}-" for i in range(1, 11)]
 CHAPTER_COUNT = 45
-APPENDIX_COUNT = 10
+APPENDIX_COUNT = 9
 
 
 def main() -> int:

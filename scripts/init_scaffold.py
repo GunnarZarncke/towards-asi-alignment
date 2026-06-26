@@ -83,6 +83,7 @@ APPENDICES = [
     ("appF-glossary", "Glossary"),
     ("appG-safety-case-template", "Safety-Case Template"),
     ("appH-research-program", "Research Program"),
+    ("appI-lean-proof-spine", "Lean Proof Spine"),
 ]
 
 
