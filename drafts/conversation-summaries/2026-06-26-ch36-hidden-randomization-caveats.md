@@ -37,4 +37,4 @@ make check   # fails: Expected 10 appendix files, found 9
 
 ## Commits
 
-- None.
+- `23f1bae` Calibrate Chapter 36 hidden-randomization caveats.
