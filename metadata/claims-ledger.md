@@ -64,14 +64,15 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 **Support:**
 - agent-as-bounded-control-process definition (conditional-independence boundary)
+- boundary-recovery bridge: structured candidate classes, intervention handles, sufficient margin, and empirical recovery tests whose targets do not presuppose the boundary
 - task-agnostic competence measure (boundary information)
 - capability growth modeled as expansion of sensory/predictive/active/memory/coordination loops
 
 **Weakest link:**
-- boundaries are leaky and non-stationary; the boundary-finding procedure may not converge on real adversarial systems
+- boundaries are leaky and non-stationary; finite-data high-dimensional recovery may fail, learned detectors may inherit the criterion/labeling gap, and the boundary-finding procedure may not converge on real adversarial systems
 
 **What would update against it:**
-- evidence that alignment-relevant risk is well-predicted by task-battery performance without reference to any boundary/object question
+- evidence that alignment-relevant risk is well-predicted by task-battery performance without reference to any boundary/object question, or that boundary recovery remains statistically/computationally infeasible even with structured candidates, intervention handles, and adversarial generator--detector training
 
 **References:**
 - add BibLaTeX keys here

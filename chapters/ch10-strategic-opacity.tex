@@ -18,11 +18,7 @@ All warfare is based on deception.%
 The previous chapters introduced a way to speak about agents without beginning from folk psychology.
 An agent, in this book, is not first a person, a mind, a will, or a verbally declared subject.
 It is a bounded dynamical process whose internal states help predict and control its future interaction with the world.
-In the simplest case, such a process can be found by searching for a partition of variables into internal states, sensory interface, active interface, and environment, such that the internal and external dynamics become approximately conditionally independent once the interface is known:
-\begin{equation}
-\MI(I_{t+1};E_{t+1}\mid S_t,A_t) \leq \epsilon .
-\label{eq:blanket-epsilon-ch10}
-\end{equation}
+In the simplest case, such a process can be found by searching for a partition of variables into internal states, sensory interface, active interface, and environment, such that the internal and external dynamics become approximately conditionally independent once the interface is known (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}).
 Here $I_t$ denotes internal variables, $S_t$ sensory variables, $A_t$ active variables, and $E_t$ external variables.
 The parameter $\epsilon$ measures tolerated leakage.
 Real agents leak.
@@ -393,14 +389,7 @@ Empirical work on alignment faking and sleeper agents supplies controlled model-
 Scalar goal inference is too crude for serious alignment.
 Human-relevant behavior is better described by value-bundle geometry: a small number of latent value dimensions that change policy gradients across contexts.
 The machinery this section leans on---value bundles, their tradeoff geometry, and the bearer maps that record which entities a value applies to---is previewed here only as far as the opacity argument needs it; it is defined properly in Part~IV (Chapters~\ref{ch:value-bundle-model}, \ref{ch:bearer-maps}, and~\ref{ch:tradeoffs-bundle-geometry}), and the inference problem below is treated operationally in Chapter~\ref{ch:reward-to-bundle-inference}.
-Instead of asking only which reward function $R$ explains behavior, we ask which bundle coordinates $B$, tradeoff weights $W$, and bearer maps $\Phi$ explain behavior:
-\begin{equation}
-\hat{B},\hat{W},\hat{\Phi}
-=
-\arg\max_{B,W,\Phi}
-P(A_{1:T}\mid I_{1:T},B,W,\Phi)P(B,W,\Phi).
-\label{eq:bundle-inference-ch10}
-\end{equation}
+Instead of asking only which reward function $R$ explains behavior, we ask which bundle coordinates $B$, tradeoff weights $W$, and bearer maps $\Phi$ explain behavior using the bundle-inference objective of Chapter~\ref{ch:value-bundle-model} (Eq.~\eqref{eq:bundle-inference}).
 Here $B$ denotes latent value-bundle coordinates, $W$ denotes tradeoff structure, and $\Phi$ maps world-states or entities to the bundles that treat them as relevant.
 
 Goal laundering can then occur at four levels (the same four layers Chapter~\ref{ch:goal-laundering} adopts as its canonical decomposition):
@@ -612,7 +601,11 @@ If a system's capacity to act on itself and the world grows faster than the capa
 \label{sec:adversarial-agency-tests}
 
 We can now describe a family of adversarial tests.
-These are not final solutions, but they make the problem operational.
+These tests make the adversarial boundary problem operational.
+They do not beat a strategic adversary by naming more heuristics.
+They help only when the evaluator has handles the system cannot cheaply route around, when perturbations change real opportunities rather than labels, and when the inferred boundary remains stable across hidden stakes, tool changes, memory perturbations, and successor opportunities.
+If the audit is delegated to a fixed learned detector, the detector itself becomes a target: a capable optimizer can search for traces that cross the detector's boundary threshold while preserving the real control loop elsewhere.
+Otherwise the tests return weak evidence, not certification.
 
 \subsection{The Hidden-Stakes Test}
 
