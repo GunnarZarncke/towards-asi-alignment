@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-26 | Part openers and ch40 fixes | [2026-06-26-part-openers-ch40.md](2026-06-26-part-openers-ch40.md) |
 | 2026-06-26 | Open chapter drafts | [2026-06-26-open-chapter-drafts.md](2026-06-26-open-chapter-drafts.md) |
 | 2026-06-26 | LHV learnability integration | [2026-06-26-lhv-learnability-integration.md](2026-06-26-lhv-learnability-integration.md) |
 | 2026-06-26 | Alignment work subsumption pass | [2026-06-26-alignment-work-subsumption-pass.md](2026-06-26-alignment-work-subsumption-pass.md) |

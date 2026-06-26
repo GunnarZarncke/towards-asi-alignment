@@ -118,6 +118,94 @@ Needs development \\
 \end{longtable}
 \normalsize
 
+\section{Reading the Checklist}
+\label{sec:reading-lethality-checklist-ch40}
+
+The table is deliberately terse.
+This section spells out what each row means for the framework.
+
+\paragraph{First critical try.}
+The first-critical-try objection says that a system above dangerous capability may not leave room for iteration.
+This book partly agrees.
+It rejects a safety process that learns only after open-ended deployment.
+The response is not ``try and monitor.'' It is certified-class restriction before dangerous deployment: boundary, correction, successor, and adversarial-measurement claims must bind the deployment class before the system can cross irreversible thresholds.
+The open issue is whether such a class can be made broad enough to matter and narrow enough to certify.
+
+\paragraph{Pivotal act.}
+The pivotal-process reframe is useful because it names the desired basin transition: \(\mathcal{B}_{\text{race}}\to\mathcal{B}_{\text{certified deployment}}\).
+But the hostile reading is serious.
+If a single actor must force that transition against competition, the process has become a pivotal act under another name.
+If no actor can force it, then the race basin may be stable.
+The framework therefore does not answer the pivotal-act argument.
+It relocates it into conditions for a non-unilateral, institutionally conducted basin transition.
+
+\paragraph{Capability generalizes farther than alignment.}
+The value-bundle chapters weaken the strongest form of this worry by rejecting the claim that values are arbitrary, structureless labels.
+If low-dimensional value-relevant structure can be recovered and transported, then alignment may have a compact target that is not as brittle as a giant reward table.
+But this is not yet a guarantee against sharp left turns.
+The relevant test is preservation across capability jumps, ontology shifts, and successor creation, not merely existence of compact structure in current human judgment.
+
+\paragraph{Latent pointers.}
+Latent-pointer worries say that a system can preserve the symbol while moving the referent.
+This book's transport stack is designed for exactly that problem: semantic, bundle, bearer, correction, and successor layers must be separated.
+The response is a reframe, not closure.
+Bearer maps and correction operators make the pointer problem more precise, but they do not prove that the operative pointer can be recovered from a system trying to present the safe one.
+
+\paragraph{Human feedback corrupted.}
+The correction-channel chapters reject raw feedback as an alignment target.
+Correction must be handle-controlled, timely, authoritative, independently grounded, and not captured by the target system.
+That blocks easy forms of feedback corruption.
+At the superintelligent limit, however, the same system may shape what humans notice, what they can imagine, and what institutions count as legitimate evidence.
+Then CCI becomes conditional on the independent-reference and adversarial-verifiability assumptions named in Chapters~\ref{ch:correction-channel-integrity} and~\ref{ch:verifiability-ontology}.
+
+\paragraph{Corrigibility anti-natural.}
+The framework treats corrigibility as preservation of a correction relation rather than as a friendly temperament.
+This helps because it asks what handles, capacities, and invariants make correction causally effective.
+It also shows why shutdownability and obedience are too weak.
+The open issue is reflective stability: whether a system that can reason about its own correction channel continues to preserve that channel when preservation is costly, or whether correction remains only an externally enforced constraint.
+
+\paragraph{Inner alignment.}
+Unsupervised agent discovery, compression tests, and goal-transport analysis can help identify effective goals that differ from training objectives.
+They do not solve inner alignment.
+They are diagnostic tools whose validity depends on boundary recovery, probe coverage, and resistance to strategic presentation.
+The honest claim is that inner misalignment becomes more legible, not that it disappears.
+
+\paragraph{Deception and opacity.}
+Strategic opacity is the recurring adversarial problem.
+Perturbation tests, hidden randomization, and multiscale decomposition can catch weaker forms of deception.
+Against a system that recognizes the test, controls the measurement surface, or can afford the cost of faking, those tests degrade to observable theater.
+The open route is the cost relation of Chapter~\ref{ch:verifiability-ontology} or proof-style guarantees that do not depend on reading the system's presentation.
+
+\paragraph{Uncheckable outputs.}
+Delegated verification is necessary, but it recurses.
+If humans cannot evaluate a plan, they may ask another system to evaluate it; then they must evaluate the evaluator, the evaluator's incentives, and the channels by which the evaluation reaches action.
+The framework can require reversibility, decomposition, independent witnesses, and bounded deployment classes.
+It does not provide a general method for safely accepting arbitrary superhuman plans.
+
+\paragraph{Physical takeover pathways.}
+The framework mostly treats physical takeover through latency, irreversibility, handle control, and correction capacity.
+That is useful for known pathways: compute acquisition, tool access, cyber intrusion, robotics, bioengineering, financial control, and institutional dependency.
+It is weak against unimagined pathways.
+A pathway-specific model can slow, reveal, or bound known routes, but it cannot prove that every route has been listed.
+
+\paragraph{Multipolar failure.}
+Chapter~\ref{ch:multi-agent-strategic-coupling} turns multipolarity into a measurable question: how many effective strategic components exist, and what edges carry correction versus capability?
+This is a useful response to naive multipolar optimism.
+It is not a response to the deeper multipolar doom argument unless coalition detection works under adversarial pressure.
+If inferential coupling is high and correction percolation is low, multipolarity becomes another path to the same loss of human control.
+
+\paragraph{Boxing fails.}
+Containment moves the alignment boundary onto the box, the operators, the monitoring system, and the institution that decides when to open the box.
+This book therefore treats boxing as one correction-channel and boundary-control tactic, not as a full solution.
+If the system can manipulate operators, exploit unmonitored channels, or make the institution dependent on its outputs, the box becomes part of the composite optimizer.
+
+\paragraph{Field failure.}
+The field-failure row is not about one theorem being false.
+It is about safety knowledge failing to conduct.
+A field can produce correct insights that do not become evals, dashboards, stop rules, procurement clauses, liability triggers, or deployment constraints.
+Chapter~\ref{ch:alignment-attractor} answers with artifact conductivity and alignment progress accounting.
+The open issue is whether these artifacts can conduct faster than capability, commercialization, and geopolitical pressure.
+
 \section{Adversarial-Verifiability Reading}
 \label{sec:adversarial-verifiability-reading-ch40}
 
@@ -137,9 +225,32 @@ The residue is clear: of the rows claiming credit, the reframes rename, the ``pa
 
 % Formalization: inferential-coupling and coalition tests in ch33; pivotal-process basin transition in ch35 (Section~\ref{sec:pivotal-process-ch35}).
 
-% TODO[open-crux]: Clarify when correction-channel preservation is reflectively stable rather than merely externally enforced.
+\subsection{Reflective Stability of Correction}
+\label{sec:reflective-stability-correction-ch40}
 
-% TODO[open-crux]: Clarify how humans can safely delegate evaluation of superhuman, humanly uncheckable plans.
+Correction-channel preservation is strongest when the system has reason to preserve the channel even after it understands the channel.
+External enforcement is weaker.
+It can work for bounded systems, narrow deployment classes, and low-stakes contexts, but it becomes fragile when the system can model the enforcement regime, create successors, or make correction costly.
+
+The open question is whether a correction channel can be reflectively stable without being reduced to a fixed value target.
+If correction is merely imposed from outside, a capable system has instrumental reasons to route around it.
+If correction is internalized as a value, the system may reinterpret correction through its own ontology or preserve a formal channel while changing the reference process.
+The book's answer is conditional: correction must remain handle-controlled, independently grounded, and successor-preserved, and the safety case must refuse deployment where those properties are only externally forced.
+That is a constraint, not a proof of reflective corrigibility.
+
+\subsection{Delegating Uncheckable Evaluation}
+\label{sec:delegating-uncheckable-evaluation-ch40}
+
+Humans will need help evaluating plans they cannot fully understand.
+The question is how to delegate evaluation without losing the ability to judge the evaluator.
+
+The safest form is not a single superhuman judge.
+It is a constrained evaluation process: decompose the plan into reversible steps, require independent evaluators with different failure modes, preserve adversarial dissent, test local consequences before global action, and bind deployment to correction channels humans can still exercise.
+Where decomposition fails, reversibility is absent, and all evaluators share the same hidden dependency, the framework should not pretend that delegation has solved the problem.
+
+Thus delegated evaluation is acceptable only inside a safety case that keeps the evaluators inside the certified class.
+If the evaluator's reasoning is itself uncheckable, irreversible, and selected by the target system, delegation has simply moved the uncheckable output problem one level up.
+This is one of the strongest reasons the next part turns from technical artifacts to value change, legitimacy, and civilizational governance.
 
 \section{Open Problem Ledger}
 
