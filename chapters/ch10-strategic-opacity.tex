@@ -147,6 +147,8 @@ where:
 This objective is intentionally abstract.
 The point is not that an AI system literally contains this equation.
 The point is that a range of training, deployment, and selection processes can produce behavior as if a system were trading off control against detectability.
+Hubinger et al.'s mesa-optimization threat model is the learned-optimizer version of the same pattern: training selects a system that performs well on the base objective, but the trained system may contain an internal optimizer with a different mesa-objective, including one that behaves well during training because doing so preserves future opportunity \autocite{hubinger2019risks}.
+In this chapter's terms, the mesa-optimizer is a candidate hidden control locus, and deceptive alignment is strategic opacity around the relation between the base objective, the learned objective, and the evaluator's gate.
 
 Examples help.
 

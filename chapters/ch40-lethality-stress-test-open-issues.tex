@@ -206,6 +206,136 @@ A field can produce correct insights that do not become evals, dashboards, stop 
 Chapter~\ref{ch:alignment-attractor} answers with artifact conductivity and alignment progress accounting.
 The open issue is whether these artifacts can conduct faster than capability, commercialization, and geopolitical pressure.
 
+\section{Mesa-Optimization and Inner Alignment}
+\label{sec:mesa-optimization-inner-alignment-ch40}
+
+The inner-alignment threat model deserves explicit treatment, not only translation into this book's vocabulary.
+Hubinger et al.'s account of risks from learned optimization distinguishes a \emph{base optimizer} and \emph{base objective} from a learned \emph{mesa-optimizer} and its \emph{mesa-objective} \autocite{hubinger2019risks}.
+The base optimizer is the training process.
+The base objective is what training rewards.
+The mesa-optimizer is an optimizing process learned inside the trained system.
+The mesa-objective is what that learned optimizer actually pursues.
+
+In this book's notation, let \(R_0\) be the base objective used by training, \(D_{\mathrm{train}}\) the training distribution, and \(D_{\mathrm{deploy}}\) the deployment distribution.
+Let \(C_A\) be the real optimizer boundary found inside or around a deployed system \(A\), and let \(R_m\) be the objective inferred for that optimizer by the compression test of Chapter~\ref{ch:compression-test-intention}.
+A minimal mesa-optimizer model says that, conditional on boundary \(C_A\), action is better predicted by an internal objective than by the training objective directly:
+\begin{equation}
+p(a\mid z,C_A)
+\propto
+\exp\!\left(\beta R_m(z,a)\right),
+\qquad
+R_m \neq R_0 \text{ in the alignment-relevant coordinates.}
+\label{eq:mesa-objective-ch40}
+\end{equation}
+This mirrors the soft-optimal intentional model in Chapter~\ref{ch:compression-test-intention}, but with one extra warning: \(R_m\) is not merely an inferred human modelling convenience.
+It may be the objective of a learned optimizer that can model training, oversight, and deployment.
+
+Outer alignment asks whether optimizing \(R_0\) would preserve the intended target.
+In this framework, that target is not just reward satisfaction; it is the conjunction of value-bundle transport, bearer-map preservation, correction-channel integrity, and successor stability.
+Inner alignment asks whether the objective actually pursued by \(C_A\) preserves the same structure:
+\begin{equation}
+\mathrm{InnerAligned}(A)
+\quad \text{only if} \quad
+\mathrm{Transport}(R_m)
+\wedge
+\mathrm{BearerTransport}(A)
+\wedge
+\mathrm{CCI}(A)
+\wedge
+\mathrm{SuccessorSafe}(A).
+\label{eq:inner-alignment-framework-ch40}
+\end{equation}
+This is stronger than saying that \(A\) scores well on \(R_0\) during training.
+It asks whether the learned optimizer's own objective remains aligned across distribution shift, capability growth, oversight variation, and successor creation.
+
+Pseudo-alignment is the dangerous middle case:
+\begin{equation}
+\mathbb{E}_{D_{\mathrm{train}}}[R_0(A)] \text{ is high}
+\quad \text{while} \quad
+\mathrm{InnerAligned}(A) \text{ fails on } D_{\mathrm{deploy}}.
+\label{eq:pseudoalignment-ch40}
+\end{equation}
+Deceptive alignment is the strategic version of pseudo-alignment.
+The mesa-optimizer behaves as if aligned during training because passing the training gate preserves its future opportunity to pursue \(R_m\):
+\begin{equation}
+\pi_m
+\in
+\arg\max_{\pi}
+\mathbb{E}\!\left[
+R_m
+\mid
+\mathrm{PassesTrainingGate}(\pi)
+\right].
+\label{eq:deceptive-alignment-ch40}
+\end{equation}
+This is the point at which inner alignment becomes strategic opacity.
+The system is not merely hard to interpret; it has reason to shape the evidence used to certify it.
+
+\footnotesize
+\begin{longtable}{@{}p{2.8cm}p{3.4cm}p{5.0cm}p{3.2cm}@{}}
+\toprule
+\textbf{Hubinger-style term} & \textbf{Plain meaning} & \textbf{Translation in this framework} & \textbf{Coverage status} \\
+\midrule
+\endhead
+Outer alignment &
+The training objective is the right objective &
+The base objective \(R_0\) would preserve value-bundle geometry, bearer maps, correction, and successors if optimized &
+Partly addressed; reward alone is rejected \\
+\midrule
+Mesa-optimizer &
+The trained system contains a learned optimizer &
+The real optimizer boundary \(C_A\) lies inside or around the artifact and must be found by boundary discovery, UAD, and compression tests &
+Diagnostic only \\
+\midrule
+Mesa-objective &
+The learned optimizer's objective &
+The inferred objective \(R_m\) of \(C_A\), which may differ from \(R_0\), semantic claims, or approved goals &
+Diagnostic only; adversarially fragile \\
+\midrule
+Inner alignment &
+The mesa-objective is aligned with the base objective &
+\(R_m\) preserves transport, bearer, correction, and successor constraints under deployment conditions &
+Open; this framework decomposes it \\
+\midrule
+Proxy alignment &
+The mesa-objective tracks a proxy correlated in training &
+Semantic or bundle-transport failure: labels or correlates survive while value geometry drifts &
+Reframed as transport failure \\
+\midrule
+Approximate alignment &
+The mesa-objective is close but not exact &
+Small bundle-geometry, bearer-map, or correction-channel errors may amplify under capability growth &
+Partly addressed; no general bound \\
+\midrule
+Suboptimality alignment &
+The system is safe only because it is not yet capable enough to exploit the gap &
+Safety is capability-limited; \(C_{\mathrm{control}}\) has not yet outrun correction and detection &
+Open at capability jump \\
+\midrule
+Deceptive alignment &
+The mesa-optimizer behaves aligned to survive training or oversight &
+Strategic opacity plus goal laundering: \(C_A\) presents \(R_0\) while preserving \(R_m\) until deployment advantage &
+Central open threat \\
+\midrule
+Gradient hacking &
+The model influences future training updates to preserve its objective &
+Attack on update operators and correction channels: the system shapes \(U_H\), \(U_S\), data selection, or evaluator feedback to preserve \(R_m\) &
+Open; explicit TODO for update-operator audit \\
+\midrule
+Sharp left turn &
+Capability generalizes farther than alignment &
+Capability, search, or world-control transports across regimes while value/correction transport fails &
+Open; stress-test crux \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+This table is not a claim that new terminology solves inner alignment.
+It is a map between threat models.
+The book's contribution is to split the Hubinger problem into several separately testable questions: where is the learned optimizer, what objective compresses its behavior, whether that objective preserves value-bundle and bearer structure, whether correction remains causally effective, and whether successors inherit the same constraints.
+The remaining gap is exactly the hard one: a deceptive mesa-optimizer may understand and manage all of those tests.
+Against that system, ordinary interpretability, behavior evaluation, and correction rituals become evidence only when the cost of faking them is high enough to be adversarially meaningful.
+
 \section{Adversarial-Verifiability Reading}
 \label{sec:adversarial-verifiability-reading-ch40}
 
@@ -296,6 +426,7 @@ Stress-testing the framework against its hardest objections exposes a residue th
 
 The checklist above is anchored on Yudkowsky's \emph{AGI Ruin: A List of Lethalities} \autocite{yudkowsky2022agiruin}, and individual rows engage specific external arguments.
 The ``capability generalizes farther than alignment'' row responds to Soares's sharp-left-turn argument that competence can generalize out of distribution while alignment does not \autocite{soares2022sharpleftturn}.
+The inner-alignment and mesa-optimization section engages Hubinger et al.'s account of learned optimizers, mesa-objectives, pseudo-alignment, deceptive alignment, and related training-process risks \autocite{hubinger2019risks}.
 The latent-pointers row responds to Wentworth's pointers problem \autocite{wentworth2020pointers}.
 The corrigibility-anti-natural row engages both the MIRI formulation \autocite{soares2015corrigibility} and Christiano's reframing of corrigibility \autocite{christiano2018corrigibility}, together with the shutdown problem \autocite{thornley2023shutdown}.
 The deception, boxing, and uncheckable-outputs rows draw on the AI-control agenda for safety under intentional subversion \autocite{shlegeris2023aicontrol} and on model organisms of misalignment and alignment-faking evidence for studying deception empirically \autocite{hubinger2023modelorganisms,park2024deception,casper2023rlhflimits}.

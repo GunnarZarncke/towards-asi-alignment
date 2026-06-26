@@ -53,6 +53,7 @@ These are substantial review passes, not single edits. Each spans several chapte
   - **Remaining:** propagate ⟳ rows in `metadata/notation.md`; **C12 pivotal-process basins:** formalized in ch35 (`sec:pivotal-process-ch35`); Lean `P35` basin narrative still open.
   - **Confirm with author:** `C_H` vs time-indexed `C^H_t` convention.
 - [~] **Lean spine ↔ notation review** — sync 2026-06-23 (`drafts/conversation-summaries/2026-06-23-lean-spine-notation-sync.md`): `U_H`/`U_S`; **`CCI` only** in Lean (no `C_raw` export; weakest link internal to `CCI`); typed `CorrectionPath`; `SuccessorSafeWitness` (`CCIPreserved` + `U_S`); spine citations in ch03/24–26/29/31/39. **Still open:** bundle geometry in `Bundles.lean`; ch13 `P12`; ch35 basins; strengthen `Bool` counterexamples; more chapter citations.
+- [ ] **Update-operator ontology audit** — review update operators across Lean, notation, and manuscript prose for hidden ontology imports. In particular, check whether value/correction/successor update maps assume a fixed ontology, privileged state variables, or semantic coordinates that should instead be represented through transport, bearer maps, or bridge assumptions; then revise the formal signatures and chapter claims accordingly.
 
 ---
 

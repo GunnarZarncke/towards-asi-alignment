@@ -12,6 +12,8 @@ The author asked to do the part openers and Chapter 40 fixes, treat the Introduc
 - Updated `metadata/TODO.md`: removed the resolved part-opener, ch40 requested-fixes, and obsolete intro "Where the Argument Is Shaky" TODO rows.
 - Added a new active TODO to decide between part-relative numbering and global renumbering after the insertion of `ch39b`.
 - Fixed stale manuscript status in `README.md`: chapter count/status now matches `metadata/book.yml` (27 draft, 18 reviewed, 0 stub), and Part IX explicitly lists `ch39b`.
+- Added a TODO for auditing update operators that may import ontology through fixed state variables or semantic coordinates.
+- Integrated reviewer feedback on under-engagement with Hubinger-style inner alignment: added `ch40` Section `Mesa-Optimization and Inner Alignment` with formal definitions, equations, and a translation table mapping outer/inner alignment, mesa-objectives, pseudo-alignment, deceptive alignment, gradient hacking, and sharp-left-turn concerns into the book's framework; added a body-level `ch10` bridge from strategic opacity to mesa-optimization; updated `ch40` chapter references for `hubinger2019risks`.
 - Verified with `ReadLints`, `rg 'TODO\[open-crux\]'` on ch40, and `make check`.
 
 ## Decisions
