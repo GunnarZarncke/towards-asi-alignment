@@ -403,28 +403,7 @@ The system may preserve the right bundles and bearers at one time, then later fr
 
 The strongest layer is correction transport.
 
-A correction channel is the causal pathway by which human and institutional evaluation changes future system behaviour.
-We can write a minimal chain:
-\begin{equation}
-W_t
-\to O_t
-\to J_t
-\to D_t
-\to C_t
-\to U_{t+1}
-\to A_{t+k}.
-\label{eq:correction-chain-ch23}
-\end{equation}
-Here:
-\begin{itemize}
-\item $W_t$ is the relevant world and system state.
-\item $O_t$ is what humans or institutions can observe.
-\item $J_t$ is human judgment.
-\item $D_t$ is deliberation, aggregation, or institutional processing.
-\item $C_t$ is the correction signal.
-\item $U_{t+1}$ is the system update.
-\item $A_{t+k}$ is later system behaviour.
-\end{itemize}
+A correction channel is the causal pathway by which human and institutional evaluation changes future system behaviour (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:correction-chain-ch24}).
 Correction transport preserves this causal chain across capability growth, ontology shift, delegation, and successor creation.
 
 A weak system allows humans to complain.
@@ -492,11 +471,7 @@ The strong correction channel can be understood as a practical, process-oriented
 
 Let $V_t$ be the current human value state, including explicit preferences, implicit value-bundles, institutions, conflicts, and uncertainties.
 Let $E_t$ be new evidence, and $D_t$ be deliberation.
-A civilizational value-update process can be written as:
-\begin{equation}
-V_{t+1}=U_H(V_t,E_t,D_t).
-\label{eq:human-value-update-ch23}
-\end{equation}
+The civilizational value-update operator is $U_H$ as defined in Chapter~\ref{ch:fixed-values-wrong-target} (Eq.~\eqref{eq:human-value-update-ch04}).
 The system should not replace $U_H$ with its own private estimate unless humans have explicitly and corrigibly delegated that role under preserved correction conditions.
 The system may assist the process by improving evidence, revealing inconsistencies, modeling consequences, translating between groups, reducing coercion, and preserving reversibility.
 But if it bypasses the process because it believes it already knows the fixed point, it has violated correction transport.
@@ -554,36 +529,7 @@ We can infer whether transport hypotheses compress behaviour \autocite{dennett19
 
 Let $M_0$ be a baseline model in which the system optimizes its current inferred objective without preserving goal structure across transformation.
 Let $M_T$ be a model in which the system also preserves a transport mapping $T$.
-Then:
-\begin{equation}
-\Delta L_{\text{transport}}
-=
-L(M_T\mid X_{1:T})
--
-L(M_0\mid X_{1:T})
--
-\lambda DL(T).
-\label{eq:transport-gain-ch23}
-\end{equation}
-Here $L(M\mid X_{1:T})$ is the log evidence or compression score of model $M$ on observed trajectory $X_{1:T}$, and $DL(T)$ is the description length of the transport mapping.
-The penalty prevents arbitrary complicated transport stories from explaining everything.
-
-But transport should not be treated as a single number.
-We decompose:
-\begin{equation}
-\Delta L_{\text{transport}}
-=
-\Delta L_{\text{semantic}}
-+
-\Delta L_{\text{bundle}}
-+
-\Delta L_{\text{bearer}}
-+
-\Delta L_{\text{correction}}
-+
-\Delta L_{\text{successor}}.
-\label{eq:transport-decomposition-ch23}
-\end{equation}
+Recall the transport-gain score and five-term decomposition from Chapter~\ref{ch:goal-transport} (Eqs.~\eqref{eq:transport-gain} and~\eqref{eq:transport-decomposition}).
 The weights should not be equal.
 Semantic transport is cheap and easy to fake.
 Correction and successor transport are more important.
@@ -826,9 +772,8 @@ CCI_t>\theta_c,
 \forall A'\in\mathrm{Succ}(A_t):
 A'\in\mathcal S_{\text{transport}}.
 \end{equation}
-These are not final mathematical definitions.
-They are placeholders for a research program.
-But they locate the right variables.
+These conditions make the transport target explicit.
+They separate bundle response, bearer import, correction transport, and successor preservation so each can be tested directly.
 
 \section{Why This Chapter Matters}
 \label{sec:why-chapter-matters-transport}

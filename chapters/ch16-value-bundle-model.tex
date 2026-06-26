@@ -561,25 +561,7 @@ If human values were represented as an arbitrary high-dimensional reward vector
 r\in\mathbb{R}^n,
 \]
 then learning them from behavior would require enormous data.
-In many inverse learning settings, sample complexity scales with the number of relevant features.
-A rough form is:
-\begin{equation}
-m
-=
-O\left(
-\frac{k}{\epsilon^2(1-\gamma)^2}
-\log\frac{k}{\delta}
-\right),
-\label{eq:sample-complexity}
-\end{equation}
-where:
-\begin{itemize}
-\item $m$ is the number of demonstrations or comparisons,
-\item $k$ is the effective feature dimension,
-\item $\epsilon$ is the tolerated regret or error,
-\item $\gamma$ is the horizon discount,
-\item $\delta$ is the failure probability.
-\end{itemize}
+In many inverse learning settings, sample complexity scales with the number of relevant features; the bound is developed in Chapter~\ref{ch:low-dimensional-value-learning} (Eq.~\eqref{eq:sample-complexity-ch17}).
 If $k$ is very large, value learning is hopeless.
 If $k$ is small, value learning becomes possible in principle, though still difficult.
 

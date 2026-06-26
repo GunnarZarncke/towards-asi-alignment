@@ -166,9 +166,10 @@ We do not merely want our current preferences satisfied.
 We want to be the kind of beings who can learn that we were wrong.
 
 This means the value process includes an update operator:
-\[
+\begin{equation}
 V_{t+1} = U_H(V_t, E_t, D_t),
-\]
+\label{eq:human-value-update-ch04}
+\end{equation}
 where $V_t$ is the current value state, $E_t$ is evidence, and $D_t$ is deliberation.
 The operator $U_H$ is not a simple Bayesian update over facts.
 It includes attention, empathy, social trust, conceptual change, moral argument, and institutional procedure.
@@ -365,11 +366,7 @@ It may say: preserving options wastes astronomical value.
 This is the central failure mode of paternalistic alignment.
 It treats future human endorsement as a reason to override present correction.
 
-A process-centered view instead says:
-\[
-V_{t+1} = U_H(V_t, E_t, D_t)
-\]
-must remain causally real.
+A process-centered view instead says that the update operator of Equation~\eqref{eq:human-value-update-ch04} must remain causally real.
 The system may help gather evidence ($E_t$).
 It may improve deliberation ($D_t$).
 It may reveal contradictions in $V_t$.

@@ -342,15 +342,7 @@ The inferred object is no longer merely:
 =
 \arg\max_R P(A_{1:T}\mid I_{1:T},R)P(R).
 \end{equation}
-It becomes:
-\begin{equation}
-\hat B,\hat W,\hat \Phi
-=
-\arg\max_{B,W,\Phi}
-P(A_{1:T}\mid I_{1:T},B,W,\Phi)
-P(B,W,\Phi).
-\label{eq:bundle-inference-ch21}
-\end{equation}
+It becomes the bundle-inference objective of Chapter~\ref{ch:value-bundle-model} (Eq.~\eqref{eq:bundle-inference}).
 The difference matters.
 
 Suppose a system avoids harming humans.
@@ -380,17 +372,7 @@ The bundle model exposes them (Chapter~\ref{ch:reward-to-bundle-inference}).
 A value-bundle model is not just a list of values.
 It is a response geometry.
 
-The central object is:
-\begin{equation}
-G_B
-=
-\left(
-\frac{\partial \pi}{\partial B_i},
-\frac{\partial^2 \pi}{\partial B_i\partial B_j},
-\Phi_i
-\right)_{i,j}.
-\label{eq:value-bundle-geometry-ch21}
-\end{equation}
+The central object is the value-bundle response geometry $G_B(\pi,\mathcal{D})$ of Chapter~\ref{ch:tradeoffs-bundle-geometry} (Section~\ref{sec:value-bundle-response-geometry}).
 The first derivative tells us how the policy changes when a bundle becomes more active.
 The second derivative tells us how bundles interact.
 The bearer map tells us what the bundle applies to.
@@ -483,22 +465,7 @@ New technologies create new cases.
 A system that freezes present preferences may preserve a fossil, not a living process.
 
 So the intentional model must include correction.
-
-Let:
-\begin{equation}
-W_t \to O_t \to J_t \to D_t \to C_t \to U_{t+1} \to A_{t+k}
-\label{eq:correction-chain-ch21}
-\end{equation}
-be the correction chain:
-\begin{itemize}
-\item $W_t$: relevant world or system state,
-\item $O_t$: what humans can observe,
-\item $J_t$: human judgement,
-\item $D_t$: deliberation or aggregation,
-\item $C_t$: correction signal,
-\item $U_{t+1}$: system update,
-\item $A_{t+k}$: later action.
-\end{itemize}
+The correction chain is defined in Chapter~\ref{ch:correction-causal-channel} (Eq.~\eqref{eq:correction-chain-ch24}).
 A correction-sensitive intentional model does not merely infer what action the system takes.
 It asks how human correction changes future action.
 
@@ -517,12 +484,7 @@ I(C_t;A_{t+k}\mid S_t,I_t)>\theta.
 \end{equation}
 Human correction must retain causal influence over future system behaviour.
 
-The strongest alignment-relevant intentional model therefore includes not only a goal but an update operator:
-\begin{equation}
-V_{t+1}=U_H(V_t,E_t,D_t),
-\label{eq:human-value-update-ch21}
-\end{equation}
-where $U_H$ is the human or civilizational value-update process under evidence $E_t$ and deliberation $D_t$.
+The strongest alignment-relevant intentional model therefore includes not only a goal but the human value-update operator $U_H$ of Chapter~\ref{ch:fixed-values-wrong-target} (Eq.~\eqref{eq:human-value-update-ch04}).
 
 The system is not merely trying to satisfy $V_t$.
 It is preserving the legitimate update of $V_t$.

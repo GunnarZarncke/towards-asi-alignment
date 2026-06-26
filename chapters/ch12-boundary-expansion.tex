@@ -131,11 +131,7 @@ At time $t$, represent the local agent boundary as
 X_t = (I_t,S_t,A_t,E_t),
 \end{equation}
 where $I_t$ are internal variables, $S_t$ sensory variables, $A_t$ active variables, and $E_t$ external variables.
-A boundary is good when internal and external futures are approximately conditionally separated by the interface:
-\begin{equation}
-\MI(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon.
-\label{eq:epsilon-boundary}
-\end{equation}
+A boundary is good when internal and external futures are approximately conditionally separated by the interface (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}).
 
 This condition should not be read as metaphysical separation.
 Real boundaries leak.
@@ -678,10 +674,7 @@ Candidate conserved properties include:
 \subsection{Boundary Closure}
 \label{sec:conserved-boundary-closure}
 
-The successor or grown system should remain a coherent, discoverable agentic process rather than dissolving into an unbounded external optimizer.
-\begin{equation}
-\MI(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon.
-\end{equation}
+The successor or grown system should remain a coherent, discoverable agentic process rather than dissolving into an unbounded external optimizer (Eq.~\eqref{eq:epsilon-boundary-ch07}).
 
 For composite systems, $\epsilon$ need not be tiny.
 What matters is that the boundary remains measurable and that leakage does not hide the real locus of control.

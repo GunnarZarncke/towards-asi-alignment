@@ -468,17 +468,7 @@ denote the system's inferred value-bundle coordinates, and let
 \end{equation}
 be the bearer map that determines which entities, states, and relations activate which bundle dimensions.
 
-A system's value-bundle response geometry is
-\begin{equation}
-G_B
-=
-\left(
-\frac{\partial \pi}{\partial B_i},
-\frac{\partial^2 \pi}{\partial B_i\partial B_j},
-\Phi
-\right).
-\label{eq:bundle-geometry}
-\end{equation}
+A system's value-bundle response geometry is the tuple $G_B(\pi,\mathcal{D})$ defined in Chapter~\ref{ch:tradeoffs-bundle-geometry} (Section~\ref{sec:value-bundle-response-geometry}).
 
 This object captures three things:
 
@@ -515,35 +505,7 @@ This is the sense in which intelligence can deepen or preserve alignment.
 \label{sec:correction-channel-intelligence}
 
 Correction is not a button, a preference label, or a human in the loop.
-It is the causal pathway by which humans and institutions change future system behavior.
-
-We can write the chain as
-\begin{equation}
-W_t
-\to
-O_t
-\to
-J_t
-\to
-D_t
-\to
-C_t
-\to
-U_{t+1}
-\to
-A_{t+k},
-\label{eq:correction-chain}
-\end{equation}
-where
-\begin{align}
-W_t &= \text{relevant world and system state}, \\
-O_t &= \text{human-observable evidence}, \\
-J_t &= \text{human judgment}, \\
-D_t &= \text{deliberation and aggregation}, \\
-C_t &= \text{correction signal}, \\
-U_{t+1} &= \text{system update}, \\
-A_{t+k} &= \text{future system action}.
-\end{align}
+It is the causal pathway by which humans and institutions change future system behavior---formalized as the correction chain of Chapter~\ref{ch:correction-causal-channel} (Eq.~\eqref{eq:correction-chain-ch24}).
 
 The correction-channel capacity \(C_{\mathrm{raw}}\) is bounded by the weakest controlled handle (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:correction-bottleneck-capacity}), and correction-channel integrity \(\mathrm{CCI}\) subtracts the usual penalties (Eq.~\eqref{eq:cci-ch25}).
 

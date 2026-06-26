@@ -116,22 +116,8 @@ It changes which actions are considered acceptable.
 It interacts with truth, autonomy, fairness, and loyalty.
 It applies to some bearers more strongly than others: children, friends, strangers, animals, possible digital minds, future persons, and perhaps artificial successors.
 
-Therefore the object to be preserved is not merely a policy:
-\begin{equation}
-\pi(a \mid s),
-\end{equation}
-but a value-bundle response geometry:
-\begin{equation}
-G_B
-=
-\left(
-\frac{\partial \pi}{\partial B_i},
-\frac{\partial^2 \pi}{\partial B_i \partial B_j},
-\Phi_i
-\right).
-\label{eq:value-bundle-geometry-ch22}
-\end{equation}
-The first derivative says how changing a value-bundle coordinate changes action.
+Therefore the object to be preserved is not merely a policy $\pi(a \mid s)$, but the value-bundle response geometry $G_B(\pi,\mathcal{D})$ defined in Chapter~\ref{ch:tradeoffs-bundle-geometry} (Section~\ref{sec:value-bundle-response-geometry}).
+The Jacobian tells us how changing a value-bundle coordinate changes action.
 The second derivative says how bundle tradeoffs behave.
 The bearer map says what the bundle is about.
 
@@ -602,14 +588,7 @@ The practical question is:
 \subsection{Step 2: Infer Current Value-Bundle Geometry}
 \label{sec:pipeline-step2}
 
-Infer latent bundles $B$, weights $W$, and bearer maps $\Phi$ from behaviour, explanation, internal representations, and counterfactual tests:
-\begin{equation}
-\hat B,\hat W,\hat \Phi
-=
-\arg\max_{B,W,\Phi}
-P(A_{1:T}\mid S_{1:T},I_{1:T},B,W,\Phi)P(B,W,\Phi).
-\label{eq:bundle-inference-ch22}
-\end{equation}
+Infer latent bundles $B$, weights $W$, and bearer maps $\Phi$ from behaviour, explanation, internal representations, and counterfactual tests using the bundle-inference objective of Chapter~\ref{ch:value-bundle-model} (Eq.~\eqref{eq:bundle-inference}).
 This should include high-stakes counterfactuals, not only normal behaviour.
 
 \subsection{Step 3: Identify Transformations}
