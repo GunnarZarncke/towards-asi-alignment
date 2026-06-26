@@ -58,4 +58,4 @@ make check   # fails: Expected 10 appendix files, found 9
 
 ## Commits
 
-- None.
+- `c3d1ff3` Add CCI anti-capture validity condition.
