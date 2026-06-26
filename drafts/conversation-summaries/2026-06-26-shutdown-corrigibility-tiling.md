@@ -34,4 +34,4 @@ The user asked to subsume Thornley's shutdown problem into the book's correction
 - `context/lean_proof_dependency_graph.dot`
 
 ## Commits
-- None
+- `8e46939` Integrate shutdown, corrigibility, and tiling results.
