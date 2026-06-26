@@ -11,6 +11,7 @@ The author asked to do the part openers and Chapter 40 fixes, treat the Introduc
 - Replaced the two inline `% TODO[open-crux]` markers in ch40 with body prose on reflective stability of correction and delegated evaluation of superhuman plans.
 - Updated `metadata/TODO.md`: removed the resolved part-opener, ch40 requested-fixes, and obsolete intro "Where the Argument Is Shaky" TODO rows.
 - Added a new active TODO to decide between part-relative numbering and global renumbering after the insertion of `ch39b`.
+- Fixed stale manuscript status in `README.md`: chapter count/status now matches `metadata/book.yml` (27 draft, 18 reviewed, 0 stub), and Part IX explicitly lists `ch39b`.
 - Verified with `ReadLints`, `rg 'TODO\[open-crux\]'` on ch40, and `make check`.
 
 ## Decisions

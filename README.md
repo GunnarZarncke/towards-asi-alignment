@@ -43,14 +43,14 @@ Body text introduces every central concept from first principles.
 
 | Item | Status |
 |------|--------|
-| Milestone | **Third** in progress — Parts I–II largely drafted (Ch. 5 partial) |
-| Structure | 10 parts, **44 chapters**, 9 appendices |
-| Chapters | **10 drafted**, **1 partial** (Ch. 5), **33 stub** (see `metadata/book.yml`) |
+| Milestone | **Third** in progress — all main chapters have first drafts; selected chapters are marked reviewed |
+| Structure | 10 parts, **45 chapter entries** (including `ch39b`), 9 appendices |
+| Chapters | **27 draft**, **18 reviewed**, **0 stub** (see `metadata/book.yml`) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
 | PDF | [**Download latest draft**](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
 | Word target | ~350k (see `metadata/book.yml`) |
 
-**Open gaps:** see `metadata/TODO.md` and `metadata/book.yml` (e.g. Ch. 5 partial; frontmatter stubs; appendices A and F).
+**Open gaps:** see `metadata/TODO.md` and `metadata/book.yml` (e.g. frontmatter stubs, appendix stubs, citation review, chapter numbering cleanup after `ch39b`).
 
 For agent session continuity, see `drafts/conversation-summaries/INDEX.md`.
 
@@ -131,7 +131,7 @@ steps and keeps empirical/philosophical claims explicit as bridge `axiom`s
 | VI. Correction Channels | 24–27 | Causal correction, integrity, extrapolation, manipulation |
 | VII. Successors, Reproduction, and Continuity | 28–31 | Successor test, conserved properties, certification |
 | VIII. Attractor Basins and Socio-Technical Selection | 32–35 | Selection environment, coupling, parasites, attractor |
-| IX. Safety Cases, Adversaries, and Open Questions | 36–40 | Observation limits, goal laundering, safety case, lethality stress test |
+| IX. Safety Cases, Adversaries, and Open Questions | 36–40 plus 39b | Observation limits, goal laundering, safety case, adversarial verifiability, lethality stress test |
 | X. The Philosophical and Civilizational Limit | 41–44 | Value change, drift, bearers, closing synthesis |
 
 Full titles and status: `metadata/book.yml` (source of truth). Roadmap tables in `tables/chapter-map.tex` and `tables/part-roadmap.tex` are **auto-generated** at build time from `book.yml` and `parts/part*.tex` (`scripts/generate_tables.py`).
