@@ -309,6 +309,44 @@ If value learning requires inferring thousands or millions of independent moral 
 If much of value-relevant behavior factors through something closer to ten or twenty latent bundle directions, the readout problem remains hard but no longer obviously impossible.
 Whether the representation problem is also tractable is the main empirical bridge.
 
+This also sharpens which pessimistic claim the chapter rejects.
+The defensible claim is:
+\[
+\text{full human values are not identifiable from sparse behavior-only data under ontology shift.}
+\]
+This is probably true.
+Inverse reinforcement learning is underidentified in exactly this way: many reward functions can explain the same behavior, and ontology shift makes the application map still less determinate.
+The stronger and more vulnerable claim is:
+\[
+\text{human value structure is too complex or arbitrary to learn useful latent structure.}
+\]
+That stronger claim would predict near-chance generalization on genuinely held-out moral cases.
+If value labels were arbitrary over situations, then for a balanced binary judgment \(Y\) and a scenario representation \(E(X)\),
+\[
+\mathbb{E}[\mathrm{err}_{\mathrm{test}}]\approx \frac12.
+\]
+But any predictor with error \(p_e<1/2\) implies that the representation contains value-relevant information:
+\[
+I(Y;E(X))
+\geq
+H(Y)-h_2(p_e),
+\]
+where \(h_2\) is binary entropy.
+For balanced labels this becomes:
+\[
+I(Y;E(X)) \geq 1-h_2(p_e).
+\]
+At \(80\%\) held-out accuracy, \(p_e=0.2\), giving about \(0.278\) bits per judgment.
+This is a weak lower bound, not an alignment theorem.
+It says only that above-chance value prediction refutes the thesis that the tested value labels are unlearnably arbitrary.
+
+The empirical prior is not empty.
+Moral Foundations Theory, Schwartz's value circumplex, the ETHICS benchmark, and the Moral Machine results all suggest a mixture of regularity, plurality, and cultural modulation rather than random labels \autocite{graham2011mapping,schwartz2012overview,hendrycks2021ethics,awad2018moralmachine}.
+That is the shape the value-bundle model expects:
+\[
+\text{values are compressed but plural, context-sensitive, and ontology-dependent.}
+\]
+
 This is the central statistical reason to care about value bottlenecks, but it is not yet a proof that value learning is easy.
 It says:
 \[
@@ -318,6 +356,8 @@ It does not say:
 \[
 \text{the right coordinates are cheap to discover.}
 \]
+
+\leanspine{proof}{P16\_lhv\_sample\_window\_separates\_flat\_reward\_learning}{A finite arithmetic node records the regime \(K<n<D\): a low-dimensional hub readout can be sample-sufficient while an unconstrained ambient reward class remains under-sampled.}
 
 \section{The Representation Bridge}
 \label{sec:representation-bridge-ch17}
@@ -394,6 +434,7 @@ They must compress.
 High-dimensional bodily and environmental errors are routed through hubs, salience systems, hormone systems, affective circuits, and attentional gates.
 These mechanisms do not preserve all information.
 They preserve what has historically mattered for control \autocite{friston2010free,miller2015}.
+The Loop--Hub--Control--Value architecture introduced in Chapter~\ref{ch:values-compressed-control}, Section~\ref{sec:lhcv-model-ch15}, is the concrete version of this prior: loop errors compress through hub bottlenecks into control-relevance proxies, and those proxy histories are then read out as value labels under development and social interpretation \autocite{zarncke2025lhcv}.
 
 A third reason is generalization.
 An organism that learns each situation separately fails in novel environments.
@@ -811,6 +852,16 @@ This is the regime priced by the sample-complexity bound.
 Preference prediction should improve rapidly with the first few latent dimensions and then flatten.
 The exact elbow may vary by domain, but the existence of an elbow is the important sign.
 
+\paragraph{Minimal synthetic check.}
+A small synthetic check has the expected shape.
+In a toy population with \(D=64\) observable scenario dimensions and \(K=6\) latent hub coordinates, parallel analysis on the embedding spectrum recovered six significant components.
+Judgments generated from nonlinear interactions among the hubs were then predicted from held-out examples.
+With \(n=32\) training examples, a low-dimensional hub learner reached about \(0.73\) AUC; with \(n=1024\), about \(0.76\) AUC.
+The oracle learner that saw the true hub coordinates was only slightly better, around \(0.78\) AUC at the high end, while a raw high-dimensional learner lagged in the few-shot regime.
+In a simpler linear toy with \(D=128\) and six planted value coordinates, held-out accuracy reached about \(80\%\), giving the information lower bound above, roughly \(0.286\) bits per binary judgment.
+These numbers are not empirical evidence about humans.
+They only validate the experimental pattern: recoverable low-dimensional structure can make value prediction possible in the sample window where an arbitrary high-dimensional reward model would be under-sampled.
+
 \paragraph{3. Clustered perturbation effects.}
 Perturbing a biological or artificial value hub should affect clusters of related judgments rather than isolated preferences.
 A change to a care-like channel should shift many vulnerability-related decisions at once.
@@ -956,7 +1007,7 @@ The most compact statement is:
 
 \section*{Chapter References}
 
-This chapter builds on apprenticeship learning, maximum-entropy IRL, and inverse reinforcement learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the information bottleneck, causal representation learning, and low-dimensional value-learning framing \autocite{tishby2000ib,scholkopf2021causalreps,zarncke2026value-bottleneck}; predictive processing, affective systems, and cognitive bottleneck accounts \autocite{friston2010free,panksepp1998affective,miller2015}; preference-learning from human feedback \autocite{christiano2017}; and adversarial limits on learned alignment signals \autocite{casper2023rlhflimits,park2024deception,hubinger2023modelorganisms}.
+This chapter builds on apprenticeship learning, maximum-entropy IRL, and inverse reinforcement learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the information bottleneck, causal representation learning, and low-dimensional value-learning framing \autocite{tishby2000ib,scholkopf2021causalreps,zarncke2026value-bottleneck}; moral psychology and value-structure evidence \autocite{graham2011mapping,schwartz2012overview,hendrycks2021ethics,awad2018moralmachine}; predictive processing, affective systems, and cognitive bottleneck accounts \autocite{friston2010free,panksepp1998affective,miller2015}; preference-learning from human feedback \autocite{christiano2017}; and adversarial limits on learned alignment signals \autocite{casper2023rlhflimits,park2024deception,hubinger2023modelorganisms}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

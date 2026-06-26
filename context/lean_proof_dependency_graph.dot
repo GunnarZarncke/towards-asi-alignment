@@ -38,6 +38,7 @@ digraph LeanProofDependencies {
   // Bundles (ch15–23)
   P14 [label="P14 Bundle factorization\nsame bundle ⇒ same policy output", fillcolor="#EFFBEA"];
   P15 [label="P15 Same policy ≠ bundle geometry\ncounterexample", fillcolor="#EFFBEA"];
+  P16 [label="[NEW]\nP16 LHV sample window\nK<n<D separates classes", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
   P17 [label="P17 Same labels ≠ bearer map\nontology-shift counterexample", fillcolor="#EFFBEA"];
   P18 [label="P18 Marginals ≠ tradeoffs\ntradeoff counterexample", fillcolor="#EFFBEA"];
   P19 [label="[SUBSUMED]\nP19 Scalar reward as k=1 bundle\nIRL embeds in bundle model", fillcolor="#EFFBEA", color="#2E7D32", penwidth=2.2];
@@ -110,7 +111,8 @@ digraph LeanProofDependencies {
   P11 -> P13 [label="C-RISK: capability/control side"];
 
   // Bundle / transport chain
-  P14 -> P19 [label="C-VB: bundle generalizes scalar reward"];
+  P14 -> P16 [label="C-SAMPLE: low-dimensional readout"];
+  P16 -> P19 [label="C-VB: bundle generalizes scalar reward"];
   P19 -> PCIRL [label="C-CIRL: reward inference weaker"];
   P14 -> P15 [label="C-VB: policy ≠ geometry"];
   P14 -> P17 [label="C-BEARER: bundle needs application map"];
@@ -124,7 +126,7 @@ digraph LeanProofDependencies {
   P15 -> P37 [label="C-LAUNDER: policy hides geometry"];
   P17 -> P37 [label="C-LAUNDER: labels hide Φ drift"];
   P22b -> P37 [label="C-LAUNDER: semantic insufficient"];
-  P14 -> MB2 [label="C-SAMPLE: tractable if identifiable", style=dashed];
+  P16 -> MB2 [label="C-SAMPLE: tractable if identifiable", style=dashed];
 
   // Correction chain (handle-controlled)
   P23 -> P24 [label="C-CC: channel as handle path"];

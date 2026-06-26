@@ -73,7 +73,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/02-value-transport.png}
   \caption[Spine II: value and transport]{Spine II: value bundles and goal transport (Part~IV).
-  Covers bundle factorization, scalar reward as a one-dimensional bundle, cooperative reward inference as weaker than bundle preservation, bearer-map and tradeoff counterexamples, MDL transport gains, and goal-laundering separation (\texttt{P37}).}
+  Covers bundle factorization, the LHV sample-window split, scalar reward as a one-dimensional bundle, cooperative reward inference as weaker than bundle preservation, bearer-map and tradeoff counterexamples, MDL transport gains, and goal-laundering separation (\texttt{P37}).}
   \label{fig:lean-spine-value}
 \end{figure}
 
@@ -647,6 +647,16 @@ If \(f=g\circ c\) and \(c(e_1)=c(e_2)\), then \(f(e_1)=f(e_2)\) (Chapter~\ref{ch
 \end{lemma}
 \begin{proof}
 Apply Assumption~\ref{appi:ass:s04}.
+\end{proof}
+
+\begin{theorem}[\texttt{P16}: LHV sample window separates flat reward learning]
+\label{appi:thm:p16}
+If \(K<n<D\), then there are enough observations for the toy \(K\)-dimensional LHV readout while an arbitrary flat reward over \(D\) ambient features remains under-sampled (Chapter~\ref{ch:low-dimensional-value-learning}, Section~\ref{sec:sample-complexity-argument}; Chapter~\ref{ch:reward-to-bundle-inference}, Section~\ref{sec:bundle-inference-sample-complexity}).
+\end{theorem}
+\begin{proof}
+Lean defines \(\mathrm{LHVSampleSufficient}(K,n)\) as \(K\leq n\) and \(\mathrm{FlatRewardUnderSampled}(D,n)\) as \(n<D\).
+The theorem is the arithmetic consequence of \(K<n<D\).
+It records the learnability/identifiability split as a proof-spine node, not as an empirical claim about human value data.
 \end{proof}
 
 \begin{lemma}[\texttt{P19}: scalar reward as a single bundle]

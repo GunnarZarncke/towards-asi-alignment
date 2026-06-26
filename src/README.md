@@ -72,3 +72,4 @@ explicitly requested later.
 |--------|---------|---------|
 | `demos/ch09-uad-coalition-board/` | 9 — The Real Agent May Be Composite | Posting board → manual or dummy UAD coalition discovery |
 | `demos/ch16-value-bundle-simulator/` | 16 — The Value-Bundle Model | Ecology sliders → top value salience |
+| `demos/ch17-lhv-learnability/` | 17 — When Low Dimensionality Helps Value Learning | Synthetic hub structure → dimension recovery and held-out prediction |

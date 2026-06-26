@@ -14,6 +14,7 @@ digraph Spine02ValueTransport {
 
   P14 [label="P14 Bundle factorization", fillcolor="#EFFBEA"];
   P15 [label="P15 Policy ≠ geometry", fillcolor="#EFFBEA"];
+  P16 [label="[NEW]\nP16 LHV sample window", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
   P17 [label="P17 Labels ≠ bearer map", fillcolor="#EFFBEA"];
   P18 [label="P18 Marginals ≠ tradeoffs", fillcolor="#EFFBEA"];
   P19 [label="[SUBSUMED]\nP19 Scalar reward as bundle", fillcolor="#EFFBEA", color="#2E7D32", penwidth=2.2];
@@ -31,8 +32,9 @@ digraph Spine02ValueTransport {
        label="Exports:\nBundleTransport, BearerTransport,\ntransport / laundering counterexamples"];
 
   P14 -> P15;
+  P14 -> P16;
   P14 -> P17;
-  P14 -> P19 -> P20 -> P21 -> P22a -> P22b;
+  P16 -> P19 -> P20 -> P21 -> P22a -> P22b;
   P19 -> PCIRL;
   P17 -> P22b;
   P18 -> P22b;
@@ -41,6 +43,7 @@ digraph Spine02ValueTransport {
   P22b -> P37;
 
   P14 -> MB2 [style=dashed, color="#CC3333"];
+  P16 -> MB2 [style=dashed, color="#CC3333"];
   MB2 -> P15 [style=dashed, color="#CC3333"];
   MB2 -> P21 [style=dashed, color="#CC3333"];
   MB3 -> P17 [style=dashed, color="#CC3333"];

@@ -6,6 +6,8 @@ import AlignmentProofSpine.Core
 Value-bundle geometry and transport (book chapters 15–23).
 
 * `P14`: factorization of a policy through a bundle.
+* `P16`: a low-dimensional LHV sample window can be sufficient while the
+  ambient flat-reward class remains under-sampled.
 * `P19`: scalar reward embeds as a one-dimensional bundle.
 * `P20`, `P21`: MDL model-selection consequences (use `S07`).
 * `P22a`: full transport implies semantic transport (ch23 stack).
@@ -30,6 +32,27 @@ theorem P14_factorization_implies_equivalent_errors
   obtain ⟨d, hd⟩ := h
   rw [hd]
   simp [Function.comp, heq]
+
+/-- A toy sample predicate: there are enough observations for a `K`-dimensional
+    LHV readout. This deliberately abstracts away constants and horizons. -/
+def LHVSampleSufficient (K n : Nat) : Prop :=
+  K ≤ n
+
+/-- A toy sample predicate: there are not enough observations to identify an
+    arbitrary flat reward over `D` ambient features. -/
+def FlatRewardUnderSampled (D n : Nat) : Prop :=
+  n < D
+
+/-- C-SAMPLE (P16): in the sample window `K < n < D`, a constrained LHV readout
+    can be sample-sufficient while an unconstrained ambient reward class remains
+    under-sampled. This is the formal skeleton of the learnability /
+    identifiability split, not an empirical theorem about human data. -/
+theorem P16_lhv_sample_window_separates_flat_reward_learning
+    {K n D : Nat}
+    (hK : K < n)
+    (hD : n < D) :
+    LHVSampleSufficient K n ∧ FlatRewardUnderSampled D n :=
+  ⟨Nat.le_of_lt hK, hD⟩
 
 /-- C-VB (P19): every scalar reward `r` is realized by a one-dimensional
     (`k = 1`) bundle weight vector. Inverse RL embeds into the bundle model. -/
