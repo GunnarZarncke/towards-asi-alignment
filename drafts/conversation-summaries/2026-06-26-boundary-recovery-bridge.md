@@ -36,4 +36,4 @@ The user provided reviewer feedback that Chapter 7's boundary-discovery criterio
 - `metadata/uncertainty-ledger.md`
 
 ## Commits
-- None.
+- `bf237cd` Add boundary recovery bridge.
