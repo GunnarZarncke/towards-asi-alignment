@@ -2,11 +2,13 @@
 
 Track every major claim with status, support, weakest link, and falsification criteria.
 
-**Last cross-check:** 2026-06-23 — entries reconciled against the 44 chapter `chapterthesis` blocks, the five Introduction `introclaim`s, and the conceptual spine in `INSTRUCTIONS.md`. Chapter numbers refer to the current 44-chapter map in `metadata/book.yml` (the old "ch45" conclusion is now ch44).
+**Last cross-check:** 2026-06-26 — header/status refreshed after the main chapters reached draft/reviewed status and `ch39b` was inserted. Entries remain manually maintained against the chapter `chapterthesis` blocks, the five Introduction `introclaim`s, the chapter-level WWCTV sections, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`. Chapter references follow the current 45-entry map in `metadata/book.yml` (including `ch39b`; full renumbering is still an open TODO).
+
+**Maintenance note:** This ledger is not generated. It must be manually updated when chapters, claims, assumptions, uncertainty entries, or proof-spine bridges change. Treat it as a maintainer audit tool rather than an automatically complete public index until the automation TODO in `metadata/TODO.md` is resolved.
 
 **Status vocabulary:** `established` (well-supported, near-consensus) · `plausible` (argued, not proven) · `framework` (definitional/structural proposal) · `speculative` (forward-looking) · `limit` (acknowledged boundary of the theory). Per `AGENTS.md`, claim strength is calibrated to the Lean proof spine: the book does **not** assert that ASI alignment is proven.
 
-The five named Introduction claims map to claims C-003 (boundary), C-004 (value-bundle), C-005 (correction), C-006 (successor), and C-007 (basin/selection). C-044 tracks whether they are discharged in the (still-stubbed) conclusion.
+The five named Introduction claims map to claims C-003 (boundary), C-004 (value-bundle), C-005 (correction), C-006 (successor), and C-007 (basin/selection). C-044 tracks their draft-level discharge in the conclusion.
 
 ---
 

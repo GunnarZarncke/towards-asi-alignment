@@ -4,6 +4,8 @@ Single source for **Appendix E** (assumptions index). Regenerate the typeset app
 
 Maintainer detail (failure modes, tests, claim links): sections I–IV below. Claims: `metadata/claims-ledger.md`. Disconfirmers: `metadata/uncertainty-ledger.md`, Appendix H.
 
+**Maintenance note:** This ledger is the source for generated Appendix E, but the ledger itself is manually maintained. Update it whenever chapter assumptions, Lean bridge assumptions, claim links, or uncertainty links change. Treat the generated appendix as downstream of this file, not as an independent source of truth, until ledger automation is implemented.
+
 **Last verification:** 2026-06-25 — cross-checked chapter assumption statements against this ledger (see §Verification).
 
 ---
