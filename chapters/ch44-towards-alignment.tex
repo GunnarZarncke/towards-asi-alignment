@@ -101,11 +101,18 @@ The risk-bound condition is:
 \[
 \mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta.
 \]
-If the layered predicate and slack condition hold, the spine derives:
+From the slack condition alone, the spine derives the numeric risk leaf:
 \[
 \mathrm{Risk}(A)\leq\delta.
 \]
-\leanspine{proof}{P30}{The Lean spine derives the risk bound from \(CCI\)-slack. The risk bound is not assumed as a bare hypothesis.}
+\leanspine{proof}{P30}{The Lean spine packages certification, invariants, layered alignment, and the risk leaf into a safety-case root; the numeric risk leaf itself follows from \(CCI\)-slack.}
+
+This distinction matters.
+Layered alignment and adversarial robustness do not make the arithmetic inequality true.
+They make it meaningful as part of a safety case.
+The formal spine therefore separates the leaf
+\(\mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta \Rightarrow \mathrm{Risk}(A)\leq\delta\)
+from the composed certification package that also contains \(\mathrm{Certified}(A)\), \(\mathrm{SatisfiesInvariants}(A)\), and \(\mathrm{LayeredAlignedDef}(A)\).
 
 The top composed theorem has the correct humility built in.
 It depends on bridge assumptions:

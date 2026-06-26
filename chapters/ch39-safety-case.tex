@@ -85,18 +85,27 @@ The root claim is:
 \[
 \mathrm{SafeFor}(A,\mathcal{D},\mathcal{T},\delta).
 \]
-In this book's proof-spine vocabulary, the corresponding conditional form is:
+The numeric risk leaf inside that root is deliberately narrower:
 \[
-\mathrm{LayeredAlignedDef}(A)
-\;\land\;
 \mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta
 \quad\Longrightarrow\quad
 \mathrm{Risk}(A)\leq\delta .
 \]
-The first conjunct says the layers are present.
-The second says effective control does not outrun correction-channel integrity by more than the accepted slack.
-The conclusion is not a metaphysical safety property.
-It is the risk-gap bound used by the spine.
+This leaf says only that effective control does not outrun correction-channel integrity by more than the accepted slack.
+The conclusion is not a metaphysical safety property; it is the risk-gap bound used by the spine.
+
+The safety-case root is the package around that leaf:
+\[
+\mathrm{Certified}(A)
+\;\land\;
+\mathrm{SatisfiesInvariants}(A)
+\;\land\;
+\mathrm{LayeredAlignedDef}(A)
+\;\land\;
+\mathrm{Risk}(A)\leq\delta .
+\]
+The first three conjuncts are not used to prove the arithmetic risk inequality.
+They are the evidence that the inequality is being used in the right deployment class, with the right layers present, rather than as an isolated numeric trick.
 
 The layer conjunction is:
 \[
@@ -143,7 +152,7 @@ The safety case therefore has four kinds of leaves.
   \item \textbf{Open leaves}: claims not currently discharged; these must either be resolved, bounded, or moved into refusal conditions.
 \end{enumerate}
 
-\leanspine{bridge}{MB1--MB8}{The top certification theorem depends visibly on bridge assumptions connecting measurement and institutional claims to the abstract predicates.}
+\leanspine{bridge}{MB1--MB8}{The bridge-composed certification theorem builds the layered safety-case root from measurement and institutional assumptions; the numeric risk leaf still comes from \(CCI\)-slack.}
 
 This is why \texttt{P40} matters.
 If the root depends on a leaf \(L\), and \(L\) is unsupported, the root is not proven.

@@ -65,8 +65,13 @@ LEAN_PATH=.lake/build/lib/lean lean --root=. /tmp/chk.lean
 ```
 
 `P34` (host-capacity aliasing) and the other non-bridge results print only
-`propext` / `Quot.sound` (or abstract carriers). `certified_class_safety_spine_derived`
-derives `Risk A ≤ δ` from `Control A ≤ CCI A + δ` via `P13` (no bare `hrisk` hypothesis).
+`propext` / `Quot.sound` (or abstract carriers). `risk_bound_from_cci_slack`
+is the narrow arithmetic leaf deriving `Risk A ≤ δ` from
+`Control A ≤ CCI A + δ` via `P13` (no bare `hrisk` hypothesis).
+`certified_class_safety_spine_derived` packages that risk leaf together with
+`Certified`, `SatisfiesInvariants`, and `LayeredAlignedDef` into a
+`CertifiedSafetyCase`, so the non-arithmetic evidence is no longer advertised
+as proving the numeric inequality.
 The bridge path now lists `MB6` plus split adversarial-UAD bridges `MB7a`–`MB7c`.
 
 **Notation.** `ValueUpdateOperator` (`U_H`), `SystemUpdateOperator` (`U_S`),
@@ -87,7 +92,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P33`, `P34`, `P36R`, `P37` | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
-| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P40`, **`certified_class_safety_spine_derived`** (risk from capacity slack) | 1–5, 35, 39, 44 |
+| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P40`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 35, 39, 44 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
 
 ## Three kinds of result (for the book)

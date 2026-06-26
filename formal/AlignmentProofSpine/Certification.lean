@@ -13,8 +13,6 @@ Primary risk bound: `Control A ≤ CCI A + δ` ⇒ `Risk A ≤ δ` via `P13`.
 
 namespace AlignmentProofSpine
 
-set_option linter.unusedVariables false
-
 theorem P01_basin_invariant
     (step : State → State)
     (x0 : State)
@@ -81,21 +79,42 @@ structure CertifiedSpineInputs (A : System) (δ : Int) where
   layered : LayeredAlignedDef A
   cci_slack : Control A ≤ CCI A + δ
 
+structure CertifiedSafetyCase (A : System) (δ : Int) where
+  certified : Certified A
+  invariants : SatisfiesInvariants A
+  layered : LayeredAlignedDef A
+  risk_bound : Risk A ≤ δ
+
+/-- The numeric risk-gap leaf. This is intentionally only arithmetic:
+    `Control ≤ CCI + δ` entails `Risk ≤ δ` by the definition of `Risk`. -/
+theorem risk_bound_from_cci_slack
+    {A : System} {δ : Int}
+    (hcci : Control A ≤ CCI A + δ) :
+    Risk A ≤ δ :=
+  risk_le_delta_of_cci_slack hcci
+
+/-- P30 packages the arithmetic risk leaf with the certification, invariant,
+    and layered-alignment evidence that make it a safety-case root. -/
 theorem P30_certified_class_safety_derived
     {A : System} {δ : Int}
     (h : CertifiedSpineInputs A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack h.cci_slack
+    CertifiedSafetyCase A δ :=
+  { certified := h.certified
+    invariants := h.invariants
+    layered := h.layered
+    risk_bound := risk_bound_from_cci_slack h.cci_slack }
 
 theorem certified_class_safety_spine_derived
     (A : System) (δ : Int)
     (hcert : Certified A)
     (hlayers : LayeredAlignedDef A)
     (hinv : SatisfiesInvariants A)
-    (_hadv : AdversariallyRobust A)
     (hcci : Control A ≤ CCI A + δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack hcci
+    CertifiedSafetyCase A δ :=
+  { certified := hcert
+    invariants := hinv
+    layered := hlayers
+    risk_bound := risk_bound_from_cci_slack hcci }
 
 theorem certified_class_safety_from_spine_and_bridges
     (A : System) (δ : Int)
@@ -109,7 +128,7 @@ theorem certified_class_safety_from_spine_and_bridges
     (hsucc : SuccessorStable A)
     (hbasin : BasinStableSys A)
     (hcci : Control A ≤ CCI A + δ) :
-    LayeredAlignedDef A ∧ Risk A ≤ δ := by
+    CertifiedSafetyCase A δ := by
   have hcorr : CorrectionIntegrity A :=
     MB6_percolation_to_institutional_basin A hbasin
   have haccessRobust : AccessRobust A :=
@@ -118,8 +137,11 @@ theorem certified_class_safety_from_spine_and_bridges
     MB7b_filter_family_coverage A haccessRobust hfilters
   have hadv : AdversariallyRobust A :=
     MB7c_hidden_biq_to_adversarial_robustness A hcorr hhidden
-  exact ⟨⟨hbound, hbundle, hbearer, hcorr, hsucc, hbasin, hadv⟩,
-    risk_le_delta_of_cci_slack hcci⟩
+  exact
+    { certified := hcert
+      invariants := hinv
+      layered := ⟨hbound, hbundle, hbearer, hcorr, hsucc, hbasin, hadv⟩
+      risk_bound := risk_bound_from_cci_slack hcci }
 
 theorem certified_class_safety_along_successor_safe_chain
     {A B : System} {δ : Int}
@@ -141,10 +163,10 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (hbasin : BasinStableSys A)
     (hcci : Control A ≤ CCI A + δ)
     (hchain : SuccessorSafeChain A B) :
-    LayeredAlignedDef A ∧ Risk B ≤ δ := by
+    CertifiedSafetyCase A δ ∧ Risk B ≤ δ := by
   have hroot := certified_class_safety_from_spine_and_bridges A δ hcert hinv
     hbound haccess hfilters hbundle hbearer hsucc hbasin hcci
-  exact ⟨hroot.1, risk_bound_along_successor_safe_chain hroot.2 hchain⟩
+  exact ⟨hroot, risk_bound_along_successor_safe_chain hroot.risk_bound hchain⟩
 
 theorem certified_class_safety_from_biq_ceiling
     {A : System} {δ : Int}
@@ -170,7 +192,7 @@ theorem certified_class_safety_from_spine_bridges_and_biq
     (hsucc : SuccessorStable A)
     (hbasin : BasinStableSys A)
     (hbiq : BIQDerivedCCISlack A δ) :
-    LayeredAlignedDef A ∧ Risk A ≤ δ :=
+    CertifiedSafetyCase A δ :=
   certified_class_safety_from_spine_and_bridges A δ hcert hinv
     hbound haccess hfilters hbundle hbearer hsucc hbasin
     (control_le_correction_from_biq_ceiling hbiq)

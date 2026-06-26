@@ -15,6 +15,8 @@ The author asked to do the part openers and Chapter 40 fixes, treat the Introduc
 - Added a TODO for auditing update operators that may import ontology through fixed state variables or semantic coordinates.
 - Integrated reviewer feedback on under-engagement with Hubinger-style inner alignment: added `ch40` Section `Mesa-Optimization and Inner Alignment` with formal definitions, equations, and a translation table mapping outer/inner alignment, mesa-objectives, pseudo-alignment, deceptive alignment, gradient hacking, and sharp-left-turn concerns into the book's framework; added a body-level `ch10` bridge from strategic opacity to mesa-optimization; updated `ch40` chapter references for `hubinger2019risks`.
 - Refreshed `metadata/claims-ledger.md` header/status language for the 45-entry map and draft-complete conclusion; added manual-maintenance notes to both claims and assumptions ledgers; added a TODO to consider structured automation for both ledgers.
+- Fixed the Lean certification presentation defect flagged by review: re-enabled the unused-variable linter in `formal/AlignmentProofSpine/Certification.lean`, separated the narrow numeric `risk_bound_from_cci_slack` leaf from the composed `CertifiedSafetyCase` root, made bridge-composed theorems return the full safety-case package, and updated ch03/ch31/ch39/ch44 plus `formal/README.md` to state that layered/certified evidence makes the bound meaningful but does not prove the arithmetic inequality.
+- Verified the Lean/prose fix with `cd formal && lake build`, `make check`, `ReadLints`, targeted `rg` searches for stale inflated theorem wording, and a full `./build.sh` using a local Biber PAR cache.
 - Verified with `ReadLints`, `rg 'TODO\[open-crux\]'` on ch40, and `make check`.
 
 ## Decisions
