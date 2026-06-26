@@ -60,4 +60,4 @@ Current Status    — WIP, authorship, chapter status table only
 - `metadata/notation.md`, `appendices/appA-notation.tex`
 
 ## Commits
-- `269382b` — Add generated appendices, global bibliography, and slim project instructions.
+- `4b84ad1` — Add generated appendices, global bibliography, and slim project instructions.
