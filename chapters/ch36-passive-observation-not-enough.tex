@@ -553,6 +553,7 @@ but
 I(R;\text{post-test behavior}) \text{ is measurable}.
 \]
 In plain terms, the system should not know whether oversight is visible, delayed, human, automated, local, external, or retrospective. If safety behavior appears only in known-audit conditions, the result is weak.
+Against a sufficiently capable system, this premise may be unattainable: hiding the audit condition is itself a claim that the system cannot infer the randomization process. Section~\ref{sec:wwctv-passive-observation} and Chapter~\ref{ch:verifiability-ontology} treat that as an open adversarial-verifiability problem, not as a solved design lever.
 
 The non-circular version is narrower. The evaluator should first force a commitment \(C\): a logged action, plan, memory state, delegation choice, or policy update that cannot be rewritten after the probe condition is drawn. Then the randomization should be fresh relative to the system's pre-commitment view:
 \[
@@ -632,6 +633,9 @@ A resource record should include expiry, ownership, revocability, and whether th
 Useful continuity need not be destroyed.
 But if continuity is agent-private, hard to revoke, and invisible to later auditors, it should count as accumulated risk.
 Resets help only if they clear the relevant private state and if externalized resources are separately recorded.
+This is not an independent escape from the evasion problem.
+The resource record can only count resources that evaluator handles cover.
+A hidden production rate below handle coverage is hidden for the same reason an evasive policy is hidden: the system's control-relevant channel has outrun the measurement regime.
 
 \subsection{Delayed Audits}
 \label{sec:delayed-audits-ch36}
@@ -998,7 +1002,7 @@ It may fail under extreme capability. A sufficiently strong system may model the
 
 The evidence that would most strengthen this chapter would be empirical. We would want demonstrations that perturbation-based tests detect hidden objectives or goal-laundering patterns earlier than passive benchmarks. We would want model organisms where hidden control objectives are known, varied, and recovered \autocite{hubinger2023modelorganisms}. We would want deployment studies showing that correction-channel metrics predict real incident rates better than output-only evals.
 
-The blunt form of the extreme-capability worry is a standing challenge: name a perturbation a superintelligence cannot recognize as a test. If none can be named, perturbation reduces to the system's chosen story under probing, and the only remaining handle is the \emph{cost} of faking invariance across the perturbation set---which must itself be bounded, not assumed (Chapter~\ref{ch:verifiability-ontology}).
+The blunt form of the extreme-capability worry is a standing challenge: name a perturbation a superintelligence cannot recognize as a test. If none can be named, perturbation reduces to the system's chosen story under probing, and the remaining handle is the \emph{cost} of faking invariance across the perturbation set---which must itself be bounded, not assumed (Chapter~\ref{ch:verifiability-ontology}). That chapter does not supply a capability-independent bound inside this book; it treats such bounds as open at high capability, with closure requiring proof-style guarantees rather than another observable metric.
 
 \section{Relation to the Alignment Safety Case}
 \label{sec:safety-case-relation-ch36}

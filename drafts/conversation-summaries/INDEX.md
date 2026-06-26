@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-26 | Ch36 hidden-randomization caveats | [2026-06-26-ch36-hidden-randomization-caveats.md](2026-06-26-ch36-hidden-randomization-caveats.md) |
 | 2026-06-26 | CCI anti-capture repair | [2026-06-26-cci-anti-capture-repair.md](2026-06-26-cci-anti-capture-repair.md) |
 | 2026-06-26 | Ch17 representation bridge | [2026-06-26-ch17-representation-bridge.md](2026-06-26-ch17-representation-bridge.md) |
 | 2026-06-26 | Ch36 randomization floor proof | [2026-06-26-ch36-randomization-floor-proof.md](2026-06-26-ch36-randomization-floor-proof.md) |
