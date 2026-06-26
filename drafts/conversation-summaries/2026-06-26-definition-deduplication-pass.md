@@ -31,3 +31,6 @@ User asked to proceed with deduplicating repeated definitions across chapters (f
 
 ## Build
 - `./build.sh` succeeded → `dist/pdf/towards-superintelligence-alignment.pdf`
+
+## Commits
+- `02f411d` Deduplicate repeated formal definitions.

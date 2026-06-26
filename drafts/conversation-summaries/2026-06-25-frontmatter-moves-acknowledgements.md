@@ -29,6 +29,7 @@ User: acknowledgements not shown; finish planned frontmatter moves (Diagram/Stan
 
 ## Commits
 - `a8b58b7` — Split frontmatter from Part I and move reframing into early chapters.
+- `02b6716` — Correct Alignment Attractor organization name.
 
 ## Session end (2026-06-25)
 - Lean proof spine: **no frontmatter change** (user confirmed calibrated Preface pointer not needed now).

@@ -32,4 +32,4 @@ make check  # success
 
 ## Commits
 
-- None.
+- `95aa559` Fix appendix count checks.

@@ -43,4 +43,5 @@ make check   # fails: Expected 10 appendix files, found 9
 
 ## Commits
 
-- None.
+- `02f411d` Deduplicate repeated formal definitions. (Includes the overlapping `chapters/ch23-transport-types.tex` edit.)
+- `e673541` Calibrate formalism tone across chapters.
