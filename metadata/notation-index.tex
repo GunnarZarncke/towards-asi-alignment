@@ -37,6 +37,18 @@
 \item[$H_B$] Interaction curvature (Hessian of $\log\pi$ in bundle space) \hfill Chapter~\ref{ch:tradeoffs-bundle-geometry}
 \end{description}
 
+\section{Grounding and abstraction validity}
+\begin{description}[style=nextline,leftmargin=2.5em]
+\item[$X_{\mathrm{real}}$] Value-relevant real-world state or history being abstracted \hfill Chapter~\ref{ch:dynamical-guarantee}
+\item[$\alpha$] Abstraction map from value-relevant reality into the checked representation \hfill Chapter~\ref{ch:dynamical-guarantee}
+\item[$Z$] Checked value-relevant abstraction: bundle coordinates, bearer maps, monitor states, or safety-case variables \hfill Chapter~\ref{ch:dynamical-guarantee}
+\item[$\Gamma$] Grounding relation connecting real-world history, checked abstraction, correction signal, and update \hfill Chapter~\ref{ch:dynamical-guarantee}
+\item[$d_V$] Distance over value-relevant real-world structure \hfill Chapter~\ref{ch:dynamical-guarantee}
+\item[$d_Z$] Distance in the checked abstraction \hfill Chapter~\ref{ch:dynamical-guarantee}
+\item[$\mathsf{Unc}_{\alpha}$] Uncertainty about whether abstraction $\alpha$ still applies \hfill Chapter~\ref{ch:dynamical-guarantee}
+\item[$\operatorname{Dom}(\Gamma)$] Domain in which grounded correction remains meaningful \hfill Chapter~\ref{ch:dynamical-guarantee}
+\end{description}
+
 \section{Bearer maps}
 \begin{description}[style=nextline,leftmargin=2.5em]
 \item[$\Phi$] Bearer map: world features to bundle relevance \hfill Chapter~\ref{ch:bearer-maps}
@@ -57,13 +69,14 @@
 \item[$G_t$] Correcting agent at time $t$ \hfill Chapter~\ref{ch:correction-causal-channel}
 \item[$\mathcal{H}_t$] Handle set controlled by $G_t$ \hfill Chapter~\ref{ch:correction-causal-channel}
 \item[$W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}$] Correction trace induced by controlled handles \hfill Chapter~\ref{ch:correction-causal-channel}
-\item[$C_{\text{raw}}$] Bare weakest effective handle capacity \hfill Chapter~\ref{ch:correction-channel-integrity}
-\item[$CCI$] Correction-channel integrity ($C_{\text{raw}}$ minus penalties) \hfill Chapter~\ref{ch:correction-channel-integrity}
+\item[$C_{\text{raw}}$] Weakest required correction case after bottlenecking over certified correction traces \hfill Chapter~\ref{ch:correction-channel-integrity}
+\item[$CCI$] Correction-channel integrity as a vector/status certificate with validity and per-coordinate thresholds \hfill Chapter~\ref{ch:correction-channel-integrity}
+\item[$CCI_\lambda$] Scalar projection of the CCI vector for exposition, not the certification object \hfill Chapter~\ref{ch:correction-channel-integrity}
 \item[$\mathrm{Control}(A)$] Effective actuator control capacity \hfill Chapter~\ref{ch:capability-without-task-ontology}
 \item[$\mathrm{RiskGap}(A)$] $\mathrm{Control}(A)-\mathrm{CCI}(A)$ \hfill Chapter~\ref{ch:certification-without-construction}
 \item[$\mathrm{Risk}(A)$] Certification risk functional \hfill Chapter~\ref{ch:certification-without-construction}
 \item[$\mathrm{SelfControlGap}(A)$] Self-control minus correction demand \hfill Chapter~\ref{ch:self-modeling-self-opacity}
-\item[$L,M,R,O$] CCI penalties: latency, manipulability, reversibility loss, ontology mismatch \hfill Chapter~\ref{ch:correction-channel-integrity}
+\item[$L,M,R,O_{\mathrm{trans}}$] CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss \hfill Chapter~\ref{ch:correction-channel-integrity}
 \item[$\lambda_L,\lambda_M,\lambda_R,\lambda_O$] CCI penalty weights \hfill Chapter~\ref{ch:correction-channel-integrity}
 \item[$U_H$] Human value-update operator \hfill Chapter~\ref{ch:fixed-values-wrong-target}
 \item[$U_S$] System correction-update operator \hfill Chapter~\ref{ch:correction-causal-channel}

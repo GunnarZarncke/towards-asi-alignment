@@ -13,7 +13,7 @@ The goal is **not** to formalize the empirical content of UAD, value bundles,
 B-IQ, attractor basins, or CEV. It formalizes the chain
 
 ```
-boundary discovery → capability/control/correction quantities
+boundary discovery → grounding viability → capability/control/correction quantities
   → value-bundle and bearer-map transport → correction-channel integrity
   → successor stability → adversarial measurement → certified-class safety
 ```
@@ -23,14 +23,14 @@ and makes one distinction explicit and machine-checked:
 * **Proved in Lean** — *if* these predicates and inequalities hold, *then* the
   certification conclusion follows.
 * **Assumed bridge** (`axiom`) — real systems satisfy these predicates under
-  these measurement procedures. These are the eight `MB1`–`MB8` bridges plus the
+  these measurement procedures. These are the nine `MB1`–`MB9` bridges plus the
   model-selection convention `S07`. They are **never hidden** inside definitions.
 
 **Toy vs. target strength.** The current spine is deliberately compact. Many
 counterexamples are finite `Bool` separations (one predicate defined as `True`,
 another as equality); several “theorems” are definitional; abstract quantities
 use integer proxies. The strengthening roadmap lives in `metadata/TODO.md`
-(§ Lean proof spine — **chapter ↔ Lean mapping gaps**). Bridges `MB1`–`MB8` are
+(§ Lean proof spine — **chapter ↔ Lean mapping gaps**). Bridges `MB1`–`MB9` are
 **out of scope** for Lean completion (empirical / philosophical imports); in-scope
 work is aligning **drafted chapter formalism** to spine structure.
 
@@ -39,7 +39,7 @@ correction channel, successor invariance) rather than assuming them as bare
 hypotheses.
 
 > The book must not say "Lean proves ASI alignment." It may say "Lean proves
-> that, *if* these boundary, bundle, correction, successor, and adversarial
+> that, *if* these boundary, grounding, bundle, correction, successor, and adversarial
 > conditions hold, *then* the certification argument has the advertised logical
 > shape. The hard work is showing real systems satisfy the bridge conditions."
 
@@ -75,6 +75,8 @@ as proving the numeric inequality.
 The bridge path now splits socio-technical selection into `MB6a`/`MB6b`
 (percolation evidence → basin stability → correction integrity) and adversarial
 measurement into `MB7a`–`MB7d`, with `MB7d` covering inferential-UAD detector validity.
+`MB9` is the grounding-certificate bridge: it turns a conservative value-correction
+abstraction certificate into the abstract `GroundingViable` layer.
 
 **Notation.** `ValueUpdateOperator` (`U_H`), `SystemUpdateOperator` (`U_S`),
 `CCI` (sole exported correction measurand), handle-controlled `CorrectionPath`,
@@ -86,7 +88,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 
 | Module | Proof-spine nodes | Book chapters |
 |--------|-------------------|---------------|
-| `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, MDL/graph scaffolding, **`finPigeonhole`** (from-scratch finite pigeonhole), bridges `MB1`–`MB8` with split `MB6a`/`MB6b` and `MB7a`–`MB7d`, `BridgeAssumptions` | foundations |
+| `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, grounding predicates and `conservative_abstraction_no_silent_gap`, MDL/graph scaffolding, **`finPigeonhole`** (from-scratch finite pigeonhole), bridges `MB1`–`MB9` with split `MB6a`/`MB6b`, `MB7a`–`MB7d`, and grounding bridge `MB9`, `BridgeAssumptions` | foundations |
 | `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, CID abstraction-relative incentive separation, smoothing-margin arithmetic | 6–7, 10, 36 |
 | `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
 | `AlignmentProofSpine/CooperationGraph.lean` | **`UADDiscoveryAudit`**, **`UnitScore`**, **`MetaPriorEvidence`**, `metaPriorMismatch` derived from `P_meta` diagonal mass, **`InferentialDetectionCertificate`**, **`DerivedCoopGraph`**, **`DerivedInferentialGraph`**, `causalMutualModelOf` / `inferentialProfileOf` / `inferentialPairOf` (opaque evidence emitters), `inferentialCouplingScore`, `auditMutualModelWithInferential`, `uad_audit_yields_inferential_graph`, `severed_causal_reach_positive_effective_reach`, **`P33`** | 13, 33, 35 |
@@ -95,7 +97,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
-| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P40`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 35, 39, 44 |
+| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P40`, grounding required by `LayeredAlignedDef`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 35, 39, 44 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
 
 ## Three kinds of result (for the book)
@@ -118,7 +120,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   `syntactic_tiling_not_import_preserving`, `P25`, `P26`, `P31`, `P37`, `P41`,
   `P42`, `P44`).
 * **bridge** — an empirical or philosophical condition supplied by measurement,
-  governance, or future theory (`MB1`–`MB8`, declared as `axiom`).
+  governance, or future theory (`MB1`–`MB9`, declared as `axiom`).
 
 ## Notes on deviations from the brief's scaffold
 

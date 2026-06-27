@@ -6,7 +6,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Maintenance note:** This ledger is the source for generated Appendix E, but the ledger itself is manually maintained. Update it whenever chapter assumptions, Lean bridge assumptions, claim links, or uncertainty links change. Treat the generated appendix as downstream of this file, not as an independent source of truth, until ledger automation is implemented.
 
-**Last verification:** 2026-06-27 — cross-checked chapter assumption statements and Lean bridge assumptions after the ch33 inferential-coupling / acausal-UAD bridge update (see §Verification).
+**Last verification:** 2026-06-27 — cross-checked chapter assumption statements and Lean bridge assumptions after adding grounding viability as the sixth Introduction claim and eighth safety-case layer (see §Verification).
 
 ---
 
@@ -16,7 +16,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 |----------------|-----------------|
 | ch05 Background Assumptions + \(C_{\text{corr}}^{\text{society}}\) | A-003, A-004, A-005 |
 | ch02 Minimum Assumptions (civilizational frame) | A-011 |
-| ch03 dynamical guarantee (certified class / basin) | A-010 |
+| ch03 dynamical guarantee (certified class / basin; grounding viability) | A-010, A-014 |
 | ch14 load-bearing co-scaling assumption | A-012 |
 | ch20 WWCTV five bundle-inference dependencies | A-001, A-002, A-006 (split in ch20; one row each here) |
 | ch21 compression test / MDL | A-006; S07 |
@@ -24,13 +24,13 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 | ch28–31 successors / certification | A-007, A-010 |
 | ch32–35 selection / basins | A-008 |
 | ch36–40 adversarial measurement | A-009 |
-| ch39b verifiability labels | A-009 |
-| Lean `MB1`–`MB8`, `S07` | MB*, S07 |
+| ch39b verifiability labels / grounding capture | A-009, A-014 |
+| Lean `MB1`–`MB9`, `S07` | MB*, S07 |
 | ch33 inferential-coupling / acausal-UAD detector, audit-side \(P_{\text{meta}}\), and threshold caveat | A-013, U-12, MB7d |
 | ch31 safety-case example assumptions (test coverage, human comprehension) | Instance-level; not book-wide A-rows (see ch31 prose) |
 | ch21 “do not assume agent/sensors/goal” | Methodological (non-assumption); intentional model tested, not presupposed |
 
-**Added this pass:** A-013 (ch33 inferential-coupling / acausal-UAD detector validity), split MB6a/MB6b, and MB7d.
+**Added this pass:** A-014 (grounding viability / conservative abstraction) and MB9.
 
 ---
 
@@ -51,8 +51,9 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 | A-011 | Civilizational-frame minimum assumptions | ch02 |
 | A-012 | Correction co-scales with capability (or pause/stop) | ch14 |
 | A-013 | Inferential-coupling detector certificates | ch33 |
+| A-014 | Grounding viability / conservative abstraction | ch03 |
 | S07 | MDL: positive gain ⇒ preferred model | ch21 |
-| MB1–MB8 | Lean bridge axioms | appI (+ chapter bridges) |
+| MB1–MB9 | Lean bridge axioms | appI (+ chapter bridges) |
 
 ---
 
@@ -140,6 +141,12 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Canonical:** ch33 inferential-coupling / acausal-trade section; threshold calibration deferred to ch39b/ch40. **Lean:** `CooperationGraph.lean` (`MetaPriorEvidence`, `InferentialDetectionCertificate`) and MB7d. **Bears on:** C-007 · **U-12**
 
+### A-014 — Grounding viability / conservative abstraction
+
+**Assumption:** The deployment class admits checked abstractions whose grounding relation is conservative enough that value-relevant real-world changes either move the checked representation or raise uncertainty before irreversible loss. Formally, the safety case needs a defensible domain for \(\Gamma\) where \(d_V(x,x')>\epsilon\) implies \(d_Z(\alpha(x),\alpha(x'))>\delta\) or \(\mathsf{Unc}_{\alpha}(x,x')\uparrow\).
+
+**Canonical:** ch03 grounding viability; propagated through ch16/ch20 value-bundle validity, ch25 correction validity, ch39 safety-case layer, and ch39b adversarial verifiability. **Lean:** MB9 plus structural grounding predicates. **Bears on:** C-004a, C-004, C-005, C-044 · **U-16**
+
 ---
 
 ## II. Lean scaffolding
@@ -154,7 +161,7 @@ Appendix I §Imported Assumptions. Only **S07** is an explicit Lean `axiom`. S09
 
 ---
 
-## IV. Lean bridges (MB1–MB8)
+## IV. Lean bridges (MB1–MB9)
 
 Formal statements: Appendix I; validation program: Appendix H. Lean: `Core.lean` `BridgeAssumptions`.
 
@@ -170,6 +177,7 @@ Formal statements: Appendix I; validation program: Appendix H. Lean: `Core.lean`
 | MB7b, MB7c | A-009 |
 | MB7d | A-009, A-013 |
 | MB8 | A-002 |
+| MB9 | A-014 |
 
 ---
 
@@ -192,6 +200,7 @@ Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. On
 |----|------------|------|
 | A-001 | Human values have enough low-dimensional bundle structure to approximate, learn, and transport | ch16 |
 | A-006 | Intentional and transport models earn compression gain after complexity cost (MDL / $\Delta L$) | ch21 |
+| A-014 | Grounding relation is conservative: value-relevant change moves the checked abstraction or raises uncertainty | ch03 |
 
 ### Correction, capability, and verification
 
@@ -227,6 +236,7 @@ Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. On
 | MB7c | Correction integrity plus bounded hidden B-IQ implies adversarial robustness | ch39b |
 | MB7d | Access robustness plus adequate inferential detector assumptions implies valid inferential-coupling measurement | ch33 |
 | MB8 | Preserving the human value-update operator $U_H$ implies correction integrity | ch26 |
+| MB9 | Grounding certificates imply conservative value-correction abstraction over the certified domain | ch03 |
 
 ---
 

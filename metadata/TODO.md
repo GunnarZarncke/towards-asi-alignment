@@ -48,6 +48,7 @@ These are substantial review passes, not single edits. Each spans several chapte
 - [ ] **Frontmatter gaps** — write the stub front-matter and finish the executive overview: `frontmatter/preface.tex`, `frontmatter/dedication.tex`, `frontmatter/acknowledgements.tex` (all `[STUB]`), and the three `[STUB]` blocks in `frontmatter/executive-overview.tex` (Diagram in Words L27, Assumptions L32–34, What This Book Tries to Establish L58).
 - [x] **Opening-promise reconciliation** — completed 2026-06-26 in ch44: explicitly revisits the five Introduction claims, the six progress artifacts, the Practical Hope regime, and the Executive Overview preservation problems; unresolved bridges are softened as conditional/open rather than left dangling.
 - [ ] **Verifiability-label pass** — for each core measurand (boundary residual, B-IQ/boundary information, value-bundle geometry, bearer maps, correction-channel integrity, conserved successor properties, laundering index), label it *observable*, *i.i.d.-robust*, or *adversarially verifiable up to $\kappa$* and propagate the label into the safety case (ch39). Framework + definitions owned by **ch39b** (`What Survives an Adversary`). The lethality stress test (ch40) should be cross-referenced as "metrics sorted by adversarial-verifiability failure."
+- [ ] **Grounding/safety-case layer completeness review** — after grounding viability was added as the eighth safety-case layer, decide whether ch39's layer list can be derived from a completeness argument over grounded correction (boundary, grounding, bundle, bearer, correction, successor, basin, adversarial measurement) or whether it should be explicitly framed as a provisional checklist. Mirror the outcome into ch39 and the claims/assumptions ledgers.
 - [ ] **Perturbation-recognition crux** — resolve the open question seeded in ch39b/ch36: *name a perturbation a superintelligence cannot recognize as a test.* If none exists, active-measurement remedies (ch36) collapse to the system's chosen story and the cost relation (below) is the only handle. Lives inline as `% TODO[open-crux]` in `ch39b`; ch36 now states the blunt challenge in prose — still needs a bounded answer or an explicit downgrade.
 - [~] **ch33 inferential coupling / acausal trade section (`sec:inferential-coupling-acausal-trade-ch33`)** — drafted to manuscript depth 2026-06-26 and retitled 2026-06-27: uses inferential coupling as the umbrella term, separates shared-history/non-message/self-similarity coupling from full decision-theoretic acausal trade, wires \(\widehat{\mathrm{IC}}_{ij}\) / \(\mathrm{ICI}_{ij}\) to \(\tilde{\kappa}_{ij}\), calibrates adversarial evasion through ch39b, and resolves remaining `[STUB]`s. Still open as research: large-scale ICI dynamics, noisy-prior mitigations, and adversarially verifiable coalition detection.
 - [ ] **Inferential-coupling threshold calibration** — calibrate \(\tau_{\mathrm{ac}}\) / open-edge thresholds for \(\widehat{\mathrm{IC}}_{ij}\) and \(\tilde{\kappa}_{ij}\) in the adversarial-verifiability and stress-test chapters (ch39b/ch40). Treat the current \(\tau_{\mathrm{ac}}\approx0.9\) as an illustrative high-confidence setting inherited from the acausal-trade detector, not a universal constant; specify what evidence, base rates, adversarial costs, common-cause baselines, and acceptable false-positive/false-negative tradeoffs would set the threshold. Consider defensive calibration tools such as prediction markets or Logical-Induction-style forecasting over future causally severed coordination events, probe failures, and detector-evasion discoveries.
@@ -80,6 +81,7 @@ Canonical home is the chapter that *owns* the object; other chapters should refe
 
 | Track | Canonical chapter | Also referenced in |
 |-------|-------------------|-------------------|
+| Grounding viability / conservative abstraction | ch03 | ch16, ch20, ch25, ch39, ch39b |
 | Define $\mathrm{ICI}_{ij}$ (inferential coupling index) | ch33 | ch40 open-problem ledger |
 | Coalition-collapse empirical tests | ch33 | ch40 |
 | Pivotal process $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ conditions | ch35 (`sec:pivotal-process-ch35`) | ch40 |
@@ -90,13 +92,15 @@ Canonical home is the chapter that *owns* the object; other chapters should refe
 
 ### Lean proof spine (`formal/`)
 
-**Scope (for critics).** Bridges `MB1`–`MB8` and any step that requires substantial empirical
+**Scope (for critics).** Bridges `MB1`–`MB9` and any step that requires substantial empirical
 work (estimator soundness, identifiability under sampling, institutional basin stability,
 adversarial robustness in the wild, CEV convergence evidence, etc.) are **intentionally
 out of scope** for both the book’s proof obligations and Lean. Lean checks the logical
 shape *if* those bridges are granted. The items below are **in scope**: places where a
 **drafted chapter already defines formal objects** but Lean still uses integer proxies,
 axiom lists, `Bool` toys, or definitional stubs instead of that chapter’s structure.
+`MB9` now covers grounding-certificate validity; Lean proves only the structural
+no-silent-gap lemma for conservative abstraction, not that real systems satisfy it.
 
 **Current state:** toy / separation proofs. Many results are finite `Bool` counterexamples,
 definitional restatements, or predicates over abstract `axiom` carriers. The spine checks
@@ -111,6 +115,7 @@ definitions (CMI blankets, CCI penalties, bearer maps on world states, etc.).
 
 | Critic gap | Draft chapter(s) | Lean module / nodes | TODO |
 |------------|------------------|---------------------|------|
+| Grounding viability is structurally represented but not tied to concrete monitors, bundle coordinates, or correction handles | **ch03**, **ch16**, **ch20**, **ch25**, **ch39b** | `Core.lean` (`ConservativeAbstraction`, `SilentAbstractionGap`, `GroundingCertificate`, `MB9`), `Certification.lean` | Define deployment-specific grounding certificates and connect them to bundle/bearer/CCI measurands; keep real-world validity in MB9. |
 | ch24/ch29 system correction-update vs human value-update | **ch24**, **ch29** | `Core.lean`, `Correction.lean` | **Partial (2026-06-23):** `ValueUpdateOperator`/`SystemUpdateOperator`, `PreservesValueUpdateOperator`/`PreservesSystemUpdateOperator`, `SystemUpdateOperatorPreserved`. Still: structured `(Θ,Z)` state, derive successor audit from ch28–29. |
 | `CorrectionLinkCapacities` is still an abstract integer profile, though now attached to controlled handles | **ch24**, **ch25** | `Correction.lean` (`P23`, `P24`) | **Partial (2026-06-25):** `CorrectionPath A` now records a correcting agent, access model, controlled handles, reach, persistence, and non-capture. Still: define effective handle capacity \(\kappa_i\) from concrete observation/operation data rather than abstract integers. |
 | Only raw `min` capacity; no CCI penalties `L,M,R,Ω` from ch25 | **ch25** | `Correction.lean` | **Partial (2026-06-23):** `CCI`, `CCIPenaltyTerms`/`CCIPenaltyWeights`, `CCIPenaltiesSys`. Still: tie certification primary slack to `CCI` threshold θ. |

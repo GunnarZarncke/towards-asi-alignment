@@ -12,7 +12,7 @@ Cross-chapter reconciliation: `review/fix-plans-2026-06-22.md` §C. Formal predi
 
 **Still pending:** C12 pivotal-process basins (ch35 content, not rename); $C_H$ vs $C^H_t$ convention; $\mathcal V$ (ch19 value-representation set) vs $V_t$ tuple.
 
-**§C16 terminology:** *capacity* = $C_{\text{raw}}$; *integrity* = $CCI$. Retired: $C_{\text{corr}}$ (except ch05 $C_{\text{corr}}^{\text{society}}$). Goodharting lowers integrity via $M$ and $O$, not a separate penalty term.
+**§C16 terminology:** *capacity* = $C_{\text{raw}}$; *integrity* = vector/status $CCI$; scalar projections should be marked $CCI_\lambda$. Retired: $C_{\text{corr}}$ (except ch05 $C_{\text{corr}}^{\text{society}}$). Goodharting lowers integrity via $M$ or invalidates grounding; residual ontology translation loss is \(O_{\mathrm{trans}}\).
 
 **Seven conserved successor properties (ch29):** boundary closure, memory lineage, bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, control-locus continuity — defined in ch29; ch31 groups them for audit.
 
@@ -61,6 +61,19 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $g_B$ | Bundle gradient field $\partial\pi/\partial B_i$ | ch19 |
 | $H_B$ | Interaction curvature (Hessian of $\log\pi$ in bundle space) | ch19 |
 
+### Grounding and abstraction validity
+
+| Symbol | Definition | Home |
+|--------|------------|------|
+| $X_{\mathrm{real}}$ | Value-relevant real-world state or history being abstracted | ch03 |
+| $\alpha$ | Abstraction map from value-relevant reality into the checked representation | ch03 |
+| $Z$ | Checked value-relevant abstraction: bundle coordinates, bearer maps, monitor states, or safety-case variables | ch03 |
+| $\Gamma$ | Grounding relation connecting real-world history, checked abstraction, correction signal, and update | ch03 |
+| $d_V$ | Distance over value-relevant real-world structure | ch03 |
+| $d_Z$ | Distance in the checked abstraction | ch03 |
+| $\mathsf{Unc}_{\alpha}$ | Uncertainty about whether abstraction $\alpha$ still applies | ch03 |
+| $\operatorname{Dom}(\Gamma)$ | Domain in which grounded correction remains meaningful | ch03 |
+
 ### Bearer maps
 
 | Symbol | Definition | Home |
@@ -85,13 +98,14 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $G_t$ | Correcting agent at time $t$ | ch24 |
 | $\mathcal{H}_t$ | Handle set controlled by $G_t$ | ch24 |
 | $W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}$ | Correction trace induced by controlled handles | ch24 |
-| $C_{\text{raw}}$ | Bare weakest effective handle capacity | ch25 |
-| $CCI$ | Correction-channel integrity ($C_{\text{raw}}$ minus penalties) | ch25 |
+| $C_{\text{raw}}$ | Weakest required correction case after bottlenecking over certified correction traces | ch25 |
+| $CCI$ | Correction-channel integrity as a vector/status certificate with validity and per-coordinate thresholds | ch25 |
+| $CCI_\lambda$ | Scalar projection of the CCI vector for exposition, not the certification object | ch25 |
 | $\mathrm{Control}(A)$ | Effective actuator control capacity | ch11 |
 | $\mathrm{RiskGap}(A)$ | $\mathrm{Control}(A)-\mathrm{CCI}(A)$ | ch31 |
 | $\mathrm{Risk}(A)$ | Certification risk functional | ch31 |
 | $\mathrm{SelfControlGap}(A)$ | Self-control minus correction demand | ch30 |
-| $L,M,R,O$ | CCI penalties: latency, manipulability, reversibility loss, ontology mismatch | ch25 |
+| $L,M,R,O_{\mathrm{trans}}$ | CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss | ch25 |
 | $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ | CCI penalty weights | ch25 |
 | $U_H$ | Human value-update operator | ch04 |
 | $U_S$ | System correction-update operator | ch24 |

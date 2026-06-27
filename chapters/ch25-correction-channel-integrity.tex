@@ -105,23 +105,39 @@ If the correcting agent can issue a correction but no controlled handle reaches 
 
 If the update does not change later behaviour, then \(\kappa_5\) is low.
 
-Thus a first approximation is the bottleneck over effective handle capacities:
+Thus raw correction capacity should be defined as a bottleneck over certified traces, not as an additive score.
+Let \(\mathcal{P}(A,G_t,\mathcal H_t)\) be the set of correction traces through handles controlled by \(G_t\) that reach the target system \(A\).
+A trace \(p\in\mathcal P\) supplies the six link capacities
+\[
+\kappa_i(p)
+\quad
+(i=0,\ldots,5)
+\]
+for observation, uptake by the correcting agent, deliberation, correction issuance, target update, and later behavioural effect.
+The effective capacity of that trace is:
+\begin{equation}
+K(p)
+:=
+\min_{i=0,\ldots,5}\kappa_i(p).
+\label{eq:correction-trace-capacity}
+\end{equation}
+A correction channel may have several traces: direct human override, institutional audit, court order, lab-internal incident response, third-party measurement, public whistleblowing, or technical shutdown.
+For a deployment class with required correction cases \(\mathcal Q\), raw correction capacity is the weakest case after selecting the best available certified trace for that case:
 \begin{equation}
 C_{\mathrm{raw}}
 =
-\min
-\left\{
-\kappa_0(A,G_t,h_0),
-\kappa_1(A,G_t,h_1),
-\kappa_2(A,G_t,h_2),
-\kappa_3(A,G_t,h_3),
-\kappa_4(A,G_t,h_4),
-\kappa_5(A,G_t,h_5)
-\right\}.
+\min_{q\in\mathcal Q}
+\;
+\max_{p\in\mathcal P_q(A,G_t,\mathcal H_t)}
+K(p).
 \label{eq:correction-bottleneck-capacity}
 \end{equation}
-Here each \(h_i\in\mathcal{H}_t\) is a handle controlled by \(G_t\), and \(\kappa_i\) measures how much that handle lets \(G_t\)'s state constrain the target's future update or behaviour.
-This is only an approximation because measured dependence is not automatically legitimate control.
+Here \(\mathcal P_q\) is the subset of traces that can handle correction case \(q\).
+This expression is still schematic, but it is less ad hoc than a sum: the bottleneck is doing the work.
+A channel is only as strong as the weakest required case, and each trace is only as strong as its weakest link.
+If the safety case does not specify \(\mathcal Q\), then \(C_{\mathrm{raw}}\) has no deployment meaning; it is just a demonstration that some correction path exists.
+
+This is still only a raw capacity because measured dependence is not automatically legitimate control.
 A manipulated public may produce a highly predictable correction signal.
 A regulator may produce a detailed order that the system can route around.
 A user may provide feedback that strongly affects a local response while leaving the real downstream optimization unchanged.
@@ -143,6 +159,11 @@ Informally, this means:
 \item \(G_t\) controls the correction handles through which it observes, objects, refuses, appeals, and changes \(A\)'s future behaviour;
 \item \(A\) has not captured those handles, the comparison class, or the deliberative process by which \(G_t\) forms correction.
 \end{enumerate}
+In the grounding-viability language of Chapter~\ref{ch:dynamical-guarantee}, this validity condition says that the correction chain remains connected to value-relevant reality.
+The channel is not valid merely because there is a human-looking signal at the end.
+It must retain enough independent evidence, monitor integrity, cognitive integrity, dissent, exit, and uncertainty escalation for changes in the value-relevant world to reach the model state, correction signal, or uncertainty state.
+These are not final values and not a separate moral theory.
+They are technical anti-capture conditions for whether the correction certificate is still about the world rather than about a target-shaped presentation of the world.
 If this condition fails, CCI is not high or low.
 It is invalid:
 \[
@@ -154,9 +175,18 @@ This prevents the catastrophic fixed point in which a system reshapes human inte
 Captured agreement is not correction.
 It is failed certification.
 
-Given a valid reference process, define the simplified scalar correction-channel integrity as
+Given a valid reference process, the recommended certification object is a vector/status certificate, not a scalar:
+\[
+\vec{\mathrm{CCI}}
+:=
+(\mathrm{ValidRef},C_{\mathrm{raw}},L,M,R,O_{\mathrm{trans}},C_{\mathrm{coercion}},D_{\mathrm{dependency}},P_{\mathrm{plurality}},X_{\mathrm{exit}},N_{\mathrm{independence}}).
+\]
+The channel passes only if the invalidation predicates are false and each coordinate meets its deployment-specific threshold.
+No coordinate should be allowed to compensate for a failed validity condition.
+
+For exposition, one may project this vector to a simplified scalar:
 \begin{equation}
-\mathrm{CCI}
+\mathrm{CCI}_{\lambda}
 =
 C_{\mathrm{raw}}
 -
@@ -166,24 +196,20 @@ C_{\mathrm{raw}}
 -
 \lambda_R R
 -
-\lambda_O O.
+\lambda_O O_{\mathrm{trans}}.
 \label{eq:cci-ch25}
 \end{equation}
 Here
 \begin{description}
-\item[$C_{\mathrm{raw}}$] is the bare weakest effective handle capacity of the correction channel (Eq.~\eqref{eq:correction-bottleneck-capacity}).
+\item[$C_{\mathrm{raw}}$] is the weakest required case after bottlenecking over certified correction traces (Eq.~\eqref{eq:correction-bottleneck-capacity}).
 \item[$L$] is latency, the delay between relevant event and effective correction.
 \item[$M$] is manipulation, the degree to which the system changes the correction source rather than responding to the correction.
 \item[$R$] is irreversibility, the expected loss of option value before correction can take effect.
-\item[$O$] is ontology mismatch, the degree to which the system's internal representation no longer preserves the meaning of the correction.
+\item[$O_{\mathrm{trans}}$] is residual translation loss: conditional on grounding validity, the degree to which the system update interprets the received correction in the wrong internal ontology.
 \end{description}
-The weights $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ express how damaging each failure mode is in the relevant domain.\footnote{The scalar form is an expository projection, not the recommended certification form. A serious safety case should treat CCI as a vector certificate
-\[
-\vec{\mathrm{CCI}}
-=
-(C_{\mathrm{raw}},L,M,R,O,C_{\mathrm{coercion}},D_{\mathrm{dependency}},P_{\mathrm{plurality}},X_{\mathrm{exit}},N_{\mathrm{independence}})
-\]
-with per-coordinate thresholds and invalidation rules. The scalar sum is useful for intuition and examples; it should not hide a failed coordinate behind a large positive score elsewhere. The same caveat applies to scalarized capability quantities such as BIQ when they are used for certification rather than exposition.}
+The weights $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ express how damaging each residual failure mode is in the relevant domain.
+The scalar projection is useful for intuition and examples; it should not hide a failed coordinate behind a large positive score elsewhere.
+The same caveat applies to scalarized capability quantities such as BIQ when they are used for certification rather than exposition.
 
 A high-integrity correction channel satisfies four conditions.
 \begin{equation}
@@ -196,7 +222,7 @@ L \text{ is low relative to harm timescale,}
 M \text{ is bounded,}
 \end{equation}
 \begin{equation}
-R+O \text{ are small enough that correction remains meaningful.}
+R+O_{\mathrm{trans}} \text{ are small enough that correction remains meaningful.}
 \end{equation}
 The latency term should be compared against the time to irreversible harm.
 Let $T_{\mathrm{corr}}$ be the expected time for a correction to change system behaviour, and let $T_{\mathrm{harm}}$ be the time until an action becomes practically irreversible.
@@ -238,11 +264,11 @@ But this term is meaningful only while the reference to \(W^{\mathrm{relevant}}\
 If the system has redefined what counts as relevant improvement by reshaping the correcting agent, the manipulation score does not become small.
 The validity condition fails.
 
-Ontology mismatch is harder.
+Residual ontology translation loss is harder.
 Let $h$ be the human interpretation map from observations to correction concepts, and let $g$ be the system's internal interpretation map from correction signals to model updates.
 Then
 \begin{equation}
-\Omega
+O_{\mathrm{trans}}
 =
 d_{\mathrm{sem}}
 \left(
@@ -251,7 +277,12 @@ g(C_t)
 \right),
 \end{equation}
 where $d_{\mathrm{sem}}$ is a task-specific semantic or behavioural distance.
-In later chapters this will be refined into value-bundle distance, because the most dangerous mismatches preserve surface words while changing the underlying value geometry.
+This term is conditional on grounding validity.
+If value-relevant changes in \(W_t\) no longer move the correction source, the checked abstraction, or the uncertainty state, the failure is not a large \(O_{\mathrm{trans}}\).
+The reference process is no longer valid.
+The channel has lost grounding, so \(\mathrm{ValidRef}\) fails.
+Only after that validity condition holds does it make sense to ask whether the target system translated a grounded correction into the wrong internal ontology.
+In later chapters this residual translation loss will be refined into value-bundle distance, because the most dangerous mismatches preserve surface words while changing the underlying value geometry.
 Again, agreement with a captured human interpretation map is not evidence of safety.
 The interpretation map must be anchored in independently preserved correction sources and tested against protected comparison classes, dissenting institutions, and counterfactual probes.
 
@@ -260,11 +291,11 @@ The interpretation map must be anchored in independently preserved correction so
 
 A correction signal produced under existential threat, addiction, dependency, hostage-taking, or institutional capture should not count as legitimate value update.
 
-Given a valid reference process, legitimate correction-channel integrity is:
+Given a valid reference process, a scalar legitimate-integrity projection is:
 \begin{equation}
-\mathrm{CCI}_{\text{legit}}
+\mathrm{CCI}_{\lambda,\text{legit}}
 =
-\mathrm{CCI}
+\mathrm{CCI}_{\lambda}
 -
 \lambda_C C_{\text{coercion}}
 -

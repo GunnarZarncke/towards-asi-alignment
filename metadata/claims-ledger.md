@@ -2,13 +2,13 @@
 
 Track every major claim with status, support, weakest link, and falsification criteria.
 
-**Last cross-check:** 2026-06-26 — header/status refreshed after the main chapters reached draft/reviewed status and `ch39b` was inserted. Entries remain manually maintained against the chapter `chapterthesis` blocks, the five Introduction `introclaim`s, the chapter-level WWCTV sections, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`. Chapter references follow the current 45-entry map in `metadata/book.yml` (including `ch39b`; full renumbering is still an open TODO).
+**Last cross-check:** 2026-06-27 — header/status refreshed after grounding viability was added as the sixth Introduction claim and as an eighth safety-case layer. Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`. Chapter references follow the current 45-entry map in `metadata/book.yml` (including `ch39b`; full renumbering is still an open TODO).
 
 **Maintenance note:** This ledger is not generated. It must be manually updated when chapters, claims, assumptions, uncertainty entries, or proof-spine bridges change. Treat it as a maintainer audit tool rather than an automatically complete public index until the automation TODO in `metadata/TODO.md` is resolved.
 
 **Status vocabulary:** `established` (well-supported, near-consensus) · `plausible` (argued, not proven) · `framework` (definitional/structural proposal) · `speculative` (forward-looking) · `limit` (acknowledged boundary of the theory). Per `AGENTS.md`, claim strength is calibrated to the Lean proof spine: the book does **not** assert that ASI alignment is proven.
 
-The five named Introduction claims map to claims C-003 (boundary), C-004 (value-bundle), C-005 (correction), C-006 (successor), and C-007 (basin/selection). C-044 tracks their draft-level discharge in the conclusion.
+The six named Introduction claims map to claims C-003 (boundary), C-004 (value-bundle), C-004a (grounding), C-005 (correction), C-006 (successor), and C-007 (basin/selection). C-044 tracks their draft-level discharge in the conclusion.
 
 ---
 
@@ -101,6 +101,29 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 **References:**
 - add BibLaTeX keys here
+
+## Claim ID: C-004a
+
+**Claim:** (Grounding claim) The book's maps only matter if they stay connected to value-relevant reality under optimization pressure; alignment requires grounding viability, meaning changes in the value-relevant world reliably change the model state, correction signal, or uncertainty state in the right way.
+
+**Chapter(s):** Introduction, 3, 16, 20, 25, 39, 39b
+
+**Status:** framework; adversarial sufficiency unproven
+
+**Support:**
+- ch03 defines grounding viability, conservative abstraction, and abstraction-gap exploitation
+- ch16/ch20 require value-bundle abstractions to move or become uncertain under value-relevant change
+- ch25 treats independent evidence, monitor integrity, dissent, exit, and uncertainty escalation as technical anti-capture validity conditions for correction
+- ch39 makes grounding the eighth safety-case layer; ch39b ties metric honesty to capture of grounding
+
+**Weakest link:**
+- \(d_V\), \(d_Z\), and uncertainty escalation are domain-specific; a capable optimizer may exploit value-relevant variables the abstraction cannot yet represent
+
+**What would update against it:**
+- a worked deployment-grade safety case in which boundary, bundle, correction, successor, basin, and adversarial-measurement layers are all valid without any separate grounding relation or conservative-abstraction condition
+
+**References:**
+- harnad1990symbol, searle1980minds, taddeo2005symbol, barsalou1999perceptual, cangelosi2001adaptive, steels2008symbol
 
 ## Claim ID: C-005
 
@@ -261,22 +284,22 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 ## Claim ID: C-044 (synthesis tracking)
 
-**Claim:** The Introduction's five claims (C-003…C-007), the Executive Overview's preservation problems, and the "Practical Hope" regime are gathered and discharged in the conclusion.
+**Claim:** The Introduction's six claims (C-003, C-004, C-004a, C-005, C-006, C-007), the Executive Overview's preservation problems, and the "Practical Hope" regime are gathered and discharged in the conclusion.
 
 **Chapter(s):** 44 (conclusion)
 
-**Status:** draft-discharge complete as of 2026-06-26. ch39 assembles the conditional safety-case structure; ch44 explicitly revisits and softens/discharges the opening promises at manuscript-draft strength. Remaining gaps are bridge validation, adversarial verifiability, and appendix/template follow-through, not absence of a conclusion.
+**Status:** needs follow-up after 2026-06-27 grounding integration. ch39 now assembles the conditional safety-case structure with grounding as an eighth layer; ch44 still explicitly revisits the earlier five opening promises and should be updated to discharge the new grounding claim.
 
 **Support:**
-- ch44 §Opening Claims Revisited discharges the five intro claims with status labels
-- ch39 safety-case chapter supplies the sixth progress artifact and proof/bridge/refusal graph
+- ch44 §Opening Claims Revisited discharges the earlier five intro claims with status labels
+- ch39 safety-case chapter supplies the safety-case graph, now including grounding viability as an eighth layer
 - ch43 supplies the bearer/merger philosophical limit needed for Part X closure
 
 **Weakest link:**
-- the conclusion remains conditional on the same bridges named in ch39/ch39b; the safety-case template appendix is still a follow-through artifact
+- the conclusion has not yet been revised to revisit the new grounding claim explicitly; the safety-case template appendix is still a follow-through artifact
 
 **What would update against it:**
-- review showing that the opening promises require frontmatter softening beyond ch44's current status labels, or that ch39's safety-case graph omits a load-bearing artifact
+- review showing that ch44's opening-promise reconciliation can absorb the grounding claim without new prose, or that ch39's safety-case graph omits a load-bearing artifact
 
 **References:**
 - see `review/full-book-continuity-review-2026-06-22.md` §completeness

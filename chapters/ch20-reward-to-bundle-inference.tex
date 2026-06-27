@@ -697,6 +697,21 @@ This is one of the bridges from bundle inference to correction-channel integrity
 The system does not need to solve moral philosophy alone.
 But it must know when its value model has left the regime where autonomous extrapolation is justified.
 
+The sharper condition is grounding viability (Chapter~\ref{ch:dynamical-guarantee}, Section~\ref{sec:grounding-viability-ch03}).
+Bundle inference is not safe because it is low-dimensional.
+It is safe only to the degree that the low-dimensional abstraction is conservative: when value-relevant reality moves, the abstraction moves or becomes uncertain.
+Let \(\alpha\) map real histories into the inferred bundle representation.
+A serious bundle learner should therefore satisfy, within the deployment class,
+\[
+d_V(x,x')>\epsilon
+\Rightarrow
+d_Z(\alpha(x),\alpha(x'))>\delta
+\quad\text{or}\quad
+\mathsf{Unc}_{\alpha}(x,x')\uparrow .
+\]
+Failure of this condition is abstraction-gap exploitation.
+The system finds states that pass the bundle model while violating the real value-bearing structure the bundle model was meant to track.
+
 \section{The Bearer-Import Problem}
 \label{sec:bearer-import-inference}
 

@@ -21,10 +21,11 @@ Open problems and unresolved uncertainties tracked across the manuscript.
 | U-13 | Can successors be certified without full construction understanding? | ch31 | A-007, C-006 |
 | U-14 | Do safety-case templates scale to frontier systems under adversarial optimization? | ch39, ch39b, appG | C-002, C-044 |
 | U-15 | Can institutional designs reliably preserve correction-channel capacity over time? | ch32, ch34 | A-003, A-005, C-007 |
+| U-16 | Can grounding viability be measured or certified under adversarial optimization, especially when value-relevant variables are not yet nameable in the current ontology? | ch03, ch16, ch20, ch25, ch39, ch39b | A-014, C-004a, C-004, C-005 |
 
 ## Notes
 
-- U-12 and U-14 now have manuscript homes in ch33 and ch39, but remain open as adversarial/empirical questions. appG safety-case template is still pending.
+- U-12, U-14, and U-16 now have manuscript homes, but remain open as adversarial/empirical questions. appG safety-case template is still pending.
 - U-08 and U-11 are partly philosophical / governance questions and are acknowledged as limits (see C-011, status `limit`).
 
 See also `metadata/open-problems.md` (research-direction framing) and `metadata/claims-ledger.md` / `metadata/assumptions-ledger.md` for the claims and assumptions each uncertainty threatens.

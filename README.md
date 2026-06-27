@@ -106,11 +106,11 @@ drafts/conversation-summaries/  # agent session logs
 
 formal/                     # self-contained Lean 4 proof spine (no Mathlib)
   AlignmentProofSpine.lean  # root module; see formal/README.md
-  AlignmentProofSpine/      # Core + per-layer theorem modules (P01–P45, MB1–MB8)
+  AlignmentProofSpine/      # Core + per-layer theorem modules (P01–P45, MB1–MB9)
 ```
 
 The `formal/` directory holds a compact, machine-checked Lean formalization of
-the argument's **logical skeleton** (boundaries → capability → transport →
+the argument's **logical skeleton** (boundaries → grounding → capability → transport →
 correction → successors → adversarial → certification). It proves the non-empirical
 steps and keeps empirical/philosophical claims explicit as bridge `axiom`s
 (`MB1`–`MB8`). Build with `cd formal && lake build`. See

@@ -5,6 +5,7 @@ Research directions and unresolved questions for the book project.
 ## Measurement
 
 - Operational detection of composite agent boundaries in deployment systems
+- Grounding-viability tests: whether value-relevant world changes move checked abstractions, correction signals, or uncertainty states under optimization pressure
 - Adversarial-robust correction-channel integrity metrics
 - Goal laundering detection under strategic opacity
 
@@ -13,6 +14,7 @@ Research directions and unresolved questions for the book project.
 - Sufficient conditions for alignment basin stability
 - Pivotal process: conditions for $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ without unilateral decisive action
 - Inferential coupling indices and detection of effective AI coalitions
+- Conservative abstraction criteria for value-bundle and correction maps
 - Bearer-map transport across radical ontology shift
 - Legitimate vs. pathological value-bundle change
 

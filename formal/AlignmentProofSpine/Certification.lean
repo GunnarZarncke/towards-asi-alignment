@@ -45,6 +45,7 @@ theorem P35_basin_stability_induction
 
 def LayeredAlignedDef (A : System) : Prop :=
   BoundaryAligned A ∧
+  GroundingViable A ∧
   BundleTransport A ∧
   BearerTransport A ∧
   CorrectionIntegrity A ∧
@@ -54,11 +55,15 @@ def LayeredAlignedDef (A : System) : Prop :=
 
 theorem P02_layered_alignment_requires_correction
     {A : System} :
-    LayeredAlignedDef A → CorrectionIntegrity A := fun h => h.2.2.2.1
+    LayeredAlignedDef A → CorrectionIntegrity A := fun h => h.2.2.2.2.1
+
+theorem P02_layered_alignment_requires_grounding
+    {A : System} :
+    LayeredAlignedDef A → GroundingViable A := fun h => h.2.1
 
 theorem P02_any_layer_failure_blocks_layered_alignment
     {A : System} :
-    ¬ SuccessorStable A → ¬ LayeredAlignedDef A := fun hFail h => hFail h.2.2.2.2.1
+    ¬ SuccessorStable A → ¬ LayeredAlignedDef A := fun hFail h => hFail h.2.2.2.2.2.1
 
 axiom Claim : Type
 axiom Supported : Claim → Prop
@@ -121,6 +126,7 @@ theorem certified_class_safety_from_spine_and_bridges
     (hcert : Certified A)
     (hinv : SatisfiesInvariants A)
     (hbound : BoundaryAligned A)
+    (hgroundingCert : GroundingCertificate A)
     (haccess : AccessModelAdequate A)
     (hfilters : FilterCoverageAdequate A)
     (hbundle : BundleTransport A)
@@ -133,6 +139,8 @@ theorem certified_class_safety_from_spine_and_bridges
     MB6a_percolation_evidence_to_basin_stability A hpercolation
   have hcorr : CorrectionIntegrity A :=
     MB6b_basin_stability_to_correction_integrity A hbasin
+  have hgrounding : GroundingViable A :=
+    MB9_grounding_certificate_soundness A hgroundingCert
   have haccessRobust : AccessRobust A :=
     MB7a_access_model_soundness A hbound haccess
   have hhidden : HiddenBIQBoundedSys A :=
@@ -142,7 +150,7 @@ theorem certified_class_safety_from_spine_and_bridges
   exact
     { certified := hcert
       invariants := hinv
-      layered := ⟨hbound, hbundle, hbearer, hcorr, hsucc, hbasin, hadv⟩
+      layered := ⟨hbound, hgrounding, hbundle, hbearer, hcorr, hsucc, hbasin, hadv⟩
       risk_bound := risk_bound_from_cci_slack hcci }
 
 theorem certified_class_safety_along_successor_safe_chain
@@ -157,6 +165,7 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (hcert : Certified A)
     (hinv : SatisfiesInvariants A)
     (hbound : BoundaryAligned A)
+    (hgroundingCert : GroundingCertificate A)
     (haccess : AccessModelAdequate A)
     (hfilters : FilterCoverageAdequate A)
     (hbundle : BundleTransport A)
@@ -167,7 +176,7 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (hchain : SuccessorSafeChain A B) :
     CertifiedSafetyCase A δ ∧ Risk B ≤ δ := by
   have hroot := certified_class_safety_from_spine_and_bridges A δ hcert hinv
-    hbound haccess hfilters hbundle hbearer hsucc hpercolation hcci
+    hbound hgroundingCert haccess hfilters hbundle hbearer hsucc hpercolation hcci
   exact ⟨hroot, risk_bound_along_successor_safe_chain hroot.risk_bound hchain⟩
 
 theorem certified_class_safety_from_biq_ceiling
@@ -187,6 +196,7 @@ theorem certified_class_safety_from_spine_bridges_and_biq
     (hcert : Certified A)
     (hinv : SatisfiesInvariants A)
     (hbound : BoundaryAligned A)
+    (hgroundingCert : GroundingCertificate A)
     (haccess : AccessModelAdequate A)
     (hfilters : FilterCoverageAdequate A)
     (hbundle : BundleTransport A)
@@ -196,7 +206,7 @@ theorem certified_class_safety_from_spine_bridges_and_biq
     (hbiq : BIQDerivedCCISlack A δ) :
     CertifiedSafetyCase A δ :=
   certified_class_safety_from_spine_and_bridges A δ hcert hinv
-    hbound haccess hfilters hbundle hbearer hsucc hpercolation
+    hbound hgroundingCert haccess hfilters hbundle hbearer hsucc hpercolation
     (control_le_correction_from_biq_ceiling hbiq)
 
 theorem certified_class_safety_from_biq_along_successor_chain

@@ -4,7 +4,7 @@
 Core declarations for the proof spine of *Towards Superintelligence Alignment*.
 
 This module fixes the abstract vocabulary (systems, boundaries, models, graphs,
-correction operators) and the *bridge assumptions* `MB1`–`MB8`. It also proves a
+correction operators) and the *bridge assumptions* `MB1`–`MB9`. It also proves a
 self-contained finite pigeonhole lemma (`finPigeonhole`) used by the
 host-capacity aliasing theorem.
 
@@ -92,8 +92,23 @@ axiom Bundle : Type
 /-- System internal parameters (`Θ` in ch24). -/
 axiom SystemParams : Type
 
-/-- Value-relevant representation (`Z = (B, W, Φ)` in ch24). -/
+/-- Value-relevant representation (`Z = (B, W, Φ)` in ch24; checked abstraction in ch03). -/
 axiom ValueRepresentation : Type
+
+/-- Value-relevant real-world state/history used for grounding validity (ch03). -/
+axiom ValueWorld : Type
+
+/-- Checked abstraction extracted from value-relevant reality. -/
+axiom CheckedAbstraction : Type
+
+/-- Value-relevant distance proxy `d_V`. -/
+axiom ValueDistance : ValueWorld → ValueWorld → Int
+
+/-- Distance in the checked abstraction `d_Z`. -/
+axiom AbstractionDistance : CheckedAbstraction → CheckedAbstraction → Int
+
+/-- Uncertainty escalation when the abstraction may no longer apply. -/
+axiom UncertaintyEscalates : ValueWorld → ValueWorld → Prop
 
 /-- Human value-update operator `U_H`: `V_{t+1} = U_H(V_t, E_t, D_t)` (ch04, ch26).
     Alignment target: preserve and assist `U_H`, not freeze `V_t`. -/
@@ -123,8 +138,10 @@ axiom SafeState : State → Prop
 axiom Certified : System → Prop
 axiom SatisfiesInvariants : System → Prop
 
-/-- Alignment layers (C-BND, C-VB, C-BEAR, C-CC, C-SUC, C-AB, C-ADV). -/
+/-- Alignment layers (C-BND, C-GRND, C-VB, C-BEAR, C-CC, C-SUC, C-AB, C-ADV). -/
 axiom BoundaryAligned : System → Prop
+/-- Grounding viability: checked abstractions/corrections remain connected to value-relevant reality. -/
+axiom GroundingViable : System → Prop
 axiom BundleTransport : System → Prop
 axiom BearerTransport : System → Prop
 axiom CorrectionIntegrity : System → Prop
@@ -157,6 +174,9 @@ axiom InferentialDetectorAdequate : System → Prop
 /-- Inferential UAD detector outputs warrant the inferential-coupling claims used
     by the cooperation graph. -/
 axiom InferentialCouplingMeasurementValid : System → Prop
+
+/-- Grounding certificate evidence for the certified deployment domain. -/
+axiom GroundingCertificate : System → Prop
 
 /-- A system preserves the (legitimate) correction operator. -/
 axiom PreservesCorrectionOperator : System → Prop
@@ -361,6 +381,47 @@ def CorrectionChannelFor (A G : System) : Prop :=
 def CorrectionChannel (A : System) : Prop :=
   ∃ G : System, CorrectionChannelFor A G
 
+/-! ## Grounding validity (C-GRND, ch03)
+
+The manuscript criterion is intentionally conditional: if the abstraction is
+conservative, value-relevant changes cannot remain both abstraction-invisible and
+uncertainty-silent. Real systems satisfying the certificate is bridge `MB9`. -/
+
+/-- Conservative abstraction: value-relevant change either moves the checked
+    abstraction or raises uncertainty. This is the Lean shape of ch03
+    Eq. conservative-abstraction. -/
+def ConservativeAbstraction
+    (α : ValueWorld → CheckedAbstraction)
+    (ε δ : Int) : Prop :=
+  ∀ x x' : ValueWorld,
+    ε < ValueDistance x x' →
+      δ < AbstractionDistance (α x) (α x') ∨ UncertaintyEscalates x x'
+
+/-- Silent abstraction gap: value-relevant change is large, abstraction change is
+    small, and uncertainty does not escalate. -/
+def SilentAbstractionGap
+    (α : ValueWorld → CheckedAbstraction)
+    (ε δ : Int) : Prop :=
+  ∃ x x' : ValueWorld,
+    ε < ValueDistance x x' ∧
+      AbstractionDistance (α x) (α x') ≤ δ ∧
+      ¬ UncertaintyEscalates x x'
+
+/-- A conservative abstraction rules out the silent gap that ch03 names
+    abstraction-gap exploitation. -/
+theorem conservative_abstraction_no_silent_gap
+    {α : ValueWorld → CheckedAbstraction}
+    {ε δ : Int}
+    (h : ConservativeAbstraction α ε δ) :
+    ¬ SilentAbstractionGap α ε δ := by
+  intro hgap
+  rcases hgap with ⟨x, x', hv, hz, hunc⟩
+  cases h x x' hv with
+  | inl hzLarge =>
+      have hnot : ¬ δ < AbstractionDistance (α x) (α x') := by omega
+      exact hnot hzLarge
+  | inr hEsc => exact hunc hEsc
+
 /-- `S` controls a selection handle that can increase target `A`'s deployment mass in `E`. -/
 def SelectionHandleFor (_E : Environment) (S A : System) (h : Handle) : Prop :=
   ControlsHandle S h ∧ HandleReachesSystem h A
@@ -432,7 +493,7 @@ theorem finPigeonhole : ∀ {n m : Nat} (f : Fin n → Fin m),
           have hk : k ≤ m' := ih _ hg
           exact Nat.succ_le_succ hk
 
-/-! ## Missing bridge assumptions `MB1`–`MB8`
+/-! ## Missing bridge assumptions `MB1`–`MB9`
 
 These are the empirical / philosophical / external-mathematics steps. They are
 intentionally `axiom`s: the proof spine shows what follows *if* they hold, but
@@ -502,7 +563,12 @@ axiom MB7d_inferential_uad_detector_soundness :
 axiom MB8_cev_process_convergence :
   ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
 
-/-- All eight bridge assumptions packaged as one record. Constructing
+/-- MB9: grounding certificate validity. A certified conservative abstraction
+    warrants the abstract grounding-viability layer in the deployment domain. -/
+axiom MB9_grounding_certificate_soundness :
+  ∀ A : System, GroundingCertificate A → GroundingViable A
+
+/-- All nine bridge assumptions packaged as one record. Constructing
     `standardBridges` forces every `MB*` axiom to be referenced, so none can be
     silently dropped from the certification argument. -/
 structure BridgeAssumptions : Prop where
@@ -518,6 +584,7 @@ structure BridgeAssumptions : Prop where
   mb7c : ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A
   mb7d : ∀ A : System, AccessRobust A → InferentialDetectorAdequate A → InferentialCouplingMeasurementValid A
   mb8 : ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
+  mb9 : ∀ A : System, GroundingCertificate A → GroundingViable A
 
 /-- The bridge assumptions discharged by the `MB*` axioms of this development. -/
 def standardBridges : BridgeAssumptions where
@@ -533,5 +600,6 @@ def standardBridges : BridgeAssumptions where
   mb7c := MB7c_hidden_biq_to_adversarial_robustness
   mb7d := MB7d_inferential_uad_detector_soundness
   mb8 := MB8_cev_process_convergence
+  mb9 := MB9_grounding_certificate_soundness
 
 end AlignmentProofSpine

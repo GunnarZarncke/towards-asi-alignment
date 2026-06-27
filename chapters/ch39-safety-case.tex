@@ -49,6 +49,7 @@ Each layer claim must be supported by evidence, proof, or an explicit bridge.
 For this book, the layers are:
 \begin{enumerate}
   \item the real optimizer has been bounded or discovered;
+  \item grounding remains viable: symbols, metrics, monitors, and correction signals stay connected to value-relevant reality;
   \item value-bundle geometry is preserved at the relevant level of compression;
   \item bearer maps remain adequate under ontology and substrate shift;
   \item correction is a live causal channel, not a performance ritual;
@@ -56,6 +57,7 @@ For this book, the layers are:
   \item the deployment environment selects for correction rather than against it;
   \item adversarial measurement is strong enough that the preceding metrics are not mere presentations.
 \end{enumerate}
+% TODO[grounding-layer-completeness]: Review whether this eight-layer list can be derived from a completeness argument over grounded correction, or whether it remains an ad-hoc checklist.
 
 The safety case is not stronger than its weakest load-bearing leaf.
 If a leaf is only observable, the case must say that.
@@ -75,7 +77,7 @@ The safety case forces these layers to appear in one graph.
 The companion Lean proof spine (\texttt{formal/AlignmentProofSpine/}) tags each node as \emph{proof}, \emph{counterexample}, or \emph{bridge}.
 \leanspine{proof}{P30}{Given $\mathrm{Control}\leq CCI+\delta$, the risk gap is at most $\delta$; the bound is derived, not assumed.}
 \leanspine{proof}{P40}{An unsupported leaf in the safety-case graph blocks the root claim.}
-Bridges \texttt{MB1}--\texttt{MB8} (estimator soundness, bundle identifiability, basin stability, CEV convergence, etc.) remain explicit axioms.
+Bridges \texttt{MB1}--\texttt{MB9} (estimator soundness, grounding validity, bundle identifiability, basin stability, CEV convergence, etc.) remain explicit axioms.
 
 Let \(A\) be the system or composite system under evaluation.
 Let \(\mathcal{D}\) be the deployment class: the range of tasks, access, scale, autonomy, successor rights, and environmental pressures for which the case is being made.
@@ -112,9 +114,10 @@ The layer conjunction is:
 \begin{aligned}
 \mathrm{LayeredAlignedDef}(A) :=\;&
 \mathrm{BoundaryAligned}(A)
-\land \mathrm{BundleTransport}(A)
-\land \mathrm{BearerTransport}(A)\\
-&\land \mathrm{CorrectionIntegrity}(A)
+\land \mathrm{GroundingViable}(A)
+\land \mathrm{BundleTransport}(A)\\
+&\land \mathrm{BearerTransport}(A)
+\land \mathrm{CorrectionIntegrity}(A)
 \land \mathrm{SuccessorStable}(A)
 \land \mathrm{BasinStableSys}(A)\\
 &\land \mathrm{AdversariallyRobust}(A).
@@ -128,6 +131,8 @@ Each layer has a case fragment.
 \midrule
 \endhead
 Boundary & Have we identified the control-relevant system, not merely the visible artifact? & proof nodes plus \texttt{MB1}, \texttt{MB7a} \\
+\midrule
+Grounding & Do the checked symbols, metrics, monitors, and correction signals still track value-relevant reality or escalate uncertainty? & structural proofs plus \texttt{MB9} \\
 \midrule
 Bundle & Does value-relevant behavior preserve bundle geometry, not only rewards or words? & proofs/counterexamples plus \texttt{MB2} \\
 \midrule
@@ -152,7 +157,7 @@ The safety case therefore has four kinds of leaves.
   \item \textbf{Open leaves}: claims not currently discharged; these must either be resolved, bounded, or moved into refusal conditions.
 \end{enumerate}
 
-\leanspine{bridge}{MB1--MB8}{The bridge-composed certification theorem builds the layered safety-case root from measurement and institutional assumptions; the numeric risk leaf still comes from \(CCI\)-slack.}
+\leanspine{bridge}{MB1--MB9}{The bridge-composed certification theorem builds the layered safety-case root from measurement and institutional assumptions, including grounding validity; the numeric risk leaf still comes from \(CCI\)-slack.}
 
 This is why \texttt{P40} matters.
 If the root depends on a leaf \(L\), and \(L\) is unsupported, the root is not proven.
