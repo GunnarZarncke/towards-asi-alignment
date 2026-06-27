@@ -18,7 +18,7 @@ digraph Spine00Overview {
       fillcolor="#EFFBEA", penwidth=2];
   S3 [label="Spine III\nCorrection & successors\n(P23–P29, P13, MB4–5, MB7c, MB8)\n→ CCI, Risk, SuccessorSafe",
       fillcolor="#FFF0FB", penwidth=2];
-  S4 [label="Spine IV\nSelection & limits\n(P12, P31–P34, P41–P45, MB6)\n→ basin, normative boundary",
+  S4 [label="Spine IV\nSelection & limits\n(P12, P31–P34, P41–P45,\nMB6a–b, MB7d)\n→ percolation evidence, basin, normative boundary",
       fillcolor="#FFF0EC", penwidth=2];
 
   P02 [label="P02 LayeredAligned\n7 layers: boundary, bundle, bearer,\ncorrection, successor, basin, adversarial",
@@ -31,8 +31,9 @@ digraph Spine00Overview {
         fillcolor="#F2F2F2", shape=doubleoctagon, penwidth=2];
 
   MB7 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333",
-       label="MB7a→b→c\n(adversarial UAD bridges)"];
-  MB6 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6\nInstitutional selection"];
+       label="MB7a→b→c→d\n(adversarial + inferential UAD bridges)"];
+  MB6a [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6a\nPercolation evidence ⇒ basin"];
+  MB6b [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6b\nBasin ⇒ correction"];
 
   S1 -> S2 [label="identifiability\nconstraints"];
   S1 -> S3 [label="BIQ / control\n+ MB7a–b"];
@@ -42,8 +43,9 @@ digraph Spine00Overview {
 
   S1 -> MB7 [style=dashed, color="#CC3333"];
   MB7 -> P02 [style=dashed, color="#CC3333", label="AdversariallyRobust layer"];
-  S4 -> MB6 [style=dashed, color="#CC3333"];
-  MB6 -> P02 [style=dashed, color="#CC3333", label="CorrectionIntegrity\n+ basin layer"];
+  S4 -> MB6a [style=dashed, color="#CC3333"];
+  MB6a -> MB6b [style=dashed, color="#CC3333"];
+  MB6b -> P02 [style=dashed, color="#CC3333", label="CorrectionIntegrity\n+ basin layer"];
   S3 -> P02 [label="correction +\nsuccessor layers"];
   S2 -> P02 [label="bundle +\nbearer layers"];
   S1 -> P02 [label="boundary layer"];

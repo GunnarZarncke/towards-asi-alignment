@@ -15,6 +15,7 @@ digraph Spine04SelectionLimits {
   P12 [label="P12 Coordination bottleneck", fillcolor="#EAF3FF"];
   P31 [label="P31 Safe agent selected against", fillcolor="#FFF0EC"];
   P32 [label="P32 Cooperativity threshold", fillcolor="#FFF0EC"];
+  PAC [label="[NEW]\nInferential/UAD graph certificates\nUAD audit + P_meta + IC score", fillcolor="#FFF0EC", color="#1F77B4", penwidth=2.2];
   P33 [label="P33 No open edges", fillcolor="#FFF0EC"];
   P34 [label="P34 Host-capacity aliasing", fillcolor="#FFF0EC"];
   P41 [label="P41 Value preservation ≠ legitimacy", fillcolor="#FFF0EC"];
@@ -23,19 +24,24 @@ digraph Spine04SelectionLimits {
   P44 [label="P44 Invariants ≠ legitimacy", fillcolor="#FFF0EC"];
   P45 [label="P45 Philosophical boundary", fillcolor="#FFF0EC"];
 
-  MB6 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6 Institutional selection"];
+  MB6a [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6a Percolation evidence ⇒ basin"];
+  MB6b [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB6b Basin ⇒ correction"];
+  MB7d [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB7d Inferential-UAD detector validity"];
 
   OUT [shape=octagon, style="filled", fillcolor="#FFE8E0", color="#993333",
-       label="Exports:\nBasin / CorrectionIntegrity (MB6),\nselection counterexamples,\nnormative limits on P02"];
+       label="Exports:\nPercolation evidence / basin (MB6a),\nCorrectionIntegrity via MB6b,\nselection counterexamples,\nnormative limits on P02"];
 
-  P12 -> P31 -> MB6 [style=dashed, color="#CC3333"];
-  P32 -> P33 -> P34;
-  MB6 -> P33 [style=dashed, color="#CC3333", label="percolation"];
+  P12 -> P31 -> MB6a [style=dashed, color="#CC3333"];
+  P32 -> PAC -> P33 -> P34;
+  PAC -> MB7d [style=dashed, color="#CC3333", label="P_meta / detector cert."];
+  MB7d -> MB6a [style=dashed, color="#CC3333", label="valid IC"];
+  P33 -> MB6a [style=dashed, color="#CC3333", label="percolation evidence"];
+  MB6a -> MB6b [style=dashed, color="#CC3333", label="basin"];
   P41 -> P44;
   P42 -> P44;
   P43 -> P44 -> P45;
 
-  MB6 -> OUT [style=dashed, color="#CC3333"];
+  MB6b -> OUT [style=dashed, color="#CC3333"];
   P45 -> OUT [label="limits layered alignment"];
   P34 -> OUT [label="audit aliasing"];
 }

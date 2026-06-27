@@ -55,7 +55,7 @@ PARTS = [
     ]),
     ("part08-attractor-basins", "Attractor Basins and Socio-Technical Selection", [
         ("ch32-selection-environment", "Alignment Is Selected or Destroyed by Its Environment", "selection-environment"),
-        ("ch33-multi-agent-strategic-coupling", "Multi-Agent Superintelligence and Strategic Coupling", "multi-agent-strategic-coupling"),
+        ("ch33-multi-agent-strategic-coupling", "Multi-Agent Superintelligence and Inferential Coupling", "multi-agent-strategic-coupling"),
         ("ch34-parasites-correction-system", "Parasites in the Correction System", "parasites-correction-system"),
         ("ch35-alignment-attractor", "The Alignment Attractor", "alignment-attractor"),
     ]),

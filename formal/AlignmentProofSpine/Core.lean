@@ -132,6 +132,11 @@ axiom SuccessorStable : System → Prop
 axiom BasinStableSys : System → Prop
 axiom AdversariallyRobust : System → Prop
 
+/-- Percolation / cooperation-graph evidence that the socio-technical system is
+    inside the relevant basin. Concrete graph construction lives in
+    `CooperationGraph`; this predicate is the bridge-level interface. -/
+axiom PercolationEvidenceSys : System → Prop
+
 /-- The available handles are rich enough for the boundary claim being made. -/
 axiom AccessModelAdequate : System → Prop
 
@@ -143,6 +148,15 @@ axiom FilterCoverageAdequate : System → Prop
 
 /-- Hidden productive B-IQ is bounded under the monitored filter family. -/
 axiom HiddenBIQBoundedSys : System → Prop
+
+/-- Inferential-coupling detector assumptions are adequate at the
+    chosen resolution: meta-prior evidence, self-modeling evidence, probe
+    coverage, and threshold calibration. -/
+axiom InferentialDetectorAdequate : System → Prop
+
+/-- Inferential UAD detector outputs warrant the inferential-coupling claims used
+    by the cooperation graph. -/
+axiom InferentialCouplingMeasurementValid : System → Prop
 
 /-- A system preserves the (legitimate) correction operator. -/
 axiom PreservesCorrectionOperator : System → Prop
@@ -451,9 +465,14 @@ axiom MB4_correction_legitimacy :
 axiom MB5_ontology_shift_successor_audit :
   ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B
 
-/-- MB6: percolation-to-institutional-basin bridge. A stable socio-technical
-    basin supports correction integrity rather than selecting against it. -/
-axiom MB6_percolation_to_institutional_basin :
+/-- MB6a: percolation-evidence-to-basin bridge. Cooperation/percolation
+    evidence warrants the abstract basin-stability predicate. -/
+axiom MB6a_percolation_evidence_to_basin_stability :
+  ∀ A : System, PercolationEvidenceSys A → BasinStableSys A
+
+/-- MB6b: basin-to-correction bridge. A stable socio-technical basin supports
+    correction integrity rather than selecting against it. -/
+axiom MB6b_basin_stability_to_correction_integrity :
   ∀ A : System, BasinStableSys A → CorrectionIntegrity A
 
 /-- MB7a: access-model soundness. Boundary alignment plus adequate handles yields
@@ -471,6 +490,13 @@ axiom MB7b_filter_family_coverage :
 axiom MB7c_hidden_biq_to_adversarial_robustness :
   ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A
 
+/-- MB7d: inferential-UAD detector validity. Access-robust discovery plus adequate
+    inferential detector assumptions warrants inferential-coupling measurements.
+    The internal `P_meta` structure is an audit certificate, not a commitment
+    that agents symbolically represent the prior. -/
+axiom MB7d_inferential_uad_detector_soundness :
+  ∀ A : System, AccessRobust A → InferentialDetectorAdequate A → InferentialCouplingMeasurementValid A
+
 /-- MB8: CEV/process convergence. Preserving `U_H` suffices for the book's
     process-preserving correction condition, without knowing a final fixed point. -/
 axiom MB8_cev_process_convergence :
@@ -485,10 +511,12 @@ structure BridgeAssumptions : Prop where
   mb3 : ∀ A B : System, BundleTransport A → SameBearerMap A B → BearerTransport B
   mb4 : ∀ A : System, CorrectionIntegrity A → PreservesCorrectionOperator A
   mb5 : ∀ A B : System, FullTransport A B → BearerTransport B → SuccessorSafe A B
-  mb6 : ∀ A : System, BasinStableSys A → CorrectionIntegrity A
+  mb6a : ∀ A : System, PercolationEvidenceSys A → BasinStableSys A
+  mb6b : ∀ A : System, BasinStableSys A → CorrectionIntegrity A
   mb7a : ∀ A : System, BoundaryAligned A → AccessModelAdequate A → AccessRobust A
   mb7b : ∀ A : System, AccessRobust A → FilterCoverageAdequate A → HiddenBIQBoundedSys A
   mb7c : ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A
+  mb7d : ∀ A : System, AccessRobust A → InferentialDetectorAdequate A → InferentialCouplingMeasurementValid A
   mb8 : ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
 
 /-- The bridge assumptions discharged by the `MB*` axioms of this development. -/
@@ -498,10 +526,12 @@ def standardBridges : BridgeAssumptions where
   mb3 := MB3_bearer_import
   mb4 := MB4_correction_legitimacy
   mb5 := MB5_ontology_shift_successor_audit
-  mb6 := MB6_percolation_to_institutional_basin
+  mb6a := MB6a_percolation_evidence_to_basin_stability
+  mb6b := MB6b_basin_stability_to_correction_integrity
   mb7a := MB7a_access_model_soundness
   mb7b := MB7b_filter_family_coverage
   mb7c := MB7c_hidden_biq_to_adversarial_robustness
+  mb7d := MB7d_inferential_uad_detector_soundness
   mb8 := MB8_cev_process_convergence
 
 end AlignmentProofSpine

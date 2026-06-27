@@ -17,7 +17,7 @@ Open problems and unresolved uncertainties tracked across the manuscript.
 | U-09 | Is the compression test for intention robust against semantic camouflage and decomposition attacks? | ch21, ch37 | A-006, C-009 |
 | U-10 | What are sufficient conditions for alignment-basin stability under competitive selection? | ch32, ch35 | C-007 |
 | U-11 | Pivotal process: conditions for $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ without unilateral decisive action? | ch35, ch40 | C-007 |
-| U-12 | Can effective AI coalitions / inferential coupling be detected and indexed adversarially? | ch33 | C-001, C-007 |
+| U-12 | Can effective AI coalitions / inferential coupling be detected and indexed adversarially, including audit-side \(P_{\text{meta}}\) certificates, self-modeling evidence, probe coverage, and calibrated open-edge thresholds for shared-history, non-message, self-similar, and full-acausal-trade cases? | ch33, ch39b, ch40 | A-013, C-001, C-007 |
 | U-13 | Can successors be certified without full construction understanding? | ch31 | A-007, C-006 |
 | U-14 | Do safety-case templates scale to frontier systems under adversarial optimization? | ch39, ch39b, appG | C-002, C-044 |
 | U-15 | Can institutional designs reliably preserve correction-channel capacity over time? | ch32, ch34 | A-003, A-005, C-007 |

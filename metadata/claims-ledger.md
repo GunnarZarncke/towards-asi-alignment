@@ -160,7 +160,7 @@ The five named Introduction claims map to claims C-003 (boundary), C-004 (value-
 
 **Support:**
 - selection-vs-training distinction; deployment-fitness traps and false attractors
-- multi-agent strategic coupling (cooperation/opacity basins, inferential coupling, privacy islands, coalition-collapse failure mode)
+- multi-agent inferential coupling (cooperation/opacity basins, privacy islands, coalition-collapse failure mode)
 - alignment-attractor model (artifact conductivity across research/engineering/governance)
 
 **Weakest link:**

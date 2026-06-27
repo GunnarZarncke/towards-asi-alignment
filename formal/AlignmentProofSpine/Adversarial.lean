@@ -1,4 +1,5 @@
 import AlignmentProofSpine.Core
+import AlignmentProofSpine.CooperationGraph
 
 /-!
 # AlignmentProofSpine.Adversarial
@@ -7,7 +8,8 @@ Socio-technical selection, parasite aliasing, and adversarial measurement
 (book chapters 32–37).
 
 * `P31`: a safe agent can be selected against (finite toy model).
-* `P33`: with no open edges there is no large cooperation component.
+* `P33`: with no open edges there is no large cooperation component (proved in
+  `CooperationGraph`; UAD-derived graphs are covered by `derived_P33`).
 * `P34`: host-capacity aliasing — too few signals cannot injectively detect
   attacks (uses the from-scratch `finPigeonhole` from `Core`).
 * `P36R`: post-commitment randomization gives a conditional detection floor.
@@ -36,21 +38,7 @@ theorem P31_safe_agent_selected_against :
           ToyDeploymentMass defaultEnvironment safe :=
   ⟨true, false, rfl, by decide, by decide⟩
 
-/-! ### P33: no open edges, no large cooperation component -/
-
-axiom CoopGraph : Type
-axiom OpenEdge : CoopGraph → Node → Node → Prop
-
-/-- A "large" component is witnessed by at least one open edge. -/
-def ComponentLarge (G : CoopGraph) : Prop := ∃ x y : Node, OpenEdge G x y
-
-/-- C-GRAPH (P33): if no edges are open, no large cooperation component exists. -/
-theorem P33_no_open_edges_no_large_component
-    {G : CoopGraph}
-    (hclosed : ∀ x y : Node, ¬ OpenEdge G x y) :
-    ¬ ComponentLarge G := by
-  rintro ⟨x, y, hxy⟩
-  exact hclosed x y hxy
+/-! ### P33: see `CooperationGraph` (UAD-derived and generic graphs) -/
 
 /-- C-PARASITE (P34): host-capacity aliasing (`C_X` in ch34). If there are strictly
     fewer signal classes than attack classes, no detector can injectively map

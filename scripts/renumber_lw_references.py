@@ -42,7 +42,7 @@ TITLE_MAP = {
     30: "Better Self-Modeling Can Be Worse",
     31: "Certification Without Construction",
     32: "Alignment Is Selected or Destroyed by Its Environment",
-    33: "Multi-Agent Superintelligence and Strategic Coupling",
+    33: "Multi-Agent Superintelligence and Inferential Coupling",
     34: "Parasites in the Correction System",
     35: "The Alignment Attractor",
     36: "Passive Observation Is Not Enough",

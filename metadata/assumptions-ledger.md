@@ -6,7 +6,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Maintenance note:** This ledger is the source for generated Appendix E, but the ledger itself is manually maintained. Update it whenever chapter assumptions, Lean bridge assumptions, claim links, or uncertainty links change. Treat the generated appendix as downstream of this file, not as an independent source of truth, until ledger automation is implemented.
 
-**Last verification:** 2026-06-25 — cross-checked chapter assumption statements against this ledger (see §Verification).
+**Last verification:** 2026-06-27 — cross-checked chapter assumption statements and Lean bridge assumptions after the ch33 inferential-coupling / acausal-UAD bridge update (see §Verification).
 
 ---
 
@@ -26,10 +26,11 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 | ch36–40 adversarial measurement | A-009 |
 | ch39b verifiability labels | A-009 |
 | Lean `MB1`–`MB8`, `S07` | MB*, S07 |
+| ch33 inferential-coupling / acausal-UAD detector, audit-side \(P_{\text{meta}}\), and threshold caveat | A-013, U-12, MB7d |
 | ch31 safety-case example assumptions (test coverage, human comprehension) | Instance-level; not book-wide A-rows (see ch31 prose) |
 | ch21 “do not assume agent/sensors/goal” | Methodological (non-assumption); intentional model tested, not presupposed |
 
-**Added this pass:** A-011 (ch02), A-012 (ch14).
+**Added this pass:** A-013 (ch33 inferential-coupling / acausal-UAD detector validity), split MB6a/MB6b, and MB7d.
 
 ---
 
@@ -49,6 +50,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 | A-010 | Projectable dynamical / certified-class guarantees | ch03 |
 | A-011 | Civilizational-frame minimum assumptions | ch02 |
 | A-012 | Correction co-scales with capability (or pause/stop) | ch14 |
+| A-013 | Inferential-coupling detector certificates | ch33 |
 | S07 | MDL: positive gain ⇒ preferred model | ch21 |
 | MB1–MB8 | Lean bridge axioms | appI (+ chapter bridges) |
 
@@ -88,7 +90,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Assumption:** Deployment can be gated by certification; humans can refuse, revise, coordinate.
 
-**Also stated in:** ch05, ch31–32, ch35. **Lean:** MB6. **Bears on:** C-006, C-007 · **U-11, U-15**
+**Also stated in:** ch05, ch31–32, ch35. **Lean:** MB6a, MB6b. **Bears on:** C-006, C-007 · **U-11, U-15**
 
 ### A-006 — Compression / transport inferability
 
@@ -106,19 +108,19 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Assumption:** Outcomes depend on socio-technical selection (fitness, basins), not weights alone.
 
-**Also stated in:** ch02 loop, ch35, ch40. **Lean:** MB6. **Bears on:** C-007 · **U-10, U-11**
+**Also stated in:** ch02 loop, ch33, ch35, ch40. **Lean:** MB6a, MB6b. **Bears on:** C-007 · **U-10, U-11**
 
 ### A-009 — Adversarial verifiability
 
 **Assumption:** At least one core measurand is cheaper to satisfy honestly than to fake under optimization pressure.
 
-**Also stated in:** ch36, ch39–39b, ch40. **Lean:** MB7b, MB7c. **Bears on:** C-005, C-010, C-044 · **U-03, U-14**
+**Also stated in:** ch33, ch36, ch39–39b, ch40. **Lean:** MB7b, MB7c, MB7d. **Bears on:** C-005, C-007, C-010, C-044 · **U-03, U-12, U-14**
 
 ### A-010 — Dynamical guarantees
 
 **Assumption:** Alignment expressed as certified-class / basin invariants over time, not static \(P(A_t)\).
 
-**Also stated in:** ch31, ch39. **Lean:** certification scaffolding + MB5–6. **Bears on:** C-002, C-006, C-044 · **U-04, U-13**
+**Also stated in:** ch31, ch39. **Lean:** certification scaffolding + MB5, MB6a, MB6b. **Bears on:** C-002, C-006, C-044 · **U-04, U-13**
 
 ### A-011 — Civilizational-frame minimum assumptions
 
@@ -132,6 +134,12 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Canonical:** ch14 WWCTV load-bearing bullet. **Bears on:** C-008 · **U-06**
 
+### A-013 — Inferential-coupling detector certificates
+
+**Assumption:** At a specified audit resolution, UAD-discovered agents plus inferential-coupling detector evidence are sufficient to identify action-relevant dependence that remains after ordinary communication and control channels are cut. Full acausal trade is one limiting case; common-cause/shared-history, non-message inference, and self-similarity can also produce the relevant dependence. The \(P_{\text{meta}}\) structure is an audit-side/expositional certificate over shared decision-relevant inference structure, not a claim that agents symbolically represent a meta-prior. Self-modeling evidence may be symbolic, implicit in weights, scaffold-mediated, or behavioral; probe coverage and \(\tau_{\mathrm{ac}}\) / open-edge thresholds must be calibrated against base rates, adversarial costs, and false-positive/false-negative tradeoffs.
+
+**Canonical:** ch33 inferential-coupling / acausal-trade section; threshold calibration deferred to ch39b/ch40. **Lean:** `CooperationGraph.lean` (`MetaPriorEvidence`, `InferentialDetectionCertificate`) and MB7d. **Bears on:** C-007 · **U-12**
+
 ---
 
 ## II. Lean scaffolding
@@ -142,7 +150,7 @@ Abstract carriers in `Core.lean` (`System`, `State`, …) are mathematical inter
 
 ## III. Lean imported (S01–S09)
 
-Appendix I §Imported Assumptions. Only **S07** is an explicit Lean `axiom`. S09 enters via MB6.
+Appendix I §Imported Assumptions. Only **S07** is an explicit Lean `axiom`. S09-style percolation theory enters via MB6a.
 
 ---
 
@@ -156,9 +164,11 @@ Formal statements: Appendix I; validation program: Appendix H. Lean: `Core.lean`
 | MB2, MB3 | A-001, A-006 |
 | MB4, MB8 | A-002 |
 | MB5 | A-007, A-010 |
-| MB6 | A-005, A-008, A-011 (institutional selection) |
+| MB6a | A-008, A-011, A-013 (percolation / coupling evidence) |
+| MB6b | A-005, A-008, A-011 (institutional selection) |
 | MB7a | A-004 |
 | MB7b, MB7c | A-009 |
+| MB7d | A-009, A-013 |
 | MB8 | A-002 |
 
 ---
@@ -189,6 +199,7 @@ Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. On
 |----|------------|------|
 | A-002 | Correction is a handle-controlled causal chain with measurable integrity ($\mathrm{CCI}$) | ch24 |
 | A-012 | Correction-relevant capacity co-scales with capability across real jumps (else pause/stop) | ch14 |
+| A-013 | Inferential-coupling detector certificates: audit-side \(P_{\text{meta}}\), self-modeling evidence, probe coverage, calibrated \(\tau_{\mathrm{ac}}\) | ch33 |
 | A-009 | At least one safety-relevant measurand is adversarially verifiable under optimization pressure | ch39b |
 
 ### Successors, dynamics, and selection
@@ -209,10 +220,12 @@ Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. On
 | MB3 | Bundle transport plus bearer-map agreement implies bearer transport | ch18 |
 | MB4 | Correction-channel integrity implies legitimate correction-operator preservation | ch25 |
 | MB5 | Full transport plus bearer transport implies successor safety | ch28 |
-| MB6 | Socio-technical basin stability implies correction-channel integrity | ch35 |
+| MB6a | Percolation / coupling evidence implies socio-technical basin stability | ch33 |
+| MB6b | Socio-technical basin stability implies correction-channel integrity | ch35 |
 | MB7a | Boundary alignment plus adequate access model implies access robustness | ch07 |
 | MB7b | Access robustness plus filter coverage bounds hidden productive B-IQ | ch39b |
 | MB7c | Correction integrity plus bounded hidden B-IQ implies adversarial robustness | ch39b |
+| MB7d | Access robustness plus adequate inferential detector assumptions implies valid inferential-coupling measurement | ch33 |
 | MB8 | Preserving the human value-update operator $U_H$ implies correction integrity | ch26 |
 
 ---

@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-27 | Lean UAD cooperation graph | [2026-06-27-lean-uad-cooperation-graph.md](2026-06-27-lean-uad-cooperation-graph.md) |
+| 2026-06-27 | Epistemic marker TODO | [2026-06-27-epistemic-marker-todo.md](2026-06-27-epistemic-marker-todo.md) |
 | 2026-06-26 | Part openers and ch40 fixes | [2026-06-26-part-openers-ch40.md](2026-06-26-part-openers-ch40.md) |
 | 2026-06-26 | Open chapter drafts | [2026-06-26-open-chapter-drafts.md](2026-06-26-open-chapter-drafts.md) |
 | 2026-06-26 | LHV learnability integration | [2026-06-26-lhv-learnability-integration.md](2026-06-26-lhv-learnability-integration.md) |

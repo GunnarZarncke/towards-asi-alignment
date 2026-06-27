@@ -4,6 +4,7 @@ import AlignmentProofSpine.Capability
 import AlignmentProofSpine.Bundles
 import AlignmentProofSpine.Correction
 import AlignmentProofSpine.Successors
+import AlignmentProofSpine.CooperationGraph
 import AlignmentProofSpine.Adversarial
 import AlignmentProofSpine.Philosophy
 import AlignmentProofSpine.Certification
@@ -16,9 +17,10 @@ Alignment*. It re-exports the layered modules:
 
 | Module          | Proof-spine nodes                         | Book chapters |
 |-----------------|-------------------------------------------|---------------|
-| `Core`          | carriers, `U_H`/`U_S`, access handles, `MB1`–`MB8` (`MB7a`–`MB7c`), pigeonhole | (foundations) |
+| `Core`          | carriers, `U_H`/`U_S`, access handles, `MB1`–`MB8` (`MB6a`/`MB6b`, `MB7a`–`MB7d`), pigeonhole | (foundations) |
 | `Boundaries`    | `P05`–`P09`, `P36`, access/K non-identifiability | 6–7, 10, 36   |
 | `Capability`    | `P10`–`P13`, `P32`, `P43`, `KSys`, hidden-BIQ certificate | 11–14, 33, 36 |
+| `CooperationGraph` | UAD audit → derived graph, `P33`, `derived_openEdge_via_P32` | 13, 33, 35 |
 | `Bundles`       | `P14`–`P22`                               | 15–23         |
 | `Correction`    | `P23`–`P26`, `CCI`, handle-controlled paths | 24–27         |
 | `Successors`    | `P27`–`P29`, `U_S` preservation           | 28–31         |

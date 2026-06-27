@@ -23,7 +23,7 @@ The structure of the Lean proof derivation is shown in four diagrams and an over
 
 \paragraph{Node shapes.}
 Rounded rectangles denote proved Lean nodes (\texttt{P05}, \texttt{P13}, \texttt{P30}, and so on).
-Diamonds denote bridge assumptions (\texttt{MB1}--\texttt{MB8}, including the split \texttt{MB7a--c} chain).
+Diamonds denote bridge assumptions (\texttt{MB1}--\texttt{MB8}, including the split \texttt{MB6a--b} and \texttt{MB7a--d} chains).
 In the sub-spine diagrams, solid octagons mark \emph{export} summaries: quantities and predicates that leave that sub-spine and feed later stages.
 Spine~III also uses dashed octagons for \emph{imports} from Spines~I and~II (for example control capacity from Spine~I and transport counterexamples from Spine~II).
 The overview diagram uses a double octagon for the top composed theorem \texttt{P30T}; its four spine boxes and the main assembly nodes \texttt{P02}/\texttt{P30} are drawn with heavier borders.
@@ -57,7 +57,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \includegraphics[width=\textwidth]{figures/lean_proof/00-overview.png}
   \caption[Proof spine overview]{Overview of the Lean proof spine.
   Four sub-spines (Spines I--IV) feed the layered alignment conjunction \texttt{P02}, basin lemmas \texttt{P35}/\texttt{P01}, and the certified-class safety bound \texttt{P30}, which compose into the top theorem \texttt{P30T}.
-  Bridge chains \texttt{MB6} and \texttt{MB7a--c} supply institutional-selection and adversarial-measurement layers.}
+  Bridge chains \texttt{MB6a--b} and \texttt{MB7a--d} supply institutional-selection and adversarial-measurement layers.}
   \label{fig:lean-spine-overview}
 \end{figure}
 
@@ -65,7 +65,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/01-boundary-measurement.png}
   \caption[Spine I: boundary and measurement]{Spine I: boundary discovery and adversarial measurement (Chapters~\ref{ch:finding-boundary}--\ref{ch:capability-without-task-ontology}, \ref{ch:passive-observation-not-enough}).
-  Covers boundary predicates, B-IQ ceiling, observation and handle non-identifiability, CID abstraction-relative incentives, host-capacity aliasing, and the first two steps of the \texttt{MB7} bridge chain.}
+  Covers boundary predicates, B-IQ ceiling, observation and handle non-identifiability, CID abstraction-relative incentives, host-capacity aliasing, the first two steps of the \texttt{MB7} bridge chain, and the access-robust input later consumed by \texttt{MB7d}.}
   \label{fig:lean-spine-boundary}
 \end{figure}
 
@@ -81,7 +81,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/03-correction-successors.png}
   \caption[Spine III: correction and successors]{Spine III: handle-controlled correction, risk, and successors (Chapters~\ref{ch:correction-causal-channel}--\ref{ch:certification-without-construction}).
-  Covers the correction channel, shutdown and interruptibility as narrow projections, impact/quantilization/debate/amplification/ELK separations, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the \texttt{MB7} chain at \texttt{MB7c}.}
+  Covers the correction channel, shutdown and interruptibility as narrow projections, impact/quantilization/debate/amplification/ELK separations, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the core hidden-BIQ \texttt{MB7} chain at \texttt{MB7c}; inferential detector validity is now the adjacent \texttt{MB7d} bridge.}
   \label{fig:lean-spine-correction}
 \end{figure}
 
@@ -89,7 +89,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/04-selection-limits.png}
   \caption[Spine IV: selection and limits]{Spine IV: selection ecology and normative limits (Chapters~\ref{ch:selection-environment}, \ref{ch:goal-laundering}, Part~XI).
-  Covers deployment-mass selection (\texttt{P31}), cooperation and audit aliasing, and the philosophical boundary on layered alignment (\texttt{P44--P45}).}
+  Covers deployment-mass selection (\texttt{P31}), UAD/inferential cooperation-graph certificates, cooperation and audit aliasing, \texttt{MB6a--b} percolation/basin bridges, \texttt{MB7d} inferential detector validity, and the philosophical boundary on layered alignment (\texttt{P44--P45}).}
   \label{fig:lean-spine-selection}
 \end{figure}
 
@@ -344,7 +344,7 @@ Book reference: transport and goal-laundering distances are used in Chapters~\re
 
 \begin{assumption}[S09: external percolation theory]
 \label{appi:ass:s09}
-The socio-technical percolation interpretation needed for institutional basin claims is external to the Lean development and enters only through Bridge~\ref{appi:ass:mb6}.
+The socio-technical percolation interpretation needed for institutional basin claims is external to the Lean development and enters through Bridge~\ref{appi:ass:mb6a}; the further step from basin stability to correction integrity enters through Bridge~\ref{appi:ass:mb6b}.
 Book reference: percolation and alignment basins are discussed in Chapter~\ref{ch:multi-agent-strategic-coupling}, Section~\ref{sec:percolation-inferential-coupling}, and Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:percolation-alignment-practice-ch35}.
 \end{assumption}
 
@@ -399,10 +399,19 @@ Book bridge: correction legitimacy is developed through CCI in Chapter~\ref{ch:c
 Book bridge: ontology-shift successor audit is developed in Chapter~\ref{ch:successor-central-test} and Chapter~\ref{ch:conserved-properties}.
 \end{assumption}
 
-\begin{assumption}[MB6: socio-technical basin bridge]
-\label{appi:ass:mb6}
+\begin{assumption}[MB6a: percolation evidence to basin stability]
+\label{appi:ass:mb6a}
 \begin{equation}
-\label{appi:eq:mb6}
+\label{appi:eq:mb6a}
+\forall A,\ \mathrm{PercolationEvidenceSys}(A)\Rightarrow \mathrm{BasinStableSys}(A).
+\end{equation}
+Book bridge: cooperation/percolation evidence is developed in Chapter~\ref{ch:multi-agent-strategic-coupling} and Chapter~\ref{ch:alignment-attractor}. This bridge says when such evidence is strong enough to warrant the abstract basin-stability predicate.
+\end{assumption}
+
+\begin{assumption}[MB6b: basin stability to correction integrity]
+\label{appi:ass:mb6b}
+\begin{equation}
+\label{appi:eq:mb6b}
 \forall A,\ \mathrm{BasinStableSys}(A)\Rightarrow \mathrm{CorrectionIntegrity}(A).
 \end{equation}
 Book bridge: basin stability is introduced in Chapter~\ref{ch:dynamical-guarantee}, Section~\ref{sec:safety-sets-bad-sets-basins}, and developed institutionally in Chapter~\ref{ch:alignment-attractor}.
@@ -433,6 +442,15 @@ Book bridge: filter-family coverage links strategic opacity (Chapter~\ref{ch:str
 \forall A,\ \mathrm{CorrectionIntegrity}(A)\wedge \mathrm{HiddenBIQBoundedSys}(A)\Rightarrow \mathrm{AdversariallyRobust}(A).
 \end{equation}
 Book bridge: hidden-BIQ robustness combines CCI from Chapter~\ref{ch:correction-channel-integrity} with the adversarial-measurement constraints of Chapter~\ref{ch:verifiability-ontology}.
+\end{assumption}
+
+\begin{assumption}[MB7d: inferential-UAD detector validity]
+\label{appi:ass:mb7d}
+\begin{equation}
+\label{appi:eq:mb7d}
+\forall A,\ \mathrm{AccessRobust}(A)\wedge \mathrm{InferentialDetectorAdequate}(A)\Rightarrow \mathrm{InferentialCouplingMeasurementValid}(A).
+\end{equation}
+Book bridge: inferential detector validity is the Chapter~\ref{ch:multi-agent-strategic-coupling} claim that UAD-discovered agents, audit-side \(P_{\text{meta}}\) certificates, self-modeling evidence, probe coverage, and calibrated thresholds warrant inferential-coupling edges. The \(P_{\text{meta}}\) structure is expository/audit-side: it is not a claim that systems symbolically represent that prior.
 \end{assumption}
 
 \begin{assumption}[MB8: process convergence]
@@ -965,10 +983,10 @@ The risk inequality is Theorem~\ref{appi:thm:p13}. The remaining spine inputs re
 
 \begin{corollary}[Bridge-composed layered certification]
 \label{appi:cor:bridge-layered-certification}
-Suppose a system has boundary alignment, bundle transport, successor stability, basin stability, adequate access, adequate filter coverage, correction integrity, and the relevant bridge premises. Under Assumptions~\ref{appi:ass:mb6}, \ref{appi:ass:mb7a}, \ref{appi:ass:mb7b}, and \ref{appi:ass:mb7c}, it satisfies the adversarial and correction layers needed by \eqref{appi:eq:layered-alignment} (Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch31}).
+Suppose a system has boundary alignment, bundle transport, successor stability, percolation evidence, adequate access, adequate filter coverage, correction integrity, and the relevant bridge premises. Under Assumptions~\ref{appi:ass:mb6a}, \ref{appi:ass:mb6b}, \ref{appi:ass:mb7a}, \ref{appi:ass:mb7b}, and \ref{appi:ass:mb7c}, it satisfies the adversarial and correction layers needed by \eqref{appi:eq:layered-alignment} (Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch31}).
 \end{corollary}
 \begin{proof}
-Apply Bridge~\ref{appi:ass:mb7a} to get access robustness, Bridge~\ref{appi:ass:mb7b} to get hidden-BIQ boundedness, and Bridge~\ref{appi:ass:mb7c} with correction integrity to get adversarial robustness. Bridge~\ref{appi:ass:mb6} supplies correction integrity from basin stability when that is the route used.
+Apply Bridge~\ref{appi:ass:mb6a} to get basin stability from percolation evidence and Bridge~\ref{appi:ass:mb6b} to get correction integrity from basin stability. Apply Bridge~\ref{appi:ass:mb7a} to get access robustness, Bridge~\ref{appi:ass:mb7b} to get hidden-BIQ boundedness, and Bridge~\ref{appi:ass:mb7c} with correction integrity to get adversarial robustness.
 \end{proof}
 
 \begin{corollary}[Safety along successor-safe chains]
@@ -1016,7 +1034,7 @@ Apply Theorem~\ref{appi:thm:p44}: the technical predicates and legitimacy predic
 \section{Reading the Appendix Against Lean}
 
 The labels \texttt{P01}--\texttt{P45} match theorem names in \texttt{formal/AlignmentProofSpine/*.lean}.
-The labels \texttt{MB1}--\texttt{MB8} match the bridge assumptions packaged in Lean's \texttt{BridgeAssumptions}.
+The labels \texttt{MB1}--\texttt{MB8} match the bridge assumptions packaged in Lean's \texttt{BridgeAssumptions}, with \texttt{MB6a--b} and \texttt{MB7a--d} naming split bridge chains.
 The only \(S*\) premise materialized as a Lean axiom is \(S07\); the others are either built into Lean's logic, proved locally, or left as external mathematical background.
 
 Thus a \leanspine{proof}{P13}{risk is bounded by correction slack} reference in the manuscript should be read as a pointer to Theorem~\ref{appi:thm:p13}, while a \leanspine{bridge}{MB7b}{filter-family coverage bounds hidden productive control} reference should be read as a pointer to Bridge~\ref{appi:ass:mb7b}.

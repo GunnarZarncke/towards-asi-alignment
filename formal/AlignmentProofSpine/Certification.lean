@@ -126,11 +126,13 @@ theorem certified_class_safety_from_spine_and_bridges
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
-    (hbasin : BasinStableSys A)
+    (hpercolation : PercolationEvidenceSys A)
     (hcci : Control A ≤ CCI A + δ) :
     CertifiedSafetyCase A δ := by
+  have hbasin : BasinStableSys A :=
+    MB6a_percolation_evidence_to_basin_stability A hpercolation
   have hcorr : CorrectionIntegrity A :=
-    MB6_percolation_to_institutional_basin A hbasin
+    MB6b_basin_stability_to_correction_integrity A hbasin
   have haccessRobust : AccessRobust A :=
     MB7a_access_model_soundness A hbound haccess
   have hhidden : HiddenBIQBoundedSys A :=
@@ -160,12 +162,12 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
-    (hbasin : BasinStableSys A)
+    (hpercolation : PercolationEvidenceSys A)
     (hcci : Control A ≤ CCI A + δ)
     (hchain : SuccessorSafeChain A B) :
     CertifiedSafetyCase A δ ∧ Risk B ≤ δ := by
   have hroot := certified_class_safety_from_spine_and_bridges A δ hcert hinv
-    hbound haccess hfilters hbundle hbearer hsucc hbasin hcci
+    hbound haccess hfilters hbundle hbearer hsucc hpercolation hcci
   exact ⟨hroot, risk_bound_along_successor_safe_chain hroot.risk_bound hchain⟩
 
 theorem certified_class_safety_from_biq_ceiling
@@ -190,11 +192,11 @@ theorem certified_class_safety_from_spine_bridges_and_biq
     (hbundle : BundleTransport A)
     (hbearer : BearerTransport A)
     (hsucc : SuccessorStable A)
-    (hbasin : BasinStableSys A)
+    (hpercolation : PercolationEvidenceSys A)
     (hbiq : BIQDerivedCCISlack A δ) :
     CertifiedSafetyCase A δ :=
   certified_class_safety_from_spine_and_bridges A δ hcert hinv
-    hbound haccess hfilters hbundle hbearer hsucc hbasin
+    hbound haccess hfilters hbundle hbearer hsucc hpercolation
     (control_le_correction_from_biq_ceiling hbiq)
 
 theorem certified_class_safety_from_biq_along_successor_chain

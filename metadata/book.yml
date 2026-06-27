@@ -199,7 +199,7 @@ chapters:
     formal_density: medium
     reviewer_needed: [alignment, governance]
   ch33:
-    title: "Multi-Agent Superintelligence and Strategic Coupling"
+    title: "Multi-Agent Superintelligence and Inferential Coupling"
     status: draft
     word_target: 8000
     formal_density: high
