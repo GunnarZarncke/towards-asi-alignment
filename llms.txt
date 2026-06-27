@@ -1,0 +1,116 @@
+# Towards Superintelligence Alignment
+
+> A research manuscript and formal proof-spine project about preserving grounded, human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and socio-technical selection pressure.
+
+This repository is a book-length alignment framework, not a finished proof that superintelligence is safe. It combines manuscript chapters, generated metadata, bibliography, context extracts, and a small Lean 4 proof spine that tracks logical dependencies, counterexamples, and empirical/philosophical bridge assumptions.
+
+## Start Here
+
+- `README.md` - project overview, repository map, build commands.
+- `REVIEWING_FOR_AGENTS.md` - fast orientation for read-only AI/coding agents.
+- `frontmatter/introduction.tex` - thesis, six claims, how to read the book.
+- `frontmatter/executive-overview.tex` - short executive framing.
+- `tables/part-roadmap.tex` - generated part-by-part roadmap.
+- `metadata/book.yml` - chapter titles, status, reviewer tags, part summaries.
+- `formal/README.md` - Lean proof spine map and interpretation.
+- `metadata/source-canon.md` - source map for project papers, extracts, and sibling repositories.
+
+## Core Thesis
+
+Superintelligence alignment is the problem of preserving grounded, human-correctable value-bearing processes across:
+
+- capability growth,
+- ontology shift,
+- successor creation,
+- strategic multi-agent selection pressure,
+- and possible changes in the human / institutional substrate carrying value.
+
+## Main Concepts
+
+- Boundary discovery: find the real optimizer, not just the visible model.
+- Grounding viability: keep symbols, metrics, monitors, and correction signals connected to value-relevant reality.
+- Value bundles: learnable value geometry without pretending values are scalar rewards.
+- Bearer maps: preserve what values apply to, not merely the words used for them.
+- Transport hierarchy: distinguish semantic, bundle, bearer, correction, and successor continuity.
+- Correction-channel integrity: ensure human correction has uncaptured causal force.
+- Successor tests: require delegates, copies, replacements, and self-modifications to inherit the relevant invariants.
+- Selection basins: make institutions select for correction-preserving systems.
+- Adversarial verifiability: ask whether faking the safety signal is cheap.
+- Value-update envelope: preserve the conditions for legitimate value change, not a fixed endpoint.
+
+## Review Guidance For LLMs
+
+If asked to review rather than edit, read `REVIEWING_FOR_AGENTS.md` first.
+
+Good reviews should:
+
+- lead with issues, risks, and missing support;
+- distinguish style issues from claim-structure issues;
+- check proof / counterexample / bridge / conjecture / open-problem status;
+- cite concrete files and sections;
+- check whether apparent narrative claims are backed by machinery elsewhere in the book;
+- avoid overlooking the book's deeper delivered results and existing-work subsumptions.
+- note whether the author already acknowledges an issue before presenting it as a new defect.
+
+Do not treat this as a generic alignment essay. The manuscript contains specific machinery: boundary discovery, bundle/bearer transport, vector CCI, successor invariants, selection envelopes, cost-of-faking tests, and a Lean dependency spine.
+
+## Existing-Work Subsumptions To Notice
+
+The book often treats familiar proposals as projections, special cases, or separable subchannels of stronger invariants:
+
+- incentive diagrams and agent tests become boundary-relative;
+- CIRL and reward inference become local projections of bundle/bearer/correction preservation;
+- shutdown and interruptibility become one-bit correction projections;
+- low impact, relative reachability, AUP, and quantilization separate from trajectory-level correction-channel integrity;
+- broad corrigibility becomes a dynamical correction invariant;
+- debate can preserve local truth while losing the judge's correction channel;
+- amplification can improve local supervision while failing global correction-channel contraction;
+- ELK is a latent readout subchannel, not full correction uptake or successor preservation.
+
+## Empirical Evidence And Source Repos
+
+Do not judge empirical support only from manuscript prose. The book is a synthesis over related project work and mirrored context extracts; empirical validation is work in progress. Check source maps and related work:
+
+- `metadata/source-canon.md`
+- `context/extracts/`
+- `references/internal-project-sources.bib`
+
+Related repositories:
+
+- `https://github.com/GunnarZarncke/agency-detect`
+  - Unsupervised agent discovery, operational agent boundaries, capability, intentional stance, attractor basins, successors.
+- `https://github.com/GunnarZarncke/brain-to-values`
+  - Value bundles, free-energy loops, unit-of-caring, consciousness / agency backbone.
+
+Local sibling paths, when available:
+
+- `../agency-detect/docs/papers/`
+- `../brain-to-values/papers/`
+
+If a related repository, PDF, or context extract is unavailable, say so instead of guessing.
+
+## Formal Spine
+
+The Lean code in `formal/` is dependency hygiene. It checks logical/arithmetic steps and finite separations. It does not prove that deployed systems satisfy the empirical bridge assumptions.
+
+Key distinction:
+
+- proof: a checked logical/arithmetic theorem;
+- counterexample: a finite separation showing one condition does not imply another;
+- bridge: an empirical or philosophical assumption marked as an axiom.
+
+## Anti-Patterns
+
+- Do not flatten the book into standard alignment categories.
+- Do not treat Lean as proving deployed safety.
+- Do not treat CEV, corrigibility, ELK, debate, quantilization, low impact, shutdownability, or reward learning as identical to the book's invariants.
+- Do not add speculative terminology.
+- Do not rewrite source-canon files under `context/`.
+- Do not skip What Would Change This View sections.
+- Do not miss deep results because they are embedded in a long narrative.
+
+## Build
+
+- `make check` - structure and citation checks.
+- `./build.sh` - build the PDF at `dist/pdf/towards-superintelligence-alignment.pdf`.
+- `lake -d formal build` - build the Lean proof spine.

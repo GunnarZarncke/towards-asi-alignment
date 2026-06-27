@@ -204,12 +204,13 @@ def write_part_roadmap(
         start = part_entries[0].order
         end = part_entries[-1].order
         summary = parts_meta[part_key]["summary"]
+        summary_latex = parts_meta[part_key].get("summary_latex")
         roman = ROMANS[part_index - 1]
         ch_range = format_chapter_range(start, end)
 
         lines.append(
             rf"\item[\textbf{{Part~{roman} --- {latex_escape(part_title)}}}] "
-            rf"Chs.~{ch_range}. {latex_escape(summary)}"
+            rf"Chs.~{ch_range}. {summary_latex if summary_latex is not None else latex_escape(summary)}"
         )
 
     lines.extend([r"\end{description}", ""])

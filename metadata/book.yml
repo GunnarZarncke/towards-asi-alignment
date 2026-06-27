@@ -280,22 +280,32 @@ chapters:
 
 parts:
   part01:
-    summary: "Reframes the alignment problem."
+    summary: "Reframes alignment as a dynamical guarantee for human-correctable processes."
+    summary_latex: "Reframes alignment as a \hyperref[sec:what-is-dynamical-guarantee]{dynamical guarantee} for human-correctable processes."
   part02:
-    summary: "Develops a non-anthropomorphic account of agents and boundaries."
+    summary: "Develops boundary discovery: find the real optimizer, not just the model; makes incentive tests boundary-relative."
+    summary_latex: "Develops \hyperref[sec:boundary-finding-procedure]{boundary discovery}: find the real optimizer, not just the model; makes \hyperref[sec:ontology-trap]{incentive tests boundary-relative}."
   part03:
-    summary: "Treats capability as boundary information and studies growth."
+    summary: "Treats capability as boundary information that can outrun task ontology."
+    summary_latex: "Treats capability as \hyperref[sec:task-agnostic-not-ontology-free]{boundary information that can outrun task ontology}."
   part04:
-    summary: "Introduces value bundles."
+    summary: "Introduces value bundles: learnable geometry plus fragile tradeoffs and bearers."
+    summary_latex: "Introduces value bundles: \hyperref[sec:four-part-definition]{learnable geometry} plus fragile tradeoffs and \hyperref[sec:bundle-bearer-map]{bearers}."
   part05:
-    summary: "Upgrades goal inference into bundle and bearer inference."
+    summary: "Upgrades goal inference into transport, subsuming reward/CIRL-style inference into bundle and bearer preservation."
+    summary_latex: "Upgrades goal inference into \hyperref[sec:four-layers-transport]{transport}, subsuming \hyperref[sec:scalar-reward-hides-correction]{reward/CIRL-style inference} into bundle and bearer preservation."
   part06:
-    summary: "Develops correction channels and extrapolative correction processes."
+    summary: "Shows correction is not feedback; vector CCI subsumes shutdown, interruptibility, low impact, quantilization, and corrigibility projections."
+    summary_latex: "Shows \hyperref[sec:why-correction-not-feedback]{correction is not feedback}; \hyperref[sec:correction-channel-integrity-def]{vector CCI} subsumes shutdown, interruptibility, low impact, quantilization, and corrigibility projections."
   part07:
-    summary: "Studies successors and conserved properties."
+    summary: "Makes successor creation the central inheritance test for alignment."
+    summary_latex: "Makes \hyperref[sec:successor-alignment-condition-ch28]{successor creation} the central inheritance test for alignment."
   part08:
-    summary: "Analyzes socio-technical selection and attractor basins."
+    summary: "Tracks selection, preservation envelopes, correction parasites, and attractors."
+    summary_latex: "Tracks selection, \hyperref[sec:minimal-model-selection-ch32]{preservation envelopes}, \hyperref[sec:operational-definition-ch34]{correction parasites}, and attractors."
   part09:
-    summary: "Turns the framework into adversarial measurement, safety cases, and open cruxes."
+    summary: "Turns the framework into adversarial measurement, subsuming debate, amplification, and ELK as narrower subchannels."
+    summary_latex: "Turns the framework into adversarial measurement, subsuming \hyperref[sec:debate-judge-state-control-ch27]{debate}, \hyperref[sec:amplification-contraction-ch38]{amplification}, and \hyperref[sec:cci-verifiability-example-ch39b]{ELK} as narrower subchannels."
   part10:
-    summary: "Reaches the philosophical limit: value change, human--AI merger, and what cannot be solved technically."
+    summary: "Reaches the civilizational limit: preserve the value-update envelope, not a final answer."
+    summary_latex: "Reaches the civilizational limit: preserve the \hyperref[sec:role-technical-alignment-ch41]{value-update envelope}, not a final answer."

@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-28 | Promote gems in part openers | [2026-06-28-promote-gems-part-openers.md](2026-06-28-promote-gems-part-openers.md) |
 | 2026-06-28 | Update operator cleanup | [2026-06-28-update-operator-cleanup.md](2026-06-28-update-operator-cleanup.md) |
 | 2026-06-28 | Update operator refactor | [2026-06-28-update-operator-refactor.md](2026-06-28-update-operator-refactor.md) |
 | 2026-06-28 | CCI calibration vectorization | [2026-06-28-cci-calibration-vectorization.md](2026-06-28-cci-calibration-vectorization.md) |
