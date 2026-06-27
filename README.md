@@ -65,6 +65,7 @@ For agent session continuity, see `drafts/conversation-summaries/INDEX.md`.
 ./clean.sh          # or: make clean
 make check          # structure + citation key checks
 make wordcount      # approximate chapter word counts
+make bookstats      # markdown report → metadata/book-stats.md
 make todos          # list [STUB] / TODO markers
 ```
 

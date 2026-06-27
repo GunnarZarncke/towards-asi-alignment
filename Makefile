@@ -1,4 +1,4 @@
-.PHONY: all pdf clean check wordcount todos
+.PHONY: all pdf clean check wordcount bookstats todos
 
 all: pdf
 
@@ -15,6 +15,9 @@ check:
 
 wordcount:
 	python3 scripts/wordcount.py
+
+bookstats:
+	python3 scripts/book_stats.py
 
 todos:
 	python3 scripts/extract_todos.py

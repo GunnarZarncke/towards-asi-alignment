@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-27 | Book stats tool | [2026-06-27-book-stats-tool.md](2026-06-27-book-stats-tool.md) |
 | 2026-06-27 | Grounding viability integration | [2026-06-27-grounding-viability-integration.md](2026-06-27-grounding-viability-integration.md) |
 | 2026-06-27 | Grounding viability plan | [2026-06-27-grounding-viability-plan.md](2026-06-27-grounding-viability-plan.md) |
 | 2026-06-27 | Lean UAD cooperation graph | [2026-06-27-lean-uad-cooperation-graph.md](2026-06-27-lean-uad-cooperation-graph.md) |
