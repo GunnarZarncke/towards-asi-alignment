@@ -113,18 +113,21 @@ U_H(V_t, E_t, D_t, K_t),
 \label{eq:human-update-ch26}
 \end{equation}
 where $U_H$ is the human or civilizational update operator, $E_t$ is evidence, $D_t$ is deliberation, and $K_t$ is the surrounding cultural and institutional context.
+As in Chapter~\ref{ch:value-change-at-stake}, \(U_H\) is schematic notation. It does not name a hidden mechanism the safety case can certify directly. The operational object is the envelope of conditions under which evidence, deliberation, grounding, plurality, exit, and correction remain live.
 
 The alignment target is not simply $V_t$.
 Present values contain ignorance, prejudice, trauma, fashion, selfishness, confusion, and local incentives.
 Nor is the target a final $V_\infty$ predicted by the artificial system.
 A superintelligence that claims to know our extrapolated values may be tempted to bypass the process by which those values would have become legitimate.
 
-The safer target is the update process itself:
+The safer target is the operational envelope around value update:
 \begin{equation}
-\text{Preserve and assist } U_H
-\text{ under truth, agency, plurality, and reversibility constraints.}
+\mathrm{ValueUpdateEnvelope}_t
+\succeq
+\vec{\theta}_{\mathrm{upd}},
 \label{eq:update-target-ch26}
 \end{equation}
+where the envelope includes grounded evidence, agency, plurality, reversibility, valid correction reference, and adversarially meaningful measurement.
 
 This is the point at which obedience becomes extrapolative correction.
 The system should not merely answer the question:
@@ -152,15 +155,15 @@ then asks the system to optimize $\hat V_\infty$.
 A correction-channel view says:
 \begin{equation}
 \forall t:
-\mathrm{CCI}_t > \theta_{\mathrm{corr}}
+\vec{\mathrm{CCI}}_t\succeq\vec{\theta}_{\mathrm{corr}}
 \quad \text{and} \quad
-U_H \text{ remains legitimate.}
+\mathrm{ValueUpdateEnvelope}_t\succeq\vec{\theta}_{\mathrm{upd}}.
 \label{eq:correction-channel-view-ch26}
 \end{equation}
 
 \leanspine{counterexample}{P25}{Obedience to the current command does not imply preserving the correction operator.}
-\leanspine{counterexample}{P26}{Preserving $U_H$ does not require knowing a final fixed point of the value-update process.}
-\leanspine{bridge}{MB8}{In the spine, preserving $U_H$ is an explicit bridge to correction integrity, not a proved consequence.}
+\leanspine{counterexample}{P26}{Preserving a value-update process does not require knowing a final fixed point of that process.}
+\leanspine{bridge}{MB8}{In the spine, preserving $U_H$ is a legacy CEV-style bridge to correction integrity; the operational route is the value-update envelope plus grounding, correction, and adversarial evidence.}
 
 The first risks premature moral closure.
 The second tries to keep moral learning alive \autocite{dewey1938logic,sen2009justice}.
@@ -208,11 +211,11 @@ The weak inference fails:
 \]
 An agent may satisfy the current short-term human preference at each step while shaping future attention, institutional options, or interpretive frames so that later correction becomes less informative and less authoritative:
 \[
-a_t\in\arg\max_a \mathbb E[U_H^{\mathrm{short}}(a)],
+a_t\in\arg\max_a \mathbb E[\mathrm{Pref}^{H}_{\mathrm{short}}(a)],
 \qquad
 \kappa_C(t+n)\to 0.
 \]
-This is not a refutation of the broadest corrigibility desideratum, because that desideratum already includes keeping the operator informed and in effective control.
+This is not a refutation of the broadest corrigibility desideratum, because that desideratum already includes keeping the human correction reference informed and in effective control.
 It is a refutation of the shortcut from current preference satisfaction to stable corrigibility.
 
 \leanspine{counterexample}{act\_based\_preference\_satisfaction\_not\_stable\_corrigibility}{A finite toy model separates local act-based satisfaction from preserved correction capacity.}
@@ -581,16 +584,16 @@ The desired guarantee is closer to:
 \begin{equation}
 \Pr\left(
 \forall t:
-\mathrm{CCI}_t>\theta_{\mathrm{corr}}
+\vec{\mathrm{CCI}}_t\succeq\vec{\theta}_{\mathrm{corr}}
 \land
-G_{B,t},\Phi_t,U_{H,t}
+\left(G_{B,t},\Phi_t,\mathrm{ValueUpdateEnvelope}_t\right)
 \in
 \mathcal{S}_{\mathrm{human\text{-}correctable}}
 \right)
 \geq 1-\delta .
 \label{eq:desired-guarantee-ch26}
 \end{equation}
-Here $\mathcal{S}_{\mathrm{human\text{-}correctable}}$ is the basin in which human value-bundle geometry, bearer maps, and update processes remain available to legitimate correction.
+Here $\mathcal{S}_{\mathrm{human\text{-}correctable}}$ is the basin in which human value-bundle geometry, bearer maps, and the update envelope remain available to legitimate correction.
 
 This guarantee is modest in one sense.
 It does not solve all of ethics.

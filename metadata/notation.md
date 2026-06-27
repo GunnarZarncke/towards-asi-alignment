@@ -107,7 +107,7 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\mathrm{SelfControlGap}(A)$ | Self-control minus correction demand | ch30 |
 | $L,M,R,O_{\mathrm{trans}}$ | CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss | ch25 |
 | $\lambda_L,\lambda_M,\lambda_R,\lambda_O$ | CCI penalty weights | ch25 |
-| $U_H$ | Human value-update operator | ch04 |
+| $U_H$ | Schematic human value-update notation; operational certification uses `ValueUpdateEnvelope` / human-correctable update conditions | ch04 |
 | $U_S$ | System correction-update operator | ch24 |
 | $V_t$ | Value-state tuple (full object in ch04; chapters may project) | ch04 |
 | $C_H$ | Human correction capacity (component of $V_t$) | ch04 |
@@ -137,7 +137,7 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $GLI$ | Goal-laundering index | ch37 |
 | $\mu_E(A)$ | Deployment / control mass in selection environment $E$ | ch32 |
 | $\mathrm{Fit}_E(A)$ | Fitness (log-rate of $\mu_E$ growth) | ch32 |
-| $P(A)$ | Preservation score | ch32 |
+| $\vec{\Pi}(A)$ | Preservation envelope / vector-status conditions for selection alignment | ch32 |
 | $\kappa_{\mathrm{sel}}(E,A,h)$ | Effective selection capacity through handle $h$ | ch32 |
 
 ### Conventions

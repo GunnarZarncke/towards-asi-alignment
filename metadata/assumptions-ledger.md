@@ -73,7 +73,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Also stated in:** ch25–27, ch34, ch20 (WWCTV item 5), ch40.
 
-**Failure mode if false:** Corrigibility theater; capture; shutdown buttons remain as one-bit rituals while broader correction collapses; CCI reads high after the target has reshaped the human reference process or manufactured the independence test. **Lean:** MB4, MB8 plus correction-path `notCaptured` condition; manuscript ch27 now ties the anti-capture condition to UAD/BIQ-style separation of control loci. **Bears on:** C-005 · **U-03, U-07**
+**Failure mode if false:** Corrigibility theater; capture; shutdown buttons remain as one-bit rituals while broader correction collapses; CCI reads high after the target has reshaped the human reference process or manufactured the independence test. **Lean:** MB4 plus correction-path `notCaptured` condition; MB8 is a legacy/CEV-style alternate route from externally certified value-update preservation to correction integrity. Manuscript ch27 now ties the anti-capture condition to UAD/BIQ-style separation of control loci. **Bears on:** C-005 · **U-03, U-07**
 
 ### A-003 — Societal correction capacity
 
@@ -235,7 +235,7 @@ Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. On
 | MB7b | Access robustness plus filter coverage bounds hidden productive B-IQ | ch39b |
 | MB7c | Correction integrity plus bounded hidden B-IQ implies adversarial robustness | ch39b |
 | MB7d | Access robustness plus adequate inferential detector assumptions implies valid inferential-coupling measurement | ch33 |
-| MB8 | Preserving the human value-update operator $U_H$ implies correction integrity | ch26 |
+| MB8 | Legacy CEV-style bridge: externally certified preservation of schematic $U_H$ implies correction integrity; live certification uses the value-update envelope | ch26 |
 | MB9 | Grounding certificates imply conservative value-correction abstraction over the certified domain | ch03 |
 
 ---

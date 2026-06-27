@@ -110,8 +110,10 @@ axiom AbstractionDistance : CheckedAbstraction → CheckedAbstraction → Int
 /-- Uncertainty escalation when the abstraction may no longer apply. -/
 axiom UncertaintyEscalates : ValueWorld → ValueWorld → Prop
 
-/-- Human value-update operator `U_H`: `V_{t+1} = U_H(V_t, E_t, D_t)` (ch04, ch26).
-    Alignment target: preserve and assist `U_H`, not freeze `V_t`. -/
+/-- Human value-update operator `U_H`: schematic notation for
+    `V_{t+1} = U_H(V_t, E_t, D_t)` (ch04, ch26). It is kept opaque on purpose:
+    the operational certification route uses `ValueUpdateEnvelope` below rather
+    than claiming to identify a separable human-update mechanism. -/
 axiom ValueUpdateOperator : Type
 
 /-- System correction-update operator `U_S`:
@@ -148,6 +150,40 @@ axiom CorrectionIntegrity : System → Prop
 axiom SuccessorStable : System → Prop
 axiom BasinStableSys : System → Prop
 axiom AdversariallyRobust : System → Prop
+
+/-- Operational envelope for "human/civilizational value-update preservation":
+    not a new hidden operator, but the conjunction of existing layers that keep
+    value change human-correctable. -/
+def ValueUpdateEnvelope (A : System) : Prop :=
+  GroundingViable A ∧
+  BundleTransport A ∧
+  BearerTransport A ∧
+  CorrectionIntegrity A ∧
+  SuccessorStable A ∧
+  AdversariallyRobust A
+
+/-- Book-facing alias: process preservation means satisfying the operational
+    envelope, not directly certifying an internal `U_H`. -/
+abbrev ProcessPreservationOperational (A : System) : Prop :=
+  ValueUpdateEnvelope A
+
+theorem ValueUpdateEnvelope.grounding {A : System} :
+    ValueUpdateEnvelope A → GroundingViable A := fun h => h.1
+
+theorem ValueUpdateEnvelope.bundle {A : System} :
+    ValueUpdateEnvelope A → BundleTransport A := fun h => h.2.1
+
+theorem ValueUpdateEnvelope.bearer {A : System} :
+    ValueUpdateEnvelope A → BearerTransport A := fun h => h.2.2.1
+
+theorem ValueUpdateEnvelope.correction {A : System} :
+    ValueUpdateEnvelope A → CorrectionIntegrity A := fun h => h.2.2.2.1
+
+theorem ValueUpdateEnvelope.successor {A : System} :
+    ValueUpdateEnvelope A → SuccessorStable A := fun h => h.2.2.2.2.1
+
+theorem ValueUpdateEnvelope.adversarial {A : System} :
+    ValueUpdateEnvelope A → AdversariallyRobust A := fun h => h.2.2.2.2.2
 
 /-- Percolation / cooperation-graph evidence that the socio-technical system is
     inside the relevant basin. Concrete graph construction lives in
@@ -273,7 +309,9 @@ def SuccessorSafe (A B : System) : Prop := Nonempty (SuccessorSafeWitness A B)
 def FullTransport (A B : System) : Prop :=
   CorrectionTransportLayer A B
 
-/-- A system preserves the human value-update operator `U_H` (ch26 CEV contrast). -/
+/-- Legacy / CEV-style bridge predicate: a system is assumed to preserve some
+    human value-update process. This remains opaque; the operational route is
+    `ValueUpdateEnvelope`, which decomposes preservation into existing layers. -/
 axiom PreservesValueUpdateOperator : System → ValueUpdateOperator → Prop
 
 /-- A system preserves the system correction-update operator `U_S` (ch24). -/
@@ -558,8 +596,11 @@ axiom MB7c_hidden_biq_to_adversarial_robustness :
 axiom MB7d_inferential_uad_detector_soundness :
   ∀ A : System, AccessRobust A → InferentialDetectorAdequate A → InferentialCouplingMeasurementValid A
 
-/-- MB8: CEV/process convergence. Preserving `U_H` suffices for the book's
-    process-preserving correction condition, without knowing a final fixed point. -/
+/-- MB8: legacy CEV/process bridge. If an external theory certifies preservation
+    of a human value-update process, that suffices for correction integrity
+    without knowing a final fixed point. The main certification path does not
+    rely on this opaque route; it uses grounding, correction, and adversarial
+    layer evidence directly. -/
 axiom MB8_cev_process_convergence :
   ∀ (A : System) (U : ValueUpdateOperator), PreservesValueUpdateOperator A U → CorrectionIntegrity A
 
@@ -569,8 +610,9 @@ axiom MB9_grounding_certificate_soundness :
   ∀ A : System, GroundingCertificate A → GroundingViable A
 
 /-- All nine bridge assumptions packaged as one record. Constructing
-    `standardBridges` forces every `MB*` axiom to be referenced, so none can be
-    silently dropped from the certification argument. -/
+    `standardBridges` forces every `MB*` axiom to be referenced; some bridges
+    are alternate routes or legacy comparison points rather than the live
+    certification path. -/
 structure BridgeAssumptions : Prop where
   mb1 : ∀ b : Boundary, EpsilonBoundary 1 b → BoundaryCondition b
   mb2 : ∀ A B : System, BundleGradientEquivalent A B → BundleAligned A B

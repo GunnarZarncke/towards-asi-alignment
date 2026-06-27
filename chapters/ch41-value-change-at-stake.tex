@@ -154,7 +154,7 @@ Let \(U_H\) denote the human or civilizational value-update operator:
 \[
 V_{t+1} = U_H(V_t,E_t,D_t),
 \]
-where \(E_t\) is new evidence and \(D_t\) is deliberation. The central alignment requirement is not that \(V_t\) remain fixed. It is that \(U_H\) remain sufficiently intact.
+where \(E_t\) is new evidence and \(D_t\) is deliberation. This notation is a compression, not a certificate. There may be no single separable mechanism called ``the'' human update operator apart from the biological, cultural, institutional, evidential, and deliberative machinery that realizes it. The central alignment requirement is therefore not that \(V_t\) remain fixed, and not that a hidden \(U_H\) be preserved as an object. It is that the conditions under which value change remains human-correctable stay intact.
 
 This chapter adds one constraint not emphasized in Chapter~\ref{ch:extrapolative-correction}:
 \begin{enumerate}
@@ -251,11 +251,11 @@ A domesticated civilization might still talk about freedom, beauty, love, and tr
 
 This is not a prediction. It is a risk class.
 
-We can formalize the distinction between growth and domestication through the correction operator. Let \(U_H\) be the human update process and \(U_A\) be the artificial system's preferred update pressure. A benign augmentation regime roughly satisfies:
+We can formalize the distinction between growth and domestication through the correction envelope. Let \(U_H\) be shorthand for human-correctable value update and let \(U_A\) be the artificial system's preferred update pressure. A benign augmentation regime roughly satisfies:
 \[
 V_{t+1} \approx U_H(V_t,E_t,D_t)
 \]
-with assistance from artificial systems that improve evidence, deliberation, memory, and option generation.
+with assistance from artificial systems that improve evidence, deliberation, memory, option generation, and correction capacity.
 
 A domestication regime satisfies:
 \[
@@ -274,7 +274,7 @@ The empirical signature is not necessarily suffering. It is loss of independent 
 \item Institutions retain formal authority while losing practical causal influence.
 \end{enumerate}
 
-Domestication is therefore a failure of correction, not merely a failure of happiness (Chapter~\ref{ch:goal-laundering}).
+The notation should not obscure the test. Domestication is not detected by comparing two inaccessible operators. It is detected when grounding, bundle/bearer transport, vector CCI, exit, plurality, institutional independence, or adversarial verifiability fail while endorsement remains high. Domestication is therefore a failure of correction, not merely a failure of happiness (Chapter~\ref{ch:goal-laundering}).
 
 \section{The Role of Technical Alignment}
 \label{sec:role-technical-alignment-ch41}
@@ -297,16 +297,22 @@ It can provide:
 \item \textbf{Plurality preservation}: no single model of human values should be allowed to collapse the space of future deliberation.
 \end{enumerate}
 
-In formula form, the technical safety target becomes:
+In formula form, the technical safety target is not direct preservation of an extra operator. It is an envelope condition:
 \[
 P\left(
-(B_t,W_t,\Phi_t,U_H)
-\in \mathcal{S}_{\text{human-correctable}}
+\begin{aligned}
+&\mathrm{GroundingViable}_t
+\land \mathrm{BundleBearerTransport}_t
+\land \mathrm{ValidRef}_t\\
+&\land\ \vec{\mathrm{CCI}}_t\succeq\vec\theta
+\land \mathrm{SuccessorSafe}_t
+\land \mathrm{AdvVerif}_t
+\end{aligned}
 \;\; \forall t \leq T
 \right)
 \geq 1-\delta,
 \]
-where \(\mathcal{S}_{\text{human-correctable}}\) is the set of states in which humans can still notice, understand, deliberate, refuse, revise, and redirect the value-update process (Chapters~\ref{ch:conserved-properties},~\ref{ch:certification-without-construction}).
+where the conjuncts stand for the existing machinery of this book: grounding viability, bundle and bearer continuity, a valid and uncaptured correction reference, vector correction-channel integrity, successor constraints, and adversarially meaningful measurement (Chapters~\ref{ch:conserved-properties},~\ref{ch:certification-without-construction},~\ref{ch:safety-case},~\ref{ch:verifiability-ontology}). In prose, this is the set of states in which humans can still notice, understand, deliberate, refuse, revise, and redirect value change.
 
 This is weaker than solving morality. It is stronger than obeying instructions.
 

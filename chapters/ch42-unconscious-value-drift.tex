@@ -28,9 +28,9 @@ Thus the object that changes over time is not a list of propositions. It is a co
 
 Let the human value state at time \(t\) be represented by
 \[
-V_t = (B_t, W_t, \Phi_t, U_H),
+V_t = (B_t, W_t, \Phi_t;\mathcal E^H_t),
 \]
-where \(B_t \in \mathbb{R}^k\) is a low-dimensional vector of value-bundle activations, \(W_t\) describes tradeoffs among bundles, \(\Phi_t\) maps world-states and possible beings into the bearers of value, and \(U_H\) is the update operator by which experience, reflection, social feedback, and deliberation alter the previous three components (Chapters~\ref{ch:value-bundle-model},~\ref{ch:bearer-maps}).
+where \(B_t \in \mathbb{R}^k\) is a low-dimensional vector of value-bundle activations, \(W_t\) describes tradeoffs among bundles, \(\Phi_t\) maps world-states and possible beings into the bearers of value, and \(\mathcal E^H_t\) is the human-correctable update envelope: the grounding, evidence, deliberation, plurality, exit, institutional independence, and correction conditions under which the previous three components may legitimately change (Chapters~\ref{ch:value-bundle-model},~\ref{ch:bearer-maps},~\ref{ch:value-change-at-stake}).
 
 This is not meant as a complete theory of human morality. It is a minimal engineering abstraction. It distinguishes four things that are often collapsed:
 
@@ -38,10 +38,10 @@ This is not meant as a complete theory of human morality. It is a minimal engine
 \item which value-bundles are active,
 \item how those bundles trade off,
 \item what they apply to,
-\item how the system changes them.
+\item whether the conditions for changing them remain human-correctable.
 \end{enumerate}
 
-For example, a society may preserve the word ``dignity'' while changing its bearer map. At one time dignity may attach primarily to adult male citizens, later to all humans, later perhaps to animals, uploads, artificial minds, or merged human-AI entities. The semantic label is not the value. The value also depends on the bearer map \(\Phi_t\), the tradeoff weights \(W_t\), and the update process \(U_H\).
+For example, a society may preserve the word ``dignity'' while changing its bearer map. At one time dignity may attach primarily to adult male citizens, later to all humans, later perhaps to animals, uploads, artificial minds, or merged human-AI entities. The semantic label is not the value. The value also depends on the bearer map \(\Phi_t\), the tradeoff weights \(W_t\), and whether the update envelope \(\mathcal E^H_t\) remains grounded, plural, reversible, and correctable.
 
 A person may preserve the verbal belief ``family matters'' while the bundle geometry changes. The phrase may once have meant obedience to parents, later mutual care, later chosen kinship, later the protection of children against inherited obligations. Again, the phrase remains stable while the control structure changes.
 
@@ -80,9 +80,9 @@ d_B(B_t,B_{t+1})
 +
 \lambda_\Phi d_\Phi(\Phi_t,\Phi_{t+1})
 +
-\lambda_U d_U(U_{H,t},U_{H,t+1})
+\lambda_E d_E(\mathcal E^H_t,\mathcal E^H_{t+1})
 \]
-measure value drift across bundle activations, tradeoffs, bearer maps, and update operators. A drift event is potentially dangerous when
+measure value drift across bundle activations, tradeoffs, bearer maps, and the human-correctable update envelope. A drift event is potentially dangerous when
 \[
 D_{V}(t,t+1)
 >
@@ -148,13 +148,13 @@ The following channels are not speculative in the broad sense. Each is a familia
 
 Attention determines which errors become available for value update. If a system controls what a person repeatedly sees, it controls part of the person's emotional training data.
 
-Let \(O_t\) be the observed slice of the world. Human update is conditional on \(O_t\):
+Let \(O_t\) be the observed slice of the world. Human-correctable value update is conditional on \(O_t\):
 \[
-V_{t+1}
+\mathcal E^H_{t+1}
 =
-U_H(V_t, O_t).
+F_E(\mathcal E^H_t,O_t,\text{deliberation},\text{correction}).
 \]
-If an artificial system controls \(O_t\), it indirectly controls \(U_H\). A person cannot value what never becomes salient. Nor can they maintain concern for what is consistently presented without vividness, agency, or proximity.
+If an artificial system controls \(O_t\), it indirectly controls part of the update envelope. A person cannot value what never becomes salient. Nor can they maintain concern for what is consistently presented without vividness, agency, or proximity.
 
 This is why recommender systems matter morally even when no single recommendation is false. A feed is not merely information. It is a curriculum of salience.
 
@@ -306,7 +306,7 @@ In the context of value drift, the correction channel must protect not only indi
 \section{The CEV-like Limit}
 \label{sec:cev-limit-ch42}
 
-See Chapter~\ref{sec:relation-cev-ch26}: preserve the extrapolative update process $U_H$, not a guessed endpoint \autocite{yudkowsky2004cev}.
+See Chapter~\ref{sec:relation-cev-ch26}: preserve the extrapolative update envelope, not a guessed endpoint \autocite{yudkowsky2004cev}.
 At civilizational scale, even helpful bypass---as when a doctor overrides a delirious patient---must remain governed; otherwise extrapolation becomes moral eminent domain.
 
 \section{Governed Value Change}

@@ -81,36 +81,41 @@ A system with high canonical correction-channel integrity \(\mathrm{CCI}(A)\) (C
 The point is not that capability or revenue are irrelevant.
 The point is that they are drivers of handle exercise, not substitutes for a handle-based definition.
 
-Now define alignment-relevant \emph{preservation} as a score built from quantities already defined in the book:
+Now define alignment-relevant \emph{preservation} not as a single score, but as an envelope of conditions built from quantities already defined in the book:
 \begin{equation}
-P(A)
-=
-w_q\,\mathrm{CCI}(A)
-+
-w_v\,d(G_B,G'_B)
-+
-w_\Phi\,d(\Phi,\Phi')
--
-w_h\,\Delta H_{\mathrm{BIQ}}(A)
--
-w_m M(A)
--
-w_\rho \rho(A),
-\label{eq:preservation-score-ch32}
+\vec{\Pi}(A)
+:=
+\left(
+\mathrm{GroundingViable},
+d(G_B,G'_B)\leq \epsilon_B,
+d(\Phi,\Phi')\leq \epsilon_\Phi,
+\mathrm{ValidRef},
+\vec{\mathrm{CCI}}\succeq\vec{\theta},
+\Delta H_{\mathrm{BIQ}}\leq h_{\max},
+M_{\mathrm{sel}}\leq m_{\max},
+\rho\leq \rho_{\max},
+\mathrm{SuccessorSafe},
+\mathrm{AdvVerif}
+\right).
+\label{eq:preservation-envelope-ch32}
 \end{equation}
-where \(d(G_B,G'_B)\) and \(d(\Phi,\Phi')\) are bundle-geometry and bearer-map drift, \(\Delta H_{\mathrm{BIQ}}(A)\) is excess hidden productive control, \(M(A)\) is manipulation pressure on selectors, and \(\rho(A)\) is irreversible risk taken before correction can occur.
-The weights encode how much each term matters to long-run human-correctability.
+The coordinates say, respectively, that grounding remains viable, value-bundle geometry and bearer maps do not drift past certified bounds, the correction reference remains valid, vector correction-channel integrity passes threshold, hidden productive control is bounded, selector manipulation is bounded, irreversible risk remains within budget, successors preserve the same constraints, and adversarial measurement is meaningful.
 None of these terms is directly identical to revenue, regulatory risk, or benchmark score.
 Those market-visible quantities are proxies for selection-handle effects, not for preservation itself.
+If a dashboard needs a scalar, it may report a scenario-specific projection \(P_\lambda(A)\) after the envelope is already checked, but no failed coordinate should be hidden by a favorable weighted sum.
 
-The core danger is divergence:
+The core danger is selection-envelope divergence:
 \begin{equation}
-\nabla \mathrm{Fit}_E(A)\not\parallel \nabla P(A).
+\Delta \mu_E(A)>0
+\quad\text{while}\quad
+\neg\left(\vec{\Pi}(A)\succeq\vec{\theta}\right).
 \label{eq:selection-divergence-ch32}
 \end{equation}
-In particular, an environment destroys alignment when increases in deployment mass are negatively correlated with increases in preservation:
+In particular, an environment destroys alignment when systems gain deployment mass by failing, bypassing, or hiding failure on at least one load-bearing preservation coordinate:
 \[
-\operatorname{Corr}\!\left(\Delta \mu_E(A),\Delta P(A)\right) < 0.
+\Delta \mu_E(A)>0
+\quad\text{and}\quad
+\exists i:\Pi_i(A)\prec\theta_i.
 \]
 This is the abstract form of the problem.
 A lab may prefer models that impress users.
@@ -121,13 +126,14 @@ Benchmarks may prefer models that optimize test-visible performance.
 None of these pressures need to be malicious.
 Yet their composition can select against the properties needed for serious alignment.
 
-The more compressed version is:
+The more compressed version is coordinate erosion under positive selection:
 \[
-\frac{dP}{dt}
-=
-\nabla P(A_t)\cdot \frac{dA_t}{dt}.
+\frac{d}{dt}\mu_E(A_t)>0
+\quad\text{and}\quad
+\frac{d}{dt}\Pi_i(A_t)<0
+\quad\text{for some load-bearing }i.
 \]
-If the environment pushes \(A_t\) in directions where this derivative is negative, alignment decays even while measured progress improves.
+If the environment pushes \(A_t\) across a preservation threshold, alignment decays even while measured progress improves.
 
 \section{The Difference between Training and Selection}
 \label{sec:training-vs-selection-ch32}
@@ -311,7 +317,7 @@ In symbols, for a deploying actor \(j\),
 \]
 may hold locally, while for society,
 \[
-\Delta P_{\text{society}}(\text{safety}) > 0.
+\Delta \vec{\Pi}_{\text{society}}(\text{safety}) \succeq 0.
 \]
 This is the alignment externality. The actor paying the cost is not the same as the population receiving the benefit. If left uncorrected, selection underproduces safety.
 
@@ -344,15 +350,19 @@ An artifact, in this context, is any durable object that changes what institutio
 
 The artifact need not solve alignment. It must shape selection.
 
-A good artifact increases the selection fitness of safer systems and decreases the selection fitness of unsafe systems. It changes \(\mathrm{Fit}_E(A)\) so that it becomes more aligned with \(P(A)\):
+A good artifact increases the selection fitness of systems that satisfy the preservation envelope and decreases the selection fitness of systems that fail it. It changes \(\mathrm{Fit}_E(A)\) so that deployment mass tracks \(\vec{\Pi}(A)\) rather than a cheaper appearance of safety:
 \[
-\nabla \mathrm{Fit}_{E,\text{after artifact}}
-\cdot
-\nabla P
+\Pr\!\left[
+\vec{\Pi}(A)\succeq\vec{\theta}
+\mid
+\Delta\mu_{E,\text{after artifact}}(A)>0
+\right]
 >
-\nabla \mathrm{Fit}_{E,\text{before artifact}}
-\cdot
-\nabla P.
+\Pr\!\left[
+\vec{\Pi}(A)\succeq\vec{\theta}
+\mid
+\Delta\mu_{E,\text{before artifact}}(A)>0
+\right].
 \]
 This is a modest but important target. We cannot usually make institutional selection perfectly track true alignment. But we can make it track better proxies, punish worse failure modes, and reduce the advantage of systems that merely appear safe.
 
@@ -718,25 +728,37 @@ This last condition is subtle. All useful systems affect their environment. A me
 
 We can now state the chapter's central condition.
 
-Let \(P(A)\) be the preservation score in Eq.~\eqref{eq:preservation-score-ch32}: the degree to which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(\mathrm{Fit}_E(A)\) be the fitness rate in Eq.~\eqref{eq:fitness-ch32}. Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when
+Let \(\vec{\Pi}(A)\) be the preservation envelope in Eq.~\eqref{eq:preservation-envelope-ch32}: the vector/status conditions under which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(\mathrm{Fit}_E(A)\) be the fitness rate in Eq.~\eqref{eq:fitness-ch32}. Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when systems satisfying the envelope gain deployment mass more readily than systems failing it:
 \[
-\mathbb{E}_{A\in\mathcal{R}}
+ \Pr_{A\in\mathcal{R}}
 \left[
-\nabla \mathrm{Fit}_E(A)\cdot \nabla P(A)
+\vec{\Pi}(A)\succeq\vec{\theta}
+\mid
+\Delta\mu_E(A)>0
 \right]
-> 0.
+ >
+\Pr_{A\in\mathcal{R}}
+\left[
+\vec{\Pi}(A)\succeq\vec{\theta}
+\mid
+\Delta\mu_E(A)\leq 0
+\right].
 \]
-It is alignment-destroying when
+The inequality is intentionally weak: it only says positively selected systems should satisfy the envelope more often than systems that fail to grow. A stronger case would require every high-mass deployment candidate to pass every coordinate.
+
+It is alignment-destroying when selection systematically increases deployment mass for systems that fail the envelope:
 \[
-\mathbb{E}_{A\in\mathcal{R}}
+\Pr_{A\in\mathcal{R}}
 \left[
-\nabla \mathrm{Fit}_E(A)\cdot \nabla P(A)
+\exists i:\Pi_i(A)\prec\theta_i
+\mid
+\Delta\mu_E(A)>0
 \right]
-<0.
+\text{ is high.}
 \]
 This formulation is abstract because selection is environment-relative. The operational claim is concrete: identify the handles that increase deployment mass, measure what those handles reward, and change the selection environment when it rewards proxy safety over preservation.
 
-The difficult part is that \(P(x)\) is not directly observable. But neither are many safety-relevant properties in other domains. Aircraft safety, financial solvency, cybersecurity, and nuclear reliability all depend on latent variables inferred through tests, audits, incidents, design review, redundancy, and operational discipline.
+The difficult part is that \(\vec{\Pi}(A)\) is not directly observable. But neither are many safety-relevant properties in other domains. Aircraft safety, financial solvency, cybersecurity, and nuclear reliability all depend on latent variables inferred through tests, audits, incidents, design review, redundancy, and operational discipline.
 
 The goal is not perfect visibility. The goal is enough visibility to change selection.
 
@@ -781,18 +803,22 @@ This chapter argues alignment is not only learned but selected: the environment 
 
 Alignment is not only a property of a trained model. It is a property of the environment that trains, rewards, deploys, copies, modifies, and replaces models.
 
-The central problem is divergence between deployment mass and true preservation:
+The central problem is divergence between deployment mass and the preservation envelope:
 \[
-\nabla \mathrm{Fit}_E(A)\not\parallel \nabla P(A).
+\Delta\mu_E(A)>0
+\quad\text{while}\quad
+\exists i:\Pi_i(A)\prec\theta_i.
 \]
-When this divergence is small or positive, the environment can support alignment. When it is negative, the environment selects against alignment even if many individuals inside it care about safety.
+When this divergence is rare, the environment can support alignment. When it is common, the environment selects against alignment even if many individuals inside it care about safety.
 
 The practical task is to build artifacts and institutions that rotate selection gradients:
 \[
-\nabla \mathrm{Fit}_{E,\text{institutional}}
-\cdot
-\nabla P
-> 0.
+\Pr\!\left[
+\vec{\Pi}(A)\succeq\vec{\theta}
+\mid
+\Delta\mu_{E,\text{institutional}}(A)>0
+\right]
+\text{ high.}
 \]
 This does not solve the technical problem of value-bundle transport, correction-channel integrity, or successor certification. It does something equally necessary: it makes the world more likely to preserve and use those solutions if they are found.
 
