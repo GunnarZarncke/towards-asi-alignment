@@ -162,6 +162,22 @@ structure SpineRiskWitness (A : System) (δ : Int) where
   cci_slack : Control A ≤ CCI A + δ
   self_control_slack : SelfControlGap A ≤ δ
 
+/-- Bridge-shaped witness that a passed vector CCI certificate supports the
+    scalar slack used by the numeric risk leaf. Calibration of the vector floor
+    is external; Lean only checks the arithmetic handoff to `CCI`. -/
+structure CCIVectorSupportsScalarSlack (A : System) (δ : Int) where
+  floor : Int
+  vectorFloor : CCIVectorSupportsScalarFloor A floor
+  control_le_floor_plus_delta : Control A ≤ floor + δ
+
+theorem control_le_cci_from_vector_supported_slack
+    {A : System} {δ : Int}
+    (h : CCIVectorSupportsScalarSlack A δ) :
+    Control A ≤ CCI A + δ := by
+  have hfloor : h.floor ≤ CCI A := h.vectorFloor.scalarLowerBound
+  have hctrl : Control A ≤ h.floor + δ := h.control_le_floor_plus_delta
+  omega
+
 theorem P13_risk_gap_bounded_by_cci_slack
     {A : System} {δ : Int}
     (h : Control A ≤ CCI A + δ) :
@@ -174,6 +190,12 @@ theorem risk_le_delta_of_cci_slack
     Risk A ≤ δ := by
   rw [Risk_eq_RiskGap]
   exact P13_risk_gap_bounded_by_cci_slack h
+
+theorem risk_bound_from_vector_supported_slack
+    {A : System} {δ : Int}
+    (h : CCIVectorSupportsScalarSlack A δ) :
+    Risk A ≤ δ :=
+  risk_le_delta_of_cci_slack (control_le_cci_from_vector_supported_slack h)
 
 theorem risk_le_delta_of_witness
     {A : System} {δ : Int} (w : SpineRiskWitness A δ) :

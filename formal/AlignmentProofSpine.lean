@@ -17,12 +17,12 @@ Alignment*. It re-exports the layered modules:
 
 | Module          | Proof-spine nodes                         | Book chapters |
 |-----------------|-------------------------------------------|---------------|
-| `Core`          | carriers, `U_H`/`U_S`, access handles, `MB1`–`MB8` (`MB6a`/`MB6b`, `MB7a`–`MB7d`), pigeonhole | (foundations) |
+| `Core`          | carriers, `U_H`/`U_S`, grounding, access handles, `MB1`–`MB9` (`MB6a`/`MB6b`, `MB7a`–`MB7d`), pigeonhole | (foundations) |
 | `Boundaries`    | `P05`–`P09`, `P36`, access/K non-identifiability | 6–7, 10, 36   |
 | `Capability`    | `P10`–`P13`, `P32`, `P43`, `KSys`, hidden-BIQ certificate | 11–14, 33, 36 |
 | `CooperationGraph` | UAD audit → derived graph, `P33`, `derived_openEdge_via_P32` | 13, 33, 35 |
 | `Bundles`       | `P14`–`P22`                               | 15–23         |
-| `Correction`    | `P23`–`P26`, `CCI`, handle-controlled paths | 24–27         |
+| `Correction`    | `P23`–`P26`, scalar `CCI`, vector/status `CCICertificate`, handle-controlled paths | 24–27         |
 | `Successors`    | `P27`–`P29`, `U_S` preservation           | 28–31         |
 | `Adversarial`   | `P31`, `P33`, `P34`, `P37`                | 32–37         |
 | `Philosophy`    | `P41`, `P42`, `P44`, `P45`                | 41–44         |

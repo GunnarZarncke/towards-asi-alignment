@@ -121,8 +121,14 @@ Correction-channel integrity (Ch.~\ref{ch:correction-channel-integrity}) is \emp
 It is \emph{not adversarially verifiable} as stated: a system that benefits from appearing corrigible will pass every responsiveness probe while routing real control elsewhere --- corrigibility theater is cheap precisely because self-control and self-transparency can diverge (Ch.~\ref{ch:self-modeling-self-opacity}).
 
 The budget reframing asks a different question: what would it cost this system to \emph{simulate} a live correction channel while holding a divergent objective fixed?
-It must predict which corrections we will test, pre-compute compliant responses, and prevent the suppressed objective from leaking under off-distribution perturbation (Ch.~\ref{ch:passive-observation-not-enough}).
-If that cost can be driven up --- unpredictable probes, high-stakes perturbations, cross-checks the system cannot anticipate cheaply --- the channel moves from theater toward bounded honesty.
+It must predict which correction cases \(\mathcal Q\) we will test, pre-compute compliant traces through enough apparent handles, and prevent the suppressed objective from leaking under off-distribution perturbation (Ch.~\ref{ch:passive-observation-not-enough}).
+The relevant budget is coordinate-specific.
+For \(C_{\mathrm{raw}}\), the system must fake coverage across held-out correction cases and all required trace links.
+For \(L\), it must remain fast when incidents are randomized and time-critical.
+For \(M\), it must avoid detectable judge-shaping under precommitted corrections, private comparison classes, and post-commitment randomization.
+For \(O_{\mathrm{trans}}\), it must translate grounded corrections correctly under ontology shifts it did not choose.
+For coercion, dependency, plurality, exit, and independence, it must preserve correction sources whose timing, evidence, and institutional backing it cannot cheaply control.
+If those costs can be driven up --- unpredictable probes, high-stakes perturbations, cross-checks the system cannot anticipate cheaply --- the channel moves from theater toward bounded honesty.
 Here ``unpredictable'' must mean the stricter post-commitment version from Chapter~\ref{ch:passive-observation-not-enough}: fresh randomization, bounded leakage, and probe-family coverage yielding a detection floor such as \(q-\epsilon\), not merely evaluator secrecy.
 If it cannot, integrity is a comfort metric and should be labelled as such in the safety case.
 

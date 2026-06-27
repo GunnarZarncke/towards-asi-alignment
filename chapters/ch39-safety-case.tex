@@ -95,6 +95,9 @@ The numeric risk leaf inside that root is deliberately narrower:
 \]
 This leaf says only that effective control does not outrun correction-channel integrity by more than the accepted slack.
 The conclusion is not a metaphysical safety property; it is the risk-gap bound used by the spine.
+In the manuscript language of Chapter~\ref{ch:correction-channel-integrity}, this is the scalar projection leaf.
+It is usable only after the surrounding case has established \(\mathrm{ValidRef}(A,G_t,\mathcal H_t)\), grounding viability, and \(\vec{\mathrm{CCI}}\succeq\vec\theta\) under the stated threat model.
+A failed vector coordinate cannot be repaired by choosing a friendlier scalar projection.
 
 The safety-case root is the package around that leaf:
 \[

@@ -9,6 +9,8 @@ Basin invariance, layered alignment, safety case, certified-class safety
 (chapters 1–5, 35, 39, 44).
 
 Primary risk bound: `Control A ≤ CCI A + δ` ⇒ `Risk A ≤ δ` via `P13`.
+The vector/status CCI certificate can feed this leaf through an explicit scalar
+floor witness; it does not replace the full safety-case layers.
 -/
 
 namespace AlignmentProofSpine
@@ -97,6 +99,14 @@ theorem risk_bound_from_cci_slack
     (hcci : Control A ≤ CCI A + δ) :
     Risk A ≤ δ :=
   risk_le_delta_of_cci_slack hcci
+
+/-- Same numeric leaf, when a passed vector/status CCI certificate supplies the
+    scalar floor used by the proof spine. -/
+theorem risk_bound_from_vector_cci_certificate
+    {A : System} {δ : Int}
+    (hcci : CCIVectorSupportsScalarSlack A δ) :
+    Risk A ≤ δ :=
+  risk_bound_from_vector_supported_slack hcci
 
 /-- P30 packages the arithmetic risk leaf with the certification, invariant,
     and layered-alignment evidence that make it a safety-case root. -/

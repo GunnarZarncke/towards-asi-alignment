@@ -79,7 +79,8 @@ measurement into `MB7a`–`MB7d`, with `MB7d` covering inferential-UAD detector 
 abstraction certificate into the abstract `GroundingViable` layer.
 
 **Notation.** `ValueUpdateOperator` (`U_H`), `SystemUpdateOperator` (`U_S`),
-`CCI` (sole exported correction measurand), handle-controlled `CorrectionPath`,
+scalar `CCI` (numeric risk-spine projection), vector/status `CCICertificate`,
+handle-controlled `CorrectionPath`,
 `SuccessorSafeWitness`.
 
 Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex`.
@@ -93,7 +94,7 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
 | `AlignmentProofSpine/CooperationGraph.lean` | **`UADDiscoveryAudit`**, **`UnitScore`**, **`MetaPriorEvidence`**, `metaPriorMismatch` derived from `P_meta` diagonal mass, **`InferentialDetectionCertificate`**, **`DerivedCoopGraph`**, **`DerivedInferentialGraph`**, `causalMutualModelOf` / `inferentialProfileOf` / `inferentialPairOf` (opaque evidence emitters), `inferentialCouplingScore`, `auditMutualModelWithInferential`, `uad_audit_yields_inferential_graph`, `severed_causal_reach_positive_effective_reach`, **`P33`** | 13, 33, 35 |
 | `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23, 28 |
-| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, **`CCI`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 24–27, 38–39b |
+| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 24–27, 38–39b |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
@@ -138,10 +139,14 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 * The host-capacity aliasing theorem `P34` is proved against a from-scratch
   pigeonhole (`finPigeonhole`) instead of Mathlib's `Fintype.card_le_of_injective`,
   keeping the project Mathlib-free.
-* **`Risk`** is `Control − CCI` (`RiskGap`). Certification uses `Control ≤ CCI + δ`.
+* **`Risk`** is `Control − CCI` (`RiskGap`). Certification uses `Control ≤ CCI + δ`
+  as the numeric scalar-projection leaf. `CCICertificate` / `CCIThresholds` encode
+  the manuscript's vector/status certificate, and `CCIVectorSupportsScalarSlack`
+  records the bridge-shaped handoff from a passed vector certificate to that scalar leaf.
   Handle-controlled path: `CorrectionPath` / `SystemCorrectionPath` over `CorrectionChainLink`,
-  now grounded in a correcting agent's controlled handles. The weakest effective
-  handle-capacity term lives inside `CCI` only (book: $C_{\mathrm{raw}}$; not exported in Lean).
+  now grounded in a correcting agent's controlled handles. The richer manuscript
+  $C_{\mathrm{raw}}$ is represented as a certificate coordinate; the old weakest-link
+  scalar remains inside `CCI` for existing arithmetic lemmas.
 * **`DeploymentMass`** is environment-relative deployment/control mass (book ch32,
   `eq:deployment-mass-ch32`). Selection uses `SelectionChannel` / `SelectionHandleFor`
   over the same `Handle` type as correction. Revenue and regulatory risk are not
