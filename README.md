@@ -43,14 +43,14 @@ Body text introduces every central concept from first principles.
 
 | Item | Status |
 |------|--------|
-| Milestone | **Third** in progress — all main chapters have first drafts; selected chapters are marked reviewed |
-| Structure | 10 parts, **45 chapter entries** (including `ch39b`), 9 appendices |
-| Chapters | **27 draft**, **18 reviewed**, **0 stub** (see `metadata/book.yml`) |
+| Milestone | **Third** in progress — all main chapters have first drafts and have received at least one review/feedback pass |
+| Structure | 10 parts, **48 chapter entries** (including `ch19b`, `ch25b`, `ch35b`, and `ch39b`), 9 appendices |
+| Chapters | **0 draft**, **48 reviewed**, **0 stub** (see `metadata/book.yml`; reviewed means feedback received, not final) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
 | PDF | [**Download latest draft**](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
 | Word target | ~350k (see `metadata/book.yml`) |
 
-**Open gaps:** see `metadata/TODO.md` and `metadata/book.yml` (e.g. frontmatter stubs, appendix stubs, citation review, chapter numbering cleanup after `ch39b`).
+**Open gaps:** see `metadata/TODO.md` and `metadata/book.yml` (e.g. frontmatter stubs, appendix stubs, citation review, chapter numbering cleanup after temporary `b` chapters).
 
 For agent session continuity, see `drafts/conversation-summaries/INDEX.md`.
 

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import math
 import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -200,6 +201,15 @@ def count_words(text: str) -> int:
     return len(text.split())
 
 
+def approx_llm_tokens(text: str) -> int:
+    """Approximate LLM token count using the common UTF-8 bytes / 4 heuristic."""
+    return math.ceil(len(text.encode("utf-8")) / 4)
+
+
+def count_plain_words(text: str) -> int:
+    return len(re.findall(r"\b[\w'-]+\b", text, flags=re.UNICODE))
+
+
 def count_lines(text: str) -> int:
     return text.count("\n") + (0 if text.endswith("\n") or not text else 1)
 
@@ -292,6 +302,45 @@ class LeanModuleStats:
     spine_p_theorems: int = 0
     other_theorems: int = 0
     sorry_admit: int = 0
+
+
+@dataclass
+class SourceExtractStats:
+    path: str
+    words: int = 0
+    approx_tokens: int = 0
+    chars: int = 0
+    lines: int = 0
+
+
+def discover_source_extracts() -> list[Path]:
+    extracts_dir = ROOT / "context" / "extracts"
+    if not extracts_dir.exists():
+        return []
+    return sorted(extracts_dir.glob("*.md"))
+
+
+def analyze_source_extract(path: Path) -> SourceExtractStats:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    return SourceExtractStats(
+        path=str(path.relative_to(ROOT)),
+        words=count_plain_words(text),
+        approx_tokens=approx_llm_tokens(text),
+        chars=len(text),
+        lines=count_lines(text),
+    )
+
+
+def sum_plain_text_stats(paths: list[Path]) -> tuple[int, int, int]:
+    words = 0
+    approx_tokens = 0
+    chars = 0
+    for path in paths:
+        text = path.read_text(encoding="utf-8", errors="replace")
+        words += count_plain_words(text)
+        approx_tokens += approx_llm_tokens(text)
+        chars += len(text)
+    return words, approx_tokens, chars
 
 
 def analyze_lean(path: Path) -> LeanModuleStats:
@@ -532,6 +581,10 @@ def fmt_int(value: int | None) -> str:
     return "—" if value is None else f"{value:,}"
 
 
+def normalize_title(title: str) -> str:
+    return re.sub(r"\s+", " ", title).strip()
+
+
 def sum_stats(items: list[FileStats]) -> dict[str, int]:
     return {
         "words": sum(s.words for s in items),
@@ -576,6 +629,9 @@ def build_report() -> str:
     page_spans = assign_page_spans(toc_entries)
 
     numbered_chapters = [e for e in toc_entries if e.kind == "chapter" and e.number]
+    numbered_chapters_by_title = {
+        normalize_title(e.title): e for e in numbered_chapters
+    }
     frontmatter_toc = [e for e in toc_entries if e.kind == "frontmatter"]
     appendix_toc = [e for e in toc_entries if e.kind == "appendix"]
 
@@ -597,12 +653,11 @@ def build_report() -> str:
 
     chapter_stats: list[FileStats] = []
     chapter_files = discover_chapter_files()
-    for idx, rel in enumerate(chapter_files):
+    for rel in chapter_files:
         path = ROOT / rel
         stats = analyze_tex(path, group="chapter")
-        if idx < len(numbered_chapters):
-            toc_entry = numbered_chapters[idx]
-            stats.title = toc_entry.title or stats.title
+        toc_entry = numbered_chapters_by_title.get(normalize_title(stats.title))
+        if toc_entry:
             span = page_spans.get(("chapter", toc_entry.number))
             if span is not None:
                 stats.pages = span
@@ -653,6 +708,17 @@ def build_report() -> str:
     leanspine_total, leanspine_nodes, leanspine_by_chapter = count_leanspine_refs()
     file_inventory = discover_book_file_inventory()
     tex_categories = file_inventory.tex_by_category()
+    book_text_rels = sorted(file_inventory.tex_files | file_inventory.bib_files | {m.path for m in lean_modules})
+    book_text_paths = [ROOT / rel for rel in book_text_rels]
+    book_text_words, book_text_tokens, book_text_chars = sum_plain_text_stats(book_text_paths)
+    source_extracts = [analyze_source_extract(p) for p in discover_source_extracts()]
+    source_extract_words = sum(s.words for s in source_extracts)
+    source_extract_tokens = sum(s.approx_tokens for s in source_extracts)
+    source_extract_chars = sum(s.chars for s in source_extracts)
+    combined_text_files = len(book_text_paths) + len(source_extracts)
+    combined_text_words = book_text_words + source_extract_words
+    combined_text_tokens = book_text_tokens + source_extract_tokens
+    combined_text_chars = book_text_chars + source_extract_chars
 
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     pdf_pages = pdf_page_count()
@@ -676,6 +742,12 @@ def build_report() -> str:
         f"- **All book sources (PDF + Lean)**: {file_inventory.pdf_total + len(lean_modules):,} files",
         f"- **Body words** (frontmatter + chapters + appendices): {totals['words']:,}",
         f"- **All counted TeX words** (+ metadata/tables): {grand['words']:,}",
+        f"- **Book text sources, no `context/`** (TeX + `.bib` + Lean): {len(book_text_paths):,} files, "
+        f"{book_text_words:,} words, ~{book_text_tokens:,} LLM tokens",
+        f"- **Context source extracts only** (`context/extracts/*.md`): {len(source_extracts):,} files, "
+        f"{source_extract_words:,} words, ~{source_extract_tokens:,} LLM tokens",
+        f"- **Book text sources + context extracts**: {combined_text_files:,} files, "
+        f"{combined_text_words:,} words, ~{combined_text_tokens:,} LLM tokens",
         f"- **TeX LOC (body)**: {totals['code_loc']:,} code lines "
         f"({totals['loc']:,} non-blank, {totals['lines']:,} total)",
         f"- **TeX LOC (all counted)**: {grand['code_loc']:,} code lines "
@@ -697,6 +769,36 @@ def build_report() -> str:
         f"- **Lean declarations**: {lean_totals['theorems']:,} theorems, {lean_totals['lemmas']:,} lemmas, "
         f"{lean_totals['defs']:,} defs, {lean_totals['structures']:,} structures, {lean_totals['axioms']:,} axioms",
         f"- **\\leanspine cross-refs** in manuscript: {leanspine_total:,} ({len(leanspine_nodes):,} distinct node IDs cited)",
+        "",
+        "## Source material extracts",
+        "",
+        "Markdown extracts in `context/extracts/` are the book-local readable copies of source PDFs.",
+        "Token counts are approximate LLM-token estimates using `ceil(UTF-8 bytes / 4)`, not a model-specific tokenizer.",
+        f"Combined text-source total including book sources and context extracts: {combined_text_files:,} files, "
+        f"{combined_text_words:,} words, ~{combined_text_tokens:,} LLM tokens.",
+        "",
+        render_table(
+            ["File", "Words", "Approx. tokens", "Chars", "Lines"],
+            [
+                [
+                    s.path,
+                    fmt_int(s.words),
+                    fmt_int(s.approx_tokens),
+                    fmt_int(s.chars),
+                    fmt_int(s.lines),
+                ]
+                for s in source_extracts
+            ]
+            + [
+                [
+                    "**Total**",
+                    f"**{source_extract_words:,}**",
+                    f"**~{source_extract_tokens:,}**",
+                    f"**{source_extract_chars:,}**",
+                    f"**{sum(s.lines for s in source_extracts):,}**",
+                ]
+            ],
+        ),
         "",
         "## Contributing files",
         "",

@@ -4,6 +4,12 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-28 | Chapter status reviewed | [2026-06-28-chapter-status-reviewed.md](2026-06-28-chapter-status-reviewed.md) |
+| 2026-06-28 | ch35 split implementation | [2026-06-28-ch35-split-implementation.md](2026-06-28-ch35-split-implementation.md) |
+| 2026-06-28 | ch19 split implementation | [2026-06-28-ch19-split-implementation.md](2026-06-28-ch19-split-implementation.md) |
+| 2026-06-28 | ch25 split implementation | [2026-06-28-ch25-split-implementation.md](2026-06-28-ch25-split-implementation.md) |
+| 2026-06-28 | Chapter split plans | [2026-06-28-chapter-split-plans.md](2026-06-28-chapter-split-plans.md) |
+| 2026-06-28 | Source token stats | [2026-06-28-source-token-stats.md](2026-06-28-source-token-stats.md) |
 | 2026-06-28 | Promote gems in part openers | [2026-06-28-promote-gems-part-openers.md](2026-06-28-promote-gems-part-openers.md) |
 | 2026-06-28 | Update operator cleanup | [2026-06-28-update-operator-cleanup.md](2026-06-28-update-operator-cleanup.md) |
 | 2026-06-28 | Update operator refactor | [2026-06-28-update-operator-refactor.md](2026-06-28-update-operator-refactor.md) |

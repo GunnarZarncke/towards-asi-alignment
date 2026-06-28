@@ -2,7 +2,7 @@
 
 Track every major claim with status, support, weakest link, and falsification criteria.
 
-**Last cross-check:** 2026-06-27 — header/status refreshed after grounding viability was added as the sixth Introduction claim and as an eighth safety-case layer. Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`. Chapter references follow the current 45-entry map in `metadata/book.yml` (including `ch39b`; full renumbering is still an open TODO).
+**Last cross-check:** 2026-06-27 — header/status refreshed after grounding viability was added as the sixth Introduction claim and as an eighth safety-case layer. Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`. Chapter references follow the current 48-entry map in `metadata/book.yml` (including `ch19b`, `ch25b`, `ch35b`, and `ch39b`; full renumbering is still an open TODO).
 
 **Maintenance note:** This ledger is not generated. It must be manually updated when chapters, claims, assumptions, uncertainty entries, or proof-spine bridges change. Treat it as a maintainer audit tool rather than an automatically complete public index until the automation TODO in `metadata/TODO.md` is resolved.
 

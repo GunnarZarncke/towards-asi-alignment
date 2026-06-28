@@ -115,9 +115,11 @@ def parse_part_file(path: Path) -> tuple[str, list[str]]:
 
 
 def chapter_display_id(chapter_id: str) -> str:
-    if chapter_id == "ch39b":
-        return "39b"
-    return str(int(chapter_id[2:]))
+    match = re.fullmatch(r"ch(\d+)([a-z]?)", chapter_id)
+    if not match:
+        raise ValueError(f"Cannot display chapter id: {chapter_id}")
+    number, suffix = match.groups()
+    return f"{int(number)}{suffix}"
 
 
 def load_manuscript() -> tuple[list[ChapterEntry], dict[str, dict[str, str]], list[Path]]:

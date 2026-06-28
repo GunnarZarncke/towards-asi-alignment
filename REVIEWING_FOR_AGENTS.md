@@ -19,7 +19,7 @@ The main layers:
 - Value bundles: represent learnable value geometry without pretending values are scalar rewards.
 - Bearer maps: preserve what values apply to, not only the words used for them.
 - Transport: distinguish semantic, bundle, bearer, correction, and successor continuity.
-- Correction-channel integrity: ensure human correction has uncaptured causal force.
+- Correction-channel integrity: ensure human correction has uncaptured causal force, then stress-test that force under adversarial pressure.
 - Successor constraints: require delegates, copies, and replacements to inherit the relevant invariants.
 - Selection basins: make institutions select for correction-preserving systems.
 - Adversarial verifiability: ask whether faking the safety signal is cheap.
@@ -38,6 +38,8 @@ Use this order unless the user gives a narrower target:
 6. The relevant chapter(s)
 7. The newest entry in `drafts/conversation-summaries/INDEX.md`
 8. `metadata/source-canon.md` if empirical backing or sibling-repo evidence matters
+
+Check `metadata/book-stats.md` for token estimates; if the relevant source material exceeds your context window, use subagents or split the review by part, chapter, or layer rather than pretending to have read everything.
 
 ## Empirical Evidence And Related Repos
 
@@ -69,13 +71,15 @@ Look for the included gems before concluding a chapter is merely narrative.
 
 - Boundary discovery: ch06-ch10
 - Grounding viability: ch03, ch39b
-- Value bundles: ch15-ch19
+- Value bundles: ch15-ch19b
+- Bundle-geometry measurement and Goodhart pressure: ch19b
 - Bearer maps: ch18, ch23, ch43
 - Transport hierarchy: ch23
-- Vector/status CCI: ch25
+- Vector/status CCI: ch25; adversarial pressure tests: ch25b
 - Existing-work subsumptions: ch07, ch20, ch24-ch27, ch38, ch39b
 - Successor test: ch28-ch31
 - Selection envelope and correction parasites: ch32-ch35
+- Conductive artifacts and pivotal processes: ch35b
 - Goal laundering and cost of faking: ch37, ch39b
 - Value-update envelope: ch41-ch42
 - Lean proof spine as dependency hygiene: `formal/`, Appendix I
@@ -87,7 +91,7 @@ The book often treats familiar proposals as projections, special cases, or separ
 - Causal influence diagrams and incentive tests become boundary-relative under ontology choice and system-boundary choice.
 - CIRL and reward inference become local projections of bundle, bearer, and correction preservation.
 - Shutdown and interruptibility become one-bit correction projections.
-- Low impact, relative reachability, AUP, and quantilization are separable from trajectory-level correction-channel integrity.
+- Low impact, relative reachability, AUP, and quantilization are separable from trajectory-level correction-channel integrity; see the ch25b stress tests.
 - Christiano-style corrigibility becomes a dynamical correction invariant.
 - Debate can preserve local truth while losing the judge's correction channel.
 - Amplification can improve local supervision while failing global correction-channel contraction.

@@ -31,6 +31,8 @@ The user noted that reviewers may miss some of the book's depth because importan
 - Added `REVIEWING_FOR_AGENTS.md`, a read-only reviewer guide for coding agents that summarizes the thesis, review posture, checklist, gem map, existing-work subsumptions, empirical-source pointers to related repos, output format, and anti-patterns.
 - Added a pointer in `AGENTS.md` telling read-only reviewer agents to consult `REVIEWING_FOR_AGENTS.md` first.
 - Added `llms.txt` as a root-level orientation file for external LLMs / crawlers / agents, pointing to the reviewer guide, manuscript entry points, core concepts, empirical-source repos, formal spine interpretation, anti-patterns, and build commands.
+- Recorded strategic external advice in `review/strategic-advice-2026-06-28.md`, preserving the full text and extracting prioritized follow-through items.
+- Added a `metadata/TODO.md` pointer to triage the strategic advice into an execution plan.
 
 ## Decisions
 
@@ -42,6 +44,7 @@ The user noted that reviewers may miss some of the book's depth because importan
 - If reviewers still miss the contributions, the next escalation would be a frontmatter "Core Contributions and Where to Find Them" page.
 - Future design pass: add one illustration per part opener, reusing the gem motifs now named there.
 - Future repo hygiene pass: consider linking `REVIEWING_FOR_AGENTS.md` from `README.md` if external human reviewers should see it.
+- Future strategy pass: triage `review/strategic-advice-2026-06-28.md`, especially the worked example, standalone claims, anti-capture open problem, Lean honesty audit, and adversarial review plan.
 
 ## Verification
 
@@ -60,6 +63,7 @@ The user noted that reviewers may miss some of the book's depth because importan
 - `REVIEWING_FOR_AGENTS.md`
 - `AGENTS.md`
 - `llms.txt`
+- `review/strategic-advice-2026-06-28.md`
 
 ## Commits
 

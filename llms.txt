@@ -29,10 +29,10 @@ Superintelligence alignment is the problem of preserving grounded, human-correct
 
 - Boundary discovery: find the real optimizer, not just the visible model.
 - Grounding viability: keep symbols, metrics, monitors, and correction signals connected to value-relevant reality.
-- Value bundles: learnable value geometry without pretending values are scalar rewards.
+- Value bundles: learnable value geometry without pretending values are scalar rewards; ch19b stress-tests bundle-geometry measurement under Goodhart pressure.
 - Bearer maps: preserve what values apply to, not merely the words used for them.
 - Transport hierarchy: distinguish semantic, bundle, bearer, correction, and successor continuity.
-- Correction-channel integrity: ensure human correction has uncaptured causal force.
+- Correction-channel integrity: ensure human correction has uncaptured causal force, then stress-test that force under adversarial pressure.
 - Successor tests: require delegates, copies, replacements, and self-modifications to inherit the relevant invariants.
 - Selection basins: make institutions select for correction-preserving systems.
 - Adversarial verifiability: ask whether faking the safety signal is cheap.
@@ -52,7 +52,7 @@ Good reviews should:
 - avoid overlooking the book's deeper delivered results and existing-work subsumptions.
 - note whether the author already acknowledges an issue before presenting it as a new defect.
 
-Do not treat this as a generic alignment essay. The manuscript contains specific machinery: boundary discovery, bundle/bearer transport, vector CCI, successor invariants, selection envelopes, cost-of-faking tests, and a Lean dependency spine.
+Do not treat this as a generic alignment essay. The manuscript contains specific machinery: boundary discovery, bundle/bearer transport, adversarial bundle-geometry measurement, vector CCI, correction channels under adversarial pressure, successor invariants, selection envelopes, conductive artifacts and pivotal processes, cost-of-faking tests, and a Lean dependency spine.
 
 ## Existing-Work Subsumptions To Notice
 
@@ -61,7 +61,7 @@ The book often treats familiar proposals as projections, special cases, or separ
 - incentive diagrams and agent tests become boundary-relative;
 - CIRL and reward inference become local projections of bundle/bearer/correction preservation;
 - shutdown and interruptibility become one-bit correction projections;
-- low impact, relative reachability, AUP, and quantilization separate from trajectory-level correction-channel integrity;
+- low impact, relative reachability, AUP, and quantilization separate from trajectory-level correction-channel integrity in the ch25b stress tests;
 - broad corrigibility becomes a dynamical correction invariant;
 - debate can preserve local truth while losing the judge's correction channel;
 - amplification can improve local supervision while failing global correction-channel contraction;
