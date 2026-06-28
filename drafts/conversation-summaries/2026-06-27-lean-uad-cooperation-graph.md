@@ -51,4 +51,4 @@ Review whether Lean connects percolation to UAD; implement cooperation-graph der
 - `context/extracts/attractor-basins.md`, `context/extracts/acausal-trade-uad-formalization.md`
 
 ## Commits
-- (none this session)
+- `66abc4d` — inferential-coupling Lean spine, ch33 expansion, canaries, graphs/ledgers
