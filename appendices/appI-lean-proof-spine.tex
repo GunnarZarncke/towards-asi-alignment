@@ -18,6 +18,7 @@ Corollaries are assembled certification consequences.
 
 \providecommand{\spinenewbadge}{\begingroup\fboxsep=1pt\fcolorbox{blue!70!black}{blue!6}{\scriptsize\textsf{NEW}}\endgroup}
 \providecommand{\spinesubsumedbadge}{\begingroup\fboxsep=1pt\fcolorbox{green!45!black}{green!6}{\scriptsize\textsf{SUBSUMED}}\endgroup}
+\providecommand{\spineimportedbadge}{\begingroup\fboxsep=1pt\fcolorbox{orange!70!black}{orange!8}{\scriptsize\textsf{IMPORTED}}\endgroup}
 
 The structure of the Lean proof derivation is shown in four diagrams and an overview diagram that shows how those parts compose into the top certification theorem \texttt{P30T} (\emph{certified\_class\_safety\_from\_spine\_and\_bridges}).
 
@@ -44,6 +45,8 @@ They are drawn with a thicker blue border and keep the fill colour of their spin
 \spinesubsumedbadge{} marks existing embedding or projection nodes that show an external proposal as a special case of a stronger book invariant.
 They are drawn with a thicker green border and keep the fill colour of their spine.
 These badges are expository markers only: proof, counterexample, and bridge status are still determined by the node shape, edge type, and theorem statement.
+\spineimportedbadge{} marks a source-cited theorem handle imported from the alignment literature.
+Imported field theorem handles are distinct from the book's \(\texttt{MB}\) bridges: they state what an external agenda proves or assumes under its own setup, while \(\texttt{MB1}\)--\(\texttt{MB9}\) state the book's empirical or philosophical handoffs.
 
 \paragraph{Edges.}
 Solid grey arrows are proved dependency steps inside Lean.
@@ -92,6 +95,89 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
   Covers deployment-mass selection (\texttt{P31}), UAD/inferential cooperation-graph certificates, cooperation and audit aliasing, \texttt{MB6a--b} percolation/basin bridges, \texttt{MB7d} inferential detector validity, and the philosophical boundary on layered alignment (\texttt{P44--P45}).}
   \label{fig:lean-spine-selection}
 \end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/lean_proof/05-field-subsumptions.png}
+  \caption[Field subsumption inner structure]{Inner structure for field-agenda subsumptions.
+  The existing spine diagrams show only the final field nodes; this diagram expands the finite helpers, imported theorem handles, and agenda-specific rederivations behind those nodes.}
+  \label{fig:lean-spine-field-subsumptions}
+\end{figure}
+
+\section{Field Subsumption Status}
+\label{sec:appi-field-subsumption-status}
+
+The field-subsumption module separates three kinds of evidence.
+First, Lean rederives finite analogues using integer, finite-list, deterministic-MDP, weighted-sample, reachability, or contraction proxies.
+Second, Lean imports source-cited field theorem handles for published results or protocol assumptions under their own hypotheses.
+Third, the book's \(\texttt{MB}\) bridges remain the empirical or philosophical assumptions needed to connect measured systems to the book predicates.
+
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.22}
+\begin{longtable}{@{}L{0.12\textwidth}L{0.26\textwidth}L{0.27\textwidth}L{0.27\textwidth}@{}}
+\caption{Field-agenda theorem handles in the Lean spine. ``Imported'' means source-cited external theorem or protocol handle, not a book bridge.}\label{tab:appi-field-subsumption-status}\\
+\toprule
+\textbf{Agenda} & \textbf{Imported handle} & \textbf{Finite rederivation / separation} & \textbf{Book-facing conclusion} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Agenda} & \textbf{Imported handle} & \textbf{Finite rederivation / separation} & \textbf{Book-facing conclusion} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+CIRL / reward inference &
+\leanid{CIRL_assistance_game_deference_imported} \autocite{hadfieldmenell2016} &
+\leanid{cirl_separation_profiles}; \leanid{P19} embeds scalar reward as a \(k=1\) bundle &
+Scalar reward inference is a projection of bundle/bearer/correction transport, not full preservation \\
+Shutdown / off-switch &
+\leanid{Soares2015_corrigibility_problem_imported} \autocite{soares2015corrigibility} &
+\leanid{off_switch_anti_natural_one_step}; \leanid{shutdown_separated_from_correction} &
+Shutdown is a one-bit projection of correction, and the converse fails \\
+Safe interruptibility &
+\leanid{OA2016_safe_interruptibility_under_modification} \autocite{orseau2016interruptible} &
+\leanid{interrupt_subsumption_ch24}; \leanid{interrupt_separated_from_correction} &
+Interruption neutrality is weaker than maintaining usable correction bandwidth \\
+Christiano corrigibility &
+\leanid{Christiano2018_corrigibility_desideratum_imported} \autocite{christiano2018corrigibility} &
+\leanid{christian_corrigibility_subsumption_capacity}; \leanid{act_based_separated_from_dynamical} &
+Corrigibility is treated as a dynamical correction invariant, not local act satisfaction \\
+ELK &
+\leanid{Christiano2021_ELK_reporter_spec_imported} \autocite{christiano2021elk} &
+\leanid{elk_subsumption_readout}; \leanid{elk_separated_from_uptake} &
+Latent readout is an epistemic subchannel, not correction uptake \\
+Debate &
+\leanid{Irving2018_debate_truth_protocol_imported} \autocite{irving2018debate} &
+\leanid{debate_subsumption_truth}; \leanid{debate_separated_from_judge_correction} &
+Local truth selection need not preserve the judge's correction channel \\
+AUP / relative reachability &
+\leanid{Turner2019_AUP_penalty_imported} \newline
+\leanid{Krakovna2018_relative_reachability_imported} \autocite{turner2019aup,krakovna2018relative} &
+\leanid{reachability_not_correction_capacity}; \leanid{low_impact_separated_from_trajectory} &
+Option preservation and low impact are separable from trajectory correction integrity \\
+Quantilization &
+\leanid{Taylor2015_quantilizer_bound_imported} \autocite{taylor2015quantilizers} &
+\leanid{quantile_separated_from_trajectory}; \leanid{quantile_weighted_witness_local_safe} &
+Local quantile safety does not imply trajectory-level \(\mathrm{CCI}\) preservation \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+The common book-facing formulas are:
+\begin{align}
+\Pi_{\mathrm{off}}(C_t)&=C_{\mathrm{off}},&
+I_t&\in\{0,1\},&
+\kappa_C(t)&=I(\Delta_H;\Delta_A\mid h_t)\geq \kappa_{\min},
+\label{appi:eq:field-correction-projections}\\
+d(A_{t+1},\mathcal M_C)&\leq \alpha d(A_t,\mathcal M_C)+\eta,&
+\alpha&<1,&
+K_A&\to \widehat K_H,\qquad \Delta_H\to\Delta_A.
+\label{appi:eq:field-dynamical-readout}
+\end{align}
+Lean currently represents these with finite integer proxies: \(\kappa_C=\min(\Delta_H,\Delta_A)\), finite-difference utility slopes, deterministic finite transitions, weighted samples, option counts, and scaled integer contractions.
+Thus the strongest honest claim is not that Lean has reproduced each external agenda in full.
+It has either rederived a finite analogue, imported a source-cited theorem handle, or proved that the weaker field predicate does not imply the book's stronger correction/transport invariant.
 
 \section{Definitions and Quantities}
 

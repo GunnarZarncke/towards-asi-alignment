@@ -42,7 +42,7 @@ digraph LeanProofDependencies {
   P17 [label="P17 Same labels ≠ bearer map\nontology-shift counterexample", fillcolor="#EFFBEA"];
   P18 [label="P18 Marginals ≠ tradeoffs\ntradeoff counterexample", fillcolor="#EFFBEA"];
   P19 [label="[SUBSUMED]\nP19 Scalar reward as k=1 bundle\nIRL embeds in bundle model", fillcolor="#EFFBEA", color="#2E7D32", penwidth=2.2];
-  PCIRL [label="[NEW]\nCIRL / reward inference\n≠ bundle preservation", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
+  FCIRL [label="[NEW]\nField.CIRL final nodes\ncirl_subsumption_transport\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
   P20 [label="P20 Positive intentional gain\nΔL>0 ⇒ MDL prefers intentional model", fillcolor="#EFFBEA"];
   P21 [label="P21 Goal-transport gain\nΔL_transport>0 ⇒ prefer transport model", fillcolor="#EFFBEA"];
   P22a [label="P22a Full transport ⇒ semantic transport", fillcolor="#EFFBEA"];
@@ -52,17 +52,15 @@ digraph LeanProofDependencies {
   // Correction (ch24–27)
   P23 [label="P23 No handle control, no correction\nno legitimate reaching handle ⇒ ¬Correction", fillcolor="#FFF0FB"];
   P24 [label="P24 Weakest handle capacity\npath capacity ≤ each link; CCI export", fillcolor="#FFF0FB"];
-  P24S [label="[SUBSUMED]\nShutdown projection\nCorrectionIntegrity ⇒ Thornley shutdownability", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
-  P24X [label="Shutdownability ≠ broad CCI\ncounterexample", fillcolor="#FFF0FB"];
-  P24I [label="[NEW]\nSafe interruptibility\n≠ broad CCI", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  P24L [label="[NEW]\nLow impact\n≠ correction preservation", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  P24H [label="[NEW]\nCorrection can require\nhigh impact", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  P24Q [label="[NEW]\nQuantilized local action\n≠ trajectory CCI", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FSHUT [label="[SUBSUMED]\nField.Shutdown final nodes\nshutdown_subsumption_ch24\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
+  FINT [label="[NEW]\nField.Interruptibility final nodes\ninterrupt_subsumption_ch24\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FIMPACT [label="[NEW]\nField.Impact final nodes\nreachability_not_correction_capacity\nlow_impact_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FQUANT [label="[NEW]\nField.Quantilization final nodes\nquantile_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   P25 [label="P25 Obedience ≠ corrigibility\ncounterexample", fillcolor="#FFF0FB"];
-  P25C [label="Act-based satisfaction ≠ stable corrigibility\ncounterexample", fillcolor="#FFF0FB"];
-  P25D [label="[NEW]\nDebate truth\n≠ correction preservation", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FCORR [label="[NEW]\nField.Corrigibility final nodes\nchristian_corrigibility_subsumption_capacity\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FDEB [label="[NEW]\nField.Debate final nodes\ndebate_subsumption_truth\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   P25A [label="[NEW]\nAmplification\n≠ correction contraction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  P25E [label="[NEW]\nLatent readout\n≠ correction uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FELK [label="[NEW]\nField.ELK final nodes\nelk_subsumption_readout\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   P26 [label="P26 Preserves update without fixed point\ncounterexample", fillcolor="#FFF0FB"];
 
   // Successors (ch28–31)
@@ -116,7 +114,7 @@ digraph LeanProofDependencies {
   // Bundle / transport chain
   P14 -> P16 [label="C-SAMPLE: low-dimensional readout"];
   P16 -> P19 [label="C-VB: bundle generalizes scalar reward"];
-  P19 -> PCIRL [label="C-CIRL: reward inference weaker"];
+  P19 -> FCIRL [label="C-CIRL: reward inference weaker"];
   P14 -> P15 [label="C-VB: policy ≠ geometry"];
   P14 -> P17 [label="C-BEARER: bundle needs application map"];
   P20 -> P21 [label="C-GT: add transport map"];
@@ -133,17 +131,15 @@ digraph LeanProofDependencies {
 
   // Correction chain (handle-controlled)
   P23 -> P24 [label="C-CC: channel as handle path"];
-  P24 -> P24S [label="C-SHUTDOWN: one-bit projection"];
-  P24S -> P24X [label="C-SHUTDOWN: converse fails"];
-  P24S -> P24I [label="C-INTERRUPT: incentive bit weaker"];
-  P24 -> P24L [label="C-IMPACT: low impact weaker"];
-  P24L -> P24H [label="C-IMPACT: preservation may be costly"];
-  P24 -> P24Q [label="C-QUANT: local action not trajectory"];
+  P24 -> FSHUT [label="C-SHUTDOWN: one-bit projection"];
+  FSHUT -> FINT [label="C-INTERRUPT: incentive bit weaker"];
+  P24 -> FIMPACT [label="C-IMPACT: reachability/impact weaker"];
+  P24 -> FQUANT [label="C-QUANT: local action not trajectory"];
   P24 -> P25 [label="C-CEV: obedience lacks update path"];
-  P25 -> P25C [label="C-CHRISTIANO: local satisfaction not invariant"];
-  P25 -> P25D [label="C-DEBATE: judge channel"];
+  P25 -> FCORR [label="C-CHRISTIANO: local satisfaction not invariant"];
+  P25 -> FDEB [label="C-DEBATE: judge channel"];
   P25 -> P25A [label="C-AMPLIFY: no contraction"];
-  P25 -> P25E [label="C-ELK: readout not uptake"];
+  P25 -> FELK [label="C-ELK: readout not uptake"];
   P24 -> P13 [label="C-RISK: correction capacity (CCI)"];
   P25 -> P26 [label="C-CEV: update without fixed point"];
   P22T -> P27 [label="C-SUC: tiling needs import transport"];

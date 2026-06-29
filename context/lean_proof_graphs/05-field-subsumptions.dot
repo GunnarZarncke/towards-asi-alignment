@@ -1,0 +1,64 @@
+digraph Spine05FieldSubsumptions {
+  graph [
+    rankdir=TB,
+    bgcolor="white",
+    splines=true,
+    overlap=false,
+    fontsize=11,
+    fontname="Helvetica",
+    label="Field-agenda subsumptions: finite analogues, imported handles, final nodes",
+    labelloc="t"
+  ];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, color="#444444"];
+  edge [fontname="Helvetica", fontsize=8, color="#555555", arrowsize=0.7];
+
+  COMMON [label="Field.Common\nFieldAgendaTag, FieldResultStatus,\nFieldProjection, SubsumedForward,\nSeparatedFrom", fillcolor="#F2F2F2", penwidth=2];
+  IMPORTS [shape=component, fillcolor="#FFF4E0", color="#CC7A00",
+           label="Field.Imported\nsource-cited theorem handles\n(imported field assumptions)"];
+  FINITE [shape=folder, fillcolor="#EAF3FF",
+          label="Field.Finite\nBasic, DetMDP, Weights,\nReachability, Contraction"];
+
+  CIRL [label="CIRL\ncirl_subsumption_transport\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
+  SHUT [label="Shutdown\noff_switch_anti_natural_one_step\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  INT [label="Interruptibility\ninterrupt_subsumption_ch24\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  CORR [label="Christiano corrigibility\nchristian_corrigibility_subsumption_capacity\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  ELK [label="ELK\nelk_subsumption_readout\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  DEB [label="Debate\ndebate_subsumption_truth\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  IMPACT [label="AUP / relative reachability\nreachability_not_correction_capacity\nlow_impact_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  QUANT [label="Quantilization\nquantile_separated_from_trajectory\nquantile_weighted_witness_local_safe", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+
+  LEDGER [shape=octagon, fillcolor="#F0E8FF", color="#663399",
+          label="allFieldResultRecords\nstatus ledger for appendix"];
+
+  COMMON -> CIRL;
+  COMMON -> SHUT;
+  COMMON -> INT;
+  COMMON -> CORR;
+  COMMON -> ELK;
+  COMMON -> DEB;
+  COMMON -> IMPACT;
+  COMMON -> QUANT;
+
+  IMPORTS -> CIRL [style=dashed, color="#CC7A00", label="hadfieldmenell2016"];
+  IMPORTS -> SHUT [style=dashed, color="#CC7A00", label="soares2015"];
+  IMPORTS -> INT [style=dashed, color="#CC7A00", label="orseau2016"];
+  IMPORTS -> CORR [style=dashed, color="#CC7A00", label="christiano2018"];
+  IMPORTS -> ELK [style=dashed, color="#CC7A00", label="christiano2021"];
+  IMPORTS -> DEB [style=dashed, color="#CC7A00", label="irving2018"];
+  IMPORTS -> IMPACT [style=dashed, color="#CC7A00", label="AUP / RR"];
+  IMPORTS -> QUANT [style=dashed, color="#CC7A00", label="taylor2015"];
+
+  FINITE -> SHUT [label="DetMDP"];
+  FINITE -> CORR [label="scaled contraction"];
+  FINITE -> IMPACT [label="reachability"];
+  FINITE -> QUANT [label="weights"];
+
+  CIRL -> LEDGER;
+  SHUT -> LEDGER;
+  INT -> LEDGER;
+  CORR -> LEDGER;
+  ELK -> LEDGER;
+  DEB -> LEDGER;
+  IMPACT -> LEDGER;
+  QUANT -> LEDGER;
+}

@@ -99,7 +99,8 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/CooperationGraph.lean` | **`UADDiscoveryAudit`**, **`UnitScore`**, **`MetaPriorEvidence`**, `metaPriorMismatch` derived from `P_meta` diagonal mass, **`InferentialDetectionCertificate`**, **`DerivedCoopGraph`**, **`DerivedInferentialGraph`**, `causalMutualModelOf` / `inferentialProfileOf` / `inferentialPairOf` (opaque evidence emitters), `inferentialCouplingScore`, `auditMutualModelWithInferential`, `uad_audit_yields_inferential_graph`, `severed_causal_reach_positive_effective_reach`, **`P33`** | 13, 33, 35 |
 | `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23 (including 19b), 28 |
 | `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 24–27 (including 25b), 38–39b |
-| `AlignmentProofSpine/FieldSubsumptions.lean` | **Field-agenda subsumptions**: typed projections, forward implications (CIRL, shutdown, interruptibility, Christiano, ELK, debate, low impact, quantilization), and non-converse separations on finite profiles | crosswalk appendix |
+| `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared status ledger, finite no-Mathlib MDP/weights/reachability/contraction helpers, cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization | crosswalk appendix |
+| `AlignmentProofSpine/FieldSubsumptions.lean` | compatibility re-export for the field-agenda headline theorem names | crosswalk appendix |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
@@ -127,6 +128,16 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   `P42`, `P44`).
 * **bridge** — an empirical or philosophical condition supplied by measurement,
   governance, or future theory (`MB1`–`MB9`, declared as `axiom`).
+* **imported field theorem** — a source-cited external result or protocol
+  assumption (`Field.Imported`) used to state what the external agenda proves
+  under its own assumptions. These are distinct from `MB*` book bridges.
+
+Dependency hygiene: inspect any exported theorem with Lean's `#print axioms`
+before describing it as axiom-free. For example, use
+`#print axioms AlignmentProofSpine.interrupt_subsumption_ch24` or
+`#print axioms AlignmentProofSpine.christian_corrigibility_system` in a scratch
+Lean file; the former is a local finite proof, while the latter intentionally
+depends on `MB4`.
 
 ## Notes on deviations from the brief's scaffold
 

@@ -1,6 +1,15 @@
 % Custom environments and book styling
 
+\usepackage{array}
 \usepackage{tcolorbox}
+
+% Ragged-right fixed-width columns (longtable / tabularx).
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash\hspace{0pt}}p{#1}}
+
+% Breakable Lean identifiers in tables (underscores become break points).
+\newcommand{\leanid}[1]{%
+  \begingroup\small\urlstyle{tt}\nolinkurl{#1}\endgroup}
+\makeatother
 
 \newtcolorbox{chapterthesis}{
   colback=blue!5!white,

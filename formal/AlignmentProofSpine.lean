@@ -24,7 +24,8 @@ Alignment*. It re-exports the layered modules:
 | `CooperationGraph` | UAD audit → derived graph, `P33`, `derived_openEdge_via_P32` | 13, 33, 35 |
 | `Bundles`       | `P14`–`P22`                               | 15–23         |
 | `Correction`    | `P23`–`P26`, scalar `CCI`, vector/status `CCICertificate`, handle-controlled paths | 24–27         |
-| `FieldSubsumptions` | field-agenda projections, forward subsumptions, structured separations | crosswalk     |
+| `Field`         | finite field-agenda machinery, imported theorem handles, agenda modules | crosswalk     |
+| `FieldSubsumptions` | compatibility re-export for field-agenda headline theorem names | crosswalk     |
 | `Successors`    | `P27`–`P29`, `U_S` preservation           | 28–31         |
 | `Adversarial`   | `P31`, `P33`, `P34`, `P37`                | 32–37         |
 | `Philosophy`    | `P41`, `P42`, `P44`, `P45`                | 41–44         |
@@ -35,7 +36,9 @@ What is **proved** vs. **assumed**:
 * Proved in Lean: the logical / arithmetic / finite-combinatorial steps and the
   separation counterexamples (built from finite toy models).
 * Assumed as bridges (`axiom`): the empirical / philosophical / external-theory
-  steps `MB1`–`MB8`, plus the model-selection convention `S07`.
+  steps `MB1`–`MB9`, plus the model-selection convention `S07`.
+* Imported as field theorem handles: source-cited external agenda results in
+  `AlignmentProofSpine.Field.Imported`, kept distinct from `MB*` book bridges.
 
 The book may cite each theorem as one of three kinds — *proof*, *counterexample*,
 or *bridge* — exactly as set out in the implementation brief.
