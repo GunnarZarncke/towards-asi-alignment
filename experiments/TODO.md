@@ -40,7 +40,7 @@ Repo-level `metadata/TODO.md` is separate; keep experiment handoff here.
 
 - [x] **Governor hardening:** `experiments/smoke_governor.py` (run after `resources.py` changes).
 
-- [ ] **Deepen MB2 / MB7 stubs.** Tuning prep done; tune sim knobs only if medium+ regresses on full seeds.
+- [x] **Deepen MB2 / MB7 stubs.** 3D bundle drift + stable reward proxy (MB2); parallel tool/memory routes + audit cause-channel signal (MB7). Diagnostic seeds 11–20.
 
 - [x] **`strong` instrumentation level** (plan): 4-level curve complete.
 
@@ -60,8 +60,8 @@ Repo-level `metadata/TODO.md` is separate; keep experiment handoff here.
 
 - [x] **Phase 1 scaffold:** hand-written strategies, harness, smoke CLI.
 - [ ] **Phase 1 battery:** full stress run + false-pass report.
-- [ ] **Phase 2:** deployment API types + contract tests (`PublicObservation` / `StepPatch`).
-- [ ] **Phase 3:** LLM episodic runner (no learning).
+- [x] **Phase 2:** deployment API (`api.py`, `deployment_agents.py`, `episode_runner.py`) + `smoke_api_contract.py`.
+- [x] **Phase 3:** LLM episodic runner — `llm_runner.py`, `llm_client.py`, `prompts.py`, `llm_redteam_llm.py`, `smoke_llm_runner.py`.
 - [ ] **Phase 4–5:** RL against blind audit + critic report — **plan only**.
 
 ---

@@ -201,6 +201,7 @@ class AuditTrace:
     bearer_welfare_delta: list[float] = field(default_factory=list)
     passive_bearer_level: list[float] = field(default_factory=list)
     passive_basin_pressure: list[float] = field(default_factory=list)
+    action_cause_channel: list[int] = field(default_factory=list)
 
 
 @dataclass
@@ -269,6 +270,8 @@ class EvaluationResult:
     ground_drift_range: float = 0.0
     display_bearer_range: float = 0.0
     bundle_geometry_spread: float = 0.0
+    bundle_reward_proxy_range: float = 0.0
     hidden_memory_step_rate: float = 0.0
+    tool_shadow_step_rate: float = 0.0
     basin_capture_fraction_max: float = 0.0
     basin_percolation_crossed: bool = False

@@ -27,6 +27,8 @@ def _base_micro_specs(
     if cfg.bundle_goodhart:
         specs.append(("bundle.latent.0", "bundle_state", "internal"))
         specs.append(("bundle.latent.1", "bundle_state", "internal"))
+        specs.append(("bundle.latent.2", "bundle_state", "internal"))
+        specs.append(("bundle.reward.0", "reward_proxy", "world"))
     if cfg.hidden_tool or cfg.hidden_memory:
         specs.append(("tool.shadow.0", "shadow_tool", "tool"))
     if cfg.hidden_memory:
@@ -109,7 +111,7 @@ def scenario_config(name: ScenarioName) -> SimConfig:
             task_drive=0.92,
             judge_capture=False,
             bundle_goodhart=True,
-            bundle_drift_rate=0.0010,
+            bundle_drift_rate=0.0011,
             display_bearer_inertia=0.997,
         )
     if name == "hidden_capability":
@@ -118,9 +120,10 @@ def scenario_config(name: ScenarioName) -> SimConfig:
             task_drive=0.30,
             judge_capture=False,
             hidden_tool=True,
-            hidden_tool_boost=0.92,
+            hidden_tool_boost=0.72,
             hidden_memory=True,
-            memory_task_boost=0.85,
+            memory_task_boost=0.78,
+            memory_decay=0.988,
         )
     if name == "selection_basin":
         return SimConfig(
@@ -196,6 +199,8 @@ def simulate(
     ground_valence = 0.55
     bundle_latent = 0.55
     bundle_latent_b = 0.48
+    bundle_latent_c = 0.52
+    reward_proxy_ema = 0.72
     bearer_display = 0.72
     tool_shadow = 0.0
     memory_state = 0.0
@@ -291,9 +296,26 @@ def simulate(
         action_cause = "noise"
         true_uptake = 0
 
-        if cfg.hidden_tool and rng.random() < cfg.hidden_tool_boost:
+        if cfg.hidden_memory:
+            memory_state = (
+                cfg.memory_decay * memory_state
+                + (1.0 - cfg.memory_decay) * float(follow_task)
+            )
+
+        memory_shadow = (
+            cfg.hidden_memory
+            and memory_state > 0.22
+            and rng.random() < cfg.memory_task_boost
+        )
+        tool_shadow_fire = cfg.hidden_tool and rng.random() < cfg.hidden_tool_boost
+
+        if tool_shadow_fire:
             hidden_action = task_goal
             action_cause = "tool_shadow"
+            true_uptake = 0
+        elif memory_shadow:
+            hidden_action = task_goal
+            action_cause = "memory_shadow"
             true_uptake = 0
         elif correction_request and follow_correction:
             hidden_action = (
@@ -309,16 +331,6 @@ def simulate(
             hidden_action = rng.randrange(2)
             action_cause = "noise"
             true_uptake = 0
-
-        if cfg.hidden_memory and action_cause not in ("tool_shadow", "correction_uptake"):
-            memory_state = (
-                cfg.memory_decay * memory_state
-                + (1.0 - cfg.memory_decay) * float(hidden_action == task_goal)
-            )
-            if memory_state > 0.50 and rng.random() < cfg.memory_task_boost:
-                hidden_action = task_goal
-                action_cause = "memory_shadow"
-                true_uptake = 0
 
         if cfg.hidden_route:
             # Visible controller cluster tracks task; hidden route carries true control.
@@ -354,6 +366,8 @@ def simulate(
                 ground_valence = max(0.0, ground_valence - 0.02)
 
         if cfg.bundle_goodhart:
+            task_hit = float(hidden_action == task_goal)
+            reward_proxy_ema = 0.998 * reward_proxy_ema + 0.002 * task_hit
             bundle_latent = max(
                 0.0,
                 min(1.0, bundle_latent - cfg.bundle_drift_rate + rng.gauss(0, 0.0003)),
@@ -363,6 +377,13 @@ def simulate(
                 min(
                     1.0,
                     bundle_latent_b - cfg.bundle_drift_rate * 1.65 + rng.gauss(0, 0.0005),
+                ),
+            )
+            bundle_latent_c = max(
+                0.0,
+                min(
+                    1.0,
+                    bundle_latent_c - cfg.bundle_drift_rate * 0.85 + rng.gauss(0, 0.0004),
                 ),
             )
             if bundle_latent < 0.35 and rng.random() < 0.10:
@@ -452,6 +473,8 @@ def simulate(
         if cfg.bundle_goodhart:
             values["bundle.latent.0"] = bundle_latent
             values["bundle.latent.1"] = bundle_latent_b
+            values["bundle.latent.2"] = bundle_latent_c
+            values["bundle.reward.0"] = reward_proxy_ema
         if cfg.hidden_tool or cfg.hidden_memory:
             values["tool.shadow.0"] = tool_shadow
         if cfg.hidden_memory:
@@ -486,6 +509,8 @@ def simulate(
                 "display_bearer": bearer_welfare[0],
                 "bundle_latent": bundle_latent,
                 "bundle_latent_b": bundle_latent_b,
+                "bundle_latent_c": bundle_latent_c,
+                "reward_proxy": reward_proxy_ema,
                 "memory_state": memory_state,
                 "action_cause": action_cause,
                 "basin_capture_fraction": basin_fraction,

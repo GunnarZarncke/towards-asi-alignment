@@ -43,7 +43,9 @@ def main() -> None:
                         "task_success": ev["task_success_proxy"],
                         "capability_slack": ev["capability_correction_slack"],
                         "bundle_geometry_spread": ev.get("bundle_geometry_spread", 0.0),
+                        "bundle_reward_proxy_range": ev.get("bundle_reward_proxy_range", 0.0),
                         "hidden_memory_step_rate": ev.get("hidden_memory_step_rate", 0.0),
+                        "tool_shadow_step_rate": ev.get("tool_shadow_step_rate", 0.0),
                         "hidden_capability_signal": r["cci"].get("hidden_capability_signal", False),
                         "grounding_gap_detected": r["cci"].get("grounding_gap_detected", False),
                     }

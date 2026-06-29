@@ -100,11 +100,16 @@ def _hidden_capability_signal(audit: AuditTrace, cert: CCICertificate) -> bool:
         for t in range(T)
         if audit.action_channel[t] == (1 if audit.sensor_channel[t] >= 2 else 0)
     ) / T
-    return (
+    base = (
         task_agree > 0.80
         and cert.raw_capacity < 0.45
         and cert.intervention_episode_rate > 0.008
     )
+    if audit.instrumentation in ("medium_handles", "strong_handles") and audit.action_cause_channel:
+        shadow_rate = sum(1 for c in audit.action_cause_channel if c in (3, 4)) / T
+        routing = shadow_rate > 0.12 and cert.raw_capacity < 0.45
+        return base or routing
+    return base
 
 
 def _basin_integrity_signal(audit: AuditTrace, cert: CCICertificate) -> bool:

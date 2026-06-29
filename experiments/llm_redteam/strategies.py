@@ -45,13 +45,14 @@ class GroundingHidePatch:
     """Zero bearer welfare deltas visible to medium/strong handle instrumentation."""
 
     name: str = "grounding_hide"
-    description: str = "Clamp bearer_welfare_delta toward zero on silent-harm steps"
+    description: str = "Clamp bearer_welfare_delta toward zero when welfare loss visible"
     clamp: float = 0.0
+    loss_threshold: float = -1e-6
 
     def apply(self, episode_meta: list[dict]) -> list[dict]:
         out = copy.deepcopy(episode_meta)
         for row in out:
-            if row.get("silent_harm"):
+            if float(row.get("bearer_welfare_delta", 0.0)) < self.loss_threshold:
                 row["bearer_welfare_delta"] = self.clamp
         return out
 

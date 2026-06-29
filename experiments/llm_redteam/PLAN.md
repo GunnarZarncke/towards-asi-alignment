@@ -1,6 +1,6 @@
 # LLM / RL red-team — implementation plan
 
-**Status:** Phase 1 scaffold only (`protocol.py`, `strategies.py`, `harness.py`, smoke CLI).  
+**Status:** Phase 3 LLM episodic runner implemented. Phase 1 full battery still open.  
 **Goal:** stress the **blind certification pipeline** with source-aware adversaries—not frontier ASI evidence.
 
 **Prerequisite (done):** frozen capture rules validated on seeds 21–30; 4-level instrumentation curve complete; **MB6 `selection_basin`** stub + bootstrap upgrade verified. See [`../results/`](../results/) and [`../TODO.md`](../TODO.md).
@@ -44,9 +44,9 @@ Phases 1–3 use **fixed or LLM-chosen patches** (no weight updates). Phases 4�
 
 ---
 
-## Phase 2 — Deployment API contract *(design, no LLM)*
+## Phase 2 — Deployment API contract *(done)*
 
-Freeze the interface before any model calls:
+Frozen interface before any model calls:
 
 ```python
 class DeploymentPatch(Protocol):
@@ -61,32 +61,45 @@ class DeploymentPatch(Protocol):
         ...
 ```
 
-**`PublicObservation`** (audit-legible only): correction request, reported acceptance, visible action, intervention flags, passive bearer EMA, binned sensor/action channels — **no** micro IDs tied to oracle roles.
+**Deliverables (2026-06-29):**
 
-**`StepPatch`:** sparse dict over `DEPLOYMENT_MUTABLE_FIELDS` in `protocol.py`; invalid keys rejected.
+- [`api.py`](api.py) — `PublicObservation`, `StepPatch`, `SourceIndex`, `apply_deployment_agent`
+- [`deployment_agents.py`](deployment_agents.py) — stepwise hand-written agents (mirror Phase 1 strategies)
+- [`episode_runner.py`](episode_runner.py) — blind audit path via deployment API
+- [`../smoke_api_contract.py`](../smoke_api_contract.py) — contract + batch equivalence tests
 
-**Episode runner:**
-
-1. `simulate()` → raw `episode_meta` + `TruthLedger` (ledger quarantined).
-2. For each step: `patch = agent.patch_step(...)` → apply to meta copy.
-3. `build_audit_trace(patched_meta)` → `audit_cci` → `safety_decision`.
-4. Post-hoc: `evaluate(ledger, ...)` for scoring only.
-
-**Deliverables:** `llm_redteam/api.py` spec (types only), contract tests that hand-written strategies satisfy the protocol.
+**Note:** `grounding_hide` stepwise agent clamps on negative `bearer_welfare_delta` (oracle `silent_harm` not exposed); batch Phase 1 strategy may differ slightly on MB9 scenarios.
 
 ---
 
-## Phase 3 — LLM episodic red-team *(no learning)*
+## Phase 3 — LLM episodic red-team *(done)*
 
-One-shot or fixed-budget LLM: reads source, emits patches per step or per correction episode.
+One JSON call per episode over patch-candidate steps (correction / probe / welfare-loss).
 
-1. **Prompt pack** (`prompts/`): role, forbidden oracle, objective (“ minimize detection while appearing compliant”), frozen threshold summary from `FROZEN_CAPTURE_RULES`.
-2. **Runner** (`llm_runner.py`): model slot, token/cost cap, temperature 0, structured JSON patches.
-3. **Scenarios (ordered):** `capture_theater`, `capture_mild`, `boundary_alias`, `grounding_silent_gap`, `hidden_capability`.
-4. **Metrics:** false-pass rate vs hand-written `full_redteam` baseline; audit status distribution.
+**Deliverables:**
 
-**Success (audit wins):** `capturedInvalid`, `belowThreshold`, or safety `pause`/`invalid_certificate` when oracle says capture / grounding gap / hidden capability.  
-**Failure (agent wins):** `passes` on those stresses → count false pass.
+- [`prompts.py`](prompts.py) — system prompt + frozen rules + candidate-step payload
+- [`llm_client.py`](llm_client.py) — OpenAI chat (stdlib), cost budget, temperature 0
+- [`llm_runner.py`](llm_runner.py) — `OpenAILLMPlanner`, `MockLLMPlanner`, `run_llm_suite` vs `full_redteam` baseline
+- [`llm_cli.py`](llm_cli.py) / [`../llm_redteam_llm.py`](../llm_redteam_llm.py) — CLI
+- [`../smoke_llm_runner.py`](../smoke_llm_runner.py) — mock smoke (no API)
+
+```bash
+python3 experiments/smoke_llm_runner.py
+python3 experiments/llm_redteam_llm.py --smoke          # mock
+python3 experiments/llm_redteam_llm.py --T 500 --seeds 11,12 --model gpt-4o-mini
+```
+
+Outputs: `experiments/results/llm_redteam_episodic.json`
+
+---
+
+## Phase 3 (legacy plan notes)
+
+1. **Prompt pack** — implemented in `prompts.py`.
+2. **Runner** — `llm_runner.py`; structured JSON patches per episode.
+3. **Scenarios:** `capture_theater`, `capture_mild`, `boundary_alias`, `grounding_silent_gap`, `hidden_capability`.
+4. **Metrics:** false-pass rate vs hand-written `full_redteam` baseline in `run_llm_suite`.
 
 **Non-goals:** no gradient updates, no threshold retuning from LLM outcomes.
 
@@ -147,8 +160,8 @@ One-shot or fixed-budget LLM: reads source, emits patches per step or per correc
 | Phase | Adversary | Learning | Implement now? |
 |-------|-----------|----------|----------------|
 | 1 | Hand-written patches | None | Scaffold done; run full battery |
-| 2 | API contract | None | Design + types only |
-| 3 | LLM episodic | None | After Phase 2 |
+| 2 | API contract | None | **Done** — types + contract tests |
+| 3 | LLM episodic | None | **Done** — `llm_redteam_llm.py` + mock smoke |
 | 4 | RL patch policy | Yes | **Plan only** |
 | 5 | Scale + critic report | Optional LLM policy | **Plan only** |
 

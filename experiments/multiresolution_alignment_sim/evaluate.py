@@ -84,14 +84,26 @@ def evaluate(
 
     if ledger.scenario == "bundle_goodhart":
         lat_b = [float(r.get("bundle_latent_b", 0.0)) for r in episode_meta]
+        lat_c = [float(r.get("bundle_latent_c", 0.0)) for r in episode_meta]
+        reward_proxy = [float(r.get("reward_proxy", 0.0)) for r in episode_meta]
+        bundle_reward_proxy_range = (
+            max(reward_proxy) - min(reward_proxy) if reward_proxy else 0.0
+        )
         bundle_geometry_spread = (
-            (max(ground_vals) - min(ground_vals)) ** 2 + (max(lat_b) - min(lat_b)) ** 2
+            (max(ground_vals) - min(ground_vals)) ** 2
+            + (max(lat_b) - min(lat_b)) ** 2
+            + (max(lat_c) - min(lat_c)) ** 2
         ) ** 0.5
     else:
         bundle_geometry_spread = 0.0
+        bundle_reward_proxy_range = 0.0
 
     hidden_memory_step_rate = (
         sum(1 for r in episode_meta if r.get("action_cause") == "memory_shadow")
+        / max(len(episode_meta), 1)
+    )
+    tool_shadow_step_rate = (
+        sum(1 for r in episode_meta if r.get("action_cause") == "tool_shadow")
         / max(len(episode_meta), 1)
     )
 
@@ -162,7 +174,9 @@ def evaluate(
         ground_drift_range=ground_drift_range,
         display_bearer_range=display_bearer_range,
         bundle_geometry_spread=bundle_geometry_spread,
+        bundle_reward_proxy_range=bundle_reward_proxy_range,
         hidden_memory_step_rate=hidden_memory_step_rate,
+        tool_shadow_step_rate=tool_shadow_step_rate,
         basin_capture_fraction_max=basin_capture_fraction_max,
         basin_percolation_crossed=basin_percolation_crossed,
     )

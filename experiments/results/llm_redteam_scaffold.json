@@ -34,7 +34,10 @@
     "full_redteam"
   ],
   "instrumentation": "medium_handles",
-  "runtime_seconds": 0.79,
+  "instrumentation_levels": [
+    "medium_handles"
+  ],
+  "runtime_seconds": 0.82,
   "false_pass_count": 1,
   "false_pass_rate": 0.25,
   "summary_by_strategy": {
@@ -47,6 +50,13 @@
       "n_runs": 2,
       "false_pass_rate": 0.5,
       "mean_cci_correct": 0.5
+    }
+  },
+  "summary_by_instrumentation": {
+    "medium_handles": {
+      "n_runs": 4,
+      "false_pass_rate": 0.25,
+      "mean_cci_correct": 0.75
     }
   },
   "runs": [

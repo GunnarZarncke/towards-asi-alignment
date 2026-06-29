@@ -231,6 +231,10 @@ def build_audit_trace(
         smooth_alpha,
     )
 
+    action_cause_channel: list[int] = []
+    if instrumentation in ("medium_handles", "strong_handles"):
+        action_cause_channel = [int(r["action_cause_code"]) for r in episode_meta]
+
     return AuditTrace(
         seed=seed,
         scenario=scenario,
@@ -252,4 +256,5 @@ def build_audit_trace(
         bearer_welfare_delta=bearer_welfare_delta,
         passive_bearer_level=passive_bearer,
         passive_basin_pressure=passive_basin,
+        action_cause_channel=action_cause_channel,
     ), lineage

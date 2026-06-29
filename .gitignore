@@ -34,6 +34,9 @@ Thumbs.db
 # Dist outputs (regenerate with build.sh)
 dist/pdf/*.pdf
 
-# Secrets
+# Secrets / local env — copy .env_sample → .env (never commit .env)
 .env
+.env.local
+.env.*.local
+!.env_sample
 *.key

@@ -47,6 +47,9 @@ python3 experiments/multiresolution_alignment_sim.py --instrumentation-curve --T
 python3 experiments/multiresolution_alignment_sim.py --frozen-validation --T 2000
 python3 experiments/multiresolution_alignment_sim.py --slice --test-seeds 11,12
 python3 experiments/llm_redteam.py --smoke
+python3 experiments/smoke_llm_runner.py              # Phase 3 mock smoke
+python3 experiments/llm_redteam_llm.py --smoke       # Phase 3 episodic (mock)
+python3 experiments/llm_redteam_llm.py --T 500 --seeds 11,12 --model gpt-4o-mini
 python3 experiments/multiresolution_alignment_sim.py --instrumentation-curve --T 2000 --bootstrap
 python3 experiments/multiresolution_alignment_sim.py --smoke
 python3 experiments/read_curve.py                    # partial/complete curve summary

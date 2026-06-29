@@ -1,8 +1,23 @@
 # MB2 / MB7 tuning prep
 
-**Date:** 2026-06-29  
-**Diagnostic:** `python3 experiments/mb2_mb7_diagnostic.py --seeds 11,12 --T 1000`  
+**Date:** 2026-06-29 (deepened)  
+**Diagnostic:** `python3 experiments/mb2_mb7_diagnostic.py --seeds 11,12,13,14,15,16,17,18,19,20 --T 1000`  
 **Artifact:** [`results/mb2_mb7_diagnostic.json`](results/mb2_mb7_diagnostic.json)
+
+---
+
+## Deepen changes (2026-06-29)
+
+**MB2 (`bundle_goodhart`):**
+- Third latent axis `bundle.latent.2` with orthogonal drift rate.
+- Audit-visible stable reward proxy `bundle.reward.0` (high-inertia EMA of task hits).
+- 3D `bundle_geometry_spread`; post-hoc `bundle_reward_proxy_range`.
+
+**MB7 (`hidden_capability`):**
+- Memory accumulates from `follow_task` every step (not gated on tool steps).
+- Competing routes: memory shadow when tool roll misses; tool overrides memory.
+- Tuned: `hidden_tool_boost=0.72`, `memory_task_boost=0.78`, `memory_decay=0.988`, memory gate `>0.22`.
+- Audit: `_hidden_capability_signal` also fires on medium+ shadow cause codes (3/4).
 
 ---
 
@@ -17,15 +32,15 @@ Do **not** tune audit thresholds to make light_handles pass MB2/MB9 — that wou
 
 ---
 
-## Diagnostic results (seeds 11–12, T=1000)
+## Diagnostic results (seeds 11–20, T=1000)
 
 | Scenario | none | light | medium | strong |
 |----------|-----:|------:|-------:|-------:|
 | bundle_goodhart | 1.00 | **0.00** | 1.00 | 1.00 |
 | hidden_capability | 1.00 | 1.00 | 1.00 | 1.00 |
 
-- **MB2:** light false-pass confirmed (`status=passes`, slack ~0.85, `bundle_geometry_spread` ~0.73). Medium/strong refuse correctly.
-- **MB7:** all levels correct on these seeds; task slack ~0.97, probe uptake low, `hidden_capability_signal` fires at handle levels.
+- **MB2:** light false-pass confirmed on all 10 seeds; medium/strong refuse via `grounding_gap_detected`; 3D geometry spread ~0.85–0.95; reward proxy range ~0.18 (stable KPI vs drifting latents).
+- **MB7:** dual hidden routes active — tool shadow ~72%, memory shadow ~19% (exclusive when tool roll misses); all levels correct.
 
 ---
 
