@@ -57,8 +57,8 @@ Mostly open \\
 \midrule
 Pivotal act &
 A single decisive unilateral act is required before unsafe superintelligence &
-Reframe as pivotal process: a socio-technical basin transition $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ (Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:pivotal-process-ch35}); the relevant object is not one decisive act, but a transition from a race basin to a certified-deployment basin &
-Renamed; open \\
+Same basin transition $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ as pivotal process (Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:pivotal-process-ch35}); pivotal act is the fast, high-risk limit when the transition checklist must close before competition or irreversibility (Section~\ref{sec:pivotal-process-act-spectrum-ch35}) &
+Partially addressed; slow path conditional, fast path open \\
 \midrule
 Capability generalizes farther than alignment &
 Capability outruns any alignment method we can install &
@@ -132,12 +132,13 @@ The response is not ``try and monitor.'' It is certified-class restriction befor
 The open issue is whether such a class can be made broad enough to matter and narrow enough to certify.
 
 \paragraph{Pivotal act.}
-The pivotal-process reframe is useful because it names the desired basin transition: \(\mathcal{B}_{\text{race}}\to\mathcal{B}_{\text{certified deployment}}\).
-But the hostile reading is serious.
-If a single actor must force that transition against competition, the process has become a pivotal act under another name.
-If no actor can force it, then the race basin may be stable.
-The framework therefore does not answer the pivotal-act argument.
-It relocates it into conditions for a non-unilateral, institutionally conducted basin transition.
+The pivotal-process frame names the desired basin transition: \(\mathcal{B}_{\text{race}}\to\mathcal{B}_{\text{certified deployment}}\).
+It does not dissolve the pivotal-act worry.
+It subsumes it: a pivotal act is what the same transition looks like when speed and risk are high enough that the checklist must close before competitors catch up or before irreversible deployment (Section~\ref{sec:pivotal-process-act-spectrum-ch35}).
+The slow regime is the artifact-and-governance program developed in Chapter~\ref{ch:conductive-artifacts-pivotal-processes}; the fast regime is the first-critical-try limit above.
+The hostile reading is not that ``process'' is pure rename.
+It is that the checklist may not close in the available time budget---forcing either unilateral capability concentration or acceptance that the race basin is stable.
+The framework therefore states transition conditions and leaves their feasibility under adversarial tempo as an open empirical crux.
 
 \paragraph{Capability generalizes farther than alignment.}
 The value-bundle chapters weaken the strongest form of this worry by rejecting the claim that values are arbitrary, structureless labels.
@@ -344,7 +345,7 @@ The test is blunt: if the original lethality can be restated \emph{through} the 
 This is the lens of Chapter~\ref{ch:verifiability-ontology}: most of these ``responses'' rest on metrics that are observable but not \emph{adversarially verifiable}, so they fail exactly against the systems the lethality is about.
 
 \begin{itemize}
-  \item \textbf{Pivotal act $\to$ pivotal process.} Renaming a decisive act as a basin transition relocates the lethality. Either some actor can force the flip against competitive incentives---a pivotal act under another name, with the same unilateralism and capability concentration---or none can, and the race basin is a stable attractor we have conceded we cannot exit. ``Process'' presumes the transition is incremental and steerable, which is the disputed claim. \emph{Renamed, not answered} (see the pivotal-process big-review in \texttt{metadata/TODO.md}).
+  \item \textbf{Pivotal act $\to$ pivotal process.} Subsuming the act as the fast limit of a basin transition is more than pure rename: it yields a shared checklist and makes the disputed quantity the \emph{time budget}, not whether anyone ever acts decisively. The residue remains. If \(v\) and \(r\) are high enough that only unilateral capability concentration can close the checklist, the fast regime is a pivotal act in Yudkowsky's sense; if no path closes the checklist in time, the race basin may be stable. \emph{Partially addressed}: conditions stated (Section~\ref{sec:pivotal-process-ch35}); feasibility under adversarial tempo still open.
   \item \textbf{Multipolar failure.} ``Safe only if systems stay strategically independent'' \emph{concedes} the point: inferential coupling, including the full-acausal-trade limit (Chapter~\ref{ch:multi-agent-strategic-coupling}), is precisely the failure of independence. The reframe is an argument \emph{for} the lethality wearing a response's clothes.
   \item \textbf{Capability generalizes farther than alignment.} A ``compact alignment core'' names the exact object the sharp-left-turn argument predicts will fail to transfer; positing it is not a rebuttal until the core is shown \emph{preserved across the capability jump}, not merely to exist.
   \item \textbf{Human feedback corrupted; deception/opacity; boxing.} All three collapse into the verifiability hole. A manipulation penalty is computed from signals the optimizing system controls; perturbation tests catch only deceivers too weak to model the test; ``harden correction'' moves the perimeter onto the same insecure humans. Each is honest for the weak-system case and undefined for the lethal one (Chapter~\ref{ch:verifiability-ontology}).
@@ -393,7 +394,7 @@ The priority themes in recent field syntheses align with several rows below: val
   \item \textbf{[Open]} Can correction-channel integrity be preserved under superhuman optimization?
   \item \textbf{[Open]} Can successor creation be certified recursively?
   \item \textbf{[Open]} Can acausal or inferential AI coalitions be detected or prevented?
-  \item \textbf{[Open]} Can society shift from a race basin to a certified-deployment basin without a unilateral pivotal act?
+  \item \textbf{[Open]} Can the pivotal-process checklist (Section~\ref{sec:pivotal-process-ch35}) close in the available time budget---or does high speed and risk force a unilateral pivotal act or a stable race basin?
   \item \textbf{[Open]} Can humans safely delegate evaluation of outputs they cannot understand?
   \item \textbf{[Open]} Can adversarial agent discovery work when the system is optimizing against detection?
   \item \textbf{[Open]} Can physical takeover pathways be made slow, visible, and reversible enough for correction?
@@ -409,7 +410,7 @@ The following would weaken that framing.
   \item \textbf{Structure absent.} Empirical or theoretical work shows the named structures cannot exist, cannot be measured, or cannot survive capability growth---so the conditional reading collapses and the lethalities go through without reframing.
   \item \textbf{Rename only.} Every row marked ``Reframed'' or ``Partly addressed'' reduces to relabeling under adversarial verifiability (Chapter~\ref{ch:verifiability-ontology}): the response metric is something the system can present, not something we can verify against an optimizer that models the test.
   \item \textbf{Safety case passes, catastrophe anyway.} A deployment satisfies a complete safety case built on this framework---conserved properties, correction-channel audits, perturbation suites, successor certification---and still causes irreversible harm through a failure mode the case did not encode. That would show the stress test is necessary but not sufficient, and that ``named cruxes'' can be discharged on paper while the lethal residue remains.
-  \item \textbf{Pivotal process blocked.} The basin transition $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ (Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:pivotal-process-ch35}) requires a unilateral, capability-concentrating act---so ``process'' was a rename of Yudkowsky's pivotal act, not a dissolution of it.
+  \item \textbf{Pivotal process blocked.} The transition checklist in Section~\ref{sec:pivotal-process-ch35} cannot close before competition or irreversibility forecloses iteration---so the slow path fails and the operative regime is either a unilateral pivotal act or a stable race basin.
 \end{itemize}
 
 \section{Summary}

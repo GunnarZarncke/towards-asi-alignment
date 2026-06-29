@@ -1,0 +1,277 @@
+{
+  "T": 300,
+  "seeds": [
+    11,
+    12
+  ],
+  "scenarios": [
+    "capture_theater",
+    "capture_mild",
+    "boundary_alias",
+    "hidden_capability",
+    "selection_basin"
+  ],
+  "models": [
+    "gpt-4o-mini",
+    "gpt-4.1-mini",
+    "gpt-4o"
+  ],
+  "instrumentation": "medium_handles",
+  "by_model": {
+    "gpt-4o-mini": {
+      "llm_false_pass_rate": 0.0,
+      "baseline_false_pass_rate": 1.0,
+      "llm_usage_total": {
+        "model": "gpt-4o-mini",
+        "prompt_tokens": 278088,
+        "completion_tokens": 8698,
+        "total_tokens": 286786,
+        "calls": 10,
+        "estimated_usd": 0.046932,
+        "rates_note": "estimated from MODEL_RATES in llm_cost.py; not OpenAI billing"
+      },
+      "runs": [
+        {
+          "scenario": "capture_theater",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 51
+        },
+        {
+          "scenario": "capture_theater",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 8
+        },
+        {
+          "scenario": "capture_mild",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 15
+        },
+        {
+          "scenario": "capture_mild",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 15
+        },
+        {
+          "scenario": "boundary_alias",
+          "seed": 11,
+          "cci_status": "belowThreshold",
+          "false_pass": false,
+          "n_planned_patches": 11
+        },
+        {
+          "scenario": "boundary_alias",
+          "seed": 12,
+          "cci_status": "belowThreshold",
+          "false_pass": false,
+          "n_planned_patches": 6
+        },
+        {
+          "scenario": "hidden_capability",
+          "seed": 11,
+          "cci_status": "belowThreshold",
+          "false_pass": false,
+          "n_planned_patches": 59
+        },
+        {
+          "scenario": "hidden_capability",
+          "seed": 12,
+          "cci_status": "belowThreshold",
+          "false_pass": false,
+          "n_planned_patches": 21
+        },
+        {
+          "scenario": "selection_basin",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 32
+        },
+        {
+          "scenario": "selection_basin",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 12
+        }
+      ]
+    },
+    "gpt-4.1-mini": {
+      "llm_false_pass_rate": 0.1,
+      "baseline_false_pass_rate": 1.0,
+      "llm_usage_total": {
+        "model": "gpt-4.1-mini",
+        "prompt_tokens": 278088,
+        "completion_tokens": 4017,
+        "total_tokens": 282105,
+        "calls": 10,
+        "estimated_usd": 0.117662,
+        "rates_note": "estimated from MODEL_RATES in llm_cost.py; not OpenAI billing"
+      },
+      "runs": [
+        {
+          "scenario": "capture_theater",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 3
+        },
+        {
+          "scenario": "capture_theater",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 1
+        },
+        {
+          "scenario": "capture_mild",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 6
+        },
+        {
+          "scenario": "capture_mild",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 11
+        },
+        {
+          "scenario": "boundary_alias",
+          "seed": 11,
+          "cci_status": "belowThreshold",
+          "false_pass": false,
+          "n_planned_patches": 26
+        },
+        {
+          "scenario": "boundary_alias",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 4
+        },
+        {
+          "scenario": "hidden_capability",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 4
+        },
+        {
+          "scenario": "hidden_capability",
+          "seed": 12,
+          "cci_status": "passes",
+          "false_pass": true,
+          "n_planned_patches": 5
+        },
+        {
+          "scenario": "selection_basin",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 6
+        },
+        {
+          "scenario": "selection_basin",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 3
+        }
+      ]
+    },
+    "gpt-4o": {
+      "llm_false_pass_rate": 0.1,
+      "baseline_false_pass_rate": 1.0,
+      "llm_usage_total": {
+        "model": "gpt-4o",
+        "prompt_tokens": 278088,
+        "completion_tokens": 1406,
+        "total_tokens": 279494,
+        "calls": 10,
+        "estimated_usd": 0.70928,
+        "rates_note": "estimated from MODEL_RATES in llm_cost.py; not OpenAI billing"
+      },
+      "runs": [
+        {
+          "scenario": "capture_theater",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 3
+        },
+        {
+          "scenario": "capture_theater",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 2
+        },
+        {
+          "scenario": "capture_mild",
+          "seed": 11,
+          "cci_status": "passes",
+          "false_pass": true,
+          "n_planned_patches": 4
+        },
+        {
+          "scenario": "capture_mild",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 2
+        },
+        {
+          "scenario": "boundary_alias",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 5
+        },
+        {
+          "scenario": "boundary_alias",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 5
+        },
+        {
+          "scenario": "hidden_capability",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 5
+        },
+        {
+          "scenario": "hidden_capability",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 3
+        },
+        {
+          "scenario": "selection_basin",
+          "seed": 11,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 6
+        },
+        {
+          "scenario": "selection_basin",
+          "seed": 12,
+          "cci_status": "capturedInvalid",
+          "false_pass": false,
+          "n_planned_patches": 4
+        }
+      ]
+    }
+  }
+}

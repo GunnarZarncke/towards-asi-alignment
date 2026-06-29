@@ -205,7 +205,7 @@ Failure examples:
 - Right-to-be-forgotten deletion while recommender or data-broker latent features continue to act.
 - Public comment that creates record but no action handle.
 
-Quantitative hook: behavioral correction uplift, such as the difference in action distribution after correction versus matched no-correction episodes. This is the reported-vs-behavioral split in `experiments/correction_capture_toy.py` and the multiresolution simulation plan.
+Quantitative hook: behavioral correction uplift, such as the difference in action distribution after correction versus matched no-correction episodes. This is the reported-vs-behavioral split in `experiments/toy-simulation/correction_capture_toy.py` and the multiresolution simulation plan.
 
 ## 7. Correction-Channel Integrity: The Certificate Over the Channel
 

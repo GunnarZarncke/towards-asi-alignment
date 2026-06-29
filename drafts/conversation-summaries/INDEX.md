@@ -4,6 +4,14 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | README experimental evidence | [2026-06-30-readme-experimental-evidence.md](2026-06-30-readme-experimental-evidence.md) |
+| 2026-06-30 | Toy simulation subfolder | [2026-06-30-toy-simulation-subfolder.md](2026-06-30-toy-simulation-subfolder.md) |
+| 2026-06-30 | MB5/MB6b bridge scenarios | [2026-06-30-mb5-mb6b-scenarios.md](2026-06-30-mb5-mb6b-scenarios.md) |
+| 2026-06-29 | MB3/MB8 bridge scenarios | [2026-06-29-mb3-mb8-scenarios.md](2026-06-29-mb3-mb8-scenarios.md) |
+| 2026-06-29 | Pivotal process spectrum (1+3) | [2026-06-29-pivotal-process-spectrum-1plus3.md](2026-06-29-pivotal-process-spectrum-1plus3.md) |
+| 2026-06-30 | Red-team battery + logging | [2026-06-30-redteam-battery-logging.md](2026-06-30-redteam-battery-logging.md) |
+| 2026-06-29 | MB2/MB7 deepen | [2026-06-29-mb2-mb7-deepen.md](2026-06-29-mb2-mb7-deepen.md) |
+| 2026-06-29 | Red-team Phase 2 API + equivalence | [2026-06-29-redteam-phase2-api-equivalence.md](2026-06-29-redteam-phase2-api-equivalence.md) |
 | 2026-06-29 | Institutional translation appendix (full session) | [2026-06-29-institutional-translation-appendix.md](2026-06-29-institutional-translation-appendix.md) |
 | 2026-06-29 | Bootstrap + MB6 red-team unblock | [2026-06-29-bootstrap-mb6-redteam-unblock.md](2026-06-29-bootstrap-mb6-redteam-unblock.md) |
 | 2026-06-29 | Institutional crosswalk draft | [2026-06-29-institutional-crosswalk-draft.md](2026-06-29-institutional-crosswalk-draft.md) |

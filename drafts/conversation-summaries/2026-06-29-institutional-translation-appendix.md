@@ -39,4 +39,4 @@ User asked to map the book's alignment concepts to human institutional analogues
 ## Commits
 
 - `1f57fbc` Add institutional translation appendix for policy-adjacent readers.
-- (this session) bibliography pass + Appendix References restructuring.
+- `4b36608` Add institutional sources and chapter-style appendix references.

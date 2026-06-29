@@ -1,0 +1,62 @@
+{
+  "entries": [
+    {
+      "timestamp": "2026-06-29T22:43:29.172721+00:00",
+      "model": "gpt-4o-mini",
+      "planner": "llm_gpt-4o-mini",
+      "result_file": "llm_redteam_episodic_gpt-4o-mini.json",
+      "log_file": "llm_model_sweep_2026-06-30-004145.md",
+      "episodes": 10,
+      "cost_budget_usd": 15.0,
+      "usage": {
+        "model": "gpt-4o-mini",
+        "prompt_tokens": 278088,
+        "completion_tokens": 8698,
+        "total_tokens": 286786,
+        "calls": 10,
+        "estimated_usd": 0.046932,
+        "rates_note": "estimated from MODEL_RATES in llm_cost.py; not OpenAI billing"
+      },
+      "llm_false_pass_rate": 0.0
+    },
+    {
+      "timestamp": "2026-06-29T22:52:50.922683+00:00",
+      "model": "gpt-4.1-mini",
+      "planner": "llm_gpt-4.1-mini",
+      "result_file": "llm_redteam_episodic_gpt-4-1-mini.json",
+      "log_file": "llm_model_sweep_2026-06-30-004145.md",
+      "episodes": 10,
+      "cost_budget_usd": 15.0,
+      "usage": {
+        "model": "gpt-4.1-mini",
+        "prompt_tokens": 278088,
+        "completion_tokens": 4017,
+        "total_tokens": 282105,
+        "calls": 10,
+        "estimated_usd": 0.117662,
+        "rates_note": "estimated from MODEL_RATES in llm_cost.py; not OpenAI billing"
+      },
+      "llm_false_pass_rate": 0.1
+    },
+    {
+      "timestamp": "2026-06-29T23:01:36.695523+00:00",
+      "model": "gpt-4o",
+      "planner": "llm_gpt-4o",
+      "result_file": "llm_redteam_episodic_gpt-4o.json",
+      "log_file": "llm_model_sweep_2026-06-30-004145.md",
+      "episodes": 10,
+      "cost_budget_usd": 15.0,
+      "usage": {
+        "model": "gpt-4o",
+        "prompt_tokens": 278088,
+        "completion_tokens": 1406,
+        "total_tokens": 279494,
+        "calls": 10,
+        "estimated_usd": 0.70928,
+        "rates_note": "estimated from MODEL_RATES in llm_cost.py; not OpenAI billing"
+      },
+      "llm_false_pass_rate": 0.1
+    }
+  ],
+  "cumulative_estimated_usd": 0.873874
+}
