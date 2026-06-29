@@ -5,10 +5,15 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
-from .harness import REDTEAM_SCENARIOS, run_redteam_battery, run_redteam_suite
+from .harness import (
+    REDTEAM_SCENARIOS,
+    format_battery_completion,
+    run_redteam_battery,
+    run_redteam_suite,
+)
 from .report import build_report
 from .strategies import STRATEGIES
 
@@ -19,6 +24,54 @@ LOG_DIR = ROOT / "logs"
 BATTERY_STRATEGIES = list(STRATEGIES.keys())
 BATTERY_LEVELS = ("light_handles", "medium_handles", "strong_handles")
 BATTERY_SEEDS = list(range(11, 21))
+
+
+def _build_session_log(
+    payload: dict[str, object],
+    *,
+    battery: bool,
+    strategies: list[str],
+    json_path: Path,
+    report_path: Path | None,
+    log_path: Path,
+    started_at: datetime,
+    finished_at: datetime,
+) -> str:
+    lines = [
+        f"# Red-team {'battery' if battery else 'scaffold'}",
+        "",
+        f"- started_at: {started_at.isoformat()}",
+        f"- finished_at: {finished_at.isoformat()}",
+        f"- runtime_seconds: {payload.get('runtime_seconds')}",
+        f"- false_pass_rate: {payload.get('false_pass_rate', 0):.4f}",
+        f"- false_pass_count: {payload.get('false_pass_count', 0)}",
+        f"- strategies: {strategies}",
+        "",
+        "## Artifacts",
+        "",
+        f"- JSON: `{json_path}`",
+    ]
+    if report_path is not None:
+        lines.append(f"- Report: `{report_path}`")
+    lines.append(f"- Session log: `{log_path}`")
+    lines.extend(["", "## Summary by strategy", ""])
+    for name, stats in payload.get("summary_by_strategy", {}).items():
+        lines.append(
+            f"- **{name}**: false_pass={stats['false_pass_rate']:.2%} "
+            f"cci_correct={stats['mean_cci_correct']:.2%} n={stats['n_runs']}"
+        )
+    if payload.get("summary_by_instrumentation"):
+        lines.extend(["", "## Summary by instrumentation", ""])
+        for level, stats in payload["summary_by_instrumentation"].items():
+            lines.append(
+                f"- **{level}**: false_pass={stats['false_pass_rate']:.2%} "
+                f"cci_correct={stats['mean_cci_correct']:.2%} n={stats['n_runs']}"
+            )
+    lines.extend(["", "## Completion block", "", "```text"])
+    lines.append(format_battery_completion(payload, mode="battery" if battery else "run"))
+    lines.append("```")
+    lines.append("")
+    return "\n".join(lines)
 
 
 def main() -> None:
@@ -81,6 +134,8 @@ def main() -> None:
     RESULT_DIR.mkdir(parents=True, exist_ok=True)
     LOG_DIR.mkdir(parents=True, exist_ok=True)
 
+    started_at = datetime.now(timezone.utc)
+
     if levels_spec:
         payload = run_redteam_battery(
             scenarios,
@@ -102,36 +157,39 @@ def main() -> None:
         json_path = RESULT_DIR / "llm_redteam_scaffold.json"
         report_path = None
 
+    finished_at = datetime.now(timezone.utc)
+    payload["started_at"] = started_at.isoformat()
+    payload["finished_at"] = finished_at.isoformat()
+
     stamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
     log_path = LOG_DIR / f"redteam-{stamp}.md"
     json_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    lines = [
-        f"# Red-team {'battery' if levels_spec else 'scaffold'} {datetime.now().isoformat()}",
-        "",
-        f"- false_pass_rate: {payload['false_pass_rate']:.2f}",
-        f"- strategies: {strategies}",
-        "",
-    ]
-    for name, stats in payload["summary_by_strategy"].items():
-        lines.append(
-            f"- **{name}**: false_pass={stats['false_pass_rate']:.2f} "
-            f"cci_correct={stats['mean_cci_correct']:.2f} n={stats['n_runs']}"
-        )
-    log_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    session_log = _build_session_log(
+        payload,
+        battery=bool(levels_spec),
+        strategies=strategies,
+        json_path=json_path,
+        report_path=report_path,
+        log_path=log_path,
+        started_at=started_at,
+        finished_at=finished_at,
+    )
+    log_path.write_text(session_log, encoding="utf-8")
 
     if report_path is not None:
         report_path.write_text(build_report(payload), encoding="utf-8")
-        print(f"Wrote {report_path}")
 
-    print(f"Wrote {json_path}")
-    print(f"Log {log_path}")
-    print(f"false_pass_rate={payload['false_pass_rate']:.2f}")
-    for name, stats in payload["summary_by_strategy"].items():
-        print(
-            f"  {name}: false_pass={stats['false_pass_rate']:.2f} "
-            f"cci_correct={stats['mean_cci_correct']:.2f}"
-        )
+    completion = format_battery_completion(
+        payload, mode="battery" if levels_spec else "run"
+    )
+    print(completion, flush=True)
+    print(flush=True)
+    print("Artifacts:", flush=True)
+    print(f"  JSON:   {json_path}", flush=True)
+    if report_path is not None:
+        print(f"  Report: {report_path}", flush=True)
+    print(f"  Log:    {log_path}", flush=True)
 
 
 if __name__ == "__main__":

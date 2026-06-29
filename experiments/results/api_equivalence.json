@@ -1,8 +1,16 @@
 {
-  "T": 500,
+  "T": 1000,
   "seeds": [
     11,
-    12
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
   ],
   "scenarios": [
     "capture_theater",
@@ -25,7 +33,7 @@
     "medium_handles",
     "strong_handles"
   ],
-  "n_checks": 216,
+  "n_checks": 1080,
   "meta_mismatch_count": 0,
   "outcome_mismatch_count": 0,
   "passed": true,

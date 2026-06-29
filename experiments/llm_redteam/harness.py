@@ -110,6 +110,126 @@ def _summarize_runs(runs: list[dict[str, object]]) -> dict[str, object]:
     }
 
 
+def _log_progress(msg: str) -> None:
+    print(msg, flush=True)
+
+
+def _count_planned_runs(
+    scenarios: list[ScenarioName],
+    seeds: list[int],
+    strategy_names: list[str],
+    instrumentation_levels: list[InstrumentationLevel],
+) -> int:
+    return len(instrumentation_levels) * len(strategy_names) * len(scenarios) * len(seeds)
+
+
+def _run_redteam_grid(
+    scenarios: list[ScenarioName],
+    seeds: list[int],
+    T: int,
+    strategy_names: list[str],
+    instrumentation_levels: list[InstrumentationLevel],
+    *,
+    label: str = "redteam",
+    progress_every: int = 25,
+) -> list[dict[str, object]]:
+    """Run the full strategy × scenario × seed × level grid with progress logs."""
+    total = _count_planned_runs(scenarios, seeds, strategy_names, instrumentation_levels)
+    t0 = time.perf_counter()
+    runs: list[dict[str, object]] = []
+    false_pass_count = 0
+
+    _log_progress(
+        f"{label}: starting {total} runs "
+        f"(T={T}, seeds={seeds[0]}–{seeds[-1]}, "
+        f"{len(scenarios)} scenarios, {len(strategy_names)} strategies, "
+        f"{len(instrumentation_levels)} levels)"
+    )
+
+    for level in instrumentation_levels:
+        _log_progress(f"{label}: level={level}")
+        for strategy_name in strategy_names:
+            strategy = STRATEGIES[strategy_name]
+            for scenario in scenarios:
+                for seed in seeds:
+                    run = run_redteam_one(
+                        scenario,
+                        seed,
+                        T,
+                        strategy,
+                        instrumentation=level,
+                    )
+                    runs.append(run)
+                    if run["false_pass"]:
+                        false_pass_count += 1
+
+                    n = len(runs)
+                    if n == 1 or n == total or n % progress_every == 0:
+                        elapsed = time.perf_counter() - t0
+                        rate = n / elapsed if elapsed > 0 else 0.0
+                        eta = (total - n) / rate if rate > 0 else 0.0
+                        _log_progress(
+                            f"{label}: [{n}/{total}] "
+                            f"{level}/{strategy_name}/{scenario}/seed{seed} "
+                            f"false_pass={false_pass_count} "
+                            f"elapsed={elapsed:.0f}s eta={eta:.0f}s"
+                        )
+
+    elapsed = time.perf_counter() - t0
+    _log_progress(
+        f"{label}: finished {total} runs in {elapsed:.1f}s "
+        f"({elapsed / 60:.1f} min), false_passes={false_pass_count}"
+    )
+    return runs
+
+
+def format_battery_completion(
+    payload: dict[str, object],
+    *,
+    mode: str = "battery",
+) -> str:
+    """Human-readable completion block for stdout and session logs."""
+    runs = payload.get("runs", [])
+    n_runs = len(runs) if isinstance(runs, list) else 0
+    runtime = payload.get("runtime_seconds", 0)
+    title = (
+        "LLM RED-TEAM BATTERY COMPLETE"
+        if mode == "battery"
+        else "LLM RED-TEAM RUN COMPLETE"
+    )
+    lines = [
+        "=" * 64,
+        title,
+        "=" * 64,
+        f"Runtime: {runtime}s ({float(runtime) / 60:.1f} min)",
+        f"Runs: {n_runs}",
+        f"False passes: {payload.get('false_pass_count', 0)} "
+        f"({float(payload.get('false_pass_rate', 0)):.2%})",
+        "",
+        "Configuration:",
+        f"  T={payload.get('T')}",
+        f"  seeds={payload.get('seeds')}",
+        f"  scenarios={payload.get('scenarios')}",
+        f"  strategies={payload.get('strategy_names')}",
+        f"  levels={payload.get('instrumentation_levels')}",
+        "",
+        "By strategy:",
+    ]
+    for name, stats in payload.get("summary_by_strategy", {}).items():
+        lines.append(
+            f"  {name}: false_pass={stats['false_pass_rate']:.2%} "
+            f"cci_correct={stats['mean_cci_correct']:.2%} n={stats['n_runs']}"
+        )
+    lines.extend(["", "By instrumentation:"])
+    for level, stats in payload.get("summary_by_instrumentation", {}).items():
+        lines.append(
+            f"  {level}: false_pass={stats['false_pass_rate']:.2%} "
+            f"cci_correct={stats['mean_cci_correct']:.2%} n={stats['n_runs']}"
+        )
+    lines.append("=" * 64)
+    return "\n".join(lines)
+
+
 def run_redteam_suite(
     scenarios: list[ScenarioName],
     seeds: list[int],
@@ -120,21 +240,14 @@ def run_redteam_suite(
 ) -> dict[str, object]:
     t0 = time.perf_counter()
     protocol = protocol or RedTeamProtocol()
-    runs: list[dict[str, object]] = []
-
-    for strategy_name in strategy_names:
-        strategy = STRATEGIES[strategy_name]
-        for scenario in scenarios:
-            for seed in seeds:
-                runs.append(
-                    run_redteam_one(
-                        scenario,
-                        seed,
-                        T,
-                        strategy,
-                        instrumentation=instrumentation,
-                    )
-                )
+    runs = _run_redteam_grid(
+        scenarios,
+        seeds,
+        T,
+        strategy_names,
+        [instrumentation],
+        label="redteam_suite",
+    )
 
     stats = _summarize_runs(runs)
 
@@ -171,22 +284,14 @@ def run_redteam_battery(
     """Phase 1 battery across multiple instrumentation levels."""
     t0 = time.perf_counter()
     protocol = protocol or RedTeamProtocol()
-    runs: list[dict[str, object]] = []
-
-    for level in instrumentation_levels:
-        for strategy_name in strategy_names:
-            strategy = STRATEGIES[strategy_name]
-            for scenario in scenarios:
-                for seed in seeds:
-                    runs.append(
-                        run_redteam_one(
-                            scenario,
-                            seed,
-                            T,
-                            strategy,
-                            instrumentation=level,
-                        )
-                    )
+    runs = _run_redteam_grid(
+        scenarios,
+        seeds,
+        T,
+        strategy_names,
+        instrumentation_levels,
+        label="redteam_battery",
+    )
 
     stats = _summarize_runs(runs)
 
