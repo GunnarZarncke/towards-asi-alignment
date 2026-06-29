@@ -3,6 +3,7 @@ import AlignmentProofSpine.Boundaries
 import AlignmentProofSpine.Capability
 import AlignmentProofSpine.Bundles
 import AlignmentProofSpine.Correction
+import AlignmentProofSpine.FieldSubsumptions
 import AlignmentProofSpine.Successors
 import AlignmentProofSpine.CooperationGraph
 import AlignmentProofSpine.Adversarial
@@ -23,6 +24,7 @@ Alignment*. It re-exports the layered modules:
 | `CooperationGraph` | UAD audit → derived graph, `P33`, `derived_openEdge_via_P32` | 13, 33, 35 |
 | `Bundles`       | `P14`–`P22`                               | 15–23         |
 | `Correction`    | `P23`–`P26`, scalar `CCI`, vector/status `CCICertificate`, handle-controlled paths | 24–27         |
+| `FieldSubsumptions` | field-agenda projections, forward subsumptions, structured separations | crosswalk     |
 | `Successors`    | `P27`–`P29`, `U_S` preservation           | 28–31         |
 | `Adversarial`   | `P31`, `P33`, `P34`, `P37`                | 32–37         |
 | `Philosophy`    | `P41`, `P42`, `P44`, `P45`                | 41–44         |
