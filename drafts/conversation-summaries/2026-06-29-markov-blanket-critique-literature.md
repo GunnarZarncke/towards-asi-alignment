@@ -32,4 +32,4 @@ User supplied feedback on the Pearl vs Friston blanket critique (Bruineberg et a
 - `references/manuscript-citations.bib`, `references/dynamical-systems.bib`
 
 ## Commits
-- (none — user did not request commit)
+- `d3dfc61` Wire Markov-blanket critique literature and calibrate MB1 prior risk.
