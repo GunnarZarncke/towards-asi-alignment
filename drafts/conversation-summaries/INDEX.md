@@ -4,6 +4,15 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-29 | Institutional translation appendix (full session) | [2026-06-29-institutional-translation-appendix.md](2026-06-29-institutional-translation-appendix.md) |
+| 2026-06-29 | Bootstrap + MB6 red-team unblock | [2026-06-29-bootstrap-mb6-redteam-unblock.md](2026-06-29-bootstrap-mb6-redteam-unblock.md) |
+| 2026-06-29 | Institutional crosswalk draft | [2026-06-29-institutional-crosswalk-draft.md](2026-06-29-institutional-crosswalk-draft.md) |
+| 2026-06-29 | Multiresolution strong + frozen + red-team | [2026-06-29-multiresolution-strong-frozen-redteam.md](2026-06-29-multiresolution-strong-frozen-redteam.md) |
+| 2026-06-29 | Multiresolution workflow + governor | [2026-06-29-multiresolution-workflow-governor.md](2026-06-29-multiresolution-workflow-governor.md) |
+| 2026-06-29 | Multiresolution v2 oracle fix + TODO | [2026-06-29-multiresolution-v2-oracle-todo.md](2026-06-29-multiresolution-v2-oracle-todo.md) |
+| 2026-06-29 | Multiresolution v2 MB9 MB2 MB7 | [2026-06-29-multiresolution-v2-mb9-mb2-mb7.md](2026-06-29-multiresolution-v2-mb9-mb2-mb7.md) |
+| 2026-06-29 | Multiresolution v2 bootstrap + MB1 | [2026-06-29-multiresolution-v2-bootstrap-mb1.md](2026-06-29-multiresolution-v2-bootstrap-mb1.md) |
+| 2026-06-29 | Multiresolution sim instrumentation v1 | [2026-06-29-multiresolution-instrumentation-v1.md](2026-06-29-multiresolution-instrumentation-v1.md) |
 | 2026-06-29 | Correction-capture toy experiment | [2026-06-29-correction-capture-toy.md](2026-06-29-correction-capture-toy.md) |
 | 2026-06-29 | Field subsumptions implementation | [2026-06-29-field-subsumptions-implementation.md](2026-06-29-field-subsumptions-implementation.md) |
 | 2026-06-29 | Lean field subsumptions (checkpoint, ongoing) | [2026-06-29-lean-field-subsumptions-checkpoint.md](2026-06-29-lean-field-subsumptions-checkpoint.md) |
