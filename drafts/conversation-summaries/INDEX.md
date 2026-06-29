@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-29 | Correction-capture toy experiment | [2026-06-29-correction-capture-toy.md](2026-06-29-correction-capture-toy.md) |
 | 2026-06-29 | Field subsumptions implementation | [2026-06-29-field-subsumptions-implementation.md](2026-06-29-field-subsumptions-implementation.md) |
 | 2026-06-29 | Lean field subsumptions (checkpoint, ongoing) | [2026-06-29-lean-field-subsumptions-checkpoint.md](2026-06-29-lean-field-subsumptions-checkpoint.md) |
 | 2026-06-29 | Markov-blanket critique literature | [2026-06-29-markov-blanket-critique-literature.md](2026-06-29-markov-blanket-critique-literature.md) |
