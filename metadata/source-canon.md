@@ -69,7 +69,7 @@ Prioritized by report emphasis. **Drafted** chapters: surgical inserts. **Stub**
 
 | Ch | Suggested additions from report |
 |----|----------------------------------|
-| ch06 | Method comparison table (Markov blanket / causal reps / IB / embedded agency): assumptions, observability, adversarial robustness, scaling; FEP overreach caveat (Biehl, Pollock & Kanai 2020). |
+| ch06 | Method comparison table (Markov blanket / causal reps / IB / embedded agency): assumptions, observability, adversarial robustness, scaling; FEP/blanket critique footnote wired (Bruineberg et al.; Biehl, Pollock & Kanai; Btesh/Bramley/Lagnado; Demski AF; Friston response). |
 | ch07 | IB objective $\min_{p(z\mid x)} I(X;Z)-\beta I(Z;Y)$ as representation criterion; Schölkopf et al. (2021) on causal structure in $Z$; gap: nonstationary, self-modifying, deception-resistant boundaries. |
 | ch08 | de Blanc (2011) ontological crisis; Everitt et al. (2016) self-modification; transport loss $\Delta L_{\text{transport}}$ heuristic from report; link conserved properties to report's structure bundle. |
 | ch09 | Composite-agent blindness failure mode (report §Selektionsdruck / ch11 draft); joint intentional compression already present — add Goodhart-on-metrics institutional parallel. |
@@ -137,7 +137,11 @@ Import or verify before drafting stubs above. Keys are suggested slugs.
 
 | Work | Suggested key | Target chapters |
 |------|---------------|-----------------|
-| Biehl, Pollock & Kanai (2020) — FEP/blanket critique | `biehl2020fepcritique` | ch06, ch07 |
+| Biehl, Pollock & Kanai (2021) — FEP/blanket critique | `biehl2020fepcritique` | ch06, ch07, appBridge, appH |
+| Bruineberg et al. (2021) — Pearl vs Friston blankets | `bruineberg2021emperor` | ch06, ch07, appBridge, appH |
+| Btesh, Bramley & Lagnado (2022) — boundary-relativity commentary | `btesh2022redressing` | ch06, ch07, appBridge, appH |
+| Demski (2023) — agent boundaries vs Markov blankets (AF) | `demski2023agentboundaries` | ch06 |
+| Friston, Da Costa & Parr (2021) — FEP response to Biehl et al. | `friston2021fepresponse` | ch06 |
 | Schölkopf et al. (2021) — causal representations | `scholkopf2021causalreps` | ch07, ch21 |
 | Strouse & Schwab (2016); Kolchinsky et al. (2017) — deep IB | `strouse2016ib`, `kolchinsky2017ib` | ch07, ch17 |
 | Baker, Saxe & Tenenbaum (2009) — Bayesian inverse planning | `baker2009inverseplanning` | ch20, ch21 |

@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-29 | Markov-blanket critique literature | [2026-06-29-markov-blanket-critique-literature.md](2026-06-29-markov-blanket-critique-literature.md) |
 | 2026-06-29 | MB9 propagation + crosswalk pointers | [2026-06-29-mb9-propagation-crosswalk-pointers.md](2026-06-29-mb9-propagation-crosswalk-pointers.md) |
 | 2026-06-28 | Research-order / composition argument | [2026-06-28-research-order-composition-argument.md](2026-06-28-research-order-composition-argument.md) |
 | 2026-06-28 | Bridges ↔ field crosswalk appendix | [2026-06-28-bridges-field-crosswalk-appendix.md](2026-06-28-bridges-field-crosswalk-appendix.md) |

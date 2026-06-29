@@ -85,7 +85,9 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Assumption:** Boundaries are discoverable under approximate observability and adversarial limits when the candidate class is structured, intervention handles are adequate, the boundary margin exceeds observation distortion and finite-sample error, and learned detector targets do not merely amortize the criterion or import labeled-agent ontology.
 
-**Also stated in:** ch05, ch09–10, ch36, ch38. **Lean:** MB1, MB7a–b. **Bears on:** C-001, C-003 · **U-05**
+**Failure mode if false:** Boundary recovery fails under finite data or adversarial presentation (measurement hardness); or, prior to measurement, the agent--world cut is ill-defined, modeler-supplied, or metaphysically inflated rather than a stable object to estimate (Pearl/Friston blanket skepticism; ch06 footnote).
+
+**Also stated in:** ch05, ch06–07, ch09–10, ch36, ch38. **Lean:** MB1, MB7a–b. **Bears on:** C-001, C-003 · **U-05**
 
 ### A-005 — Certifiable deployment and human agency
 

@@ -164,7 +164,7 @@ A deployed AI service leaks through logs, side channels, user adaptation, and op
 A perfect Markov blanket would be a useful idealization, but the real world mostly offers approximate boundaries \autocite{kirchhoff2018markov,friston2010free}.
 
 The strongest blanket-based and free-energy claims should be treated with caution: several central steps do not follow without additional assumptions \autocite{biehl2020fepcritique}.
-For this book, Markov blankets remain a useful heuristic for interface discovery, not a general proof of agency.
+For this book, Markov blankets remain a useful heuristic for interface discovery, not a general proof of agency.\footnote{Critics distinguish \emph{Pearl blankets}---legitimate conditional-independence tools in a chosen model---from \emph{Friston blankets}---purported real organism--environment boundaries---and argue the free-energy literature equivocates between them \autocite{bruineberg2021emperor,btesh2022redressing}. A narrower technical critique shows non-equivalent blanket definitions across FEP formulations and invalidates key inference steps as originally stated \autocite{biehl2020fepcritique}. Even sympathetic causal readings worry the cut is modeler-supplied rather than discovered in the system \autocite{btesh2022redressing}. In the alignment community, Demski argues plain Markov blankets are insufficient for pointing out agents without already importing high-level agent nodes \autocite{demski2023agentboundaries}. This book uses a directed $\epsilon$-blanket as an operational partition (Critch/Lakin), not as proof that a unique physical boundary exists; whether such partitions recover safety-relevant control is Assumption~\textsc{MB1}, not a theorem. The dispute remains live as FEP proponents reformulate \autocite{friston2021fepresponse}.}
 
 Thus we should not ask whether a boundary is perfect.
 We should ask whether the boundary is predictive, stable, and decision-relevant.
@@ -735,7 +735,7 @@ Everything that follows depends on finding that boundary.
 
 \section*{Chapter References}
 
-This chapter builds on relative definitions of agency \autocite{orseau2018agents,kenton2022discovering,zarncke2025uad}; Markov blankets and active inference \autocite{kirchhoff2018markov,friston2010free,conant1970regulator,biehl2020fepcritique}; the selection-theorems program, which asks what internal structure optimization pressure tends to produce in agents \autocite{wentworth2021selection}; and the composite-system framing developed in Chapter~\ref{ch:wrong-object}.
+This chapter builds on relative definitions of agency \autocite{orseau2018agents,kenton2022discovering,zarncke2025uad}; Markov blankets and active inference \autocite{kirchhoff2018markov,friston2010free,conant1970regulator,biehl2020fepcritique,bruineberg2021emperor,btesh2022redressing,demski2023agentboundaries,friston2021fepresponse}; the selection-theorems program, which asks what internal structure optimization pressure tends to produce in agents \autocite{wentworth2021selection}; and the composite-system framing developed in Chapter~\ref{ch:wrong-object}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 
