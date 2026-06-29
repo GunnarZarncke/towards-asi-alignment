@@ -1,0 +1,236 @@
+{
+  "T": 1000,
+  "seeds": [
+    11,
+    12
+  ],
+  "scenarios": [
+    "bundle_goodhart",
+    "hidden_capability"
+  ],
+  "summary_correct_rate": {
+    "bundle_goodhart": {
+      "none": 1.0,
+      "light_handles": 0.0,
+      "medium_handles": 1.0,
+      "strong_handles": 1.0
+    },
+    "hidden_capability": {
+      "none": 1.0,
+      "light_handles": 1.0,
+      "medium_handles": 1.0,
+      "strong_handles": 1.0
+    }
+  },
+  "rows": [
+    {
+      "scenario": "bundle_goodhart",
+      "instrumentation": "none",
+      "seed": 11,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.914,
+      "capability_slack": 0.8500000000000001,
+      "bundle_geometry_spread": 0.728971611623697,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "bundle_goodhart",
+      "instrumentation": "none",
+      "seed": 12,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.925,
+      "capability_slack": 0.859,
+      "bundle_geometry_spread": 0.7280753935560056,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "bundle_goodhart",
+      "instrumentation": "light_handles",
+      "seed": 11,
+      "cci_status": "passes",
+      "cci_status_correct": false,
+      "task_success": 0.914,
+      "capability_slack": 0.8500000000000001,
+      "bundle_geometry_spread": 0.728971611623697,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "bundle_goodhart",
+      "instrumentation": "light_handles",
+      "seed": 12,
+      "cci_status": "passes",
+      "cci_status_correct": false,
+      "task_success": 0.925,
+      "capability_slack": 0.859,
+      "bundle_geometry_spread": 0.7280753935560056,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "bundle_goodhart",
+      "instrumentation": "medium_handles",
+      "seed": 11,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.914,
+      "capability_slack": 0.8500000000000001,
+      "bundle_geometry_spread": 0.728971611623697,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": true
+    },
+    {
+      "scenario": "bundle_goodhart",
+      "instrumentation": "medium_handles",
+      "seed": 12,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.925,
+      "capability_slack": 0.859,
+      "bundle_geometry_spread": 0.7280753935560056,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": true
+    },
+    {
+      "scenario": "bundle_goodhart",
+      "instrumentation": "strong_handles",
+      "seed": 11,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.914,
+      "capability_slack": 0.8500000000000001,
+      "bundle_geometry_spread": 0.728971611623697,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": true
+    },
+    {
+      "scenario": "bundle_goodhart",
+      "instrumentation": "strong_handles",
+      "seed": 12,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.925,
+      "capability_slack": 0.859,
+      "bundle_geometry_spread": 0.7280753935560056,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": true
+    },
+    {
+      "scenario": "hidden_capability",
+      "instrumentation": "none",
+      "seed": 11,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.971,
+      "capability_slack": 0.967,
+      "bundle_geometry_spread": 0.0,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "hidden_capability",
+      "instrumentation": "none",
+      "seed": 12,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.977,
+      "capability_slack": 0.97,
+      "bundle_geometry_spread": 0.0,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "hidden_capability",
+      "instrumentation": "light_handles",
+      "seed": 11,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.971,
+      "capability_slack": 0.967,
+      "bundle_geometry_spread": 0.0,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "hidden_capability",
+      "instrumentation": "light_handles",
+      "seed": 12,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.977,
+      "capability_slack": 0.97,
+      "bundle_geometry_spread": 0.0,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "hidden_capability",
+      "instrumentation": "medium_handles",
+      "seed": 11,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.971,
+      "capability_slack": 0.967,
+      "bundle_geometry_spread": 0.0,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "hidden_capability",
+      "instrumentation": "medium_handles",
+      "seed": 12,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.977,
+      "capability_slack": 0.97,
+      "bundle_geometry_spread": 0.0,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "hidden_capability",
+      "instrumentation": "strong_handles",
+      "seed": 11,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.971,
+      "capability_slack": 0.967,
+      "bundle_geometry_spread": 0.0,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    },
+    {
+      "scenario": "hidden_capability",
+      "instrumentation": "strong_handles",
+      "seed": 12,
+      "cci_status": "belowThreshold",
+      "cci_status_correct": true,
+      "task_success": 0.977,
+      "capability_slack": 0.97,
+      "bundle_geometry_spread": 0.0,
+      "hidden_memory_step_rate": 0.0,
+      "hidden_capability_signal": false,
+      "grounding_gap_detected": false
+    }
+  ],
+  "tuning_notes": "Tune sim drift/boost knobs only if medium+ fails expected belowThreshold; do not retune capture thresholds on these seeds."
+}
