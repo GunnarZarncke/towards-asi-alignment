@@ -25,6 +25,10 @@ and makes one distinction explicit and machine-checked:
 * **Assumed bridge** (`axiom`) — real systems satisfy these predicates under
   these measurement procedures. These are the nine `MB1`–`MB9` bridges plus the
   model-selection convention `S07`. They are **never hidden** inside definitions.
+  Each bridge is mapped to the canonical open problem of the field (IRL
+  non-identifiability, ELK, off-switch anti-naturality, ontology identification,
+  obfuscated arguments, spec coverage, …) in the manuscript appendix
+  *Bridges and the Field: A Crosswalk* (`appendices/appBridge-crosswalk.tex`).
 
 **Toy vs. target strength.** The current spine is deliberately compact. Many
 counterexamples are finite `Bool` separations (one predicate defined as `True`,
@@ -155,4 +159,4 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   `SystemUpdateOperatorPreserved` among the ch29 fields.
 * Node IDs match `formal/AlignmentProofSpine/*.lean` theorem names (see module map above).
   Full graph: `context/lean_proof_dependency_graph.dot`.
-  Book layout: four sub-spines + overview in `context/lean_proof_graphs/` → `figures/lean_proof/` via `scripts/render_lean_graphs.sh` (Appendix I, Section~\ref{sec:appi-proof-dependency}).
+  Book layout: four sub-spines + overview in `context/lean_proof_graphs/` → `figures/lean_proof/` via `scripts/render_lean_graphs.sh` (Lean Proof Spine appendix, Section~\ref{sec:appi-proof-dependency}).

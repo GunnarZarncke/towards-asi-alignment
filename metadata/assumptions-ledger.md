@@ -163,7 +163,7 @@ Appendix I §Imported Assumptions. Only **S07** is an explicit Lean `axiom`. S09
 
 ## IV. Lean bridges (MB1–MB9)
 
-Formal statements: Appendix I; validation program: Appendix H. Lean: `Core.lean` `BridgeAssumptions`.
+Formal statements: Lean Proof Spine appendix; validation program: Research Program appendix. Lean: `Core.lean` `BridgeAssumptions`. Mapping of each bridge to the canonical field crux it inherits (and the owning agenda): `appendices/appBridge-crosswalk.tex` (*Bridges and the Field: A Crosswalk*).
 
 | Bridge | Manuscript A-IDs |
 |--------|------------------|

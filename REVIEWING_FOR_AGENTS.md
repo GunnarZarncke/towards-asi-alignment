@@ -76,7 +76,7 @@ Look for the included gems before concluding a chapter is merely narrative.
 - Bearer maps: ch18, ch23, ch43
 - Transport hierarchy: ch23
 - Vector/status CCI: ch25; adversarial pressure tests: ch25b
-- Existing-work subsumptions: ch07, ch20, ch24-ch27, ch38, ch39b
+- Existing-work subsumptions: ch07, ch20, ch24-ch27, ch38, ch39b; consolidated map in the field-crosswalk appendix (`appendices/appBridge-crosswalk.tex`)
 - Successor test: ch28-ch31
 - Selection envelope and correction parasites: ch32-ch35
 - Conductive artifacts and pivotal processes: ch35b
@@ -85,6 +85,8 @@ Look for the included gems before concluding a chapter is merely narrative.
 - Lean proof spine as dependency hygiene: `formal/`, Appendix I
 
 ## Existing-Work Subsumptions
+
+For the consolidated map, read the appendix **Bridges and the Field: A Crosswalk** (`appendices/appBridge-crosswalk.tex`) first. It maps each bridge (`A-001`–`A-014` / `MB1`–`MB9`) to the canonical field crux it inherits, names the owning agenda, concedes what the book shares (it dissolves none of the field's open problems), and isolates the bridges with no clean field analog (bearer maps `MB3`, socio-technical selection `MB6`, inferential coupling `MB7d`). When reviewing the book's relationship to other agendas, check claims against this crosswalk before treating a comparison as missing or ad-hoc.
 
 The book often treats familiar proposals as projections, special cases, or separable subchannels of stronger invariants. Do not miss these as throwaway comparisons.
 

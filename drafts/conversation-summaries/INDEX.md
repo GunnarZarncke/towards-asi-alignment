@@ -4,6 +4,9 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-29 | MB9 propagation + crosswalk pointers | [2026-06-29-mb9-propagation-crosswalk-pointers.md](2026-06-29-mb9-propagation-crosswalk-pointers.md) |
+| 2026-06-28 | Research-order / composition argument | [2026-06-28-research-order-composition-argument.md](2026-06-28-research-order-composition-argument.md) |
+| 2026-06-28 | Bridges ↔ field crosswalk appendix | [2026-06-28-bridges-field-crosswalk-appendix.md](2026-06-28-bridges-field-crosswalk-appendix.md) |
 | 2026-06-28 | Lean canary comments | [2026-06-28-lean-canary-comments.md](2026-06-28-lean-canary-comments.md) |
 | 2026-06-28 | Chapter status reviewed | [2026-06-28-chapter-status-reviewed.md](2026-06-28-chapter-status-reviewed.md) |
 | 2026-06-28 | ch35 split implementation | [2026-06-28-ch35-split-implementation.md](2026-06-28-ch35-split-implementation.md) |

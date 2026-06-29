@@ -9,12 +9,13 @@
 | Chapter list, status, word targets | `metadata/book.yml` |
 | Build, layout, agent handoff | `AGENTS.md` |
 | Reader-facing status and quick start | `README.md` |
-| Symbol index (generated) and §C reconciliation | `metadata/notation.md` → Appendix A |
-| Assumptions index (generated) | `metadata/assumptions-ledger.md` → Appendix E |
-| Operational terms | `metadata/terminology.md` → Appendix F |
+| Symbol index (generated) and §C reconciliation | `metadata/notation.md` → Notation Index appendix |
+| Assumptions index (generated) | `metadata/assumptions-ledger.md` → Assumptions Index appendix |
+| Operational terms | `metadata/terminology.md` → Glossary appendix |
+| Bridges ↔ field cruxes crosswalk | `appendices/appBridge-crosswalk.tex` |
 | Source PDFs, TeX paths, extracts | `metadata/source-canon.md` |
 | Continuity and deduplication plans | `review/fix-plans-2026-06-22.md` |
-| Lean predicates and bridges | `formal/README.md`, Appendix I |
+| Lean predicates and bridges | `formal/README.md`, Lean Proof Spine appendix |
 
 ---
 
@@ -139,11 +140,11 @@ When a formal object is re-used in a later chapter, follow `review/fix-plans-202
 
 | Layer | Maintain in | Reader sees |
 |-------|-------------|-------------|
-| Operational terms | `metadata/terminology.md` | Appendix F (glossary) |
-| Symbols and canonical eq homes | `metadata/notation.md` | Appendix A (generated index; points to chapters) |
-| Formal predicates and bridges | `formal/AlignmentProofSpine/*.lean` | Appendix I |
+| Operational terms | `metadata/terminology.md` | Glossary appendix |
+| Symbols and canonical eq homes | `metadata/notation.md` | Notation Index appendix (generated; points to chapters) |
+| Formal predicates and bridges | `formal/AlignmentProofSpine/*.lean` | Lean Proof Spine appendix |
 
-Edit `metadata/assumptions-ledger.md` only; run `./build.sh` to refresh Appendix E. Edit `metadata/notation.md` only for Appendix A.
+Edit `metadata/assumptions-ledger.md` only; run `./build.sh` to refresh the Assumptions Index appendix. Edit `metadata/notation.md` only for the Notation Index appendix.
 
 **Capability** is \(K\); **value bundle** is \(B\). **Correction capacity** is \(C_{\text{raw}}\); **correction-channel integrity** is \(\mathrm{CCI}\)—never interchange them. **Fitness** is handle-based deployment mass in Chapter 32, not revenue or benchmark score as primitive terms.
 

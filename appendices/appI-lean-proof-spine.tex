@@ -23,7 +23,7 @@ The structure of the Lean proof derivation is shown in four diagrams and an over
 
 \paragraph{Node shapes.}
 Rounded rectangles denote proved Lean nodes (\texttt{P05}, \texttt{P13}, \texttt{P30}, and so on).
-Diamonds denote bridge assumptions (\texttt{MB1}--\texttt{MB8}, including the split \texttt{MB6a--b} and \texttt{MB7a--d} chains).
+Diamonds denote bridge assumptions (\texttt{MB1}--\texttt{MB9}, including the split \texttt{MB6a--b} and \texttt{MB7a--d} chains).
 In the sub-spine diagrams, solid octagons mark \emph{export} summaries: quantities and predicates that leave that sub-spine and feed later stages.
 Spine~III also uses dashed octagons for \emph{imports} from Spines~I and~II (for example control capacity from Spine~I and transport counterexamples from Spine~II).
 The overview diagram uses a double octagon for the top composed theorem \texttt{P30T}; its four spine boxes and the main assembly nodes \texttt{P02}/\texttt{P30} are drawn with heavier borders.
@@ -460,6 +460,15 @@ Book bridge: inferential detector validity is the Chapter~\ref{ch:multi-agent-st
 \forall A,U,\ \mathrm{PreservesValueUpdateOperator}(A,U)\Rightarrow \mathrm{CorrectionIntegrity}(A).
 \end{equation}
 Book bridge: process convergence is the \(U_H\)-preservation route from Chapter~\ref{ch:extrapolative-correction} and Chapter~\ref{ch:correction-channel-integrity}; the value-update operator is defined in Chapter~\ref{ch:fixed-values-wrong-target} (Eq.~\eqref{eq:human-value-update-ch04}).
+\end{assumption}
+
+\begin{assumption}[MB9: grounding certificate soundness]
+\label{appi:ass:mb9}
+\begin{equation}
+\label{appi:eq:mb9}
+\forall A,\ \mathrm{GroundingCertificate}(A)\Rightarrow \mathrm{GroundingViable}(A).
+\end{equation}
+Book bridge: grounding viability is introduced in Chapter~\ref{ch:dynamical-guarantee} and stress-tested under adversarial capture in Chapter~\ref{ch:verifiability-ontology}. The certificate warrants the abstract grounding-viability layer only over the certified deployment domain: a conservative abstraction guarantees that value-relevant change either moves the checked representation or raises uncertainty before irreversible loss, so the bridge fails wherever that domain is exceeded.
 \end{assumption}
 
 \section{Boundary and Access Results}
@@ -1034,7 +1043,7 @@ Apply Theorem~\ref{appi:thm:p44}: the technical predicates and legitimacy predic
 \section{Reading the Appendix Against Lean}
 
 The labels \texttt{P01}--\texttt{P45} match theorem names in \texttt{formal/AlignmentProofSpine/*.lean}.
-The labels \texttt{MB1}--\texttt{MB8} match the bridge assumptions packaged in Lean's \texttt{BridgeAssumptions}, with \texttt{MB6a--b} and \texttt{MB7a--d} naming split bridge chains.
+The labels \texttt{MB1}--\texttt{MB9} match the bridge assumptions packaged in Lean's \texttt{BridgeAssumptions}, with \texttt{MB6a--b} and \texttt{MB7a--d} naming split bridge chains.
 The only \(S*\) premise materialized as a Lean axiom is \(S07\); the others are either built into Lean's logic, proved locally, or left as external mathematical background.
 
 Thus a \leanspine{proof}{P13}{risk is bounded by correction slack} reference in the manuscript should be read as a pointer to Theorem~\ref{appi:thm:p13}, while a \leanspine{bridge}{MB7b}{filter-family coverage bounds hidden productive control} reference should be read as a pointer to Bridge~\ref{appi:ass:mb7b}.

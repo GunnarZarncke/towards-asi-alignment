@@ -24,6 +24,8 @@ socio-technical attractor control — deployment conditions keep correction viab
 
 External doom taxonomies (Yudkowsky-style lethalities, Turchin-style failure maps, and similar) are **not** a second organizing ontology. They appear late as adversarial checklists and coverage audits—especially in Chapter 40 (*Lethality Stress Test and Open Issues*).
 
+The book states its load-bearing assumptions explicitly as **bridges** (`A-001`–`A-014`; formal axioms `MB1`–`MB9`). Most of these are the field's standing open problems under different names. The appendix **Bridges and the Field: A Crosswalk** maps each bridge to the canonical field crux it inherits (IRL non-identifiability, ELK, off-switch anti-naturality, ontology identification, obfuscated arguments, spec coverage, …), names the owning agenda, concedes what the book shares, and isolates the few bridges with no clean field analog (bearer maps, socio-technical selection, inferential coupling).
+
 ---
 
 ## Who this is for
@@ -44,7 +46,7 @@ Body text introduces every central concept from first principles.
 | Item | Status |
 |------|--------|
 | Milestone | **Third** in progress — all main chapters have first drafts and have received at least one review/feedback pass |
-| Structure | 10 parts, **48 chapter entries** (including `ch19b`, `ch25b`, `ch35b`, and `ch39b`), 9 appendices |
+| Structure | 10 parts, **48 chapter entries** (including `ch19b`, `ch25b`, `ch35b`, and `ch39b`), 10 appendices |
 | Chapters | **0 draft**, **48 reviewed**, **0 stub** (see `metadata/book.yml`; reviewed means feedback received, not final) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
 | PDF | [**Download latest draft**](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: `book.tex` → `dist/pdf/towards-superintelligence-alignment.pdf` |
@@ -91,7 +93,7 @@ metadata/
 chapters/                   # ch01–ch44 (one .tex file per chapter)
 parts/                      # 10 part include files
 frontmatter/                # title page, introduction, executive overview
-appendices/                 # 10 appendices, including assumptions index and Lean proof spine
+appendices/                 # 10 appendices, including the field crosswalk, assumptions index, and Lean proof spine
 references/                 # BibLaTeX by category (see below)
 tables/                     # chapter map, notation, artifacts
 figures/                    # source, generated, tikz
