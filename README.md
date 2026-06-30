@@ -65,7 +65,7 @@ For agent session continuity, see `drafts/conversation-summaries/INDEX.md`.
 
 > **Claim strength:** methodology-building and sanity checks only. Neither line validates the full book thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms.
 
-The manuscript's load-bearing bridges (`MB1`–`MB9`) are mostly open problems. Two sibling codebases provide **tentative, partial** empirical support for pieces of the argument—not closure.
+The manuscript's load-bearing bridges (`MB1`–`MB9`) are mostly open problems. Two included simulators and a sibling repo provide **tentative, partial** empirical support for pieces of the argument—not closure.
 
 **Negative results are tracked explicitly.** Where an experiment fails to show what we hoped (or shows it only under load-bearing qualifiers), it is recorded rather than buried—see [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md). These negatives bound the claims the manuscript may make.
 
@@ -86,7 +86,22 @@ A local multiresolution alignment micro-simulation: sequential deployment episod
 
 **Artifacts:** curve and frozen-validation reports under `experiments/toy-simulation/results/`; open work in [`experiments/toy-simulation/TODO.md`](experiments/toy-simulation/TODO.md).
 
-### b) Sibling repo — [`agency-detect`](https://github.com/GunnarZarncke/agency-detect) (`../agency-detect/`)
+### b) Embedded audit — [`experiments/embedded-simulation/`](experiments/embedded-simulation/)
+
+V3 of the same bridge-stress suite, but the auditor is an **embedded process** on simulated machines: it reads mutable VFS artifacts (correction logs, workflow JSONL, referent maps) through a Python/Node **isolate bridge**, runs UAD unit discovery and scoped CCI, and is scored post hoc by an outer evaluator against omniscient `OuterTruthLedger` truth.
+
+| What it supports (tentatively) | What it does *not* show |
+|--------------------------------|-------------------------|
+| Embedded audit path is **executable end-to-end** (VFS → UAD → grounded handles → CCI → deploy gate → outer eval) | Real deployment stacks, learned auditors, or protected handle APIs |
+| Oracle separation: blind pass rules use auditor-observable facts only; outer eval holds ground truth | That in-sim certificates transfer to frontier systems |
+| Same **MB1–MB9** scenario names as the toy; adds workflow actors, referent drift, MB5 deploy gate, and JS-isolate red-team | That UAD unit discovery always beats cheap heuristics (see negatives below) |
+| Hand-written red-team battery: **0% false-pass** on default ecology (T=400); instrumentation matrix ~85% in-sim correct | Adversarial handle capture (`instrument_capture`) or composition across all bridges at once |
+
+**Negative results:** full UAD vs a cheap activity heuristic are **identical** in the default ecology (N-1); separation appears only in adversarial ecologies such as `misleading_top2` (N-2). See [`NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md).
+
+**Artifacts:** reports under `experiments/embedded-simulation/results/`; run via `python3 run.py` from that directory (Node.js required for `--substrate js`).
+
+### c) Sibling repo — [`agency-detect`](https://github.com/GunnarZarncke/agency-detect) (`../agency-detect/`)
 
 Prior work on **unsupervised agent discovery (UAD)**: finding Markov-blanket structure and sensor/action/internal roles in raw time series without labels. The book's boundary-recovery and measurement chapters draw on this line; the toy above reimplements minimal MI/CMI machinery locally rather than calling the repo at runtime.
 
@@ -101,7 +116,7 @@ Prior work on **unsupervised agent discovery (UAD)**: finding Markov-blanket str
 
 **Navigation:** experiment log [`docs/EXPERIMENTS.md`](../agency-detect/docs/EXPERIMENTS.md), interpretation [`docs/FINDINGS.md`](../agency-detect/docs/FINDINGS.md), papers under [`docs/papers/`](../agency-detect/docs/papers/). PDFs are mirrored in `context/` with markdown extracts.
 
-**Interpretation:** agency-detect supports that **boundary-like structure is empirically detectable under favorable conditions** and documents **where discovery breaks** (decoys, short windows, dense coupling, alias handles). It does not establish correction-channel integrity, value-bundle transport, or successor stability—the toy sim stress-tests those bridge cruxes in a separate, simplified setting.
+**Interpretation:** agency-detect supports that **boundary-like structure is empirically detectable under favorable conditions** and documents **where discovery breaks** (decoys, short windows, dense coupling, alias handles). It does not establish correction-channel integrity, value-bundle transport, or successor stability—the included simulators stress-test those bridge cruxes in simplified settings (toy: multiresolution MI/CCI; embedded: VFS audit pipeline with UAD and outer eval).
 
 ---
 

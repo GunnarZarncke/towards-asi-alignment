@@ -94,4 +94,4 @@ Semantic `\label{appf-glossary}` etc. unchanged (label-based refs still work).
 ## Commits
 
 - `bd8f82f` Renumber chapters and appendices to sequential print order
-- (this session) Fix post-renumber cross-refs, drop assumptions appendix refs, add release notes
+- `b99d08e` Fix post-renumber cross-refs, drop assumptions appendix refs, add release notes

@@ -27,4 +27,4 @@ User asked to add Kulveit et al. *Gradual Disempowerment* (arXiv:2501.16946) whe
 - `appendices/appB-bridge-crosswalk.tex`, `appendices/appF-research-program.tex`, `appendices/appG-lean-proof-spine.tex`
 
 ## Commits
-- (this session)
+- `17463e2` Add Kulveit et al. gradual disempowerment bib entry and manuscript cites.
