@@ -22,6 +22,11 @@ book.pdf
 
 # Experiment outputs (regenerate locally)
 experiments/toy-simulation/results/
+experiments/embedded-simulation/results/*.json
+experiments/embedded-simulation/results/*.jsonl
+
+# Generated images (regenerate from .dot sources or build scripts)
+context/lean_proof_dependency_graph.png
 
 # Local renumber backup (scripts/git_mv_renumber.py)
 .renumber-content-backup/
