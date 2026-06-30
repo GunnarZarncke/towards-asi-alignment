@@ -33,4 +33,4 @@ User asked to bring Lean in line with prose on vector CCI and successor audit, w
 
 ## Commits
 
-- None
+- `5ab18c6` Align Lean successor audit with vector CCI prose.

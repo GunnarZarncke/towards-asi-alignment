@@ -21,4 +21,4 @@ User asked to add an end-of-review call-to-action in `REVIEWING_FOR_AGENTS.md` (
 - `REVIEWING_FOR_AGENTS.md` (§ After the review)
 
 ## Commits
-- (pending) contributing guide + review agent CTA
+- `119f224` Add CONTRIBUTING.md and review-agent call to contribute.
