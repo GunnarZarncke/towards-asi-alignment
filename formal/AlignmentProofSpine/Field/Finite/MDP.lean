@@ -13,9 +13,6 @@ namespace AlignmentProofSpine
 
 namespace FieldFinite
 
-private def finUnivNonempty (n : Nat) [NeZero n] : (Finset.univ : Finset (Fin n)).Nonempty :=
-  ⟨⟨0, Nat.pos_of_ne_zero (NeZero.ne n)⟩, Finset.mem_univ _⟩
-
 structure DetMDP (nState nAct : Nat) where
   step : Fin nState → Fin nAct → Fin nState
   reward : Fin nState → Fin nAct → Int
@@ -37,7 +34,7 @@ def finiteHorizonOptimalValue {nState nAct : Nat} [NeZero nAct]
     (M : DetMDP nState nAct) : Nat → Fin nState → Int
   | 0, _ => 0
   | t + 1, s =>
-      Finset.univ.sup' (finUnivNonempty nAct)
+      Finset.univ.sup' Finset.univ_nonempty
         (fun a => M.reward s a + finiteHorizonOptimalValue M t (M.step s a))
 
 /-- One-step action value plus optimal continuation. -/

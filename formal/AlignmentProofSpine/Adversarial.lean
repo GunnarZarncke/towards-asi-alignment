@@ -48,12 +48,8 @@ theorem P31_safe_agent_selected_against :
 theorem P34_capacity_below_entropy_aliasing
     {nAttack nSignal : Nat}
     (hcard : nSignal < nAttack) :
-    ¬ ∃ detect : Fin nAttack → Fin nSignal, Function.Injective detect := by
-  rintro ⟨detect, hinj⟩
-  have hle : nAttack ≤ nSignal := by
-    simpa [Fintype.card_fin] using
-      fintype_card_le_of_injective (α := Fin nAttack) (β := Fin nSignal) hinj
-  omega
+    ¬ ∃ detect : Fin nAttack → Fin nSignal, Function.Injective detect :=
+  not_exists_injective_of_fin_card_lt hcard
 
 /-! ### P36R: post-commitment randomization detection floor -/
 

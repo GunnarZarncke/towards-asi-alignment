@@ -4,6 +4,16 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Mathlib spine broadening | [2026-06-30-mathlib-spine-broadening.md](2026-06-30-mathlib-spine-broadening.md) |
+| 2026-06-30 | PMF / AUP unblock | [2026-06-30-pmf-aup-unblock.md](2026-06-30-pmf-aup-unblock.md) |
+| 2026-06-30 | Field derivation tranche | [2026-06-30-field-derivation-tranche.md](2026-06-30-field-derivation-tranche.md) |
+| 2026-06-30 | Field derivation faithfulness review | [2026-06-30-field-derivation-faithfulness-review.md](2026-06-30-field-derivation-faithfulness-review.md) |
+| 2026-06-30 | Mathlib field derivations | [2026-06-30-mathlib-field-derivations.md](2026-06-30-mathlib-field-derivations.md) |
+| 2026-06-30 | Field formalization gem | [2026-06-30-field-formalization-gem.md](2026-06-30-field-formalization-gem.md) |
+| 2026-06-30 | Mathlib adoption | [2026-06-30-mathlib-adoption.md](2026-06-30-mathlib-adoption.md) |
+| 2026-06-30 | Embedded real UAD | [2026-06-30-embedded-real-uad.md](2026-06-30-embedded-real-uad.md) |
+| 2026-06-30 | Embedded hardening | [2026-06-30-embedded-hardening.md](2026-06-30-embedded-hardening.md) |
+| 2026-06-30 | Field interface reduction | [2026-06-30-field-interface-reduction.md](2026-06-30-field-interface-reduction.md) |
 | 2026-06-30 | ch39 boundary-relative self-maintenance | [2026-06-30-ch39-boundary-relative-self-maintenance.md](2026-06-30-ch39-boundary-relative-self-maintenance.md) |
 | 2026-06-30 | Embedded methodology + ontology | [2026-06-30-embedded-methodology-ontology.md](2026-06-30-embedded-methodology-ontology.md) |
 | 2026-06-30 | Field special-case projections | [2026-06-30-field-special-case-projections.md](2026-06-30-field-special-case-projections.md) |

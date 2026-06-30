@@ -57,7 +57,6 @@ theorem Control_eq_IctrlSys (A : System) : Control A = IctrlSys A := rfl
 
 theorem Control_le_IctrlSys (A : System) : Control A ≤ IctrlSys A := by
   rw [Control_eq_IctrlSys]
-  exact Int.le_refl _
 
 theorem Control_le_CactSys (A : System) : Control A ≤ CactSys A := by
   rw [Control_eq_IctrlSys]

@@ -1,4 +1,5 @@
 import AlignmentProofSpine.Core
+import AlignmentProofSpine.Mathlib
 
 /-!
 # AlignmentProofSpine.Correction
@@ -108,17 +109,15 @@ theorem P24_chain_capacity_le_each_edge :
       intro e he
       cases as with
       | nil =>
-          rw [List.mem_singleton] at he
-          subst he
-          have : ChainCapacity [e] = e := rfl
-          omega
+          rcases List.mem_singleton.mp he with rfl
+          rfl
       | cons b bs =>
           simp only [List.mem_cons] at he
           have hcc : ChainCapacity (a :: b :: bs) = min a (ChainCapacity (b :: bs)) := rfl
           rcases he with rfl | he'
-          · rw [hcc]; omega
-          · have hle := ih e (by simp only [List.mem_cons]; exact he')
-            rw [hcc]; omega
+          · rw [hcc]
+            exact min_le_left _ _
+          · exact le_trans (min_le_right _ _) (ih e (by simp only [List.mem_cons]; exact he'))
 
 axiom SystemCorrectionPath : (A : System) → CorrectionPath A
 
@@ -569,9 +568,8 @@ theorem trajectory_cci_implies_impact_bound
     (_h : TrajectoryCCIPreserved s theta)
     (hpen : s.impactPenalty = s.kappaNext - theta) :
     LowImpactPenaltyBounded s (s.kappaNext - theta) := by
-  unfold LowImpactPenaltyBounded TrajectoryCCIPreserved at *
+  unfold LowImpactPenaltyBounded
   rw [hpen]
-  exact Int.le_refl _
 
 theorem low_impact_is_calibrated_trajectory_cci_projection
     (s : TrajectoryCorrectionStep) (theta : Int)

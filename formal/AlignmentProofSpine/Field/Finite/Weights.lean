@@ -26,16 +26,21 @@ def weightsNonnegative {α : Type} : List (WeightedSample α) → Prop
   | [] => True
   | x :: xs => 0 ≤ x.weight ∧ weightsNonnegative xs
 
+theorem weightsNonnegative_map {α : Type} {xs : List (WeightedSample α)}
+    (h : weightsNonnegative xs) :
+    allNonnegative (xs.map (·.weight)) := by
+  induction xs with
+  | nil => trivial
+  | cons x xs ih =>
+    constructor
+    · exact h.1
+    · exact ih h.2
+
 theorem totalWeight_nonnegative {α : Type} {xs : List (WeightedSample α)} :
     weightsNonnegative xs → 0 ≤ totalWeight xs := by
   intro h
-  induction xs with
-  | nil => simp [totalWeight]
-  | cons x xs ih =>
-      rcases h with ⟨hx, hxs⟩
-      have htail : 0 ≤ (xs.map (·.weight)).sum := by simpa [totalWeight] using ih hxs
-      simp only [totalWeight, List.map_cons, List.sum_cons]
-      omega
+  simpa [totalWeight] using
+    AlignmentProofSpine.listIntSum_nonneg (weightsNonnegative_map h)
 
 def quantileEligible {α : Type} (threshold : Int) (x : WeightedSample α) : Prop :=
   threshold ≤ x.score

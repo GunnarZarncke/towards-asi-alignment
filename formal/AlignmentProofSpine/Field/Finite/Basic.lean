@@ -1,4 +1,4 @@
-import Mathlib.Data.List.Basic
+import AlignmentProofSpine.Mathlib
 import Mathlib.Data.List.Count
 
 /-!
@@ -15,20 +15,12 @@ namespace FieldFinite
 def intSum (xs : List Int) : Int :=
   xs.sum
 
-def allNonnegative : List Int → Prop
-  | [] => True
-  | x :: xs => 0 ≤ x ∧ allNonnegative xs
+abbrev allNonnegative := AlignmentProofSpine.listIntAllNonnegative
 
 theorem intSum_nonnegative {xs : List Int} :
     allNonnegative xs → 0 ≤ intSum xs := by
   intro h
-  induction xs with
-  | nil => simp [intSum]
-  | cons x xs ih =>
-      rcases h with ⟨hx, hxs⟩
-      have hsum : 0 ≤ xs.sum := by simpa [intSum] using ih hxs
-      simp only [intSum, List.sum_cons]
-      omega
+  simpa [intSum] using AlignmentProofSpine.listIntSum_nonneg h
 
 def allAtLeast (θ : Int) : List Int → Prop
   | [] => True
