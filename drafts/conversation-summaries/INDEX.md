@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Kulveit gradual disempowerment bib + cites | [2026-06-30-kulveit-gradual-disempowerment-bib.md](2026-06-30-kulveit-gradual-disempowerment-bib.md) |
 | 2026-06-30 | Chapter and appendix renumbering (ch01–ch48, appA–G) | [2026-06-30-chapter-appendix-renumbering.md](2026-06-30-chapter-appendix-renumbering.md) |
 | 2026-06-30 | Narrative voice policy + chapterthesis pass | [2026-06-30-narrative-voice-policy.md](2026-06-30-narrative-voice-policy.md) |
 | 2026-06-30 | Split-chapter epigraph assignments | [2026-06-30-split-chapter-epigraphs.md](2026-06-30-split-chapter-epigraphs.md) |
