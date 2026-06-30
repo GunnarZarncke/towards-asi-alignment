@@ -27,7 +27,7 @@ Alignment*. It re-exports the layered modules:
 | `Field`         | finite field-agenda machinery, imported theorem handles, agenda modules | crosswalk     |
 | `FieldSubsumptions` | compatibility re-export for field-agenda headline theorem names | crosswalk     |
 | `Successors`    | `P27`–`P29`, `U_S` preservation           | 28–31         |
-| `Adversarial`   | `P31`, `P33`, `P34`, `P37`                | 32–37         |
+| `Adversarial`   | `P31`, `P33`, `P34`, `P37` (`P33` in `CooperationGraph`; `P34` via Mathlib) | 32–37 |
 | `Philosophy`    | `P41`, `P42`, `P44`, `P45`                | 41–44         |
 | `Certification` | `P01`, `P02`, `P30`, `P35`, `P40`  | 1–5, 35, 39, 44 |
 

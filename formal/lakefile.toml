@@ -1,10 +1,14 @@
 name = "AlignmentProofSpine"
 defaultTargets = ["AlignmentProofSpine"]
 
-# Self-contained Lean 4 proof spine for *Towards Superintelligence Alignment*.
-# Deliberately depends only on the Lean core library (no Mathlib) so the module
-# builds quickly and offline. See README.md in this folder for the mapping from
-# theorems to the book's proof-spine identifiers.
+# Lean proof spine for *Towards Superintelligence Alignment*.
+# Depends on Mathlib for finite combinatorics, list/finset algebra, and future
+# field-agenda rederivations (CIRL, AUP, quantilization). See README.md.
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.28.0"
 
 [[lean_lib]]
 name = "AlignmentProofSpine"

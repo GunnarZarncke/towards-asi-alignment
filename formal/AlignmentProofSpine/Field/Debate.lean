@@ -16,6 +16,11 @@ theorem debate_subsumption_truth
     DebateSelectsTruthLocal s :=
   judge_channel_implies_truth_step s h htruth
 
+theorem debate_truth_is_correction_projection
+    (s : DebateCorrectionStep) :
+    DebateTruthAsJudgeCorrectionProjection s → DebateSelectsTruthLocal s :=
+  debate_truth_is_judge_correction_projection s
+
 theorem debate_separated_from_judge_correction :
     DebateSelectsTruthLocal debateSeparationStep ∧
       ¬ JudgeCorrectionChannelPreserved debateSeparationStep :=
@@ -23,6 +28,11 @@ theorem debate_separated_from_judge_correction :
 
 def debate_field_result_records : List FieldResultRecord :=
   [{ agenda := .Debate,
+     status := .rederivedFinite,
+     leanName := "debate_truth_is_correction_projection",
+     citationKey? := some "irving2018debate",
+     summary := "When local truth capacity is the judge-channel `κ_C` projection, preserved correction gives local truth selection." },
+   { agenda := .Debate,
      status := .rederivedFinite,
      leanName := "debate_separated_from_judge_correction",
      citationKey? := some "irving2018debate",

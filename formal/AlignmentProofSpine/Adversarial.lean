@@ -1,5 +1,6 @@
 import AlignmentProofSpine.Core
 import AlignmentProofSpine.CooperationGraph
+import AlignmentProofSpine.Mathlib
 
 /-!
 # AlignmentProofSpine.Adversarial
@@ -11,7 +12,7 @@ Socio-technical selection, parasite aliasing, and adversarial measurement
 * `P33`: with no open edges there is no large cooperation component (proved in
   `CooperationGraph`; UAD-derived graphs are covered by `derived_P33`).
 * `P34`: host-capacity aliasing — too few signals cannot injectively detect
-  attacks (uses the from-scratch `finPigeonhole` from `Core`).
+  attacks (uses Mathlib finite-cardinality / pigeonhole).
 * `P36R`: post-commitment randomization gives a conditional detection floor.
 * `P37`: goal laundering — equal stated goals, different inferred goals.
 
@@ -49,7 +50,9 @@ theorem P34_capacity_below_entropy_aliasing
     (hcard : nSignal < nAttack) :
     ¬ ∃ detect : Fin nAttack → Fin nSignal, Function.Injective detect := by
   rintro ⟨detect, hinj⟩
-  have hle : nAttack ≤ nSignal := finPigeonhole detect hinj
+  have hle : nAttack ≤ nSignal := by
+    simpa [Fintype.card_fin] using
+      fintype_card_le_of_injective (α := Fin nAttack) (β := Fin nSignal) hinj
   omega
 
 /-! ### P36R: post-commitment randomization detection floor -/

@@ -174,6 +174,28 @@ def CooperativeRewardInferenceFromPolicy {nErr nAct : Nat}
     (p : PolicyProfile nErr nAct 2) (r : Int) : Prop :=
   scalarMarginalSalience p = r
 
+/-- ch20 bundle inference: infer a full bundle-salience vector from behaviour. -/
+def BundleInferenceFromPolicy {nErr nAct k : Nat}
+    (p : PolicyProfile nErr nAct k) (W : Fin k → Int) : Prop :=
+  ∀ i, p.bundleSalience i = W i
+
+/-- Scalar CIRL in the shared finite domain: infer a single scalar reward. -/
+def ScalarCIRLInference {nErr nAct : Nat}
+    (p : PolicyProfile nErr nAct 1) (r : Int) : Prop :=
+  p.bundleSalience 0 = r
+
+/-- Scalar-reward CIRL is exactly the one-dimensional case of bundle inference. -/
+theorem scalar_cirl_is_one_dimensional_bundle_inference
+    {nErr nAct : Nat} (p : PolicyProfile nErr nAct 1) (r : Int) :
+    ScalarCIRLInference p r ↔
+      BundleInferenceFromPolicy p (fun _ : Fin 1 => r) := by
+  constructor
+  · intro h i
+    match i with
+    | ⟨0, _⟩ => exact h
+  · intro h
+    exact h 0
+
 /-- ch20 book target: preserve full bundle geometry, not just the scalar marginal. -/
 def ValueBundleGeometryPreserved {nErr nAct : Nat}
     (p q : PolicyProfile nErr nAct 2) : Prop :=

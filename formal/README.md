@@ -50,11 +50,14 @@ hypotheses.
 ## Build
 
 Requires the Lean toolchain via [`elan`](https://github.com/leanprover/elan)
-(pinned in `lean-toolchain` to `leanprover/lean4:v4.28.0`). **No Mathlib** — the
-spine depends only on the Lean core library, so it builds in seconds and offline.
+(pinned in `lean-toolchain` to `leanprover/lean4:v4.28.0`). The spine depends on
+**Mathlib** (`v4.28.0`) for finite combinatorics, list algebra, and upcoming
+field-agenda rederivations. First build downloads Mathlib; use `lake exe cache get`
+in `formal/` for precompiled oleans when online.
 
 ```bash
 cd formal
+lake exe cache get   # first time / after Mathlib update (needs network)
 lake build
 ```
 
@@ -93,13 +96,14 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 
 | Module | Proof-spine nodes | Book chapters |
 |--------|-------------------|---------------|
-| `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, grounding predicates and `conservative_abstraction_no_silent_gap`, MDL/graph scaffolding, **`finPigeonhole`** (from-scratch finite pigeonhole), bridges `MB1`–`MB9` with split `MB6a`/`MB6b`, `MB7a`–`MB7d`, and grounding bridge `MB9`, `BridgeAssumptions` | foundations |
+| `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, grounding predicates and `conservative_abstraction_no_silent_gap`, MDL/graph scaffolding, bridges `MB1`–`MB9` with split `MB6a`/`MB6b`, `MB7a`–`MB7d`, and grounding bridge `MB9`, `BridgeAssumptions` | foundations |
+| `AlignmentProofSpine/Mathlib.lean` | shared Mathlib lemmas (e.g. finite-cardinality pigeonhole for `P34`) | foundations |
 | `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, CID abstraction-relative incentive separation, smoothing-margin arithmetic | 6–7, 10, 36 |
 | `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
 | `AlignmentProofSpine/CooperationGraph.lean` | **`UADDiscoveryAudit`**, **`UnitScore`**, **`MetaPriorEvidence`**, `metaPriorMismatch` derived from `P_meta` diagonal mass, **`InferentialDetectionCertificate`**, **`DerivedCoopGraph`**, **`DerivedInferentialGraph`**, `causalMutualModelOf` / `inferentialProfileOf` / `inferentialPairOf` (opaque evidence emitters), `inferentialCouplingScore`, `auditMutualModelWithInferential`, `uad_audit_yields_inferential_graph`, `severed_causal_reach_positive_effective_reach`, **`P33`** | 13, 33, 35 |
-| `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23 (including 19b), 28 |
+| `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), scalar CIRL as one-dimensional bundle inference, cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23 (including 19b), 28 |
 | `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 24–27 (including 25b), 38–39b |
-| `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared status ledger, finite no-Mathlib MDP/weights/reachability/contraction helpers, cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization | crosswalk appendix |
+| `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared-domain special-case / projection theorems with explicit interface conditions, non-converse separations, shared status ledger, finite Mathlib-backed helpers (`Finite/MDP`, `Finite/Probability`, `Finite/Weights`, `Finite/Reachability`, `Finite/Contraction`), cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization. Recent Mathlib derivations include assistance-belief defer optimality, AUP attainable-utility preservation, and quantilizer distribution soundness. Debate/ELK remain later targets for native protocol/reporter theorem matching. | crosswalk appendix |
 | `AlignmentProofSpine/FieldSubsumptions.lean` | compatibility re-export for the field-agenda headline theorem names | crosswalk appendix |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
@@ -132,9 +136,16 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   assumption (`Field.Imported`) used to state what the external agenda proves
   under its own assumptions. These are distinct from `MB*` book bridges.
 
+**Community gem (in progress).** The `Field/` module is building a shared
+machine-checked finite fragment for CIRL, AUP/relative reachability,
+quantilization, shutdown, and interruptibility under explicit interface
+conditions. The alignment community has no comparable artifact today. The
+manuscript names this as the **field-agenda formalization gem** in Appendix I
+(`sec:appi-field-formalization-gem`).
+
 Dependency hygiene: inspect any exported theorem with Lean's `#print axioms`
 before describing it as axiom-free. For example, use
-`#print axioms AlignmentProofSpine.interrupt_subsumption_ch24` or
+`#print axioms AlignmentProofSpine.interrupt_safety_is_correction_projection` or
 `#print axioms AlignmentProofSpine.christian_corrigibility_system` in a scratch
 Lean file; the former is a local finite proof, while the latter intentionally
 depends on `MB4`.
@@ -152,9 +163,8 @@ depends on `MB4`.
   counterexamples forever").
 * `P44` uses the brief's §6 amendment (two disagreeing legitimacy orderings), not
   the inconsistent single-predicate form.
-* The host-capacity aliasing theorem `P34` is proved against a from-scratch
-  pigeonhole (`finPigeonhole`) instead of Mathlib's `Fintype.card_le_of_injective`,
-  keeping the project Mathlib-free.
+* The host-capacity aliasing theorem `P34` uses Mathlib's
+  `Fintype.card_le_of_injective` via `AlignmentProofSpine.Mathlib`.
 * **`Risk`** is `Control − CCI` (`RiskGap`). Certification uses `Control ≤ CCI + δ`
   as the numeric scalar-projection leaf. `CCICertificate` / `CCIThresholds` encode
   the manuscript's vector/status certificate, and `CCIVectorSupportsScalarSlack`

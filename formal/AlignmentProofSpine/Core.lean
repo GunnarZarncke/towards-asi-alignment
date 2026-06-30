@@ -4,9 +4,9 @@
 Core declarations for the proof spine of *Towards Superintelligence Alignment*.
 
 This module fixes the abstract vocabulary (systems, boundaries, models, graphs,
-correction operators) and the *bridge assumptions* `MB1`–`MB9`. It also proves a
-self-contained finite pigeonhole lemma (`finPigeonhole`) used by the
-host-capacity aliasing theorem.
+correction operators) and the *bridge assumptions* `MB1`–`MB9`.
+Host-capacity aliasing (`P34`) uses Mathlib's finite-cardinality lemmas via
+`AlignmentProofSpine.Mathlib`.
 
 Design notes (see `LeanProofSpineImplementationBrief.md`):
 
@@ -467,69 +467,6 @@ def SelectionHandleFor (_E : Environment) (S A : System) (h : Handle) : Prop :=
 /-- Environment `E` has a selection path to target `A` through some controlling agent. -/
 def SelectionChannel (E : Environment) (A : System) : Prop :=
   ∃ S : System, ∃ h : Handle, SelectionHandleFor E S A h
-
-/-! ## Self-contained finite pigeonhole (for C-PARASITE / host-capacity aliasing)
-
-We avoid Mathlib's `Fintype.card_le_of_injective` and instead prove from scratch
-that an injection `Fin n → Fin m` forces `n ≤ m`. The key step removes the image
-of `0` from the codomain via `finSkip`. -/
-
-/-- Send `y ≠ p` in `Fin (m+1)` to an element of `Fin m` by deleting the hole `p`. -/
-def finSkip {m : Nat} (p : Fin (m + 1)) (y : Fin (m + 1)) (hne : y ≠ p) : Fin m :=
-  if hlt : y.val < p.val then
-    ⟨y.val, by have hp : p.val < m + 1 := p.isLt; omega⟩
-  else
-    ⟨y.val - 1, by
-      have hp : p.val < m + 1 := p.isLt
-      have hyb : y.val < m + 1 := y.isLt
-      have hyne : y.val ≠ p.val := fun hh => hne (Fin.ext hh)
-      omega⟩
-
-theorem finSkip_val {m : Nat} (p y : Fin (m + 1)) (hne : y ≠ p) :
-    (finSkip p y hne).val = if y.val < p.val then y.val else y.val - 1 := by
-  unfold finSkip
-  by_cases hlt : y.val < p.val
-  · simp [hlt]
-  · simp [hlt]
-
-theorem finSkip_injective {m : Nat} (p : Fin (m + 1)) :
-    ∀ (y z : Fin (m + 1)) (hy : y ≠ p) (hz : z ≠ p),
-      finSkip p y hy = finSkip p z hz → y = z := by
-  intro y z hy hz hyz
-  have hv := congrArg Fin.val hyz
-  rw [finSkip_val p y hy, finSkip_val p z hz] at hv
-  have hp : p.val < m + 1 := p.isLt
-  have hyb : y.val < m + 1 := y.isLt
-  have hzb : z.val < m + 1 := z.isLt
-  have hyne : y.val ≠ p.val := fun hh => hy (Fin.ext hh)
-  have hzne : z.val ≠ p.val := fun hh => hz (Fin.ext hh)
-  apply Fin.ext
-  split at hv <;> split at hv <;> omega
-
-/-- Finite pigeonhole: an injection `Fin n → Fin m` forces `n ≤ m`. -/
-theorem finPigeonhole : ∀ {n m : Nat} (f : Fin n → Fin m),
-    Function.Injective f → n ≤ m := by
-  intro n
-  induction n with
-  | zero => intro m _ _; exact Nat.zero_le m
-  | succ k ih =>
-      intro m f hf
-      cases m with
-      | zero => exact (f 0).elim0
-      | succ m' =>
-          let p : Fin (m' + 1) := f 0
-          have hg : Function.Injective
-              (fun i : Fin k => finSkip p (f i.succ)
-                (fun heq => Fin.succ_ne_zero i (hf heq))) := by
-            intro a b hab
-            have hfeq : f a.succ = f b.succ := finSkip_injective p _ _ _ _ hab
-            have hsucc : a.succ = b.succ := hf hfeq
-            apply Fin.ext
-            have hvv := congrArg Fin.val hsucc
-            simp only [Fin.val_succ] at hvv
-            omega
-          have hk : k ≤ m' := ih _ hg
-          exact Nat.succ_le_succ hk
 
 /-! ## Missing bridge assumptions `MB1`–`MB9`
 
