@@ -100,6 +100,8 @@ Repo-level `metadata/TODO.md` is separate; keep experiment handoff here.
 - [ ] Bridge coverage matrix in curve JSON/MD (rows = bridges, cols = instrumentation levels).
 - [ ] `--bridge-slice MB3,MB8` on curve runner.
 
+- [ ] **Composite-index ↔ estimator matrix** (reviewer 2026-06-30). Single table: manuscript composite ($J$, GLI, scalar/vector CCI, ch29 conserved-property score, bundle probes) → sub-component defs → concrete estimator in this harness → scenario / diagnostic script (`correction_capture_toy.py`, `mb*_diagnostic.py`, `cci_audit.py`, multiresolution scenarios). Natural output: `results/measurand_instantiation_matrix.{json,md}`; cross-ref `metadata/TODO.md` measurand-instantiation-table item and `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
+
 ---
 
 ## Next — manuscript (only when user requests)
