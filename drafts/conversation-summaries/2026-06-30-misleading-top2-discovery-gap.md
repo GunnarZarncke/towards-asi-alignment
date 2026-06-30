@@ -104,4 +104,4 @@ Two of the three intended mechanisms now work:
 - `experiments/embedded-simulation/embedded_sim/intervention_benchmark.py`
 - `experiments/embedded-simulation/tests/unit/test_intervention.py`
 
-No commit made (awaiting user).
+**Commit:** `3ca7fd4` — misleading-top2 lab, coordination boost, bind handle, tests, intervention curve results.
