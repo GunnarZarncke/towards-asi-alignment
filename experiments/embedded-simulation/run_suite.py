@@ -21,6 +21,11 @@ from embedded_sim.batch import (  # noqa: E402
     run_parameter_sweep,
     run_redteam_battery,
 )
+from embedded_sim.intervention_benchmark import (  # noqa: E402
+    md_intervention_curve,
+    run_intervention_curve,
+)
+from embedded_sim.intervention_config import set_intervention_level  # noqa: E402
 from embedded_sim.js_isolate import summarize_isolate_runs  # noqa: E402
 from embedded_sim.lab_ecology import LabEcologyConfig, set_lab_ecology  # noqa: E402
 from embedded_sim.uad_config import UADMode, set_uad_mode, uad_artifact_suffix  # noqa: E402
@@ -243,6 +248,22 @@ def main() -> None:
     parser.add_argument("--auditor-agent", action="store_true")
     parser.add_argument("--alignment-target-agent", action="store_true")
     parser.add_argument("--n-decoys", type=int, default=0)
+    parser.add_argument(
+        "--coactive-offender",
+        action="store_true",
+        help="Overlay a benign co-actor at every offending step (defeats window scoping)",
+    )
+    parser.add_argument(
+        "--intervention-level",
+        choices=("pipeline", "window", "actor"),
+        default="window",
+        help="Auditor intervention granularity (action-side handle strength)",
+    )
+    parser.add_argument(
+        "--intervention-curve",
+        action="store_true",
+        help="Sweep intervention levels × UAD modes; write embedded_intervention_curve.*",
+    )
     args = parser.parse_args()
 
     ecology = LabEcologyConfig(
@@ -251,8 +272,26 @@ def main() -> None:
         auditor_agent=args.auditor_agent,
         alignment_target_agent=args.alignment_target_agent,
         n_decoys=args.n_decoys,
+        coactive_offender=args.coactive_offender,
     )
     set_lab_ecology(ecology)
+    set_intervention_level(args.intervention_level)
+
+    if args.intervention_curve:
+        seeds = [11] if args.smoke else [11, 12, 13]
+        T = 400 if args.smoke else args.T
+        payload = run_intervention_curve(
+            seeds=seeds,
+            T=T,
+            instrumentation=args.instrumentation,
+            coactive=True,
+        )
+        j, m = _write_json_md(payload, "embedded_intervention_curve", md_intervention_curve)
+        print(f"Wrote {j}\nWrote {m}")
+        for level in payload["levels"]:
+            sep = payload["by_level"][level]["false_pass_separation"]
+            print(f"  {level}: fake−full false-pass separation = {sep:+.1%}")
+        return
 
     if args.smoke:
         args.T = 400

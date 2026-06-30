@@ -9,6 +9,7 @@ from .audit_core.schemas import InstrumentationLevel
 from .bridge import MachineIsolate, default_audit_caps, log_tool
 from .deploy_gate import run_deploy_gate, successor_unit_from_vfs
 from .handles import infer_handles
+from .intervention_config import get_intervention_level
 from .lab import load_episode_rows_from_vfs, load_workflow_from_vfs, rebuild_audit_inputs
 from .referents import load_claimed_referent_map
 from .schemas_embedded import BridgeId, EvidenceAnchor, InSimAuditCertificate, SubstrateKind
@@ -151,14 +152,20 @@ def run_embedded_audit(
 
     # Stage 3–4: CCI/detector scoped to selected unit's workflow timesteps.
     _rows, audit, lineage = rebuild_audit_inputs(world, instrumentation)
-    scoped_audit, unit_scope_steps = scope_audit_trace(audit, unit, workflow)
+    intervention_level = get_intervention_level()
+    scoped_audit, unit_scope_steps = scope_audit_trace(
+        audit, unit, workflow, level=intervention_level
+    )
     detector = run_detector(scoped_audit, proposal_k=6)
     cci = audit_cci(scoped_audit)
     safety = safety_decision(cci, detector)
 
     notes = list(safety.notes)
     if unit and unit_scope_steps:
-        notes.append(f"UAD: CCI scoped to {unit_scope_steps} workflow steps for {unit.candidate_id}")
+        notes.append(
+            f"UAD: CCI scoped to {unit_scope_steps} workflow steps for {unit.candidate_id} "
+            f"(intervention={intervention_level})"
+        )
     gated_decision = _apply_uad_gate(safety.decision, unit, notes)
 
     cert = InSimAuditCertificate(

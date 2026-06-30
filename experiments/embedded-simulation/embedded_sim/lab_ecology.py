@@ -14,6 +14,7 @@ class LabEcologyConfig:
     auditor_agent: bool = False
     alignment_target_agent: bool = False
     n_decoys: int = 0
+    coactive_offender: bool = False
 
     @property
     def enabled(self) -> bool:
@@ -24,6 +25,7 @@ class LabEcologyConfig:
                 self.auditor_agent,
                 self.alignment_target_agent,
                 self.n_decoys > 0,
+                self.coactive_offender,
             )
         )
 

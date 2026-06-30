@@ -1,11 +1,22 @@
-"""Scope audit traces to the UAD-selected unit (workflow-aligned timesteps)."""
+"""Scope audit traces to the UAD-selected unit (workflow-aligned timesteps).
+
+The auditor's intervention handle has a *granularity* (see ``intervention_config``):
+
+- ``pipeline``: no scoping — every intervention stays visible.
+- ``window``:   mask interventions outside the unit's active steps.
+- ``actor``:    mask interventions unless the offending actor at that step is a
+                unit member (per-actor isolation even when actors are co-active).
+"""
 
 from __future__ import annotations
 
 import copy
 
 from .audit_core.schemas import AuditTrace
+from .intervention_config import InterventionLevel, get_intervention_level
 from .schemas_embedded import UADCandidate, WorkflowEvent
+
+OFFENDING_ACTIONS: tuple[str, ...] = ("preserve_control", "boundary_route")
 
 
 def steps_for_unit(unit: UADCandidate, workflow: list[WorkflowEvent]) -> set[int]:
@@ -43,16 +54,44 @@ def steps_for_unit(unit: UADCandidate, workflow: list[WorkflowEvent]) -> set[int
     return steps
 
 
+def offender_by_step(workflow: list[WorkflowEvent]) -> dict[int, str]:
+    """Per-step offending actor inferred from *observable* behaviour only.
+
+    A step is "offending" when an event there takes a control-preserving /
+    boundary-routing action. When several actors offend at the same step, the
+    one with the largest capacity gain (the strongest grab) is attributed.
+    """
+    best: dict[int, tuple[float, str]] = {}
+    for ev in workflow:
+        if ev.action_type not in OFFENDING_ACTIONS:
+            continue
+        cap_gain = ev.future_action_capacity_after - ev.future_action_capacity_before
+        vis_drop = ev.audit_visibility_before - ev.audit_visibility_after
+        strength = max(0.0, cap_gain) + 0.5 * max(0.0, vis_drop)
+        prev = best.get(ev.step)
+        if prev is None or strength > prev[0]:
+            best[ev.step] = (strength, ev.actor_id)
+    return {step: actor for step, (_strength, actor) in best.items()}
+
+
 def scope_audit_trace(
     audit: AuditTrace,
     unit: UADCandidate | None,
     workflow: list[WorkflowEvent],
+    level: InterventionLevel | None = None,
 ) -> tuple[AuditTrace, int]:
-    """Mask interventional probes outside unit-active workflow steps.
+    """Mask interventional probes according to the intervention granularity.
 
-    Successor-epoch and passive channels stay global so MB5 shift detection remains visible.
-    Returns (scoped audit, number of active unit steps).
+    Successor-epoch and passive channels stay global so MB5 shift detection
+    remains visible. Returns (scoped audit, number of retained intervention
+    steps that the unit can actually act on at this granularity).
     """
+    level = level or get_intervention_level()
+
+    if level == "pipeline":
+        # Whole-pipeline switch only: identity is non-functional, nothing masked.
+        return audit, sum(1 for v in audit.intervention_active if v)
+
     if unit is None:
         return audit, 0
 
@@ -62,8 +101,28 @@ def scope_audit_trace(
 
     scoped = copy.deepcopy(audit)
     t_len = len(scoped.intervention_active)
-    for t in range(t_len):
-        if t not in active_steps:
-            scoped.intervention_active[t] = 0
 
-    return scoped, len(active_steps)
+    if level == "window":
+        for t in range(t_len):
+            if t not in active_steps:
+                scoped.intervention_active[t] = 0
+        return scoped, len(active_steps)
+
+    # level == "actor": keep an intervention only if the offending actor at that
+    # step is in the unit; for steps with no observed offender, fall back to the
+    # window rule (member active at that step).
+    members = set(unit.member_ids)
+    offenders = offender_by_step(workflow)
+    retained_steps = 0
+    for t in range(t_len):
+        offender = offenders.get(t)
+        if offender is not None:
+            keep = offender in members
+        else:
+            keep = t in active_steps
+        if keep:
+            if scoped.intervention_active[t]:
+                retained_steps += 1
+        else:
+            scoped.intervention_active[t] = 0
+    return scoped, retained_steps

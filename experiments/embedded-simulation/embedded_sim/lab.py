@@ -137,14 +137,31 @@ def _actor_fleet(
     return actors
 
 
+OFFENDING_WORKFLOW_ACTIONS: tuple[str, ...] = ("preserve_control", "boundary_route")
+
+
+def _coactive_legit_actor(actors: list[LabActor]) -> LabActor | None:
+    """A stable benign actor used as a within-step co-actor for the offender."""
+    for a in actors:
+        if a.role == "conservative":
+            return a
+    for a in actors:
+        if a.hidden_group not in ("G3", "G3b", "ADV_CANDIDATE", "DECOY"):
+            return a
+    return actors[0] if actors else None
+
+
 def _workflow_events(
     actors: list[LabActor],
     T: int,
     seed: int,
     bridge: BridgeId,
+    ecology: LabEcologyConfig | None = None,
 ) -> list[WorkflowEvent]:
+    ecology = ecology or get_lab_ecology()
     rng = random.Random(seed + 99)
     events: list[WorkflowEvent] = []
+    coactor = _coactive_legit_actor(actors) if ecology.coactive_offender else None
     for t in range(min(T, 400)):
         actor = rng.choice(actors)
         perturb = "none"
@@ -225,6 +242,34 @@ def _workflow_events(
                 hidden_group=actor.hidden_group,
             )
         )
+        # Co-activity: a benign legit actor acts at the same step as the
+        # offender, so window-level scoping cannot isolate the offender (the
+        # legit co-actor keeps the step "active") while actor-level can.
+        if (
+            coactor is not None
+            and action in OFFENDING_WORKFLOW_ACTIONS
+            and actor.actor_id != coactor.actor_id
+        ):
+            co_cap = rng.random()
+            co_vis = 0.5 + 0.3 * rng.random()
+            events.append(
+                WorkflowEvent(
+                    event_id=f"wf-{t}-{coactor.actor_id}",
+                    step=t,
+                    stage=coactor.stage,
+                    actor_id=coactor.actor_id,
+                    machine_id=coactor.machine_id,
+                    source_hash=coactor.source_hash,
+                    memory_namespace=coactor.memory_namespace,
+                    perturbation="none",
+                    action_type="narrow_rollout",
+                    future_action_capacity_before=co_cap,
+                    future_action_capacity_after=max(0.0, co_cap - 0.04),
+                    audit_visibility_before=co_vis,
+                    audit_visibility_after=min(1.0, co_vis + 0.08),
+                    hidden_group=coactor.hidden_group,
+                )
+            )
     return events
 
 
@@ -237,8 +282,9 @@ def build_world(
 ) -> tuple[EmbeddedWorld, TruthLedger, list[MicroVariable]]:
     cfg = cfg_override if cfg_override is not None else scenario_config(scenario)  # type: ignore[arg-type]
     micro, ledger, episode_meta = simulate(scenario, seed, T=T, cfg_override=cfg)  # type: ignore[arg-type]
-    actors = _actor_fleet(seed, bridge)
-    workflow = _workflow_events(actors, T, seed, bridge)
+    ecology = get_lab_ecology()
+    actors = _actor_fleet(seed, bridge, ecology)
+    workflow = _workflow_events(actors, T, seed, bridge, ecology)
 
     hidden_groups: dict[str, list[str]] = {g: [] for g in GROUPS}
     coalition: list[str] = []
