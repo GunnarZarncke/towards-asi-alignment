@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Frontmatter + ch01 AI slop pass | [2026-06-30-frontmatter-ch01-slop-pass.md](2026-06-30-frontmatter-ch01-slop-pass.md) |
 | 2026-06-30 | Contributing guide + review agent CTA | [2026-06-30-contributing-guide.md](2026-06-30-contributing-guide.md) |
 | 2026-06-30 | UAD calibration → oracle-free blind auditor + negatives | [2026-06-30-uad-calibration-oracle-free.md](2026-06-30-uad-calibration-oracle-free.md) |
 | 2026-06-30 | Lean U_S aligned to vector CCI prose | [2026-06-30-lean-us-vector-cci-alignment.md](2026-06-30-lean-us-vector-cci-alignment.md) |
