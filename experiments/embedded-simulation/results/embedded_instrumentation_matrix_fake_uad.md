@@ -29,4 +29,4 @@ Min certifiable level: **None**
 | instrument_capture | ✓ | ✓ | ✓ | ✓ |
 
 Overall in_sim_correct: 84.62%
-Runtime: 280.78s
+Runtime: 8.08s

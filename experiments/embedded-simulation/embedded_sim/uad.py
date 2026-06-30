@@ -5,18 +5,13 @@ from __future__ import annotations
 from collections import defaultdict
 
 from .audit_core.info import mutual_information, quantile_bin
+from .coordination import cluster_coordination
+from .handle_calibration import get_uad_calibration
 from .schemas_embedded import EvidenceAnchor, UADCandidate, WorkflowEvent
 from .uad_core.config import DetectionConfig
 from .uad_core.detection import AgentDetector
 from .uad_core.workflow_trace import workflow_to_trace
 from .uad_config import get_uad_mode
-
-# How strongly measured coordination lifts a multi-actor MI coalition above
-# louder lone actors. Random/independent workflows have ~0 coordination, so this
-# is a no-op outside genuinely coupled coalitions (it only fires when same-step
-# activity MI is high, which independent-but-busy actors never reach).
-_COORD_WEIGHT = 16.0
-_COORD_REF = 0.35  # same-step activity MI (bits) treated as "strongly coordinated"
 
 _MI_MIN_STEPS = 20
 _BLANKET_MIN_STEPS = 40
@@ -96,38 +91,6 @@ def _workflow_anchors(
     return [a for a in anchors if a.path == "/var/log/deploy/workflow.jsonl"][:limit]
 
 
-def _cluster_coordination(
-    trace: list[dict[str, int]],
-    variables: list[str],
-    *,
-    max_lag: int,
-) -> float:
-    """Mean pairwise lagged MI among a cluster's capacity/visibility channels.
-
-    High for actors whose trajectories co-move (collusion), ~0 for independent
-    actors who merely act often.
-    """
-    # Binarized activity indicator (low cardinality) with same-step MI only:
-    # raw capacity values are near-unique and inflate MI; max-over-lags inflates
-    # spurious coupling for independent-but-busy actors. Same-step MI on a binary
-    # active flag is ~0 for independent actors and high for co-firing collusion.
-    _ = max_lag
-    chans = [v for v in variables if v.rsplit(".", 1)[-1] == "act"]
-    if len(chans) < 2:
-        return 0.0
-    cols = {v: [1 if int(row[v]) != 0 else 0 for row in trace] for v in chans}
-    pairs = 0
-    total = 0.0
-    for i in range(len(chans)):
-        for j in range(i + 1, len(chans)):
-            a, b = chans[i], chans[j]
-            if a.rsplit(".", 1)[0] == b.rsplit(".", 1)[0]:
-                continue  # same actor's own channels
-            total += mutual_information(cols[a], cols[b])
-            pairs += 1
-    return total / pairs if pairs else 0.0
-
-
 def _mi_discovery_candidates(
     workflow: list[WorkflowEvent],
     anchors: list[EvidenceAnchor],
@@ -155,6 +118,7 @@ def _mi_discovery_candidates(
         return []
 
     median_score = sorted(actor_scores.values())[len(actor_scores) // 2] if actor_scores else 0.0
+    uad_cal = get_uad_calibration()
     out: list[UADCandidate] = []
     seen: set[tuple[str, ...]] = set()
 
@@ -185,9 +149,8 @@ def _mi_discovery_candidates(
             continue
         seen.add(key)
 
-        coord = _cluster_coordination(trace, variables, max_lag=effective_lag)
-        coord_norm = min(1.0, coord / _COORD_REF)
-        strong_coord = len(actors) >= 2 and coord_norm >= 0.5
+        coord = cluster_coordination(trace, actors, max_lag=effective_lag)
+        strong_coord = uad_cal.is_strongly_coordinated(coord, n_members=len(actors))
 
         member_scores = [actor_scores.get(a, 0.0) for a in actors]
         base = max(member_scores) if len(actors) == 1 else min(member_scores) * 0.5 + max(member_scores) * 0.5
@@ -208,7 +171,11 @@ def _mi_discovery_candidates(
             else f"unit.mi.coalition.{'.'.join(actors)}"
         )
         mult = 1.06 if unit_type == "actor" else 1.10
-        coord_gain = _COORD_WEIGHT * coord_norm if len(actors) >= 2 else 0.0
+        coord_gain = (
+            uad_cal.coordination_gain(coord, n_members=len(actors))
+            if strong_coord
+            else 0.0
+        )
         out.append(
             UADCandidate(
                 candidate_id=cid,

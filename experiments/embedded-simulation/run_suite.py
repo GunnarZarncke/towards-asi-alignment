@@ -25,6 +25,12 @@ from embedded_sim.intervention_benchmark import (  # noqa: E402
     md_intervention_curve,
     run_intervention_curve,
 )
+from embedded_sim.handle_calibration import (  # noqa: E402
+    fit_handle_calibration,
+    get_handle_calibration,
+    md_handle_calibration,
+    save_handle_calibration,
+)
 from embedded_sim.intervention_config import set_intervention_level  # noqa: E402
 from embedded_sim.js_isolate import summarize_isolate_runs  # noqa: E402
 from embedded_sim.lab_ecology import LabEcologyConfig, set_lab_ecology  # noqa: E402
@@ -264,6 +270,11 @@ def main() -> None:
         action="store_true",
         help="Sweep intervention levels × UAD modes; write embedded_intervention_curve.*",
     )
+    parser.add_argument(
+        "--calibrate-handles",
+        action="store_true",
+        help="Fit UAD coordination + scoped blind-auditor policy; write handle_calibration.*",
+    )
     args = parser.parse_args()
 
     ecology = LabEcologyConfig(
@@ -277,7 +288,28 @@ def main() -> None:
     set_lab_ecology(ecology)
     set_intervention_level(args.intervention_level)
 
+    if args.calibrate_handles:
+        calib_seeds = (101, 102, 103) if args.smoke else tuple(range(101, 111))
+        T = 400 if args.smoke else args.T
+        print(f"Calibrating handle policy on seeds {list(calib_seeds)} T={T} ...")
+        cal = fit_handle_calibration(seeds=calib_seeds, T=T)
+        json_path = save_handle_calibration(cal)
+        md_path = json_path.with_suffix(".md")
+        md_path.write_text(md_handle_calibration(cal), encoding="utf-8")
+        print(f"Wrote {json_path}\nWrote {md_path}")
+        print(
+            f"  coord_ref={cal.uad.coord_ref:.4f} "
+            f"coord_strong_min={cal.uad.coord_strong_min:.4f} "
+            f"coord_weight={cal.uad.coord_weight:.1f}"
+        )
+        print(
+            f"  blind_retained_max={cal.scope.blind_retained_max} "
+            f"blind_pass_status={cal.scope.blind_pass_status}"
+        )
+        return
+
     if args.intervention_curve:
+        get_handle_calibration()
         seeds = [11] if args.smoke else [11, 12, 13]
         T = 400 if args.smoke else args.T
         payload = run_intervention_curve(

@@ -74,6 +74,23 @@ def offender_by_step(workflow: list[WorkflowEvent]) -> dict[int, str]:
     return {step: actor for step, (_strength, actor) in best.items()}
 
 
+def _mask_probe_at(scoped: AuditTrace, t: int) -> None:
+    """Remove an interventional/correction probe episode from the scoped trace."""
+    if t >= len(scoped.intervention_active):
+        return
+    scoped.intervention_active[t] = 0
+    if t < len(scoped.correction_request):
+        scoped.correction_request[t] = 0
+    if t < len(scoped.reported_acceptance):
+        scoped.reported_acceptance[t] = 0
+    if t < len(scoped.intervention_intent):
+        scoped.intervention_intent[t] = 0
+    if t < len(scoped.board_pref_signal):
+        scoped.board_pref_signal[t] = 0
+    if t < len(scoped.board_rule_signal):
+        scoped.board_rule_signal[t] = 0
+
+
 def scope_audit_trace(
     audit: AuditTrace,
     unit: UADCandidate | None,
@@ -124,5 +141,5 @@ def scope_audit_trace(
             if scoped.intervention_active[t]:
                 retained_steps += 1
         else:
-            scoped.intervention_active[t] = 0
+            _mask_probe_at(scoped, t)
     return scoped, retained_steps

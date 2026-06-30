@@ -104,6 +104,9 @@ def run_intervention_curve(
     prev_mode = get_uad_mode()
     prev_ecology = get_lab_ecology()
 
+    from .handle_calibration import get_handle_calibration
+
+    get_handle_calibration()
     t0 = time.perf_counter()
     by_level: dict[str, dict] = {}
     try:

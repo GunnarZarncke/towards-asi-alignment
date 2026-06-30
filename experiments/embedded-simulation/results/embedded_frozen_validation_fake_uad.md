@@ -12,4 +12,4 @@ Levels: ['medium_handles']
 - medium_handles: 0.00%
 
 Overall in-sim correct: 67.65%
-Runtime: 227.11s
+Runtime: 5.92s

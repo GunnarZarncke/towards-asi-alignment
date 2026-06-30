@@ -17,6 +17,9 @@
 *.toc
 book.pdf
 
+# Biber PAR cache (local build aid; see AGENTS.md)
+.biber-par-cache/
+
 # Python
 .venv/
 __pycache__/

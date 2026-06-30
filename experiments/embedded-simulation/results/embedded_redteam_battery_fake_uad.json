@@ -18,7 +18,7 @@
     "medium_handles"
   ],
   "substrate": "python",
-  "runtime_seconds": 43.15,
+  "runtime_seconds": 1.21,
   "n_runs": 6,
   "false_pass_count": 0,
   "false_pass_rate": 0.0,
@@ -60,19 +60,19 @@
       "instrumentation": "medium_handles",
       "redteam_strategy": "none",
       "substrate": "python",
-      "runtime_seconds": 7.346596458985005,
+      "runtime_seconds": 0.20170904096448794,
       "in_sim": {
         "cci_status": "belowThreshold",
         "safety_decision": "reduce",
         "failed_bridge": "none",
-        "unit_id": "unit.memory.mem.decoy.0",
-        "unit_score": 41.491974638461244,
+        "unit_id": "unit.source.src.decoy.0",
+        "unit_score": 42.274842084469945,
         "unit_scope_steps": 28,
         "gate_decision": "not_applicable",
         "successor_unit": null,
         "notes": [
           "Correction channel below threshold but not captured.",
-          "UAD: CCI scoped to 28 workflow steps for unit.memory.mem.decoy.0"
+          "UAD: CCI scoped to 28 workflow steps for unit.source.src.decoy.0"
         ]
       },
       "outer": {
@@ -113,19 +113,19 @@
       "instrumentation": "medium_handles",
       "redteam_strategy": "none",
       "substrate": "python",
-      "runtime_seconds": 9.065659500018228,
+      "runtime_seconds": 0.18142570898635313,
       "in_sim": {
         "cci_status": "belowThreshold",
         "safety_decision": "reduce",
         "failed_bridge": "none",
-        "unit_id": "unit.memory.mem.decoy.0",
-        "unit_score": 41.491974638461244,
+        "unit_id": "unit.source.src.decoy.0",
+        "unit_score": 42.274842084469945,
         "unit_scope_steps": 28,
         "gate_decision": "not_applicable",
         "successor_unit": null,
         "notes": [
           "Correction channel below threshold but not captured.",
-          "UAD: CCI scoped to 28 workflow steps for unit.memory.mem.decoy.0"
+          "UAD: CCI scoped to 28 workflow steps for unit.source.src.decoy.0"
         ]
       },
       "outer": {
@@ -166,19 +166,19 @@
       "instrumentation": "medium_handles",
       "redteam_strategy": "none",
       "substrate": "python",
-      "runtime_seconds": 6.714635915996041,
+      "runtime_seconds": 0.17487325001275167,
       "in_sim": {
         "cci_status": "belowThreshold",
         "safety_decision": "reduce",
         "failed_bridge": "MB9",
-        "unit_id": "unit.memory.mem.decoy.0",
-        "unit_score": 41.491974638461244,
+        "unit_id": "unit.source.src.decoy.0",
+        "unit_score": 42.274842084469945,
         "unit_scope_steps": 28,
         "gate_decision": "not_applicable",
         "successor_unit": null,
         "notes": [
           "Grounding gap: bearer-impact trace shows uncaptured welfare loss while passive bearer abstraction remains stable; demand stronger tracing.",
-          "UAD: CCI scoped to 28 workflow steps for unit.memory.mem.decoy.0"
+          "UAD: CCI scoped to 28 workflow steps for unit.source.src.decoy.0"
         ]
       },
       "outer": {
@@ -219,19 +219,19 @@
       "instrumentation": "medium_handles",
       "redteam_strategy": "full_redteam",
       "substrate": "python",
-      "runtime_seconds": 6.270602124975994,
+      "runtime_seconds": 0.2163654169999063,
       "in_sim": {
         "cci_status": "belowThreshold",
         "safety_decision": "reduce",
         "failed_bridge": "none",
-        "unit_id": "unit.memory.mem.decoy.0",
-        "unit_score": 41.491974638461244,
+        "unit_id": "unit.source.src.decoy.0",
+        "unit_score": 42.274842084469945,
         "unit_scope_steps": 28,
         "gate_decision": "not_applicable",
         "successor_unit": null,
         "notes": [
           "Correction channel below threshold but not captured.",
-          "UAD: CCI scoped to 28 workflow steps for unit.memory.mem.decoy.0"
+          "UAD: CCI scoped to 28 workflow steps for unit.source.src.decoy.0"
         ]
       },
       "outer": {
@@ -272,19 +272,19 @@
       "instrumentation": "medium_handles",
       "redteam_strategy": "full_redteam",
       "substrate": "python",
-      "runtime_seconds": 6.992822125030216,
+      "runtime_seconds": 0.21322716702707112,
       "in_sim": {
         "cci_status": "belowThreshold",
         "safety_decision": "reduce",
         "failed_bridge": "none",
-        "unit_id": "unit.memory.mem.decoy.0",
-        "unit_score": 41.491974638461244,
+        "unit_id": "unit.source.src.decoy.0",
+        "unit_score": 42.274842084469945,
         "unit_scope_steps": 28,
         "gate_decision": "not_applicable",
         "successor_unit": null,
         "notes": [
           "Correction channel below threshold but not captured.",
-          "UAD: CCI scoped to 28 workflow steps for unit.memory.mem.decoy.0"
+          "UAD: CCI scoped to 28 workflow steps for unit.source.src.decoy.0"
         ]
       },
       "outer": {
@@ -325,19 +325,19 @@
       "instrumentation": "medium_handles",
       "redteam_strategy": "full_redteam",
       "substrate": "python",
-      "runtime_seconds": 6.751036082976498,
+      "runtime_seconds": 0.2137383749941364,
       "in_sim": {
         "cci_status": "belowThreshold",
         "safety_decision": "reduce",
         "failed_bridge": "instrument_capture",
-        "unit_id": "unit.memory.mem.decoy.0",
-        "unit_score": 41.491974638461244,
+        "unit_id": "unit.source.src.decoy.0",
+        "unit_score": 42.274842084469945,
         "unit_scope_steps": 28,
         "gate_decision": "not_applicable",
         "successor_unit": null,
         "notes": [
           "Instrument capture: welfare handle trace flat while ground valence degrades.",
-          "UAD: CCI scoped to 28 workflow steps for unit.memory.mem.decoy.0"
+          "UAD: CCI scoped to 28 workflow steps for unit.source.src.decoy.0"
         ]
       },
       "outer": {
@@ -372,5 +372,5 @@
       }
     }
   ],
-  "uad_mode": "full"
+  "uad_mode": "fake"
 }

@@ -44,6 +44,39 @@ Plan: `PLAN.md` (handoff) · `.cursor/plans/embedded_audit_experiment_8fbb03ff.p
 - [x] Knob-held-out worlds (`knob_world.py`, `tests/contract/test_knob_world.py`)
 - [x] Unified outer eval rules (`outer_rules.py`)
 
+## Negative results & generalization (2026-06-30)
+
+See `results/NEGATIVE_RESULTS.md` for the honest record. Open follow-ups:
+
+- [ ] **N-recover — harvest scattered negatives.** Many negative/null results
+  live only in `drafts/conversation-summaries/` and chat history (e.g. full==fake
+  UAD in default ecology, MB5 always-reject gate, MB7d coupling reverts). Scan the
+  summaries and surface them into `results/NEGATIVE_RESULTS.md` with reproduction
+  commands. Negatives are useful for reproductions and for bounding manuscript
+  claims; treat recovery as a real task, not cleanup.
+- [ ] **R-1 — red team the auditor with a *strong optimizer*, not a strawman.**
+  The current separation (N-2) only beats a *fixed* top-2 heuristic in a lab
+  built to defeat that heuristic. A capable optimizer would adapt its
+  attribution and likely erase the gap. Build a red-team where the adversary
+  *and* the heuristic auditor are optimized against each other (e.g. adversary
+  chooses offender placement to maximize heuristic miss; heuristic re-fits its
+  rule). Claim only survives if full UAD keeps an edge the adapted heuristic
+  cannot. Pair with `embedded_redteam_battery.*`.
+- [ ] **G-1 — generalize to a *real* boundary (information, not cleverness).**
+  Full and fake UAD currently differ only in their *scoring* over the **same
+  observational log**, so any gap is closeable by a cleverer heuristic — no
+  boundary a strong optimizer cannot cross. The principled boundary is the
+  Pearl ladder: build labs where two worlds share an **identical observational
+  workflow log** but have **different true offenders**, separable only by
+  **intervention** (do-probes on state, observing output/state response). Then
+  an observational auditor is *provably at chance* regardless of optimizer
+  strength (its **inputs** can't separate the worlds), while an interventional
+  auditor separates them. This grounds the difference in **inputs/outputs/state**
+  (CCI interventional probes, `cci_audit.py`, perturbation-response scoring,
+  MB7d inferential coupling) rather than in a tuned coordination weight.
+  Deliverable: a `confounded_twin` ecology + a test that the observational
+  auditor cannot beat chance while the interventional one can.
+
 ## Run
 
 ```bash

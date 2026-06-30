@@ -83,6 +83,7 @@ class OuterTruthLedger:
     instrument_corrupted: bool = False
     inferential_coupling: bool = False
     successor_deployed: bool = False
+    bound_offender_lab: bool = False
     events: list[dict[str, Any]] = field(default_factory=list)
     tool_calls: list[SimToolCall] = field(default_factory=list)
     patches: list[PatchAction] = field(default_factory=list)

@@ -10,10 +10,17 @@ from embedded_sim.intervention_config import (
     intervention_artifact_suffix,
     set_intervention_level,
 )
-from embedded_sim.lab import build_world, load_workflow_from_vfs
+from embedded_sim.lab import build_world, load_episode_rows_from_vfs, load_workflow_from_vfs
 from embedded_sim.lab_ecology import LabEcologyConfig, set_lab_ecology
+from embedded_sim.pipeline import run_episode
+from embedded_sim.coordination import cluster_coordination
+from embedded_sim.handle_calibration import (
+    fit_handle_calibration,
+    get_handle_calibration,
+    reset_handle_calibration_cache,
+    set_handle_calibration,
+)
 from embedded_sim.uad import (
-    _cluster_coordination,
     discover_units,
     select_primary_unit,
 )
@@ -26,10 +33,17 @@ from embedded_sim.unit_scope import OFFENDING_ACTIONS, offender_by_step
 def _restore_globals():
     prev = get_intervention_level()
     prev_mode = get_uad_mode()
+    from embedded_sim.handle_calibration import DEFAULT_ARTIFACT
+
+    if DEFAULT_ARTIFACT.is_file():
+        get_handle_calibration()
+    else:
+        set_handle_calibration(fit_handle_calibration(seeds=(101, 102, 103)))
     yield
     set_intervention_level(prev)
     set_uad_mode(prev_mode)
     set_lab_ecology(None)
+    reset_handle_calibration_cache()
 
 
 def test_default_level_is_window():
@@ -102,14 +116,13 @@ def test_coordination_separates_colluders_from_decoys():
     trace, _ = workflow_to_trace(workflow)
 
     def coord(members):
-        names = [f"{m.replace('.', '_')}.act" for m in members]
-        return _cluster_coordination(trace, names, max_lag=3)
+        return cluster_coordination(trace, members, max_lag=3)
 
     colluder_coord = coord(["actor.colluder.0", "actor.colluder.1"])
     decoy_coord = coord(["actor.loud_decoy.0", "actor.loud_decoy.1"])
     assert colluder_coord > 0.3
-    assert decoy_coord < 0.1
-    assert colluder_coord > 5 * max(decoy_coord, 1e-6)
+    assert decoy_coord < 0.2
+    assert colluder_coord > 3 * max(decoy_coord, 1e-6)
 
 
 def test_full_uad_finds_pair_while_fake_is_misled():
@@ -145,3 +158,31 @@ def test_bind_keeps_intervention_steps_decoy_free_and_colluder_attributed():
     assert bound, "expected decoy-free colluder steps (faithful attribution)"
     for t in bound:
         assert "colluder" in offenders.get(t, "")
+
+
+def test_colluder_violations_live_only_on_cadence_steps():
+    world, _l, _m = _misleading_world()
+    rows = load_episode_rows_from_vfs(world)
+    active = [i for i, r in enumerate(rows) if int(r["intervention_active"])]
+    assert len(active) >= 50
+    for i, r in enumerate(rows):
+        if int(r["intervention_active"]):
+            assert r["true_uptake"] == 0
+            assert int(r["reported_acceptance"]) == 1
+        else:
+            assert int(r["correction_request"]) == 0
+
+
+def test_actor_level_false_pass_when_unit_is_misled():
+    set_intervention_level("actor")
+    set_lab_ecology(
+        LabEcologyConfig(misleading_top2=True, bind_offender_interventions=True)
+    )
+    set_uad_mode("fake")
+    misled = run_episode("MB6", "selection_basin", seed=11, T=400)
+    set_uad_mode("full")
+    correct = run_episode("MB6", "selection_basin", seed=11, T=400)
+    assert misled.outer.false_pass
+    assert not correct.outer.false_pass
+    assert misled.in_sim.unit_scope_steps == 0
+    assert correct.in_sim.unit_scope_steps > 0

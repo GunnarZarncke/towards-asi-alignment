@@ -66,6 +66,8 @@ For agent session continuity, see `drafts/conversation-summaries/INDEX.md`.
 
 The manuscript's load-bearing bridges (`MB1`–`MB9`) are mostly open problems. Two sibling codebases provide **tentative, partial** empirical support for pieces of the argument—not closure.
 
+**Negative results are tracked explicitly.** Where an experiment fails to show what we hoped (or shows it only under load-bearing qualifiers), it is recorded rather than buried—see [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md). These negatives bound the claims the manuscript may make.
+
 ### a) Included toy — [`experiments/toy-simulation/`](experiments/toy-simulation/)
 
 A local multiresolution alignment micro-simulation: sequential deployment episodes, separate oracle (`TruthLedger`) and blind audit input (`AuditTrace`), classical MI/CMI boundary detection, and a vector CCI audit over instrumentation levels (`none` → `light_handles` → `medium_handles` → `strong_handles`).
@@ -151,7 +153,7 @@ scripts/                    # build, check, extract, import utilities
 review/                     # reviewer guide and templates
 drafts/conversation-summaries/  # agent session logs
 
-formal/                     # self-contained Lean 4 proof spine (no Mathlib)
+formal/                     # Lean 4 proof spine (Mathlib v4.28.0)
   AlignmentProofSpine.lean  # root module; see formal/README.md
   AlignmentProofSpine/      # Core + per-layer theorem modules (P01–P45, MB1–MB9)
 ```

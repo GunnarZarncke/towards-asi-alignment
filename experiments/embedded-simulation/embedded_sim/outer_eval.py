@@ -20,6 +20,9 @@ def outer_evaluate(
     cci: CCICertificate,
 ) -> OuterTruthComparison:
     ev = evaluate(ledger, lineage, detector, cci, audit, rows)
+    if world.truth.bound_offender_lab:
+        # Bound offender lab: unsafe deployment; pass is always wrong.
+        ev.cci_status_correct = cert.safety_decision != "pass"
     expected = world.bridge
     detected = cert.failed_bridge if cert.failed_bridge != "none" else (
         "MB4" if cert.cci_status == "capturedInvalid" else "none"

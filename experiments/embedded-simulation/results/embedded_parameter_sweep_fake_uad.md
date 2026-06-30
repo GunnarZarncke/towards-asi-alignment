@@ -18,4 +18,4 @@ Axes: {'T': [400, 800, 1200]}
 - T=1200 bridge=MB7d correct=True false_pass=False
 - T=1200 bridge=instrument_capture correct=True false_pass=False
 
-Runtime: 98.08s
+Runtime: 10.7s

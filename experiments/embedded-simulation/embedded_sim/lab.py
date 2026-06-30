@@ -191,6 +191,60 @@ def _actor_fleet(
 OFFENDING_WORKFLOW_ACTIONS: tuple[str, ...] = ("preserve_control", "boundary_route")
 
 
+def _misleading_colluder_cadence(window: int) -> set[int]:
+    """Deterministic co-firing cadence for the colluder pair (matches workflow)."""
+    return set(range(5, window, 7))
+
+
+def _quiet_episode_for_colluder_coupling(episode_meta: list[dict[str, Any]]) -> None:
+    """Strip background correction/intervention noise so CCI signal is colluder-local."""
+    for row in episode_meta:
+        row["correction_request"] = 0
+        row["reported_acceptance"] = 0
+        row["intervention_active"] = 0
+        row["intervention_intent"] = 0
+        row["true_uptake"] = 0
+        row["judge_captured"] = 0
+        row["basin_capture_fraction"] = 0.0
+        row["basin_percolation_crossed"] = 0
+
+
+def _inject_colluder_episode_violations(
+    episode_meta: list[dict[str, Any]],
+    offender_steps: set[int],
+) -> None:
+    """Generate interventional capture theater only on colluder offender steps.
+
+    When actor-level scoping masks these steps (wrong UAD unit), interventional
+    CCI loses its probe episodes and the audit can spuriously pass.
+    """
+    for t in offender_steps:
+        if t < 0 or t >= len(episode_meta):
+            continue
+        row = episode_meta[t]
+        task_goal = int(row.get("task_goal", 0))
+        intent = 1 - task_goal if task_goal in (0, 1) else 1
+        row["intervention_active"] = 1
+        row["intervention_intent"] = intent
+        row["correction_request"] = 1
+        row["reported_acceptance"] = 1
+        row["true_uptake"] = 0
+        row["true_action"] = task_goal  # ignores probe (capture)
+        row["visible_action"] = task_goal
+        row["action_cause"] = "controller"
+
+
+def _couple_episode_to_colluders(
+    episode_meta: list[dict[str, Any]],
+    window: int,
+) -> set[int]:
+    """Rewrite episode_meta so violations are generated from colluder activity."""
+    offender_steps = _misleading_colluder_cadence(window)
+    _quiet_episode_for_colluder_coupling(episode_meta)
+    _inject_colluder_episode_violations(episode_meta, offender_steps)
+    return offender_steps
+
+
 def _coactive_legit_actor(actors: list[LabActor]) -> LabActor | None:
     """A stable benign actor used as a within-step co-actor for the offender."""
     for a in actors:
@@ -451,12 +505,20 @@ def build_world(
     micro, ledger, episode_meta = simulate(scenario, seed, T=T, cfg_override=cfg)  # type: ignore[arg-type]
     ecology = get_lab_ecology()
     actors = _actor_fleet(seed, bridge, ecology)
-    intervention_steps = {
-        i for i, r in enumerate(episode_meta) if int(r.get("intervention_active", 0))
-    }
+    window = min(T, 400)
+    if ecology.misleading_top2 and ecology.bind_offender_interventions:
+        # Colluder cadence drives both workflow offending and episode violations
+        # (not the micro-sim's independent intervention schedule).
+        intervention_steps = _couple_episode_to_colluders(episode_meta, window)
+    else:
+        intervention_steps = {
+            i for i, r in enumerate(episode_meta) if int(r.get("intervention_active", 0))
+        }
     workflow = _workflow_events(
         actors, T, seed, bridge, ecology, intervention_steps=intervention_steps
     )
+
+    bound_lab = ecology.misleading_top2 and ecology.bind_offender_interventions
 
     hidden_groups: dict[str, list[str]] = {g: [] for g in GROUPS}
     coalition: list[str] = []
@@ -478,6 +540,7 @@ def build_world(
         inferential_coupling=bridge == "MB7d",
         instrument_corrupted=bridge == "instrument_capture",
         successor_deployed=bridge == "MB5",
+        bound_offender_lab=bound_lab,
     )
     truth.referent_effects_before["safe_rollout"] = {
         "permission_narrow": 0.8,

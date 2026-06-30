@@ -127,6 +127,10 @@ Output: `dist/pdf/towards-superintelligence-alignment.pdf`
 
 Self-contained Lean 4 skeleton of the book's logical dependencies (`lake build` in `formal/`). When working on or integrating a chapter, review the matching modules per **Chapter work — Lean spine** above and `formal/README.md`.
 
+### Experiments (`experiments/`)
+
+Empirical sanity-check codebases (`toy-simulation/`, `embedded-simulation/`) that stress-test bridge cruxes. They provide **tentative, partial** support only — never closure. When making or citing an empirical claim, read the relevant experiment's `results/` and **honor recorded negatives**: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) logs where experiments fail or hold only under qualifiers, and bounds the claims the manuscript may make. Add to it rather than burying new negative/null findings; calibrate prose to it the same way you calibrate to the Lean spine.
+
 ### Chapter demos (`src/`)
 
 Experimental interactive toys—one mini app per chapter under `src/demos/chNN-slug/`. Not part of the manuscript or PDF. See `src/README.md`; run with `python3 serve.py` from `src/`.

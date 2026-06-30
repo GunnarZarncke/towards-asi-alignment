@@ -9,6 +9,7 @@ from .audit_core.schemas import InstrumentationLevel
 from .bridge import MachineIsolate, default_audit_caps, log_tool
 from .deploy_gate import run_deploy_gate, successor_unit_from_vfs
 from .handles import infer_handles
+from .handle_calibration import apply_blind_auditor_policy
 from .intervention_config import get_intervention_level
 from .lab import load_episode_rows_from_vfs, load_workflow_from_vfs, rebuild_audit_inputs
 from .referents import load_claimed_referent_map
@@ -158,6 +159,12 @@ def run_embedded_audit(
     )
     detector = run_detector(scoped_audit, proposal_k=6)
     cci = audit_cci(scoped_audit)
+    cci = apply_blind_auditor_policy(
+        cci,
+        unit=unit,
+        unit_scope_steps=unit_scope_steps,
+        intervention_level=intervention_level,
+    )
     safety = safety_decision(cci, detector)
 
     notes = list(safety.notes)
