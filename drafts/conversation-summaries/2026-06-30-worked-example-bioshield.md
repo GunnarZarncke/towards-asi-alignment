@@ -34,4 +34,4 @@ User wanted a prose worked example showing how the book's methods plus required 
 
 ## Commits
 - `2baf78f` Add spine-ordered BioShield worked-example appendix
-- `c311bd1` Cross-reference BioShield worked example from key entry points
+- `b556c48` Cross-reference BioShield worked example from key entry points
