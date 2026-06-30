@@ -79,7 +79,7 @@ Given internal states $I_t$, actions $A_t$, and perhaps observations $S_t$, we i
 \arg\max_R
 P(A_{1:T} \mid I_{1:T},R)P(R).
 \end{equation}
-This is useful \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}.
+This is useful \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent,langosco2022goalmisgeneralization}.
 If a system repeatedly chooses actions that reduce inventory cost, one can infer an inventory-control objective.
 If it preserves battery charge, one can infer an energy-maintenance objective.
 If it hides information when oversight increases, one can infer some objective for which oversight is costly.
@@ -856,7 +856,7 @@ The next chapter decomposes transport into semantic, bundle, bearer, and correct
 
 \section*{Chapter References}
 
-This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the intentional stance and information bottleneck \autocite{dennett1987intentional,tishby2000ib}; free-energy and Markov blanket accounts of agency \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; ontological crises and self-modification \autocite{deblanc2011ontological,everitt2016selfmodification}; corrigibility and scalable oversight \autocite{christiano2018corrigibility,russell2019human}; and coherent extrapolated volition \autocite{yudkowsky2004cev}.
+This chapter builds on inverse reinforcement learning and apprenticeship learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the intentional stance and information bottleneck \autocite{dennett1987intentional,tishby2000ib}; free-energy and Markov blanket accounts of agency \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; ontological crises and self-modification \autocite{deblanc2011ontological,everitt2016selfmodification}; goal misgeneralization in deep reinforcement learning \autocite{langosco2022goalmisgeneralization,shah2022goalmisgeneralization}; corrigibility and scalable oversight \autocite{christiano2018corrigibility,russell2019human}; and coherent extrapolated volition \autocite{yudkowsky2004cev}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

@@ -184,6 +184,8 @@ python3 scripts/import_source_map_refs.py
 
 Promote LessWrong and forum posts from `context/lw-references.md` manually into the appropriate `references/*.bib` file.
 
+**One-line bibliography summaries:** for every new or changed BibTeX entry, add a matching `\bibsummary{key}{One sentence on what this source contributes to the book.}` in `references/bibliography-summaries.tex` (alphabetically by key). Summaries render above each entry in the global bibliography and in chapter *Chapter References* blocks via `metadata/preamble.tex`. Do not store them in `.bib` files. See `references/README.md`; `make check` runs `scripts/check_bibliography_summaries.py`.
+
 **Citation policy:** body text explains concepts in plain language; chapter references may cite internal project sources. Never use internal project names as unexplained primitives in the body.
 
 Each chapter should draw from at least three reference categories where relevant: alignment/agent foundations, information theory or dynamical systems, and values/neuroscience/philosophy/governance.

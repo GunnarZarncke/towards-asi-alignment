@@ -111,12 +111,14 @@ Place figures in `figures/` and reference as `figures/<file>`. External `.bib` f
 
 If `biber` fails silently or stops after `Found BibTeX data source ...`, suspect stale/corrupt generated files or a missing/corrupt PAR cache before blaming bibliography syntax. Run `./clean.sh`, remove stale `references/*.bib.blg`, create the cache directory explicitly with `mkdir -p .biber-par-cache`, and retry with `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" ./build.sh` (or `biber book` for diagnosis).
 
+**Bibliography summaries:** each `.bib` entry needs a matching `\bibsummary{key}{...}` line in `references/bibliography-summaries.tex` (rendered via `metadata/preamble.tex`). See `references/README.md`. When adding cites, run `python3 scripts/check_bibliography_summaries.py` or `make check`.
+
 ### Build scripts
 
 ```bash
 ./build.sh        # or: make pdf
 ./clean.sh        # or: make clean
-make check        # structure + citation checks
+make check        # structure + citation + bibliography-summary checks
 ```
 
 Output: `dist/pdf/towards-superintelligence-alignment.pdf`

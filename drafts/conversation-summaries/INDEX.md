@@ -4,6 +4,11 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | UAD pipeline + MB grounding doc | [2026-06-30-uad-pipeline-mb-grounding.md](2026-06-30-uad-pipeline-mb-grounding.md) |
+| 2026-06-30 | Embedded audit plan follow-up | [2026-06-30-embedded-audit-plan-followup.md](2026-06-30-embedded-audit-plan-followup.md) |
+| 2026-06-30 | Bibliography summaries backfill + maintenance | [2026-06-30-bibliography-summaries-backfill.md](2026-06-30-bibliography-summaries-backfill.md) |
+| 2026-06-30 | Deep-research top-10 citations (minus ARA) | [2026-06-30-deep-research-top10-citations.md](2026-06-30-deep-research-top10-citations.md) |
+| 2026-06-30 | Embedded audit simulation v1 | [2026-06-30-embedded-audit-simulation.md](2026-06-30-embedded-audit-simulation.md) |
 | 2026-06-30 | README experimental evidence | [2026-06-30-readme-experimental-evidence.md](2026-06-30-readme-experimental-evidence.md) |
 | 2026-06-30 | Toy simulation subfolder | [2026-06-30-toy-simulation-subfolder.md](2026-06-30-toy-simulation-subfolder.md) |
 | 2026-06-30 | MB5/MB6b bridge scenarios | [2026-06-30-mb5-mb6b-scenarios.md](2026-06-30-mb5-mb6b-scenarios.md) |
