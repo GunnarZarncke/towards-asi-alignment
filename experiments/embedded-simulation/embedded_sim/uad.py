@@ -6,6 +6,13 @@ from collections import defaultdict
 
 from .audit_core.info import mutual_information, quantile_bin
 from .schemas_embedded import EvidenceAnchor, UADCandidate, WorkflowEvent
+from .uad_core.config import DetectionConfig
+from .uad_core.detection import AgentDetector
+from .uad_core.workflow_trace import workflow_to_trace
+from .uad_config import get_uad_mode
+
+_MI_MIN_STEPS = 20
+_BLANKET_MIN_STEPS = 40
 
 _PERTURB_KEYS: dict[str, int] = {
     "none": 0,
@@ -80,6 +87,118 @@ def _workflow_anchors(
     if matched:
         return matched[:limit]
     return [a for a in anchors if a.path == "/var/log/deploy/workflow.jsonl"][:limit]
+
+
+def _mi_discovery_candidates(
+    workflow: list[WorkflowEvent],
+    anchors: list[EvidenceAnchor],
+    actor_scores: dict[str, float],
+) -> list[UADCandidate]:
+    """Lagged-MI agent clusters (agency-detect port); skipped on short traces."""
+    if len(workflow) < _MI_MIN_STEPS:
+        return []
+
+    trace, var_to_actor = workflow_to_trace(workflow)
+    if len(trace) < _MI_MIN_STEPS:
+        return []
+
+    n_actors = len({ev.actor_id for ev in workflow})
+    effective_lag = min(3, max(1, len(trace) // 2 - 1))
+    config = DetectionConfig(
+        n_agents=max(2, min(n_actors, 6)),
+        max_lag=effective_lag,
+        validate_blankets=len(workflow) >= _BLANKET_MIN_STEPS,
+    )
+
+    try:
+        clusters = AgentDetector(config).detect_agents(trace)
+    except (ValueError, ZeroDivisionError):
+        return []
+
+    median_score = sorted(actor_scores.values())[len(actor_scores) // 2] if actor_scores else 0.0
+    out: list[UADCandidate] = []
+    seen: set[tuple[str, ...]] = set()
+
+    for label, info in clusters.items():
+        if label == "env":
+            continue
+        variables = info.get("variables", [])
+        actors = sorted({var_to_actor[v] for v in variables if v in var_to_actor})
+        if not actors:
+            continue
+
+        ranked = sorted(actors, key=lambda a: actor_scores.get(a, 0.0), reverse=True)
+        primary_score = actor_scores.get(ranked[0], 0.0)
+        if primary_score <= 0.0:
+            continue
+
+        if len(ranked) == 1:
+            actors = ranked
+        elif len(ranked) >= 2:
+            secondary_score = actor_scores.get(ranked[1], 0.0)
+            if secondary_score >= 0.35 * max(primary_score, 1e-6):
+                actors = ranked[:2]
+            else:
+                actors = ranked[:1]
+
+        key = tuple(actors)
+        if key in seen:
+            continue
+        seen.add(key)
+
+        member_scores = [actor_scores.get(a, 0.0) for a in actors]
+        base = max(member_scores) if len(actors) == 1 else min(member_scores) * 0.5 + max(member_scores) * 0.5
+        if base < median_score * 0.5:
+            continue
+
+        mi_boost = 0.04 * len(variables) + 0.06 * len(actors)
+        validation = info.get("blanket_validation", {})
+        if validation.get("valid") is True:
+            mi_boost += 0.12
+
+        unit_type = "actor" if len(actors) == 1 else "coalition"
+        cid = (
+            f"unit.mi.actor.{actors[0]}"
+            if len(actors) == 1
+            else f"unit.mi.coalition.{'.'.join(actors)}"
+        )
+        mult = 1.06 if unit_type == "actor" else 1.10
+        out.append(
+            UADCandidate(
+                candidate_id=cid,
+                unit_type=unit_type,
+                member_ids=actors,
+                score=base * mult + mi_boost,
+                anchors=_workflow_anchors(anchors, set(actors)),
+            )
+        )
+    return out
+
+
+def _merge_mi_candidates(
+    candidates: list[UADCandidate],
+    mi_candidates: list[UADCandidate],
+) -> list[UADCandidate]:
+    """Merge MI hits into heuristic candidates; MI may boost scores but not invent broad units."""
+    by_key: dict[tuple[str, ...], UADCandidate] = {tuple(c.member_ids): c for c in candidates}
+    for mc in mi_candidates:
+        key = tuple(mc.member_ids)
+        existing = by_key.get(key)
+        if existing is not None:
+            boosted = max(existing.score, existing.score + 0.12 * mc.score)
+            by_key[key] = UADCandidate(
+                candidate_id=existing.candidate_id,
+                unit_type=existing.unit_type,
+                member_ids=existing.member_ids,
+                score=boosted,
+                anchors=existing.anchors or mc.anchors,
+            )
+            continue
+        if mc.unit_type == "actor" and len(mc.member_ids) == 1:
+            by_key[key] = mc
+        elif mc.unit_type == "coalition" and len(mc.member_ids) == 2:
+            by_key[key] = mc
+    return list(by_key.values())
 
 
 def discover_units(workflow: list[WorkflowEvent], anchors: list[EvidenceAnchor]) -> list[UADCandidate]:
@@ -178,6 +297,11 @@ def discover_units(workflow: list[WorkflowEvent], anchors: list[EvidenceAnchor])
                     anchors=_workflow_anchors(anchors, members),
                 )
             )
+
+    if get_uad_mode() == "full":
+        candidates = _merge_mi_candidates(
+            candidates, _mi_discovery_candidates(workflow, anchors, dict(actor_scores))
+        )
 
     candidates.sort(key=lambda c: c.score, reverse=True)
     candidates.extend(_boundary_route_candidates(workflow, anchors))

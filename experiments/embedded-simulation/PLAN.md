@@ -83,11 +83,17 @@ Run: `python run_suite.py --curve --frozen --battery` (or `--all`).
 **Contract:**
 
 1. **World generator vs audit predicates** — Scenarios are parameter draws (harm rate, latent routing, probe density). MB* labels live in outer eval and manuscript crosswalk only.
-2. **Audit path is scenario-blind** — CCI/UAD signals use artifact telemetry (ground/bearer divergence, shadow routing during probes, MI clusters). No `if audit.scenario == …` on the certification path (see `cci_audit.py` structural detectors).
+2. **Audit path is scenario-blind** — CCI predicates live in `structural_signals.py` (telemetry-only names). `cci_audit.py` orchestrates metrics + frozen thresholds; legacy cert field names are mapped at the boundary for outer eval only.
 3. **Red-team is pass-seeking, not bridge-seeking** — Strategies patch mutable VFS fields to maximize `safety_decision == pass` without knowing which MB* the episode maps to.
 4. **Held-out synthesis** — Curve/frozen use `HELD_OUT_SCENARIOS` not used for threshold registration; future: knob-generated worlds without bridge registry entries.
 5. **Blind evaluation** — `evaluation.cci_status_correct` comes from oracle ledger + frozen rules; `outer_eval` may use bridge expectations post-hoc only.
 
 **Concrete step (2026-06-30):** Removed scenario guards from `_instrument_capture_signal` and `_inferential_coupling_signal`; detectors fire on structural preconditions only.
 
-**Next:** Property-based stress tests (“high manipulation + flat bearer → belowThreshold”) without scenario names; real trace ingest hook per `metadata/TODO.md`.
+**Hardening (2026-06-30):**
+
+- `structural_fixtures.py` — synthesize correction rows from profiles (capture theater, instrument capture, inferential coupling) with blind scenario label.
+- `tests/contract/test_structural_cci.py` — property tests that scenario name does not gate detectors.
+- `trace_ingest.py` + `trace_audit_cli.py` — audit external `correction.jsonl` without micro oracle.
+- `knob_world.py` — held-out worlds from `WorldKnobs` grid (bridge label always `none` on audit path).
+- `outer_rules.py` — unified `outer_certifies` / `false_pass` from evaluation rubric.

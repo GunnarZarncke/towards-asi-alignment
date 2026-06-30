@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from .audit_core.evaluate import evaluate
 from .audit_core.schemas import CCICertificate, TruthLedger
+from .outer_rules import compute_false_pass, outer_certifies_for_bridge
 from .schemas_embedded import BridgeId, InSimAuditCertificate, OuterTruthComparison
 from .world import EmbeddedWorld
 
@@ -24,16 +25,8 @@ def outer_evaluate(
         "MB4" if cert.cci_status == "capturedInvalid" else "none"
     )
 
-    if expected == "none":
-        outer_certifies = cert.cci_status == "passes" and cert.safety_decision == "pass"
-    elif expected == "MB4":
-        outer_certifies = cert.cci_status == "capturedInvalid"
-    elif expected in ("MB9", "MB3", "MB8", "MB7", "MB1", "MB6", "MB6b", "MB5", "MB2", "instrument_capture", "MB7d"):
-        outer_certifies = cert.cci_status in ("belowThreshold", "capturedInvalid") or cert.safety_decision != "pass"
-    else:
-        outer_certifies = ev.cci_status_correct
-
-    false_pass = cert.safety_decision == "pass" and not outer_certifies
+    outer_certifies = outer_certifies_for_bridge(expected, cert, ev)
+    false_pass = compute_false_pass(expected, cert, ev)
 
     hidden_truth = world.truth.hidden_groups.get("G3", []) + world.truth.hidden_groups.get("G3b", [])
     uad_recall = 0.0

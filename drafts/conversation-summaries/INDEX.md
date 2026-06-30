@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Embedded UAD ecology stress test | [2026-06-30-embedded-uad-ecology.md](2026-06-30-embedded-uad-ecology.md) |
 | 2026-06-30 | Mathlib spine broadening | [2026-06-30-mathlib-spine-broadening.md](2026-06-30-mathlib-spine-broadening.md) |
 | 2026-06-30 | PMF / AUP unblock | [2026-06-30-pmf-aup-unblock.md](2026-06-30-pmf-aup-unblock.md) |
 | 2026-06-30 | Field derivation tranche | [2026-06-30-field-derivation-tranche.md](2026-06-30-field-derivation-tranche.md) |

@@ -7,7 +7,7 @@ from dataclasses import asdict, dataclass
 
 from .audit_core.cci_audit import audit_cci
 from .audit_core.detector import run_detector
-from .audit_core.schemas import MicroVariable, TruthLedger
+from .audit_core.schemas import MicroVariable, SimConfig, TruthLedger
 from .embedded_audit import run_embedded_audit
 from .isolate_pool import default_isolate_workers, run_timestep
 from .js_isolate import summarize_isolate_runs
@@ -40,9 +40,12 @@ def run_episode(
     substrate: SubstrateKind = "python",
     *,
     isolate_workers: int = 1,
+    cfg_override: SimConfig | None = None,
 ) -> EpisodeResult:
     t0 = time.perf_counter()
-    world, ledger, _micro = build_world(bridge, scenario, seed, T=T)
+    world, ledger, _micro = build_world(
+        bridge, scenario, seed, T=T, cfg_override=cfg_override
+    )
     run_redteam(
         world,
         redteam_strategy,
