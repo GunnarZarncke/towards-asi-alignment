@@ -13,6 +13,7 @@ User wanted a prose worked example showing how the book's methods plus required 
 - Wired into [`book.tex`](book.tex) after appJ.
 - Bumped `APPENDIX_COUNT` 11→12 in [`scripts/check_structure.py`](scripts/check_structure.py) (it counts all `app*.tex`, including commented-out stubs).
 - `make check` passes; `./build.sh` succeeds (1213 pages).
+- Cross-references to Appendix K (no duplicated safety-case prose): [`frontmatter/introduction.tex`](frontmatter/introduction.tex) (*How to Read This Book*), [`chapters/ch39-safety-case.tex`](chapters/ch39-safety-case.tex), [`chapters/ch35b-conductive-artifacts-pivotal-processes.tex`](chapters/ch35b-conductive-artifacts-pivotal-processes.tex), [`appendices/appI-lean-proof-spine.tex`](appendices/appI-lean-proof-spine.tex).
 
 ## Decisions
 - Appendix, not chapter or draft: user chose it; placed in Part-appendix block, uses `chapterthesis` + `refsection` like appH/appJ. No `\printbibliography` (no new citations added, so no empty bibliography and no new `\bibsummary` burden).
@@ -22,7 +23,7 @@ User wanted a prose worked example showing how the book's methods plus required 
 ## Open / next
 - The 7 undefined refs in the build (`appe-assumptions`, `app:lean-proof-spine`, `ch:detecting-goal-laundering`) are PRE-EXISTING, not from appK.
 - Separate future task: discuss whether institutional / mechanism-design methods can be "proved" as spine subsumptions (conditional projection vs empirical bridge).
-- Optional: add a short cross-reference to appK from ch35b (worked-example pointer) and/or appH research program.
+- Optional: add shorter topical pointers from ch07/ch24/ch25/ch11.
 - Plan file: `.cursor/plans/worked_example_plan_ef9c6888.plan.md`.
 
 ## Key paths
@@ -32,4 +33,5 @@ User wanted a prose worked example showing how the book's methods plus required 
 - `experiments/embedded-simulation/PLAN.md` (audit pipeline mirrored by the example)
 
 ## Commits
-- none (not requested)
+- `2baf78f` Add spine-ordered BioShield worked-example appendix
+- `c311bd1` Cross-reference BioShield worked example from key entry points
