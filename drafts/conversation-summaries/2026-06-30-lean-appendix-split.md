@@ -32,4 +32,4 @@ User requested restructuring `appendices/appI-lean-proof-spine.tex` into four pa
 - `figures/lean_proof/00-overview.png` … `05-field-subsumptions.png`
 
 ## Commits
-- (this session)
+- `488f992` Restructure Lean appendix into four parts and fix diagram placement.
