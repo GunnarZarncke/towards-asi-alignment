@@ -701,19 +701,22 @@ Substitute \eqref{appi:eq:biq}. Dropping the two nonnegative subtracted terms gi
 \subsection{Trace-derived control appearance and attended harm}
 \label{appi:sec:trace-attended-harm}
 
-Chapter~\ref{ch:capability-without-task-ontology} (Section~\ref{sec:trace-output-attended-harm}) states only the subsample appearance ceiling for \(\widehat I_{\mathrm{ctrl}}\).
+Chapter~\ref{ch:capability-without-task-ontology} (Section~\ref{sec:trace-output-attended-harm}) states only the subsample appearance ceiling for \(\widehat D_{\mathrm{ctrl}}\).
 The Lean module \texttt{AlignmentProofSpine.Field.Finite.TraceBIQ} supplies the estimator, vector B-IQ packaging, attended-harm certificates, and bridge records below.
 
-\paragraph{Trace estimator.}
-Given a supplied blanket \((I,S,A,E)\), a discrete trace over alphabet \({\mathcal A}\), and lagged pairs, the spine computes integer millibit proxies \(\widehat{\MI}_m\) with spurious-\(\MI\) clipping.
+\paragraph{Trace estimator (pattern diversity, not MI).}
+Given a supplied blanket \((I,S,A,E)\), a discrete trace over alphabet \({\mathcal A}\), and lagged pairs, the spine computes integer \emph{pattern-diversity} scores by counting distinct lagged patterns and taking \(\lceil\log_2\rceil\) of marginal and joint support sizes.
+This is a diversity heuristic: it does \textbf{not} use an empirical PMF and is \textbf{not} Shannon mutual information (see \texttt{Field/Finite/PMF.lean} when probability data is available).
+Each score is clipped by a combinatorial spurious-diversity ceiling.
 The control component is
 \begin{equation}
 \label{appi:eq:trace-ctrl}
-\widehat I_{\mathrm{ctrl}}(m)
+\widehat D_{\mathrm{ctrl}}(m)
 =
 \sup_{a\in A,\ e\in E,\ \ell}
-\widehat{\MI}_m\bigl(A^X_t=a;E^X_{t+\ell}=e\bigr).
+\widehat d_m\bigl(A^X_t=a;E^X_{t+\ell}=e\bigr),
 \end{equation}
+where \(\widehat d_m\) denotes the clipped lagged pattern-diversity score (Lean: \leanid{laggedDiversityScore}, \leanid{traceControlDiversity}).
 An \(m\)-row subsample satisfies \eqref{eq:trace-ctrl-appearance} of the chapter; Lean id \leanid{subsample\_output\_capability\_le\_control\_optimism}.
 
 \paragraph{Attended output and harm.}
@@ -721,27 +724,27 @@ For harm arguments only the output component matters.
 Weight each external coordinate by attendability \(\alpha_e\in[0,1]\) and harm \(h_e\):
 \begin{equation}
 \label{appi:eq:attended-output}
-\widehat I_{\mathrm{att}}(m)
+\widehat D_{\mathrm{att}}(m)
 =
 \sup_{a\in A,\ e\in E}
-\alpha_e\,\widehat{\MI}_m(A^X=a;E^X=e),
+\alpha_e\,\widehat d_m(A^X=a;E^X=e),
 \qquad
 \bar h=\sup_{e\in E}\alpha_e h_e.
 \end{equation}
-A certified cap \(\widehat I_{\mathrm{cap}}\) and extinction threshold \(H_{\mathrm{ext}}\) yield
+A certified cap \(\widehat D_{\mathrm{cap}}\) and extinction threshold \(H_{\mathrm{ext}}\) yield
 \begin{equation}
 \label{appi:eq:attended-harm}
-\widehat H=\widehat I_{\mathrm{att}}\,\bar h,
+\widehat H=\widehat D_{\mathrm{att}}\,\bar h,
 \qquad
-\widehat I_{\mathrm{att}}\leq \widehat I_{\mathrm{cap}}\ \wedge\ \widehat I_{\mathrm{cap}}\bar h\leq H_{\mathrm{ext}}
+\widehat D_{\mathrm{att}}\leq \widehat D_{\mathrm{cap}}\ \wedge\ \widehat D_{\mathrm{cap}}\bar h\leq H_{\mathrm{ext}}
 \ \Rightarrow\ \widehat H\leq H_{\mathrm{ext}}.
 \end{equation}
 Lean ids: \leanid{attended\_output\_harm\_below\_extinction}, \leanid{trace\_attended\_harm\_worst\_case\_extinction\_threshold}.
-The attended appearance ceiling is \(1000\cdot|A|\cdot|E|\cdot\log_2(\min(m,|{\mathcal A}|^2))\) millibits (\leanid{trace\_attended\_output\_le\_attended\_optimism}).
+The attended appearance ceiling equals the control ceiling, \(|A|\cdot|E|\cdot\log_2(\min(m,|{\mathcal A}|^2))\) bits (\leanid{trace\_attended\_output\_le\_attended\_optimism}), because attention weights are bounded by~\(1\).
 
 \paragraph{Concentration bridge.}
 High-probability subsample concentration is not proved in kernel today.
-The record \texttt{TraceAttendedOutputConcentrationBridge} assumes \(\widehat I_{\mathrm{att}}(m)\leq I^\ast_{\mathrm{att}}+\varepsilon\); \leanid{traceAttendedOutputWorstCaseBridge} is the deterministic fallback with \(I^\ast_{\mathrm{att}}=0\) and \(\varepsilon\) equal to the attended optimism ceiling.
+The record \texttt{TraceAttendedOutputConcentrationBridge} assumes \(\widehat D_{\mathrm{att}}(m)\leq D^\ast_{\mathrm{att}}+\varepsilon\); \leanid{traceAttendedOutputWorstCaseBridge} is the deterministic fallback with \(D^\ast_{\mathrm{att}}=0\) and \(\varepsilon\) equal to the attended optimism ceiling.
 
 \begin{lemma}[\texttt{P11}: capacity monotonicity]
 \label{appi:lem:p11}

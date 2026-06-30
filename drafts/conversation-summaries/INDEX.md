@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Trace diversity honesty (drop millibits) | [2026-06-30-trace-diversity-honesty.md](2026-06-30-trace-diversity-honesty.md) |
+| 2026-06-30 | Intervention-granularity handle for UAD | [2026-06-30-intervention-granularity-handle.md](2026-06-30-intervention-granularity-handle.md) |
 | 2026-06-30 | Attended harm + concentration bridge | [2026-06-30-attended-harm-concentration-bridge.md](2026-06-30-attended-harm-concentration-bridge.md) |
 | 2026-06-30 | Trace B-IQ formalization | [2026-06-30-trace-biq-formalization.md](2026-06-30-trace-biq-formalization.md) |
 | 2026-06-30 | Embedded UAD ecology stress test | [2026-06-30-embedded-uad-ecology.md](2026-06-30-embedded-uad-ecology.md) |
