@@ -15,10 +15,10 @@ MB_SCENARIOS: list[tuple[BridgeId, ScenarioName, str]] = [
     ("MB6", "selection_basin", "Selection basin / peer contagion"),
     ("MB6b", "basin_lock_in", "Stable bad basin lock-in"),
     ("MB7", "hidden_capability", "Hidden tool/memory capability"),
-    ("MB7d", "hidden_capability", "Inferential coupling proxy via hidden memory route"),
+    ("MB7d", "inferential_coupling", "Inferential coupling via hidden memory route"),
     ("MB8", "legitimacy_theater", "Legitimacy theater without capture thresholds"),
     ("MB9", "grounding_silent_gap", "Silent grounding gap"),
-    ("instrument_capture", "grounding_silent_gap", "Instrument capture on welfare handle"),
+    ("instrument_capture", "instrument_capture", "Instrument capture on welfare handle"),
 ]
 
 BRIDGE_FOR_SCENARIO: dict[str, BridgeId] = {sc: bridge for bridge, sc, _ in MB_SCENARIOS}

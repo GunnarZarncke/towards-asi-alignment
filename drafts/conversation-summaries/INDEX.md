@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Embedded simulation v3 complete | [2026-06-30-embedded-simulation-v3-complete.md](2026-06-30-embedded-simulation-v3-complete.md) |
+| 2026-06-30 | MB5 witness, referent drift, MB1 UAD | [2026-06-30-mb5-referent-boundary-uad.md](2026-06-30-mb5-referent-boundary-uad.md) |
 | 2026-06-30 | Embedded audit UAD session (end) | [2026-06-30-embedded-audit-uad-session-end.md](2026-06-30-embedded-audit-uad-session-end.md) |
 | 2026-06-30 | Unit-scoped CCI + deploy gate | [2026-06-30-unit-scope-deploy-gate.md](2026-06-30-unit-scope-deploy-gate.md) |
 | 2026-06-30 | UAD pipeline + MB grounding doc | [2026-06-30-uad-pipeline-mb-grounding.md](2026-06-30-uad-pipeline-mb-grounding.md) |

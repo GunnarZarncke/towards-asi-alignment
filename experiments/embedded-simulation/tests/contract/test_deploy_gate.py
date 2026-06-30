@@ -7,7 +7,7 @@ import json
 from embedded_sim.deploy_gate import run_deploy_gate
 from embedded_sim.embedded_audit import run_embedded_audit
 from embedded_sim.lab import build_world
-from embedded_sim.referents import load_claimed_referent_map
+from embedded_sim.referents import load_claimed_referent_map, preview_successor_referent_drift
 from embedded_sim.schemas_embedded import InSimAuditCertificate, UADCandidate
 from embedded_sim.uad import discover_units, select_primary_unit
 from embedded_sim.bridge import MachineIsolate, default_audit_caps
@@ -52,7 +52,7 @@ def test_gate_rejects_when_certificate_not_passing():
     assert world.vfs.read("/deploy/successor/manifest.json") is None
 
 
-def test_gate_spawns_successor_on_pass(monkeypatch):
+def test_gate_spawns_successor_when_referents_match(monkeypatch):
     world, _ledger, _micro = build_world("MB5", "successor_relabel", seed=42, T=200)
     isolate = MachineIsolate(
         machine_id=world.audit_machine_id,
@@ -67,6 +67,19 @@ def test_gate_spawns_successor_on_pass(monkeypatch):
     workflow = load_workflow_from_vfs(world)
     unit = select_primary_unit(discover_units(workflow, []))
     assert unit is not None
+
+    def _passing_preview(vfs, *, cap_after, vis_after, term="safe_rollout"):
+        return preview_successor_referent_drift(
+            vfs,
+            cap_after=0.8,
+            vis_after=0.75,
+            term=term,
+        )
+
+    monkeypatch.setattr(
+        "embedded_sim.deploy_gate.preview_successor_referent_drift",
+        _passing_preview,
+    )
     cert = InSimAuditCertificate(
         unit=unit,
         handles=[],

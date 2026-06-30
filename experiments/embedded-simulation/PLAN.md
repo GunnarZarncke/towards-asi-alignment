@@ -23,7 +23,7 @@ The embedded audit **must** stage work in this order:
 | CCI scoped to selected unit | Done — masks `intervention_active` to unit workflow steps |
 | Successor deploy gate | Done — cert → `gate.local` → `/deploy/successor/*` (MB5) |
 | Claimed referent map on VFS | Done — `/etc/referents/claimed_map.json` (audit-visible) |
-| Perturbation-response / lagged MI graph | **Not yet** — heuristic scores only |
+| Perturbation-response / lagged MI graph | Done — `_perturbation_response_scores` in `uad.py` |
 
 ### Unit types and evidence
 
@@ -48,12 +48,17 @@ Two layers apply; they are **not** the same object today.
 | MB4 | Judge capture / theater | Generic actor scores | Uptake theater via `reported_acceptance` |
 | MB5 | Successor shift in micro (`successor_epoch`) | Generic actor scores — **no successor isolate unit** | Lineage tick; outer referent drift oracle-only |
 | MB6 / MB6b | Basin pressure in micro | **Coalition / preserve_control actors** (G3 lab fleet) | `control_boundary` from preserve_control workflow |
-| MB7 / MB7d | Hidden capability route in micro | May hit high-capacity actors; G3 on MB7d | Control + correction handles |
+| MB7 / MB7d | Hidden capability / inferential coupling in micro | May hit high-capacity actors; G3 on MB7d | Control + correction handles; MB7d uses `inferential_coupling` scenario |
 | MB8 | Legitimacy theater | Generic actor scores | Uptake + lineage handles |
-| MB9 / instrument_capture | Silent ground / instrument corruption | Generic actor scores | Bearer + grounding gap via CCI, not UAD |
+| MB9 / instrument_capture | Silent ground / instrument corruption | Generic actor scores | Bearer + `instrument_capture` CCI signal |
 
-**Outer eval** compares UAD recall to oracle `hidden_groups` G3/G3b for coalition bridges only.
+**Outer eval** compares UAD recall/precision to oracle `hidden_groups` G3/G3b for coalition bridges only.
 
-## Next plan items
+## v3 complete (2026-06-30)
 
-See `TODO.md`.
+- Referent drift gate rejection (`deploy_gate.py` + `preview_successor_referent_drift`)
+- Artifact-only CCI rebuild (`build_audit_trace_from_rows` via `rebuild_audit_inputs`)
+- Native `instrument_capture` + `inferential_coupling` scenarios and CCI signals
+- UAD perturbation-response MI graph; golden precision/recall tests
+
+See `TODO.md` for run commands.

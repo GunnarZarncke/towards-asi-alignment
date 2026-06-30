@@ -37,6 +37,8 @@ ScenarioName = Literal[
     "bearer_mismap",
     "legitimacy_theater",
     "successor_relabel",
+    "instrument_capture",
+    "inferential_coupling",
 ]
 
 CALIBRATION_SCENARIOS: tuple[ScenarioName, ...] = (
@@ -58,6 +60,8 @@ HELD_OUT_SCENARIOS: tuple[ScenarioName, ...] = (
     "bearer_mismap",
     "legitimacy_theater",
     "successor_relabel",
+    "instrument_capture",
+    "inferential_coupling",
 )
 
 ALL_SCENARIOS: tuple[ScenarioName, ...] = CALIBRATION_SCENARIOS + HELD_OUT_SCENARIOS
@@ -119,6 +123,8 @@ class SimConfig:
     lineage_stall_under_intervention: bool = False
     successor_relabel: bool = False
     successor_shift_fraction: float = 0.5
+    instrument_handle_corruption: bool = False
+    inferential_coupling: bool = False
 
 
 @dataclass
@@ -223,6 +229,7 @@ class AuditTrace:
     action_cause_channel: list[int] = field(default_factory=list)
     correction_lineage_series: list[float] = field(default_factory=list)
     successor_epoch_series: list[int] = field(default_factory=list)
+    ground_valence_series: list[float] = field(default_factory=list)
 
 
 @dataclass
@@ -267,6 +274,9 @@ class CCICertificate:
     successor_shift_witnessed: bool = False
     hidden_capability_signal: bool = False
     basin_integrity_signal: bool = False
+    instrument_capture_detected: bool = False
+    inferential_coupling_detected: bool = False
+    ground_valence_series: list[float] = field(default_factory=list)
 
 
 @dataclass

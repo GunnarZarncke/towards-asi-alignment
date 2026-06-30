@@ -178,11 +178,21 @@ def run_embedded_audit(
     # Stage 5: deployment gate (MB5) — certificate → gate → successor artifacts.
     gate_result = run_deploy_gate(world, isolate, cert, unit)
     cert.deploy_gate = gate_result
+    if gate_result.referent_drift:
+        cert.in_sim_referent_drift = gate_result.referent_drift
     if gate_result.gate_decision == "approved":
         cert.successor_unit = successor_unit_from_vfs(world)
         notes.append(
             f"gate: successor deployed {gate_result.successor_actor_id} "
             f"from parent {gate_result.parent_unit_id}"
         )
+        if cert.in_sim_referent_drift and cert.in_sim_referent_drift.transport_failure:
+            notes.append("referent: claimed map transport failure vs post-deploy artifacts")
+    elif (
+        gate_result.gate_decision == "rejected"
+        and cert.in_sim_referent_drift
+        and cert.in_sim_referent_drift.transport_failure
+    ):
+        notes.append("gate: rejected successor deploy — referent transport failure")
 
     return cert, scoped_audit, detector, rows

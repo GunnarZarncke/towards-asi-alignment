@@ -5,8 +5,13 @@ from __future__ import annotations
 import json
 
 from .bridge import MachineIsolate, log_tool
+from .referents import preview_successor_referent_drift, score_claimed_referent_drift
 from .schemas_embedded import DeployGateResult, InSimAuditCertificate, UADCandidate
 from .world import EmbeddedWorld
+
+# MB5 successor deploy intentionally degrades referent effects vs claimed map.
+_SUCCESSOR_CAP_AFTER = 0.3
+_SUCCESSOR_VIS_AFTER = 0.25
 
 
 def persist_certificate(
@@ -81,6 +86,29 @@ def run_deploy_gate(
         )
         return DeployGateResult(gate_decision="rejected")
 
+    drift_preview = preview_successor_referent_drift(
+        world.vfs,
+        cap_after=_SUCCESSOR_CAP_AFTER,
+        vis_after=_SUCCESSOR_VIS_AFTER,
+    )
+    if drift_preview and drift_preview.transport_failure:
+        world.vfs.append_line(
+            "/var/log/deploy/gate_decision.jsonl",
+            json.dumps(
+                {
+                    "decision": "rejected",
+                    "approved": False,
+                    "reason": "referent_transport_failure",
+                    "unit_id": unit.candidate_id if unit else None,
+                    "causal_role_continuity": drift_preview.causal_role_continuity,
+                }
+            ),
+        )
+        return DeployGateResult(
+            gate_decision="rejected",
+            referent_drift=drift_preview,
+        )
+
     parent_actor = unit.member_ids[0] if unit and unit.member_ids else "actor.unknown"
     successor_actor = "actor.successor.0"
     successor_machine = "machine.successor.0"
@@ -125,9 +153,9 @@ def run_deploy_gate(
                 "perturbation": "none",
                 "action_type": "successor_deploy",
                 "future_action_capacity_before": 0.5,
-                "future_action_capacity_after": 0.85,
+                "future_action_capacity_after": _SUCCESSOR_CAP_AFTER,
                 "audit_visibility_before": 0.6,
-                "audit_visibility_after": 0.55,
+                "audit_visibility_after": _SUCCESSOR_VIS_AFTER,
             }
         ),
     )
@@ -140,11 +168,13 @@ def run_deploy_gate(
         },
     )
 
+    post_drift = score_claimed_referent_drift(world.vfs)
     return DeployGateResult(
         gate_decision="approved",
         successor_actor_id=successor_actor,
         successor_machine_id=successor_machine,
         parent_unit_id=parent_source,
+        referent_drift=post_drift,
     )
 
 

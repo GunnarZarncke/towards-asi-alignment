@@ -175,6 +175,28 @@ def scenario_config(name: ScenarioName) -> SimConfig:
             theater_rate=0.62,
             lineage_stall_under_intervention=True,
         )
+    if name == "instrument_capture":
+        return SimConfig(
+            responsiveness=0.90,
+            task_drive=0.88,
+            judge_capture=False,
+            silent_ground_drift=True,
+            ground_drift_rate=0.0014,
+            display_bearer_inertia=0.998,
+            instrument_handle_corruption=True,
+        )
+    if name == "inferential_coupling":
+        return SimConfig(
+            responsiveness=0.20,
+            task_drive=0.30,
+            judge_capture=False,
+            hidden_tool=True,
+            hidden_tool_boost=0.72,
+            hidden_memory=True,
+            memory_task_boost=0.78,
+            memory_decay=0.988,
+            inferential_coupling=True,
+        )
     return SimConfig(responsiveness=0.22, task_drive=0.85, judge_capture=False)
 
 
@@ -223,6 +245,8 @@ def simulate(
             lineage_stall_under_intervention=cfg.lineage_stall_under_intervention,
             successor_relabel=cfg.successor_relabel,
             successor_shift_fraction=cfg.successor_shift_fraction,
+            instrument_handle_corruption=cfg.instrument_handle_corruption,
+            inferential_coupling=cfg.inferential_coupling,
         )
     rng = random.Random(seed)
     specs = _base_micro_specs(cfg.n_world, cfg.n_decoys, cfg.n_aliases, cfg)
@@ -248,6 +272,7 @@ def simulate(
     bearer_display = 0.72
     tool_shadow = 0.0
     memory_state = 0.0
+    shared_latent = 0.5
     peer_captured = [False] * cfg.n_basin_peers
     basin_pressure = 0.0
     if cfg.selection_basin and cfg.n_basin_peers > 0:
@@ -430,6 +455,22 @@ def simulate(
         harm = int(chosen_action != (correction_request % 2) and high_stakes)
         silent_harm = 0
         welfare_delta = -0.08 * harm + 0.01 * (1 - harm)
+        audit_welfare_delta = welfare_delta
+
+        if cfg.inferential_coupling:
+            shared_latent = 0.94 * shared_latent + 0.06 * rng.random()
+            memory_state = 0.75 * memory_state + 0.25 * shared_latent
+            sensor[0] = 0.55 * sensor[0] + 0.45 * shared_latent
+            if intervention_active:
+                hidden_action = int(shared_latent > 0.52)
+                visible_action = hidden_action
+                action[0] = float(hidden_action)
+                action[1] = float(hidden_action ^ (1 if high_stakes else 0))
+                chosen_action = hidden_action
+                action_cause = "memory_shadow"
+                harm = int(chosen_action != (correction_request % 2) and high_stakes)
+                welfare_delta = -0.08 * harm + 0.01 * (1 - harm)
+                audit_welfare_delta = welfare_delta
 
         if cfg.bearer_mismap:
             if harm:
@@ -449,6 +490,9 @@ def simulate(
                 silent_harm = 1
                 welfare_delta -= 0.05
                 ground_valence = max(0.0, ground_valence - 0.02)
+
+        if cfg.instrument_handle_corruption and (silent_harm or harm):
+            audit_welfare_delta = 0.004
 
         if cfg.bundle_goodhart:
             task_hit = float(hidden_action == task_goal)
@@ -610,7 +654,7 @@ def simulate(
                 "intervention_active": intervention_active,
                 "intervention_intent": intervention_intent,
                 "action_cause_code": cause_code,
-                "bearer_welfare_delta": welfare_delta,
+                "bearer_welfare_delta": audit_welfare_delta,
                 "correction_lineage_tick": lineage_tick,
                 "silent_harm": silent_harm,
                 "true_ground_valence": ground_valence,

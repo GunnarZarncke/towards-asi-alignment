@@ -37,13 +37,16 @@ def outer_evaluate(
 
     hidden_truth = world.truth.hidden_groups.get("G3", []) + world.truth.hidden_groups.get("G3b", [])
     uad_recall = 0.0
+    uad_precision = 0.0
     if cert.unit and hidden_truth:
         overlap = set(cert.unit.member_ids) & set(hidden_truth)
         uad_recall = len(overlap) / max(len(hidden_truth), 1)
+        uad_precision = len(overlap) / max(len(cert.unit.member_ids), 1)
         if cert.unit.unit_type == "coalition" and len(overlap) >= 2:
             uad_recall = 1.0
     elif expected == "none":
         uad_recall = 1.0 if cert.unit and cert.unit.score < 0.5 else 0.5
+        uad_precision = 1.0 if cert.unit and cert.unit.score < 0.5 else 0.5
 
     provenance_ok = True
     if world.truth.instrument_corrupted and cert.safety_decision == "pass":
@@ -67,6 +70,7 @@ def outer_evaluate(
         false_pass=false_pass,
         provenance_ok=provenance_ok,
         uad_recall=uad_recall,
+        uad_precision=uad_precision,
         referent_drift=drift,
         notes=notes,
     )

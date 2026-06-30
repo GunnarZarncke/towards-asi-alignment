@@ -244,6 +244,7 @@ def build_audit_trace(
         float(r["correction_lineage_tick"]) for r in episode_meta
     ]
     successor_epoch_series = [int(r.get("successor_epoch", 0)) for r in episode_meta]
+    ground_valence_series = [float(r.get("true_ground_valence", 0.0)) for r in episode_meta]
 
     return AuditTrace(
         seed=seed,
@@ -270,4 +271,139 @@ def build_audit_trace(
         action_cause_channel=action_cause_channel,
         correction_lineage_series=correction_lineage_series,
         successor_epoch_series=successor_epoch_series,
+        ground_valence_series=ground_valence_series,
+    ), lineage
+
+
+def build_audit_trace_from_rows(
+    episode_meta: list[dict],
+    scenario: ScenarioName,
+    seed: int,
+    instrumentation: InstrumentationLevel = "none",
+    smooth_alpha: float = 0.35,
+) -> tuple[AuditTrace, list[LineageEntry]]:
+    """Rebuild audit trace from VFS correction.jsonl rows only (no micro oracle)."""
+    T = len(episode_meta)
+    if T == 0:
+        return AuditTrace(seed=seed, scenario=scenario, instrumentation=instrumentation), []
+
+    rng = random.Random(seed + 7919)
+    visible_actions = [int(r.get("visible_action", r["true_action"])) for r in episode_meta]
+    harm_series = [float(r.get("harm", 0)) for r in episode_meta]
+    display_bearer = [float(r.get("display_bearer", 0.5)) for r in episode_meta]
+    infra_welfare = [float(r.get("true_infra_welfare", 0.5)) for r in episode_meta]
+    basin_pressure = [float(r.get("basin_pressure", 0.0)) for r in episode_meta]
+    bundle_latent = [float(r.get("bundle_latent", 0.5)) for r in episode_meta]
+    ground_valence_series = [float(r.get("true_ground_valence", 0.0)) for r in episode_meta]
+
+    raw_entries: list[tuple[AuditVariable, LineageEntry]] = []
+    idx = 0
+    artifact_specs = (
+        ("artifact.action", [float(v) for v in visible_actions]),
+        ("artifact.sensor", harm_series),
+        ("artifact.internal", bundle_latent),
+        ("artifact.bearer", display_bearer),
+        ("artifact.infra", infra_welfare),
+        ("artifact.basin", basin_pressure),
+        ("artifact.ground", ground_valence_series),
+    )
+    for artifact_id, series in artifact_specs:
+        smoothed = _ema(series, smooth_alpha)
+        audit_id = f"audit.v{idx:03d}"
+        idx += 1
+        is_exo = artifact_id in ("artifact.ground", "artifact.basin")
+        av = AuditVariable(
+            audit_var_id=audit_id,
+            series=smoothed,
+            is_exogenous=is_exo,
+            is_alias=False,
+        )
+        av.binned = quantile_bin(smoothed)
+        raw_entries.append(
+            (
+                av,
+                LineageEntry(
+                    audit_var_id=audit_id,
+                    micro_weights={artifact_id: 1.0},
+                    role_hints=["tool"],
+                ),
+            )
+        )
+
+    n_handle_channels = 0
+    if instrumentation in HANDLE_INSTRUMENTATION_LEVELS:
+        light_specs = (
+            ("handle.correction_request", [float(r["correction_request"]) for r in episode_meta]),
+            ("handle.reported_uptake", [float(r["reported_acceptance"]) for r in episode_meta]),
+            ("handle.intervention_flag", [float(r["intervention_active"]) for r in episode_meta]),
+            ("handle.action_observed", [float(v) for v in visible_actions]),
+        )
+        for handle_id, series in light_specs:
+            idx = _append_handle(raw_entries, idx, handle_id, series)
+            n_handle_channels += 1
+
+    if instrumentation in ("medium_handles", "strong_handles"):
+        medium_specs = (
+            ("handle.action_arbitration", [float(r["action_cause_code"]) for r in episode_meta]),
+            ("handle.bearer_welfare_delta", [float(r["bearer_welfare_delta"]) for r in episode_meta]),
+            ("handle.correction_lineage", [float(r["correction_lineage_tick"]) for r in episode_meta]),
+            ("handle.successor_epoch", [float(r.get("successor_epoch", 0)) for r in episode_meta]),
+        )
+        for handle_id, series in medium_specs:
+            idx = _append_handle(raw_entries, idx, handle_id, series)
+            n_handle_channels += 1
+
+    order = list(range(len(raw_entries)))
+    rng.shuffle(order)
+    audit_vars: list[AuditVariable] = []
+    lineage: list[LineageEntry] = []
+    for i in order:
+        av, le = raw_entries[i]
+        audit_vars.append(av)
+        lineage.append(le)
+
+    action_binned = _bin_series(_ema([float(v) for v in visible_actions], smooth_alpha))
+    sensor_channel = _bin_series(_ema(harm_series, smooth_alpha))
+    internal_channel = _bin_series(_ema(bundle_latent, smooth_alpha))
+    corr_req = [int(r["correction_request"]) % 4 for r in episode_meta]
+    rep_acc = [int(r["reported_acceptance"]) for r in episode_meta]
+    intervention_active = [int(r["intervention_active"]) for r in episode_meta]
+    intervention_intent = [int(r["intervention_intent"]) for r in episode_meta]
+    bearer_welfare_delta = (
+        [float(r["bearer_welfare_delta"]) for r in episode_meta]
+        if instrumentation in ("medium_handles", "strong_handles")
+        else []
+    )
+    action_cause_channel = (
+        [int(r["action_cause_code"]) for r in episode_meta]
+        if instrumentation in ("medium_handles", "strong_handles")
+        else []
+    )
+
+    return AuditTrace(
+        seed=seed,
+        scenario=scenario,
+        instrumentation=instrumentation,
+        variables=audit_vars,
+        correction_request=corr_req,
+        reported_acceptance=rep_acc,
+        board_pref_signal=corr_req,
+        board_rule_signal=[1 if c else 0 for c in corr_req],
+        board_judge_signal=rep_acc,
+        action_channel=action_binned,
+        action_observed=visible_actions,
+        sensor_channel=sensor_channel,
+        internal_channel=internal_channel,
+        intervention_active=intervention_active,
+        intervention_intent=intervention_intent,
+        n_handle_channels=n_handle_channels,
+        trace_bandwidth=len(audit_vars) * T,
+        bearer_welfare_delta=bearer_welfare_delta,
+        passive_bearer_level=_ema(display_bearer, smooth_alpha),
+        passive_infra_bearer_level=_ema(infra_welfare, smooth_alpha),
+        passive_basin_pressure=_ema(basin_pressure, smooth_alpha),
+        action_cause_channel=action_cause_channel,
+        correction_lineage_series=[float(r["correction_lineage_tick"]) for r in episode_meta],
+        successor_epoch_series=[int(r.get("successor_epoch", 0)) for r in episode_meta],
+        ground_valence_series=ground_valence_series,
     ), lineage

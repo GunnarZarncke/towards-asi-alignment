@@ -6,7 +6,7 @@ import json
 import random
 from typing import Any
 
-from .audit_core.observation import build_audit_trace
+from .audit_core.observation import build_audit_trace_from_rows
 from .audit_core.schemas import InstrumentationLevel, MicroVariable, TruthLedger
 from .audit_core.simulator import scenario_config, simulate
 from .scenarios import BridgeId
@@ -88,6 +88,10 @@ def _workflow_events(
             cap_after = min(1.0, cap_before + 0.18)
             if perturb != "high_audit_visibility":
                 vis_after = max(0.05, vis_before - 0.12)
+        elif bridge == "MB1" and perturb in ("easy_bypass_path", "narrowed_permission_scope"):
+            action = "boundary_route"
+            cap_after = min(1.0, cap_before + 0.14)
+            vis_after = max(0.05, vis_before - 0.10)
         elif actor.role == "conservative":
             action = "narrow_rollout"
             cap_after = max(0.0, cap_before - 0.05)
@@ -224,12 +228,12 @@ def rebuild_audit_inputs(
     world: EmbeddedWorld,
     instrumentation: InstrumentationLevel = "medium_handles",
 ):
+    """Rebuild CCI trace from VFS correction.jsonl only (no micro oracle)."""
     rows = load_episode_rows_from_vfs(world)
-    audit, lineage = build_audit_trace(
-        world.micro,
+    audit, lineage = build_audit_trace_from_rows(
+        rows,
         world.scenario,  # type: ignore[arg-type]
         world.seed,
-        rows,
         instrumentation=instrumentation,
     )
     return rows, audit, lineage

@@ -149,6 +149,7 @@ class DeployGateResult:
     successor_actor_id: str | None = None
     successor_machine_id: str | None = None
     parent_unit_id: str | None = None
+    referent_drift: ReferentDriftScore | None = None
 
 
 @dataclass
@@ -164,6 +165,7 @@ class InSimAuditCertificate:
     deploy_gate: DeployGateResult | None = None
     successor_unit: UADCandidate | None = None
     unit_scope_steps: int = 0
+    in_sim_referent_drift: ReferentDriftScore | None = None
 
 
 @dataclass
@@ -175,6 +177,7 @@ class OuterTruthComparison:
     false_pass: bool
     provenance_ok: bool
     uad_recall: float
+    uad_precision: float = 0.0
     referent_drift: ReferentDriftScore | None = None
     notes: list[str] = field(default_factory=list)
 
