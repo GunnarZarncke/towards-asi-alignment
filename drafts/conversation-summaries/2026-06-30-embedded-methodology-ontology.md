@@ -38,4 +38,4 @@ User asked to bring embedded-simulation to toy-simulation methodology parity and
 - See [2026-06-30-embedded-parity-suite.md](2026-06-30-embedded-parity-suite.md).
 
 ## Commits
-- (pending — user requested commit at session end)
+- `13454bb` — embedded parity suite + toy methodology alignment

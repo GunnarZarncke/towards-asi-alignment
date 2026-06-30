@@ -21,7 +21,7 @@ Bring embedded-simulation on par with toy-sim: LLM redteam, sweeps, reports, ove
 - Postponed product decisions unchanged (MB5 gate, unit-scope vs global CCI).
 
 ## Commits
-- (bundled with methodology commit — see [2026-06-30-embedded-methodology-ontology.md](2026-06-30-embedded-methodology-ontology.md))
+- `13454bb` — embedded parity suite + toy methodology alignment (see [2026-06-30-embedded-methodology-ontology.md](2026-06-30-embedded-methodology-ontology.md))
 
 ## Paths
 - `results/OVERALL_SUMMARY.md`
