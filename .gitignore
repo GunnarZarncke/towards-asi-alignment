@@ -20,6 +20,9 @@ book.pdf
 # Biber PAR cache (local build aid; see AGENTS.md)
 .biber-par-cache/
 
+# Experiment outputs (regenerate locally)
+experiments/toy-simulation/results/
+
 # Python
 .venv/
 __pycache__/

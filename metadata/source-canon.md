@@ -17,7 +17,7 @@ source paths. `INSTRUCTIONS.md` §3 summarizes themes; this file holds paths and
 
 ## Formal proof spine (`formal/`)
 
-Machine-checked logical skeleton of the alignment argument. Builds with `cd formal && lake build` (Lean 4, no Mathlib). See `formal/README.md` for module map and the proof / counterexample / bridge taxonomy.
+Machine-checked logical skeleton of the alignment argument. Builds with `cd formal && lake exe cache get && lake build` (Lean 4 + Mathlib v4.28.0). See `formal/README.md` for module map and the proof / counterexample / bridge taxonomy.
 
 | Artifact | Role |
 |----------|------|
