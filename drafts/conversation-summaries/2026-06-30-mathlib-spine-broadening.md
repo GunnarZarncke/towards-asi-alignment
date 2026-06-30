@@ -32,7 +32,7 @@ User asked whether other existing proofs can and should use Mathlib; implement w
 - `formal/AlignmentProofSpine/Field/Finite/MDP.lean`
 
 ## Commits
-- None.
+- `1bac048` Centralize more spine proofs on shared Mathlib lemmas.
 
 ## Verification
 - `lake -d formal build` passed (1719 jobs).

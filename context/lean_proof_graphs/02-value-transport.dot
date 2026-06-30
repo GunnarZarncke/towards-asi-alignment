@@ -18,7 +18,7 @@ digraph Spine02ValueTransport {
   P17 [label="P17 Labels ≠ bearer map", fillcolor="#EFFBEA"];
   P18 [label="P18 Marginals ≠ tradeoffs", fillcolor="#EFFBEA"];
   P19 [label="[SUBSUMED]\nP19 Scalar reward as bundle", fillcolor="#EFFBEA", color="#2E7D32", penwidth=2.2];
-  FCIRL [label="[NEW]\nField.CIRL final nodes\ncirl_subsumption_transport\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
+  FCIRL [label="[NEW]\nField.CIRL final nodes\nscalar_assistance_game_is_bundle_game_k1\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
   P20 [label="P20 Intentional MDL gain", fillcolor="#EFFBEA"];
   P21 [label="P21 Transport gain", fillcolor="#EFFBEA"];
   P22a [label="P22a Full ⇒ semantic transport", fillcolor="#EFFBEA"];

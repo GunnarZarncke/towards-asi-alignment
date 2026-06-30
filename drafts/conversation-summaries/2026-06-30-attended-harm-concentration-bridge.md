@@ -31,4 +31,4 @@ User asked to implement the "prove now" weighted harm bound (given certified att
 - `formal/README.md`
 
 ## Commits
-- None (see follow-up commit in session log if hash recorded separately).
+- `ef5ff96` — trace-derived control bounds and attended-harm Lean proofs.

@@ -29,6 +29,11 @@ theorem elk_separated_from_uptake :
 def elk_field_result_records : List FieldResultRecord :=
   [{ agenda := .ELK,
      status := .rederivedFinite,
+     leanName := "elk_subsumption_readout",
+     citationKey? := some "christiano2021elk",
+     summary := "If correction uptake succeeds and readout bandwidth matches the `κ_C` projection, latent readout succeeds." },
+   { agenda := .ELK,
+     status := .rederivedFinite,
      leanName := "elk_readout_is_correction_projection",
      citationKey? := some "christiano2021elk",
      summary := "When readout bandwidth is the `κ_C` projection, correction uptake gives latent readout." },

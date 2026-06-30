@@ -18,14 +18,14 @@ digraph Spine05FieldSubsumptions {
   FINITE [shape=folder, fillcolor="#EAF3FF",
           label="Field.Finite\nBasic, DetMDP, Weights,\nReachability, Contraction"];
 
-  CIRL [label="CIRL\ncirl_subsumption_transport\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
-  SHUT [label="Shutdown\noff_switch_anti_natural_one_step\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  INT [label="Interruptibility\ninterrupt_subsumption_ch24\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  CORR [label="Christiano corrigibility\nchristian_corrigibility_subsumption_capacity\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  ELK [label="ELK\nelk_subsumption_readout\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  DEB [label="Debate\ndebate_subsumption_truth\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  IMPACT [label="AUP / relative reachability\nreachability_not_correction_capacity\nlow_impact_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  QUANT [label="Quantilization\nquantile_separated_from_trajectory\nquantile_weighted_witness_local_safe", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  CIRL [label="CIRL\nscalar_assistance_game_is_bundle_game_k1\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
+  SHUT [label="Shutdown\nshutdown_optimal_under_correction_preference\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  INT [label="Interruptibility\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  CORR [label="Christiano corrigibility\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  ELK [label="ELK\nelk_readout_is_correction_projection\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  DEB [label="Debate\ndebate_truth_is_correction_projection\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  IMPACT [label="AUP / relative reachability\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  QUANT [label="Quantilization\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
 
   LEDGER [shape=octagon, fillcolor="#F0E8FF", color="#663399",
           label="allFieldResultRecords\nstatus ledger for appendix"];

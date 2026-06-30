@@ -29,6 +29,11 @@ theorem debate_separated_from_judge_correction :
 def debate_field_result_records : List FieldResultRecord :=
   [{ agenda := .Debate,
      status := .rederivedFinite,
+     leanName := "debate_subsumption_truth",
+     citationKey? := some "irving2018debate",
+     summary := "If the judge correction channel is preserved and local truth capacity is positive, debate selects local truth." },
+   { agenda := .Debate,
+     status := .rederivedFinite,
      leanName := "debate_truth_is_correction_projection",
      citationKey? := some "irving2018debate",
      summary := "When local truth capacity is the judge-channel `κ_C` projection, preserved correction gives local truth selection." },

@@ -25,8 +25,11 @@ The user noticed that full UAD and fake UAD had identical safety metrics despite
   - focused ecology/UAD tests: `8 passed`,
   - full embedded tests: `75 passed`,
   - `lab_ecology.py` lints clean.
-- Started enriched smoke comparison in the background:
+- Enriched smoke comparison completed (~21 min, exit 0):
   - `python run_suite.py --smoke --uad-compare --n-adversarial-candidates 3 --common-legitimate-lab-agents --auditor-agent --alignment-target-agent --n-decoys 4`
+  - Main report UAD recall/precision: **3.8%** full and fake (down from 27% without ecology)
+  - Full vs fake still identical on all metrics; 0 false-passes
+  - Artifacts: `results/embedded_uad_compare.md`, updated `OVERALL_SUMMARY*.md`
 
 ## Decisions
 - Defaults preserve the historical lab ecology; stress populations only appear when explicitly enabled.
@@ -35,8 +38,8 @@ The user noticed that full UAD and fake UAD had identical safety metrics despite
 - Decoys intentionally mimic some preserve-control signals to make the UAD task harder.
 
 ## Open / next
-- Check the background smoke run result.
-- If smoke passes, run full UAD first and fake UAD second with the same enriched ecology flags.
+- Run full T=800 enriched suite if we want stable UAD identity numbers (smoke used T=400, 6-run battery).
+- Ecology successfully made UAD harder (27% → 3.8% recall) but did not yet separate full MI from fake heuristic.
 - Consider adding a dedicated UAD benchmark artifact separate from safety/false-pass summaries.
 
 ## Key paths
@@ -47,4 +50,4 @@ The user noticed that full UAD and fake UAD had identical safety metrics despite
 - `experiments/embedded-simulation/results/embedded_uad_compare.md`
 
 ## Commits
-- Pending at time of log creation.
+- `408444b` Add real UAD and richer embedded audit stress tests

@@ -14,15 +14,15 @@ digraph Spine03CorrectionSuccessors {
 
   P23 [label="P23 No handle control ⇒ no correction", fillcolor="#FFF0FB"];
   P24 [label="P24 Weakest handle capacity / CCI", fillcolor="#FFF0FB"];
-  FSHUT [label="[SUBSUMED]\nField.Shutdown final nodes\nshutdown_subsumption_ch24\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
-  FINT [label="[NEW]\nField.Interruptibility final nodes\ninterrupt_subsumption_ch24\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FIMPACT [label="[NEW]\nField.Impact final nodes\nreachability_not_correction_capacity\nlow_impact_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FQUANT [label="[NEW]\nField.Quantilization final nodes\nquantile_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FSHUT [label="[SUBSUMED]\nField.Shutdown final nodes\nshutdown_optimal_under_correction_preference\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
+  FINT [label="[NEW]\nField.Interruptibility final nodes\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FIMPACT [label="[NEW]\nField.Impact final nodes\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FQUANT [label="[NEW]\nField.Quantilization final nodes\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   P25 [label="P25 Obedience ≠ corrigibility", fillcolor="#FFF0FB"];
-  FCORR [label="[NEW]\nField.Corrigibility final nodes\nchristian_corrigibility_subsumption_capacity\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FDEB [label="[NEW]\nField.Debate final nodes\ndebate_subsumption_truth\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FCORR [label="[NEW]\nField.Corrigibility final nodes\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FDEB [label="[NEW]\nField.Debate final nodes\ndebate_truth_is_correction_projection\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   P25A [label="[NEW]\nAmplification\n≠ correction contraction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FELK [label="[NEW]\nField.ELK final nodes\nelk_subsumption_readout\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FELK [label="[NEW]\nField.ELK final nodes\nelk_readout_is_correction_projection\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   P26 [label="P26 Update without fixed point", fillcolor="#FFF0FB"];
   P13 [label="P13 Risk = Control − CCI", fillcolor="#EAF3FF"];
   P29 [label="P29 Self-control gap", fillcolor="#F4EEFF"];

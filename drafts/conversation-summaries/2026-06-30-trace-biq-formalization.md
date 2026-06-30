@@ -31,4 +31,4 @@ The user clarified that blanket recovery for real systems is not the target, the
 - `formal/AlignmentProofSpine/Capability.lean`
 
 ## Commits
-- None.
+- `ef5ff96` (with attended-harm tranche in same commit).

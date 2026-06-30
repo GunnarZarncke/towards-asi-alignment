@@ -25,4 +25,4 @@ User asked to remove the factor-of-1000 millibit scale (adds nothing) and stop m
 - `appendices/appI-lean-proof-spine.tex` (`appi:sec:trace-attended-harm`)
 
 ## Commits
-- (pending)
+- `c9f5ce1` Drop millibit scale and rename trace estimator as pattern diversity.
