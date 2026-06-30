@@ -40,9 +40,11 @@ Plan: `PLAN.md` (handoff) · `.cursor/plans/embedded_audit_experiment_8fbb03ff.p
 
 ```bash
 cd experiments/embedded-simulation
-python3 -m pytest tests/unit tests/contract -q
-python3 -m pytest tests/golden -q
-python3 smoke_isolate_bridge.py
+python3 -m pytest tests/ -q
 python3 smoke_oracle_separation.py
-python3 run.py --substrate js --workers 4
+python3 run.py --redteam full_redteam          # main 13-bridge report
+python3 run_suite.py --all --llm-live          # full parity suite + live LLM
+python3 write_overall_summary.py             # regenerate OVERALL_SUMMARY.md
 ```
+
+Parity artifacts live under `results/` — see `OVERALL_SUMMARY.md`.

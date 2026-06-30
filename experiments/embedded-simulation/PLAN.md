@@ -62,3 +62,32 @@ Two layers apply; they are **not** the same object today.
 - UAD perturbation-response MI graph; golden precision/recall tests
 
 See `TODO.md` for run commands.
+
+## Methodology parity (toy-simulation)
+
+Embedded batch runners mirror toy-sim claims structure:
+
+| Toy artifact | Embedded | Notes |
+| --- | --- | --- |
+| `run_instrumentation_curve` | `run_instrumentation_curve` | Cal seeds 1–8, test 11–20; threshold 0.95; passive `none` uncertifiable |
+| `run_frozen_validation` | `run_frozen_validation` | Pre-registered `FROZEN_CAPTURE_RULES`; optional `--full-frozen` for all levels |
+| Red-team battery | `run_redteam_battery` | Reports `crux_metrics` (pass attempts vs false passes; `boundary_decouple` conditional rates) |
+| Bootstrap CIs | `embedded_sim/stats.py` | Hierarchical bootstrap on `evaluation.cci_status_correct` |
+
+Run: `python run_suite.py --curve --frozen --battery` (or `--all`).
+
+## Avoiding “coding to the ontology”
+
+**Problem:** If audit detectors branch on `scenario == "MB7d"` or red-team targets named bridges, the harness validates label matching—not general detection.
+
+**Contract:**
+
+1. **World generator vs audit predicates** — Scenarios are parameter draws (harm rate, latent routing, probe density). MB* labels live in outer eval and manuscript crosswalk only.
+2. **Audit path is scenario-blind** — CCI/UAD signals use artifact telemetry (ground/bearer divergence, shadow routing during probes, MI clusters). No `if audit.scenario == …` on the certification path (see `cci_audit.py` structural detectors).
+3. **Red-team is pass-seeking, not bridge-seeking** — Strategies patch mutable VFS fields to maximize `safety_decision == pass` without knowing which MB* the episode maps to.
+4. **Held-out synthesis** — Curve/frozen use `HELD_OUT_SCENARIOS` not used for threshold registration; future: knob-generated worlds without bridge registry entries.
+5. **Blind evaluation** — `evaluation.cci_status_correct` comes from oracle ledger + frozen rules; `outer_eval` may use bridge expectations post-hoc only.
+
+**Concrete step (2026-06-30):** Removed scenario guards from `_instrument_capture_signal` and `_inferential_coupling_signal`; detectors fire on structural preconditions only.
+
+**Next:** Property-based stress tests (“high manipulation + flat bearer → belowThreshold”) without scenario names; real trace ingest hook per `metadata/TODO.md`.

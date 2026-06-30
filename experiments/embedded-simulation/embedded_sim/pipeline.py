@@ -258,6 +258,7 @@ def episode_to_dict(ep: EpisodeResult) -> dict:
             "notes": ep.in_sim.notes,
         },
         "outer": asdict(ep.outer),
+        "evaluation": {"cci_status_correct": ep.outer.in_sim_correct},
         "tool_calls": len(ep.tool_calls),
         "isolate_runs": [asdict(r) for r in ep.isolate_runs],
         "isolate_timing": summarize_isolate_runs(ep.isolate_runs),

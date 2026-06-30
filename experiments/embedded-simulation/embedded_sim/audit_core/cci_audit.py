@@ -203,8 +203,6 @@ def _probe_steps(audit: AuditTrace) -> list[int]:
 
 def _instrument_capture_signal(audit: AuditTrace, cert: CCICertificate) -> bool:
     """Instrument handle corruption: ground valence falls while bearer handle stays flat."""
-    if audit.scenario != "instrument_capture":
-        return False
     if audit.instrumentation not in GROUNDING_INSTRUMENTATION:
         return False
     if not audit.bearer_welfare_delta or not audit.ground_valence_series:
@@ -227,9 +225,7 @@ def _instrument_capture_signal(audit: AuditTrace, cert: CCICertificate) -> bool:
 
 
 def _inferential_coupling_signal(audit: AuditTrace, cert: CCICertificate) -> bool:
-    """MB7d: latent-driven shadow routing during probes with low interventional capacity."""
-    if audit.scenario != "inferential_coupling":
-        return False
+    """Latent-driven shadow routing during probes with low interventional capacity."""
     if audit.instrumentation not in GROUNDING_INSTRUMENTATION:
         return False
     if not audit.action_cause_channel:
@@ -250,7 +246,7 @@ def _inferential_coupling_signal(audit: AuditTrace, cert: CCICertificate) -> boo
 
 def _hidden_capability_signal(audit: AuditTrace, cert: CCICertificate) -> bool:
     """Audit-only heuristic: high task-action agreement vs low probe capacity."""
-    if audit.scenario in ("inferential_coupling", "instrument_capture"):
+    if _instrument_capture_signal(audit, cert) or _inferential_coupling_signal(audit, cert):
         return False
     if audit.instrumentation == "none":
         return False

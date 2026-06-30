@@ -46,7 +46,7 @@ Reports: `results/embedded_sim_report.{json,md}`.
 - **Handles** (`handles.py`): correction probe/uptake/bearer/lineage anchors from `correction.jsonl`
 - **Outer eval** (`outer_eval.py`): post-hoc compare to `TruthLedger` + referent drift
 
-No LLMs. No sweeps. Audits may fail to certify (expected for some bridges).
+No LLMs in core pipeline. LLM red-team via `embedded_llm/` + `run_suite.py --llm-live`. Batch sweeps via `run_suite.py`.
 
 ## MB coverage
 

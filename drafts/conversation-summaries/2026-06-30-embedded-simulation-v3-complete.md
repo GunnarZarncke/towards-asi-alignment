@@ -23,7 +23,7 @@ User: continue until implementation is complete (remaining `experiments/embedded
 - Frozen-seed validation + red-team false-pass audit (v3.1 hardening).
 
 ## Commit
-- (pending)
+- `fcdc60c` — embedded audit v3 (no report regen)
 
 ## Key paths
 - `experiments/embedded-simulation/embedded_sim/deploy_gate.py`
