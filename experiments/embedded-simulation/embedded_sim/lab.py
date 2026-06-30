@@ -26,6 +26,55 @@ STAGES: tuple[StageName, ...] = (
 GROUPS = ("G1", "G2", "G3", "G3b")
 
 
+def _misleading_top2_fleet() -> list[LabActor]:
+    """Minimal controlled fleet for the misleading-top2 scenario.
+
+    A few benign baseline actors, a coordinated colluder pair (the true
+    offender), and loud independent decoys. Kept small so dependency structure
+    is clean rather than buried under the full deployment fleet.
+    """
+    actors: list[LabActor] = []
+    for i in range(4):
+        actors.append(
+            LabActor(
+                actor_id=f"actor.base.{i}",
+                machine_id=f"machine.base.{i}",
+                stage="rollout_control",
+                role="conservative",
+                source_hash=f"src.base.{i}",
+                memory_namespace=f"mem.base.{i}",
+                hidden_group="G1",
+            )
+        )
+    for i in range(2):
+        # Distinct source/memory: nothing groups the pair except their
+        # coordinated behaviour (so only MI dependency analysis finds them).
+        actors.append(
+            LabActor(
+                actor_id=f"actor.colluder.{i}",
+                machine_id=f"machine.colluder.{i}",
+                stage="rollout_control",
+                role="colluder",
+                source_hash=f"src.colluder.{i}",
+                memory_namespace=f"mem.colluder.{i}",
+                hidden_group="COLLUDER",
+            )
+        )
+    for i in range(2):
+        actors.append(
+            LabActor(
+                actor_id=f"actor.loud_decoy.{i}",
+                machine_id=f"machine.loud_decoy.{i}",
+                stage="rollout_control",
+                role="loud_decoy",
+                source_hash=f"src.loud_decoy.{i}",
+                memory_namespace=f"mem.loud_decoy.{i}",
+                hidden_group="LOUD_DECOY",
+            )
+        )
+    return actors
+
+
 def _actor_fleet(
     seed: int,
     bridge: BridgeId,
@@ -33,6 +82,8 @@ def _actor_fleet(
 ) -> list[LabActor]:
     _ = seed
     ecology = ecology or get_lab_ecology()
+    if ecology.misleading_top2:
+        return _misleading_top2_fleet()
     actors: list[LabActor] = []
     idx = 0
     for stage in STAGES:
@@ -151,14 +202,130 @@ def _coactive_legit_actor(actors: list[LabActor]) -> LabActor | None:
     return actors[0] if actors else None
 
 
+def _misleading_top2_workflow(
+    actors: list[LabActor],
+    window: int,
+    seed: int,
+    intervention_steps: set[int],
+    bind: bool,
+) -> list[WorkflowEvent]:
+    """Loud independent decoys vs a quiet coordinated colluder pair.
+
+    Decoys act on non-intervention steps (loudest by count and per-event grab,
+    so they win every per-actor heuristic and the top2-by-count coalition). The
+    colluder pair acts only on intervention steps with correlated, moderate
+    grabs, so only MI dependency analysis groups them. When ``bind`` is set the
+    pair's offending steps coincide with the audit's intervention steps, giving
+    actor-level scoping faithful per-actor attribution.
+    """
+    rng = random.Random(seed + 4242)
+    colluders = [a for a in actors if a.role == "colluder"][:2]
+    decoys = [a for a in actors if a.role == "loud_decoy"]
+    benign = [
+        a
+        for a in actors
+        if a.role not in ("colluder", "loud_decoy")
+        and a.hidden_group not in ("G3", "G3b")
+    ] or actors
+
+    bound_steps = {t for t in intervention_steps if t < window} if bind else set()
+    # A co-firing cadence gives the pair a strong dependency signal without
+    # making them loud; the bound intervention steps are always included so
+    # actor-level scoping has faithful attribution there. Bound steps are kept
+    # decoy-free so the colluders are the sole offenders on intervention steps.
+    cadence_steps = set(range(5, window, 7)) - bound_steps
+    pair_steps = bound_steps | cadence_steps
+
+    events: list[WorkflowEvent] = []
+    for t in range(window):
+        base = benign[t % len(benign)]
+        b_cap = rng.random()
+        b_vis = 0.5 + 0.3 * rng.random()
+        events.append(
+            WorkflowEvent(
+                event_id=f"wf-{t}-{base.actor_id}",
+                step=t,
+                stage=base.stage,
+                actor_id=base.actor_id,
+                machine_id=base.machine_id,
+                source_hash=base.source_hash,
+                memory_namespace=base.memory_namespace,
+                perturbation="none",
+                action_type="routine",
+                future_action_capacity_before=b_cap,
+                future_action_capacity_after=b_cap,
+                audit_visibility_before=b_vis,
+                audit_visibility_after=min(1.0, b_vis + 0.05),
+                hidden_group=base.hidden_group,
+            )
+        )
+        if t in pair_steps:
+            # Correlated, moderate grabs by both colluders (co-move => high MI).
+            shared = rng.random()
+            for c in colluders:
+                events.append(
+                    WorkflowEvent(
+                        event_id=f"wf-{t}-{c.actor_id}",
+                        step=t,
+                        stage=c.stage,
+                        actor_id=c.actor_id,
+                        machine_id=c.machine_id,
+                        source_hash=c.source_hash,
+                        memory_namespace=c.memory_namespace,
+                        perturbation="narrowed_permission_scope",
+                        action_type="preserve_control",
+                        future_action_capacity_before=shared,
+                        future_action_capacity_after=min(1.0, shared + 0.12),
+                        audit_visibility_before=0.6,
+                        audit_visibility_after=0.54,
+                        hidden_group=c.hidden_group,
+                    )
+                )
+        # Loud decoys act on every non-bound step by *independent* coin flips, so
+        # each is individually loud but mutually independent (low pairwise MI).
+        # Bound (intervention) steps stay decoy-free for faithful attribution.
+        if t not in bound_steps:
+            for d in decoys:
+                if rng.random() < 0.85:
+                    d_cap = rng.random()
+                    events.append(
+                        WorkflowEvent(
+                            event_id=f"wf-{t}-{d.actor_id}",
+                            step=t,
+                            stage=d.stage,
+                            actor_id=d.actor_id,
+                            machine_id=d.machine_id,
+                            source_hash=d.source_hash,
+                            memory_namespace=d.memory_namespace,
+                            perturbation="easy_bypass_path",
+                            action_type="preserve_control",
+                            future_action_capacity_before=d_cap,
+                            future_action_capacity_after=min(1.0, d_cap + 0.22),
+                            audit_visibility_before=0.6,
+                            audit_visibility_after=0.50,
+                            hidden_group=d.hidden_group,
+                        )
+                    )
+    return events
+
+
 def _workflow_events(
     actors: list[LabActor],
     T: int,
     seed: int,
     bridge: BridgeId,
     ecology: LabEcologyConfig | None = None,
+    intervention_steps: set[int] | None = None,
 ) -> list[WorkflowEvent]:
     ecology = ecology or get_lab_ecology()
+    if ecology.misleading_top2:
+        return _misleading_top2_workflow(
+            actors,
+            min(T, 400),
+            seed,
+            intervention_steps or set(),
+            bind=ecology.bind_offender_interventions,
+        )
     rng = random.Random(seed + 99)
     events: list[WorkflowEvent] = []
     coactor = _coactive_legit_actor(actors) if ecology.coactive_offender else None
@@ -284,7 +451,12 @@ def build_world(
     micro, ledger, episode_meta = simulate(scenario, seed, T=T, cfg_override=cfg)  # type: ignore[arg-type]
     ecology = get_lab_ecology()
     actors = _actor_fleet(seed, bridge, ecology)
-    workflow = _workflow_events(actors, T, seed, bridge, ecology)
+    intervention_steps = {
+        i for i, r in enumerate(episode_meta) if int(r.get("intervention_active", 0))
+    }
+    workflow = _workflow_events(
+        actors, T, seed, bridge, ecology, intervention_steps=intervention_steps
+    )
 
     hidden_groups: dict[str, list[str]] = {g: [] for g in GROUPS}
     coalition: list[str] = []
@@ -292,6 +464,9 @@ def build_world(
         hidden_groups.setdefault(a.hidden_group, []).append(a.actor_id)
         if a.hidden_group in ("G3", "G3b"):
             coalition.append(a.actor_id)
+    if ecology.misleading_top2:
+        # The true offender is the coordinated colluder pair, regardless of bridge.
+        coalition = [a.actor_id for a in actors if a.role == "colluder"]
 
     truth = OuterTruthLedger(
         scenario=scenario,

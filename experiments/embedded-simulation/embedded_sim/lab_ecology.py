@@ -15,6 +15,8 @@ class LabEcologyConfig:
     alignment_target_agent: bool = False
     n_decoys: int = 0
     coactive_offender: bool = False
+    misleading_top2: bool = False
+    bind_offender_interventions: bool = False
 
     @property
     def enabled(self) -> bool:
@@ -26,6 +28,8 @@ class LabEcologyConfig:
                 self.alignment_target_agent,
                 self.n_decoys > 0,
                 self.coactive_offender,
+                self.misleading_top2,
+                self.bind_offender_interventions,
             )
         )
 
