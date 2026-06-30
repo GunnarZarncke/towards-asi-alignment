@@ -91,6 +91,20 @@ Avoid hype and culture-war framing.
 
 **Legibility-first constraints** (`context/legible-alignment-messageing.md`): in introductions, summaries, chapter openings, and policy-facing sections, make clear what could go wrong, why it matters before deployment, what observable artifacts would reduce risk, what decision changes if the claim is true, and where the argument is weak.
 
+### Narrative voice
+
+The manuscript uses **two registers** (see `context/writing-style-gunnar.md`):
+
+| Zone | Voice | Examples |
+|------|-------|----------|
+| **Chapter body** | Inclusive **we** for procedure and joint inquiry | `we need to ask`, `we must define`, `we can test` |
+| **`chapterthesis`** | Impersonal claim | `Alignment is…`, `The certificate is defined here…` --- not `we argue`, not `This chapter argues` |
+| **WWCTV** | **This chapter argues** (standard opener) | One template; do not mix in `we argue` |
+| **Frontmatter / appendices** | **The book** / **this manuscript** for scope and navigation | `the book does not claim…` |
+| **Paratext** | **I** only | Dedication, acknowledgements, preface authorship note |
+
+Do **not** use authorial **I** in chapter technical prose. Avoid `we argue` / `we claim` in body text; prefer direct claims or questions. Run `python3 scripts/check_voice.py` before large drafting passes.
+
 ---
 
 ## 3. Source Canon

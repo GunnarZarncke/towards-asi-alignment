@@ -8,7 +8,19 @@ By defaultt use these principles:
 	•	Use questions as analytic tools. 
 	•	Write to shape coordination, not just belief.
 
-Prefer simpler words. Do not use em-dashes. 
+Prefer simpler words. Do not use em-dashes.
+
+### Narrative voice (book manuscript)
+
+Use **two registers**, not a mix of ``I'', ``we argue'', and ``the book argues'' in the same zone.
+
+**Register A --- argument body (default):** inclusive **we** for shared inquiry and procedure (`we need to ask`, `we must define`, `we can test`). Do not use authorial **I** in technical chapters. Avoid `we argue` / `we claim`; state the claim directly or use a question.
+
+**Register B --- meta / navigation:** impersonal third person for `chapterthesis` boxes, scope disclaimers, frontmatter thesis, and appendices (`the book does not claim`, `the certificate is defined here`). **What Would Change This View** sections may open with **This chapter argues** (one template only).
+
+**Register C --- paratext only:** **I** / **my** in dedication, acknowledgements, and preface authorship note only.
+
+Policy detail: `INSTRUCTIONS.md` §2 (Narrative voice).
 
 Examples of my writing style that can be used to emulate my writing in cover letters, applications, etc:
 
