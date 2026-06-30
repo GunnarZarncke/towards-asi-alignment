@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Lean appendix split + diagram placement | [2026-06-30-lean-appendix-split.md](2026-06-30-lean-appendix-split.md) |
+| 2026-06-30 | Misleading-top2 discovery gap + bound handle | [2026-06-30-misleading-top2-discovery-gap.md](2026-06-30-misleading-top2-discovery-gap.md) |
 | 2026-06-30 | Trace diversity honesty (drop millibits) | [2026-06-30-trace-diversity-honesty.md](2026-06-30-trace-diversity-honesty.md) |
 | 2026-06-30 | Lean spine reconsideration | [2026-06-30-lean-spine-reconsideration.md](2026-06-30-lean-spine-reconsideration.md) |
 | 2026-06-30 | Intervention-granularity handle for UAD | [2026-06-30-intervention-granularity-handle.md](2026-06-30-intervention-granularity-handle.md) |
