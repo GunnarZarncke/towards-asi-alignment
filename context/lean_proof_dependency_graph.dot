@@ -65,7 +65,7 @@ digraph LeanProofDependencies {
 
   // Successors (ch28–31)
   P27 [label="P27 Successor invariant chain\nP A₀ ∧ preserved ⇒ ∀ successors P", fillcolor="#F4EEFF"];
-  P28 [label="P28 Missing invariant blocks successor safety\nmissing CCI or U_S ⇒ ¬SuccessorSafe", fillcolor="#F4EEFF"];
+  P28 [label="P28 Missing invariant blocks successor safety\nmissing CCIPreserved ⇒ ¬SuccessorSafe", fillcolor="#F4EEFF"];
   P29 [label="P29 Self-control gap increases risk\nmore self-control, same visibility ⇒ higher gap", fillcolor="#F4EEFF"];
 
   // Adversarial / socio-technical (ch32–37)

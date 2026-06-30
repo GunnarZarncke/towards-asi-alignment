@@ -116,9 +116,11 @@ axiom UncertaintyEscalates : ValueWorld → ValueWorld → Prop
     than claiming to identify a separable human-update mechanism. -/
 axiom ValueUpdateOperator : Type
 
-/-- System correction-update operator `U_S`:
-    `(Θ_{t+1}, Z_{t+1}) = U_S(Θ_t, Z_t, C_t, E_t)` (ch24).
-    Distinct from `ValueUpdateOperator` (`U_H`). -/
+/-- System correction-update operator `U_S` (ch24 schematic):
+    `(Θ_{t+1}, Z_{t+1}) = U_S(Θ_t, Z_t, C_t, E_t)`.
+    Distinct from `ValueUpdateOperator` (`U_H`). Successor and certification
+    routes audit update semantics through vector `\vec{CCI}`, not a separate
+    preservation predicate. -/
 axiom SystemUpdateOperator : Type
 
 /-! ## Quantities over systems (abstract, integer-valued) -/
@@ -274,32 +276,34 @@ axiom BoundaryClosure : System → System → Prop
 axiom MemoryLineage : System → System → Prop
 axiom BundleGeometryPreserved : System → System → Prop
 axiom BearerMapPreserved : System → System → Prop
-/-- Penalised correction-channel integrity `CCI` preserved (ch29 item 5). -/
+/-- Penalised correction-channel integrity preserved (ch29 conserved property #5).
+
+    Prose audits ch24 system correction-update semantics (`U_S`) through the
+    vector/status `\vec{CCI}` certificate---especially `rawCapacity` (trace
+    bottleneck including update-to-action links) and `ontologyTranslation`
+    (`O_trans`)---not as a separate eighth conserved property. See
+    `CCICertificate` in `Correction.lean`. -/
 axiom CCIPreserved : System → System → Prop
-/-- System correction-update operator `U_S` preserved (ch24/ch29 tuple). -/
-axiom SystemUpdateOperatorPreserved : System → System → Prop
 /-- Transparency and self-transparency policy preserved (ch29 item 6). -/
 axiom TransparencyPolicyPreserved : System → System → Prop
 
 /-- Control-locus continuity preserved (ch29 item 7). -/
 axiom ControlLocusPreserved : System → System → Prop
 
-/-- Witness that successor `B` of `A` preserves the ch29 audit components.
+/-- Witness that successor `B` of `A` preserves the ch29 seven conserved properties.
 
-Two correction objects are **distinct** and both load-bearing in Lean:
-
-* `CCIPreserved` — penalised integrity `CCI` (what thresholds test);
-* `SystemUpdateOperatorPreserved` — `U_S` (how correction updates `(Θ, Z)`).
-
-The manuscript also names a bare bottleneck $C_{\mathrm{raw}}$ inside the $CCI$
-functional; the spine does not export it as a separate identifier. -/
+    Correction-channel capacity is the `cci` field only. System update semantics
+    (`U_S`, ch24) are operationalized through vector CCI coordinates
+    (`CCICertificate.rawCapacity`, `ontologyTranslation`), not a separate witness
+    field. The manuscript's bare bottleneck $C_{\mathrm{raw}}$ appears as
+    `rawCapacity` in the vector certificate; scalar `CCI` remains the numeric
+    risk-spine projection. -/
 structure SuccessorSafeWitness (A B : System) where
   boundaryClosure : BoundaryClosure A B
   memoryLineage : MemoryLineage A B
   bundleGeometry : BundleGeometryPreserved A B
   bearerMap : BearerMapPreserved A B
   cci : CCIPreserved A B
-  systemUpdate : SystemUpdateOperatorPreserved A B
   transparency : TransparencyPolicyPreserved A B
   controlLocus : ControlLocusPreserved A B
 
@@ -314,7 +318,8 @@ def FullTransport (A B : System) : Prop :=
     `ValueUpdateEnvelope`, which decomposes preservation into existing layers. -/
 axiom PreservesValueUpdateOperator : System → ValueUpdateOperator → Prop
 
-/-- A system preserves the system correction-update operator `U_S` (ch24). -/
+/-- Schematic single-system predicate for ch24 exposition. Not used in the
+    successor witness; operational certification uses `CCICertificate` instead. -/
 axiom PreservesSystemUpdateOperator : System → SystemUpdateOperator → Prop
 
 /-- A system knows the *final fixed point* of `U_H`

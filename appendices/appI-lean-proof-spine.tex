@@ -1182,12 +1182,13 @@ Let \(P\) be a system property. If \(P(A)\) and every successor step preserves \
 Induct on the finite successor chain using Assumption~\ref{appi:ass:s01}. The base case is \(A=B\); the step case applies the preservation hypothesis.
 \end{proof}
 
-\begin{theorem}[\texttt{P28}: missing successor-safety fields block safety]
+\begin{theorem}[\texttt{P28}: missing correction-channel preservation blocks successor safety]
 \label{appi:thm:p28}
-If either \(\mathrm{CCI}\) preservation or \(U_S\) preservation is impossible from \(A\) to \(B\), then \(\neg\mathrm{SuccessorSafe}(A,B)\) (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch25}; Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch29}).
+If \(\mathrm{CCIPreserved}(A,B)\) is impossible, then \(\neg\mathrm{SuccessorSafe}(A,B)\) (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch25}; Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch29}).
+System correction-update semantics (\(U_S\), Chapter~\ref{ch:correction-causal-channel}) are audited through vector \(\vec{\mathrm{CCI}}\) coordinates such as \(C_{\mathrm{raw}}\) and \(O_{\mathrm{trans}}\), not as a separate eighth witness field.
 \end{theorem}
 \begin{proof}
-By Definition~\ref{appi:def:spine-successor-safe}, a successor-safety witness must contain both fields. If either field is impossible, no witness exists, by Assumption~\ref{appi:ass:s02}.
+By Definition~\ref{appi:def:spine-successor-safe}, a successor-safety witness must contain the `CCIPreserved` field. If that field is impossible, no witness exists, by Assumption~\ref{appi:ass:s02}.
 \end{proof}
 
 \begin{lemma}[\texttt{P29}: self-control gap increases]
@@ -1500,12 +1501,13 @@ Lean exports the integer abstraction \(\mathrm{DeploymentMass}(E,A)\) for relati
 
 \begin{definition}[Successor safety]
 \label{appi:def:spine-successor-safe}
-A successor \(B\) is successor-safe relative to \(A\) when there is a witness preserving boundary closure, memory lineage, bundle geometry, bearer map, \(CCI\), the system update operator \(U_S\), transparency policy, and control-locus continuity:
+A successor \(B\) is successor-safe relative to \(A\) when there is a witness preserving the seven ch29 conserved properties: boundary closure, memory lineage, bundle geometry, bearer map, correction-channel capacity (`CCIPreserved` / vector \(\vec{\mathrm{CCI}}\)), transparency policy, and control-locus continuity:
 \begin{equation}
 \label{appi:eq:successor-safe}
-\mathrm{SuccessorSafe}(A,B)\iff \exists W,\ W\text{ contains all eight preservation fields.}
+\mathrm{SuccessorSafe}(A,B)\iff \exists W,\ W\text{ contains all seven preservation fields.}
 \end{equation}
-Book references: successor safety is motivated in Chapter~\ref{ch:successor-central-test}, Sections~\ref{sec:conserved-properties-ch28}--\ref{sec:successor-alignment-condition-ch28}; the seven conserved properties and \(U_S\) are developed in Chapter~\ref{ch:conserved-properties}, especially Section~\ref{sec:seven-conserved-properties-ch29}.
+Book references: successor safety is motivated in Chapter~\ref{ch:successor-central-test}, Sections~\ref{sec:conserved-properties-ch28}--\ref{sec:successor-alignment-condition-ch28}; the seven conserved properties are developed in Chapter~\ref{ch:conserved-properties}, especially Section~\ref{sec:seven-conserved-properties-ch29}.
+Ch24 system correction-update semantics (\(U_S\)) enter through vector \(\vec{\mathrm{CCI}}\) (`rawCapacity`, `ontologyTranslation`), not a separate preservation conjunct.
 \end{definition}
 
 \begin{definition}[Transport stack between systems]

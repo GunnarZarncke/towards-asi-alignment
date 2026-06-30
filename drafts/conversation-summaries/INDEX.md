@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Lean U_S aligned to vector CCI prose | [2026-06-30-lean-us-vector-cci-alignment.md](2026-06-30-lean-us-vector-cci-alignment.md) |
 | 2026-06-30 | BioShield spine-ordered worked example (Appendix K) | [2026-06-30-worked-example-bioshield.md](2026-06-30-worked-example-bioshield.md) |
 | 2026-06-30 | Lean appendix split + diagram placement | [2026-06-30-lean-appendix-split.md](2026-06-30-lean-appendix-split.md) |
 | 2026-06-30 | Misleading-top2 discovery gap + bound handle | [2026-06-30-misleading-top2-discovery-gap.md](2026-06-30-misleading-top2-discovery-gap.md) |

@@ -183,8 +183,9 @@ depends on `MB4`.
   `eq:deployment-mass-ch32`). Selection uses `SelectionChannel` / `SelectionHandleFor`
   over the same `Handle` type as correction. Revenue and regulatory risk are not
   primitive Lean terms.
-* **`SuccessorSafe`** = `Nonempty SuccessorSafeWitness` with `CCIPreserved` and
-  `SystemUpdateOperatorPreserved` among the ch29 fields.
+* **`SuccessorSafe`** = `Nonempty SuccessorSafeWitness` with the ch29 seven
+  conserved-property fields; correction capacity is `CCIPreserved` (vector `\vec{CCI}`
+  in prose, including ch24 `U_S` semantics via `rawCapacity` and `ontologyTranslation`).
 * Node IDs match `formal/AlignmentProofSpine/*.lean` theorem names (see module map above).
   Full graph: `context/lean_proof_dependency_graph.dot`.
   Book layout: four sub-spines + overview in `context/lean_proof_graphs/` → `figures/lean_proof/` via `scripts/render_lean_graphs.sh` (Lean Proof Spine appendix, Section~\ref{sec:appi-proof-dependency}).

@@ -750,9 +750,19 @@ inductive CCIStatus
   | passes
   deriving DecidableEq, Repr
 
-/-- Vector/status CCI certificate. Constructing one already carries the
-    `ValidRef` and grounding-viability evidence; empirical discharge of those
-    fields remains bridge content (`MB4`, `MB9`, adversarial measurement). -/
+/-- Vector/status CCI certificate (ch25 `\vec{CCI}`).
+
+    System correction-update semantics (`U_S`, ch24) are audited here, not via a
+    separate successor field:
+
+    * `rawCapacity` — weakest required trace bottleneck (`C_{\mathrm{raw}}`), including
+      the correction-to-update-to-action link;
+    * `ontologyTranslation` — residual translation loss `O_{\mathrm{trans}}` in how
+      the system update interprets received correction.
+
+    Constructing one already carries the `ValidRef` and grounding-viability evidence;
+    empirical discharge of those fields remains bridge content (`MB4`, `MB9`,
+    adversarial measurement). -/
 structure CCICertificate (A : System) where
   validRef : SystemPathValidRef A
   grounding : GroundingViable A

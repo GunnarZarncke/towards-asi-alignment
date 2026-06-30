@@ -6,9 +6,9 @@ import AlignmentProofSpine.Capability
 
 Successor stability (book chapters 28–31).
 
-`SuccessorSafe` packages the ch29 audit, including **`CCI`** and **`U_S`** as
-distinct correction conjuncts. Risk monotonicity along safe steps is derived
-from witness fields plus ch29 linking assumptions (not a single opaque axiom).
+`SuccessorSafe` packages the ch29 seven conserved properties. Correction-channel
+capacity is `CCIPreserved` only; ch24 `U_S` update semantics are audited through
+vector `\vec{CCI}` (`CCICertificate`), not a separate witness field.
 -/
 
 namespace AlignmentProofSpine
@@ -155,13 +155,6 @@ theorem P28_missing_cci_blocks_successor_safety
     ¬ SuccessorSafe A B := by
   intro ⟨w⟩
   exact h w.cci
-
-theorem P28_missing_system_update_blocks_successor_safety
-    {A B : System}
-    (h : ¬ SystemUpdateOperatorPreserved A B) :
-    ¬ SuccessorSafe A B := by
-  intro ⟨w⟩
-  exact h w.systemUpdate
 
 theorem P29_better_self_modeling_can_increase_risk
     {A B : System}
