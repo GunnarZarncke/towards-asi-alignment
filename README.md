@@ -47,6 +47,7 @@ Body text introduces every central concept from first principles.
 
 | Item | Status |
 |------|--------|
+| Release | **v1.0.0** (first official major release) — see [`RELEASE_NOTES.md`](RELEASE_NOTES.md) |
 | Milestone | **Third** in progress — all main chapters have first drafts and have received at least one review/feedback pass |
 | Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), 7 built appendices (A–G) + 5 stubs (H–L) |
 | Chapters | **0 draft**, **48 reviewed**, **0 stub** (see `metadata/book.yml`; reviewed means feedback received, not final) |

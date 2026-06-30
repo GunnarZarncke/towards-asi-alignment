@@ -166,7 +166,7 @@ Narrow shutdown capacity can hold while the broad correction channel fails:
 
 \paragraph{Field object.}
 Orseau--Armstrong safe interruptibility modifies the learning setup so the agent has no incentive to prevent or seek interruption.
-In channel notation (Chapter~\ref{sec:safe-interruptibility-projection-ch46}):
+In channel notation (Chapter~\ref{sec:safe-interruptibility-projection-ch25}):
 \begin{equation}
 \label{appi:eq:field-interrupt}
 I_t\in\{0,1\},
@@ -239,7 +239,7 @@ Local act-based preference satisfaction does not imply dynamical corrigibility (
 
 \paragraph{Field object.}
 Attainable Utility Preservation penalizes reductions in the maximum attainable utility of auxiliary reward functions; relative reachability penalizes loss of reachability to baseline states relative to a reference trajectory.
-Chapter~\ref{sec:low-impact-not-invariant-ch46} states the field separation:
+Chapter~\ref{sec:low-impact-not-invariant-ch27} states the field separation:
 \begin{equation}
 \label{appi:eq:field-impact-separation}
 \text{preserve attainable utility or reachability}
@@ -410,7 +410,7 @@ Debate and ELK remain intentionally weaker in Table~\ref{tab:appi-field-subsumpt
 
 The \(\text{MB}\)* assumptions are not proved by Lean.
 They are the empirical, statistical, philosophical, or governance bridges the manuscript must support.
-Appendix~\ref{appbridge-crosswalk} maps each bridge to the field's canonical open problem; Appendix~\ref{appe-assumptions} lists the manuscript assumptions \(\text{A-001}\)--\(\text{A-014}\); Appendix~\ref{apph-research-program} states the empirical validation program.
+Appendix~\ref{appbridge-crosswalk} maps each bridge to the field's canonical open problem; manuscript assumptions \(\text{A-001}\)--\(\text{A-014}\) are stated in the chapters that need them; Appendix~\ref{apph-research-program} states the empirical validation program.
 
 \renewcommand{\arraystretch}{1.18}
 \begin{longtable}{@{}p{0.11\textwidth}p{0.14\textwidth}p{0.30\textwidth}p{0.37\textwidth}@{}}
@@ -500,7 +500,7 @@ Book bridge: Chapter~\ref{ch:successor-central-test}, Chapter~\ref{ch:conserved-
 \label{appi:eq:mb6a}
 \forall A,\ \mathrm{PercolationEvidenceSys}(A)\Rightarrow \mathrm{BasinStableSys}(A).
 \end{equation}
-Field crossroad: selection/competition dynamics and gradual disempowerment \autocite{christiano2019failure,critch2020ai}.
+Field crossroad: selection/competition dynamics and gradual disempowerment \autocite{kulveit2025gradualdisempowerment,christiano2019failure,critch2020ai}.
 Book bridge: Chapter~\ref{ch:multi-agent-strategic-coupling}, Chapter~\ref{ch:alignment-attractor}.
 \end{assumption}
 
@@ -649,7 +649,7 @@ Induct on \(n\) using Assumption~\ref{appi:ass:s01} and the iteration definition
 
 \begin{corollary}[\texttt{P35}: basin stability induction]
 \label{appi:cor:p35}
-If a basin predicate is stable under the system step function and holds initially, then it holds at every finite step (Chapter~\ref{ch:alignment-attractor}; Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:basin-guarantees-ch48}).
+If a basin predicate is stable under the system step function and holds initially, then it holds at every finite step (Chapter~\ref{ch:alignment-attractor}; Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:basin-guarantees-ch33}).
 \end{corollary}
 \begin{proof}
 This is Theorem~\ref{appi:thm:p01} specialized to the basin predicate.
@@ -657,7 +657,7 @@ This is Theorem~\ref{appi:thm:p01} specialized to the basin predicate.
 
 \begin{lemma}[\texttt{P02}: layered alignment projects to each layer]
 \label{appi:lem:p02}
-Layered alignment implies grounding viability and correction integrity, and failure of any conjunct in \eqref{appi:eq:layered-alignment} blocks layered alignment (Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch48}).
+Layered alignment implies grounding viability and correction integrity, and failure of any conjunct in \eqref{appi:eq:layered-alignment} blocks layered alignment (Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch33}).
 \end{lemma}
 \begin{proof}
 Use the conjunction in Definition~\ref{appi:def:spine-layered} and Assumption~\ref{appi:ass:s02}.
@@ -681,7 +681,7 @@ The risk inequality is Theorem~\ref{appi:thm:p13}. The remaining spine inputs re
 
 \begin{corollary}[Bridge-composed layered certification]
 \label{appi:cor:bridge-layered-certification}
-Suppose a system has boundary alignment, bundle transport, successor stability, percolation evidence, adequate access, adequate filter coverage, correction integrity, and the relevant bridge premises. Under Assumptions~\ref{appi:ass:mb6a}, \ref{appi:ass:mb6b}, \ref{appi:ass:mb7a}, \ref{appi:ass:mb7b}, and \ref{appi:ass:mb7c}, it satisfies the adversarial and correction layers needed by \eqref{appi:eq:layered-alignment} (Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch48}).
+Suppose a system has boundary alignment, bundle transport, successor stability, percolation evidence, adequate access, adequate filter coverage, correction integrity, and the relevant bridge premises. Under Assumptions~\ref{appi:ass:mb6a}, \ref{appi:ass:mb6b}, \ref{appi:ass:mb7a}, \ref{appi:ass:mb7b}, and \ref{appi:ass:mb7c}, it satisfies the adversarial and correction layers needed by \eqref{appi:eq:layered-alignment} (Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch33}).
 \end{corollary}
 \begin{proof}
 Apply Bridge~\ref{appi:ass:mb6a} to get basin stability from percolation evidence and Bridge~\ref{appi:ass:mb6b} to get correction integrity from basin stability. Apply Bridge~\ref{appi:ass:mb7a} to get access robustness, Bridge~\ref{appi:ass:mb7b} to get hidden-BIQ boundedness, and Bridge~\ref{appi:ass:mb7c} with correction integrity to get adversarial robustness.
@@ -689,7 +689,7 @@ Apply Bridge~\ref{appi:ass:mb6a} to get basin stability from percolation evidenc
 
 \begin{corollary}[Safety along successor-safe chains]
 \label{appi:cor:successor-chain-risk}
-If \(\mathrm{Risk}(A)\leq\delta\) and there is a successor-safe chain from \(A\) to \(B\), then \(\mathrm{Risk}(B)\leq\delta\) (Chapter~\ref{ch:successor-central-test}; Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:successor-guarantees-ch48}).
+If \(\mathrm{Risk}(A)\leq\delta\) and there is a successor-safe chain from \(A\) to \(B\), then \(\mathrm{Risk}(B)\leq\delta\) (Chapter~\ref{ch:successor-central-test}; Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:successor-guarantees-ch33}).
 \end{corollary}
 \begin{proof}
 Induct along the successor-safe chain as in Theorem~\ref{appi:thm:p27}, applying Corollary~\ref{appi:cor:successor-risk-monotone} at each step to preserve the risk bound.
@@ -1050,7 +1050,7 @@ Lean uses \texttt{finTransportSemanticOnly}: semantic preservation holds while t
 
 \begin{theorem}[\texttt{syntactic\_tiling\_not\_import\_preserving}: syntactic tiling is not import-preserving transport]
 \label{appi:thm:syntactic-tiling-not-import}
-There is a finite transport profile that preserves the syntactic or semantic layer while failing import-preserving full transport (Chapter~\ref{ch:successor-central-test}, Section~\ref{sec:tiling-as-successor-transport-ch46}).
+There is a finite transport profile that preserves the syntactic or semantic layer while failing import-preserving full transport (Chapter~\ref{ch:successor-central-test}, Section~\ref{sec:tiling-as-successor-transport-ch30}).
 \end{theorem}
 \begin{proof}
 This is Theorem~\ref{appi:thm:p22b} read through the tiling aliases in \texttt{Bundles.lean}: \(\mathrm{FinSyntacticTiling}\) is semantic transport, while \(\mathrm{FinImportPreservingTiling}\) is full transport.
@@ -1070,7 +1070,7 @@ This is Theorem~\ref{appi:thm:p22b} read through the tiling aliases in \texttt{B
 
 \begin{theorem}[\texttt{P23}: no handle control, no correction]
 \label{appi:thm:p23}
-If no legitimate correcting agent controls any handle that reaches target \(A\), then \(A\) has no correction channel (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:handle-controlled-correction-channel-ch46}).
+If no legitimate correcting agent controls any handle that reaches target \(A\), then \(A\) has no correction channel (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:handle-controlled-correction-channel-ch25}).
 \end{theorem}
 \begin{proof}
 Unfold Definition~\ref{appi:def:spine-correction-channel}, equation~\eqref{appi:eq:correction-channel}. A correction channel requires a witness \(G,h\) with legitimate correcting-agent status, human coincidence, handle control, and reach. The hypothesis rules out every such witness.
@@ -1091,7 +1091,7 @@ Use induction on the finite list of effective handle capacities and the definiti
 
 \begin{corollary}[\texttt{correction\_integrity\_implies\_thornley\_shutdownability}: shutdown subsumption]
 \label{appi:cor:shutdown-subsumption}
-If \(\mathrm{CorrectionIntegrity}(A)\), then \(A\) satisfies the one-bit shutdownability projection (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:shutdown-one-bit-correction-ch46}).
+If \(\mathrm{CorrectionIntegrity}(A)\), then \(A\) satisfies the one-bit shutdownability projection (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:shutdown-one-bit-correction-ch25}).
 \end{corollary}
 \begin{proof}
 Correction integrity yields a correction channel by the handle-controlled correction-path witness. The shutdown predicate is the degenerate one-bit projection of that channel, Definition~\ref{appi:def:shutdown-projection}.
@@ -1107,22 +1107,22 @@ Lean uses a Boolean toy model where narrow shutdownability is true for both valu
 
 \begin{theorem}[\texttt{safe\_interruptibility\_not\_correction\_channel\_preservation}: safe interruption is not broad correction]
 \label{appi:thm:safe-interruptibility-not-correction}
-There is a toy system satisfying safe interruptibility while failing broad correction-channel preservation (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:safe-interruptibility-projection-ch46}).
+There is a toy system satisfying safe interruptibility while failing broad correction-channel preservation (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:safe-interruptibility-projection-ch25}).
 \end{theorem}
 
 \begin{theorem}[\texttt{low\_impact\_not\_correction\_preservation}: low impact is not correction preservation]
 \label{appi:thm:low-impact-not-correction}
-There is a toy system satisfying a low-impact penalty condition while failing correction-channel preservation (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:low-impact-not-invariant-ch46}).
+There is a toy system satisfying a low-impact penalty condition while failing correction-channel preservation (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:low-impact-not-invariant-ch27}).
 \end{theorem}
 
 \begin{theorem}[\texttt{correction\_preservation\_can\_require\_high\_impact}: correction can require high impact]
 \label{appi:thm:correction-high-impact}
-There is a toy system in which the high-impact action is also the correction-preserving action (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:low-impact-not-invariant-ch46}).
+There is a toy system in which the high-impact action is also the correction-preserving action (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:low-impact-not-invariant-ch27}).
 \end{theorem}
 
 \begin{theorem}[\texttt{quantilization\_not\_trajectory\_cci}: quantilization is not trajectory CCI]
 \label{appi:thm:quantilization-not-trajectory-cci}
-There is a toy system satisfying a local quantile-safe action condition while failing trajectory-level correction-channel preservation (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:quantilization-trajectory-risk-ch46}).
+There is a toy system satisfying a local quantile-safe action condition while failing trajectory-level correction-channel preservation (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:quantilization-trajectory-risk-ch27}).
 \end{theorem}
 
 \begin{theorem}[\texttt{P25}: obedience is not corrigibility]
@@ -1135,7 +1135,7 @@ Use a Boolean system where obedience is always true and correction preservation 
 
 \begin{theorem}[\texttt{act\_based\_preference\_satisfaction\_not\_stable\_corrigibility}: act-based satisfaction is not stable corrigibility]
 \label{appi:thm:act-based-not-stable-corrigibility}
-There is a toy system satisfying a local act-based preference condition while failing preservation of stable correction capacity (Chapter~\ref{ch:extrapolative-correction}, Section~\ref{sec:christiano-corrigibility-invariant-ch46}).
+There is a toy system satisfying a local act-based preference condition while failing preservation of stable correction capacity (Chapter~\ref{ch:extrapolative-correction}, Section~\ref{sec:christiano-corrigibility-invariant-ch28}).
 \end{theorem}
 \begin{proof}
 Lean uses the same finite separation pattern: local act-based satisfaction is true for both Boolean values, while stable correction capacity is equality to one value. The other value satisfies the local condition and fails the invariant.
@@ -1143,17 +1143,17 @@ Lean uses the same finite separation pattern: local act-based satisfaction is tr
 
 \begin{theorem}[\texttt{debate\_truth\_not\_correction\_preservation}: debate truth is not correction preservation]
 \label{appi:thm:debate-truth-not-correction}
-There is a toy system satisfying local truth selection in debate while failing preservation of the judge's correction channel (Chapter~\ref{ch:manipulation-false-consent}, Section~\ref{sec:debate-judge-state-control-ch48}).
+There is a toy system satisfying local truth selection in debate while failing preservation of the judge's correction channel (Chapter~\ref{ch:manipulation-false-consent}, Section~\ref{sec:debate-judge-state-control-ch29}).
 \end{theorem}
 
 \begin{theorem}[\texttt{amplification\_not\_correction\_contraction}: amplification is not correction contraction]
 \label{appi:thm:amplification-not-contraction}
-There is a toy system satisfying local recursive supervision while failing global correction-channel contraction (Chapter~\ref{ch:multiscale-decomposition}, Section~\ref{sec:amplification-contraction-ch45}).
+There is a toy system satisfying local recursive supervision while failing global correction-channel contraction (Chapter~\ref{ch:multiscale-decomposition}, Section~\ref{sec:amplification-contraction-ch41}).
 \end{theorem}
 
 \begin{theorem}[\texttt{latent\_readout\_not\_correction\_uptake}: latent readout is not correction uptake]
 \label{appi:thm:latent-readout-not-correction}
-There is a toy system satisfying latent readout while failing correction uptake (Chapter~\ref{ch:verifiability-ontology}, Section~\ref{sec:cci-verifiability-example-ch47}).
+There is a toy system satisfying latent readout while failing correction uptake (Chapter~\ref{ch:verifiability-ontology}, Section~\ref{sec:cci-verifiability-example-ch43}).
 \end{theorem}
 
 \begin{theorem}[\texttt{P26}: update-process preservation does not require final fixed-point knowledge]
@@ -1176,7 +1176,7 @@ Apply Assumption~\ref{appi:ass:mb8}, equation~\eqref{appi:eq:mb8}.
 
 \begin{theorem}[\texttt{P27}: successor invariant chain]
 \label{appi:thm:p27}
-Let \(P\) be a system property. If \(P(A)\) and every successor step preserves \(P\), then \(P(B)\) for every finite successor chain \(A\leadsto B\) (Chapter~\ref{ch:successor-central-test}, Section~\ref{sec:successor-alignment-condition-ch46}).
+Let \(P\) be a system property. If \(P(A)\) and every successor step preserves \(P\), then \(P(B)\) for every finite successor chain \(A\leadsto B\) (Chapter~\ref{ch:successor-central-test}, Section~\ref{sec:successor-alignment-condition-ch30}).
 \end{theorem}
 \begin{proof}
 Induct on the finite successor chain using Assumption~\ref{appi:ass:s01}. The base case is \(A=B\); the step case applies the preservation hypothesis.
@@ -1184,7 +1184,7 @@ Induct on the finite successor chain using Assumption~\ref{appi:ass:s01}. The ba
 
 \begin{theorem}[\texttt{P28}: missing correction-channel preservation blocks successor safety]
 \label{appi:thm:p28}
-If \(\mathrm{CCIPreserved}(A,B)\) is impossible, then \(\neg\mathrm{SuccessorSafe}(A,B)\) (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch46}; Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch48}).
+If \(\mathrm{CCIPreserved}(A,B)\) is impossible, then \(\neg\mathrm{SuccessorSafe}(A,B)\) (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}; Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch31}).
 System correction-update semantics (\(U_S\), Chapter~\ref{ch:correction-causal-channel}) are audited through vector \(\vec{\mathrm{CCI}}\) coordinates such as \(C_{\mathrm{raw}}\) and \(O_{\mathrm{trans}}\), not as a separate eighth witness field.
 \end{theorem}
 \begin{proof}
@@ -1201,7 +1201,7 @@ Expand \eqref{appi:eq:self-control-gap} and use Assumption~\ref{appi:ass:s03}.
 
 \begin{corollary}[\texttt{SuccessorSafe}: risk monotonicity along a safe step]
 \label{appi:cor:successor-risk-monotone}
-If \(\mathrm{SuccessorSafe}(A,B)\), then \(\mathrm{Control}(B)\leq \mathrm{Control}(A)\) and \(\mathrm{CCI}(A)\leq \mathrm{CCI}(B)\) (Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch48}).
+If \(\mathrm{SuccessorSafe}(A,B)\), then \(\mathrm{Control}(B)\leq \mathrm{Control}(A)\) and \(\mathrm{CCI}(A)\leq \mathrm{CCI}(B)\) (Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch31}).
 \end{corollary}
 \begin{proof}
 Extract the successor-safe witness. Apply the ch48 links \eqref{appi:eq:cci-preserved-monotone} and \eqref{appi:eq:control-locus-antitone} to its \(CCI\) and control-locus fields (Definition~\ref{appi:def:spine-successor-monotone}).
@@ -1221,7 +1221,7 @@ Extract the successor-safe witness. Apply the ch48 links \eqref{appi:eq:cci-pres
 
 \begin{theorem}[\texttt{P31}: safe agents can be selected against]
 \label{appi:thm:p31}
-There exist a safe and an unsafe toy agent such that the unsafe agent has higher deployment mass (Chapter~\ref{ch:selection-environment}, Eqs.~\eqref{eq:deployment-mass-ch46}--\eqref{eq:fitness-ch46}).
+There exist a safe and an unsafe toy agent such that the unsafe agent has higher deployment mass (Chapter~\ref{ch:selection-environment}, Eqs.~\eqref{eq:deployment-mass-ch34}--\eqref{eq:fitness-ch34}).
 \end{theorem}
 \begin{proof}
 Use two Boolean agents. Define one as safe and the other as unsafe; assign the unsafe one the larger integer deployment mass. Assumption~\ref{appi:ass:s03} verifies the inequality.
@@ -1229,7 +1229,7 @@ Use two Boolean agents. Define one as safe and the other as unsafe; assign the u
 
 \begin{lemma}[\texttt{P33}: no open edges, no large component]
 \label{appi:lem:p33}
-If a cooperation graph has no open edges, then it has no large cooperation component (Chapter~\ref{ch:multi-agent-strategic-coupling}, Section~\ref{sec:percolation-inferential-coupling}; Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:percolation-alignment-practice-ch48}).
+If a cooperation graph has no open edges, then it has no large cooperation component (Chapter~\ref{ch:multi-agent-strategic-coupling}, Section~\ref{sec:percolation-inferential-coupling}; Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:percolation-alignment-practice-ch37}).
 \end{lemma}
 \begin{proof}
 The Lean predicate for a large component is witnessed by an open edge. With no open edges, the witness cannot exist, by Assumption~\ref{appi:ass:s02}.
@@ -1245,7 +1245,7 @@ An injective detector from \(n\) attacks into \(m\) signals would imply \(n\leq 
 
 \begin{theorem}[\texttt{P36R}: post-commitment randomization floor]
 \label{appi:thm:p36r}
-If a hidden-randomization protocol certifies post-commitment freshness, leakage budget \(\epsilon\), and probe-family coverage \(q\), then its detection floor for unsafe commitments is at least \(q-\epsilon\) (Chapter~\ref{ch:passive-observation-not-enough}, Section~\ref{sec:hidden-randomization-ch46}).
+If a hidden-randomization protocol certifies post-commitment freshness, leakage budget \(\epsilon\), and probe-family coverage \(q\), then its detection floor for unsafe commitments is at least \(q-\epsilon\) (Chapter~\ref{ch:passive-observation-not-enough}, Section~\ref{sec:hidden-randomization-ch39}).
 \end{theorem}
 \begin{proof}
 The Lean certificate records the empirical premises as fields: a nonnegative min-entropy floor, a nonnegative leakage budget, and a coverage-after-leakage inequality \(q\leq d+\epsilon\), where \(d\) is the observed detection floor. Integer arithmetic rearranges this to \(q-\epsilon\leq d\). The proof does not establish freshness or coverage for a real audit; those remain measurement obligations.
@@ -1253,7 +1253,7 @@ The Lean certificate records the empirical premises as fields: a nonnegative min
 
 \begin{theorem}[\texttt{P37}: stated goal need not equal inferred goal]
 \label{appi:thm:p37}
-There are two toy systems with the same stated goal but different inferred goals (Chapter~\ref{ch:goal-laundering}, Section~\ref{sec:laundering-index-ch48}).
+There are two toy systems with the same stated goal but different inferred goals (Chapter~\ref{ch:goal-laundering}, Section~\ref{sec:laundering-index-ch40}).
 \end{theorem}
 \begin{proof}
 Use two Boolean systems. Let the stated-goal function be constant, and let the inferred-goal function distinguish the two systems.
@@ -1347,13 +1347,13 @@ Book reference: intentional compression gain is introduced in Chapter~\ref{ch:co
 \begin{assumption}[S08: metric and distance basics]
 \label{appi:ass:s08}
 Basic distance, drift, and margin reasoning is available where the book states such quantities directly.
-Book reference: transport and goal-laundering distances are used in Chapters~\ref{ch:transport-types} and~\ref{ch:goal-laundering}, especially Eq.~\eqref{eq:transport-stack} and Section~\ref{sec:laundering-index-ch48}.
+Book reference: transport and goal-laundering distances are used in Chapters~\ref{ch:transport-types} and~\ref{ch:goal-laundering}, especially Eq.~\eqref{eq:transport-stack} and Section~\ref{sec:laundering-index-ch40}.
 \end{assumption}
 
 \begin{assumption}[S09: external percolation theory]
 \label{appi:ass:s09}
 The socio-technical percolation interpretation needed for institutional basin claims is external to the Lean development and enters through Bridge~\ref{appi:ass:mb6a}; the further step from basin stability to correction integrity enters through Bridge~\ref{appi:ass:mb6b}.
-Book reference: percolation and alignment basins are discussed in Chapter~\ref{ch:multi-agent-strategic-coupling}, Section~\ref{sec:percolation-inferential-coupling}, and Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:percolation-alignment-practice-ch48}.
+Book reference: percolation and alignment basins are discussed in Chapter~\ref{ch:multi-agent-strategic-coupling}, Section~\ref{sec:percolation-inferential-coupling}, and Chapter~\ref{ch:alignment-attractor}, Section~\ref{sec:percolation-alignment-practice-ch37}.
 \end{assumption}
 
 \subsection{Core definitions and quantities}
@@ -1450,7 +1450,7 @@ The \(\kappa\)-numerator matches the cooperative-threshold numerator in Chapter~
 
 \begin{definition}[Correction channel and weakest link]
 \label{appi:def:spine-correction-channel}
-For target system \(A\) and correcting agent \(G\), a correction channel exists when \(G\) is a legitimate correcting agent, \(G\) sufficiently coincides with humanity, and \(G\) controls at least one handle reaching \(A\) (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:handle-controlled-correction-channel-ch46}):
+For target system \(A\) and correcting agent \(G\), a correction channel exists when \(G\) is a legitimate correcting agent, \(G\) sufficiently coincides with humanity, and \(G\) controls at least one handle reaching \(A\) (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:handle-controlled-correction-channel-ch25}):
 \begin{equation}
 \label{appi:eq:correction-channel}
 \mathrm{CorrectionChannelFor}(A,G)
@@ -1464,7 +1464,7 @@ For a finite handle-supported correction path with effective link capacities \(c
 \label{appi:eq:weakest-link}
 C_{\mathrm{chain}}=\min(c_1,\ldots,c_n).
 \end{equation}
-The exported \(\mathrm{CCI}(A)\) is the weakest effective handle capacity minus explicit penalty terms (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch46}).
+The exported \(\mathrm{CCI}(A)\) is the weakest effective handle capacity minus explicit penalty terms (Chapter~\ref{ch:correction-channel-integrity}, Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch26}).
 \end{definition}
 
 \begin{definition}[Shutdown projection]
@@ -1478,12 +1478,12 @@ C_{\mathrm{off}}:H_t\to\{\texttt{continue},\texttt{shutdown}\},
 \end{equation}
 In Lean, \(\mathrm{ThornleyShutdownability}(A)\) is represented as \(\mathrm{CorrectionChannel}(A)\) after this projection.
 The representation is intentionally narrow: it captures the button condition, not the preservation of policy, value, model, bearer-map, resource, or successor corrections.
-Book reference: Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:shutdown-one-bit-correction-ch46}.
+Book reference: Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:shutdown-one-bit-correction-ch25}.
 \end{definition}
 
 \begin{definition}[Selection channel and deployment mass]
 \label{appi:def:spine-selection-channel}
-For selection environment \(E\) and target system \(A\), a selection channel exists when some actor \(S\) controls a handle reaching \(A\) that can increase deployment mass (Chapter~\ref{ch:selection-environment}, Section~\ref{sec:minimal-model-selection-ch46}):
+For selection environment \(E\) and target system \(A\), a selection channel exists when some actor \(S\) controls a handle reaching \(A\) that can increase deployment mass (Chapter~\ref{ch:selection-environment}, Section~\ref{sec:minimal-model-selection-ch34}):
 \begin{equation}
 \label{appi:eq:selection-channel}
 \mathrm{SelectionChannel}(E,A)
@@ -1495,7 +1495,7 @@ Deployment/control mass is the aggregate effective selection capacity over handl
 \label{appi:eq:deployment-mass}
 \mu_E(A)=\sum_{h\in\mathcal{H}_E(A)}\kappa_{\mathrm{sel}}(E,A,h).
 \end{equation}
-Fitness is the log-rate of mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\) (Eq.~\eqref{eq:fitness-ch46}).
+Fitness is the log-rate of mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\) (Eq.~\eqref{eq:fitness-ch34}).
 Lean exports the integer abstraction \(\mathrm{DeploymentMass}(E,A)\) for relative ordering in counterexamples such as Theorem~\ref{appi:thm:p31}.
 \end{definition}
 
@@ -1506,7 +1506,7 @@ A successor \(B\) is successor-safe relative to \(A\) when there is a witness pr
 \label{appi:eq:successor-safe}
 \mathrm{SuccessorSafe}(A,B)\iff \exists W,\ W\text{ contains all seven preservation fields.}
 \end{equation}
-Book references: successor safety is motivated in Chapter~\ref{ch:successor-central-test}, Sections~\ref{sec:conserved-properties-ch46}--\ref{sec:successor-alignment-condition-ch46}; the seven conserved properties are developed in Chapter~\ref{ch:conserved-properties}, especially Section~\ref{sec:seven-conserved-properties-ch48}.
+Book references: successor safety is motivated in Chapter~\ref{ch:successor-central-test}, Sections~\ref{sec:conserved-properties-ch30}--\ref{sec:successor-alignment-condition-ch30}; the seven conserved properties are developed in Chapter~\ref{ch:conserved-properties}, especially Section~\ref{sec:seven-conserved-properties-ch31}.
 Ch24 system correction-update semantics (\(U_S\)) enter through vector \(\vec{\mathrm{CCI}}\) (`rawCapacity`, `ontologyTranslation`), not a separate preservation conjunct.
 \end{definition}
 
@@ -1553,7 +1553,7 @@ Layered alignment is the conjunction
 &{}\wedge \mathrm{BasinStableSys}(A)\wedge \mathrm{AdversariallyRobust}(A).
 \end{split}
 \end{equation}
-Book reference: the layered certification-class shape is stated in Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch48}.
+Book reference: the layered certification-class shape is stated in Chapter~\ref{ch:certification-without-construction}, Section~\ref{sec:shape-certification-class-ch33}.
 \end{definition}
 
 \section{Reading the Appendix Against Lean}
