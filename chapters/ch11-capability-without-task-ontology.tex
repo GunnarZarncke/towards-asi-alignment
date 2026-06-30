@@ -313,6 +313,27 @@ This is one reason the alignment target cannot be ``the model'' alone.
 A model's weights are only one part of the capability envelope.
 Interfaces, tools, memory, permissions, users, and organizational routines can dominate.
 
+\section{Trace-Derived Control Appearance Bounds}
+\label{sec:trace-output-attended-harm}
+
+Section~\ref{sec:physical-envelopes} bounds \(I_{\mathrm{ctrl}}^X\) by actuator capacity when the blanket is known.
+Deployment audits often have less: a supplied partition, a finite trace, and an \(m\)-row subsample.
+The conservative question is how large control information (Eqs.~\eqref{eq:ctrl-info-obs}--\eqref{eq:ctrl-info-int}) can \emph{appear} from that window when the blanket is taken as input rather than recovered from telemetry.
+
+Lean currently proves a deterministic appearance ceiling rather than a concentration theorem:
+\begin{equation}
+\widehat I_{\mathrm{ctrl}}(m)
+\le
+|A|\cdot|E|\cdot \log_2\!\bigl(\min(m,|{\mathcal A}|^2)\bigr),
+\label{eq:trace-ctrl-appearance}
+\end{equation}
+where \(\widehat I_{\mathrm{ctrl}}(m)\) is the trace-estimated control term and \(|{\mathcal A}|\) is the discrete alphabet size used by the estimator (Appendix~\ref{app:lean-proof-spine}, \S\ref{appi:sec:trace-attended-harm}).
+The product \(|A|\cdot|E|\) and the \(\min(m,|{\mathcal A}|^2)\) term come from a combinatorial spurious-\(\MI\) clip on lagged pairs; the bound is intentionally loose but sound.
+
+\leanspine{proof}{subsample\_output\_capability\_le\_control\_optimism}{An \(m\)-row subsample cannot make \(\widehat I_{\mathrm{ctrl}}\) exceed the control optimism ceiling.}
+
+Attention weights, per-channel harm, extinction thresholds, and the concentration-bridge upgrade are defined and proved in the same appendix section; they multiply or certify this output bound rather than replacing it.
+
 \section{Competence and Timescale}
 \label{sec:competence-timescale}
 

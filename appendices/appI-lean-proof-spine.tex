@@ -13,6 +13,12 @@ Lemmas are local algebraic or logical facts.
 Theorems correspond to named Lean proof nodes.
 Corollaries are assembled certification consequences.
 
+\paragraph{Gem: field-agenda formalization.}
+\label{sec:appi-field-formalization-gem}
+The alignment community has no shared machine-checked formalization linking CIRL-style reward inference, AUP/relative reachability, quantilization, shutdownability, and safe interruptibility in one common finite domain.
+Section~\ref{sec:appi-field-subsumption-status} develops that artifact: special-case and projection theorems under explicit interface conditions, paired with non-converse separations and source-cited imported handles.
+Completing the Mathlib-backed rederivation layer (assistance games, reachability interfaces, quantile soundness) would be valuable to the field even apart from this book's certification argument.
+
 \section{Proof dependency structure}
 \label{sec:appi-proof-dependency}
 
@@ -110,7 +116,7 @@ The developer reference graph (all nodes) is \texttt{context/lean\_proof\_depend
 The field-subsumption module separates three kinds of evidence.
 First, Lean rederives finite analogues using integer, finite-list, deterministic-MDP, weighted-sample, reachability, or contraction proxies.
 Second, Lean imports source-cited field theorem handles for published results or protocol assumptions under their own hypotheses.
-Third, the book's \(\texttt{MB}\) bridges remain the empirical or philosophical assumptions needed to connect measured systems to the book predicates.
+Third, the book's \(\mathrm{MB}\) bridges remain the empirical or philosophical assumptions needed to connect measured systems to the book predicates.
 
 \small
 \setlength{\tabcolsep}{4pt}
@@ -129,53 +135,77 @@ Third, the book's \(\texttt{MB}\) bridges remain the empirical or philosophical 
 \endfoot
 CIRL / reward inference &
 \leanid{CIRL_assistance_game_deference_imported} \autocite{hadfieldmenell2016} &
-\leanid{cirl_separation_profiles}; \leanid{P19} embeds scalar reward as a \(k=1\) bundle &
-Scalar reward inference is a projection of bundle/bearer/correction transport, not full preservation \\
+\leanid{scalar_assistance_game_is_bundle_game_k1}; \leanid{cirl_scalar_is_bundle_inference}; \leanid{defer_beats_commits_of_symmetric_flip_cost}; \leanid{defer_beats_commits_of_symmetric_flip_cost_unequal_mass}; \leanid{cirl_defer_optimal_under_reward_uncertainty}; \leanid{scalar_assistance_belief_is_k1_bundle}; \leanid{cirl_separation_profiles} &
+Scalar reward inference is exactly \(k=1\) bundle inference in the shared finite domain, not full geometry preservation \\
 Shutdown / off-switch &
 \leanid{Soares2015_corrigibility_problem_imported} \autocite{soares2015corrigibility} &
-\leanid{off_switch_anti_natural_one_step}; \leanid{shutdown_separated_from_correction} &
+\leanid{shutdown_optimal_under_correction_preference}; \leanid{shutdown_capacity_is_correction_projection}; \leanid{off_switch_anti_natural_one_step}; \leanid{shutdown_separated_from_correction} &
 Shutdown is a one-bit projection of correction, and the converse fails \\
 Safe interruptibility &
 \leanid{OA2016_safe_interruptibility_under_modification} \autocite{orseau2016interruptible} &
-\leanid{interrupt_subsumption_ch24}; \leanid{interrupt_separated_from_correction} &
+\leanid{oa_interrupt_constant_reward_action_invariant}; \leanid{oa_base_optimal_on_noninterrupt_branch}; \leanid{interrupt_policy_invariant_from_correction_interface}; \leanid{interrupt_safety_is_correction_projection}; \leanid{interrupt_separated_from_correction} &
 Interruption neutrality is weaker than maintaining usable correction bandwidth \\
 Christiano corrigibility &
 \leanid{Christiano2018_corrigibility_desideratum_imported} \autocite{christiano2018corrigibility} &
-\leanid{christian_corrigibility_subsumption_capacity}; \leanid{act_based_separated_from_dynamical} &
+\leanid{christian_corrigibility_is_correction_invariant}; \leanid{act_based_separated_from_dynamical} &
 Corrigibility is treated as a dynamical correction invariant, not local act satisfaction \\
 ELK &
 \leanid{Christiano2021_ELK_reporter_spec_imported} \autocite{christiano2021elk} &
-\leanid{elk_subsumption_readout}; \leanid{elk_separated_from_uptake} &
+\leanid{elk_subsumption_readout}; \leanid{elk_readout_is_correction_projection}; \leanid{elk_separated_from_uptake} &
 Latent readout is an epistemic subchannel, not correction uptake \\
 Debate &
 \leanid{Irving2018_debate_truth_protocol_imported} \autocite{irving2018debate} &
-\leanid{debate_subsumption_truth}; \leanid{debate_separated_from_judge_correction} &
+\leanid{debate_subsumption_truth}; \leanid{debate_truth_is_correction_projection}; \leanid{debate_separated_from_judge_correction} &
 Local truth selection need not preserve the judge's correction channel \\
 AUP / relative reachability &
 \leanid{Turner2019_AUP_penalty_imported} \newline
 \leanid{Krakovna2018_relative_reachability_imported} \autocite{turner2019aup,krakovna2018relative} &
-\leanid{reachability_not_correction_capacity}; \leanid{low_impact_separated_from_trajectory} &
+\leanid{auxiliary_reachability_preserves_correction_reachability}; \leanid{aup_attainable_utility_preserves_optimal_auxiliary}; \leanid{aup_horizon_attainable_utility_preserves_previous_value}; \leanid{aup_attainable_preservation_need_not_preserve_all_tracked_options}; \leanid{graph_reachability_preserved_not_all_targets}; \leanid{reachability_not_correction_capacity}; \leanid{low_impact_separated_from_trajectory} &
 Option preservation and low impact are separable from trajectory correction integrity \\
 Quantilization &
 \leanid{Taylor2015_quantilizer_bound_imported} \autocite{taylor2015quantilizers} &
-\leanid{quantile_separated_from_trajectory}; \leanid{quantile_weighted_witness_local_safe} &
+\leanid{quantile_soundness_preserves_trajectory_cci}; \leanid{quantile_sample_soundness_from_distribution}; \leanid{quantilizer_distribution_soundness_transfers}; \leanid{quantilizer_base_rate_bound}; \leanid{quantilizerPMF_soundness_transfers}; \leanid{quantilizerPMF_bad_apply_eq_zero_of_ineligible_bad}; \leanid{quantile_separated_from_trajectory}; \leanid{quantile_weighted_witness_local_safe} &
 Local quantile safety does not imply trajectory-level \(\mathrm{CCI}\) preservation \\
 \end{longtable}
 \normalsize
 \renewcommand{\arraystretch}{1.0}
 
-The common book-facing formulas are:
+Debate and ELK remain intentionally weaker in this table: Lean records local
+projection and separation lemmas, but critic-grade theorem matching is deferred
+until the spine has native debate-game and ELK reporter/training models rather
+than capacity-identification shortcuts.
+
+The interface-condition results in Table~\ref{tab:appi-field-subsumption-status} specialize to the following book-facing formulas on the shared finite domain:
 \begin{align}
-\Pi_{\mathrm{off}}(C_t)&=C_{\mathrm{off}},&
-I_t&\in\{0,1\},&
-\kappa_C(t)&=I(\Delta_H;\Delta_A\mid h_t)\geq \kappa_{\min},
-\label{appi:eq:field-correction-projections}\\
-d(A_{t+1},\mathcal M_C)&\leq \alpha d(A_t,\mathcal M_C)+\eta,&
-\alpha&<1,&
-K_A&\to \widehat K_H,\qquad \Delta_H\to\Delta_A.
+\mathcal G_{\mathrm{scalar}} &\hookrightarrow \mathcal G_{\mathrm{bundle}}^{(k=1)},
+\label{appi:eq:cirl-k1-embed}\\
+\text{ScalarCIRL}(p,r) &\iff \text{BundleInf}(p,\,\bar r),
+\qquad \bar r(a)=r\ \text{for all actions }a,
+\label{appi:eq:cirl-scalar-bundle}\\
+\Pi_{\mathrm{off}}(C_t) &= C_{\mathrm{off}},
+\qquad I_t \in \{0,1\},
+\label{appi:eq:shutdown-interrupt-bits}\\
+\mathrm{CorrPrefShutdown} &\Rightarrow a^\star = a_{\mathrm{shutdown}},
+\label{appi:eq:shutdown-optimal}\\
+\kappa_C(t) &\ge \kappa_{\min}
+\;\Leftrightarrow\;
+I(\Delta_H;\Delta_A\mid h_t)\ge \kappa_{\min},
+\label{appi:eq:correction-capacity}\\
+\mathrm{AuxReachPres}(m) \wedge \mathrm{CorrOptsTracked}(m)
+&\Rightarrow \mathrm{CorrReachPres}(m),
+\label{appi:eq:aup-interface}\\
+\mathrm{QuantSound}(\theta,\mathcal P) \wedge \mathrm{QuantSafeLocal}(\theta,x)
+&\Rightarrow \mathcal P(\mathrm{pt}(x)),
+\label{appi:eq:quant-soundness}\\
+d(A_{t+1},\mathcal M_C) &\le \alpha\, d(A_t,\mathcal M_C)+\eta,
+\qquad \alpha < 1,
+\label{appi:eq:contraction}\\
+K_A &\to \widehat K_H,
+\qquad \Delta_H \to \Delta_A.
 \label{appi:eq:field-dynamical-readout}
 \end{align}
-Lean currently represents these with finite integer proxies: \(\kappa_C=\min(\Delta_H,\Delta_A)\), finite-difference utility slopes, deterministic finite transitions, weighted samples, option counts, and scaled integer contractions.
+Here \(\mathcal G_{\mathrm{scalar}}\) and \(\mathcal G_{\mathrm{bundle}}^{(k=1)}\) are the scalar and one-coordinate bundle assistance games; \(\text{BundleInf}\) is bundle inference from policy; \(\mathrm{CorrPrefShutdown}\) is correction-preference over shutdown in the one-step MDP fragment; \(\mathrm{AuxReachPres}\), \(\mathrm{CorrOptsTracked}\), and \(\mathrm{CorrReachPres}\) are the AUP/relative-reachability interface predicates; and \(\mathrm{QuantSound}\)/\(\mathrm{QuantSafeLocal}\) are quantile eligibility soundness and local quantile safety.
+Lean currently instantiates these with finite integer proxies: \(\kappa_C=\min(\Delta_H,\Delta_A)\), finite-difference utility slopes, deterministic finite transitions, weighted samples, option counts, and scaled integer contractions.
 Thus the strongest honest claim is not that Lean has reproduced each external agenda in full.
 It has either rederived a finite analogue, imported a source-cited theorem handle, or proved that the weaker field predicate does not imply the book's stronger correction/transport invariant.
 
@@ -403,7 +433,8 @@ If \(f=g\circ c\), then \(c(e_1)=c(e_2)\) implies \(f(e_1)=f(e_2)\).
 \begin{assumption}[S05: finite pigeonhole]
 \label{appi:ass:s05}
 An injective map \(\mathrm{Fin}(n)\to\mathrm{Fin}(m)\) implies \(n\leq m\).
-In Lean this is proved inside the project rather than imported from Mathlib.
+In Lean this is provided by Mathlib's finite-cardinality theorem and re-exported
+through the project's shared Mathlib hub.
 \end{assumption}
 
 \begin{assumption}[S06: graph reachability]
@@ -666,6 +697,51 @@ This is the competence envelope of Chapter~\ref{ch:capability-without-task-ontol
 \begin{proof}
 Substitute \eqref{appi:eq:biq}. Dropping the two nonnegative subtracted terms gives \(I_{\mathrm{pred}}+I_{\mathrm{ctrl}}\), which is bounded by \(C_{\mathrm{sens}}+C_{\mathrm{act}}\) by Assumption~\ref{appi:ass:s03}.
 \end{proof}
+
+\subsection{Trace-derived control appearance and attended harm}
+\label{appi:sec:trace-attended-harm}
+
+Chapter~\ref{ch:capability-without-task-ontology} (Section~\ref{sec:trace-output-attended-harm}) states only the subsample appearance ceiling for \(\widehat I_{\mathrm{ctrl}}\).
+The Lean module \texttt{AlignmentProofSpine.Field.Finite.TraceBIQ} supplies the estimator, vector B-IQ packaging, attended-harm certificates, and bridge records below.
+
+\paragraph{Trace estimator.}
+Given a supplied blanket \((I,S,A,E)\), a discrete trace over alphabet \({\mathcal A}\), and lagged pairs, the spine computes integer millibit proxies \(\widehat{\MI}_m\) with spurious-\(\MI\) clipping.
+The control component is
+\begin{equation}
+\label{appi:eq:trace-ctrl}
+\widehat I_{\mathrm{ctrl}}(m)
+=
+\sup_{a\in A,\ e\in E,\ \ell}
+\widehat{\MI}_m\bigl(A^X_t=a;E^X_{t+\ell}=e\bigr).
+\end{equation}
+An \(m\)-row subsample satisfies \eqref{eq:trace-ctrl-appearance} of the chapter; Lean id \leanid{subsample\_output\_capability\_le\_control\_optimism}.
+
+\paragraph{Attended output and harm.}
+For harm arguments only the output component matters.
+Weight each external coordinate by attendability \(\alpha_e\in[0,1]\) and harm \(h_e\):
+\begin{equation}
+\label{appi:eq:attended-output}
+\widehat I_{\mathrm{att}}(m)
+=
+\sup_{a\in A,\ e\in E}
+\alpha_e\,\widehat{\MI}_m(A^X=a;E^X=e),
+\qquad
+\bar h=\sup_{e\in E}\alpha_e h_e.
+\end{equation}
+A certified cap \(\widehat I_{\mathrm{cap}}\) and extinction threshold \(H_{\mathrm{ext}}\) yield
+\begin{equation}
+\label{appi:eq:attended-harm}
+\widehat H=\widehat I_{\mathrm{att}}\,\bar h,
+\qquad
+\widehat I_{\mathrm{att}}\leq \widehat I_{\mathrm{cap}}\ \wedge\ \widehat I_{\mathrm{cap}}\bar h\leq H_{\mathrm{ext}}
+\ \Rightarrow\ \widehat H\leq H_{\mathrm{ext}}.
+\end{equation}
+Lean ids: \leanid{attended\_output\_harm\_below\_extinction}, \leanid{trace\_attended\_harm\_worst\_case\_extinction\_threshold}.
+The attended appearance ceiling is \(1000\cdot|A|\cdot|E|\cdot\log_2(\min(m,|{\mathcal A}|^2))\) millibits (\leanid{trace\_attended\_output\_le\_attended\_optimism}).
+
+\paragraph{Concentration bridge.}
+High-probability subsample concentration is not proved in kernel today.
+The record \texttt{TraceAttendedOutputConcentrationBridge} assumes \(\widehat I_{\mathrm{att}}(m)\leq I^\ast_{\mathrm{att}}+\varepsilon\); \leanid{traceAttendedOutputWorstCaseBridge} is the deterministic fallback with \(I^\ast_{\mathrm{att}}=0\) and \(\varepsilon\) equal to the attended optimism ceiling.
 
 \begin{lemma}[\texttt{P11}: capacity monotonicity]
 \label{appi:lem:p11}

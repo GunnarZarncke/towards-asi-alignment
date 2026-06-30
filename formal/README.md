@@ -67,7 +67,7 @@ Inspect what a theorem ultimately rests on (proofs vs. bridges):
 cd formal
 echo 'import AlignmentProofSpine
 open AlignmentProofSpine
-#print axioms certified_class_safety_from_bridges' > /tmp/chk.lean
+#print axioms certified_class_safety_from_bridge_record' > /tmp/chk.lean
 LEAN_PATH=.lake/build/lib/lean lean --root=. /tmp/chk.lean
 ```
 
@@ -75,10 +75,16 @@ LEAN_PATH=.lake/build/lib/lean lean --root=. /tmp/chk.lean
 `propext` / `Quot.sound` (or abstract carriers). `risk_bound_from_cci_slack`
 is the narrow arithmetic leaf deriving `Risk A ≤ δ` from
 `Control A ≤ CCI A + δ` via `P13` (no bare `hrisk` hypothesis).
+`NumericRiskLeaf` records whether that scalar leaf came directly, from vector CCI
+support, from a BIQ-derived slack certificate, or from a Markov-blanket/B-IQ
+profile.
 `certified_class_safety_spine_derived` packages that risk leaf together with
 `Certified`, `SatisfiesInvariants`, and `LayeredAlignedDef` into a
 `CertifiedSafetyCase`, so the non-arithmetic evidence is no longer advertised
 as proving the numeric inequality.
+`certified_class_safety_from_bridge_record` takes an explicit
+`BridgeAssumptions` record; `certified_class_safety_from_spine_and_bridges` is
+the corollary obtained from `standardBridges`.
 The bridge path now splits socio-technical selection into `MB6a`/`MB6b`
 (percolation evidence → basin stability → correction integrity) and adversarial
 measurement into `MB7a`–`MB7d`, with `MB7d` covering inferential-UAD detector validity.
@@ -99,16 +105,16 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, grounding predicates and `conservative_abstraction_no_silent_gap`, MDL/graph scaffolding, bridges `MB1`–`MB9` with split `MB6a`/`MB6b`, `MB7a`–`MB7d`, and grounding bridge `MB9`, `BridgeAssumptions` | foundations |
 | `AlignmentProofSpine/Mathlib.lean` | shared Mathlib lemmas (e.g. finite-cardinality pigeonhole for `P34`) | foundations |
 | `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, CID abstraction-relative incentive separation, smoothing-margin arithmetic | 6–7, 10, 36 |
-| `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
+| `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, Markov-blanket/B-IQ profiles, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
 | `AlignmentProofSpine/CooperationGraph.lean` | **`UADDiscoveryAudit`**, **`UnitScore`**, **`MetaPriorEvidence`**, `metaPriorMismatch` derived from `P_meta` diagonal mass, **`InferentialDetectionCertificate`**, **`DerivedCoopGraph`**, **`DerivedInferentialGraph`**, `causalMutualModelOf` / `inferentialProfileOf` / `inferentialPairOf` (opaque evidence emitters), `inferentialCouplingScore`, `auditMutualModelWithInferential`, `uad_audit_yields_inferential_graph`, `severed_causal_reach_positive_effective_reach`, **`P33`** | 13, 33, 35 |
 | `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), scalar CIRL as one-dimensional bundle inference, cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23 (including 19b), 28 |
 | `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 24–27 (including 25b), 38–39b |
-| `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared-domain special-case / projection theorems with explicit interface conditions, non-converse separations, shared status ledger, finite Mathlib-backed helpers (`Finite/MDP`, `Finite/Probability`, `Finite/Weights`, `Finite/Reachability`, `Finite/Contraction`), cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization. Recent Mathlib derivations include assistance-belief defer optimality, AUP attainable-utility preservation, and quantilizer distribution soundness. Debate/ELK remain later targets for native protocol/reporter theorem matching. | crosswalk appendix |
+| `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared-domain special-case / projection theorems with explicit interface conditions, non-converse separations, shared status ledger, finite Mathlib-backed helpers (`Finite/MDP`, `Finite/Probability`, `Finite/PMF`, `Finite/Weights`, `Finite/Reachability`, `Finite/Contraction`, `Finite/TraceBIQ`), cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization. Recent finite derivations include assistance-belief defer optimality, finite-horizon AUP attainable-utility preservation, PMF quantilizer support soundness, quantilizer base-rate fragments, trace-computed vector B-IQ / output-capability appearance bounds, attended-harm / extinction certificates, and a concentration bridge with worst-case fallback for supplied blanket partitions. Debate/ELK remain later targets for native protocol/reporter theorem matching. | crosswalk appendix |
 | `AlignmentProofSpine/FieldSubsumptions.lean` | compatibility re-export for the field-agenda headline theorem names | crosswalk appendix |
-| `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, risk bound propagation | 28–31 |
+| `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, **`SuccessorMeasurandChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
-| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, `P40`, grounding required by `LayeredAlignedDef`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 35 (including 35b), 39, 44 |
+| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, finite-support `P40`, direct/bridge-derived layer evidence records, grounding required by `LayeredAlignedDef`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_from_bridge_record`** and **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 35 (including 35b), 39, 44 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
 
 ## Three kinds of result (for the book)

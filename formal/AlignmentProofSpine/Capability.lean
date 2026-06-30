@@ -26,6 +26,40 @@ theorem P10_biq_upper_bound
     BIQ Ipred Ictrl Hmem Surprise beta gamma ≤ Csens + Cact := by
   unfold BIQ; omega
 
+/-- Integer Markov-blanket/B-IQ profile: predictive and control information are
+    bounded by sensory/action channel capacities, while memory/surprise penalties
+    are nonnegative. This keeps the BIQ-paper arithmetic separate from the
+    empirical bridge that a deployed system's measured blanket satisfies it. -/
+structure MarkovBlanketBIQProfile where
+  predictiveInfo : Int
+  controlInfo : Int
+  memoryEntropy : Int
+  surprise : Int
+  beta : Int
+  gamma : Int
+  sensoryCapacity : Int
+  actionCapacity : Int
+  predictive_le_sensory : predictiveInfo ≤ sensoryCapacity
+  control_le_action : controlInfo ≤ actionCapacity
+  memory_penalty_nonneg : 0 ≤ beta * memoryEntropy
+  surprise_penalty_nonneg : 0 ≤ gamma * surprise
+
+def MarkovBlanketBIQProfile.biq (p : MarkovBlanketBIQProfile) : Int :=
+  BIQ p.predictiveInfo p.controlInfo p.memoryEntropy p.surprise p.beta p.gamma
+
+theorem MarkovBlanketBIQProfile.biq_le_capacity_sum
+    (p : MarkovBlanketBIQProfile) :
+    p.biq ≤ p.sensoryCapacity + p.actionCapacity :=
+  P10_biq_upper_bound p.predictiveInfo p.controlInfo p.memoryEntropy p.surprise
+    p.sensoryCapacity p.actionCapacity p.beta p.gamma
+    p.predictive_le_sensory p.control_le_action
+    p.memory_penalty_nonneg p.surprise_penalty_nonneg
+
+theorem MarkovBlanketBIQProfile.control_le_action_capacity
+    (p : MarkovBlanketBIQProfile) :
+    p.controlInfo ≤ p.actionCapacity :=
+  p.control_le_action
+
 axiom IpredSys : System → Int
 axiom IctrlSys : System → Int
 axiom HmemSys : System → Int
@@ -203,6 +237,32 @@ theorem risk_le_delta_of_witness
 
 structure BIQDerivedCCISlack (A : System) (δ : Int) where
   cact_le_cci : CactSys A ≤ CCI A + δ
+
+/-- A Markov-blanket/B-IQ derivation of the numeric `Control ≤ CCI + δ` leaf.
+    The profile supplies the B-IQ channel arithmetic; the final field says the
+    action channel is below the correction-capacity slack. -/
+structure MarkovBlanketBIQDerivedCCISlack (A : System) (δ : Int) where
+  profile : MarkovBlanketBIQProfile
+  control_eq_profile : Control A = profile.controlInfo
+  cact_eq_profile : CactSys A = profile.actionCapacity
+  action_capacity_le_cci : profile.actionCapacity ≤ CCI A + δ
+
+def MarkovBlanketBIQDerivedCCISlack.toBIQDerivedCCISlack
+    {A : System} {δ : Int} (h : MarkovBlanketBIQDerivedCCISlack A δ) :
+    BIQDerivedCCISlack A δ where
+  cact_le_cci := by
+    rw [h.cact_eq_profile]
+    exact h.action_capacity_le_cci
+
+theorem control_le_cci_from_markov_blanket_biq
+    {A : System} {δ : Int}
+    (h : MarkovBlanketBIQDerivedCCISlack A δ) :
+    Control A ≤ CCI A + δ := by
+  have hctrlProfile : Control A ≤ h.profile.actionCapacity := by
+    rw [h.control_eq_profile]
+    exact h.profile.control_le_action
+  have hcap : h.profile.actionCapacity ≤ CCI A + δ := h.action_capacity_le_cci
+  omega
 
 theorem control_le_correction_from_biq_ceiling
     {A : System} {δ : Int}

@@ -7,6 +7,7 @@ import AlignmentProofSpine.Field.Finite.Contraction
 import AlignmentProofSpine.Field.Finite.Probability
 import AlignmentProofSpine.Field.Finite.Interruptibility
 import AlignmentProofSpine.Field.Finite.PMF
+import AlignmentProofSpine.Field.Finite.TraceBIQ
 import AlignmentProofSpine.Field.Imported
 import AlignmentProofSpine.Field.CIRL
 import AlignmentProofSpine.Field.Shutdown
