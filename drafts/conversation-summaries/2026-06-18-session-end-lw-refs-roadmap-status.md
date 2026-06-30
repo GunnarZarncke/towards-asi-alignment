@@ -14,7 +14,7 @@ User added `context/lw-references.md` to source-map reference instructions; remo
 ## Decisions
 - Roadmap removed from PDF because status table was stale; `metadata/book.yml` is source of truth for chapter status.
 - `lw-references.md` is human-edited curation, not auto-imported by `import_source_map_refs.py`.
-- Session commit excludes unrelated edits in `ch40-lethality-stress-test-open-issues.tex` and `2026-06-17-ch03-dynamical-guarantee-draft.md`.
+- Session commit excludes unrelated edits in `ch48-lethality-stress-test-open-issues.tex` and `2026-06-17-ch03-dynamical-guarantee-draft.md`.
 
 ## Open / next
 - Wire `\autocite` keys from `lw-references.md` into drafted chapters as citations are added.

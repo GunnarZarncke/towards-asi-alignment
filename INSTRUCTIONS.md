@@ -12,7 +12,7 @@
 | Symbol index (generated) and §C reconciliation | `metadata/notation.md` → Notation Index appendix |
 | Assumptions index (generated) | `metadata/assumptions-ledger.md` → Assumptions Index appendix |
 | Operational terms | `metadata/terminology.md` → Glossary appendix |
-| Bridges ↔ field cruxes crosswalk | `appendices/appBridge-crosswalk.tex` |
+| Bridges ↔ field cruxes crosswalk | `appendices/appB-bridge-crosswalk.tex` |
 | Source PDFs, TeX paths, extracts | `metadata/source-canon.md` |
 | Continuity and deduplication plans | `review/fix-plans-2026-06-22.md` |
 | Lean predicates and bridges | `formal/README.md`, Lean Proof Spine appendix |
@@ -45,7 +45,7 @@ The book must be self-contained. It must not assume the reader already knows the
 \text{socio-technical attractor control}.
 \]
 
-Do not let external doom arguments (Yudkowsky-style lethalities, Turchin-style failure maps, or general AGI catastrophe taxonomies) become a second organizing ontology. Use them only as adversarial checklists or coverage audits late in the manuscript (especially Chapter 40).
+Do not let external doom arguments (Yudkowsky-style lethalities, Turchin-style failure maps, or general AGI catastrophe taxonomies) become a second organizing ontology. Use them only as adversarial checklists or coverage audits late in the manuscript (especially Chapter 44).
 
 The book must explain the thesis at three levels:
 
@@ -140,8 +140,8 @@ These rules are fixed; do not re-open them when drafting:
 
 * No separate chapters for AI–AI war, blackmail-only chapters, paternalism-only chapters, or general bug/virus taxonomies as book structure.
 * Turchin-style failure maps: **coverage audit in Chapter 5 only**, not a second ontology.
-* Yudkowsky lethalities: **stress-test checklist in Chapter 40 only**.
-* Cooperation, privacy, opacity, and percolation: **subsections of Chapter 33**, not standalone chapters.
+* Yudkowsky lethalities: **stress-test checklist in Chapter 44 only**.
+* Cooperation, privacy, opacity, and percolation: **subsections of Chapter 35**, not standalone chapters.
 * Former standalone topics deferred to `drafts/chapter-notes/*-deferred.tex` (reference only).
 
 When a formal object is re-used in a later chapter, follow `review/fix-plans-2026-06-22.md` §A: one **home** chapter with full definition and `\label`; elsewhere use **reminder**, **simple-reference**, or **elide**—do not re-derive.
@@ -160,7 +160,7 @@ When a formal object is re-used in a later chapter, follow `review/fix-plans-202
 
 Edit `metadata/assumptions-ledger.md` only; run `./build.sh` to refresh the Assumptions Index appendix. Edit `metadata/notation.md` only for the Notation Index appendix.
 
-**Capability** is \(K\); **value bundle** is \(B\). **Correction capacity** is \(C_{\text{raw}}\); **correction-channel integrity** is \(\mathrm{CCI}\)—never interchange them. **Fitness** is handle-based deployment mass in Chapter 32, not revenue or benchmark score as primitive terms.
+**Capability** is \(K\); **value bundle** is \(B\). **Correction capacity** is \(C_{\text{raw}}\); **correction-channel integrity** is \(\mathrm{CCI}\)—never interchange them. **Fitness** is handle-based deployment mass in Chapter 34, not revenue or benchmark score as primitive terms.
 
 Calibrate manuscript claims to Lean status: **proof**, **counterexample**, or **bridge** (`AGENTS.md`). Do not write that Lean proves ASI alignment.
 
@@ -293,3 +293,23 @@ Status and remaining gaps: `metadata/book.yml`, `metadata/TODO.md`, `README.md`.
 3. **Adversarial** — strongest objections, duplicate derivations, glossary/notation drift, claim strength vs evidence.
 
 Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continuity review.
+
+---
+
+## 14. Chapter and appendix numbering
+
+**Canonical rule:** filename prefix, `metadata/book.yml` key, generated roadmap table column, and printed `\chapter{…}` number all match **manuscript order** (1–48 for chapters; A–G for built appendices).
+
+| Layer | Convention | Example |
+|-------|------------|---------|
+| **Chapter files** | `chapters/chNN-<slug>.tex` with `NN` = print order (`ch01`–`ch09`, then `ch10`–`ch48`) | `ch20-measuring-stress-testing-bundle-geometry.tex` is Chapter 20 |
+| **`book.yml` keys** | Same `chNN` as filename (no `b` suffixes) | `ch20:` entry for the bundle-measurement split chapter |
+| **Generated tables** | `scripts/generate_tables.py` uses `entry.order` (1–48), not the YAML key parse | `tables/chapter-map.tex` shows `20`, not `19b` |
+| **Semantic labels** | `\label{ch:<slug>}` stays slug-based; do not renumber when `chNN` changes | `\label{ch:correction-channel-integrity}` |
+| **Section labels** | Prefer `-chNN` suffix matching the hosting file's print number | `\label{sec:certificate-under-pressure-ch27}` in ch27 |
+| **Built appendices** | `appendices/app<Letter>-<slug>.tex` matches PDF letter in `book.tex` include order | `appB-bridge-crosswalk.tex` → Appendix B |
+| **Stub appendices** | Letters H–L reserved for not-yet-included appendices | `appH-boundary-worked-example.tex` |
+
+**Include order (appendices in `book.tex`):** A Notation → B Bridge crosswalk → C Institutional translation → D Worked example → E Glossary → F Research program → G Lean proof spine.
+
+When adding a chapter, extend `metadata/book.yml`, the relevant `parts/part*.tex`, and regenerate tables (`python3 scripts/generate_tables.py` or `./build.sh`). Do not reintroduce `b`-suffix file ids.

@@ -28,7 +28,7 @@ User asked to try the CIRL-style object-level special-case treatment for the oth
 - Regenerated Lean proof graph PNGs.
 
 ## Decisions
-- Kept older theorem names such as `interrupt_subsumption_ch24` and `elk_subsumption_readout` as compatibility wrappers.
+- Kept older theorem names such as `interrupt_subsumption_ch46` and `elk_subsumption_readout` as compatibility wrappers.
 - Did not claim full external theorem subsumption. The new results are shared finite/formula-domain projections or special cases, paired with existing non-converse separations.
 - Quantilization remains limited: the new theorem shows the local score-projection fragment (`TrajectoryCCIPreserved` supplies quantile eligibility when score is next-step correction capacity), not the full probabilistic quantilizer theorem.
 
@@ -39,7 +39,7 @@ User asked to try the CIRL-style object-level special-case treatment for the oth
 ## Key paths
 - `formal/AlignmentProofSpine/Correction.lean`
 - `formal/AlignmentProofSpine/Field/*.lean`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `formal/README.md`
 - `context/lean_proof_graphs/03-correction-successors.dot`
 - `context/lean_proof_graphs/05-field-subsumptions.dot`

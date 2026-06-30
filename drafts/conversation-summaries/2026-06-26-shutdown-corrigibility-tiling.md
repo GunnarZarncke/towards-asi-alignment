@@ -8,7 +8,7 @@ The user asked to subsume Thornley's shutdown problem into the book's correction
 - Added a Chapter 26 subsection treating Christiano-style corrigibility as a dynamical correction-channel invariant, including a weak act-based satisfaction counterexample and a boxed book claim.
 - Added a Chapter 28 subsection treating MIRI tiling as a special case of successor transport, with import-preserving transport as the stronger invariant.
 - Added a Chapter 29 synthesis equation for corrigible successor alignment: value-import transport plus correction-channel preservation plus control-boundary noncapture.
-- Added Lean proof-spine definitions/theorems/counterexamples in `formal/AlignmentProofSpine/Correction.lean` and `formal/AlignmentProofSpine/Bundles.lean`, and documented them in `formal/README.md` and `appendices/appI-lean-proof-spine.tex`.
+- Added Lean proof-spine definitions/theorems/counterexamples in `formal/AlignmentProofSpine/Correction.lean` and `formal/AlignmentProofSpine/Bundles.lean`, and documented them in `formal/README.md` and `appendices/appG-lean-proof-spine.tex`.
 - Updated correction/successor proof graphs and rendered PNGs, plus ledgers and bibliography coverage for the new claims.
 - Verification passed: `make check`, `cd formal && lake build`, and `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" ./build.sh`.
 
@@ -23,13 +23,13 @@ The user asked to subsume Thornley's shutdown problem into the book's correction
 - Do not commit generated LaTeX aux/log files or PDFs unless explicitly requested.
 
 ## Key paths
-- `chapters/ch24-correction-causal-channel.tex`
-- `chapters/ch26-extrapolative-correction.tex`
-- `chapters/ch28-successor-central-test.tex`
-- `chapters/ch29-conserved-properties.tex`
+- `chapters/ch25-correction-causal-channel.tex`
+- `chapters/ch28-extrapolative-correction.tex`
+- `chapters/ch30-successor-central-test.tex`
+- `chapters/ch31-conserved-properties.tex`
 - `formal/AlignmentProofSpine/Correction.lean`
 - `formal/AlignmentProofSpine/Bundles.lean`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `context/lean_proof_graphs/03-correction-successors.dot`
 - `context/lean_proof_dependency_graph.dot`
 

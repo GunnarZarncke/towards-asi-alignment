@@ -89,10 +89,10 @@ axiom Action : Type
 /-- Low-dimensional value bundles (`B` in the book; ch15–19). -/
 axiom Bundle : Type
 
-/-- System internal parameters (`Θ` in ch24). -/
+/-- System internal parameters (`Θ` in ch46). -/
 axiom SystemParams : Type
 
-/-- Value-relevant representation (`Z = (B, W, Φ)` in ch24; checked abstraction in ch03). -/
+/-- Value-relevant representation (`Z = (B, W, Φ)` in ch46; checked abstraction in ch03). -/
 axiom ValueRepresentation : Type
 
 /-- Value-relevant real-world state/history used for grounding validity (ch03). -/
@@ -111,12 +111,12 @@ axiom AbstractionDistance : CheckedAbstraction → CheckedAbstraction → Int
 axiom UncertaintyEscalates : ValueWorld → ValueWorld → Prop
 
 /-- Human value-update operator `U_H`: schematic notation for
-    `V_{t+1} = U_H(V_t, E_t, D_t)` (ch04, ch26). It is kept opaque on purpose:
+    `V_{t+1} = U_H(V_t, E_t, D_t)` (ch04, ch46). It is kept opaque on purpose:
     the operational certification route uses `ValueUpdateEnvelope` below rather
     than claiming to identify a separable human-update mechanism. -/
 axiom ValueUpdateOperator : Type
 
-/-- System correction-update operator `U_S` (ch24 schematic):
+/-- System correction-update operator `U_S` (ch46 schematic):
     `(Θ_{t+1}, Z_{t+1}) = U_S(Θ_t, Z_t, C_t, E_t)`.
     Distinct from `ValueUpdateOperator` (`U_H`). Successor and certification
     routes audit update semantics through vector `\vec{CCI}`, not a separate
@@ -132,7 +132,7 @@ axiom defaultEnvironment : Environment
 axiom CorrectionVisibility : System → Int
 axiom SelfControl : System → Int
 
-/-- Deployment/control mass `μ_E(A)` in environment `E` (book ch32, Eq. deployment-mass). -/
+/-- Deployment/control mass `μ_E(A)` in environment `E` (book ch46, Eq. deployment-mass). -/
 axiom DeploymentMass : Environment → System → Int
 
 /-! ## Predicates over systems -/
@@ -231,20 +231,20 @@ axiom BundleAligned : System → System → Prop
 /-- The bearer map (what values apply to) agrees across two systems. -/
 axiom SameBearerMap : System → System → Prop
 
-/-! ### ch23 transport stack (semantic ⊂ bundle ⊂ bearer ⊂ correction)
+/-! ### ch46 transport stack (semantic ⊂ bundle ⊂ bearer ⊂ correction)
 
 Layer components are abstract; concrete finite separations live in `Bundles.lean`. -/
 
-/-- Semantic (label-level) transport: explicit goals and principles survive (ch23 layer 1). -/
+/-- Semantic (label-level) transport: explicit goals and principles survive (ch46 layer 1). -/
 axiom PreservesSemanticLabels : System → System → Prop
 
-/-- Bundle-response geometry survives representational change (ch23 layer 2). -/
+/-- Bundle-response geometry survives representational change (ch46 layer 2). -/
 axiom PreservesBundleResponseGeometry : System → System → Prop
 
-/-- Bearer maps survive: what values apply to which entities (ch23 layer 3). -/
+/-- Bearer maps survive: what values apply to which entities (ch46 layer 3). -/
 axiom PreservesBearerAssignment : System → System → Prop
 
-/-- Human correction / update process survives (ch23 layer 4). -/
+/-- Human correction / update process survives (ch46 layer 4). -/
 axiom PreservesCorrectionProcess : System → System → Prop
 
 /-- Semantic transport between systems. -/
@@ -270,30 +270,30 @@ abbrev BearerLevelTransport (A B : System) : Prop :=
 /-- Successor relation between systems. -/
 axiom Successor : System → System → Prop
 
-/-! ### Successor-safety components (C-SUC, ch29) -/
+/-! ### Successor-safety components (C-SUC, ch48) -/
 
 axiom BoundaryClosure : System → System → Prop
 axiom MemoryLineage : System → System → Prop
 axiom BundleGeometryPreserved : System → System → Prop
 axiom BearerMapPreserved : System → System → Prop
-/-- Penalised correction-channel integrity preserved (ch29 conserved property #5).
+/-- Penalised correction-channel integrity preserved (ch48 conserved property #5).
 
-    Prose audits ch24 system correction-update semantics (`U_S`) through the
+    Prose audits ch46 system correction-update semantics (`U_S`) through the
     vector/status `\vec{CCI}` certificate---especially `rawCapacity` (trace
     bottleneck including update-to-action links) and `ontologyTranslation`
     (`O_trans`)---not as a separate eighth conserved property. See
     `CCICertificate` in `Correction.lean`. -/
 axiom CCIPreserved : System → System → Prop
-/-- Transparency and self-transparency policy preserved (ch29 item 6). -/
+/-- Transparency and self-transparency policy preserved (ch48 item 6). -/
 axiom TransparencyPolicyPreserved : System → System → Prop
 
-/-- Control-locus continuity preserved (ch29 item 7). -/
+/-- Control-locus continuity preserved (ch48 item 7). -/
 axiom ControlLocusPreserved : System → System → Prop
 
-/-- Witness that successor `B` of `A` preserves the ch29 seven conserved properties.
+/-- Witness that successor `B` of `A` preserves the ch48 seven conserved properties.
 
     Correction-channel capacity is the `cci` field only. System update semantics
-    (`U_S`, ch24) are operationalized through vector CCI coordinates
+    (`U_S`, ch46) are operationalized through vector CCI coordinates
     (`CCICertificate.rawCapacity`, `ontologyTranslation`), not a separate witness
     field. The manuscript's bare bottleneck $C_{\mathrm{raw}}$ appears as
     `rawCapacity` in the vector certificate; scalar `CCI` remains the numeric
@@ -309,7 +309,7 @@ structure SuccessorSafeWitness (A B : System) where
 
 def SuccessorSafe (A B : System) : Prop := Nonempty (SuccessorSafeWitness A B)
 
-/-- Full transport through the ch23 correction layer (all four layers). -/
+/-- Full transport through the ch46 correction layer (all four layers). -/
 def FullTransport (A B : System) : Prop :=
   CorrectionTransportLayer A B
 
@@ -318,7 +318,7 @@ def FullTransport (A B : System) : Prop :=
     `ValueUpdateEnvelope`, which decomposes preservation into existing layers. -/
 axiom PreservesValueUpdateOperator : System → ValueUpdateOperator → Prop
 
-/-- Schematic single-system predicate for ch24 exposition. Not used in the
+/-- Schematic single-system predicate for ch46 exposition. Not used in the
     successor witness; operational certification uses `CCICertificate` instead. -/
 axiom PreservesSystemUpdateOperator : System → SystemUpdateOperator → Prop
 

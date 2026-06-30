@@ -37,9 +37,9 @@ The user asked for a reviewable plan to integrate a missing foundation layer int
 - `frontmatter/introduction.tex`
 - `frontmatter/executive-overview.tex`
 - `chapters/ch03-dynamical-guarantee.tex`
-- `chapters/ch25-correction-channel-integrity.tex`
-- `chapters/ch39-safety-case.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+- `chapters/ch26-correction-channel-integrity.tex`
+- `chapters/ch42-safety-case.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 - `metadata/notation.md`
 - `metadata/terminology.md`
 - `metadata/claims-ledger.md`

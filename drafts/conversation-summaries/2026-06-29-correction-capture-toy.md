@@ -6,7 +6,7 @@ User asked to pick the highest-rated hard-evidence target from reviewers and the
 ## Done
 - Chose the reviewer/roadmap overlap:
   - `review/strategic-advice-2026-06-28.md` ranks an end-to-end worked measurement/capture example first.
-  - `appendices/appH-research-program.tex` puts measurement prerequisites, correction legitimacy, hidden-capability bounding, and adversarial verifiability at the top of the research order.
+  - `appendices/appF-research-program.tex` puts measurement prerequisites, correction legitimacy, hidden-capability bounding, and adversarial verifiability at the top of the research order.
 - Added `experiments/correction_capture_toy.py`, a stdlib-only synthetic trace experiment.
 - Added `experiments/README.md`.
 - Ran five approaches:
@@ -37,7 +37,7 @@ User asked to pick the highest-rated hard-evidence target from reviewers and the
 - `experiments/results/correction_capture_toy.json`
 - `metadata/TODO.md`
 - `review/strategic-advice-2026-06-28.md`
-- `appendices/appH-research-program.tex`
+- `appendices/appF-research-program.tex`
 
 ## Commits
 - Correction-capture toy experiment + session log + TODO updates (see `git log -1`).

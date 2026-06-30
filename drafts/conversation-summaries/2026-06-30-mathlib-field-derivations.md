@@ -28,7 +28,7 @@ User asked to continue the Mathlib-backed field rederivation tranche (CIRL, AUP/
 - `formal/AlignmentProofSpine/Field/CIRL.lean`
 - `formal/AlignmentProofSpine/Field/Impact.lean`
 - `formal/AlignmentProofSpine/Field/Quantilization.lean`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 
 ## Commits
 - None.

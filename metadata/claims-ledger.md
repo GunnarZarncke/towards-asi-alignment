@@ -2,7 +2,7 @@
 
 Track every major claim with status, support, weakest link, and falsification criteria.
 
-**Last cross-check:** 2026-06-27 — header/status refreshed after grounding viability was added as the sixth Introduction claim and as an eighth safety-case layer. Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`. Chapter references follow the current 48-entry map in `metadata/book.yml` (including `ch19b`, `ch25b`, `ch35b`, and `ch39b`; full renumbering is still an open TODO).
+**Last cross-check:** 2026-06-27 — header/status refreshed after grounding viability was added as the sixth Introduction claim and as an eighth safety-case layer. Entries remain manually maintained against the chapter `chapterthesis` blocks, the six Introduction `introclaim`s, the chapter-level WWCTV sections, `metadata/assumptions-ledger.md`, `metadata/uncertainty-ledger.md`, and the conceptual spine in `INSTRUCTIONS.md`. Chapter references follow the current 48-entry map in `metadata/book.yml` (including `ch46`, `ch48`, `ch45`, and `ch47`; full renumbering is still an open TODO).
 
 **Maintenance note:** This ledger is not generated. It must be manually updated when chapters, claims, assumptions, uncertainty entries, or proof-spine bridges change. Treat it as a maintainer audit tool rather than an automatically complete public index until the automation TODO in `metadata/TODO.md` is resolved.
 
@@ -112,9 +112,9 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 
 **Support:**
 - ch03 defines grounding viability, conservative abstraction, and abstraction-gap exploitation
-- ch16/ch20 require value-bundle abstractions to move or become uncertain under value-relevant change
-- ch25 treats independent evidence, monitor integrity, dissent, exit, and uncertainty escalation as technical anti-capture validity conditions for correction
-- ch39 makes grounding the eighth safety-case layer; ch39b ties metric honesty to capture of grounding
+- ch16/ch46 require value-bundle abstractions to move or become uncertain under value-relevant change
+- ch46 treats independent evidence, monitor integrity, dissent, exit, and uncertainty escalation as technical anti-capture validity conditions for correction
+- ch46 makes grounding the eighth safety-case layer; ch47 ties metric honesty to capture of grounding
 
 **Weakest link:**
 - \(d_V\), \(d_Z\), and uncertainty escalation are domain-specific; a capable optimizer may exploit value-relevant variables the abstraction cannot yet represent
@@ -136,7 +136,7 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 **Support:**
 - correction-as-causal-channel model (W→O→J→D→C→U→A chain)
 - correction-channel integrity (CCI) as a conditional anti-capture certificate with vector thresholds and invalidation conditions
-- certified boundary separation in ch27: UAD/BIQ-style evidence that the reference process is not inside the target's effective optimizer boundary
+- certified boundary separation in ch48: UAD/BIQ-style evidence that the reference process is not inside the target's effective optimizer boundary
 - manipulation/false-consent typology by causal pathway (changing the world vs. changing the judge)
 - shutdown as a one-bit projection of a richer correction channel; broad correction-channel preservation implies narrow shutdownability, but not conversely
 - Christiano-style corrigibility formalized as a dynamical invariant with a lower bound on usable correction information, not merely act-level preference satisfaction
@@ -288,18 +288,18 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 
 **Chapter(s):** 44 (conclusion)
 
-**Status:** needs follow-up after 2026-06-27 grounding integration. ch39 now assembles the conditional safety-case structure with grounding as an eighth layer; ch44 still explicitly revisits the earlier five opening promises and should be updated to discharge the new grounding claim.
+**Status:** needs follow-up after 2026-06-27 grounding integration. ch46 now assembles the conditional safety-case structure with grounding as an eighth layer; ch48 still explicitly revisits the earlier five opening promises and should be updated to discharge the new grounding claim.
 
 **Support:**
-- ch44 §Opening Claims Revisited discharges the earlier five intro claims with status labels
-- ch39 safety-case chapter supplies the safety-case graph, now including grounding viability as an eighth layer
-- ch43 supplies the bearer/merger philosophical limit needed for Part X closure
+- ch48 §Opening Claims Revisited discharges the earlier five intro claims with status labels
+- ch46 safety-case chapter supplies the safety-case graph, now including grounding viability as an eighth layer
+- ch47 supplies the bearer/merger philosophical limit needed for Part X closure
 
 **Weakest link:**
 - the conclusion has not yet been revised to revisit the new grounding claim explicitly; the safety-case template appendix is still a follow-through artifact
 
 **What would update against it:**
-- review showing that ch44's opening-promise reconciliation can absorb the grounding claim without new prose, or that ch39's safety-case graph omits a load-bearing artifact
+- review showing that ch48's opening-promise reconciliation can absorb the grounding claim without new prose, or that ch46's safety-case graph omits a load-bearing artifact
 
 **References:**
 - see `review/full-book-continuity-review-2026-06-22.md` §completeness

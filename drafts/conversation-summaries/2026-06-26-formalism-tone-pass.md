@@ -6,12 +6,12 @@ User asked to remove defensive phrasing around the book's formalism, especially 
 
 ## Done
 
-- Updated `chapters/ch23-transport-types.tex` to replace "not final mathematical definitions / placeholders" with a concise statement that the conditions make transport targets explicit and separately testable.
-- Updated `chapters/ch31-certification-without-construction.tex` so value-bundle coordinates are described as a revisable catalogue with a precise certification role, not placeholders.
-- Updated `chapters/ch39b-verifiability-and-ontology-adequacy.tex` to state that the book supplies target properties, failure separations, and bridge conditions for deployment-grade proofs or safety cases.
-- Updated `chapters/ch40-lethality-stress-test-open-issues.tex` to replace "the conjectural core is a hope" with "not yet a guarantee."
+- Updated `chapters/ch24-transport-types.tex` to replace "not final mathematical definitions / placeholders" with a concise statement that the conditions make transport targets explicit and separately testable.
+- Updated `chapters/ch33-certification-without-construction.tex` so value-bundle coordinates are described as a revisable catalogue with a precise certification role, not placeholders.
+- Updated `chapters/ch43-verifiability-and-ontology-adequacy.tex` to state that the book supplies target properties, failure separations, and bridge conditions for deployment-grade proofs or safety cases.
+- Updated `chapters/ch44-lethality-stress-test-open-issues.tex` to replace "the conjectural core is a hope" with "not yet a guarantee."
 - Updated `chapters/ch11-capability-without-task-ontology.tex` to frame the BIQ/capability measure's narrowness as useful rather than apologetic.
-- Updated `chapters/ch32-selection-environment.tex` to make the abstract selection formulation operational: identify deployment-mass handles, measure what they reward, and change the selection environment.
+- Updated `chapters/ch34-selection-environment.tex` to make the abstract selection formulation operational: identify deployment-mass handles, measure what they reward, and change the selection environment.
 
 ## Decisions
 
@@ -34,14 +34,14 @@ make check   # fails: Expected 10 appendix files, found 9
 
 ## Key paths
 
-- `chapters/ch23-transport-types.tex`
-- `chapters/ch31-certification-without-construction.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
-- `chapters/ch40-lethality-stress-test-open-issues.tex`
+- `chapters/ch24-transport-types.tex`
+- `chapters/ch33-certification-without-construction.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
+- `chapters/ch44-lethality-stress-test-open-issues.tex`
 - `chapters/ch11-capability-without-task-ontology.tex`
-- `chapters/ch32-selection-environment.tex`
+- `chapters/ch34-selection-environment.tex`
 
 ## Commits
 
-- `02f411d` Deduplicate repeated formal definitions. (Includes the overlapping `chapters/ch23-transport-types.tex` edit.)
+- `02f411d` Deduplicate repeated formal definitions. (Includes the overlapping `chapters/ch24-transport-types.tex` edit.)
 - `e673541` Calibrate formalism tone across chapters.

@@ -8,7 +8,7 @@ Reviewer feedback: book subsumption claims (CIRL, shutdown, corrigibility, ELK, 
 ## Done (this session arc)
 
 1. **Scaffold (`FieldSubsumptions.lean`)** — `FieldProjection`, `SubsumedForward`, `SeparatedFrom`; packaged re-exports for all eight crosswalk agendas; imported in `AlignmentProofSpine.lean`; `formal/README.md` module row.
-2. **Interrupt (ch24 formulas)** — in `Correction.lean`: `kappaC`, `UsableCorrectionInformation`, `InterruptBit`, `interruptIncentiveSlope`, `IncentiveNeutralInterrupt`, `InterruptCorrectionStep`; subsumption (`preserved_channel_no_incentive_to_corrupt_interrupt`, manipulation slope ≤ 0); separation (`interruptSeparationStep`: Orseau-neutral, `κ_C < κ_min`).
+2. **Interrupt (ch46 formulas)** — in `Correction.lean`: `kappaC`, `UsableCorrectionInformation`, `InterruptBit`, `interruptIncentiveSlope`, `IncentiveNeutralInterrupt`, `InterruptCorrectionStep`; subsumption (`preserved_channel_no_incentive_to_corrupt_interrupt`, manipulation slope ≤ 0); separation (`interruptSeparationStep`: Orseau-neutral, `κ_C < κ_min`).
 3. **Remaining agendas (formula-shaped witnesses in `Bundles.lean` / `Correction.lean`)**:
    - **CIRL**: `ScalarRewardEmbedding`, `scalarMarginalSalience`, `CooperativeRewardInferenceFromPolicy`; `policyProfile0/1` separation; `full_transport_implies_cirl_readable`.
    - **Shutdown**: `ShutdownCorrectionStep`, `BroadCorrectionChannelPreserved`, `ThornleyShutdownCapacity`; `shutdownSeparationStep`.
@@ -25,7 +25,7 @@ Reviewer feedback: book subsumption claims (CIRL, shutdown, corrigibility, ELK, 
 - Do not commit `.biber-par-cache/`, `RELEASE_NOTES.md`, or manuscript `\leanspine{}` wiring in this checkpoint.
 
 ## Open / next (session continues)
-- Wire `\leanspine{}` in ch20, ch24 (interrupt), ch25b, ch26, ch27, ch39b to new theorem names.
+- Wire `\leanspine{}` in ch46, ch46 (interrupt), ch48, ch46, ch48, ch47 to new theorem names.
 - Appendix I + lean proof graph nodes for `FieldSubsumptions`.
 - Strengthen shutdown/debate forward links to derive weak predicates from `κ_C` without extra handle hypotheses.
 

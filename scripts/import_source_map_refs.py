@@ -445,7 +445,7 @@ MANUAL_ENTRIES = """
 % Mirror of the manual block in references/external-alignment.bib; kept here so
 % regeneration does not drop them. Keep the two copies in sync.
 
-@misc{critch2022boundaries,
+@misc{critch4622boundaries,
   author       = {Critch, Andrew},
   title        = {Boundaries, Part 1: A Key Missing Concept from Utility Theory},
   year         = {2022},
@@ -453,7 +453,7 @@ MANUAL_ENTRIES = """
   note         = {LessWrong post. Argues that agent/environment boundaries (membranes) are a primitive missing from utility theory and bargaining.}
 }
 
-@misc{critch2022boundaries3a,
+@misc{critch4622boundaries3a,
   author       = {Critch, Andrew},
   title        = {Boundaries, Part 3a: Defining Boundaries as Directed Markov Blankets},
   year         = {2022},
@@ -477,7 +477,7 @@ MANUAL_ENTRIES = """
   note         = {LessWrong post. Gradual, distributed loss of human control with no discrete hostile agent to align.}
 }
 
-@misc{critch2021multipolar,
+@misc{critch4621multipolar,
   author       = {Critch, Andrew},
   title        = {What Multipolar Failure Looks Like, and Robust Agent-Agnostic Processes},
   year         = {2021},

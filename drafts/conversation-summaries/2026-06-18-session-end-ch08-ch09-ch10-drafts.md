@@ -14,7 +14,7 @@ User integrated chapter drafts for Ch. 8–10 across the session, then requested
 ## Decisions
 - Kept each chapter's user-supplied section structure (not scaffold template).
 - Preserved existing `\label` keys for cross-refs.
-- Session commit stages Ch. 8–10, bib, and logs only; left unstaged minor unrelated edits in `README.md`, `ch40-lethality-stress-test-open-issues.tex`, and `2026-06-17-ch03-dynamical-guarantee-draft.md`.
+- Session commit stages Ch. 8–10, bib, and logs only; left unstaged minor unrelated edits in `README.md`, `ch48-lethality-stress-test-open-issues.tex`, and `2026-06-17-ch03-dynamical-guarantee-draft.md`.
 
 ## Open / next
 - Ch. 5 remains the main Part I stub.

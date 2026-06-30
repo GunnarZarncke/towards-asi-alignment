@@ -7,21 +7,21 @@ Open problems and unresolved uncertainties tracked across the manuscript.
 | # | Open question | Treated in | Bears on |
 |---|----------------|-----------|----------|
 | U-01 | Are human values sufficiently low-dimensional, and are their bundle representations recoverable enough to be learned and transported? | ch15–17 | A-001, C-004 |
-| U-02 | Can bearer maps survive radical ontology shift? | ch18, ch43 | A-001, C-004, C-011 |
-| U-03 | Can correction-channel integrity be measured under adversarial conditions without the reference process or the independence test itself being captured by the target system? | ch25, ch27, ch36, ch39b | A-002, C-005 |
-| U-04 | Can successor constraints be enforced before recursive capability growth, and can import-preserving transport be verified rather than only syntactic continuity? | ch28, ch29, ch31 | A-007, C-006 |
-| U-05 | Is the agent--world cut well-defined and observer-independent enough to estimate, and can composite-agent boundaries then be recovered from finite, high-dimensional, adversarial deployment data without learned detectors inheriting the criterion/labeling gap? | ch06–07, ch09, ch38 | A-004, C-001, C-003 |
-| U-06 | How much capability growth is safe without proportional transparency/correction growth? | ch12, ch14, ch30 | C-008 |
-| U-07 | What counts as legitimate (vs. pathological) value-bundle change? | ch26, ch27, ch41–42 | C-005, C-011 |
-| U-08 | Where does technical alignment end and civilizational self-governance begin? | ch41, ch43 | C-002, C-011 |
-| U-09 | Is the compression test for intention robust against semantic camouflage and decomposition attacks? | ch21, ch37 | A-006, C-009 |
-| U-10 | What are sufficient conditions for alignment-basin stability under competitive selection? | ch32, ch35 | C-007 |
-| U-11 | Pivotal process: can the transition checklist (ch35b `sec:pivotal-process-ch35`) close in the available time budget? Slow path conditional; fast path = pivotal-act limit. | ch35b, ch40 | C-007 |
-| U-12 | Can effective AI coalitions / inferential coupling be detected and indexed adversarially, including audit-side \(P_{\text{meta}}\) certificates, self-modeling evidence, probe coverage, and calibrated open-edge thresholds for shared-history, non-message, self-similar, and full-acausal-trade cases? | ch33, ch39b, ch40 | A-013, C-001, C-007 |
-| U-13 | Can successors be certified without full construction understanding? | ch31 | A-007, C-006 |
-| U-14 | Do safety-case templates scale to frontier systems under adversarial optimization? | ch39, ch39b, appG | C-002, C-044 |
-| U-15 | Can institutional designs reliably preserve correction-channel capacity over time? | ch32, ch34 | A-003, A-005, C-007 |
-| U-16 | Can grounding viability be measured or certified under adversarial optimization, especially when value-relevant variables are not yet nameable in the current ontology? | ch03, ch16, ch20, ch25, ch39, ch39b | A-014, C-004a, C-004, C-005 |
+| U-02 | Can bearer maps survive radical ontology shift? | ch18, ch47 | A-001, C-004, C-011 |
+| U-03 | Can correction-channel integrity be measured under adversarial conditions without the reference process or the independence test itself being captured by the target system? | ch46, ch48, ch46, ch47 | A-002, C-005 |
+| U-04 | Can successor constraints be enforced before recursive capability growth, and can import-preserving transport be verified rather than only syntactic continuity? | ch46, ch48, ch48 | A-007, C-006 |
+| U-05 | Is the agent--world cut well-defined and observer-independent enough to estimate, and can composite-agent boundaries then be recovered from finite, high-dimensional, adversarial deployment data without learned detectors inheriting the criterion/labeling gap? | ch06–07, ch09, ch45 | A-004, C-001, C-003 |
+| U-06 | How much capability growth is safe without proportional transparency/correction growth? | ch12, ch14, ch46 | C-008 |
+| U-07 | What counts as legitimate (vs. pathological) value-bundle change? | ch46, ch48, ch45–42 | C-005, C-011 |
+| U-08 | Where does technical alignment end and civilizational self-governance begin? | ch45, ch47 | C-002, C-011 |
+| U-09 | Is the compression test for intention robust against semantic camouflage and decomposition attacks? | ch46, ch48 | A-006, C-009 |
+| U-10 | What are sufficient conditions for alignment-basin stability under competitive selection? | ch46, ch48 | C-007 |
+| U-11 | Pivotal process: can the transition checklist (ch45 `sec:pivotal-process-ch48`) close in the available time budget? Slow path conditional; fast path = pivotal-act limit. | ch45, ch48 | C-007 |
+| U-12 | Can effective AI coalitions / inferential coupling be detected and indexed adversarially, including audit-side \(P_{\text{meta}}\) certificates, self-modeling evidence, probe coverage, and calibrated open-edge thresholds for shared-history, non-message, self-similar, and full-acausal-trade cases? | ch48, ch47, ch48 | A-013, C-001, C-007 |
+| U-13 | Can successors be certified without full construction understanding? | ch48 | A-007, C-006 |
+| U-14 | Do safety-case templates scale to frontier systems under adversarial optimization? | ch46, ch47, appG | C-002, C-044 |
+| U-15 | Can institutional designs reliably preserve correction-channel capacity over time? | ch46, ch46 | A-003, A-005, C-007 |
+| U-16 | Can grounding viability be measured or certified under adversarial optimization, especially when value-relevant variables are not yet nameable in the current ontology? | ch03, ch16, ch46, ch46, ch46, ch47 | A-014, C-004a, C-004, C-005 |
 
 ## Notes
 

@@ -5,7 +5,7 @@ User supplied a full author draft for Chapter 38 ("Multi-Scale Decomposition")
 and asked to integrate it into the chapter file.
 
 ## Done
-- Replaced the stub `chapters/ch38-multiscale-decomposition.tex` with the
+- Replaced the stub `chapters/ch41-multiscale-decomposition.tex` with the
   integrated draft (Shape B — kept the draft's native narrative structure).
 - Added the required book elements the raw draft lacked:
   - real `chapterthesis` (from the draft's opening quote);
@@ -13,7 +13,7 @@ and asked to integrate it into the chapter file.
   - inline `\autocite{...}` at key points and a prose Chapter References paragraph
     closing with `\printbibliography[heading=subbibliography,...]`, replacing the
     draft's hand-formatted reference list;
-  - `-ch38`-suffixed `\label`s on sections; kept the book's existing chapter
+  - `-ch45`-suffixed `\label`s on sections; kept the book's existing chapter
     label `ch:multiscale-decomposition` (not draft's `chap:multi-scale-decomposition`);
   - cross-refs to Chapters~\ref{ch:finding-boundary}, \ref{ch:value-bundle-model},
     \ref{ch:tradeoffs-bundle-geometry}, \ref{ch:passive-observation-not-enough},
@@ -27,25 +27,25 @@ and asked to integrate it into the chapter file.
   backtick/quote typos.
 - Wired stub TODO cites: `biehl2020fepcritique`, `scholkopf2021causalreps`,
   `tishby2000ib`.
-- `metadata/book.yml`: ch38 status `stub` → `draft`.
-- Build green: `./build.sh` exits 0 (908 pages); no undefined citations for ch38.
+- `metadata/book.yml`: ch45 status `stub` → `draft`.
+- Build green: `./build.sh` exits 0 (908 pages); no undefined citations for ch45.
 
 ## Decisions
 - Kept display math as `\[ ... \]` rather than numbered `equation` environments
-  — matches ch27–ch37 integration pattern.
+  — matches ch48–ch48 integration pattern.
 - Draft summary pointed to a tripwires chapter; tripwires were deferred in book
-  structure — forward-ref updated to ch39 safety case instead.
+  structure — forward-ref updated to ch46 safety case instead.
 - Omitted Hamilton (1964) — no matching BibLaTeX key used in prose.
 - Not committed (no commit requested).
 
 ## Open / next
 - Pre-existing duplicate-label warnings remain elsewhere:
   `sec:self-modeling-transparency`, `sec:example-helpful-assistant`.
-- ch28–ch38 now integrated in this session block; optional single commit.
-- ch33, ch39+ still stub if user wants them integrated next.
+- ch46–ch45 now integrated in this session block; optional single commit.
+- ch48, ch46+ still stub if user wants them integrated next.
 
 ## Key paths
-- `chapters/ch38-multiscale-decomposition.tex`
+- `chapters/ch41-multiscale-decomposition.tex`
 - `metadata/book.yml`
 
 ## Commits

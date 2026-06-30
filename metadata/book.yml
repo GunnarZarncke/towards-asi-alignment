@@ -5,6 +5,7 @@ status: scaffold
 milestone: third
 word_target_total: 350000
 
+
 chapters:
   ch01:
     title: "The Wrong Object of Alignment"
@@ -120,179 +121,175 @@ chapters:
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, mathematics]
-  ch19b:
+  ch20:
     title: "Measuring and Stress-Testing Bundle Geometry"
     status: reviewed
     word_target: 7000
     formal_density: high
     reviewer_needed: [alignment, mathematics, social-choice]
-    note: "Split from ch19 on 2026-06-28; temporary '19b' insertion avoids renumbering ch20-ch44 until chapter-numbering cleanup."
-  ch20:
+  ch21:
     title: "From Rewards to Values"
     status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
-  ch21:
+  ch22:
     title: "The Compression Test for Intention"
     status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
-  ch22:
+  ch23:
     title: "Has the Goal Really Survived?"
     status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
-  ch23:
+  ch24:
     title: "When the Words Survive but the Meaning Doesn't"
     status: reviewed
     word_target: 9000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
-  ch24:
+  ch25:
     title: "Correction Is a Causal Channel"
     status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
-  ch25:
+  ch26:
     title: "Correction-Channel Integrity"
     status: reviewed
     word_target: 9000
     formal_density: high
     reviewer_needed: [information-theory, control-theory]
-  ch25b:
+  ch27:
     title: "Correction Channels under Adversarial Pressure"
     status: reviewed
     word_target: 7000
     formal_density: high
     reviewer_needed: [alignment, control-theory, formal-verification]
-    note: "Split from ch25 on 2026-06-28; temporary '25b' insertion avoids renumbering ch26-ch44 until chapter-numbering cleanup."
-  ch26:
+  ch28:
     title: "Beyond Following Instruction"
     status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
-  ch27:
+  ch29:
     title: "Manipulation, Domestication, and False Consent"
     status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
-  ch28:
+  ch30:
     title: "Successor Creation as the Central Alignment Test"
     status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment]
-  ch29:
+  ch31:
     title: "Conserved Properties Across Successors"
     status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
-  ch30:
+  ch32:
     title: "Better Self-Modeling Can Be Worse"
     status: reviewed
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment, philosophy]
-  ch31:
+  ch33:
     title: "Certification Without Construction"
     status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
-  ch32:
+  ch34:
     title: "Alignment Is Selected or Destroyed by Its Environment"
     status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
-  ch33:
+  ch35:
     title: "Multi-Agent Superintelligence and Inferential Coupling"
     status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, game-theory]
-  ch34:
+  ch36:
     title: "Parasites in the Correction System"
     status: reviewed
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment, governance]
-  ch35:
+  ch37:
     title: "The Alignment Attractor"
     status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance]
-  ch35b:
+  ch38:
     title: "Conductive Artifacts and Pivotal Processes"
     status: reviewed
     word_target: 8000
     formal_density: medium
     reviewer_needed: [alignment, governance, institutional-design]
-    note: "Split from ch35 on 2026-06-28; temporary '35b' insertion avoids renumbering ch36-ch44 until chapter-numbering cleanup."
-  ch36:
+  ch39:
     title: "Passive Observation Is Not Enough"
     status: reviewed
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment]
-  ch37:
+  ch40:
     title: "Detecting Goal Laundering"
     status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment]
-  ch38:
+  ch41:
     title: "Checking a System at Every Level"
     status: reviewed
     word_target: 8000
     formal_density: high
     reviewer_needed: [alignment, information-theory]
-  ch39:
+  ch42:
     title: "A Safety Case for Superintelligence Alignment"
     status: reviewed
     word_target: 10000
     formal_density: medium
     reviewer_needed: [alignment, governance]
-  ch39b:
+  ch43:
     title: "What Survives an Adversary: Verifiability and Representability"
     status: reviewed
     word_target: 7000
     formal_density: medium
     reviewer_needed: [alignment, formal-verification]
-    note: "Minimal seed draft (2026-06-23). Inserted in Part IX between ch39 and ch40; filename '39b' avoids renumbering ch40-ch44. Displayed chapter numbers for Part X shift +1 until a full renumber."
-  ch40:
+  ch44:
     title: "Lethality Stress Test and Open Issues"
     status: reviewed
     word_target: 9000
     formal_density: medium
     reviewer_needed: [alignment, philosophy]
-  ch41:
+  ch45:
     title: "When Value Change Is the Thing at Stake"
     status: reviewed
     word_target: 7000
     formal_density: low
     reviewer_needed: [philosophy, alignment]
-  ch42:
+  ch46:
     title: "The End of Unconscious Value Drift"
     status: reviewed
     word_target: 7000
     formal_density: medium
     reviewer_needed: [philosophy, neuroscience]
-  ch43:
+  ch47:
     title: "Who Still Counts After Transformation"
     status: reviewed
     word_target: 8000
     formal_density: low
     reviewer_needed: [philosophy, alignment]
-  ch44:
+  ch48:
     title: "Towards Superintelligence Alignment"
     status: reviewed
     word_target: 8000
@@ -311,22 +308,22 @@ parts:
     summary_latex: "Treats capability as \hyperref[sec:task-agnostic-not-ontology-free]{boundary information that can outrun task ontology}."
   part04:
     summary: "Introduces value bundles: learnable geometry plus fragile tradeoffs, bearers, and adversarial measurement pressure."
-    summary_latex: "Introduces value bundles: \hyperref[sec:four-part-definition]{learnable geometry} plus fragile tradeoffs, \hyperref[sec:bundle-bearer-map]{bearers}, and \hyperref[sec:from-geometry-to-measurement-ch19b]{adversarial measurement pressure}."
+    summary_latex: "Introduces value bundles: \hyperref[sec:four-part-definition]{learnable geometry} plus fragile tradeoffs, \hyperref[sec:bundle-bearer-map]{bearers}, and \hyperref[sec:from-geometry-to-measurement-ch20]{adversarial measurement pressure}."
   part05:
     summary: "Upgrades goal inference into transport, subsuming reward/CIRL-style inference into bundle and bearer preservation."
     summary_latex: "Upgrades goal inference into \hyperref[sec:four-layers-transport]{transport}, subsuming \hyperref[sec:scalar-reward-hides-correction]{reward/CIRL-style inference} into bundle and bearer preservation."
   part06:
     summary: "Shows correction is not feedback; vector CCI is defined as a certificate and then stress-tested under adversarial pressure, subsuming shutdown, interruptibility, low impact, quantilization, and corrigibility projections."
-    summary_latex: "Shows \hyperref[sec:why-correction-not-feedback]{correction is not feedback}; \hyperref[sec:correction-channel-integrity-def]{vector CCI} is defined as a certificate and then \hyperref[sec:certificate-under-pressure-ch25b]{stress-tested under adversarial pressure}, subsuming shutdown, interruptibility, low impact, quantilization, and corrigibility projections."
+    summary_latex: "Shows \hyperref[sec:why-correction-not-feedback]{correction is not feedback}; \hyperref[sec:correction-channel-integrity-def]{vector CCI} is defined as a certificate and then \hyperref[sec:certificate-under-pressure-ch27]{stress-tested under adversarial pressure}, subsuming shutdown, interruptibility, low impact, quantilization, and corrigibility projections."
   part07:
     summary: "Makes successor creation the central inheritance test for alignment."
-    summary_latex: "Makes \hyperref[sec:successor-alignment-condition-ch28]{successor creation} the central inheritance test for alignment."
+    summary_latex: "Makes \hyperref[sec:successor-alignment-condition-ch30]{successor creation} the central inheritance test for alignment."
   part08:
     summary: "Tracks selection, preservation envelopes, correction parasites, attractor theory, and conductive artifacts for pivotal-process governance."
-    summary_latex: "Tracks selection, \hyperref[sec:minimal-model-selection-ch32]{preservation envelopes}, \hyperref[sec:operational-definition-ch34]{correction parasites}, \hyperref[sec:minimal-model-ch35]{attractor theory}, and \hyperref[sec:from-basin-theory-to-conductive-artifacts-ch35b]{conductive artifacts for pivotal-process governance}."
+    summary_latex: "Tracks selection, \hyperref[sec:minimal-model-selection-ch34]{preservation envelopes}, \hyperref[sec:operational-definition-ch36]{correction parasites}, \hyperref[sec:minimal-model-ch37]{attractor theory}, and \hyperref[sec:from-basin-theory-to-conductive-artifacts-ch38]{conductive artifacts for pivotal-process governance}."
   part09:
     summary: "Turns the framework into adversarial measurement, subsuming debate, amplification, and ELK as narrower subchannels."
-    summary_latex: "Turns the framework into adversarial measurement, subsuming \hyperref[sec:debate-judge-state-control-ch27]{debate}, \hyperref[sec:amplification-contraction-ch38]{amplification}, and \hyperref[sec:cci-verifiability-example-ch39b]{ELK} as narrower subchannels."
+    summary_latex: "Turns the framework into adversarial measurement, subsuming \hyperref[sec:debate-judge-state-control-ch29]{debate}, \hyperref[sec:amplification-contraction-ch41]{amplification}, and \hyperref[sec:cci-verifiability-example-ch43]{ELK} as narrower subchannels."
   part10:
     summary: "Reaches the civilizational limit: preserve the value-update envelope, not a final answer."
-    summary_latex: "Reaches the civilizational limit: preserve the \hyperref[sec:role-technical-alignment-ch41]{value-update envelope}, not a final answer."
+    summary_latex: "Reaches the civilizational limit: preserve the \hyperref[sec:role-technical-alignment-ch45]{value-update envelope}, not a final answer."

@@ -27,7 +27,7 @@ User wanted the dependency diagram split for the book: 3–4 sub-diagrams plus a
 ## Key paths
 - `context/lean_proof_graphs/`
 - `figures/lean_proof/`
-- `appendices/appI-lean-proof-spine.tex` (`sec:appi-proof-dependency`)
+- `appendices/appG-lean-proof-spine.tex` (`sec:appi-proof-dependency`)
 
 ## Commits
 - `c4725b6` Refine fitness and proof-spine diagrams for the book appendix.

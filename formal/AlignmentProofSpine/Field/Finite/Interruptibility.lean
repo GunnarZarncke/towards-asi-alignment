@@ -59,7 +59,7 @@ theorem base_optimal_unchanged_on_noninterrupt_branch {nState nAct : Nat}
 
 /-- One-step expected return under interrupt probability proxy `p * base + (M - p) * int`
     simplifies to `base + p * (int - base)` when `0 ≤ p ≤ M`. We use integers for
-    the finite ch24 proxy and keep the slope formula explicit. -/
+    the finite ch46 proxy and keep the slope formula explicit. -/
 def oneStepInterruptExpectedReturn (baseReturn interruptedReturn interruptWeight : Int) :
     Int :=
   baseReturn + interruptWeight * (interruptedReturn - baseReturn)

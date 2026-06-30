@@ -95,7 +95,7 @@ def parse_book_yml(path: Path) -> tuple[dict[str, dict[str, str]], dict[str, dic
 
 
 def chapter_id_from_input(slug: str) -> str:
-    match = re.match(r"(ch\d+b?)", slug)
+    match = re.match(r"(ch\d+)", slug)
     if not match:
         raise ValueError(f"Cannot derive chapter id from input slug: {slug}")
     return match.group(1)
@@ -114,12 +114,8 @@ def parse_part_file(path: Path) -> tuple[str, list[str]]:
     return title, chapter_ids
 
 
-def chapter_display_id(chapter_id: str) -> str:
-    match = re.fullmatch(r"ch(\d+)([a-z]?)", chapter_id)
-    if not match:
-        raise ValueError(f"Cannot display chapter id: {chapter_id}")
-    number, suffix = match.groups()
-    return f"{int(number)}{suffix}"
+def chapter_display_id(entry: ChapterEntry) -> str:
+    return str(entry.order)
 
 
 def load_manuscript() -> tuple[list[ChapterEntry], dict[str, dict[str, str]], list[Path]]:
@@ -180,7 +176,7 @@ def write_chapter_map(entries: list[ChapterEntry]) -> None:
         lines.append(
             " & ".join(
                 [
-                    chapter_display_id(entry.chapter_id),
+                    chapter_display_id(entry),
                     ROMANS[entry.part_index - 1],
                     latex_escape(entry.title),
                     entry.status,

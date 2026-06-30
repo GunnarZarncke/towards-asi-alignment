@@ -110,7 +110,7 @@ Spine context used: alignment = preserving human-correctable value-bearing proce
 
 ## F. Open tangents / dangling promises / forward references
 
-- **Forward `\ref`s all resolve:** ch01 L130 → `ch:finding-boundary` (ch07 ✓); ch05 L87 → `ch:correction-channel-integrity` (ch25 ✓), L90 → `ch:tradeoffs-bundle-geometry` (ch19 ✓), L93 → `ch:bearers-of-value` (ch43 ✓). Good.
+- **Forward `\ref`s all resolve:** ch01 L130 → `ch:finding-boundary` (ch07 ✓); ch05 L87 → `ch:correction-channel-integrity` (ch46 ✓), L90 → `ch:tradeoffs-bundle-geometry` (ch19 ✓), L93 → `ch:bearers-of-value` (ch47 ✓). Good.
 - **ch05 Turchin citation is a real dangling promise:** section + thesis name Turchin; `% TODO[citation]` at L104; no Turchin entry in Chapter References (L116). Either cite or soften the attribution.
 - Generic "developed later / will build" gestures (ch02 L345, L382; ch03 L776; ch04 L723 "civilizational self-governance under cognitive amplification" → Part X) are appropriately vague and supported by the part map; not problematic, but ch04 L723 is an un-anchored forward gesture (no `\ref`).
 - ch03 L773 references RLHF/IRL/corrigibility/deception limits as motivation; these are citations, not promises — fine.
@@ -120,7 +120,7 @@ Spine context used: alignment = preserving human-correctable value-bearing proce
 ## G. Continuity hand-off
 
 **(a) Concepts this part ASSUMES already known (incoming):**
-- Alignment/ML vocabulary used without definition: mesa-optimizer (ch01 L21), corrigibility (ch01 L19), RLHF/IRL/CEV/Goodhart/instrumental convergence (ch03 L773, L782; ch04 L300–312, L418). Appropriate for the researcher tier; generalist readers will lean on `appendices/appF-glossary`.
+- Alignment/ML vocabulary used without definition: mesa-optimizer (ch01 L21), corrigibility (ch01 L19), RLHF/IRL/CEV/Goodhart/instrumental convergence (ch03 L773, L782; ch04 L300–312, L418). Appropriate for the researcher tier; generalist readers will lean on `appendices/appE-glossary`.
 - Information theory (mutual information, conditional MI) — assumed throughout.
 - Dynamical-systems notions: transition kernels, basins, attractors, hitting times (ch03 L125–138), Markov blankets/active inference (ch03 L782).
 - Replicator dynamics (ch02 L201–204).
@@ -130,8 +130,8 @@ Spine context used: alignment = preserving human-correctable value-bearing proce
 - Composite optimizer / artificial-civilizational control loop; delegation transition; tool-failure conditions → book-wide framing.
 - Dynamical guarantee; safe set/bad set/basin; certified class `C_certified`; safety-case shape; non-stationarity; four failure classes (drift/phase-transition/camouflage/successor-escape) → Parts IX (safety cases) and VIII (attractors).
 - Capability envelope `C_A=I_pred+I_ctrl−βH(I)−γS` (spine's "B") → Part III.
-- Value bundles `B_t`, tradeoff geometry `W_t`, bearer maps `Φ`, value-process tuple `V_t=(B,W,Φ,U^H,C^H)` → Part IV (ch16, ch19, ch43).
-- Correction chain `W→O→J→D→C→U→A`, CCI, transparency-matched-to-power → Part VI (ch25).
+- Value bundles `B_t`, tradeoff geometry `W_t`, bearer maps `Φ`, value-process tuple `V_t=(B,W,Φ,U^H,C^H)` → Part IV (ch16, ch19, ch47).
+- Correction chain `W→O→J→D→C→U→A`, CCI, transparency-matched-to-power → Part VI (ch46).
 - Successor stability/certification → Part VII.
 - Scope boundary + correction-capacity assumption `C_corr^society(t0)>θ` → governs the whole book (ch05).
 

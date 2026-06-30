@@ -21,7 +21,7 @@ User clarified that the goal was not a meta theorem-schema wrapper, but an objec
 ## Key paths
 - `formal/AlignmentProofSpine/Bundles.lean`
 - `formal/AlignmentProofSpine/Field/CIRL.lean`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `context/lean_proof_graphs/02-value-transport.dot`
 - `context/lean_proof_graphs/05-field-subsumptions.dot`
 - `context/lean_proof_dependency_graph.dot`

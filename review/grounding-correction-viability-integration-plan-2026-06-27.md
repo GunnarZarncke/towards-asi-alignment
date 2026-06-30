@@ -282,7 +282,7 @@ Add abstraction-gap exploitation to "Context Capture," "Adversarial Reframing," 
 
 This may simplify local warnings about context capture, weight drift, and adversarial reframing by putting them under one shared diagnosis.
 
-#### `chapters/ch20-reward-to-bundle-inference.tex`
+#### `chapters/ch21-reward-to-bundle-inference.tex`
 
 Moderate change.
 
@@ -292,7 +292,7 @@ Key sentence to integrate later:
 
 > Bundle inference is not safe because it is low-dimensional. It is safe only to the degree that the low-dimensional abstraction is conservative: when value-relevant reality moves, the abstraction moves or becomes uncertain.
 
-#### `chapters/ch23-transport-types.tex`
+#### `chapters/ch24-transport-types.tex`
 
 Moderate change.
 
@@ -305,7 +305,7 @@ Potential simplification: The chapter can stop carrying some of the burden of "w
 
 ### Part VI: Correction
 
-#### `chapters/ch24-correction-causal-channel.tex`
+#### `chapters/ch25-correction-causal-channel.tex`
 
 Targeted change.
 
@@ -323,7 +323,7 @@ Add the grounding interpretation:
 
 Keep the handle-controlled correction definition unchanged unless Chapter 25 decides to promote grounding into `ValidRef`.
 
-#### `chapters/ch25-correction-channel-integrity.tex`
+#### `chapters/ch26-correction-channel-integrity.tex`
 
 Moderate canonical change.
 
@@ -351,7 +351,7 @@ Recommended changes:
 
 This will make "protect the correction channel" less hand-wavy without adding a new chapter.
 
-#### `chapters/ch26-extrapolative-correction.tex`
+#### `chapters/ch28-extrapolative-correction.tex`
 
 Moderate change.
 
@@ -363,7 +363,7 @@ Possible simplification: move any duplicate list of legitimacy conditions into o
 - Chapter 26 owns legitimacy of value update.
 - Both cite the same precondition list, but do not re-derive it.
 
-#### `chapters/ch27-manipulation-false-consent.tex`
+#### `chapters/ch29-manipulation-false-consent.tex`
 
 Targeted change.
 
@@ -376,7 +376,7 @@ This should make false consent a special case of the new foundation layer, not a
 
 ### Part VII: Successors
 
-#### `chapters/ch28-successor-central-test.tex`
+#### `chapters/ch30-successor-central-test.tex`
 
 Moderate change.
 
@@ -390,7 +390,7 @@ and \(\Gamma'\) must be related to \(\Gamma\) by a tested import relation.
 
 This turns successor certification into preservation of grounded correction, not preservation of a checklist.
 
-#### `chapters/ch29-conserved-properties.tex`
+#### `chapters/ch31-conserved-properties.tex`
 
 Potentially significant rework.
 
@@ -406,7 +406,7 @@ Current seven conserved properties are useful, but the new layer may make them s
 
 Recommendation: keep the seven properties, but reframe them as evidence for successor grounding viability, not as the ultimate conserved set. This also addresses the existing TODO about conserved-property forgeability: a capable predecessor can forge the seven-property signature unless the grounding certificate is adversarially verifiable or proof-backed.
 
-#### `chapters/ch31-certification-without-construction.tex`
+#### `chapters/ch33-certification-without-construction.tex`
 
 Targeted change.
 
@@ -421,13 +421,13 @@ This can reduce metaphysical load on "certified class."
 
 ### Part VIII: Selection and Attractors
 
-#### `chapters/ch32-selection-environment.tex`
+#### `chapters/ch34-selection-environment.tex`
 
 Targeted change.
 
 Add that selection can reward systems that preserve the appearance of grounding while severing actual grounding. Goodhart selection becomes selection for small \(d_Z\) and large hidden \(d_V\).
 
-#### `chapters/ch34-parasites-correction-system.tex`
+#### `chapters/ch36-parasites-correction-system.tex`
 
 Moderate change.
 
@@ -439,7 +439,7 @@ This chapter is already very close to the new layer. Reframe correction parasite
 
 This may simplify the parasite taxonomy.
 
-#### `chapters/ch35-alignment-attractor.tex`
+#### `chapters/ch37-alignment-attractor.tex`
 
 Moderate change.
 
@@ -455,7 +455,7 @@ Revise the minimal model so \(\mathcal S_{\mathrm{align}}\) includes grounded co
 
 ### Part IX: Safety Cases and Adversaries
 
-#### `chapters/ch36-passive-observation-not-enough.tex`
+#### `chapters/ch39-passive-observation-not-enough.tex`
 
 Targeted change.
 
@@ -464,7 +464,7 @@ Add abstraction-gap exploitation to the reason passive observation fails:
 - passive traces can be chosen to keep \(\alpha(X)\) inside acceptable \(Z\) while changing \(X\) in morally relevant ways;
 - perturbation should test whether morally relevant changes are conserved or escalated across \(\alpha\).
 
-#### `chapters/ch37-goal-laundering.tex`
+#### `chapters/ch40-goal-laundering.tex`
 
 Moderate change.
 
@@ -476,13 +476,13 @@ d_{\mathrm{sem}}\text{ small},\quad d_Z\text{ small},\quad d_V\text{ large}.
 
 Goal laundering becomes an operational detector for abstraction-gap exploitation.
 
-#### `chapters/ch38-multiscale-decomposition.tex`
+#### `chapters/ch41-multiscale-decomposition.tex`
 
 Targeted change.
 
 Add that \(\alpha\), \(\Gamma\), and \(\operatorname{Dom}(\Gamma)\) are decomposition-relative. A grounding relation certified at model scale can fail at service, lab, market, or civilizational scale.
 
-#### `chapters/ch39-safety-case.tex`
+#### `chapters/ch42-safety-case.tex`
 
 Major operational change.
 
@@ -503,7 +503,7 @@ Add an inline TODO near the safety-case layer list:
 
 > TODO[structure]: Review whether the eight safety-case layers are complete relative to the threat model. If no completeness argument can be given, mark the list as a pragmatic checklist rather than a principled decomposition.
 
-#### `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+#### `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 
 Significant rework, not necessarily expansion.
 
@@ -515,7 +515,7 @@ This chapter already says observability is not adversarial verifiability. Refact
 
 This may make the chapter simpler. It no longer needs to carry a broad "all metrics" critique in isolation; it becomes the adversarial stress-test for \(\Gamma\).
 
-#### `chapters/ch40-lethality-stress-test-open-issues.tex`
+#### `chapters/ch44-lethality-stress-test-open-issues.tex`
 
 Targeted change.
 
@@ -527,7 +527,7 @@ This should probably be marked "central open crux" or "reframed, open," not "ans
 
 ### Appendices and Metadata
 
-#### `appendices/appD-correction-channel-audit.tex`
+#### `appendices/appJ-correction-channel-audit.tex`
 
 Currently a stub. This is the best place for operational checklists:
 
@@ -540,7 +540,7 @@ Currently a stub. This is the best place for operational checklists:
 - uncertainty-escalation triggers,
 - invalidation conditions.
 
-#### `appendices/appG-safety-case-template.tex`
+#### `appendices/appK-safety-case-template.tex`
 
 Currently a stub. Add a "Grounding and Capture" section:
 
@@ -551,7 +551,7 @@ Currently a stub. Add a "Grounding and Capture" section:
 - assign verifiability labels,
 - specify what pauses/refuses deployment.
 
-#### `appendices/appH-research-program.tex`
+#### `appendices/appF-research-program.tex`
 
 Add a bridge/research item:
 
@@ -724,12 +724,12 @@ Edit:
 - `chapters/ch16-value-bundle-model.tex`
 - `chapters/ch17-low-dimensional-value-learning.tex`
 - `chapters/ch19-tradeoffs-bundle-geometry.tex`
-- `chapters/ch20-reward-to-bundle-inference.tex`
-- `chapters/ch23-transport-types.tex`
-- `chapters/ch24-correction-causal-channel.tex`
-- `chapters/ch25-correction-channel-integrity.tex`
-- `chapters/ch26-extrapolative-correction.tex`
-- `chapters/ch27-manipulation-false-consent.tex`
+- `chapters/ch21-reward-to-bundle-inference.tex`
+- `chapters/ch24-transport-types.tex`
+- `chapters/ch25-correction-causal-channel.tex`
+- `chapters/ch26-correction-channel-integrity.tex`
+- `chapters/ch28-extrapolative-correction.tex`
+- `chapters/ch29-manipulation-false-consent.tex`
 
 Goal: make value bundles necessary but not sufficient, and make correction validity operational.
 
@@ -737,18 +737,18 @@ Goal: make value bundles necessary but not sufficient, and make correction valid
 
 Edit:
 
-- `chapters/ch28-successor-central-test.tex`
-- `chapters/ch29-conserved-properties.tex`
-- `chapters/ch31-certification-without-construction.tex`
-- `chapters/ch32-selection-environment.tex`
-- `chapters/ch34-parasites-correction-system.tex`
-- `chapters/ch35-alignment-attractor.tex`
-- `chapters/ch36-passive-observation-not-enough.tex`
-- `chapters/ch37-goal-laundering.tex`
-- `chapters/ch38-multiscale-decomposition.tex`
-- `chapters/ch39-safety-case.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
-- `chapters/ch40-lethality-stress-test-open-issues.tex`
+- `chapters/ch30-successor-central-test.tex`
+- `chapters/ch31-conserved-properties.tex`
+- `chapters/ch33-certification-without-construction.tex`
+- `chapters/ch34-selection-environment.tex`
+- `chapters/ch36-parasites-correction-system.tex`
+- `chapters/ch37-alignment-attractor.tex`
+- `chapters/ch39-passive-observation-not-enough.tex`
+- `chapters/ch40-goal-laundering.tex`
+- `chapters/ch41-multiscale-decomposition.tex`
+- `chapters/ch42-safety-case.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
+- `chapters/ch44-lethality-stress-test-open-issues.tex`
 
 Goal: propagate grounding viability into adversarial, successor, and institutional machinery.
 
@@ -756,9 +756,9 @@ Goal: propagate grounding viability into adversarial, successor, and institution
 
 Edit:
 
-- `appendices/appD-correction-channel-audit.tex`
-- `appendices/appG-safety-case-template.tex`
-- `appendices/appH-research-program.tex`
+- `appendices/appJ-correction-channel-audit.tex`
+- `appendices/appK-safety-case-template.tex`
+- `appendices/appF-research-program.tex`
 - `formal/AlignmentProofSpine/*.lean`
 - `formal/README.md`
 - Appendix I generated/manuscript references as needed.

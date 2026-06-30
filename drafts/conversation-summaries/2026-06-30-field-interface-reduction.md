@@ -46,7 +46,7 @@ User asked to improve the field-special-case formalization for the suggested age
 - `formal/AlignmentProofSpine/Field/Impact.lean`
 - `formal/AlignmentProofSpine/Field/Quantilization.lean`
 - `formal/AlignmentProofSpine/Correction.lean`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `metadata/TODO.md`
 
 ## Commits

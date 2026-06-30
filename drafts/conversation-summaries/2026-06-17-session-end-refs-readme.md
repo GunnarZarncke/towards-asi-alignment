@@ -20,7 +20,7 @@
 ## Open / next
 - **Second milestone** (`INSTRUCTIONS.md` §25): preface, executive overview, roadmap, Chapters 1–2, appendices A and F.
 - Wire `\cite{}` into chapters as they are drafted; run `make check`.
-- **Uncommitted working tree** includes prior structure work (44-chapter renumber, ch05 scope chapter, lethality ch40, deferred chapter notes) — not from this session alone; commit when ready.
+- **Uncommitted working tree** includes prior structure work (44-chapter renumber, ch05 scope chapter, lethality ch48, deferred chapter notes) — not from this session alone; commit when ready.
 - Optional: review bib categorization heuristics after first chapter drafting pass.
 
 ## Key paths

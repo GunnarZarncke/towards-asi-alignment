@@ -17,16 +17,16 @@ User asked for a systematic whole-book review of `book.tex` for (1) chapter-to-c
 - Treated INSTRUCTIONS.md as the "intended state" gold standard for judging compliance.
 
 ## Key findings (headline)
-- **No written conclusion:** ch44 empty (chapterthesis `[STUB]`); ch39 (safety-case synthesis) + appG template both stubs; ch43 and ch33 stubs.
+- **No written conclusion:** ch48 empty (chapterthesis `[STUB]`); ch46 (safety-case synthesis) + appG template both stubs; ch47 and ch48 stubs.
 - **All 8 appendices (A–H) are 4-line stubs**, incl. notation (appA) and glossary (appF); several frontmatter files + Executive-Overview blocks are stubs.
 - **"What Would Change This View" missing/mis-titled in ~26 of 44 chapters** (exact heading currently exists mostly only in the stub chapters).
 - **Redundancy:** correction chain ~10×, CCI ~5×, `G_B` ~6× (3 defs), bundle-inference argmax ~6×, value-update operator many×, seven-properties 3×, CEV 4× in Part VI.
-- **Genuine inconsistencies:** ΔL sign convention inverted (Intro vs ch21–23); `B` = capability (Part III) vs value bundle (Part IV); seven-properties lists disagree (ch28/29/31); CCI penalty terms differ; parasite-persistence criterion differs (ch10 vs ch34); `κ=bpρ/c` overloaded (cooperativity vs artifact conductivity); artifact conductivity has two defs (ch34 χ vs ch35 κ(a)); pivotal-process notation in ch40 absent from ch35.
-- **Continuity defects:** ch20→ch21 hand-off points past ch21; ch12 L20 ref mis-points; ch33 narrative orphan; ch40→ch41 unbridged; ch24 silently re-derives ch23.
+- **Genuine inconsistencies:** ΔL sign convention inverted (Intro vs ch46–23); `B` = capability (Part III) vs value bundle (Part IV); seven-properties lists disagree (ch46/29/31); CCI penalty terms differ; parasite-persistence criterion differs (ch10 vs ch46); `κ=bpρ/c` overloaded (cooperativity vs artifact conductivity); artifact conductivity has two defs (ch46 χ vs ch48 κ(a)); pivotal-process notation in ch48 absent from ch48.
+- **Continuity defects:** ch46→ch46 hand-off points past ch46; ch12 L20 ref mis-points; ch48 narrative orphan; ch48→ch45 unbridged; ch46 silently re-derives ch46.
 
 ## Open / next
 - All work for this task is complete; deliverable is ready for human review.
-- Recommended follow-ups for a future session (NOT done here): run `make pdf` + `make check` to mechanically catch broken refs/citations; then work Tier 1 (write ch44/ch39/ch43/ch33, appendices, frontmatter), Tier 2 (WWCTV policy + notation reconciliation in appA + broken-ref fixes), Tier 3 (de-duplication + style standardization).
+- Recommended follow-ups for a future session (NOT done here): run `make pdf` + `make check` to mechanically catch broken refs/citations; then work Tier 1 (write ch48/ch46/ch47/ch48, appendices, frontmatter), Tier 2 (WWCTV policy + notation reconciliation in appA + broken-ref fixes), Tier 3 (de-duplication + style standardization).
 
 ## Key paths
 - `review/full-book-continuity-review-2026-06-22.md` — the deliverable.

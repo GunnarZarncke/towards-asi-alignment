@@ -13,7 +13,7 @@ User provided reviewer feedback that CCI could read high at the catastrophic fix
 
 ## Done
 
-- Updated `chapters/ch25-correction-channel-integrity.tex` so CCI is a conditional anti-capture certificate, not an Archimedean source of legitimacy.
+- Updated `chapters/ch26-correction-channel-integrity.tex` so CCI is a conditional anti-capture certificate, not an Archimedean source of legitimacy.
 - Added `ValidRef(A,G_t,\mathcal H_t)`: CCI is evaluated only when the correcting agent/institution is an independently identified control process with handles not captured by the target system.
 - Added explicit captured/invalid status: if the reference process is captured, CCI is invalid rather than high.
 - Added a footnote that scalar CCI is an expository projection; the certification form should be a vector certificate with per-coordinate thresholds and invalidation rules. Noted the same caveat for scalarized BIQ when used for certification.
@@ -21,7 +21,7 @@ User provided reviewer feedback that CCI could read high at the catastrophic fix
 - Revised directional transparency: it is an access/governance mitigation, not a clean information-theoretic separation between help and manipulation.
 - Added vector-quality framing for the \(Q(U)\) update-quality guardrail.
 - Updated stop/continue criteria to require `ValidRef` and vector CCI thresholds.
-- Updated `chapters/ch27-manipulation-false-consent.tex` so No-Bypass uses a fallible local seed: less-captured correction sources such as protected persons, independent auditors, courts, rival institutions, holdout groups, adversarial reviewers, and pre-system records.
+- Updated `chapters/ch29-manipulation-false-consent.tex` so No-Bypass uses a fallible local seed: less-captured correction sources such as protected persons, independent auditors, courts, rival institutions, holdout groups, adversarial reviewers, and pre-system records.
 - Clarified No-Bypass is a normative rule and audit target, not a detector; verification requires external handles and cannot be established by later endorsement.
 - Added convergence caveat: convergence helps only under protected independent conditions, not after system-mediated dependency or narrowed alternatives.
 - Updated `metadata/claims-ledger.md`, `metadata/assumptions-ledger.md`, and `metadata/uncertainty-ledger.md` so C-005/A-002/U-03 carry the anti-capture validity condition.
@@ -49,8 +49,8 @@ make check   # fails: Expected 10 appendix files, found 9
 
 ## Key paths
 
-- `chapters/ch25-correction-channel-integrity.tex`
-- `chapters/ch27-manipulation-false-consent.tex`
+- `chapters/ch26-correction-channel-integrity.tex`
+- `chapters/ch29-manipulation-false-consent.tex`
 - `metadata/claims-ledger.md`
 - `metadata/assumptions-ledger.md`
 - `metadata/uncertainty-ledger.md`

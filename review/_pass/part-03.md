@@ -68,7 +68,7 @@ Notes:
   ch12 (which ends in a "Conclusion") has WWCTV at line 1184 *before* the Conclusion (1199); ch14 (which
   ends in "Summary") has WWCTV at line 949 *before* the Summary (964). No renamed equivalents — no flag.
 - **No `[STUB]`/`[TODO]`/`FIXME` markers** anywhere in ch11–ch14 (confirmed by search). (Such markers do
-  exist in the redundancy-neighbor ch33, not in this part.)
+  exist in the redundancy-neighbor ch48, not in this part.)
 - **Chapter-ending structure drifts** across the part (consistency, not a missing element): ch11 = Summary;
   ch12 = Conclusion + Chapter summary + Key definitions; ch13 = Summary + Chapter Claims + Open Problems;
   ch14 = Summary. ch12 uniquely carries both a "Conclusion" and a "Chapter summary" (mild internal
@@ -130,14 +130,14 @@ ch14:988–991) but **not flagged at first use**. Consider an early forward `\re
 3. **`κ` cooperativity index defined twice.** ch10 defines `κ_ij` first (`eq:kappa-ch10`,
    ch10:91–96). ch13 re-defines `κ_ij = b·p·ρ/c` from scratch ("This is a generalized Hamilton
    condition…", 369–378) **without acknowledging ch10's prior definition**. **trim/cross-ref:** ch13
-   should cross-ref ch10:eq:kappa-ch10 at first use. (Downstream ch33:52 and ch35:140 also use `κ_ij`;
+   should cross-ref ch10:eq:kappa-ch10 at first use. (Downstream ch48:52 and ch48:140 also use `κ_ij`;
    both correctly cite ch13 — see point 4.)
 
 4. **Percolation handled well downstream — KEEP ch13 as canonical.** ch13 §"Percolation of Coordination"
-   (398–429, eq:cooperation-percolation 404–413) is the canonical derivation. ch35 explicitly inherits
+   (398–429, eq:cooperation-percolation 404–413) is the canonical derivation. ch48 explicitly inherits
    it ("This is the same cooperation graph analyzed in Chapter~\ref{ch:coordination-bottleneck}… We
-   therefore inherit its percolation result rather than re-deriving it", ch35:180; again ch35:1028).
-   ch33 also defers to ch13's "percolation form" (ch33:45, 74). No action needed beyond point 3 — the
+   therefore inherit its percolation result rather than re-deriving it", ch48:180; again ch48:1028).
+   ch48 also defers to ch13's "percolation form" (ch48:45, 74). No action needed beyond point 3 — the
    percolation redundancy risk the task flagged is **already mitigated** by correct downstream cross-refs.
 
 5. **ch11↔ch12 boundary-expansion overlap (minor).** ch11 §"Non-Stationary Systems" (361–400; moving
@@ -239,16 +239,16 @@ ch14:988–991) but **not flagged at first use**. Consider an early forward `\re
 
 **Outgoing concepts introduced for later parts:**
 - The competence functional `B`/`K` and horizon profile `B^(h)` → used by Part V practice chapters and
-  reused by ch33/ch35 percolation.
+  reused by ch48/ch48 percolation.
 - Value-bundle coordinates `B_k`, bearer map `Φ`, value-bundle response geometry `G_B`
   (ch12/13/14) → formally defined in Part IV (ch15–19: `ch:values-compressed-control`,
   `ch:value-bundle-model`, `ch:bearer-maps`, `ch:tradeoffs-bundle-geometry`). Hand-off to ch15 is clean
   (ch14:988–991).
 - Correction-channel chain `W→O→J→D→C→U→A` and `C_corr` (ch12:566–586, ch14:564–606) → the
-  correction-channel-integrity chapter (referenced from ch33:106 as `ch:correction-channel-integrity`).
+  correction-channel-integrity chapter (referenced from ch48:106 as `ch:correction-channel-integrity`).
 - Successor certification `S_certified` (ch12:611, ch14:373–377) → successor/construction chapters
   (cited `zarncke2025construction`).
-- Percolation/`φ_c` → correctly re-used and cross-referenced by ch33 and ch35 (§D.4).
+- Percolation/`φ_c` → correctly re-used and cross-referenced by ch48 and ch48 (§D.4).
 
 Overall the part is a well-sequenced spine: ch11 defines the measure, ch12 makes it dynamic
 (growth=expansion), ch13 makes it collective (coordination), ch14 makes it normative (deepening

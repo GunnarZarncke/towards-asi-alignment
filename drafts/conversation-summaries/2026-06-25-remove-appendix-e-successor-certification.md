@@ -6,7 +6,7 @@ User asked to remove the successor certification Appendix E.
 ## Done
 - Removed `\input{appendices/appE-successor-certification}` from `book.tex`.
 - Deleted stub `appendices/appE-successor-certification.tex`.
-- Updated `metadata/TODO.md` and `scripts/init_scaffold.py` to drop appE; noted successor certification stays in ch28–31.
+- Updated `metadata/TODO.md` and `scripts/init_scaffold.py` to drop appE; noted successor certification stays in ch46–31.
 - `./build.sh` passed.
 
 ## Decisions
@@ -18,7 +18,7 @@ User asked to remove the successor certification Appendix E.
 
 ## Key paths
 - `book.tex`
-- `chapters/ch28-successor-central-test.tex`–`ch31-certification-without-construction.tex`
+- `chapters/ch30-successor-central-test.tex`–`ch48-certification-without-construction.tex`
 
 ## Commits
 - (none this session)

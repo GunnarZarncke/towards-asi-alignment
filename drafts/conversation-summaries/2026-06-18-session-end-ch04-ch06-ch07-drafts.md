@@ -16,7 +16,7 @@ User integrated three chapter drafts (Ch. 4 fixed values, Ch. 6 agent without an
 ## Decisions
 - Kept each chapter's user-supplied section structure (not scaffold template).
 - Preserved existing `\label` keys for cross-refs (`ch:fixed-values-wrong-target`, `ch:agent-without-anthropomorphism`, `ch:finding-boundary`).
-- Session commit stages only the above; left unstaged minor unrelated edits in `README.md`, `ch40-lethality-stress-test-open-issues.tex`, and `2026-06-17-ch03-dynamical-guarantee-draft.md`.
+- Session commit stages only the above; left unstaged minor unrelated edits in `README.md`, `ch48-lethality-stress-test-open-issues.tex`, and `2026-06-17-ch03-dynamical-guarantee-draft.md`.
 
 ## Open / next
 - Ch. 5 and Ch. 8–10 remain stubs in Parts I–II.

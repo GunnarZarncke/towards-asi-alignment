@@ -9,7 +9,7 @@ User: acknowledgements not shown; finish planned frontmatter moves (Diagram/Stan
 - **`frontmatter/preface.tex`:** Updated Introduction entry-point blurb (no “where it is shaky”).
 - **`chapters/ch01-wrong-object.tex`:** Added §The Standard Picture and Its Failure and §Which Alignment? before §The First Mistake.
 - **`chapters/ch02-artificial-civilization.tex`:** Added §A Diagram in Words (`sec:diagram-in-words`) with book-scale loop; narrowed inline engineering loop to subsection of that section.
-- **WWCTV:** Distributed intro shaky bullets to ch07, ch16, ch27, ch28, ch42.
+- **WWCTV:** Distributed intro shaky bullets to ch07, ch16, ch48, ch46, ch46.
 - `./build.sh` passes.
 
 ## Decisions
@@ -20,12 +20,12 @@ User: acknowledgements not shown; finish planned frontmatter moves (Diagram/Stan
 ## Open / next
 - Read-through Intro + Part I for any remaining reframing duplication (ch01 Standard Picture vs First Mistake).
 - Optional: trim Preface Part I bullet if still feels redundant with Introduction roadmap.
-- ch44 opening-promise discharge when synthesis chapter lands.
+- ch48 opening-promise discharge when synthesis chapter lands.
 
 ## Key paths
 - `book.tex`, `frontmatter/{acknowledgements,preface,introduction}.tex`
 - `chapters/ch01-wrong-object.tex`, `chapters/ch02-artificial-civilization.tex`
-- WWCTV: ch07, ch16, ch27, ch28, ch42
+- WWCTV: ch07, ch16, ch48, ch46, ch46
 
 ## Commits
 - `a8b58b7` — Split frontmatter from Part I and move reframing into early chapters.

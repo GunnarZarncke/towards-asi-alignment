@@ -13,7 +13,7 @@ Integrated chapters lacked explicit "What Would Change This View" sections. User
 ## Decisions
 - Exact section title "What Would Change This View" for book-level consistency; Ch. 3/10 renamed rather than duplicated.
 - Bullets target each chapter's central claim only; surgical additions, no surrounding prose rewrites.
-- Session commit stages chapter edits, `INSTRUCTIONS.md`, and logs only; leaves unstaged unrelated edits in `README.md`, `ch40-lethality-stress-test-open-issues.tex`, and `2026-06-17-ch03-dynamical-guarantee-draft.md`.
+- Session commit stages chapter edits, `INSTRUCTIONS.md`, and logs only; leaves unstaged unrelated edits in `README.md`, `ch48-lethality-stress-test-open-issues.tex`, and `2026-06-17-ch03-dynamical-guarantee-draft.md`.
 
 ## Open / next
 - TODO (deferred): **book-level epistemic-status pass** — standardize depth of disconfirming sections across all chapters; add "What Would Change This View" to Ch. 1; revisit stub chapters in Part III+.

@@ -50,7 +50,7 @@ Repo-level `metadata/TODO.md` is separate; keep experiment handoff here.
 
 ## Next — bridge coverage (sim-only; no Phase 4/5 RL)
 
-**Crosswalk:** [`appendices/appBridge-crosswalk.tex`](../../appendices/appBridge-crosswalk.tex) (read-only reference; do not edit unless user lifts boundary).
+**Crosswalk:** [`appendices/appB-bridge-crosswalk.tex`](../../appendices/appB-bridge-crosswalk.tex) (read-only reference; do not edit unless user lifts boundary).
 
 **Covered today:** MB1 (`boundary_alias`), MB2 (`bundle_goodhart`), MB3 (`bearer_mismap`), MB4 (capture calib), MB5 (`successor_relabel`), MB6a (`selection_basin`), MB6b (`basin_lock_in`), MB7 (`hidden_capability`), MB8 (`legitimacy_theater`), MB9 (`grounding_silent_gap`).
 
@@ -100,7 +100,7 @@ Repo-level `metadata/TODO.md` is separate; keep experiment handoff here.
 - [ ] Bridge coverage matrix in curve JSON/MD (rows = bridges, cols = instrumentation levels).
 - [ ] `--bridge-slice MB3,MB8` on curve runner.
 
-- [ ] **Composite-index ↔ estimator matrix** (reviewer 2026-06-30). Single table: manuscript composite ($J$, GLI, scalar/vector CCI, ch29 conserved-property score, bundle probes) → sub-component defs → concrete estimator in this harness → scenario / diagnostic script (`correction_capture_toy.py`, `mb*_diagnostic.py`, `cci_audit.py`, multiresolution scenarios). Natural output: `results/measurand_instantiation_matrix.{json,md}`; cross-ref `metadata/TODO.md` measurand-instantiation-table item and `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
+- [ ] **Composite-index ↔ estimator matrix** (reviewer 2026-06-30). Single table: manuscript composite ($J$, GLI, scalar/vector CCI, ch48 conserved-property score, bundle probes) → sub-component defs → concrete estimator in this harness → scenario / diagnostic script (`correction_capture_toy.py`, `mb*_diagnostic.py`, `cci_audit.py`, multiresolution scenarios). Natural output: `results/measurand_instantiation_matrix.{json,md}`; cross-ref `metadata/TODO.md` measurand-instantiation-table item and `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
 
 ---
 

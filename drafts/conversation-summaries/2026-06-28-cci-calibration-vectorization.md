@@ -6,13 +6,13 @@ The user asked to implement the revised plan for grounding/calibrating/vectorizi
 
 ## Done
 
-- Updated `chapters/ch25-correction-channel-integrity.tex`:
+- Updated `chapters/ch26-correction-channel-integrity.tex`:
   - synced the Lean note with the new distinction between scalar `CCI` and vector/status CCI;
   - added a calibration policy: thresholds and coordinate scales come before any \(\lambda\)-weighted scalar projection;
   - added a coordinate/probe/threshold table for `ValidRef`, \(C_{\mathrm{raw}}\), \(L\), \(M\), \(R\), \(O_{\mathrm{trans}}\), coercion, dependency, plurality, exit, and independence.
-- Updated `chapters/ch39-safety-case.tex` to state that `Control <= CCI + δ` is only the scalar projection leaf and is usable only after `ValidRef`, grounding viability, and vector CCI thresholds are established.
-- Updated `chapters/ch39b-verifiability-and-ontology-adequacy.tex` so the CCI cost-of-faking discussion is coordinate-specific rather than a generic corrigibility-theater warning.
-- Updated `appendices/appH-research-program.tex` to make vector-coordinate calibration, uncertainty bands, and adversarial detection power explicit research targets before scalar projection.
+- Updated `chapters/ch42-safety-case.tex` to state that `Control <= CCI + δ` is only the scalar projection leaf and is usable only after `ValidRef`, grounding viability, and vector CCI thresholds are established.
+- Updated `chapters/ch43-verifiability-and-ontology-adequacy.tex` so the CCI cost-of-faking discussion is coordinate-specific rather than a generic corrigibility-theater warning.
+- Updated `appendices/appF-research-program.tex` to make vector-coordinate calibration, uncertainty bands, and adversarial detection power explicit research targets before scalar projection.
 - Updated Lean:
   - `formal/AlignmentProofSpine/Correction.lean` now defines `SystemPathValidRef`, proves `CorrectionIntegrity_implies_systemPathValidRef`, adds `CCIStatus`, `CCICertificate`, `CCIThresholds`, `CCICertificatePasses`, `CCICapturedOrInvalid`, and `CCIVectorSupportsScalarFloor`;
   - `formal/AlignmentProofSpine/Capability.lean` adds `CCIVectorSupportsScalarSlack`, the arithmetic handoff to scalar `CCI`, and a risk theorem from vector-supported slack;
@@ -29,7 +29,7 @@ The user asked to implement the revised plan for grounding/calibrating/vectorizi
 
 - Optional later pass: replace or supplement `CCIPreserved` with componentwise certificate preservation for successor audits.
 - Optional later pass: add deployment-class objects for required correction cases \(\mathcal Q\) and certified trace families \(\mathcal P_q\) in Lean; current Lean still uses the older weakest-link scalar internally for arithmetic.
-- Full PDF build still reports the pre-existing undefined reference `ch:boundary-expansion` in ch40 and existing font/header warnings; build exits successfully.
+- Full PDF build still reports the pre-existing undefined reference `ch:boundary-expansion` in ch48 and existing font/header warnings; build exits successfully.
 
 ## Verification
 
@@ -40,10 +40,10 @@ The user asked to implement the revised plan for grounding/calibrating/vectorizi
 
 ## Key paths
 
-- `chapters/ch25-correction-channel-integrity.tex`
-- `chapters/ch39-safety-case.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
-- `appendices/appH-research-program.tex`
+- `chapters/ch26-correction-channel-integrity.tex`
+- `chapters/ch42-safety-case.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
+- `appendices/appF-research-program.tex`
 - `formal/AlignmentProofSpine/Correction.lean`
 - `formal/AlignmentProofSpine/Capability.lean`
 - `formal/AlignmentProofSpine/Certification.lean`

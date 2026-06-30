@@ -17,7 +17,7 @@ Execute session-end plan: split argument / meta / skim; stop Introduction front-
 
 ## Open / next
 - Optional: tighten EO TL;DR vs introclaims further if still feels redundant on read-through.
-- ch44 opening-promise discharge when synthesis chapter is written.
+- ch48 opening-promise discharge when synthesis chapter is written.
 
 ## Key paths
 - `frontmatter/{preface,introduction,executive-overview,current-status}.tex`

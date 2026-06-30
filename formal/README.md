@@ -28,7 +28,7 @@ and makes one distinction explicit and machine-checked:
   Each bridge is mapped to the canonical open problem of the field (IRL
   non-identifiability, ELK, off-switch anti-naturality, ontology identification,
   obfuscated arguments, spec coverage, …) in the manuscript appendix
-  *Bridges and the Field: A Crosswalk* (`appendices/appBridge-crosswalk.tex`).
+  *Bridges and the Field: A Crosswalk* (`appendices/appB-bridge-crosswalk.tex`).
 
 **Toy vs. target strength.** The current spine is deliberately compact. Many
 counterexamples are finite `Bool` separations (one predicate defined as `True`,
@@ -107,14 +107,14 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, CID abstraction-relative incentive separation, smoothing-margin arithmetic | 6–7, 10, 36 |
 | `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, Markov-blanket/B-IQ profiles, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
 | `AlignmentProofSpine/CooperationGraph.lean` | **`UADDiscoveryAudit`**, **`UnitScore`**, **`MetaPriorEvidence`**, `metaPriorMismatch` derived from `P_meta` diagonal mass, **`InferentialDetectionCertificate`**, **`DerivedCoopGraph`**, **`DerivedInferentialGraph`**, `causalMutualModelOf` / `inferentialProfileOf` / `inferentialPairOf` (opaque evidence emitters), `inferentialCouplingScore`, `auditMutualModelWithInferential`, `uad_audit_yields_inferential_graph`, `severed_causal_reach_positive_effective_reach`, **`P33`** | 13, 33, 35 |
-| `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), scalar CIRL as one-dimensional bundle inference, cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23 (including 19b), 28 |
-| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 24–27 (including 25b), 38–39b |
+| `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), scalar CIRL as one-dimensional bundle inference, cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23, 30 |
+| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 25–29, 41–43 |
 | `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared-domain special-case / projection theorems with explicit interface conditions, non-converse separations, shared status ledger, finite Mathlib-backed helpers (`Finite/MDP`, `Finite/Probability`, `Finite/PMF`, `Finite/Weights`, `Finite/Reachability`, `Finite/Contraction`, `Finite/TraceBIQ`), cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization. Recent finite derivations include assistance-belief defer optimality, finite-horizon AUP attainable-utility preservation, PMF quantilizer support soundness, quantilizer base-rate fragments, trace-computed vector B-IQ / output-capability appearance bounds, attended-harm / extinction certificates, and a concentration bridge with worst-case fallback for supplied blanket partitions. Debate/ELK remain later targets for native protocol/reporter theorem matching. | crosswalk appendix |
 | `AlignmentProofSpine/FieldSubsumptions.lean` | compatibility re-export for the field-agenda headline theorem names | crosswalk appendix |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, **`SuccessorMeasurandChain`**, risk bound propagation | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
-| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, finite-support `P40`, direct/bridge-derived layer evidence records, grounding required by `LayeredAlignedDef`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_from_bridge_record`** and **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 35 (including 35b), 39, 44 |
+| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, finite-support `P40`, direct/bridge-derived layer evidence records, grounding required by `LayeredAlignedDef`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_from_bridge_record`** and **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 37–38, 42, 48 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
 
 ## Three kinds of result (for the book)
@@ -179,13 +179,13 @@ depends on `MB4`.
   now grounded in a correcting agent's controlled handles. The richer manuscript
   $C_{\mathrm{raw}}$ is represented as a certificate coordinate; the old weakest-link
   scalar remains inside `CCI` for existing arithmetic lemmas.
-* **`DeploymentMass`** is environment-relative deployment/control mass (book ch32,
-  `eq:deployment-mass-ch32`). Selection uses `SelectionChannel` / `SelectionHandleFor`
+* **`DeploymentMass`** is environment-relative deployment/control mass (book ch46,
+  `eq:deployment-mass-ch46`). Selection uses `SelectionChannel` / `SelectionHandleFor`
   over the same `Handle` type as correction. Revenue and regulatory risk are not
   primitive Lean terms.
-* **`SuccessorSafe`** = `Nonempty SuccessorSafeWitness` with the ch29 seven
+* **`SuccessorSafe`** = `Nonempty SuccessorSafeWitness` with the ch48 seven
   conserved-property fields; correction capacity is `CCIPreserved` (vector `\vec{CCI}`
-  in prose, including ch24 `U_S` semantics via `rawCapacity` and `ontologyTranslation`).
+  in prose, including ch46 `U_S` semantics via `rawCapacity` and `ontologyTranslation`).
 * Node IDs match `formal/AlignmentProofSpine/*.lean` theorem names (see module map above).
   Full graph: `context/lean_proof_dependency_graph.dot`.
   Book layout: four sub-spines + overview in `context/lean_proof_graphs/` → `figures/lean_proof/` via `scripts/render_lean_graphs.sh` (Lean Proof Spine appendix, Section~\ref{sec:appi-proof-dependency}).

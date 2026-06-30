@@ -21,12 +21,12 @@ Follow-ups after the bridges-crosswalk and research-order sessions: (1) "Fix MB9
 - Left `RELEASE_NOTES.md` (untracked, unrelated) out of the commit.
 
 ## Open / next
-- Optional ch44/ch40/introduction cross-links to the crosswalk (offered, not done).
+- Optional ch48/ch48/introduction cross-links to the crosswalk (offered, not done).
 - Lean dependency-graph figures may not render an MB9 node; regenerate via `scripts/render_lean_graphs.sh` if desired.
 - Execute the narrative-voice and appendix-renumbering TODOs.
 
 ## Key paths
-- `appendices/appBridge-crosswalk.tex`, `appendices/appH-research-program.tex`, `appendices/appI-lean-proof-spine.tex`, `appendices/appE-assumptions.tex`
+- `appendices/appB-bridge-crosswalk.tex`, `appendices/appF-research-program.tex`, `appendices/appG-lean-proof-spine.tex`, `appendices/appL-assumptions.tex`
 - `frontmatter/preface.tex`, `frontmatter/executive-overview.tex`, `metadata/TODO.md`
 
 ## Commits

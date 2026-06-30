@@ -20,7 +20,7 @@ User ended session after chapter 11 draft integration.
 
 ### Source map & citations
 - `metadata/source-canon.md` — deep-research report chapter mapping.
-- `references/*.bib` — 16+ new entries; surgical cites in ch03–ch12, ch40; `TODO(deep-research)` in stubs.
+- `references/*.bib` — 16+ new entries; surgical cites in ch03–ch12, ch48; `TODO(deep-research)` in stubs.
 - `context/towards-asi-alignment-deep-research-report.md` — untracked.
 
 ### Metadata

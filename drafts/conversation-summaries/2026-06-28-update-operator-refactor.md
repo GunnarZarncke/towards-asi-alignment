@@ -2,14 +2,14 @@
 
 ## Trigger
 
-The user asked to implement the Human Update Operator Refactor plan: avoid treating \(U_H\) as another purely philosophical, unspecified gear, especially in ch34, ch41, and `Core.lean`.
+The user asked to implement the Human Update Operator Refactor plan: avoid treating \(U_H\) as another purely philosophical, unspecified gear, especially in ch46, ch45, and `Core.lean`.
 
 ## Done
 
-- Updated `chapters/ch34-parasites-correction-system.tex`:
+- Updated `chapters/ch36-parasites-correction-system.tex`:
   - reframed \(U_H\) as schematic notation for an auditable envelope, not a hidden mechanism;
   - replaced direct \(U_H\to\tilde U_H\) mutation as the main formal object with degradation of `ValidRef`, grounding viability, and vector CCI.
-- Updated `chapters/ch41-value-change-at-stake.tex`:
+- Updated `chapters/ch45-value-change-at-stake.tex`:
   - stated that \(U_H\) is compression, not a certificate;
   - reframed domestication as failure of grounding, bundle/bearer transport, vector CCI, exit, plurality, institutional independence, or adversarial verifiability;
   - replaced the technical target \((B_t,W_t,\Phi_t,U_H)\in\mathcal S_{\text{human-correctable}}\) with an explicit envelope condition over existing framework terms.
@@ -28,9 +28,9 @@ The user asked to implement the Human Update Operator Refactor plan: avoid treat
 
 ## Open / next
 
-- Future pass: adjust ch26 if desired so its \(U_H\) language points more explicitly at `ValueUpdateEnvelope`, while preserving ch26 as the canonical extrapolative-correction chapter.
+- Future pass: adjust ch46 if desired so its \(U_H\) language points more explicitly at `ValueUpdateEnvelope`, while preserving ch46 as the canonical extrapolative-correction chapter.
 - Future Lean pass: strengthen P25/P26 toy counterexamples using `ValueUpdateEnvelope` / process-preservation structure rather than `Bool` toys.
-- Full PDF build still reports the known undefined reference `ch:boundary-expansion` in ch40 and existing font/header warnings; build exits successfully.
+- Full PDF build still reports the known undefined reference `ch:boundary-expansion` in ch48 and existing font/header warnings; build exits successfully.
 
 ## Verification
 
@@ -41,8 +41,8 @@ The user asked to implement the Human Update Operator Refactor plan: avoid treat
 
 ## Key paths
 
-- `chapters/ch34-parasites-correction-system.tex`
-- `chapters/ch41-value-change-at-stake.tex`
+- `chapters/ch36-parasites-correction-system.tex`
+- `chapters/ch45-value-change-at-stake.tex`
 - `formal/AlignmentProofSpine/Core.lean`
 - `metadata/TODO.md`
 

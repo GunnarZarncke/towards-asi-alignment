@@ -7,7 +7,7 @@ The user asked to update chapter statuses so chapters that received feedback in 
 ## Done
 
 - Updated every chapter entry in `metadata/book.yml` from `draft` to `reviewed`.
-  - This includes the split chapters `ch19b`, `ch25b`, and `ch35b`.
+  - This includes the split chapters `ch46`, `ch48`, and `ch45`.
 - Updated visible status language:
   - `README.md` now says there are `0 draft`, `48 reviewed`, `0 stub` chapter entries.
   - `frontmatter/current-status.tex` now clarifies that `reviewed` means feedback has been received and incorporated or logged, not final/polished/publication-ready.
@@ -17,8 +17,8 @@ The user asked to update chapter statuses so chapters that received feedback in 
   - `metadata/book-stats.md`
 - Updated the split-plan files so their proposed status lines use the same convention:
   - `review/ch19-split-plan-2026-06-28.md`
-  - `review/ch25-split-plan-2026-06-28.md`
-  - `review/ch35-split-plan-2026-06-28.md`
+  - `review/ch46-split-plan-2026-06-28.md`
+  - `review/ch48-split-plan-2026-06-28.md`
 
 ## Decisions
 
@@ -38,8 +38,8 @@ The user asked to update chapter statuses so chapters that received feedback in 
 - `tables/chapter-map.tex`
 - `metadata/book-stats.md`
 - `review/ch19-split-plan-2026-06-28.md`
-- `review/ch25-split-plan-2026-06-28.md`
-- `review/ch35-split-plan-2026-06-28.md`
+- `review/ch46-split-plan-2026-06-28.md`
+- `review/ch48-split-plan-2026-06-28.md`
 
 ## Commits
 

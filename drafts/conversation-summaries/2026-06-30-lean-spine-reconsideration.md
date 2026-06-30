@@ -21,7 +21,7 @@ User asked to build the reconsidered Lean proof-spine plan in order, adding a ne
   - added missing records for shutdown / interruptibility separations and Debate / ELK projection lemmas;
   - left Debate/ELK/Christiano imported handles in place.
 - Docs:
-  - updated `formal/README.md`, `appendices/appI-lean-proof-spine.tex`, and `metadata/TODO.md` for explicit bridge records, finite P40, PMF quantilizer, finite-horizon AUP, and Markov-blanket/B-IQ numeric leaves.
+  - updated `formal/README.md`, `appendices/appG-lean-proof-spine.tex`, and `metadata/TODO.md` for explicit bridge records, finite P40, PMF quantilizer, finite-horizon AUP, and Markov-blanket/B-IQ numeric leaves.
 
 ## Decisions
 - Kept empirical validity in `MB*` bridges; the new bridge-record theorem only makes those dependencies explicit.
@@ -44,7 +44,7 @@ User asked to build the reconsidered Lean proof-spine plan in order, adding a ne
 - `formal/AlignmentProofSpine/Field/Interruptibility.lean`
 - `formal/AlignmentProofSpine/Field/Shutdown.lean`
 - `formal/README.md`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `metadata/TODO.md`
 
 ## Commits

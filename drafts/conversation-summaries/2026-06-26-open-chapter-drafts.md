@@ -12,23 +12,23 @@ The user asked to implement the open-chapter drafting plan: build a synthesis br
 - Drafted Chapter 39 as a conditional safety-case assembly chapter tied to `P30`, `P40`, `MB1`--`MB8`, verifiability labels, refusal conditions, and a worked deployment example.
 - Drafted Chapter 43 as the bearer/merger philosophical-limit chapter, including upload/merger treatment, \(\beta_{\mathrm{self}}\), bearer-map transformation, `P44`/`P45` limitation framing, worked example, and failure mode.
 - Drafted Chapter 44 as the final synthesis, explicitly revisiting the five Introduction claims, progress artifacts, Practical Hope regime, proof-spine conditional shape, and remaining open gaps.
-- Promoted `ch05`, `ch33`, `ch39`, `ch43`, and `ch44` from `stub` to `draft` in `metadata/book.yml`; regenerated `tables/chapter-map.tex`.
+- Promoted `ch05`, `ch48`, `ch46`, `ch47`, and `ch48` from `stub` to `draft` in `metadata/book.yml`; regenerated `tables/chapter-map.tex`.
 - Updated `frontmatter/current-status.tex`, `metadata/TODO.md`, `metadata/claims-ledger.md`, and `metadata/uncertainty-ledger.md` to reflect draft completion and remaining research gaps.
 - Added `turchin2020classification` to `references/manuscript-citations.bib`.
 - Follow-up: marked chapters with explicit logged reader/reviewer/user feedback as `reviewed` in `metadata/book.yml` and regenerated `tables/chapter-map.tex`.
 
 ## Decisions
 
-- Kept `ch39` as a conditional safety-case chapter rather than moving `ch39b`; `ch39` uses verifiability labels operationally and lets `ch39b` remain the deeper critique.
-- Treated `ch33` giant-component and detector claims as conjectural/empirical, with Lean support limited to `P32` threshold arithmetic and `P33` no-open-edge graph fact.
-- Treated `ch43` and `ch44` as philosophical-limit synthesis: technical invariants preserve conditions for legitimate value change but do not decide legitimacy.
-- Did not expand `ch39b`, `ch40`, appG, or other appendices beyond the plan scope.
+- Kept `ch46` as a conditional safety-case chapter rather than moving `ch47`; `ch46` uses verifiability labels operationally and lets `ch47` remain the deeper critique.
+- Treated `ch48` giant-component and detector claims as conjectural/empirical, with Lean support limited to `P32` threshold arithmetic and `P33` no-open-edge graph fact.
+- Treated `ch47` and `ch48` as philosophical-limit synthesis: technical invariants preserve conditions for legitimate value change but do not decide legitimacy.
+- Did not expand `ch47`, `ch48`, appG, or other appendices beyond the plan scope.
 
 ## Open / next
 
-- `appendices/appG-safety-case-template.tex` remains a stub and should be written from the new `ch39`.
-- `ch39b` still owns the cost-of-faking formalization and perturbation-recognition crux.
-- `ch40` remains thin and still needs per-lethality expansion plus reflective-correction/delegated-verification open-crux work.
+- `appendices/appK-safety-case-template.tex` remains a stub and should be written from the new `ch46`.
+- `ch47` still owns the cost-of-faking formalization and perturbation-recognition crux.
+- `ch48` remains thin and still needs per-lethality expansion plus reflective-correction/delegated-verification open-crux work.
 - Historical review files under `review/` still describe the old stubs; they were not rewritten.
 - Frontmatter stubs and other appendix stubs remain outside this pass.
 
@@ -36,10 +36,10 @@ The user asked to implement the open-chapter drafting plan: build a synthesis br
 
 - `drafts/chapter-notes/open-chapters-synthesis-brief-2026-06-26.md`
 - `chapters/ch05-assumptions-scope-failure-coverage.tex`
-- `chapters/ch33-multi-agent-strategic-coupling.tex`
-- `chapters/ch39-safety-case.tex`
-- `chapters/ch43-bearers-of-value.tex`
-- `chapters/ch44-towards-alignment.tex`
+- `chapters/ch35-multi-agent-strategic-coupling.tex`
+- `chapters/ch42-safety-case.tex`
+- `chapters/ch47-bearers-of-value.tex`
+- `chapters/ch48-towards-alignment.tex`
 - `metadata/book.yml`
 - `metadata/TODO.md`
 - `metadata/claims-ledger.md`

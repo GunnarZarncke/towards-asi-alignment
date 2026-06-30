@@ -1,31 +1,31 @@
 Commented LW references relevant for each chapter.
 
-Chapter numbers follow `metadata/book.yml` (including ch05 and ch40).
+Chapter numbers follow `metadata/book.yml` (including ch05 and ch48).
 BibTeX keys for cited posts live in `references/external-alignment.bib`.
 
 ### BibTeX keys wired into drafted chapters (ch01--04, 06--10, 40)
 
 | BibTeX key | LW post | Drafted chapters |
 |---|---|---|
-| `critch2022boundaries` | Boundaries, Part 1 | ch01 |
+| `critch4622boundaries` | Boundaries, Part 1 | ch01 |
 | `christiano2019failure` | What Failure Looks Like | ch01, ch02, ch09 |
-| `critch2021multipolar` | Multipolar failure / RAPs | ch02, ch09, ch40 |
-| `shlegeris2023aicontrol` | AI Control | ch03, ch10, ch40 |
-| `thornley2023shutdown` | Shutdown Problem | ch03, ch08, ch40 |
+| `critch4621multipolar` | Multipolar failure / RAPs | ch02, ch09, ch48 |
+| `shlegeris2023aicontrol` | AI Control | ch03, ch10, ch48 |
+| `thornley2023shutdown` | Shutdown Problem | ch03, ch08, ch48 |
 | `yudkowsky2007wishes` | Hidden Complexity of Wishes | ch04 |
 | `yudkowsky2009valuefragile` | Value is Fragile | ch04 |
 | `yudkowsky2011cevdynamic` | Selective CEV initial dynamic | ch04 |
-| `wentworth2020pointers` | Pointers Problem | ch04, ch40 |
+| `wentworth2020pointers` | Pointers Problem | ch04, ch48 |
 | `wentworth2021selection` | Selection Theorems | ch06 |
 | `wentworth2022agentstructure` | Agent-Like Structure Problem | ch06 |
-| `critch2022boundaries3a` | Boundaries Part 3a | ch07 |
+| `critch4622boundaries3a` | Boundaries Part 3a | ch07 |
 | `lakin2023boundaries` | Formalizing Boundaries | ch07 |
 | `kulveit2025pando` | Pando Problem | ch08 |
-| `hubinger2023modelorganisms` | Model Organisms of Misalignment | ch10, ch40 |
-| `yudkowsky2022agiruin` | AGI Ruin / List of Lethalities | ch40 |
-| `soares2022sharpleftturn` | Sharp Left Turn | ch40 |
-| `christiano2018corrigibility` | Corrigibility | ch40 |
-| `soares2022hardbits` | Plans miss hard bits | ch40 |
+| `hubinger2023modelorganisms` | Model Organisms of Misalignment | ch10, ch48 |
+| `yudkowsky2022agiruin` | AGI Ruin / List of Lethalities | ch48 |
+| `soares2022sharpleftturn` | Sharp Left Turn | ch48 |
+| `christiano2018corrigibility` | Corrigibility | ch48 |
+| `soares2022hardbits` | Plans miss hard bits | ch48 |
 
 
 ---
@@ -384,7 +384,7 @@ BibTeX keys for cited posts live in `references/external-alignment.bib`.
   URL: [https://www.lesswrong.com/posts/HFyWNBnDNEDsDNLrZ/the-true-prisoner-s-dilemma](https://www.lesswrong.com/posts/HFyWNBnDNEDsDNLrZ/the-true-prisoner-s-dilemma)
   Summary: Classic LW treatment of cooperation when payoffs are real utilities, not social labels. **[Y]** ([lesswrong.com][38])
 
-*Former LW §33 (Percolation of Cooperation); merged here because the book combines cooperation/percolation under ch33.*
+*Former LW §33 (Percolation of Cooperation); merged here because the book combines cooperation/percolation under ch48.*
 
 * **Andrew Critch, “What Multipolar Failure Looks Like,” 31 Mar 2021**
   URL: [https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic](https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic)
@@ -460,7 +460,7 @@ BibTeX keys for cited posts live in `references/external-alignment.bib`.
 
 ### Orphan reference: Tripwires and Stop Conditions (former LW §39)
 
-No dedicated book chapter; closest fit is ch39 (safety case) and ch40 (lethality stress test).
+No dedicated book chapter; closest fit is ch46 (safety case) and ch48 (lethality stress test).
 
 * **Evan Hubinger, "RSPs are pauses done right," 13 Oct 2023**
   URL: [https://www.lesswrong.com/posts/mcnWZBnbeDz7KKtjJ/rsps-are-pauses-done-right](https://www.lesswrong.com/posts/mcnWZBnbeDz7KKtjJ/rsps-are-pauses-done-right)
@@ -478,11 +478,11 @@ No dedicated book chapter; closest fit is ch39 (safety case) and ch40 (lethality
 
 * **Eliezer Yudkowsky, "AGI Ruin: A List of Lethalities," 5 Jun 2022**
   URL: [https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities](https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities)
-  Summary: Canonical checklist of reasons alignment may fail under capability growth; cited throughout ch40. **[Y, K]** ([lesswrong.com][18])
+  Summary: Canonical checklist of reasons alignment may fail under capability growth; cited throughout ch48. **[Y, K]** ([lesswrong.com][18])
 
 * **Nate Soares, "On how various plans miss the hard bits of the alignment challenge," 11 Jul 2022**
   URL: [https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment](https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment)
-  Summary: Field-failure row in ch40 lethality checklist. **[K, T]** ([lesswrong.com][36])
+  Summary: Field-failure row in ch48 lethality checklist. **[K, T]** ([lesswrong.com][36])
 
 * **Paul Christiano, "Where I agree and disagree with Eliezer," 19 Jun 2022**
   URL: [https://www.lesswrong.com/posts/CoZhXrhpQxpy9xw9y/where-i-agree-and-disagree-with-eliezer](https://www.lesswrong.com/posts/CoZhXrhpQxpy9xw9y/where-i-agree-and-disagree-with-eliezer)
@@ -510,7 +510,7 @@ No dedicated book chapter; closest fit is ch39 (safety case) and ch40 (lethality
 
 ## 43. The Bearers of Value
 
-*Former LW §42 (Merging With Artificial Entities); placed under ch43 because bearer/patienthood questions dominate.*
+*Former LW §42 (Merging With Artificial Entities); placed under ch47 because bearer/patienthood questions dominate.*
 
 * **Eliezer Yudkowsky, “Timeless Identity,” 3 Jun 2008**
   URL: [https://www.lesswrong.com/posts/924arDrTu3QRHFA5r/timeless-identity](https://www.lesswrong.com/posts/924arDrTu3QRHFA5r/timeless-identity)
@@ -522,7 +522,7 @@ No dedicated book chapter; closest fit is ch39 (safety case) and ch40 (lethality
 
 ## 44. Towards Superintelligence Alignment
 
-*Former LW §44 (What Cannot Be Solved Technically); placed under ch44 as civilizational-limit material.*
+*Former LW §44 (What Cannot Be Solved Technically); placed under ch48 as civilizational-limit material.*
 
 * **Eliezer Yudkowsky, “No Universally Compelling Arguments in Math or Science,” 4 Nov 2013**
   URL: [https://www.lesswrong.com/posts/FpupDqv4vbHSiawER/no-universally-compelling-arguments-in-math-or-science](https://www.lesswrong.com/posts/FpupDqv4vbHSiawER/no-universally-compelling-arguments-in-math-or-science)

@@ -30,7 +30,7 @@ The user provided reviewer feedback that Chapter 7's boundary-discovery criterio
 ## Key paths
 - `chapters/ch07-finding-boundary.tex`
 - `chapters/ch10-strategic-opacity.tex`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `metadata/claims-ledger.md`
 - `metadata/assumptions-ledger.md`
 - `metadata/uncertainty-ledger.md`

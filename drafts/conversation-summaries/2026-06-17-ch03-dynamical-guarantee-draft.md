@@ -18,7 +18,7 @@ User provided a full draft for Chapter 3 (Alignment as a Dynamical Guarantee) an
 ## Open / next
 - Ch. 4–5 remain stubs in Part I.
 - Consider inline `\autocite` during later polish (Ch. 1 cites throughout; Ch. 3 cites mainly in Chapter References).
-- Review overlap with later chapters (e.g. `ch39-safety-case.tex`, `ch31-certification-without-construction.tex`) when those are drafted.
+- Review overlap with later chapters (e.g. `ch46-safety-case.tex`, `ch48-certification-without-construction.tex`) when those are drafted.
 
 ## Key paths
 - `chapters/ch03-dynamical-guarantee.tex`

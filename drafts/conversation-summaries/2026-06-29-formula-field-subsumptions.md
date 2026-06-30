@@ -21,7 +21,7 @@ User asked to upgrade the remaining field subsumptions (beyond interrupt) to use
 - Some forward links are conditional (e.g. low-impact bound when penalty is defined as `kappaNext - theta`).
 
 ## Open / next
-- Wire `\leanspine{}` macros in ch20, ch25b, ch26, ch27, ch39b to new theorem names.
+- Wire `\leanspine{}` macros in ch46, ch48, ch46, ch48, ch47 to new theorem names.
 - Strengthen shutdown/debate subsumptions to derive weak predicates from `κ_C` without extra handle hypotheses.
 
 ## Key paths

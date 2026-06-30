@@ -191,13 +191,13 @@ Avoid renaming section labels during the split unless necessary. Current `-geome
 Likely file plan:
 
 - Keep `chapters/ch19-tradeoffs-bundle-geometry.tex` as Chapter A.
-- Add `chapters/ch19b-measuring-stress-testing-bundle-geometry.tex` as Chapter B if avoiding renumbering.
+- Add `chapters/ch20-measuring-stress-testing-bundle-geometry.tex` as Chapter B if avoiding renumbering.
 
 Alternative:
 
-- Wait for global chapter renumbering and make Chapter B the new ch20, shifting current ch20+.
+- Wait for global chapter renumbering and make Chapter B the new ch46, shifting current ch46+.
 
-Recommendation: use temporary `ch19b` only if the project is comfortable with another `b` chapter before global numbering cleanup. Otherwise, record the split plan and execute during the chapter-numbering cleanup pass.
+Recommendation: use temporary `ch46` only if the project is comfortable with another `b` chapter before global numbering cleanup. Otherwise, record the split plan and execute during the chapter-numbering cleanup pass.
 
 ### Part IV
 
@@ -209,7 +209,7 @@ Update `parts/part04-value-bundles.tex`:
 
 ### `metadata/book.yml`
 
-Add `ch19b` if using temporary numbering:
+Add `ch46` if using temporary numbering:
 
 - title: `Measuring and Stress-Testing Bundle Geometry`
 - status: reviewed (under the current convention: feedback received, not final)
@@ -264,25 +264,25 @@ Labels likely to move to Chapter B:
 
 Review and potentially update:
 
-- `chapters/ch20-reward-to-bundle-inference.tex`
-  - It likely references ch19 for geometry; point measurement-related claims to ch19b.
-- `chapters/ch22-goal-transport.tex`
-  - Bundle preservation references may stay ch19; measurement/Goodhart references may move ch19b.
-- `chapters/ch23-transport-types.tex`
+- `chapters/ch21-reward-to-bundle-inference.tex`
+  - It likely references ch19 for geometry; point measurement-related claims to ch46.
+- `chapters/ch23-goal-transport.tex`
+  - Bundle preservation references may stay ch19; measurement/Goodhart references may move ch46.
+- `chapters/ch24-transport-types.tex`
   - Transport of bundle geometry may cite both.
-- `chapters/ch37-goal-laundering.tex`
-  - Tradeoff laundering should probably cite ch19b.
-- `appendices/appC-value-bundle-inference.tex`
-  - If expanded, ch19b is a natural source.
+- `chapters/ch40-goal-laundering.tex`
+  - Tradeoff laundering should probably cite ch46.
+- `appendices/appI-value-bundle-inference.tex`
+  - If expanded, ch46 is a natural source.
 - `metadata/notation.md`
   - `G_B` / geometry notation home likely remains ch19.
-  - Measurement-specific notation may get ch19b only if needed.
+  - Measurement-specific notation may get ch46 only if needed.
 
 ## Implementation Order
 
 1. Create new chapter shell.
 2. Move measurement/stress sections.
-3. Rewrite ch19 close and ch19b open.
+3. Rewrite ch19 close and ch46 open.
 4. Split WWCTV and summaries.
 5. Update Part IV, `metadata/book.yml`, generated tables.
 6. Search/review cross-references to ch19 and moved section labels.
@@ -296,5 +296,5 @@ Review and potentially update:
 
 - Does `Bundle Metrics` stay with geometry or move to measurement?
 - Should contextual-weight failure modes be split between chapters?
-- Should social choice remain in ch19b or become part of a later civilizational/governance chapter?
-- Should the worked toy model be kept in ch19b or moved to Appendix C?
+- Should social choice remain in ch46 or become part of a later civilizational/governance chapter?
+- Should the worked toy model be kept in ch46 or moved to Appendix C?

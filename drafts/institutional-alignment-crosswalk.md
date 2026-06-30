@@ -40,7 +40,7 @@ This gives the draft a discipline: each mapping should name not only the institu
 
 ## 1. Boundary Discovery: Who Is the Real Actor?
 
-Book concept: boundary discovery. The book asks us to find the real optimizer, not the visible model or formal entity. See `chapters/ch06-agent-without-anthropomorphism.tex`, `chapters/ch07-finding-boundary.tex`, and `appendices/appBridge-crosswalk.tex` on MB1.
+Book concept: boundary discovery. The book asks us to find the real optimizer, not the visible model or formal entity. See `chapters/ch06-agent-without-anthropomorphism.tex`, `chapters/ch07-finding-boundary.tex`, and `appendices/appB-bridge-crosswalk.tex` on MB1.
 
 Institutional analogue: jurisdiction assignment, beneficial ownership, alter-ego doctrine, corporate veil piercing, market-structure analysis, shadow-control analysis, and investigation of informal decision rights.
 
@@ -91,7 +91,7 @@ Quantitative hook: compare pre-authorization test burden to post-hoc enforcement
 
 ## 3. Value Bundles: Constitutions Are Close, But Not the Same
 
-Book concept: value bundles. In the book, values are compressed control directions with tradeoff geometry and bearer maps. See `chapters/ch16-value-bundle-model.tex`, `chapters/ch19b-measuring-stress-testing-bundle-geometry.tex`, and `chapters/ch27-manipulation-false-consent.tex`.
+Book concept: value bundles. In the book, values are compressed control directions with tradeoff geometry and bearer maps. See `chapters/ch16-value-bundle-model.tex`, `chapters/ch20-measuring-stress-testing-bundle-geometry.tex`, and `chapters/ch29-manipulation-false-consent.tex`.
 
 Institutional analogue: constitutions, charters, rights catalogues, fiduciary duties, professional ethics, and public-interest mandates.
 
@@ -124,7 +124,7 @@ Forward-projection to institutions: bundle audits could make constitutional or r
 
 ## 4. Bearer Maps: Who Counts for Which Value?
 
-Book concept: bearer maps. A bearer map specifies what entities, states, or processes a value bundle applies to. See `chapters/ch18-bearer-maps.tex`, `chapters/ch21-compression-test-intention.tex`, and `chapters/ch29-conserved-properties.tex`.
+Book concept: bearer maps. A bearer map specifies what entities, states, or processes a value bundle applies to. See `chapters/ch18-bearer-maps.tex`, `chapters/ch22-compression-test-intention.tex`, and `chapters/ch31-conserved-properties.tex`.
 
 Institutional analogue: standing, protected classes, constituency definition, guardianship, corporate personhood, environmental standing, data-subject rights, and future-generations representation.
 
@@ -153,7 +153,7 @@ Baseline:
 
 ## 5. Goal Transport: When the Words Survive but the Function Moves
 
-Book concept: goal transport. See `chapters/ch22-goal-transport.tex`, `chapters/ch23-transport-types.tex`, and `chapters/ch37-detecting-goal-laundering.tex`.
+Book concept: goal transport. See `chapters/ch23-goal-transport.tex`, `chapters/ch24-transport-types.tex`, and `chapters/ch48-detecting-goal-laundering.tex`.
 
 Institutional analogue: legal interpretation, precedent, treaty continuity, mission preservation, administrative guidance, and the distinction between letter and spirit.
 
@@ -177,7 +177,7 @@ Baseline:
 
 ## 6. Correction Channel: Does Objection Change Future Action?
 
-Book concept: correction channel. See `chapters/ch24-correction-causal-channel.tex`.
+Book concept: correction channel. See `chapters/ch25-correction-causal-channel.tex`.
 
 Institutional analogue: complaint systems, courts, appeals, injunctions, ombuds offices, recalls, elections, clinical holds, regulator orders, labor strikes, public-comment processes, and budgetary vetoes.
 
@@ -209,7 +209,7 @@ Quantitative hook: behavioral correction uplift, such as the difference in actio
 
 ## 7. Correction-Channel Integrity: The Certificate Over the Channel
 
-Book concept: correction-channel integrity, or CCI. See `chapters/ch25-correction-channel-integrity.tex` and `chapters/ch25b-correction-channels-adversarial-pressure.tex`.
+Book concept: correction-channel integrity, or CCI. See `chapters/ch26-correction-channel-integrity.tex` and `chapters/ch27-correction-channels-adversarial-pressure.tex`.
 
 Relation:
 
@@ -236,7 +236,7 @@ The key anti-theater rule: failed validity should invalidate the certificate, no
 
 ## 8. Manipulation and False Consent: What Institutions Know and What They Do
 
-Book concept: manipulation, domestication, and false consent. See `chapters/ch27-manipulation-false-consent.tex`.
+Book concept: manipulation, domestication, and false consent. See `chapters/ch29-manipulation-false-consent.tex`.
 
 The earlier crosswalk said institutions "know" consent and oversight can be manufactured. More precise:
 
@@ -269,7 +269,7 @@ Forward-projection: CCI-style validity tests could improve institutional consent
 
 ## 9. Successor Stability: Does Correction Survive Delegation?
 
-Book concept: successor stability. See `chapters/ch28-successor-central-test.tex` and `chapters/ch29-conserved-properties.tex`.
+Book concept: successor stability. See `chapters/ch30-successor-central-test.tex` and `chapters/ch31-conserved-properties.tex`.
 
 Institutional analogue: peaceful transfer of power, amendment procedures, corporate mergers, spin-offs, civil-service continuity, succession law, license inheritance, and open-source fork governance.
 
@@ -287,7 +287,7 @@ AI back-projection: model distillation, fine-tuning, tool delegation, copies, ag
 
 ## 10. Socio-Technical Attractor Control: Selection Baselines
 
-Book concept: socio-technical attractor control. See `chapters/ch32-selection-environment.tex`, `chapters/ch35-alignment-attractor.tex`, and `chapters/ch35b-conductive-artifacts-pivotal-processes.tex`.
+Book concept: socio-technical attractor control. See `chapters/ch34-selection-environment.tex`, `chapters/ch37-alignment-attractor.tex`, and `chapters/ch38-conductive-artifacts-pivotal-processes.tex`.
 
 The earlier phrase "make certified systems easier to fund, buy, insure, and deploy" needs clarification. This is not a moral baseline. It is a selection-environment baseline.
 
@@ -322,7 +322,7 @@ Quantitative hook: deployment mass share. What fraction of real deployments, fun
 
 ## 11. Conductive Artifacts: Making Safety Knowledge Travel
 
-Book concept: conductive artifacts. See `chapters/ch35b-conductive-artifacts-pivotal-processes.tex`.
+Book concept: conductive artifacts. See `chapters/ch38-conductive-artifacts-pivotal-processes.tex`.
 
 Institutional analogue: checklists, airworthiness directives, FDA label changes, incident taxonomies, procurement clauses, audit packs, model cards, safety cases, and certification templates.
 
@@ -338,7 +338,7 @@ AI back-projection: safety artifacts should be designed for role-specific uptake
 
 ## 12. Adversarial Measurement and Handles
 
-Book concept: adversarial measurement and handle-controlled correction. See `chapters/ch24-correction-causal-channel.tex`, `chapters/ch36-passive-observation-not-enough.tex`, and `chapters/ch39b-verifiability-and-ontology-adequacy.tex`.
+Book concept: adversarial measurement and handle-controlled correction. See `chapters/ch25-correction-causal-channel.tex`, `chapters/ch39-passive-observation-not-enough.tex`, and `chapters/ch43-verifiability-and-ontology-adequacy.tex`.
 
 For policy readers, a handle is an intervention point that a legitimate corrector can control and use to observe downstream behavior. Examples: subpoena, inspection, injunction, license suspension, budget line, recall order, compute cap, export denial, procurement exclusion, architecture requirement.
 
@@ -356,7 +356,7 @@ This is where the institutional analogy becomes most practically useful. A safet
 
 ## 13. Inferential Coupling: Coordination Without Messages
 
-Book concept: inferential coupling. See `chapters/ch33-multi-agent-strategic-coupling.tex` and MB7d in `appendices/appBridge-crosswalk.tex`.
+Book concept: inferential coupling. See `chapters/ch35-multi-agent-strategic-coupling.tex` and MB7d in `appendices/appB-bridge-crosswalk.tex`.
 
 The earlier crosswalk asked whether oversight should test whether systems remain coordinated after communication channels are severed. Is this actually applied in real life? Partially, under other names, but not yet as standard AI oversight.
 
@@ -379,7 +379,7 @@ Source gap: the repo is thin on competition-law sources. A future appendix shoul
 
 ## 14. Grounding Conservativity: Weakest Institutional Analogue
 
-Book concept: grounding conservativity. See `chapters/ch03-dynamical-guarantee.tex`, `chapters/ch39b-verifiability-and-ontology-adequacy.tex`, and MB9 in `appendices/appBridge-crosswalk.tex`.
+Book concept: grounding conservativity. See `chapters/ch03-dynamical-guarantee.tex`, `chapters/ch43-verifiability-and-ontology-adequacy.tex`, and MB9 in `appendices/appB-bridge-crosswalk.tex`.
 
 This is probably the weakest mapping. Institutions do have mechanisms that try to force important reality changes into the record:
 
@@ -505,16 +505,16 @@ Avoid broad institutional terms unless decomposed.
 
 Strong manuscript anchors:
 
-- `appendices/appBridge-crosswalk.tex`: bridge-to-field positioning.
-- `chapters/ch24-correction-causal-channel.tex`: handle-controlled correction.
-- `chapters/ch25-correction-channel-integrity.tex`: CCI vector and anti-capture validity.
-- `chapters/ch25b-correction-channels-adversarial-pressure.tex`: institutional correction networks.
-- `chapters/ch27-manipulation-false-consent.tex`: false consent, domestication, institutional manipulation.
-- `chapters/ch32-selection-environment.tex`: deployment mass and selection divergence.
-- `chapters/ch33-multi-agent-strategic-coupling.tex`: inferential coupling.
-- `chapters/ch35b-conductive-artifacts-pivotal-processes.tex`: artifacts and pivotal process.
-- `chapters/ch36-passive-observation-not-enough.tex`: adversarial measurement.
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`: cost of faking and grounding capture.
+- `appendices/appB-bridge-crosswalk.tex`: bridge-to-field positioning.
+- `chapters/ch25-correction-causal-channel.tex`: handle-controlled correction.
+- `chapters/ch26-correction-channel-integrity.tex`: CCI vector and anti-capture validity.
+- `chapters/ch27-correction-channels-adversarial-pressure.tex`: institutional correction networks.
+- `chapters/ch29-manipulation-false-consent.tex`: false consent, domestication, institutional manipulation.
+- `chapters/ch34-selection-environment.tex`: deployment mass and selection divergence.
+- `chapters/ch35-multi-agent-strategic-coupling.tex`: inferential coupling.
+- `chapters/ch38-conductive-artifacts-pivotal-processes.tex`: artifacts and pivotal process.
+- `chapters/ch39-passive-observation-not-enough.tex`: adversarial measurement.
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`: cost of faking and grounding capture.
 
 Source gaps to fill before appendix/chapter integration:
 

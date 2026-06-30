@@ -40,7 +40,7 @@ theorem oa_interrupt_invariant_policy_same_action {nState nAct : Nat}
     π InterruptBit.zero s = π InterruptBit.one s :=
   FieldFinite.interrupt_invariant_policy_same_action π h s
 
-theorem interrupt_subsumption_ch24
+theorem interrupt_subsumption_ch46
     (deltaHuman deltaAgent kappaMin : Int)
     (hagent : 0 ≤ deltaAgent) (hmin : 0 < kappaMin)
     (hchan : UsableCorrectionInformation deltaHuman deltaAgent kappaMin) :

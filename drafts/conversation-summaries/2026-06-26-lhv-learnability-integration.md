@@ -39,16 +39,16 @@ The user asked to integrate a stronger value-learning argument: attack the stron
 - `frontmatter/executive-overview.tex`
 - `frontmatter/introduction.tex`
 - `chapters/ch17-low-dimensional-value-learning.tex`
-- `chapters/ch20-reward-to-bundle-inference.tex`
+- `chapters/ch21-reward-to-bundle-inference.tex`
 - `formal/AlignmentProofSpine/Bundles.lean`
-- `appendices/appH-research-program.tex`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appF-research-program.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `context/lean_proof_graphs/02-value-transport.dot`
 - `context/lean_proof_dependency_graph.dot`
 - `src/demos/ch17-lhv-learnability/`
 
 ## Verification
-- Follow-up verification after LHCV explanation: `make check`, full PDF build with `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" ./build.sh`, ReadLints on `ch15`/`ch17`/`ch20`.
+- Follow-up verification after LHCV explanation: `make check`, full PDF build with `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" ./build.sh`, ReadLints on `ch15`/`ch17`/`ch46`.
 - Figure verification: source SVG rendered with `rsvg-convert`; full PDF build succeeded after including `figures/lhv/hub-centric-brain-value-map.png`.
 - Frontmatter verification: `make check`, ReadLints on frontmatter files, full PDF build with `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" ./build.sh`.
 - `cd formal && lake build`

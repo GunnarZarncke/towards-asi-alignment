@@ -22,7 +22,7 @@ User asked to remove the factor-of-1000 millibit scale (adds nothing) and stop m
 ## Key paths
 - `formal/AlignmentProofSpine/Field/Finite/TraceBIQ.lean`
 - `chapters/ch11-capability-without-task-ontology.tex`
-- `appendices/appI-lean-proof-spine.tex` (`appi:sec:trace-attended-harm`)
+- `appendices/appG-lean-proof-spine.tex` (`appi:sec:trace-attended-harm`)
 
 ## Commits
 - `c9f5ce1` Drop millibit scale and rename trace estimator as pattern diversity.

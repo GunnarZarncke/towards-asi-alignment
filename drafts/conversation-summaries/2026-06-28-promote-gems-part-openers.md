@@ -25,7 +25,7 @@ The user noted that reviewers may miss some of the book's depth because importan
   - Part IX: debate, amplification, and ELK as narrower subchannels that do not by themselves preserve correction.
 - Updated `metadata/book.yml` part summaries so the Introduction's generated `How to Read This Book` roadmap includes the same gems in very short form.
 - Added `summary_latex` support to `scripts/generate_tables.py` so the generated roadmap can contain durable linked text without hand-editing `tables/part-roadmap.tex`. This remains a candidate for replacement by a markdown-to-TeX gems source file.
-- Added `\label{sec:cost-relation-ch39b}` to the ch39b cost-of-faking section so the Part IX gem can link directly to it.
+- Added `\label{sec:cost-relation-ch47}` to the ch47 cost-of-faking section so the Part IX gem can link directly to it.
 - Regenerated `tables/part-roadmap.tex` and `tables/chapter-map.tex` with `python3 scripts/generate_tables.py`.
 - Added a cross-cutting TODO to `metadata/TODO.md` to fill part-opener whitespace with compact illustrations / conceptual diagrams.
 - Added `REVIEWING_FOR_AGENTS.md`, a read-only reviewer guide for coding agents that summarizes the thesis, review posture, checklist, gem map, existing-work subsumptions, empirical-source pointers to related repos, output format, and anti-patterns.

@@ -32,18 +32,18 @@ The user asked to add "subsumption + break" comparisons against more existing al
 - Decide later whether any of these separations deserve claim-ledger entries; this pass kept ledgers unchanged because the claims are localized extensions of existing invariants.
 
 ## Key paths
-- `chapters/ch24-correction-causal-channel.tex`
-- `chapters/ch25-correction-channel-integrity.tex`
-- `chapters/ch20-reward-to-bundle-inference.tex`
+- `chapters/ch25-correction-causal-channel.tex`
+- `chapters/ch26-correction-channel-integrity.tex`
+- `chapters/ch21-reward-to-bundle-inference.tex`
 - `chapters/ch07-finding-boundary.tex`
-- `chapters/ch27-manipulation-false-consent.tex`
-- `chapters/ch38-multiscale-decomposition.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+- `chapters/ch29-manipulation-false-consent.tex`
+- `chapters/ch41-multiscale-decomposition.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 - `formal/AlignmentProofSpine/Correction.lean`
 - `formal/AlignmentProofSpine/Bundles.lean`
 - `formal/AlignmentProofSpine/Boundaries.lean`
-- `appendices/appI-lean-proof-spine.tex`
-- `appendices/appH-research-program.tex`
+- `appendices/appG-lean-proof-spine.tex`
+- `appendices/appF-research-program.tex`
 - `context/lean_proof_dependency_graph.dot`
 - `context/lean_proof_graphs/01-boundary-measurement.dot`
 - `context/lean_proof_graphs/02-value-transport.dot`

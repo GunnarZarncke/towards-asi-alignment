@@ -1,10 +1,10 @@
-# ch25 Split Plan — Correction-Channel Certificate and Stress Tests
+# ch46 Split Plan — Correction-Channel Certificate and Stress Tests
 
 Recorded 2026-06-28. This is a detailed implementation plan only; do not split the chapter until the chapter map / numbering decision is explicit.
 
 ## Executive Decision
 
-Split ch25 by **certificate vs. stress-test**, not by **theory vs. application**.
+Split ch46 by **certificate vs. stress-test**, not by **theory vs. application**.
 
 The goal is to preserve the user's concern that CCI theory and application constrain each other, while reducing the current overload of one 35-page, 84-formula, 27-section chapter. The first chapter should define the correction-channel integrity certificate. The second should attack that certificate under ontology shift, capability growth, successor creation, Goodhart pressure, and existing-work comparisons.
 
@@ -38,7 +38,7 @@ Rationale: `When Extrapolation Becomes Capture` and `Directional Transparency...
 
 ### Chapter A: Correction-Channel Integrity
 
-Keep these sections from current ch25:
+Keep these sections from current ch46:
 
 - `Chapter Thesis`
   - Rewrite to say this chapter defines the certificate; the next chapter stress-tests it.
@@ -93,7 +93,7 @@ Expected result:
 
 ### Chapter B: Correction Channels under Adversarial Pressure
 
-Move these sections from current ch25 to new ch25b:
+Move these sections from current ch46 to new ch48:
 
 - `Correction under Ontology Shift`
   - Opening section. It is the first stress regime.
@@ -105,7 +105,7 @@ Move these sections from current ch25 to new ch25b:
 
 - `Correction under Successor Creation`
   - Move.
-  - Connect to ch28-ch31 successor tests.
+  - Connect to ch46-ch48 successor tests.
 
 - `Self-Modeling versus Self-Transparency`
   - Move.
@@ -113,7 +113,7 @@ Move these sections from current ch25 to new ch25b:
 
 - `Institutional Correction`
   - Move.
-  - Could also be partly moved to ch32/ch35, but keep here if it stresses CCI under real-world routing.
+  - Could also be partly moved to ch46/ch48, but keep here if it stresses CCI under real-world routing.
 
 - `Goodharting the Correction Channel`
   - Move.
@@ -151,7 +151,7 @@ Move these sections from current ch25 to new ch25b:
 
 - `Safety Case Template`
   - Move to Appendix D.
-  - Preferred: keep a compact fragment in Chapter B and move the reusable template to `appendices/appD-correction-channel-audit.tex`.
+  - Preferred: keep a compact fragment in Chapter B and move the reusable template to `appendices/appJ-correction-channel-audit.tex`.
 
 - `A Compact Formal Summary`
   - Split.
@@ -175,7 +175,7 @@ Add a new opening section:
 - `The Certificate under Pressure`
   - Recaps Chapter A in 1-2 paragraphs.
   - States: "A CCI certificate is not useful because it is defined; it is useful only if adversaries cannot cheaply pass it while destroying correction."
-  - Connects to ch39b cost-of-faking and ch39 safety-case usage.
+  - Connects to ch47 cost-of-faking and ch46 safety-case usage.
 
 Expected result:
 
@@ -218,34 +218,34 @@ Use stable labels:
 
 Likely file plan:
 
-- Keep `chapters/ch25-correction-channel-integrity.tex` as Chapter A.
-- Add a new file, e.g. `chapters/ch25b-correction-channel-stress-tests.tex` if avoiding renumbering.
+- Keep `chapters/ch26-correction-channel-integrity.tex` as Chapter A.
+- Add a new file, e.g. `chapters/ch48-correction-channel-stress-tests.tex` if avoiding renumbering.
 - Or, if doing a full renumber later:
-  - `ch25`: Correction-Channel Integrity.
-  - `ch26`: Stress-Testing Correction-Channel Integrity.
-  - existing ch26+ shift forward.
+  - `ch46`: Correction-Channel Integrity.
+  - `ch46`: Stress-Testing Correction-Channel Integrity.
+  - existing ch46+ shift forward.
 
-Recommendation: use `ch25b` temporarily if the project wants to avoid renumbering churn, consistent with the current `ch39b` pattern. If the project later does "Chapter numbering cleanup", fold `ch25b` into a global renumbering pass.
+Recommendation: use `ch48` temporarily if the project wants to avoid renumbering churn, consistent with the current `ch47` pattern. If the project later does "Chapter numbering cleanup", fold `ch48` into a global renumbering pass.
 
 ### Part VI
 
 Update `parts/part06-correction-channels.tex`:
 
-- Add the new chapter input between ch25 and current ch26.
+- Add the new chapter input between ch46 and current ch46.
 - Update intro prose:
   - "defines correction-channel integrity" -> "defines and stress-tests correction-channel integrity".
   - existing-work subsumptions should point to Chapter B for low impact / quantilization.
 
 ### `metadata/book.yml`
 
-Add a `ch25b` entry if using the temporary split:
+Add a `ch48` entry if using the temporary split:
 
 - title: `Correction Channels under Adversarial Pressure`
 - status: reviewed (under the current convention: feedback received, not final).
 - word target: 6,000-8,000 depending on moved material.
 - formal density: high or medium-high.
 - reviewer_needed: `[alignment, control-theory, formal-verification]` or similar.
-- note: temporary insertion before ch26; avoid renumbering until chapter-numbering cleanup.
+- note: temporary insertion before ch46; avoid renumbering until chapter-numbering cleanup.
 
 Update Part VI summary to mention both certificate and stress tests.
 
@@ -261,29 +261,29 @@ Current labels that should remain in Chapter A:
 - `ch:correction-channel-integrity`
 - `sec:chapter-thesis-cci`
 - `sec:why-correction-not-feedback`
-- `sec:correction-chain-ch25`
+- `sec:correction-chain-ch46`
 - `sec:correction-channel-integrity-def`
 - `sec:coerced-correction` if kept as invalidity condition
 - `sec:value-bundle-correction`
 - `sec:policy-vs-bundle-correction`
-- `sec:extrapolative-correction-ch25`
+- `sec:extrapolative-correction-ch46`
 - `sec:extrapolation-capture`
-- `sec:directional-transparency-ch25`
+- `sec:directional-transparency-ch46`
 
 Current labels likely to move to Chapter B:
 
-- `sec:correction-ontology-shift-ch25`
-- `sec:correction-capability-growth-ch25`
-- `sec:correction-successor-creation-ch25`
-- `sec:self-modeling-transparency-ch25`
+- `sec:correction-ontology-shift-ch46`
+- `sec:correction-capability-growth-ch46`
+- `sec:correction-successor-creation-ch46`
+- `sec:self-modeling-transparency-ch46`
 - `sec:institutional-correction`
-- `sec:goodharting-correction-ch25`
-- `sec:low-impact-not-invariant-ch25`
-- `sec:quantilization-trajectory-risk-ch25`
+- `sec:goodharting-correction-ch46`
+- `sec:low-impact-not-invariant-ch46`
+- `sec:quantilization-trajectory-risk-ch46`
 - `sec:observable-metrics-cci`
-- `sec:stop-start-continue-ch25`
-- `sec:example-helpful-planner-ch25`
-- `sec:example-ai-companion-ch25`
+- `sec:stop-start-continue-ch46`
+- `sec:example-helpful-planner-ch46`
+- `sec:example-ai-companion-ch46`
 - `sec:what-integrity-does-not-solve`
 - `sec:safety-case-template-cci`
 - `sec:compact-formal-summary-cci`
@@ -291,7 +291,7 @@ Current labels likely to move to Chapter B:
 - `sec:wwctv-correction-channel-integrity`
 - `sec:chapter-conclusion-cci`
 
-Avoid renaming labels during the split unless necessary. Keeping labels stable reduces cross-reference churn. A later cleanup can rename labels from `-ch25` to `-ch25b` if desired.
+Avoid renaming labels during the split unless necessary. Keeping labels stable reduces cross-reference churn. A later cleanup can rename labels from `-ch46` to `-ch48` if desired.
 
 ### Lean / Formal Spine
 
@@ -299,15 +299,15 @@ Likely no Lean code change is required for the split itself.
 
 But update documentation surfaces:
 
-- `formal/README.md` chapter mapping may need to show Correction.lean spanning ch24-ch27 or ch24-ch25b/ch26 depending numbering.
-- Appendix I prose or theorem references may need updates if it cites current ch25 sections for low-impact / quantilization.
+- `formal/README.md` chapter mapping may need to show Correction.lean spanning ch46-ch48 or ch46-ch48/ch46 depending numbering.
+- Appendix I prose or theorem references may need updates if it cites current ch46 sections for low-impact / quantilization.
 - `\leanspine` notes in Chapter A / B:
   - Chapter A should cite P24 / scalar-vs-vector CCI certificate.
   - Chapter B should cite low-impact and quantilization separation nodes where those sections move.
 
 ### Appendices
 
-`appendices/appD-correction-channel-audit.tex` is currently a stub and is the natural destination for reusable audit material.
+`appendices/appJ-correction-channel-audit.tex` is currently a stub and is the natural destination for reusable audit material.
 
 Move to Appendix D:
 
@@ -334,8 +334,8 @@ The split improves signposting:
 - Chapter B: demonstrations that common proposals preserve weaker objects:
   - low impact / AUP / relative reachability;
   - quantilization;
-  - possibly shutdown / interruptibility if cross-referenced back to ch24;
-  - broader corrigibility via ch26.
+  - possibly shutdown / interruptibility if cross-referenced back to ch46;
+  - broader corrigibility via ch46.
 
 Part VI opener and `REVIEWING_FOR_AGENTS.md` should point readers to Chapter B for these subsumptions.
 
@@ -350,17 +350,17 @@ After split, rerun:
 
 Expected effects:
 
-- ch25 page/formula/section count drops.
-- New ch25b likely still medium/high complexity but more coherent.
+- ch46 page/formula/section count drops.
+- New ch48 likely still medium/high complexity but more coherent.
 - Part VI has one more chapter, so part/chapter counts and any "45 chapters" text must update.
 
 ### Numbering And Indexing
 
-Using `ch25b` avoids immediate global renumbering but has consequences:
+Using `ch48` avoids immediate global renumbering but has consequences:
 
-- Generated tables must handle `ch25b`. The generator already handles `ch39b`; confirm it handles arbitrary `chNNb`.
-- `metadata/book.yml` currently has `ch39b` support; mirror that pattern.
-- The PDF displayed chapter count may shift if `\chapter` ordering includes ch25b.
+- Generated tables must handle `ch48`. The generator already handles `ch47`; confirm it handles arbitrary `chNNb`.
+- `metadata/book.yml` currently has `ch47` support; mirror that pattern.
+- The PDF displayed chapter count may shift if `\chapter` ordering includes ch48.
 - The Introduction / README "45 chapter entries" will become 46 unless using a non-chapter appendix-style insertion.
 
 If this is undesirable, do not split until the "Chapter numbering cleanup" TODO is addressed.
@@ -370,20 +370,20 @@ If this is undesirable, do not split until the "Chapter numbering cleanup" TODO 
 Review these after split:
 
 - `metadata/notation.md`:
-  - CCI home remains ch25.
-  - If stress-test notation gets its own home, add ch25b only if necessary.
+  - CCI home remains ch46.
+  - If stress-test notation gets its own home, add ch48 only if necessary.
 - `metadata/assumptions-ledger.md`:
   - MB4 correction legitimacy may cite both certificate and stress-test chapter.
 - `metadata/TODO.md`:
   - update split preference TODO once acted upon.
-- `appendices/appF-glossary.tex`:
-  - CCI glossary may need "defined in ch25, stress-tested in ch25b".
-- `appendices/appH-research-program.tex`:
+- `appendices/appE-glossary.tex`:
+  - CCI glossary may need "defined in ch46, stress-tested in ch48".
+- `appendices/appF-research-program.tex`:
   - CCI research item may point to both chapters.
 
 ## Implementation Order
 
-1. **Create `ch25b` shell.**
+1. **Create `ch48` shell.**
    - Add chapter title, label, chapter thesis, and refsection.
    - Add a brief "Certificate under pressure" opening.
 
@@ -391,16 +391,16 @@ Review these after split:
    - Move sections from `Correction under Ontology Shift` through `Summary`.
    - Keep labels stable.
 
-3. **Rewrite ch25 ending.**
+3. **Rewrite ch46 ending.**
    - Add `What the Certificate Does and Does Not Claim`.
-   - Add forward reference to ch25b.
+   - Add forward reference to ch48.
    - Add a new compact summary.
    - Split WWCTV if needed.
 
-4. **Rewrite ch25b opening and conclusion.**
-   - Add back-reference to ch25.
+4. **Rewrite ch48 opening and conclusion.**
+   - Add back-reference to ch46.
    - Reframe moved material as stress tests.
-   - Create ch25b-specific WWCTV and Summary.
+   - Create ch48-specific WWCTV and Summary.
 
 5. **Decide appendix offload.**
    - Move reusable audit/template material to Appendix D if Chapter B remains too long.
@@ -412,7 +412,7 @@ Review these after split:
    - `README.md` / frontmatter status if chapter count changes
 
 7. **Update cross-references.**
-   - Search for `ch:correction-channel-integrity`, `sec:low-impact-not-invariant-ch25`, `sec:quantilization-trajectory-risk-ch25`, `sec:safety-case-template-cci`.
+   - Search for `ch:correction-channel-integrity`, `sec:low-impact-not-invariant-ch46`, `sec:quantilization-trajectory-risk-ch46`, `sec:safety-case-template-cci`.
    - Redirect broad references only when they specifically mean stress-testing.
 
 8. **Verify.**
@@ -423,8 +423,8 @@ Review these after split:
 
 ## Open Editorial Questions
 
-- Should the new chapter be `ch25b` now or wait for global renumbering?
+- Should the new chapter be `ch48` now or wait for global renumbering?
 - Should Appendix D absorb the audit checklist and safety-case template immediately?
 - Should low-impact / quantilization remain in the CCI stress-test chapter, or move to a broader existing-work-subsumption chapter/appendix later?
 - Should Chapter A include a short "stress-test preview" box so readers know the applications were not removed?
-- Should Chapter B be reviewed before marking ch25 as reviewed again?
+- Should Chapter B be reviewed before marking ch46 as reviewed again?

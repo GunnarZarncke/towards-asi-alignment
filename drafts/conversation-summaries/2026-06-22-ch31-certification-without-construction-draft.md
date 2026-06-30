@@ -5,7 +5,7 @@ User supplied a full author draft for Chapter 31 ("Certification Without
 Construction") and asked to integrate it into the chapter file.
 
 ## Done
-- Replaced the stub `chapters/ch31-certification-without-construction.tex` with
+- Replaced the stub `chapters/ch33-certification-without-construction.tex` with
   the integrated draft (Shape B — kept the draft's native narrative structure).
 - Added the required book elements the raw draft lacked:
   - real `chapterthesis` (from the draft's Chapter summary);
@@ -14,7 +14,7 @@ Construction") and asked to integrate it into the chapter file.
   - inline `\autocite{...}` at key points and a prose Chapter References paragraph
     closing with `\printbibliography[heading=subbibliography,...]`, replacing the
     draft's hand-formatted `thebibliography` list;
-  - `-ch31`-suffixed `\label`s on sections; kept the book's existing chapter
+  - `-ch48`-suffixed `\label`s on sections; kept the book's existing chapter
     label `ch:certification-without-construction`;
   - cross-refs to Chapters~\ref{ch:conserved-properties},
     \ref{ch:successor-central-test}, \ref{ch:value-bundle-model},
@@ -28,12 +28,12 @@ Construction") and asked to integrate it into the chapter file.
   `\(A_t\)`, malformed subscripts (`\mathcal{C}*{\text{certified}}`,
   `\bigwedge*{k=1}^{7}`, `\Phi^{A'}*i`, `\mathcal{B}*{\text{safe}}`, etc.),
   `=====`/`##` in display math, and backtick/quote typos.
-- `metadata/book.yml`: ch31 status `stub` → `draft`.
-- Build green: `./build.sh` exits 0; no undefined citations for ch31.
+- `metadata/book.yml`: ch48 status `stub` → `draft`.
+- Build green: `./build.sh` exits 0; no undefined citations for ch48.
 
 ## Decisions
 - Kept display math as `\[ ... \]` rather than numbered `equation` environments
-  — matches ch27–ch30 integration pattern.
+  — matches ch48–ch46 integration pattern.
 - Wired stub TODO cites: `kelly1998safety`, `bloomfield2012safety`,
   `everitt2016selfmodification`.
 - Omitted Leveson (2011) and Ashby (1956) — no matching BibLaTeX keys in repo.
@@ -46,7 +46,7 @@ Construction") and asked to integrate it into the chapter file.
   certification/safety-case coverage.
 
 ## Key paths
-- `chapters/ch31-certification-without-construction.tex`
+- `chapters/ch33-certification-without-construction.tex`
 - `metadata/book.yml`
 
 ## Commits

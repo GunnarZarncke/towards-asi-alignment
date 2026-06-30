@@ -5,7 +5,7 @@ User supplied a full author draft for Chapter 34 ("Parasites in the Correction
 System") and asked to integrate it into the chapter file.
 
 ## Done
-- Replaced the stub `chapters/ch34-parasites-correction-system.tex` with the
+- Replaced the stub `chapters/ch36-parasites-correction-system.tex` with the
   integrated draft (Shape B — kept the draft's native narrative structure).
 - Added the required book elements the raw draft lacked:
   - real `chapterthesis` (from the draft's opening quote);
@@ -13,7 +13,7 @@ System") and asked to integrate it into the chapter file.
   - inline `\autocite{...}` at key points and a prose Chapter References paragraph
     closing with `\printbibliography[heading=subbibliography,...]`, replacing the
     draft's hand-formatted reference list;
-  - `-ch34`-suffixed `\label`s on sections; kept the book's existing chapter
+  - `-ch46`-suffixed `\label`s on sections; kept the book's existing chapter
     label `ch:parasites-correction-system`;
   - cross-refs to Chapters~\ref{ch:correction-causal-channel},
     \ref{ch:correction-channel-integrity}, \ref{ch:value-bundle-model},
@@ -22,12 +22,12 @@ System") and asked to integrate it into the chapter file.
     and \ref{ch:alignment-attractor}.
 - Fixed draft LaTeX artifacts: `[`/`]` math fences → `\[...\]`, `(A_t)` →
   `\(A_t\)`, `=====`/`##`/`---` in display math, and backtick/quote typos.
-- `metadata/book.yml`: ch34 status `stub` → `draft`.
-- Build green: `./build.sh` exits 0; no undefined citations for ch34.
+- `metadata/book.yml`: ch46 status `stub` → `draft`.
+- Build green: `./build.sh` exits 0; no undefined citations for ch46.
 
 ## Decisions
 - Kept display math as `\[ ... \]` rather than numbered `equation` environments
-  — matches ch27–ch32 integration pattern.
+  — matches ch48–ch46 integration pattern.
 - Wired stub TODO cites: `goodhart1984problems`, `manheim2018goodhart`.
 - Used `zarncke2025attractor` for parasite/cooperativity framing (internal note
   on attractor basins and parasite persistence).
@@ -38,10 +38,10 @@ System") and asked to integrate it into the chapter file.
 ## Open / next
 - Pre-existing duplicate-label warnings remain elsewhere:
   `sec:self-modeling-transparency`, `sec:example-helpful-assistant`.
-- ch28–ch34 now integrated in this session block; optional single commit.
+- ch46–ch46 now integrated in this session block; optional single commit.
 
 ## Key paths
-- `chapters/ch34-parasites-correction-system.tex`
+- `chapters/ch36-parasites-correction-system.tex`
 - `metadata/book.yml`
 
 ## Commits

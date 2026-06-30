@@ -1,6 +1,6 @@
 # Part IV Review — "Human Values as Needs Smoothed over Time" (ch15–ch19)
 
-Reviewer pass. Read in full and in order: ch15, ch16, ch17, ch18, ch19, plus context (ch11 Part III, end of ch14, start of ch20, `parts/part04-value-bundles.tex`). No manuscript files were edited.
+Reviewer pass. Read in full and in order: ch15, ch16, ch17, ch18, ch19, plus context (ch11 Part III, end of ch14, start of ch46, `parts/part04-value-bundles.tex`). No manuscript files were edited.
 
 Line numbers refer to the current `chapters/chNN-*.tex` files.
 
@@ -8,7 +8,7 @@ Line numbers refer to the current `chapters/chNN-*.tex` files.
 
 ## 0. Part-level headline findings (read first)
 
-1. **EVERY chapter in Part IV is MISSING the section titled exactly `What Would Change This View`.** Confirmed by grep across `chapters/`: ch15, ch16, ch17, ch18, ch19 are the only five chapters *not* in the set of files containing that heading (18 other chapters do have it — e.g. ch02, ch03, ch04, ch07–ch14, ch26, ch27, ch33, ch39, ch43, ch44). This is the single largest compliance gap and it is uniform across the part. See per-chapter §B for the closest renamed equivalents.
+1. **EVERY chapter in Part IV is MISSING the section titled exactly `What Would Change This View`.** Confirmed by grep across `chapters/`: ch15, ch16, ch17, ch18, ch19 are the only five chapters *not* in the set of files containing that heading (18 other chapters do have it — e.g. ch02, ch03, ch04, ch07–ch14, ch46, ch48, ch48, ch46, ch47, ch48). This is the single largest compliance gap and it is uniform across the part. See per-chapter §B for the closest renamed equivalents.
 2. **Symbol clash on `B`.** In Part III (ch11) `B` is the *boundary-information / capability* measure (BIQ): `$B_X$`, `$B_{C_t}^{(h)}$`, `$\Delta B$` (ch11 lines 349–352, 380–383, 459–493). In Part IV `B` is the *value-bundle activation vector* `$B(t)\in\mathbb{R}^k$`. Same letter, two unrelated core quantities, in adjacent parts. Flagged in §E.
 3. **`G_B` (bundle response geometry) is defined three different ways** across ch16/ch17/ch19 (gradient+Hessian pair vs. gradient field only vs. 4-tuple `(J,H,C,Φ)`). Detail in §D.4 / §E.
 4. **The sample-complexity argument appears three times** (ch15, ch16, ch17), not twice as the brief anticipated. Detail in §D.1.
@@ -169,7 +169,7 @@ Builds on ch16/ch17 (line 58 "If value bundles are the few knobs that make value
 ### F. Open tangents / dangling promises
 - "Chapters~\ref{ch:goal-transport} and later transport chapters" (1214): forward promise — verify label exists in build.
 - Merging problem (674–730): rich, possibly the seed of a later dedicated treatment; self-contained here, no dangling promise.
-- Digital-mind / moral-patienthood thread (433, 503–505, 1057–1068, 1096–1102): recurs but is resolved into "preserve correction conditions"; no loose end, though it overlaps ch43 (`ch43-bearers-of-value.tex` exists — a *second* bearer-of-value chapter in a later part). **Flag potential cross-part redundancy ch18 ↔ ch43** for whoever reviews Part with ch43 (out of scope for this pass, but the titles strongly overlap).
+- Digital-mind / moral-patienthood thread (433, 503–505, 1057–1068, 1096–1102): recurs but is resolved into "preserve correction conditions"; no loose end, though it overlaps ch47 (`ch47-bearers-of-value.tex` exists — a *second* bearer-of-value chapter in a later part). **Flag potential cross-part redundancy ch18 ↔ ch47** for whoever reviews Part with ch47 (out of scope for this pass, but the titles strongly overlap).
 
 ### G. Hand-off
 Incoming: bundle geometry + `(B,Φ,U_H)` target. Outgoing: `Φ_k(z,c,h)`, bearer import/commutation, self-sealing, `L_BP` → ch19 (tradeoffs) and goal-transport/correction chapters.
@@ -189,7 +189,7 @@ Thesis: the hard part is that we care about many things whose *meanings change w
 - **Paternalism Boundary** is present (the brief's expected element): `autonomy-non-suffering` §, lines 306–342, with the explicit paternalism-failure pattern `ΔB_care>0 but ΔB_autonomy, ΔB_agency, ΔC_corr<0` (326–331). Not titled "Paternalism Boundary" but the content is here and correct.
 
 ### C. Continuity
-Builds on ch16+ch18 (line 59). Forward to ch20 named (`Chapter~\ref{ch:reward-to-bundle-inference}`, 1198) — confirmed: ch20 carries that exact label and opens on reward→value/goal inference (verified). Clean IV→V handoff. Also forwards to correction-channel and successor-certification chapters (833, 1197–1198).
+Builds on ch16+ch18 (line 59). Forward to ch46 named (`Chapter~\ref{ch:reward-to-bundle-inference}`, 1198) — confirmed: ch46 carries that exact label and opens on reward→value/goal inference (verified). Clean IV→V handoff. Also forwards to correction-channel and successor-certification chapters (833, 1197–1198).
 
 ### D. Redundancy
 - **`G_B` canonical 4-tuple `(J,H,C,Φ)`** (213–223, 518): this is the richest and should be the **canonical definition** for the part. ch16's `(gradient,Hessian)` (452) and ch17's gradient field (341) are earlier, thinner, *and named the same symbol*. **Recommend ch16/ch17 cross-ref this definition** (or use different symbols for their partial objects). Mark ch16/ch17 G_B = trim/relabel; ch19 = keep (canonical).
@@ -210,7 +210,7 @@ Builds on ch16+ch18 (line 59). Forward to ch20 named (`Chapter~\ref{ch:reward-to
 - Social-choice aggregation (1027–1072) opens a large topic (Arrow/impossibility) and resolves it to "aggregation must be part of the correction channel" — adequately closed for this chapter, but flags a forward dependency on a correction/social-choice chapter.
 
 ### G. Hand-off
-Incoming: bundles, `Φ`, tradeoff intuition from ch15–ch18. Outgoing: `G_B=(J,H,C,Φ)`, `d_G`, invariants, geometry-revision legitimacy criterion → ch20 (`From Rewards to Values`, goal inference) and correction/successor chapters. ch20 picks up directly: its thesis ("infer not only what is optimized but which value-bundles are active, what they apply to, how tradeoffs change") is the inference-side mirror of ch19's representation-side geometry.
+Incoming: bundles, `Φ`, tradeoff intuition from ch15–ch18. Outgoing: `G_B=(J,H,C,Φ)`, `d_G`, invariants, geometry-revision legitimacy criterion → ch46 (`From Rewards to Values`, goal inference) and correction/successor chapters. ch46 picks up directly: its thesis ("infer not only what is optimized but which value-bundles are active, what they apply to, how tradeoffs change") is the inference-side mirror of ch19's representation-side geometry.
 
 ---
 
@@ -238,4 +238,4 @@ Incoming: bundles, `Φ`, tradeoff intuition from ch15–ch18. Outgoing: `G_B=(J,
 4. **De-duplicate the sample-complexity argument**: canonical = ch17 (eq:sample-complexity-ch17). Reduce ch15 (449–456) and ch16 (566–582) to one-line cross-refs.
 5. **Rename ch17's feature matrix `Φ`** (357–376) to avoid the bearer-map collision inside the same chapter.
 6. Minor: unify bundle-dimension symbol (`k`), update operator (`U_H`), weight case (`W`), and section-title capitalization; add cross-refs for the recurring candidate-bundle catalogue (canonical in ch16) and the three audit/measurement sections (ch16/ch18/ch19).
-7. Out-of-scope but worth raising: **ch18 (`bearer-maps`) ↔ ch43 (`bearers-of-value`)** likely overlap; verify division of labor when reviewing the later part. Verify forward refs `\ref{ch:goal-transport}` (ch18) and `\ref{ch:reward-to-bundle-inference}` (ch19) resolve in the build.
+7. Out-of-scope but worth raising: **ch18 (`bearer-maps`) ↔ ch47 (`bearers-of-value`)** likely overlap; verify division of labor when reviewing the later part. Verify forward refs `\ref{ch:goal-transport}` (ch18) and `\ref{ch:reward-to-bundle-inference}` (ch19) resolve in the build.

@@ -26,7 +26,7 @@ User asked (as ChatGPT 5.5 reviewer): review the Mathlib-backed field derivation
 - `formal/AlignmentProofSpine/Field/Finite/Probability.lean`
 - `formal/AlignmentProofSpine/Field/CIRL.lean`, `Impact.lean`, `Quantilization.lean`
 - `formal/AlignmentProofSpine/Field/Imported.lean`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 
 ## Commits
 - (none — user did not request commit)

@@ -7,7 +7,7 @@ User asked to set the number of appendices correctly after `make check` repeated
 ## Done
 
 - Updated `scripts/check_structure.py` so `APPENDIX_COUNT = 9`, matching `book.tex` appendices A--I.
-- Updated `scripts/init_scaffold.py` so its scaffold appendix list includes `appI-lean-proof-spine`.
+- Updated `scripts/init_scaffold.py` so its scaffold appendix list includes `appG-lean-proof-spine`.
 
 ## Decisions
 

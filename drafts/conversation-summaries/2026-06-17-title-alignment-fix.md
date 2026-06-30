@@ -4,7 +4,7 @@
 User found a typo: the book title and PDF output should be **Towards Superintelligence Alignment** (singular), not *Alignments*. Requested a repo-wide replace in filenames and text, a semantic rewrite of the introduction section that had justified the plural title, PDF regeneration, then end-of-session commit.
 
 ## Done
-- Renamed `chapters/ch44-towards-alignments.tex` → `chapters/ch44-towards-alignment.tex`; updated `\input`, labels, scaffold script, chapter map, `book.yml`.
+- Renamed `chapters/ch48-towards-alignments.tex` → `chapters/ch48-towards-alignment.tex`; updated `\input`, labels, scaffold script, chapter map, `book.yml`.
 - Updated title strings in `book.tex`, `titlepage.tex`, `README.md`, `INSTRUCTIONS.md`, `metadata/book.yml`.
 - Updated build output path in `build.sh`, `AGENTS.md`, docs; PDF at `dist/pdf/towards-superintelligence-alignment.pdf` (regenerated, not committed).
 - Rewrote introduction section: **Which Alignment?** — drops title-plural framing; keeps nested-relations argument and diagnostic questions.
@@ -21,7 +21,7 @@ User found a typo: the book title and PDF output should be **Towards Superintell
 
 ## Key paths
 - `frontmatter/introduction.tex` — **Which Alignment?** section
-- `build.sh`, `book.tex`, `chapters/ch44-towards-alignment.tex`
+- `build.sh`, `book.tex`, `chapters/ch48-towards-alignment.tex`
 - `dist/pdf/towards-superintelligence-alignment.pdf`
 
 ## Commits

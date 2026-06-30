@@ -5,7 +5,7 @@ User supplied a full author draft for Chapter 30 ("Better Self-Modeling Can
 Be Worse") and asked to integrate it into the chapter file.
 
 ## Done
-- Replaced the stub `chapters/ch30-self-modeling-self-opacity.tex` with the
+- Replaced the stub `chapters/ch32-self-modeling-self-opacity.tex` with the
   integrated draft (Shape B — kept the draft's native narrative structure).
 - Added the required book elements the raw draft lacked:
   - real `chapterthesis` (from the draft's Chapter summary);
@@ -13,7 +13,7 @@ Be Worse") and asked to integrate it into the chapter file.
   - inline `\autocite{...}` at key points and a prose Chapter References paragraph
     closing with `\printbibliography[heading=subbibliography,...]`, replacing the
     draft's hand-formatted `thebibliography` list;
-  - `-ch30`-suffixed `\label`s on sections; kept the book's existing chapter
+  - `-ch46`-suffixed `\label`s on sections; kept the book's existing chapter
     label `ch:self-modeling-self-opacity`;
   - cross-refs to Chapters~\ref{ch:manipulation-false-consent},
     \ref{ch:value-bundle-model}, \ref{ch:bearer-maps},
@@ -24,12 +24,12 @@ Be Worse") and asked to integrate it into the chapter file.
   `\(A_t\)`, malformed subscripts (`\mathcal{T}*{\mathrm{allowed}}`,
   `C*{\mathrm{corr}}`, `M'*{t+1}` etc.), `=====`/`##`/`-----` in display math,
   and backtick/quote typos.
-- `metadata/book.yml`: ch30 status `stub` → `draft`.
-- Build green: `./build.sh` exits 0; no undefined citations for ch30.
+- `metadata/book.yml`: ch46 status `stub` → `draft`.
+- Build green: `./build.sh` exits 0; no undefined citations for ch46.
 
 ## Decisions
 - Kept display math as `\[ ... \]` rather than numbered `equation` environments
-  — matches ch27–ch29 integration pattern.
+  — matches ch48–ch48 integration pattern.
 - Omitted draft bib entries with no matching BibLaTeX key (ananny2018,
   doshi2017, lakkaraju2017, miller2019); used existing keys including
   `Graziano2013`, `fleming2014measure`, `maniscalco2012metad`,
@@ -43,7 +43,7 @@ Be Worse") and asked to integrate it into the chapter file.
   pass wants fuller Chapter References coverage.
 
 ## Key paths
-- `chapters/ch30-self-modeling-self-opacity.tex`
+- `chapters/ch32-self-modeling-self-opacity.tex`
 - `metadata/book.yml`
 
 ## Commits

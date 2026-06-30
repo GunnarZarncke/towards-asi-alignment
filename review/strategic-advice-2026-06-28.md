@@ -43,7 +43,7 @@ The manuscript has an unusually complete map of the alignment problem; the next 
 
 5. **Engage likely first-hour reviewer objections (technical / defensive).**
    - Successor chapter: confront the Löbian / tiling-agents obstruction (Yudkowsky-Herreshoff, Fallenstein-Soares) rather than substituting an engineering inequality where prior work has theorems.
-   - Inner/deceptive alignment / mesa-optimization: make the ch40 lethality stress test engage Hubinger et al. more directly.
+   - Inner/deceptive alignment / mesa-optimization: make the ch48 lethality stress test engage Hubinger et al. more directly.
    - The goal is not to solve these, but to cite, integrate, or explicitly bracket them with justification.
 
 6. **Make falsification and uncertainty ledgers load-bearing (professional / rigor).**

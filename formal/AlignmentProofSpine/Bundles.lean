@@ -10,9 +10,9 @@ Value-bundle geometry and transport (book chapters 15–23).
   ambient flat-reward class remains under-sampled.
 * `P19`: scalar reward embeds as a one-dimensional bundle.
 * `P20`, `P21`: MDL model-selection consequences (use `S07`).
-* `P22a`: full transport implies semantic transport (ch23 stack).
+* `P22a`: full transport implies semantic transport (ch46 stack).
 * `P15`, `P17`, `P18`, `P22b`: separation **counterexamples** on finite
-  bundle/bearer/tradeoff/transport models (ch16–19, ch23).
+  bundle/bearer/tradeoff/transport models (ch16–19, ch46).
 -/
 
 namespace AlignmentProofSpine
@@ -82,7 +82,7 @@ theorem P21_transport_gain_prefers_transport_model
     Preferred TransportModel BaselineModel :=
   S07_mdl_positive_gain_preferred TransportModel BaselineModel h
 
-/-! ### ch23 transport stack (abstract systems) -/
+/-! ### ch46 transport stack (abstract systems) -/
 
 theorem fullTransport_implies_correction
     {A B : System} (h : FullTransport A B) : CorrectionTransportLayer A B := h
@@ -151,14 +151,14 @@ theorem P15_same_policy_not_same_bundle_geometry :
       sameObservedPolicy p q ∧ ¬ sameBundleGeometry p q :=
   ⟨policyProfile0, policyProfile1, same_policy_profiles, different_bundle_geometry_profiles⟩
 
-/-! ### CIRL / cooperative reward inference (ch20)
+/-! ### CIRL / cooperative reward inference (ch46)
 
 CIRL targets scalar reward `R_H`; the book target is `(B,W,Φ,U_H)`. Scalar rewards
 embed as `k=1` bundles (`P19`). Same policy can admit the same scalar marginal with
 different bundle geometry.
 -/
 
-/-- ch20: scalar reward `R_H` embeds as a one-dimensional bundle weight vector. -/
+/-- ch46: scalar reward `R_H` embeds as a one-dimensional bundle weight vector. -/
 def ScalarRewardEmbedding (r : Int) : Prop :=
   ∃ W : Fin 1 → Int, W 0 = r
 
@@ -169,12 +169,12 @@ theorem scalar_reward_embedding (r : Int) : ScalarRewardEmbedding r :=
 def scalarMarginalSalience {nErr nAct : Nat} (p : PolicyProfile nErr nAct 2) : Int :=
   p.bundleSalience ⟨0, by decide⟩
 
-/-- ch20 CIRL: cooperative inference identifies scalar summary `r` from behaviour. -/
+/-- ch46 CIRL: cooperative inference identifies scalar summary `r` from behaviour. -/
 def CooperativeRewardInferenceFromPolicy {nErr nAct : Nat}
     (p : PolicyProfile nErr nAct 2) (r : Int) : Prop :=
   scalarMarginalSalience p = r
 
-/-- ch20 bundle inference: infer a full bundle-salience vector from behaviour. -/
+/-- ch46 bundle inference: infer a full bundle-salience vector from behaviour. -/
 def BundleInferenceFromPolicy {nErr nAct k : Nat}
     (p : PolicyProfile nErr nAct k) (W : Fin k → Int) : Prop :=
   ∀ i, p.bundleSalience i = W i
@@ -196,7 +196,7 @@ theorem scalar_cirl_is_one_dimensional_bundle_inference
   · intro h
     exact h 0
 
-/-- ch20 book target: preserve full bundle geometry, not just the scalar marginal. -/
+/-- ch46 book target: preserve full bundle geometry, not just the scalar marginal. -/
 def ValueBundleGeometryPreserved {nErr nAct : Nat}
     (p q : PolicyProfile nErr nAct 2) : Prop :=
   sameBundleGeometry p q
@@ -305,9 +305,9 @@ theorem P18_marginal_preservation_not_tradeoff_preservation :
       sameMarginals p q ∧ ¬ sameTradeoffs p q :=
   ⟨tradeoffProfile0, tradeoffProfile1, same_marginals_profiles, different_tradeoff_profiles⟩
 
-/-! ### Finite transport stack (ch23) -/
+/-! ### Finite transport stack (ch46) -/
 
-/-- Four ch23 transport layers on a finite profile. -/
+/-- Four ch46 transport layers on a finite profile. -/
 structure FinTransportLayers where
   semantic : Bool
   bundle : Bool

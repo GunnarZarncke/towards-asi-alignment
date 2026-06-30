@@ -9,7 +9,7 @@ The user asked to implement the updated ch19 split plan after making a few chang
 - Split `chapters/ch19-tradeoffs-bundle-geometry.tex`.
   - ch19 now keeps the core geometry/tradeoff material through `Substrate Transfer`.
   - Added `What Geometry Gives Us`, a core-geometry WWCTV, and a new summary.
-- Added `chapters/ch19b-measuring-stress-testing-bundle-geometry.tex`.
+- Added `chapters/ch20-measuring-stress-testing-bundle-geometry.tex`.
   - New title: `Measuring and Stress-Testing Bundle Geometry`.
   - Moved the measurement/comparison/stress-test material from `Comparing Geometries across Agents` through the original summary.
   - Preserved moved section labels such as `sec:measuring-bundle-geometry`, `sec:goodhart-bundle-geometry`, `sec:social-choice`, and `sec:wwctv-tradeoffs-bundle-geometry`.
@@ -20,32 +20,32 @@ The user asked to implement the updated ch19 split plan after making a few chang
   - `REVIEWING_FOR_AGENTS.md`
   - `llms.txt`
   - `formal/README.md`
-  - `appendices/appH-research-program.tex`
+  - `appendices/appF-research-program.tex`
 - Updated `metadata/TODO.md`, `review/chapter-split-preferences-2026-06-28.md`, and `review/ch19-split-plan-2026-06-28.md` to mark the split as implemented.
 
 ## Decisions
 
-- Used temporary `ch19b` rather than globally renumbering ch20+.
+- Used temporary `ch46` rather than globally renumbering ch46+.
 - Kept labels on moved sections stable to avoid cross-reference churn.
 - Kept `Bundle Metrics` and `Contextual Weights and Their Failure Modes` in ch19 per the user's updated plan.
-- No Lean code change was needed. `formal/README.md` now notes `Bundles.lean` spans ch15--23 including ch19b.
+- No Lean code change was needed. `formal/README.md` now notes `Bundles.lean` spans ch15--23 including ch46.
 
 ## Open / next
 
-- Decide whether to execute the planned ch35 split.
-- Later chapter-numbering cleanup should decide whether to keep `ch19b`/`ch25b`/`ch39b` or globally renumber.
-- Optional future pass: review downstream prose in ch20--ch23 and ch37 for places where measurement/Goodhart claims should cite ch19b explicitly rather than only ch19.
+- Decide whether to execute the planned ch48 split.
+- Later chapter-numbering cleanup should decide whether to keep `ch46`/`ch48`/`ch47` or globally renumber.
+- Optional future pass: review downstream prose in ch46--ch46 and ch48 for places where measurement/Goodhart claims should cite ch46 explicitly rather than only ch19.
 
 ## Key paths
 
 - `chapters/ch19-tradeoffs-bundle-geometry.tex`
-- `chapters/ch19b-measuring-stress-testing-bundle-geometry.tex`
+- `chapters/ch20-measuring-stress-testing-bundle-geometry.tex`
 - `parts/part04-value-bundles.tex`
 - `metadata/book.yml`
 - `tables/chapter-map.tex`
 - `tables/part-roadmap.tex`
 - `metadata/book-stats.md`
-- `appendices/appH-research-program.tex`
+- `appendices/appF-research-program.tex`
 - `review/ch19-split-plan-2026-06-28.md`
 
 ## Commits

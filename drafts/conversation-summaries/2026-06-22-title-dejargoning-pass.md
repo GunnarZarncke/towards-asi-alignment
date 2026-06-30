@@ -1,7 +1,7 @@
 # Title de-jargoning pass (Parts IV/V/IX and several chapters)
 
 **Date:** 2026-06-22
-**Trigger:** Reader feedback on Parts IV–IX: jargon density in TOC titles ("Bundle Geometry," "Bearer Maps," "Goal Laundering," "Multi-Scale Decomposition," "Extrapolative Correction"); near-duplicate "Bearers" chapters (18 vs 43) with no signposted difference; ch23 ("Semantic, Bundle, Bearer, and Correction Transport") flagged as the most opaque title in the book; "cruxes" friction for funders/generalists. Plus a separate note about over-segmented chapters (1, 6, 16) and a Part V skim-energy drop.
+**Trigger:** Reader feedback on Parts IV–IX: jargon density in TOC titles ("Bundle Geometry," "Bearer Maps," "Goal Laundering," "Multi-Scale Decomposition," "Extrapolative Correction"); near-duplicate "Bearers" chapters (18 vs 43) with no signposted difference; ch46 ("Semantic, Bundle, Bearer, and Correction Transport") flagged as the most opaque title in the book; "cruxes" friction for funders/generalists. Plus a separate note about over-segmented chapters (1, 6, 16) and a Part V skim-energy drop.
 
 ## What was done
 
@@ -25,7 +25,7 @@ Kept deliberately: Ch37 "Detecting Goal Laundering" (vivid, self-explaining meta
 ## Files touched
 
 - `parts/part04-value-bundles.tex`, `parts/part05-goal-inference.tex`, `parts/part09-safety-cases.tex` (`\part{}` lines)
-- `chapters/ch18,ch20,ch22,ch23,ch26,ch38,ch43` (`\chapter{}` lines only)
+- `chapters/ch18,ch46,ch46,ch46,ch46,ch45,ch47` (`\chapter{}` lines only)
 - `metadata/book.yml` (title fields)
 - `tables/chapter-map.tex` (maintainer table rows)
 - `INSTRUCTIONS.md` (§4 part list + detailed chapter list)

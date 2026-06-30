@@ -13,7 +13,7 @@ User ended session after Part III chapter file correction (ch12 = boundary expan
 
 ### Source map & citations
 - `metadata/source-canon.md` — deep-research report mapped to chapters.
-- `references/*.bib` — 16+ new entries; surgical cites in drafted ch03–ch12, ch40; `TODO(deep-research)` in stubs.
+- `references/*.bib` — 16+ new entries; surgical cites in drafted ch03–ch12, ch48; `TODO(deep-research)` in stubs.
 - `context/towards-asi-alignment-deep-research-report.md` — untracked input (not committed).
 
 ### Metadata

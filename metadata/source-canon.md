@@ -44,14 +44,14 @@ Synthesis documents that are not sibling-repo papers but ground chapter drafting
 
 | Report section | Primary chapters | Secondary chapters |
 |----------------|------------------|-------------------|
-| Kurzfassung (field gaps, negative result) | ch03, ch44 | ch05, frontmatter executive-overview |
-| Agentur, Grenzen und Repräsentationen | ch06, ch07, ch11 | ch08, ch38 |
-| Ziel- und Wertinferenz | ch04, ch20, ch21 | ch15, ch37 |
-| Wertbündel und Trägermaps | ch16, ch17, ch18, ch19 | ch43, ch41 |
-| Korrekturkanäle und zivilisatorische Deliberation | ch24, ch25, ch26 | ch27, ch35 |
-| Nachfolgerstabilität, Ontologieshift, Zieltransport | ch08, ch22, ch23, ch28, ch29 | ch30, ch31, ch11 |
-| Selektionsdruck, Governance, Förderlandschaft | ch32, ch33, ch35, ch39 | ch34, ch40 |
-| Zertifizierung, Empirie, Forschungsagenda | ch39, ch40, ch36 | ch31, ch44 |
+| Kurzfassung (field gaps, negative result) | ch03, ch48 | ch05, frontmatter executive-overview |
+| Agentur, Grenzen und Repräsentationen | ch06, ch07, ch11 | ch08, ch45 |
+| Ziel- und Wertinferenz | ch04, ch46, ch46 | ch15, ch48 |
+| Wertbündel und Trägermaps | ch16, ch17, ch18, ch19 | ch47, ch45 |
+| Korrekturkanäle und zivilisatorische Deliberation | ch46, ch46, ch46 | ch48, ch48 |
+| Nachfolgerstabilität, Ontologieshift, Zieltransport | ch08, ch46, ch46, ch46, ch48 | ch46, ch48, ch11 |
+| Selektionsdruck, Governance, Förderlandschaft | ch46, ch48, ch48, ch46 | ch46, ch48 |
+| Zertifizierung, Empirie, Forschungsagenda | ch46, ch48, ch46 | ch48, ch48 |
 
 ### Chapter addition suggestions
 
@@ -74,7 +74,7 @@ Prioritized by report emphasis. **Drafted** chapters: surgical inserts. **Stub**
 | ch08 | de Blanc (2011) ontological crisis; Everitt et al. (2016) self-modification; transport loss $\Delta L_{\text{transport}}$ heuristic from report; link conserved properties to report's structure bundle. |
 | ch09 | Composite-agent blindness failure mode (report §Selektionsdruck / ch11 draft); joint intentional compression already present — add Goodhart-on-metrics institutional parallel. |
 | ch10 | Alignment-faking / sleeper agents as model-organism evidence for selective opacity; cite alongside Hubinger model-organisms. |
-| ch11 | External-growth vs internal-growth diagnostic already present; add report's funding-gap note: capability evals dominate, transport/bearer underinvested; percolation analogy preview for ch33. |
+| ch11 | External-growth vs internal-growth diagnostic already present; add report's funding-gap note: capability evals dominate, transport/bearer underinvested; percolation analogy preview for ch48. |
 
 **Part III — Capability (stubs)**
 
@@ -98,38 +98,38 @@ Prioritized by report emphasis. **Drafted** chapters: surgical inserts. **Stub**
 
 | Ch | Suggested additions from report |
 |----|----------------------------------|
-| ch20 | IRL toolbox survey (Abbeel & Ng, Bayesian IRL, MaxEnt, AIRL, deep variants); bundle-first vs reward-first; Baker/Saxe/Tenenbaum Bayesian inverse planning. |
-| ch21 | Compression test linked to IB; which causal structure must survive in $Z$. |
-| ch22–ch23 | Transport difference $\Delta L_{\text{transport}}$; conserved structure bundle (bundles, correction, identity, audit); ontology-shift as silent failure. |
+| ch46 | IRL toolbox survey (Abbeel & Ng, Bayesian IRL, MaxEnt, AIRL, deep variants); bundle-first vs reward-first; Baker/Saxe/Tenenbaum Bayesian inverse planning. |
+| ch46 | Compression test linked to IB; which causal structure must survive in $Z$. |
+| ch46–ch46 | Transport difference $\Delta L_{\text{transport}}$; conserved structure bundle (bundles, correction, identity, audit); ontology-shift as silent failure. |
 
 **Part VI — Correction (stubs)**
 
 | Ch | Suggested additions from report |
 |----|----------------------------------|
-| ch24 | Correction-channel capacity $C_{\mathrm{corr}}$ formalization (report eq.); four requirements: bandwidth, interpretability stability, incentive compatibility, legitimacy. |
-| ch25 | Soares et al. corrigibility; off-switch game; channel must survive adversariality. |
-| ch26 | CEV as normative upper idea not implementable procedure; extrapolative correction vs frozen values. |
-| ch27 | False consent + simulated empathy without obligation (ANPS/social-warmth row). |
+| ch46 | Correction-channel capacity $C_{\mathrm{corr}}$ formalization (report eq.); four requirements: bandwidth, interpretability stability, incentive compatibility, legitimacy. |
+| ch46 | Soares et al. corrigibility; off-switch game; channel must survive adversariality. |
+| ch46 | CEV as normative upper idea not implementable procedure; extrapolative correction vs frozen values. |
+| ch48 | False consent + simulated empathy without obligation (ANPS/social-warmth row). |
 
 **Part VII — Successors (stubs)**
 
 | Ch | Suggested additions from report |
 |----|----------------------------------|
-| ch28–ch29 | Successor certification schema; transport tests; tiling/Löb hurdles (cite from lw-references / Yudkowsky–Herreshoff). |
-| ch30 | Report's core failure mode: $d\uparrow,\tau\uparrow$ (better self-model, worse transparency); alignment-faking evidence. |
-| ch31 | Certification without construction; conserved-property checklist from report transport section. |
+| ch46–ch48 | Successor certification schema; transport tests; tiling/Löb hurdles (cite from lw-references / Yudkowsky–Herreshoff). |
+| ch46 | Report's core failure mode: $d\uparrow,\tau\uparrow$ (better self-model, worse transparency); alignment-faking evidence. |
+| ch48 | Certification without construction; conserved-property checklist from report transport section. |
 
 **Part VIII–X — Selection, safety cases, civilizational limit**
 
 | Ch | Suggested additions from report |
 |----|----------------------------------|
-| ch32 | Manheim & Garrabrant Goodhart taxonomy; selection pressure on safety culture. |
-| ch33 | Percolation of cooperation subsection; network scaling of audit norms. |
-| ch35 | UNESCO / OECD / German Ethics Council as legitimacy anchors for correction channel; deliberation loop diagram from report. |
-| ch36 | Model organisms + dangerous-capability evals + NIST AI RMF as three empirical lines. |
-| ch39 | Tiered assurance: formal where spec tight; safety cases above; no global ASI proof; dynamic safety cases; Seoul Commitments / EU AI Act as governance artifacts. |
-| ch40 | Sleeper agents, alignment-faking, ontological crisis, IRL underdetermination as checklist rows; link to report priority table. |
-| ch43–ch44 | Bearer persistence philosophy; research pitch one-pager from report §Forschungspitch. |
+| ch46 | Manheim & Garrabrant Goodhart taxonomy; selection pressure on safety culture. |
+| ch48 | Percolation of cooperation subsection; network scaling of audit norms. |
+| ch48 | UNESCO / OECD / German Ethics Council as legitimacy anchors for correction channel; deliberation loop diagram from report. |
+| ch46 | Model organisms + dangerous-capability evals + NIST AI RMF as three empirical lines. |
+| ch46 | Tiered assurance: formal where spec tight; safety cases above; no global ASI proof; dynamic safety cases; Seoul Commitments / EU AI Act as governance artifacts. |
+| ch48 | Sleeper agents, alignment-faking, ontological crisis, IRL underdetermination as checklist rows; link to report priority table. |
+| ch47–ch48 | Bearer persistence philosophy; research pitch one-pager from report §Forschungspitch. |
 
 ### Bibliography candidates (not yet in `.bib` or under-cited)
 
@@ -142,21 +142,21 @@ Import or verify before drafting stubs above. Keys are suggested slugs.
 | Btesh, Bramley & Lagnado (2022) — boundary-relativity commentary | `btesh2022redressing` | ch06, ch07, appBridge, appH |
 | Demski (2023) — agent boundaries vs Markov blankets (AF) | `demski2023agentboundaries` | ch06 |
 | Friston, Da Costa & Parr (2021) — FEP response to Biehl et al. | `friston2021fepresponse` | ch06 |
-| Schölkopf et al. (2021) — causal representations | `scholkopf2021causalreps` | ch07, ch21 |
+| Schölkopf et al. (2021) — causal representations | `scholkopf2021causalreps` | ch07, ch46 |
 | Strouse & Schwab (2016); Kolchinsky et al. (2017) — deep IB | `strouse2016ib`, `kolchinsky2017ib` | ch07, ch17 |
-| Baker, Saxe & Tenenbaum (2009) — Bayesian inverse planning | `baker2009inverseplanning` | ch20, ch21 |
-| Ramachandran & Amir (2007) — Bayesian IRL | `ramachandran2007bayesianirl` | ch20 |
-| Casper et al. (2023) — RLHF limits | `casper2023rlhflimits` | ch04, ch20 |
-| Komanduru & Honorio — IRL sample complexity | `komanduru2019irlcomplexity` | ch04, ch20 |
-| de Blanc (2011) — ontological crises | `deblanc2011ontological` | ch08, ch22, ch40 |
-| Everitt et al. (2016) — self-modification | `everitt2016selfmodification` | ch08, ch28, ch29 |
-| Manheim & Garrabrant (2018) — Goodhart taxonomy | `manheim2018goodhart` | ch32, ch34, ch37 |
-| Wang, Szolnoki & Perc — cooperation near percolation | `wang2013percolation` | ch13, ch33 |
+| Baker, Saxe & Tenenbaum (2009) — Bayesian inverse planning | `baker2009inverseplanning` | ch46, ch46 |
+| Ramachandran & Amir (2007) — Bayesian IRL | `ramachandran2007bayesianirl` | ch46 |
+| Casper et al. (2023) — RLHF limits | `casper2023rlhflimits` | ch04, ch46 |
+| Komanduru & Honorio — IRL sample complexity | `komanduru2019irlcomplexity` | ch04, ch46 |
+| de Blanc (2011) — ontological crises | `deblanc2011ontological` | ch08, ch46, ch48 |
+| Everitt et al. (2016) — self-modification | `everitt2016selfmodification` | ch08, ch46, ch48 |
+| Manheim & Garrabrant (2018) — Goodhart taxonomy | `manheim2018goodhart` | ch46, ch46, ch48 |
+| Wang, Szolnoki & Perc — cooperation near percolation | `wang2013percolation` | ch13, ch48 |
 | Panksepp — affective neuroscience | `panksepp1998affective` | ch15, ch16 |
-| Olson — person identity (SEP) | `olson2023personidentity` | ch18, ch43 |
-| Seoul AI Summit commitments (2024) | `seoul2024commitments` | ch35, ch39 |
-| International AI Safety Report (2025) | `iaisr2025` | ch39, ch40 |
-| UNESCO Recommendation on AI Ethics (2021) | `unesco2021aiethics` | ch25, ch35 |
+| Olson — person identity (SEP) | `olson2023personidentity` | ch18, ch47 |
+| Seoul AI Summit commitments (2024) | `seoul2024commitments` | ch48, ch46 |
+| International AI Safety Report (2025) | `iaisr2025` | ch46, ch48 |
+| UNESCO Recommendation on AI Ethics (2021) | `unesco2021aiethics` | ch46, ch48 |
 
 Already present and should be wired where stubs draft: `soares2015corrigibility`, `ng2000irl`, `ziebart2008maxent`, `hadfieldmenell2016`, `tishby2000ib`, `friston2010free`, `hubinger2023modelorganisms`, `hubinger2019risks`, `park2024deception`.
 

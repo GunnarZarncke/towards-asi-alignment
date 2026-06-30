@@ -4,7 +4,7 @@
 The user noted that `\leanspine` references proofs throughout the book, but the appendices did not render the Lean proof spine in standard mathematical form.
 
 ## Done
-- Added `appendices/appI-lean-proof-spine.tex`.
+- Added `appendices/appG-lean-proof-spine.tex`.
 - The new appendix translates the Lean proof spine into ordinary mathematical statements with compact proofs, counterexamples, and bridge-assumption entries.
 - Covered the proof/counterexample nodes used by the manuscript and the current Lean spine, including the new access/K-equivalence and hidden-BIQ nodes (`P34A`, `P34K`, `P35M`, `P38H`, `P10H`) plus `MB7a`--`MB7c`.
 - Revised the appendix into a more formal mathematical development:
@@ -25,12 +25,12 @@ The user noted that `\leanspine` references proofs throughout the book, but the 
 - Namespaced appendix labels with `appi:` to avoid collisions with existing chapter equation labels such as `eq:epsilon-boundary` and `eq:biq`.
 
 ## Open / next
-- If the proof spine grows, keep `appendices/appI-lean-proof-spine.tex` synchronized with `formal/AlignmentProofSpine/*.lean` and `context/lean_proof_dependency_graph.dot`.
+- If the proof spine grows, keep `appendices/appG-lean-proof-spine.tex` synchronized with `formal/AlignmentProofSpine/*.lean` and `context/lean_proof_dependency_graph.dot`.
 - Consider adding hyperlinks from `\leanspine` references to appendix anchors later; the current macro still renders plain text.
 - Existing bibliography warnings remain outside this change.
 
 ## Key paths
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `book.tex`
 - `formal/AlignmentProofSpine/*.lean`
 - `context/lean_proof_dependency_graph.dot`

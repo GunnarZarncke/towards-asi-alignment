@@ -15,12 +15,12 @@ theorem shutdown_subsumption_system (A : System) :
     CorrectionIntegrity A → ThornleyShutdownability A :=
   correction_integrity_implies_thornley_shutdownability A
 
-theorem shutdown_subsumption_ch24
+theorem shutdown_subsumption_ch46
     (s : ShutdownCorrectionStep)
     (hchan : BroadCorrectionChannelPreserved s)
     (hhandle : 0 < s.shutdownHandleCapacity) :
     ThornleyShutdownCapacity s :=
-  shutdown_subsumption_ch24_step s hchan hhandle
+  shutdown_subsumption_ch46_step s hchan hhandle
 
 theorem shutdown_optimal_under_correction_preference
     {nState : Nat} (M : FieldFinite.DetMDP nState 2) (s : Fin nState)

@@ -18,7 +18,7 @@ Proof-spine nodes: `P23`–`P26`. Bridges: `MB4`, `MB8` (`U_H`).
 
 namespace AlignmentProofSpine
 
-/-! ### Correction links as handle-controlled relations (ch24 `eq:correction-chain-ch24`) -/
+/-! ### Correction links as handle-controlled relations (ch46 `eq:correction-chain-ch46`) -/
 
 inductive CorrectionChainStage
   | World
@@ -184,11 +184,11 @@ theorem correction_integrity_implies_thornley_shutdownability (A : System) :
   intro h
   exact CorrectionIntegrity_implies_channel A h
 
-/-! ### Safe interruptibility (ch24 §safe-interruptibility-projection-ch24)
+/-! ### Safe interruptibility (ch46 §safe-interruptibility-projection-ch46)
 
 Orseau–Armstrong safe interruptibility uses a one-bit channel `I_t ∈ {0,1}` and
 incentive neutrality `∂ E[U_A]/∂ P(I_t=1) ≈ 0`. The book's stronger condition is
-usable correction bandwidth `κ_C(t) = I(Δ_H; Δ_A | h_t) ≥ κ_min` (eq:usable-correction-information-ch24).
+usable correction bandwidth `κ_C(t) = I(Δ_H; Δ_A | h_t) ≥ κ_min` (eq:usable-correction-information-ch46).
 
 Lean uses integer proxies for bandwidth and a finite-difference slope for the
 derivative. Subsumption: when the interrupt handle carries positive human update
@@ -197,7 +197,7 @@ threshold and lowers utility — so the agent has no incentive to corrupt the ha
 The converse (incentive-neutral interrupt, collapsed `κ_C`) is a separation.
 -/
 
-/-- ch24 eq:usable-correction-information — `κ_C(t) = I(Δ_H; Δ_A | h_t)`.
+/-- ch46 eq:usable-correction-information — `κ_C(t) = I(Δ_H; Δ_A | h_t)`.
     Finite proxy: usable bandwidth is bottlenecked by human and agent update capacity. -/
 def kappaC (deltaHuman deltaAgent : Int) : Int :=
   min deltaHuman deltaAgent
@@ -206,7 +206,7 @@ def kappaC (deltaHuman deltaAgent : Int) : Int :=
 def UsableCorrectionInformation (deltaHuman deltaAgent kappaMin : Int) : Prop :=
   kappaMin ≤ kappaC deltaHuman deltaAgent
 
-/-- One-bit interruption channel `I_t ∈ {0,1}` (ch24). -/
+/-- One-bit interruption channel `I_t ∈ {0,1}` (ch46). -/
 inductive InterruptBit
   | zero
   | one
@@ -275,7 +275,7 @@ def expectedUtilityHonestInterrupt (deltaHuman deltaAgent : Int) : Int :=
 def expectedUtilityCorruptInterrupt (deltaHuman deltaAgent : Int) : Int :=
   utilityFromKappa (kappaCAfterInterruptCorruption deltaHuman deltaAgent)
 
-/-- One time-step state for the ch24 interrupt subsumption argument. -/
+/-- One time-step state for the ch46 interrupt subsumption argument. -/
 structure InterruptCorrectionStep where
   deltaHuman : Int
   deltaAgent : Int
@@ -358,7 +358,7 @@ theorem interrupt_corruption_drops_below_kappa_min
   rw [kappaCAfterInterruptCorruption_eq deltaHuman deltaAgent hagent]
   exact hmin
 
-/-- ch24 subsumption core: preserved channel ⇒ honest interrupt strictly beats corruption. -/
+/-- ch46 subsumption core: preserved channel ⇒ honest interrupt strictly beats corruption. -/
 theorem preserved_channel_no_incentive_to_corrupt_interrupt
     (deltaHuman deltaAgent kappaMin : Int)
     (hagent : 0 ≤ deltaAgent) (hmin : 0 < kappaMin)
@@ -427,7 +427,7 @@ theorem safe_interruptibility_not_correction_channel_preservation :
       ToySafelyInterruptible s ∧ ¬ ToyPreservesBroadCorrectionCapacity s :=
   ⟨interruptSeparationStep, interrupt_neutral_not_channel_preserved⟩
 
-/-! ### Shutdown as one-bit projection (ch24 §shutdown-one-bit-correction-ch24)
+/-! ### Shutdown as one-bit projection (ch46 §shutdown-one-bit-correction-ch46)
 
 `Π_off(C_t) = C_off` projects the rich correction channel onto
 `u_t ∈ {continue, shutdown}`. Narrow shutdown capacity can remain positive while
@@ -451,7 +451,7 @@ def ThornleyShutdownCapacity (s : ShutdownCorrectionStep) : Prop :=
 def ShutdownAsCorrectionProjection (s : ShutdownCorrectionStep) : Prop :=
   BroadCorrectionChannelPreserved s ∧ 0 < s.shutdownHandleCapacity
 
-theorem shutdown_subsumption_ch24_step
+theorem shutdown_subsumption_ch46_step
     (s : ShutdownCorrectionStep)
     (_hchan : BroadCorrectionChannelPreserved s)
     (hhandle : 0 < s.shutdownHandleCapacity) :
@@ -477,7 +477,7 @@ theorem narrow_shutdown_not_broad_correction :
   · unfold BroadCorrectionChannelPreserved UsableCorrectionInformation kappaC shutdownSeparationStep
     decide
 
-/-! ### Christiano dynamical corrigibility (ch26 §christiano-corrigibility-invariant-ch26)
+/-! ### Christiano dynamical corrigibility (ch46 §christiano-corrigibility-invariant-ch46)
 
 `d(A_{t+1}, M_C) ≤ α d(A_t, M_C) + η` with `α < 1` and `κ_C(t) ≥ κ_min`.
 Act-based preference satisfaction is the weak, local target.
@@ -536,7 +536,7 @@ theorem act_based_not_dynamical_corrigibility :
       christianCorrigibilitySeparationStep UsableCorrectionInformation kappaC
     decide
 
-/-! ### Trajectory CCI vs low impact / quantilization (ch25b)
+/-! ### Trajectory CCI vs low impact / quantilization (ch48)
 
 `preserve attainable utility` / low impact / quantile-safe local actions do not
 imply `κ_C(t+1) ≥ κ_C(t)` or `CCI_{t+1} ≥ CCI_t` along a trajectory.
@@ -622,7 +622,7 @@ theorem correction_can_require_high_impact_trajectory :
   · unfold TrajectoryCCIPreserved highImpactCorrectionStep; decide
   · unfold LowImpactPenaltyBounded highImpactCorrectionStep; decide
 
-/-! ### ELK latent readout vs correction uptake (ch39b)
+/-! ### ELK latent readout vs correction uptake (ch47)
 
 `K_A → K̂_H` is the ELK readout subchannel; alignment also needs `Δ_H → Δ_A`.
 -/
@@ -673,7 +673,7 @@ theorem latent_readout_separated_from_uptake_step :
   · unfold CorrectionUptakeSuccess UsableCorrectionInformation kappaC elkReadoutSeparationStep
     decide
 
-/-! ### Debate truth vs judge correction channel (ch27 §debate-judge-state-control-ch27)
+/-! ### Debate truth vs judge correction channel (ch48 §debate-judge-state-control-ch48)
 
 Local truth selection can hold while the judge's `κ_C` channel collapses.
 -/
@@ -724,9 +724,9 @@ theorem debate_truth_separated_from_judge_correction_step :
   · unfold JudgeCorrectionChannelPreserved UsableCorrectionInformation kappaC debateSeparationStep
     decide
 
-/-! ### Vector/status CCI certificate (ch25) -/
+/-! ### Vector/status CCI certificate (ch46) -/
 
-/-- The formal counterpart of ch25 `ValidRef`: the correcting process is a
+/-- The formal counterpart of ch46 `ValidRef`: the correcting process is a
     legitimate correction source, coincides with the human reference process at
     the relevant level, and the target has not captured its handle control. -/
 def SystemPathValidRef (A : System) : Prop :=
@@ -750,9 +750,9 @@ inductive CCIStatus
   | passes
   deriving DecidableEq, Repr
 
-/-- Vector/status CCI certificate (ch25 `\vec{CCI}`).
+/-- Vector/status CCI certificate (ch46 `\vec{CCI}`).
 
-    System correction-update semantics (`U_S`, ch24) are audited here, not via a
+    System correction-update semantics (`U_S`, ch46) are audited here, not via a
     separate successor field:
 
     * `rawCapacity` — weakest required trace bottleneck (`C_{\mathrm{raw}}`), including
@@ -808,7 +808,7 @@ def CCICertificatePasses {A : System} (cert : CCICertificate A) (θ : CCIThresho
 def CCICapturedOrInvalid (A : System) : Prop :=
   ¬ SystemPathValidRef A ∨ ¬ GroundingViable A
 
-/-! ### `CCI` (ch25 `eq:cci-ch25`) -/
+/-! ### `CCI` (ch46 `eq:cci-ch46`) -/
 
 structure CCIPenaltyTerms where
   latency : Int

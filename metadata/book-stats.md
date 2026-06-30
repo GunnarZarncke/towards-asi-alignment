@@ -131,35 +131,35 @@ Files reached from `book.tex` via `\input`, `\addbibresource`, and `\includegrap
 | 17 | chapters/ch17-low-dimensional-value-learning.tex | When Low Dimensionality Helps Value Learning | 5,894 | 1,016 | 848 | 847 | 27 | 11 | 23 | 61 | 21 | 0 |
 | 18 | chapters/ch18-bearer-maps.tex | What Values Apply To | 6,188 | 1,243 | 972 | 971 | 27 | 10 | 45 | 74 | 26 | 0 |
 | 19 | chapters/ch19-tradeoffs-bundle-geometry.tex | Tradeoffs and Bundle Geometry | 4,023 | 819 | 704 | 703 | 19 | 4 | 25 | 66 | 15 | 0 |
-| 20 | chapters/ch19b-measuring-stress-testing-bundle-geometry.tex | Measuring and Stress-Testing Bundle Geometry | 2,011 | 458 | 378 | 377 | 14 | 6 | 19 | 28 | 10 | 0 |
-| 21 | chapters/ch20-reward-to-bundle-inference.tex | From Rewards to Values | 5,492 | 1,197 | 1,015 | 1,014 | 28 | 10 | 41 | 91 | 22 | 0 |
-| 22 | chapters/ch21-compression-test-intention.tex | The Compression Test for Intention | 4,833 | 967 | 777 | 776 | 22 | 8 | 57 | 35 | 20 | 0 |
-| 23 | chapters/ch22-goal-transport.tex | Has the Goal Really Survived? | 4,009 | 865 | 725 | 724 | 21 | 12 | 43 | 53 | 16 | 0 |
-| 24 | chapters/ch23-transport-types.tex | When the Words Survive but the Meaning Doesn't | 4,172 | 837 | 676 | 675 | 22 | 10 | 44 | 51 | 17 | 0 |
-| 25 | chapters/ch24-correction-causal-channel.tex | Correction Is a Causal Channel | 6,772 | 1,319 | 1,107 | 1,106 | 31 | 15 | 49 | 94 | 26 | 0 |
-| 26 | chapters/ch25-correction-channel-integrity.tex | Correction-Channel Integrity | 4,519 | 653 | 560 | 559 | 19 | 10 | 22 | 41 | 12 | 0 |
-| 27 | chapters/ch25b-correction-channels-adversarial-pressure.tex | Correction Channels under Adversarial Pressure | 3,456 | 798 | 645 | 644 | 20 | 14 | 40 | 43 | 19 | 0 |
-| 28 | chapters/ch26-extrapolative-correction.tex | Beyond Following Instruction | 3,688 | 660 | 528 | 527 | 17 | 14 | 37 | 40 | 12 | 0 |
-| 29 | chapters/ch27-manipulation-false-consent.tex | Manipulation, Domestication, and False Consent | 5,821 | 923 | 626 | 625 | 31 | 22 | 22 | 62 | 19 | 0 |
-| 30 | chapters/ch28-successor-central-test.tex | Successor Creation as the Central Alignment Test | 3,926 | 624 | 481 | 480 | 21 | 17 | 22 | 45 | 16 | 0 |
-| 31 | chapters/ch29-conserved-properties.tex | Conserved Properties Across Successors | 4,963 | 1,012 | 845 | 844 | 25 | 16 | 39 | 49 | 19 | 0 |
-| 32 | chapters/ch30-self-modeling-self-opacity.tex | Better Self-Modeling Can Be Worse | 5,540 | 809 | 613 | 612 | 25 | 11 | 41 | 48 | 17 | 0 |
-| 33 | chapters/ch31-certification-without-construction.tex | Certification Without Construction | 4,307 | 712 | 551 | 550 | 25 | 17 | 35 | 40 | 13 | 0 |
-| 34 | chapters/ch32-selection-environment.tex | Alignment Is Selected or Destroyed by Its Environment | 5,168 | 835 | 651 | 650 | 25 | 12 | 45 | 48 | 20 | 0 |
-| 35 | chapters/ch33-multi-agent-strategic-coupling.tex | Multi-Agent Superintelligence and Inferential Coupling | 4,759 | 430 | 358 | 357 | 16 | 10 | 6 | 18 | 7 | 0 |
-| 36 | chapters/ch34-parasites-correction-system.tex | Parasites in the Correction System | 5,178 | 813 | 606 | 605 | 24 | 9 | 46 | 67 | 24 | 0 |
-| 37 | chapters/ch35-alignment-attractor.tex | The Alignment Attractor | 2,596 | 407 | 306 | 305 | 13 | 10 | 22 | 24 | 10 | 0 |
-| 38 | chapters/ch35b-conductive-artifacts-pivotal-processes.tex | Conductive Artifacts and Pivotal Processes | 3,410 | 733 | 546 | 545 | 23 | 11 | 50 | 27 | 19 | 0 |
-| 39 | chapters/ch36-passive-observation-not-enough.tex | Passive Observation Is Not Enough | 5,941 | 1,059 | 817 | 816 | 29 | 15 | 53 | 64 | 14 | 0 |
-| 40 | chapters/ch37-goal-laundering.tex | Detecting Goal Laundering | 4,249 | 846 | 680 | 679 | 22 | 13 | 39 | 58 | 16 | 0 |
-| 41 | chapters/ch38-multiscale-decomposition.tex | Checking a System at Every Level | 5,032 | 759 | 599 | 598 | 25 | 15 | 29 | 55 | 21 | 0 |
-| 42 | chapters/ch39-safety-case.tex | A Safety Case for Superintelligence Alignment | 1,815 | 277 | 229 | 227 | 9 | 3 | 2 | 8 | 8 | 1 |
-| 43 | chapters/ch39b-verifiability-and-ontology-adequacy.tex | What Survives an Adversary: Verifiability and Representabili… | 2,149 | 198 | 153 | 149 | 9 | 6 | 3 | 3 | 10 | 3 |
-| 44 | chapters/ch40-lethality-stress-test-open-issues.tex | Lethality Stress Test and Open Issues | 3,439 | 440 | 379 | 377 | 18 | 16 | 11 | 5 | 10 | 0 |
-| 45 | chapters/ch41-value-change-at-stake.tex | When Value Change Is the Thing at Stake | 5,012 | 545 | 370 | 369 | 20 | 12 | 17 | 24 | 16 | 0 |
-| 46 | chapters/ch42-unconscious-value-drift.tex | The End of Unconscious Value Drift | 4,910 | 628 | 449 | 448 | 22 | 15 | 42 | 25 | 18 | 0 |
-| 47 | chapters/ch43-bearers-of-value.tex | Who Still Counts After Transformation | 1,542 | 279 | 220 | 219 | 8 | 3 | 4 | 14 | 11 | 0 |
-| 48 | chapters/ch44-towards-alignment.tex | Towards Superintelligence Alignment | 1,709 | 268 | 214 | 213 | 8 | 3 | 2 | 8 | 8 | 0 |
+| 20 | chapters/ch20-measuring-stress-testing-bundle-geometry.tex | Measuring and Stress-Testing Bundle Geometry | 2,011 | 458 | 378 | 377 | 14 | 6 | 19 | 28 | 10 | 0 |
+| 21 | chapters/ch21-reward-to-bundle-inference.tex | From Rewards to Values | 5,492 | 1,197 | 1,015 | 1,014 | 28 | 10 | 41 | 91 | 22 | 0 |
+| 22 | chapters/ch22-compression-test-intention.tex | The Compression Test for Intention | 4,833 | 967 | 777 | 776 | 22 | 8 | 57 | 35 | 20 | 0 |
+| 23 | chapters/ch23-goal-transport.tex | Has the Goal Really Survived? | 4,009 | 865 | 725 | 724 | 21 | 12 | 43 | 53 | 16 | 0 |
+| 24 | chapters/ch24-transport-types.tex | When the Words Survive but the Meaning Doesn't | 4,172 | 837 | 676 | 675 | 22 | 10 | 44 | 51 | 17 | 0 |
+| 25 | chapters/ch25-correction-causal-channel.tex | Correction Is a Causal Channel | 6,772 | 1,319 | 1,107 | 1,106 | 31 | 15 | 49 | 94 | 26 | 0 |
+| 26 | chapters/ch26-correction-channel-integrity.tex | Correction-Channel Integrity | 4,519 | 653 | 560 | 559 | 19 | 10 | 22 | 41 | 12 | 0 |
+| 27 | chapters/ch27-correction-channels-adversarial-pressure.tex | Correction Channels under Adversarial Pressure | 3,456 | 798 | 645 | 644 | 20 | 14 | 40 | 43 | 19 | 0 |
+| 28 | chapters/ch28-extrapolative-correction.tex | Beyond Following Instruction | 3,688 | 660 | 528 | 527 | 17 | 14 | 37 | 40 | 12 | 0 |
+| 29 | chapters/ch29-manipulation-false-consent.tex | Manipulation, Domestication, and False Consent | 5,821 | 923 | 626 | 625 | 31 | 22 | 22 | 62 | 19 | 0 |
+| 30 | chapters/ch30-successor-central-test.tex | Successor Creation as the Central Alignment Test | 3,926 | 624 | 481 | 480 | 21 | 17 | 22 | 45 | 16 | 0 |
+| 31 | chapters/ch31-conserved-properties.tex | Conserved Properties Across Successors | 4,963 | 1,012 | 845 | 844 | 25 | 16 | 39 | 49 | 19 | 0 |
+| 32 | chapters/ch32-self-modeling-self-opacity.tex | Better Self-Modeling Can Be Worse | 5,540 | 809 | 613 | 612 | 25 | 11 | 41 | 48 | 17 | 0 |
+| 33 | chapters/ch33-certification-without-construction.tex | Certification Without Construction | 4,307 | 712 | 551 | 550 | 25 | 17 | 35 | 40 | 13 | 0 |
+| 34 | chapters/ch34-selection-environment.tex | Alignment Is Selected or Destroyed by Its Environment | 5,168 | 835 | 651 | 650 | 25 | 12 | 45 | 48 | 20 | 0 |
+| 35 | chapters/ch35-multi-agent-strategic-coupling.tex | Multi-Agent Superintelligence and Inferential Coupling | 4,759 | 430 | 358 | 357 | 16 | 10 | 6 | 18 | 7 | 0 |
+| 36 | chapters/ch36-parasites-correction-system.tex | Parasites in the Correction System | 5,178 | 813 | 606 | 605 | 24 | 9 | 46 | 67 | 24 | 0 |
+| 37 | chapters/ch37-alignment-attractor.tex | The Alignment Attractor | 2,596 | 407 | 306 | 305 | 13 | 10 | 22 | 24 | 10 | 0 |
+| 38 | chapters/ch38-conductive-artifacts-pivotal-processes.tex | Conductive Artifacts and Pivotal Processes | 3,410 | 733 | 546 | 545 | 23 | 11 | 50 | 27 | 19 | 0 |
+| 39 | chapters/ch39-passive-observation-not-enough.tex | Passive Observation Is Not Enough | 5,941 | 1,059 | 817 | 816 | 29 | 15 | 53 | 64 | 14 | 0 |
+| 40 | chapters/ch40-goal-laundering.tex | Detecting Goal Laundering | 4,249 | 846 | 680 | 679 | 22 | 13 | 39 | 58 | 16 | 0 |
+| 41 | chapters/ch41-multiscale-decomposition.tex | Checking a System at Every Level | 5,032 | 759 | 599 | 598 | 25 | 15 | 29 | 55 | 21 | 0 |
+| 42 | chapters/ch42-safety-case.tex | A Safety Case for Superintelligence Alignment | 1,815 | 277 | 229 | 227 | 9 | 3 | 2 | 8 | 8 | 1 |
+| 43 | chapters/ch43-verifiability-and-ontology-adequacy.tex | What Survives an Adversary: Verifiability and Representabili… | 2,149 | 198 | 153 | 149 | 9 | 6 | 3 | 3 | 10 | 3 |
+| 44 | chapters/ch44-lethality-stress-test-open-issues.tex | Lethality Stress Test and Open Issues | 3,439 | 440 | 379 | 377 | 18 | 16 | 11 | 5 | 10 | 0 |
+| 45 | chapters/ch45-value-change-at-stake.tex | When Value Change Is the Thing at Stake | 5,012 | 545 | 370 | 369 | 20 | 12 | 17 | 24 | 16 | 0 |
+| 46 | chapters/ch46-unconscious-value-drift.tex | The End of Unconscious Value Drift | 4,910 | 628 | 449 | 448 | 22 | 15 | 42 | 25 | 18 | 0 |
+| 47 | chapters/ch47-bearers-of-value.tex | Who Still Counts After Transformation | 1,542 | 279 | 220 | 219 | 8 | 3 | 4 | 14 | 11 | 0 |
+| 48 | chapters/ch48-towards-alignment.tex | Towards Superintelligence Alignment | 1,709 | 268 | 214 | 213 | 8 | 3 | 2 | 8 | 8 | 0 |
 |  | **Subtotal** |  | **217,105** | **37,793** | **30,022** | **29,969** | **1,033** | **564** | **1,478** | **1,994** | **780** | **4** |
 
 ## Appendices
@@ -167,14 +167,14 @@ Files reached from `book.tex` via `\input`, `\addbibresource`, and `\includegrap
 | File | Title | Words | Total | LOC | Code | Pages | Cites | Labels | Formulas |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | appendices/appA-notation.tex | Notation Index | 109 | 15 | 10 | 10 | 6 | 0 | 1 | 0 |
-| appendices/appB-worked-example-agent-boundary.tex | Worked Example: Agent Boundary | 5 | 4 | 3 | 3 | 1 | 0 | 1 | 0 |
-| appendices/appC-value-bundle-inference.tex | Value-Bundle Inference | 5 | 4 | 3 | 3 | 1 | 0 | 1 | 0 |
-| appendices/appD-correction-channel-audit.tex | Correction-Channel Audit | 5 | 4 | 3 | 3 | 1 | 0 | 1 | 0 |
-| appendices/appE-assumptions.tex | Assumptions Index | 76 | 13 | 9 | 9 | 4 | 0 | 1 | 0 |
-| appendices/appF-glossary.tex | Operational Glossary | 947 | 117 | 103 | 103 | 3 | 1 | 1 | 5 |
-| appendices/appG-safety-case-template.tex | Safety-Case Template | 5 | 4 | 3 | 3 | 1 | 0 | 1 | 0 |
-| appendices/appH-research-program.tex | Research Program | 2,593 | 289 | 209 | 209 | 12 | 0 | 1 | 0 |
-| appendices/appI-lean-proof-spine.tex | Lean Proof Spine in Mathematical Form | 4,865 | 1,040 | 909 | 909 | 25 | 0 | 160 | 35 |
+| appendices/appH-boundary-worked-example.tex | Worked Example: Agent Boundary | 5 | 4 | 3 | 3 | 1 | 0 | 1 | 0 |
+| appendices/appI-value-bundle-inference.tex | Value-Bundle Inference | 5 | 4 | 3 | 3 | 1 | 0 | 1 | 0 |
+| appendices/appJ-correction-channel-audit.tex | Correction-Channel Audit | 5 | 4 | 3 | 3 | 1 | 0 | 1 | 0 |
+| appendices/appL-assumptions.tex | Assumptions Index | 76 | 13 | 9 | 9 | 4 | 0 | 1 | 0 |
+| appendices/appE-glossary.tex | Operational Glossary | 947 | 117 | 103 | 103 | 3 | 1 | 1 | 5 |
+| appendices/appK-safety-case-template.tex | Safety-Case Template | 5 | 4 | 3 | 3 | 1 | 0 | 1 | 0 |
+| appendices/appF-research-program.tex | Research Program | 2,593 | 289 | 209 | 209 | 12 | 0 | 1 | 0 |
+| appendices/appG-lean-proof-spine.tex | Lean Proof Spine in Mathematical Form | 4,865 | 1,040 | 909 | 909 | 25 | 0 | 160 | 35 |
 | **Subtotal** |  | **8,610** | **1,490** | **1,252** | **1,252** | **54** | **1** | **168** | **40** |
 
 ## Bibliography
@@ -221,22 +221,22 @@ Files reached from `book.tex` via `\input`, `\addbibresource`, and `\includegrap
 | chapters/ch07-finding-boundary.tex | 4 |
 | chapters/ch10-strategic-opacity.tex | 1 |
 | chapters/ch17-low-dimensional-value-learning.tex | 1 |
-| chapters/ch20-reward-to-bundle-inference.tex | 1 |
-| chapters/ch24-correction-causal-channel.tex | 6 |
-| chapters/ch25-correction-channel-integrity.tex | 1 |
-| chapters/ch25b-correction-channels-adversarial-pressure.tex | 3 |
-| chapters/ch26-extrapolative-correction.tex | 4 |
-| chapters/ch27-manipulation-false-consent.tex | 1 |
-| chapters/ch28-successor-central-test.tex | 1 |
-| chapters/ch29-conserved-properties.tex | 2 |
-| chapters/ch31-certification-without-construction.tex | 1 |
-| chapters/ch33-multi-agent-strategic-coupling.tex | 3 |
-| chapters/ch36-passive-observation-not-enough.tex | 2 |
-| chapters/ch38-multiscale-decomposition.tex | 1 |
-| chapters/ch39-safety-case.tex | 3 |
-| chapters/ch39b-verifiability-and-ontology-adequacy.tex | 2 |
-| chapters/ch43-bearers-of-value.tex | 2 |
-| chapters/ch44-towards-alignment.tex | 3 |
+| chapters/ch21-reward-to-bundle-inference.tex | 1 |
+| chapters/ch25-correction-causal-channel.tex | 6 |
+| chapters/ch26-correction-channel-integrity.tex | 1 |
+| chapters/ch27-correction-channels-adversarial-pressure.tex | 3 |
+| chapters/ch28-extrapolative-correction.tex | 4 |
+| chapters/ch29-manipulation-false-consent.tex | 1 |
+| chapters/ch30-successor-central-test.tex | 1 |
+| chapters/ch31-conserved-properties.tex | 2 |
+| chapters/ch33-certification-without-construction.tex | 1 |
+| chapters/ch35-multi-agent-strategic-coupling.tex | 3 |
+| chapters/ch39-passive-observation-not-enough.tex | 2 |
+| chapters/ch41-multiscale-decomposition.tex | 1 |
+| chapters/ch42-safety-case.tex | 3 |
+| chapters/ch43-verifiability-and-ontology-adequacy.tex | 2 |
+| chapters/ch47-bearers-of-value.tex | 2 |
+| chapters/ch48-towards-alignment.tex | 3 |
 | **Total** | **47** |
 
 ## Notes

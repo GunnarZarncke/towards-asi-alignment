@@ -7,7 +7,7 @@ User noted that completing Mathlib-backed field-agenda formalizations (CIRL, AUP
 - Added **field-agenda Lean formalization (community gem in progress)** to `REVIEWING_FOR_AGENTS.md` gem map.
 - Named the gem in Appendix I: `\paragraph{Gem: field-agenda formalization.}` with label `sec:appi-field-formalization-gem`.
 - Replaced the old cramped field-formula `align` block with interface-condition formulas (CIRL \(k=1\) embed, scalar/bundle inference, shutdown/interrupt bits, AUP reachability interface, quantile soundness, contraction/readout) and symbol glossary.
-- Cross-linked from `appendices/appBridge-crosswalk.tex` and `formal/README.md`.
+- Cross-linked from `appendices/appB-bridge-crosswalk.tex` and `formal/README.md`.
 
 ## Decisions
 - Framed as **in progress / prospective community artifact**, not as completed full-field theorem reproduction.
@@ -19,8 +19,8 @@ User noted that completing Mathlib-backed field-agenda formalizations (CIRL, AUP
 
 ## Key paths
 - `REVIEWING_FOR_AGENTS.md`
-- `appendices/appI-lean-proof-spine.tex`
-- `appendices/appBridge-crosswalk.tex`
+- `appendices/appG-lean-proof-spine.tex`
+- `appendices/appB-bridge-crosswalk.tex`
 - `formal/README.md`
 
 ## Commits

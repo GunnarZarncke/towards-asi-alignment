@@ -7,8 +7,8 @@ The user clarified that the manuscript should not cite the Gunnar Zarncke UAD pa
 - Removed direct manuscript citations to `zarncke2026access`, `zarncke2026smoothing`, and `zarncke2026stealth` from:
   - `chapters/ch07-finding-boundary.tex`
   - `chapters/ch10-strategic-opacity.tex`
-  - `chapters/ch36-passive-observation-not-enough.tex`
-  - `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+  - `chapters/ch39-passive-observation-not-enough.tex`
+  - `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 - Rephrased the surrounding text so handles, measurement blur, stealth costs, and accumulated resources are presented as book-internal arguments rather than imported paper results.
 - Verified no `.tex` files still contain those citation keys or the phrases "new UAD bounds" / "new agent-discovery refinements."
 - Ran `python3 scripts/check_structure.py` successfully.
@@ -24,8 +24,8 @@ The user clarified that the manuscript should not cite the Gunnar Zarncke UAD pa
 ## Key paths
 - `chapters/ch07-finding-boundary.tex`
 - `chapters/ch10-strategic-opacity.tex`
-- `chapters/ch36-passive-observation-not-enough.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+- `chapters/ch39-passive-observation-not-enough.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 
 ## Commits
 - None.

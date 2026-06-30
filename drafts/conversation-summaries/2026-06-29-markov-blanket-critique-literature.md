@@ -18,7 +18,7 @@ User supplied feedback on the Pearl vs Friston blanket critique (Bruineberg et a
 ## Decisions
 - Primary home is **ch06 footnote** (construct introduction); ch07 stays procedural with one sentence + short footnote.
 - Cited **Demski (2023) AF post** rather than attributing the argument to Wentworth (Wentworth commented on related threads; Demski's post explicitly cites Bruineberg).
-- Did not touch ch38's unrelated Biehl cite (adversarial audit context).
+- Did not touch ch45's unrelated Biehl cite (adversarial audit context).
 
 ## Open / next
 - Chris Pang correlation-based boundary ontology (TODO only).
@@ -28,7 +28,7 @@ User supplied feedback on the Pearl vs Friston blanket critique (Bruineberg et a
 ## Key paths
 - `chapters/ch06-agent-without-anthropomorphism.tex` (footnote ~L167)
 - `chapters/ch07-finding-boundary.tex` (~L199–200)
-- `appendices/appBridge-crosswalk.tex` (MB1 notes)
+- `appendices/appB-bridge-crosswalk.tex` (MB1 notes)
 - `references/manuscript-citations.bib`, `references/dynamical-systems.bib`
 
 ## Commits

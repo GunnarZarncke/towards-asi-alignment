@@ -6,11 +6,11 @@ User asked to include the suggested improvement for feedback item (b) in both te
 
 ## Done
 
-- Updated `chapters/ch36-passive-observation-not-enough.tex` to state the stronger conditional floor: post-commitment freshness, leakage budget \(\epsilon\), and probe-family coverage \(q\) imply detection at least \(q-\epsilon\).
-- Updated `chapters/ch39b-verifiability-and-ontology-adequacy.tex` so "unpredictable probes" means the stricter post-commitment standard, not merely evaluator secrecy.
+- Updated `chapters/ch39-passive-observation-not-enough.tex` to state the stronger conditional floor: post-commitment freshness, leakage budget \(\epsilon\), and probe-family coverage \(q\) imply detection at least \(q-\epsilon\).
+- Updated `chapters/ch43-verifiability-and-ontology-adequacy.tex` so "unpredictable probes" means the stricter post-commitment standard, not merely evaluator secrecy.
 - Added `PostCommitmentProbeCertificate` and theorem `P36R_post_commitment_randomization_floor` to `formal/AlignmentProofSpine/Adversarial.lean`, plus a positive-detection corollary when coverage exceeds leakage.
 - Updated `formal/README.md` module map to include `P36R`.
-- Updated `appendices/appI-lean-proof-spine.tex` with theorem `P36R` and a proof explanation.
+- Updated `appendices/appG-lean-proof-spine.tex` with theorem `P36R` and a proof explanation.
 
 ## Decisions
 
@@ -32,10 +32,10 @@ make check               # fails: Expected 10 appendix files, found 9
 
 ## Key paths
 
-- `chapters/ch36-passive-observation-not-enough.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+- `chapters/ch39-passive-observation-not-enough.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 - `formal/AlignmentProofSpine/Adversarial.lean`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `formal/README.md`
 
 ## Commits

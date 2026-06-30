@@ -6,7 +6,7 @@ User provided reviewer feedback on the revised Chapter 36: the main hidden-rando
 
 ## Done
 
-- Updated `chapters/ch36-passive-observation-not-enough.tex` §Hidden Randomization to add an immediate caveat after the \(I(R;\text{system pre-test belief})\approx 0\) target: against a sufficiently capable system, hiding the audit condition may be unattainable and is an open adversarial-verifiability problem.
+- Updated `chapters/ch39-passive-observation-not-enough.tex` §Hidden Randomization to add an immediate caveat after the \(I(R;\text{system pre-test belief})\approx 0\) target: against a sufficiently capable system, hiding the audit condition may be unattainable and is an open adversarial-verifiability problem.
 - Updated the accumulated-resources subsection to clarify that resource records only count what evaluator handles cover; hidden production rates inherit the same evasion/handle-coverage dependency.
 - Updated the §What Would Change This View extreme-capability paragraph so the cost-of-faking pointer does not over-credit Chapter~\ref{ch:verifiability-ontology}: this book does not supply a capability-independent bound at high capability, and closure would require proof-style guarantees rather than another observable metric.
 
@@ -27,13 +27,13 @@ User provided reviewer feedback on the revised Chapter 36: the main hidden-rando
 make check   # fails: Expected 10 appendix files, found 9
 ```
 
-`ReadLints` reported no diagnostics for `chapters/ch36-passive-observation-not-enough.tex`.
+`ReadLints` reported no diagnostics for `chapters/ch39-passive-observation-not-enough.tex`.
 
 ## Key paths
 
-- `chapters/ch36-passive-observation-not-enough.tex`
-- `chapters/ch40-lethality-stress-test-open-issues.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+- `chapters/ch39-passive-observation-not-enough.tex`
+- `chapters/ch44-lethality-stress-test-open-issues.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 
 ## Commits
 

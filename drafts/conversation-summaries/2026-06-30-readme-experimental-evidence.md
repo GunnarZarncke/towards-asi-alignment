@@ -14,7 +14,7 @@ User asked to add a section to the top `README.md` on current tentative experime
 - Did not edit manuscript appendices yet (user scoped to README only).
 
 ## Open / next
-- Optional: mirror condensed version in `appendices/appH-research-program.tex` when user lifts experiments→manuscript boundary.
+- Optional: mirror condensed version in `appendices/appF-research-program.tex` when user lifts experiments→manuscript boundary.
 - Optional: add `experiments/` to repository map in README.
 
 ## Key paths

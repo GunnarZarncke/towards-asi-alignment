@@ -11,7 +11,7 @@ User asked for frontmatter current-status (WIP, AI-written, book-as-knowledge-ba
 - `frontmatter/roadmap.tex` marked superseded by current-status.
 
 ## Open / next
-- ch26 extrapolative correction still stub.
+- ch46 extrapolative correction still stub.
 - Executive overview diagram-in-words and several stub sections remain.
 
 ## Key paths

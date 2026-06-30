@@ -1,6 +1,6 @@
 # Terminology
 
-Operational definitions for core terms. Canonical reader surface: Appendix F (`appendices/appF-glossary.tex`). Editorial rules: `INSTRUCTIONS.md` §5.
+Operational definitions for core terms. Canonical reader surface: Appendix F (`appendices/appE-glossary.tex`). Editorial rules: `INSTRUCTIONS.md` §5.
 
 | Term | Operational definition |
 |------|------------------------|
@@ -15,10 +15,10 @@ Operational definitions for core terms. Canonical reader surface: Appendix F (`a
 | Bearer map | A mapping specifying what entities, states, or processes a value bundle applies to. |
 | Goal inference | Finding latent objectives or value-bundle structures that make observed behavior more compressible. |
 | Goal transport | Preservation of goal-relevant structure across transformation. |
-| Correction channel | The pathway by which humans or human institutions observe a system, judge, deliberate, issue corrections, and change its future behaviour before irreversible damage; formally, a correcting agent \(G_t\) that sufficiently coincides with legitimate human correction controls handles \(\mathcal{H}_t\) that reach the target's update and later behaviour. Canonical definition: **ch24** (`eq:handle-controlled-correction-channel-ch24`; trace `eq:correction-chain-ch24`). |
-| Correction-channel integrity | A conditional vector/status certificate for whether controlled, reaching correction traces remain valid and strong enough: grounding-valid reference process first, then raw bottleneck capacity, latency, manipulation, irreversibility, residual ontology translation loss, coercion/dependency/plurality/exit/independence coordinates, and per-coordinate thresholds. Scalar \(CCI_\lambda\) is expository only. Formal home: **ch25** (`eq:correction-bottleneck-capacity`, `eq:cci-ch25`). |
-| Deployment/control mass | In selection environment \(E\), the aggregate effective selection capacity over handles controlled in \(E\) that reach system \(A\). Formal definition: **ch32** (`eq:deployment-mass-ch32`). |
-| Fitness | Environment-relative rate of deployment-mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\); relative ordering uses \(\mu_E\). Not moral value; capability, revenue, and benchmarks enter only as drivers of selection-handle exercise. Formal definition: **ch32** (`eq:fitness-ch32`). |
+| Correction channel | The pathway by which humans or human institutions observe a system, judge, deliberate, issue corrections, and change its future behaviour before irreversible damage; formally, a correcting agent \(G_t\) that sufficiently coincides with legitimate human correction controls handles \(\mathcal{H}_t\) that reach the target's update and later behaviour. Canonical definition: **ch46** (`eq:handle-controlled-correction-channel-ch46`; trace `eq:correction-chain-ch46`). |
+| Correction-channel integrity | A conditional vector/status certificate for whether controlled, reaching correction traces remain valid and strong enough: grounding-valid reference process first, then raw bottleneck capacity, latency, manipulation, irreversibility, residual ontology translation loss, coercion/dependency/plurality/exit/independence coordinates, and per-coordinate thresholds. Scalar \(CCI_\lambda\) is expository only. Formal home: **ch46** (`eq:correction-bottleneck-capacity`, `eq:cci-ch46`). |
+| Deployment/control mass | In selection environment \(E\), the aggregate effective selection capacity over handles controlled in \(E\) that reach system \(A\). Formal definition: **ch46** (`eq:deployment-mass-ch46`). |
+| Fitness | Environment-relative rate of deployment-mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\); relative ordering uses \(\mu_E\). Not moral value; capability, revenue, and benchmarks enter only as drivers of selection-handle exercise. Formal definition: **ch46** (`eq:fitness-ch46`). |
 | Successor | Any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity. |
 | Alignment basin | A self-stabilizing region of dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure. |
 | Pivotal process | A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act. |

@@ -5,7 +5,7 @@ import AlignmentProofSpine.Capability
 # AlignmentProofSpine.CooperationGraph
 
 UAD-grounded cooperation graphs, inferential coupling, and percolation
-scaffolding (book ch13, ch33, basin/attractor paper, acausal-trade UAD paper).
+scaffolding (book ch13, ch48, basin/attractor paper, acausal-trade UAD paper).
 
 **Proved here:**
 
@@ -53,7 +53,7 @@ theorem discovered_agent_is_candidate {n : Nat} (audit : UADDiscoveryAudit n)
     (i : Fin n) : AgentCandidate (audit.agents i).boundary :=
   MB1_estimator_soundness (audit.agents i).boundary (audit.agents i).epsilonBoundary
 
-/-! ## Causal mutual modeling (basin / ch33 κ inputs) -/
+/-! ## Causal mutual modeling (basin / ch48 κ inputs) -/
 
 /-- Causal cooperativity inputs before inferential reach extension. -/
 structure CausalMutualProps where
@@ -203,7 +203,7 @@ def defaultInferentialThreshold : Int := 90
 def inferentialEdgeOpen (score threshold : Int) : Prop :=
   threshold < score
 
-/-! ## Assembling `\tilde{κ}` mutual-model props (ch33) -/
+/-! ## Assembling `\tilde{κ}` mutual-model props (ch48) -/
 
 structure MutualModelProps where
   benefit : Int
@@ -213,7 +213,7 @@ structure MutualModelProps where
   cost : Int
   transparency : Int := 0
 
-/-- ch33 effective reach: `p_ij + (1 - p_ij) · ICI_ij` on integer scale. -/
+/-- ch48 effective reach: `p_ij + (1 - p_ij) · ICI_ij` on integer scale. -/
 def MutualModelProps.effectiveReach (m : MutualModelProps) : Int :=
   m.causalReach + m.inferentialReachBoost
 

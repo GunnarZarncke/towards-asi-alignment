@@ -11,9 +11,9 @@ The user wanted correction channel and correction-channel integrity put on less 
   - Replaced graph-path `P23` with `P23_no_handle_control_no_correction`.
   - Kept `CCI` as the exported correction measurand and preserved weakest-link `P24` over effective handle capacities.
 - Updated manuscript and metadata:
-  - Revised ch24/ch25 correction-channel definitions from a fixed observe/judge/deliberate role ontology to a correcting-agent/handle-control model.
+  - Revised ch46/ch46 correction-channel definitions from a fixed observe/judge/deliberate role ontology to a correcting-agent/handle-control model.
   - Updated book-wide CCI formulas from `min_i I(X_i;X_{i+1})` to `min_i \kappa_i(A,G_t,h_i)` in live chapters and instructions.
-  - Updated `appendices/appI-lean-proof-spine.tex`, `appendices/appF-glossary.tex`, `metadata/notation.md`, `metadata/terminology.md`, `metadata/TODO.md`, `formal/README.md`, and `formal/AlignmentProofSpine.lean`.
+  - Updated `appendices/appG-lean-proof-spine.tex`, `appendices/appE-glossary.tex`, `metadata/notation.md`, `metadata/terminology.md`, `metadata/TODO.md`, `formal/README.md`, and `formal/AlignmentProofSpine.lean`.
   - Updated `context/lean_proof_dependency_graph.dot` labels and regenerated `context/lean_proof_dependency_graph.png`.
 - Verification:
   - `cd formal && lake build` passed.
@@ -30,14 +30,14 @@ The user wanted correction channel and correction-channel integrity put on less 
 ## Open / next
 - The Lean capacities are still abstract integers. A future strengthening could define \(\kappa_i\) from concrete observation/operation data.
 - Some review/history files still mention the old MI weakest-link formulation; these were left untouched as historical notes.
-- Consider whether ch23/ch26/ch31 need a fuller explanatory paragraph, beyond formula replacement, in a later continuity pass.
+- Consider whether ch46/ch46/ch48 need a fuller explanatory paragraph, beyond formula replacement, in a later continuity pass.
 
 ## Key paths
 - `formal/AlignmentProofSpine/Core.lean`
 - `formal/AlignmentProofSpine/Correction.lean`
-- `chapters/ch24-correction-causal-channel.tex`
-- `chapters/ch25-correction-channel-integrity.tex`
-- `appendices/appI-lean-proof-spine.tex`
+- `chapters/ch25-correction-causal-channel.tex`
+- `chapters/ch26-correction-channel-integrity.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `metadata/notation.md`
 - `metadata/terminology.md`
 - `context/lean_proof_dependency_graph.dot`

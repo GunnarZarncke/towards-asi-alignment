@@ -48,7 +48,7 @@ Current Status    — WIP, authorship, chapter status table only
 
 ### Verification after frontmatter pass
 - `./build.sh`; check Intro + Part I read without repeated reframing blocks.
-- Update `metadata/TODO.md` opening-promise reconciliation when ch44 lands.
+- Update `metadata/TODO.md` opening-promise reconciliation when ch48 lands.
 
 ## Open / next
 - Execute frontmatter plan above (next session).
@@ -56,7 +56,7 @@ Current Status    — WIP, authorship, chapter status table only
 
 ## Key paths
 - `frontmatter/{preface,introduction,executive-overview,current-status}.tex`
-- `metadata/assumptions-ledger.md`, `appendices/appE-assumptions.tex`
+- `metadata/assumptions-ledger.md`, `appendices/appL-assumptions.tex`
 - `metadata/notation.md`, `appendices/appA-notation.tex`
 
 ## Commits

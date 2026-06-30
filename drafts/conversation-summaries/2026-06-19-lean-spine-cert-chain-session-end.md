@@ -43,7 +43,7 @@ without commit.
   2. `docs:` AGENTS / INSTRUCTIONS / README Lean-review instruction.
 - Remaining spine TODO: adversarial aliasing (`P34`/`MB7`), safety-case (`P40`),
   strengthen counterexamples, wire Ch. 39 / appendix.
-- **Uncommitted elsewhere:** `ch26` committed (`c62a7d6`); ch27 at `e2c4357`;
+- **Uncommitted elsewhere:** `ch46` committed (`c62a7d6`); ch48 at `e2c4357`;
   untracked `LeanProofSpineImplementationBrief.md`, `context/lean_proof_dependency_graph.dot`,
   `src/`, mixed edits to `INDEX.md` / frontmatter log.
 

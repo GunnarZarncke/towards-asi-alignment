@@ -18,7 +18,7 @@ User asked to copy three new UAD papers from sibling `agency-detect` into `conte
 - `zarncke2026access` bib key added manually (no standalone entry in agency-detect `refs.bib` yet); smoothing/stealth keys match agency-detect.
 
 ## Open / next
-- Wire new papers into relevant chapters (ch06–ch07 measurement/adversarial UAD; ch10 stealth/opacity; ch36 passive observation vs handle tests).
+- Wire new papers into relevant chapters (ch06–ch07 measurement/adversarial UAD; ch10 stealth/opacity; ch46 passive observation vs handle tests).
 - Optional: add `zarncke2026access` to agency-detect `refs.bib` for cross-repo consistency.
 
 ## Follow-up (2026-06-25)
@@ -36,8 +36,8 @@ User asked to copy three new UAD papers from sibling `agency-detect` into `conte
 - Integrated the new UAD-paper material into manuscript chapters with self-contained additions:
   - `chapters/ch07-finding-boundary.tex` — handles, measurement handles, what can still be found, and handle forcing.
   - `chapters/ch10-strategic-opacity.tex` — stealth price conditional on handle coverage and boundaries over time.
-  - `chapters/ch36-passive-observation-not-enough.tex` — accumulated resources, resource records, and cumulative evidence records.
-  - `chapters/ch39b-verifiability-and-ontology-adequacy.tex` — handles/coverage/accumulated resources as the concrete form of the cost relation.
+  - `chapters/ch39-passive-observation-not-enough.tex` — accumulated resources, resource records, and cumulative evidence records.
+  - `chapters/ch43-verifiability-and-ontology-adequacy.tex` — handles/coverage/accumulated resources as the concrete form of the cost relation.
 - Verification: `python3 scripts/check_structure.py` passes. `python3 scripts/check_citations.py` still reports the repo's pre-existing missing bibliography keys, but not the new `zarncke2026access`, `zarncke2026smoothing`, or `zarncke2026stealth` citations.
 
 ## Key paths
@@ -45,7 +45,7 @@ User asked to copy three new UAD papers from sibling `agency-detect` into `conte
 - `context/extracts/smooth-uad.md` — observation-channel distortion \(\delta_K\), effective sample size \(T_{\mathrm{eff}}\), recoverability bound.
 - `context/extracts/stealth-capability-bounds.md` — stealth–capability tradeoff; multi-resolution UAD; hidden-policy bound.
 - `context/lean_proof_dependency_graph.dot` / `.png` — updated Lean dependency graph including access/K-equivalence and hidden-BIQ nodes.
-- `chapters/ch07-finding-boundary.tex`, `chapters/ch10-strategic-opacity.tex`, `chapters/ch36-passive-observation-not-enough.tex`, `chapters/ch39b-verifiability-and-ontology-adequacy.tex` — manuscript integration points.
+- `chapters/ch07-finding-boundary.tex`, `chapters/ch10-strategic-opacity.tex`, `chapters/ch39-passive-observation-not-enough.tex`, `chapters/ch43-verifiability-and-ontology-adequacy.tex` — manuscript integration points.
 - `metadata/source-canon.md` — durable source map.
 
 ## Commits

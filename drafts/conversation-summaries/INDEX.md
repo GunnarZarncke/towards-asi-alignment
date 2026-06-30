@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Chapter and appendix renumbering (ch01–ch48, appA–G) | [2026-06-30-chapter-appendix-renumbering.md](2026-06-30-chapter-appendix-renumbering.md) |
 | 2026-06-30 | Narrative voice policy + chapterthesis pass | [2026-06-30-narrative-voice-policy.md](2026-06-30-narrative-voice-policy.md) |
 | 2026-06-30 | Split-chapter epigraph assignments | [2026-06-30-split-chapter-epigraphs.md](2026-06-30-split-chapter-epigraphs.md) |
 | 2026-06-30 | Frontmatter + ch01 AI slop pass | [2026-06-30-frontmatter-ch01-slop-pass.md](2026-06-30-frontmatter-ch01-slop-pass.md) |
@@ -29,7 +30,7 @@ Most recent first.
 | 2026-06-30 | Embedded real UAD | [2026-06-30-embedded-real-uad.md](2026-06-30-embedded-real-uad.md) |
 | 2026-06-30 | Embedded hardening | [2026-06-30-embedded-hardening.md](2026-06-30-embedded-hardening.md) |
 | 2026-06-30 | Field interface reduction | [2026-06-30-field-interface-reduction.md](2026-06-30-field-interface-reduction.md) |
-| 2026-06-30 | ch39 boundary-relative self-maintenance | [2026-06-30-ch39-boundary-relative-self-maintenance.md](2026-06-30-ch39-boundary-relative-self-maintenance.md) |
+| 2026-06-30 | ch46 boundary-relative self-maintenance | [2026-06-30-ch46-boundary-relative-self-maintenance.md](2026-06-30-ch46-boundary-relative-self-maintenance.md) |
 | 2026-06-30 | Embedded methodology + ontology | [2026-06-30-embedded-methodology-ontology.md](2026-06-30-embedded-methodology-ontology.md) |
 | 2026-06-30 | Field special-case projections | [2026-06-30-field-special-case-projections.md](2026-06-30-field-special-case-projections.md) |
 | 2026-06-30 | Adversarial steerability review → TODOs | [2026-06-30-adversarial-steerability-review-todos.md](2026-06-30-adversarial-steerability-review-todos.md) |
@@ -70,9 +71,9 @@ Most recent first.
 | 2026-06-28 | Bridges ↔ field crosswalk appendix | [2026-06-28-bridges-field-crosswalk-appendix.md](2026-06-28-bridges-field-crosswalk-appendix.md) |
 | 2026-06-28 | Lean canary comments | [2026-06-28-lean-canary-comments.md](2026-06-28-lean-canary-comments.md) |
 | 2026-06-28 | Chapter status reviewed | [2026-06-28-chapter-status-reviewed.md](2026-06-28-chapter-status-reviewed.md) |
-| 2026-06-28 | ch35 split implementation | [2026-06-28-ch35-split-implementation.md](2026-06-28-ch35-split-implementation.md) |
+| 2026-06-28 | ch48 split implementation | [2026-06-28-ch48-split-implementation.md](2026-06-28-ch48-split-implementation.md) |
 | 2026-06-28 | ch19 split implementation | [2026-06-28-ch19-split-implementation.md](2026-06-28-ch19-split-implementation.md) |
-| 2026-06-28 | ch25 split implementation | [2026-06-28-ch25-split-implementation.md](2026-06-28-ch25-split-implementation.md) |
+| 2026-06-28 | ch46 split implementation | [2026-06-28-ch46-split-implementation.md](2026-06-28-ch46-split-implementation.md) |
 | 2026-06-28 | Chapter split plans | [2026-06-28-chapter-split-plans.md](2026-06-28-chapter-split-plans.md) |
 | 2026-06-28 | Source token stats | [2026-06-28-source-token-stats.md](2026-06-28-source-token-stats.md) |
 | 2026-06-28 | Promote gems in part openers | [2026-06-28-promote-gems-part-openers.md](2026-06-28-promote-gems-part-openers.md) |
@@ -84,7 +85,7 @@ Most recent first.
 | 2026-06-27 | Grounding viability plan | [2026-06-27-grounding-viability-plan.md](2026-06-27-grounding-viability-plan.md) |
 | 2026-06-27 | Lean UAD cooperation graph | [2026-06-27-lean-uad-cooperation-graph.md](2026-06-27-lean-uad-cooperation-graph.md) |
 | 2026-06-27 | Epistemic marker TODO | [2026-06-27-epistemic-marker-todo.md](2026-06-27-epistemic-marker-todo.md) |
-| 2026-06-26 | Part openers and ch40 fixes | [2026-06-26-part-openers-ch40.md](2026-06-26-part-openers-ch40.md) |
+| 2026-06-26 | Part openers and ch48 fixes | [2026-06-26-part-openers-ch48.md](2026-06-26-part-openers-ch48.md) |
 | 2026-06-26 | Open chapter drafts | [2026-06-26-open-chapter-drafts.md](2026-06-26-open-chapter-drafts.md) |
 | 2026-06-26 | LHV learnability integration | [2026-06-26-lhv-learnability-integration.md](2026-06-26-lhv-learnability-integration.md) |
 | 2026-06-26 | Alignment work subsumption pass | [2026-06-26-alignment-work-subsumption-pass.md](2026-06-26-alignment-work-subsumption-pass.md) |
@@ -93,11 +94,11 @@ Most recent first.
 | 2026-06-26 | Boundary recovery bridge | [2026-06-26-boundary-recovery-bridge.md](2026-06-26-boundary-recovery-bridge.md) |
 | 2026-06-26 | Appendix count check fix | [2026-06-26-appendix-count-check-fix.md](2026-06-26-appendix-count-check-fix.md) |
 | 2026-06-26 | Formalism tone pass | [2026-06-26-formalism-tone-pass.md](2026-06-26-formalism-tone-pass.md) |
-| 2026-06-26 | Ch36 hidden-randomization caveats | [2026-06-26-ch36-hidden-randomization-caveats.md](2026-06-26-ch36-hidden-randomization-caveats.md) |
+| 2026-06-26 | Ch36 hidden-randomization caveats | [2026-06-26-ch46-hidden-randomization-caveats.md](2026-06-26-ch46-hidden-randomization-caveats.md) |
 | 2026-06-26 | CCI anti-capture repair | [2026-06-26-cci-anti-capture-repair.md](2026-06-26-cci-anti-capture-repair.md) |
 | 2026-06-26 | Ch17 representation bridge | [2026-06-26-ch17-representation-bridge.md](2026-06-26-ch17-representation-bridge.md) |
-| 2026-06-26 | Ch36 randomization floor proof | [2026-06-26-ch36-randomization-floor-proof.md](2026-06-26-ch36-randomization-floor-proof.md) |
-| 2026-06-26 | Ch36 hidden-randomization circularity | [2026-06-26-ch36-hidden-randomization-circularity.md](2026-06-26-ch36-hidden-randomization-circularity.md) |
+| 2026-06-26 | Ch36 randomization floor proof | [2026-06-26-ch46-randomization-floor-proof.md](2026-06-26-ch46-randomization-floor-proof.md) |
+| 2026-06-26 | Ch36 hidden-randomization circularity | [2026-06-26-ch46-hidden-randomization-circularity.md](2026-06-26-ch46-hidden-randomization-circularity.md) |
 | 2026-06-26 | Lean spine strengthen — Capability, Bundles, transport, Successors, Boundaries | [2026-06-26-lean-spine-strengthen-capability-bundles-transport.md](2026-06-26-lean-spine-strengthen-capability-bundles-transport.md) |
 | 2026-06-26 | Definition deduplication pass (§A cross-refs) | [2026-06-26-definition-deduplication-pass.md](2026-06-26-definition-deduplication-pass.md) |
 | 2026-06-25 | Frontmatter moves — acks, ch1/ch2 reframing, WWCTV shaky | [2026-06-25-frontmatter-moves-acknowledgements.md](2026-06-25-frontmatter-moves-acknowledgements.md) |
@@ -113,55 +114,55 @@ Most recent first.
 | 2026-06-25 | Glossary — selection environment, handles, fitness, preservation | [2026-06-25-glossary-selection-terms.md](2026-06-25-glossary-selection-terms.md) |
 | 2026-06-25 | Lean proof graphs split for book (4 sub-spines + overview) | [2026-06-25-lean-proof-graphs-book-split.md](2026-06-25-lean-proof-graphs-book-split.md) |
 | 2026-06-25 | Lean dependency graph sync to Lean theorem IDs | [2026-06-25-lean-dependency-graph-sync.md](2026-06-25-lean-dependency-graph-sync.md) |
-| 2026-06-25 | Remove Tripwire Guarantees from ch31, Lean, appendix | [2026-06-25-remove-tripwire-guarantees.md](2026-06-25-remove-tripwire-guarantees.md) |
-| 2026-06-25 | Fitness handle-based definition — ch32 canonical, Lean DeploymentMass | [2026-06-25-fitness-handle-based-definition.md](2026-06-25-fitness-handle-based-definition.md) |
+| 2026-06-25 | Remove Tripwire Guarantees from ch48, Lean, appendix | [2026-06-25-remove-tripwire-guarantees.md](2026-06-25-remove-tripwire-guarantees.md) |
+| 2026-06-25 | Fitness handle-based definition — ch46 canonical, Lean DeploymentMass | [2026-06-25-fitness-handle-based-definition.md](2026-06-25-fitness-handle-based-definition.md) |
 | 2026-06-25 | Lean proof appendix chapter links for definitions and bridges | [2026-06-25-lean-appendix-chapter-links.md](2026-06-25-lean-appendix-chapter-links.md) |
-| 2026-06-25 | CCI canonical definition — single home in ch25, cross-refs elsewhere | [2026-06-25-cci-canonical-definition.md](2026-06-25-cci-canonical-definition.md) |
+| 2026-06-25 | CCI canonical definition — single home in ch46, cross-refs elsewhere | [2026-06-25-cci-canonical-definition.md](2026-06-25-cci-canonical-definition.md) |
 | 2026-06-25 | Handle-controlled correction channel and CCI refactor | [2026-06-25-handle-controlled-correction-channel.md](2026-06-25-handle-controlled-correction-channel.md) |
 | 2026-06-25 | Remove direct UAD paper citations from manuscript prose | [2026-06-25-uad-citation-removal.md](2026-06-25-uad-citation-removal.md) |
 | 2026-06-25 | Lean proof-spine appendix in mathematical form | [2026-06-25-lean-proof-appendix.md](2026-06-25-lean-proof-appendix.md) |
 | 2026-06-25 | Import three new UAD papers from agency-detect into context + extracts | [2026-06-25-uad-papers-context-import.md](2026-06-25-uad-papers-context-import.md) |
 | 2026-06-23 | Lean spine sync: U_H/U_S, CCI-only, SuccessorSafe, spine citations | [2026-06-23-lean-spine-notation-sync.md](2026-06-23-lean-spine-notation-sync.md) |
-| 2026-06-23 | Continuity review re-scan: ch08 seven-props, WWCTV, pivotal, ch24/ch23, review update | [2026-06-23-continuity-review-verification-fixes.md](2026-06-23-continuity-review-verification-fixes.md) |
+| 2026-06-23 | Continuity review re-scan: ch08 seven-props, WWCTV, pivotal, ch46/ch46, review update | [2026-06-23-continuity-review-verification-fixes.md](2026-06-23-continuity-review-verification-fixes.md) |
 | 2026-06-23 | Chapter epigraphs: research table + LaTeX application Ch01–Ch44 | [2026-06-23-chapter-epigraphs-pass.md](2026-06-23-chapter-epigraphs-pass.md) |
 | 2026-06-23 | Redundancy pass fix-plans §B (skip B5); B12 merges; U-shape TODO | [2026-06-23-redundancy-pass-b-section.md](2026-06-23-redundancy-pass-b-section.md) |
 | 2026-06-23 | Notation propagation into chapters (fix-plans §C: ΔL, \MI, g_B/H_B, F, k, C_X, χ, U_H/V_t, η_g/η_c) | [2026-06-23-notation-propagation.md](2026-06-23-notation-propagation.md) |
-| 2026-06-23 | New ch39b verifiability/ontology chapter + strong per-chapter falsifiers + ch40 hostile critique | [2026-06-23-verifiability-ontology-chapter-and-falsifiers.md](2026-06-23-verifiability-ontology-chapter-and-falsifiers.md) |
+| 2026-06-23 | New ch47 verifiability/ontology chapter + strong per-chapter falsifiers + ch48 hostile critique | [2026-06-23-verifiability-ontology-chapter-and-falsifiers.md](2026-06-23-verifiability-ontology-chapter-and-falsifiers.md) |
 | 2026-06-23 | Ledger cross-check (claims/assumptions/uncertainty) + unused-box removal + `page.i`/label build fixes | [2026-06-23-ledger-crosscheck-and-build-fixes.md](2026-06-23-ledger-crosscheck-and-build-fixes.md) |
 | 2026-06-22 | Fix plans for full-book review + chapter-ending style pass (8 chapters) | [2026-06-22-fix-plans-and-style-pass.md](2026-06-22-fix-plans-and-style-pass.md) |
 | 2026-06-22 | Full-book review (continuity/redundancy/consistency/completeness) → review file, no edits | [2026-06-22-full-book-continuity-review.md](2026-06-22-full-book-continuity-review.md) |
 | 2026-06-22 | Section de-segmentation: ch01 (17\u21928), ch06 (17\u21929), ch16 (24\u219214) | [2026-06-22-section-desegmentation-ch01-ch06-ch16.md](2026-06-22-section-desegmentation-ch01-ch06-ch16.md) |
 | 2026-06-22 | Reader-feedback title de-jargoning (Parts IV/V/IX; ch18,20,22,23,26,38,43) | [2026-06-22-title-dejargoning-pass.md](2026-06-22-title-dejargoning-pass.md) |
 | 2026-06-22 | Citation/reference-section conformance pass (all chapters) | [2026-06-22-citation-conformance-pass.md](2026-06-22-citation-conformance-pass.md) |
-| 2026-06-22 | Distribute two orphaned drafts (percolation; cooperation/privacy/opacity) into ch33/ch34/ch25 | [2026-06-22-orphan-drafts-percolation-cooperation-distribution.md](2026-06-22-orphan-drafts-percolation-cooperation-distribution.md) |
-| 2026-06-22 | Session end: ch28–ch42 author draft integrations | [2026-06-22-session-end-ch28-ch42-integrations.md](2026-06-22-session-end-ch28-ch42-integrations.md) |
-| 2026-06-22 | Chapter 42 end of unconscious value drift draft | [2026-06-22-ch42-unconscious-value-drift-draft.md](2026-06-22-ch42-unconscious-value-drift-draft.md) |
-| 2026-06-22 | Chapter 41 when value change is the thing at stake draft | [2026-06-22-ch41-value-change-at-stake-draft.md](2026-06-22-ch41-value-change-at-stake-draft.md) |
-| 2026-06-22 | Chapter 38 multi-scale decomposition draft | [2026-06-22-ch38-multiscale-decomposition-draft.md](2026-06-22-ch38-multiscale-decomposition-draft.md) |
-| 2026-06-22 | Chapter 37 detecting goal laundering draft | [2026-06-22-ch37-goal-laundering-draft.md](2026-06-22-ch37-goal-laundering-draft.md) |
-| 2026-06-22 | Chapter 36 passive observation not enough draft | [2026-06-22-ch36-passive-observation-draft.md](2026-06-22-ch36-passive-observation-draft.md) |
-| 2026-06-22 | Chapter 35 alignment attractor draft | [2026-06-22-ch35-alignment-attractor-draft.md](2026-06-22-ch35-alignment-attractor-draft.md) |
-| 2026-06-22 | Chapter 34 parasites in the correction system draft | [2026-06-22-ch34-parasites-correction-system-draft.md](2026-06-22-ch34-parasites-correction-system-draft.md) |
-| 2026-06-22 | Chapter 32 alignment selected by environment draft | [2026-06-22-ch32-selection-environment-draft.md](2026-06-22-ch32-selection-environment-draft.md) |
-| 2026-06-22 | Chapter 31 certification without construction draft | [2026-06-22-ch31-certification-without-construction-draft.md](2026-06-22-ch31-certification-without-construction-draft.md) |
-| 2026-06-22 | Chapter 30 better self-modeling can be worse draft | [2026-06-22-ch30-self-modeling-self-opacity-draft.md](2026-06-22-ch30-self-modeling-self-opacity-draft.md) |
-| 2026-06-22 | Chapter 29 conserved properties across successors draft | [2026-06-22-ch29-conserved-properties-draft.md](2026-06-22-ch29-conserved-properties-draft.md) |
-| 2026-06-22 | Chapter 28 successor creation central alignment test draft | [2026-06-22-ch28-successor-central-test-draft.md](2026-06-22-ch28-successor-central-test-draft.md) |
+| 2026-06-22 | Distribute two orphaned drafts (percolation; cooperation/privacy/opacity) into ch48/ch46/ch46 | [2026-06-22-orphan-drafts-percolation-cooperation-distribution.md](2026-06-22-orphan-drafts-percolation-cooperation-distribution.md) |
+| 2026-06-22 | Session end: ch46–ch46 author draft integrations | [2026-06-22-session-end-ch46-ch46-integrations.md](2026-06-22-session-end-ch46-ch46-integrations.md) |
+| 2026-06-22 | Chapter 42 end of unconscious value drift draft | [2026-06-22-ch46-unconscious-value-drift-draft.md](2026-06-22-ch46-unconscious-value-drift-draft.md) |
+| 2026-06-22 | Chapter 41 when value change is the thing at stake draft | [2026-06-22-ch45-value-change-at-stake-draft.md](2026-06-22-ch45-value-change-at-stake-draft.md) |
+| 2026-06-22 | Chapter 38 multi-scale decomposition draft | [2026-06-22-ch45-multiscale-decomposition-draft.md](2026-06-22-ch45-multiscale-decomposition-draft.md) |
+| 2026-06-22 | Chapter 37 detecting goal laundering draft | [2026-06-22-ch48-goal-laundering-draft.md](2026-06-22-ch48-goal-laundering-draft.md) |
+| 2026-06-22 | Chapter 36 passive observation not enough draft | [2026-06-22-ch46-passive-observation-draft.md](2026-06-22-ch46-passive-observation-draft.md) |
+| 2026-06-22 | Chapter 35 alignment attractor draft | [2026-06-22-ch48-alignment-attractor-draft.md](2026-06-22-ch48-alignment-attractor-draft.md) |
+| 2026-06-22 | Chapter 34 parasites in the correction system draft | [2026-06-22-ch46-parasites-correction-system-draft.md](2026-06-22-ch46-parasites-correction-system-draft.md) |
+| 2026-06-22 | Chapter 32 alignment selected by environment draft | [2026-06-22-ch46-selection-environment-draft.md](2026-06-22-ch46-selection-environment-draft.md) |
+| 2026-06-22 | Chapter 31 certification without construction draft | [2026-06-22-ch48-certification-without-construction-draft.md](2026-06-22-ch48-certification-without-construction-draft.md) |
+| 2026-06-22 | Chapter 30 better self-modeling can be worse draft | [2026-06-22-ch46-self-modeling-self-opacity-draft.md](2026-06-22-ch46-self-modeling-self-opacity-draft.md) |
+| 2026-06-22 | Chapter 29 conserved properties across successors draft | [2026-06-22-ch48-conserved-properties-draft.md](2026-06-22-ch48-conserved-properties-draft.md) |
+| 2026-06-22 | Chapter 28 successor creation central alignment test draft | [2026-06-22-ch46-successor-central-test-draft.md](2026-06-22-ch46-successor-central-test-draft.md) |
 | 2026-06-20 | Chapter 9 UAD coalition board demo | [2026-06-20-ch09-uad-coalition-board-demo.md](2026-06-20-ch09-uad-coalition-board-demo.md) |
 | 2026-06-19 | Chapter demos scaffold (value bundle simulator) | [2026-06-19-chapter-demos-scaffold.md](2026-06-19-chapter-demos-scaffold.md) |
 | 2026-06-19 | Lean cert chain + Lean-review agent rule (session end) | [2026-06-19-lean-spine-cert-chain-session-end.md](2026-06-19-lean-spine-cert-chain-session-end.md) |
 | 2026-06-19 | Lean spine risk derivation + strengthen TODO | [2026-06-19-lean-spine-risk-derivation.md](2026-06-19-lean-spine-risk-derivation.md) |
-| 2026-06-19 | Session end: Chapter 26 commit | [2026-06-19-session-end-ch26-commit.md](2026-06-19-session-end-ch26-commit.md) |
-| 2026-06-19 | Chapter 27 manipulation / false consent draft | [2026-06-19-ch27-manipulation-false-consent-draft.md](2026-06-19-ch27-manipulation-false-consent-draft.md) |
-| 2026-06-19 | Chapter 26 extrapolative correction draft | [2026-06-19-ch26-extrapolative-correction-draft.md](2026-06-19-ch26-extrapolative-correction-draft.md) |
+| 2026-06-19 | Session end: Chapter 26 commit | [2026-06-19-session-end-ch46-commit.md](2026-06-19-session-end-ch46-commit.md) |
+| 2026-06-19 | Chapter 27 manipulation / false consent draft | [2026-06-19-ch48-manipulation-false-consent-draft.md](2026-06-19-ch48-manipulation-false-consent-draft.md) |
+| 2026-06-19 | Chapter 26 extrapolative correction draft | [2026-06-19-ch46-extrapolative-correction-draft.md](2026-06-19-ch46-extrapolative-correction-draft.md) |
 | 2026-06-19 | Lean proof spine implementation (formal/) | [2026-06-19-lean-proof-spine-implementation.md](2026-06-19-lean-proof-spine-implementation.md) |
 | 2026-06-19 | Frontmatter status, roadmap, TL;DR plain language | [2026-06-19-frontmatter-status-tldr.md](2026-06-19-frontmatter-status-tldr.md) |
-| 2026-06-19 | Chapter 25 correction-channel integrity draft | [2026-06-19-ch25-correction-channel-integrity-draft.md](2026-06-19-ch25-correction-channel-integrity-draft.md) |
-| 2026-06-19 | Chapter 24 correction causal channel draft | [2026-06-19-ch24-correction-causal-channel-draft.md](2026-06-19-ch24-correction-causal-channel-draft.md) |
-| 2026-06-19 | Chapter 23 transport types draft | [2026-06-19-ch23-transport-types-draft.md](2026-06-19-ch23-transport-types-draft.md) |
-| 2026-06-19 | Chapter 22 inferring goal transport draft | [2026-06-19-ch22-goal-transport-draft.md](2026-06-19-ch22-goal-transport-draft.md) |
-| 2026-06-19 | Chapter 21 compression test for intention draft | [2026-06-19-ch21-compression-test-intention-draft.md](2026-06-19-ch21-compression-test-intention-draft.md) |
-| 2026-06-19 | Chapter 20 reward-to-bundle inference draft | [2026-06-19-ch20-reward-to-bundle-inference-draft.md](2026-06-19-ch20-reward-to-bundle-inference-draft.md) |
+| 2026-06-19 | Chapter 25 correction-channel integrity draft | [2026-06-19-ch46-correction-channel-integrity-draft.md](2026-06-19-ch46-correction-channel-integrity-draft.md) |
+| 2026-06-19 | Chapter 24 correction causal channel draft | [2026-06-19-ch46-correction-causal-channel-draft.md](2026-06-19-ch46-correction-causal-channel-draft.md) |
+| 2026-06-19 | Chapter 23 transport types draft | [2026-06-19-ch46-transport-types-draft.md](2026-06-19-ch46-transport-types-draft.md) |
+| 2026-06-19 | Chapter 22 inferring goal transport draft | [2026-06-19-ch46-goal-transport-draft.md](2026-06-19-ch46-goal-transport-draft.md) |
+| 2026-06-19 | Chapter 21 compression test for intention draft | [2026-06-19-ch46-compression-test-intention-draft.md](2026-06-19-ch46-compression-test-intention-draft.md) |
+| 2026-06-19 | Chapter 20 reward-to-bundle inference draft | [2026-06-19-ch46-reward-to-bundle-inference-draft.md](2026-06-19-ch46-reward-to-bundle-inference-draft.md) |
 | 2026-06-19 | Chapter 19 tradeoffs bundle geometry draft | [2026-06-19-ch19-tradeoffs-bundle-geometry-draft.md](2026-06-19-ch19-tradeoffs-bundle-geometry-draft.md) |
 | 2026-06-19 | Chapter 18 bearer maps draft | [2026-06-19-ch18-bearer-maps-draft.md](2026-06-19-ch18-bearer-maps-draft.md) |
 | 2026-06-19 | Chapter 17 low-dimensional value learning draft | [2026-06-19-ch17-low-dimensional-value-learning-draft.md](2026-06-19-ch17-low-dimensional-value-learning-draft.md) |
@@ -188,7 +189,7 @@ Most recent first.
 | 2026-06-18 | Chapter 7 finding boundary draft | [2026-06-18-ch07-finding-boundary-draft.md](2026-06-18-ch07-finding-boundary-draft.md) |
 | 2026-06-18 | Chapter 6 agent without anthropomorphism draft | [2026-06-18-ch06-agent-without-anthropomorphism-draft.md](2026-06-18-ch06-agent-without-anthropomorphism-draft.md) |
 | 2026-06-18 | Chapter 4 fixed values draft | [2026-06-18-ch04-fixed-values-draft.md](2026-06-18-ch04-fixed-values-draft.md) |
-| 2026-06-17 | Chapter 40 lethality stress-test draft | [2026-06-17-ch40-lethality-stress-test-draft.md](2026-06-17-ch40-lethality-stress-test-draft.md) |
+| 2026-06-17 | Chapter 40 lethality stress-test draft | [2026-06-17-ch48-lethality-stress-test-draft.md](2026-06-17-ch48-lethality-stress-test-draft.md) |
 | 2026-06-17 | Title alignment typo fix | [2026-06-17-title-alignment-fix.md](2026-06-17-title-alignment-fix.md) |
 | 2026-06-17 | Chapter 3 dynamical guarantee draft | [2026-06-17-ch03-dynamical-guarantee-draft.md](2026-06-17-ch03-dynamical-guarantee-draft.md) |
 | 2026-06-17 | Instructions redundancy + consistency cleanup | [2026-06-17-instructions-redundancy-cleanup.md](2026-06-17-instructions-redundancy-cleanup.md) |

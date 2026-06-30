@@ -118,9 +118,9 @@ PARTS = [
 ]
 
 MERGE_NOTES = {
-    (33, 33): "*Former LW §33 (Percolation of Cooperation); merged here because the book combines cooperation/percolation under ch33.*",
-    (43, 42): "*Former LW §42 (Merging With Artificial Entities); placed under ch43 because bearer/patienthood questions dominate.*",
-    (44, 44): "*Former LW §44 (What Cannot Be Solved Technically); placed under ch44 as civilizational-limit material.*",
+    (33, 33): "*Former LW §33 (Percolation of Cooperation); merged here because the book combines cooperation/percolation under ch48.*",
+    (43, 42): "*Former LW §42 (Merging With Artificial Entities); placed under ch47 because bearer/patienthood questions dominate.*",
+    (44, 44): "*Former LW §44 (What Cannot Be Solved Technically); placed under ch48 as civilizational-limit material.*",
     (44, 45): "*Former LW §45 (Towards Superintelligence Alignments).*",
 }
 
@@ -133,11 +133,11 @@ CH40_BODY = """## 40. Lethality Stress Test and Open Issues
 
 * **Eliezer Yudkowsky, "AGI Ruin: A List of Lethalities," 5 Jun 2022**
   URL: [https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities](https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities)
-  Summary: Canonical checklist of reasons alignment may fail under capability growth; cited throughout ch40. **[Y, K]** ([lesswrong.com][18])
+  Summary: Canonical checklist of reasons alignment may fail under capability growth; cited throughout ch48. **[Y, K]** ([lesswrong.com][18])
 
 * **Nate Soares, "On how various plans miss the hard bits of the alignment challenge," 11 Jul 2022**
   URL: [https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment](https://www.lesswrong.com/posts/3pinFH3jerMzAvmza/on-how-various-plans-miss-the-hard-bits-of-the-alignment)
-  Summary: Field-failure row in ch40 lethality checklist. **[K, T]** ([lesswrong.com][36])
+  Summary: Field-failure row in ch48 lethality checklist. **[K, T]** ([lesswrong.com][36])
 
 * **Paul Christiano, "Where I agree and disagree with Eliezer," 19 Jun 2022**
   URL: [https://www.lesswrong.com/posts/CoZhXrhpQxpy9xw9y/where-i-agree-and-disagree-with-eliezer](https://www.lesswrong.com/posts/CoZhXrhpQxpy9xw9y/where-i-agree-and-disagree-with-eliezer)
@@ -147,7 +147,7 @@ CH40_BODY = """## 40. Lethality Stress Test and Open Issues
 TRIPWIRE_ORPHAN = """
 ### Orphan reference: Tripwires and Stop Conditions (former LW §39)
 
-No dedicated book chapter; closest fit is ch39 (safety case) and ch40 (lethality stress test).
+No dedicated book chapter; closest fit is ch46 (safety case) and ch48 (lethality stress test).
 
 * **Evan Hubinger, "RSPs are pauses done right," 13 Oct 2023**
   URL: [https://www.lesswrong.com/posts/mcnWZBnbeDz7KKtjJ/rsps-are-pauses-done-right](https://www.lesswrong.com/posts/mcnWZBnbeDz7KKtjJ/rsps-are-pauses-done-right)
@@ -205,7 +205,7 @@ def main() -> None:
 
     intro = (
         "Commented LW references relevant for each chapter.\n\n"
-        "Chapter numbers follow `metadata/book.yml` (including ch05 and ch40).\n"
+        "Chapter numbers follow `metadata/book.yml` (including ch05 and ch48).\n"
         "BibTeX keys for cited posts live in `references/external-alignment.bib`.\n"
     )
 

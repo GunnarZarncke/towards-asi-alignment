@@ -6,7 +6,7 @@ User asked to address feedback item (a) directly in Chapter 36: the hidden-rando
 
 ## Done
 
-- Updated `chapters/ch36-passive-observation-not-enough.tex` in Section `Hidden Randomization`.
+- Updated `chapters/ch39-passive-observation-not-enough.tex` in Section `Hidden Randomization`.
 - Added explicit caveat that hidden randomization is not a free escape from the adequacy condition \(A+Q>K_{\text{evasion}}\).
 - Added the narrower non-circular form: pre-randomization commitment \(C\), fresh entropy relative to the system's pre-commitment view \(V^{-}\), and a min-entropy condition \(H_\infty(R \mid V^{-},C)\ge h\).
 - Added the required probe-family coverage condition \(\Pr_R[D_R(C)=1]\ge q\) for unsafe commitments.
@@ -23,8 +23,8 @@ User asked to address feedback item (a) directly in Chapter 36: the hidden-rando
 
 ## Key paths
 
-- `chapters/ch36-passive-observation-not-enough.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+- `chapters/ch39-passive-observation-not-enough.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 - `formal/AlignmentProofSpine/Adversarial.lean`
 - `formal/AlignmentProofSpine/Core.lean`
 

@@ -1,8 +1,8 @@
-# ch35 Split Plan — Alignment Attractor and Conductive Artifacts
+# ch48 Split Plan — Alignment Attractor and Conductive Artifacts
 
 ## Executive Decision
 
-Split ch35 by **alignment-attractor theory vs. artifact / conductivity / pivotal-process governance**.
+Split ch48 by **alignment-attractor theory vs. artifact / conductivity / pivotal-process governance**.
 
 The current chapter is 32 pages with 26 sections and 39 subsections. It contains two strong but different chapters:
 
@@ -36,7 +36,7 @@ Rationale:
 
 ### Chapter A: The Alignment Attractor
 
-Keep these sections from current ch35:
+Keep these sections from current ch48:
 
 - `The Problem of Structural Non-Conductance`
   - Keep as opener.
@@ -59,12 +59,12 @@ Keep these sections from current ch35:
 - `The Attractor as a Feedback System`
   - Keep.
   - Keep subsections:
-    - `research-to-artifact-ch35`;
-    - `artifact-to-evidence-ch35`;
-    - `evidence-to-funding-ch35`;
-    - `funding-to-capacity-ch35`;
-    - `governance-to-demand-ch35`;
-    - `legibility-to-correction-ch35`.
+    - `research-to-artifact-ch48`;
+    - `artifact-to-evidence-ch48`;
+    - `evidence-to-funding-ch48`;
+    - `funding-to-capacity-ch48`;
+    - `governance-to-demand-ch48`;
+    - `legibility-to-correction-ch48`.
   - These define the feedback loop.
 
 - `What the Attractor Attracts`
@@ -74,11 +74,11 @@ Keep these sections from current ch35:
 - `False Attractors`
   - Keep.
   - Keep subsections:
-    - `reputation-attractor-ch35`;
-    - `compliance-attractor-ch35`;
-    - `benchmark-attractor-ch35`;
-    - `centralization-attractor-ch35`;
-    - `transparency-absolutism-attractor-ch35`.
+    - `reputation-attractor-ch48`;
+    - `compliance-attractor-ch48`;
+    - `benchmark-attractor-ch48`;
+    - `centralization-attractor-ch48`;
+    - `transparency-absolutism-attractor-ch48`.
   - These belong in the theory chapter as basin confusions.
 
 Add a new closing section:
@@ -90,7 +90,7 @@ Add a new closing section:
 
 ### Chapter B: Conductive Artifacts and Pivotal Processes
 
-Move these sections from current ch35:
+Move these sections from current ch48:
 
 - `Pivotal Process as Basin Transition`
   - Opening section.
@@ -100,33 +100,33 @@ Move these sections from current ch35:
   - Move.
   - This becomes the central design section.
   - Keep subsections:
-    - `operational-artifact-ch35`;
-    - `role-specific-artifact-ch35`;
-    - `failure-modes-attached-ch35`;
-    - `changes-incentives-ch35`;
-    - `updateable-artifact-ch35`;
-    - `ontology-light-meaning-ch35`.
+    - `operational-artifact-ch48`;
+    - `role-specific-artifact-ch48`;
+    - `failure-modes-attached-ch48`;
+    - `changes-incentives-ch48`;
+    - `updateable-artifact-ch48`;
+    - `ontology-light-meaning-ch48`.
 
 - `The Monday-Morning Version`
   - Move.
   - This is execution guidance.
   - Keep subsections:
-    - `step1-decision-graph-ch35`;
-    - `step2-artifact-per-decision-ch35`;
-    - `step3-attach-threshold-ch35`;
-    - `step4-translation-loss-ch35`;
-    - `step5-feedback-loop-ch35`.
+    - `step1-decision-graph-ch48`;
+    - `step2-artifact-per-decision-ch48`;
+    - `step3-attach-threshold-ch48`;
+    - `step4-translation-loss-ch48`;
+    - `step5-feedback-loop-ch48`.
 
 - `Metrics for the Attractor`
   - Move.
   - This section operationalizes the theory.
   - Keep subsections:
-    - `artifact-half-life-ch35`;
-    - `decision-influence-ch35`;
-    - `correction-latency-metric-ch35`;
-    - `cross-role-adoption-ch35`;
-    - `goodhart-resistance-metric-ch35`;
-    - `plural-correction-metric-ch35`.
+    - `artifact-half-life-ch48`;
+    - `decision-influence-ch48`;
+    - `correction-latency-metric-ch48`;
+    - `cross-role-adoption-ch48`;
+    - `goodhart-resistance-metric-ch48`;
+    - `plural-correction-metric-ch48`.
 
 - `Attractor Design Principles`
   - Move.
@@ -216,7 +216,7 @@ Use stable labels:
 - References to attractor theory / false attractors -> Chapter A.
 - References to artifacts / conductivity / pivotal process / dashboards / funders / labs / regulators -> Chapter B.
 
-Avoid renaming section labels during the split unless necessary. Current `-ch35` labels can stay stable even if moved.
+Avoid renaming section labels during the split unless necessary. Current `-ch48` labels can stay stable even if moved.
 
 ## Consequences Of The Split
 
@@ -224,26 +224,26 @@ Avoid renaming section labels during the split unless necessary. Current `-ch35`
 
 Likely file plan:
 
-- Keep `chapters/ch35-alignment-attractor.tex` as Chapter A.
-- Add `chapters/ch35b-conductive-artifacts-pivotal-processes.tex` as Chapter B if avoiding renumbering.
+- Keep `chapters/ch37-alignment-attractor.tex` as Chapter A.
+- Add `chapters/ch38-conductive-artifacts-pivotal-processes.tex` as Chapter B if avoiding renumbering.
 
 Alternative:
 
-- Wait for global chapter renumbering and make Chapter B the new ch36, shifting current ch36+.
+- Wait for global chapter renumbering and make Chapter B the new ch46, shifting current ch46+.
 
-Recommendation: use temporary `ch35b` only if the project is comfortable with another `b` chapter before global numbering cleanup. Otherwise, keep this as a plan and execute during a chapter-map revision pass.
+Recommendation: use temporary `ch45` only if the project is comfortable with another `b` chapter before global numbering cleanup. Otherwise, keep this as a plan and execute during a chapter-map revision pass.
 
 ### Part VIII
 
 Update `parts/part08-attractor-basins.tex`:
 
-- Insert Chapter B after ch35.
+- Insert Chapter B after ch48.
 - Update the part intro so it distinguishes:
-  - selection and preservation envelopes (ch32);
-  - strategic coupling (ch33);
-  - correction parasites (ch34);
-  - attractor theory (ch35);
-  - conductive artifacts / pivotal process governance (ch35b).
+  - selection and preservation envelopes (ch46);
+  - strategic coupling (ch48);
+  - correction parasites (ch46);
+  - attractor theory (ch48);
+  - conductive artifacts / pivotal process governance (ch45).
 
 The current part gem sentence already points to preservation envelope and correction parasites. Consider adding a second sentence:
 
@@ -251,14 +251,14 @@ The current part gem sentence already points to preservation envelope and correc
 
 ### `metadata/book.yml`
 
-Add `ch35b` if using temporary numbering:
+Add `ch45` if using temporary numbering:
 
 - title: `Conductive Artifacts and Pivotal Processes`
 - status: reviewed (under the current convention: feedback received, not final)
 - word_target: 7000-9000
 - formal_density: medium
 - reviewer_needed: `[alignment, governance, institutional-design]`
-- note: inserted after ch35; avoid renumbering until chapter-numbering cleanup.
+- note: inserted after ch48; avoid renumbering until chapter-numbering cleanup.
 
 Regenerate tables:
 
@@ -269,87 +269,87 @@ Regenerate tables:
 Labels likely to remain in Chapter A:
 
 - `ch:alignment-attractor`
-- `sec:structural-non-conductance-ch35`
-- `sec:minimal-model-ch35`
-- `sec:percolation-alignment-practice-ch35`
-- `sec:attractor-feedback-system-ch35`
-- `sec:research-to-artifact-ch35`
-- `sec:artifact-to-evidence-ch35`
-- `sec:evidence-to-funding-ch35`
-- `sec:funding-to-capacity-ch35`
-- `sec:governance-to-demand-ch35`
-- `sec:legibility-to-correction-ch35`
-- `sec:what-attractor-attracts-ch35`
-- `sec:false-attractors-ch35`
-- `sec:reputation-attractor-ch35`
-- `sec:compliance-attractor-ch35`
-- `sec:benchmark-attractor-ch35`
-- `sec:centralization-attractor-ch35`
-- `sec:transparency-absolutism-attractor-ch35`
+- `sec:structural-non-conductance-ch48`
+- `sec:minimal-model-ch48`
+- `sec:percolation-alignment-practice-ch48`
+- `sec:attractor-feedback-system-ch48`
+- `sec:research-to-artifact-ch48`
+- `sec:artifact-to-evidence-ch48`
+- `sec:evidence-to-funding-ch48`
+- `sec:funding-to-capacity-ch48`
+- `sec:governance-to-demand-ch48`
+- `sec:legibility-to-correction-ch48`
+- `sec:what-attractor-attracts-ch48`
+- `sec:false-attractors-ch48`
+- `sec:reputation-attractor-ch48`
+- `sec:compliance-attractor-ch48`
+- `sec:benchmark-attractor-ch48`
+- `sec:centralization-attractor-ch48`
+- `sec:transparency-absolutism-attractor-ch48`
 
 Labels likely to move to Chapter B:
 
-- `sec:pivotal-process-ch35`
-- `sec:high-conductivity-artifact-ch35`
-- `sec:operational-artifact-ch35`
-- `sec:role-specific-artifact-ch35`
-- `sec:failure-modes-attached-ch35`
-- `sec:changes-incentives-ch35`
-- `sec:updateable-artifact-ch35`
-- `sec:ontology-light-meaning-ch35`
-- `sec:monday-morning-version-ch35`
-- `sec:step1-decision-graph-ch35`
-- `sec:step2-artifact-per-decision-ch35`
-- `sec:step3-attach-threshold-ch35`
-- `sec:step4-translation-loss-ch35`
-- `sec:step5-feedback-loop-ch35`
-- `sec:metrics-attractor-ch35`
-- `sec:artifact-half-life-ch35`
-- `sec:decision-influence-ch35`
-- `sec:correction-latency-metric-ch35`
-- `sec:cross-role-adoption-ch35`
-- `sec:goodhart-resistance-metric-ch35`
-- `sec:plural-correction-metric-ch35`
-- `sec:attractor-design-principles-ch35`
-- `sec:lower-cost-ch35`
-- `sec:raise-benefit-reporting-ch35`
-- `sec:increase-probability-decisions-ch35`
-- `sec:improve-semantic-alignment-ch35`
-- `sec:keep-correction-channels-ch35`
-- `sec:relation-superintelligence-ch35`
-- `sec:safety-case-view-ch35`
-- `sec:correction-channel-dashboard-ch35`
-- `sec:successor-certification-example-ch35`
-- `sec:centralization-insufficient-ch35`
-- `sec:role-funders-ch35`
-- `sec:role-labs-ch35`
-- `sec:role-regulators-auditors-ch35`
-- `sec:role-public-narratives-ch35`
-- `sec:open-failure-modes-ch35`
-- `sec:too-slow-ch35`
-- `sec:outcompeted-ch35`
-- `sec:captured-ch35`
-- `sec:become-illegible-ch35`
-- `sec:become-shallow-ch35`
-- `sec:optimize-for-artifacts-ch35`
-- `sec:what-success-looks-like-ch35`
+- `sec:pivotal-process-ch48`
+- `sec:high-conductivity-artifact-ch48`
+- `sec:operational-artifact-ch48`
+- `sec:role-specific-artifact-ch48`
+- `sec:failure-modes-attached-ch48`
+- `sec:changes-incentives-ch48`
+- `sec:updateable-artifact-ch48`
+- `sec:ontology-light-meaning-ch48`
+- `sec:monday-morning-version-ch48`
+- `sec:step1-decision-graph-ch48`
+- `sec:step2-artifact-per-decision-ch48`
+- `sec:step3-attach-threshold-ch48`
+- `sec:step4-translation-loss-ch48`
+- `sec:step5-feedback-loop-ch48`
+- `sec:metrics-attractor-ch48`
+- `sec:artifact-half-life-ch48`
+- `sec:decision-influence-ch48`
+- `sec:correction-latency-metric-ch48`
+- `sec:cross-role-adoption-ch48`
+- `sec:goodhart-resistance-metric-ch48`
+- `sec:plural-correction-metric-ch48`
+- `sec:attractor-design-principles-ch48`
+- `sec:lower-cost-ch48`
+- `sec:raise-benefit-reporting-ch48`
+- `sec:increase-probability-decisions-ch48`
+- `sec:improve-semantic-alignment-ch48`
+- `sec:keep-correction-channels-ch48`
+- `sec:relation-superintelligence-ch48`
+- `sec:safety-case-view-ch48`
+- `sec:correction-channel-dashboard-ch48`
+- `sec:successor-certification-example-ch48`
+- `sec:centralization-insufficient-ch48`
+- `sec:role-funders-ch48`
+- `sec:role-labs-ch48`
+- `sec:role-regulators-auditors-ch48`
+- `sec:role-public-narratives-ch48`
+- `sec:open-failure-modes-ch48`
+- `sec:too-slow-ch48`
+- `sec:outcompeted-ch48`
+- `sec:captured-ch48`
+- `sec:become-illegible-ch48`
+- `sec:become-shallow-ch48`
+- `sec:optimize-for-artifacts-ch48`
+- `sec:what-success-looks-like-ch48`
 - `sec:wwctv-alignment-attractor`
-- `sec:summary-ch35`
+- `sec:summary-ch48`
 
 ### Downstream Consequences
 
 Review and potentially update:
 
-- `chapters/ch32-selection-environment.tex`
+- `chapters/ch34-selection-environment.tex`
   - References to artifacts that rotate selection should likely point to Chapter B.
 
-- `chapters/ch34-parasites-correction-system.tex`
+- `chapters/ch36-parasites-correction-system.tex`
   - Parasite-countermeasure references may point to Chapter B.
 
-- `chapters/ch36-passive-observation.tex`
-  - If ch36 discusses observation artifacts, cite Chapter B.
+- `chapters/ch46-passive-observation.tex`
+  - If ch46 discusses observation artifacts, cite Chapter B.
 
-- `chapters/ch40-...` / safety-case chapters
+- `chapters/ch48-...` / safety-case chapters
   - Safety-case references should point to Chapter B's `A Safety-Case View`.
 
 - `frontmatter/introduction.tex`
@@ -359,7 +359,7 @@ Review and potentially update:
   - If they mention the alignment attractor, add "conductive artifacts / pivotal processes" after the split so reviewers do not miss the practical program.
 
 - `metadata/TODO.md`
-  - Mark ch35 split plan as drafted.
+  - Mark ch48 split plan as drafted.
 
 ## Implementation Order
 
@@ -369,7 +369,7 @@ Review and potentially update:
 4. Rewrite Chapter A close and Chapter B open.
 5. Split WWCTV, success, summary, and superintelligence relation sections.
 6. Update Part VIII, `metadata/book.yml`, generated tables.
-7. Search/review cross-references to ch35 and moved section labels.
+7. Search/review cross-references to ch48 and moved section labels.
 8. Run:
    - `python3 scripts/generate_tables.py`
    - `make check`

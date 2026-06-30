@@ -39,7 +39,7 @@ Related sibling repos (boundary discovery, real telemetry): [`agency-detect`](ht
 
 ## More elaborate simulations — especially the worked example
 
-Appendix K (*A Worked Example: The BioShield Deployment Gate*, `appendices/appK-worked-example.tex`) runs the full logical spine on one fictional hospital-network deployment. It is narrative and conditional today; there is no matching executable sim.
+Appendix K (*A Worked Example: The BioShield Deployment Gate*, `appendices/appD-worked-example.tex`) runs the full logical spine on one fictional hospital-network deployment. It is narrative and conditional today; there is no matching executable sim.
 
 Contributions welcome:
 
@@ -47,7 +47,7 @@ Contributions welcome:
 - Bridge scenario design that stress-tests the example's tagged claims `[Measured]`, `[Assumed]`, `[Lean-conditional]`
 - Honest instrumentation and adversarial red-team paths (see toy-sim patterns in `experiments/toy-simulation/`)
 
-Start from the appendix, cross-check bridges in [`appendices/appBridge-crosswalk.tex`](appendices/appBridge-crosswalk.tex), and document claim strength in results markdown alongside JSON artifacts.
+Start from the appendix, cross-check bridges in [`appendices/appB-bridge-crosswalk.tex`](appendices/appB-bridge-crosswalk.tex), and document claim strength in results markdown alongside JSON artifacts.
 
 ---
 
@@ -107,6 +107,6 @@ Other contributions that help the research program reach the right readers:
 - Talks, reading groups, and curated bibliographies
 - Tools that operationalize artifact tables or safety-case templates from the manuscript
 - Translations (coordinate first for terminology consistency)
-- Policy or institutional briefings that use [`appendices/appJ-institutional-translation.tex`](appendices/appJ-institutional-translation.tex) as a bridge document
+- Policy or institutional briefings that use [`appendices/appC-institutional-translation.tex`](appendices/appC-institutional-translation.tex) as a bridge document
 
 When in doubt, open an issue describing the derivative work and which bridges or gems it targets.

@@ -5,7 +5,7 @@ User supplied a full author draft for Chapter 27 ("Manipulation, Domestication,
 and False Consent") and asked to integrate it into the chapter file.
 
 ## Done
-- Replaced the stub `chapters/ch27-manipulation-false-consent.tex` with the
+- Replaced the stub `chapters/ch29-manipulation-false-consent.tex` with the
   integrated draft (Shape B — kept the draft's native narrative structure).
 - Added the required book elements the raw draft lacked:
   - real `chapterthesis` (was `[STUB]`);
@@ -15,7 +15,7 @@ and False Consent") and asked to integrate it into the chapter file.
     closing with `\printbibliography[heading=subbibliography,...]`, replacing the
     draft's hand-formatted numbered reference list (per INSTRUCTIONS §11 — never
     hand-format references).
-  - `-ch27`-suffixed `\label`s on sections; kept the book's existing chapter
+  - `-ch48`-suffixed `\label`s on sections; kept the book's existing chapter
     label `ch:manipulation-false-consent`; added a cross-ref to
     `ch:correction-channel-integrity`.
 - Added 10 missing BibLaTeX entries:
@@ -27,7 +27,7 @@ and False Consent") and asked to integrate it into the chapter file.
   - Reused existing keys: `yudkowsky2004cev`, `soares2015corrigibility`,
     `christiano2018corrigibility`, `hadfieldmenell2016`, `russell2019human`,
     `pearl2009causality`.
-- `metadata/book.yml`: ch27 status `stub` → `draft`.
+- `metadata/book.yml`: ch48 status `stub` → `draft`.
 - Build + checks green: `./build.sh` exits 0 and produces the PDF; `book.log`
   shows no undefined citations/references; all 10 new keys resolve in `book.bbl`;
   `make check` passes (structure + citations).
@@ -52,7 +52,7 @@ and False Consent") and asked to integrate it into the chapter file.
 - Not committed (no commit requested).
 
 ## Key paths
-- `chapters/ch27-manipulation-false-consent.tex`
+- `chapters/ch29-manipulation-false-consent.tex`
 - `references/philosophy.bib`, `references/governance-institutions.bib`
 - `metadata/book.yml`
 

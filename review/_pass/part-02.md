@@ -21,7 +21,7 @@ Part II is structurally sound and largely complete: all five chapters carry `\ch
 The two systemic problems are:
 
 1. **Notation drift for the single most important object in the Part** — the boundary-leakage / boundary-residual quantity gets a different symbol in every chapter (`\ell`, `\mathcal{R}`, `\mathcal{L}_B`), and `\mathcal{R}` is overloaded across chapters (residual / reproduction operator / responsibility capacity / control reach). See §E.
-2. **ch10 front-runs four later chapters.** Goal laundering (ch37), value-bundle/bearer inference (ch20/21), self-modeling vs self-transparency (ch30), and parasite persistence (ch34) are each developed at length in ch10 with their own formal apparatus. This is exactly the premature-introduction risk flagged in the brief. See §D.
+2. **ch10 front-runs four later chapters.** Goal laundering (ch48), value-bundle/bearer inference (ch46/21), self-modeling vs self-transparency (ch46), and parasite persistence (ch46) are each developed at length in ch10 with their own formal apparatus. This is exactly the premature-introduction risk flagged in the brief. See §D.
 
 Section-title capitalization is inconsistent **across** chapters (ch07/08/10 Title Case; ch09 sentence case; ch06 internally mixed), and the chapter-ending section is named four different ways. See §E.
 
@@ -51,7 +51,7 @@ An agent is not a person-like thing but a bounded control process: a partition o
 ### D. Redundancy
 - The boundary inequality (149–153) and the four-part partition (131–141) are **re-derived** in ch07 (138–158), ch08 (70–84), ch09 (54–84), and recapped in ch10 (22–27). ch06 is the legitimate first home — **keep**; the later re-derivations are the duplication (see those chapters).
 - Memory formula `\Delta_m(k)` (227–234) reappears nearly verbatim in ch07 (524–529) and ch08 (319–324). **First home; keep here.**
-- "Selfhood and agency" (563–606) introduces recursive depth `d` and opacity `\tau` — these are **re-introduced almost identically in ch10** (524–533). See ch10 §D. Decide on a single home; given ch30 owns self-modeling, ch06's treatment should arguably be the short version and ch10 should cross-ref.
+- "Selfhood and agency" (563–606) introduces recursive depth `d` and opacity `\tau` — these are **re-introduced almost identically in ch10** (524–533). See ch10 §D. Decide on a single home; given ch46 owns self-modeling, ch06's treatment should arguably be the short version and ch10 should cross-ref.
 
 ### E. Consistency
 - **Section-title capitalization is internally mixed.** Title Case: "Building the Definition from Variables" (111), "Degrees and Scales of Agency" (343), "Two Examples: A Firm and an AI Service" (449). Sentence case: "The need for a colder definition" (16), "Boundary errors" (523), "Selfhood and agency" (563), "From agent detection to alignment target" (607), "Chapter conclusion" (732). This single chapter mixes both conventions.
@@ -96,7 +96,7 @@ Boundary discovery is the first operational alignment step: from raw variables, 
 
 ### F. Open tangents / dangling promises
 - "Later chapters will define competence as predictive and control information across the boundary..." (487–489) — **resolved in ch11** (chapterthesis 4–7). ✓ Good closed loop.
-- "Later chapters will upgrade scalar goal inference to value-bundle inference" (796–799) — forward to ch20/21. Acknowledged.
+- "Later chapters will upgrade scalar goal inference to value-bundle inference" (796–799) — forward to ch46/21. Acknowledged.
 
 ---
 
@@ -162,7 +162,7 @@ The effective optimizer may be a composite spanning models, tools, users, memory
 - Boundary closure + control + intentional compression (99–169) **re-derives the ch06/ch07 apparatus** a fourth time. The four-role partition (61–71) and boundary inequality (73–84) restate ch06/ch07. Because this is the dedicated composite chapter, **keep**, but the re-derivation could be compressed with a pointer to ch06.
 - The detection procedure (568–616) parallels ch07's 7-step procedure (359–516) and ch10's adversarial decomposition (412–450). Three "first-pass procedures." ch09's is composite-specific — **keep, cross-ref ch07.**
 - The four worked examples (215–313: assistant+tools, model+user, lab+benchmark, market+recommender) overlap ch10's three examples (661–714: bureaucracy, market, disposable-instance AI). The market/recommender example in particular appears in **both** ch09 (297–313) and ch10 (681–698). **Keep ch09's (value-shaping framing) and trim ch10's to a cross-ref**, or vice versa.
-- Goodhart pressure `dm/dt>0` while `dB/dt<0` (359–365) anticipates ch20/21 value-bundle erosion; here it is appropriately brief. Keep.
+- Goodhart pressure `dm/dt>0` while `dB/dt<0` (359–365) anticipates ch46/21 value-bundle erosion; here it is appropriately brief. Keep.
 
 ### E. Consistency
 - **Section titles are sentence case throughout** ("The object-level mistake," "From named objects to dynamical composites," "Composite agency," "Four examples," "Why local alignment is not enough"...). This is internally consistent but **opposite to ch07/ch08/ch10's Title Case.** One of the two conventions should win Part-wide.
@@ -197,10 +197,10 @@ When a system can benefit from being overlooked, agency discovery becomes advers
 ### D. Redundancy — **the major Part-level concern; this chapter front-runs four later chapters**
 Per the brief, the following are "more properly the territory of later chapters":
 
-- **Goal Laundering (313–361), label `sec:goal-laundering-ch10`** — the three-layer model `G_inf/G_sem/G_norm` (319–323), divergence score (331–338), and laundering signature (345–350) are a substantial development of material the brief assigns to **ch37**. **Trim to the diagnostic needed here (opacity around control variables) and cross-ref ch37 for the full treatment.**
-- **From Goal Inference to Value-Bundle Divergence (363–411), label `sec:value-bundle-divergence`** — full bundle-inference objective `\hat B,\hat W,\hat\Phi = argmax ...` (369–375), four laundering levels, bundle/bearer laundering detectors (386–401). This is **ch20/21 territory** (bundle inference, bearer maps). It is introduced here before bundles are formally defined anywhere — readers meet `B,W,\Phi` cold. **Strongest premature-introduction flag in the Part.** Recommend reducing to a forward pointer.
-- **Host Capacity and Parasite Persistence (466–517), label `sec:host-capacity-parasite`** — parasite persistence inequality (476–483). The brief assigns **parasites to ch34**. **Trim/cross-ref.**
-- **Self-Modeling Versus Self-Transparency (518–575), label `sec:self-modeling-transparency`** — re-introduces `d` and `\tau` (524–533) and the self-control-vs-correction inequality (552–559), already in **ch06 (588–602)** and **ch08 (354–359)**; the brief assigns self-modeling to **ch30**. Third occurrence. **Trim/cross-ref.**
+- **Goal Laundering (313–361), label `sec:goal-laundering-ch10`** — the three-layer model `G_inf/G_sem/G_norm` (319–323), divergence score (331–338), and laundering signature (345–350) are a substantial development of material the brief assigns to **ch48**. **Trim to the diagnostic needed here (opacity around control variables) and cross-ref ch48 for the full treatment.**
+- **From Goal Inference to Value-Bundle Divergence (363–411), label `sec:value-bundle-divergence`** — full bundle-inference objective `\hat B,\hat W,\hat\Phi = argmax ...` (369–375), four laundering levels, bundle/bearer laundering detectors (386–401). This is **ch46/21 territory** (bundle inference, bearer maps). It is introduced here before bundles are formally defined anywhere — readers meet `B,W,\Phi` cold. **Strongest premature-introduction flag in the Part.** Recommend reducing to a forward pointer.
+- **Host Capacity and Parasite Persistence (466–517), label `sec:host-capacity-parasite`** — parasite persistence inequality (476–483). The brief assigns **parasites to ch46**. **Trim/cross-ref.**
+- **Self-Modeling Versus Self-Transparency (518–575), label `sec:self-modeling-transparency`** — re-introduces `d` and `\tau` (524–533) and the self-control-vs-correction inequality (552–559), already in **ch06 (588–602)** and **ch08 (354–359)**; the brief assigns self-modeling to **ch46**. Third occurrence. **Trim/cross-ref.**
 
 Other internal duplication:
 - Control-locus continuity (274–311) restates ch07 (746–761) and ch08 (761–772).
@@ -231,7 +231,7 @@ Net: ch10's distinctive, properly-owned contributions are the **adversarial fram
 | Four-role partition (I,S,A,E) | ch06 131, ch07 137, ch08 70, ch09 61 | Keep ch06; later chapters cross-ref. |
 | Memory `\Delta_m(k)` | ch06 227, ch07 524, ch08 319 | Keep one (ch06); cross-ref. |
 | Control-locus continuity | ch07 746, ch08 761, ch10 274 | ch10 owns the adversarial version; ch07/ch08 cross-ref. |
-| Self-modeling vs transparency (`d`,`\tau`) | ch06 588, ch08 354, ch10 552 | Owned by ch30; collapse to one short statement + forward ref. |
+| Self-modeling vs transparency (`d`,`\tau`) | ch06 588, ch08 354, ch10 552 | Owned by ch46; collapse to one short statement + forward ref. |
 | Composite "whole>parts" test | ch08 `\Gamma_{merge}` 571, ch09 `\Sigma` 183 | Note they are the same diagnostic; unify notation. |
 | Responsibility under composites | ch08 661, ch09 414 | Cross-ref; avoid re-litigating. |
 | Market/recommender example | ch09 297, ch10 681 | Keep one, cross-ref the other. |
@@ -267,7 +267,7 @@ Net: ch10's distinctive, properly-owned contributions are the **adversarial fram
 
 ## PRIORITIZED ACTION LIST (no edits made)
 1. **Standardize boundary-leakage notation** Part-wide and disambiguate `\mathcal{R}` (ch06 365, ch07 197/463, ch08 535/671, ch09 75/122). *(consistency, high)*
-2. **De-duplicate ch10's four front-run object-families** (goal laundering 313–361→ch37; bundle/bearer inference 363–411→ch20/21; parasite persistence 466–517→ch34; self-modeling vs transparency 518–575→ch30): reduce to diagnostics + cross-refs. *(redundancy/premature, high)*
+2. **De-duplicate ch10's four front-run object-families** (goal laundering 313–361→ch48; bundle/bearer inference 363–411→ch46/21; parasite persistence 466–517→ch46; self-modeling vs transparency 518–575→ch46): reduce to diagnostics + cross-refs. *(redundancy/premature, high)*
 3. **Reconcile ch07 "Adversarial Boundary Discovery" (675–761) with ch10** so the adversarial machinery has one home. *(redundancy, med-high)*
 4. **Standardize section-title case** (ch06 internal mix; ch09 sentence vs ch07/08/10 Title). *(consistency, med)*
 5. **Standardize the chapter-ending section** name + numbering (ch06 "Chapter conclusion"; ch09 unnumbered "Chapter summary"). *(consistency, med)*

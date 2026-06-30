@@ -70,31 +70,31 @@ If you cannot access a related repo or source PDF, say so. Do not infer missing 
 Look for the included gems before concluding a chapter is merely narrative.
 
 - Boundary discovery: ch06-ch10
-- Grounding viability: ch03, ch39b
-- Value bundles: ch15-ch19b
-- Bundle-geometry measurement and Goodhart pressure: ch19b
-- Bearer maps: ch18, ch23, ch43
-- Transport hierarchy: ch23
-- Vector/status CCI: ch25; adversarial pressure tests: ch25b
-- Existing-work subsumptions: ch07, ch20, ch24-ch27, ch38, ch39b; consolidated map in the field-crosswalk appendix (`appendices/appBridge-crosswalk.tex`)
-- Successor test: ch28-ch31
-- Selection envelope and correction parasites: ch32-ch35
-- Conductive artifacts and pivotal processes: ch35b
-- Goal laundering and cost of faking: ch37, ch39b
-- Value-update envelope: ch41-ch42
+- Grounding viability: ch03, ch47
+- Value bundles: ch15-ch46
+- Bundle-geometry measurement and Goodhart pressure: ch46
+- Bearer maps: ch18, ch46, ch47
+- Transport hierarchy: ch46
+- Vector/status CCI: ch46; adversarial pressure tests: ch48
+- Existing-work subsumptions: ch07, ch46, ch46-ch48, ch45, ch47; consolidated map in the field-crosswalk appendix (`appendices/appB-bridge-crosswalk.tex`)
+- Successor test: ch46-ch48
+- Selection envelope and correction parasites: ch46-ch48
+- Conductive artifacts and pivotal processes: ch45
+- Goal laundering and cost of faking: ch48, ch47
+- Value-update envelope: ch45-ch46
 - Lean proof spine as dependency hygiene: `formal/`, Appendix I
 - Field-agenda Lean formalization (community gem in progress): Appendix I gem ``field-agenda formalization'' (`sec:appi-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today
 
 ## Existing-Work Subsumptions
 
-For the consolidated map, read the appendix **Bridges and the Field: A Crosswalk** (`appendices/appBridge-crosswalk.tex`) first. It maps each bridge (`A-001`–`A-014` / `MB1`–`MB9`) to the canonical field crux it inherits, names the owning agenda, concedes what the book shares (it dissolves none of the field's open problems), and isolates the bridges with no clean field analog (bearer maps `MB3`, socio-technical selection `MB6`, inferential coupling `MB7d`). When reviewing the book's relationship to other agendas, check claims against this crosswalk before treating a comparison as missing or ad-hoc.
+For the consolidated map, read the appendix **Bridges and the Field: A Crosswalk** (`appendices/appB-bridge-crosswalk.tex`) first. It maps each bridge (`A-001`–`A-014` / `MB1`–`MB9`) to the canonical field crux it inherits, names the owning agenda, concedes what the book shares (it dissolves none of the field's open problems), and isolates the bridges with no clean field analog (bearer maps `MB3`, socio-technical selection `MB6`, inferential coupling `MB7d`). When reviewing the book's relationship to other agendas, check claims against this crosswalk before treating a comparison as missing or ad-hoc.
 
 The book often treats familiar proposals as projections, special cases, or separable subchannels of stronger invariants. Do not miss these as throwaway comparisons.
 
 - Causal influence diagrams and incentive tests become boundary-relative under ontology choice and system-boundary choice.
 - CIRL and reward inference become local projections of bundle, bearer, and correction preservation.
 - Shutdown and interruptibility become one-bit correction projections.
-- Low impact, relative reachability, AUP, and quantilization are separable from trajectory-level correction-channel integrity; see the ch25b stress tests.
+- Low impact, relative reachability, AUP, and quantilization are separable from trajectory-level correction-channel integrity; see the ch48 stress tests.
 - Christiano-style corrigibility becomes a dynamical correction invariant.
 - Debate can preserve local truth while losing the judge's correction channel.
 - Amplification can improve local supervision while failing global correction-channel contraction.

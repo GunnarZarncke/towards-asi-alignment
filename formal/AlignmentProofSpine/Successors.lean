@@ -6,20 +6,20 @@ import AlignmentProofSpine.Capability
 
 Successor stability (book chapters 28–31).
 
-`SuccessorSafe` packages the ch29 seven conserved properties. Correction-channel
-capacity is `CCIPreserved` only; ch24 `U_S` update semantics are audited through
+`SuccessorSafe` packages the ch48 seven conserved properties. Correction-channel
+capacity is `CCIPreserved` only; ch46 `U_S` update semantics are audited through
 vector `\vec{CCI}` (`CCICertificate`), not a separate witness field.
 -/
 
 namespace AlignmentProofSpine
 
-/-! ### ch29 linking: audit fields constrain measurands -/
+/-! ### ch48 linking: audit fields constrain measurands -/
 
-/-- ch29: preserved penalised integrity is non-decreasing along a safe successor step. -/
+/-- ch48: preserved penalised integrity is non-decreasing along a safe successor step. -/
 axiom CCIPreserved_implies_monotone :
   ∀ A B : System, CCIPreserved A B → CCI A ≤ CCI B
 
-/-- ch29: preserved control locus implies effective control does not increase. -/
+/-- ch48: preserved control locus implies effective control does not increase. -/
 axiom ControlLocusPreserved_implies_control_antitone :
   ∀ A B : System, ControlLocusPreserved A B → Control B ≤ Control A
 
@@ -105,7 +105,7 @@ theorem risk_bound_along_successor_safe_chain
   exact risk_gap_bound_along_successor_safe_chain_from_safe hgap hchain
 
 /-- A successor step with explicit numeric measurand links. This is the finite /
-    certificate-shaped alternative to interpreting the opaque ch29 predicates
+    certificate-shaped alternative to interpreting the opaque ch48 predicates
     themselves as numeric inequalities. -/
 structure SuccessorMeasurandLink (A B : System) where
   successor : Successor A B

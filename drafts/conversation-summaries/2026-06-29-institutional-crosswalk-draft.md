@@ -31,15 +31,15 @@ The user asked to move the human-institutions alignment crosswalk into `drafts/`
 ## Key paths
 
 - `drafts/institutional-alignment-crosswalk.md`
-- `appendices/appBridge-crosswalk.tex`
-- `chapters/ch24-correction-causal-channel.tex`
-- `chapters/ch25-correction-channel-integrity.tex`
-- `chapters/ch25b-correction-channels-adversarial-pressure.tex`
-- `chapters/ch27-manipulation-false-consent.tex`
-- `chapters/ch32-selection-environment.tex`
-- `chapters/ch33-multi-agent-strategic-coupling.tex`
-- `chapters/ch35b-conductive-artifacts-pivotal-processes.tex`
-- `chapters/ch39b-verifiability-and-ontology-adequacy.tex`
+- `appendices/appB-bridge-crosswalk.tex`
+- `chapters/ch25-correction-causal-channel.tex`
+- `chapters/ch26-correction-channel-integrity.tex`
+- `chapters/ch27-correction-channels-adversarial-pressure.tex`
+- `chapters/ch29-manipulation-false-consent.tex`
+- `chapters/ch34-selection-environment.tex`
+- `chapters/ch35-multi-agent-strategic-coupling.tex`
+- `chapters/ch38-conductive-artifacts-pivotal-processes.tex`
+- `chapters/ch43-verifiability-and-ontology-adequacy.tex`
 
 ## Commits
 

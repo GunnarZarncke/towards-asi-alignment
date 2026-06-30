@@ -1,16 +1,16 @@
 # 2026-06-19 — Chapter 22 inferring goal transport draft
 
 ## Trigger
-User provided a full draft for Chapter 22 and asked to integrate it into `chapters/ch22-goal-transport.tex`.
+User provided a full draft for Chapter 22 and asked to integrate it into `chapters/ch23-goal-transport.tex`.
 
 ## Done
 - Replaced stub with full draft (~18 sections): transport question, scalar vs bundle inference, persistence/transport/reinterpretation, transport hypothesis, bundle equivalents, ontology shift, capability growth, successor creation, self-modeling/transparency, adversarial transport, six-step inference pipeline, five counterexamples, guarantees, philosophical limits, summary.
 - Normalized LaTeX (`[...]` display math, `======`, `##`, markdown subscript artifacts, quotes).
 - Matched book conventions: `chapterthesis`, `epigraph`, `refsection`, `\begin{claim}`, `\autocite` + subbibliography.
 - Kept repo label `ch:goal-transport` (not draft's `chap:inferring-goal-transport`).
-- Unique labels: `eq:value-bundle-geometry-ch22`, `eq:bundle-inference-ch22`, `sec:self-modeling-transparency-ch22`, `sec:counterexamples-edge-cases-ch22`, etc.
-- Cross-refs to ch16–ch21, ch08 transport loss, forward to ch23.
-- Updated `metadata/book.yml` ch22 status: `stub` → `draft`.
+- Unique labels: `eq:value-bundle-geometry-ch46`, `eq:bundle-inference-ch46`, `sec:self-modeling-transparency-ch46`, `sec:counterexamples-edge-cases-ch46`, etc.
+- Cross-refs to ch16–ch46, ch08 transport loss, forward to ch46.
+- Updated `metadata/book.yml` ch46 status: `stub` → `draft`.
 - `./build.sh` succeeds (577 pages).
 
 ## Decisions
@@ -19,11 +19,11 @@ User provided a full draft for Chapter 22 and asked to integrate it into `chapte
 - christian2018corrigibility for scalable oversight/corrigibility thread.
 
 ## Open / next
-- ch23 transport types still stub.
-- Part IV ch15–ch22 drafted.
+- ch46 transport types still stub.
+- Part IV ch15–ch46 drafted.
 
 ## Key paths
-- `chapters/ch22-goal-transport.tex`
+- `chapters/ch23-goal-transport.tex`
 - `metadata/book.yml`
 
 ## Commits

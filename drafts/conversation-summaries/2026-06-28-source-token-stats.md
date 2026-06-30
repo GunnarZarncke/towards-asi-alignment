@@ -16,7 +16,7 @@ The user asked whether the complete source material could be token-counted easil
   - added a per-extract table to the generated book stats.
 - Regenerated `metadata/book-stats.md`.
 - Recorded chapter split preferences in `review/chapter-split-preferences-2026-06-28.md`.
-- Added detailed ch25 split plan in `review/ch25-split-plan-2026-06-28.md`, recommending a certificate-vs-stress-test split and listing content allocation, chapter connections, cross-reference consequences, appendix options, metadata/book-map updates, and implementation order.
+- Added detailed ch46 split plan in `review/ch46-split-plan-2026-06-28.md`, recommending a certificate-vs-stress-test split and listing content allocation, chapter connections, cross-reference consequences, appendix options, metadata/book-map updates, and implementation order.
 - Added a `metadata/TODO.md` pointer for the split preference pass.
 
 ## Decisions
@@ -28,8 +28,8 @@ The user asked whether the complete source material could be token-counted easil
 ## Open / next
 
 - If exact model-specific counts are needed later, add optional `tiktoken` / tokenizer support behind a graceful fallback.
-- If doing a chapter split pass, start with ch19 and ch35. Treat ch36 as optional/noncritical, and keep ch25 together unless a stronger reason emerges.
-- If splitting ch25, use the certificate-vs-stress-test plan rather than a simple theory/application split.
+- If doing a chapter split pass, start with ch19 and ch48. Treat ch46 as optional/noncritical, and keep ch46 together unless a stronger reason emerges.
+- If splitting ch46, use the certificate-vs-stress-test plan rather than a simple theory/application split.
 
 ## Verification
 
@@ -41,7 +41,7 @@ The user asked whether the complete source material could be token-counted easil
 - `scripts/book_stats.py`
 - `metadata/book-stats.md`
 - `review/chapter-split-preferences-2026-06-28.md`
-- `review/ch25-split-plan-2026-06-28.md`
+- `review/ch46-split-plan-2026-06-28.md`
 - `metadata/TODO.md`
 
 ## Commits

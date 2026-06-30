@@ -30,7 +30,7 @@ User feedback asked whether the book's field-agenda subsumption claims (CIRL, sh
 - `formal/AlignmentProofSpine/FieldSubsumptions.lean`
 - `formal/AlignmentProofSpine/Correction.lean`
 - `formal/AlignmentProofSpine/Bundles.lean`
-- `appendices/appBridge-crosswalk.tex`
+- `appendices/appB-bridge-crosswalk.tex`
 
 ## Commits
 - None.

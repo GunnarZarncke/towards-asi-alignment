@@ -14,9 +14,9 @@ User asked to implement the plan for deeper field-result subsumptions: add a Lea
 - Updated Appendix I:
   - Added a field-subsumption status section and table.
   - Added imported-handle status marker.
-  - Rendered the ch24/ch26/ELK formulas as equations.
+  - Rendered the ch46/ch46/ELK formulas as equations.
   - Added a new field-subsumption inner-structure figure.
-- Updated `appendices/appBridge-crosswalk.tex` to point to the Appendix I formal status ledger.
+- Updated `appendices/appB-bridge-crosswalk.tex` to point to the Appendix I formal status ledger.
 - Updated proof graphs:
   - Existing value/correction diagrams now show final `Field.*` theorem nodes.
   - Added `context/lean_proof_graphs/05-field-subsumptions.dot`.
@@ -38,7 +38,7 @@ User asked to implement the plan for deeper field-result subsumptions: add a Lea
 - `formal/AlignmentProofSpine/Field.lean`
 - `formal/AlignmentProofSpine/Field/`
 - `formal/AlignmentProofSpine/FieldSubsumptions.lean`
-- `appendices/appI-lean-proof-spine.tex`
+- `appendices/appG-lean-proof-spine.tex`
 - `context/lean_proof_graphs/05-field-subsumptions.dot`
 - `figures/lean_proof/05-field-subsumptions.png`
 - `metadata/TODO.md`

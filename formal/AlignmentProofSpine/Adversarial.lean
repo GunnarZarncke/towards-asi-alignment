@@ -17,7 +17,7 @@ Socio-technical selection, parasite aliasing, and adversarial measurement
 * `P37`: goal laundering — equal stated goals, different inferred goals.
 
 Selection fitness is environment-relative deployment/control mass
-(`DeploymentMass`, book ch32). Revenue, regulatory risk, and benchmark score
+(`DeploymentMass`, book ch46). Revenue, regulatory risk, and benchmark score
 are proxies for selection-handle exercise, not primitive fitness terms.
 -/
 
@@ -41,7 +41,7 @@ theorem P31_safe_agent_selected_against :
 
 /-! ### P33: see `CooperationGraph` (UAD-derived and generic graphs) -/
 
-/-- C-PARASITE (P34): host-capacity aliasing (`C_X` in ch34). If there are strictly
+/-- C-PARASITE (P34): host-capacity aliasing (`C_X` in ch46). If there are strictly
     fewer signal classes than attack classes, no detector can injectively map
     attacks to signals — some attacks must alias. `Attack`/`Signal` are modelled
     as finite types `Fin nAttack` / `Fin nSignal`. -/
@@ -53,7 +53,7 @@ theorem P34_capacity_below_entropy_aliasing
 
 /-! ### P36R: post-commitment randomization detection floor -/
 
-/-- Certificate form for the ch36 hidden-randomization repair. The hard empirical
+/-- Certificate form for the ch46 hidden-randomization repair. The hard empirical
     work is packed into the fields: the entropy source is fresh after commitment,
     leakage is bounded by `leakageBudget`, and the probe family covers unsafe
     commitments up to `coverageFloor`. Lean proves only the arithmetic consequence. -/

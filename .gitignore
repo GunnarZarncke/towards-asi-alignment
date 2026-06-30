@@ -23,6 +23,9 @@ book.pdf
 # Experiment outputs (regenerate locally)
 experiments/toy-simulation/results/
 
+# Local renumber backup (scripts/git_mv_renumber.py)
+.renumber-content-backup/
+
 # Python
 .venv/
 __pycache__/

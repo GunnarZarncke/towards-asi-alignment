@@ -5,7 +5,7 @@ User supplied a full author draft for Chapter 36 ("Passive Observation Is Not
 Enough") and asked to integrate it into the chapter file.
 
 ## Done
-- Replaced the stub `chapters/ch36-passive-observation-not-enough.tex` with the
+- Replaced the stub `chapters/ch39-passive-observation-not-enough.tex` with the
   integrated draft (Shape B — kept the draft's native narrative structure).
 - Added the required book elements the raw draft lacked:
   - real `chapterthesis` (from the draft's central claim);
@@ -13,7 +13,7 @@ Enough") and asked to integrate it into the chapter file.
   - inline `\autocite{...}` at key points and a prose Chapter References paragraph
     closing with `\printbibliography[heading=subbibliography,...]`, replacing the
     draft's hand-formatted reference list;
-  - `-ch36`-suffixed `\label`s on sections; kept the book's existing chapter
+  - `-ch46`-suffixed `\label`s on sections; kept the book's existing chapter
     label `ch:passive-observation-not-enough` (not draft's `chap:passive-observation`);
   - cross-refs to Chapters~\ref{ch:finding-boundary}, \ref{ch:strategic-opacity},
     \ref{ch:value-bundle-model}, \ref{ch:goal-transport}, \ref{ch:bearer-maps},
@@ -26,30 +26,30 @@ Enough") and asked to integrate it into the chapter file.
   `\(A_t\)`, `=====`/`##`/`---` in display math, broken subscripts
   (`C^{H}*t` → `C^{H}_t`), markdown code fences in Decision Triggers,
   perturbation-matrix line breaks, and backtick/quote typos.
-- Used unique example labels (`sec:example-helpful-research-agent-ch36`,
-  `sec:counterexample-goal-laundering-ch36`) to avoid duplicate
+- Used unique example labels (`sec:example-helpful-research-agent-ch46`,
+  `sec:counterexample-goal-laundering-ch46`) to avoid duplicate
   `sec:example-helpful-assistant`.
-- `metadata/book.yml`: ch36 status `stub` → `draft`.
-- Build green: `./build.sh` exits 0 (869 pages); no undefined citations for ch36.
+- `metadata/book.yml`: ch46 status `stub` → `draft`.
+- Build green: `./build.sh` exits 0 (869 pages); no undefined citations for ch46.
 
 ## Decisions
 - Kept display math as `\[ ... \]` rather than numbered `equation` environments
-  — matches ch27–ch35 integration pattern.
+  — matches ch48–ch48 integration pattern.
 - Wired stub TODO cites: `hubinger2023modelorganisms`, `park2024deception`,
   `iaisr2025`.
 - Goal-laundering section kept here as measurement framing; forward-ref to
-  ch37 for dedicated detection methods.
+  ch48 for dedicated detection methods.
 - Omitted Hamilton (1964) — no matching BibLaTeX key used in prose.
 - Not committed (no commit requested).
 
 ## Open / next
 - Pre-existing duplicate-label warnings remain elsewhere:
   `sec:self-modeling-transparency`, `sec:example-helpful-assistant`.
-- ch28–ch36 now integrated in this session block; optional single commit.
-- ch33, ch37+ still stub if user wants them integrated next.
+- ch46–ch46 now integrated in this session block; optional single commit.
+- ch48, ch48+ still stub if user wants them integrated next.
 
 ## Key paths
-- `chapters/ch36-passive-observation-not-enough.tex`
+- `chapters/ch39-passive-observation-not-enough.tex`
 - `metadata/book.yml`
 
 ## Commits

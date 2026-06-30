@@ -29,7 +29,7 @@ Superintelligence alignment is the problem of preserving grounded, human-correct
 
 - Boundary discovery: find the real optimizer, not just the visible model.
 - Grounding viability: keep symbols, metrics, monitors, and correction signals connected to value-relevant reality.
-- Value bundles: learnable value geometry without pretending values are scalar rewards; ch19b stress-tests bundle-geometry measurement under Goodhart pressure.
+- Value bundles: learnable value geometry without pretending values are scalar rewards; ch46 stress-tests bundle-geometry measurement under Goodhart pressure.
 - Bearer maps: preserve what values apply to, not merely the words used for them.
 - Transport hierarchy: distinguish semantic, bundle, bearer, correction, and successor continuity.
 - Correction-channel integrity: ensure human correction has uncaptured causal force, then stress-test that force under adversarial pressure.
@@ -61,7 +61,7 @@ The book often treats familiar proposals as projections, special cases, or separ
 - incentive diagrams and agent tests become boundary-relative;
 - CIRL and reward inference become local projections of bundle/bearer/correction preservation;
 - shutdown and interruptibility become one-bit correction projections;
-- low impact, relative reachability, AUP, and quantilization separate from trajectory-level correction-channel integrity in the ch25b stress tests;
+- low impact, relative reachability, AUP, and quantilization separate from trajectory-level correction-channel integrity in the ch48 stress tests;
 - broad corrigibility becomes a dynamical correction invariant;
 - debate can preserve local truth while losing the judge's correction channel;
 - amplification can improve local supervision while failing global correction-channel contraction;

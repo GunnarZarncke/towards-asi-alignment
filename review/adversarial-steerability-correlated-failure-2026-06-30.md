@@ -8,27 +8,27 @@ Recorded 2026-06-30. External reviewer feedback (claim-strength / structural, no
 
 ### Correlated failure across the whole apparatus (claim-strength, not a bug)
 
-- **Path:** ch07 §WWCTV, ch19b §WWCTV, ch28 §WWCTV, ch37 §WWCTV, cross-ref `appendices/appBridge-crosswalk.tex` §takeaway.
-- **Problem:** Every chapter's strongest self-objection is the same one: the measurand is steerable. Ch7 — "the boundary residual is not merely noisy but steerable; a system that models the observer shapes its own residual." Ch37 — "a system launders goals with the index reading zero; the detector's features are the launderer's constraints, not its tell." Ch19b and ch28 say the structurally identical thing. So boundary residual, bundle probes, the laundering index, and successor closure don't fail independently — they share the antecedent (adversarial verifiability), which the bridge appendix itself concedes "positively correlate the bridges."
+- **Path:** ch07 §WWCTV, ch46 §WWCTV, ch46 §WWCTV, ch48 §WWCTV, cross-ref `appendices/appB-bridge-crosswalk.tex` §takeaway.
+- **Problem:** Every chapter's strongest self-objection is the same one: the measurand is steerable. Ch7 — "the boundary residual is not merely noisy but steerable; a system that models the observer shapes its own residual." Ch37 — "a system launders goals with the index reading zero; the detector's features are the launderer's constraints, not its tell." Ch19b and ch46 say the structurally identical thing. So boundary residual, bundle probes, the laundering index, and successor closure don't fail independently — they share the antecedent (adversarial verifiability), which the bridge appendix itself concedes "positively correlate the bridges."
 - **Why it matters:** The appendix claims disjunctive routes (MB6b or MB8) "add failure tolerance." If the disjuncts share the steerability antecedent, that tolerance is largely illusory — the chokepoint failure takes the whole chain down together. The framework's honesty about each local failure obscures that the failures are one failure.
 - **Acknowledged by author:** Partially. Each local case is flagged; the correlation across them is not drawn out as a single load-bearing risk.
 - **Suggested fix:** State explicitly that the bridges are conjunctive-through-a-shared-chokepoint, and weaken the "disjunctive routes add failure tolerance" language accordingly, or show the disjuncts have independent antecedents.
 
 **Related prose (added 2026-06-28, now under review):**
 
-- `appendices/appBridge-crosswalk.tex` takeaway — shared antecedents positively correlate bridges; disjunctive routes (MB6b ∨ MB8) add failure tolerance.
-- `appendices/appH-research-program.tex` §`sec:research-dependency-order` — "Disjunctive routes add failure tolerance" paragraph.
+- `appendices/appB-bridge-crosswalk.tex` takeaway — shared antecedents positively correlate bridges; disjunctive routes (MB6b ∨ MB8) add failure tolerance.
+- `appendices/appF-research-program.tex` §`sec:research-dependency-order` — "Disjunctive routes add failure tolerance" paragraph.
 
 **WWCTV loci to reconcile:**
 
 | Measurand / layer | Chapter | WWCTV objection shape |
 |-------------------|---------|------------------------|
 | Boundary residual \(J\) (from \(R, P, \Omega\)) | ch07 | Observer-modeling steers the residual |
-| Bundle probes / Goodhart geometry | ch19b | Probes are optimization constraints |
-| Successor closure / conserved-property score | ch28 | Forgeable under adversarial predecessor |
-| Goal-laundering index GLI (\(d_G, d_\Phi\), CCI, \(D_{\text{succ}}\)) | ch37 | Detector features are launderer's constraints |
+| Bundle probes / Goodhart geometry | ch46 | Probes are optimization constraints |
+| Successor closure / conserved-property score | ch46 | Forgeable under adversarial predecessor |
+| Goal-laundering index GLI (\(d_G, d_\Phi\), CCI, \(D_{\text{succ}}\)) | ch48 | Detector features are launderer's constraints |
 
-**Shared antecedent:** adversarial verifiability / measurand steerability (ch39b vocabulary); see also U-03, U-05, U-14, U-16 in `metadata/uncertainty-ledger.md`.
+**Shared antecedent:** adversarial verifiability / measurand steerability (ch47 vocabulary); see also U-03, U-05, U-14, U-16 in `metadata/uncertainty-ledger.md`.
 
 ---
 
@@ -36,7 +36,7 @@ Recorded 2026-06-30. External reviewer feedback (claim-strength / structural, no
 
 ### Operationalization-by-deferral ("turtles")
 
-- **Path:** ch37 §Laundering Index (GLI built from \(d_G\), \(d_\Phi\), CCI, \(D_{\text{succ}}\)), ch07 §Boundary Residual (\(J\) built from \(R\), \(P\), \(\Omega\)).
+- **Path:** ch48 §Laundering Index (GLI built from \(d_G\), \(d_\Phi\), CCI, \(D_{\text{succ}}\)), ch07 §Boundary Residual (\(J\) built from \(R\), \(P\), \(\Omega\)).
 - **Problem:** Each composite quantity is defined in terms of sub-distances that are themselves defined in other chapters, and the chain bottoms out — in the Lean spine — in `Int` proxies and `Toy… := True` predicates. No layer is yet a measured number.
 - **Acknowledged by author:** Yes, repeatedly (the spine README, the MB-bridge isolation).
 - **Suggested fix:** A single table mapping each composite index to the concrete estimator and dataset that would instantiate it (the `experiments/toy-simulation/` harness is the natural home; the `mb*_diagnostic.py` scripts already gesture at this).
@@ -46,9 +46,9 @@ Recorded 2026-06-30. External reviewer feedback (claim-strength / structural, no
 | Composite | Sub-components (deferred to) | Candidate experiment hook |
 |-----------|------------------------------|----------------------------|
 | Boundary residual \(J\) | \(R\), \(P\), \(\Omega\) (ch06–07, ch09) | `correction_capture_toy.py`; multiresolution `boundary_alias` |
-| GLI | \(d_G\), \(d_\Phi\), CCI, \(D_{\text{succ}}\) (ch25, ch28, ch37) | ch37 not yet in sim; CCI from `cci_audit.py` |
-| CCI (vector / scalar) | Penalties \(L,M,R,\Omega\) (ch25) | multiresolution audit path |
-| Conserved-property / successor score | Seven properties (ch29) | `mb5_mb6_diagnostic.py`, `successor_relabel` |
+| GLI | \(d_G\), \(d_\Phi\), CCI, \(D_{\text{succ}}\) (ch46, ch46, ch48) | ch48 not yet in sim; CCI from `cci_audit.py` |
+| CCI (vector / scalar) | Penalties \(L,M,R,\Omega\) (ch46) | multiresolution audit path |
+| Conserved-property / successor score | Seven properties (ch48) | `mb5_mb6_diagnostic.py`, `successor_relabel` |
 | Bundle-geometry probes | ch16–19b catalogue | `bundle_goodhart` scenario |
 
 ---
