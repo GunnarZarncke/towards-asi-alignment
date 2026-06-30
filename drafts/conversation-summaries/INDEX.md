@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-06-30 | Embedded audit UAD session (end) | [2026-06-30-embedded-audit-uad-session-end.md](2026-06-30-embedded-audit-uad-session-end.md) |
+| 2026-06-30 | Unit-scoped CCI + deploy gate | [2026-06-30-unit-scope-deploy-gate.md](2026-06-30-unit-scope-deploy-gate.md) |
 | 2026-06-30 | UAD pipeline + MB grounding doc | [2026-06-30-uad-pipeline-mb-grounding.md](2026-06-30-uad-pipeline-mb-grounding.md) |
 | 2026-06-30 | Embedded audit plan follow-up | [2026-06-30-embedded-audit-plan-followup.md](2026-06-30-embedded-audit-plan-followup.md) |
 | 2026-06-30 | Bibliography summaries backfill + maintenance | [2026-06-30-bibliography-summaries-backfill.md](2026-06-30-bibliography-summaries-backfill.md) |
