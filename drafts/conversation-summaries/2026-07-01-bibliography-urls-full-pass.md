@@ -28,4 +28,4 @@ User approved the doi/url convention from a ~10% pilot and asked to apply it to 
 - `scripts/enrich_bibliography_urls.py`, `scripts/fix_bib_urls_final.py`, `scripts/apply_bib_patches.py`
 
 ## Commits
-- (filled after commit)
+- `7e35a56` Enrich bibliography with canonical DOI/URL fields and print them in the PDF.
