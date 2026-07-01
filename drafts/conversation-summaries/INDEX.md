@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-01 | Bibliography URLs full pass | [2026-07-01-bibliography-urls-full-pass.md](2026-07-01-bibliography-urls-full-pass.md) |
+| 2026-07-01 | Astro site thin slice | [2026-07-01-astro-site-thin-slice.md](2026-07-01-astro-site-thin-slice.md) |
 | 2026-06-30 | README embedded simulation section | [2026-06-30-readme-embedded-sim.md](2026-06-30-readme-embedded-sim.md) |
 | 2026-06-30 | Kulveit gradual disempowerment bib + cites | [2026-06-30-kulveit-gradual-disempowerment-bib.md](2026-06-30-kulveit-gradual-disempowerment-bib.md) |
 | 2026-06-30 | Chapter and appendix renumbering (ch01–ch48, appA–G) | [2026-06-30-chapter-appendix-renumbering.md](2026-06-30-chapter-appendix-renumbering.md) |

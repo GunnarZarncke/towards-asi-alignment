@@ -7,7 +7,6 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{xcolor}
-\usepackage{hyperref}
 \usepackage{csquotes}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -24,6 +23,9 @@
   giveninits=true,
   uniquename=false,
   pagetracker=false,
+  doi=true,
+  url=true,
+  eprint=true,
 ]{biblatex}
 \addbibresource{references/main.bib}
 \addbibresource{references/internal-project-sources.bib}
@@ -34,7 +36,7 @@
 \addbibresource{references/philosophy.bib}
 \addbibresource{references/manuscript-citations.bib}
 
-\input{metadata/preamble}
+\usepackage{hyperref}
 
 \hypersetup{
   pdftitle={Towards Superintelligence Alignment},
@@ -44,6 +46,8 @@
   citecolor=blue!60!black,
   urlcolor=blue!60!black,
 }
+
+\input{metadata/preamble}
 
 \title{Towards Superintelligence Alignment\\[0.5em]
   \large Boundaries, Values, and Correction}

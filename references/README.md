@@ -4,7 +4,7 @@ BibLaTeX sources loaded by `book.tex` (`references/*.bib`). Cited keys must exis
 
 ## One-line bibliography summaries
 
-Reader-facing glosses print **above each bibliography entry** in the PDF (global bibliography and per-chapter *Chapter References*).
+Reader-facing glosses print **above each bibliography entry** in the PDF (global bibliography and per-chapter *Chapter References*). **DOI**, **URL**, and **eprint** lines print at the end of each entry when present in the `.bib` file (see `metadata/preamble.tex`).
 
 | Artifact | Role |
 |----------|------|

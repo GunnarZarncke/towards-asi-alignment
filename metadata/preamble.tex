@@ -9,7 +9,6 @@
 % Breakable Lean identifiers in tables (underscores become break points).
 \newcommand{\leanid}[1]{%
   \begingroup\small\urlstyle{tt}\nolinkurl{#1}\endgroup}
-\makeatother
 
 \newtcolorbox{chapterthesis}{
   colback=blue!5!white,
@@ -42,3 +41,17 @@
   \ifcsname bibsummary@\thefield{entrykey}\endcsname
     \csname bibsummary@\thefield{entrykey}\endcsname\par\nobreak\smallskip
   \fi}
+
+% Always append DOI, eprint, and URL at the end of each bibliography entry.
+\renewbibmacro*{doi+eprint+url}{}
+\renewbibmacro*{finentry}{%
+  \iffieldundef{doi}{}{%
+    \newunit\newblock
+    \printfield{doi}}%
+  \iffieldundef{eprinttype}{}{%
+    \newunit\newblock
+    \usebibmacro{eprint}}%
+  \iffieldundef{url}{}{%
+    \newunit\newblock
+    \printfield{url}}%
+  \finentry}
