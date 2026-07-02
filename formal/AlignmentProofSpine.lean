@@ -30,7 +30,7 @@ Alignment*. It re-exports the layered modules:
 | `CooperationGraph` | UAD audit → derived graph, `P33`, `derived_openEdge_via_P32` | 13, 33, 35 |
 | `Bundles`       | `P14`–`P22`                               | 15–23         |
 | `Correction`    | `P23`–`P26`, scalar `CCI`, vector/status `CCICertificate`, handle-controlled paths | 24–27         |
-| `Field`         | finite field-agenda machinery, imported theorem handles, agenda modules | crosswalk     |
+| `Field`         | finite field-agenda machinery, imported theorem handles, agenda modules; includes `Field/Finite/ShannonMI` (real-valued Shannon entropy/MI, `mutualInformation_le_log_min_card`) | crosswalk     |
 | `FieldSubsumptions` | compatibility re-export for field-agenda headline theorem names | crosswalk     |
 | `Successors`    | `P27`–`P29`, successor witness / measurand chains | 28–31         |
 | `Forgeability`  | successor-forgeability finite counterexample (`forgeability_gap`); `MB10` (conserved-property signature not forged) and its risk-to-true-harm corollary | 8, 31, 43, 48 |

@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-02 | Lean: real Shannon entropy/mutual-information proved (`ShannonMI.lean`, `mutualInformation_le_log_min_card` backs the N-8 appearance-ceiling finding) | [2026-07-02-shannon-mi-lean.md](2026-07-02-shannon-mi-lean.md) |
 | 2026-07-02 | Embedded sim: writer-compromise red team + cross-stream checks | [2026-07-02-embedded-sim-writer-compromise.md](2026-07-02-embedded-sim-writer-compromise.md) |
 | 2026-07-02 | Embedded sim: AppD roadmap 2–6 (registry, numeric leaf, successor re-audit, safety case, tempo, bearers) | [2026-07-02-embedded-sim-appd-roadmap-2-6.md](2026-07-02-embedded-sim-appd-roadmap-2-6.md) |
 | 2026-07-02 | Site: card schema (formulas/Lean/evidence/demos) + MB1-MB10 bridge cards + Part I-II concept cards | [2026-07-02-site-card-schema-and-bridge-cards.md](2026-07-02-site-card-schema-and-bridge-cards.md) |
