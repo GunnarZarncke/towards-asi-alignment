@@ -190,6 +190,81 @@ See `results/NEGATIVE_RESULTS.md` for the honest record. Open follow-ups:
   an optional alternative if the tier curve is insufficient. See `MILESTONE-v4.md`
   Phase B.
 
+## LLM red-team scale-up (contributions welcome)
+
+Current checked-in LLM artifacts (`results/embedded_llm_redteam_*.json`) use modest
+defaults: **`gpt-4o-mini`**, **`T=800`**, **7 bridges × 3 seeds** (21 episodes).
+The mock planner (`--mock` / CI) mirrors hand-written `full_redteam` patches and is
+**not** independent evidence of LLM attacker capability. Live runs at larger scale
+and with stronger models are high-value contributions — they test whether in-sim
+gates survive an adaptive optimizer, not just fixed strategies.
+
+- [ ] **Run scaled live LLM red-team sweeps and commit results.** Parameterize via
+  the dedicated CLI (preferred) or extend `run_suite.py` if you need suite parity.
+
+### Prerequisites
+
+```bash
+cd experiments/embedded-simulation
+# API key at repo root: copy .env_sample → .env and set OPENAI_API_KEY
+export OPENAI_API_KEY=sk-...   # or source ../../.env from repo root
+python3 -m embedded_llm --smoke   # offline mock smoke (no API)
+```
+
+### Parameterize runs (`python3 -m embedded_llm`)
+
+| Flag | Default | Scale-up guidance |
+| --- | --- | --- |
+| `--model` | `gpt-4o-mini` | Use a stronger chat model (`gpt-4o`, `o3`, etc.) for adaptive red-teaming |
+| `--seeds` | `11,12,13` | Comma-separated ints; e.g. `11,12,13,14,15,16,17,18,19,20` for 10 seeds per bridge |
+| `--bridges` | all of `LLM_BRIDGES` | Subset for pilots; default covers `MB1,MB4,MB6,MB7,MB9,instrument_capture,MB7d` |
+| `--T` | `800` | Episode length (steps); match main suite with `--T 800` unless probing shorter smoke |
+| `--instrumentation` | `medium_handles` | Try `low_handles` / `high_handles` to stress access-tier sensitivity |
+| `--mock` | off | **Omit** for live API runs; use only for offline/CI |
+
+**Example — medium live sweep (same bridges, 10 seeds, stronger model):**
+
+```bash
+python3 -m embedded_llm \
+  --model gpt-4o \
+  --seeds 11,12,13,14,15,16,17,18,19,20 \
+  --T 800 \
+  --instrumentation medium_handles
+```
+
+**Example — pilot one bridge before a full grid:**
+
+```bash
+python3 -m embedded_llm --model gpt-4o --bridges MB4,MB9 --seeds 11,12,13
+```
+
+Outputs: `results/embedded_llm_redteam_<model>.json` and `.md` (mock → `embedded_llm_redteam_mock.*`).
+
+### Via `run_suite.py` (fixed grid)
+
+`run_suite.py --llm --llm-live --llm-model <model>` runs the same **`T`**, **`--instrumentation`**, and seed/bridge grid baked into the suite (21 episodes unless `--smoke`). Use `--T` and `--instrumentation` from the suite driver; for custom `--seeds` / `--bridges`, prefer `python3 -m embedded_llm` above or add CLI passthrough in a PR.
+
+```bash
+python3 run_suite.py --llm --llm-live --llm-model gpt-4o --T 800
+```
+
+### Hand-written battery (non-LLM baseline)
+
+For comparison against fixed strategies at larger **N**, `run_redteam_battery` defaults to **10 seeds** (`11`–`20`) × all battery bridges/strategies/levels. Trigger via:
+
+```bash
+python3 run_suite.py --battery --T 800
+```
+
+(programmatic overrides: `embedded_sim.batch.run_redteam_battery(seeds=[...], T=..., bridges=[...])`).
+
+### Recording results
+
+1. Keep JSON + markdown under `results/` (do not overwrite mock artifacts without noting live vs mock in the filename suffix).
+2. Summarize false-pass rate, per-bridge breakdown, and token cost in the markdown body if not already present.
+3. Add honest qualifiers to [`results/NEGATIVE_RESULTS.md`](results/NEGATIVE_RESULTS.md) when runs fail to separate live LLM from mock or when stronger models increase false passes.
+4. Note model id, seed list, bridge list, `T`, and instrumentation in any PR description.
+
 ## Run
 
 ```bash
