@@ -2,6 +2,9 @@
   "name": "towards-asi-alignment-site",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "npm run sync && ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "sync": "npm run sync:book && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos",

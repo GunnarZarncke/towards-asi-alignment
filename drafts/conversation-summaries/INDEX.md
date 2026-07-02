@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-02 | GitHub Pages CI: demo esbuild deps, Node 24 | [2026-07-02-github-pages-ci-fix.md](2026-07-02-github-pages-ci-fix.md) |
 | 2026-07-02 | Astro site: worked example, field subsumptions, reference cards, About fixes; full site commit | [2026-07-02-astro-site-publication-layer.md](2026-07-02-astro-site-publication-layer.md) |
 | 2026-07-02 | Review measurement-protocol plan against Milestone v4 (redirect threshold-calibration + cci-coordinates items, plan file updated, nothing executed) | [2026-07-02-measurement-plan-vs-milestone-v4-review.md](2026-07-02-measurement-plan-vs-milestone-v4-review.md) |
 | 2026-07-02 | Lean playgrounds: full try-out context + codez size validation | [2026-07-02-lean-playground-codez-context.md](2026-07-02-lean-playground-codez-context.md) |
