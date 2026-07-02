@@ -53,7 +53,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 | A-013 | Inferential-coupling detector certificates | ch48 |
 | A-014 | Grounding viability / conservative abstraction | ch03 |
 | S07 | MDL: positive gain ⇒ preferred model | ch46 |
-| MB1–MB9 | Lean bridge axioms | appI (+ chapter bridges) |
+| MB1–MB10 | Lean bridge axioms (`MB1`–`MB9` packaged in `BridgeAssumptions`; `MB10` threaded explicitly) | appI (+ chapter bridges) |
 
 ---
 
@@ -163,9 +163,11 @@ Appendix I §Imported Assumptions. Only **S07** is an explicit Lean `axiom`. S09
 
 ---
 
-## IV. Lean bridges (MB1–MB9)
+## IV. Lean bridges (MB1–MB10)
 
-Formal statements: Lean Proof Spine appendix; validation program: Research Program appendix. Lean: `Core.lean` `BridgeAssumptions`. Mapping of each bridge to the canonical field crux it inherits (and the owning agenda): `appendices/appB-bridge-crosswalk.tex` (*Bridges and the Field: A Crosswalk*).
+Formal statements: Lean Proof Spine appendix; validation program: Research Program appendix. Lean: `Core.lean` `BridgeAssumptions` packages `MB1`–`MB9`; `MB10` (`AlignmentProofSpine/Forgeability.lean`) is a tenth bridge threaded explicitly rather than packaged, since its statement needs the numeric risk leaf that is not yet defined at `Core.lean`'s point in the module order. Mapping of each bridge to the canonical field crux it inherits (and the owning agenda): `appendices/appB-bridge-crosswalk.tex` (*Bridges and the Field: A Crosswalk*).
+
+**Successor forgeability / `MB10` (2026-07-02):** ch08/ch31's own WWCTV sections already name the failure mode --- a successor can pass every conserved-property check while defecting on the unmeasured remainder. `formal/AlignmentProofSpine/Forgeability.lean` makes it a checked finite counterexample (`forgeability_gap`: for every claimed harm bound, a toy successor reads all-seven-green and stays within the measured risk bound while its true harm exceeds it) and names the missing condition as `MB10`: the conserved-property audit channel must be adversarially verifiable up to the successor's capability (ch43's cost relation, `appendices/appG-lean-proof-spine.tex` §`appi:sec:forgeability`). `MB10` is not required for the top certification theorem; it gates whether `MB5`'s successor-safety conclusion means anything against a capable adversarial predecessor.
 
 **Defeater ledger (2026-07-02):** each bridge's "failure mode if false" now has a named Lean-side signal in `formal/AlignmentProofSpine/Defeaters.lean` (`appendices/appG-lean-proof-spine.tex` §`appi:sec:defeaters`), so the reservation has a type, not just prose. `MB1`, `MB4`, `MB6b`, `MB8` additionally have a finite toy model proving the antecedent-signal-not-consequent shape is logically consistent (axiom footprint: `propext` only). `MB7b`–`MB7d` reduce their defeater to `Chokepoint.SteerableAt`. No signal is claimed to hold; this does not discharge or refute any `MB*`.
 
@@ -184,6 +186,7 @@ Formal statements: Lean Proof Spine appendix; validation program: Research Progr
 | MB7d | A-009, A-013 |
 | MB8 | A-002 |
 | MB9 | A-014 |
+| MB10 | A-007, A-009 (not packaged in `BridgeAssumptions`) |
 
 ---
 
@@ -243,6 +246,7 @@ Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. On
 | MB7d | Access robustness plus adequate inferential detector assumptions implies valid inferential-coupling measurement | ch48 |
 | MB8 | Legacy CEV-style bridge: externally certified preservation of schematic $U_H$ implies correction integrity; live certification uses the value-update envelope | ch46 |
 | MB9 | Grounding certificates imply conservative value-correction abstraction over the certified domain | ch03 |
+| MB10 | Successor-safe transition with bounded measured risk implies bounded true harm, given a verifiable conserved-property signature (not packaged in \texttt{BridgeAssumptions}) | ch08 |
 
 ---
 

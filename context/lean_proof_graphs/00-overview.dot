@@ -12,11 +12,11 @@ digraph Spine00Overview {
   node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, color="#444444"];
   edge [fontname="Helvetica", fontsize=8, color="#555555", arrowsize=0.75];
 
-  S1 [label="Spine I\nBoundary & measurement\n(P05–P11, P09, P36, MB1, MB7a–b)\n→ BoundaryAligned, BIQ, handles",
+  S1 [label="Spine I\nBoundary & measurement\n(P05–P11, P09, P36, MB1, MB7a–b, MB9)\n→ BoundaryAligned, BIQ, handles, GroundingViable",
       fillcolor="#EAF3FF", penwidth=2];
   S2 [label="Spine II\nValue & transport\n(P14–P22, P37, MB2–3)\n→ BundleTransport, BearerTransport",
       fillcolor="#EFFBEA", penwidth=2];
-  S3 [label="Spine III\nCorrection & successors\n(P23–P29, P13, MB4–5, MB7c, MB8)\n→ CCI, Risk, SuccessorSafe",
+  S3 [label="Spine III\nCorrection & successors\n(P23–P29, P13, MB4–5, MB7c, MB8, MB10)\n→ CCI, Risk, SuccessorSafe, TrueHarm",
       fillcolor="#FFF0FB", penwidth=2];
   S4 [label="Spine IV\nSelection & limits\n(P12, P31–P34, P41–P45,\nMB6a–b, MB7d)\n→ percolation evidence, basin, normative boundary",
       fillcolor="#FFF0EC", penwidth=2];

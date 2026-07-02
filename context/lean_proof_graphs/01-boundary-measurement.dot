@@ -31,9 +31,10 @@ digraph Spine01BoundaryMeasurement {
   MB7a [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB7a Access-model soundness"];
   MB7b [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB7b Filter-family coverage"];
   MB7d_IN [shape=diamond, style="filled,dashed", fillcolor="#FFE6E6", color="#CC3333", label="To MB7d\nInferential detector validity"];
+  MB9 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB9 Grounding certificate\nsoundness"];
 
   OUT [shape=octagon, style="filled", fillcolor="#DDEEFF", color="#336699",
-       label="Exports to later spines:\nBoundaryAligned, BIQ ceiling,\nmeasurement limits, MB7a–b,\naccess-robust input to MB7d"];
+       label="Exports to later spines:\nBoundaryAligned, BIQ ceiling,\nmeasurement limits, MB7a–b,\naccess-robust input to MB7d,\nGroundingViable (MB9)"];
 
   P05 -> P06 -> P07;
   P05 -> P08;
@@ -57,6 +58,7 @@ digraph Spine01BoundaryMeasurement {
   P11 -> OUT [label="Control side"];
   MB7b -> OUT [style=dashed, color="#CC3333"];
   MB7d_IN -> OUT [style=dashed, color="#CC3333"];
+  MB9 -> OUT [style=dashed, color="#CC3333"];
   P36 -> OUT [label="handle tests"];
   PCID -> OUT [label="variable ontology"];
 }

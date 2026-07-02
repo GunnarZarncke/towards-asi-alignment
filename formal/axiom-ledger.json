@@ -213,6 +213,35 @@
       ]
     },
     {
+      "name": "AlignmentProofSpine.true_harm_bound_of_successor_safe_step",
+      "gloss": "What MB10 buys: measured risk bound + successor-safe step + verifiable signature implies true-harm bound",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.BearerMapPreserved",
+        "AlignmentProofSpine.BoundaryClosure",
+        "AlignmentProofSpine.BundleGeometryPreserved",
+        "AlignmentProofSpine.CCIPenaltiesSys",
+        "AlignmentProofSpine.CCIPenaltyWeightsSys",
+        "AlignmentProofSpine.CCIPreserved",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.ConservedPropertySignatureVerifiable",
+        "AlignmentProofSpine.ControlLocusPreserved",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.IctrlSys",
+        "AlignmentProofSpine.MB10_conserved_property_signature_not_forged",
+        "AlignmentProofSpine.MemoryLineage",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "AlignmentProofSpine.TransparencyPolicyPreserved",
+        "AlignmentProofSpine.TrueHarm",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
       "name": "AlignmentProofSpine.correction_integrity_disjunctive_tolerance_needs_distinct_instruments",
       "gloss": "MB6a/MB6b vs MB8 shared-chokepoint worked instance (exactly these three bridges)",
       "axioms": [
@@ -231,6 +260,35 @@
       "name": "AlignmentProofSpine.sharedChokepoint_steerable_blocks_both_routes",
       "gloss": "Generic shared-chokepoint collapse theorem (must stay fully axiom-free)",
       "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.forgeability_gap",
+      "gloss": "Forgeability-gap counterexample motivating MB10 (all-seven-green + risk bound does not bound true harm)",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.workedCert_fails",
+      "gloss": "Single worked instance on real embedded-sim fixture data: honestly-computed CCICertificate (manipulation coordinate derived from the real judge_captured column) correctly fails independently-fixed thresholds -- no risk bound is derivable through the certification gate on this permanently-captured-judge trace",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.CoincidesWithHumanity",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.CorrectingAgentFor",
+        "AlignmentProofSpine.GroundingViable",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
     },
     {
       "name": "AlignmentProofSpine.MB1_defeater_toy_nonstationary_shift",

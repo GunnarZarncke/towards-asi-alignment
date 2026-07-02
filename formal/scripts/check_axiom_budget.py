@@ -34,7 +34,7 @@ TEX_OUT = REPO_ROOT / "metadata" / "axiom-budget-index.tex"
 NAMESPACE = "AlignmentProofSpine"
 CORE_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 BRIDGE_RE = re.compile(rf"^{re.escape(NAMESPACE)}\.MB\d")
-ALL_BRIDGES = {
+ALL_CORE_BRIDGES = {
     "MB1_estimator_soundness",
     "MB2_bundle_identifiability",
     "MB3_bearer_import",
@@ -49,6 +49,11 @@ ALL_BRIDGES = {
     "MB8_cev_process_convergence",
     "MB9_grounding_certificate_soundness",
 }
+# MB10 (`AlignmentProofSpine.Forgeability`) is not a `Core.BridgeAssumptions`
+# field -- see that module's docstring -- so it is not part of `standardBridges`
+# and never joins `ALL_CORE_BRIDGES`'s "All MB1--MB9" theorems. It gets its own
+# collapse case below in case a future theorem invokes all ten.
+ALL_BRIDGES_WITH_MB10 = ALL_CORE_BRIDGES | {"MB10_conserved_property_signature_not_forged"}
 
 DEPENDS_RE = re.compile(
     r"'([\w.]+)' depends on axioms: \[(.*?)\]", re.DOTALL
@@ -147,13 +152,22 @@ def bridge_list(axioms: list[str]) -> str:
     bridges = sorted(short_name(a) for a in axioms if classify(a) == "bridge")
     if not bridges:
         return "---"
-    if set(bridges) == ALL_BRIDGES:
+    bridge_set = set(bridges)
+    if bridge_set == ALL_BRIDGES_WITH_MB10:
+        return "All \\texttt{MB1}--\\texttt{MB10}"
+    if bridge_set == ALL_CORE_BRIDGES:
         return "All \\texttt{MB1}--\\texttt{MB9}"
     return ", ".join(rf"\leanid{{{b}}}" for b in bridges)
 
 
 def latex_escape(text: str) -> str:
-    for old, new in (("\\", r"\textbackslash{}"), ("&", r"\&"), ("%", r"\%"), ("#", r"\#")):
+    for old, new in (
+        ("\\", r"\textbackslash{}"),
+        ("&", r"\&"),
+        ("%", r"\%"),
+        ("#", r"\#"),
+        ("_", r"\_"),
+    ):
         text = text.replace(old, new)
     return text
 
@@ -191,13 +205,15 @@ def render_tex(ledger_entries: list[dict]) -> str:
     lines.append("")
     lines.append(
         r"\emph{Core} = Lean/Mathlib axioms (\texttt{propext}, \texttt{Classical.choice}, "
-        r"\texttt{Quot.sound}). \emph{Bridges used} lists which of \texttt{MB1}--\texttt{MB9} "
+        r"\texttt{Quot.sound}). \emph{Bridges used} lists which of \texttt{MB1}--\texttt{MB10} "
         r"(with lettered sub-bridges \texttt{MB6a}/\texttt{MB6b}, \texttt{MB7a}--\texttt{MB7d}) "
         r"the theorem actually invokes; ``---'' means none (bridges are either absent or "
         r"supplied as an explicit hypothesis rather than a global axiom, as in "
-        r"\leanid{certified_class_safety_from_bridge_record}). \emph{Vocab.} counts "
-        r"remaining declared carriers/predicates (e.g.\ \texttt{System}, \texttt{CCIPreserved}) "
-        r"that are axiomatized as abstract vocabulary, not proved."
+        r"\leanid{certified_class_safety_from_bridge_record}). \texttt{MB10} is declared "
+        r"outside \texttt{Core.BridgeAssumptions} (Section~\ref{appi:sec:forgeability}) and so "
+        r"never appears bundled into an ``All \texttt{MB1}--\texttt{MB9}'' cell. \emph{Vocab.} "
+        r"counts remaining declared carriers/predicates (e.g.\ \texttt{System}, "
+        r"\texttt{CCIPreserved}) that are axiomatized as abstract vocabulary, not proved."
     )
     return "\n".join(lines) + "\n"
 

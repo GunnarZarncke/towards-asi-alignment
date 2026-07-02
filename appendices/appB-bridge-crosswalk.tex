@@ -3,7 +3,7 @@
 
 Every serious alignment agenda rests on load-bearing assumptions --- \emph{bridges} --- that, if false, sink the program.
 Most agendas bury theirs in a footnote or a ``we assume access to\,\ldots'' clause.
-This book instead lifts them out and labels them: the manuscript assumptions \(\text{A-001}\)--\(\text{A-014}\) (in the chapters that need them) and the formal bridge axioms \(\text{MB1}\)--\(\text{MB9}\) (Appendix~\ref{appi-lean-proof-spine}).
+This book instead lifts them out and labels them: the manuscript assumptions \(\text{A-001}\)--\(\text{A-014}\) (in the chapters that need them) and the formal bridge axioms \(\text{MB1}\)--\(\text{MB10}\) (Appendix~\ref{appi-lean-proof-spine}).
 Laid beside the field's standing open problems, these bridges are largely the same walls under different names.
 
 This appendix makes that correspondence explicit.
@@ -42,6 +42,7 @@ MB6a, MB6b \newline (A-008, A-011; ch46--35) & \emph{No single standard name}: s
 MB7a--c \newline (A-004, A-009; ch10, ch46, ch47) & Inner alignment / deceptive alignment; scalable-oversight ceiling (obfuscated arguments, amplification drift); Control's capability gap & RLHF, Debate, Amplification, AI Control (Redwood) & Bound hidden productive B-IQ via access robustness plus filter coverage; price the cost of faking the monitored signal \\
 MB7d \newline (A-009, A-013; ch48) & Acausal / inferential coordination; program equilibrium across severed channels & Decision theory (MIRI-adjacent) & Inferential-coupling detector certificates for coordination that survives cutting ordinary communication and control \\
 MB9 \newline (A-014, ch3, ch47) & Specification and world-model coverage: you cannot enumerate all safety-relevant phenomena & Guaranteed-Safe / Open Agency (davidad) & Grounding conservativity: value-relevant change must move the checked abstraction or raise uncertainty --- no silent gaps \\
+MB10 \newline (A-007, A-009; ch08, ch31, ch43) & Deceptive alignment / measurement gaming: a system can pass every audited checklist while defecting on whatever it omits & Deceptive alignment (mesa-optimization), agent foundations (tiling) & Require the conserved-property signature itself to be adversarially verifiable up to the successor's capability before a passing score counts as evidence; a finite counterexample shows the gap is not vacuous \\
 \end{longtable}
 \renewcommand{\arraystretch}{1.0}
 
@@ -89,6 +90,12 @@ The closest structural cousin is the Guaranteed-Safe / Open Agency program: a fo
 The shared open problem is coverage --- you cannot enumerate every safety-relevant phenomenon, and the system games whatever the spec omits.
 The book's grounding-viability bridge demands conservativity instead of completeness: value-relevant change must move the checked abstraction or raise uncertainty before irreversible loss (Chapter~\ref{ch:dynamical-guarantee}, Chapter~\ref{ch:verifiability-ontology}).
 
+\paragraph{MB10 --- successor forgeability (A-007, A-009).}
+This is not a fresh crux; it is the field's deceptive-alignment wall \autocite{hubinger2019risks,hubinger2023modelorganisms,park2024deception} recurring at the successor layer, and it shares its resolution strategy with \(\text{MB7a--c}\): price the cost of faking the monitored signal rather than trusting a passing score (Chapter~\ref{ch:verifiability-ontology}).
+\(\text{MB5}\) says a transport-preserving, seven-property-passing successor is \emph{safe}; ch08 and ch31's own ``What Would Change This View'' sections name the counter-move directly --- a capable predecessor can engineer a successor to pass every conserved-property check while defecting on whatever was not conserved, so \(\text{MB5}\)'s conclusion is, on its own, evidence of nothing against that adversary.
+The book's move is to make this a checked finite counterexample rather than a residual worry (\texttt{AlignmentProofSpine.Forgeability}, Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:forgeability}) and to name the missing bridge explicitly: the conserved-property audit channel must itself be adversarially verifiable up to the successor's capability (ch43's cost relation, specialized to this measurand) before ``all seven read green'' counts as evidence.
+\(\text{MB10}\) is declared alongside \(\text{Successors.SuccessorAuditLinks}\) rather than folded into \texttt{Core.BridgeAssumptions}, since its statement needs the numeric risk leaf that \texttt{Core.lean} does not yet have.
+
 \section{What the book shares, and what it adds}
 \label{sec:bridge-crosswalk-takeaway}
 
@@ -112,7 +119,7 @@ This is the framework's sharpest departure from the field and simultaneously its
 \(\text{MB7d}\) (inferential coupling) imports a decision-theoretic problem the oversight agendas do not address.
 
 \emph{The actual bet.} The book's distinctive claim is not a solution but a structural reduction.
-The bridges compose in a fixed order --- boundary discovery, grounding viability, bundle and bearer transport, correction-channel integrity, successor stability, selection-basin integrity, adversarial measurement --- and every one of them ultimately routes through a single chokepoint: \emph{adversarial verifiability} (A-009).
+The bridges compose in a fixed order --- boundary discovery, grounding viability, bundle and bearer transport, correction-channel integrity, successor stability, selection-basin integrity, adversarial measurement --- and every one of them ultimately routes through a single chokepoint: \emph{adversarial verifiability} (A-009). \(\text{MB10}\) is the clearest instance of the pattern: it is exactly that chokepoint applied to the successor-safety signature, made explicit only because ch08/ch31's own falsifiers named the gap first.
 Is any safety-relevant measurand cheaper to satisfy honestly than to fake under optimization pressure?
 If yes for at least one load-bearing measurand, the bridges are checkable; if no, every certificate risks certifying presentation rather than structure.
 The composition is also a research object, not only a proof structure: shared antecedents positively correlate the bridges, the weakest necessary bridge caps the joint guarantee, and the dependency graph prescribes which bridges to attack first --- so the bridges \emph{jointly} imply a measurement program and an ordering that none of them implies alone (Appendix~\ref{apph-research-program}, Section~\ref{sec:research-dependency-order}).

@@ -67,6 +67,7 @@ digraph LeanProofDependencies {
   P27 [label="P27 Successor invariant chain\nP A₀ ∧ preserved ⇒ ∀ successors P", fillcolor="#F4EEFF"];
   P28 [label="P28 Missing invariant blocks successor safety\nmissing CCIPreserved ⇒ ¬SuccessorSafe", fillcolor="#F4EEFF"];
   P29 [label="P29 Self-control gap increases risk\nmore self-control, same visibility ⇒ higher gap", fillcolor="#F4EEFF"];
+  PFORGE [label="[NEW]\nforgeability_gap\nall-seven-green + Risk≤δ ⇏ TrueHarm≤δ", fillcolor="#F4EEFF", color="#1F77B4", penwidth=2.2];
 
   // Adversarial / socio-technical (ch32–37)
   P31 [label="P31 Safe agent selected against\nunsafe agent has higher DeploymentMass", fillcolor="#FFF0EC"];
@@ -102,6 +103,8 @@ digraph LeanProofDependencies {
   MB7c [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7c Hidden-BIQ robustness\ncorrection + hidden BIQ bound ⇒ adversarial robustness"];
   MB7d [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7d Inferential-UAD detector validity\naccess robust + detector adequacy ⇒ IC valid"];
   MB8 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB8 CEV/process convergence\nupdate operator well-behaved"];
+  MB9 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB9 Grounding certificate soundness\nconservative abstraction ⇒ GroundingViable"];
+  MB10 [shape=diamond, style="filled,dashed", fillcolor="#FFE6E6", color="#1F77B4", penwidth=2.2, label="[NEW] MB10 Conserved-property signature not forged\nSuccessorSafe + verifiable audit + Risk≤δ ⇒ TrueHarm≤δ"];
 
   // Boundary chain
   P05 -> P06 [label="C-BND: blanket implies candidate"];
@@ -148,6 +151,8 @@ digraph LeanProofDependencies {
   P27 -> P28 [label="C-SUC: missing field blocks safety"];
   P28 -> P02 [label="C-LAYER: successor layer"];
   P29 -> P13 [label="C-RISK: self-control gap"];
+  P27 -> PFORGE [label="C-FORGE: motivates verifiability gate", color="#1F77B4"];
+  PFORGE -> MB10 [label="closes gap", style=dashed, color="#1F77B4"];
 
   // Adversarial measurement
   P09 -> P09A [label="C-ACCESS: weaker observational id"];
@@ -192,6 +197,9 @@ digraph LeanProofDependencies {
   P40 -> P30 [label="C-SCASE: assumptions supported"];
   P30 -> P30T [label="C-CERT: bridge-composed top theorem"];
   MB8 -> P02 [label="C-LAYER: correction-process bridge", style=dashed, color="#CC3333"];
+  MB9 -> P02 [label="C-LAYER: grounding viability layer", style=dashed, color="#CC3333"];
+  P27 -> MB10 [label="successor-safe step", style=dashed, color="#1F77B4"];
+  MB10 -> P30 [label="true-harm bound alongside Risk ≤ δ (not part of standardBridges)", style=dashed, color="#1F77B4"];
 
   // Bridge gaps into structure
   MB1 -> P05 [label="missing C-UAD-SOUND", style=dashed, color="#CC3333"];

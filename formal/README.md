@@ -23,18 +23,22 @@ and makes one distinction explicit and machine-checked:
 * **Proved in Lean** — *if* these predicates and inequalities hold, *then* the
   certification conclusion follows.
 * **Assumed bridge** (`axiom`) — real systems satisfy these predicates under
-  these measurement procedures. These are the nine `MB1`–`MB9` bridges plus the
+  these measurement procedures. These are the nine `MB1`–`MB9` bridges packaged
+  in `Core.BridgeAssumptions`, a tenth bridge `MB10` (successor forgeability;
+  declared in `AlignmentProofSpine.Forgeability` and threaded explicitly rather
+  than packaged, since it needs the numeric risk leaf), plus the
   model-selection convention `S07`. They are **never hidden** inside definitions.
   Each bridge is mapped to the canonical open problem of the field (IRL
   non-identifiability, ELK, off-switch anti-naturality, ontology identification,
-  obfuscated arguments, spec coverage, …) in the manuscript appendix
+  obfuscated arguments, spec coverage, deceptive alignment / measurement
+  gaming, …) in the manuscript appendix
   *Bridges and the Field: A Crosswalk* (`appendices/appB-bridge-crosswalk.tex`).
 
 **Toy vs. target strength.** The current spine is deliberately compact. Many
 counterexamples are finite `Bool` separations (one predicate defined as `True`,
 another as equality); several “theorems” are definitional; abstract quantities
 use integer proxies. The strengthening roadmap lives in `metadata/TODO.md`
-(§ Lean proof spine — **chapter ↔ Lean mapping gaps**). Bridges `MB1`–`MB9` are
+(§ Lean proof spine — **chapter ↔ Lean mapping gaps**). Bridges `MB1`–`MB10` are
 **out of scope** for Lean completion (empirical / philosophical imports); in-scope
 work is aligning **drafted chapter formalism** to spine structure.
 
@@ -113,6 +117,12 @@ The bridge path now splits socio-technical selection into `MB6a`/`MB6b`
 measurement into `MB7a`–`MB7d`, with `MB7d` covering inferential-UAD detector validity.
 `MB9` is the grounding-certificate bridge: it turns a conservative value-correction
 abstraction certificate into the abstract `GroundingViable` layer.
+`MB10` (`AlignmentProofSpine/Forgeability.lean`) is a tenth bridge, not part of
+`BridgeAssumptions`: `SuccessorSafe` (all seven ch48 conserved properties) plus a
+bounded measured risk does not, on its own, bound a successor's true harm — a
+finite counterexample (`forgeability_gap`) makes that concrete — so `MB10` names
+the missing condition (the conserved-property audit channel is adversarially
+verifiable up to the successor's capability) rather than leaving it implicit.
 
 **Notation.** `ValueUpdateOperator` (`U_H`), `SystemUpdateOperator` (`U_S`),
 scalar `CCI` (numeric risk-spine projection), vector/status `CCICertificate`,
@@ -137,11 +147,13 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared-domain special-case / projection theorems with explicit interface conditions, non-converse separations, shared status ledger, finite Mathlib-backed helpers (`Finite/MDP`, `Finite/Probability`, `Finite/PMF`, `Finite/Weights`, `Finite/Reachability`, `Finite/Contraction`, `Finite/TraceBIQ`), cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization. Recent finite derivations include assistance-belief defer optimality, finite-horizon AUP attainable-utility preservation, PMF quantilizer support soundness, quantilizer base-rate fragments, trace-computed vector B-IQ / output-capability appearance bounds with a tight information-shaped ceiling `⌈log₂ min(m,|𝒜|)⌉` (no channel-count factor, alphabet clip `|𝒜|` not `|𝒜|²`), attended-harm / extinction certificates, and a concentration bridge with tight worst-case fallback for supplied blanket partitions. Debate/ELK remain later targets for native protocol/reporter theorem matching. | crosswalk appendix |
 | `AlignmentProofSpine/FieldSubsumptions.lean` | compatibility re-export for the field-agenda headline theorem names | crosswalk appendix |
 | `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, **`SuccessorMeasurandChain`**, risk bound propagation; ch48 audit links are the explicit hypothesis record `SuccessorAuditLinks` (no global linking axioms), and safe chains reduce to measurand chains via `SuccessorSafeChain.toMeasurandChain` | 28–31 |
+| `AlignmentProofSpine/Forgeability.lean` | ch08/ch31/ch48 successor-forgeability gap made a checked finite counterexample (`forgeability_gap`); bridge `MB10` (conserved-property signature not forged), declared here rather than in `Core.BridgeAssumptions` because it needs the numeric risk leaf, threaded explicitly like `SuccessorAuditLinks`; `true_harm_bound_of_successor_safe_step` shows what `MB10` buys on top of the existing risk-propagation machinery | 8, 31, 43, 48 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
 | `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, finite-support `P40`, direct/bridge-derived layer evidence records, grounding required by `LayeredAlignedDef`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_from_bridge_record`** and **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 37–38, 42, 48 |
+| `AlignmentProofSpine/WorkedInstance.lean` | single worked instance on **real committed data**: 26 literal rows of `experiments/embedded-simulation/tests/fixtures/sample_capture_theater.jsonl` (git `408444b`) packaged as a `DiscreteTrace`/`EnvBlanket`, `decide`d trace-computed control diversity/action capacity/tight ceiling, and a `CCICertificate` whose `manipulation` coordinate is *computed* from the real `judge_captured` column (not asserted) against independently-fixed `CCIThresholds` — the certificate honestly **fails** (`workedCert_fails`, `manipulation = 26 > maxManipulation = 1`), correctly refusing to certify a permanently-captured-judge trace rather than manufacturing a `NumericRiskLeaf`/`Risk` bound; see the module's own docstring for the earlier (fixed) mistranscription-plus-reverse-engineered-thresholds version this replaced | 11, 26, 43, 46 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
-| `scripts/check_axiom_budget.py` + `axiom-ledger.json` | tooling, not a proof module: mechanically diffs `#print axioms` on 13 headline theorems against the checked-in ledger and generates Appendix G's axiom-budget table (`metadata/axiom-budget-index.tex`) | appi:sec:axiom-budget |
+| `scripts/check_axiom_budget.py` + `axiom-ledger.json` | tooling, not a proof module: mechanically diffs `#print axioms` on 16 headline theorems against the checked-in ledger and generates Appendix G's axiom-budget table (`metadata/axiom-budget-index.tex`) | appi:sec:axiom-budget |
 
 ## Three kinds of result (for the book)
 
@@ -160,10 +172,11 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
   `debate_truth_not_correction_preservation`,
   `amplification_not_correction_contraction`,
   `latent_readout_not_correction_uptake`,
-  `syntactic_tiling_not_import_preserving`, `P25`, `P26`, `P31`, `P37`, `P41`,
-  `P42`, `P44`).
+  `syntactic_tiling_not_import_preserving`, `forgeability_gap`, `P25`, `P26`,
+  `P31`, `P37`, `P41`, `P42`, `P44`).
 * **bridge** — an empirical or philosophical condition supplied by measurement,
-  governance, or future theory (`MB1`–`MB9`, declared as `axiom`).
+  governance, or future theory (`MB1`–`MB10`, declared as `axiom`; `MB1`–`MB9`
+  packaged in `BridgeAssumptions`, `MB10` threaded explicitly).
 * **imported field theorem** — a source-cited external result or protocol
   assumption (`Field.Imported`) used to state what the external agenda proves
   under its own assumptions. These are distinct from `MB*` book bridges.
