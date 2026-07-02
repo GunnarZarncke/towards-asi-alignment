@@ -35,3 +35,4 @@ Continuation of the site-publication session: GitHub Pages deploys kept failing;
 - `db18093` — Switch Pages deploy from Deployment API to gh-pages branch push.
 - `74a723b` — Update About publications: two LessWrong posts, LHCV v2 as sublink.
 - `e528e45` — Mark inferential-coupling detection as a gem in book and site.
+- `5e0ffd3` — Host book PDF on the site for in-browser viewing.
