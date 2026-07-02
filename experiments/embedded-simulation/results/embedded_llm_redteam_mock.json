@@ -10,7 +10,8 @@
     11
   ],
   "instrumentation": "medium_handles",
-  "runtime_seconds": 13.41,
+  "planner_note": "Mock planner (`llm_mock`) mirrors the hand-written `full_redteam` patch logic step-for-step; its false-pass rate is not independent evidence of an LLM attacker's capability. Use --llm-live for that claim.",
+  "runtime_seconds": 6.31,
   "llm_false_pass_rate": 0.0,
   "llm_false_pass_count": 0,
   "llm_mean_in_sim_correct": 1.0,
@@ -32,9 +33,9 @@
       "false_pass": false,
       "outer_certifies": true,
       "in_sim_correct": true,
-      "safety_decision": "reduce",
-      "cci_status": "belowThreshold",
-      "failed_bridge": "none"
+      "safety_decision": "invalid_certificate",
+      "cci_status": "capturedInvalid",
+      "failed_bridge": "MB4"
     },
     {
       "bridge": "MB9",
@@ -52,7 +53,7 @@
       "false_pass": false,
       "outer_certifies": true,
       "in_sim_correct": true,
-      "safety_decision": "reduce",
+      "safety_decision": "invalid_certificate",
       "cci_status": "belowThreshold",
       "failed_bridge": "instrument_capture"
     }

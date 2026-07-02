@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
+from embedded_sim.progress import configure_progress_logging, progress, suite_phase  # noqa: E402
 from embedded_sim.batch import (  # noqa: E402
     run_access_tier_curve,
     run_certification_capacity_curve,
@@ -78,10 +79,11 @@ def _md_curve(payload: dict) -> str:
             "## Interpretation",
             "",
             f"- {payload['interpretation']['none_belowThreshold']}",
-            "",
-            f"Runtime: {payload['runtime_seconds']}s",
         ]
     )
+    if note := payload.get("monotonicity_note"):
+        lines.append(f"- ⚠ {note}")
+    lines.extend(["", f"Runtime: {payload['runtime_seconds']}s"])
     return "\n".join(lines) + "\n"
 
 
@@ -101,6 +103,8 @@ def _md_matrix(payload: dict) -> str:
     for bridge, levels in payload["bridge_level_correct"].items():
         cells = " | ".join("✓" if levels.get(l, 0) else "✗" for l in payload["correct_rate_by_level"])
         lines.append(f"| {bridge} | {cells} |")
+    if note := payload.get("monotonicity_note"):
+        lines.extend(["", f"⚠ {note}"])
     lines.extend(
         [
             "",
@@ -127,6 +131,8 @@ def _md_frozen(payload: dict) -> str:
         lines.extend(["", "## capture_mild by level", ""])
         for level, rate in mild.items():
             lines.append(f"- {level}: {rate:.2%}")
+    if note := payload.get("monotonicity_note"):
+        lines.extend(["", f"⚠ {note}"])
     lines.append(f"\nOverall in-sim correct: {payload.get('in_sim_correct_rate', 0):.2%}")
     lines.append(f"Runtime: {payload['runtime_seconds']}s")
     return "\n".join(lines) + "\n"
@@ -149,7 +155,9 @@ def _md_battery(payload: dict) -> str:
         "# Embedded red-team battery",
         "",
         f"T={payload['T']} runs={payload['n_runs']}",
-        f"**False pass rate: {payload['false_pass_rate']:.2%}** ({payload['false_pass_count']})",
+        f"**Raw false-pass rate: {payload['false_pass_rate']:.2%}** "
+        f"({payload['false_pass_count']}) — includes unattacked auditor error; "
+        "see baseline-adjusted section below for attack-attributable rate",
         "",
         "## By strategy",
         "",
@@ -178,6 +186,35 @@ def _md_battery(payload: dict) -> str:
                 f"(conditional on pass: {bd['false_pass_conditional_on_pass']:.2%})",
             ]
         )
+        if crux.get("capture_only_scenarios"):
+            lines.append(f"- ⚠ {crux['capture_only_scenarios_note']}")
+    if ba := payload.get("baseline_adjusted"):
+        lines.extend(
+            [
+                "",
+                "## Baseline-adjusted false-pass (honest attribution)",
+                "",
+                f"_{ba['note']}_",
+                "",
+            ]
+        )
+        for level, rate in ba["baseline_false_pass_rate_by_level"].items():
+            lines.append(f"- baseline (`{ba['baseline_strategy']}`) @ {level}: {rate:.2%}")
+        lines.append("")
+        lines.append(
+            f"**Attack-attributable false-pass rate (baseline-subtracted, overall): "
+            f"{ba['attack_attributable_false_pass_rate_overall']:.2%}**"
+        )
+        lines.append("")
+        for strategy, stats in sorted(
+            ba["attack_attributable_by_strategy"].items(),
+            key=lambda kv: kv[1]["attack_attributable_false_pass_rate"],
+            reverse=True,
+        ):
+            lines.append(
+                f"- {strategy}: attack-attributable="
+                f"{stats['attack_attributable_false_pass_rate']:.2%}"
+            )
     if matrix := payload.get("summary_by_strategy_handle"):
         lines.extend(["", "## Strategy × Handle Type", ""])
         for _key, stats in matrix.items():
@@ -207,6 +244,8 @@ def _md_access_tier_curve(payload: dict) -> str:
             f"{len(row['operation_handles'])} | {recall_s} | "
             f"{row['false_pass_rate']:.2%} | {row['cci_pass_rate']:.2%} |"
         )
+    if payload.get("capture_only_scenarios"):
+        lines.extend(["", f"⚠ {payload['scenario_class_note']}"])
     lines.append(f"\nRuntime: {payload['runtime_seconds']}s")
     return "\n".join(lines) + "\n"
 
@@ -227,6 +266,10 @@ def _md_certification_capacity_curve(payload: dict) -> str:
             f"{row['max_certifiable_control_mean']:.3f} | "
             f"{row['satisfies_numeric_leaf_rate']:.2%} |"
         )
+    if note := payload.get("small_n_note"):
+        lines.extend(["", f"⚠ {note}"])
+    for plateau in payload.get("tier_plateau_notes") or []:
+        lines.append(f"⚠ {plateau}")
     lines.append(f"\nRuntime: {payload['runtime_seconds']}s")
     return "\n".join(lines) + "\n"
 
@@ -238,10 +281,16 @@ def _md_llm(payload: dict) -> str:
         f"Planner: {payload.get('planner')} T={payload.get('T')}",
         f"**False pass rate: {payload.get('llm_false_pass_rate', 0):.2%}**",
         f"In-sim correct: {payload.get('llm_mean_in_sim_correct', 0):.2%}",
-        "",
-        "| Bridge | Seed | False pass | Decision | CCI |",
-        "| --- | --- | --- | --- | --- |",
     ]
+    if note := payload.get("planner_note"):
+        lines.append(f"⚠ {note}")
+    lines.append("")
+    lines.extend(
+        [
+            "| Bridge | Seed | False pass | Decision | CCI |",
+            "| --- | --- | --- | --- | --- |",
+        ]
+    )
     for run in payload.get("runs", []):
         lines.append(
             f"| {run['bridge']} | {run['seed']} | {run['false_pass']} | "
@@ -434,12 +483,17 @@ def main() -> None:
         args.report = True
 
     LOGS.mkdir(parents=True, exist_ok=True)
+    configure_progress_logging(LOGS)
     stamp = datetime.now(timezone.utc).isoformat()
+    progress(
+        f"run_suite start stamp={stamp} T={args.T} substrate={args.substrate} "
+        f"uad_mode={args.uad_mode} smoke={args.smoke} full_frozen={args.full_frozen}"
+    )
 
     if args.uad_compare:
         all_metrics: dict[str, dict] = {}
         for mode in ("full", "fake"):
-            print(f"\n=== UAD mode: {mode} ===")
+            progress(f"=== UAD mode: {mode} ===")
             set_uad_mode(mode)  # type: ignore[arg-type]
             suffix = uad_artifact_suffix(mode)  # type: ignore[arg-type]
             artifacts, metrics = _execute_suite(args, stamp, artifact_suffix=suffix, uad_mode=mode)
@@ -450,10 +504,10 @@ def main() -> None:
                 _build_overall_summary(artifacts, stamp, args, metrics, uad_mode=mode),
                 encoding="utf-8",
             )
-            print(f"Wrote {summary_path}")
+            progress(f"wrote {summary_path}")
         compare_path = RESULTS / "embedded_uad_compare.md"
         compare_path.write_text(_build_uad_compare(stamp, args, all_metrics), encoding="utf-8")
-        print(f"Wrote {compare_path}")
+        progress(f"wrote {compare_path}")
         return
 
     set_uad_mode(args.uad_mode)  # type: ignore[arg-type]
@@ -465,8 +519,8 @@ def main() -> None:
         _build_overall_summary(artifacts, stamp, args, metrics, uad_mode=args.uad_mode),
         encoding="utf-8",
     )
-    print(f"Wrote {summary_path}")
-    print("Artifacts:", *artifacts, sep="\n  ")
+    progress(f"wrote {summary_path}")
+    progress("artifacts:\n  " + "\n  ".join(artifacts))
 
 
 def _execute_suite(
@@ -478,61 +532,86 @@ def _execute_suite(
 ) -> tuple[list[str], dict[str, dict]]:
     artifacts: list[str] = []
     metrics: dict[str, dict] = {}
+    planned = [
+        name
+        for flag, name in (
+            (args.curve, "instrumentation_curve"),
+            (args.access_tier_curve, "access_tier_curve"),
+            (args.certification_curve, "certification_capacity_curve"),
+            (args.instrumentation_matrix, "instrumentation_matrix"),
+            (args.frozen, "frozen_validation"),
+            (args.sweep, "parameter_sweep"),
+            (args.battery, "redteam_battery"),
+            (args.report, "main_report"),
+            (args.llm, "llm_redteam"),
+        )
+        if flag
+    ]
+    progress(f"suite plan ({len(planned)} stages): {', '.join(planned)}")
 
     if args.curve:
-        calib = [1] if args.smoke else list(range(1, 9))
-        test = [11] if args.smoke else list(range(11, 21))
-        payload = run_instrumentation_curve(
-            calibration_seeds=calib,
-            test_seeds=test,
-            T=args.T,
-            substrate=args.substrate,
-            bootstrap=not args.smoke,
-            n_boot=50 if args.smoke else 200,
-        )
+        with suite_phase("instrumentation_curve"):
+            calib = [1] if args.smoke else list(range(1, 9))
+            test = [11] if args.smoke else list(range(11, 21))
+            payload = run_instrumentation_curve(
+                calibration_seeds=calib,
+                test_seeds=test,
+                T=args.T,
+                substrate=args.substrate,
+                bootstrap=not args.smoke,
+                n_boot=50 if args.smoke else 200,
+            )
         payload["uad_mode"] = uad_mode
         metrics["instrumentation_curve"] = {
             "min_certifiable": payload["minimum_certifiable_level"],
             "min_certifiable_full": payload["minimum_certifiable_level_full_held_out"],
             "runtime_seconds": payload["runtime_seconds"],
+            "monotonicity_note": payload.get("monotonicity_note"),
         }
         j, m = _write_json_md(
             payload, "embedded_instrumentation_curve", _md_curve, suffix=artifact_suffix
         )
         artifacts.extend([str(j), str(m)])
-        print(
-            f"instrumentation_curve: min_certifiable={payload['minimum_certifiable_level']} "
+        progress(
+            f"wrote {j.name} min_certifiable={payload['minimum_certifiable_level']} "
             f"full={payload['minimum_certifiable_level_full_held_out']}"
         )
 
     if args.access_tier_curve:
-        seeds = [11] if args.smoke else [11, 12, 13]
-        payload = run_access_tier_curve(
-            seeds=seeds,
-            T=args.T,
-            substrate=args.substrate,
-            redteam_strategy="full_redteam",
-        )
+        with suite_phase("access_tier_curve"):
+            seeds = [11] if args.smoke else [11, 12, 13]
+            payload = run_access_tier_curve(
+                seeds=seeds,
+                T=args.T,
+                substrate=args.substrate,
+                redteam_strategy="full_redteam",
+            )
         payload["uad_mode"] = uad_mode
         metrics["access_tier_curve"] = {
             "runtime_seconds": payload["runtime_seconds"],
             "tiers": payload["tiers"],
+            "capture_only_scenarios": payload.get("capture_only_scenarios"),
+            "scenario_class_note": payload.get("scenario_class_note"),
         }
         j, m = _write_json_md(
             payload, "embedded_access_tier_curve", _md_access_tier_curve, suffix=artifact_suffix
         )
         artifacts.extend([str(j), str(m)])
+        progress(f"wrote {j.name}")
 
     if args.certification_curve:
-        seeds = [11] if args.smoke else [11, 12]
-        payload = run_certification_capacity_curve(
-            seeds=seeds,
-            substrate=args.substrate,
-        )
+        with suite_phase("certification_capacity_curve"):
+            seeds = [11] if args.smoke else [11, 12]
+            payload = run_certification_capacity_curve(
+                seeds=seeds,
+                substrate=args.substrate,
+            )
         payload["uad_mode"] = uad_mode
         metrics["certification_capacity_curve"] = {
             "runtime_seconds": payload["runtime_seconds"],
             "points": payload["points"],
+            "tier_plateau_notes": payload.get("tier_plateau_notes") or [],
+            "small_n_note": payload.get("small_n_note"),
         }
         j, m = _write_json_md(
             payload,
@@ -541,46 +620,57 @@ def _execute_suite(
             suffix=artifact_suffix,
         )
         artifacts.extend([str(j), str(m)])
+        progress(f"wrote {j.name}")
 
     if args.instrumentation_matrix:
-        payload = run_instrumentation_matrix(seed=args.seed, T=args.T, substrate=args.substrate)
+        with suite_phase("instrumentation_matrix"):
+            payload = run_instrumentation_matrix(seed=args.seed, T=args.T, substrate=args.substrate)
         payload["uad_mode"] = uad_mode
         metrics["instrumentation_matrix"] = {
             "min_certifiable": payload["minimum_certifiable_level"],
             "in_sim_correct_rate": payload["in_sim_correct_rate"],
             "runtime_seconds": payload["runtime_seconds"],
+            "monotonicity_note": payload.get("monotonicity_note"),
         }
         j, m = _write_json_md(
             payload, "embedded_instrumentation_matrix", _md_matrix, suffix=artifact_suffix
         )
         artifacts.extend([str(j), str(m)])
-        print(f"instrumentation_matrix: min_certifiable={payload['minimum_certifiable_level']}")
+        progress(
+            f"wrote {j.name} min_certifiable={payload['minimum_certifiable_level']}"
+        )
 
     if args.frozen:
-        seeds = [21, 22] if args.smoke else list(range(21, 31))
-        payload = run_frozen_validation(
-            seeds=seeds,
-            T=args.T,
-            instrumentation=args.instrumentation,  # type: ignore[arg-type]
-            all_levels=args.full_frozen,
-            substrate=args.substrate,
-            bootstrap=not args.smoke,
-            n_boot=50 if args.smoke else 200,
-        )
+        with suite_phase("frozen_validation"):
+            seeds = [21, 22] if args.smoke else list(range(21, 31))
+            payload = run_frozen_validation(
+                seeds=seeds,
+                T=args.T,
+                instrumentation=args.instrumentation,  # type: ignore[arg-type]
+                all_levels=args.full_frozen,
+                substrate=args.substrate,
+                bootstrap=not args.smoke,
+                n_boot=50 if args.smoke else 200,
+            )
         payload["uad_mode"] = uad_mode
         metrics["frozen_validation"] = {
             "seeds": seeds,
             "in_sim_correct_rate": payload["in_sim_correct_rate"],
             "runtime_seconds": payload["runtime_seconds"],
             "all_levels": args.full_frozen,
+            "monotonicity_note": payload.get("monotonicity_note"),
         }
         j, m = _write_json_md(
             payload, "embedded_frozen_validation", _md_frozen, suffix=artifact_suffix
         )
         artifacts.extend([str(j), str(m)])
+        progress(f"wrote {j.name}")
 
     if args.sweep:
-        payload = run_parameter_sweep(seed=args.seed, instrumentation=args.instrumentation, substrate=args.substrate)
+        with suite_phase("parameter_sweep"):
+            payload = run_parameter_sweep(
+                seed=args.seed, instrumentation=args.instrumentation, substrate=args.substrate
+            )
         payload["uad_mode"] = uad_mode
         metrics["parameter_sweep"] = {
             "n_runs": payload["n_runs"],
@@ -591,20 +681,22 @@ def _execute_suite(
             payload, "embedded_parameter_sweep", _md_sweep, suffix=artifact_suffix
         )
         artifacts.extend([str(j), str(m)])
+        progress(f"wrote {j.name}")
 
     if args.battery:
-        seeds = [11] if args.smoke else list(range(11, 21))
-        bridges = ["MB4", "MB1", "MB9"] if args.smoke else None
-        strategies = ["none", "full_redteam"] if args.smoke else None
-        levels = ["medium_handles"] if args.smoke else None
-        payload = run_redteam_battery(
-            bridges=bridges,
-            seeds=seeds,
-            T=args.T,
-            strategies=strategies,
-            instrumentation_levels=levels,
-            substrate=args.substrate,
-        )
+        with suite_phase("redteam_battery"):
+            seeds = [11] if args.smoke else list(range(11, 21))
+            bridges = ["MB4", "MB1", "MB9"] if args.smoke else None
+            strategies = ["none", "full_redteam"] if args.smoke else None
+            levels = ["medium_handles"] if args.smoke else None
+            payload = run_redteam_battery(
+                bridges=bridges,
+                seeds=seeds,
+                T=args.T,
+                strategies=strategies,
+                instrumentation_levels=levels,
+                substrate=args.substrate,
+            )
         payload["uad_mode"] = uad_mode
         uad_summary = _uad_summary_from_runs(payload["runs"])
         metrics["redteam_battery"] = {
@@ -617,25 +709,34 @@ def _execute_suite(
             "n_runs": payload["n_runs"],
             "runtime_seconds": payload["runtime_seconds"],
             "by_strategy": payload["summary_by_strategy"],
+            "baseline_adjusted": payload.get("baseline_adjusted"),
+            "capture_only_scenarios": payload.get("crux_metrics", {}).get(
+                "capture_only_scenarios"
+            ),
             **uad_summary,
         }
         j, m = _write_json_md(
             payload, "embedded_redteam_battery", _md_battery, suffix=artifact_suffix
         )
         artifacts.extend([str(j), str(m)])
+        progress(
+            f"wrote {j.name} false_pass_rate={payload['false_pass_rate']:.1%} "
+            f"n_runs={payload['n_runs']}"
+        )
 
     if args.report:
         from embedded_sim.pipeline import run_all_mbs
 
-        t0 = time.perf_counter()
-        results = run_all_mbs(
-            seed=args.seed,
-            T=args.T,
-            instrumentation=args.instrumentation,  # type: ignore[arg-type]
-            redteam_strategy="full_redteam",
-            substrate=args.substrate,  # type: ignore[arg-type]
-        )
-        wall = time.perf_counter() - t0
+        with suite_phase("main_report"):
+            t_report = time.perf_counter()
+            results = run_all_mbs(
+                seed=args.seed,
+                T=args.T,
+                instrumentation=args.instrumentation,  # type: ignore[arg-type]
+                redteam_strategy="full_redteam",
+                substrate=args.substrate,  # type: ignore[arg-type]
+            )
+            wall = time.perf_counter() - t_report
         report_json = RESULTS / f"embedded_sim_report{artifact_suffix}.json"
         report_md = RESULTS / f"embedded_sim_report{artifact_suffix}.md"
         _write_report(
@@ -665,26 +766,29 @@ def _execute_suite(
             "runtime_seconds": round(wall, 2),
             **uad_summary,
         }
+        progress(f"wrote {report_json.name} false_pass={metrics['main_report']['false_pass_count']}")
 
     if args.llm:
         from embedded_llm.llm_runner import run_llm_suite
 
         bridges = ["MB4", "MB9"] if args.smoke else None
         seeds = [11] if args.smoke else [11, 12, 13]
-        payload = run_llm_suite(
-            bridges=bridges,
-            seeds=seeds,
-            T=args.T,
-            instrumentation=args.instrumentation,  # type: ignore[arg-type]
-            use_mock=not args.llm_live,
-            model=args.llm_model,
-        )
+        with suite_phase("llm_redteam"):
+            payload = run_llm_suite(
+                bridges=bridges,
+                seeds=seeds,
+                T=args.T,
+                instrumentation=args.instrumentation,  # type: ignore[arg-type]
+                use_mock=not args.llm_live,
+                model=args.llm_model,
+            )
         metrics["llm_redteam"] = {
             "planner": payload["planner"],
             "false_pass_rate": payload["llm_false_pass_rate"],
             "in_sim_correct_rate": payload["llm_mean_in_sim_correct"],
             "runtime_seconds": payload["runtime_seconds"],
             "live": args.llm_live,
+            "planner_note": payload.get("planner_note"),
         }
         suffix = "live" if args.llm_live else "mock"
         j, m = _write_json_md(
@@ -694,6 +798,7 @@ def _execute_suite(
             suffix=artifact_suffix,
         )
         artifacts.extend([str(j), str(m)])
+        progress(f"wrote {j.name} llm_false_pass_rate={payload['llm_false_pass_rate']:.1%}")
 
     return artifacts, metrics
 
@@ -810,29 +915,73 @@ def _build_overall_summary(
                 f"- **Instrumentation curve:** min certifiable `{m['min_certifiable']}` "
                 f"(full held-out `{m['min_certifiable_full']}`); {m['runtime_seconds']}s"
             )
+            if note := m.get("monotonicity_note"):
+                lines.append(f"  - ⚠ {note}")
         if m := metrics.get("instrumentation_matrix"):
             lines.append(
                 f"- **Instrumentation matrix:** min certifiable `{m['min_certifiable']}`; "
                 f"in-sim correct {m['in_sim_correct_rate']:.1%} ({m['runtime_seconds']}s)"
             )
+            if note := m.get("monotonicity_note"):
+                lines.append(f"  - ⚠ {note}")
         if m := metrics.get("frozen_validation"):
             lines.append(
                 f"- **Frozen validation** (seeds {m['seeds']}): "
                 f"in-sim correct {m['in_sim_correct_rate']:.1%} ({m['runtime_seconds']}s)"
             )
+            if note := m.get("monotonicity_note"):
+                lines.append(f"  - ⚠ {note}")
         if m := metrics.get("parameter_sweep"):
             lines.append(
                 f"- **Parameter sweep:** {m['n_runs']} runs; false-pass {m['false_pass_rate']:.1%}"
             )
         if m := metrics.get("redteam_battery"):
             lines.append(
-                f"- **Red-team battery:** false-pass **{m['false_pass_rate']:.1%}** "
+                f"- **Red-team battery:** raw false-pass {m['false_pass_rate']:.1%} "
                 f"({m['false_pass_count']}/{m['n_runs']}) in {m['runtime_seconds']}s"
             )
-            worst = max(m["by_strategy"].items(), key=lambda x: x[1]["false_pass_rate"])
-            lines.append(
-                f"  - Worst strategy: `{worst[0]}` at {worst[1]['false_pass_rate']:.1%} false-pass"
-            )
+            if ba := m.get("baseline_adjusted"):
+                base_str = ", ".join(
+                    f"{lvl} {rate:.1%}"
+                    for lvl, rate in ba["baseline_false_pass_rate_by_level"].items()
+                )
+                lines.append(
+                    f"  - Unattacked-auditor baseline (`{ba['baseline_strategy']}`) "
+                    f"false-pass by level: {base_str}"
+                )
+                lines.append(
+                    "  - **Attack-attributable false-pass (baseline-subtracted): "
+                    f"{ba['attack_attributable_false_pass_rate_overall']:.1%}**"
+                )
+                worst = max(
+                    ba["attack_attributable_by_strategy"].items(),
+                    key=lambda x: x[1]["attack_attributable_false_pass_rate"],
+                )
+                lines.append(
+                    f"  - Worst attack-attributable strategy: `{worst[0]}` at "
+                    f"{worst[1]['attack_attributable_false_pass_rate']:.1%}"
+                )
+            else:
+                worst = max(m["by_strategy"].items(), key=lambda x: x[1]["false_pass_rate"])
+                lines.append(
+                    f"  - Worst strategy: `{worst[0]}` at {worst[1]['false_pass_rate']:.1%} false-pass"
+                )
+            if m.get("capture_only_scenarios"):
+                lines.append(
+                    "  - ⚠ battery bridges are all violation/capture scenarios; "
+                    "false-pass-conditional-on-pass is structurally near 100% "
+                    "and not independently informative (see NEGATIVE_RESULTS.md N-11)"
+                )
+        if m := metrics.get("access_tier_curve"):
+            lines.append(f"- **Access-tier curve:** {m['runtime_seconds']}s")
+            if m.get("capture_only_scenarios"):
+                lines.append(f"  - ⚠ {m['scenario_class_note']}")
+        if m := metrics.get("certification_capacity_curve"):
+            lines.append(f"- **Certification-capacity curve:** {m['runtime_seconds']}s")
+            if note := m.get("small_n_note"):
+                lines.append(f"  - ⚠ {note}")
+            for plateau in m.get("tier_plateau_notes") or []:
+                lines.append(f"  - ⚠ {plateau}")
         if m := metrics.get("main_report"):
             lines.append(
                 f"- **Main report** (full_redteam, {m['n_episodes']} episodes): "
@@ -850,6 +999,8 @@ def _build_overall_summary(
                 f"- **LLM red-team** ({mode}, `{m['planner']}`): false-pass "
                 f"{m['false_pass_rate']:.1%}; in-sim correct {m['in_sim_correct_rate']:.1%}"
             )
+            if note := m.get("planner_note"):
+                lines.append(f"  - ⚠ {note}")
 
     lines.extend(
         [

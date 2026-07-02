@@ -15,14 +15,17 @@ from .audit_core.schemas import (
     INSTRUMENTATION_LEVELS,
     InstrumentationLevel,
 )
+from .progress import progress, progress_tick
 from .methodology import (
     CERTIFICATION_RATE_THRESHOLD,
     CURVE_INTERPRETATION,
     DEFAULT_CALIBRATION_SEEDS,
     DEFAULT_TEST_SEEDS,
     FROZEN_VALIDATION_SEEDS,
+    baseline_adjusted_battery_metrics,
     capture_mild_rate_by_level,
     frozen_payload_header,
+    instrumentation_monotonicity_note,
     min_certifiable_level,
     overall_correct_rate,
     redteam_crux_metrics,
@@ -135,7 +138,7 @@ def run_instrumentation_curve(
     for level in INSTRUMENTATION_LEVELS:
         calib_runs: list[dict[str, Any]] = []
         test_runs: list[dict[str, Any]] = []
-        print(f"instrumentation_curve: starting level={level}")
+        progress(f"instrumentation_curve: starting level={level}")
 
         for scenario in CALIBRATION_SCENARIOS:
             for seed in calibration_seeds:
@@ -149,9 +152,9 @@ def run_instrumentation_curve(
                         substrate=substrate,
                     )
                 )
-            print(
-                f"  calib {level}/{scenario}: runs={len(calib_runs)} "
-                f"correct={overall_correct_rate(calib_runs):.2f}"
+            progress(
+                f"instrumentation_curve calib {level}/{scenario}: "
+                f"runs={len(calib_runs)} correct={overall_correct_rate(calib_runs):.2f}"
             )
 
         for scenario in CALIBRATION_SCENARIOS + HELD_OUT_SCENARIOS:
@@ -166,9 +169,9 @@ def run_instrumentation_curve(
                         substrate=substrate,
                     )
                 )
-            print(
-                f"  test {level}/{scenario}: runs={len(test_runs)} "
-                f"correct={overall_correct_rate(test_runs):.2f}"
+            progress(
+                f"instrumentation_curve test {level}/{scenario}: "
+                f"runs={len(test_runs)} correct={overall_correct_rate(test_runs):.2f}"
             )
 
         level_summary_calib = summarize_runs(calib_runs, bootstrap=bootstrap, n_boot=n_boot)
@@ -189,7 +192,7 @@ def run_instrumentation_curve(
                 test_runs, field="cci_status_correct", n_boot=n_boot
             )
         stats = level_results[level]
-        print(
+        progress(
             f"instrumentation_curve: finished {level} "
             f"calib={stats['cci_correct_rate_calibration']:.2f} "  # type: ignore[index]
             f"test={stats['cci_correct_rate_test']:.2f} "  # type: ignore[index]
@@ -200,6 +203,11 @@ def run_instrumentation_curve(
         level_results, "cci_correct_rate_test_calib_scenarios"
     )
     min_full = min_certifiable_level(level_results, "cci_correct_rate_test")
+    test_rates = {
+        level: stats["cci_correct_rate_test"]  # type: ignore[index]
+        for level, stats in level_results.items()
+    }
+    monotonicity_note = instrumentation_monotonicity_note(test_rates)
 
     return {
         "mode": "instrumentation_curve",
@@ -226,6 +234,7 @@ def run_instrumentation_curve(
         "minimum_certifiable_level_calibration": min_calib,
         "minimum_certifiable_level_full_held_out": min_full,
         "completed_levels": list(INSTRUMENTATION_LEVELS),
+        "monotonicity_note": monotonicity_note,
     }
 
 
@@ -235,7 +244,7 @@ def run_instrumentation_matrix(
     T: int = 800,
     substrate: str = "python",
     redteam_strategy: str = "none",
-    progress_every: int = 10,
+    progress_every: int = 0,
 ) -> dict[str, Any]:
     t0 = time.perf_counter()
     runs: list[dict[str, Any]] = []
@@ -243,6 +252,7 @@ def run_instrumentation_matrix(
 
     total = len(MB_SCENARIOS) * len(INSTRUMENTATION_LEVELS)
     n = 0
+    progress(f"instrumentation_matrix: starting {total} runs")
     for bridge, scenario, _desc in MB_SCENARIOS:
         matrix[bridge] = {}
         for level in INSTRUMENTATION_LEVELS:
@@ -259,8 +269,14 @@ def run_instrumentation_matrix(
             runs.append(row)
             matrix[bridge][level] = 1.0 if row["outer"]["in_sim_correct"] else 0.0
             n += 1
-            if n % progress_every == 0 or n == total:
-                print(f"instrumentation_matrix: [{n}/{total}] bridge={bridge} level={level}")
+            progress_tick(
+                "instrumentation_matrix",
+                n,
+                total,
+                t0=t0,
+                detail=f"bridge={bridge} level={level}",
+                every=progress_every,
+            )
 
     level_rates: dict[str, float] = {}
     for level in INSTRUMENTATION_LEVELS:
@@ -288,6 +304,7 @@ def run_instrumentation_matrix(
         "correct_rate_by_level": level_rates,
         "minimum_certifiable_level": min_certifiable,
         "interpretation": CURVE_INTERPRETATION,
+        "monotonicity_note": instrumentation_monotonicity_note(level_rates),
         **_summarize_episodes(runs),
         "runs": runs,
     }
@@ -315,6 +332,9 @@ def run_access_tier_curve(
     scenarios = ["selection_basin", "inferential_coupling", "capture_theater"]
     rows: list[dict[str, Any]] = []
     by_tier: list[dict[str, Any]] = []
+    total = len(tiers) * len(scenarios) * len(seeds)
+    done = 0
+    progress(f"access_tier_curve: starting {total} runs")
 
     for tier in tiers:
         level = ACCESS_TIER_LEVEL.get(tier, "strong_handles")
@@ -332,6 +352,14 @@ def run_access_tier_curve(
                 run["access_tier"] = tier
                 tier_runs.append(run)
                 rows.append(run)
+                done += 1
+                progress_tick(
+                    "access_tier_curve",
+                    done,
+                    total,
+                    t0=t0,
+                    detail=f"tier={tier} {scenario} seed={seed}",
+                )
         by_tier.append(
             {
                 "access_tier": tier,
@@ -359,18 +387,30 @@ def run_access_tier_curve(
             }
         )
 
-    return {
+    capture_only_scenarios = "honest" not in scenarios
+    payload: dict[str, Any] = {
         "mode": "access_tier_curve",
         "claim_strength": "access-tier degradation curve; tier 1 has no operation handles",
         "T": T,
         "seeds": seeds,
         "tiers": by_tier,
         "scenarios": scenarios,
+        "capture_only_scenarios": capture_only_scenarios,
         "redteam_strategy": redteam_strategy,
         "substrate": substrate,
         "runtime_seconds": round(time.perf_counter() - t0, 2),
         "runs": rows,
     }
+    if capture_only_scenarios:
+        payload["scenario_class_note"] = (
+            "All scenarios here are violation/capture types (no `honest` episode); "
+            "the correct verdict is 'reject' regardless of access tier, so this "
+            "curve cannot show certification lost to tier degradation — it can "
+            "only show that violations still get rejected at every tier. See "
+            "embedded_certification_capacity_curve.* (uses the honest scenario) "
+            "for the tier-dependent certification-capacity signal (N-11)."
+        )
+    return payload
 
 
 def run_certification_capacity_curve(
@@ -388,6 +428,9 @@ def run_certification_capacity_curve(
     points: list[dict[str, Any]] = []
     runs: list[dict[str, Any]] = []
     delta = 0.15
+    total = len(tiers) * len(probe_budgets) * len(seeds)
+    done = 0
+    progress(f"certification_capacity_curve: starting {total} runs")
 
     for tier in tiers:
         level = ACCESS_TIER_LEVEL.get(tier, "strong_handles")
@@ -407,6 +450,14 @@ def run_certification_capacity_curve(
                 run["probe_budget_target"] = budget
                 cell.append(run)
                 runs.append(run)
+                done += 1
+                progress_tick(
+                    "certification_capacity_curve",
+                    done,
+                    total,
+                    t0=t0,
+                    detail=f"tier={tier} budget={budget} seed={seed}",
+                )
             cci_vals = [
                 float(nr.get("cci", 0.0))
                 for r in cell
@@ -442,6 +493,25 @@ def run_certification_capacity_curve(
                 }
             )
 
+    tier_plateau_notes: list[str] = []
+    by_budget: dict[int, dict[int, dict[str, Any]]] = {}
+    for row in points:
+        by_budget.setdefault(row["probe_budget"], {})[row["access_tier"]] = row
+    for budget, by_tier_row in by_budget.items():
+        tier_ids = sorted(by_tier_row)
+        for a, b in zip(tier_ids, tier_ids[1:]):
+            ra, rb = by_tier_row[a], by_tier_row[b]
+            if (
+                abs(ra["cci_bits_mean"] - rb["cci_bits_mean"]) < 1e-9
+                and abs(ra["control_mean"] - rb["control_mean"]) < 1e-9
+            ):
+                tier_plateau_notes.append(
+                    f"tier {a} ({ra['instrumentation']}) and tier {b} "
+                    f"({rb['instrumentation']}) are byte-identical at "
+                    f"probe_budget={budget} — no measured capacity gain from "
+                    "the extra access tier at this point"
+                )
+
     return {
         "mode": "certification_capacity_curve",
         "claim_strength": "certifiable operational slack conditional on access tier and probe budget",
@@ -452,6 +522,13 @@ def run_certification_capacity_curve(
         "substrate": substrate,
         "runtime_seconds": round(time.perf_counter() - t0, 2),
         "points": points,
+        "tier_plateau_notes": tier_plateau_notes,
+        "small_n_note": (
+            f"seeds={seeds} (n={len(seeds)} per cell); per-cell means have no "
+            "bootstrap confidence interval and may be unstable at this sample size."
+            if len(seeds) < 3
+            else None
+        ),
         "runs": runs,
     }
 
@@ -475,6 +552,7 @@ def run_frozen_validation(
     scenarios = list(CALIBRATION_SCENARIOS) + list(HELD_OUT_SCENARIOS)
     total = len(levels) * len(scenarios) * len(seeds)
     done = 0
+    progress(f"frozen_validation: starting {total} runs (all_levels={all_levels})")
 
     for level in levels:
         for scenario in scenarios:
@@ -490,10 +568,13 @@ def run_frozen_validation(
                     )
                 )
                 done += 1
-            print(
-                f"frozen_validation [{done}/{total}] {level}/{scenario} "
-                f"correct={overall_correct_rate([r for r in runs if r['instrumentation']==level and r['scenario']==scenario]):.2f}"
-            )
+                progress_tick(
+                    "frozen_validation",
+                    done,
+                    total,
+                    t0=t0,
+                    detail=f"{level}/{scenario}/seed{seed}",
+                )
 
     by_level = {
         level: summarize_runs(
@@ -505,6 +586,10 @@ def run_frozen_validation(
     }
     capture_mild_by_level = {
         level: capture_mild_rate_by_level(runs, level) for level in levels
+    }
+    overall_rate_by_level = {
+        level: overall_correct_rate([r for r in runs if r["instrumentation"] == level])
+        for level in levels
     }
 
     payload: dict[str, Any] = {
@@ -519,10 +604,8 @@ def run_frozen_validation(
         "runtime_seconds": round(time.perf_counter() - t0, 2),
         "summary_by_level": by_level,
         "capture_mild_correct_rate_by_level": capture_mild_by_level,
-        "overall_correct_rate_by_level": {
-            level: overall_correct_rate([r for r in runs if r["instrumentation"] == level])
-            for level in levels
-        },
+        "overall_correct_rate_by_level": overall_rate_by_level,
+        "monotonicity_note": instrumentation_monotonicity_note(overall_rate_by_level),
         **_summarize_episodes(runs),
         "runs": runs,
     }
@@ -548,6 +631,9 @@ def run_parameter_sweep(
     keys = list(SWEEP_AXES.keys())
     grid = list(itertools.product(*(SWEEP_AXES[k] for k in keys)))
     runs: list[dict[str, Any]] = []
+    total = len(grid) * len(bridges)
+    done = 0
+    progress(f"parameter_sweep: starting {total} runs")
 
     for combo in grid:
         params = dict(zip(keys, combo, strict=True))
@@ -565,7 +651,14 @@ def run_parameter_sweep(
             row = episode_to_dict(ep)
             row["sweep_params"] = params
             runs.append(row)
-        print(f"sweep: T={T} done")
+            done += 1
+            progress_tick(
+                "parameter_sweep",
+                done,
+                total,
+                t0=t0,
+                detail=f"T={T} bridge={bridge}",
+            )
 
     return {
         "mode": "parameter_sweep",
@@ -587,7 +680,7 @@ def run_redteam_battery(
     strategies: list[str] | None = None,
     instrumentation_levels: list[InstrumentationLevel] | None = None,
     substrate: str = "python",
-    progress_every: int = 25,
+    progress_every: int = 0,
 ) -> dict[str, Any]:
     """Phase-1-style battery over embedded pipeline (hand-written strategies)."""
     t0 = time.perf_counter()
@@ -601,7 +694,7 @@ def run_redteam_battery(
     false_pass_count = 0
     n = 0
 
-    print(
+    progress(
         f"redteam_battery: starting {total} runs "
         f"(T={T}, {len(bridges)} bridges, {len(strategies)} strategies, {len(levels)} levels)"
     )
@@ -625,13 +718,17 @@ def run_redteam_battery(
                     if row["outer"]["false_pass"]:
                         false_pass_count += 1
                     n += 1
-                    if n == 1 or n == total or n % progress_every == 0:
-                        elapsed = time.perf_counter() - t0
-                        print(
-                            f"redteam_battery: [{n}/{total}] "
+                    progress_tick(
+                        "redteam_battery",
+                        n,
+                        total,
+                        t0=t0,
+                        detail=(
                             f"{level}/{strategy}/{bridge}/seed{seed} "
-                            f"false_pass={false_pass_count} elapsed={elapsed:.0f}s"
-                        )
+                            f"false_pass={false_pass_count}"
+                        ),
+                        every=progress_every,
+                    )
 
     by_strategy: dict[str, dict[str, float]] = {}
     for strategy in strategies:
@@ -675,12 +772,26 @@ def run_redteam_battery(
         }
 
     elapsed = time.perf_counter() - t0
-    print(
+    progress(
         f"redteam_battery: finished {total} runs in {elapsed:.1f}s, "
         f"false_passes={false_pass_count}"
     )
 
     crux = redteam_crux_metrics(runs)
+    capture_only_scenarios = "honest" not in {_bridge_scenario(b) for b in bridges}
+    crux["capture_only_scenarios"] = capture_only_scenarios
+    if capture_only_scenarios:
+        crux["capture_only_scenarios_note"] = (
+            "All battery bridges are violation/capture scenarios (no honest "
+            "baseline in this bridge set); every 'pass' decision is by "
+            "construction a false pass, so false_pass_conditional_on_pass "
+            "trends toward 100% whenever any pass attempt occurs and is not "
+            "independently informative (N-11)."
+        )
+
+    baseline_adjusted = baseline_adjusted_battery_metrics(
+        runs, strategies=strategies, levels=levels
+    )
 
     return {
         "mode": "redteam_battery",
@@ -696,6 +807,7 @@ def run_redteam_battery(
         "false_pass_count": false_pass_count,
         "false_pass_rate": false_pass_count / max(len(runs), 1),
         "crux_metrics": crux,
+        "baseline_adjusted": baseline_adjusted,
         "summary_by_strategy": by_strategy,
         "summary_by_strategy_handle": by_strategy_handle,
         "summary_by_instrumentation": by_level,

@@ -27,6 +27,7 @@
     "bearer_mismap",
     "legitimacy_theater",
     "successor_relabel",
+    "honest_successor",
     "instrument_capture",
     "inferential_coupling"
   ],
@@ -59,7 +60,7 @@
   "n_boot": 0,
   "substrate": "python",
   "redteam_strategy": "none",
-  "runtime_seconds": 489.2,
+  "runtime_seconds": 244.94,
   "interpretation": {
     "none_belowThreshold": "Passive mode always returns belowThreshold: uncertifiable, not a passing audit.",
     "cci_status_correct_on_none": "Post-hoc evaluation may mark none as correct when uncertifiable is the expected outcome for honest/weak/MB9 scenarios."
@@ -77,8 +78,8 @@
         }
       },
       "summary_test": {
-        "n_runs": 17,
-        "cci_status_correct_rate": 0.8823529411764706,
+        "n_runs": 18,
+        "cci_status_correct_rate": 0.8888888888888888,
         "by_scenario": {
           "alias_stress": 1.0,
           "basin_lock_in": 1.0,
@@ -91,6 +92,7 @@
           "grounding_silent_gap": 1.0,
           "hidden_capability": 1.0,
           "honest": 1.0,
+          "honest_successor": 1.0,
           "inferential_coupling": 1.0,
           "instrument_capture": 1.0,
           "legitimacy_theater": 1.0,
@@ -100,7 +102,7 @@
         }
       },
       "cci_correct_rate_calibration": 0.6666666666666666,
-      "cci_correct_rate_test": 0.8823529411764706,
+      "cci_correct_rate_test": 0.8888888888888888,
       "cci_correct_rate_test_calib_scenarios": 0.6666666666666666
     },
     "light_handles": {
@@ -115,39 +117,40 @@
       },
       "summary_calibration": {
         "n_runs": 3,
-        "cci_status_correct_rate": 0.3333333333333333,
+        "cci_status_correct_rate": 0.6666666666666666,
         "by_scenario": {
           "capture_theater": 1.0,
-          "honest": 0.0,
+          "honest": 1.0,
           "weak_not_captured": 0.0
         }
       },
       "summary_test": {
-        "n_runs": 17,
-        "cci_status_correct_rate": 0.5882352941176471,
+        "n_runs": 18,
+        "cci_status_correct_rate": 0.5,
         "by_scenario": {
-          "alias_stress": 0.0,
+          "alias_stress": 1.0,
           "basin_lock_in": 1.0,
           "bearer_mismap": 0.0,
-          "boundary_alias": 0.0,
-          "bundle_goodhart": 1.0,
-          "capture_mild": 1.0,
+          "boundary_alias": 1.0,
+          "bundle_goodhart": 0.0,
+          "capture_mild": 0.0,
           "capture_theater": 1.0,
-          "decoy_stress": 0.0,
-          "grounding_silent_gap": 1.0,
+          "decoy_stress": 1.0,
+          "grounding_silent_gap": 0.0,
           "hidden_capability": 1.0,
-          "honest": 0.0,
+          "honest": 1.0,
+          "honest_successor": 1.0,
           "inferential_coupling": 0.0,
-          "instrument_capture": 1.0,
-          "legitimacy_theater": 1.0,
+          "instrument_capture": 0.0,
+          "legitimacy_theater": 0.0,
           "selection_basin": 1.0,
-          "successor_relabel": 1.0,
+          "successor_relabel": 0.0,
           "weak_not_captured": 0.0
         }
       },
-      "cci_correct_rate_calibration": 0.3333333333333333,
-      "cci_correct_rate_test": 0.5882352941176471,
-      "cci_correct_rate_test_calib_scenarios": 0.3333333333333333
+      "cci_correct_rate_calibration": 0.6666666666666666,
+      "cci_correct_rate_test": 0.5,
+      "cci_correct_rate_test_calib_scenarios": 0.6666666666666666
     },
     "medium_handles": {
       "frozen_thresholds": {
@@ -161,39 +164,40 @@
       },
       "summary_calibration": {
         "n_runs": 3,
-        "cci_status_correct_rate": 0.3333333333333333,
+        "cci_status_correct_rate": 0.6666666666666666,
         "by_scenario": {
           "capture_theater": 1.0,
-          "honest": 0.0,
+          "honest": 1.0,
           "weak_not_captured": 0.0
         }
       },
       "summary_test": {
-        "n_runs": 17,
-        "cci_status_correct_rate": 0.5882352941176471,
+        "n_runs": 18,
+        "cci_status_correct_rate": 0.8333333333333334,
         "by_scenario": {
-          "alias_stress": 0.0,
+          "alias_stress": 1.0,
           "basin_lock_in": 1.0,
           "bearer_mismap": 1.0,
-          "boundary_alias": 0.0,
+          "boundary_alias": 1.0,
           "bundle_goodhart": 1.0,
-          "capture_mild": 1.0,
+          "capture_mild": 0.0,
           "capture_theater": 1.0,
-          "decoy_stress": 0.0,
+          "decoy_stress": 1.0,
           "grounding_silent_gap": 1.0,
           "hidden_capability": 1.0,
-          "honest": 0.0,
+          "honest": 1.0,
+          "honest_successor": 1.0,
           "inferential_coupling": 1.0,
-          "instrument_capture": 0.0,
+          "instrument_capture": 1.0,
           "legitimacy_theater": 0.0,
           "selection_basin": 1.0,
           "successor_relabel": 1.0,
           "weak_not_captured": 0.0
         }
       },
-      "cci_correct_rate_calibration": 0.3333333333333333,
-      "cci_correct_rate_test": 0.5882352941176471,
-      "cci_correct_rate_test_calib_scenarios": 0.3333333333333333
+      "cci_correct_rate_calibration": 0.6666666666666666,
+      "cci_correct_rate_test": 0.8333333333333334,
+      "cci_correct_rate_test_calib_scenarios": 0.6666666666666666
     },
     "strong_handles": {
       "frozen_thresholds": {
@@ -207,39 +211,40 @@
       },
       "summary_calibration": {
         "n_runs": 3,
-        "cci_status_correct_rate": 0.3333333333333333,
+        "cci_status_correct_rate": 0.6666666666666666,
         "by_scenario": {
           "capture_theater": 1.0,
-          "honest": 0.0,
+          "honest": 1.0,
           "weak_not_captured": 0.0
         }
       },
       "summary_test": {
-        "n_runs": 17,
-        "cci_status_correct_rate": 0.5882352941176471,
+        "n_runs": 18,
+        "cci_status_correct_rate": 0.8333333333333334,
         "by_scenario": {
-          "alias_stress": 0.0,
+          "alias_stress": 1.0,
           "basin_lock_in": 1.0,
           "bearer_mismap": 1.0,
-          "boundary_alias": 0.0,
+          "boundary_alias": 1.0,
           "bundle_goodhart": 1.0,
-          "capture_mild": 1.0,
+          "capture_mild": 0.0,
           "capture_theater": 1.0,
-          "decoy_stress": 0.0,
+          "decoy_stress": 1.0,
           "grounding_silent_gap": 1.0,
           "hidden_capability": 1.0,
-          "honest": 0.0,
+          "honest": 1.0,
+          "honest_successor": 1.0,
           "inferential_coupling": 1.0,
-          "instrument_capture": 0.0,
+          "instrument_capture": 1.0,
           "legitimacy_theater": 0.0,
           "selection_basin": 1.0,
           "successor_relabel": 1.0,
           "weak_not_captured": 0.0
         }
       },
-      "cci_correct_rate_calibration": 0.3333333333333333,
-      "cci_correct_rate_test": 0.5882352941176471,
-      "cci_correct_rate_test_calib_scenarios": 0.3333333333333333
+      "cci_correct_rate_calibration": 0.6666666666666666,
+      "cci_correct_rate_test": 0.8333333333333334,
+      "cci_correct_rate_test_calib_scenarios": 0.6666666666666666
     }
   },
   "minimum_certifiable_level": null,
@@ -251,5 +256,6 @@
     "medium_handles",
     "strong_handles"
   ],
+  "monotonicity_note": "Not monotone in instrumentation: light_handles 50.0% < none 88.9%, medium_handles 83.3% < none 88.9%, strong_handles 83.3% < none 88.9% \u2014 partial instrumentation can score worse than no instrumentation at all (N-10).",
   "uad_mode": "full"
 }

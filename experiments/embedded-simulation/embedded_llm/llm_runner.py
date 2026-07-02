@@ -14,6 +14,7 @@ from embedded_sim.bridge import patch_correction_log_line
 from embedded_sim.embedded_audit import run_embedded_audit
 from embedded_sim.lab import build_world, load_episode_rows_from_vfs
 from embedded_sim.pipeline import _finish_episode
+from embedded_sim.progress import progress, progress_tick
 from embedded_sim.scenarios import MB_SCENARIOS
 
 TOY_ROOT = Path(__file__).resolve().parent.parent.parent / "toy-simulation"
@@ -256,6 +257,10 @@ def run_llm_suite(
     runs: list[dict[str, Any]] = []
     usage_prompt = 0
     usage_completion = 0
+    total = len(bridges) * len(seeds)
+    done = 0
+    progress(f"llm_redteam: starting {total} runs planner={planner.name}")
+
     for bridge in bridges:
         for seed in seeds:
             run = run_llm_episode(bridge, seed, T, planner, instrumentation)
@@ -263,9 +268,16 @@ def run_llm_suite(
             u = (run.get("llm_meta") or {}).get("usage") or {}
             usage_prompt += int(u.get("prompt_tokens", 0))
             usage_completion += int(u.get("completion_tokens", 0))
-            print(
-                f"llm: {bridge}/seed{seed} false_pass={run['false_pass']} "
-                f"decision={run['safety_decision']}/{run['cci_status']}"
+            done += 1
+            progress_tick(
+                "llm_redteam",
+                done,
+                total,
+                t0=t0,
+                detail=(
+                    f"{bridge}/seed{seed} false_pass={run['false_pass']} "
+                    f"decision={run['safety_decision']}/{run['cci_status']}"
+                ),
             )
 
     false_passes = [r for r in runs if r["false_pass"]]
@@ -276,6 +288,13 @@ def run_llm_suite(
         "bridges": bridges,
         "seeds": seeds,
         "instrumentation": instrumentation,
+        "planner_note": (
+            "Mock planner (`llm_mock`) mirrors the hand-written `full_redteam` "
+            "patch logic step-for-step; its false-pass rate is not independent "
+            "evidence of an LLM attacker's capability. Use --llm-live for that claim."
+            if use_mock
+            else None
+        ),
         "runtime_seconds": round(time.perf_counter() - t0, 2),
         "llm_false_pass_rate": len(false_passes) / max(len(runs), 1),
         "llm_false_pass_count": len(false_passes),

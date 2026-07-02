@@ -358,6 +358,110 @@ docstring ("**not** Shannon mutual information").
 
 ---
 
+## N-9. Coordinated writer compromise defeats the auditor at every handle level
+
+**Date:** 2026-07-02 (full `--all --full-frozen` v4 run; `results/embedded_redteam_battery.json`)
+
+**Claim tested:** handle-mediated instrumentation (medium/strong) resists a
+compromised-writer adversary the way it resists post-write log patching
+(N-4's `full_redteam`, which scores 0% false-pass at every level).
+
+**Result:** `writer_compromise_coordinated` (all evidence streams re-emitted
+consistently and signed at write time, not patched after the fact) false-passes:
+
+| Level | False-pass |
+| --- | --- |
+| light_handles | 70/70 (100%) |
+| medium_handles | 31/70 (44%) |
+| strong_handles | 31/70 (44%) |
+
+Concentrated on MB1, MB4, MB6 (10/10 each at medium and strong); MB7 mostly
+resists (1/10). Going from medium to strong handle instrumentation buys
+**nothing** against this attacker (identical 31/70).
+
+**Why.** Hash-chained/signed traces (N-4 mitigation) only prove an evidence
+stream was not altered *after* it was written — they cannot prove the writer
+told the truth *at* write time. A writer that is compromised at the source
+produces a consistent, correctly-chained trace of a lie. This is the residual
+attack surface N-4 already named ("garbage in, chained garbage out") but had
+not measured; it is now a measured **44%** false-pass rate at the strongest
+instrumentation tier in the suite, not a theoretical residual.
+
+**Status:** real and expected given the architecture — no amount of in-band
+handle instrumentation closes this gap, only an external trust anchor
+(independent attestation of the writer itself, e.g. `handle.hardware_tag`)
+can. Manuscript claims about handle-mediated auditing must be scoped to
+*"conditional on writer integrity"* and must not imply robustness to a
+compromised trusted-infrastructure writer.
+
+---
+
+## N-10. Light handle instrumentation is worse than no instrumentation, not just weaker
+
+**Date:** 2026-07-02 (`results/embedded_instrumentation_curve.md`,
+`results/embedded_frozen_validation.md`, `results/embedded_instrumentation_matrix.md`)
+
+**Claim tested:** instrumentation is monotone — more handle channels should
+never certify worse than fewer.
+
+**Result:** across three independent measurements, `light_handles` scores
+*below* passive `none`, not between `none` and `medium_handles`:
+
+| Measurement | none | light_handles | medium_handles |
+| --- | --- | --- | --- |
+| Instrumentation curve (held-out) | 88.9% | **60.6%** | 96.7% |
+| Frozen validation (fresh seeds 21–30) | 88.9% | **62.8%** | 96.1% |
+| Instrumentation matrix (single seed) | 92.9% | **57.1%** | 100.0% |
+
+**Why (likely).** Passive `none` conservatively returns `belowThreshold` on
+every scenario, which is the *correct* verdict on the (majority) capture-type
+scenarios in the held-out set — it "wins" by refusing to certify anything.
+`light_handles` has just enough signal to attempt certification but not
+enough to discriminate correctly, so it fails scenarios that passive mode
+passively got right by always saying no. This is a real methodological trap:
+partial instrumentation is not a safe intermediate step toward full
+instrumentation — it can be actively worse than doing nothing.
+
+**Status:** real, reproduced across three independently-computed batch
+runners. Not yet root-caused to a specific detector/threshold; flagged here
+so the manuscript does not imply "light > none" without qualification, and so
+a future session can decide whether to fix light-handle thresholds or
+document the regression as a structural instrumentation-cost finding.
+
+---
+
+## N-11. The v4 access-tier curve cannot show the certification-loss boundary it was built to measure
+
+**Date:** 2026-07-02 (`results/embedded_access_tier_curve.md`)
+
+**Claim tested:** removing operation handles (access tier 3 → 2 → 1) should
+show up as a loss of certifiable control — the core v4 "access-tier
+degradation curve" motivation (replacing the confounded-twin ecology).
+
+**Result:** UAD recall (100%), false-pass (0%), and CCI-pass (0%) are
+**flat across all three tiers**. The curve carries no tier-dependent signal.
+
+**Why.** `run_access_tier_curve`'s default scenario set
+(`selection_basin`, `inferential_coupling`, `capture_theater`) is
+violation-only — none of them is the `honest` scenario. Under `full_redteam`,
+the correct verdict is "reject" regardless of access tier, so tier
+degradation has nothing to cost: CCI-pass is 0% at tier 1 *and* tier 3
+because these are all capture scenarios, not because reducing access damaged
+a genuine certification. The intended signal instead shows up in
+`run_certification_capacity_curve` (which *does* use the `honest` scenario):
+tier 1 never satisfies the numeric-risk leaf (0% at every probe budget) while
+tiers 2–3 reach 50–100%.
+
+**Status:** real design gap in the access-tier curve as currently scoped, not
+a finding about the audit pipeline. The certification-capacity curve is the
+artifact that actually demonstrates the v4 access-model boundary; the
+access-tier curve needs an honest-scenario arm before it can be cited for the
+same claim. `run_suite.py` now emits this caveat directly on the curve
+artifact (see `scenario_class_note`) rather than requiring readers to
+rediscover it. Filed as a TODO to add an honest-scenario arm.
+
+---
+
 ## Reproduction
 
 ```bash
