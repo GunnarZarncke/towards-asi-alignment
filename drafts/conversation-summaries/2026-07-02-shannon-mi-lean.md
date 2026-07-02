@@ -50,4 +50,4 @@ Continuation of the day's Lean-precise-bounds thread. User asked to plan next st
 
 ## Commits
 
-- (none yet — pending user's "end of session" instruction, per repo convention of not committing proactively)
+- `2053579` — Prove real Shannon entropy/mutual-information bounds in Lean (ShannonMI.lean).
