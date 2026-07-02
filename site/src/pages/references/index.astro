@@ -1,0 +1,33 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import ReferencesByChapter from "../../components/ReferencesByChapter.astro";
+import references from "../../data/references.json";
+import bibliography from "../../data/references-bibliography.json";
+import { cardHref } from "../../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const toCardHref = (id: string) => cardHref(base, id);
+const unitHref = (id: string) => toCardHref(`chapters/${id}`);
+---
+
+<SiteLayout title="References" description="Bibliography for Towards Superintelligence Alignment, grouped by chapter.">
+  <section class="hero">
+    <p class="eyebrow">Bibliography</p>
+    <h1>References</h1>
+    <p class="lede">
+      {references.length} sources in the bibliography, organized by each chapter's reference section
+      ({bibliography.chapters.length} chapters{bibliography.other.length > 0 ? ` plus ${bibliography.other.length} other units` : ""}).
+    </p>
+    <p class="button-row">
+      <a class="button" href={toCardHref("reference-index")}>Alphabetical reference cards</a>
+    </p>
+  </section>
+
+  <section class="readable content-card">
+    <ReferencesByChapter
+      cardHref={toCardHref}
+      unitHref={unitHref}
+      referenceIndexHref={toCardHref("reference-index")}
+    />
+  </section>
+</SiteLayout>

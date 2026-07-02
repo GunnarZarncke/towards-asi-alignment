@@ -1,0 +1,174 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import Badge from "../../components/Badge.astro";
+import partGems from "../../data/part-gems.json";
+import demosIndex from "../../data/demos.json";
+import { cardHref as buildCardHref } from "../../lib/site-urls";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("book");
+  return entries.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const allCards = await getCollection("cards");
+const chapterCard = allCards.find(
+  (card) => card.data.bookPageId === entry.id && ["chapter", "appendix", "frontmatter"].includes(card.data.type)
+);
+const relatedCards = allCards.filter(
+  (card) => !["chapter", "appendix", "frontmatter"].includes(card.data.type) && card.data.bookChapters.includes(entry.id)
+);
+
+const gemSlugs = new Set(Object.values(partGems).flat());
+const isGem = (slug: string) => gemSlugs.has(slug);
+const partGemSlugs = entry.data.part ? partGems[entry.data.part as keyof typeof partGems] || [] : [];
+const sidebarCards = [
+  ...partGemSlugs.map((slug) => allCards.find((c) => c.id === slug)).filter(Boolean),
+  ...relatedCards.filter((c) => !partGemSlugs.includes(c.id))
+];
+
+const chapterDemos = demosIndex.demos.filter((demo) => demo.chapterId === entry.id);
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const cardHref = (id: string) => buildCardHref(base, id);
+const kindLabel = entry.data.kind === "chapter"
+  ? "Chapter"
+  : entry.data.kind === "appendix"
+    ? "Appendix"
+    : "Front matter";
+---
+
+<SiteLayout title={entry.data.title} description={`${kindLabel}: ${entry.data.title}`}>
+  <article class="two-column book-page">
+    <div class="content-card readable">
+      <div class="badge-row">
+        <Badge label={entry.data.kind} />
+        {entry.data.part && <Badge label={entry.data.part} variant="framework" />}
+      </div>
+      <h1>{entry.data.title}</h1>
+      {chapterCard && (
+        <p class="side-panel-meta">
+          Chapter card: <a href={cardHref(chapterCard.id)}>{chapterCard.data.title}</a>
+        </p>
+      )}
+      <p class="side-panel-meta">Source: <code>{entry.data.sourceFile}</code></p>
+      <Content />
+    </div>
+
+    <aside class="side-panel" aria-label="Related content" id="related">
+      <h2>Related content</h2>
+      {chapterCard && (
+        <>
+          <h3>Chapter card</h3>
+          <p><a href={`${cardHref(chapterCard.id)}#related`}>Concept cards for this chapter</a></p>
+        </>
+      )}
+      {sidebarCards.length > 0 && (
+        <>
+          <h3>Concept cards</h3>
+          <ul>
+            {sidebarCards.map((card) => (
+              <li>
+                <a href={cardHref(card!.id)}>{card!.data.title}</a>
+                {isGem(card!.id) && <Badge label="gem" variant="gem" />}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {chapterDemos.length > 0 && (
+        <>
+          <h3>Chapter demos</h3>
+          <ul>
+            {chapterDemos.map((demo) => (
+              <li>
+                <a href={withBase(demo.sitePath)}>{demo.title}</a>
+              </li>
+            ))}
+          </ul>
+          <p class="side-panel-meta"><a href={withBase("/demos/")}>All demos</a></p>
+        </>
+      )}
+      <p class="side-panel-meta"><a href={withBase("/book/")}>Back to book map</a></p>
+    </aside>
+  </article>
+</SiteLayout>
+
+<style>
+  .book-page :global(.chapter-thesis) {
+    margin: 1.5rem 0;
+  }
+
+  .book-page :global(.env-box) {
+    border-left: 3px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    margin: 1.25rem 0;
+    background: var(--color-surface);
+  }
+
+  .book-page :global(.lean-spine) {
+    font-size: 0.92rem;
+    color: var(--color-muted);
+    border-left: 3px solid var(--color-border);
+    padding-left: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  .book-page :global(.epigraph) {
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-border);
+    color: var(--color-muted);
+  }
+
+  .book-page :global(.book-figure) {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
+  .book-page :global(.book-figure img) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .book-page :global(.description-list) {
+    margin: 1rem 0;
+  }
+
+  .book-page :global(.description-list dt) {
+    font-weight: 600;
+    margin-top: 0.75rem;
+  }
+
+  .book-page :global(.description-list dd) {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .book-page :global(.footnotes) {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  .book-page :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.92rem;
+  }
+
+  .book-page :global(th),
+  .book-page :global(td) {
+    border: 1px solid var(--color-border);
+    padding: 0.45rem 0.6rem;
+    vertical-align: top;
+  }
+</style>

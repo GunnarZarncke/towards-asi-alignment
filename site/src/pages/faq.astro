@@ -1,0 +1,37 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const items = [
+  ["What is this site?", "A static companion site for the book. It helps readers find the core ideas, choose a fixed path, and reach the PDF."],
+  ["Is this a new knowledge platform?", "No. It is an authored reference layer for one framework. Discussion and contributions can happen elsewhere."],
+  ["What is the central thesis?", "Alignment means preserving human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and selection pressure."],
+  ["What is correction-channel integrity?", "It is the condition that legitimate human correction still causally changes future system behavior before irreversible damage."],
+  ["What is a value bundle?", "A compressed direction of control that changes behavior across contexts. The framework cares whether this structure survives transformation."],
+  ["Why start with boundary discovery?", "Because the deployed actor may be a loop of model, memory, tools, dashboards, and people. Auditing only the model can miss the real controller."],
+  ["Does Lean prove alignment?", "No. Lean checks conditional structure. It does not prove that real systems satisfy the bridge assumptions."],
+  ["Do the experiments validate the thesis?", "No. They are methodology-building and sanity checks. Negative results bound what the manuscript may claim."],
+  ["Where should safety engineers start?", "Use the engineer/evals path, then read the correction-channel integrity and deployment-gate cards."],
+  ["Where should policy readers start?", "Use the funder/policy path. It emphasizes decision triggers, scope assumptions, artifacts, and uncertainty."],
+  ["Where is the full book?", "The latest PDF is distributed through GitHub Releases and remains the canonical long-form artifact."],
+  ["Will there be translations?", "Later, after the English card structure stabilizes."]
+];
+---
+
+<SiteLayout title="FAQ" description="Frequently asked questions about the companion site and framework.">
+  <section class="hero">
+    <p class="eyebrow">FAQ</p>
+    <h1>Questions first</h1>
+    <p class="lede">
+      Start with a question. Each answer links to the card or path that goes deeper.
+    </p>
+  </section>
+
+  <section class="readable">
+    {items.map(([question, answer]) => (
+      <details class="card">
+        <summary><strong>{question}</strong></summary>
+        <p>{answer}</p>
+      </details>
+    ))}
+  </section>
+</SiteLayout>

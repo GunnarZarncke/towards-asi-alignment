@@ -1,0 +1,108 @@
+---
+import references from "../data/references.json";
+
+interface Props {
+  cardHref: (id: string) => string;
+}
+
+const { cardHref } = Astro.props;
+
+const sorted = [...references].sort((a, b) => a.shortLabel.localeCompare(b.shortLabel));
+
+const letterFor = (label: string) => {
+  const ch = label.trim().charAt(0).toUpperCase();
+  return /[A-Z]/.test(ch) ? ch : "#";
+};
+
+const byLetter = new Map<string, typeof sorted>();
+for (const entry of sorted) {
+  const letter = letterFor(entry.shortLabel);
+  if (!byLetter.has(letter)) byLetter.set(letter, []);
+  byLetter.get(letter)!.push(entry);
+}
+
+const letters = [...byLetter.keys()].sort((a, b) => {
+  if (a === "#") return 1;
+  if (b === "#") return -1;
+  return a.localeCompare(b);
+});
+---
+
+<section class="reference-index">
+  <p class="side-panel-meta">{sorted.length} bibliography cards, A–Z. Expand a letter to browse.</p>
+  {letters.map((letter) => {
+    const entries = byLetter.get(letter)!;
+    return (
+      <details class="letter-group">
+        <summary>
+          <span class="letter">{letter}</span>
+          <span class="count">{entries.length}</span>
+        </summary>
+        <ul>
+          {entries.map((entry) => (
+            <li>
+              <a href={cardHref(`references/${entry.key.toLowerCase()}`)}>{entry.shortLabel}</a>
+              <span class="title"> — {entry.title}</span>
+              {entry.citedIn.length > 0 && (
+                <span class="cited-in side-panel-meta">
+                  {" "}
+                  · cited in {entry.citedIn.length} {entry.citedIn.length === 1 ? "place" : "places"}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </details>
+    );
+  })}
+</section>
+
+<style>
+  .reference-index {
+    margin-top: 1.5rem;
+  }
+
+  .letter-group {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md, 6px);
+    margin-bottom: 0.65rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--color-surface);
+  }
+
+  .letter-group summary {
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .letter-group summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .letter {
+    min-width: 1.25rem;
+  }
+
+  .count {
+    color: var(--color-muted);
+    font-weight: 400;
+    font-size: 0.9em;
+  }
+
+  .letter-group ul {
+    margin: 0.75rem 0 0.35rem;
+    padding-left: 1.1rem;
+  }
+
+  .letter-group li {
+    margin: 0.45rem 0;
+  }
+
+  .title {
+    color: var(--color-text-muted);
+  }
+</style>

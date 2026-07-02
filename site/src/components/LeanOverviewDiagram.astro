@@ -1,0 +1,82 @@
+---
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fixGraphSvgHrefs } from "../lib/fix-graph-svg-hrefs";
+
+interface Props {
+  title?: string;
+  compact?: boolean;
+}
+
+const { title = "Overview diagram", compact = false } = Astro.props;
+
+let svgHtml = "";
+try {
+  svgHtml = fixGraphSvgHrefs(
+    readFileSync(path.join(process.cwd(), "public", "lean-graphs/overview.svg"), "utf8"),
+    "lean-index"
+  );
+} catch {
+  svgHtml = "";
+}
+---
+
+{svgHtml ? (
+  <section class:list={["lean-overview", { compact }]}>
+    <div class="lean-overview-header">
+      <h2>{title}</h2>
+      {!compact && (
+        <p class="side-panel-meta">
+          Same Graphviz source as Appendix G, figure <code>00-overview</code>.
+          Click nodes to drill down.
+        </p>
+      )}
+    </div>
+    <div class="lean-graph-wrap">
+      <div class="lean-graph-svg" role="img" aria-label={title} set:html={svgHtml} />
+    </div>
+  </section>
+) : (
+  <section class="callout warning">
+    <p>Overview diagram missing — run <code>npm run sync</code> in <code>site/</code>.</p>
+  </section>
+)}
+
+<style>
+  .lean-overview {
+    margin: 2.5rem 0;
+  }
+
+  .lean-overview.compact {
+    margin: 1.25rem 0;
+  }
+
+  .lean-overview-header h2 {
+    margin-top: 0;
+  }
+
+  .lean-graph-wrap {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: 0.75rem;
+    overflow-x: auto;
+  }
+
+  .lean-graph-svg :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 720px;
+  }
+
+  .lean-graph-svg :global(a.lean-graph-node) {
+    cursor: pointer;
+  }
+
+  .lean-graph-svg :global(a.lean-graph-node:hover .node path),
+  .lean-graph-svg :global(a.lean-graph-node:hover .node polygon) {
+    stroke: var(--color-accent-strong);
+    stroke-width: 2.5;
+  }
+</style>

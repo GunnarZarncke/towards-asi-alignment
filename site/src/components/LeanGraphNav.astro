@@ -1,0 +1,63 @@
+---
+interface Props {
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const graphs = [
+  { slug: "overview", label: "Overview" },
+  { slug: "boundary-measurement", label: "Spine I" },
+  { slug: "value-transport", label: "Spine II" },
+  { slug: "correction-successors", label: "Spine III" },
+  { slug: "selection-limits", label: "Spine IV" },
+  { slug: "field-subsumptions", label: "Field subsumptions" }
+];
+---
+
+<nav class="lean-graph-nav" aria-label="Lean proof spine graphs">
+  {graphs.map((graph) => (
+    <a
+      href={withBase(`/lean/graph/${graph.slug}/`)}
+      class:list={["lean-graph-nav-link", { active: graph.slug === currentSlug }]}
+      aria-current={graph.slug === currentSlug ? "page" : undefined}
+    >
+      {graph.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .lean-graph-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 1rem 0 1.25rem;
+  }
+
+  .lean-graph-nav-link {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface-muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+
+  .lean-graph-nav-link:hover {
+    border-color: var(--color-accent);
+  }
+
+  .lean-graph-nav-link.active {
+    background: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
+    color: #fff;
+  }
+
+  .lean-graph-nav-link.active:hover {
+    color: #fff;
+  }
+</style>

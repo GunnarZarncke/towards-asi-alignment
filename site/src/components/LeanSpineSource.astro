@@ -1,0 +1,121 @@
+---
+import { highlightLean } from "../lib/highlight-lean";
+
+interface SpineSource {
+  kind: string;
+  slug?: string;
+  file?: string;
+  decls?: string[];
+  code?: string;
+}
+
+interface Props {
+  spineSource: SpineSource;
+  nodeId: string;
+  repoBase?: string;
+}
+
+const { spineSource, nodeId, repoBase = "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main" } =
+  Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+let highlighted = "";
+if (spineSource.code) {
+  highlighted = await highlightLean(spineSource.code);
+}
+---
+
+{spineSource.kind === "subgraph" && spineSource.slug && (
+  <section class="callout">
+    <p>
+      <strong>{nodeId}</strong> is a sub-spine grouping in the overview diagram, not a single Lean declaration.
+      Open the detailed graph for this part of the spine.
+    </p>
+    <p><a class="button" href={withBase(`/lean/graph/${spineSource.slug}/`)}>Open {spineSource.slug.replace(/-/g, " ")} graph</a></p>
+  </section>
+)}
+
+{spineSource.kind === "label-only" && (
+  <section class="callout">
+    <p>
+      <strong>{nodeId}</strong> is an export / summary node in the dependency graph — it names what a sub-spine
+      contributes rather than a standalone theorem. Follow the incoming edges in the graph, or open the sub-spine
+      diagrams below.
+    </p>
+  </section>
+)}
+
+{(spineSource.kind === "decls" || spineSource.kind === "module") && spineSource.code && (
+  <section class="lean-spine-source">
+    <div class="lean-code-header">
+      <h2>Lean spine source</h2>
+      {spineSource.file && (
+        <a href={`${repoBase}/${spineSource.file}`} target="_blank" rel="noopener noreferrer">{spineSource.file}</a>
+      )}
+    </div>
+    {spineSource.decls && spineSource.decls.length > 0 && (
+      <p class="side-panel-meta">Declarations: {spineSource.decls.join(", ")}</p>
+    )}
+    <p class="lean-spine-note">
+      From the machine-checked spine in <code>formal/</code> (Mathlib + spine imports).
+      Not self-contained for Lean 4 Web — use the repo or a local <code>lake build</code>.
+    </p>
+    <div class="lean-pre" set:html={highlighted} />
+  </section>
+)}
+
+<style>
+  .lean-spine-source {
+    margin-top: 1.5rem;
+  }
+
+  .lean-code-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .lean-code-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .lean-spine-note {
+    font-size: 0.92rem;
+    color: var(--color-muted);
+    margin: 0 0 0.65rem;
+  }
+
+  .lean-pre {
+    margin: 0;
+    padding: 0.85rem 1rem;
+    overflow-x: auto;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .lean-pre :global(pre.shiki) {
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+    overflow: visible;
+  }
+
+  .lean-pre :global(pre.shiki code) {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: inherit;
+    line-height: inherit;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+</style>

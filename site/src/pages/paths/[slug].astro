@@ -1,0 +1,112 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import Badge from "../../components/Badge.astro";
+import {
+  WORKED_EXAMPLE_BOOK_ID,
+  bookHref,
+  cardHref,
+  chapterCardFor
+} from "../../lib/site-urls";
+
+export async function getStaticPaths() {
+  const paths = await getCollection("paths");
+  return paths.map((path) => ({
+    params: { slug: path.id },
+    props: { path }
+  }));
+}
+
+const { path } = Astro.props;
+const { Content } = await render(path);
+const cards = await getCollection("cards");
+const cardById = new Map(cards.map((card) => [card.id, card]));
+const base = import.meta.env.BASE_URL;
+const withBase = (route: string) => `${base}${route.replace(/^\/+/, "")}`;
+const workedExampleCard = chapterCardFor(cards, WORKED_EXAMPLE_BOOK_ID);
+const deploymentGateCard = cardById.get("deployment-gate");
+---
+
+<SiteLayout title={path.data.title} description={path.data.summary}>
+  <section class="hero">
+    <p class="eyebrow">{path.data.audience}</p>
+    <h1>{path.data.title}</h1>
+    <p class="lede">{path.data.summary}</p>
+  </section>
+
+  {path.data.featuredWorkedExample && workedExampleCard && (
+    <section class="callout worked-example readable">
+      <p class="eyebrow">Appendix D · start here for concreteness</p>
+      <h2>BioShield worked example</h2>
+      <p>
+        The book's deployment gate is not abstract checklist prose. Appendix D walks a fictional hospital
+        network (BioShield) through boundary, grounding, correction handles, bearer maps, successors,
+        selection pressure, and a conditional safety case — the same spine the formal appendix checks.
+      </p>
+      <p class="button-row">
+        <a class="button primary" href={bookHref(base, WORKED_EXAMPLE_BOOK_ID)}>Read Appendix D</a>
+        <a class="button" href={cardHref(base, workedExampleCard.id)}>Concept card</a>
+        {deploymentGateCard && (
+          <a class="button" href={cardHref(base, deploymentGateCard.id)}>Deployment gate card</a>
+        )}
+      </p>
+    </section>
+  )}
+
+  <section class="content-card readable">
+    <Content />
+  </section>
+
+  {path.data.featuredLean && (
+    <section class="callout readable">
+      <h2>Lean proof spine</h2>
+      <p>
+        The formal path pairs these cards with the machine-checked conditional skeleton: dependency graphs,
+        axiom-budget checks, and self-contained try-it-out snippets in Lean 4 Web.
+      </p>
+      <p>
+        <a class="button primary" href={withBase("/lean/")}>Open Lean proof spine</a>
+        {" "}
+        <a class="button" href={withBase("/lean/graph/overview/")}>Overview graph</a>
+      </p>
+    </section>
+  )}
+
+  <section>
+    <h2>Read in this order</h2>
+    <ol>
+      {path.data.cards.map((slug: string) => {
+        const card = cardById.get(slug);
+        if (!card) return null;
+        return (
+          <li class="card">
+            <div class="badge-row">
+              <Badge label={card.data.type} />
+              <Badge label={card.data.status} variant={card.data.status} />
+            </div>
+            <h3><a href={cardHref(base, card.id)}>{card.data.title}</a></h3>
+            <p>{card.data.summary}</p>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+
+  <p><a class="button" href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">Skip to the PDF</a></p>
+  {path.id === "researcher-applied" && (
+    <p class="readable"><a href={withBase("/paths/researcher-formal/")}>Continue to Researcher — Formal</a></p>
+  )}
+  {path.id === "researcher-formal" && (
+    <p class="readable"><a href={withBase("/paths/researcher-applied/")}>Start with Researcher — Applied</a></p>
+  )}
+</SiteLayout>
+
+<style>
+  .worked-example {
+    margin-bottom: 2rem;
+  }
+
+  .worked-example h2 {
+    margin-top: 0.35rem;
+  }
+</style>

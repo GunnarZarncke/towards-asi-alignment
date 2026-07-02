@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const PATH_ORDER = [
+  "generalist",
+  "researcher-applied",
+  "researcher-formal",
+  "engineer-evals",
+  "funder-policy"
+];
+
+const paths = (await getCollection("paths")).sort(
+  (a, b) => PATH_ORDER.indexOf(a.id) - PATH_ORDER.indexOf(b.id)
+);
+---
+
+<SiteLayout title="Guided Tour" description="Guided reading paths through the companion site.">
+  <section class="hero">
+    <p class="eyebrow">Guided tour</p>
+    <h1>Guided Tour</h1>
+    <p class="lede">
+      Each path is a short, ordered reading list for one kind of reader. Pick the one closest to your situation and read it in order.
+    </p>
+  </section>
+
+  <div class="grid">
+    {paths.map((path) => (
+      <article class="card">
+        <h3><a href={withBase(`/paths/${path.id}/`)}>{path.data.title}</a></h3>
+        <p><strong>{path.data.audience}</strong></p>
+        <p>{path.data.summary}</p>
+        {path.data.featuredLean && (
+          <p class="side-panel-meta"><a href={withBase("/lean/")}>Includes Lean proof spine</a></p>
+        )}
+      </article>
+    ))}
+  </div>
+</SiteLayout>

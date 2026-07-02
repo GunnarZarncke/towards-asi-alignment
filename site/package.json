@@ -1,0 +1,29 @@
+{
+  "name": "towards-asi-alignment-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run sync && ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "sync": "npm run sync:book && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos",
+    "sync:demos": "node scripts/sync-demos.mjs",
+    "sync:lean-spine": "node scripts/sync-lean-spine.mjs",
+    "sync:book": "node scripts/sync-book-yml.mjs",
+    "sync:chapter-cards": "node scripts/sync-chapter-cards.mjs",
+    "sync:chapters": "node scripts/sync-chapters.mjs",
+    "sync:reference-cards": "node scripts/sync-reference-cards.mjs",
+    "check:book-links": "node scripts/check-book-links.mjs",
+    "prebuild": "npm run sync",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.0.0",
+    "@viz-js/viz": "^3.28.0",
+    "astro": "^7.0.4",
+    "katex": "^0.16.11",
+    "lz-string": "^1.5.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
+    "shiki": "^4.0.2"
+  }
+}

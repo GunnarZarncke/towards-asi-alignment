@@ -1,0 +1,206 @@
+{
+  "name": "Gunnar Zarncke",
+  "links": [
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/gunnar-zarncke-952134163/" },
+    { "label": "LessWrong", "url": "https://www.lesswrong.com/users/gunnar_zarncke" },
+    { "label": "Twitter / X", "url": "https://x.com/Gunnar_Zarncke", "note": "low traffic" },
+    { "label": "Substack", "url": "https://substack.com/@gunnarzarncke787351", "note": "new" },
+    { "label": "GitHub", "url": "https://github.com/GunnarZarncke/" },
+    { "label": "Schedule a call", "url": "https://calendly.com/g-zarncke" }
+  ],
+  "publications": [
+    {
+      "title": "Towards Superintelligence Alignment: Boundaries, Values, and Correction",
+      "year": 2026,
+      "kind": "book",
+      "url": "https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest"
+    },
+    {
+      "title": "Parameters of Metacognition — The Anesthesia Patient",
+      "year": 2026,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/vtxZtjiR9Rb9HC72N/parameters-of-metacognition-the-anesthesia-patient"
+    },
+    {
+      "title": "Value Learning Needs a Low-Dimensional Bottleneck",
+      "year": 2026,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/XrpiQcGnqeLKLMhbD/value-learning-needs-a-low-dimensional-bottleneck"
+    },
+    {
+      "title": "The Friendly Telepath Problems",
+      "year": 2026,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/np6Sj87HqcoJ7X5in/the-friendly-telepath-problems"
+    },
+    {
+      "title": "Is the Invisible Hand an Agent?",
+      "year": 2026,
+      "kind": "post",
+      "url": "https://gunnarzarncke787351.substack.com/p/is-the-invisible-hand-an-agent"
+    },
+    {
+      "title": "Handles Before Interventions: Access-Model UAD and the Embedded Semantics of Agency Tests",
+      "year": 2026,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/access-uad/access-uad.pdf"
+    },
+    {
+      "title": "Recoverability of Smoothed Agent Boundaries in Unsupervised Agent Discovery",
+      "year": 2026,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/smooth-uad/smooth-uad.pdf"
+    },
+    {
+      "title": "Stealth–Capability Bounds for Multi-Resolution Unsupervised Agent Discovery",
+      "year": 2026,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/stealth-capability-bounds/stealth-capability-bounds.pdf"
+    },
+    {
+      "title": "AI Safety Interventions",
+      "year": 2025,
+      "kind": "report",
+      "url": "https://github.com/GunnarZarncke/ai-safety-interventions/raw/main/ai_safety_interventions.pdf",
+      "alternateUrl": "https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions"
+    },
+    {
+      "title": "A Formalization of Acausal Trade on Top of Unsupervised Agent Discovery",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/acausal-trade-uad-formalization/acausal_trade_uad_formalization.pdf"
+    },
+    {
+      "title": "Attractor Basins of Cooperation, Privacy, and Parasite Persistence",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/attractor-basins/attractor-basins.pdf"
+    },
+    {
+      "title": "Bitwise Intelligence: A Blanket-Information Measure of Competence",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/bitwise-iq/bitwise_iq.pdf"
+    },
+    {
+      "title": "Consciousness and Agency Backbone: A Minimal Operational Stack",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/consciousness-agency-backbone/consciousness_agency_backbone.pdf"
+    },
+    {
+      "title": "Construction Without Understanding: Successor Agents and the Limits of Copying",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/construction-without-understanding/construction_without_understanding.pdf"
+    },
+    {
+      "title": "Endogenized Intentional Stance: Predictive Compression and Goal-Rational Priors",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/endogenized-intentional-stance/endogenized-intentional-stance.pdf"
+    },
+    {
+      "title": "Foundations of Unsupervised Agent Discovery in Raw Dynamical Systems",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/towards-asi-alignment/raw/main/context/unsupervised-agent-discovery.pdf"
+    },
+    {
+      "title": "Loop–Hub–Control–Value Model v2",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/loop-hub-control-value/lhcv-model-v2.pdf"
+    },
+    {
+      "title": "Loop–Hub–Value Model: From Free-Energy Loops to Intrinsic Values",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/loop-hub-value-model/loop-hub-value-model.pdf"
+    },
+    {
+      "title": "Preference vs. Capability: Value-Conditioned Prediction and Control Channels",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/preference-capability/preference-capability.pdf"
+    },
+    {
+      "title": "Status Regulation as Free-Energy Loops",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/status-regulation-loops/status_regulation_as_free_energy_loops.pdf"
+    },
+    {
+      "title": "Stratification of Free-Energy-Minimising Loops in the Vertebrate Brain",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/free-energy-loops/free_energy_loops.pdf"
+    },
+    {
+      "title": "Unexpected Conscious Entities",
+      "year": 2025,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/oDisFzpN2z3ScL7jv/unexpected-conscious-entities"
+    },
+    {
+      "title": "Unit of Caring: Architecture, Suffering, and Cross-Scale Aggregation",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/unit-of-caring/unit-of-caring.pdf"
+    },
+    {
+      "title": "Unsupervised Agent Discovery",
+      "year": 2025,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery"
+    },
+    {
+      "title": "Value Bundle Drift",
+      "year": 2025,
+      "kind": "paper",
+      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/value-bundle-drift/value-bundle-drift.pdf"
+    },
+    {
+      "title": "When \"HDMI-1\" Lies To You",
+      "year": 2025,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/jCuujA7H7rNCcSdAi/when-hdmi-1-lies-to-you"
+    },
+    {
+      "title": "Alignment Attractor: Executive Summary and Platform Framing",
+      "year": 2025,
+      "kind": "note",
+      "url": "https://github.com/GunnarZarncke/alignment-attractor/blob/main/context/Alignment%20Attractor.md"
+    },
+    {
+      "title": "aintelope project update",
+      "year": 2024,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/XKDAQEAWsMfkLfi7b/aintelope-project-update"
+    },
+    {
+      "title": "Brain-like AGI project \"aintelope\"",
+      "year": 2022,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/c2tEfqEMi6jcJ4kdg/brain-like-agi-project-aintelope"
+    },
+    {
+      "title": "Estimating Brain-Equivalent Compute from Image Recognition Algorithms",
+      "year": 2022,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/jkAksfEfEnvovnftk/estimating-brain-equivalent-compute-from-image-recognition"
+    },
+    {
+      "title": "Summary of my Participation in the Good Judgment Project",
+      "year": 2015,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/btLCC3LXeHxjcZxAR/summary-of-my-participation-in-the-good-judgment-project"
+    },
+    {
+      "title": "When does technological enhancement feel natural and acceptable?",
+      "year": 2015,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/TbFMq8XkJAYa3EELw/when-does-technological-enhancement-feel-natural-and-acceptable"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "bridges": ["MB1"],
+    "home": "A-004, ch7",
+    "fieldCrux": "Embedded agency: no clean agent/environment cut; the real optimizer is not the visible model",
+    "agendas": "Agent foundations (MIRI)",
+    "bookMove": "Treat the Markov-blanket boundary as a measurable object (ε-boundary discovery); a conceptual gap becomes an estimator-soundness bet",
+    "cards": ["mb1-boundary-estimator-soundness", "boundary-discovery"],
+    "chapters": ["ch07", "ch06"]
+  },
+  {
+    "bridges": ["MB2", "MB3"],
+    "home": "A-001, A-006; ch16, ch18, ch46",
+    "fieldCrux": "The pointing problem: IRL non-identifiability; values vs. irrationality underdetermined; ELK; reward misspecification",
+    "agendas": "CIRL / value learning, ELK, RLHF/RLAIF",
+    "bookMove": "Replace scalar reward with bundle geometry plus bearer maps; ELK becomes a latent-readout subchannel, not the whole problem",
+    "cards": ["mb2-bundle-identifiability", "mb3-bearer-import", "value-bundle-transport"],
+    "chapters": ["ch16", "ch18", "ch46"]
+  },
+  {
+    "bridges": ["MB4", "MB8"],
+    "home": "A-002; ch46–ch27",
+    "fieldCrux": "Corrigibility and off-switch anti-naturality; manipulation; legitimacy of the correction authority",
+    "agendas": "MIRI, CHAI, Constitutional AI",
+    "bookMove": "Correction-channel integrity as a dynamical, capture-resistant invariant with handle control; shutdown/interruptibility are one-bit projections",
+    "cards": ["mb4-correction-legitimacy", "mb8-cev-process-convergence", "correction-channel-integrity"],
+    "chapters": ["ch27", "ch28", "ch46"]
+  },
+  {
+    "bridges": ["MB5"],
+    "home": "A-007, A-010; ch46–ch31",
+    "fieldCrux": "Tiling / Vingean reflection; ontology identification (the diamond maximizer)",
+    "agendas": "Agent foundations (MIRI)",
+    "bookMove": "Successor closure over seven conserved properties plus transport surviving ontology shift",
+    "cards": ["mb5-successor-ontology-shift", "successor-stability", "value-change-vs-corruption"],
+    "chapters": ["ch31", "ch46"]
+  },
+  {
+    "bridges": ["MB6a", "MB6b"],
+    "home": "A-008, A-011; ch46–ch35",
+    "fieldCrux": "Selection/competition dynamics; gradual disempowerment (no single standard name in model-centric agendas)",
+    "agendas": "Largely outside model-centric agendas",
+    "bookMove": "Outcomes depend on socio-technical selection and basin stability, not weights alone; institutions selected to preserve correction",
+    "cards": ["mb6-selection-and-basin-stability", "attractor-control", "civilizational-correction-problem"],
+    "chapters": ["ch35", "ch36", "ch37"]
+  },
+  {
+    "bridges": ["MB7a", "MB7b", "MB7c"],
+    "home": "A-004, A-009; ch10, ch46, ch47",
+    "fieldCrux": "Inner alignment / deceptive alignment; scalable-oversight ceiling; Control's capability gap",
+    "agendas": "RLHF, Debate, Amplification, AI Control (Redwood)",
+    "bookMove": "Bound hidden productive B-IQ via access robustness plus filter coverage; price the cost of faking the monitored signal",
+    "cards": ["mb7-hidden-capability-and-access", "adversarial-agency-tests", "strategic-opacity"],
+    "chapters": ["ch10", "ch43", "ch47"]
+  },
+  {
+    "bridges": ["MB7d"],
+    "home": "A-009, A-013; ch48",
+    "fieldCrux": "Acausal / inferential coordination; program equilibrium across severed channels",
+    "agendas": "Decision theory (MIRI-adjacent)",
+    "bookMove": "Inferential-coupling detector certificates for coordination that survives cutting ordinary communication and control",
+    "cards": ["mb7-hidden-capability-and-access", "composite-agency", "detecting-composite-agents"],
+    "chapters": ["ch35", "ch48"]
+  },
+  {
+    "bridges": ["MB9"],
+    "home": "A-014; ch3, ch47",
+    "fieldCrux": "Specification and world-model coverage: you cannot enumerate all safety-relevant phenomena",
+    "agendas": "Guaranteed-Safe / Open Agency (davidad)",
+    "bookMove": "Grounding conservativity: value-relevant change must move the checked abstraction or raise uncertainty — no silent gaps",
+    "cards": ["mb9-grounding-certificate", "grounding-viability", "dynamical-guarantee"],
+    "chapters": ["ch03", "ch43", "ch47"]
+  },
+  {
+    "bridges": ["MB10"],
+    "home": "A-007, A-009; ch08, ch31, ch43",
+    "fieldCrux": "Deceptive alignment / measurement gaming at the successor layer: pass every audited checklist while defecting on what was omitted",
+    "agendas": "Deceptive alignment (mesa-optimization), agent foundations (tiling)",
+    "bookMove": "Require the conserved-property signature itself to be adversarially verifiable up to the successor's capability before a passing score counts as evidence",
+    "cards": ["mb10-successor-forgeability", "deployment-gate", "minimal-certification-schema"],
+    "chapters": ["ch08", "ch31", "ch43"]
+  }
+]

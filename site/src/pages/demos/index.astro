@@ -1,0 +1,122 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import Badge from "../../components/Badge.astro";
+import demos from "../../data/demos.json";
+import { bookHref, cardHref } from "../../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
+const demoHref = (sitePath: string) => withBase(sitePath);
+---
+
+<SiteLayout
+  title="Chapter demos"
+  description="Inventory of interactive chapter toys for quick exploration."
+>
+  <section class="hero">
+    <p class="eyebrow">Research toys</p>
+    <h1>Chapter demos</h1>
+    <p class="lede">
+      Experimental mini apps that illustrate manuscript ideas. They are not part of the PDF and are not validation of frontier systems — sanity-check toys for intuition.
+    </p>
+    <div class="button-row">
+      <a class="button primary" href={withBase("/chapter-demos/ch16-value-bundle-simulator/")}>Try a demo</a>
+      <a class="button" href={`${repoUrl}/tree/main/src/demos`} target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+    </div>
+  </section>
+
+  <section class="callout readable">
+    <h2>How to run</h2>
+    <p><strong>Integrated (recommended):</strong> <code>./serve-site.sh</code> — serves the site and copies demos into <code>/chapter-demos/</code>. The UAD board proxies to a local Python backend automatically.</p>
+    <p><strong>Demos only:</strong> <code>./serve-demos.sh</code> or <code>{demos.standaloneCommand}</code> — static demos at port {demos.standalonePort}; Python backend demos on their own port.</p>
+  </section>
+
+  <section class="readable">
+    <h2>Inventory ({demos.demos.length})</h2>
+    <div class="grid">
+      {demos.demos.map((demo) => (
+        <article class="card" id={demo.id}>
+          <div class="badge-row">
+            {demo.chapterId && <Badge label={demo.chapterId} variant="framework" />}
+            <Badge label={demo.kind.replace("-", " ")} />
+          </div>
+          <h3>
+            <a href={demoHref(demo.sitePath)}>{demo.title}</a>
+          </h3>
+          {demo.chapterTitle && (
+            <p class="side-panel-meta">
+              Book: <a href={bookHref(base, demo.chapterId!)}>{demo.chapterTitle}</a>
+              {" · "}
+              <a href={cardHref(base, `chapters/${demo.chapterId}`)}>Chapter card</a>
+            </p>
+          )}
+          <p>{demo.summary}</p>
+          <p>
+            <a class="button" href={demoHref(demo.sitePath)}>Launch demo</a>
+            {" "}
+            <a href={demo.standaloneUrl} title="Standalone demo server">Standalone</a>
+            {" · "}
+            <a href={`${repoUrl}/tree/main/${demo.githubPath}`} target="_blank" rel="noopener noreferrer">Source</a>
+          </p>
+          {demo.requiresBackend && (
+            <p class="side-panel-meta">Needs Python backend (port {demo.port}) — started by <code>./serve-site.sh</code></p>
+          )}
+          {demo.cards.length > 0 && (
+            <p class="side-panel-meta">
+              Related cards:{" "}
+              {demo.cards.map((card, i) => (
+                <>
+                  {i > 0 && ", "}
+                  <a href={withBase(`/cards/${card.slug}/`)}>{card.title}</a>
+                </>
+              ))}
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="readable">
+    <h2>By chapter</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Chapter</th>
+            <th>Demo</th>
+            <th>Kind</th>
+            <th>Launch</th>
+          </tr>
+        </thead>
+        <tbody>
+          {demos.demos.map((demo) => (
+            <tr>
+              <td>{demo.chapterId || "—"}</td>
+              <td>
+                <a href={`#${demo.id}`}>{demo.title}</a>
+              </td>
+              <td>{demo.kind}</td>
+              <td><a href={demoHref(demo.sitePath)}>Open</a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  pre {
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+  }
+
+  pre code {
+    font-size: 0.92rem;
+  }
+</style>

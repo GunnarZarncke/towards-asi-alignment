@@ -1,0 +1,27 @@
+---
+interface Props {
+  liveUrl: string;
+  title?: string;
+}
+
+const { liveUrl, title = "Try in Lean 4 Web" } = Astro.props;
+---
+
+<section class="callout lean-try">
+  <h2>Try this out</h2>
+  <p>
+    Open a self-contained snippet in the
+    <a href="https://live.lean-lang.org/">Lean 4 Web</a> editor with the infoview.
+    The link preloads the full playground (inline compressed code, or GitHub raw when
+    the snippet exceeds share-link size limits).
+  </p>
+  <p>
+    <a class="button primary" href={liveUrl} target="_blank" rel="noopener noreferrer">{title}</a>
+  </p>
+</section>
+
+<style>
+  .lean-try {
+    margin-top: 1.5rem;
+  }
+</style>

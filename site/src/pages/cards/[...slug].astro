@@ -1,0 +1,439 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import Badge from "../../components/Badge.astro";
+import Formula from "../../components/Formula.astro";
+import BridgeCrosswalkTable from "../../components/BridgeCrosswalkTable.astro";
+import FieldSubsumptionsTable from "../../components/FieldSubsumptionsTable.astro";
+import ReferenceIndex from "../../components/ReferenceIndex.astro";
+import LeanCodeBlock from "../../components/LeanCodeBlock.astro";
+import LeanTryIt from "../../components/LeanTryIt.astro";
+import partGems from "../../data/part-gems.json";
+import fieldSubsumptionGems from "../../data/field-subsumption-gems.json";
+import references from "../../data/references.json";
+import demosIndex from "../../data/demos.json";
+import bookIndex from "../../data/book.json";
+import crosswalkRows from "../../data/bridge-crosswalk.json";
+import leanSpine from "../../data/lean-spine.json";
+import { bookHref, cardHref as buildCardHref, resolveCard } from "../../lib/site-urls";
+import { referenceLinksFor } from "../../lib/reference-links";
+
+export async function getStaticPaths() {
+  const cards = await getCollection("cards");
+  return cards.map((card) => ({
+    params: { slug: card.id },
+    props: { card }
+  }));
+}
+
+const { card } = Astro.props;
+const { Content } = await render(card);
+const allCards = await getCollection("cards");
+const gemSlugs = new Set([...Object.values(partGems).flat(), ...fieldSubsumptionGems]);
+const isGem = (slug: string) => gemSlugs.has(slug);
+const refByKey = new Map(references.map((entry) => [entry.key, entry]));
+
+const isBookUnit = ["chapter", "appendix", "frontmatter"].includes(card.data.type);
+const isCrosswalkCard = card.id === "chapters/appb";
+const isReferenceIndexCard = card.id === "reference-index";
+const isReferenceCard = card.data.type === "reference";
+const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
+const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
+const relatedSlugs = [...new Set([...partGemSlugs, ...card.data.related])];
+const related = relatedSlugs
+  .map((slug: string) => resolveCard(allCards, slug))
+  .filter(Boolean);
+
+const chapterCardFor = (chapterId: string) =>
+  allCards.find((candidate) => candidate.data.bookPageId === chapterId && ["chapter", "appendix", "frontmatter"].includes(candidate.data.type));
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const cardHref = (id: string) => buildCardHref(base, id);
+const refCardHref = (key: string) => buildCardHref(base, `references/${key.toLowerCase()}`);
+const toBookHref = (chapterId: string) => bookHref(base, chapterId);
+const titleForChapter = (chapterId: string) =>
+  bookIndex.chapters.find((ch: { id: string; title: string }) => ch.id === chapterId)?.title ??
+  allCards.find((c) => c.data.bookPageId === chapterId)?.data.title ??
+  null;
+
+const chapterOrder = (id: string) => {
+  const n = id.match(/^ch(\d+)$/)?.[1];
+  return n ? Number(n) : id === "appb" ? 1000 : 9999;
+};
+
+const crosswalkBridgeSlugs = [...new Set(crosswalkRows.flatMap((row) => row.cards.filter((slug) => slug.startsWith("mb"))))].sort();
+const crosswalkConceptSlugs = [
+  ...new Set([
+    ...crosswalkRows.flatMap((row) => row.cards.filter((slug) => !slug.startsWith("mb"))),
+    "bridge-assumptions",
+    "evidence-and-uncertainty",
+    "what-not-claiming"
+  ])
+].sort();
+const crosswalkChapterIds = [...new Set(crosswalkRows.flatMap((row) => row.chapters))].sort(
+  (a, b) => chapterOrder(a) - chapterOrder(b)
+);
+
+const repoBase = "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main";
+
+function leanSpineNodeId(nodeId: string) {
+  return (
+    nodeId.match(/^(P\d+[A-Za-z]?)/)?.[1] ||
+    nodeId.match(/^(MB\d+[a-z]?)/i)?.[1]?.toUpperCase() ||
+    null
+  );
+}
+
+function leanSymbolHref(node: { nodeId: string; module: string }) {
+  const spineId = leanSpineNodeId(node.nodeId);
+  if (spineId) return withBase(`/lean/node/${spineId}/`);
+  return `${repoBase}/formal/${node.module}`;
+}
+
+function playgroundForLeanNode(nodeId: string) {
+  const spineId = leanSpineNodeId(nodeId);
+  if (!spineId) return null;
+  return leanSpine.playgrounds.find((pg) => pg.nodeId === spineId) ?? null;
+}
+
+const leanPlaygrounds = [
+  ...new Map(
+    card.data.leanNodes
+      .map((node) => playgroundForLeanNode(node.nodeId))
+      .filter(Boolean)
+      .map((pg) => [pg!.id, pg!])
+  ).values()
+];
+
+const bibEntry = isReferenceCard && card.data.bibKey ? refByKey.get(card.data.bibKey) : undefined;
+const referenceLinks = isReferenceCard
+  ? referenceLinksFor(card.data.external, bibEntry)
+  : [];
+---
+
+<SiteLayout title={card.data.title} description={card.data.summary}>
+  <article class="two-column">
+    <div class="content-card">
+      <div class="badge-row">
+        <Badge label={card.data.type} />
+        <Badge label={card.data.status} variant={card.data.status} />
+        {isGem(card.id) && <Badge label="gem" variant="gem" />}
+        {card.data.part && <Badge label={card.data.part} variant="framework" />}
+        {card.data.formalDensity && <Badge label={card.data.formalDensity} />}
+      </div>
+      <h1>{card.data.title}</h1>
+      <p class="lede">{card.data.summary}</p>
+
+      {isReferenceCard && referenceLinks.length > 0 && (
+        <section class="reference-source">
+          <h2>Publication links</h2>
+          <ul class="reference-link-list">
+            {referenceLinks.map((link) => (
+              <li>
+                <strong>{link.label}:</strong>{" "}
+                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {card.data.decision && (
+        <section class="callout">
+          <h2>What decision changes?</h2>
+          <p>{card.data.decision}</p>
+        </section>
+      )}
+
+      <Content />
+
+      {isCrosswalkCard && (
+        <BridgeCrosswalkTable
+          cardHref={cardHref}
+          chapterHref={toBookHref}
+        />
+      )}
+
+      {isReferenceIndexCard && (
+        <ReferenceIndex cardHref={cardHref} />
+      )}
+
+      {isReferenceIndexCard && (
+        <p class="button-row">
+          <a class="button" href={withBase("/references/")}>Chapter-grouped bibliography</a>
+        </p>
+      )}
+
+      {leanPlaygrounds.map((pg) => (
+        <>
+          <LeanCodeBlock
+            code={pg.code}
+            sourceFile={pg.file}
+            sourceUrl={`${repoBase}/${pg.file}`}
+          />
+          <LeanTryIt liveUrl={pg.liveUrl} title={`Try ${pg.nodeId} in Lean 4 Web`} />
+          <p class="side-panel-meta">
+            <a href={withBase(`/lean/node/${pg.nodeId}/`)}>Lean spine node {pg.nodeId}</a>
+          </p>
+        </>
+      ))}
+
+      {card.data.formulas.length > 0 && (
+        <section class="formulas">
+          <h2>Formulas</h2>
+          {card.data.formulas.map((formula) => (
+            <Formula latex={formula.latex} explanation={formula.explanation} chapterId={formula.chapterId} />
+          ))}
+        </section>
+      )}
+
+      {card.data.evidence && (
+        <section class="callout">
+          <h2>What would count as evidence?</h2>
+          <p>{card.data.evidence}</p>
+        </section>
+      )}
+
+      {isReferenceCard && card.data.bibKey && (
+        <p class="button-row">
+          <a class="button" href={withBase("/references/")}>Chapter-grouped bibliography</a>
+          {" "}
+          <a class="button" href={cardHref("reference-index")}>All reference cards</a>
+        </p>
+      )}
+
+      {isBookUnit && card.data.bookPageId && (
+        <section class="book-actions">
+          <p><a class="button primary" href={toBookHref(card.data.bookPageId)}>Read full {card.data.type}</a></p>
+        </section>
+      )}
+    </div>
+
+    <aside class="side-panel" aria-label="Related content" id="related">
+      <h2>Related content</h2>
+      {!isBookUnit && !isReferenceCard && card.data.bookChapters.length > 0 && (
+        <>
+          <h3>Book chapters</h3>
+          <ul>
+            {card.data.bookChapters.map((chapterId) => {
+              const chapterCard = chapterCardFor(chapterId);
+              return (
+                <li>
+                  {chapterCard ? (
+                    <a href={cardHref(chapterCard.id)}>{chapterCard.data.title}</a>
+                  ) : (
+                    <a href={toBookHref(chapterId)}>{chapterId}</a>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      {!isBookUnit && card.data.bookSections.length > 0 && (
+        <>
+          <h3>Book sections</h3>
+          <ul>
+            {card.data.bookSections.map((section) => {
+              const chapterCard = chapterCardFor(section.chapterId);
+              return (
+                <li>
+                  {chapterCard ? (
+                    <a href={cardHref(chapterCard.id)}>{section.label}</a>
+                  ) : (
+                    <a href={toBookHref(section.chapterId)}>{section.chapterId}: {section.label}</a>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      {card.data.leanNodes.length > 0 && (
+        <>
+          <h3>Lean proof spine</h3>
+          <ul>
+            {card.data.leanNodes.map((node) => (
+              <li>
+                <a href={leanSymbolHref(node)}><code>{node.nodeId}</code></a>
+                {" "}({node.kind}) &mdash; {node.summary}
+                <br /><span class="side-panel-meta">{node.module}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {card.data.evidenceNotes.length > 0 && (
+        <>
+          <h3>Experiment evidence</h3>
+          <ul>
+            {card.data.evidenceNotes.map((note) => (
+              <li>
+                <strong>{note.finding}</strong> &mdash; {note.summary}
+                <br /><span class="side-panel-meta">{note.source}{note.scenario ? ` / ${note.scenario}` : ""} &middot; <a href={note.resultsPath}>results</a></span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {card.data.demos.length > 0 && (
+        <>
+          <h3>Interactive demos</h3>
+          <ul>
+            {card.data.demos.map((demo) => {
+              const entry = demoFor(demo.demoId);
+              const href = entry ? withBase(entry.sitePath) : `https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/src/demos/${demo.demoId}`;
+              return (
+              <li>
+                {entry ? (
+                  <>
+                    <a href={href}>{entry.title}</a>
+                    {" · "}
+                    <a href={entry.standaloneUrl} title="Standalone demo server">Standalone</a>
+                    {" · "}
+                    <a href={withBase(`/demos/#${demo.demoId}`)}>Inventory</a>
+                  </>
+                ) : (
+                  <a href={href}>{demo.demoId}</a>
+                )}
+                <br /><span class="side-panel-meta">{demo.summary || entry?.summary}</span>
+              </li>
+              );
+            })}
+          </ul>
+          <p class="side-panel-meta"><a href={withBase("/demos/")}>All chapter demos</a></p>
+        </>
+      )}
+      {isCrosswalkCard && (
+        <>
+          <h3>Bridge cards</h3>
+          <ul>
+            {crosswalkBridgeSlugs.map((slug) => {
+              const entry = allCards.find((c) => c.id === slug);
+              return (
+                <li>
+                  <a href={cardHref(slug)}>{entry?.data.title ?? slug}</a>
+                </li>
+              );
+            })}
+          </ul>
+          <h3>Concept cards</h3>
+          <ul>
+            {crosswalkConceptSlugs.map((slug) => {
+              const entry = allCards.find((c) => c.id === slug);
+              return (
+                <li>
+                  <a href={cardHref(slug)}>{entry?.data.title ?? slug}</a>
+                  {isGem(slug) && <Badge label="gem" variant="gem" />}
+                </li>
+              );
+            })}
+          </ul>
+          <h3>Book chapters</h3>
+          <ul>
+            {crosswalkChapterIds.map((chapterId) => {
+              const chapterCard = chapterCardFor(chapterId);
+              return (
+                <li>
+                  {chapterCard ? (
+                    <a href={cardHref(chapterCard.id)}>{chapterCard.data.title}</a>
+                  ) : (
+                    <a href={toBookHref(chapterId)}>{titleForChapter(chapterId) ?? chapterId}</a>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      {!isCrosswalkCard && related.length > 0 && (
+        <>
+          <h3>{isBookUnit ? "Concept cards in this chapter" : "Related cards"}</h3>
+          <ul>
+            {related.map((relatedCard) => (
+              <li>
+                <a href={cardHref(relatedCard!.id)}>{relatedCard!.data.title}</a>
+                {isGem(relatedCard!.id) && <Badge label="gem" variant="gem" />}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {isReferenceCard && card.data.citedIn.length > 0 && (
+        <>
+          <h3>Cited in</h3>
+          <ul>
+            {card.data.citedIn.map((unitId) => {
+              const unitCard = chapterCardFor(unitId);
+              return (
+                <li>
+                  {unitCard ? (
+                    <a href={cardHref(unitCard.id)}>{unitCard.data.title}</a>
+                  ) : (
+                    <a href={toBookHref(unitId)}>{titleForChapter(unitId) ?? unitId}</a>
+                  )}
+                  <span class="side-panel-meta"> ({unitId})</span>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      {card.data.citeKeys.length > 0 && (
+        <>
+          <h3>Published work</h3>
+          <ul>
+            {card.data.citeKeys.map((key) => {
+              const entry = refByKey.get(key);
+              return (
+                <li>
+                  <a href={refCardHref(key)}>
+                    {entry ? `${entry.shortLabel} — ${entry.title}` : key}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      {card.data.external.length > 0 && !isReferenceCard && (
+        <>
+          <h3>External links</h3>
+          <ul>
+            {card.data.external.map((link) => (
+              <li><a href={link.url}>{link.label}</a></li>
+            ))}
+          </ul>
+        </>
+      )}
+    </aside>
+  </article>
+</SiteLayout>
+
+{isReferenceCard && (
+  <style>
+    .reference-source {
+      margin: 1.25rem 0;
+      padding: 1rem 1.15rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 6px);
+      background: var(--color-surface-muted, var(--color-surface));
+    }
+
+    .reference-source h2 {
+      margin: 0 0 0.65rem;
+      font-size: 1.05rem;
+    }
+
+    .reference-link-list {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .reference-link-list li {
+      margin: 0.45rem 0;
+      word-break: break-word;
+    }
+  </style>
+)}

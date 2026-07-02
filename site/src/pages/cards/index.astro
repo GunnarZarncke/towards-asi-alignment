@@ -1,0 +1,122 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import CardSection from "../../components/CardSection.astro";
+import { cardHref as buildCardHref } from "../../lib/site-urls";
+import fieldSubsumptionGems from "../../data/field-subsumption-gems.json";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const cardHref = (id: string) => buildCardHref(base, id);
+
+const cards = await getCollection("cards");
+
+const toEntry = (card: (typeof cards)[number]) => ({
+  id: card.id,
+  title: card.data.title,
+  summary: card.data.summary,
+  type: card.data.type,
+  status: card.data.status
+});
+
+const chapterRank = (card: (typeof cards)[number]) =>
+  Number(card.data.bookPageId?.replace("ch", "") || 0);
+
+const appendixRank = (card: (typeof cards)[number]) => {
+  if (card.data.type === "frontmatter") return 0;
+  return 1 + (card.data.bookPageId || "").charCodeAt(3);
+};
+
+const chapters = cards
+  .filter((card) => card.data.type === "chapter")
+  .sort((a, b) => chapterRank(a) - chapterRank(b))
+  .map(toEntry);
+
+const appendices = cards
+  .filter((card) => ["appendix", "frontmatter"].includes(card.data.type))
+  .sort((a, b) => appendixRank(a) - appendixRank(b))
+  .map(toEntry);
+
+const byType = (type: string) =>
+  cards
+    .filter((card) => card.data.type === type)
+    .sort((a, b) => a.data.title.localeCompare(b.data.title))
+    .map(toEntry);
+
+const concepts = byType("concept").filter((card) => !fieldSubsumptionGems.includes(card.id));
+const referencesSection = [
+  {
+    id: "reference-index",
+    title: "Reference cards",
+    summary: "Alphabetical index of every bibliography entry — each opens as its own card with citing chapters.",
+    type: "artifact",
+    status: "reviewed"
+  }
+];
+const fieldSubsumptions = cards
+  .filter((card) => fieldSubsumptionGems.includes(card.id))
+  .sort((a, b) => fieldSubsumptionGems.indexOf(a.id) - fieldSubsumptionGems.indexOf(b.id))
+  .map(toEntry);
+const bridges = byType("bridge");
+const artifacts = byType("artifact");
+const objections = byType("objection");
+const glossary = byType("glossary");
+
+const sections = [
+  { title: "Chapters", id: "chapters", cards: chapters },
+  { title: "Appendices & front matter", id: "appendices", cards: appendices },
+  { title: "Reference cards", id: "references", cards: referencesSection },
+  { title: "Field subsumptions", id: "field-subsumptions", cards: fieldSubsumptions },
+  { title: "Concepts", id: "concepts", cards: concepts },
+  { title: "Bridges", id: "bridges", cards: bridges },
+  { title: "Artifacts", id: "artifacts", cards: artifacts },
+  { title: "Objections & caveats", id: "objections", cards: objections },
+  { title: "Glossary", id: "glossary", cards: glossary }
+];
+
+const totalCards = sections.reduce((sum, section) => sum + section.cards.length, 0);
+---
+
+<SiteLayout title="Cards" description="Short concept, bridge, objection, artifact, and glossary cards.">
+  <section class="hero">
+    <p class="eyebrow">Cards</p>
+    <h1>Short canonical artifacts</h1>
+    <p class="lede">
+      {totalCards} cards across chapters, appendices, concepts, bridges, and supporting artifacts. Each section shows three entries first — expand to browse the full inventory.
+    </p>
+    <p class="side-panel-meta">
+      <a href={withBase("/references/")}>Chapter-grouped bibliography</a>
+      {" · "}
+      <a href={withBase("/paths/")}>Prefer a guided tour?</a>
+    </p>
+  </section>
+
+  {sections.map((section) => (
+    <CardSection
+      title={section.title}
+      sectionId={section.id}
+      cards={section.cards}
+      cardHref={cardHref}
+      gemIds={section.id === "field-subsumptions" ? fieldSubsumptionGems : []}
+    />
+  ))}
+</SiteLayout>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>("button.toggle-section")) {
+    button.addEventListener("click", () => {
+      const sectionId = button.dataset.section;
+      if (!sectionId) return;
+      const grid = document.querySelector<HTMLElement>(`.card-section-grid[data-section="${sectionId}"]`);
+      if (!grid) return;
+
+      const expanding = button.dataset.action === "expand";
+      grid.classList.toggle("is-expanded", expanding);
+      button.dataset.action = expanding ? "collapse" : "expand";
+      button.setAttribute("aria-expanded", expanding ? "true" : "false");
+
+      const hidden = button.dataset.hidden || "0";
+      button.textContent = expanding ? "Show less" : `Show ${hidden} more`;
+    });
+  }
+</script>

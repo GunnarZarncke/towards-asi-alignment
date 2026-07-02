@@ -1,0 +1,103 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import profile from "../../data/author-profile.json";
+
+const aintelopeUrl = "https://www.aintelope.net/";
+const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
+---
+
+<SiteLayout title="About the Author" description="About Gunnar Zarncke, author of Towards Superintelligence Alignment.">
+  <section class="hero">
+    <p class="eyebrow">About the author</p>
+    <h1>{profile.name}</h1>
+    <p class="lede">
+      Author of <em>Towards Superintelligence Alignment</em>.
+    </p>
+  </section>
+
+  <section class="readable content-card">
+    <p>
+      Gunnar Zarncke is the founder and Managing Director of
+      <a href={aintelopeUrl}>aintelope</a>, a German nonprofit focused on AI alignment research;
+      previously CTO/CISO building a security-first systems and teams for a fintech startup.
+      Gunnar is a systems architect specializing in quickly evolving systems.
+      Over more than a decade, he has led architecture and engineering across startups and larger orgs,
+      including building a fintech platform and team as CTO, owning security as CISO,
+      and driving an evidence-based security-first engineering culture.
+      Gunnar is interested in the study of brain-like AI safety approaches, foundations of agency,
+      collaborative AI, and AI safety in real-world systems.
+    </p>
+
+    <h2>Links</h2>
+    <ul class="link-list">
+      {profile.links.map((link) => (
+        <li>
+          <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
+          {link.note && <span class="side-panel-meta"> ({link.note})</span>}
+        </li>
+      ))}
+    </ul>
+
+    <h2>aintelope</h2>
+    <p>
+      <a href={aintelopeUrl}>aintelope</a> is a German nonprofit focused on AI alignment research.
+      Its public tagline: AGI research inspired by neuroscience. A better future for all sentient beings.
+    </p>
+
+    <h2>Publications</h2>
+    <p class="side-panel-meta">
+      Working papers, reports, and posts from the research program behind the book. PDFs link to
+      canonical copies in sibling repos (
+      <a href="https://github.com/GunnarZarncke/agency-detect">agency-detect</a>,
+      <a href="https://github.com/GunnarZarncke/brain-to-values">brain-to-values</a>,
+      <a href="https://github.com/GunnarZarncke/ai-safety-interventions">ai-safety-interventions</a>,
+      <a href="https://github.com/GunnarZarncke/alignment-attractor">alignment-attractor</a>
+      ) where available.
+    </p>
+    <ul class="publication-list">
+      {profile.publications.map((pub) => (
+        <li>
+          <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a>
+          <span class="pub-meta"> ({pub.year}{pub.kind ? ` · ${pub.kind}` : ""})</span>
+          {pub.alternateUrl && (
+            <>
+              {" · "}
+              <a href={pub.alternateUrl} target="_blank" rel="noopener noreferrer" class="side-panel-meta">LessWrong</a>
+            </>
+          )}
+          {pub.externalUrl && (
+            <>
+              {" · "}
+              <a href={pub.externalUrl} target="_blank" rel="noopener noreferrer" class="side-panel-meta">preprint</a>
+            </>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    <p>
+      <a href={repoUrl}>View the book repository on GitHub</a>
+    </p>
+  </section>
+</SiteLayout>
+
+<style>
+  .link-list,
+  .publication-list {
+    padding-left: 1.2rem;
+  }
+
+  .link-list li + li,
+  .publication-list li + li {
+    margin-top: 0.55rem;
+  }
+
+  .publication-list li p {
+    margin: 0.25rem 0 0;
+  }
+
+  .pub-meta {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+</style>

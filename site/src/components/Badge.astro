@@ -1,0 +1,10 @@
+---
+interface Props {
+  label: string;
+  variant?: string;
+}
+
+const { label, variant = "" } = Astro.props;
+---
+
+<span class={`badge ${variant}`.trim()}>{label}</span>

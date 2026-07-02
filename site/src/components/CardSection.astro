@@ -1,0 +1,84 @@
+---
+import Badge from "./Badge.astro";
+
+interface CardEntry {
+  id: string;
+  title: string;
+  summary: string;
+  type: string;
+  status: string;
+}
+
+interface Props {
+  title: string;
+  sectionId: string;
+  cards: CardEntry[];
+  initialCount?: number;
+  cardHref: (id: string) => string;
+  gemIds?: string[];
+}
+
+const { title, sectionId, cards, initialCount = 3, cardHref, gemIds = [] } = Astro.props;
+const gemSet = new Set(gemIds);
+const hasMore = cards.length > initialCount;
+---
+
+<section class="card-section" id={sectionId}>
+  <h2>{title} <span class="section-count">({cards.length})</span></h2>
+  {cards.length === 0 ? (
+    <p class="side-panel-meta">None yet.</p>
+  ) : (
+    <>
+      <div class="grid card-section-grid" data-section={sectionId}>
+        {cards.map((card, index) => (
+          <article
+            class:list={["card", "card-section-item", index >= initialCount && "is-collapsed"]}
+            data-section={sectionId}
+          >
+            <div class="badge-row">
+              <Badge label={card.type} />
+              <Badge label={card.status} variant={card.status} />
+              {gemSet.has(card.id) && <Badge label="gem" variant="gem" />}
+            </div>
+            <h3><a href={cardHref(card.id)}>{card.title}</a></h3>
+            <p>{card.summary}</p>
+          </article>
+        ))}
+      </div>
+      {hasMore && (
+        <p>
+          <button
+            type="button"
+            class="button toggle-section"
+            data-section={sectionId}
+            data-hidden={cards.length - initialCount}
+            data-action="expand"
+            aria-expanded="false"
+          >
+            Show {cards.length - initialCount} more
+          </button>
+        </p>
+      )}
+    </>
+  )}
+</section>
+
+<style>
+  .section-count {
+    font-weight: 400;
+    color: var(--color-muted);
+    font-size: 0.92em;
+  }
+
+  .card-section-item.is-collapsed {
+    display: none;
+  }
+
+  .card-section-grid.is-expanded .card-section-item.is-collapsed {
+    display: block;
+  }
+
+  .toggle-section {
+    margin-top: 0.5rem;
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import Badge from "../../../components/Badge.astro";
+import LeanTryIt from "../../../components/LeanTryIt.astro";
+import LeanCodeBlock from "../../../components/LeanCodeBlock.astro";
+import LeanSpineSource from "../../../components/LeanSpineSource.astro";
+import leanSpine from "../../../data/lean-spine.json";
+
+export function getStaticPaths() {
+  return Object.keys(leanSpine.nodes).map((id) => ({
+    params: { id },
+    props: { node: leanSpine.nodes[id as keyof typeof leanSpine.nodes] }
+  }));
+}
+
+const { node } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const repoBase = "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main";
+const playground = leanSpine.playgrounds.find((pg) => pg.nodeId === node.id);
+const graphsWithNode = leanSpine.graphOrder.filter((slug) => {
+  const graph = leanSpine.graphs[slug as keyof typeof leanSpine.graphs];
+  return graph?.nodes.some((n) => n.id === node.id);
+});
+---
+
+<SiteLayout
+  title={node.label.replace(/\n/g, " ")}
+  description={node.gloss || node.label.replace(/\n/g, " ")}
+>
+  <article class="two-column">
+    <div class="content-card readable">
+      <div class="badge-row">
+        {node.kind && <Badge label={node.kind} variant={node.kind === "bridge" ? "open" : node.kind === "proof" ? "established" : "framework"} />}
+      </div>
+      <p class="eyebrow"><a href={withBase("/lean/")}>Lean proof spine</a></p>
+      <h1>{node.label.replace(/\n/g, " ")}</h1>
+      {node.gloss && <p class="lede">{node.gloss}</p>}
+      {node.theorem && (
+        <p class="side-panel-meta">Spine theorem: <code>{node.theorem}</code></p>
+      )}
+
+      {playground ? (
+        <>
+          <LeanCodeBlock
+            code={playground.code}
+            sourceFile={playground.file}
+            sourceUrl={`${repoBase}/${playground.file}`}
+          />
+          <LeanTryIt liveUrl={playground.liveUrl} />
+        </>
+      ) : node.spineSource ? (
+        <LeanSpineSource spineSource={node.spineSource} nodeId={node.id} />
+      ) : (
+        <section class="callout">
+          <p>
+            No extracted Lean snippet yet for this graph node. Browse
+            <a href={`${repoBase}/formal/`} target="_blank" rel="noopener noreferrer">formal/</a>
+            {node.theorem && (
+              <> — theorem <code>{node.theorem}</code> is named in the axiom ledger.</>
+            )}
+          </p>
+        </section>
+      )}
+
+      {node.axioms && node.axioms.length > 0 && (
+        <section>
+          <h2>Axiom footprint (headline check)</h2>
+          <ul>
+            {node.axioms.map((axiom) => (
+              <li><code>{axiom}</code></li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+
+    <aside class="side-panel" aria-label="Related content">
+      <h2>Related content</h2>
+      {node.cardSlug && (
+        <>
+          <h3>Concept card</h3>
+          <p><a href={withBase(`/cards/${node.cardSlug}/`)}>Open card</a></p>
+        </>
+      )}
+      {graphsWithNode.length > 0 && (
+        <>
+          <h3>Appears in graphs</h3>
+          <ul>
+            {graphsWithNode.map((slug) => {
+              const graph = leanSpine.graphs[slug as keyof typeof leanSpine.graphs];
+              return (
+                <li><a href={withBase(`/lean/graph/${slug}/`)}>{graph?.title || slug}</a></li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      {(playground || node.spineSource?.file || node.theorem) && (
+        <>
+          <h3>Source</h3>
+          <ul>
+            {playground && (
+              <li>
+                <a href={`${repoBase}/${playground.file}`} target="_blank" rel="noopener noreferrer">Playground file</a>
+              </li>
+            )}
+            {node.spineSource?.file && (
+              <li>
+                <a href={`${repoBase}/${node.spineSource.file}`} target="_blank" rel="noopener noreferrer">Spine module</a>
+              </li>
+            )}
+            <li>
+              <a href={`${repoBase}/formal/`} target="_blank" rel="noopener noreferrer">Formal spine modules</a>
+            </li>
+          </ul>
+        </>
+      )}
+    </aside>
+  </article>
+</SiteLayout>

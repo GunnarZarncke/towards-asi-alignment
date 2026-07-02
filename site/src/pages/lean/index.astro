@@ -1,0 +1,133 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import Badge from "../../components/Badge.astro";
+import LeanOverviewDiagram from "../../components/LeanOverviewDiagram.astro";
+import FieldSubsumptionsTable from "../../components/FieldSubsumptionsTable.astro";
+import leanSpine from "../../data/lean-spine.json";
+import { bookHref, cardHref } from "../../lib/site-urls";
+import bookIndex from "../../data/book.json";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/formal";
+const toCardHref = (id: string) => cardHref(base, id);
+const toBookHref = (id: string) => bookHref(base, id);
+const titleForChapter = (chapterId: string) =>
+  bookIndex.chapters.find((ch: { id: string; title: string }) => ch.id === chapterId)?.title ?? chapterId;
+---
+
+<SiteLayout
+  title="Lean Proof Spine"
+  description="Interactive map of the Lean 4 proof spine: dependency graphs, modules, and try-it-out snippets."
+>
+  <section class="hero">
+    <p class="eyebrow">Appendix G on the web</p>
+    <h1>Lean proof spine</h1>
+    <p class="lede">
+      A machine-checked conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold,
+      then the certification claims follow. Lean does not prove real systems satisfy the bridges.
+    </p>
+    <div class="button-row">
+      <a class="button primary" href={withBase("/lean/graph/overview/")}>Open overview graph</a>
+      <a class="button" href="#overview-diagram">Jump to overview diagram</a>
+      <a class="button" href={`${repoUrl}/AlignmentProofSpine`} target="_blank" rel="noopener noreferrer">View Lean source</a>
+      <a class="button" href={bookHref(base, "appB")}>Bridge crosswalk (Appendix B)</a>
+    </div>
+  </section>
+
+  <div id="overview-diagram">
+    <LeanOverviewDiagram />
+  </div>
+
+  <FieldSubsumptionsTable
+    cardHref={toCardHref}
+    chapterHref={toBookHref}
+    chapterTitle={titleForChapter}
+    leanHref={withBase("/lean/")}
+  />
+
+  {leanSpine.sections.map((section) => (
+    <section class="readable">
+      <h2>{section.title}</h2>
+      <p>{section.summary}</p>
+      {section.graphSlugs.length > 0 && (
+        <div class="grid">
+          {section.graphSlugs.map((slug) => {
+            const graph = leanSpine.graphs[slug as keyof typeof leanSpine.graphs];
+            if (!graph) return null;
+            const bridgeCount = graph.nodes.filter((n) => n.kind === "bridge").length;
+            const proofCount = graph.nodes.filter((n) => n.kind === "proof").length;
+            return (
+              <article class="card">
+                <h3><a href={withBase(`/lean/graph/${slug}/`)}>{graph.title}</a></h3>
+                <p>
+                  {graph.nodes.length} nodes · {graph.edges.length} edges
+                  {proofCount > 0 && ` · ${proofCount} proof nodes`}
+                  {bridgeCount > 0 && ` · ${bridgeCount} bridges`}
+                </p>
+                <p><a href={withBase(`/lean/graph/${slug}/`)}>Open interactive graph</a></p>
+              </article>
+            );
+          })}
+        </div>
+      )}
+    </section>
+  ))}
+
+  <section class="readable">
+    <h2>Modules</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Book chapters</th>
+          </tr>
+        </thead>
+        <tbody>
+          {leanSpine.modules.map((mod) => (
+            <tr>
+              <td>
+                <a href={`${repoUrl}/${mod.file}`} target="_blank" rel="noopener noreferrer">{mod.title}</a>
+                <br /><span class="side-panel-meta"><code>{mod.file}</code></span>
+              </td>
+              <td>{mod.chapters}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="readable">
+    <h2>Try-it-out snippets</h2>
+    <p>
+      Self-contained finite proofs and counterexamples, pre-linked to
+      <a href="https://live.lean-lang.org/">Lean 4 Web</a>. Add a file under
+      <code>formal/playgrounds/</code> and run <code>npm run sync</code> — URLs are generated automatically.
+    </p>
+    <ul>
+      {leanSpine.playgrounds.map((pg) => (
+        <li>
+          {pg.nodeId ? (
+            <a href={withBase(`/lean/node/${pg.nodeId}/`)}>{pg.title}</a>
+          ) : (
+            pg.title
+          )}
+          {" · "}
+          <a href={pg.liveUrl} target="_blank" rel="noopener noreferrer">Open in Lean Web</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="callout warning readable">
+    <h2>What Lean checks</h2>
+    <p>
+      Three kinds of result appear throughout: <Badge label="proof" variant="established" /> local theorems,
+      <Badge label="counterexample" variant="negative" /> finite separations, and
+      <Badge label="bridge" variant="open" /> empirical handoffs (MB1–MB10).
+      Headline certification theorems depend on explicit bridge records — inspect with <code>#print axioms</code> in the repo.
+    </p>
+  </section>
+</SiteLayout>

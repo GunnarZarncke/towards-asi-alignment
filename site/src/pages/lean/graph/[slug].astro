@@ -1,0 +1,86 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import LeanGraph from "../../../components/LeanGraph.astro";
+import LeanGraphNav from "../../../components/LeanGraphNav.astro";
+import FieldSubsumptionsTable from "../../../components/FieldSubsumptionsTable.astro";
+import Badge from "../../../components/Badge.astro";
+import leanSpine from "../../../data/lean-spine.json";
+import fieldSubsumptions from "../../../data/field-subsumptions.json";
+import fieldSubsumptionGems from "../../../data/field-subsumption-gems.json";
+import bookIndex from "../../../data/book.json";
+import { bookHref, cardHref } from "../../../lib/site-urls";
+
+export function getStaticPaths() {
+  return leanSpine.graphOrder.map((slug) => ({
+    params: { slug },
+    props: { graph: leanSpine.graphs[slug as keyof typeof leanSpine.graphs] }
+  }));
+}
+
+const { graph } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const toCardHref = (id: string) => cardHref(base, id);
+const toBookHref = (id: string) => bookHref(base, id);
+const titleForChapter = (chapterId: string) =>
+  bookIndex.chapters.find((ch: { id: string; title: string }) => ch.id === chapterId)?.title ?? chapterId;
+const gemSlugs = new Set(fieldSubsumptionGems);
+
+const nodeHrefs = Object.fromEntries(
+  graph.nodes.map((node) => {
+    if (node.cardSlug) return [node.id, withBase(`/cards/${node.cardSlug}/`)];
+    return [node.id, withBase(`/lean/node/${encodeURIComponent(node.id)}/`)];
+  })
+);
+---
+
+<SiteLayout title={graph.title} description={`Interactive dependency graph: ${graph.title}`}>
+  <article class="readable">
+    <p class="eyebrow"><a href={withBase("/lean/")}>Lean proof spine</a></p>
+    <h1>{graph.title}</h1>
+    <p class="side-panel-meta">Source: <code>context/lean_proof_graphs/{graph.dotId}.dot</code></p>
+
+    <LeanGraphNav currentSlug={graph.id} />
+
+    <LeanGraph
+      graphId={graph.id}
+      title={graph.title}
+      svgFile={graph.svgFile}
+    />
+
+    {graph.id === "field-subsumptions" && (
+      <FieldSubsumptionsTable
+        cardHref={toCardHref}
+        chapterHref={toBookHref}
+        chapterTitle={titleForChapter}
+        leanHref={withBase("/lean/")}
+      />
+    )}
+
+    {graph.id === "field-subsumptions" && (
+      <section class="readable">
+        <h2>Gem cards</h2>
+        <ul>
+          {fieldSubsumptions.map((row) => (
+            <li>
+              <a href={toCardHref(row.card)}>{row.agenda}</a>
+              {gemSlugs.has(row.card) && <Badge label="gem" variant="gem" />}
+              {" — "}
+              {row.headline}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <h2>Nodes in this graph</h2>
+    <ul>
+      {graph.nodes.map((node) => (
+        <li>
+          <a href={nodeHrefs[node.id]}>{node.label.replace(/\n/g, " ")}</a>
+          {node.kind && ` (${node.kind})`}
+        </li>
+      ))}
+    </ul>
+  </article>
+</SiteLayout>

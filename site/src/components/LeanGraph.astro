@@ -1,0 +1,66 @@
+---
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
+interface Props {
+  graphId: string;
+  title: string;
+  svgFile?: string;
+}
+
+const { graphId, title, svgFile = `lean-graphs/${graphId}.svg` } = Astro.props;
+
+let svgHtml = "";
+try {
+  svgHtml = readFileSync(path.join(process.cwd(), "public", svgFile), "utf8");
+} catch {
+  svgHtml =
+    '<p class="lean-graph-missing">Graph SVG not found. Run <code>npm run sync</code> in <code>site/</code>.</p>';
+}
+---
+
+<div class="lean-graph-wrap">
+  <p class="side-panel-meta lean-graph-hint">
+    Rendered with Graphviz (same sources as the book). Click a node for details; sub-spine boxes (Spine I–IV) open the matching sub-diagram.
+  </p>
+  <div class="lean-graph-svg" role="img" aria-label={title} set:html={svgHtml} />
+</div>
+
+<style>
+  .lean-graph-wrap {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: 0.75rem 0.75rem 1rem;
+    overflow-x: auto;
+  }
+
+  .lean-graph-hint {
+    margin: 0 0 0.65rem;
+  }
+
+  .lean-graph-svg :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 640px;
+  }
+
+  .lean-graph-svg :global(a.lean-graph-node) {
+    cursor: pointer;
+  }
+
+  .lean-graph-svg :global(a.lean-graph-node:hover .node path),
+  .lean-graph-svg :global(a.lean-graph-node:hover .node polygon) {
+    stroke: var(--color-accent-strong);
+    stroke-width: 2.5;
+  }
+
+  .lean-graph-missing {
+    margin: 0;
+    padding: 1rem;
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    border-radius: 8px;
+  }
+</style>

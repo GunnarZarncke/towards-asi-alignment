@@ -1,0 +1,71 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const paths = await getCollection("paths");
+const failureModes = [
+  { title: "Wrong object", text: "Auditing the visible model while the real deployed actor is a larger loop.", card: "the-boundary-error" },
+  { title: "Label preservation", text: "Keeping value words while the underlying tradeoffs drift.", card: "value-change-vs-corruption" },
+  { title: "Correction theater", text: "Accepting feedback in form while future behavior does not change.", card: "correction-channel-integrity" },
+  { title: "Successor drift", text: "Delegates or copies inherit syntax but not the safety-relevant structure.", card: "successor-stability" },
+  { title: "Selection pressure", text: "Deployment incentives reward systems that become harder to correct.", card: "attractor-control" }
+];
+---
+
+<SiteLayout description="Start here for the companion site to Towards Superintelligence Alignment.">
+  <section class="hero">
+    <p class="eyebrow">Companion site</p>
+    <h1>Towards Superintelligence Alignment</h1>
+    <p class="lede">
+      Alignment is the problem of preserving human-correctable value-bearing processes as capability grows, ontologies shift, successors are created, and selection pressure intensifies.
+    </p>
+    <div class="button-row">
+      <a class="button primary" href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">Download PDF</a>
+      <a class="button" href={withBase("/paths/")}>Guided tour</a>
+      <a class="button" href={withBase("/faq/")}>Read the FAQ</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Guided Tour</h2>
+    <div class="grid">
+      {paths
+        .sort((a, b) => {
+          const order = ["generalist", "researcher-applied", "researcher-formal", "engineer-evals", "funder-policy"];
+          return order.indexOf(a.id) - order.indexOf(b.id);
+        })
+        .map((path) => (
+        <article class="card">
+          <h3><a href={withBase(`/paths/${path.id}/`)}>{path.data.title}</a></h3>
+          <p><strong>{path.data.audience}</strong></p>
+          <p>{path.data.summary}</p>
+          {path.data.featuredLean && (
+            <p class="side-panel-meta"><a href={withBase("/lean/")}>Lean proof spine</a></p>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2>Five Failure Modes</h2>
+    <div class="grid">
+      {failureModes.map(({ title, text, card }) => (
+        <article class="card">
+          <h3><a href={withBase(`/cards/${card}/`)}>{title}</a></h3>
+          <p>{text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="callout warning readable">
+    <h2>What this site is not claiming</h2>
+    <p>
+      The book does not claim that alignment is solved. Lean checks conditional structure, not real-world bridge satisfaction. Experiments are sanity checks and falsification harnesses, not frontier-system validation. The PDF remains the canonical long-form artifact.
+    </p>
+    <p><a href={withBase("/cards/what-not-claiming/")}>Read the caveat card</a></p>
+  </section>
+</SiteLayout>

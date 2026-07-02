@@ -1,0 +1,34 @@
+---
+title: "MB8 — CEV/Process Convergence"
+type: "bridge"
+status: "bridge"
+summary: "If an external theory certifies that a system preserves a human value-update process, that is assumed to suffice for correction integrity even without knowing the process's final fixed point."
+decision: "Treat this as a legacy or secondary route to correction integrity, not the main path — ask whether a claim actually rests on this bridge before accepting an appeal to eventual convergence."
+evidence: "Evidence would include an independently verified account of what the value-update process converges to, and confirmation that preserving the process does not itself get gamed (legitimacy theater)."
+bookChapters: ["ch28", "ch45", "ch46"]
+leanNodes:
+  - nodeId: "MB8_cev_process_convergence"
+    kind: "bridge"
+    summary: "Preserving a human value-update operator is assumed to suffice for correction integrity, without needing to know the operator's fixed point. The main certification path does not rely on this route; it uses grounding, correction, and adversarial measurement directly."
+    module: "AlignmentProofSpine/Core.lean"
+  - nodeId: "correction_integrity_disjunctive_tolerance_needs_distinct_instruments"
+    kind: "counterexample"
+    summary: "A worked instance shows MB6b (basin stability) and MB8 (process convergence) sharing a self-report/cooperation-signal instrument — their disjunction adds no real failure tolerance unless the instruments are actually independent."
+    module: "AlignmentProofSpine/Chokepoint.lean"
+evidenceNotes:
+  - source: "toy-simulation diagnostic (T-6)"
+    scenario: "legitimacy_theater"
+    finding: "bound"
+    summary: "Light-handle instrumentation catches about 80% of legitimacy-theater cases (preference theater plus correction-lineage stall); medium and strong handles catch all of them. Legitimacy theater overlaps MB4's capture heuristics on some seeds."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/NEGATIVE_RESULTS.md"
+related: ["bridge-assumptions", "mb6-selection-and-basin-stability"]
+external:
+  - label: "Bridges and the Field: A Crosswalk (appendix source)"
+    url: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex"
+---
+
+Coherent Extrapolated Volition names an appealing but hard-to-verify idea: correction is legitimate if it moves toward what people would want if they knew more and were more the people they wished to be. MB8 is the narrow formal version of that appeal — if some external theory certifies that a system preserves the right value-update process, that is enough for correction integrity, even without pinning down what the process converges to.
+
+The book is explicit that this is not the load-bearing route. The main certification path goes through grounding, correction-channel measurement, and adversarial testing directly, without needing this bridge. MB8 exists mainly as a comparison point for readers evaluating CEV-flavored proposals.
+
+The legitimacy-theater diagnostic is the relevant stress test: a system can perform preference agreement and stall correction lineage while looking compliant, and only handle-level instrumentation reliably catches it — a reminder that "preserves the value-update process" is itself gameable if measured passively.

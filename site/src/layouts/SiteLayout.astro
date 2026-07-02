@@ -1,0 +1,68 @@
+---
+import "../styles/global.css";
+import "katex/dist/katex.min.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Towards Superintelligence Alignment",
+  description = "A companion site for the book Towards Superintelligence Alignment."
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const pageTitle = title === "Towards Superintelligence Alignment"
+  ? title
+  : `${title} | Towards Superintelligence Alignment`;
+const pdfUrl = "https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href={withBase("/")}>Towards Superintelligence Alignment</a>
+          <nav class="nav" aria-label="Primary navigation">
+            <a href={withBase("/")}>Start Here</a>
+            <a href={withBase("/paths/")}>Guided Tour</a>
+            <a href={withBase("/cards/")}>Cards</a>
+            <a href={withBase("/faq/")}>FAQ</a>
+            <a href={withBase("/book/")}>Book</a>
+            <a href={withBase("/lean/")}>Lean</a>
+            <a href={withBase("/demos/")}>Demos</a>
+            <a href={withBase("/references/")}>References</a>
+            <a href={withBase("/about/")}>About</a>
+            <a href={pdfUrl}>PDF</a>
+          </nav>
+        </div>
+      </header>
+      <main class="page">
+        <slot />
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            A static companion site for an authored research manuscript. The PDF remains the canonical long-form artifact.
+          </p>
+          <p>
+            <a href={pdfUrl}>Download latest PDF</a> ·
+            <a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository</a> ·
+            <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues</a> ·
+            <a href={withBase("/impressum/")}>Impressum</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

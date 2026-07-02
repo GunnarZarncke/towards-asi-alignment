@@ -1,0 +1,70 @@
+---
+import { highlightLean } from "../lib/highlight-lean";
+
+interface Props {
+  code: string;
+  sourceFile?: string;
+  sourceUrl?: string;
+}
+
+const { code, sourceFile, sourceUrl } = Astro.props;
+const highlighted = await highlightLean(code);
+---
+
+<section class="lean-code">
+  <div class="lean-code-header">
+    <h2>Lean snippet</h2>
+    {sourceFile && sourceUrl && (
+      <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{sourceFile}</a>
+    )}
+  </div>
+  <div class="lean-pre" set:html={highlighted} />
+</section>
+
+<style>
+  .lean-code {
+    margin-top: 1.5rem;
+  }
+
+  .lean-code-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .lean-code-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .lean-pre {
+    margin: 0;
+    padding: 0.85rem 1rem;
+    overflow-x: auto;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .lean-pre :global(pre.shiki) {
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+    overflow: visible;
+  }
+
+  .lean-pre :global(pre.shiki code) {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: inherit;
+    line-height: inherit;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+</style>

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+src/data/book.json
+src/data/references.json
+src/data/references-bibliography.json
+src/data/lean-spine.json
+src/data/demos.json
+src/content/book/
+src/content/cards/chapters/
+src/content/cards/references/
+src/content/cards/reference-index.md
+public/chapter-demos/
+public/lean-graphs/

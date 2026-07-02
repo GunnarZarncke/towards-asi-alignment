@@ -1,0 +1,173 @@
+---
+import bibliography from "../data/references-bibliography.json";
+import references from "../data/references.json";
+import { referenceLinksFor } from "../lib/reference-links";
+
+interface Props {
+  cardHref: (id: string) => string;
+  unitHref: (id: string) => string;
+  referenceIndexHref: string;
+}
+
+const { cardHref, unitHref, referenceIndexHref } = Astro.props;
+
+const refByKey = new Map(references.map((entry) => [entry.key, entry]));
+
+function refLink(key: string) {
+  const entry = refByKey.get(key);
+  if (!entry) return { href: "#", label: key };
+  return {
+    href: cardHref(`references/${key.toLowerCase()}`),
+    label: entry.shortLabel
+  };
+}
+
+function refLinks(key: string) {
+  const entry = refByKey.get(key);
+  if (!entry) return [];
+  return referenceLinksFor([], entry);
+}
+---
+
+<section class="references-by-chapter">
+  <p class="side-panel-meta">
+    Grouped by each chapter's <em>Chapter References</em> section (refsection-scoped cites).
+    Alphabetical card index: <a href={referenceIndexHref}>Reference cards</a>.
+  </p>
+
+  {bibliography.chapters.map((chapter) => (
+    <details class="bib-group">
+      <summary>
+        <a href={unitHref(chapter.id)}>{chapter.id}</a>
+        {" — "}
+        {chapter.title}
+        <span class="count">({chapter.keys.length})</span>
+      </summary>
+      <ol>
+        {chapter.keys.map((key) => {
+          const link = refLink(key);
+          const entry = refByKey.get(key);
+          return (
+            <li id={key}>
+              <a href={link.href}>{link.label}</a>
+              {entry && <span class="title"> — <em>{entry.title}</em></span>}
+              {refLinks(key).length > 0 && (
+                <div class="pub-links side-panel-meta">
+                  {refLinks(key).map((pub) => (
+                    <>
+                      <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.label}</a>
+                      {" "}
+                    </>
+                  ))}
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </details>
+  ))}
+
+  {bibliography.other.length > 0 && (
+    <details class="bib-group other">
+      <summary>
+        Other
+        <span class="count">({bibliography.other.reduce((n, unit) => n + unit.keys.length, 0)} cites in {bibliography.other.length} units)</span>
+      </summary>
+      {bibliography.other.map((unit) => (
+        <div class="other-unit">
+          <h3>
+            <a href={unitHref(unit.id)}>{unit.id}</a>
+            {" — "}
+            {unit.title}
+          </h3>
+          <ol>
+            {unit.keys.map((key) => {
+              const link = refLink(key);
+              const entry = refByKey.get(key);
+              return (
+                <li id={`${unit.id}-${key}`}>
+                  <a href={link.href}>{link.label}</a>
+                  {entry && <span class="title"> — <em>{entry.title}</em></span>}
+                  {refLinks(key).length > 0 && (
+                    <div class="pub-links side-panel-meta">
+                      {refLinks(key).map((pub) => (
+                        <>
+                          <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.label}</a>
+                          {" "}
+                        </>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ))}
+    </details>
+  )}
+</section>
+
+<style>
+  .references-by-chapter {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .bib-group {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md, 6px);
+    padding: 0.65rem 1rem 0.85rem;
+    background: var(--color-surface);
+  }
+
+  .bib-group summary {
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+  }
+
+  .bib-group summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .count {
+    color: var(--color-muted);
+    font-weight: 400;
+    font-size: 0.9em;
+    margin-left: 0.35rem;
+  }
+
+  .bib-group ol {
+    margin: 0.75rem 0 0;
+    padding-left: 1.35rem;
+  }
+
+  .bib-group li {
+    margin: 0.4rem 0;
+    scroll-margin-top: 5rem;
+  }
+
+  .title {
+    color: var(--color-text-muted);
+    font-size: 0.95em;
+  }
+
+  .pub-links {
+    margin-top: 0.2rem;
+  }
+
+  .pub-links a + a::before {
+    content: " · ";
+  }
+
+  .other-unit {
+    margin-top: 1rem;
+  }
+
+  .other-unit h3 {
+    font-size: 1rem;
+    margin: 0 0 0.35rem;
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import crosswalkRows from "../data/bridge-crosswalk.json";
+
+interface Props {
+  cardHref: (slug: string) => string;
+  chapterHref: (id: string) => string;
+}
+
+const { cardHref, chapterHref } = Astro.props;
+
+function cardForBridge(bridge: string, cards: string[]) {
+  const n = bridge.match(/MB(\d+)/)?.[1];
+  if (n) {
+    const hit = cards.find((slug) => slug.startsWith(`mb${n}-`));
+    if (hit) return hit;
+  }
+  return cards.find((slug) => slug.startsWith("mb")) ?? cards[0];
+}
+---
+
+<section class="crosswalk-table">
+  <h2>Bridge crosswalk</h2>
+  <p class="side-panel-meta">
+    Each book bridge mapped to the field's canonical open problem and the agenda that owns it.
+    Bridge cards, concept cards, and book chapters are linked in the sidebar.
+    Full appendix text: <a href={chapterHref("appb")}>Appendix B</a>.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Bridge</th>
+          <th>Field crux</th>
+          <th>Owning agenda(s)</th>
+          <th>Book's move</th>
+        </tr>
+      </thead>
+      <tbody>
+        {crosswalkRows.map((row) => {
+          const bridgeLinks = row.bridges.map((bridge) => ({
+            href: cardHref(cardForBridge(bridge, row.cards)),
+            label: bridge
+          }));
+
+          return (
+            <tr>
+              <td>
+                {bridgeLinks.map((link, i) => (
+                  <>
+                    {i > 0 && ", "}
+                    <a href={link.href}>{link.label}</a>
+                  </>
+                ))}
+                {row.home && <div class="cell-meta">{row.home}</div>}
+              </td>
+              <td>{row.fieldCrux}</td>
+              <td>{row.agendas}</td>
+              <td>{row.bookMove}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .crosswalk-table {
+    margin-top: 2rem;
+  }
+
+  .cell-meta {
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+</style>
