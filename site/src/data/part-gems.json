@@ -6,7 +6,7 @@
   "part05": ["value-bundle-transport"],
   "part06": ["correction-channel-integrity"],
   "part07": ["successor-stability"],
-  "part08": ["attractor-control", "civilizational-correction-problem"],
+  "part08": ["attractor-control", "inferential-coupling", "civilizational-correction-problem"],
   "part09": ["grounding-viability", "adversarial-agency-tests"],
   "part10": ["value-change-vs-corruption"]
 }
