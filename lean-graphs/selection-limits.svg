@@ -56,7 +56,7 @@
 <polygon fill="#555555" stroke="#555555" points="409.25,-461.49 406.8,-454.49 404.35,-461.49 409.25,-461.49"/>
 </g>
 <!-- P33 -->
-<a xlink:href="../../node/P33/" class="lean-graph-node"><g id="node5" class="node"><title>P33</title>
+<a xlink:href="../../cards/inferential-coupling/" class="lean-graph-node"><g id="node5" class="node"><title>P33</title>
 <path fill="#fff0ec" stroke="#444444" d="M545.58,-366.11C545.58,-366.11 474.02,-366.11 474.02,-366.11 468.02,-366.11 462.02,-360.11 462.02,-354.11 462.02,-354.11 462.02,-342.11 462.02,-342.11 462.02,-336.11 468.02,-330.11 474.02,-330.11 474.02,-330.11 545.58,-330.11 545.58,-330.11 551.58,-330.11 557.58,-336.11 557.58,-342.11 557.58,-342.11 557.58,-354.11 557.58,-354.11 557.58,-360.11 551.58,-366.11 545.58,-366.11"/>
 <text xml:space="preserve" text-anchor="middle" x="509.8" y="-345.41" font-family="Helvetica,sans-Serif" font-size="9.00">P33 No open edges</text>
 </g></a>
