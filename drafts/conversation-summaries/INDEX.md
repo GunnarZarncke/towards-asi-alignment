@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-02 | Embedded sim: v4 full evaluation, N-9/N-10/N-11 negative findings, honest reporting (baseline-adjusted metrics, monotonicity/scenario caveats, progress logging) | [2026-07-02-embedded-sim-v4-eval-honest-reporting.md](2026-07-02-embedded-sim-v4-eval-honest-reporting.md) |
 | 2026-07-02 | Pages deploy switched to gh-pages branch push; About publications; inferential-coupling gem (book + site) | [2026-07-02-pages-deploy-gem-publications.md](2026-07-02-pages-deploy-gem-publications.md) |
 | 2026-07-02 | GitHub Pages CI: demo esbuild deps, Node 24 | [2026-07-02-github-pages-ci-fix.md](2026-07-02-github-pages-ci-fix.md) |
 | 2026-07-02 | Astro site: worked example, field subsumptions, reference cards, About fixes; full site commit | [2026-07-02-astro-site-publication-layer.md](2026-07-02-astro-site-publication-layer.md) |
