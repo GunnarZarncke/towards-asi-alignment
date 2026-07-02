@@ -263,6 +263,11 @@ def episode_to_dict(ep: EpisodeResult) -> dict:
                 ep.in_sim.successor_unit.candidate_id if ep.in_sim.successor_unit else None
             ),
             "notes": ep.in_sim.notes,
+            "numeric_risk": ep.in_sim.numeric_risk,
+            "tempo_check": ep.in_sim.tempo_check,
+            "safety_case_path": ep.in_sim.safety_case_path,
+            "certification_artifact_path": ep.in_sim.certification_artifact_path,
+            "exercised_handle_types": ep.in_sim.exercised_handle_types,
         },
         "outer": asdict(ep.outer),
         "evaluation": {"cci_status_correct": ep.outer.in_sim_correct},

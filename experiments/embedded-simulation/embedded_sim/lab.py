@@ -10,6 +10,7 @@ from .audit_core.observation import build_audit_trace_from_rows
 from .audit_core.schemas import InstrumentationLevel, MicroVariable, SimConfig, TruthLedger
 from .audit_core.simulator import scenario_config, simulate
 from .lab_ecology import LabEcologyConfig, get_lab_ecology
+from .handle_kernel import annotate_episode_handle_operations, oracle_handle_operations
 from .scenarios import BridgeId
 from .schemas_embedded import LabActor, StageName, WorkflowEvent
 from .world import EmbeddedWorld, OuterTruthLedger, VirtualFS, write_episode_logs
@@ -515,6 +516,7 @@ def build_world(
         intervention_steps = {
             i for i, r in enumerate(episode_meta) if int(r.get("intervention_active", 0))
         }
+    annotate_episode_handle_operations(episode_meta)
     workflow = _workflow_events(
         actors, T, seed, bridge, ecology, intervention_steps=intervention_steps
     )
@@ -543,6 +545,7 @@ def build_world(
         instrument_corrupted=bridge == "instrument_capture",
         successor_deployed=has_successor_candidate,
         bound_offender_lab=bound_lab,
+        handle_operations=oracle_handle_operations(episode_meta),
     )
     truth.referent_effects_before["safe_rollout"] = {
         "permission_narrow": 0.8,

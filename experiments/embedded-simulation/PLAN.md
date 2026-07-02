@@ -54,6 +54,19 @@ Two layers apply; they are **not** the same object today.
 
 **Outer eval** compares UAD recall/precision to oracle `hidden_groups` G3/G3b for coalition bridges only.
 
+## Milestone v4 — Handle-mediated access model (IMPLEMENTED)
+
+**Status:** Code + tests implemented; large batch artifacts not regenerated. Baseline commit `f173795`.
+**Canonical doc:** [`MILESTONE-v4.md`](MILESTONE-v4.md)
+
+AppD handle registry is metadata-only today; v4 makes handles the **mechanism
+of probe generation** with explicit operation kernels (oracle ground truth +
+audit-visible realization), handle-type taxonomy, handle-aware red team
+(attacker ↔ defender), access-tier / certification-capacity curves, and a
+stakeholder **`certification.json`** artifact (see `docs/certification-artifact.md`).
+
+**Deferred to post-v4:** auditor probe selection (EIG planner over handle-operations).
+
 ## v3 complete (2026-06-30)
 
 - Referent drift gate rejection (`deploy_gate.py` + `preview_successor_referent_drift`)

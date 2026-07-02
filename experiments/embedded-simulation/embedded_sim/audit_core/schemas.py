@@ -233,6 +233,10 @@ class AuditTrace:
     correction_lineage_series: list[float] = field(default_factory=list)
     successor_epoch_series: list[int] = field(default_factory=list)
     ground_valence_series: list[float] = field(default_factory=list)
+    handle_ids: list[str] = field(default_factory=list)
+    handle_types: list[str] = field(default_factory=list)
+    handle_landed: list[int] = field(default_factory=list)
+    handle_latency_ms: list[int | None] = field(default_factory=list)
 
 
 @dataclass

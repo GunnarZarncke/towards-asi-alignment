@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
 from embedded_sim.batch import (  # noqa: E402
+    run_access_tier_curve,
+    run_certification_capacity_curve,
     run_frozen_validation,
     run_instrumentation_curve,
     run_instrumentation_matrix,
@@ -176,6 +178,55 @@ def _md_battery(payload: dict) -> str:
                 f"(conditional on pass: {bd['false_pass_conditional_on_pass']:.2%})",
             ]
         )
+    if matrix := payload.get("summary_by_strategy_handle"):
+        lines.extend(["", "## Strategy × Handle Type", ""])
+        for _key, stats in matrix.items():
+            lines.append(
+                f"- {stats['strategy']} @ {stats['target_handle_type']}: "
+                f"false_pass={stats['false_pass_rate']:.2%} "
+                f"pass_attempt={stats['pass_attempt_rate']:.2%} n={stats['n_runs']}"
+            )
+    lines.append(f"\nRuntime: {payload['runtime_seconds']}s")
+    return "\n".join(lines) + "\n"
+
+
+def _md_access_tier_curve(payload: dict) -> str:
+    lines = [
+        "# Embedded access-tier curve",
+        "",
+        f"T={payload['T']} redteam={payload['redteam_strategy']}",
+        "",
+        "| Tier | Instrumentation | Operation handles | UAD recall | False pass | CCI pass |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for row in payload["tiers"]:
+        recall = row["uad_recall_mean"]
+        recall_s = "n/a" if recall is None else f"{recall:.2%}"
+        lines.append(
+            f"| {row['access_tier']} | {row['instrumentation']} | "
+            f"{len(row['operation_handles'])} | {recall_s} | "
+            f"{row['false_pass_rate']:.2%} | {row['cci_pass_rate']:.2%} |"
+        )
+    lines.append(f"\nRuntime: {payload['runtime_seconds']}s")
+    return "\n".join(lines) + "\n"
+
+
+def _md_certification_capacity_curve(payload: dict) -> str:
+    lines = [
+        "# Embedded certification-capacity curve",
+        "",
+        f"Delta={payload['delta']} seeds={payload['seeds']}",
+        "",
+        "| Tier | Probe budget | CCI bits | Control | Max certifiable control | Numeric pass |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for row in payload["points"]:
+        lines.append(
+            f"| {row['access_tier']} | {row['probe_budget']} | "
+            f"{row['cci_bits_mean']:.3f} | {row['control_mean']:.3f} | "
+            f"{row['max_certifiable_control_mean']:.3f} | "
+            f"{row['satisfies_numeric_leaf_rate']:.2%} |"
+        )
     lines.append(f"\nRuntime: {payload['runtime_seconds']}s")
     return "\n".join(lines) + "\n"
 
@@ -255,6 +306,8 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Run full parity suite")
     parser.add_argument("--instrumentation-matrix", action="store_true")
     parser.add_argument("--curve", action="store_true", help="Toy-parity instrumentation curve")
+    parser.add_argument("--access-tier-curve", action="store_true", help="Milestone v4 access-tier curve")
+    parser.add_argument("--certification-curve", action="store_true", help="Milestone v4 certification-capacity curve")
     parser.add_argument("--frozen", action="store_true")
     parser.add_argument("--full-frozen", action="store_true", help="All levels × all scenarios (slow)")
     parser.add_argument("--sweep", action="store_true")
@@ -360,6 +413,8 @@ def main() -> None:
         args.frozen = True
         args.sweep = True
         args.battery = True
+        args.access_tier_curve = True
+        args.certification_curve = True
         args.report = True
         args.llm = True
 
@@ -367,6 +422,8 @@ def main() -> None:
         (
             args.instrumentation_matrix,
             args.curve,
+            args.access_tier_curve,
+            args.certification_curve,
             args.frozen,
             args.sweep,
             args.battery,
@@ -447,6 +504,43 @@ def _execute_suite(
             f"instrumentation_curve: min_certifiable={payload['minimum_certifiable_level']} "
             f"full={payload['minimum_certifiable_level_full_held_out']}"
         )
+
+    if args.access_tier_curve:
+        seeds = [11] if args.smoke else [11, 12, 13]
+        payload = run_access_tier_curve(
+            seeds=seeds,
+            T=args.T,
+            substrate=args.substrate,
+            redteam_strategy="full_redteam",
+        )
+        payload["uad_mode"] = uad_mode
+        metrics["access_tier_curve"] = {
+            "runtime_seconds": payload["runtime_seconds"],
+            "tiers": payload["tiers"],
+        }
+        j, m = _write_json_md(
+            payload, "embedded_access_tier_curve", _md_access_tier_curve, suffix=artifact_suffix
+        )
+        artifacts.extend([str(j), str(m)])
+
+    if args.certification_curve:
+        seeds = [11] if args.smoke else [11, 12]
+        payload = run_certification_capacity_curve(
+            seeds=seeds,
+            substrate=args.substrate,
+        )
+        payload["uad_mode"] = uad_mode
+        metrics["certification_capacity_curve"] = {
+            "runtime_seconds": payload["runtime_seconds"],
+            "points": payload["points"],
+        }
+        j, m = _write_json_md(
+            payload,
+            "embedded_certification_capacity_curve",
+            _md_certification_capacity_curve,
+            suffix=artifact_suffix,
+        )
+        artifacts.extend([str(j), str(m)])
 
     if args.instrumentation_matrix:
         payload = run_instrumentation_matrix(seed=args.seed, T=args.T, substrate=args.substrate)

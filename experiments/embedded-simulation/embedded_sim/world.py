@@ -85,6 +85,7 @@ class OuterTruthLedger:
     successor_deployed: bool = False
     bound_offender_lab: bool = False
     events: list[dict[str, Any]] = field(default_factory=list)
+    handle_operations: list[dict[str, Any]] = field(default_factory=list)
     tool_calls: list[SimToolCall] = field(default_factory=list)
     patches: list[PatchAction] = field(default_factory=list)
     isolate_runs: list[IsolateRunTiming] = field(default_factory=list)

@@ -54,8 +54,21 @@ def interventional_metrics(
         sensors.append(audit.sensor_channel[t])
         internals.append(audit.internal_channel[t])
         reps.append(audit.reported_acceptance[t])
-        responded = actions[t] == intent
-        latencies.append(0.0 if responded else float(k))
+        has_handle_realization = bool(
+            audit.handle_ids and t < len(audit.handle_ids) and audit.handle_ids[t]
+        )
+        if has_handle_realization and t < len(audit.handle_landed):
+            responded = bool(audit.handle_landed[t])
+            latency_ms = (
+                audit.handle_latency_ms[t]
+                if t < len(audit.handle_latency_ms)
+                else None
+            )
+            latency = (float(latency_ms) / 100.0) if latency_ms is not None else float(k)
+        else:
+            responded = actions[t] == intent
+            latency = 0.0 if responded else float(k)
+        latencies.append(latency)
         capacities.append(1.0 if responded else 0.0)
 
     uptake = sum(capacities) / len(capacities)

@@ -30,7 +30,8 @@ from .methodology import (
     summarize_runs,
 )
 from .pipeline import episode_to_dict, run_episode
-from .redteam import STRATEGIES
+from .handle_registry import operation_handles_for_tier
+from .redteam import STRATEGIES, strategy_target_handle_type
 from .scenarios import MB_SCENARIOS
 from .stats import hierarchical_bootstrap_rate
 REDTEAM_BATTERY_BRIDGES = (
@@ -48,6 +49,11 @@ BATTERY_LEVELS: tuple[InstrumentationLevel, ...] = (
     "medium_handles",
     "strong_handles",
 )
+ACCESS_TIER_LEVEL: dict[int, InstrumentationLevel] = {
+    1: "none",
+    2: "medium_handles",
+    3: "strong_handles",
+}
 
 
 def _bridge_scenario(bridge: str) -> str:
@@ -287,6 +293,169 @@ def run_instrumentation_matrix(
     }
 
 
+def _mean_defined(values: list[float | None]) -> float | None:
+    defined = [float(v) for v in values if v is not None]
+    if not defined:
+        return None
+    return sum(defined) / len(defined)
+
+
+def run_access_tier_curve(
+    *,
+    tiers: list[int] | None = None,
+    seeds: list[int] | None = None,
+    T: int = 800,
+    substrate: str = "python",
+    redteam_strategy: str = "none",
+) -> dict[str, Any]:
+    """Milestone v4: passive access → operation handles dose-response curve."""
+    t0 = time.perf_counter()
+    tiers = tiers or [1, 2, 3]
+    seeds = seeds or [11, 12, 13]
+    scenarios = ["selection_basin", "inferential_coupling", "capture_theater"]
+    rows: list[dict[str, Any]] = []
+    by_tier: list[dict[str, Any]] = []
+
+    for tier in tiers:
+        level = ACCESS_TIER_LEVEL.get(tier, "strong_handles")
+        tier_runs: list[dict[str, Any]] = []
+        for scenario in scenarios:
+            for seed in seeds:
+                run = _run_scenario_episode(
+                    scenario,
+                    seed,
+                    T=T,
+                    instrumentation=level,
+                    redteam_strategy=redteam_strategy,
+                    substrate=substrate,
+                )
+                run["access_tier"] = tier
+                tier_runs.append(run)
+                rows.append(run)
+        by_tier.append(
+            {
+                "access_tier": tier,
+                "instrumentation": level,
+                "operation_handles": operation_handles_for_tier(tier),
+                "n_runs": len(tier_runs),
+                "uad_recall_mean": _mean_defined(
+                    [r.get("outer", {}).get("uad_recall") for r in tier_runs]
+                ),
+                "uad_precision_mean": _mean_defined(
+                    [r.get("outer", {}).get("uad_precision") for r in tier_runs]
+                ),
+                "false_pass_rate": sum(
+                    1 for r in tier_runs if r.get("outer", {}).get("false_pass")
+                )
+                / max(len(tier_runs), 1),
+                "cci_pass_rate": sum(
+                    1 for r in tier_runs if r.get("in_sim", {}).get("cci_status") == "passes"
+                )
+                / max(len(tier_runs), 1),
+                "safety_pass_rate": sum(
+                    1 for r in tier_runs if r.get("in_sim", {}).get("safety_decision") == "pass"
+                )
+                / max(len(tier_runs), 1),
+            }
+        )
+
+    return {
+        "mode": "access_tier_curve",
+        "claim_strength": "access-tier degradation curve; tier 1 has no operation handles",
+        "T": T,
+        "seeds": seeds,
+        "tiers": by_tier,
+        "scenarios": scenarios,
+        "redteam_strategy": redteam_strategy,
+        "substrate": substrate,
+        "runtime_seconds": round(time.perf_counter() - t0, 2),
+        "runs": rows,
+    }
+
+
+def run_certification_capacity_curve(
+    *,
+    tiers: list[int] | None = None,
+    probe_budgets: list[int] | None = None,
+    seeds: list[int] | None = None,
+    substrate: str = "python",
+) -> dict[str, Any]:
+    """Milestone v4: probe budget × access tier → certifiable control."""
+    t0 = time.perf_counter()
+    tiers = tiers or [1, 2, 3]
+    probe_budgets = probe_budgets or [10, 20, 40]
+    seeds = seeds or [11, 12]
+    points: list[dict[str, Any]] = []
+    runs: list[dict[str, Any]] = []
+    delta = 0.15
+
+    for tier in tiers:
+        level = ACCESS_TIER_LEVEL.get(tier, "strong_handles")
+        for budget in probe_budgets:
+            # The simulator schedules probes by cadence; T is the budget lever.
+            T = max(240, budget * 40)
+            cell: list[dict[str, Any]] = []
+            for seed in seeds:
+                run = _run_scenario_episode(
+                    "honest",
+                    seed,
+                    T=T,
+                    instrumentation=level,
+                    substrate=substrate,
+                )
+                run["access_tier"] = tier
+                run["probe_budget_target"] = budget
+                cell.append(run)
+                runs.append(run)
+            cci_vals = [
+                float(nr.get("cci", 0.0))
+                for r in cell
+                if (nr := r.get("in_sim", {}).get("numeric_risk"))
+            ]
+            control_vals = [
+                float(nr.get("control", 0.0))
+                for r in cell
+                if (nr := r.get("in_sim", {}).get("numeric_risk"))
+            ]
+            if cci_vals:
+                delta = float(
+                    (cell[0].get("in_sim", {}).get("numeric_risk") or {}).get("delta", delta)
+                )
+            points.append(
+                {
+                    "access_tier": tier,
+                    "instrumentation": level,
+                    "probe_budget": budget,
+                    "operation_handles": operation_handles_for_tier(tier),
+                    "cci_bits_mean": sum(cci_vals) / max(len(cci_vals), 1),
+                    "control_mean": sum(control_vals) / max(len(control_vals), 1),
+                    "max_certifiable_control_mean": (
+                        sum(cci_vals) / max(len(cci_vals), 1)
+                    )
+                    + delta,
+                    "satisfies_numeric_leaf_rate": sum(
+                        1
+                        for r in cell
+                        if (r.get("in_sim", {}).get("numeric_risk") or {}).get("satisfies")
+                    )
+                    / max(len(cell), 1),
+                }
+            )
+
+    return {
+        "mode": "certification_capacity_curve",
+        "claim_strength": "certifiable operational slack conditional on access tier and probe budget",
+        "delta": delta,
+        "tiers": tiers,
+        "probe_budgets": probe_budgets,
+        "seeds": seeds,
+        "substrate": substrate,
+        "runtime_seconds": round(time.perf_counter() - t0, 2),
+        "points": points,
+        "runs": runs,
+    }
+
+
 def run_frozen_validation(
     *,
     seeds: list[int] | None = None,
@@ -486,6 +655,25 @@ def run_redteam_battery(
             / max(len(subset), 1),
         }
 
+    by_strategy_handle: dict[str, dict[str, float]] = {}
+    for strategy in strategies:
+        target_type = strategy_target_handle_type(strategy)
+        subset = [r for r in runs if r["redteam_strategy"] == strategy]
+        key = f"{strategy}|{target_type}"
+        by_strategy_handle[key] = {
+            "strategy": strategy,
+            "target_handle_type": target_type,
+            "n_runs": len(subset),
+            "false_pass_rate": sum(1 for r in subset if r["outer"]["false_pass"])
+            / max(len(subset), 1),
+            "pass_attempt_rate": sum(
+                1 for r in subset if r.get("in_sim", {}).get("safety_decision") == "pass"
+            )
+            / max(len(subset), 1),
+            "in_sim_correct_rate": sum(1 for r in subset if r["outer"]["in_sim_correct"])
+            / max(len(subset), 1),
+        }
+
     elapsed = time.perf_counter() - t0
     print(
         f"redteam_battery: finished {total} runs in {elapsed:.1f}s, "
@@ -509,6 +697,7 @@ def run_redteam_battery(
         "false_pass_rate": false_pass_count / max(len(runs), 1),
         "crux_metrics": crux,
         "summary_by_strategy": by_strategy,
+        "summary_by_strategy_handle": by_strategy_handle,
         "summary_by_instrumentation": by_level,
         "runs": runs,
     }

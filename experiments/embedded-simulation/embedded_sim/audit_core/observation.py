@@ -143,6 +143,7 @@ def build_audit_trace(
             ("handle.reported_uptake", [float(r["reported_acceptance"]) for r in episode_meta]),
             ("handle.intervention_flag", [float(r["intervention_active"]) for r in episode_meta]),
             ("handle.action_observed", [float(v) for v in visible_actions]),
+            ("handle.operation_landed", [float(r.get("handle_landed", 0)) for r in episode_meta]),
         )
         for handle_id, series in light_specs:
             idx = _append_handle(raw_entries, idx, handle_id, series)
@@ -159,6 +160,17 @@ def build_audit_trace(
             (
                 "handle.successor_epoch",
                 [float(r.get("successor_epoch", 0)) for r in episode_meta],
+            ),
+            (
+                "handle.realized_latency_ms",
+                [
+                    float(r.get("handle_realized_latency_ms") or 0)
+                    for r in episode_meta
+                ],
+            ),
+            (
+                "handle.behavioral_uplift",
+                [float(r.get("handle_behavioral_uplift", 0.0)) for r in episode_meta],
             ),
         )
         for handle_id, series in medium_specs:
@@ -245,6 +257,13 @@ def build_audit_trace(
     ]
     successor_epoch_series = [int(r.get("successor_epoch", 0)) for r in episode_meta]
     ground_valence_series = [float(r.get("true_ground_valence", 0.0)) for r in episode_meta]
+    handle_ids = [str(r.get("handle_id") or r.get("handle") or "") for r in episode_meta]
+    handle_types = [str(r.get("handle_type", "")) for r in episode_meta]
+    handle_landed = [int(r.get("handle_landed", 0) or 0) for r in episode_meta]
+    handle_latency_ms = [
+        int(v) if (v := r.get("handle_realized_latency_ms")) is not None else None
+        for r in episode_meta
+    ]
 
     return AuditTrace(
         seed=seed,
@@ -272,6 +291,10 @@ def build_audit_trace(
         correction_lineage_series=correction_lineage_series,
         successor_epoch_series=successor_epoch_series,
         ground_valence_series=ground_valence_series,
+        handle_ids=handle_ids,
+        handle_types=handle_types,
+        handle_landed=handle_landed,
+        handle_latency_ms=handle_latency_ms,
     ), lineage
 
 
@@ -342,6 +365,7 @@ def build_audit_trace_from_rows(
             ("handle.reported_uptake", [float(r["reported_acceptance"]) for r in episode_meta]),
             ("handle.intervention_flag", [float(r["intervention_active"]) for r in episode_meta]),
             ("handle.action_observed", [float(v) for v in visible_actions]),
+            ("handle.operation_landed", [float(r.get("handle_landed", 0)) for r in episode_meta]),
         )
         for handle_id, series in light_specs:
             idx = _append_handle(raw_entries, idx, handle_id, series)
@@ -353,6 +377,17 @@ def build_audit_trace_from_rows(
             ("handle.bearer_welfare_delta", [float(r["bearer_welfare_delta"]) for r in episode_meta]),
             ("handle.correction_lineage", [float(r["correction_lineage_tick"]) for r in episode_meta]),
             ("handle.successor_epoch", [float(r.get("successor_epoch", 0)) for r in episode_meta]),
+            (
+                "handle.realized_latency_ms",
+                [
+                    float(r.get("handle_realized_latency_ms") or 0)
+                    for r in episode_meta
+                ],
+            ),
+            (
+                "handle.behavioral_uplift",
+                [float(r.get("handle_behavioral_uplift", 0.0)) for r in episode_meta],
+            ),
         )
         for handle_id, series in medium_specs:
             idx = _append_handle(raw_entries, idx, handle_id, series)
@@ -411,4 +446,11 @@ def build_audit_trace_from_rows(
         correction_lineage_series=[float(r["correction_lineage_tick"]) for r in episode_meta],
         successor_epoch_series=[int(r.get("successor_epoch", 0)) for r in episode_meta],
         ground_valence_series=ground_valence_series,
+        handle_ids=[str(r.get("handle_id") or r.get("handle") or "") for r in episode_meta],
+        handle_types=[str(r.get("handle_type", "")) for r in episode_meta],
+        handle_landed=[int(r.get("handle_landed", 0) or 0) for r in episode_meta],
+        handle_latency_ms=[
+            int(v) if (v := r.get("handle_realized_latency_ms")) is not None else None
+            for r in episode_meta
+        ],
     ), lineage

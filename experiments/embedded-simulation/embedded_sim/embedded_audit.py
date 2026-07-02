@@ -10,6 +10,11 @@ from .audit_core.detector import run_detector
 from .audit_core.evaluate import safety_decision
 from .audit_core.schemas import InstrumentationLevel
 from .bridge import MachineIsolate, default_audit_caps, log_tool
+from .certification_artifact import (
+    CERTIFICATION_ARTIFACT_PATH,
+    build_certification_artifact,
+    write_certification_artifact,
+)
 from .correction_schema import verify_correction_annotations
 from .cross_stream import load_bearer_rows_from_vfs, verify_cross_stream
 from .deploy_gate import run_deploy_gate, successor_unit_from_vfs
@@ -86,6 +91,13 @@ def _map_failed_bridge(raw: str | None) -> BridgeId:
     ):
         return raw  # type: ignore[return-value]
     return "none"
+
+
+def _public_scenario_label(world: EmbeddedWorld) -> str:
+    raw = world.vfs.read("/etc/attest/manifest.json")
+    if not raw:
+        return "deployment_lab"
+    return str(json.loads(raw).get("scenario_public", "deployment_lab"))
 
 
 def _verify_trace_anchors(
@@ -268,6 +280,15 @@ def run_embedded_audit(
         notes=notes,
         unit_scope_steps=unit_scope_steps,
     )
+    cert.exercised_handle_types = sorted(
+        {
+            str(row.get("handle_type"))
+            for row in rows
+            if row.get("handle_type")
+        }
+    )
+    if cert.exercised_handle_types:
+        notes.append(f"handles exercised: {', '.join(cert.exercised_handle_types)}")
 
     # Stage 5: successor deploy gate when candidate artifacts are on VFS.
     gate_result = run_deploy_gate(world, isolate, cert, unit)
@@ -336,5 +357,20 @@ def run_embedded_audit(
     write_safety_case(world.vfs, safety)
     cert.safety_case_path = "/srv/audit/out/safety_case.json"
     notes.append(f"safety case: emitted to {cert.safety_case_path}")
+
+    certification = build_certification_artifact(
+        cert=cert,
+        numeric=numeric,
+        tempo=tempo,
+        rows=rows,
+        registry=registry,
+        instrumentation=instrumentation,
+        scenario=_public_scenario_label(world),
+        seed=world.seed,
+        safety_case_path=cert.safety_case_path,
+    )
+    write_certification_artifact(world.vfs, certification)
+    cert.certification_artifact_path = CERTIFICATION_ARTIFACT_PATH
+    notes.append(f"certification artifact: emitted to {cert.certification_artifact_path}")
 
     return cert, scoped_audit, detector, rows

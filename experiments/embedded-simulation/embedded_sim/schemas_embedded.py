@@ -170,6 +170,8 @@ class InSimAuditCertificate:
     tempo_check: dict[str, Any] | None = None
     successor_reaudit: dict[str, Any] | None = None
     safety_case_path: str | None = None
+    certification_artifact_path: str | None = None
+    exercised_handle_types: list[str] = field(default_factory=list)
 
 
 @dataclass

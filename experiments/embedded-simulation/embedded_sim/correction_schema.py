@@ -89,20 +89,28 @@ def annotate_correction_events(rows: list[dict[str, Any]]) -> list[dict[str, Any
             if action == want:
                 latency_ms = dt * MS_PER_STEP
                 break
+        if "handle_realized_latency_ms" in row:
+            handle_latency = row.get("handle_realized_latency_ms")
+            latency_ms = int(handle_latency) if handle_latency is not None else None
 
         row["correction_id"] = f"corr-{t:05d}"
         row["corrector_role"] = "evaluator_probe" if is_probe else "correction_board"
         row["target_episode_id"] = f"ep-{t:05d}"
         row["requested_change"] = want
-        row["handle"] = handle_for_correction(is_probe=is_probe)
+        row["handle"] = row.get("handle") or handle_for_correction(is_probe=is_probe)
         row["pre_behavior_hash"] = _behavior_hash(pre)
         row["post_behavior_hash"] = _behavior_hash(post)
         row["behavioral_uplift"] = round(
-            max(0.0, _agreement(post, want) - _agreement(pre, want)), 4
+            float(row.get("handle_behavioral_uplift"))
+            if "handle_behavioral_uplift" in row
+            else max(0.0, _agreement(post, want) - _agreement(pre, want)),
+            4,
         )
         row["latency_to_effect_ms"] = latency_ms
         row["reversibility_window_ms"] = (
-            REVERSIBILITY_HARM_MS if int(row.get("harm", 0)) else REVERSIBILITY_DEFAULT_MS
+            int(row.get("handle_reversibility_ms"))
+            if row.get("handle_reversibility_ms")
+            else REVERSIBILITY_HARM_MS if int(row.get("harm", 0)) else REVERSIBILITY_DEFAULT_MS
         )
     return rows
 
@@ -125,6 +133,10 @@ def verify_correction_annotations(rows: list[dict[str, Any]]) -> list[str]:
                     "intervention_intent",
                     "correction_request",
                     "harm",
+                    "handle",
+                    "handle_realized_latency_ms",
+                    "handle_behavioral_uplift",
+                    "handle_reversibility_ms",
                 )
             }
             for row in rows

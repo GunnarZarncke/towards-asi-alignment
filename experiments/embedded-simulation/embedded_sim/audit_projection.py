@@ -40,6 +40,16 @@ AUDIT_VISIBLE_FIELDS: tuple[str, ...] = (
     "basin_pressure",
     "successor_epoch",
     "ontology_shift_event",
+    "handle",
+    "handle_id",
+    "handle_type",
+    "handle_operation",
+    "handle_landed",
+    "handle_realized_latency_ms",
+    "handle_behavioral_uplift",
+    "handle_spillover",
+    "handle_cost",
+    "handle_reversibility_ms",
 )
 
 # Oracle stream -> instrument stream carried on the audit artifact.
@@ -67,6 +77,7 @@ ORACLE_ONLY_FIELDS: tuple[str, ...] = (
     "action_cause",
     "basin_capture_fraction",
     "basin_percolation_crossed",
+    "_handle_kernel_truth",
 )
 
 

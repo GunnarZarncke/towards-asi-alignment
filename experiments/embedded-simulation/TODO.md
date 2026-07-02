@@ -1,6 +1,58 @@
 # Embedded simulation — TODO
 
-Plan: `PLAN.md` (handoff) · `.cursor/plans/embedded_audit_experiment_8fbb03ff.plan.md` (full)
+Plan: `PLAN.md` (handoff) · `MILESTONE-v4.md` (**current milestone**) · `.cursor/plans/embedded_audit_experiment_8fbb03ff.plan.md` (full)
+
+---
+
+## ▶ Milestone v4 — Handle-mediated access model (IMPLEMENTED)
+
+**Start here.** Full spec: [`MILESTONE-v4.md`](MILESTONE-v4.md) · Certification schema: [`docs/certification-artifact.md`](docs/certification-artifact.md)
+
+Replaces confounded-twin ecology (G-1 below) as the preferred path to an
+information-theoretic boundary: **access-tier degradation curves** instead of
+synchronized twin worlds.
+
+### Phase A — Handle-mediated probes
+
+- [x] **`HandleOperationKernel`** — uptake, latency, spillover, cost per handle;
+  host-side ground truth for oracle **and** projected audit rows (dual view in
+  `MILESTONE-v4.md`).
+- [x] **`handle_type` taxonomy** — distinguish observation vs operation_action /
+  operation_correction / operation_goal / operation_boundary / operation_gate /
+  attestation in registry (`handle_registry.py`).
+- [x] **Probe routing** — replace lab cadence `intervention_active` injection with
+  `apply_handle_operation(...)`; CCI reads handle-mediated response fields.
+- [x] **Oracle vs auditor split** — kernel in `world.episode_meta` (oracle);
+  realized latency/uplift on VFS only via projection (no kernel peek on audit path).
+
+### Phase B — Record data and generate curves
+
+- [x] **`run_access_tier_curve`** — sweep operation handles available (Tier 1→2);
+  record UAD recall, false-pass, CCI pass rate (`embedded_access_tier_curve.*`).
+- [x] **`run_certification_capacity_curve`** — probe budget × tier → max
+  certifiable Control at δ (`embedded_certification_capacity_curve.*`).
+- [x] **Adapted G-1 test surface** — contract test covers access-tier runner
+  shape; regenerate curve artifacts before making empirical dose-response claims.
+
+### Phase C — Handle-aware red team (attacker ↔ defender)
+
+- [x] **`probe_aware`** — correct uptake only when `handle.correction_request` fires.
+- [x] **`handle_evasion_*`** — per-handle strategies using registry `evasion_story`.
+- [x] Battery crux matrix: `(strategy, handle_type)` in red-team battery output.
+
+### Phase D — Certification artifact emission
+
+- [x] Wire `certification_artifact.py` → `/srv/audit/out/certification.json`.
+- [x] `run_suite.py --certification-curve` hook.
+
+### Deferred (explicit TODO — not v4 initial scope)
+
+- [ ] **Auditor probe selection (EIG planner).** Active choice of `(handle, operation)`
+  to maximize diagnostic separation between top unit hypotheses (access-uad Def. 12).
+  Requires Phase A kernels + candidate ranking; do **after** tier curves establish
+  baseline. See `context/extracts/access-uad.md` §12.
+
+---
 
 ## Done (v1)
 
@@ -128,20 +180,15 @@ See `results/NEGATIVE_RESULTS.md` for the honest record. Open follow-ups:
   chooses offender placement to maximize heuristic miss; heuristic re-fits its
   rule). Claim only survives if full UAD keeps an edge the adapted heuristic
   cannot. Pair with `embedded_redteam_battery.*`.
-- [ ] **G-1 — generalize to a *real* boundary (information, not cleverness).**
-  Full and fake UAD currently differ only in their *scoring* over the **same
-  observational log**, so any gap is closeable by a cleverer heuristic — no
-  boundary a strong optimizer cannot cross. The principled boundary is the
-  Pearl ladder: build labs where two worlds share an **identical observational
-  workflow log** but have **different true offenders**, separable only by
-  **intervention** (do-probes on state, observing output/state response). Then
-  an observational auditor is *provably at chance* regardless of optimizer
-  strength (its **inputs** can't separate the worlds), while an interventional
-  auditor separates them. This grounds the difference in **inputs/outputs/state**
-  (CCI interventional probes, `cci_audit.py`, perturbation-response scoring,
-  MB7d inferential coupling) rather than in a tuned coordination weight.
-  Deliverable: a `confounded_twin` ecology + a test that the observational
-  auditor cannot beat chance while the interventional one can.
+- [ ] **G-1 — access-tier boundary (adapted; prefer over confounded twin).**
+  Full and fake UAD differ only in scoring over the **same observational log**
+  (N-2). The principled boundary is **information**, not cleverness. **Preferred
+  deliverable (v4):** degrade the **access model** (remove operation handles) until
+  attribution is at chance regardless of optimizer; restore handles and show
+  recall/CCI recover — a dose-response curve, not byte-identical twin worlds.
+  Implements access-uad Theorem 1 operationally. Confounded-twin ecology remains
+  an optional alternative if the tier curve is insufficient. See `MILESTONE-v4.md`
+  Phase B.
 
 ## Run
 
