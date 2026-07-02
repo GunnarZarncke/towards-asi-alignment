@@ -46,4 +46,4 @@ handle-aware red team; defer EIG probe selection.
 - `context/extracts/access-uad.md`
 
 ## Commits
-- (pending — user may commit separately)
+- `0e7d18c` — Implement embedded-sim Milestone v4: handle-mediated probes and certification.
