@@ -6,7 +6,8 @@ import {
   WORKED_EXAMPLE_BOOK_ID,
   bookHref,
   cardHref,
-  chapterCardFor
+  chapterCardFor,
+  pdfHref
 } from "../../lib/site-urls";
 
 export async function getStaticPaths() {
@@ -92,7 +93,7 @@ const deploymentGateCard = cardById.get("deployment-gate");
     </ol>
   </section>
 
-  <p><a class="button" href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">Skip to the PDF</a></p>
+  <p><a class="button" href={pdfHref(base)}>Read the PDF</a></p>
   {path.id === "researcher-applied" && (
     <p class="readable"><a href={withBase("/paths/researcher-formal/")}>Continue to Researcher — Formal</a></p>
   )}

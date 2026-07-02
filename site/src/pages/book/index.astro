@@ -3,9 +3,8 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
 import book from "../../data/book.json";
 import { getCollection } from "astro:content";
-import { bookHref, cardHref } from "../../lib/site-urls";
+import { bookHref, cardHref, pdfHref } from "../../lib/site-urls";
 
-const releaseUrl = "https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest";
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
@@ -25,7 +24,7 @@ const toBookHref = (id: string) => bookHref(base, id);
     </p>
     <div class="button-row">
       <a class="button primary" href={toCardHref(chapterCardFor("frontmatter")!.id)}>Start with front matter</a>
-      <a class="button" href={releaseUrl}>Download latest PDF</a>
+      <a class="button" href={pdfHref(base)}>Read the PDF</a>
       <a class="button" href="https://github.com/GunnarZarncke/towards-asi-alignment">View source repository</a>
     </div>
   </section>

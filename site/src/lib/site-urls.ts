@@ -35,3 +35,14 @@ export function chapterCardFor<T extends { id: string; data: { bookPageId?: stri
 
 export const WORKED_EXAMPLE_BOOK_ID = "appD";
 export const WORKED_EXAMPLE_CARD_ID = "chapters/appD";
+
+export const BOOK_PDF_FILENAME = "towards-superintelligence-alignment.pdf";
+
+/** Root-relative PDF URL for the deployed site (works in nav and absolute links). */
+export function pdfHref(base: string) {
+  const normalized = base.endsWith("/") ? base : `${base}/`;
+  return `${normalized}${BOOK_PDF_FILENAME}`;
+}
+
+/** Relative PDF link from generated book chapter markdown (book/chNN/). */
+export const BOOK_CHAPTER_PDF_HREF = "../../towards-superintelligence-alignment.pdf";

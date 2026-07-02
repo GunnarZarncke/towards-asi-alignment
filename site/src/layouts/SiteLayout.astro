@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "katex/dist/katex.min.css";
+import { pdfHref } from "../lib/site-urls";
 
 interface Props {
   title?: string;
@@ -17,7 +18,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const pageTitle = title === "Towards Superintelligence Alignment"
   ? title
   : `${title} | Towards Superintelligence Alignment`;
-const pdfUrl = "https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest";
+const pdfUrl = pdfHref(base);
 ---
 
 <!doctype html>
@@ -56,7 +57,7 @@ const pdfUrl = "https://github.com/GunnarZarncke/towards-asi-alignment/releases/
             A static companion site for an authored research manuscript. The PDF remains the canonical long-form artifact.
           </p>
           <p>
-            <a href={pdfUrl}>Download latest PDF</a> ·
+            <a href={pdfUrl}>Read the PDF</a> ·
             <a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository</a> ·
             <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues</a> ·
             <a href={withBase("/impressum/")}>Impressum</a>

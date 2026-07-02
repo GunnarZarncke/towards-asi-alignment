@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { pdfHref } from "../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -22,7 +23,7 @@ const failureModes = [
       Alignment is the problem of preserving human-correctable value-bearing processes as capability grows, ontologies shift, successors are created, and selection pressure intensifies.
     </p>
     <div class="button-row">
-      <a class="button primary" href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">Download PDF</a>
+      <a class="button primary" href={pdfHref(base)}>Read the PDF</a>
       <a class="button" href={withBase("/paths/")}>Guided tour</a>
       <a class="button" href={withBase("/faq/")}>Read the FAQ</a>
     </div>

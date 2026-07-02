@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
-const PDF_URL = "https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest";
+const PDF_HREF = "../../towards-superintelligence-alignment.pdf";
 const FIGURE_BASE = "https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main";
 
 const MATH_ENVS = new Set([
@@ -243,7 +243,7 @@ function resolveRef(label, ctx, kind = "ref") {
   }
 
   if (!entry.webPage) {
-    return `[${text} (PDF)](${PDF_URL})`;
+    return `[${text} (PDF)](${PDF_HREF})`;
   }
 
   const anchor = label.startsWith("ch:") ? "" : label;

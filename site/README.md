@@ -84,4 +84,6 @@ Pushes to `main` run `.github/workflows/site.yml`, which builds `site/` and push
 
 Live URL: **https://gunnarzarncke.github.io/towards-asi-alignment/**
 
+The book PDF is copied into `site/public/` during build (`npm run copy:pdf`) from `dist/pdf/towards-superintelligence-alignment.pdf` (run `./build.sh` locally) or fetched from the latest GitHub Release in CI. Nav and footer **PDF** links open it directly in the browser.
+
 We use a branch push (`peaceiris/actions-gh-pages`) instead of the GitHub Pages Deployment API because overlapping deploys were stuck in `deployment_queued` for 10 minutes.

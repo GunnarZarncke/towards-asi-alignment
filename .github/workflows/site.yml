@@ -40,6 +40,10 @@ jobs:
         working-directory: src
         run: npm ci
 
+      - name: Fetch book PDF for site
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: node site/scripts/fetch-book-pdf.mjs
+
       - name: Build
         working-directory: site
         run: npm run build

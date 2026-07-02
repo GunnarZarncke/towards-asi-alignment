@@ -6,7 +6,7 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "dev": "npm run sync && ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "dev": "npm run sync && npm run copy:pdf && ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "sync": "npm run sync:book && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos",
     "sync:demos": "node scripts/sync-demos.mjs",
     "sync:lean-spine": "node scripts/sync-lean-spine.mjs",
@@ -14,8 +14,9 @@
     "sync:chapter-cards": "node scripts/sync-chapter-cards.mjs",
     "sync:chapters": "node scripts/sync-chapters.mjs",
     "sync:reference-cards": "node scripts/sync-reference-cards.mjs",
+    "copy:pdf": "node scripts/copy-book-pdf.mjs",
     "check:book-links": "node scripts/check-book-links.mjs",
-    "prebuild": "npm run sync",
+    "prebuild": "npm run sync && npm run copy:pdf",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
   },
