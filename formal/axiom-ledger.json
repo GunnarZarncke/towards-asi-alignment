@@ -1,0 +1,264 @@
+{
+  "_comment": "Checked-in axiom-budget snapshot for formal/scripts/check_axiom_budget.py. Regenerate with `python3 scripts/check_axiom_budget.py --update` after an intentional proof-spine change; review the diff before committing. Source of metadata/axiom-budget-index.tex.",
+  "theorems": [
+    {
+      "name": "AlignmentProofSpine.P01_basin_invariant",
+      "gloss": "Finite iterated basin invariance",
+      "axioms": [
+        "AlignmentProofSpine.SafeState",
+        "AlignmentProofSpine.State"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.P34_capacity_below_entropy_aliasing",
+      "gloss": "Host-capacity aliasing (pigeonhole)",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.risk_bound_from_cci_slack",
+      "gloss": "Primary numeric risk leaf (bounded control-CCI slack implies bounded risk)",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.CCIPenaltiesSys",
+        "AlignmentProofSpine.CCIPenaltyWeightsSys",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.IctrlSys",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.SuccessorSafeChain.toMeasurandChain",
+      "gloss": "Successor-safe chains reduce to numeric measurand chains (given audit links)",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.BearerMapPreserved",
+        "AlignmentProofSpine.BoundaryClosure",
+        "AlignmentProofSpine.BundleGeometryPreserved",
+        "AlignmentProofSpine.CCIPenaltiesSys",
+        "AlignmentProofSpine.CCIPenaltyWeightsSys",
+        "AlignmentProofSpine.CCIPreserved",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.ControlLocusPreserved",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.IctrlSys",
+        "AlignmentProofSpine.MemoryLineage",
+        "AlignmentProofSpine.Successor",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "AlignmentProofSpine.TransparencyPolicyPreserved"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.certified_class_safety_along_successor_safe_chain",
+      "gloss": "Theta-certified vector CCI risk bound propagated along a successor-safe chain",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.BearerMapPreserved",
+        "AlignmentProofSpine.BoundaryClosure",
+        "AlignmentProofSpine.BundleGeometryPreserved",
+        "AlignmentProofSpine.CCIPenaltiesSys",
+        "AlignmentProofSpine.CCIPenaltyWeightsSys",
+        "AlignmentProofSpine.CCIPreserved",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.ControlLocusPreserved",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.IctrlSys",
+        "AlignmentProofSpine.MemoryLineage",
+        "AlignmentProofSpine.Successor",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "AlignmentProofSpine.TransparencyPolicyPreserved",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.certified_class_safety_from_bridge_record",
+      "gloss": "Top certification theorem, bridges supplied as explicit data (no MB* baked in)",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.AccessModelAdequate",
+        "AlignmentProofSpine.AccessRobust",
+        "AlignmentProofSpine.AdversariallyRobust",
+        "AlignmentProofSpine.BasinStableSys",
+        "AlignmentProofSpine.BearerMapPreserved",
+        "AlignmentProofSpine.BearerTransport",
+        "AlignmentProofSpine.BoundaryAligned",
+        "AlignmentProofSpine.BoundaryClosure",
+        "AlignmentProofSpine.BoundaryCondition",
+        "AlignmentProofSpine.BundleAligned",
+        "AlignmentProofSpine.BundleGeometryPreserved",
+        "AlignmentProofSpine.BundleGradientEquivalent",
+        "AlignmentProofSpine.BundleTransport",
+        "AlignmentProofSpine.CCIPenaltiesSys",
+        "AlignmentProofSpine.CCIPenaltyWeightsSys",
+        "AlignmentProofSpine.CCIPreserved",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.Certified",
+        "AlignmentProofSpine.ControlLocusPreserved",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.CorrectionIntegrity",
+        "AlignmentProofSpine.FilterCoverageAdequate",
+        "AlignmentProofSpine.GroundingCertificate",
+        "AlignmentProofSpine.GroundingViable",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.HiddenBIQBoundedSys",
+        "AlignmentProofSpine.IctrlSys",
+        "AlignmentProofSpine.InferentialCouplingMeasurementValid",
+        "AlignmentProofSpine.InferentialDetectorAdequate",
+        "AlignmentProofSpine.MemoryLineage",
+        "AlignmentProofSpine.PercolationEvidenceSys",
+        "AlignmentProofSpine.PreservesBearerAssignment",
+        "AlignmentProofSpine.PreservesBundleResponseGeometry",
+        "AlignmentProofSpine.PreservesCorrectionOperator",
+        "AlignmentProofSpine.PreservesCorrectionProcess",
+        "AlignmentProofSpine.PreservesSemanticLabels",
+        "AlignmentProofSpine.PreservesValueUpdateOperator",
+        "AlignmentProofSpine.SameBearerMap",
+        "AlignmentProofSpine.SatisfiesInvariants",
+        "AlignmentProofSpine.SuccessorStable",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "AlignmentProofSpine.TransparencyPolicyPreserved",
+        "AlignmentProofSpine.ValueUpdateOperator",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.certified_class_safety_from_spine_and_bridges",
+      "gloss": "Top certification theorem via standardBridges (full MB1-MB9 footprint expected)",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.AccessModelAdequate",
+        "AlignmentProofSpine.AccessRobust",
+        "AlignmentProofSpine.AdversariallyRobust",
+        "AlignmentProofSpine.BasinStableSys",
+        "AlignmentProofSpine.BearerMapPreserved",
+        "AlignmentProofSpine.BearerTransport",
+        "AlignmentProofSpine.BoundaryAligned",
+        "AlignmentProofSpine.BoundaryClosure",
+        "AlignmentProofSpine.BoundaryCondition",
+        "AlignmentProofSpine.BundleAligned",
+        "AlignmentProofSpine.BundleGeometryPreserved",
+        "AlignmentProofSpine.BundleGradientEquivalent",
+        "AlignmentProofSpine.BundleTransport",
+        "AlignmentProofSpine.CCIPenaltiesSys",
+        "AlignmentProofSpine.CCIPenaltyWeightsSys",
+        "AlignmentProofSpine.CCIPreserved",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.Certified",
+        "AlignmentProofSpine.ControlLocusPreserved",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.CorrectionIntegrity",
+        "AlignmentProofSpine.FilterCoverageAdequate",
+        "AlignmentProofSpine.GroundingCertificate",
+        "AlignmentProofSpine.GroundingViable",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.HiddenBIQBoundedSys",
+        "AlignmentProofSpine.IctrlSys",
+        "AlignmentProofSpine.InferentialCouplingMeasurementValid",
+        "AlignmentProofSpine.InferentialDetectorAdequate",
+        "AlignmentProofSpine.MB1_estimator_soundness",
+        "AlignmentProofSpine.MB2_bundle_identifiability",
+        "AlignmentProofSpine.MB3_bearer_import",
+        "AlignmentProofSpine.MB4_correction_legitimacy",
+        "AlignmentProofSpine.MB5_ontology_shift_successor_audit",
+        "AlignmentProofSpine.MB6a_percolation_evidence_to_basin_stability",
+        "AlignmentProofSpine.MB6b_basin_stability_to_correction_integrity",
+        "AlignmentProofSpine.MB7a_access_model_soundness",
+        "AlignmentProofSpine.MB7b_filter_family_coverage",
+        "AlignmentProofSpine.MB7c_hidden_biq_to_adversarial_robustness",
+        "AlignmentProofSpine.MB7d_inferential_uad_detector_soundness",
+        "AlignmentProofSpine.MB8_cev_process_convergence",
+        "AlignmentProofSpine.MB9_grounding_certificate_soundness",
+        "AlignmentProofSpine.MemoryLineage",
+        "AlignmentProofSpine.PercolationEvidenceSys",
+        "AlignmentProofSpine.PreservesBearerAssignment",
+        "AlignmentProofSpine.PreservesBundleResponseGeometry",
+        "AlignmentProofSpine.PreservesCorrectionOperator",
+        "AlignmentProofSpine.PreservesCorrectionProcess",
+        "AlignmentProofSpine.PreservesSemanticLabels",
+        "AlignmentProofSpine.PreservesValueUpdateOperator",
+        "AlignmentProofSpine.SameBearerMap",
+        "AlignmentProofSpine.SatisfiesInvariants",
+        "AlignmentProofSpine.SuccessorStable",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "AlignmentProofSpine.TransparencyPolicyPreserved",
+        "AlignmentProofSpine.ValueUpdateOperator",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.correction_integrity_disjunctive_tolerance_needs_distinct_instruments",
+      "gloss": "MB6a/MB6b vs MB8 shared-chokepoint worked instance (exactly these three bridges)",
+      "axioms": [
+        "AlignmentProofSpine.BasinStableSys",
+        "AlignmentProofSpine.CorrectionIntegrity",
+        "AlignmentProofSpine.MB6a_percolation_evidence_to_basin_stability",
+        "AlignmentProofSpine.MB6b_basin_stability_to_correction_integrity",
+        "AlignmentProofSpine.MB8_cev_process_convergence",
+        "AlignmentProofSpine.PercolationEvidenceSys",
+        "AlignmentProofSpine.PreservesValueUpdateOperator",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.ValueUpdateOperator"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.sharedChokepoint_steerable_blocks_both_routes",
+      "gloss": "Generic shared-chokepoint collapse theorem (must stay fully axiom-free)",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.MB1_defeater_toy_nonstationary_shift",
+      "gloss": "MB1 defeater toy model (calibration-time certificate, later distribution shift)",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.MB4_defeater_toy_manipulated_judge",
+      "gloss": "MB4 defeater toy model (manipulated judge)",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.MB6b_defeater_toy_lock_in",
+      "gloss": "MB6b defeater toy model (value lock-in)",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.MB8_defeater_toy_legitimacy_theater",
+      "gloss": "MB8 defeater toy model (legitimacy theater)",
+      "axioms": [
+        "propext"
+      ]
+    }
+  ]
+}

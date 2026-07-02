@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import copy
 
+from .audit_core.calibration import MIN_EVALUABLE_PROBE_RATE
 from .audit_core.schemas import AuditTrace
 from .intervention_config import InterventionLevel, get_intervention_level
 from .schemas_embedded import UADCandidate, WorkflowEvent
@@ -123,6 +124,14 @@ def scope_audit_trace(
         for t in range(t_len):
             if t not in active_steps:
                 scoped.intervention_active[t] = 0
+        retained_probes = sum(1 for v in scoped.intervention_active if v)
+        if retained_probes / max(t_len, 1) < MIN_EVALUABLE_PROBE_RATE:
+            # The unit's active window overlaps too few probe episodes to
+            # evaluate interventional CCI. The window handle is documented to
+            # collapse to pipeline under co-activity; collapse likewise when
+            # scoping would destroy the probe witness (probes not attributable
+            # to any unit's steps). Actor level keeps strict retention.
+            return audit, sum(1 for v in audit.intervention_active if v)
         return scoped, len(active_steps)
 
     # level == "actor": keep an intervention only if the offending actor at that

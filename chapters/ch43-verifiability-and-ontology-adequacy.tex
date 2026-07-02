@@ -81,6 +81,8 @@ A metric $M$ is adversarially verifiable up to capability $\kappa$ if the cost $
 Then we never have to detect the lie; we bound it: a system that is spending $c_{\mathrm{fake}}$ on the lie cannot also be maximally capable, and the spend has an observable footprint.
 \end{claim}
 
+\leanspine{proof}{AdversariallyVerifiableUpTo}{The cost-relation definition above is formalized generically (\texttt{AlignmentProofSpine.Chokepoint}); the conjecture that any given book metric satisfies it is not proved. One structural corollary is: if two bridge routes to the same consequent are read through the identical channel, the disjunction between them buys no independent failure tolerance (\texttt{sharedChokepoint\_steerable\_blocks\_both\_routes}), which bears on the \texttt{MB6b}/\texttt{MB8} disjunction (Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:chokepoint}).}
+
 This reframes two objections the author raised.
 A superintelligence that \emph{internalizes coordination} (Ch.~\ref{ch:coordination-bottleneck}) --- eating the functions of markets and hierarchies into one mind --- does not thereby become invisible: internalized coordination is itself capability, and capability has a footprint in boundary information (Ch.~\ref{ch:capability-without-task-ontology}).
 The hopeful reading is that there is no free lunch in concealment: opacity traded for capability, or capability spent on opacity, should in principle be measurable as a deficit somewhere.

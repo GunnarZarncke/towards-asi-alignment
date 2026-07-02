@@ -28,7 +28,7 @@ In the strong limit, correction-channel integrity supports extrapolative alignme
 
 The chapter builds on the correction chain (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:correction-chain-ch25}),
 defines raw correction capacity and a correction-channel integrity functional (Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch26}),
-\leanspine{proof}{P24}{Lean keeps the scalar \texttt{CCI} as the numeric risk-spine projection while adding a vector/status certificate around it. The richer manuscript \(C_{\mathrm{raw}}\) remains a deployment-class bottleneck over certified traces; the formal correction path includes \texttt{notCaptured}: the target must not capture the corrector's handle control.}
+\leanspine{proof}{P24}{Lean keeps the scalar \texttt{CCI} as the numeric risk-spine projection while adding a vector/status certificate around it. The richer manuscript \(C_{\mathrm{raw}}\) remains a deployment-class bottleneck over certified traces; the formal correction path includes \texttt{notCaptured}: the target must not capture the corrector's handle control. The scalar projection \(\mathrm{CCI}_{\lambda}\) of Eq.~\eqref{eq:cci-ch26} is now a Lean function of the vector certificate, and Lean proves that a measured passing certificate places \(\mathrm{CCI}\) above the threshold-derived floor \(\mathrm{CCI}_{\lambda}(\theta)\) (\texttt{CCI\_ge\_threshold\_floor}); only the measurement-alignment record remains bridge-shaped.}
 and then refines this into a value-bundle version, where what must be corrected is not merely the system's behaviour but the value-bearing geometry behind behaviour (Chapter~\ref{ch:correction-causal-channel}).
 
 \section{Why Correction Is Not Feedback}

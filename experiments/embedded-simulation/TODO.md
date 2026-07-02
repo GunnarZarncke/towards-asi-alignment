@@ -43,6 +43,8 @@ Plan: `PLAN.md` (handoff) · `.cursor/plans/embedded_audit_experiment_8fbb03ff.p
 - [x] Trace ingest hook (`trace_ingest.py`, `trace_audit_cli.py`)
 - [x] Knob-held-out worlds (`knob_world.py`, `tests/contract/test_knob_world.py`)
 - [x] Unified outer eval rules (`outer_rules.py`)
+- [x] Scenario-blind embedded audit path — referent read + deploy gate artifact-driven
+  (`embedded_audit.py`, `deploy_gate.py`, `test_embedded_audit_ontology.py`)
 
 ## Negative results & generalization (2026-06-30)
 

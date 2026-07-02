@@ -7,6 +7,10 @@ from .schemas import CCICalibration, CCICertificate, CCIStatus, InstrumentationL
 
 FROZEN_VALIDATION_SEEDS: tuple[int, ...] = tuple(range(21, 31))
 
+# Minimum interventional-probe rate for a trace to be evaluable at all;
+# below this the certificate is uncertifiable (belowThreshold).
+MIN_EVALUABLE_PROBE_RATE: float = 0.008
+
 # Documented frozen rules (not tuned on seeds 21–30).
 FROZEN_CAPTURE_RULES: dict[str, object] = {
     "primary": {
@@ -58,7 +62,7 @@ def classify_cci_status(
     if instrumentation == "none":
         return "belowThreshold"
 
-    if cert.intervention_episode_rate < 0.008:
+    if cert.intervention_episode_rate < MIN_EVALUABLE_PROBE_RATE:
         return "belowThreshold"
 
     if (

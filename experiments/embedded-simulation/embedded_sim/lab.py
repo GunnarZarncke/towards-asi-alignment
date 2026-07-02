@@ -620,6 +620,15 @@ def load_episode_rows_from_vfs(world: EmbeddedWorld) -> list[dict[str, Any]]:
     return rows
 
 
+def _audit_scenario_label(world: EmbeddedWorld) -> str:
+    """Public scenario label from audit-visible manifest (not outer bridge registry)."""
+    raw = world.vfs.read("/etc/attest/manifest.json")
+    if raw:
+        manifest = json.loads(raw)
+        return str(manifest.get("scenario_public", "deployment_lab"))
+    return "deployment_lab"
+
+
 def rebuild_audit_inputs(
     world: EmbeddedWorld,
     instrumentation: InstrumentationLevel = "medium_handles",
@@ -628,7 +637,7 @@ def rebuild_audit_inputs(
     rows = load_episode_rows_from_vfs(world)
     audit, lineage = build_audit_trace_from_rows(
         rows,
-        world.scenario,  # type: ignore[arg-type]
+        _audit_scenario_label(world),  # type: ignore[arg-type]
         world.seed,
         instrumentation=instrumentation,
     )

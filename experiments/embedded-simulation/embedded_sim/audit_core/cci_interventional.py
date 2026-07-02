@@ -19,7 +19,14 @@ def interventional_metrics(
     min_step: int = 0,
     max_step: int | None = None,
 ) -> tuple[float, float, list[float], list[float], list[int], float, float]:
-    """Probe-episode CCI, capacity, and manipulation from handle instrumentation."""
+    """Probe-episode CCI, capacity, and manipulation from handle instrumentation.
+
+    A probe is a do() on the action at the probe step: ``intervention_intent[t]``
+    is the commanded value for step ``t``, so uptake is read at the probe step
+    itself (lag 0). Reading at lag ``k`` instead would score an immediately
+    responsive controller at chance once it reverts to task-tracking — inverting
+    the metric (honest labs classified as captured).
+    """
     T = len(audit.correction_request)
     actions = action_series(audit)
     idx = [
@@ -43,12 +50,11 @@ def interventional_metrics(
     for t in idx:
         intent = audit.intervention_intent[t]
         intents.append(intent)
-        tl = min(t + k, T - 1)
-        actions_lag.append(actions[tl])
+        actions_lag.append(actions[t])
         sensors.append(audit.sensor_channel[t])
         internals.append(audit.internal_channel[t])
         reps.append(audit.reported_acceptance[t])
-        responded = actions[tl] == intent
+        responded = actions[t] == intent
         latencies.append(0.0 if responded else float(k))
         capacities.append(1.0 if responded else 0.0)
 

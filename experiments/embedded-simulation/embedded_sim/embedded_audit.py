@@ -131,15 +131,15 @@ def run_embedded_audit(
             ok_wf,
             f"lines={wf.count(chr(10))+1 if ok_wf else 0}",
         )
-        if world.bridge == "MB5":
-            ok_ref, ref_map = isolate.read_file("/etc/referents/claimed_map.json")
+        ok_ref, ref_map = isolate.read_file("/etc/referents/claimed_map.json")
+        if ok_ref:
             log_tool(
                 world,
                 isolate,
                 "read_file",
                 {"path": "/etc/referents/claimed_map.json"},
                 ok_ref,
-                "referent_map_ok" if ok_ref else ref_map[:40],
+                "referent_map_ok",
             )
             load_claimed_referent_map(world.vfs)
 
@@ -189,7 +189,7 @@ def run_embedded_audit(
         unit_scope_steps=unit_scope_steps,
     )
 
-    # Stage 5: deployment gate (MB5) — certificate → gate → successor artifacts.
+    # Stage 5: successor deploy gate when candidate artifacts are on VFS.
     gate_result = run_deploy_gate(world, isolate, cert, unit)
     cert.deploy_gate = gate_result
     if gate_result.referent_drift:

@@ -1,3 +1,4 @@
+import Mathlib.Algebra.BigOperators.Fin
 import AlignmentProofSpine.Core
 import AlignmentProofSpine.Correction
 
@@ -144,6 +145,83 @@ theorem P12_coordination_bottleneck
     (hdef : eff = raw - loss) (hloss : 0 < loss) :
     eff < raw := by omega
 
+/-! ### Weighted collective competence (ch13 `eq:collective-competence`)
+
+The chapter's aggregate is \(K_{\mathrm{coll}} = \sum_i \omega_i K_i +
+G_{\mathrm{coord}} - \Omega_{\mathrm{coord}}\), where \(\omega_i\) weights how
+much component \(i\)'s competence is connected to system-level action. The
+coordination-bottleneck **definition** is \(\partial K_{\mathrm{coll}} /
+\partial K_i \leq 0\); the finite spine states its discrete form on
+`Function.update`. -/
+
+/-- ch13: authority-weighted local competence \(\sum_i \omega_i K_i\). -/
+def weightedLocalCompetence {n : Nat} (ω K : Fin n → Int) : Int :=
+  ∑ i, ω i * K i
+
+/-- ch13 Eq. `eq:collective-competence`. -/
+def weightedCollectiveCompetence {n : Nat}
+    (ω K : Fin n → Int) (gain loss : Int) : Int :=
+  weightedLocalCompetence ω K + gain - loss
+
+/-- A local competence increment `δ` at component `i` moves the weighted sum by
+    exactly `ω i * δ`. -/
+theorem weightedLocalCompetence_update {n : Nat}
+    (ω K : Fin n → Int) (i : Fin n) (δ : Int) :
+    weightedLocalCompetence ω (Function.update K i (K i + δ)) =
+      weightedLocalCompetence ω K + ω i * δ := by
+  unfold weightedLocalCompetence
+  have hterm : ∀ j : Fin n,
+      ω j * Function.update K i (K i + δ) j =
+        ω j * K j + (if j = i then ω i * δ else 0) := by
+    intro j
+    by_cases hj : j = i
+    · subst hj
+      rw [Function.update_self, if_pos rfl, mul_add]
+    · rw [Function.update_of_ne hj, if_neg hj, add_zero]
+  rw [Finset.sum_congr rfl fun j _ => hterm j, Finset.sum_add_distrib]
+  simp [Finset.sum_ite_eq']
+
+/-- ch13 authority loss: competence added at a component disconnected from
+    system-level action (`ω i = 0`) does not raise collective competence. -/
+theorem P12_disconnected_competence_gain_is_lost {n : Nat}
+    (ω K : Fin n → Int) (gain loss δ : Int) (i : Fin n)
+    (hω : ω i = 0) :
+    weightedCollectiveCompetence ω (Function.update K i (K i + δ)) gain loss =
+      weightedCollectiveCompetence ω K gain loss := by
+  unfold weightedCollectiveCompetence
+  rw [weightedLocalCompetence_update, hω, zero_mul, add_zero]
+
+/-- ch13 Definition (coordination bottleneck), discrete form of
+    \(\partial K_{\mathrm{coll}}/\partial K_i \leq 0\): if a local increment `δ`
+    at component `i` induces at least `ω i * δ` extra coordination loss, the
+    collective does not improve. -/
+theorem P12_coordination_bottleneck_partial {n : Nat}
+    (ω K : Fin n → Int) (gain loss δ lossIncrease : Int) (i : Fin n)
+    (hloss : ω i * δ ≤ lossIncrease) :
+    weightedCollectiveCompetence ω (Function.update K i (K i + δ)) gain
+        (loss + lossIncrease) ≤
+      weightedCollectiveCompetence ω K gain loss := by
+  unfold weightedCollectiveCompetence
+  rw [weightedLocalCompetence_update]
+  omega
+
+/-- Seven-loss instantiation: a local competence increment whose induced growth
+    in the seven ch13 coordination losses covers `ω i * δ` yields no collective
+    gain. -/
+theorem P12_seven_loss_bottleneck {n : Nat}
+    (ω K : Fin n → Int) (gain δ : Int) (i : Fin n)
+    (l l' : CoordinationLoss)
+    (hloss : ω i * δ ≤ totalCoordinationLoss l' - totalCoordinationLoss l) :
+    weightedCollectiveCompetence ω (Function.update K i (K i + δ)) gain
+        (totalCoordinationLoss l') ≤
+      weightedCollectiveCompetence ω K gain (totalCoordinationLoss l) := by
+  have h := P12_coordination_bottleneck_partial ω K gain (totalCoordinationLoss l) δ
+    (totalCoordinationLoss l' - totalCoordinationLoss l) i hloss
+  have harith : totalCoordinationLoss l +
+      (totalCoordinationLoss l' - totalCoordinationLoss l) =
+        totalCoordinationLoss l' := by omega
+  rwa [harith] at h
+
 theorem coordination_bottleneck_when_loss_positive
     (localSum gain loss : Int)
     (hloss : 0 < loss) :
@@ -211,6 +289,22 @@ theorem control_le_cci_from_vector_supported_slack
   have hctrl : Control A ≤ h.floor + δ := h.control_le_floor_plus_delta
   omega
 
+/-- Derived scalar slack from certification thresholds: a measured passing
+    vector certificate plus `Control ≤ θ-floor + δ` yields the scalar slack.
+    The floor is computed from θ and the penalty weights (ch26 `eq:cci-ch26`),
+    not assumed. -/
+def CCIVectorSupportsScalarSlack.fromThresholdFloor
+    {A : System} {δ : Int}
+    (cert : CCICertificate A) (θ : CCIThresholds) (w : CCIPenaltyWeights)
+    (hpass : CCICertificatePasses cert θ)
+    (hmeas : CCICertificateMeasures cert w)
+    (hctrl : Control A ≤ θ.lambdaFloor w + δ) :
+    CCIVectorSupportsScalarSlack A δ where
+  floor := θ.lambdaFloor w
+  vectorFloor := CCIVectorSupportsScalarFloor.ofThresholds cert θ w hpass hmeas
+  control_le_floor_plus_delta := hctrl
+
+
 theorem P13_risk_gap_bounded_by_cci_slack
     {A : System} {δ : Int}
     (h : Control A ≤ CCI A + δ) :
@@ -229,6 +323,18 @@ theorem risk_bound_from_vector_supported_slack
     (h : CCIVectorSupportsScalarSlack A δ) :
     Risk A ≤ δ :=
   risk_le_delta_of_cci_slack (control_le_cci_from_vector_supported_slack h)
+
+/-- Risk bound from a θ-certified vector CCI certificate: certification
+    thresholds bound the primary numeric slack directly. -/
+theorem risk_bound_from_threshold_certified_cci
+    {A : System} {δ : Int}
+    (cert : CCICertificate A) (θ : CCIThresholds) (w : CCIPenaltyWeights)
+    (hpass : CCICertificatePasses cert θ)
+    (hmeas : CCICertificateMeasures cert w)
+    (hctrl : Control A ≤ θ.lambdaFloor w + δ) :
+    Risk A ≤ δ :=
+  risk_bound_from_vector_supported_slack
+    (CCIVectorSupportsScalarSlack.fromThresholdFloor cert θ w hpass hmeas hctrl)
 
 theorem risk_le_delta_of_witness
     {A : System} {δ : Int} (w : SpineRiskWitness A δ) :

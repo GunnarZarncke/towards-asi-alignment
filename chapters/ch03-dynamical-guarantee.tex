@@ -139,6 +139,9 @@ where $\tau_{\mathcal{D}}$ is the first hitting time of the bad set:
 \tau_{\mathcal{D}} = \inf\{t : X_t \in \mathcal{D}\}.
 \]
 
+In viability theory, the analogous object is the \emph{viability kernel}: the set of states from which the system can remain indefinitely inside a constraint set under admissible controls \autocite{aubin1991viability,aubin2011viability,saintpierre1994viability}.
+Planetary-boundaries and safe-operating-space work applies the same geometric idea at civilization scale \autocite{rockstrom2009planetary,steffen2015planetary,heitzig2016safeoperating}.
+
 This framing matters because alignment is often discussed as if we only needed to define the right target.
 But even a well-defined target is insufficient if the surrounding dynamics push the system away from it.
 A safety property that is not selected for, preserved, audited, and repaired is usually temporary.
@@ -160,6 +163,7 @@ Some future value-relevant variables are not nameable in the ontology available 
 The stronger and more operational object is not a fully specified safe set.
 It is a condition under which the maps used by the safety case remain connected to the value-relevant world.
 Call this \emph{the viability of the value-correction grounding relation}, or, after this definition, \emph{grounding viability}.
+The move from a fully specified safe set to a viability condition on the correction-grounding relation parallels viability-theory treatments of constraint satisfaction under evolving dynamics \autocite{aubin1991viability,aubin2011viability}.
 
 Let \(X_{\mathrm{real},t}\) denote the value-relevant part of the real world at time \(t\).
 Let
@@ -612,6 +616,7 @@ Drift occurs when the system slowly leaves the safe basin without any single cat
 d(X_t,\mathcal{S}) \uparrow
 \]
 over time.
+Ecological resilience literature treats slow loss of a safe operating regime similarly: local stability can mask movement toward a catastrophic shift \autocite{holling1973resilience,walker2004resilience,scheffer2001catastrophic,scheffer2009earlywarning}.
 This is familiar from institutions.
 A regulator may begin with a clear public mission, then slowly adapt to industry incentives.
 A model may begin as a helpful assistant, then become a dependency-shaping platform optimized around retention, influence, or strategic positioning.
@@ -662,7 +667,7 @@ A \in \mathcal{C}_{\text{certified}}
 \section{Why This Is Not Merely Control Theory}
 \label{sec:not-merely-control-theory}
 
-The language of basins, invariants, and transition dynamics resembles control theory \autocite{strogatz2015nonlinear}.
+The language of basins, invariants, and transition dynamics resembles control theory and set-invariance methods \autocite{strogatz2015nonlinear,blanchini1999invariance,bansal2017hjreachability}.
 This is useful.
 But alignment is not merely a control problem.
 
@@ -908,7 +913,7 @@ We are searching for the invariants that let human-correctable value formation s
 
 \section*{Chapter References}
 
-Core references for this chapter include work on the good regulator theorem \autocite{conant1970regulator}, active inference and Markov blankets \autocite{friston2010free,kirchhoff2018markov}, symbol grounding and grounded cognition \autocite{harnad1990symbol,searle1980minds,taddeo2005symbol,barsalou1999perceptual,cangelosi2001adaptive,steels2008symbol}, inverse reinforcement learning and RLHF limits \autocite{ng2000irl,ziebart2008maxent,casper2023rlhflimits,hadfieldmenell2016}, AI accident risk \autocite{amodei2016concrete}, coherent extrapolated volition \autocite{yudkowsky2004cev}, superintelligence and instrumental convergence \autocite{bostrom2014superintelligence}, deception and model organisms \autocite{park2024deception,hubinger2023modelorganisms}, safety cases and assurance arguments \autocite{kelly2004gsn,gsn2021standard,leveson2011esw,bloomfield2012safety}, and dynamical systems approaches to basins of attraction and stability \autocite{strogatz2015nonlinear}.
+Core references for this chapter include work on the good regulator theorem \autocite{conant1970regulator}, active inference and Markov blankets \autocite{friston2010free,kirchhoff2018markov}, symbol grounding and grounded cognition \autocite{harnad1990symbol,searle1980minds,taddeo2005symbol,barsalou1999perceptual,cangelosi2001adaptive,steels2008symbol}, inverse reinforcement learning and RLHF limits \autocite{ng2000irl,ziebart2008maxent,casper2023rlhflimits,hadfieldmenell2016}, AI accident risk \autocite{amodei2016concrete}, coherent extrapolated volition \autocite{yudkowsky2004cev}, superintelligence and instrumental convergence \autocite{bostrom2014superintelligence}, deception and model organisms \autocite{park2024deception,hubinger2023modelorganisms}, safety cases and assurance arguments \autocite{kelly2004gsn,gsn2021standard,leveson2011esw,bloomfield2012safety}, viability theory and safe operating space \autocite{aubin1991viability,aubin2011viability,saintpierre1994viability,heitzig2016safeoperating,rockstrom2009planetary,steffen2015planetary,holling1973resilience,walker2004resilience,scheffer2001catastrophic,scheffer2009earlywarning}, and dynamical systems approaches to basins of attraction, set invariance, and reachability \autocite{strogatz2015nonlinear,blanchini1999invariance,bansal2017hjreachability}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

@@ -22,6 +22,7 @@ RoleHint = Literal[
 ]
 
 ScenarioName = Literal[
+    "deployment_lab",
     "honest",
     "capture_theater",
     "capture_mild",

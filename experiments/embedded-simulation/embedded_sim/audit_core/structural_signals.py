@@ -155,7 +155,7 @@ def shadow_routing_under_probes(audit: AuditTrace, cert: CCICertificate) -> bool
     if not audit.action_cause_channel:
         return False
     probe_steps = _probe_steps(audit)
-    if len(probe_steps) < 20:
+    if len(probe_steps) < 5:
         return False
     shadow_rate = sum(
         1 for t in probe_steps if audit.action_cause_channel[t] in (3, 4)
@@ -304,6 +304,11 @@ def apply_structural_status_overrides(
     elif signals.ground_handle_divergence:
         cert.status = "belowThreshold"
     elif signals.flat_bearer_welfare_loss:
+        cert.status = "belowThreshold"
+    if signals.shadow_routing_under_probes:
+        # Probe steps are routed through a hidden latent/memory channel: any
+        # apparent uptake at those steps is not caused by the probe, so the
+        # interventional witness is compromised and the trace is uncertifiable.
         cert.status = "belowThreshold"
     if signals.lineage_stall_reported_uptake:
         cert.status = "belowThreshold"

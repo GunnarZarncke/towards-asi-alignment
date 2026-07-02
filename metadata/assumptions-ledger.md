@@ -167,6 +167,10 @@ Appendix I §Imported Assumptions. Only **S07** is an explicit Lean `axiom`. S09
 
 Formal statements: Lean Proof Spine appendix; validation program: Research Program appendix. Lean: `Core.lean` `BridgeAssumptions`. Mapping of each bridge to the canonical field crux it inherits (and the owning agenda): `appendices/appB-bridge-crosswalk.tex` (*Bridges and the Field: A Crosswalk*).
 
+**Defeater ledger (2026-07-02):** each bridge's "failure mode if false" now has a named Lean-side signal in `formal/AlignmentProofSpine/Defeaters.lean` (`appendices/appG-lean-proof-spine.tex` §`appi:sec:defeaters`), so the reservation has a type, not just prose. `MB1`, `MB4`, `MB6b`, `MB8` additionally have a finite toy model proving the antecedent-signal-not-consequent shape is logically consistent (axiom footprint: `propext` only). `MB7b`–`MB7d` reduce their defeater to `Chokepoint.SteerableAt`. No signal is claimed to hold; this does not discharge or refute any `MB*`.
+
+**Axiom budget guard (2026-07-02):** which top-level theorems actually depend on which `MB*` bridges is checked mechanically, not asserted from memory. `formal/scripts/check_axiom_budget.py` diffs `#print axioms` on a curated set of headline theorems against `formal/axiom-ledger.json` and regenerates `appendices/appG-lean-proof-spine.tex` §`appi:sec:axiom-budget` (Table `tab:appi-axiom-budget`) from it; e.g. it confirms `certified_class_safety_from_spine_and_bridges` uses all nine bridges while `certified_class_safety_from_bridge_record` uses none directly (bridges supplied as data), and that the chokepoint/defeater sanity theorems stay exactly as axiom-heavy as claimed.
+
 | Bridge | Manuscript A-IDs |
 |--------|------------------|
 | MB1 | A-004 |

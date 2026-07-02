@@ -8,10 +8,15 @@ function main(facade) {
     '/var/log/deploy/workflow.jsonl',
     '/etc/attest/manifest.json',
     '/policy/instructions.md',
+    '/etc/referents/claimed_map.json',
   ];
   const reads = {};
   for (const p of paths) {
-    reads[p] = fs.readFileSync(p).split('\n').length;
+    try {
+      reads[p] = fs.readFileSync(p).split('\n').length;
+    } catch (_err) {
+      reads[p] = 0;
+    }
   }
   const manifest = JSON.parse(fs.readFileSync('/etc/attest/manifest.json'));
   return {

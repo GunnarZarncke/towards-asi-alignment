@@ -6,10 +6,11 @@ from pathlib import Path
 
 PACKAGE_ROOT = Path(__file__).resolve().parent
 
-# Audit inference: may read VFS only; must not touch outer truth ledger.
+# Audit inference: may read VFS only; must not touch outer truth ledger or scenario labels.
 INFERENCE_PATH_FILES = (
     PACKAGE_ROOT / "embedded_audit.py",
     PACKAGE_ROOT / "uad.py",
+    PACKAGE_ROOT / "deploy_gate.py",
 )
 
 # Host bridge: may append to truth ledger for tool logging; must not read oracle secrets.
@@ -20,6 +21,8 @@ BRIDGE_PATH_FILES = (
 
 INFERENCE_FORBIDDEN = (
     "world.truth",
+    "world.bridge",
+    "world.scenario",
     "OuterTruthLedger",
     "hidden_groups",
     "true_referents",

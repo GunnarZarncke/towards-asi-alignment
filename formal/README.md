@@ -71,13 +71,36 @@ open AlignmentProofSpine
 LEAN_PATH=.lake/build/lib/lean lean --root=. /tmp/chk.lean
 ```
 
+**Axiom budget guard.** The above check is mechanized for a curated list of
+headline theorems in `scripts/check_axiom_budget.py`, which diffs
+`#print axioms` output against the checked-in snapshot `axiom-ledger.json`
+and regenerates the Appendix G table (`metadata/axiom-budget-index.tex`,
+`appi:sec:axiom-budget`) from it:
+
+```bash
+cd formal
+lake build                              # after any spine change
+python3 scripts/check_axiom_budget.py   # fails (exit 1) if a theorem's axiom
+                                         # footprint drifted from the ledger
+python3 scripts/check_axiom_budget.py --update   # accept an intentional drift
+```
+
+This catches, mechanically, exactly the failure mode the "never hidden" claim
+above depends on: a refactor that silently makes a theorem depend on a new
+`MB*` bridge (or a wider carrier footprint) without anyone noticing.
+
 `P34` (host-capacity aliasing) and the other non-bridge results print only
 `propext` / `Quot.sound` (or abstract carriers). `risk_bound_from_cci_slack`
 is the narrow arithmetic leaf deriving `Risk A ≤ δ` from
 `Control A ≤ CCI A + δ` via `P13` (no bare `hrisk` hypothesis).
 `NumericRiskLeaf` records whether that scalar leaf came directly, from vector CCI
 support, from a BIQ-derived slack certificate, or from a Markov-blanket/B-IQ
-profile.
+profile. The vector-CCI path no longer needs a bare assumed floor: the ch26
+scalar projection `CCI_λ` is computed from the certificate
+(`CCICertificate.lambdaProjection`) and the pass thresholds induce a floor
+(`CCIThresholds.lambdaFloor`), with only measurement alignment
+(`CCICertificateMeasures`) left bridge-shaped. Trace-computed blanket profiles
+feed the same leaf via `traceDerivedCCISlack` / `trace_derived_risk_bound`.
 `certified_class_safety_spine_derived` packages that risk leaf together with
 `Certified`, `SatisfiesInvariants`, and `LayeredAlignedDef` into a
 `CertifiedSafetyCase`, so the non-arithmetic evidence is no longer advertised
@@ -103,19 +126,22 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | Module | Proof-spine nodes | Book chapters |
 |--------|-------------------|---------------|
 | `AlignmentProofSpine/Core.lean` | abstract carriers, access/handle/K-equivalence vocabulary, concrete `Boundary`, grounding predicates and `conservative_abstraction_no_silent_gap`, MDL/graph scaffolding, bridges `MB1`–`MB9` with split `MB6a`/`MB6b`, `MB7a`–`MB7d`, and grounding bridge `MB9`, `BridgeAssumptions` | foundations |
+| `AlignmentProofSpine/Chokepoint.lean` | ch43 `AdversariallyVerifiableUpTo`/`SteerableAt` (cost-of-faking-vs-affordable-surplus definition), `VerifiabilityGatedBridge`, `sharedChokepoint_steerable_blocks_both_routes` (shared-channel disjunction gives no independent failure tolerance), `independent_channels_can_diverge` (constructive contrast), worked `MB6a`/`MB6b` vs `MB8` instance (`SharedInstrumentHypothesis`, `correction_integrity_disjunctive_tolerance_needs_distinct_instruments`) | 43, 46 (correlated-failure review 2026-06-30) |
+| `AlignmentProofSpine/Defeaters.lean` | systematic defeater ledger for all of `MB1`–`MB9`: named failure-mode signal predicates (`LockedInBadBasin`, `JudgeManipulated`, `LegitimacyTheater`, `EstimatorNonstationary`-style, etc., each traced to an A-ID/U-ID in `metadata/assumptions-ledger.md`), finite toy models proving the antecedent-signal-not-consequent shape is logically consistent for `MB1`, `MB4`, `MB6b`, `MB8`, and a reduction of `MB7b`–`MB7d`'s defeater to `Chokepoint.SteerableAt` | crosswalk to assumptions/uncertainty ledgers |
 | `AlignmentProofSpine/Mathlib.lean` | shared Mathlib lemmas (e.g. finite-cardinality pigeonhole for `P34`) | foundations |
 | `AlignmentProofSpine/Boundaries.lean` | `P05`–`P09`, `P36`, access-equivalence and K-equivalence non-identifiability, CID abstraction-relative incentive separation, smoothing-margin arithmetic | 6–7, 10, 36 |
-| `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, Markov-blanket/B-IQ profiles, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic) | 11–14, 33, 36 |
+| `AlignmentProofSpine/Capability.lean` | `P10`–`P13`, `P32`, `P43`, Markov-blanket/B-IQ profiles, hidden-BIQ certificate, slow-plotting accumulation (B-IQ / control–correction arithmetic), ch13 weighted collective competence (`weightedCollectiveCompetence`, `P12_coordination_bottleneck_partial`, `P12_seven_loss_bottleneck`), θ-floor risk leaf (`risk_bound_from_threshold_certified_cci`) | 11–14, 33, 36 |
 | `AlignmentProofSpine/CooperationGraph.lean` | **`UADDiscoveryAudit`**, **`UnitScore`**, **`MetaPriorEvidence`**, `metaPriorMismatch` derived from `P_meta` diagonal mass, **`InferentialDetectionCertificate`**, **`DerivedCoopGraph`**, **`DerivedInferentialGraph`**, `causalMutualModelOf` / `inferentialProfileOf` / `inferentialPairOf` (opaque evidence emitters), `inferentialCouplingScore`, `auditMutualModelWithInferential`, `uad_audit_yields_inferential_graph`, `severed_causal_reach_positive_effective_reach`, **`P33`** | 13, 33, 35 |
 | `AlignmentProofSpine/Bundles.lean` | `P14`, `P16`, `P19`–`P22a` (proofs), `P15`/`P17`/`P18`/`P22b` (counterexamples), scalar CIRL as one-dimensional bundle inference, cooperative reward inference / bundle-preservation separation, syntactic-tiling/import-preservation alias | 15–23, 30 |
-| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`**, handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 25–29, 41–43 |
-| `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared-domain special-case / projection theorems with explicit interface conditions, non-converse separations, shared status ledger, finite Mathlib-backed helpers (`Finite/MDP`, `Finite/Probability`, `Finite/PMF`, `Finite/Weights`, `Finite/Reachability`, `Finite/Contraction`, `Finite/TraceBIQ`), cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization. Recent finite derivations include assistance-belief defer optimality, finite-horizon AUP attainable-utility preservation, PMF quantilizer support soundness, quantilizer base-rate fragments, trace-computed vector B-IQ / output-capability appearance bounds, attended-harm / extinction certificates, and a concentration bridge with worst-case fallback for supplied blanket partitions. Debate/ELK remain later targets for native protocol/reporter theorem matching. | crosswalk appendix |
+| `AlignmentProofSpine/Correction.lean` | `P23`, `P24`, `P25`, `P26`, scalar **`CCI`**, vector/status **`CCICertificate`** with derived ch26 scalar projection (`CCICertificate.lambdaProjection`, `CCIThresholds.lambdaFloor`, `CCI_ge_threshold_floor`), handle-controlled **`CorrectionPath`**, shutdown/interruptibility/corrigibility, impact, quantilization, debate, amplification, and latent-readout separations | 25–29, 41–43 |
+| `AlignmentProofSpine/Field/*.lean` | **Field-agenda subsumptions**: shared-domain special-case / projection theorems with explicit interface conditions, non-converse separations, shared status ledger, finite Mathlib-backed helpers (`Finite/MDP`, `Finite/Probability`, `Finite/PMF`, `Finite/Weights`, `Finite/Reachability`, `Finite/Contraction`, `Finite/TraceBIQ`), cited imported field theorem handles, and agenda modules for CIRL, shutdown, interruptibility, Christiano corrigibility, ELK, debate, impact, and quantilization. Recent finite derivations include assistance-belief defer optimality, finite-horizon AUP attainable-utility preservation, PMF quantilizer support soundness, quantilizer base-rate fragments, trace-computed vector B-IQ / output-capability appearance bounds with a tight information-shaped ceiling `⌈log₂ min(m,|𝒜|)⌉` (no channel-count factor, alphabet clip `|𝒜|` not `|𝒜|²`), attended-harm / extinction certificates, and a concentration bridge with tight worst-case fallback for supplied blanket partitions. Debate/ELK remain later targets for native protocol/reporter theorem matching. | crosswalk appendix |
 | `AlignmentProofSpine/FieldSubsumptions.lean` | compatibility re-export for the field-agenda headline theorem names | crosswalk appendix |
-| `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, **`SuccessorMeasurandChain`**, risk bound propagation | 28–31 |
+| `AlignmentProofSpine/Successors.lean` | `P27`, `P28`, `P29`, **`SuccessorSafeChain`**, **`SuccessorMeasurandChain`**, risk bound propagation; ch48 audit links are the explicit hypothesis record `SuccessorAuditLinks` (no global linking axioms), and safe chains reduce to measurand chains via `SuccessorSafeChain.toMeasurandChain` | 28–31 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
 | `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, finite-support `P40`, direct/bridge-derived layer evidence records, grounding required by `LayeredAlignedDef`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_from_bridge_record`** and **`certified_class_safety_spine_derived`** (`CertifiedSafetyCase` package) | 1–5, 37–38, 42, 48 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
+| `scripts/check_axiom_budget.py` + `axiom-ledger.json` | tooling, not a proof module: mechanically diffs `#print axioms` on 13 headline theorems against the checked-in ledger and generates Appendix G's axiom-budget table (`metadata/axiom-budget-index.tex`) | appi:sec:axiom-budget |
 
 ## Three kinds of result (for the book)
 

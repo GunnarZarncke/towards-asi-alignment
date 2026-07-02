@@ -4,6 +4,11 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-02 | Embedded sim scenario-blind audit path fix | [2026-07-02-embedded-sim-scenario-blind-audit.md](2026-07-02-embedded-sim-scenario-blind-audit.md) |
+| 2026-07-02 | Negative results harvest (toy + embedded sim) | [2026-07-02-negative-results-harvest.md](2026-07-02-negative-results-harvest.md) |
+| 2026-07-02 | Embedded simulation review toward worked example | [2026-07-02-embedded-sim-review.md](2026-07-02-embedded-sim-review.md) |
+| 2026-07-02 | Lean precise bounds: trace ceiling, CCI θ-floor, ch13 bottleneck, successor audit-link record, chokepoint formalization, defeater ledger, axiom-budget guard | [2026-07-02-lean-precise-bounds.md](2026-07-02-lean-precise-bounds.md) |
+| 2026-07-01 | Reviewer-suggested references | [2026-07-01-reviewer-suggested-references.md](2026-07-01-reviewer-suggested-references.md) |
 | 2026-07-01 | Bibliography URLs full pass | [2026-07-01-bibliography-urls-full-pass.md](2026-07-01-bibliography-urls-full-pass.md) |
 | 2026-07-01 | Astro site thin slice | [2026-07-01-astro-site-thin-slice.md](2026-07-01-astro-site-thin-slice.md) |
 | 2026-06-30 | README embedded simulation section | [2026-06-30-readme-embedded-sim.md](2026-06-30-readme-embedded-sim.md) |

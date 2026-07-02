@@ -325,13 +325,14 @@ Lean currently proves a deterministic appearance ceiling rather than a concentra
 \begin{equation}
 \widehat D_{\mathrm{ctrl}}(m)
 \le
-|A|\cdot|E|\cdot \log_2\!\bigl(\min(m,|{\mathcal A}|^2)\bigr),
+\bigl\lceil \log_2 \min(m,|{\mathcal A}|) \bigr\rceil,
 \label{eq:trace-ctrl-appearance}
 \end{equation}
 where \(\widehat D_{\mathrm{ctrl}}(m)\) is the trace diversity score for the control (actuator\(\to\)external) channels and \(|{\mathcal A}|\) is the discrete alphabet size used by the estimator.
-The product \(|A|\cdot|E|\) and the \(\min(m,|{\mathcal A}|^2)\) term come from a combinatorial spurious-diversity clip on lagged pairs; the bound is intentionally loose but sound.
+The bound needs no \(|A|\cdot|E|\) channel-count factor because the estimator is a supremum over channel pairs, and the alphabet clip is \(|{\mathcal A}|\) rather than \(|{\mathcal A}|^2\) because the diversity score is information-shaped: each joint pattern support dominates both marginal supports.
+The bound is deterministic and sound; it says nothing about typical-case concentration, which remains an explicit bridge record.
 
-\leanspine{proof}{subsample\_output\_capability\_le\_control\_optimism}{An \(m\)-row subsample cannot make \(\widehat D_{\mathrm{ctrl}}\) exceed the control optimism ceiling.}
+\leanspine{proof}{subsample\_output\_capability\_le\_tight\_optimism}{An \(m\)-row subsample cannot make \(\widehat D_{\mathrm{ctrl}}\) appear larger than \(\lceil\log_2\min(m,|{\mathcal A}|)\rceil\) bits, regardless of blanket channel counts.}
 
 Attention weights, per-channel harm, extinction thresholds, and the concentration-bridge upgrade are defined and proved in the same appendix section; they multiply or certify this output bound rather than replacing it.
 

@@ -259,13 +259,16 @@ theorem certified_class_safety_from_spine_and_bridges
     hbound hgroundingCert haccess hfilters hbundle hbearer hsucc hpercolation hcci
 
 theorem certified_class_safety_along_successor_safe_chain
+    (links : SuccessorAuditLinks)
     {A B : System} {δ : Int}
     (hcci : Control A ≤ CCI A + δ)
     (hchain : SuccessorSafeChain A B) :
     Risk B ≤ δ :=
-  risk_bound_along_successor_safe_chain (risk_le_delta_of_cci_slack hcci) hchain
+  risk_bound_along_successor_safe_chain links
+    (risk_le_delta_of_cci_slack hcci) hchain
 
 theorem certified_class_safety_from_spine_bridges_and_successor_chain
+    (links : SuccessorAuditLinks)
     {A B : System} {δ : Int}
     (hcert : Certified A)
     (hinv : SatisfiesInvariants A)
@@ -282,7 +285,7 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     CertifiedSafetyCase A δ ∧ Risk B ≤ δ := by
   have hroot := certified_class_safety_from_spine_and_bridges A δ hcert hinv
     hbound hgroundingCert haccess hfilters hbundle hbearer hsucc hpercolation hcci
-  exact ⟨hroot, risk_bound_along_successor_safe_chain hroot.risk_bound hchain⟩
+  exact ⟨hroot, risk_bound_along_successor_safe_chain links hroot.risk_bound hchain⟩
 
 theorem certified_class_safety_from_biq_ceiling
     {A : System} {δ : Int}
@@ -315,11 +318,12 @@ theorem certified_class_safety_from_spine_bridges_and_biq
     (control_le_correction_from_biq_ceiling hbiq)
 
 theorem certified_class_safety_from_biq_along_successor_chain
+    (links : SuccessorAuditLinks)
     {A B : System} {δ : Int}
     (hbiq : BIQDerivedCCISlack A δ)
     (hchain : SuccessorSafeChain A B) :
     Risk B ≤ δ :=
-  certified_class_safety_along_successor_safe_chain
+  certified_class_safety_along_successor_safe_chain links
     (control_le_correction_from_biq_ceiling hbiq) hchain
 
 end AlignmentProofSpine
