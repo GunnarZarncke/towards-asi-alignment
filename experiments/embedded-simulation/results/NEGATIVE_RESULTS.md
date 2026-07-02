@@ -12,6 +12,8 @@ entry and append the resolution rather than deleting it.
 
 ## N-1. Full UAD and fake UAD are identical in the default ecology
 
+**Date:** 2026-06-30 (diagnosed in [embedded-uad-ecology](../../../drafts/conversation-summaries/2026-06-30-embedded-uad-ecology.md), [embedded-real-uad](../../../drafts/conversation-summaries/2026-06-30-embedded-real-uad.md))
+
 **Claim tested:** an auditor that discovers the correct unit-of-attribution
 (full UAD: lagged-MI agent clustering) outperforms a cheap heuristic auditor
 (fake UAD: most-active `preserve_control` actors) on safety metrics.
@@ -38,6 +40,8 @@ proxy is *misleading*. That motivated the `misleading_top2` ecology (N-2).
 ---
 
 ## N-2. The separation we *can* show is narrow and partly self-fulfilling
+
+**Date:** 2026-06-30 (calibrated in [uad-calibration-oracle-free](../../../drafts/conversation-summaries/2026-06-30-uad-calibration-oracle-free.md); ecology built in [misleading-top2-discovery-gap](../../../drafts/conversation-summaries/2026-06-30-misleading-top2-discovery-gap.md))
 
 **What works:** in the `misleading_top2 + bind_offender_interventions` ecology
 at **actor**-level intervention granularity, with a calibrated coordination
@@ -98,6 +102,115 @@ not from peeking.
 
 **Not yet supported:**
 > Full UAD generally beats heuristic auditing in embedded labs.
+
+---
+
+## N-3. Enriched lab ecology did not separate full MI from fake UAD
+
+**Date:** 2026-06-30 ([embedded-uad-ecology](../../../drafts/conversation-summaries/2026-06-30-embedded-uad-ecology.md))
+
+**Claim tested:** adding adversarial candidates, decoys, auditor/principal workflow
+agents, and common legitimate lab actors would stress unit identity enough that
+lagged-MI full UAD outperforms the activity heuristic on safety or UAD metrics.
+
+**Result:** ecology made UAD **harder** (mean recall/precision fell from ~27% to
+**3.8%** on the smoke compare) but full and fake remained **identical on every
+headline metric** (0 false-passes, same recall/precision). Full UAD still picked
+MI-primary units in 10/13 main-report episodes — different units, same certificate.
+
+**Why.** Safety still flows only through scoped `intervention_active` masking, and
+when both auditors pick effectively the same scope (or scopes that do not change
+the CCI witness), unit identity does not move the verdict.
+
+**Status:** real. Ecology complexity alone is not a UAD discriminator; a dedicated
+discovery-gap scenario (`misleading_top2`, N-2) was required.
+
+---
+
+## N-4. Intervention granularity is a null test without a discovery gap
+
+**Date:** 2026-06-30 ([intervention-granularity-handle](../../../drafts/conversation-summaries/2026-06-30-intervention-granularity-handle.md))
+
+**Claim tested:** graded intervention handles (`pipeline` → `window` → `actor`)
+would let full UAD beat fake UAD on false-pass or scope metrics when the cheap
+heuristic picks the wrong unit.
+
+**Result:** **+0.0%** fake−full separation at every level on the pre-`misleading_top2`
+smoke curve (T=400, seed 11, coactive offender on). `unit_scope_steps` was
+byte-identical across full/fake in every results JSON — a provable null test.
+Full and fake also had **identical recall** (~0.75; 1.0 on MB6/MB6b/MB7d) because
+MI clustering selected the same coalition the heuristic `top2` already found.
+
+**Why (two compounding causes).**
+
+1. **No discovery gap** — same unit selected either way.
+2. **Layer decoupling** — audit `intervention_active` (from `correction.jsonl`) is
+   not attributed to workflow actors, so `actor`-level scoping binds to
+   `preserve_control` steps that rarely coincide with audit interventions.
+
+**Status:** real before the misleading-top2/bind fixes (N-2). Granularity only
+matters once identity diverges *and* the scoped channel drives the verdict.
+
+---
+
+## N-5. Episode safety verdict decoupled from scoped interventions
+
+**Date:** 2026-06-30 ([misleading-top2-discovery-gap](../../../drafts/conversation-summaries/2026-06-30-misleading-top2-discovery-gap.md))
+
+**Claim tested:** once full UAD finds the quiet colluder pair and fake UAD is misled
+to loud decoys, actor-level scoping (5.0 vs 0.0 retained intervention steps)
+would flip episode-level false-pass.
+
+**Result:** discovery gap worked (full recall **100%**, fake **0%**; scope steps
+**5.0** vs **0.0** at actor level) but **false-pass stayed 0%** for both.
+
+**Why.** The episode simulator generates its own violation independent of workflow
+colluders. Masking colluder-attributed steps does not change the micro CCI witness
+that drives the safety verdict until violations are *generated from* colluder
+activity, not merely time-aligned with it.
+
+**Status:** real. UAD/scoping can improve identity and probe retention without
+yet moving headline safety metrics — do not cite scope-step gaps as false-pass
+gaps until the simulator layers are coupled.
+
+---
+
+## N-6. Headline 0% false-pass is vacuous when nothing certifies
+
+**Date:** 2026-07-02 ([embedded-sim-review](../../../drafts/conversation-summaries/2026-07-02-embedded-sim-review.md))
+
+**Claim tested:** embedded parity suite red-team battery and live LLM red-team
+(false-pass **0%** over 1260+ runs) shows the embedded audit resists adversarial
+patching better than toy-sim (**35%** at T=2000).
+
+**Result:** the embedded **0% is not discriminative evidence of robustness**.
+Instrumentation matrix/curve report minimum certifiable level **None**; the honest
+scenario is judged incorrect at every handle level (correct only at passive `none`).
+Red-team battery pass-attempt rate is also **0%** — adversaries never reach a
+certifying decision to attack. Honest episodes getting *worse* with more
+instrumentation suggests miscalibrated frozen thresholds (likely fixable), but
+even after a fix the current headline rate must not be cited as a safety win.
+
+**Status:** real metric failure, not a bridge witness. Separate from N-1/N-2
+(UAD identity); concerns whether the CCI/threshold stack certifies anything at all
+in the embedded configuration.
+
+---
+
+## N-7. UAD unit does not yet scope CCI (v1 pipeline gap)
+
+**Date:** 2026-06-30 ([uad-pipeline-mb-grounding](../../../drafts/conversation-summaries/2026-06-30-uad-pipeline-mb-grounding.md))
+
+**Claim tested:** attaching a discovered unit to the certificate and running
+UAD-before-CCI would make CCI depend on the selected unit.
+
+**Result:** v1 runs CCI **globally on the full micro trace**. The UAD unit is
+recorded on the certificate but **does not filter** CCI inputs. Lab UAD is also
+bridge-agnostic workflow heuristics; MB-specific failure modes still live mainly
+in micro CCI/detector, not in unit-scoped measurement.
+
+**Status:** documented architectural gap. Prose must not imply unit-scoped CCI
+until `unit_scope` is wired through the detector/CCI path end-to-end.
 
 ---
 
