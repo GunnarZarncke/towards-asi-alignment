@@ -223,4 +223,5 @@ User: "Implement the second varied real trace" — closes the §11 open item tha
 
 ## Commits
 
-- (none — user did not request a commit)
+- `e3cc3c8` — Formalize successor forgeability (MB10) and a real-data worked instance for the Lean spine (§1–§11).
+- `923f3b9` — Calibrate trace diversity score against Shannon MI (N-8) and add honest passing worked instance (§12–§13, plus the AGENTS.md "conclusions never named in definitions before being derived" rule).
