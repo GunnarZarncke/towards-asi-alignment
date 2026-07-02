@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Value Bundle Simulator</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #f6f6f6;
+        color: #111;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #111;
+          color: #eee;
+        }
+      }
+      main {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 24px 16px 48px;
+      }
+      h1 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin: 0 0 6px;
+      }
+      .lead {
+        margin: 0 0 18px;
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.45;
+        max-width: 62ch;
+      }
+      @media (prefers-color-scheme: dark) {
+        .lead {
+          color: #aaa;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Value Bundle Simulator</h1>
+      <p class="lead">
+        Toy model mapping ecological and social environment parameters to culturally
+        salient value terms. Adjust sliders or pick a preset; the seven most salient
+        values update live.
+      </p>
+      <div id="value-bundle-simulator"></div>
+    </main>
+    <script type="module" src="./value-bundle-simulator.js"></script>
+  </body>
+</html>

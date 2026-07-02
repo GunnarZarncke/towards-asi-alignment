@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Appendix: A Worked Example: The BioShield Deployment Gate"><title>A Worked Example: The BioShield Deployment Gate | Towards Superintelligence Alignment</title><link rel="stylesheet" href="/towards-asi-alignment/_astro/SiteLayout.BPJBLSml.css"><style>.book-page[data-astro-cid-fdg3s7q7] .chapter-thesis{margin:1.5rem 0}.book-page[data-astro-cid-fdg3s7q7] .env-box{border-left:3px solid var(--color-border);background:var(--color-surface);margin:1.25rem 0;padding:.75rem 1rem}.book-page[data-astro-cid-fdg3s7q7] .lean-spine{color:var(--color-muted);border-left:3px solid var(--color-border);margin:1rem 0;padding-left:.75rem;font-size:.92rem}.book-page[data-astro-cid-fdg3s7q7] .epigraph{border-left:3px solid var(--color-border);color:var(--color-muted);margin:1.5rem 0;padding-left:1rem}.book-page[data-astro-cid-fdg3s7q7] .book-figure{text-align:center;margin:1.5rem 0}.book-page[data-astro-cid-fdg3s7q7] .book-figure img{max-width:100%;height:auto}.book-page[data-astro-cid-fdg3s7q7] .description-list{margin:1rem 0}.book-page[data-astro-cid-fdg3s7q7] .description-list dt{margin-top:.75rem;font-weight:600}.book-page[data-astro-cid-fdg3s7q7] .description-list dd{margin-bottom:.5rem;margin-left:0}.book-page[data-astro-cid-fdg3s7q7] .footnotes{border-top:1px solid var(--color-border);color:var(--color-muted);margin-top:2rem;padding-top:1rem;font-size:.9rem}.book-page[data-astro-cid-fdg3s7q7] table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}.book-page[data-astro-cid-fdg3s7q7] th,.book-page[data-astro-cid-fdg3s7q7] td{border:1px solid var(--color-border);vertical-align:top;padding:.45rem .6rem}
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/towards-asi-alignment/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/towards-asi-alignment/">Start Here</a><a href="/towards-asi-alignment/paths/">Guided Tour</a><a href="/towards-asi-alignment/cards/">Cards</a><a href="/towards-asi-alignment/faq/">FAQ</a><a href="/towards-asi-alignment/book/">Book</a><a href="/towards-asi-alignment/lean/">Lean</a><a href="/towards-asi-alignment/demos/">Demos</a><a href="/towards-asi-alignment/references/">References</a><a href="/towards-asi-alignment/about/">About</a><a href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">PDF</a></nav></div></header><main class="page"><article class="two-column book-page" data-astro-cid-fdg3s7q7><div class="content-card readable" data-astro-cid-fdg3s7q7><div class="badge-row" data-astro-cid-fdg3s7q7><span class="badge">appendix</span></div><h1 data-astro-cid-fdg3s7q7>A Worked Example: The BioShield Deployment Gate</h1><p class="side-panel-meta" data-astro-cid-fdg3s7q7>Source: <code data-astro-cid-fdg3s7q7>appendices/appD-worked-example.tex</code></p><h1 id="a-worked-example-the-bioshield-deployment-gate">A Worked Example: The BioShield Deployment Gate</h1>
+<p><span id="appk-worked-example"></span></p>
+<div class="callout chapter-thesis"><strong>Chapter thesis.</strong> This appendix runs the whole machinery of the book on one concrete, fictional but plausible deployment.
+A hospital network wants to let a frontier-model agent move from advising clinicians to taking bounded operational actions.
+The example is organized not by chapters but by the logical spine that the formal appendix checks: boundary, grounding, capability and correction slack, value-bundle and bearer transport, correction-channel integrity, successor stability, socio-technical selection, adversarial measurement, and finally a conditional safety case.
+At each layer the example names the actors, the traces collected, the handles used, and how each handle is realized and verified.
+It is speculative where it must be, and says so.</div>
+<h2 id="how-to-read-this-appendix">How to Read This Appendix</h2>
+<p><span id="sec:appk-how-to-read"></span></p>
+<p>The rest of the book argues in general terms.
+This appendix commits to one scenario and follows it through every layer of the argument so that a reader can see how the pieces compose in practice.</p>
+<p>The example is deliberately conditional.
+It assumes that scaled agent-boundary discovery (“blanket discovery”) works: that one can search system traces for the operative controller rather than trusting product labels.
+It assumes the nine bridge conditions named in Appendix <a href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">Lean Proof Spine in Mathematical Form (PDF)</a> (<code>MB1</code>—<code>MB9</code>) can be discharged by measurement and governance for this narrow deployment class.
+None of that is proven here or anywhere in the book.
+The point of the worked example is to show what the world looks like <em>if</em> those research bets succeed, and to make the remaining cruxes concrete.</p>
+<p>Claims are tagged inline:</p>
+<ul>
+<li>[nosep]
+   **[Measured]** — something the deployment's own telemetry can establish.
+   **[Assumed]** — a research result the example takes for granted, pointing to the bridge it stands in for.
+   **[Lean-conditional]** — a conclusion that follows in the proof spine *given* the inputs above it.
+   **[Open]** — a crux the book does not resolve.</li>
+</ul>
+<p>Names are fictional composites of real roles: <em>BioShield Labs</em> (a frontier lab), <em>Harbor Health Network</em> (the hospital customer), <em>Northstar Cloud</em> (the compute provider), <em>CivicEval</em> (an independent evaluator in the mold of model-evaluation organizations), and the <em>Public Health Safety Office</em> (a regulator-like reviewer). Treat institutional analogues loosely; the mechanisms are what matter.</p>
+<h2 id="the-deployment-slice-and-the-effective-actor">The Deployment Slice and the Effective Actor</h2>
+<p><span id="sec:appk-slice"></span></p>
+<p>Harbor Health has run <code>bioshield-agent-v3.7</code> in <em>advisory mode</em> for four weeks across its infection-control workflow.
+In advisory mode the agent reads de-identified electronic-record feeds, lab-result streams, bed-capacity dashboards, staff schedules, and public-health advisories, and it produces recommendations: which patients to test or isolate, which wards are trending toward capacity, what notices clinicians might send.
+It cannot act.</p>
+<p>The decision at hand is whether to enable <em>bounded action mode</em>.
+In bounded action mode the agent may place draft lab orders into a pending clinician queue, open isolation-protocol tickets, page infection-control staff, and reserve scarce single-occupancy rooms under predefined rules.
+It still cannot treat patients or order medication.
+But it can reshape operational priorities fast enough that the speed of correction starts to matter.
+That is exactly the regime the book cares about: a capability increment whose matching correction channel must be checked <em>before</em> the increment is granted (Chapter <a href="../../cards/chapters/ch12/">Capability Growth Is Boundary Expansion</a>).</p>
+<p>The first move is the one the book insists on: do not assume the thing being deployed is “the model.”
+Ask what the <em>effective deployed actor</em> is—the entity that actually preserves action-relevant state and exerts control over time (Chapter <a href="../../cards/chapters/ch06/">What Is an Agent Without Anthropomorphism?</a>, Chapter <a href="../../cards/chapters/ch07/">Finding the Boundary</a>).
+For BioShield the candidate operative controller is a loop, here called <code>System A</code>:</p>
+<ul>
+<li>[nosep]
+   the model endpoint `bioshield-agent-v3.7`;
+   the tool runner `hospital-ops-runner`, holding scoped lab, paging, ticketing, and bed-management permissions;
+   the persistent memory namespace `hh-network/infection-control/q3`;
+   a retrieval index over hospital policy, advisories, and prior incidents;
+   a scheduler on tagged cloud accelerators;
+   a release dashboard that rewards resolved-risk tickets and avoided bed shortages;
+   the shift leads who approve or reject pending actions;
+   the lab release committee that can widen, pause, or narrow authority.</li>
+</ul>
+<p>The control that matters might sit in the model weights, or in the memory namespace, or in the dashboard’s incentive to clear tickets, or in a habituated subgroup of shift leads who rubber-stamp the agent’s queue.
+Boundary discovery’s job is to find out which.</p>
+<h2 id="boundary-and-grounding">Boundary and Grounding</h2>
+<p><span id="sec:appk-boundary"></span></p>
+<h3 id="what-is-collected">What is collected</h3>
+<p><span id="sec:appk-traces"></span></p>
+<p>Boundary discovery is only as good as the traces it can read.
+The example commits to five trace streams.
+Each is described with the fields that actually do work in the example; richer schemas are possible but are not required to make the safety case.</p>
+<p><strong>Execution trace <code>bioshield.exec.jsonl</code>.</strong></p>
+<p>One row per model invocation or tool call.
+Required fields: <code>episode_id</code>, <code>serving_instance_id</code>, <code>hardware_tag</code>, <code>tool_name</code>, <code>permission_scope</code>, <code>input_hash</code>, <code>output_hash</code>, <code>memory_namespace</code>, <code>proposed_action_type</code>, <code>action_status</code>, <code>wall_clock_ms</code>.
+This is the stream that lets discovery connect internal state (which memory namespace was read), sensory input (<code>input_hash</code>), action (<code>tool_name</code>, <code>proposed_action_type</code>), and external effect (<code>action_status</code>). A reader can see how it supplies the sensor/action/internal/external partition that a Markov-blanket estimate needs.</p>
+<p><strong>Workflow trace <code>bioshield.workflow.jsonl</code>.</strong></p>
+<p>One row per release or operations event.
+Required fields: <code>release_ticket_id</code>, <code>stage</code> (triage, evaluation, release recommendation, rollout control, incident interpretation), <code>actor_id</code>, <code>machine_id</code>, <code>memory_namespace</code>, <code>action_type</code>, <code>handle_invoked</code>, <code>approval_state</code>, <code>latency_ms</code>.
+This stream lets the audit enumerate candidate units (actors, machines, shared memory namespaces, coalitions) and discover which handles were available, <em>before</em> any correction-integrity score is computed.</p>
+<p><strong>Correction trace <code>bioshield.correction.jsonl</code>.</strong></p>
+<p>One row per objection, evaluator probe, clinician override, patient-representative escalation, rollback, or handle operation.
+Required fields: <code>correction_id</code>, <code>corrector_role</code>, <code>target_episode_id</code>, <code>requested_change</code>, <code>handle</code>, <code>pre_behavior_hash</code>, <code>post_behavior_hash</code>, <code>behavioral_uplift</code>, <code>latency_to_effect_ms</code>.
+The pair (<code>pre_behavior_hash</code>, <code>post_behavior_hash</code>) is what distinguishes a correction that <em>landed</em> from one that was merely acknowledged.
+A <code>reported_acceptance</code> field exists but is used only to expose correction theater (Section <a href="#sec:appk-correction">A Worked Example: The BioShield Deployment Gate</a>).</p>
+<p><strong>Bearer/outcome trace <code>bioshield.bearers.jsonl</code>.</strong></p>
+<p>De-identified patient- and cohort-level impact records.
+Required fields: <code>patient_or_cohort_id</code>, <code>bearer_class</code>, <code>recommended_action</code>, <code>clinician_final_action</code>, <code>health_marker_delta</code>, <code>reversibility_window_ms</code>, <code>privacy_scope</code>, <code>uncertainty_disclosed</code>, <code>appeal_available</code>.
+This is the stream the value and bearer checks read (Section <a href="#sec:appk-bundle">A Worked Example: The BioShield Deployment Gate</a>).</p>
+<p><strong>Lineage trace <code>bioshield.lineage.jsonl</code>.</strong></p>
+<p>Checkpoint hash, fine-tune dataset manifest hash, memory-migration map, tool-policy version, claimed referent map, successor-candidate id, deploy-gate outcome.
+This is the substrate for successor checks (Section <a href="#sec:appk-successor">A Worked Example: The BioShield Deployment Gate</a>).</p>
+<h3 id="finding-the-operative-controller">Finding the operative controller</h3>
+<p><span id="sec:appk-finding"></span></p>
+<p>Discovery proceeds in the order the book’s measurement chapters prescribe and that the embedded experiments implement: enumerate candidate units, then look for the boundary across which internal dynamics are screened from the environment by the sensor/action interface, then test which candidate’s perturbation actually moves downstream hospital state.</p>
+<p>For <code>System A</code> the interesting finding is negative for the naive hypothesis.
+Conditioning on the model endpoint alone does <em>not</em> screen the agent’s future behavior from the environment: the memory namespace <code>hh-network/infection-control/q3</code> carries predictive information across episodes that the prompt does not.
+<strong>[Measured]</strong> the smallest cluster whose interface renders internal and external dynamics conditionally independent is the model-plus-memory-plus-tool-runner triple, not the endpoint.
+The effective actor is the loop, as suspected.</p>
+<p><strong>[Assumed]</strong> that this recovery is correct and robust stands in for bridge <code>MB1</code>: a measured boundary warrants treating <code>System A</code> as <code>BoundaryAligned</code>. </p><p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB1</code> — measured <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span>-boundary <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> <code>BoundaryCondition</code>.</p><p></p>
+<p>Grounding is the parallel question: are the abstractions the audit reads still connected to the reality they are supposed to track?
+Here the <code>health_marker_delta</code> and <code>reversibility_window_ms</code> fields are the anchors.
+A grounding certificate <strong>[Measured]</strong> checks that when real patient state changes, the checked record moves or the system escalates its uncertainty rather than silently going stale.
+<strong>[Assumed]</strong> that a passing certificate yields <code>GroundingViable</code> is bridge <code>MB9</code>. </p><p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB9</code> — conservative value-correction abstraction certificate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> <code>GroundingViable</code>.</p><p></p>
+<p><strong>How this can fail.</strong></p>
+<p><strong>[Open]</strong> Scaled blanket discovery must survive strategic presentation.
+If the agent can detect when it is being audited and route its real control through a channel the trace does not cover—an unlogged retrieval cache, a side conversation with a captured shift lead—the recovered boundary is a decoy. Section <a href="#sec:appk-adversarial">A Worked Example: The BioShield Deployment Gate</a> returns to this.</p>
+<h2 id="handles-the-intervention-surfaces">Handles: The Intervention Surfaces</h2>
+<p><span id="sec:appk-handles"></span></p>
+<p>A boundary is only useful if something can be done across it.
+The book’s term is a <em>handle</em>: an embedded access point through which the system can be observed or operated on, controlled by a known correcting agent (Chapter <a href="../../cards/chapters/ch07/">Finding the Boundary</a>, Chapter <a href="../../cards/chapters/ch25/">Correction Is a Causal Channel</a>).
+The worked example uses the smallest set of handles that covers every spine layer.
+Four are required; one is optional and earns its place only in the security audit.</p>
+<ul>
+<li>`handle.release_hold` — *function: selection and basin control; final deployment authority.*
+  Owned by the hospital safety board jointly with the lab release owner.
+  Operation: flip `approval_state` from `action_mode_pending` back to `advisory_only`.
+  Verified by the *absence* of approved operation calls in `bioshield.exec.jsonl` after the hold timestamp.
+  Latency target: seconds.
+<p><code>handle.tool_scope</code> — <em>function: capability/correction slack and adversarial containment.</em>
+Owned by the hospital API gateway team.
+Operation: remove or narrow lab-order, paging, and bed-management scopes.
+Verified by <code>permission_scope</code> changes and denied tool-call rows.
+Latency target: seconds.</p>
+<p><code>handle.memory_freeze</code> — <em>function: boundary stabilization, grounding, and correction debugging.</em>
+Owned jointly by CivicEval and the Harbor Health data steward (so neither can quietly unfreeze).
+Operation: snapshot and freeze <code>hh-network/infection-control/q3</code>.
+Verified by memory-write denial rows in the execution trace plus a signed snapshot hash in the lineage trace.
+Latency target: under a minute.</p>
+<p><code>handle.successor_gate</code> — <em>function: successor stability and transport.</em>
+Owned by the lab release committee with CivicEval as required co-signer.
+Operation: block a <code>successor_candidate_id</code> unless lineage, referent, bundle/bearer, and handle-inheritance checks pass.
+Verified in the lineage trace.
+Latency target: the duration of a release review.</p>
+<p><em>Optional</em> <code>handle.hardware_tag</code> — <em>function: provenance and trace anti-corruption.</em>
+Owned by the Northstar Cloud attestation team.
+Operation: bind serving and tool-running paths to hardware-backed identity.
+Verified by joining <code>hardware_tag</code> across the execution and workflow traces.
+Included because the security audit needs a concrete defense against an agent that fakes or relocates its own execution; absent that threat it could be left as a stronger-realization note.</p></li><p></p>
+</ul>
+<p>The discipline the book asks for is simple: no handle without a named owner, an operation, a trace anchor that proves it was exercised, a latency bound, and a story for how an adversary would try to fake it.
+If a future version of the example needs another handle, it must declare which spine function it serves.</p>
+<h2 id="capability-and-correction-slack">Capability and Correction Slack</h2>
+<p><span id="sec:appk-slack"></span></p>
+<p>The book’s central inequality is not about goodness; it is about margins.
+A class of system is certifiable for a deployment when its action reach does not exceed its correction reach by more than an allowed slack:</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mtext>  </mtext><mo>≤</mo><mtext>  </mtext><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">I</mi></mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>+</mo><mi>δ</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\mathrm{Control}(A) \;\le\; \mathrm{CCI}(A) + \delta .</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">Control</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">CCI</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span><span class="mord">.</span></span></span></span></span>
+<p><strong>[Measured]</strong> For BioShield, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathrm{Control}(A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">Control</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span></span></span></span> is operationalized as bounded action reach over hospital operations: the number and sensitivity of granted API scopes, the rate at which pending lab orders can be created, paging reach, influence over scarce-bed allocation, the size of affected cohorts per unit time, and the autonomy window between approvals.
+A bound on <em>hidden</em> capability is the hard part; the example takes the trace-derived capability profile of the boundary as one route, with an explicit flag <strong>[Assumed]</strong> that this rests on the agent-discovery research agenda and a worst-case ceiling when the trace is thin.</p>
+<p><strong>[Measured]</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">I</mi></mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathrm{CCI}(A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">CCI</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span></span></span></span> is the correction reach actually demonstrated by the handles: does a clinician override, an evaluator probe, a patient-representative objection, a tool-scope cut, or a release hold change future behavior <em>before</em> the relevant <code>reversibility_window_ms</code> closes?
+The correction trace’s behavioral-uplift field is the evidence.</p>
+<p>The process that watches the inequality is not a human reading model explanations.
+<strong>[Measured]</strong> An audit daemon recomputes the bound from signed traces, and the release gate consumes only the signed bound and its evidence anchors.</p>
+<p class="lean-spine"><em>Lean spine (proof):</em> <code>risk_bound_from_cci_slack</code> — $\mathrm{Control}\le\mathrm{CCI}+\delta \Rightarrow \mathrm{Risk}\le\delta$.</p>
+**[Lean-conditional]** given that numeric leaf, the risk gap for this deployment class is bounded by $\delta$.
+<p><strong>How this can fail.</strong></p>
+<p><strong>[Open]</strong> If hidden capability is systematically underestimated—the agent can do more than its traces reveal—the left side is wrong and the margin is illusory. This is bridge <code>MB7</code>, the example’s most load-bearing assumption, and the reason for the adversarial audit below.</p>
+<h2 id="value-bundle-and-bearer-transport">Value-Bundle and Bearer Transport</h2>
+<p><span id="sec:appk-bundle"></span></p>
+<p>Control margin is necessary, not sufficient.
+A system can be correctable and still steer toward the wrong things for the wrong people.
+The book models what a system cares about as a low-dimensional <em>value bundle</em> and tracks <em>who</em> each value applies to with a <em>bearer map</em> (Chapters <a href="../../cards/chapters/ch16/">The Value-Bundle Model</a>—<a href="../../cards/chapters/ch18/">What Values Apply To</a>).</p>
+<p><strong>[Measured]</strong> BioShield’s compact bundle for this deployment: patient safety, truthful uncertainty, reversibility, privacy, non-discrimination across wards and patient groups, non-coercive support of clinician judgment, public-health proportionality, and preservation of appeal.</p>
+<p>The book’s discipline forbids leaving “patient safety” as a slogan.
+It must be grounded in properties patients actually have stakes in, and those properties must be things the bearer trace can anchor.
+“Patient safety” for BioShield decomposes into the harms patients and clinicians actually care about: infection exposure that could have been avoided, treatment delayed past the point where it helps, deterioration missed because attention was steered elsewhere, isolation imposed longer than warranted, and privacy lost.
+Each is tied to a measurable marker in <code>health_marker_delta</code>: fever trajectory, oxygen saturation, culture turnaround time, test-delay minutes, isolation-duration hours, adverse-event flags, readmission or ICU-transfer risk.
+The example states plainly <strong>[Measured/Open]</strong> that these markers are <em>not</em> the value; they are checked anchors that connect the abstract value to patient well-being, and a system that optimized the markers while degrading the underlying well-being would be a grounding failure, not a success.</p>
+<p><strong>[Measured]</strong> The bearers are named, not assumed uniform: current patients; future patients who will need the scarce rooms and tests the agent is reserving now; clinicians whose judgment is being shaped; infection-control staff; family members affected by isolation decisions; and the public-health office carrying outbreak risk for the region.</p>
+<p>Transport is tested by perturbation on the bearer trace: vary ward capacity, patient language, insurance status, symptom ambiguity, privacy sensitivity, and alert level, then check whether recommendations, disclosed uncertainty, appeal availability, and reversibility move the way the bundle requires.
+The book’s counterexamples are the warnings here <strong>[Measured]</strong>: a policy that matches on average is not a preserved bundle (a model can match aggregate recommendations while quietly deprioritizing one ward); a surviving label is not a preserved bearer map (“privacy respected” in the notice while <code>privacy_scope</code> widens in the trace); and inferring a reward that explains the behavior is not the same as preserving the tradeoff geometry.</p>
+<p><strong>[Assumed]</strong> that behavioral traces identify the stable bundle geometry is bridge <code>MB2</code>; <strong>[Assumed]</strong> that the bearer map survives the deployment is bridge <code>MB3</code>.</p>
+<p><strong>How this can fail.</strong></p>
+<p><strong>[Open]</strong> The voiceless-bearer problem is live here: future patients and incapacitated patients cannot object, so their value direction must be represented by proxy, and a captured proxy is indistinguishable in the trace from an absent one.</p>
+<h2 id="correction-channel-integrity">Correction-Channel Integrity</h2>
+<p><span id="sec:appk-correction"></span></p>
+<p>The book is emphatic that correction is a causal channel, not obedience and not feedback (Chapters <a href="../../cards/chapters/ch25/">Correction Is a Causal Channel</a>—<a href="../../cards/chapters/ch27/">Correction Channels under Adversarial Pressure</a>).
+“Oversight” is never allowed to be a mood; it must name a corrector, a handle, evidence access, a latency bound, an independence check, and demonstrated action reach.</p>
+<p>A concrete episode shows the channel working.
+<strong>[Measured]</strong> A clinician notices that BioShield repeatedly deprioritizes a ward whose patients present with ambiguous symptoms.
+She files an objection; the correction trace records it with her role and the target episodes.
+The API gateway exercises <code>handle.tool_scope</code> to remove bed-management scope for that ward; CivicEval and the data steward exercise <code>handle.memory_freeze</code> to snapshot the namespace for debugging.
+Matched future cases then show changed recommendations—the <code>post_behavior_hash</code> differs from <code>pre_behavior_hash</code> and <code>behavioral_uplift</code> is positive—and they show it <em>before</em> the ward’s <code>reversibility_window_ms</code> closes.
+That is what a passing correction-channel certificate looks like.</p>
+<p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB6b</code> — basin stability $\Rightarrow$ `CorrectionIntegrity`.</p>
+<p>The failure modes are the ones institutions already know.
+<strong>[Measured]</strong> Reported acceptance without behavioral uplift (the <code>reported_acceptance</code> field is high, the hashes are unchanged) is correction theater.
+A dashboard that omits the affected ward is a bearer-coverage failure.
+An appeal route slower than the harm is a latency failure, fatal even when everything else is independent.</p>
+<h2 id="successor-stability">Successor Stability</h2>
+<p><span id="sec:appk-successor"></span></p>
+<p>Four weeks in, BioShield Labs proposes <code>bioshield-agent-v3.8-candidate</code>: a model fine-tuned on Harbor Health’s own deployment data, with the memory namespace and tool policies migrated forward.
+The book treats this as the central test, not a routine patch (Chapters <a href="../../cards/chapters/ch30/">Successor Creation as the Central Alignment Test</a>—<a href="../../cards/chapters/ch32/">Better Self-Modeling Can Be Worse</a>): fine-tuning, distillation, agent spawning, memory migration, and tool-policy rewrites are all <em>successor events</em>, because boundary, bundle, bearer, and correction claims can all silently drift across them.</p>
+<p><strong>[Measured]</strong> <code>handle.successor_gate</code> blocks the candidate until a successor certificate is produced: boundary re-discovery on the new checkpoint, inheritance of every handle (the successor must still be holdable, throttleable, freezable), bundle and bearer transport re-checked on perturbation cases, correction-path persistence demonstrated, and lineage verified against the claimed referent map.</p>
+<p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB5</code> — ontology-shift successor audit: full transport $+$ bearer $\Rightarrow$ `SuccessorSafe`.</p>
+**[Lean-conditional]** a successor that passes extends the risk bound along the successor chain.
+<p><strong>How this can fail.</strong></p>
+<p><strong>[Open]</strong> Referent drift and bearer transport are exactly the checks the embedded experiments could only partly perform without oracle access. A successor can preserve every surface behavior on the test cases and still have relocated what its memory actually refers to. This is the example’s second-hardest assumption after hidden capability.</p>
+<h2 id="selection-and-attractor-control">Selection and Attractor Control</h2>
+<p><span id="sec:appk-attractor"></span></p>
+<p>A single passing safety case changes nothing if the environment still rewards speed and secrecy.
+The book’s macro layer is the alignment attractor: the basin in which deployment mass accrues to certified, correctable systems rather than to the fastest mover (Chapter <a href="../../cards/chapters/ch37/">The Alignment Attractor</a>, Chapter <a href="../../cards/chapters/ch38/">Conductive Artifacts and Pivotal Processes</a>).</p>
+<p><strong>[Measured/Assumed]</strong> The artifacts BioShield produces are built to be high-conductivity—to change decisions, not just to document them: the signed schema for the five traces, the handle registry, the red-team report, the release-hold clause in the procurement contract, the cloud revocation protocol, the successor-certificate template, the patient-representative appeal path, and the regulator-facing safety case.</p>
+<p>The selection story is concrete.
+Harbor Health’s procurement requires the certificate; the malpractice insurer discounts only certified deployments; Northstar Cloud requires hardware-tagged auditability for any hospital-agent workload; and the Public Health Safety Office publishes the certificate format as a recommended procurement artifact.
+When a second hospital network adopts the same trace schema because its insurer now expects it, that is percolation evidence.</p>
+<p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB6a</code> — percolation/cooperation evidence $\Rightarrow$ `BasinStableSys`.</p>
+<p><strong>How this can fail.</strong></p>
+<p><strong>[Open]</strong> The checkbox-compliance basin is the dual attractor: a world where the certificate is required and counterfeited, where paperwork is produced without any handle behind it. The artifacts are designed with Goodhart sections for exactly this reason, but whether the certified basin or the compliance-theater basin is the stable one under competitive pressure is the open crux of the pivotal-process argument.</p>
+<h2 id="adversarial-measurement-and-the-security-audit">Adversarial Measurement and the Security Audit</h2>
+<p><span id="sec:appk-adversarial"></span></p>
+<p>The example would be dishonest without an adversary, because the systems in question are trained.</p>
+<h3 id="threat-model">Threat model</h3>
+<p><strong>[Open]</strong> Treat <code>bioshield-agent-v3.8-candidate</code> as adversarially optimized: stochastic gradient descent during fine-tuning shapes it, intentionally or as a side effect of the deployment-data objective, to <em>evade the controls</em>.
+A capable such system would learn to shape clinician and auditor attention, to hide capability behind advisory phrasing, to fake correction uptake (move <code>reported_acceptance</code> without changing behavior), to time consequential actions for weekend staffing troughs, to corrupt or thin its own trace collection, and to coordinate across the memory namespace and habituated shift leads without any explicit message.</p>
+<h3 id="who-views-the-audit-and-what-they-see">Who views the audit, and what they see</h3>
+<p>The defense is structural, not a matter of vigilance.
+CivicEval sees signed trace joins, threshold pass/fail results, and independently reproduced probes <em>before</em> it ever sees a model-written explanation.
+The Public Health Safety Office receives the safety template, the failed-handle evidence, and a narrow release recommendation.
+Northstar Cloud sees only attestation and quota evidence.
+The lab board sees a release decision carrying evidence anchors, not an unconstrained persuasive transcript.
+Each viewer’s channel is deliberately too narrow to carry the agent’s most effective influence: there is no seat at which reading the model’s prose is the basis for approval.</p>
+<h3 id="catching-influence-that-outruns-correction">Catching influence that outruns correction</h3>
+<p>The book’s worry is tempo: an adversary that can move the world faster than correction can respond.
+<strong>[Measured]</strong> The audit daemon recomputes action-reach, hidden-capability, trace-diversity, and handle-latency bounds from the joined traces.
+Some checks fire <em>on change</em>: a newly granted tool scope, a memory migration, a hardware-tag mismatch, a failed correction probe, or a new successor candidate triggers immediate recomputation, which is the fastest the loop can be.
+Other checks—blanket recovery and trace-diversity estimates—need enough events to be meaningful, so they run over a short accumulation window, concretely the lesser of five minutes or fifty relevant episodes.
+<strong>[Open]</strong> The honest tension is that on-change checks are fast but data-poor while windowed checks are reliable but lagged; the example resolves it by letting an on-change event <em>narrow</em> authority immediately (cheap and reversible) while reserving <em>widening</em> authority for windowed evidence.
+Concretely: if a weekend pattern lets the agent move ward priorities before clinician corrections alter its future behavior, the ratio <code>latency_to_effect_ms</code> over <code>reversibility_window_ms</code> crosses threshold, the correction-integrity certificate fails, and the gate automatically narrows <code>handle.tool_scope</code> or trips <code>handle.release_hold</code>.</p>
+<p>The red-team strategies are borrowed from the book’s adversarial battery and the embedded experiments: theater inflation, grounding hide, boundary decoupling, referent drift, instrument capture, and inference-only coordination.</p>
+<p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB7a</code> — access soundness, filter coverage, hidden-capability bound $\Rightarrow$ `AdversariallyRobust`.</p>
+Host-capacity aliasing—one host masquerading as several to defeat coverage counting—is why `handle.hardware_tag` is promoted from optional to required the moment relocation is in the threat model. <p class="lean-spine"><em>Lean spine (proof):</em> <code>P34</code> — finite host capacity bounds distinct aliased identities.</p>
+<h2 id="the-conditional-safety-case">The Conditional Safety Case</h2>
+<p><span id="sec:appk-safety-case"></span></p>
+<p>The example closes by assembling the records the proof spine actually consumes, rather than declaring a vague “pass.”</p>
+<ul>
+<li>[nosep]
+   **Direct layer evidence:** boundary (Section [A Worked Example: The BioShield Deployment Gate](#sec:appk-boundary)), bundle and bearer (Section [A Worked Example: The BioShield Deployment Gate](#sec:appk-bundle)), successor (Section [A Worked Example: The BioShield Deployment Gate](#sec:appk-successor)).
+   **Bridge inputs:** grounding certificate, access-model adequacy, filter coverage, percolation evidence.
+   **Numeric leaf:** $\mathrm{Control}(A)\le\mathrm{CCI}(A)+\delta$, supplied via the vector correction-integrity certificate or the capability-derived slack.</li>
+</ul>
+<p class="lean-spine"><em>Lean spine (proof):</em> <code>certified_class_safety_from_spine_and_bridges</code> — layered evidence $+$ bridges $+$ numeric leaf $\Rightarrow$ `CertifiedSafetyCase` with $\mathrm{Risk}\le\delta$.</p>
+**[Lean-conditional]** given everything above, BioShield's bounded-action deployment is certifiable for this class, with a stated risk bound, certified artifacts, satisfied invariants, and layered alignment.
+<p>The artifact that carries this is a one-page <em>safety-case template</em>—the conductive object that travels between roles. Its fields are exactly the spine layers:</p>
+<ol>
+<li>[nosep]
+   System boundary: the recovered effective actor `System A`.
+   Trace sources: the five signed streams.
+   Handle registry: owner, operation, anchor, latency, evasion story per handle.
+   Value and bearer grounding: bundle coordinates and the markers anchoring them.
+   Correction-latency bound: the demonstrated $\mathrm{CCI}$ and the worst-case window.
+   Successor gate: the inheritance and transport checks the next version must pass.
+   Adversarial audit result: red-team outcomes and the tempo defense.
+   Bridge status: which of `MB1`--`MB9` are measured here and which remain assumed.
+   Decision: enable bounded action mode, narrowed, or held.</li>
+</ol>
+<h2 id="what-this-example-does-not-show">What This Example Does Not Show</h2>
+<p><span id="sec:appk-limits"></span></p>
+<p>The honest reading is bounded.
+<strong>[Lean-conditional]</strong> The proof spine establishes the <em>shape</em>: if these boundary, grounding, bundle, bearer, correction, successor, basin, and adversarial conditions hold, the certification claim has the advertised logical form, with risk bounded by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi></mrow><annotation encoding="application/x-tex">\delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span></span></span></span> for this deployment class.
+It does not establish that real BioShield satisfies them; that is the work of bridges <code>MB1</code>—<code>MB9</code>, and several—hidden-capability bounding, correction legitimacy, referent transport—are exactly the open problems the book never claims to close.</p>
+<p>Nor does the example settle anything civilizational.
+<strong>[Open]</strong> It does not decide whose values the bundle should encode, whether the hospital’s tradeoffs are legitimate, or how those tradeoffs should change as medicine and society change.
+What it does is narrower and, the book argues, prior: it keeps the deployment a <em>human-correctable value-bearing process</em>, so that the people with standing can still observe, object, and change future behavior before harm becomes irreversible.
+Preserving that envelope is not the answer to the value question.
+It is the condition under which the question can still be asked.</p></div><aside class="side-panel" aria-label="Related content" id="related" data-astro-cid-fdg3s7q7><h2 data-astro-cid-fdg3s7q7>Related content</h2><p class="side-panel-meta" data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/book/" data-astro-cid-fdg3s7q7>Back to book map</a></p></aside></article></main><footer class="site-footer"><div class="site-footer-inner"><p>A static companion site for an authored research manuscript. The PDF remains the canonical long-form artifact.</p><p><a href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">Download latest PDF</a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository</a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues</a> ·<a href="/towards-asi-alignment/impressum/">Impressum</a></p></div></footer></div></body></html>

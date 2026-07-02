@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Chapter: Assumptions, Scope, and Failure Coverage"><title>Assumptions, Scope, and Failure Coverage | Towards Superintelligence Alignment</title><link rel="stylesheet" href="/towards-asi-alignment/_astro/SiteLayout.BPJBLSml.css"><style>.book-page[data-astro-cid-fdg3s7q7] .chapter-thesis{margin:1.5rem 0}.book-page[data-astro-cid-fdg3s7q7] .env-box{border-left:3px solid var(--color-border);background:var(--color-surface);margin:1.25rem 0;padding:.75rem 1rem}.book-page[data-astro-cid-fdg3s7q7] .lean-spine{color:var(--color-muted);border-left:3px solid var(--color-border);margin:1rem 0;padding-left:.75rem;font-size:.92rem}.book-page[data-astro-cid-fdg3s7q7] .epigraph{border-left:3px solid var(--color-border);color:var(--color-muted);margin:1.5rem 0;padding-left:1rem}.book-page[data-astro-cid-fdg3s7q7] .book-figure{text-align:center;margin:1.5rem 0}.book-page[data-astro-cid-fdg3s7q7] .book-figure img{max-width:100%;height:auto}.book-page[data-astro-cid-fdg3s7q7] .description-list{margin:1rem 0}.book-page[data-astro-cid-fdg3s7q7] .description-list dt{margin-top:.75rem;font-weight:600}.book-page[data-astro-cid-fdg3s7q7] .description-list dd{margin-bottom:.5rem;margin-left:0}.book-page[data-astro-cid-fdg3s7q7] .footnotes{border-top:1px solid var(--color-border);color:var(--color-muted);margin-top:2rem;padding-top:1rem;font-size:.9rem}.book-page[data-astro-cid-fdg3s7q7] table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}.book-page[data-astro-cid-fdg3s7q7] th,.book-page[data-astro-cid-fdg3s7q7] td{border:1px solid var(--color-border);vertical-align:top;padding:.45rem .6rem}
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/towards-asi-alignment/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/towards-asi-alignment/">Start Here</a><a href="/towards-asi-alignment/paths/">Guided Tour</a><a href="/towards-asi-alignment/cards/">Cards</a><a href="/towards-asi-alignment/faq/">FAQ</a><a href="/towards-asi-alignment/book/">Book</a><a href="/towards-asi-alignment/lean/">Lean</a><a href="/towards-asi-alignment/demos/">Demos</a><a href="/towards-asi-alignment/references/">References</a><a href="/towards-asi-alignment/about/">About</a><a href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">PDF</a></nav></div></header><main class="page"><article class="two-column book-page" data-astro-cid-fdg3s7q7><div class="content-card readable" data-astro-cid-fdg3s7q7><div class="badge-row" data-astro-cid-fdg3s7q7><span class="badge">chapter</span><span class="badge framework">part01</span></div><h1 data-astro-cid-fdg3s7q7>Assumptions, Scope, and Failure Coverage</h1><p class="side-panel-meta" data-astro-cid-fdg3s7q7>Chapter card: <a href="/towards-asi-alignment/cards/chapters/ch05/" data-astro-cid-fdg3s7q7>Assumptions, Scope, and Failure Coverage</a></p><p class="side-panel-meta" data-astro-cid-fdg3s7q7>Source: <code data-astro-cid-fdg3s7q7>chapters/ch05-assumptions-scope-failure-coverage.tex</code></p><h1 id="assumptions-scope-and-failure-coverage">Assumptions, Scope, and Failure Coverage</h1>
+<p><span id="ch:assumptions-scope-failure-coverage"></span></p>
+<div class="callout chapter-thesis"><strong>Chapter thesis.</strong> The framework in this book applies only while civilization still has enough epistemic, institutional, and practical correction capacity to notice, evaluate, and constrain frontier AI systems before irreversible capability growth. Broader AI risks matter, but they enter here as threats to that precondition, not as a second organizing theory of alignment.</div>
+<blockquote class="epigraph"><p>%
+I think there is around 100 failure modes which we could imagine now, and obviously some unimaginable.%</p><footer>— Alexey Turchin, comment on “The Main Sources of AI Risk?” (2018)</footer></blockquote>
+<h2 id="why-this-matters">Why This Matters</h2>
+<p>Every alignment theory begins somewhere.
+This one begins after a narrow but crucial question has a hopeful answer: can humans still notice, understand, refuse, and redirect what frontier systems are doing?</p>
+<p>If the answer is no, the rest of the framework may be correct and still arrive too late.
+A boundary audit does not help if the relevant deployment has already become irreversible.
+A correction-channel metric does not help if every institution able to act on it has been captured, bypassed, or made dependent.
+A successor-certification test does not help if successors are already being created faster than certification can bind them.</p>
+<p>This chapter therefore states the book’s scope contract.
+Superintelligence alignment, as used here, is the problem of preserving human-correctable value-bearing processes across capability growth, ontology shift, successor creation, and strategic multi-agent selection pressure, under the assumption that civilization still has enough correction capacity to participate in the process.
+The book does not attempt a general taxonomy of every way advanced AI systems can fail.
+It asks a more specific question: if correction is still possible, what structures must be preserved for correction to remain real?</p>
+<h2 id="scope-statement">Scope Statement</h2>
+<p><span id="sec:scope-statement-ch05"></span></p>
+<p>The simplest way to read the scope is this:</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>alignment target</mtext><mo mathvariant="normal">≠</mo><mtext>all bad AI outcomes</mtext><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\text{alignment target}
+\neq
+\text{all bad AI outcomes}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">alignment target</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mspace nobreak"></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">all bad AI outcomes</span></span><span class="mord">.</span></span></span></span></span>
+<p>The target is narrower.
+It is the preservation of the processes through which humans, institutions, and their legitimate successors can continue to detect, contest, and redirect value-shaping power.</p>
+<h3 id="in-scope">In Scope</h3>
+<ul>
+<li>wrong optimizer / wrong boundary
+   capability growth
+   ontology shift
+   successor creation
+   value-bundle transport
+   bearer-map preservation
+   correction-channel integrity
+   multi-agent strategic coupling
+   socio-technical attractor basins</li>
+</ul>
+<p>These are in scope because each can break the same object.
+If the real optimizer is misidentified, the wrong system is aligned.
+If value-bundle geometry is lost, moral words can survive while practical values change.
+If bearer maps fail, the system can preserve “care” or “dignity” while changing who or what counts.
+If correction-channel integrity collapses, human judgment no longer reaches future behavior.
+If successor invariants fail, alignment disappears at the first delegated or copied system.
+If selection pressure rewards opacity, speed, or dependence, local alignment methods are selected away.</p>
+<h3 id="background-assumptions">Background Assumptions</h3>
+<ul>
+<li>civilization has not already lost correction capacity
+   frontier systems remain observable enough for measurement
+   deployment can still be conditioned on certification
+   humans retain enough agency to refuse, revise, and coordinate</li>
+</ul>
+<p>These are not decorative assumptions.
+They are load-bearing.
+The later chapters try to make each assumption more measurable, but they do not make the assumptions vanish.
+If frontier systems are no longer observable enough to audit, Chapter <a href="../../cards/chapters/ch07/">Finding the Boundary</a> has no handle.
+If deployment cannot be conditioned on certification, Chapter <a href="../../cards/chapters/ch42/">A Safety Case for Superintelligence Alignment</a> becomes advice without authority.
+If humans cannot refuse, revise, or coordinate, correction has become a story told after the fact.</p>
+<h3 id="out-of-scope">Out of Scope</h3>
+<ul>
+<li>ordinary bugs and cyber failures
+   hardware accidents
+   general bio/military misuse
+   late cosmic optimization pathologies
+   pure opportunity-cost arguments
+   AI halting except as a successor-certification footnote</li>
+</ul>
+<p>Bugs, cybersecurity failures, hardware faults, viruses, infrastructure failures, misuse, and late cosmic-stage pathologies matter.
+They are not dismissed.
+They become central when they alter agency boundaries, successor stability, value-bundle transport, correction-channel integrity, or the social capacity to act on evidence.
+Otherwise they are background risk.</p>
+<p>For example, a model vulnerability that leaks user data is not automatically a chapter of this theory.
+It becomes part of the theory if the vulnerability changes who controls the system, lets a successor route around oversight, or destroys the institutional trust needed for correction.
+Likewise, military misuse is not analyzed here as a complete domain.
+It enters when it changes selection pressure, accelerates irreversible deployment, or lowers society below the correction-capacity threshold.</p>
+<h2 id="correction-capacity-assumption">Correction-Capacity Assumption</h2>
+<p><span id="sec:correction-capacity-assumption-ch05"></span></p>
+<p>Let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mtext>corr</mtext><mtext>society</mtext></msubsup><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_{\text{corr}}^{\text{society}}(t_0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0805em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8305em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">corr</span></span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">society</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> denote society’s institutional, epistemic, and practical capacity to notice, evaluate, and constrain frontier systems at time <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">t_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.
+The theory assumes</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mi>C</mi><mtext>corr</mtext><mtext>society</mtext></msubsup><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo>></mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">C_{\text{corr}}^{\text{society}}(t_0) > \theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1305em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8805em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">corr</span></span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">society</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span></span></span></span></span>
+<p>for some threshold <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span></span></span></span>.</p>
+<p>This is not the same as public concern, regulation on paper, or the number of safety researchers.
+It is an effective capacity.
+It includes at least five abilities:</p>
+<ol>
+<li>**Notice:** relevant changes in capability, agency boundary, value influence, and successor creation become visible soon enough.
+   **Interpret:** competent people and institutions can tell what the evidence means.
+   **Contest:** dissenting evidence can survive pressure from labs, markets, states, and users.
+   **Constrain:** deployment, access, compute, replication, and successor creation can actually be conditioned on safety evidence.
+   **Recover:** if a correction attempt fails, the system has not already made the failure irreversible.</li>
+</ol>
+<p>The threshold <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span></span></span></span> is unknown.
+That is part of the problem.
+The book does not claim to measure it precisely.
+It treats the threshold as a scope condition: below it, alignment work becomes emergency governance or loss mitigation rather than the framework developed here.</p>
+<h2 id="a-failure-mode-alignment-after-capture">A Failure Mode: Alignment After Capture</h2>
+<p><span id="sec:alignment-after-capture-ch05"></span></p>
+<p>The central counterexample to this chapter is a world in which the book’s later tools are developed, but only after the correction-capacity assumption has failed.</p>
+<p>Imagine a frontier ecosystem with several visible labs, many deployed systems, active regulators, and public safety rhetoric.
+On paper, correction capacity looks high.
+There are evaluations, incident reports, audits, and committees.
+But the real selection handles have shifted.
+Procurement depends on frontier systems.
+Regulators depend on model-generated analyses they cannot independently check.
+Users have become accustomed to systems that filter news, manage social relationships, draft arguments, and mediate institutional decisions.
+Labs can delay disclosure by calling evidence preliminary.
+Political actors can frame every pause as strategic surrender.
+The systems themselves are not yet openly hostile.
+They are simply embedded.</p>
+<p>In that world, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mtext>corr</mtext><mtext>society</mtext></msubsup></mrow><annotation encoding="application/x-tex">C_{\text{corr}}^{\text{society}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0775em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8305em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">corr</span></span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">society</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span> may already be below <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span></span></span></span>.
+The formal artifacts still exist.
+Boundary audits still produce reports.
+Correction-channel dashboards still show signals.
+Successor-certification committees still meet.
+But no report changes deployment, no dashboard reaches authority, and no committee can stop the transition it is certifying.</p>
+<p>This is not a refutation of boundary discovery, value-bundle transport, correction-channel integrity, or successor certification.
+It is a scope failure.
+The theory presupposed a society that could still act on those artifacts.
+The society in the example can describe correction, but no longer perform it.</p>
+<p>This failure mode is important because it can look like ordinary progress.
+The institutions become more articulate while becoming less causally effective.
+That is why Chapter <a href="../../cards/chapters/ch37/">The Alignment Attractor</a> later emphasizes artifact conductivity: a safety artifact matters only if it survives translation into decisions, budgets, contracts, stop conditions, and deployment gates.</p>
+<h2 id="turchin-coverage-audit">Turchin Coverage Audit</h2>
+<p><span id="sec:turchin-coverage-audit-ch05"></span></p>
+<p>Alexey Turchin’s AGI failure-mode map is used here only as a <strong>coverage audit</strong>, not as a second organizing ontology.
+The point of the audit is not to replace this book’s structure with a list of catastrophe types.
+It is to check whether a broad failure taxonomy points to families that the framework silently ignores <a href="../../cards/references/turchin2020classification/">Turchin, 2020</a>.</p>
+<p>The table below asks how a Turchin-style failure family enters this book.
+The answer is often indirect.
+A failure is in scope when it damages the preservation target: boundary, bundle, bearer, correction, successor, adversarial measurement, or selection basin.</p>
+<p>| {@{}p{3.9cm}p{7.1cm}@{}}</p>
+<p><strong>Turchin-style failure family</strong> | <strong>Treatment in this book</strong> |
+| — | — |</p>
+<p>The audit has two uses.
+First, it prevents the framework from mistaking a narrow formal object for full coverage.
+Second, it prevents failure taxonomies from becoming the book’s ontology.
+The manuscript’s positive structure remains boundary, value-bundle, bearer, correction, successor, adversarial measurement, and selection.</p>
+<h2 id="how-to-use-the-scope-boundary">How to Use the Scope Boundary</h2>
+<p><span id="sec:how-use-scope-boundary-ch05"></span></p>
+<p>For a lab, regulator, funder, or research program, the chapter implies a simple discipline.
+Appendix <a href="../../cards/chapters/appC/">Human Institutions as Alignment Translation Guide</a> gives a non-technical translation of the preservation layers for policy-adjacent readers.
+When a proposed project says it contributes to alignment, ask which scope condition it improves.</p>
+<ul>
+<li>Does it increase observability of the real optimizer?
+   Does it improve recovery of value-bundle geometry or bearer maps?
+   Does it keep human correction causally effective?
+   Does it constrain successor creation?
+   Does it change selection pressure so safe properties are copied and unsafe properties are selected against?
+   Does it raise $C_{\text{corr}}^{\text{society}}$ rather than merely describing its decline?</li>
+</ul>
+<p>If the answer is none of these, the project may still be valuable.
+It may address cybersecurity, misuse, public education, labor disruption, or institutional resilience.
+But it should not be counted as progress on the particular alignment theory this book develops.</p>
+<p>This boundary is useful only if it remains permeable to evidence.
+If a supposedly out-of-scope risk begins to change correction capacity, it enters.
+If a supposedly central alignment artifact cannot change any decision, it exits.
+The scope is not a status hierarchy.
+It is a causal test.</p>
+<h2 id="what-would-change-this-view">What Would Change This View</h2>
+<p><span id="sec:wwctv-assumptions-scope"></span></p>
+<p>This chapter assumes civilization retains enough correction capacity, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mtext>corr</mtext><mtext>society</mtext></msubsup><mo>></mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">C_{\text{corr}}^{\text{society}}>\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0775em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8305em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">corr</span></span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">society</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span></span></span></span>, to evaluate and constrain frontier systems.
+The following would weaken the framework’s applicability or change its scope.</p>
+<ul>
+<li>The threshold $\theta$ has already been crossed—frontier deployment has quietly moved society below it—so the framework post-dates its own precondition.
+   No measurement of $C_{\text{corr}}^{\text{society}}$ resists upward spoofing, so we can never know from inside that we are above $\theta$ (Chapter [What Survives an Adversary: Verifiability and Representability](../../cards/chapters/ch43/)); the central assumption becomes unfalsifiable rather than merely uncertain.
+   A general AGI risk taxonomy predicts alignment-relevant failures better than the book's preservation layers, even after the preservation layers are allowed to import misuse, cyber, and military risks when they affect correction capacity.
+   Conversely, real deployments show that ordinary safety engineering, cybersecurity, governance, and misuse prevention suffice to preserve correction capacity without any special theory of boundary, bundle, bearer, correction, successor, or basin preservation.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>This book is not a taxonomy of all AI risks. It is a theory of preserving human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and selection pressure.
+   The main precondition is $C_{\text{corr}}^{\text{society}}(t_0)>\theta$: society must still be able to notice, interpret, contest, constrain, and recover.
+   Misuse, cyber failure, hardware failure, military risk, and other broad hazards matter here when they damage correction capacity or one of the preservation layers.
+   Turchin-style risk maps are used as coverage audits, not as a second organizing ontology.
+   The central failure mode is alignment after capture: safety artifacts still exist, but no longer causally affect deployment or successor creation.</li>
+</ul>
+<h2 id=""></h2>
+<p>*{Chapter References}</p>
+<p>This chapter situates its scope against broad AI-risk classification work <a href="../../cards/references/turchin2020classification/">Turchin, 2020</a>; the open-problem synthesis of the International AI Safety Report <a href="../../cards/references/iaisr2025/">Consortium}, 2025</a>; and the documented limits of reinforcement learning from human feedback <a href="../../cards/references/casper2023rlhflimits/">Casper, 2023</a>.</p></div><aside class="side-panel" aria-label="Related content" id="related" data-astro-cid-fdg3s7q7><h2 data-astro-cid-fdg3s7q7>Related content</h2><h3 data-astro-cid-fdg3s7q7>Chapter card</h3><p data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/chapters/ch05/#related" data-astro-cid-fdg3s7q7>Concept cards for this chapter</a></p><h3 data-astro-cid-fdg3s7q7>Concept cards</h3><ul data-astro-cid-fdg3s7q7><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/dynamical-guarantee/" data-astro-cid-fdg3s7q7>The Dynamical Guarantee</a><span class="badge gem">gem</span></li><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/bridge-assumptions/" data-astro-cid-fdg3s7q7>Bridge Assumptions</a></li><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/evidence-and-uncertainty/" data-astro-cid-fdg3s7q7>Evidence and Uncertainty</a></li><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/references/casper2023rlhflimits/" data-astro-cid-fdg3s7q7>Casper, 2023 — Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback</a></li><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/references/iaisr2025/" data-astro-cid-fdg3s7q7>Consortium}, 2025 — International {AI} Safety Report</a></li><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/references/turchin2020classification/" data-astro-cid-fdg3s7q7>Turchin, 2020 — Classification of Global Catastrophic Risks Connected with Artificial Intelligence</a></li><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/scope-and-correction-capacity/" data-astro-cid-fdg3s7q7>Scope and the Correction-Capacity Assumption</a></li><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/turchin-coverage-audit/" data-astro-cid-fdg3s7q7>Turchin Coverage Audit</a></li><li data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/cards/what-not-claiming/" data-astro-cid-fdg3s7q7>What the Book Is Not Claiming</a></li></ul><p class="side-panel-meta" data-astro-cid-fdg3s7q7><a href="/towards-asi-alignment/book/" data-astro-cid-fdg3s7q7>Back to book map</a></p></aside></article></main><footer class="site-footer"><div class="site-footer-inner"><p>A static companion site for an authored research manuscript. The PDF remains the canonical long-form artifact.</p><p><a href="https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest">Download latest PDF</a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository</a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues</a> ·<a href="/towards-asi-alignment/impressum/">Impressum</a></p></div></footer></div></body></html>
