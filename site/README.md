@@ -74,4 +74,14 @@ Output: `site/dist/`
 
 ## Deploy
 
-Pushes to `main` run `.github/workflows/site.yml`, which builds `site/` and deploys to GitHub Pages.
+Pushes to `main` run `.github/workflows/site.yml`, which builds `site/` and pushes `site/dist/` to the `gh-pages` branch.
+
+**One-time GitHub setup** (after the first successful workflow run creates `gh-pages`):
+
+1. **Settings → Pages**
+2. **Source:** Deploy from a branch
+3. **Branch:** `gh-pages` / `/ (root)`
+
+Live URL: **https://gunnarzarncke.github.io/towards-asi-alignment/**
+
+We use a branch push (`peaceiris/actions-gh-pages`) instead of the GitHub Pages Deployment API because overlapping deploys were stuck in `deployment_queued` for 10 minutes.
