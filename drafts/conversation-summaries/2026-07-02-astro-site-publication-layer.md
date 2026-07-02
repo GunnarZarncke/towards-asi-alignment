@@ -32,4 +32,4 @@ Continued Astro companion site work; end-of-session request to commit the whole 
 - `formal/playgrounds/` — Lean 4 Web try-it-out snippets
 
 ## Commits
-- *(this session commit — hash recorded after commit)*
+- `ea8d87a` — Add Astro companion site with sync pipeline, cards, and Lean spine web layer.

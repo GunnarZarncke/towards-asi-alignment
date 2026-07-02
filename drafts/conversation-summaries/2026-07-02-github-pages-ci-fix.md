@@ -15,4 +15,4 @@ Site workflow failed on first push; user enabled GitHub Actions Pages and asked 
 - Unrelated dirty tree: embedded-sim results, ch09 demo HTML, older untracked conversation logs.
 
 ## Commits
-- *(hash after commit)*
+- `66f7019` — Fix GitHub Pages site build: install demo deps and use Node 24.
