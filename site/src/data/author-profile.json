@@ -107,16 +107,23 @@
       "url": "https://github.com/GunnarZarncke/towards-asi-alignment/raw/main/context/unsupervised-agent-discovery.pdf"
     },
     {
-      "title": "Loop–Hub–Control–Value Model v2",
-      "year": 2025,
-      "kind": "paper",
-      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/loop-hub-control-value/lhcv-model-v2.pdf"
-    },
-    {
       "title": "Loop–Hub–Value Model: From Free-Energy Loops to Intrinsic Values",
       "year": 2025,
       "kind": "paper",
-      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/loop-hub-value-model/loop-hub-value-model.pdf"
+      "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/loop-hub-value-model/loop-hub-value-model.pdf",
+      "sublinks": [
+        {
+          "label": "v2: Loop–Hub–Control–Value Model",
+          "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/loop-hub-control-value/lhcv-model-v2.pdf"
+        }
+      ]
+    },
+    {
+      "title": "Mistral Large 2 (123B) seems to exhibit alignment faking",
+      "year": 2025,
+      "kind": "post",
+      "note": "co-author",
+      "url": "https://www.lesswrong.com/posts/kCGk5tp5suHoGwhCa/mistral-large-2-123b-seems-to-exhibit-alignment-faking"
     },
     {
       "title": "Preference vs. Capability: Value-Conditioned Prediction and Control Channels",
@@ -135,6 +142,12 @@
       "year": 2025,
       "kind": "paper",
       "url": "https://github.com/GunnarZarncke/brain-to-values/raw/main/papers/free-energy-loops/free_energy_loops.pdf"
+    },
+    {
+      "title": "Thou art rainbow: Consciousness as a Self-Referential Physical Process",
+      "year": 2025,
+      "kind": "post",
+      "url": "https://www.lesswrong.com/posts/W3aDtS8QSxh58ZqgY/thou-art-rainbow-consciousness-as-a-self-referential"
     },
     {
       "title": "Unexpected Conscious Entities",

@@ -58,7 +58,7 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
       {profile.publications.map((pub) => (
         <li>
           <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a>
-          <span class="pub-meta"> ({pub.year}{pub.kind ? ` · ${pub.kind}` : ""})</span>
+          <span class="pub-meta"> ({pub.year}{pub.kind ? ` · ${pub.kind}` : ""}{pub.note ? ` · ${pub.note}` : ""})</span>
           {pub.alternateUrl && (
             <>
               {" · "}
@@ -70,6 +70,15 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
               {" · "}
               <a href={pub.externalUrl} target="_blank" rel="noopener noreferrer" class="side-panel-meta">preprint</a>
             </>
+          )}
+          {pub.sublinks && (
+            <ul class="sublink-list">
+              {pub.sublinks.map((sub) => (
+                <li>
+                  <a href={sub.url} target="_blank" rel="noopener noreferrer">{sub.label}</a>
+                </li>
+              ))}
+            </ul>
           )}
         </li>
       ))}
@@ -98,6 +107,12 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
 
   .pub-meta {
     color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+
+  .sublink-list {
+    padding-left: 1.2rem;
+    margin: 0.25rem 0 0;
     font-size: 0.92rem;
   }
 </style>
