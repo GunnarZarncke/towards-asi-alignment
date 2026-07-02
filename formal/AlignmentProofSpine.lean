@@ -37,7 +37,7 @@ Alignment*. It re-exports the layered modules:
 | `Adversarial`   | `P31`, `P33`, `P34`, `P37` (`P33` in `CooperationGraph`; `P34` via Mathlib) | 32–37 |
 | `Philosophy`    | `P41`, `P42`, `P44`, `P45`                | 41–44         |
 | `Certification` | `P01`, `P02`, `P30`, `P35`, `P40`  | 1–5, 35, 39, 44 |
-| `WorkedInstance` | end-to-end trace → tight ceiling → `CCICertificate` instance on real fixture data: honest computation correctly finds the certificate *fails* on a permanently-captured-judge trace (`workedCert_fails`) rather than manufacturing a passing certificate | 11, 26, 43, 46 |
+| `WorkedInstance` | end-to-end trace → tight ceiling → `CCICertificate` instances on real fixture data from the same pinned generator: the capture-theater certificate *fails* (`workedCert_fails`, computed manipulation 26 > 1) and the honest-baseline certificate *passes* the identical thresholds (`honestCert_passes`, computed manipulation 0), yielding an actual `NumericRiskLeaf`/`Risk A ≤ 6` (`honest_instance_risk_bound`) — the gate discriminates | 11, 26, 43, 46 |
 
 What is **proved** vs. **assumed**:
 

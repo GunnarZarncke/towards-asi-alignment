@@ -16,6 +16,11 @@ packages them into B-IQ-shaped profiles. These scores are **not** Shannon mutual
 information: they count distinct lagged patterns and take integer
 \(\lceil\log_2\rceil\) of support sizes, with no empirical PMF. Real MI
 estimation lives in `Field/Finite/PMF.lean` when probability data is available.
+An empirical calibration against Shannon MI on real fixture data
+(`experiments/embedded-simulation/calibrate_trace_biq.py`, negative result N-8
+in that experiment's `NEGATIVE_RESULTS.md`) confirms the score is uncalibrated
+in both directions; only the tight appearance ceiling
+(`diversityAlphabetCeiling`) is a sound MI upper bound.
 
 Combinatorial ceilings bound how much an `m`-timestep subsample can **inflate**
 apparent output diversity when a short window is used instead of the full trace.

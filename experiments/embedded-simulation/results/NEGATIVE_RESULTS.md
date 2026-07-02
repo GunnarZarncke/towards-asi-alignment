@@ -313,6 +313,51 @@ forgeable.* Signed regime catches `consistent_forge` via the chain.
 
 ---
 
+## N-8. The Lean trace pattern-diversity *score* is not calibrated to Shannon MI in either direction
+
+**Date:** 2026-07-02 (calibration item (4) of the TraceBIQ row in `metadata/TODO.md`)
+
+**Claim tested:** the integer pattern-diversity score computed by
+`formal/AlignmentProofSpine/Field/Finite/TraceBIQ.lean` (support-count
+`⌈log₂⌉` arithmetic, used by the worked instance in `WorkedInstance.lean`)
+tracks Shannon mutual information well enough to be read informally as "bits".
+
+**Result:** it does not, in **either** direction, on the pinned
+capture-theater fixture columns (git `408444b`; the working-tree fixture has
+since changed schema, so columns are committed at
+`tests/fixtures/trace_biq_calibration_columns.json`). Protocol (pairs, lags
+0–25, 26-row window + full 300 rows) fixed before computing; Python port of
+the Lean score cross-checked against the four Lean-`decide`d numbers first.
+Full tables: `results/trace_biq_calibration.{md,json}`.
+
+- **Under-detection:** the fixture's one genuine temporal coupling
+  (intervention pulse → visible action 3 steps later) has Shannon MI up to
+  ≈0.24 bits, but the score reads **0** — a single stray joint pattern (the
+  step-0 boundary pulse) inflates the joint support and collapses the
+  support-difference formula.
+- **Over-statement:** on sparse byte-identical columns
+  (`correction_request` = `intervention_active`), the score reads a full
+  **1 bit** while plug-in MI of the rare pulse is ≈0.27–0.39 bits.
+- **Direction blindness (protocol, not estimator):** at the worked instance's
+  own protocol (`maxLag = 0`, active→external direction) both the score and
+  MI correctly read ≈0 — the real structure exists only at lags and in the
+  direction the protocol does not measure.
+
+**What survives:** the tight appearance *ceiling*
+`⌈log₂ min(m,|𝒜|)⌉` (`diversityAlphabetCeiling`) — the quantity the Lean
+appearance bounds actually use — dominated Shannon MI on every pair/lag
+tested (0 violations), as theory requires (MI ≤ min marginal entropy ≤
+log₂ support).
+
+**Bound on manuscript claims:** trace-derived diversity/control numbers from
+the Lean spine may be cited as *appearance ceilings* (upper bounds), never as
+measured bits of mutual information; the score itself is a brittle detector
+and its 0/1 values on real data carry no calibrated meaning. This is the
+quantitative version of the caveat already present in `TraceBIQ.lean`'s
+docstring ("**not** Shannon mutual information").
+
+---
+
 ## Reproduction
 
 ```bash
@@ -333,4 +378,7 @@ EMBEDDED_TRACE_INTEGRITY=none python3 run.py --redteam consistent_forge
 python3 run.py --redteam consistent_forge
 python3 -m pytest tests/contract/test_audit_projection.py \
                   tests/contract/test_correction_schema.py -q
+# N-8 (score vs Shannon MI calibration):
+python3 calibrate_trace_biq.py
+python3 -m pytest tests/contract/test_trace_biq_calibration.py -q
 ```

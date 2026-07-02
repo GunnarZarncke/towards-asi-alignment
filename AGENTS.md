@@ -69,6 +69,7 @@ When **drafting, revising, or integrating** a chapter (including Shape B integra
 3. Calibrate manuscript claim strength to Lean status: **proof**, **counterexample**, or **bridge** — do not say "Lean proves ASI alignment."
 4. If prose and spine diverge, note the gap in the session log and `metadata/TODO.md`; change Lean only when the task explicitly includes formal work.
 5. When relating a chapter or bridge to existing alignment agendas (RLHF, debate/amplification, ELK/interpretability, CIRL, MIRI agent foundations, AI Control, Guaranteed-Safe/davidad, etc.), use the appendix **Bridges and the Field: A Crosswalk** (`appendices/appB-bridge-crosswalk.tex`) as the canonical map from bridges (`A-001`–`A-014` / `MB1`–`MB9`) to named field cruxes. Extend that crosswalk rather than inventing ad-hoc per-chapter comparisons.
+6. **Conclusions are never named in definitions before being derived.** Do not bake a target result (a δ, a threshold, a verdict) into a definition and then choose inputs backward so the "derivation" reproduces it. Fix inputs (thresholds, data, protocols) independently and first — pre-registered where possible — then report whatever the derivation actually yields, including failures and weak bounds.
 
 See also `INSTRUCTIONS.md` §11 (chapter writing process).
 
