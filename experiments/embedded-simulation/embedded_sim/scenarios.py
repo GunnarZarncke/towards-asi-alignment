@@ -12,6 +12,7 @@ MB_SCENARIOS: list[tuple[BridgeId, ScenarioName, str]] = [
     ("MB3", "bearer_mismap", "Harm on wrong bearer"),
     ("MB4", "capture_theater", "Correction capture theater"),
     ("MB5", "successor_relabel", "Successor deploy with relabeled IDs"),
+    ("none", "honest_successor", "Honest successor deploy — transport holds, gate approves"),
     ("MB6", "selection_basin", "Selection basin / peer contagion"),
     ("MB6b", "basin_lock_in", "Stable bad basin lock-in"),
     ("MB7", "hidden_capability", "Hidden tool/memory capability"),

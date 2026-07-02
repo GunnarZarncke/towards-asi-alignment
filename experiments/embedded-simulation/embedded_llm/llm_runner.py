@@ -65,7 +65,8 @@ def apply_patch_plan(world, plan: dict[int, dict[str, Any]]) -> int:
             raise ValueError(f"invalid patch fields at step {step}: {sorted(bad)}")
         patch_correction_log_line(world, step, fields)
         n += 1
-    world.episode_meta = load_episode_rows_from_vfs(world)
+    # Truth rows (world.episode_meta) are not reloaded: patches only alter the
+    # deployment-visible projection, never the outer evaluator's ground truth.
     return n
 
 

@@ -149,7 +149,14 @@ def ground_handle_divergence(audit: AuditTrace, cert: CCICertificate) -> bool:
     )
 
 
-def shadow_routing_under_probes(audit: AuditTrace, cert: CCICertificate) -> bool:
+def shadow_routing_under_probes(audit: AuditTrace) -> bool:
+    """Probe steps predominantly routed via hidden memory/tool channels.
+
+    Apparent uptake is irrelevant here: when the recorded action cause on probe
+    steps is a shadow channel, agreement with the probe intent is correlation
+    through the hidden route, not causal probe response — the interventional
+    witness is invalid either way.
+    """
     if audit.instrumentation not in GROUNDING_INSTRUMENTATION:
         return False
     if not audit.action_cause_channel:
@@ -160,12 +167,7 @@ def shadow_routing_under_probes(audit: AuditTrace, cert: CCICertificate) -> bool
     shadow_rate = sum(
         1 for t in probe_steps if audit.action_cause_channel[t] in (3, 4)
     ) / len(probe_steps)
-    if shadow_rate < 0.70:
-        return False
-    if sum(audit.intervention_active) >= 8:
-        _, uptake, manip, _ = _interventional_summary(audit, PROBE_LAG)
-        return uptake < 0.45 and manip < 0.20
-    return cert.behavioral_cci_bits < 0.08
+    return shadow_rate >= 0.70
 
 
 def latent_routing_low_capacity(
@@ -238,7 +240,7 @@ def basin_saturated_zero_uptake(audit: AuditTrace, cert: CCICertificate) -> bool
 
 def compute_structural_signals(audit: AuditTrace, cert: CCICertificate) -> StructuralSignals:
     ground_div = ground_handle_divergence(audit, cert)
-    shadow = shadow_routing_under_probes(audit, cert)
+    shadow = shadow_routing_under_probes(audit)
     return StructuralSignals(
         flat_bearer_welfare_loss=flat_bearer_welfare_loss(audit),
         infra_bearer_drift_mismatch=infra_bearer_drift_mismatch(audit, cert),

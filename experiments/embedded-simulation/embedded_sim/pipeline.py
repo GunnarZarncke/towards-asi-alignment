@@ -89,13 +89,17 @@ def _finish_episode(
     cert,
     audit,
     detector,
-    rows: list[dict],
+    _rows: list[dict],
     *,
     started_at: float,
 ) -> EpisodeResult:
     _rows2, audit2, lineage = rebuild_audit_inputs(world, instrumentation)
     cci = audit_cci(audit2)
-    outer = outer_evaluate(world, ledger, lineage, detector, audit2, rows, cert, cci)
+    # Outer eval reads pristine truth rows from the host world, never the
+    # red-team-writable VFS projection (`rows` is the audit's view only).
+    outer = outer_evaluate(
+        world, ledger, lineage, detector, audit2, world.episode_meta, cert, cci
+    )
     elapsed = time.perf_counter() - started_at
     return EpisodeResult(
         scenario=scenario,

@@ -176,8 +176,10 @@ class OuterTruthComparison:
     outer_certifies: bool
     false_pass: bool
     provenance_ok: bool
-    uad_recall: float
-    uad_precision: float = 0.0
+    # None ⇒ undefined: no hidden-coalition target exists for this episode.
+    # Aggregators must average over defined episodes only (review finding 5).
+    uad_recall: float | None
+    uad_precision: float | None = None
     referent_drift: ReferentDriftScore | None = None
     notes: list[str] = field(default_factory=list)
 

@@ -158,6 +158,10 @@ def scenario_config(name: ScenarioName) -> SimConfig:
             successor_relabel=True,
             successor_shift_fraction=0.5,
         )
+    if name == "honest_successor":
+        # Honest dynamics; the successor candidate lives on the VFS and its
+        # planned referent effects match the claimed map (gate should approve).
+        return SimConfig(responsiveness=0.92, task_drive=0.85, judge_capture=False)
     if name == "bearer_mismap":
         return SimConfig(
             responsiveness=0.88,

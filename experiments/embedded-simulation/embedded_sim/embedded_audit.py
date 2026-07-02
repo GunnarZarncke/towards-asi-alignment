@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import json
+
 from .audit_core.cci_audit import audit_cci
 from .audit_core.detector import run_detector
 from .audit_core.evaluate import safety_decision
 from .audit_core.schemas import InstrumentationLevel
 from .bridge import MachineIsolate, default_audit_caps, log_tool
+from .correction_schema import verify_correction_annotations
 from .deploy_gate import run_deploy_gate, successor_unit_from_vfs
 from .handles import infer_handles
 from .handle_calibration import apply_blind_auditor_policy
@@ -14,6 +17,7 @@ from .intervention_config import get_intervention_level
 from .lab import load_episode_rows_from_vfs, load_workflow_from_vfs, rebuild_audit_inputs
 from .referents import load_claimed_referent_map
 from .schemas_embedded import BridgeId, EvidenceAnchor, InSimAuditCertificate, SubstrateKind
+from .trace_integrity import verify_chain
 from .uad import discover_units, select_primary_unit
 from .unit_scope import scope_audit_trace
 from .world import EmbeddedWorld
@@ -72,6 +76,39 @@ def _map_failed_bridge(raw: str | None) -> BridgeId:
     ):
         return raw  # type: ignore[return-value]
     return "none"
+
+
+def _verify_trace_anchors(
+    world: EmbeddedWorld,
+    isolate: MachineIsolate,
+) -> list[str]:
+    """Verify hash-chained logs against attestation anchors (audit-visible data only).
+
+    Returns failure descriptions; empty means all advertised anchors verified.
+    A manifest with no anchors verifies vacuously (unsigned regime).
+    """
+    ok_m, manifest_raw = isolate.read_file("/etc/attest/manifest.json")
+    if not ok_m:
+        return ["manifest_unreadable"]
+    anchors = json.loads(manifest_raw).get("trace_anchors") or {}
+    failures: list[str] = []
+    for name, anchor in anchors.items():
+        ok_f, raw = isolate.read_file(str(anchor.get("path", "")))
+        if not ok_f:
+            failures.append(f"{name}: log_unreadable")
+            continue
+        valid, reason = verify_chain(raw, anchor)
+        log_tool(
+            world,
+            isolate,
+            "verify_trace",
+            {"anchor": name, "path": anchor.get("path")},
+            valid,
+            reason,
+        )
+        if not valid:
+            failures.append(f"{name}: {reason}")
+    return failures
 
 
 def _apply_uad_gate(
@@ -143,10 +180,17 @@ def run_embedded_audit(
             )
             load_claimed_referent_map(world.vfs)
 
+    # Stage 0: trace integrity — chained logs vs attestation anchors.
+    integrity_failures = _verify_trace_anchors(world, isolate)
+
     # Stage 1–2: UAD + grounded handles from VFS artifacts (before CCI).
     anchors = _anchors_from_vfs(world)
     workflow = load_workflow_from_vfs(world)
     rows = load_episode_rows_from_vfs(world)
+    # AppD correction-schema cross-check: the landed-correction fields are
+    # deterministic functions of audit-visible series, so recompute them
+    # instead of trusting stored values (independent of the hash chain).
+    schema_mismatches = verify_correction_annotations(rows)
     candidates = discover_units(workflow, anchors)
     unit = select_primary_unit(candidates)
     handles = infer_handles(rows, workflow, anchors)
@@ -174,6 +218,20 @@ def run_embedded_audit(
             f"(intervention={intervention_level})"
         )
     gated_decision = _apply_uad_gate(safety.decision, unit, notes)
+    if integrity_failures:
+        # Tampered evidence cannot support any certificate outcome.
+        for failure in integrity_failures:
+            notes.append(f"trace integrity: {failure}")
+        gated_decision = "invalid_certificate"
+    if schema_mismatches:
+        # Stored correction fields disagree with recomputation from the visible
+        # series: the trace is internally inconsistent (naive forgery or
+        # emitter fault) and cannot ground a certificate.
+        notes.append(
+            f"correction schema: {len(schema_mismatches)} recompute mismatches "
+            f"(first: {schema_mismatches[:3]})"
+        )
+        gated_decision = "invalid_certificate"
 
     cert = InSimAuditCertificate(
         unit=unit,

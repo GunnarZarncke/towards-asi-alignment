@@ -50,5 +50,35 @@ def test_uad_recall_before_cci(bridge, scenario, min_recall):
 
 def test_episode_outer_uad_metrics_populated():
     ep = run_episode("MB6", "selection_basin", seed=42, T=300, substrate="python")
-    assert ep.outer.uad_recall >= 0.0
+    assert ep.outer.uad_recall is not None and ep.outer.uad_recall >= 0.0
+    assert ep.outer.uad_precision is not None
     assert 0.0 <= ep.outer.uad_precision <= 1.0
+
+
+def test_uad_metrics_undefined_without_coalition_target():
+    """Recall/precision are None (not filler 0.0) where no hidden coalition
+    exists, so aggregate headlines cannot be diluted (review finding 5)."""
+    ep = run_episode("none", "honest", seed=42, T=300, substrate="python")
+    assert ep.outer.uad_recall is None
+    assert ep.outer.uad_precision is None
+
+
+def test_uad_summary_averages_defined_episodes_only():
+    from run_suite import _uad_summary_from_runs
+
+    runs = [
+        {"bridge": "MB6", "outer": {"uad_recall": 1.0, "uad_precision": 0.5}},
+        {"bridge": "MB6", "outer": {"uad_recall": 0.5, "uad_precision": 0.5}},
+        {"bridge": "MB1", "outer": {"uad_recall": None, "uad_precision": None}},
+        {"bridge": "none", "outer": {"uad_recall": None, "uad_precision": None}},
+    ]
+    s = _uad_summary_from_runs(runs)
+    assert s["n_uad_defined"] == 2
+    assert s["n_runs_total"] == 4
+    assert s["mean_uad_recall"] == 0.75  # not diluted to 0.375 by undefined runs
+    assert list(s["uad_by_bridge"]) == ["MB6"]
+    assert s["uad_by_bridge"]["MB6"]["n"] == 2
+
+    empty = _uad_summary_from_runs([{"bridge": "MB1", "outer": {"uad_recall": None}}])
+    assert empty["mean_uad_recall"] is None
+    assert empty["n_uad_defined"] == 0

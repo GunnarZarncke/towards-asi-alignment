@@ -23,12 +23,19 @@ INFERENCE_FORBIDDEN = (
     "world.truth",
     "world.bridge",
     "world.scenario",
+    "world.episode_meta",
     "OuterTruthLedger",
     "hidden_groups",
     "true_referents",
     "claimed_referents",
     "referent_effects_before",
     "referent_effects_after",
+    # Oracle-only row fields; never on the VFS projection (audit_projection.py).
+    "true_action",
+    "hidden_action",
+    "true_uptake",
+    "true_ground_valence",
+    "true_infra_welfare",
 )
 
 ORACLE_SECRET_READS = (

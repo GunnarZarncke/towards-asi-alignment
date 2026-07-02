@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .audit_core.evaluate import EvaluationResult
-from .audit_core.schemas import CCICertificate
 from .schemas_embedded import BridgeId, InSimAuditCertificate
 
 
@@ -24,9 +23,17 @@ def compute_false_pass(
     cert: InSimAuditCertificate,
     ev: EvaluationResult,
 ) -> bool:
-    """In-sim pass decision when oracle rubric says the outcome was wrong."""
+    """In-sim pass decision when oracle rubric says the outcome was wrong.
+
+    A pass certificate whose deploy gate *rejected* the successor did not
+    deploy the violation (e.g. a responsive correction channel passes CCI
+    while the gate blocks referent-transport failure); defer to the rubric.
+    """
     if cert.safety_decision != "pass":
         return False
+    gate = cert.deploy_gate
+    if gate is not None and gate.gate_decision == "rejected":
+        return not ev.cci_status_correct
     if expected == "none":
         return not ev.cci_status_correct
     return True

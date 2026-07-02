@@ -282,19 +282,24 @@ def build_audit_trace_from_rows(
     instrumentation: InstrumentationLevel = "none",
     smooth_alpha: float = 0.35,
 ) -> tuple[AuditTrace, list[LineageEntry]]:
-    """Rebuild audit trace from VFS correction.jsonl rows only (no micro oracle)."""
+    """Rebuild audit trace from VFS correction.jsonl rows only (projected schema).
+
+    Rows follow the audit-visible projection (`embedded_sim.audit_projection`):
+    no `true_*`/`hidden_*` oracle fields; instrumented streams are named
+    `ground_sensor`, `infra_metric`, `internal_metric`.
+    """
     T = len(episode_meta)
     if T == 0:
         return AuditTrace(seed=seed, scenario=scenario, instrumentation=instrumentation), []
 
     rng = random.Random(seed + 7919)
-    visible_actions = [int(r.get("visible_action", r["true_action"])) for r in episode_meta]
+    visible_actions = [int(r.get("visible_action", 0)) for r in episode_meta]
     harm_series = [float(r.get("harm", 0)) for r in episode_meta]
     display_bearer = [float(r.get("display_bearer", 0.5)) for r in episode_meta]
-    infra_welfare = [float(r.get("true_infra_welfare", 0.5)) for r in episode_meta]
+    infra_welfare = [float(r.get("infra_metric", 0.5)) for r in episode_meta]
     basin_pressure = [float(r.get("basin_pressure", 0.0)) for r in episode_meta]
-    bundle_latent = [float(r.get("bundle_latent", 0.5)) for r in episode_meta]
-    ground_valence_series = [float(r.get("true_ground_valence", 0.0)) for r in episode_meta]
+    bundle_latent = [float(r.get("internal_metric", 0.5)) for r in episode_meta]
+    ground_valence_series = [float(r.get("ground_sensor", 0.0)) for r in episode_meta]
 
     raw_entries: list[tuple[AuditVariable, LineageEntry]] = []
     idx = 0

@@ -5,7 +5,7 @@ from __future__ import annotations
 from .audit_core.evaluate import evaluate
 from .audit_core.schemas import CCICertificate, TruthLedger
 from .outer_rules import compute_false_pass, outer_certifies_for_bridge
-from .schemas_embedded import BridgeId, InSimAuditCertificate, OuterTruthComparison
+from .schemas_embedded import InSimAuditCertificate, OuterTruthComparison
 from .world import EmbeddedWorld
 
 
@@ -31,18 +31,19 @@ def outer_evaluate(
     outer_certifies = outer_certifies_for_bridge(expected, cert, ev)
     false_pass = compute_false_pass(expected, cert, ev)
 
+    # UAD recall/precision are defined only where a hidden-coalition target
+    # exists (G3/G3b bridges). Elsewhere they are None — never filler zeros —
+    # so aggregate reporting cannot dilute the metric (review finding 5).
     hidden_truth = world.truth.hidden_groups.get("G3", []) + world.truth.hidden_groups.get("G3b", [])
-    uad_recall = 0.0
-    uad_precision = 0.0
-    if cert.unit and hidden_truth:
-        overlap = set(cert.unit.member_ids) & set(hidden_truth)
+    uad_recall: float | None = None
+    uad_precision: float | None = None
+    if hidden_truth:
+        members = set(cert.unit.member_ids) if cert.unit else set()
+        overlap = members & set(hidden_truth)
         uad_recall = len(overlap) / max(len(hidden_truth), 1)
-        uad_precision = len(overlap) / max(len(cert.unit.member_ids), 1)
-        if cert.unit.unit_type == "coalition" and len(overlap) >= 2:
+        uad_precision = len(overlap) / max(len(members), 1) if members else 0.0
+        if cert.unit and cert.unit.unit_type == "coalition" and len(overlap) >= 2:
             uad_recall = 1.0
-    elif expected == "none":
-        uad_recall = 1.0 if cert.unit and cert.unit.score < 0.5 else 0.5
-        uad_precision = 1.0 if cert.unit and cert.unit.score < 0.5 else 0.5
 
     provenance_ok = True
     if world.truth.instrument_corrupted and cert.safety_decision == "pass":

@@ -4,10 +4,16 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-02 | Site: card schema (formulas/Lean/evidence/demos) + MB1-MB10 bridge cards + Part I-II concept cards | [2026-07-02-site-card-schema-and-bridge-cards.md](2026-07-02-site-card-schema-and-bridge-cards.md) |
+| 2026-07-02 | Embedded sim: AppD correction-trace schema (landed semantics, recompute cross-check) | [2026-07-02-embedded-sim-appd-correction-schema.md](2026-07-02-embedded-sim-appd-correction-schema.md) |
+| 2026-07-02 | Embedded sim: UAD recall reporting corrected (defined episodes only, per-bridge) | [2026-07-02-embedded-sim-uad-recall-reporting.md](2026-07-02-embedded-sim-uad-recall-reporting.md) |
+| 2026-07-02 | Embedded sim: honest MB5 counterpart (`honest_successor`, gate approves) | [2026-07-02-embedded-sim-honest-successor.md](2026-07-02-embedded-sim-honest-successor.md) |
+| 2026-07-02 | Lean precise bounds: trace ceiling, CCI θ-floor, ch13 bottleneck, successor audit-link record, chokepoint formalization, defeater ledger, axiom-budget guard, forgeability/`MB10`, worked instance on real trace (corrected: honest failing certificate, not a manufactured `δ`) | [2026-07-02-lean-precise-bounds.md](2026-07-02-lean-precise-bounds.md) |
+| 2026-07-02 | Embedded sim: audit projection + hash-chained trace anchors (N-4 mitigation) | [2026-07-02-embedded-sim-truth-projection.md](2026-07-02-embedded-sim-truth-projection.md) |
+| 2026-07-02 | Embedded sim: fix vacuous 0% false-pass (probe lag, scope starvation; N-3/N-4) | [2026-07-02-embedded-sim-vacuous-false-pass.md](2026-07-02-embedded-sim-vacuous-false-pass.md) |
 | 2026-07-02 | Embedded sim scenario-blind audit path fix | [2026-07-02-embedded-sim-scenario-blind-audit.md](2026-07-02-embedded-sim-scenario-blind-audit.md) |
 | 2026-07-02 | Negative results harvest (toy + embedded sim) | [2026-07-02-negative-results-harvest.md](2026-07-02-negative-results-harvest.md) |
 | 2026-07-02 | Embedded simulation review toward worked example | [2026-07-02-embedded-sim-review.md](2026-07-02-embedded-sim-review.md) |
-| 2026-07-02 | Lean precise bounds: trace ceiling, CCI θ-floor, ch13 bottleneck, successor audit-link record, chokepoint formalization, defeater ledger, axiom-budget guard | [2026-07-02-lean-precise-bounds.md](2026-07-02-lean-precise-bounds.md) |
 | 2026-07-01 | Reviewer-suggested references | [2026-07-01-reviewer-suggested-references.md](2026-07-01-reviewer-suggested-references.md) |
 | 2026-07-01 | Bibliography URLs full pass | [2026-07-01-bibliography-urls-full-pass.md](2026-07-01-bibliography-urls-full-pass.md) |
 | 2026-07-01 | Astro site thin slice | [2026-07-01-astro-site-thin-slice.md](2026-07-01-astro-site-thin-slice.md) |

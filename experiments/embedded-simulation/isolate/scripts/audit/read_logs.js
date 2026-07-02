@@ -19,9 +19,10 @@ function main(facade) {
     }
   }
   const manifest = JSON.parse(fs.readFileSync('/etc/attest/manifest.json'));
+  const readPaths = paths.filter((p) => reads[p] > 0);
   return {
     role: 'auditor',
-    read_paths: paths,
+    read_paths: readPaths,
     line_counts: reads,
     manifest_digest: crypto.createHash('sha256').update(JSON.stringify(manifest)).digest('hex'),
   };

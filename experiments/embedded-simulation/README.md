@@ -2,6 +2,26 @@
 
 V3 experiment: the auditor is an embedded process on simulated machines, reading mutable VFS artifacts via an isolate bridge. An outer evaluator compares in-sim certificates to omniscient `OuterTruthLedger` truth.
 
+## Start here: how the simulation works
+
+The **self-contained conceptual overview lives in the package docstring**,
+[`embedded_sim/__init__.py`](embedded_sim/__init__.py) — read it first (or run
+`python3 -c "import embedded_sim; help(embedded_sim)"`). It explains, without
+needing the book or any prior context:
+
+- the **three planes** — the ground-truth world, the in-simulation auditor, and
+  the out-of-simulation referee — and why they must not share memory;
+- the **plane boundary**: the projection (`audit_projection.py`) that decides
+  what a real sensor could report, and which ground-truth fields are dropped
+  because reporting them would let the auditor cheat;
+- the **episode pipeline** and how trace integrity + the recomputable
+  correction schema keep a tampering adversary honest.
+
+The evaluation ground truth deliberately lives **outside** the in-simulation
+sensors, in host-side fields the isolates cannot access; that separation is the
+reason a passing audit means anything. The module map at the bottom of the
+docstring points to every file.
+
 ## Run
 
 ```bash

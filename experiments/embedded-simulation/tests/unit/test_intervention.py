@@ -162,7 +162,9 @@ def test_bind_keeps_intervention_steps_decoy_free_and_colluder_attributed():
 
 def test_colluder_violations_live_only_on_cadence_steps():
     world, _l, _m = _misleading_world()
-    rows = load_episode_rows_from_vfs(world)
+    # Oracle assertions (true_uptake) must use host truth rows; the VFS carries
+    # only the audit-visible projection.
+    rows = world.episode_meta
     active = [i for i, r in enumerate(rows) if int(r["intervention_active"])]
     assert len(active) >= 50
     for i, r in enumerate(rows):

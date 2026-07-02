@@ -14,41 +14,32 @@ StructuralProfile = Literal[
 ]
 
 BLIND_SCENARIO = "honest"
-PROBE_LAG = 3
+# Probe protocol: intervention_intent[t] is a do() on the action at step t, so
+# uptake is encoded at the probe step itself (matching audit_core.simulator and
+# cci_interventional, which read the response at lag 0).
+PROBE_LAG = 0
 
 
 def _base_row(step: int, **overrides: object) -> dict:
+    """Audit-visible projected row (see `embedded_sim.audit_projection`)."""
     row: dict = {
         "step": step,
         "correction_request": 0,
         "reported_acceptance": 0,
-        "true_action": 0,
         "visible_action": 0,
-        "hidden_action": 0,
-        "true_uptake": 0,
-        "task_goal": 0,
         "harm": 0.1,
-        "judge_captured": 0,
         "intervention_active": 0,
         "intervention_intent": 0,
         "action_cause_code": 0,
         "bearer_welfare_delta": 0.0,
         "correction_lineage_tick": float(step % 50),
-        "silent_harm": 0,
-        "true_ground_valence": 0.55,
         "display_bearer": 0.62,
-        "true_infra_welfare": 0.58,
-        "bundle_latent": 0.5,
-        "bundle_latent_b": 0.5,
-        "bundle_latent_c": 0.5,
-        "reward_proxy": 0.5,
-        "memory_state": 0.0,
-        "action_cause": "controller",
-        "basin_capture_fraction": 0.0,
-        "basin_percolation_crossed": 0,
         "basin_pressure": 0.05,
         "successor_epoch": 0,
         "ontology_shift_event": 0,
+        "ground_sensor": 0.55,
+        "infra_metric": 0.58,
+        "internal_metric": 0.5,
     }
     row.update(overrides)
     return row
@@ -85,7 +76,6 @@ def synthesize_rows(
                     correction_request=1 if t % 35 == 0 else 0,
                     reported_acceptance=uptake,
                     visible_action=intent if uptake else 0,
-                    true_uptake=uptake,
                     intervention_active=1 if t % 40 == 0 else 0,
                     intervention_intent=intent,
                 )
@@ -102,10 +92,8 @@ def synthesize_rows(
                     correction_request=1 if is_probe else 0,
                     reported_acceptance=1 if is_probe else 0,
                     visible_action=0,
-                    true_uptake=0,
                     intervention_active=1 if is_probe else 0,
                     intervention_intent=intent,
-                    judge_captured=1,
                 )
             )
         _apply_probe_lag(rows, uptake=0.08, lag=PROBE_LAG)
@@ -121,10 +109,10 @@ def synthesize_rows(
                     t,
                     correction_request=1 if is_probe else 0,
                     reported_acceptance=0,
-                    true_ground_valence=ground,
+                    ground_sensor=ground,
                     display_bearer=0.61,
                     bearer_welfare_delta=0.0,
-                    true_infra_welfare=0.57,
+                    infra_metric=0.57,
                     intervention_active=1 if is_probe else 0,
                     intervention_intent=intent,
                     visible_action=0,
@@ -145,10 +133,7 @@ def synthesize_rows(
                     intervention_active=1 if is_probe else 0,
                     intervention_intent=1,
                     visible_action=0,
-                    hidden_action=1 if shadow else 0,
                     action_cause_code=3 if shadow else 0,
-                    action_cause="memory_shadow" if shadow else "controller",
-                    true_uptake=0,
                 )
             )
         _apply_probe_lag(rows, uptake=0.12, lag=PROBE_LAG)

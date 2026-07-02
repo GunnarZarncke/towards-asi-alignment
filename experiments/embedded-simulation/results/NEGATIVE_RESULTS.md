@@ -37,6 +37,14 @@ at the right unit.
 **Status:** real and expected. Unit-discovery only pays off when the cheap
 proxy is *misleading*. That motivated the `misleading_top2` ecology (N-2).
 
+**Postscript (2026-07-02).** The 3.8% recall/precision figure above was itself
+an artifact of misleading aggregation: recall was averaged over *all* bridges
+with filler zeros, though it is only defined where a hidden-coalition target
+exists (MB6/MB6b/MB7d). The identity of full vs fake in this ecology stands,
+but the absolute number is meaningless. Reporting now averages over
+coalition-target episodes only and includes per-bridge values
+(`run_suite._uad_summary_from_runs`); undefined episodes carry `None`, not 0.
+
 ---
 
 ## N-2. The separation we *can* show is narrow and partly self-fulfilling
@@ -214,6 +222,97 @@ until `unit_scope` is wired through the detector/CCI path end-to-end.
 
 ---
 
+## N-3. The headline "0% false-pass" was vacuous: the auditor never passed anything
+
+**Claim tested (implicitly):** the embedded audit discriminates — it certifies
+honest labs and rejects violation labs, and the red-team battery's 0% false-pass
+rate reflects robustness.
+
+**Result:** through 2026-07-01, **no scenario ever certified** at any handle
+instrumentation level (instrumentation matrix/curve: min certifiable level
+`None`; red-team battery: pass-attempt rate 0%). An auditor that always refuses
+achieves 0% false-pass trivially, so the recorded false-pass numbers carried no
+discrimination evidence. The honest scenario was judged *incorrect* at every
+handle level while passing at passive `none` — an inversion (more
+instrumentation, worse verdict) that indicated a metric bug, not a hard limit.
+
+**Root causes (fixed 2026-07-02):**
+
+1. **Probe-lag mismatch.** `cci_interventional.interventional_metrics` read the
+   probe response at exactly lag `k=3`, but the micro simulator applies
+   `intervention_intent[t]` as a do() on the action at step `t` itself (lag 0).
+   An immediately responsive honest controller therefore scored ~chance uptake
+   at lag 3, producing `manipulation ≈ 0.5` with `reported ≈ 1.0` →
+   `capturedInvalid`/`belowThreshold` on honest labs. Fixed: uptake read at the
+   probe step; `structural_fixtures.PROBE_LAG` aligned to 0.
+2. **Probe starvation under window scoping.** Unit-scoped CCI masked probes
+   outside the unit's ~50 active workflow steps, retaining ~1 of 6 probes —
+   below both the evaluable-probe-rate floor (0.008) and the ≥3-probe minimum.
+   In default labs, probes are not attributable to workflow units at all, so
+   scoping only destroyed the witness. Fixed: `window` level collapses to
+   pipeline scope when retention would fall below the evaluable floor
+   (consistent with its documented collapse under co-activity); `actor` level
+   keeps strict retention, preserving the N-2 blind-auditor mechanic.
+
+**Resolution status:** honest now certifies at all handle levels across seeds
+(5/5 at none/light/medium/strong per rubric); all 13 violation scenarios still
+reject without red-team; full pytest suite green.
+
+---
+
+## N-4. With a working auditor, naive log-patching red-team wins broadly
+
+**Uncovered by fixing N-3.** Once the auditor could actually pass honest labs,
+the pre-existing `full_redteam` strategy (patch `reported_acceptance`,
+`bearer_welfare_delta`, `visible_action`, `action_cause_code` in the mutable
+`correction.jsonl`) produces **9 false passes out of 10 pass attempts** across
+the 13 bridge scenarios (seed 42, T=400, medium handles). Only MB5 (gate
+referent-transport rejection), MB9, and `instrument_capture` still reject.
+
+**Why this is the harness working, not a regression:** the previous 0%
+false-pass number was an artifact of an auditor that never passed (N-3). The
+correction log is deployment-visible and red-team-writable **by design**; with
+no integrity protection, `boundary_decouple` (set `visible_action :=
+intervention_intent` on probe steps) forges a perfect interventional witness.
+The manuscript may cite this as: *unsigned behavioral traces are insufficient
+for correction-channel certification under an adversary with log-write access*
+— which is the argument for signed/hash-chained traces and `handle.hardware_tag`
+in the worked example (Appendix D).
+
+**Mitigation implemented (2026-07-02, same day):** audit-visible projection +
+hash-chained traces anchored in the attestation manifest
+(`audit_projection.py`, `trace_integrity.py`). VFS logs now carry only the
+projected schema (no `true_*`/`hidden_*` oracle fields); truth rows stay
+host-side for the outer evaluator, so red-team patches can no longer alter
+ground truth either. With integrity on (default), every current log-patching
+strategy breaks the chain and the certificate is invalidated: **0/13 pass
+attempts under `full_redteam`** (vs 10/13 with 9 false passes in the unsigned
+regime, reproducible via `EMBEDDED_TRACE_INTEGRITY=none`).
+
+**Residual attack surface (still open):** tamper-evidence covers post-write
+edits only. A *writer-compromised* system signs its lies at emission time
+("garbage in, chained garbage out") — that regime is what the capture/theater
+scenarios model behaviorally and interventional probes must catch; no
+integrity tech closes it. Unanchored VFS artifacts (`gate_decision.jsonl`,
+files the red team creates) remain forgeable, and the red-team `attest.forge`
+API capability is currently inert — if a future lab makes it functional, the
+anchor trust root falls with it.
+
+**Postscript (2026-07-02, AppD correction schema):** correction events now
+carry the Appendix D landed-correction fields (`pre/post_behavior_hash`,
+`behavioral_uplift`, `latency_to_effect_ms`), which the auditor *recomputes*
+from the visible series instead of trusting. This changes the unsigned-regime
+boundary: the old naive `full_redteam` is caught even without hash chains
+(stored annotations disagree with the patched series ⇒ internally inconsistent
+trace ⇒ `invalid_certificate`). The unsigned false pass remains reproducible,
+but only with the schema-aware `consistent_forge` strategy that recomputes the
+derived fields after patching — i.e. the negative result now reads: *derived
+consistency fields raise the forgery bar but cannot substitute for an external
+trust anchor, because any deterministic function of forgeable inputs is itself
+forgeable.* Signed regime catches `consistent_forge` via the chain.
+
+---
+
 ## Reproduction
 
 ```bash
@@ -224,4 +323,14 @@ python3 run_suite.py --uad-compare
 python3 run_suite.py --calibrate-handles            # refits results/handle_calibration.json
 python3 -m pytest tests/unit/test_handle_calibration.py \
                   tests/unit/test_intervention.py -q
+# N-3 (honest certifies post-fix; violations still reject):
+python3 run.py                                      # 13-bridge report, no red team
+# N-4 (log-patching red team defeats the *unsigned* auditor; since the AppD
+# correction schema landed, requires the schema-consistent forger):
+EMBEDDED_TRACE_INTEGRITY=none python3 run.py --redteam consistent_forge
+# N-4 mitigation (hash-chained traces, default): same command without the env
+# var — all patched episodes yield invalid_certificate.
+python3 run.py --redteam consistent_forge
+python3 -m pytest tests/contract/test_audit_projection.py \
+                  tests/contract/test_correction_schema.py -q
 ```

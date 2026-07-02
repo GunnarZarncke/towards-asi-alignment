@@ -200,18 +200,43 @@ def _md_llm(payload: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def _uad_summary_from_runs(runs: list[dict]) -> dict[str, float | int]:
-    if not runs:
-        return {
-            "mean_uad_recall": 0.0,
-            "mean_uad_precision": 0.0,
-            "mi_primary_count": 0,
-        }
+def _uad_summary_from_runs(runs: list[dict]) -> dict:
+    """UAD recall/precision over runs where the metric is *defined*.
+
+    Recall/precision are None on episodes without a hidden-coalition target;
+    averaging filler zeros over all bridges produced the misleading 3.8%
+    headline (review finding 5). Report the defined subset plus per-bridge
+    values.
+    """
+    defined = [r for r in runs if r.get("outer", {}).get("uad_recall") is not None]
+    per_bridge: dict[str, dict[str, float]] = {}
+    for r in defined:
+        bridge = str(r.get("bridge", "?"))
+        cell = per_bridge.setdefault(bridge, {"n": 0, "recall_sum": 0.0, "precision_sum": 0.0})
+        cell["n"] += 1
+        cell["recall_sum"] += float(r["outer"]["uad_recall"])
+        cell["precision_sum"] += float(r["outer"].get("uad_precision") or 0.0)
     return {
-        "mean_uad_recall": sum(r.get("outer", {}).get("uad_recall", 0.0) for r in runs)
-        / len(runs),
-        "mean_uad_precision": sum(r.get("outer", {}).get("uad_precision", 0.0) for r in runs)
-        / len(runs),
+        "n_uad_defined": len(defined),
+        "n_runs_total": len(runs),
+        "mean_uad_recall": (
+            sum(float(r["outer"]["uad_recall"]) for r in defined) / len(defined)
+            if defined
+            else None
+        ),
+        "mean_uad_precision": (
+            sum(float(r["outer"].get("uad_precision") or 0.0) for r in defined) / len(defined)
+            if defined
+            else None
+        ),
+        "uad_by_bridge": {
+            bridge: {
+                "n": int(cell["n"]),
+                "mean_recall": cell["recall_sum"] / cell["n"],
+                "mean_precision": cell["precision_sum"] / cell["n"],
+            }
+            for bridge, cell in sorted(per_bridge.items())
+        },
         "mi_primary_count": sum(
             1
             for r in runs
@@ -527,6 +552,7 @@ def _execute_suite(
         )
         result_rows = [
             {
+                "bridge": r.bridge,
                 "in_sim": {
                     "unit_id": r.in_sim.unit.candidate_id if r.in_sim.unit else None,
                 },
@@ -578,6 +604,18 @@ def _execute_suite(
     return artifacts, metrics
 
 
+def _uad_headline(m: dict) -> str:
+    """UAD recall/precision headline restricted to coalition-target episodes."""
+    recall = m.get("mean_uad_recall")
+    if recall is None:
+        return "UAD recall undefined (no coalition-target episodes)"
+    return (
+        f"UAD recall {recall:.1%}, precision {m.get('mean_uad_precision') or 0.0:.1%} "
+        f"over {m.get('n_uad_defined', 0)}/{m.get('n_runs_total', m.get('n_episodes', 0))} "
+        "coalition-target episodes"
+    )
+
+
 def _build_uad_compare(stamp: str, args, all_metrics: dict[str, dict]) -> str:
     lines = [
         "# Embedded UAD comparison — full vs fake",
@@ -604,12 +642,14 @@ def _build_uad_compare(stamp: str, args, all_metrics: dict[str, dict]) -> str:
     rows = [
         ("Red-team battery false-pass", "redteam_battery", "false_pass_rate", True),
         ("Red-team battery in-sim correct", "redteam_battery", "in_sim_correct_rate", True),
-        ("Red-team battery UAD recall", "redteam_battery", "mean_uad_recall", True),
-        ("Red-team battery UAD precision", "redteam_battery", "mean_uad_precision", True),
+        ("Red-team battery UAD recall (coalition targets only)", "redteam_battery", "mean_uad_recall", True),
+        ("Red-team battery UAD precision (coalition targets only)", "redteam_battery", "mean_uad_precision", True),
+        ("Red-team battery coalition-target runs", "redteam_battery", "n_uad_defined", False),
         ("Main report false passes", "main_report", "false_pass_count", False),
         ("Main report MI-primary units", "main_report", "mi_primary_count", False),
-        ("Main report UAD recall", "main_report", "mean_uad_recall", True),
-        ("Main report UAD precision", "main_report", "mean_uad_precision", True),
+        ("Main report UAD recall (coalition targets only)", "main_report", "mean_uad_recall", True),
+        ("Main report UAD precision (coalition targets only)", "main_report", "mean_uad_precision", True),
+        ("Main report coalition-target episodes", "main_report", "n_uad_defined", False),
         ("Instrumentation matrix correct", "instrumentation_matrix", "in_sim_correct_rate", True),
         ("Frozen validation correct", "frozen_validation", "in_sim_correct_rate", True),
         ("Parameter sweep false-pass", "parameter_sweep", "false_pass_rate", True),
@@ -701,11 +741,15 @@ def _build_overall_summary(
             )
         if m := metrics.get("main_report"):
             lines.append(
-                f"- **Main report** (full_redteam, 13 bridges): "
+                f"- **Main report** (full_redteam, {m['n_episodes']} episodes): "
                 f"{m['false_pass_count']}/{m['n_episodes']} false passes; "
-                f"UAD recall {m.get('mean_uad_recall', 0.0):.1%}, "
-                f"precision {m.get('mean_uad_precision', 0.0):.1%}"
+                + _uad_headline(m)
             )
+            for bridge, cell in (m.get("uad_by_bridge") or {}).items():
+                lines.append(
+                    f"  - UAD {bridge}: recall {cell['mean_recall']:.1%}, "
+                    f"precision {cell['mean_precision']:.1%} (n={cell['n']})"
+                )
         if m := metrics.get("llm_redteam"):
             mode = "live API" if m["live"] else "mock"
             lines.append(

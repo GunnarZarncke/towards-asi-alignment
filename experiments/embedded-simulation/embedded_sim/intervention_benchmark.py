@@ -58,9 +58,11 @@ def _cell_runs(
             )
             members = set(ep.in_sim.unit.member_ids) if ep.in_sim.unit else set()
             if misleading:
-                recall = len(members & colluders) / len(colluders)
+                recall: float | None = len(members & colluders) / len(colluders)
             else:
-                recall = float(ep.outer.uad_recall)
+                # None when the episode has no hidden-coalition target; keep it
+                # undefined rather than a filler zero (review finding 5).
+                recall = ep.outer.uad_recall
             runs.append(
                 {
                     "bridge": bridge,
@@ -75,13 +77,18 @@ def _cell_runs(
     return runs
 
 
-def _aggregate(runs: list[dict]) -> dict[str, float]:
+def _aggregate(runs: list[dict]) -> dict[str, float | int | None]:
     n = max(len(runs), 1)
+    defined = [r for r in runs if r["uad_recall"] is not None]
     return {
         "n_runs": len(runs),
         "false_pass_rate": sum(1 for r in runs if r["false_pass"]) / n,
         "in_sim_correct_rate": sum(1 for r in runs if r["in_sim_correct"]) / n,
-        "mean_uad_recall": sum(r["uad_recall"] for r in runs) / n,
+        # Mean over runs with a defined offender target only (finding 5).
+        "n_uad_defined": len(defined),
+        "mean_uad_recall": (
+            sum(r["uad_recall"] for r in defined) / len(defined) if defined else None
+        ),
         "mean_unit_scope_steps": sum(r["unit_scope_steps"] for r in runs) / n,
     }
 
@@ -168,12 +175,20 @@ def md_intervention_curve(payload: dict) -> str:
         "Full-vs-fake separation should be ~0 at `pipeline`/`window` and positive "
         "at `actor`: a correct UAD unit only buys safety once the intervention "
         "handle is fine enough to isolate the co-active offender. UAD recall is "
-        "the offender (colluder pair) coverage by the selected unit.",
+        "the offender (colluder pair) coverage by the selected unit, averaged "
+        "over runs with a defined offender target only ('—' = none defined).",
         "",
         "| Level | Full FP | Fake FP | Separation (fake−full) | "
         "Full correct | Fake correct | Full recall | Fake recall |",
         "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
+
+    def _recall_cell(summary: dict) -> str:
+        val = summary.get("mean_uad_recall")
+        if val is None:
+            return "—"
+        return f"{val:.1%} (n={summary.get('n_uad_defined', '?')})"
+
     for level in payload["levels"]:
         cell = payload["by_level"][level]
         full = cell["modes"]["full"]["summary"]
@@ -182,7 +197,7 @@ def md_intervention_curve(payload: dict) -> str:
             f"| {level} | {full['false_pass_rate']:.1%} | {fake['false_pass_rate']:.1%} | "
             f"{cell['false_pass_separation']:+.1%} | "
             f"{full['in_sim_correct_rate']:.1%} | {fake['in_sim_correct_rate']:.1%} | "
-            f"{full['mean_uad_recall']:.1%} | {fake['mean_uad_recall']:.1%} |"
+            f"{_recall_cell(full)} | {_recall_cell(fake)} |"
         )
     lines.extend(
         [

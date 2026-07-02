@@ -71,11 +71,23 @@ changes.
 
 ## Open / next
 
-- Debug why honest scenario fails at handle instrumentation levels (finding 1).
-- Implement audit-projection + truth-snapshot separation (finding 2).
+- ~~Debug why honest scenario fails at handle instrumentation levels (finding 1)~~ —
+  done 2026-07-02, see `2026-07-02-embedded-sim-vacuous-false-pass.md` (N-3/N-4).
+- ~~Implement audit-projection + truth-snapshot separation (finding 2)~~ — done
+  2026-07-02, plus hash-chained trace anchors; see
+  `2026-07-02-embedded-sim-truth-projection.md`.
 - ~~De-label the MB5 audit/gate path (finding 3)~~ — done 2026-07-02.
-- Add honest-successor scenario where gate approves (finding 4).
-- Then start roadmap item 1 (appD correction-trace schema).
+- ~~Add honest-successor scenario where gate approves (finding 4)~~ — done
+  2026-07-02; see `2026-07-02-embedded-sim-honest-successor.md`.
+- ~~Correct UAD recall/precision reporting (finding 5)~~ — done 2026-07-02;
+  metrics are `None` off coalition-target bridges, aggregates average defined
+  episodes only + per-bridge table; see
+  `2026-07-02-embedded-sim-uad-recall-reporting.md`.
+- ~~Roadmap item 1 (appD correction-trace schema)~~ — done 2026-07-02;
+  landed-correction fields on `correction.jsonl`, auditor recompute
+  cross-check, `consistent_forge` red team; see
+  `2026-07-02-embedded-sim-appd-correction-schema.md`.
+- Next: roadmap item 2 (first-class handle registry).
 
 ## Key paths
 

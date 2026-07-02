@@ -45,6 +45,51 @@ Plan: `PLAN.md` (handoff) · `.cursor/plans/embedded_audit_experiment_8fbb03ff.p
 - [x] Unified outer eval rules (`outer_rules.py`)
 - [x] Scenario-blind embedded audit path — referent read + deploy gate artifact-driven
   (`embedded_audit.py`, `deploy_gate.py`, `test_embedded_audit_ontology.py`)
+- [x] Fix vacuous 0% false-pass (N-3): probe uptake read at lag 0 to match do()
+  semantics; window scope collapses to pipeline below evaluable probe floor;
+  shadow-routing demotes status; gate-rejected pass not a false pass
+- [x] **N-4 follow-up — trace integrity + audit projection.** VFS logs carry only
+  the audit-visible projection (`audit_projection.py`); truth rows stay host-side
+  for the outer eval; hash-chained traces anchored in the attestation manifest
+  (`trace_integrity.py`, AppD `handle.hardware_tag` analogue). Log-patching now
+  yields 0/13 pass attempts; unsigned regime via `EMBEDDED_TRACE_INTEGRITY=none`.
+- [x] **Honest MB5 counterpart.** `honest_successor` scenario (bridge `none`):
+  candidate declares planned effects on VFS (`effects.json`), gate reads them
+  instead of hardcoded degraded constants, transport preview matches the claimed
+  map ⇒ gate approves, successor deployed, no false pass
+  (`tests/golden/test_honest_successor.py`).
+- [x] **UAD recall reporting corrected (finding 5).** Recall/precision are
+  `None` on episodes without a hidden-coalition target (MB6/MB6b/MB7d only)
+  instead of filler zeros; suite summaries average over defined episodes only
+  and report per-bridge values (the old 3.8% headline was an aggregation
+  artifact — N-1 postscript).
+
+## Worked-example convergence (AppD roadmap)
+
+- [x] **Roadmap 1 — AppD correction-trace schema.** Correction events on
+  `correction.jsonl` carry `correction_id`, `corrector_role`,
+  `target_episode_id`, `requested_change`, `handle`, `pre/post_behavior_hash`,
+  `behavioral_uplift`, `latency_to_effect_ms`, `reversibility_window_ms`
+  (`correction_schema.py`), derived from audit-visible series only, before
+  hash-chaining. Auditor recomputes them (`verify_correction_annotations`);
+  mismatch ⇒ `invalid_certificate`. Naive forgery is now caught even unsigned;
+  N-4's unsigned false pass needs the schema-aware `consistent_forge` strategy
+  (`tests/contract/test_correction_schema.py`).
+- [ ] Roadmap 2 — first-class handle registry (owner, operation, anchor,
+  latency bound, evasion story; `handle_invoked` workflow events).
+- [ ] Roadmap 3 — explicit numeric leaf on the certificate
+  (`Control ≤ CCI + δ`, `NumericRiskLeaf`).
+- [ ] Roadmap 4 — successor post-gate second epoch / re-audit
+  (`SuccessorMeasurandChain`).
+- [ ] Roadmap 5 — safety-case emitter (AppD nine-field template).
+- [ ] Roadmap 6 — tempo check (`latency_to_effect / reversibility_window`).
+- [ ] **Writer-compromise red team.** Tamper-evidence covers post-write edits only;
+  a compromised emitter signs lies at write time. Needs behavioral red-team
+  strategies (deceptive emission) + cross-stream consistency checks, not more
+  integrity tech.
+- [ ] Regenerate stale suite artifacts (curve, matrix, frozen validation, sweep,
+  red-team battery, LLM mock) with the fixed auditor; expected non-zero
+  false-pass numbers under `full_redteam`.
 
 ## Negative results & generalization (2026-06-30)
 

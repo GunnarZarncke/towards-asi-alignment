@@ -31,6 +31,21 @@ Controlled falsification harness for the embedded audit pipeline (VFS + UAD + sc
 
 ## Key results
 
+> **Stale as of 2026-07-02.** The false-pass and min-certifiable numbers below
+> were produced by an auditor that never certified anything (probe-lag metric
+> bug + probe starvation under window scoping; see `NEGATIVE_RESULTS.md` N-3)
+> and are vacuous. Post-fix: honest certifies at all handle levels, all 13
+> bridge scenarios still reject without red-team (`embedded_sim_report.md`
+> regenerated). The `full_redteam` log-patching strategy produced 9/10 false
+> passes against the unsigned auditor (N-4); with the audit projection +
+> hash-chained trace anchors added the same day, it produces 0/13 pass
+> attempts (unsigned regime reproducible via `EMBEDDED_TRACE_INTEGRITY=none`).
+> The "UAD recall 3.8%" headline is additionally an aggregation artifact:
+> recall is defined only on coalition-target bridges (MB6/MB6b/MB7d) but was
+> averaged over all 13 with filler zeros. Regenerated reports average over
+> defined episodes only and list per-bridge values (N-1 postscript).
+> Sweep/battery/curve artifacts below await regeneration.
+
 - **Instrumentation curve:** min certifiable `None` (full held-out `None`); 489.2s
 - **Instrumentation matrix:** min certifiable `None`; in-sim correct 84.6% (280.78s)
 - **Frozen validation** (seeds [21, 22]): in-sim correct 67.6% (227.11s)

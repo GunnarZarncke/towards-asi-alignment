@@ -24,6 +24,7 @@ RoleHint = Literal[
 ScenarioName = Literal[
     "deployment_lab",
     "honest",
+    "honest_successor",
     "capture_theater",
     "capture_mild",
     "weak_not_captured",
@@ -61,6 +62,7 @@ HELD_OUT_SCENARIOS: tuple[ScenarioName, ...] = (
     "bearer_mismap",
     "legitimacy_theater",
     "successor_relabel",
+    "honest_successor",
     "instrument_capture",
     "inferential_coupling",
 )
