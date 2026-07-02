@@ -166,6 +166,10 @@ class InSimAuditCertificate:
     successor_unit: UADCandidate | None = None
     unit_scope_steps: int = 0
     in_sim_referent_drift: ReferentDriftScore | None = None
+    numeric_risk: dict[str, Any] | None = None
+    tempo_check: dict[str, Any] | None = None
+    successor_reaudit: dict[str, Any] | None = None
+    safety_case_path: str | None = None
 
 
 @dataclass

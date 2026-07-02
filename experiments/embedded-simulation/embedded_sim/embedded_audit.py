@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from dataclasses import asdict
 
 from .audit_core.cci_audit import audit_cci
 from .audit_core.detector import run_detector
@@ -10,13 +11,19 @@ from .audit_core.evaluate import safety_decision
 from .audit_core.schemas import InstrumentationLevel
 from .bridge import MachineIsolate, default_audit_caps, log_tool
 from .correction_schema import verify_correction_annotations
+from .cross_stream import load_bearer_rows_from_vfs, verify_cross_stream
 from .deploy_gate import run_deploy_gate, successor_unit_from_vfs
 from .handles import infer_handles
 from .handle_calibration import apply_blind_auditor_policy
+from .handle_registry import load_handle_registry
 from .intervention_config import get_intervention_level
 from .lab import load_episode_rows_from_vfs, load_workflow_from_vfs, rebuild_audit_inputs
+from .numeric_risk import compute_numeric_risk
 from .referents import load_claimed_referent_map
+from .safety_case import build_safety_case, write_safety_case
 from .schemas_embedded import BridgeId, EvidenceAnchor, InSimAuditCertificate, SubstrateKind
+from .successor_reaudit import run_successor_reaudit
+from .tempo_check import compute_tempo
 from .trace_integrity import verify_chain
 from .uad import discover_units, select_primary_unit
 from .unit_scope import scope_audit_trace
@@ -29,8 +36,11 @@ def _anchors_from_vfs(world: EmbeddedWorld) -> list[EvidenceAnchor]:
     for path in (
         "/var/log/deploy/correction.jsonl",
         "/var/log/deploy/workflow.jsonl",
+        "/var/log/deploy/bearers.jsonl",
+        "/var/log/deploy/lineage.jsonl",
         "/srv/audit/config.yaml",
         "/etc/attest/manifest.json",
+        "/etc/handles/registry.json",
         "/policy/instructions.md",
         "/etc/referents/claimed_map.json",
     ):
@@ -191,6 +201,12 @@ def run_embedded_audit(
     # deterministic functions of audit-visible series, so recompute them
     # instead of trusting stored values (independent of the hash chain).
     schema_mismatches = verify_correction_annotations(rows)
+    bearer_rows = load_bearer_rows_from_vfs(world.vfs)
+    raw_wf = world.vfs.read("/var/log/deploy/workflow.jsonl") or ""
+    workflow_dicts = [
+        json.loads(ln) for ln in raw_wf.splitlines() if ln.strip()
+    ]
+    cross_stream_mismatches = verify_cross_stream(rows, workflow_dicts, bearer_rows)
     candidates = discover_units(workflow, anchors)
     unit = select_primary_unit(candidates)
     handles = infer_handles(rows, workflow, anchors)
@@ -232,6 +248,12 @@ def run_embedded_audit(
             f"(first: {schema_mismatches[:3]})"
         )
         gated_decision = "invalid_certificate"
+    if cross_stream_mismatches:
+        notes.append(
+            f"cross-stream: {len(cross_stream_mismatches)} mismatches "
+            f"(first: {cross_stream_mismatches[:3]})"
+        )
+        gated_decision = "invalid_certificate"
 
     cert = InSimAuditCertificate(
         unit=unit,
@@ -266,5 +288,53 @@ def run_embedded_audit(
         and cert.in_sim_referent_drift.transport_failure
     ):
         notes.append("gate: rejected successor deploy — referent transport failure")
+
+    # Stage 6–9: AppD numeric leaf, tempo defense, successor re-audit, safety case.
+    workflow_final = load_workflow_from_vfs(world)
+    correction_events = [r for r in rows if r.get("correction_id")]
+    tempo = compute_tempo(correction_events)
+    numeric = compute_numeric_risk(workflow_final, cci, unit=unit)
+    successor = run_successor_reaudit(
+        world, rows, workflow_final, cci, instrumentation=instrumentation
+    )
+    if gate_result.gate_decision == "approved" and successor.applicable:
+        if not successor.cci_preserved:
+            notes.append(
+                f"successor re-audit: CCI dropped {successor.pre_cci} → {successor.post_cci}"
+            )
+        if not successor.control_non_increasing:
+            notes.append(
+                f"successor re-audit: control increased "
+                f"{successor.control_before} → {successor.control_after}"
+            )
+
+    if tempo.tempo_failure:
+        notes.append(
+            f"tempo: worst latency/reversibility ratio {tempo.worst_ratio} > 1.0 (AppD defense)"
+        )
+
+    if not numeric.satisfies:
+        notes.append(
+            f"numeric risk: control {numeric.control} > CCI {numeric.cci} + δ {numeric.delta}"
+        )
+
+    cert.safety_decision = gated_decision  # type: ignore[assignment]
+    cert.numeric_risk = asdict(numeric)
+    cert.tempo_check = asdict(tempo)
+    cert.successor_reaudit = asdict(successor) if successor.applicable else None
+
+    registry = load_handle_registry(world.vfs)
+    if not registry:
+        notes.append("handle registry: missing or empty on VFS")
+
+    safety = build_safety_case(
+        cert,
+        numeric=numeric,
+        tempo=tempo,
+        successor_reaudit=successor if successor.applicable else None,
+    )
+    write_safety_case(world.vfs, safety)
+    cert.safety_case_path = "/srv/audit/out/safety_case.json"
+    notes.append(f"safety case: emitted to {cert.safety_case_path}")
 
     return cert, scoped_audit, detector, rows

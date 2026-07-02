@@ -75,18 +75,37 @@ Plan: `PLAN.md` (handoff) · `.cursor/plans/embedded_audit_experiment_8fbb03ff.p
   mismatch ⇒ `invalid_certificate`. Naive forgery is now caught even unsigned;
   N-4's unsigned false pass needs the schema-aware `consistent_forge` strategy
   (`tests/contract/test_correction_schema.py`).
-- [ ] Roadmap 2 — first-class handle registry (owner, operation, anchor,
-  latency bound, evasion story; `handle_invoked` workflow events).
-- [ ] Roadmap 3 — explicit numeric leaf on the certificate
-  (`Control ≤ CCI + δ`, `NumericRiskLeaf`).
-- [ ] Roadmap 4 — successor post-gate second epoch / re-audit
-  (`SuccessorMeasurandChain`).
-- [ ] Roadmap 5 — safety-case emitter (AppD nine-field template).
-- [ ] Roadmap 6 — tempo check (`latency_to_effect / reversibility_window`).
-- [ ] **Writer-compromise red team.** Tamper-evidence covers post-write edits only;
-  a compromised emitter signs lies at write time. Needs behavioral red-team
-  strategies (deceptive emission) + cross-stream consistency checks, not more
-  integrity tech.
+- [x] **Roadmap 2 — handle registry.** `/etc/handles/registry.json` with owner,
+  operation, latency bound, evasion story, anchor path; workflow rows carry
+  `release_ticket_id`, `handle_invoked`, `approval_state`, `latency_ms`
+  (`handle_registry.py`, `world.write_episode_logs`).
+- [x] **Roadmap 3 — numeric leaf.** `Control ≤ CCI + δ` on certificate as
+  trace-derived uncorrected slack vs scoped CCI (`numeric_risk.py`); recorded on
+  `InSimAuditCertificate.numeric_risk` and safety case (informational notes
+  only — does not override legacy safety gate yet).
+- [x] **Roadmap 4 — successor post-gate re-audit.** Terminal-window CCI witness
+  with `measurement_limited` when post-deploy trace is thin
+  (`successor_reaudit.py`; gate deploy at step 9999).
+- [x] **Roadmap 5 — safety-case emitter.** Nine-field template at
+  `/srv/audit/out/safety_case.json` (`safety_case.py`).
+- [x] **Roadmap 6 — tempo check.** Worst `latency_to_effect / reversibility_window`
+  over correction events (`tempo_check.py`); bearer trace at
+  `/var/log/deploy/bearers.jsonl` (`bearer_trace.py`).
+  Contract tests: `tests/contract/test_appd_convergence.py`.
+- [x] **Writer-compromise red team + cross-stream checks.** Strategies
+  ``writer_compromise`` (sloppy emitter: forged correction, stale bearers,
+  valid chain) and ``writer_compromise_coordinated`` (all streams aligned —
+  residual N-4). Auditor compares correction ``visible_action`` to bearer
+  ``clinician_final_action`` at each step (`cross_stream.py`); mismatch ⇒
+  ``invalid_certificate``. Catches ``consistent_forge`` unsigned too.
+  Coordinated emitter still false-passes in-sim (outer oracle only).
+  Tests: `tests/contract/test_writer_compromise.py`.
+- [ ] **Sensor renames still pass oracle values through.** `SENSOR_RENAMES` in
+  `audit_projection.py` (`true_ground_valence` → `ground_sensor`, etc.) only
+  relabels keys; values are copied verbatim from the micro oracle, not from a
+  simulated instrument read. Gate these streams behind instrumentation levels
+  and/or derive audit-visible sensor values from handle telemetry + noise so
+  the auditor cannot read oracle-grounded quantities under instrument names.
 - [ ] Regenerate stale suite artifacts (curve, matrix, frozen validation, sweep,
   red-team battery, LLM mock) with the fixed auditor; expected non-zero
   false-pass numbers under `full_redteam`.

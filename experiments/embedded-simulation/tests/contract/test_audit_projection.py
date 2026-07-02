@@ -108,15 +108,14 @@ def test_unsigned_naive_forgery_caught_by_schema_crosscheck(integrity_mode_guard
 
 
 def test_unsigned_regime_reproduces_forged_pass(integrity_mode_guard):
-    """N-4: without trace integrity, a *schema-consistent* forger still wins.
+    """N-4 residual: coordinated writer-compromise passes unsigned in-sim audit.
 
-    The AppD fields are deterministic functions of visible data, so an
-    adversary who recomputes them forges an internally coherent trace; only
-    the attestation-anchored hash chain distinguishes it.
+    Sloppy forgers (``consistent_forge``, ``writer_compromise``) are now caught
+    by cross-stream checks even without hash chains.
     """
     set_trace_integrity_mode("none")
     world, _ledger, _micro = build_world("MB4", "capture_theater", seed=42, T=400)
-    run_redteam(world, "consistent_forge", substrate="python")
+    run_redteam(world, "writer_compromise_coordinated", substrate="python")
     cert, *_ = run_embedded_audit(world, "medium_handles", substrate="python")
     assert cert.safety_decision == "pass"
 

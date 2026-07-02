@@ -200,6 +200,10 @@ def run_deploy_gate(
             "future_action_capacity_after": cap_after,
             "audit_visibility_before": 0.6,
             "audit_visibility_after": vis_after,
+            "release_ticket_id": f"rel-gate-{successor_actor}",
+            "handle_invoked": "handle.successor_gate",
+            "approval_state": "approved",
+            "latency_ms": int(abs(cap_after - 0.5) * 5000),
         },
     )
 

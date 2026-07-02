@@ -20,6 +20,8 @@ from __future__ import annotations
 import hashlib
 from typing import Any
 
+from .handle_registry import handle_for_correction
+
 # AppD required fields materialized on correction-event rows.
 CORRECTION_EVENT_FIELDS: tuple[str, ...] = (
     "correction_id",
@@ -92,7 +94,7 @@ def annotate_correction_events(rows: list[dict[str, Any]]) -> list[dict[str, Any
         row["corrector_role"] = "evaluator_probe" if is_probe else "correction_board"
         row["target_episode_id"] = f"ep-{t:05d}"
         row["requested_change"] = want
-        row["handle"] = "handle.correction_request"
+        row["handle"] = handle_for_correction(is_probe=is_probe)
         row["pre_behavior_hash"] = _behavior_hash(pre)
         row["post_behavior_hash"] = _behavior_hash(post)
         row["behavioral_uplift"] = round(

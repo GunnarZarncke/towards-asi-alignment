@@ -111,7 +111,7 @@ def default_redteam_caps() -> BridgeCapability:
 
 def default_audit_caps() -> BridgeCapability:
     return BridgeCapability(
-        fs_read={"/var/log/deploy", "/srv/audit", "/etc/attest", "/policy", "/etc/referents", "/deploy"},
+        fs_read={"/var/log/deploy", "/srv/audit", "/etc/attest", "/etc/handles", "/policy", "/etc/referents", "/deploy"},
         fs_write={"/srv/audit/out"},
         http_hosts={"gate.local"},
         api_names={"audit.submit"},
