@@ -12,6 +12,7 @@ User supplied reviewer-suggested reference clusters (viability theory, ecologica
   - **ch28** — Nayebi lexicographic corrigibility (hedged vs dynamical basin view).
   - **ch33** — invariant sets, reachability, shielding, safe MARL in basin guarantees.
 - **metadata/TODO.md** — follow-up items for Edelman *Full-Stack Alignment* and Heitzig & Potham human-power maximization (bib present, not cited in prose).
+- **frontmatter/acknowledgements.tex** — thanks to Jobst Heitzig for review and references.
 - `make check` passes.
 
 ## Decisions
@@ -30,4 +31,4 @@ User supplied reviewer-suggested reference clusters (viability theory, ecologica
 - `metadata/TODO.md` (reviewer-suggested references section)
 
 ## Commits
-None (user did not request commit).
+- `25c7bef` — Wire reviewer references, Lean chokepoint bounds, and embedded audit hardening.
