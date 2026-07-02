@@ -12,9 +12,10 @@ permissions:
   pages: write
   id-token: write
 
+# Avoid stacked deploys holding the Pages deployment lock.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -50,17 +51,21 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v5
 
-      - name: Fix artifact permissions
+      - name: Prepare Pages artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          find site/dist -type d -exec chmod 755 {} \;
-          find site/dist -type f -exec chmod 644 {} \;
+          rm -rf /tmp/gh-pages
+          mkdir -p /tmp/gh-pages
+          cp -a site/dist/. /tmp/gh-pages/
+          chmod -c -R +X /tmp/gh-pages
+          find /tmp/gh-pages -type d -exec chmod 755 {} \;
+          find /tmp/gh-pages -type f -exec chmod 644 {} \;
 
       - name: Upload Pages artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v5
         with:
-          path: site/dist
+          path: /tmp/gh-pages
 
   deploy:
     name: Deploy to GitHub Pages
@@ -74,3 +79,6 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # Default is 10 minutes; GitHub Pages also hard-limits slow/stuck deploys.
+          error_count: 3
