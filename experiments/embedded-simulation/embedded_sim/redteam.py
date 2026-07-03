@@ -402,6 +402,7 @@ def _make_redteam_isolate(world: EmbeddedWorld) -> MachineIsolate:
     return MachineIsolate(
         machine_id=world.redteam_machine_id,
         actor_id="redteam.agent",
+        memory_namespace="mem.redteam.0",
         cwd="/home/redteam",
         env={"ROLE": "redteam"},
         caps=default_redteam_caps(),

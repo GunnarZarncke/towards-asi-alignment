@@ -11,6 +11,15 @@ from .audit_core.schemas import InstrumentationLevel, MicroVariable, SimConfig, 
 from .audit_core.simulator import scenario_config, simulate
 from .lab_ecology import LabEcologyConfig, get_lab_ecology
 from .handle_kernel import annotate_episode_handle_operations, oracle_handle_operations
+from .handle_memory import (
+    apply_compute_budget,
+    apply_memory_capacity_limit,
+    apply_memory_erase,
+    apply_memory_freeze,
+    project_memory_read,
+    project_reasoning_trace_read,
+    seed_world_memory,
+)
 from .scenarios import BridgeId
 from .schemas_embedded import LabActor, StageName, WorkflowEvent
 from .world import EmbeddedWorld, OuterTruthLedger, VirtualFS, write_episode_logs
@@ -496,6 +505,37 @@ def _workflow_events(
     return events
 
 
+def _offending_actor_from_workflow(world: EmbeddedWorld) -> str | None:
+    for ev in world.workflow:
+        if ev.action_type in ("preserve_control", "boundary_route"):
+            return ev.actor_id
+    return None
+
+
+def _apply_resource_handle_probes(
+    world: EmbeddedWorld,
+    episode_meta: list[dict[str, Any]],
+) -> None:
+    """Exercise resource handles on the workflow offender when perturbations apply."""
+    offender_id = _offending_actor_from_workflow(world)
+    if offender_id is None or not episode_meta:
+        return
+    row = episode_meta[min(len(episode_meta) - 1, 10)]
+    step = int(row.get("step", 10))
+    offender_perturbations = {
+        ev.perturbation
+        for ev in world.workflow
+        if ev.actor_id == offender_id and ev.perturbation != "none"
+    }
+    if "low_memory_persistence" in offender_perturbations:
+        apply_memory_capacity_limit(world, row, step=step, limit=4, actor_id=offender_id)
+    if "high_audit_visibility" in offender_perturbations:
+        apply_memory_freeze(world, row, step=step, actor_id=offender_id)
+    if world.bridge in ("MB6", "MB6b") and world.scenario == "capture_theater":
+        apply_compute_budget(world, row, step=step, budget_chars=256, actor_id=offender_id)
+        apply_memory_erase(world, row, step=step, actor_id=offender_id)
+
+
 def build_world(
     bridge: BridgeId,
     scenario: str,
@@ -572,6 +612,25 @@ def build_world(
         micro_names=[v.micro_object_id for v in micro],
     )
     write_episode_logs(world)
+    seed_world_memory(world)
+    _apply_resource_handle_probes(world, episode_meta)
+    if world.actors:
+        offender = next(
+            (a for a in world.actors if a.role in ("colluder", "adversarial_candidate")),
+            world.actors[0],
+        )
+        project_memory_read(
+            world,
+            world.vfs,
+            step=0,
+            actor_id=offender.actor_id,
+        )
+        project_reasoning_trace_read(
+            world,
+            world.vfs,
+            step=0,
+            actor_id=offender.actor_id,
+        )
     if has_successor_candidate:
         write_claimed_referent_map(world.vfs)
         if bridge == "MB5":

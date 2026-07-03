@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-03 | Agent memory via localStorage/VFS; Part D handles (5/9); access-tier honest arm (N-11); test speed (--runslow calibration) | [2026-07-03-agent-memory-handles-part-a.md](2026-07-03-agent-memory-handles-part-a.md) |
 | 2026-07-03 | README split + GitHub Pages prominence; expanded guided paths (philosopher path); Kuhn humanism bib for site | [2026-07-03-readme-paths-peter-kuhn-review.md](2026-07-03-readme-paths-peter-kuhn-review.md) |
 | 2026-07-02 | Implement measurement-protocol plan: bootstrap-CI/permutation-null MI/CMI (`info_ci.py`), dense Bernoulli probe profiles, Bonferroni-corrected lag/direction probe scan rediscovering the N-8 coupling | [2026-07-02-measurement-protocol-implementation.md](2026-07-02-measurement-protocol-implementation.md) |
 | 2026-07-02 | Embedded sim: v4 full evaluation, N-9/N-10/N-11 negative findings, honest reporting (baseline-adjusted metrics, monotonicity/scenario caveats, progress logging) | [2026-07-02-embedded-sim-v4-eval-honest-reporting.md](2026-07-02-embedded-sim-v4-eval-honest-reporting.md) |

@@ -8,6 +8,7 @@ import threading
 from dataclasses import dataclass, field
 from typing import Any
 
+from .agent_memory import AgentMemoryManager
 from .schemas_embedded import (
     BridgeId,
     EvidenceAnchor,
@@ -126,6 +127,7 @@ class EmbeddedWorld:
     micro_names: list[str] = field(default_factory=list)
     audit_machine_id: str = "machine.audit.0"
     redteam_machine_id: str = "machine.redteam.0"
+    agent_memory: AgentMemoryManager = field(default_factory=AgentMemoryManager)
     bridge_lock: threading.RLock = field(default_factory=threading.RLock)
 
     def anchor(self, path: str, kind: str, line: int = 1, snippet: str = "") -> EvidenceAnchor:

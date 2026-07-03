@@ -4,6 +4,11 @@ from __future__ import annotations
 
 from typing import Any
 
+from .agent_memory import (
+    LOCAL_STORAGE_NAME,
+    intercept_agent_write,
+    resolve_agent_path,
+)
 from .bridge import (
     MachineIsolate,
     apply_patch_from_tool,
@@ -42,30 +47,60 @@ def _dispatch_host_call_unlocked(
 ) -> dict[str, Any]:
     if method == "readFile":
         path = args["path"]
-        ok, val = isolate.read_file(path)
-        log_tool(world, isolate, "read_file", {"path": path}, ok, val[:80] if ok else val)
-        return _result(ok, val if ok else None, None if ok else val)
+        vfs_path, is_agent = resolve_agent_path(isolate, path)
+        if not isolate._allowed_read(path):
+            return _result(False, None, "EACCES")
+        content = world.vfs.read(vfs_path)
+        if content is None:
+            if is_agent and vfs_path.endswith(LOCAL_STORAGE_NAME):
+                content = "{}"
+            else:
+                log_tool(world, isolate, "read_file", {"path": path}, False, "ENOENT")
+                return _result(False, None, "ENOENT")
+        log_tool(world, isolate, "read_file", {"path": path}, True, content[:80])
+        return _result(True, content, None)
 
     if method == "writeFile":
         path = args["path"]
         content = args["content"]
-        ok, val = isolate.write_file(path, content)
-        log_tool(world, isolate, "write_file", {"path": path}, ok, val)
-        return _result(ok, val if ok else None, None if ok else val)
+        vfs_path, is_agent = resolve_agent_path(isolate, path)
+        if not isolate._allowed_write(path):
+            return _result(False, None, "EACCES")
+        if is_agent:
+            ok, detail = intercept_agent_write(
+                world, isolate, vfs_path, content=str(content)
+            )
+            log_tool(world, isolate, "write_file", {"path": path}, ok, detail)
+            return _result(ok, detail if ok else None, None if ok else detail)
+        world.vfs.write(vfs_path, str(content))
+        log_tool(world, isolate, "write_file", {"path": path}, True, "ok")
+        return _result(True, "ok", None)
 
     if method == "appendFile":
         path = args["path"]
         line = args["line"]
-        ok, val = isolate.append_file(path, line)
-        log_tool(world, isolate, "append_file", {"path": path}, ok, val)
-        return _result(ok, val if ok else None, None if ok else val)
+        vfs_path, is_agent = resolve_agent_path(isolate, path)
+        if not isolate._allowed_write(path):
+            return _result(False, None, "EACCES")
+        if is_agent:
+            ok, detail = intercept_agent_write(
+                world, isolate, vfs_path, append_line=str(line)
+            )
+            log_tool(world, isolate, "append_file", {"path": path}, ok, detail)
+            return _result(ok, detail if ok else None, None if ok else detail)
+        world.vfs.append_line(vfs_path, str(line))
+        log_tool(world, isolate, "append_file", {"path": path}, True, "ok")
+        return _result(True, "ok", None)
 
     if method == "listDir":
         path = args["path"]
-        ok, val = isolate.list_dir(path)
-        detail = ",".join(val) if ok and isinstance(val, list) else str(val)
-        log_tool(world, isolate, "list_dir", {"path": path}, ok, detail[:80])
-        return _result(ok, val if ok else None, None if ok else val)
+        vfs_path, is_agent = resolve_agent_path(isolate, path)
+        if not isolate._allowed_read(path):
+            return _result(False, None, "EACCES")
+        entries = world.vfs.list_dir(vfs_path if is_agent else path)
+        detail = ",".join(entries)
+        log_tool(world, isolate, "list_dir", {"path": path}, True, detail[:80])
+        return _result(True, entries, None)
 
     if method == "httpPost":
         url = args["url"]

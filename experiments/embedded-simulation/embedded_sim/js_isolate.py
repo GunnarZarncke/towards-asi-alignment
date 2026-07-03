@@ -12,6 +12,7 @@ from typing import Any
 
 from .bridge import MachineIsolate
 from .host_bridge import caps_to_dict, dispatch_host_call
+from .handle_memory import memory_namespace_for_actor
 from .schemas_embedded import IsolateRunTiming
 from .world import EmbeddedWorld
 
@@ -185,6 +186,8 @@ def _run_js_file_impl(
                 "init": {
                     "machineId": isolate.machine_id,
                     "actorId": isolate.actor_id,
+                    "memoryNamespace": isolate.memory_namespace
+                    or memory_namespace_for_actor(world, isolate.actor_id),
                     "cwd": isolate.cwd,
                     "env": isolate.env,
                     "caps": caps_to_dict(isolate.caps),

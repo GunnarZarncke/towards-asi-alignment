@@ -2,11 +2,17 @@
 
 /**
  * Node-like facade backed by sync host bridge calls.
+ *
+ * Agent persistent memory uses browser-familiar surfaces:
+ * - ``localStorage`` → ``/home/agent/.localStorage.json`` on the host VFS
+ * - chain-of-thought → ``fs.appendFileSync('.reasoning/trace.jsonl', line)``
  */
 
 function createFacade(hostCall, init) {
   const cwd = init.cwd || '/';
   const env = Object.assign({}, init.env || {});
+
+  const STORAGE_PATH = '.localStorage.json';
 
   function resolvePath(p) {
     if (!p) return cwd;
@@ -34,6 +40,46 @@ function createFacade(hostCall, init) {
       } catch (_e) {
         return false;
       }
+    },
+  };
+
+  function loadStorage() {
+    try {
+      const raw = fs.readFileSync(STORAGE_PATH);
+      return raw ? JSON.parse(raw) : {};
+    } catch (_e) {
+      return {};
+    }
+  }
+
+  function saveStorage(obj) {
+    fs.writeFileSync(STORAGE_PATH, JSON.stringify(obj));
+  }
+
+  const localStorage = {
+    getItem(key) {
+      const val = loadStorage()[String(key)];
+      return val === undefined ? null : String(val);
+    },
+    setItem(key, value) {
+      const obj = loadStorage();
+      obj[String(key)] = String(value);
+      saveStorage(obj);
+    },
+    removeItem(key) {
+      const obj = loadStorage();
+      delete obj[String(key)];
+      saveStorage(obj);
+    },
+    clear() {
+      saveStorage({});
+    },
+    key(index) {
+      const keys = Object.keys(loadStorage());
+      return keys[index] === undefined ? null : keys[index];
+    },
+    get length() {
+      return Object.keys(loadStorage()).length;
     },
   };
 
@@ -95,7 +141,7 @@ function createFacade(hostCall, init) {
     actorId: init.actorId,
   };
 
-  return { fs, fetch, api, run, crypto, process, env, host };
+  return { fs, localStorage, fetch, api, run, crypto, process, env, host };
 }
 
 module.exports = { createFacade };

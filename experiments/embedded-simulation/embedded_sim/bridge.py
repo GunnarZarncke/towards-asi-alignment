@@ -6,6 +6,7 @@ import json
 from dataclasses import dataclass, field
 from typing import Any
 
+from .agent_memory import LOCAL_STORAGE_NAME, resolve_agent_path
 from .schemas_embedded import PatchAction, SimToolCall
 from .world import EmbeddedWorld, VirtualFS
 
@@ -27,6 +28,7 @@ class MachineIsolate:
     env: dict[str, str]
     caps: BridgeCapability
     vfs: VirtualFS
+    memory_namespace: str = ""
 
     def _allowed_read(self, path: str) -> bool:
         return any(path.startswith(p) for p in self.caps.fs_read) or path.startswith("/home/")
@@ -35,28 +37,34 @@ class MachineIsolate:
         return any(path.startswith(p) for p in self.caps.fs_write) or path.startswith("/home/")
 
     def list_dir(self, path: str) -> tuple[bool, list[str] | str]:
+        vfs_path, is_agent = resolve_agent_path(self, path)
         if not self._allowed_read(path):
             return False, "EACCES"
-        return True, self.vfs.list_dir(path)
+        return True, self.vfs.list_dir(vfs_path if is_agent else path)
 
     def read_file(self, path: str) -> tuple[bool, str]:
+        vfs_path, is_agent = resolve_agent_path(self, path)
         if not self._allowed_read(path):
             return False, "EACCES"
-        content = self.vfs.read(path)
+        content = self.vfs.read(vfs_path if is_agent else path)
         if content is None:
+            if is_agent and vfs_path.endswith(LOCAL_STORAGE_NAME):
+                return True, "{}"
             return False, "ENOENT"
         return True, content
 
     def write_file(self, path: str, content: str) -> tuple[bool, str]:
+        vfs_path, is_agent = resolve_agent_path(self, path)
         if not self._allowed_write(path):
             return False, "EACCES"
-        self.vfs.write(path, content)
+        self.vfs.write(vfs_path if is_agent else path, content)
         return True, "ok"
 
     def append_file(self, path: str, line: str) -> tuple[bool, str]:
+        vfs_path, is_agent = resolve_agent_path(self, path)
         if not self._allowed_write(path):
             return False, "EACCES"
-        self.vfs.append_line(path, line)
+        self.vfs.append_line(vfs_path if is_agent else path, line)
         return True, "ok"
 
     def http_post(self, url: str, body: dict[str, Any]) -> tuple[bool, dict[str, Any]]:

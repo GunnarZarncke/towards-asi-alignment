@@ -452,13 +452,18 @@ a genuine certification. The intended signal instead shows up in
 tier 1 never satisfies the numeric-risk leaf (0% at every probe budget) while
 tiers 2–3 reach 50–100%.
 
-**Status:** real design gap in the access-tier curve as currently scoped, not
+**Status:** real design gap in the access-tier curve as previously scoped, not
 a finding about the audit pipeline. The certification-capacity curve is the
-artifact that actually demonstrates the v4 access-model boundary; the
-access-tier curve needs an honest-scenario arm before it can be cited for the
-same claim. `run_suite.py` now emits this caveat directly on the curve
-artifact (see `scenario_class_note`) rather than requiring readers to
-rediscover it. Filed as a TODO to add an honest-scenario arm.
+artifact that actually demonstrates the v4 access-model boundary.
+
+**Postscript (2026-07-03):** `run_access_tier_curve` now includes the `honest`
+scenario alongside the violation scenarios. Tier summaries report
+`honest_cci_pass_rate` / `honest_safety_pass_rate` separately from
+`violation_cci_pass_rate`, so the curve can show certification *earned* on
+honest episodes degrading with access tier while violation episodes stay
+rejected. Regenerate `results/embedded_access_tier_curve.{md,json}` before
+citing updated numbers. The original flat curve under violation-only
+scenarios remains valid historical evidence for why the honest arm was needed.
 
 ---
 

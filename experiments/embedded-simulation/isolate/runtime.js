@@ -86,6 +86,7 @@ function main() {
     process: facade.process,
     env: facade.env,
     fs: facade.fs,
+    localStorage: facade.localStorage,
     fetch: facade.fetch,
     api: facade.api,
     run: facade.run,

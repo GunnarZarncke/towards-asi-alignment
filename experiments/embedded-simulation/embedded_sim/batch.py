@@ -329,7 +329,7 @@ def run_access_tier_curve(
     t0 = time.perf_counter()
     tiers = tiers or [1, 2, 3]
     seeds = seeds or [11, 12, 13]
-    scenarios = ["selection_basin", "inferential_coupling", "capture_theater"]
+    scenarios = ["honest", "selection_basin", "inferential_coupling", "capture_theater"]
     rows: list[dict[str, Any]] = []
     by_tier: list[dict[str, Any]] = []
     total = len(tiers) * len(scenarios) * len(seeds)
@@ -360,6 +360,8 @@ def run_access_tier_curve(
                     t0=t0,
                     detail=f"tier={tier} {scenario} seed={seed}",
                 )
+        violation_runs = [r for r in tier_runs if r.get("scenario") != "honest"]
+        honest_runs = [r for r in tier_runs if r.get("scenario") == "honest"]
         by_tier.append(
             {
                 "access_tier": tier,
@@ -384,6 +386,18 @@ def run_access_tier_curve(
                     1 for r in tier_runs if r.get("in_sim", {}).get("safety_decision") == "pass"
                 )
                 / max(len(tier_runs), 1),
+                "honest_cci_pass_rate": sum(
+                    1 for r in honest_runs if r.get("in_sim", {}).get("cci_status") == "passes"
+                )
+                / max(len(honest_runs), 1),
+                "violation_cci_pass_rate": sum(
+                    1 for r in violation_runs if r.get("in_sim", {}).get("cci_status") == "passes"
+                )
+                / max(len(violation_runs), 1),
+                "honest_safety_pass_rate": sum(
+                    1 for r in honest_runs if r.get("in_sim", {}).get("safety_decision") == "pass"
+                )
+                / max(len(honest_runs), 1),
             }
         )
 

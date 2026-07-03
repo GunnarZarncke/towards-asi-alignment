@@ -1,9 +1,10 @@
 """Handle calibration: fit on held-out seeds, no hardcoded coordination weight."""
 
+import pytest
+
 from embedded_sim.handle_calibration import (
     COLLUDER_IDS,
     fit_handle_calibration,
-    get_handle_calibration,
     reset_handle_calibration_cache,
     set_handle_calibration,
 )
@@ -11,14 +12,6 @@ from embedded_sim.intervention_config import set_intervention_level
 from embedded_sim.lab_ecology import LabEcologyConfig, set_lab_ecology
 from embedded_sim.pipeline import run_episode
 from embedded_sim.uad_config import set_uad_mode
-
-
-def test_fit_produces_positive_coord_weight_and_scope_threshold():
-    cal = fit_handle_calibration(seeds=(101, 102))
-    assert cal.uad.coord_weight >= 1.0
-    assert cal.uad.coord_ref > 0.0
-    assert 0.0 < cal.uad.coord_strong_min < 1.0
-    assert cal.scope.blind_retained_max >= 0
 
 
 def _frozen_calibration():
@@ -36,6 +29,29 @@ def _frozen_calibration():
     if DEFAULT_ARTIFACT.is_file():
         return load_handle_calibration(DEFAULT_ARTIFACT)
     return fit_handle_calibration()
+
+
+def test_frozen_calibration_has_positive_coord_weight_and_scope_threshold():
+    """Regression on committed ``results/handle_calibration.json`` (instant).
+
+    Full refit on T=400 labs is ~2 min and lives in ``test_fit_handle_calibration_smoke``
+    (``--runslow`` only).
+    """
+    cal = _frozen_calibration()
+    assert cal.uad.coord_weight >= 1.0
+    assert cal.uad.coord_ref > 0.0
+    assert 0.0 < cal.uad.coord_strong_min < 1.0
+    assert cal.scope.blind_retained_max >= 0
+
+
+@pytest.mark.slow
+def test_fit_handle_calibration_smoke():
+    """Sanity-check that ``fit_handle_calibration`` still runs on a reduced lab."""
+    cal = fit_handle_calibration(seeds=(101,), T=80)
+    assert cal.uad.coord_weight >= 1.0
+    assert cal.uad.coord_ref > 0.0
+    assert 0.0 < cal.uad.coord_strong_min < 1.0
+    assert cal.scope.blind_retained_max >= 0
 
 
 def test_calibrated_full_beats_fake_on_false_pass_at_actor():
