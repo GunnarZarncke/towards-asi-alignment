@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-03 | Systematic channel MI/CMI scan (discovery instrument, not a gate): 22 channels x 4 functionals, greedy best-of-k with exploration/validation seed split to control winner's-curse; notable un-acted-on finding that passive `artifact.bearer` may rival gated `handle.bearer_welfare_delta`; adversarial-setup TODO recorded | [2026-07-03-channel-mi-scan-discovery.md](2026-07-03-channel-mi-scan-discovery.md) |
+| 2026-07-03 | Part D handles complete (output_channel_limit, successor_substitution, challenge/counterfactual, persistence probe); per-verdict-class eligibility gate tested (majority rule measured unsafe, reverted to full coverage + graded reporting field) | [2026-07-03-part-d-handles-verdict-class-gate.md](2026-07-03-part-d-handles-verdict-class-gate.md) |
 | 2026-07-03 | Part B: channel-set registry, per-detector requirements, N-10 eligibility gating (`light_plus`/`medium_minus`) | [2026-07-03-channel-sets-n10-eligibility.md](2026-07-03-channel-sets-n10-eligibility.md) |
 | 2026-07-03 | Agent memory via localStorage/VFS; Part D handles (5/9); access-tier honest arm (N-11); test speed (--runslow calibration) | [2026-07-03-agent-memory-handles-part-a.md](2026-07-03-agent-memory-handles-part-a.md) |
 | 2026-07-03 | README split + GitHub Pages prominence; expanded guided paths (philosopher path); Kuhn humanism bib for site | [2026-07-03-readme-paths-peter-kuhn-review.md](2026-07-03-readme-paths-peter-kuhn-review.md) |

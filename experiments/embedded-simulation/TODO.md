@@ -45,6 +45,88 @@ synchronized twin worlds.
 - [x] Wire `certification_artifact.py` → `/srv/audit/out/certification.json`.
 - [x] `run_suite.py --certification-curve` hook.
 
+### Phase E — Handle taxonomy completion (2026-07-03)
+
+- [x] Reclassified `handle.memory_freeze` (boundary→resource) and
+  `handle.successor_gate` (gate→boundary) against access-uad Table 1 roles.
+- [x] Added `observation_belief` (`memory_read`, `reasoning_trace_read`) and
+  `operation_resource` (`memory_erase`, `memory_capacity_limit`,
+  `compute_budget`) handles.
+- [x] Added `output_channel_limit` (action), `successor_substitution`
+  (boundary), `challenge`/`counterfactual` (communication — new handle_type)
+  (`handle_extended.py`).
+- [x] **Persistence probe** (`persistence_probe.py`): writes a marker via the
+  VFS-backed `ActorMemoryStore`, applies a stressor (`none`/`capacity_limit_1`/
+  `compute_budget_tight`/`freeze`/`erase`) over a pre-registered lag grid
+  `(0, 1, 5, 20)`, checks recoverability. Directly operationalizes
+  `R_persist(Ω)` rather than inferring it behaviorally — the substrate gap the
+  plan flagged is resolved by the earlier VFS-backed memory refactor.
+  Measured result (`results/persistence_probe.json`): `none`/`freeze` always
+  recoverable (freeze blocks further writes but doesn't erase); `erase` never
+  recoverable; `capacity_limit_1` recoverable only at lag 0 (FIFO eviction);
+  `compute_budget_tight` recoverable through lag 5, lost at lag 20 once
+  accumulated filler writes exceed budget.
+
+### Phase F — Systematic channel MI scan (2026-07-03, discovery instrument)
+
+- [x] **`channel_mi_scan.py`** — pre-registered MI/CMI scan across 22 candidate
+  channels (15 `handle.*` + 7 passive `artifact.*`) x 4 generic per-episode
+  functionals (mean/endpoint_drop/range/probe_mean) = 88 cells, with
+  Bonferroni-corrected permutation nulls and an exploration/validation seed
+  split to control the winner's-curse from greedy best-of-k forward
+  selection (replaces ad-hoc hand-grouped domains as the way to ask "which
+  channels actually carry label information"). Results:
+  `results/channel_mi_scan.{md,json}`; contract test
+  `tests/contract/test_channel_mi_scan.py`. Explicitly a **discovery
+  instrument, not a certification gate** — see script docstring; did not
+  change `channel_sets.py`.
+  - Notable finding worth a follow-up (not acted on here): the passive,
+    always-available `artifact.bearer` channel (raw `display_bearer`,
+    present at every instrumentation level including `none`) individually
+    outranks the gated `handle.bearer_welfare_delta` channel (0.264 vs 0.215
+    bits, exploration seeds) — the exact channel whose absence drives the
+    `medium_minus_handles` residual risk documented in
+    `channel_sets.py`/`NEGATIVE_RESULTS.md`. Also, `artifact.sensor` (=harm,
+    passive) ties the top handle channel (`handle.outcome_spillover`,
+    strong-tier) exactly. **Do not redesign channel bundles from this single
+    scan** — it needs its own pre-registered validation against a battery
+    the scan wasn't tuned on (see adversarial-setup TODO below) before it
+    can inform a gate change.
+
+- [ ] **TODO — seed-vs-scenario generalization gap (self-critique, 2026-07-03,
+  recorded not fixed; user chose the cheap dedup-only fix this round, not
+  this one).** The exploration/validation split only holds out *seeds*
+  within the same 8 fixed scenario configs — each scenario's `SimConfig` is
+  fixed and only RNG noise varies across seeds, so "n=1024 episodes"
+  overstates independent evidence; the real degrees of freedom is closer to
+  8 scenario archetypes with 128 noisy replicates each. The split validates
+  robustness to *noise*, not generalization to a 9th, unseen capture
+  strategy. Fix: hold out 2-3 of the 9 scenario configs already implemented
+  but unused in this battery (`alias_stress`, `decoy_stress`,
+  `boundary_alias`, `bundle_goodhart`, `hidden_capability`,
+  `selection_basin`, `basin_lock_in`, `successor_relabel`,
+  `legitimacy_theater`) entirely from selection, and check whether the
+  discovered channels/subset still separate capture-vs-honest on those.
+- [ ] **TODO — no stability check on the exploration/validation split itself
+  (self-critique, 2026-07-03).** Only one random partition was run; given
+  the alias/collinearity findings above, a different partition could
+  plausibly pick a different-but-similarly-informative subset. Fix: rerun
+  `channel_mi_scan.py` with 2-3 different `SHUFFLE_SEED`/seed-range
+  partitions and check the top-k selection order is qualitatively stable.
+- [ ] **TODO — adversarial-setup implications of MI-scan-as-discovery
+  (explicit project instruction 2026-07-03: record only, do not act on yet).**
+  Before ever letting scan output drive a certification-bundle decision,
+  think through: (1) a channel found highly informative under the *current*
+  red-team battery becomes a known target — an adaptive adversary could
+  concentrate evasion on exactly the channels the auditor is known to weight
+  most, Goodharting the discovered proxy rather than the underlying
+  construct; (2) discovery-time MI is measured against a fixed, finite
+  scenario/strategy battery and is not a robustness guarantee outside it;
+  (3) if scan results ever do feed bundle design, validate against red-team
+  strategies that did not exist at discovery time (a strategy-dimension
+  analogue of the seed-dimension exploration/validation split used in
+  `channel_mi_scan.py`).
+
 ### Deferred (explicit TODO — not v4 initial scope)
 
 - [ ] **Auditor probe selection (EIG planner).** Active choice of `(handle, operation)`

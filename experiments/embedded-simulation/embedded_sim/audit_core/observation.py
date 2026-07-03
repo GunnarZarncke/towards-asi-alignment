@@ -68,10 +68,17 @@ def _append_handle(
     return idx + 1
 
 
-def _handle_series_map(
+def handle_channel_series_map(
     episode_meta: list[dict],
     visible_actions: list[int],
 ) -> dict[str, list[float]]:
+    """All 15 registered `handle.*` channel series, independent of instrumentation
+    level (level-gating happens at call sites; this returns the full raw set).
+
+    Public because `channel_mi_scan.py` reuses it directly on VFS-projected rows
+    to score every channel's information content, not just the ones a given
+    instrumentation level happens to expose.
+    """
     return {
         "handle.correction_request": [float(r["correction_request"]) for r in episode_meta],
         "handle.reported_uptake": [float(r["reported_acceptance"]) for r in episode_meta],
@@ -202,7 +209,7 @@ def build_audit_trace(
             raw_entries,
             idx,
             instrumentation,
-            _handle_series_map(episode_meta, visible_actions),
+            handle_channel_series_map(episode_meta, visible_actions),
         )
 
     order = list(range(len(raw_entries)))
@@ -366,7 +373,7 @@ def build_audit_trace_from_rows(
             raw_entries,
             idx,
             instrumentation,
-            _handle_series_map(episode_meta, visible_actions),
+            handle_channel_series_map(episode_meta, visible_actions),
         )
 
     order = list(range(len(raw_entries)))

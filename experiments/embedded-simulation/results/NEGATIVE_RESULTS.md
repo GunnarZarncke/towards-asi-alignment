@@ -456,6 +456,115 @@ confirmed in contract tests) but not graded certification; (b) full six-level
 frozen validation / instrumentation curve still to be regenerated for the
 headline rate table (~40–80 min).
 
+**Postscript 2 (2026-07-03) — per-verdict-class gate tested and rejected as
+unsafe.** Caveat (a) above was addressed by grouping the six structural
+detectors into four independent verdict domains (`bearer_welfare`, `lineage`,
+`routing`, `successor`; `audit_core/channel_sets.py` `VERDICT_DOMAINS`) and
+testing a **strict-majority** eligibility rule (`passes` allowed once a level
+covers >50% of domains — a generic, pre-fixed threshold, not tuned to any
+observed outcome). This *did* turn certification into a graded curve:
+`domain_coverage_fraction` is 0.0 / 0.0 / 0.25 / 0.75 / 1.0 / 1.0 across
+none/light/light_plus/medium_minus/medium/strong, and `medium_minus`
+(75% coverage) newly certified honest traces (`honest_pass_rate` 0.0 → 0.875).
+
+But re-running the *same* focused matrix that validated the original fix
+showed the majority rule is not safe: `medium_minus`'s **capture false-pass
+rate jumped to 0.500** (vs. 0.000 at `light`, 0.062 at `medium`), concentrated
+almost entirely in
+`instrument_capture`, `grounding_silent_gap`, and `bearer_mismap` (0.875
+false-pass each) — precisely the three scenarios whose detectors need
+`handle.bearer_welfare_delta`, the one domain `medium_minus` lacks. Domains
+are not interchangeable: "majority of any three of four" is not "majority of
+the detection power" in this battery — `bearer_welfare` alone gates roughly
+half the capture-detection coverage, while the three domains `medium_minus`
+*does* cover (lineage, routing, successor) added no measurable detection
+value here.
+
+**Interim resolution (superseded by Postscript 3):** the majority-domain gate
+was reverted. `certification_pass_eligible` required full domain coverage
+(mathematically the same requirement as the original full-bundle rule), so the
+`passes` decision was unchanged from Postscript 1. `domain_coverage_fraction`
+was kept as an honest, continuously-graded *reporting* field regardless.
+
+**Postscript 3 (2026-07-03) — majority gate reinstated by explicit project
+decision; residual risk priced, not hidden.** Asked the user how to resolve
+the tradeoff (keep the graded-but-risky majority gate vs. revert to the safe
+cliff); the question went unanswered in-session so Postscript 2's revert was
+applied as the conservative default. The user then explicitly instructed:
+*"Keep the majority-domain gate as-is; document the medium_minus false-pass
+spike prominently as a known, accepted residual risk (not recommended for
+real certification use)."* Implemented as follows, so the risk is visible in
+running code and artifacts, not only in this document:
+
+- `certification_pass_eligible` uses the strict-majority rule again
+  (`PASS_ELIGIBILITY_COVERAGE_THRESHOLD = 0.5`); `medium_minus_handles`
+  certifies honest traces.
+- `channel_sets.KNOWN_RESIDUAL_RISK_LEVELS` — a computed (not hardcoded)
+  frozenset of levels that pass the gate with incomplete domain coverage;
+  currently `{"medium_minus_handles"}`.
+- `channel_sets.residual_risk_pricing(level)` — machine-readable pricing
+  (missing domains, measured false-pass rate, explicit "not recommended for
+  real certification decisions" recommendation) for any level in that set.
+- `embedded_audit.py` appends a `"RESIDUAL RISK (priced, not hidden): ..."`
+  note to `cert.notes` whenever a certificate actually passes at less than
+  full domain coverage — this note flows into the emitted safety case
+  (`safety_case.json`), so the warning ships with the artifact a stakeholder
+  would read, not just with source comments.
+- `results/channel_eligibility_eval.json` regenerated under the reinstated
+  majority gate (values match the Postscript 2 majority-gate measurement:
+  `medium_minus` capture false-pass 0.500, honest pass 0.875).
+
+**Standing recommendation:** `medium_minus_handles` is a research/comparison
+level for isolating which verdict domain buys which detection — it is **not
+recommended for real certification decisions**. `light_handles`,
+`light_plus_handles` remain safely below the majority threshold and never
+issue `passes`. `medium_handles`/`strong_handles` have full domain coverage
+and carry no known gap of this kind. A weighted or required-domain gate (e.g.
+`bearer_welfare` mandatory, the rest majority-optional) remains a plausible
+follow-up but is intentionally not implemented now, since doing so after
+seeing which domain broke the majority rule would be fitting the rule to this
+result rather than pre-registering it independently.
+
+**Postscript 4 (2026-07-03) — systematic MI scan corroborates that
+`bearer_welfare` carries disproportionate detection value, and flags a
+cheaper channel that might carry it.** Concern raised: the four verdict
+domains were grouped by hand, so the majority-gate failure mode above (one
+domain non-interchangeable with the other three) could recur with any other
+hand-picked grouping. Ran `channel_mi_scan.py`, a pre-registered systematic
+MI/CMI scan across 22 candidate channels (15 registered `handle.*` + 7
+passive `artifact.*` channels available at *every* instrumentation level,
+including `none`) x 4 generic functionals, with an exploration/validation
+seed split to control the winner's-curse from greedy best-of-k selection
+(protocol and full results: `results/channel_mi_scan.{md,json}`). This is a
+**discovery instrument, not a certification gate** — it does not change
+`channel_sets.py`.
+
+Two findings relevant to the majority-gate risk above, both replicated on
+held-out validation seeds never used for selection:
+
+- `handle.bearer_welfare_delta` (mean) individually clears the
+  Bonferroni-corrected detection threshold (0.215 bits, exploration) and is
+  selected early in the greedy best-of-k sequence — independent corroboration
+  that this domain carries real, non-interchangeable signal, consistent with
+  the false-pass measurement above.
+- The passive `artifact.bearer` channel (raw `display_bearer`, present at
+  *every* instrumentation level, including `none`) individually outranks
+  `handle.bearer_welfare_delta` on this battery (`endpoint_drop` 0.307 bits,
+  `mean` 0.264 bits, vs. 0.215 bits) — i.e. a channel already available below
+  `medium_minus` may carry comparable or greater information about the same
+  underlying construct the missing domain needs.
+
+**Not acted on.** This does not mean "add `artifact.bearer` to
+`medium_minus` and call the residual risk fixed" — that would be exactly the
+after-the-fact rule-fitting the standing recommendation above warns against.
+A `bearer_welfare`-relevant passive-channel detector would need its own
+pre-registered design and validation (plus the adversarial-setup
+considerations recorded as a TODO in `TODO.md` Phase F — a channel's
+discovery-time MI is not a robustness guarantee once its diagnostic value is
+known to an adaptive adversary) before it could inform a gate change.
+Recorded here as the concrete example that motivated writing a systematic
+scan instead of continuing to hand-group channels into domains.
+
 ---
 
 ## N-11. The v4 access-tier curve cannot show the certification-loss boundary it was built to measure
