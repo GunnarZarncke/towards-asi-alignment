@@ -15,6 +15,17 @@ cards:
   - evidence-and-uncertainty
 ---
 
-Start here if you work on evals, governance, or empirical alignment and need the conceptual map first: which object is being aligned, what must be preserved under pressure, and where bridge assumptions still carry weight.
+## What this path is for
 
-For the Lean proof spine, bridge crosswalk, and MB1–MB10 cards, continue to **Researcher — Formal**.
+You already work on alignment, evals, or governance and need a precise vocabulary for **what must be preserved** under capability growth—not a motivational essay.
+
+**You will leave knowing:**
+
+- The **boundary error**: auditing the visible model while the real optimizer is a larger loop.
+- Named **bridge failure modes** (MB1–MB9) and where empirical sims support or bound claims.
+- How **correction-channel integrity** and **successor stability** differ from label alignment.
+- Where to continue for Lean proofs and bridge crosswalk detail.
+
+**Time:** ~2–4 hours of cards; pair with Introduction + Appendix B (bridge crosswalk) in the PDF.
+
+Continue to **Researcher — Formal** for the Lean spine and MB cards.

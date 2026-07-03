@@ -92,10 +92,16 @@ Tag or link [the repository](https://github.com/GunnarZarncke/towards-asi-alignm
 
 ## Building a website
 
-There is no official project website yet. You may:
+The **official companion site** is deployed from this repository:
+
+**https://gunnarzarncke.github.io/towards-asi-alignment/**
+
+It hosts guided reading paths, concept cards, rendered chapter pages, Lean playgrounds, chapter demos, and an in-browser PDF copy. Build locally: [`site/README.md`](site/README.md) and [`docs/BUILD.md`](docs/BUILD.md).
+
+You may also:
 
 - Host reading guides, gem indexes, or interactive demos (chapter demos under [`src/demos/`](src/demos/) are a starting pattern; see [`src/README.md`](src/README.md))
-- Mirror or excerpt with clear attribution and a link to the [latest PDF release](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest)
+- Mirror or excerpt with clear attribution and a link to the hosted PDF
 - Integrate simulation artifacts or Lean module browsers
 
 Coordinate in an issue or PR if you want cross-linking from this README.

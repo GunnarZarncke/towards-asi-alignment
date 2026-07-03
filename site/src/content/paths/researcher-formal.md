@@ -16,6 +16,16 @@ cards:
   - evidence-and-uncertainty
 ---
 
-Start here if you want to inspect what Lean actually checks: proved nodes, finite counterexamples, and the explicit MB bridges that connect book predicates to measurable systems.
+## What this path is for
 
-Read the **Lean proof spine** on the site for dependency graphs and try-it-out snippets, then use the bridge cards below for the empirical handoffs each MB names.
+You want to inspect **what Lean actually checks**: proved nodes, finite counterexamples, and explicit MB bridges—not manuscript rhetoric.
+
+**You will leave knowing:**
+
+- Which steps are **proved**, which are **bridges** (axioms), and which are **counterexamples**.
+- How book predicates map to **MB1–MB10** cards and the bridge crosswalk.
+- Where formal structure **stops** and empirical / philosophical work begins.
+
+**Time:** ~3–5 hours across Lean playground snippets and bridge cards.
+
+Start with **Researcher — Applied** if you need the conceptual map first.

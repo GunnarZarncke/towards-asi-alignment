@@ -23,9 +23,9 @@ const failureModes = [
       Alignment is the problem of preserving human-correctable value-bearing processes as capability grows, ontologies shift, successors are created, and selection pressure intensifies.
     </p>
     <div class="button-row">
-      <a class="button primary" href={pdfHref(base)}>Read the PDF</a>
-      <a class="button" href={withBase("/paths/")}>Guided tour</a>
-      <a class="button" href={withBase("/faq/")}>Read the FAQ</a>
+      <a class="button primary" href={withBase("/paths/")}>Guided tour — start here</a>
+      <a class="button" href={pdfHref(base)}>Read the PDF</a>
+      <a class="button" href={withBase("/faq/")}>FAQ</a>
     </div>
   </section>
 
@@ -34,7 +34,7 @@ const failureModes = [
     <div class="grid">
       {paths
         .sort((a, b) => {
-          const order = ["generalist", "researcher-applied", "researcher-formal", "engineer-evals", "funder-policy"];
+          const order = ["generalist", "philosopher", "researcher-applied", "researcher-formal", "engineer-evals", "funder-policy"];
           return order.indexOf(a.id) - order.indexOf(b.id);
         })
         .map((path) => (
