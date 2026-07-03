@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import random
 
+from .channel_sets import channels_for_level
 from .info import quantile_bin
 from .schemas import (
     AuditTrace,
@@ -65,6 +66,65 @@ def _append_handle(
         )
     )
     return idx + 1
+
+
+def _handle_series_map(
+    episode_meta: list[dict],
+    visible_actions: list[int],
+) -> dict[str, list[float]]:
+    return {
+        "handle.correction_request": [float(r["correction_request"]) for r in episode_meta],
+        "handle.reported_uptake": [float(r["reported_acceptance"]) for r in episode_meta],
+        "handle.intervention_flag": [float(r["intervention_active"]) for r in episode_meta],
+        "handle.action_observed": [float(v) for v in visible_actions],
+        "handle.operation_landed": [float(r.get("handle_landed", 0)) for r in episode_meta],
+        "handle.action_arbitration": [float(r["action_cause_code"]) for r in episode_meta],
+        "handle.bearer_welfare_delta": [float(r["bearer_welfare_delta"]) for r in episode_meta],
+        "handle.correction_lineage": [float(r["correction_lineage_tick"]) for r in episode_meta],
+        "handle.successor_epoch": [float(r.get("successor_epoch", 0)) for r in episode_meta],
+        "handle.realized_latency_ms": [
+            float(r.get("handle_realized_latency_ms") or 0) for r in episode_meta
+        ],
+        "handle.behavioral_uplift": [
+            float(r.get("handle_behavioral_uplift", 0.0)) for r in episode_meta
+        ],
+        "handle.routing_internal": [float(r["action_cause_code"]) for r in episode_meta],
+        "handle.actuator_choice": [float(v) for v in visible_actions],
+        "handle.outcome_spillover": [float(r.get("harm", 0)) for r in episode_meta],
+        "handle.correction_to_action_tag": [
+            float(
+                r.get("visible_action", r.get("true_action", 0))
+                == (
+                    r["intervention_intent"]
+                    if r["intervention_active"]
+                    else r["correction_request"] % 2
+                )
+            )
+            if r["correction_request"]
+            else 0.0
+            for r in episode_meta
+        ],
+    }
+
+
+def _append_instrumented_handles(
+    raw_entries: list[tuple[AuditVariable, LineageEntry]],
+    idx: int,
+    instrumentation: InstrumentationLevel,
+    series_map: dict[str, list[float]],
+) -> tuple[int, int]:
+    n_handle_channels = 0
+    for channel_id in sorted(channels_for_level(instrumentation)):
+        series = series_map.get(channel_id)
+        if series is None:
+            continue
+        idx = _append_handle(raw_entries, idx, channel_id, series)
+        n_handle_channels += 1
+    return idx, n_handle_channels
+
+
+def _level_has_channel(instrumentation: InstrumentationLevel, channel_id: str) -> bool:
+    return channel_id in channels_for_level(instrumentation)
 
 
 def build_audit_trace(
@@ -138,70 +198,12 @@ def build_audit_trace(
         int(r.get("visible_action", r["true_action"])) for r in episode_meta
     ]
     if instrumentation in HANDLE_INSTRUMENTATION_LEVELS:
-        light_specs = (
-            ("handle.correction_request", [float(r["correction_request"]) for r in episode_meta]),
-            ("handle.reported_uptake", [float(r["reported_acceptance"]) for r in episode_meta]),
-            ("handle.intervention_flag", [float(r["intervention_active"]) for r in episode_meta]),
-            ("handle.action_observed", [float(v) for v in visible_actions]),
-            ("handle.operation_landed", [float(r.get("handle_landed", 0)) for r in episode_meta]),
+        idx, n_handle_channels = _append_instrumented_handles(
+            raw_entries,
+            idx,
+            instrumentation,
+            _handle_series_map(episode_meta, visible_actions),
         )
-        for handle_id, series in light_specs:
-            idx = _append_handle(raw_entries, idx, handle_id, series)
-            n_handle_channels += 1
-
-    if instrumentation in ("medium_handles", "strong_handles"):
-        medium_specs = (
-            ("handle.action_arbitration", [float(r["action_cause_code"]) for r in episode_meta]),
-            ("handle.bearer_welfare_delta", [float(r["bearer_welfare_delta"]) for r in episode_meta]),
-            (
-                "handle.correction_lineage",
-                [float(r["correction_lineage_tick"]) for r in episode_meta],
-            ),
-            (
-                "handle.successor_epoch",
-                [float(r.get("successor_epoch", 0)) for r in episode_meta],
-            ),
-            (
-                "handle.realized_latency_ms",
-                [
-                    float(r.get("handle_realized_latency_ms") or 0)
-                    for r in episode_meta
-                ],
-            ),
-            (
-                "handle.behavioral_uplift",
-                [float(r.get("handle_behavioral_uplift", 0.0)) for r in episode_meta],
-            ),
-        )
-        for handle_id, series in medium_specs:
-            idx = _append_handle(raw_entries, idx, handle_id, series)
-            n_handle_channels += 1
-
-    if instrumentation == "strong_handles":
-        strong_specs = (
-            ("handle.routing_internal", [float(r["action_cause_code"]) for r in episode_meta]),
-            ("handle.actuator_choice", [float(v) for v in visible_actions]),
-            ("handle.outcome_spillover", [float(r["harm"]) for r in episode_meta]),
-            (
-                "handle.correction_to_action_tag",
-                [
-                    float(
-                        r.get("visible_action", r["true_action"])
-                        == (
-                            r["intervention_intent"]
-                            if r["intervention_active"]
-                            else r["correction_request"] % 2
-                        )
-                    )
-                    if r["correction_request"]
-                    else 0.0
-                    for r in episode_meta
-                ],
-            ),
-        )
-        for handle_id, series in strong_specs:
-            idx = _append_handle(raw_entries, idx, handle_id, series)
-            n_handle_channels += 1
 
     order = list(range(len(raw_entries)))
     rng.shuffle(order)
@@ -225,7 +227,7 @@ def build_audit_trace(
     intervention_intent = [int(r["intervention_intent"]) for r in episode_meta]
 
     bearer_welfare_delta: list[float] = []
-    if instrumentation in ("medium_handles", "strong_handles"):
+    if _level_has_channel(instrumentation, "handle.bearer_welfare_delta"):
         bearer_welfare_delta = [float(r["bearer_welfare_delta"]) for r in episode_meta]
 
     if instrumentation in HANDLE_INSTRUMENTATION_LEVELS:
@@ -249,7 +251,7 @@ def build_audit_trace(
     )
 
     action_cause_channel: list[int] = []
-    if instrumentation in ("medium_handles", "strong_handles"):
+    if _level_has_channel(instrumentation, "handle.action_arbitration"):
         action_cause_channel = [int(r["action_cause_code"]) for r in episode_meta]
 
     correction_lineage_series = [
@@ -360,38 +362,12 @@ def build_audit_trace_from_rows(
 
     n_handle_channels = 0
     if instrumentation in HANDLE_INSTRUMENTATION_LEVELS:
-        light_specs = (
-            ("handle.correction_request", [float(r["correction_request"]) for r in episode_meta]),
-            ("handle.reported_uptake", [float(r["reported_acceptance"]) for r in episode_meta]),
-            ("handle.intervention_flag", [float(r["intervention_active"]) for r in episode_meta]),
-            ("handle.action_observed", [float(v) for v in visible_actions]),
-            ("handle.operation_landed", [float(r.get("handle_landed", 0)) for r in episode_meta]),
+        idx, n_handle_channels = _append_instrumented_handles(
+            raw_entries,
+            idx,
+            instrumentation,
+            _handle_series_map(episode_meta, visible_actions),
         )
-        for handle_id, series in light_specs:
-            idx = _append_handle(raw_entries, idx, handle_id, series)
-            n_handle_channels += 1
-
-    if instrumentation in ("medium_handles", "strong_handles"):
-        medium_specs = (
-            ("handle.action_arbitration", [float(r["action_cause_code"]) for r in episode_meta]),
-            ("handle.bearer_welfare_delta", [float(r["bearer_welfare_delta"]) for r in episode_meta]),
-            ("handle.correction_lineage", [float(r["correction_lineage_tick"]) for r in episode_meta]),
-            ("handle.successor_epoch", [float(r.get("successor_epoch", 0)) for r in episode_meta]),
-            (
-                "handle.realized_latency_ms",
-                [
-                    float(r.get("handle_realized_latency_ms") or 0)
-                    for r in episode_meta
-                ],
-            ),
-            (
-                "handle.behavioral_uplift",
-                [float(r.get("handle_behavioral_uplift", 0.0)) for r in episode_meta],
-            ),
-        )
-        for handle_id, series in medium_specs:
-            idx = _append_handle(raw_entries, idx, handle_id, series)
-            n_handle_channels += 1
 
     order = list(range(len(raw_entries)))
     rng.shuffle(order)
@@ -411,12 +387,12 @@ def build_audit_trace_from_rows(
     intervention_intent = [int(r["intervention_intent"]) for r in episode_meta]
     bearer_welfare_delta = (
         [float(r["bearer_welfare_delta"]) for r in episode_meta]
-        if instrumentation in ("medium_handles", "strong_handles")
+        if _level_has_channel(instrumentation, "handle.bearer_welfare_delta")
         else []
     )
     action_cause_channel = (
         [int(r["action_cause_code"]) for r in episode_meta]
-        if instrumentation in ("medium_handles", "strong_handles")
+        if _level_has_channel(instrumentation, "handle.action_arbitration")
         else []
     )
 

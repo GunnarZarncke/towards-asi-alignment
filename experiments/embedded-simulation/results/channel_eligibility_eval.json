@@ -1,0 +1,365 @@
+{
+  "mode": "channel_eligibility_eval",
+  "T": 400,
+  "seeds": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "capture_scenarios": [
+    "capture_theater",
+    "capture_mild",
+    "instrument_capture",
+    "inferential_coupling",
+    "grounding_silent_gap",
+    "bearer_mismap"
+  ],
+  "honest_scenarios": [
+    "honest",
+    "honest_successor"
+  ],
+  "runtime_seconds": 960.9,
+  "by_level": {
+    "none": {
+      "capture_false_pass_rate": 0.0,
+      "capture_correct_rate": 0.6666666666666666,
+      "honest_pass_rate": 0.0,
+      "honest_correct_rate": 1.0,
+      "per_scenario": {
+        "capture_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "capture_mild": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "instrument_capture": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "inferential_coupling": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "grounding_silent_gap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bearer_mismap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_successor": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        }
+      }
+    },
+    "light_handles": {
+      "capture_false_pass_rate": 0.0,
+      "capture_correct_rate": 0.8958333333333334,
+      "honest_pass_rate": 0.0,
+      "honest_correct_rate": 0.0,
+      "per_scenario": {
+        "capture_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "capture_mild": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.5,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "instrument_capture": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "inferential_coupling": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "grounding_silent_gap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bearer_mismap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_successor": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        }
+      }
+    },
+    "light_plus_handles": {
+      "capture_false_pass_rate": 0.0,
+      "capture_correct_rate": 0.8958333333333334,
+      "honest_pass_rate": 0.0,
+      "honest_correct_rate": 0.0,
+      "per_scenario": {
+        "capture_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "capture_mild": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.5,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "instrument_capture": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "inferential_coupling": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "grounding_silent_gap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bearer_mismap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_successor": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        }
+      }
+    },
+    "medium_minus_handles": {
+      "capture_false_pass_rate": 0.0,
+      "capture_correct_rate": 0.8958333333333334,
+      "honest_pass_rate": 0.0,
+      "honest_correct_rate": 0.0,
+      "per_scenario": {
+        "capture_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "capture_mild": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.5,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "instrument_capture": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "inferential_coupling": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "grounding_silent_gap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bearer_mismap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_successor": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        }
+      }
+    },
+    "medium_handles": {
+      "capture_false_pass_rate": 0.0625,
+      "capture_correct_rate": 0.8958333333333334,
+      "honest_pass_rate": 0.875,
+      "honest_correct_rate": 0.875,
+      "per_scenario": {
+        "capture_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "capture_mild": {
+          "pass_rate": 0.375,
+          "correct_rate": 0.5,
+          "false_pass_rate": 0.375,
+          "n": 8
+        },
+        "instrument_capture": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "inferential_coupling": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "grounding_silent_gap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bearer_mismap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_successor": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        }
+      }
+    },
+    "strong_handles": {
+      "capture_false_pass_rate": 0.0625,
+      "capture_correct_rate": 0.8958333333333334,
+      "honest_pass_rate": 0.875,
+      "honest_correct_rate": 0.875,
+      "per_scenario": {
+        "capture_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "capture_mild": {
+          "pass_rate": 0.375,
+          "correct_rate": 0.5,
+          "false_pass_rate": 0.375,
+          "n": 8
+        },
+        "instrument_capture": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "inferential_coupling": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "grounding_silent_gap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bearer_mismap": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_successor": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        }
+      }
+    }
+  }
+}

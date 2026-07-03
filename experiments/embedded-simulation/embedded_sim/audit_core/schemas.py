@@ -69,17 +69,28 @@ HELD_OUT_SCENARIOS: tuple[ScenarioName, ...] = (
 
 ALL_SCENARIOS: tuple[ScenarioName, ...] = CALIBRATION_SCENARIOS + HELD_OUT_SCENARIOS
 
-InstrumentationLevel = Literal["none", "light_handles", "medium_handles", "strong_handles"]
+InstrumentationLevel = Literal[
+    "none",
+    "light_handles",
+    "light_plus_handles",
+    "medium_minus_handles",
+    "medium_handles",
+    "strong_handles",
+]
 
 INSTRUMENTATION_LEVELS: tuple[InstrumentationLevel, ...] = (
     "none",
     "light_handles",
+    "light_plus_handles",
+    "medium_minus_handles",
     "medium_handles",
     "strong_handles",
 )
 
 HANDLE_INSTRUMENTATION_LEVELS: tuple[InstrumentationLevel, ...] = (
     "light_handles",
+    "light_plus_handles",
+    "medium_minus_handles",
     "medium_handles",
     "strong_handles",
 )

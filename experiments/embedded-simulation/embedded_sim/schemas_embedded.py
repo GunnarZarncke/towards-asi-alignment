@@ -31,7 +31,14 @@ StageName = Literal[
 
 GateDecision = Literal["pass", "reduce", "pause", "invalid_certificate"]
 DeployGateDecision = Literal["not_applicable", "rejected", "approved"]
-InstrumentationLevel = Literal["none", "light_handles", "medium_handles", "strong_handles"]
+InstrumentationLevel = Literal[
+    "none",
+    "light_handles",
+    "light_plus_handles",
+    "medium_minus_handles",
+    "medium_handles",
+    "strong_handles",
+]
 SubstrateKind = Literal["python", "js"]
 
 

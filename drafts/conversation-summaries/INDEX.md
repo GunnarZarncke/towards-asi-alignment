@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-03 | Part B: channel-set registry, per-detector requirements, N-10 eligibility gating (`light_plus`/`medium_minus`) | [2026-07-03-channel-sets-n10-eligibility.md](2026-07-03-channel-sets-n10-eligibility.md) |
 | 2026-07-03 | Agent memory via localStorage/VFS; Part D handles (5/9); access-tier honest arm (N-11); test speed (--runslow calibration) | [2026-07-03-agent-memory-handles-part-a.md](2026-07-03-agent-memory-handles-part-a.md) |
 | 2026-07-03 | README split + GitHub Pages prominence; expanded guided paths (philosopher path); Kuhn humanism bib for site | [2026-07-03-readme-paths-peter-kuhn-review.md](2026-07-03-readme-paths-peter-kuhn-review.md) |
 | 2026-07-02 | Implement measurement-protocol plan: bootstrap-CI/permutation-null MI/CMI (`info_ci.py`), dense Bernoulli probe profiles, Bonferroni-corrected lag/direction probe scan rediscovering the N-8 coupling | [2026-07-02-measurement-protocol-implementation.md](2026-07-02-measurement-protocol-implementation.md) |

@@ -428,6 +428,34 @@ so the manuscript does not imply "light > none" without qualification, and so
 a future session can decide whether to fix light-handle thresholds or
 document the regression as a structural instrumentation-cost finding.
 
+**Postscript (2026-07-03).** Root cause confirmed: five structural detectors
+required medium+ telemetry (`GROUNDING_INSTRUMENTATION`) but
+`classify_cci_status` treated any handle level as certifiable, so
+`light_handles` issued blind `passes` on scenarios the detectors could not
+see. Fix: channel-set registry (`audit_core/channel_sets.py`), per-detector
+`required_channels`, and eligibility gating — `passes` requires the full
+medium channel bundle; partial levels return `belowThreshold` (uncertifiable).
+Two intermediate levels (`light_plus_handles`, `medium_minus_handles`) probe
+which channels buy which detections. Historical finding retained: partial
+instrumentation was actively worse than passive `none` before the fix; after
+the fix, light no longer issues false passes but still cannot certify
+(honest traces at light also stay uncertifiable until medium channels land).
+
+**Powered check (2026-07-03, `results/channel_eligibility_eval.json`).** Focused
+matrix, 6 levels × 8 scenarios × 8 seeds (T=400): 6 capture/violation + 2
+honest. Capture false-pass rate (48 capture episodes/level):
+`light`=`light_plus`=`medium_minus`=**0.000**, `medium`=`strong`=0.062 (the
+residual is `capture_mild`, a pre-existing mild-capture gap, not partial-level
+leakage). Honest pass rate (16 honest episodes/level): partial levels
+**0.000** (uncertifiable — the priced cost), `medium`/`strong` 0.875
+(certification intact). Two caveats: (a) `light_plus`/`medium_minus` are
+verdict-identical to plain `light` — the "full medium bundle required for
+`passes`" rule makes intermediate levels fall through to `belowThreshold`
+regardless of which detector flags fire, so they add signal (flag firing,
+confirmed in contract tests) but not graded certification; (b) full six-level
+frozen validation / instrumentation curve still to be regenerated for the
+headline rate table (~40–80 min).
+
 ---
 
 ## N-11. The v4 access-tier curve cannot show the certification-loss boundary it was built to measure

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .channel_sets import certification_pass_eligible
 from .schemas import CCICalibration, CCICertificate, CCIStatus, InstrumentationLevel
 
 
@@ -79,6 +80,9 @@ def classify_cci_status(
         return "capturedInvalid"
 
     if cert.raw_capacity < cal.weak_capacity_max:
+        return "belowThreshold"
+
+    if not certification_pass_eligible(instrumentation):
         return "belowThreshold"
 
     return "passes"

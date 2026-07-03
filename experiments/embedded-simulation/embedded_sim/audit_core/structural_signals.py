@@ -6,9 +6,9 @@ from dataclasses import dataclass
 
 from .calibration import CCICalibration, classify_cci_status
 from .cci_interventional import interventional_metrics
+from .channel_sets import detector_channels_available
 from .schemas import AuditTrace, CCICertificate, InstrumentationLevel
 
-GROUNDING_INSTRUMENTATION = ("medium_handles", "strong_handles")
 PROBE_LAG = 3
 
 
@@ -57,7 +57,7 @@ def _interventional_summary(
 
 
 def flat_bearer_welfare_loss(audit: AuditTrace) -> bool:
-    if audit.instrumentation not in GROUNDING_INSTRUMENTATION:
+    if not detector_channels_available(audit, "flat_bearer_welfare_loss"):
         return False
     if not audit.bearer_welfare_delta or not audit.passive_bearer_level:
         return False
@@ -75,7 +75,7 @@ def flat_bearer_welfare_loss(audit: AuditTrace) -> bool:
 
 
 def infra_bearer_drift_mismatch(audit: AuditTrace, cert: CCICertificate) -> bool:
-    if audit.instrumentation not in GROUNDING_INSTRUMENTATION:
+    if not detector_channels_available(audit, "infra_bearer_drift_mismatch"):
         return False
     if (
         not audit.bearer_welfare_delta
@@ -100,7 +100,7 @@ def infra_bearer_drift_mismatch(audit: AuditTrace, cert: CCICertificate) -> bool
 
 
 def lineage_stall_reported_uptake(audit: AuditTrace, cert: CCICertificate) -> bool:
-    if audit.instrumentation not in GROUNDING_INSTRUMENTATION:
+    if not detector_channels_available(audit, "lineage_stall_reported_uptake"):
         return False
     if not audit.correction_lineage_series:
         return False
@@ -128,7 +128,7 @@ def lineage_stall_reported_uptake(audit: AuditTrace, cert: CCICertificate) -> bo
 
 
 def ground_handle_divergence(audit: AuditTrace, cert: CCICertificate) -> bool:
-    if audit.instrumentation not in GROUNDING_INSTRUMENTATION:
+    if not detector_channels_available(audit, "ground_handle_divergence"):
         return False
     if not audit.bearer_welfare_delta or not audit.ground_valence_series:
         return False
@@ -157,7 +157,7 @@ def shadow_routing_under_probes(audit: AuditTrace) -> bool:
     through the hidden route, not causal probe response — the interventional
     witness is invalid either way.
     """
-    if audit.instrumentation not in GROUNDING_INSTRUMENTATION:
+    if not detector_channels_available(audit, "shadow_routing_under_probes"):
         return False
     if not audit.action_cause_channel:
         return False
@@ -194,7 +194,7 @@ def latent_routing_low_capacity(
         and cert.raw_capacity < 0.45
         and cert.intervention_episode_rate > 0.008
     )
-    if audit.instrumentation in GROUNDING_INSTRUMENTATION and audit.action_cause_channel:
+    if detector_channels_available(audit, "shadow_routing_under_probes") and audit.action_cause_channel:
         shadow_rate = sum(1 for c in audit.action_cause_channel if c in (3, 4)) / T
         routing = shadow_rate > 0.12 and cert.raw_capacity < 0.45
         return base or routing
@@ -271,7 +271,7 @@ def apply_successor_epoch_audit(
     if shift_t is None:
         return
 
-    if inst not in GROUNDING_INSTRUMENTATION:
+    if not detector_channels_available(audit, "successor_epoch_witness"):
         if cert.raw_capacity < 0.45:
             signals.successor_epoch_unwitnessed = True
             cert.status = "belowThreshold"
