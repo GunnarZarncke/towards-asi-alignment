@@ -23,4 +23,4 @@ End-of-session commit: incorporate Peter Kuhn reviewer feedback on orientation (
 - `references/philosophy.bib` (`kuhn2025humanism`)
 
 ## Commits
-- (this session commit hash below)
+- `48a4f1d` — Split README, expand guided paths, and promote the companion site.

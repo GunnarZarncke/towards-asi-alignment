@@ -295,6 +295,7 @@ class CCICertificate:
     instrument_capture_detected: bool = False
     inferential_coupling_detected: bool = False
     ground_valence_series: list[float] = field(default_factory=list)
+    channel_domain_coverage: float = 0.0
 
 
 @dataclass

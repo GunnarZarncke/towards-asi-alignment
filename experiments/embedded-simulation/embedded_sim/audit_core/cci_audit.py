@@ -8,6 +8,7 @@ from .calibration import (
     frozen_handle_calibration,
 )
 from .cci_interventional import action_series, interventional_metrics
+from .channel_sets import domain_coverage_fraction
 from .info import conditional_mutual_information, entropy_from_keys, lagged_pair
 from .schemas import (
     AuditTrace,
@@ -159,6 +160,7 @@ def audit_cci(
         interventional_cci_bits=interventional,
         intervention_episode_rate=intervention_rate,
     )
+    cert.channel_domain_coverage = domain_coverage_fraction(inst)
     cert.status = classify_cci_status(cert, cal, inst)
 
     signals = compute_structural_signals(audit, cert)

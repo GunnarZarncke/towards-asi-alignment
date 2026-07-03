@@ -23,7 +23,7 @@
     "honest",
     "honest_successor"
   ],
-  "runtime_seconds": 960.9,
+  "runtime_seconds": 1050.5,
   "by_level": {
     "none": {
       "capture_false_pass_rate": 0.0,
@@ -194,10 +194,10 @@
       }
     },
     "medium_minus_handles": {
-      "capture_false_pass_rate": 0.0,
-      "capture_correct_rate": 0.8958333333333334,
-      "honest_pass_rate": 0.0,
-      "honest_correct_rate": 0.0,
+      "capture_false_pass_rate": 0.5,
+      "capture_correct_rate": 0.4583333333333333,
+      "honest_pass_rate": 0.875,
+      "honest_correct_rate": 0.875,
       "per_scenario": {
         "capture_theater": {
           "pass_rate": 0.0,
@@ -206,15 +206,15 @@
           "n": 8
         },
         "capture_mild": {
-          "pass_rate": 0.0,
+          "pass_rate": 0.375,
           "correct_rate": 0.5,
-          "false_pass_rate": 0.0,
+          "false_pass_rate": 0.375,
           "n": 8
         },
         "instrument_capture": {
-          "pass_rate": 0.0,
-          "correct_rate": 1.0,
-          "false_pass_rate": 0.0,
+          "pass_rate": 0.875,
+          "correct_rate": 0.125,
+          "false_pass_rate": 0.875,
           "n": 8
         },
         "inferential_coupling": {
@@ -224,26 +224,26 @@
           "n": 8
         },
         "grounding_silent_gap": {
-          "pass_rate": 0.0,
-          "correct_rate": 1.0,
-          "false_pass_rate": 0.0,
+          "pass_rate": 0.875,
+          "correct_rate": 0.125,
+          "false_pass_rate": 0.875,
           "n": 8
         },
         "bearer_mismap": {
-          "pass_rate": 0.0,
-          "correct_rate": 1.0,
-          "false_pass_rate": 0.0,
+          "pass_rate": 0.875,
+          "correct_rate": 0.125,
+          "false_pass_rate": 0.875,
           "n": 8
         },
         "honest": {
-          "pass_rate": 0.0,
-          "correct_rate": 0.0,
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
           "false_pass_rate": 0.0,
           "n": 8
         },
         "honest_successor": {
-          "pass_rate": 0.0,
-          "correct_rate": 0.0,
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
           "false_pass_rate": 0.0,
           "n": 8
         }

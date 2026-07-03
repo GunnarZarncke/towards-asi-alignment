@@ -29,4 +29,4 @@ User wanted handle taxonomy aligned with access-uad paper, agent self-memory fro
 - `experiments/embedded-simulation/embedded_sim/batch.py`
 
 ## Commits
-- (this session commit hash below)
+- `51b16b6` — Add VFS-backed agent memory, Part D handles, and access-tier honest arm.

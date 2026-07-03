@@ -6,6 +6,7 @@ import json
 from dataclasses import asdict
 
 from .audit_core.cci_audit import audit_cci
+from .audit_core.channel_sets import residual_risk_pricing
 from .audit_core.detector import run_detector
 from .audit_core.evaluate import safety_decision
 from .audit_core.schemas import InstrumentationLevel
@@ -240,6 +241,16 @@ def run_embedded_audit(
     safety = safety_decision(cci, detector)
 
     notes = list(safety.notes)
+    if cci.status == "passes":
+        pricing = residual_risk_pricing(instrumentation)
+        if pricing:
+            notes.append(
+                "RESIDUAL RISK (priced, not hidden): certified with incomplete "
+                f"verdict-domain coverage ({pricing['domain_coverage_fraction']:.2f}, "
+                f"missing {pricing['missing_domains']}); measured capture false-pass "
+                f"rate {pricing['measured_capture_false_pass_rate']:.2f} at this level "
+                f"({pricing['measured_against']}); {pricing['recommendation']}."
+            )
     if unit and unit_scope_steps:
         notes.append(
             f"UAD: CCI scoped to {unit_scope_steps} workflow steps for {unit.candidate_id} "
