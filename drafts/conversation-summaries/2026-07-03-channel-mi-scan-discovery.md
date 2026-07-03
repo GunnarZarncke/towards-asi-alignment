@@ -127,4 +127,10 @@ certification were flagged explicitly as a TODO to record, not resolve now.
 
 ## Commits
 
-- None (not asked to commit this session).
+- `d0cc0a1` Add MI/CMI CI machinery and Bonferroni-corrected probe scan
+  (backfill: 2026-07-02 measurement-protocol session's uncommitted work,
+  committed here because `channel_mi_scan.py` depends on `info_ci.py`).
+- `83be13e` Complete Part D handles and reinstate majority-domain gate with
+  priced risk (earlier parts of this session).
+- `529d3ba` Add systematic channel MI scan as discovery instrument (not a
+  gate) — includes the alias-disclosure self-critique fix.
