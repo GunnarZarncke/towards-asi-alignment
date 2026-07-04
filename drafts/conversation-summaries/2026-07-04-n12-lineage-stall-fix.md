@@ -113,4 +113,7 @@ aka more samples, event-based analysis or bayesian evidence."
 
 ## Commits
 
-- (none yet — not committed this session)
+- `0f948e5` Wire in held-out scenarios (Phase 0) and fix N-12 lineage-stall
+  detector (bundled with the 2026-07-03 Phase 0 commit in the same
+  session-end commit; result artifacts were regenerated once, after this
+  fix, so an intermediate Phase-0-only artifact state was not preserved).

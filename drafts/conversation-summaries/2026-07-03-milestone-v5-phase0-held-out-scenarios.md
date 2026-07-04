@@ -91,4 +91,6 @@ used by any battery script) before any new agent/goal machinery.
 
 ## Commits
 
-- None yet — awaiting explicit commit instruction per `AGENTS.md`.
+- `0f948e5` Wire in held-out scenarios (Phase 0) and fix N-12 lineage-stall
+  detector (committed together with the 2026-07-04 N-12 fix session; see
+  [2026-07-04-n12-lineage-stall-fix.md](2026-07-04-n12-lineage-stall-fix.md)).
