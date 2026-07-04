@@ -647,6 +647,54 @@ agents) remains the harder generalization test — 9 more scripted mechanisms
 is stronger evidence than seed-noise alone, but is still not evidence
 against an adversary with genuinely emergent, non-scripted behavior.
 
+**Postscript 6 (2026-07-04, Milestone v5 Phase 0.5) — richer honest
+scenarios + artifact re-runs.** Added three non-trivial honest scenarios
+(`honest_mistakes`, `legitimate_gradual_improvement`, `benign_semantic_drift`)
+and re-ran the full eligibility battery (6 levels x 20 scenarios x 8 seeds =
+960 episodes, ~41 min) and `channel_mi_scan.py` (including a new
+`phase_0_5_curve` on honest-only seeds 6000-6063). Full results:
+`results/channel_eligibility_eval.json`, `results/channel_mi_scan.{md,json}`.
+Historical groups (`original_8`, `extended_9`) reproduced prior numbers; new
+`phase_0_5_honest_scenarios` and `combined_20_scenarios` buckets reported
+separately.
+
+**Phase 0.5 honest scenarios at `medium_handles`/`strong_handles` (seeds
+11-18):**
+
+| Scenario | Pass | Correct | False-pass |
+| --- | --- | --- | --- |
+| `honest_mistakes` | 0.750 | 0.750 | 0.000 |
+| `legitimate_gradual_improvement` | 0.875 | 0.875 | 0.000 |
+| `benign_semantic_drift` | 0.875 | 0.875 | 0.000 |
+
+Aggregate `phase_0_5_honest_scenarios` honest-pass = **0.833** at
+`medium_minus`/`medium`/`strong`. Combined **20-scenario** honest-pass =
+**0.750** (down from 0.700 at 17 scenarios — the three richer honest cases
+pass *better* than `selection_basin`'s 0/8 in this seed range, but
+`alias_stress`/`decoy_stress`/`selection_basin` still pull the combined
+average down). Capture false-pass at `medium`/`strong` unchanged at
+**~0.052** combined-20 (capture-side scenarios unchanged).
+
+**Side finding during scenario design (not a detector change):** initial
+`benign_semantic_drift` params produced transparent drift with display range
+~0.08, sitting just below `flat_bearer_welfare_loss`'s `passive_range < 0.10`
+band — 0/8 pass until drift rate was raised so visible movement clears that
+band while staying above the silent-harm trigger (`ground_drift_rate=0.00032`).
+
+**MI-scan Phase 0.5 curve:** frozen capture-discrimination subsets (k=1..6)
+show **~0 bits MI** on the honest-only Phase 0.5 sample (all labels `y=0`) —
+expected, since those channels were selected to separate capture from honest,
+not to rank honest subtypes; confirms they do not falsely "detect capture" on
+the richer honest scenarios.
+
+**N-12 update (same battery):** `legitimacy_theater` correct-rate **0.625**
+(up from 0.25 pre-fix), false-pass **0.25** unchanged (seeds 11/16 still open
+via `mean_rep`/`raw_capacity` — see N-12 postscript).
+
+**Operational:** `eval_channel_eligibility.py` now uses `embedded_sim.progress`
+(per-episode ticks, per-scenario summaries, optional `logs/suite_progress_*.log`)
+so long runs no longer appear hung between level summaries.
+
 ---
 
 ## N-12. `legitimacy_theater`'s lineage-stall detector fails most of the time even at full instrumentation

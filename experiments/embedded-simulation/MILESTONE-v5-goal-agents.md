@@ -186,17 +186,21 @@ scenario on its own.
   `channel_mi_scan.py` as `phase_0_5_honest_scenarios` / `phase_0_5_curve`
   reported group (separate from original 8 / extended 9).
 - [x] **Done (2026-07-04).** `tests/unit/test_phase_0_5_scenarios.py`.
-- [ ] Re-run the full eligibility battery (~50 min) and MI-scan generalization
-  check; update `NEGATIVE_RESULTS.md` with measured Phase 0.5 honest-pass rates.
+- [x] **Done (2026-07-04).** Re-ran full eligibility battery (~41 min) and
+  `channel_mi_scan.py`; updated `NEGATIVE_RESULTS.md` N-10 Postscript 6.
+  `eval_channel_eligibility.py` progress logging via `embedded_sim.progress`.
 - [ ] Capture-side twins (deferred follow-up decision).
 
-**Measured (seeds 11–18, `medium_handles`, pre-full-battery smoke):**
+**Measured (seeds 11–18, full battery `results/channel_eligibility_eval.json`):**
 
-| Scenario | honest pass | correct |
+| Scenario | pass @ medium | correct @ medium |
 | --- | --- | --- |
-| `honest_mistakes` | 0.75 | 0.75 |
+| `honest_mistakes` | 0.750 | 0.750 |
 | `legitimate_gradual_improvement` | 0.875 | 0.875 |
 | `benign_semantic_drift` | 0.875 | 0.875 |
+
+Combined 20-scenario honest-pass @ `medium`/`strong`: **0.750**; phase_0_5
+subset honest-pass: **0.833**.
 
 **Side finding during implementation:** initial `benign_semantic_drift` params
 (`ground_drift_rate=0.0002`) produced a visible drift range (~0.08) that sat

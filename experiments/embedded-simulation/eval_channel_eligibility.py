@@ -64,6 +64,9 @@ from pathlib import Path
 
 from embedded_sim.audit_core.schemas import INSTRUMENTATION_LEVELS
 from embedded_sim.batch import _run_scenario_episode
+from embedded_sim.progress import configure_progress_logging, progress, progress_tick
+
+EXPERIMENT_ROOT = Path(__file__).resolve().parent
 
 CAPTURE_SCENARIOS = (
     "capture_theater",
@@ -120,9 +123,20 @@ def _rate(items: list[bool]) -> float:
 
 
 def main() -> None:
+    configure_progress_logging(EXPERIMENT_ROOT / "logs")
     t0 = time.perf_counter()
+    all_scenarios = ALL_CAPTURE_SCENARIOS + ALL_HONEST_SCENARIOS
+    total_episodes = len(INSTRUMENTATION_LEVELS) * len(all_scenarios) * len(SEEDS)
+    progress(
+        f"channel_eligibility_eval: {len(INSTRUMENTATION_LEVELS)} levels x "
+        f"{len(all_scenarios)} scenarios x {len(SEEDS)} seeds = "
+        f"{total_episodes} episodes (T={T})"
+    )
+    episode_n = 0
     by_level: dict[str, dict] = {}
-    for level in INSTRUMENTATION_LEVELS:
+    for level_idx, level in enumerate(INSTRUMENTATION_LEVELS, start=1):
+        level_t0 = time.perf_counter()
+        progress(f"level {level_idx}/{len(INSTRUMENTATION_LEVELS)}: {level} starting")
         per_scenario: dict[str, dict] = {}
         # Per group ("original" = prior 8-scenario battery, "extended" = the
         # 9 newly-wired scenarios), track capture-side and honest-side
@@ -140,7 +154,7 @@ def main() -> None:
                 return "phase_0_5"
             return "extended"
 
-        for scenario in ALL_CAPTURE_SCENARIOS + ALL_HONEST_SCENARIOS:
+        for scenario_idx, scenario in enumerate(all_scenarios, start=1):
             group = _group_for(scenario)
             capture_side = scenario in ALL_CAPTURE_SCENARIOS
             passes: list[bool] = []
@@ -151,12 +165,26 @@ def main() -> None:
                 passes.append(status == "passes")
                 correct.append(ok)
                 false_passes.append(fp)
+                episode_n += 1
+                progress_tick(
+                    "channel_eligibility_eval",
+                    episode_n,
+                    total_episodes,
+                    t0=t0,
+                    detail=f"{level} {scenario} seed={seed} status={status}",
+                )
             per_scenario[scenario] = {
                 "pass_rate": _rate(passes),
                 "correct_rate": _rate(correct),
                 "false_pass_rate": _rate(false_passes),
                 "n": len(SEEDS),
             }
+            progress(
+                f"  scenario {scenario_idx}/{len(all_scenarios)} {scenario}: "
+                f"pass={per_scenario[scenario]['pass_rate']:.3f} "
+                f"correct={per_scenario[scenario]['correct_rate']:.3f} "
+                f"false_pass={per_scenario[scenario]['false_pass_rate']:.3f}"
+            )
             if capture_side:
                 buckets[group]["cap_false_pass"] += false_passes
                 buckets[group]["cap_correct"] += correct
@@ -195,6 +223,10 @@ def main() -> None:
             f"combined_honest_pass={combined['honest_pass_rate']:.3f}",
             flush=True,
         )
+        progress(
+            f"level {level_idx}/{len(INSTRUMENTATION_LEVELS)}: {level} done in "
+            f"{time.perf_counter() - level_t0:.0f}s"
+        )
 
     payload = {
         "mode": "channel_eligibility_eval",
@@ -208,8 +240,9 @@ def main() -> None:
         "runtime_seconds": round(time.perf_counter() - t0, 1),
         "by_level": by_level,
     }
-    out = Path(__file__).resolve().parent / "results" / "channel_eligibility_eval.json"
+    out = EXPERIMENT_ROOT / "results" / "channel_eligibility_eval.json"
     out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    progress(f"wrote {out} in {payload['runtime_seconds']}s")
     print(f"\nwrote {out} in {payload['runtime_seconds']}s")
 
 

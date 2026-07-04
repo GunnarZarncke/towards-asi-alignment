@@ -36,7 +36,12 @@
     "decoy_stress",
     "selection_basin"
   ],
-  "runtime_seconds": 2051.1,
+  "honest_scenarios_phase_0_5": [
+    "honest_mistakes",
+    "legitimate_gradual_improvement",
+    "benign_semantic_drift"
+  ],
+  "runtime_seconds": 2448.0,
   "by_level": {
     "none": {
       "original_8_scenarios": {
@@ -51,7 +56,13 @@
         "honest_pass_rate": 0.0,
         "honest_correct_rate": 1.0
       },
-      "combined_17_scenarios": {
+      "phase_0_5_honest_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.0,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 1.0
+      },
+      "combined_20_scenarios": {
         "capture_false_pass_rate": 0.0,
         "capture_correct_rate": 0.8333333333333334,
         "honest_pass_rate": 0.0,
@@ -159,6 +170,24 @@
           "correct_rate": 1.0,
           "false_pass_rate": 0.0,
           "n": 8
+        },
+        "honest_mistakes": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimate_gradual_improvement": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "benign_semantic_drift": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
         }
       }
     },
@@ -175,11 +204,17 @@
         "honest_pass_rate": 0.0,
         "honest_correct_rate": 0.3333333333333333
       },
-      "combined_17_scenarios": {
+      "phase_0_5_honest_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.0,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 0.0
+      },
+      "combined_20_scenarios": {
         "capture_false_pass_rate": 0.0,
         "capture_correct_rate": 0.9479166666666666,
         "honest_pass_rate": 0.0,
-        "honest_correct_rate": 0.2
+        "honest_correct_rate": 0.125
       },
       "per_scenario": {
         "capture_theater": {
@@ -283,6 +318,24 @@
           "correct_rate": 1.0,
           "false_pass_rate": 0.0,
           "n": 8
+        },
+        "honest_mistakes": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimate_gradual_improvement": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "benign_semantic_drift": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
         }
       }
     },
@@ -299,11 +352,17 @@
         "honest_pass_rate": 0.0,
         "honest_correct_rate": 0.3333333333333333
       },
-      "combined_17_scenarios": {
+      "phase_0_5_honest_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.0,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 0.0
+      },
+      "combined_20_scenarios": {
         "capture_false_pass_rate": 0.0,
         "capture_correct_rate": 0.8958333333333334,
         "honest_pass_rate": 0.0,
-        "honest_correct_rate": 0.2
+        "honest_correct_rate": 0.125
       },
       "per_scenario": {
         "capture_theater": {
@@ -407,6 +466,24 @@
           "correct_rate": 1.0,
           "false_pass_rate": 0.0,
           "n": 8
+        },
+        "honest_mistakes": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimate_gradual_improvement": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "benign_semantic_drift": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
         }
       }
     },
@@ -423,11 +500,17 @@
         "honest_pass_rate": 0.5833333333333334,
         "honest_correct_rate": 0.9166666666666666
       },
-      "combined_17_scenarios": {
+      "phase_0_5_honest_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.0,
+        "honest_pass_rate": 0.8333333333333334,
+        "honest_correct_rate": 0.8333333333333334
+      },
+      "combined_20_scenarios": {
         "capture_false_pass_rate": 0.34375,
         "capture_correct_rate": 0.625,
-        "honest_pass_rate": 0.7,
-        "honest_correct_rate": 0.9
+        "honest_pass_rate": 0.75,
+        "honest_correct_rate": 0.875
       },
       "per_scenario": {
         "capture_theater": {
@@ -529,6 +612,24 @@
         "selection_basin": {
           "pass_rate": 0.0,
           "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_mistakes": {
+          "pass_rate": 0.75,
+          "correct_rate": 0.75,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimate_gradual_improvement": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "benign_semantic_drift": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
           "false_pass_rate": 0.0,
           "n": 8
         }
@@ -547,11 +648,17 @@
         "honest_pass_rate": 0.5833333333333334,
         "honest_correct_rate": 0.9166666666666666
       },
-      "combined_17_scenarios": {
+      "phase_0_5_honest_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.0,
+        "honest_pass_rate": 0.8333333333333334,
+        "honest_correct_rate": 0.8333333333333334
+      },
+      "combined_20_scenarios": {
         "capture_false_pass_rate": 0.052083333333333336,
         "capture_correct_rate": 0.9166666666666666,
-        "honest_pass_rate": 0.7,
-        "honest_correct_rate": 0.9
+        "honest_pass_rate": 0.75,
+        "honest_correct_rate": 0.875
       },
       "per_scenario": {
         "capture_theater": {
@@ -653,6 +760,24 @@
         "selection_basin": {
           "pass_rate": 0.0,
           "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_mistakes": {
+          "pass_rate": 0.75,
+          "correct_rate": 0.75,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimate_gradual_improvement": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "benign_semantic_drift": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
           "false_pass_rate": 0.0,
           "n": 8
         }
@@ -671,11 +796,17 @@
         "honest_pass_rate": 0.5833333333333334,
         "honest_correct_rate": 0.9166666666666666
       },
-      "combined_17_scenarios": {
+      "phase_0_5_honest_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.0,
+        "honest_pass_rate": 0.8333333333333334,
+        "honest_correct_rate": 0.8333333333333334
+      },
+      "combined_20_scenarios": {
         "capture_false_pass_rate": 0.052083333333333336,
         "capture_correct_rate": 0.9166666666666666,
-        "honest_pass_rate": 0.7,
-        "honest_correct_rate": 0.9
+        "honest_pass_rate": 0.75,
+        "honest_correct_rate": 0.875
       },
       "per_scenario": {
         "capture_theater": {
@@ -777,6 +908,24 @@
         "selection_basin": {
           "pass_rate": 0.0,
           "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "honest_mistakes": {
+          "pass_rate": 0.75,
+          "correct_rate": 0.75,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimate_gradual_improvement": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "benign_semantic_drift": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
           "false_pass_rate": 0.0,
           "n": 8
         }

@@ -281,6 +281,82 @@
    5061,
    5062,
    5063
+  ],
+  "phase_0_5_scenarios": [
+   "honest_mistakes",
+   "legitimate_gradual_improvement",
+   "benign_semantic_drift"
+  ],
+  "phase_0_5_honest_scenarios": [
+   "honest_mistakes",
+   "legitimate_gradual_improvement",
+   "benign_semantic_drift"
+  ],
+  "phase_0_5_seeds": [
+   6000,
+   6001,
+   6002,
+   6003,
+   6004,
+   6005,
+   6006,
+   6007,
+   6008,
+   6009,
+   6010,
+   6011,
+   6012,
+   6013,
+   6014,
+   6015,
+   6016,
+   6017,
+   6018,
+   6019,
+   6020,
+   6021,
+   6022,
+   6023,
+   6024,
+   6025,
+   6026,
+   6027,
+   6028,
+   6029,
+   6030,
+   6031,
+   6032,
+   6033,
+   6034,
+   6035,
+   6036,
+   6037,
+   6038,
+   6039,
+   6040,
+   6041,
+   6042,
+   6043,
+   6044,
+   6045,
+   6046,
+   6047,
+   6048,
+   6049,
+   6050,
+   6051,
+   6052,
+   6053,
+   6054,
+   6055,
+   6056,
+   6057,
+   6058,
+   6059,
+   6060,
+   6061,
+   6062,
+   6063
   ]
  },
  "known_alias_channel_groups": [
@@ -353,6 +429,46 @@
     "handle.outcome_spillover"
    ],
    "degenerate": false
+  }
+ ],
+ "phase_0_5_alias_channel_groups": [
+  {
+   "channels": [
+    "handle.action_arbitration",
+    "handle.routing_internal"
+   ],
+   "degenerate": false
+  },
+  {
+   "channels": [
+    "artifact.action",
+    "handle.action_observed",
+    "handle.actuator_choice"
+   ],
+   "degenerate": false
+  },
+  {
+   "channels": [
+    "handle.behavioral_uplift",
+    "handle.correction_to_action_tag",
+    "handle.operation_landed"
+   ],
+   "degenerate": false
+  },
+  {
+   "channels": [
+    "artifact.sensor",
+    "handle.outcome_spillover"
+   ],
+   "degenerate": false
+  },
+  {
+   "channels": [
+    "artifact.basin",
+    "handle.realized_latency_ms",
+    "handle.successor_epoch"
+   ],
+   "degenerate": true
   }
  ],
  "best_of_1_scan": [
@@ -2415,5 +2531,205 @@
    "generalization_gap": 0.36240145995954354
   }
  ],
- "runtime_seconds": 99.17
+ "phase_0_5_curve": [
+  {
+   "k": 1,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    }
+   ],
+   "phase_0_5_honest": {
+    "estimate": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0,
+    "n": 192,
+    "block_len": 6,
+    "n_boot": 500,
+    "null_95th": 0.0,
+    "null_mean": 0.0,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": false
+   },
+   "phase_0_5_gap": 0.34509817749089144
+  },
+  {
+   "k": 2,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    }
+   ],
+   "phase_0_5_honest": {
+    "estimate": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0,
+    "n": 192,
+    "block_len": 6,
+    "n_boot": 500,
+    "null_95th": 0.0,
+    "null_mean": 0.0,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": false
+   },
+   "phase_0_5_gap": 0.5180554643935129
+  },
+  {
+   "k": 3,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    },
+    {
+     "channel": "artifact.bearer",
+     "functional": "endpoint_drop"
+    }
+   ],
+   "phase_0_5_honest": {
+    "estimate": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0,
+    "n": 192,
+    "block_len": 6,
+    "n_boot": 500,
+    "null_95th": 0.0,
+    "null_mean": 0.0,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": false
+   },
+   "phase_0_5_gap": 0.6852950612074835
+  },
+  {
+   "k": 4,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    },
+    {
+     "channel": "artifact.bearer",
+     "functional": "endpoint_drop"
+    },
+    {
+     "channel": "handle.correction_lineage",
+     "functional": "mean"
+    }
+   ],
+   "phase_0_5_honest": {
+    "estimate": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0,
+    "n": 192,
+    "block_len": 6,
+    "n_boot": 500,
+    "null_95th": 0.0,
+    "null_mean": 0.0,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": false
+   },
+   "phase_0_5_gap": 0.7665635678388565
+  },
+  {
+   "k": 5,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    },
+    {
+     "channel": "artifact.bearer",
+     "functional": "endpoint_drop"
+    },
+    {
+     "channel": "handle.correction_lineage",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.action_observed",
+     "functional": "mean"
+    }
+   ],
+   "phase_0_5_honest": {
+    "estimate": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0,
+    "n": 192,
+    "block_len": 6,
+    "n_boot": 500,
+    "null_95th": 0.0,
+    "null_mean": 0.0,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": false
+   },
+   "phase_0_5_gap": 0.8058974848064695
+  },
+  {
+   "k": 6,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    },
+    {
+     "channel": "artifact.bearer",
+     "functional": "endpoint_drop"
+    },
+    {
+     "channel": "handle.correction_lineage",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.action_observed",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.bearer_welfare_delta",
+     "functional": "probe_mean"
+    }
+   ],
+   "phase_0_5_honest": {
+    "estimate": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0,
+    "n": 192,
+    "block_len": 6,
+    "n_boot": 500,
+    "null_95th": 0.0,
+    "null_mean": 0.0,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": false
+   },
+   "phase_0_5_gap": 0.8112781244591325
+  }
+ ],
+ "runtime_seconds": 100.28
 }

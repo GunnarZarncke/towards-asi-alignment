@@ -177,8 +177,8 @@ synchronized twin worlds.
   never-harmful, not modeled consent). Explicit approval-signal channel and
   `external_shock` scenario deliberately deferred — see
   `MILESTONE-v5-goal-agents.md` Phase 0.5 / Phase 1+ / "Deferred —
-  external_shock" sections. **Still open:** full eligibility battery re-run
-  + `NEGATIVE_RESULTS.md` update; capture-side twins.
+  external_shock" sections. **Battery re-run + MI scan re-run done (2026-07-04);**
+  `NEGATIVE_RESULTS.md` N-10 Postscript 6. Capture-side twins still open.
 - [ ] **TODO — agent-attributed harm vs correction-channel changes (2026-07-04).**
   Need to attribute audit failure / (potential) harm to a *specific agent* so
   the auditor can distinguish: (a) a state change that went through a *valid*
