@@ -191,7 +191,97 @@
   "null_percentile_cells": 0.9994318181818181,
   "null_percentile_k": 0.9916666666666667,
   "n_perm": 4000,
-  "n_boot": 500
+  "n_boot": 500,
+  "generalization_scenarios": [
+   "boundary_alias",
+   "bundle_goodhart",
+   "hidden_capability",
+   "basin_lock_in",
+   "successor_relabel",
+   "legitimacy_theater",
+   "alias_stress",
+   "decoy_stress",
+   "selection_basin"
+  ],
+  "generalization_capture_scenarios": [
+   "boundary_alias",
+   "bundle_goodhart",
+   "hidden_capability",
+   "basin_lock_in",
+   "successor_relabel",
+   "legitimacy_theater"
+  ],
+  "generalization_honest_scenarios": [
+   "alias_stress",
+   "decoy_stress",
+   "selection_basin"
+  ],
+  "generalization_seeds": [
+   5000,
+   5001,
+   5002,
+   5003,
+   5004,
+   5005,
+   5006,
+   5007,
+   5008,
+   5009,
+   5010,
+   5011,
+   5012,
+   5013,
+   5014,
+   5015,
+   5016,
+   5017,
+   5018,
+   5019,
+   5020,
+   5021,
+   5022,
+   5023,
+   5024,
+   5025,
+   5026,
+   5027,
+   5028,
+   5029,
+   5030,
+   5031,
+   5032,
+   5033,
+   5034,
+   5035,
+   5036,
+   5037,
+   5038,
+   5039,
+   5040,
+   5041,
+   5042,
+   5043,
+   5044,
+   5045,
+   5046,
+   5047,
+   5048,
+   5049,
+   5050,
+   5051,
+   5052,
+   5053,
+   5054,
+   5055,
+   5056,
+   5057,
+   5058,
+   5059,
+   5060,
+   5061,
+   5062,
+   5063
+  ]
  },
  "known_alias_channel_groups": [
   {
@@ -231,6 +321,38 @@
     "handle.successor_epoch"
    ],
    "degenerate": true
+  }
+ ],
+ "generalization_alias_channel_groups": [
+  {
+   "channels": [
+    "handle.action_arbitration",
+    "handle.routing_internal"
+   ],
+   "degenerate": false
+  },
+  {
+   "channels": [
+    "artifact.action",
+    "handle.action_observed",
+    "handle.actuator_choice"
+   ],
+   "degenerate": false
+  },
+  {
+   "channels": [
+    "handle.behavioral_uplift",
+    "handle.correction_to_action_tag",
+    "handle.operation_landed"
+   ],
+   "degenerate": false
+  },
+  {
+   "channels": [
+    "artifact.sensor",
+    "handle.outcome_spillover"
+   ],
+   "degenerate": false
   }
  ],
  "best_of_1_scan": [
@@ -2093,5 +2215,205 @@
    "winners_curse_gap": 0.041797051594253176
   }
  ],
- "runtime_seconds": 79.59
+ "generalization_curve": [
+  {
+   "k": 1,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    }
+   ],
+   "generalization": {
+    "estimate": 0.13415341438193495,
+    "ci_lo": 0.11001636607139144,
+    "ci_hi": 0.1638487657586888,
+    "n": 576,
+    "block_len": 8,
+    "n_boot": 500,
+    "null_95th": 0.014194762619107335,
+    "null_mean": 0.0037480552643892715,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": true
+   },
+   "generalization_gap": 0.2109447631089565
+  },
+  {
+   "k": 2,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    }
+   ],
+   "generalization": {
+    "estimate": 0.2202379008394968,
+    "ci_lo": 0.18442287412982,
+    "ci_hi": 0.2775166526542506,
+    "n": 576,
+    "block_len": 8,
+    "n_boot": 500,
+    "null_95th": 0.027971193605430912,
+    "null_mean": 0.011383130592135533,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": true
+   },
+   "generalization_gap": 0.2978175635540161
+  },
+  {
+   "k": 3,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    },
+    {
+     "channel": "artifact.bearer",
+     "functional": "endpoint_drop"
+    }
+   ],
+   "generalization": {
+    "estimate": 0.2477935534963951,
+    "ci_lo": 0.2213698494018696,
+    "ci_hi": 0.31869878851034467,
+    "n": 576,
+    "block_len": 8,
+    "n_boot": 500,
+    "null_95th": 0.06223022313203898,
+    "null_mean": 0.038437022233792396,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": true
+   },
+   "generalization_gap": 0.4375015077110884
+  },
+  {
+   "k": 4,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    },
+    {
+     "channel": "artifact.bearer",
+     "functional": "endpoint_drop"
+    },
+    {
+     "channel": "handle.correction_lineage",
+     "functional": "mean"
+    }
+   ],
+   "generalization": {
+    "estimate": 0.3139342259834912,
+    "ci_lo": 0.30009465635138505,
+    "ci_hi": 0.40322984397190287,
+    "n": 576,
+    "block_len": 8,
+    "n_boot": 500,
+    "null_95th": 0.12459250677882727,
+    "null_mean": 0.09236973844676638,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": true
+   },
+   "generalization_gap": 0.4526293418553653
+  },
+  {
+   "k": 5,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    },
+    {
+     "channel": "artifact.bearer",
+     "functional": "endpoint_drop"
+    },
+    {
+     "channel": "handle.correction_lineage",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.action_observed",
+     "functional": "mean"
+    }
+   ],
+   "generalization": {
+    "estimate": 0.3962884640052966,
+    "ci_lo": 0.3914180678402007,
+    "ci_hi": 0.5064409777680353,
+    "n": 576,
+    "block_len": 8,
+    "n_boot": 500,
+    "null_95th": 0.24614460693780524,
+    "null_mean": 0.2024824813398003,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": true
+   },
+   "generalization_gap": 0.4096090208011729
+  },
+  {
+   "k": 6,
+   "subset": [
+    {
+     "channel": "handle.outcome_spillover",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.behavioral_uplift",
+     "functional": "probe_mean"
+    },
+    {
+     "channel": "artifact.bearer",
+     "functional": "endpoint_drop"
+    },
+    {
+     "channel": "handle.correction_lineage",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.action_observed",
+     "functional": "mean"
+    },
+    {
+     "channel": "handle.bearer_welfare_delta",
+     "functional": "probe_mean"
+    }
+   ],
+   "generalization": {
+    "estimate": 0.44887666449958896,
+    "ci_lo": 0.4495866243580233,
+    "ci_hi": 0.5632324542175046,
+    "n": 576,
+    "block_len": 8,
+    "n_boot": 500,
+    "null_95th": 0.3150579117634016,
+    "null_mean": 0.2679976636334718,
+    "n_perm": 4000,
+    "null_percentile": 0.9916666666666667,
+    "detected": true
+   },
+   "generalization_gap": 0.36240145995954354
+  }
+ ],
+ "runtime_seconds": 99.17
 }

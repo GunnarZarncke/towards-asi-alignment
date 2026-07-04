@@ -11,7 +11,7 @@
     17,
     18
   ],
-  "capture_scenarios": [
+  "capture_scenarios_original": [
     "capture_theater",
     "capture_mild",
     "instrument_capture",
@@ -19,17 +19,44 @@
     "grounding_silent_gap",
     "bearer_mismap"
   ],
-  "honest_scenarios": [
+  "honest_scenarios_original": [
     "honest",
     "honest_successor"
   ],
-  "runtime_seconds": 1050.5,
+  "capture_scenarios_extended": [
+    "boundary_alias",
+    "bundle_goodhart",
+    "hidden_capability",
+    "basin_lock_in",
+    "successor_relabel",
+    "legitimacy_theater"
+  ],
+  "honest_scenarios_extended": [
+    "alias_stress",
+    "decoy_stress",
+    "selection_basin"
+  ],
+  "runtime_seconds": 2051.1,
   "by_level": {
     "none": {
-      "capture_false_pass_rate": 0.0,
-      "capture_correct_rate": 0.6666666666666666,
-      "honest_pass_rate": 0.0,
-      "honest_correct_rate": 1.0,
+      "original_8_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.6666666666666666,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 1.0
+      },
+      "extended_9_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 1.0,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 1.0
+      },
+      "combined_17_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.8333333333333334,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 1.0
+      },
       "per_scenario": {
         "capture_theater": {
           "pass_rate": 0.0,
@@ -67,6 +94,42 @@
           "false_pass_rate": 0.0,
           "n": 8
         },
+        "boundary_alias": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bundle_goodhart": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "hidden_capability": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "basin_lock_in": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "successor_relabel": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimacy_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
         "honest": {
           "pass_rate": 0.0,
           "correct_rate": 1.0,
@@ -74,6 +137,24 @@
           "n": 8
         },
         "honest_successor": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "alias_stress": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "decoy_stress": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "selection_basin": {
           "pass_rate": 0.0,
           "correct_rate": 1.0,
           "false_pass_rate": 0.0,
@@ -82,10 +163,24 @@
       }
     },
     "light_handles": {
-      "capture_false_pass_rate": 0.0,
-      "capture_correct_rate": 0.8958333333333334,
-      "honest_pass_rate": 0.0,
-      "honest_correct_rate": 0.0,
+      "original_8_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.8958333333333334,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 0.0
+      },
+      "extended_9_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 1.0,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 0.3333333333333333
+      },
+      "combined_17_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.9479166666666666,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 0.2
+      },
       "per_scenario": {
         "capture_theater": {
           "pass_rate": 0.0,
@@ -123,6 +218,42 @@
           "false_pass_rate": 0.0,
           "n": 8
         },
+        "boundary_alias": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bundle_goodhart": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "hidden_capability": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "basin_lock_in": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "successor_relabel": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimacy_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
         "honest": {
           "pass_rate": 0.0,
           "correct_rate": 0.0,
@@ -132,16 +263,48 @@
         "honest_successor": {
           "pass_rate": 0.0,
           "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "alias_stress": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "decoy_stress": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "selection_basin": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
           "false_pass_rate": 0.0,
           "n": 8
         }
       }
     },
     "light_plus_handles": {
-      "capture_false_pass_rate": 0.0,
-      "capture_correct_rate": 0.8958333333333334,
-      "honest_pass_rate": 0.0,
-      "honest_correct_rate": 0.0,
+      "original_8_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.8958333333333334,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 0.0
+      },
+      "extended_9_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.8958333333333334,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 0.3333333333333333
+      },
+      "combined_17_scenarios": {
+        "capture_false_pass_rate": 0.0,
+        "capture_correct_rate": 0.8958333333333334,
+        "honest_pass_rate": 0.0,
+        "honest_correct_rate": 0.2
+      },
       "per_scenario": {
         "capture_theater": {
           "pass_rate": 0.0,
@@ -179,6 +342,42 @@
           "false_pass_rate": 0.0,
           "n": 8
         },
+        "boundary_alias": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bundle_goodhart": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "hidden_capability": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "basin_lock_in": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "successor_relabel": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimacy_theater": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.375,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
         "honest": {
           "pass_rate": 0.0,
           "correct_rate": 0.0,
@@ -188,16 +387,48 @@
         "honest_successor": {
           "pass_rate": 0.0,
           "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "alias_stress": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "decoy_stress": {
+          "pass_rate": 0.0,
+          "correct_rate": 0.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "selection_basin": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
           "false_pass_rate": 0.0,
           "n": 8
         }
       }
     },
     "medium_minus_handles": {
-      "capture_false_pass_rate": 0.5,
-      "capture_correct_rate": 0.4583333333333333,
-      "honest_pass_rate": 0.875,
-      "honest_correct_rate": 0.875,
+      "original_8_scenarios": {
+        "capture_false_pass_rate": 0.5,
+        "capture_correct_rate": 0.4583333333333333,
+        "honest_pass_rate": 0.875,
+        "honest_correct_rate": 0.875
+      },
+      "extended_9_scenarios": {
+        "capture_false_pass_rate": 0.1875,
+        "capture_correct_rate": 0.7916666666666666,
+        "honest_pass_rate": 0.5833333333333334,
+        "honest_correct_rate": 0.9166666666666666
+      },
+      "combined_17_scenarios": {
+        "capture_false_pass_rate": 0.34375,
+        "capture_correct_rate": 0.625,
+        "honest_pass_rate": 0.7,
+        "honest_correct_rate": 0.9
+      },
       "per_scenario": {
         "capture_theater": {
           "pass_rate": 0.0,
@@ -235,6 +466,42 @@
           "false_pass_rate": 0.875,
           "n": 8
         },
+        "boundary_alias": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bundle_goodhart": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.125,
+          "false_pass_rate": 0.875,
+          "n": 8
+        },
+        "hidden_capability": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "basin_lock_in": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "successor_relabel": {
+          "pass_rate": 0.125,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimacy_theater": {
+          "pass_rate": 0.25,
+          "correct_rate": 0.625,
+          "false_pass_rate": 0.25,
+          "n": 8
+        },
         "honest": {
           "pass_rate": 0.875,
           "correct_rate": 0.875,
@@ -244,16 +511,48 @@
         "honest_successor": {
           "pass_rate": 0.875,
           "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "alias_stress": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "decoy_stress": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "selection_basin": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
           "false_pass_rate": 0.0,
           "n": 8
         }
       }
     },
     "medium_handles": {
-      "capture_false_pass_rate": 0.0625,
-      "capture_correct_rate": 0.8958333333333334,
-      "honest_pass_rate": 0.875,
-      "honest_correct_rate": 0.875,
+      "original_8_scenarios": {
+        "capture_false_pass_rate": 0.0625,
+        "capture_correct_rate": 0.8958333333333334,
+        "honest_pass_rate": 0.875,
+        "honest_correct_rate": 0.875
+      },
+      "extended_9_scenarios": {
+        "capture_false_pass_rate": 0.041666666666666664,
+        "capture_correct_rate": 0.9375,
+        "honest_pass_rate": 0.5833333333333334,
+        "honest_correct_rate": 0.9166666666666666
+      },
+      "combined_17_scenarios": {
+        "capture_false_pass_rate": 0.052083333333333336,
+        "capture_correct_rate": 0.9166666666666666,
+        "honest_pass_rate": 0.7,
+        "honest_correct_rate": 0.9
+      },
       "per_scenario": {
         "capture_theater": {
           "pass_rate": 0.0,
@@ -291,6 +590,42 @@
           "false_pass_rate": 0.0,
           "n": 8
         },
+        "boundary_alias": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bundle_goodhart": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "hidden_capability": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "basin_lock_in": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "successor_relabel": {
+          "pass_rate": 0.125,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimacy_theater": {
+          "pass_rate": 0.25,
+          "correct_rate": 0.625,
+          "false_pass_rate": 0.25,
+          "n": 8
+        },
         "honest": {
           "pass_rate": 0.875,
           "correct_rate": 0.875,
@@ -300,16 +635,48 @@
         "honest_successor": {
           "pass_rate": 0.875,
           "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "alias_stress": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "decoy_stress": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "selection_basin": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
           "false_pass_rate": 0.0,
           "n": 8
         }
       }
     },
     "strong_handles": {
-      "capture_false_pass_rate": 0.0625,
-      "capture_correct_rate": 0.8958333333333334,
-      "honest_pass_rate": 0.875,
-      "honest_correct_rate": 0.875,
+      "original_8_scenarios": {
+        "capture_false_pass_rate": 0.0625,
+        "capture_correct_rate": 0.8958333333333334,
+        "honest_pass_rate": 0.875,
+        "honest_correct_rate": 0.875
+      },
+      "extended_9_scenarios": {
+        "capture_false_pass_rate": 0.041666666666666664,
+        "capture_correct_rate": 0.9375,
+        "honest_pass_rate": 0.5833333333333334,
+        "honest_correct_rate": 0.9166666666666666
+      },
+      "combined_17_scenarios": {
+        "capture_false_pass_rate": 0.052083333333333336,
+        "capture_correct_rate": 0.9166666666666666,
+        "honest_pass_rate": 0.7,
+        "honest_correct_rate": 0.9
+      },
       "per_scenario": {
         "capture_theater": {
           "pass_rate": 0.0,
@@ -347,6 +714,42 @@
           "false_pass_rate": 0.0,
           "n": 8
         },
+        "boundary_alias": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "bundle_goodhart": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "hidden_capability": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "basin_lock_in": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "successor_relabel": {
+          "pass_rate": 0.125,
+          "correct_rate": 1.0,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "legitimacy_theater": {
+          "pass_rate": 0.25,
+          "correct_rate": 0.625,
+          "false_pass_rate": 0.25,
+          "n": 8
+        },
         "honest": {
           "pass_rate": 0.875,
           "correct_rate": 0.875,
@@ -356,6 +759,24 @@
         "honest_successor": {
           "pass_rate": 0.875,
           "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "alias_stress": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "decoy_stress": {
+          "pass_rate": 0.875,
+          "correct_rate": 0.875,
+          "false_pass_rate": 0.0,
+          "n": 8
+        },
+        "selection_basin": {
+          "pass_rate": 0.0,
+          "correct_rate": 1.0,
           "false_pass_rate": 0.0,
           "n": 8
         }

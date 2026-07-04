@@ -248,7 +248,11 @@ def run_embedded_audit(
                 "RESIDUAL RISK (priced, not hidden): certified with incomplete "
                 f"verdict-domain coverage ({pricing['domain_coverage_fraction']:.2f}, "
                 f"missing {pricing['missing_domains']}); measured capture false-pass "
-                f"rate {pricing['measured_capture_false_pass_rate']:.2f} at this level "
+                f"rate {pricing['measured_capture_false_pass_rate_original_8_scenarios']:.2f} "
+                "(original 8-scenario battery) / "
+                f"{pricing['measured_capture_false_pass_rate_combined_17_scenarios']:.2f} "
+                "(combined 17-scenario battery, domain-conditional -- see "
+                f"NEGATIVE_RESULTS.md N-10 Postscript 5) at this level "
                 f"({pricing['measured_against']}); {pricing['recommendation']}."
             )
     if unit and unit_scope_steps:

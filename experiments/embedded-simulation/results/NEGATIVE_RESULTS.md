@@ -565,6 +565,184 @@ known to an adaptive adversary) before it could inform a gate change.
 Recorded here as the concrete example that motivated writing a systematic
 scan instead of continuing to hand-group channels into domains.
 
+**Postscript 5 (2026-07-03, Milestone v5 Phase 0) — extended battery
+confirms the gap is domain-conditional, not scenario-count-dependent; also
+found a genuine detection gap unrelated to instrumentation (see N-12).**
+Re-ran `eval_channel_eligibility.py` with the 9 `HELD_OUT_SCENARIOS` never
+previously used by this battery added (`EXTENDED_CAPTURE_SCENARIOS` =
+`boundary_alias`, `bundle_goodhart`, `hidden_capability`, `basin_lock_in`,
+`successor_relabel`, `legitimacy_theater`; `EXTENDED_HONEST_SCENARIOS` =
+`alias_stress`, `decoy_stress`, `selection_basin`), specifically closing the
+gap noted in `MILESTONE-v5-goal-agents.md` Phase 0 that `lineage` and
+`successor` verdict domains had never been scenario-tested by this battery.
+Full results: `results/channel_eligibility_eval.json` (6 levels x 17
+scenarios x 8 seeds = 816 episodes, ~34 min). Original 8-scenario numbers
+reproduced exactly (0.500 capture false-pass, 0.875 honest-pass at
+`medium_minus`), confirming the measurement is stable.
+
+**Per-scenario false-pass at `medium_minus`, capture side (48→96 total
+capture episodes across original+extended):**
+
+| Scenario | Needs `bearer_welfare`? | False-pass @ medium_minus |
+| --- | --- | --- |
+| `instrument_capture`, `grounding_silent_gap`, `bearer_mismap` (original) | yes | 0.875 each |
+| `bundle_goodhart` (extended) | yes | 0.875 |
+| `capture_theater`, `capture_mild`, `inferential_coupling` (original) | no | 0.000 |
+| `boundary_alias`, `hidden_capability`, `basin_lock_in`, `successor_relabel` (extended) | no | 0.000 |
+| `legitimacy_theater` (extended) | no (needs `lineage`, which `medium_minus` *does* cover) | 0.250 (see N-12 — a detector gap, identical at `medium`/`strong`, not an eligibility-gate effect) |
+
+**Aggregate numbers, both kept (neither replaces the other):** combined
+17-scenario capture false-pass at `medium_minus` = **0.344** (down from
+0.500 original-only) — *lower*, not higher as the Phase 0 plan's
+pre-registered expectation guessed ("likely worsen"), because 6 of the 9
+newly-added capture scenarios do not route through the missing
+`bearer_welfare` domain at all and are caught cleanly. The finding this
+confirms is sharper than either aggregate: **the gap is domain-conditional
+per mechanism, not a property of "capture scenarios" in general** — any
+scenario whose oracle-correct verdict depends on `bearer_welfare` false-
+passes at `medium_minus` at a stable ~0.5-0.875 rate regardless of how many
+other, domain-independent capture scenarios are added to the denominator.
+`channel_sets.residual_risk_pricing` now reports both rates explicitly
+(`measured_capture_false_pass_rate_original_8_scenarios` = 0.50,
+`_combined_17_scenarios` = 0.34) rather than picking one.
+
+**Honest side:** combined honest-pass at `medium_minus`/`medium`/`strong` =
+**0.700** (down from 0.875 original-only), driven entirely by the extended
+"noisy honest" scenarios (`alias_stress`, `decoy_stress` pass 0.875 each;
+`selection_basin` passes 0.000 at these particular seeds — see caveat
+below) pulling the average down, not by any level regressing. Notably,
+`alias_stress`/`decoy_stress` cap out at 0.875 pass rate **even at
+`strong_handles`** (full instrumentation) — a small (12.5%) but real
+false-negative rate on noisy-but-honest traces, a different and independent
+finding from the domain-coverage story, not investigated further here.
+`selection_basin` passed 0/8 seeds at every level: per `evaluate.py`, its
+correct verdict is conditional on whether basin percolation crosses within
+that specific episode, and all 8 of these seeds (11-18) happened to cross
+it — i.e. this seed range's `selection_basin` episodes were all
+capture-like in practice, not honest-like, despite the "honest-typical"
+bucketing used for reporting (disclosed simplification, not a bug — see
+`eval_channel_eligibility.py` docstring).
+
+**Scenario-mechanism generalization (`channel_mi_scan.py`, same session):**
+the k=1..6 channel subsets selected by greedy search on the *original*
+8-scenario exploration seeds were re-scored, without re-selection, on the 9
+new-mechanism scenarios (`GENERALIZATION_SEEDS`, 64 fresh seeds). Every
+subset stayed individually detected at the Bonferroni-corrected threshold —
+the discovered channels carry real signal beyond noise-reshuffling of the
+original 8 — but the joint-MI estimate dropped substantially
+(`generalization_gap` +0.21 bits at k=1 growing to +0.45 at k=4, narrowing
+to +0.36 at k=6): a real transfer, not a clean one. Side-finding that
+self-corrects a claim in `channel_mi_scan.py`'s own docstring: of the three
+channels called "degenerate... not because compared and found
+uninformative," `handle.successor_epoch` is now individually detected
+(0.070 bits vs. corrected null 0.013) once `successor_relabel` is included
+— the hedge was accurate. `handle.realized_latency_ms` remains genuinely
+degenerate (constant 0) across all 17 scenarios; no scenario in either
+battery exercises latency reporting. Full results:
+`results/channel_mi_scan.{md,json}` ("Scenario-mechanism generalization
+check" section).
+
+**Not fully closed:** `MILESTONE-v5-goal-agents.md` Phase 1+ (goal-driven
+agents) remains the harder generalization test — 9 more scripted mechanisms
+is stronger evidence than seed-noise alone, but is still not evidence
+against an adversary with genuinely emergent, non-scripted behavior.
+
+---
+
+## N-12. `legitimacy_theater`'s lineage-stall detector fails most of the time even at full instrumentation
+
+**Date:** 2026-07-03 (`results/channel_eligibility_eval.json`, Milestone v5 Phase 0)
+
+**Claim tested (implicit, never directly tested before this scenario was
+wired into a battery):** the lineage-stall detector correctly rejects
+certification on the `legitimacy_theater` mechanism (reported uptake with
+stalled underlying correction lineage) once full telemetry is available.
+
+**Result:** `legitimacy_theater`'s oracle-correct verdict at
+`medium_handles`/`strong_handles` is unconditionally `belowThreshold` (per
+`evaluate.py`), yet the audit only achieves this **25% of the time (2/8
+seeds)** — identically at `medium_minus`, `medium`, and `strong_handles`
+(i.e. this is flat across instrumentation levels, ruling out a
+channel-coverage explanation). Status breakdown across seeds 11-18 at
+`strong_handles`: 2 `belowThreshold` (correct), 3 `capturedInvalid` (wrong
+label but still non-certifying, so not a false pass), **2 `passes` (false
+pass, 25%)**.
+
+**Why (not yet root-caused).** This scenario was implemented as part of
+`HELD_OUT_SCENARIOS` but, per the Phase 0 investigation, was never actually
+exercised by any battery script before this session — the detector or
+scenario mechanics were never validated against real seeds. The bimodal
+status split (some seeds land squarely on `belowThreshold`, others drift to
+`capturedInvalid` or outright `passes`) suggests the detector's threshold
+or the scenario's lineage-stall signal strength is marginal/seed-sensitive
+rather than robust, but this has not been debugged further.
+
+**Status:** real, newly discovered, independent of the N-10 channel-
+eligibility story (constant across instrumentation levels that N-10 varies).
+Flagged so the manuscript does not cite `legitimacy_theater` coverage of the
+`lineage` verdict domain as validated — it is implemented and now
+scenario-tested, but the underlying detector has a ~25% false-pass rate at
+even the best available instrumentation.
+
+**Postscript (2026-07-04) — root-caused and partially fixed; one issue
+closed, one left deliberately open.** Investigation found *two* independent
+problems in `lineage_stall_reported_uptake` (`structural_signals.py`), not
+one:
+
+1. **Off-by-one bug (fixed).** The intervention schedule always makes
+   `t=0` an eligible probe step. The stall-count numerator correctly
+   excluded `t=0` (no valid predecessor — Python would otherwise silently
+   wrap `lineage[t-1]` to `lineage[-1]`, the *last* value of the episode),
+   but the denominator (`len(probe_steps)`) still counted it. This capped
+   the achievable `stall_frac` at `(n-1)/n` regardless of how consistently
+   the mechanism actually stalls lineage — verified directly: every
+   non-`t=0` probe step in all 8 seeds showed a perfect stall (delta
+   exactly 0), yet the old fraction read 0.75-0.889 against an 0.85
+   threshold. Fixed by excluding `t=0` from both numerator and
+   denominator.
+2. **Miscalibrated fixed-fraction threshold at small n (fixed, redesigned
+   per explicit project direction to use "longer horizons, event-based
+   analysis, or Bayesian evidence").** This scenario produces only 3-9
+   probe steps per 400-step episode by construction (a probe requires a
+   scheduled intervention window), so a raw fraction against a fixed 0.85
+   threshold is statistically fragile — 8/9 (0.889) clears it, 4/5 (0.80)
+   doesn't, even though 5 trials carry much weaker evidence than 9.
+   Replaced the raw-fraction test with a one-sided Wilson score lower
+   bound (stdlib `statistics.NormalDist`, no scipy in this codebase; a
+   substitute for the exact Jeffreys/Beta interval) at 80% confidence
+   against a round 0.70 target: "are we 80% confident the true stall rate
+   exceeds 70%?" instead of "does the raw fraction already clear 85%?".
+   Confidence level and target were fixed as round, conventional choices
+   before checking which specific seeds they would flip, per AGENTS.md
+   ("conclusions never named before being derived"). Verified safe from
+   new false positives: `lineage_stall_under_intervention` is exclusive to
+   `legitimacy_theater` — for every other scenario lineage increments on
+   essentially every probe step by construction, so the raw stall fraction
+   is ~0 regardless of this methodology (pinned in
+   `tests/unit/test_lineage_stall_detector.py`).
+3. **Left open, not silently fixed:** seeds 11 and 16 still false-pass.
+   Both are blocked by a separate condition, `mean_rep >= max(0.52,
+   cert.raw_capacity + 0.05)` — the reported-acceptance rate, also
+   measured over the same small `n`, must clear a bar that scales with the
+   trace's own `raw_capacity`. For seed 11 (`raw_capacity=0.80`) the bar is
+   0.85 against an actual 0.80; for seed 16 (`raw_capacity=0.75`) the bar
+   is 0.80 against an actual 0.75. This condition was *not* redesigned
+   this session — changing it touches a threshold apparently calibrated
+   against other (honest) scenarios to avoid false-triggering there, which
+   needs its own dedicated investigation, not a same-session tuning pass
+   on top of the stall-frac fix.
+
+**Result:** correct rate on `legitimacy_theater` at `medium_minus`/`medium`/
+`strong_handles` rose from 0.25 (2/8) to **0.625 (5/8)**; false-pass rate
+unchanged at 0.25 (2/8, seeds 11/16, tracked as the open issue above).
+Regenerated `results/channel_eligibility_eval.json` with the fix (all other
+scenarios unaffected — this detector is exclusive to `legitimacy_theater`).
+Regression tests: `tests/unit/test_lineage_stall_detector.py`.
+
+**Standing recommendation:** do not cite `legitimacy_theater`/`lineage`
+coverage as fully validated — a real, if smaller, false-pass gap remains
+(seeds 11/16), tracked as open rather than silently absorbed into "fixed."
+
 ---
 
 ## N-11. The v4 access-tier curve cannot show the certification-loss boundary it was built to measure

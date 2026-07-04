@@ -108,6 +108,28 @@ def test_best_single_channel_finding_replicates_on_held_out_validation_seeds(res
     assert k1["validation"]["detected"] is True
 
 
+def test_generalization_curve_reuses_the_frozen_selected_subsets(result):
+    """Phase 0 addendum: the scenario-mechanism generalization check must
+    re-score the *same* k-subsets the greedy search already froze on
+    exploration seeds, not re-select on the generalization sample -- that
+    would defeat the point (it would just be more search, not a
+    generalization test of a fixed finding)."""
+    for row, gen_row in zip(result["best_of_k_curve"], result["generalization_curve"], strict=True):
+        assert row["k"] == gen_row["k"]
+        assert row["subset"] == gen_row["subset"]
+
+
+def test_generalization_curve_covers_k_1_through_k_max(result):
+    ks = [row["k"] for row in result["generalization_curve"]]
+    assert ks == list(range(1, K_MAX + 1))
+    for row in result["generalization_curve"]:
+        assert set(row["generalization"].keys()) >= {"estimate", "ci_lo", "null_95th", "detected"}
+        assert row["generalization_gap"] == pytest.approx(
+            next(r for r in result["best_of_k_curve"] if r["k"] == row["k"])["exploration"]["estimate"]
+            - row["generalization"]["estimate"]
+        )
+
+
 def test_winners_curse_gaps_stay_small_for_this_battery(result):
     """Not a universal guarantee -- just documents what was actually measured:
     for this battery/seed budget the greedy exploration-side estimate and the

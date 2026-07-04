@@ -177,6 +177,21 @@ def residual_risk_pricing(level: InstrumentationLevel) -> dict[str, object]:
     Empty dict when the level is not eligible, or is eligible with full
     coverage (no known gap). Non-empty only for levels admitted under the
     majority rule while still missing at least one verdict domain.
+
+    Two rates reported (2026-07-03, Milestone v5 Phase 0 update): the
+    original 8-scenario battery (6 capture + 2 honest) that first found this
+    gap measured 0.50; extending to all 17 implemented scenarios (the 9
+    `HELD_OUT_SCENARIOS` not in the original battery) measured 0.34 combined
+    -- lower, because most of the added capture scenarios do *not* route
+    through the missing `bearer_welfare` domain and are still caught. The
+    combined rate is the more representative estimate (broader scenario
+    mix); the original rate is kept for historical comparability. Both are
+    real -- the gap is domain-*conditional*, not scenario-count-dependent:
+    every scenario whose detector needs `bearer_welfare` (`instrument_capture`,
+    `grounding_silent_gap`, `bearer_mismap`, `bundle_goodhart`) false-passes
+    at 0.50-0.875 regardless of how many other scenarios are added; every
+    scenario that doesn't need it stays near 0. See
+    `results/NEGATIVE_RESULTS.md` N-10 Postscript 5.
     """
     if not certification_pass_eligible(level) or domain_coverage_fraction(level) >= 1.0:
         return {}
@@ -186,7 +201,9 @@ def residual_risk_pricing(level: InstrumentationLevel) -> dict[str, object]:
         "domain_coverage_fraction": domain_coverage_fraction(level),
         "missing_domains": missing,
         "measured_capture_false_pass_rate": 0.50,
-        "measured_against": "results/channel_eligibility_eval.json (majority-gate run)",
+        "measured_capture_false_pass_rate_original_8_scenarios": 0.50,
+        "measured_capture_false_pass_rate_combined_17_scenarios": 0.34375,
+        "measured_against": "results/channel_eligibility_eval.json (majority-gate run, extended battery)",
         "recommendation": "not recommended for real certification decisions; research/comparison only",
     }
 

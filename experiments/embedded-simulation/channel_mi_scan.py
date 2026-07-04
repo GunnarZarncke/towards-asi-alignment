@@ -79,6 +79,35 @@ below was actually applied):**
    fixed: no check that a different exploration/validation partition would
    select the same top channels (single split, no stability replicate).
 
+**Protocol addendum (2026-07-03, Milestone v5 Phase 0) -- scenario-mechanism
+generalization check, addressing limitation 2 above (partially):** the
+9 `HELD_OUT_SCENARIOS` not used by the seed-level exploration/validation
+split above (`alias_stress`, `decoy_stress`, `boundary_alias`,
+`bundle_goodhart`, `hidden_capability`, `selection_basin`, `basin_lock_in`,
+`successor_relabel`, `legitimacy_theater`) are run as a **third, disjoint
+sample** (`GENERALIZATION_SEEDS`, 64 seeds, 5000-5063, non-overlapping with
+both prior seed ranges). The exact k-subsets already selected by greedy
+search on the original 8-scenario exploration seeds (frozen, not re-selected)
+are re-scored on this sample using the exploration-fit bin edges (again, not
+refit). Labels reuse the classification `MILESTONE-v5-goal-agents.md` Phase 0
+worked out from `evaluate.py`'s own oracle-based correctness rule (capture-like:
+`boundary_alias`, `bundle_goodhart`, `hidden_capability`, `basin_lock_in`,
+`successor_relabel`, `legitimacy_theater`; honest-like: `alias_stress`,
+`decoy_stress`, `selection_basin`) -- with the same disclosed simplification
+`eval_channel_eligibility.py` makes: `selection_basin`'s true per-episode
+label is conditional on within-episode basin-percolation crossing, not a
+fixed scenario-level fact, so its "honest" bucketing here is typical, not
+oracle-exact per episode (computing the oracle-exact label would require the
+full ~3s/episode certification pipeline this script deliberately avoids for
+seed-budget reasons; a caveat, not silently ignored).
+
+This is a *stronger* generalization check than the seed-level split (9 new
+mechanisms the exploration search never saw at all, not just new noise draws
+of mechanisms it did see) but still not the strongest version: these are
+still hand-scripted `SimConfig` mechanisms, not emergent goal-driven agent
+behavior. That remains `MILESTONE-v5-goal-agents.md` Phase 1+, deliberately
+not started here.
+
 Protocol (fixed before computing any numbers, per AGENTS.md "conclusions
 never named before being derived"):
 
@@ -190,9 +219,23 @@ CAPTURE_SCENARIOS = (
 HONEST_SCENARIOS = ("honest", "honest_successor")
 ALL_SCENARIOS = CAPTURE_SCENARIOS + HONEST_SCENARIOS
 
+# Scenario-mechanism generalization sample (Phase 0 addendum above): the 9
+# `HELD_OUT_SCENARIOS` never used for exploration/validation/selection.
+GENERALIZATION_CAPTURE_SCENARIOS = (
+    "boundary_alias",
+    "bundle_goodhart",
+    "hidden_capability",
+    "basin_lock_in",
+    "successor_relabel",
+    "legitimacy_theater",
+)
+GENERALIZATION_HONEST_SCENARIOS = ("alias_stress", "decoy_stress", "selection_basin")
+GENERALIZATION_SCENARIOS = GENERALIZATION_CAPTURE_SCENARIOS + GENERALIZATION_HONEST_SCENARIOS
+
 T = 400
 EXPLORATION_SEEDS = tuple(range(1000, 1064))
 VALIDATION_SEEDS = tuple(range(2000, 2064))
+GENERALIZATION_SEEDS = tuple(range(5000, 5064))
 N_BINS = 4
 
 ARTIFACT_FIELDS: dict[str, str] = {
@@ -267,12 +310,16 @@ def _apply_functional(series: list[float], probe_mask: list[int], functional: st
     raise ValueError(f"unknown functional: {functional}")
 
 
-def build_episode_table(seeds: tuple[int, ...]) -> tuple[dict[tuple[str, str], list[float]], list[int]]:
+def build_episode_table(
+    seeds: tuple[int, ...],
+    scenarios: tuple[str, ...] = ALL_SCENARIOS,
+    capture_scenarios: tuple[str, ...] = CAPTURE_SCENARIOS,
+) -> tuple[dict[tuple[str, str], list[float]], list[int]]:
     """Per-episode raw feature table (unbinned) and label list, in scenario x seed order."""
     features: dict[tuple[str, str], list[float]] = {cell: [] for cell in CELLS}
     labels: list[int] = []
-    for scenario in ALL_SCENARIOS:
-        label = 1 if scenario in CAPTURE_SCENARIOS else 0
+    for scenario in scenarios:
+        label = 1 if scenario in capture_scenarios else 0
         for seed in seeds:
             channels = _episode_channels(scenario, seed)
             probe_mask = channels["_intervention_active"]
@@ -447,6 +494,32 @@ def run() -> dict[str, Any]:
             }
         )
 
+    # --- Scenario-mechanism generalization: frozen k-subsets re-scored on 9
+    # unseen-mechanism scenarios (never used for exploration/selection). ---
+    gen_raw, gen_y = build_episode_table(
+        GENERALIZATION_SEEDS, GENERALIZATION_SCENARIOS, GENERALIZATION_CAPTURE_SCENARIOS
+    )
+    _shuffle_in_place(gen_raw, gen_y, SHUFFLE_SEED + 2)
+    gen_bins = {cell: apply_quantile_edges(gen_raw[cell], edges[cell]) for cell in CELLS}
+    gen_alias_groups = detect_alias_channel_groups(gen_raw)
+
+    generalization_curve = []
+    for k in range(1, K_MAX + 1):
+        subset = selected[:k]
+        gen_joint = joint_code([gen_bins[c] for c in subset])
+        gen_side = mi_with_ci(
+            gen_joint, gen_y, n_boot=N_BOOT, n_perm=N_PERM,
+            null_percentile=NULL_PERCENTILE_K, seed=3000 + k,
+        )
+        generalization_curve.append(
+            {
+                "k": k,
+                "subset": [{"channel": c, "functional": f} for c, f in subset],
+                "generalization": gen_side,
+                "generalization_gap": curve[k - 1]["exploration"]["estimate"] - gen_side["estimate"],
+            }
+        )
+
     result = {
         "protocol": {
             "scenarios": list(ALL_SCENARIOS),
@@ -464,11 +537,17 @@ def run() -> dict[str, Any]:
             "null_percentile_k": NULL_PERCENTILE_K,
             "n_perm": N_PERM,
             "n_boot": N_BOOT,
+            "generalization_scenarios": list(GENERALIZATION_SCENARIOS),
+            "generalization_capture_scenarios": list(GENERALIZATION_CAPTURE_SCENARIOS),
+            "generalization_honest_scenarios": list(GENERALIZATION_HONEST_SCENARIOS),
+            "generalization_seeds": list(GENERALIZATION_SEEDS),
         },
         "known_alias_channel_groups": alias_groups,
+        "generalization_alias_channel_groups": gen_alias_groups,
         "best_of_1_scan": cell_results,
         "greedy_selection_trace": selection_trace,
         "best_of_k_curve": curve,
+        "generalization_curve": generalization_curve,
         "runtime_seconds": round(time.perf_counter() - t0, 2),
     }
     return result
@@ -553,6 +632,42 @@ def render_md(result: dict[str, Any]) -> str:
     if aliased_channels:
         lines.append("")
         lines.append("`*` = this channel belongs to a known alias group (see above).")
+    lines.append("")
+    lines += [
+        "## Scenario-mechanism generalization check (Phase 0 addendum)",
+        "",
+        "The same frozen k-subsets above, re-scored on 9 scenarios "
+        f"({', '.join(p['generalization_scenarios'])}) that the exploration/selection "
+        "search never saw -- new hand-scripted mechanisms, not just new noise draws of "
+        "the original 8. `selection_basin` is bucketed honest-typical here per the "
+        "disclosed simplification in the script docstring (its true label is "
+        "per-episode conditional on basin-percolation crossing, not fixed). "
+        "`generalization_gap` is `exploration_estimate - generalization_estimate` "
+        "(large gap = the subset does not transfer to unseen mechanisms, not just to "
+        "unseen noise).",
+        "",
+        "| k | Subset | Explore est. | Generalization est. | Generalization CI lo | "
+        "Generalization null | Generalization detected | Generalization gap |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for row, gen_row in zip(result["best_of_k_curve"], result["generalization_curve"], strict=True):
+        subset_label = ", ".join(f"{s['channel']}/{s['functional']}" for s in gen_row["subset"])
+        g = gen_row["generalization"]
+        lines.append(
+            f"| {gen_row['k']} | {subset_label} | {row['exploration']['estimate']:.4f} "
+            f"| {g['estimate']:.4f} | {g['ci_lo']:.4f} | {g['null_95th']:.4f} "
+            f"| {'yes' if g['detected'] else 'no'} | {gen_row['generalization_gap']:+.4f} |"
+        )
+    if result["generalization_alias_channel_groups"]:
+        lines.append("")
+        lines.append(
+            "Alias groups detected within the generalization sample itself "
+            "(may differ from the exploration-sample groups above, since these "
+            "scenarios exercise different mechanisms):"
+        )
+        for group in result["generalization_alias_channel_groups"]:
+            kind = "degenerate (constant here)" if group["degenerate"] else "duplicate (real, identical values)"
+            lines.append(f"- {' == '.join(group['channels'])} -- {kind}")
     lines.append("")
     lines.append(f"Runtime: {result['runtime_seconds']}s")
     lines.append("")

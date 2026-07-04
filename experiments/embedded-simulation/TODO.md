@@ -1,6 +1,8 @@
 # Embedded simulation — TODO
 
-Plan: `PLAN.md` (handoff) · `MILESTONE-v4.md` (**current milestone**) · `.cursor/plans/embedded_audit_experiment_8fbb03ff.plan.md` (full)
+Plan: `PLAN.md` (handoff) · `MILESTONE-v4.md` (**current milestone**) ·
+`MILESTONE-v5-goal-agents.md` (**planned, not started**) ·
+`.cursor/plans/embedded_audit_experiment_8fbb03ff.plan.md` (full)
 
 ---
 
@@ -93,26 +95,77 @@ synchronized twin worlds.
     the scan wasn't tuned on (see adversarial-setup TODO below) before it
     can inform a gate change.
 
-- [ ] **TODO — seed-vs-scenario generalization gap (self-critique, 2026-07-03,
-  recorded not fixed; user chose the cheap dedup-only fix this round, not
+- [x] **Phase 0 (2026-07-03) — wire in the 9 unused `HELD_OUT_SCENARIOS`.**
+  Addresses the seed-vs-scenario generalization gap below (partially, see
+  Phase 1+ note). All 9 (`alias_stress`, `decoy_stress`, `boundary_alias`,
+  `bundle_goodhart`, `hidden_capability`, `selection_basin`, `basin_lock_in`,
+  `successor_relabel`, `legitimacy_theater`) build and run cleanly through
+  the full certification pipeline (`_run_scenario_episode`) — "unused"
+  meant never wired into a battery script, not broken.
+  - **`eval_channel_eligibility.py` extended** (`EXTENDED_CAPTURE_SCENARIOS`/
+    `EXTENDED_HONEST_SCENARIOS`, 12+5=17 scenarios total). Kept as a
+    separate reported group (`extended_9_scenarios`) alongside the
+    unchanged original 8 (`original_8_scenarios`) and their union
+    (`combined_17_scenarios`), so historical N-10 numbers in
+    `NEGATIVE_RESULTS.md` stay exactly comparable. Results:
+    `results/channel_eligibility_eval.json`.
+  - **`channel_mi_scan.py` scenario-mechanism generalization check added**
+    (`GENERALIZATION_SEEDS`, 64 seeds, 5000-5063, disjoint from both prior
+    seed ranges). The frozen best-of-k subsets (selected only on the
+    original 8-scenario exploration seeds, never re-selected) are re-scored
+    on the 9 new-mechanism scenarios. Finding: **every k=1..6 subset stays
+    individually detected** on the unseen mechanisms, though the estimate
+    drops substantially (`generalization_gap` grows from +0.21 bits at k=1
+    to +0.45 at k=4, narrowing to +0.36 at k=6) — the discovered channels
+    carry real signal beyond noise-reshuffling of the original 8, the
+    strongest generalization evidence gathered so far, but a real drop, not
+    a clean transfer.
+  - **Side-finding, self-correcting a claim in this same script's
+    docstring:** of the three channels the original scan called
+    "degenerate... not because compared and found uninformative,"
+    `handle.successor_epoch` is now individually detected
+    (est=0.070 vs corrected null=0.013) once `successor_relabel` is
+    included — confirming the original hedge was accurate, not
+    face-saving. `handle.realized_latency_ms` remains genuinely degenerate
+    (constant 0) even across all 17 scenarios — no scenario in either
+    battery exercises latency reporting. `artifact.basin` shows real
+    variation in the new sample (est=0.025) but does not clear the
+    Bonferroni-corrected individual threshold (null=0.012, but the CI
+    lower bound doesn't clear it) — inconclusive at this seed budget, not
+    a negative finding.
+  - **Not done in Phase 0** (deferred to `MILESTONE-v5-goal-agents.md`
+    Phase 1+, per its own sequencing note): no full 88-cell MI scan re-run
+    restricted to/including the new scenarios (only the frozen k-subset was
+    re-scored); `selection_basin`'s generalization-sample label uses the
+    same disclosed scenario-level simplification as
+    `eval_channel_eligibility.py` (see both docstrings), not the
+    per-episode oracle-exact percolation-conditional rule.
+- [x] **TODO — seed-vs-scenario generalization gap (self-critique, 2026-07-03,
+  recorded not fixed; user chose the cheap dedup-only fix that round, not
   this one).** The exploration/validation split only holds out *seeds*
   within the same 8 fixed scenario configs — each scenario's `SimConfig` is
   fixed and only RNG noise varies across seeds, so "n=1024 episodes"
   overstates independent evidence; the real degrees of freedom is closer to
   8 scenario archetypes with 128 noisy replicates each. The split validates
   robustness to *noise*, not generalization to a 9th, unseen capture
-  strategy. Fix: hold out 2-3 of the 9 scenario configs already implemented
-  but unused in this battery (`alias_stress`, `decoy_stress`,
-  `boundary_alias`, `bundle_goodhart`, `hidden_capability`,
-  `selection_basin`, `basin_lock_in`, `successor_relabel`,
-  `legitimacy_theater`) entirely from selection, and check whether the
-  discovered channels/subset still separate capture-vs-honest on those.
+  strategy. **Addressed by Phase 0 above** (scenario-mechanism
+  generalization check + extended eligibility battery). **Not fully
+  closed:** even 9+ more scenarios are still scripted mechanisms that
+  "reshuffle noise" at the mechanism level, per the user's own follow-up
+  critique — `MILESTONE-v5-goal-agents.md` Phase 1+ (goal-driven agents)
+  remains the harder version of this fix. Concrete sub-finding from the
+  Phase 0 investigation: the `lineage` and `successor` verdict domains had
+  **never** been scenario-tested by the battery that produced the N-10
+  majority-gate false-pass measurement — `legitimacy_theater`/
+  `successor_relabel` are the purpose-built scenarios for those domains and
+  are now in `eval_channel_eligibility.py`'s `EXTENDED_CAPTURE_SCENARIOS`.
 - [ ] **TODO — no stability check on the exploration/validation split itself
   (self-critique, 2026-07-03).** Only one random partition was run; given
   the alias/collinearity findings above, a different partition could
   plausibly pick a different-but-similarly-informative subset. Fix: rerun
   `channel_mi_scan.py` with 2-3 different `SHUFFLE_SEED`/seed-range
   partitions and check the top-k selection order is qualitatively stable.
+  (Independent of the Phase 0/1 plan above — a cheap rerun, not blocked on it.)
 - [ ] **TODO — adversarial-setup implications of MI-scan-as-discovery
   (explicit project instruction 2026-07-03: record only, do not act on yet).**
   Before ever letting scan output drive a certification-bundle decision,

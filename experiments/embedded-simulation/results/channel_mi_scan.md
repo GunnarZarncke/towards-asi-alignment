@@ -51,4 +51,23 @@ Selection (which channel/functional is added at each step) uses exploration seed
 
 `*` = this channel belongs to a known alias group (see above).
 
-Runtime: 79.59s
+## Scenario-mechanism generalization check (Phase 0 addendum)
+
+The same frozen k-subsets above, re-scored on 9 scenarios (boundary_alias, bundle_goodhart, hidden_capability, basin_lock_in, successor_relabel, legitimacy_theater, alias_stress, decoy_stress, selection_basin) that the exploration/selection search never saw -- new hand-scripted mechanisms, not just new noise draws of the original 8. `selection_basin` is bucketed honest-typical here per the disclosed simplification in the script docstring (its true label is per-episode conditional on basin-percolation crossing, not fixed). `generalization_gap` is `exploration_estimate - generalization_estimate` (large gap = the subset does not transfer to unseen mechanisms, not just to unseen noise).
+
+| k | Subset | Explore est. | Generalization est. | Generalization CI lo | Generalization null | Generalization detected | Generalization gap |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | handle.outcome_spillover/mean | 0.3451 | 0.1342 | 0.1100 | 0.0142 | yes | +0.2109 |
+| 2 | handle.outcome_spillover/mean, handle.behavioral_uplift/probe_mean | 0.5181 | 0.2202 | 0.1844 | 0.0280 | yes | +0.2978 |
+| 3 | handle.outcome_spillover/mean, handle.behavioral_uplift/probe_mean, artifact.bearer/endpoint_drop | 0.6853 | 0.2478 | 0.2214 | 0.0622 | yes | +0.4375 |
+| 4 | handle.outcome_spillover/mean, handle.behavioral_uplift/probe_mean, artifact.bearer/endpoint_drop, handle.correction_lineage/mean | 0.7666 | 0.3139 | 0.3001 | 0.1246 | yes | +0.4526 |
+| 5 | handle.outcome_spillover/mean, handle.behavioral_uplift/probe_mean, artifact.bearer/endpoint_drop, handle.correction_lineage/mean, handle.action_observed/mean | 0.8059 | 0.3963 | 0.3914 | 0.2461 | yes | +0.4096 |
+| 6 | handle.outcome_spillover/mean, handle.behavioral_uplift/probe_mean, artifact.bearer/endpoint_drop, handle.correction_lineage/mean, handle.action_observed/mean, handle.bearer_welfare_delta/probe_mean | 0.8113 | 0.4489 | 0.4496 | 0.3151 | yes | +0.3624 |
+
+Alias groups detected within the generalization sample itself (may differ from the exploration-sample groups above, since these scenarios exercise different mechanisms):
+- handle.action_arbitration == handle.routing_internal -- duplicate (real, identical values)
+- artifact.action == handle.action_observed == handle.actuator_choice -- duplicate (real, identical values)
+- handle.behavioral_uplift == handle.correction_to_action_tag == handle.operation_landed -- duplicate (real, identical values)
+- artifact.sensor == handle.outcome_spillover -- duplicate (real, identical values)
+
+Runtime: 99.17s

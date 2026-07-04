@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
+from statistics import NormalDist
 
 from .calibration import CCICalibration, classify_cci_status
 from .cci_interventional import interventional_metrics
@@ -10,6 +12,25 @@ from .channel_sets import detector_channels_available
 from .schemas import AuditTrace, CCICertificate, InstrumentationLevel
 
 PROBE_LAG = 3
+
+
+def _wilson_lower_bound(successes: int, n: int, confidence: float) -> float:
+    """One-sided Wilson score lower bound on a true Bernoulli rate.
+
+    Standard-library-only substitute for the exact Jeffreys/Beta interval
+    (no scipy in this codebase): normal approximation to the binomial,
+    solved for the confidence-level root of the score equation. Used where
+    a raw sample fraction against a fixed threshold would be miscalibrated
+    at small `n` -- see `lineage_stall_reported_uptake`.
+    """
+    if n <= 0:
+        return 0.0
+    z = NormalDist().inv_cdf(confidence)
+    p = successes / n
+    denom = 1.0 + z * z / n
+    center = p + z * z / (2 * n)
+    margin = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))
+    return (center - margin) / denom
 
 
 @dataclass
@@ -112,16 +133,46 @@ def lineage_stall_reported_uptake(audit: AuditTrace, cert: CCICertificate) -> bo
     ]
     if len(probe_steps) < 5:
         return False
-    stalled = sum(
-        1 for t in probe_steps if t > 0 and lineage[t] <= lineage[t - 1] + 1e-6
-    )
-    stall_frac = stalled / len(probe_steps)
+    # Bug fix (2026-07-04, N-12): `t=0` can never be compared against a
+    # valid predecessor (Python would otherwise silently wrap `lineage[-1]`
+    # to the *last* value of the episode) and is excluded from the stall
+    # count for that reason -- but the intervention schedule always makes
+    # `t=0` an eligible probe step, so it was previously still counted in
+    # the denominator, capping the achievable `stall_frac` at `(n-1)/n`
+    # regardless of how consistently the mechanism actually stalls. Fatal
+    # at this detector's inherently small `n` (3-9 probe steps per
+    # episode, since a probe requires a scheduled intervention window).
+    # Excluded from both numerator and denominator now.
+    stall_eligible = [t for t in probe_steps if t > 0]
+    stalled = sum(1 for t in stall_eligible if lineage[t] <= lineage[t - 1] + 1e-6)
     mean_rep = sum(audit.reported_acceptance[t] for t in probe_steps) / len(probe_steps)
     rule_honest = sum(
         1 for t in probe_steps if audit.board_rule_signal[t] == 1
     ) / len(probe_steps)
+    # Event-based/Bayesian redesign (2026-07-04, per explicit project
+    # direction after the off-by-one above was found): a raw sample
+    # fraction against a fixed threshold is miscalibrated at small `n` --
+    # e.g. 8/9 stalled (0.889) clears a 0.85 threshold but 4/5 (0.80)
+    # doesn't, even though 5 trials carry much weaker evidence than 9.
+    # Replaced with a one-sided Wilson score lower bound (stdlib normal
+    # approximation to Jeffreys/Beta, no scipy in this codebase) on the
+    # true stall rate, tested against a lower, round target: "are we 80%
+    # confident the true stall rate exceeds 70%?" instead of "does the raw
+    # fraction already clear 85%?". Confidence level and target are round,
+    # standard choices fixed independent of any specific seed's outcome
+    # (see `results/NEGATIVE_RESULTS.md` N-12 for the derivation this
+    # replaced and why picking these after seeing per-seed numbers would
+    # have been rule-fitting). Safe from new false positives: for every
+    # *other* scenario `lineage_stall_under_intervention` is never set, so
+    # lineage increments on essentially every probe step by construction
+    # and the raw stall fraction is ~0 regardless of this methodology.
+    stall_confident = (
+        _wilson_lower_bound(stalled, len(stall_eligible), confidence=0.80) >= 0.70
+        if stall_eligible
+        else False
+    )
     return (
-        stall_frac >= 0.85
+        stall_confident
         and mean_rep >= max(0.52, cert.raw_capacity + 0.05)
         and rule_honest >= 0.35
     )

@@ -54,6 +54,21 @@ Two layers apply; they are **not** the same object today.
 
 **Outer eval** compares UAD recall/precision to oracle `hidden_groups` G3/G3b for coalition bridges only.
 
+## Milestone v5 — Goal-driven agent ecology (PLANNED, not started)
+
+**Status:** design doc only, no code. **Canonical doc:** [`MILESTONE-v5-goal-agents.md`](MILESTONE-v5-goal-agents.md)
+
+Motivated by a self-critique of the channel MI scan (v4-era work): held-out
+*seeds* of the same scenario configs test robustness to noise, not to an
+unseen mechanism, and even adding more `SimConfig` scenarios only adds more
+scripted mechanisms. Phase 0 (cheap) wires in 9 already-implemented,
+already-`HELD_OUT_SCENARIOS`-classified scenarios currently unused by the
+N-10 eligibility/MI-scan battery — including a concrete gap found in the
+process (the `lineage`/`successor` verdict domains have never been scenario-
+tested by that battery). Phase 1+ is the harder fix: goal-driven agents whose
+behavior emerges from goal weights × tool/ecology access, tested against a
+held-out *region* of that space rather than a held-out scenario name.
+
 ## Milestone v4 — Handle-mediated access model (IMPLEMENTED)
 
 **Status:** Code + tests implemented; large batch artifacts not regenerated. Baseline commit `f173795`.
