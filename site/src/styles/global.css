@@ -249,6 +249,12 @@ code {
   background: var(--color-framework-bg);
   border: 1px solid var(--color-border);
   text-transform: lowercase;
+  text-decoration: none;
+}
+
+a.badge:hover {
+  filter: brightness(0.97);
+  border-color: var(--color-muted);
 }
 
 .badge.established {

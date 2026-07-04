@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pdfHref } from "../lib/site-urls";
+import standaloneClaims from "../data/standalone-claims.json";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -26,6 +27,23 @@ const failureModes = [
       <a class="button primary" href={withBase("/paths/")}>Guided tour — start here</a>
       <a class="button" href={pdfHref(base)}>Read the PDF</a>
       <a class="button" href={withBase("/faq/")}>FAQ</a>
+    </div>
+  </section>
+
+  <section class="callout readable">
+    <p class="eyebrow">Publishable notes</p>
+    <h2>Standalone claims</h2>
+    <p>
+      Four extractable claims from the manuscript — each citable without the full book argument.
+      Use these for papers, talks, and funding memos; the PDF chapters remain canonical for derivation and caveats.
+    </p>
+    <div class="grid">
+      {standaloneClaims.claims.map((claim) => (
+        <article class="card">
+          <h3><a href={withBase(`/cards/${claim.slug}/`)}>{claim.title}</a></h3>
+          <p>{claim.blurb}</p>
+        </article>
+      ))}
     </div>
   </section>
 

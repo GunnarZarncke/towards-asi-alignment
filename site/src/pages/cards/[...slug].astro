@@ -16,6 +16,7 @@ import bookIndex from "../../data/book.json";
 import crosswalkRows from "../../data/bridge-crosswalk.json";
 import leanSpine from "../../data/lean-spine.json";
 import { bookHref, cardHref as buildCardHref, resolveCard } from "../../lib/site-urls";
+import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
 import { referenceLinksFor } from "../../lib/reference-links";
 
 export async function getStaticPaths() {
@@ -116,8 +117,8 @@ const referenceLinks = isReferenceCard
   <article class="two-column">
     <div class="content-card">
       <div class="badge-row">
-        <Badge label={card.data.type} />
-        <Badge label={card.data.status} variant={card.data.status} />
+        <Badge label={card.data.type} href={badgeTypeHref(base, card.data.type)} />
+        <Badge label={card.data.status} variant={card.data.status} href={badgeStatusHref(base, card.data.status)} />
         {isGem(card.id) && <Badge label="gem" variant="gem" />}
         {card.data.part && <Badge label={card.data.part} variant="framework" />}
         {card.data.formalDensity && <Badge label={card.data.formalDensity} />}

@@ -1,0 +1,26 @@
+{
+  "title": "Standalone claims",
+  "summary": "Extractable notes from the manuscript — each is citable without the full book argument.",
+  "claims": [
+    {
+      "slug": "anti-capture-correction-validity",
+      "title": "Anti-Capture Validity of Correction",
+      "blurb": "Correction certificates are invalid—not merely low—when the target captures the reference process."
+    },
+    {
+      "slug": "bearer-map-commutation-failure",
+      "title": "Bearer-Map Commutation Failure",
+      "blurb": "Moral vocabulary can persist while application changes when ontology translation and relevance do not commute."
+    },
+    {
+      "slug": "goodhart-as-selector",
+      "title": "Goodhart as Selector",
+      "blurb": "When a proxy becomes a selector, optimization can reverse conditional expectations on the true property."
+    },
+    {
+      "slug": "certification-under-manipulation",
+      "title": "Certification-Under-Manipulation Problem",
+      "blurb": "For each load-bearing measurand, is there a capability threshold below which honest certification stays verifiable?"
+    }
+  ]
+}

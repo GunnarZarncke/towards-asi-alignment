@@ -1,0 +1,96 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import Badge from "../../components/Badge.astro";
+import {
+  CARD_STATUSES,
+  CARD_TYPES,
+  STATUS_META,
+  TYPE_META,
+  badgeStatusHref,
+  badgeTypeHref
+} from "../../lib/badges";
+
+const cards = await getCollection("cards");
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const typeCounts = Object.fromEntries(
+  CARD_TYPES.map((type) => [type, cards.filter((c) => c.data.type === type).length])
+) as Record<(typeof CARD_TYPES)[number], number>;
+
+const statusCounts = Object.fromEntries(
+  CARD_STATUSES.map((status) => [status, cards.filter((c) => c.data.status === status).length])
+) as Record<(typeof CARD_STATUSES)[number], number>;
+---
+
+<SiteLayout title="Badge index" description="Browse concept cards by type and status badge.">
+  <section class="hero">
+    <p class="eyebrow">Card index</p>
+    <h1>Badge index</h1>
+    <p class="lede">
+      Every concept card carries a <strong>type</strong> (what kind of object it is) and a
+      <strong>status</strong> (how strongly the book treats the claim). Click a badge to see all cards with that label.
+    </p>
+  </section>
+
+  <section class="content-card readable">
+    <h2>Card types</h2>
+    <p class="side-panel-meta">What kind of companion-card object this is.</p>
+    <ul class="badge-index-list">
+      {CARD_TYPES.map((type) => (
+        <li>
+          <div class="badge-row">
+            <Badge label={type} href={badgeTypeHref(base, type)} />
+            <span class="section-count">({typeCounts[type]})</span>
+          </div>
+          <p>{TYPE_META[type].description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="content-card readable">
+    <h2>Claim status</h2>
+    <p class="side-panel-meta">Calibrated claim strength — aligned with the manuscript ledgers where applicable.</p>
+    <ul class="badge-index-list">
+      {CARD_STATUSES.map((status) => (
+        <li>
+          <div class="badge-row">
+            <Badge label={status} variant={status} href={badgeStatusHref(base, status)} />
+            <span class="section-count">({statusCounts[status]})</span>
+          </div>
+          <p>{STATUS_META[status].description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <p><a href={withBase("/cards/")}>Browse all cards</a></p>
+  </section>
+</SiteLayout>
+
+<style>
+  .badge-index-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .badge-index-list li + li {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .badge-index-list p {
+    margin: 0.45rem 0 0;
+  }
+
+  .badge-row .section-count {
+    align-self: center;
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+</style>

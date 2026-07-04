@@ -6,6 +6,29 @@ A research manuscript on preserving **human-correctable value-bearing processes*
 
 > This is work in progress—not a claim that alignment is solved. Claims are marked as established, plausible, or open throughout the ledgers and chapter structure.
 
+**Authorship:** Most manuscript text is AI-drafted under Gunnar Zarncke's direction, with human review, revision priorities, and source canon set by the author. See the [Preface authorship note](frontmatter/preface.tex) and the [companion site About page](https://gunnarzarncke.github.io/towards-asi-alignment/about/). Reuse passages with attribution.
+
+---
+
+## Standalone claims (start here for researchers)
+
+Four extractable notes from the manuscript — each is a citable claim without the full book argument. Full derivations and caveats remain in the PDF chapters linked from each card.
+
+| Claim | Companion card |
+|-------|----------------|
+| Anti-capture validity of correction | [anti-capture-correction-validity](https://gunnarzarncke.github.io/towards-asi-alignment/cards/anti-capture-correction-validity/) |
+| Bearer-map commutation failure | [bearer-map-commutation-failure](https://gunnarzarncke.github.io/towards-asi-alignment/cards/bearer-map-commutation-failure/) |
+| Goodhart as selector (not just proxy drift) | [goodhart-as-selector](https://gunnarzarncke.github.io/towards-asi-alignment/cards/goodhart-as-selector/) |
+| Certification-Under-Manipulation Problem | [certification-under-manipulation](https://gunnarzarncke.github.io/towards-asi-alignment/cards/certification-under-manipulation/) |
+
+Also on the [companion site homepage](https://gunnarzarncke.github.io/towards-asi-alignment/) under **Standalone claims**.
+
+---
+
+## What this is (and is not)
+
+This repository is a **requirements decomposition with in-principle estimands**: a structured map of what would need to be true, measured, and governed for superintelligence alignment under human-correctable value update. It is **not** a proof that alignment is solved, not a machine-checked safety certificate for frontier systems, and not a substitute for adversarial review. Lean checks conditional structure; experiments are sanity checks with recorded negatives ([`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md)).
+
 ---
 
 ## Start here

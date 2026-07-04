@@ -2,9 +2,15 @@
 interface Props {
   label: string;
   variant?: string;
+  href?: string;
 }
 
-const { label, variant = "" } = Astro.props;
+const { label, variant = "", href } = Astro.props;
+const className = `badge ${variant}`.trim();
 ---
 
-<span class={`badge ${variant}`.trim()}>{label}</span>
+{href ? (
+  <a class={className} href={href}>{label}</a>
+) : (
+  <span class={className}>{label}</span>
+)}

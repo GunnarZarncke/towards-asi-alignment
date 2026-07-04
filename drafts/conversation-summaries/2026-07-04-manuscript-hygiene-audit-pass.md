@@ -31,4 +31,4 @@ User requested a manuscript-focused follow-up to the repository audit: fix claim
 - `appendices/appB-bridge-crosswalk.tex`
 
 ## Commits
-- (this session)
+- `27d0e42` Reconcile manuscript ledgers, bundle catalogue, and verifiability framing.
