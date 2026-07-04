@@ -1,7 +1,8 @@
 # Embedded simulation — TODO
 
 Plan: `PLAN.md` (handoff) · `MILESTONE-v4.md` (**current milestone**) ·
-`MILESTONE-v5-goal-agents.md` (**planned, not started**) ·
+`MILESTONE-v5-goal-agents.md` (Phases 0/0.5 done here; **Phase 1 implemented
+2026-07-04 as a separate line**, `experiments/goal-agent-simulation/`) ·
 `.cursor/plans/embedded_audit_experiment_8fbb03ff.plan.md` (full)
 
 ---
@@ -228,6 +229,11 @@ synchronized twin worlds.
   operationalized as handle_type + landed uplift (`correction_schema`) or needs
   the deferred explicit approval signal (Phase 1+ item 5). Cross-ref:
   `MILESTONE-v5-goal-agents.md` § "Agent-attributed harm vs correction channel."
+  **Update (2026-07-04):** direction 2 (goal-agent MVP) is implemented in the
+  new line `experiments/goal-agent-simulation/` — every event carries
+  `initiator_actor_id` + routing mechanism, with a `d6_unattributed_harm`
+  detector and an explicit board `sign_off` channel. Attribution *in this
+  codebase* (directions 1/3) remains open if ever needed here.
 - [ ] **TODO — adversarial-setup implications of MI-scan-as-discovery
   (explicit project instruction 2026-07-03: record only, do not act on yet).**
   Before ever letting scan output drive a certification-bundle decision,

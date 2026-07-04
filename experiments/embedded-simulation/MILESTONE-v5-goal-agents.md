@@ -240,6 +240,22 @@ combination away from existing code).
 
 ## Phase 1+ — Goal-driven agent MVP (the harder generalization test)
 
+**Status: IMPLEMENTED (2026-07-04) — as a NEW simulation line, not in this
+codebase.** Per project direction ("instead of adding features, create a new
+simulation line in a new folder"), Phase 1 lives in
+`experiments/goal-agent-simulation/` (package `goal_sim/`): a from-scratch
+refactor for simplicity and speed (~1 ms/episode vs ~27 ms) with this
+codebase left untouched for comparability of recorded results. Components
+1–6 below are implemented there (components 5 and 6 in their MVP form: an
+explicit board `sign_off` audit channel, and per-event
+`initiator_actor_id` + routing-mechanism attribution with an
+`unattributed_harm` detector). The plan's "not yet decided" items were
+resolved and documented at implementation time (uniform weight sampling,
+budget-as-constraint, 40×8 grid) — see that folder's `README.md`.
+Acceptance results incl. one genuine protocol negative (the pre-registered
+held-out region saturated at 100% violations, degenerating the MI transfer
+test): `experiments/goal-agent-simulation/results/FINDINGS.md`.
+
 **Motivating claim to test, not assume:** if audit robustness only holds
 against a fixed library of scripted mechanisms (however many), it says
 little about robustness to agents pursuing goals with tools not previously
