@@ -80,4 +80,4 @@ remaining seeds 11/16 false-pass gap.
 - `experiments/embedded-simulation/results/channel_eligibility_eval.json`
 
 ## Commits
-- (pending — see below)
+- `3415317` Fix N-12 legitimacy_theater false-pass (seeds 11/16) and check capture-side twins.
