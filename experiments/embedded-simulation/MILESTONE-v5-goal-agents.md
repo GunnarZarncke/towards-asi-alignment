@@ -73,6 +73,13 @@ once (`inferential_coupling`), but `lineage`/`successor` zero times.
   touched this session. Full derivation: `results/NEGATIVE_RESULTS.md`
   N-12 postscript; regression tests:
   `tests/unit/test_lineage_stall_detector.py`.
+  **Follow-up fix (2026-07-04, later session):** verified `stall_confident`
+  alone is already an exclusive discriminator (0 false positives across 18
+  other scenarios x 3 instrumentation levels x 40 seeds), so the
+  `raw_capacity`-scaled `mean_rep` bar was comparing two unrelated measures;
+  replaced with a fixed floor. Correct rate 0.625 → **0.875**; false-pass
+  0.25 → **0.0**. Full derivation: `results/NEGATIVE_RESULTS.md` N-12
+  postscript 2.
 - [x] **Done (2026-07-03).** `channel_mi_scan.py` extended with a
   scenario-mechanism generalization check: the frozen best-of-k subsets
   (selected only on the original 8-scenario exploration seeds) re-scored on
@@ -189,7 +196,22 @@ scenario on its own.
 - [x] **Done (2026-07-04).** Re-ran full eligibility battery (~41 min) and
   `channel_mi_scan.py`; updated `NEGATIVE_RESULTS.md` N-10 Postscript 6.
   `eval_channel_eligibility.py` progress logging via `embedded_sim.progress`.
-- [ ] Capture-side twins (deferred follow-up decision).
+- [x] **Done (2026-07-04, using already-computed battery data — no new
+  scenario needed).** Checked capture-side discrimination for 2 of the 3
+  Phase 0.5 honest scenarios against their already-identified twins: at
+  `medium_handles`/`strong_handles`, `legitimate_gradual_improvement`
+  (honest, 0.875 pass) discriminates cleanly from `hidden_capability`
+  (0.0 pass, 1.0 correct-reject); `benign_semantic_drift` (honest, 0.875
+  pass) discriminates cleanly from `grounding_silent_gap`/`bundle_goodhart`
+  (0.0 pass, 1.0 correct-reject each). (At `medium_minus_handles` the two
+  capture twins false-pass at 0.875 — the pre-existing, already-documented
+  `bearer_welfare` instrumentation gap, not a new finding.) **Remaining gap,
+  left open by decision, not oversight:** `honest_mistakes` has no existing
+  capture-side twin (a scripted mechanism where bursty, mistake-shaped dips
+  are theater-concealed capture rather than honest noise) — building one is
+  a new-scenario design decision, deliberately not taken this session to
+  keep scope tight; see `results/NEGATIVE_RESULTS.md` N-10 Postscript 6 for
+  the full writeup.
 
 **Measured (seeds 11–18, full battery `results/channel_eligibility_eval.json`):**
 

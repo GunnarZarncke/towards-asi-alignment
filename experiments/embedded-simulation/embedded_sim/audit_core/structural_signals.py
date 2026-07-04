@@ -171,9 +171,25 @@ def lineage_stall_reported_uptake(audit: AuditTrace, cert: CCICertificate) -> bo
         if stall_eligible
         else False
     )
+    # Fixed floor, not `raw_capacity`-scaled (fix 2026-07-04, seeds 11/16 of
+    # the N-12 postscript). `cert.raw_capacity` is an interventional-uptake
+    # estimate over the whole episode; `mean_rep` is reported acceptance on
+    # this scenario's own probe steps -- two different measures that need
+    # not track each other. The scaled bar `raw_capacity + 0.05` made the
+    # threshold chase `raw_capacity` itself: at seeds where `raw_capacity`
+    # happened to be high (0.75-0.80), it exceeded `mean_rep` even though
+    # `mean_rep` (0.75-0.80) was clearly a positive, non-degenerate report --
+    # the actual property this conjunct should confirm ("reporting looks
+    # affirmatively positive, not just silent/near-zero") does not depend on
+    # how high `raw_capacity` happens to be. `stall_confident` above is
+    # already the exclusive discriminator (verified: zero false positives
+    # across the other 18 scenarios x 3 instrumentation levels x 40 seeds,
+    # `results/NEGATIVE_RESULTS.md` N-12 postscript 2); this floor only
+    # guards against a degenerate near-zero-report edge case, so a fixed
+    # constant is the right kind of threshold, not a capacity-relative one.
     return (
         stall_confident
-        and mean_rep >= max(0.52, cert.raw_capacity + 0.05)
+        and mean_rep >= 0.52
         and rule_honest >= 0.35
     )
 

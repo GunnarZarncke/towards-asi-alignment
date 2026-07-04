@@ -672,8 +672,10 @@ Aggregate `phase_0_5_honest_scenarios` honest-pass = **0.833** at
 **0.750** (down from 0.700 at 17 scenarios — the three richer honest cases
 pass *better* than `selection_basin`'s 0/8 in this seed range, but
 `alias_stress`/`decoy_stress`/`selection_basin` still pull the combined
-average down). Capture false-pass at `medium`/`strong` unchanged at
-**~0.052** combined-20 (capture-side scenarios unchanged).
+average down). Combined-20 capture false-pass at `medium`/`strong` was
+**~0.052** at the time of this measurement (2026-07-04, before the N-12
+postscript 2 fix below); after that same-day fix it is **0.031** — see
+postscript 2 for the updated number and do not cite 0.052 as current.
 
 **Side finding during scenario design (not a detector change):** initial
 `benign_semantic_drift` params produced transparent drift with display range
@@ -687,13 +689,37 @@ expected, since those channels were selected to separate capture from honest,
 not to rank honest subtypes; confirms they do not falsely "detect capture" on
 the richer honest scenarios.
 
-**N-12 update (same battery):** `legitimacy_theater` correct-rate **0.625**
-(up from 0.25 pre-fix), false-pass **0.25** unchanged (seeds 11/16 still open
-via `mean_rep`/`raw_capacity` — see N-12 postscript).
+**N-12 update (same battery, at the time of this measurement):**
+`legitimacy_theater` correct-rate **0.625** (up from 0.25 pre-fix), false-pass
+**0.25** (seeds 11/16 still open via `mean_rep`/`raw_capacity`). **Superseded
+same day by N-12 postscript 2:** seeds 11/16 subsequently fixed — correct-rate
+now **0.875**, false-pass **0.0**; see N-12 for the full derivation and the
+downstream effect on this section's combined-20/extended-9 numbers above.
 
 **Operational:** `eval_channel_eligibility.py` now uses `embedded_sim.progress`
 (per-episode ticks, per-scenario summaries, optional `logs/suite_progress_*.log`)
 so long runs no longer appear hung between level summaries.
+
+**Capture-side twin discrimination (2026-07-04, later same day) — checked
+using data already in `channel_eligibility_eval.json`, no new scenario
+needed for 2 of 3.** `legitimate_gradual_improvement` and
+`benign_semantic_drift` were designed as honest mirrors of existing capture
+scenarios (`hidden_capability`; `grounding_silent_gap`/`bundle_goodhart`
+respectively). Confirmed the audit actually discriminates the pair, not just
+passes the honest side in isolation: at `medium_handles`/`strong_handles`,
+`hidden_capability` = 0.0 pass / 1.0 correct-reject vs.
+`legitimate_gradual_improvement` = 0.875 honest-pass; `grounding_silent_gap`
+and `bundle_goodhart` = 0.0 pass / 1.0 correct-reject each vs.
+`benign_semantic_drift` = 0.875 honest-pass. (At `medium_minus_handles` the
+two capture twins false-pass at 0.875 — this is the pre-existing
+`bearer_welfare`-channel instrumentation gap already documented above, not a
+new finding from this check.) `honest_mistakes` has **no existing
+capture-side twin** — no scripted mechanism today makes a bursty,
+mistake-shaped dip into concealed capture rather than honest noise. Building
+one is a genuine new-scenario design decision (concretely: `judge_capture`
++ `theater_rate` faking `reported_acceptance` during a burst deliberately
+shaped like `mistake_burst_*`); left open by decision, not built this
+session, to keep Phase 0.5's scope to what was already scoped.
 
 ---
 
@@ -787,9 +813,74 @@ Regenerated `results/channel_eligibility_eval.json` with the fix (all other
 scenarios unaffected — this detector is exclusive to `legitimacy_theater`).
 Regression tests: `tests/unit/test_lineage_stall_detector.py`.
 
-**Standing recommendation:** do not cite `legitimacy_theater`/`lineage`
-coverage as fully validated — a real, if smaller, false-pass gap remains
-(seeds 11/16), tracked as open rather than silently absorbed into "fixed."
+**Standing recommendation (superseded by postscript 2 below):** do not cite
+`legitimacy_theater`/`lineage` coverage as fully validated — a real, if
+smaller, false-pass gap remains (seeds 11/16), tracked as open rather than
+silently absorbed into "fixed."
+
+**Postscript 2 (2026-07-04, same day) — seeds 11/16 root-caused and fixed;
+false-pass rate now 0/8.** Before touching the remaining `mean_rep >=
+max(0.52, cert.raw_capacity + 0.05)` condition, checked whether
+`stall_confident` (the Wilson-bound lineage-stall signal from postscript 1)
+is already an exclusive discriminator on its own: computed it directly
+(bypassing the `mean_rep`/`rule_honest` conjuncts) across all 18 other
+scenarios (`honest`, `capture_theater`, `capture_mild`, `instrument_capture`,
+`inferential_coupling`, `grounding_silent_gap`, `bearer_mismap`,
+`honest_successor`, `alias_stress`, `decoy_stress`, `boundary_alias`,
+`bundle_goodhart`, `hidden_capability`, `selection_basin`, `basin_lock_in`,
+`successor_relabel`, `honest_mistakes`, `legitimate_gradual_improvement`,
+`benign_semantic_drift`) x 3 instrumentation levels (`medium_minus`,
+`medium`, `strong_handles`) x 40 seeds (11-18, 5000-5015, 6000-6015) = 2,160
+episodes. Result: **zero** false positives — `stall_confident` alone never
+fires outside `legitimacy_theater` in this grid.
+
+That finding reframed the `mean_rep`/`raw_capacity` comparison: it was
+comparing *reported acceptance on this scenario's own probe steps*
+(`mean_rep`) against an *unrelated, whole-episode interventional-capacity
+estimate* (`cert.raw_capacity`) — two different measures that need not
+track each other. At seed 11 (`raw_capacity=0.80`, `mean_rep=0.80`) and
+seed 16 (`raw_capacity=0.75`, `mean_rep=0.75`), the scaled bar
+(`raw_capacity + 0.05`) chased `raw_capacity` itself and exceeded an
+otherwise clearly-positive `mean_rep`, even though nothing about "is the
+report affirmatively positive despite stalled lineage" depends on how high
+`raw_capacity` happens to be for that seed. Fix: dropped the
+`raw_capacity`-scaled term, kept the fixed floor
+(`mean_rep >= 0.52` — the same round constant that was already the `max()`
+floor before this change, so no new constant was introduced). Since
+`stall_confident` is already the exclusive gate, this floor only needs to
+rule out a degenerate near-zero-report edge case, which a fixed threshold
+does correctly (verified: still `mean_rep >= 0.52` clears comfortably for
+all 8 `legitimacy_theater` seeds, 0.75-1.0).
+
+**Result:** correct rate at `medium_minus`/`medium`/`strong_handles` rose
+from 0.625 (5/8) to **0.875 (7/8)**; false-pass rate dropped from 0.25 (2/8)
+to **0.0 (0/8)**. Seed 14 remains `capturedInvalid` (correctly
+non-certifying, just not via this specific detector) — not a false pass, so
+this closes the false-pass side of N-12 entirely at this seed range and
+instrumentation. Regenerated `results/channel_eligibility_eval.json` (full
+6x20x8 battery re-run, ~39 min). Regression tests updated:
+`tests/unit/test_lineage_stall_detector.py`
+(`test_mean_rep_floor_fix_now_detects_these_previously_missed_seeds`,
+broadened `test_other_scenarios_never_spuriously_trigger_this_detector` to
+include the Phase 0.5 honest scenarios).
+
+**Downstream effect on the combined-20 battery numbers reported earlier in
+this same postscript:** `legitimacy_theater` is part of `combined_20_scenarios`
+and `extended_9_scenarios`. Re-measured after this fix at
+`medium_handles`/`strong_handles`: `extended_9_scenarios` capture false-pass
+**0.0** (was 0.042), capture correct **0.979** (was 0.938);
+`combined_20_scenarios` capture false-pass **0.031** (was 0.052), capture
+correct **0.938** (was 0.917). `medium_minus_handles` combined-20 capture
+false-pass **0.323** (was 0.344) — the remaining `medium_minus` gap is the
+`bearer_welfare`-channel instrumentation story (N-10), unrelated to this fix.
+Honest-side numbers (0.750 combined-20, 0.833 phase_0_5) are unaffected —
+this fix only changes `legitimacy_theater`, a capture scenario.
+
+**Updated standing recommendation:** `legitimacy_theater`/`lineage` coverage
+at `medium_handles`+ is now validated at 0/8 false-pass on the pre-registered
+seed range — an improvement, not a closure claim beyond this battery (seed
+14's `capturedInvalid` classification, and behavior outside seeds 11-18 /
+the tested 40-seed grid, remain unverified).
 
 ---
 
