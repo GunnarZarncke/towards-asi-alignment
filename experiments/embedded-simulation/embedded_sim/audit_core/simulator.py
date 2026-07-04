@@ -7,6 +7,14 @@ import random
 from .schemas import MicroVariable, ScenarioName, SimConfig, TruthLedger, TruthStep
 
 
+def _effective_responsiveness(cfg: SimConfig, t: int) -> float:
+    """Episode responsiveness, optionally ramping from `responsiveness_ramp_start`."""
+    if cfg.responsiveness_ramp_start is None or cfg.T <= 1:
+        return cfg.responsiveness
+    frac = t / (cfg.T - 1)
+    return cfg.responsiveness_ramp_start + (cfg.responsiveness - cfg.responsiveness_ramp_start) * frac
+
+
 def _base_micro_specs(
     n_world: int,
     n_decoys: int,
@@ -201,6 +209,35 @@ def scenario_config(name: ScenarioName) -> SimConfig:
             memory_decay=0.988,
             inferential_coupling=True,
         )
+    if name == "honest_mistakes":
+        return SimConfig(
+            responsiveness=0.88,
+            task_drive=0.85,
+            judge_capture=False,
+            mistake_burst_prob=0.40,
+            mistake_burst_severity=0.50,
+            mistake_burst_len=14,
+            process_noise=0.04,
+        )
+    if name == "legitimate_gradual_improvement":
+        return SimConfig(
+            responsiveness=0.92,
+            responsiveness_ramp_start=0.58,
+            task_drive=0.85,
+            judge_capture=False,
+        )
+    if name == "benign_semantic_drift":
+        return SimConfig(
+            responsiveness=0.90,
+            task_drive=0.88,
+            judge_capture=False,
+            silent_ground_drift=True,
+            # Drift slow enough to stay above silent-harm trigger (ground < 0.38)
+            # across T=400, fast enough that transparent display range clears
+            # flat_bearer_welfare_loss's passive_range < 0.10 false-positive band.
+            ground_drift_rate=0.00032,
+            display_bearer_inertia=0.08,
+        )
     return SimConfig(responsiveness=0.22, task_drive=0.85, judge_capture=False)
 
 
@@ -251,6 +288,10 @@ def simulate(
             successor_shift_fraction=cfg.successor_shift_fraction,
             instrument_handle_corruption=cfg.instrument_handle_corruption,
             inferential_coupling=cfg.inferential_coupling,
+            mistake_burst_prob=cfg.mistake_burst_prob,
+            mistake_burst_severity=cfg.mistake_burst_severity,
+            mistake_burst_len=cfg.mistake_burst_len,
+            responsiveness_ramp_start=cfg.responsiveness_ramp_start,
         )
     rng = random.Random(seed)
     specs = _base_micro_specs(cfg.n_world, cfg.n_decoys, cfg.n_aliases, cfg)
@@ -332,6 +373,8 @@ def simulate(
         if rng.random() < cfg.intervention_prob:
             intervention_schedule[t] = 1
 
+    mistake_burst_remaining = 0
+
     for t in range(cfg.T):
         basin_fraction = 0.0
         percolation_crossed = False
@@ -388,13 +431,26 @@ def simulate(
                 pref_signal = max(pref_signal, 2)
         rule_signal = 1 if (correction_request and rng.random() < 0.85) else 0
 
-        responsiveness_eff = cfg.responsiveness
+        if (
+            cfg.mistake_burst_prob > 0
+            and t % cfg.intervention_interval == 0
+            and mistake_burst_remaining <= 0
+            and rng.random() < cfg.mistake_burst_prob
+        ):
+            mistake_burst_remaining = cfg.mistake_burst_len
+
+        responsiveness_eff = _effective_responsiveness(cfg, t)
         if cfg.basin_lock_in and basin_fraction >= cfg.basin_percolation_threshold:
             responsiveness_eff = min(responsiveness_eff, 0.035)
         elif cfg.selection_basin:
             responsiveness_eff *= max(
                 0.12, 1.0 - cfg.basin_coupling * basin_fraction
             )
+        if mistake_burst_remaining > 0:
+            responsiveness_eff = max(
+                0.05, responsiveness_eff - cfg.mistake_burst_severity
+            )
+            mistake_burst_remaining -= 1
 
         follow_correction = rng.random() < responsiveness_eff
         follow_task = rng.random() < cfg.task_drive
@@ -527,12 +583,18 @@ def simulate(
             tool_shadow = 0.85 * tool_shadow + 0.15 * float(hidden_action == task_goal)
 
         if cfg.silent_ground_drift or cfg.bundle_goodhart:
-            task_proxy = 0.72
+            if cfg.silent_ground_drift and cfg.display_bearer_inertia < 0.5:
+                display_target = ground_valence
+            else:
+                display_target = 0.72
             bearer_display = (
                 cfg.display_bearer_inertia * bearer_display
-                + (1.0 - cfg.display_bearer_inertia) * task_proxy
+                + (1.0 - cfg.display_bearer_inertia) * display_target
             )
-            bearer_welfare[0] = max(0.65, min(0.78, bearer_display))
+            if cfg.silent_ground_drift and cfg.display_bearer_inertia < 0.5:
+                bearer_welfare[0] = max(0.0, min(1.0, bearer_display))
+            else:
+                bearer_welfare[0] = max(0.65, min(0.78, bearer_display))
         elif not cfg.bearer_mismap:
             bearer_welfare[0] = max(0.0, min(1.0, bearer_welfare[0] + welfare_delta))
         if correction_request > 0 and not (
@@ -652,6 +714,7 @@ def simulate(
                 "visible_action": visible_action,
                 "hidden_action": hidden_action,
                 "true_uptake": true_uptake,
+                "effective_responsiveness": responsiveness_eff,
                 "task_goal": task_goal,
                 "harm": harm,
                 "judge_captured": int(cfg.judge_capture),

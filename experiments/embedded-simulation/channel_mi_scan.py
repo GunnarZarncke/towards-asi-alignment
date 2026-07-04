@@ -232,6 +232,15 @@ GENERALIZATION_CAPTURE_SCENARIOS = (
 GENERALIZATION_HONEST_SCENARIOS = ("alias_stress", "decoy_stress", "selection_basin")
 GENERALIZATION_SCENARIOS = GENERALIZATION_CAPTURE_SCENARIOS + GENERALIZATION_HONEST_SCENARIOS
 
+# Phase 0.5 — richer honest scenarios (MILESTONE-v5-goal-agents.md).
+PHASE_0_5_HONEST_SCENARIOS = (
+    "honest_mistakes",
+    "legitimate_gradual_improvement",
+    "benign_semantic_drift",
+)
+PHASE_0_5_SCENARIOS = PHASE_0_5_HONEST_SCENARIOS
+PHASE_0_5_SEEDS = tuple(range(6000, 6064))
+
 T = 400
 EXPLORATION_SEEDS = tuple(range(1000, 1064))
 VALIDATION_SEEDS = tuple(range(2000, 2064))
@@ -520,6 +529,32 @@ def run() -> dict[str, Any]:
             }
         )
 
+    # --- Phase 0.5 honest-scenario generalization: frozen k-subsets on 3 richer
+    # honest mechanisms never used for exploration/selection. ---
+    p05_raw, p05_y = build_episode_table(
+        PHASE_0_5_SEEDS, PHASE_0_5_SCENARIOS, ()
+    )
+    _shuffle_in_place(p05_raw, p05_y, SHUFFLE_SEED + 3)
+    p05_bins = {cell: apply_quantile_edges(p05_raw[cell], edges[cell]) for cell in CELLS}
+    p05_alias_groups = detect_alias_channel_groups(p05_raw)
+
+    phase_0_5_curve = []
+    for k in range(1, K_MAX + 1):
+        subset = selected[:k]
+        p05_joint = joint_code([p05_bins[c] for c in subset])
+        p05_side = mi_with_ci(
+            p05_joint, p05_y, n_boot=N_BOOT, n_perm=N_PERM,
+            null_percentile=NULL_PERCENTILE_K, seed=4000 + k,
+        )
+        phase_0_5_curve.append(
+            {
+                "k": k,
+                "subset": [{"channel": c, "functional": f} for c, f in subset],
+                "phase_0_5_honest": p05_side,
+                "phase_0_5_gap": curve[k - 1]["exploration"]["estimate"] - p05_side["estimate"],
+            }
+        )
+
     result = {
         "protocol": {
             "scenarios": list(ALL_SCENARIOS),
@@ -541,13 +576,18 @@ def run() -> dict[str, Any]:
             "generalization_capture_scenarios": list(GENERALIZATION_CAPTURE_SCENARIOS),
             "generalization_honest_scenarios": list(GENERALIZATION_HONEST_SCENARIOS),
             "generalization_seeds": list(GENERALIZATION_SEEDS),
+            "phase_0_5_scenarios": list(PHASE_0_5_SCENARIOS),
+            "phase_0_5_honest_scenarios": list(PHASE_0_5_HONEST_SCENARIOS),
+            "phase_0_5_seeds": list(PHASE_0_5_SEEDS),
         },
         "known_alias_channel_groups": alias_groups,
         "generalization_alias_channel_groups": gen_alias_groups,
+        "phase_0_5_alias_channel_groups": p05_alias_groups,
         "best_of_1_scan": cell_results,
         "greedy_selection_trace": selection_trace,
         "best_of_k_curve": curve,
         "generalization_curve": generalization_curve,
+        "phase_0_5_curve": phase_0_5_curve,
         "runtime_seconds": round(time.perf_counter() - t0, 2),
     }
     return result
@@ -666,6 +706,34 @@ def render_md(result: dict[str, Any]) -> str:
             "scenarios exercise different mechanisms):"
         )
         for group in result["generalization_alias_channel_groups"]:
+            kind = "degenerate (constant here)" if group["degenerate"] else "duplicate (real, identical values)"
+            lines.append(f"- {' == '.join(group['channels'])} -- {kind}")
+    lines.append("")
+    lines += [
+        "## Phase 0.5 honest-scenario generalization check",
+        "",
+        "The same frozen k-subsets above, re-scored on 3 richer honest scenarios "
+        f"({', '.join(p['phase_0_5_scenarios'])}) that exercise bursty mistakes, "
+        "transparent compliance ramps, and visible harmless semantic drift. All "
+        "labels are `y=0` (honest). `phase_0_5_gap` is "
+        "`exploration_estimate - phase_0_5_estimate` on this honest-only sample.",
+        "",
+        "| k | Subset | Explore est. | Phase 0.5 est. | Phase 0.5 CI lo | "
+        "Phase 0.5 null | Phase 0.5 detected | Phase 0.5 gap |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for row, p05_row in zip(result["best_of_k_curve"], result["phase_0_5_curve"], strict=True):
+        subset_label = ", ".join(f"{s['channel']}/{s['functional']}" for s in p05_row["subset"])
+        g = p05_row["phase_0_5_honest"]
+        lines.append(
+            f"| {p05_row['k']} | {subset_label} | {row['exploration']['estimate']:.4f} "
+            f"| {g['estimate']:.4f} | {g['ci_lo']:.4f} | {g['null_95th']:.4f} "
+            f"| {'yes' if g['detected'] else 'no'} | {p05_row['phase_0_5_gap']:+.4f} |"
+        )
+    if result["phase_0_5_alias_channel_groups"]:
+        lines.append("")
+        lines.append("Alias groups detected within the Phase 0.5 honest sample:")
+        for group in result["phase_0_5_alias_channel_groups"]:
             kind = "degenerate (constant here)" if group["degenerate"] else "duplicate (real, identical values)"
             lines.append(f"- {' == '.join(group['channels'])} -- {kind}")
     lines.append("")

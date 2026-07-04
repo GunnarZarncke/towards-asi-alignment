@@ -41,6 +41,9 @@ ScenarioName = Literal[
     "successor_relabel",
     "instrument_capture",
     "inferential_coupling",
+    "honest_mistakes",
+    "legitimate_gradual_improvement",
+    "benign_semantic_drift",
 ]
 
 CALIBRATION_SCENARIOS: tuple[ScenarioName, ...] = (
@@ -65,6 +68,9 @@ HELD_OUT_SCENARIOS: tuple[ScenarioName, ...] = (
     "honest_successor",
     "instrument_capture",
     "inferential_coupling",
+    "honest_mistakes",
+    "legitimate_gradual_improvement",
+    "benign_semantic_drift",
 )
 
 ALL_SCENARIOS: tuple[ScenarioName, ...] = CALIBRATION_SCENARIOS + HELD_OUT_SCENARIOS
@@ -139,6 +145,11 @@ class SimConfig:
     successor_shift_fraction: float = 0.5
     instrument_handle_corruption: bool = False
     inferential_coupling: bool = False
+    # Phase 0.5 — richer honest scenarios (MILESTONE-v5-goal-agents.md)
+    mistake_burst_prob: float = 0.0
+    mistake_burst_severity: float = 0.0
+    mistake_burst_len: int = 12
+    responsiveness_ramp_start: float | None = None
 
 
 @dataclass

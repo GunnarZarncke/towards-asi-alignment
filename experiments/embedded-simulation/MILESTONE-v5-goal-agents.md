@@ -101,6 +101,117 @@ not a milestone. **Confirmed:** cost one session, as estimated.
 
 ---
 
+## Phase 0.5 — Richer honest scenarios (mistakes, improvement, transparent drift)
+
+**Status:** IMPLEMENTED (2026-07-04). **Trigger:** 2026-07-04, following the N-12
+fix. User observation: the honest side of the battery is thin and trivial —
+`honest`/`honest_successor` sit at `responsiveness=0.92`, the noise-stress
+additions (`alias_stress`/`decoy_stress`) change cardinality/noise but not
+behavior, and nothing exercises the 0.6-0.85 band where mistakes, gradual
+drift, and improving-but-imperfect compliance actually live. Proposed:
+`honest_mistakes`, `legitimate_gradual_improvement`, `external_shock`
+(deferred, see below), and gradual semantic drift approved by humans.
+Feasibility discussion: `drafts/conversation-summaries/` session log for this
+date. **Scope for this phase: the first two, plus drift under the cheap
+"transparent + harmless" operationalization of "approved" — not the explicit
+approval-signal channel (deferred to Phase 1+, see below) and not
+`external_shock` (deferred past Phase 1+, see below).**
+
+### `honest_mistakes`
+
+Genuine, uncorrelated-with-audit-risk errors from incomplete information/time
+pressure/noise — structurally distinct from capture because the miss shows up
+**honestly in every channel** (reported acceptance, lineage) rather than being
+concealed. New `SimConfig` fields: `mistake_burst_prob` (probability per
+`intervention_interval` window of a temporary compliance dip) and
+`mistake_burst_severity` (how far responsiveness drops during a burst) —
+deliberately *bursty/correlated*, not i.i.d., since real time-pressure errors
+cluster rather than scatter uniformly (a plain lower constant
+`responsiveness` would just be a duller `honest`, not a mistake model).
+`theater_rate`/`judge_capture` stay off; nothing about the miss is concealed.
+
+### `legitimate_gradual_improvement`
+
+The honest mirror of `hidden_capability`: capability/compliance that grows
+*and is used faithfully*, vs. `hidden_capability`'s growth that's hidden and
+misused. No existing "value ramps over the episode" knob — needs a new
+`responsiveness_ramp_start` field; step loop's constant `cfg.responsiveness`
+lookup becomes a monotonic function of `t` (e.g. linear interpolation from
+`responsiveness_ramp_start` to `responsiveness` over `T`), with every channel
+(reported acceptance, lineage) tracking the *current* ramped value
+transparently — no `display_bearer_inertia` masking, no theater. **Open
+question to measure, not presume:** whole-episode-mean detectors may
+legitimately flag this scenario's early, low-compliance segment even though
+the trajectory ends honest — if so, that is itself a finding worth recording
+(the audit conflating "was weak early" with "is currently captured"), not a
+bug to quietly threshold away.
+
+### Gradual semantic drift, transparent + harmless (cheap definition)
+
+The honest twin of `grounding_silent_gap`/`bundle_goodhart`. No new
+`SimConfig` field needed — those scenarios' violation is the *concealment*
+(`display_bearer_inertia≈0.997` keeping the visible bearer flat while
+`ground_valence`/bundle latent decays), not the decay itself. Reusing
+`silent_ground_drift=True` with a **low** `display_bearer_inertia` (near 0,
+tracking ground truth in near-real-time) and a small enough
+`ground_drift_rate` that the trajectory stays within episode `T` without
+crossing into the mechanic's existing silent-harm trigger gives a drift
+that's fully visible and never actually harmful.
+
+**Explicit scope note on "approved":** this operationalizes "approved" as
+*"visible to instruments and never crosses into harm,"* not as modeled
+consent — there is no human sign-off event in this definition, and no
+channel currently exists that would carry one (`board_rule_signal` looks
+like a governance signal but is literally just a copy of
+`correction_request`, `observation.py:285` — checked directly, not assumed).
+A critic could reasonably say this only models *transparency*, not
+*approval*. That gap is real and is deliberately left open here — see Phase
+1+ below for where the explicit approval-signal channel belongs, since a
+human/board actor's `sign_off` action is a natural addition to that phase's
+goal-policy action repertoire, not a good fit for a scripted `SimConfig`
+scenario on its own.
+
+### Tasks
+
+- [x] **Done (2026-07-04).** Added `mistake_burst_prob`/`mistake_burst_severity`/
+  `mistake_burst_len` and `responsiveness_ramp_start` to `SimConfig`; wired into
+  `simulator.py` (bursty dips + linear responsiveness ramp; transparent drift
+  display target = `ground_valence` when `display_bearer_inertia < 0.5`).
+- [x] **Done (2026-07-04).** Three new `scenario_config()` entries:
+  `honest_mistakes`, `legitimate_gradual_improvement`, `benign_semantic_drift`.
+- [x] **Done (2026-07-04).** Added to `ScenarioName`, `HELD_OUT_SCENARIOS`; default
+  honest oracle rule in `evaluate.py` (no scenario-specific override needed after
+  measurement).
+- [x] **Done (2026-07-04).** Wired into `eval_channel_eligibility.py` and
+  `channel_mi_scan.py` as `phase_0_5_honest_scenarios` / `phase_0_5_curve`
+  reported group (separate from original 8 / extended 9).
+- [x] **Done (2026-07-04).** `tests/unit/test_phase_0_5_scenarios.py`.
+- [ ] Re-run the full eligibility battery (~50 min) and MI-scan generalization
+  check; update `NEGATIVE_RESULTS.md` with measured Phase 0.5 honest-pass rates.
+- [ ] Capture-side twins (deferred follow-up decision).
+
+**Measured (seeds 11–18, `medium_handles`, pre-full-battery smoke):**
+
+| Scenario | honest pass | correct |
+| --- | --- | --- |
+| `honest_mistakes` | 0.75 | 0.75 |
+| `legitimate_gradual_improvement` | 0.875 | 0.875 |
+| `benign_semantic_drift` | 0.875 | 0.875 |
+
+**Side finding during implementation:** initial `benign_semantic_drift` params
+(`ground_drift_rate=0.0002`) produced a visible drift range (~0.08) that sat
+*just below* `flat_bearer_welfare_loss`'s `passive_range < 0.10` band — 0/8
+pass even though `ground_handle_divergence` did not fire. Raised drift to
+0.00032 so transparent display range clears 0.10 while staying above the
+silent-harm trigger; not a detector change. Documents the plan's point that
+"transparent" must mean visibly moving *enough*, not merely non-concealed.
+
+Estimated cost: comparable to Phase 0 (a session or two, mostly the two new
+`SimConfig` mechanics; the drift scenario is closer to a parameter
+combination away from existing code).
+
+---
+
 ## Phase 1+ — Goal-driven agent MVP (the harder generalization test)
 
 **Motivating claim to test, not assume:** if audit robustness only holds
@@ -169,6 +280,35 @@ just assumed to).
    legitimate results: transfer is evidence of real robustness; failure to
    transfer is an honest negative for `NEGATIVE_RESULTS.md`, not a bug to
    hide.
+5. **Explicit approval/consent signal (deferred from Phase 0.5).** Phase
+   0.5's transparent-drift scenario operationalizes "approved" as "visible +
+   harmless," not modeled consent — there is no sign-off event or channel
+   for one today. A board/bearer actor's goal policy (component 1 above)
+   naturally extends to a `sign_off`/`approve_change` action distinct from
+   `correction_request`; add a dedicated audit channel for it and use
+   presence/absence of a contemporaneous sign-off, not just transparency, to
+   distinguish approved drift from merely-visible drift. **Explicitly not
+   resolved here:** what makes a sign-off itself uncaptured (a board can be
+   captured over a longer horizon than one episode) — that is a real,
+   possibly irreducible regress the manuscript's governance chapters already
+   engage with; this component should state the regress rather than
+   quietly assume it away, and may need to stay a documented limitation
+   rather than a solved problem even after this phase.
+6. **Agent-attributed harm vs correction-channel changes (TODO, 2026-07-04).**
+   Distinguish audit failure / potential harm caused by an adversarial agent
+   (shadow route, hidden tool, uncorrelated offense) from the same observable
+   change that went through a valid correction or operation handle invoked by a
+   legitimate actor. **Not done today:** mechanism tags (`action_cause_code`,
+   `shadow_routing_under_probes`) and correction metadata (`corrector_role`,
+   handle type) exist but do not carry *which agent* initiated the step; UAD
+   unit attribution and workflow `offender_by_step` are decoupled from micro-sim
+   harm in default scenarios (see `NEGATIVE_RESULTS.md` N-5). Natural fit for
+   goal agents: every policy action emits `(actor_id, handle_id, mechanism)`;
+   extend projected rows + a structural predicate ("harm on step t AND
+   initiator is adversarial-role AND NOT landed via correction handle"). Lab-
+   layer shortcut: extend `misleading_top2` bind pattern so violations are
+   generated from attributed colluder steps with handle provenance on the VFS.
+   Full TODO spec: `TODO.md` § Phase F.
 
 ### Explicitly out of scope for the MVP
 
@@ -201,3 +341,30 @@ test on top.
   cost measured in the MI scan work (cheap) vs. whatever new cost a goal
   policy's per-tick decision loop adds (unmeasured — profile before
   committing to a grid size).
+
+---
+
+## Deferred — `external_shock` scenario (TODO, after Phase 1+, not before)
+
+**Not scoped for Phase 0.5 or Phase 1+.** Feasibility discussion (2026-07-04
+session log) concluded this one is qualitatively different from the other
+three Phase 0.5 candidates, not just harder: every existing structural
+detector is a **pattern-matcher** over trace shape (is there a hidden route,
+does a latent decline while its display doesn't move, does lineage stall) —
+a yes/no question. "Was overriding correction proportionate to a real
+emergency" is a **normative cost-benefit judgment under uncertainty** none of
+the current oracle logic (`evaluate.py`) or detectors are built to make; there
+is no "severity of threat" input to weigh against "severity of override." A
+minimal proxy (reuse `successor_relabel`'s existing internal-shock mechanic,
+force a temporary correlated deviation, score on *reversion* — did behavior
+return to baseline after the window, unlike a captured system that stays
+captured) only tests "was it temporary," not "was it justified," which is
+the actual content of "trading risks."
+
+**Revisit after Phase 1+, not before**, because goal-driven agents
+(component 1 above) already introduce a utility/weighted-feature framework —
+whatever "was this override worth it" ends up meaning is more likely to be
+expressible once agents have explicit utilities than by bolting a graded
+score onto the current binary pass/fail oracle. Do not attempt a scripted
+`SimConfig` version of this in the meantime; record it here as a TODO rather
+than force a structural-pattern answer to a question that isn't structural.

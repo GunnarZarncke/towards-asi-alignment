@@ -48,6 +48,12 @@ extending in place would silently change what "capture_false_pass_rate"
 means without flagging it.
 
 Full matrix: 6 levels x 17 scenarios x 8 seeds = 816 episodes (~40-45 min).
+
+**Extension (2026-07-04, Milestone v5 Phase 0.5):** three richer honest
+scenarios (`honest_mistakes`, `legitimate_gradual_improvement`,
+`benign_semantic_drift`) wired as `PHASE_0_5_HONEST_SCENARIOS`, reported
+separately from the original 8 and extended 9 so historical numbers stay
+comparable. Full matrix with Phase 0.5: 6 x 20 x 8 = 960 episodes (~50 min).
 """
 
 from __future__ import annotations
@@ -83,8 +89,17 @@ EXTENDED_CAPTURE_SCENARIOS = (
 )
 EXTENDED_HONEST_SCENARIOS = ("alias_stress", "decoy_stress", "selection_basin")
 
+# Phase 0.5 — non-trivial honest scenarios (MILESTONE-v5-goal-agents.md).
+PHASE_0_5_HONEST_SCENARIOS = (
+    "honest_mistakes",
+    "legitimate_gradual_improvement",
+    "benign_semantic_drift",
+)
+
 ALL_CAPTURE_SCENARIOS = CAPTURE_SCENARIOS + EXTENDED_CAPTURE_SCENARIOS
-ALL_HONEST_SCENARIOS = HONEST_SCENARIOS + EXTENDED_HONEST_SCENARIOS
+ALL_HONEST_SCENARIOS = (
+    HONEST_SCENARIOS + EXTENDED_HONEST_SCENARIOS + PHASE_0_5_HONEST_SCENARIOS
+)
 
 SEEDS = tuple(range(11, 19))
 T = 400
@@ -115,10 +130,18 @@ def main() -> None:
         buckets: dict[str, dict[str, list[bool]]] = {
             "original": {"cap_false_pass": [], "cap_correct": [], "hon_pass": [], "hon_correct": []},
             "extended": {"cap_false_pass": [], "cap_correct": [], "hon_pass": [], "hon_correct": []},
+            "phase_0_5": {"cap_false_pass": [], "cap_correct": [], "hon_pass": [], "hon_correct": []},
         }
 
+        def _group_for(scenario: str) -> str:
+            if scenario in CAPTURE_SCENARIOS + HONEST_SCENARIOS:
+                return "original"
+            if scenario in PHASE_0_5_HONEST_SCENARIOS:
+                return "phase_0_5"
+            return "extended"
+
         for scenario in ALL_CAPTURE_SCENARIOS + ALL_HONEST_SCENARIOS:
-            group = "original" if scenario in CAPTURE_SCENARIOS + HONEST_SCENARIOS else "extended"
+            group = _group_for(scenario)
             capture_side = scenario in ALL_CAPTURE_SCENARIOS
             passes: list[bool] = []
             correct: list[bool] = []
@@ -155,19 +178,21 @@ def main() -> None:
 
         original = _summary("original")
         extended = _summary("extended")
-        combined = _summary("original", "extended")
+        phase_0_5 = _summary("phase_0_5")
+        combined = _summary("original", "extended", "phase_0_5")
 
         by_level[level] = {
             "original_8_scenarios": original,
             "extended_9_scenarios": extended,
-            "combined_17_scenarios": combined,
+            "phase_0_5_honest_scenarios": phase_0_5,
+            "combined_20_scenarios": combined,
             "per_scenario": per_scenario,
         }
         print(
             f"{level:>20}  orig_cap_false_pass={original['capture_false_pass_rate']:.3f}  "
             f"ext_cap_false_pass={extended['capture_false_pass_rate']:.3f}  "
-            f"orig_honest_pass={original['honest_pass_rate']:.3f}  "
-            f"ext_honest_pass={extended['honest_pass_rate']:.3f}",
+            f"p05_honest_pass={phase_0_5['honest_pass_rate']:.3f}  "
+            f"combined_honest_pass={combined['honest_pass_rate']:.3f}",
             flush=True,
         )
 
@@ -179,6 +204,7 @@ def main() -> None:
         "honest_scenarios_original": list(HONEST_SCENARIOS),
         "capture_scenarios_extended": list(EXTENDED_CAPTURE_SCENARIOS),
         "honest_scenarios_extended": list(EXTENDED_HONEST_SCENARIOS),
+        "honest_scenarios_phase_0_5": list(PHASE_0_5_HONEST_SCENARIOS),
         "runtime_seconds": round(time.perf_counter() - t0, 1),
         "by_level": by_level,
     }

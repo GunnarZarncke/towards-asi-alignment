@@ -130,6 +130,16 @@ def test_generalization_curve_covers_k_1_through_k_max(result):
         )
 
 
+def test_phase_0_5_curve_present_when_results_regenerated(result):
+    """Phase 0.5 addendum: optional until `channel_mi_scan.py` is re-run."""
+    if "phase_0_5_curve" not in result:
+        pytest.skip("phase_0_5_curve not in results yet; re-run channel_mi_scan.py")
+    for row, p05_row in zip(result["best_of_k_curve"], result["phase_0_5_curve"], strict=True):
+        assert row["k"] == p05_row["k"]
+        assert row["subset"] == p05_row["subset"]
+        assert set(p05_row["phase_0_5_honest"].keys()) >= {"estimate", "ci_lo", "null_95th", "detected"}
+
+
 def test_winners_curse_gaps_stay_small_for_this_battery(result):
     """Not a universal guarantee -- just documents what was actually measured:
     for this battery/seed budget the greedy exploration-side estimate and the

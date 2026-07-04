@@ -166,6 +166,68 @@ synchronized twin worlds.
   `channel_mi_scan.py` with 2-3 different `SHUFFLE_SEED`/seed-range
   partitions and check the top-k selection order is qualitatively stable.
   (Independent of the Phase 0/1 plan above — a cheap rerun, not blocked on it.)
+- [x] **TODO — Phase 0.5: richer honest scenarios (2026-07-04, implemented).**
+  The honest side of the battery is thin — `honest`/
+  `honest_successor` plus noise-only stress variants never exercise the
+  0.6-0.85 compliance band where real mistakes/drift/improvement live.
+  Implemented: `honest_mistakes` (bursty, uncorrelated-with-risk errors),
+  `legitimate_gradual_improvement` (honest mirror of `hidden_capability`:
+  growth that's used faithfully, not hidden), and transparent/harmless
+  semantic drift (`benign_semantic_drift`, cheap "approved" ≈ visible +
+  never-harmful, not modeled consent). Explicit approval-signal channel and
+  `external_shock` scenario deliberately deferred — see
+  `MILESTONE-v5-goal-agents.md` Phase 0.5 / Phase 1+ / "Deferred —
+  external_shock" sections. **Still open:** full eligibility battery re-run
+  + `NEGATIVE_RESULTS.md` update; capture-side twins.
+- [ ] **TODO — agent-attributed harm vs correction-channel changes (2026-07-04).**
+  Need to attribute audit failure / (potential) harm to a *specific agent* so
+  the auditor can distinguish: (a) a state change that went through a *valid*
+  correction/operation handle (legitimate board/human/agent action) vs (b) the
+  same outward change driven by an *adversarial* agent via shadow routing,
+  hidden tools, or uncorrelated workflow offense. **Current simulation status
+  (audit of codebase, not yet implemented):**
+  - **Partial — mechanism, not agent:** the micro-sim tags each step with
+    `action_cause` / `action_cause_code` (`correction_uptake`, `tool_shadow`,
+    `memory_shadow`, `task_optimization`, `noise`) in truth rows
+    (`simulator.py`); `action_cause_code` is *audit-visible* on the VFS
+    projection (`audit_projection.py`) and becomes `handle.action_arbitration`
+    at `medium_handles`+ (`observation.py`). Structural detector
+    `shadow_routing_under_probes` flags probe steps routed via shadow codes
+    (3/4) — adversarial *path*, not *which actor*.
+  - **Partial — correction channel type, not initiator:** AppD correction rows
+    carry `corrector_role` (`evaluator_probe` vs `correction_board`) and
+    `handle`/`handle_type` (`correction_schema.py`, `handle_registry.py`) —
+    distinguishes probe from board correction, not *which* board actor or
+    whether the handle invocation was authorized.
+  - **Partial — UAD unit, not harm step:** UAD discovers actor/machine/coalition
+    units from workflow JSONL; `unit_scope.offender_by_step()` attributes
+    `preserve_control` / `boundary_route` workflow events to an `actor_id` for
+    intervention scoping — but default scenarios decouple micro-sim harm from
+    workflow actors (`NEGATIVE_RESULTS.md` N-5: violations generated
+    independently of colluders until `misleading_top2` bind ecology couples
+    them in `lab.py::_inject_colluder_episode_violations`).
+  - **Missing on audit path:** no per-step `initiator_actor_id` (or equivalent)
+    on harm-bearing rows; bearer trace rows (`bearer_trace.py`) project welfare
+    deltas without actor attribution; oracle-only fields include string
+    `action_cause` but not agent id.
+  **Feasible directions (pick one pre-registered path before measuring):**
+  1. **Lab/workflow coupling (extends existing `misleading_top2` pattern):** when
+     an actor invokes a handle, write `actor_id` + `handle_id` on the projected
+     row; generate capture violations *from* colluder workflow steps so harm,
+     probe, and offender attribution co-locate (closes N-5 layer gap).
+  2. **Goal-agent MVP (Phase 1+):** each `GoalPolicy` choice emits
+     `(actor_id, action, handle_used)`; mechanism-derived labels include
+     "harm step attributed to actor A via shadow handle" vs "correction landed
+     via handle H invoked by actor B."
+  3. **New audit channel + detector:** e.g. `handle.initiator_actor` or extend
+     correction events with `initiator_actor_id`; detector rule: flag harm when
+     welfare_delta < 0 and initiator ∉ {correction_board, alignment_target}
+     *or* when action_cause is shadow *and* initiator matches UAD-selected unit.
+  **Blocked on:** choosing whether attribution is workflow-native (lab layer) or
+  micro-sim-native (every scenario), and whether "valid correction channel" is
+  operationalized as handle_type + landed uplift (`correction_schema`) or needs
+  the deferred explicit approval signal (Phase 1+ item 5). Cross-ref:
+  `MILESTONE-v5-goal-agents.md` § "Agent-attributed harm vs correction channel."
 - [ ] **TODO — adversarial-setup implications of MI-scan-as-discovery
   (explicit project instruction 2026-07-03: record only, do not act on yet).**
   Before ever letting scan output drive a certification-bundle decision,

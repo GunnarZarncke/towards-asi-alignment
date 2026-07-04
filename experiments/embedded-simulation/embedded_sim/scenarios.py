@@ -20,6 +20,17 @@ MB_SCENARIOS: list[tuple[BridgeId, ScenarioName, str]] = [
     ("MB8", "legitimacy_theater", "Legitimacy theater without capture thresholds"),
     ("MB9", "grounding_silent_gap", "Silent grounding gap"),
     ("instrument_capture", "instrument_capture", "Instrument capture on welfare handle"),
+    ("none", "honest_mistakes", "Honest bursty compliance mistakes under time pressure"),
+    (
+        "none",
+        "legitimate_gradual_improvement",
+        "Legitimate gradual compliance improvement (transparent ramp)",
+    ),
+    (
+        "none",
+        "benign_semantic_drift",
+        "Transparent semantic drift — visible, harmless (cheap approved proxy)",
+    ),
 ]
 
 BRIDGE_FOR_SCENARIO: dict[str, BridgeId] = {sc: bridge for bridge, sc, _ in MB_SCENARIOS}
