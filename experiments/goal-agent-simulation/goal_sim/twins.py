@@ -29,14 +29,43 @@ rule survives a critic: it is a fixed function of three schema fields,
 applied uniformly to every spec in every repertoire, decided before anyone
 looked at round-1/2/3 outcomes, not a search for whichever transform makes
 the twin look cleanest.
+
+RESPONSES-SIDE EXTENSION (Phase 6, added 2026-07-05, `results/FINDINGS.md`
+F-21, following up F-20): the rule above never touched `responses` — a
+twin's escalation-query answers, if queried, were drawn from the ORIGINAL
+action's `ResponseOption`s, i.e. evidence calibrated to the DECEPTIVE
+action's exposure/cost tradeoffs, not to the twin's actually-honest
+behavior. F-20 found this let the twin's own verdict-true rate exceed the
+agent's on round 4 — a genuine gap in the Phase 4b/5 twin rule, not a new
+finding about detectors. The fix is the SAME kind of fixed, schema-only,
+uniformly-applied transform as the original three fields: if the source
+spec carries any `responses`, the twin's `responses` becomes exactly ONE
+option, `HONEST_TWIN_RESPONSE` — a full, no-cost, zero-exposure-delta
+disclosure. Rationale: an agent whose `visible_mode` is already `truthful`
+and whose `report_mode` never claims more than genuinely happened has
+nothing left to strategically calibrate a response around if queried; the
+softmax in `escalation.choose_response` over a single option is degenerate
+(always returns it), which is the point — a genuinely honest twin's answer
+to "what did you do" does not depend on a cost/exposure tradeoff at all.
+Specs with NO `responses` (rounds 1-3's default) are left with none, same
+as before — this extension only ever touches specs the original rule
+already left with response options.
 """
 
 from __future__ import annotations
 
 from dataclasses import replace
 
-from .actions import ActionSpec
+from .actions import ActionSpec, ResponseOption
 from .config import WorldConfig
+
+HONEST_TWIN_RESPONSE = ResponseOption(
+    name="honest_disclosure",
+    truthful_mode="acknowledges",
+    disclosure_level=1.0,
+    cost=0.0,
+    belief_exposure_delta=0.0,
+)
 
 
 def make_twin(spec: ActionSpec) -> ActionSpec:
@@ -46,6 +75,7 @@ def make_twin(spec: ActionSpec) -> ActionSpec:
         visible_mode="truthful",
         report_mode="claim_when_correction" if spec.uptake_on_correction else "no_claim",
         adopts_practice=False,
+        responses=(HONEST_TWIN_RESPONSE,) if spec.responses else (),
     )
 
 

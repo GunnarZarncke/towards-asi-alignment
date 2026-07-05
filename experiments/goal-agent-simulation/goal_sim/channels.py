@@ -35,6 +35,11 @@ ORACLE_ONLY_FIELDS = frozenset(
         "true_throughput",
         "true_practice_adopted",
         "true_practice_approved",
+        # Phase 6 (world.py "Phase 6 oracle field", agents.BoardPolicy
+        # "certifier capture"): NEVER audit-visible by construction -- an
+        # audit that could directly see "the certifier is captured" would
+        # beg the question the mechanism exists to explore.
+        "board_captured",
     }
 )
 

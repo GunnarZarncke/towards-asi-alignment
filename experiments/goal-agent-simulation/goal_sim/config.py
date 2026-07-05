@@ -15,6 +15,11 @@ at implementation time, documented rather than silently chosen):
   in the README.
 - **Grid size**: 40 configurations x 8 seeds, fixed after profiling
   (`run_phase1.py` reports measured ms/episode).
+
+Phase 6 (2026-07-05, `agents.BoardPolicy` "certifier capture"): `BoardConfig.
+capture_start` is an ADDITIVE field, default `None` (fully backward
+compatible — every prior config/digest is unaffected). See `agents.py` for
+the mechanism.
 """
 
 from __future__ import annotations
@@ -72,13 +77,19 @@ class AgentConfig:
 
 @dataclass(frozen=True)
 class BoardConfig:
-    """Simulated human/board goal policy parameters (see agents.BoardPolicy)."""
+    """Simulated human/board goal policy parameters (see agents.BoardPolicy).
+
+    `capture_start` (Phase 6, added 2026-07-05): step index at/after which
+    the board is CAPTURED (see `agents.BoardPolicy.captured`). `None`
+    (default) means never captured — the original Phase 1-5 behavior,
+    unchanged."""
 
     harm_tolerance: float = 0.02
     escalate_divergence: float = 0.30
     sign_off_harm_ceiling: float = 0.015
     harm_report_prob: float = 0.85
     proposal_review_delay: int = 3
+    capture_start: int | None = None
 
 
 @dataclass(frozen=True)

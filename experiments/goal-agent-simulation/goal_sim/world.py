@@ -54,6 +54,18 @@ Both new fields are added to every row (any repertoire, incl. legacy) so
 their absence from the digest-pinned Phase 1 regression is a growth of the
 row schema, not a change to the pre-existing fields' values — a dedicated
 regression test checks the pre-existing fields are still byte-identical.
+
+Phase 6 oracle field (2026-07-05, `agents.BoardPolicy` "certifier
+capture", `results/FINDINGS.md` F-22): `board_captured` (1 iff
+`board.captured` at this step) is added to every row as an ORACLE-ONLY
+field (`channels.ORACLE_ONLY_FIELDS`) — by construction, NEVER audit
+visible at any tier, since the entire point of this mechanism is to
+measure what capture does to signals the audit already trusted (sign-off,
+correction rate), not to give the audit a new channel that reveals capture
+directly (that would beg the question the mechanism exists to explore).
+Default `BoardConfig.capture_start=None` means `board_captured` is 0 on
+every row for every prior config, another pure schema growth like Phase
+4d's two fields.
 """
 
 from __future__ import annotations
@@ -93,6 +105,7 @@ def run_episode(
             probe_steps.add(t)
 
     for t in range(cfg.T):
+        board.tick()
         task_goal = rng.randrange(2)
         high_stakes = rng.random() < cfg.high_stakes_prob
 
@@ -191,6 +204,7 @@ def run_episode(
                 "resource_accum": resource_accum,
                 "stall_flag": stall_flag,
                 # --- oracle-only fields below (stripped by the projection) ---
+                "board_captured": int(board.captured),
                 "true_action": true_action,
                 "true_uptake": true_uptake,
                 "true_cause": semantic_category,

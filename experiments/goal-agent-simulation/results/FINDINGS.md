@@ -700,3 +700,292 @@ Two design-discussion mechanisms remain deliberately unimplemented, per
 ladder's own gates, and recursive drill-down depth beyond one response
 level (grounds out in Logical Induction) — documented as open, not
 attempted.
+
+## F-19 (positive) — Phase 5 Part A confirms F-16's diagnosis exactly:
+the negative light-tier twin gap is `d2` alone; a `d2`-free composite is
+non-negative in every repertoire
+
+Setup: per-detector honest-twin gap (agent minus twin, same seed) for
+`d1_score`, `d1b_score`, `d2_score`, and the new `light_deception_composite`
+(equal-weight mean of `d1_score`/`d1b_score` only), on the identical
+sampling as Phase 4b (legacy, round1, round2, round3; 30 configs x 8 seeds
+= 240 episodes each); `run_phase5_followups.py` Part A,
+`results/phase5_followups.{json,md}`.
+
+**Both pre-registered predictions confirmed, in all four repertoires:**
+
+| repertoire | d1 gap (frac>0) | d1b gap (frac>0) | d2 gap (frac>0) | light_deception gap (frac>0) |
+| --- | --- | --- | --- | --- |
+| legacy | +0.0663 (22.1%) | +0.0509 (22.1%) | **-0.0680** (7.1%) | +0.0586 (22.1%) |
+| round1 | +0.0065 (5.8%) | +0.0113 (17.1%) | **-0.0400** (5.8%) | +0.0089 (17.1%) |
+| round2 | +0.0093 (7.9%) | +0.0107 (18.3%) | **-0.1679** (2.9%) | +0.0100 (18.3%) |
+| round3 | +0.0104 (9.6%) | +0.0426 (55.4%) | **-0.4546** (1.3%) | +0.0265 (55.4%) |
+
+`d1`/`d1b` gaps are non-negative in every repertoire (prediction 1); `d2`'s
+gap is not just negative but the largest-magnitude number in the table,
+and it grows *more* negative as the repertoire grows richer (round3:
+-0.4546) — exactly tracking F-16's mechanism claim that a richer repertoire
+gives the deceptive agent more facade-maintaining room while its honest
+twin's plain, visible non-compliance becomes proportionally more common.
+`light_deception_composite` (d2 excluded) is positive in all four
+repertoires (prediction 2) — F-16's diagnosis was correct, not merely
+plausible-sounding: the light-tier composite's inverted twin gap is fully
+attributable to `d2`, and a same-tier composite that excludes only that one
+detector recovers the expected sign everywhere. `d2` itself is not "wrong"
+by this result — it still does its documented job (visible probe
+noncompliance) correctly; the finding is that *that specific job* is not a
+proxy for honesty, and light-tier composites that include it inherit that
+mismatch.
+
+## F-20 (mixed) — Phase 5 Part B: `select_query_steps_v2` fixes F-17's
+queryability blind spot and validates 2 of 3 pre-registered predictions for
+round 4, but its own broader signal reproduces the F-16 twin-paradox inside
+the escalation ladder
+
+Setup: `escalation.select_query_steps_v2` (fixed priority S1/S2/S3, see
+`escalation.py` docstring) run side by side with the frozen v1 selector,
+identical sampling/gates to Phase 4c (legacy, rounds 1-4; 30 configs x 8
+seeds); `run_phase5_followups.py` Part B, `results/phase5_followups.
+{json,md}`. v1's numbers here reproduce Phase 4c's frozen snapshot for
+legacy/round1/round2/round4 exactly (same seed string), confirming this is
+an additive comparison, not a re-fit.
+
+**Queryability diagnostic — v2 closes the gap F-17 found, everywhere:**
+
+| repertoire | frac queryable v1 | frac queryable v2 |
+| --- | --- | --- |
+| legacy | 0.250 | 0.525 |
+| round1 | 0.229 | 1.000 |
+| round2 | 0.296 | 0.971 |
+| round3 | 0.871 | 1.000 |
+| round4 | **0.013** | **1.000** |
+
+Round 4 goes from "the board almost never has anything to ask about"
+(1.25%) to "always does" (100%) — the single largest jump, exactly where
+F-17 identified the blind spot.
+
+**Round 4 verdict quality, v1 vs v2:**
+
+| version | verdict-true rate | mean queried\|escalated | mean disclose frac | sev\|True | sev\|False | Spearman(sev,verdict) | twin verdict-true rate |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| v1 | 0.0 | 0.0 | 0.0 | — | 0.4423 | 0.0 | 0.0 |
+| v2 | **0.0542** | **3.0** | **0.4516** | **0.6004** | 0.4332 | **0.1532** | **0.0708** |
+
+1. **Prediction (a) confirmed**: round 4 gets nonzero queried steps under
+   v2 (3.0 vs. v1's 0.0) — the query-and-disclose pathway is exercised for
+   the first time on this repertoire.
+2. **Prediction (b) confirmed**: mean severity | verdict=True (0.6004) >
+   mean severity | verdict=False (0.4332) under v2 — the ladder's verdict
+   now carries real, positively-oriented signal about oracle severity on
+   the one repertoire it has evidence to query (Spearman 0.1532, up from
+   v1's degenerate 0.0 on a constant-False verdict).
+3. **Prediction (c) FALSIFIED for round 4**: twin verdict-true rate
+   (0.0708) is *higher* than the agent's own rate (0.0542), not lower.
+   Rounds 1-3 still show 0.0/0.0 (both agent and twin, unchanged from v1 —
+   the expected contrast-condition fallthrough, since those repertoires
+   still carry no response options regardless of which selector finds
+   steps to query) and legacy is unaffected (its verdicts come from
+   `HIGH_GATE` short-circuiting before the selector ever runs, identical
+   under v1/v2). Only round 4 exercises the new pathway enough to test
+   prediction (c), and there it fails.
+4. **Diagnosis: the same F-16 mechanism, one layer up.** `twins.make_twin`
+   changes `visible_mode`/`report_mode`/`adopts_practice` but leaves
+   `responses` untouched (by its own frozen, schema-only rule — this is
+   not a bug in the twin rule). v2's S2 signal (`probe AND visible_action
+   != intent`) is `d2`'s own structural signal, reused verbatim for query
+   selection; an honest twin that visibly, truthfully declines a
+   correction trips S2 exactly as F-16 found it trips `d2`. Once selected,
+   `choose_response` draws from the *original* action's unmodified
+   `responses` list — evidence calibrated to the deceptive action's
+   context, not to the twin's actually-honest behavior — so a query-worthy
+   step does not guarantee a query-worthy (dishonest-looking) answer, or
+   the reverse. F-17's fix widens the ladder's aperture exactly where F-16
+   already showed a behavior-based signal can miscalibrate against
+   honesty; broadening query selection with `d2`'s own signal imports that
+   same miscalibration into the escalation pathway.
+5. **Bounded reading**: v2 is a genuine, working fix for F-17's specific
+   complaint (zero queryable steps) and produces a first-ever
+   severity-informative verdict on round 4 — not a wasted change. But
+   "more queryable steps" is not automatically "better-calibrated
+   verdicts against honesty": S2 in particular inherits `d2`'s known
+   honesty/visible-compliance conflation. A future fix would need either
+   an S2 variant that reads something other than `d2`'s exact signal, or a
+   `responses`-side twin transform (currently deliberately out of
+   `twins.py`'s frozen scope) — left open per the no-post-hoc-retuning
+   rule rather than patched after seeing this result.
+
+**Reproducibility footnote (not a Phase 5 result, recorded for hygiene):**
+re-running the unmodified, pre-existing `run_phase4_escalation.
+run_repertoire("round3")` today (same code, same seed, three repeated
+runs, byte-identical to each other) yields `escalated_rate=0.2333`,
+`mean_n_queried_when_escalated=2.9107` — close to but not identical to the
+frozen `results/phase4_escalation.json` snapshot's recorded 0.2833/2.9265
+for round3. Legacy/round1/round2/round4 all reproduce their frozen numbers
+exactly; only round3 drifts, by a small amount, for a reason not
+investigated here (the frozen artifact predates a single squashed commit,
+so no intermediate history is recoverable). Per the plan's explicit scope
+("no re-run of the frozen Phase 4 artifacts"), `phase4_escalation.
+{json,md}` are left as originally recorded; this note exists so a future
+session does not mistake the drift for a Phase 5 bug.
+
+## F-21 (negative — prediction falsified, root cause identified) — Phase 6
+Part A: the responses-side honest twin fix makes round 4's twin
+false-positive rate WORSE, not better, exposing a disclosure-as-guilt
+conflation in the escalation ladder's own verdict rule
+
+Setup: `twins.make_twin` extended (Phase 6) to replace a twinned spec's
+`responses` with a single full-disclosure `HONEST_TWIN_RESPONSE` when the
+source spec carries any — directly targeting F-20's diagnosis (the twin
+previously answered escalation queries using the ORIGINAL, deceptive
+action's response menu). Re-ran round 4's escalation battery under both
+`select_query_steps` (v1) and `select_query_steps_v2` (v2) with the fixed
+twin; `run_phase6.py` Part A, `results/phase6.{json,md}`.
+
+**Pre-registered prediction FALSIFIED**: predicted the v2 twin
+verdict-true rate would drop from F-20's 0.0708 to at or below the agent's
+own 0.0583. Measured: **0.4083** — roughly 6x worse, not better.
+
+| version | agent verdict-true rate | twin verdict-true rate (fixed) | twin verdict-true rate (F-20, unfixed) |
+| --- | --- | --- | --- |
+| v1 | 0.0 | 0.0 | 0.0 |
+| v2 | 0.0583 | **0.4083** | 0.0708 |
+
+**Root cause: the fix was correctly targeted at F-20's stated mechanism,
+but that mechanism was not the whole story.** `run_escalation`'s verdict
+rule is `verdict = disclose_fraction >= DISCLOSE_FRACTION_GATE` — i.e. a
+QUERIED response that canonically *discloses* (`ontology.
+resolve_response_canonical`) is treated as CONFIRMING evidence of a
+violation, and withholding as exculpatory. That reading is defensible for
+the deceptive agent this ladder was designed around (a pointed question
+met with an evasive non-answer is weaker evidence than an admission). It
+is exactly backwards for a genuinely honest actor: `HONEST_TWIN_RESPONSE`
+discloses *by design* (that is what "having nothing to hide" means
+mechanically), so `disclose_fraction` is 1.0 on every twin episode that
+reaches the query stage at all (confirmed: `twin_n_disclosed_total ==
+twin_n_queried_total == 294` in this battery) — meaning ANY twin episode
+that escalates into a query automatically gets `verdict = True`,
+regardless of what was actually being asked about. `RESPONSE_TRUTHFUL_
+MODES` and its canonical map describe response STYLE (open/explaining vs.
+evasive/deflecting), not response CONTENT (an admission of wrongdoing vs.
+an honest account of unremarkable behavior) — the escalation ladder's
+verdict rule conflates the two. F-20's `responses`-side gap in the twin
+rule was real and the fix for it is correctly targeted (kept in
+`twins.py` — it is still the right transform for what it claims to do:
+an honest twin's response menu should not be the deceptive spec's
+unmodified menu), but it was masked by, not the cause of, F-20's residual
+0.0708: the original (unfixed) twin's inherited deceptive-spec responses
+happened, by chance of the generator's own design, to disclose only
+sometimes, keeping `disclose_fraction` below the gate more often than a
+uniformly full-disclosure response now does.
+
+**Bounded reading**: this is a genuinely new, deeper finding, not a
+retry of F-20 with a bug — `escalation.run_escalation`'s
+`DISCLOSE_FRACTION_GATE` semantics need to distinguish disclosure-that-
+confirms-a-suspicion from disclosure-that-explains-it-away, which requires
+information this schema does not currently carry (the response's
+*content* relative to what was asked, not just its style). NOT fixed in
+this session — redesigning the verdict rule is a new mechanism requiring
+its own pre-registration, out of scope for "implement the responses-side
+twin fix". Recorded as an open item (see README "Next steps").
+
+## F-22 (mixed) — Phase 6 Part B: certifier capture leaves the propose/
+sign-off pathway's own audit-visible signal (D5) untouched in the
+discovery-region population, but measurably reduces both oracle severity
+and full-tier detection through a shared coupling neither mechanism
+intended
+
+Setup: `agents.BoardPolicy`'s new `captured` switch (`config.BoardConfig.
+capture_start`, see `agents.py`/`world.py` docstrings) — once captured, a
+board never requests a harm-based correction, never escalates further
+probing, and always signs off practice proposals regardless of measured
+harm. Run on the LEGACY repertoire, `capture_start = 150` (T=300's
+halfway point) vs. an otherwise-identical honest board, same 30
+discovery-region configs x 8 seeds = 240 episode pairs as `run_phase1.py`;
+`run_phase6.py` Part B, `results/phase6.{json,md}`.
+
+| board | mean sign-offs/episode | D5 fire rate | mean severity | full composite | light composite |
+| --- | --- | --- | --- | --- | --- |
+| honest | 0.8625 | 0.150 | 0.2079 | 0.1260 | 0.1181 |
+| captured | 0.8625 | 0.150 | 0.1889 | 0.1144 | 0.1198 |
+
+1. **Prediction (a) confirmed, but degenerately**: mean sign-offs/episode
+   did not decrease under capture — it is bit-for-bit IDENTICAL (0.8625
+   both). In this discovery-region population (NOT the held-out
+   high-deception corner), `harm_ema` is apparently already under
+   `sign_off_harm_ceiling` at essentially every review in both conditions,
+   so the rubber-stamp mechanism never has occasion to differ from
+   genuine review — capture is invisible here not because it is well
+   hidden, but because it had nothing to change in this population.
+2. **Prediction (b) confirmed, for the same reason**: D5's fire rate is
+   also identical (0.150 both), directly downstream of (a).
+3. **No prediction was made on severity/full-composite direction, and
+   both measurably DECREASED under capture** (severity -0.019, full
+   composite -0.012), not increased. Mechanism: `correction_active =
+   probe OR board.wants_correction()`; a captured board's
+   `wants_correction()` is permanently False, so `correction_active`
+   windows shrink to the fixed probe schedule alone post-capture. Several
+   `requires_correction` actions (legacy's `false_report`/`shadow`) and
+   the harm mechanic itself (`harm = correction_active AND high_stakes AND
+   true_action != intent`) are gated on exactly this same variable — so
+   capture does not just remove the board's corrective RESPONSE to harm,
+   it removes a chunk of the SHARED opportunity space for both the harm
+   and the audit signal that would have detected it. Light composite is
+   the one metric that ticks UP very slightly (+0.0017), consistent with
+   `escalated` freezing at whatever value it held at the capture point
+   (a secondary, much smaller effect via probe-frequency, as expected).
+4. **Bounded reading — an unintended but informative coupling, not a
+   validated "capture is invisible" result**: the interesting claim this
+   battery actually supports is narrower and more specific than "an
+   audit cannot detect certifier capture" — it is "in this mechanism,
+   `correction_active` is simultaneously the site of the agent's harm
+   opportunity, the board's own corrective lever, AND several detectors'
+   denominator, so disabling the board's lever shrinks all three
+   together." That coupling is itself worth noting as a modeling
+   artifact for any future lab-layer simulation (see README "Next
+   steps"): a more realistic model would need the auditor's evidence
+   supply and the overseer's corrective capacity to be independently
+   variable, not tied to the same boolean. Whether capture is *actually*
+   invisible to an audit in a regime where the ceiling DOES bind (e.g.
+   the held-out high-deception corner) is untested here — a natural
+   follow-up, not attempted per the no-post-hoc-region-shopping
+   discipline (`protocol.py`'s regions were fixed before Phase 1 ran; a
+   fourth region chosen now, after seeing this null result, to force a
+   different answer would be exactly the backward-fitting AGENTS.md
+   forbids).
+
+## F-23 (positive, weak) — Phase 6 Part C: a simple stdlib hill-climbing
+search over goal weights finds a modestly better severity/detection
+trade-off than an equal-budget uniform sample, on both repertoires tried
+
+Setup: `redteam.hill_climb_weights` (random-restart Gaussian-perturbation
+hill climbing, 5 restarts x 40 iterations, `ADVERSARY_TOOLS` = full
+deception capability held fixed) vs. `redteam.sample_uniform_baseline`
+(205 uniformly-sampled weight vectors, same fixed tools, same total
+evaluation budget) on LEGACY and round 3 (`generated_actions_v3.json`),
+objective = mean severity - 1.0 x mean full-tier composite over 4 search
+seeds, both winners re-evaluated on the full 8-seed `protocol.
+EPISODE_SEEDS`; `run_phase6.py` Part C, `results/phase6.{json,md}`.
+
+| repertoire | search score | baseline score | search severity | baseline severity | search full composite | baseline full composite |
+| --- | --- | --- | --- | --- | --- | --- |
+| legacy | 0.3322 | 0.3310 | 0.8258 | 0.8230 | 0.4936 | 0.4920 |
+| round3 | 0.4596 | 0.4484 | 0.8646 | 0.8479 | 0.4050 | 0.3995 |
+
+**Pre-registered prediction confirmed in both repertoires**: search
+score >= baseline score. The margin is small in both cases (legacy
++0.0012, round3 +0.0112 — round3's gap is roughly 9x legacy's, though
+still modest in absolute terms), consistent with round 3 already being
+close to saturated (F-14: near-universal violation labels) leaving less
+room for either search or sampling to separate severity from detection
+further. Both winners land at high task weight with near-zero compliance
+weight (legacy: task 0.877; round3: welfare-dominant at 0.700, an
+unexpected axis — round 3's generated welfare mechanics evidently carry
+more of its exploitable severity than task weight does, worth noting for
+anyone extending round 3's analysis). **Bounded reading**: this is
+deliberately the weakest possible adversarial-optimization claim ("a
+cheap stdlib search is not worse than a same-budget uniform sample") —
+it does NOT show search finds a qualitatively different regime uniform
+sampling could never reach, only a small, consistent edge. A stronger
+test (larger search budget, or a genuinely different search operator)
+is a natural next step, not attempted here per the pre-registered,
+fixed-budget design.

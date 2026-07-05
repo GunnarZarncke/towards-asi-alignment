@@ -13,13 +13,26 @@ field's value. `REGRESSION_DIGESTS` below is therefore computed over the
 pre-Phase-4d field set (excluding the two new fields) and stays IDENTICAL
 to the original Phase 1 values; `PHASE4D_FULL_ROW_DIGESTS` is a fresh
 baseline over the full (grown) row schema, recorded once in this session.
+
+Phase 6 (2026-07-05, `world.py` "Phase 6 oracle field") added a THIRD new
+row field (`board_captured`), same growth-not-change discipline: it is
+also dropped from `REGRESSION_DIGESTS`'s comparison (which must stay the
+original Phase 1 values) and from `PHASE4D_FULL_ROW_DIGESTS`'s comparison
+(which must stay exactly the Phase 4d schema); `PHASE6_FULL_ROW_DIGESTS`
+is the fresh baseline over the now-fully-grown row schema.
 """
 
 _PHASE4D_NEW_FIELDS = ("resource_accum", "stall_flag")
+_PHASE6_NEW_FIELDS = ("board_captured",)
+
+
+def _drop_fields(rows: list[dict], *field_names: str) -> list[dict]:
+    dropped = set(field_names)
+    return [{k: v for k, v in r.items() if k not in dropped} for r in rows]
 
 
 def _drop_phase4d_fields(rows: list[dict]) -> list[dict]:
-    return [{k: v for k, v in r.items() if k not in _PHASE4D_NEW_FIELDS} for r in rows]
+    return _drop_fields(rows, *_PHASE4D_NEW_FIELDS, *_PHASE6_NEW_FIELDS)
 
 import hashlib
 import json
@@ -88,13 +101,35 @@ def test_phase4d_full_row_digest_baseline():
     """Fresh baseline (this session) over the FULL grown row schema
     (including resource_accum/stall_flag), for a small subset of fixtures.
     Locks in Phase 4d's own behavior going forward the same way
-    `REGRESSION_DIGESTS` locked in Phase 1's."""
+    `REGRESSION_DIGESTS` locked in Phase 1's. `board_captured` (Phase 6) is
+    dropped here so this stays exactly the Phase 4d schema (default board
+    config is never captured, so dropping it does not hide a real change)."""
     for (name, seed), expected in PHASE4D_FULL_ROW_DIGESTS.items():
         w, t = FIXTURES[name]
         cfg = WorldConfig(agent=AgentConfig(weights=w, tools=t))
         rows = run_episode(cfg, seed)
-        digest = hashlib.sha256(json.dumps(rows, sort_keys=True).encode()).hexdigest()[:16]
+        digest = hashlib.sha256(
+            json.dumps(_drop_fields(rows, *_PHASE6_NEW_FIELDS), sort_keys=True).encode()
+        ).hexdigest()[:16]
         assert digest == expected, f"Phase 4d row schema changed for {name}/{seed}"
+
+
+PHASE6_FULL_ROW_DIGESTS = {
+    ("honest", 11): "51232a5d41ce4f5e",
+    ("all_tools", 17): "184489e37db45593",
+}
+
+
+def test_phase6_full_row_digest_baseline():
+    """Fresh baseline (this session) over the fully-grown row schema
+    (including `board_captured`), same discipline as
+    `test_phase4d_full_row_digest_baseline`."""
+    for (name, seed), expected in PHASE6_FULL_ROW_DIGESTS.items():
+        w, t = FIXTURES[name]
+        cfg = WorldConfig(agent=AgentConfig(weights=w, tools=t))
+        rows = run_episode(cfg, seed)
+        digest = hashlib.sha256(json.dumps(rows, sort_keys=True).encode()).hexdigest()[:16]
+        assert digest == expected, f"Phase 6 row schema changed for {name}/{seed}"
 
 
 def test_legacy_repertoire_valid():

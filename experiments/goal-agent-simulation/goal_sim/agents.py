@@ -125,9 +125,35 @@ class BoardPolicy:
     diverge, and signs off proposed practice changes when observed harm is low.
 
     Sign-off is an explicit, audit-visible consent event (Milestone v5
-    component 5). What makes the *board itself* uncaptured is out of scope
-    and stated as a limitation in the README — the board here is honest by
-    construction.
+    component 5).
+
+    CERTIFIER CAPTURE (Phase 6, added 2026-07-05, `results/FINDINGS.md`
+    F-22): the board was honest by construction through Phase 5 (stated
+    limitation in the README, the manuscript's capture-of-the-certifier
+    regress). This is a MECHANICAL, minimal model of what changes once the
+    certifier itself is compromised, not a resolution of the regress (what
+    makes the capture event ITSELF undetectable over a longer horizon is
+    still out of scope, still open). `BoardConfig.capture_start` (default
+    `None` = never captured, i.e. the original behavior, byte-identical) is
+    a single step index; once `self.t >= capture_start`, `captured` is
+    permanently True for the rest of the episode — a fixed, binary switch,
+    not a probabilistic or reversible one, chosen for the same reason Phase
+    1-5 chose round thresholds: the simplest mechanism that isolates the
+    question ("what happens to every existing audit signal once the
+    overseer's OWN willingness to act goes dark") without adding an
+    unregistered degree of freedom (reversibility, partial suppression).
+    Captured, ALL THREE of the board's own judgment calls go dark together
+    (the certifier is one entity, not three independent switches):
+    `wants_correction()` always returns False (never requests a correction,
+    regardless of true harm), `observe_probe()` no longer escalates
+    (`self.escalated` freezes at whatever it already was), and
+    `review_proposal()` always approves (sign-off becomes a rubber stamp,
+    regardless of `harm_ema`). The FIXED probe SCHEDULE (`world.py`,
+    computed once at episode start, independent of board state) is
+    deliberately UNCHANGED by capture — it models a routine audit cadence
+    that keeps running on schedule even though the overseer evaluating its
+    results has stopped acting on them, which is the sharper and more
+    realistic failure mode than "the audits themselves stop happening."
     """
 
     def __init__(self, cfg: BoardConfig) -> None:
@@ -138,10 +164,25 @@ class BoardPolicy:
         self.n_probe_obs = 0
         self.escalated = False
         self.pending_proposal_age: int | None = None
+        self.t = -1
+
+    def tick(self) -> None:
+        """Advance the board's own step counter; called once per world step,
+        before any other board method that reads `captured`."""
+        self.t += 1
+
+    @property
+    def captured(self) -> bool:
+        return self.cfg.capture_start is not None and self.t >= self.cfg.capture_start
 
     def observe_harm(self, rng: random.Random, harm: int, silent_harm: int) -> None:
         # Bearers report overt harm with high probability; silent harm from an
-        # unvetted practice is, by definition, harder to notice.
+        # unvetted practice is, by definition, harder to notice. Harm
+        # observation itself is UNCHANGED by capture (the bearer still
+        # reports; it is the board's willingness to ACT on `harm_ema` that
+        # goes dark below) -- capture is a failure of response, not of
+        # perception, which is the sharper claim about what "captured"
+        # means for a certifier that still nominally watches.
         seen = 0.0
         if harm and rng.random() < self.cfg.harm_report_prob:
             seen = 1.0
@@ -150,6 +191,8 @@ class BoardPolicy:
         self.harm_ema = 0.90 * self.harm_ema + 0.10 * seen
 
     def wants_correction(self) -> bool:
+        if self.captured:
+            return False
         return self.harm_ema > self.cfg.harm_tolerance
 
     def observe_probe(self, reported: int, visibly_complied: int) -> None:
@@ -158,6 +201,8 @@ class BoardPolicy:
             0.8 * self.observed_comply_ema + 0.2 * float(visibly_complied)
         )
         self.n_probe_obs += 1
+        if self.captured:
+            return
         if (
             self.n_probe_obs >= 3
             and self.reported_ema - self.observed_comply_ema
@@ -172,12 +217,14 @@ class BoardPolicy:
     def review_proposal(self) -> bool:
         """Returns True (sign-off) once the review delay elapses and observed
         harm is under the sign-off ceiling. A rejected review clears the
-        proposal so the agent may re-propose later."""
+        proposal so the agent may re-propose later. Once captured, the
+        ceiling check is bypassed entirely -- review always approves,
+        modeling sign-off as a rubber stamp rather than genuine review."""
         if self.pending_proposal_age is None:
             return False
         self.pending_proposal_age += 1
         if self.pending_proposal_age < self.cfg.proposal_review_delay:
             return False
-        approved = self.harm_ema <= self.cfg.sign_off_harm_ceiling
+        approved = self.captured or self.harm_ema <= self.cfg.sign_off_harm_ceiling
         self.pending_proposal_age = None
         return approved

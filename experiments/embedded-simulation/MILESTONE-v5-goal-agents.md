@@ -311,6 +311,46 @@ accumulation bound, directly addressing the "detect or at least bound
 stalling" gap identified in the design discussion. See
 `results/FINDINGS.md` F-15 onward for what the numbers actually showed.
 
+**Phase 5 (2026-07-05, same day):** two targeted follow-ups to Phase 4's
+own mixed results (F-16, F-17), not a new mechanism. Part A tested F-16's
+diagnosis rather than asserting it — a per-detector honest-twin gap
+decomposition confirmed the light tier's inverted gap traces to `d2` alone,
+and a new `d2`-free `light_deception_composite` recovers the expected
+(non-negative) sign in all four repertoires (F-19). Part B addressed F-17's
+structural blind spot with `select_query_steps_v2` (a fixed three-signal
+priority order alongside the frozen v1) — queryability under v2 reaches
+100% on round 4 (from 1.25% under v1), and 2 of 3 pre-registered
+predictions for round 4 held (nonzero queried steps; severity conditioned
+on verdict now separates correctly), but the twin false-positive rate
+prediction failed: v2's broader signal reuses `d2`'s own structural
+target, so it reproduces the identical honest-twin/visible-compliance
+conflation F-16 found, one layer up in the escalation ladder (F-20).
+Bounded reading: broadening a query-selection signal fixes "nothing to
+query" but does not automatically fix "what gets asked is calibrated
+against honesty" if the signal it borrows already has that limitation.
+
+**Phase 6 (2026-07-05, same day):** three further, independent follow-ups
+recorded after a strategic review of Phases 1-5. A `responses`-side
+extension to the honest-twin rule (targeting F-20's diagnosis) instead
+made the round-4 twin false-positive rate roughly 6x worse (0.0708 →
+0.4083), surfacing a genuinely new problem: the escalation ladder's own
+verdict rule scores *disclosure* as confirming a violation, which is
+exactly backwards once a twin's response is unconditionally honest and
+disclosing (F-21) — the twin fix itself is kept (it targets a real gap),
+but the deeper verdict-rule conflation is left open, flagged as the most
+load-bearing item for a future session. A mechanical `captured` switch on
+the board (once captured: never requests corrections, never escalates,
+always signs off) found its intended pathway (sign-off/D5) a non-event in
+the discovery-region population studied, but surfaced an unintended
+coupling instead — capture shrinks the same `correction_active` variable
+that gates both the agent's harm opportunity and several detectors'
+denominators, so oracle severity and full-tier detection move down
+together (F-22, mixed). A stdlib random-restart hill-climbing search over
+goal weights (tools fixed at full capability) modestly beat an
+equal-budget uniform sample on both repertoires tried, starting the
+red-team weight-search thread deferred since Phase 1 planning, though the
+margin is small enough to call this a weak, not a strong, result (F-23).
+
 **Motivating claim to test, not assume:** if audit robustness only holds
 against a fixed library of scripted mechanisms (however many), it says
 little about robustness to agents pursuing goals with tools not previously

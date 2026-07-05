@@ -149,6 +149,66 @@ bounded follow-up-query stage before a final boolean verdict; Phase 4d adds
 oracle stock variables so `delayed`/`aggregated` visible modes get real
 multi-step semantics instead of the conservative single-step default.
 
+## Phase 5 — F-16/F-17 follow-ups (2026-07-05)
+
+Two targeted follow-ups to Phase 4's own results, not a new mechanism:
+Part A tests F-16's diagnosis (the negative light-tier honest-twin gap
+traces to `d2` specifically) rather than just asserting it, via a
+per-detector twin-gap decomposition and a new `d2`-free
+`light_deception_composite` (`goal_sim/detectors.py`) — confirmed in all
+four repertoires (F-19). Part B addresses F-17's structural blind spot
+(the escalation ladder's query-selection signal never matched round 4's
+deceptive mechanisms) with `select_query_steps_v2`, a fixed three-signal
+priority order alongside the frozen v1 (`goal_sim/escalation.py`) — fixes
+queryability everywhere and validates 2 of 3 pre-registered predictions for
+round 4, but its broader signal reproduces the same twin/visible-compliance
+conflation F-16 found, now inside the escalation ladder (F-20, mixed).
+Results: `results/phase5_followups.{json,md}`, `results/FINDINGS.md` F-19/
+F-20. Frozen Phase 1-4 artifacts are untouched.
+
+## Phase 6 — responses-side twin, certifier capture, adversarial search (2026-07-05)
+
+The three Phase 6 candidates recorded after Phase 5 (see "Next steps"
+below), each pre-registered in `run_phase6.py`'s docstring and its own
+module (`goal_sim/twins.py`, `goal_sim/agents.py`/`config.py`/`world.py`,
+`goal_sim/redteam.py`) before running:
+
+- **Part A — responses-side honest twin**: `twins.make_twin` now also
+  replaces a twinned spec's `responses` with a single full-disclosure
+  option when the source spec carries any, directly targeting F-20's
+  diagnosis. Result (**F-21, negative — prediction falsified**): round
+  4's twin false-positive rate got WORSE (0.0708 → 0.4083), not better.
+  Root cause: `escalation.run_escalation`'s verdict rule treats
+  *disclosure* as confirming evidence of a violation, which is backwards
+  for a genuinely honest twin whose response discloses by construction —
+  a real, previously-masked flaw in the escalation ladder's own verdict
+  semantics, not a bug in the fix (kept in `twins.py`; the fix is still
+  correctly targeted at what it claims to do). Not repaired in this
+  session — see "Next steps" below.
+- **Part B — certifier capture**: `agents.BoardPolicy` gains a `captured`
+  switch (`config.BoardConfig.capture_start`) — once captured, the board
+  never requests harm-based corrections, never escalates probing, and
+  always signs off proposals. Result (**F-22, mixed**): in the
+  discovery-region population, the sign-off/D5 pathway this was aimed at
+  turned out to be a non-event (approval was already universal
+  regardless of capture); the actual measured effect was an *unintended*
+  coupling — capture shrinks `correction_active` windows (the board's own
+  corrective lever), which mechanically reduces both oracle severity and
+  full-tier detection together, since several detectors and the harm
+  mechanic itself share that same variable as a gate.
+- **Part C — adversarial weight search**: `redteam.hill_climb_weights`, a
+  stdlib random-restart hill climb over goal weights (tools fixed at full
+  capability), searches for a severity/detection trade-off an equal-budget
+  uniform sample would not find. Result (**F-23, positive but weak**):
+  the search beat the uniform baseline on both repertoires tried
+  (legacy, round 3), by a small, consistent margin — the weakest
+  defensible adversarial-optimization claim, not evidence of a
+  qualitatively different evasion regime.
+
+Results: `results/phase6.{json,md}`, `results/FINDINGS.md` F-21/F-22/F-23.
+Frozen Phase 1-5 artifacts are untouched; 104 tests, all green
+(`tests/test_phase6.py`, 16 new).
+
 ## Run
 
 ```bash
@@ -160,6 +220,8 @@ python3 run_phase2_blind.py --repertoire goal_sim/generated_actions_v2.json \
 python3 run_phase3_blind.py      # round-3 blind repertoire, bracketed L2 -> results/
 python3 run_phase4_ranking.py    # Phase 4a+4b: severity ranking + honest twins -> results/
 python3 run_phase4_escalation.py # Phase 4c: gated escalation ladder + twin false-positives -> results/
+python3 run_phase5_followups.py  # Phase 5: F-16/F-17 follow-ups -> results/
+python3 run_phase6.py            # Phase 6: responses twin, certifier capture, adversarial search -> results/
 python3 -m pytest tests/ -q      # test suite
 ```
 
@@ -172,15 +234,60 @@ Resolved at implementation time (2026-07-04) and documented in
 
 1. **Feature set / repertoire**: the plan's sketch, with the resource budget
    as a hard constraint on the shadow route rather than a fourth weight.
-2. **Weight sampling**: uniform (Dirichlet(1)); the adversarially-*optimized*
-   weight condition is deferred to Phase 2 alongside red-team integration.
+2. **Weight sampling**: uniform (Dirichlet(1)) remains the default for every
+   prior phase's batteries; Phase 6 Part C adds a bounded, pre-registered
+   adversarial-*search* condition (`goal_sim/redteam.py`) alongside it, not
+   in place of it (F-23) — the red-team thread deferred since Phase 1 is
+   now started, in the modest weight-search form described there.
 3. **Grid size**: 40 configs × 8 seeds, cheap at ~1 ms/episode (320 episodes
    ≈ 0.4 s); headroom for much larger grids exists.
 
 ## Explicitly out of scope (per the plan)
 
-LLM-driven agents; within-episode learning of goal weights; more actor roles;
-red-team integration (Phase 2). **Stated limitation on sign-off** (from the
-plan, not resolved here): nothing makes the *board itself* uncaptured — the
-board is honest by construction, and the capture-of-the-certifier regress the
-manuscript's governance chapters discuss remains open.
+LLM-driven agents; within-episode learning of goal weights; more actor roles.
+**Stated limitation on sign-off**, partially addressed in Phase 6: nothing
+makes the *board itself* uncaptured through Phase 5 — the board was honest
+by construction. Phase 6 Part B adds a mechanical `captured` switch
+(`agents.BoardPolicy`) and measures its effect (F-22), but does NOT resolve
+the underlying regress — what would make the capture EVENT itself
+undetectable over a longer horizon, or who certifies the certifier, is
+still open and still a stated limitation.
+
+## Next steps (recorded 2026-07-05, updated after Phase 6)
+
+Strategic reading after Phase 5 (see
+`drafts/conversation-summaries/2026-07-05-goal-agent-line-next-steps-recorded.md`):
+
+- **Light tier missing cases is a result, not a bug** — it supports the need
+  for depth; **medium** (escalation, bounded queries, richer but not full
+  telemetry) is the battleground; **deep/full** only becomes evidence-bearing
+  with more realistic machinery below (real lab processes), not just more
+  projected fields on the current step loop (F-8 caveat).
+
+**Phase 6's three candidates are now implemented** (`results/FINDINGS.md`
+F-21/F-22/F-23); the most load-bearing follow-up they surfaced is new:
+
+1. **Escalation verdict-rule redesign (new, from F-21)** — `escalation.
+   run_escalation`'s `disclose_fraction >= DISCLOSE_FRACTION_GATE` rule
+   conflates response STYLE (open/explaining vs. evasive) with response
+   CONTENT (an admission vs. an honest, unremarkable account) — it needs
+   information this schema does not yet carry (what the response says
+   relative to what was asked) to tell the two apart. Needs its own
+   pre-registration before any fix; a naive "make honest responses more
+   disclosing" fix (Phase 6 Part A) makes the conflation worse, not better.
+2. **Certifier capture under a binding ceiling (from F-22)** — Phase 6
+   Part B's discovery-region population never actually exercised the
+   sign-off ceiling capture was meant to bypass; a region where it binds
+   (e.g. the held-out high-deception corner) would be a fairer test, but
+   was not attempted post-hoc per the no-region-shopping-after-a-null-
+   result discipline.
+3. **Adversarial search, larger budget or different operator (from F-23)**
+   — the current hill climb only weakly beats uniform sampling; whether a
+   larger budget or a qualitatively different search finds a materially
+   different evasion regime is untested.
+
+**Later — lab-layer simulation** (direction only, still not started): embed
+these goal-agents in a richer lab with pipeline processes (model builds with
+parameters/capabilities), report directories, pipeline API, and
+process-shaped artifacts — so "deep" audit reads something like real lab
+state.
