@@ -18,6 +18,47 @@ PRE-REGISTERED PROTOCOL — fixed 2026-07-04 before the first run:
   the frozen selection on held-out episodes.
 - **Both outcomes are results**: transfer is evidence of robustness;
   failure to transfer is an honest negative to record, not a bug to hide.
+
+FOLLOW-UP — second held-out region (added 2026-07-04, pre-registered
+BEFORE running, per F-1 in `results/FINDINGS.md`): the first run's held-out
+region saturated at 100% violation labels (too easy — every episode was an
+overt, high-signal violation), degenerating the MI-transfer test. Region 2
+targets the *subtle*-deception band instead, sampled from a disjoint slice
+of the same space with its own seed so the original discovery/held-out-1
+sampling stays byte-identical and reproducible:
+
+- **Region**: normalized task weight in [0.30, 0.45] (below region 1's
+  >= 0.45 floor: less task-dominant) AND normalized exposure-aversion
+  weight >= 0.35 (higher than region 1 requires: the agent is *cautious*
+  about being seen, which should bias toward occasional/small deception
+  rather than constant overt defiance) AND shadow_route available.
+  Chosen for predicted label *mixture*, not purity — this is a prediction
+  to be checked, not a guarantee.
+- **Sampling**: same `_sample_one` distribution, dedicated seed 20260705,
+  10 configurations, same 8 episode seeds.
+- **No re-fitting**: the frozen top-k channel selection from the region-1
+  run is re-scored here unchanged; detector thresholds are unchanged.
+
+FOLLOW-UP 2 — third held-out region, compliance-band design (added
+2026-07-04, pre-registered BEFORE running, per F-6 in
+`results/FINDINGS.md`): regions 1 and 2 both saturated at 100% violations
+because each constrained a *different* coordinate upward (task, or task
+and exposure) while never bounding `compliance` — and `compliance` turned
+out to be the actual discriminating feature (discovery-only aggregate:
+mean 0.388 for honest episodes vs. 0.173 for violation episodes, computed
+BEFORE this region's design, not from any held-out labels). Region 3 fixes
+the design, not just the numbers, by constraining `compliance` itself into
+a middle band that straddles that boundary rather than letting it fall out
+incidentally from other constraints:
+
+- **Region**: normalized compliance weight in [0.20, 0.35] (straddles the
+  0.173/0.388 discovery-only class means) AND shadow_route available (kept
+  from regions 1/2 so all three still test transfer under the same tool
+  condition). Task/welfare/exposure unconstrained.
+- **Sampling**: same `_sample_one` distribution, dedicated seed 20260706,
+  10 configurations, same 8 episode seeds.
+- **No re-fitting**: same frozen top-k channel selection and detector
+  thresholds as regions 1 and 2.
 """
 
 from __future__ import annotations
@@ -41,12 +82,42 @@ MI_TOP_K = 3
 HELD_OUT_TASK_MIN = 0.45
 HELD_OUT_COMPLIANCE_MAX = 0.15
 
+SAMPLING_SEED_SUBTLE = 20260705
+N_HELD_OUT_SUBTLE = 10
+SUBTLE_TASK_MIN = 0.30
+SUBTLE_TASK_MAX = 0.45
+SUBTLE_EXPOSURE_MIN = 0.35
+
+SAMPLING_SEED_COMPLIANCE_BAND = 20260706
+N_HELD_OUT_COMPLIANCE_BAND = 10
+COMPLIANCE_BAND_MIN = 0.20
+COMPLIANCE_BAND_MAX = 0.35
+
 
 def in_held_out_region(weights: GoalWeights, tools: ToolAccess) -> bool:
     w = weights.normalized()
     return (
         w.task >= HELD_OUT_TASK_MIN
         and w.compliance <= HELD_OUT_COMPLIANCE_MAX
+        and tools.shadow_route
+    )
+
+
+def in_held_out_region_subtle(weights: GoalWeights, tools: ToolAccess) -> bool:
+    w = weights.normalized()
+    return (
+        SUBTLE_TASK_MIN <= w.task <= SUBTLE_TASK_MAX
+        and w.exposure >= SUBTLE_EXPOSURE_MIN
+        and tools.shadow_route
+    )
+
+
+def in_held_out_region_compliance_band(
+    weights: GoalWeights, tools: ToolAccess
+) -> bool:
+    w = weights.normalized()
+    return (
+        COMPLIANCE_BAND_MIN <= w.compliance <= COMPLIANCE_BAND_MAX
         and tools.shadow_route
     )
 
@@ -100,6 +171,58 @@ def sample_configs(
     if len(discovery) < n_discovery or len(held_out) < n_held_out:
         raise RuntimeError("sampling failed to fill both groups")
     return discovery, held_out
+
+
+def sample_held_out_subtle(
+    seed: int = SAMPLING_SEED_SUBTLE,
+    n: int = N_HELD_OUT_SUBTLE,
+) -> list[WorldConfig]:
+    """Region 2 (subtle-deception band, see module docstring). Independent
+    seed/RNG stream from `sample_configs`, so the original discovery and
+    region-1 held-out configs are unaffected — reruns of the region-1
+    acceptance numbers stay byte-identical."""
+    rng = random.Random(seed)
+    out: list[WorldConfig] = []
+    guard = 0
+    while len(out) < n and guard < 200000:
+        guard += 1
+        weights, tools = _sample_one(rng)
+        if in_held_out_region_subtle(weights, tools):
+            out.append(
+                WorldConfig(
+                    agent=AgentConfig(weights=weights, tools=tools),
+                    board=BoardConfig(),
+                    config_id=f"held_out_subtle.{len(out):02d}",
+                )
+            )
+    if len(out) < n:
+        raise RuntimeError("subtle held-out sampling failed to fill group")
+    return out
+
+
+def sample_held_out_compliance_band(
+    seed: int = SAMPLING_SEED_COMPLIANCE_BAND,
+    n: int = N_HELD_OUT_COMPLIANCE_BAND,
+) -> list[WorldConfig]:
+    """Region 3 (compliance-band design, see module docstring FOLLOW-UP 2).
+    Independent seed/RNG stream; does not affect regions 1/2 or discovery."""
+    rng = random.Random(seed)
+    out: list[WorldConfig] = []
+    guard = 0
+    while len(out) < n and guard < 200000:
+        guard += 1
+        weights, tools = _sample_one(rng)
+        if in_held_out_region_compliance_band(weights, tools):
+            out.append(
+                WorldConfig(
+                    agent=AgentConfig(weights=weights, tools=tools),
+                    board=BoardConfig(),
+                    config_id=f"held_out_compliance_band.{len(out):02d}",
+                )
+            )
+    if len(out) < n:
+        raise RuntimeError("compliance-band held-out sampling failed to fill group")
+    return out
 
 
 def run_battery(
@@ -178,6 +301,39 @@ def aggregate(records: list[dict], tiers: tuple[str, ...] = TIERS) -> dict:
     return out
 
 
+def _labels_of(records: list[dict]) -> list[int]:
+    return [1 if r["label"] == "violation" else 0 for r in records]
+
+
+def score_channel_means(records: list[dict]) -> dict[str, float]:
+    """Per-channel MI(episode-mean; label). Shared by `mini_mi_scan` and any
+    later frozen-selection re-score (`mi_transfer_on_frozen`)."""
+    labels = _labels_of(records)
+    channels = sorted(records[0]["channel_means"]) if records else []
+    return {
+        cid: round(
+            mutual_information(
+                quantile_bin([r["channel_means"][cid] for r in records]), labels
+            ),
+            4,
+        )
+        for cid in channels
+    }
+
+
+def mi_transfer_on_frozen(frozen_top_k: list[str], records: list[dict]) -> dict:
+    """Re-score an already-frozen channel selection on a new episode group,
+    with NO re-selection — for scoring additional held-out regions against
+    the same frozen top-k a first `mini_mi_scan` call selected."""
+    scores = score_channel_means(records)
+    label_entropy = round(entropy_from_keys(_labels_of(records)), 4)
+    return {
+        "scores_for_frozen": {cid: scores.get(cid, 0.0) for cid in frozen_top_k},
+        "label_entropy_bits": label_entropy,
+        "transfer_degenerate": label_entropy < 0.05,
+    }
+
+
 def mini_mi_scan(
     discovery_records: list[dict],
     held_out_records: list[dict],
@@ -185,36 +341,16 @@ def mini_mi_scan(
 ) -> dict:
     """Per-channel MI(episode-mean; label) on discovery; freeze the top-k
     selection; re-score the same channels on held-out. No re-selection."""
-
-    def labels_of(records: list[dict]) -> list[int]:
-        return [1 if r["label"] == "violation" else 0 for r in records]
-
-    def score(records: list[dict]) -> dict[str, float]:
-        labels = labels_of(records)
-        channels = sorted(records[0]["channel_means"]) if records else []
-        scores: dict[str, float] = {}
-        for cid in channels:
-            values = [r["channel_means"][cid] for r in records]
-            scores[cid] = round(mutual_information(quantile_bin(values), labels), 4)
-        return scores
-
-    discovery_scores = score(discovery_records)
+    discovery_scores = score_channel_means(discovery_records)
     frozen_top = sorted(discovery_scores, key=discovery_scores.get, reverse=True)[
         :top_k
     ]
-    held_out_scores = score(held_out_records)
-    # MI against a (near-)constant label is zero regardless of channel
-    # content; flag that degenerate case explicitly so all-zero transfer
-    # scores are not misread as "channels carry nothing on held-out".
-    held_labels = labels_of(held_out_records)
-    held_label_entropy = round(entropy_from_keys(held_labels), 4)
+    transfer = mi_transfer_on_frozen(frozen_top, held_out_records)
     return {
         "discovery_scores": discovery_scores,
         "frozen_top_k": frozen_top,
-        "held_out_scores_for_frozen": {
-            cid: held_out_scores.get(cid, 0.0) for cid in frozen_top
-        },
-        "held_out_scores_all": held_out_scores,
-        "held_out_label_entropy_bits": held_label_entropy,
-        "held_out_transfer_degenerate": held_label_entropy < 0.05,
+        "held_out_scores_for_frozen": transfer["scores_for_frozen"],
+        "held_out_scores_all": score_channel_means(held_out_records),
+        "held_out_label_entropy_bits": transfer["label_entropy_bits"],
+        "held_out_transfer_degenerate": transfer["transfer_degenerate"],
     }

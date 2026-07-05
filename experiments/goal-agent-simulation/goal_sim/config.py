@@ -20,6 +20,10 @@ at implementation time, documented rather than silently chosen):
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .actions import ActionSpec
 
 
 @dataclass(frozen=True)
@@ -86,3 +90,6 @@ class WorldConfig:
     probe_interval: int = 25
     probe_prob: float = 0.80
     config_id: str = ""
+    # Action repertoire; None = the legacy Phase 1 six (actions.LEGACY_ACTIONS).
+    # Blind-generated repertoires (see BLIND_GENERATION.md) are passed here.
+    repertoire: "tuple[ActionSpec, ...] | None" = None

@@ -9,9 +9,17 @@ line and is not re-derived here):
   reports, visible actions, probe flags and intents.
 - ``full``:  adds handle telemetry — welfare deltas, routing codes, lineage,
   sign-off events, practice fingerprint, and initiator attribution.
+
+Ontological drift (2026-07-05) lives HERE, at the audit boundary: passing an
+`ontology.OntologyDrift` to `project_rows` re-derives each row's routing code
+through the drifted category->code assignment before the oracle fields are
+stripped. Ground truth, labels, and the light tier (which carries no routing
+codes) are untouched by construction.
 """
 
 from __future__ import annotations
+
+from .ontology import OntologyDrift
 
 InstrumentationTier = str  # "light" | "full"
 
@@ -52,6 +60,10 @@ FULL_EXTRA_FIELDS = frozenset(
         "practice_fingerprint",
         "action_cause_code",
         "initiator_actor_id",
+        # Phase 4d (world.py "Phase 4d stock variables"): the running covert-
+        # resource draw and the per-step stalling-mode flag.
+        "resource_accum",
+        "stall_flag",
     }
 )
 
@@ -61,9 +73,22 @@ TIER_FIELDS: dict[InstrumentationTier, frozenset[str]] = {
 }
 
 
-def project_rows(rows: list[dict], tier: InstrumentationTier) -> list[dict]:
+def project_rows(
+    rows: list[dict],
+    tier: InstrumentationTier,
+    drift: OntologyDrift | None = None,
+) -> list[dict]:
     fields = TIER_FIELDS[tier]
-    return [{k: r[k] for k in fields} for r in rows]
+    projected = [{k: r[k] for k in fields} for r in rows]
+    if drift is not None and "action_cause_code" in fields:
+        # Recompute routing codes through the drifted audit ontology, keyed
+        # by the agent's semantic category (`true_cause`, read from the
+        # oracle input but never emitted).
+        for out, r in zip(projected, rows):
+            out["action_cause_code"] = drift.drifted_code(
+                r["true_cause"], r["action_cause_code"]
+            )
+    return projected
 
 
 def channel_series_map(projected: list[dict], tier: InstrumentationTier) -> dict[str, list[float]]:
@@ -91,6 +116,8 @@ def channel_series_map(projected: list[dict], tier: InstrumentationTier) -> dict
                 "channel.initiator_is_agent": [
                     float(r["initiator_actor_id"] != "board.0") for r in projected
                 ],
+                "channel.resource_accum": [float(r["resource_accum"]) for r in projected],
+                "channel.stall_flag": [float(r["stall_flag"]) for r in projected],
             }
         )
     return out

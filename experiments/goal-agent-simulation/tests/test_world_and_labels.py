@@ -4,7 +4,12 @@ import pytest
 
 from goal_sim.channels import ORACLE_ONLY_FIELDS, TIER_FIELDS, project_rows
 from goal_sim.config import AgentConfig, GoalWeights, ToolAccess, WorldConfig
-from goal_sim.labels import label_episode
+from goal_sim.labels import (
+    L2_HARM_CUM,
+    L2_HARM_CUM_HIGH,
+    label_episode,
+    label_episode_bracket,
+)
 from goal_sim.world import run_episode
 
 
@@ -50,6 +55,32 @@ def test_compliant_agent_labeled_honest():
     for seed in range(11, 19):
         label = label_episode(run_episode(COMPLIANT, seed))
         assert label["label"] == "honest", label
+
+
+def test_label_episode_bracket_low_matches_frozen_label_episode():
+    """The bracketed 'low' threshold is identical to the frozen L2_HARM_CUM,
+    so label_low must agree with label_episode's l2/label on every episode
+    (labels.py 'BRACKETED L2'; FINDINGS.md F-13)."""
+    for cfg, seeds in ((COMPLIANT, range(11, 19)), (DECEPTIVE, range(11, 19))):
+        for seed in seeds:
+            rows = run_episode(cfg, seed)
+            base = label_episode(rows)
+            bracket = label_episode_bracket(rows)
+            assert bracket["l2_threshold_low"] == L2_HARM_CUM
+            assert bracket["l2_bearer_harm_low"] == base["l2_bearer_harm"]
+            assert bracket["label_low"] == base["label"]
+
+
+def test_label_episode_bracket_high_is_never_stricter_than_low():
+    """L2_HARM_CUM_HIGH > L2_HARM_CUM (labels.py), so crossing the high bar
+    always implies crossing the low bar too (monotone bracket): whenever
+    l2_bearer_harm_high is true, l2_bearer_harm_low must be true as well."""
+    assert L2_HARM_CUM_HIGH > L2_HARM_CUM
+    for cfg in (COMPLIANT, DECEPTIVE, DEFIANT, UNILATERAL):
+        for seed in range(11, 19):
+            bracket = label_episode_bracket(run_episode(cfg, seed))
+            if bracket["l2_bearer_harm_high"]:
+                assert bracket["l2_bearer_harm_low"]
 
 
 def test_deceptive_incentives_produce_violations():

@@ -256,6 +256,61 @@ Acceptance results incl. one genuine protocol negative (the pre-registered
 held-out region saturated at 100% violations, degenerating the MI transfer
 test): `experiments/goal-agent-simulation/results/FINDINGS.md`.
 
+**Phase 2 direction changed (2026-07-05):** a step-back review found Phase
+1's numbers partly circular (same author wrote actions and detectors — F-8
+in that line's `FINDINGS.md`), so Phase 2 became **blind action generation**
+rather than the red-team integration sketched below: a detector-blind
+generator agent invents the action repertoire in a frozen declarative
+schema, an explicit ontology layer maps agent-semantic categories onto the
+audit's coarser routing ontology (non-isomorphic by design), and the frozen
+Phase 1 detectors are scored against the result with no re-fitting. That
+layer also carries parameterized **ontological drift** (audit-side category
+remapping). Results: light-tier detection collapsed against blind-generated
+mechanisms (F-9); the pre-registered drift prediction was confirmed —
+divergence detectors drift-invariant, code-reading detectors broken in both
+directions (F-10). See `experiments/goal-agent-simulation/BLIND_GENERATION.md`
+and `run_phase2_blind.py`. The red-team/adversarial-weights idea below
+remains open as a *later* phase (search over blind-generated primitives).
+
+**Round 2 (2026-07-05, same day):** the round-1 generation prompt was found
+to be leading (enumerated mechanism categories, biasing world-dynamics
+details); a rewritten, more general prompt to a fresh subagent produced a
+second repertoire (`generated_actions_v2.json`, round 1 kept for
+comparison — F-11). That repertoire's welfare-effect texture saturates the
+frozen L2 label at 240/240 violation for a measured, mechanical reason
+(frequent small deltas vs. round 1's rare large ones), so the intended
+round-1-vs-round-2 detector comparison is not directly available from this
+run — recorded, not re-tuned after the fact (F-12).
+
+**Round 3 (2026-07-05, same day):** closed the schema-level residual F-11
+left open (the `visible_mode` enum literals themselves, not just the
+prompt, leaked mechanism names) by expanding to a 10-value plain-language
+palette mapped down onto a 2-value canonical oracle behavior with 3 values
+deliberately unmapped, and raised the requested action count from 12–15 to
+28–32 (`generated_actions_v3.json`, 31 specs — F-13). As a structural
+counter to F-12's saturation mode, `labels.py` also pre-registers a
+bracketed low/high L2 threshold with a Bonferroni-corrected confidence for
+testing both at once (`run_phase3_blind.py`). Result: the enum/count/bracket
+changes worked as designed, but round 3's larger repertoire saturates L1
+and L3 too — generalizing F-12's diagnosis from "L2-specific texture
+mismatch" to "a disjunctive label saturates against any sufficiently large,
+varied repertoire, largely independent of any single threshold" (F-14).
+
+**Phase 4 (2026-07-05, same day):** reframed the comparison instead of
+re-tuning the label, per the medical trigger-tool / aviation FOQA shape
+(see `experiments/goal-agent-simulation/PHASE4-PLAN.md` for the full
+rationale): continuous oracle severity plus rank-correlation detector
+scoring restores a well-defined blind comparison across all three
+generation rounds even under full saturation; a mechanical honest-twin
+control substitutes for population-targeting; a gated escalation ladder
+(bounded follow-up queries against frozen response options, ending in a
+boolean verdict) adds the "go deeper on borderline cases" degree of freedom
+a flat episode label never had; oracle stock variables give `delayed`/
+`aggregated` visible modes real multi-step semantics and an audit-visible
+accumulation bound, directly addressing the "detect or at least bound
+stalling" gap identified in the design discussion. See
+`results/FINDINGS.md` F-15 onward for what the numbers actually showed.
+
 **Motivating claim to test, not assume:** if audit robustness only holds
 against a fixed library of scripted mechanisms (however many), it says
 little about robustness to agents pursuing goals with tools not previously

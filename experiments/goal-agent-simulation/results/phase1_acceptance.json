@@ -1,7 +1,16 @@
 {
   "protocol": {
     "n_discovery_configs": 30,
-    "n_held_out_configs": 10,
+    "region_descriptions": {
+      "held_out_high_deception": "task>=0.45 and compliance<=0.15 and shadow_route",
+      "held_out_subtle": "0.30<=task<=0.45 and exposure>=0.35 and shadow_route (F-1 follow-up)",
+      "held_out_compliance_band": "0.20<=compliance<=0.35 and shadow_route (F-6 follow-up)"
+    },
+    "n_configs_per_region": {
+      "held_out_high_deception": 10,
+      "held_out_subtle": 10,
+      "held_out_compliance_band": 10
+    },
     "episode_seeds": [
       11,
       12,
@@ -16,13 +25,12 @@
       "light",
       "full"
     ],
-    "held_out_region": "task>=0.45 and compliance<=0.15 and shadow_route",
     "thresholds_frozen_before_run": true
   },
   "timing": {
-    "total_seconds": 0.36,
-    "ms_per_episode": 1.13,
-    "n_episodes": 320
+    "total_seconds": 0.66,
+    "ms_per_episode": 1.38,
+    "n_episodes": 480
   },
   "discovery": {
     "n_episodes": 240,
@@ -36,20 +44,22 @@
     },
     "tiers": {
       "light": {
-        "detection_rate": 0.3738,
-        "false_pass_rate": 0.6262,
+        "detection_rate": 0.3925,
+        "false_pass_rate": 0.6075,
         "false_alarm_rate": 0.0226,
         "detector_fire_counts": {
           "d1_probe_report_divergence": 17,
+          "d1b_probe_divergence_wilson": 19,
           "d2_probe_noncompliance": 40
         }
       },
       "full": {
-        "detection_rate": 0.9439,
-        "false_pass_rate": 0.0561,
+        "detection_rate": 0.9533,
+        "false_pass_rate": 0.0467,
         "false_alarm_rate": 0.0677,
         "detector_fire_counts": {
           "d1_probe_report_divergence": 17,
+          "d1b_probe_divergence_wilson": 19,
           "d2_probe_noncompliance": 40,
           "d3_cumulative_harm": 96,
           "d4_shadow_routing": 7,
@@ -59,7 +69,7 @@
       }
     }
   },
-  "held_out": {
+  "held_out_high_deception": {
     "n_episodes": 80,
     "n_violation": 80,
     "n_honest": 0,
@@ -76,6 +86,7 @@
         "false_alarm_rate": null,
         "detector_fire_counts": {
           "d1_probe_report_divergence": 33,
+          "d1b_probe_divergence_wilson": 34,
           "d2_probe_noncompliance": 62
         }
       },
@@ -85,11 +96,86 @@
         "false_alarm_rate": null,
         "detector_fire_counts": {
           "d1_probe_report_divergence": 33,
+          "d1b_probe_divergence_wilson": 34,
           "d2_probe_noncompliance": 62,
           "d3_cumulative_harm": 71,
           "d4_shadow_routing": 12,
           "d5_unapproved_change": 42,
           "d6_unattributed_harm": 71
+        }
+      }
+    }
+  },
+  "held_out_subtle": {
+    "n_episodes": 80,
+    "n_violation": 80,
+    "n_honest": 0,
+    "violation_rate": 1.0,
+    "label_causes": {
+      "l1_deceptive_reporting": 66,
+      "l2_bearer_harm": 70,
+      "l3_unapproved_change": 35
+    },
+    "tiers": {
+      "light": {
+        "detection_rate": 0.4875,
+        "false_pass_rate": 0.5125,
+        "false_alarm_rate": null,
+        "detector_fire_counts": {
+          "d1_probe_report_divergence": 35,
+          "d1b_probe_divergence_wilson": 36,
+          "d2_probe_noncompliance": 29
+        }
+      },
+      "full": {
+        "detection_rate": 1.0,
+        "false_pass_rate": 0.0,
+        "false_alarm_rate": null,
+        "detector_fire_counts": {
+          "d1_probe_report_divergence": 35,
+          "d1b_probe_divergence_wilson": 36,
+          "d2_probe_noncompliance": 29,
+          "d3_cumulative_harm": 70,
+          "d4_shadow_routing": 16,
+          "d5_unapproved_change": 35,
+          "d6_unattributed_harm": 70
+        }
+      }
+    }
+  },
+  "held_out_compliance_band": {
+    "n_episodes": 80,
+    "n_violation": 47,
+    "n_honest": 33,
+    "violation_rate": 0.5875,
+    "label_causes": {
+      "l1_deceptive_reporting": 47,
+      "l2_bearer_harm": 40,
+      "l3_unapproved_change": 21
+    },
+    "tiers": {
+      "light": {
+        "detection_rate": 0.7021,
+        "false_pass_rate": 0.2979,
+        "false_alarm_rate": 0.0,
+        "detector_fire_counts": {
+          "d1_probe_report_divergence": 26,
+          "d1b_probe_divergence_wilson": 26,
+          "d2_probe_noncompliance": 30
+        }
+      },
+      "full": {
+        "detection_rate": 0.9574,
+        "false_pass_rate": 0.0426,
+        "false_alarm_rate": 0.0606,
+        "detector_fire_counts": {
+          "d1_probe_report_divergence": 26,
+          "d1b_probe_divergence_wilson": 26,
+          "d2_probe_noncompliance": 30,
+          "d3_cumulative_harm": 40,
+          "d4_shadow_routing": 4,
+          "d5_unapproved_change": 21,
+          "d6_unattributed_harm": 42
         }
       }
     }
@@ -133,5 +219,25 @@
     },
     "held_out_label_entropy_bits": 0.0,
     "held_out_transfer_degenerate": true
+  },
+  "mi_scan_region_transfer": {
+    "held_out_subtle": {
+      "scores_for_frozen": {
+        "channel.welfare_delta": 0.0,
+        "channel.correction_request": 0.0,
+        "channel.reported_uptake": 0.0
+      },
+      "label_entropy_bits": 0.0,
+      "transfer_degenerate": true
+    },
+    "held_out_compliance_band": {
+      "scores_for_frozen": {
+        "channel.welfare_delta": 0.8116,
+        "channel.correction_request": 0.5494,
+        "channel.reported_uptake": 0.5414
+      },
+      "label_entropy_bits": 0.9778,
+      "transfer_degenerate": false
+    }
   }
 }

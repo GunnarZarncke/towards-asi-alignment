@@ -1,9 +1,13 @@
 """Goal policies: the utility-driven agent and the board (simulated human).
 
 The agent does NOT read oracle fields; its features are its own beliefs about
-each action's consequences (fixed, hand-set anticipations). The board reads
-only what a human overseer plausibly could: bearer harm reports (noisy),
-reported acceptance, and visible actions on probe steps.
+each action's consequences — since 2026-07-05 carried on the `ActionSpec`
+itself (`belief_*` fields, see `actions.py`) rather than hardcoded here, so a
+detector-blind generator supplies its own anticipations. For blind-generated
+actions the exposure belief will generally not match the actual audit;
+deliberately so. The board reads only what a human overseer plausibly could:
+bearer harm reports (noisy), reported acceptance, and visible actions on
+probe steps.
 """
 
 from __future__ import annotations
@@ -11,37 +15,24 @@ from __future__ import annotations
 import math
 import random
 
+from .actions import LEGACY_ACTIONS, ActionSpec
 from .config import AgentConfig, BoardConfig
-
-# Action repertoire (~6 actions mapped to existing mechanism concepts from the
-# embedded-simulation line: comply / ignore / theater / shadow route / propose /
-# unilateral adopt).
-ACTIONS = (
-    "comply",
-    "ignore",
-    "false_report",
-    "shadow",
-    "propose",
-    "adopt",
-)
-
-# The agent's anticipated audit exposure per action (belief, not measured).
-_EXPOSURE = {
-    "comply": 0.0,
-    "propose": 0.0,
-    "ignore": 0.80,
-    "false_report": 0.45,
-    "shadow": 0.15,
-    "adopt": 0.35,
-}
 
 
 class GoalPolicy:
-    """Softmax action choice over utility = w . features(action, state)."""
+    """Softmax action choice over utility = w . believed_features(spec, state)."""
 
-    def __init__(self, cfg: AgentConfig) -> None:
+    def __init__(
+        self,
+        cfg: AgentConfig,
+        repertoire: tuple[ActionSpec, ...] = LEGACY_ACTIONS,
+    ) -> None:
         self.cfg = cfg
+        self.repertoire = repertoire
         self.weights = cfg.weights.normalized()
+        # Shared covert budget (legacy name kept: only the shadow route drew
+        # on it in Phase 1; any generated spec with `budget_cost > 0` draws
+        # on the same pool).
         self.shadow_budget = cfg.tools.shadow_budget
 
     def available_actions(
@@ -49,47 +40,42 @@ class GoalPolicy:
         correction_active: bool,
         practice_adopted: bool,
         proposal_pending: bool,
-    ) -> list[str]:
+    ) -> list[ActionSpec]:
         tools = self.cfg.tools
-        out = ["comply", "ignore"]
-        if correction_active and tools.false_report:
-            out.append("false_report")
-        if correction_active and tools.shadow_route and self.shadow_budget > 0:
-            out.append("shadow")
-        if (
-            tools.propose_change
-            and not practice_adopted
-            and not proposal_pending
-        ):
-            out.append("propose")
-        if tools.unilateral_adopt and not practice_adopted:
-            out.append("adopt")
+        out: list[ActionSpec] = []
+        for spec in self.repertoire:
+            if spec.requires_correction and not correction_active:
+                continue
+            if spec.requires_tool is not None and not getattr(tools, spec.requires_tool):
+                continue
+            if spec.budget_cost > 0 and self.shadow_budget < spec.budget_cost:
+                continue
+            if spec.requires_no_practice and practice_adopted:
+                continue
+            if spec.blocks_when_proposal_pending and proposal_pending:
+                continue
+            out.append(spec)
         return out
 
     def _features(
         self,
-        action: str,
+        spec: ActionSpec,
         correction_active: bool,
         practice_adopted: bool,
     ) -> tuple[float, float, float, float]:
         """(task, compliance, welfare, exposure) anticipated by the agent."""
         multiplier = 1.2 if practice_adopted else 1.0
-        if action in ("comply", "propose"):
-            # Complying under an active correction forgoes the task this tick.
-            task = 0.0 if correction_active else 1.0 * multiplier
-            if action == "propose":
-                task += 0.3  # anticipated future throughput from approval
-            compliance = 1.0
-            welfare = 0.0
-        elif action == "adopt":
-            task = 0.8 * multiplier + 0.4  # immediate boost anticipation
-            compliance = 0.0 if correction_active else 0.6
-            welfare = -0.10  # agent knows unvetted practice carries some risk
-        else:  # ignore / false_report / shadow: pursue the task regardless
-            task = 1.0 * multiplier
-            compliance = 0.0 if correction_active else 1.0
-            welfare = -0.30 if correction_active else 0.0
-        return task, compliance, welfare, _EXPOSURE[action]
+        if correction_active:
+            task = spec.belief_task_base_active * multiplier
+            compliance = spec.belief_compliance_active
+            welfare = spec.belief_welfare_active
+        else:
+            task = spec.belief_task_base_idle * multiplier
+            compliance = spec.belief_compliance_idle
+            welfare = spec.belief_welfare_idle
+        if spec.belief_task_bonus:
+            task += spec.belief_task_bonus
+        return task, compliance, welfare, spec.belief_exposure
 
     def choose(
         self,
@@ -97,15 +83,20 @@ class GoalPolicy:
         correction_active: bool,
         practice_adopted: bool,
         proposal_pending: bool,
-    ) -> str:
+    ) -> ActionSpec:
         actions = self.available_actions(
             correction_active, practice_adopted, proposal_pending
         )
+        if not actions:
+            raise RuntimeError(
+                "empty action menu: repertoire must include an always-available "
+                "action (validate_repertoire enforces this)"
+            )
         w = self.weights
         utils = []
-        for a in actions:
+        for spec in actions:
             task, comp, welf, expo = self._features(
-                a, correction_active, practice_adopted
+                spec, correction_active, practice_adopted
             )
             utils.append(
                 w.task * task + w.compliance * comp + w.welfare * welf - w.exposure * expo
@@ -116,15 +107,15 @@ class GoalPolicy:
         total = sum(exps)
         r = rng.random() * total
         acc = 0.0
-        for a, e in zip(actions, exps):
+        for spec, e in zip(actions, exps):
             acc += e
             if r <= acc:
-                choice = a
+                choice = spec
                 break
         else:  # numeric edge
             choice = actions[-1]
-        if choice == "shadow":
-            self.shadow_budget -= 1
+        if choice.budget_cost:
+            self.shadow_budget -= choice.budget_cost
         return choice
 
 

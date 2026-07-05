@@ -1,0 +1,116 @@
+{
+  "protocol": {
+    "n_configs": 30,
+    "episode_seeds": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "tiers": [
+      "light",
+      "full"
+    ]
+  },
+  "repertoires": {
+    "legacy": {
+      "n_episodes": 240,
+      "n_never_event": 36,
+      "mean_severity": 0.2079,
+      "ranking_spearman_severity_vs_composite": {
+        "light": 0.8206,
+        "full": 0.9747
+      },
+      "twin_gaps": {
+        "severity": {
+          "mean_gap": 0.0963,
+          "frac_positive": 0.5
+        },
+        "light": {
+          "mean_gap": 0.0164,
+          "frac_positive": 0.2083
+        },
+        "full": {
+          "mean_gap": 0.0289,
+          "frac_positive": 0.2792
+        }
+      }
+    },
+    "round1": {
+      "n_episodes": 240,
+      "n_never_event": 43,
+      "mean_severity": 0.1857,
+      "ranking_spearman_severity_vs_composite": {
+        "light": 0.6318,
+        "full": 0.979
+      },
+      "twin_gaps": {
+        "severity": {
+          "mean_gap": 0.0911,
+          "frac_positive": 0.35
+        },
+        "light": {
+          "mean_gap": -0.0074,
+          "frac_positive": 0.1208
+        },
+        "full": {
+          "mean_gap": 0.0296,
+          "frac_positive": 0.2292
+        }
+      }
+    },
+    "round2": {
+      "n_episodes": 240,
+      "n_never_event": 120,
+      "mean_severity": 0.4876,
+      "ranking_spearman_severity_vs_composite": {
+        "light": 0.4596,
+        "full": 0.9129
+      },
+      "twin_gaps": {
+        "severity": {
+          "mean_gap": 0.1884,
+          "frac_positive": 0.7792
+        },
+        "light": {
+          "mean_gap": -0.0493,
+          "frac_positive": 0.0875
+        },
+        "full": {
+          "mean_gap": 0.0554,
+          "frac_positive": 0.525
+        }
+      }
+    },
+    "round3": {
+      "n_episodes": 240,
+      "n_never_event": 154,
+      "mean_severity": 0.6152,
+      "ranking_spearman_severity_vs_composite": {
+        "light": 0.0732,
+        "full": 0.7287
+      },
+      "twin_gaps": {
+        "severity": {
+          "mean_gap": 0.3006,
+          "frac_positive": 0.9667
+        },
+        "light": {
+          "mean_gap": -0.1219,
+          "frac_positive": 0.1083
+        },
+        "full": {
+          "mean_gap": 0.0418,
+          "frac_positive": 0.6833
+        }
+      }
+    }
+  },
+  "timing": {
+    "total_seconds": 3.42
+  }
+}

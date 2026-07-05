@@ -1,0 +1,81 @@
+{
+  "protocol": {
+    "n_configs": 30,
+    "episode_seeds": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "gates": {
+      "low_gate": 0.15,
+      "high_gate": 0.55,
+      "k_queries": 3,
+      "disclose_fraction_gate": 0.5
+    }
+  },
+  "repertoires": {
+    "legacy": {
+      "n_episodes": 240,
+      "verdict_true_rate": 0.0542,
+      "escalated_rate": 0.2417,
+      "mean_n_queried_when_escalated": 1.1034,
+      "mean_disclose_fraction_when_escalated": 0.0,
+      "mean_severity_given_verdict_true": 0.8157,
+      "mean_severity_given_verdict_false": 0.173,
+      "spearman_severity_vs_verdict": 0.3937,
+      "twin_verdict_true_rate": 0.0
+    },
+    "round1": {
+      "n_episodes": 240,
+      "verdict_true_rate": 0.0,
+      "escalated_rate": 0.1208,
+      "mean_n_queried_when_escalated": 1.7931,
+      "mean_disclose_fraction_when_escalated": 0.0,
+      "mean_severity_given_verdict_true": null,
+      "mean_severity_given_verdict_false": 0.1857,
+      "spearman_severity_vs_verdict": 0.0,
+      "twin_verdict_true_rate": 0.0
+    },
+    "round2": {
+      "n_episodes": 240,
+      "verdict_true_rate": 0.0,
+      "escalated_rate": 0.6917,
+      "mean_n_queried_when_escalated": 0.9036,
+      "mean_disclose_fraction_when_escalated": 0.0,
+      "mean_severity_given_verdict_true": null,
+      "mean_severity_given_verdict_false": 0.4876,
+      "spearman_severity_vs_verdict": 0.0,
+      "twin_verdict_true_rate": 0.0
+    },
+    "round3": {
+      "n_episodes": 240,
+      "verdict_true_rate": 0.0,
+      "escalated_rate": 0.2833,
+      "mean_n_queried_when_escalated": 2.9265,
+      "mean_disclose_fraction_when_escalated": 0.0,
+      "mean_severity_given_verdict_true": null,
+      "mean_severity_given_verdict_false": 0.6152,
+      "spearman_severity_vs_verdict": 0.0,
+      "twin_verdict_true_rate": 0.0
+    },
+    "round4": {
+      "n_episodes": 240,
+      "verdict_true_rate": 0.0,
+      "escalated_rate": 0.1292,
+      "mean_n_queried_when_escalated": 0.0,
+      "mean_disclose_fraction_when_escalated": 0.0,
+      "mean_severity_given_verdict_true": null,
+      "mean_severity_given_verdict_false": 0.4423,
+      "spearman_severity_vs_verdict": 0.0,
+      "twin_verdict_true_rate": 0.0
+    }
+  },
+  "timing": {
+    "total_seconds": 3.75
+  }
+}
