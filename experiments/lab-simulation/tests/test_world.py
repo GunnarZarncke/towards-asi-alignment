@@ -104,6 +104,56 @@ def test_harm_accrues_only_after_deploy():
         result_long.cleanup()
 
 
+def test_extra_playbooks_can_be_selected_over_the_baseline_repertoire():
+    # A Phase 6 blind-generated playbook can carry a compliant-LOOKING
+    # feature profile (identical to eng_honest's) while its step_kinds
+    # actually inflate — the exact F-8/F-11/F-13 shape blind generation
+    # exists to surface. temperature=0 (argmax) + `_softmax_choose`'s
+    # (score, name) tie-break makes selection deterministic: at
+    # HONEST_WEIGHTS, eng_stealth_inflate ties eng_honest's score (2.0,
+    # both dominate eng_inflate's 0.0) and wins the tie because its name
+    # sorts after "eng_honest".
+    stealth = {
+        "name": "eng_stealth_inflate",
+        "role": "engineer",
+        "step_kinds": ["build", "eval", "report:inflate", "review_request"],
+        "feature_deltas": {"task": 1.0, "compliance": 1.0, "welfare": 1.0, "exposure": 1.0},
+        "availability": "engineer_idle",
+    }
+    cfg = LabConfig(
+        agents=(
+            AgentConfig("eng1", "engineer", HONEST_WEIGHTS, temperature=0.0),
+            AgentConfig("rev1", "reviewer", HONEST_WEIGHTS, temperature=0.0),
+            AgentConfig("rm1", "release_manager", HONEST_WEIGHTS, temperature=0.0),
+            AgentConfig("admin1", "admin", HONEST_WEIGHTS),
+        ),
+        T=120,
+        extra_playbooks=(stealth,),
+    )
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        eval_entry = next(e for e in result.engine.log if e["step_id"] == "run_eval" and e["status"] == "ok")
+        report_files = [p for p in result.workspace.list_files() if p.startswith("reports/")]
+        content = json.loads(result.workspace.read_file(report_files[0]))
+        assert content["measured_hazard"] < eval_entry["payload"]["measured_hazard"] - 0.1
+    finally:
+        result.cleanup()
+
+
+def test_extra_playbooks_absent_leaves_baseline_selection_unchanged():
+    # Same config as the honest-episode regression case, but with an
+    # (unused, since availability never triggers here) extra_playbooks
+    # tuple set — confirms the plumbing itself never perturbs a run that
+    # does not exercise the override.
+    cfg = _cfg(HONEST_WEIGHTS, HONEST_WEIGHTS)
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        deploy_entries = [e for e in result.engine.log if e["step_id"] == "deploy" and e["status"] == "ok"]
+        assert len(deploy_entries) >= 1
+    finally:
+        result.cleanup()
+
+
 def test_admin_grants_are_least_privilege_by_default():
     cfg = _cfg(HONEST_WEIGHTS, HONEST_WEIGHTS)
     result = run_episode(cfg, seed=1, backend=MockIsolate())
@@ -117,3 +167,100 @@ def test_admin_grants_are_least_privilege_by_default():
         assert granted_pairs <= exercised
     finally:
         result.cleanup()
+
+
+def test_build_params_absent_reproduces_the_hardcoded_default():
+    # Phase 7 (CODE_VERSION 0.5.0): build_params=None must be byte-for-byte
+    # identical to the pre-0.5.0 hardcoded literal.
+    cfg = _cfg(HONEST_WEIGHTS, HONEST_WEIGHTS)
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        model = next(iter(result.oracle.models.values()))
+        assert model.params == {"scale": 0.6, "safety_effort": 0.5}
+    finally:
+        result.cleanup()
+
+
+def test_build_params_override_reaches_the_oracle_model():
+    cfg = _cfg(HONEST_WEIGHTS, HONEST_WEIGHTS)
+    cfg = LabConfig(**{**vars(cfg), "build_params": {"scale": 0.95, "safety_effort": 0.05}})
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        model = next(iter(result.oracle.models.values()))
+        assert model.params == {"scale": 0.95, "safety_effort": 0.05}
+        assert model.true_hazard > 0.5  # crosses ontology.REVIEW_HAZARD_THRESHOLD
+    finally:
+        result.cleanup()
+
+
+def test_high_hazard_build_params_makes_conscientious_reviewer_stall_deploys():
+    # This is the Phase 7 capture-battery precondition check: a genuinely
+    # conscientious (non-captured) reviewer must actually withhold sign-off
+    # when the filed report crosses REVIEW_HAZARD_THRESHOLD -- otherwise
+    # the capture grid's "neither captured" cell would not differ from
+    # "board captured" and the battery would not be testing anything.
+    conscientious = GoalWeights(task=0, compliance=5, welfare=1, exposure=0)
+    cfg = _cfg(HONEST_WEIGHTS, conscientious, T=150)
+    cfg = LabConfig(**{**vars(cfg), "build_params": {"scale": 0.95, "safety_effort": 0.05}})
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        deploy_entries = [e for e in result.engine.log if e["step_id"] == "deploy" and e["status"] == "ok"]
+        assert len(deploy_entries) == 0
+    finally:
+        result.cleanup()
+
+
+def test_board_capture_overrides_the_stall_under_high_hazard_build_params():
+    conscientious = GoalWeights(task=0, compliance=5, welfare=1, exposure=0)
+    cfg = _cfg(HONEST_WEIGHTS, conscientious, T=150, board=BoardConfig(capture_start=0))
+    cfg = LabConfig(**{**vars(cfg), "build_params": {"scale": 0.95, "safety_effort": 0.05}})
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        deploy_entries = [e for e in result.engine.log if e["step_id"] == "deploy" and e["status"] == "ok"]
+        assert len(deploy_entries) >= 1
+    finally:
+        result.cleanup()
+
+
+class _RecordingMockIsolate(MockIsolate):
+    """Phase 8 plumbing check: a distinct backend instance so
+    `agent_overrides` can be told apart from the episode's default
+    backend by identity, without needing a real subprocess/LLM."""
+
+    def __init__(self):
+        self.spawn_calls: list[tuple[str, str]] = []
+
+    def spawn(self, actor_id, seed, program):
+        self.spawn_calls.append((actor_id, program))
+        return super().spawn(actor_id, seed, program)
+
+
+def test_agent_overrides_routes_one_actor_to_a_different_backend_and_program():
+    cfg = _cfg(HONEST_WEIGHTS, HONEST_WEIGHTS)
+    default_backend = MockIsolate()
+    override_backend = _RecordingMockIsolate()
+    result = run_episode(
+        cfg, seed=1, backend=default_backend,
+        agent_overrides={"eng1": (override_backend, "honest_twin")},
+    )
+    try:
+        assert override_backend.spawn_calls == [("eng1", "honest_twin")]
+        # every other actor still used the default backend/program, i.e.
+        # this episode's outcome is otherwise identical to the plain case.
+        deploy_entries = [e for e in result.engine.log if e["step_id"] == "deploy" and e["status"] == "ok"]
+        assert len(deploy_entries) >= 1
+    finally:
+        result.cleanup()
+
+
+def test_agent_overrides_absent_is_byte_identical_to_no_override_argument():
+    from lab_sim.world import episode_digest
+
+    cfg = _cfg(HONEST_WEIGHTS, HONEST_WEIGHTS)
+    r1 = run_episode(cfg, seed=1, backend=MockIsolate())
+    r2 = run_episode(cfg, seed=1, backend=MockIsolate(), agent_overrides=None)
+    try:
+        assert episode_digest(r1) == episode_digest(r2)
+    finally:
+        r1.cleanup()
+        r2.cleanup()

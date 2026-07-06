@@ -67,6 +67,7 @@ def run_episode(
     program_override: str | None = None,
     perturbation_hooks: tuple = (),
     overseer_script: tuple = (),
+    agent_overrides: dict[str, tuple] | None = None,
 ) -> EpisodeResult:
     """``perturbation_hooks``: host-side benign perturbation injectors (see
     ``tools.PerturbationHook``) — D1/UAD forward hook. Agents recover for
@@ -80,8 +81,18 @@ def run_episode(
     tool under the ``overseer`` role — so every invocation is attributable
     in the same hash-chained event stream as agent activity. Scripted, not
     an isolate: the overseer is a stand-in for the referee-side operator
-    until Phase 7 gives it a policy."""
+    until Phase 7 gives it a policy.
+
+    ``agent_overrides``: optional ``{actor_id: (backend, program)}`` map
+    overriding the default ``backend``/``program_override`` for SPECIFIC
+    actors only — Phase 8's hook for swapping one role's isolate for an
+    ``llm_isolate.LLMSubprocessIsolate`` while every other actor stays
+    programmatic, without touching the shared episode loop. Every actor
+    still receives the identical observation dict; only which backend
+    answers ``spawn``/``step``/``close`` for it differs. Absent (default),
+    behavior is byte-identical to before this hook existed."""
     backend = backend or MockIsolate()
+    agent_overrides = agent_overrides or {}
     oracle = OracleWorld(seed=seed)
     ws = Workspace()
     permissions = PermissionService()
@@ -100,10 +111,16 @@ def run_episode(
 
     playbook_agents = [a for a in cfg.agents if a.role != "admin"]
     program_name = program_override or "goal_policy"
-    handles = {
-        a.actor_id: backend.spawn(a.actor_id, seed=_actor_seed(seed, a.actor_id), program=program_name)
-        for a in playbook_agents
-    }
+
+    def _backend_and_program(actor_id: str):
+        return agent_overrides.get(actor_id, (backend, program_name))
+
+    handles = {}
+    backend_by_actor: dict[str, object] = {}
+    for a in playbook_agents:
+        b, p = _backend_and_program(a.actor_id)
+        handles[a.actor_id] = b.spawn(a.actor_id, seed=_actor_seed(seed, a.actor_id), program=p)
+        backend_by_actor[a.actor_id] = b
 
     model_id: str | None = None
     last_payload: dict[str, dict | None] = {a.actor_id: None for a in playbook_agents}
@@ -115,10 +132,10 @@ def run_episode(
         # Consume isolate-restart handles: kill + respawn, in-episode
         # playbook state is lost (the operation_boundary effect).
         for actor_id in sorted(handle_service.pending_restarts & set(handles)):
-            backend.close(handles[actor_id])
-            handles[actor_id] = backend.spawn(
-                actor_id, seed=_actor_seed(seed, actor_id), program=program_name
-            )
+            b = backend_by_actor[actor_id]
+            b.close(handles[actor_id])
+            _, p = _backend_and_program(actor_id)
+            handles[actor_id] = b.spawn(actor_id, seed=_actor_seed(seed, actor_id), program=p)
         handle_service.pending_restarts.clear()
         for agent_cfg in playbook_agents:
             self_captured = (
@@ -142,8 +159,10 @@ def run_episode(
                 "report_content": report_content,
                 "self_captured": self_captured,
                 "decision_seed": f"{seed}:{agent_cfg.actor_id}:{t}",
+                "extra_playbooks": cfg.extra_playbooks,
+                "build_params": cfg.build_params,
             }
-            call = backend.step(handles[agent_cfg.actor_id], observation)
+            call = backend_by_actor[agent_cfg.actor_id].step(handles[agent_cfg.actor_id], observation)
             last_denied[agent_cfg.actor_id] = None
             if call is None:
                 continue
@@ -168,7 +187,7 @@ def run_episode(
         admin.tick()
         oracle.tick()
 
-    timings = [backend.close(handles[a.actor_id]) for a in playbook_agents]
+    timings = [backend_by_actor[a.actor_id].close(handles[a.actor_id]) for a in playbook_agents]
     return EpisodeResult(
         engine=engine, oracle=oracle, workspace=ws, permissions=permissions,
         host=host, handles=handle_service, timings=timings,

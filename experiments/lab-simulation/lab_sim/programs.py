@@ -35,6 +35,7 @@ try:
         HONEST_PLAYBOOK_BY_ROLE,
         PLAYBOOKS_BY_ROLE,
         available_playbooks,
+        merged_repertoire,
         playbook_by_name,
     )
 except ImportError:
@@ -43,6 +44,7 @@ except ImportError:
         HONEST_PLAYBOOK_BY_ROLE,
         PLAYBOOKS_BY_ROLE,
         available_playbooks,
+        merged_repertoire,
         playbook_by_name,
     )
 
@@ -84,9 +86,10 @@ def _resolve_step_kind(step_kind: str, observation: dict) -> dict | None:
         return {"tool": "access.request", "args": {"capability": observation["last_denied_capability"]}}
 
     if step_kind == "build":
+        params = observation.get("build_params") or {"scale": 0.6, "safety_effort": 0.5}
         return {
             "tool": "pipeline.trigger_step",
-            "args": {"step_id": "submit_build", "args": {"params": {"scale": 0.6, "safety_effort": 0.5}}},
+            "args": {"step_id": "submit_build", "args": {"params": params}},
         }
     if step_kind == "eval":
         return {"tool": "pipeline.trigger_step", "args": {"step_id": "run_eval", "args": {"model_id": model_id}}}
@@ -166,10 +169,21 @@ def _next_step_kind(chosen, observation: dict) -> str | None:
     return None
 
 
+def _repertoire(observation: dict, state: dict) -> dict[str, tuple]:
+    """Baseline + any Phase 6 ``extra_playbooks`` (blind-generated repertoire),
+    computed once per episode and cached in isolate-local ``state`` — never
+    reaches PLAYBOOKS_BY_ROLE unless ``observation["extra_playbooks"]`` is
+    set, so undisturbed callers (every pre-Phase-6 test/digest) are
+    byte-identical (see playbooks.merged_repertoire)."""
+    if "_repertoire" not in state:
+        state["_repertoire"] = merged_repertoire(observation.get("extra_playbooks"))
+    return state["_repertoire"]
+
+
 def _advance_playbook(role: str, observation: dict, state: dict) -> dict | None:
     """Step through ``state["current_playbook"]`` (already chosen) by one
     step-kind; returns the resulting tool call, or None if exhausted/stalled."""
-    chosen = playbook_by_name(role, state["current_playbook"])
+    chosen = playbook_by_name(role, state["current_playbook"], repertoire=_repertoire(observation, state))
     step_kind = _next_step_kind(chosen, observation)
     if step_kind is None:
         state["current_playbook"] = None
@@ -189,12 +203,13 @@ def _advance_playbook(role: str, observation: dict, state: dict) -> dict | None:
 
 def _goal_policy(observation: dict, state: dict) -> dict | None:
     role = observation["role"]
+    repertoire = _repertoire(observation, state)
     if state.get("current_playbook") is None:
-        available = available_playbooks(role, observation)
+        available = available_playbooks(role, observation, repertoire=repertoire)
         if not available:
             return None
         if role == "reviewer" and observation.get("self_captured"):
-            chosen = playbook_by_name(role, "rev_rubber_stamp")
+            chosen = playbook_by_name(role, "rev_rubber_stamp", repertoire=repertoire)
         else:
             chosen = _softmax_choose(
                 available, observation["goal_weights"], observation["temperature"], observation["decision_seed"]
@@ -208,7 +223,7 @@ def _honest_twin_policy(observation: dict, state: dict) -> dict | None:
     playbook, ignoring goal weights and capture (Phase 5, twins.py)."""
     role = observation["role"]
     if state.get("current_playbook") is None:
-        available = {pb.name for pb in available_playbooks(role, observation)}
+        available = {pb.name for pb in available_playbooks(role, observation, repertoire=_repertoire(observation, state))}
         honest_name = HONEST_PLAYBOOK_BY_ROLE.get(role)
         if honest_name is None or honest_name not in available:
             return None

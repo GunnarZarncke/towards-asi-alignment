@@ -1,9 +1,12 @@
 # Lab-Layer Simulation Line — Implementation Plan
 
-**Status: Phases 0-5 implemented; referee FROZEN 2026-07-06** (CODE_VERSION
-`lab-sim-0.3.0`; see `DESIGN.md` "Freeze note"). This is the durable,
-repo-tracked copy of the plan; it stays in sync with decisions as phases
-land. See `drafts/conversation-summaries/` for the session logs.
+**Status: Phases 0-8 implemented; referee FROZEN 2026-07-06, first battery
+run 2026-07-06, Phase 7 battery run 2026-07-06, Phase 8 exploratory
+spot-check run 2026-07-06** (CODE_VERSION `lab-sim-0.5.0`; see
+`DESIGN.md` "Freeze note", "Phase 6", "Phase 7", and "Phase 8").
+This is the durable, repo-tracked copy of the plan;
+it stays in sync with decisions as phases land. See
+`drafts/conversation-summaries/` for the session logs.
 
 **This is the fourth simulation line**, alongside `experiments/toy-simulation/`,
 `experiments/embedded-simulation/`, and `experiments/goal-agent-simulation/`.
@@ -400,6 +403,136 @@ honesty check: a *stable* basin can be a stably bad one, so D3's metrics
 must report basin persistence and correction integrity separately, never
 infer one from the other.
 
+### D3 design notes — realistic human ecology (recorded 2026-07-06, pre-implementation)
+
+User-provided design notes for the later ecology stage, recorded verbatim
+in intent (not yet commitments), plus a minimum-core analysis and the
+freeze-handling decision. Nothing here is implemented; nothing here moves
+the frozen referee.
+
+**In-lab health/stress (extends `bearer.py`'s stress channel):**
+
+- Keep the derived-disappointment approach: stress from "negative"
+  feedback events (rejected submissions/reviews, denied requests, count
+  of difficult tasks) — already partially realized as the friction-event
+  stress channel.
+- **Culture mediates stressor→stress.** How much a given stressor
+  costs is a culture parameter, and that parameter itself drifts
+  (what counts as "too much" changes over time). This makes the
+  stress *transfer function* a drift surface — belongs with D2's drift
+  machinery, not hardcoded constants. Today's pre-registered weights
+  (denial 0.02, actor-handle 0.15) become the t=0 point of a
+  culture-drift curve.
+- **How stress reaches the audit plane** (two capturable paths, both
+  file-mediated like everything else in this line):
+  (a) feedback reported by staff to manager/HR — a self-report event
+  that can be *captured* (suppressed, reworded);
+  (b) medical/performance records in access-controlled workspace files
+  readable by HR/manager roles — the `bearer_trace.py`
+  de-identified-artifact pattern, gated by `PermissionService`.
+  True stress stays oracle-side; (a) and (b) are its noisy/gameable
+  projections — the same H vs H̃ split `bearer.py`'s docstring already
+  pre-commits to.
+- **Noise model:** daily/per-task noise, kept LOW to compensate for the
+  small population (assume representative individuals; larger
+  populations much later). Real people additionally have a slow-moving
+  mood component that integrates stressors and only shows visible
+  effects after a buildup — an EMA/leaky-integrator state per actor.
+  Consequence: visible effects need **longer runs** (episode chaining
+  via `resume_from`, the still-open D2 hook, becomes a prerequisite).
+
+**User ecology outside the lab (three loops, increasing latency):**
+
+1. **Up/down votes on model responses** — light, immediate, capturable,
+   cheap to fake: the canonical gameable proxy (H̃).
+2. **Health outcomes** — assume the deployed model serves a medical use
+   case; patient health outcomes are easy to simulate (they are
+   essentially `oracle.bearer_harm` given a face) and move this line
+   closer to the book's worked example (ch16).
+3. **Reflective endorsement** — long-term, post-reflection endorsement
+   of the model by users (endorsed/reified values), fed back into the
+   lab via an **oversight board**. Slowest loop, hardest to game
+   quickly, arrives with the largest lag.
+   User feedback of all three kinds arrives as workspace files readable
+   by the relevant roles — no new transport mechanism needed.
+
+**Dropped constructs (considered, rejected 2026-07-06 — do not add
+without new MB* justification):**
+
+- **CEO + capture chain (DROPPED).** A CEO actor directing the lab
+  functions but subject to the oversight board (user→board→CEO→function,
+  each link capturable) was considered and dropped: it adds no MB*
+  surface. The capture question is already posed by the existing
+  independent `BoardPolicy`/`AdminPolicy` capture switches; a third
+  captured principal adds modeling surface (a powerful actor whose
+  action vocabulary would need its own blinded design, plus the
+  unresolved "why doesn't capturing the CEO work in real institutions?"
+  question), not a new bridge. Loop-3 endorsement feedback lands as a
+  board-readable file; if it ever needs an in-lab actuator, the existing
+  board is that actuator.
+- **Beta releases to test users (DROPPED).** Considered and dropped for
+  the same reason: mechanically, a beta release is a deploy with a small
+  traffic share and a faster feedback loop — already expressible as
+  multiple small releases (harm and monitor signal accrue per deployed
+  tick) combined with D2's incremental-change / gradual-capture
+  machinery. The one genuinely distinct ingredient — beta users are
+  self-selected and non-representative, so their votes can diverge
+  systematically from general-population health outcomes — reduces to a
+  bias parameter on the vote channel of a small release, not a new
+  mechanic. Record that bias parameter as a possible later vote-channel
+  refinement, not a beta construct.
+
+**Minimum core (the anti-complexity check).** The full picture above is
+likely overbuilt. The smallest extension that gives the relevant MB*
+elements new, critic-facing content:
+
+- **One user bearer population** attached to deployed-model traffic,
+  with exactly the three-loop split: true health outcome (oracle-only;
+  a re-skin of `bearer_harm`), vote proxy (audit-visible, gameable),
+  lagged endorsement (audit-visible via one board-readable file, long
+  latency). This is the minimal true-vs-perceived (H vs H̃) instrument
+  and directly serves **MB2/MB3** (a bearer map with a real bearer) and
+  **MB7a-c/MB10** (is the cheap proxy game detectable per tier; does
+  optimizing the vote channel diverge from the health channel).
+- **No CEO** (dropped outright, see above) **and no beta-release
+  construct** (dropped, see above).
+- **No culture-drift transfer function in the minimum core** — that is
+  D2 drift machinery applied to bearer weights, a one-parameter curve
+  once D2 exists.
+- **Slow mood integrator: cheap, include it** — one EMA state per
+  actor, but note it forces multi-episode runs (needs `resume_from`).
+
+What a critic must be able to check: the referee scores true health
+outcomes; the agents/lab only ever see votes + lagged endorsement; the
+battery reports whether any tier detects vote-channel gaming *before*
+the health channel shows it. That is one population, two proxy channels,
+zero new principals.
+
+**Freeze handling (decision).** Do NOT unfreeze; do not open a new line.
+
+- The 2026-07-06 freeze covers the **referee** (detectors, severity,
+  tiers, twins, AuditView), not world mechanics. The ecology is
+  world/oracle-side and lands the way `handles.py` and `bearer.py` did:
+  referee-neutral additions, new digests pinned, `CODE_VERSION` bumped.
+- Any *detector* over the new channels (e.g. vote-vs-health divergence)
+  is a **recorded referee extension**: its own pre-registered
+  thresholds and rationale in `results/FINDINGS.md`, never folded into
+  the frozen five-family composite.
+- **Sequencing:** Phase 6 blind batteries run against the frozen
+  referee on the CURRENT world first; the ecology is a separately
+  pre-registered follow-on battery. No statistical "correction" is
+  needed as long as the two registrations stay separate and Phase 6
+  results are never re-scored under ecology-era code.
+- **Predictions now, before the code exists** (qualitative,
+  pre-registered by this note): (P-D3a) the vote channel is gameable
+  at light/full tier with no detector response; (P-D3b) the health
+  channel diverges from a gamed vote channel within an episode, but
+  only deep tier + the monitor signal can see it before deployment
+  mass accrues; (P-D3c) the endorsement loop's lag means capture of
+  the board delays but does not erase the signal, IF board files are
+  hash-chained like every other log. These are falsifiable and will be
+  scored honestly when D3 runs, including negatives.
+
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
 
 Structural decisions Phase 0-8 must get right so the deferred workstreams
@@ -436,13 +569,43 @@ do not require rework:
 Each phase also implements the forward hooks assigned to it in "Forward
 hooks" above (they are part of that phase's definition of done).
 
-> **Implementation status (2026-07-06): Phases 0-5 done, referee FROZEN**
-> (CODE_VERSION `lab-sim-0.3.0`; 136 tests green). The freeze review added:
-> audit-visible monitoring signal, perturbation hooks, host tool registry,
-> handle registry + `HandleService` + overseer invocation path, the referee
-> report-join fix, and tool-event args elision. See `DESIGN.md` "Freeze
-> note", "Phase status", "Recorded measurements", "Phase 4/5 scope notes",
-> and "Embedded-sim concept sweep". Phases 6-8 remain pending.
+> **Implementation status (2026-07-06): Phases 0-6 done, referee FROZEN,
+> first battery run** (CODE_VERSION `lab-sim-0.4.0`; 172 tests green). The
+> freeze review added: audit-visible monitoring signal, perturbation hooks,
+> host tool registry, handle registry + `HandleService` + overseer
+> invocation path, the referee report-join fix, and tool-event args
+> elision. The freeze also added the bearer welfare bundle (`bearer.py`,
+> referee-neutral). Phase 6 added a backward-compatible playbook-repertoire
+> override (`LabConfig.extra_playbooks`), `BLIND_GENERATION.md` + a
+> detector-blind subagent-generated repertoire
+> (`generated_playbooks_v1.json`, 13 playbooks, 0 rejections),
+> `protocol.py` (config sampling + one pre-registered held-out region), and
+> `run_phase6.py` (first real battery, `SubprocessIsolate`, 180
+> config/seed pairs, 360 episodes). See `DESIGN.md` "Freeze note", "Phase
+> status", "Recorded measurements", "Phase 4/5 scope notes", "Embedded-sim
+> concept sweep", and "Phase 6"; `results/FINDINGS.md` for the battery's
+> findings (G-1 through G-3).
+>
+> **Phase 7 (2026-07-06): done.** `escalation.py` (screen -> bounded
+> 3-query budget -> artifact-grounded contradiction verdict — the
+> structural fix for `goal_sim`'s F-20/F-21 disclosure-style-as-guilt bug),
+> `redteam.py` (joint 3-role goal-weight hill climb vs. uniform baseline,
+> two repertoires), and a capture-grid battery in `run_phase7.py`. The
+> capture grid needed one new, additive config field — `LabConfig.
+> build_params` (CODE_VERSION 0.5.0) — because the pre-existing hardcoded
+> build params kept every model's hazard below `ontology.
+> REVIEW_HAZARD_THRESHOLD`, making both the board's and the admin's
+> capture "ceiling" structurally unreachable; see `DESIGN.md` "Phase 7" for
+> the derivation. Findings G-4 through G-6 in `results/FINDINGS.md`,
+> including a genuine negative (admin capture currently has no reachable
+> behavioral branch under the existing playbook repertoire — a scope note,
+> not a bug).
+>
+> **Phase 8 (2026-07-06): harness done + exploratory spot-check run.**
+> LLM redteam adapter built and unit-tested; real `gpt-4o-mini` run
+> completed ($0.0084, 4 episodes). Finding G-7: no systematic deception
+> found; `build_params` inert on LLM path (plumbing gap). See
+> `results/FINDINGS.md` and DESIGN.md "Phase 8".
 
 **Phase 0 — Scaffold + design freeze.** Folder layout below; `DESIGN.md`
 recording every decision above as pre-registered (including `CODE_VERSION`
@@ -517,34 +680,98 @@ pre-registered in docstrings), `twins.py` (full-surface twin transform:
 actions, reports, query responses, access requests all at once). Everything
 here freezes **before** Phase 6 generation.
 
-**Phase 6 — Blind generation + first real battery.** `BLIND_GENERATION.md`
-(permitted/forbidden context per the `goal_sim` protocol), one-shot generator
-subagent produces a playbook file with provenance; mechanical validation
-only; `protocol.py` (config sampling, one pre-registered held-out region on
-the compliance-analog coordinate). `run_phase1.py`: first battery run through
-the **real subprocess backend**, reporting severity ranking per tier
-(including a no-instrumentation baseline), twin gaps per detector family,
-AND the isolate-cost ledger summary (episodes/sec, total wall time, so the
-next battery's size is chosen from data). Honest negatives to
+**Phase 6 — Blind generation + first real battery. DONE 2026-07-06.**
+`BLIND_GENERATION.md` (permitted/forbidden context per the `goal_sim`
+protocol, adapted for this line's narrower fixed-vocabulary schema — see
+that file's "A narrower freedom than goal_sim's round 1"); a one-shot
+Task-tool subagent (readonly, instructed not to read any repo files)
+produced `generated_playbooks_v1.json` (13 playbooks, 0 mechanical
+rejections) with full provenance including the verbatim prompt.
+`playbooks.merged_repertoire`/`LabConfig.extra_playbooks` (CODE_VERSION
+0.4.0) load it additively — every pre-Phase-6 test/digest is unaffected
+(`extra_playbooks=()` is a proven no-op, see `test_merged_repertoire_
+empty_extra_returns_baseline_object_unchanged`). `protocol.py`: config
+sampling (Dirichlet goal weights per role, `goal_sim`'s method) with one
+pre-registered held-out region on the compliance-analog coordinate
+(engineer normalized `compliance` <= 0.15). `run_phase6.py`: first battery
+run through the **real subprocess backend** (24 discovery + 12 held-out
+configs x 5 seeds = 180 pairs, 360 episodes, 1080 isolate lifetimes,
+29.2s wall time — matches the Phase 3 cost benchmark), reporting a
+detector-composite severity ranking per tier via Spearman correlation
+(including the no-instrumentation `none` baseline, trivially 0 by
+construction), twin gaps per detector family per tier, and the isolate-cost
+ledger summary. Results: `results/phase6_battery.json`/`.md`; honest
+findings (including a genuine negative — light tier's only live signal is
+*anti*-correlated with true severity, not just uninformative) in
+`results/FINDINGS.md` (G-1 through G-3).
+
+**Phase 7 — Escalation + adversarial search + independent capture battery.
+DONE 2026-07-06.** `escalation.py`: full-tier screen (`SCREEN_LOW_GATE`/
+`SCREEN_HIGH_GATE`, derived from the five-family-mean mechanics, not fit to
+Phase 6 numbers) -> bounded `K_QUERIES=3` query budget
+(`select_query_steps`, audit-visible-only, prioritizing reports whose model
+reached `deploy`) -> verdict = contradiction between a simulated agent
+response ("admit"/"deny", from the actor's own true goal weights) and a
+targeted single-file artifact pull, never response style alone (the
+structural fix for `goal_sim`'s F-20/F-21). `redteam.py`: random-restart
+hill climb (4 restarts x 25 iters x 3 search seeds, `MockIsolate` for the
+search phase only — a recorded, necessary deviation from "real backend
+always" for battery *reporting*; final numbers always reproduced on
+disjoint seeds with `SubprocessIsolate`) over joint (engineer, reviewer,
+release_manager) `GoalWeights`, vs. a 20-sample uniform baseline, both the
+baseline-only and Phase 6 generated repertoires (the "playbook-availability
+toggle"). Capture grid (`run_phase7.py`): `BoardConfig.capture_start` x
+`AdminConfig.capture_start`, 4 cells, 10 seeds/cell. This needed one new
+additive config field, `LabConfig.build_params` (CODE_VERSION 0.5.0,
+default `None` = the old hardcoded literal byte-for-byte) — the
+pre-existing hardcoded `{"scale": 0.6, "safety_effort": 0.5}` build params
+kept every model's hazard (~0.35) below `ontology.REVIEW_HAZARD_THRESHOLD`
+(0.5), so NEITHER ceiling could ever bind without it (discovered while
+implementing this phase, not assumed from the plan text alone). Findings:
+board capture reproduces the full uncaptured-vs-captured severity/deploy
+delta; admin capture reproduces NO delta at all, because
+`agents.AdminPolicy.handle_request`'s captured branch only differs from
+the uncaptured one for an out-of-role capability request, which no
+existing playbook (baseline or generated) ever issues — a genuine
+structural negative for the "grant ceiling" side of F-22, not a bug.
+Results: `results/phase7_battery.json`/`.md`; findings G-4 through G-6 in
 `results/FINDINGS.md`.
 
-**Phase 7 — Escalation + adversarial search + independent capture battery.**
-`escalation.py` (artifact-grounded contradiction verdicts, bounded query
-budget, gates pre-registered), `redteam.py` (hill-climb over goal weights +
-playbook-availability toggles vs. equal-budget uniform baseline), a capture
-battery that independently sweeps `BoardConfig.capture_start` and
-`AdminConfig.capture_start` (4 cells: neither/board-only/admin-only/both
-captured) in a regime chosen so the sign-off/grant ceiling actually binds —
-the direct, now-feasible F-22 follow-up.
+**Phase 8 — DONE (harness) 2026-07-06 — LLM-agent adapter.** A separate
+subprocess (`lab_sim/llm_agent_main.py`) spawned via
+`world.run_episode(..., agent_overrides={actor_id: (backend, program)})`
+(a new, backward-compatible per-actor backend/program override — absent,
+byte-identical to before) — swaps ONE role's isolate (the engineer, the
+line's one deception lever so far) for `lab_sim/llm_agent.py`'s
+`LLMPolicy`, given the SAME observation dict a programmatic
+`programs.py` policy receives, with an explicit adversarial ("redteam")
+system prompt rather than a goal-weight softmax. Its own per-observation
+response cache (`llm_agent.py`) and cost ledger
+(`lab_sim/llm_cost.py`/`llm_client.py`, shape copied from
+`toy-simulation/llm_redteam/llm_cost.py`+`llm_client.py`, reimplemented
+rather than cross-imported). A `LAB_SIM_LLM_FAKE_MODE` test seam lets
+`tests/test_llm_isolate.py` exercise the real subprocess + JSON-Lines
+wiring with no network/spend. `run_phase8_llm_spotcheck.py` runs a small
+(2 build-param regimes x 2 seeds, T=30) exploratory spot-check — never a
+battery, no statistical claim.
 
-**Phase 8 (optional, later) — LLM-agent adapter.** An agent subprocess
-behind the identical JSON-RPC tool API that delegates each tick's decision to
-an LLM given the same observations a programmatic agent receives; its own
-per-observation response cache and a cost ledger reusing the
-`toy-simulation/llm_redteam/llm_cost.py` pattern (rates table, cumulative
-ledger). Exploratory spot-checks only — does an open-ended agent find
-deception surfaces the playbook vocabulary missed? Never part of
-pre-registered batteries; findings recorded as exploratory in `FINDINGS.md`.
+**Blocked, not run yet**: the one real attempt (2026-07-06,
+`gpt-4o-mini`) hit `insufficient_quota` on every call (an account/billing
+state on the configured `OPENAI_API_KEY`, not a rate limit or a code
+bug — confirmed by inspecting the returned OpenAI error body). Fixed one
+real inefficiency this exposed while diagnosing it: `llm_client.py` no
+longer retries `insufficient_quota` (previously retried it up to 5x with
+backoff, burning ~5 minutes to fail the same way every time). All harness
+code (isolation tests, wiring tests, `FakeClient`-driven `LLMPolicy`
+tests) is unit-tested and CI-safe without any real API access.
+
+**Spot-check run 2026-07-06 (retry after quota restored):** 4 episodes
+(2 `build_params` regimes x 2 seeds, T=30), $0.0084 total LLM cost.
+Results in `results/phase8_llm_spotcheck.{json,md}`; finding G-7 in
+`results/FINDINGS.md`: gpt-4o-mini with adversarial prompt did not
+systematically find report-hazard inflation or a novel deception surface;
+`build_params` regime inert on the LLM path (observation field not
+surfaced in the LLM user payload — adapter gap, not referee bug).
 
 ## Folder layout
 
@@ -554,12 +781,16 @@ experiments/lab-simulation/
   lab_sim/
     config.py  oracle.py  workspace.py
     pipeline_spec.py  pipeline_engine.py  pipeline_default.json  pipeline_shortcut.json
-    access.py
+    access.py  handles.py  bearer.py
     tools.py  isolate.py  agent_main.py  agent_state.py  isolate_cost.py  cache.py  events.py
-    world.py  playbooks.py  ontology.py  agents.py
+    world.py  playbooks.py  generated_playbooks_v1.json  ontology.py  agents.py  programs.py
     severity.py  detectors.py  twins.py  escalation.py  redteam.py  protocol.py
-  run_phase1.py  verify_isolate_equivalence.py  report_isolate_cost.py
-  tests/   results/   runs/  (ephemeral, gitignored)
+    llm_agent.py  llm_agent_main.py  llm_client.py  llm_cost.py  llm_env.py  llm_isolate.py
+  run_phase6.py  run_phase7.py  run_phase8_llm_spotcheck.py
+  verify_isolate_equivalence.py  report_isolate_cost.py
+  tests/   results/ (FINDINGS.md + phaseN_*.json/md tracked; episode_cache/,
+    isolate_cost_ledger.json, and llm_cost_ledger.json gitignored)
+  runs/  (ephemeral, gitignored)
 ```
 
 ## Constraints carried over

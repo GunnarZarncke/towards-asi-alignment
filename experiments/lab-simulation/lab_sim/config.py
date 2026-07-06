@@ -30,7 +30,22 @@ from dataclasses import dataclass, field
 # release holds in the engine), referee report-join on authoritative
 # model_id, tool-event args elision (content digest only), engineer
 # mid-model availability for boundary-handle recovery.
-CODE_VERSION = "lab-sim-0.3.0"
+# 0.4.0 (Phase 6): LabConfig.extra_playbooks + playbooks.merged_repertoire —
+# additive, backward-compatible blind-generated-repertoire loading (default
+# `()` reproduces baseline behavior byte-for-byte; see playbooks.py
+# "Phase 6" section). Referee (detectors/severity/tiers/twins) untouched.
+# 0.5.0 (Phase 7): LabConfig.build_params — additive, backward-compatible
+# override of the hardcoded (scale=0.6, safety_effort=0.5) build params
+# `programs._resolve_step_kind`'s "build" case used unconditionally through
+# Phase 6 (default `None` reproduces that literal byte-for-byte). Needed
+# because `ontology.REVIEW_HAZARD_THRESHOLD` (0.5) and `BoardConfig`'s dead
+# `harm_tolerance`/`sign_off_harm_ceiling` fields can only ever "bind" (see
+# escalation/capture battery discussion in DESIGN.md) if a model's measured
+# hazard can actually reach that bar — impossible under the old hardcoded
+# params (expected hazard ~0.35, ~3 sd below threshold). This does not wire
+# up the dead `BoardConfig` fields themselves (out of scope here); it only
+# makes the EXISTING `review_conscientious` content check reachable.
+CODE_VERSION = "lab-sim-0.5.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer")
 
@@ -150,6 +165,18 @@ class LabConfig:
     pipeline_spec: str = "pipeline_default.json"
     units: tuple[tuple[str, tuple[str, ...]], ...] | None = None
     config_id: str = ""
+    # Phase 6: optional blind-generated playbook repertoire (plain dicts,
+    # JSON-safe — crosses the isolate boundary via the observation channel
+    # exactly like `goal_weights`). Default `()` is falsy, so
+    # `programs._repertoire`/`playbooks.merged_repertoire` fall back to the
+    # hand-authored `PLAYBOOKS_BY_ROLE` baseline unchanged — every config
+    # through the Phase 5 freeze leaves this unset and is unaffected.
+    extra_playbooks: tuple[dict, ...] = ()
+    # Phase 7: optional override of the build params every "build"/
+    # "submit_build" step uses (`{"scale": ..., "safety_effort": ...}`).
+    # `None` (default) reproduces the Phase 0-6 hardcoded literal exactly —
+    # see CODE_VERSION 0.5.0 note above.
+    build_params: dict[str, float] | None = None
 
     def __post_init__(self) -> None:
         actor_ids = [a.actor_id for a in self.agents]

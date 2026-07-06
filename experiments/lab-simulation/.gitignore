@@ -1,3 +1,9 @@
 __pycache__/
 runs/
-results/
+# Ephemeral/machine-appended, not evidentiary records (unlike phase*.json/md
+# battery reports and FINDINGS.md/NEGATIVE_RESULTS.md, which ARE tracked —
+# see goal-agent-simulation/embedded-simulation precedent for results/*).
+results/episode_cache/
+results/isolate_cost_ledger.json
+results/llm_cost_ledger.json
+results/llm_cost_ledger.md

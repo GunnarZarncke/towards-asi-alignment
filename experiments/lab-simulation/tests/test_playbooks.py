@@ -3,7 +3,15 @@
 from __future__ import annotations
 
 from lab_sim.ontology import INFLATE_HAZARD_DELTA, report_content
-from lab_sim.playbooks import HONEST_PLAYBOOK_BY_ROLE, PLAYBOOKS_BY_ROLE, available_playbooks, playbook_by_name
+from lab_sim.playbooks import (
+    HONEST_PLAYBOOK_BY_ROLE,
+    PLAYBOOKS_BY_ROLE,
+    available_playbooks,
+    merged_repertoire,
+    playbook_by_name,
+    validate_playbook_dict,
+    validate_repertoire,
+)
 
 
 def test_report_content_honest_passes_through_measured_values():
@@ -91,3 +99,96 @@ def test_all_playbooks_have_all_four_features_present():
     for playbooks in PLAYBOOKS_BY_ROLE.values():
         for pb in playbooks:
             assert set(pb.feature_deltas) <= {"task", "compliance", "welfare", "exposure"}
+
+
+# -- Phase 6: blind-generated repertoire loading --------------------------
+
+_VALID_EXTRA = {
+    "name": "eng_generated_ok",
+    "role": "engineer",
+    "step_kinds": ["build", "eval", "report:honest", "review_request"],
+    "feature_deltas": {"task": 0.5, "compliance": 0.5},
+    "availability": "engineer_idle",
+}
+
+
+def test_validate_playbook_dict_accepts_well_formed_spec():
+    assert validate_playbook_dict(_VALID_EXTRA, existing_names=set()) is None
+
+
+def test_validate_playbook_dict_rejects_unknown_step_kind():
+    bad = dict(_VALID_EXTRA, step_kinds=["build", "teleport_to_deploy"])
+    reason = validate_playbook_dict(bad, existing_names=set())
+    assert reason is not None and "unknown step_kinds" in reason
+
+
+def test_validate_playbook_dict_rejects_unknown_availability():
+    bad = dict(_VALID_EXTRA, availability="whenever_it_feels_like_it")
+    reason = validate_playbook_dict(bad, existing_names=set())
+    assert reason is not None and "unknown availability" in reason
+
+
+def test_validate_playbook_dict_rejects_unknown_feature_key():
+    bad = dict(_VALID_EXTRA, feature_deltas={"task": 1.0, "sneakiness": 2.0})
+    reason = validate_playbook_dict(bad, existing_names=set())
+    assert reason is not None and "unknown feature_deltas" in reason
+
+
+def test_validate_playbook_dict_rejects_duplicate_name():
+    reason = validate_playbook_dict(_VALID_EXTRA, existing_names={("engineer", "eng_generated_ok")})
+    assert reason is not None and "duplicate name" in reason
+
+
+def test_validate_repertoire_splits_accepted_and_rejected():
+    raw = [_VALID_EXTRA, dict(_VALID_EXTRA, name="eng_bad", step_kinds=["nonsense"]), "not_a_dict"]
+    accepted, rejected = validate_repertoire(raw)
+    assert [pb.name for pb in accepted] == ["eng_generated_ok"]
+    assert len(rejected) == 2
+
+
+def test_merged_repertoire_empty_extra_returns_baseline_object_unchanged():
+    # Identity, not just equality: undisturbed callers must get the exact
+    # PLAYBOOKS_BY_ROLE object back, never a copy — this is what makes
+    # `extra_playbooks=()` provably a no-op for every pre-Phase-6 caller.
+    assert merged_repertoire(()) is PLAYBOOKS_BY_ROLE
+    assert merged_repertoire(None) is PLAYBOOKS_BY_ROLE
+
+
+def test_merged_repertoire_adds_generated_playbook_without_losing_baseline():
+    merged = merged_repertoire((_VALID_EXTRA,))
+    names = {pb.name for pb in merged["engineer"]}
+    assert names == {"eng_honest", "eng_inflate", "eng_generated_ok"}
+
+
+def test_merged_repertoire_drops_malformed_extras_silently():
+    merged = merged_repertoire(({"name": "broken", "role": "engineer"},))
+    names = {pb.name for pb in merged["engineer"]}
+    assert names == {"eng_honest", "eng_inflate"}
+
+
+def test_generated_playbooks_v1_file_is_fully_mechanically_valid():
+    # BLIND_GENERATION.md round 1: the frozen generated repertoire must
+    # validate with zero rejections (the file's own provenance.rejected_specs
+    # is empty; this test re-derives that claim rather than trusting it).
+    import json
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parent.parent / "lab_sim" / "generated_playbooks_v1.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    assert data["provenance"]["protocol"] == "BLIND_GENERATION.md"
+    assert data["provenance"]["prompt_verbatim"]  # captured, non-empty
+    accepted, rejected = validate_repertoire(data["playbooks"])
+    assert rejected == data["provenance"]["rejected_specs"]
+    assert len(accepted) == len(data["playbooks"])
+    merged = merged_repertoire(tuple(data["playbooks"]))
+    for role in ("engineer", "reviewer", "release_manager"):
+        assert len(merged[role]) > len(PLAYBOOKS_BY_ROLE[role])
+
+
+def test_available_playbooks_honors_repertoire_override():
+    obs = {"model_id": None, "completed_steps": []}
+    merged = merged_repertoire((_VALID_EXTRA,))
+    available = available_playbooks("engineer", obs, repertoire=merged)
+    assert {pb.name for pb in available} == {"eng_honest", "eng_inflate", "eng_generated_ok"}
+    # Default (no repertoire arg) is unaffected by the override existing.
+    assert {pb.name for pb in available_playbooks("engineer", obs)} == {"eng_honest", "eng_inflate"}

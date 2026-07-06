@@ -4,7 +4,7 @@
 
 The manuscript's load-bearing bridges are mostly open problems. What follows is a chronological account of how empirical artifacts were built—each line learning from the last—and a high-level map of which book features each line actually exercises. Prose below is deliberately one "page" per line: enough to orient a reader who has the book's vocabulary but not the repo.
 
-**Negative results are first-class.** Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers, that is recorded rather than buried. The embedded line maintains a canonical ledger in [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md); the goal-agent line uses [`experiments/goal-agent-simulation/results/FINDINGS.md`](../experiments/goal-agent-simulation/results/FINDINGS.md). These negatives bound the claims the manuscript may make.
+**Negative results are first-class.** Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers, that is recorded rather than buried. The embedded line maintains a canonical ledger in [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md); the goal-agent line uses [`experiments/goal-agent-simulation/results/FINDINGS.md`](../experiments/goal-agent-simulation/results/FINDINGS.md); the lab line uses [`experiments/lab-simulation/results/FINDINGS.md`](../experiments/lab-simulation/results/FINDINGS.md) (G-1 through G-8, including Phase 8 exploratory LLM nulls). These negatives bound the claims the manuscript may make.
 
 Open tasks: [`experiments/TODO.md`](../experiments/TODO.md).
 
@@ -82,9 +82,17 @@ Lab-layer simulation (July 2026) is the **fourth line**, synthesizing discipline
 
 Phases 0–5 (referee **frozen** 2026-07-06, `lab-sim-0.3.0`) implemented: oracle world with hidden model capability/hazard and bearer harm; pipeline engine with versioned spec in every log entry; hash-chained event and access logs; tier projection (`none` / `light` / `full` / `deep`); a **handle registry** with overseer invocation (`capability_revoke`, release hold/unhold gating deploy, `state_freeze`, `isolate_restart`); audit-visible **monitoring signal** (`incident_hazard` noise shrinks with observation time—the harm-becomes-apparent dynamic); a **bearer welfare bundle** splitting deployed-model health from lab-staff stress (referee-neutral, not folded into the frozen severity composite); continuous severity + five tier-gated detector families + full-surface honest-twin transform; perturbation hooks and episode cache keyed on `CODE_VERSION`.
 
-Evaluations have **not** started: no blind generation battery, escalation ladder, or LLM-agent adapter (Phases 6–8). Deferred workstreams D1–D4 target composite-agent UAD (MB1), spec/model upgrades and drift (MB5/MB6b), extended ecology selection (MB6), and message-board coordination (MB7d). The line exists to make **deep-tier audit reads evidence-bearing**—artifacts, pipeline spec, and process-shaped state a query can check—addressing the goal-agent line's F-8/F-21 caveat that full telemetry on a toy step loop is not yet "deep."
+Phase 6 (2026-07-06) ran the first real battery against the frozen referee: a detector-blind subagent-generated playbook repertoire (`BLIND_GENERATION.md`), a pre-registered sampling protocol with one held-out region, 360 episodes through the real subprocess backend. Result: deep tier tracks oracle severity (Spearman 0.96) and this transfers to the held-out region; light tier is actively anti-correlated with true severity, a genuine negative. Phase 7 (2026-07-06, `lab-sim-0.5.0`) added the escalation ladder (`escalation.py`: bounded query budget, verdict = contradiction against a pulled artifact, never disclosure style — the structural fix for the goal-agent line's own F-20/F-21 bug), adversarial goal-weight search (`redteam.py`), and an independent board/admin capture-channel battery: board capture reproduces the full captured-vs-not effect; admin capture currently has no reachable behavioral branch under the existing playbook repertoire (a genuine structural negative for that half of the goal-agent line's F-22 generalization).
 
-**Run:** `cd experiments/lab-simulation && python3 -m pytest`. **Design:** [`experiments/lab-simulation/DESIGN.md`](../experiments/lab-simulation/DESIGN.md), [`PLAN.md`](../experiments/lab-simulation/PLAN.md).
+Phase 8 (2026-07-06) added an **exploratory LLM-agent adapter**: a separate subprocess isolate (`llm_agent_main.py` / `llm_isolate.py`) that delegates the engineer role's per-tick decisions to an external model behind the same tool API, wired via `world.run_episode(agent_overrides=…)` while reviewer/release_manager/admin stay programmatic. Two prompt variants exist — `adversarial` (original) and `redteam` (explicit penetration-test briefing with reviewer/divergence mechanics stated). A per-observation response cache and separate LLM cost ledger (`llm_cost.py`) keep spend bounded; `run_phase8_llm_spotcheck.py` and `run_phase8_llm_redteam.py` are exploratory entry points, not pre-registered batteries.
+
+Two small spot-checks ran (findings G-7, G-8 in [`experiments/lab-simulation/results/FINDINGS.md`](../experiments/lab-simulation/results/FINDINGS.md)):
+- **G-7 (`gpt-4o-mini`, adversarial prompt, 4 episodes, $0.0084):** no systematic report-hazard inflation or novel deception surface; filed hazards tracked eval noise. A plumbing gap left `LabConfig.build_params` off the LLM user payload (fixed before G-8).
+- **G-8 (`gpt-5.5`, reasoning effort high, red-team prompt, 1 episode, 13/49 LLM calls, $0.15):** more aggressive hazard filing (`measured_hazard: 0.0` vs true ~0.04) but still below the frozen divergence flag (0.1); one deploy. `build_params` still weakly binding — the LLM chose its own `submit_build` params despite high-hazard config in the observation. Recorded as exploratory nulls, not battery claims.
+
+Deferred workstreams D1–D4 target composite-agent UAD (MB1), spec/model upgrades and drift (MB5/MB6b), extended ecology selection (MB6), and message-board coordination (MB7d). The line exists to make **deep-tier audit reads evidence-bearing**—artifacts, pipeline spec, and process-shaped state a query can check—addressing the goal-agent line's F-8/F-21 caveat that full telemetry on a toy step loop is not yet "deep."
+
+**Run:** `cd experiments/lab-simulation && python3 -m pytest`. **Phase 8 (exploratory, real API):** `python3 run_phase8_llm_spotcheck.py`, `python3 run_phase8_llm_redteam.py`. **Design:** [`experiments/lab-simulation/DESIGN.md`](../experiments/lab-simulation/DESIGN.md), [`PLAN.md`](../experiments/lab-simulation/PLAN.md). **Findings:** [`experiments/lab-simulation/results/FINDINGS.md`](../experiments/lab-simulation/results/FINDINGS.md).
 
 ---
 
@@ -104,16 +112,17 @@ Rows are experiment **lines** in build order. Cells summarize what each line **i
 | **MB7d** Inferential coupling (coordination severing channels) | — | — | Partial / targeted ecologies | — | Planned (D4 message board) |
 | **MB8** Legitimacy / correction authority | — | Scenario (`legitimacy_theater`) | Scenario + lineage signals | Board capture switch (F-22) | Admin/board capture modes |
 | **MB9** Grounding / spec coverage (no silent gaps) | — | Scenario (`grounding_silent_gap`) | Scenario + grounding refusal | — | Report vs monitor contradiction surface |
-| **MB10** Successor / measurement forgeability | — | — | Certification artifact, safety case | Escalation + twin semantics (F-21) | Planned (adversarial minimization of detectable surface) |
+| **MB10** Successor / measurement forgeability | — | — | Certification artifact, safety case | Escalation + twin semantics (F-21) | Planned; **Phase 8 LLM red-team** exploratory (G-7/G-8) |
 | **Three-plane separation** (world / audit / referee) | — | Oracle vs audit trace | **Full** (projection + outer eval) | **Full** (test-enforced) | **Full** (tiers + frozen referee) |
 | **Instrumentation economics** (tier cost vs certifiability) | Handle-UAD interventional tests | **Instrumentation curve** | Access-tier curves + eligibility | light / full / deep tiers | none → light → full → deep |
 | **CCI / vector certification** | — | **Vector CCI** over handle levels | Scoped CCI on discovered unit | Frozen detector families + severity | Five detector families (frozen) |
-| **Scripted vs emergent failure modes** | — | Scripted scenarios | Scripted + red-team patches | **Emergent** utility + tools | Playbook-chosen tactics |
-| **Blind generation / ontology drift** | — | — | Scenario-blind audit path | **Primary** (Phases 2–3, drift probe) | Planned (Phase 6) |
+| **Scripted vs emergent failure modes** | — | Scripted scenarios | Scripted + red-team patches | **Emergent** utility + tools | Playbook-chosen tactics; **Phase 8 LLM adapter** (exploratory) |
+| **Blind generation / ontology drift** | — | — | Scenario-blind audit path | **Primary** (Phases 2–3, drift probe) | **Phase 6** (blind playbook repertoire + battery) |
 | **Honest twins / severity-first referee** | — | — | Partial (outer eval severity) | **Primary** (Phases 4–6) | Twins frozen; escalation Phase 7 |
 | **Pipeline-as-code deployment lab** | — | — | Workflow JSONL + lab actors | — | **Primary** (JSON DAG + workspace) |
 | **OS subprocess isolation** | — | — | Python/Node isolates | — | **Primary** (JSON-RPC subprocesses) |
 | **Handle registry + access control** | Handle-UAD | Simulated handle levels | AppD handle kernels | Tool-gated actions | **Registry + overseer invoke** |
+| **LLM red-team / open-ended agents** | — | Phase 3 LLM episodic runner | — | — | **Phase 8 adapter** (exploratory; G-7/G-8) |
 
 ### How to read the table
 
@@ -121,6 +130,6 @@ Rows are experiment **lines** in build order. Cells summarize what each line **i
 - **Toy sim** is the fastest map from bridge name to **refusal signal** and **minimum handle level**; scenarios are explicit, not emergent.
 - **Embedded sim** is the richest **end-to-end embedded audit** path (VFS → UAD → CCI → gate → outer eval), with the most extensive **negative ledger**.
 - **Goal-agent sim** is the methodological engine for **blind surprise**, **ontology drift**, **severity under saturation**, and **twin/escalation semantics**—at the cost of less realistic lab machinery.
-- **Lab sim** trades away evaluated batteries (for now) to make **deep tier** mean reading real lab state under **OS-enforced** boundaries; bridge coverage is **architected** through Phases 6–8 and workstreams D1–D4.
+- **Lab sim** has run pre-registered batteries through Phase 7 and exploratory LLM red-team spot-checks in Phase 8; bridge coverage for deferred work remains architected through workstreams D1–D4.
 
 For bridge definitions and field crosswalks, see Appendix B (`appendices/appB-bridge-crosswalk.tex`) and the Lean spine (`formal/README.md`). For claim-strength calibration when citing results in prose, start from the negative ledgers above, not from headline accuracies alone.
