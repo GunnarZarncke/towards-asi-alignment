@@ -19,7 +19,7 @@ You build evals, traces, or deployment gates and want **operational hooks**—wh
 
 - How **boundary discovery** and **grounding viability** show up in audit design.
 - What **correction-channel integrity** means as a causal test, not a survey.
-- How included **experiments** bound (not prove) bridge claims.
+- How included **experiments** bound (not prove) bridge claims — see the [Experiments page](/experiments/) for build order, negative ledgers, and coverage matrix.
 - What a **deployment gate** artifact expects in the worked example (Appendix D).
 
 **Time:** ~2 hours of cards + Appendix D on the site.

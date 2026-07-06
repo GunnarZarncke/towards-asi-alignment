@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "npm run sync && npm run copy:pdf && ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "sync": "npm run sync:book && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos",
+    "sync": "npm run sync:book && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos && npm run sync:experiments",
+    "sync:experiments": "node scripts/sync-experiments.mjs",
     "sync:demos": "node scripts/sync-demos.mjs",
     "sync:lean-spine": "node scripts/sync-lean-spine.mjs",
     "sync:book": "node scripts/sync-book-yml.mjs",
@@ -16,6 +17,7 @@
     "sync:reference-cards": "node scripts/sync-reference-cards.mjs",
     "copy:pdf": "node scripts/copy-book-pdf.mjs",
     "check:book-links": "node scripts/check-book-links.mjs",
+    "check:experiments": "node scripts/check-experiments.mjs",
     "prebuild": "npm run sync && npm run copy:pdf",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
@@ -24,6 +26,7 @@
     "@astrojs/markdown-remark": "^7.0.0",
     "@viz-js/viz": "^3.28.0",
     "astro": "^7.0.4",
+    "js-yaml": "^4.3.0",
     "katex": "^0.16.11",
     "lz-string": "^1.5.0",
     "rehype-katex": "^7.0.1",

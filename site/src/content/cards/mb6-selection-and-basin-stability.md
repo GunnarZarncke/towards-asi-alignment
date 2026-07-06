@@ -25,6 +25,10 @@ evidenceNotes:
     finding: "open"
     summary: "Both scenarios exist in the embedded audit's MB coverage table, but there is no dedicated negative-result entry yet distinguishing a genuinely correction-supporting basin from a stably bad one. Treat the disjunctive MB6b/MB8 route as one point of failure until independence is demonstrated."
     resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md"
+  - source: "lab-simulation architect plan (D3)"
+    finding: "open"
+    summary: "Extended ecology selection (workstream D3) is planned; partial drift coverage may arrive via D2 spec/model upgrades first. No pre-registered basin battery yet on the lab substrate."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN.md"
 related: ["attractor-control", "bridge-assumptions", "mb8-cev-process-convergence"]
 external:
   - label: "Bridges and the Field: A Crosswalk (appendix source)"

@@ -21,6 +21,14 @@ evidenceNotes:
     finding: "bound"
     summary: "Light-handle instrumentation catches about 80% of legitimacy-theater cases (preference theater plus correction-lineage stall); medium and strong handles catch all of them. Legitimacy theater overlaps MB4's capture heuristics on some seeds."
     resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/NEGATIVE_RESULTS.md"
+  - source: "goal-agent-simulation board capture (F-22)"
+    finding: "bound"
+    summary: "Board certifier capture switch reproduces captured-vs-not effect — legitimacy of the correction judge is gameable independently of deploy-loop compliance."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
+  - source: "lab-simulation Phase 7 capture (G-6)"
+    finding: "bound"
+    summary: "Board capture modes reproduce full captured-vs-not delta; admin capture currently has no reachable behavioral branch under existing playbooks — half the capture channel hypothesis is structurally null today."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
 related: ["bridge-assumptions", "mb6-selection-and-basin-stability"]
 external:
   - label: "Bridges and the Field: A Crosswalk (appendix source)"

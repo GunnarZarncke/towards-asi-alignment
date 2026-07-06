@@ -1,5 +1,7 @@
 # Experimental evidence
 
+> **Structured map:** build order, ledger links, headline findings, and the coverage matrix live in [`metadata/experiments.yml`](../metadata/experiments.yml) (synced to the companion site at `/experiments/`). This document is the canonical **narrative**; update the YAML when tables, links, or headline findings change.
+
 > **Claim strength:** methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (`MB1`–`MB10`).
 
 The manuscript's load-bearing bridges are mostly open problems. What follows is a chronological account of how empirical artifacts were built—each line learning from the last—and a high-level map of which book features each line actually exercises. Prose below is deliberately one "page" per line: enough to orient a reader who has the book's vocabulary but not the repo.

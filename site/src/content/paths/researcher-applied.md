@@ -22,7 +22,7 @@ You already work on alignment, evals, or governance and need a precise vocabular
 **You will leave knowing:**
 
 - The **boundary error**: auditing the visible model while the real optimizer is a larger loop.
-- Named **bridge failure modes** (MB1–MB9) and where empirical sims support or bound claims.
+- Named **bridge failure modes** (MB1–MB10) and where empirical sims support or bound claims — [Experiments page](/experiments/) for the coverage matrix.
 - How **correction-channel integrity** and **successor stability** differ from label alignment.
 - Where to continue for Lean proofs and bridge crosswalk detail.
 

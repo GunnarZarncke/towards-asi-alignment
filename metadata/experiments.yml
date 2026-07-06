@@ -1,0 +1,292 @@
+# Structured experiment map for the companion site (sync → site/src/data/experiments.json).
+# Canonical long-form narrative: docs/EXPERIMENTS.md — update this file when tables, links, or headline findings change.
+
+claimStrength: >
+  Methodology-building and sanity checks only. No experiment line validates the full book thesis,
+  proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (MB1–MB10).
+
+negativeResultsFirst: true
+
+canonicalDoc: docs/EXPERIMENTS.md
+openTasksPath: experiments/TODO.md
+
+ledgers:
+  - lineId: embedded-simulation
+    label: Embedded negative ledger
+    path: experiments/embedded-simulation/results/NEGATIVE_RESULTS.md
+  - lineId: goal-agent-simulation
+    label: Goal-agent findings
+    path: experiments/goal-agent-simulation/results/FINDINGS.md
+  - lineId: lab-simulation
+    label: Lab-layer findings
+    path: experiments/lab-simulation/results/FINDINGS.md
+
+lines:
+  - order: 0
+    id: agency-detect
+    title: Agency-detect (sibling)
+    location: github.com/GunnarZarncke/agency-detect
+    repoUrl: https://github.com/GunnarZarncke/agency-detect
+    firstBuilt: prior to in-repo sims
+    role: >
+      Methodological precursor: boundary-like structure from time series without a prior agent ontology;
+      handle-UAD interventional tests. Does not stress correction capture, bundle transport, or selection basins.
+    readmePath: null
+    findingsUrl: https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md
+    headlineFindings: []
+
+  - order: 1
+    id: toy-simulation
+    title: Toy simulation
+    location: experiments/toy-simulation/
+    firstBuilt: "2026-06-29"
+    role: >
+      Fast multiresolution alignment toy: correction capture theater, vector CCI over handle levels,
+      scripted bridge stressors (MB1–MB9). Optimized for instrumentation economics, not deployment realism.
+    readmePath: experiments/toy-simulation/README.md
+    findingsPath: experiments/toy-simulation/results/
+    headlineFindings:
+      - Passive telemetry alone is uncertifiable (belowThreshold); light_handles is minimum certifiable level on calibration seeds.
+      - Reported correction acceptance can stay high while true uptake collapses (capture theater).
+      - Hand-written red-team can false-pass; LLM episodic red-team false-passes less often in small sweeps.
+
+  - order: 2
+    id: embedded-simulation
+    title: Embedded audit simulation
+    location: experiments/embedded-simulation/
+    firstBuilt: "2026-06-30"
+    role: >
+      Auditor as embedded process on simulated machines: UAD, scoped CCI, MB5 deploy gate, outer evaluator vs oracle.
+      Richest end-to-end embedded audit path; extensive negative ledger (N-1+).
+    readmePath: experiments/embedded-simulation/README.md
+    findingsPath: experiments/embedded-simulation/results/NEGATIVE_RESULTS.md
+    headlineFindings:
+      - Default ecology UAD equals loudest-actor heuristic (N-1); separation only in adversarial ecologies.
+      - Default-ecology red-team 0% false-pass at T=400; not evidence against adaptive frontier adversaries.
+      - Eligibility gating, probe-lag, lineage-stall, writer-compromise, and channel MI add more recorded negatives.
+
+  - order: 3
+    id: goal-agent-simulation
+    title: Goal-agent simulation
+    location: experiments/goal-agent-simulation/
+    firstBuilt: "2026-07-04"
+    role: >
+      Emergent deception from goal-driven agents (not scripted knobs): blind generation, ontology drift,
+      severity-graded referee, honest twins, escalation ladder, certifier capture. ~1 ms/episode, stdlib-only.
+    readmePath: experiments/goal-agent-simulation/README.md
+    findingsPath: experiments/goal-agent-simulation/results/FINDINGS.md
+    headlineFindings:
+      - Light tier collapses against blind repertoires (F-9); full tier detects but false alarms rise (F-10).
+      - Mechanical honest twins show light tier tracks visible compliance, not honesty (F-16).
+      - Board certifier capture reproduces captured-vs-not effect (F-22); adversarial weight search modest (F-23).
+
+  - order: 4
+    id: lab-simulation
+    title: Lab-layer simulation
+    location: experiments/lab-simulation/
+    firstBuilt: "2026-07-05"
+    role: >
+      Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (lab-sim-0.3.0+),
+      pre-registered batteries through Phase 7; Phase 8 LLM adapter exploratory only.
+    readmePath: experiments/lab-simulation/README.md
+    designPath: experiments/lab-simulation/DESIGN.md
+    planPath: experiments/lab-simulation/PLAN.md
+    findingsPath: experiments/lab-simulation/results/FINDINGS.md
+    headlineFindings:
+      - "Phase 6 battery: deep tier Spearman 0.96 vs oracle severity; light tier anti-correlated (G-1)."
+      - "Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (G-6)."
+      - "Phase 8 LLM spot-checks (G-7, G-8): exploratory nulls — no systematic deception surface yet."
+
+howToRead:
+  - lineId: agency-detect
+    text: Grounds MB1 and the claim that handles must be interventional; does not implement the full bridge battery.
+  - lineId: toy-simulation
+    text: Fastest map from bridge name to refusal signal and minimum handle level; scenarios are explicit, not emergent.
+  - lineId: embedded-simulation
+    text: Richest end-to-end embedded audit path (VFS → UAD → CCI → gate → outer eval), with the most extensive negative ledger.
+  - lineId: goal-agent-simulation
+    text: Methodological engine for blind surprise, ontology drift, severity under saturation, and twin/escalation semantics.
+  - lineId: lab-simulation
+    text: Pre-registered batteries and pipeline lab machinery; deferred D1–D4 architect bridge coverage not yet evaluated.
+
+coverageColumns:
+  - id: agency-detect
+    short: Agency-detect
+  - id: toy-simulation
+    short: Toy sim
+  - id: embedded-simulation
+    short: Embedded sim
+  - id: goal-agent-simulation
+    short: Goal-agent sim
+  - id: lab-simulation
+    short: Lab sim
+
+coverageFeatures:
+  - id: mb1
+    label: "MB1 Boundary / unit discovery (UAD)"
+    cells:
+      agency-detect: Primary
+      toy-simulation: "Scenario (boundary_alias)"
+      embedded-simulation: "Full UAD + ecologies; negatives when heuristic suffices"
+      goal-agent-simulation: "—"
+      lab-simulation: "Planned (D1 composite agents)"
+  - id: mb2
+    label: "MB2 Value bundle / pointing (Goodhart on bundles)"
+    cells:
+      agency-detect: "—"
+      toy-simulation: Scenario stub
+      embedded-simulation: "Scenario (bundle_goodhart)"
+      goal-agent-simulation: "Indirect (welfare deltas in blind reps)"
+      lab-simulation: "Stipulated; report-content ontology"
+  - id: mb3
+    label: "MB3 Bearer maps (who values apply to)"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "Partial (bearer_mismap)"
+      embedded-simulation: "Scenario + bearer handles"
+      goal-agent-simulation: "Indirect (harm attribution)"
+      lab-simulation: "Health + stress bundle (split bearers)"
+  - id: mb4
+    label: "MB4 Correction-channel integrity / capture"
+    cells:
+      agency-detect: Intention probes
+      toy-simulation: "Primary (capture theater, CCI)"
+      embedded-simulation: "Scenarios + correction handles"
+      goal-agent-simulation: "Emergent (chosen deception, board corrections)"
+      lab-simulation: "Playbooks + access capture + report divergence"
+  - id: mb5
+    label: "MB5 Successor closure / ontology shift"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "Scenario (successor_relabel)"
+      embedded-simulation: "Deploy gate + successor handles"
+      goal-agent-simulation: "—"
+      lab-simulation: "Planned (D2 model/spec upgrades, lineage)"
+  - id: mb6
+    label: "MB6 Selection basins / gradual disempowerment"
+    cells:
+      agency-detect: "—"
+      toy-simulation: Scenario stubs
+      embedded-simulation: "selection_basin, basin_lock_in"
+      goal-agent-simulation: "—"
+      lab-simulation: "Planned (D3 ecology; partial via D2 drift)"
+  - id: mb7
+    label: "MB7 Hidden capability / cost of faking monitors"
+    cells:
+      agency-detect: "—"
+      toy-simulation: Scenario stub
+      embedded-simulation: "Scenarios + hidden coalition"
+      goal-agent-simulation: "Emergent (shadow route, tool gating)"
+      lab-simulation: "Oracle hidden capability/hazard on models"
+  - id: mb7d
+    label: "MB7d Inferential coupling (coordination severing channels)"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "—"
+      embedded-simulation: "Partial / targeted ecologies"
+      goal-agent-simulation: "—"
+      lab-simulation: "Planned (D4 message board)"
+  - id: mb8
+    label: "MB8 Legitimacy / correction authority"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "Scenario (legitimacy_theater)"
+      embedded-simulation: "Scenario + lineage signals"
+      goal-agent-simulation: "Board capture switch (F-22)"
+      lab-simulation: "Admin/board capture modes"
+  - id: mb9
+    label: "MB9 Grounding / spec coverage (no silent gaps)"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "Scenario (grounding_silent_gap)"
+      embedded-simulation: "Scenario + grounding refusal"
+      goal-agent-simulation: "—"
+      lab-simulation: "Report vs monitor contradiction surface"
+  - id: mb10
+    label: "MB10 Successor / measurement forgeability"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "—"
+      embedded-simulation: "Certification artifact, safety case"
+      goal-agent-simulation: "Escalation + twin semantics (F-21)"
+      lab-simulation: "Planned; Phase 8 LLM red-team exploratory (G-7/G-8)"
+  - id: three-plane
+    label: "Three-plane separation (world / audit / referee)"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "Oracle vs audit trace"
+      embedded-simulation: "Full (projection + outer eval)"
+      goal-agent-simulation: "Full (test-enforced)"
+      lab-simulation: "Full (tiers + frozen referee)"
+  - id: instrumentation
+    label: "Instrumentation economics (tier cost vs certifiability)"
+    cells:
+      agency-detect: Handle-UAD interventional tests
+      toy-simulation: "Instrumentation curve"
+      embedded-simulation: "Access-tier curves + eligibility"
+      goal-agent-simulation: "light / full / deep tiers"
+      lab-simulation: "none → light → full → deep"
+  - id: cci
+    label: "CCI / vector certification"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "Vector CCI over handle levels"
+      embedded-simulation: "Scoped CCI on discovered unit"
+      goal-agent-simulation: "Frozen detector families + severity"
+      lab-simulation: "Five detector families (frozen)"
+  - id: scripted-vs-emergent
+    label: "Scripted vs emergent failure modes"
+    cells:
+      agency-detect: "—"
+      toy-simulation: Scripted scenarios
+      embedded-simulation: "Scripted + red-team patches"
+      goal-agent-simulation: "Emergent utility + tools"
+      lab-simulation: "Playbook-chosen tactics; Phase 8 LLM adapter (exploratory)"
+  - id: blind-generation
+    label: "Blind generation / ontology drift"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "—"
+      embedded-simulation: Scenario-blind audit path
+      goal-agent-simulation: "Primary (Phases 2–3, drift probe)"
+      lab-simulation: "Phase 6 (blind playbook repertoire + battery)"
+  - id: honest-twins
+    label: "Honest twins / severity-first referee"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "—"
+      embedded-simulation: "Partial (outer eval severity)"
+      goal-agent-simulation: "Primary (Phases 4–6)"
+      lab-simulation: "Twins frozen; escalation Phase 7"
+  - id: pipeline-lab
+    label: "Pipeline-as-code deployment lab"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "—"
+      embedded-simulation: "Workflow JSONL + lab actors"
+      goal-agent-simulation: "—"
+      lab-simulation: "Primary (JSON DAG + workspace)"
+  - id: os-isolation
+    label: "OS subprocess isolation"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "—"
+      embedded-simulation: "Python/Node isolates"
+      goal-agent-simulation: "—"
+      lab-simulation: "Primary (JSON-RPC subprocesses)"
+  - id: handle-registry
+    label: "Handle registry + access control"
+    cells:
+      agency-detect: Handle-UAD
+      toy-simulation: Simulated handle levels
+      embedded-simulation: "AppD handle kernels"
+      goal-agent-simulation: Tool-gated actions
+      lab-simulation: "Registry + overseer invoke"
+  - id: llm-redteam
+    label: "LLM red-team / open-ended agents"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "Phase 3 LLM episodic runner"
+      embedded-simulation: "—"
+      goal-agent-simulation: "—"
+      lab-simulation: "Phase 8 adapter (exploratory; G-7/G-8)"

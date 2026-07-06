@@ -1,0 +1,80 @@
+---
+interface CoverageColumn {
+  id: string;
+  short: string;
+}
+
+interface CoverageFeature {
+  id: string;
+  label: string;
+  cells: Record<string, string>;
+}
+
+interface Props {
+  columns: CoverageColumn[];
+  features: CoverageFeature[];
+}
+
+const { columns, features } = Astro.props;
+
+function cellText(value: string) {
+  return value.replace(/`/g, "");
+}
+---
+
+<section class="experiment-coverage">
+  <h2>Feature coverage</h2>
+  <p class="side-panel-meta">
+    Rows are book bridges and audit concepts. Columns are experiment lines in build order.
+    Cells summarize what each line implements or stress-tests — not every scenario name.
+  </p>
+  <div class="table-wrap coverage-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Book feature</th>
+          {columns.map((col) => (
+            <th scope="col">{col.short}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {features.map((feature) => (
+          <tr>
+            <th scope="row">{feature.label}</th>
+            {columns.map((col) => {
+              const value = feature.cells[col.id] ?? "—";
+              return <td>{cellText(value)}</td>;
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .experiment-coverage {
+    margin-top: 2rem;
+  }
+
+  .coverage-scroll {
+    overflow-x: auto;
+  }
+
+  .experiment-coverage table {
+    font-size: 0.92rem;
+  }
+
+  .experiment-coverage th[scope="row"] {
+    min-width: 14rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .experiment-coverage th[scope="col"],
+  .experiment-coverage td {
+    min-width: 7rem;
+    vertical-align: top;
+  }
+</style>

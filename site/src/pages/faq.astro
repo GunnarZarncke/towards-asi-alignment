@@ -1,6 +1,9 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
 const items = [
   ["What is this site?", "A static companion site for the book. It helps readers find the core ideas, choose a fixed path, and reach the PDF."],
   ["Is this a new knowledge platform?", "No. It is an authored reference layer for one framework. Discussion and contributions can happen elsewhere."],
@@ -10,6 +13,7 @@ const items = [
   ["Why start with boundary discovery?", "Because the deployed actor may be a loop of model, memory, tools, dashboards, and people. Auditing only the model can miss the real controller."],
   ["Does Lean prove alignment?", "No. Lean checks conditional structure. It does not prove that real systems satisfy the bridge assumptions."],
   ["Do the experiments validate the thesis?", "No. They are methodology-building and sanity checks. Negative results bound what the manuscript may claim."],
+  ["Where are the experiment lines documented?", "The companion site Experiments page summarizes build order, negative ledgers, and bridge coverage. Full narrative prose lives in docs/EXPERIMENTS.md in the repository."],
   ["Where should safety engineers start?", "Use the engineer/evals path, then read the correction-channel integrity and deployment-gate cards."],
   ["Where should policy readers start?", "Use the funder/policy path. It emphasizes decision triggers, scope assumptions, artifacts, and uncertainty."],
   ["Where is the full book?", "The PDF is hosted on this site (PDF in the nav) and opens directly in the browser. GitHub Releases remains an alternate download channel."],
@@ -30,7 +34,18 @@ const items = [
     {items.map(([question, answer]) => (
       <details class="card">
         <summary><strong>{question}</strong></summary>
-        <p>{answer}</p>
+        <p>
+          {question === "Where are the experiment lines documented?" ? (
+            <>
+              The companion site <a href={withBase("/experiments/")}>Experiments page</a> summarizes build order,
+              negative ledgers, and bridge coverage. Full narrative prose lives in{" "}
+              <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">docs/EXPERIMENTS.md</a>{" "}
+              in the repository.
+            </>
+          ) : (
+            answer
+          )}
+        </p>
       </details>
     ))}
   </section>

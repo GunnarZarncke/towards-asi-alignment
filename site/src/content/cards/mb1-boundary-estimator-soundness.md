@@ -28,6 +28,10 @@ evidenceNotes:
     finding: "negative"
     summary: "Frozen blind audit false-passes about 89% of the time under the boundary_decouple strategy, versus 6-9% for other strategies. The vulnerability sits downstream of boundary measurement, not in the correction logic itself."
     resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/NEGATIVE_RESULTS.md"
+  - source: "lab-simulation architect plan (D1)"
+    finding: "open"
+    summary: "Composite-agent UAD (workstream D1) is designed but not yet evaluated on the lab substrate. Treat MB1 coverage on lab sim as planned, not demonstrated."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN.md"
 related: ["boundary-discovery", "bridge-assumptions"]
 external:
   - label: "Bridges and the Field: A Crosswalk (appendix source)"

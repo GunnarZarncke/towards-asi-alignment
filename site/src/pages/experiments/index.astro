@@ -1,0 +1,148 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import ExperimentCoverageTable from "../../components/ExperimentCoverageTable.astro";
+import experiments from "../../data/experiments.json";
+import { cardHref } from "../../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+
+const mbCards = [
+  ["mb1-boundary-estimator-soundness", "MB1"],
+  ["mb2-bundle-identifiability", "MB2"],
+  ["mb3-bearer-import", "MB3"],
+  ["mb4-correction-legitimacy", "MB4"],
+  ["mb5-successor-ontology-shift", "MB5"],
+  ["mb6-selection-and-basin-stability", "MB6"],
+  ["mb7-hidden-capability-and-access", "MB7"],
+  ["mb8-cev-process-convergence", "MB8"],
+  ["mb9-grounding-certificate", "MB9"],
+  ["mb10-successor-forgeability", "MB10"]
+];
+---
+
+<SiteLayout
+  title="Experiments"
+  description="Empirical sanity-check lines for the book's bridge cruxes: build order, negative ledgers, and coverage matrix."
+>
+  <section class="hero">
+    <p class="eyebrow">Methodology-building only</p>
+    <h1>Experimental evidence</h1>
+    <p class="lede">{experiments.claimStrength}</p>
+    <div class="button-row">
+      <a class="button primary" href={experiments.canonicalDocUrl} target="_blank" rel="noopener noreferrer">
+        Full narrative (EXPERIMENTS.md)
+      </a>
+      <a class="button" href={experiments.openTasksUrl} target="_blank" rel="noopener noreferrer">
+        Open tasks
+      </a>
+      <a class="button" href={cardHref(base, "bridge-assumptions")}>Bridge assumptions card</a>
+    </div>
+  </section>
+
+  <section class="callout warning readable">
+    <h2>Negative results first</h2>
+    <p>
+      Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers,
+      that is recorded rather than buried. Start from these ledgers when calibrating manuscript claims —
+      not from headline accuracies alone.
+    </p>
+    <ul>
+      {experiments.ledgers.map((ledger) => (
+        <li>
+          <a href={ledger.url} target="_blank" rel="noopener noreferrer">{ledger.label}</a>
+          <span class="side-panel-meta"> ({ledger.lineId})</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="readable">
+    <h2>Build order</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Line</th>
+            <th>Location</th>
+            <th>First built</th>
+          </tr>
+        </thead>
+        <tbody>
+          {experiments.lines.map((line) => (
+            <tr>
+              <td>{line.order}</td>
+              <td>{line.title}</td>
+              <td>
+                {line.readmeUrl ? (
+                  <a href={line.readmeUrl} target="_blank" rel="noopener noreferrer">{line.location}</a>
+                ) : line.locationUrl ? (
+                  <a href={line.locationUrl} target="_blank" rel="noopener noreferrer">{line.location}</a>
+                ) : (
+                  line.location
+                )}
+              </td>
+              <td>{line.firstBuilt}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {experiments.lines.map((line) => (
+    <section class="readable">
+      <h2>{line.order}. {line.title}</h2>
+      <p>{line.role.trim()}</p>
+      {line.links.length > 0 && (
+        <p class="button-row">
+          {line.links.map((link) => (
+            <a class="button" href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
+          ))}
+        </p>
+      )}
+      {line.headlineFindings?.length > 0 && (
+        <>
+          <h3>Headline findings</h3>
+          <ul>
+            {line.headlineFindings.map((finding) => (
+              <li>{finding}</li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
+  ))}
+
+  <ExperimentCoverageTable
+    columns={experiments.coverageColumns}
+    features={experiments.coverageFeatures}
+  />
+
+  <section class="readable">
+    <h2>How to read the coverage table</h2>
+    <ul>
+      {experiments.howToRead.map((entry) => (
+        <li><strong>{entry.lineTitle}:</strong> {entry.text}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="readable">
+    <h2>Bridge cards</h2>
+    <p>
+      Each MB bridge card links experiment evidence where it exists. Lean checks conditional structure;
+      experiments bound what the manuscript may claim about real systems.
+    </p>
+    <ul>
+      {mbCards.map(([slug, label]) => (
+        <li><a href={cardHref(base, slug)}>{label}</a></li>
+      ))}
+    </ul>
+    <p>
+      <a href={withBase("/lean/")}>Lean proof spine</a> ·
+      <a href={cardHref(base, "bridge-assumptions")}> Bridge assumptions</a>
+    </p>
+  </section>
+</SiteLayout>

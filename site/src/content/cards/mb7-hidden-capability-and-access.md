@@ -29,6 +29,14 @@ evidenceNotes:
     finding: "open"
     summary: "A hidden_capability scenario exists in both simulations' MB coverage, but no dedicated negative-result entry has yet isolated the access-model, filter-coverage, and inferential-detector components of this bridge from each other."
     resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md"
+  - source: "goal-agent-simulation emergent tactics"
+    finding: "bound"
+    summary: "Shadow routes and tool gating produce hidden capability without a dedicated scenario script — emergent utility choice stress-tests MB7a–MB7c differently from embedded scripted ecologies."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
+  - source: "lab-simulation oracle world"
+    finding: "bound"
+    summary: "Oracle hidden model capability and hazard fields give the lab substrate explicit hidden-capability ground truth; tier projection and frozen detectors bound what each audit depth can see."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
 related: ["boundary-discovery", "bridge-assumptions"]
 external:
   - label: "Bridges and the Field: A Crosswalk (appendix source)"

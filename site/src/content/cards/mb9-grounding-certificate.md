@@ -17,6 +17,10 @@ evidenceNotes:
     finding: "negative"
     summary: "Light correction-handle instrumentation false-passes every diagnostic seed where value-relevant state drifts silently in the underlying (micro) simulation; medium-handle bearer-welfare tracing correctly refuses certification in all 10/10 cases."
     resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/NEGATIVE_RESULTS.md"
+  - source: "lab-simulation report vs monitor surface"
+    finding: "bound"
+    summary: "Report files vs monitoring signals give a contradiction surface for grounding silent gaps — deep tier reads are evidence-bearing when artifacts and pipeline spec are queryable."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
 related: ["grounding-viability", "bridge-assumptions"]
 external:
   - label: "Bridges and the Field: A Crosswalk (appendix source)"

@@ -24,6 +24,14 @@ evidenceNotes:
     finding: "open"
     summary: "No experiment scenario yet directly red-teams conserved-property-audit forgeability specifically (as opposed to the individual MB1-MB9 measurement channels). This is a named gap, not a rounding error: ch08 and ch31's own \"What Would Change This View\" sections raised the worry that a capable predecessor could engineer a successor to pass every conserved-property check while defecting on whatever was not conserved."
     resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Forgeability.lean"
+  - source: "goal-agent-simulation escalation + twins (F-21)"
+    finding: "bound"
+    summary: "Escalation ladder and twin semantics probe whether audit channels can be gamed without disclosing style — partial stress on measurement forgeability, not full seven-property successor checklist."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
+  - source: "lab-simulation Phase 8 LLM spot-checks (G-7, G-8)"
+    finding: "open"
+    summary: "Exploratory LLM red-team adapter produced nulls — no systematic deception surface yet — but Phase 8 is not a pre-registered battery. MB10 forgeability of conserved-property audits remains the least probed bridge."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
 related: ["successor-stability", "bridge-assumptions", "mb5-successor-ontology-shift"]
 external:
   - label: "AlignmentProofSpine/Forgeability.lean"
