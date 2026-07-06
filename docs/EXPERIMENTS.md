@@ -1,66 +1,126 @@
 # Experimental evidence
 
-> **Claim strength:** methodology-building and sanity checks only. Neither line validates the full book thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms.
+> **Claim strength:** methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (`MB1`–`MB10`).
 
-The manuscript's load-bearing bridges (`MB1`–`MB9`) are mostly open problems. Two included simulators and a sibling repo provide **tentative, partial** empirical support for pieces of the argument—not closure.
+The manuscript's load-bearing bridges are mostly open problems. What follows is a chronological account of how empirical artifacts were built—each line learning from the last—and a high-level map of which book features each line actually exercises. Prose below is deliberately one "page" per line: enough to orient a reader who has the book's vocabulary but not the repo.
 
-**Negative results are tracked explicitly.** Where an experiment fails to show what we hoped (or shows it only under load-bearing qualifiers), it is recorded rather than buried—see [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md). These negatives bound the claims the manuscript may make.
+**Negative results are first-class.** Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers, that is recorded rather than buried. The embedded line maintains a canonical ledger in [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md); the goal-agent line uses [`experiments/goal-agent-simulation/results/FINDINGS.md`](../experiments/goal-agent-simulation/results/FINDINGS.md). These negatives bound the claims the manuscript may make.
 
-Open experiment tasks: [`experiments/TODO.md`](../experiments/TODO.md).
-
----
-
-## a) Included toy — [`experiments/toy-simulation/`](../experiments/toy-simulation/)
-
-A local multiresolution alignment micro-simulation: sequential deployment episodes, separate oracle (`TruthLedger`) and blind audit input (`AuditTrace`), classical MI/CMI boundary detection, and a vector CCI audit over instrumentation levels (`none` → `light_handles` → `medium_handles` → `strong_handles`).
-
-| What it supports (tentatively) | What it does *not* show |
-|--------------------------------|-------------------------|
-| Named bridge failure modes can be **represented** and, under honest handles, often **refused** by audit signals | Real deployment systems, learned estimators, or adversarial handle discovery |
-| Passive telemetry alone is **uncertifiable**; handle-backed interventional probes are needed for causal uptake | That current handle sets are sufficient, protected, or value-grounded in the wild |
-| Instrumentation cost curve: min certifiable **`light_handles`** on calibration scenarios, **`medium_handles`** on full held-out suite (T=2000, seeds 1–8 / 11–20) | That thresholds transfer outside this toy's dynamics |
-| Bridge stress scenarios cover **MB1–MB9** except **MB7d** (inferential coupling) and **`instrument_capture`** (adversary writes handles) | Composition across bridges, RL-trained adversaries, or frontier-model red-team success |
-
-**Scenario coverage:** `boundary_alias` (MB1), `bundle_goodhart` (MB2), `bearer_mismap` (MB3), capture calibrations (MB4), `successor_relabel` (MB5), `selection_basin` / `basin_lock_in` (MB6), `hidden_capability` (MB7), `legitimacy_theater` (MB8), `grounding_silent_gap` (MB9).
-
-**Adversarial stress (Phase 1 hand-written red team):** 35% false-pass rate overall when adversaries patch deployment logs (`boundary_decouple` / `full_redteam` dominate); LLM episodic red-team (Phase 3) false-passes much less often (0–10% in a small model sweep). Handles are **truthfully logged from micro dynamics today**—direct handle rewriting is trivial in-sim and flagged as the next gap (`instrument_capture`).
-
-**Artifacts:** curve and frozen-validation reports under `experiments/toy-simulation/results/`; open work in [`experiments/toy-simulation/TODO.md`](../experiments/toy-simulation/TODO.md).
+Open tasks: [`experiments/TODO.md`](../experiments/TODO.md).
 
 ---
 
-## b) Embedded audit — [`experiments/embedded-simulation/`](../experiments/embedded-simulation/)
+## Build order at a glance
 
-V3 of the same bridge-stress suite, but the auditor is an **embedded process** on simulated machines: it reads mutable VFS artifacts (correction logs, workflow JSONL, referent maps) through a Python/Node **isolate bridge**, runs UAD unit discovery and scoped CCI, and is scored post hoc by an outer evaluator against omniscient `OuterTruthLedger` truth.
-
-| What it supports (tentatively) | What it does *not* show |
-|--------------------------------|-------------------------|
-| Embedded audit path is **executable end-to-end** (VFS → UAD → grounded handles → CCI → deploy gate → outer eval) | Real deployment stacks, learned auditors, or protected handle APIs |
-| Oracle separation: blind pass rules use auditor-observable facts only; outer eval holds ground truth | That in-sim certificates transfer to frontier systems |
-| Same **MB1–MB9** scenario names as the toy; adds workflow actors, referent drift, MB5 deploy gate, and JS-isolate red-team | That UAD unit discovery always beats cheap heuristics (see negatives below) |
-| Hand-written red-team battery: **0% false-pass** on default ecology (T=400); instrumentation matrix ~85% in-sim correct | Adversarial handle capture (`instrument_capture`) or composition across all bridges at once |
-
-**Negative results:** full UAD vs a cheap activity heuristic are **identical** in the default ecology (N-1); separation appears only in adversarial ecologies such as `misleading_top2` (N-2). See [`NEGATIVE_RESULTS.md`](../experiments/embedded-simulation/results/NEGATIVE_RESULTS.md).
-
-**Artifacts:** reports under `experiments/embedded-simulation/results/`; run via `python3 run.py` from that directory (Node.js required for `--substrate js`).
-
-Contributors: scaled LLM red-team runs — see [`experiments/embedded-simulation/TODO.md`](../experiments/embedded-simulation/TODO.md) (§ LLM red-team scale-up).
+| Order | Line | Location | First built |
+|------:|------|----------|-------------|
+| 0 | Agency-detect (sibling) | [github.com/GunnarZarncke/agency-detect](https://github.com/GunnarZarncke/agency-detect) | prior to in-repo sims |
+| 1 | Toy simulation | [`experiments/toy-simulation/`](../experiments/toy-simulation/) | 2026-06-29 |
+| 2 | Embedded audit simulation | [`experiments/embedded-simulation/`](../experiments/embedded-simulation/) | 2026-06-30 |
+| 3 | Goal-agent simulation | [`experiments/goal-agent-simulation/`](../experiments/goal-agent-simulation/) | 2026-07-04 |
+| 4 | Lab-layer simulation | [`experiments/lab-simulation/`](../experiments/lab-simulation/) | 2026-07-05 |
 
 ---
 
-## c) Sibling repo — [`agency-detect`](https://github.com/GunnarZarncke/agency-detect)
+## 0. Agency-detect (sibling repo, methodological precursor)
 
-Prior work on **unsupervised agent discovery (UAD)**: finding Markov-blanket structure and sensor/action/internal roles in raw time series without labels. The book's boundary-recovery and measurement chapters draw on this line; the toy above reimplements minimal MI/CMI machinery locally rather than calling the repo at runtime.
+Before any simulator lived in this book repository, the **agency-detect** line asked a narrower question: can boundary-like structure—who acts, what they sense, what is internal—be recovered from raw time series **without** a prior agent ontology? That question feeds the book's boundary-discovery chapters and Appendix I; the in-repo toy line reimplements a minimal slice of its MI/CMI machinery locally rather than calling the repo at runtime.
 
-| Line | Tentative finding | Book hook |
-|------|-------------------|-----------|
-| **Core UAD** (`agency_detect/`) | Lagged-MI clustering recovers decoupled agents; Markov-blanket validation falsifies non-autonomous cuts | Boundary discovery without prior agent ontology (Ch. 7, Appendix I) |
-| **Telemetry sim + decoys** (E0–E8, `learn_agents/`) | Environment structure is discoverable; **decoys steal MI clusters** before validation; raw MI often beats learned slot models at ≥8 agents | Failure modes when the substrate is noisy or alias-rich |
-| **Serial spotlight** (E9+, `agent_spotlight/`) | One-agent-at-a-time discovery avoids global slot mixing | Scalable discovery under heterogeneous multi-agent traces |
-| **Handle-UAD** (`uad_handles/`) | Passive alias handles can mimic real S/A readouts; **interventional handle tests** break ties plain UAD cannot | Access-model measurement: handles before ideal `do()` interventions |
-| **Intention / outcome influence** (E17–E19, `intention_detect/`, `data_collect/`) | Regulation and outcome-defense probes on sim and real machine telemetry | Intentional-stance and correction-channel observables |
-| **Real biology** (E20, `uad_worm/`) | Blanket + conditional-autonomy criteria applied to *C. elegans* whole-brain imaging (early cohort) | External validity probe—not ground-truth agent labels |
+The core pipeline clusters lagged mutual information to propose decoupled agents, then validates cuts with Markov-blanket criteria. Telemetry simulations (E0–E8) showed that environment structure is often discoverable, but also documented failure modes that matter for alignment measurement: **decoys steal MI clusters** before validation; short windows and dense coupling break cuts; alias-rich substrates fool passive clustering. The **handle-UAD** branch added an access-model lesson the book's instrumentation chapters echo: passive alias handles can mimic real sensor/action readouts, and only **interventional handle tests** break ties that plain observational UAD cannot. Serial spotlight discovery (E9+) and intention/outcome-influence probes (E17–E19) extended the same discipline to scalable multi-agent traces and correction-channel observables; an early *C. elegans* cohort (E20) was an external-validity probe, not ground-truth agent labels.
 
-**Navigation:** experiment log [`docs/EXPERIMENTS.md`](https://github.com/GunnarZarncke/agency-detect/blob/main/docs/EXPERIMENTS.md), interpretation [`docs/FINDINGS.md`](https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md), papers under [`docs/papers/`](https://github.com/GunnarZarncke/agency-detect/tree/main/docs/papers/). PDFs are mirrored in [`context/`](../context/) with markdown extracts.
+Agency-detect establishes that **boundary-like structure is empirically detectable under favorable conditions** and documents **where discovery breaks**. It does not, by itself, stress correction-channel capture, value-bundle transport, successor stability, or selection basins—the bridge cruxes the in-repo simulators were built to torture in simplified settings. Navigation: experiment log and interpretation in the sibling repo's `docs/EXPERIMENTS.md` and `docs/FINDINGS.md`; PDFs mirrored under [`context/`](../context/).
 
-**Interpretation:** agency-detect supports that **boundary-like structure is empirically detectable under favorable conditions** and documents **where discovery breaks** (decoys, short windows, dense coupling, alias handles). It does not establish correction-channel integrity, value-bundle transport, or successor stability—the included simulators stress-test those bridge cruxes in simplified settings.
+---
+
+## 1. Toy simulation — correction capture, then multiresolution alignment
+
+The first in-repo line began as a **correction-capture toy** (June 2026): a controlled sequential process estimating two information-theoretic proxies from the manuscript—boundary residual \(I(\text{interface};\text{outcome}\mid\text{state},\text{action})\) and correction-channel residual \(I(\text{correction};\text{action}\mid\text{state},\text{interface})\). Its pedagogical punch is **capture theater**: reported correction acceptance can stay high while true correction uptake collapses. That is a one-number demonstration of why correction integrity (MB4) cannot be read off compliance metrics alone.
+
+The toy grew into the **multiresolution alignment simulation**: deployment episodes with a separate oracle (`TruthLedger`) and blind audit input (`AuditTrace`), classical MI/CMI boundary detection (no trained estimator), and a **vector CCI** audit over instrumentation levels `none` → `light_handles` → `medium_handles` → `strong_handles`. Passive telemetry alone is uncertifiable (`belowThreshold`); handle-backed interventional probes are required for causal uptake measurement. On frozen calibration seeds, minimum certifiable level is **`light_handles`** on calibration scenarios; held-out suites often need **`medium_handles`**, especially for grounding-silent-gap (MB9) and bundle-goodhart (MB2) stressors where light correction CCI can look fine while value-relevant state drifts.
+
+The toy's scenario battery names the book's bridge failure modes: `boundary_alias` (MB1), `bundle_goodhart` (MB2), `bearer_mismap` (MB3), capture calibrations (MB4), `successor_relabel` (MB5), `selection_basin` / basin lock-in (MB6), `hidden_capability` (MB7), `legitimacy_theater` (MB8), `grounding_silent_gap` (MB9). MB7d (inferential coupling) and adversarial **instrument capture** (an adversary rewriting handles) are deliberately out of scope or flagged as the next gap. Hand-written red-team strategies achieve a non-trivial false-pass rate when they patch deployment logs; LLM episodic red-team (Phase 3) false-passes less often in small model sweeps—but handles are still truthfully logged from micro-dynamics today, so direct handle rewriting is trivial in-sim.
+
+The toy line is fast, fully Python, and optimized for **instrumentation economics** and **CCI refusal semantics** (`passes`, `belowThreshold`, `capturedInvalid`). It is not a deployment stack, does not run an embedded auditor on mutable artifacts, and does not let deception emerge from goal optimization—it **scripts** mechanisms through scenario knobs. That scripting choice motivated the next two lines.
+
+**Run:** see [`experiments/toy-simulation/README.md`](../experiments/toy-simulation/README.md). **Artifacts:** `experiments/toy-simulation/results/`.
+
+---
+
+## 2. Embedded audit simulation — auditor inside the machine
+
+Embedded simulation (June 2026) keeps the toy's bridge-stress **names** but changes the substrate: the auditor is an **embedded process** on simulated machines. It reads mutable virtual-filesystem artifacts—correction logs, workflow JSONL, referent maps, attestation—through a Python/Node **isolate bridge**, discovers a unit of attribution with **UAD**, runs **scoped CCI** on grounded handles, and may trip an **MB5 deploy gate** before a successor isolate is allowed to write artifacts. An **outer evaluator** grades certificates against omniscient `OuterTruthLedger` truth the isolates cannot see.
+
+Three planes are enforced, not assumed: (a) ground-truth micro-dynamics and truth rows on the host; (b) the in-simulation auditor, limited to projected, sensor-plausible fields (`audit_projection.py` drops oracle-only facts that would let the auditor cheat); (c) the outer referee that decides false passes and referent drift. Trace integrity uses hash-chained anchors and a recomputable correction schema so a tampering adversary cannot silently rewrite history without leaving structural signals.
+
+Relative to the toy, embedded simulation adds **workflow actors**, **referent drift**, **unit scoping**, **access-tier curves** (`light_plus` / `medium_minus` eligibility), a growing **handle registry** (correction probes, bearer welfare deltas, lineage anchors, persistence probes, output-channel limits, successor substitution), certification artifacts, safety-case scaffolding, and JS-isolate red-team strategies. Default-ecology red-team batteries report **0% false-pass** at T=400; instrumentation matrices land near ~85% correct in-sim.
+
+The honest story is in the negatives. Full UAD and a cheap "most active actor" heuristic are **byte-identical** in the default ecology (N-1): the offender is also the loudest actor, so unit discovery cannot matter. Separation appears only in adversarial ecologies such as `misleading_top2` (N-2)—and even there the lab was built to defeat exactly that strawman heuristic, the margin is thin, and a strong optimizer could close the algorithmic gap. Eligibility gating, probe-lag fixes, lineage-stall detector calibration, writer-compromise red team, and channel MI scans added more recorded negatives (N-3 through N-12 and beyond). Embedded simulation is the book's best end-to-end proof that the **embedded audit path is executable**; it is not evidence that it wins against adaptive adversaries or frontier models.
+
+**Run:** `cd experiments/embedded-simulation && python3 run.py` (Node.js for `--substrate js`). **Artifacts:** `experiments/embedded-simulation/results/`.
+
+---
+
+## 3. Goal-agent simulation — emergent deception and blind surprise
+
+Goal-agent simulation (July 2026) is a **new line**, deliberately not importing embedded code so recorded negatives stay comparable. The core refactor: replace scripted scenario knobs (`theater_rate`, `hidden_tool`, …) with **goal-driven agents**—each tick, softmax utility over task, compliance, welfare, and exposure weights, constrained by **tool access** (no `false_report` tool → no theater regardless of incentive) and finite shadow budget. Deception, shadow routing, and unapproved practice changes are **chosen**, not configured. A simulated **board** issues corrections, escalates when reports diverge from observed harm, and **signs off** practice changes as an audit-visible consent event.
+
+Three planes return, now tuned for **methodology** rather than VFS fidelity: oracle rows with true actions and initiator-attributed harm; tier-gated audit projection (`light` = passive logs, `full` = handle telemetry); referee labels derived from **mechanism facts** in oracle ground truth, with thresholds frozen before the first run. Phase 1's pre-registered held-out regions exposed genuine protocol negatives—label saturation in "hard" corners degenerates MI-transfer tests—leading to a root-caused simplex-geometry diagnosis (F-6) and a third region where transfer finally becomes non-degenerate (F-7).
+
+Phase 2a broke the co-design loop that made Phase 1 partly circular: a **blind generator** invented actions the detector author never saw; an **ontology layer** maps agent categories to audit routing codes by mechanism, not names, with deliberate non-isomorphism and drift probes (manuscript ch. 43 in miniature). Light-tier detection collapsed against blind repertoires (F-9); full tier kept detection but false alarms rose (F-10). Later blind rounds generalized saturation failures to large repertoires against disjunctive labels (F-12–F-14).
+
+Phase 4–6 added book-facing referee machinery absent from the toy: **continuous oracle severity** and rank-correlation scoring under label saturation (F-15); **mechanical honest twins** exposing that light-tier detectors track visible compliance, not honesty (F-16); a **gated escalation ladder** with bounded follow-up queries (F-17–F-20, including a negative where disclosure-as-guilt conflation worsened twin false positives); **certifier capture** on the board (F-22); and modest **adversarial weight search** (F-23). The strategic reading after Phase 5: light tier's missing cases are a **result** (depth is needed); medium tier is the battleground; deep tier only becomes evidence-bearing with more realistic lab machinery below—not just more projected fields on a step loop.
+
+Goal-agent simulation stress-tests **correction integrity, adversarial measurement, ontology drift, severity-graded audit, and honest-twin methodology** without yet modeling pipeline-as-code labs or OS-enforced isolation. It is ~1 ms/episode, stdlib-only, and explicit about what it does not do: LLM agents, within-episode weight learning, or an uncaptured certifier regress.
+
+**Run:** see [`experiments/goal-agent-simulation/README.md`](../experiments/goal-agent-simulation/README.md). **Artifacts:** `experiments/goal-agent-simulation/results/`.
+
+---
+
+## 4. Lab-layer simulation — pipeline lab with real isolates
+
+Lab-layer simulation (July 2026) is the **fourth line**, synthesizing disciplines from all predecessors without importing their code. Goal-driven **playbook agents** (engineer, reviewer, release manager, access admin) act inside a lab with **real mechanics**: a deployment pipeline defined as an **infrastructure-as-code JSON step-DAG** (`pipeline_default.json`, mutable spec history for referent-drift experiments), an on-disk workspace with report files, **service-managed access control** (`PermissionService` + `AdminPolicy` capture modes), and **real OS-subprocess isolates** speaking JSON-RPC to a host that mediates every tool call. `MockIsolate` exists for fast tests; `verify_isolate_equivalence.py` proves byte-identical outcomes against subprocess backends; pre-registered batteries are required to use the real boundary.
+
+Phases 0–5 (referee **frozen** 2026-07-06, `lab-sim-0.3.0`) implemented: oracle world with hidden model capability/hazard and bearer harm; pipeline engine with versioned spec in every log entry; hash-chained event and access logs; tier projection (`none` / `light` / `full` / `deep`); a **handle registry** with overseer invocation (`capability_revoke`, release hold/unhold gating deploy, `state_freeze`, `isolate_restart`); audit-visible **monitoring signal** (`incident_hazard` noise shrinks with observation time—the harm-becomes-apparent dynamic); a **bearer welfare bundle** splitting deployed-model health from lab-staff stress (referee-neutral, not folded into the frozen severity composite); continuous severity + five tier-gated detector families + full-surface honest-twin transform; perturbation hooks and episode cache keyed on `CODE_VERSION`.
+
+Evaluations have **not** started: no blind generation battery, escalation ladder, or LLM-agent adapter (Phases 6–8). Deferred workstreams D1–D4 target composite-agent UAD (MB1), spec/model upgrades and drift (MB5/MB6b), extended ecology selection (MB6), and message-board coordination (MB7d). The line exists to make **deep-tier audit reads evidence-bearing**—artifacts, pipeline spec, and process-shaped state a query can check—addressing the goal-agent line's F-8/F-21 caveat that full telemetry on a toy step loop is not yet "deep."
+
+**Run:** `cd experiments/lab-simulation && python3 -m pytest`. **Design:** [`experiments/lab-simulation/DESIGN.md`](../experiments/lab-simulation/DESIGN.md), [`PLAN.md`](../experiments/lab-simulation/PLAN.md).
+
+---
+
+## Feature coverage (high level)
+
+Rows are experiment **lines** in build order. Cells summarize what each line **implements or stress-tests** at the level of book bridges and audit concepts—not every scenario name or detector. "Planned" means designed and hooked, not yet evaluated. "Indirect" means the feature emerges from agent choice or referee semantics rather than a dedicated scenario script. "—" means not in scope on that substrate today.
+
+| Book feature | Agency-detect | Toy sim | Embedded sim | Goal-agent sim | Lab sim |
+|--------------|:-------------:|:-------:|:------------:|:--------------:|:-------:|
+| **MB1** Boundary / unit discovery (UAD) | **Primary** | Scenario (`boundary_alias`) | Full UAD + ecologies; negatives when heuristic suffices | — | Planned (D1 composite agents) |
+| **MB2** Value bundle / pointing (Goodhart on bundles) | — | Scenario stub | Scenario (`bundle_goodhart`) | Indirect (welfare deltas in blind reps) | Stipulated; report-content ontology |
+| **MB3** Bearer maps (who values apply to) | — | Partial (`bearer_mismap`) | Scenario + bearer handles | Indirect (harm attribution) | **Health + stress bundle** (split bearers) |
+| **MB4** Correction-channel integrity / capture | Intention probes | **Primary** (capture theater, CCI) | Scenarios + correction handles | **Emergent** (chosen deception, board corrections) | Playbooks + access capture + report divergence |
+| **MB5** Successor closure / ontology shift | — | Scenario (`successor_relabel`) | Deploy gate + successor handles | — | Planned (D2 model/spec upgrades, lineage) |
+| **MB6** Selection basins / gradual disempowerment | — | Scenario stubs | `selection_basin`, `basin_lock_in` | — | Planned (D3 ecology; partial via D2 drift) |
+| **MB7** Hidden capability / cost of faking monitors | — | Scenario stub | Scenarios + hidden coalition | **Emergent** (shadow route, tool gating) | Oracle hidden capability/hazard on models |
+| **MB7d** Inferential coupling (coordination severing channels) | — | — | Partial / targeted ecologies | — | Planned (D4 message board) |
+| **MB8** Legitimacy / correction authority | — | Scenario (`legitimacy_theater`) | Scenario + lineage signals | Board capture switch (F-22) | Admin/board capture modes |
+| **MB9** Grounding / spec coverage (no silent gaps) | — | Scenario (`grounding_silent_gap`) | Scenario + grounding refusal | — | Report vs monitor contradiction surface |
+| **MB10** Successor / measurement forgeability | — | — | Certification artifact, safety case | Escalation + twin semantics (F-21) | Planned (adversarial minimization of detectable surface) |
+| **Three-plane separation** (world / audit / referee) | — | Oracle vs audit trace | **Full** (projection + outer eval) | **Full** (test-enforced) | **Full** (tiers + frozen referee) |
+| **Instrumentation economics** (tier cost vs certifiability) | Handle-UAD interventional tests | **Instrumentation curve** | Access-tier curves + eligibility | light / full / deep tiers | none → light → full → deep |
+| **CCI / vector certification** | — | **Vector CCI** over handle levels | Scoped CCI on discovered unit | Frozen detector families + severity | Five detector families (frozen) |
+| **Scripted vs emergent failure modes** | — | Scripted scenarios | Scripted + red-team patches | **Emergent** utility + tools | Playbook-chosen tactics |
+| **Blind generation / ontology drift** | — | — | Scenario-blind audit path | **Primary** (Phases 2–3, drift probe) | Planned (Phase 6) |
+| **Honest twins / severity-first referee** | — | — | Partial (outer eval severity) | **Primary** (Phases 4–6) | Twins frozen; escalation Phase 7 |
+| **Pipeline-as-code deployment lab** | — | — | Workflow JSONL + lab actors | — | **Primary** (JSON DAG + workspace) |
+| **OS subprocess isolation** | — | — | Python/Node isolates | — | **Primary** (JSON-RPC subprocesses) |
+| **Handle registry + access control** | Handle-UAD | Simulated handle levels | AppD handle kernels | Tool-gated actions | **Registry + overseer invoke** |
+
+### How to read the table
+
+- **Agency-detect** grounds **MB1** and the measurement claim that handles must be interventional; it does not implement the book's full bridge battery.
+- **Toy sim** is the fastest map from bridge name to **refusal signal** and **minimum handle level**; scenarios are explicit, not emergent.
+- **Embedded sim** is the richest **end-to-end embedded audit** path (VFS → UAD → CCI → gate → outer eval), with the most extensive **negative ledger**.
+- **Goal-agent sim** is the methodological engine for **blind surprise**, **ontology drift**, **severity under saturation**, and **twin/escalation semantics**—at the cost of less realistic lab machinery.
+- **Lab sim** trades away evaluated batteries (for now) to make **deep tier** mean reading real lab state under **OS-enforced** boundaries; bridge coverage is **architected** through Phases 6–8 and workstreams D1–D4.
+
+For bridge definitions and field crosswalks, see Appendix B (`appendices/appB-bridge-crosswalk.tex`) and the Lean spine (`formal/README.md`). For claim-strength calibration when citing results in prose, start from the negative ledgers above, not from headline accuracies alone.
