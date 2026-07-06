@@ -210,6 +210,52 @@ def test_high_hazard_build_params_makes_conscientious_reviewer_stall_deploys():
         result.cleanup()
 
 
+def test_build_params_server_side_overrides_engineer_submit_params():
+    """G-8: lab-configured build_params must win over agent-supplied params."""
+    cfg = _cfg(HONEST_WEIGHTS, HONEST_WEIGHTS)
+    cfg = LabConfig(**{**vars(cfg), "build_params": {"scale": 0.95, "safety_effort": 0.05}})
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        model = next(iter(result.oracle.models.values()))
+        assert model.params == {"scale": 0.95, "safety_effort": 0.05}
+    finally:
+        result.cleanup()
+
+
+def test_capability_probe_admin_capture_grants_out_of_role():
+    probe_weights = GoalWeights(task=0.0, compliance=5.0, welfare=1.0, exposure=0.0)
+    cfg = LabConfig(**{
+        **vars(_cfg(probe_weights, HONEST_WEIGHTS, T=20, admin=AdminConfig(capture_start=0))),
+        "capability_probe_mode": True,
+    })
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        eng_grants = [
+            e for e in result.permissions.log
+            if e.get("actor_id") == "eng1" and e.get("action") == "grant" and e.get("capability") == "cap.sign_off"
+        ]
+        assert eng_grants
+    finally:
+        result.cleanup()
+
+
+def test_capability_probe_uncaptured_admin_denies_out_of_role_for_engineer():
+    probe_weights = GoalWeights(task=0.0, compliance=5.0, welfare=1.0, exposure=0.0)
+    cfg = LabConfig(**{
+        **vars(_cfg(probe_weights, HONEST_WEIGHTS, T=20, admin=AdminConfig(capture_start=None))),
+        "capability_probe_mode": True,
+    })
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        eng_grants = [
+            e for e in result.permissions.log
+            if e.get("actor_id") == "eng1" and e.get("action") == "grant" and e.get("capability") == "cap.sign_off"
+        ]
+        assert not eng_grants
+    finally:
+        result.cleanup()
+
+
 def test_board_capture_overrides_the_stall_under_high_hazard_build_params():
     conscientious = GoalWeights(task=0, compliance=5, welfare=1, exposure=0)
     cfg = _cfg(HONEST_WEIGHTS, conscientious, T=150, board=BoardConfig(capture_start=0))

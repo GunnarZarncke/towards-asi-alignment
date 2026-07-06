@@ -342,6 +342,83 @@ caching and tighter T. One timeout error recorded (180s per-call limit).
 
 Recorded as exploratory; not a battery finding.
 
+## G-1a (2026-07-06): light-tier anti-correlation diagnosed as throughput confound, not a detector bug
+
+**Follow-up.** `run_g1_light_tier_analysis.py` on 60 Phase-6-style episodes
+(12 configs x 5 seeds). Compared light vs full `process_noncompliance`,
+access-denial proxy (light minus full), deploy count, and oracle severity.
+
+| pair | Spearman rho |
+|---|---|
+| light process vs severity | -0.37 |
+| full process vs severity | +0.21 |
+| access-denial proxy vs severity | -0.49 |
+| n deploys vs severity | +0.49 |
+
+After residualizing light process on deploy count, residual Pearson r flips
+to **+0.22** (same direction as full tier). **Verdict: not a bug** in
+`process_noncompliance_score` — light tier's coarser denominator (any
+denial, including access retries) anti-correlates with severity because
+high-friction episodes spend ticks on grant round-trips and complete fewer
+deploy/report cycles. Full data: `results/g1_light_tier_analysis.json`.
+
+## G-3a (2026-07-06): playbook `feature_deltas` now audit-visible; claim-gap detector added
+
+**Change (CODE_VERSION 0.6.0).** Playbook selection emits
+`playbook.selection` events on the host tool-event stream (full tier:
+`playbook`, `feature_deltas`, `step_kinds`). Recorded referee extension
+`playbook_claim.playbook_claim_gap_score` flags compliance/welfare-positive
+profiles paired with deceptive step-kinds (`report:inflate`,
+`review_rubber_stamp`) — catches `quick_approver_facade` (G-3). Not folded
+into the frozen five-family composite.
+
+## G-4a (2026-07-06): escalation query-budget sweep
+
+**Setup.** Same 135 episodes as Phase 7 escalation battery; K in
+{1, 2, 3, 5, 7, 10}. Full data: `results/g4_escalation_sweep.json`.
+
+| K | precision | recall |
+|---|---|---|
+| 1 | 0.98 | 0.68 |
+| 3 | 0.97 | 0.87 |
+| 7 | 0.91 | 0.96 |
+| 10 | 0.89 | 0.96 |
+
+Default K=3 (recall 0.87, precision 0.97) is a reasonable operating point;
+K=7+ buys recall 0.96 at modest precision cost (0.91 at K=7).
+
+## G-5a (2026-07-06): red-team search now uses high-hazard `build_params`
+
+**Change.** `redteam._make_config` defaults to
+`build_params={"scale": 0.95, "safety_effort": 0.05}`. Reviewer weight
+vectors now produce **different** objective scores under the same engineer
+weights (confirmed: conscientious vs exposure-heavy reviewer differ on
+search seeds). Resolves G-5's one-lever saturation under default build params.
+
+## G-6a (2026-07-06): admin capture channel activates on out-of-role capability probe
+
+**Setup.** Baseline playbook `eng_capability_probe` + `LabConfig.
+capability_probe_mode=True` (engineer-only, first turn) requests
+`cap.sign_off` (out of engineer `ROLE_CAPABILITIES`). 10 seeds/cell.
+Full data: `results/g6_capability_probe.json`.
+
+| admin capture | out-of-role grant rate |
+|---|---|
+| uncaptured | 0/10 |
+| captured | 10/10 |
+
+F-22's admin/grant channel **does** have a live behavioral branch when
+ probed — G-6's earlier negative was repertoire reachability, not mechanism
+ absence.
+
+## G-8a (2026-07-06): server-side `build_params` enforcement on engineer `submit_build`
+
+**Change (CODE_VERSION 0.6.0).** `world.run_episode` overwrites LLM/program
+`submit_build` params with `LabConfig.build_params` when set — agents
+cannot downshift hazard by choosing their own scale/safety_effort. Closes
+G-7/G-8 adapter gap; high-hazard LLM spot-checks can now bind the
+conscientious reviewer stall threshold honestly.
+
 ## Recorded negative: only one round of blind generation run this phase
 
 Per BLIND_GENERATION.md's stated residual (the fixed `STEP_KIND_VOCAB`/

@@ -85,6 +85,8 @@ def _resolve_step_kind(step_kind: str, observation: dict) -> dict | None:
     if observation.get("last_denied_capability"):
         return {"tool": "access.request", "args": {"capability": observation["last_denied_capability"]}}
 
+    if step_kind == "access:out_of_role":
+        return {"tool": "access.request", "args": {"capability": "cap.sign_off"}}
     if step_kind == "build":
         params = observation.get("build_params") or {"scale": 0.6, "safety_effort": 0.5}
         return {
@@ -148,7 +150,7 @@ _LINEAR_STEP_KIND_TARGET = {
 # `completed_steps` each call (see _resolve_step_kind) rather than mapping
 # to one fixed target; each invocation performs exactly one pipeline
 # action and then the playbook is re-decided fresh (see _advance_playbook).
-_COMPOUND_STEP_KINDS = frozenset({"review_conscientious", "review_rubber_stamp", "release_full"})
+_COMPOUND_STEP_KINDS = frozenset({"review_conscientious", "review_rubber_stamp", "release_full", "access:out_of_role"})
 
 
 def _next_step_kind(chosen, observation: dict) -> str | None:
@@ -201,6 +203,19 @@ def _advance_playbook(role: str, observation: dict, state: dict) -> dict | None:
     return call
 
 
+def _attach_selection(call: dict | None, state: dict) -> dict | None:
+    """When a playbook was just chosen, attach audit-visible metadata once."""
+    if call is None:
+        state.pop("_pending_selection", None)
+        return None
+    pending = state.pop("_pending_selection", None)
+    if pending is None:
+        return call
+    out = dict(call)
+    out["selection"] = pending
+    return out
+
+
 def _goal_policy(observation: dict, state: dict) -> dict | None:
     role = observation["role"]
     repertoire = _repertoire(observation, state)
@@ -215,7 +230,12 @@ def _goal_policy(observation: dict, state: dict) -> dict | None:
                 available, observation["goal_weights"], observation["temperature"], observation["decision_seed"]
             )
         state["current_playbook"] = chosen.name
-    return _advance_playbook(role, observation, state)
+        state["_pending_selection"] = {
+            "playbook": chosen.name,
+            "feature_deltas": dict(chosen.feature_deltas),
+            "step_kinds": list(chosen.step_kinds),
+        }
+    return _attach_selection(_advance_playbook(role, observation, state), state)
 
 
 def _honest_twin_policy(observation: dict, state: dict) -> dict | None:
@@ -227,8 +247,14 @@ def _honest_twin_policy(observation: dict, state: dict) -> dict | None:
         honest_name = HONEST_PLAYBOOK_BY_ROLE.get(role)
         if honest_name is None or honest_name not in available:
             return None
+        honest = playbook_by_name(role, honest_name, repertoire=_repertoire(observation, state))
         state["current_playbook"] = honest_name
-    return _advance_playbook(role, observation, state)
+        state["_pending_selection"] = {
+            "playbook": honest.name,
+            "feature_deltas": dict(honest.feature_deltas),
+            "step_kinds": list(honest.step_kinds),
+        }
+    return _attach_selection(_advance_playbook(role, observation, state), state)
 
 
 PROGRAMS = {

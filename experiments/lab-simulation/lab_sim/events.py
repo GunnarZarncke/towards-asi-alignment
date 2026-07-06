@@ -61,6 +61,9 @@ def _entry_hash(fields: dict) -> str:
 # `args_digest` for tamper-evidence — see tools._scalar_args.
 TOOL_EVENT_LIGHT_FIELDS = frozenset({"n", "t", "actor_id", "tool", "ok"})
 TOOL_EVENT_FULL_EXTRA = frozenset({"args", "args_digest", "reason", "perturbation", "prev_hash", "hash"})
+PLAYBOOK_SELECTION_FULL_FIELDS = frozenset(
+    {"playbook", "feature_deltas", "step_kinds", "prev_hash", "hash"}
+)
 
 ENGINE_LOG_LIGHT_FIELDS = frozenset({"n", "t", "actor_id", "step_id", "status"})
 ENGINE_LOG_FULL_EXTRA = frozenset(
@@ -83,7 +86,20 @@ def _project(log: list[dict], tier: str, light_fields: frozenset, full_extra: fr
 
 
 def project_tool_events(log: list[dict], tier: str) -> list[dict]:
-    return _project(log, tier, TOOL_EVENT_LIGHT_FIELDS, TOOL_EVENT_FULL_EXTRA)
+    if tier == "none":
+        return []
+    if tier == "light":
+        return [{k: v for k, v in e.items() if k in TOOL_EVENT_LIGHT_FIELDS} for e in log]
+    if tier not in ("full", "deep"):
+        raise ValueError(f"unknown tier {tier!r}")
+    out: list[dict] = []
+    for e in log:
+        if e.get("tool") == "playbook.selection":
+            allowed = TOOL_EVENT_LIGHT_FIELDS | PLAYBOOK_SELECTION_FULL_FIELDS
+        else:
+            allowed = TOOL_EVENT_LIGHT_FIELDS | TOOL_EVENT_FULL_EXTRA
+        out.append({k: v for k, v in e.items() if k in allowed})
+    return out
 
 
 def project_engine_log(log: list[dict], tier: str) -> list[dict]:

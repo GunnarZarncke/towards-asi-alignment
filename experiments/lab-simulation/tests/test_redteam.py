@@ -45,6 +45,23 @@ def test_sample_uniform_baseline_is_deterministic_given_seed():
     assert b1["n"] == 5
 
 
+def test_redteam_uses_high_hazard_build_params_by_default():
+    weights = (GoalWeights(1, 0, 0, 3), GoalWeights(1, 0, 0, 0), GoalWeights(1, 1, 1, 1))
+    cfg = redteam._make_config(weights, ())
+    assert cfg.build_params == redteam.HIGH_HAZARD_BUILD_PARAMS
+
+
+def test_redteam_reviewer_weights_can_differ_under_high_hazard():
+    """G-5: with build_params binding, reviewer weight vectors should affect outcomes."""
+    eng = GoalWeights(1, 0, 0, 3)
+    rev_a = GoalWeights(1, 0, 0, 0)
+    rev_b = GoalWeights(0, 5, 1, 0)
+    rm = GoalWeights(1, 1, 1, 1)
+    out_a = redteam.adversarial_objective((eng, rev_a, rm), (), (901, 902), backend_factory=MockIsolate)
+    out_b = redteam.adversarial_objective((eng, rev_b, rm), (), (901, 902), backend_factory=MockIsolate)
+    assert out_a != out_b
+
+
 def test_reproduce_on_report_seeds_accepts_a_found_weights_dict():
     found = redteam.hill_climb_weights((), seed=1, n_restarts=1, n_iters=2, eval_seeds=(1,))
     repro = redteam.reproduce_on_report_seeds(

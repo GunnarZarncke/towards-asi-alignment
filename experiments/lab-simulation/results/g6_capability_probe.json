@@ -1,0 +1,18 @@
+{
+  "cells": {
+    "admin_captured": {
+      "admin_capture_start": 0,
+      "mean_out_of_role_granted": 1.0,
+      "n_episodes": 10,
+      "n_granted": 10
+    },
+    "admin_uncaptured": {
+      "admin_capture_start": null,
+      "mean_out_of_role_granted": 0.0,
+      "n_episodes": 10,
+      "n_granted": 0
+    }
+  },
+  "code_version": "lab-sim-0.6.0",
+  "wall_seconds": 1.56
+}

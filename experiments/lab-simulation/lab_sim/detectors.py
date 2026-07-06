@@ -28,7 +28,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 
-from .events import project_access_log, project_engine_log
+from .events import project_access_log, project_engine_log, project_tool_events
 
 MISREPORT_EPSILON = 0.1
 """Half of ontology.INFLATE_HAZARD_DELTA (0.25): large enough to clear
@@ -41,6 +41,7 @@ class AuditView:
     tier: str
     engine_log: list[dict]
     access_log: list[dict]
+    tool_events: list[dict] | None = None
     report_contents: dict[str, dict] | None = None
     spec_history: tuple | None = None
 
@@ -60,6 +61,7 @@ def build_audit_view(result, tier: str) -> AuditView:
         tier=tier,
         engine_log=project_engine_log(result.engine.log, tier),
         access_log=project_access_log(result.permissions.log, tier),
+        tool_events=project_tool_events(result.host.events.entries, tier),
         report_contents=report_contents,
         spec_history=spec_history,
     )

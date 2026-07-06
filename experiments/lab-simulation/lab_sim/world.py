@@ -161,11 +161,30 @@ def run_episode(
                 "decision_seed": f"{seed}:{agent_cfg.actor_id}:{t}",
                 "extra_playbooks": cfg.extra_playbooks,
                 "build_params": cfg.build_params,
+                "capability_probe_mode": cfg.capability_probe_mode,
             }
             call = backend_by_actor[agent_cfg.actor_id].step(handles[agent_cfg.actor_id], observation)
             last_denied[agent_cfg.actor_id] = None
             if call is None:
                 continue
+            selection = call.pop("selection", None)
+            if selection is not None:
+                host.events.append(
+                    {
+                        "actor_id": agent_cfg.actor_id,
+                        "tool": "playbook.selection",
+                        "playbook": selection["playbook"],
+                        "feature_deltas": selection["feature_deltas"],
+                        "step_kinds": selection["step_kinds"],
+                        "ok": True,
+                        "t": t,
+                    }
+                )
+            if call.get("tool") == "pipeline.trigger_step":
+                step_id = call["args"]["step_id"]
+                if agent_cfg.role == "engineer" and step_id == "submit_build" and cfg.build_params:
+                    inner = call["args"].setdefault("args", {})
+                    inner["params"] = dict(cfg.build_params)
             result = host.dispatch(agent_cfg.actor_id, ToolCall(call["tool"], call["args"]))
             # last_payload is "most recent successful pipeline result" — used
             # to carry eval measurements into report content. A failed

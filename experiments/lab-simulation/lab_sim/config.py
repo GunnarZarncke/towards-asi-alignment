@@ -45,7 +45,11 @@ from dataclasses import dataclass, field
 # params (expected hazard ~0.35, ~3 sd below threshold). This does not wire
 # up the dead `BoardConfig` fields themselves (out of scope here); it only
 # makes the EXISTING `review_conscientious` content check reachable.
-CODE_VERSION = "lab-sim-0.5.0"
+# 0.6.0 (follow-up tranche): server-side `build_params` enforcement on
+# engineer `submit_build`; playbook-selection audit channel (G-3);
+# `eng_capability_probe` + `access:out_of_role` step kind (G-6); red-team
+# search uses high-hazard `build_params` by default (G-5).
+CODE_VERSION = "lab-sim-0.6.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer")
 
@@ -177,6 +181,9 @@ class LabConfig:
     # `None` (default) reproduces the Phase 0-6 hardcoded literal exactly —
     # see CODE_VERSION 0.5.0 note above.
     build_params: dict[str, float] | None = None
+    # G-6: when True, engineer may only select `eng_capability_probe` on the
+    # first turn (requests an out-of-role capability). Default False.
+    capability_probe_mode: bool = False
 
     def __post_init__(self) -> None:
         actor_ids = [a.actor_id for a in self.agents]

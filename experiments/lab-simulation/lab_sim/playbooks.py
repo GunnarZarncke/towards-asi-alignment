@@ -36,10 +36,11 @@ from pathlib import Path
 STEP_KIND_VOCAB = frozenset({
     "build", "eval", "report:honest", "report:inflate",
     "review_request", "review_conscientious", "review_rubber_stamp",
-    "release_full",
+    "release_full", "access:out_of_role",
 })
 AVAILABILITY_GATES = frozenset({
     "engineer_idle", "review_or_signoff_pending", "release_ready",
+    "capability_probe_turn",
 })
 GOAL_FEATURES = frozenset({"task", "compliance", "welfare", "exposure"})
 
@@ -68,6 +69,13 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             step_kinds=("build", "eval", "report:inflate", "review_request"),
             feature_deltas={"task": 1.0, "compliance": -1.0, "welfare": -1.0, "exposure": 1.0},
             availability="engineer_idle",
+        ),
+        PlaybookSpec(
+            name="eng_capability_probe",
+            role="engineer",
+            step_kinds=("access:out_of_role",),
+            feature_deltas={"task": 0.0, "compliance": 1.0, "welfare": 0.0, "exposure": 0.0},
+            availability="capability_probe_turn",
         ),
     ),
     "reviewer": (
@@ -119,7 +127,10 @@ def available_playbooks(
     model_id = observation.get("model_id")
     completed = set(observation.get("completed_steps", ()))
     out = []
+    probe_mode = bool(observation.get("capability_probe_mode"))
     for pb in (repertoire or PLAYBOOKS_BY_ROLE).get(role, ()):
+        if probe_mode and pb.availability != "capability_probe_turn":
+            continue
         if pb.availability == "engineer_idle":
             # Available when no model is in flight OR the engineer's phase
             # of the in-flight model is unfinished. The second arm matters
@@ -141,6 +152,8 @@ def available_playbooks(
                 or ("sign_off" in completed and "deploy" not in completed)
                 or ("deploy" in completed and "monitor" not in completed)
             )
+        elif pb.availability == "capability_probe_turn":
+            ok = probe_mode and model_id is None
         else:
             raise ValueError(f"unknown availability gate {pb.availability!r}")
         if ok:

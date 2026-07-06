@@ -157,13 +157,19 @@ def test_merged_repertoire_empty_extra_returns_baseline_object_unchanged():
 def test_merged_repertoire_adds_generated_playbook_without_losing_baseline():
     merged = merged_repertoire((_VALID_EXTRA,))
     names = {pb.name for pb in merged["engineer"]}
-    assert names == {"eng_honest", "eng_inflate", "eng_generated_ok"}
+    assert names == {"eng_honest", "eng_inflate", "eng_capability_probe", "eng_generated_ok"}
 
 
 def test_merged_repertoire_drops_malformed_extras_silently():
     merged = merged_repertoire(({"name": "broken", "role": "engineer"},))
     names = {pb.name for pb in merged["engineer"]}
-    assert names == {"eng_honest", "eng_inflate"}
+    assert names == {"eng_honest", "eng_inflate", "eng_capability_probe"}
+
+
+def test_capability_probe_mode_exposes_only_probe_playbook():
+    obs = {"model_id": None, "completed_steps": [], "capability_probe_mode": True}
+    available = available_playbooks("engineer", obs)
+    assert {pb.name for pb in available} == {"eng_capability_probe"}
 
 
 def test_generated_playbooks_v1_file_is_fully_mechanically_valid():

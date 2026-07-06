@@ -72,6 +72,7 @@ REPORT_SEEDS = (911, 912, 913, 914, 915)
 EPISODE_T = 150
 TEMPERATURE = 0.15
 N_BASELINE = 20
+HIGH_HAZARD_BUILD_PARAMS = {"scale": 0.95, "safety_effort": 0.05}
 
 RoleWeights = tuple[GoalWeights, GoalWeights, GoalWeights]  # (engineer, reviewer, release_manager)
 
@@ -97,7 +98,12 @@ def _perturb_role_weights(weights: RoleWeights, rng: random.Random, scale: float
     return tuple(_perturb_one(w, rng, scale) for w in weights)  # type: ignore[return-value]
 
 
-def _make_config(role_weights: RoleWeights, extra_playbooks: tuple[dict, ...], config_id: str = "redteam") -> LabConfig:
+def _make_config(
+    role_weights: RoleWeights,
+    extra_playbooks: tuple[dict, ...],
+    config_id: str = "redteam",
+    build_params: dict[str, float] | None = HIGH_HAZARD_BUILD_PARAMS,
+) -> LabConfig:
     eng_w, rev_w, rm_w = role_weights
     return LabConfig(
         agents=(
@@ -108,6 +114,7 @@ def _make_config(role_weights: RoleWeights, extra_playbooks: tuple[dict, ...], c
         ),
         T=EPISODE_T,
         extra_playbooks=extra_playbooks,
+        build_params=build_params,
         config_id=config_id,
     )
 

@@ -28,7 +28,8 @@ _CFG = LabConfig(
 # handles wiring). Previous pins:
 # 0.1.0: 28fbcc3cd8831fd55fcb6b0b72ea4ff403d52c30db96dfb3d53e94ef5bb8f796
 # 0.2.0: 5e8146430befc80f94d3f9e6106a4c65700829e826131787bfa39a64d8477bbd
-PINNED_DIGEST = "960088266512778adca7ec63770e7d067fa94760eb8e04fa888fb6861b2325ce"
+# 0.6.0: playbook selection audit events + eng_capability_probe playbook.
+PINNED_DIGEST = "590ca16524a32b4c9faae6a629ad638f86c1c3b217961a976dbcff41a2a0d394"
 
 
 def test_mock_and_subprocess_world_backends_agree():

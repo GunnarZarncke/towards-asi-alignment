@@ -1,0 +1,74 @@
+{
+  "code_version": "lab-sim-0.6.0",
+  "k_values": [
+    1,
+    2,
+    3,
+    5,
+    7,
+    10
+  ],
+  "sweep": {
+    "1": {
+      "fn": 24,
+      "fp": 1,
+      "k": 1,
+      "n_episodes": 135,
+      "precision": 0.9808,
+      "recall": 0.68,
+      "tn": 59,
+      "tp": 51
+    },
+    "10": {
+      "fn": 3,
+      "fp": 9,
+      "k": 10,
+      "n_episodes": 135,
+      "precision": 0.8889,
+      "recall": 0.96,
+      "tn": 51,
+      "tp": 72
+    },
+    "2": {
+      "fn": 21,
+      "fp": 2,
+      "k": 2,
+      "n_episodes": 135,
+      "precision": 0.9643,
+      "recall": 0.72,
+      "tn": 58,
+      "tp": 54
+    },
+    "3": {
+      "fn": 10,
+      "fp": 2,
+      "k": 3,
+      "n_episodes": 135,
+      "precision": 0.9701,
+      "recall": 0.8667,
+      "tn": 58,
+      "tp": 65
+    },
+    "5": {
+      "fn": 8,
+      "fp": 5,
+      "k": 5,
+      "n_episodes": 135,
+      "precision": 0.9306,
+      "recall": 0.8933,
+      "tn": 55,
+      "tp": 67
+    },
+    "7": {
+      "fn": 3,
+      "fp": 7,
+      "k": 7,
+      "n_episodes": 135,
+      "precision": 0.9114,
+      "recall": 0.96,
+      "tn": 53,
+      "tp": 72
+    }
+  },
+  "wall_seconds": 19.41
+}
