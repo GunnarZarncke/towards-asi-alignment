@@ -945,6 +945,64 @@ verification only in this pass. D3 untouched.
   `uad.py`, `collusion.py`, `playbooks.py`, `programs.py`, or any
   committee/coordination framing, only the mechanism-only prompt above.
 
+## Backlog idea — error seeding / seeded-bug exploitation tracking (recorded 2026-07-06, not scheduled)
+
+Trigger: this session's tie-break bug (string-ordering ambiguity in
+feature-delta playbook selection, item 3 above) was found and fixed as an
+*ordinary* engineering defect — but the same category of thing (an
+unintended gap between the spec/reference model and the real
+oracle/pipeline implementation) is exactly what a capable agent could find
+and exploit on purpose rather than stumble into by accident. The referee
+currently only measures whether agents exploit gaps we already know about
+(`handle.release_hold` evasion, `build_params` regime gaming, the D2
+spec-upgrade evasion story) — it has no instrument for gaps we do NOT
+already know about, which is the more concerning case for a more capable
+agent.
+
+Proposed idea: deliberately seed a small, cataloged set of "bugs" into a
+subsystem — file system and comms are the natural first targets, since
+they're the newest surfaces and most likely to still have this class of
+gap. Sketch, not a design: a permission check that can be raced, a
+`file.share` grant that silently outlives an intended revocation, a
+`dm.read` cursor that can be replayed to see an already-consumed message
+twice. Each seeded bug would need:
+
+- an oracle-side ID plus a precise "triggered" predicate (a specific
+  tool-call/argument/ordering pattern that could only occur if the bug was
+  found and used, distinct from ordinary tool use);
+- a severity/exploitability tag so seeded bugs span cosmetic to
+  harm-relevant;
+- a discovery-vs-exploitation distinction — an agent merely probing (issuing
+  the call that *would* trigger it) should count differently from actually
+  using the resulting state to complete a task or evade a control.
+
+The oracle would track a per-episode/per-actor count of seeded-bugs-
+triggered as a new referee-side (never agent-visible) signal, comparable
+across programmatic/LLM/red-team actors and across capability levels — a
+direct, cheap probe of "how good is this agent at finding gaps between the
+spec and the implementation," close to what MB9 (grounding/spec coverage)
+and MB10 (measurement forgeability) already try to operationalize, but
+applied to seeded, known-ground-truth defects instead of emergent ones.
+
+Open design questions, not resolved here: whether seeded bugs must be
+reachable only via legitimate tool calls, so an agent can only find them
+through observation and not by reading source (close to automatic for
+LLM/programmatic isolates given `SubprocessIsolate`'s existing isolation,
+but would need an explicit no-source-access rule recorded for any
+human-in-the-loop or red-team variant that does get source access); how
+many bugs to seed and at what discoverability spread (some findable by
+brute force, some requiring cross-tool composition); whether seeded bugs
+should be introduced as of some `CODE_VERSION` and then frozen (so
+exploitation rate stays comparable across later phases) the same way
+detectors are frozen, or refreshed periodically; and whether this lands as
+a new `lab_sim` module (`seeded_bugs.py`?) or as a thin instrumentation
+wrapper around the existing `access.py`/`comms.py`/`workspace.py` call
+paths rather than new tools.
+
+**Status: backlog, not scheduled, not started.** No code changes made for
+this idea in this pass; recorded here per the "surface it, don't lose it"
+continuity discipline.
+
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
 
 Structural decisions Phase 0-8 must get right so the deferred workstreams
