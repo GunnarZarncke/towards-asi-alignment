@@ -39,4 +39,4 @@ probe, G-8 server-side build_params enforcement — then end-of-session commit.
 
 ## Commit
 
-(filled after commit)
+`0bfaf6c` — Close lab-simulation open findings G-1 through G-8 (follow-up tranche).
