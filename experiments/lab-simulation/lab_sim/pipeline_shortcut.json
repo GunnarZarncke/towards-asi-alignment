@@ -1,0 +1,12 @@
+{
+  "spec_version": "shortcut-1",
+  "steps": [
+    {"id": "submit_build", "tool": "build", "depends_on": [], "requires_capability": "cap.build"},
+    {"id": "run_eval", "tool": "eval", "depends_on": ["submit_build"], "requires_capability": "cap.eval", "idempotent": true},
+    {"id": "file_report", "tool": "report", "depends_on": ["run_eval"], "requires_capability": "cap.report", "idempotent": true},
+    {"id": "request_release", "tool": "release_request", "depends_on": ["file_report"], "requires_capability": "cap.release_request"},
+    {"id": "sign_off", "tool": "sign_off", "depends_on": ["request_release"], "requires_capability": "cap.sign_off"},
+    {"id": "deploy", "tool": "deploy", "depends_on": ["sign_off"], "requires_capability": "cap.deploy"},
+    {"id": "monitor", "tool": "monitor", "depends_on": ["deploy"], "requires_capability": "cap.monitor", "idempotent": true}
+  ]
+}
