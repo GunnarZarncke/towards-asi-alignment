@@ -18,6 +18,10 @@
 - `npm run sync:experiments` and `npm run sync:reference-cards` succeed.
 - `ASTRO_BASE=/ npm run build` → 646 pages.
 
+## Commit
+
+- `5005d08` — Unify guided tour paths and add experiment/reference cards to site overview.
+
 ## Open / next
 
 - None for this task.
