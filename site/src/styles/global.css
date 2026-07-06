@@ -74,8 +74,8 @@ code {
 }
 
 .site-header {
-  border-bottom: 1px solid var(--color-border);
-  background: rgba(246, 244, 239, 0.92);
+  border-bottom: 1px solid var(--color-header-border);
+  background: var(--color-header-bg);
 }
 
 .site-header-inner,
@@ -95,7 +95,7 @@ code {
 
 .brand {
   font-weight: 750;
-  color: var(--color-text);
+  color: var(--color-header-text);
   text-decoration: none;
 }
 
@@ -109,12 +109,12 @@ code {
 }
 
 .nav a {
-  color: var(--color-muted);
+  color: var(--color-header-muted);
   text-decoration: none;
 }
 
 .nav a:hover {
-  color: var(--color-accent-strong);
+  color: var(--color-header-text);
 }
 
 .page {

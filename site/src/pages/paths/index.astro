@@ -84,7 +84,7 @@ const paths = (await getCollection("paths")).sort(
 
   .diagram-caption {
     margin-top: 0;
-    color: var(--muted, #666);
+    color: var(--color-muted);
     font-size: 0.95rem;
   }
 
@@ -106,21 +106,21 @@ const paths = (await getCollection("paths")).sort(
   }
 
   .path-node {
-    border: 1px solid var(--border, #ccc);
+    border: 1px solid var(--color-border);
     border-radius: 0.5rem;
     padding: 0.45rem 0.75rem;
-    background: var(--surface, #fafafa);
+    background: var(--color-surface);
     text-decoration: none;
     color: inherit;
   }
 
   a.path-node:hover {
-    border-color: var(--accent, #336);
+    border-color: var(--color-accent-strong);
   }
 
   .path-node-center {
     font-weight: 600;
-    background: var(--accent-soft, #eef2ff);
+    background: var(--color-open-bg);
   }
 
   .path-arrow {
@@ -129,7 +129,7 @@ const paths = (await getCollection("paths")).sort(
 
   .path-note {
     font-size: 0.85rem;
-    color: var(--muted, #666);
+    color: var(--color-muted);
     font-style: italic;
   }
 </style>
