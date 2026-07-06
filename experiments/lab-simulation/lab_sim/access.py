@@ -45,6 +45,15 @@ class PermissionService:
         self._append("check", actor_id, capability, actor_id, t, result=result)
         return result
 
+    def has_grant(self, actor_id: str, capability: str) -> bool:
+        """Pure (non-logging) grant lookup -- D1 file channel (0.8.0):
+        world.py's per-tick, per-agent PASSIVE observation builder needs
+        to know current permission state (which memos can this actor see)
+        without itself becoming a loggable, attributable action every
+        tick for every agent — that is what `check` is for (an actual
+        tool-call-time gate, e.g. `tools._tool_file_read`)."""
+        return self._grants.get((actor_id, capability), False)
+
     def _append(
         self, action: str, actor_id: str, capability: str, by: str, t: int, result: bool
     ) -> None:

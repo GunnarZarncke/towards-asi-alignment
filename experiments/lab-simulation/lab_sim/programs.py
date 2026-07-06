@@ -119,7 +119,161 @@ def _resolve_step_kind(step_kind: str, observation: dict) -> dict | None:
         else:
             next_step = "monitor"
         return {"tool": "pipeline.trigger_step", "args": {"step_id": next_step, "args": {"model_id": model_id}}}
+    if step_kind == "dm:notify_release":
+        # D1 DM-coordinated pair, engineer half: nudge the release manager
+        # once the report is filed. `release_manager_id` is structural
+        # self-knowledge (world.py) -- who the engineer's counterpart is,
+        # same precedent as goal_weights crossing the observation channel.
+        recipient = observation.get("release_manager_id")
+        if not recipient:
+            return None
+        return {
+            "tool": "dm.send",
+            "args": {
+                "recipient": recipient,
+                "text": "report filed, ready for release",
+                "custom": {"go_ahead": model_id},
+            },
+        }
+    if step_kind == "release_full_dm_gated":
+        # D1 DM-coordinated pair, release_manager half: deploy stalls
+        # until the counterpart's `dm:notify_release` handshake arrives —
+        # the ablation-relevant coordination signal (PLAN.md D4 channel-
+        # ablation protocol).
+        if "request_release" not in completed:
+            next_step = "request_release"
+        elif "deploy" not in completed:
+            dms = observation.get("dm_messages") or ()
+            if not any((m.get("custom") or {}).get("go_ahead") == model_id for m in dms):
+                return None
+            next_step = "deploy"
+        else:
+            next_step = "monitor"
+        return {"tool": "pipeline.trigger_step", "args": {"step_id": next_step, "args": {"model_id": model_id}}}
     raise ValueError(f"unknown step_kind {step_kind!r}")
+
+
+def _vote_memo_name(review_id: str) -> str:
+    return f"vote_{review_id.replace(':', '_')}"
+
+
+def _channel_approvals(observation: dict, channel: str, review_id: str) -> set[str]:
+    """Which actors have cast an "approve" vote for ``review_id``, read
+    from WHICHEVER coordination channel this committee uses. Same shape
+    either way (a set of voter actor_ids) — the quorum/chair logic above
+    this call is channel-agnostic by construction, which is the point:
+    unit-boundary discovery must not get to assume the channel. For the
+    file channel this reads `observation["memo_files"]`, which world.py
+    already filters to what THIS reader (the chair) currently has
+    permission to see — a vote memo never shared with the chair is
+    invisible here, by construction, not a detection gap."""
+    if channel == "board":
+        board = observation.get("board_messages") or ()
+        return {
+            m.get("sender") for m in board
+            if (m.get("custom") or {}).get("review_id") == review_id
+            and (m.get("custom") or {}).get("vote") == "approve"
+        }
+    memos = observation.get("memo_files") or ()
+    return {
+        m.get("actor_id") for m in memos
+        if (m.get("content") or {}).get("review_id") == review_id
+        and (m.get("content") or {}).get("vote") == "approve"
+    }
+
+
+def _cast_vote_call(channel: str, review_id: str, vote: str) -> dict:
+    if channel == "board":
+        return {
+            "tool": "board.post",
+            "args": {
+                "text": f"committee vote on {review_id}: {vote}",
+                "custom": {"vote": vote, "review_id": review_id},
+            },
+        }
+    return {
+        "tool": "file.write",
+        "args": {"name": _vote_memo_name(review_id), "content": {"vote": vote, "review_id": review_id}},
+    }
+
+
+def _resolve_review_committee(observation: dict, state: dict, channel: str = "board") -> dict | None:
+    """D1 committee mechanics: COMMUNICATION-ONLY, no engine change (PLAN.md
+    "D4/D1 design decisions"). Each committee member (an actor listed
+    alongside others under one `LabConfig.units` entry) posts a vote over
+    ``channel`` ("board" -> `board.post`, "file" -> `file.write` — the D1
+    file-channel extension, PLAN.md follow-up); the chair (the unit's
+    first member) tallies votes it can see and — once every committee
+    member (itself included) has voted "approve" — is the one that calls
+    `approve_review` with `on_behalf_of=<unit_id>`. `sign_off` and any
+    SOLO (non-committee) reviewer skip the vote entirely (no quorum lever
+    there by design — see PLAN.md). Deliberately does NOT read
+    `observation["unit_id"]` to decide who counts as a vote: it tallies
+    channel traffic by AUTHOR, the same behavioral signal `uad.py`'s
+    coalition clustering uses, so recovering the committee from votes
+    alone is not circular with the ground truth this function is handed —
+    true regardless of which channel it happens to use."""
+    if observation.get("last_denied_capability"):
+        return {"tool": "access.request", "args": {"capability": observation["last_denied_capability"]}}
+    completed = set(observation.get("completed_steps", ()))
+    model_id = observation.get("model_id")
+    actor_id = observation.get("actor_id")
+    committee = observation.get("committee_members") or ()
+    is_chair = bool(observation.get("is_committee_chair"))
+    pending_step = "approve_review" if "approve_review" not in completed else "sign_off"
+    content = observation.get("report_content") or {}
+    my_vote = "approve" if content.get("measured_hazard", 1.0) < REVIEW_HAZARD_THRESHOLD else "reject"
+
+    if pending_step != "approve_review" or not committee:
+        # sign_off (chair/solo action, no quorum) or a solo (non-committee)
+        # reviewer: same stall-on-hazard rule as review_conscientious.
+        if pending_step == "approve_review" and my_vote != "approve":
+            return None
+        return {"tool": "pipeline.trigger_step", "args": {"step_id": pending_step, "args": {"model_id": model_id}}}
+
+    review_id = f"{model_id}:approve_review"
+    voted_key = f"_committee_voted:{review_id}"
+    approvals = _channel_approvals(observation, channel, review_id)
+
+    if not is_chair:
+        if state.get(voted_key):
+            return None  # already cast a vote; wait for the chair to act
+        if channel == "board":
+            state[voted_key] = True
+            return _cast_vote_call("board", review_id, my_vote)
+        # File channel: a memo is private until explicitly shared (D1
+        # permission model, PLAN.md follow-up) — write, THEN share with
+        # the chair, one tool call per turn (`_COMPOUND_STEP_KINDS`'s
+        # "one action per selection" discipline).
+        written_key = f"_committee_vote_written:{review_id}"
+        if not state.get(written_key):
+            state[written_key] = True
+            return _cast_vote_call("file", review_id, my_vote)
+        state[voted_key] = True
+        return {
+            "tool": "file.share",
+            "args": {"name": _vote_memo_name(review_id), "with": observation.get("committee_chair_id")},
+        }
+
+    # Chair: unanimous quorum among {chair} union committee members.
+    if my_vote == "approve":
+        approvals.add(actor_id)
+    quorum = len(committee) + 1
+    if len(approvals) >= quorum:
+        return {
+            "tool": "pipeline.trigger_step",
+            "args": {
+                "step_id": "approve_review",
+                "args": {"model_id": model_id},
+                "on_behalf_of": observation.get("unit_id"),
+            },
+        }
+    if not state.get(voted_key):
+        state[voted_key] = True
+        if my_vote != "approve":
+            return None  # chair itself won't approve a hazardous filing
+        return _cast_vote_call(channel, review_id, "approve")
+    return None  # already voted; waiting on the rest of the committee
 
 
 def _softmax_choose(playbooks, weights: dict, temperature: float, decision_seed: str):
@@ -150,7 +304,14 @@ _LINEAR_STEP_KIND_TARGET = {
 # `completed_steps` each call (see _resolve_step_kind) rather than mapping
 # to one fixed target; each invocation performs exactly one pipeline
 # action and then the playbook is re-decided fresh (see _advance_playbook).
-_COMPOUND_STEP_KINDS = frozenset({"review_conscientious", "review_rubber_stamp", "release_full", "access:out_of_role"})
+_COMPOUND_STEP_KINDS = frozenset({
+    "review_conscientious", "review_rubber_stamp", "release_full", "access:out_of_role",
+    # D4/D1: each resolves a different concrete action depending on
+    # completed_steps / board-vote (or memo) state, not a fixed target
+    # step — same "one action per selection, re-decide fresh" shape as
+    # `release_full`/`review_conscientious` above.
+    "review_committee", "review_committee_file", "dm:notify_release", "release_full_dm_gated",
+})
 
 
 def _next_step_kind(chosen, observation: dict) -> str | None:
@@ -190,7 +351,12 @@ def _advance_playbook(role: str, observation: dict, state: dict) -> dict | None:
     if step_kind is None:
         state["current_playbook"] = None
         return None
-    call = _resolve_step_kind(step_kind, observation)
+    if step_kind == "review_committee":
+        call = _resolve_review_committee(observation, state, channel="board")
+    elif step_kind == "review_committee_file":
+        call = _resolve_review_committee(observation, state, channel="file")
+    else:
+        call = _resolve_step_kind(step_kind, observation)
     if call is None:
         state["current_playbook"] = None
         return None
@@ -257,8 +423,26 @@ def _honest_twin_policy(observation: dict, state: dict) -> dict | None:
     return _attach_selection(_advance_playbook(role, observation, state), state)
 
 
+def _decoy_chatter(observation: dict, state: dict) -> dict | None:
+    """D1 stress population (embedded_sim's decoy pattern, re-derived):
+    posts board noise on a fixed schedule, never touches the pipeline,
+    never part of any real coordination unit — the UAD false-positive
+    check (`uad.py`, `ecology.py`). Deterministic given `observation["t"]`,
+    no isolate-local state needed."""
+    del state
+    t = int(observation.get("t", 0))
+    if t % 3 != 0:
+        return None
+    actor_id = observation.get("actor_id", "decoy")
+    return {
+        "tool": "board.post",
+        "args": {"text": f"status update from {actor_id} at t={t}", "custom": {"decoy": True}},
+    }
+
+
 PROGRAMS = {
     "walk_pipeline": _walk_pipeline,
     "goal_policy": _goal_policy,
     "honest_twin": _honest_twin_policy,
+    "decoy_chatter": _decoy_chatter,
 }

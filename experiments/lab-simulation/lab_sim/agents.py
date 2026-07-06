@@ -28,6 +28,34 @@ ROLE_CAPABILITIES: dict[str, frozenset[str]] = {
     # Overseer holds no pipeline capabilities: it acts exclusively through
     # handle invocations (handles.py), never through pipeline steps.
     "overseer": frozenset({"cap.handle_invoke"}),
+    # D1 stress population (`programs._decoy_chatter`): no pipeline
+    # capability at all — see `COMM_ROLE_ELIGIBILITY` below for its board
+    # access, kept structurally separate (see that table's docstring).
+    "decoy": frozenset(),
+}
+
+# D4: lab-wide comms-tool eligibility ("cap.board_post"/"cap.dm_send"/
+# "cap.file_write"), DELIBERATELY a separate table from `ROLE_CAPABILITIES`
+# above, not a union into it. Reasons: (1) `AdminPolicy.handle_request`'s
+# `least_privilege=False` lever sprays every capability "eligible" for a
+# role in one shot whenever ANY of them is requested (see agents.py
+# `AdminPolicy` docstring) — comm caps are pre-provisioned directly by
+# `world.run_episode`, never through that request path, so they must not
+# be visible to it or the access-creep/over-grant calibration
+# (`severity.access_creep`, `detectors.access_integrity_score`) would
+# count them as "granted but never exercised" (those detectors only look
+# at `engine_log`'s `requires_capability`, which board.post/dm.send/
+# file.write never populate — a structural scope mismatch with the
+# pipeline-capability detectors, not a bug in them). (2)
+# `tools._tool_trigger_step`'s static gate must not accept these as
+# pipeline-step capabilities. "cap.file_write" (D1 file channel, PLAN.md
+# "file channel extension") gates the WRITE side only — reads are
+# unrestricted (world-readable VFS, see workspace.py module docstring).
+COMM_ROLE_ELIGIBILITY: dict[str, frozenset[str]] = {
+    "engineer": frozenset({"cap.board_post", "cap.dm_send", "cap.file_write"}),
+    "reviewer": frozenset({"cap.board_post", "cap.dm_send", "cap.file_write"}),
+    "release_manager": frozenset({"cap.board_post", "cap.dm_send", "cap.file_write"}),
+    "decoy": frozenset({"cap.board_post"}),
 }
 
 

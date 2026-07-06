@@ -32,7 +32,8 @@ import json
 from dataclasses import dataclass, field
 
 from .access import PermissionService
-from .agents import AdminPolicy
+from .agents import COMM_ROLE_ELIGIBILITY, AdminPolicy
+from .comms import BOARD_CONVERSATION_ID, MessageStore
 from .config import LabConfig
 from .handles import HandleService
 from .isolate import MockIsolate
@@ -101,9 +102,18 @@ def run_episode(
     handle_service = HandleService(engine=engine, permissions=permissions)
     roles = {a.actor_id: a.role for a in cfg.agents}
     roles[OVERSEER_ID] = "overseer"
+    # D4 (CODE_VERSION 0.7.0): `None` unless `comms_enabled` — the
+    # "off by default, byte-identical" pattern (see comms.py, tools.py).
+    comms = MessageStore() if cfg.comms_enabled else None
+    # D1 persistent state (CODE_VERSION 0.8.0): the `persistent_id` lookup
+    # table lives ONLY here and on `Host` -- never on the observation dict
+    # handed to an agent (see tools.py module docstring). Empty for every
+    # episode that never sets `AgentConfig.persistent_id` (default `None`).
+    persistent_ids = {a.actor_id: a.persistent_id for a in cfg.agents if a.persistent_id}
     host = Host(
         engine, permissions, admin, roles,
-        perturbation_hooks=perturbation_hooks, handle_service=handle_service,
+        perturbation_hooks=perturbation_hooks, handle_service=handle_service, comms=comms,
+        persistent_ids=persistent_ids, groups=cfg.resolved_groups(),
     )
     script_by_tick: dict[int, list[tuple[str, str]]] = {}
     for when, handle_id, target in overseer_script:
@@ -111,6 +121,28 @@ def run_episode(
 
     playbook_agents = [a for a in cfg.agents if a.role != "admin"]
     program_name = program_override or "goal_policy"
+
+    if comms is not None:
+        comms.ensure_board([a.actor_id for a in playbook_agents])
+        for a in playbook_agents:
+            # Lab-wide utility, not a scarce grant (see agents.
+            # COMM_ROLE_ELIGIBILITY docstring) — pre-provisioned rather
+            # than requested, so no access.request/deny dance needs
+            # modeling for it.
+            for cap in COMM_ROLE_ELIGIBILITY.get(a.role, frozenset()):
+                permissions.grant(a.actor_id, cap, granted_by="system_comms_init", t=0)
+
+    # D1 forward hook (`LabConfig.units`, oracle ground truth): resolved
+    # once per episode and handed to each unit member via the (unlogged)
+    # observation channel — the exact precedent `goal_weights` already
+    # sets (ORACLE_ONLY_FIELDS blocks it from ever reaching a LOG, not
+    # from being told to the agent about itself/its own unit).
+    units = cfg.resolved_units()
+    unit_by_actor: dict[str, tuple[str, tuple[str, ...]]] = {}
+    for unit_id, members in units.items():
+        for member in members:
+            unit_by_actor[member] = (unit_id, members)
+    release_manager_id = next((a.actor_id for a in cfg.agents if a.role == "release_manager"), None)
 
     def _backend_and_program(actor_id: str):
         return agent_overrides.get(actor_id, (backend, program_name))
@@ -146,6 +178,7 @@ def run_episode(
             report_content = None
             if agent_cfg.role == "reviewer" and model_id is not None:
                 report_content = _latest_report_content(engine, ws, model_id)
+            unit_id, unit_members = unit_by_actor.get(agent_cfg.actor_id, (agent_cfg.actor_id, (agent_cfg.actor_id,)))
             observation = {
                 "t": t,
                 "role": agent_cfg.role,
@@ -162,6 +195,33 @@ def run_episode(
                 "extra_playbooks": cfg.extra_playbooks,
                 "build_params": cfg.build_params,
                 "capability_probe_mode": cfg.capability_probe_mode,
+                # D4/D1 (CODE_VERSION 0.7.0). `comms_enabled=False` (the
+                # default) makes every field below `False`/`()`/`None`,
+                # reproducing the pre-0.7.0 observation dict's keys exactly
+                # (new keys, but every comm-aware playbook is filtered out
+                # of `available_playbooks` before these values matter —
+                # see `playbooks._requires_comms`).
+                "comms_enabled": cfg.comms_enabled,
+                "unit_id": unit_id,
+                "committee_members": tuple(m for m in unit_members if m != agent_cfg.actor_id),
+                "is_committee_chair": bool(unit_members) and unit_members[0] == agent_cfg.actor_id,
+                "release_manager_id": release_manager_id,
+                "committee_chair_id": unit_members[0] if unit_members else None,
+                "board_messages": comms.messages(BOARD_CONVERSATION_ID) if comms is not None else (),
+                "dm_messages": comms.messages_for_actor(agent_cfg.actor_id) if comms is not None else (),
+                # D1 file channel (CODE_VERSION 0.8.0): passive view of
+                # every memo this actor may CURRENTLY read -- own memos
+                # plus any live `cap.file_read:<rel>` grant from a prior
+                # `file.share` (the SAME check `_tool_file_read` applies;
+                # this is the "ls a directory you have permission to see
+                # into" analogue of `board_messages`, not a bypass of the
+                # permission model). `()` unless comms are enabled.
+                "memo_files": tuple(
+                    {**entry, "content": json.loads(ws.read_file(entry["rel"]))}
+                    for entry in host.memo_index
+                    if entry["actor_id"] == agent_cfg.actor_id
+                    or permissions.has_grant(agent_cfg.actor_id, f"cap.file_read:{entry['rel']}")
+                ) if comms is not None else (),
             }
             call = backend_by_actor[agent_cfg.actor_id].step(handles[agent_cfg.actor_id], observation)
             last_denied[agent_cfg.actor_id] = None

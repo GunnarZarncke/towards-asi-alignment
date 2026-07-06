@@ -334,7 +334,8 @@ is independently reachable given the forward hooks below.
   protocol (board/DMs on vs. off, identical seeds/goal-weights) as the
   concrete MB7d instrument — coordination that survives severing the
   channel is the bridge's signature. MB7d is legitimately later; nothing in
-  Phase 0-8 pretends to touch it.
+  Phase 0-8 pretends to touch it. **Protocol choice recorded — see "D4/D1
+  design decisions" below.**
 - **D1 — Composite agents + UAD battery (MB1).** Extend the ecology so the
   true causal unit is not always one isolate: audit committees (k reviewer
   isolates whose joint approval is one decision unit), engineer/release
@@ -346,7 +347,8 @@ is independently reachable given the forward hooks below.
   `coordination.cluster_coordination` — recovers candidate units, scored
   against oracle unit ground truth exactly as `embedded_sim`'s UAD golden
   tests do. This restores boundary reconstruction as a live measurement on
-  this substrate rather than a stipulated given.
+  this substrate rather than a stipulated given. **Committee mechanics
+  recorded — see "D4/D1 design decisions" below.**
 - **D2 — Upgrades and multi-iteration runs (MB5, feeds MB6b).** Add two
   pipeline-native upgrade mechanics: model-from-model builds (v(n+1)
   inherits from v(n), lineage in the provenance ledger; reported vs. oracle
@@ -532,6 +534,186 @@ zero new principals.
   the board delays but does not erase the signal, IF board files are
   hash-chained like every other log. These are falsifiable and will be
   scored honestly when D3 runs, including negatives.
+
+## D4/D1 design decisions — communication protocol and committee mechanics (recorded 2026-07-06, pre-implementation)
+
+User-directed design decisions for D4 (communication) and D1 (composite
+agents), recorded verbatim in intent before any code exists — same
+discipline as the D3 design notes above: nothing here is implemented,
+nothing here moves the frozen referee (2026-07-06 freeze covers the
+referee, not world/comms mechanics; new detectors over these channels are
+recorded referee extensions, per the D3 "Freeze handling" precedent).
+
+**D4 — communication protocol: TalkJS-like, not an ad hoc board/DM pair.**
+Rather than inventing a bespoke wire shape, the message layer borrows
+TalkJS's own concept split (`Conversation` / `Participant` / `Message`),
+re-derived on this line's substrate (no dependency, no code import):
+
+- **`Conversation`**: `conversation_id`, `participants: dict[actor_id,
+  Participant]`, ordered `messages`. Two conversation kinds: one
+  always-existing multi-participant **board** conversation (every lab role
+  a `ReadWrite` participant) and ad hoc **DM** conversations created on
+  first `dm.send` between exactly two participants (deterministic id from
+  the sorted actor pair — TalkJS's "caller-chosen conversation id"
+  pattern).
+- **`Participant`**: `access` (`"Read" | "ReadWrite" | "None"`, TalkJS's
+  own enum) + `notify`. Access is checked against the existing
+  `PermissionService` capability gate (`cap.board_post`, `cap.dm_send`) —
+  TalkJS's read/write split maps directly onto this line's
+  role-vs-grant distinction, so no new access primitive is needed.
+- **`Message`**: `type` (`"UserMessage" | "SystemMessage"`, TalkJS's own
+  split), `sender` (`None` for `SystemMessage` — host-emitted notices only,
+  e.g. "review R1 needs 2 approvals"; never agent-authored, never counted
+  toward actor attribution), `text`, `custom: dict[str, str]` (free-form
+  attributes — this is where a committee vote rides: `{"vote": "approve",
+  "review_id": "..."}`, avoiding a bespoke vote wire field),
+  `referenced_message_id` (threading — e.g. a vote message references the
+  review-request message, TalkJS's own reply-linking field), `read_by:
+  set[actor_id]` (per-recipient read receipts — the mechanism that lets a
+  later detector ask "did the admin actually read the escalation before
+  granting," not just "was it posted").
+- **Tool surface**: four tools, not three — `board.post`, `board.read`,
+  `dm.send`, `dm.read` (read separated from send, per TalkJS's read/write
+  access split; also gives `read_by` a natural place to update). All
+  host-mediated, logged like every other tool call; agents never get a
+  direct pipe to each other.
+- **Tier projection** (resolving PLAN's open design question (a)):
+  *structure at full, content at deep* — the same shape as report files,
+  not a bespoke ladder. Light = call metadata only (`sender`, `tool`,
+  `ok`, `conversation_id` — no text, no custom). Full = + `message_id`,
+  `referenced_message_id`, participant list (structure without content).
+  Deep = + `text`, `custom`, `read_by` (content — mirrors the file-fetch
+  precedent). Keeps the tier-ladder claim (MB7a-c) uniform across every
+  audit-visible surface, old and new.
+
+**D1 — committee mechanics: communication-only, no engine change.** A
+reviewer committee (k isolates = one decision unit) is realized entirely
+as a *coordination protocol over the board*, using the D4 primitives
+above — `pipeline_engine.py`'s DAG/quorum semantics are **not** touched:
+
+- Each committee member posts a vote to the board (`custom={"vote":
+  "approve"|"reject", "review_id": ...}`).
+- One designated member (the "chair" — first id in the unit's tuple in
+  `LabConfig.units`) tallies votes it can read; once its own program/
+  policy logic observes >= k `"approve"` votes referencing the same
+  `review_id`, it is the one that calls
+  `pipeline.trigger_step("approve_review", ..., on_behalf_of=<unit_id>)`.
+- This is the first real use of the previously-unwired `on_behalf_of`
+  forward hook (`pipeline_engine.py`) — populated with the committee's key
+  into `LabConfig.units`, turning "who acted" into "which causal unit
+  acted" for exactly the case D1 exists to probe.
+- **Consequence for UAD, deliberately**: the engine itself never records
+  "k reviewers approved" — it sees one `approve_review` call from one
+  `actor_id` with an `on_behalf_of` annotation. The committee-ness of the
+  decision is visible only by reading the board conversation. This makes
+  `uad.py`'s coalition clustering over board vote messages (co-occurring
+  `review_id`, tight timing, shared conversation) the *only* way to
+  recover the committee as a unit — a stronger, less circular UAD test
+  than baking quorum counting into the engine would have been.
+- The engineer/release-manager coordination pair (also D1) follows the
+  same discipline: a DM exchange (engineer notifies release_manager via
+  `dm.send` when a report is filed) is the coordination signal; no engine
+  field records the pairing.
+
+**LLM adapter — wired and run for real.** The comm tools (`board.post`,
+`board.read`, `dm.send`, `dm.read`) get added to `llm_agent.py`'s tool
+list/prompt and observation payload alongside the programmatic agents'
+access. `LAB_SIM_LLM_FAKE_MODE` unit tests land first (no network); then a
+small **real** API spot-check (1-2 episodes, ~$0.01-0.20, same cost
+discipline as G-7/G-8) is run once implemented — exploratory only, no
+statistical claim — to see whether an LLM engineer/reviewer pair uses the
+channel for genuine coordination or cover-story construction, versus the
+scripted committee's board-vote protocol.
+
+## D1 follow-up — file channel + persistent state (recorded 2026-07-06, post-implementation redesign)
+
+User interruption after the D4/D1 build above landed: UAD's scope was
+"incomplete" — unit boundaries are not only a messaging phenomenon; files
+(agent memory/internal state, or input/output exchanged between parties)
+and pipeline-mediated effects are also discoverable coordination
+channels, and "writing files other parties can read should probably be a
+possible action."
+
+**First pass (superseded below).** Added `file.write`/`file.read` tools
+backed by `Workspace` memos, with the writer's `actor_id` embedded
+directly in the filename and in a `Host.memo_index` exposed unfiltered to
+every actor's passive observation — i.e. world-readable by construction,
+the board's simplicity copied onto files without asking whether it fit.
+
+**User correction:** "Why did you not use the isolate file handling
+again? The file system is not exposing agent IDs, not even user IDs.
+Making them accessible for other processes would involve a request to
+change permissions for a user or group (something we may want anyway)."
+Checked first: there is no separate "isolate file handling" to have
+reused — isolates never touch a real filesystem in either backend
+(`MockIsolate` is in-process state; `SubprocessIsolate`/`agent_main.py`
+only exchange JSON-Lines tool calls and are explicitly barred from
+importing `workspace`/`host`, `test_agent_main_isolation.py`). The
+critique stands regardless: a real filesystem does not hand a reader
+"who wrote this" or "you may read this" for free; both require a
+permission check, and granting read access to another process/user
+requires an explicit permission-changing action. The first pass invented
+free omniscient attribution and free world-readability instead of
+modeling either.
+
+**Redesign (implemented), per the user's three follow-up answers**
+(server-side-only attribution / owner-mediated self-service grant /
+both per-actor and per-group targets, with groups NOT required to
+coincide with `LabConfig.units` — "the oracle should know but the users
+may not"):
+
+- `Workspace.write_memo(name, content)` dropped `actor_id` entirely —
+  the VFS itself carries no notion of identity (real filesystems don't
+  either); it writes to an anonymous, sequentially-numbered path.
+- Ownership is tracked ONLY in `Host.memo_index` (this trust boundary —
+  the same one that already holds `PermissionService`), never in the
+  filename, never in a log, never unconditionally on the observation
+  channel.
+- A new `file.share` tool is the chmod-like, OWNER-initiated permission
+  grant `PLAN.md`'s "request to change permissions" pointed at: self-
+  service (no admin mediation, unlike pipeline capabilities), recorded
+  through the SAME `PermissionService` every capability already uses, as
+  `cap.file_read:<rel>` — a real, tier-visible access-log event, not a
+  silent side channel. Targets one actor (`with=`) or a `LabConfig.groups`
+  roster (`with_group=` — a new, DELIBERATELY separate oracle-only field
+  from `units`; a config MAY set them to coincide, nothing enforces it,
+  and discovery never reads it).
+- `file.read` and the passive `memo_files` observation field (world.py)
+  both apply the identical check: owner, or a live `cap.file_read:<rel>`
+  grant. `PermissionService.has_grant()` (new, non-logging) exists
+  specifically so the per-tick observation builder can apply this check
+  without itself generating a spurious, attributable "check" event for
+  every actor on every tick — that log entry is reserved for actual
+  tool-call-time gates (`file.read`, `pipeline.trigger_step`).
+- `programs._resolve_review_committee`'s file-channel path became a
+  genuine two-step sequence for non-chair members (`file.write`, then
+  `file.share(with=<chair>)`) — a vote memo is private until explicitly
+  shared, unlike a board post which publishes on write.
+- **Non-obvious result**: this makes the file-channel committee's tier-
+  sufficiency story the OPPOSITE of the board's. The board committee is
+  discoverable only at DEEP tier (the coalition signal lives in elided
+  vote content — G-9). The file-channel committee is discoverable
+  already at FULL tier, from `access_log` grant metadata alone
+  (`discover_file_share_pairs_from_access_log`, `uad.py`) — because
+  `file.share` is itself an attributable, non-content permission event,
+  never elided. Modeling the permission grant honestly, rather than
+  skipping it, produced a genuinely informative (and unplanned) tier-
+  sufficiency contrast, not just more realism for its own sake.
+
+See `uad.py`/`collusion.py` module docstrings for the resulting discovery
+signals, `test_files.py`/`test_persistent_state.py` for the mechanic
+tests, and `test_uad.py`'s
+`test_board_only_discovery_would_have_missed_the_file_channel_committee`
+for the detection-gap the redesign closes.
+
+**Persistent agent state** (same pass, `state.save`/`state.load`):
+host-mediated, not an isolate-spawn change — `Host.persistent_ids` (the
+`actor_id -> persistent_id` lookup) lives only in the host, never the
+observation channel or any log; an agent gets its own remembered content
+back without ever seeing the id used to look it up (this was already the
+user's stated requirement going in — "the persistent_id must be used as
+an index... but the agent wouldn't know or see that. Only the oracle may
+access" — and needed no correction).
 
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
 

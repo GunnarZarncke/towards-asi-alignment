@@ -44,12 +44,30 @@ class AuditView:
     tool_events: list[dict] | None = None
     report_contents: dict[str, dict] | None = None
     spec_history: tuple | None = None
+    # D4 (CODE_VERSION 0.7.0): deep-tier-only comm CONTENT (text/custom/
+    # read_by), same "structure at full, content at deep" shape as
+    # ``report_contents`` above — full tier already sees comm-call
+    # STRUCTURE (sender, recipient, referenced_message_id) through
+    # ``tool_events`` (see ``tools._scalar_args``'s comm-tool elision);
+    # this field is the only place message TEXT/CUSTOM ever becomes
+    # audit-visible. ``None`` below deep tier or when comms are disabled.
+    message_contents: tuple[dict, ...] | None = None
+    # D1 file channel (CODE_VERSION 0.8.0): deep-tier-only memo CONTENT,
+    # same shape/rationale as ``message_contents`` above but sourced from
+    # the on-disk ``Workspace`` (``memos/``) rather than ``MessageStore``.
+    # Full tier already sees memo-write STRUCTURE (actor_id, name, rel)
+    # through ``tool_events`` (``file.write``'s args are elided the same
+    # way ``board.post``'s are). ``None`` below deep tier or when no memo
+    # was ever written (``Host.memo_index`` empty).
+    memo_contents: tuple[dict, ...] | None = None
 
 
 def build_audit_view(result, tier: str) -> AuditView:
     """``result`` is a ``world.EpisodeResult``."""
     report_contents = None
     spec_history = None
+    message_contents = None
+    memo_contents = None
     if tier == "deep":
         report_contents = {
             path: json.loads(result.workspace.read_file(path))
@@ -57,6 +75,32 @@ def build_audit_view(result, tier: str) -> AuditView:
             if path.startswith("reports/")
         }
         spec_history = result.engine.spec_history
+        if result.host.comms is not None:
+            message_contents = tuple(
+                {
+                    "n": e["n"],
+                    "t": e["t"],
+                    "conversation_id": e["conversation_id"],
+                    "type": e["type"],
+                    "sender": e["sender"],
+                    "text": e["text"],
+                    "custom": e["custom"],
+                    "referenced_message_id": e["referenced_message_id"],
+                    "read_by": sorted(result.host.comms.read_by(e["n"])),
+                }
+                for e in result.host.comms.log.entries
+            )
+        if result.host.memo_index:
+            memo_contents = tuple(
+                {
+                    "rel": entry["rel"],
+                    "actor_id": entry["actor_id"],
+                    "name": entry["name"],
+                    "t": entry["t"],
+                    "content": json.loads(result.workspace.read_file(entry["rel"])),
+                }
+                for entry in result.host.memo_index
+            )
     return AuditView(
         tier=tier,
         engine_log=project_engine_log(result.engine.log, tier),
@@ -64,6 +108,8 @@ def build_audit_view(result, tier: str) -> AuditView:
         tool_events=project_tool_events(result.host.events.entries, tier),
         report_contents=report_contents,
         spec_history=spec_history,
+        message_contents=message_contents,
+        memo_contents=memo_contents,
     )
 
 

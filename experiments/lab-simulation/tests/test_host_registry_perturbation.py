@@ -36,12 +36,14 @@ def test_register_tool_rejects_duplicates():
 
 
 def test_registered_custom_tool_is_dispatched_and_logged():
+    # "board.post" is now a REAL registered tool (D4); use a distinct
+    # example name here to keep exercising the generic registry path.
     host, ws = _host()
     try:
-        host.register_tool("board.post", lambda h, a, r, c: ToolResult(True, "", {"echo": c.args.get("msg")}))
-        res = host.dispatch("eng1", ToolCall("board.post", {"msg": "hi"}))
+        host.register_tool("custom.echo", lambda h, a, r, c: ToolResult(True, "", {"echo": c.args.get("msg")}))
+        res = host.dispatch("eng1", ToolCall("custom.echo", {"msg": "hi"}))
         assert res.ok and res.payload == {"echo": "hi"}
-        assert host.events.entries[-1]["tool"] == "board.post"
+        assert host.events.entries[-1]["tool"] == "custom.echo"
     finally:
         ws.cleanup()
 

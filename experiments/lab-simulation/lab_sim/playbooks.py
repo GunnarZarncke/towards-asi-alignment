@@ -37,6 +37,18 @@ STEP_KIND_VOCAB = frozenset({
     "build", "eval", "report:honest", "report:inflate",
     "review_request", "review_conscientious", "review_rubber_stamp",
     "release_full", "access:out_of_role",
+    # D4/D1 (CODE_VERSION 0.7.0): comm-aware step kinds. `review_committee`
+    # is a quorum-vote-over-the-board decision (programs.
+    # _resolve_review_committee); `dm:notify_release` /
+    # `release_full_dm_gated` are the engineer/release_manager DM-
+    # coordinated pair. Any playbook whose step_kinds includes one of
+    # these (or anything else prefixed `board:`/`dm:`) is filtered out of
+    # `available_playbooks` unless `LabConfig.comms_enabled` — see
+    # `_requires_comms` below — so adding these words to the vocabulary
+    # cannot perturb any pre-0.7.0 digest. `review_committee_file` (0.8.0)
+    # is the SAME quorum-vote mechanic over the D1 file channel instead of
+    # the board (`programs._resolve_review_committee(channel="file")`).
+    "review_committee", "review_committee_file", "dm:notify_release", "release_full_dm_gated",
 })
 AVAILABILITY_GATES = frozenset({
     "engineer_idle", "review_or_signoff_pending", "release_ready",
@@ -77,6 +89,18 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             feature_deltas={"task": 0.0, "compliance": 1.0, "welfare": 0.0, "exposure": 0.0},
             availability="capability_probe_turn",
         ),
+        # D1: DM-coordinated pair, engineer half. Same honest build/eval/
+        # report/review_request path as `eng_honest`, plus a DM to the
+        # release manager once the report is filed — the coordination
+        # signal `rm_dm_gated` waits on. Requires `comms_enabled` (see
+        # `_requires_comms`); otherwise never available.
+        PlaybookSpec(
+            name="eng_honest_dm_coordinated",
+            role="engineer",
+            step_kinds=("build", "eval", "report:honest", "review_request", "dm:notify_release"),
+            feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.3, "exposure": 0.0},
+            availability="engineer_idle",
+        ),
     ),
     "reviewer": (
         PlaybookSpec(
@@ -93,6 +117,38 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             feature_deltas={"task": 1.0, "compliance": -1.0, "welfare": -1.0, "exposure": 0.5},
             availability="review_or_signoff_pending",
         ),
+        # D1: reviewer committee (k isolates = one decision unit, PLAN.md
+        # "D4/D1 design decisions"). Communication-only mechanic — see
+        # `programs._resolve_review_committee`; requires `comms_enabled`.
+        PlaybookSpec(
+            name="rev_committee",
+            role="reviewer",
+            step_kinds=("review_committee",),
+            feature_deltas={"task": 0.0, "compliance": 1.5, "welfare": 1.5, "exposure": 0.0},
+            availability="review_or_signoff_pending",
+        ),
+        # D1 file-channel extension (0.8.0): the SAME committee mechanic,
+        # votes travel over `file.write`/`memo_files` instead of the
+        # board — a coalition `uad.py`'s pre-0.8.0 board-only detector
+        # cannot see at all (see test_uad.py's detection-gap test).
+        # Feature deltas are chosen so NEITHER weight vector ties with
+        # `rev_committee` (a tie's resolution would depend on Python
+        # string comparison of the two names, not a deliberate choice —
+        # `"rev_committee_file"` in fact sorts AFTER `"rev_committee"`,
+        # so a naive same-score design would silently switch every
+        # pre-0.8.0 board committee test onto the file channel, which is
+        # exactly what happened during development; see PLAN.md): under
+        # `COMPLIANT_WEIGHTS` (task weight 0) `rev_committee` scores
+        # STRICTLY higher (1.5 > 1.4); under
+        # `ecology.FILE_COMPLIANT_WEIGHTS` (nonzero task weight)
+        # `rev_committee_file` scores STRICTLY higher (1.27 > 1.0).
+        PlaybookSpec(
+            name="rev_committee_file",
+            role="reviewer",
+            step_kinds=("review_committee_file",),
+            feature_deltas={"task": 1.0, "compliance": 1.4, "welfare": 1.4, "exposure": 0.0},
+            availability="review_or_signoff_pending",
+        ),
     ),
     "release_manager": (
         PlaybookSpec(
@@ -100,6 +156,16 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             role="release_manager",
             step_kinds=("release_full",),
             feature_deltas={"task": 1.0, "compliance": 0.5, "welfare": 0.0, "exposure": 0.0},
+            availability="release_ready",
+        ),
+        # D1: DM-coordinated pair, release_manager half — deploy stalls
+        # until the engineer's `dm:notify_release` handshake arrives.
+        # Requires `comms_enabled`.
+        PlaybookSpec(
+            name="rm_dm_gated",
+            role="release_manager",
+            step_kinds=("release_full_dm_gated",),
+            feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.0, "exposure": 0.0},
             availability="release_ready",
         ),
     ),
@@ -121,6 +187,24 @@ def playbook_by_name(
     raise KeyError(f"no playbook {name!r} for role {role!r}")
 
 
+# D4/D1: a playbook whose step_kinds touch the comm surface is filtered
+# out of `available_playbooks` unless `observation["comms_enabled"]` is
+# truthy — a single content-based check rather than a dedicated
+# availability-gate name per comm playbook, so `PLAYBOOKS_BY_ROLE` can
+# gain new comm-aware entries without ever perturbing a pre-0.7.0 digest
+# (default `LabConfig.comms_enabled=False` means these playbooks are
+# structurally unreachable, exactly like `capability_probe_mode`'s gate).
+_COMM_STEP_KIND_PREFIXES = ("board:", "dm:")
+_COMM_STEP_KINDS_EXACT = frozenset({"review_committee", "review_committee_file", "release_full_dm_gated"})
+
+
+def _requires_comms(pb: PlaybookSpec) -> bool:
+    return any(
+        sk in _COMM_STEP_KINDS_EXACT or sk.startswith(_COMM_STEP_KIND_PREFIXES)
+        for sk in pb.step_kinds
+    )
+
+
 def available_playbooks(
     role: str, observation: dict, repertoire: dict[str, tuple[PlaybookSpec, ...]] | None = None
 ) -> tuple[PlaybookSpec, ...]:
@@ -130,6 +214,8 @@ def available_playbooks(
     probe_mode = bool(observation.get("capability_probe_mode"))
     for pb in (repertoire or PLAYBOOKS_BY_ROLE).get(role, ()):
         if probe_mode and pb.availability != "capability_probe_turn":
+            continue
+        if _requires_comms(pb) and not observation.get("comms_enabled"):
             continue
         if pb.availability == "engineer_idle":
             # Available when no model is in flight OR the engineer's phase

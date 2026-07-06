@@ -49,9 +49,45 @@ from dataclasses import dataclass, field
 # engineer `submit_build`; playbook-selection audit channel (G-3);
 # `eng_capability_probe` + `access:out_of_role` step kind (G-6); red-team
 # search uses high-hazard `build_params` by default (G-5).
-CODE_VERSION = "lab-sim-0.6.0"
+# 0.7.0 (D4/D1): `LabConfig.comms_enabled` — additive, backward-compatible
+# (default False reproduces every pre-0.7.0 episode byte-for-byte; comms
+# tools are registered unconditionally in `tools.Host` but no-op when
+# `Host.comms is None`) TalkJS-like board/DM message layer (`comms.py`);
+# `"decoy"` role for the D1 UAD stress population; `on_behalf_of` (a
+# Phase 3 forward hook, never populated before) wired through
+# `tools._tool_trigger_step` for the reviewer-committee mechanic
+# (`programs._resolve_review_committee`).
+# 0.8.0 (D1 follow-up, user-directed scope expansion): unit boundaries are
+# not only a messaging phenomenon. Adds (a) a THIRD coordination channel,
+# `file.write`/`file.share`/`file.read`, backed by the on-disk `Workspace`
+# (`memos/`) rather than `comms.MessageStore` — realistically permissioned,
+# NOT world-readable: a memo's owner is tracked ONLY server-side
+# (`Host.memo_index`, never in the filename or any observation field,
+# matching a real filesystem's inode metadata, not a free "agent id" tag);
+# reading anyone else's memo requires the OWNER to have explicitly shared
+# it (`file.share`, a chmod-like self-service grant recorded through the
+# EXISTING `PermissionService` as `cap.file_read:<rel>` — a real
+# access-log-visible event, not a silent side channel), targeting either
+# one actor (`with=`) or a named `LabConfig.groups` roster (`with_group=`
+# — a DELIBERATELY separate concept from `units`, see that field's
+# docstring). This gives `uad.py`/`collusion.py` a real coordination case
+# the 0.7.0 board/DM-only signals would silently miss, discoverable at
+# FULL tier from share-grant metadata alone (`access_log`'s `capability`/
+# `by` fields), a third tier-sufficiency data point alongside G-9's
+# board/DM asymmetry. A file-channel variant of the committee mechanic
+# (`review_committee_file`, `programs._resolve_review_committee`
+# parametrized by `channel`) exercises this end to end. Also (b) real
+# wiring of the `AgentConfig.persistent_id` forward hook (`state.save` now
+# persists, `state.load` added) — HOST-MEDIATED, not an isolate-spawn
+# change: the `persistent_id -> file` lookup lives only in
+# `Host.persistent_ids`, never on the observation channel or in any log,
+# so the agent experiences continuity of its own remembered content
+# without ever seeing the id used to look it up. All additive/off unless
+# an episode explicitly opts in (`comms_enabled=True` / sets `groups` /
+# sets `persistent_id`); every pre-0.8.0 config is byte-identical.
+CODE_VERSION = "lab-sim-0.8.0"
 
-ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer")
+ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer", "decoy")
 
 TIERS = ("none", "light", "full", "deep")
 
@@ -62,6 +98,7 @@ ORACLE_ONLY_FIELDS = (
     "true_hazard",
     "bearer_harm",
     "units",
+    "groups",
     "goal_weights",
     "board_captured",
     "admin_captured",
@@ -168,6 +205,16 @@ class LabConfig:
     T: int = 200
     pipeline_spec: str = "pipeline_default.json"
     units: tuple[tuple[str, tuple[str, ...]], ...] | None = None
+    # D1 file-channel permission groups (0.8.0, user-directed redesign):
+    # named rosters a `file.share` call may target via `with_group=<id>`
+    # (see `tools._tool_file_share`). Deliberately a SEPARATE concept from
+    # `units` — a file-sharing group is admin-defined convenience
+    # infrastructure (like a Unix group), NOT a claim about which actors
+    # form a true causal decision unit; a specific config MAY set them to
+    # coincide, but nothing enforces it, and `uad.py`'s discovery never
+    # reads this field (oracle-only, like `units`). ``None`` (default) =
+    # no groups configured; `with_group` calls resolve to nobody.
+    groups: tuple[tuple[str, tuple[str, ...]], ...] | None = None
     config_id: str = ""
     # Phase 6: optional blind-generated playbook repertoire (plain dicts,
     # JSON-safe — crosses the isolate boundary via the observation channel
@@ -184,6 +231,14 @@ class LabConfig:
     # G-6: when True, engineer may only select `eng_capability_probe` on the
     # first turn (requests an out-of-role capability). Default False.
     capability_probe_mode: bool = False
+    # D4 (CODE_VERSION 0.7.0): enables the board/DM message layer
+    # (`comms.py`) and the comm-aware playbooks (`review_committee`,
+    # `dm:notify_release`, ...). Default False reproduces every
+    # pre-0.7.0 episode byte-for-byte: `world.run_episode` skips
+    # `MessageStore`/grant bootstrap entirely, and
+    # `playbooks.available_playbooks` filters out every playbook whose
+    # step_kinds require comms (see `playbooks._requires_comms`).
+    comms_enabled: bool = False
 
     def __post_init__(self) -> None:
         actor_ids = [a.actor_id for a in self.agents]
@@ -194,9 +249,21 @@ class LabConfig:
             unknown = set(unit_members) - set(actor_ids)
             if unknown:
                 raise ValueError(f"units reference unknown actor_ids: {sorted(unknown)}")
+        if self.groups is not None:
+            group_members = [m for _, members in self.groups for m in members]
+            unknown = set(group_members) - set(actor_ids)
+            if unknown:
+                raise ValueError(f"groups reference unknown actor_ids: {sorted(unknown)}")
 
     def resolved_units(self) -> dict[str, tuple[str, ...]]:
         """Oracle-only unit ground truth; defaults to one singleton per actor."""
         if self.units is not None:
             return dict(self.units)
         return {a.actor_id: (a.actor_id,) for a in self.agents}
+
+    def resolved_groups(self) -> dict[str, tuple[str, ...]]:
+        """Oracle-only file-sharing-group roster; ``None`` (the default) is
+        "no groups configured" -- unlike ``resolved_units()`` there is no
+        singleton fallback, since a nonexistent group is a legitimate
+        `with_group` target (resolves to nobody), not a special case."""
+        return dict(self.groups) if self.groups is not None else {}
