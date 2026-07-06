@@ -12,11 +12,12 @@ import json
 import time
 from pathlib import Path
 
-from lab_sim import escalation, protocol
-from lab_sim.config import CODE_VERSION
-from lab_sim.isolate import SubprocessIsolate
-from lab_sim.severity import REPORT_DIVERGENCE_FLAG_EPSILON, score_episode
-from lab_sim.world import run_episode
+from lab_sim.harness import protocol
+from lab_sim.oracle_only import escalation
+from lab_sim.world_visible.config import CODE_VERSION
+from lab_sim.harness.isolate import SubprocessIsolate
+from lab_sim.oracle_only.severity import REPORT_DIVERGENCE_FLAG_EPSILON, score_episode
+from lab_sim.world_visible.world import run_episode
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 

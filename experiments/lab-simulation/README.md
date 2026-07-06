@@ -41,6 +41,9 @@ plumbing gap).
   scope notes, and recorded measurements (isolate cost, regression digests).
 - [`BLIND_GENERATION.md`](BLIND_GENERATION.md) — the blind playbook
   generation protocol (Phase 6).
+- [`ACCESS_TIERS.md`](ACCESS_TIERS.md) — `lab_sim/`'s four graded
+  red-team source-access tiers (`agent_visible/`/`world_visible/`/
+  `oracle_only/`/`harness/`) and the rationale behind the split.
 - [`results/FINDINGS.md`](results/FINDINGS.md) — battery findings,
   including honest negatives.
 
@@ -65,47 +68,62 @@ python3 run_phase8_llm_spotcheck.py               # Phase 8 exploratory LLM spot
 
 ## Layout (current)
 
+`lab_sim/` is split into four subpackages by graded red-team source-access
+tier — see [`ACCESS_TIERS.md`](ACCESS_TIERS.md) for the full rationale and
+a per-file README in each subpackage:
+
 ```
 lab_sim/
-  config.py            # LabConfig, AgentConfig, GoalWeights, Board/Admin/Tier configs, CODE_VERSION
-  oracle.py             # models (true capability/hazard), bearer harm, provenance ledger
-  workspace.py          # per-episode on-disk workspace, report files, digest
-  pipeline_spec.py      # JSON step-DAG schema + loader/validator
-  pipeline_default.json # frozen baseline 9-step topology
-  pipeline_shortcut.json# variant without approve_review (topology-as-data proof)
-  pipeline_engine.py    # trigger_step: DAG preconditions, access gate, effect dispatch, versioned-spec log
-  smoke.py              # scripted honest episode (no agents) -> deterministic digest
-  access.py             # PermissionService: grant/revoke/check, hash-chained access log
-  agents.py             # ROLE_CAPABILITIES (static gate), AdminPolicy (grant/deny/capture)
-  events.py             # generic hash-chained EventLog + tier projection (none/light/full/deep)
-  tools.py              # ToolCall/ToolResult wire schema + Host dispatch (the trust boundary)
-  programs.py           # pure host-independent agent decision logic: walk_pipeline, goal_policy, honest_twin
-  agent_main.py         # subprocess entry point (imports only programs.py + stdlib)
-  isolate.py            # MockIsolate (in-process) + SubprocessIsolate (real OS process)
-  isolate_cost.py        # IsolateRunTiming + append-only cost ledger
-  isolate_smoke.py       # scripted isolate-driven episode (walk_pipeline, Phase 3 equivalence harness)
-  agent_state.py         # persistent cross-episode agent state (runs/agent_state/<id>.json)
-  ontology.py            # report-content mapping (honest/inflate), pure
-  playbooks.py           # PlaybookSpec schema + baseline playbook repertoire + availability gates
-                         #   + Phase 6: STEP_KIND_VOCAB, validate_repertoire, merged_repertoire
-  generated_playbooks_v1.json  # Phase 6 blind-generated repertoire (BLIND_GENERATION.md), 13 playbooks
-  handles.py             # handle registry (owner/operation/anchor/evasion story) + HandleService + invocation ledger
-  bearer.py              # welfare bundle: health (deployed-model bearer) + stress (lab-staff bearer), referee-neutral
-  world.py               # run_episode: full episode loop wiring isolates + engine + access control + overseer script
-  cache.py               # episode-result cache keyed on sha256(config, seed, CODE_VERSION)
-  severity.py            # referee: continuous severity components + never-events (full oracle access)
-  detectors.py            # 5 tier-gated detector families over AuditView
-  twins.py                # full-surface honest-twin transform
-  protocol.py              # Phase 6: config sampling, held-out region, battery/aggregation helpers
-  escalation.py            # Phase 7: screen -> bounded query -> artifact-grounded contradiction ladder
-  redteam.py               # Phase 7: joint 3-role goal-weight hill-climb search vs. uniform baseline
-  llm_agent.py              # Phase 8: LLMPolicy (redteam system prompt, per-observation cache), host-independent
-  llm_agent_main.py         # Phase 8: subprocess entry point (llm_agent.py + stdlib only; FAKE_MODE test seam)
-  llm_client.py             # Phase 8: minimal OpenAI chat client (stdlib only)
-  llm_cost.py               # Phase 8: LLM token/cost ledger (separate from isolate_cost.py)
-  llm_env.py                # Phase 8: repo-root .env loader (stdlib only)
-  llm_isolate.py            # Phase 8: LLMSubprocessIsolate backend (spawns llm_agent_main.py)
-tests/                   # one file per module + full-episode regression/plane-separation tests
+  agent_visible/    # tier 1 (legitimate in-sim) -- see lab_sim/agent_visible/README.md
+    agent_main.py           # subprocess entry point (imports only programs.py + stdlib)
+    programs.py             # pure host-independent agent decision logic: walk_pipeline, goal_policy, honest_twin
+    ontology.py             # report-content mapping (honest/inflate), pure
+    playbooks.py            # PlaybookSpec schema + baseline playbook repertoire + availability gates
+                             #   + Phase 6: STEP_KIND_VOCAB, validate_repertoire, merged_repertoire
+    generated_playbooks_v1.json  # Phase 6 blind-generated repertoire (BLIND_GENERATION.md), 13 playbooks
+    generated_playbooks_v2.json  # round-2 blind-generated repertoire (run_blind_round2.py)
+    llm_agent.py             # Phase 8: LLMPolicy (redteam system prompt, per-observation cache), host-independent
+    llm_agent_main.py        # Phase 8: subprocess entry point (llm_agent.py + stdlib only; FAKE_MODE test seam)
+    llm_client.py            # Phase 8: minimal OpenAI chat client (stdlib only)
+    llm_cost.py              # Phase 8: LLM token/cost ledger (separate from isolate_cost.py)
+    llm_env.py               # Phase 8: repo-root .env loader (stdlib only)
+  world_visible/    # tier 2 (full in-sim) -- see lab_sim/world_visible/README.md
+    config.py               # LabConfig, AgentConfig, GoalWeights, Board/Admin/Tier configs, CODE_VERSION
+    pipeline_spec.py        # JSON step-DAG schema + loader/validator
+    pipeline_default.json   # frozen baseline 9-step topology
+    pipeline_shortcut.json  # variant without approve_review (topology-as-data proof)
+    pipeline_engine.py      # trigger_step: DAG preconditions, access gate, effect dispatch, versioned-spec log
+    access.py               # PermissionService: grant/revoke/check, hash-chained access log
+    agents.py               # ROLE_CAPABILITIES (static gate), AdminPolicy (grant/deny/capture)
+    tools.py                # ToolCall/ToolResult wire schema + Host dispatch (the trust boundary)
+    workspace.py            # per-episode on-disk workspace, report files, digest
+    comms.py                # board/DM message store + comms channel wiring
+    agent_state.py          # persistent cross-episode agent state (runs/agent_state/<id>.json)
+    world.py                # run_episode: full episode loop wiring isolates + engine + access control + overseer script
+  oracle_only/      # tier 3 (full incl. oracle) -- see lab_sim/oracle_only/README.md
+    oracle.py               # models (true capability/hazard), bearer harm, provenance ledger
+    severity.py             # referee: continuous severity components + never-events (full oracle access)
+    detectors.py            # 5 tier-gated detector families over AuditView
+    twins.py                # full-surface honest-twin transform
+    escalation.py           # Phase 7: screen -> bounded query -> artifact-grounded contradiction ladder
+    events.py               # generic hash-chained EventLog + tier projection (none/light/full/deep)
+    handles.py              # handle registry (owner/operation/anchor/evasion story) + HandleService + invocation ledger
+    bearer.py               # welfare bundle: health (deployed-model bearer) + stress (lab-staff bearer), referee-neutral
+    uad.py                  # undetected-adversarial-drift / coalition discovery signal
+    collusion.py            # collusion signal score over detected coalitions
+    playbook_claim.py       # playbook-claim gap score (facade detection)
+  harness/          # never shared, any tier -- see lab_sim/harness/README.md
+    isolate.py              # MockIsolate (in-process) + SubprocessIsolate (real OS process)
+    isolate_cost.py         # IsolateRunTiming + append-only cost ledger
+    isolate_smoke.py        # scripted isolate-driven episode (walk_pipeline, Phase 3 equivalence harness)
+    llm_isolate.py          # Phase 8: LLMSubprocessIsolate backend (spawns agent_visible/llm_agent_main.py)
+    smoke.py                # scripted honest episode (no agents) -> deterministic digest
+    cache.py                # episode-result cache keyed on sha256(config, seed, CODE_VERSION)
+    protocol.py             # Phase 6: config sampling, held-out region, battery/aggregation helpers
+    redteam.py              # Phase 7: joint 3-role goal-weight hill-climb search vs. uniform baseline
+    ecology.py              # multi-agent committee/decision-maker-pair config helpers
+tests/                   # mirrors lab_sim/'s four tiers (tests/agent_visible/, tests/world_visible/,
+                         #   tests/oracle_only/, tests/harness/) + full-episode regression/plane-separation tests
 verify_isolate_equivalence.py  # Mock vs Subprocess equivalence + timing benchmark script
 report_isolate_cost.py         # print the isolate cost ledger
 run_phase6.py                  # Phase 6 first real battery (SubprocessIsolate)

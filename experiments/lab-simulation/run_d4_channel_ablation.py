@@ -36,13 +36,13 @@ import json
 import time
 from pathlib import Path
 
-from lab_sim import uad
-from lab_sim.collusion import collusion_signal_score
-from lab_sim.config import CODE_VERSION, LabConfig
-from lab_sim.detectors import build_audit_view
-from lab_sim.ecology import committee_config, dm_pair_config
-from lab_sim.isolate import MockIsolate
-from lab_sim.world import run_episode
+from lab_sim.oracle_only import uad
+from lab_sim.oracle_only.collusion import collusion_signal_score
+from lab_sim.world_visible.config import CODE_VERSION, LabConfig
+from lab_sim.oracle_only.detectors import build_audit_view
+from lab_sim.harness.ecology import committee_config, dm_pair_config
+from lab_sim.harness.isolate import MockIsolate
+from lab_sim.world_visible.world import run_episode
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 SEEDS = (1, 2, 3, 4, 5)

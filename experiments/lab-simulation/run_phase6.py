@@ -22,8 +22,8 @@ import json
 import time
 from pathlib import Path
 
-from lab_sim import isolate_cost, protocol
-from lab_sim.config import CODE_VERSION
+from lab_sim.harness import isolate_cost, protocol
+from lab_sim.world_visible.config import CODE_VERSION
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 

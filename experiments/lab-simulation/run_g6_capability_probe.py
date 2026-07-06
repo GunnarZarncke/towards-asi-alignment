@@ -13,9 +13,9 @@ import json
 import time
 from pathlib import Path
 
-from lab_sim.config import AdminConfig, AgentConfig, BoardConfig, CODE_VERSION, GoalWeights, LabConfig
-from lab_sim.isolate import SubprocessIsolate
-from lab_sim.world import run_episode
+from lab_sim.world_visible.config import AdminConfig, AgentConfig, BoardConfig, CODE_VERSION, GoalWeights, LabConfig
+from lab_sim.harness.isolate import SubprocessIsolate
+from lab_sim.world_visible.world import run_episode
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 

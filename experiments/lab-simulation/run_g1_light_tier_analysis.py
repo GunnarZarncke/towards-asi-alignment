@@ -15,12 +15,12 @@ import statistics
 import time
 from pathlib import Path
 
-from lab_sim.config import CODE_VERSION
-from lab_sim.detectors import build_audit_view, process_noncompliance_score
-from lab_sim.isolate import SubprocessIsolate
-from lab_sim.protocol import EPISODE_T, _spearman, sample_configs
-from lab_sim.severity import score_episode
-from lab_sim.world import run_episode
+from lab_sim.world_visible.config import CODE_VERSION
+from lab_sim.oracle_only.detectors import build_audit_view, process_noncompliance_score
+from lab_sim.harness.isolate import SubprocessIsolate
+from lab_sim.harness.protocol import EPISODE_T, _spearman, sample_configs
+from lab_sim.oracle_only.severity import score_episode
+from lab_sim.world_visible.world import run_episode
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 ANALYSIS_SEEDS = tuple(range(101, 106))

@@ -10,9 +10,9 @@ from __future__ import annotations
 
 import sys
 
-from lab_sim.isolate import MockIsolate, SubprocessIsolate
-from lab_sim.isolate_cost import append_ledger
-from lab_sim.isolate_smoke import run_isolate_episode
+from lab_sim.harness.isolate import MockIsolate, SubprocessIsolate
+from lab_sim.harness.isolate_cost import append_ledger
+from lab_sim.harness.isolate_smoke import run_isolate_episode
 
 
 def main() -> int:

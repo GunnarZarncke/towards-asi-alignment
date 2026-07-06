@@ -25,16 +25,16 @@ import json
 import time
 from pathlib import Path
 
-from lab_sim import uad
-from lab_sim.collusion import collusion_signal_score
-from lab_sim.config import AgentConfig, CODE_VERSION, GoalWeights, LabConfig
-from lab_sim.detectors import build_audit_view
-from lab_sim.playbooks import load_generated_playbooks_file, validate_repertoire
-from lab_sim.isolate import MockIsolate
-from lab_sim.world import run_episode
+from lab_sim.oracle_only import uad
+from lab_sim.oracle_only.collusion import collusion_signal_score
+from lab_sim.world_visible.config import AgentConfig, CODE_VERSION, GoalWeights, LabConfig
+from lab_sim.oracle_only.detectors import build_audit_view
+from lab_sim.agent_visible.playbooks import load_generated_playbooks_file, validate_repertoire
+from lab_sim.harness.isolate import MockIsolate
+from lab_sim.world_visible.world import run_episode
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
-GENERATED_V2_PATH = Path(__file__).resolve().parent / "lab_sim" / "generated_playbooks_v2.json"
+GENERATED_V2_PATH = Path(__file__).resolve().parent / "lab_sim" / "agent_visible" / "generated_playbooks_v2.json"
 SEEDS = (1, 2, 3, 4, 5)
 
 HONEST = GoalWeights(1.0, 1.0, 1.0, 1.0)
