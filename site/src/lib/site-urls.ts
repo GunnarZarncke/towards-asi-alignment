@@ -5,7 +5,7 @@ export function routeSlug(segment: string) {
 }
 
 export function bookHref(base: string, chapterId: string) {
-  return `${base}${`book/${routeSlug(chapterId)}/`.replace(/^\/+/, "")}`;
+  return cardHref(base, `chapters/${chapterId}`);
 }
 
 export function cardHref(base: string, cardId: string) {
@@ -26,9 +26,10 @@ export function chapterCardFor<T extends { id: string; data: { bookPageId?: stri
   cards: T[],
   chapterId: string
 ) {
+  const normalized = routeSlug(chapterId);
   return cards.find(
     (card) =>
-      card.data.bookPageId === chapterId &&
+      routeSlug(card.data.bookPageId ?? "") === normalized &&
       ["chapter", "appendix", "frontmatter"].includes(card.data.type)
   );
 }

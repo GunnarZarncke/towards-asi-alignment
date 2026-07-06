@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import { bookHref } from "../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -69,7 +70,7 @@ const paths = (await getCollection("paths")).sort(
           <p class="side-panel-meta"><a href={withBase("/lean/")}>Includes Lean proof spine</a></p>
         )}
         {path.data.featuredWorkedExample && (
-          <p class="side-panel-meta"><a href={withBase("/book/appd/")}>Includes BioShield worked example</a></p>
+          <p class="side-panel-meta"><a href={bookHref(base, "appD")}>Includes BioShield worked example</a></p>
         )}
       </article>
     ))}

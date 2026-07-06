@@ -3,7 +3,7 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
 import book from "../../data/book.json";
 import { getCollection } from "astro:content";
-import { bookHref, cardHref, pdfHref } from "../../lib/site-urls";
+import { cardHref, pdfHref } from "../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -12,7 +12,6 @@ const cards = await getCollection("cards");
 const chapterCardFor = (chapterId: string) =>
   cards.find((card) => card.data.bookPageId === chapterId && ["chapter", "appendix", "frontmatter"].includes(card.data.type));
 const toCardHref = (id: string) => cardHref(base, id);
-const toBookHref = (id: string) => bookHref(base, id);
 ---
 
 <SiteLayout title="Book Map" description="Compact map of the canonical PDF manuscript.">
@@ -32,11 +31,11 @@ const toBookHref = (id: string) => bookHref(base, id);
   <section class="readable">
     <h2>Also on the site</h2>
     <ul>
-      <li><a href={toCardHref(chapterCardFor("frontmatter")!.id)}>Front matter</a> · <a href={toBookHref("frontmatter")}>full text</a></li>
-      <li><a href={toCardHref(chapterCardFor("appB")!.id)}>Bridge crosswalk (Appendix B)</a> · <a href={toBookHref("appB")}>full text</a></li>
-      <li><a href={toCardHref(chapterCardFor("appC")!.id)}>Institutional translation (Appendix C)</a> · <a href={toBookHref("appC")}>full text</a></li>
-      <li><a href={toCardHref(chapterCardFor("appD")!.id)}>Worked example (Appendix D)</a> · <a href={toBookHref("appD")}>full text</a></li>
-      <li><a href={toCardHref(chapterCardFor("appF")!.id)}>Research program (Appendix F)</a> · <a href={toBookHref("appF")}>full text</a></li>
+      <li><a href={toCardHref(chapterCardFor("frontmatter")!.id)}>Front matter</a></li>
+      <li><a href={toCardHref(chapterCardFor("appB")!.id)}>Bridge crosswalk (Appendix B)</a></li>
+      <li><a href={toCardHref(chapterCardFor("appC")!.id)}>Institutional translation (Appendix C)</a></li>
+      <li><a href={toCardHref(chapterCardFor("appD")!.id)}>Worked example (Appendix D)</a></li>
+      <li><a href={toCardHref(chapterCardFor("appF")!.id)}>Research program (Appendix F)</a></li>
       <li><a href={withBase("/references/")}>References</a></li>
     </ul>
   </section>
@@ -65,7 +64,7 @@ const toBookHref = (id: string) => bookHref(base, id);
                   {chapterCard ? (
                     <a href={toCardHref(chapterCard.id)}>{chapter.title}</a>
                   ) : (
-                    <a href={toBookHref(chapter.id)}>{chapter.title}</a>
+                    <span>{chapter.title}</span>
                   )}
                 </td>
                 <td><Badge label={chapter.status} variant={chapter.status} /></td>

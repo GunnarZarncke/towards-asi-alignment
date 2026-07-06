@@ -15,7 +15,7 @@ import demosIndex from "../../data/demos.json";
 import bookIndex from "../../data/book.json";
 import crosswalkRows from "../../data/bridge-crosswalk.json";
 import leanSpine from "../../data/lean-spine.json";
-import { bookHref, cardHref as buildCardHref, resolveCard } from "../../lib/site-urls";
+import { bookHref, cardHref as buildCardHref, resolveCard, routeSlug } from "../../lib/site-urls";
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
 import { referenceLinksFor } from "../../lib/reference-links";
 
@@ -28,13 +28,17 @@ export async function getStaticPaths() {
 }
 
 const { card } = Astro.props;
-const { Content } = await render(card);
 const allCards = await getCollection("cards");
+const allBookPages = await getCollection("book");
+const isBookUnit = ["chapter", "appendix", "frontmatter"].includes(card.data.type);
+const bookEntry = isBookUnit && card.data.bookPageId
+  ? allBookPages.find((entry) => routeSlug(entry.id) === routeSlug(card.data.bookPageId!))
+  : undefined;
+const { Content } = bookEntry ? await render(bookEntry) : await render(card);
 const gemSlugs = new Set([...Object.values(partGems).flat(), ...fieldSubsumptionGems]);
 const isGem = (slug: string) => gemSlugs.has(slug);
 const refByKey = new Map(references.map((entry) => [entry.key, entry]));
 
-const isBookUnit = ["chapter", "appendix", "frontmatter"].includes(card.data.type);
 const isCrosswalkCard = card.id === "chapters/appb";
 const isReferenceIndexCard = card.id === "reference-index";
 const isReferenceCard = card.data.type === "reference";
@@ -46,7 +50,11 @@ const related = relatedSlugs
   .filter(Boolean);
 
 const chapterCardFor = (chapterId: string) =>
-  allCards.find((candidate) => candidate.data.bookPageId === chapterId && ["chapter", "appendix", "frontmatter"].includes(candidate.data.type));
+  allCards.find(
+    (candidate) =>
+      routeSlug(candidate.data.bookPageId ?? "") === routeSlug(chapterId) &&
+      ["chapter", "appendix", "frontmatter"].includes(candidate.data.type)
+  );
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -114,8 +122,8 @@ const referenceLinks = isReferenceCard
 ---
 
 <SiteLayout title={card.data.title} description={card.data.summary}>
-  <article class="two-column">
-    <div class="content-card">
+  <article class:list={["two-column", bookEntry && "book-page"]}>
+    <div class:list={["content-card", bookEntry && "readable"]}>
       <div class="badge-row">
         <Badge label={card.data.type} href={badgeTypeHref(base, card.data.type)} />
         <Badge label={card.data.status} variant={card.data.status} href={badgeStatusHref(base, card.data.status)} />
@@ -123,8 +131,14 @@ const referenceLinks = isReferenceCard
         {card.data.part && <Badge label={card.data.part} variant="framework" />}
         {card.data.formalDensity && <Badge label={card.data.formalDensity} />}
       </div>
-      <h1>{card.data.title}</h1>
-      <p class="lede">{card.data.summary}</p>
+      {!bookEntry ? (
+        <>
+          <h1>{card.data.title}</h1>
+          <p class="lede">{card.data.summary}</p>
+        </>
+      ) : (
+        <p class="side-panel-meta">Source: <code>{bookEntry.data.sourceFile}</code></p>
+      )}
 
       {isReferenceCard && referenceLinks.length > 0 && (
         <section class="reference-source">
@@ -204,11 +218,6 @@ const referenceLinks = isReferenceCard
         </p>
       )}
 
-      {isBookUnit && card.data.bookPageId && (
-        <section class="book-actions">
-          <p><a class="button primary" href={toBookHref(card.data.bookPageId)}>Read full {card.data.type}</a></p>
-        </section>
-      )}
     </div>
 
     <aside class="side-panel" aria-label="Related content" id="related">
@@ -435,6 +444,82 @@ const referenceLinks = isReferenceCard
     .reference-link-list li {
       margin: 0.45rem 0;
       word-break: break-word;
+    }
+  </style>
+)}
+
+{bookEntry && (
+  <style>
+    .book-page :global(.chapter-thesis) {
+      margin: 1.5rem 0;
+    }
+
+    .book-page :global(.env-box) {
+      border-left: 3px solid var(--color-border);
+      padding: 0.75rem 1rem;
+      margin: 1.25rem 0;
+      background: var(--color-surface);
+    }
+
+    .book-page :global(.lean-spine) {
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      border-left: 3px solid var(--color-border);
+      padding-left: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .book-page :global(.epigraph) {
+      margin: 1.5rem 0;
+      padding-left: 1rem;
+      border-left: 3px solid var(--color-border);
+      color: var(--color-muted);
+    }
+
+    .book-page :global(.book-figure) {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .book-page :global(.book-figure img) {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .book-page :global(.description-list) {
+      margin: 1rem 0;
+    }
+
+    .book-page :global(.description-list dt) {
+      font-weight: 600;
+      margin-top: 0.75rem;
+    }
+
+    .book-page :global(.description-list dd) {
+      margin-left: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-page :global(.footnotes) {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+
+    .book-page :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+    }
+
+    .book-page :global(th),
+    .book-page :global(td) {
+      border: 1px solid var(--color-border);
+      padding: 0.45rem 0.6rem;
+      vertical-align: top;
     }
   </style>
 )}

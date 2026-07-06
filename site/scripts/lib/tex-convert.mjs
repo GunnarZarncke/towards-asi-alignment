@@ -29,14 +29,15 @@ const MATH_ENVS = new Set([
 ]);
 
 const ENV_HANDLERS = {
-  chapterthesis: (body) => `<div class="callout chapter-thesis"><strong>Chapter thesis.</strong> ${body.trim()}</div>\n\n`,
-  quote: (body) => `> ${body.trim().replace(/\n+/g, "\n> ")}\n\n`,
-  itemize: (body) => convertList(body, "ul"),
-  enumerate: (body) => convertList(body, "ol"),
-  description: (body) => convertDescription(body),
+  chapterthesis: (body, ctx) =>
+    `<div class="callout chapter-thesis"><strong>Chapter thesis.</strong> ${convertInlineText(body, ctx)}</div>\n\n`,
+  quote: (body, ctx) => `> ${convertInlineText(body, ctx).replace(/\n+/g, "\n> ")}\n\n`,
+  itemize: (body, ctx) => convertList(body, "ul", ctx),
+  enumerate: (body, ctx) => convertList(body, "ol", ctx),
+  description: (body, ctx) => convertDescription(body, ctx),
   figure: (body, ctx) => convertFigure(body, ctx),
-  refsection: (body) => `${body}`,
-  titlingpage: (body) => `<div class="title-page">${body.trim()}</div>\n\n`
+  refsection: (body, ctx) => convertDocument(body, ctx),
+  titlingpage: (body, ctx) => `<div class="title-page">${convertInlineText(body, ctx)}</div>\n\n`
 };
 
 const THEOREM_ENVS = new Set([
@@ -87,23 +88,29 @@ export function expandInputs(tex, repoRoot, stack = new Set()) {
   });
 }
 
-function convertList(body, tag) {
-  const items = splitListItems(body);
-  const lines = items.map((item) => `<li>${item.trim()}</li>`);
+function stripLeadingEnvOptions(body) {
+  return body.replace(/^\[[^\]]*\]\s*/, "");
+}
+
+function convertList(body, tag, ctx) {
+  const items = splitListItems(stripLeadingEnvOptions(body));
+  const lines = items.map((item) => `<li>${convertInlineText(item, ctx)}</li>`);
   return `<${tag}>\n${lines.join("\n")}\n</${tag}>\n\n`;
 }
 
-function convertDescription(body) {
+function convertDescription(body, ctx) {
   const items = [];
   const re = /\\item(?:\[[^\]]*\])?\s*([\s\S]*?)(?=\\item|$)/g;
   let match;
-  while ((match = re.exec(body)) !== null) {
+  while ((match = re.exec(stripLeadingEnvOptions(body))) !== null) {
     const chunk = match[1].trim();
     const split = chunk.match(/^(.+?)\s*\n([\s\S]*)$/);
     if (split) {
-      items.push(`<dt>${split[1].trim()}</dt><dd>${split[2].trim()}</dd>`);
+      items.push(
+        `<dt>${convertInlineText(split[1].trim(), ctx)}</dt><dd>${convertInlineText(split[2].trim(), ctx)}</dd>`
+      );
     } else {
-      items.push(`<dt>${chunk}</dt><dd></dd>`);
+      items.push(`<dt>${convertInlineText(chunk, ctx)}</dt><dd></dd>`);
     }
   }
   return `<dl class="description-list">\n${items.join("\n")}\n</dl>\n\n`;
@@ -118,7 +125,7 @@ function splitListItems(body) {
     if (rest.startsWith("\\item")) {
       if (current.trim()) items.push(current.trim());
       current = "";
-      i += 4;
+      i += "\\item".length - 1;
       const optional = body.slice(i + 1).match(/^\[[^\]]*\]/);
       if (optional) i += optional[0].length;
       continue;
@@ -176,29 +183,33 @@ function readOptional(tex, startIndex) {
   return { content: "", end: startIndex };
 }
 
+function skipBeginOptional(tex, cursor) {
+  if (tex[cursor] === "[") return readOptional(tex, cursor).end;
+  return cursor;
+}
+
 function readEnvironment(tex, startIndex) {
   const beginMatch = tex.slice(startIndex).match(/^\\begin\{([^}]+)\}/);
   if (!beginMatch) return null;
   const envName = beginMatch[1];
-  let cursor = startIndex + beginMatch[0].length;
+  let cursor = skipBeginOptional(tex, startIndex + beginMatch[0].length);
+  const bodyStart = cursor;
   let depth = 1;
   while (cursor < tex.length) {
     const nextBegin = tex.slice(cursor).match(/^\\begin\{([^}]+)\}/);
     const nextEnd = tex.slice(cursor).match(/^\\end\{([^}]+)\}/);
     if (nextBegin) {
       depth += 1;
-      cursor += nextBegin[0].length;
+      cursor = skipBeginOptional(tex, cursor + nextBegin[0].length);
       continue;
     }
     if (nextEnd) {
       depth -= 1;
       cursor += nextEnd[0].length;
       if (depth === 0) {
-        const bodyStart = startIndex + beginMatch[0].length;
-        const bodyEnd = cursor - nextEnd[0].length;
         return {
           name: envName,
-          body: tex.slice(bodyStart, bodyEnd),
+          body: tex.slice(bodyStart, cursor - nextEnd[0].length),
           end: cursor
         };
       }
@@ -214,10 +225,11 @@ function convertInlineText(text, ctx) {
 }
 
 function relBookHref(pageId, anchor, fromPageId) {
+  const slug = pageId.toLowerCase();
   if (pageId === fromPageId) {
     return anchor ? `#${anchor}` : "./";
   }
-  return `../${pageId}/${anchor ? `#${anchor}` : ""}`;
+  return `../../cards/chapters/${slug}/${anchor ? `#${anchor}` : ""}`;
 }
 
 function relCardHref(cardSlug) {
@@ -325,11 +337,11 @@ function convertCommand(name, tex, index, ctx) {
     case "emph":
     case "textit": {
       const inner = convertInlineText(readArg() || "", ctx);
-      return { output: `*${inner}*`, index };
+      return { output: `<em>${inner}</em>`, index };
     }
     case "textbf": {
       const inner = convertInlineText(readArg() || "", ctx);
-      return { output: `**${inner}**`, index };
+      return { output: `<strong>${inner}</strong>`, index };
     }
     case "texttt":
     case "nolinkurl":
@@ -493,7 +505,7 @@ function convertDocument(tex, ctx) {
       }
 
       if (ENV_HANDLERS[env.name]) {
-        out += ENV_HANDLERS[env.name](convertDocument(env.body, ctx), ctx);
+        out += ENV_HANDLERS[env.name](env.body, ctx);
         continue;
       }
 
