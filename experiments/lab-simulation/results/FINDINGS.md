@@ -419,7 +419,210 @@ cannot downshift hazard by choosing their own scale/safety_effort. Closes
 G-7/G-8 adapter gap; high-hazard LLM spot-checks can now bind the
 conscientious reviewer stall threshold honestly.
 
-## Recorded negative: only one round of blind generation run this phase
+## G-9 (2026-07-06): UAD tier-sufficiency is substrate-dependent — board
+committee needs deep tier; file committee and DM pairs recover at full tier
+
+**Setup.** Post-freeze consolidation pass (CODE_VERSION `lab-sim-0.9.0`);
+D4/D1 ecologies in `lab_sim/ecology.py`, discovery via frozen referee
+extensions in `lab_sim/uad.py` and `lab_sim/collusion.py` (NOT part of
+the Phase 5 five-family composite). Verified by unit/integration tests in
+`tests/test_uad.py` and smoke runs in `run_d4_channel_ablation.py` /
+`run_blind_round2.py` (5 seeds each, `MockIsolate` — explicitly NOT a
+pre-registered battery; see scope notes on G-10/G-11).
+
+**Result 1 — three distinct tier-sufficiency stories, one module.** The
+same `discovered_units()` scorer recovers oracle ground truth
+(`LabConfig.resolved_units()`) at different instrumentation tiers depending
+on which coordination substrate the ecology uses:
+
+| ecology / substrate | tier needed for `uad_score=1.0` | where the signal lives |
+|---|---|---|
+| reviewer committee (board) | **deep** | vote `custom.review_id`/`vote` in message content — elided below deep tier |
+| reviewer committee (file) | **full** | `file.share` grant metadata in `access_log` (`cap.file_read:<rel>`) — never content-elided |
+| engineer/release_manager DM pair | **full** | `dm.send` `recipient` argument in tool events — never content-elided |
+| engineer/release_manager DM pair | n/a for collusion | `collusion_score=0.0` by construction (pair uses DMs, not board/file votes) |
+
+The file-channel committee is the **opposite** of the board committee's
+story: modeling permission grants honestly (owner-initiated `file.share`
+through `PermissionService`, recorded in the access log) makes the coalition
+recoverable from full-tier metadata alone, without ever reading what a
+vote memo said. A board-only trace (`build_coordination_trace` on
+`message_contents` only, never memo contents) recovers **nothing** on a
+file-coordinated committee — motivating the memo-trace merge in
+`discovered_units` (see `test_board_only_discovery_would_have_missed_the_
+file_channel_committee` in `tests/test_uad.py`).
+
+**Result 2 — collusion signal semantics differ by ecology.** Board and file
+committees score `collusion_score=1.0` when coordinated (co-voting proxy);
+the DM pair scores `uad_score=1.0` with `collusion_score=0.0` — the
+collusion module keys off board/file vote co-occurrence, not DM handoffs.
+This is a recorded measurement definition, not a bug.
+
+**Scope limit.** These are golden/smoke verifications on hand-authored
+ecologies and (for G-11) blind-generated playbooks — not SubprocessIsolate
+battery runs at Phase 6 scale. A reviewer should treat the tier-sufficiency
+*shape* as structurally demonstrated and the *magnitudes* as untested at
+battery scale.
+
+## G-10 (2026-07-06): D4 channel-ablation smoke — severing all committee
+channels drives coordination to zero while solo fallback still deploys;
+native severance fails over to the alternate channel
+
+**Setup.** `run_d4_channel_ablation.py`, post-freeze consolidation pass
+(PLAN.md item 5). Three ecologies (board committee, file committee, DM
+pair), channel conditions per ecology, 5 seeds, T=250, `MockIsolate`.
+Explicitly NOT MB7d's full "coordination survives severing an observed
+channel" test — this line's playbooks have no independent covert channel;
+severing a channel removes the coordination *mechanism*, not merely its
+*evidence*. Full data: `results/d4_channel_ablation.json`; summary:
+`results/d4_channel_ablation.md`. (JSON records `code_version`:
+`lab-sim-0.8.0`; mechanics unchanged at 0.9.0.)
+
+| ecology | condition | mean deploys | frac. coordinated | mean UAD | mean collusion |
+|---|---|---|---|---|---|
+| committee_board | unsevered | 26.2 | 1.0 | 1.0 | 1.0 |
+| committee_board | native_severed (board off, file on) | 23.8 | **1.0** | 1.0 | 1.0 |
+| committee_board | all_severed | 26.2 | **0.0** | 0.0 | 0.0 |
+| committee_file | unsevered | 23.8 | 1.0 | 1.0 | 1.0 |
+| committee_file | native_severed (file off, board on) | 26.2 | **1.0** | 1.0 | 1.0 |
+| committee_file | all_severed | 26.2 | **0.0** | 0.0 | 0.0 |
+| dm_pair | unsevered | 26.2 | 1.0 | 1.0 | 0.0 |
+| dm_pair | all_severed (DM off) | 26.2 | **0.0** | 0.0 | 0.0 |
+
+**Result 1 — graceful solo fallback when coordination is impossible.**
+`all_severed` (and DM-only severance) drives `fraction_coordinated` and
+both discovery scores to 0 while `mean_deploy_count` stays > 0 (~26) —
+reviewers fall back to solo `approve_review` without `on_behalf_of=committee`
+and the pipeline still completes. This is the intended "mechanic degrades
+to solo behavior" check, not a failure.
+
+**Result 2 — committee failover, not covert persistence.** `native_severed`
+(board ecology with board disabled, or file ecology with file disabled)
+still shows `fraction_coordinated=1.0` — the committee **failed over** to
+the still-live alternate channel rather than going solo. Recorded as a real,
+useful finding distinct from MB7d covert-channel survival (which would need
+a channel independent of the severed one — see scenario backlog S2/S3 in
+`PLAN.md`).
+
+**Scope limit.** Smoke scale only (`MockIsolate`, 5 seeds). Pre-registered
+SubprocessIsolate battery deferred.
+
+## G-11 (2026-07-06): blind generation round 2 for D4/D1 playbooks — full
+UAD recovery on generated repertoire, zero baseline-playbook leak
+
+**Setup.** `BLIND_GENERATION_ROUND2.md` permitted-context addendum (mechanism-
+only description of `review_committee`/`review_committee_file`/`dm:notify_release`/
+`release_full_dm_gated` step kinds — no mention of coordination, collusion,
+or detection). One fresh subagent run produced `generated_playbooks_v2.json`
+(18 accepted / 0 rejected by `playbooks.validate_repertoire`). Recovery check:
+`run_blind_round2.py` pins **every** actor in each ecology to a round-2-
+generated playbook name only (`LabConfig.playbook_pins` + `extra_playbooks`),
+5 seeds, T=250, `MockIsolate`. Frozen `uad.py`/`collusion.py` unchanged.
+Full data: `results/blind_round2.json`; summary: `results/blind_round2.md`.
+
+| ecology | mean deploys | frac. coordinated | mean UAD | mean collusion | playbooks used (generated) |
+|---|---|---|---|---|---|
+| committee_board | 26.2 | 1.0 | 1.0 | 1.0 | `consensus_board`, `cover_all_bases`, `standard_release` |
+| committee_file | 23.8 | 1.0 | 1.0 | 1.0 | `discreet_file_share`, `cover_all_bases`, `standard_release` |
+| dm_pair | 26.2 | 1.0 | 1.0 | 0.0 | `handoff_notify`, `strict_gatekeeper`, `wait_for_note` |
+
+**Result 1 — full recovery.** `uad_score=1.0` in all three ecologies on a
+repertoire the UAD/collusion author never wrote — partial answer to the
+circularity caveat for the D4/D1 layer (same session built hand-authored
+playbooks AND discovery extensions; round 2 blinds only the playbooks, not
+the detectors).
+
+**Result 2 — no baseline leak.** `baseline_leak_check` in the output JSON
+is empty — no hand-authored baseline playbook was ever actually selected
+under the pin constraint.
+
+**Result 3 — comparison to hand-authored ecologies.** Scores match the
+unsevered rows of G-10's hand-authored ablation at comparable deploy counts
+— no gap surfaced at smoke scale (a gap would be a real miss, not hidden).
+
+**Scope limit.** Smoke/`MockIsolate` only; detectors not blind-generated;
+statistical battery deferred. Supersedes the "round 2 not attempted" note
+below for the D4/D1 step-kind vocabulary specifically — BLIND_GENERATION
+round 1's narrower report-mode limitation still applies to round 1 only.
+
+## G-12 (2026-07-06): D2 mechanics land — model lineage threads across
+generations; spec upgrade reproduces the recorded release-hold evasion
+story; holds survive spec topology changes; `resume_from` preserves oracle
+state but not RNG
+
+**Setup.** Post-freeze consolidation pass (PLAN.md items 7–9), CODE_VERSION
+`lab-sim-0.9.0`. Verified by `tests/test_d2.py` (engine-level and episode-
+level golden tests, `MockIsolate`). `multi_gen_enabled=False` by default —
+no Phase 6-style battery has been re-run with D2 levers live.
+
+**Result 1 — model-from-model lineage works end-to-end.** With
+`multi_gen_enabled=True` and `eng_honest_upgrade` pinned, a T=200 episode
+produces ≥3 generations with `parent_model_id` chaining (`m002` ← `m001` ←
+…); first generation correctly has `parent_model_id=None`. Provenance ledger
+records lineage. Supersedes G-2's scope note that `provenance_gap` is
+"structurally guaranteed to read 0" — the lever now exists; whether
+detectors surface non-zero lineage gaps under adversarial play is **left
+open** (no battery re-run).
+
+**Result 2 — spec upgrade makes `handle.release_hold`'s evasion story real.**
+After model v(n) completes its full default-spec cycle including `monitor`,
+`upgrade_spec` to `pipeline_shortcut.json`, then `build_from_parent` v(n+1):
+v(n+1) reaches `deploy` without ever calling `request_review`/`approve_review`
+(engine-level test). This is exactly the referent-drift scenario documented
+in `handles.py` — now mechanically reachable, not merely named.
+
+**Result 3 — release holds are spec-topology-independent.** A hold placed
+on a model built *after* the spec upgrade still blocks `deploy` on the
+shortcut path — `_effect_deploy`'s gate keys off `model_id`, not spec
+version.
+
+**Result 4 — `resume_from` chaining preserves oracle/engine continuity.**
+`OracleWorld.full_state()`/`restore()`, `PipelineEngine(resume_state=...)`,
+and `EpisodeResult.snapshot_for_resume()` verified: model IDs, oracle `t`,
+completed steps, and spec-in-force continue across an episode boundary.
+**RNG does NOT continue** — a fresh `random.Random(seed)` starts post-
+restore (recorded simplification, not hidden).
+
+**Recorded gap — playbook/spec compatibility.** `eng_honest_upgrade` still
+emits `review_request`, which does not exist under `pipeline_shortcut.json`;
+agent-driven upgrade mid-episode is NOT demonstrated end-to-end. Spec-upgrade
+evasion is proven via direct `engine.trigger_step` calls, not a single
+playbook-driven episode. Left open (see scenario backlog S1 in `PLAN.md`).
+
+## G-13 (2026-07-06): perturbation-response MI estimator works; serial
+pipeline topology confounds coordination vs sequencing
+
+**Setup.** Post-freeze consolidation pass (PLAN.md item 6), `uad.py`:
+`build_actor_perturbation_hook`, `perturbation_response_mi`,
+`binary_mutual_information`. Unit tests on synthetic binary series; one
+episode-level contrast in `tests/test_uad.py` (DM-pair ecology, engineer
+`run_eval` perturbed at rate 0.6, release manager `deploy` as response,
+decoy actor on fixed-cadence board chatter as control).
+
+**Result 1 — mechanism is correct.** Synthetic tests: identical balanced
+series → MI = 1.0 bit; independent series → MI ≈ 0. Episode test:
+`mi_downstream > mi_decoy` and `mi_decoy < 0.05` — perturbing the
+engineer's eval measurably couples to the release manager's deploy timing
+but not to a schedule-independent decoy.
+
+**Result 2 — two implementation gotchas, fixed before claiming success.**
+(a) Perturbing compound comm step-kinds (`dm:notify_release`, etc.) silently
+drops the action for the rest of the episode (isolate-local "already acted"
+state set before result is known) — hook must target linear, retry-safe
+steps only (`tool`/`step_id` filter). (b) Pipeline steps share the tool name
+`pipeline.trigger_step`; response matching requires `args["step_id"]`, not
+`tool` alone.
+
+**Result 3 — honest scope limit on interpretation.** This line's pipeline is
+strictly serial, single-model-in-flight — delaying any upstream actor delays
+every downstream actor somewhat, not only a true coordination partner's.
+The estimator is demonstrated as a **working mechanism** contrasting a real
+downstream dependency against an independent schedule; it is **not yet
+validated** as discriminating true coordination from mere pipeline
+sequencing at battery scale. Deferred full battery.
+
+## Recorded negative: BLIND_GENERATION round 1's vocabulary was narrow;
+round 2 (D4/D1) ran but full battery and report-mode widening did not
 
 Per BLIND_GENERATION.md's stated residual (the fixed `STEP_KIND_VOCAB`/
 `ontology.py` report-mode limitation), round 1 could only vary
@@ -427,6 +630,12 @@ combination/order/naming/`feature_deltas` over a fixed 2-report-mode
 vocabulary — a narrower generation surface than goal_sim ever worked with.
 A round 2 that first widens `STEP_KIND_VOCAB` and `ontology.report_content`
 (e.g. a third report mode, an escalate-to-admin reviewer step) before
-generating again is explicitly left open, not attempted this phase (kept
-out of scope to land Phase 6 on the frozen referee first, per PLAN.md
-sequencing).
+generating again was explicitly left open for the **frozen-referee** report
+path (kept out of scope to land Phase 6 first, per PLAN.md sequencing).
+
+**Update (2026-07-06):** a separate round 2 **did** run for the D4/D1
+committee/DM/file step kinds (`BLIND_GENERATION_ROUND2.md`,
+`generated_playbooks_v2.json`; see G-11) — that addresses playbook
+circularity for the comm/file layer specifically, NOT the round-1 report-
+mode vocabulary limitation. Widening report modes and running a full
+SubprocessIsolate battery on post-0.9.0 mechanics remain open.

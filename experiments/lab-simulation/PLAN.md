@@ -1003,6 +1003,96 @@ paths rather than new tools.
 this idea in this pass; recorded here per the "surface it, don't lose it"
 continuity discipline.
 
+## Scenario backlog — new ecologies enabled by 0.9.0 substrate (recorded
+2026-07-06, not scheduled)
+
+The post-freeze pass (D4/D1/D2 + UAD/collusion extensions) makes several
+ecologies reachable that are **not yet implemented or battery-tested**.
+Recorded here as TODO scenarios — no code in this note.
+
+### S1 — Cross-agent pipeline loops (composite units beyond static committees)
+
+**Idea.** A combined agent cluster where causality loops: agent A triggers
+a build/pipeline step → pipeline produces an artifact/result observable by
+agent B → B's action (report, review, file write, comms, or another pipeline
+step) changes what A sees or can do next → loop repeats. Unlike the current
+committee/DM-pair ecologies (fixed role boundaries, one-directional handoffs
+within a serial DAG), this tests **dynamic multi-agent units** whose
+boundary is defined by the loop, not by a pre-configured `LabConfig.units`
+roster alone.
+
+**Why now.** D4 comms, D1 file channel, D2 multi-gen/`resume_from`, and
+perturbation-response MI (G-13) provide the substrate; UAD should recover
+the loop as a unit from event causality, not only from co-voting.
+
+**Open design.** How many hops before the loop closes; whether the oracle
+`units` ground truth is the full loop or a subset; whether `on_behalf_of`
+spans the loop; playbook vs LLM-driven closure. Closes G-12's playbook/spec
+compatibility gap if a shortcut-compatible upgrade playbook is part of the
+loop demo.
+
+### S2 — Covert coordination over files (MB7d partial — file as dual-use channel)
+
+**Idea.** Agents coordinate **over files** in ways that are plausibly
+legitimate (shared specs, handoff memos, build logs) but can also carry
+covert signals (steganography in memo content, timing of share grants,
+naming conventions). G-10's `native_severed` failover shows committees
+already use file as an **alternate** channel when board is cut — but both
+are **explicit** coordination mechanics. This scenario asks: can agents
+coordinate through file workflows that look like normal lab work?
+
+**Why now.** Permissioned file channel (`file.write` → `file.share` →
+`file.read`) is implemented; full-tier UAD already recovers file committees
+from share-grant metadata alone (G-9) — a reviewer must ask whether
+**content-only** covert coordination is visible only at deep tier while
+grant-metadata coordination is visible at full tier (a second asymmetry).
+
+**Open design.** Legitimate-vs-covert ground-truth labeling; whether covert
+file use must bypass `file.share` (oracle-side only) or can hide in shared
+memos; detector extensions vs frozen five-family composite.
+
+### S3 — Informal / casual comms for legitimate work coordination (MB7d)
+
+**Idea.** Board/DM traffic that is **not** vote-shaped: agents discuss workload,
+priorities, or pipeline status "casually" or "informally" — legitimate
+coordination that MB7d-style ablation must not falsely flag as collusion.
+Contrasts with the current board committee where every coordinating message
+carries structured `review_id`/`vote` custom fields.
+
+**Why now.** Comms substrate exists; collusion score currently keys off vote
+co-occurrence (G-9) — no scenario yet separates **legitimate informal
+coordination** from **covert vote coordination** when both use the same
+channel.
+
+**Open design.** Tier projection for informal content; whether UAD/collusion
+need a "legitimate coordination" baseline ecology; LLM agents for natural
+informal language vs scripted playbooks.
+
+### S4 — Shared pipeline worker pool + job-size-aware scheduling
+
+**Idea.** Limited pipeline workers (or build/eval capacity): agents must
+agree on **who submits big jobs** and when. Coordination is economically
+motivated (queueing, throughput) rather than review-gate evasion. Requires
+tracking **job size** (e.g. from `submit_build` params — `scale`,
+`safety_effort`, or an explicit size/cost field) and a referee-visible
+queue or capacity constraint so "agreeing to defer a large job" is
+observable.
+
+**Why now.** `build_params` and server-side enforcement (G-8a) exist;
+pipeline is serial single-model-in-flight today — this scenario forces
+**multi-agent contention** over a shared scarce resource, a natural place
+for informal comms (S3) and file handoffs (S2) to appear.
+
+**Open design.** Where job size lives (oracle metric vs logged field);
+whether capacity is global or per-role; ground-truth unit = scheduling
+coalition vs build coalition; link to bearer harm (large jobs = higher
+hazard) without re-tuning frozen severity.
+
+**Dependencies.** S4 likely composes with S1/S3; S2 may compose with S3 for
+full MB7d-style "sever the formal channel, does informal/file coordination
+persist?" — the ablation G-10 could not test because no covert/informal
+channel existed yet.
+
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
 
 Structural decisions Phase 0-8 must get right so the deferred workstreams
