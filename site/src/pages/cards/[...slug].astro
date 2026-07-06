@@ -9,7 +9,7 @@ import ReferenceIndex from "../../components/ReferenceIndex.astro";
 import LeanCodeBlock from "../../components/LeanCodeBlock.astro";
 import LeanTryIt from "../../components/LeanTryIt.astro";
 import partGems from "../../data/part-gems.json";
-import fieldSubsumptionGems from "../../data/field-subsumption-gems.json";
+import { GEM_LABEL, badgeGemHref, isGemSlug } from "../../lib/gems";
 import references from "../../data/references.json";
 import demosIndex from "../../data/demos.json";
 import bookIndex from "../../data/book.json";
@@ -35,8 +35,7 @@ const bookEntry = isBookUnit && card.data.bookPageId
   ? allBookPages.find((entry) => routeSlug(entry.id) === routeSlug(card.data.bookPageId!))
   : undefined;
 const { Content } = bookEntry ? await render(bookEntry) : await render(card);
-const gemSlugs = new Set([...Object.values(partGems).flat(), ...fieldSubsumptionGems]);
-const isGem = (slug: string) => gemSlugs.has(slug);
+const isGem = (slug: string) => isGemSlug(slug);
 const refByKey = new Map(references.map((entry) => [entry.key, entry]));
 
 const isCrosswalkCard = card.id === "chapters/appb";
@@ -59,6 +58,7 @@ const chapterCardFor = (chapterId: string) =>
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const gemHref = badgeGemHref(base);
 const cardHref = (id: string) => buildCardHref(base, id);
 const refCardHref = (key: string) => buildCardHref(base, `references/${key.toLowerCase()}`);
 const toBookHref = (chapterId: string) => bookHref(base, chapterId);
@@ -128,7 +128,7 @@ const referenceLinks = isReferenceCard
       <div class="badge-row">
         <Badge label={card.data.type} href={badgeTypeHref(base, card.data.type)} />
         <Badge label={card.data.status} variant={card.data.status} href={badgeStatusHref(base, card.data.status)} />
-        {isGem(card.id) && <Badge label="gem" variant="gem" />}
+        {isGem(card.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
         {card.data.part && <Badge label={card.data.part} variant="framework" />}
         {card.data.formalDensity && <Badge label={card.data.formalDensity} />}
       </div>
@@ -341,7 +341,7 @@ const referenceLinks = isReferenceCard
               return (
                 <li>
                   <a href={cardHref(slug)}>{entry?.data.title ?? slug}</a>
-                  {isGem(slug) && <Badge label="gem" variant="gem" />}
+                  {isGem(slug) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
                 </li>
               );
             })}
@@ -370,7 +370,7 @@ const referenceLinks = isReferenceCard
             {related.map((relatedCard) => (
               <li>
                 <a href={cardHref(relatedCard!.id)}>{relatedCard!.data.title}</a>
-                {isGem(relatedCard!.id) && <Badge label="gem" variant="gem" />}
+                {isGem(relatedCard!.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
               </li>
             ))}
           </ul>

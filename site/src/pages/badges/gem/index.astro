@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import Badge from "../../../components/Badge.astro";
+import { badgeStatusHref, badgeTypeHref } from "../../../lib/badges";
+import { ALL_GEM_SLUGS, GEM_LABEL, GEM_META, badgeGemHref } from "../../../lib/gems";
+import { cardHref } from "../../../lib/site-urls";
+
+const gemSlugSet = new Set(ALL_GEM_SLUGS);
+const cards = await getCollection("cards");
+const matching = cards
+  .filter((card) => gemSlugSet.has(card.id))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+---
+
+<SiteLayout title={`${GEM_META.title} cards`} description={GEM_META.description}>
+  <section class="hero">
+    <p class="eyebrow"><a href={withBase("/badges/")}>Badge index</a></p>
+    <div class="badge-row">
+      <Badge label={GEM_LABEL} variant={GEM_LABEL} />
+    </div>
+    <h1>{GEM_META.title} cards</h1>
+    <p class="lede">{GEM_META.description}</p>
+    <p class="side-panel-meta">{matching.length} card{matching.length === 1 ? "" : "s"}</p>
+  </section>
+
+  <section>
+    {matching.length === 0 ? (
+      <p class="side-panel-meta">No gem cards yet.</p>
+    ) : (
+      <div class="grid">
+        {matching.map((card) => (
+          <article class="card">
+            <div class="badge-row">
+              <Badge label={card.data.type} href={badgeTypeHref(base, card.data.type)} />
+              <Badge label={card.data.status} variant={card.data.status} href={badgeStatusHref(base, card.data.status)} />
+              <Badge label={GEM_LABEL} variant={GEM_LABEL} href={badgeGemHref(base)} />
+            </div>
+            <h2><a href={cardHref(base, card.id)}>{card.data.title}</a></h2>
+            <p>{card.data.summary}</p>
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <section>
+    <p><a href={withBase("/badges/")}>All badges</a> · <a href={withBase("/cards/")}>All cards</a></p>
+  </section>
+</SiteLayout>

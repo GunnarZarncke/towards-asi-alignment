@@ -1,6 +1,7 @@
 ---
 import Badge from "./Badge.astro";
 import { badgeStatusHref, badgeTypeHref, type CardStatus, type CardType } from "../lib/badges";
+import { GEM_LABEL, badgeGemHref } from "../lib/gems";
 
 interface CardEntry {
   id: string;
@@ -23,6 +24,7 @@ const { title, sectionId, cards, initialCount = 3, cardHref, gemIds = [] } = Ast
 const gemSet = new Set(gemIds);
 const hasMore = cards.length > initialCount;
 const base = import.meta.env.BASE_URL;
+const gemHref = badgeGemHref(base);
 ---
 
 <section class="card-section" id={sectionId}>
@@ -40,7 +42,7 @@ const base = import.meta.env.BASE_URL;
             <div class="badge-row">
               <Badge label={card.type} href={badgeTypeHref(base, card.type)} />
               <Badge label={card.status} variant={card.status} href={badgeStatusHref(base, card.status)} />
-              {gemSet.has(card.id) && <Badge label="gem" variant="gem" />}
+              {gemSet.has(card.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
             </div>
             <h3><a href={cardHref(card.id)}>{card.title}</a></h3>
             <p>{card.summary}</p>
