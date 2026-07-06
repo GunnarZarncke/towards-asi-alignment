@@ -6,7 +6,7 @@ import { publishChapterDemos } from "./lib/publish-chapter-demos.mjs";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
 const repoRoot = path.resolve(siteRoot, "..");
-const DEMOS_DIR = path.join(repoRoot, "src", "demos");
+const DEMOS_DIR = path.join(repoRoot, "demos");
 const BOOK_PATH = path.join(siteRoot, "src", "data", "book.json");
 const CARDS_DIR = path.join(siteRoot, "src", "content", "cards");
 const OUT_PATH = path.join(siteRoot, "src", "data", "demos.json");
@@ -98,10 +98,10 @@ async function loadDemoFolder(name) {
   const port = backend?.port || DEFAULT_STATIC_PORT;
   const chapterId = parseChapterId(name);
   const sitePath = `/chapter-demos/${name}/`;
-  const standalonePath = hasPython ? "/" : `/demos/${name}/`;
+  const standalonePath = hasPython ? "/" : `/${name}/`;
   const standaloneUrl = hasPython
     ? `http://127.0.0.1:${port}/`
-    : `http://127.0.0.1:${DEFAULT_STATIC_PORT}/demos/${name}/`;
+    : `http://127.0.0.1:${DEFAULT_STATIC_PORT}/${name}/`;
 
   return {
     id: name,
@@ -115,7 +115,7 @@ async function loadDemoFolder(name) {
     standalonePath,
     standaloneUrl,
     requiresBackend: hasPython,
-    githubPath: `src/demos/${name}`,
+    githubPath: `demos/${name}`,
     hasReadme: readme.length > 0,
     hasTests: (await readdir(dir, { withFileTypes: true }).catch(() => [])).some(
       (e) => e.isDirectory() && e.name === "tests"
@@ -128,7 +128,7 @@ async function main() {
 
   const [chapters, cardLinks] = await Promise.all([loadBookChapters(), loadCardLinks()]);
   const folders = (await readdir(DEMOS_DIR, { withFileTypes: true }))
-    .filter((e) => e.isDirectory())
+    .filter((e) => e.isDirectory() && e.name.startsWith("ch"))
     .map((e) => e.name)
     .sort((a, b) => a.localeCompare(b));
 
@@ -144,7 +144,7 @@ async function main() {
 
   const payload = {
     generatedAt: new Date().toISOString(),
-    standaloneCommand: "cd src && python3 serve.py",
+    standaloneCommand: "cd demos && python3 serve.py",
     standalonePort: DEFAULT_STATIC_PORT,
     demos
   };

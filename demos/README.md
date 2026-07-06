@@ -7,22 +7,21 @@ the published PDF.
 ## Layout
 
 ```text
-src/
+demos/
   README.md                 # this file
   serve.py                  # local dev server for all demos
   index.html                # landing page listing demos
   package.json              # shared TypeScript build + tests
   build-demos.mjs           # compiles each demo's main .ts → .js
-  demos/
-    chNN-short-slug/        # one folder per chapter demo
-      README.md             # optional chapter-specific notes
-      index.html            # demo page (required)
-      *.ts                  # static demos: main module + optional *.test.ts
-      *.js                  # esbuild output (committed for Python-only serve)
-      app.py                # optional Python backend (FastAPI)
-      backend.json          # optional: port + uvicorn module for app.py demos
-      requirements.txt      # optional Python deps for backend demos
-      tests/                # optional pytest suite for backend demos
+  chNN-short-slug/          # one folder per chapter demo
+    README.md               # optional chapter-specific notes
+    index.html              # demo page (required)
+    *.ts                    # static demos: main module + optional *.test.ts
+    *.js                    # esbuild output (committed for Python-only serve)
+    app.py                  # optional Python backend (FastAPI)
+    backend.json            # optional: port + uvicorn module for app.py demos
+    requirements.txt        # optional Python deps for backend demos
+    tests/                  # optional pytest suite for backend demos
 ```
 
 **Naming:** `chNN-short-slug` matches chapter number and topic, e.g.
@@ -36,7 +35,7 @@ automatically on the configured port.
 ## Run locally
 
 ```bash
-cd src
+cd demos
 python3 serve.py
 ```
 
@@ -47,21 +46,21 @@ already up to date, or `--no-open` to skip the browser tab.
 ## Develop
 
 ```bash
-cd src
+cd demos
 npm install          # once
 npm run build        # compile all demos
-npm test             # vitest across demos/**/*.test.ts
+npm test             # vitest across ch*/*.test.ts
 ```
 
 ## Add a new demo
 
-1. Create `demos/chNN-your-slug/` with `index.html`.
+1. Create `chNN-your-slug/` with `index.html`.
 2. For a **static** demo, add main `app.ts` (or one named module).
 3. For a **Python backend** demo, add `app.py`, `backend.json` (port + module),
    and `requirements.txt`.
-4. Add a row to `src/index.html` linking to `demos/chNN-your-slug/`.
+4. Add a row to `index.html` linking to `chNN-your-slug/`.
 5. Run `npm run build` or start `serve.py` to compile static demos.
-6. Optional: add `demos/chNN-your-slug/README.md` with scope and limitations.
+6. Optional: add `chNN-your-slug/README.md` with scope and limitations.
 
 Do **not** wire demos into `book.tex`, chapter `.tex` files, or the PDF unless
 explicitly requested later.
@@ -70,6 +69,6 @@ explicitly requested later.
 
 | Folder | Chapter | Summary |
 |--------|---------|---------|
-| `demos/ch09-uad-coalition-board/` | 9 — The Real Agent May Be Composite | Posting board → manual or dummy UAD coalition discovery |
-| `demos/ch16-value-bundle-simulator/` | 16 — The Value-Bundle Model | Ecology sliders → top value salience |
-| `demos/ch17-lhv-learnability/` | 17 — When Low Dimensionality Helps Value Learning | Synthetic hub structure → dimension recovery and held-out prediction |
+| `ch09-uad-coalition-board/` | 9 — The Real Agent May Be Composite | Posting board → manual or dummy UAD coalition discovery |
+| `ch16-value-bundle-simulator/` | 16 — The Value-Bundle Model | Ecology sliders → top value salience |
+| `ch17-lhv-learnability/` | 17 — When Low Dimensionality Helps Value Learning | Synthetic hub structure → dimension recovery and held-out prediction |

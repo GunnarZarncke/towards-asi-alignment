@@ -21,7 +21,7 @@ If `biber` fails after `Found BibTeX data source ...`, run `./clean.sh`, remove 
 cd formal && lake exe cache get && lake build
 ```
 
-See [`formal/README.md`](../formal/README.md) and [`LeanProofSpineImplementationBrief.md`](../LeanProofSpineImplementationBrief.md).
+See [`formal/README.md`](../formal/README.md) and [`formal/LeanProofSpineImplementationBrief.md`](../formal/LeanProofSpineImplementationBrief.md).
 
 ## Companion site
 

@@ -30,14 +30,14 @@ jobs:
           cache: npm
           cache-dependency-path: |
             site/package-lock.json
-            src/package-lock.json
+            demos/package-lock.json
 
       - name: Install dependencies
         working-directory: site
         run: npm ci
 
       - name: Install demo build dependencies
-        working-directory: src
+        working-directory: demos
         run: npm ci
 
       - name: Fetch book PDF for site

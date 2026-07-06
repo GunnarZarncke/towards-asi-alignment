@@ -12,7 +12,7 @@ Aligned with `chapters/ch09-composite-agent.tex`.
 
 ## Run
 
-From `src/`:
+From `demos/`:
 
 ```bash
 python3 serve.py
@@ -21,7 +21,7 @@ python3 serve.py
 Board: [http://127.0.0.1:8766/](http://127.0.0.1:8766/)
 
 ```bash
-pip install -r demos/ch09-uad-coalition-board/requirements.txt
+pip install -r ch09-uad-coalition-board/requirements.txt
 ```
 
 ## Admin

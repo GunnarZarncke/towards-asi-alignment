@@ -134,11 +134,23 @@ Self-contained Lean 4 skeleton of the book's logical dependencies (`lake build` 
 
 ### Experiments (`experiments/`)
 
-Empirical sanity-check codebases (`toy-simulation/`, `embedded-simulation/`) that stress-test bridge cruxes. They provide **tentative, partial** support only — never closure. When making or citing an empirical claim, read the relevant experiment's `results/` and **honor recorded negatives**: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) logs where experiments fail or hold only under qualifiers, and bounds the claims the manuscript may make. Add to it rather than burying new negative/null findings; calibrate prose to it the same way you calibrate to the Lean spine.
+Empirical sanity-check codebases that stress-test bridge cruxes. Four in-repo lines (build order): [`toy-simulation/`](experiments/toy-simulation/), [`embedded-simulation/`](experiments/embedded-simulation/), [`goal-agent-simulation/`](experiments/goal-agent-simulation/), [`lab-simulation/`](experiments/lab-simulation/). Narrative map: [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); structured index: [`metadata/experiments.yml`](metadata/experiments.yml). They provide **tentative, partial** support only — never closure. When making or citing an empirical claim, read the relevant experiment's `results/` and **honor recorded negatives**: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) (embedded line); [`experiments/goal-agent-simulation/results/FINDINGS.md`](experiments/goal-agent-simulation/results/FINDINGS.md); [`experiments/lab-simulation/results/FINDINGS.md`](experiments/lab-simulation/results/FINDINGS.md). Add negatives rather than burying them; calibrate prose the same way you calibrate to the Lean spine.
 
-### Chapter demos (`src/`)
+### Companion site (`site/`)
 
-Experimental interactive toys—one mini app per chapter under `src/demos/chNN-slug/`. Not part of the manuscript or PDF. See `src/README.md`; run with `python3 serve.py` from `src/`.
+Astro publication layer: guided paths, concept cards, chapter pages, Lean playgrounds, synced demos. Build: [`site/README.md`](site/README.md), [`docs/BUILD.md`](docs/BUILD.md). Run `./serve-site.sh` locally.
+
+### Chapter demos (`demos/`)
+
+Experimental interactive toys—one mini app per chapter under `demos/chNN-slug/`. Not part of the manuscript or PDF. See [`demos/README.md`](demos/README.md); run with `python3 serve.py` from `demos/` or `./serve-demos.sh` from the repo root.
+
+### Review artifacts (`review/`)
+
+Structured continuity review, split plans, and reviewer templates. Start with [`review/reviewer-guide.md`](review/reviewer-guide.md); active fix list in [`review/fix-plans-2026-06-22.md`](review/fix-plans-2026-06-22.md).
+
+### Human docs (`docs/`)
+
+Condensed entry points: [`docs/BUILD.md`](docs/BUILD.md), [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md), [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md).
 
 ### README
 

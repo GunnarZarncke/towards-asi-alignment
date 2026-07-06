@@ -3,7 +3,7 @@
 set -euo pipefail
 
 REPO_ROOT="${REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
-SRC_DIR="$REPO_ROOT/src"
+DEMOS_DIR="$REPO_ROOT/demos"
 DEMO_BACKEND_PORT="${DEMO_BACKEND_PORT:-8766}"
 DEMO_BACKEND_PID=""
 
@@ -18,7 +18,7 @@ stop_demo_backends() {
 }
 
 start_demo_backends() {
-  local demo_dir="$SRC_DIR/demos/ch09-uad-coalition-board"
+  local demo_dir="$DEMOS_DIR/ch09-uad-coalition-board"
   if [[ ! -f "$demo_dir/app.py" ]]; then
     return 0
   fi

@@ -6,8 +6,8 @@ import { fileURLToPath } from "node:url";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "../..");
 const repoRoot = path.resolve(siteRoot, "..");
-const srcRoot = path.join(repoRoot, "src");
-const demosSrc = path.join(srcRoot, "demos");
+const demosRoot = path.join(repoRoot, "demos");
+const demosSrc = demosRoot;
 const demosPublic = path.join(siteRoot, "public", "chapter-demos");
 
 const STATIC_COPY = new Set([".html", ".js", ".css", ".json", ".svg", ".png", ".webp", ".ico"]);
@@ -16,7 +16,7 @@ const SKIP_DIRS = new Set(["tests", "__pycache__", "node_modules"]);
 function runBuildDemos() {
   return new Promise((resolve, reject) => {
     const child = spawn("node", ["build-demos.mjs"], {
-      cwd: srcRoot,
+      cwd: demosRoot,
       stdio: "inherit"
     });
     child.on("error", reject);
@@ -84,7 +84,7 @@ export async function publishChapterDemos() {
   await mkdir(demosPublic, { recursive: true });
 
   const folders = (await readdir(demosSrc, { withFileTypes: true }))
-    .filter((e) => e.isDirectory())
+    .filter((e) => e.isDirectory() && e.name.startsWith("ch"))
     .map((e) => e.name)
     .sort();
 

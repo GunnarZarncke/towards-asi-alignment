@@ -2,7 +2,7 @@
 
 A compact, **self-contained Lean 4 formalization** of the *logical skeleton* of
 the alignment argument in *Towards Superintelligence Alignment*. It implements
-the spec in [`../LeanProofSpineImplementationBrief.md`](../LeanProofSpineImplementationBrief.md)
+the spec in [`LeanProofSpineImplementationBrief.md`](LeanProofSpineImplementationBrief.md)
 (conjectured dependency structure in
 [`../context/lean_proof_dependency_graph.dot`](../context/lean_proof_dependency_graph.dot);
  book figures in [`../context/lean_proof_graphs/`](../context/lean_proof_graphs/)).

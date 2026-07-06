@@ -2,14 +2,14 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SRC_DIR="$REPO_ROOT/src"
+DEMOS_DIR="$REPO_ROOT/demos"
 PORT="${PORT:-8765}"
 
 usage() {
   cat <<EOF
 Usage: $(basename "$0") [--port PORT] [--no-open]
 
-Serve chapter demo toys from src/ and print launch URLs.
+Serve chapter demo toys from demos/ and print launch URLs.
 
   --port PORT   Port for static file server (default: 8765)
   --no-open     Do not open a browser tab
@@ -43,8 +43,8 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ ! -d "$SRC_DIR/demos" ]]; then
-  echo "src/demos/ not found at $SRC_DIR/demos" >&2
+if [[ ! -d "$DEMOS_DIR/ch09-uad-coalition-board" ]]; then
+  echo "Chapter demos not found at $DEMOS_DIR" >&2
   exit 1
 fi
 
@@ -54,7 +54,7 @@ stop_previous() {
     lsof -ti :"$PORT" | xargs kill -9 2>/dev/null || true
     sleep 0.2
   fi
-  pkill -f "${SRC_DIR}/serve.py" 2>/dev/null || true
+  pkill -f "${DEMOS_DIR}/serve.py" 2>/dev/null || true
 }
 
 stop_previous
@@ -64,14 +64,14 @@ echo "Chapter demo server:"
 echo "  http://127.0.0.1:${PORT}/"
 echo
 echo "Demos:"
-echo "  http://127.0.0.1:${PORT}/demos/ch09-uad-coalition-board/  (backend may use 8766)"
-echo "  http://127.0.0.1:${PORT}/demos/ch16-value-bundle-simulator/"
-echo "  http://127.0.0.1:${PORT}/demos/ch17-lhv-learnability/"
+echo "  http://127.0.0.1:${PORT}/ch09-uad-coalition-board/  (backend may use 8766)"
+echo "  http://127.0.0.1:${PORT}/ch16-value-bundle-simulator/"
+echo "  http://127.0.0.1:${PORT}/ch17-lhv-learnability/"
 echo
 echo "Site inventory: run ./serve-site.sh and open /demos/ or /chapter-demos/…"
 echo
 
-cd "$SRC_DIR"
+cd "$DEMOS_DIR"
 ARGS=(python3 serve.py --port "$PORT")
 if [[ "$OPEN" == "0" ]]; then
   ARGS+=(--no-open)

@@ -24,7 +24,7 @@ Machine-checked logical skeleton of the alignment argument. Builds with `cd form
 | `formal/AlignmentProofSpine.lean` | Root Lean 4 module |
 | `formal/AlignmentProofSpine/*.lean` | Layer modules (`P01`–`P45`, bridges `MB1`–`MB9`) |
 | `formal/README.md` | Build, status, book-facing interpretation |
-| `LeanProofSpineImplementationBrief.md` | Agent spec and theorem inventory (brief numbering is the implementation target) |
+| `formal/LeanProofSpineImplementationBrief.md` | Agent spec and theorem inventory (brief numbering is the implementation target) |
 | `context/lean_proof_dependency_graph.dot` / `.png` | Full dependency DAG (developer reference) |
 | `context/lean_proof_graphs/*.dot` | Book sub-spine diagrams + overview; output in `figures/lean_proof/` |
 

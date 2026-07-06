@@ -293,7 +293,7 @@ const referenceLinks = isReferenceCard
           <ul>
             {card.data.demos.map((demo) => {
               const entry = demoFor(demo.demoId);
-              const href = entry ? withBase(entry.sitePath) : `https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/src/demos/${demo.demoId}`;
+              const href = entry ? withBase(entry.sitePath) : `https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/demos/${demo.demoId}`;
               return (
               <li>
                 {entry ? (

@@ -14,7 +14,7 @@ The Lean proof spine (`formal/`) checks logical dependencies and finite separati
 
 High-value work:
 
-- Strengthening the spine per [`formal/README.md`](formal/README.md) and [`LeanProofSpineImplementationBrief.md`](LeanProofSpineImplementationBrief.md)
+- Strengthening the spine per [`formal/README.md`](formal/README.md) and [`formal/LeanProofSpineImplementationBrief.md`](formal/LeanProofSpineImplementationBrief.md)
 - **Field-agenda formalization** — shared finite fragment in `formal/AlignmentProofSpine/Field/` linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions (see Appendix I gem on field formalization)
 - Closing chapter ↔ Lean mapping gaps listed in `metadata/TODO.md` (§ Lean proof spine)
 
@@ -24,12 +24,14 @@ Build: `cd formal && lake exe cache get && lake build`
 
 ## Building the simulations
 
-Two experiment lines live under [`experiments/`](experiments/):
+Four experiment lines live under [`experiments/`](experiments/) (see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the narrative map):
 
 | Path | Role |
 |------|------|
 | [`experiments/toy-simulation/`](experiments/toy-simulation/) | Multiresolution alignment micro-sim; bridge stress scenarios MB1–MB9, instrumentation curve, red-team battery |
 | [`experiments/embedded-simulation/`](experiments/embedded-simulation/) | Embedded audit experiment (v3); run via `python3 run.py` |
+| [`experiments/goal-agent-simulation/`](experiments/goal-agent-simulation/) | Goal-driven agents with mechanism-derived labels and held-out goal-space regions |
+| [`experiments/lab-simulation/`](experiments/lab-simulation/) | Lab-layer sim: subprocess isolates, access tiers, playbook agents, referee batteries |
 
 Open tasks: [`experiments/TODO.md`](experiments/TODO.md) and per-folder `TODO.md` files. Results land in each experiment's `results/` directory.
 
@@ -100,7 +102,7 @@ It hosts guided reading paths, concept cards, rendered chapter pages, Lean playg
 
 You may also:
 
-- Host reading guides, gem indexes, or interactive demos (chapter demos under [`src/demos/`](src/demos/) are a starting pattern; see [`src/README.md`](src/README.md))
+- Host reading guides, gem indexes, or interactive demos (chapter demos under [`demos/`](demos/) are a starting pattern; see [`demos/README.md`](demos/README.md))
 - Mirror or excerpt with clear attribution and a link to the hosted PDF
 - Integrate simulation artifacts or Lean module browsers
 

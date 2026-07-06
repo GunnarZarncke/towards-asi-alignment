@@ -2,12 +2,13 @@ import { build } from "esbuild";
 import { readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const demosDir = join(import.meta.dirname, "demos");
+const rootDir = import.meta.dirname;
 
 function entrypoints() {
   const entries = [];
-  for (const name of readdirSync(demosDir)) {
-    const demoDir = join(demosDir, name);
+  for (const name of readdirSync(rootDir)) {
+    if (!name.startsWith("ch")) continue;
+    const demoDir = join(rootDir, name);
     if (!statSync(demoDir).isDirectory()) continue;
 
     const tsFiles = readdirSync(demoDir).filter(

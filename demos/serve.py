@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Serve experimental chapter demos from src/."""
+"""Serve experimental chapter demos from demos/."""
 
 from __future__ import annotations
 
@@ -15,20 +15,24 @@ import webbrowser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DEMOS = ROOT / "demos"
+SKIP_DIR_NAMES = frozenset({"node_modules", "__pycache__"})
 DEFAULT_PORT = 8765
 BACKEND_PORT = 8766
+
+
+def is_demo_dir(path: Path) -> bool:
+    return (
+        path.is_dir()
+        and path.name.startswith("ch")
+        and path.name not in SKIP_DIR_NAMES
+        and (path / "index.html").is_file()
+    )
 
 
 def demo_entrypoints() -> list[tuple[Path, Path]]:
     """Return (typescript, javascript) pairs for each demo main module."""
     pairs: list[tuple[Path, Path]] = []
-    if not DEMOS.is_dir():
-        return pairs
-
-    for demo_dir in sorted(DEMOS.iterdir()):
-        if not demo_dir.is_dir():
-            continue
+    for demo_dir in sorted(p for p in ROOT.iterdir() if is_demo_dir(p)):
         ts_files = [
             path
             for path in demo_dir.glob("*.ts")
@@ -85,24 +89,13 @@ def ensure_built() -> None:
 
 
 def list_demos() -> list[Path]:
-    if not DEMOS.is_dir():
-        return []
-    return sorted(
-        path
-        for path in DEMOS.iterdir()
-        if path.is_dir() and (path / "index.html").exists()
-    )
+    return sorted(p for p in ROOT.iterdir() if is_demo_dir(p))
 
 
 def backend_demos() -> list[tuple[Path, dict]]:
     """Return (demo_dir, backend.json) for Python backend demos."""
     configs: list[tuple[Path, dict]] = []
-    if not DEMOS.is_dir():
-        return configs
-
-    for demo_dir in sorted(DEMOS.iterdir()):
-        if not demo_dir.is_dir():
-            continue
+    for demo_dir in sorted(p for p in ROOT.iterdir() if is_demo_dir(p)):
         backend_file = demo_dir / "backend.json"
         app_file = demo_dir / "app.py"
         if not backend_file.is_file() or not app_file.is_file():
@@ -199,7 +192,7 @@ def main() -> None:
 
     demos = list_demos()
     if not demos:
-        sys.exit(f"No demos found under {DEMOS.relative_to(ROOT)}/ (need index.html per folder).")
+        sys.exit(f"No demos found under {ROOT}/ (need chNN-*/index.html folders).")
 
     backend_configs = backend_demos()
     backend_procs = start_backend_servers(backend_configs) if backend_configs else []

@@ -8,7 +8,7 @@ correction operators) and the *bridge assumptions* `MB1`–`MB9`.
 Host-capacity aliasing (`P34`) uses Mathlib's finite-cardinality lemmas via
 `AlignmentProofSpine.Mathlib`.
 
-Design notes (see `LeanProofSpineImplementationBrief.md`):
+Design notes (see `formal/LeanProofSpineImplementationBrief.md`):
 
 * The empirical and conceptual content of UAD, value bundles, B-IQ, attractor
   basins, and CEV is **not** formalized here. We only formalize the logical
