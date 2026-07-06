@@ -92,7 +92,7 @@ const mbCards = [
   </section>
 
   {experiments.lines.map((line) => (
-    <section class="readable">
+    <section class="readable" id={line.id}>
       <h2>{line.order}. {line.title}</h2>
       <p>{line.role.trim()}</p>
       {line.links.length > 0 && (

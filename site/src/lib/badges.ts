@@ -9,7 +9,8 @@ export const CARD_TYPES = [
   "chapter",
   "appendix",
   "frontmatter",
-  "reference"
+  "reference",
+  "experiment"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -69,6 +70,11 @@ export const TYPE_META: Record<
   reference: {
     title: "Reference",
     description: "Bibliography entry card with publication links and where the source is cited."
+  },
+  experiment: {
+    title: "Experiment",
+    description:
+      "In-repo or sibling sanity-check line — methodology-building evidence with explicit negative results."
   }
 };
 

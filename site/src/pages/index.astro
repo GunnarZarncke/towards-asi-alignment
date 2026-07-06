@@ -1,12 +1,13 @@
 ---
-import { getCollection } from "astro:content";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { pdfHref } from "../lib/site-urls";
+import PathRelationshipDiagram from "../components/PathRelationshipDiagram.astro";
+import { pdfHref, pathHref } from "../lib/site-urls";
+import { getReadingPaths } from "../lib/reading-paths";
 import standaloneClaims from "../data/standalone-claims.json";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
-const paths = await getCollection("paths");
+const paths = getReadingPaths();
 const failureModes = [
   { title: "Wrong object", text: "Auditing the visible model while the real deployed actor is a larger loop.", card: "the-boundary-error" },
   { title: "Label preservation", text: "Keeping value words while the underlying tradeoffs drift.", card: "value-change-vs-corruption" },
@@ -47,25 +48,20 @@ const failureModes = [
     </div>
   </section>
 
-  <section>
+  <section class="readable">
     <h2>Guided Tour</h2>
-    <div class="grid">
-      {paths
-        .sort((a, b) => {
-          const order = ["generalist", "philosopher", "researcher-applied", "researcher-formal", "engineer-evals", "funder-policy"];
-          return order.indexOf(a.id) - order.indexOf(b.id);
-        })
-        .map((path) => (
+    <p>Pick the path closest to your role — each links to an ordered reading list (cards, toys, experiments, chapters).</p>
+    <PathRelationshipDiagram paths={paths} base={base} />
+    <div class="grid path-grid">
+      {paths.map((path) => (
         <article class="card">
-          <h3><a href={withBase(`/paths/${path.id}/`)}>{path.data.title}</a></h3>
-          <p><strong>{path.data.audience}</strong></p>
-          <p>{path.data.summary}</p>
-          {path.data.featuredLean && (
-            <p class="side-panel-meta"><a href={withBase("/lean/")}>Lean proof spine</a></p>
-          )}
+          <h3><a href={pathHref(base, path.id)}>{path.title}</a></h3>
+          <p class="side-panel-meta"><strong>{path.audience}</strong></p>
+          <p>{path.summary}</p>
         </article>
       ))}
     </div>
+    <p><a href={withBase("/paths/")}>Full guided tour page</a></p>
   </section>
 
   <section>
@@ -91,3 +87,9 @@ const failureModes = [
     </p>
   </section>
 </SiteLayout>
+
+<style>
+  .path-grid {
+    margin-top: 1.25rem;
+  }
+</style>

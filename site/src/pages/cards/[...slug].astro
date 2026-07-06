@@ -42,6 +42,7 @@ const refByKey = new Map(references.map((entry) => [entry.key, entry]));
 const isCrosswalkCard = card.id === "chapters/appb";
 const isReferenceIndexCard = card.id === "reference-index";
 const isReferenceCard = card.data.type === "reference";
+const isExperimentCard = card.data.type === "experiment";
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
 const relatedSlugs = [...new Set([...partGemSlugs, ...card.data.related])];
@@ -135,6 +136,11 @@ const referenceLinks = isReferenceCard
         <>
           <h1>{card.data.title}</h1>
           <p class="lede">{card.data.summary}</p>
+          {isExperimentCard && card.data.experimentLineId && (
+            <p class="side-panel-meta">
+              <a href={withBase(`/experiments/#${card.data.experimentLineId}`)}>Full experiment overview</a>
+            </p>
+          )}
         </>
       ) : (
         <p class="side-panel-meta">Source: <code>{bookEntry.data.sourceFile}</code></p>

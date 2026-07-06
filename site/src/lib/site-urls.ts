@@ -47,3 +47,8 @@ export function pdfHref(base: string) {
 
 /** Relative PDF link from generated book chapter markdown (book/chNN/). */
 export const BOOK_CHAPTER_PDF_HREF = "../../towards-superintelligence-alignment.pdf";
+
+export function pathHref(base: string, pathId: string) {
+  const normalized = base.endsWith("/") ? base : `${base}/`;
+  return `${normalized}paths/${encodeURIComponent(pathId)}/`;
+}

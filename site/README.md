@@ -68,7 +68,7 @@ Output: `site/dist/`
 |------|---------|
 | `src/pages/` | Routes (Start Here, FAQ, book map, card/path indexes) |
 | `src/content/cards/` | Short concept, bridge, artifact, and glossary cards |
-| `src/content/paths/` | Fixed audience reading paths |
+| `src/content/reading-paths/` | Fixed audience reading paths (loaded at build/dev time) |
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |
 | `astro.config.mjs` | Site URL and GitHub Pages base path |
 

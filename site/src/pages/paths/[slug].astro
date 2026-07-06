@@ -1,103 +1,234 @@
 ---
-import { getCollection, render } from "astro:content";
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
+import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
 import {
-  WORKED_EXAMPLE_BOOK_ID,
   bookHref,
   cardHref,
   chapterCardFor,
-  pdfHref
+  pathHref,
+  pdfHref,
+  resolveCard
 } from "../../lib/site-urls";
+import { getReadingPath, readingPathIds, type ReadingPathStep } from "../../lib/reading-paths";
+import {
+  defaultPrimaryLabel,
+  resolveSpotlightTarget
+} from "../../lib/reading-path-spotlight";
+import demosIndex from "../../data/demos.json";
+import experimentsIndex from "../../data/experiments.json";
+import bookIndex from "../../data/book.json";
 
 export async function getStaticPaths() {
-  const paths = await getCollection("paths");
-  return paths.map((path) => ({
-    params: { slug: path.id },
-    props: { path }
+  return readingPathIds().map((slug) => ({
+    params: { slug },
+    props: { slug }
   }));
 }
 
-const { path } = Astro.props;
-const { Content } = await render(path);
+const { slug } = Astro.props;
+const path = getReadingPath(slug);
+if (!path) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}paths/`);
+}
+
+const markdown = await createMarkdownProcessor();
+const { code: bodyHtml } = await markdown.render(path.body);
+
 const cards = await getCollection("cards");
 const cardById = new Map(cards.map((card) => [card.id, card]));
 const base = import.meta.env.BASE_URL;
 const withBase = (route: string) => `${base}${route.replace(/^\/+/, "")}`;
-const workedExampleCard = chapterCardFor(cards, WORKED_EXAMPLE_BOOK_ID);
-const deploymentGateCard = cardById.get("deployment-gate");
+const spotlightContext = { base, cards, withBase };
+
+type StepBadge = {
+  label: string;
+  variant?: string;
+  href?: string;
+};
+
+const bookTitleFor = (chapterId: string) => {
+  const chapter = bookIndex.chapters.find((entry) => entry.id === chapterId);
+  if (chapter) return chapter.title;
+  if (chapterId === "frontmatter") return "Executive Overview";
+  return chapterId;
+};
+
+const resolveStep = (step: ReadingPathStep) => {
+  switch (step.kind) {
+    case "card": {
+      const card = resolveCard(cards, step.ref) ?? cardById.get(step.ref);
+      if (!card) return null;
+      return {
+        href: cardHref(base, card.id),
+        title: card.data.title,
+        summary: step.note ?? card.data.summary,
+        badges: [
+          { label: card.data.type, href: badgeTypeHref(base, card.data.type) },
+          {
+            label: card.data.status,
+            variant: card.data.status,
+            href: badgeStatusHref(base, card.data.status)
+          }
+        ] satisfies StepBadge[]
+      };
+    }
+    case "demo": {
+      const demo = demosIndex.demos.find((entry) => entry.id === step.ref);
+      if (!demo) return null;
+      const badges: StepBadge[] = [
+        { label: "demo", variant: "framework", href: withBase("/demos/") }
+      ];
+      if (demo.chapterId) {
+        badges.push({ label: demo.chapterId, variant: "framework" });
+      }
+      badges.push({ label: demo.kind.replace(/-/g, " ") });
+      return {
+        href: withBase(demo.sitePath),
+        title: demo.title,
+        summary: step.note ?? demo.summary,
+        badges
+      };
+    }
+    case "experiment": {
+      const line = experimentsIndex.lines.find((entry) => entry.id === step.ref);
+      if (!line) return null;
+      return {
+        href: withBase(`/experiments/#${line.id}`),
+        title: line.title,
+        summary: step.note ?? line.role.trim(),
+        badges: [
+          { label: "experiment", variant: "open", href: withBase("/experiments/") },
+          { label: "sanity check", variant: "open" },
+          { label: `line ${line.order}`, variant: "framework" }
+        ] satisfies StepBadge[]
+      };
+    }
+    case "book": {
+      const chapterCard = chapterCardFor(cards, step.ref);
+      const title = chapterCard?.data.title ?? bookTitleFor(step.ref);
+      const summary =
+        step.note ??
+        chapterCard?.data.summary ??
+        "Read on the site or in the PDF.";
+      const bookType = chapterCard?.data.type ?? (step.ref === "frontmatter" ? "frontmatter" : "chapter");
+      const bookStatus = chapterCard?.data.status ?? "reviewed";
+      return {
+        href: bookHref(base, step.ref),
+        title,
+        summary,
+        badges: [
+          { label: bookType, href: badgeTypeHref(base, bookType) },
+          {
+            label: bookStatus,
+            variant: bookStatus,
+            href: badgeStatusHref(base, bookStatus)
+          },
+          { label: step.ref, variant: "framework" }
+        ] satisfies StepBadge[]
+      };
+    }
+    case "lean": {
+      const leanRoutes: Record<string, { title: string; summary: string }> = {
+        overview: {
+          title: "Lean proof spine",
+          summary: "Machine-checked conditional skeleton — proofs, bridges, counterexamples."
+        },
+        "graph/overview": {
+          title: "Overview dependency graph",
+          summary: "Visual map of what the formal spine checks."
+        }
+      };
+      const entry = leanRoutes[step.ref];
+      if (!entry) return null;
+      return {
+        href: withBase(`/lean/${step.ref === "overview" ? "" : step.ref + "/"}`),
+        title: entry.title,
+        summary: step.note ?? entry.summary,
+        badges: [
+          { label: "lean", variant: "framework", href: withBase("/lean/") },
+          { label: step.ref.replace("/", " · "), variant: "plausible" }
+        ] satisfies StepBadge[]
+      };
+    }
+    default:
+      return null;
+  }
+};
+
+const resolvedSteps = path.steps
+  .map((step) => ({ step, resolved: resolveStep(step) }))
+  .filter((entry): entry is { step: ReadingPathStep; resolved: NonNullable<ReturnType<typeof resolveStep>> } =>
+    entry.resolved !== null
+  );
 ---
 
-<SiteLayout title={path.data.title} description={path.data.summary}>
+<SiteLayout title={path.title} description={path.summary}>
   <section class="hero">
-    <p class="eyebrow">{path.data.audience}</p>
-    <h1>{path.data.title}</h1>
-    <p class="lede">{path.data.summary}</p>
+    <p class="eyebrow">{path.audience}</p>
+    <h1>{path.title}</h1>
+    <p class="lede">{path.summary}</p>
   </section>
 
-  {path.data.featuredWorkedExample && workedExampleCard && (
+  {path.featuredSpotlight && (
     <section class="callout worked-example readable">
-      <p class="eyebrow">Appendix D · start here for concreteness</p>
-      <h2>BioShield worked example</h2>
-      <p>
-        The book's deployment gate is not abstract checklist prose. Appendix D walks a fictional hospital
-        network (BioShield) through boundary, grounding, correction handles, bearer maps, successors,
-        selection pressure, and a conditional safety case — the same spine the formal appendix checks.
-      </p>
+      <p class="eyebrow">{path.featuredSpotlight.eyebrow}</p>
+      <h2>{path.featuredSpotlight.title}</h2>
+      <p>{path.featuredSpotlight.blurb}</p>
       <p class="button-row">
-        <a class="button primary" href={bookHref(base, WORKED_EXAMPLE_BOOK_ID)}>Read Appendix D</a>
-        {deploymentGateCard && (
-          <a class="button" href={cardHref(base, deploymentGateCard.id)}>Deployment gate card</a>
+        <a
+          class="button primary"
+          href={resolveSpotlightTarget(path.featuredSpotlight, spotlightContext)}
+        >
+          {defaultPrimaryLabel(path.featuredSpotlight, spotlightContext)}
+        </a>
+        {path.featuredSpotlight.secondary && (
+          <a
+            class="button"
+            href={resolveSpotlightTarget(path.featuredSpotlight.secondary, spotlightContext)}
+          >
+            {path.featuredSpotlight.secondary.label}
+          </a>
         )}
       </p>
     </section>
   )}
 
-  <section class="content-card readable">
-    <Content />
-  </section>
-
-  {path.data.featuredLean && (
-    <section class="callout readable">
-      <h2>Lean proof spine</h2>
-      <p>
-        The formal path pairs these cards with the machine-checked conditional skeleton: dependency graphs,
-        axiom-budget checks, and self-contained try-it-out snippets in Lean 4 Web.
-      </p>
-      <p>
-        <a class="button primary" href={withBase("/lean/")}>Open Lean proof spine</a>
-        {" "}
-        <a class="button" href={withBase("/lean/graph/overview/")}>Overview graph</a>
-      </p>
-    </section>
-  )}
+  <section class="content-card readable" set:html={bodyHtml} />
 
   <section>
     <h2>Read in this order</h2>
-    <ol>
-      {path.data.cards.map((slug: string) => {
-        const card = cardById.get(slug);
-        if (!card) return null;
-        return (
-          <li class="card">
-            <div class="badge-row">
-              <Badge label={card.data.type} />
-              <Badge label={card.data.status} variant={card.data.status} />
-            </div>
-            <h3><a href={cardHref(base, card.id)}>{card.data.title}</a></h3>
-            <p>{card.data.summary}</p>
-          </li>
-        );
-      })}
+    <p class="reading-list-intro">
+      Cards, chapter toys, experiment lines, and book chapters — curated for this audience. Experiments are
+      sanity checks only; negative results are part of the reading.
+    </p>
+    <ol class="reading-list">
+      {resolvedSteps.map(({ resolved }) => (
+        <li class="card reading-step">
+          <div class="badge-row">
+            {resolved.badges.map((badge) => (
+              <Badge label={badge.label} variant={badge.variant} href={badge.href} />
+            ))}
+          </div>
+          <h3><a href={resolved.href}>{resolved.title}</a></h3>
+          <p>{resolved.summary}</p>
+        </li>
+      ))}
     </ol>
   </section>
 
-  <p><a class="button" href={pdfHref(base)}>Read the PDF</a></p>
+  <p class="button-row">
+    <a class="button" href={pdfHref(base)}>Read the PDF</a>
+    <a class="button" href={withBase("/demos/")}>All chapter toys</a>
+    <a class="button" href={withBase("/experiments/")}>All experiment lines</a>
+  </p>
   {path.id === "researcher-applied" && (
-    <p class="readable"><a href={withBase("/paths/researcher-formal/")}>Continue to Researcher — Formal</a></p>
+    <p class="readable"><a href={pathHref(base, "researcher-formal")}>Continue to Researcher — Formal</a></p>
   )}
   {path.id === "researcher-formal" && (
-    <p class="readable"><a href={withBase("/paths/researcher-applied/")}>Start with Researcher — Applied</a></p>
+    <p class="readable"><a href={pathHref(base, "researcher-applied")}>Start with Researcher — Applied</a></p>
   )}
 </SiteLayout>
 
@@ -108,5 +239,38 @@ const deploymentGateCard = cardById.get("deployment-gate");
 
   .worked-example h2 {
     margin-top: 0.35rem;
+  }
+
+  .reading-list-intro {
+    color: var(--color-muted);
+    margin-top: 0;
+  }
+
+  .reading-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: reading-step;
+  }
+
+  .reading-step {
+    counter-increment: reading-step;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .reading-step::before {
+    content: counter(reading-step);
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    display: grid;
+    place-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-muted);
   }
 </style>

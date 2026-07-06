@@ -4,6 +4,7 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import CardSection from "../../components/CardSection.astro";
 import { cardHref as buildCardHref } from "../../lib/site-urls";
 import fieldSubsumptionGems from "../../data/field-subsumption-gems.json";
+import experimentsData from "../../data/experiments.json";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -44,15 +45,27 @@ const byType = (type: string) =>
     .map(toEntry);
 
 const concepts = byType("concept").filter((card) => !fieldSubsumptionGems.includes(card.id));
+const referenceIndexCard = cards.find((card) => card.id === "reference-index");
+const referenceCards = cards
+  .filter((card) => card.data.type === "reference")
+  .sort((a, b) => a.data.title.localeCompare(b.data.title))
+  .map(toEntry);
 const referencesSection = [
-  {
-    id: "reference-index",
-    title: "Reference cards",
-    summary: "Alphabetical index of every bibliography entry — each opens as its own card with citing chapters.",
-    type: "artifact",
-    status: "reviewed"
-  }
+  ...(referenceIndexCard ? [toEntry(referenceIndexCard)] : []),
+  ...referenceCards
 ];
+const experimentOrder = new Map(
+  experimentsData.lines.map((line: { id: string; order: number }) => [line.id, line.order])
+);
+const experiments = cards
+  .filter((card) => card.data.type === "experiment")
+  .sort((a, b) => {
+    const orderA = experimentOrder.get(a.data.experimentLineId ?? "") ?? 999;
+    const orderB = experimentOrder.get(b.data.experimentLineId ?? "") ?? 999;
+    if (orderA !== orderB) return orderA - orderB;
+    return a.data.title.localeCompare(b.data.title);
+  })
+  .map(toEntry);
 const fieldSubsumptions = cards
   .filter((card) => fieldSubsumptionGems.includes(card.id))
   .sort((a, b) => fieldSubsumptionGems.indexOf(a.id) - fieldSubsumptionGems.indexOf(b.id))
@@ -65,6 +78,7 @@ const glossary = byType("glossary");
 const sections = [
   { title: "Chapters", id: "chapters", cards: chapters },
   { title: "Appendices & front matter", id: "appendices", cards: appendices },
+  { title: "Experiments", id: "experiments", cards: experiments },
   { title: "Reference cards", id: "references", cards: referencesSection },
   { title: "Field subsumptions", id: "field-subsumptions", cards: fieldSubsumptions },
   { title: "Concepts", id: "concepts", cards: concepts },
@@ -82,10 +96,12 @@ const totalCards = sections.reduce((sum, section) => sum + section.cards.length,
     <p class="eyebrow">Cards</p>
     <h1>Short canonical artifacts</h1>
     <p class="lede">
-      {totalCards} cards across chapters, appendices, concepts, bridges, and supporting artifacts. Each section shows three entries first — expand to browse the full inventory.
+      {totalCards} cards across chapters, appendices, experiments, references, concepts, bridges, and supporting artifacts. Each section shows three entries first — expand to browse the full inventory.
     </p>
     <p class="side-panel-meta">
       <a href={withBase("/references/")}>Chapter-grouped bibliography</a>
+      {" · "}
+      <a href={withBase("/experiments/")}>Experiment lines</a>
       {" · "}
       <a href={withBase("/paths/")}>Prefer a guided tour?</a>
     </p>

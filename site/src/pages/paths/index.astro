@@ -1,23 +1,36 @@
 ---
-import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { bookHref } from "../../lib/site-urls";
+import PathRelationshipDiagram from "../../components/PathRelationshipDiagram.astro";
+import { pathHref } from "../../lib/site-urls";
+import { getReadingPaths, type ReadingPathStep } from "../../lib/reading-paths";
+import { resolveSpotlightTarget } from "../../lib/reading-path-spotlight";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 
-const PATH_ORDER = [
-  "generalist",
-  "philosopher",
-  "researcher-applied",
-  "researcher-formal",
-  "engineer-evals",
-  "funder-policy"
-];
+const paths = getReadingPaths();
+const spotlightContext = {
+  base,
+  cards: [],
+  withBase
+};
 
-const paths = (await getCollection("paths")).sort(
-  (a, b) => PATH_ORDER.indexOf(a.id) - PATH_ORDER.indexOf(b.id)
-);
+const stepSummary = (steps: ReadingPathStep[]) => {
+  const counts = steps.reduce(
+    (acc, step) => {
+      acc[step.kind] = (acc[step.kind] ?? 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+  const parts: string[] = [];
+  if (counts.card) parts.push(`${counts.card} cards`);
+  if (counts.demo) parts.push(`${counts.demo} ${counts.demo === 1 ? "toy" : "toys"}`);
+  if (counts.experiment) parts.push(`${counts.experiment} experiment${counts.experiment === 1 ? "" : "s"}`);
+  if (counts.book) parts.push(`${counts.book} chapters`);
+  if (counts.lean) parts.push(`${counts.lean} Lean`);
+  return parts.join(" · ");
+};
 ---
 
 <SiteLayout title="Guided Tour" description="Guided reading paths through the companion site.">
@@ -26,7 +39,7 @@ const paths = (await getCollection("paths")).sort(
     <h1>Guided Tour</h1>
     <p class="lede">
       With 48 chapters and dense formalism, orientation matters. Pick the path closest to your role;
-      each one states what you will learn, how long it takes, and an ordered card list—no prior jargon required.
+      each one gives an ordered reading list — concept cards, chapter toys, experiment lines, and book chapters.
     </p>
     <p class="button-row">
       <a class="button primary" href={withBase("/faq/")}>FAQ</a>
@@ -37,44 +50,33 @@ const paths = (await getCollection("paths")).sort(
   <section class="callout readable path-diagram">
     <h2>How paths relate</h2>
     <p class="diagram-caption">Start at the center, branch by role, deepen as needed.</p>
-    <div class="path-flow" aria-hidden="true">
-      <div class="path-node path-node-center">New reader</div>
-      <div class="path-row">
-        <a class="path-node" href={withBase("/paths/generalist/")}>Generalist</a>
-        <a class="path-node" href={withBase("/paths/philosopher/")}>Philosopher</a>
-        <a class="path-node" href={withBase("/paths/funder-policy/")}>Funder / policy</a>
-      </div>
-      <div class="path-row">
-        <a class="path-node" href={withBase("/paths/researcher-applied/")}>Researcher — applied</a>
-        <span class="path-arrow">→</span>
-        <a class="path-node" href={withBase("/paths/researcher-formal/")}>Researcher — formal</a>
-      </div>
-      <div class="path-row">
-        <a class="path-node" href={withBase("/paths/engineer-evals/")}>Engineer / evals</a>
-        <span class="path-note">often pairs with Appendix D worked example</span>
-      </div>
-    </div>
+    <PathRelationshipDiagram paths={paths} base={base} />
     <p>
       All paths begin with <strong>what the book is not claiming</strong>. Researchers and engineers can merge paths;
       philosophers often skip formal Lean until the basin and bearer questions land.
     </p>
   </section>
 
-  <div class="grid">
-    {paths.map((path) => (
-      <article class="card">
-        <h3><a href={withBase(`/paths/${path.id}/`)}>{path.data.title}</a></h3>
-        <p><strong>{path.data.audience}</strong></p>
-        <p>{path.data.summary}</p>
-        {path.data.featuredLean && (
-          <p class="side-panel-meta"><a href={withBase("/lean/")}>Includes Lean proof spine</a></p>
-        )}
-        {path.data.featuredWorkedExample && (
-          <p class="side-panel-meta"><a href={bookHref(base, "appD")}>Includes BioShield worked example</a></p>
-        )}
-      </article>
-    ))}
-  </div>
+  <section>
+    <h2>Choose a path</h2>
+    <div class="grid">
+      {paths.map((path) => (
+        <article class="card">
+          <h3><a href={pathHref(base, path.id)}>{path.title}</a></h3>
+          <p><strong>{path.audience}</strong></p>
+          <p>{path.summary}</p>
+          <p class="side-panel-meta">{path.steps.length} steps · {stepSummary(path.steps)}</p>
+          {path.featuredSpotlight && (
+            <p class="side-panel-meta">
+              <a href={resolveSpotlightTarget(path.featuredSpotlight, spotlightContext)}>
+                Featured: {path.featuredSpotlight.title}
+              </a>
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
 </SiteLayout>
 
 <style>
@@ -86,50 +88,5 @@ const paths = (await getCollection("paths")).sort(
     margin-top: 0;
     color: var(--color-muted);
     font-size: 0.95rem;
-  }
-
-  .path-flow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    margin: 1.25rem 0;
-    font-size: 0.92rem;
-  }
-
-  .path-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem 0.75rem;
-  }
-
-  .path-node {
-    border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-    padding: 0.45rem 0.75rem;
-    background: var(--color-surface);
-    text-decoration: none;
-    color: inherit;
-  }
-
-  a.path-node:hover {
-    border-color: var(--color-accent-strong);
-  }
-
-  .path-node-center {
-    font-weight: 600;
-    background: var(--color-open-bg);
-  }
-
-  .path-arrow {
-    opacity: 0.6;
-  }
-
-  .path-note {
-    font-size: 0.85rem;
-    color: var(--color-muted);
-    font-style: italic;
   }
 </style>

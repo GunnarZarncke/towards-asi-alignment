@@ -5,13 +5,14 @@ const card = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/cards" }),
   schema: z.object({
     title: z.string(),
-    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference"]),
+    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment"]),
     status: z.enum(["established", "plausible", "framework", "bridge", "open", "negative", "reviewed"]).default("framework"),
     summary: z.string(),
     decision: z.string().optional(),
     evidence: z.string().optional(),
     bookPageId: z.string().optional(),
     bibKey: z.string().optional(),
+    experimentLineId: z.string().optional(),
     citedIn: z.array(z.string()).default([]),
     part: z.string().optional(),
     formalDensity: z.enum(["low", "medium", "high"]).optional(),
@@ -53,13 +54,19 @@ const card = defineCollection({
   })
 });
 
-const path = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/paths" }),
+const readingPathStep = z.object({
+  kind: z.enum(["card", "demo", "experiment", "book", "lean"]),
+  ref: z.string(),
+  note: z.string().optional()
+});
+
+const readingPath = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/reading-paths" }),
   schema: z.object({
     title: z.string(),
     audience: z.string(),
     summary: z.string(),
-    cards: z.array(z.string()),
+    steps: z.array(readingPathStep),
     featuredLean: z.boolean().optional(),
     featuredWorkedExample: z.boolean().optional()
   })
@@ -79,6 +86,6 @@ const book = defineCollection({
 
 export const collections = {
   cards: card,
-  paths: path,
+  "reading-paths": readingPath,
   book
 };
