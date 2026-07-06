@@ -116,4 +116,4 @@ third interruption corrected it directly.
 
 ## Commits
 
-- `5307d0f` Add lab-simulation D4/D1: comms substrate, UAD, and permissioned file channel.
+- `edd00fa` Add lab-simulation D4/D1: comms substrate, UAD, and permissioned file channel.
