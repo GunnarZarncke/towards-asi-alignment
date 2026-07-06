@@ -84,6 +84,10 @@ Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-s
 1. Read `drafts/conversation-summaries/INDEX.md` and the most recent log file.
 2. Check `metadata/book.yml` for chapter status and the open items in that log.
 
+**When making a plan in plan mode:**
+
+Write the plan into `drafts/<planname>.md` or a more task specific directory, as appropriate. Update the plan as work progresses.
+
 **At session milestones (required when the session changed the repo, drafted text, or made project decisions):**
 
 1. Add `drafts/conversation-summaries/YYYY-MM-DD-short-topic.md` using the template in `drafts/conversation-summaries/README.md`.
