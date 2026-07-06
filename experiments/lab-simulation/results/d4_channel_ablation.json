@@ -1,0 +1,341 @@
+{
+  "cells": {
+    "committee_board:False": {
+      "condition": false,
+      "fraction_coordinated": 1.0,
+      "label": "committee_board",
+      "mean_collusion_score": 1.0,
+      "mean_deploy_count": 26.2,
+      "mean_uad_score": 1.0,
+      "n_seeds": 5,
+      "records": [
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 23,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 18,
+          "uad_score": 1.0
+        }
+      ]
+    },
+    "committee_board:all_severed": {
+      "condition": "all_severed",
+      "fraction_coordinated": 0.0,
+      "label": "committee_board",
+      "mean_collusion_score": 0.0,
+      "mean_deploy_count": 26.2,
+      "mean_uad_score": 0.0,
+      "n_seeds": 5,
+      "records": [
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 23,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 18,
+          "uad_score": 0.0
+        }
+      ]
+    },
+    "committee_board:native_severed": {
+      "condition": "native_severed",
+      "fraction_coordinated": 1.0,
+      "label": "committee_board",
+      "mean_collusion_score": 1.0,
+      "mean_deploy_count": 23.8,
+      "mean_uad_score": 1.0,
+      "n_seeds": 5,
+      "records": [
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 23,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 18,
+          "uad_score": 1.0
+        }
+      ]
+    },
+    "committee_file:False": {
+      "condition": false,
+      "fraction_coordinated": 1.0,
+      "label": "committee_file",
+      "mean_collusion_score": 1.0,
+      "mean_deploy_count": 23.8,
+      "mean_uad_score": 1.0,
+      "n_seeds": 5,
+      "records": [
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 23,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 18,
+          "uad_score": 1.0
+        }
+      ]
+    },
+    "committee_file:all_severed": {
+      "condition": "all_severed",
+      "fraction_coordinated": 0.0,
+      "label": "committee_file",
+      "mean_collusion_score": 0.0,
+      "mean_deploy_count": 26.2,
+      "mean_uad_score": 0.0,
+      "n_seeds": 5,
+      "records": [
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 23,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 18,
+          "uad_score": 0.0
+        }
+      ]
+    },
+    "committee_file:native_severed": {
+      "condition": "native_severed",
+      "fraction_coordinated": 1.0,
+      "label": "committee_file",
+      "mean_collusion_score": 1.0,
+      "mean_deploy_count": 26.2,
+      "mean_uad_score": 1.0,
+      "n_seeds": 5,
+      "records": [
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 23,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 18,
+          "uad_score": 1.0
+        }
+      ]
+    },
+    "dm_pair:False": {
+      "condition": false,
+      "fraction_coordinated": 1.0,
+      "label": "dm_pair",
+      "mean_collusion_score": 0.0,
+      "mean_deploy_count": 26.2,
+      "mean_uad_score": 1.0,
+      "n_seeds": 5,
+      "records": [
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 23,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 18,
+          "uad_score": 1.0
+        }
+      ]
+    },
+    "dm_pair:all_severed": {
+      "condition": "all_severed",
+      "fraction_coordinated": 0.0,
+      "label": "dm_pair",
+      "mean_collusion_score": 0.0,
+      "mean_deploy_count": 26.2,
+      "mean_uad_score": 0.0,
+      "n_seeds": 5,
+      "records": [
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 23,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 30,
+          "uad_score": 0.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": false,
+          "deploy_count": 18,
+          "uad_score": 0.0
+        }
+      ]
+    }
+  },
+  "code_version": "lab-sim-0.8.0",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "wall_seconds": 7.45
+}

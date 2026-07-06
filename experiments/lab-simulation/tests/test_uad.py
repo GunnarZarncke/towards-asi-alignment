@@ -8,6 +8,8 @@ from lab_sim.ecology import add_decoys, committee_config, decoy_agent_overrides,
 from lab_sim.isolate import MockIsolate
 from lab_sim.uad import (
     CoordinationTrace,
+    binary_mutual_information,
+    build_actor_perturbation_hook,
     build_coordination_trace,
     build_coordination_trace_from_memos,
     co_voting_matrix,
@@ -15,6 +17,7 @@ from lab_sim.uad import (
     discover_dm_pairs_from_tool_events,
     discover_file_share_pairs_from_access_log,
     discovered_units,
+    perturbation_response_mi,
     uad_score,
 )
 from lab_sim.world import run_episode
@@ -165,6 +168,57 @@ def test_board_only_discovery_would_have_missed_the_file_channel_committee():
         assert uad_score(true_units, board_only_coalitions) < 1.0, "board-only signal must under-recover"
         # ... but the FULL discovered_units (memo trace + share pairs) recovers it:
         assert uad_score(true_units, discovered_units(result, tier="deep")) == 1.0
+    finally:
+        result.cleanup()
+
+
+def test_binary_mutual_information_synthetic_series():
+    # Identical, balanced binary series: MI == H(X) == 1.0 bit.
+    x = [True, False] * 10
+    assert round(binary_mutual_information(x, x), 6) == 1.0
+    # Constant series: zero entropy, zero MI regardless of the other series.
+    constant = [True] * 20
+    assert binary_mutual_information(constant, x) == 0.0
+    # Balanced, independent 2x2 joint distribution: MI == 0.
+    independent_x = [True, True, False, False] * 5
+    independent_y = [True, False, True, False] * 5
+    assert round(binary_mutual_information(independent_x, independent_y), 6) == 0.0
+    # Mismatched lengths / empty input: defined as 0.0, never an error.
+    assert binary_mutual_information([], []) == 0.0
+    assert binary_mutual_information([True], [True, False]) == 0.0
+
+
+def test_perturbation_response_mi_distinguishes_downstream_actor_from_schedule_independent_decoy():
+    """Perturbing the engineer's `run_eval` calls (a LINEAR, idempotent
+    step -- retried for free next turn per `tools.py`'s perturbation-hook
+    docstring, unlike the compound comm step-kinds) delays the whole
+    downstream DM-gated release chain: the release manager's `deploy`
+    timing should show measurably higher perturbation-response MI than a
+    schedule-independent decoy's fixed-cadence board chatter, which never
+    reads anything the engineer does. See uad.py's "Honest scope limit"
+    note: this contrasts a real downstream dependency against an
+    independent schedule, not yet a claim this discriminates ANY true
+    coordination edge from mere pipeline sequencing in general."""
+    cfg = dm_pair_config(T=150)
+    cfg, decoy_ids = add_decoys(cfg, n_decoys=1)
+    backend = MockIsolate()
+    overrides = decoy_agent_overrides(decoy_ids, backend)
+    hook = build_actor_perturbation_hook(
+        "eng1", rate=0.6, seed=99, tool="pipeline.trigger_step", step_id="run_eval",
+    )
+    result = run_episode(
+        cfg, seed=3, backend=backend, agent_overrides=overrides, perturbation_hooks=(hook,),
+    )
+    try:
+        tool_events = build_audit_view(result, "full").tool_events
+        mi_downstream = perturbation_response_mi(
+            tool_events, "eng1", "rm1", "pipeline.trigger_step", horizon=cfg.T, window=3, responder_step_id="deploy",
+        )
+        mi_decoy = perturbation_response_mi(
+            tool_events, "eng1", decoy_ids[0], "board.post", horizon=cfg.T, window=3,
+        )
+        assert mi_downstream > mi_decoy
+        assert mi_decoy < 0.05, "decoy's fixed t%3==0 schedule must not respond to eng1's perturbation"
     finally:
         result.cleanup()
 

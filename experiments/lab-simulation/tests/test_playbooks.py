@@ -154,7 +154,9 @@ def test_merged_repertoire_empty_extra_returns_baseline_object_unchanged():
     assert merged_repertoire(None) is PLAYBOOKS_BY_ROLE
 
 
-_BASELINE_ENGINEER_NAMES = {"eng_honest", "eng_inflate", "eng_capability_probe", "eng_honest_dm_coordinated"}
+_BASELINE_ENGINEER_NAMES = {
+    "eng_honest", "eng_inflate", "eng_capability_probe", "eng_honest_dm_coordinated", "eng_honest_upgrade",
+}
 
 
 def test_merged_repertoire_adds_generated_playbook_without_losing_baseline():

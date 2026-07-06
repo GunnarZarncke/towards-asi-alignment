@@ -9,6 +9,7 @@
     {"id": "request_release", "tool": "release_request", "depends_on": ["approve_review"], "requires_capability": "cap.release_request"},
     {"id": "sign_off", "tool": "sign_off", "depends_on": ["request_release"], "requires_capability": "cap.sign_off"},
     {"id": "deploy", "tool": "deploy", "depends_on": ["sign_off"], "requires_capability": "cap.deploy"},
-    {"id": "monitor", "tool": "monitor", "depends_on": ["deploy"], "requires_capability": "cap.monitor", "idempotent": true}
+    {"id": "monitor", "tool": "monitor", "depends_on": ["deploy"], "requires_capability": "cap.monitor", "idempotent": true},
+    {"id": "upgrade_spec", "tool": "spec_upgrade", "depends_on": ["monitor"], "requires_capability": "cap.spec_upgrade", "idempotent": true}
   ]
 }

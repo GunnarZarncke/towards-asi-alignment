@@ -56,9 +56,30 @@ class EpisodeResult:
     host: Host
     handles: HandleService
     timings: list[IsolateRunTiming] = field(default_factory=list)
+    # D2 (post-freeze consolidation pass): the single-model-in-flight slot
+    # and last-deployed lineage target at episode end -- carried so a
+    # FOLLOW-UP episode can `resume_from` exactly where this one stopped.
+    model_id: str | None = None
+    last_deployed_model_id: str | None = None
 
     def cleanup(self) -> None:
         self.workspace.cleanup()
+
+    def snapshot_for_resume(self) -> dict[str, object]:
+        """D2 ``resume_from`` episode chaining: everything
+        ``world.run_episode(..., resume_from=...)`` needs to reconstruct
+        oracle + engine state exactly (RNG continuity excepted -- see
+        ``OracleWorld.full_state``). JSON-safe."""
+        return {
+            "oracle": self.oracle.full_state(),
+            "spec_history": self.engine.spec_history_state(),
+            "completed": {
+                model_id: sorted(steps) for model_id, steps in self.engine.completed_by_model().items()
+            },
+            "held": sorted(self.engine.held_model_ids()),
+            "model_id": self.model_id,
+            "last_deployed_model_id": self.last_deployed_model_id,
+        }
 
 
 def run_episode(
@@ -69,6 +90,7 @@ def run_episode(
     perturbation_hooks: tuple = (),
     overseer_script: tuple = (),
     agent_overrides: dict[str, tuple] | None = None,
+    resume_from: dict[str, object] | None = None,
 ) -> EpisodeResult:
     """``perturbation_hooks``: host-side benign perturbation injectors (see
     ``tools.PerturbationHook``) — D1/UAD forward hook. Agents recover for
@@ -91,13 +113,38 @@ def run_episode(
     programmatic, without touching the shared episode loop. Every actor
     still receives the identical observation dict; only which backend
     answers ``spawn``/``step``/``close`` for it differs. Absent (default),
-    behavior is byte-identical to before this hook existed."""
+    behavior is byte-identical to before this hook existed.
+
+    ``resume_from``: D2 episode chaining -- a prior episode's
+    ``EpisodeResult.snapshot_for_resume()``. When given, oracle + engine
+    state (models, ``bearer_harm``, ``t``, provenance, spec-in-force,
+    per-model completed steps, release holds, the in-flight model slot,
+    lineage target) are restored exactly; ``cfg.pipeline_spec`` is then
+    IGNORED (the resumed spec-in-force wins) and a fresh
+    ``random.Random(seed)`` stream starts (RNG continuity is NOT
+    preserved -- see ``OracleWorld.full_state``). Absent (default,
+    ``None``), behavior is byte-identical to every pre-D2 call."""
     backend = backend or MockIsolate()
     agent_overrides = agent_overrides or {}
-    oracle = OracleWorld(seed=seed)
     ws = Workspace()
     permissions = PermissionService()
-    engine = PipelineEngine(load_spec(cfg.pipeline_spec), oracle, ws, permission_service=permissions)
+    if resume_from is not None:
+        oracle = OracleWorld.restore(resume_from["oracle"], seed=seed)
+        engine = PipelineEngine(
+            None, oracle, ws, permission_service=permissions,
+            resume_state={
+                "spec_history": resume_from["spec_history"],
+                "completed": resume_from["completed"],
+                "held": resume_from["held"],
+            },
+        )
+        model_id: str | None = resume_from.get("model_id")
+        last_deployed_model_id: str | None = resume_from.get("last_deployed_model_id")
+    else:
+        oracle = OracleWorld(seed=seed)
+        engine = PipelineEngine(load_spec(cfg.pipeline_spec), oracle, ws, permission_service=permissions)
+        model_id = None
+        last_deployed_model_id = None
     admin = AdminPolicy(cfg.admin, permissions)
     handle_service = HandleService(engine=engine, permissions=permissions)
     roles = {a.actor_id: a.role for a in cfg.agents}
@@ -110,10 +157,16 @@ def run_episode(
     # handed to an agent (see tools.py module docstring). Empty for every
     # episode that never sets `AgentConfig.persistent_id` (default `None`).
     persistent_ids = {a.actor_id: a.persistent_id for a in cfg.agents if a.persistent_id}
+    channels_enabled = {
+        "board": cfg.channel_enabled("board"),
+        "dm": cfg.channel_enabled("dm"),
+        "file": cfg.channel_enabled("file"),
+    }
     host = Host(
         engine, permissions, admin, roles,
         perturbation_hooks=perturbation_hooks, handle_service=handle_service, comms=comms,
         persistent_ids=persistent_ids, groups=cfg.resolved_groups(),
+        channels_enabled=channels_enabled,
     )
     script_by_tick: dict[int, list[tuple[str, str]]] = {}
     for when, handle_id, target in overseer_script:
@@ -154,7 +207,8 @@ def run_episode(
         handles[a.actor_id] = b.spawn(a.actor_id, seed=_actor_seed(seed, a.actor_id), program=p)
         backend_by_actor[a.actor_id] = b
 
-    model_id: str | None = None
+    # `model_id`/`last_deployed_model_id` (in-flight slot / lineage target)
+    # were initialized above, either fresh (`None`) or from `resume_from`.
     last_payload: dict[str, dict | None] = {a.actor_id: None for a in playbook_agents}
     last_denied: dict[str, str | None] = {a.actor_id: None for a in playbook_agents}
 
@@ -202,6 +256,24 @@ def run_episode(
                 # of `available_playbooks` before these values matter —
                 # see `playbooks._requires_comms`).
                 "comms_enabled": cfg.comms_enabled,
+                # D4 channel-ablation: RESOLVED per-channel booleans (see
+                # `LabConfig.channel_enabled`) -- `playbooks.available_playbooks`
+                # gates each comm-aware playbook by the SPECIFIC channel its
+                # step_kinds need, not the blanket `comms_enabled` above.
+                "channels_enabled": channels_enabled,
+                # D2 (post-freeze consolidation pass): off by default,
+                # byte-identical to every pre-D2 episode (see LabConfig
+                # docstrings).
+                "multi_gen_enabled": cfg.multi_gen_enabled,
+                "spec_upgrade_target": cfg.spec_upgrade_target,
+                "last_deployed_model_id": last_deployed_model_id,
+                "last_deployed_model_completed_steps": (
+                    sorted(engine.completed_steps(last_deployed_model_id)) if last_deployed_model_id else []
+                ),
+                # Post-freeze consolidation pass item 3: an explicit
+                # steering pin this actor may or may not have; absent
+                # (`None`) reproduces pure emergent softmax selection.
+                "pinned_playbook": cfg.playbook_pins.get(agent_cfg.actor_id),
                 "unit_id": unit_id,
                 "committee_members": tuple(m for m in unit_members if m != agent_cfg.actor_id),
                 "is_committee_chair": bool(unit_members) and unit_members[0] == agent_cfg.actor_id,
@@ -261,6 +333,8 @@ def run_episode(
                     last_payload[agent_cfg.actor_id] = dict(result.payload)
                     if agent_cfg.role == "engineer" and step_id == "submit_build":
                         model_id = str(result.payload["model_id"])
+                    if agent_cfg.role == "release_manager" and step_id == "deploy":
+                        last_deployed_model_id = str(result.payload["model_id"])
                     if agent_cfg.role == "release_manager" and step_id == "monitor":
                         model_id = None  # single-model-in-flight: free the slot
         admin.tick()
@@ -270,6 +344,7 @@ def run_episode(
     return EpisodeResult(
         engine=engine, oracle=oracle, workspace=ws, permissions=permissions,
         host=host, handles=handle_service, timings=timings,
+        model_id=model_id, last_deployed_model_id=last_deployed_model_id,
     )
 
 

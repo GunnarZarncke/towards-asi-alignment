@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from lab_sim.access import PermissionService
-from lab_sim.agents import AccessRequest, AdminPolicy, ROLE_CAPABILITIES
+from lab_sim.agents import CREEP_EXEMPT_CAPABILITIES, AccessRequest, AdminPolicy, ROLE_CAPABILITIES
 from lab_sim.config import AdminConfig
 from lab_sim.oracle import OracleWorld
 from lab_sim.pipeline_engine import PipelineEngine
@@ -45,8 +45,13 @@ def test_admin_lazy_grants_all_role_eligible_capabilities():
     svc = PermissionService()
     admin = AdminPolicy(AdminConfig(least_privilege=False), svc)
     admin.handle_request(AccessRequest("eng1", "engineer", "cap.build", t=0))
-    for cap in ROLE_CAPABILITIES["engineer"]:
+    # Comm/file/D2-governance capabilities are pre-provisioned outside this
+    # request path entirely (see agents.CREEP_EXEMPT_CAPABILITIES) — the
+    # lazy-admin spray only ever covers the requestable pipeline subset.
+    for cap in ROLE_CAPABILITIES["engineer"] - CREEP_EXEMPT_CAPABILITIES:
         assert svc.check("eng1", cap, t=1)
+    for cap in ROLE_CAPABILITIES["engineer"] & CREEP_EXEMPT_CAPABILITIES:
+        assert not svc.check("eng1", cap, t=1)
 
 
 def test_admin_denies_out_of_role_capability():

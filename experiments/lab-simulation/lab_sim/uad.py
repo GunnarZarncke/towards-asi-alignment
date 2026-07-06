@@ -41,8 +41,10 @@ and only reachable through ``detectors.AuditView.message_contents``.
 
 from __future__ import annotations
 
+import random
 from dataclasses import dataclass
 from itertools import combinations
+from math import log2
 
 
 @dataclass(frozen=True)
@@ -285,3 +287,146 @@ def uad_score(true_units: dict[str, tuple[str, ...]], discovered: dict[str, tupl
     fn = len(true_pairs - discovered_pairs)
     tn = len(all_pairs) - tp - fp - fn
     return (tp + tn) / len(all_pairs)
+
+
+# -- Perturbation-response MI (post-freeze consolidation pass, PLAN.md
+# item 6) ------------------------------------------------------------------
+#
+# The module docstring's original scope note named perturbation-response
+# Mutual Information (embedded_sim's UAD precedent) as future work; this
+# is that estimator. Built on the EXISTING `tools.PerturbationHook`
+# forward hook (never exercised by any battery before now): a hook bounces
+# one named actor's calls to a specific tool at a fixed, seeded rate; the
+# stimulus (perturbed-at-tick-t) and a candidate response (some OTHER
+# actor's action within a short window after t) are both full-tier tool-
+# event-visible, so this signal needs no deep-tier content at all — a
+# THIRD tier-sufficiency data point alongside the module docstring's
+# board/DM asymmetry and the file-share-pair signal.
+#
+# Honest scope limit (recorded, not hidden): this line's pipeline is
+# STRICTLY SERIAL, single-model-in-flight (world.py's own documented
+# scope simplification) — delaying any one upstream actor's action delays
+# every downstream actor's timing somewhat, not only a true coordination
+# partner's. The estimator below is demonstrated here as a CORRECT,
+# working mechanism (see test_uad.py's synthetic-series tests for its
+# math, and its episode-level demonstration contrasting a real downstream
+# dependency against a schedule-independent decoy), not yet validated as
+# a detector that discriminates true coordination from mere pipeline
+# sequencing in this specific serial topology — that discrimination is
+# exactly the deferred full battery's job (PLAN.md item 6).
+
+
+def build_actor_perturbation_hook(
+    actor_id: str,
+    rate: float,
+    seed: int,
+    tag: str = "probe",
+    tool: str | None = None,
+    step_id: str | None = None,
+):
+    """A ``tools.PerturbationHook`` that bounces calls FROM ``actor_id``
+    with independent probability ``rate`` per matching call, seeded
+    deterministically by ``(seed, actor_id, t)`` (the hook-author
+    determinism contract ``tools.py``'s module docstring requires). Every
+    other actor's calls pass through untouched. ``tool``/``step_id``
+    optionally narrow WHICH calls are eligible -- e.g. only
+    ``pipeline.trigger_step`` calls for ``step_id="run_eval"`` (a LINEAR,
+    idempotent step retried for free next turn), deliberately avoiding
+    this line's COMPOUND comm step-kinds (``review_committee``,
+    ``dm:notify_release``, ...), whose "already acted" isolate-local state
+    is set optimistically BEFORE the call result is known — perturbing
+    one of those silently drops the action for the rest of the episode
+    (a real, recorded limitation of the current playbook mechanics, not
+    of this hook; see ``programs._resolve_review_committee``/
+    ``_advance_playbook``)."""
+
+    def hook(t: int, aid: str, call) -> str | None:
+        if aid != actor_id or rate <= 0.0:
+            return None
+        if tool is not None and call.tool != tool:
+            return None
+        if step_id is not None and call.args.get("step_id") != step_id:
+            return None
+        draw = random.Random(f"{seed}:{actor_id}:{t}").random()
+        return tag if draw < rate else None
+
+    return hook
+
+
+def perturbation_indicator_series(tool_events, actor_id: str, horizon: int) -> list[bool]:
+    """``True`` at tick ``t`` iff ``actor_id`` had a call bounced by a
+    perturbation hook at that tick (``tool_events``'s ``perturbation``
+    field, full-tier-visible — see ``events.TOOL_EVENT_FULL_EXTRA``)."""
+    hit_ticks = {
+        e.get("t") for e in tool_events or ()
+        if e.get("actor_id") == actor_id and e.get("perturbation")
+    }
+    return [t in hit_ticks for t in range(horizon)]
+
+
+def response_indicator_series(
+    tool_events, actor_id: str, tool: str, horizon: int, window: int = 0, step_id: str | None = None
+) -> list[bool]:
+    """``True`` at tick ``t`` iff ``actor_id`` made an OK call to ``tool``
+    at some tick in ``[t, t + window]`` — a response counts if it lands
+    anywhere in a short lookahead window, not only at the exact tick,
+    since this line's episode loop is one tool call per actor per tick
+    (a same-tick response is often mechanically impossible). Pass
+    ``tool="pipeline.trigger_step"`` with ``step_id=<id>`` to key off a
+    specific PIPELINE step (its own name never appears in the ``tool``
+    field — ``args["step_id"]`` does, see ``tools.py``)."""
+    hit_ticks = sorted(
+        {
+            e.get("t") for e in tool_events or ()
+            if e.get("actor_id") == actor_id
+            and e.get("tool") == tool
+            and e.get("ok")
+            and (step_id is None or (e.get("args") or {}).get("step_id") == step_id)
+        }
+    )
+    out = []
+    for t in range(horizon):
+        out.append(any(t <= h <= t + window for h in hit_ticks))
+    return out
+
+
+def binary_mutual_information(xs: list[bool], ys: list[bool]) -> float:
+    """Empirical mutual information (bits) between two same-length binary
+    sequences, estimated from their joint frequency table. 0.0 for
+    independent/constant sequences; ``min(H(X), H(Y))`` at most, positive
+    whenever one series predicts the other better than its marginal."""
+    n = len(xs)
+    if n == 0 or n != len(ys):
+        return 0.0
+    joint = {(0, 0): 0, (0, 1): 0, (1, 0): 0, (1, 1): 0}
+    for x, y in zip(xs, ys):
+        joint[(int(bool(x)), int(bool(y)))] += 1
+    total = 0.0
+    px = {0: sum(joint[(0, b)] for b in (0, 1)) / n, 1: sum(joint[(1, b)] for b in (0, 1)) / n}
+    py = {0: sum(joint[(a, 0)] for a in (0, 1)) / n, 1: sum(joint[(a, 1)] for a in (0, 1)) / n}
+    for (a, b), count in joint.items():
+        pxy = count / n
+        if pxy > 0 and px[a] > 0 and py[b] > 0:
+            total += pxy * log2(pxy / (px[a] * py[b]))
+    return max(0.0, total)
+
+
+def perturbation_response_mi(
+    tool_events,
+    perturbed_actor: str,
+    responder_actor: str,
+    responder_tool: str,
+    horizon: int,
+    window: int = 3,
+    responder_step_id: str | None = None,
+) -> float:
+    """One entry point: MI between "``perturbed_actor`` was bounced at
+    tick t" and "``responder_actor`` made an OK ``responder_tool`` call
+    (optionally narrowed to one pipeline ``responder_step_id``) within
+    ``window`` ticks after t" — the perturbation-response UAD signal (see
+    module section docstring for scope/limits)."""
+    stimulus = perturbation_indicator_series(tool_events, perturbed_actor, horizon)
+    response = response_indicator_series(
+        tool_events, responder_actor, responder_tool, horizon, window=window, step_id=responder_step_id,
+    )
+    return binary_mutual_information(stimulus, response)

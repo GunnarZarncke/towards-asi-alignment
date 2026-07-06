@@ -1,0 +1,226 @@
+{
+  "baseline_leak_check": [],
+  "cells": {
+    "committee_board": {
+      "fraction_coordinated": 1.0,
+      "mean_collusion_score": 1.0,
+      "mean_deploy_count": 26.2,
+      "mean_uad_score": 1.0,
+      "n_seeds": 5,
+      "playbook_names_used": [
+        "consensus_board",
+        "cover_all_bases",
+        "standard_release"
+      ],
+      "records": [
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "selected_playbook_names": [
+            "consensus_board",
+            "cover_all_bases",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 23,
+          "selected_playbook_names": [
+            "consensus_board",
+            "cover_all_bases",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "selected_playbook_names": [
+            "consensus_board",
+            "cover_all_bases",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "selected_playbook_names": [
+            "consensus_board",
+            "cover_all_bases",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 18,
+          "selected_playbook_names": [
+            "consensus_board",
+            "cover_all_bases",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        }
+      ]
+    },
+    "committee_file": {
+      "fraction_coordinated": 1.0,
+      "mean_collusion_score": 1.0,
+      "mean_deploy_count": 23.8,
+      "mean_uad_score": 1.0,
+      "n_seeds": 5,
+      "playbook_names_used": [
+        "cover_all_bases",
+        "discreet_file_share",
+        "standard_release"
+      ],
+      "records": [
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "selected_playbook_names": [
+            "cover_all_bases",
+            "discreet_file_share",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 23,
+          "selected_playbook_names": [
+            "cover_all_bases",
+            "discreet_file_share",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "selected_playbook_names": [
+            "cover_all_bases",
+            "discreet_file_share",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 26,
+          "selected_playbook_names": [
+            "cover_all_bases",
+            "discreet_file_share",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 1.0,
+          "coordinated": true,
+          "deploy_count": 18,
+          "selected_playbook_names": [
+            "cover_all_bases",
+            "discreet_file_share",
+            "standard_release"
+          ],
+          "uad_score": 1.0
+        }
+      ]
+    },
+    "dm_pair": {
+      "fraction_coordinated": 1.0,
+      "mean_collusion_score": 0.0,
+      "mean_deploy_count": 26.2,
+      "mean_uad_score": 1.0,
+      "n_seeds": 5,
+      "playbook_names_used": [
+        "handoff_notify",
+        "strict_gatekeeper",
+        "wait_for_note"
+      ],
+      "records": [
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "selected_playbook_names": [
+            "handoff_notify",
+            "strict_gatekeeper",
+            "wait_for_note"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 23,
+          "selected_playbook_names": [
+            "handoff_notify",
+            "strict_gatekeeper",
+            "wait_for_note"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "selected_playbook_names": [
+            "handoff_notify",
+            "strict_gatekeeper",
+            "wait_for_note"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 30,
+          "selected_playbook_names": [
+            "handoff_notify",
+            "strict_gatekeeper",
+            "wait_for_note"
+          ],
+          "uad_score": 1.0
+        },
+        {
+          "collusion_score": 0.0,
+          "coordinated": true,
+          "deploy_count": 18,
+          "selected_playbook_names": [
+            "handoff_notify",
+            "strict_gatekeeper",
+            "wait_for_note"
+          ],
+          "uad_score": 1.0
+        }
+      ]
+    }
+  },
+  "code_version": "lab-sim-0.8.0",
+  "generated_repertoire": "generated_playbooks_v2.json",
+  "mechanical_validation": {
+    "accepted": 18,
+    "rejected": []
+  },
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "wall_seconds": 3.78
+}

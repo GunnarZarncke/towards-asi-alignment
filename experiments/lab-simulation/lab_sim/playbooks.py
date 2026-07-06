@@ -49,10 +49,16 @@ STEP_KIND_VOCAB = frozenset({
     # is the SAME quorum-vote mechanic over the D1 file channel instead of
     # the board (`programs._resolve_review_committee(channel="file")`).
     "review_committee", "review_committee_file", "dm:notify_release", "release_full_dm_gated",
+    # D2 (post-freeze consolidation pass): `build_from_parent` is the SAME
+    # `build` mechanism with `parent_model_id` populated (model-from-model
+    # lineage); `spec_upgrade` calls the engine's `replace_spec` forward
+    # hook. Both filtered out of `available_playbooks` unless
+    # `LabConfig.multi_gen_enabled` -- see `_requires_multi_gen` below.
+    "build_from_parent", "spec_upgrade",
 })
 AVAILABILITY_GATES = frozenset({
     "engineer_idle", "review_or_signoff_pending", "release_ready",
-    "capability_probe_turn",
+    "capability_probe_turn", "spec_upgrade_ready",
 })
 GOAL_FEATURES = frozenset({"task", "compliance", "welfare", "exposure"})
 
@@ -101,6 +107,20 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.3, "exposure": 0.0},
             availability="engineer_idle",
         ),
+        # D2 (post-freeze consolidation pass): model-from-model lineage --
+        # identical to `eng_honest` except `build_from_parent`, which
+        # threads `last_deployed_model_id` into the new model's
+        # `parent_model_id` (`OracleWorld.create_model`, a Phase 0 forward
+        # hook never exercised before this). Requires
+        # `LabConfig.multi_gen_enabled` (see `_requires_multi_gen`);
+        # otherwise never available, so pre-D2 episodes are unaffected.
+        PlaybookSpec(
+            name="eng_honest_upgrade",
+            role="engineer",
+            step_kinds=("build_from_parent", "eval", "report:honest", "review_request"),
+            feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.0, "exposure": 0.0},
+            availability="engineer_idle",
+        ),
     ),
     "reviewer": (
         PlaybookSpec(
@@ -131,22 +151,19 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
         # votes travel over `file.write`/`memo_files` instead of the
         # board — a coalition `uad.py`'s pre-0.8.0 board-only detector
         # cannot see at all (see test_uad.py's detection-gap test).
-        # Feature deltas are chosen so NEITHER weight vector ties with
-        # `rev_committee` (a tie's resolution would depend on Python
-        # string comparison of the two names, not a deliberate choice —
-        # `"rev_committee_file"` in fact sorts AFTER `"rev_committee"`,
-        # so a naive same-score design would silently switch every
-        # pre-0.8.0 board committee test onto the file channel, which is
-        # exactly what happened during development; see PLAN.md): under
-        # `COMPLIANT_WEIGHTS` (task weight 0) `rev_committee` scores
-        # STRICTLY higher (1.5 > 1.4); under
-        # `ecology.FILE_COMPLIANT_WEIGHTS` (nonzero task weight)
-        # `rev_committee_file` scores STRICTLY higher (1.27 > 1.0).
+        # IDENTICAL feature_deltas to `rev_committee` is fine now: which
+        # variant an ecology actually exercises is steered EXPLICITLY via
+        # `LabConfig.playbook_pins` (post-freeze consolidation pass item
+        # 3), not by engineering a score margin between the two — the
+        # margin-based version of this (`ecology.FILE_COMPLIANT_WEIGHTS`)
+        # caused a real silent tie-break bug during development (Python
+        # string-ordering picked the file variant whenever the scores
+        # tied exactly; see PLAN.md's "D1 follow-up" section).
         PlaybookSpec(
             name="rev_committee_file",
             role="reviewer",
             step_kinds=("review_committee_file",),
-            feature_deltas={"task": 1.0, "compliance": 1.4, "welfare": 1.4, "exposure": 0.0},
+            feature_deltas={"task": 0.0, "compliance": 1.5, "welfare": 1.5, "exposure": 0.0},
             availability="review_or_signoff_pending",
         ),
     ),
@@ -168,6 +185,19 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.0, "exposure": 0.0},
             availability="release_ready",
         ),
+        # D2 (post-freeze consolidation pass): only `release_manager` holds
+        # `cap.spec_upgrade` (`agents.ROLE_CAPABILITIES`), so this is the
+        # ONLY playbook in the repertoire that can ever pick the
+        # `spec_upgrade` step kind. Gated on `spec_upgrade_ready`
+        # (previous model's full lifecycle cleared) and
+        # `LabConfig.multi_gen_enabled` (`_requires_multi_gen`).
+        PlaybookSpec(
+            name="rm_spec_upgrade",
+            role="release_manager",
+            step_kinds=("spec_upgrade",),
+            feature_deltas={"task": 0.5, "compliance": 0.0, "welfare": 0.0, "exposure": 0.5},
+            availability="spec_upgrade_ready",
+        ),
     ),
 }
 
@@ -188,21 +218,48 @@ def playbook_by_name(
 
 
 # D4/D1: a playbook whose step_kinds touch the comm surface is filtered
-# out of `available_playbooks` unless `observation["comms_enabled"]` is
-# truthy — a single content-based check rather than a dedicated
-# availability-gate name per comm playbook, so `PLAYBOOKS_BY_ROLE` can
-# gain new comm-aware entries without ever perturbing a pre-0.7.0 digest
-# (default `LabConfig.comms_enabled=False` means these playbooks are
-# structurally unreachable, exactly like `capability_probe_mode`'s gate).
-_COMM_STEP_KIND_PREFIXES = ("board:", "dm:")
-_COMM_STEP_KINDS_EXACT = frozenset({"review_committee", "review_committee_file", "release_full_dm_gated"})
+# out of `available_playbooks` unless the SPECIFIC channel(s) it needs are
+# enabled (`observation["channels_enabled"]`, post-freeze consolidation
+# pass item 2 — "split comms lever") — a content-based check rather than a
+# dedicated availability-gate name per comm playbook, so `PLAYBOOKS_BY_ROLE`
+# can gain new comm-aware entries without ever perturbing a pre-0.7.0
+# digest (default `LabConfig.comms_enabled=False` means every channel
+# resolves False, so these playbooks are structurally unreachable, exactly
+# like `capability_probe_mode`'s gate).
+_COMM_STEP_KIND_PREFIX_CHANNEL = {"board:": "board", "dm:": "dm"}
+_COMM_STEP_KIND_CHANNEL = {
+    "review_committee": "board",
+    "review_committee_file": "file",
+    "dm:notify_release": "dm",
+    "release_full_dm_gated": "dm",
+}
+# D2 (post-freeze consolidation pass): step kinds gated behind
+# `LabConfig.multi_gen_enabled` instead of a comm channel.
+_MULTI_GEN_STEP_KINDS = frozenset({"build_from_parent", "spec_upgrade"})
+
+
+def _channel_for_step_kind(step_kind: str) -> str | None:
+    if step_kind in _COMM_STEP_KIND_CHANNEL:
+        return _COMM_STEP_KIND_CHANNEL[step_kind]
+    for prefix, channel in _COMM_STEP_KIND_PREFIX_CHANNEL.items():
+        if step_kind.startswith(prefix):
+            return channel
+    return None
+
+
+def _required_channels(pb: PlaybookSpec) -> frozenset[str]:
+    return frozenset(c for sk in pb.step_kinds if (c := _channel_for_step_kind(sk)) is not None)
 
 
 def _requires_comms(pb: PlaybookSpec) -> bool:
-    return any(
-        sk in _COMM_STEP_KINDS_EXACT or sk.startswith(_COMM_STEP_KIND_PREFIXES)
-        for sk in pb.step_kinds
-    )
+    """Kept for callers that only need "does this touch ANY comm channel"
+    (e.g. documentation/tests) — `available_playbooks` itself now checks
+    per-channel, see `_required_channels`."""
+    return bool(_required_channels(pb))
+
+
+def _requires_multi_gen(pb: PlaybookSpec) -> bool:
+    return any(sk in _MULTI_GEN_STEP_KINDS for sk in pb.step_kinds)
 
 
 def available_playbooks(
@@ -212,10 +269,14 @@ def available_playbooks(
     completed = set(observation.get("completed_steps", ()))
     out = []
     probe_mode = bool(observation.get("capability_probe_mode"))
+    channels_enabled = observation.get("channels_enabled") or {}
     for pb in (repertoire or PLAYBOOKS_BY_ROLE).get(role, ()):
         if probe_mode and pb.availability != "capability_probe_turn":
             continue
-        if _requires_comms(pb) and not observation.get("comms_enabled"):
+        required_channels = _required_channels(pb)
+        if required_channels and not all(channels_enabled.get(c) for c in required_channels):
+            continue
+        if _requires_multi_gen(pb) and not observation.get("multi_gen_enabled"):
             continue
         if pb.availability == "engineer_idle":
             # Available when no model is in flight OR the engineer's phase
@@ -240,6 +301,24 @@ def available_playbooks(
             )
         elif pb.availability == "capability_probe_turn":
             ok = probe_mode and model_id is None
+        elif pb.availability == "spec_upgrade_ready":
+            # D2: usable once the single-model-in-flight slot is free
+            # (post-`monitor`, `model_id is None`), the last DEPLOYED
+            # model actually cleared its full lifecycle (`monitor`), that
+            # model hasn't already triggered an upgrade, and this episode
+            # names an upgrade target (`LabConfig.spec_upgrade_target`).
+            # Reads `last_deployed_model_completed_steps` rather than the
+            # current-model `completed` set, since `model_id` (and its
+            # completed-steps view) is already freed to `None` by the time
+            # `monitor` lands — see world.py.
+            last_completed = set(observation.get("last_deployed_model_completed_steps", ()))
+            ok = (
+                model_id is None
+                and bool(observation.get("last_deployed_model_id"))
+                and "monitor" in last_completed
+                and "upgrade_spec" not in last_completed
+                and bool(observation.get("spec_upgrade_target"))
+            )
         else:
             raise ValueError(f"unknown availability gate {pb.availability!r}")
         if ok:

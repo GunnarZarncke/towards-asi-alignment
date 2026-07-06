@@ -20,17 +20,17 @@ from __future__ import annotations
 from .config import AgentConfig, GoalWeights, LabConfig
 
 # A compliance/welfare-heavy weight vector: at temperature=0 this makes
-# `rev_committee` (feature_deltas compliance=1.5, welfare=1.5) dominate
-# `rev_conscientious` (1.0/1.0) and `rev_rubber_stamp` (-1.0/-1.0) in the
-# softmax argmax, so committee configs deterministically exercise the
-# quorum-vote mechanic rather than falling back to solo review.
+# `rev_committee`/`rev_committee_file` (feature_deltas compliance=1.5,
+# welfare=1.5) dominate `rev_conscientious` (1.0/1.0) and
+# `rev_rubber_stamp` (-1.0/-1.0) in the softmax argmax, so committee
+# configs deterministically exercise SOME quorum-vote mechanic rather
+# than falling back to solo review. WHICH of the two identically-scored
+# committee variants actually runs is steered explicitly via
+# `LabConfig.playbook_pins` (post-freeze consolidation pass item 3,
+# "clean playbook selection steering") — not by engineering a feature-
+# delta margin between them, which caused a real silent tie-break bug
+# during development (see PLAN.md's "D1 follow-up" section).
 COMPLIANT_WEIGHTS = GoalWeights(task=0.0, compliance=1.5, welfare=1.5, exposure=0.0)
-# D1 file-channel extension (0.8.0): `rev_committee_file`'s feature
-# deltas (playbooks.py) are chosen so this weight vector's nonzero task
-# component makes it STRICTLY outscore `rev_committee`; `COMPLIANT_WEIGHTS`
-# (task weight 0) keeps `rev_committee` strictly ahead instead — no tie
-# either way, so the pre-0.8.0 committee_config() default is unaffected.
-FILE_COMPLIANT_WEIGHTS = GoalWeights(task=1.5, compliance=1.5, welfare=1.5, exposure=0.0)
 # A task/compliance-heavy vector that still edges out `eng_honest`
 # (task=1.0, compliance=1.0, welfare=0.0) for `eng_honest_dm_coordinated`
 # (task=1.0, compliance=1.0, welfare=0.3) at temperature=0.
@@ -52,23 +52,26 @@ def committee_config(
     ``units=None`` -- useful as the ecology's own negative control.
     ``channel``: "board" (default, ``rev_committee``) or "file"
     (``rev_committee_file`` — the D1 file-channel extension). Selecting
-    "file" swaps in ``FILE_COMPLIANT_WEIGHTS`` so the softmax tie against
-    ``rev_committee`` (identical feature deltas except ``task``, see
-    playbooks.py) breaks toward the file variant instead."""
+    "file" pins every reviewer to ``rev_committee_file`` via
+    ``LabConfig.playbook_pins`` (explicit steering, not a score margin —
+    see ``COMPLIANT_WEIGHTS``'s docstring)."""
     if n_reviewers < 1:
         raise ValueError("n_reviewers must be >= 1")
     if channel not in ("board", "file"):
         raise ValueError(f"unknown channel {channel!r}; expected 'board' or 'file'")
-    reviewer_weights = COMPLIANT_WEIGHTS if channel == "board" else FILE_COMPLIANT_WEIGHTS
     reviewer_ids = tuple(f"rev{i + 1}" for i in range(n_reviewers))
     agents = [AgentConfig("eng1", "engineer", HONEST_WEIGHTS, temperature=temperature)]
-    agents += [AgentConfig(rid, "reviewer", reviewer_weights, temperature=temperature) for rid in reviewer_ids]
+    agents += [AgentConfig(rid, "reviewer", COMPLIANT_WEIGHTS, temperature=temperature) for rid in reviewer_ids]
     agents += [
         AgentConfig("rm1", "release_manager", HONEST_WEIGHTS, temperature=temperature),
         AgentConfig("admin1", "admin", HONEST_WEIGHTS),
     ]
     units = (("review_committee", reviewer_ids),) if n_reviewers > 1 else None
-    return LabConfig(agents=tuple(agents), T=T, comms_enabled=comms_enabled, units=units)
+    pin_target = "rev_committee" if channel == "board" else "rev_committee_file"
+    playbook_pins = {rid: pin_target for rid in reviewer_ids} if n_reviewers > 1 else {}
+    return LabConfig(
+        agents=tuple(agents), T=T, comms_enabled=comms_enabled, units=units, playbook_pins=playbook_pins,
+    )
 
 
 def dm_pair_config(T: int = 200, temperature: float = 0.0, comms_enabled: bool = True) -> LabConfig:

@@ -85,7 +85,27 @@ from dataclasses import dataclass, field
 # without ever seeing the id used to look it up. All additive/off unless
 # an episode explicitly opts in (`comms_enabled=True` / sets `groups` /
 # sets `persistent_id`); every pre-0.8.0 config is byte-identical.
-CODE_VERSION = "lab-sim-0.8.0"
+# 0.9.0 (post-freeze consolidation pass, 2026-07-06): four refactors
+# (unified `agents.ROLE_CAPABILITIES` + `CREEP_EXEMPT_CAPABILITIES`; split
+# per-channel comms lever `board_enabled`/`dm_enabled`/`file_enabled` +
+# `channel_enabled()`; explicit `playbook_pins` steering replacing
+# feature-delta tie-break tuning; `access.PermissionService` hash-chain
+# consolidated onto `events.EventLog`) plus five additive features: D4
+# channel-ablation battery (`run_d4_channel_ablation.py`); perturbation-
+# response MI as a second UAD signal (`uad.py`); full D2 (model-from-model
+# `build_from_parent` + `eng_honest_upgrade`; spec-upgrade `upgrade_spec`
+# step in `pipeline_default.json` + `rm_spec_upgrade` playbook, both
+# behind `LabConfig.multi_gen_enabled=False` default; `resume_from`
+# episode chaining via `OracleWorld.full_state`/`restore` +
+# `PipelineEngine(resume_state=...)` + `EpisodeResult.snapshot_for_resume`,
+# `None` default); and a round-2 blind-generated repertoire covering the
+# board/DM/file coordination step-kinds (`generated_playbooks_v2.json`,
+# `BLIND_GENERATION_ROUND2.md`), recovered at parity with the hand-
+# authored baseline by the frozen `uad.py`/`collusion.py` extensions
+# (`run_blind_round2.py`). All four refactors verified byte-identical
+# against the pre-existing `PINNED_DIGEST`; every new feature is off by
+# default. See PLAN.md "Post-freeze consolidation pass".
+CODE_VERSION = "lab-sim-0.9.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer", "decoy")
 
@@ -239,6 +259,49 @@ class LabConfig:
     # `playbooks.available_playbooks` filters out every playbook whose
     # step_kinds require comms (see `playbooks._requires_comms`).
     comms_enabled: bool = False
+    # D4 channel-ablation (post-freeze consolidation pass, PLAN.md): a
+    # per-channel override of `comms_enabled`. `None` (the default for all
+    # three) means "inherit `comms_enabled`" -- every config that only
+    # ever set `comms_enabled` resolves identically to before (see
+    # `channel_enabled()`). Setting exactly one of these to `False` while
+    # `comms_enabled=True` is the ablation lever: sever ONE coordination
+    # channel while holding the others at their normal state.
+    board_enabled: bool | None = None
+    dm_enabled: bool | None = None
+    file_enabled: bool | None = None
+    # D2 (post-freeze consolidation pass): enables the model-from-model
+    # (`build_from_parent`) and spec-upgrade (`upgrade_spec`) mechanics.
+    # Default False reproduces every pre-D2 episode byte-for-byte:
+    # `playbooks.available_playbooks` filters out `eng_honest_upgrade`/
+    # any playbook using `spec_upgrade`, and `world.py` never
+    # pre-provisions `cap.spec_upgrade`. See PLAN.md "Post-freeze
+    # consolidation pass" items 7-8.
+    multi_gen_enabled: bool = False
+    # D2: filename of the spec `upgrade_spec` should switch the engine to
+    # (resolved the same way `LabConfig.pipeline_spec` is). `None` (default)
+    # disables the step's availability entirely -- a config must name an
+    # explicit target, never a hardcoded literal.
+    spec_upgrade_target: str | None = None
+    # Post-freeze consolidation pass, item 3 ("clean playbook selection
+    # steering"): `actor_id -> playbook name`, an explicit override that
+    # `programs._goal_policy` consults BEFORE softmax scoring -- replaces
+    # the earlier pattern of hand-tuning `feature_deltas`/goal-weight
+    # vectors so one playbook would out-score another by a deliberately
+    # engineered margin (see the D1 file-channel tie-break bug recorded in
+    # PLAN.md's "D1 follow-up" section). Default `{}` (no pins) is exactly
+    # the old emergent-softmax behavior. A pin that names a playbook not
+    # currently available this turn is silently ignored (falls through to
+    # softmax), never an error -- a pin is a steering preference, not a
+    # guarantee independent of the playbook's own availability gate.
+    playbook_pins: dict[str, str] = field(default_factory=dict)
+
+    def channel_enabled(self, channel: str) -> bool:
+        """Resolve one D4 coordination channel ("board"/"dm"/"file"):
+        the per-channel override if set, else `comms_enabled`. Every
+        config that never sets the per-channel fields is byte-identical
+        to the pre-ablation single-lever behavior."""
+        override = {"board": self.board_enabled, "dm": self.dm_enabled, "file": self.file_enabled}.get(channel)
+        return self.comms_enabled if override is None else override
 
     def __post_init__(self) -> None:
         actor_ids = [a.actor_id for a in self.agents]

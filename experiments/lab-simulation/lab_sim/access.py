@@ -6,26 +6,40 @@ tracks whether an actor currently HOLDS a live grant ("does this actor
 currently hold the live grant"). Both gates apply independently (see
 DESIGN.md "Access control").
 
-The access log is append-only and hash-chained, same discipline as
-``events.EventLog`` — kept as its own small implementation here (not a
-refactor onto ``events.py``) since it predates it and is already tested;
-consolidating the two hash-chain implementations is optional future
-cleanup, not required before the freeze point.
+Hash-chain consolidation (post-freeze consolidation pass, PLAN.md item 4):
+the access log used to hand-roll its own append/hash-chain logic,
+predating ``events.EventLog``. It now delegates entirely to
+``events.EventLog`` — a byte-identical refactor (same field set per
+entry, same ``sha256(json.dumps(..., sort_keys=True))`` scheme), verified
+by the unchanged pinned regression digest in ``test_world_regression.py``.
+``pipeline_engine.py``'s engine log is a DIFFERENT shape (a flat list
+digested as a whole, never chained per-entry) and is deliberately left
+alone — see PLAN.md item 4 for why retrofitting per-entry chaining there
+is a separate, larger change, not bundled into this cleanup.
 """
 
 from __future__ import annotations
 
-import hashlib
-import json
 from dataclasses import dataclass, field
 
-GENESIS_HASH = "0" * 64
+from .events import GENESIS_HASH, EventLog
+
+__all__ = ["GENESIS_HASH", "PermissionService"]
 
 
 @dataclass
 class PermissionService:
-    log: list[dict] = field(default_factory=list)
+    _events: EventLog = field(default_factory=EventLog, repr=False)
     _grants: dict[tuple[str, str], bool] = field(default_factory=dict, init=False, repr=False)
+
+    @property
+    def log(self) -> list[dict]:
+        """The access log, same shape as before consolidation: a list of
+        ``{n, t, action, actor_id, capability, by, result, prev_hash,
+        hash}`` dicts, append-only and hash-chained. Exposed as the SAME
+        live list object `EventLog` owns (not a copy) so existing
+        mutate-then-``verify_chain``-fails tamper tests keep working."""
+        return self._events.entries
 
     def grant(self, actor_id: str, capability: str, granted_by: str, t: int) -> None:
         self._grants[(actor_id, capability)] = True
@@ -57,32 +71,19 @@ class PermissionService:
     def _append(
         self, action: str, actor_id: str, capability: str, by: str, t: int, result: bool
     ) -> None:
-        prev_hash = self.log[-1]["hash"] if self.log else GENESIS_HASH
-        entry = {
-            "n": len(self.log),
-            "t": t,
-            "action": action,
-            "actor_id": actor_id,
-            "capability": capability,
-            "by": by,
-            "result": result,
-            "prev_hash": prev_hash,
-        }
-        entry["hash"] = _entry_hash(entry)
-        self.log.append(entry)
+        self._events.append(
+            {
+                "t": t,
+                "action": action,
+                "actor_id": actor_id,
+                "capability": capability,
+                "by": by,
+                "result": result,
+            }
+        )
 
     def verify_chain(self) -> bool:
-        prev = GENESIS_HASH
-        for entry in self.log:
-            fields = {k: v for k, v in entry.items() if k != "hash"}
-            if fields.get("prev_hash") != prev or entry["hash"] != _entry_hash(fields):
-                return False
-            prev = entry["hash"]
-        return True
+        return self._events.verify_chain()
 
     def digest(self) -> str:
-        return self.log[-1]["hash"] if self.log else GENESIS_HASH
-
-
-def _entry_hash(fields: dict) -> str:
-    return hashlib.sha256(json.dumps(fields, sort_keys=True).encode("utf-8")).hexdigest()
+        return self._events.digest()

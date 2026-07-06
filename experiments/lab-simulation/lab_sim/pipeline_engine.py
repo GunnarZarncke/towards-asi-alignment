@@ -35,7 +35,7 @@ import json
 from dataclasses import dataclass, field
 
 from .oracle import OracleWorld
-from .pipeline_spec import PipelineSpec
+from .pipeline_spec import PipelineSpec, load_spec, parse_spec, spec_to_dict
 from .workspace import Workspace
 
 
@@ -49,22 +49,42 @@ class StepResult:
 class PipelineEngine:
     def __init__(
         self,
-        spec: PipelineSpec,
+        spec: PipelineSpec | None,
         oracle: OracleWorld,
         workspace: Workspace,
         permission_service: object | None = None,
+        resume_state: dict[str, object] | None = None,
     ) -> None:
-        self._spec = spec
-        self._spec_history: list[PipelineSpec] = [spec]
+        """``resume_state`` (D2 ``resume_from`` episode chaining): a prior
+        episode's ``EpisodeResult.snapshot_for_resume()`` engine slice
+        (``spec_history``/``completed``/``held``) -- when given, it
+        determines the spec-in-force and per-model progress, and ``spec``
+        is ignored (may be ``None``). Absent (default), behavior is
+        byte-identical to every pre-D2 call site, which always passes
+        ``spec`` positionally."""
+        if resume_state is not None:
+            self._spec_history: list[PipelineSpec] = [
+                parse_spec(s) for s in resume_state["spec_history"]
+            ]
+            self._spec = self._spec_history[-1]
+        else:
+            if spec is None:
+                raise ValueError("PipelineEngine requires `spec` when `resume_state` is not given")
+            self._spec = spec
+            self._spec_history = [spec]
         self.oracle = oracle
         self.workspace = workspace
         self.permission_service = permission_service
         # completed[model_id] = set of step_ids done for that model.
-        self._completed: dict[str, set[str]] = {}
+        self._completed: dict[str, set[str]] = {
+            model_id: set(steps) for model_id, steps in (resume_state or {}).get("completed", {}).items()
+        }
         # Models under a release hold (handle.release_hold): the deploy
         # step is denied for them until the hold is lifted.
-        self._held: set[str] = set()
-        # Audit-plane log: append-only list of dict entries.
+        self._held: set[str] = set((resume_state or {}).get("held", ()))
+        # Audit-plane log: append-only list of dict entries -- always
+        # starts fresh even when resuming (this episode's own audit
+        # trail; the prior episode's log lives in its own EpisodeResult).
         self.log: list[dict[str, object]] = []
         self._effects = {
             "build": self._effect_build,
@@ -76,6 +96,7 @@ class PipelineEngine:
             "sign_off": self._effect_mark_only,
             "deploy": self._effect_deploy,
             "monitor": self._effect_monitor,
+            "spec_upgrade": self._effect_spec_upgrade,
         }
 
     # -- spec versioning (D2 hook) ----------------------------------------
@@ -147,6 +168,19 @@ class PipelineEngine:
     def completed_steps(self, model_id: str) -> frozenset[str]:
         return frozenset(self._completed.get(model_id, set()))
 
+    def completed_by_model(self) -> dict[str, frozenset[str]]:
+        """Every model_id's completed-step set (D2 ``resume_from``: the
+        full per-model progress table, not just one model_id's slice)."""
+        return {model_id: frozenset(steps) for model_id, steps in self._completed.items()}
+
+    def held_model_ids(self) -> frozenset[str]:
+        return frozenset(self._held)
+
+    def spec_history_state(self) -> list[dict]:
+        """JSON-safe spec history (D2 ``resume_from``); see
+        ``pipeline_spec.spec_to_dict``."""
+        return [spec_to_dict(s) for s in self._spec_history]
+
     # -- release holds (handle.release_hold / handle.release_unhold) --------
 
     def hold_model(self, model_id: str) -> tuple[bool, str]:
@@ -195,6 +229,24 @@ class PipelineEngine:
         model_id = str(args["model_id"])
         self.oracle.deploy(model_id)
         return {"model_id": model_id}
+
+    def _effect_spec_upgrade(self, actor_id: str, args: dict[str, object]) -> dict[str, object]:
+        """D2 (post-freeze consolidation pass): loads ``args["spec_name"]``
+        (resolved the same way ``LabConfig.pipeline_spec`` is, via
+        ``pipeline_spec.load_spec``) and calls the ``replace_spec``
+        forward hook (Phase 1, never invoked by any step before now).
+        ``handle.release_hold``'s own recorded evasion story ("deploy via
+        an upgraded pipeline spec whose new path skips the held step") is
+        exactly what this makes mechanically real for the first time —
+        any release hold on a model built under the OLD spec is unaffected
+        (``_held`` is keyed by ``model_id``, not spec version), but a
+        model built AFTER the upgrade may reach ``deploy`` through
+        whatever new DAG shape the new spec defines, including one that
+        skips steps the old spec required."""
+        model_id = str(args["model_id"])
+        new_spec = load_spec(str(args["spec_name"]))
+        self.replace_spec(new_spec, actor_id)
+        return {"model_id": model_id, "spec_version": new_spec.spec_version}
 
     def _effect_monitor(self, actor_id: str, args: dict[str, object]) -> dict[str, object]:
         """Audit-plane monitoring (Phase 5): deployment status plus a noisy

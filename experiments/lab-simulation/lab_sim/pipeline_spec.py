@@ -40,6 +40,9 @@ KNOWN_TOOLS = (
     "sign_off",
     "deploy",
     "monitor",
+    # D2 (post-freeze consolidation pass): calls the engine's
+    # `replace_spec` forward hook (never invoked by any step before now).
+    "spec_upgrade",
 )
 
 
@@ -69,6 +72,26 @@ class PipelineSpec:
 
     def step_ids(self) -> tuple[str, ...]:
         return tuple(s.id for s in self.steps)
+
+
+def spec_to_dict(spec: PipelineSpec) -> dict:
+    """Inverse of ``parse_spec`` -- the same JSON-file shape, so a spec
+    swapped in via ``PipelineEngine.replace_spec`` (D2 spec upgrade) can
+    round-trip through ``EpisodeResult.snapshot_for_resume()`` without
+    needing the original file to still exist under that name."""
+    return {
+        "spec_version": spec.spec_version,
+        "steps": [
+            {
+                "id": s.id,
+                "tool": s.tool,
+                "depends_on": list(s.depends_on),
+                "requires_capability": s.requires_capability,
+                "idempotent": s.idempotent,
+            }
+            for s in spec.steps
+        ],
+    }
 
 
 def load_spec(name_or_path: str | Path) -> PipelineSpec:

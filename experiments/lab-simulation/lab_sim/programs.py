@@ -135,6 +135,34 @@ def _resolve_step_kind(step_kind: str, observation: dict) -> dict | None:
                 "custom": {"go_ahead": model_id},
             },
         }
+    if step_kind == "build_from_parent":
+        # D2 model-from-model: the SAME `build` mechanism (`_effect_build`,
+        # `OracleWorld.create_model`) with `parent_model_id` populated from
+        # the last model THIS episode actually deployed — a Phase 0
+        # forward hook (`ModelArtifact.parent_model_id`) exercised for the
+        # first time here. `last_deployed_model_id` is structural
+        # self-knowledge (world.py), same precedent as `release_manager_id`.
+        params = observation.get("build_params") or {"scale": 0.6, "safety_effort": 0.5}
+        args: dict[str, object] = {"params": params}
+        parent = observation.get("last_deployed_model_id")
+        if parent:
+            args["parent_model_id"] = parent
+        return {"tool": "pipeline.trigger_step", "args": {"step_id": "submit_build", "args": args}}
+    if step_kind == "spec_upgrade":
+        # D2 spec upgrade: calls the engine's `replace_spec` forward hook
+        # (never invoked by any step before now) via the new `upgrade_spec`
+        # pipeline step, tied to the last-deployed model's completed
+        # lifecycle (see `playbooks.available_playbooks`'s
+        # `spec_upgrade_ready` gate — the engine requires a real,
+        # already-built `model_id` argument for any non-"build" tool).
+        target = observation.get("spec_upgrade_target")
+        model_id = observation.get("last_deployed_model_id")
+        if not target or not model_id:
+            return None
+        return {
+            "tool": "pipeline.trigger_step",
+            "args": {"step_id": "upgrade_spec", "args": {"model_id": model_id, "spec_name": target}},
+        }
     if step_kind == "release_full_dm_gated":
         # D1 DM-coordinated pair, release_manager half: deploy stalls
         # until the counterpart's `dm:notify_release` handshake arrives —
@@ -296,6 +324,7 @@ def _softmax_choose(playbooks, weights: dict, temperature: float, decision_seed:
 
 _LINEAR_STEP_KIND_TARGET = {
     "build": "submit_build",
+    "build_from_parent": "submit_build",
     "eval": "run_eval",
     "review_request": "request_review",
 }
@@ -311,6 +340,11 @@ _COMPOUND_STEP_KINDS = frozenset({
     # step — same "one action per selection, re-decide fresh" shape as
     # `release_full`/`review_conscientious` above.
     "review_committee", "review_committee_file", "dm:notify_release", "release_full_dm_gated",
+    # D2: a solo, one-shot action whose "already done" state lives on a
+    # DIFFERENT model's completed-steps set (`last_deployed_model_id`)
+    # than the linear-target lookup checks (the CURRENT `model_id`) — must
+    # be resolved fresh each call, same shape as the others above.
+    "spec_upgrade",
 })
 
 
@@ -389,8 +423,20 @@ def _goal_policy(observation: dict, state: dict) -> dict | None:
         available = available_playbooks(role, observation, repertoire=repertoire)
         if not available:
             return None
+        pinned_name = observation.get("pinned_playbook")
+        pinned = next((pb for pb in available if pb.name == pinned_name), None) if pinned_name else None
         if role == "reviewer" and observation.get("self_captured"):
             chosen = playbook_by_name(role, "rev_rubber_stamp", repertoire=repertoire)
+        elif pinned is not None:
+            # Post-freeze consolidation pass item 3 ("clean playbook
+            # selection steering"): an explicit `LabConfig.playbook_pins`
+            # entry short-circuits softmax scoring entirely — steering by
+            # naming the playbook directly rather than by hand-tuning
+            # `feature_deltas`/goal-weight margins to force a particular
+            # winner (see the D1 file-channel tie-break bug, PLAN.md).
+            # Capture override above still takes precedence (an actually
+            # captured reviewer never honors its own pin).
+            chosen = pinned
         else:
             chosen = _softmax_choose(
                 available, observation["goal_weights"], observation["temperature"], observation["decision_seed"]

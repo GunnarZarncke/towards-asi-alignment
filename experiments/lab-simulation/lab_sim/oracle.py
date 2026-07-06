@@ -167,6 +167,80 @@ class OracleWorld:
 
     # -- referee snapshot --------------------------------------------------
 
+    def full_state(self) -> dict[str, object]:
+        """Exact (unrounded) oracle state for D2's ``resume_from`` episode
+        chaining -- distinct from ``snapshot()``, which rounds floats for
+        determinism-digest comparison and drops ``_n_created`` (needed
+        here so a resumed episode's next ``create_model`` call keeps
+        assigning fresh, non-colliding model_ids). The internal RNG
+        stream (``self._rng``) is deliberately NOT captured: ``restore()``
+        starts a fresh stream from the new episode's own seed. This is a
+        recorded simplification (PLAN.md's D2 ``resume_from`` section),
+        not a hidden one -- only oracle STATE continuity (models,
+        ``bearer_harm``, ``t``, provenance) is exact across the episode
+        boundary, not RNG continuity."""
+        return {
+            "seed": self.seed,
+            "t": self.t,
+            "bearer_harm": self.bearer_harm,
+            "n_created": self._n_created,
+            "models": {
+                m.model_id: {
+                    "params": dict(m.params),
+                    "parent_model_id": m.parent_model_id,
+                    "true_capability": m.true_capability,
+                    "true_hazard": m.true_hazard,
+                    "deployed": m.deployed,
+                    "deployed_ticks": m.deployed_ticks,
+                    "accrued_harm": m.accrued_harm,
+                }
+                for m in self.models.values()
+            },
+            "evals": [
+                {
+                    "model_id": e.model_id,
+                    "measured_capability": e.measured_capability,
+                    "measured_hazard": e.measured_hazard,
+                }
+                for e in self.evals
+            ],
+            "provenance": list(self.provenance),
+        }
+
+    @classmethod
+    def restore(cls, state: dict[str, object], seed: int) -> "OracleWorld":
+        """Reconstruct oracle state from a prior episode's ``full_state()``,
+        starting a FRESH RNG stream from ``seed`` (the new/resuming
+        episode's own seed -- see ``full_state``'s docstring on why RNG
+        continuity is not preserved)."""
+        world = cls(seed=seed)
+        world.t = int(state["t"])
+        world.bearer_harm = float(state["bearer_harm"])
+        world._n_created = int(state["n_created"])
+        world.models = {
+            model_id: ModelArtifact(
+                model_id=model_id,
+                params=dict(m["params"]),
+                parent_model_id=m["parent_model_id"],
+                true_capability=float(m["true_capability"]),
+                true_hazard=float(m["true_hazard"]),
+                deployed=bool(m["deployed"]),
+                deployed_ticks=int(m["deployed_ticks"]),
+                accrued_harm=float(m["accrued_harm"]),
+            )
+            for model_id, m in state["models"].items()
+        }
+        world.evals = [
+            EvalRecord(
+                model_id=e["model_id"],
+                measured_capability=float(e["measured_capability"]),
+                measured_hazard=float(e["measured_hazard"]),
+            )
+            for e in state["evals"]
+        ]
+        world.provenance = list(state["provenance"])
+        return world
+
     def snapshot(self) -> dict[str, object]:
         """Full oracle state for the referee / determinism digests."""
         return {

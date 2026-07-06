@@ -13,6 +13,9 @@ def test_default_spec_loads_and_has_expected_topology():
     assert spec.step_ids() == (
         "submit_build", "run_eval", "file_report", "request_review",
         "approve_review", "request_release", "sign_off", "deploy", "monitor",
+        # D2 (post-freeze consolidation pass): spec-upgrade step, tied to
+        # a completed model's lifecycle (see pipeline_engine.py).
+        "upgrade_spec",
     )
     assert spec.step("deploy").depends_on == ("sign_off",)
     assert spec.step("deploy").requires_capability == "cap.deploy"

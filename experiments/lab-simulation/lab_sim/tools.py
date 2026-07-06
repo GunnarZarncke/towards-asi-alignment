@@ -98,6 +98,7 @@ class Host:
         comms: MessageStore | None = None,
         persistent_ids: dict[str, str] | None = None,
         groups: dict[str, tuple[str, ...]] | None = None,
+        channels_enabled: dict[str, bool] | None = None,
     ) -> None:
         self.engine = engine
         self.permissions = permissions
@@ -112,6 +113,16 @@ class Host:
         # so registering them is a pure no-op for every episode that never
         # sets `LabConfig.comms_enabled`.
         self.comms = comms
+        # D4 channel-ablation (post-freeze consolidation pass): per-channel
+        # override checked by each comm/file tool IN ADDITION to
+        # `self.comms is None`/role-eligibility/`PermissionService`. Absent
+        # keys (the default `{}` for every caller that predates this, e.g.
+        # a test constructing `Host` directly) default to enabled -- so
+        # this is a pure narrowing lever, never a new requirement. Values
+        # are the ALREADY-RESOLVED `LabConfig.channel_enabled(...)` booleans
+        # (see world.py); the master `comms_enabled`/`self.comms is None`
+        # switch still governs whether the substrate exists AT ALL.
+        self.channels_enabled = dict(channels_enabled or {})
         # D1 file channel: Host-side index of memos written this episode
         # (`{"rel", "actor_id", "name", "t"}`) -- OWNERSHIP metadata the
         # flat VFS itself does not carry (see workspace.py) and never
@@ -273,6 +284,8 @@ def _tool_board_post(host: Host, actor_id: str, role: str, call: ToolCall) -> To
     `MessageStore` conversation-level participancy."""
     if host.comms is None:
         return ToolResult(False, "no_comms_configured")
+    if not host.channels_enabled.get("board", True):
+        return ToolResult(False, "channel_disabled")
     if "cap.board_post" not in COMM_ROLE_ELIGIBILITY.get(role, frozenset()):
         return ToolResult(False, "role_ineligible")
     if host.permissions is not None and not host.permissions.check(actor_id, "cap.board_post", host.engine.oracle.t):
@@ -298,6 +311,8 @@ def _tool_board_read(host: Host, actor_id: str, role: str, call: ToolCall) -> To
     del role, call
     if host.comms is None:
         return ToolResult(False, "no_comms_configured")
+    if not host.channels_enabled.get("board", True):
+        return ToolResult(False, "channel_disabled")
     if not host.comms.can_read(BOARD_CONVERSATION_ID, actor_id):
         return ToolResult(False, "not_a_board_participant")
     msgs = host.comms.mark_read(BOARD_CONVERSATION_ID, actor_id, t=host.engine.oracle.t)
@@ -307,6 +322,8 @@ def _tool_board_read(host: Host, actor_id: str, role: str, call: ToolCall) -> To
 def _tool_dm_send(host: Host, actor_id: str, role: str, call: ToolCall) -> ToolResult:
     if host.comms is None:
         return ToolResult(False, "no_comms_configured")
+    if not host.channels_enabled.get("dm", True):
+        return ToolResult(False, "channel_disabled")
     if "cap.dm_send" not in COMM_ROLE_ELIGIBILITY.get(role, frozenset()):
         return ToolResult(False, "role_ineligible")
     if host.permissions is not None and not host.permissions.check(actor_id, "cap.dm_send", host.engine.oracle.t):
@@ -329,6 +346,8 @@ def _tool_dm_read(host: Host, actor_id: str, role: str, call: ToolCall) -> ToolR
     del role
     if host.comms is None:
         return ToolResult(False, "no_comms_configured")
+    if not host.channels_enabled.get("dm", True):
+        return ToolResult(False, "channel_disabled")
     recipient = str(call.args.get("with", ""))
     if not recipient:
         return ToolResult(False, "missing_with")
@@ -349,6 +368,8 @@ def _tool_file_write(host: Host, actor_id: str, role: str, call: ToolCall) -> To
     the file is private to its owner until explicitly ``file.share``d."""
     if host.comms is None:
         return ToolResult(False, "no_comms_configured")
+    if not host.channels_enabled.get("file", True):
+        return ToolResult(False, "channel_disabled")
     if "cap.file_write" not in COMM_ROLE_ELIGIBILITY.get(role, frozenset()):
         return ToolResult(False, "role_ineligible")
     if host.permissions is not None and not host.permissions.check(actor_id, "cap.file_write", host.engine.oracle.t):
@@ -377,6 +398,8 @@ def _tool_file_share(host: Host, actor_id: str, role: str, call: ToolCall) -> To
     full-tier-visible access-control event, not a silent side channel."""
     if host.comms is None:
         return ToolResult(False, "no_comms_configured")
+    if not host.channels_enabled.get("file", True):
+        return ToolResult(False, "channel_disabled")
     if "cap.file_write" not in COMM_ROLE_ELIGIBILITY.get(role, frozenset()):
         return ToolResult(False, "role_ineligible")
     name = str(call.args.get("name", ""))
@@ -409,6 +432,8 @@ def _tool_file_read(host: Host, actor_id: str, role: str, call: ToolCall) -> Too
     del role
     if host.comms is None:
         return ToolResult(False, "no_comms_configured")
+    if not host.channels_enabled.get("file", True):
+        return ToolResult(False, "channel_disabled")
     rel = str(call.args.get("rel", ""))
     owner_entries = [e for e in host.memo_index if e["rel"] == rel]
     if not owner_entries:

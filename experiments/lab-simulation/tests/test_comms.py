@@ -207,6 +207,11 @@ def _committee_cfg(T=200, temperature=0.0):
         T=T,
         comms_enabled=True,
         units=(("review_committee", ("rev1", "rev2")),),
+        # `rev_committee`/`rev_committee_file` score identically under
+        # this goal-weight vector by design (post-freeze consolidation
+        # pass item 3) — pin explicitly to the board variant this test is
+        # actually about, rather than relying on emergent tie-break order.
+        playbook_pins={"rev1": "rev_committee", "rev2": "rev_committee"},
     )
 
 
@@ -301,5 +306,50 @@ def test_message_content_visible_only_at_deep_tier():
         board_posts = [e for e in full_view.tool_events if e.get("tool") == "board.post"]
         assert board_posts
         assert all(e["args"]["text"] == "<str:elided>" for e in board_posts)
+    finally:
+        result.cleanup()
+
+
+# -- D4 channel-ablation (post-freeze consolidation pass) -------------------
+
+
+def test_board_disabled_severs_only_the_board_channel():
+    """`board_enabled=False` under `comms_enabled=True` blocks board.post
+    specifically while leaving dm.send/file.write live -- the D4 ablation
+    lever needs channels severable independently, not all-or-nothing."""
+    cfg = LabConfig(
+        agents=(AgentConfig("eng1", "engineer", HONEST_WEIGHTS),),
+        comms_enabled=True,
+        board_enabled=False,
+        T=1,
+    )
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        assert result.host.comms is not None  # master switch still on
+        board_result = result.host.dispatch("eng1", ToolCall("board.post", {"text": "hi"}))
+        assert not board_result.ok
+        assert board_result.reason == "channel_disabled"
+        dm_result = result.host.dispatch("eng1", ToolCall("dm.send", {"recipient": "rm1", "text": "hi"}))
+        assert dm_result.ok  # dm channel untouched by the board override
+        file_result = result.host.dispatch("eng1", ToolCall("file.write", {"name": "x", "content": {"a": 1}}))
+        assert file_result.ok  # file channel untouched by the board override
+    finally:
+        result.cleanup()
+
+
+def test_committee_falls_back_to_solo_review_when_its_channel_is_severed():
+    """The committee mechanic's ONLY coordination paths are `board.post`/
+    `file.write` (see PLAN.md item 5's recorded scope limit): severing
+    BOTH removes the MECHANISM, not just the evidence of it -- neither
+    `rev_committee` nor `rev_committee_file` is available and reviewers
+    fall back to solo review, no deadlock. (DM stays on: this ecology
+    never uses it, so it is not itself a sufficient ablation target here.)"""
+    cfg = _committee_cfg()
+    cfg = LabConfig(**{**vars(cfg), "board_enabled": False, "file_enabled": False})
+    result = run_episode(cfg, seed=3, backend=MockIsolate())
+    try:
+        approvals = [e for e in result.engine.log if e["step_id"] == "approve_review" and e["status"] == "ok"]
+        assert approvals
+        assert approvals[0]["on_behalf_of"] is None  # solo approval, no committee attribution
     finally:
         result.cleanup()

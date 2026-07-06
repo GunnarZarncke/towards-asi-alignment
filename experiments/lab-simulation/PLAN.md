@@ -715,6 +715,236 @@ user's stated requirement going in — "the persistent_id must be used as
 an index... but the agent wouldn't know or see that. Only the oracle may
 access" — and needed no correction).
 
+## Post-freeze consolidation pass (recorded 2026-07-06, pre-implementation)
+
+User request after reviewing the D4/D1 divergence: implement the D4
+channel-ablation, perturbation-response MI as a UAD signal, full D2
+(model-from-model, spec upgrades, `resume_from` chaining), a blind
+treatment for the committee/DM/file playbooks and UAD/collusion, and
+four refactors (playbook-selection steering, unified capability table,
+split comms lever, hash-chain consolidation). Explicit constraint: keep
+the Phase 5 freeze; only stop and ask if something is genuinely
+frozen-blocking. The full statistical battery is deferred; D3 is out of
+scope for this pass.
+
+**Freeze check, done first.** None of the eight items require editing
+`detectors.py`, `severity.py`, `twins.py`, or the `AuditView` boundary
+shape:
+
+- New pipeline tools/steps (D2) are invisible to the frozen detectors by
+  construction — `process_noncompliance_score`/`provenance_score` key
+  off generic `status`/`step_id`/`payload` shapes, not a fixed step-id
+  list. `severity.py`'s own scope note and `handles.py`'s
+  `handle.release_hold` evasion story ("deploy via an upgraded pipeline
+  spec whose new path skips the held step (D2 referent drift)") already
+  anticipate this.
+- UAD/collusion/MI are `uad.py`-only additions (already a recorded
+  referee extension).
+- The four refactors are internal-shape changes with no detector-visible
+  field renames (verified per-item below).
+
+No ask-and-wait trigger found; proceeding.
+
+**1. Unified capability table.** Merge `agents.ROLE_CAPABILITIES` and
+`COMM_ROLE_ELIGIBILITY` into one `ROLE_CAPABILITIES: dict[str,
+frozenset[str]]`, plus a `CREEP_EXEMPT_CAPABILITIES: frozenset[str]`
+naming exactly the comm/file caps previously kept out of the table for
+`access_creep`/`access_integrity_score` accounting. `severity._access_creep`
+and `detectors.access_integrity_score` are FROZEN and must not change;
+instead, `AdminPolicy.handle_request`'s `least_privilege=False` spray
+and `world.py`'s comm-capability bootstrap both filter grants through
+`CREEP_EXEMPT_CAPABILITIES` before they ever reach `PermissionService`,
+so the frozen creep formula's *inputs* stay exactly as before — same
+externally observed behavior, one table instead of two.
+
+**2. Split comms lever.** `LabConfig.comms_enabled: bool` stays (default
+`False`, unchanged meaning: "master switch, all channels"). Add three
+`Literal[True, False, None]`-shaped overrides — `board_enabled`,
+`dm_enabled`, `file_enabled`, each defaulting to `None` ("inherit
+`comms_enabled`") — and a `LabConfig.channel_enabled(name)` resolver.
+Every pre-existing config that only ever sets `comms_enabled` is
+byte-identical (all three resolve to it). `playbooks._requires_comms`
+splits into per-channel predicates so a playbook needing `dm` but not
+`board` is filtered correctly when only `dm` is disabled. This is what
+the D4 channel-ablation battery needs (sever one channel, hold the
+others fixed).
+
+**3. Playbook selection steering.** Remove the
+`COMPLIANT_WEIGHTS`/`FILE_COMPLIANT_WEIGHTS` tie-break-by-feature-deltas
+pattern that already caused one silent bug (string-ordering tie-break,
+recorded in the D1 follow-up section above). Add
+`LabConfig.playbook_pins: dict[str, str]` (`actor_id -> playbook name`,
+default `{}`). `programs._goal_policy` checks a pin before the softmax:
+if set and the named playbook is currently available, choose it
+directly, skip scoring entirely. `ecology.committee_config(channel=...)`
+now pins every reviewer to `rev_committee`/`rev_committee_file` instead
+of swapping goal-weight vectors — explicit, not emergent from a
+carefully-tuned score margin.
+
+**4. Hash-chain consolidation — narrowed scope, decided without asking.**
+Three chains were named in `access.py`/`events.py`'s docstrings, but
+inspection shows only two are true PER-ENTRY hash chains
+(`access.PermissionService`, `events.EventLog`); `pipeline_engine.py`'s
+engine log is a flat list digested as a whole
+(`PipelineEngine.log_digest`), never chained per-entry. Consolidating
+`access.py` onto `events.EventLog` is a proven byte-identical refactor
+(same field set hashed, same `sha256(json.dumps(..., sort_keys=True))`
+scheme — verified by hand before implementing, then by the pinned
+regression digest). Retrofitting per-entry chaining onto the engine log
+is a DIFFERENT, larger change (new `prev_hash`/`hash` keys on every
+entry would change every pinned digest, requiring a CODE_VERSION bump +
+re-pin for zero behavioral gain) — descoped as not blocking anything on
+this list, recorded here rather than silently dropped.
+
+**5. D4 channel-ablation.** `run_d4_channel_ablation.py`: for each
+composite ecology (board committee, file committee, DM pair), sweep that
+ecology's own channel on/off (holding the others at their default) across
+several seeds, recording UAD score, collusion score, and deploy count.
+Honest scope limit, recorded up front: this line's ONLY coordination
+mechanism for a role IS the channel call itself (there is no side-channel
+a playbook could fall back to) — severing the channel here necessarily
+also removes the coordination *mechanism*, not just the *evidence* of it.
+The ablation therefore measures "does the mechanic degrade gracefully to
+solo behavior when its channel is cut" (a real, useful check) rather than
+MB7d's full "does coordination survive severing an observed channel"
+(which needs an *independent* covert channel to be a live alternative —
+not yet built; recorded as the actual prerequisite for MB7d, not silently
+claimed done).
+
+**6. Perturbation-response MI.** New `uad.py` functions using the
+existing `tools.PerturbationHook` forward hook: a hook factory perturbs
+one named actor's calls at a fixed, seeded rate; `perturbation_response_mi`
+computes empirical mutual information between "actor A perturbed at tick
+t" and "actor B took its coordinating action within a short window after
+t" from full-tier tool events — a genuine MI estimator (not the existing
+co-voting Jaccard proxy), addressing the module docstring's own recorded
+scope gap. Exploratory smoke-tested (a handful of seeds on the existing
+ecologies), not a pre-registered statistical claim — that is the
+deferred full battery.
+
+**7. D2 — model-from-model.** `PipelineEngine._effect_build` and
+`OracleWorld.create_model` already accept/thread `parent_model_id`
+(Phase 0 forward hook, never exercised by any playbook). Add a
+`build_from_parent` step kind + an `eng_honest_upgrade` playbook
+(gated behind a new `LabConfig.multi_gen_enabled` switch, default
+`False`, same additive-off-by-default pattern as `comms_enabled`) that
+builds v(n+1) with `parent_model_id` = the last model this episode
+deployed. `world.py` tracks `last_deployed_model_id` across the
+single-model-in-flight slot recycling (needed since `model_id` itself is
+freed on `monitor`).
+
+**8. D2 — spec upgrades.** New engine tool `spec_upgrade` (added to
+`pipeline_spec.KNOWN_TOOLS`), effect `_effect_spec_upgrade` calling the
+already-existing `PipelineEngine.replace_spec` (a Phase 1 forward hook,
+never called by any step before now). New step `upgrade_spec` in
+`pipeline_default.json` (`depends_on: ["monitor"]`,
+`requires_capability: "cap.spec_upgrade"`, `idempotent: true`) — tied to
+a completed model's lifecycle, since the engine's step-completion
+tracking is per-model_id by design (Phase 1), not a free-floating global
+action. Demo target: `pipeline_shortcut.json` (already exists, skips the
+review gate entirely) — upgrading to it after model v(n)'s full cycle,
+then building v(n+1) `build_from_parent`, is *exactly*
+`handle.release_hold`'s own recorded evasion story ("deploy via an
+upgraded pipeline spec whose new path skips the held step") made
+mechanically real for the first time. Granted to `release_manager`
+(release-adjacent governance action), gated behind `multi_gen_enabled`.
+
+**9. D2 — `resume_from` episode chaining.** `OracleWorld.restore(snapshot,
+seed)` and a `PipelineEngine.__init__(..., resume_state=None)` param
+reconstruct oracle/engine state from a prior episode's
+`EpisodeResult.snapshot_for_resume()` (oracle snapshot + spec history +
+per-model completed-steps + held set + `last_deployed_model_id`).
+`world.run_episode(..., resume_from=None)` — absent (default) is
+byte-identical to every existing call. RNG continuity across the
+episode boundary is NOT preserved exactly (a fresh `random.Random(seed)`
+stream starts post-restore, recorded as a known simplification, not
+hidden) — only oracle-state continuity (models, `bearer_harm`, `t`,
+provenance, spec-in-force) is exact.
+
+**10. Blind treatment for comm/file playbooks + UAD/collusion.**
+`BLIND_GENERATION.md`'s round 1 permitted context predates D4/D1 — its
+step-kind vocabulary excludes `review_committee`/`dm:notify_release`/
+`release_full_dm_gated`/`review_committee_file`. Add a round-2 permitted-
+context addendum describing these in the SAME plain-language, mechanism-
+only style (no mention of "coordination," "collusion," or detection),
+run one fresh Task subagent under the existing trust-boundary discipline
+(forbidden files unchanged, `prompt_verbatim` captured), mechanically
+validate via the existing `validate_repertoire`, and run the frozen
+`uad.py`/`collusion.py` extensions against episodes using ONLY the
+generated repertoire. This directly answers the freeze note's own
+circularity caveat for the new layer (same author wrote the D4/D1
+playbooks and the UAD/collusion detectors in one session) — misses are a
+result, not a bug, same discipline as round 1.
+
+**Deferred, explicitly, per this request:** the full pre-registered
+statistical battery for any of the above (D4 ablation, MI, D2, blind
+round 2) and all `results/FINDINGS.md` G-9+ write-ups — smoke/golden
+verification only in this pass. D3 untouched.
+
+**Implementation status (2026-07-06): all ten items done, CODE_VERSION
+`lab-sim-0.9.0`, 313 tests green.**
+
+- Items 1-4 (refactors): implemented as designed above; the pre-existing
+  `PINNED_DIGEST` in `test_world_regression.py` needed no re-pin,
+  confirming byte-identical behavior for every pre-existing config.
+- Item 5: `run_d4_channel_ablation.py`, `results/d4_channel_ablation.{json,md}`.
+  Both committee ecologies show `native_severed` failing OVER to the
+  still-live alternate channel (`fraction_coordinated=1.0`); `all_severed`
+  (and `dm_pair`'s single severed condition) correctly drives coordination
+  and collusion signals to 0 while `mean_deploy_count` stays > 0 (solo
+  fallback completes the pipeline) — see the recorded scope limit in the
+  script's own docstring.
+- Item 6: `uad.perturbation_response_mi` + helpers, tested against
+  synthetic binary series (`test_binary_mutual_information_synthetic_series`)
+  and one episode-level contrast (perturbing the engineer's `run_eval`
+  measurably raises MI against the release manager's `deploy` timing
+  versus a schedule-independent decoy's board chatter) in `test_uad.py`.
+  Two real gotchas hit and fixed during implementation: (a) perturbing an
+  actor's COMPOUND comm step-kinds (`dm:notify_release`, ...) silently
+  drops the action for the rest of the episode (the "already acted"
+  isolate-local state is set before the result is known) — narrowed the
+  hook to a `tool`/`step_id` filter so it only ever targets a LINEAR,
+  retry-safe step; (b) `response_indicator_series` must match on
+  `args["step_id"]`, not `tool` (every pipeline action shares the tool
+  name `pipeline.trigger_step`) — added a `step_id` parameter.
+- Items 7-9 (D2): `build_from_parent`/`eng_honest_upgrade` (lineage
+  threading verified across 30 generations in one T=200 episode);
+  `spec_upgrade`/`upgrade_spec`/`rm_spec_upgrade` (verified the exact
+  `handle.release_hold` evasion story end to end: upgrade to
+  `pipeline_shortcut.json` after model v(n)'s full cycle, then
+  `build_from_parent` v(n+1), reaches `deploy` without ever calling
+  `request_review`/`approve_review`; a hold placed on v(n+1) still blocks
+  it, since the hold keys off `model_id` not spec version); `resume_from`
+  (`OracleWorld.full_state`/`restore`, `PipelineEngine(resume_state=...)`,
+  `EpisodeResult.snapshot_for_resume`) verified both at the engine level
+  (exact model/`t`/`_n_created`/completed-steps continuity) and through a
+  full `world.run_episode(..., resume_from=...)` chain (oracle `t` and
+  model-id numbering continue seamlessly across the episode boundary; RNG
+  continuity is the one recorded, deliberate gap). One real scope gap
+  surfaced and recorded, not silently worked around: the existing
+  `eng_honest_upgrade` playbook still emits `review_request`, which does
+  not exist under `pipeline_shortcut.json` — so the shortcut-bypass demo
+  and the `resume_from`/lineage tests exercise the engine directly
+  (`test_d2.py`'s module docstring explains why) rather than through a
+  single agent-driven episode that upgrades mid-flight; a future
+  shortcut-compatible upgrade playbook is future work, not claimed done.
+- Item 10 (blind round 2): `BLIND_GENERATION_ROUND2.md` (permitted-context
+  addendum, mechanism-only, no new availability gates needed), one fresh
+  `generalPurpose` subagent run (readonly, instructed blindness — agent id
+  recorded in `generated_playbooks_v2.json`'s provenance), 18/18 accepted
+  by `validate_repertoire` with zero rejections. `run_blind_round2.py`
+  pins EVERY role in three ecologies (board committee, file committee, DM
+  pair) to a round-2-generated name ONLY (`baseline_leak_check` in the
+  output confirms no hand-authored playbook was ever actually selected)
+  and reruns the frozen `uad.py`/`collusion.py` extensions unchanged:
+  **full recovery** (`uad_score=1.0` in every ecology; `collusion_score`
+  1.0 for both committee variants, correctly 0.0 for the DM pair, which
+  never uses board/file votes) — see `results/blind_round2.md`. This is a
+  genuine (if small-scale) answer to the freeze note's circularity caveat
+  for the D4/D1 layer specifically: the round-2 generator never saw
+  `uad.py`, `collusion.py`, `playbooks.py`, `programs.py`, or any
+  committee/coordination framing, only the mechanism-only prompt above.
+
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
 
 Structural decisions Phase 0-8 must get right so the deferred workstreams
