@@ -1,0 +1,865 @@
+{
+  "code_version": "lab-sim-0.9.2",
+  "generated_at": "2026-07-07T13:09:46.769848+00:00",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "T": 100,
+  "n_agents_sweep": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "max_lag": 3,
+  "rows": [
+    {
+      "seed": 1,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 6,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 8,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 9,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "seed": 10,
+      "heuristic_uad_score": 0.0,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "eng1_eng2_merged": true,
+          "eng1_eng2_isolated_from_rev_rm": false,
+          "uad_score": 1.0
+        }
+      }
+    }
+  ],
+  "heuristic_never_merges_eng1_eng2": true,
+  "mi_merge_rate_by_n_agents": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0
+  },
+  "mi_eng1_eng2_isolated_from_rev_rm_rate_by_n_agents": {
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0
+  },
+  "mi_deterministic_by_n_agents": {
+    "1": true,
+    "2": true,
+    "3": true,
+    "4": true
+  }
+}

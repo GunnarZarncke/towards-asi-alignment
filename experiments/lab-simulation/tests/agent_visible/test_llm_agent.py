@@ -124,6 +124,32 @@ def test_discovery_variant_accepts_comm_tool_calls():
     assert call == {"tool": "board.post", "args": {"text": "hi", "custom": {"vote": "approve"}}}
 
 
+def test_memo_files_tail_cap_survives_a_ten_document_knowledge_base():
+    """G-22: `memo_files` inlines full KB doc content from t=0 (world.py),
+    so a 10-document knowledge_base already exceeded the OLD cap of 8
+    before an agent wrote a single memo of its own -- the first KB docs
+    would have been silently invisible. Cap widened to 24; this pins
+    the regression."""
+    import json
+
+    class CapturingClient:
+        def __init__(self):
+            self.last_user = None
+
+        def chat_json(self, system, user):
+            del system
+            self.last_user = user
+            return {"done": True}
+
+    client = CapturingClient()
+    policy = LLMPolicy(client=client, role="engineer", prompt_variant="discovery")
+    ten_memos = tuple({"rel": f"memos/kb_doc_{i}__1.json", "actor_id": "lab_kb", "name": f"kb_doc_{i}", "t": 0, "content": {"n": i}} for i in range(10))
+    policy.decide({**BASE_OBS, "memo_files": ten_memos})
+    sent_memo_files = json.loads(client.last_user)["memo_files"]
+    assert len(sent_memo_files) == 10
+    assert {m["name"] for m in sent_memo_files} == {f"kb_doc_{i}" for i in range(10)}
+
+
 def test_transcript_records_reasoning_and_validated_call():
     client = FakeClient([{"reasoning": "build first", "tool": "pipeline.trigger_step", "args": {"step_id": "submit_build", "args": {}}}])
     policy = LLMPolicy(client=client, role="engineer", prompt_variant="discovery")
@@ -159,6 +185,82 @@ def test_flattened_pipeline_step_call_preserves_on_behalf_of():
         "tool": "pipeline.trigger_step",
         "args": {"step_id": "approve_review", "args": {"model_id": "m001"}, "on_behalf_of": "unit1"},
     }
+
+
+def test_unknown_tool_call_sets_last_tool_call_error_for_next_turn():
+    """General accessibility-plumbing fix (follow-up to the flattened-call
+    coercion above): ANY rejected reply -- not just the one coerced shape
+    -- must surface a reason on the NEXT turn's observation payload, the
+    same "tell the agent what went wrong" pattern last_denied_capability
+    already gives for capability denials."""
+    import json
+
+    class CapturingClient:
+        def __init__(self, responses):
+            self._responses = list(responses)
+            self.sent_users: list[str] = []
+
+        def chat_json(self, system, user):
+            del system
+            self.sent_users.append(user)
+            return self._responses[len(self.sent_users) - 1]
+
+    client = CapturingClient(
+        [{"tool": "not_a_real_tool", "args": {}}, {"done": True}]
+    )
+    policy = LLMPolicy(client=client, role="engineer", prompt_variant="discovery")
+    call = policy.decide(dict(BASE_OBS, t=0, decision_seed="1:eng1:0"))
+    assert call is None
+    # First turn had no prior error yet.
+    assert json.loads(client.sent_users[0])["last_tool_call_error"] is None
+    policy.decide(dict(BASE_OBS, t=1, decision_seed="1:eng1:1"))
+    assert json.loads(client.sent_users[1])["last_tool_call_error"] == "unknown_tool:not_a_real_tool"
+
+
+def test_missing_tool_field_reports_specific_reason():
+    client = FakeClient([{"args": {"foo": "bar"}}, {"done": True}])
+    policy = LLMPolicy(client=client, role="engineer", prompt_variant="discovery")
+    assert policy.decide(dict(BASE_OBS, t=0, decision_seed="1:eng1:0")) is None
+    assert policy._last_invalid_reason == "missing_tool_field"
+
+
+def test_args_not_a_dict_reports_specific_reason():
+    client = FakeClient([{"tool": "board.post", "args": "not a dict"}])
+    policy = LLMPolicy(client=client, role="engineer", prompt_variant="discovery")
+    assert policy.decide(dict(BASE_OBS, t=0, decision_seed="1:eng1:0")) is None
+    assert policy._last_invalid_reason == "args_not_a_json_object"
+
+
+def test_valid_call_clears_last_invalid_reason():
+    client = FakeClient([{"tool": "not_a_real_tool", "args": {}}, {"tool": "board.post", "args": {"text": "hi"}}])
+    policy = LLMPolicy(client=client, role="engineer", prompt_variant="discovery")
+    policy.decide(dict(BASE_OBS, t=0, decision_seed="1:eng1:0"))
+    assert policy._last_invalid_reason is not None
+    policy.decide(dict(BASE_OBS, t=1, decision_seed="1:eng1:1", last_denied_capability="anything-to-avoid-same-key"))
+    assert policy._last_invalid_reason is None
+
+
+def test_rejected_reply_is_not_cached_so_the_llm_is_re_queried():
+    """The other half of the fix: caching a rejected reply against an
+    unchanged observation would replay the same silent idle forever
+    (the "stuck idle for the rest of the episode after one malformed
+    call" failure mode). A malformed reply must therefore bypass the
+    cache even when the rest of the observation is identical."""
+    client = FakeClient([{"tool": "not_a_real_tool", "args": {}}, {"tool": "not_a_real_tool", "args": {}}])
+    policy = LLMPolicy(client=client, role="engineer", prompt_variant="discovery")
+    obs_t0 = dict(BASE_OBS, t=0, decision_seed="1:eng1:0")
+    obs_t1 = dict(BASE_OBS, t=1, decision_seed="1:eng1:1")
+    policy.decide(obs_t0)
+    policy.decide(obs_t1)
+    assert client.calls == 2
+    assert policy.cache_hits == 0
+
+
+def test_transcript_records_invalid_reason():
+    client = FakeClient([{"tool": "not_a_real_tool", "args": {}}])
+    policy = LLMPolicy(client=client, role="engineer", prompt_variant="discovery")
+    policy.decide(BASE_OBS)
+    assert policy.transcript[0]["invalid_reason"] == "unknown_tool:not_a_real_tool"
 
 
 def test_transcript_not_appended_on_cache_hit():

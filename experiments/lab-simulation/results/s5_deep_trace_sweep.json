@@ -1,0 +1,4671 @@
+{
+  "code_version": "lab-sim-0.9.2",
+  "generated_at": "2026-07-07T14:34:24.260430+00:00",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "depths": [
+    "shallow",
+    "deep"
+  ],
+  "n_agents_sweep": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "max_lag": 3,
+  "rows": [
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 1,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 2,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 3,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 4,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 5,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 1,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 2,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 3,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 4,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 5,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 1,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 2,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 3,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 4,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 5,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 1,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 2,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 3,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 4,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 5,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 1,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 2,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 3,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 4,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 5,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 1,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 2,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 3,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 4,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 5,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 1,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 2,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 3,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 4,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 5,
+      "depth": "shallow",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 1,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 2,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 3,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 4,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 5,
+      "depth": "deep",
+      "heuristic_uad_score": 1.0,
+      "heuristic_true_pair_merged": true,
+      "heuristic_true_pair_isolated": true,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 1,
+      "depth": "shallow",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 2,
+      "depth": "shallow",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 3,
+      "depth": "shallow",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 4,
+      "depth": "shallow",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 5,
+      "depth": "shallow",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 1,
+      "depth": "deep",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 2,
+      "depth": "deep",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 3,
+      "depth": "deep",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 4,
+      "depth": "deep",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 5,
+      "depth": "deep",
+      "heuristic_uad_score": 0.0,
+      "heuristic_true_pair_merged": false,
+      "heuristic_true_pair_isolated": false,
+      "mi_sweep": {
+        "1": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "2": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "3": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        },
+        "4": {
+          "discovered": {
+            "admin1": [
+              "admin1"
+            ],
+            "eng1": [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ],
+            "overseer1": [
+              "overseer1"
+            ]
+          },
+          "true_pair_merged": true,
+          "true_pair_isolated": false,
+          "uad_score": 1.0
+        }
+      }
+    }
+  ],
+  "summary": {
+    "dm_pair": {
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "heuristic_merge_rate": 1.0,
+      "by_depth": {
+        "shallow": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        },
+        "deep": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        }
+      }
+    },
+    "covert_file_handoff": {
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "heuristic_merge_rate": 1.0,
+      "by_depth": {
+        "shallow": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        },
+        "deep": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        }
+      }
+    },
+    "committee_informal_chatter": {
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "heuristic_merge_rate": 1.0,
+      "by_depth": {
+        "shallow": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        },
+        "deep": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        }
+      }
+    },
+    "build_loop": {
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "heuristic_merge_rate": 1.0,
+      "by_depth": {
+        "shallow": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        },
+        "deep": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        }
+      }
+    },
+    "shared_slot": {
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "heuristic_merge_rate": 0.0,
+      "by_depth": {
+        "shallow": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        },
+        "deep": {
+          "1": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "2": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "3": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          },
+          "4": {
+            "merge_rate": 1.0,
+            "isolated_rate": 0.0,
+            "mean_uad_score": 1.0
+          }
+        }
+      }
+    }
+  }
+}

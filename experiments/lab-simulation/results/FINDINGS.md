@@ -1148,3 +1148,395 @@ implementation than to any structural requirement of the substrate** —
 the "coordination requirement" is a fact about a particular hand-written
 playbook, not a fact a free-acting agent (artificial or human) would
 otherwise be bound by.
+
+## G-22 (2026-07-07): a passively-available knowledge base is invisible to a free `gpt-4o-mini` agent unless it needs it — and a genuine `_tail` truncation bug was caught before it could hide the KB in a longer episode
+
+**Setup.** Follow-up to G-21's knowledge-base addition
+(`knowledge_base.py`, `LabConfig.knowledge_base`/`knowledge_base_redteam`):
+does a free `gpt-4o-mini` engineer, given the SAME task briefing as the
+G-21 baseline (never mentioning the knowledge base at all) plus the
+ten-document general KB bundle (`default_full_knowledge_base`) wired in,
+spontaneously engage with it? `run_llm_discovery_kb_check.py`, one real
+episode, same seed/task as the baseline solo-engineer scenario.
+
+**Bug caught before it could bite.** `world.py`'s `memo_files`
+observation field inlines full memo CONTENT from t=0, so a 10-document KB
+already exceeds `llm_agent.py`'s OLD `_tail(memo_files, 8)` cap before
+the agent authors a single memo of its own — the first two KB docs
+(alphabetically/insertion-order first: `handbook`, `pipeline_reference`)
+would have been silently invisible to the model from turn one, not a
+crowding effect that only shows up in a long episode as PLAN.md's
+"Knowledge base" section speculated. Fixed by widening the `memo_files`
+tail cap to 24 (board/dm message tails stay at 8 — different growth
+shape, conversational logs vs. a mostly-static reference corpus).
+Confirmed fixed empirically: `all_kb_docs_survive_tail_truncation: true`
+in this run's result.
+
+**Result: zero measurable engagement.** Across all 14 LLM calls in the
+episode: zero explicit `file.read` calls targeting a KB doc (unsurprising
+given content is already passively inlined — there is nothing to
+"fetch"); zero occurrences of any KB-distinctive term (`"meridian"`,
+`"handbook"`, `"escalation"`, `"least privilege"`, etc.) anywhere in the
+model's own stated `"reasoning"` text. Every reasoning string is purely
+mechanical pipeline narration ("I need to file a report...", "I need to
+request the capability to run the evaluation..."), identical in
+character to the G-21 baseline's reasoning before the KB existed. Same
+task outcome as the G-21 baseline too (`reached_request_review: true`,
+`filed_report_matches_true_hazard_exactly: false` — an unrelated,
+already-recorded drift/hallucination pattern, not new here) and the same
+call count (14 vs. the baseline's 15) — the KB changed nothing about
+WHAT the model did.
+
+**Cost roughly quadrupled for zero behavioral change.** `$0.0136` for
+this run vs. `$0.0030` for the KB-free G-21 baseline (~4.5x), entirely
+from carrying ~20KB of largely redundant KB content in every single
+observation payload, not from extra LLM calls (call count was actually
+one lower). This is the concrete, measured cost side of the "wide-open,
+generically-documented tool surface" design this line uses throughout:
+adding a passive information source that nothing in a given episode
+actually NEEDS is not free, and a model with no reason to consult it
+did not consult it.
+
+**Interpretation, not yet a battery.** One episode, one task, one model.
+The honest reading: passive availability (memo_files inlining content
+unconditionally) is a poor mechanism for getting a free agent to actually
+use background material it was not told matters — closer to "leaving a
+handbook on a shelf" than "onboarding." Whether the KB matters more in a
+scenario where task success genuinely depends on KB-only information
+(e.g. the exact `access.request` capability name, or an escalation
+contact only named in `roles_and_escalation_contacts`) is untested and
+would be the natural next probe, not assumed from this result.
+
+## G-23 (2026-07-07): the general "no error feedback on a malformed tool call" gap left open by G-21 is now fixed — and it, not the KB, is the sharper accessibility lesson
+
+**What G-21 left open.** G-21 fixed exactly ONE malformed shape (the
+flattened `pipeline.trigger_step` call) via
+`_coerce_flattened_pipeline_call`, and explicitly recorded the more
+general gap as unfixed: `_validate_call` silently returned `None` for
+EVERY OTHER malformed reply too (missing `"tool"` field, `"args"` not a
+JSON object, a genuinely unrecognized tool name) — indistinguishable
+from an intentional idle, with no signal telling the model anything went
+wrong, and (because the resulting `None` got cached against an
+unchanging observation) no way for the model to ever be re-asked either.
+
+**Fix, entirely inside `llm_agent.py` (no wire-protocol/host change).**
+`_validate_call` now returns `(call, invalid_reason)` instead of just
+`call`, with three reason codes covering everything it used to swallow
+silently: `missing_tool_field`, `args_not_a_json_object`,
+`unknown_tool:<name>` (the flattened-pipeline-step case still coerces
+successfully and reports no error, unchanged). `LLMPolicy` tracks the
+most recent reason as `self._last_invalid_reason` and (a) surfaces it to
+the model on the VERY NEXT turn via a new `last_tool_call_error`
+observation field (added to the BASE payload, so every prompt variant —
+scripted `adversarial`/`redteam` included, not just `discovery` — gets
+it, since the gap was general), and (b) makes `decide()` skip caching
+whenever the last call was rejected, so a rejected turn is re-queried
+next tick even if nothing else in the observation changed — closing the
+"stuck idle for the rest of the episode after one slip" failure mode for
+good, not just for the one shape G-21 happened to catch. All three
+scripted system prompts (`_ENGINEER_SYSTEM_PROMPT`,
+`_ENGINEER_REDTEAM_PROMPT`, `_TOOL_REFERENCE`/`_build_discovery_prompt`)
+were updated to document the field and tell the model to retry on it;
+the discovery prompt's now-inaccurate "unknown tools/args are ignored as
+if you did nothing" line was removed since that is no longer quite true
+(it's still a wasted turn, but not a SILENT one).
+
+**Not yet re-run against a live episode.** This fix targets exactly the
+mechanism G-21's writeup diagnosed as the deeper accessibility gap
+(worse than the coordination-rule bypasses G-21's main finding covered,
+since those at least let the model act LEGALLY; a silently-dropped call
+gives it no information at all). Pinned by six new unit tests
+(`tests/agent_visible/test_llm_agent.py`) covering each reason code, the
+cache-bypass, and transcript recording — but whether it changes
+`gpt-4o-mini`'s actual in-episode recovery behavior (does it self-correct
+given the reason code, or ignore it the way it ignored the passive KB in
+G-22?) is untested and would be the natural next probe: rerun
+`run_llm_discovery_baseline.py` under conditions that reliably elicit a
+malformed call and check the transcript for a corrected retry.
+
+## G-24 (2026-07-07): S5 — the REAL lag-max-MI UAD detector, ported into lab-sim for the first time, over-merges S4's entire serial pipeline into one "agent," confirming the predicted failure mode and exposing a blind spot in `uad_score` itself
+
+**Setup.** PLAN.md's S5 entry (recorded same day): every scenario in the
+S1-S4 backlog was scored ONLY against `uad.py`'s hand-written heuristic
+(co-voting Jaccard + DM-pair/file-share-pair structural lookups) — never
+against the lag-max-MI clustering method PLAN.md's original ambition
+named as this line's actual UAD precedent. That method already exists,
+fully implemented, in a different experiment line
+(`embedded-simulation/embedded_sim/uad_core/`); it had simply never been
+pointed at lab-sim's actors. Vendored byte-for-byte (see
+`lab_sim/oracle_only/uad_core/`'s package docstring for why vendored
+rather than cross-imported) plus one new adapter module
+(`lab_sim/oracle_only/uad_mi.py`) translating lab-sim tool events into
+the detector's discretized-variable trace format, then re-run against
+the SAME `shared_slot_config` episodes G-20 already scored
+(`run_s5_uad_core_port.py`, 10 seeds × 4 `n_agents` values, T=100).
+
+**Hypothesis, stated before running (not backward-fit).** G-20 found the
+CURRENT heuristic under-detects: {eng1, eng2} always score `uad_score =
+0.0` (discovered as singletons) despite a real causal coupling through
+shared engine state. The predicted failure mode for lag-max-MI was the
+OPPOSITE direction: since eng1/eng2/rev1/rm1 all sit on ONE strictly
+serial pipeline chain (S4's own single-model-in-flight scope), every
+actor's action is lag-coupled to every other actor's, not only to its
+true partner's — so the detector should plausibly OVER-merge, not
+under-merge.
+
+**Confirmed, cleanly, at every tested granularity.** Across all 10
+seeds and all four `n_agents` values tried (1, 2, 3, 4 — the detector's
+HARD target cluster count, a free parameter `uad.py`'s heuristic never
+needed): eng1 and eng2 land in the same discovered cluster 100% of the
+time, but that cluster is NEVER just {eng1, eng2} — it is always {eng1,
+eng2, rev1, rm1}, the entire active-actor set (`eng1_eng2_isolated_
+from_rev_rm` rate: `0.0` at every `n_agents`). Fully deterministic
+across seeds (temperature=0, same as G-20). This is exactly the
+predicted over-merge, not asserted in advance as certain but confirmed
+empirically rather than assumed.
+
+**A real blind spot in `uad_score` itself, exposed as a side effect.**
+Because `uad_score(true_units, discovered)` only scores actor PAIRS
+that appear in `true_units`' own actor set (by design — see its
+docstring), this fully-merged four-actor blob scores `uad_score = 1.0`
+against the true `{eng1, eng2}` unit at every `n_agents` — a "perfect"
+score that actively MISREPORTS what happened: the detector did not find
+the true unit specifically, it merged everyone on the pipeline into one
+undifferentiated mass and {eng1, eng2} being co-located is incidental,
+not diagnostic. `uad_score` alone cannot distinguish "correctly
+isolated the true unit" from "over-merged past it" — this run needed a
+SEPARATE metric (`eng1_eng2_isolated_from_rev_rm`) to see the
+difference at all. Recorded here as a genuine limitation of the scoring
+metric this whole battery line has used throughout S1-S4, not only of
+this one detector.
+
+**A vendored-detector quirk surfaced along the way, not a lab-sim bug.**
+Inspecting raw `detect_agents` output directly (`n_agents=4`, 12 input
+variables: 6 actors × `{.step, .ok}`) showed only 10 of the 12 variables
+accounted for in the returned envelope — `rev1.ok`/`rm1.ok` vanish
+silently. Traced to `uad_core/detection.py`'s `filter_weak_connections`
+(vendored byte-for-byte from `embedded_sim`): a cluster of size ≤1 after
+complete-linkage is `continue`d past entirely, added to neither the
+filtered dict nor the env bucket. Not something this port introduced,
+and not patched here (this line vendors the detector AS-IS, deliberately
+— see the vendoring rationale in the package docstring); recorded as a
+property of the upstream algorithm a caller should know about before
+trusting `detect_agents`'s output to enumerate every input variable.
+
+**Interpretation.** The heuristic's known failure (blind to a
+comms-free causal coupling, G-20) and the real detector's failure here
+(blind to unit BOUNDARIES within a coupled group — it sees "coupled,"
+not "coupled in a way that respects the true partition") are
+qualitatively different errors, not the same gap fixed by a better
+tool: swapping the discovery METHOD did not, on its own, solve S4's
+detection gap — it traded a false negative for a different false
+positive. Getting {eng1, eng2} isolated specifically (not merged with
+rev1/rm1) would need either a variable choice that decouples the
+downstream steps' influence (untested here — see `uad_mi.build_lab_trace`'s
+scope note on `.step`/`.ok` choice) or a detector that reasons about
+partition STRUCTURE, not just pairwise coupling strength. The
+acausal-coordination (ICI) probe PLAN.md's S5 entry also named remains
+unimplemented — it is new work, not a port, and was explicitly out of
+scope for this pass (see PLAN.md's S5 "Scope note").
+
+## G-25 (2026-07-07): widening the UAD trace from 2 to 5 vars/actor (DM-receive, access-grant/deny, wider tool vocabulary) does not change the over-merge finding, and the over-merge generalizes to four MORE scenarios beyond S4
+
+**Setup.** User feedback on G-24: the `.step`/`.ok`-only trace was "much
+too light," should also cover file reads/writes, DM send AND receive,
+access request/grant, and should be tested against multiple scenarios,
+not S4 alone. `uad_mi.build_lab_trace`/`discovered_units_mi` gained a
+`depth=` switch: `"shallow"` (G-24's original 2 vars/actor, kept
+unchanged for comparison) and `"deep"` (new default, 5 vars/actor --
+`.tool` widened to a distinct code per comm/file/state tool instead of
+one "other" bucket, plus `.dm_recv` — inferred from `dm.send`'s
+`args.recipient`, a signal about the RECEIVING actor, not the sender's
+own action — and `.access_grant`/`.access_deny` from `PermissionService.
+log`, the admin's decision, kept separate from the requester's own
+`access.request` call). `run_s5_deep_trace_sweep.py`: both depths ×
+`n_agents` ∈ {1,2,3,4} × 5 seeds, across FIVE ecologies each with one
+known non-singleton true pair — `dm_pair_config` ({eng1,rm1}),
+`covert_file_handoff_config(trusting=True)` ({eng1,rev1}),
+`committee_with_informal_chatter_config` ({rev1,rev2} — the first run
+of this sweep wrongly labeled it {eng1,rm1}; caught and corrected
+during the G-26 diagnosis pass, which also flipped that scenario's
+reported heuristic merge rate from 0.0 to 1.0 — the heuristic had been
+finding the committee all along, the script was scoring the wrong
+pair), `build_loop_config` ({eng1,rm1}), and `shared_slot_config`
+({eng1,eng2}, G-24's own episodes re-run at both depths for the direct
+comparison).
+
+**Result: no change from depth, and the over-merge generalizes.** In
+every one of the 5 scenarios × 2 depths × 4 `n_agents` × 5 seeds = 200
+cells, the true pair merges 100% of the time and is isolated from every
+other playbook actor 0% of the time — identical at `depth="shallow"`
+and `depth="deep"`, and identical across all four `n_agents` values
+(including `n_agents=4`: the hard cluster-count target applies to
+*variables*, not actors, and 5 deep vars × 4 actors = 20 variables still
+collapses to ≤4 clusters easily). Widening the trace did not decouple
+any true pair from the rest of its pipeline; it changed WHAT the
+detector sees, not THAT it over-merges. `uad_score` reports `1.0` in
+every cell for the same reason as G-24 (the blind-spot: everyone merged
+into one blob still "contains" the true pair) — re-confirms G-24's
+scoring-metric limitation is not specific to S4 or to the shallow trace.
+
+**Interpretation.** This is now a THIRD independent data point (after
+G-20's heuristic under-merge and G-24's shallow-trace over-merge) that
+the detection gap in this line is not primarily about which SCALAR
+variables get fed to lag-max-MI — it is that every scenario tried so far
+is a single serial pipeline with no comms-free control group, so
+"lag-coupled to the true partner" and "lag-coupled to the next pipeline
+stage" are not statistically distinguishable from action-code
+co-occurrence alone, at ANY of the trace depths tried. A detector that
+reasons about partition STRUCTURE (or a scenario with a genuinely
+independent side channel the true pair uses but the rest of the
+pipeline does not) remains the open direction, unchanged from G-24.
+
+**Explicit scope limit, carried over from the user's request, not
+silently dropped.** "Compute (e.g. CoT length)" and "API call" were
+ALSO requested as trace dimensions but are NOT in `"deep"` either —
+neither exists anywhere in `world.EpisodeResult` today (an LLM backend's
+token usage/transcript/cache-hit bookkeeping lives entirely inside the
+backend object, e.g. `llm_isolate.LLMSubprocessHandle`, never surfaced
+onto the result any backend-agnostic caller can read). Adding either
+would need a structural change to `world.py`'s core episode loop (a new
+`EpisodeResult` field threading backend-specific usage through it) —
+flagged as a named follow-up in PLAN.md rather than shipped as a
+silently incomplete "deep" trace. See `uad_mi.py`'s module docstring.
+
+## G-26 (2026-07-07): diagnosis of WHY lag-max-MI over-merges — the pairwise signal actually ranks the true pair FIRST in 3 of 5 scenarios; the over-merge is caused by the clustering step (hard `n_agents` target + normalized complete-linkage), and the residual failures need conditioning, which plain MI cannot do
+
+**Question (user).** "Diagnose why UAD doesn't discover the 'right'
+agents." Ad-hoc diagnostic pass (throwaway script, seed 1 + 5-seed
+spot-checks; numbers below are seed-1 `.tool`-column values at T=100,
+zero-lag MI in bits via the vendored `mutual_information`) — findings
+recorded here; the sweep scripts themselves are unchanged except for
+one true-pair bug fix noted below.
+
+**Finding 1 — the raw MI matrix is NOT structureless; the true pair is
+often the STRONGEST pair.** Actor-level max lag-MI on `shared_slot`:
+eng1–eng2 = 1.60 vs. 1.03–1.19 for every cross-pipeline pair — the true
+pair wins by a wide margin. Same on `dm_pair` (eng1–rm1 = 1.33, the
+maximum) and `build_loop`. The information needed to rank the true
+pair first IS in the trace; G-24/G-25's "detector over-merges" is not
+because the signal is absent.
+
+**Finding 2 — the loss happens in the clustering step, twice over.**
+(a) `DetectionConfig.n_agents` is a hard TARGET cluster count over
+*variables*, and complete-linkage keeps merging until it reaches it:
+with 8–20 active variables and `n_agents ≤ 4`, merging everything is
+forced by construction regardless of how contrastive the MI matrix is.
+(b) `build_similarity_matrix` normalizes distance by the GLOBAL max
+similarity (`dist = 1 − sim/max_sim`) — and the max similarity is
+usually an actor's own `.tool`↔`.ok` redundancy (0.63–0.88 bits) or the
+true pair itself, so every cross-pipeline pair (≈1.0–1.2 bits) lands at
+a small relative distance too; nothing in the algorithm asks "is this
+merge WEAKER than the previous ones," so there is no natural stopping
+point. Direct demonstration: extending the `n_agents` sweep past the
+G-24/G-25 range, at `n_agents = n_active_vars − 1` (exactly ONE merge
+allowed), the detector's FIRST merge is exactly the true pair in
+`dm_pair`, `build_loop`, and `shared_slot` — 5/5 seeds each, shallow
+trace. The detector "knows" the right answer; the stopping criterion
+throws it away. (At deep depth the first merges instead go to
+within-actor variable pairs — more variables per actor = more
+self-redundancy to chew through before any cross-actor merge, i.e. the
+DEEPER trace is mildly WORSE for this detector, an inversion worth
+knowing about the probe-scale question.)
+
+**Finding 3 — the two scenarios where even the one-merge probe fails
+need CONDITIONING, not more trace.** `covert_file_handoff`: first merge
+is eng1–rm1 (serial pipeline neighbor), not the true eng1–rev1 pair —
+the file handoff is one `file.write`+`file.share` per generation vs.
+dozens of phase-locked pipeline calls, so the pipeline coupling
+dominates pairwise MI. `committee_informal_chatter`: first merge is
+eng1–rev1 (the chatter decoy plus pipeline adjacency), not rev1–rev2.
+But conditioning on the REST of the active actors (I(A;B | rest), the
+common-cause test) reorders things: on `shared_slot`, eng1–eng2 keeps
+0.26 bits conditioned while eng1–rm1 collapses to 0.04 and eng2–rm1 to
+0.00 — the pipeline coupling is almost fully EXPLAINED AWAY by the
+other actors, the true-pair coupling is not. The committee's rev1–rev2
+retains 0.25 conditioned. Pairwise lag-MI has no conditioning anywhere
+in the vendored pipeline; that is the second, independent gap.
+
+**Finding 4 — a real bug found by this diagnosis, worth more than the
+diagnosis.** `run_s5_deep_trace_sweep.py` had scored
+`committee_with_informal_chatter_config` against the WRONG true pair
+({eng1,rm1}; the ecology's `units=` literal is
+`("review_committee", ("rev1","rev2"))`). Fixed; re-run flips that
+scenario's heuristic merge rate from 0.0 to 1.0 (the heuristic's
+co-voting Jaccard had been finding the committee all along) and G-25's
+tables/text were corrected. The MI-detector cells are unchanged (an
+all-merged blob contains any pair, either way — the `uad_score`/
+blob blind spot from G-24 masked this bug too, which is itself a data
+point for how much that blind spot can hide).
+
+**Summary diagnosis.** Three stacked causes, in decreasing weight:
+(1) the clustering objective — a hard variable-cluster count with
+globally normalized complete-linkage — discards a pairwise ranking that
+was already correct in 3/5 scenarios; a threshold/gap-based stopping
+rule (merge only while similarity exceeds something) or actor-level
+(not variable-level) clustering would recover those for free.
+(2) No conditioning: where the pipeline itself is the common cause,
+only conditional MI separates "coupled through the shared pipeline
+phase" from "coupled through a private channel"; the vendored detector
+never conditions. (3) Low-rate channels (one file handoff per
+generation) are invisible to symmetric occurrence-MI regardless — they
+need event-triggered statistics (does B's behavior change AFTER the
+share?), which is closer to the perturbation-response probes this
+line's D1 hooks already support than to anything in `uad_core`.
+None of this is a trace-depth problem — consistent with G-25's null
+result on depth.
+
+## G-27 (2026-07-07): the G-26 "easy fixes" (custom actor-level conditional-MI detector) end the blob over-merge and uniquely crack S4's shared-slot isolation — but conditional MI finds the causal SKELETON, not the unit partition, and the committee/low-rate channels stay out of reach for any passive occurrence statistic
+
+**Setup.** `lab_sim/oracle_only/uad_cmi.py` (new, standalone — no
+import from the vendored `uad_core`, so that package can be deleted
+when the S6 line supersedes it): all three G-26 fixes at once. Actors,
+not variables, are the unit of analysis (each actor's per-tick symbol
+is the tuple of ALL its trace variables — within-actor redundancy
+becomes alphabet richness, not merge signal); edge weight is lag-max
+I(A; B | rest) with `rest` the joint symbol of all other active
+actors; the stopping rule is a circular-shift permutation null (95th
+percentile of 40 shifts) plus a 0.1-bit effect floor — no `n_agents`
+target anywhere. Parameters fixed before the sweep (pre-registration
+note in the module docstring). `run_s6_cmi_detector.py`: same five
+scenarios/seeds/metrics as G-25, plus a stricter `exact` metric
+(non-singleton clusters == exactly {true pair}) that a fully-merged
+blob cannot satisfy.
+
+**What improved.** The blob is gone everywhere: no scenario produces
+the all-active-actors cluster the vendored detector always returned.
+On `shared_slot`, the CMI detector puts {eng1, eng2} in a cluster
+WITHOUT rev1/rm1 — 5/5 seeds, both depths — the exact case where the
+frozen heuristic scores 0 (G-20, comms-free coupling invisible to it)
+AND the vendored detector over-merged (G-24). No other detector in
+this line has isolated that pair. Pinned as a golden test
+(`test_uad_cmi.py`).
+
+**What did not improve, reported straight.** `exact_rate` is 0.0 in
+every cell — including shared_slot, because rev1+rm1 ALSO merge there.
+That extra merge is not estimator noise: rev1's sign_off is literally
+rm1's gate, a DIRECT serial edge, and the G-26 numbers showed
+I(rev1;rm1|rest) = 0.55, the largest conditional value in the matrix.
+Conditional MI is doing exactly what it does — recovering the causal
+skeleton's direct edges — and a direct workflow edge is not the same
+thing as unit membership. On `dm_pair`/`build_loop`/
+`covert_file_handoff` the detector returns the 3-actor chain {eng1,
+rev1, rm1} (the actual causal skeleton of the pipeline) rather than
+the true pair. And on `committee_informal_chatter` it finds nothing at
+deep depth (shallow: a wrong rev1–rm1 edge): the committee's real
+coupling lives in board-vote CONTENT, which an occurrence trace
+discards by construction — G-26's low-rate/content-channel point,
+re-confirmed by a detector that fixes everything else.
+
+**Interpretation — why this motivates S6 rather than more passive
+tuning.** The passive-detector ceiling is now visible: (1) plain MI
+over-merges (G-24/25); (2) conditional MI de-noises the common cause
+and recovers direct causal edges (this entry); but (3) "direct causal
+edge" ≠ "same unit" — a serial workflow hand-off and a goal-coordinated
+pair are indistinguishable to ANY passive occurrence statistic on
+these traces, because both are real, direct, lag-coupled channels. The
+distinction that defines a UNIT (would these actors re-coordinate to
+protect the coupling if you cut it?) is counterfactual, and this
+line's infrastructure already has the counterfactual levers: handles
+(`handle.capability_revoke`/`release_hold`/`state_freeze`/
+`isolate_restart` via `overseer_script`), perturbation hooks, D4
+per-channel ablation, and deterministic same-seed episode pairs that
+make intervention/baseline diffs EXACT rather than statistical. See
+PLAN.md "S6 — intervention-supported UAD" for the plan.

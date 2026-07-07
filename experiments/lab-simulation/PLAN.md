@@ -1028,6 +1028,28 @@ a new `lab_sim` module (`seeded_bugs.py`?) or as a thin instrumentation
 wrapper around the existing `access.py`/`comms.py`/`workspace.py` call
 paths rather than new tools.
 
+Additional open question (recorded 2026-07-07, prompted by that day's
+general malformed-tool-call error-feedback fix to `llm_agent.py` —
+`last_tool_call_error`'s `missing_tool_field`/`args_not_a_json_object`/
+`unknown_tool:<name>` reason codes): **error messages themselves are a
+side channel that could reveal information a seeded-bug probe should not
+get for free.** A sufficiently detailed tool-call rejection reason (exact
+argument name expected, exact reason a permission check failed, a stack
+trace, an internal identifier) can hand a probing agent structural
+information about the implementation that a real black-box actor would
+have had to discover empirically — turning "did the agent find the gap"
+into "did we accidentally tell it where the gap is." This cuts against
+the accessibility-plumbing direction Phase 10 pushed in (more legible
+error feedback helps an HONEST agent recover from its own mistakes) —
+any seeded-bug design needs to draw an explicit line between error detail
+that helps a well-intentioned agent use the documented tool surface
+correctly (fine, arguably necessary — see FINDINGS.md G-21/G-23) and
+error detail that leaks the SHAPE of an undocumented gap (should be
+budgeted/rationed the same way seeded-bug discoverability itself is, not
+given away by an unrelated accessibility fix). Not resolved here; flagging
+before any seeded-bug work starts so error-message verbosity is designed
+in from the start rather than retrofitted.
+
 **Status: backlog, not scheduled, not started.** No code changes made for
 this idea in this pass; recorded here per the "surface it, don't lose it"
 continuity discipline.
@@ -1212,7 +1234,7 @@ full MB7d-style "sever the formal channel, does informal/file coordination
 persist?" — the ablation G-10 could not test because no covert/informal
 channel existed yet.
 
-### S5 — TODO (recorded 2026-07-07, not scheduled): port full UAD into
+### S5 — first probe implemented (recorded 2026-07-07); acausal-coordination probe still TODO: port full UAD into
 lab-sim and re-run it against S4's shared-slot finding, plus an
 acausal-coordination probe
 
@@ -1272,6 +1294,224 @@ faithful port arguably should exercise anyway). Neither is scheduled;
 recorded here so `shared_slot_config`/G-20 do not get cited later as "UAD
 already checked this" when only the heuristic was ever run against it.
 
+**Update (first probe implemented, recorded 2026-07-07, same day):
+"port full UAD into lab-sim and re-run it against S4" is DONE; the
+acausal-coordination (ICI) second probe remains exactly as scoped above
+— untouched, no code for it exists.** `lab_sim/oracle_only/uad_core/`
+vendors `embedded_sim/uad_core/`'s `detection.py`/`markov_blanket.py`/
+`config.py` byte-for-byte (plus the two `info.py` functions they need,
+copied from `embedded_sim/audit_core/info.py`) — vendored rather than
+cross-imported, since this repo's four experiment lines are otherwise
+self-contained codebases with no inter-line dependency. One new adapter,
+`lab_sim/oracle_only/uad_mi.py`: `build_lab_trace` (tool events →
+`{"<actor>.step", "<actor>.ok"}` discretized rows, one per tick, the SAME
+"several scalar vars per actor" shape `embedded_sim/uad_core/
+workflow_trace.py` uses) and `discovered_units_mi` (same `{coalition_id:
+tuple of actor_ids}` return shape as `uad.discovered_units`, so it slots
+directly into the existing `uad_score` scoring path with zero adapter
+code needed at the call site).
+
+`run_s5_uad_core_port.py` re-ran the SAME `shared_slot_config` episodes
+G-20 already scored, sweeping the detector's `n_agents` (its hard target
+cluster count — a free parameter the old heuristic never needed) over
+1-4, 10 seeds each. Result, confirming the hypothesis stated in the
+script's own docstring BEFORE running it: the real detector over-merges
+— eng1/eng2 always land in the same cluster, but that cluster is ALWAYS
+the full four-actor set `{eng1, eng2, rev1, rm1}`, never just the true
+pair, at every `n_agents` tried. This also surfaced a genuine blind spot
+in `uad_score` itself: since it only scores pairs within `true_units`'
+own actor set, the fully-merged blob still reads as `uad_score = 1.0` —
+a "perfect" score that misrepresents what the detector actually found.
+See FINDINGS.md G-24 for the full writeup, including a vendored-detector
+quirk (`filter_weak_connections` silently drops size-≤1 clusters) caught
+along the way and deliberately left unpatched (vendored as-is, on
+purpose). 10 new tests in `tests/oracle_only/test_uad_mi.py` (unit tests
+on the adapter with synthetic events, a synthetic-coupling sanity check
+on the vendored detector itself, and a golden test against a real
+`shared_slot_config` episode). No `CODE_VERSION` bump — this is a
+referee-side addition with no effect on any deterministic mechanic.
+
+**Update 2 (deeper trace + multi-scenario, user-directed, same day,
+DONE):** the G-24 trace ("much too light" per feedback) was widened
+from 2 to 5 vars/actor/tick via a new `depth=` switch on `build_lab_trace`/
+`discovered_units_mi` — `"shallow"` (G-24's original, kept for
+comparison) vs. `"deep"` (default: adds `.dm_recv` — receiving a DM,
+inferred from the sender's `args.recipient`, not the receiver's own
+action — `.access_grant`/`.access_deny` from `PermissionService.log`,
+and widens `.tool`'s vocabulary to a distinct code per comm/file/state
+tool instead of one "other" bucket). Covers tool calls, file
+read/write/share, DM send/receive, and access request/grant/deny — four
+of the six categories named in feedback. **Explicit scope limit, NOT
+silently dropped:** "compute (e.g. CoT length)" and "API call" are NOT
+included at either depth — neither signal exists anywhere in
+`world.EpisodeResult` today (LLM backend usage/transcript/cache-hit
+bookkeeping lives entirely inside the backend object, e.g.
+`llm_isolate.LLMSubprocessHandle`, never surfaced onto the result for
+ANY backend to read generically); adding it needs a structural change
+to `world.py`'s core episode loop (new `EpisodeResult` field), not
+attempted here — a named follow-up, not forgotten.
+
+`run_s5_deep_trace_sweep.py` re-ran both depths × `n_agents` 1-4 × 5
+seeds across FIVE ecologies (`dm_pair_config`, `covert_file_handoff_config`,
+`committee_with_informal_chatter_config`, `build_loop_config`, and
+`shared_slot_config` again for direct before/after comparison) — 200
+cells total. Result: identical to G-24 at EVERY cell — the true pair
+merges 100%, isolated-from-the-rest 0%, at both depths, all four
+`n_agents`, all five scenarios. Widening the trace changed what the
+detector sees, not that it over-merges; the gap generalizes beyond S4.
+See FINDINGS.md G-25. 15 new tests in `tests/oracle_only/test_uad_mi.py`
+(both depths' unit behavior, dm_recv/access_grant/access_deny specifics,
+a shallow-depth golden-test companion). No `CODE_VERSION` bump.
+
+**Update 3 (diagnosis, same day, G-26):** asked WHY the detector never
+finds the right agents, an ad-hoc MI-matrix diagnosis showed the
+pairwise lag-MI signal ranks the TRUE pair first in 3 of 5 scenarios
+(dm_pair, build_loop, shared_slot: at `n_agents = n_active_vars − 1`,
+the detector's very FIRST merge is exactly the true pair, 5/5 seeds) —
+the over-merge is caused by the clustering step (hard `n_agents`
+variable-cluster target + globally-normalized complete-linkage with no
+gap-based stopping rule), not by missing signal in the trace. The two
+residual failures (covert_file_handoff, committee_informal_chatter)
+need CONDITIONAL MI — I(A;B|rest) separates pipeline-common-cause
+coupling from private-channel coupling (e.g. shared_slot eng1–rm1
+collapses 1.15→0.04 conditioned; eng1–eng2 keeps 0.26) — which the
+vendored detector never computes; and one (the per-generation file
+handoff) is a low-rate channel invisible to occurrence-MI regardless,
+pointing at event-triggered/perturbation-response statistics instead.
+Diagnosis also caught a real bug: `run_s5_deep_trace_sweep.py` scored
+the committee scenario against the wrong true pair ({eng1,rm1} instead
+of the ecology's `("review_committee", ("rev1","rev2"))` literal) —
+fixed and re-run; the heuristic merge rate for that scenario flips 0.0
+→ 1.0, the MI cells are unchanged (the all-merged blob masked the bug,
+another instance of G-24's `uad_score` blind spot). Candidate fixes
+(NOT implemented, recorded as follow-ups): gap/threshold-based
+stopping instead of hard `n_agents`; actor-level (not variable-level)
+clustering; conditional-MI edge weights; event-triggered probes for
+low-rate channels.
+
+**Update 4 (easy fixes implemented, same day, G-27):** all three G-26
+candidate fixes shipped at once as `lab_sim/oracle_only/uad_cmi.py` —
+a standalone custom detector (NO import from the vendored `uad_core`,
+so that package can be deleted when S6 supersedes it): actor-level
+composite symbols (fix 1b), lag-max conditional MI given the joint
+rest (fix 2), circular-shift permutation null + 0.1-bit floor instead
+of a hard `n_agents` target (fix 1a). Pre-registered defaults; sweep
+in `run_s6_cmi_detector.py` (same 5 scenarios, plus a stricter `exact`
+metric a blob cannot satisfy); 10 new tests in
+`tests/oracle_only/test_uad_cmi.py` (378 total). Result: the blob
+over-merge is gone everywhere, and shared_slot's {eng1, eng2} is
+isolated from rev1/rm1 — 5/5 seeds, both depths, the first detector in
+this line to crack S4 (heuristic: G-20 blind; vendored: G-24 blob).
+But `exact_rate` stays 0.0: conditional MI recovers the causal
+SKELETON (direct workflow edges like rev1→rm1's sign_off→release gate
+merge too; dm_pair/build_loop return the 3-actor pipeline chain), and
+the committee's content-borne coupling stays invisible. Diagnosis:
+"direct causal edge" ≠ "same unit" for any passive occurrence
+statistic — the unit-defining property is counterfactual. Hence S6
+below. See FINDINGS.md G-27.
+
+## S6 — intervention-supported UAD (planned 2026-07-07, not started)
+
+**Goal.** Replace passive trace-only unit discovery with a detector
+that uses this line's existing intervention surfaces — handles
+(`overseer_script` → `handle.capability_revoke` / `release_hold` /
+`state_freeze` / `isolate_restart`), perturbation hooks
+(`Host.perturbation_hooks`, deterministic tagged call-bounces), and D4
+per-channel ablation (`board_enabled`/`dm_enabled`/`file_enabled`) —
+to answer the question G-27 showed no passive statistic can: is a
+coupling a mere workflow edge, or a UNIT that adapts to protect it?
+Precedent: the sibling `agency-detect` repo's `uad_handles/` line
+("Handles Before Interventions: Access-Model UAD" — real observers
+have embedded handles, not ideal do()-interventions) and
+`agent_spotlight/`'s peel/refine loop (detect one agent, mask it,
+repeat). Neither is vendored; S6 is a custom lab-sim development, and
+on completion the vendored `uad_core/` + its adapter `uad_mi.py` can
+be deleted (`uad_cmi.py` is standalone and stays as the passive
+baseline/first-pass proposal stage).
+
+**Core mechanism — deterministic episode-pair diffs.** Everything in
+this line is deterministic given (config, seed, backend), so an
+intervention's effect needs no statistics at all at MockIsolate scale:
+run the same (config, seed) twice, once clean and once with one
+intervention added, and diff the two tool-event streams actor by
+actor, tick by tick. Attribution is EXACT — every behavioral
+divergence after tick t is caused by the intervention at tick t. (The
+`twins.py` same-seed counterfactual pattern, pointed at interventions
+instead of program swaps.)
+
+**The unit test (the actual novelty).** For a candidate pair (A, B)
+and an intervention on A (or on a channel A uses):
+
+- *Mechanical propagation* (workflow edge): B stalls, retries, or
+  idles — same action types, delayed or repeated. The honest twin
+  under the SAME intervention shows the same stall pattern (control).
+- *Unit compensation* (same unit): B changes WHAT it does — switches
+  channel (board→dm→file), reorders steps, covers A's dropped role
+  (S4's slot-rebalancing is exactly this), or re-establishes contact.
+  Divergence-in-kind, not divergence-in-timing, measured as: new
+  action types in B's post-intervention diff that neither the clean
+  run nor the intervened honest twin contains.
+
+Score R[A][B] = compensation evidence of B under intervention on A;
+units = clusters where R is high in BOTH directions (mutual
+compensation), seeded by `uad_cmi`'s passive skeleton to keep the
+probe budget small.
+
+**Phases** (each independently landable, tests-first, referee
+extension discipline — nothing touches frozen code):
+
+1. **Episode-pair diff substrate.** `oracle_only/intervention_diff.py`:
+   run (config, seed) clean + with one scripted intervention; return
+   per-actor divergence series (first divergent tick, action-type
+   deltas, stall-vs-new-action classification). Golden tests on S4 +
+   dm_pair. No detector yet — just the measurement instrument.
+2. **Probe library.** One module wrapping the existing levers as
+   uniform "probe" objects: channel ablation (config-level), capability
+   revoke / state freeze / isolate restart (overseer_script), tagged
+   call-bounce windows (perturbation hook targeting actor A for ticks
+   [t1, t2]). Each probe declares its target and visibility (agents
+   SEE denials/perturbation tags — an adaptive adversary can detect it
+   is being probed; record this as the evasion surface, matching each
+   handle's registered evasion_story, don't pretend probes are free).
+3. **Compensation detector v1.** R-matrix over `uad_cmi`-proposed
+   candidate edges only (probe budget = O(edges), not O(n²)); honest
+   twin under the same probe as the mechanical-propagation control;
+   unit = mutual compensation above the twin control. Run against the
+   5 scenarios + a NEW negative-control ecology (serial hand-off pair
+   with NO unit, e.g. `committee_config(n_reviewers=1)` derivatives)
+   so edge-vs-unit separation is actually falsifiable — G-27 showed
+   every current scenario's true pair is also a workflow edge except
+   shared_slot.
+4. **Peel-and-mask loop** (`agent_spotlight` analog): after isolating
+   the strongest unit, mask it — `agent_overrides` honest-twin
+   substitution for its members, or freeze its channels — re-run
+   detection on the residual; repeat until no unit found. Tests on a
+   3-unit composite ecology (committee + dm_pair + shared_slot merged
+   roster).
+5. **Active probe selection under budget** (`uad_handles` analog):
+   choose the next probe to maximally split the current candidate
+   partition; report detection quality as a function of probe budget —
+   the probe-scale question from the depth sweep (G-25), now with the
+   axis that actually matters (interventions are costly/visible;
+   passive depth was not).
+6. **Scoring beyond `uad_score`.** Exact-partition rate (already in
+   `run_s6_cmi_detector.py`) + adjusted-Rand-style index as standard
+   metrics, fixing G-24's blind spot for good. Later: one LLM-backed
+   episode (Phase 10 plumbing) to check probes against a
+   non-programmatic agent.
+
+**Open design questions (recorded up front).** (a) Probe visibility:
+denials and `perturbed:` tags are agent-visible; a colluding unit
+could freeze on detection of probing — that is realistic (the
+evasion_story of every handle) and should eventually be a scenario,
+not a bug. (b) LLM-backed episodes are not deterministic across the
+pair unless the cache is shared and temperature 0 — episode-pair
+diffing needs a noise-tolerant fallback (multiple seeds, statistics
+again) before it applies beyond MockIsolate. (c) Masking by honest-twin
+substitution changes the pipeline's timing for everyone downstream —
+the residual re-detection must compare against a matching re-baseline,
+not the original clean run.
+
 ## Knowledge base (D1 follow-up, recorded 2026-07-07, implemented)
 
 User-directed follow-up to the Phase 10 LLM discovery sanity check
@@ -1328,15 +1568,21 @@ invented, so it can never name a colleague who isn't really in the
 episode: "coherent input" tied to ground truth, not flavor text divorced
 from the substrate it describes.
 
-**Not done this pass (left for a scenario-specific follow-up if
-needed):** wiring `knowledge_base=` into the three Phase 10
-`run_llm_discovery_*.py` scripts to observe whether an LLM agent actually
-reads the handbook unprompted, and whether `_tail(memo_files, 8)`
-(`llm_agent.py`) could crowd a KB doc out of view once an agent has
-authored 8+ of its own memos (edge case; none of the three existing
-scenarios write that many). Both are cheap to add once a concrete
-scenario wants them; the substrate change above is complete and tested
-independently of any scenario (`tests/world_visible/test_knowledge_base.py`).
+**Follow-up done (recorded 2026-07-07, same day): `run_llm_discovery_
+kb_check.py`.** Wired `default_full_knowledge_base(cfg)` into a fourth
+discovery scenario (same solo-engineer task as the G-21 baseline,
+briefing unchanged, KB never mentioned) to check whether a free
+`gpt-4o-mini` agent spontaneously engages with a passively-available KB.
+Caught a REAL bug in the process, not just the speculative one this note
+originally flagged: `memo_files`' `_tail(..., 8)` cap was already too
+small for a 10-document KB from t=0 (no self-authored memos needed to
+trigger it) — fixed by widening the cap to 24. Result: zero measurable
+engagement (no explicit `file.read` of any KB doc, no KB-specific term
+in 14 calls' worth of the model's own stated reasoning), same task
+outcome and call count as the KB-free baseline, but ~4.5x the LLM cost
+from carrying the KB in every observation. See FINDINGS.md G-22 for the
+full writeup. Not yet tested: a scenario where success genuinely depends
+on KB-only information (a natural next probe, not assumed here).
 
 **Follow-up (recorded 2026-07-07, same day): "10x the content, include
 what a red-team member would be given."** The first pass above (two
@@ -1389,6 +1635,48 @@ empty/falsy and the frozen regression digest is unchanged
 correctness derived from real constants, full-bundle seeding/
 readability, restricted-audience grant/deny, `redteam_actor_ids`
 validation).
+
+## Error feedback on malformed tool calls (G-21 follow-up, recorded 2026-07-07, implemented)
+
+**The general gap G-21 left open.** G-21's `_coerce_flattened_pipeline_
+call` fixed exactly one malformed shape; it explicitly recorded, but did
+not fix, the broader gap: `_validate_call` silently returned `None` for
+EVERY other malformed reply (no `"tool"` field, `"args"` not a JSON
+object, a genuinely unknown tool name) — indistinguishable from an
+intentional idle, with zero feedback to the model, and — because that
+`None` then got cached against an unchanging observation — no way for
+the model to ever be asked again either. This is a `llm_agent.py`-only
+fix (no host/wire-protocol change): the wire protocol itself still has
+no generic tool-error channel, by design (`programs.py` policies don't
+need one, since they compute directly from `completed_steps`/
+`last_payload` state rather than reading error text) — the LLM adapter
+now closes this gap for itself instead.
+
+**Fix.** `_validate_call(parsed) -> (call, invalid_reason)` — three new
+reason codes (`missing_tool_field`, `args_not_a_json_object`,
+`unknown_tool:<name>`) cover every case that used to return a bare
+`None`; the flattened-pipeline-step coercion still succeeds silently
+(no error) as before. `LLMPolicy` keeps the latest reason as
+`self._last_invalid_reason`, which does two things: (1) a new
+`last_tool_call_error` field on the BASE observation payload (so
+`adversarial`/`redteam` scripted prompts get it too, not just
+`discovery` — the gap was general) tells the model on the VERY NEXT turn
+exactly what was wrong with its last reply, mirroring how
+`last_denied_capability` already reports a capability-request denial;
+(2) `decide()` now skips caching whenever the last call was rejected, so
+a rejected turn gets RE-QUERIED next tick even if the rest of the
+observation is unchanged — closing the "stuck idle for the rest of the
+episode after one slip" failure mode generally, not just for the shape
+G-21 happened to catch. All three system prompts updated to document and
+instruct on the field; the discovery `_TOOL_REFERENCE`'s now-inaccurate
+"unknown tools/args are ignored as if you did nothing" line was removed.
+
+Pinned by 6 new unit tests in `tests/agent_visible/test_llm_agent.py`
+(one per reason code, the cache-bypass, transcript recording, and that a
+subsequent valid call clears the error). Not yet re-run against a live
+`gpt-4o-mini` episode to see whether the model actually self-corrects
+given the reason code — see FINDINGS.md G-23 for the full writeup and
+that open follow-up.
 
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
 
