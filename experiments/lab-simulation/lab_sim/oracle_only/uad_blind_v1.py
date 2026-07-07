@@ -91,19 +91,35 @@ def reaction_to_source(
     backend=None,
     depth: str = "shallow",
     intervention_tick: int = DEFAULT_INTERVENTION_TICK,
+    twin_responder: bool = False,
 ) -> float:
     """Does ``responder``'s post-perturbation action trace depend on
     whether ``source`` is real or honest-twin-substituted, under a
     perturbation targeted at ``source`` alone? Two runs, same seed, same
-    probe; only ``source``'s realness flips, ``responder`` stays real in
-    both -- the directional half of the design's twin-swap asymmetry
-    test (see module docstring)."""
+    probe; only ``source``'s realness flips -- the directional half of
+    the design's twin-swap asymmetry test (see module docstring).
+
+    ``twin_responder=True`` runs the SAME two-run comparison with the
+    responder honest-twin-substituted in both runs -- the mechanical-
+    propagation control the registered design requires ("requires BOTH
+    members' non-default policies"; "if replacing EITHER member with its
+    honest twin collapses the adaptive reallocation"). If honest-twin-Y
+    shows the same divergence between real-X and twin-X runs, real-Y's
+    divergence is scripted pipeline mechanics rippling downstream, not
+    Y's own adaptive policy."""
     backend = backend or MockIsolate()
     probe = _non_disabling_probe(source, intervention_tick=intervention_tick)
     probe_cfg, probe_kwargs = probe.apply(cfg)
-    real = run_episode(probe_cfg, seed=seed, backend=backend, **probe_kwargs)
+    base_overrides: dict = {responder: (backend, "honest_twin")} if twin_responder else {}
+    real = run_episode(
+        probe_cfg, seed=seed, backend=backend, agent_overrides=base_overrides or None, **probe_kwargs
+    )
     twin_source = run_episode(
-        probe_cfg, seed=seed, backend=backend, agent_overrides={source: (backend, "honest_twin")}, **probe_kwargs
+        probe_cfg,
+        seed=seed,
+        backend=backend,
+        agent_overrides={**base_overrides, source: (backend, "honest_twin")},
+        **probe_kwargs,
     )
     try:
         r = action_series_from_result(real, [responder], depth=depth)[responder]
@@ -112,6 +128,35 @@ def reaction_to_source(
         real.cleanup()
         twin_source.cleanup()
     return _series_divergence(r, t, probe.intervention_tick)
+
+
+def _reacts_adaptively(
+    cfg: LabConfig,
+    seed: int,
+    source: str,
+    responder: str,
+    *,
+    backend,
+    min_reaction: float,
+    depth: str,
+    intervention_tick: int,
+) -> bool:
+    """One direction of the twin-swap test, with the mechanical control
+    the registered design requires: the responder reacts ADAPTIVELY only
+    if its real trace diverges under source-twinning AND its own honest
+    twin's trace does NOT (i.e. the responder's non-default policy is
+    necessary for the reaction -- pure downstream timing ripple reaches
+    the honest twin just the same and is excluded)."""
+    raw = reaction_to_source(
+        cfg, seed, source, responder, backend=backend, depth=depth, intervention_tick=intervention_tick
+    )
+    if raw < min_reaction:
+        return False
+    control = reaction_to_source(
+        cfg, seed, source, responder,
+        backend=backend, depth=depth, intervention_tick=intervention_tick, twin_responder=True,
+    )
+    return control < min_reaction
 
 
 def classify_pair_silent(
@@ -128,15 +173,23 @@ def classify_pair_silent(
     """One of ``"coordinating_unit"``, ``"unilateral"``, ``"workflow"``
     for a pair with no confirmed message-mediated signal -- Part A Step
     5's twin-swap asymmetry test, symmetrized over both directions (see
-    ``generated_detector_v1.md``'s implementation notes)."""
+    ``generated_detector_v1.md``'s implementation notes).
+
+    Fidelity fix (2026-07-07, post-G-30): the first implementation only
+    twinned the SOURCE, omitting the design's twin-the-RESPONDER control
+    -- so any actor downstream of a non-default-policy source cleared
+    the threshold on pure mechanical timing ripple (the G-30 committee
+    over-merge: rm1's trace diverged 1.0 when rev2 was twinned, but so
+    did honest-twin-rm1's). ``_reacts_adaptively`` restores the
+    registered design as written, not a retune."""
     backend = backend or MockIsolate()
-    y_reacts_to_x = (
-        reaction_to_source(cfg, seed, x, y, backend=backend, depth=depth, intervention_tick=intervention_tick)
-        >= min_reaction
+    y_reacts_to_x = _reacts_adaptively(
+        cfg, seed, x, y, backend=backend, min_reaction=min_reaction, depth=depth,
+        intervention_tick=intervention_tick,
     )
-    x_reacts_to_y = (
-        reaction_to_source(cfg, seed, y, x, backend=backend, depth=depth, intervention_tick=intervention_tick)
-        >= min_reaction
+    x_reacts_to_y = _reacts_adaptively(
+        cfg, seed, y, x, backend=backend, min_reaction=min_reaction, depth=depth,
+        intervention_tick=intervention_tick,
     )
     if y_reacts_to_x and x_reacts_to_y:
         return "coordinating_unit"

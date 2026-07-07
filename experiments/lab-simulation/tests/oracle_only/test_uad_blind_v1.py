@@ -51,13 +51,17 @@ def test_blind_message_pairs_reuse_s6_detector_exactly(factory, true_pair):
     assert nonsingleton_clusters(discovered) == [tuple(sorted(true_pair))]
 
 
-def test_blind_committee_chatter_recovers_committee_pair_via_message_path():
+def test_blind_committee_chatter_exact_after_twin_responder_control():
+    """G-30 recorded an over-merge here (rm1 pulled into {rev1, rev2}):
+    the first implementation twinned only the SOURCE, so rm1 cleared the
+    threshold on pure downstream timing ripple. The twin-the-RESPONDER
+    mechanical control (the registered design's own 'requires BOTH
+    members' non-default policies' rule, restored post-G-30) removes it;
+    exact partition now holds."""
     cfg, discovered, labels = _run_blind(committee_with_informal_chatter_config)
-    # rev1/rev2 must end up in the same discovered group (via the reused
-    # message-mediated path) -- the true committee pair.
-    groups = {frozenset(members) for members in discovered.values()}
-    assert any({"rev1", "rev2"} <= g for g in groups)
-    del labels  # not asserted on here; see G-30 for the recorded over-merge
+    assert exact_partition(cfg.resolved_units(), discovered)
+    assert nonsingleton_clusters(discovered) == [("rev1", "rev2")]
+    assert all(v == "workflow" for v in labels.values())
 
 
 def test_blind_serial_no_unit_stays_all_singletons():

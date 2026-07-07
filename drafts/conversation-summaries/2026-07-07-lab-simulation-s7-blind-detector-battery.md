@@ -117,5 +117,8 @@ sweep."
 
 ## Commits
 
-- `fe3bc6c` Lab-sim S7: blind detector generation + first real
-  (SubprocessIsolate) battery for the UAD detector line
+- `77240b0` Lab-sim S7: blind detector generation + first real
+  (SubprocessIsolate) battery for the UAD detector line (amended once to
+  fold in this log's hash; not re-amended further, per this project's
+  established practice of accepting the resulting hash-in-log as
+  approximately final rather than looping)

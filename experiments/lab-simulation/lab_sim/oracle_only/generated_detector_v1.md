@@ -189,3 +189,21 @@ substance — no prediction has been rounded in the detector's favor.)
   message-mediated — O(n^2) over the (small, ~4-5 actor) playbook
   roster, acceptable at this scale, flagged as a scaling limitation for
   larger rosters.
+- **Fidelity fix (2026-07-07, post-G-30, recorded not silent):** the
+  first implementation of the twin-swap test only ever twinned the
+  SOURCE, omitting the design's explicit requirement that the reaction
+  "requires BOTH members' non-default policies" ("if replacing EITHER
+  member with its honest twin collapses the adaptive reallocation").
+  Debugging the G-30 committee over-merge showed the consequence: rm1's
+  trace diverged 1.0 when rev2 was source-twinned — but so would
+  honest-twin-rm1's, because twinning a non-default-policy source shifts
+  the whole pipeline's timing and that ripple reaches every downstream
+  actor regardless of their own policy. `_reacts_adaptively` adds the
+  missing twin-the-RESPONDER control run (react only counts if the real
+  responder diverges AND its honest twin does not). This restores the
+  design as registered — it is a faithfulness correction, not a
+  threshold retune; the raw source-twin comparison is unchanged and
+  still available via `reaction_to_source(..., twin_responder=False)`.
+  Post-fix MockIsolate smoke (seed 1, all six scenarios): committee
+  over-merge gone (exact partition), all other results unchanged
+  (shared_slot still a miss, negative control still empty).
