@@ -69,6 +69,7 @@ Output: `site/dist/`
 | `src/pages/` | Routes (Start Here, FAQ, book map, card/path indexes) |
 | `src/content/cards/` | Short concept, bridge, artifact, and glossary cards |
 | `src/content/reading-paths/` | Fixed audience reading paths (loaded at build/dev time) |
+| `scripts/sync-chapter-cards.mjs` | Generates chapter/appendix cards; `overviewOnly` appendices (e.g. `appM`) render as case-study hubs at `/cards/chapters/{id}/` with full synced text at `/full/` |
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |
 | `astro.config.mjs` | Site URL and GitHub Pages base path |
 

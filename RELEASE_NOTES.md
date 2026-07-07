@@ -10,6 +10,13 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ---
 
+## Unreleased (main since v1.0.0)
+
+- **Appendix D — Institutional Genesis, Memory, and Decay** (`appendices/appM-institutional-histories.tex`): mechanism-led historical case studies (genesis, stabilization, entrenchment, failure modes); 24 sources in `references/institutional-histories.bib`; cross-refs in Appendix C and Chapters 27, 31, 34, 37.
+- **Companion site:** overview hub at `/cards/chapters/appm/` (eleven case-study cards, non-technical intro); full synced appendix at `/cards/chapters/appm/full/`; wired into Funder/Policy and Philosopher guided paths.
+
+---
+
 ## v1.0.0 — 2026-06-30 — First official major release
 
 Commit: `bd8f82f` · Tag: `v1.0.0`

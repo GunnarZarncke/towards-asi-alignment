@@ -4,7 +4,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 **Live draft status:** [`metadata/book.yml`](../metadata/book.yml) (chapter titles, review tags, word targets).
 
-**Read online:** [companion site book index](https://gunnarzarncke.github.io/towards-asi-alignment/book/) · [PDF](https://gunnarzarncke.github.io/towards-asi-alignment/towards-superintelligence-alignment.pdf).
+**Read online:** [companion site book index](https://gunnarzarncke.github.io/towards-asi-alignment/book/) · [PDF](https://gunnarzarncke.github.io/towards-asi-alignment/towards-superintelligence-alignment.pdf). Policy-adjacent readers: [institutional translation](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appc/) (Appendix C) and [institutional histories overview](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/) (Appendix D hub with eleven case-study cards; [full text on site](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/full/)).
 
 ---
 
@@ -14,7 +14,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 |------|--------|
 | Release | **v1.0.0** — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
 | Milestone | **Third** in progress — all main chapters have first drafts and at least one review pass |
-| Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), 7 built appendices (A–G) + 5 stubs (H–L) |
+| Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **8 appendices in the PDF** (A–H; institutional histories is Appendix D, source file `appM-institutional-histories.tex`) + 5 unwired appendix stubs on disk |
 | Chapters | **0 draft**, **48 reviewed**, **0 stub** ([`metadata/book.yml`](../metadata/book.yml); *reviewed* = feedback received, not final) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
 | Word target | ~350k ([`metadata/book.yml`](../metadata/book.yml)) |
@@ -72,6 +72,7 @@ Citations use **BibLaTeX** (`biblatex` + `biber`). Files are split by category u
 | `neuroscience-values.bib` | Neuroscience, pain/suffering, moral psychology |
 | `dynamical-systems.bib` | Information theory, agency, representation learning |
 | `governance-institutions.bib` | Governance and institutions |
+| `institutional-histories.bib` | Historical case studies for Appendix D (`appM-institutional-histories.tex`) |
 | `philosophy.bib` | Philosophy of mind and ethics |
 
 Refresh from source-map sibling repos: `python3 scripts/import_source_map_refs.py`. Run `make check` to verify cited keys exist.

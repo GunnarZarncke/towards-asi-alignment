@@ -117,6 +117,6 @@ Other contributions that help the research program reach the right readers:
 - Talks, reading groups, and curated bibliographies
 - Tools that operationalize artifact tables or safety-case templates from the manuscript
 - Translations (coordinate first for terminology consistency)
-- Policy or institutional briefings that use [`appendices/appC-institutional-translation.tex`](appendices/appC-institutional-translation.tex) as a bridge document
+- Policy or institutional briefings that use [`appendices/appC-institutional-translation.tex`](appendices/appC-institutional-translation.tex) as a bridge document, or [`appendices/appM-institutional-histories.tex`](appendices/appM-institutional-histories.tex) for historical genesis/decay cases (companion-site [overview hub](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/) for non-technical readers)
 
 When in doubt, open an issue describing the derivative work and which bridges or gems it targets.

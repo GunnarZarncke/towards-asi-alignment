@@ -138,7 +138,7 @@ Empirical sanity-check codebases that stress-test bridge cruxes. Four in-repo li
 
 ### Companion site (`site/`)
 
-Astro publication layer: guided paths, concept cards, chapter pages, Lean playgrounds, synced demos. Build: [`site/README.md`](site/README.md), [`docs/BUILD.md`](docs/BUILD.md). Run `./serve-site.sh` locally.
+Astro publication layer: guided paths, concept cards, chapter pages, Lean playgrounds, synced demos. Build: [`site/README.md`](site/README.md), [`docs/BUILD.md`](docs/BUILD.md). Run `./serve-site.sh` locally. Some appendices use an **overview hub** on the site (case-study cards at `/cards/chapters/{id}/`, full synced text at `/full/` — see `appM` institutional histories).
 
 ### Chapter demos (`demos/`)
 

@@ -59,10 +59,10 @@ External doom taxonomies appear late as adversarial checklists (Chapter 44), not
 | Anyone new | [Guided tour](https://gunnarzarncke.github.io/towards-asi-alignment/paths/) on the companion site |
 | Alignment researchers | [Researcher — Applied](https://gunnarzarncke.github.io/towards-asi-alignment/paths/researcher-applied/) → [Formal](https://gunnarzarncke.github.io/towards-asi-alignment/paths/researcher-formal/) |
 | Safety engineers / eval builders | [Engineer / Evals path](https://gunnarzarncke.github.io/towards-asi-alignment/paths/engineer-evals/) |
-| Funders / policy-adjacent | [Funder / Policy path](https://gunnarzarncke.github.io/towards-asi-alignment/paths/funder-policy/) |
-| Philosophers / civilizational limits | [Philosopher path](https://gunnarzarncke.github.io/towards-asi-alignment/paths/philosopher/) |
+| Funders / policy-adjacent | [Funder / Policy path](https://gunnarzarncke.github.io/towards-asi-alignment/paths/funder-policy/) — includes [institutional histories overview](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/) |
+| Philosophers / civilizational limits | [Philosopher path](https://gunnarzarncke.github.io/towards-asi-alignment/paths/philosopher/) — includes institutional histories after the selection/attractor material |
 
-In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims) → **Part I** (Chapters 1–5). Policy readers may prefer **Appendix C** (institutional translation) before the technical crosswalk.
+In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims) → **Part I** (Chapters 1–5). Policy-adjacent readers may prefer **Appendix C** ([institutional translation](appendices/appC-institutional-translation.tex)), then **Appendix D** ([institutional genesis, memory, and decay](appendices/appM-institutional-histories.tex) — eleven historical case studies of how safety institutions are founded, kept alive, and fail). On the companion site, the [Appendix M overview hub](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/) is the plainer entry path (case-study cards); [full on-site text](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/full/) and the PDF hold the complete narrative.
 
 ---
 
@@ -71,7 +71,7 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 | Item | Detail |
 |------|--------|
 | Status | v1.0.0 release; third milestone in progress — 48 chapters reviewed (not final) |
-| Structure | 10 parts, 48 chapters, 7 built appendices |
+| Structure | 10 parts, 48 chapters, 8 appendices in the PDF (A–H) |
 | Chapter list | [`metadata/book.yml`](metadata/book.yml) · [site book index](https://gunnarzarncke.github.io/towards-asi-alignment/book/) |
 | Experiments | Tentative sanity checks only — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) |
 | Formal spine | Lean 4 conditional skeleton — [`formal/README.md`](formal/README.md) |
