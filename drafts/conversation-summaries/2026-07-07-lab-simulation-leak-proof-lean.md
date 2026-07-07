@@ -30,7 +30,7 @@
 
 ## Commits
 
-- Pending — this session (leak-proof package + doc/site references).
+- `2f48f0d` — leak-proof package + doc/site references.
 
 ## Paths
 
