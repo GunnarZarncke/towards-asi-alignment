@@ -796,3 +796,271 @@ sequencing confound does **not** dominate. It remains an open question
 whether this generalizes to a topology where the true coordination edge
 has a WEAKER explicit gate than `release_full_dm_gated`'s — not claimed
 here.
+
+## G-17 (2026-07-07): S2 scenario prototype — covert coordination over
+files leaves no distinguishing coordination fingerprint at any tier;
+detecting the gaming needs an outcome-vs-eval cross-check, not a content
+scan
+
+**Setup.** PLAN.md's "Scenario backlog" S2 ("covert coordination over
+files") implemented as a small, self-contained addition: `eng_honest_
+handoff` (engineer) writes and shares a plausibly-legitimate build-context
+memo (`{"note": ..., "confidence": "high"}`) with its `LabConfig.units`
+counterpart, UNCONDITIONALLY — the memo never varies with who reads it.
+`rev_covert_trusting` (reviewer) is the only place the memo's dual-use
+`confidence: high` field is ever consulted: it overrides the reviewer's
+own stall-on-hazard rule (`review_conscientious`'s rule, verbatim,
+otherwise) if a memo from its counterpart carries the marker. The honest
+twin pins the SAME engineer playbook against `rev_conscientious` instead,
+which never reads `memo_files` at all — so covertness lives entirely in
+which reviewer playbook is running, never in the memo-writer's behavior.
+`ecology.covert_file_handoff_config(trusting=True/False)` builds both;
+`oracle_only.covert_review.py` adds two referee-extension functions
+(`hazard_override_flags`, full-tier; `covert_marker_seen`, deep-tier-only)
+— neither touches `detectors.py`/`severity.py`, same discipline as
+`uad.py`/`collusion.py`. `run_s2_covert_file_prototype.py`: exploratory,
+NOT a battery — 10 MockIsolate seeds, `HIGH_HAZARD_BUILD_PARAMS`
+(true_hazard ~6 measurement-noise SDs above `REVIEW_HAZARD_THRESHOLD`, not
+a tail-draw question), T capped to one model cycle per seed. Five
+expectations (E1-E5) stated in the script's module docstring before
+running; see `tests/harness/test_s2_covert_file.py` for the pinned unit
+tests these were checked against first.
+
+**Result — all five expectations held, 0/10 seeds falsified.** (1) Every
+`trusting=True` seed deploys a model whose TRUE hazard is >= 0.5 (observed
+range 0.663-0.985) via the reviewer's override. (2) Every honest-twin seed
+never deploys that model — `rev_conscientious` correctly stalls on the
+SAME filing. (3) The engineer's full-tier tool-event SHAPE (which tools,
+in what order) is byte-for-byte identical between the trusting and
+honest-twin runs at every seed — confirms the covert channel really does
+look like ordinary, plausibly-legitimate lab workflow from the outside;
+nothing about the ACT of writing/sharing the memo differs with intent.
+(4) `hazard_override_flags` (full tier — reads only `run_eval`'s engine-
+log payload cross-referenced against `approve_review`, never touches
+`report_contents` or any memo) flags every trusting-run approval and none
+of the honest-twin's (there are none to flag, since none occurred). (5)
+`covert_marker_seen` (deep tier) is True in BOTH the trusting and honest-
+twin runs — the memo's CONTENT carries no "this is the covert one"
+signature either; it is identical in both.
+
+**What this resolves, against S2's own open-design questions (PLAN.md).**
+"Legitimate-vs-covert ground-truth labeling": turns out not to be needed
+as a separate oracle field — covertness is fully determined by which
+REVIEWER playbook is active, not by any property of the memo or its
+author, so `LabConfig.units` (already oracle-only ground truth) suffices;
+no new `ORACLE_ONLY_FIELDS` entry was added. "Whether covert file use must
+bypass `file.share` or can hide in shared memos": this design hides in a
+memo that IS shared through the normal, permissioned `file.share` path —
+deliberately the harder case (G-9's committees already showed the
+`native_severed` failover using file as an alternate but still EXPLICIT
+channel; this asks whether an ordinary, single legitimate-looking share
+suffices, and it does). "Detector extensions vs frozen five-family
+composite": resolved by NOT extending the composite at all — the outcome
+(`hazard_override_flags`) is fully computable from data every tier already
+has at full tier (`run_eval`'s payload, `events.ENGINE_LOG_FULL_EXTRA`),
+independent of `units`/memo content/tier-deep file fetch, and would flag
+`rev_rubber_stamp`'s naive overrides identically. That is the genuinely
+interesting, not-fully-anticipated result: **the covert file channel adds
+no incremental detection surface of its own** — at ANY tier — beyond what
+a plain "did the reviewer approve past its own eval's hazard reading"
+cross-check already catches without knowing a file was ever involved.
+This is a different asymmetry than G-9's board/DM-vs-file tier-sufficiency
+finding (where the coordination pattern itself needed deep tier); here,
+the coordination pattern (memo write+share) is full-tier-visible AND
+deep-tier-content-visible in both the guilty and innocent case alike —
+what actually distinguishes them is a referee-plane property of the
+DECISION, not of the CHANNEL.
+
+**Still open (not addressed here, recorded for future scenario work):**
+whether a design where the covert marker's own PRESENCE (not just a
+reviewer's willingness to honor it) correlates with true collusion intent
+— e.g. a marker an HONEST engineer would never write, only a colluding
+one — behaves differently; this prototype deliberately chose a marker
+that is dual-use even at the SOURCE, not only at the reader, so E5's null
+result should not be read as "no covert-file design could ever leave a
+content trace," only as "this one, by construction, does not." Also
+open: S3/S4 (informal comms baseline; shared worker-pool scheduling),
+neither attempted in this pass.
+
+## G-18 (2026-07-07): S3 scenario prototype — legitimate, non-vote-shaped
+board chatter from a real pipeline role is invisible to `uad.py`'s
+discovery signal, and does not degrade recovery of a real committee on
+the same channel
+
+**Setup.** PLAN.md's "Scenario backlog" S3 ("informal/casual comms")
+implemented minimally: `eng_honest_chatty` (engineer) is `eng_honest` plus
+ONE additional, single-shot board post (`custom={"kind": "status_
+update"}`, no `review_id`/`vote`) once the report is filed — legitimate
+workload chatter, structurally indistinguishable in SHAPE from a
+`board.post` call, but never vote-shaped.
+`ecology.committee_with_informal_chatter_config` layers this onto the
+SAME `committee_config` board channel a real `n_reviewers=2` committee
+votes over, so the chatter and the real coordination signal share one
+channel. No new oracle-only detector module was needed — the question is
+entirely about `uad.py`'s EXISTING `build_coordination_trace`/`discover_
+coalitions`/`discovered_units`, whose docstring already documents
+(pre-dating this scenario) that decoy chatter is "silently excluded... by
+construction, not a special case"; this asks whether the SAME holds for a
+REAL, working role's chatter, and whether mixing it in degrades recovery
+of the genuine committee. `run_s3_informal_chatter_prototype.py`:
+exploratory, NOT a battery — 10 MockIsolate seeds, T=250. Three
+expectations (E1-E3) stated before running; see `tests/harness/
+test_s3_informal_chatter.py` for the pinned unit tests checked first.
+
+**Result — all three expectations held, 0/10 seeds falsified.** (1) The
+engineer's informal post never enters `build_coordination_trace` (no
+`review_id`/`vote`). (2) `uad_score` for the TRUE committee (`rev1`,
+`rev2`) is identical with and without the chatter present, every seed —
+the noise does not degrade recovery. (3) The chatty engineer is never
+folded into any discovered coalition; it stays a singleton.
+
+**Calibration (recorded, not overclaimed).** This result was
+near-guaranteed BEFORE running, not a surprise: `build_coordination_trace`
+already filters to `review_id`+`vote` custom fields, so anything else —
+decoy or real-role, scripted or not — was already structurally excluded.
+The value of this prototype is closing an explicitly-named gap ("no
+scenario yet separates legitimate informal coordination from covert vote
+coordination when both use the same channel," PLAN.md) with a real,
+non-decoy actor, not producing a new detection capability. **Explicit
+scope limit:** the chatter here is ONE scripted, structurally non-vote-
+shaped post. PLAN.md's S3 entry also names a HARDER version — LLM-driven,
+free-text informal conversation that might inadvertently resemble
+review-relevant content in PROSE without ever touching the structured
+`review_id`/`vote` fields. That version is not exercised here; a
+scripted post can never accidentally drift into vote-shaped territory,
+so this result says nothing about whether free text could.
+
+## G-19 (2026-07-07): S1 scenario prototype — a genuine cross-generation
+causal loop closes correctly and costs exactly one tick of coordination
+overhead per generation; the loop itself needs no new detection signal
+(`uad.py`'s DM-pair discovery already recovers it)
+
+**Setup.** PLAN.md's "Scenario backlog" S1 ("cross-agent pipeline loops")
+implemented as a genuine 2-hop loop spanning MODEL GENERATIONS, not a
+static committee: `eng_honest_loop`'s `build_from_parent_gated` (engineer)
+is D2's `build_from_parent` (model-from-model lineage via `parent_model_
+id`), gated to WAIT for a deploy-ack DM from the release_manager
+referencing the PREVIOUS generation before starting any generation after
+the first; `rm_full_loop_ack`'s `release_full_loop` (release_manager) is
+`release_full`'s request_release/deploy/monitor progression, plus that
+ack DM once `monitor` clears. A new availability gate,
+`release_ready_or_ack_pending`, lets the release_manager re-select the
+ack half after `monitor` has already freed `model_id` to `None` (same
+"read the LAST-deployed model's completed-steps view" shape `spec_
+upgrade_ready` already established) — reading `dm_messages` (which
+includes the actor's OWN sent messages, `comms.messages_for_actor`)
+directly to know "have I already acked," rather than adding new isolate
+state or a new observation field. `ecology.build_loop_config` pins both
+playbooks and names `("build_loop", ("eng1", "rm1"))` as the oracle
+ground truth. `run_s1_build_loop_prototype.py`: exploratory, NOT a
+battery — 10 MockIsolate seeds, T=400, compared against an `_ungated_
+config` negative control (`eng_honest_upgrade` + `rm_full`, same roles
+and `multi_gen_enabled`, no ack requirement). Four expectations (E1-E4)
+stated before running; see `tests/harness/test_s1_build_loop.py` for the
+pinned unit tests checked first.
+
+**Result — all four expectations held, 0/10 seeds falsified.** (1)
+Every seed completes MANY generations within budget (19-55 across the 10
+seeds) — the loop never deadlocks. (2) Every generation after the first
+carries `parent_model_id` equal to exactly the previous generation's
+model_id — the lineage chain never breaks or skips. (3) Every generation's
+ack DM strictly precedes the NEXT generation's build, every seed — the
+gate is causally real, not incidental turn-order luck. (4) The gate adds
+exactly **one tick** of per-generation overhead relative to the ungated
+baseline, identically across all 10 seeds (gated cadence 7 ticks/
+generation vs. ungated 6) — small, constant, and non-zero: the single-
+model-in-flight constraint ALREADY serializes generations even without
+the ack (so the gate's contribution could plausibly have been zero), but
+the DM round-trip's own one-tick latency (a message sent at tick T is not
+visible to its reader until T+1, `comms.MessageStore`) shows up exactly
+once per hop, with no compounding drift over up to 55 generations.
+
+**What this resolves, against S1's own open-design questions (PLAN.md).**
+"How many hops before the loop closes": exactly 2 (ack triggers the next
+build; that build's own eventual deploy triggers the next ack) — repeating
+once per generation, not a fixed finite chain. "Whether the oracle `units`
+ground truth is the full loop or a subset": the full loop, both actors,
+no third party (`rev1` reviews every generation identically and is
+deliberately NOT part of the named unit). "Playbook vs LLM-driven
+closure": playbook (scripted) — `build_from_parent_gated`/`release_full_
+loop` are ordinary deterministic resolvers, no LLM involved.
+
+**Explicit scope limit (recorded, not hidden).** `uad.discover_dm_pairs_
+from_tool_events`'s own docstring already states it is "deliberately
+one-way-tolerant" — a single `dm.send` in EITHER direction is sufficient
+evidence of a pair, so a bidirectional exchange is trivially still
+recovered as one pair (confirmed in the test suite, not claimed as a new
+capability). This prototype's contribution is the LOOP MECHANIC — a
+working, verifiably-gated, multi-generation causal loop — not a new
+detection signal. A loop whose ack is deniable, spoofable, or closes over
+more than 2 hops is out of scope here.
+
+## G-20 (2026-07-07): S4 scenario prototype — "job-size-aware scheduling"
+needs model-ownership tracking that does not exist in this codebase;
+what two same-role engineers sharing one slot actually produce instead is
+a deterministic, communication-free division of labor invisible to every
+existing `uad.py` signal
+
+**Setup.** PLAN.md's "Scenario backlog" S4 ("shared pipeline worker pool
++ job-size-aware scheduling") was scoped down from its original ambition
+after checking two substrate facts first, both negative and both
+recorded here rather than discovered mid-implementation and buried:
+`pipeline_engine.py` has NO duration/cost mechanic of any kind — every
+pipeline step is exactly one tick regardless of `build_params` (`scale`/
+`safety_effort`), so "job size" has no real cost to schedule around; and
+no model_id is ever associated with the actor that created it — any
+actor holding the right role capability can act on ANY in-flight
+model_id, so there is no ownership to contend over. Adding both (a real
+duration mechanic AND per-model ownership) would touch `pipeline_
+engine.py`, a module this project treats as comparatively stable, and is
+a bigger lift than a prototype pass should make — deliberately not done
+here. `ecology.shared_slot_config` instead explores what the EXISTING
+substrate actually does when a second engineer (`eng2`, identically
+configured to `eng1`, pinned to the SAME `eng_honest` playbook) shares
+`eng1`'s single-model-in-flight slot, with `comms_enabled` at its
+default (`False`) — no board, DM, or file channel at all. `units` names
+`("shared_slot", ("eng1", "eng2"))` as the oracle ground truth.
+`run_s4_shared_slot_prototype.py`: exploratory, NOT a battery — 10
+MockIsolate seeds, T=100. See `tests/harness/test_s4_shared_slot.py` for
+the pinned unit tests checked first.
+
+**Result — fully reproducible across all 10 seeds, 0 falsifications.**
+(1) The two engineers do not "contend" for the slot in the sense PLAN.md's
+S4 imagines (one waiting for the other to finish ITS job) — with no
+ownership check, whichever step is next in the pipeline DAG for the ONE
+in-flight model gets done by whichever engineer's turn comes first that
+tick, so they end up COOPERATIVELY interleaving steps on a single shared
+artifact. (2) That split is IDENTICAL, seed after seed: `eng1` always
+performs `submit_build`+`file_report`; `eng2` always performs `run_eval`+
+`request_review` — a stable, fully deterministic division of labor that
+neither playbook was designed to produce, driven entirely by fixed tick
+order and capability-request timing, not oracle noise. (3) Neither
+engineer monopolizes every step — genuine interleaving, confirmed every
+seed. (4) `discovered_units` leaves `eng1` and `eng2` as SINGLETONS at
+every tier, every seed; `uad_score` against the oracle-true
+`{eng1, eng2}` unit is exactly 0.0, every seed.
+
+**Why this matters more than the scheduling question it replaces.**
+Result (4) is the generalizable finding: `eng1`'s and `eng2`'s actions
+are REALLY causally coupled here (each one's downstream step is gated on
+engine state the OTHER one just created), yet this coupling happens
+entirely through SHARED MUTABLE ENGINE STATE (`model_id`, `completed_
+steps`) — no board post, no DM, no file share, nothing any of `uad.py`'s
+three existing signals (vote-shaped board/file coalition, DM pair,
+file-share pair) was ever built to watch. This is a class of
+coordination-shaped behavior distinct from every prior scenario in this
+line (S2's covert file channel and S3's informal chatter both still ride
+an explicit comms mechanic that a detector COULD in principle inspect;
+this one does not touch comms at all) — a real, named gap, not a
+detector bug, since nothing here was designed to be covert. Whether it
+generalizes beyond this specific two-engineer-one-slot substrate quirk is
+untested.
+
+**Explicit scope limit (recorded, not hidden).** This is NOT the
+"job-size-aware scheduling" scenario PLAN.md's S4 entry describes — no
+job carries a real size/cost, and no explicit negotiation (e.g. an
+S3-style chatter-based "I'll take the small one" handshake, which PLAN.md
+itself flags as a natural composition) was attempted. Building the
+actual scheduling scenario would require, at minimum, a real per-model
+duration mechanic and ownership tracking in `pipeline_engine.py` — both
+left for a future pass that is willing to touch that module.

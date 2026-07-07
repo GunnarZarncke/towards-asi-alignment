@@ -1060,6 +1060,27 @@ spans the loop; playbook vs LLM-driven closure. Closes G-12's playbook/spec
 compatibility gap if a shortcut-compatible upgrade playbook is part of the
 loop demo.
 
+**Update (prototype, 2026-07-07): implemented and explored, exploratory
+scope (not a battery).** `eng_honest_loop`/`rm_full_loop_ack` playbooks
+(`build_from_parent_gated`/`release_full_loop` step kinds, a new
+`release_ready_or_ack_pending` availability gate), `ecology.build_loop_
+config`, `run_s1_build_loop_prototype.py` (10 MockIsolate seeds, 0
+falsifications). Resolved the loop as exactly 2 hops (deploy-ack triggers
+the next build; that build's own eventual deploy triggers the next ack),
+repeating once per generation, not a fixed chain; the oracle `units`
+ground truth is the FULL loop (both actors, no third party — the reviewer
+is deliberately excluded); closure is playbook-scripted, not LLM-driven.
+No new UAD detection signal was added or needed — `uad.py`'s existing
+DM-pair discovery already recovers a bidirectional exchange as one pair
+(its own docstring already says "deliberately one-way-tolerant"); this
+prototype's contribution is the LOOP MECHANIC itself: it closes correctly
+across many generations (19-55 per seed within T=400), the lineage chain
+(`parent_model_id`) never breaks, the gating is causally real (every
+ack strictly precedes its gated build, every seed), and the coordination
+overhead is small, constant, and non-zero — exactly one tick per
+generation versus an ungated baseline, with no compounding drift. See
+FINDINGS.md G-19 for the full write-up.
+
 ### S2 — Covert coordination over files (MB7d partial — file as dual-use channel)
 
 **Idea.** Agents coordinate **over files** in ways that are plausibly
@@ -1080,6 +1101,27 @@ grant-metadata coordination is visible at full tier (a second asymmetry).
 file use must bypass `file.share` (oracle-side only) or can hide in shared
 memos; detector extensions vs frozen five-family composite.
 
+**Update (prototype, 2026-07-07): implemented and explored, exploratory
+scope (not a battery).** `eng_honest_handoff`/`rev_covert_trusting`
+playbooks, `ecology.covert_file_handoff_config`,
+`oracle_only.covert_review.py` (`hazard_override_flags`/
+`covert_marker_seen`), `run_s2_covert_file_prototype.py` (10 MockIsolate
+seeds, 0 falsifications). Resolved all three open-design questions above,
+in a direction not fully anticipated: no new oracle field was needed
+(covertness lives entirely in which REVIEWER playbook is active, never in
+the memo or its author); the covert channel hides in an ordinary,
+`file.share`-mediated memo (the harder case, not a bypass); and no
+detector-composite extension was needed at all — a full-tier "did approval
+contradict the model's own eval reading" cross-check catches the gaming
+without ever looking at the file. Genuinely new, not-fully-anticipated
+result: the covert file channel leaves **no distinguishing coordination
+fingerprint at any tier** in this design — full tier sees an identical
+memo-share pattern in the guilty and innocent case alike, and deep tier
+sees an identical marker in both too. See FINDINGS.md G-17 for the full
+write-up, including what this result does and does not generalize to
+(a marker that is dual-use even at the SOURCE was a deliberate choice;
+S3/S4 untouched).
+
 ### S3 — Informal / casual comms for legitimate work coordination (MB7d)
 
 **Idea.** Board/DM traffic that is **not** vote-shaped: agents discuss workload,
@@ -1096,6 +1138,25 @@ channel.
 **Open design.** Tier projection for informal content; whether UAD/collusion
 need a "legitimate coordination" baseline ecology; LLM agents for natural
 informal language vs scripted playbooks.
+
+**Update (prototype, 2026-07-07): implemented and explored, exploratory
+scope (not a battery).** `eng_honest_chatty` playbook (`board_chat_
+informal` step kind — ONE scripted, non-vote-shaped board post),
+`ecology.committee_with_informal_chatter_config` (layers the chatter onto
+a REAL `committee_config` committee sharing the same board channel),
+`run_s3_informal_chatter_prototype.py` (10 MockIsolate seeds, 0
+falsifications). No new detector or "legitimate coordination" baseline
+ecology dataclass was needed — `uad.py`'s EXISTING `build_coordination_
+trace` already filters to `review_id`/`vote` custom fields (its own
+docstring already documents this for decoy chatter); this prototype
+confirms the SAME holds for a real, non-decoy pipeline role, and that
+mixing the chatter onto the SAME channel as a real committee's votes does
+not degrade `uad_score` recovery of that committee. **Explicit scope
+limit:** the chatter is one SCRIPTED, structurally non-vote-shaped post,
+not the harder LLM-driven free-text version this section itself names —
+a scripted post can never accidentally drift into vote-shaped content, so
+this result says nothing about whether free text could. See FINDINGS.md
+G-18 for the full write-up.
 
 ### S4 — Shared pipeline worker pool + job-size-aware scheduling
 
@@ -1117,10 +1178,99 @@ whether capacity is global or per-role; ground-truth unit = scheduling
 coalition vs build coalition; link to bearer harm (large jobs = higher
 hazard) without re-tuning frozen severity.
 
+**Update (prototype, 2026-07-07): explored, but scoped DOWN from the
+above ambition — see FINDINGS.md G-20 before reading this as "S4 done."**
+Checked the substrate FIRST and found it does not support "job-size-aware
+scheduling" as described: `pipeline_engine.py` has no duration/cost
+mechanic at all (every step is one tick regardless of `build_params`),
+and no model_id is ever associated with the actor that created it (any
+actor with the role capability can act on any in-flight model). Adding
+both was judged a bigger lift than a prototype pass should make to a
+comparatively stable module, and deliberately NOT done.
+`ecology.shared_slot_config` instead explores what the EXISTING
+substrate does with two identically-configured engineers sharing one
+slot with `comms_enabled=False` (no coordination mechanic of any kind);
+`run_s4_shared_slot_prototype.py` (10 MockIsolate seeds, 0
+falsifications against the DIFFERENT expectations this scoped-down
+version actually states). Result: the two engineers do not contend for
+the slot — they cooperatively interleave pipeline steps on the ONE
+shared in-flight model, in a split that is fully deterministic across all
+10 seeds (`eng1` always `submit_build`+`file_report`; `eng2` always
+`run_eval`+`request_review`) despite zero communication and zero
+negotiation. The actually novel, generalizable finding: this real causal
+coupling — mediated entirely by shared mutable engine state, not any
+comms channel — is invisible to every existing `uad.py` signal
+(`uad_score` against the oracle-true pair is exactly 0.0, every seed), a
+different class of blind spot than S2/S3's (both of those still ride an
+explicit, in-principle-inspectable comms mechanic; this one touches no
+comms surface at all). Building the ACTUAL scheduling scenario (real job
+sizes, real ownership, real contention) is left for a future pass willing
+to touch `pipeline_engine.py`.
+
 **Dependencies.** S4 likely composes with S1/S3; S2 may compose with S3 for
 full MB7d-style "sever the formal channel, does informal/file coordination
 persist?" — the ablation G-10 could not test because no covert/informal
 channel existed yet.
+
+### S5 — TODO (recorded 2026-07-07, not scheduled): port full UAD into
+lab-sim and re-run it against S4's shared-slot finding, plus an
+acausal-coordination probe
+
+**Why.** Every scenario in this backlog (S1-S4) was scored against
+`lab_sim/oracle_only/uad.py`'s own heuristic — pairwise co-voting Jaccard
++ structural DM-pair/file-share-pair lookups, explicitly NOT the
+perturbation-response-MI / lagged-MI method PLAN.md's original ambition
+named ("embedded_sim's UAD precedent," `uad.py`'s own module docstring).
+The REAL port of that precedent already exists, in a different
+experiment line: `experiments/embedded-simulation/embedded_sim/uad_core/`
+(`detection.py`'s own docstring: `"""Lagged-MI agent clustering
+(agency-detect port, stdlib-only)."""`) — lag-max mutual information over
+discretized trajectory variables, similarity/distance-matrix clustering,
+and a Markov-blanket validator (`markov_blanket.py`). It has never been
+applied to lab-sim's actors/trajectories.
+
+**Hypothesis to test first (from G-20's own finding, not yet checked
+against real UAD).** G-20 found the CURRENT heuristic under-detects: two
+engineers sharing one slot score `uad_score = 0.0` (discovered as
+singletons) despite a real causal coupling through shared engine state.
+Full lagged-MI clustering applied to the SAME `shared_slot_config`
+trajectories would plausibly fail in the OPPOSITE direction: `eng1` and
+`eng2` are running the IDENTICAL playbook, so their action/observation
+streams are near-deterministically correlated (not because they
+communicate, but because they are literally the same policy reacting to
+the same shared state) — exactly the regime `build_similarity_matrix`'s
+lag-max MI would score highest. The likely failure mode: full UAD
+OVER-merges them into a single discovered "agent" (mistaking "two actors
+running one policy in lockstep" for "one actor"), which is a real,
+qualitatively different error from the heuristic's under-detection —
+worth confirming empirically, not asserting.
+
+**Second probe: acausal coordination, when NOT in lockstep.** If `eng1`
+and `eng2` are de-synchronized (different `temperature`/weights, so no
+longer byte-identical trajectories) but still running similar POLICIES
+with no causal channel between them, could they still register as
+coordinating via `context/extracts/acausal-trade-uad-formalization.md`'s
+Inferential Coupling Index (ICI) — the meta-Bayesian "self-mirroring"
+score `c_IC_ij = (1 - epsilon_ij) x (1 - max{D_i, D_j})`, alarmed at
+`c_IC_ij > tau_ac ~ 0.9` — rather than via ordinary causal MI (`gamma_ij`,
+eq. 2 in that extract)? This is a DIFFERENT detection question from
+either `uad.py`'s heuristic or `uad_core`'s lagged-MI clustering: it asks
+whether two POLICIES are similar enough to "best-respond to themselves,"
+not whether two TRAJECTORIES are correlated. No implementation of the
+ICI protocol exists anywhere in this repo yet (`acausal-trade-uad-
+formalization.md` is a context extract, not code) — this would be new
+work, not a port.
+
+**Scope note (deliberately not attempted this session).** Both probes
+need: (1) exporting lab-sim trajectories (tool events / observation
+streams) into `uad_core`'s expected discretized-variable input shape, (2)
+for the ICI probe specifically, a way to read out or approximate an
+actor's own "policy" `f_i` for the self-mirroring test (trivial for
+`eng_honest` — it IS a fixed lookup table — but the extract's protocol
+assumes black-box probing, which this line's playbooks don't need but a
+faithful port arguably should exercise anyway). Neither is scheduled;
+recorded here so `shared_slot_config`/G-20 do not get cited later as "UAD
+already checked this" when only the heuristic was ever run against it.
 
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
 

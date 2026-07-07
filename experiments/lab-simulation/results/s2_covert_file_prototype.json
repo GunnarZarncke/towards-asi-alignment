@@ -1,0 +1,150 @@
+{
+  "code_version": "lab-sim-0.9.0",
+  "generated_at": "2026-07-07T10:17:30.607825+00:00",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "T": 26,
+  "rows": [
+    {
+      "seed": 1,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.8629004172094873
+    },
+    {
+      "seed": 2,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.8914857237344989
+    },
+    {
+      "seed": 3,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.7634669903682813
+    },
+    {
+      "seed": 4,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.8089016996545862
+    },
+    {
+      "seed": 5,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.9047120833169175
+    },
+    {
+      "seed": 6,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.8529851065119456
+    },
+    {
+      "seed": 7,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.6653501643440334
+    },
+    {
+      "seed": 8,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.9854795030130064
+    },
+    {
+      "seed": 9,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.9245569954785896
+    },
+    {
+      "seed": 10,
+      "e1_trusting_deployed_hazardous": true,
+      "e2_honest_twin_never_deployed": true,
+      "e3_engineer_shape_identical": true,
+      "e4_hazard_override_flags_trusting": [
+        true
+      ],
+      "e4_hazard_override_flags_honest": [],
+      "e5_covert_marker_seen_trusting": true,
+      "e5_covert_marker_seen_honest": true,
+      "true_hazard": 0.662994700089635
+    }
+  ],
+  "falsifications": []
+}

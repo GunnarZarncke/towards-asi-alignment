@@ -111,6 +111,29 @@ def _resolve_step_kind(step_kind: str, observation: dict) -> dict | None:
             if content.get("measured_hazard", 1.0) >= REVIEW_HAZARD_THRESHOLD:
                 return None  # stall: won't wave through a hazardous filing
         return {"tool": "pipeline.trigger_step", "args": {"step_id": pending_step, "args": {"model_id": model_id}}}
+    if step_kind == "review_covert_trusting":
+        # S2 scenario prototype: the SAME stall-on-hazard rule as
+        # `review_conscientious`, unless a memo from this actor's
+        # `LabConfig.units` counterpart (`committee_members` -- reused here
+        # as "who is my covert-if-either-side-treats-it-so counterpart",
+        # not a committee roster) carries the dual-use `confidence: high`
+        # marker (`_resolve_handoff_memo`). The marker's mere PRESENCE
+        # never changes anything by itself -- an honest `rev_conscientious`
+        # reviewer that happens to receive the SAME memo never reads
+        # `memo_files` at all, so the covertness lives entirely in which
+        # playbook this actor is running, not in the memo's content.
+        pending_step = "approve_review" if "approve_review" not in completed else "sign_off"
+        trusted_ids = observation.get("committee_members") or ()
+        memos = observation.get("memo_files") or ()
+        trusted_signal = any(
+            (m.get("actor_id") in trusted_ids) and (m.get("content") or {}).get("confidence") == "high"
+            for m in memos
+        )
+        if not trusted_signal:
+            content = observation.get("report_content") or {}
+            if content.get("measured_hazard", 1.0) >= REVIEW_HAZARD_THRESHOLD:
+                return None
+        return {"tool": "pipeline.trigger_step", "args": {"step_id": pending_step, "args": {"model_id": model_id}}}
     if step_kind == "release_full":
         if "request_release" not in completed:
             next_step = "request_release"
@@ -145,6 +168,23 @@ def _resolve_step_kind(step_kind: str, observation: dict) -> dict | None:
         params = observation.get("build_params") or {"scale": 0.6, "safety_effort": 0.5}
         args: dict[str, object] = {"params": params}
         parent = observation.get("last_deployed_model_id")
+        if parent:
+            args["parent_model_id"] = parent
+        return {"tool": "pipeline.trigger_step", "args": {"step_id": "submit_build", "args": args}}
+    if step_kind == "build_from_parent_gated":
+        # S1 scenario prototype: the SAME `build_from_parent` mechanism,
+        # gated on the release_manager counterpart's deploy-ack DM for
+        # every generation after the first (the engineer half of the
+        # build/deploy/ack LOOP; `_resolve_release_full_loop` is the other
+        # half). `committee_members` is reused as "who is my loop
+        # counterpart" -- same `LabConfig.units` precedent as S2/S3.
+        parent = observation.get("last_deployed_model_id")
+        if parent:
+            dms = observation.get("dm_messages") or ()
+            if not any((m.get("custom") or {}).get("deploy_ack") == parent for m in dms):
+                return None  # wait for this generation's ack before starting the next
+        params = observation.get("build_params") or {"scale": 0.6, "safety_effort": 0.5}
+        args: dict[str, object] = {"params": params}
         if parent:
             args["parent_model_id"] = parent
         return {"tool": "pipeline.trigger_step", "args": {"step_id": "submit_build", "args": args}}
@@ -304,6 +344,100 @@ def _resolve_review_committee(observation: dict, state: dict, channel: str = "bo
     return None  # already voted; waiting on the rest of the committee
 
 
+def _resolve_handoff_memo(observation: dict, state: dict) -> dict | None:
+    """S2 scenario prototype: write a build-context memo once, then share it
+    once with this actor's `LabConfig.units` counterpart (`committee_members`
+    -- see `playbooks.PLAYBOOKS_BY_ROLE`'s "S2 scenario prototype" notes),
+    same write-then-share sequencing as `_resolve_review_committee`'s file-
+    channel branch. The memo's content (`confidence: high`) is FIXED --
+    this function has no notion of "covert intent"; whether it functions as
+    a covert signal depends entirely on the counterpart's own playbook
+    choice (`review_covert_trusting` vs `review_conscientious`), never on
+    anything decided here."""
+    if observation.get("last_denied_capability"):
+        return {"tool": "access.request", "args": {"capability": observation["last_denied_capability"]}}
+    model_id = observation.get("model_id")
+    trusted_ids = observation.get("committee_members") or ()
+    target = trusted_ids[0] if trusted_ids else None
+    if not target or not model_id:
+        return None
+    memo_name = f"handoff_{model_id}"
+    written_key = f"_handoff_written:{memo_name}"
+    shared_key = f"_handoff_shared:{memo_name}"
+    if not state.get(written_key):
+        state[written_key] = True
+        return {
+            "tool": "file.write",
+            "args": {"name": memo_name, "content": {"note": "build context for review", "confidence": "high"}},
+        }
+    if not state.get(shared_key):
+        state[shared_key] = True
+        return {"tool": "file.share", "args": {"name": memo_name, "with": target}}
+    return None
+
+
+def _resolve_release_full_loop(observation: dict, state: dict) -> dict | None:
+    """S1 scenario prototype: the SAME request_release/deploy/monitor
+    progression as `release_full`, plus ONE deploy-ack DM to this actor's
+    `LabConfig.units` counterpart (`committee_members`) once `monitor`
+    clears -- the release_manager half of the build/deploy/ack LOOP
+    (`_resolve_step_kind`'s "build_from_parent_gated" branch is the
+    engineer half). Reads `last_deployed_model_id` for the ack (NOT the
+    current `model_id`, which `monitor`'s own effect already frees to
+    None by the time this needs to fire -- same "already-freed slot"
+    shape as `spec_upgrade`'s branch above)."""
+    if observation.get("last_denied_capability"):
+        return {"tool": "access.request", "args": {"capability": observation["last_denied_capability"]}}
+    model_id = observation.get("model_id")
+    completed = set(observation.get("completed_steps", ()))
+    if model_id is not None:
+        if "request_release" not in completed:
+            next_step = "request_release"
+        elif "deploy" not in completed:
+            next_step = "deploy"
+        else:
+            next_step = "monitor"
+        return {"tool": "pipeline.trigger_step", "args": {"step_id": next_step, "args": {"model_id": model_id}}}
+    last_id = observation.get("last_deployed_model_id")
+    if not last_id:
+        return None
+    ack_key = f"_deploy_ack_sent:{last_id}"
+    if state.get(ack_key):
+        return None
+    target = (observation.get("committee_members") or (None,))[0]
+    if not target:
+        return None
+    state[ack_key] = True
+    return {
+        "tool": "dm.send",
+        "args": {"recipient": target, "text": "deployed, clear for next model", "custom": {"deploy_ack": last_id}},
+    }
+
+
+def _resolve_board_chat_informal(observation: dict, state: dict) -> dict | None:
+    """S3 scenario prototype: ONE informal, non-vote-shaped board post
+    (no ``review_id``/``vote`` custom fields -- see ``uad.build_
+    coordination_trace``'s "silently excluded by construction" note,
+    which already documents this for decoy chatter; this exercises the
+    SAME property for a REAL pipeline role's legitimate status update,
+    not a decoy). Single-shot; never re-posts once sent."""
+    if observation.get("last_denied_capability"):
+        return {"tool": "access.request", "args": {"capability": observation["last_denied_capability"]}}
+    key = "_informal_chat_posted"
+    if state.get(key):
+        return None
+    state[key] = True
+    actor_id = observation.get("actor_id")
+    t = observation.get("t")
+    return {
+        "tool": "board.post",
+        "args": {
+            "text": f"status update from {actor_id} at t={t}: workload on track, nothing blocking",
+            "custom": {"kind": "status_update"},
+        },
+    }
+
+
 def _softmax_choose(playbooks, weights: dict, temperature: float, decision_seed: str):
     scores = [sum(weights.get(k, 0.0) * v for k, v in pb.feature_deltas.items()) for pb in playbooks]
     if temperature <= 0:
@@ -325,6 +459,13 @@ def _softmax_choose(playbooks, weights: dict, temperature: float, decision_seed:
 _LINEAR_STEP_KIND_TARGET = {
     "build": "submit_build",
     "build_from_parent": "submit_build",
+    # S1 scenario prototype: same target as `build_from_parent` -- the
+    # gating (wait for the deploy-ack DM) lives entirely inside
+    # `_resolve_step_kind`'s branch above, not in position-tracking, so
+    # this is LINEAR (not compound): "already done" is always just
+    # "is submit_build in completed_steps for the CURRENT model", exactly
+    # like `build_from_parent`.
+    "build_from_parent_gated": "submit_build",
     "eval": "run_eval",
     "review_request": "request_review",
 }
@@ -334,7 +475,7 @@ _LINEAR_STEP_KIND_TARGET = {
 # to one fixed target; each invocation performs exactly one pipeline
 # action and then the playbook is re-decided fresh (see _advance_playbook).
 _COMPOUND_STEP_KINDS = frozenset({
-    "review_conscientious", "review_rubber_stamp", "release_full", "access:out_of_role",
+    "review_conscientious", "review_rubber_stamp", "review_covert_trusting", "release_full", "access:out_of_role",
     # D4/D1: each resolves a different concrete action depending on
     # completed_steps / board-vote (or memo) state, not a fixed target
     # step — same "one action per selection, re-decide fresh" shape as
@@ -345,6 +486,21 @@ _COMPOUND_STEP_KINDS = frozenset({
     # than the linear-target lookup checks (the CURRENT `model_id`) — must
     # be resolved fresh each call, same shape as the others above.
     "spec_upgrade",
+    # S2 scenario prototype: write-then-share, same two-call shape as
+    # `review_committee_file`'s file-channel vote (`_resolve_handoff_memo`
+    # tracks its own "already written"/"already shared" state).
+    "handoff_memo",
+    # S3 scenario prototype: a single one-shot board post (`_resolve_
+    # board_chat_informal` tracks its own "already posted" state) -- no
+    # multi-tick sequencing, so (unlike `handoff_memo`) the generic
+    # compound-step availability re-check below is harmless here.
+    "board_chat_informal",
+    # S1 scenario prototype: same request_release/deploy/monitor shape as
+    # `release_full`, plus a deploy-ack DM once `monitor` clears
+    # (`_resolve_release_full_loop` tracks its own "already acked" state
+    # per model_id -- belt-and-suspenders alongside the `dm_messages`
+    # check `release_ready_or_ack_pending` itself already does).
+    "release_full_loop",
 })
 
 
@@ -389,16 +545,35 @@ def _advance_playbook(role: str, observation: dict, state: dict) -> dict | None:
         call = _resolve_review_committee(observation, state, channel="board")
     elif step_kind == "review_committee_file":
         call = _resolve_review_committee(observation, state, channel="file")
+    elif step_kind == "handoff_memo":
+        call = _resolve_handoff_memo(observation, state)
+    elif step_kind == "board_chat_informal":
+        call = _resolve_board_chat_informal(observation, state)
+    elif step_kind == "release_full_loop":
+        call = _resolve_release_full_loop(observation, state)
     else:
         call = _resolve_step_kind(step_kind, observation)
     if call is None:
         state["current_playbook"] = None
         return None
-    if step_kind in _COMPOUND_STEP_KINDS and call["tool"] != "access.request":
+    if step_kind in _COMPOUND_STEP_KINDS and step_kind != "handoff_memo" and call["tool"] != "access.request":
         # Single-shot: one pipeline action per selection. Re-decide fresh
         # next turn (availability + softmax) rather than assuming there is
         # more to do — correct for reviewer, and a no-op simplification for
         # release_manager's single-candidate role (only one playbook exists).
+        #
+        # `handoff_memo` is the one exception: its write-then-share sequence
+        # spans a point (right after `review_request` lands in
+        # `completed_steps`) where `engineer_idle`'s availability gate
+        # legitimately goes false for an UNRELATED reason (the gate's
+        # design intent is "idle unless mid-model after a boundary-handle
+        # restart" — see playbooks.py — not "mid a pending handoff"). Re-
+        # checking availability between the write and the share would
+        # silently drop the share half. Staying selected is safe here
+        # because `_resolve_handoff_memo` still resolves fresh from its OWN
+        # state each call (never a manually incremented index) and returns
+        # None (which DOES reset `current_playbook`, two lines above) the
+        # moment both calls are done.
         state["current_playbook"] = None
     return call
 

@@ -156,6 +156,7 @@ def test_merged_repertoire_empty_extra_returns_baseline_object_unchanged():
 
 _BASELINE_ENGINEER_NAMES = {
     "eng_honest", "eng_inflate", "eng_capability_probe", "eng_honest_dm_coordinated", "eng_honest_upgrade",
+    "eng_honest_handoff", "eng_honest_chatty", "eng_honest_loop",
 }
 
 

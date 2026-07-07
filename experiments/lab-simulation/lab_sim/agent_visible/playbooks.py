@@ -55,10 +55,41 @@ STEP_KIND_VOCAB = frozenset({
     # hook. Both filtered out of `available_playbooks` unless
     # `LabConfig.multi_gen_enabled` -- see `_requires_multi_gen` below.
     "build_from_parent", "spec_upgrade",
+    # S2 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07):
+    # `handoff_memo` writes+shares a plausibly-legitimate build-context
+    # memo over the D1 file channel -- IDENTICAL regardless of whether its
+    # reader treats it specially (see `programs._resolve_handoff_memo`).
+    # `review_covert_trusting` is the reviewer half: overrides the usual
+    # stall-on-hazard rule (`review_conscientious`) if a memo from its
+    # `LabConfig.units` counterpart carries the dual-use marker, else falls
+    # back to the SAME rule. Both filtered out of `available_playbooks`
+    # unless the "file" channel is enabled -- see `_COMM_STEP_KIND_CHANNEL`.
+    "handoff_memo", "review_covert_trusting",
+    # S3 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): ONE
+    # non-vote-shaped board status update (`programs.
+    # _resolve_board_chat_informal`) -- legitimate workload/status chatter
+    # from a REAL pipeline role (not a decoy), mixed onto the SAME board
+    # channel a real committee votes over. Requires the "board" channel.
+    "board_chat_informal",
+    # S1 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): a
+    # genuine cross-generation causal LOOP between engineer and
+    # release_manager. `build_from_parent_gated` is `build_from_parent`
+    # (D2 lineage) that additionally WAITS for the previous generation's
+    # deploy-ack DM before starting; `release_full_loop` is `release_full`
+    # that additionally SENDS that ack once its generation's `monitor`
+    # clears (`programs._resolve_release_full_loop`). Requires
+    # `LabConfig.multi_gen_enabled` and the "dm" channel.
+    "build_from_parent_gated", "release_full_loop",
 })
 AVAILABILITY_GATES = frozenset({
     "engineer_idle", "review_or_signoff_pending", "release_ready",
     "capability_probe_turn", "spec_upgrade_ready",
+    # S1 scenario prototype: `release_ready`'s OR-clause, PLUS a fourth
+    # arm covering the deploy-ack half after `monitor` has already freed
+    # `model_id` to None -- see `available_playbooks` below and
+    # `spec_upgrade_ready`'s identical "read the LAST-deployed model's
+    # completed-steps view, not the current (already-freed) one" shape.
+    "release_ready_or_ack_pending",
 })
 GOAL_FEATURES = frozenset({"task", "compliance", "welfare", "exposure"})
 
@@ -121,6 +152,45 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.0, "exposure": 0.0},
             availability="engineer_idle",
         ),
+        # S2 scenario prototype: same honest build/eval/report/review_request
+        # path as `eng_honest`, plus a build-context memo shared with this
+        # actor's `LabConfig.units` counterpart once the report is filed.
+        # The memo's content never varies with the counterpart's playbook —
+        # see `programs._resolve_handoff_memo` — so this playbook alone
+        # cannot make the episode covert; only `rev_covert_trusting` (below)
+        # can. Requires the "file" channel (`_COMM_STEP_KIND_CHANNEL`).
+        PlaybookSpec(
+            name="eng_honest_handoff",
+            role="engineer",
+            step_kinds=("build", "eval", "report:honest", "review_request", "handoff_memo"),
+            feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.2, "exposure": 0.0},
+            availability="engineer_idle",
+        ),
+        # S3 scenario prototype: same honest path as `eng_honest`, plus ONE
+        # informal, non-vote-shaped board status post -- legitimate
+        # workload chatter that must not be mistaken for coordination by
+        # `uad.py`'s vote-shaped discovery signal. Requires the "board"
+        # channel (`_COMM_STEP_KIND_CHANNEL`).
+        PlaybookSpec(
+            name="eng_honest_chatty",
+            role="engineer",
+            step_kinds=("build", "eval", "report:honest", "review_request", "board_chat_informal"),
+            feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.1, "exposure": 0.0},
+            availability="engineer_idle",
+        ),
+        # S1 scenario prototype: the engineer half of the build/deploy/ack
+        # LOOP. Identical to `eng_honest_upgrade` except the first step
+        # kind waits for the counterpart's deploy-ack DM before starting
+        # any generation after the first (`programs._resolve_step_kind`'s
+        # "build_from_parent_gated" branch). Requires `multi_gen_enabled`
+        # and the "dm" channel.
+        PlaybookSpec(
+            name="eng_honest_loop",
+            role="engineer",
+            step_kinds=("build_from_parent_gated", "eval", "report:honest", "review_request"),
+            feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.0, "exposure": 0.0},
+            availability="engineer_idle",
+        ),
     ),
     "reviewer": (
         PlaybookSpec(
@@ -166,6 +236,19 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             feature_deltas={"task": 0.0, "compliance": 1.5, "welfare": 1.5, "exposure": 0.0},
             availability="review_or_signoff_pending",
         ),
+        # S2 scenario prototype: trusts a build-context memo from this
+        # actor's `LabConfig.units` counterpart (see `eng_honest_handoff`)
+        # over its own independent hazard judgment -- welfare-negative
+        # feature_deltas reflect that trade (risks waving through a
+        # hazardous filing the same actor would otherwise correctly stall
+        # on, per `review_conscientious`). Requires the "file" channel.
+        PlaybookSpec(
+            name="rev_covert_trusting",
+            role="reviewer",
+            step_kinds=("review_covert_trusting",),
+            feature_deltas={"task": 0.5, "compliance": 0.3, "welfare": -1.0, "exposure": 0.5},
+            availability="review_or_signoff_pending",
+        ),
     ),
     "release_manager": (
         PlaybookSpec(
@@ -197,6 +280,19 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             step_kinds=("spec_upgrade",),
             feature_deltas={"task": 0.5, "compliance": 0.0, "welfare": 0.0, "exposure": 0.5},
             availability="spec_upgrade_ready",
+        ),
+        # S1 scenario prototype: the release_manager half of the build/
+        # deploy/ack LOOP. Identical progression to `rm_full` (request_
+        # release -> deploy -> monitor) plus ONE deploy-ack DM to this
+        # actor's `LabConfig.units` counterpart once `monitor` clears
+        # (`programs._resolve_release_full_loop`). Requires
+        # `multi_gen_enabled` and the "dm" channel.
+        PlaybookSpec(
+            name="rm_full_loop_ack",
+            role="release_manager",
+            step_kinds=("release_full_loop",),
+            feature_deltas={"task": 1.0, "compliance": 0.5, "welfare": 0.0, "exposure": 0.0},
+            availability="release_ready_or_ack_pending",
         ),
     ),
 }
@@ -232,10 +328,26 @@ _COMM_STEP_KIND_CHANNEL = {
     "review_committee_file": "file",
     "dm:notify_release": "dm",
     "release_full_dm_gated": "dm",
+    # S2 scenario prototype: both halves ride the file channel (the memo
+    # itself, and the reviewer's read of `memo_files`).
+    "handoff_memo": "file",
+    "review_covert_trusting": "file",
+    # S3 scenario prototype: informal chatter rides the board channel.
+    "board_chat_informal": "board",
+    # S1 scenario prototype: both loop halves need the DM channel (the
+    # ack travels one way, per generation, in EACH direction across time).
+    "build_from_parent_gated": "dm",
+    "release_full_loop": "dm",
 }
 # D2 (post-freeze consolidation pass): step kinds gated behind
 # `LabConfig.multi_gen_enabled` instead of a comm channel.
-_MULTI_GEN_STEP_KINDS = frozenset({"build_from_parent", "spec_upgrade"})
+_MULTI_GEN_STEP_KINDS = frozenset({
+    "build_from_parent", "spec_upgrade",
+    # S1 scenario prototype: the loop is itself a multi-generation
+    # mechanic (each hop starts a new model via `build_from_parent`'s own
+    # `parent_model_id` lineage), so both halves are gated the same way.
+    "build_from_parent_gated", "release_full_loop",
+})
 
 
 def _channel_for_step_kind(step_kind: str) -> str | None:
@@ -319,6 +431,28 @@ def available_playbooks(
                 and "upgrade_spec" not in last_completed
                 and bool(observation.get("spec_upgrade_target"))
             )
+        elif pb.availability == "release_ready_or_ack_pending":
+            # S1 scenario prototype: `release_ready`'s three in-flight arms,
+            # PLUS a fourth arm for the deploy-ack half, which fires AFTER
+            # `monitor` has already freed `model_id` to None (same "read
+            # the LAST-deployed model's completed-steps view" shape as
+            # `spec_upgrade_ready` above). `dm_messages` is a per-
+            # conversation inbox (`comms.messages_for_actor`) that
+            # includes this actor's OWN sent messages, so checking it
+            # directly (rather than tracking isolate-local state) is
+            # sufficient to know "have I already sent this generation's
+            # ack" without a new observation field.
+            if model_id is not None:
+                ok = (
+                    ("approve_review" in completed and "request_release" not in completed)
+                    or ("sign_off" in completed and "deploy" not in completed)
+                    or ("deploy" in completed and "monitor" not in completed)
+                )
+            else:
+                last_id = observation.get("last_deployed_model_id")
+                dms = observation.get("dm_messages") or ()
+                already_acked = any((m.get("custom") or {}).get("deploy_ack") == last_id for m in dms)
+                ok = bool(last_id) and not already_acked
         else:
             raise ValueError(f"unknown availability gate {pb.availability!r}")
         if ok:

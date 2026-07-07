@@ -1,0 +1,150 @@
+{
+  "code_version": "lab-sim-0.9.0",
+  "generated_at": "2026-07-07T11:04:08.063408+00:00",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "T": 100,
+  "rows": [
+    {
+      "seed": 1,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 2,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 3,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 4,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 5,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 6,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 7,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 8,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 9,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    },
+    {
+      "seed": 10,
+      "split": {
+        "submit_build": "eng1",
+        "run_eval": "eng2",
+        "file_report": "eng1",
+        "request_review": "eng2"
+      },
+      "eng1_steps": 42,
+      "eng2_steps": 42,
+      "both_engineers_active": true,
+      "uad_score": 0.0
+    }
+  ],
+  "falsifications": []
+}

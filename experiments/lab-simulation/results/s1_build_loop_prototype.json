@@ -1,0 +1,120 @@
+{
+  "code_version": "lab-sim-0.9.0",
+  "generated_at": "2026-07-07T11:09:01.267873+00:00",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "T": 400,
+  "rows": [
+    {
+      "seed": 1,
+      "e1_generations": 45,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 2,
+      "e1_generations": 24,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 3,
+      "e1_generations": 55,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 4,
+      "e1_generations": 39,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 5,
+      "e1_generations": 19,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 6,
+      "e1_generations": 24,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 7,
+      "e1_generations": 28,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 8,
+      "e1_generations": 20,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 9,
+      "e1_generations": 34,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    },
+    {
+      "seed": 10,
+      "e1_generations": 24,
+      "e2_lineage_ok": true,
+      "e3_gating_ok": true,
+      "e4_gated_cadence_ticks": 7.0,
+      "e4_ungated_cadence_ticks": 6.0,
+      "e4_overhead_ticks": 1.0,
+      "dm_pair_recovered": true
+    }
+  ],
+  "falsifications": []
+}

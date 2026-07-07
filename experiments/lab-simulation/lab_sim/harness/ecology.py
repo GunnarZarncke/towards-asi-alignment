@@ -90,6 +90,124 @@ def dm_pair_config(T: int = 200, temperature: float = 0.0, comms_enabled: bool =
     )
 
 
+# S2 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): matches
+# redteam.HIGH_HAZARD_BUILD_PARAMS / run_phase7.py's capture-grid regime
+# (duplicated literal, same rationale as those files' own comments) --
+# makes "does the covert signal change the outcome" turn on the mechanic
+# itself, not a rare high-hazard tail draw.
+HIGH_HAZARD_BUILD_PARAMS = {"scale": 0.95, "safety_effort": 0.05}
+
+
+def covert_file_handoff_config(
+    trusting: bool, T: int = 150, temperature: float = 0.0, comms_enabled: bool = True,
+) -> LabConfig:
+    """S2 prototype: engineer (`eng_honest_handoff`) always writes+shares
+    the SAME build-context memo with its ``units`` counterpart, regardless
+    of ``trusting`` -- the memo's content never depends on who reads it
+    (see ``programs._resolve_handoff_memo``). ``trusting=True`` pins the
+    reviewer to ``rev_covert_trusting`` (treats the memo's
+    ``confidence: high`` field as grounds to override its own stall-on-
+    hazard rule); ``trusting=False`` pins it to ``rev_conscientious`` --
+    the honest twin, receiving the IDENTICAL memo but never reading
+    ``memo_files`` at all. ``units`` names the pair as the oracle-only
+    ground truth, reused here as "who is this actor's covert-if-either-
+    side-treats-it-so counterpart" rather than a committee roster -- see
+    ``playbooks.py``'s "S2 scenario prototype" notes. ``build_params``
+    defaults to a high-hazard regime so the review decision is not left
+    to a random tail draw. ``rm1`` is explicitly pinned to ``rm_full``:
+    with ``comms_enabled=True`` (needed for the file channel) `rm_dm_gated`
+    is ALSO available and scores higher than `rm_full` under
+    ``HONEST_WEIGHTS`` at ``temperature=0`` -- softmax would otherwise pick
+    a DM handshake this scenario's engineer never sends (it uses the file
+    channel, not DM), stalling release_manager forever."""
+    agents = (
+        AgentConfig("eng1", "engineer", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("rev1", "reviewer", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("rm1", "release_manager", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("admin1", "admin", HONEST_WEIGHTS),
+    )
+    return LabConfig(
+        agents=agents, T=T, comms_enabled=comms_enabled,
+        units=(("covert_pair", ("eng1", "rev1")),),
+        playbook_pins={
+            "eng1": "eng_honest_handoff",
+            "rev1": "rev_covert_trusting" if trusting else "rev_conscientious",
+            "rm1": "rm_full",
+        },
+        build_params=HIGH_HAZARD_BUILD_PARAMS,
+    )
+
+
+def committee_with_informal_chatter_config(n_reviewers: int = 2, T: int = 200, temperature: float = 0.0) -> LabConfig:
+    """S3 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): the
+    SAME real committee mechanic as ``committee_config`` (board channel),
+    plus the engineer -- a non-committee actor -- posting ONE informal,
+    non-vote-shaped board status update (`eng_honest_chatty`) alongside
+    its normal honest work. Tests whether `uad.py`'s vote-shaped discovery
+    signal is robust to legitimate chatter sharing the SAME channel as the
+    committee's real votes, rather than being confused by mere board-
+    channel co-occurrence."""
+    cfg = committee_config(n_reviewers=n_reviewers, T=T, temperature=temperature, comms_enabled=True, channel="board")
+    return LabConfig(**{**vars(cfg), "playbook_pins": {**cfg.playbook_pins, "eng1": "eng_honest_chatty"}})
+
+
+def build_loop_config(T: int = 400, temperature: float = 0.0) -> LabConfig:
+    """S1 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07):
+    engineer and release_manager close a genuine cross-GENERATION causal
+    loop, rather than a static committee: eng1's `build_from_parent_gated`
+    WAITS for rm1's prior-generation deploy-ack DM before starting each
+    new generation (after the first); rm1's `release_full_loop` sends
+    that ack only once ITS generation's `monitor` clears. `units` names
+    the loop pair as the oracle ground truth (same precedent as
+    `dm_pair_config`'s `release_pair`) -- the loop MECHANIC, not detection
+    of it, is this prototype's focus (see FINDINGS.md G-19); `uad.py`'s
+    existing DM-pair discovery already recovers a bidirectional pair
+    trivially, so this config exists to exercise the LOOP closing over
+    multiple generations, not to test a new detector. Requires a larger
+    default `T` than the single-generation ecologies above -- each hop
+    (build/eval/report/review/release/monitor/ack) costs several ticks,
+    and this scenario wants to observe MULTIPLE generations."""
+    agents = (
+        AgentConfig("eng1", "engineer", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("rev1", "reviewer", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("rm1", "release_manager", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("admin1", "admin", HONEST_WEIGHTS),
+    )
+    return LabConfig(
+        agents=agents, T=T, comms_enabled=True, multi_gen_enabled=True,
+        units=(("build_loop", ("eng1", "rm1")),),
+        playbook_pins={"eng1": "eng_honest_loop", "rev1": "rev_conscientious", "rm1": "rm_full_loop_ack"},
+    )
+
+
+def shared_slot_config(T: int = 100, temperature: float = 0.0) -> LabConfig:
+    """S4 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): TWO
+    engineers (`eng1`, `eng2`) share the SAME single-model-in-flight slot
+    -- `world.py`'s scope note ("ONE model is in flight at a time per
+    episode") was written assuming exactly one engineer; nothing enforces
+    per-actor model OWNERSHIP, so a second same-role actor can freely act
+    on whichever model is already in flight. `units` names the pair as
+    the oracle ground truth. See FINDINGS.md G-20 for what this ecology
+    actually surfaces: NOT the job-size-aware scheduling PLAN.md
+    originally asked for (that needs model-ownership tracking this
+    prototype deliberately does not add -- see the finding's scope-limit
+    paragraph), but a stable, fully deterministic, communication-free
+    division of labor between the two engineers, and a real detection gap
+    (every existing `uad.py` signal leaves them as singletons)."""
+    agents = (
+        AgentConfig("eng1", "engineer", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("eng2", "engineer", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("rev1", "reviewer", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("rm1", "release_manager", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("admin1", "admin", HONEST_WEIGHTS),
+    )
+    return LabConfig(
+        agents=agents, T=T,
+        units=(("shared_slot", ("eng1", "eng2")),),
+        playbook_pins={"eng1": "eng_honest", "eng2": "eng_honest", "rev1": "rev_conscientious", "rm1": "rm_full"},
+    )
+
+
 def add_decoys(cfg: LabConfig, n_decoys: int = 2) -> tuple[LabConfig, tuple[str, ...]]:
     """Append ``n_decoys`` noise-only agents (board chatter, no pipeline
     access, no real coordination unit — the UAD false-positive check).

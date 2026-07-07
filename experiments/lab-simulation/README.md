@@ -9,9 +9,10 @@ real OS-subprocess isolates speaking JSON-RPC to a host.
 
 **Status: Phase 0-9 complete, referee FROZEN 2026-07-06, first battery run
 2026-07-06, Phase 7 battery run 2026-07-06, Phase 8 exploratory spot-check
-2026-07-06, Phase 9 D1/D4/D2 smoke-scale-to-battery closure 2026-07-06**
-(CODE_VERSION `lab-sim-0.9.0`, 296 tests green — see DESIGN.md "Freeze
-note", "Phase 6", "Phase 7", "Phase 8", and "Phase 9").
+2026-07-06, Phase 9 D1/D4/D2 smoke-scale-to-battery closure 2026-07-06,
+S1-S4 scenario-backlog prototypes 2026-07-07** (CODE_VERSION `lab-sim-0.9.0`,
+318 tests green — see DESIGN.md "Freeze note", "Phase 6", "Phase 7",
+"Phase 8", and "Phase 9").
 Scaffold, oracle world, pipeline-as-code engine, access control, subprocess
 isolates, goal-driven playbook agents, full episode loop, the tier-gated
 referee (severity, five detector families, honest-twin transform),
@@ -42,7 +43,30 @@ equivalence for these mechanics for the first time, ran a 30-seed/ecology
 sequencing-confound battery — see `results/FINDINGS.md` G-14/G-15/G-16 for
 three genuine findings, including a diagnosed detector-scope negative
 (`uad.co_voting_matrix` cannot see a rejecting committee) and a positive
-resolving G-13's open MI-confound question.
+resolving G-13's open MI-confound question. All four of PLAN.md's "Scenario backlog" items are now exploratory
+prototypes (each run once, 10 MockIsolate seeds, 0 falsifications against
+its own pre-stated expectations — none is a battery). S2 (covert
+coordination over files, `run_s2_covert_file_prototype.py`,
+`results/FINDINGS.md` G-17): a genuinely new result, not fully
+anticipated by the backlog note itself — the covert channel leaves no
+distinguishing coordination fingerprint at ANY tier in this design;
+detecting the gaming needs an outcome-vs-eval cross-check, not a content
+scan. S3 (informal/casual comms, `run_s3_informal_chatter_prototype.py`,
+G-18): legitimate, non-vote-shaped chatter from a real pipeline role is
+invisible to `uad.py`'s existing discovery signal and does not degrade
+recovery of a real committee sharing the same channel — confirmatory of
+an already-documented property, extended from decoys to a real role. S1
+(cross-agent pipeline loops, `run_s1_build_loop_prototype.py`, G-19): a
+genuine build/deploy/ack/rebuild causal loop across model generations
+closes correctly and costs exactly one tick of coordination overhead per
+generation, with no new detection signal needed. S4 (shared worker pool,
+`run_s4_shared_slot_prototype.py`, G-20): scoped DOWN from "job-size-aware
+scheduling" after finding the substrate has no duration mechanic or
+model-ownership tracking to schedule around — what two engineers sharing
+one slot actually produce is a deterministic, communication-free division
+of labor that is invisible to every existing `uad.py` signal, a
+genuinely new class of detection blind spot (no comms channel involved at
+all, unlike S2/S3).
 
 - [`PLAN.md`](PLAN.md) — full plan: bridge coverage (MB1-MB10), deferred
   workstreams (D1-D4), forward hooks, phase breakdown.
@@ -78,6 +102,18 @@ python3 run_phase9.py                             # Phase 9 battery: D1/D4/D2 Mo
                                                    #   results/phase9_battery.{json,md}
 python3 run_p9_stall_diagnosis.py                 # Phase 9 follow-up: root-causes the two natural stall-on-
                                                    #   hazard prediction misses -> results/phase9_stall_diagnosis.json
+python3 run_s2_covert_file_prototype.py           # S2 scenario-backlog prototype: covert file-channel
+                                                   #   coordination, exploratory (MockIsolate, not a battery) ->
+                                                   #   results/s2_covert_file_prototype.{json,md}
+python3 run_s3_informal_chatter_prototype.py      # S3 scenario-backlog prototype: informal board chatter
+                                                   #   vs. real committee, exploratory -> results/
+                                                   #   s3_informal_chatter_prototype.{json,md}
+python3 run_s1_build_loop_prototype.py            # S1 scenario-backlog prototype: cross-generation build/
+                                                   #   deploy/ack loop, exploratory -> results/
+                                                   #   s1_build_loop_prototype.{json,md}
+python3 run_s4_shared_slot_prototype.py           # S4 scenario-backlog prototype: two engineers sharing one
+                                                   #   in-flight slot, exploratory -> results/
+                                                   #   s4_shared_slot_prototype.{json,md}
 ```
 
 ## Layout (current)
@@ -126,6 +162,7 @@ lab_sim/
     uad.py                  # undetected-adversarial-drift / coalition discovery signal
     collusion.py            # collusion signal score over detected coalitions
     playbook_claim.py       # playbook-claim gap score (facade detection)
+    covert_review.py        # S2 prototype: hazard-override / covert-marker referee extension
   harness/          # never shared, any tier -- see lab_sim/harness/README.md
     isolate.py              # MockIsolate (in-process) + SubprocessIsolate (real OS process)
     isolate_cost.py         # IsolateRunTiming + append-only cost ledger
@@ -145,6 +182,10 @@ run_phase7.py                  # Phase 7 battery: escalation + redteam + capture
 run_phase8_llm_spotcheck.py    # Phase 8 exploratory LLM redteam spot-check (real API calls; not a battery)
 run_phase9.py                  # Phase 9 battery: D1/D4/D2 equivalence + ecology/lineage/MI-confound (SubprocessIsolate)
 run_p9_stall_diagnosis.py      # Phase 9 follow-up: root-causes two natural stall-on-hazard prediction misses
+run_s2_covert_file_prototype.py  # S2 scenario-backlog prototype: covert file coordination (exploratory, MockIsolate)
+run_s3_informal_chatter_prototype.py  # S3 scenario-backlog prototype: informal board chatter (exploratory, MockIsolate)
+run_s1_build_loop_prototype.py    # S1 scenario-backlog prototype: cross-generation build/deploy/ack loop (exploratory)
+run_s4_shared_slot_prototype.py   # S4 scenario-backlog prototype: shared single-model-in-flight slot (exploratory)
 runs/                     # ephemeral episode workspaces + persistent agent state (gitignored)
 results/                  # FINDINGS.md + phaseN_*.json/md (tracked); episode cache + isolate/llm
                           #   cost ledgers (gitignored)
