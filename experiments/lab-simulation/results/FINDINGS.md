@@ -639,3 +639,160 @@ committee/DM/file step kinds (`BLIND_GENERATION_ROUND2.md`,
 circularity for the comm/file layer specifically, NOT the round-1 report-
 mode vocabulary limitation. Widening report modes and running a full
 SubprocessIsolate battery on post-0.9.0 mechanics remain open.
+
+## G-14 (2026-07-06): Phase 9 — D1/D4 mechanics proven Mock/Subprocess
+equivalent for the first time; battery-scale UAD/collusion recovery holds,
+with one diagnosed exception that is itself a new, real detector-scope
+finding
+
+**Setup.** `run_phase9.py`, pre-registered predictions P9-0/P9-A1-A4
+(stated in the script's module docstring before it was ever run). Section
+0: `MockIsolate` vs `SubprocessIsolate` byte-identical `episode_digest`
+check for a comms-enabled committee episode, a comms-enabled DM-pair
+episode, and a `multi_gen_enabled` D2 episode (3 configs x 3 seeds) — the
+first time these mechanics have been checked on the real backend at all;
+every prior D1/D4/D2 result (G-9 through G-13) ran `MockIsolate` only.
+Section A: `committee_board`/`committee_file`/`dm_pair`
+(`lab_sim.harness.ecology`), 30 seeds/ecology, real `SubprocessIsolate`,
+`uad_score` at deep AND full tier plus `collusion_score`. Full data:
+`results/phase9_battery.json`/`.md`. Wall time: 15.1s over 540 isolate
+lifetimes (0.028s/isolate-lifetime — matches the Phase 3/6 benchmark).
+
+**Result 1 — P9-0 confirmed: Mock/Subprocess byte-identical for D1/D4/D2
+mechanics, closing a real, previously-unchecked gap.** All 9 (config,
+seed) pairs matched exactly (`results/phase9_battery.json`'s
+`equivalence.all_match: true`). `verify_isolate_equivalence.py` (Phase 3)
+never exercised comms-enabled or multi-gen episodes; this is the first
+proof the two backends agree on these newer mechanics too.
+
+**Result 2 — P9-A2/P9-A3 confirmed: G-9's tier-sufficiency asymmetry and
+G-9's collusion-semantics distinction both hold at battery scale, not just
+on 5-10 MockIsolate seeds.** `committee_board`'s `uad_score` at full tier
+is 0.0 (vote CONTENT is deep-tier-only) while `committee_file`/`dm_pair`
+reach 1.0 at full tier (grant-metadata/DM-recipient signals are never
+content-elided). `collusion_score` is ~0 for `dm_pair` in every one of 30
+seeds (structural: the collusion module keys off board/file vote
+co-occurrence, not DM handoffs) — matches G-9 Result 2 exactly, now with
+n=30 instead of n=5-10.
+
+**Result 3 — P9-A1/P9-A4 falsified, but diagnosed, and the diagnosis is
+itself a new finding: the board-vote co-occurrence discovery signal cannot
+see a committee that deliberates and REJECTS.** 1/30 `committee_board`
+seeds (5015) scored `uad_score_deep=0.0`/`collusion_score=0.0` instead of
+the predicted 1.0, and this is exactly where P9-A4's "zero variance"
+prediction breaks (sd=0.1795, not 0). Root cause
+(`run_p9_stall_diagnosis.py`, `results/phase9_stall_diagnosis.json`): the
+built model's TRUE hazard (0.4635) is below `REVIEW_HAZARD_THRESHOLD`
+(0.5), but `run_eval`'s own measurement noise pushed the FILED
+`measured_hazard` to 0.533 — over threshold. Both reviewers correctly
+voted "reject" per the documented stall-on-hazard rule
+(`programs._resolve_review_committee`'s "same stall-on-hazard rule as
+review_conscientious" comment); `approve_review` was never attempted. This
+is **not a bug** in the reviewer/committee mechanic (an honest, non-
+deceptive reviewer correctly declining a hazardous-on-paper filing is
+exactly the intended behavior) — it is a **real, previously unrecorded
+scope limit of `uad.co_voting_matrix`**: it only counts "approve" votes
+(`if entry.vote != "approve": continue`), so a committee that visibly
+communicates but never reaches consensus-to-approve is architecturally
+invisible to this discovery signal, indistinguishable from a committee
+that never spoke at all. `committee_file`'s uad_score stayed 1.0 on the
+SAME seed because its signal is the file-SHARE-grant metadata (fires on
+the act of sharing, independent of vote content or outcome) —
+`committee_file`'s `collusion_score` still dropped to 0 on this seed for
+the same reason `dm_pair`'s always does (no `approve_review` entry exists
+to attach third-party backing to). Recorded as a genuine, diagnosed
+negative for `uad.co_voting_matrix` specifically, not for `discovered_units`
+as a whole (whose file/DM signals are unaffected by vote outcome).
+
+**Result 4 — a general, useful side-finding about the DEFAULT build-params
+regime's margin from threshold.** DESIGN.md's Phase 7 section describes
+default build params' expected hazard (~0.35) as "~3 sd below"
+`REVIEW_HAZARD_THRESHOLD` (0.5) — true for the *capability/hazard draw*,
+but `run_eval`'s ADDITIONAL measurement noise means the *filed* hazard
+occasionally crosses 0.5 even when the true draw does not (seed 5015: true
+0.4635, filed 0.533). At battery scale this natural stall fires in ~1/30
+(~3%) single-build episodes (Section A) — see G-15 for the same mechanic
+firing far more often in D2's many-generation episodes. This is a
+recorded property of the noise model interacting with the review gate, not
+a new mechanic and not a re-tuning of `REVIEW_HAZARD_THRESHOLD` itself.
+
+## G-15 (2026-07-06): Phase 9 — D2 lineage battery: lineage threading and
+the structural `provenance_gap` guarantee both hold at scale; generation
+count is capped by the SAME natural stall-on-hazard mechanic as G-14,
+occurring far more often here
+
+**Setup.** `run_phase9.py` Section B: `eng_honest_upgrade` pinned,
+`multi_gen_enabled=True`, T=200, 30 seeds, real `SubprocessIsolate`.
+Pre-registered predictions P9-B1 (>=3 generations/episode), P9-B2 (100%
+lineage-chain correctness), P9-B3 (`provenance_gap` == 0.0 always).
+Recorded scope limit, stated before running (not a result): only one
+D2-aware engineer playbook exists (`eng_honest_upgrade`, honest reporting)
+— this battery cannot test adversarial lineage gaming (G-12's open
+question), only whether honest multi-generation lineage and the
+structural `provenance_gap` guarantee hold at scale.
+
+**Result 1 — P9-B2/P9-B3 confirmed.** `parent_model_id` lineage is
+correctly threaded in 100% of generations across all 30 seeds (900+
+generations total, mean 16.77/episode where uncapped). `provenance_gap`
+reads exactly 0.0 in all 30 episodes — `severity.py`'s own scope note
+("structurally guaranteed to read 0... the DAG cannot be bypassed")
+holds even with D2's lineage mechanic now live, confirmed rather than
+merely asserted from reading the code.
+
+**Result 2 — P9-B1 falsified (min generations = 1, not >= 3), diagnosed as
+the SAME mechanic as G-14 Result 3/4, at a much higher rate.** 6/30 seeds
+(20%) built fewer than 5 generations (one seed, 6020, built only 1).
+`run_p9_stall_diagnosis.py` confirms seed 6020's cause is identical in
+kind to G-14's: true hazard 0.5087 (already at/above threshold — this
+model's true draw, not just eval noise, is responsible here), filed
+`measured_hazard` 0.536, solo reviewer correctly stalls, and — since D2's
+single-model-in-flight slot only frees on `monitor`, which needs
+`approve_review` first — the stall freezes model-building for the entire
+rest of the T=200 window. The higher rate here (20% vs. G-14's ~3%) is
+expected, not a new phenomenon: a many-generation D2 episode draws a fresh
+independent hazard per generation (~15-20 draws/episode where uncapped),
+so the per-episode probability of at least one threshold-crossing draw
+compounds across draws, unlike Section A's single-build episodes.
+**Recorded implication for future D2 batteries:** T=200 with
+`eng_honest_upgrade` alone should expect roughly 1-in-5 episodes to stall
+early under DEFAULT build params — a real constraint on statistical power
+per seed, not a bug to fix before reporting.
+
+## G-16 (2026-07-06): Phase 9 — perturbation-response MI discriminates the
+true DM-gated dependency from the plain-serial-sequencing confound in this
+line's one topology, resolving G-13's open question with a positive result
+
+**Setup.** `run_phase9.py` Section C: `dm_pair_config`, engineer's
+`run_eval` perturbed (rate 0.6, linear/idempotent step) at 30 seeds, T=150,
+real `SubprocessIsolate`. Response candidates: `rm1`'s `deploy` (the TRUE
+DM-coordinated partner — gated by an explicit wait-for-notify check in
+`programs._resolve_step_kind`'s `release_full_dm_gated` case, on top of
+serial DAG order) vs. `rev1`'s `approve_review` (genuinely downstream of
+the engineer via the SAME serial DAG — build -> eval -> report ->
+review_request -> approve_review — but NOT a member of `dm_pair_config`'s
+`release_pair` unit, and with no explicit coordination edge to the
+engineer at all). This replaces G-13's original contrast (a SCHEDULE-
+INDEPENDENT decoy with zero causal dependency on the engineer), which
+could not actually exercise the sequencing confound it was named for.
+Prediction P9-C1 was stated as genuinely uncertain in advance: the a
+priori guess (rm1 > rev1, because of the added explicit DM gate) was
+recorded as equally likely to come out indistinguishable (the confound
+materializing).
+
+**Result — the a priori guess held, clearly, not marginally.** Mean
+MI(eng1 perturbation -> rm1's `deploy`) = 0.1288 (sd 0.0862) vs. mean
+MI(eng1 perturbation -> rev1's `approve_review`) = 0.0097 (sd 0.0101) — a
+~13x difference; `rm1` scored higher in 27/30 seeds. Both actors are
+downstream of the SAME perturbed step through the SAME serial pipeline,
+so pure sequencing alone would predict comparable MI for both; the large,
+consistent gap means the estimator is picking up the DM-GATE's additional
+temporal coupling (deploy is held until the notify DM lands, tightening
+the stimulus-response window well beyond what serial dependency alone
+would produce), not merely "something downstream moved." This is a real,
+battery-scale answer to G-13's honest scope limit ("not yet validated as
+discriminating true coordination from mere pipeline sequencing") for the
+ONE topology this line has: in `dm_pair_config` specifically, the
+sequencing confound does **not** dominate. It remains an open question
+whether this generalizes to a topology where the true coordination edge
+has a WEAKER explicit gate than `release_full_dm_gated`'s — not claimed
+here.

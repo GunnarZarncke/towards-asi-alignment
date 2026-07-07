@@ -7,10 +7,11 @@ a deployment pipeline defined as an infrastructure-as-code JSON step-DAG,
 an on-disk workspace with report files, service-managed access control, and
 real OS-subprocess isolates speaking JSON-RPC to a host.
 
-**Status: Phase 0-8 complete, referee FROZEN 2026-07-06, first battery run
+**Status: Phase 0-9 complete, referee FROZEN 2026-07-06, first battery run
 2026-07-06, Phase 7 battery run 2026-07-06, Phase 8 exploratory spot-check
-2026-07-06** (CODE_VERSION `lab-sim-0.5.0`, 200 tests green — see
-DESIGN.md "Freeze note", "Phase 6", "Phase 7", and "Phase 8").
+2026-07-06, Phase 9 D1/D4/D2 smoke-scale-to-battery closure 2026-07-06**
+(CODE_VERSION `lab-sim-0.9.0`, 296 tests green — see DESIGN.md "Freeze
+note", "Phase 6", "Phase 7", "Phase 8", and "Phase 9").
 Scaffold, oracle world, pipeline-as-code engine, access control, subprocess
 isolates, goal-driven playbook agents, full episode loop, the tier-gated
 referee (severity, five detector families, honest-twin transform),
@@ -33,7 +34,15 @@ exactly what and why. Phase 8 built an LLM-agent adapter (engineer role
 delegated to `gpt-4o-mini` with an explicit adversarial system prompt) and
 ran a small exploratory spot-check — see `results/FINDINGS.md` G-7 (no
 systematic deception found; `build_params` inert on LLM path due to adapter
-plumbing gap).
+plumbing gap). Phase 9 closed the "smoke-scale only" gap the post-freeze
+D1/D4/D2 mechanics were left with: `run_phase9.py` proved Mock/Subprocess
+equivalence for these mechanics for the first time, ran a 30-seed/ecology
+`SubprocessIsolate` battery for the D1 committee/DM-pair ecologies, a
+30-seed D2 lineage battery, and a 30-seed perturbation-response MI
+sequencing-confound battery — see `results/FINDINGS.md` G-14/G-15/G-16 for
+three genuine findings, including a diagnosed detector-scope negative
+(`uad.co_voting_matrix` cannot see a rejecting committee) and a positive
+resolving G-13's open MI-confound question.
 
 - [`PLAN.md`](PLAN.md) — full plan: bridge coverage (MB1-MB10), deferred
   workstreams (D1-D4), forward hooks, phase breakdown.
@@ -64,6 +73,11 @@ python3 run_phase7.py                             # Phase 7 battery -> results/p
 python3 run_phase8_llm_spotcheck.py               # Phase 8 exploratory LLM spot-check (real OpenAI calls,
                                                    #   needs a funded OPENAI_API_KEY in repo-root .env) ->
                                                    #   results/phase8_llm_spotcheck.{json,md}
+python3 run_phase9.py                             # Phase 9 battery: D1/D4/D2 Mock/Subprocess equivalence +
+                                                   #   ecology/lineage/MI-confound batteries ->
+                                                   #   results/phase9_battery.{json,md}
+python3 run_p9_stall_diagnosis.py                 # Phase 9 follow-up: root-causes the two natural stall-on-
+                                                   #   hazard prediction misses -> results/phase9_stall_diagnosis.json
 ```
 
 ## Layout (current)
@@ -129,6 +143,8 @@ report_isolate_cost.py         # print the isolate cost ledger
 run_phase6.py                  # Phase 6 first real battery (SubprocessIsolate)
 run_phase7.py                  # Phase 7 battery: escalation + redteam + capture grid (SubprocessIsolate)
 run_phase8_llm_spotcheck.py    # Phase 8 exploratory LLM redteam spot-check (real API calls; not a battery)
+run_phase9.py                  # Phase 9 battery: D1/D4/D2 equivalence + ecology/lineage/MI-confound (SubprocessIsolate)
+run_p9_stall_diagnosis.py      # Phase 9 follow-up: root-causes two natural stall-on-hazard prediction misses
 runs/                     # ephemeral episode workspaces + persistent agent state (gitignored)
 results/                  # FINDINGS.md + phaseN_*.json/md (tracked); episode cache + isolate/llm
                           #   cost ledgers (gitignored)

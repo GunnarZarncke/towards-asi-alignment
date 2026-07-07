@@ -727,6 +727,28 @@ the Phase 5 freeze; only stop and ask if something is genuinely
 frozen-blocking. The full statistical battery is deferred; D3 is out of
 scope for this pass.
 
+**Update (Phase 9, 2026-07-06): the deferred battery ran.**
+`run_phase9.py` closed the "smoke-scale only" gap for the three items
+below — Mock/Subprocess equivalence for D1/D4/D2 mechanics (never checked
+before), a 30-seed/ecology `SubprocessIsolate` battery for the D1
+committee/DM-pair ecologies, a 30-seed D2 lineage battery, and a 30-seed
+perturbation-response MI battery specifically targeting the sequencing-
+confound question item 6 below leaves open. Results: `results/
+phase9_battery.{json,md}`, `results/phase9_stall_diagnosis.json`,
+FINDINGS.md G-14/G-15/G-16. Headline: G-9's tier-sufficiency/collusion
+results hold at battery scale; one genuine, diagnosed detector-scope
+negative surfaced (`uad.co_voting_matrix` cannot see a committee that
+deliberates and rejects — file/DM signals are unaffected); D2 lineage
+threading and the structural `provenance_gap` guarantee hold, with
+generation count capped more often than expected by a natural (not
+engineered) eval-noise-driven review stall; the MI sequencing-confound
+question (item 6) resolved positively for this line's one topology
+(DM-gated dependency's MI is ~13x the plain-serial-downstream actor's).
+Still open, unchanged by Phase 9: adversarial D2 lineage gaming (no
+playbook combines `build_from_parent` with `report:inflate` yet) and the
+report-mode-widening item below (needs a new blind-generation round
+first).
+
 **Freeze check, done first.** None of the eight items require editing
 `detectors.py`, `severity.py`, `twins.py`, or the `AuditView` boundary
 shape:
@@ -821,6 +843,13 @@ co-voting Jaccard proxy), addressing the module docstring's own recorded
 scope gap. Exploratory smoke-tested (a handful of seeds on the existing
 ecologies), not a pre-registered statistical claim — that is the
 deferred full battery.
+
+**Update (Phase 9):** the confound-specific battery ran
+(`run_phase9.py` Section C, FINDINGS.md G-16) — perturbing the engineer
+against `dm_pair_config`'s true DM-gated partner (`rm1`) vs. a genuinely
+downstream-but-not-coordinating actor on the SAME serial chain (`rev1`),
+30 seeds. Result: MI(rm1) ~13x MI(rev1), 27/30 seeds — the confound does
+NOT dominate in this topology. Not claimed to generalize beyond it.
 
 **7. D2 — model-from-model.** `PipelineEngine._effect_build` and
 `OracleWorld.create_model` already accept/thread `parent_model_id`

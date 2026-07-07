@@ -605,3 +605,70 @@ duplicate idempotent `file_report` calls). **Adapter gap discovered:**
 the LLM path (`default`/seed 9001 and `high_hazard`/seed 9001 produce
 identical filed hazards). Left open: surface `build_params` to the LLM
 before any "high-hazard LLM redteam" follow-up.
+
+## Phase 9 (2026-07-06): closing the "smoke-scale only" gap for D1/D4/D2
+
+**What "smoke-scale only" meant.** Every D1 (composite-agent/UAD), D4
+(comms/channel-ablation), and D2 (model lineage/spec-upgrade) result on
+record before this phase (`results/FINDINGS.md` G-9 through G-13) ran
+5-10 seeds through `MockIsolate` only — explicitly flagged in each entry
+as exploratory, not the pre-registered statistical claim. Separately,
+`verify_isolate_equivalence.py` (Phase 3) has only ever exercised the
+pre-D4/D1/D2 scripted "walk_pipeline" episode; Mock/Subprocess equivalence
+for comms-enabled or multi-gen episodes had never been checked at all.
+
+**`run_phase9.py`: predictions stated before running, in the module
+docstring.** Four sections, all through the real `SubprocessIsolate`
+backend: (0) Mock/Subprocess `episode_digest` equivalence for a
+committee episode, a DM-pair episode, and a `multi_gen_enabled` episode
+(3 configs x 3 seeds); (A) `committee_board`/`committee_file`/`dm_pair`
+UAD/collusion recovery, 30 seeds/ecology; (B) `eng_honest_upgrade` D2
+lineage battery, 30 seeds, T=200; (C) perturbation-response MI, `eng1`
+perturbed against `dm_pair_config`'s true DM-gated partner (`rm1`'s
+`deploy`) vs. a genuinely serial-downstream-but-not-coordinating actor on
+the SAME chain (`rev1`'s `approve_review`) — replacing G-13's original
+schedule-INDEPENDENT decoy, which could not exercise the sequencing
+confound it was named for. 540 isolate lifetimes, 15.1s total (0.028s/
+isolate-lifetime — matches the Phase 3/6 benchmark). Full results:
+`results/phase9_battery.{json,md}`; findings: `results/FINDINGS.md`
+G-14/G-15/G-16.
+
+**Headline results.** Mock/Subprocess equivalence holds for D1/D4/D2
+mechanics for the first time (P9-0 confirmed). G-9's tier-sufficiency
+asymmetry and collusion-semantics distinction replicate at battery scale
+(P9-A2/A3 confirmed). D2 lineage threading and the structural
+`provenance_gap` guarantee both hold at scale (P9-B2/B3 confirmed). The
+MI sequencing-confound question G-13 left open resolved positively for
+this line's one topology: the DM-gated dependency's mean MI is ~13x the
+plain-serial-downstream actor's, 27/30 seeds (P9-C1's a priori guess held
+clearly).
+
+**Two predictions were falsified — both diagnosed as the SAME mechanic,
+not a bug.** P9-A1/A4 (perfect, zero-variance recovery for all three
+ecologies) and P9-B1 (>=3 generations/episode) both missed on a handful
+of seeds. `run_p9_stall_diagnosis.py` (a small, checked-in follow-up
+script, not a new battery) traces both to `run_eval`'s measurement noise
+occasionally pushing the FILED `measured_hazard` over
+`REVIEW_HAZARD_THRESHOLD` even when the model's TRUE hazard is below it
+— an honest reviewer then correctly stalls per the documented
+stall-on-hazard rule (`programs._resolve_review_committee`'s "same
+stall-on-hazard rule as review_conscientious"), and the pipeline never
+recovers (no playbook retries a rejected build with a fresh one). This
+surfaced a genuine, previously unrecorded scope limit: `uad.co_voting_
+matrix` only counts "approve" votes, so a committee that visibly
+communicates but never reaches consensus-to-approve is indistinguishable
+from one that never spoke — the file-share-grant and DM-send discovery
+signals are unaffected, since they key off the act of communicating, not
+the vote outcome. It also refines DESIGN.md's Phase 7 characterization of
+default build params' hazard margin ("~3 sd below" `REVIEW_HAZARD_
+THRESHOLD`) — true for the underlying draw, but eval noise on top means a
+natural stall fires in ~1/30 single-build episodes and ~1/5 many-
+generation D2 episodes (more independent hazard draws per episode, more
+chances to cross threshold) — a real constraint on per-seed statistical
+power for future D2 batteries, not a bug to fix.
+
+**Still open, unchanged by Phase 9.** Adversarial D2 lineage gaming
+(no playbook in the repertoire combines `build_from_parent` with
+`report:inflate`; recorded as a scope limit in `run_phase9.py`'s
+docstring, not invented ad hoc here) and report-mode widening (PLAN.md;
+needs a new blind-generation round before any battery).

@@ -1,0 +1,26 @@
+{
+  "committee_board_seed_5015": {
+    "approve_review_attempts": 0,
+    "config": "committee_board",
+    "m001_measured_hazard_on_filed_report": 0.533023750499,
+    "m001_true_hazard": 0.4634927500252898,
+    "review_hazard_threshold": 0.5,
+    "seed": 5015,
+    "votes_cast": [
+      {
+        "actor_id": "rev2",
+        "vote": "reject"
+      }
+    ]
+  },
+  "d2_lineage_seed_6020": {
+    "approve_review_attempts": 0,
+    "config": "d2_lineage",
+    "m001_measured_hazard_on_filed_report": 0.536359213836,
+    "m001_true_hazard": 0.5087069140876621,
+    "n_models_built": 1,
+    "review_hazard_threshold": 0.5,
+    "seed": 6020
+  },
+  "purpose": "Root-cause for run_phase9.py's P9-A1/A4 (committee_board seed 5015) and P9-B1 (d2_lineage seed 6020) prediction misses -- see FINDINGS.md G-14/G-15."
+}
