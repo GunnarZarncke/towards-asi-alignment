@@ -56,6 +56,9 @@ function enrichLine(line) {
   } else if (line.findingsUrl) {
     links.push({ label: "Findings", url: line.findingsUrl });
   }
+  if (line.leakProofPath) {
+    links.push({ label: "Lean leak-proof", url: repoUrl(line.leakProofPath) });
+  }
   if (line.repoUrl && !line.readmePath) {
     links.push({ label: "Repository", url: line.repoUrl });
   }

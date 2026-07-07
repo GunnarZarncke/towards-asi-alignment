@@ -209,6 +209,11 @@ self-corrects given the reason code.
 - [`ACCESS_TIERS.md`](ACCESS_TIERS.md) — `lab_sim/`'s four graded
   red-team source-access tiers (`agent_visible/`/`world_visible/`/
   `oracle_only/`/`harness/`) and the rationale behind the split.
+- [`leak-proof/`](leak-proof/) — Lean 4 certificates for three-plane
+  separation: tier projections (`buildAuditView`, `buildSimObservation`) plus
+  a reachability model of Python exchange edges (`flowCatalog`). Complements
+  `tests/harness/test_planes.py`; does not replace runtime enforcement.
+  Build: `cd leak-proof && lake build` (see [`leak-proof/README.md`](leak-proof/README.md)).
 - [`results/FINDINGS.md`](results/FINDINGS.md) — battery findings,
   including honest negatives.
 

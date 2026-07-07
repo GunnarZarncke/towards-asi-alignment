@@ -94,6 +94,8 @@ Two small spot-checks ran (findings G-7, G-8 in [`experiments/lab-simulation/res
 
 Deferred workstreams D1–D4 target composite-agent UAD (MB1), spec/model upgrades and drift (MB5/MB6b), extended ecology selection (MB6), and message-board coordination (MB7d). The line exists to make **deep-tier audit reads evidence-bearing**—artifacts, pipeline spec, and process-shaped state a query can check—addressing the goal-agent line's F-8/F-21 caveat that full telemetry on a toy step loop is not yet "deep."
 
+**Lean leak-proof** ([`leak-proof/`](../experiments/lab-simulation/leak-proof/)): machine-checked certificates that oracle-only fields do not reach audit or simulation artifacts via the certified projection functions, plus a finite reachability analysis over modeled Python exchange edges. Complements `tests/harness/test_planes.py`; scope limits in [`leak-proof/README.md`](../experiments/lab-simulation/leak-proof/README.md). Build: `cd experiments/lab-simulation/leak-proof && lake build`.
+
 **Run:** `cd experiments/lab-simulation && python3 -m pytest`. **Phase 8 (exploratory, real API):** `python3 run_phase8_llm_spotcheck.py`, `python3 run_phase8_llm_redteam.py`. **Design:** [`experiments/lab-simulation/DESIGN.md`](../experiments/lab-simulation/DESIGN.md), [`PLAN.md`](../experiments/lab-simulation/PLAN.md). **Findings:** [`experiments/lab-simulation/results/FINDINGS.md`](../experiments/lab-simulation/results/FINDINGS.md).
 
 ---

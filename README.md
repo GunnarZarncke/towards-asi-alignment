@@ -73,7 +73,7 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 | Status | v1.0.0 release; third milestone in progress — 48 chapters reviewed (not final) |
 | Structure | 10 parts, 48 chapters, 8 appendices in the PDF (A–H) |
 | Chapter list | [`metadata/book.yml`](metadata/book.yml) · [site book index](https://gunnarzarncke.github.io/towards-asi-alignment/book/) |
-| Experiments | Tentative sanity checks only — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) |
+| Experiments | Tentative sanity checks only — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/) for oracle/audit/sim plane separation |
 | Formal spine | Lean 4 conditional skeleton — [`formal/README.md`](formal/README.md) |
 
 Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).

@@ -140,15 +140,17 @@
       "title": "Lab-layer simulation",
       "location": "experiments/lab-simulation/",
       "firstBuilt": "2026-07-05",
-      "role": "Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (lab-sim-0.3.0+), pre-registered batteries through Phase 7; Phase 8 LLM adapter exploratory only.\n",
+      "role": "Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (lab-sim-0.3.0+), pre-registered batteries through Phase 7; Phase 8 LLM adapter exploratory only. Lean leak-proof (`leak-proof/`) certifies oracle/audit/sim plane separation via projections and reachability analysis.\n",
       "readmePath": "experiments/lab-simulation/README.md",
       "designPath": "experiments/lab-simulation/DESIGN.md",
       "planPath": "experiments/lab-simulation/PLAN.md",
       "findingsPath": "experiments/lab-simulation/results/FINDINGS.md",
+      "leakProofPath": "experiments/lab-simulation/leak-proof/README.md",
       "headlineFindings": [
         "Phase 6 battery: deep tier Spearman 0.96 vs oracle severity; light tier anti-correlated (G-1).",
         "Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (G-6).",
-        "Phase 8 LLM spot-checks (G-7, G-8): exploratory nulls — no systematic deception surface yet."
+        "Phase 8 LLM spot-checks (G-7, G-8): exploratory nulls — no systematic deception surface yet.",
+        "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
       ],
       "links": [
         {
@@ -166,6 +168,10 @@
         {
           "label": "Findings",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
+        },
+        {
+          "label": "Lean leak-proof",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/leak-proof/README.md"
         }
       ],
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/",
