@@ -125,6 +125,17 @@ undetected (comms-free slot-rebalancing produces no ablation
 compensation signal). Directed actor probes are neutralized by the
 full honest-twin control at MockIsolate scale — channel ablation
 carries the unit signal. 399 tests green.
+Masking hardening follow-up (same day, G-29): the pre-fix board-ablation
+blob ({eng1, rev1, rev2, rm1} on committee) was checked against the
+"is this a real super-agent?" worry via peel-and-mask -- masking
+{rev1, rev2} collapses rm1's score to 0.0 (ripple) and eng1's to 0.17
+(a genuine but unpartnered "intrinsic_unexplained" reaction); masking
+{eng1, rm1} leaves rev1/rev2 unchanged. Automated as
+`classify_ablation_compensators`, surfaced via a new
+`ablation_diagnostics` out-param, deliberately NOT auto-merged (would
+repeat the correlation-without-attribution mistake it exists to catch).
+shared_slot postponed pending "acausal logic"; vendored `uad_core`/
+`uad_mi.py` kept with a TODO flag rather than deleted. 405 tests green.
 Phase 10 (2026-07-07): a sanity check, not a battery — does a free
 `gpt-4o-mini` agent, given only a generic tool reference (the full
 `tools.py` registry, documented like a real tool-use API) and a

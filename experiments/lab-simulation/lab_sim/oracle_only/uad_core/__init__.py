@@ -16,6 +16,17 @@ point at this package's local `info.py` instead of `..audit_core.info`.
 No lab-sim-specific logic lives here -- that adapter is
 `lab_sim/oracle_only/uad_mi.py`, one level up, which is the only new
 code this port required.
+
+TODO (recorded 2026-07-07, S6 follow-up, postponed): PLAN.md's S6
+section flags this package + `uad_mi.py` as deletable once the
+intervention-supported detector (`uad_intervention.py`, G-28) fully
+supersedes it. Kept for now on user instruction ("keep vendored, but
+flag as TODO") -- `uad_mi`'s `exact_rate` is 0.0 on every S6 scenario
+(passive MI over-merges; see FINDINGS.md G-24/G-28), so it is retained
+as a comparison baseline in `run_s6_intervention_uad.py`, not as an
+active detector. Revisit deletion once shared_slot's comms-free
+detection gap (postponed pending "acausal logic," see PLAN.md) is
+resolved or explicitly abandoned.
 """
 
 from __future__ import annotations

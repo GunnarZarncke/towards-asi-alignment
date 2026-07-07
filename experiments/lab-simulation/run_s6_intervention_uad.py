@@ -97,11 +97,20 @@ def _run_cell(scenario_name: str, seed: int) -> dict:
                 **_pair_metrics(cmi, true_pair),
                 **partition_metrics(true_units, cmi),
             }
-        intervention = discovered_units_intervention(result, cfg, seed, backend=backend)
+        ablation_diagnostics: dict = {}
+        intervention = discovered_units_intervention(
+            result, cfg, seed, backend=backend, ablation_diagnostics=ablation_diagnostics
+        )
         row["detectors"]["intervention"] = {
             **_pair_metrics(intervention, true_pair),
             **partition_metrics(true_units, intervention),
         }
+        # G-28 masking hardening: per-probe ripple/intrinsic_unexplained
+        # labels for compensators outside the candidate-edge graph -- not
+        # auto-merged (see uad_intervention.py docstring), surfaced here so
+        # a "super-agent" worry like the eng1/rm1 committee case is
+        # auditable from the sweep output, not just a one-off manual check.
+        row["ablation_diagnostics"] = ablation_diagnostics
         return row
     finally:
         result.cleanup()
@@ -164,6 +173,17 @@ def main() -> None:
     for name, info in summary.items():
         parts = ", ".join(f"{det}={info[det]['exact_rate']:.2f}" for det in detector_names)
         print(f"{name}: exact rates: {parts}")
+    ripple_seen = {
+        (r["scenario"], probe_id, actor): label
+        for r in rows
+        for probe_id, labels in r["ablation_diagnostics"].items()
+        for actor, label in labels.items()
+        if label in ("ripple", "intrinsic_unexplained")
+    }
+    if ripple_seen:
+        print("Ablation ripple/intrinsic_unexplained actors seen (see JSON for full per-seed detail):")
+        for (scenario, probe_id, actor), label in sorted(ripple_seen.items()):
+            print(f"  {scenario}/{probe_id}: {actor} -> {label}")
     print("Wrote results/s6_intervention_uad.{json,md}")
 
 

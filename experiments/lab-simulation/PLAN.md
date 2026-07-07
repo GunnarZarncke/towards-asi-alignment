@@ -1512,6 +1512,40 @@ substitution changes the pipeline's timing for everyone downstream —
 the residual re-detection must compare against a matching re-baseline,
 not the original clean run.
 
+**Masking hardening (implemented 2026-07-07, follow-up to G-28).** User
+worry after the board-ablation blob: could the pre-fix global merge
+({eng1, rev1, rev2, rm1} on `committee_with_informal_chatter_config`)
+be a genuine super-agent rather than an artifact? Manual peel-and-mask
+check (mask {rev1, rev2} → rm1's compensation collapses 0.71 → 0.0,
+eng1's drops 0.71 → 0.17; mask {eng1, rm1} → rev1/rev2 unchanged)
+confirmed ripple, not coordination. Automated as
+`classify_ablation_compensators` in `uad_intervention.py`: any
+channel-ablation compensator OUTSIDE the heuristic candidate-edge graph
+is masking-tested against the established (edge-linked) compensators
+and labelled `"ripple"` (collapses) or `"intrinsic_unexplained"`
+(persists — a genuine but unpartnered reaction, e.g. eng1's solo decoy
+adaptation). Deliberately NOT auto-merged — see the module docstring
+for why pairing two intrinsic-unexplained actors would repeat the same
+correlation-without-attribution mistake. Surfaced via
+`discovered_units_intervention`'s new `ablation_diagnostics` out-param
+and printed by `run_s6_intervention_uad.py`. Golden test on the
+committee ecology reproduces the manual result exactly; exact-partition
+rates on all 6 scenarios unchanged (4/5 + negative control still 1.0).
+405 tests green.
+
+**Postponed:** genuine novel-pair discovery among `intrinsic_unexplained`
+actors (the directed R-matrix treatment needed to confirm two such
+actors are mutually coupled, not just independently reactive) and the
+`shared_slot` comms-free detection gap (still 0/5 exact) are both
+deferred — `shared_slot` specifically until "acausal logic" (user's
+framing, not yet designed here).
+
+**Vendored code (kept, flagged TODO 2026-07-07):** `uad_core/` +
+`uad_mi.py` were slated for deletion once S6 superseded them (see
+"Goal" above); on user instruction they are kept for now, with a TODO
+docstring note in both files pointing at this paragraph and the
+shared_slot postponement as the condition for revisiting deletion.
+
 ## Knowledge base (D1 follow-up, recorded 2026-07-07, implemented)
 
 User-directed follow-up to the Phase 10 LLM discovery sanity check

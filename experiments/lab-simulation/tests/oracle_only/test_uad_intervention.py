@@ -15,9 +15,11 @@ from lab_sim.harness.ecology import (
 from lab_sim.harness.isolate import MockIsolate
 from lab_sim.oracle_only.uad_intervention import (
     candidate_edges_for_intervention,
+    classify_ablation_compensators,
     discovered_units_intervention,
     units_from_compensation_matrix,
 )
+from lab_sim.oracle_only.intervention_probes import channel_ablation_probe
 from lab_sim.oracle_only.uad_partition import exact_partition, nonsingleton_clusters
 from lab_sim.world_visible.world import run_episode
 
@@ -82,5 +84,43 @@ def test_candidate_edges_use_deep_heuristic_only():
     try:
         edges = candidate_edges_for_intervention(result)
         assert edges == [("eng1", "rm1")]
+    finally:
+        result.cleanup()
+
+
+def test_classify_ablation_compensators_separates_ripple_from_intrinsic():
+    """G-28 masking hardening, golden test: on the committee-with-informal-
+    chatter ecology's board ablation, rm1's apparent compensation is
+    downstream ripple from {rev1, rev2} (collapses once they are masked);
+    eng1's is a genuine but unpartnered ("intrinsic_unexplained") reaction —
+    the automated reproduction of the manual G-28 follow-up check."""
+    cfg = committee_with_informal_chatter_config(T=100)
+    backend = MockIsolate()
+    result = run_episode(cfg, seed=1, backend=backend)
+    try:
+        edges = candidate_edges_for_intervention(result)
+        assert edges == [("rev1", "rev2")]
+        probe = channel_ablation_probe("board", "rev1")
+        labels = classify_ablation_compensators(cfg, 1, probe, edges, backend=backend)
+        assert labels["rev1"] == "established"
+        assert labels["rev2"] == "established"
+        assert labels["rm1"] == "ripple"
+        assert labels["eng1"] == "intrinsic_unexplained"
+    finally:
+        result.cleanup()
+
+
+def test_discovered_units_intervention_exposes_ablation_diagnostics():
+    cfg = committee_with_informal_chatter_config(T=100)
+    backend = MockIsolate()
+    result = run_episode(cfg, seed=1, backend=backend)
+    try:
+        diag: dict = {}
+        discovered = discovered_units_intervention(
+            result, cfg, 1, backend=backend, ablation_diagnostics=diag
+        )
+        assert nonsingleton_clusters(discovered) == [("rev1", "rev2")]
+        assert diag["abl_board"]["rm1"] == "ripple"
+        assert diag["abl_board"]["eng1"] == "intrinsic_unexplained"
     finally:
         result.cleanup()

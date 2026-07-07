@@ -37,18 +37,46 @@ channel-switching, not mutual coordination. eng1 retains small residual
 without being unit-related. Edge-local merge is correct; open hardening:
 auto-run masking check when ablation lights actors outside candidate edges.
 
+## Follow-up 2 (same session): automated masking hardening + user decisions
+User: "harden as suggested. postpone shared_slot until acausal logic. keep
+vendored, but flag as TODO." Implemented:
+
+- `classify_ablation_compensators` (`uad_intervention.py`, G-29): automates
+  the manual masking check above. For channel-ablation compensators OUTSIDE
+  the heuristic candidate-edge graph, mask the established (edge-linked)
+  compensators and re-probe; label `"ripple"` (score collapses) or
+  `"intrinsic_unexplained"` (persists). Golden test reproduces the manual
+  committee numbers exactly (rm1→ripple, eng1→intrinsic_unexplained).
+- **Deliberately NOT auto-merged** — pairing two `intrinsic_unexplained`
+  actors on correlation alone would repeat the exact attribution mistake
+  this hardening exists to catch. Real novel-pair discovery needs a
+  directed R-matrix targeted at that specific pair — recorded as a
+  postponed extension, not implemented.
+- New `ablation_diagnostics` out-param on `discovered_units_intervention`;
+  `run_s6_intervention_uad.py` prints ripple/intrinsic_unexplained hits
+  per scenario/seed so this is auditable from every sweep run, not a
+  one-off manual check.
+- Exact-partition rates unchanged (4/5 + negative control still 1.0;
+  shared_slot still 0.0) — hardening is diagnostic-only, no merge logic
+  changed. 6 new tests, 405 total green.
+- PLAN.md: shared_slot explicitly postponed "until acausal logic" (user's
+  framing, not designed here); vendored `uad_core`/`uad_mi.py` kept with
+  a TODO docstring note in both files (not deleted) pointing at this
+  postponement as the condition for revisiting.
+
 ## Open / next
-- shared_slot still undetected (0/5 exact) — comms-free slot-rebalancing needs a different probe (e.g. capability revoke without twin control, or peel with masking).
-- Delete vendored `uad_core/` + `uad_mi.py` when ready (PLAN.md says safe after S6).
+- shared_slot still undetected (0/5 exact) — postponed pending "acausal logic" (user's framing).
+- Genuine novel-pair discovery among `intrinsic_unexplained` actors (directed R-matrix on that specific pair) — postponed, not scheduled.
+- Vendored `uad_core/`/`uad_mi.py` deletion — postponed, TODO-flagged, pending shared_slot resolution.
 - Probe-budget curve / composite 3-unit ecology peel test not yet run.
-- Auto-masking hardening for ablation ripple (actors outside candidate edges) not yet implemented.
 - LLM-backed intervention episodes (PLAN phase 6 later item) not started.
 
 ## Key paths
 - `experiments/lab-simulation/lab_sim/oracle_only/uad_intervention.py`
 - `experiments/lab-simulation/run_s6_intervention_uad.py`
 - `experiments/lab-simulation/results/s6_intervention_uad.md`
-- `experiments/lab-simulation/results/FINDINGS.md` (G-28)
+- `experiments/lab-simulation/results/FINDINGS.md` (G-28, G-29)
 
 ## Commits
 - `50fefac` — Lab-sim S6: intervention-supported UAD with channel-ablation compensation.
+- `c306b8d` — Lab-sim S6: automate masking hardening for channel-ablation ripple (G-29).

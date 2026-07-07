@@ -1587,3 +1587,54 @@ actor probes at MockIsolate scale.
 **Tests.** 21 new tests across five modules; full suite 399 green.
 Vendored `uad_core/` + `uad_mi.py` remain deletable per PLAN.md when
 desired — intervention line is standalone.
+
+## G-29 (2026-07-07): masking hardening confirms the pre-fix board-ablation blob was ripple, not a real super-agent — automated as `classify_ablation_compensators`, deliberately not auto-merged, and reported per-probe
+
+**Trigger.** User worry after G-28's design-lesson (3) ("global
+comm-compensator clustering on board ablation over-merges — edge-local
+merge only"): could the pre-fix 4-actor blob ({eng1, rev1, rev2, rm1}
+on `committee_with_informal_chatter_config`'s board ablation) have been
+a genuine 4-agent unit that the edge-local fix incorrectly discarded,
+rather than an artifact?
+
+**Manual check.** Unmasked board-ablation compensation: eng1=0.71,
+rev1=0.73, rev2=0.89, rm1=0.71. Mask {rev1, rev2} (honest-twin) and
+re-probe: rm1 collapses to 0.0 (its entire signal was downstream
+ripple from the reviewers' channel-switching); eng1 drops to 0.17 (a
+small residual — see below). Mask {eng1, rm1} instead and re-probe:
+rev1/rev2 scores are unchanged, confirming their compensation is
+intrinsic and does not depend on eng1/rm1 at all. Ground truth (config
+`units=`) has no 4-agent unit, so ripple is the correct read.
+
+**Automated as `classify_ablation_compensators`
+(`uad_intervention.py`).** For every channel-ablation compensator
+OUTSIDE the heuristic candidate-edge graph, mask the established
+(edge-linked) compensators and re-probe; label `"ripple"` if the score
+collapses below threshold, `"intrinsic_unexplained"` if it persists.
+Golden test on the committee ecology reproduces the manual numbers
+exactly (rm1 → ripple, eng1 → intrinsic_unexplained, rev1/rev2 →
+established). Exposed via a new `ablation_diagnostics` out-param on
+`discovered_units_intervention` and printed by
+`run_s6_intervention_uad.py` for every seed/scenario — not just a
+one-off manual check.
+
+**Deliberately not auto-merged, and why that matters.** eng1's
+0.17 residual is real: it is the informal-chatter decoy individually
+re-routing when the board dies — genuine divergence-in-kind, but SOLO
+adaptation, not coordination with anyone. Auto-merging two
+`intrinsic_unexplained` actors on correlation alone (both cleared the
+established-group mask) would repeat exactly the attribution mistake
+this hardening exists to catch: "compensates" is a per-actor property,
+"unit" is a relational one, and no pairwise dependency test between
+the unexplained actors themselves has been run. Genuine novel-pair
+discovery among `intrinsic_unexplained` actors needs the full directed
+R-matrix treatment (`compensation_matrix`) targeted at that pair
+specifically — recorded as a postponed, not-yet-scheduled extension.
+
+**Sweep re-run, no change.** Exact-partition rates on all 6 scenarios
+unchanged from G-28 (4/5 primary scenarios + negative control still
+1.0; `shared_slot` still 0.0). 6 new tests (405 green total). User
+decision: postpone `shared_slot`'s comms-free detection gap until
+"acausal logic" (user's framing, not yet designed); keep vendored
+`uad_core`/`uad_mi.py` for now with a TODO docstring flag rather than
+deleting them.

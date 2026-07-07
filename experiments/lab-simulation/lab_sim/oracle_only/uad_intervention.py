@@ -15,6 +15,25 @@ up to ``probe_budget``, then merges on accumulated R scores.
 Pre-registration (AGENTS.md): defaults below chosen BEFORE any sweep —
 ``min_compensation=0.15``, ``intervention_tick=8``, ``probe_budget=6``.
 
+G-28 masking hardening (recorded 2026-07-07): a channel-ablation probe is
+UNTARGETED — it can light up an actor's compensation score purely as
+downstream ripple from an established unit's own compensation (e.g. on
+``committee_with_informal_chatter_config``, rm1 scored 0.71 on board
+ablation but collapsed to 0.0 once {rev1, rev2} were honest-twin-masked;
+eng1 dropped 0.71 -> 0.17, a solo decoy reaction, not ripple).
+``classify_ablation_compensators`` automates that manual check: for every
+compensator OUTSIDE the heuristic-seeded candidate-edge graph, mask the
+established (edge-linked) compensators and re-probe; a score that
+collapses below threshold is labelled ``"ripple"``, one that persists is
+``"intrinsic_unexplained"``. This is deliberately NOT wired into
+auto-merging — an intrinsic-unexplained actor (like eng1) has no
+individually-confirmed partner, so unioning it with another
+intrinsic-unexplained actor would repeat exactly the correlation-without-
+attribution mistake this hardening exists to catch. Genuine novel-pair
+discovery among unexplained actors needs the full directed R-matrix
+treatment (``compensation_matrix``) targeted at that pair specifically —
+a separate, not-yet-scheduled extension (see PLAN.md S6 follow-up).
+
 Recorded referee extension: own module, never touches frozen code.
 ``LabConfig.units`` ground truth is read only by scoring in run scripts.
 """
@@ -158,6 +177,76 @@ def _partition_from_parent(parent: dict[str, str], actor_ids: list[str]) -> dict
     return {min(members): tuple(sorted(members)) for members in groups.values()}
 
 
+def _masked_compensation_score(
+    cfg: LabConfig,
+    seed: int,
+    probe: Probe,
+    actor: str,
+    mask_actors: list[str],
+    *,
+    backend=None,
+    agent_overrides: dict | None = None,
+) -> float:
+    """``actor``'s compensation score on ``probe`` when everyone in
+    ``mask_actors`` is honest-twin-substituted — the automated version of
+    the manual G-28 masking check."""
+    overrides = dict(agent_overrides or {})
+    for m in mask_actors:
+        overrides[m] = (backend, "honest_twin")
+    triple = run_episode_triple(cfg, seed, probe, backend=backend, agent_overrides=overrides)
+    try:
+        diffs = diff_probe_triple(triple, probe)
+        return diffs[actor].compensation_score if actor in diffs else 0.0
+    finally:
+        cleanup_triple(triple)
+
+
+def classify_ablation_compensators(
+    cfg: LabConfig,
+    seed: int,
+    probe: Probe,
+    edges: list[tuple[str, str]],
+    *,
+    backend=None,
+    agent_overrides: dict | None = None,
+    min_compensation: float = DEFAULT_MIN_COMPENSATION,
+) -> dict[str, str]:
+    """Per-actor label for a single channel-ablation probe:
+
+    - ``"established"``: actor sits inside the heuristic candidate-edge
+      graph (``edges``) — already handled by the edge-local merge below.
+    - ``"ripple"``: actor compensates ABOVE threshold unmasked, but its
+      score collapses BELOW threshold once the established compensators
+      are honest-twin-masked — downstream mechanical propagation from a
+      known unit, not its own signal (the automated rm1 check from G-28).
+    - ``"intrinsic_unexplained"``: score persists under that same mask —
+      a genuine reaction to the ablation with no confirmed partner (the
+      automated eng1 check from G-28); NOT auto-merged with anything, see
+      module docstring for why.
+    - Actors that never compensate above threshold are omitted.
+    """
+    edge_actors = {a for e in edges for a in e}
+    playbook = {a.actor_id for a in cfg.agents if a.role not in ("admin", "overseer")}
+    triple = run_episode_triple(cfg, seed, probe, backend=backend, agent_overrides=agent_overrides)
+    try:
+        diffs = diff_probe_triple(triple, probe)
+        compensators = {
+            a for a in playbook if a in diffs and diffs[a].compensation_score >= min_compensation
+        }
+    finally:
+        cleanup_triple(triple)
+
+    established = sorted(compensators & edge_actors)
+    outside = sorted(compensators - edge_actors)
+    labels = {a: "established" for a in established}
+    for a in outside:
+        masked_score = _masked_compensation_score(
+            cfg, seed, probe, a, established, backend=backend, agent_overrides=agent_overrides
+        )
+        labels[a] = "intrinsic_unexplained" if masked_score >= min_compensation else "ripple"
+    return labels
+
+
 def _merge_channel_ablation_units(
     cfg: LabConfig,
     seed: int,
@@ -168,9 +257,9 @@ def _merge_channel_ablation_units(
     backend=None,
     agent_overrides: dict | None = None,
     min_compensation: float,
-) -> None:
+) -> dict[str, dict[str, str]]:
     edge_set = {tuple(sorted(e)) for e in edges}
-    playbook = {a.actor_id for a in cfg.agents if a.role not in ("admin", "overseer")}
+    ripple_diagnostics: dict[str, dict[str, str]] = {}
 
     def union(x: str, y: str) -> None:
         parent.setdefault(x, x)
@@ -185,21 +274,19 @@ def _merge_channel_ablation_units(
     for probe in probes:
         if probe.kind != "channel_ablation":
             continue
-        triple = run_episode_triple(
-            cfg, seed, probe, backend=backend, agent_overrides=agent_overrides
+        labels = classify_ablation_compensators(
+            cfg, seed, probe, edges,
+            backend=backend, agent_overrides=agent_overrides, min_compensation=min_compensation,
         )
-        try:
-            diffs = diff_probe_triple(triple, probe)
-            compensators = {
-                a for a in playbook if a in diffs and diffs[a].compensation_score >= min_compensation
-            }
-            for a, b in edge_set:
-                if a in compensators and b in compensators:
-                    union(a, b)
-                elif (a in compensators) ^ (b in compensators):
-                    union(a, b)
-        finally:
-            cleanup_triple(triple)
+        ripple_diagnostics[probe.probe_id] = labels
+        compensators = set(labels)
+        for a, b in edge_set:
+            if a in compensators and b in compensators:
+                union(a, b)
+            elif (a in compensators) ^ (b in compensators):
+                union(a, b)
+
+    return ripple_diagnostics
 
 
 def select_probes_under_budget(
@@ -243,8 +330,16 @@ def discovered_units_intervention(
     probe_budget: int = DEFAULT_PROBE_BUDGET,
     min_compensation: float = DEFAULT_MIN_COMPENSATION,
     intervention_tick: int = DEFAULT_INTERVENTION_TICK,
+    ablation_diagnostics: dict[str, dict[str, str]] | None = None,
 ) -> dict[str, tuple[str, ...]]:
-    """Main entry point — same return shape as ``uad.discovered_units``."""
+    """Main entry point — same return shape as ``uad.discovered_units``.
+
+    If ``ablation_diagnostics`` is passed a dict, it is populated in place
+    with the per-probe ``classify_ablation_compensators`` labels (G-28
+    masking hardening) — ``"ripple"`` / ``"intrinsic_unexplained"`` actors
+    outside the candidate-edge graph, surfaced for audit rather than
+    silently folded into (or silently dropped from) the returned units.
+    """
     backend = backend or MockIsolate()
     actor_ids = sorted(result.host.roles)
     edges = candidate_edges_for_intervention(result, depth=depth)
@@ -289,8 +384,10 @@ def discovered_units_intervention(
                 if x != y:
                     parent[x] = y
 
-    _merge_channel_ablation_units(
+    ripple_diagnostics = _merge_channel_ablation_units(
         cfg, seed, channel_probes, edges, parent,
         backend=backend, agent_overrides=agent_overrides, min_compensation=min_compensation,
     )
+    if ablation_diagnostics is not None:
+        ablation_diagnostics.update(ripple_diagnostics)
     return _partition_from_parent(parent, actor_ids)

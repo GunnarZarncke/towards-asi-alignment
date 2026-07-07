@@ -1,6 +1,6 @@
 # S6 intervention-supported UAD vs passive baselines
 
-Generated 2026-07-07T16:26:10.762121+00:00 at lab-sim-0.9.2. NOT a battery.
+Generated 2026-07-07T17:34:05.719276+00:00 at lab-sim-0.9.2. NOT a battery.
 `exact` = non-singleton clusters are exactly {true pair} (or empty for negative control).
 
 ## dm_pair (true pair: ('eng1', 'rm1'))

@@ -1,6 +1,6 @@
 {
   "code_version": "lab-sim-0.9.2",
-  "generated_at": "2026-07-07T16:26:10.762121+00:00",
+  "generated_at": "2026-07-07T17:34:05.719276+00:00",
   "seeds": [
     1,
     2,
@@ -9,7 +9,7 @@
     5
   ],
   "max_lag": 3,
-  "vad_n_agents": 2,
+  "vendored_n_agents": 2,
   "rows": [
     {
       "scenario": "dm_pair",
@@ -101,6 +101,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -193,6 +200,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -285,6 +299,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -377,6 +398,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -469,6 +497,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -561,6 +596,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {
+          "rev1": "established"
+        },
+        "abl_board": {}
       }
     },
     {
@@ -653,6 +695,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {
+          "rev1": "established"
+        },
+        "abl_board": {}
       }
     },
     {
@@ -745,6 +794,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {
+          "rev1": "established"
+        },
+        "abl_board": {}
       }
     },
     {
@@ -837,6 +893,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {
+          "rev1": "established"
+        },
+        "abl_board": {}
       }
     },
     {
@@ -929,6 +992,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {
+          "rev1": "established"
+        },
+        "abl_board": {}
       }
     },
     {
@@ -1016,6 +1086,19 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "rev1": "established",
+          "rev2": "established"
+        },
+        "abl_file": {},
+        "abl_board": {
+          "rev1": "established",
+          "rev2": "established",
+          "eng1": "intrinsic_unexplained",
+          "rm1": "ripple"
+        }
       }
     },
     {
@@ -1102,6 +1185,19 @@
           "exact": true,
           "uad_score": 1.0,
           "adjusted_rand": 1.0
+        }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "rev1": "established",
+          "rev2": "established"
+        },
+        "abl_file": {},
+        "abl_board": {
+          "rev1": "established",
+          "rev2": "established",
+          "eng1": "intrinsic_unexplained",
+          "rm1": "ripple"
         }
       }
     },
@@ -1190,6 +1286,19 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "rev1": "established",
+          "rev2": "established"
+        },
+        "abl_file": {},
+        "abl_board": {
+          "rev1": "established",
+          "rev2": "established",
+          "eng1": "intrinsic_unexplained",
+          "rm1": "ripple"
+        }
       }
     },
     {
@@ -1277,6 +1386,19 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "rev1": "established",
+          "rev2": "established"
+        },
+        "abl_file": {},
+        "abl_board": {
+          "rev1": "established",
+          "rev2": "established",
+          "eng1": "intrinsic_unexplained",
+          "rm1": "ripple"
+        }
       }
     },
     {
@@ -1363,6 +1485,19 @@
           "exact": true,
           "uad_score": 1.0,
           "adjusted_rand": 1.0
+        }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "rev1": "established",
+          "rev2": "established"
+        },
+        "abl_file": {},
+        "abl_board": {
+          "rev1": "established",
+          "rev2": "established",
+          "eng1": "intrinsic_unexplained",
+          "rm1": "ripple"
         }
       }
     },
@@ -1456,6 +1591,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -1548,6 +1690,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -1640,6 +1789,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -1732,6 +1888,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -1824,6 +1987,13 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {
+          "eng1": "established"
+        },
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -1914,7 +2084,8 @@
           "uad_score": 0.0,
           "adjusted_rand": 0.0
         }
-      }
+      },
+      "ablation_diagnostics": {}
     },
     {
       "scenario": "shared_slot",
@@ -2004,7 +2175,8 @@
           "uad_score": 0.0,
           "adjusted_rand": 0.0
         }
-      }
+      },
+      "ablation_diagnostics": {}
     },
     {
       "scenario": "shared_slot",
@@ -2094,7 +2266,8 @@
           "uad_score": 0.0,
           "adjusted_rand": 0.0
         }
-      }
+      },
+      "ablation_diagnostics": {}
     },
     {
       "scenario": "shared_slot",
@@ -2184,7 +2357,8 @@
           "uad_score": 0.0,
           "adjusted_rand": 0.0
         }
-      }
+      },
+      "ablation_diagnostics": {}
     },
     {
       "scenario": "shared_slot",
@@ -2274,7 +2448,8 @@
           "uad_score": 0.0,
           "adjusted_rand": 0.0
         }
-      }
+      },
+      "ablation_diagnostics": {}
     },
     {
       "scenario": "serial_pipeline_no_unit",
@@ -2353,6 +2528,11 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -2432,6 +2612,11 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -2511,6 +2696,11 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -2590,6 +2780,11 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {},
+        "abl_board": {}
       }
     },
     {
@@ -2669,6 +2864,11 @@
           "uad_score": 1.0,
           "adjusted_rand": 1.0
         }
+      },
+      "ablation_diagnostics": {
+        "abl_dm": {},
+        "abl_file": {},
+        "abl_board": {}
       }
     }
   ],
