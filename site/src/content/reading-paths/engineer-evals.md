@@ -24,6 +24,15 @@ steps:
     ref: boundary-discovery
     note: "Trace the operative controller — model, memory, tools, loop."
   - kind: card
+    ref: the-boundary-error
+    note: "Align the object whose dynamics matter — not just the model."
+  - kind: demo
+    ref: ch01-scaffold-misuse
+    note: "Model-only eval passes; scaffold misrepresents the world and repurposes output."
+  - kind: card
+    ref: scaffold-misuse
+    note: "Good model, bad loop — input and output control without jailbreaks."
+  - kind: card
     ref: composite-agency
     note: "Unit discovery when the agent is a coalition."
   - kind: demo

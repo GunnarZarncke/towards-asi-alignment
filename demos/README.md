@@ -69,6 +69,7 @@ explicitly requested later.
 
 | Folder | Chapter | Summary |
 |--------|---------|---------|
+| `ch01-scaffold-misuse/` | 1 — The Wrong Object | Honest model (scripted or live LLM via repo `.env`) + adversarial scaffold → model-only eval passes while the composite loop does harm |
 | `ch09-uad-coalition-board/` | 9 — The Real Agent May Be Composite | Posting board → manual or dummy UAD coalition discovery |
 | `ch16-value-bundle-simulator/` | 16 — The Value-Bundle Model | Ecology sliders → top value salience |
 | `ch17-lhv-learnability/` | 17 — When Low Dimensionality Helps Value Learning | Synthetic hub structure → dimension recovery and held-out prediction |

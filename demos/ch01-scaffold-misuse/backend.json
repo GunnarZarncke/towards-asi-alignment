@@ -1,0 +1,6 @@
+{
+  "port": 8767,
+  "module": "app:app",
+  "hybrid": true,
+  "liveUrl": "https://adversarial-llm-scaffold.replit.app"
+}

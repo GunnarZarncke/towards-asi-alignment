@@ -24,7 +24,7 @@ EOF
 
 stop_previous_serves() {
   local p
-  for p in "$PORT" 4321 4322 4323 4324 4325 8765 8766; do
+  for p in "$PORT" 4321 4322 4323 4324 4325 8765 8766 8767; do
     if lsof -ti :"$p" >/dev/null 2>&1; then
       echo "Stopping previous server on port ${p}..."
       lsof -ti :"$p" | xargs kill -9 2>/dev/null || true
@@ -94,6 +94,7 @@ echo "  ${URL}book/ch06/"
 echo "Chapter demos (integrated):"
 echo "  ${URL}demos/"
 echo "  ${URL}chapter-demos/ch16-value-bundle-simulator/"
+echo "  ${URL}chapter-demos/ch01-scaffold-misuse/  (static + LLM API proxied to :8767 when backend running)"
 echo "  ${URL}chapter-demos/ch09-uad-coalition-board/  (proxied to backend :8766)"
 echo
 

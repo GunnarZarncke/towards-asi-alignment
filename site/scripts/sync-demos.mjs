@@ -95,13 +95,24 @@ async function loadDemoFolder(name) {
 
   const hasPython = backend !== null;
   const hasTypeScript = (await readdir(dir)).some((f) => f.endsWith(".ts") && !f.endsWith(".test.ts"));
+  const hasStaticJs = (await readdir(dir)).some((f) => f.endsWith(".js") && !f.endsWith(".test.js"));
+  const isHybrid = Boolean(backend?.hybrid) || (hasPython && hasStaticJs);
   const port = backend?.port || DEFAULT_STATIC_PORT;
   const chapterId = parseChapterId(name);
   const sitePath = `/chapter-demos/${name}/`;
-  const standalonePath = hasPython ? "/" : `/${name}/`;
-  const standaloneUrl = hasPython
-    ? `http://127.0.0.1:${port}/`
-    : `http://127.0.0.1:${DEFAULT_STATIC_PORT}/${name}/`;
+  const standalonePath = isHybrid ? `/${name}/` : hasPython ? "/" : `/${name}/`;
+  const standaloneUrl = isHybrid
+    ? `http://127.0.0.1:${DEFAULT_STATIC_PORT}/${name}/`
+    : hasPython
+      ? `http://127.0.0.1:${port}/`
+      : `http://127.0.0.1:${DEFAULT_STATIC_PORT}/${name}/`;
+  const kind = isHybrid
+    ? "hybrid-backend"
+    : hasPython
+      ? "python-backend"
+      : hasTypeScript
+        ? "static-typescript"
+        : "static-html";
 
   return {
     id: name,
@@ -109,17 +120,20 @@ async function loadDemoFolder(name) {
     summary: summaryFromReadme(readme) || summaryFromIndexHtml(indexHtml) || "",
     chapterId,
     chapterNumber: chapterId ? Number(chapterId.replace("ch", "")) : null,
-    kind: hasPython ? "python-backend" : hasTypeScript ? "static-typescript" : "static-html",
+    kind,
     port,
     sitePath,
     standalonePath,
     standaloneUrl,
-    requiresBackend: hasPython,
+    liveUrl: backend?.liveUrl || null,
+    requiresBackend: hasPython && !isHybrid,
+    optionalBackend: isHybrid,
     githubPath: `demos/${name}`,
     hasReadme: readme.length > 0,
-    hasTests: (await readdir(dir, { withFileTypes: true }).catch(() => [])).some(
-      (e) => e.isDirectory() && e.name === "tests"
-    )
+    hasTests:
+      (await readdir(dir, { withFileTypes: true }).catch(() => [])).some(
+        (e) => e.isDirectory() && e.name === "tests"
+      ) || (await readdir(dir)).some((f) => f.endsWith(".test.ts"))
   };
 }
 

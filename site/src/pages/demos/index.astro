@@ -28,7 +28,7 @@ const demoHref = (sitePath: string) => withBase(sitePath);
 
   <section class="callout readable">
     <h2>How to run</h2>
-    <p><strong>Integrated (recommended):</strong> <code>./serve-site.sh</code> — serves the site and copies demos into <code>/chapter-demos/</code>. The UAD board proxies to a local Python backend automatically.</p>
+    <p><strong>Integrated (recommended):</strong> <code>./serve-site.sh</code> — serves the site and copies demos into <code>/chapter-demos/</code>. Backend demos (UAD board, scaffold-misuse LLM API) proxy to local Python automatically when dependencies and keys are present.</p>
     <p><strong>Demos only:</strong> <code>./serve-demos.sh</code> or <code>{demos.standaloneCommand}</code> — static demos at port {demos.standalonePort}; Python backend demos on their own port.</p>
   </section>
 
@@ -58,9 +58,18 @@ const demoHref = (sitePath: string) => withBase(sitePath);
             <a href={demo.standaloneUrl} title="Standalone demo server">Standalone</a>
             {" · "}
             <a href={`${repoUrl}/tree/main/${demo.githubPath}`} target="_blank" rel="noopener noreferrer">Source</a>
+            {demo.liveUrl && (
+              <>
+                {" · "}
+                <a href={demo.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment</a>
+              </>
+            )}
           </p>
           {demo.requiresBackend && (
             <p class="side-panel-meta">Needs Python backend (port {demo.port}) — started by <code>./serve-site.sh</code></p>
+          )}
+          {demo.optionalBackend && (
+            <p class="side-panel-meta">Works offline with a scripted model; optional LLM backend (port {demo.port}) for live mode — started by <code>./serve-site.sh</code> when <code>OPENAI_API_KEY</code> is set in repo <code>.env</code></p>
           )}
           {demo.cards.length > 0 && (
             <p class="side-panel-meta">

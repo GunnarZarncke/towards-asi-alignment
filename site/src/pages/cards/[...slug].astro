@@ -363,6 +363,12 @@ const referenceLinks = isReferenceCard
                     <a href={href}>{entry.title}</a>
                     {" · "}
                     <a href={entry.standaloneUrl} title="Standalone demo server">Standalone</a>
+                    {entry.liveUrl && (
+                      <>
+                        {" · "}
+                        <a href={entry.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment</a>
+                      </>
+                    )}
                     {" · "}
                     <a href={withBase(`/demos/#${demo.demoId}`)}>Inventory</a>
                   </>

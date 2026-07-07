@@ -9,7 +9,7 @@ bookLabels: ["ch:wrong-object"]
 bookSections:
   - chapterId: "ch01"
     label: "The First Mistake"
-related: ["alignment-as-measurement", "composite-agency", "boundary-discovery"]
+related: ["alignment-as-measurement", "composite-agency", "boundary-discovery", "scaffold-misuse"]
 ---
 
 A deployed AI system is rarely just a neural network. It is a service, an interface, a memory store, a tool environment, an evaluation suite, a user population, an operator team, and sometimes a market or a state interest. Some of these parts learn, some select, some remember, some hide, some amplify — and some are treated as background even though they shape the effective optimization process more than the model's weights do.

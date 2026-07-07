@@ -37,6 +37,20 @@ async function hasBackend(demoDir) {
   }
 }
 
+async function hasStaticFrontend(demoDir) {
+  const entries = await readdir(demoDir);
+  return entries.some((name) => name.endsWith(".js") && !name.endsWith(".test.js"));
+}
+
+async function isHybridBackend(demoDir) {
+  try {
+    const cfg = JSON.parse(await readFile(path.join(demoDir, "backend.json"), "utf8"));
+    return cfg.hybrid === true || (await hasStaticFrontend(demoDir));
+  } catch {
+    return false;
+  }
+}
+
 async function copyStaticDemo(demoId, demoDir) {
   const outDir = path.join(demosPublic, demoId);
   await mkdir(outDir, { recursive: true });
@@ -97,10 +111,14 @@ export async function publishChapterDemos() {
     }
 
     if (await hasBackend(demoDir)) {
-      const backend = JSON.parse(await readFile(path.join(demoDir, "backend.json"), "utf8"));
-      const indexHtml = await readFile(path.join(demoDir, "index.html"), "utf8");
-      const title = indexHtml.match(/<title>([^<]+)<\/title>/i)?.[1] || demoId;
-      await writeBackendFallback(demoId, title, backend.port || 8766);
+      if (await isHybridBackend(demoDir)) {
+        await copyStaticDemo(demoId, demoDir);
+      } else {
+        const backend = JSON.parse(await readFile(path.join(demoDir, "backend.json"), "utf8"));
+        const indexHtml = await readFile(path.join(demoDir, "index.html"), "utf8");
+        const title = indexHtml.match(/<title>([^<]+)<\/title>/i)?.[1] || demoId;
+        await writeBackendFallback(demoId, title, backend.port || 8766);
+      }
     } else {
       await copyStaticDemo(demoId, demoDir);
     }
