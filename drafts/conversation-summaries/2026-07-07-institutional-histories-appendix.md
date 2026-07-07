@@ -38,4 +38,4 @@ User wanted to apply the book's alignment framework to historical instances of i
 
 ## Commits
 
-- `fceeb79` Add Appendix D: institutional genesis, memory, and decay case studies.
+- `e835733` Add Appendix D: institutional genesis, memory, and decay case studies.
