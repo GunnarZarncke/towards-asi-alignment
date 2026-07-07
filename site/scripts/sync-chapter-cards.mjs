@@ -178,6 +178,25 @@ async function main() {
         "This appendix maps each formal bridge (MB1–MB10) to the alignment field's canonical open problems and names where the book shares an agenda versus where it adds structure. Use the crosswalk table for the field mapping; bridge cards, concept cards, and book chapters are in the sidebar."
     },
     { id: "appC", file: "appendices/appC-institutional-translation.tex", type: "appendix", title: "Human Institutions as Alignment Translation Guide" },
+    {
+      id: "appM",
+      file: "appendices/appM-institutional-histories.tex",
+      type: "appendix",
+      title: "Institutional Genesis, Memory, and Decay: Historical Case Studies",
+      related: [
+        "institutional-genesis-money-at-risk",
+        "institutional-genesis-catastrophe-ratchet",
+        "institutional-genesis-chronic-threat",
+        "institutional-evidence-before-authority",
+        "institutional-selection-gating",
+        "institutional-constraint-inheritance",
+        "institutional-memory-refresh",
+        "institutional-entrenchment-corrigibility",
+        "institutional-reform-decay",
+        "institutional-dual-mandate-genesis",
+        "institutional-capability-latency-gap"
+      ]
+    },
     { id: "appD", file: "appendices/appD-worked-example.tex", type: "appendix", title: "Worked Example" },
     { id: "appF", file: "appendices/appF-research-program.tex", type: "appendix", title: "Research Program" }
   ];

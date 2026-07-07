@@ -28,8 +28,9 @@ const FRONTMATTER_FILES = [
 const APPENDIX_FILES = [
   { id: "appB", file: "appendices/appB-bridge-crosswalk.tex", order: 100 },
   { id: "appC", file: "appendices/appC-institutional-translation.tex", order: 101 },
-  { id: "appD", file: "appendices/appD-worked-example.tex", order: 102 },
-  { id: "appF", file: "appendices/appF-research-program.tex", order: 103 }
+  { id: "appM", file: "appendices/appM-institutional-histories.tex", order: 102 },
+  { id: "appD", file: "appendices/appD-worked-example.tex", order: 103 },
+  { id: "appF", file: "appendices/appF-research-program.tex", order: 104 }
 ];
 
 const PART_RANGES = [
