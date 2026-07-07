@@ -1638,3 +1638,105 @@ decision: postpone `shared_slot`'s comms-free detection gap until
 "acausal logic" (user's framing, not yet designed); keep vendored
 `uad_core`/`uad_mi.py` for now with a TODO docstring flag rather than
 deleting them.
+
+## G-30 (2026-07-07): blind detector generation (round 1) converges independently on the S6 mechanic for message-mediated pairs, adds a genuinely new silent-coordination test that still misses `shared_slot` (exactly as its own registered prediction said it might) and over-merges `committee` — first real (`SubprocessIsolate`) battery for the whole S6/S7 detector line
+
+**Trigger.** Step-back review after G-29 flagged three gaps: every S1–S6
+UAD detector had only ever run on `MockIsolate` (violating `DESIGN.md`'s
+"pre-registered batteries always use the real subprocess backend" rule);
+every existing detector was written by the same author as the scenarios
+scoring it (S6's own circularity caveat); `shared_slot` remained an open
+gap with no attempted fix. User directive: update documentation, blind-
+generate a new detector with registered predictions, run the full
+battery through `SubprocessIsolate`, and include a small parameter
+sweep — explicitly named as a new freeze because it changes detector-
+layer behavior.
+
+**Blind generation (`BLIND_DETECTOR_GENERATION.md`, round 1).** A single
+Task-tool subagent (`generalPurpose`, `readonly=true`, instructed not to
+read any repository file — same trust boundary as
+`BLIND_GENERATION.md`'s playbook generator) was given ONLY a plain-
+language description of the pipeline world and the four S6 intervention
+primitives (channel ablation, handle-based probes, honest-twin control,
+repeatable diffing), with no access to `uad_intervention.py`, any
+scenario config, `PLAN.md`, or `FINDINGS.md`. It designed a
+classification procedure (`generated_detector_v1.md`) and registered
+predictions BEFORE any implementation existed: ~90% confidence on
+workflow-adjacent pairs, ~80% on message-mediated coordinating pairs,
+and explicitly only **~55%, "the hardest case," on silent (no-channel)
+coordinating pairs** — flagged by the generator itself as the scenario
+"most likely to surprise on real testing."
+
+**Convergent validation.** The generator's Part A Steps 1–4 (freeze the
+source actor, honest-twin-control the responder, then ablate the
+channel the responder used to react and check for a channel switch)
+independently reconstruct almost exactly the S6 intervention mechanic
+already frozen in `uad_intervention.py`. Per the protocol's sequencing
+rule ("no semantic re-fitting"), this part was NOT re-implemented as
+parallel code — `uad_blind_v1.py`'s message-mediated path calls
+`discovered_units_intervention` unchanged, and the convergence itself is
+recorded here as the result, not routed around.
+
+**The new contribution: a twin-swap asymmetry test for silent pairs
+(Part A Step 5).** For any pair with no confirmed message-mediated
+signal, `uad_blind_v1.classify_pair_silent` applies a non-disabling
+`perturbation_window` probe to each member in turn and checks whether
+the OTHER member's action trace depends on that member being real vs.
+honest-twin-substituted, in BOTH directions. Both directions reacting →
+`coordinating_unit`; exactly one → `unilateral` (one actor's own
+independent adaptivity, not a joint unit); neither → `workflow`. See
+`generated_detector_v1.md`'s "Implementation notes" for the specific
+engineering choices made to operationalize the design's prose (the
+probe primitive chosen, and the symmetrized two-directional reading of
+"jointly necessary").
+
+**S7 battery (`run_s7_blind_battery.py`), first real `SubprocessIsolate`
+run for this whole line.** 6 scenarios × 5 seeds
+(`heuristic`/`cmi_deep`/`intervention`/`blind`), plus a 3-threshold ×
+3-seed sweep of `min_compensation`/`min_reaction` ∈ {0.10, 0.15, 0.20}
+(`results/s7_blind_battery.{json,md}`):
+
+| scenario | intervention exact | blind exact |
+|---|---|---|
+| dm_pair | 1.00 | 1.00 |
+| covert_file_handoff | 1.00 | 1.00 |
+| committee_informal_chatter | 1.00 | **0.00** |
+| build_loop | 1.00 | 1.00 |
+| shared_slot | 0.00 | 0.00 |
+| serial_pipeline_no_unit (negative control) | 1.00 | 1.00 |
+
+- **Confirmed:** `intervention`'s G-28/G-29 MockIsolate results reproduce
+  exactly across the real subprocess boundary — no isolate-boundary
+  artifact was hiding in the smoke-scale numbers.
+- **Confirmed (generator's own low-confidence prediction):** `shared_slot`
+  stays a miss for `blind` too. This is scored as a HIT for the
+  generator's prediction (~55% confidence, explicitly the weakest of its
+  three), not a detector failure to be patched — "acausal logic" (G-29's
+  postponement) is still the open path forward, not this test.
+- **New negative result: `committee_informal_chatter` over-merges under
+  `blind`** (`eng1` gets pulled into the true `{rev1, rev2}` unit,
+  `exact_rate=0.00` even though `merge_rate=1.00` — the pair is found,
+  plus one spurious member). Root cause not yet diagnosed with a G-28-
+  style masking check: `classify_pair_silent` has no ripple-hardening
+  analogous to `classify_ablation_compensators`, so `eng1`'s trace
+  reacting to `rev2`'s perturbation could be either a real independent
+  signal or downstream propagation through the committee's own board
+  activity. The parameter sweep (below) rules out "just retune the
+  threshold" as a fix — the over-merge is stable across all three
+  tested values, i.e. structural, not borderline.
+- **Sweep: no threshold sensitivity found at these three values.** Every
+  scenario's exact/merge rate is IDENTICAL at 0.10, 0.15, and 0.20 for
+  both `intervention` and `blind` — the pre-registered default (0.15) is
+  not doing any delicate work at this granularity; wins and misses are
+  both robust, not artifacts of the specific threshold chosen.
+
+**Not done this round (recorded, not silently skipped):** a masking
+hardening pass for `classify_pair_silent`'s `committee` over-merge
+(the natural G-29-style follow-up); a finer-grained threshold sweep
+around the transition, if one exists, between 0.05 and 0.10 or above
+0.20; `vendored_mi` was dropped from the S7 comparison set to bound
+battery runtime (already flagged TODO for deletion, G-29).
+
+**Tests.** 4 new tests (`test_uad_blind_v1.py`); full suite 409 green.
+This is recorded as a new freeze point for the detector layer — see
+`DESIGN.md`'s "Freeze note 2 (detector layer, S6/S7)".

@@ -1546,6 +1546,54 @@ framing, not yet designed here).
 docstring note in both files pointing at this paragraph and the
 shared_slot postponement as the condition for revisiting deletion.
 
+## S7 — blind detector generation + first real battery (implemented 2026-07-07, G-30)
+
+User directive after a step-back review of the whole lab-sim (three
+gaps: every S1-S6 detector MockIsolate-only despite `DESIGN.md`'s
+subprocess-for-batteries rule; same-author detector/scenario
+circularity; `shared_slot` still open): update documentation, blind-
+generate a new detector with registered predictions, run the full
+battery through `SubprocessIsolate`, add a small parameter sweep — all
+named up front as a new freeze (see `DESIGN.md`'s "Freeze note 2").
+
+**Blind generation, round 1 (`BLIND_DETECTOR_GENERATION.md`).** Adapted
+from `BLIND_GENERATION.md`, aimed at the DETECTOR side this time: a
+Task-tool subagent (`readonly=true`, instructed not to read any repo
+file) given only a mechanism-level description of the S6 intervention
+primitives designed a pair-classification procedure
+(`generated_detector_v1.md`) and registered Part B predictions BEFORE
+implementation — ~90%/~80%/~55% confidence for workflow/message-
+unit/silent-unit pairs respectively, the silent case explicitly flagged
+by the generator as its weakest.
+
+**Implementation (`uad_blind_v1.py`).** The design's message-mediated
+steps converged, largely independently, on the existing S6 mechanic —
+reused unchanged rather than re-implemented (a convergent-validation
+result, not new code). Its new contribution is a twin-swap asymmetry
+test for pairs with no message-channel signal: perturb one member with
+a non-disabling probe, check both directions of whether the OTHER
+member's trace depends on that member's real-vs-honest-twin status;
+both directions → `coordinating_unit`, one → `unilateral`, neither →
+`workflow`.
+
+**`run_s7_blind_battery.py`: 6 scenarios × 5 seeds, `SubprocessIsolate`
+(first real-backend numbers for this whole line), plus a 3-threshold ×
+3-seed sweep.** `intervention` reproduces its MockIsolate pattern
+exactly. `blind` matches `intervention` on 4/6 scenarios, confirms the
+generator's own low-confidence prediction by still missing
+`shared_slot`, and introduces a NEW over-merge on
+`committee_informal_chatter` not seen in `intervention` (recorded as an
+open follow-up, no masking-hardening pass attempted yet). The sweep
+finds no sensitivity to `min_compensation`/`min_reaction` at 0.10 vs.
+0.15 vs. 0.20 — every scenario's rate is identical across all three.
+Full write-up: `results/FINDINGS.md` G-30.
+
+**Postponed (recorded, not silently dropped):** a `classify_pair_silent`
+masking-hardening pass analogous to G-29's
+`classify_ablation_compensators`, to diagnose the `committee`
+over-merge; a finer sweep outside [0.10, 0.20] if a future round has
+reason to look there; `shared_slot` remains gated on "acausal logic".
+
 ## Knowledge base (D1 follow-up, recorded 2026-07-07, implemented)
 
 User-directed follow-up to the Phase 10 LLM discovery sanity check

@@ -87,8 +87,11 @@ lines:
     firstBuilt: "2026-07-05"
     role: >
       Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (lab-sim-0.3.0+),
-      pre-registered batteries through Phase 7; Phase 8 LLM adapter exploratory only. Lean leak-proof
-      (`leak-proof/`) certifies oracle/audit/sim plane separation via projections and reachability analysis.
+      pre-registered batteries through Phase 7 and Phase 9 (D1/D4/D2 mechanics); a second, detector-layer
+      freeze (S6/S7, 2026-07-07) adds intervention-supported unit discovery plus a blind-generated detector,
+      both now run through the real subprocess backend. Phase 8 LLM adapter remains exploratory only.
+      Lean leak-proof (`leak-proof/`) certifies oracle/audit/sim plane separation via projections and
+      reachability analysis.
     readmePath: experiments/lab-simulation/README.md
     designPath: experiments/lab-simulation/DESIGN.md
     planPath: experiments/lab-simulation/PLAN.md
@@ -99,6 +102,8 @@ lines:
       - "Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (G-6)."
       - "Phase 8 LLM spot-checks (G-7, G-8): exploratory nulls — no systematic deception surface yet."
       - "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
+      - "S6 intervention-supported UAD: exact unit-partition recovery on 4/5 primary scenarios + negative control via channel-ablation/honest-twin compensation scoring; comms-free `shared_slot` coordination stays undetected (G-28/G-29)."
+      - "S7 blind-generated detector, first real SubprocessIsolate battery for the whole detector line: message-mediated design converges independently on S6's mechanic; new silent-coordination test still misses `shared_slot` (a confirmed low-confidence prediction) and over-merges one scenario (G-30)."
 
 howToRead:
   - lineId: agency-detect
@@ -132,7 +137,7 @@ coverageFeatures:
       toy-simulation: "Scenario (boundary_alias)"
       embedded-simulation: "Full UAD + ecologies; negatives when heuristic suffices"
       goal-agent-simulation: "—"
-      lab-simulation: "Planned (D1 composite agents)"
+      lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (G-28–G-30)"
   - id: mb2
     label: "MB2 Value bundle / pointing (Goodhart on bundles)"
     cells:
@@ -188,7 +193,7 @@ coverageFeatures:
       toy-simulation: "—"
       embedded-simulation: "Partial / targeted ecologies"
       goal-agent-simulation: "—"
-      lab-simulation: "Planned (D4 message board)"
+      lab-simulation: "D4 message board + S6 channel-ablation compensation scoring; the primary signal carrier for message-mediated units (G-28)"
   - id: mb8
     label: "MB8 Legitimacy / correction authority"
     cells:
@@ -252,7 +257,7 @@ coverageFeatures:
       toy-simulation: "—"
       embedded-simulation: Scenario-blind audit path
       goal-agent-simulation: "Primary (Phases 2–3, drift probe)"
-      lab-simulation: "Phase 6 (blind playbook repertoire + battery)"
+      lab-simulation: "Phase 6 (blind playbook repertoire + battery); S7 (blind DETECTOR generation + registered predictions, G-30)"
   - id: honest-twins
     label: "Honest twins / severity-first referee"
     cells:

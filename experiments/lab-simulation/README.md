@@ -15,10 +15,14 @@ sanity check 2026-07-07, knowledge-base file channel 2026-07-07,
 general malformed-tool-call error feedback 2026-07-07, S5 real
 lag-max-MI UAD detector ported and re-run against S4 2026-07-07,
 S5 deep-trace/multi-scenario follow-up 2026-07-07, S6 first step
-(custom conditional-MI detector, G-26 easy fixes) 2026-07-07**
+(custom conditional-MI detector, G-26 easy fixes) 2026-07-07, S6 full
+intervention-supported UAD implementation + masking hardening
+2026-07-07, S7 blind detector generation + first real
+`SubprocessIsolate` battery for the whole S6/S7 detector line 2026-07-07,
+detector-layer FROZEN 2026-07-07**
 (CODE_VERSION `lab-sim-0.9.2`,
-378 tests green — see DESIGN.md "Freeze note", "Phase 6", "Phase 7",
-"Phase 8", and "Phase 9").
+409 tests green — see DESIGN.md "Freeze note", "Freeze note 2 (detector
+layer, S6/S7)", "Phase 6", "Phase 7", "Phase 8", and "Phase 9").
 Scaffold, oracle world, pipeline-as-code engine, access control, subprocess
 isolates, goal-driven playbook agents, full episode loop, the tier-gated
 referee (severity, five detector families, honest-twin transform),
@@ -136,6 +140,25 @@ blob ({eng1, rev1, rev2, rm1} on committee) was checked against the
 repeat the correlation-without-attribution mistake it exists to catch).
 shared_slot postponed pending "acausal logic"; vendored `uad_core`/
 `uad_mi.py` kept with a TODO flag rather than deleted. 405 tests green.
+S7 blind detector generation + first real battery (`run_s7_blind_
+battery.py`, G-30): a Task-tool subagent (`readonly=true`, instructed
+not to read any repo file — `BLIND_DETECTOR_GENERATION.md`) designed a
+pair-classification procedure from a mechanism-level description of the
+S6 primitives alone and registered predictions (~90%/~80%/~55%
+confidence for workflow/message-unit/silent-unit pairs) BEFORE any
+implementation existed (`generated_detector_v1.md`). Its message-
+mediated design converged independently on the existing S6 mechanic
+(reused unchanged, `uad_blind_v1.py`); its new silent-coordination test
+(twin-swap asymmetry under a non-disabling perturbation) is the first
+attempted fix for the shared_slot gap. First-ever `SubprocessIsolate`
+run for `intervention`/`blind` (5 seeds/scenario) reproduces
+`intervention`'s MockIsolate pattern exactly; `blind` matches on 4/6
+scenarios, confirms the generator's own low-confidence prediction by
+still missing shared_slot, and introduces a new (unhardened) over-merge
+on the committee scenario. A 3-threshold × 3-seed sweep of
+`min_compensation`/`min_reaction` finds no sensitivity at 0.10/0.15/0.20.
+409 tests green. Detector layer (S6+S7) now frozen — see DESIGN.md
+"Freeze note 2".
 Phase 10 (2026-07-07): a sanity check, not a battery — does a free
 `gpt-4o-mini` agent, given only a generic tool reference (the full
 `tools.py` registry, documented like a real tool-use API) and a
@@ -206,6 +229,10 @@ self-corrects given the reason code.
   scope notes, and recorded measurements (isolate cost, regression digests).
 - [`BLIND_GENERATION.md`](BLIND_GENERATION.md) — the blind playbook
   generation protocol (Phase 6).
+- [`BLIND_DETECTOR_GENERATION.md`](BLIND_DETECTOR_GENERATION.md) — the
+  blind DETECTOR generation protocol (S7), plus
+  `lab_sim/oracle_only/generated_detector_v1.md`'s verbatim prompt,
+  design, and registered predictions.
 - [`ACCESS_TIERS.md`](ACCESS_TIERS.md) — `lab_sim/`'s four graded
   red-team source-access tiers (`agent_visible/`/`world_visible/`/
   `oracle_only/`/`harness/`) and the rationale behind the split.
@@ -263,6 +290,9 @@ python3 run_s6_cmi_detector.py                    # S6 first step: custom condit
 python3 run_s6_intervention_uad.py                # S6 full: intervention-supported UAD vs passive
                                                    #   baselines + negative control -> results/
                                                    #   s6_intervention_uad.{json,md}, FINDINGS.md G-28
+python3 run_s7_blind_battery.py                   # S7: blind-generated detector + first real SubprocessIsolate
+                                                   #   battery + small threshold sweep -> results/
+                                                   #   s7_blind_battery.{json,md}, FINDINGS.md G-30
 python3 run_llm_discovery_baseline.py             # Phase 10 LLM discovery sanity check: solo LLM engineer
                                                    #   control, real gpt-4o-mini calls -> results/
                                                    #   llm_discovery_baseline.json
@@ -328,6 +358,8 @@ lab_sim/
     uad_intervention.py     # S6: intervention-supported unit discovery (R-matrix + channel merge)
     uad_peel.py             # S6: peel-and-mask loop (honest-twin substitution)
     uad_partition.py        # S6: exact-partition + adjusted-Rand scoring
+    uad_blind_v1.py         # S7: blind-generated detector (BLIND_DETECTOR_GENERATION.md) --
+                            #   reuses S6 for message pairs, new twin-swap silent-coordination test
     uad_mi.py               # S5: lab-sim adapter for the vendored lag-max-MI detector below
     uad_core/               # S5: vendored port of embedded-simulation's uad_core (detection.py,
                              #   markov_blanket.py, config.py, info.py) -- see its own __init__.py docstring
@@ -361,6 +393,7 @@ run_s5_uad_core_port.py          # S5: real lag-max-MI UAD detector ported into 
 run_s5_deep_trace_sweep.py       # S5 follow-up: deep vs. shallow trace depth, across FIVE scenarios (G-25)
 run_s6_cmi_detector.py           # S6 first step: custom conditional-MI detector, G-26 easy fixes (G-27)
 run_s6_intervention_uad.py       # S6 full: intervention-supported UAD vs passive baselines (G-28)
+run_s7_blind_battery.py          # S7: blind-generated detector + first real SubprocessIsolate battery (G-30)
 run_llm_discovery_common.py      # Phase 10: shared LLM-discovery-scenario plumbing
 run_llm_discovery_baseline.py    # Phase 10: solo LLM engineer discovery sanity check (control)
 run_llm_discovery_dm_pair.py     # Phase 10: LLM engineer/release_manager DM-coordination discovery

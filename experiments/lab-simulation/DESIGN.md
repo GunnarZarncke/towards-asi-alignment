@@ -852,3 +852,60 @@ seed) — a different, comms-free class of detection blind spot than S2's
 or S3's. Building the ACTUAL job-size-aware scheduling scenario remains
 future work, gated on someone being willing to extend
 `pipeline_engine.py`.
+
+## Freeze note 2 (detector layer, S6/S7 — 2026-07-07)
+
+**Detector-layer surface frozen, distinct from `CODE_VERSION`.** The
+"Freeze note" above governs `LabConfig`/`world.py` MECHANICS
+(`CODE_VERSION`, the episode-cache key). Nothing in `world_visible/`
+changed for S6 or S7 — no `CODE_VERSION` bump — so this is a SECOND,
+narrower freeze: the `oracle_only/` DETECTOR surface added since the
+original freeze (`uad_intervention.py`/`uad_peel.py`/`uad_partition.py`,
+G-28/G-29; `uad_blind_v1.py`, G-30) is now battery-validated and treated
+as a recorded referee extension in its own right. Changes to any of
+these modules' logic or pre-registered defaults
+(`DEFAULT_MIN_COMPENSATION=0.15`, `DEFAULT_MIN_REACTION=0.15`,
+`DEFAULT_INTERVENTION_TICK=8`, `DEFAULT_PROBE_BUDGET=6`) after this
+point are recorded extensions, not silent retuning.
+
+**Why now.** Three gaps closed together, at the user's explicit
+direction, because closing any one changes what "the detector" means
+for the others: (1) every S1–S6 detector had only ever run on
+`MockIsolate`, never the real `SubprocessIsolate` boundary a
+pre-registered claim requires (this file's own rule, previously
+un-enforced for this line); (2) every detector was written by the same
+author as the scenarios scoring it; (3) `shared_slot` had an open,
+unattempted detection gap.
+
+**What's now anchored.**
+
+- `run_s7_blind_battery.py` (`results/s7_blind_battery.{json,md}`, G-30):
+  6 scenarios × 5 seeds, `SubprocessIsolate`, for
+  `heuristic`/`cmi_deep`/`intervention`/`blind` — the FIRST real-backend
+  numbers for `intervention` (G-28/G-29's numbers were MockIsolate-only)
+  and the first numbers of any kind for `blind`
+  (`uad_blind_v1.py`, `BLIND_DETECTOR_GENERATION.md`).
+- A 3-threshold (0.10/0.15/0.20) × 3-seed sweep confirms the
+  pre-registered 0.15 default is not doing delicate work at this
+  granularity — every scenario's exact/merge rate is identical across
+  all three values, for both `intervention` and `blind`.
+- `intervention` reproduces its G-28/G-29 MockIsolate exact-partition
+  pattern exactly across the real subprocess boundary (4/6 exact +
+  negative control, `shared_slot` still a miss).
+- `blind`'s message-mediated path (Part A Steps 1–4 of
+  `generated_detector_v1.md`) reuses `discovered_units_intervention`
+  unchanged — a convergent-validation result, not new code. Its NEW
+  silent-coordination test (Part A Step 5) still misses `shared_slot`
+  (matching the generator's own registered ~55% confidence — a
+  confirmed prediction, not a new failure) and introduces a NEW
+  over-merge on `committee_informal_chatter` (recorded as an open
+  follow-up, not patched in this round — see `results/FINDINGS.md`
+  G-30).
+
+**Still open (do not block this freeze):** a `classify_pair_silent`
+masking-hardening pass analogous to G-29's
+`classify_ablation_compensators`, to diagnose the `committee` over-merge
+before deciding whether it needs a fix; `shared_slot`'s comms-free gap
+remains postponed pending "acausal logic" (G-29); a finer-grained
+threshold sweep below 0.10 or above 0.20, if a future round has reason
+to look there.
