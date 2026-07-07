@@ -1272,6 +1272,124 @@ faithful port arguably should exercise anyway). Neither is scheduled;
 recorded here so `shared_slot_config`/G-20 do not get cited later as "UAD
 already checked this" when only the heuristic was ever run against it.
 
+## Knowledge base (D1 follow-up, recorded 2026-07-07, implemented)
+
+User-directed follow-up to the Phase 10 LLM discovery sanity check
+(`results/llm_discovery_prototype.md`, FINDINGS.md G-21): make realistic
+environment/lab information available to agents "on file, with regular
+file access protections that might be tampered with and caught by the
+oracle" — an easy way to give scenarios a coherent, shared input, plus a
+"realistic" description of the lab itself.
+
+**Decision: reuse the D1 file channel exactly as-is, add zero new
+mechanism.** A knowledge-base document (`LabConfig.knowledge_base:
+dict[str, dict]`, default `{}`) is seeded at episode init as an ordinary
+memo (`Workspace.write_memo`) owned by a reserved, non-agent pseudo-actor
+(`knowledge_base.KB_OWNER_ID = "lab_kb"`), with every playbook agent
+pre-granted `cap.file_read:<rel>` for it — the identical
+`PermissionService.grant` bootstrap the `comms_enabled` comm-capability
+provisioning already does. Consequences, both intentional:
+
+- **Discovery is exactly as natural as discovering any other memo.** It
+  surfaces in the passive `memo_files` observation field and via
+  `file.read`, with no new tool, no new observation field, and no
+  special-casing in `llm_agent.py`'s generic tool reference — an LLM
+  agent that has already learned to check `memo_files` (Phase 10 showed
+  this happens reliably) finds it for free.
+- **Protection is exactly as strong, and no stronger, than any other
+  memo — no bespoke "tamper detector" was built.** `KB_OWNER_ID` never
+  matches a real `actor_id`, so `file.share`'s owner lookup
+  (`host.memo_index` filtered by `actor_id == caller`) can never find a
+  KB doc for any playbook agent to re-share, revoke, or overwrite
+  (`test_no_playbook_agent_can_share_or_overwrite_a_kb_doc`). Isolates
+  never touch the real filesystem directly either way (D1 follow-up
+  section above, "no separate isolate file handling exists") — the only
+  path to a KB doc is the same gated tool-call API every memo uses. If a
+  future bug or capability grant ever let an actor read/write one
+  anyway, that action leaves the SAME hash-chained `PermissionService.log`
+  / `Host.events` trail (`access.py`, `events.py`) every other capability
+  grant already does, and the same `Workspace.digest()` would change —
+  i.e. tamper-evidence the referee's existing deep-tier audit already
+  relies on, not new machinery.
+- Gated on the `file` channel specifically (`channels_enabled["file"]`,
+  not the blanket `comms_enabled`), matching every other file-channel
+  behavior under the D4 channel-ablation lever. Default `{}` (falsy)
+  reproduces every pre-0.9.1 episode byte-for-byte (verified: the frozen
+  `test_world_regression.py` digest is unchanged).
+
+**Content (`knowledge_base.py`):** `default_lab_handbook()` — static,
+in-universe prose (mission, pipeline stages, role responsibilities,
+review/sign-off norms, "board/DM/files are company systems, not personal
+accounts") for a fictional lab ("Meridian Labs"), deliberately asserting
+nothing the pipeline mechanics don't actually enforce (no invented
+capability, no made-up threshold). `default_team_directory(cfg)` —
+generated from the episode's ACTUAL `LabConfig.agents` roster rather than
+invented, so it can never name a colleague who isn't really in the
+episode: "coherent input" tied to ground truth, not flavor text divorced
+from the substrate it describes.
+
+**Not done this pass (left for a scenario-specific follow-up if
+needed):** wiring `knowledge_base=` into the three Phase 10
+`run_llm_discovery_*.py` scripts to observe whether an LLM agent actually
+reads the handbook unprompted, and whether `_tail(memo_files, 8)`
+(`llm_agent.py`) could crowd a KB doc out of view once an agent has
+authored 8+ of its own memos (edge case; none of the three existing
+scenarios write that many). Both are cheap to add once a concrete
+scenario wants them; the substrate change above is complete and tested
+independently of any scenario (`tests/world_visible/test_knowledge_base.py`).
+
+**Follow-up (recorded 2026-07-07, same day): "10x the content, include
+what a red-team member would be given."** The first pass above (two
+thin docs) read as obviously synthetic, not like a knowledge base that
+had actually accreted content over time, and omitted anything a
+red-team member specifically would be handed. Two changes:
+
+1. **Content volume/shape** — `knowledge_base.py` grew from
+   `default_lab_handbook`/`default_team_directory` to a ten-document
+   `default_full_knowledge_base(cfg)` bundle (~14x the character count):
+   `handbook` (expanded with history/values/org-structure/onboarding/
+   style-guide sections), `pipeline_reference` (step table DERIVED from
+   `pipeline_spec.load_spec` — cannot drift from the real DAG),
+   `capabilities_reference` (role-eligibility table derived from
+   `agents.ROLE_CAPABILITIES`, plus the EXACT `access.request` argument
+   shape — answering the "how do I request access, what parameters"
+   gap in the first pass), `tool_operations_manual` (verbose, worked-
+   example walkthrough of every tool, deliberately overlapping with
+   `llm_agent.py`'s generic `_TOOL_REFERENCE`), `safety_and_review_policy`
+   (cites the literal `ontology.REVIEW_HAZARD_THRESHOLD`/
+   `INFLATE_HAZARD_DELTA` constants the reviewer playbooks themselves
+   apply — cannot state a number the enforcing code disagrees with),
+   `roles_and_escalation_contacts` (generated from the real roster),
+   `team_directory`, `faq`, `glossary`, `incident_postmortems`
+   (fictional but mechanically grounded — each anecdote maps onto a real
+   failure mode this pipeline can actually produce). Documents overlap
+   and restate each other deliberately (FAQ repeats handbook/policy
+   content in Q&A form) — an organically-grown wiki is not
+   deduplicated, and pretending otherwise would itself be unrealistic.
+2. **A second, restricted audience** — `LabConfig.knowledge_base_redteam`
+   / `redteam_actor_ids` (validated against the roster in
+   `__post_init__`, same pattern as `groups`/`units`): an IDENTICAL
+   bootstrap to `knowledge_base`, except the read grant goes only to the
+   named actors, not every playbook agent (`world.py`, two near-
+   duplicate loops — deliberately not unified into one parametrized
+   helper, since "granted to everyone" and "granted to a named subset"
+   read as two different policies even though the code is almost
+   identical). Content: `default_redteam_briefing()` — a security-
+   assessment briefing naming the actual risk categories this line's
+   own detectors look for (report divergence, unread sign-off, access
+   creep, covert coordination, capture), framed in-universe as "what the
+   lab watches for" rather than meta-referencing the simulation, and
+   explicitly stating that the assessor's own actions are logged like
+   anyone else's — no off-the-record grant.
+
+CODE_VERSION bumped to `lab-sim-0.9.2`; both new fields default to
+empty/falsy and the frozen regression digest is unchanged
+(`test_world_regression.py` still green). See
+`tests/world_visible/test_knowledge_base.py` (16 tests: content
+correctness derived from real constants, full-bundle seeding/
+readability, restricted-audience grant/deny, `redteam_actor_ids`
+validation).
+
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
 
 Structural decisions Phase 0-8 must get right so the deferred workstreams

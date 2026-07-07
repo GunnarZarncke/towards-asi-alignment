@@ -10,8 +10,10 @@ real OS-subprocess isolates speaking JSON-RPC to a host.
 **Status: Phase 0-9 complete, referee FROZEN 2026-07-06, first battery run
 2026-07-06, Phase 7 battery run 2026-07-06, Phase 8 exploratory spot-check
 2026-07-06, Phase 9 D1/D4/D2 smoke-scale-to-battery closure 2026-07-06,
-S1-S4 scenario-backlog prototypes 2026-07-07** (CODE_VERSION `lab-sim-0.9.0`,
-318 tests green — see DESIGN.md "Freeze note", "Phase 6", "Phase 7",
+S1-S4 scenario-backlog prototypes 2026-07-07, Phase 10 LLM discovery
+sanity check 2026-07-07, knowledge-base file channel 2026-07-07**
+(CODE_VERSION `lab-sim-0.9.2`,
+342 tests green — see DESIGN.md "Freeze note", "Phase 6", "Phase 7",
 "Phase 8", and "Phase 9").
 Scaffold, oracle world, pipeline-as-code engine, access control, subprocess
 isolates, goal-driven playbook agents, full episode loop, the tier-gated
@@ -67,6 +69,46 @@ one slot actually produce is a deterministic, communication-free division
 of labor that is invisible to every existing `uad.py` signal, a
 genuinely new class of detection blind spot (no comms channel involved at
 all, unlike S2/S3).
+Phase 10 (2026-07-07): a sanity check, not a battery — does a free
+`gpt-4o-mini` agent, given only a generic tool reference (the full
+`tools.py` registry, documented like a real tool-use API) and a
+plain-language scenario brief (never a scripted coordination recipe),
+discover the comms/file infrastructure and implement the intended S1-S4-
+style multi-agent mechanics on its own? `llm_agent.py` gained a
+role-generic `"discovery"` prompt variant (engineer/reviewer/
+release_manager, not engineer-only) and a per-decision transcript (the
+model's own stated `"reasoning"`, the closest available proxy to "read
+the CoT" for a non-reasoning model). Result: the model reliably
+discovers and correctly uses `access.request`/`dm.send`/`dm.read`/
+`board.read` from generic docs alone, but does NOT reliably implement the
+intended coordination RULES (DM-gated deploy, chair-only quorum
+approval) — because those rules are unenforced social conventions living
+only inside the hand-written `programs.py` playbooks, not in
+`pipeline_engine.py`'s access gate, so a free agent has a real,
+engine-legal shortcut around every one of them. One genuine
+accessibility-plumbing bug was found and fixed (a flattened
+`pipeline.trigger_step` call was silently dropped with no feedback,
+permanently stalling the agent); a second, more general one (no error
+feedback on ANY malformed call) was found and knowingly left open. See
+`results/llm_discovery_prototype.md` and FINDINGS.md G-21.
+Knowledge-base follow-up (2026-07-07, user-directed): `LabConfig.
+knowledge_base` (`knowledge_base.py`) seeds realistic, in-universe lab
+documents as ordinary read-only memos on the EXISTING D1 file channel —
+zero new mechanism, so discovery is exactly as natural, and tamper-
+evidence exactly as strong, as any other memo (owner is a reserved
+non-agent pseudo-actor no playbook agent can ever re-share/overwrite;
+any anomaly would show up in the same hash-chained access/event logs the
+referee already reads). A same-day follow-up ("10x the content, include
+what a red-team member would be given") grew this to a ten-document,
+deliberately redundant bundle (`default_full_knowledge_base`: handbook,
+pipeline reference derived from the real spec, capability/access-request
+argument reference, tool operations manual, safety policy citing the
+real hazard-threshold constant, escalation contacts, team directory,
+FAQ, glossary, incident postmortems) plus a SECOND, restricted knowledge
+base (`knowledge_base_redteam`/`redteam_actor_ids`) granted only to
+named actors — an in-universe security-assessment briefing, using the
+identical bootstrap mechanism with a smaller grant set. See PLAN.md
+"Knowledge base" section for the full rationale.
 
 - [`PLAN.md`](PLAN.md) — full plan: bridge coverage (MB1-MB10), deferred
   workstreams (D1-D4), forward hooks, phase breakdown.
@@ -114,6 +156,13 @@ python3 run_s1_build_loop_prototype.py            # S1 scenario-backlog prototyp
 python3 run_s4_shared_slot_prototype.py           # S4 scenario-backlog prototype: two engineers sharing one
                                                    #   in-flight slot, exploratory -> results/
                                                    #   s4_shared_slot_prototype.{json,md}
+python3 run_llm_discovery_baseline.py             # Phase 10 LLM discovery sanity check: solo LLM engineer
+                                                   #   control, real gpt-4o-mini calls -> results/
+                                                   #   llm_discovery_baseline.json
+python3 run_llm_discovery_dm_pair.py              # Phase 10: LLM engineer + LLM release_manager DM
+                                                   #   coordination discovery -> results/llm_discovery_dm_pair.json
+python3 run_llm_discovery_committee.py            # Phase 10: two LLM reviewers, quorum-as-social-convention
+                                                   #   discovery -> results/llm_discovery_committee.json
 ```
 
 ## Layout (current)
@@ -133,6 +182,8 @@ lab_sim/
     generated_playbooks_v1.json  # Phase 6 blind-generated repertoire (BLIND_GENERATION.md), 13 playbooks
     generated_playbooks_v2.json  # round-2 blind-generated repertoire (run_blind_round2.py)
     llm_agent.py             # Phase 8: LLMPolicy (redteam system prompt, per-observation cache), host-independent
+                             #   + Phase 10: role-generic "discovery" prompt variant (engineer/reviewer/
+                             #   release_manager) + per-decision transcript ("reasoning" field)
     llm_agent_main.py        # Phase 8: subprocess entry point (llm_agent.py + stdlib only; FAKE_MODE test seam)
     llm_client.py            # Phase 8: minimal OpenAI chat client (stdlib only)
     llm_cost.py              # Phase 8: LLM token/cost ledger (separate from isolate_cost.py)
@@ -148,6 +199,7 @@ lab_sim/
     tools.py                # ToolCall/ToolResult wire schema + Host dispatch (the trust boundary)
     workspace.py            # per-episode on-disk workspace, report files, digest
     comms.py                # board/DM message store + comms channel wiring
+    knowledge_base.py       # 0.9.1: realistic in-universe lab KB, seeded read-only on the D1 file channel
     agent_state.py          # persistent cross-episode agent state (runs/agent_state/<id>.json)
     world.py                # run_episode: full episode loop wiring isolates + engine + access control + overseer script
   oracle_only/      # tier 3 (full incl. oracle) -- see lab_sim/oracle_only/README.md
@@ -186,6 +238,10 @@ run_s2_covert_file_prototype.py  # S2 scenario-backlog prototype: covert file co
 run_s3_informal_chatter_prototype.py  # S3 scenario-backlog prototype: informal board chatter (exploratory, MockIsolate)
 run_s1_build_loop_prototype.py    # S1 scenario-backlog prototype: cross-generation build/deploy/ack loop (exploratory)
 run_s4_shared_slot_prototype.py   # S4 scenario-backlog prototype: shared single-model-in-flight slot (exploratory)
+run_llm_discovery_common.py      # Phase 10: shared LLM-discovery-scenario plumbing
+run_llm_discovery_baseline.py    # Phase 10: solo LLM engineer discovery sanity check (control)
+run_llm_discovery_dm_pair.py     # Phase 10: LLM engineer/release_manager DM-coordination discovery
+run_llm_discovery_committee.py   # Phase 10: two-LLM-reviewer quorum-as-social-convention discovery
 runs/                     # ephemeral episode workspaces + persistent agent state (gitignored)
 results/                  # FINDINGS.md + phaseN_*.json/md (tracked); episode cache + isolate/llm
                           #   cost ledgers (gitignored)

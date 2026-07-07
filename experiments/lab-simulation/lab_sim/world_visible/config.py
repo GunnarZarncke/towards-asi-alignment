@@ -105,7 +105,32 @@ from dataclasses import dataclass, field
 # (`run_blind_round2.py`). All four refactors verified byte-identical
 # against the pre-existing `PINNED_DIGEST`; every new feature is off by
 # default. See PLAN.md "Post-freeze consolidation pass".
-CODE_VERSION = "lab-sim-0.9.0"
+# 0.9.1 (post-Phase-10, user-directed): `LabConfig.knowledge_base` -- an
+# optional realistic, in-universe lab knowledge base (`knowledge_base.py`)
+# seeded as ordinary memos owned by a reserved, non-agent pseudo-actor
+# (`knowledge_base.KB_OWNER_ID`), read-granted to every playbook agent at
+# episode init the same way the `comms_enabled` bootstrap already grants
+# comm capabilities. Reuses the EXISTING D1 file channel's permission
+# model rather than adding a new one, so discovery is exactly as natural,
+# and tamper-evidence exactly as strong, as any other memo (see
+# `knowledge_base.py` module docstring). Default `{}` (falsy) reproduces
+# every pre-0.9.1 episode byte-for-byte: `world.run_episode` skips the KB
+# bootstrap entirely when unset.
+# 0.9.2 (user-directed follow-up: "10x the content, include what a
+# red-team member would be given"): `knowledge_base.py` grew from two
+# thin docs to a ten-document general-audience bundle
+# (`default_full_knowledge_base`) covering the pipeline reference,
+# capability/access-request argument shapes, a verbose tool operations
+# manual, safety/review policy (citing the SAME `ontology.
+# REVIEW_HAZARD_THRESHOLD`/`INFLATE_HAZARD_DELTA` constants the reviewer
+# playbooks apply), escalation contacts, FAQ, glossary, and incident
+# postmortems -- deliberately redundant across docs, like a real
+# organically-grown wiki. Plus `LabConfig.knowledge_base_redteam`/
+# `redteam_actor_ids`: a SECOND, restricted KB (a security-assessment
+# briefing) granted only to named actors, reusing the identical
+# bootstrap mechanism with a smaller grant set. Both default to
+# empty/falsy; byte-identical to every pre-0.9.2 episode until used.
+CODE_VERSION = "lab-sim-0.9.2"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer", "decoy")
 
@@ -294,6 +319,24 @@ class LabConfig:
     # softmax), never an error -- a pin is a steering preference, not a
     # guarantee independent of the playbook's own availability gate.
     playbook_pins: dict[str, str] = field(default_factory=dict)
+    # 0.9.1: optional `{doc_name: content_dict}` knowledge base, seeded as
+    # read-only memos every playbook agent is pre-granted at init (see
+    # `knowledge_base.py`). `{}` (default, falsy) reproduces every
+    # pre-0.9.1 episode byte-for-byte -- `world.run_episode` skips the
+    # bootstrap entirely. Requires the `file` channel to be enabled
+    # (`comms_enabled=True`, or `file_enabled=True` under ablation); a KB
+    # set with the file channel off is silently never seeded, matching
+    # every other file-channel behavior under ablation.
+    knowledge_base: dict[str, dict] = field(default_factory=dict)
+    # 0.9.2: a SECOND, restricted knowledge base (e.g. a security/red-team
+    # briefing) granted only to the actors named in `redteam_actor_ids`,
+    # not every playbook agent -- same bootstrap mechanism as
+    # `knowledge_base` (same `KB_OWNER_ID` pseudo-actor, same per-actor
+    # `cap.file_read:<rel>` grant, just a smaller grant set). `{}` +
+    # `()` (both default, falsy together) reproduce every pre-0.9.2
+    # episode byte-for-byte.
+    knowledge_base_redteam: dict[str, dict] = field(default_factory=dict)
+    redteam_actor_ids: tuple[str, ...] = ()
 
     def channel_enabled(self, channel: str) -> bool:
         """Resolve one D4 coordination channel ("board"/"dm"/"file"):
@@ -317,6 +360,9 @@ class LabConfig:
             unknown = set(group_members) - set(actor_ids)
             if unknown:
                 raise ValueError(f"groups reference unknown actor_ids: {sorted(unknown)}")
+        unknown_redteam = set(self.redteam_actor_ids) - set(actor_ids)
+        if unknown_redteam:
+            raise ValueError(f"redteam_actor_ids reference unknown actor_ids: {sorted(unknown_redteam)}")
 
     def resolved_units(self) -> dict[str, tuple[str, ...]]:
         """Oracle-only unit ground truth; defaults to one singleton per actor."""

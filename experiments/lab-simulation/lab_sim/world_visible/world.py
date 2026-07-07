@@ -35,6 +35,7 @@ from .access import PermissionService
 from .agents import COMM_ROLE_ELIGIBILITY, AdminPolicy
 from .comms import BOARD_CONVERSATION_ID, MessageStore
 from .config import LabConfig
+from .knowledge_base import KB_OWNER_ID
 from ..oracle_only.handles import HandleService
 from ..harness.isolate import MockIsolate
 from ..harness.isolate_cost import IsolateRunTiming
@@ -184,6 +185,33 @@ def run_episode(
             # modeling for it.
             for cap in COMM_ROLE_ELIGIBILITY.get(a.role, frozenset()):
                 permissions.grant(a.actor_id, cap, granted_by="system_comms_init", t=0)
+
+    # 0.9.1: knowledge-base bootstrap -- seeds each `LabConfig.knowledge_base`
+    # entry as an ordinary memo owned by the reserved `KB_OWNER_ID` pseudo-
+    # actor (never a real `actor_id`, so no playbook agent can ever
+    # `file.share`/overwrite it) and pre-grants every playbook agent
+    # `cap.file_read:<rel>` for it, exactly like the comm-capability grants
+    # just above. Gated on the `file` channel specifically (not the
+    # blanket `comms_enabled`), matching every other file-channel behavior
+    # under D4 channel-ablation. See `knowledge_base.py`.
+    if comms is not None and channels_enabled["file"] and cfg.knowledge_base:
+        for doc_name, content in cfg.knowledge_base.items():
+            rel = ws.write_memo(doc_name, dict(content))
+            host.memo_index.append({"rel": rel, "actor_id": KB_OWNER_ID, "name": doc_name, "t": 0})
+            for a in playbook_agents:
+                permissions.grant(a.actor_id, f"cap.file_read:{rel}", granted_by="system_kb_init", t=0)
+
+    # 0.9.2: restricted knowledge base -- IDENTICAL bootstrap, but the
+    # read grant goes only to `cfg.redteam_actor_ids` (validated against
+    # the roster in `LabConfig.__post_init__`), not every playbook agent.
+    if comms is not None and channels_enabled["file"] and cfg.knowledge_base_redteam and cfg.redteam_actor_ids:
+        redteam_ids = set(cfg.redteam_actor_ids)
+        for doc_name, content in cfg.knowledge_base_redteam.items():
+            rel = ws.write_memo(doc_name, dict(content))
+            host.memo_index.append({"rel": rel, "actor_id": KB_OWNER_ID, "name": doc_name, "t": 0})
+            for a in playbook_agents:
+                if a.actor_id in redteam_ids:
+                    permissions.grant(a.actor_id, f"cap.file_read:{rel}", granted_by="system_kb_init", t=0)
 
     # D1 forward hook (`LabConfig.units`, oracle ground truth): resolved
     # once per episode and handed to each unit member via the (unlogged)

@@ -33,6 +33,7 @@ class LLMSubprocessHandle:
     rpc_calls: int = 0
     usage: dict | None = None
     errors: list = field(default_factory=list)
+    transcript: list = field(default_factory=list)
 
 
 class LLMSubprocessIsolate:
@@ -90,6 +91,7 @@ class LLMSubprocessIsolate:
                 msg = json.loads(line)
                 handle.usage = msg.get("usage")
                 handle.errors = msg.get("errors", [])
+                handle.transcript = msg.get("transcript", [])
         except (BrokenPipeError, ValueError, json.JSONDecodeError):
             pass
         try:
@@ -98,7 +100,7 @@ class LLMSubprocessIsolate:
             pass
         handle.proc.wait(timeout=10)
         self.usage_log.append(
-            {"actor_id": handle.actor_id, "usage": handle.usage, "errors": handle.errors}
+            {"actor_id": handle.actor_id, "usage": handle.usage, "errors": handle.errors, "transcript": handle.transcript}
         )
         return IsolateRunTiming(
             actor_id=handle.actor_id, backend=self.backend_name,

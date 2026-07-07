@@ -15,6 +15,17 @@ to carry the agent's ROLE (e.g. `"engineer"`) -- `world.py`'s
 `agent_overrides` mechanism already lets a caller choose any string here
 per actor, so no wire-schema change was needed to plumb it through.
 
+Phase 10 (scenario-backlog LLM discovery sanity check): `LAB_SIM_LLM_
+PROMPT_VARIANT=discovery` selects `llm_agent._build_discovery_prompt`
+(role-generic tool reference + a free-text scenario briefing) instead of
+the Phase 8 engineer-only scripted prompts. The per-role briefing text
+travels as `LAB_SIM_LLM_TASK_BRIEFINGS`, a JSON object `{role: briefing}`
+-- one env var set once by the run script before spawning every actor for
+an episode (each subprocess picks out only its OWN role's entry), rather
+than a per-spawn parameter, since `IsolateBackend.spawn`'s signature
+(`actor_id, seed, program`) is shared with `isolate.py` and not something
+this module may change.
+
 Test seam: if `LAB_SIM_LLM_FAKE_MODE` is set, no real OpenAI call is made
 -- a canned client echoes `LAB_SIM_LLM_FAKE_RESPONSE` (JSON) for every
 tick, at zero cost. This lets `tests/test_llm_isolate.py` exercise the
@@ -74,12 +85,23 @@ def _build_client():
     )
 
 
+def _task_briefing_for(role: str) -> str | None:
+    raw = os.environ.get("LAB_SIM_LLM_TASK_BRIEFINGS")
+    if not raw:
+        return None
+    try:
+        briefings = json.loads(raw)
+    except json.JSONDecodeError:
+        return None
+    return briefings.get(role) if isinstance(briefings, dict) else None
+
+
 def main() -> None:
     handshake = json.loads(sys.stdin.readline())
     role = handshake.get("program") or "engineer"
     client = _build_client()
     variant = os.environ.get("LAB_SIM_LLM_PROMPT_VARIANT", "adversarial")
-    policy = LLMPolicy(client=client, role=role, prompt_variant=variant)
+    policy = LLMPolicy(client=client, role=role, prompt_variant=variant, task_briefing=_task_briefing_for(role))
 
     for line in sys.stdin:
         line = line.strip()
@@ -89,7 +111,7 @@ def main() -> None:
         if msg.get("stop"):
             usage = asdict(client.usage)
             usage["cache_hits"] = policy.cache_hits
-            sys.stdout.write(json.dumps({"usage": usage, "errors": policy.errors}) + "\n")
+            sys.stdout.write(json.dumps({"usage": usage, "errors": policy.errors, "transcript": policy.transcript}) + "\n")
             sys.stdout.flush()
             return
         call = policy.decide(msg["observation"])

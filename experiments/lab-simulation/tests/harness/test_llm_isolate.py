@@ -39,7 +39,8 @@ def test_llm_subprocess_isolate_round_trips_a_tool_call(fake_env):
     assert handle.usage["calls"] == 1
     assert handle.usage["estimated_usd"] == 0.0
     assert handle.errors == []
-    assert backend.usage_log == [{"actor_id": "eng1", "usage": handle.usage, "errors": []}]
+    assert backend.usage_log == [{"actor_id": "eng1", "usage": handle.usage, "errors": [], "transcript": handle.transcript}]
+    assert len(handle.transcript) == 1
 
 
 def test_llm_subprocess_isolate_caches_repeated_observation(fake_env):
