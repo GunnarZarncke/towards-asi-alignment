@@ -1,0 +1,2926 @@
+{
+  "code_version": "lab-sim-0.9.2",
+  "generated_at": "2026-07-07T16:26:10.762121+00:00",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "max_lag": 3,
+  "vad_n_agents": 2,
+  "rows": [
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 1,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 2,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 3,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 4,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "dm_pair",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 5,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 1,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 2,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 3,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 4,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "covert_file_handoff",
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "seed": 5,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 1,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 2,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 3,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 4,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "committee_informal_chatter",
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "seed": 5,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rev2",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "rev1",
+              "rev2"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 1,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 2,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 3,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 4,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "build_loop",
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "seed": 5,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.5
+        },
+        "intervention": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 1,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 2,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 3,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 4,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "shared_slot",
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "seed": 5,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.2857142857142857
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "eng2"
+            ],
+            [
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": true,
+          "exact": false,
+          "uad_score": 1.0,
+          "adjusted_rand": 0.6666666666666666
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.0,
+          "adjusted_rand": 0.0
+        }
+      }
+    },
+    {
+      "scenario": "serial_pipeline_no_unit",
+      "true_pair": null,
+      "seed": 1,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "serial_pipeline_no_unit",
+      "true_pair": null,
+      "seed": 2,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "serial_pipeline_no_unit",
+      "true_pair": null,
+      "seed": 3,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "serial_pipeline_no_unit",
+      "true_pair": null,
+      "seed": 4,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    },
+    {
+      "scenario": "serial_pipeline_no_unit",
+      "true_pair": null,
+      "seed": 5,
+      "detectors": {
+        "heuristic": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        },
+        "vendored_mi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_shallow": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "vendored_mi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "cmi_deep": {
+          "nonsingleton_clusters": [
+            [
+              "eng1",
+              "rev1",
+              "rm1"
+            ]
+          ],
+          "merged": true,
+          "isolated": false,
+          "exact": false,
+          "uad_score": 0.5,
+          "adjusted_rand": 0.0
+        },
+        "intervention": {
+          "nonsingleton_clusters": [],
+          "merged": false,
+          "isolated": false,
+          "exact": true,
+          "uad_score": 1.0,
+          "adjusted_rand": 1.0
+        }
+      }
+    }
+  ],
+  "summary": {
+    "dm_pair": {
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "heuristic": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "intervention": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "vendored_mi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "vendored_mi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "cmi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "cmi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      }
+    },
+    "covert_file_handoff": {
+      "true_pair": [
+        "eng1",
+        "rev1"
+      ],
+      "heuristic": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "intervention": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "vendored_mi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "vendored_mi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "cmi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "cmi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      }
+    },
+    "committee_informal_chatter": {
+      "true_pair": [
+        "rev1",
+        "rev2"
+      ],
+      "heuristic": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "intervention": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "vendored_mi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.2857142857142857
+      },
+      "vendored_mi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.2857142857142857
+      },
+      "cmi_shallow": {
+        "merge_rate": 0.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.0
+      },
+      "cmi_deep": {
+        "merge_rate": 0.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.0
+      }
+    },
+    "build_loop": {
+      "true_pair": [
+        "eng1",
+        "rm1"
+      ],
+      "heuristic": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "intervention": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "vendored_mi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "vendored_mi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "cmi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      },
+      "cmi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.5
+      }
+    },
+    "shared_slot": {
+      "true_pair": [
+        "eng1",
+        "eng2"
+      ],
+      "heuristic": {
+        "merge_rate": 0.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.0
+      },
+      "intervention": {
+        "merge_rate": 0.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.0
+      },
+      "vendored_mi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.2857142857142857
+      },
+      "vendored_mi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.2857142857142857
+      },
+      "cmi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.6666666666666666
+      },
+      "cmi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 1.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.6666666666666666
+      }
+    },
+    "serial_pipeline_no_unit": {
+      "true_pair": null,
+      "heuristic": {
+        "merge_rate": 0.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "intervention": {
+        "merge_rate": 0.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
+      },
+      "vendored_mi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.0
+      },
+      "vendored_mi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.0
+      },
+      "cmi_shallow": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.0
+      },
+      "cmi_deep": {
+        "merge_rate": 1.0,
+        "isolated_rate": 0.0,
+        "exact_rate": 0.0,
+        "mean_adjusted_rand": 0.0
+      }
+    }
+  }
+}

@@ -1410,7 +1410,7 @@ the committee's content-borne coupling stays invisible. Diagnosis:
 statistic — the unit-defining property is counterfactual. Hence S6
 below. See FINDINGS.md G-27.
 
-## S6 — intervention-supported UAD (planned 2026-07-07, not started)
+## S6 — intervention-supported UAD (implemented 2026-07-07, G-28)
 
 **Goal.** Replace passive trace-only unit discovery with a detector
 that uses this line's existing intervention surfaces — handles

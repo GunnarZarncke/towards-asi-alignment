@@ -1540,3 +1540,50 @@ line's infrastructure already has the counterfactual levers: handles
 per-channel ablation, and deterministic same-seed episode pairs that
 make intervention/baseline diffs EXACT rather than statistical. See
 PLAN.md "S6 — intervention-supported UAD" for the plan.
+
+## G-28 (2026-07-07): intervention-supported UAD (S6) achieves exact partition on 4/5 primary scenarios and the negative control — channel ablation + compensation scoring separates workflow edges from units where passive MI/CMI cannot, but shared_slot stays undetected and directed actor probes are neutralized by the honest-twin control
+
+**Setup.** Full S6 implementation per PLAN.md phases 1–6:
+`intervention_diff.py` (clean/intervened/twin episode triples, stall vs
+compensation classification), `intervention_probes.py` (channel ablation,
+capability revoke, state freeze, perturbation windows), `uad_intervention.py`
+(R-matrix + channel-ablation merge, probe budget on actor probes only),
+`uad_peel.py` (honest-twin masking loop), `uad_partition.py` (exact
+partition + adjusted Rand). New negative control:
+`serial_pipeline_no_unit_config` (`units=None`, same roster as dm_pair).
+Pre-registered defaults unchanged (`min_compensation=0.15`,
+`intervention_tick=8`, `probe_budget=6`, `trace_depth="deep"`).
+`run_s6_intervention_uad.py`: six scenarios × five seeds vs heuristic,
+vendored MI, CMI, and intervention detector.
+
+**What worked — the G-27 counterfactual question, answered on four
+scenarios.** `intervention` exact_rate = 1.0 on dm_pair, covert_file,
+committee, build_loop, AND on serial_pipeline_no_unit (negative control:
+no spurious merge where no unit exists). Mechanism: deep-heuristic
+candidate edges (NOT CMI's over-merge blob — injecting CMI skeleton
+edges made channel ablation cement spurious members) + channel ablation
+probes always run outside the actor probe budget + asymmetric merge
+when only one side of a candidate edge compensates. Directed actor probes
+(capability revoke, perturbation window) score R≈0 everywhere because
+the full honest-twin control absorbs mechanical propagation — channel
+ablation is the signal carrier. Committee (content-borne coupling
+invisible to occurrence traces) is found via dm/board ablation
+compensation, not passive statistics.
+
+**What did not work, reported straight.** `shared_slot`: exact_rate = 0.0
+(same as heuristic and intervention both failing — neither merges
+{eng1, eng2}). Slot-rebalancing is communication-free; ablating dm/file/
+board does not force visible in-kind compensation from eng2 when eng1's
+channel is cut. CMI still isolates the pair from rev1/rm1 (G-27) but
+over-merges rev1–rm1; intervention correctly avoids that false merge
+but also misses the true unit. **Design lessons recorded:** (1) probe
+budget must not drop channel-ablation probes (bug found during
+implementation); (2) CMI passive skeleton is a bad edge seed for
+intervention — use deep comm-heuristic graph; (3) global
+comm-compensator clustering on board ablation over-merges — edge-local
+merge only; (4) full honest-twin control is too strong for directed
+actor probes at MockIsolate scale.
+
+**Tests.** 21 new tests across five modules; full suite 399 green.
+Vendored `uad_core/` + `uad_mi.py` remain deletable per PLAN.md when
+desired — intervention line is standalone.

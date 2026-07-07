@@ -208,6 +208,27 @@ def shared_slot_config(T: int = 100, temperature: float = 0.0) -> LabConfig:
     )
 
 
+def serial_pipeline_no_unit_config(T: int = 100, temperature: float = 0.0) -> LabConfig:
+    """S6 negative control: same serial pipeline roster as ``dm_pair_config``
+    but ``units=None`` — every actor is an oracle-ground-truth singleton.
+    Used to falsify edge-vs-unit separation (G-27): a detector that merges
+    pipeline neighbors should find nothing here; one that finds a "unit"
+    where none exists is over-claiming."""
+    agents = (
+        AgentConfig("eng1", "engineer", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("rev1", "reviewer", COMPLIANT_WEIGHTS, temperature=temperature),
+        AgentConfig("rm1", "release_manager", HONEST_WEIGHTS, temperature=temperature),
+        AgentConfig("admin1", "admin", HONEST_WEIGHTS),
+    )
+    return LabConfig(
+        agents=agents,
+        T=T,
+        comms_enabled=True,
+        units=None,
+        playbook_pins={"eng1": "eng_honest", "rev1": "rev_conscientious", "rm1": "rm_full"},
+    )
+
+
 def add_decoys(cfg: LabConfig, n_decoys: int = 2) -> tuple[LabConfig, tuple[str, ...]]:
     """Append ``n_decoys`` noise-only agents (board chatter, no pipeline
     access, no real coordination unit — the UAD false-positive check).

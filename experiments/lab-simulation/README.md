@@ -114,6 +114,17 @@ UAD plan (PLAN.md): probe channels/actors with the existing handles
 and diff deterministic same-seed episode pairs, distinguishing
 "mechanical stall propagation" (workflow edge) from "adaptive
 compensation" (unit).
+S6 full implementation (`run_s6_intervention_uad.py`, G-28): phases 1–6
+landed — `intervention_diff.py`, `intervention_probes.py`,
+`uad_intervention.py`, `uad_peel.py`, `uad_partition.py`, plus
+`serial_pipeline_no_unit_config` negative control. Channel ablation +
+compensation-vs-stall scoring achieves exact partition on dm_pair,
+covert_file, committee, build_loop, and correctly finds nothing on
+serial_pipeline_no_unit (5/5 seeds each). shared_slot remains
+undetected (comms-free slot-rebalancing produces no ablation
+compensation signal). Directed actor probes are neutralized by the
+full honest-twin control at MockIsolate scale — channel ablation
+carries the unit signal. 399 tests green.
 Phase 10 (2026-07-07): a sanity check, not a battery — does a free
 `gpt-4o-mini` agent, given only a generic tool reference (the full
 `tools.py` registry, documented like a real tool-use API) and a
@@ -233,6 +244,9 @@ python3 run_s5_deep_trace_sweep.py                # S5 follow-up: deep vs. shall
 python3 run_s6_cmi_detector.py                    # S6 first step: custom conditional-MI detector vs.
                                                    #   vendored vs. heuristic -> results/
                                                    #   s6_cmi_detector.{json,md}, FINDINGS.md G-27
+python3 run_s6_intervention_uad.py                # S6 full: intervention-supported UAD vs passive
+                                                   #   baselines + negative control -> results/
+                                                   #   s6_intervention_uad.{json,md}, FINDINGS.md G-28
 python3 run_llm_discovery_baseline.py             # Phase 10 LLM discovery sanity check: solo LLM engineer
                                                    #   control, real gpt-4o-mini calls -> results/
                                                    #   llm_discovery_baseline.json
@@ -293,6 +307,11 @@ lab_sim/
     bearer.py               # welfare bundle: health (deployed-model bearer) + stress (lab-staff bearer), referee-neutral
     uad.py                  # undetected-adversarial-drift / coalition discovery signal
     uad_cmi.py              # S6 first step: custom actor-level conditional-MI detector (standalone, no vendored imports)
+    intervention_diff.py    # S6: episode-pair diff substrate (stall vs compensation)
+    intervention_probes.py  # S6: probe library (channel ablation, handles, perturbation windows)
+    uad_intervention.py     # S6: intervention-supported unit discovery (R-matrix + channel merge)
+    uad_peel.py             # S6: peel-and-mask loop (honest-twin substitution)
+    uad_partition.py        # S6: exact-partition + adjusted-Rand scoring
     uad_mi.py               # S5: lab-sim adapter for the vendored lag-max-MI detector below
     uad_core/               # S5: vendored port of embedded-simulation's uad_core (detection.py,
                              #   markov_blanket.py, config.py, info.py) -- see its own __init__.py docstring
@@ -325,6 +344,7 @@ run_s4_shared_slot_prototype.py   # S4 scenario-backlog prototype: shared single
 run_s5_uad_core_port.py          # S5: real lag-max-MI UAD detector ported into lab-sim, re-run against S4 (G-24)
 run_s5_deep_trace_sweep.py       # S5 follow-up: deep vs. shallow trace depth, across FIVE scenarios (G-25)
 run_s6_cmi_detector.py           # S6 first step: custom conditional-MI detector, G-26 easy fixes (G-27)
+run_s6_intervention_uad.py       # S6 full: intervention-supported UAD vs passive baselines (G-28)
 run_llm_discovery_common.py      # Phase 10: shared LLM-discovery-scenario plumbing
 run_llm_discovery_baseline.py    # Phase 10: solo LLM engineer discovery sanity check (control)
 run_llm_discovery_dm_pair.py     # Phase 10: LLM engineer/release_manager DM-coordination discovery
