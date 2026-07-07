@@ -8,7 +8,7 @@ evidence: "The interval from the 1999 Glass-Steagall repeal to the 2008 crisis w
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-reform-decay"]
 citeKeys: ["kroszner2014regulation", "fcic2011report", "white2010ratingagencies"]
-related: ["institutional-genesis-and-decay", "institutional-memory-refresh", "anti-capture-correction-validity"]
+related: ["chapters/appM", "institutional-memory-refresh", "anti-capture-correction-validity"]
 ---
 
 A constraint maintained by memory of a specific catastrophe decays on roughly the timescale of a human working generation unless something re-derives it independently of that memory. United States banking regulation after the 1930s shows the pattern cleanly: Glass-Steagall, deposit insurance, and the SEC were catastrophe-driven constraints, eroded piece by piece through supervisory reinterpretation, exemptions, and eventual repeal as the generation that had lived through the founding catastrophe left the relevant institutions. The 2008 crisis then reproduced several of the exact failure modes the original constraints had targeted.

@@ -8,7 +8,7 @@ evidence: "Every procedural requirement of the 1933 Enabling Act was satisfied â
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-entrenchment"]
 citeKeys: ["evans2003comingthirdreich", "preuss2011eternity"]
-related: ["institutional-genesis-and-decay", "subsumption-corrigibility", "institutional-dual-mandate-genesis"]
+related: ["chapters/appM", "subsumption-corrigibility", "institutional-dual-mandate-genesis"]
 ---
 
 Weimar Germany's Enabling Act is the sharpest case of a correction channel being used, with complete formal validity, to abolish itself: the Reichstag convened, a required supermajority voted, and the act was published according to law. No audit checking only procedure could have caught this, because the procedure itself was what was being weaponized.

@@ -8,7 +8,7 @@ evidence: "Elixir Sulfanilamide (1938, over 100 deaths) and thalidomide (1962) e
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-genesis-catastrophe"]
 citeKeys: ["carpenter2010reputation"]
-related: ["institutional-genesis-and-decay", "institutional-capability-latency-gap", "institutional-genesis-chronic-threat"]
+related: ["chapters/appM", "institutional-capability-latency-gap", "institutional-genesis-chronic-threat"]
 ---
 
 The 1906 Pure Food and Drug Act followed muckraking journalism, not a single disaster. The 1938 Federal Food, Drug, and Cosmetic Act followed the deaths of over one hundred people, many of them children, from a drug marketed without any toxicity testing. The 1962 Kefauver-Harris Amendments, which added the efficacy requirement and the modern clinical-trial apparatus, followed the thalidomide birth-defect catastrophe. Each expansion of the regulator's causal reach came after a demonstration that the previous reach was insufficient, never before — the institutional analogue of capability-correction slack.

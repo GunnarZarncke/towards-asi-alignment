@@ -8,7 +8,7 @@ evidence: "The 1974 separation of the NTSB from the FAA (so the corrector is not
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-evidence-before-authority"]
 citeKeys: ["reason1997managingrisks"]
-related: ["institutional-genesis-and-decay", "correction-channel-integrity", "institutional-selection-gating"]
+related: ["chapters/appM", "correction-channel-integrity", "institutional-selection-gating"]
 ---
 
 Across every genesis route, one component reliably precedes the strong correction handle: the mechanism that preserves evidence. Flight recorders, and the independent crash-investigation function that reads them, were built up well before the FAA had its full modern enforcement authority. The investigative function was deliberately separated from the promotional and regulatory function in 1974 when the NTSB became independent — precisely to keep the corrector from being the entity whose decisions it might need to indict. The Aviation Safety Reporting System (1976) grants reporters immunity from enforcement action in exchange for candid near-miss disclosure, trading punishment for information.

@@ -8,7 +8,7 @@ evidence: "The 107 BCE Marian reforms opened legionary service to the landless p
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-capability-latency"]
 citeKeys: ["keaveney2007army", "gruen1995lastgeneration"]
-related: ["institutional-genesis-and-decay", "attractor-control", "institutional-genesis-catastrophe-ratchet"]
+related: ["chapters/appM", "attractor-control", "institutional-genesis-catastrophe-ratchet"]
 ---
 
 The Roman Republic's institutions — annual and collegial magistracies, term limits, the tribunician veto, and a structured career ladder — amounted to a genuinely sophisticated correction architecture, stable for roughly three and a half centuries. The Marian military reforms had the unintended effect of making legions personally loyal to the general who could promise them land and reward, rather than to the Republic itself. This created a new class of causal power — a private citizen's ability to command an army loyal to him personally — for which no correction channel existed, because none had ever been needed while military loyalty ran to the state.

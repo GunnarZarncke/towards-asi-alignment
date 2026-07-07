@@ -4,6 +4,7 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
 import Formula from "../../components/Formula.astro";
 import BridgeCrosswalkTable from "../../components/BridgeCrosswalkTable.astro";
+import CardSection from "../../components/CardSection.astro";
 import FieldSubsumptionsTable from "../../components/FieldSubsumptionsTable.astro";
 import ReferenceIndex from "../../components/ReferenceIndex.astro";
 import LeanCodeBlock from "../../components/LeanCodeBlock.astro";
@@ -15,23 +16,32 @@ import demosIndex from "../../data/demos.json";
 import bookIndex from "../../data/book.json";
 import crosswalkRows from "../../data/bridge-crosswalk.json";
 import leanSpine from "../../data/lean-spine.json";
-import { bookHref, cardHref as buildCardHref, resolveCard, routeSlug } from "../../lib/site-urls";
+import { bookFullHref, bookHref, cardHref as buildCardHref, pdfHref, resolveCard, routeSlug } from "../../lib/site-urls";
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
 import { referenceLinksFor } from "../../lib/reference-links";
 
 export async function getStaticPaths() {
   const cards = await getCollection("cards");
-  return cards.map((card) => ({
-    params: { slug: card.id },
-    props: { card }
-  }));
+  return [
+    ...cards.map((card) => ({
+      params: { slug: card.id },
+      props: { card, showFullText: false as const }
+    })),
+    ...cards
+      .filter((card) => card.data.overviewOnly && card.data.bookPageId)
+      .map((card) => ({
+        params: { slug: `${card.id}/full` },
+        props: { card, showFullText: true as const }
+      }))
+  ];
 }
 
-const { card } = Astro.props;
+const { card, showFullText = false } = Astro.props;
 const allCards = await getCollection("cards");
 const allBookPages = await getCollection("book");
 const isBookUnit = ["chapter", "appendix", "frontmatter"].includes(card.data.type);
-const bookEntry = isBookUnit && card.data.bookPageId
+const isOverviewHub = card.data.overviewOnly === true && !showFullText;
+const bookEntry = isBookUnit && card.data.bookPageId && !isOverviewHub
   ? allBookPages.find((entry) => routeSlug(entry.id) === routeSlug(card.data.bookPageId!))
   : undefined;
 const { Content } = bookEntry ? await render(bookEntry) : await render(card);
@@ -135,7 +145,13 @@ const referenceLinks = isReferenceCard
       {!bookEntry ? (
         <>
           <h1>{card.data.title}</h1>
-          <p class="lede">{card.data.summary}</p>
+          {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
+          {isOverviewHub && card.data.bookPageId && (
+            <p class="button-row">
+              <a class="button primary" href={bookFullHref(base, card.data.bookPageId)}>Read full appendix on site</a>
+              <a class="button" href={pdfHref(base)}>PDF</a>
+            </p>
+          )}
           {isExperimentCard && card.data.experimentLineId && (
             <p class="side-panel-meta">
               <a href={withBase(`/experiments/#${card.data.experimentLineId}`)}>Full experiment overview</a>
@@ -143,7 +159,14 @@ const referenceLinks = isReferenceCard
           )}
         </>
       ) : (
-        <p class="side-panel-meta">Source: <code>{bookEntry.data.sourceFile}</code></p>
+        <>
+          {showFullText && card.data.bookPageId && (
+            <p class="button-row">
+              <a class="button" href={cardHref(card.id)}>Case study overview</a>
+            </p>
+          )}
+          <p class="side-panel-meta">Source: <code>{bookEntry.data.sourceFile}</code></p>
+        </>
       )}
 
       {isReferenceCard && referenceLinks.length > 0 && (
@@ -174,6 +197,30 @@ const referenceLinks = isReferenceCard
           cardHref={cardHref}
           chapterHref={toBookHref}
         />
+      )}
+
+      {isOverviewHub && related.length > 0 && (
+        <>
+          <CardSection
+            title="Historical case studies"
+            sectionId="appm-case-studies"
+            cards={related.map((entry) => ({
+              id: entry!.id,
+              title: entry!.data.title,
+              summary: entry!.data.summary,
+              type: entry!.data.type,
+              status: entry!.data.status
+            }))}
+            initialCount={related.length}
+            cardHref={cardHref}
+          />
+          <p class="button-row">
+            {card.data.bookPageId && (
+              <a class="button primary" href={bookFullHref(base, card.data.bookPageId)}>Read full appendix on site</a>
+            )}
+            <a class="button" href={pdfHref(base)}>Read full appendix in PDF</a>
+          </p>
+        </>
       )}
 
       {isReferenceIndexCard && (
@@ -228,6 +275,15 @@ const referenceLinks = isReferenceCard
 
     <aside class="side-panel" aria-label="Related content" id="related">
       <h2>Related content</h2>
+      {isOverviewHub && card.data.bookPageId && (
+        <>
+          <h3>Full appendix</h3>
+          <ul>
+            <li><a href={bookFullHref(base, card.data.bookPageId)}>Read on site</a></li>
+            <li><a href={pdfHref(base)}>PDF</a></li>
+          </ul>
+        </>
+      )}
       {!isBookUnit && !isReferenceCard && card.data.bookChapters.length > 0 && (
         <>
           <h3>Book chapters</h3>

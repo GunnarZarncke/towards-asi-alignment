@@ -46,7 +46,7 @@ steps:
     note: "The single most consequential historical lesson for AI-safety regulation today."
   - kind: book
     ref: appM
-    note: "Institutional histories — how correction mechanisms are founded, kept alive, and fail."
+    note: "Institutional histories hub — eleven case-study cards on genesis, stabilization, and failure."
   - kind: card
     ref: evidence-and-uncertainty
     note: "Claim labels and what would change a funding decision."

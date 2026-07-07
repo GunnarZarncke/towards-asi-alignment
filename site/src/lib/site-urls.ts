@@ -8,6 +8,10 @@ export function bookHref(base: string, chapterId: string) {
   return cardHref(base, `chapters/${chapterId}`);
 }
 
+export function bookFullHref(base: string, chapterId: string) {
+  return cardHref(base, `chapters/${chapterId}/full`);
+}
+
 export function cardHref(base: string, cardId: string) {
   const path = cardId.split("/").map((part) => encodeURIComponent(routeSlug(part))).join("/");
   return `${base}${`cards/${path}/`.replace(/^\/+/, "")}`;
@@ -45,8 +49,8 @@ export function pdfHref(base: string) {
   return `${normalized}${BOOK_PDF_FILENAME}`;
 }
 
-/** Relative PDF link from generated book chapter markdown (book/chNN/). */
-export const BOOK_CHAPTER_PDF_HREF = "../../towards-superintelligence-alignment.pdf";
+/** Relative PDF link from generated book chapter markdown (cards/chapters/{id}/). */
+export const BOOK_CHAPTER_PDF_HREF = "../../../towards-superintelligence-alignment.pdf";
 
 export function pathHref(base: string, pathId: string) {
   const normalized = base.endsWith("/") ? base : `${base}/`;

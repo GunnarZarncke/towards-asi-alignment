@@ -11,6 +11,7 @@ const card = defineCollection({
     decision: z.string().optional(),
     evidence: z.string().optional(),
     bookPageId: z.string().optional(),
+    overviewOnly: z.boolean().optional(),
     bibKey: z.string().optional(),
     experimentLineId: z.string().optional(),
     citedIn: z.array(z.string()).default([]),

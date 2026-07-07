@@ -54,6 +54,9 @@ steps:
     ref: attractor-control
     note: "Claim 6 — alignment as partly institutional selection."
   - kind: book
+    ref: appM
+    note: "Institutional histories hub — how correction mechanisms are founded, kept alive, and fail."
+  - kind: book
     ref: ch47
     note: "Who still counts after transformation."
   - kind: card

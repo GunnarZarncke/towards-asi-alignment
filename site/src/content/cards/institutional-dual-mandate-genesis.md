@@ -8,7 +8,7 @@ evidence: "Arthur Andersen's simultaneous audit and consulting relationship with
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-dual-mandate"]
 citeKeys: ["mazuzan1985atom", "coffee2006gatekeepers"]
-related: ["institutional-genesis-and-decay", "anti-capture-correction-validity", "institutional-entrenchment-corrigibility"]
+related: ["chapters/appM", "anti-capture-correction-validity", "institutional-entrenchment-corrigibility"]
 ---
 
 Unlike reform decay, this failure requires no drift at all: some correctors are captured from the moment they are founded, because the same body is charged with both promoting and constraining the thing it oversees. The United States Atomic Energy Commission combined development and safety mandates in a single agency from 1946; the 1974 Energy Reorganization Act split it into the Nuclear Regulatory Commission and the Energy Research and Development Administration specifically because the combined mandate had produced exactly the predictable outcome. Japan's pre-Fukushima "nuclear village" repeated the structural error decades later.

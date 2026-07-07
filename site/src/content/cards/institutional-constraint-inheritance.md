@@ -8,7 +8,7 @@ evidence: "Tivoization showed hardware vendors satisfying the license to the let
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-constraint-inheritance"]
 citeKeys: ["kelty2008twobits", "weber2004successopensource", "fsf2007gplv3"]
-related: ["institutional-genesis-and-decay", "conserved-properties-growth-split-merge", "successor-stability"]
+related: ["chapters/appM", "conserved-properties-growth-split-merge", "successor-stability"]
 ---
 
 The GPL's mechanism is that the constraint travels with the artifact rather than depending on the successor's goodwill: any distributed derivative work must carry the same license, so inheritance is structural rather than voluntary. Enforcement rides an existing, strong, and distributed lever — copyright — so any contributor can enforce it rather than relying on one capturable enforcement office. It has been tested adversarially in court for four decades.

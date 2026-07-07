@@ -8,7 +8,7 @@ evidence: "The airworthiness directive is the paradigm conductive artifact: ters
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-selection-gating"]
 citeKeys: ["herkert2020boeing"]
-related: ["institutional-genesis-and-decay", "attractor-control", "institutional-evidence-before-authority"]
+related: ["chapters/appM", "attractor-control", "institutional-evidence-before-authority"]
 ---
 
 Evidence and authority are not enough if uncertified actors can still operate profitably. Airworthiness certification, paired with the near-universal requirement of insurance to fly commercially, produces a genuine selection basin: no insurer will cover an aircraft that fails certification, and no airport will schedule it. The same structure appears in nuclear power and pharmaceuticals, where an uncertified drug simply cannot be lawfully prescribed.

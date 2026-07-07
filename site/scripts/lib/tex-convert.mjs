@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
-const PDF_HREF = "../../towards-superintelligence-alignment.pdf";
+const PDF_HREF = "../../../towards-superintelligence-alignment.pdf";
 const FIGURE_BASE = "https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main";
 
 const MATH_ENVS = new Set([
@@ -229,15 +229,21 @@ function relBookHref(pageId, anchor, fromPageId) {
   if (pageId === fromPageId) {
     return anchor ? `#${anchor}` : "./";
   }
-  return `../../cards/chapters/${slug}/${anchor ? `#${anchor}` : ""}`;
+  // Book pages are served at /cards/chapters/{id}/ — sibling chapters are one level up.
+  return `../${slug}/${anchor ? `#${anchor}` : ""}`;
 }
 
 function relCardHref(cardSlug) {
-  return `../../cards/${cardSlug}/`;
+  if (cardSlug.startsWith("chapters/")) {
+    const chapterId = cardSlug.slice("chapters/".length).toLowerCase();
+    return `../${chapterId}/`;
+  }
+  // Concept, reference, and experiment cards live under /cards/{slug}/.
+  return `../../${cardSlug}/`;
 }
 
 function relReferencesHref(key) {
-  return `../../cards/references/${encodeURIComponent(key.toLowerCase())}/`;
+  return `../../references/${encodeURIComponent(key.toLowerCase())}/`;
 }
 
 function resolveRef(label, ctx, kind = "ref") {

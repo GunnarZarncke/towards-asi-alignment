@@ -8,7 +8,7 @@ evidence: "Marine underwriting losses informed classification ratings continuous
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-genesis-money"]
 citeKeys: ["kingston2007marine"]
-related: ["institutional-genesis-and-decay", "institutional-genesis-chronic-threat", "attractor-control"]
+related: ["chapters/appM", "institutional-genesis-chronic-threat", "attractor-control"]
 ---
 
 Marine underwriters needed to know which ships were seaworthy before pricing a policy, and a shipowner with an unclassified vessel found insurance expensive or unavailable. Lloyd's Register's independent classification survey therefore predates any state maritime safety regulation by more than a century — and no catastrophe founded it. Ordinary, continuous underwriting losses did: every wreck was informative to the insurer whether or not it made the newspapers.

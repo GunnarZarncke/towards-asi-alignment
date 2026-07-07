@@ -8,7 +8,7 @@ evidence: "The Catholic Church's advocatus diaboli role in canonization, abolish
 bookChapters: ["appM"]
 bookLabels: ["sec:appm-memory-refresh"]
 citeKeys: ["lane1973venice", "finlay1980politics", "woodward1996makingsaints"]
-related: ["institutional-genesis-and-decay", "institutional-reform-decay", "institutional-entrenchment-corrigibility", "attractor-control"]
+related: ["chapters/appM", "institutional-reform-decay", "institutional-entrenchment-corrigibility", "attractor-control"]
 ---
 
 The human value-update operator is, in practice, bounded by what individual humans can experience, anticipate, and be currently incentivized about — roughly a working lifetime. A hazard whose recurrence interval is much longer than that horizon becomes invisible to the bundle the operator maintains, not because anyone decides it is unimportant, but because the confirming evidence stream for the constraint dries up. Institutions that persist beyond that horizon are never institutions with unusually long individual memory; they convert a rare, long-horizon hazard into frequent, short-horizon surrogate events that fit inside the update operator's natural window.

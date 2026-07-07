@@ -88,6 +88,7 @@ function cardFrontmatter(data) {
 
   if (data.part) lines.push(`part: ${yamlString(data.part)}`);
   if (data.formalDensity) lines.push(`formalDensity: ${yamlString(data.formalDensity)}`);
+  if (data.overviewOnly) lines.push("overviewOnly: true");
   if (data.related.length > 0) {
     lines.push("related:");
     for (const slug of data.related) lines.push(`  - ${slug}`);
@@ -98,9 +99,13 @@ function cardFrontmatter(data) {
 }
 
 function cardBody(data) {
-  const lines = [data.summary];
+  const lines = [];
+  if (!data.overviewOnly) {
+    lines.push(data.summary);
+  }
   if (data.bodyExtra) {
-    lines.push("", data.bodyExtra);
+    if (lines.length > 0) lines.push("");
+    lines.push(data.bodyExtra);
   }
   if (data.partTitle) {
     lines.push("", `Part: ${data.partTitle}`);
@@ -183,6 +188,7 @@ async function main() {
       file: "appendices/appM-institutional-histories.tex",
       type: "appendix",
       title: "Institutional Genesis, Memory, and Decay: Historical Case Studies",
+      overviewOnly: true,
       related: [
         "institutional-genesis-money-at-risk",
         "institutional-genesis-catastrophe-ratchet",
@@ -195,7 +201,9 @@ async function main() {
         "institutional-reform-decay",
         "institutional-dual-mandate-genesis",
         "institutional-capability-latency-gap"
-      ]
+      ],
+      bodyExtra:
+        "Appendix C maps the book's technical vocabulary onto institutional language. This appendix asks a different question: how did any of those institutional correction mechanisms come to exist, what kept them working once they existed, and what specifically broke when they failed?\n\nEleven historical cases, one per mechanism, are read in life-cycle order: genesis (from money at risk, from catastrophe, or from chronic threat), stabilization (evidence before authority, selection gating, constraint inheritance across successors, memory refresh through succession), hardening (entrenchment), and failure (reform decay, dual-mandate genesis, capability-jump latency).\n\nThe central disanalogy runs through the whole appendix: the catastrophe-ratchet genesis route, which produced most of the strongest human correction regimes, requires a catastrophe survivable enough that the polity persists to reform. If an AI failure at the relevant capability level is unbounded or irreversible, that route is unavailable exactly when it is needed most — which is why the money-at-risk and chronic-threat genesis routes, and the memory-refresh and entrenchment mechanisms that do not depend on remembering a specific disaster, matter more for AI governance than for institutional history generally.\n\nUse the case study cards below for the mechanism-by-mechanism treatment. For the complete historical narrative and bibliography, [read the full appendix on site](full/) or [download the PDF](../../../towards-superintelligence-alignment.pdf)."
     },
     { id: "appD", file: "appendices/appD-worked-example.tex", type: "appendix", title: "Worked Example" },
     { id: "appF", file: "appendices/appF-research-program.tex", type: "appendix", title: "Research Program" }
@@ -216,6 +224,7 @@ async function main() {
         summary: thesis || title,
         bookPageId: spec.id,
         bookLabel,
+        overviewOnly: spec.overviewOnly,
         related: spec.related ?? relatedByChapter.get(spec.id) ?? []
       }),
       cardBody({
@@ -223,6 +232,7 @@ async function main() {
         type: spec.type,
         summary: thesis || title,
         bookPageId: spec.id,
+        overviewOnly: spec.overviewOnly,
         bodyExtra: spec.bodyExtra
       })
     ].join("\n");
