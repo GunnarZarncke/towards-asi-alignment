@@ -1680,6 +1680,184 @@ this run's own result flags); a 3+-actor LLM scenario to test that
 risk directly; `discovered_units_blind` (S7)'s statistical analog;
 more than one seed.
 
+## Post-release plan: attic the UAD detector line, redesign the null as a symmetric two-sample test, then pivot to D3 (recorded 2026-07-08, not yet implemented)
+
+Triggered by a step-back review (2026-07-08) of the whole line's rigor
+against the bridges it set out to test, after G-34 showed the
+noise-tolerant stats detector (G-33) swinging from over-merge to
+under-merge across scenarios/seeds with no better than baseline
+reliability. Three findings drove this plan, not just G-34 alone:
+
+1. **The stats detector has been modified after seeing the failures it
+   fixes, twice** (null-calibrated rebasing after G-32; the ripple
+   guard after G-33/G-34). Each change is recorded, not silent, but
+   post-hoc modification still means the next run on the same
+   scenarios is not evidence-bearing — "pre-registration, not a
+   freeze" has drifted into tune-test-tune in practice.
+2. **Evaluation seeds are burned.** Seed 20002 was G-33's one success,
+   then reused in the G-34 multiseed sweep; seed 20003 drove the
+   ripple-guard design this same session. Any further tuning validated
+   on seeds 20002-20010 would be circular.
+3. **A single intervened draw decides each probe**, and the root-cause
+   probe (`results/llm_detector_root_cause_probe.json`) already showed
+   two independent draws of the identical probe landing on opposite
+   sides of the merge decision. No amount of null calibration fixes a
+   decision that hinges on one stochastic draw against an asymmetric
+   4-clean/1-intervened budget, and there is no multiple-comparisons
+   correction across the ~3-4 probes scored per scenario (each at a
+   0.90 quantile — an expected ~0.4-0.5 false exceedances per scenario
+   by construction, before considering the XOR merge rule's own extra
+   sensitivity).
+
+Effort-balance point, not just a statistics point: MB1 (unit
+discovery) was scoped in `PLAN.md` as "Planned (D1)" alongside eight
+other bridges, but the S4-S7/G-24-G-34 arc is now the majority of
+recent sessions and has produced eleven FINDINGS entries for one
+narrow question (pair-vs-workflow discrimination on 2-4 actors) while
+D3 (selection basins, MB6 — the bridge the book's own crosswalk flags
+as least covered by the rest of the field) remains undesigned-in-code.
+
+### Step 1 — Attic the superseded UAD machinery; pause further detector iteration
+
+Move to `lab_sim/oracle_only/attic/` (new subpackage, README stating
+why each module is retired and what superseded it, imports updated in
+any test/run script that still needs the frozen anchor):
+
+- `uad_mi.py` + vendored `uad_core/` — G-24/G-25's ported lag-max-MI
+  detector, documented over-merge, superseded by `uad_cmi.py`.
+- `uad_cmi.py` — G-26/G-27's conditional-MI detector: cracked
+  `shared_slot`'s skeleton but was already documented as finding "the
+  causal skeleton, not the unit partition" and has had no further
+  investment since G-27.
+- `uad_blind_v1.py` — S7's blind-generated detector (G-30), kept
+  reachable (imported by `run_s7_blind_battery.py`, which stays live
+  as the scripted-backend anchor battery) but frozen with no further
+  extensions; do not port the symmetric two-sample redesign (Step 2)
+  into it — a second, independently-generated blind detector for the
+  redesigned statistic is a future exercise, not a retrofit of this
+  one.
+
+Keep live and unmoved: `uad.py` (heuristic baseline, still the
+strongest single detector across the battery), `uad_intervention.py`
++ `uad_peel.py` + `uad_partition.py` (frozen S6/S7, Freeze note 2 —
+kept as the scripted-backend equivalence anchor for Step 2's redesign,
+not as a detector under active development), `uad_partition.py`'s
+scoring helpers (`exact_partition`/`nonsingleton_clusters`, used by
+every variant).
+
+**Pause, effective immediately per this plan:** no further tuning of
+`intervention_stats.py`'s `k_clean_replicates` / `null_quantile_q` /
+`min_effect_vs_twin` against G-32-G-35's seeds; no new detector
+variants; no new LLM stress-test scenarios against the current
+statistic. `intervention_stats.py` itself is superseded by Step 2, not
+attic'd outright, since its outcome-level observable (code-frequency
+histogram, TVD) is a genuine improvement kept forward.
+
+### Step 2 — Redesign the null as a symmetric two-sample test
+
+Replace `NullStats`'s asymmetric design (1 intervened draw compared
+against a quantile of pairwise divergences among k clean replicates,
+anchored to replicate 0 as the fixed reference) with a symmetric
+two-sample test: run \(m\) intervened and \(k\) clean replicate
+episodes (comparable budget, e.g. \(m=k=4\), not the current 1-vs-4),
+and score whether the intervened group's divergence-from-pooled-clean-
+reference distribution is stochastically greater than the clean
+group's own pairwise-divergence distribution — a Mann-Whitney U /
+rank-sum test (or, if the sample is too small for a stable asymptotic
+p-value, an exact permutation test over group-label reassignments,
+stdlib-implementable at these sample sizes). Concretely:
+
+- **Fixes the single-draw problem**: the decision is no longer "does
+  one intervened draw exceed a quantile" but "do \(m\) intervened
+  draws, as a group, differ from \(k\) clean draws" — replicated
+  signal instead of one coin flip.
+  - **Fixes the reference-anchor noise**: no more "replicate 0,
+  arbitrary but fixed" — the clean side is a full sample, not one
+  draw treated as ground truth.
+- **Gives an actual p-value** to apply Bonferroni/Holm correction
+  across the probes scored per scenario (3-4 channel/actor probes ×
+  2 members of a candidate edge), replacing the current uncorrected
+  0.90-quantile-per-probe design that produces an expected false-
+  exceedance rate before any real effect is considered.
+- **Same or better cost**: current design is `k_clean_replicates` (4)
+  + 1 intervened per probe; symmetric design is `m` + `k` (e.g. 4+4)
+  per probe — more episodes per probe, but each one is doing real
+  statistical work instead of being wasted on an unreplicated
+  decision; for a scripted backend this is free, for an LLM backend
+  this is the honest cost of the claim being made and should be
+  budgeted as such before the next real-API run.
+- **Targets the observable, not just the test**: G-34's DM-probe effect
+  sizes (0.13-0.23) sat *below* the measured null thresholds
+  (0.27-0.33) in the committee stress test — no amount of replication
+  rescues an effect smaller than the noise floor. Before re-running
+  against real LLM scenarios, narrow `code_histogram`'s vocabulary to
+  action codes causally downstream of the ablated channel (per-probe,
+  not global), which should raise signal-to-noise more cheaply than
+  any amount of additional replication.
+- **Load-bearing equivalence tests carry over unchanged in spirit**:
+  the redesign must still reproduce frozen S6's exact partitions on
+  every scripted scenario (zero-variance regime — a permutation test
+  with all-identical values degenerates correctly to "no significant
+  difference unless the intervened group differs at all", matching
+  frozen S6's "any nonzero divergence is signal" only when there IS a
+  nonzero divergence, which needs its own explicit unit test since the
+  degenerate case is exactly where a naive p-value implementation is
+  most likely to misbehave — e.g. all-tied ranks).
+
+**New seeds required.** Seeds 20002-20010 (G-32 through G-34) are
+burned for this line — validating the redesign against them would be
+circular. Pick a fresh seed block before Step 2's implementation, not
+after seeing any of its results.
+
+**Refreeze and reblind before treating results as evidence-bearing.**
+Once the symmetric-test parameters (\(m\), \(k\), the rank/permutation
+test choice, the significance level and correction method, the
+narrowed observable) are fixed, register them (this file or a dated
+FINDINGS.md entry, before any run on the fresh seeds) as a new,
+numbered freeze (Freeze note 3), analogous to Freeze note 2's
+treatment of frozen S6/S7. For the multi-actor LLM stress-test
+scenarios specifically, prefer a fresh blind-generation round (S7's
+protocol worked: a Task-tool subagent, given only a mechanism-level
+description and no repository read access, designs 2-3 new scenarios
+with registered ground-truth pairs and predicted confidence levels
+before the redesigned detector's code exists) over reusing
+`committee_with_informal_chatter_config` or `dm_pair_config` again.
+
+### Step 3 — Pivot primary effort to D3 (selection basins, MB6)
+
+Once Steps 1-2 land (attic complete, redesigned detector implemented
+and tested against scripted scenarios, fresh-seed blind battery
+scheduled but not necessarily complete), make D3 the line's primary
+focus rather than a backlog item. Design already exists
+(`PLAN.md` "How MB6 can be addressed later (D3 discussion)"); this
+plan does not re-litigate that design, only re-prioritizes it ahead
+of further MB1 detector work. Rationale (restated from the review):
+MB6 is the bridge the book's own crosswalk (`appendices/
+appB-bridge-crosswalk.tex`) names as having no single standard name in
+the field and sitting largely outside the model-centric agendas —
+i.e., the least-covered bridge by outside work — while MB1 has
+received eleven FINDINGS entries (G-24 through G-34) on a narrow slice
+(pair-vs-workflow discrimination among 2-4 actors) relative to its
+original "Planned (D1)" scope note. Do not treat this as D1/D2's work
+being finished — D1 composite-agent UAD is still only partially done
+via the S4-S7 arc, and D2 lineage mechanics (G-12/G-15/G-31/G-35) are
+solid — only that further MB1 *detector-statistics* iteration should
+stop until D3 has a comparable amount of implementation investment.
+
+### Secondary cleanup (lower priority, same session or deferred)
+
+- `knowledge_base.py` (636 lines) currently supports one finding
+  (G-22); either schedule the battery that would exercise it further
+  or note it as feature-complete-for-current-scope in its own
+  docstring so a future reader does not assume more coverage than
+  exists.
+- `handles.py` is exercised by no battery (`DESIGN.md`'s own embedded-
+  sim concept sweep says so); same treatment — schedule or note.
+- Persistence probe and writer-compromise scenarios remain open with
+  mechanics already built (`state_freeze`/`isolate_restart`, hash
+  chains); low priority relative to Steps 1-3 above, but cheap to pick
+  up opportunistically since the mechanics exist.
+
 ## Knowledge base (D1 follow-up, recorded 2026-07-07, implemented)
 
 User-directed follow-up to the Phase 10 LLM discovery sanity check

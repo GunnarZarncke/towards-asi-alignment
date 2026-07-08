@@ -149,7 +149,6 @@ const referenceLinks = isReferenceCard
           {isOverviewHub && card.data.bookPageId && (
             <p class="button-row">
               <a class="button primary" href={bookFullHref(base, card.data.bookPageId)}>Read full appendix on site</a>
-              <a class="button" href={pdfHref(base)}>PDF</a>
             </p>
           )}
           {isExperimentCard && card.data.experimentLineId && (
@@ -271,6 +270,12 @@ const referenceLinks = isReferenceCard
         </p>
       )}
 
+      {bookEntry && (
+        <p class="button-row">
+          <a class="button" href={pdfHref(base)}>Read in PDF</a>
+        </p>
+      )}
+
     </div>
 
     <aside class="side-panel" aria-label="Related content" id="related">
@@ -280,7 +285,6 @@ const referenceLinks = isReferenceCard
           <h3>Full appendix</h3>
           <ul>
             <li><a href={bookFullHref(base, card.data.bookPageId)}>Read on site</a></li>
-            <li><a href={pdfHref(base)}>PDF</a></li>
           </ul>
         </>
       )}

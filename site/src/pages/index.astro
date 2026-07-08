@@ -1,7 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PathRelationshipDiagram from "../components/PathRelationshipDiagram.astro";
-import { pdfHref, pathHref } from "../lib/site-urls";
+import { pathHref } from "../lib/site-urls";
 import { getReadingPaths } from "../lib/reading-paths";
 import standaloneClaims from "../data/standalone-claims.json";
 
@@ -26,7 +26,6 @@ const failureModes = [
     </p>
     <div class="button-row">
       <a class="button primary" href={withBase("/paths/")}>Guided tour — start here</a>
-      <a class="button" href={pdfHref(base)}>Read the PDF</a>
       <a class="button" href={withBase("/faq/")}>FAQ</a>
     </div>
   </section>

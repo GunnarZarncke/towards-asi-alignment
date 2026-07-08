@@ -9,7 +9,6 @@ import {
   cardHref,
   chapterCardFor,
   pathHref,
-  pdfHref,
   resolveCard
 } from "../../lib/site-urls";
 import { getReadingPath, readingPathIds, type ReadingPathStep } from "../../lib/reading-paths";
@@ -112,7 +111,7 @@ const resolveStep = (step: ReadingPathStep) => {
       const summary =
         step.note ??
         chapterCard?.data.summary ??
-        "Read on the site or in the PDF.";
+        "Read on the site.";
       const bookType = chapterCard?.data.type ?? (step.ref === "frontmatter" ? "frontmatter" : "chapter");
       const bookStatus = chapterCard?.data.status ?? "reviewed";
       return {
@@ -220,7 +219,6 @@ const resolvedSteps = path.steps
   </section>
 
   <p class="button-row">
-    <a class="button" href={pdfHref(base)}>Read the PDF</a>
     <a class="button" href={withBase("/demos/")}>All chapter toys</a>
     <a class="button" href={withBase("/experiments/")}>All experiment lines</a>
   </p>

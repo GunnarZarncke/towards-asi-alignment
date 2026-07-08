@@ -1,7 +1,6 @@
 import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
-const PDF_HREF = "../../../towards-superintelligence-alignment.pdf";
 const FIGURE_BASE = "https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main";
 
 const MATH_ENVS = new Set([
@@ -188,11 +187,30 @@ function skipBeginOptional(tex, cursor) {
   return cursor;
 }
 
+const TABLE_ENV_ARG_COUNT = {
+  longtable: 1,
+  tabular: 1,
+  tabularx: 2
+};
+
+function skipBeginArgs(tex, cursor, envName) {
+  cursor = skipBeginOptional(tex, cursor);
+  const argCount = TABLE_ENV_ARG_COUNT[envName] ?? 0;
+  for (let i = 0; i < argCount; i += 1) {
+    if (tex[cursor] === "{") {
+      const arg = readBalanced(tex, cursor);
+      if (!arg) break;
+      cursor = arg.end;
+    }
+  }
+  return cursor;
+}
+
 function readEnvironment(tex, startIndex) {
   const beginMatch = tex.slice(startIndex).match(/^\\begin\{([^}]+)\}/);
   if (!beginMatch) return null;
   const envName = beginMatch[1];
-  let cursor = skipBeginOptional(tex, startIndex + beginMatch[0].length);
+  let cursor = skipBeginArgs(tex, startIndex + beginMatch[0].length, envName);
   const bodyStart = cursor;
   let depth = 1;
   while (cursor < tex.length) {
@@ -200,7 +218,7 @@ function readEnvironment(tex, startIndex) {
     const nextEnd = tex.slice(cursor).match(/^\\end\{([^}]+)\}/);
     if (nextBegin) {
       depth += 1;
-      cursor = skipBeginOptional(tex, cursor + nextBegin[0].length);
+      cursor = skipBeginArgs(tex, cursor + nextBegin[0].length, nextBegin[1]);
       continue;
     }
     if (nextEnd) {
@@ -261,7 +279,7 @@ function resolveRef(label, ctx, kind = "ref") {
   }
 
   if (!entry.webPage) {
-    return `[${text} (PDF)](${PDF_HREF})`;
+    return text;
   }
 
   const anchor = label.startsWith("ch:") ? "" : label;
@@ -462,23 +480,39 @@ function convertMath(body, display = true) {
   return `$${trimmed}$`;
 }
 
-function convertTableEnv(body, ctx) {
-  const rows = body
-    .split(/\\\\/g)
-    .map((row) => row.trim())
-    .filter((row) => row && !/^\\(toprule|midrule|bottomrule|hline|caption|label|endhead|endfoot|endfirsthead|endlastfoot)/.test(row));
+function stripTableDecorations(body) {
+  return body
+    .replace(/\\endfirsthead[\s\S]*?\\endhead/g, "")
+    .replace(/\\caption(?:\[[^\]]*\])?\{[\s\S]*?\}/g, "")
+    .replace(/\\label\{[^}]+\}/g, "")
+    .replace(/\\(toprule|midrule|bottomrule|hline|endfirsthead|endhead|endfoot|endlastfoot)\b/g, "")
+    .replace(/\\addlinespace\b/g, "");
+}
 
-  const mdRows = rows.map((row) => {
+function cleanTableRow(row) {
+  return row
+    .replace(/^\\(?:noalign|smallskip|medskip|bigskip|vspace)\b[^\n]*/gm, "")
+    .trim();
+}
+
+function convertTableEnv(body, ctx) {
+  const rows = stripTableDecorations(body)
+    .split(/\\\\/g)
+    .map(cleanTableRow)
+    .filter((row) => row.includes("&"));
+
+  if (rows.length === 0) return "\n";
+
+  const htmlRows = rows.map((row, idx) => {
     const cells = row
       .split("&")
       .map((cell) => convertInlineText(cell.replace(/\\newline/g, " ").trim(), ctx));
-    return `| ${cells.join(" | ")} |`;
+    const tag = idx === 0 ? "th" : "td";
+    const cellHtml = cells.map((cell) => `<${tag}>${cell}</${tag}>`).join("");
+    return `<tr>${cellHtml}</tr>`;
   });
 
-  if (mdRows.length === 0) return "\n";
-  const width = mdRows[0].split("|").length - 2;
-  const sep = `| ${Array(width).fill("---").join(" | ")} |`;
-  return `\n${mdRows[0]}\n${sep}\n${mdRows.slice(1).join("\n")}\n\n`;
+  return `\n<div class="table-wrap"><table class="book-table">\n${htmlRows.join("\n")}\n</table></div>\n\n`;
 }
 
 function convertDocument(tex, ctx) {

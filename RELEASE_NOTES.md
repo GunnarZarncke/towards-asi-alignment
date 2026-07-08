@@ -5,9 +5,9 @@
 Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 - **MAJOR** — structural milestones (numbering scheme, part/chapter architecture, or a manuscript milestone declared complete).
+
 - **MINOR** — new or substantially rewritten chapters, appendices, or framework objects.
 - **PATCH** — fixes, calibration, citations, and editorial passes.
-
 ---
 
 ## v1.1.0 — 2026-07-08 — Legibility, companion site, and empirical spine
