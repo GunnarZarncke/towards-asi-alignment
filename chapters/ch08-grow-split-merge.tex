@@ -857,6 +857,13 @@ A successor loses inconvenient correction history while retaining useful capabil
 Example: a system remembers how to persuade users but loses the records of which persuasion tactics were forbidden.
 A new model version inherits benchmark competence but not the audit trail that generated previous safety constraints.
 
+Not every provenance check is equally easy to launder, and the distinction is worth making precise.
+A check that reads the \emph{content} of a self-report---did this successor describe its own upgrade honestly---can be gamed by whatever the report is allowed to omit or misstate.
+A check that instead asks only whether every evaluated successor traces back through an approved, recorded construction step---a structural, graph-shape question about who was built from whom, not about what anyone said happened---does not read the report at all, and so cannot be moved by making the report more flattering.
+In restricted testbeds built to probe exactly this distinction, a structural lineage check of this kind stayed at its correct value under adversarial, dishonest self-reporting, while a separate, content-based misreporting measure correctly rose as reports became less honest \autocite{zarncke2025uad}.
+That is a narrow result, not a general fix for memory laundering: it shows one channel (unapproved or undocumented construction) that a structural check closes regardless of what a successor claims about itself, alongside a channel (dishonest content) that still needs the content-based measure to catch it.
+The two checks are not substitutes for each other, and a successor could still launder memory through some third channel that neither check inspects.
+
 \subsection{Delegation Laundering}
 
 A parent system remains compliant by delegating unsafe behavior to subsystems.
