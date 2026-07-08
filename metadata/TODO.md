@@ -199,6 +199,12 @@ bearer maps on world states, etc.).
 
 ---
 
+## Experiments / demos
+
+- [ ] **D3 selection-ecology toy demo (lab-simulation G-36/G-37).** Interactive chapter demo for MB6a/MB6b: animate population mass over pipeline spec × capture × admin configs (D3.1) and endogenous spec weakening + throughput selection (D3.2). Show generation curves for correction-preserving mass, shortcut-spec share, and mass-weighted oracle harm; surface the G-37 negative (shortcut fixation → playbook/DAG mismatch → throughput collapse). Candidate home: `demos/ch08-selection-ecology/` (grow/split/merge / institutional selection) or `demos/ch46-correction-basin/` with a lightweight Python backend replaying pinned `results/d3_population.json` / `d3_spec_evolution.json` fixtures (fast static mode) plus optional live mini-run. Cross-ref: `experiments/lab-simulation/PLAN.md` D3, FINDINGS G-36/G-37.
+
+---
+
 ## Site (`site/`)
 
 Companion Astro site: orientation layer (Start Here, cards, paths, FAQ, book map). Local serve: `./serve-site.sh`. Deploy: `.github/workflows/site.yml` → GitHub Pages at `/towards-asi-alignment/`.

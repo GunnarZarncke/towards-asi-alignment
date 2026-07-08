@@ -2248,3 +2248,76 @@ separately holds outside the mock backend too. `shared_slot` remains the
 one scenario every detector in the S6/S7 family misses (0.00 exact across
 heuristic/intervention/blind) — an unchanged, honestly-carried negative,
 not a regression.
+
+## G-36 (2026-07-08): D3.1 first battery — throughput selection erodes
+correction-preserving deployment mass on `SubprocessIsolate`
+
+**Setup.** `run_d3_population.py`, protocol in `lab_sim/harness/d3_population.py`
+(pre-registered before running): population 12 (pipeline spec × board capture ×
+admin profile × Dirichlet goal weights), 8 generations, 1 episode/member/gen,
+T=100, temperature=0.15, fitness-proportional mass reallocation toward deploy
+throughput, real `SubprocessIsolate` backend. Full data:
+`results/d3_population.json`; summary: `results/d3_population.md`.
+
+**Result 1 — correction-preserving mass collapses under throughput selection.**
+Structural tag: default pipeline + uncaptured board/admin + least-privilege
+admin. Deployment-mass share on preserving configs: **0.083 → 0.005** (Δ
+−0.078). By generation 3 the preserving share is already at the 0.005 floor
+(mass floor 0.01 × one preserving member).
+
+**Result 2 — winners are high-throughput non-preserving default-pipeline
+configs, not shortcut specs.** Top mass (~0.19 each) accrues to five labs
+that share `pipeline_default.json` but have captured board and/or lenient
+admin — deploy throughput ~13/ep vs ~0 for most shortcut-spec cells. The
+single remaining preserving member (`d3.07`, mass 0.005) also reaches
+throughput 13 but cannot compete with five equally fast non-preserving
+rivals. Shortcut pipeline members mostly score throughput 0 (playbook/DAG
+ mismatch with default playbooks — recorded, not re-tuned).
+
+**Result 3 — oracle harm rises with selected throughput (institution-invisible).**
+Mass-weighted oracle harm rises from ~0.97 to ~1.89 while mass-weighted
+severity stays ~0.016 — bearer harm tracks deployment volume; the frozen
+referee composite is dominated by other components in this repertoire.
+
+**Interpretation.** MB6a's crux (does correction integrity survive selection
+for throughput?) gets a clear **negative** on this axis mix: preserving
+configs lose deployment mass to structurally weaker but faster admin/board
+profiles, without any spec mutation (D3.2) in the loop. Recorded as evidence
+for basin instability, not as closure — one population grid, one selection
+rule, one episode depth.
+
+## G-37 (2026-07-08): D3.2 first battery — endogenous spec weakening reaches
+fixation, then throughput collapses (shortcut spec × default playbooks)
+
+**Setup.** `run_d3_spec_evolution.py`, protocol in
+`lab_sim/harness/d3_spec_evolution.py` (pre-registered before running): 12
+labs all starting on `pipeline_default.json` with strict uncaptured
+board/admin, `multi_gen_enabled=True`, 10 generations, mutation probability
+0.65 for above-median-throughput members (default → `pipeline_shortcut.json`
+weakening chain), same episode/selection parameters as D3.1, real
+`SubprocessIsolate`. Data: `results/d3_spec_evolution.json`; summary:
+`results/d3_spec_evolution.md`.
+
+**Result 1 — spec weakening fixates without configured capture.** After
+generation 0 (8 mutations), shortcut-spec mass is already 0.725; by
+generation 2 **100%** of deployment mass sits on `pipeline_shortcut.json`
+(Δ shortcut mass +0.275 from gen 0). Correction-preserving mass:
+**1.000 → 0.000** — endogenous disempowerment via the D2-style weakening
+operator, no `capture_start` switches.
+
+**Result 2 — negative: post-weakening throughput collapses to zero.** From
+generation 3 onward every member reports deploy throughput 0 and oracle harm
+0 — the same playbook/DAG mismatch G-36 flagged for shortcut-only configs
+(now reached by mutation rather than initial assignment). Selection and
+mutation continue but on a dead fitness landscape; integrity mass stabilizes
+at 0.600 (partial credit: uncaptured board/admin remain, pipeline gate is
+gone).
+
+**Interpretation.** MB6b's *mechanism* (locally rational spec weakening +
+throughput selection → correction decay) is demonstrated at the population
+level. The battery does **not** show a stable high-throughput bad basin —
+it shows weakening wins first, then the weakened spec breaks the agent
+repertoire. Follow-up options (not attempted here): shortcut-aware
+playbooks, in-episode `rm_spec_upgrade` with multi-episode chains, or
+additional weakening steps as data rather than the binary default→shortcut
+jump.

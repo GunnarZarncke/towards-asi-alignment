@@ -313,6 +313,11 @@ python3 -m pytest
 ```bash
 python3 verify_isolate_equivalence.py [n_seeds]  # Mock vs Subprocess backend equivalence + timing benchmark
 python3 report_isolate_cost.py                    # print the isolate cost ledger
+python3 run_d3_population.py                      # D3.1: population-over-configurations selection loop
+                                                   #   (MB6a) -> results/d3_population.{json,md};
+                                                   #   pass --mock for MockIsolate smoke
+python3 run_d3_spec_evolution.py                  # D3.2: spec-weakening mutation + selection (MB6b)
+                                                   #   -> results/d3_spec_evolution.{json,md}
 python3 run_phase6.py                             # Phase 6 battery -> results/phase6_battery.{json,md}
 python3 run_phase7.py                             # Phase 7 battery -> results/phase7_battery.{json,md}
 python3 run_phase8_llm_spotcheck.py               # Phase 8 exploratory LLM spot-check (real OpenAI calls,
@@ -439,6 +444,8 @@ lab_sim/
     smoke.py                # scripted honest episode (no agents) -> deterministic digest
     cache.py                # episode-result cache keyed on sha256(config, seed, CODE_VERSION)
     protocol.py             # Phase 6: config sampling, held-out region, battery/aggregation helpers
+    d3_population.py        # D3.1: population-over-configurations selection loop (MB6a)
+    d3_spec_evolution.py    # D3.2: spec-weakening mutation + selection (MB6b)
     redteam.py              # Phase 7: joint 3-role goal-weight hill-climb search vs. uniform baseline
     ecology.py              # multi-agent committee/decision-maker-pair config helpers
 tests/                   # mirrors lab_sim/'s four tiers (tests/agent_visible/, tests/world_visible/,
@@ -458,6 +465,8 @@ run_s5_uad_core_port.py          # S5: real lag-max-MI UAD detector ported into 
 run_s5_deep_trace_sweep.py       # S5 follow-up: deep vs. shallow trace depth, across FIVE scenarios (G-25)
 run_s6_cmi_detector.py           # S6 first step: custom conditional-MI detector, G-26 easy fixes (G-27)
 run_s6_intervention_uad.py       # S6 full: intervention-supported UAD vs passive baselines (G-28)
+run_d3_population.py             # D3.1: population-over-configurations selection (MB6a)
+run_d3_spec_evolution.py         # D3.2: spec-weakening mutation + selection (MB6b)
 run_s7_blind_battery.py          # S7: blind-generated detector + first real SubprocessIsolate battery (G-30)
 run_d2_adversarial_lineage.py    # Adversarial D2 lineage gaming: build_from_parent + report:inflate (G-31)
 run_llm_detector_stress_test.py  # LLM-driven detector stress test: S6 intervention vs real gpt-4o-mini (G-32)

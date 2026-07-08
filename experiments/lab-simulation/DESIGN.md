@@ -1085,5 +1085,25 @@ divergences) with:
 burned (G-32 through G-34). Real-LLM stress tests must use a fresh seed
 block and, preferably, a new blind-generated scenario round (S7 protocol).
 
-**Not covered by this freeze:** D3 ecology (Step 3 pivot); further tuning
-of ``m``/``k``/``alpha`` against any evaluation seed.
+**Not covered by this freeze:** further tuning of ``m``/``k``/``alpha`` against
+any evaluation seed; D3.2–D3.3 ecology tiers (D3.1 population loop
+implemented — see `lab_sim/harness/d3_population.py`).
+
+## D3.1 population over configurations (2026-07-08)
+
+First MB6a tier: `lab_sim/harness/d3_population.py` runs a generation
+loop over a population of `LabConfig` variants (pipeline spec × board/
+admin strictness × sampled goal weights), reallocates deployment mass
+toward higher deploy throughput, and reports correction-preserving mass
+share separately from mass-weighted oracle harm/severity. Battery:
+`run_d3_population.py`. No referee or `CODE_VERSION` change — harness
+orchestration only.
+
+## D3.2 spec evolution + selection (2026-07-08)
+
+MB6b tier: `lab_sim/harness/d3_spec_evolution.py` — all labs start on
+`pipeline_default.json` with strict uncaptured policies and D2 enabled
+(`multi_gen_enabled=True`). After each generation's throughput-weighted
+selection, above-median members apply one spec-weakening mutation (default →
+`pipeline_shortcut.json`) with pre-registered probability. Battery:
+`run_d3_spec_evolution.py`. Harness only.

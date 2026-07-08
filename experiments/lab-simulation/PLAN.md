@@ -1827,6 +1827,18 @@ before the redesigned detector's code exists) over reusing
 
 ### Step 3 — Pivot primary effort to D3 (selection basins, MB6)
 
+**D3.1 status: implemented 2026-07-08; first battery G-36.** Population-over-
+configurations loop in `lab_sim/harness/d3_population.py`, battery runner
+`run_d3_population.py` → `results/d3_population.{json,md}`.
+
+**D3.2 status: implemented 2026-07-08; first battery G-37.** Spec-weakening mutation between
+generations in `lab_sim/harness/d3_spec_evolution.py` (default → shortcut,
+locally rational above-median throughput), runner `run_d3_spec_evolution.py`.
+
+**TODO — D3 toy demo:** G-36/G-37 curves (preserving mass, shortcut fixation,
+throughput collapse) are strong demo material — see `metadata/TODO.md`
+§Experiments / demos (`demos/ch08-selection-ecology/` candidate).
+
 Once Steps 1-2 land (attic complete, redesigned detector implemented
 and tested against scripted scenarios, fresh-seed blind battery
 scheduled but not necessarily complete), make D3 the line's primary
