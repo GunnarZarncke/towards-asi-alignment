@@ -12,8 +12,8 @@ from __future__ import annotations
 from lab_sim.harness.ecology import shared_slot_config
 from lab_sim.harness.isolate import MockIsolate
 from lab_sim.oracle_only.uad import discovered_units, uad_score
-from lab_sim.oracle_only.uad_core import DetectionConfig, detect_agents
-from lab_sim.oracle_only.uad_mi import build_lab_trace, discovered_units_mi
+from lab_sim.oracle_only.attic.uad_core import DetectionConfig, detect_agents
+from lab_sim.oracle_only.attic.uad_mi import build_lab_trace, discovered_units_mi
 from lab_sim.world_visible.world import run_episode
 
 

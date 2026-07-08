@@ -30,7 +30,7 @@ from ..world_visible.config import LabConfig
 from ..world_visible.world import run_episode
 from .detectors import build_audit_view
 from .intervention_probes import Probe, intervention_tick
-from .uad_mi import build_lab_trace
+from .attic.uad_mi import build_lab_trace
 
 
 def action_series_by_actor(

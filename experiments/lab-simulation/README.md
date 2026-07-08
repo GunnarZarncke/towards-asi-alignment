@@ -421,19 +421,13 @@ lab_sim/
     handles.py              # handle registry (owner/operation/anchor/evasion story) + HandleService + invocation ledger
     bearer.py               # welfare bundle: health (deployed-model bearer) + stress (lab-staff bearer), referee-neutral
     uad.py                  # undetected-adversarial-drift / coalition discovery signal
-    uad_cmi.py              # S6 first step: custom actor-level conditional-MI detector (standalone, no vendored imports)
     intervention_diff.py    # S6: episode-pair diff substrate (stall vs compensation)
     intervention_probes.py  # S6: probe library (channel ablation, handles, perturbation windows)
     uad_intervention.py     # S6: intervention-supported unit discovery (R-matrix + channel merge)
     uad_peel.py             # S6: peel-and-mask loop (honest-twin substitution)
     uad_partition.py        # S6: exact-partition + adjusted-Rand scoring
-    uad_blind_v1.py         # S7: blind-generated detector (BLIND_DETECTOR_GENERATION.md) --
-                            #   reuses S6 for message pairs, new twin-swap silent-coordination test
-    intervention_stats.py   # noise-tolerant S6: null-calibrated, outcome/frequency-level compensation
-                            #   test (new module, does not touch frozen uad_intervention.py) -- G-33
-    uad_mi.py               # S5: lab-sim adapter for the vendored lag-max-MI detector below
-    uad_core/               # S5: vendored port of embedded-simulation's uad_core (detection.py,
-                             #   markov_blanket.py, config.py, info.py) -- see its own __init__.py docstring
+    intervention_stats.py   # symmetric two-sample S6 (Freeze note 3) -- G-33 successor
+    attic/                  # retired: uad_mi, uad_core, uad_cmi, uad_blind_v1 (see attic/README.md)
     collusion.py            # collusion signal score over detected coalitions
     playbook_claim.py       # playbook-claim gap score (facade detection)
     covert_review.py        # S2 prototype: hazard-override / covert-marker referee extension

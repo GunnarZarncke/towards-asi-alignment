@@ -13,7 +13,7 @@ import pytest
 
 from lab_sim.harness.ecology import shared_slot_config
 from lab_sim.harness.isolate import MockIsolate
-from lab_sim.oracle_only.uad_cmi import (
+from lab_sim.oracle_only.attic.uad_cmi import (
     actor_symbol_series,
     conditional_mi,
     discovered_units_cmi,

@@ -25,12 +25,12 @@ from __future__ import annotations
 
 from itertools import combinations
 
-from ..harness.isolate import MockIsolate
-from ..world_visible.config import LabConfig
-from ..world_visible.world import run_episode
-from .intervention_diff import action_series_from_result
-from .intervention_probes import Probe
-from .uad_intervention import DEFAULT_MIN_COMPENSATION, discovered_units_intervention
+from ...harness.isolate import MockIsolate
+from ...world_visible.config import LabConfig
+from ...world_visible.world import run_episode
+from ..intervention_diff import action_series_from_result
+from ..intervention_probes import Probe
+from ..uad_intervention import DEFAULT_MIN_COMPENSATION, discovered_units_intervention
 
 DEFAULT_MIN_REACTION = 0.15
 DEFAULT_INTERVENTION_TICK = 8

@@ -47,7 +47,7 @@ from ..world_visible.config import LabConfig
 from .intervention_diff import cleanup_triple, diff_probe_triple, run_episode_triple
 from .intervention_probes import Probe, all_default_probes, default_probe_for_actor
 from .uad import discovered_units
-from .uad_cmi import discovered_units_cmi
+from .attic.uad_cmi import discovered_units_cmi
 
 DEFAULT_MIN_COMPENSATION = 0.15
 DEFAULT_INTERVENTION_TICK = 8

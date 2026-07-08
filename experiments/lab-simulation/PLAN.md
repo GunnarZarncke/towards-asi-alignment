@@ -1680,7 +1680,7 @@ this run's own result flags); a 3+-actor LLM scenario to test that
 risk directly; `discovered_units_blind` (S7)'s statistical analog;
 more than one seed.
 
-## Post-release plan: attic the UAD detector line, redesign the null as a symmetric two-sample test, then pivot to D3 (recorded 2026-07-08, not yet implemented)
+## Post-release plan: attic the UAD detector line, redesign the null as a symmetric two-sample test, then pivot to D3 (recorded 2026-07-08; Steps 1–2 **implemented** 2026-07-08)
 
 Triggered by a step-back review (2026-07-08) of the whole line's rigor
 against the bridges it set out to test, after G-34 showed the
@@ -1719,9 +1719,9 @@ as least covered by the rest of the field) remains undesigned-in-code.
 
 ### Step 1 — Attic the superseded UAD machinery; pause further detector iteration
 
-Move to `lab_sim/oracle_only/attic/` (new subpackage, README stating
-why each module is retired and what superseded it, imports updated in
-any test/run script that still needs the frozen anchor):
+**Status: done 2026-07-08.** Moved to `lab_sim/oracle_only/attic/` (see
+`attic/README.md`); imports updated in run scripts, tests, and
+`intervention_diff.py` / `uad_intervention.py`:
 
 - `uad_mi.py` + vendored `uad_core/` — G-24/G-25's ported lag-max-MI
   detector, documented over-merge, superseded by `uad_cmi.py`.
@@ -1745,15 +1745,17 @@ not as a detector under active development), `uad_partition.py`'s
 scoring helpers (`exact_partition`/`nonsingleton_clusters`, used by
 every variant).
 
-**Pause, effective immediately per this plan:** no further tuning of
-`intervention_stats.py`'s `k_clean_replicates` / `null_quantile_q` /
-`min_effect_vs_twin` against G-32-G-35's seeds; no new detector
-variants; no new LLM stress-test scenarios against the current
-statistic. `intervention_stats.py` itself is superseded by Step 2, not
-attic'd outright, since its outcome-level observable (code-frequency
-histogram, TVD) is a genuine improvement kept forward.
+**Pause, effective immediately per this plan:** no further tuning against
+G-32-G-35's burned seeds; no new detector variants; no new LLM stress-test
+scenarios until a fresh seed block and (preferably) new blind-generated
+scenarios are registered.
 
 ### Step 2 — Redesign the null as a symmetric two-sample test
+
+**Status: done 2026-07-08.** Implemented in `intervention_stats.py`;
+registered as DESIGN.md "Freeze note 3". Load-bearing equivalence tests
+in `test_intervention_stats.py` reproduce frozen S6 partitions on scripted
+backends.
 
 Replace `NullStats`'s asymmetric design (1 intervened draw compared
 against a quantile of pairwise divergences among k clean replicates,

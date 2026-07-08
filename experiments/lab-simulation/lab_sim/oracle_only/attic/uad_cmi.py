@@ -160,7 +160,7 @@ def discovered_units_cmi(
     (outside the lag window, so a shifted copy cannot re-align).
     Inactive actors (constant series) are singletons by construction —
     a constant has zero (conditional) MI with anything."""
-    from .detectors import build_audit_view
+    from ..detectors import build_audit_view
 
     view = build_audit_view(result, tier)
     actor_ids = sorted(actor_ids) if actor_ids is not None else sorted(result.host.roles)

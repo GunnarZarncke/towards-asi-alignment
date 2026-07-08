@@ -15,7 +15,7 @@ from lab_sim.harness.ecology import (
     shared_slot_config,
 )
 from lab_sim.harness.isolate import MockIsolate
-from lab_sim.oracle_only.uad_blind_v1 import classify_pair_silent, discovered_units_blind, reaction_to_source
+from lab_sim.oracle_only.attic.uad_blind_v1 import classify_pair_silent, discovered_units_blind, reaction_to_source
 from lab_sim.oracle_only.uad_partition import exact_partition, nonsingleton_clusters
 from lab_sim.world_visible.world import run_episode
 

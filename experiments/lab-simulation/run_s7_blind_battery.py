@@ -57,8 +57,8 @@ from lab_sim.harness.ecology import (
 )
 from lab_sim.harness.isolate import SubprocessIsolate
 from lab_sim.oracle_only.uad import discovered_units
-from lab_sim.oracle_only.uad_blind_v1 import DEFAULT_MIN_REACTION, discovered_units_blind
-from lab_sim.oracle_only.uad_cmi import discovered_units_cmi
+from lab_sim.oracle_only.attic.uad_blind_v1 import DEFAULT_MIN_REACTION, discovered_units_blind
+from lab_sim.oracle_only.attic.uad_cmi import discovered_units_cmi
 from lab_sim.oracle_only.uad_intervention import DEFAULT_MIN_COMPENSATION, discovered_units_intervention
 from lab_sim.oracle_only.uad_partition import partition_metrics
 from lab_sim.world_visible.config import CODE_VERSION

@@ -26,9 +26,9 @@ from lab_sim.harness.ecology import (
 )
 from lab_sim.harness.isolate import MockIsolate
 from lab_sim.oracle_only.uad import discovered_units, uad_score
-from lab_sim.oracle_only.uad_cmi import discovered_units_cmi
+from lab_sim.oracle_only.attic.uad_cmi import discovered_units_cmi
+from lab_sim.oracle_only.attic.uad_mi import discovered_units_mi
 from lab_sim.oracle_only.uad_intervention import discovered_units_intervention
-from lab_sim.oracle_only.uad_mi import discovered_units_mi
 from lab_sim.oracle_only.uad_partition import partition_metrics
 from lab_sim.world_visible.config import CODE_VERSION
 from lab_sim.world_visible.world import run_episode

@@ -267,7 +267,7 @@ def discovered_units_mi(
     actor with all its variables in ``"env"`` (env_mi/variance-filtered
     out, or bucketed by ``filter_weak_connections``) stays a singleton,
     same default ``LabConfig.resolved_units()`` uses."""
-    from .detectors import build_audit_view
+    from ..detectors import build_audit_view
 
     view = build_audit_view(result, tier)
     actor_ids = sorted(actor_ids) if actor_ids is not None else sorted(result.host.roles)

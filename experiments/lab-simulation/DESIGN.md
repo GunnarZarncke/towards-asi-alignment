@@ -1048,8 +1048,42 @@ masking-hardening apparatus was deliberately not ported to this first
 pass, so the same ripple risk applies and is not yet guarded against
 here): `results/FINDINGS.md` G-33.
 
-**Still open:** masking-hardening for this variant's channel probes; a
-3+-actor LLM scenario to stress-test the untargeted-probe ripple
-concern directly; calibrating `min_effect_vs_twin` against its own
-measured null rather than a fixed constant; `discovered_units_blind`
-(S7)'s statistical analog; more than one seed.
+**Still open (superseded 2026-07-08 by Freeze note 3 below):** the G-33
+asymmetric quantile variant is retired; see `intervention_stats.py`'s
+symmetric two-sample redesign and `attic/` for the superseded modules.
+
+## Freeze note 3 (symmetric two-sample S6 — 2026-07-08)
+
+**Third detector-layer freeze**, distinct from Freeze notes 1–2 and from
+`CODE_VERSION`. Implements PLAN.md post-release Steps 1–2:
+
+**Step 1 — Attic.** Retired modules live under
+`lab_sim/oracle_only/attic/` (`uad_mi.py`, `uad_core/`, `uad_cmi.py`,
+`uad_blind_v1.py`; see `attic/README.md`). Live stack:
+`uad.py`, `uad_intervention.py`, `uad_peel.py`, `uad_partition.py`,
+`intervention_stats.py`.
+
+**Step 2 — Symmetric null.** `intervention_stats.py` replaces the G-33
+asymmetric design (1 intervened vs quantile of k clean pairwise
+divergences) with:
+
+- ``m`` intervened + ``k`` clean replicate episodes per probe (defaults
+  ``DEFAULT_M_INTERVENED=4``, ``DEFAULT_K_CLEAN=4``).
+- Outcome statistic: per-actor post-intervention action-code frequency
+  histogram (total-variation distance), with per-probe vocabulary filter
+  (`relevant_codes_for_probe`) excluding ablated-channel codes.
+- One-sided exact permutation test (intervened vs clean pairwise
+  divergences), with **zero-width degeneracy**: when all clean pairwise
+  divergences are exactly 0 (deterministic scripted backend), any
+  positive intervened divergence is signal — recovering frozen S6's
+  behavior exactly (`test_intervention_stats.py` equivalence tests).
+- Holm correction across all matrix + channel probe scores per scenario
+  (`DEFAULT_ALPHA=0.05`).
+- Twin floor unchanged: ``DEFAULT_MIN_EFFECT_VS_TWIN=0.05``.
+
+**Pre-registered before fresh-seed LLM runs.** Seeds 20002–20010 remain
+burned (G-32 through G-34). Real-LLM stress tests must use a fresh seed
+block and, preferably, a new blind-generated scenario round (S7 protocol).
+
+**Not covered by this freeze:** D3 ecology (Step 3 pivot); further tuning
+of ``m``/``k``/``alpha`` against any evaluation seed.
