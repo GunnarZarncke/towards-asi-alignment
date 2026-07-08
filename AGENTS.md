@@ -122,7 +122,9 @@ Do not rely on chat history alone for resume context.
 
 Place figures in `figures/` and reference as `figures/<file>`. External `.bib` files need `pdflatex → biber → pdflatex ×2`. Add `\usepackage{graphicx}` when including images. Root file: `book.tex`.
 
-If `biber` fails silently or stops after `Found BibTeX data source ...`, suspect stale/corrupt generated files or a missing/corrupt PAR cache before blaming bibliography syntax. Run `./clean.sh`, remove stale `references/*.bib.blg`, create the cache directory explicitly with `mkdir -p .biber-par-cache`, and retry with `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" ./build.sh` (or `biber book` for diagnosis).
+Build-time `.tex` fragments (`metadata/global-nocite.tex`, `metadata/notation-index.tex`, `metadata/assumptions-index.tex`, `metadata/axiom-budget-index.tex`, `tables/chapter-map.tex`, `tables/part-roadmap.tex`) are **generated, not checked in** — run `make generate` or `./build.sh` before compiling. See [`docs/BUILD.md`](docs/BUILD.md).
+
+If `biber` fails silently or stops after `Found BibTeX data source ...`, run `./clean.sh` then `make biber` (regenerates fragments, sets up the PAR cache, clears stale `references/*.bib.blg`, runs `pdflatex → biber → pdflatex ×2`). See [`docs/BUILD.md`](docs/BUILD.md).
 
 **Bibliography summaries:** each `.bib` entry needs a matching `\bibsummary{key}{...}` line in `references/bibliography-summaries.tex` (rendered via `metadata/preamble.tex`). See `references/README.md`. When adding cites, run `python3 scripts/check_bibliography_summaries.py` or `make check`.
 

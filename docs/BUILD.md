@@ -3,9 +3,11 @@
 **Requirements:** TeX distribution with `latexmk`, `pdflatex`, `biber`, and the `memoir` class.
 
 ```bash
-./build.sh          # or: make pdf
+make generate       # emit build-time .tex fragments (not in git)
+./build.sh          # or: make pdf  (generate + full latexmk build)
+make biber          # regenerate fragments + pdflatex → biber → pdflatex ×2
 ./clean.sh          # or: make clean
-make check          # structure + citation key checks
+make check          # generate + structure + citation + bibliography-summary checks
 make wordcount      # approximate chapter word counts
 make bookstats      # markdown report → metadata/book-stats.md
 make todos          # list [STUB] / TODO markers
@@ -13,7 +15,34 @@ make todos          # list [STUB] / TODO markers
 
 Output: [`dist/pdf/towards-superintelligence-alignment.pdf`](../dist/pdf/towards-superintelligence-alignment.pdf)
 
-If `biber` fails after `Found BibTeX data source ...`, run `./clean.sh`, remove stale `references/*.bib.blg`, create `mkdir -p .biber-par-cache`, and retry with `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" ./build.sh`.
+## Generated `.tex` fragments (not in git)
+
+`book.tex` `\input`s several files that are **generated at build time** and listed in `.gitignore`:
+
+| Output | Generator |
+|--------|-----------|
+| `tables/chapter-map.tex`, `tables/part-roadmap.tex` | `scripts/generate_tables.py` |
+| `metadata/global-nocite.tex` | `scripts/generate_global_nocite.py` |
+| `metadata/notation-index.tex` | `scripts/generate_notation_appendix.py` |
+| `metadata/assumptions-index.tex` | `scripts/generate_assumptions_appendix.py` |
+| `metadata/axiom-budget-index.tex` | `formal/scripts/check_axiom_budget.py --no-lean` |
+
+Run `make generate` (or any build/check target) before compiling if these files are missing.
+
+All of the above are wrapped by `scripts/generate_manuscript_tex.sh`.
+
+## Biber troubleshooting
+
+If `biber` fails silently or stops after `Found BibTeX data source ...`, suspect stale/corrupt generated files or a missing/corrupt PAR cache before blaming bibliography syntax:
+
+```bash
+./clean.sh
+make biber
+```
+
+`make biber` regenerates the manuscript `.tex` fragments, creates `.biber-par-cache/`, clears stale `references/*.bib.blg` logs, sets `PAR_GLOBAL_TMPDIR`, and runs `pdflatex → biber → pdflatex ×2`. For a full PDF after that, run `./build.sh`.
+
+For diagnosis only: `PAR_GLOBAL_TMPDIR="$PWD/.biber-par-cache" biber book` (after at least one `pdflatex book.tex`).
 
 ## Lean proof spine
 

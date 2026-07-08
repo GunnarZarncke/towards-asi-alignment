@@ -18,8 +18,16 @@ book.bbl-SAVE-ERROR*
 *.toc
 book.pdf
 
-# Biber PAR cache (local build aid; see AGENTS.md)
+# Biber PAR cache (local build aid; see docs/BUILD.md)
 .biber-par-cache/
+
+# Build-time LaTeX fragments (regenerate: make generate or ./build.sh)
+metadata/global-nocite.tex
+metadata/notation-index.tex
+metadata/assumptions-index.tex
+metadata/axiom-budget-index.tex
+tables/chapter-map.tex
+tables/part-roadmap.tex
 
 # Experiment outputs (regenerate locally)
 experiments/toy-simulation/results/
