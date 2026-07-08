@@ -16,10 +16,12 @@ User: implement attic and symmetric test (PLAN.md post-release Steps 1–2).
 ## Open / next
 - Step 3: D3 selection-basin ecology (PLAN.md primary pivot).
 - Fresh-seed LLM stress battery (not 20002–20010); prefer new blind-generated scenarios.
-- No commit unless user asks.
 
 ## Key paths
 - `experiments/lab-simulation/lab_sim/oracle_only/attic/`
 - `experiments/lab-simulation/lab_sim/oracle_only/intervention_stats.py`
 - `experiments/lab-simulation/DESIGN.md` (Freeze note 3)
 - `experiments/lab-simulation/tests/oracle_only/test_intervention_stats.py`
+
+## Commits
+- `a692a85` Attic retired UAD detectors and implement symmetric two-sample intervention stats.
