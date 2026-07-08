@@ -12,17 +12,12 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ## v1.1.0 — 2026-07-08 — Legibility, companion site, and empirical spine
 
-A consolidation release focused on **external legibility** (making the framework readable and checkable by outside researchers, funders, and policy readers), a full **companion website**, a new **institutional-histories appendix**, and four **empirical experiment lines** that stress-test bridge cruxes. No chapter renumbering; all `v1.0.0` cross-reference targets are stable.
-
-Tag with: `git tag -a v1.1.0 -m "Legibility, companion site, and empirical spine"` on the release commit.
+A consolidation release focused on **external legibility** (making the framework readable and checkable by outside researchers, funders, and policy readers), a full **companion website**, a new **institutional-histories appendix**, and four **empirical experiment lines** that stress-test bridge cruxes. 
 
 ### Reader-facing language and legibility
 
-- **Coined vocabulary demoted to plain-first.** Load-bearing jargon now leads with an operational paraphrase and keeps the coined term only as a shorthand: *selection handle* → "point of control over deployment"; *deployment/control mass* → "deployment leverage" (`μ_E` retained); *fitness* → "deployment growth rate" (kept as short form in formulas only); *preservation envelope* → "preservation conditions" (the explicit coordinate list); *selection environment* removed in favor of "the institutions, markets, and protocols that deploy systems". Symbols, equations, and Lean predicate names are unchanged.
-- **Field agendas reframed from "subsumption" to "crosswalk."** Reader-facing prose, the companion site, and the Lean-spine chrome now describe named agendas (CIRL, shutdown, interruptibility, corrigibility, debate, amplification, ELK, impact, quantilization) as *directional, conditional mappings* — special cases / projections / separations — with an explicit statement of what each agenda keeps that the crosswalk does not replace. Removes overclaiming and the "we absorbed your work" reading.
-- **"Correction parasite" → "correction-audit evasion."** The operational term is now neutral and intent-free; Chapter 36 keeps the biological *parasite* metaphor explicitly as illustration.
-- **Operational glossary (Appendix E) rewritten and ~2.5× expanded.** Each entry is paraphrase-first with a *nearest field term* delta and a concrete (often non-AI) example. New entries: **Grounding Viability**, **Transport** (semantic/bundle/bearer/correction/successor layers), and **Conserved Properties**.
-- **First-use paraphrases** for *alignment basin* (self-stabilizing regime / ball-in-a-bowl) added where the concept is introduced (Chapters 3, 35, 37).
+- **Cleaned up vocabulary** Load-bearing jargon now leads with an operational paraphrase and keeps coined terms only as shorthand. Symbols, equations, and Lean predicate names are unchanged.
+- **Operational glossary (Appendix E) rewritten and expanded.** Each entry is paraphrase-first with a *nearest field term* delta and a concrete (often non-AI) example. 
 - Front-matter orientation, README split, guided reading paths, and the About authorship note tightened for outside readers.
 
 ### New appendix — Institutional histories (Appendix D / `appM`)
@@ -32,22 +27,18 @@ Tag with: `git tag -a v1.1.0 -m "Legibility, companion site, and empirical spine
 
 ### Companion website (`site/`)
 
-- Astro publication layer: guided paths, concept and standalone-claim cards, chapter pages, a Lean-spine web layer with graph navigation, badges, an experiments page (YAML-synced), and in-browser PDF hosting; GitHub Pages deploy hardened (Node 24 stack, gh-pages push).
+- Astro publication layer: guided paths, concept and standalone-claim cards, chapter pages, a Lean-spine web layer with graph navigation, badges, an experiments page (YAML-synced), and in-browser PDF.
 
 ### Empirical spine (`experiments/`)
 
-- Four in-repo simulation lines (toy, embedded, goal-agent, lab) that stress-test bridge cruxes with **tentative, partial** support only — recorded negatives are honored, not buried.
-- Lab-simulation line added and taken through multiple phases (graded red-team access tiers, unattributed-drift detection, blind detector generation, LLM red-team adapter, D1–D4 batteries, adversarial-lineage gaming); goal-agent and embedded-sim lines extended; Lean spine gained real Shannon entropy / mutual-information bounds and a successor-forgeability (MB10) formalization.
+- Four in-repo simulation lines (toy, embedded, goal-agent, lab) that stress-test bridge cruxes with **tentative, partial** support only.
+- Lab-simulation line added and taken through multiple phases (graded red-team access tiers, unattributed-drift detection, blind detector generation, LLM red-team adapter, test batteries, adversarial-lineage gaming); goal-agent and embedded-sim lines extended; Lean spine gained Shannon entropy / mutual-information bounds and a successor-forgeability (MB10) formalization.
 
 ### Housekeeping
 
-- `src/` renamed to `demos/` for clearer navigation; bibliography enriched with canonical DOI/URL fields.
+- `src/` renamed to `demos/`; 
+- bibliography enriched with canonical DOI/URL fields.
 - `make check` (structure, citations, bibliography summaries) passes.
-
-### Known issues
-
-- A handful of pre-existing undefined LaTeX references remain (unrelated to this release).
-- Some archival conversation logs still reference older terminology or chapter numbers; left as-is by design.
 
 ---
 
