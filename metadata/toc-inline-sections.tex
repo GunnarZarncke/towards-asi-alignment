@@ -1,0 +1,56 @@
+% Inline section index under each chapter in the table of contents.
+% Chapters stay one line; sections run as a wrapped paragraph:
+%   Title page · Title page · ...
+% Section numbers are omitted; subsections are excluded from the TOC.
+
+\makeatletter
+\settocdepth{section}
+
+\newif\iftoc@sectstarted
+\newif\iftoc@awaitingsections
+
+\newcommand{\toc@sectionsep}{\ ·\ }
+
+\newcommand{\toc@finishsections}{%
+  \iftoc@sectstarted
+    \par\vspace{0.2\baselineskip}%
+  \fi
+  \global\toc@sectstartedfalse
+  \global\toc@awaitingsectionsfalse
+}
+
+\let\toc@orig@l@part\l@part
+\renewcommand*{\l@part}[2]{%
+  \toc@finishsections
+  \toc@orig@l@part{#1}{#2}%
+}
+
+\let\toc@orig@l@chapter\l@chapter
+\renewcommand*{\l@chapter}[2]{%
+  \toc@finishsections
+  \toc@orig@l@chapter{#1}{#2}%
+  \global\toc@awaitingsectionstrue
+}
+
+\renewcommand*{\l@section}[2]{%
+  \ifnum\c@tocdepth>\z@
+    \iftoc@awaitingsections
+      \par\nobreak\vspace{0.2\baselineskip}\noindent\small
+      \global\toc@awaitingsectionsfalse
+    \else
+      \toc@sectionsep
+    \fi
+    \begingroup
+      \def\numberline##1{}%
+      #1\nobreak\space#2%
+    \endgroup
+    \global\toc@sectstartedtrue
+  \fi
+}
+
+\let\toc@orig@starttoc\@starttoc
+\renewcommand*{\@starttoc}[1]{%
+  \toc@orig@starttoc{#1}%
+  \toc@finishsections
+}
+\makeatother
