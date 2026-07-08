@@ -28,4 +28,4 @@ Implement D3.1; run full D3.1 battery in background while implementing D3.2; end
 - `experiments/lab-simulation/results/FINDINGS.md` G-36, G-37
 
 ## Commits
-- (pending this session)
+- `d9e125a` — D3.1–D3.2 harnesses, batteries, G-36/G-37, demo TODO.
