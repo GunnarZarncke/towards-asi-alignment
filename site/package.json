@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "npm run sync && npm run copy:pdf && ASTRO_BASE=/ ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "sync": "npm run sync:book && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos && npm run sync:experiments",
+    "sync": "npm run generate:manuscript-tex && npm run sync:book && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos && npm run sync:experiments",
+    "generate:manuscript-tex": "bash ../scripts/generate_manuscript_tex.sh",
     "sync:experiments": "node scripts/sync-experiments.mjs",
     "sync:demos": "node scripts/sync-demos.mjs",
     "sync:lean-spine": "node scripts/sync-lean-spine.mjs",

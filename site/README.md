@@ -31,9 +31,11 @@ Manual equivalent:
 ```bash
 cd site
 npm install
-ASTRO_BASE=/ npm run sync
+ASTRO_BASE=/ npm run sync   # runs generate_manuscript_tex.sh, then syncs chapters/cards
 ASTRO_BASE=/ npm run dev
 ```
+
+After a fresh clone, `npm run sync` regenerates gitignored manuscript `.tex` fragments (`metadata/*-index.tex`, `tables/chapter-map.tex`, etc.) before resolving cross-references. Same step runs in CI (`prebuild`).
 
 `npm run dev` syncs chapter metadata from `metadata/book.yml`, then starts Astro with hot reload. Edit cards under `src/content/cards/` or pages under `src/pages/` and refresh.
 

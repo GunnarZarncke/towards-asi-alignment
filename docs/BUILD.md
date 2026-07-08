@@ -59,6 +59,8 @@ cd site && npm ci && npm run build
 ./serve-site.sh     # from repo root
 ```
 
+`npm run sync` (and `prebuild`) runs `../scripts/generate_manuscript_tex.sh` first so gitignored build-time `.tex` fragments exist before chapter sync resolves `\label`/`\ref` targets (e.g. `tab:appi-axiom-budget` in Appendix G).
+
 See [`site/README.md`](../site/README.md).
 
 ## Repository map
