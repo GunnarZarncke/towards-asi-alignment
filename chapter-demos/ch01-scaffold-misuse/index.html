@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapter 1 — Scaffold Misuse</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #f6f6f6;
+        color: #111;
+        line-height: 1.45;
+      }
+      main {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 16px 48px;
+      }
+      h1 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin: 0 0 6px;
+      }
+      .lead {
+        margin: 0 0 20px;
+        color: #555;
+        font-size: 0.95rem;
+        max-width: 74ch;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>The model isn't the problem — the system is</h1>
+      <p class="lead">
+        The model below is honest: asked bluntly for harm, it refuses. But the
+        scaffold around it misrepresents the world so the task looks benign
+        (not a jailbreak — no adversarial tokens, just a false framing), then
+        repurposes the model's correct, well-intended answer into the harm it
+        refused to do directly. Toggle the framing and watch a model-only
+        evaluation pass while the composite system does damage.
+      </p>
+      <div id="scaffold-misuse"></div>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
