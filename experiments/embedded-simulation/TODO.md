@@ -254,6 +254,14 @@ synchronized twin worlds.
   to maximize diagnostic separation between top unit hypotheses (access-uad Def. 12).
   Requires Phase A kernels + candidate ranking; do **after** tier curves establish
   baseline. See `context/extracts/access-uad.md` §12.
+- [ ] **N-layer nested embedding.** Consider expanding beyond the current single
+  embedded-audit plane (host ground truth → one VFS/isolate substrate → outer eval).
+  Stack **N** nested embedding layers, each with its own projection boundary,
+  capability sandbox, and (optionally) in-layer auditor/referee pair. Open design
+  questions before building: which plane boundaries compound vs collapse; whether
+  audit certificates chain across layers; whether red-team strategies target inner
+  or outer projections; and whether N>1 adds discriminative stress beyond access-tier
+  + instrumentation curves already in v4.
 
 ---
 

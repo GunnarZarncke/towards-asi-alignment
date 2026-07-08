@@ -26,4 +26,4 @@ User asked whether institutional-design comparisons in Appendices C and M are no
 - `references/institutional-histories.bib` — six new keys
 
 ## Commits
-- (pending this session)
+- `65932af` Credit prior AI-governance literature in institutional appendices.

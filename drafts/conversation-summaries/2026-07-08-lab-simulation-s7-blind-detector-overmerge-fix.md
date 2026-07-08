@@ -77,4 +77,6 @@ Nothing else."
 
 ## Commits
 
-- `e1c1f90` Lab-sim S7 blind detector: fix committee over-merge from G-30
+- `5683189` Lab-sim S7 blind detector: fix committee over-merge from G-30
+  (amended once to fold in this log's hash, not re-amended further, per
+  this project's established practice)

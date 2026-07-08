@@ -30,4 +30,4 @@ Follow-up on Appendix M companion-site work: rewrite the overview hub and all el
 ## Commits
 
 - `564d73a` Rewrite Appendix M overview for non-technical readers.
-- `3b30923` Expand institutional history site cards for generalist readers.
+- `7cf1030` Expand institutional history site cards for generalist readers.

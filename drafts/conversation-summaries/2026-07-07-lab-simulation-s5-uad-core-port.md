@@ -125,5 +125,5 @@ Final state: **359 tests green** (up from 349 before this task).
 
 ## Commits
 
-- Pending — not yet committed this task (staged only on request, per
-  repo convention).
+- `e96dba6` — Lab-sim UAD: error feedback, lag-MI port, deep traces, CMI
+  detector, S6 plan.
