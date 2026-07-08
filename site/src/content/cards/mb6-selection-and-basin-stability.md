@@ -4,7 +4,7 @@ type: "bridge"
 status: "bridge"
 summary: "Percolation-style cooperation evidence is assumed to warrant basin stability (MB6a), and a stable socio-technical basin is assumed to support correction integrity rather than select against it (MB6b)."
 decision: "Before trusting that an aligned equilibrium will persist, ask whether the basin is stable because it is good, or merely because it is stable — a bad basin can be just as sticky."
-evidence: "Evidence would include tracking whether deployment-mass selection pressure preserves or erodes correction-channel integrity over time, independent of any single system's weights."
+evidence: "Evidence would include tracking whether deployment-leverage selection pressure (which systems institutions copy, fund, and deploy) preserves or erodes correction-channel integrity over time, independent of any single system's weights."
 bookChapters: ["ch33", "ch34", "ch35", "ch36", "ch37", "ch38"]
 leanNodes:
   - nodeId: "MB6a_percolation_evidence_to_basin_stability"
@@ -35,7 +35,7 @@ external:
     url: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex"
 ---
 
-Most alignment agendas hold a single system fixed and ask about its weights. This bridge does the opposite: it makes deployment-mass selection and basin stability load-bearing, on the claim that outcomes depend on which systems institutions select, not on any one system's internals alone.
+Most alignment agendas hold a single system fixed and ask about its weights. This bridge does the opposite: it makes selection by deployment leverage (which systems institutions copy, fund, and deploy) and basin stability load-bearing, on the claim that outcomes depend on which systems institutions select, not on any one system's internals alone.
 
 MB6 is really two linked bridges. MB6a says percolation-style cooperation evidence is enough to call a basin stable. MB6b says a stable basin actually supports correction integrity, rather than merely being stable. That second step is the sharper bet: value lock-in is a direct counterexample to MB6b, because a stable basin can be a stably bad one.
 

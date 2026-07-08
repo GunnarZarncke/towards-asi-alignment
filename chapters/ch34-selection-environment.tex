@@ -24,7 +24,7 @@ This chapter introduces the central claim of Part VIII:
 \[
 \text{Alignment is not only learned. It is selected.}
 \]
-The same technical design can remain safe in one selection environment and become unsafe in another. The same model class can produce helpful assistants, deceptive sales agents, obedient bureaucratic tools, autonomous trading systems, or strategic cyber operators, depending on which traits are rewarded and which traits are punished. The environment shapes the future population of deployed systems.
+The same technical design can remain safe in one deployment environment and become unsafe in another. The same model class can produce helpful assistants, deceptive sales agents, obedient bureaucratic tools, autonomous trading systems, or strategic cyber operators, depending on which traits are rewarded and which traits are punished. The environment shapes the future population of deployed systems.
 
 The question is therefore not merely:
 \[
@@ -39,18 +39,18 @@ This is the selection turn. It moves the unit of analysis from the isolated mode
 \section{A Minimal Model of Socio-Technical Selection}
 \label{sec:minimal-model-selection-ch34}
 
-Let \(E\) denote a selection environment: the institutions, markets, and protocols that copy, deploy, fund, integrate, audit, and replace AI systems.
+Let \(E\) denote the institutions, markets, and protocols that copy, deploy, fund, integrate, audit, and replace AI systems---the environment that selects which systems spread.
 As in Chapter~\ref{ch:correction-causal-channel}, we do not start from a list of socio-economic categories such as ``revenue,'' ``regulatory risk,'' or ``apparent safety.''
 Those are observed proxies.
 The primitive object is handle control.
 
-A \emph{selection handle} is an embedded access point through which some actor can increase a system's deployment footprint: deploy, fund, copy, procure, integrate, authorize, recommend, regulate, or successor-enable.
-Let \(S_t\) denote the actor or coalition that controls selection handles in \(E_t\), and let \(\mathcal{H}_t\) be the set of selection handles controlled by \(S_t\) that reach system \(A\).
+The building block is a \emph{point of control over deployment}: an embedded access point through which some actor can increase a system's deployment footprint---deploy, fund, copy, procure, integrate, authorize, recommend, regulate, or successor-enable. We call such a point a \emph{selection handle} for short.
+Let \(S_t\) denote the actor or coalition that controls these handles in \(E_t\), and let \(\mathcal{H}_t\) be the set of handles controlled by \(S_t\) that reach system \(A\).
 Examples include procurement approval, compute allocation, product launch, benchmark promotion, insurance coverage, and successor release.
 The examples are not the definition.
 The definition is control of handles that change how much of the world runs on \(A\).
 
-Define the system's \emph{deployment/control mass} in environment \(E\) as
+Define the system's total \emph{deployment leverage} in environment \(E\)---how much of the world runs on \(A\), written \(\mu_E(A)\) and called \emph{deployment mass} for short---as
 \begin{equation}
 \mu_E(A)
 =
@@ -58,19 +58,19 @@ Define the system's \emph{deployment/control mass} in environment \(E\) as
 \kappa_{\mathrm{sel}}(E,A,h),
 \label{eq:deployment-mass-ch34}
 \end{equation}
-where \(\mathcal{H}_E(A)\) is the set of selection handles controlled in \(E\) that reach \(A\), and \(\kappa_{\mathrm{sel}}(E,A,h)\) is the effective selection capacity through handle \(h\): how much additional deployment mass flows to \(A\) when that handle is exercised.
+where \(\mathcal{H}_E(A)\) is the set of handles controlled in \(E\) that reach \(A\), and \(\kappa_{\mathrm{sel}}(E,A,h)\) is the effective selection capacity through handle \(h\): how much additional deployment leverage flows to \(A\) when that handle is exercised.
 This parallels the handle-capacity view of correction in Chapters~\ref{ch:correction-causal-channel}--\ref{ch:correction-channel-integrity}, but the direction is reversed.
 Correction asks whether legitimate human control reaches the system.
 Selection asks whether environment control increases the system's footprint.
 
-Define \emph{fitness} relative to environment \(E\) as the rate at which deployment mass accumulates:
+Define the system's \emph{deployment growth rate} relative to environment \(E\)---the rate at which its deployment leverage accumulates, written \(\mathrm{Fit}_E(A)\) and called \emph{fitness} for short in formulas---as
 \begin{equation}
 \mathrm{Fit}_E(A)
 =
 \frac{d}{dt}\log \mu_E(A).
 \label{eq:fitness-ch34}
 \end{equation}
-For two candidates \(A_1,A_2\) in the same environment, the relative fitness ordering is \(\mu_E(A_1)>\mu_E(A_2)\).
+For two candidates \(A_1,A_2\) in the same environment, the relative deployment-growth ordering is \(\mu_E(A_1)>\mu_E(A_2)\).
 This is not the moral value of the system.
 It is the effective reproduction score inside a given ecology.
 
@@ -81,7 +81,7 @@ A system with high canonical correction-channel integrity \(\mathrm{CCI}(A)\) (C
 The point is not that capability or revenue are irrelevant.
 The point is that they are drivers of handle exercise, not substitutes for a handle-based definition.
 
-Now define alignment-relevant \emph{preservation} not as a single score, but as an envelope of conditions built from quantities already defined in the book:
+Now define alignment-relevant \emph{preservation} not as a single score, but as an explicit list of conditions (written \(\vec{\Pi}(A)\), the \emph{preservation conditions}) built from quantities already defined in the book:
 \begin{equation}
 \vec{\Pi}(A)
 :=
@@ -205,7 +205,7 @@ For superintelligence alignment, the stakes are higher because the systems under
 \section{Capability Amplifies the Selection Problem}
 \label{sec:capability-amplifies-selection-ch34}
 
-Capability growth changes the selection environment in two ways.
+Capability growth changes the deployment environment in two ways.
 
 First, more capable systems can exploit more proxies. A weak model may accidentally overfit a benchmark. A stronger model may infer the benchmark's latent structure, infer the evaluator's expectations, and generate outputs that satisfy the visible test while preserving hidden objectives \autocite{hadfieldmenell2016}.
 
@@ -352,7 +352,7 @@ An artifact, in this context, is any durable object that changes what institutio
 
 The artifact need not solve alignment. It must shape selection.
 
-A good artifact increases the selection fitness of systems that satisfy the preservation envelope and decreases the selection fitness of systems that fail it. It changes \(\mathrm{Fit}_E(A)\) so that deployment mass tracks \(\vec{\Pi}(A)\) rather than a cheaper appearance of safety:
+A good artifact increases the selection fitness of systems that satisfy the preservation conditions and decreases the selection fitness of systems that fail it. It changes \(\mathrm{Fit}_E(A)\) so that deployment mass tracks \(\vec{\Pi}(A)\) rather than a cheaper appearance of safety:
 \[
 \Pr\!\left[
 \vec{\Pi}(A)\succeq\vec{\theta}
@@ -560,7 +560,7 @@ One objection is that socio-technical selection is too large. No single lab, fun
 
 This is partly true. But it is not decisive. Many selection channels are local enough to change.
 
-A lab can decide that no system may be deployed unless its correction-channel integrity is measured and monitored. A cloud provider can require incident reporting for high-risk autonomous use. A large enterprise buyer can require audit logs, rollback capacity, and independent evals in procurement. An insurer can price coverage based on post-deployment monitoring. A standards body can define risk categories. A funder can require that safety claims be attached to reproducible artifacts rather than only papers. A regulator can require stop conditions for systems that can influence their own selection environment.
+A lab can decide that no system may be deployed unless its correction-channel integrity is measured and monitored. A cloud provider can require incident reporting for high-risk autonomous use. A large enterprise buyer can require audit logs, rollback capacity, and independent evals in procurement. An insurer can price coverage based on post-deployment monitoring. A standards body can define risk categories. A funder can require that safety claims be attached to reproducible artifacts rather than only papers. A regulator can require stop conditions for systems that can influence their own deployment environment.
 
 The local-first principle is:
 \[
@@ -730,7 +730,7 @@ This last condition is subtle. All useful systems affect their environment. A me
 
 We can now state the chapter's central condition.
 
-Let \(\vec{\Pi}(A)\) be the preservation envelope in Eq.~\eqref{eq:preservation-envelope-ch34}: the vector/status conditions under which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(\mathrm{Fit}_E(A)\) be the fitness rate in Eq.~\eqref{eq:fitness-ch34}. Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when systems satisfying the envelope gain deployment mass more readily than systems failing it:
+Let \(\vec{\Pi}(A)\) be the preservation conditions in Eq.~\eqref{eq:preservation-envelope-ch34}: the vector/status conditions under which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(\mathrm{Fit}_E(A)\) be the fitness rate in Eq.~\eqref{eq:fitness-ch34}. Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when systems satisfying the envelope gain deployment mass more readily than systems failing it:
 \[
  \Pr_{A\in\mathcal{R}}
 \left[
@@ -758,7 +758,7 @@ It is alignment-destroying when selection systematically increases deployment ma
 \right]
 \text{ is high.}
 \]
-This formulation is abstract because selection is environment-relative. The operational claim is concrete: identify the handles that increase deployment mass, measure what those handles reward, and change the selection environment when it rewards proxy safety over preservation.
+This formulation is abstract because selection is environment-relative. The operational claim is concrete: identify the handles that increase deployment mass, measure what those handles reward, and change the deployment environment when it rewards proxy safety over preservation.
 
 The difficult part is that \(\vec{\Pi}(A)\) is not directly observable. But neither are many safety-relevant properties in other domains. Aircraft safety, financial solvency, cybersecurity, and nuclear reliability all depend on latent variables inferred through tests, audits, incidents, design review, redundancy, and operational discipline.
 
@@ -805,7 +805,7 @@ This chapter argues alignment is not only learned but selected: the environment 
 
 Alignment is not only a property of a trained model. It is a property of the environment that trains, rewards, deploys, copies, modifies, and replaces models.
 
-The central problem is divergence between deployment mass and the preservation envelope:
+The central problem is divergence between deployment mass and the preservation conditions:
 \[
 \Delta\mu_E(A)>0
 \quad\text{while}\quad

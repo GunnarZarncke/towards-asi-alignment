@@ -4,7 +4,7 @@ type: "concept"
 status: "framework"
 summary: "Deployment environments can select for or destroy alignment properties even when a system starts in a better state."
 decision: "Ask what the surrounding incentives will amplify after deployment, not only what the system passed before launch."
-evidence: "Evidence would include selection handles, deployment-mass measurements, audit triggers, and signs that institutions reward correction-preserving behavior."
+evidence: "Evidence would include points of control over deployment (selection handles), deployment-leverage measurements, audit triggers, and signs that institutions reward correction-preserving behavior."
 bookChapters: ["ch34", "ch35", "ch36", "ch37", "ch38"]
 related: ["deployment-gate", "correction-channel-integrity", "evidence-and-uncertainty"]
 ---

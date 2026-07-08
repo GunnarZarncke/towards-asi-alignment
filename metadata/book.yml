@@ -319,8 +319,8 @@ parts:
     summary: "Makes successor creation the central inheritance test for alignment."
     summary_latex: "Makes \hyperref[sec:successor-alignment-condition-ch30]{successor creation} the central inheritance test for alignment."
   part08:
-    summary: "Tracks selection, preservation envelopes, correction parasites, attractor theory, and conductive artifacts for pivotal-process governance."
-    summary_latex: "Tracks selection, \hyperref[sec:minimal-model-selection-ch34]{preservation envelopes}, \hyperref[sec:operational-definition-ch36]{correction parasites}, \hyperref[sec:minimal-model-ch37]{attractor theory}, and \hyperref[sec:from-basin-theory-to-conductive-artifacts-ch38]{conductive artifacts for pivotal-process governance}."
+    summary: "Tracks selection, preservation conditions, correction-audit evasion, attractor theory, and conductive artifacts for pivotal-process governance."
+    summary_latex: "Tracks selection, \hyperref[sec:minimal-model-selection-ch34]{preservation conditions}, \hyperref[sec:operational-definition-ch36]{correction-audit evasion}, \hyperref[sec:minimal-model-ch37]{attractor theory}, and \hyperref[sec:from-basin-theory-to-conductive-artifacts-ch38]{conductive artifacts for pivotal-process governance}."
   part09:
     summary: "Turns the framework into adversarial measurement, relating debate, amplification, and ELK to it as narrower subchannels."
     summary_latex: "Turns the framework into adversarial measurement, relating \hyperref[sec:debate-judge-state-control-ch29]{debate}, \hyperref[sec:amplification-contraction-ch41]{amplification}, and \hyperref[sec:cci-verifiability-example-ch43]{ELK} to it as narrower subchannels."

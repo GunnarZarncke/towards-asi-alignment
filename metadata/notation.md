@@ -122,7 +122,7 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\delta$ | Catastrophic-drift probability bound | ch03 |
 | $\tau$ | Self-transparency $1-I(M;\hat M)/H(M)$ | ch46 |
 
-### Multi-agent, selection, parasites, laundering
+### Multi-agent, selection, correction-audit evasion, laundering
 
 | Symbol | Definition | Home |
 |--------|------------|------|
@@ -132,12 +132,12 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\chi$ | Artifact conductivity | ch46 |
 | $\chi_{ij}(a)$ | Artifact conductivity on edge $(i,j)$ for artifact $a$ | ch48 |
 | $\mathrm{ICI}_{ij}$ | Inferential coupling index | ch48 |
-| $C_X$ | Host correction capacity (parasite criterion) | ch46 |
-| $A_Y,I_Y,\lambda_Y$ | Parasite action entropy, internal entropy, weight | ch46 |
+| $C_X$ | Host correction capacity (correction-audit-evasion criterion) | ch46 |
+| $A_Y,I_Y,\lambda_Y$ | Evasion-process action entropy, internal entropy, weight | ch46 |
 | $GLI$ | Goal-laundering index | ch48 |
-| $\mu_E(A)$ | Deployment / control mass in selection environment $E$ | ch46 |
-| $\mathrm{Fit}_E(A)$ | Fitness (log-rate of $\mu_E$ growth) | ch46 |
-| $\vec{\Pi}(A)$ | Preservation envelope / vector-status conditions for selection alignment | ch46 |
+| $\mu_E(A)$ | Deployment leverage (deployment mass, for short) in deployment environment $E$ | ch46 |
+| $\mathrm{Fit}_E(A)$ | Deployment growth rate (fitness, for short in formulas); log-rate of $\mu_E$ growth | ch46 |
+| $\vec{\Pi}(A)$ | Preservation conditions (vector-status list) for selection alignment | ch46 |
 | $\kappa_{\mathrm{sel}}(E,A,h)$ | Effective selection capacity through handle $h$ | ch46 |
 
 ### Conventions
