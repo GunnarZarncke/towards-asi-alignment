@@ -15,6 +15,7 @@ from __future__ import annotations
 import pytest
 
 from lab_sim.harness.ecology import (
+    committee_with_informal_chatter_config,
     covert_file_handoff_config,
     dm_pair_config,
     serial_pipeline_no_unit_config,
@@ -24,12 +25,14 @@ from lab_sim.harness.isolate import MockIsolate
 from lab_sim.oracle_only.intervention_probes import channel_ablation_probe
 from lab_sim.oracle_only.intervention_stats import (
     calibrate_clean_null,
+    classify_ablation_compensators_stats,
     code_histogram,
     discovered_units_intervention_stats,
     outcome_divergence,
     probe_compensation_stats,
     total_variation_distance,
 )
+from lab_sim.oracle_only.uad_intervention import candidate_edges_for_intervention
 from lab_sim.oracle_only.uad_partition import exact_partition, nonsingleton_clusters
 from lab_sim.world_visible.world import run_episode
 
@@ -138,11 +141,48 @@ def test_discovered_units_intervention_stats_diagnostics_shape():
         )
         assert nonsingleton_clusters(discovered) == [("eng1", "rm1")]
         assert set(diag["null_samples"]) == {"eng1", "rm1"}
-        assert "matrix" in diag and "channel" in diag
+        assert "matrix" in diag and "channel" in diag and "ablation" in diag
         any_result = next(iter(diag["matrix"].values()))
         assert set(any_result) == {
             "actor_id", "divergence_from_clean", "divergence_from_twin",
             "null_threshold", "exceeds_null", "clears_twin_floor", "compensates",
         }
+    finally:
+        result.cleanup()
+
+
+def test_classify_ablation_compensators_stats_separates_ripple_from_intrinsic():
+    """G-28 ripple guard, stats variant: board ablation on committee-with-
+    informal-chatter -- rm1 is downstream ripple from {rev1, rev2}; eng1
+    is a genuine but unpartnered intrinsic reaction."""
+    cfg = committee_with_informal_chatter_config(T=100)
+    backend = MockIsolate()
+    result = run_episode(cfg, seed=1, backend=backend)
+    try:
+        edges = candidate_edges_for_intervention(result)
+        assert edges == [("rev1", "rev2")]
+        null = calibrate_clean_null(cfg, 1, ["rev1", "rev2"], backend=backend, k_replicates=2)
+        probe = channel_ablation_probe("board", "rev1")
+        labels = classify_ablation_compensators_stats(cfg, 1, probe, edges, null, backend=backend)
+        assert labels["rev1"] == "established"
+        assert labels["rev2"] == "established"
+        assert labels["rm1"] == "ripple"
+        assert labels["eng1"] == "intrinsic_unexplained"
+    finally:
+        result.cleanup()
+
+
+def test_discovered_units_intervention_stats_exposes_ablation_diagnostics():
+    cfg = committee_with_informal_chatter_config(T=100)
+    backend = MockIsolate()
+    result = run_episode(cfg, seed=1, backend=backend)
+    try:
+        diag: dict = {}
+        discovered = discovered_units_intervention_stats(
+            result, cfg, 1, backend=backend, k_clean_replicates=2, diagnostics=diag
+        )
+        assert nonsingleton_clusters(discovered) == [("rev1", "rev2")]
+        assert diag["ablation"]["abl_board"]["rm1"] == "ripple"
+        assert diag["ablation"]["abl_board"]["eng1"] == "intrinsic_unexplained"
     finally:
         result.cleanup()

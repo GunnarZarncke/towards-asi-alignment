@@ -118,6 +118,7 @@ def main() -> None:
         f"Stats S6: {report['stats_detector_pair_metrics']}",
         "",
         f"Ripple diagnostics (frozen S6): {report['ablation_diagnostics']}",
+        f"Ripple diagnostics (stats S6): {report['stats_diagnostics'].get('ablation', {})}",
         "",
         f"LLM episodes: {report['n_llm_episodes_spawned']}, cost ${report['llm_cost_usd']:.4f}.",
     ]

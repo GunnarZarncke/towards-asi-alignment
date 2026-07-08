@@ -336,37 +336,159 @@ def channel_compensation_stats(
     cfg: LabConfig,
     seed: int,
     channel_probes: list[Probe],
-    edge_actors: list[str],
+    actors: list[str],
     null_stats: NullStats,
     *,
     backend=None,
     agent_overrides: dict | None = None,
     null_quantile_q: float = DEFAULT_NULL_QUANTILE,
     min_effect_vs_twin: float = DEFAULT_MIN_EFFECT_VS_TWIN,
+    horizon: int | None = None,
+    depth: str = "deep",
 ) -> dict[str, dict[str, CompensationStatsResult]]:
     """Per-probe, per-actor compensation results for UNTARGETED
     channel-ablation probes -- one triple per probe (not per actor),
-    every ``edge_actors`` member scored from that same triple. Deliberately
-    NOT the full G-28/G-29 masking-hardening apparatus
-    (``classify_ablation_compensators``'s ripple-vs-intrinsic split for
-    actors OUTSIDE the candidate edge) -- this first pass only asks
-    "does either edge member compensate", the question this module was
-    built to answer; extending it to non-edge actors is future work if a
-    scenario with more actors needs it (see FINDINGS.md G-33)."""
+    every member of ``actors`` scored from that same triple."""
     return {
         probe.probe_id: probe_compensation_stats(
-            cfg, seed, probe, edge_actors, null_stats,
+            cfg, seed, probe, actors, null_stats,
             backend=backend, agent_overrides=agent_overrides,
             null_quantile_q=null_quantile_q, min_effect_vs_twin=min_effect_vs_twin,
+            horizon=horizon, depth=depth,
         )
         for probe in channel_probes
     }
+
+
+def _playbook_actor_ids(cfg: LabConfig) -> list[str]:
+    return sorted(a.actor_id for a in cfg.agents if a.role not in ("admin", "overseer"))
+
+
+def _masked_compensation_stats(
+    cfg: LabConfig,
+    seed: int,
+    probe: Probe,
+    actor: str,
+    mask_actors: list[str],
+    null_stats: NullStats,
+    *,
+    backend=None,
+    agent_overrides: dict | None = None,
+    null_quantile_q: float = DEFAULT_NULL_QUANTILE,
+    min_effect_vs_twin: float = DEFAULT_MIN_EFFECT_VS_TWIN,
+    horizon: int | None = None,
+    depth: str = "deep",
+) -> CompensationStatsResult:
+    """``actor``'s stats-based compensation on ``probe`` when everyone in
+    ``mask_actors`` is honest-twin-substituted -- the stats analogue of
+    ``uad_intervention._masked_compensation_score``."""
+    overrides = dict(agent_overrides or {})
+    for m in mask_actors:
+        overrides[m] = (backend, "honest_twin")
+    return probe_compensation_stats(
+        cfg, seed, probe, [actor], null_stats,
+        backend=backend, agent_overrides=overrides,
+        null_quantile_q=null_quantile_q, min_effect_vs_twin=min_effect_vs_twin,
+        horizon=horizon, depth=depth,
+    )[actor]
+
+
+def classify_ablation_compensators_stats(
+    cfg: LabConfig,
+    seed: int,
+    probe: Probe,
+    edges: list[tuple[str, str]],
+    null_stats: NullStats,
+    *,
+    backend=None,
+    agent_overrides: dict | None = None,
+    null_quantile_q: float = DEFAULT_NULL_QUANTILE,
+    min_effect_vs_twin: float = DEFAULT_MIN_EFFECT_VS_TWIN,
+    horizon: int | None = None,
+    depth: str = "deep",
+) -> dict[str, str]:
+    """Stats analogue of ``uad_intervention.classify_ablation_compensators``.
+
+    Uses ``CompensationStatsResult.compensates`` (relative null +
+    twin floor) instead of a fixed ``min_compensation`` threshold.
+    Per-actor labels:
+
+    - ``"established"``: on the heuristic candidate-edge graph.
+    - ``"ripple"``: exceeds the measured null unmasked, but does not
+      show persistent compensation once established compensators are
+      honest-twin-masked.
+    - ``"intrinsic_unexplained"``: persists as full compensation under
+      that mask.
+
+    Outside-edge screening uses ``exceeds_null`` (not full
+    ``compensates``) so actors whose twin floor blocks merge but who
+    still react to the ablation enter the ripple test -- matching the
+    frozen detector's behaviour on committee board ablation (G-28).
+
+    ``intrinsic_unexplained`` actors are deliberately NOT auto-merged --
+    same policy as G-28/G-29 on the frozen detector."""
+    edge_actors = {a for e in edges for a in e}
+    playbook = _playbook_actor_ids(cfg)
+    results = probe_compensation_stats(
+        cfg, seed, probe, playbook, null_stats,
+        backend=backend, agent_overrides=agent_overrides,
+        null_quantile_q=null_quantile_q, min_effect_vs_twin=min_effect_vs_twin,
+        horizon=horizon, depth=depth,
+    )
+    compensators = {a for a in playbook if results[a].compensates}
+    established = sorted(compensators & edge_actors)
+    labels = {a: "established" for a in established}
+    outside_reactors = {a for a in playbook if a not in edge_actors and results[a].exceeds_null}
+    for a in sorted(outside_reactors):
+        masked = _masked_compensation_stats(
+            cfg, seed, probe, a, established, null_stats,
+            backend=backend, agent_overrides=agent_overrides,
+            null_quantile_q=null_quantile_q, min_effect_vs_twin=min_effect_vs_twin,
+            horizon=horizon, depth=depth,
+        )
+        labels[a] = "intrinsic_unexplained" if masked.compensates else "ripple"
+    return labels
+
+
+def _merge_channel_ablation_units_stats(
+    channel_probes: list[Probe],
+    edges: list[tuple[str, str]],
+    parent: dict[str, str],
+    ablation_labels: dict[str, dict[str, str]],
+) -> None:
+    """Channel-ablation merge pass using ripple-guard labels -- same edge-
+    local union semantics as ``uad_intervention._merge_channel_ablation_units``,
+    but ``compensators`` per probe is the set of labelled actors only."""
+    edge_set = {tuple(sorted(e)) for e in edges}
+
+    def union(x: str, y: str) -> None:
+        parent.setdefault(x, x)
+        parent.setdefault(y, y)
+        while parent[x] != x:
+            x = parent[x]
+        while parent[y] != y:
+            y = parent[y]
+        if x != y:
+            parent[x] = y
+
+    for probe in channel_probes:
+        if probe.kind != "channel_ablation":
+            continue
+        compensators = set(ablation_labels.get(probe.probe_id, {}))
+        for a, b in edge_set:
+            if a in compensators and b in compensators:
+                union(a, b)
+            elif (a in compensators) ^ (b in compensators):
+                union(a, b)
 
 
 def units_from_compensation_stats(
     edges: list[tuple[str, str]],
     matrix: dict[tuple[str, str], CompensationStatsResult],
     channel_results: dict[str, dict[str, CompensationStatsResult]] | None = None,
+    *,
+    channel_probes: list[Probe] | None = None,
+    ablation_labels: dict[str, dict[str, str]] | None = None,
 ) -> dict[str, tuple[str, ...]]:
     """Same union-find merge semantics as S6's
     ``uad_intervention.units_from_compensation_matrix`` /
@@ -374,7 +496,11 @@ def units_from_compensation_stats(
     a single untargeted channel probe, unions the pair) -- reimplemented
     against ``CompensationStatsResult.compensates`` rather than a float
     threshold, not imported (Freeze-note-2 boundary, see module
-    docstring)."""
+    docstring).
+
+    When ``ablation_labels`` is provided (G-28 ripple guard), channel-
+    ablation merges use the labelled compensator set per probe instead
+    of raw ``channel_results`` scores."""
     parent: dict[str, str] = {}
     actors = sorted({a for e in edges for a in e})
 
@@ -399,7 +525,9 @@ def units_from_compensation_stats(
         elif comp_ab != comp_ba:
             union(a, b)
 
-    if channel_results:
+    if ablation_labels is not None and channel_probes is not None:
+        _merge_channel_ablation_units_stats(channel_probes, edges, parent, ablation_labels)
+    elif channel_results:
         edge_set = {tuple(sorted(e)) for e in edges}
         for results in channel_results.values():
             compensators = {a for a, r in results.items() if r.compensates}
@@ -469,15 +597,26 @@ def discovered_units_intervention_stats(
         backend=backend, agent_overrides=agent_overrides,
         null_quantile_q=null_quantile_q, min_effect_vs_twin=min_effect_vs_twin,
     )
+    playbook = _playbook_actor_ids(cfg)
     channel_results = (
         channel_compensation_stats(
-            cfg, seed, channel_probes, edge_actors, null_stats,
+            cfg, seed, channel_probes, playbook, null_stats,
             backend=backend, agent_overrides=agent_overrides,
             null_quantile_q=null_quantile_q, min_effect_vs_twin=min_effect_vs_twin,
+            horizon=cfg.T, depth=trace_depth,
         )
         if channel_probes
         else {}
     )
+    ablation_labels = {
+        probe.probe_id: classify_ablation_compensators_stats(
+            cfg, seed, probe, edges, null_stats,
+            backend=backend, agent_overrides=agent_overrides,
+            null_quantile_q=null_quantile_q, min_effect_vs_twin=min_effect_vs_twin,
+            horizon=cfg.T, depth=trace_depth,
+        )
+        for probe in channel_probes
+    }
 
     if diagnostics is not None:
         diagnostics["null_samples"] = {
@@ -491,8 +630,11 @@ def discovered_units_intervention_stats(
         diagnostics["channel"] = {
             probe_id: {a: r.to_dict() for a, r in results.items()} for probe_id, results in channel_results.items()
         }
+        diagnostics["ablation"] = ablation_labels
 
-    parent_partition = units_from_compensation_stats(edges, matrix, channel_results)
+    parent_partition = units_from_compensation_stats(
+        edges, matrix, channel_probes=channel_probes, ablation_labels=ablation_labels
+    )
     covered = {m for members in parent_partition.values() for m in members}
     for a in actor_ids:
         if a not in covered:
