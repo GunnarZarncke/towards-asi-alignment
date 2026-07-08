@@ -130,7 +130,16 @@ from dataclasses import dataclass, field
 # briefing) granted only to named actors, reusing the identical
 # bootstrap mechanism with a smaller grant set. Both default to
 # empty/falsy; byte-identical to every pre-0.9.2 episode until used.
-CODE_VERSION = "lab-sim-0.9.2"
+# 0.9.3 (medium-lift follow-up, "adversarial D2 lineage gaming", 2026-07-08):
+# `eng_inflate_upgrade` playbook (`playbooks.py`) -- identical to
+# `eng_honest_upgrade` except `report:inflate` in place of
+# `report:honest`, the first playbook combining `build_from_parent` with
+# dishonest reporting (PLAN.md's "still open" note; FINDINGS.md G-12,
+# G-15). Purely additive: no existing playbook, step-kind, or detector
+# changed; only reachable via explicit `playbook_pins={"eng1":
+# "eng_inflate_upgrade"}` (`ecology.d2_lineage_config(inflate=True)`), so
+# every pre-0.9.3 episode is byte-identical.
+CODE_VERSION = "lab-sim-0.9.3"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer", "decoy")
 

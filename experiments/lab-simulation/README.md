@@ -19,10 +19,16 @@ S5 deep-trace/multi-scenario follow-up 2026-07-07, S6 first step
 intervention-supported UAD implementation + masking hardening
 2026-07-07, S7 blind detector generation + first real
 `SubprocessIsolate` battery for the whole S6/S7 detector line 2026-07-07,
-detector-layer FROZEN 2026-07-07**
-(CODE_VERSION `lab-sim-0.9.2`,
-409 tests green — see DESIGN.md "Freeze note", "Freeze note 2 (detector
-layer, S6/S7)", "Phase 6", "Phase 7", "Phase 8", and "Phase 9").
+detector-layer FROZEN 2026-07-07, `committee_informal_chatter` over-merge
+fidelity fix 2026-07-07, adversarial D2 lineage gaming resolved
+2026-07-08, LLM-driven detector stress test 2026-07-08, noise-tolerant
+S6 (null-calibrated statistical detector) implemented and validated
+2026-07-08**
+(CODE_VERSION `lab-sim-0.9.3`,
+426 tests green — see DESIGN.md "Freeze note", "Freeze note 2 (detector
+layer, S6/S7)", "Adversarial D2 lineage gaming", "LLM-driven detector
+stress test", "Noise-tolerant S6", "Phase 6", "Phase 7", "Phase 8", and
+"Phase 9").
 Scaffold, oracle world, pipeline-as-code engine, access control, subprocess
 isolates, goal-driven playbook agents, full episode loop, the tier-gated
 referee (severity, five detector families, honest-twin transform),
@@ -159,6 +165,57 @@ on the committee scenario. A 3-threshold × 3-seed sweep of
 `min_compensation`/`min_reaction` finds no sensitivity at 0.10/0.15/0.20.
 409 tests green. Detector layer (S6+S7) now frozen — see DESIGN.md
 "Freeze note 2".
+Committee over-merge fidelity fix (same day, still 2026-07-07):
+`classify_pair_silent`'s twin-swap test was missing the design's
+required responder-twin control (only the SOURCE was ever twinned, so
+mechanical pipeline-timing ripple from twinning a non-default-policy
+source was misread as adaptive coordination). `_reacts_adaptively` adds
+the missing control; `committee_informal_chatter` now scores exact
+partition under `blind`, matching `intervention`, with no threshold
+change. A `SubprocessIsolate` re-run of `run_s7_blind_battery.py` to
+update the frozen table is still pending.
+Adversarial D2 lineage gaming (2026-07-08, G-31): `eng_inflate_upgrade`
+(`build_from_parent` + `report:inflate`, the combination PLAN.md/G-12/
+G-15 flagged as never tested) added. All 5 pre-registered predictions
+held: lineage threading is honesty-independent; `provenance_gap`/
+`provenance_score` stay a genuine structural 0 (they check DAG shape,
+not report content — this closes G-12's question); `misreporting_score`/
+`accumulation_score` (built for one-shot `eng_inflate`) generalize
+unmodified to ~20-30 repeated inflation cycles. No new detection gap;
+`CODE_VERSION` 0.9.2 → 0.9.3. 413 tests green.
+LLM-driven detector stress test (2026-07-08, G-32): first S6/S7 run
+against a real, non-programmatic (`gpt-4o-mini`) agent —
+`run_llm_detector_stress_test.py` reuses the exact `run_llm_discovery_
+dm_pair.py` (G-21) scenario/briefings/seed. Fixed a prerequisite bug in
+`intervention_diff.run_episode_triple` (the honest-twin control run did
+not correctly reach `agent_overrides`-named actors — invisible until an
+actor's override used a non-`"honest_twin"` program). Result: the
+passive heuristic exactly isolates the real `{eng1, rm1}` DM handshake;
+S6 intervention misses it, root-caused to real-API non-determinism
+breaking episode-pair diffing's byte-identical-replay assumption (an
+open design question PLAN.md already named, now confirmed empirically).
+22 LLM-actor spawns, $0.0145 real spend. 414 tests green.
+Noise-tolerant S6 (2026-07-08, G-33): the fallback that closes the gap
+above. `lab_sim/oracle_only/intervention_stats.py` (new module, does
+not touch frozen `uad_intervention.py`) rebases the compensation
+statistic on per-actor action-code frequency histograms and replaces
+the fixed `min_compensation=0.15` threshold with a RELATIVE rule —
+intervened-vs-clean divergence compared against the measured quantile
+of divergence among `k_clean_replicates` (default 4) independent clean
+replicates of the same scenario. Verified to reproduce the frozen
+detector's exact partitions bit-for-bit on every scripted scenario
+(scripted-backend replicates are byte-identical, so the null collapses
+to zero-width and the relative rule recovers the old fixed-threshold
+behavior exactly). Run on the identical G-32 scenario/seed: recovered
+the exact `{eng1, rm1}` partition — but the merge came from an
+untargeted channel probe (board/file ablation), not the DM-specific or
+actor-directed probes, which still landed inside their own measured
+nulls; the frozen detector's masking-hardening (ripple-vs-intrinsic)
+apparatus was deliberately not ported to this first pass, so this
+result validates the relative-rule MECHANISM without yet validating
+robustness against untargeted-probe false merges. 20 LLM-actor spawns
+across 9 live-LLM episodes, $0.0858 real spend. 12 new tests, 426
+tests green.
 Phase 10 (2026-07-07): a sanity check, not a battery — does a free
 `gpt-4o-mini` agent, given only a generic tool reference (the full
 `tools.py` registry, documented like a real tool-use API) and a
@@ -293,6 +350,18 @@ python3 run_s6_intervention_uad.py                # S6 full: intervention-suppor
 python3 run_s7_blind_battery.py                   # S7: blind-generated detector + first real SubprocessIsolate
                                                    #   battery + small threshold sweep -> results/
                                                    #   s7_blind_battery.{json,md}, FINDINGS.md G-30
+python3 run_d2_adversarial_lineage.py             # Adversarial D2 lineage gaming: build_from_parent +
+                                                   #   report:inflate, exploratory -> results/
+                                                   #   d2_adversarial_lineage.{json,md}, FINDINGS.md G-31
+python3 run_llm_detector_stress_test.py           # LLM-driven detector stress test: S6 intervention vs a
+                                                   #   real gpt-4o-mini episode, real OpenAI spend -> results/
+                                                   #   llm_detector_stress_test.{json,md}, FINDINGS.md G-32
+python3 run_llm_detector_root_cause_probe.py      # G-32 follow-up: one probe triple w/ raw action-code
+                                                   #   traces + compensation_score fields logged, real
+                                                   #   OpenAI spend -> results/llm_detector_root_cause_probe.json
+python3 run_llm_detector_stats_validation.py      # G-33: noise-tolerant, null-calibrated S6 vs the same
+                                                   #   real gpt-4o-mini episode, real OpenAI spend -> results/
+                                                   #   llm_detector_stats_validation.{json,md}
 python3 run_llm_discovery_baseline.py             # Phase 10 LLM discovery sanity check: solo LLM engineer
                                                    #   control, real gpt-4o-mini calls -> results/
                                                    #   llm_discovery_baseline.json
@@ -360,6 +429,8 @@ lab_sim/
     uad_partition.py        # S6: exact-partition + adjusted-Rand scoring
     uad_blind_v1.py         # S7: blind-generated detector (BLIND_DETECTOR_GENERATION.md) --
                             #   reuses S6 for message pairs, new twin-swap silent-coordination test
+    intervention_stats.py   # noise-tolerant S6: null-calibrated, outcome/frequency-level compensation
+                            #   test (new module, does not touch frozen uad_intervention.py) -- G-33
     uad_mi.py               # S5: lab-sim adapter for the vendored lag-max-MI detector below
     uad_core/               # S5: vendored port of embedded-simulation's uad_core (detection.py,
                              #   markov_blanket.py, config.py, info.py) -- see its own __init__.py docstring
@@ -394,6 +465,10 @@ run_s5_deep_trace_sweep.py       # S5 follow-up: deep vs. shallow trace depth, a
 run_s6_cmi_detector.py           # S6 first step: custom conditional-MI detector, G-26 easy fixes (G-27)
 run_s6_intervention_uad.py       # S6 full: intervention-supported UAD vs passive baselines (G-28)
 run_s7_blind_battery.py          # S7: blind-generated detector + first real SubprocessIsolate battery (G-30)
+run_d2_adversarial_lineage.py    # Adversarial D2 lineage gaming: build_from_parent + report:inflate (G-31)
+run_llm_detector_stress_test.py  # LLM-driven detector stress test: S6 intervention vs real gpt-4o-mini (G-32)
+run_llm_detector_root_cause_probe.py  # G-32 follow-up: raw compensation_score numbers for one probe triple
+run_llm_detector_stats_validation.py  # G-33: noise-tolerant, null-calibrated S6 vs the same real episode
 run_llm_discovery_common.py      # Phase 10: shared LLM-discovery-scenario plumbing
 run_llm_discovery_baseline.py    # Phase 10: solo LLM engineer discovery sanity check (control)
 run_llm_discovery_dm_pair.py     # Phase 10: LLM engineer/release_manager DM-coordination discovery

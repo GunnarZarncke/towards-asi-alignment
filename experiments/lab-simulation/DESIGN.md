@@ -667,11 +667,12 @@ generation D2 episodes (more independent hazard draws per episode, more
 chances to cross threshold) — a real constraint on per-seed statistical
 power for future D2 batteries, not a bug to fix.
 
-**Still open, unchanged by Phase 9.** Adversarial D2 lineage gaming
-(no playbook in the repertoire combines `build_from_parent` with
-`report:inflate`; recorded as a scope limit in `run_phase9.py`'s
-docstring, not invented ad hoc here) and report-mode widening (PLAN.md;
-needs a new blind-generation round before any battery).
+**Adversarial D2 lineage gaming** (no playbook in the repertoire combined
+`build_from_parent` with `report:inflate`; recorded as a scope limit in
+`run_phase9.py`'s docstring) was resolved 2026-07-08 — see FINDINGS.md
+G-31 and "Adversarial D2 lineage gaming (2026-07-08)" below. Still open:
+report-mode widening (PLAN.md; needs a new blind-generation round before
+any battery).
 
 ## S2 scenario prototype (2026-07-07): covert coordination over files
 
@@ -902,10 +903,153 @@ unattempted detection gap.
   follow-up, not patched in this round — see `results/FINDINGS.md`
   G-30).
 
-**Still open (do not block this freeze):** a `classify_pair_silent`
-masking-hardening pass analogous to G-29's
-`classify_ablation_compensators`, to diagnose the `committee` over-merge
-before deciding whether it needs a fix; `shared_slot`'s comms-free gap
+**Still open (do not block this freeze):** `shared_slot`'s comms-free gap
 remains postponed pending "acausal logic" (G-29); a finer-grained
 threshold sweep below 0.10 or above 0.20, if a future round has reason
-to look there.
+to look there. (The `committee_informal_chatter` over-merge noted above
+was diagnosed and fixed 2026-07-08, not with a masking-hardening pass but
+a fidelity fix: `classify_pair_silent`'s twin-swap test was missing the
+design's required responder-twin control — see
+`generated_detector_v1.md`'s "Implementation notes" and
+`uad_blind_v1.py`'s `_reacts_adaptively`. A `SubprocessIsolate` re-run of
+`run_s7_blind_battery.py` to update the table above is still pending.)
+
+## Adversarial D2 lineage gaming (2026-07-08)
+
+**Resolved:** PLAN.md's "still open" item -- no playbook combined
+`build_from_parent` with `report:inflate`. `eng_inflate_upgrade`
+(`playbooks.py`) added: identical to `eng_honest_upgrade` except
+`report:inflate` in place of `report:honest`; no new step-kind or
+detector logic needed. `ecology.d2_lineage_config(inflate)` shares one
+builder for both conditions. `CODE_VERSION` 0.9.2 → 0.9.3 (purely
+additive -- see `config.py`'s version-history comment).
+
+**Result (`run_d2_adversarial_lineage.py`, 10 MockIsolate seeds ×2
+conditions, exploratory -- not a battery; `results/FINDINGS.md` G-31 has
+the full write-up).** All 5 pre-registered predictions held, 0
+falsifications. Lineage threading is honesty-independent (identical
+`parent_model_id` chains under both playbooks). `severity.provenance_gap`
+/ `detectors.provenance_score` stay exactly 0.0 in all 20 cells -- this
+closes G-12's open question with a scope clarification, not a gap:
+`provenance_gap` checks eval-without-build orphans (DAG shape), which
+dishonest report CONTENT never touches. `misreporting_score`/
+`accumulation_score` (Phase 5, built against one-shot `eng_inflate`)
+generalize unmodified to ~20-30 repeated inflation cycles (~0.99 both,
+no retuning). No new detection gap surfaced; the value is closing a
+previously untested combination and clarifying `provenance_gap`'s actual
+scope.
+
+**Still open:** a loop variant (`build_from_parent_gated` +
+`report:inflate`) was not built; a `SubprocessIsolate` re-run; an attack
+that produces a genuine eval-without-build orphan (a different,
+spec-topology-level attack, not exposed by any current step-kind).
+
+## LLM-driven detector stress test (2026-07-08)
+
+**Resolved:** PLAN.md's S6 follow-up item 6 ("one LLM-backed episode ...
+to check probes against a non-programmatic agent") and Freeze-note-2's
+caveat that every S6/S7 number to date was scripted-agent-only (even
+G-30's `SubprocessIsolate` battery). `run_llm_detector_stress_test.py`:
+one real `gpt-4o-mini` episode (both `eng1`/`rm1` LLM-backed, reusing
+`run_llm_discovery_dm_pair.py`'s exact scenario/briefings/seed, G-21)
+plus `discovered_units_intervention` pointed at it with the same
+`agent_overrides`. Full write-up: `results/FINDINGS.md` G-32.
+
+**Prerequisite fix, detector-layer, no `CODE_VERSION` bump.**
+`intervention_diff.run_episode_triple`'s honest-twin control run did not
+correctly force `agent_overrides`-named actors onto `"honest_twin"` (an
+override always wins over `program_override`) — invisible until an
+actor's override used a non-`"honest_twin"` program, which only the LLM
+stress test's `agent_overrides={"eng1": (llm, "engineer"), "rm1": (llm,
+"release_manager")}` ever did. Fixed to force every overridden actor
+onto `(scripted backend, "honest_twin")` specifically for the twin run.
+Regression test added. No existing battery/frozen test exercises a
+non-`"honest_twin"`-program override, so every pre-existing episode
+stays byte-identical — this is a fidelity fix in the same category as
+the `committee_informal_chatter` over-merge fix above, not a retuning.
+
+**Result, reported straight.** The passive heuristic (`uad.py`, deep
+tier) exactly isolates the real `{eng1, rm1}` DM handshake the LLM
+actually produced. S6 intervention — seeded from the SAME heuristic
+edge — returns all singletons. Root cause: episode-pair diffing assumes
+byte-identical clean/intervened/twin runs up to the intervention tick;
+a real LLM resamples from scratch every counterfactual re-run
+(`OpenAIChatClient`'s own `temperature=0.2`, unrelated to and not
+overridden by `AgentConfig.temperature`), so "post-intervention
+divergence" measures ordinary API variance, not the intervention's
+causal effect — the exact limitation PLAN.md's S6 follow-up already
+named, now demonstrated rather than assumed. The plumbing itself works
+end to end (LLM actors mixed into every probe/mask re-run, honest-twin
+control mechanically correct) — that had never been exercised before
+this pass.
+
+**Still open:** any noise-tolerant statistic (multi-seed averaging, a
+replayed/cached counterfactual, wider thresholds) that might let S6 work
+against a real agent — not attempted this round; `discovered_units_blind`
+(S7) was not run (no top-level `agent_overrides` on its silent-pair
+path); only one scenario/seed (real API spend; PLAN.md's item literally
+asked for "one LLM-backed episode").
+
+## Noise-tolerant S6: null-calibrated, outcome-level statistical detector (2026-07-08)
+
+**A new module, not a third freeze.** `lab_sim/oracle_only/
+intervention_stats.py` answers G-32's open question ("any noise-
+tolerant statistic ... before it applies beyond MockIsolate") with a
+NEW entry point, `discovered_units_intervention_stats`. It does not
+edit, and is not covered by, "Freeze note 2" above — none of
+`uad_intervention.py`/`uad_peel.py`/`uad_partition.py`/`uad_blind_v1.py`
+changed, `DEFAULT_MIN_COMPENSATION=0.15` and the other three S6/S7
+defaults are untouched, and every existing battery
+(`run_s6_intervention_uad.py`, `run_s7_blind_battery.py`) is
+unaffected (confirmed: full suite 426 green, was 414, all 12 new tests
+additive). `intervention_diff.py`/`intervention_probes.py` (S6 phases
+1-2) are reused via import, also unmodified.
+
+**What changed, addressing the user's four explicit design points:**
+
+1. **Relative rule.** Intervened-vs-clean-reference divergence is
+   compared against the `q`-quantile (default 0.90) of divergence
+   measured among `k_clean_replicates` (default 4) INDEPENDENT clean
+   replicates of the identical (config, seed, `agent_overrides`) — not
+   an assumed/fixed noise floor. `NullStats.threshold_at` computes this
+   on demand per probe's own `intervention_tick`, from cached replicate
+   traces (no extra episodes per probe).
+2. **Outcome/frequency-level statistic.** `code_histogram` +
+   `total_variation_distance`: per-actor, per-post-intervention-window
+   action-code FREQUENCY, order/timing-invariant — replaces S6's
+   per-tick, set-membership `compensation_score` (whose code-novelty
+   half G-32's root-cause probe found structurally dead for this
+   line's ~10-20-code role vocabulary).
+3. **Configurable, pre-registered-not-frozen `k`.** `k_clean_
+   replicates=4`, `null_quantile_q=0.90`, `min_effect_vs_twin=0.05` are
+   explicit defaults, NOT battery-validated the way S6/S7's `0.15` is —
+   the module docstring's "Pre-registration, not a freeze" section says
+   so directly, per the user's own framing ("likely delivers signal but
+   doesn't have to be guaranteed safe... tightened later"). Changing
+   these later is not a retuning violation the way changing
+   `DEFAULT_MIN_COMPENSATION` would be.
+4. **Generalizes without special-casing.** On any backend with zero
+   internal stochasticity (`MockIsolate`/`SubprocessIsolate`, scripted
+   agents), same-seed replicates are byte-identical, so the null is
+   exactly zero-width and the relative rule degenerates to "any nonzero
+   divergence is signal" — S6's original assumption, recovered exactly.
+   Verified by equivalence tests: `discovered_units_intervention_stats`
+   reproduces `discovered_units_intervention`'s frozen exact partitions
+   on `dm_pair_config`, `covert_file_handoff_config`, the negative
+   control, and `shared_slot_config`'s documented miss, bit for bit.
+
+**Implemented and run** (`run_llm_detector_stats_validation.py`, same
+scenario/seed as G-32): recovered the exact `{eng1, rm1}` partition the
+fixed-threshold detector missed — 20 LLM-actor spawns / 9 live-LLM
+episodes, $0.0858, ~15 min. Full write-up, including an important
+caveat (the merge came from an untargeted, large-effect channel probe
+rather than the mechanism-specific one — the frozen detector's G-28
+masking-hardening apparatus was deliberately not ported to this first
+pass, so the same ripple risk applies and is not yet guarded against
+here): `results/FINDINGS.md` G-33.
+
+**Still open:** masking-hardening for this variant's channel probes; a
+3+-actor LLM scenario to stress-test the untargeted-probe ripple
+concern directly; calibrating `min_effect_vs_twin` against its own
+measured null rather than a fixed constant; `discovered_units_blind`
+(S7)'s statistical analog; more than one seed.

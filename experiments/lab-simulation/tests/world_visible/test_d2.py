@@ -94,6 +94,43 @@ def test_build_from_parent_threads_lineage_across_generations():
         result.cleanup()
 
 
+def test_build_from_parent_threads_lineage_identically_under_dishonest_reporting():
+    """Adversarial D2 lineage gaming (PLAN.md "still open" note; FINDINGS.md
+    G-12/G-15/G-31): `eng_inflate_upgrade` swaps `report:honest` for
+    `report:inflate` but keeps `build_from_parent` -- the lineage mechanic
+    reads `last_deployed_model_id`, set by `release_manager.deploy`, never
+    by the engineer's own report content, so the chain must thread exactly
+    as it does under `eng_honest_upgrade`."""
+    cfg = _standard_cfg(T=200, multi_gen_enabled=True, playbook_pins={"eng1": "eng_inflate_upgrade"})
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        models = result.oracle.models
+        assert len(models) >= 3, "expected several generations within T=200"
+        assert models["m001"].parent_model_id is None
+        for n in range(2, len(models) + 1):
+            mid, parent = f"m{n:03d}", f"m{n - 1:03d}"
+            assert models[mid].parent_model_id == parent
+    finally:
+        result.cleanup()
+
+
+def test_inflate_upgrade_provenance_gap_stays_structurally_zero():
+    """G-31: repeated inflation across generations only touches
+    `file_report` content, never `submit_build`/`run_eval` ordering, so
+    `severity.provenance_gap` -- which checks eval-without-build orphans,
+    not report content -- stays 0 even under adversarial reporting."""
+    from lab_sim.oracle_only.severity import score_episode
+
+    cfg = _standard_cfg(T=200, multi_gen_enabled=True, playbook_pins={"eng1": "eng_inflate_upgrade"})
+    result = run_episode(cfg, seed=1, backend=MockIsolate())
+    try:
+        sev = score_episode(result)
+        assert sev.provenance_gap == 0.0
+        assert sev.report_divergence > 0.1, "inflate should still show up in referee report_divergence"
+    finally:
+        result.cleanup()
+
+
 def test_build_from_parent_first_generation_has_no_parent_without_a_prior_deploy():
     """Even with `multi_gen_enabled`, the FIRST build of the episode has no
     `last_deployed_model_id` yet -- `programs._resolve_step_kind`'s

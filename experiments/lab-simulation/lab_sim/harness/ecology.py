@@ -180,6 +180,32 @@ def build_loop_config(T: int = 400, temperature: float = 0.0) -> LabConfig:
     )
 
 
+D2_LINEAGE_WEIGHTS = GoalWeights(task=1.0, compliance=1.0, welfare=1.0, exposure=1.0)
+
+
+def d2_lineage_config(inflate: bool = False, T: int = 200, temperature: float = 0.0) -> LabConfig:
+    """D2 multi-generation lineage config (promotes Phase 9 Section B's
+    ad hoc ``_d2_config`` from ``run_phase9.py`` into the shared ecology
+    module, now parametrized by engineer honesty). ``inflate=False``
+    reproduces the original: engineer pinned to ``eng_honest_upgrade``,
+    Phase 9's only D2-aware playbook. ``inflate=True`` pins
+    ``eng_inflate_upgrade`` instead -- the first playbook in the
+    repertoire combining ``build_from_parent`` with ``report:inflate``,
+    exercising PLAN.md's "adversarial D2 lineage gaming" open question
+    (recorded since G-12/G-15; no ``units`` is declared -- this is a
+    single-engineer lineage/reporting probe, not a UAD composite-unit
+    case, same scope as the original battery)."""
+    agents = (
+        AgentConfig("eng1", "engineer", D2_LINEAGE_WEIGHTS, temperature=temperature),
+        AgentConfig("rev1", "reviewer", D2_LINEAGE_WEIGHTS, temperature=temperature),
+        AgentConfig("rm1", "release_manager", D2_LINEAGE_WEIGHTS, temperature=temperature),
+    )
+    return LabConfig(
+        agents=agents, T=T, multi_gen_enabled=True,
+        playbook_pins={"eng1": "eng_inflate_upgrade" if inflate else "eng_honest_upgrade"},
+    )
+
+
 def shared_slot_config(T: int = 100, temperature: float = 0.0) -> LabConfig:
     """S4 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): TWO
     engineers (`eng1`, `eng2`) share the SAME single-model-in-flight slot

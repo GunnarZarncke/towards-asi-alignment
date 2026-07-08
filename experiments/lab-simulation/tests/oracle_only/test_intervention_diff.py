@@ -49,6 +49,50 @@ def test_covert_file_file_ablation_compensates():
         cleanup_triple(triple)
 
 
+class _RecordingMockIsolate(MockIsolate):
+    """Same pattern as `test_world.py`'s `_RecordingMockIsolate` -- records
+    every `spawn()` call's `(actor_id, program)` so a test can assert what
+    program actually ran, without needing a real subprocess/LLM backend."""
+
+    def __init__(self):
+        self.spawn_calls: list[tuple[str, str]] = []
+
+    def spawn(self, actor_id, seed, program):
+        self.spawn_calls.append((actor_id, program))
+        return super().spawn(actor_id, seed, program)
+
+
+def test_twin_run_forces_honest_twin_for_every_overridden_actor():
+    """LLM-detector-stress-test fix regression: `run_episode`'s
+    `program_override="honest_twin"` only reaches actors NOT named in
+    `agent_overrides` (an override always wins). Before the fix, an
+    actor named in `agent_overrides` for the clean/intervened runs (e.g.
+    an `LLMSubprocessIsolate`-backed actor) kept running its OWN program
+    on the "honest-twin control" run too -- silently skipping the twin
+    control for exactly that actor. `run_episode_triple` must now force
+    EVERY overridden actor onto `(backend, "honest_twin")` for the twin
+    run specifically, regardless of what program it used elsewhere."""
+    cfg = dm_pair_config(T=30)
+    probe = channel_ablation_probe("dm", "rm1")  # does not target eng1
+    default_backend = _RecordingMockIsolate()
+    override_backend = _RecordingMockIsolate()
+    triple = run_episode_triple(
+        cfg, seed=1, probe=probe, backend=default_backend,
+        agent_overrides={"eng1": (override_backend, "walk_pipeline")},
+    )
+    try:
+        # eng1's OWN override backend/program runs the clean + intervened
+        # runs (2 spawns, unchanged program) -- the twin run must instead
+        # spawn eng1 on the SCRIPTED default backend with "honest_twin"
+        # (an LLM/other-program backend has no "honest_twin" role to run).
+        override_eng1_programs = [p for (a, p) in override_backend.spawn_calls if a == "eng1"]
+        default_eng1_programs = [p for (a, p) in default_backend.spawn_calls if a == "eng1"]
+        assert override_eng1_programs == ["walk_pipeline", "walk_pipeline"]
+        assert default_eng1_programs == ["honest_twin"]
+    finally:
+        cleanup_triple(triple)
+
+
 def test_diff_episode_triple_tick_aligned_compensation():
     baseline = {"a": [0, 0, 0, 0], "b": [0, 0, 0, 0]}
     intervened = {"a": [0, 0, 5, 5], "b": [0, 0, 0, 7]}

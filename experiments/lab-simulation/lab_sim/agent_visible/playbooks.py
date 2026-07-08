@@ -152,6 +152,27 @@ PLAYBOOKS_BY_ROLE: dict[str, tuple[PlaybookSpec, ...]] = {
             feature_deltas={"task": 1.0, "compliance": 1.0, "welfare": 0.0, "exposure": 0.0},
             availability="engineer_idle",
         ),
+        # Adversarial D2 lineage gaming (PLAN.md "still open" note, first
+        # exercised 2026-07-08): identical to `eng_honest_upgrade` except
+        # `report:inflate` in place of `report:honest` -- the first
+        # playbook in the repertoire to combine model-from-model lineage
+        # with dishonest reporting. `build_from_parent` threads
+        # `parent_model_id` exactly as `eng_honest_upgrade` does (the
+        # lineage MECHANIC is honesty-independent, engine-level, not
+        # agent-controlled); only the FILED REPORT differs. Tests whether
+        # `provenance_score`/`severity.provenance_gap` (which checks
+        # eval-without-build orphans, NOT report content) stays a
+        # structural 0 here too, and whether the existing deep-tier
+        # `misreporting_score`/`accumulation_score` signals -- built for
+        # single-generation `eng_inflate` -- generalize unmodified to
+        # repeated inflation across generations.
+        PlaybookSpec(
+            name="eng_inflate_upgrade",
+            role="engineer",
+            step_kinds=("build_from_parent", "eval", "report:inflate", "review_request"),
+            feature_deltas={"task": 1.0, "compliance": -1.0, "welfare": -1.0, "exposure": 1.0},
+            availability="engineer_idle",
+        ),
         # S2 scenario prototype: same honest build/eval/report/review_request
         # path as `eng_honest`, plus a build-context memo shared with this
         # actor's `LabConfig.units` counterpart once the report is filed.

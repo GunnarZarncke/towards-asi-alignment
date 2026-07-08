@@ -744,10 +744,16 @@ generation count capped more often than expected by a natural (not
 engineered) eval-noise-driven review stall; the MI sequencing-confound
 question (item 6) resolved positively for this line's one topology
 (DM-gated dependency's MI is ~13x the plain-serial-downstream actor's).
-Still open, unchanged by Phase 9: adversarial D2 lineage gaming (no
-playbook combines `build_from_parent` with `report:inflate` yet) and the
+Adversarial D2 lineage gaming (no playbook combines `build_from_parent`
+with `report:inflate`) was resolved 2026-07-08: see FINDINGS.md G-31 --
+`eng_inflate_upgrade` added, lineage stays honesty-independent,
+`provenance_gap` stays a genuine structural 0 (it checks DAG shape, not
+report content -- closing G-12's question with a scope clarification,
+not a gap), and `misreporting_score`/`accumulation_score` generalize
+unmodified to repeated cross-generation inflation. Still open: the
 report-mode-widening item below (needs a new blind-generation round
-first).
+first), and a loop-variant (`build_from_parent_gated` + `report:inflate`)
+combination, not built (see G-31's "not done this round" note).
 
 **Freeze check, done first.** None of the eight items require editing
 `detectors.py`, `severity.py`, `twins.py`, or the `AuditView` boundary
@@ -1496,9 +1502,17 @@ extension discipline — nothing touches frozen code):
    passive depth was not).
 6. **Scoring beyond `uad_score`.** Exact-partition rate (already in
    `run_s6_cmi_detector.py`) + adjusted-Rand-style index as standard
-   metrics, fixing G-24's blind spot for good. Later: one LLM-backed
+   metrics, fixing G-24's blind spot for good. ~~Later: one LLM-backed
    episode (Phase 10 plumbing) to check probes against a
-   non-programmatic agent.
+   non-programmatic agent.~~ **Done 2026-07-08**
+   (`run_llm_detector_stress_test.py`; `results/FINDINGS.md` G-32;
+   DESIGN.md "LLM-driven detector stress test"): confirms open design
+   question (b) below empirically — the heuristic exactly isolates a
+   real DM-coordinated `{eng1, rm1}` pair, S6 intervention misses it,
+   root-caused to real-API non-determinism breaking episode-pair
+   diffing's byte-identical-replay assumption. Also fixed a latent
+   `run_episode_triple` bug (twin-run honest-twin substitution did not
+   reach `agent_overrides`-named actors) as a prerequisite.
 
 **Open design questions (recorded up front).** (a) Probe visibility:
 denials and `perturbed:` tags are agent-visible; a colluding unit
@@ -1507,7 +1521,35 @@ evasion_story of every handle) and should eventually be a scenario,
 not a bug. (b) LLM-backed episodes are not deterministic across the
 pair unless the cache is shared and temperature 0 — episode-pair
 diffing needs a noise-tolerant fallback (multiple seeds, statistics
-again) before it applies beyond MockIsolate. (c) Masking by honest-twin
+again) before it applies beyond MockIsolate. **Confirmed empirically,
+not just assumed, 2026-07-08 (item 6 above, G-32): this is the
+demonstrated root cause of S6's miss on a real LLM episode.**
+**Noise-tolerant fallback built and run 2026-07-08**
+(`lab_sim/oracle_only/intervention_stats.py`,
+`discovered_units_intervention_stats`; DESIGN.md "Noise-tolerant S6:
+null-calibrated, outcome-level statistical detector"; `results/
+FINDINGS.md` G-33): a new module (not an edit to the frozen
+`uad_intervention.py`) re-bases the compensation statistic on
+per-actor action-code FREQUENCY histograms (order/timing-invariant)
+and replaces the fixed `min_compensation=0.15` threshold with a
+per-scenario, per-tick-offset RELATIVE rule — intervened-vs-clean
+divergence compared against the measured quantile of divergence among
+`k_clean_replicates` (default 4, pre-registered but explicitly NOT
+battery-validated) independent clean replicates. On the identical
+G-32 scenario/seed it recovered the exact `{eng1, rm1}` partition the
+fixed-threshold detector missed — but the merge came from an
+untargeted, large-effect channel probe (board/file ablation), not the
+actual DM-coordination mechanism or the surgical actor-directed
+probes (both of which still landed inside their own measured nulls,
+same near-the-line pattern as G-32). This validates the RELATIVE-RULE
+MECHANISM (verified to generalize correctly to zero-variance scripted
+backends via equivalence tests against the frozen detector's exact
+partitions) without yet validating that the mechanism-specific probe
+itself produces a robust real-LLM signal at this sample size — and it
+inherits G-28's untargeted-channel-probe ripple risk, deliberately not
+guarded against in this first pass (masking hardening for the stats
+variant remains unbuilt; see FINDINGS.md G-33's full caveat). (c)
+Masking by honest-twin
 substitution changes the pipeline's timing for everyone downstream —
 the residual re-detection must compare against a matching re-baseline,
 not the original clean run.
@@ -1588,11 +1630,55 @@ finds no sensitivity to `min_compensation`/`min_reaction` at 0.10 vs.
 0.15 vs. 0.20 — every scenario's rate is identical across all three.
 Full write-up: `results/FINDINGS.md` G-30.
 
-**Postponed (recorded, not silently dropped):** a `classify_pair_silent`
-masking-hardening pass analogous to G-29's
-`classify_ablation_compensators`, to diagnose the `committee`
-over-merge; a finer sweep outside [0.10, 0.20] if a future round has
-reason to look there; `shared_slot` remains gated on "acausal logic".
+**Postponed (recorded, not silently dropped):** ~~a `classify_pair_
+silent` masking-hardening pass analogous to G-29's `classify_ablation_
+compensators`, to diagnose the `committee` over-merge~~ **fixed
+2026-07-08** (not a masking-hardening pass but a fidelity fix:
+`classify_pair_silent`'s twin-swap test was missing the design's
+required responder-twin control — see `uad_blind_v1.py`'s
+`_reacts_adaptively`; a `SubprocessIsolate` re-run of
+`run_s7_blind_battery.py` to update the table above is still pending);
+a finer sweep outside [0.10, 0.20] if a future round has reason to look
+there; `shared_slot` remains gated on "acausal logic".
+
+## LLM-driven detector stress test (implemented 2026-07-08, G-32)
+
+First S6/S7 detector run against a real, non-programmatic (`gpt-4o-mini`)
+agent, closing item 6 of the "S6 follow-up" scope note. Fixed a latent
+`intervention_diff.run_episode_triple` bug as a prerequisite (honest-twin
+substitution did not reach `agent_overrides`-named actors on the twin
+run). Result: the passive heuristic exactly isolates the real
+`{eng1, rm1}` DM-coordinated pair; S6 intervention misses it, root-caused
+to real-API non-determinism breaking episode-pair diffing's
+byte-identical-replay assumption — confirming open design question (b)
+in the "S6 follow-up" scope note empirically. Full write-up:
+`results/FINDINGS.md` G-32; `run_llm_detector_stress_test.py`;
+`results/llm_detector_stress_test.{json,md}`. Not done at the time:
+a noise-tolerant fallback for S6 against real agents;
+`discovered_units_blind` (S7) against an LLM episode; more than one
+scenario/seed.
+
+## Noise-tolerant S6 (implemented 2026-07-08, G-33)
+
+The fallback G-32 left open, built the same session at the user's
+explicit direction: `lab_sim/oracle_only/intervention_stats.py` (new
+module, `uad_intervention.py` untouched), rebasing S6's compensation
+test on per-actor action-code frequency histograms and a per-scenario
+measured null (quantile of clean-vs-clean replicate divergence)
+instead of a fixed `min_compensation` threshold. Verified to reproduce
+the frozen detector's exact partitions bit-for-bit on every scripted
+scenario (zero-variance null on `MockIsolate`/`SubprocessIsolate`).
+Run on the identical G-32 real-LLM scenario/seed: recovered the exact
+`{eng1, rm1}` partition — but via an untargeted channel probe
+(board/file ablation), not the DM-specific or actor-directed probes,
+which still landed inside their own measured nulls. Full write-up,
+including that caveat: `results/FINDINGS.md` G-33;
+`run_llm_detector_stats_validation.py`; `results/
+llm_detector_stats_validation.{json,md}`. Not done: masking hardening
+for this variant's channel probes (the untargeted-probe ripple risk
+this run's own result flags); a 3+-actor LLM scenario to test that
+risk directly; `discovered_units_blind` (S7)'s statistical analog;
+more than one seed.
 
 ## Knowledge base (D1 follow-up, recorded 2026-07-07, implemented)
 

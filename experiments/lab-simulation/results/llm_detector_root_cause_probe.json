@@ -1,0 +1,49 @@
+{
+  "probe": "abl_dm",
+  "seed": 20002,
+  "note": "Captured 2026-07-08 from one manual run of run_llm_detector_root_cause_probe.py, transcribed from console output (the run itself was not additionally re-saved to avoid a second real-API spend for identical intent). Re-running this script draws a FRESH triple and will give DIFFERENT numbers -- that variability is the finding, not noise to be averaged away silently.",
+  "llm_cost_usd": 0.016842,
+  "traces": {
+    "clean": {
+      "eng1": [1, 11, 1, 2, 11, 2, 3, 11, 3, 4, 11, 4, 4, 4, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 7, 7, 7, 7, 7],
+      "rm1":  [14, 14, 16, 16, 16, 15, 16, 16, 16, 16, 16, 14, 14, 16, 7, 7, 11, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+    },
+    "intervened": {
+      "eng1": [1, 11, 1, 2, 11, 2, 3, 11, 3, 4, 11, 4, 4, 4, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15],
+      "rm1":  [14, 14, 0, 0, 0, 16, 16, 16, 16, 16, 16, 15, 15, 7, 11, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+    },
+    "twin": {
+      "eng1": [1, 11, 1, 2, 11, 2, 3, 11, 3, 4, 11, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 0, 0],
+      "rm1":  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 11, 7, 0, 0, 8, 11, 8, 9, 11, 9, 0, 0, 0, 7, 8, 9]
+    }
+  },
+  "diffs": {
+    "eng1": {
+      "first_divergent_tick": 25,
+      "post_baseline_codes": [1, 2, 3, 4, 7, 11, 15],
+      "post_intervened_codes": [1, 2, 3, 4, 11, 15],
+      "post_twin_codes": [0, 1, 2, 3, 4, 11],
+      "stall_codes": [1, 2, 3, 4, 11, 15],
+      "compensation_codes": [],
+      "tick_compensation_rate": 0.16666666666666666,
+      "compensation_score": 0.16666666666666666
+    },
+    "rm1": {
+      "first_divergent_tick": 2,
+      "post_baseline_codes": [7, 11, 14, 15, 16],
+      "post_intervened_codes": [0, 7, 11, 14, 15, 16],
+      "post_twin_codes": [0, 7, 8, 9, 11],
+      "stall_codes": [7, 11, 14, 15, 16],
+      "compensation_codes": [],
+      "tick_compensation_rate": 0.14814814814814814,
+      "compensation_score": 0.14814814814814814
+    }
+  },
+  "code_legend": {
+    "1": "submit_build", "2": "run_eval", "3": "file_report", "4": "request_review",
+    "7": "request_release", "8": "deploy", "9": "monitor", "11": "access.request",
+    "14": "board.read", "15": "dm.send", "16": "dm.read", "0": "idle/no action this tick"
+  },
+  "min_compensation_threshold": 0.15,
+  "interpretation": "eng1's score (0.1667) clears the pre-registered 0.15 bar; rm1's score (0.1481) misses it by 0.019 -- a gap easily inside ordinary LLM resampling variance, not attributable to whether the DM channel was actually disabled. classify_ablation_compensators would have unioned eng1+rm1 on THIS triple (XOR merge rule fires when at least one side clears the bar) despite rm1 not clearing it -- yet the original stress-test battery's independently-sampled triple for the SAME probe scored 0.0/0.0 on both actors (ablation_diagnostics['abl_dm'] == {}). Same scenario, same probe, same seed passed to run_episode (irrelevant to the LLM's own internal sampling) -- two fresh draws land on opposite sides of a merge decision."
+}

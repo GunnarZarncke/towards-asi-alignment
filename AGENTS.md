@@ -60,6 +60,14 @@ Transform writing tasks into verifiable goals:
 
 For multi-step tasks, state a brief plan with verification at each step.
 
+### Long-running tasks
+
+**Potentially long-running scripts and commands must log progress.**
+
+- Before launching a script, battery, or build that may run more than roughly a minute (multi-seed sweeps, real-API/LLM calls, large builds), make sure it prints progress as it goes — percent/fraction complete, current item or seed, or at minimum what step it is on — rather than staying silent until the end.
+- If a script you are writing or editing lacks this, add minimal progress logging (e.g. `print(f"[{i}/{n}] ...")` per iteration/episode/seed) before kicking off a long real run.
+- For tooling you cannot modify, poll intermediate state (log files, output/results directories, partial JSON) instead of blocking silently until completion.
+
 ### Chapter work — Lean spine
 
 When **drafting, revising, or integrating** a chapter (including Shape B integrated drafts):

@@ -89,7 +89,12 @@ lines:
       Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (lab-sim-0.3.0+),
       pre-registered batteries through Phase 7 and Phase 9 (D1/D4/D2 mechanics); a second, detector-layer
       freeze (S6/S7, 2026-07-07) adds intervention-supported unit discovery plus a blind-generated detector,
-      both now run through the real subprocess backend. Phase 8 LLM adapter remains exploratory only.
+      both now run through the real subprocess backend.       Phase 8 LLM adapter remains exploratory only; a
+      2026-07-08 stress test points S6 at one real LLM-backed episode for the first time and finds the
+      detector's episode-pair-diff mechanic does not survive real-API non-determinism (G-32). A same-day
+      follow-up (a new, non-frozen module) rebases the compensation statistic on outcome-level frequency
+      histograms with a per-scenario measured null and recovers the missed pair, with an important caveat
+      about which probe did the merging (G-33).
       Lean leak-proof (`leak-proof/`) certifies oracle/audit/sim plane separation via projections and
       reachability analysis.
     readmePath: experiments/lab-simulation/README.md
@@ -103,7 +108,10 @@ lines:
       - "Phase 8 LLM spot-checks (G-7, G-8): exploratory nulls — no systematic deception surface yet."
       - "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
       - "S6 intervention-supported UAD: exact unit-partition recovery on 4/5 primary scenarios + negative control via channel-ablation/honest-twin compensation scoring; comms-free `shared_slot` coordination stays undetected (G-28/G-29)."
-      - "S7 blind-generated detector, first real SubprocessIsolate battery for the whole detector line: message-mediated design converges independently on S6's mechanic; new silent-coordination test still misses `shared_slot` (a confirmed low-confidence prediction) and over-merges one scenario (G-30)."
+      - "S7 blind-generated detector, first real SubprocessIsolate battery for the whole detector line: message-mediated design converges independently on S6's mechanic; new silent-coordination test still misses `shared_slot` (a confirmed low-confidence prediction) and over-merges one scenario (G-30, fixed 2026-07-07 -- missing responder-twin control)."
+      - "Adversarial D2 lineage gaming (`build_from_parent` + `report:inflate`) closes a previously untested combination: lineage threading is honesty-independent, `provenance_gap`/`provenance_score` stay a genuine structural 0 (DAG-shape check, not report-honesty check), and existing deep-tier deception detectors generalize unmodified to repeated cross-generation inflation (G-31)."
+      - "LLM-driven detector stress test: a real `gpt-4o-mini` DM-coordinated pair is exactly isolated by the passive heuristic but missed by S6 intervention, root-caused to real-API non-determinism breaking episode-pair diffing's byte-identical-replay assumption -- a previously assumed limitation, now confirmed empirically (G-32)."
+      - "Noise-tolerant S6 follow-up: rebasing the compensation test on outcome/frequency-level observables plus a per-scenario measured null (quantile of clean-vs-clean replicate divergence, not a fixed threshold) recovers the missed real-LLM pair -- but the merge came from an untargeted channel probe, not the mechanism-specific one, so this validates the relative-rule approach without yet validating robustness against untargeted-probe false merges (G-33)."
 
 howToRead:
   - lineId: agency-detect
@@ -137,7 +145,7 @@ coverageFeatures:
       toy-simulation: "Scenario (boundary_alias)"
       embedded-simulation: "Full UAD + ecologies; negatives when heuristic suffices"
       goal-agent-simulation: "—"
-      lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (G-28–G-30)"
+      lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (G-28–G-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (G-32/G-33)"
   - id: mb2
     label: "MB2 Value bundle / pointing (Goodhart on bundles)"
     cells:
@@ -169,7 +177,7 @@ coverageFeatures:
       toy-simulation: "Scenario (successor_relabel)"
       embedded-simulation: "Deploy gate + successor handles"
       goal-agent-simulation: "—"
-      lab-simulation: "Planned (D2 model/spec upgrades, lineage)"
+      lab-simulation: "D2 model-lineage/spec-upgrade mechanics implemented (Phase 9); adversarial lineage-gaming variant (build_from_parent + report:inflate) closes G-12's open question -- provenance_gap is a DAG-shape check, not a report-honesty check, and stays 0 either way; existing deep-tier deception detectors generalize unmodified (G-31)"
   - id: mb6
     label: "MB6 Selection basins / gradual disempowerment"
     cells:

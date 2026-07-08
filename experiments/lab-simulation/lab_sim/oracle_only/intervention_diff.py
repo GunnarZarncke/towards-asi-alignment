@@ -178,7 +178,22 @@ def run_episode_triple(
     agent_overrides: dict | None = None,
     trace_depth: str = "deep",
 ) -> EpisodeTriple:
-    """Clean + intervened + honest-twin-under-same-intervention runs."""
+    """Clean + intervened + honest-twin-under-same-intervention runs.
+
+    Twin-run override note: ``run_episode``'s ``program_override="honest_
+    twin"`` only reaches actors NOT named in ``agent_overrides`` (an
+    override always wins over the global program). So any actor with an
+    explicit override for the clean/intervened runs -- including a
+    non-scripted backend like ``llm_isolate.LLMSubprocessIsolate`` --
+    would otherwise keep running its OWN (LLM/masked) program on the twin
+    run too, silently skipping the honest-twin control for exactly that
+    actor. This was invisible as long as every ``agent_overrides`` caller
+    in this module already passed ``(backend, "honest_twin")`` itself
+    (the only actual callers, pre-LLM-stress-test: ``_masked_compensation_
+    score``'s masking, which is unaffected by the rebuild below since it
+    maps to the identical value). For the twin run, force EVERY overridden
+    actor onto ``(the scripted backend, "honest_twin")`` explicitly,
+    regardless of what backend/program it used in the other two runs."""
     backend = backend or MockIsolate()
     horizon = cfg.T
     merged_overrides = dict(agent_overrides or {})
@@ -187,12 +202,13 @@ def run_episode_triple(
     intervened = run_episode(
         probe_cfg, seed=seed, backend=backend, agent_overrides=merged_overrides or None, **probe_kwargs
     )
+    twin_overrides = {actor_id: (backend, "honest_twin") for actor_id in merged_overrides}
     twin = run_episode(
         probe_cfg,
         seed=seed,
         backend=backend,
         program_override="honest_twin",
-        agent_overrides=merged_overrides or None,
+        agent_overrides=twin_overrides or None,
         **probe_kwargs,
     )
     return EpisodeTriple(
