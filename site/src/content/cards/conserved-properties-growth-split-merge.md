@@ -9,7 +9,7 @@ bookLabels: ["ch:grow-split-merge", "sec:moving-boundaries", "sec:conserved-prop
 bookSections:
   - chapterId: "ch08"
     label: "The Problem of Moving Boundaries"
-related: ["successor-stability", "minimal-certification-schema", "boundary-discovery"]
+related: ["successor-stability", "minimal-certification-schema", "boundary-discovery", "intervention-supported-unit-discovery"]
 ---
 
 Real agents do not sit inside fixed boundaries. They grow, absorb tools, delegate, create copies, outsource memory, and fuse into teams, firms, and institutions. A model becomes a deployed agentic service once connected to tools, persistent memory, and schedulers; a startup becomes a corporation; a government agency outlives every one of its employees.

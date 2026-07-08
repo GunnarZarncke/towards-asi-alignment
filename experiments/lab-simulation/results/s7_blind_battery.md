@@ -1,6 +1,6 @@
 # S7 -- blind detector + first SubprocessIsolate battery
 
-Generated 2026-07-07T20:42:23.102641+00:00 at lab-sim-0.9.2. Backend: SubprocessIsolate (first real-backend run for `intervention`/`blind`). 5 seeds/scenario.
+Generated 2026-07-08T07:57:04.096795+00:00 at lab-sim-0.9.3. Backend: SubprocessIsolate (first real-backend run for `intervention`/`blind`). 5 seeds/scenario.
 `exact` = non-singleton clusters are exactly {true pair} (or empty for negative control).
 
 ## dm_pair (true pair: ('eng1', 'rm1'))
@@ -28,7 +28,7 @@ Generated 2026-07-07T20:42:23.102641+00:00 at lab-sim-0.9.2. Backend: Subprocess
 | heuristic | 1.00 | 1.00 | 1.00 | 1.00 |
 | cmi_deep | 0.00 | 0.00 | 0.00 | 0.00 |
 | intervention | 1.00 | 1.00 | 1.00 | 1.00 |
-| blind | 1.00 | 0.00 | 0.00 | 0.50 |
+| blind | 1.00 | 1.00 | 1.00 | 1.00 |
 
 ## build_loop (true pair: ('eng1', 'rm1'))
 
@@ -81,9 +81,9 @@ Generated 2026-07-07T20:42:23.102641+00:00 at lab-sim-0.9.2. Backend: Subprocess
 
 | threshold | intervention exact | intervention merge | blind exact | blind merge |
 |---|---|---|---|---|
-| 0.1 | 0.67 | 0.67 | 0.00 | 0.67 |
-| 0.15 | 0.67 | 0.67 | 0.00 | 0.67 |
-| 0.2 | 0.67 | 0.67 | 0.00 | 0.67 |
+| 0.1 | 0.67 | 0.67 | 0.67 | 0.67 |
+| 0.15 | 0.67 | 0.67 | 0.67 | 0.67 |
+| 0.2 | 0.67 | 0.67 | 0.67 | 0.67 |
 
 ### build_loop
 

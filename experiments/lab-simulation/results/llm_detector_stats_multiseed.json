@@ -1,0 +1,135 @@
+{
+  "code_version": "lab-sim-0.9.3",
+  "generated_at": "2026-07-08T07:53:07.469688+00:00",
+  "k_clean_replicates": 4,
+  "per_seed": [
+    {
+      "channel_merge_drivers": {},
+      "heuristic_pair_metrics": {
+        "exact": false,
+        "isolated": false,
+        "merged": false,
+        "nonsingleton_clusters": []
+      },
+      "llm_cost_usd": 0.001539,
+      "n_llm_episodes": 2,
+      "seed": 20002,
+      "stats_detector_pair_metrics": {
+        "exact": false,
+        "isolated": false,
+        "merged": false,
+        "nonsingleton_clusters": []
+      }
+    },
+    {
+      "channel_merge_drivers": {
+        "abl_board": [
+          "rm1"
+        ],
+        "abl_dm": [
+          "rm1"
+        ],
+        "abl_file": [
+          "rm1"
+        ]
+      },
+      "heuristic_pair_metrics": {
+        "exact": true,
+        "isolated": true,
+        "merged": true,
+        "nonsingleton_clusters": [
+          [
+            "eng1",
+            "rm1"
+          ]
+        ]
+      },
+      "llm_cost_usd": 0.055319,
+      "n_llm_episodes": 20,
+      "seed": 20004,
+      "stats_detector_pair_metrics": {
+        "exact": true,
+        "isolated": true,
+        "merged": true,
+        "nonsingleton_clusters": [
+          [
+            "eng1",
+            "rm1"
+          ]
+        ]
+      }
+    },
+    {
+      "channel_merge_drivers": {},
+      "heuristic_pair_metrics": {
+        "exact": false,
+        "isolated": false,
+        "merged": false,
+        "nonsingleton_clusters": []
+      },
+      "llm_cost_usd": 0.0,
+      "n_llm_episodes": 2,
+      "seed": 20006,
+      "stats_detector_pair_metrics": {
+        "exact": false,
+        "isolated": false,
+        "merged": false,
+        "nonsingleton_clusters": []
+      }
+    },
+    {
+      "channel_merge_drivers": {},
+      "heuristic_pair_metrics": {
+        "exact": false,
+        "isolated": false,
+        "merged": false,
+        "nonsingleton_clusters": []
+      },
+      "llm_cost_usd": 0.0,
+      "n_llm_episodes": 2,
+      "seed": 20008,
+      "stats_detector_pair_metrics": {
+        "exact": false,
+        "isolated": false,
+        "merged": false,
+        "nonsingleton_clusters": []
+      }
+    },
+    {
+      "channel_merge_drivers": {},
+      "heuristic_pair_metrics": {
+        "exact": false,
+        "isolated": false,
+        "merged": false,
+        "nonsingleton_clusters": []
+      },
+      "llm_cost_usd": 0.0,
+      "n_llm_episodes": 2,
+      "seed": 20010,
+      "stats_detector_pair_metrics": {
+        "exact": false,
+        "isolated": false,
+        "merged": false,
+        "nonsingleton_clusters": []
+      }
+    }
+  ],
+  "scenario": "dm_coordinated_pair",
+  "seeds": [
+    20002,
+    20004,
+    20006,
+    20008,
+    20010
+  ],
+  "summary": {
+    "heuristic_exact_rate": 0.2,
+    "stats_detector_exact_rate": 0.2,
+    "total_llm_cost_usd": 0.056858,
+    "total_llm_episodes": 28
+  },
+  "true_pair": [
+    "eng1",
+    "rm1"
+  ]
+}

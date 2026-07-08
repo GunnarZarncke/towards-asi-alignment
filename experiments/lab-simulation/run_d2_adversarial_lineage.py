@@ -51,13 +51,14 @@ See `results/FINDINGS.md` for the outcome and any falsifications.
 
 from __future__ import annotations
 
+import argparse
 import json
 import statistics
 from datetime import datetime, timezone
 from pathlib import Path
 
 from lab_sim.harness.ecology import d2_lineage_config
-from lab_sim.harness.isolate import MockIsolate
+from lab_sim.harness.isolate import MockIsolate, SubprocessIsolate
 from lab_sim.oracle_only.detectors import accumulation_score, build_audit_view, misreporting_score, provenance_score
 from lab_sim.oracle_only.severity import score_episode
 from lab_sim.world_visible.config import CODE_VERSION
@@ -88,9 +89,9 @@ def _lineage_correct(models: dict) -> bool:
     return True
 
 
-def _run_cell(inflate: bool, seed: int) -> dict:
+def _run_cell(inflate: bool, seed: int, *, backend) -> dict:
     cfg = d2_lineage_config(inflate=inflate, T=T)
-    result = run_episode(cfg, seed=seed, backend=MockIsolate())
+    result = run_episode(cfg, seed=seed, backend=backend)
     try:
         sev = score_episode(result)
         view = build_audit_view(result, "deep")
@@ -111,7 +112,25 @@ def _run_cell(inflate: bool, seed: int) -> dict:
 
 
 def main() -> None:
-    rows = [_run_cell(inflate, seed) for inflate in (False, True) for seed in SEEDS]
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--backend",
+        choices=("mock", "subprocess"),
+        default="mock",
+        help="mock = MockIsolate (default, original G-31 run); subprocess = real OS boundary",
+    )
+    args = parser.parse_args()
+    backend = SubprocessIsolate() if args.backend == "subprocess" else MockIsolate()
+    backend_name = args.backend
+
+    total = 2 * len(SEEDS)
+    rows: list[dict] = []
+    n = 0
+    for inflate in (False, True):
+        for seed in SEEDS:
+            n += 1
+            print(f"[d2-adversarial-lineage] [{n}/{total}] backend={backend_name} inflate={inflate} seed={seed}")
+            rows.append(_run_cell(inflate, seed, backend=backend))
     honest = [r for r in rows if not r["inflate"]]
     inflate = [r for r in rows if r["inflate"]]
 
@@ -152,6 +171,7 @@ def main() -> None:
     payload = {
         "code_version": CODE_VERSION,
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "backend": backend_name,
         "predictions": PREDICTIONS,
         "seeds": list(SEEDS),
         "T": T,
@@ -179,7 +199,7 @@ def main() -> None:
         f"Generated {payload['generated_at']} at {CODE_VERSION}. NOT a battery -- see module docstring in",
         "`run_d2_adversarial_lineage.py` for Q1-Q3, D2-P1..P5, and FINDINGS.md for the outcome.",
         "",
-        f"Seeds: {SEEDS}, T={T}, MockIsolate. `eng_inflate_upgrade` = `eng_honest_upgrade` with",
+        f"Seeds: {SEEDS}, T={T}, backend={backend_name}. `eng_inflate_upgrade` = `eng_honest_upgrade` with",
         "`report:inflate` in place of `report:honest`; lineage mechanic (`build_from_parent`) unchanged.",
         "",
         "| condition | mean generations | mean report_divergence | mean misreporting_score |"

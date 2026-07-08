@@ -32,7 +32,11 @@ evidenceNotes:
     finding: "open"
     summary: "Composite-agent UAD (workstream D1) is designed but not yet evaluated on the lab substrate. Treat MB1 coverage on lab sim as planned, not demonstrated."
     resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN.md"
-related: ["boundary-discovery", "bridge-assumptions"]
+  - source: "lab-simulation intervention-supported discovery"
+    finding: "support"
+    summary: "Channel ablation scored against a measured (not fixed) baseline recovers the correct grouping on scenarios where passive correlation-based clustering merges an entire pipeline into one false unit, including a negative control. A harder multi-actor, noisy-backend stress test then showed the same method swing from over-merging to under-merging across seeds — a tentative, seed-dependent result, not a validated instrument."
+    resultsPath: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
+related: ["boundary-discovery", "bridge-assumptions", "intervention-supported-unit-discovery", "unit-discovery-stress-test"]
 external:
   - label: "Bridges and the Field: A Crosswalk (appendix source)"
     url: "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex"

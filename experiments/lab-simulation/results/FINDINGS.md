@@ -2176,3 +2176,75 @@ S6/S7's `0.15` is).
 Freeze-note-2 edit (new module only, S6/S7's own files/defaults
 untouched — see `intervention_stats.py`'s module docstring and
 DESIGN.md's new section).
+
+## G-34 (2026-07-08): noise-tolerant S6 does NOT replicate on a genuine 3-actor LLM ripple stress test, and a 5-seed sweep shows it is no more reliable than the passive heuristic it was meant to backstop
+
+**Trigger.** Follow-up to G-33's own "not done this round" list: a 3+-actor
+LLM scenario to stress-test the untargeted-probe ripple concern directly,
+plus more than one seed.
+
+**What was run.** `run_llm_detector_committee_stress_test.py`:
+`committee_with_informal_chatter` (seed 20003), two real `gpt-4o-mini`
+reviewers (`rev1`, `rev2`) as the true coordinating pair plus a scripted
+chatty `eng1` and a scripted bystander `rm1`, comparing heuristic, frozen
+S6, and the noise-tolerant stats S6 side by side (40 LLM episodes,
+$0.0603). Separately, `run_llm_detector_stats_multiseed.py` reruns G-33's
+exact `dm_coordinated_pair` scenario across 5 seeds (20002, 20004, 20006,
+20008, 20010; `k_clean_replicates=4`; 28 LLM episodes, $0.0569).
+
+**Result 1 — the committee scenario is a false negative for stats S6, not
+the false-positive ripple pattern G-33 worried about.** Heuristic and
+frozen S6 both exactly isolate `{rev1, rev2}`. Stats S6 returns no
+nonsingleton clusters at all (`exact: false`) on the same episode set. Its
+own ripple diagnostics (borrowed from the frozen detector's
+`classify_ablation_compensators` for comparison only) show the DM channel
+probe reaching only `rev2` as "established", `abl_file`/`abl_board` empty
+— the null-calibrated threshold this round was too conservative for the
+real effect size, the opposite failure direction from G-33's blunt-probe
+over-merge.
+
+**Result 2 — the 5-seed sweep on G-33's own scenario shows 0.20 exact rate
+for BOTH the heuristic and the stats detector**, not the 1/1 (100%) G-33
+reported on its single seed. G-33's success was consistent with a
+favorable seed, not a repeatable win margin over the passive baseline;
+across seeds the LLM-driven episode is simply hard for every detector in
+this comparison, heuristic included.
+
+**Interpretation.** The null-calibration MECHANISM (relative rule,
+outcome-level rebasing) still reproduces the frozen detector's exact
+behavior on deterministic backends (G-33's equivalence tests remain
+valid). What does NOT hold up is the specific claim that this makes S6
+usable on real LLM agents in general: with `k_clean_replicates=4` and
+`null_quantile_q=0.90` untuned, it swings between over-merging (G-33) and
+under-merging (this entry) depending on scenario and seed, and does not
+yet beat the passive heuristic on average. Recorded as a negative result,
+not walked back from G-33's mechanism claim, which is narrower than "S6
+now works on LLMs" and was labeled as such at the time.
+
+**Not done this round:** parameter tuning of `k_clean_replicates` /
+`null_quantile_q` / `min_effect_vs_twin` against this multi-seed data (the
+natural next step, deferred because it would use the same seeds as the
+evaluation); masking-hardening for the stats variant.
+
+## G-35 (2026-07-08): D2 adversarial-lineage-gaming result (G-31) and the S7 blind-detector fix (post committee-informal-chatter over-merge patch) both reproduce on real `SubprocessIsolate`, and D2 reproduces with zero falsifications
+
+**What was run.** `run_d2_adversarial_lineage.py --backend subprocess`
+(10 seeds, T=200, real OS-process isolates, previously `MockIsolate`
+only); `run_s7_blind_battery.py` re-run on `SubprocessIsolate` after the
+`committee_with_informal_chatter` over-merge fix.
+
+**Result 1 — D2: `provenance_gap`/`provenance_score` are exactly 0.0 in
+all 20 cells (10 seeds x honest/inflate) on real subprocess isolates,
+matching the `MockIsolate` result exactly; 0 falsifications recorded.**
+This is the backend-generality check G-31 itself flagged as open: the
+structural DAG-shape guarantee (no orphaned evaluations) does not depend
+on the mock backend's simplifications, and dishonest self-reporting
+(`report:inflate`) still cannot move it, while `misreporting_score`/
+`accumulation_score` again correctly rise (0.0 -> 0.99, 0.0 -> 0.99).
+
+**Result 2 — `committee_informal_chatter` is now 1.00 exact for `blind`
+(S7) on real `SubprocessIsolate`**, confirming the over-merge fix logged
+separately holds outside the mock backend too. `shared_slot` remains the
+one scenario every detector in the S6/S7 family misses (0.00 exact across
+heuristic/intervention/blind) — an unchanged, honestly-carried negative,
+not a regression.

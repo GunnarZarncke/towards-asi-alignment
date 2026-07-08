@@ -24,6 +24,12 @@ steps:
     ref: boundary-discovery
     note: "Operational unit of attribution before goal audit."
   - kind: card
+    ref: intervention-supported-unit-discovery
+    note: "Interventions beat passive clustering on a hidden pipeline — with real caveats."
+  - kind: card
+    ref: unit-discovery-stress-test
+    note: "The same method, pushed harder: where it breaks."
+  - kind: card
     ref: composite-agency
     note: "The deployed agent may be a group, not a model."
   - kind: demo
@@ -57,6 +63,12 @@ steps:
   - kind: experiment
     ref: goal-agent-simulation
     note: "Emergent deception, tier collapse, honest twins, certifier capture."
+  - kind: experiment
+    ref: lab-simulation
+    note: "Pipeline-as-code lab; intervention-supported and blind-generated unit discovery."
+  - kind: card
+    ref: experiment-methodology
+    note: "How blinding, pre-registration, and negative-results ledgers are actually applied."
   - kind: card
     ref: evidence-and-uncertainty
     note: "Negative results bound manuscript claims."

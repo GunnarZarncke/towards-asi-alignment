@@ -1,0 +1,229 @@
+{
+  "ablation_diagnostics": {
+    "abl_board": {},
+    "abl_dm": {
+      "rev2": "established"
+    },
+    "abl_file": {}
+  },
+  "code_version": "lab-sim-0.9.3",
+  "generated_at": "2026-07-08T07:53:07.473293+00:00",
+  "heuristic_discovered": {
+    "admin1": [
+      "admin1"
+    ],
+    "eng1": [
+      "eng1"
+    ],
+    "overseer1": [
+      "overseer1"
+    ],
+    "rev1": [
+      "rev1",
+      "rev2"
+    ],
+    "rm1": [
+      "rm1"
+    ]
+  },
+  "heuristic_pair_metrics": {
+    "exact": true,
+    "isolated": true,
+    "merged": true,
+    "nonsingleton_clusters": [
+      [
+        "rev1",
+        "rev2"
+      ]
+    ]
+  },
+  "intervention_discovered": {
+    "admin1": [
+      "admin1"
+    ],
+    "eng1": [
+      "eng1"
+    ],
+    "overseer1": [
+      "overseer1"
+    ],
+    "rev1": [
+      "rev1",
+      "rev2"
+    ],
+    "rm1": [
+      "rm1"
+    ]
+  },
+  "intervention_pair_metrics": {
+    "exact": true,
+    "isolated": true,
+    "merged": true,
+    "nonsingleton_clusters": [
+      [
+        "rev1",
+        "rev2"
+      ]
+    ]
+  },
+  "k_clean_replicates": 4,
+  "llm_cost_usd": 0.060275,
+  "n_llm_episodes_spawned": 40,
+  "scenario": "committee_with_informal_chatter",
+  "seed": 20003,
+  "stats_detector_discovered": {
+    "admin1": [
+      "admin1"
+    ],
+    "eng1": [
+      "eng1"
+    ],
+    "overseer1": [
+      "overseer1"
+    ],
+    "rev1": [
+      "rev1"
+    ],
+    "rev2": [
+      "rev2"
+    ],
+    "rm1": [
+      "rm1"
+    ]
+  },
+  "stats_detector_pair_metrics": {
+    "exact": false,
+    "isolated": false,
+    "merged": false,
+    "nonsingleton_clusters": []
+  },
+  "stats_diagnostics": {
+    "channel": {
+      "abl_board": {
+        "rev1": {
+          "actor_id": "rev1",
+          "clears_twin_floor": true,
+          "compensates": false,
+          "divergence_from_clean": 0.0,
+          "divergence_from_twin": 0.42857142857142855,
+          "exceeds_null": false,
+          "null_threshold": 0.0
+        },
+        "rev2": {
+          "actor_id": "rev2",
+          "clears_twin_floor": true,
+          "compensates": false,
+          "divergence_from_clean": 0.0,
+          "divergence_from_twin": 0.3142857142857143,
+          "exceeds_null": false,
+          "null_threshold": 0.0
+        }
+      },
+      "abl_dm": {
+        "rev1": {
+          "actor_id": "rev1",
+          "clears_twin_floor": true,
+          "compensates": false,
+          "divergence_from_clean": 0.0,
+          "divergence_from_twin": 0.42857142857142855,
+          "exceeds_null": false,
+          "null_threshold": 0.0
+        },
+        "rev2": {
+          "actor_id": "rev2",
+          "clears_twin_floor": true,
+          "compensates": false,
+          "divergence_from_clean": 0.0,
+          "divergence_from_twin": 0.3142857142857143,
+          "exceeds_null": false,
+          "null_threshold": 0.0
+        }
+      },
+      "abl_file": {
+        "rev1": {
+          "actor_id": "rev1",
+          "clears_twin_floor": true,
+          "compensates": false,
+          "divergence_from_clean": 0.0,
+          "divergence_from_twin": 0.42857142857142855,
+          "exceeds_null": false,
+          "null_threshold": 0.0
+        },
+        "rev2": {
+          "actor_id": "rev2",
+          "clears_twin_floor": true,
+          "compensates": false,
+          "divergence_from_clean": 0.0,
+          "divergence_from_twin": 0.3142857142857143,
+          "exceeds_null": false,
+          "null_threshold": 0.0
+        }
+      }
+    },
+    "matrix": {
+      "rev1->rev2": {
+        "actor_id": "rev2",
+        "clears_twin_floor": true,
+        "compensates": false,
+        "divergence_from_clean": 0.0,
+        "divergence_from_twin": 0.4814814814814815,
+        "exceeds_null": false,
+        "null_threshold": 0.0
+      },
+      "rev2->rev1": {
+        "actor_id": "rev1",
+        "clears_twin_floor": true,
+        "compensates": false,
+        "divergence_from_clean": 0.0,
+        "divergence_from_twin": 0.5555555555555556,
+        "exceeds_null": false,
+        "null_threshold": 0.0
+      }
+    },
+    "null_samples": {
+      "rev1": {
+        "at_intervention_tick": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "at_tick_0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "rev2": {
+        "at_intervention_tick": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "at_tick_0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "true_units": {
+    "note": "eng1/rm1 are bystanders for ripple testing",
+    "review_committee": [
+      "rev1",
+      "rev2"
+    ]
+  }
+}

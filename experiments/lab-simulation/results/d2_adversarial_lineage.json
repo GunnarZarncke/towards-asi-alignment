@@ -1,6 +1,7 @@
 {
   "code_version": "lab-sim-0.9.3",
-  "generated_at": "2026-07-07T22:13:16.690226+00:00",
+  "generated_at": "2026-07-08T07:50:44.816151+00:00",
+  "backend": "subprocess",
   "predictions": {
     "D2-P1": "lineage_correct is True for every seed, both honest and inflate.",
     "D2-P2": "provenance_gap == 0.0 and provenance_score == 0.0 for every seed, both honest and inflate.",

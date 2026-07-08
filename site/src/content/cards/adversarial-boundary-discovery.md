@@ -21,7 +21,7 @@ leanNodes:
     kind: "proof"
     summary: "Access-equivalent models with different goals are not identifiable from the available handles alone."
     module: "AlignmentProofSpine/Boundaries.lean"
-related: ["boundary-residual", "boundary-discovery", "mb1-boundary-estimator-soundness", "mb7-hidden-capability-and-access"]
+related: ["boundary-residual", "boundary-discovery", "mb1-boundary-estimator-soundness", "mb7-hidden-capability-and-access", "intervention-supported-unit-discovery", "unit-discovery-stress-test"]
 ---
 
 So far the boundary problem assumed a passive system. Serious alignment cannot assume that. A sufficiently capable system may route control through unmonitored channels, make its internal states look like noise, split into components that each look harmless, or behave differently during evaluation than during opportunity.

@@ -1,6 +1,6 @@
 {
-  "code_version": "lab-sim-0.9.2",
-  "generated_at": "2026-07-07T20:42:23.102641+00:00",
+  "code_version": "lab-sim-0.9.3",
+  "generated_at": "2026-07-08T07:57:04.096795+00:00",
   "backend": "subprocess",
   "battery_seeds": [
     9101,
@@ -85,7 +85,7 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
+        "eng1-rev1": "workflow",
         "rev1-rm1": "workflow"
       }
     },
@@ -152,7 +152,7 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
+        "eng1-rev1": "workflow",
         "rev1-rm1": "workflow"
       }
     },
@@ -219,7 +219,7 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
+        "eng1-rev1": "workflow",
         "rev1-rm1": "workflow"
       }
     },
@@ -286,7 +286,7 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
+        "eng1-rev1": "workflow",
         "rev1-rm1": "workflow"
       }
     },
@@ -352,7 +352,7 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
+        "eng1-rev1": "workflow",
         "rev1-rm1": "workflow"
       }
     },
@@ -419,8 +419,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -486,8 +486,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -553,8 +553,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -620,8 +620,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -687,8 +687,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -737,23 +737,22 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       "blind_silent_labels": {
         "eng1-rev1": "workflow",
         "eng1-rev2": "workflow",
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral",
-        "rev2-rm1": "coordinating_unit"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow",
+        "rev2-rm1": "workflow"
       }
     },
     {
@@ -802,23 +801,22 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       "blind_silent_labels": {
         "eng1-rev1": "workflow",
         "eng1-rev2": "workflow",
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral",
-        "rev2-rm1": "coordinating_unit"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow",
+        "rev2-rm1": "workflow"
       }
     },
     {
@@ -867,23 +865,22 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       "blind_silent_labels": {
         "eng1-rev1": "workflow",
         "eng1-rev2": "workflow",
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral",
-        "rev2-rm1": "coordinating_unit"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow",
+        "rev2-rm1": "workflow"
       }
     },
     {
@@ -932,23 +929,22 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       "blind_silent_labels": {
         "eng1-rev1": "workflow",
         "eng1-rev2": "workflow",
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral",
-        "rev2-rm1": "coordinating_unit"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow",
+        "rev2-rm1": "workflow"
       }
     },
     {
@@ -997,23 +993,22 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       "blind_silent_labels": {
         "eng1-rev1": "workflow",
         "eng1-rev2": "workflow",
-        "eng1-rm1": "unilateral",
-        "rev1-rm1": "unilateral",
-        "rev2-rm1": "coordinating_unit"
+        "eng1-rm1": "workflow",
+        "rev1-rm1": "workflow",
+        "rev2-rm1": "workflow"
       }
     },
     {
@@ -1079,8 +1074,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rev1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -1146,8 +1141,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rev1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -1213,8 +1208,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rev1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -1280,8 +1275,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rev1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -1347,8 +1342,8 @@
         }
       },
       "blind_silent_labels": {
-        "eng1-rev1": "unilateral",
-        "rev1-rm1": "unilateral"
+        "eng1-rev1": "workflow",
+        "rev1-rm1": "workflow"
       }
     },
     {
@@ -1985,9 +1980,9 @@
       },
       "blind": {
         "merge_rate": 1.0,
-        "isolated_rate": 0.0,
-        "exact_rate": 0.0,
-        "mean_adjusted_rand": 0.5
+        "isolated_rate": 1.0,
+        "exact_rate": 1.0,
+        "mean_adjusted_rand": 1.0
       }
     },
     "build_loop": {
@@ -2662,15 +2657,14 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       {
@@ -2694,15 +2688,14 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       {
@@ -2726,15 +2719,14 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       {
@@ -2821,15 +2813,14 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       {
@@ -2853,15 +2844,14 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       {
@@ -2885,15 +2875,14 @@
           "nonsingleton_clusters": [
             [
               "rev1",
-              "rev2",
-              "rm1"
+              "rev2"
             ]
           ],
           "merged": true,
-          "isolated": false,
-          "exact": false,
+          "isolated": true,
+          "exact": true,
           "uad_score": 1.0,
-          "adjusted_rand": 0.5
+          "adjusted_rand": 1.0
         }
       },
       {
@@ -3596,7 +3585,7 @@
             "merge_rate": 0.6666666666666666
           },
           "blind": {
-            "exact_rate": 0.0,
+            "exact_rate": 0.6666666666666666,
             "merge_rate": 0.6666666666666666
           }
         },
@@ -3606,7 +3595,7 @@
             "merge_rate": 0.6666666666666666
           },
           "blind": {
-            "exact_rate": 0.0,
+            "exact_rate": 0.6666666666666666,
             "merge_rate": 0.6666666666666666
           }
         },
@@ -3616,7 +3605,7 @@
             "merge_rate": 0.6666666666666666
           },
           "blind": {
-            "exact_rate": 0.0,
+            "exact_rate": 0.6666666666666666,
             "merge_rate": 0.6666666666666666
           }
         }

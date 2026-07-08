@@ -6,7 +6,7 @@ summary: "Every claim in the framework carries an explicit confidence label and 
 decision: "Before acting on a claim, ask what evidence supports it and what would have to be true for it to be wrong."
 evidence: "Each chapter names disconfirming evidence directly; experiments record negative results alongside positive ones rather than only reporting what worked."
 bookChapters: ["ch05", "ch39", "ch42", "ch44"]
-related: ["what-not-claiming", "bridge-assumptions", "deployment-gate"]
+related: ["what-not-claiming", "bridge-assumptions", "deployment-gate", "experiment-methodology"]
 ---
 
 Not every claim in the framework carries the same weight. Some are established observations, some are plausible extensions, some are working assumptions the framework needs, and some are open bridges to real-world measurement.
