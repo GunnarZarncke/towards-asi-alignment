@@ -1,5 +1,5 @@
 ---
-title: "Subsumption — Christiano Corrigibility"
+title: "Field crosswalk — Christiano Corrigibility"
 type: "concept"
 status: "established"
 summary: "Christiano corrigibility is a dynamical desideratum — operators stay informed and able to correct over time. Lean reads it as basin contraction toward a correction manifold plus a correction-capacity floor; local act preferences can satisfy the weak predicate while dynamical corrigibility fails."
@@ -38,3 +38,5 @@ related: []
 Christiano corrigibility is not a single preference over acts; it is a claim about trajectories under amplification — operators remain able to steer as capability grows. The book aligns this with correction-channel integrity extended in time: contraction toward a correction manifold and a floor on usable correction information.
 
 Lean makes the equivalence explicit on the finite spine and separates act-based satisfaction from the dynamical invariant. That separation is why MB4 (correction legitimacy) matters: a system can perform corrigibility theater while eroding the judge's future ability to correct.
+
+*What Christiano's corrigibility keeps that this crosswalk does not replace:* an act-level desideratum usable in today's training loops. The dynamical invariant is not yet operationalized for training.

@@ -7,7 +7,7 @@ featuredSpotlight:
   kind: book
   ref: appB
   title: "Bridge crosswalk to the field"
-  blurb: "Maps MB1–MB10 to RLHF, ELK, CIRL, debate, AI control, and other named agendas — where this framework subsumes, bounds, or diverges from existing work."
+  blurb: "Maps MB1–MB10 to RLHF, ELK, CIRL, debate, AI control, and other named agendas — where this framework maps to, bounds, or diverges from existing work."
   primaryLabel: "Read bridge crosswalk"
   secondary:
     kind: card

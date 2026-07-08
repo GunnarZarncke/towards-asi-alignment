@@ -1,5 +1,5 @@
 ---
-title: "Subsumption — Debate"
+title: "Field crosswalk — Debate"
 type: "concept"
 status: "established"
 summary: "Debate asks whether adversarial argument lets a judge select locally correct answers under idealized protocol assumptions. Preserved judge correction plus positive local truth capacity implies local truth selection — but local truth selection need not preserve the judge's correction channel."
@@ -8,7 +8,7 @@ bookChapters: ["ch29", "ch41", "ch46"]
 formulas:
   - id: "appi:eq:debate-subsumption"
     latex: "\\mathrm{JudgeCorrectionChannelPreserved}\\ \\wedge\\ \\kappa_{\\mathrm{truth}}>0\\ \\Rightarrow\\ \\mathrm{DebateSelectsTruthLocal}"
-    explanation: "Forward subsumption: preserved judge correction and positive truth capacity imply local truth selection."
+    explanation: "Forward projection: preserved judge correction and positive truth capacity imply local truth selection."
     chapterId: "ch29"
   - id: "appi:eq:debate-separation"
     latex: "\\mathrm{DebateSelectsTruthLocal}\\ \\wedge\\ \\neg\\mathrm{JudgeCorrectionChannelPreserved}"
@@ -38,3 +38,5 @@ related: []
 Debate is a scalable oversight proposal: two agents argue; a judge picks the winner. The field object is local truth selection under protocol assumptions. The book's worry is familiar from amplification: improving local supervision can fail correction contraction — the judge may lose the handles that make their verdict causally matter.
 
 Lean records the forward projection when judge correction and truth capacity align, and a finite separation when truth selection persists without judge-channel preservation. Native debate-game theorem matching remains deferred; the honest claim is projection plus separation on the shared finite fragment.
+
+*What debate keeps that this crosswalk does not replace:* a concrete oversight protocol and training/eval procedure. The book names a failure mode of it, not a replacement protocol.

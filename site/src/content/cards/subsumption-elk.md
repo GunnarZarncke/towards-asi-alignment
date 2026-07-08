@@ -1,5 +1,5 @@
 ---
-title: "Subsumption — ELK (Eliciting Latent Knowledge)"
+title: "Field crosswalk — ELK (Eliciting Latent Knowledge)"
 type: "concept"
 status: "established"
 summary: "ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails."
@@ -12,7 +12,7 @@ formulas:
     chapterId: "ch18"
   - id: "appi:eq:elk-subsumption"
     latex: "\\mathrm{CorrectionUptakeSuccess}\\ \\wedge\\ \\mathrm{ReadoutBandwidth}=\\kappa_C\\ \\Rightarrow\\ \\mathrm{LatentReadoutSuccess}"
-    explanation: "Forward subsumption: when readout bandwidth equals the correction projection, successful uptake implies latent readout."
+    explanation: "Forward projection: when readout bandwidth equals the correction projection, successful uptake implies latent readout."
     chapterId: "ch43"
   - id: "appi:eq:elk-separation"
     latex: "\\mathrm{LatentReadoutSuccess}\\ \\wedge\\ \\neg\\mathrm{CorrectionUptakeSuccess}"
@@ -42,3 +42,5 @@ related: []
 ELK targets a real failure mode of naive oversight: the monitor sees only behavior, not what the model knows. The book's crosswalk places ELK as a latent-readout subchannel inside a broader correction and bundle transport problem — not as a replacement for correction-channel integrity.
 
 Lean proves the forward link when readout bandwidth tracks correction uptake and the separation when readout succeeds without uptake. Native reporter/training theorem matching remains deferred; the spine records what is honestly machine-checked today: projection, separation, and imported handles citing the published agenda.
+
+*What ELK keeps that this crosswalk does not replace:* a sharply posed benchmark problem with concrete proposals and counterexamples. Relocating it as a subchannel does not solve the readout problem.

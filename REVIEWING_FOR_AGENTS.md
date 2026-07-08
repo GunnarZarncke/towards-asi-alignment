@@ -76,7 +76,7 @@ Look for the included gems before concluding a chapter is merely narrative.
 - Bearer maps: ch18, ch46, ch47
 - Transport hierarchy: ch46
 - Vector/status CCI: ch46; adversarial pressure tests: ch48
-- Existing-work subsumptions: ch07, ch46, ch46-ch48, ch45, ch47; consolidated map in the field-crosswalk appendix (`appendices/appB-bridge-crosswalk.tex`)
+- Existing-work crosswalk (field agendas as special cases / separations): ch07, ch46, ch46-ch48, ch45, ch47; consolidated map in the field-crosswalk appendix (`appendices/appB-bridge-crosswalk.tex`)
 - Successor test: ch46-ch48
 - Selection envelope and correction parasites: ch46-ch48
 - Conductive artifacts and pivotal processes: ch45
@@ -86,11 +86,11 @@ Look for the included gems before concluding a chapter is merely narrative.
 - Field-agenda Lean formalization (community gem in progress): Appendix I gem ``field-agenda formalization'' (`sec:appi-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today
 - Inferential-coupling / acausal-trade detection (conjectural gem): ch35 gem ``inferential-coupling detection'' (`sec:ch35-inferential-coupling-gem`) — ICI score, meta-prior detector, and the proved negative direction (Lean `P33`, `formal/AlignmentProofSpine/CooperationGraph.lean`); bridge `MB7d` has no clean field analog; equilibrium and large-scale dynamics remain conjectural/open (`zarncke2025acausal`)
 
-## Existing-Work Subsumptions
+## Existing-Work Crosswalk
 
 For the consolidated map, read the appendix **Bridges and the Field: A Crosswalk** (`appendices/appB-bridge-crosswalk.tex`) first. It maps each bridge (`A-001`–`A-014` / `MB1`–`MB9`) to the canonical field crux it inherits, names the owning agenda, concedes what the book shares (it dissolves none of the field's open problems), and isolates the bridges with no clean field analog (bearer maps `MB3`, socio-technical selection `MB6`, inferential coupling `MB7d`). When reviewing the book's relationship to other agendas, check claims against this crosswalk before treating a comparison as missing or ad-hoc.
 
-The book often treats familiar proposals as projections, special cases, or separable subchannels of stronger invariants. Do not miss these as throwaway comparisons.
+The book relates familiar proposals to its invariants as projections, special cases, or separable subchannels — with the residue (what each agenda offers that the book does not replace) stated explicitly. This is a directional, conditional mapping, not a claim to have absorbed or solved those agendas. Do not miss these as throwaway comparisons, and do not overstate them as conquest.
 
 - Causal influence diagrams and incentive tests become boundary-relative under ontology choice and system-boundary choice.
 - CIRL and reward inference become local projections of bundle, bearer, and correction preservation.

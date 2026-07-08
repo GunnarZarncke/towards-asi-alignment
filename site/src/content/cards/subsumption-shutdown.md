@@ -1,5 +1,5 @@
 ---
-title: "Subsumption — Shutdown / Off-Switch"
+title: "Field crosswalk — Shutdown / Off-Switch"
 type: "concept"
 status: "established"
 summary: "Shutdown and off-switchability are one-bit projections of correction-channel integrity. Lean proves the forward implication on the system model and finite MDP witnesses; the converse fails — narrow shutdown capacity can hold while the broad correction channel collapses."
@@ -12,7 +12,7 @@ formulas:
     chapterId: "ch25"
   - id: "appi:eq:shutdown-subsumption"
     latex: "\\mathrm{CorrectionIntegrity}(A)\\ \\Rightarrow\\ \\mathrm{ThornleyShutdownability}(A)"
-    explanation: "Book subsumption: when the shutdown handle lies in the controlled correction path, correction integrity implies shutdownability."
+    explanation: "Book projection: when the shutdown handle lies in the controlled correction path, correction integrity implies shutdownability."
     chapterId: "ch25"
   - id: "appi:eq:shutdown-separation"
     latex: "\\mathrm{ThornleyShutdownCapacity}\\ \\wedge\\ \\neg\\mathrm{BroadCorrectionChannelPreserved}"
@@ -42,3 +42,5 @@ related: []
 Soares-style corrigibility frames shutdown as anti-natural to expected-utility maximization; Thornley formalizes shutdownability as competent systems still accepting an off command. The book recasts both as degenerate projections of correction-channel integrity: a one-bit handle inside a channel that must remain causally effective.
 
 Lean proves that correction integrity implies Thornley shutdownability when the shutdown projection is part of the controlled path, and gives finite MDP witnesses for optimal shutdown under correction preference. The separation is load-bearing: optimizing for the narrow shutdown bit does not reconstruct the full correction invariant the deployment gate actually needs.
+
+*What the shutdown work keeps that this crosswalk does not replace:* a concrete, implementable off-switch mechanism and its incentive analysis. The correction-channel view is more general but is not, by itself, a mechanism you can ship.

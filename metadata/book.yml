@@ -310,11 +310,11 @@ parts:
     summary: "Introduces value bundles: learnable geometry plus fragile tradeoffs, bearers, and adversarial measurement pressure."
     summary_latex: "Introduces value bundles: \hyperref[sec:four-part-definition]{learnable geometry} plus fragile tradeoffs, \hyperref[sec:bundle-bearer-map]{bearers}, and \hyperref[sec:from-geometry-to-measurement-ch20]{adversarial measurement pressure}."
   part05:
-    summary: "Upgrades goal inference into transport, subsuming reward/CIRL-style inference into bundle and bearer preservation."
-    summary_latex: "Upgrades goal inference into \hyperref[sec:four-layers-transport]{transport}, subsuming \hyperref[sec:scalar-reward-hides-correction]{reward/CIRL-style inference} into bundle and bearer preservation."
+    summary: "Upgrades goal inference into transport, relating reward/CIRL-style inference to it as a special case under bundle and bearer preservation."
+    summary_latex: "Upgrades goal inference into \hyperref[sec:four-layers-transport]{transport}, relating \hyperref[sec:scalar-reward-hides-correction]{reward/CIRL-style inference} to it as a special case under bundle and bearer preservation."
   part06:
-    summary: "Shows correction is not feedback; vector CCI is defined as a certificate and then stress-tested under adversarial pressure, subsuming shutdown, interruptibility, low impact, quantilization, and corrigibility projections."
-    summary_latex: "Shows \hyperref[sec:why-correction-not-feedback]{correction is not feedback}; \hyperref[sec:correction-channel-integrity-def]{vector CCI} is defined as a certificate and then \hyperref[sec:certificate-under-pressure-ch27]{stress-tested under adversarial pressure}, subsuming shutdown, interruptibility, low impact, quantilization, and corrigibility projections."
+    summary: "Shows correction is not feedback; vector CCI is defined as a certificate and then stress-tested under adversarial pressure, relating shutdown, interruptibility, low impact, quantilization, and corrigibility to it as special cases and separations."
+    summary_latex: "Shows \hyperref[sec:why-correction-not-feedback]{correction is not feedback}; \hyperref[sec:correction-channel-integrity-def]{vector CCI} is defined as a certificate and then \hyperref[sec:certificate-under-pressure-ch27]{stress-tested under adversarial pressure}, relating shutdown, interruptibility, low impact, quantilization, and corrigibility to it as special cases and separations."
   part07:
     summary: "Makes successor creation the central inheritance test for alignment."
     summary_latex: "Makes \hyperref[sec:successor-alignment-condition-ch30]{successor creation} the central inheritance test for alignment."
@@ -322,8 +322,8 @@ parts:
     summary: "Tracks selection, preservation envelopes, correction parasites, attractor theory, and conductive artifacts for pivotal-process governance."
     summary_latex: "Tracks selection, \hyperref[sec:minimal-model-selection-ch34]{preservation envelopes}, \hyperref[sec:operational-definition-ch36]{correction parasites}, \hyperref[sec:minimal-model-ch37]{attractor theory}, and \hyperref[sec:from-basin-theory-to-conductive-artifacts-ch38]{conductive artifacts for pivotal-process governance}."
   part09:
-    summary: "Turns the framework into adversarial measurement, subsuming debate, amplification, and ELK as narrower subchannels."
-    summary_latex: "Turns the framework into adversarial measurement, subsuming \hyperref[sec:debate-judge-state-control-ch29]{debate}, \hyperref[sec:amplification-contraction-ch41]{amplification}, and \hyperref[sec:cci-verifiability-example-ch43]{ELK} as narrower subchannels."
+    summary: "Turns the framework into adversarial measurement, relating debate, amplification, and ELK to it as narrower subchannels."
+    summary_latex: "Turns the framework into adversarial measurement, relating \hyperref[sec:debate-judge-state-control-ch29]{debate}, \hyperref[sec:amplification-contraction-ch41]{amplification}, and \hyperref[sec:cci-verifiability-example-ch43]{ELK} to it as narrower subchannels."
   part10:
     summary: "Reaches the civilizational limit: preserve the value-update envelope, not a final answer."
     summary_latex: "Reaches the civilizational limit: preserve the \hyperref[sec:role-technical-alignment-ch45]{value-update envelope}, not a final answer."

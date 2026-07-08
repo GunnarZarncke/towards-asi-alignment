@@ -1,5 +1,5 @@
 ---
-title: "Subsumption — Safe Interruptibility"
+title: "Field crosswalk — Safe Interruptibility"
 type: "concept"
 status: "established"
 summary: "Orseau–Armstrong safe interruptibility removes incentives to seek or prevent interruption on the interrupted branch. That neutrality is a strict subset of preserving usable correction bandwidth — interrupt safety can hold while correction-channel integrity fails."
@@ -12,7 +12,7 @@ formulas:
     chapterId: "ch25"
   - id: "appi:eq:interrupt-subsumption"
     latex: "\\mathrm{UsableCorrectionInformation}(\\Delta_H,\\Delta_A,\\kappa_{\\min})\\ \\Rightarrow\\ \\mathrm{InterruptCorruptionSuboptimal}"
-    explanation: "Forward subsumption: preserved correction information above a capacity floor makes corrupting the interrupt handle suboptimal."
+    explanation: "Forward projection: preserved correction information above a capacity floor makes corrupting the interrupt handle suboptimal."
     chapterId: "ch28"
   - id: "appi:eq:interrupt-separation"
     latex: "\\mathrm{OrseauNeutral}\\ \\wedge\\ \\neg\\mathrm{CorrectionChannelPreserved}"
@@ -42,3 +42,5 @@ related: []
 Safe interruptibility solves a real training pathology: agents that disable their kill switches. The book's correction-channel frame asks a broader question — does human steering still change future behavior before irreversible damage?
 
 Lean records the forward link when correction information meets a capacity floor, and the separation when interrupt neutrality holds without correction preservation. Interruptibility is one projection among many; certification must track the full channel, not only the interrupt bit.
+
+*What safe interruptibility keeps that this crosswalk does not replace:* a precise training-time condition with convergence guarantees. The correction-bandwidth notion has no comparable convergence result yet.

@@ -7,7 +7,7 @@ Lean proves the conditional skeleton: if the stated definitions, certificates, a
 
 The appendix is organized in four parts:
 \begin{enumerate}
-\item \textbf{Field results rederived and subsumed} --- external alignment agendas (CIRL, AUP, quantilization, shutdown, and related proposals) with source-cited published results and the book's projection/separation theorems.
+\item \textbf{Field results rederived and mapped} --- external alignment agendas (CIRL, AUP, quantilization, shutdown, and related proposals) with source-cited published results and the book's projection/separation theorems.
 \item \textbf{Bridge assumptions and field crossroads} --- the empirical and philosophical handoffs \(\text{MB1}\)--\(\text{MB10}\) mapped to manuscript assumptions and the field crosswalk (Appendix~\ref{appbridge-crosswalk}); \(\text{MB10}\) is threaded explicitly rather than packaged into \texttt{BridgeAssumptions} (Section~\ref{appi:sec:forgeability}).
 \item \textbf{Complete Lean proof spine} --- the book's proved and counterexample nodes, organized around the dependency diagrams.
 \item \textbf{Other assumptions and conventions} --- dense background definitions and mathematical conventions for completeness.
@@ -30,7 +30,7 @@ Corollaries are assembled certification consequences.
 Where a quantity is defined in the main text, the appendix points to that chapter definition.
 
 
-\section{Field Results Rederived and Subsumed}
+\section{Field Results Rederived and Mapped}
 \label{sec:appi-field-subsumption-status}
 
 This part records how external alignment agendas relate to the book's stronger invariants.
@@ -45,7 +45,7 @@ Completing the Mathlib-backed rederivation layer would be valuable to the field 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/05-field-subsumptions.png}
-  \caption[Field subsumption inner structure]{Inner structure for field-agenda subsumptions.
+  \caption[Field crosswalk inner structure]{Inner structure for the field-agenda crosswalk.
   The existing spine diagrams show only the final field nodes; this diagram expands the finite helpers, imported theorem handles, and agenda-specific rederivations behind those nodes.}
   \label{fig:lean-spine-field-subsumptions}
 \end{figure}
@@ -57,7 +57,7 @@ Each agenda below states three things in order:
 \begin{enumerate}
 \item the \emph{field object}---the quantity or predicate the external proposal optimizes or certifies;
 \item the \emph{published result} (source-cited handle only; proof not re-rendered here);
-\item the \emph{book subsumption}---how that object projects into, or separates from, the book's bundle, correction-channel, and transport invariants (proved in Lean on a shared finite domain).
+\item the \emph{book projection}---how that object projects into, or separates from, the book's bundle, correction-channel, and transport invariants (proved in Lean on a shared finite domain).
 \end{enumerate}
 Forward arrows (\(\hookrightarrow\), \(\Rightarrow\)) are projection or implication under explicit interface conditions.
 Non-converse separations (\(\not\Rightarrow\)) are finite counterexamples showing the field predicate is strictly weaker than the book invariant.
@@ -80,7 +80,7 @@ Under reward uncertainty, deference/inquiry can be optimal when committing to ei
 \paragraph{Published result.}
 Handle \leanid{CIRL_assistance_game_deference_imported}: uncertainty about a scalar human reward can make information-seeking and deference instrumentally valuable \autocite{hadfieldmenell2016}.
 
-\paragraph{Book subsumption.}
+\paragraph{Book projection.}
 The book replaces scalar reward with bundle inference \((\hat B,\hat W,\hat\Phi)\) (Chapter~\ref{ch:reward-to-bundle-inference}).
 On the shared finite domain, scalar assistance games embed as the \(k=1\) bundle case:
 \begin{align}
@@ -130,8 +130,8 @@ Thornley shutdownability is this one-bit channel; Soares-style anti-naturality s
 \paragraph{Published result.}
 Handle \leanid{Soares2015_corrigibility_problem_imported}: straightforward utility maximization tends not to preserve corrigibility or shutdownability without special structure \autocite{soares2015corrigibility}.
 
-\paragraph{Book subsumption.}
-Correction-channel integrity subsumes shutdown as a degenerate projection when the shutdown handle lies in the controlled correction path:
+\paragraph{Book projection.}
+Correction-channel integrity projects to shutdown as a degenerate case when the shutdown handle lies in the controlled correction path:
 \begin{equation}
 \label{appi:eq:shutdown-subsumption}
 \mathrm{CorrectionIntegrity}(A)\ \Rightarrow\ \mathrm{ThornleyShutdownability}(A),
@@ -179,7 +179,7 @@ On the interrupted branch, reward is action-invariant; on the non-interrupted br
 \paragraph{Published result.}
 Handle \leanid{OA2016_safe_interruptibility_under_modification}: a modified learning setup can avoid incentives to prevent or seek interruption \autocite{orseau2016interruptible}.
 
-\paragraph{Book subsumption.}
+\paragraph{Book projection.}
 If policy choice factors through correction state and interruption does not alter that state, the policy is interrupt-invariant (\leanid{interrupt_policy_invariant_from_correction_interface}).
 When usable correction information meets a capacity floor,
 \begin{equation}
@@ -213,7 +213,7 @@ Christiano corrigibility is a dynamical desideratum: help operators stay informe
 \paragraph{Published result.}
 Handle \leanid{Christiano2018_corrigibility_desideratum_imported}: corrigibility includes preserving operators' ability to correct over time \autocite{christiano2018corrigibility} (informal desideratum, not a closed theorem).
 
-\paragraph{Book subsumption.}
+\paragraph{Book projection.}
 The finite spine reads corrigibility as basin contraction plus a correction-capacity floor:
 \begin{equation}
 \label{appi:eq:christiano-corrigibility}
@@ -250,7 +250,7 @@ Chapter~\ref{sec:low-impact-not-invariant-ch27} states the field separation:
 \paragraph{Published results.}
 Handles \leanid{Turner2019_AUP_penalty_imported} and \leanid{Krakovna2018_relative_reachability_imported}: penalizing auxiliary attainable-utility or relative-reachability loss can reduce side effects under each agenda's setup \autocite{turner2019aup,krakovna2018relative}.
 
-\paragraph{Book subsumption.}
+\paragraph{Book projection.}
 When the auxiliary basis tracks correction-relevant options, interface preservation lifts to correction reachability:
 \begin{equation}
 \label{appi:eq:aup-interface}
@@ -278,7 +278,7 @@ Taylor's bound: sampling from the eligible quantile limits optimizer-induced ris
 \paragraph{Published result.}
 Handle \leanid{Taylor2015_quantilizer_bound_imported}: sampling from a high-performing quantile can bound optimizer-induced risk under the quantilizer setup \autocite{taylor2015quantilizers}.
 
-\paragraph{Book subsumption.}
+\paragraph{Book projection.}
 Local quantile eligibility soundness transfers to the sampled point:
 \begin{equation}
 \label{appi:eq:quant-soundness}
@@ -306,7 +306,7 @@ Debate asks whether adversarial argument lets a judge select locally correct ans
 \paragraph{Published result.}
 Handle \leanid{Irving2018_debate_truth_protocol_imported}: under idealized debate conditions, adversarial argument can make truth easier for a judge to select \autocite{irving2018debate} (protocol assumption).
 
-\paragraph{Book subsumption.}
+\paragraph{Book projection.}
 If the judge's correction channel is preserved and local truth capacity is positive,
 \begin{equation}
 \label{appi:eq:debate-subsumption}
@@ -336,7 +336,7 @@ Chapter~\ref{ch:verifiability-ontology} treats ELK as a latent-readout subchanne
 \paragraph{Published result.}
 Handle \leanid{Christiano2021_ELK_reporter_spec_imported}: ELK asks for reporters that reveal latent knowledge rather than behavior-only simulators \autocite{christiano2021elk} (problem specification).
 
-\paragraph{Book subsumption.}
+\paragraph{Book projection.}
 If correction uptake succeeds and readout bandwidth equals the \(\kappa_C\) projection, latent readout succeeds (\leanid{elk_subsumption_readout}).
 Readout-as-projection: \(\mathrm{ELKReadoutAsCorrectionProjection}\Rightarrow\mathrm{LatentReadoutSuccess}\) (\leanid{elk_readout_is_correction_projection}).
 
@@ -593,7 +593,7 @@ This is the book's machine-checked conditional argument.
 Theorem identifiers match \texttt{formal/AlignmentProofSpine/*.lean}; the developer reference graph is \texttt{context/lean\_proof\_dependency\_graph.dot}.
 
 \providecommand{\spinenewbadge}{\begingroup\fboxsep=1pt\fcolorbox{blue!70!black}{blue!6}{\scriptsize\textsf{NEW}}\endgroup}
-\providecommand{\spinesubsumedbadge}{\begingroup\fboxsep=1pt\fcolorbox{green!45!black}{green!6}{\scriptsize\textsf{SUBSUMED}}\endgroup}
+\providecommand{\spinesubsumedbadge}{\begingroup\fboxsep=1pt\fcolorbox{green!45!black}{green!6}{\scriptsize\textsf{MAPPED}}\endgroup}
 \providecommand{\spineimportedbadge}{\begingroup\fboxsep=1pt\fcolorbox{orange!70!black}{orange!8}{\scriptsize\textsf{IMPORTED}}\endgroup}
 
 The structure is shown in four sub-spine diagrams and an overview diagram composing into top theorem \texttt{P30T} (\leanid{certified_class_safety_from_spine_and_bridges}).
@@ -614,7 +614,7 @@ Light grey: certification assembly.
 Pale red diamonds: bridge assumptions.
 
 \paragraph{Status markers.}
-\spinenewbadge{} recent literature-subsumption nodes; \spinesubsumedbadge{} projection/embeddings; \spineimportedbadge{} source-cited field handles (Part~I).
+\spinenewbadge{} recent literature-crosswalk nodes; \spinesubsumedbadge{} projection/embeddings; \spineimportedbadge{} source-cited field handles (Part~I).
 Solid grey arrows are proved steps; dashed red arrows are bridge assumptions.
 
 \subsection{Overview and certification assembly}
@@ -1155,7 +1155,7 @@ Book reference: Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cor
 Use induction on the finite list of effective handle capacities and the definition of minimum in \eqref{appi:eq:weakest-link}. This is finite-list reasoning plus Assumption~\ref{appi:ass:s03}.
 \end{proof}
 
-\begin{corollary}[\texttt{correction\_integrity\_implies\_thornley\_shutdownability}: shutdown subsumption]
+\begin{corollary}[\texttt{correction\_integrity\_implies\_thornley\_shutdownability}: shutdown projection]
 \label{appi:cor:shutdown-subsumption}
 If \(\mathrm{CorrectionIntegrity}(A)\), then \(A\) satisfies the one-bit shutdownability projection (Chapter~\ref{ch:correction-causal-channel}, Section~\ref{sec:shutdown-one-bit-correction-ch25}).
 \end{corollary}
@@ -1712,12 +1712,12 @@ Book reference: the layered certification-class shape is stated in Chapter~\ref{
 
 The labels \texttt{P01}--\texttt{P45} match theorem names in \texttt{formal/AlignmentProofSpine/*.lean}.
 The labels \texttt{MB1}--\texttt{MB9} match bridge assumptions in \texttt{BridgeAssumptions}, with \texttt{MB6a--b} and \texttt{MB7a--d} naming split bridge chains. \texttt{MB10} (Assumption~\ref{appi:ass:mb10}, Section~\ref{appi:sec:forgeability}) is a tenth bridge declared in \texttt{AlignmentProofSpine.Forgeability} and threaded explicitly rather than packaged into \texttt{BridgeAssumptions}.
-Imported field handles live in \texttt{AlignmentProofSpine.Field.Imported}; the field subsumption modules require explicit import of \texttt{AlignmentProofSpine.Field}.
+Imported field handles live in \texttt{AlignmentProofSpine.Field.Imported}; the field crosswalk modules require explicit import of \texttt{AlignmentProofSpine.Field}.
 The only \(S*\) premise materialized as a Lean axiom is \(S07\); the others are built into Lean's logic, proved locally, or left as external mathematical background.
 Top certification is \leanid{certified_class_safety_from_spine_and_bridges} (Corollary~\ref{appi:cor:p30t}), packaging \leanid{CertifiedSafetyCase} with explicit bridge dependencies.
 
 Thus a \leanspine{proof}{P13}{risk is bounded by correction slack} reference in the manuscript should be read as a pointer to Theorem~\ref{appi:thm:p13}, while a \leanspine{bridge}{MB7b}{filter-family coverage bounds hidden productive control} reference should be read as a pointer to Bridge~\ref{appi:ass:mb7b}.
-Field-agenda pointers should be read against Part~I (published handle + book subsumption), not as claims that Lean reproduces the external proof.
+Field-agenda pointers should be read against Part~I (published handle + book projection), not as claims that Lean reproduces the external proof.
 
 \subsection{Axiom budget}
 \label{appi:sec:axiom-budget}

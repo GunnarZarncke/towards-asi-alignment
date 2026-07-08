@@ -7,7 +7,7 @@ a book on steps toward aligning superintelligence based on the works of Gunnar Z
 
 Behavioral guidelines adapted from [Karpathy-inspired CLAUDE.md](context/references/karpathy-inspired-claude-md.md) (Forrest Chang's distillation of Andrej Karpathy's observations on LLM agent pitfalls). Bias toward caution over speed; use judgment on trivial tasks.
 
-If you are asked to **review** the manuscript without editing it, read [`REVIEWING_FOR_AGENTS.md`](REVIEWING_FOR_AGENTS.md) first. It gives the fast thesis, review posture, gem map, existing-work subsumptions, empirical-source pointers, output format, and anti-patterns for read-only reviewer agents.
+If you are asked to **review** the manuscript without editing it, read [`REVIEWING_FOR_AGENTS.md`](REVIEWING_FOR_AGENTS.md) first. It gives the fast thesis, review posture, gem map, existing-work crosswalk, empirical-source pointers, output format, and anti-patterns for read-only reviewer agents.
 
 ### Think before writing
 

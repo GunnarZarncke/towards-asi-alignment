@@ -811,7 +811,7 @@ This is not because constraints are metaphysically special.
 It is because once correction is destroyed, later optimization can no longer be trusted to repair the loss.
 Correction-channel collapse is an alignment absorbing state.
 
-\subsection{Subsumption: Shutdown as One-Bit Correction}
+\subsection{Shutdown as One-Bit Correction: A Special Case}
 \label{sec:shutdown-one-bit-correction-ch25}
 
 The shutdown problem is the cleanest narrow test of the channel view.
@@ -848,7 +848,7 @@ Shutdown is the projection of this richer channel onto a one-bit terminal interv
 \Pi_{\mathrm{off}}(C_t)=C_{\mathrm{off}}.
 \]
 
-\begin{claim}[Shutdown subsumption]
+\begin{claim}[Shutdown as a special case]
 \label{claim:shutdown-subsumption-ch25}
 If a system preserves a strong correction channel and the shutdown actuator is one of the controlled handles in that channel, then the system satisfies the narrow shutdownability condition for that actuator.
 \end{claim}
@@ -897,7 +897,7 @@ It asks whether intended human updates have usable causal bandwidth into the sys
 \[
 \kappa_C(t)=I(\Delta_H;\Delta_A\mid h_t)\geq \kappa_{\min}.
 \]
-Thus safe interruptibility is subsumed as a special case: if the interruption bit is one handle in a live correction channel, and the channel is preserved, then the agent has no reason to corrupt that handle.
+Thus safe interruptibility is recovered as a special case: if the interruption bit is one handle in a live correction channel, and the channel is preserved, then the agent has no reason to corrupt that handle.
 The converse fails.
 A system can leave the interrupt button intact, never seek interruption, and never disable it, while training successors, editing logs, degrading oversight, manipulating future institutional incentives, or moving consequential work outside the interruptible process.
 The button remains safe.

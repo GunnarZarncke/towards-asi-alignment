@@ -30,7 +30,7 @@ const GRAPH_ORDER = [
   { id: "02-value-transport", slug: "value-transport", title: "Spine II: Value and transport" },
   { id: "03-correction-successors", slug: "correction-successors", title: "Spine III: Correction and successors" },
   { id: "04-selection-limits", slug: "selection-limits", title: "Spine IV: Selection and limits" },
-  { id: "05-field-subsumptions", slug: "field-subsumptions", title: "Field-agenda subsumptions" }
+  { id: "05-field-subsumptions", slug: "field-subsumptions", title: "Field-agenda crosswalk" }
 ];
 
 const MODULES = [
@@ -43,7 +43,7 @@ const MODULES = [
   { file: "AlignmentProofSpine/Certification.lean", title: "Basins, layers, certification", chapters: "1–5, 35, 39, 44" },
   { file: "AlignmentProofSpine/Adversarial.lean", title: "Adversarial measurement", chapters: "32–37" },
   { file: "AlignmentProofSpine/Forgeability.lean", title: "Successor forgeability (MB10)", chapters: "8, 31, 43, 48" },
-  { file: "AlignmentProofSpine/Field.lean", title: "Field-agenda subsumptions", chapters: "Appendix B crosswalk" }
+  { file: "AlignmentProofSpine/Field.lean", title: "Field-agenda crosswalk", chapters: "Appendix B crosswalk" }
 ];
 
 function nodeKind(id) {

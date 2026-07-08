@@ -1,5 +1,5 @@
 ---
-title: "Subsumption — AUP / Relative Reachability (Low Impact)"
+title: "Field crosswalk — AUP / Relative Reachability (Low Impact)"
 type: "concept"
 status: "established"
 summary: "Attainable Utility Preservation and relative reachability penalize side effects by preserving auxiliary options or baseline reachability. Trajectory correction integrity (CCI) can imply calibrated low-impact bounds when interfaces align — but option preservation and reachability are strictly weaker than preserving human correction capacity."
@@ -50,3 +50,5 @@ related: []
 AUP and relative reachability are influential side-effect controls: preserve auxiliary goals or stay close to a baseline trajectory. Chapter 27 states the book's separation plainly — preserving those objects does not entail preserving human correction capacity.
 
 Lean proves conditional forward links when the auxiliary basis tracks correction-relevant options, and multiple non-converse separations on finite graphs and trajectory steps. Low-impact metrics can be useful stress tests inside a deployment gate, but they are not substitutes for correction-channel integrity certificates.
+
+*What AUP / relative reachability keep that this crosswalk does not replace:* a computable penalty you can add to a loss today. Correction-channel integrity has no equally cheap drop-in implementation.
