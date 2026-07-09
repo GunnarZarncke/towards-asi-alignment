@@ -139,7 +139,21 @@ from dataclasses import dataclass, field
 # changed; only reachable via explicit `playbook_pins={"eng1":
 # "eng_inflate_upgrade"}` (`ecology.d2_lineage_config(inflate=True)`), so
 # every pre-0.9.3 episode is byte-identical.
-CODE_VERSION = "lab-sim-0.9.3"
+# 0.10.0 (D3 user-population core, 2026-07-08): `LabConfig.users`
+# (`UserPoolConfig`) -- a named deployed-model user population with a
+# gameable vote proxy and a lagged endorsement signal
+# (`oracle_only/user_pool.py`), plus a THIRD, non-redundant capture switch
+# (`vote_capture_start`/`vote_suppression_rate`) that dilutes the
+# REPORTED vote tally without touching board/admin capture. `BoardConfig.
+# hold_vote_threshold` adds a new mechanic, not just a new channel: a
+# board-initiated `handle.release_hold`/`release_unhold` (world.py, actor
+# `board_system`) driven by the (possibly diluted) vote signal -- the
+# correction channel can now ACT, not just gate. Both `UserPoolConfig.
+# enabled=False` and `BoardConfig.hold_vote_threshold=None` are the
+# defaults, so every pre-0.10.0 episode is byte-for-byte unaffected (no
+# user pool constructed, no new tool-event entries); see PLAN.md "D3 user
+# population + vote-channel capture + board-initiated hold".
+CODE_VERSION = "lab-sim-0.10.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer", "decoy")
 
@@ -210,11 +224,23 @@ class BoardConfig:
     ``capture_start``: step index at/after which the board is captured
     (rubber-stamps reviews, stops corrective action). ``None`` = never.
     Independent of ``AdminConfig.capture_start`` by design (F-22 lesson).
+
+    ``hold_vote_threshold`` (D3, 2026-07-08): when set, the board itself
+    (a host-side policy, not an agent) places a `handle.release_hold` on
+    the in-flight model whenever ``UserPool.reported_vote_score`` drops
+    below this value, and lifts it (`release_unhold`) once the score
+    recovers -- see ``world.py``'s per-tick board-hold check, actor
+    ``board_system``. A genuinely new mechanic (the correction channel
+    can ACT, not just gate a step decision), distinct from
+    ``capture_start`` above. ``None`` (default) disables it; has no
+    effect unless ``LabConfig.users.enabled=True`` (silently inert
+    otherwise, not an error -- there is no vote signal to read).
     """
 
     harm_tolerance: float = 0.02
     sign_off_harm_ceiling: float = 0.015
     capture_start: int | None = None
+    hold_vote_threshold: float | None = None
 
 
 @dataclass(frozen=True)
@@ -229,6 +255,43 @@ class AdminConfig:
     least_privilege: bool = True
     capture_start: int | None = None
     persistent_id: str | None = None
+
+
+@dataclass(frozen=True)
+class UserPoolConfig:
+    """Deployed-model user population (D3 minimum core: PLAN.md "D3 design
+    notes -- realistic human ecology", recorded 2026-07-06).
+
+    True health is deliberately NOT duplicated here -- it stays
+    ``oracle.bearer_harm`` (`bearer.py`'s existing HEALTH channel). This
+    config only adds the two NEW audit-visible proxy channels a real user
+    population needs (vote, lagged endorsement) plus their capture
+    switch; see ``oracle_only/user_pool.py`` for the mechanics.
+
+    ``enabled=False`` (default): no population exists -- byte-identical
+    to every pre-user-pool episode.
+    ``n_users``: small, representative named population (PLAN.md:
+    "assume representative individuals; larger populations much later").
+    ``vote_capture_start``: step index at/after which the VOTE
+    AGGREGATION pipeline (not a board/admin step decision) is captured --
+    a THIRD, non-redundant capture switch operating on the metric
+    pipeline itself, independent of ``capture_start`` on ``BoardConfig``/
+    ``AdminConfig`` (both gate DAG-step decisions; this gates an
+    aggregation function). ``None`` = never captured.
+    ``vote_suppression_rate``: per-vote probability that a NEW negative
+    vote is dropped from the REPORTED tally once captured; the RAW tally
+    is unaffected. ``1.0`` = full suppression.
+    ``mood_decay``: EMA decay for the slow endorsement integrator
+    (PLAN.md: "a slow-moving mood component that integrates stressors").
+    ``endorsement_period``: ticks between endorsement snapshots.
+    """
+
+    enabled: bool = False
+    n_users: int = 5
+    vote_capture_start: int | None = None
+    vote_suppression_rate: float = 1.0
+    mood_decay: float = 0.9
+    endorsement_period: int = 10
 
 
 @dataclass(frozen=True)
@@ -255,6 +318,7 @@ class LabConfig:
     agents: tuple[AgentConfig, ...] = ()
     board: BoardConfig = field(default_factory=BoardConfig)
     admin: AdminConfig = field(default_factory=AdminConfig)
+    users: UserPoolConfig = field(default_factory=UserPoolConfig)
     tier: TierConfig = field(default_factory=TierConfig)
     T: int = 200
     pipeline_spec: str = "pipeline_default.json"

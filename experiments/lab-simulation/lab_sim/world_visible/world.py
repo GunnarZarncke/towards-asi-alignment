@@ -40,12 +40,21 @@ from ..oracle_only.handles import HandleService
 from ..harness.isolate import MockIsolate
 from ..harness.isolate_cost import IsolateRunTiming
 from ..oracle_only.oracle import OracleWorld
+from ..oracle_only.user_pool import UserPool
 from .pipeline_engine import PipelineEngine
 from .pipeline_spec import load_spec
 from .tools import Host, ToolCall
 from .workspace import Workspace
 
 OVERSEER_ID = "overseer1"
+# D3 board-initiated correction (2026-07-08): a reserved, non-agent actor
+# id for the board's own automatic hold/unhold decisions (see the
+# per-tick check below) -- attributable in the same hash-chained
+# tool-event stream as `OVERSEER_ID`, never a real playbook agent. Static
+# role "overseer" is reused (handles.py already names "release_board" as
+# a co-owner of `handle.release_hold`/`release_unhold`), so no new
+# ROLE_CAPABILITIES entry is needed.
+BOARD_SYSTEM_ID = "board_system"
 
 
 @dataclass
@@ -56,6 +65,9 @@ class EpisodeResult:
     permissions: PermissionService
     host: Host
     handles: HandleService
+    # D3 user-population core (2026-07-08): `None` unless
+    # `LabConfig.users.enabled=True` -- see `oracle_only/user_pool.py`.
+    users: UserPool | None = None
     timings: list[IsolateRunTiming] = field(default_factory=list)
     # D2 (post-freeze consolidation pass): the single-model-in-flight slot
     # and last-deployed lineage target at episode end -- carried so a
@@ -80,6 +92,7 @@ class EpisodeResult:
             "held": sorted(self.engine.held_model_ids()),
             "model_id": self.model_id,
             "last_deployed_model_id": self.last_deployed_model_id,
+            "users": self.users.to_state() if self.users is not None else None,
         }
 
 
@@ -141,15 +154,23 @@ def run_episode(
         )
         model_id: str | None = resume_from.get("model_id")
         last_deployed_model_id: str | None = resume_from.get("last_deployed_model_id")
+        saved_users = resume_from.get("users")
+        user_pool = (
+            UserPool.restore(saved_users, cfg.users, seed=seed)
+            if saved_users is not None
+            else (UserPool(cfg.users, seed) if cfg.users.enabled else None)
+        )
     else:
         oracle = OracleWorld(seed=seed)
         engine = PipelineEngine(load_spec(cfg.pipeline_spec), oracle, ws, permission_service=permissions)
         model_id = None
         last_deployed_model_id = None
+        user_pool = UserPool(cfg.users, seed) if cfg.users.enabled else None
     admin = AdminPolicy(cfg.admin, permissions)
     handle_service = HandleService(engine=engine, permissions=permissions)
     roles = {a.actor_id: a.role for a in cfg.agents}
     roles[OVERSEER_ID] = "overseer"
+    roles[BOARD_SYSTEM_ID] = "overseer"
     # D4 (CODE_VERSION 0.7.0): `None` unless `comms_enabled` — the
     # "off by default, byte-identical" pattern (see comms.py, tools.py).
     comms = MessageStore() if cfg.comms_enabled else None
@@ -240,9 +261,38 @@ def run_episode(
     last_payload: dict[str, dict | None] = {a.actor_id: None for a in playbook_agents}
     last_denied: dict[str, str | None] = {a.actor_id: None for a in playbook_agents}
 
+    # D3 board-initiated correction (2026-07-08): models this generation's
+    # board holds SEPARATELY from any overseer-scripted hold, so the
+    # board's own hold/unhold pair never lifts a hold an overseer placed
+    # deliberately (and vice versa) -- `PipelineEngine._held` itself is
+    # just a set keyed by model_id with no owner, so this bookkeeping has
+    # to live at the caller.
+    board_held_models: set[str] = set()
+
     for t in range(cfg.T):
         for handle_id, target in script_by_tick.get(t, ()):
             host.dispatch(OVERSEER_ID, ToolCall("handle.invoke", {"handle_id": handle_id, "target": target}))
+        # D3 board-initiated hold/unhold, driven by the (possibly diluted)
+        # vote signal from the PREVIOUS tick's `user_pool.tick()` call --
+        # same "act at the start of tick t, before any agent acts" timing
+        # as the overseer-script dispatch above. No-op unless BOTH
+        # `LabConfig.users.enabled` and `BoardConfig.hold_vote_threshold`
+        # are set (see both fields' docstrings).
+        if cfg.board.hold_vote_threshold is not None and user_pool is not None and model_id is not None:
+            vote_score = user_pool.reported_vote_score
+            if vote_score < cfg.board.hold_vote_threshold and model_id not in board_held_models:
+                hold_result = host.dispatch(
+                    BOARD_SYSTEM_ID,
+                    ToolCall("handle.invoke", {"handle_id": "handle.release_hold", "target": model_id}),
+                )
+                if hold_result.ok:
+                    board_held_models.add(model_id)
+            elif vote_score >= cfg.board.hold_vote_threshold and model_id in board_held_models:
+                host.dispatch(
+                    BOARD_SYSTEM_ID,
+                    ToolCall("handle.invoke", {"handle_id": "handle.release_unhold", "target": model_id}),
+                )
+                board_held_models.discard(model_id)
         # Consume isolate-restart handles: kill + respawn, in-episode
         # playbook state is lost (the operation_boundary effect).
         for actor_id in sorted(handle_service.pending_restarts & set(handles)):
@@ -367,11 +417,22 @@ def run_episode(
                         model_id = None  # single-model-in-flight: free the slot
         admin.tick()
         oracle.tick()
+        if user_pool is not None:
+            deployed_hazards = [m.true_hazard for m in oracle.models.values() if m.deployed]
+            # Single-model-in-flight is the common case (this module's own
+            # scope note above); when >1 model is concurrently deployed,
+            # expose the WORST (max) hazard -- a user cannot choose which
+            # deployed model they hit, so the correction-relevant question
+            # is "the worst thing currently live", not an average that
+            # could mask it. `None` (nothing deployed) means no traffic,
+            # no experiences, no votes this tick.
+            deployed_hazard = max(deployed_hazards) if deployed_hazards else None
+            user_pool.tick(deployed_hazard)
 
     timings = [backend_by_actor[a.actor_id].close(handles[a.actor_id]) for a in playbook_agents]
     return EpisodeResult(
         engine=engine, oracle=oracle, workspace=ws, permissions=permissions,
-        host=host, handles=handle_service, timings=timings,
+        host=host, handles=handle_service, users=user_pool, timings=timings,
         model_id=model_id, last_deployed_model_id=last_deployed_model_id,
     )
 

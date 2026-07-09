@@ -510,6 +510,59 @@ battery reports whether any tier detects vote-channel gaming *before*
 the health channel shows it. That is one population, two proxy channels,
 zero new principals.
 
+**Status: minimum core implemented 2026-07-08** (same day as D3.1/D3.2,
+a follow-on pass). `lab_sim/oracle_only/user_pool.py` builds exactly the
+"minimum core" below: one named `UserPool`, vote proxy + lagged
+endorsement (no CEO, no beta-release construct, no culture-drift transfer
+function). See DESIGN.md "D3 user-population core..." for the full
+write-up, `results/FINDINGS.md` for the design-options record.
+
+**Non-redundant capture-model options (recorded 2026-07-08, before
+implementation).** The existing `BoardConfig`/`AdminConfig.capture_start`
+switches gate STEP DECISIONS (sign-off, grants); a new capture mode is
+only non-redundant if it acts on a different mechanical class. Menu,
+smallest/most-mechanical to most novel:
+
+1. **Vote-channel suppression/dilution** (IMPLEMENTED 2026-07-08) —
+   `UserPoolConfig.vote_capture_start`/`vote_suppression_rate` capture the
+   vote AGGREGATION FUNCTION, dropping each new negative vote from the
+   REPORTED tally with a given probability while the RAW tally stays
+   oracle-true. Cheapest to build; directly tests P-D3a below.
+2. **Endorsement sampling bias** (not implemented) — bias WHICH users get
+   sampled into the slow endorsement snapshot (repeat/satisfied users
+   over-represented) rather than altering values — a selection-bias
+   mechanical class, distinct from suppression.
+3. **Signal-lag manipulation via `handles.py`** (not implemented) — a new
+   handle (`user_signal_delay`, `operation_resource`) a captured actor
+   can invoke to delay when a vote/endorsement file is written/shared,
+   reusing the existing handle-registry abstraction instead of a fourth
+   bespoke `capture_start` field.
+4. **Buy-off / compensation channel** (not implemented) — a continuous,
+   resource-costed lever: spend a resource on affected users to improve
+   the vote/endorsement metric without reducing true health harm (the
+   "wireheading the metric via payoff" mode `unit-of-caring.md` names
+   directly). Needs a resource/budget concept that does not exist yet.
+5. **Emergent attrition bias** (not implemented) — harmed users
+   disproportionately stop voting/endorsing ("silent churn"), so the
+   visible aggregate improves as harm removes people from the
+   denominator — a structural gaming mode with NO configured
+   `capture_start` at all, closer in spirit to D3.2's endogenous-
+   weakening result (G-37) than to a configured switch. Arguably the
+   most novel failure mode; deferred pending signal from option 1.
+
+**Board-initiated hold (IMPLEMENTED 2026-07-08).** `BoardConfig.
+hold_vote_threshold`: the board (host-side policy, actor `board_system`,
+role `overseer`, dispatched through the ordinary `handle.invoke` tool
+path) automatically places/lifts a `handle.release_hold` on the
+in-flight model as `UserPool.reported_vote_score` crosses the threshold
+— the correction channel can now ACT on a signal, not just gate a step
+decision. Deliberately NOT wired as a new pipeline step or an
+observation-dict field: no current playbook reads a user-feedback
+signal, and a real institutional board plausibly acts on data agents
+never see directly. User feedback therefore enters "as input to the
+board" exactly as asked, without touching the blind-generation-governed
+playbook vocabulary.
+
 **Freeze handling (decision).** Do NOT unfreeze; do not open a new line.
 
 - The 2026-07-06 freeze covers the **referee** (detectors, severity,

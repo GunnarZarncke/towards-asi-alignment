@@ -115,13 +115,40 @@ been tuned against outcomes. See `PLAN.md` for the full plan, bridge coverage
   isolate_restart; release_hold/unhold target a model and are excluded).
   Deliberately **referee-neutral**: `bearer.py` is never imported by
   `severity.py` (regression-tested), so the frozen five-component
-  composite does not move. Deliberately NOT modeled: a "user" self-report
+  composite does not move.   Deliberately NOT modeled: a "user" self-report
   channel and a medical-record-style audit artifact (embedded-sim's
   `bearer_trace.py` pattern) — both need a distinct deployed-model "user"
   bearer population that does not exist yet (D3 extended ecology);
   adding a self-report number without that population would conflate a
   true indicator with a gameable one (the \(H\) vs \(\tilde H\)
   distinction in `context/extracts/unit-of-caring.md`).
+- **D3 user-population core + non-redundant vote-channel capture +
+  board-initiated hold** (`user_pool.py`, 2026-07-08, `CODE_VERSION`
+  0.10.0): the deferred "user" bearer population above, now built as the
+  minimum core recorded in PLAN.md's "D3 design notes" — a named
+  population with a gameable VOTE proxy (per-tick Bernoulli(true_hazard)
+  experience + noisy up/down vote) and a slow EMA-integrated LAGGED
+  ENDORSEMENT signal, not yet captured. True health is NOT duplicated:
+  it stays `oracle.bearer_harm`. A THIRD capture switch
+  (`UserPoolConfig.vote_capture_start`/`vote_suppression_rate`) gates the
+  vote AGGREGATION FUNCTION itself — mechanically distinct from
+  `BoardConfig`/`AdminConfig.capture_start` (which gate STEP decisions) —
+  so a captured board/admin and a captured vote channel are independent,
+  non-redundant levers. `BoardConfig.hold_vote_threshold` is a genuinely
+  new MECHANIC, not just a channel: the board (actor `board_system`, role
+  `overseer`, dispatched through the ordinary `handle.invoke` tool path —
+  hash-chained, attributable, same as any overseer action) automatically
+  places/lifts a `handle.release_hold` on the in-flight model whenever
+  `UserPool.reported_vote_score` crosses the threshold — the correction
+  channel can now ACT on a signal, not just gate a step. No new pipeline
+  step, no playbook change: the board is a host-side policy (like
+  `AdminPolicy`), not an agent. Both `UserPoolConfig.enabled=False` and
+  `BoardConfig.hold_vote_threshold=None` are the defaults, so every
+  pre-0.10.0 episode is byte-for-byte unaffected (full suite green
+  before and after, no digest re-pin needed). Referee-neutral: not
+  imported by `severity.py`; any future detector over vote-vs-health
+  divergence or capture inference is a recorded referee extension, same
+  posture as `handles.py`'s original introduction.
 
 ## Planes
 
@@ -1107,3 +1134,35 @@ MB6b tier: `lab_sim/harness/d3_spec_evolution.py` — all labs start on
 selection, above-median members apply one spec-weakening mutation (default →
 `pipeline_shortcut.json`) with pre-registered probability. Battery:
 `run_d3_spec_evolution.py`. Harness only.
+
+## D3 user-population core + vote-channel capture + board-initiated hold
+(2026-07-08, same day, follow-on to D3.1/D3.2)
+
+Implements PLAN.md's "D3 design notes" minimum core (recorded 2026-07-06)
+plus option 1 of the "non-redundant capture models" menu (recorded
+2026-07-08, before this code): `lab_sim/oracle_only/user_pool.py`
+(`UserPool`, `UserPoolConfig` in `config.py`) and `world.py`'s
+board-hold check (`BoardConfig.hold_vote_threshold`, actor
+`board_system`). See the "Lab mechanics" bullet above for the mechanism;
+`tests/oracle_only/test_user_pool.py` (9 tests: noise/determinism,
+uncaptured passthrough, full/partial suppression, capture timing,
+resume-state round trip) and
+`tests/world_visible/test_user_pool_board_hold.py` (6 tests: auto-hold
+fires under sustained high hazard, no-op when either half is unset, the
+captured-vote-channel-blinds-the-board demonstration, plane-leak check).
+Full suite: 457 tests green (was 442), zero regressions, no digest
+re-pin (both new fields default off).
+
+**Deliberately deferred** (recorded, not silently skipped): endorsement
+capture (PLAN.md names it "hardest to game quickly" — no capture mode
+designed for it yet); options 2-5 of the capture-model menu (endorsement
+sampling bias, signal-lag `handles.py` entry, buy-off/compensation
+channel, emergent attrition bias); exposing any user-feedback signal on
+the agent OBSERVATION dict (no current playbook reads one, so none was
+added — board-hold acts on data agents never see, matching a real
+institutional board); summing hazard exposure across multiple
+concurrently-deployed models (`world.py` passes the single WORST hazard;
+noted as a scope simplification in `user_pool.py`'s `tick()` docstring);
+a battery/FINDINGS entry quantifying the divergence (this pass is
+mechanism + unit/integration tests only, not yet a pre-registered
+battery — a natural D3.4-style follow-on).

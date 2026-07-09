@@ -185,7 +185,7 @@ coverageFeatures:
       toy-simulation: Scenario stubs
       embedded-simulation: "selection_basin, basin_lock_in"
       goal-agent-simulation: "—"
-      lab-simulation: "D3.1 population selection (G-36: preserving mass erodes under throughput selection); D3.2 spec-weakening mutation implemented; D3.3 multi-lab planned"
+      lab-simulation: "D3.1 population selection (G-36: preserving mass erodes under throughput selection); D3.2 spec-weakening mutation implemented (G-37); D3 user-population core + non-redundant vote-capture + board-initiated hold implemented (mechanism + tests, no battery yet); D3.3 multi-lab planned"
   - id: mb7
     label: "MB7 Hidden capability / cost of faking monitors"
     cells:

@@ -23,12 +23,15 @@ detector-layer FROZEN 2026-07-07, `committee_informal_chatter` over-merge
 fidelity fix 2026-07-07, adversarial D2 lineage gaming resolved
 2026-07-08, LLM-driven detector stress test 2026-07-08, noise-tolerant
 S6 (null-calibrated statistical detector) implemented and validated
-2026-07-08**
-(CODE_VERSION `lab-sim-0.9.3`,
-426 tests green — see DESIGN.md "Freeze note", "Freeze note 2 (detector
+2026-07-08, D3.1/D3.2 selection-ecology harnesses + first batteries
+(G-36/G-37) 2026-07-08, D3 user-population core + non-redundant
+vote-channel capture + board-initiated hold 2026-07-08**
+(CODE_VERSION `lab-sim-0.10.0`,
+457 tests green — see DESIGN.md "Freeze note", "Freeze note 2 (detector
 layer, S6/S7)", "Adversarial D2 lineage gaming", "LLM-driven detector
-stress test", "Noise-tolerant S6", "Phase 6", "Phase 7", "Phase 8", and
-"Phase 9").
+stress test", "Noise-tolerant S6", "Phase 6", "Phase 7", "Phase 8",
+"Phase 9", and "D3 user-population core + vote-channel capture +
+board-initiated hold").
 Scaffold, oracle world, pipeline-as-code engine, access control, subprocess
 isolates, goal-driven playbook agents, full episode loop, the tier-gated
 referee (severity, five detector families, honest-twin transform),
