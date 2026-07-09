@@ -68,4 +68,4 @@ main session.
 
 ## Commits
 
-- None.
+- `52b0dbf` Integrate Byrnes social-drive distinctions into ch15.
