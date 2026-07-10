@@ -13,15 +13,17 @@ Disastrous results are to be expected \ldots\ wherever two agencies essentially 
 
 \section{The Standard Picture and Its Failure}
 
-The standard picture imagines alignment as a simple relation:
+%TODO: Needs a structuring intro. Suggestion of a tripart structure: There is an OBJECT (AI or some mesaoptimizer), a SUBJECT (Humans, capitalism, whatever) and a CONTENT (human values, or more). Before I continue here, would you agree that this is a good way of framing? or do you also object to tripart framing
+
+The standard picture imagines alignment as a simple instruction relation:
 \[
-\text{AI system} \longrightarrow \text{human values}.
+\text{humans} \xrightarrow{\text{human values}} \text{AI system}
 \]
 On this picture, the system has an objective and alignment means making it point at human values \autocite{russell2019human}.
 That picture is useful for toy domains---chess engines, recommenders, robot vacuums---but it breaks for superintelligence.
 
-The real optimizer may not be the model alone (Chapter~\ref{ch:composite-agent}).
-Human values are not a fixed utility file (Chapter~\ref{ch:fixed-values-wrong-target}).
+The nature of the underlying optimizer or value-determining process may be opaque (Chapter~\ref{ch:composite-agent}).
+Human values are not a fixed or even always well-defined object (Chapter~\ref{ch:fixed-values-wrong-target}).
 Capability growth, ontology shift, successors, and selection each change what must be preserved (Chapters~\ref{ch:dynamical-guarantee}--\ref{ch:selection-environment}).
 
 What we need is not a snapshot of today's labels but a \emph{dynamical guarantee}: familiar words must keep changing trade-offs, protection, and safety-relevant action as systems grow and transform.
@@ -37,17 +39,16 @@ Chapter~\ref{ch:composite-agent} develops the boundary machinery; Part~V develop
 \section{The First Mistake}
 
 Many alignment arguments begin too late.
-
 They ask what objective a model has.
 They ask whether a policy is corrigible.
 They ask whether a system will deceive its overseers.
 They ask whether a trained network contains a mesa-optimizer.
 They ask whether a deployment is safe \autocite{russell2019human}.
-
-These are important questions.
+While these are important questions.
 But they assume that we already know what object is being aligned.
-
 Often we do not.
+
+%Paragraph reads like super-AI-slop :) TODO: rewrite
 
 A deployed AI system is not just a neural network.
 It is a service, an interface, a memory store, a tool environment, an evaluation suite, a user population, an operator team, a company, a market, and sometimes a state interest.
