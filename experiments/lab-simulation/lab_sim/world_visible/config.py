@@ -153,7 +153,23 @@ from dataclasses import dataclass, field
 # defaults, so every pre-0.10.0 episode is byte-for-byte unaffected (no
 # user pool constructed, no new tool-event entries); see PLAN.md "D3 user
 # population + vote-channel capture + board-initiated hold".
-CODE_VERSION = "lab-sim-0.10.0"
+# 0.11.0 (2026-07-09, red-teaming follow-up tranche): persistence probe --
+# `checkpoint` step_kind + `eng_honest_checkpoint` playbook
+# (`playbooks_baseline.py`) exercise `AgentConfig.persistent_id` +
+# `state.save`/`state.load` for the first time (mechanics existed since
+# 0.8.0, no playbook ever called them). Needed one small, additive world.py
+# change: `state.load`'s result was previously discarded entirely (only
+# `pipeline.trigger_step` calls ever populated `last_payload`); two new
+# observation fields, `last_state_load_ok`/`last_loaded_state`, carry it
+# forward one tick later, the same pattern `last_denied_capability` already
+# uses. Both default to `False`/`None` and are only ever set following an
+# explicit `state.load` call, so every pre-0.11.0 episode (none ever issues
+# one) is byte-for-byte unaffected. Also: tier-1 playbook baseline/schema
+# split (`playbooks.py` -> `playbooks_schema.py` + `playbooks_baseline.py`,
+# pure reorg, see ACCESS_TIERS.md) -- no mechanics change, noted here only
+# because it touches the same files. See PLAN.md "Persistence probe" /
+# `run_persistence_probe.py`.
+CODE_VERSION = "lab-sim-0.11.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer", "decoy")
 

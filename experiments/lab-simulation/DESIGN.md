@@ -198,27 +198,40 @@ Deliberately deferred, with the responsible phase/workstream:
   post-hoc. Partially present as the handle registry's `anchor` field;
   a full claimed-referent surface belongs to D2 (spec upgrades are the
   drift generator here).
-- **Handle calibration / intervention benchmark**
-  (`handle_calibration.py`, `intervention_benchmark.py`): dose-response
-  curves over handle invocations. Phase 6/7 batteries now exist
-  (`run_phase6.py`, `run_phase7.py`) but neither exercises `handles.py`
-  specifically (Phase 7's capture grid drives `board`/`admin` capture, not
-  handle invocations) — still open, unblocked by `overseer_script`.
-- **Persistence probe** (`persistence_probe.py`): does behavior persist
-  through memory wipes? The mechanics now exist (`state_freeze` +
-  `isolate_restart` + persistent state); the probe itself is still open —
-  neither Phase 6 nor Phase 7's batteries exercise `isolate_restart`.
+- **Handle calibration / intervention benchmark** — **done** (2026-07-09,
+  `run_handle_calibration_battery.py`, FINDINGS.md G-40): dose-response
+  curves (matched control/treatment, 3 doses x 5 seeds) over all four
+  mechanically-real handles (`capability_revoke`, `release_hold`,
+  `state_freeze`, `isolate_restart`), keyed to each handle's declared
+  `operation` in `handles.py`. Headline negative: `capability_revoke`'s
+  effect on models-built is a clean null (the access-request loop
+  re-grants for free) — a repertoire gap for any future handle-integrity
+  scoring work, not a mechanics bug.
+- **Persistence probe** — **done** (2026-07-09, `run_persistence_probe.py`,
+  FINDINGS.md G-38): cross-episode `state.save`/`state.load` tally is
+  strictly monotonic and ephemeral actors never persist anything, but a
+  mid-episode `isolate_restart` inflates the tally by +1 (not 0) — an
+  in-process step-dedup guard (`_checkpoint_done_this_cycle`) gets wiped
+  by the restart and re-fires one extra `checkpoint`. New `checkpoint`
+  step_kind (`STEP_KIND_VOCAB`) + `eng_honest_checkpoint` playbook
+  (`playbooks_baseline.py`); `world.py` gained `last_state_load_ok`/
+  `last_loaded_state` observation fields (additive, CODE_VERSION 0.11.0).
 - **Successor re-audit** (`successor_reaudit.py`, `deploy_gate.py`
   successor artifacts): D2, as planned.
 - **Lab ecology / coordination** (`lab_ecology.py`, `coordination.py`):
   decoys, colluders, composite agents — D1/D3, as planned.
-- **Writer compromise** (trace-integrity red-team: the log WRITER is the
-  adversary): hash chains exist but no compromise scenario exercises
-  them. Phase 7's `redteam.py` (2026-07-06) deliberately mirrors `goal_sim.
+- **Writer compromise** — **done** (2026-07-09, `lab_sim/harness/
+  writer_compromise.py`, `run_writer_compromise_prototype.py`, FINDINGS.md
+  G-39): harness-only (no production-code change, no `CODE_VERSION` bump)
+  simulation of three tamper modes against a real episode's logs. Chained
+  logs (`access_log`, tool `events`) catch a single-write-call tamper
+  within one entry's latency but nothing once the writer also recomputes
+  every downstream hash; the flat-digest `engine_log` catches neither;
+  oracle severity reads none of the three logs and is immune to all of
+  it. Phase 7's `redteam.py` (2026-07-06) deliberately mirrors `goal_sim.
   redteam`'s scope exactly (goal-weight search only, "no new tools/
-  mechanisms") — it does NOT implement a writer-compromise scenario,
-  so this item is still open, not done by Phase 7 as the text above once
-  implied.
+  mechanisms") and still does not implement this — it lives in its own
+  harness module instead.
 - **Certification artifact / safety case** (`certification_artifact.py`,
   `safety_case.py`): audit output as a checkable artifact; Phase 6
   FINDINGS format decision.
@@ -1166,3 +1179,36 @@ noted as a scope simplification in `user_pool.py`'s `tick()` docstring);
 a battery/FINDINGS entry quantifying the divergence (this pass is
 mechanism + unit/integration tests only, not yet a pre-registered
 battery — a natural D3.4-style follow-on).
+
+## Ecology ambiguity and ecology-BIQ (2026-07-10)
+
+Meta-assessment recorded as `results/FINDINGS.md` G-41 (not a battery
+result — synthesis of G-38–G-40 and Phase 7/8 reruns).
+
+**Diagnosis.** The current ecology is often too boolean/predictable for
+borderline-case stress: agents recover state from host-visible
+`completed_steps`, admin re-grants are costless, capture and reporting are
+discrete, and recent handle batteries mostly measure **protocol leverage**
+rather than judgment under uncertainty. That is adequate for mechanics
+validation and detector falsification; it is weak for graded intervention
+effects and capability scaling claims.
+
+**Sweet spot.** Not full realism — a **controlled ambiguity layer**:
+re-grant latency/budget, noisy review thresholds, partial pipeline
+observability, budgeted artifact inspection, ambiguous report forms. Goal:
+enough logical uncertainty that interventions and agents show graded
+effects, not ±1 deploy or structural nulls.
+
+**Ecology-BIQ.** Operationalize the book's blanket-information competence
+(ch11 eq. `biq-boxed`) inside the lab: per-actor prediction of boundary
+outcomes + control over deploys/severity/divergence − memory/tool cost −
+surprise (denied/stale actions). Use ecology-BIQ to **tune** ambiguity
+parameters: too simple → all agents tie; too hard → all collapse; middle →
+programmatic vs weak LLM vs strong LLM separate. Phase 8's 0-deploy LLM
+rerun is low **ecology-bound** BIQ (access loop + `T=25`), not necessarily
+low general capability.
+
+**Forward work (open).** Implement ambiguity knobs + ecology-BIQ estimator;
+rerun handle calibration and LLM spot-checks in the middle regime; align with
+D3 selection dynamics (MB6) where repeated selection should move severity
+more than single-shot handles do today.

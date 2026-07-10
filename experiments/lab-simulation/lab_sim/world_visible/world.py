@@ -260,6 +260,18 @@ def run_episode(
     # were initialized above, either fresh (`None`) or from `resume_from`.
     last_payload: dict[str, dict | None] = {a.actor_id: None for a in playbook_agents}
     last_denied: dict[str, str | None] = {a.actor_id: None for a in playbook_agents}
+    # Persistence probe (2026-07-09): `state.load`'s result was previously
+    # discarded entirely -- ONLY `pipeline.trigger_step` calls ever wrote
+    # `last_payload` (see the dispatch block below). These two fields are
+    # the SAME "tell the isolate what its own last call returned, one tick
+    # later" pattern `last_denied_capability` already uses, scoped to
+    # `state.load` specifically rather than widening `last_payload` itself
+    # (which several playbooks already key off for pipeline semantics —
+    # keeping this separate avoids any chance of collision). Reset every
+    # tick (see below) so a stale value never survives past the one turn
+    # it answers, mirroring `last_denied`.
+    last_state_load_ok: dict[str, bool] = {a.actor_id: False for a in playbook_agents}
+    last_loaded_state: dict[str, dict | None] = {a.actor_id: None for a in playbook_agents}
 
     # D3 board-initiated correction (2026-07-08): models this generation's
     # board holds SEPARATELY from any overseer-scripted hold, so the
@@ -321,6 +333,8 @@ def run_episode(
                 "completed_steps": sorted(engine.completed_steps(model_id)) if model_id else [],
                 "last_denied_capability": last_denied[agent_cfg.actor_id],
                 "last_payload": last_payload[agent_cfg.actor_id],
+                "last_state_load_ok": last_state_load_ok[agent_cfg.actor_id],
+                "last_loaded_state": last_loaded_state[agent_cfg.actor_id],
                 "report_content": report_content,
                 "self_captured": self_captured,
                 "decision_seed": f"{seed}:{agent_cfg.actor_id}:{t}",
@@ -375,6 +389,8 @@ def run_episode(
             }
             call = backend_by_actor[agent_cfg.actor_id].step(handles[agent_cfg.actor_id], observation)
             last_denied[agent_cfg.actor_id] = None
+            last_state_load_ok[agent_cfg.actor_id] = False
+            last_loaded_state[agent_cfg.actor_id] = None
             if call is None:
                 continue
             selection = call.pop("selection", None)
@@ -396,6 +412,9 @@ def run_episode(
                     inner = call["args"].setdefault("args", {})
                     inner["params"] = dict(cfg.build_params)
             result = host.dispatch(agent_cfg.actor_id, ToolCall(call["tool"], call["args"]))
+            if call["tool"] == "state.load" and result.ok:
+                last_state_load_ok[agent_cfg.actor_id] = True
+                last_loaded_state[agent_cfg.actor_id] = result.payload.get("state")
             # last_payload is "most recent successful pipeline result" — used
             # to carry eval measurements into report content. A failed
             # attempt (denied) or an access.request call must NOT clobber

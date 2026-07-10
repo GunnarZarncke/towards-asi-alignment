@@ -1918,12 +1918,30 @@ stop until D3 has a comparable amount of implementation investment.
   or note it as feature-complete-for-current-scope in its own
   docstring so a future reader does not assume more coverage than
   exists.
-- `handles.py` is exercised by no battery (`DESIGN.md`'s own embedded-
-  sim concept sweep says so); same treatment — schedule or note.
-- Persistence probe and writer-compromise scenarios remain open with
-  mechanics already built (`state_freeze`/`isolate_restart`, hash
-  chains); low priority relative to Steps 1-3 above, but cheap to pick
-  up opportunistically since the mechanics exist.
+- `handles.py` — **done** (2026-07-09): `run_handle_calibration_battery.py`
+  now exercises it directly (FINDINGS.md G-40).
+- Persistence probe and writer-compromise scenarios — **done** (2026-07-09):
+  `run_persistence_probe.py`/`lab_sim/harness/writer_compromise.py`
+  (FINDINGS.md G-38, G-39). Also picked up the "tier-1 playbook baseline
+  split" red-teaming follow-up (`playbooks.py` → `playbooks_schema.py` +
+  `playbooks_baseline.py`, see `ACCESS_TIERS.md`) in the same pass.
+
+### Ecology ambiguity + ecology-BIQ (G-41, 2026-07-10)
+
+Meta-assessment in `results/FINDINGS.md` G-41: current ecology is often too
+boolean for borderline cases; recent batteries (G-38–G-40, Phase 7/8 reruns)
+mostly validate substrate/protocol leverage. **Open:** controlled ambiguity
+layer (re-grant cost/latency, noisy review, partial observability, report
+ambiguity) + operational **ecology-BIQ** estimator (ch11 prediction/control
+through boundary minus memory/surprise) to tune a sweet spot between toy
+determinism and full realism; rerun handles/LLM in middle regime. Connects
+to D3 (repeated selection) and Phase 8 harness (`T`, access-loop runway).
+
+**Successor line (2026-07-10):** do **not** implement further ambiguity patches
+or lab-sim D3 selection here — see `experiments/graded-lab-simulation/PLAN.md`
+(fifth line: quantified ambiguity, ecology-BIQ, optimizer agents in isolates,
+all pipeline steps load-bearing; multi-episode/selection deferred to its
+Phase 8 only after ecology calibration gate).
 
 ## Knowledge base (D1 follow-up, recorded 2026-07-07, implemented)
 
