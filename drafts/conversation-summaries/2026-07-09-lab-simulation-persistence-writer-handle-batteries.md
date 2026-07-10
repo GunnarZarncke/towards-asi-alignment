@@ -125,4 +125,4 @@ handle calibration battery]" — six items from `DESIGN.md`'s long-open
 
 ## Commits
 
-- None — no commit requested this session.
+- `53531b1` — Add lab-sim batteries and findings G-38–G-41; propose graded-lab successor line.

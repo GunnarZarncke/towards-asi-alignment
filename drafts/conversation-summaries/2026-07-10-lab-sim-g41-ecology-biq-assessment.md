@@ -38,4 +38,4 @@ of time before deploy).
 
 ## Commits
 
-- None.
+- `53531b1` — Add lab-sim batteries and findings G-38–G-41; propose graded-lab successor line.
