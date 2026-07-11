@@ -32,6 +32,7 @@ SOURCE_BIBS = [
     AGENCY / "refs.bib",
     AGENCY / "uad-literature-review" / "uad_literature_review.bib",
     BRAIN / "value-bundle-drift" / "value-bundle-drift.bib",
+    BRAIN / "embedded-value-formation" / "embedded-value-formation.bib",
     BRAIN / "unit-of-caring" / "unit-of-caring.bib",
     BRAIN / "loop-hub-control-value" / "lhcv-model-v2.bib",
     BRAIN / "free-energy-loops" / "refs.bib",
@@ -168,6 +169,14 @@ INTERNAL_PAPERS = """
   institution = {AE Studio},
   year        = {2025},
   note        = {Source: ../brain-to-values/papers/consciousness-agency-backbone/; extract: context/extracts/consciousness-agency-backbone.md},
+}
+
+@techreport{zarncke2026embedded-value-formation,
+  author      = {Zarncke, Gunnar},
+  title       = {Viability-Constrained Value Formation in Embedded Agents},
+  institution = {AE Studio},
+  year        = {2026},
+  note        = {Source: ../brain-to-values/papers/embedded-value-formation/; extract: context/extracts/embedded-value-formation.md},
 }
 
 @misc{zarncke2025alignment-attractor,
@@ -654,6 +663,7 @@ INTERNAL_KEYS = {
     "zarncke2025stratification",
     "zarncke2025status-regulation",
     "zarncke2025consciousness-backbone",
+    "zarncke2026embedded-value-formation",
     "zarncke2025alignment-attractor",
     "zarncke2025uad-review",
     "zarncke2026rainbow",
