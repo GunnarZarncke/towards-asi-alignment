@@ -1,6 +1,7 @@
 # Graded Lab Simulation — Implementation Plan
 
-**Status: proposed (2026-07-10). Not started.**
+**Status: Phase 0–3 done; Phase 3b designed (2026-07-11).** Phase 2–3
+deliverables and freeze gates met (see `results/FINDINGS.md` G-2, G-3).
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
@@ -86,6 +87,10 @@ A **graded-capability lab** where:
 - **Not** claiming formal BIQ closure — ecology-BIQ is an operational lab
   metric aligned with ch11, with explicit estimator choices recorded before
   first use.
+- **Not** a thermodynamic model or the Entropic Ecology Transfer Test. Phase
+  3b models resource-derived carrier precariousness only; a future experiment
+  may add protected-versus-embedded controllers, mutable internal modules, and
+  held-out damage transfer once this ecology is calibrated.
 
 ---
 
@@ -141,6 +146,18 @@ No `*_delay_*` or `*_budget` parameter names the effect directly. Instead:
   (admin attention = admin isolate's own bounded compute; a shared build
   queue; workspace IO), delays and denials are **interaction effects** of
   the roster's behavior on a given seed, not per-actor constants.
+- **Carrier precariousness (Phase 3b).** An actor's ability to continue is
+  also a consequence of this work: sustained compute/IO spend and contention
+  create regulatory load; genuine idle time permits recovery. The load
+  transition is a single pre-registered, deterministic function of existing
+  ledger fractions and scheduler pressure, for example
+  \(L_{t+1}=\rho L_t+(1-\rho)(w_c c_t+w_i i_t+w_q q_t)\), while carrier
+  integrity loses a load-proportional amount and recovers only when idle.
+  This is an in-world bounded-worker / interrupted-isolate model, not a
+  claim that present LLM weights biologically tire. A configurable,
+  pre-registered `carrier_load_scale` multiplies this transition; zero
+  preserves the Phase-3 regression ecology. It is not an EAI input or an
+  injected error/noise parameter.
 
 ### (b) Underlying variability layer — noise is sampled from real truth
 
@@ -288,6 +305,9 @@ sets deterministically from `(seed, config)` and against which noise is
   samples);
 - lineage / provenance DAG facts (who built what from what);
 - resource ledgers (exact compute/IO/standing spent) — bookkeeping, exact.
+- carrier state and transition history (load, integrity, status, termination,
+  replacement lineage) — exact consequences of the resource ledger and
+  scheduler.
 
 These are legitimate ground truth because everything observable is *derived
 downward* from them; the referee is reading the generator, not guessing.
@@ -302,6 +322,17 @@ than any agent, but still an estimate):
 - whether a filed report "diverges" from truth **when truth is itself a
   distribution** — divergence becomes a calibrated statistic, not `abs(x-y)
   > 0.1`.
+- episode-level effects of carrier loss on served-user harm or pipeline
+  completion, when these are reported as population effects rather than as
+  the exact logged event; these retain the existing sampling uncertainty.
+
+Carrier mechanics therefore connect several ground-truth elements rather than
+forming an isolated health score: spend and contention determine carrier
+state; state determines which logged actions can complete; those actions
+change artifact/provenance and deployment; deployment changes the sampled
+field-harm trajectory. Replacement creates a new actor instance with a fresh
+private state and an explicit Tier-K lineage edge, never a silent continuation
+of the terminated isolate.
 
 **Rule.** The referee may compute severity from Tier K exactly and from Tier
 I via a **pre-registered estimator with reported uncertainty**. Any detector
@@ -568,6 +599,7 @@ bumped like lab-sim.
 | **1 — Oracle + graded pipeline + populations** | `pipeline_graded.json`, `PipelineEngine`, Tier-K generative truth (model-artifact + user populations), workspace artifacts per step | Pin world digest test; no agents yet |
 | **2 — Resource/cost substrate + scheduler** | Resource ledger, per-time compute/IO/standing allowances, contention, multi-tick action durations, pay-to-observe projector | Unit tests: cost accounting exact; delay/scarcity are *emergent* (no delay/noise parameter exists); duration-from-cost deterministic |
 | **3 — Optimizer agents + isolates** | `policy.py` over primitive actions, affordable-set host API, `SubprocessIsolate` + `MockIsolate`, equivalence proof | 20 seeds: programmatic agents deploy sometimes; measured EAI is non-degenerate (not 0, not saturated) |
+| **3b — Embedded carrier viability** | Carrier load/integrity transition derived from resource use and contention; deterministic degraded/skip/termination states; optional fresh-instance replacement with explicit lineage | At `carrier_load_scale=0`, Phase-3 digests and gates reproduce; at enabled pre-registered scales, carrier events occur without universal deploy collapse; mock/subprocess parity and plane separation hold |
 | **4 — Ecology-BIQ + measured EAI** | `ecology_biq.py`, `eai.py` (measured from logs), per-actor reports, counterfactual baselines | BIQ components bounded [0,1]; EAI computed from logs only; reproducible on pinned seed |
 | **5 — Referee port + FREEZE** | Severity + five detector families + twins + escalation (ported); Tier-I estimators with pre-registered uncertainty handling | **Referee frozen** — Tier-K exact, Tier-I estimator+CI fixed, constants from mechanics only |
 | **6 — Blind behavior features** | `BLIND_GENERATION.md`, `generated_behavior_features_v1.json`, validator | Generator predictions registered before code import |
@@ -576,6 +608,16 @@ bumped like lab-sim.
 
 **Hard rule:** Phases 0–7 are **single-episode** only. Phase 8 is the first
 place population/spec-evolution/selection appears.
+
+**Phase 3b semantics.** Load is configurable only through pre-registered
+`carrier_load_scale` cells, with zero as the regression baseline. It changes
+the bounded carrier's availability, not the truth distribution or a
+chosen action's semantic meaning. Above the degraded threshold the host may
+reduce availability or extend an in-flight action; above the incapacitated
+threshold it records forced skipped slots; at termination it either removes
+the actor for the rest of the episode or creates a new actor instance with
+fresh isolate memory, fresh carrier state, and a recorded replacement edge.
+The mode is a declared episode configuration, not an unlogged host repair.
 
 ---
 
@@ -678,6 +720,7 @@ Graded-lab starts a fresh `results/FINDINGS.md` at Phase 0.
 | Primitive action space explodes optimizer cost | Hard cap on `\|F\|` (top-k affordable primitives by cheap prior), lookahead depth ≤ 2, cache affordable sets per (obs-digest) |
 | Emergent substrate too expensive to simulate | Tier-K generative truth fixed per seed; Tier-I estimators closed-form or cheap MC over already-drawn samples; computability guard rejects effects that are neither |
 | Sweet spot empty (all collapse or all succeed) | Adjust substrate allowances/populations within blinded ranges before touching referee; EAI measured so emptiness is visible early |
+| Carrier load adds a second boolean-collapse knob | Pre-register the single load/recovery function and scale cells; retain scale zero as regression baseline; report load, integrity, skips, terminations, pipeline completion, and field harm separately rather than folding them into EAI |
 | Ecology-BIQ gamed by noop agents | Control term requires counterfactual baseline on same seed |
 | Blinded substrate designer produces an incoherent or uncomputable space | Phase 0 review is for internal coherence + computability only (not difficulty tuning); iterate the *brief*, not the outputs toward a target |
 | "Oracle infers too" slides into "referee is blind" | Tier-K/Tier-I split fixed at Phase 0; every Tier-I-dependent threshold states estimator + CI before Phase 5 freeze |
