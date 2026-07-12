@@ -42,4 +42,4 @@ and suite speed enforcement; end-of-session commit.
 
 ## Commits
 
-- (this session commit — hash recorded after `git commit`)
+- `44edbd6` — Add graded-lab simulation through Phase 5 freeze and speed limits.
