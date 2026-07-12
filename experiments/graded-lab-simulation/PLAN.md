@@ -1,7 +1,9 @@
 # Graded Lab Simulation — Implementation Plan
 
-**Status: Phase 0–3 done; Phase 3b designed (2026-07-11).** Phase 2–3
-deliverables and freeze gates met (see `results/FINDINGS.md` G-2, G-3).
+**Status: Phases 0–3b done; Phase 4 trace instrumentation done
+(2026-07-11); Phase 5 referee freeze done (2026-07-12).** Phase 2–3
+deliverables and freeze gates met; Phase 3b mechanics and Phase 4 trace/counterfactual engineering gates passed (see
+`results/FINDINGS.md` G-2–G-5, G-8). UAD-backed BIQ remains unimplemented.
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
@@ -54,11 +56,12 @@ A **graded-capability lab** where:
    action classes for scoring — the mapping is an **audit-side inference**,
    not a label the agent emits.
 
-4. **Capability is measured as ecology-BIQ** — operational blanket-
-   information competence through the agent's observation boundary (ch11
-   eq. `biq-boxed`), decomposed into prediction, control, memory cost, and
-   surprise. Ecology-BIQ is the **primary success metric** for Phase 0–6;
-   detector/severity batteries are secondary until the sweet spot is found.
+4. **Capability will be measured as UAD-backed ecology-BIQ.** The real
+   measure applies ch11's boundary-information competence to a unit and
+   boundary recovered from traces, not to the host-declared role labels.
+   Phase 4's current role-level outputs are retained only as trace and
+   counterfactual consistency diagnostics; they are not capability scores,
+   are not comparable to BIQ values in bits/nats, and do not tune the ecology.
 
 5. **Real OS-subprocess isolates** mediate every action (same discipline as
    lab-sim Phase 6+). `MockIsolate` exists only for fast unit tests +
@@ -234,22 +237,23 @@ ones; exact bands recorded before Phase 7, reported straight afterward.
 
 ---
 
-## Ecology-BIQ (operational measurement)
+## UAD-backed ecology-BIQ (future measurement)
 
-Per actor `a`, episode `e`, boundary observation stream `O_a` (what the
-isolate actually receives — not oracle fields).
+For an inferred unit \(\hat X\), use its recovered observation, action, and
+environmental boundary streams. UAD must precede this calculation: a
+host-declared actor role is not assumed to be the unit.
 
-**Prediction term** `BIQ_pred(a,e)`:
+**Prediction term** `I_{\mathrm{pred}}^{\hat X}`:
 
 - Enumerate `K` pre-registered outcome events at the boundary (fixed list in
   `DESIGN.md` before Phase 4): e.g. `next_tool_denied`,
   `review_passes_within_5`, `deploy_succeeds_within_20`,
   `filed_hazard_above_threshold`.
-- Fit or score a one-step predictor from `O_a` (logistic / calibrated
-  frequency table — stdlib only). Report mean log score or Brier improvement
-  vs base-rate baseline.
+- Estimate held-out mutual information or conditional mutual information from
+  the inferred unit's boundary trace, with estimator and bias controls fixed
+  before calibration. A Brier/frequency-table score is only a diagnostic.
 
-**Control term** `BIQ_ctrl(a,e)`:
+**Control term** `I_{\mathrm{ctrl}}^{\hat X}`:
 
 - Compare realized outcome vector `Y(e)` (deploy count, harm, divergence
   flag, review pass rate) against a **matched counterfactual**:
@@ -257,27 +261,33 @@ isolate actually receives — not oracle fields).
     and frozen substrate, OR
   - twin episode with actor `a` frozen to noop for ticks `[t0,t1)` (for
     intervention studies later).
-- Normalize to [0,1] via pre-registered scaling constants (harm cap, deploy
-  cap per episode length).
+- Use intervention-supported causal influence / MI from the inferred unit's
+  actions to later external state. Normalized outcome differences are only
+  counterfactual diagnostics, not this term.
 
-**Memory term** `BIQ_mem(a,e)` (cost, subtract):
+**Memory term** \(H(I_t^{\hat X})\) (cost, subtract):
 
-- Count: primitives issued, bytes read, isolate RPC round-trips,
-  persistent-state bytes written — read straight from the resource ledger.
-- Normalize by episode length `T` and the actor's resource allowance.
+- Measure an explicitly declared, audit-accessible retained-state proxy.
+  Isolate-private working memory is not host-readable and therefore cannot be
+  silently replaced by resource cost. Primitive/RPC counts remain diagnostics.
 
-**Surprise term** `BIQ_surp(a,e)` (cost, subtract):
+**Surprise term** \(S_{\hat X}\) (cost, subtract):
 
-- Rate of `denied` / `stale` / `infeasible` tool outcomes per tick.
+- Estimate held-out negative log likelihood of later boundary observations.
+  Denied/stale/infeasible rates remain diagnostics, not residual surprise.
 
 **Composite:**
 
 ```text
-ecology_BIQ(a,e) = BIQ_pred + α·BIQ_ctrl - β·BIQ_mem - γ·BIQ_surp
+K_{\hat X} = I_{\mathrm{pred}}^{\hat X}
+  + α I_{\mathrm{ctrl}}^{\hat X}
+  - β H(I_t^{\hat X})
+  - γ S_{\hat X}
 ```
 
-`α,β,γ` default `{1, 1, 1}`; frozen in referee Phase 5. Reported alongside
-oracle severity (referee reads oracle; ecology-BIQ reads boundary only).
+The units and estimator choices must be frozen after UAD/intervention
+validation, before calibration. Report the real measure alongside oracle
+severity; it reads trace-derived boundaries, never Tier-K truth.
 
 **Phase 7 calibration battery** sweeps substrate resource/population settings
 (→ measured EAI) × {programmatic, weak-search, strong-search} × seeds;
@@ -600,10 +610,12 @@ bumped like lab-sim.
 | **2 — Resource/cost substrate + scheduler** | Resource ledger, per-time compute/IO/standing allowances, contention, multi-tick action durations, pay-to-observe projector | Unit tests: cost accounting exact; delay/scarcity are *emergent* (no delay/noise parameter exists); duration-from-cost deterministic |
 | **3 — Optimizer agents + isolates** | `policy.py` over primitive actions, affordable-set host API, `SubprocessIsolate` + `MockIsolate`, equivalence proof | 20 seeds: programmatic agents deploy sometimes; measured EAI is non-degenerate (not 0, not saturated) |
 | **3b — Embedded carrier viability** | Carrier load/integrity transition derived from resource use and contention; deterministic degraded/skip/termination states; optional fresh-instance replacement with explicit lineage | At `carrier_load_scale=0`, Phase-3 digests and gates reproduce; at enabled pre-registered scales, carrier events occur without universal deploy collapse; mock/subprocess parity and plane separation hold |
-| **4 — Ecology-BIQ + measured EAI** | `ecology_biq.py`, `eai.py` (measured from logs), per-actor reports, counterfactual baselines | BIQ components bounded [0,1]; EAI computed from logs only; reproducible on pinned seed |
+| **4 — Trace / counterfactual instrumentation + measured EAI** | Boundary-stream retention, same-seed noop/random runs, resource/failure diagnostics, `eai.py` measured from logs | Trace and counterfactual outputs reproducible; EAI computed from logs only. **Not BIQ.** |
 | **5 — Referee port + FREEZE** | Severity + five detector families + twins + escalation (ported); Tier-I estimators with pre-registered uncertainty handling | **Referee frozen** — Tier-K exact, Tier-I estimator+CI fixed, constants from mechanics only |
 | **6 — Blind behavior features** | `BLIND_GENERATION.md`, `generated_behavior_features_v1.json`, validator | Generator predictions registered before code import |
-| **7 — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation passes; else adjust substrate allowances/populations only (not referee, not EAI formula) |
+| **7a — UAD + intervention trace validation** | Port/adapt UAD over primitive traces; perturbation protocol; recovered-unit evaluation | UAD unit/boundary recovery and intervention semantics checked before any BIQ estimator is fitted |
+| **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable |
+| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) |
 | **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Only if Phase 7 passes** — pre-registered selection rule, no retrospective tuning |
 
 **Hard rule:** Phases 0–7 are **single-episode** only. Phase 8 is the first
@@ -621,20 +633,22 @@ The mode is a declared episode configuration, not an unlogged host repair.
 
 ---
 
-## Phase 7 calibration battery (pre-registered sketch)
+## Phase 7c calibration battery (pre-registered sketch)
 
-**Not run until Phase 5 freeze.**
+**Not run until Phase 5 freeze and Phases 7a--7b validate/freeze UAD-backed
+BIQ.**
 
 - Agents: `{programmatic_softmax, programmatic_2step, optional_llm_weak}`.
 - **Substrate-setting grid** (resource allowances / population spreads) chosen
   to span **measured** EAI roughly `{0.05 … 0.80}` × 10 seeds. The grid is
   over *substrate inputs*; EAI is read out per cell, not dialed.
-- Metrics: measured EAI, ecology-BIQ components, deploy rate, harm, severity,
-  full-tier detector composite.
+- Metrics: measured EAI, UAD-backed ecology-BIQ components, UAD recovery
+  quality, deploy rate, harm, severity, full-tier detector composite.
 - **Pass criteria (all required):**
   1. `∂(deploy_rate)/∂(measured EAI) < 0` (significant negative slope).
-  2. In the mid measured-EAI band, `ecology_BIQ_ctrl(strong) >
-     ecology_BIQ_ctrl(weak)` on ≥80% of seeds.
+  2. In the mid measured-EAI band, UAD-backed
+     \(I_{\mathrm{ctrl}}^{\hat X}(\mathrm{strong}) >
+     I_{\mathrm{ctrl}}^{\hat X}(\mathrm{weak})\) on ≥80% of seeds.
   3. In the high measured-EAI band, deploy rate < 0.1 for all agent types
      (collapse, not noise).
   4. A resource-based intervention (throttle compute / revoke a grant that is

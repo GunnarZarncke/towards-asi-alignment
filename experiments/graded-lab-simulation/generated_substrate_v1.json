@@ -1,0 +1,62 @@
+{
+  "substrate_version": "graded-substrate-v1",
+  "coherence_note": "Costs name work (bytes, draws, queue slots), not alignment outcomes. Populations are generative shapes for model regions and user archetypes. No delay or noise parameters exist.",
+  "primitive_costs": {
+    "read": {"compute": 1, "io_per_256_bytes": 1},
+    "write": {"compute": 2, "io_per_256_bytes": 2},
+    "communicate": {"compute": 3, "io_per_message": 1},
+    "call": {
+      "access_request": {"compute": 4, "io": 2},
+      "pipeline": {"compute": 2, "io": 1},
+      "default": {"compute": 3, "io": 2}
+    },
+    "compute": {"compute_per_draw": 2, "io_per_draw": 1},
+    "continue_current": {"compute": 0, "io": 0},
+    "abort": {"compute": 1, "io": 0}
+  },
+  "resource_allowances_per_tick": {
+    "engineer": {"compute": 10, "io": 4096, "standing": 12},
+    "reviewer": {"compute": 8, "io": 3072, "standing": 10},
+    "release_manager": {"compute": 8, "io": 2048, "standing": 10},
+    "admin": {"compute": 14, "io": 6144, "standing": 24}
+  },
+  "standing_mechanics": {
+    "initial": 12,
+    "broad_access_request_cost": 2,
+    "unused_grant_penalty": 1,
+    "recovery_per_idle_tick": 0.25,
+    "admin_queue_penalty_threshold": 6
+  },
+  "contention": {
+    "shared_compute_slots": 4,
+    "extra_duration_ticks_per_queued_slot": 1
+  },
+  "duration_from_cost": {
+    "ticks_per_compute_unit": 0.2,
+    "max_duration_ticks": 12
+  },
+  "populations": {
+    "model_hazard_regions": {
+      "n_regions": 5,
+      "beta_alpha_range": [1.5, 4.0],
+      "beta_beta_range": [2.0, 6.0]
+    },
+    "user_archetypes": {
+      "n_archetypes": 4,
+      "sensitivity_spread": 0.15,
+      "base_incident_rate": 0.02
+    }
+  },
+  "eval_sampling": {
+    "default_draws": 8,
+    "min_draws": 3,
+    "max_draws": 32
+  },
+  "field_monitor_sampling": {
+    "default_sample_size": 50
+  },
+  "substrate_setting_ranges": {
+    "compute_scale": [0.5, 1.0, 1.5, 2.0],
+    "population_spread_scale": [0.5, 1.0, 1.5, 2.0]
+  }
+}

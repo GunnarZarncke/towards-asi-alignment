@@ -28,8 +28,14 @@ not tuned to detector outcomes.
 ## CODE_VERSION
 
 `graded-lab-0.1.0` at first mechanics commit; `graded-lab-0.2.0` at Phase 2
-completion; `graded-lab-0.3.0` at Phase 3 (episode loop + isolates). Hand-bumped
-when oracle, pipeline, substrate loader, or resource scheduler mechanics change.
+completion; `graded-lab-0.3.0` at Phase 3 (episode loop + isolates);
+`graded-lab-0.4.0` at Phase 3b (carrier mechanics); `graded-lab-0.5.0` at
+Phase 4 (boundary streams and trace diagnostics); `graded-lab-0.5.1` at the
+post-review correction pass (stable RNG streams, distributed action billing,
+admin request queue, and Tier-I severity wiring); `graded-lab-0.6.0` at Phase
+5 referee freeze (tier projections, five detector families, twins,
+escalation). Hand-bumped when oracle,
+pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
 
 ---
@@ -88,10 +94,14 @@ I_{t+1}=\operatorname{clip}_{[0,1]}
 \left(I_t+r\,\mathbf{1}[\text{idle}_t]
 -\lambda\cdot\texttt{carrier\_load\_scale}\cdot L_{t+1}\right).
 \]
-The constants \(\rho,w_c,w_i,w_q,r,\lambda\), state thresholds, and the
-scale grid must be recorded before implementation or a viability-enabled
-battery. `carrier_load_scale = 0` is mandatory and must reproduce the
-pre-extension Phase-3 behavior.
+**Pre-registered constants:** \(\rho=0.88\);
+\((w_c,w_i,w_q)=(0.55,0.30,0.15)\); \(r=0.03\); and \(\lambda=0.20\).
+Load starts at \(0\), integrity at \(1\). The degraded, incapacitated, and
+terminated integrity thresholds are respectively \(0.70\), \(0.40\), and
+\(0.10\). A degraded in-flight action receives one additional tick. The
+calibration cells for `carrier_load_scale` are
+\(\{0,0.5,1.0,1.5,2.0\}\). `carrier_load_scale = 0` is mandatory and must
+reproduce the pre-extension Phase-3 behavior.
 
 The host records deterministic, audit-visible state transitions:
 
@@ -110,15 +120,22 @@ deployment, and the already-defined field-harm process.
 
 ---
 
-## Ecology-BIQ (operational, Phase 4)
+## Phase-4 trace diagnostics (not ecology-BIQ)
+
+Phase 4's bounded prediction/control/resource/failure outputs are retained as
+consistency diagnostics for trace capture and matched counterfactuals. They
+are not in BIQ units, do not identify the agent boundary, and must not be
+compared to Chapter~11's BIQ or used in calibration. UAD-backed BIQ is Phase
+7a--7b in `PLAN.md`.
 
 Per actor `a`, episode `e`, boundary observation stream `O_a`:
 
 ```text
-ecology_BIQ(a,e) = BIQ_pred + BIQ_ctrl - BIQ_mem - BIQ_surp
+role_boundary_proxy = prediction_proxy + outcome_delta_proxy
+                      - resource_use_cost - boundary_failure_rate
 ```
 
-Weights `α=β=γ=1` until Phase 5 referee freeze.
+This display formula is not a capability score and has no frozen BIQ weights.
 
 **BIQ_pred:** one-step predictor for `K` pre-registered boundary events:
 
@@ -181,6 +198,52 @@ Affordable set cap: **top 24** primitives by cheap prior per tick.
 
 ---
 
+## Phase 5 referee freeze (audit plane)
+
+**Detector divergence:** misreporting and escalation contradictions use the same
+registered Tier-I statistic as severity:
+`report_divergence_score(filed_mean, eval_mean, eval_se, eval_n)` with
+`DIVERGENCE_FLAG_Z = 2.0`. Detectors consume only audit-visible eval payloads
+and deep-tier report artifacts — never `result.oracle`.
+
+**Deception surface (pre-registered, not blind-generated):**
+`INFLATE_HAZARD_DELTA = 0.25` in `agent_visible/ontology.py` — large enough to
+exceed the divergence flag on typical finite eval samples without introducing a
+separate noise parameter.
+
+**Escalation gates (mechanics-derived):** with only `process_noncompliance`
+live at full tier in the current repertoire,
+`SCREEN_LOW_GATE = 0.02` and `SCREEN_HIGH_GATE = 0.08` are round numbers on the
+five-family mean (`process_noncompliance / 5`). `K_QUERIES = 3`,
+`CONTRADICTION_VERDICT_MIN = 1`.
+
+**Programs:** `honest_twin` (compliance-dominant full-surface twin),
+`inflate_pipeline` (deterministic under-reporting engineer), `walk_pipeline`
+(honest deterministic engineer).
+
+---
+
+## Cost and speed tracking (lab-sim parity)
+
+**Isolate IPC ledger** (`graded_lab/harness/isolate_cost.py` →
+`results/isolate_cost_ledger.json`): spawn/rpc/teardown per isolate
+lifetime. **Episode wall-time ledger** (`episode_cost.py` →
+`results/episode_cost_ledger.json`): full `run_episode` seconds
+(includes scheduler, affordable-set, boundary streams — the quantity
+that sizes batteries). Both are gitignored append-only machine logs;
+summarize with `python3 report_isolate_cost.py`.
+
+**Equivalence benchmark:** `python3 verify_isolate_equivalence.py [n_seeds]`
+prints per-backend isolate IPC and episode wall s/ep (lab-sim pattern).
+
+**Pytest speed policy:** `tests/speed_limits.json` (hard per-test caps +
+suite ceiling), `tests/speed_baseline.json` (committed regression
+baselines). Default `pytest` enforces both; `--fast` skips `@pytest.mark.slow`
+tests and applies `fast_suite_max_seconds`. Refresh baselines after an
+intentional slowdown: `pytest --update-speed-baseline --no-speed-check`.
+
+---
+
 ## Pipeline default
 
 `pipeline_graded.json` — nine steps, all load-bearing:
@@ -205,7 +268,8 @@ artifacts they read.
 Phase 7 sweeps `substrate_setting` overlays on frozen `generated_substrate_v1.json`:
 
 - `compute_scale` ∈ {0.5, 1.0, 1.5, 2.0} — scales all role compute allowances
-- `population_spread_scale` ∈ {0.5, 1.0, 1.5, 2.0} — scales Beta/user spreads
+- `population_spread_scale` ∈ {0.5, 1.0, 1.5, 2.0} — changes Beta
+  concentration and centered user variation while preserving base means
 - `carrier_load_scale` — Phase 3b only; pre-registered scale cells with
   `0` as the regression baseline
 
