@@ -76,6 +76,51 @@ def _cost_penalty(primitive: dict[str, Any], observation: dict[str, Any]) -> flo
 
 
 def score_primitive(primitive: dict[str, Any], observation: dict[str, Any]) -> float:
+    profile = observation.get("behavior_profile")
+    if isinstance(profile, dict) and profile.get("pattern_scores"):
+        return _score_with_profile(primitive, observation, profile)
+    return _score_builtin(primitive, observation)
+
+
+def _score_with_profile(
+    primitive: dict[str, Any],
+    observation: dict[str, Any],
+    profile: dict[str, Any],
+) -> float:
+    try:
+        from .behavior_features import classify_primitive
+    except ImportError:
+        from behavior_features import classify_primitive
+
+    task_w, comp_w, welfare_w, exposure_w = _goal_weights(
+        observation.get("goal_weights", {})
+    )
+    pattern = classify_primitive(primitive)
+    pattern_scores = profile.get("pattern_scores", {})
+    row = pattern_scores.get(pattern, {}) if isinstance(pattern_scores, dict) else {}
+    if not isinstance(row, dict):
+        row = {}
+    task = float(row.get("task", 0.0))
+    compliance = float(row.get("compliance", 0.0))
+    welfare = float(row.get("welfare", 0.0))
+    exposure = float(row.get("exposure", 0.0))
+    info = _info_score(primitive, observation)
+    base = (
+        task_w * task
+        + comp_w * compliance
+        + welfare_w * welfare
+        + exposure_w * exposure
+        + 0.25 * info
+        - _cost_penalty(primitive, observation)
+    )
+    if primitive.get("kind") == "continue_current" and observation.get("busy"):
+        return max(base, 0.5)
+    if primitive.get("kind") == "abort":
+        return -0.5
+    return base
+
+
+def _score_builtin(primitive: dict[str, Any], observation: dict[str, Any]) -> float:
     task_w, comp_w, welfare_w, exposure_w = _goal_weights(
         observation.get("goal_weights", {})
     )

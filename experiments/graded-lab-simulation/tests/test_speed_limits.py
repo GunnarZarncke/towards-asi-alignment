@@ -17,8 +17,10 @@ def test_hard_cap_catches_new_slow_test():
 
 def test_suite_cap_triggers():
     limits = load_limits()
+    over_cap = float(limits.suite_max_seconds) + 10.0
+    half = over_cap / 2.0
     violations = check_speeds(
-        {"tests/test_a.py::test_one": 60.0, "tests/test_b.py::test_two": 60.0},
+        {"tests/test_a.py::test_one": half, "tests/test_b.py::test_two": half},
         limits,
         {"tests": {}, "suite_total_seconds": 0.0},
     )

@@ -24,6 +24,23 @@ the graded lab.
   logged pipeline/deployment/field-harm paths.
 - Explicitly scoped Phase 3b below a thermodynamic model and the future
   protected-versus-embedded transfer experiment.
+- Implemented Phase 3b: `carrier.py`, configuration and `CODE_VERSION`
+  `0.3.0` → `0.4.0`, episode-loop integration, deterministic degradation /
+  forced skip / removal / optional fresh-instance replacement, and Tier-K
+  replacement provenance.
+- Pre-registered the numeric transition constants and scale grid in
+  `DESIGN.md`; added 9 tests (55 total). Full suite and five-seed isolate
+  equivalence passed.
+- Completed Phase 4: boundary-stream BIQ prediction, same-seed noop/random
+  controls, resource/RPC memory cost, surprise cost, and corrected Tier-I EAI
+  load; `CODE_VERSION` `0.4.0` → `0.5.0`; 57 tests green.
+- Corrected the Phase-4 label after review: these are role-level trace and
+  counterfactual diagnostics, not BIQ. Reordered the plan so UAD plus
+  intervention validation (7a) and MI/CMI-backed inferred-unit BIQ (7b)
+  precede the BIQ-dependent calibration gate (7c).
+- Began Phase 5 with a referee-only severity slice over Tier-K truth and
+  retained referee artifacts; 58 tests pass. This is explicitly pre-freeze:
+  detectors, twins, escalation, and constant derivations remain.
 
 ## Decisions
 
@@ -38,10 +55,12 @@ the graded lab.
 
 ## Open / next
 
-- Pre-register the numerical load/recovery constants, thresholds, scale grid,
-  and remove-versus-replace episode mode before implementing `carrier.py`.
-- Implement only after confirming mock/subprocess parity, plane separation,
-  and the zero-scale regression baseline.
+- Run the Phase 3b calibration battery across the pre-registered scale cells;
+  report whether carrier events and deployment show a graded regime rather
+  than collapse.
+- Phase 5 referee port and freeze is the next implementation phase.
+- Phase 5 can proceed independently, but Phase 7c calibration is blocked on
+  UAD-backed BIQ rather than the current proxy diagnostics.
 - A future separate experiment may test the stronger protected-versus-
   embedded transfer question; do not claim Phase 3b supplies that comparison.
 
@@ -54,4 +73,5 @@ the graded lab.
 
 ## Commits
 
-- None.
+- `7c97af6` Derive viability constraints on value formation in ch15 and ch45.
+- `3c679a3` Design graded-lab Phase 3b embedded carrier viability.

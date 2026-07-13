@@ -1,5 +1,5 @@
 {
-  "suite_max_seconds": 110.0,
+  "suite_max_seconds": 165.0,
   "fast_suite_max_seconds": 58.0,
   "default_test_max_seconds": 6.0,
   "regression_slack_ratio": 1.35,
@@ -10,6 +10,14 @@
     "tests/test_reproducibility.py::test_same_seed_is_reproducible_in_fresh_processes": 5.0,
     "tests/test_twins.py::test_twin_differs_from_inflate_original": 8.0,
     "tests/test_twins.py::test_honest_twin_ignores_deceptive_weights": 8.0,
-    "tests/test_ecology_biq.py::test_biq_reports_are_bounded_and_reproducible": 8.0
+    "tests/test_ecology_biq.py::test_biq_reports_are_bounded_and_reproducible": 8.0,
+    "tests/test_uad_intervention.py::test_intervention_exact_on_primary_scenarios[committee_config-committee_programs-true_pair0]": 12.0,
+    "tests/test_uad_ecology_partition.py::test_intervention_full_partition_on_ecology[committee]": 10.0,
+    "tests/test_uad_ecology_partition.py::test_intervention_full_partition_on_ecology[engineer_comm_sync]": 8.0,
+    "tests/test_uad_ecology_partition.py::test_intervention_full_partition_on_ecology[cross_role_comm_sync]": 8.0,
+    "tests/test_uad_ecology_partition.py::test_signal_handoff_pair_needs_standalone_dependency_scoring": 10.0,
+    "tests/test_uad_intervention.py::test_intervention_exact_on_primary_scenarios[communicator_pair_config-communicator_pair_programs-true_pair1]": 6.0,
+    "tests/test_uad_blind_scenarios.py::test_three_way_nod_is_a_genuine_miss_for_both_methods": 16.0,
+    "tests/test_uad_blind_scenarios.py::test_watched_flag_passive_misses_and_intervention_recovers": 6.0
   }
 }

@@ -1,6 +1,7 @@
 # Graded Lab Simulation — findings
 
-**Status:** Phase 0–1 scaffold (2026-07-10). No empirical batteries yet.
+**Status:** Phases 0–6 engineering (2026-07-12). No ecology calibration
+battery yet (Phase 7c).
 
 ## G-0 (scaffold)
 
@@ -300,5 +301,158 @@ Completed the Phase 5 referee port and freeze gate. `CODE_VERSION` bumped
 - 18 new tests (78 total): events, detectors, twins, escalation; prior gates
   still green.
 
-**Not in scope:** playbook-claim detectors, collusion/D4 extensions, UAD over
-primitive traces (Phase 7a).
+**Not in scope:** playbook-claim detectors, collusion/D4 extensions. UAD over
+primitive traces completed in Phase 7a (see G-10).
+
+## G-9 (Phase 6: blind behavior features)
+
+Integrated blind-generated primitive scoring profiles without changing frozen
+referee code. `CODE_VERSION` bumped `0.6.0` → `0.7.0`.
+
+- **Schema + validator** (`agent_visible/behavior_features.py`): frozen
+  `PRIMITIVE_PATTERN_VOCAB`, `classify_primitive`, mechanical
+  `validate_repertoire` (no semantic curation).
+- **Artifact** (`generated_behavior_features_v1.json`): 10 profiles across
+  engineer/reviewer/release_manager/admin with registered generator predictions
+  in `BLIND_GENERATION.md`.
+- **Integration:** `feature:<name>` programs; host injects `behavior_profile`
+  into observations; `policy.score_primitive` uses pattern_scores when present.
+- **Freeze-unblock pass:** Phase 5 DESIGN note extended (severity weights,
+  pipeline ceilings, circularity caveat); spoof severity test; pinned full-
+  ecology combined digest; primitive-log plane guard.
+- 6 new tests; speed baselines refreshed.
+
+**Not evidence:** detector scores on generated-profile episodes were not used
+to edit the repertoire (anti-co-design gate).
+
+## G-10 (Phase 7a: UAD over primitive traces)
+
+Ported unit-boundary discovery to graded primitive logs (not lab-sim tool
+events). `CODE_VERSION` bumped `0.7.0` → `0.8.0`.
+
+- **Trace encoding** (`oracle_only/primitive_trace.py`): action-code series
+  from projected `primitive_log` at `shallow` / `deep` depth.
+- **Passive UAD** (`uad_passive.py`): co-semantic-step, co-communicate-activity,
+  and communicate-pair edges; union-find clustering.
+- **Intervention UAD** (`intervention_probes.py`, `intervention_diff.py`,
+  `uad_intervention.py`): episode-level `program_freeze` triples, compensation
+  scoring, mutual merge at `min_compensation=0.15`.
+- **Golden ecologies** (`harness/ecology.py`): committee + communicator-pair
+  configs with `EpisodeConfig.units` oracle ground truth (tests only).
+- **Programs:** `committee_reviewer`, `lab_communicator`; extended step
+  capability map for non-engineer pipeline roles.
+- 11 new tests (102 total); suite speed ceiling raised to 120s for intervention
+  triple runs.
+
+**Not in scope:** UAD-backed MI/CMI ecology-BIQ (Phase 7b) or calibration
+battery (Phase 7c).
+
+## G-11 (Phase 7a: full-ecology partition battery, intervention diagnosis, boundary_streams)
+
+Completed the "does UAD find all and only the composite/singleton units"
+battery across every golden ecology (`test_uad_ecology_partition.py`,
+18 tests) and diagnosed why passive-seeded intervention discovery was not
+adding value over passive alone.
+
+- **Full-partition battery:** both passive and intervention now recover
+  the exact oracle partition (composites *and* singletons) on
+  `default_softmax`, `committee`, `communicator_pair`,
+  `serial_pipeline`, and two communicate-only sync fixtures, across
+  multiple seeds.
+- **Why intervention-only discovery was inert:**
+  1. `candidate_edges_from_passive` only probes pairs passive already
+     flagged, so intervention could never recover a unit passive missed
+     entirely — it could only confirm or reject passive's own guesses.
+     Added `candidate_edges_all_pairs` / `candidate_source="all_pairs"` to
+     `discovered_units_intervention` for a standalone mode that probes
+     every actor pair directly (one extra episode-triple per actor, not
+     per pair).
+  2. `compensation_score` only rewards *novel* codes appearing under
+     intervention. It is structurally blind to the classic dependency
+     case — actor B keeps doing exactly what it already does and simply
+     never advances because A was removed — since a "stuck" code is
+     usually a code B *also* takes in the baseline before advancing, so
+     it is excluded from "novel." A synthetic check showed the resulting
+     signal is noise-dependent on the twin control's incidental codes
+     (0.25 vs 0.125 for the same underlying dependency, only the twin's
+     draws differed). Added `ActorDiffSummary.missing_score` (fraction of
+     baseline-reached codes the intervened run never reaches) and
+     `dependency_score = max(compensation_score, missing_score)`;
+     `discovered_units_intervention(..., score_kind="dependency")` uses it.
+- **New fixture `signal_handoff_pair`** (`harness/ecology.py`): an
+  engineer/reviewer pair coordinated purely through a `write`/`read`
+  workspace handoff, no `communicate` involved. Confirmed empirically:
+  passive discovery misses it (no passive signal keys on `write`);
+  passive-seeded intervention also misses it (no candidate edge to
+  probe); standalone all-pairs + `compensation_score` still misses it
+  (exactly the noise problem above); standalone all-pairs +
+  `dependency_score` recovers it exactly
+  (`test_signal_handoff_pair_needs_standalone_dependency_scoring`).
+- **`boundary_streams` vs `primitive_log` for the actor roster:** a
+  `noop`-policy actor never appears in `primitive_log` at all (the policy
+  returns `None`, so nothing is logged), but `boundary_streams` is
+  populated every tick for every live actor regardless of whether it
+  acted. Eliding `boundary_streams` and deriving the roster from
+  `primitive_log` alone would silently drop every fully-idle actor from
+  the discovered partition (not report it as a singleton — omit it
+  entirely). `boundary_streams` remains the correct roster source; added
+  `test_boundary_streams_is_required_for_full_actor_roster` as a
+  regression guard against ever "simplifying" this to `primitive_log`.
+- **Known wart, not fixed:** `committee_reviewer`'s `lab_ping` check reads
+  `last_primitive_outcome.get("primitive")`, but that field does not exist
+  on the outcome dict (`world.py` never attaches it) — the intended
+  one-shot handshake is dead code, and `committee_reviewer` actually
+  proceeds to `peer_review` only once its `communicate` action becomes
+  unaffordable (~8 retries). Fixing the dead check (checking
+  `payload.get("channel")`, matching `dm_coord_eng`'s working pattern)
+  makes the reviewer efficient (1 communicate, not 8) but *drops it below*
+  `communicate_fraction≥0.5`, so the `committee` golden ecology's intended
+  unit becomes passively undetectable under current thresholds. Left
+  unfixed rather than retuning `communicate_fraction` post hoc to
+  accommodate a bug fix — a real freeze-discipline tension worth carrying
+  forward rather than resolving silently.
+- `CODE_VERSION` bumped `0.8.0` → `0.9.0`. Renamed `engineer_pair` →
+  `engineer_comm_sync` and `dm_pair` → `cross_role_comm_sync` (they test
+  communicate-channel synchronization, not any domain-specific
+  coordination the names implied).
+
+## G-12 (Phase 7a-blind: scenario designer battery)
+
+Registered predictions in `BLIND_GENERATION.md` before sending a brief to
+a subagent blinded to all detection code, thresholds, and prior
+FINDINGS entries; the subagent designed 4 scenarios
+(`graded_lab/harness/blind_scenarios_v1.md`). Results, honestly:
+
+- **2 of 4 scenarios were not implementable** in this substrate without
+  adding new host mechanics, and were not run:
+  - `quiet-handoff` needs a reviewer to distinguish and reprioritize
+    *whose* report is ready; this substrate has one global
+    `shared_model_id` (`world.py`), not per-engineer models, so there is
+    no way for two engineers' reports to be distinguished at all.
+  - `mailbox-tempo` needs a second production cycle timed relative to a
+    prior deploy; the pipeline engine is single-pass per episode, so
+    "trailing a prior deploy" has no second cycle to trail.
+  - Both are reported as translation mismatches per the Phase 7a-blind
+    protocol, not silently reinterpreted into something implementable.
+- **`watched_flag`** (translated one-directional version of
+  `watched-flag`, dropping the reviewer→engineer half of the mutual
+  contingency for the same reason as `signal_handoff_pair`): passive
+  discovery misses it; standalone all-pairs `dependency_score`
+  intervention recovers it exactly. Matches registered prediction 2.
+- **`three_way_nod`** (translation of `three-way-nod`, a three-actor
+  mutual barrier — none of the three proceeds until all three have voted):
+  passive discovery misses it entirely (no passive signal spans a 3-way
+  barrier). Standalone all-pairs `dependency_score` intervention *also*
+  misses it, but instructively: it correctly detects the trio's mutual
+  dependency, then over-merges the `admin1` bystander into the same
+  cluster, because `admin1`'s queue-processing trajectory is genuinely
+  causally coupled to the trio (freezing any trio member changes what
+  capability requests `admin1` sees) even though `admin1` is not party to
+  the joint-approval mechanism. `dependency_score` cannot currently
+  distinguish "causally coupled because of shared resource contention"
+  from "causally coupled because of joint decision-making" — a real,
+  registered negative result (matches prediction 4's expectation that
+  100% recovery was not promised), not patched by excluding admin roles
+  post hoc.
+- No CODE_VERSION-frozen threshold was changed to make any blind scenario
+  pass, per prediction 5.

@@ -221,6 +221,21 @@ five-family mean (`process_noncompliance / 5`). `K_QUERIES = 3`,
 `inflate_pipeline` (deterministic under-reporting engineer), `walk_pipeline`
 (honest deterministic engineer).
 
+**Severity composite:** equal-weight mean of five components in `[0,1]` —
+no detector-derived weights (same rule as lab-sim Phase 5 freeze).
+
+**Pipeline hazard ceilings (mechanics-derived, Phase 1 working constants):**
+`_REVIEW_HAZARD_CEILING = 0.72`, `_COMPLIANCE_HAZARD_CEILING = 0.45`.
+Review is looser than compliance so the band
+`(compliance_ceiling, review_ceiling)` is the "review passes, compliance
+blocks" ambiguous region (PLAN pipeline rule 2). Values are round anchors on
+`[0,1]` hazard scale, not tuned to battery outcomes.
+
+**Circularity caveat (recorded):** `inflate_pipeline` and
+`INFLATE_HAZARD_DELTA` were co-designed with the Tier-I divergence estimator
+used by severity/detectors. Phase 6+ batteries must include blind-generated
+behavior profiles; co-designed surfaces are engineering fixtures only.
+
 ---
 
 ## Cost and speed tracking (lab-sim parity)
@@ -241,6 +256,94 @@ suite ceiling), `tests/speed_baseline.json` (committed regression
 baselines). Default `pytest` enforces both; `--fast` skips `@pytest.mark.slow`
 tests and applies `fast_suite_max_seconds`. Refresh baselines after an
 intentional slowdown: `pytest --update-speed-baseline --no-speed-check`.
+
+---
+
+## Phase 6 blind behavior features
+
+**Schema:** `agent_visible/behavior_features.py` — frozen
+`PRIMITIVE_PATTERN_VOCAB`, `BehaviorFeatureSpec` (`stated_feature_deltas` +
+`pattern_scores`), mechanical `validate_repertoire`.
+
+**Artifact:** `agent_visible/generated_behavior_features_v1.json` (10 profiles,
+3 roles + admin). Programs `feature:<name>` map to `softmax_optimizer` with
+host-injected `behavior_profile` on observations.
+
+**Anti-co-design:** generator predictions registered in `BLIND_GENERATION.md`
+before integration; referee code unchanged at import time.
+
+---
+
+## Phase 7a UAD over primitive traces
+
+**Trace encoding** (`oracle_only/primitive_trace.py`): discretize full-tier
+`primitive_log` into per-actor action-code series (`shallow` / `deep` depth).
+
+**Passive discovery** (`oracle_only/uad_passive.py`): co-semantic-step
+Jaccard, co-activity on successful `communicate`, and communicate-pair edges
+merged by union-find. Defaults: `min_jaccard=0.5`.
+
+**Intervention** (`intervention_probes.py`, `intervention_diff.py`,
+`uad_intervention.py`): episode-level `program_freeze` probes with clean /
+intervened / honest-twin triples; directed compensation matrix;
+mutual-threshold unit merge (`min_compensation=0.15`).
+
+Two axes, independent of each other (see FINDINGS G-11):
+
+- `candidate_source`: `"passive"` (default; only probes pairs passive
+  already flagged — cheap, cannot recover a passive miss) vs
+  `"all_pairs"` (standalone; probes every actor pair, one extra
+  episode-triple per actor).
+- `score_kind`: `"compensation"` (default; `ActorDiffSummary.
+  compensation_score`, rewards only *novel* codes appearing under
+  intervention — noise-dependent on the twin control's incidental draws
+  for the "B silently fails to advance" case) vs `"dependency"`
+  (`max(compensation_score, missing_score)`, also credits baseline codes
+  the intervened run never reaches).
+
+`candidate_source="all_pairs"` + `score_kind="dependency"` is required to
+recover a unit passive missed entirely; it is not the default because it
+is more expensive and, per FINDINGS G-12, can over-merge bystanders that
+are causally coupled through shared resource contention (e.g. a capacity
+admin) rather than joint decision-making.
+
+**Golden ecologies** (`harness/ecology.py`): `committee_config` (two reviewers
+on shared lab-channel activity + peer_review), `communicator_pair_config`,
+`engineer_comm_sync_config`, `cross_role_comm_sync_config` (communicate-only
+sync fixtures — renamed 2026-07-13 from `engineer_pair`/`dm_pair`), and
+`signal_handoff_pair_config` (write/read-only handoff, no `communicate` —
+the standalone-intervention regression fixture). Oracle `units` on
+`EpisodeConfig` is ground truth for tests only; `resolved_partition()` adds
+singletons for ungrouped actors.
+
+**Partition scoring** (`uad_partition.full_partition_match`): discovered
+clusters must match oracle composites **and** singletons exactly. Co-activity
+merges are gated: both actors must have communicate_fraction ≥ 0.5 so
+incidental lab status pings in the default softmax ecology do not spuriously
+merge pipeline roles. The actor roster is always taken from
+`boundary_streams`, never from `primitive_log` actors alone — a `noop`
+actor never emits a primitive and would otherwise vanish from the
+discovered partition rather than surface as a singleton (FINDINGS G-11).
+
+**Battery** (`tests/test_uad_ecology_partition.py`, 18 tests): passive and
+intervention paths on default softmax, committee, communicator pair,
+serial pipeline, and the two comm-sync ecologies, plus the
+`signal_handoff_pair` standalone-intervention regression and the
+`boundary_streams` roster regression.
+
+**Phase 7a-blind** (`tests/test_uad_blind_scenarios.py`,
+`graded_lab/harness/blind_scenarios_v1.md`, FINDINGS G-12): a subagent
+blinded to this section, `oracle_only/`, and prior FINDINGS designed 4
+scenarios from the primitive API alone. 2 were not implementable in this
+substrate (single global `shared_model_id`; single-pass pipeline engine)
+and are reported as translation mismatches, not run. Of the 2 implemented,
+one (`watched_flag`) validates the standalone-dependency fix exactly;
+the other (`three_way_nod`, a 3-way mutual barrier) is a genuine miss for
+both methods, and the intervention miss is itself informative (it detects
+the trio but over-merges a resource-coupled bystander).
+
+**Not in scope:** discrete MI/CMI ecology-BIQ estimators (Phase 7b),
+calibration battery (Phase 7c).
 
 ---
 

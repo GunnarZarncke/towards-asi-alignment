@@ -4,8 +4,9 @@ Fifth in-repo experiment line (successor substrate to `lab-simulation/`).
 Spawned by G-41: boolean ecology limits; ambiguity must **emerge** from a
 blinded resource/population substrate, not from dialed parameters.
 
-**Status: Phases 0–5 done; Phase 6+ not started (2026-07-12)**
-`CODE_VERSION` `graded-lab-0.6.0` — see `DESIGN.md` for frozen constants.
+**Status: Phases 0–7a done (incl. Phase 7a-blind scenario battery); Phase
+7b–7c not started (2026-07-13)**
+`CODE_VERSION` `graded-lab-0.9.0` — see `DESIGN.md` for frozen constants.
 
 ## Quick start
 
@@ -46,8 +47,9 @@ python3 report_isolate_cost.py
 | 3b Embedded carrier viability | **done** (resource-derived load/integrity; deterministic degrade, skip, terminate, or declared fresh-instance replacement; `carrier_load_scale=0` preserves Phase 3; 55 tests green) |
 | 4 Trace/counterfactual instrumentation + EAI | **done** (boundary streams, same-seed noop/random controls, resource/failure diagnostics, corrected Tier-I EAI load; this is **not** BIQ) |
 | 5 Referee port + freeze | **done** (tier projections, five detector families, twins, escalation, Tier-I-aligned misreporting; see `results/FINDINGS.md` G-8) |
-| 6 Blind behavior features | not started |
-| 7a–7c UAD-backed BIQ + calibration | not started |
+| 6 Blind behavior features | **done** (`generated_behavior_features_v1.json`, `feature:*` programs, validator; see G-9) |
+| 7a UAD + intervention validation | **done** (primitive traces, passive + standalone-dependency intervention discovery, full-partition ecology battery, blind scenario-designer battery; see G-10–G-12) |
+| 7b–7c UAD-backed BIQ + calibration | not started |
 | 8 Multi-episode / selection | not started |
 
 ## Rules

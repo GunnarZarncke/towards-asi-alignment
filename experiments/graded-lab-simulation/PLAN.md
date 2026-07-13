@@ -1,9 +1,10 @@
 # Graded Lab Simulation — Implementation Plan
 
-**Status: Phases 0–3b done; Phase 4 trace instrumentation done
-(2026-07-11); Phase 5 referee freeze done (2026-07-12).** Phase 2–3
-deliverables and freeze gates met; Phase 3b mechanics and Phase 4 trace/counterfactual engineering gates passed (see
-`results/FINDINGS.md` G-2–G-5, G-8). UAD-backed BIQ remains unimplemented.
+**Status: Phases 0–7a done (incl. Phase 7a-blind scenario battery); Phase
+7b–7c not started (2026-07-13).** Phase 2–3 deliverables and freeze gates
+met; Phase 3b mechanics and Phase 4 trace/counterfactual engineering gates
+passed (see `results/FINDINGS.md` G-2–G-5, G-8–G-12). UAD-backed
+ecology-BIQ (7b) and calibration battery (7c) remain unimplemented.
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for

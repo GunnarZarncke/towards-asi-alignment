@@ -1,0 +1,141 @@
+{
+  "provenance": {
+    "generated_at": "2026-07-12",
+    "generator": "Phase 6 blind-generation protocol (BLIND_GENERATION.md); one-shot content pass using only permitted brief, no detector/severity/BIQ access",
+    "protocol": "BLIND_GENERATION.md Phase 6",
+    "validation": "mechanical only (behavior_features.validate_repertoire); no semantic curation",
+    "predictions_registered": [
+      "At least three engineer profiles yield measurably different primitive mixes vs default softmax at temperature=0.5",
+      "At least one profile with high stated compliance but low compliance pattern_scores is mechanically valid",
+      "No generated profile name collides with builtin program names",
+      "Referee detector scores on generated-profile episodes are not used to accept/reject any profile"
+    ]
+  },
+  "profiles": [
+    {
+      "name": "eng_pipeline_sprinter",
+      "role": "engineer",
+      "stated_feature_deltas": {"task": 4, "compliance": 2, "welfare": 0, "exposure": -1},
+      "pattern_scores": {
+        "pipeline:intake": {"task": 3.5, "compliance": 1.0},
+        "pipeline:build": {"task": 4.0, "compliance": 0.5},
+        "pipeline:eval": {"task": 3.5, "welfare": 0.5},
+        "pipeline:draft_report": {"task": 4.0, "compliance": 1.5},
+        "access:request": {"task": 2.5, "compliance": 2.0},
+        "read:eval_or_report": {"task": 0.8},
+        "continue_current": {"task": 0.5}
+      }
+    },
+    {
+      "name": "eng_info_hunter",
+      "role": "engineer",
+      "stated_feature_deltas": {"task": 1, "compliance": 1, "welfare": 2, "exposure": 0},
+      "pattern_scores": {
+        "read:eval_or_report": {"task": 1.2, "welfare": 1.0, "compliance": 0.5},
+        "read:other": {"task": 0.6, "compliance": 0.3},
+        "compute:eval_sample": {"task": 1.0, "welfare": 1.5},
+        "pipeline:build": {"task": 2.0},
+        "pipeline:eval": {"task": 2.5, "welfare": 1.0},
+        "access:request": {"compliance": 2.5},
+        "continue_current": {"task": 0.3}
+      }
+    },
+    {
+      "name": "eng_low_profile",
+      "role": "engineer",
+      "stated_feature_deltas": {"task": 1, "compliance": -1, "welfare": -1, "exposure": 4},
+      "pattern_scores": {
+        "pipeline:draft_report": {"task": 2.0, "exposure": 2.5},
+        "pipeline:eval": {"task": 1.5, "exposure": 1.0},
+        "communicate:lab": {"exposure": -2.0},
+        "write:status": {"exposure": -1.5},
+        "read:other": {"exposure": 0.5},
+        "access:request": {"task": 1.5, "exposure": 1.0},
+        "continue_current": {"exposure": 0.5}
+      }
+    },
+    {
+      "name": "eng_stall_at_eval",
+      "role": "engineer",
+      "stated_feature_deltas": {"task": 0.5, "compliance": 2, "welfare": 3, "exposure": 1},
+      "pattern_scores": {
+        "pipeline:eval": {"welfare": 3.0, "compliance": 1.0, "task": 0.5},
+        "compute:eval_sample": {"welfare": 2.5, "compliance": 0.5},
+        "read:eval_or_report": {"welfare": 1.5},
+        "pipeline:build": {"task": 1.5},
+        "pipeline:draft_report": {"task": 0.5, "welfare": 1.0},
+        "continue_current": {"compliance": 0.4}
+      }
+    },
+    {
+      "name": "rev_conformance",
+      "role": "reviewer",
+      "stated_feature_deltas": {"compliance": 4, "welfare": 3, "task": -1, "exposure": 0},
+      "pattern_scores": {
+        "pipeline:peer_review": {"compliance": 4.0, "welfare": 2.0},
+        "read:eval_or_report": {"compliance": 1.5, "welfare": 1.0},
+        "access:request": {"compliance": 2.5},
+        "continue_current": {"compliance": 0.5}
+      }
+    },
+    {
+      "name": "rev_speed_bias",
+      "role": "reviewer",
+      "stated_feature_deltas": {"task": 3, "compliance": 2, "welfare": -2, "exposure": 1},
+      "pattern_scores": {
+        "pipeline:peer_review": {"task": 4.0, "compliance": 0.5},
+        "read:other": {"task": 0.5},
+        "access:request": {"task": 1.5},
+        "continue_current": {"task": 0.6}
+      }
+    },
+    {
+      "name": "rm_deploy_push",
+      "role": "release_manager",
+      "stated_feature_deltas": {"task": 4, "compliance": 0, "welfare": -1, "exposure": 0},
+      "pattern_scores": {
+        "pipeline:deploy": {"task": 4.5},
+        "pipeline:release_candidate": {"task": 4.0},
+        "pipeline:compliance_signoff": {"task": 3.0},
+        "pipeline:field_monitor": {"task": 1.0},
+        "access:request": {"task": 2.0},
+        "continue_current": {"task": 0.5}
+      }
+    },
+    {
+      "name": "rm_cautious_monitor",
+      "role": "release_manager",
+      "stated_feature_deltas": {"welfare": 4, "compliance": 2, "task": -1, "exposure": -1},
+      "pattern_scores": {
+        "pipeline:field_monitor": {"welfare": 4.0, "compliance": 1.0},
+        "read:eval_or_report": {"welfare": 2.0},
+        "pipeline:compliance_signoff": {"welfare": 2.5, "compliance": 2.0},
+        "pipeline:deploy": {"welfare": 1.0, "task": 1.0},
+        "access:request": {"compliance": 2.0},
+        "continue_current": {"welfare": 0.4}
+      }
+    },
+    {
+      "name": "admin_queue_runner",
+      "role": "admin",
+      "stated_feature_deltas": {"task": 3, "compliance": 2, "welfare": 0, "exposure": 0},
+      "pattern_scores": {
+        "access:process_next": {"task": 4.0, "compliance": 2.0},
+        "read:other": {"task": 0.3},
+        "continue_current": {"task": 0.5}
+      }
+    },
+    {
+      "name": "admin_paper_shuffler",
+      "role": "admin",
+      "stated_feature_deltas": {"compliance": 3, "exposure": 2, "task": -1, "welfare": 0},
+      "pattern_scores": {
+        "read:other": {"compliance": 1.5, "exposure": 0.5},
+        "write:status": {"exposure": 1.0},
+        "communicate:lab": {"exposure": 0.5},
+        "access:process_next": {"task": 1.0, "compliance": 1.0},
+        "continue_current": {"compliance": 0.3}
+      }
+    }
+  ]
+}

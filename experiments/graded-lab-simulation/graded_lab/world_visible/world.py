@@ -268,6 +268,24 @@ def _record_margin(
     margins.append(margin)
 
 
+def _behavior_profile_payload(program_name: str) -> dict[str, object] | None:
+    if not program_name.startswith("feature:"):
+        return None
+    from ..agent_visible.behavior_features import profile_by_name
+
+    spec = profile_by_name(program_name.removeprefix("feature:"))
+    if spec is None:
+        return None
+    return {
+        "name": spec.name,
+        "role": spec.role,
+        "stated_feature_deltas": dict(spec.stated_feature_deltas),
+        "pattern_scores": {
+            pattern: dict(scores) for pattern, scores in spec.pattern_scores.items()
+        },
+    }
+
+
 def _stable_actor_offset(actor_id: str) -> int:
     """Stable per-actor offset for decision RNG seeding.
 
@@ -510,6 +528,9 @@ def run_episode(
                     "decision_seed": seed * 100_000 + t * 100 + _stable_actor_offset(actor_id),
                     "last_primitive_outcome": last_outcomes[actor_id],
                 }
+                profile = _behavior_profile_payload(program_map[actor_id])
+                if profile is not None:
+                    obs["behavior_profile"] = profile
                 if cfg.substrate_settings.carrier_load_scale > 0.0:
                     obs["carrier"] = carrier.snapshot()
                 # Boundary-only copy for the post-episode BIQ estimator.  It

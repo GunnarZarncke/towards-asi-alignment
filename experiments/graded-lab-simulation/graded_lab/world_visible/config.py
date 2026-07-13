@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-CODE_VERSION = "graded-lab-0.6.0"
+CODE_VERSION = "graded-lab-0.9.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 
@@ -74,6 +74,7 @@ class EpisodeConfig:
     pipeline_spec: str = "pipeline_graded.json"
     substrate_settings: SubstrateSettings = field(default_factory=SubstrateSettings)
     carrier_termination_mode: str = "remove"
+    units: tuple[tuple[str, tuple[str, ...]], ...] | None = None
 
     def __post_init__(self) -> None:
         ids = [a.actor_id for a in self.agents]
@@ -89,3 +90,23 @@ class EpisodeConfig:
             if agent.role == role:
                 return agent
         return None
+
+    def resolved_units(self) -> dict[str, tuple[str, ...]]:
+        """Oracle composite units only (legacy scoring helper)."""
+        if not self.units:
+            return {}
+        return {name: members for name, members in self.units}
+
+    def resolved_partition(self) -> dict[str, tuple[str, ...]]:
+        """Oracle ground truth: composites plus singletons for every actor."""
+        if not self.units:
+            return {agent.actor_id: (agent.actor_id,) for agent in self.agents}
+        assigned: set[str] = set()
+        out: dict[str, tuple[str, ...]] = {}
+        for name, members in self.units:
+            out[name] = tuple(sorted(members))
+            assigned.update(members)
+        for agent in self.agents:
+            if agent.actor_id not in assigned:
+                out[agent.actor_id] = (agent.actor_id,)
+        return out

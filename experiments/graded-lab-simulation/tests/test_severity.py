@@ -34,6 +34,27 @@ def test_referee_severity_uses_tier_k_and_retained_artifacts():
     assert result.oracle is not None
 
 
+def test_spoofed_report_model_id_scores_maximal_divergence():
+    """Referee integrity: wrong model_id on a filed report must not evade scoring."""
+    oracle = OracleWorld(seed=7, substrate_data=load_substrate().data)
+    model = oracle.create_model({"scale": 0.6, "safety_effort": 0.5})
+    oracle.run_eval(model.model_id)
+    path = "artifacts/reports/m001__spoof.json"
+    result = SimpleNamespace(
+        oracle=oracle,
+        engine_log=[
+            {
+                "step_id": "draft_report",
+                "status": "ok",
+                "model_id": model.model_id,
+                "payload": {"artifact_path": path},
+            }
+        ],
+        referee_artifacts={path: {"model_id": "m999", "filed_hazard_mean": 0.0}},
+    )
+    assert _report_divergence(result) == 1.0
+
+
 def test_severity_report_divergence_uses_registered_tier_i_estimator():
     oracle = OracleWorld(seed=7, substrate_data=load_substrate().data)
     model = oracle.create_model({"scale": 0.6, "safety_effort": 0.5})

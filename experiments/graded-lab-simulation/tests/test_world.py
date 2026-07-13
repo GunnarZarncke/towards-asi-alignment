@@ -124,3 +124,11 @@ def test_phase3_gate_eai_non_degenerate_across_20_seeds():
     eais = [run_episode(cfg, seed=s, backend=MockIsolate()).eai for s in range(20)]
     assert all(0.0 < e < 1.0 for e in eais)
     assert max(eais) - min(eais) > 0.01
+
+
+def test_pinned_combined_digest_seed_3_four_role_softmax():
+    """Regression anchor for full-ecology episode mechanics (post Phase 6)."""
+    result = run_episode(default_lab_config(), seed=3, backend=MockIsolate())
+    assert result.digests["combined"] == (
+        "6f864220701b675b819362adfe82d025af2b962a99ebd4d944bc2f7aad625291"
+    )

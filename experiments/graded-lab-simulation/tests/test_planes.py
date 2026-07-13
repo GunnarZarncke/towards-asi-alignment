@@ -71,3 +71,10 @@ def test_isolate_boundary_observations_contain_no_oracle_fields():
     observed_keys = _keys_recursive(result.boundary_streams)
     leaked = observed_keys & set(ORACLE_ONLY_FIELDS)
     assert not leaked, f"oracle-only fields leaked into isolate observations: {leaked}"
+
+
+def test_primitive_log_projection_excludes_oracle_attachment():
+    result = run_episode(default_lab_config(), seed=11, backend=MockIsolate())
+    blob = json.dumps(result.primitive_log)
+    for fld in ("latent_hazard", "hazard_regions", "true_capability", "bearer_harm"):
+        assert fld not in blob
