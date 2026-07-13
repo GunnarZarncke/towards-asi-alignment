@@ -1,6 +1,6 @@
 # Graded Lab Simulation — findings
 
-**Status:** Phases 0–6 engineering (2026-07-12). No ecology calibration
+**Status:** Phases 0–7b engineering (2026-07-13). No ecology calibration
 battery yet (Phase 7c).
 
 ## G-0 (scaffold)
@@ -456,3 +456,130 @@ FINDINGS entries; the subagent designed 4 scenarios
   post hoc.
 - No CODE_VERSION-frozen threshold was changed to make any blind scenario
   pass, per prediction 5.
+
+## G-13 (Phase 7b: UAD-backed ecology-BIQ over inferred units)
+
+Pre-registered in `DESIGN.md` "Phase 7b UAD-backed ecology-BIQ" (K events,
+estimators, splits, smoothing, battery sizes) before writing
+`oracle_only/unit_biq.py`. Deliberately distinct from the Phase-4
+`ecology_biq.py` role-level `[0,1]`-clipped diagnostic proxy: operates on
+a UAD-**inferred** unit (a set of `actor_id`s), reports real held-out
+bits (which may be negative or `None`), never a clipped score.
+
+- **`I_pred`** (held-out bits saved on the 3 per-tick K events by
+  conditioning on the unit's own combined action-code signature, 60/40
+  tick-ordered train/test split, add-1 smoothed plug-in estimator):
+  works as intended — on `committee`'s `(rev1, rev2)` unit,
+  `review_token_within_10_ticks` shows a clearly positive reduction
+  (~0.25 bits at seed 3), the other two events are ~0 (reviewers do not
+  predict denial or deploy events at this ecology/seed). Reported as
+  three separate values, never averaged into one opaque number.
+- **`I_ctrl`** (intervention-supported: freeze every unit member to
+  `noop` vs. a matched clean run, discretized `(deploy_count,
+  bearer_harm)` outcome bucket, MI across a small seed battery): at
+  baseline substrate settings, `deploy_count` is nonzero on roughly 1 in
+  20 seeds (the Phase-3 freeze-gate "non-degenerate but not saturated"
+  band), so with the default 5-seed battery `I_ctrl` is very often
+  exactly `0.0` — an honestly-reported absence of signal at this battery
+  size, not an estimator bug. **A genuine negative/confounding result**
+  found while validating this: at seeds where deploy *does* happen (e.g.
+  seed 11 on `default_lab_config`), freezing the task-critical `eng1`
+  *and* freezing the unrelated `admin1` **both** collapse deploy to 0 —
+  because removing *any* actor changes shared-resource contention
+  (echoes the `shared_model_id` / `three_way_nod` bystander-coupling
+  finding in G-12). `I_ctrl` as specified cannot yet separate "this unit
+  is the task driver" from "this unit's removal changed contention for
+  everyone" without a contention-matched counterfactual (e.g. replacing
+  the frozen unit with a resource-neutral stand-in rather than `noop`).
+  Left as a documented limitation for Phase 7c, not patched by redefining
+  the control term post hoc.
+- **`H_mem`** (`log2(1 + distinct paid-read artifact paths)` from the
+  host-tracked `ObservationProjector` output, never isolate-private
+  memory): a crude but explicitly declared, audit-accessible proxy —
+  counts paths, not their information content, as pre-registered.
+- **`S_surp`** (held-out raw NLL of the unit's own next action-code given
+  its own previous code, same plug-in machinery as `I_pred` in
+  `mode="nll"`): finite and non-negative on all golden ecologies tried;
+  no anomalies.
+- **`field_incident_rate_above_median`** is correctly reported as `None`
+  ("unavailable") for every single-episode call, per the pre-registration
+  — it needs a ≥2-episode battery to define a median.
+- Tests: `tests/test_unit_biq.py` — 4 estimator-mechanics tests on
+  synthetic data (`held_out_bits` deterministic/no-signal/NLL/empty
+  cases), 2 unit tests for `H_mem`, 2 integration tests on `committee`
+  for `I_pred`/`S_surp`, 2 `@pytest.mark.slow` end-to-end tests for
+  `I_ctrl` and the full composite report shape. `suite_max_seconds`
+  raised `165.0 → 190.0` and baseline refreshed for the added battery
+  cost (`165.86s` at last run).
+- **Not attempted this pass** (explicitly deferred, not silently
+  dropped): a bias-corrected (Miller–Madow/NSB) MI estimator, a
+  contention-matched control counterfactual, and cross-episode
+  `field_incident_rate_above_median` aggregation — each would need its
+  own pre-registration before Phase 7c calibration.
+
+## G-14 (Phase 7b: `I_ctrl`'s outcome vector was task-scoped — reframed, fixed)
+
+Follow-up discussion of G-13's "resource-contention confound" concluded
+it was not primarily an estimator bug — it was a **specification bug**:
+the outcome vector `Y` fed to `I_ctrl` was scoped to
+`(deploy_count, bearer_harm)` alone, which silently reimports a task
+ontology into a term Chapter 11 explicitly defines to avoid one:
+`I_{\mathrm{ctrl}}^X = \MI(\mathrm{do}(A^X_t); E^X_{t+1})` is mutual
+information with the **full future external state**, not a
+task-completion slice of it (`ch11-capability-without-task-ontology.tex`
+§"Prediction and Control across a Boundary", §"Why This Is Task-Agnostic
+but Not Ontology-Free"). Under that reading, `admin1` controlling shared
+resource contention *is* real control information — just over a
+different, task-irrelevant part of `E` — and the two units "looking
+identical" in G-13 was an artifact of only measuring one thin slice of
+`E` (a single binary deploy event), not evidence that the estimator
+conflates two different kinds of causal influence.
+
+**Root cause, traced honestly:** the narrow `(deploy_count, bearer_harm)`
+scoping was inherited from the pre-existing Phase-4 diagnostic
+(`ecology_biq.py::compute_biq_ctrl`, which reuses the already-frozen
+`DEPLOY_CAP`/`HARM_CAP` constants for engineering convenience/continuity
+with that earlier, explicitly-non-BIQ proxy) and carried into Phase 7b
+without re-deriving it from `ch11`'s `E^X_{t+1}`. `PLAN.md`'s own Phase
+7b sketch names a slightly wider example vector (`deploy count, harm,
+divergence flag, review pass rate`) and explicitly warns "normalized
+outcome differences are only counterfactual diagnostics, not this
+term" — the implementation under-realized even that sketch.
+
+**Fix:** `Y` widened to a 4-component discretized state:
+`(deploy_bucket, harm_bucket, review_pass_bucket, contention_bucket)`,
+where `contention_bucket` (`none`/`some`≤2/`high`>2) counts denied
+primitives among actors *outside* the unit — a direct, cheap proxy for
+the unit's footprint on shared resource pressure, operationalizing
+exactly the channel G-13 exposed. Verified on the G-13 case (seed 11,
+`default_lab_config`): `frozen_eng1` → `(low, low, none, none)`,
+`frozen_admin1` → `(low, low, none, high)` — previously identical under
+the 2-component `Y`, now distinguished on the contention axis while
+deploy/harm still collapse identically for both. Regression test:
+`tests/test_unit_biq.py::test_outcome_state_distinguishes_task_driver_from_contention_bystander`.
+
+**Explicitly not exhaustive:** the 4-component `Y` is still a finite,
+pre-registered approximation of `E^X_{t+1}`, not the full external
+state (it omits e.g. carrier state, other actors' artifact/workspace
+deltas). Widening further is a Phase 7c-adjacent backlog item.
+
+**Checked `I_pred` for the same mistake — found a smaller, distinct,
+unresolved concern, left alone this pass.** `I_pred`'s chapter
+definition (`I_{\mathrm{pred}}^X = \MI(I^X_t; S^X_{t+1})`) is about the
+system's *own* future sensory stream, not a curated external milestone.
+The 3 per-tick K events (`next_primitive_denied`,
+`review_token_within_10_ticks`, `deploy_succeeds_within_40_ticks`) are
+boundary-relative in a way `I_ctrl`'s old outcome vector was not (they
+describe things that show up in or are computable from the unit's own
+primitive/boundary stream, not an externally-imposed success metric),
+and — unlike `I_ctrl`'s outcome vector, a Phase-7b-local design choice —
+they are the Phase-0/Phase-4 pre-registered boundary-event list, reused
+verbatim per this same section's rule. No confound analogous to
+`I_ctrl`'s was demonstrated for `I_pred`. Whether `deploy_succeeds` in
+particular is still too task-scoped relative to a genuine `S^X_{t+1}`
+is registered as an **open question for Phase 7c pre-registration**, not
+resolved here by changing a frozen constant on suspicion without
+demonstrated evidence.
+
+- Tests: 1 new regression test in `tests/test_unit_biq.py` (11 total in
+  that file now). `CODE_VERSION` `0.10.0 → 0.11.0`.

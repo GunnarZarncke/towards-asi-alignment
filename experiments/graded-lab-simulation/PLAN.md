@@ -1,10 +1,13 @@
 # Graded Lab Simulation — Implementation Plan
 
-**Status: Phases 0–7a done (incl. Phase 7a-blind scenario battery); Phase
-7b–7c not started (2026-07-13).** Phase 2–3 deliverables and freeze gates
-met; Phase 3b mechanics and Phase 4 trace/counterfactual engineering gates
-passed (see `results/FINDINGS.md` G-2–G-5, G-8–G-12). UAD-backed
-ecology-BIQ (7b) and calibration battery (7c) remain unimplemented.
+**Status: Phases 0–7b done (incl. Phase 7a-blind scenario battery and
+Phase 7b UAD-backed ecology-BIQ estimators); Phase 7c not started
+(2026-07-13).** Phase 2–3 deliverables and freeze gates met; Phase 3b
+mechanics and Phase 4 trace/counterfactual engineering gates passed (see
+`results/FINDINGS.md` G-2–G-5, G-8–G-14). Phase 7b's `I_ctrl` outcome
+vector was widened past task+harm alone to include a resource-contention
+dimension (G-13/G-14, fixed); calibration battery (7c) remains
+unimplemented.
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
@@ -615,7 +618,7 @@ bumped like lab-sim.
 | **5 — Referee port + FREEZE** | Severity + five detector families + twins + escalation (ported); Tier-I estimators with pre-registered uncertainty handling | **Referee frozen** — Tier-K exact, Tier-I estimator+CI fixed, constants from mechanics only |
 | **6 — Blind behavior features** | `BLIND_GENERATION.md`, `generated_behavior_features_v1.json`, validator | Generator predictions registered before code import |
 | **7a — UAD + intervention trace validation** | Port/adapt UAD over primitive traces; perturbation protocol; recovered-unit evaluation | UAD unit/boundary recovery and intervention semantics checked before any BIQ estimator is fitted |
-| **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable |
+| **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable — **done** (`oracle_only/unit_biq.py`, G-13); `I_ctrl` resource-contention confound documented, not silently patched |
 | **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) |
 | **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Only if Phase 7 passes** — pre-registered selection rule, no retrospective tuning |
 

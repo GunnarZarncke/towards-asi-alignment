@@ -1,5 +1,5 @@
 {
-  "suite_max_seconds": 165.0,
+  "suite_max_seconds": 190.0,
   "fast_suite_max_seconds": 58.0,
   "default_test_max_seconds": 6.0,
   "regression_slack_ratio": 1.35,
@@ -18,6 +18,8 @@
     "tests/test_uad_ecology_partition.py::test_signal_handoff_pair_needs_standalone_dependency_scoring": 10.0,
     "tests/test_uad_intervention.py::test_intervention_exact_on_primary_scenarios[communicator_pair_config-communicator_pair_programs-true_pair1]": 6.0,
     "tests/test_uad_blind_scenarios.py::test_three_way_nod_is_a_genuine_miss_for_both_methods": 16.0,
-    "tests/test_uad_blind_scenarios.py::test_watched_flag_passive_misses_and_intervention_recovers": 6.0
+    "tests/test_uad_blind_scenarios.py::test_watched_flag_passive_misses_and_intervention_recovers": 6.0,
+    "tests/test_unit_biq.py::test_unit_control_bits_runs_battery_and_returns_bits_or_none": 8.0,
+    "tests/test_unit_biq.py::test_unit_ecology_biq_reports_every_component_never_only_composite": 8.0
   }
 }

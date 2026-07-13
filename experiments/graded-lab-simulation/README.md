@@ -4,9 +4,10 @@ Fifth in-repo experiment line (successor substrate to `lab-simulation/`).
 Spawned by G-41: boolean ecology limits; ambiguity must **emerge** from a
 blinded resource/population substrate, not from dialed parameters.
 
-**Status: Phases 0–7a done (incl. Phase 7a-blind scenario battery); Phase
-7b–7c not started (2026-07-13)**
-`CODE_VERSION` `graded-lab-0.9.0` — see `DESIGN.md` for frozen constants.
+**Status: Phases 0–7b done (incl. Phase 7a-blind scenario battery and
+Phase 7b UAD-backed ecology-BIQ estimators); Phase 7c not started
+(2026-07-13)**
+`CODE_VERSION` `graded-lab-0.11.0` — see `DESIGN.md` for frozen constants.
 
 ## Quick start
 
@@ -49,7 +50,8 @@ python3 report_isolate_cost.py
 | 5 Referee port + freeze | **done** (tier projections, five detector families, twins, escalation, Tier-I-aligned misreporting; see `results/FINDINGS.md` G-8) |
 | 6 Blind behavior features | **done** (`generated_behavior_features_v1.json`, `feature:*` programs, validator; see G-9) |
 | 7a UAD + intervention validation | **done** (primitive traces, passive + standalone-dependency intervention discovery, full-partition ecology battery, blind scenario-designer battery; see G-10–G-12) |
-| 7b–7c UAD-backed BIQ + calibration | not started |
+| 7b UAD-backed ecology-BIQ | **done** (`oracle_only/unit_biq.py`: held-out `I_pred`/`S_surp` bits, intervention-supported `I_ctrl` over a 4-component outcome state, declared `H_mem` proxy over UAD-inferred units; `I_ctrl`'s outcome vector was widened past task+harm alone to fix a resource-contention confound — see G-13/G-14) |
+| 7c Calibration battery | not started |
 | 8 Multi-episode / selection | not started |
 
 ## Rules

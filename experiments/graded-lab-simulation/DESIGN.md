@@ -347,6 +347,114 @@ calibration battery (Phase 7c).
 
 ---
 
+## Phase 7b UAD-backed ecology-BIQ (pre-registered 2026-07-13, before code)
+
+Operates on a UAD-**inferred** unit (a set of `actor_id`s from Phase 7a
+passive or intervention discovery — never the raw host role), never on a
+single host actor. This is the deliberate difference from the Phase-4
+`role_boundary_proxy` (`oracle_only/ecology_biq.py`, kept as a labeled
+non-BIQ diagnostic): that proxy is per-actor, `[0,1]`-clipped, and uses a
+Brier-improvement score, not bits; this is per-unit and reports actual
+held-out bits, explicitly allowed to be negative or "unavailable."
+
+**K events** (reused verbatim from the Phase-4 pre-registration, §
+"Phase-4 trace diagnostics" above — not re-picked to fit this estimator):
+`next_primitive_denied`, `review_token_within_10_ticks`,
+`deploy_succeeds_within_40_ticks` are per-tick, within-episode events,
+scoped to the unit's own members (its combined primitive-log activity,
+not system-wide). `field_incident_rate_above_median` is an **across-seed
+battery** statistic (needs ≥2 episodes to define "median") and is
+reported as `None` ("unavailable") for single-episode calls rather than
+silently computed from n=1.
+
+**Generic estimator** (`unit_biq.held_out_bits`): plug-in discrete
+MI/NLL with **add-1 (Laplace) smoothing** over observed classes, **60/40
+tick-ordered train/test split** (train = first 60% of ticks, test = last
+40%, never shuffled — this is a within-episode held-out split, not
+cross-validation, chosen for computability per the Phase-0 guard). No
+external estimator library; this is intentionally a simple plug-in
+estimator, not a bias-corrected (e.g. Miller–Madow) one — flagged here so
+results are read as "held-out log-loss reduction in bits," not a
+publication-grade MI estimate.
+
+- **`I_pred`** (benefit): for each per-tick K event, `X_t` = the unit's
+  combined action-code signature this tick (sorted tuple of member codes
+  from `primitive_trace`, bucketed to a small integer id), `Y_t` = the
+  future event boolean. `I_pred^{event} = mean_test[-log2 P_train(y)] -
+  mean_test[-log2 P_train(y|x)]` (held-out bits saved by conditioning on
+  the unit's action) using `held_out_bits`. Reported as one bits value
+  per event (never averaged into an opaque scalar) plus their sum.
+  **Checked against the same task-ontology concern as `I_ctrl` (FINDINGS
+  G-14):** Chapter 11 defines `I_{\mathrm{pred}}^X = \MI(I^X_t;
+  S^X_{t+1})` — internal state vs. the system's *own* future sensory
+  stream, not a curated external milestone. The 3 per-tick K events are
+  not a fresh choice made in this phase; they are the Phase-4/Phase-0
+  pre-registered boundary-event list, reused verbatim per this
+  section's own rule above. Unlike `I_ctrl`'s outcome vector (a Phase
+  7b-local design choice with no comparable prior freeze), casually
+  re-picking this list would violate the "reused verbatim, not re-picked
+  to fit this estimator" commitment. No confound analogous to
+  `I_ctrl`'s was found or demonstrated for `I_pred` in this pass — the
+  concern is registered as an open question (are `next_primitive_denied`
+  /`review_token`/`deploy_succeeds` themselves too task-scoped relative
+  to a true `S^X_{t+1}`?) for Phase 7c pre-registration, not resolved by
+  changing frozen constants on suspicion alone.
+- **`I_ctrl`** (benefit): intervention-supported, reusing Phase 7a's
+  `program_freeze` machinery on *every* unit member simultaneously vs a
+  matched clean run, across a small **5-seed battery** (fixed
+  `ctrl_seeds=5`, same `cfg`/`programs`, seeds `0..4` offset from the
+  scoring seed) — not a single-seed normalized difference, which
+  PLAN.md explicitly rules out as diagnostic-only. `Z` = presence
+  indicator (clean=1, unit-frozen=0). `I_ctrl = held_out_bits` on
+  `(Z, Y)` pairs pooled across the battery (train = first 3 seeds, test
+  = last 2 — battery-level split, not tick-level, since `Z` is constant
+  within an episode).
+  **Outcome `Y` (revised 2026-07-13, see FINDINGS G-14):** the first
+  implementation scoped `Y` to `(deploy_count, bearer_harm)` alone,
+  which silently reintroduced a task ontology Chapter 11's
+  `I_{\mathrm{ctrl}}^X = \MI(\mathrm{do}(A^X_t); E^X_{t+1})` explicitly
+  avoids — `E^X_{t+1}` is the *full future external state*, not a
+  task-completion slice of it. This was caught because it produced a
+  real confound: freezing a task-critical actor and freezing an
+  unrelated bystander both collapsed deploy identically at some seeds
+  (both change shared-resource contention). `Y` is now a **4-component**
+  discretized state: `(deploy_bucket, harm_bucket, review_pass_bucket,
+  contention_bucket)`, where `contention_bucket` counts denied
+  primitives among actors *outside* the unit (`none` / `some` `≤2` /
+  `high` `>2`) — a direct, cheap proxy for the unit's footprint on
+  shared resource pressure, the exact channel the confound exposed.
+  This is still **not** exhaustive of `E^X_{t+1}` (it omits e.g. carrier
+  state, other actors' artifact deltas) — a further widening is a
+  Phase 7c-adjacent backlog item, not attempted here.
+- **`H_mem`** (cost): **explicitly declared, audit-accessible**
+  retained-state proxy — `log2(1 + |union over members of distinct
+  workspace-artifact paths ever paid-for-read|)`, read from each
+  member's final `boundary_stream` entry's `artifacts` dict (the
+  `ObservationProjector` output — host-tracked, pay-to-observe, never
+  isolate-private memory). This is a crude proxy (counts paths, not
+  their information content) and is documented as such; primitive/RPC
+  counts (`ecology_biq.compute_biq_mem`) remain a separate diagnostic,
+  not substituted in here.
+- **`S_surp`** (cost): held-out **raw** NLL (not an improvement delta)
+  of the unit's own next action-code given its own previous code —
+  order-1 self-predictability, `mean_test[-log2 P_train(x_t | x_{t-1})]`
+  via the same `held_out_bits` machinery in NLL-only mode.
+
+**Composite:** `K_biq = sum(I_pred) + alpha * I_ctrl - beta * H_mem -
+gamma * S_surp`, with `alpha = beta = gamma = 1.0` — round numbers, not
+fit to any battery outcome; revisit only via `FINDINGS.md` entry, never
+silently. Every component is reported alongside the composite; the
+composite alone is never the only output.
+
+**Explicitly not attempted:** a bias-corrected (Miller–Madow / NSB) MI
+estimator, cross-episode aggregation of `field_incident_rate_above_median`
+beyond a fixed battery, and any learned (non-plug-in) density model —
+all would need their own pre-registration and are left for a later
+`FINDINGS.md`-logged extension if the plug-in estimator proves too noisy
+in the Phase 7c battery.
+
+---
+
 ## Pipeline default
 
 `pipeline_graded.json` — nine steps, all load-bearing:
