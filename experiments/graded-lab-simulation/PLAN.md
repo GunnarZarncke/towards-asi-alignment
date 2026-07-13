@@ -1,13 +1,18 @@
 # Graded Lab Simulation — Implementation Plan
 
-**Status: Phases 0–7b done (incl. Phase 7a-blind scenario battery and
-Phase 7b UAD-backed ecology-BIQ estimators); Phase 7c not started
-(2026-07-13).** Phase 2–3 deliverables and freeze gates met; Phase 3b
-mechanics and Phase 4 trace/counterfactual engineering gates passed (see
-`results/FINDINGS.md` G-2–G-5, G-8–G-14). Phase 7b's `I_ctrl` outcome
-vector was widened past task+harm alone to include a resource-contention
-dimension (G-13/G-14, fixed); calibration battery (7c) remains
-unimplemented.
+**Status: Phases 0–7c done (incl. Phase 7c-revised calibration battery,
+correcting the initial Phase 7c evaluator); Phase 8 not started
+(2026-07-14).** Phase 2–3 deliverables and freeze gates met; Phase 3b
+mechanics and Phase 4 trace/counterfactual engineering gates passed
+(see `results/FINDINGS.md` G-2–G-5, G-8–G-16). Revised 5-cell
+`carrier_load_scale` calibration battery results live in
+`results/ecology_calibration.json` (run `python3
+run_phase7_calibration.py`; `--legacy` reproduces the original 16-cell
+compute×spread grid as a diagnostic). **Battery does not pass
+(1/4 criteria); Phase 8 is blocked on two registered backlog items
+(a resource-sensitive agent program; an `eai.py`/`world.py`
+entropy-logging fix), not on further substrate-grid search — see
+FINDINGS G-16 and `DESIGN.md` "Phase 7c-revised".**
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
@@ -619,7 +624,7 @@ bumped like lab-sim.
 | **6 — Blind behavior features** | `BLIND_GENERATION.md`, `generated_behavior_features_v1.json`, validator | Generator predictions registered before code import |
 | **7a — UAD + intervention trace validation** | Port/adapt UAD over primitive traces; perturbation protocol; recovered-unit evaluation | UAD unit/boundary recovery and intervention semantics checked before any BIQ estimator is fitted |
 | **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable — **done** (`oracle_only/unit_biq.py`, G-13); `I_ctrl` resource-contention confound documented, not silently patched |
-| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) |
+| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) — **implemented, then corrected** (`run_phase7_calibration.py`; G-15 initial run, G-16 correction — see "Phase 7c-revised" in `DESIGN.md`); full-battery pass/fail read from JSON; criteria 1/3/4 registered `inconclusive`-by-construction pending a resource-sensitive agent program (backlog) |
 | **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Only if Phase 7 passes** — pre-registered selection rule, no retrospective tuning |
 
 **Hard rule:** Phases 0–7 are **single-episode** only. Phase 8 is the first
@@ -662,6 +667,80 @@ BIQ.**
 Failure → adjust **substrate resource allowances / population spreads**
 (within blinded-designed ranges), **not** detector thresholds and **not** the
 EAI formula.
+
+**2026-07-14 correction (FINDINGS G-16):** the first implementation of
+this sketch (`graded_lab/oracle_only/calibration.py`, results in
+`FINDINGS.md` G-15) reported "3/4 criteria fail, grid doesn't span the
+bands" — that diagnosis was itself wrong. The real causes were two
+evaluator bugs (criterion 1 pooled two agent types into one slope,
+manufacturing a pass with no substrate effect measured; criterion 2
+re-derived "EAI band" as a per-record, per-agent-type classification,
+contradicting its own source definition in the "Emergent Ambiguity
+Index" section, which classifies a *cell* via a *reference* agent) and
+one scope gap (neither frozen agent program's deploy decision responds
+to substrate stress at all, so criteria 1/3/4 cannot be satisfied by
+*any* grid with the current roster). See `DESIGN.md` "Phase 7c-revised"
+for the corrected criteria, the reduced grid, and the registered
+predictions. **General lesson, generalized below so this class of
+mistake doesn't recur in a later battery.**
+
+### Battery design checklist (generalized from the G-16 postmortem;
+apply to any future calibration/sweep battery, not just 7c)
+
+A calibration battery couples three things that must each be checked
+*before* a full run, not inferred from why the run's criteria failed
+afterward:
+
+1. **Mechanism-sensitivity dry run.** For every knob you plan to sweep,
+   run a cheap 2–3-seed dry sweep over that knob's candidate values
+   (others held at nominal) and confirm it moves *every* metric a
+   criterion depends on by a non-trivial amount. A knob that changes an
+   allowance/scale but not the thing the criterion reads (e.g.
+   `compute_scale` here, whose effect the tick-duration formula
+   cancels out — allowance and cost both scale, so the per-tick
+   fraction spent stays ~constant) will silently make every downstream
+   criterion untestable, and the failure will *look like* "the grid
+   missed the band" rather than "this knob does nothing." Do this dry
+   run and record its numbers in the pre-registration *before* choosing
+   the grid, not after a full battery fails.
+2. **Re-derive band/threshold semantics from their original
+   definition, don't re-derive them ad hoc in the new phase.** If a
+   band or threshold was defined in an earlier section (e.g. "mid EAI:
+   reference agent's EAI, then compare strong vs weak *in that cell*"),
+   a later phase's evaluator must implement that exact reading. Grep the
+   original definition's wording for who/what is being classified
+   (a cell? an agent? an episode?) before writing the evaluator, and
+   write down the mapping explicitly in the new pre-registration ("cell
+   classified via reference agent X's mean over seeds, then both
+   compared agent types read off that cell") rather than reimplementing
+   from the criterion's one-line summary.
+3. **Never pool structurally different populations into one slope/
+   statistic without checking within-group variance first.** If a
+   criterion mixes agent types, conditions, or programs that could
+   independently determine the outcome (e.g. one program-type that
+   *never* deploys and one that *almost always* does), a pooled
+   regression can pass by group composition alone with zero within-group
+   signal. Compute the statistic within each group separately, and
+   report "inconclusive" (not silently pass/fail) for any group with
+   near-zero outcome variance.
+4. **A pass/fail criterion needs its precondition to be *reachable* in
+   principle, not just plausible.** Before pre-registering a threshold
+   like "high band, EAI ≥ 0.65," compute the metric's theoretical
+   ceiling under the current formula and agent roster (e.g. EAI's three
+   components are each bounded in `[0,1]`; if two of three are known to
+   be near-zero for structural reasons, the ceiling is well under the
+   threshold and the criterion cannot pass regardless of substrate).
+   If the ceiling is under the threshold, say so in the
+   pre-registration and mark the criterion `inconclusive`-by-construction
+   rather than discovering it after a full run.
+5. **"Adjust substrate within blinded ranges" is not an unlimited
+   escape hatch.** If dry-run evidence (step 1) shows *no* combination
+   within the frozen ranges moves a metric, the fix is not "try more
+   cells" — it is either a different pre-registered *dimension*
+   (reusing another already-frozen mechanism, e.g. `carrier_load_scale`
+   here, verbatim, not a newly-invented range) or an explicit registered
+   blocker on the agent roster / formula, written up before more
+   compute is spent on re-runs.
 
 ---
 
@@ -737,7 +816,7 @@ Graded-lab starts a fresh `results/FINDINGS.md` at Phase 0.
 |------|------------|
 | Primitive action space explodes optimizer cost | Hard cap on `\|F\|` (top-k affordable primitives by cheap prior), lookahead depth ≤ 2, cache affordable sets per (obs-digest) |
 | Emergent substrate too expensive to simulate | Tier-K generative truth fixed per seed; Tier-I estimators closed-form or cheap MC over already-drawn samples; computability guard rejects effects that are neither |
-| Sweet spot empty (all collapse or all succeed) | Adjust substrate allowances/populations within blinded ranges before touching referee; EAI measured so emptiness is visible early |
+| Sweet spot empty (all collapse or all succeed) | Adjust substrate allowances/populations within blinded ranges before touching referee; EAI measured so emptiness is visible early. **G-16 caveat:** first check (dry run) that the knob you're about to adjust has a demonstrated effect at all — an "empty" result can mean the knob is dead, not that the grid missed the band. |
 | Carrier load adds a second boolean-collapse knob | Pre-register the single load/recovery function and scale cells; retain scale zero as regression baseline; report load, integrity, skips, terminations, pipeline completion, and field harm separately rather than folding them into EAI |
 | Ecology-BIQ gamed by noop agents | Control term requires counterfactual baseline on same seed |
 | Blinded substrate designer produces an incoherent or uncomputable space | Phase 0 review is for internal coherence + computability only (not difficulty tuning); iterate the *brief*, not the outputs toward a target |

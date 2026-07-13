@@ -15,6 +15,7 @@ DEFAULT_BASELINE = _ROOT / "tests" / "speed_baseline.json"
 class SpeedLimits:
     suite_max_seconds: float
     fast_suite_max_seconds: float
+    smoke_suite_max_seconds: float
     default_test_max_seconds: float
     regression_slack_ratio: float
     regression_slack_seconds: float
@@ -27,6 +28,9 @@ def load_limits(path: Path = DEFAULT_LIMITS) -> SpeedLimits:
         suite_max_seconds=float(data["suite_max_seconds"]),
         fast_suite_max_seconds=float(
             data.get("fast_suite_max_seconds", data["suite_max_seconds"])
+        ),
+        smoke_suite_max_seconds=float(
+            data.get("smoke_suite_max_seconds", data.get("fast_suite_max_seconds", 30.0))
         ),
         default_test_max_seconds=float(data["default_test_max_seconds"]),
         regression_slack_ratio=float(data.get("regression_slack_ratio", 1.35)),

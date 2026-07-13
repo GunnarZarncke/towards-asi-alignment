@@ -154,4 +154,4 @@ Chapter 11 is designed to avoid, and `PLAN.md`'s own Phase 7b sketch
 
 ## Commits
 
-- None yet this session — pending explicit user request to commit.
+- `d8ab097` Complete graded-lab Phase 7b: UAD-backed ecology-BIQ and I_ctrl fix.

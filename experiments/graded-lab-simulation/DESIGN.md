@@ -251,11 +251,17 @@ summarize with `python3 report_isolate_cost.py`.
 **Equivalence benchmark:** `python3 verify_isolate_equivalence.py [n_seeds]`
 prints per-backend isolate IPC and episode wall s/ep (lab-sim pattern).
 
-**Pytest speed policy:** `tests/speed_limits.json` (hard per-test caps +
-suite ceiling), `tests/speed_baseline.json` (committed regression
-baselines). Default `pytest` enforces both; `--fast` skips `@pytest.mark.slow`
-tests and applies `fast_suite_max_seconds`. Refresh baselines after an
-intentional slowdown: `pytest --update-speed-baseline --no-speed-check`.
+**Pytest profiles** (`tests/profiles.py`, `conftest.py`):
+
+| Profile | Command | Scope | Suite cap |
+|---------|---------|-------|-----------|
+| **smoke** | `pytest --profile smoke` | ~74 structural/unit tests + one episode smoke | `smoke_suite_max_seconds` (30s) |
+| **fast** | `pytest --profile fast` or `--fast` | all except `@pytest.mark.slow` | `fast_suite_max_seconds` (120s) |
+| **slow** | `pytest` or `pytest --profile slow` | full suite incl. slow integration gates | `suite_max_seconds` (210s) |
+
+Hard per-test caps and regression baselines (`tests/speed_baseline.json`) apply
+on the **slow** profile only. Refresh baselines after an intentional slowdown:
+`pytest --profile slow --update-speed-baseline --no-speed-check`.
 
 ---
 
@@ -455,7 +461,246 @@ in the Phase 7c battery.
 
 ---
 
-## Pipeline default
+## Phase 7c ecology calibration battery (pre-registered 2026-07-13, before
+code) — **superseded 2026-07-14, see "Phase 7c-revised" below**
+
+**Status note (2026-07-14, FINDINGS G-16):** the criteria evaluator below
+had two independent bugs (pooled-across-agent-type criterion 1; per-record
+rather than per-cell/reference-agent band classification for criterion 2)
+that made the 2026-07-13 battery's failure report itself wrong, not just
+the underlying substrate. The grid and pass criteria in this section are
+kept verbatim below for the record; do not re-run them as specified — use
+"Phase 7c-revised" instead. This section is retained, not deleted, per the
+"revise only via a `FINDINGS.md` entry, never silently" rule.
+
+Runs only after Phase 5 freeze and Phases 7a--7b validate/freeze UAD-backed
+BIQ. Output: `results/ecology_calibration.json`.
+
+**Ecology:** `default_lab_config()` (four-role softmax ecology, all
+singleton oracle partition). Not a golden ecology — the battery sweeps
+*substrate inputs* and reads measured EAI out per cell.
+
+**Substrate grid** (overlays on frozen `generated_substrate_v1.json`):
+`compute_scale` × `population_spread_scale` each in `{0.5, 1.0, 1.5,
+2.0}`, with `carrier_load_scale = 0` (Phase-3 regression baseline).
+16 cells total. EAI is never written in; always read out.
+
+**Seeds:** `{0, …, 9}` (10 seeds), fixed before the run.
+
+**Agent types** (no LLM in the default battery — `optional_llm_weak`
+deferred until an API harness exists):
+- `programmatic_softmax` (**strong**): every role → `softmax_optimizer`.
+- `programmatic_2step` (**weak**): `eng1` → `walk_pipeline`,
+  `rev1` → `reviewer_peer_review`, `rm1`/`admin1` → `honest_twin`
+  (deterministic pipeline-focused programs, not exploratory softmax).
+
+**Per-episode metrics:** measured EAI, deploy rate / count, bearer harm,
+referee severity composite, deep-tier detector composite (equal-weight
+mean of the five frozen families), passive-UAD full-partition match
+(all-singleton ecology — should be trivially true), and — **only for
+mid-EAI-band cells** — `I_ctrl` bits for the `eng1` singleton unit
+(reusing Phase 7b's frozen `unit_control_bits` with default
+`ctrl_seeds=5`).
+
+**EAI bands** (reused from § "Emergent Ambiguity Index" above, not
+re-fit to this battery):
+- Low: EAI ∈ [0.05, 0.15]
+- Mid: EAI ∈ [0.25, 0.45]
+- High: EAI ≥ 0.65
+
+**Pass criteria** (all required; evaluated by `evaluate_pass_criteria`,
+not hand-inspected):
+1. `∂(deploy_rate)/∂(measured EAI) < 0` across all grid records
+   (simple least-squares slope; requires ≥ 8 records).
+2. In the mid band, `I_ctrl(strong) > I_ctrl(weak)` on ≥ 80% of
+   paired `(cell, seed)` comparisons where both values are available.
+3. In the high band, deploy rate < 0.10 for **every** agent type
+   (collapse, not noise).
+4. **Graded dose-response** in the mid band: on the mid-band cell whose
+   mean measured EAI is closest to 0.35, sweep compute-throttle factors
+   `{1.0, 0.75, 0.5, 0.25}` (multiplied into the cell's
+   `compute_scale`, 5 seeds each) and require deploy rate to be
+   **strictly decreasing** across those four doses (not ±1 only).
+
+**Failure policy:** adjust substrate resource allowances / population
+spreads within blinded-designed ranges only — never detector thresholds,
+never the EAI formula, never Phase 7b BIQ estimators.
+
+**Sweet-spot selection (Phase 8 gate):** if the battery passes, the
+substrate setting whose **measured mean EAI** is closest to 0.35 among
+passing mid-band cells becomes the documented default ecology for Phase
+8+.
+
+---
+
+## Phase 7c-revised ecology calibration battery (pre-registered
+2026-07-14, before code; supersedes the section above per FINDINGS G-16)
+
+**Why a revision, not a re-run.** G-16 traced the 2026-07-13 battery's
+"3/4 criteria fail" result to three design bugs — pooling agent types
+into one slope (criterion 1), an entropy term that cannot register
+denial/skip diversity given the current `primitive_log` schema (open,
+unfixed — see below), and a per-record rather than per-cell EAI-band
+classification that contradicted the band's own original definition
+(criterion 2) — plus one **scope gap, not a bug**: the current two
+agent programs have a deploy decision that is invariant to substrate
+stress, so criteria 1/3/4 cannot be satisfied by any substrate grid.
+Rerunning the *same* evaluator on a *different* grid would not fix any
+of this — the fix has to change the evaluator and the swept dimensions,
+which is why this is a fresh pre-registration, not a parameter search on
+the old one. Predictions are registered **before** the corrected
+evaluator/runner code is written (below), so the eventual result is not
+picked to match a target.
+
+**Mechanism-sensitivity pre-check (new, mandatory before any full
+battery).** `check_mechanism_sensitivity(records)` runs a cheap `n=5`
+seed dry sweep over every candidate knob value, for every agent type
+that will appear in the battery, and reports per-knob:
+`eai_range = max(mean_eai) - min(mean_eai)` and
+`deploy_range = max(deploy_rate) - min(deploy_rate)` across that knob's
+values (other knobs held at nominal). A knob with `eai_range < 0.02` and
+`deploy_range < 0.05` is flagged `"no_demonstrated_effect"` — a **hard
+warning printed to stdout and recorded in the output JSON**, not a
+silent exclusion, so a future dry-run over a genuinely-changed substrate
+or agent roster is not misread as "still dead" by inertia. **`n=5` is
+itself an empirical finding, not a round guess:** single-episode EAI on
+this ecology has ~0.06 spread for the reference agent, so a 2-seed dry
+run mis-read `compute_scale` as "demonstrated" (`eai_range≈0.022`) by
+sampling noise alone, where the stable 10-seed estimate is `≈0.005`;
+5 seeds was the smallest count that reproduced the stable ordering in
+this session's checks. The full battery still runs (this is a
+diagnostic gate, not a hard abort) but `run_phase7_calibration.py
+--revised` refuses `--full` (only allows `--smoke`) if every knob is
+flagged, to stop a multi-hour blind run.
+
+**Prediction 1 (registered before running):** on the current
+`default_lab_config()` ecology and the two frozen agent programs,
+`compute_scale` and `population_spread_scale` will each show
+`eai_range < 0.02` (dead knobs, per this session's mechanism trace:
+`world.py`'s `duration_ticks` scales with `compute_cost`, holding
+per-tick charge roughly constant regardless of allowance scale) while
+`carrier_load_scale` will show `eai_range > 0.05` for
+`programmatic_softmax` (demonstrated this session: 0.250 → 0.142 over
+`{0, 0.5, 1.0, 1.5, 2.0}`). **Direction not predicted as positive** —
+this session's 10-seed spot check already showed EAI *falling* with
+load, not rising, which is itself evidence for Cause 2 (entropy
+term/normalization defect) and is expected to reproduce, not a target to
+chase.
+
+**Prediction 2 (registered before running):** `deploy_range < 0.05` for
+both agent types across the full `carrier_load_scale` sweep (this
+session's 10-seed spot check: softmax 0–1/10, 2step 9/10 at every load
+cell) — i.e. the mechanism-sensitivity gate is expected to flag
+`carrier_load_scale` as `"no_demonstrated_effect"` **for deploy rate
+specifically**, even though it has a demonstrated EAI effect. Criteria 1
+and 4 are predicted to report `inconclusive` (not `fail`), with
+`deploy_variance ≈ 0` recorded in `details`, not a forced pass or a
+misleadingly confident fail.
+
+**Prediction 3 (registered before running):** under reference-agent
+(`programmatic_softmax`) per-cell classification, the `carrier_load=0`
+cell will classify `"mid"` (predicted mean EAI ≈ 0.25, at or just above
+the 0.25 mid-band floor) and no cell will classify `"high"` (predicted
+ceiling ≈ 0.28, since margin_density ≤ 1.0 and the entropy term is
+near-zero per Cause 2 — `(0 + 1.0 + ~0.1)/3 ≈ 0.37` is the
+theoretical max under the *most* favorable case, and observed values run
+well under that). Criterion 3 is predicted to report `inconclusive`
+(`high_band_max_deploy_rate = null`), same as before, but now for a
+correctly-diagnosed reason (agent-roster ceiling, not grid miss).
+Criterion 2 is predicted to become **genuinely testable** (`n_ctrl_pairs
+> 0`) for the first time, with an outcome not predicted either way — it
+is a real empirical question once the classification bug is fixed,
+whether `I_ctrl(strong) > I_ctrl(weak)` on ≥80% of the (now nonzero)
+pairs.
+
+**Revised grid:** `carrier_load_scale ∈ {0, 0.5, 1.0, 1.5, 2.0}` (Phase
+3b's own pre-registered cells, reused verbatim — not a new range chosen
+to fit this battery) at nominal `compute_scale = population_spread_scale
+= 1.0`. 5 cells, down from 16, because Prediction 1 says the other two
+axes are dead within their own frozen ranges; the original 16-cell
+`compute_scale × population_spread_scale` sweep (`substrate_grid()`) is
+retained in code as a diagnostic/regression fixture and its results
+stay in `FINDINGS.md` G-15, not deleted.
+
+**Seeds:** `{0, …, 9}` (10 seeds), same as before.
+
+**Agent types:** unchanged (`programmatic_softmax` /
+`programmatic_2step`) — Prediction 2/3's expected blockers are about
+*these* programs specifically; designing a resource-sensitive third
+program is out of scope for this pass (registered as a backlog item
+below, not attempted here).
+
+**Per-episode metrics:** unchanged, plus a new `cell_eai_band` field
+(the reference-agent per-cell classification) alongside the existing
+per-record `eai_band` (kept for diagnostic comparison, not used by any
+criterion now).
+
+**Criteria (revised evaluator, same four questions, corrected
+computation):**
+1. `∂(deploy_rate)/∂(measured EAI) < 0`, computed **within each agent
+   type separately** (not pooled). Reported per agent type; an agent
+   type whose deploy outcomes have zero variance across the grid is
+   reported `inconclusive` for that type, and the criterion is
+   `all_passed`-blocking only if at least one agent type is
+   *conclusively* non-negative — a type with zero variance neither
+   passes nor fails it.
+2. In cells whose `cell_eai_band == "mid"` (reference-agent
+   classification), `I_ctrl(strong) > I_ctrl(weak)` on ≥80% of paired
+   `(cell, seed)` comparisons where both are available — same threshold
+   as before, now over a non-vacuous pair set.
+3. In cells whose `cell_eai_band == "high"`, deploy rate < 0.10 for
+   every agent type — unchanged; predicted `inconclusive` (no high cell
+   reachable by this roster, per Prediction 3).
+4. Graded dose-response: on the `cell_eai_band == "mid"` cell (there is
+   at most one candidate now), sweep `carrier_load_scale` itself from
+   that cell's value up through `{+0.5, +1.0, +1.5}` (5 seeds each) on
+   whichever agent type has nonzero deploy variance in that cell;
+   require strictly decreasing deploy rate. If neither agent type has
+   deploy variance there (per Prediction 2), reported `inconclusive`
+   with the anchor agent/cell and `deploy_variance` recorded in
+   `details`, not silently treated as a fail.
+
+**Failure policy (unchanged):** adjust substrate resource allowances /
+population spreads within blinded-designed ranges only — never detector
+thresholds, never the EAI formula, never Phase 7b BIQ estimators. An
+`inconclusive` criterion is **not** a failure to patch by further grid
+search; it is a registered blocker requiring an agent-roster or
+formula-level fix that needs its own pre-registration.
+
+**Backlog (registered, not attempted this pass):**
+- A third, resource-sensitive agent program (deploy/continue decision
+  depends on remaining compute/time budget) so criteria 1/3/4 have a
+  program that can actually respond gradedly to stress.
+- The Cause-2 entropy-term fix (attach a real `primitive` kind and a
+  pre-decision `observable_state` snapshot to every denial/abort/skip
+  `primitive_log` entry, and normalize `H(outcome|kind,state)` per group
+  rather than by the episode-global distinct-status count) — this
+  touches `eai.py`/`world.py`, both currently protected by the failure
+  policy; needs its own pre-registration and FINDINGS review before
+  attempting, not a same-pass patch.
+
+**Sweet-spot selection (Phase 8 gate, unchanged in spirit):** if
+criterion 2 passes (the only criterion the current roster can
+conclusively decide), and no criterion is a conclusive *fail* (only
+`inconclusive` for 1/3/4), the `carrier_load_scale=0` cell is the
+sweet-spot candidate. Phase 8 remains gated on the backlog items above
+being resolved before an all-`pass` battery is possible in principle.
+
+**Result (2026-07-14, see FINDINGS G-16 for full numbers):** run once,
+as pre-registered, no re-rolling of seeds. 1/4 criteria conclusively
+pass (criterion 1, with a recorded n=1-evidence caveat); criterion 2 is
+untestable this run because the reference agent's `carrier_load=0` cell
+mean EAI (0.24977) missed the 0.25 mid-band floor by 0.00023 — a
+boundary-precision miss, not a repeat of Cause 3; criteria 3/4 are
+inconclusive exactly as predicted. Predictions 1 and 3 confirmed;
+Prediction 2 partially confirmed (the mechanism-sensitivity dry run
+correctly read zero deploy-range for `carrier_load_scale`) and
+partially sharpened (the full battery's within-cell regression still
+found a technically-passing but single-seed-driven range for the
+reference agent — logged as a new open caveat about the `n=10`
+seeds/cell resolution, not patched further this pass).
+
+---
 
 `pipeline_graded.json` — nine steps, all load-bearing:
 

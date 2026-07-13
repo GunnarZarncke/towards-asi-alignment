@@ -1,4 +1,4 @@
-"""Pytest path setup, slow-test gating, and speed-limit enforcement."""
+"""Pytest path setup, profile selection, and speed-limit enforcement."""
 
 from __future__ import annotations
 
@@ -17,14 +17,24 @@ from graded_lab.harness.speed_limits import (  # noqa: E402
     load_limits,
     save_baseline,
 )
+from tests.profiles import (  # noqa: E402
+    is_smoke_item,
+    resolve_profile,
+)
 
 
 def pytest_addoption(parser: pytest.Parser) -> None:
     parser.addoption(
+        "--profile",
+        choices=("smoke", "fast", "slow"),
+        default="slow",
+        help="Test profile: smoke (~30s), fast (~60s, no @slow), slow/full (~210s)",
+    )
+    parser.addoption(
         "--fast",
         action="store_true",
         default=False,
-        help="Skip tests marked slow (dev loop only; does not refresh full-suite baselines)",
+        help="Alias for --profile fast (dev loop; skips @slow tests)",
     )
     parser.addoption(
         "--update-speed-baseline",
@@ -43,22 +53,51 @@ def pytest_addoption(parser: pytest.Parser) -> None:
 def pytest_configure(config: pytest.Config) -> None:
     config.addinivalue_line(
         "markers",
+        "smoke: minimal invariant gate (selected automatically; run with --profile smoke)",
+    )
+    config.addinivalue_line(
+        "markers",
         "slow: expensive multi-seed or full-episode integration test",
     )
     config._speed_durations: dict[str, float] = {}
+    config._active_profile = resolve_profile(
+        profile=config.getoption("--profile"),
+        fast_flag=config.getoption("--fast"),
+    )
 
 
 def pytest_collection_modifyitems(
     config: pytest.Config, items: list[pytest.Item]
 ) -> None:
-    if not config.getoption("--fast"):
-        return
-    skip_slow = pytest.mark.skip(
-        reason="slow test skipped (pass --fast only skips; omit --fast for full suite)"
-    )
+    profile = config._active_profile
+    selected: list[pytest.Item] = []
+    deselected: list[pytest.Item] = []
+
     for item in items:
-        if "slow" in item.keywords:
-            item.add_marker(skip_slow)
+        module_name = item.module.__name__.split(".")[-1] if item.module else ""
+        keywords = set(item.keywords)
+
+        if is_smoke_item(item.nodeid, module_name, keywords=keywords):
+            item.add_marker(pytest.mark.smoke)
+
+        if profile == "slow":
+            selected.append(item)
+            continue
+        if profile == "fast":
+            if "slow" in keywords:
+                deselected.append(item)
+            else:
+                selected.append(item)
+            continue
+        # smoke
+        if "smoke" in item.keywords:
+            selected.append(item)
+        else:
+            deselected.append(item)
+
+    if deselected:
+        config.hook.pytest_deselected(items=deselected)
+    items[:] = selected
 
 
 @pytest.hookimpl(hookwrapper=True)
@@ -79,34 +118,47 @@ def pytest_sessionfinish(session: pytest.Session, exitstatus: int) -> None:
     if not durations:
         return
 
+    profile = config._active_profile
+
     if config.getoption("--update-speed-baseline"):
-        payload = save_baseline(durations)
-        print(
-            f"\n[speed] updated baseline: {len(payload['tests'])} tests, "
-            f"suite {payload['suite_total_seconds']:.2f}s"
-        )
+        if profile != "slow":
+            print(
+                f"\n[speed] skipped baseline update: --update-speed-baseline "
+                f"requires --profile slow (got {profile!r})"
+            )
+        else:
+            payload = save_baseline(durations)
+            print(
+                f"\n[speed] updated baseline: {len(payload['tests'])} tests, "
+                f"suite {payload['suite_total_seconds']:.2f}s"
+            )
 
     if config.getoption("--no-speed-check"):
         return
 
     limits = load_limits()
     baseline = load_baseline()
-    suite_cap = limits.fast_suite_max_seconds if config.getoption("--fast") else None
+    if profile == "smoke":
+        suite_cap = limits.smoke_suite_max_seconds
+    elif profile == "fast":
+        suite_cap = limits.fast_suite_max_seconds
+    else:
+        suite_cap = limits.suite_max_seconds
+
     violations = check_speeds(durations, limits, baseline, suite_cap=suite_cap)
     if not violations:
         suite_total = sum(durations.values())
-        cap = suite_cap if suite_cap is not None else limits.suite_max_seconds
         print(
-            f"\n[speed] OK: {len(durations)} tests, suite {suite_total:.2f}s "
-            f"(limit {cap:.2f}s)"
+            f"\n[speed] OK [{profile}]: {len(durations)} tests, "
+            f"suite {suite_total:.2f}s (limit {suite_cap:.2f}s)"
         )
         return
 
-    print("\n[speed] LIMIT VIOLATIONS:")
+    print(f"\n[speed] LIMIT VIOLATIONS [{profile}]:")
     for line in violations:
         print(f"  - {line}")
     print(
         "  Hint: refresh committed baselines after an intentional change with "
-        "`pytest --update-speed-baseline --no-speed-check` (full suite, no --fast)."
+        "`pytest --profile slow --update-speed-baseline --no-speed-check`."
     )
     session.exitstatus = 1

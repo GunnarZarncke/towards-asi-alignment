@@ -27,6 +27,18 @@ def test_suite_cap_triggers():
     assert any("suite total" in v for v in violations)
 
 
+def test_smoke_suite_cap_triggers():
+    limits = load_limits()
+    over_cap = float(limits.smoke_suite_max_seconds) + 5.0
+    violations = check_speeds(
+        {"tests/test_a.py::test_one": over_cap},
+        limits,
+        {"tests": {}, "suite_total_seconds": 0.0},
+        suite_cap=limits.smoke_suite_max_seconds,
+    )
+    assert any("suite total" in v for v in violations)
+
+
 def test_regression_cap_triggers():
     limits = load_limits()
     baseline = {
