@@ -30,7 +30,8 @@ const APPENDIX_FILES = [
   { id: "appC", file: "appendices/appC-institutional-translation.tex", order: 101 },
   { id: "appM", file: "appendices/appM-institutional-histories.tex", order: 102 },
   { id: "appD", file: "appendices/appD-worked-example.tex", order: 103 },
-  { id: "appF", file: "appendices/appF-research-program.tex", order: 104 }
+  { id: "appF", file: "appendices/appF-research-program.tex", order: 104 },
+  { id: "appN", file: "appendices/appN-experimental-evidence.tex", order: 105 }
 ];
 
 const PART_RANGES = [
@@ -163,7 +164,8 @@ async function main() {
     "appendices/appI-value-bundle-inference.tex",
     "appendices/appJ-correction-channel-audit.tex",
     "appendices/appK-safety-case-template.tex",
-    "appendices/appL-assumptions.tex"
+    "appendices/appL-assumptions.tex",
+    "appendices/appN-experimental-evidence.tex"
   ];
 
   for (const rel of labelScanPaths) {

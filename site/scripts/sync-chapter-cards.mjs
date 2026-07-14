@@ -206,7 +206,24 @@ async function main() {
         "Every safety institution we now take for granted — drug approval, aircraft certification, independent accident investigation, constitutional limits on power — was once missing. Someone built it, under specific pressures, and it either survived or it didn't. This appendix reads eleven such histories and asks three plain questions of each: how did the institution come to exist, what kept it honest and working once it existed, and what exactly broke when it failed?\n\nThe answers cluster. Institutions that check power or catch errors are almost never designed from theory in advance. They are built in one of three ways: because someone's own money was already exposed to hidden risk (Lloyd's ship registry, born from insurers' losses); because a disaster killed enough people to force reform (American drug regulation, built one body count at a time); or because the threat was constant and could not be forgotten (the Dutch water boards, which never needed a founding scandal because the sea never stopped rising). Once built, they stay alive only through active maintenance: preserving evidence before anyone has the power to act on it (flight recorders came before the modern aviation regulator had teeth), refusing to let anything operate without passing inspection (certification backed by insurers who will not cover the uncertified), writing the rules into the thing itself so successors inherit them (the GPL software license travels with the code, whatever the new owner intends), and deliberately re-teaching rare dangers to people who never lived through them (Venice renegotiated the doge's contract at every succession, for centuries).\n\nAnd they fail in a small number of recurring ways. Rules decay when the generation that remembers why they were written retires — Depression-era banking constraints eroded on roughly a human career's timescale, and 2008 followed. Regulators born with two jobs — promote the industry and police it — reliably sacrifice the policing, as the U.S. Atomic Energy Commission did until Congress split it in two in 1974; this is arguably the single most direct historical warning for how AI oversight bodies are being chartered today. And sometimes a new kind of power simply appears faster than any existing check can adapt: Rome's constitution had survived three and a half centuries of stress, but it had no mechanism for a general whose legions were loyal to him personally, and Caesar crossed the Rubicon.\n\nOne asymmetry matters more than all the parallels. The strongest safety regimes humanity has built were paid for in disasters that were survivable — the polity endured, learned, and reformed. That path assumes you get to fail first and legislate afterward. If a failure with a sufficiently capable AI system is unrecoverable, the most productive route to safety institutions in human history is unavailable precisely when it is needed most. That is why the cases that did *not* require a catastrophe — self-interested vigilance, constant visible threat, memory that renews itself, and rules entrenched against their own removal — carry more weight for AI governance than their share of the historical record would suggest.\n\nEach card below covers one mechanism through one historical case. For the complete narrative with sources, [read the full appendix on site](full/) or [download the PDF](../../../towards-superintelligence-alignment.pdf)."
     },
     { id: "appD", file: "appendices/appD-worked-example.tex", type: "appendix", title: "Worked Example" },
-    { id: "appF", file: "appendices/appF-research-program.tex", type: "appendix", title: "Research Program" }
+    { id: "appF", file: "appendices/appF-research-program.tex", type: "appendix", title: "Research Program" },
+    {
+      id: "appN",
+      file: "appendices/appN-experimental-evidence.tex",
+      type: "appendix",
+      title: "Experimental Evidence: Findings by Line",
+      related: [
+        "experiment-methodology",
+        "intervention-supported-unit-discovery",
+        "unit-discovery-stress-test",
+        "evidence-and-uncertainty",
+        "mb1-boundary-estimator-soundness",
+        "mb4-correction-legitimacy",
+        "mb6-selection-and-basin-stability"
+      ],
+      bodyExtra:
+        "Curated index of load-bearing findings across six experiment lines. Each entry uses a global line-unique ID (AD-, TS-, ES-, GA-, LS-, GL-), is classified as positive, negative, or ambiguous evidence for the nearest manuscript claim, and links to the chapter section that cites it when one exists. Full per-line narrative and the complete findings ledger for each line live in docs/EXPERIMENTS.md and the experiment READMEs."
+    }
   ];
 
   for (const spec of appendixSpecs) {
