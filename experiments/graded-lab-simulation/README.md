@@ -4,17 +4,22 @@ Fifth in-repo experiment line (successor substrate to `lab-simulation/`).
 Spawned by GL-41: boolean ecology limits; ambiguity must **emerge** from a
 blinded resource/population substrate, not from dialed parameters.
 
-**Status: Phases 0–7c done; Phase 8 scaffold + first battery run (GL-23,
-2026-07-14).** Phase 8 implements throughput-linked selection with
-campaign grant/standing carryover on the GL-22 referee sweet-spot ecology;
+**Status: Phases 0–7c done; Phase 8 scaffold + battery (GL-23), reviewed
+(GL-24), and follow-up phases 8a/8b/8c run (GL-25/26/27, 2026-07-14).**
+Phase 8 implements throughput-linked selection with campaign
+grant/standing carryover on the GL-22 referee sweet-spot ecology;
 first full run is a **clean null** on detector-evading emergence (mass
-shifted to `weak_2step`, severity fell). See FINDINGS GL-23. **Reviewed
-same day (GL-24):** four concerns registered before manuscript use —
-confounded `correction_preserving` tag, too-narrow throughput-only
-selection proxy, unvalidated campaign carryover, unqualified Phase-7
-gate language — with three proposed follow-up phases (8a/8b/8c) in
-`DESIGN.md`, none yet implemented.
-`CODE_VERSION` `graded-lab-0.15.0` — see `DESIGN.md` for frozen constants.
+shifted to `weak_2step`, severity fell; GL-23). External review (GL-24)
+raised four concerns; each has a follow-up result: **8a** (orthogonal
+tagging) found the mass shift is *not* explained by a measurable
+throughput difference between the tagged members — a selection-noise
+finding, sharpening GL-23's causal claim (GL-25); **8b** (multi-handle
+fitness) reproduces GL-23's direction under the pre-registered
+audit-pass/latency-augmented fitness too — a proxy-insensitivity result
+(GL-26); **8c** (carryover ablation) found carryover vs. reset *are*
+statistically distinguishable, though the effect size on mass share is
+small (GL-27). Concern 4 (gate-language) fixed in `PLAN.md`.
+`CODE_VERSION` `graded-lab-0.16.0` — see `DESIGN.md` for frozen constants.
 
 ## Quick start
 

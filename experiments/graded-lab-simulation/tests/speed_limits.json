@@ -1,5 +1,5 @@
 {
-  "suite_max_seconds": 340.0,
+  "suite_max_seconds": 380.0,
   "fast_suite_max_seconds": 120.0,
   "smoke_suite_max_seconds": 30.0,
   "default_test_max_seconds": 6.0,

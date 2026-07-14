@@ -602,6 +602,129 @@ numbers already in GL-23.
 
 ---
 
+## Phase 8a/8b/8c concrete protocols (pre-registered 2026-07-14, before
+code; implements the three proposed follow-up phases above)
+
+**Status: implemented and run same day.** Results in FINDINGS GL-25
+(8a), GL-26 (8b), GL-27 (8c). Summary: 8a found the GL-23 mass shift is
+not explained by a statistically distinguishable throughput difference
+once the tag is decoupled from member identity (a selection-noise
+finding); 8b's multi-handle fitness delays but does not reverse GL-23's
+collapse; 8c found carryover vs. reset ARE distinguishable (both paired
+CIs exclude zero), though the mass-share effect is small.
+
+### Phase 8a — orthogonal preservation tagging
+
+**Structural tagging rule (fixed before any run, not fit to a
+direction):** `correction_preserving = True` iff a member's `rm1`
+program is `rm_status_reporter` — a new release-manager program that
+performs the exact same deterministic step sequence as `honest_twin`'s
+release-manager behavior (`_rm_step_choice` over `_RM_STEPS`) but sends
+one `communicate` primitive to the reviewer (a status report,
+correction-channel-relevant per ch26/ch27) before its first pipeline
+step each episode. `rm1 = honest_twin`'s existing release-manager
+behavior (no report) is the `False` baseline. Both members otherwise
+use the **same** underlying agent type (`WEAK_AGENT`: `eng1
+= walk_pipeline`, `rev1 = reviewer_peer_review`, `admin1
+= honest_twin`) — deploy-relevant pipeline behavior is held constant;
+only the presence of the status-report communicate varies. Neither
+member is `strong_softmax`, so the tag no longer coincides with "is
+this the one member that happened to be tagged `strong_softmax`" the
+way GL-23's did.
+
+**Population/protocol:** identical shape to GL-23 (population 8,
+alternating the 2 orthogonal members 4/4, 6 generations, 2
+episodes/member, same ecology `carrier_load_scale=1.5`, same seed
+derivation), so results are directly comparable to GL-23's numbers,
+not a different-shaped battery.
+
+**Pre-registered predictions:**
+1. Because deploy-relevant steps are unchanged, mean throughput
+   (`deploy_count`) should be approximately equal between the two
+   members, up to a small timing cost from the extra `communicate`
+   tick.
+2. If deployment mass still shifts substantially away from
+   `rm_status_reporter`, the cause must be that timing cost (measurable
+   separately, e.g. via tick-of-first-deploy), not an RM decision
+   difference — report whichever holds, do not assume it is the
+   confound just because it is the more interesting story.
+3. This is a direct test of whether GL-23's "mass moved away from the
+   correction-preserving member" generalizes once correction-
+   preservation is decoupled from the strong/weak agent-type axis.
+
+**Falsifiable failure mode:** if the two members' throughput
+distributions are indistinguishable under `paired_diff_ci95` (paired by
+generation) *and* deployment mass still diverges sharply, that is a
+Phase 8 selection-noise finding (mass drift unrelated to either handle),
+not evidence about preservation — report as such, not silently folded
+into either direction.
+
+### Phase 8b — multi-handle selection fitness
+
+**Fitness vector (fixed weights, chosen before running, not tuned to
+reproduce GL-23's direction):** for member $i$ in a generation, using
+per-episode `deploy_count` (throughput), `audit_pass` (bool: no
+detector in `run_all_detectors` scored $\geq$ `DETECTOR_FLAG_THRESHOLD
+= 0.5$ — the midpoint of the detectors' existing $[0,1]$ range, not a
+value chosen after seeing outcomes), and `review_latency` (ticks from
+the first `ok` `build` engine-log event to the first `ok`
+`compliance_signoff` engine-log event; `cfg.T`, the full episode length,
+if either event never occurs — a worst-case default, not a silent
+drop):
+
+$$
+\text{fitness}_i = 0.5 \cdot \frac{\bar\tau_i}{\overline{\bar\tau}}
+  + 0.3 \cdot \frac{\bar a_i}{\overline{\bar a}}
+  + 0.2 \cdot \frac{\bar s_i}{\overline{\bar s}}
+$$
+
+where $\bar\tau_i$ is member $i$'s mean throughput, $\bar a_i$ its mean
+`audit_pass` rate, $\bar s_i = 1/(1+\bar\ell_i)$ a speed score from mean
+review latency $\bar\ell_i$ (lower latency $\to$ higher speed), and each
+overline-of-overline is the population mean of that per-member
+statistic for the generation. Weights `0.5/0.3/0.2` are a
+pre-registered choice (throughput remains the dominant handle, matching
+GL-23's proxy, with audit-pass and latency as secondary handles named
+in the ch34 selection-handle list) — not fit after seeing results.
+
+**Protocol:** same population (`sample_initial_population()`, GL-23's
+8-member roster), ecology, generations, and seeds as GL-23. Run the
+single-handle (throughput-only, reproducing GL-23 bit-for-bit) and
+multi-handle loops **both**, reported side by side — multi-handle does
+not replace GL-23.
+
+**Pre-registered predictions:**
+1. If throughput and audit-pass/latency are not strongly correlated
+   across members, the multi-handle trajectory's final
+   `correction_preserving_mass_share` may differ from GL-23's — report
+   the direction and magnitude of the difference, not just whether it
+   differs.
+2. If all members have statistically indistinguishable audit-pass and
+   latency (i.e. those two handles carry no signal on this roster), the
+   multi-handle result should closely track GL-23 — report that as a
+   proxy-insensitivity finding, not a null on selection generally.
+
+### Phase 8c — carryover ablation
+
+**Protocol:** run the identical GL-23 population/ecology/selection
+rule/seeds twice: once with campaign carryover as implemented (`
+carryover=True`, reproducing GL-23 exactly) and once with `
+campaign_state` forced to `None` at the start of every episode within
+every member (`carryover=False`, reset baseline) — no other change.
+
+**Pre-registered comparison:** paired by generation index (`n=6`,
+identical seeds under both conditions), `paired_diff_ci95` on the
+per-generation `weighted_mean_throughput` and
+`correction_preserving_mass_share` series between the two conditions.
+
+**Pre-registered decision rule:** if both series' paired differences
+have a 95% CI containing zero, report "Phase 8 as currently configured
+is statistically indistinguishable from a repeated-single-episode loop"
+as a finding — not patched silently by, e.g., widening the grant/
+standing effect after seeing this result.
+
+---
+
 ## Primitive action surface
 
 Agents issue one primitive per tick (or `continue_current`/`abort` when busy):

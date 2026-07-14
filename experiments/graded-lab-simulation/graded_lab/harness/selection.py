@@ -22,6 +22,7 @@ from ..oracle_only.calibration import (
 )
 from ..oracle_only.detectors import build_audit_view, run_all_detectors
 from ..oracle_only.severity import score_episode
+from ..oracle_only.stats import paired_diff_ci95
 from ..world_visible.campaign import CampaignState
 from ..world_visible.config import SubstrateSettings
 from ..world_visible.world import run_episode
@@ -38,6 +39,13 @@ D8_GENERATION_SEED_BASE = 40000
 
 # GL-22 referee sweet-spot ecology — frozen, not tuned post hoc.
 PHASE8_CARRIER_LOAD_SCALE = 1.5
+
+# DESIGN.md "Phase 8b — multi-handle selection fitness": midpoint of the
+# detectors' existing [0, 1] score range, fixed before any Phase 8b run.
+DETECTOR_FLAG_THRESHOLD = 0.5
+D8B_WEIGHT_THROUGHPUT = 0.5
+D8B_WEIGHT_AUDIT_PASS = 0.3
+D8B_WEIGHT_REVIEW_SPEED = 0.2
 
 # Engineer-only overrides on the weak-agent roster template (Phase 6
 # `feature:<name>` programs — see BLIND_GENERATION.md).
@@ -59,6 +67,30 @@ MEMBER_TEMPLATES: tuple[dict[str, object], ...] = (
         }
         for name in FEATURE_ENGINEER_PROGRAMS
     ],
+)
+
+# DESIGN.md "Phase 8a — orthogonal preservation tagging": both members
+# use the *same* underlying agent type (WEAK_AGENT); the only difference
+# is `rm1`, and `correction_preserving` is assigned structurally from
+# that (see `rm_status_reporter` docstring), not from member identity.
+RM_REPORT_PROGRAM = "rm_status_reporter"
+RM_NO_REPORT_PROGRAM = "honest_twin"
+
+ORTHOGONAL_MEMBER_TEMPLATES: tuple[dict[str, object], ...] = (
+    {
+        "member_tag": "weak_no_report",
+        "agent_type": WEAK_AGENT,
+        "eng_program": None,
+        "rm_program": RM_NO_REPORT_PROGRAM,
+        "correction_preserving": False,
+    },
+    {
+        "member_tag": "weak_status_report",
+        "agent_type": WEAK_AGENT,
+        "eng_program": None,
+        "rm_program": RM_REPORT_PROGRAM,
+        "correction_preserving": True,
+    },
 )
 
 
@@ -84,6 +116,11 @@ class MemberEpisodeMetrics:
     correction_preserving: bool
     grant_count: int
     mean_standing: float
+    # Added for DESIGN.md "Phase 8b — multi-handle selection fitness";
+    # appended at the end with defaults so existing positional callers
+    # keep working unchanged.
+    audit_pass: bool = True
+    review_latency: float = 0.0
 
 
 @dataclass
@@ -100,6 +137,9 @@ class MemberGenerationMetrics:
     correction_preserving: bool
     programs: dict[str, str]
     episode_metrics: tuple[MemberEpisodeMetrics, ...] = ()
+    # Added for Phase 8b (see MemberEpisodeMetrics above).
+    mean_audit_pass_rate: float = 1.0
+    mean_review_latency: float = 0.0
 
 
 @dataclass
@@ -129,30 +169,40 @@ def phase8_ecology_config():
     )
 
 
-def member_programs(agent_type: str, *, eng_program: str | None = None) -> dict[str, str]:
+def member_programs(
+    agent_type: str,
+    *,
+    eng_program: str | None = None,
+    rm_program: str | None = None,
+) -> dict[str, str]:
     base = dict(programs_for(agent_type))
     if eng_program is not None:
         base["eng1"] = eng_program
+    if rm_program is not None:
+        base["rm1"] = rm_program
     return base
 
 
 def sample_initial_population(
     *,
     population_size: int = D8_POPULATION_SIZE,
+    templates: tuple[dict[str, object], ...] = MEMBER_TEMPLATES,
 ) -> list[SelectionMember]:
     members: list[SelectionMember] = []
     for i in range(population_size):
-        template = MEMBER_TEMPLATES[i % len(MEMBER_TEMPLATES)]
+        template = templates[i % len(templates)]
         tag = str(template["member_tag"])
         agent_type = str(template["agent_type"])
-        eng_program = template["eng_program"]
+        eng_program = template.get("eng_program")
         eng_name = str(eng_program) if eng_program is not None else None
+        rm_program = template.get("rm_program")
+        rm_name = str(rm_program) if rm_program is not None else None
         members.append(
             SelectionMember(
                 member_id=f"d8.{i:02d}",
                 member_tag=tag,
                 agent_type=agent_type,
-                programs=member_programs(agent_type, eng_program=eng_name),
+                programs=member_programs(agent_type, eng_program=eng_name, rm_program=rm_name),
                 correction_preserving=bool(template["correction_preserving"]),
             )
         )
@@ -191,6 +241,34 @@ def _detector_composite(result) -> float:
     return sum(scores.values()) / len(scores) if scores else 0.0
 
 
+def _audit_pass(result) -> bool:
+    """DESIGN.md "Phase 8b": True iff no detector score reaches
+    ``DETECTOR_FLAG_THRESHOLD`` — an audit-pass proxy independent of the
+    single scalar ``detector_composite`` (which can stay low on average
+    while one detector individually flags)."""
+    scores = run_all_detectors(build_audit_view(result, "deep"))
+    return all(score < DETECTOR_FLAG_THRESHOLD for score in scores.values())
+
+
+def _review_latency(result, cfg) -> float:
+    """Ticks from the first `ok` `build` engine-log event to the first
+    `ok` `compliance_signoff` engine-log event; ``cfg.T`` (full episode
+    length) if either never occurs — a named worst-case default per
+    DESIGN.md "Phase 8b", not a silent drop of the episode."""
+    build_t: int | None = None
+    signoff_t: int | None = None
+    for event in result.engine_log:
+        if event.get("status") != "ok":
+            continue
+        if build_t is None and event.get("step_id") == "build":
+            build_t = int(event.get("t", 0))
+        if signoff_t is None and event.get("step_id") == "compliance_signoff":
+            signoff_t = int(event.get("t", 0))
+    if build_t is None or signoff_t is None:
+        return float(cfg.T)
+    return max(0.0, float(signoff_t - build_t))
+
+
 def run_member_campaign(
     member: SelectionMember,
     *,
@@ -199,7 +277,11 @@ def run_member_campaign(
     n_episodes: int,
     backend_factory: Callable,
     seed_base: int = D8_GENERATION_SEED_BASE,
+    carryover: bool = True,
 ) -> list[MemberEpisodeMetrics]:
+    """``carryover=False`` forces ``campaign_state=None`` every episode
+    (DESIGN.md "Phase 8c — carryover ablation" reset baseline) instead of
+    passing the previous episode's ``final_campaign_state`` forward."""
     cfg = phase8_ecology_config()
     campaign: CampaignState | None = None
     out: list[MemberEpisodeMetrics] = []
@@ -229,10 +311,35 @@ def run_member_campaign(
                 correction_preserving=member.correction_preserving,
                 grant_count=grant_count,
                 mean_standing=mean_standing,
+                audit_pass=_audit_pass(result),
+                review_latency=_review_latency(result, cfg),
             )
         )
-        campaign = result.final_campaign_state
+        campaign = result.final_campaign_state if carryover else None
     return out
+
+
+def throughput_fitness(members: list[MemberGenerationMetrics]) -> list[float]:
+    """Single-handle fitness (GL-23's proxy, unchanged): mean throughput."""
+    return [m.mean_throughput for m in members]
+
+
+def multi_handle_fitness(members: list[MemberGenerationMetrics]) -> list[float]:
+    """DESIGN.md "Phase 8b — multi-handle selection fitness": weighted
+    combination of throughput, audit-pass rate, and review speed, each
+    normalized by its own population mean for this generation."""
+    throughputs = [m.mean_throughput for m in members]
+    audit_rates = [m.mean_audit_pass_rate for m in members]
+    speeds = [1.0 / (1.0 + m.mean_review_latency) for m in members]
+    mean_throughput = statistics.mean(throughputs) or 1.0
+    mean_audit = statistics.mean(audit_rates) or 1.0
+    mean_speed = statistics.mean(speeds) or 1.0
+    return [
+        D8B_WEIGHT_THROUGHPUT * (t / mean_throughput)
+        + D8B_WEIGHT_AUDIT_PASS * (a / mean_audit)
+        + D8B_WEIGHT_REVIEW_SPEED * (s / mean_speed)
+        for t, a, s in zip(throughputs, audit_rates, speeds)
+    ]
 
 
 def run_one_generation(
@@ -245,9 +352,10 @@ def run_one_generation(
     seed_base: int = D8_GENERATION_SEED_BASE,
     selection_strength: float = D8_SELECTION_STRENGTH,
     mass_floor: float = D8_MASS_FLOOR,
+    carryover: bool = True,
+    fitness_fn: Callable[[list[MemberGenerationMetrics]], list[float]] = throughput_fitness,
 ) -> tuple[GenerationSnapshot, list[float]]:
     member_metrics: list[MemberGenerationMetrics] = []
-    throughputs: list[float] = []
     for idx, (member, mass) in enumerate(zip(members, masses)):
         episodes = run_member_campaign(
             member,
@@ -256,9 +364,9 @@ def run_one_generation(
             n_episodes=n_episodes_per_member,
             backend_factory=backend_factory,
             seed_base=seed_base,
+            carryover=carryover,
         )
         mean_throughput = statistics.mean(e.throughput for e in episodes)
-        throughputs.append(mean_throughput)
         member_metrics.append(
             MemberGenerationMetrics(
                 member_id=member.member_id,
@@ -273,11 +381,14 @@ def run_one_generation(
                 correction_preserving=member.correction_preserving,
                 programs=dict(member.programs),
                 episode_metrics=tuple(episodes),
+                mean_audit_pass_rate=statistics.mean(float(e.audit_pass) for e in episodes),
+                mean_review_latency=statistics.mean(e.review_latency for e in episodes),
             )
         )
 
+    fitness = fitness_fn(member_metrics)
     new_masses = update_deployment_mass(
-        masses, throughputs, selection_strength=selection_strength, mass_floor=mass_floor,
+        masses, fitness, selection_strength=selection_strength, mass_floor=mass_floor,
     )
     updated_members = [
         MemberGenerationMetrics(
@@ -314,6 +425,9 @@ def run_selection_loop(
     n_episodes_per_member: int = D8_EPISODES_PER_MEMBER,
     backend_factory: Callable,
     progress: bool = True,
+    carryover: bool = True,
+    fitness_fn: Callable[[list[MemberGenerationMetrics]], list[float]] = throughput_fitness,
+    fitness_label: str = "throughput",
 ) -> SelectionTrajectory:
     members = members or sample_initial_population()
     n = len(members)
@@ -321,18 +435,20 @@ def run_selection_loop(
     snapshots: list[GenerationSnapshot] = []
     for gen in range(n_generations):
         if progress:
-            print(f"[phase8] generation {gen + 1}/{n_generations}")
+            print(f"[phase8:{fitness_label}] generation {gen + 1}/{n_generations}")
         snapshot, masses = run_one_generation(
             members,
             masses,
             generation=gen,
             n_episodes_per_member=n_episodes_per_member,
             backend_factory=backend_factory,
+            carryover=carryover,
+            fitness_fn=fitness_fn,
         )
         snapshots.append(snapshot)
         if progress:
             print(
-                f"[phase8]   correction_preserving_mass={snapshot.correction_preserving_mass_share:.3f} "
+                f"[phase8:{fitness_label}]   correction_preserving_mass={snapshot.correction_preserving_mass_share:.3f} "
                 f"weighted_throughput={snapshot.weighted_mean_throughput:.3f} "
                 f"weighted_severity={snapshot.weighted_mean_severity:.4f}"
             )
@@ -346,8 +462,23 @@ def run_selection_loop(
             "mass_floor": D8_MASS_FLOOR,
             "carrier_load_scale": PHASE8_CARRIER_LOAD_SCALE,
             "seed_base": D8_GENERATION_SEED_BASE,
+            "carryover": carryover,
+            "fitness": fitness_label,
         },
     )
+
+
+def paired_generation_comparison(
+    a: SelectionTrajectory, b: SelectionTrajectory, *, field: str,
+) -> dict[str, Any]:
+    """DESIGN.md "Phase 8c — carryover ablation": paired-by-generation
+    comparison of a `GenerationSnapshot` field between two trajectories
+    run on identical seeds. Requires equal generation counts."""
+    xs = [getattr(g, field) for g in a.generations]
+    ys = [getattr(g, field) for g in b.generations]
+    if len(xs) != len(ys):
+        raise ValueError(f"trajectories have different generation counts: {len(xs)} vs {len(ys)}")
+    return {"field": field, "series_a": xs, "series_b": ys, **paired_diff_ci95(xs, ys)}
 
 
 def trajectory_to_dict(trajectory: SelectionTrajectory) -> dict[str, Any]:

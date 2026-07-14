@@ -1,9 +1,10 @@
 # Graded Lab Simulation — Implementation Plan
 
-**Status: Phases 0–7c done; Phase 8 scaffold + first battery run (GL-23,
+**Status: Phases 0–7c done; Phase 8 scaffold + battery (GL-23), reviewed
+(GL-24), and follow-up phases 8a/8b/8c implemented and run (GL-25/26/27,
 2026-07-14).** Phase 2–3 deliverables and freeze gates met; Phase 3b
 mechanics and Phase 4 trace/counterfactual engineering gates passed (see
-`results/FINDINGS.md` GL-2–GL-5, GL-8–GL-23). Phase 8 implements
+`results/FINDINGS.md` GL-2–GL-5, GL-8–GL-27). Phase 8 implements
 throughput-linked selection with campaign grant/standing carryover on the
 GL-22 referee sweet-spot ecology (`carrier_load_scale=1.5`); first full run
 is a **clean null** on detector-evading emergence — mass shifted to
@@ -15,7 +16,15 @@ GL-23 is trusted for manuscript use** — confounded preservation tag,
 too-narrow selection proxy, unvalidated campaign carryover, and an
 unqualified Phase-7-gate note — each registered with a proposed follow-up
 phase (8a/8b/8c) in `DESIGN.md` "Phase 8 reviewer concerns and follow-up
-phases"; **not implemented this session.**
+phases", **implemented and run the same day**: 8a found the GL-23 mass
+shift is not explained by a statistically distinguishable throughput
+difference once the tag is decoupled from member identity — a selection-
+noise finding that weakens GL-23's causal read further (GL-25); 8b
+(multi-handle fitness) delays but does not reverse GL-23's collapse — a
+proxy-insensitivity result (GL-26); 8c (carryover ablation) found
+carryover does measurably change outcomes, though the mass-share effect
+is small (GL-27); concern 4's gate language fixed below (item 7, "What
+this is"). No manuscript text changed by GL-25/26/27.
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **GL-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
@@ -86,7 +95,12 @@ A **graded-capability lab** where:
 
 7. **Multi-episode campaigns and selection (MB6 / D3 analog)** are **Phase 8
    only**, gated on Phase 7 passing an ecology-BIQ calibration battery.
-   They are not part of the initial build.
+   They are not part of the initial build. **Gate resolved as a
+   deliberate, pre-registered exception, not a pass** (FINDINGS GL-22):
+   Phase 7c cleared 1/4 pass criteria under both vantages; Phase 8
+   proceeded anyway because the referee vantage supplied the first
+   non-hairline mid-band signal and a graded dose-response, which is the
+   ambiguity substrate Phase 8 tests. See GL-24 concern 4.
 
 ---
 
@@ -986,10 +1000,33 @@ text), not a code task; listed here so it is not lost as an open item.
    documentation fix, also not yet applied. **Manuscript consequence:**
    ch34's fit is currently the strongest of the three (selection proxy
    choice determines which systems spread, demonstrated directly) but
-   should state the proxy-dependence explicitly; ch36/ch40 have **no**
+   should state the proxy-dependence explicitly;    ch36/ch40 have **no**
    supporting evidence from this result — GL-23 shows no parasite
    signature and no goal-laundering signature, and should not be cited
    as if it did until 8a/8b at minimum are run.
+   **Phases 8a/8b/8c implemented and run same day (FINDINGS GL-25/26/27):**
+   8a (orthogonal preservation tagging) found the GL-23-style mass shift
+   is **not explained by a statistically distinguishable throughput
+   difference** between the tagged/untagged members — triggering the
+   pre-registered selection-noise failure mode: the compounding
+   fitness-proportional reallocation mechanism itself is sensitive
+   enough to per-generation sampling noise that "mass moved away from
+   the preserving member" cannot yet be read as "preservation was
+   selected against," even with a properly decoupled tag. 8b
+   (multi-handle fitness: throughput + audit-pass + review-latency,
+   pre-registered `0.5/0.3/0.2` weights) delays but does not reverse
+   GL-23's collapse — a proxy-insensitivity finding on this roster. 8c
+   (carryover ablation) found carryover **does** measurably change
+   outcomes (both paired 95% CIs exclude zero) but the effect on
+   correction-preserving mass share is small relative to the share
+   itself — a genuine but modest causal result, not the "repeated-
+   single-episode loop" null the ablation was designed to catch if
+   carryover turned out inert.
+   **Manuscript consequence (revised):** none of 8a/8b/8c strengthens
+   GL-23 into a clean preservation-vs-throughput tradeoff story; if
+   anything, 8a weakens the causal read further (selection-mechanism
+   noise, not preservation, may be driving the direction). Any ch34
+   citation of GL-23 should carry both the GL-24 and the GL-25 caveats.
 
 **Written into chapters 2026-07-14 (all four).** Each addition is a short,
 sourced, hedged paragraph at the point in the existing text that already
@@ -1012,7 +1049,14 @@ made the relevant abstract claim — not a rewrite of surrounding prose:
   Selection" (right after the $\mu_E$/$\mathrm{Fit}_E$ definitions): the
   GL-23 selection-battery result, stated with the GL-24 caveats inline
   (confounded preservation tag, single narrow throughput handle) rather
-  than as an unqualified confirmation.
+  than as an unqualified confirmation. **Updated 2026-07-14 (GL-25/26/27
+  manuscript harvest):** added a second paragraph on the three same-day
+  follow-up phases (orthogonal tagging → selection-mechanism-noise
+  finding; multi-handle fitness → proxy insensitivity; carryover
+  ablation → persistent state measurably matters, small mass-share
+  effect); `appN-experimental-evidence.tex` gained `finding:gl-24`--
+  `finding:gl-27` rows and MB6 crosswalk update; `metadata/claims-
+  ledger.md` C-007 support bullet updated.
 - `ch36`/`ch40` **deliberately left untouched** — GL-23 supplies no
   parasite or goal-laundering signature, so no addition was made; each
   chapter was checked for any premature claim already citing this line

@@ -1654,3 +1654,181 @@ not a correction to it.
 - No `CODE_VERSION` bump (documentation-only entry; `DESIGN.md`/
   `PLAN.md` updated, no `graded_lab` code touched).
 - No chapter text changed, per explicit instruction this session.
+
+## GL-25 (Phase 8a — orthogonal preservation tagging: the GL-23 mass
+shift is not explained by a measurable throughput difference)
+
+**Trigger.** GL-24 concern 1 / `DESIGN.md` "Phase 8a" (pre-registered
+protocol, before this run).
+
+**What was built.** `agent_visible/programs.py::rm_status_reporter` — a
+release-manager program identical to `honest_twin`'s RM behavior except
+it sends one `communicate` status report to the reviewer before its
+first pipeline step. `harness/selection.py::ORTHOGONAL_MEMBER_TEMPLATES`
+— two members, both `WEAK_AGENT` with `eng1=walk_pipeline`, differing
+only in `rm1` (`honest_twin` vs. `rm_status_reporter`).
+`correction_preserving` is assigned structurally from that difference,
+not from member identity. `sample_initial_population()` and
+`member_programs()` generalized to accept arbitrary templates and an
+`rm_program` override. `run_phase8a_orthogonal_tagging.py` reruns
+GL-23's exact population shape (8 members, 6 generations, 2
+episodes/member, same ecology/seed derivation) on this member set.
+
+**Result (`wall=40.4s`):** `correction_preserving_mass_share` fell from
+`0.402` (gen 0; note: not `0.5` — 4/8 alternating members split mass
+unevenly on generation 0 for reasons unrelated to this tag, see member
+index effects in the raw JSON) to `0.210` (gen 5), and `weighted_mean_
+throughput` *rose* over the same generations (`0.882` → `1.000`) — the
+same qualitative direction as GL-23. But a per-generation paired
+comparison (`paired_diff_ci95`, n=6) of the two tags' own mean
+throughput found **no statistically distinguishable difference**
+(mean diff `0.104`, 95% CI `(-0.049, 0.258)`, zero in CI) — the
+per-episode throughput records do show occasional `0.5`/`0.0` values
+for the report-sending member at low generations (a real, measured
+timing cost from the extra `communicate` tick — consistent with the
+pre-registered "confound" prediction), but not consistently enough to
+be distinguishable from noise at this sample size.
+
+**Pre-registered predictions vs. outcome:**
+1. *"Throughput should be ≈equal, up to a small timing cost"* — **held
+   as an aggregate statistical statement** (CI covers zero) even though
+   individual episodes show the predicted timing cost.
+2. *"If mass still shifts, the cause should be the measurable timing
+   cost, not an RM decision difference"* — **partially falsified**: the
+   timing-cost effect on throughput, while measured, is not large
+   enough by itself to be statistically distinguishable, yet mass still
+   moved by `-0.192` — this triggers the pre-registered **falsifiable
+   failure mode**: "if throughput is indistinguishable and mass still
+   diverges sharply, that is a Phase 8 selection-noise finding... not
+   evidence about preservation."
+3. Per that pre-registered rule, this result is reported as a
+   **selection-noise / amplification finding**, not a preservation
+   finding: `update_deployment_mass`'s fitness-proportional reallocation
+   compounds small per-generation throughput fluctuations
+   (statistically noise-level individually) into large cumulative mass
+   drift after 6 generations, regardless of which handle drove the
+   fluctuation.
+
+**Interpretation.** This sharpens GL-23 in the direction GL-24 concern 1
+anticipated, but not by finding a *different* real effect — it shows the
+Phase 8 selection *mechanism itself* (compounding fitness-proportional
+reallocation over few generations with few episodes/member) is
+sensitive enough to sampling noise that "mass moved away from the
+correction-preserving member" cannot yet be read as "correction-
+preservation was selected against" even when the tag is properly
+decoupled from agent identity. The manuscript should not cite GL-23's
+direction as caused by preservation without this caveat.
+
+- `CODE_VERSION` unchanged at `graded-lab-0.16.0` (bumped once for all
+  of GL-25/26/27's code this session).
+- Tests: `test_orthogonal_member_templates_share_agent_type_and_deploy_
+  programs`, `test_rm_status_reporter_sends_communicate_before_rm_
+  steps` (`tests/test_phase8_selection.py`).
+
+## GL-26 (Phase 8b — multi-handle selection fitness: reproduces GL-23's
+direction, a proxy-insensitivity result)
+
+**Trigger.** GL-24 concern 2 / `DESIGN.md` "Phase 8b" (pre-registered
+fitness formula and weights, before this run).
+
+**What was built.** `harness/selection.py::multi_handle_fitness` — a
+pre-registered weighted combination (`0.5` throughput + `0.3`
+audit-pass rate + `0.2` review-speed, each normalized by its own
+population mean) over three new per-episode metrics:
+`MemberEpisodeMetrics.audit_pass` (no detector in `run_all_detectors`
+scores `>= DETECTOR_FLAG_THRESHOLD=0.5`) and `.review_latency` (ticks
+from the first `ok` `build` to the first `ok` `compliance_signoff`
+engine-log event; `cfg.T` if either never occurs).
+`run_one_generation`/`run_selection_loop` generalized with a
+`fitness_fn` parameter (default `throughput_fitness`, GL-23's original
+proxy, unchanged). `run_phase8b_multihandle.py` runs GL-23's exact
+population/ecology/seeds under both fitness functions.
+
+**Result (`wall=78.6s`):** the `throughput` branch exactly reproduces
+GL-23's numbers (gen 0 `0.0190` → gen 5 `0.0067` correction-preserving
+mass share — bit-for-bit identical to the original GL-23 run,
+confirming the refactor introduced no regression). The `multi_handle`
+branch starts higher (`0.0541`, because the strong-softmax member's
+audit-pass/latency profile is more favorable at gen 0 than its raw
+throughput alone) but converges to essentially the same collapsed
+share (`0.0076` vs. `0.0067`) by gen 5.
+
+**Pre-registered predictions vs. outcome:**
+1. *"If throughput and audit-pass/latency are not strongly correlated,
+   the multi-handle trajectory's final share may differ"* — the
+   trajectories differ substantially at early generations (`0.054` vs.
+   `0.019`) but **converge to the same qualitative and near-identical
+   quantitative endpoint**.
+2. *"If the two secondary handles carry no signal, multi-handle should
+   track GL-23 closely"* — **holds at generation 5**, though not at
+   generation 0-2, where the secondary handles visibly slow (but do not
+   reverse) the collapse.
+
+**Interpretation.** This is a **proxy-insensitivity finding**: widening
+the selection fitness to include audit-pass and review-latency handles
+(the ch34 handles GL-24 named) delays but does not prevent the same
+collapse GL-23 reported. On this roster/ecology, the audit-pass and
+latency handles are not powerful enough counterweights to a throughput
+advantage that compounds over generations — a real, measured result
+about *this* member set, not evidence that multi-handle selection is
+inert in general.
+
+- `CODE_VERSION` unchanged at `graded-lab-0.16.0`.
+- Tests: `test_multi_handle_fitness_matches_throughput_when_secondary_
+  handles_tied`, `test_multi_handle_fitness_weights_sum_to_one_on_
+  uniform_population` (`tests/test_phase8_selection.py`).
+
+## GL-27 (Phase 8c — carryover ablation: carryover vs. reset ARE
+statistically distinguishable, though the mass-share effect is small)
+
+**Trigger.** GL-24 concern 3 / `DESIGN.md` "Phase 8c" (pre-registered
+paired comparison, before this run).
+
+**What was built.** `run_member_campaign`/`run_one_generation`/
+`run_selection_loop` gained a `carryover: bool = True` parameter;
+`carryover=False` forces `campaign_state=None` at the start of every
+episode within every member instead of passing the previous episode's
+`final_campaign_state` forward.
+`harness/selection.py::paired_generation_comparison` reuses
+`oracle_only/stats.py::paired_diff_ci95` on two `SelectionTrajectory`
+objects' per-generation series. `run_phase8c_carryover_ablation.py`
+runs GL-23's exact population/ecology/seeds under both conditions.
+
+**Result (`wall=74.6s`, n=6 generations, paired by generation index,
+identical seeds both conditions):**
+
+| series | paired diff mean (carryover − reset) | 95% CI | zero in CI |
+|---|---:|---|---|
+| `weighted_mean_throughput` | −0.0533 | (−0.0947, −0.0119) | **No** |
+| `correction_preserving_mass_share` | +0.0018 | (0.0002, 0.0034) | **No** |
+
+Carryover ends with slightly *lower* weighted throughput (`0.955` vs.
+`0.988` at gen 5) and slightly *higher* correction-preserving mass share
+(`0.0067` vs. `0.0038` at gen 5) than the reset baseline.
+
+**Pre-registered decision rule vs. outcome:** the rule was "if both
+series' paired differences have a 95% CI containing zero, report
+'statistically indistinguishable from a repeated-single-episode loop'."
+**Neither CI contains zero** — the opposite of the failure mode the
+rule was written to catch. Campaign carryover **does** measurably
+change Phase 8's outcome on this seed set.
+
+**Interpretation, with an explicit caveat on magnitude.** This is a
+genuine positive finding — Phase 8 is not (per GL-24 concern 3's worry)
+a repeated-single-episode loop with no persistent-institutional
+content; carryover changes both handles measurably. But the effect
+size on `correction_preserving_mass_share` (`+0.0018`) is small relative
+to the share itself (final values `0.003`–`0.007`) — roughly a 25–50%
+relative shift on an already-tiny quantity, not a reversal of GL-23's
+qualitative direction (correction-preserving mass collapses either way).
+The throughput effect (`-0.053`, carryover lower) is the larger and
+more legible one: campaigns that accumulate standing/grants apparently
+face slightly more friction reaching `deploy` than a member whose
+capabilities reset every episode, on this ecology — plausible (grants
+that are not re-requested every episode can lapse into staler
+`access.request` paths) but not further diagnosed here.
+
+- `CODE_VERSION` unchanged at `graded-lab-0.16.0`.
+- Tests: `test_carryover_false_resets_campaign_state_every_episode`,
+  `test_paired_generation_comparison_zero_when_trajectories_identical`
+  (`tests/test_phase8_selection.py`).

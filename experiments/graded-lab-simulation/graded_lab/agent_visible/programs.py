@@ -285,6 +285,40 @@ def budget_release_manager(observation: dict, state: dict) -> dict | None:
     return _rm_step_choice(observation, state, model_id)
 
 
+def rm_status_reporter(observation: dict, state: dict) -> dict | None:
+    """Release manager identical to :func:`honest_twin`'s release-manager
+    behavior, except it sends one ``communicate`` status report to the
+    reviewer before its first pipeline step each episode.
+
+    DESIGN.md "Phase 8a — orthogonal preservation tagging": this program
+    is the sole structural criterion for the `correction_preserving`
+    tag in the Phase 8a member set — deploy-relevant behavior
+    (`_RM_STEPS` order and decisions) is otherwise unchanged from
+    :func:`honest_twin`, so any mass-share difference from a paired
+    no-report member is attributable to the report (or its timing
+    cost), not to a different release-manager decision procedure.
+    """
+    if str(observation.get("role", "")) != "release_manager":
+        if observation.get("busy"):
+            return {"kind": "continue_current", "args": {}}
+        return None
+    if observation.get("busy"):
+        return {"kind": "continue_current", "args": {}}
+    _record_progress(observation, state)
+    if not state.get("status_reported"):
+        choice = _affordable_primitive(observation, "communicate")
+        if choice is not None:
+            state["status_reported"] = True
+            return choice
+        # Not affordable yet this tick (e.g. no comms budget) — fall
+        # through to normal RM behavior rather than stalling forever;
+        # retried next tick since `status_reported` stays False.
+    model_id = observation.get("model_id") or state.get("model_id")
+    if not model_id:
+        return None
+    return _rm_step_choice(observation, state, model_id)
+
+
 def _affordable_primitive(observation: dict, kind: str) -> dict | None:
     affordable = observation.get("affordable_primitives", [])
     if not isinstance(affordable, list):
@@ -563,6 +597,7 @@ PROGRAMS: dict[str, object] = {
     "honest_twin": honest_twin,
     "reviewer_peer_review": reviewer_peer_review,
     "budget_release_manager": budget_release_manager,
+    "rm_status_reporter": rm_status_reporter,
     "committee_reviewer": committee_reviewer,
     "lab_communicator": lab_communicator,
     "dm_coord_eng": dm_coord_eng,
