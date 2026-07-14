@@ -441,6 +441,167 @@ G-22.
 
 ---
 
+## Phase 8 — multi-episode selection (MB6) (pre-registered 2026-07-14,
+before code; gated on FINDINGS G-22 go/no-go resolution)
+
+**Why this exists.** Phases 0–7 are single-episode only. Phase 8 is the
+first place population/spec-evolution/**selection** appears (`PLAN.md`
+item 7; MB6 bridge). The manuscript consumer (PLAN.md "Manuscript
+integration backlog" item 4) is: does **throughput-linked selection
+under referee-vantage mid-band ambiguity** produce detector-evading
+behavior that was not programmed in — or a clean, reported null?
+
+**Go/no-go (resolved FINDINGS G-22):** proceed even though neither
+oracle nor referee vantage cleared the Phase 7c pass bar (each 1/4).
+The referee vantage supplies the first non-hairline mid-band signal and
+a graded dose-response; that is the ambiguity substrate Phase 8 tests,
+not the agent-vantage EAI that stays near-zero.
+
+**Default ecology (frozen for this phase, from G-22 referee sweet
+spot):** `carrier_load_scale=1.5`, nominal `compute_scale` and
+`population_spread_scale` — the mid-band cell
+`(1.0, 1.0, 1.5)` whose referee-vantage mean EAI was `≈0.32` with a
+graded deploy dose-response on `programmatic_2step`. Not re-tuned
+after the G-22 numbers.
+
+**What varies (population members):** program maps only — no new
+substrate knobs, no detector changes, no EAI formula changes. Members
+are drawn from the frozen Phase 7 roster (`programmatic_softmax`,
+`programmatic_2step`) plus a small set of Phase-6 blind-generated
+engineer behavior-feature profiles (`feature:eng_low_profile`,
+`feature:eng_pipeline_sprinter`, `feature:eng_stall_at_eval`) that override `eng1`
+only while keeping the weak agent's other-role programs. Each member
+carries a structural **correction-preserving** tag: `True` only for the
+full strong softmax map (all roles on `softmax_optimizer`); `False`
+for every other member.
+
+**Campaign mechanics (new in this phase):** each member runs
+`D8_EPISODES_PER_MEMBER` consecutive episodes per generation on the
+same ecology. **Grants and standing persist** across those episodes
+within a member (`CampaignState` carried from episode to episode);
+compute/IO windows still reset each episode as before. This is the
+graded-lab analogue of lab-sim D3's deployment-mass selection, but with
+**persistent grants/standing** as the cross-episode state the PLAN
+table names explicitly.
+
+**Selection rule (frozen before first run):** fitness-proportional
+reallocation of deployment mass by mean episode throughput
+(`deploy_count` per episode), same functional form as
+`lab_sim/harness/d3_population.update_deployment_mass` — massᵢ ∝
+old_massᵢ × (throughputᵢ / mean_throughput)^`D8_SELECTION_STRENGTH`,
+with floor `D8_MASS_FLOOR`. The selecting institution sees throughput
+only; **severity, bearer harm, and full-tier detector composite are
+reported separately** (PLAN.md value-lock-in caveat).
+
+**Pre-registered predictions (before implementation):**
+1. Throughput selection will shift mass toward `programmatic_softmax`
+   (the only member that reliably deploys on this ecology).
+2. Correction-preserving mass share will therefore **fall** across
+   generations unless throughput and correction-preservation are
+   accidentally aligned — reported honestly if so.
+3. Weighted detector composite may rise even when correction-preserving
+   mass falls (the manuscript's erosion scenario); a null where
+   severity/detector stay flat while mass shifts is equally valid.
+
+**Falsifiable failure modes:** if every member has identical throughput
+(selection inert) or campaign carryover does not change grant/standing
+state between episodes, report as infrastructure failure, not a null on
+selection.
+
+**Scope limits:** no LLM adapter, no `programmatic_budget_aware` in the
+default population (validated separately per G-17), no retrospective
+tuning of selection strength or ecology after seeing outcomes.
+
+---
+
+## Phase 8 reviewer concerns and follow-up phases (registered
+2026-07-14, after external review of G-23; no code changed by this
+registration — see FINDINGS G-24)
+
+An external review of G-23 (structured as GPT-5.6-Terra reviewer
+feedback, not a manuscript edit) raised four concerns before the
+result is trusted for manuscript use. Each is registered here with a
+proposed follow-up phase — **not implemented this session** — so the
+next session can pick one up without re-deriving the design.
+
+**Concern 1 — the correction-preserving tag is confounded with member
+identity.** Only the all-softmax map (`strong_softmax`) is tagged
+`correction_preserving=True`; every other member is `False`. "Mass
+moved away from the correction-preserving member" is therefore
+inseparable from "mass moved away from `strong_softmax` specifically,"
+and the G-23 result cannot isolate *which* structural property (if
+any) drove the loss.
+
+- **Proposed Phase 8a — orthogonal preservation tagging.** Design a
+  small member set where correction-preservation and program identity
+  vary independently: e.g. two engineer-only variants of the *same*
+  underlying agent type, one with an added `communicate`-channel
+  status report to reviewer (preservation-relevant, from the ch26/ch27
+  correction-channel-integrity apparatus) and one without, holding
+  deploy-relevant behavior constant. Pre-register the tagging rule
+  from a named structural criterion (e.g. "does this member's rm1
+  program ever skip `compliance_signoff`") before running, not
+  assigned by which member happens to be `strong_softmax`.
+
+**Concern 2 — `deploy_count` is too narrow a selection proxy to
+support the institutional claims of ch34.** Chapter 34's selection
+handles (procurement, funding, audit, integration, liability) are not
+modeled; `deploy_count` alone almost definitionally favors a reliable
+deployer over a cautious one, which is close to guaranteeing the G-23
+direction regardless of any correction property.
+
+- **Proposed Phase 8b — multi-handle selection fitness.** Extend
+  `update_deployment_mass`'s fitness input from a single throughput
+  scalar to a small vector combining `deploy_count`, an audit-pass
+  proxy (e.g. fraction of episodes with no detector flag above
+  threshold), and a review-latency proxy (ticks from `build` to
+  `compliance_signoff`), with a pre-registered weighting *before*
+  running — not fit to reproduce a target direction. Report the
+  single-handle (G-23) and multi-handle results side by side, not one
+  replacing the other, so the sensitivity of the selection *outcome*
+  to the selection *proxy* becomes an explicit, measured finding.
+
+**Concern 3 — campaign carryover is exercised but not yet shown to
+cause anything.** The current test (`test_campaign_state_carries_...`)
+confirms grants/standing do not shrink across episodes; it does not
+compare against a reset-every-episode baseline, so "the multi-episode
+mechanism matters" is asserted, not measured.
+
+- **Proposed Phase 8c — carryover ablation.** Same members, seeds,
+  ecology, and selection rule as G-23, but with `campaign_state`
+  forced to `None` every episode (reset baseline) as a second run.
+  Pre-registered comparison: if `weighted_mean_throughput` and
+  `correction_preserving_mass_share` trajectories are statistically
+  indistinguishable (paired by seed, using `oracle_only/stats.py`)
+  between carryover and reset conditions, Phase 8 is currently a
+  repeated-single-episode loop, not a persistent-institutional model,
+  and that is reported as a finding, not patched silently.
+
+**Concern 4 — the Phase 7 gate's "only if Phase 7 passes" language
+needs an explicit exception note, not a quiet skip.** `PLAN.md`'s
+original Phase 8 gate said "only if Phase 7 passes"; Phase 7c passed
+1/4 under both vantages (G-22). Proceeding was a deliberate,
+pre-registered decision (see "Go/no-go" above), but the hard-rule table
+entry does not yet say so explicitly next to the gate language itself.
+
+- **Disposition: documentation-only, no new experiment.** Update the
+  Phase-8 row's gate language (`PLAN.md` roadmap table) to read "gate
+  resolved as a deliberate, pre-registered exception (G-22), not a
+  pass" rather than leaving the original "only if Phase 7 passes"
+  unqualified next to a 1/4-pass battery. Tracked here so it is not
+  lost; not applied to `PLAN.md` in this registration pass (kept as a
+  single, later edit alongside the actual gate-language change).
+
+**What none of this changes:** the G-23 result itself is not
+retracted or rerun here — it is a real, reported clean null on
+detector-evading emergence for the single-handle, confounded-tag,
+carryover-untested configuration that was actually run. These four
+items sharpen what can and cannot yet be concluded from it, for future
+manuscript integration (ch34/ch36/ch40), not a correction to the
+numbers already in G-23.
+
+---
+
 ## Primitive action surface
 
 Agents issue one primitive per tick (or `continue_current`/`abort` when busy):

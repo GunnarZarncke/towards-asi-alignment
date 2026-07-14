@@ -26,6 +26,8 @@
     "tests/test_phase7_calibration.py::test_check_mechanism_sensitivity_flags_dead_knob": 30.0,
     "tests/test_budget_aware_agent.py::test_budget_aware_agent_deploy_rate_responds_to_carrier_load": 22.0,
     "tests/test_budget_aware_agent.py::test_budget_aware_agent_more_stress_sensitive_than_frozen_agents": 90.0,
-    "tests/test_phase7_calibration.py::test_run_dose_response_reports_referee_eai_and_ci95": 18.0
+    "tests/test_phase7_calibration.py::test_run_dose_response_reports_referee_eai_and_ci95": 18.0,
+    "tests/test_phase8_selection.py::test_smoke_selection_loop_two_generations": 8.0,
+    "tests/test_phase8_selection.py::test_run_member_campaign_reports_episode_metrics": 4.0
   }
 }

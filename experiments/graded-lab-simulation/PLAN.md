@@ -1,37 +1,21 @@
 # Graded Lab Simulation — Implementation Plan
 
-**Status: Phases 0–7c done (incl. Phase 7c-revised calibration battery,
-its two registered backlog items, and the full both-vantage battery
-with 95% CIs); Phase 8 not started (2026-07-14).** Phase 2–3
-deliverables and freeze gates met; Phase 3b mechanics and Phase 4
-trace/counterfactual engineering gates passed (see `results/FINDINGS.md`
-G-2–G-5, G-8–G-22). Revised 5-cell `carrier_load_scale` calibration
-battery results live in `results/ecology_calibration.json` (run
-`python3 run_phase7_calibration.py`; `--legacy` reproduces the original
-16-cell compute×spread grid as a diagnostic), now reporting **both**
-the oracle/agent vantage (as before) and a referee vantage
-(light-audit-tier EAI) side by side, with a 95% CI per cell/agent
-type, from the same 100 episodes. **Neither vantage passes (each 1/4
-criteria); registered backlog items from FINDINGS G-16 are resolved
-but did not flip that verdict, and the referee reframe (FINDINGS
-G-19/G-20) did not either (FINDINGS G-22):** a resource-sensitive
-agent program (`programmatic_budget_aware`) validates in its own
-small, separate battery (FINDINGS G-17) but is not yet wired into the
-main strong/weak criteria comparison; the `eai.py`/`world.py`
-entropy-logging fix (EAI-v2, FINDINGS G-18) is verified correct, and
-the referee-vantage entropy component is materially non-zero (FINDINGS
-G-20) — but the pass-criteria verdict is 1/4 under **both** vantages,
-just a *different* one of the four criteria each time (oracle:
-criterion 1; referee: criterion 4), and the shared blocker behind
-criterion 2's failure under both is the same roster-scope cause FINDINGS
-G-16 named (`programmatic_2step`'s flat cell-level deploy rate).
-Per the pre-registered decision rule in `DESIGN.md` "Phase 7c full
-battery, both vantages, with confidence intervals": proceed to Phase 8
-with this reported honestly; the next calibration lever is roster
-scope (wiring a third agent type — e.g. `programmatic_budget_aware` —
-into the main comparison), not another EAI reformulation. See FINDINGS
-G-16–G-22 and `DESIGN.md` "Phase 7c-revised" / "EAI-v2" / "EAI-referee"
-/ "Phase 7c full battery, both vantages".
+**Status: Phases 0–7c done; Phase 8 scaffold + first battery run (G-23,
+2026-07-14).** Phase 2–3 deliverables and freeze gates met; Phase 3b
+mechanics and Phase 4 trace/counterfactual engineering gates passed (see
+`results/FINDINGS.md` G-2–G-5, G-8–G-23). Phase 8 implements
+throughput-linked selection with campaign grant/standing carryover on the
+G-22 referee sweet-spot ecology (`carrier_load_scale=1.5`); first full run
+is a **clean null** on detector-evading emergence — mass shifted to
+`weak_2step` (higher deploy throughput on this ecology), correction-
+preserving share collapsed, and weighted severity/detector **fell** rather
+than rose. See FINDINGS G-23 and `DESIGN.md` "Phase 8 — multi-episode
+selection (MB6)". **External review (G-24) raised four concerns before
+G-23 is trusted for manuscript use** — confounded preservation tag,
+too-narrow selection proxy, unvalidated campaign carryover, and an
+unqualified Phase-7-gate note — each registered with a proposed follow-up
+phase (8a/8b/8c) in `DESIGN.md` "Phase 8 reviewer concerns and follow-up
+phases"; **not implemented this session.**
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
@@ -644,7 +628,7 @@ bumped like lab-sim.
 | **7a — UAD + intervention trace validation** | Port/adapt UAD over primitive traces; perturbation protocol; recovered-unit evaluation | UAD unit/boundary recovery and intervention semantics checked before any BIQ estimator is fitted |
 | **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable — **done** (`oracle_only/unit_biq.py`, G-13); `I_ctrl` resource-contention confound documented, not silently patched |
 | **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) — **implemented, then corrected, then both backlog items resolved, then run under both vantages with 95% CIs** (`run_phase7_calibration.py`; G-15 initial run, G-16 correction — see "Phase 7c-revised" in `DESIGN.md`); full-battery pass/fail read from JSON for **both** the oracle/agent vantage and a referee (light-audit-tier) vantage, computed from the same 100 episodes — **neither passes (1/4 each, a different criterion each time)**; the resource-sensitive agent program (G-17) validated separately without being wired into the main comparison; EAI-v2 (G-18) is verified correct with a reported-null effect at the agent vantage; the referee reframe (G-19/G-20) makes criterion 2 measurable for the first time but does not flip the verdict (G-22) — next lever is roster scope, not another EAI reformulation |
-| **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Only if Phase 7 passes** — pre-registered selection rule, no retrospective tuning |
+| **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Scaffold + first battery** (`run_phase8_selection.py`, `harness/selection.py`; G-23) — clean null: throughput selection favors `weak_2step` over correction-preserving `strong_softmax` on the G-22 ecology; severity/detector fell with mass shift, not detector-evading emergence. **Reviewed (G-24):** confounded preservation tag, too-narrow selection proxy, and unvalidated campaign carryover flagged before manuscript use — see `DESIGN.md` "Phase 8 reviewer concerns and follow-up phases" (proposed 8a/8b/8c, not yet run) |
 
 **Hard rule:** Phases 0–7 are **single-episode** only. Phase 8 is the first
 place population/spec-evolution/selection appears.
@@ -975,6 +959,37 @@ text), not a code task; listed here so it is not lost as an open item.
    Phase 8, and treat roster scope (a third agent type in the main
    comparison) as the next calibration lever if pursued further — not
    another EAI reformulation.**
+   **Phase 8 scaffold built and first battery run same day (FINDINGS
+   G-23):** result is a **clean null on detector-evading emergence** —
+   throughput-linked selection on the frozen program-map population
+   shifted mass toward `weak_2step` (higher, more reliable deploy count
+   on this ecology), the sole `correction_preserving`-tagged member
+   (`strong_softmax`) fell to the mass floor, and weighted severity/
+   detector composite **fell** alongside the shift rather than rising —
+   i.e. selection here did not manufacture an evasive strategy; it
+   selected a plainer, lower-harm program that happens not to carry the
+   preservation tag. **Reviewed same day (FINDINGS G-24), before any
+   manuscript sentence is drafted from G-23:** four concerns registered
+   in `DESIGN.md` "Phase 8 reviewer concerns and follow-up phases" —
+   (1) the `correction_preserving` tag is confounded with member
+   identity (only `strong_softmax` carries it), so "preservation lost
+   mass" cannot yet be separated from "this one program lost mass"; (2)
+   `deploy_count` alone is too narrow a fitness proxy to support ch34's
+   institutional selection-handle claims; (3) campaign grant/standing
+   carryover is exercised but not yet shown to *cause* any measured
+   difference versus a reset-every-episode baseline; (4) the original
+   "Phase 8 only if Phase 7 passes" gate language needs an explicit
+   deliberate-exception note next to the 1/4-pass battery, not a quiet
+   skip. Three proposed follow-up phases (8a orthogonal preservation
+   tagging, 8b multi-handle selection fitness, 8c carryover ablation)
+   are pre-registered but **not implemented**; concern 4 is a
+   documentation fix, also not yet applied. **Manuscript consequence:**
+   ch34's fit is currently the strongest of the three (selection proxy
+   choice determines which systems spread, demonstrated directly) but
+   should state the proxy-dependence explicitly; ch36/ch40 have **no**
+   supporting evidence from this result — G-23 shows no parasite
+   signature and no goal-laundering signature, and should not be cited
+   as if it did until 8a/8b at minimum are run.
 
 **Not yet done:** none of the four have been written into their chapters
 yet. This entry exists so the mapping is not re-derived from scratch in a

@@ -4,13 +4,12 @@ Fifth in-repo experiment line (successor substrate to `lab-simulation/`).
 Spawned by G-41: boolean ecology limits; ambiguity must **emerge** from a
 blinded resource/population substrate, not from dialed parameters.
 
-**Status: Phases 0–7c done (incl. Phase 7c-revised calibration battery,
-two backlog items from FINDINGS G-16 — a resource-sensitive agent
-program, G-17, and an EAI-v2 logging/normalization fix, G-18 — a
-referee-vantage EAI reframe and measurement, G-19/G-20, and the full
-both-vantage battery with 95% CIs, G-22); Phase 8 not started
-(2026-07-14)**
-`CODE_VERSION` `graded-lab-0.14.0` — see `DESIGN.md` for frozen constants.
+**Status: Phases 0–7c done; Phase 8 scaffold + first battery run (G-23,
+2026-07-14).** Phase 8 implements throughput-linked selection with
+campaign grant/standing carryover on the G-22 referee sweet-spot ecology;
+first full run is a **clean null** on detector-evading emergence (mass
+shifted to `weak_2step`, severity fell). See FINDINGS G-23.
+`CODE_VERSION` `graded-lab-0.15.0` — see `DESIGN.md` for frozen constants.
 
 ## Quick start
 
@@ -27,6 +26,8 @@ python3 run_phase7_calibration.py          # revised 5-cell carrier_load_scale b
 python3 run_phase7_calibration.py --smoke  # 2-cell dev smoke
 python3 run_phase7_calibration.py --legacy # original 16-cell compute×spread grid (diagnostic; see G-16)
 python3 run_referee_eai_check.py           # standalone referee- vs agent-vantage EAI entropy check (see G-19/G-20)
+python3 run_phase8_selection.py            # Phase 8 throughput-linked selection (see G-23)
+python3 run_phase8_selection.py --smoke    # 4-member dev smoke
 ```
 
 ### Test profiles and speed limits
@@ -67,7 +68,7 @@ python3 -m pytest tests/ --profile slow --update-speed-baseline --no-speed-check
 | 7a UAD + intervention validation | **done** (primitive traces, passive + standalone-dependency intervention discovery, full-partition ecology battery, blind scenario-designer battery; see G-10–G-12) |
 | 7b UAD-backed ecology-BIQ | **done** (`oracle_only/unit_biq.py`: held-out `I_pred`/`S_surp` bits, intervention-supported `I_ctrl` over a 4-component outcome state, declared `H_mem` proxy over UAD-inferred units; `I_ctrl`'s outcome vector was widened past task+harm alone to fix a resource-contention confound — see G-13/G-14) |
 | 7c Calibration battery | **done** (`run_phase7_calibration.py`, `oracle_only/calibration.py`; results in `results/ecology_calibration.json` — see G-15/G-16/G-22). Two backlog items resolved: a resource-sensitive agent program (`programmatic_budget_aware`, validated in a small separate battery, not the main criteria — G-17) and an EAI-v2 logging/normalization fix (verified correct; measured effect on this substrate is a reported null — G-18). Battery now reports both the oracle/agent vantage and a referee (light-tier) vantage from the same episodes with 95% CIs; neither passes (1/4 each, a different criterion each time — G-22); next lever is roster scope, not another EAI reformulation |
-| 8 Multi-episode / selection | not started (see PLAN.md "Manuscript integration backlog" item 4 for the registered go/no-go framing) |
+| 8 Multi-episode / selection | **scaffold + first battery** (`run_phase8_selection.py`, `harness/selection.py`; results in `results/phase8_selection.json` — see G-23). Clean null: throughput selection favors `weak_2step` over correction-preserving `strong_softmax`; weighted severity/detector fell, not rose |
 
 ## Rules
 

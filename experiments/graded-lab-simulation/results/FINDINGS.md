@@ -1508,3 +1508,149 @@ concrete next backlog item.
   `tests/test_phase7_calibration.py`), `[speed] OK [slow]` at `289s`
   against a `340s` cap (raised from `300s` to keep margin after the new
   slow dose-response CI test).
+
+## G-23 (Phase 8 selection battery — first run, pre-registered protocol
+implemented and executed same day per G-22 go/no-go)
+
+**Trigger.** G-22's pre-registered decision rule: proceed to Phase 8 with
+the calibration state reported honestly. This session implements the
+Phase 8 scaffold (`DESIGN.md` "Phase 8 — multi-episode selection (MB6)")
+and runs the first full battery.
+
+**What was built (pre-registered before code).**
+- `world_visible/campaign.py`: `CampaignState` (grants + standing).
+- `run_episode(..., campaign_state=...)` carries grants/standing across
+  consecutive episodes within a member; `EpisodeResult.final_campaign_state`
+  snapshots end-of-episode state.
+- `harness/selection.py`: population over frozen program maps (strong
+  softmax, weak 2-step, three `feature:*` engineer profiles on the weak
+  roster template), fitness-proportional deployment-mass selection by mean
+  `deploy_count`, ecology frozen at G-22 referee sweet spot
+  (`carrier_load_scale=1.5`).
+- `run_phase8_selection.py` → `results/phase8_selection.json`.
+- `tests/test_phase8_selection.py` (5 tests, 2 `@slow`).
+- `CODE_VERSION` → `graded-lab-0.15.0`.
+
+**Full battery result** (`population=8`, `generations=6`,
+`episodes/member=2`, `MockIsolate`, wall `31.6s`):
+
+| gen | correction-preserving mass | weighted throughput | weighted severity | weighted detector |
+|---:|---:|---:|---:|---:|
+| 0 | 0.019 | 0.857 | 0.0484 | 0.0898 |
+| 5 | 0.007 | 0.955 | 0.0041 | 0.0050 |
+
+Δ correction-preserving mass (gen 0 → last): **−0.012**. Δ weighted
+severity: **−0.044** (fell, not rose). Final mass concentrates on
+`weak_2step` (`0.922` of deployment mass, mean throughput `1.0`);
+`strong_softmax` (the sole correction-preserving member) is at the mass
+floor (`0.003`).
+
+**Pre-registered predictions vs outcome:**
+1. *"Throughput selection will shift mass toward `programmatic_softmax`"* —
+   **did not hold.** On this ecology, `programmatic_2step` deploys more
+   reliably (`deploy_count≈1` vs `≈0.5` for softmax per G-16/G-22), so
+   throughput selection favors the **non**-preserving weak map, not the
+   preserving strong one. This is the opposite of the erosion story the
+   manuscript item 4 had in mind when it assumed strong = higher throughput.
+2. *"Correction-preserving mass share will fall"* — **held** (0.125
+   initial equal-share → 0.007 final; the strong member never gained mass).
+3. *"Weighted detector composite may rise even when correction-preserving
+   mass falls"* — **did not hold** this run; detector composite fell in
+   lockstep with severity as mass moved to the weak map (which triggers
+   fewer referee alarms when it simply deploys consistently).
+
+**Interpretation.** This is a **clean null on detector-evading emergence**
+for this battery: selection ran, mass shifted, correction-preserving share
+collapsed — but toward a *weaker*, higher-deploy program that also
+*lowers* weighted severity/detector scores, not toward an evasive strategy
+that evades correction while optimizing throughput. The miscalibrated
+pre-registration was predicting softmax would win throughput on an ecology
+where G-16/G-22 already documented the opposite deploy ordering. Phase 8
+infrastructure is validated; the manuscript question needs either a
+selection objective that does not conflate deploy-count with the
+correction-preserving strong map, or a roster/ecology where preserving
+and high-throughput are not anti-correlated — not more calibration loops
+on EAI alone.
+
+**Campaign carryover check:** unit test confirms grants do not shrink across
+consecutive episodes (`grant_count` non-decreasing); standing persists via
+`CampaignState` (infrastructure works; selection outcome is about program
+maps, not broken carryover).
+
+**Open / next:** report this null honestly in manuscript backlog item 4;
+optional follow-ups (separate pre-registrations): selection on referee-
+visible throughput only; wire `programmatic_budget_aware` as a member whose
+throughput and preservation trade off differently; subprocess isolate run
+for parity.
+
+## G-24 (external review of G-23 — four concerns registered with
+proposed follow-up phases; no code changed by this entry)
+
+**Trigger.** A structured external review of the G-23 result (posed as
+"GPT-5.6-Terra reviewer: satisfied? surprised? what does this mean for
+the thesis?"), followed by "document the four concerns and suggest how
+to address them via further extension phases... do not adapt chapters
+yet." This entry is the documentation step; no chapter text and no
+Phase 8 code changed.
+
+**Verdict of the review, in brief:** satisfied with the research
+posture (G-23's own falsified prediction and honest null reporting is
+good hygiene), not yet satisfied that the result supports a manuscript
+sentence for ch36 (parasites) or ch40 (goal laundering) — no parasite
+or laundering signature is present in G-23 — and only a qualified fit
+for ch34 (selection), because the selection *proxy* and *ecology*
+choice, not an inherent property of "selection," determined which
+program's mass grew.
+
+**Four concerns, each registered with a proposed follow-up phase in
+`DESIGN.md` "Phase 8 reviewer concerns and follow-up phases" (none
+implemented this session):**
+
+1. **Confounded preservation tag.** `correction_preserving=True` is
+   assigned to exactly one member (`strong_softmax`); every other
+   member is `False`. G-23's "correction-preserving mass fell" is
+   therefore inseparable from "this one specific program lost mass" —
+   it cannot yet attribute the loss to any structural correction
+   property as opposed to program identity. **Proposed Phase 8a:**
+   orthogonal preservation tagging — vary a named structural criterion
+   (e.g. whether `compliance_signoff` is ever skipped) independently of
+   which program map a member uses, so preservation and deploy-
+   reliability are not accidentally the same axis.
+2. **Selection proxy too narrow for the ch34 institutional claims.**
+   `deploy_count` alone does not model ch34's selection handles
+   (procurement, funding, audit, integration, liability) and almost
+   definitionally favors a reliable deployer over a cautious one —
+   which is close to pre-determining G-23's direction regardless of any
+   correction property. **Proposed Phase 8b:** multi-handle selection
+   fitness — extend the fitness input to a small pre-registered vector
+   (deploy count, audit-pass proxy, review-latency proxy), reported
+   alongside the single-handle G-23 result, not replacing it, so
+   sensitivity of the *selection outcome* to the *selection proxy*
+   becomes an explicit, measured finding rather than an assumption.
+3. **Campaign carryover exercised, not yet shown causal.** The current
+   regression test confirms grants/standing do not shrink across
+   episodes; it does not compare against a reset-every-episode
+   baseline, so whether persistence *changes* any measured outcome is
+   unverified. **Proposed Phase 8c:** carryover ablation — identical
+   members/seeds/ecology/selection rule, run twice (carryover vs.
+   forced reset), paired-by-seed comparison via `oracle_only/stats.py`;
+   report "indistinguishable" as a finding (Phase 8 is currently a
+   repeated-single-episode loop) rather than silently assuming
+   persistence mattered.
+4. **Unqualified Phase-7 gate language.** `PLAN.md`'s original Phase 8
+   row said "only if Phase 7 passes"; Phase 7c passed 1/4 under both
+   vantages (G-22). Proceeding was a deliberate, pre-registered
+   exception (documented in `DESIGN.md` "Go/no-go"), but the gate
+   language itself was not updated to say so next to the table entry.
+   **Disposition:** documentation-only fix, tracked but not applied in
+   this pass (kept as a single future edit alongside the actual
+   language change, not scattered across this review entry).
+
+**What this does not change.** G-23's numbers are not retracted or
+rerun. This entry sharpens what can and cannot yet be concluded from
+them for manuscript integration — a scope note on an existing result,
+not a correction to it.
+
+- No `CODE_VERSION` bump (documentation-only entry; `DESIGN.md`/
+  `PLAN.md` updated, no `graded_lab` code touched).
+- No chapter text changed, per explicit instruction this session.

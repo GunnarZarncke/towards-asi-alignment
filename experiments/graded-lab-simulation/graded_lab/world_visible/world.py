@@ -14,6 +14,7 @@ from ..harness.isolate_cost import IsolateRunTiming
 from ..oracle_only.eai import compute_eai, tier_i_fraction_from_log
 from ..oracle_only.oracle import OracleWorld
 from .access import PermissionService
+from .campaign import CampaignState
 from .affordable import (
     ROLE_PIPELINE_STEPS,
     affordable_to_observation,
@@ -51,6 +52,7 @@ class EpisodeResult:
     digests: dict[str, str] = field(default_factory=dict)
     isolate_timings: list[IsolateRunTiming] = field(default_factory=list)
     wall_seconds: float = 0.0
+    final_campaign_state: CampaignState | None = None
 
 
 def default_lab_config() -> EpisodeConfig:
@@ -319,12 +321,47 @@ def _stable_actor_offset(actor_id: str) -> int:
     ) % 100
 
 
+def _apply_campaign_state(
+    cfg: EpisodeConfig,
+    permissions: PermissionService,
+    ledger: ResourceLedger,
+    campaign_state: CampaignState,
+    allowances: dict[str, dict[str, float]],
+) -> None:
+    """Restore grants and standing from a prior episode (Phase 8)."""
+    for actor_id, caps in campaign_state.grants.items():
+        for capability in caps:
+            if not permissions.check(actor_id, capability, t=0):
+                permissions.grant(actor_id, capability, t=0)
+    for actor_id, standing in campaign_state.standing.items():
+        if actor_id not in ledger.actors:
+            continue
+        ceiling = allowances.get(actor_id, {}).get("standing", standing)
+        ledger.actors[actor_id].standing = min(standing, float(ceiling))
+
+
+def _extract_campaign_state(
+    cfg: EpisodeConfig,
+    permissions: PermissionService,
+    ledger: ResourceLedger,
+) -> CampaignState:
+    return CampaignState(
+        grants={actor: set(caps) for actor, caps in permissions._grants.items()},
+        standing={
+            agent.actor_id: ledger.actors[agent.actor_id].standing
+            for agent in cfg.agents
+            if agent.actor_id in ledger.actors
+        },
+    )
+
+
 def run_episode(
     cfg: EpisodeConfig,
     seed: int,
     backend: Any,
     *,
     programs: dict[str, str] | None = None,
+    campaign_state: CampaignState | None = None,
 ) -> EpisodeResult:
     episode_started = time.perf_counter()
     substrate = load_substrate()
@@ -354,6 +391,8 @@ def run_episode(
         carriers.ensure_actor(agent.actor_id)
 
     _bootstrap_grants(cfg, permissions, spec)
+    if campaign_state is not None:
+        _apply_campaign_state(cfg, permissions, ledger, campaign_state, allowances)
 
     handles: dict[str, Any] = {}
     for agent in cfg.agents:
@@ -749,6 +788,7 @@ def run_episode(
             digests=digests,
             isolate_timings=timings,
             wall_seconds=time.perf_counter() - episode_started,
+            final_campaign_state=_extract_campaign_state(cfg, permissions, ledger),
         )
     finally:
         ws.cleanup()
