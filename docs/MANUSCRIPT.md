@@ -14,7 +14,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 |------|--------|
 | Release | **v1.0.0** — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
 | Milestone | **Third** in progress — all main chapters have first drafts and at least one review pass |
-| Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **8 appendices in the PDF** (A–H; institutional histories is Appendix D, source file `appM-institutional-histories.tex`) + 5 unwired appendix stubs on disk |
+| Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **9 appendices in the PDF** (A–I; institutional histories is Appendix D, source file `appM-institutional-histories.tex`; Appendix I is the cross-line experimental-evidence index, source file `appN-experimental-evidence.tex`) + 5 unwired appendix stubs on disk |
 | Chapters | **0 draft**, **48 reviewed**, **0 stub** ([`metadata/book.yml`](../metadata/book.yml); *reviewed* = feedback received, not final) |
 | Bibliography | **~235 entries** across categorized `.bib` files |
 | Word target | ~350k ([`metadata/book.yml`](../metadata/book.yml)) |

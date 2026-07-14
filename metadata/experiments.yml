@@ -20,10 +20,14 @@ ledgers:
   - lineId: lab-simulation
     label: Lab-layer findings
     path: experiments/lab-simulation/results/FINDINGS.md
+  - lineId: graded-lab-simulation
+    label: Graded-lab findings
+    path: experiments/graded-lab-simulation/results/FINDINGS.md
 
 lines:
   - order: 0
     id: agency-detect
+    findingIdPrefix: AD-
     title: Agency-detect (sibling)
     location: github.com/GunnarZarncke/agency-detect
     repoUrl: https://github.com/GunnarZarncke/agency-detect
@@ -37,6 +41,7 @@ lines:
 
   - order: 1
     id: toy-simulation
+    findingIdPrefix: TS-
     title: Toy simulation
     location: experiments/toy-simulation/
     firstBuilt: "2026-06-29"
@@ -46,27 +51,29 @@ lines:
     readmePath: experiments/toy-simulation/README.md
     findingsPath: experiments/toy-simulation/results/
     headlineFindings:
-      - Passive telemetry alone is uncertifiable (belowThreshold); light_handles is minimum certifiable level on calibration seeds.
+      - Passive telemetry alone is uncertifiable (belowThreshold); light_handles is minimum certifiable level on calibration seeds. Cited in ch33 (Certification Without Construction) and appendix "Experimental Evidence" (finding TS-1).
       - Reported correction acceptance can stay high while true uptake collapses (capture theater).
       - Hand-written red-team can false-pass; LLM episodic red-team false-passes less often in small sweeps.
 
   - order: 2
     id: embedded-simulation
+    findingIdPrefix: ES-
     title: Embedded audit simulation
     location: experiments/embedded-simulation/
     firstBuilt: "2026-06-30"
     role: >
       Auditor as embedded process on simulated machines: UAD, scoped CCI, MB5 deploy gate, outer evaluator vs oracle.
-      Richest end-to-end embedded audit path; extensive negative ledger (N-1+).
+      Richest end-to-end embedded audit path; extensive negative ledger (ES-1+).
     readmePath: experiments/embedded-simulation/README.md
     findingsPath: experiments/embedded-simulation/results/NEGATIVE_RESULTS.md
     headlineFindings:
-      - Default ecology UAD equals loudest-actor heuristic (N-1); separation only in adversarial ecologies.
+      - Default ecology UAD equals loudest-actor heuristic (ES-1); separation only in adversarial ecologies.
       - Default-ecology red-team 0% false-pass at T=400; not evidence against adaptive frontier adversaries.
       - Eligibility gating, probe-lag, lineage-stall, writer-compromise, and channel MI add more recorded negatives.
 
   - order: 3
     id: goal-agent-simulation
+    findingIdPrefix: GA-
     title: Goal-agent simulation
     location: experiments/goal-agent-simulation/
     firstBuilt: "2026-07-04"
@@ -76,12 +83,13 @@ lines:
     readmePath: experiments/goal-agent-simulation/README.md
     findingsPath: experiments/goal-agent-simulation/results/FINDINGS.md
     headlineFindings:
-      - Light tier collapses against blind repertoires (F-9); full tier detects but false alarms rise (F-10).
-      - Mechanical honest twins show light tier tracks visible compliance, not honesty (F-16).
-      - Board certifier capture reproduces captured-vs-not effect (F-22); adversarial weight search modest (F-23).
+      - Light tier collapses against blind repertoires (GA-9); full tier detects but false alarms rise (GA-10).
+      - Mechanical honest twins show light tier tracks visible compliance, not honesty (GA-16).
+      - Board certifier capture reproduces captured-vs-not effect (GA-22); adversarial weight search modest (GA-23).
 
   - order: 4
     id: lab-simulation
+    findingIdPrefix: LS-
     title: Lab-layer simulation
     location: experiments/lab-simulation/
     firstBuilt: "2026-07-05"
@@ -91,10 +99,10 @@ lines:
       freeze (S6/S7, 2026-07-07) adds intervention-supported unit discovery plus a blind-generated detector,
       both now run through the real subprocess backend.       Phase 8 LLM adapter remains exploratory only; a
       2026-07-08 stress test points S6 at one real LLM-backed episode for the first time and finds the
-      detector's episode-pair-diff mechanic does not survive real-API non-determinism (G-32). A same-day
+      detector's episode-pair-diff mechanic does not survive real-API non-determinism (LS-32). A same-day
       follow-up (a new, non-frozen module) rebases the compensation statistic on outcome-level frequency
       histograms with a per-scenario measured null and recovers the missed pair, with an important caveat
-      about which probe did the merging (G-33).
+      about which probe did the merging (LS-33).
       Lean leak-proof (`leak-proof/`) certifies oracle/audit/sim plane separation via projections and
       reachability analysis.
     readmePath: experiments/lab-simulation/README.md
@@ -103,15 +111,39 @@ lines:
     findingsPath: experiments/lab-simulation/results/FINDINGS.md
     leakProofPath: experiments/lab-simulation/leak-proof/README.md
     headlineFindings:
-      - "Phase 6 battery: deep tier Spearman 0.96 vs oracle severity; light tier anti-correlated (G-1)."
-      - "Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (G-6)."
-      - "Phase 8 LLM spot-checks (G-7, G-8): exploratory nulls — no systematic deception surface yet."
+      - "Phase 6 battery: deep tier Spearman 0.96 vs oracle severity; light tier anti-correlated (LS-1)."
+      - "Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (LS-6)."
+      - "Phase 8 LLM spot-checks (LS-7, LS-8): exploratory nulls — no systematic deception surface yet."
       - "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
-      - "S6 intervention-supported UAD: exact unit-partition recovery on 4/5 primary scenarios + negative control via channel-ablation/honest-twin compensation scoring; comms-free `shared_slot` coordination stays undetected (G-28/G-29)."
-      - "S7 blind-generated detector, first real SubprocessIsolate battery for the whole detector line: message-mediated design converges independently on S6's mechanic; new silent-coordination test still misses `shared_slot` (a confirmed low-confidence prediction) and over-merges one scenario (G-30, fixed 2026-07-07 -- missing responder-twin control)."
-      - "Adversarial D2 lineage gaming (`build_from_parent` + `report:inflate`) closes a previously untested combination: lineage threading is honesty-independent, `provenance_gap`/`provenance_score` stay a genuine structural 0 (DAG-shape check, not report-honesty check), and existing deep-tier deception detectors generalize unmodified to repeated cross-generation inflation (G-31)."
-      - "LLM-driven detector stress test: a real `gpt-4o-mini` DM-coordinated pair is exactly isolated by the passive heuristic but missed by S6 intervention, root-caused to real-API non-determinism breaking episode-pair diffing's byte-identical-replay assumption -- a previously assumed limitation, now confirmed empirically (G-32)."
-      - "Noise-tolerant S6 follow-up: rebasing the compensation test on outcome/frequency-level observables plus a per-scenario measured null (quantile of clean-vs-clean replicate divergence, not a fixed threshold) recovers the missed real-LLM pair -- but the merge came from an untargeted channel probe, not the mechanism-specific one, so this validates the relative-rule approach without yet validating robustness against untargeted-probe false merges (G-33)."
+      - "S6 intervention-supported UAD: exact unit-partition recovery on 4/5 primary scenarios + negative control via channel-ablation/honest-twin compensation scoring; comms-free `shared_slot` coordination stays undetected (LS-28/LS-29)."
+      - "S7 blind-generated detector, first real SubprocessIsolate battery for the whole detector line: message-mediated design converges independently on S6's mechanic; new silent-coordination test still misses `shared_slot` (a confirmed low-confidence prediction) and over-merges one scenario (LS-30, fixed 2026-07-07 -- missing responder-twin control)."
+      - "Adversarial D2 lineage gaming (`build_from_parent` + `report:inflate`) closes a previously untested combination: lineage threading is honesty-independent, `provenance_gap`/`provenance_score` stay a genuine structural 0 (DAG-shape check, not report-honesty check), and existing deep-tier deception detectors generalize unmodified to repeated cross-generation inflation (LS-31)."
+      - "LLM-driven detector stress test: a real `gpt-4o-mini` DM-coordinated pair is exactly isolated by the passive heuristic but missed by S6 intervention, root-caused to real-API non-determinism breaking episode-pair diffing's byte-identical-replay assumption -- a previously assumed limitation, now confirmed empirically (LS-32)."
+      - "Noise-tolerant S6 follow-up: rebasing the compensation test on outcome/frequency-level observables plus a per-scenario measured null (quantile of clean-vs-clean replicate divergence, not a fixed threshold) recovers the missed real-LLM pair -- but the merge came from an untargeted channel probe, not the mechanism-specific one, so this validates the relative-rule approach without yet validating robustness against untargeted-probe false merges (LS-33)."
+
+  - order: 5
+    id: graded-lab-simulation
+    findingIdPrefix: GL-
+    title: Graded-capability lab simulation
+    location: experiments/graded-lab-simulation/
+    firstBuilt: "2026-07-10"
+    role: >
+      Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored
+      pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather
+      than from dialed noise/delay parameters. UAD-backed ecology-BIQ over inferred units; an
+      Emergent-Ambiguity-Index measured from two vantages (acting agent vs. limited-observation referee);
+      first multi-episode selection battery.
+    readmePath: experiments/graded-lab-simulation/README.md
+    designPath: experiments/graded-lab-simulation/DESIGN.md
+    planPath: experiments/graded-lab-simulation/PLAN.md
+    findingsPath: experiments/graded-lab-simulation/results/FINDINGS.md
+    headlineFindings:
+      - "UAD recovers a communicate-free write/read coordination handoff invisible to every prior passive/intervention method, via a standalone all-pairs dependency-score probe; the same probe over-merges a resource-bound bystander into a 3-way approval barrier, a genuine, unpatched negative (GL-11/GL-12). Cited in ch07 (Finding the Boundary) and appendix \"Experimental Evidence\" (findings GL-11/GL-12)."
+      - "UAD-backed ecology-BIQ's control term silently reimported a task ontology through a narrowly-scoped outcome vector; widening it to include a resource-contention bucket separated a task-irrelevant actor from the true task driver (GL-13/GL-14). Cited in ch11 (Capability Without a Task Ontology) and appendix \"Experimental Evidence\" (finding GL-13)."
+      - "The pre-registered 'high' ambiguity band is structurally unreachable from the acting agent's own full-context vantage on this substrate (near-deterministic given full context, not merely under-instrumented) -- rejected fixing this by injecting substrate noise, since that would violate the line's own founding no-noise-parameter rule (GL-18/GL-19)."
+      - "Re-scoring the identical episodes from a referee's limited-observation vantage (existing tiered audit projection, unmodified formula) reaches the pre-registered 'mid' ambiguity band at every stressed cell for the first time in this line, though still not 'high' (GL-20)."
+      - "Full both-vantage calibration battery with 95% CIs: both vantages land at 1/4 pre-registered pass criteria on the same 100 episodes -- a different single criterion passes under each vantage, and the core separation criterion fails under both for the same roster-scope reason (one agent type's deploy behavior does not respond to the swept substrate knob) (GL-21/GL-22)."
+      - "First Phase 8 selection battery: throughput-linked selection shifts deployment mass toward a higher-throughput, lower-harm program and away from the sole correction-preserving-tagged program, with severity/detector composites falling rather than rising -- a clean null on detector-evading emergence, reviewed same day and flagged with four open concerns (confounded preservation tag, too-narrow selection proxy, unvalidated campaign carryover, unqualified gate language) before any manuscript claim was drawn from it (GL-23/GL-24). Cited in ch34 (The Selection Environment) and appendix \"Experimental Evidence\" (finding GL-23)."
 
 howToRead:
   - lineId: agency-detect
@@ -124,6 +156,11 @@ howToRead:
     text: Methodological engine for blind surprise, ontology drift, severity under saturation, and twin/escalation semantics.
   - lineId: lab-simulation
     text: Pre-registered batteries and pipeline lab machinery; deferred D1–D4 architect bridge coverage not yet evaluated.
+  - lineId: graded-lab-simulation
+    text: >
+      Ambiguity and boundary-discovery engine: UAD-backed BIQ over inferred units, a measured
+      structurally-unreachable "high" ambiguity band from the agent's own vantage, a "mid" band reachable
+      only from a referee's coarser vantage, and a first, explicitly-caveated selection battery.
 
 coverageColumns:
   - id: agency-detect
@@ -136,6 +173,8 @@ coverageColumns:
     short: Goal-agent sim
   - id: lab-simulation
     short: Lab sim
+  - id: graded-lab-simulation
+    short: Graded lab sim
 
 coverageFeatures:
   - id: mb1
@@ -145,7 +184,8 @@ coverageFeatures:
       toy-simulation: "Scenario (boundary_alias)"
       embedded-simulation: "Full UAD + ecologies; negatives when heuristic suffices"
       goal-agent-simulation: "—"
-      lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (G-28–G-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (G-32/G-33)"
+      lab-simulation: "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)"
+      graded-lab-simulation: "Primary, on a graded (non-boolean) substrate: standalone all-pairs dependency_score recovers a communicate-free write/read handoff invisible to every prior method; blind scenario battery finds a genuine over-merge (resource-bound bystander into a 3-way barrier) (GL-11/GL-12)"
   - id: mb2
     label: "MB2 Value bundle / pointing (Goodhart on bundles)"
     cells:
@@ -154,6 +194,7 @@ coverageFeatures:
       embedded-simulation: "Scenario (bundle_goodhart)"
       goal-agent-simulation: "Indirect (welfare deltas in blind reps)"
       lab-simulation: "Stipulated; report-content ontology"
+      graded-lab-simulation: "—"
   - id: mb3
     label: "MB3 Bearer maps (who values apply to)"
     cells:
@@ -162,6 +203,7 @@ coverageFeatures:
       embedded-simulation: "Scenario + bearer handles"
       goal-agent-simulation: "Indirect (harm attribution)"
       lab-simulation: "Health + stress bundle (split bearers)"
+      graded-lab-simulation: "—"
   - id: mb4
     label: "MB4 Correction-channel integrity / capture"
     cells:
@@ -170,6 +212,7 @@ coverageFeatures:
       embedded-simulation: "Scenarios + correction handles"
       goal-agent-simulation: "Emergent (chosen deception, board corrections)"
       lab-simulation: "Playbooks + access capture + report divergence"
+      graded-lab-simulation: "Referee ported + frozen from lab-sim (tiers, five detector families, twins, escalation); not the line's focus"
   - id: mb5
     label: "MB5 Successor closure / ontology shift"
     cells:
@@ -177,7 +220,8 @@ coverageFeatures:
       toy-simulation: "Scenario (successor_relabel)"
       embedded-simulation: "Deploy gate + successor handles"
       goal-agent-simulation: "—"
-      lab-simulation: "D2 model-lineage/spec-upgrade mechanics implemented (Phase 9); adversarial lineage-gaming variant (build_from_parent + report:inflate) closes G-12's open question -- provenance_gap is a DAG-shape check, not a report-honesty check, and stays 0 either way; existing deep-tier deception detectors generalize unmodified (G-31)"
+      lab-simulation: "D2 model-lineage/spec-upgrade mechanics implemented (Phase 9); adversarial lineage-gaming variant (build_from_parent + report:inflate) closes LS-12's open question -- provenance_gap is a DAG-shape check, not a report-honesty check, and stays 0 either way; existing deep-tier deception detectors generalize unmodified (LS-31)"
+      graded-lab-simulation: "—"
   - id: mb6
     label: "MB6 Selection basins / gradual disempowerment"
     cells:
@@ -185,7 +229,8 @@ coverageFeatures:
       toy-simulation: Scenario stubs
       embedded-simulation: "selection_basin, basin_lock_in"
       goal-agent-simulation: "—"
-      lab-simulation: "D3.1 population selection (G-36: preserving mass erodes under throughput selection); D3.2 spec-weakening mutation implemented (G-37); D3 user-population core + non-redundant vote-capture + board-initiated hold implemented (mechanism + tests, no battery yet); D3.3 multi-lab planned"
+      lab-simulation: "D3.1 population selection (LS-36: preserving mass erodes under throughput selection); D3.2 spec-weakening mutation implemented (LS-37); D3 user-population core + non-redundant vote-capture + board-initiated hold implemented (mechanism + tests, no battery yet); D3.3 multi-lab planned"
+      graded-lab-simulation: "Phase 8 throughput-linked selection over program-map population; first battery a clean null on detector-evading emergence (mass shifted to higher-throughput/lower-harm program), reviewed with 4 open concerns before manuscript use (GL-23/GL-24)"
   - id: mb7
     label: "MB7 Hidden capability / cost of faking monitors"
     cells:
@@ -194,6 +239,7 @@ coverageFeatures:
       embedded-simulation: "Scenarios + hidden coalition"
       goal-agent-simulation: "Emergent (shadow route, tool gating)"
       lab-simulation: "Oracle hidden capability/hazard on models"
+      graded-lab-simulation: "Graded (continuous) oracle capability/hazard/harm state, not pass/fail"
   - id: mb7d
     label: "MB7d Inferential coupling (coordination severing channels)"
     cells:
@@ -201,15 +247,17 @@ coverageFeatures:
       toy-simulation: "—"
       embedded-simulation: "Partial / targeted ecologies"
       goal-agent-simulation: "—"
-      lab-simulation: "D4 message board + S6 channel-ablation compensation scoring; the primary signal carrier for message-mediated units (G-28)"
+      lab-simulation: "D4 message board + S6 channel-ablation compensation scoring; the primary signal carrier for message-mediated units (LS-28)"
+      graded-lab-simulation: "—"
   - id: mb8
     label: "MB8 Legitimacy / correction authority"
     cells:
       agency-detect: "—"
       toy-simulation: "Scenario (legitimacy_theater)"
       embedded-simulation: "Scenario + lineage signals"
-      goal-agent-simulation: "Board capture switch (F-22)"
+      goal-agent-simulation: "Board capture switch (GA-22)"
       lab-simulation: "Admin/board capture modes"
+      graded-lab-simulation: "—"
   - id: mb9
     label: "MB9 Grounding / spec coverage (no silent gaps)"
     cells:
@@ -218,14 +266,16 @@ coverageFeatures:
       embedded-simulation: "Scenario + grounding refusal"
       goal-agent-simulation: "—"
       lab-simulation: "Report vs monitor contradiction surface"
+      graded-lab-simulation: "—"
   - id: mb10
     label: "MB10 Successor / measurement forgeability"
     cells:
       agency-detect: "—"
       toy-simulation: "—"
       embedded-simulation: "Certification artifact, safety case"
-      goal-agent-simulation: "Escalation + twin semantics (F-21)"
-      lab-simulation: "Planned; Phase 8 LLM red-team exploratory (G-7/G-8)"
+      goal-agent-simulation: "Escalation + twin semantics (GA-21)"
+      lab-simulation: "Planned; Phase 8 LLM red-team exploratory (LS-7/LS-8)"
+      graded-lab-simulation: "—"
   - id: three-plane
     label: "Three-plane separation (world / audit / referee)"
     cells:
@@ -234,6 +284,7 @@ coverageFeatures:
       embedded-simulation: "Full (projection + outer eval)"
       goal-agent-simulation: "Full (test-enforced)"
       lab-simulation: "Full (tiers + frozen referee)"
+      graded-lab-simulation: "Full (world_visible / agent_visible / oracle_only packages, enforced by import tests)"
   - id: instrumentation
     label: "Instrumentation economics (tier cost vs certifiability)"
     cells:
@@ -242,6 +293,7 @@ coverageFeatures:
       embedded-simulation: "Access-tier curves + eligibility"
       goal-agent-simulation: "light / full / deep tiers"
       lab-simulation: "none → light → full → deep"
+      graded-lab-simulation: "none → light → full → deep (ported); plus a distinct agent-vantage-vs-referee-vantage instrumentation axis for ambiguity itself (GL-19/GL-20)"
   - id: cci
     label: "CCI / vector certification"
     cells:
@@ -250,6 +302,7 @@ coverageFeatures:
       embedded-simulation: "Scoped CCI on discovered unit"
       goal-agent-simulation: "Frozen detector families + severity"
       lab-simulation: "Five detector families (frozen)"
+      graded-lab-simulation: "Five detector families (ported, frozen)"
   - id: scripted-vs-emergent
     label: "Scripted vs emergent failure modes"
     cells:
@@ -258,6 +311,7 @@ coverageFeatures:
       embedded-simulation: "Scripted + red-team patches"
       goal-agent-simulation: "Emergent utility + tools"
       lab-simulation: "Playbook-chosen tactics; Phase 8 LLM adapter (exploratory)"
+      graded-lab-simulation: "Emergent softmax-policy agents; no LLM adapter in scope"
   - id: blind-generation
     label: "Blind generation / ontology drift"
     cells:
@@ -265,7 +319,8 @@ coverageFeatures:
       toy-simulation: "—"
       embedded-simulation: Scenario-blind audit path
       goal-agent-simulation: "Primary (Phases 2–3, drift probe)"
-      lab-simulation: "Phase 6 (blind playbook repertoire + battery); S7 (blind DETECTOR generation + registered predictions, G-30)"
+      lab-simulation: "Phase 6 (blind playbook repertoire + battery); S7 (blind DETECTOR generation + registered predictions, LS-30)"
+      graded-lab-simulation: "Blind behavior-feature battery (Phase 6, GL-9); blind scenario-designer battery for UAD (Phase 7a-blind, GL-12)"
   - id: honest-twins
     label: "Honest twins / severity-first referee"
     cells:
@@ -274,6 +329,7 @@ coverageFeatures:
       embedded-simulation: "Partial (outer eval severity)"
       goal-agent-simulation: "Primary (Phases 4–6)"
       lab-simulation: "Twins frozen; escalation Phase 7"
+      graded-lab-simulation: "Twins/escalation ported, frozen"
   - id: pipeline-lab
     label: "Pipeline-as-code deployment lab"
     cells:
@@ -282,6 +338,16 @@ coverageFeatures:
       embedded-simulation: "Workflow JSONL + lab actors"
       goal-agent-simulation: "—"
       lab-simulation: "Primary (JSON DAG + workspace)"
+      graded-lab-simulation: "Nine-step graded pipeline topology (continuous capability/hazard scoring, not pass/fail)"
+  - id: biq-eai
+    label: "Emergent ambiguity / boundary-information competence (BIQ/EAI)"
+    cells:
+      agency-detect: "—"
+      toy-simulation: "—"
+      embedded-simulation: "—"
+      goal-agent-simulation: "—"
+      lab-simulation: "—"
+      graded-lab-simulation: "Primary and line-defining. UAD-backed ecology-BIQ over inferred units, not a labeled roster (GL-13/GL-14); Emergent-Ambiguity-Index found structurally unreachable at \"high\" band from the agent's own vantage, reachable at \"mid\" band only under a referee's coarser vantage (GL-15–GL-22)"
   - id: os-isolation
     label: "OS subprocess isolation"
     cells:
@@ -290,6 +356,7 @@ coverageFeatures:
       embedded-simulation: "Python/Node isolates"
       goal-agent-simulation: "—"
       lab-simulation: "Primary (JSON-RPC subprocesses)"
+      graded-lab-simulation: "Mock/Subprocess isolates, proven byte-identical via verify_isolate_equivalence.py"
   - id: handle-registry
     label: "Handle registry + access control"
     cells:
@@ -298,6 +365,7 @@ coverageFeatures:
       embedded-simulation: "AppD handle kernels"
       goal-agent-simulation: Tool-gated actions
       lab-simulation: "Registry + overseer invoke"
+      graded-lab-simulation: "Resource/cost ledger + embedded-carrier viability (CarrierStatus: healthy/degraded/incapacitated/terminated) gates agent availability itself"
   - id: llm-redteam
     label: "LLM red-team / open-ended agents"
     cells:
@@ -305,4 +373,5 @@ coverageFeatures:
       toy-simulation: "Phase 3 LLM episodic runner"
       embedded-simulation: "—"
       goal-agent-simulation: "—"
-      lab-simulation: "Phase 8 adapter (exploratory; G-7/G-8)"
+      lab-simulation: "Phase 8 adapter (exploratory; LS-7/LS-8)"
+      graded-lab-simulation: "— (explicit scope limit: no LLM adapter in this line)"

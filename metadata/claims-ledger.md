@@ -71,6 +71,8 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 - boundary-recovery bridge: structured candidate classes, intervention handles, sufficient margin, and empirical recovery tests whose targets do not presuppose the boundary
 - task-agnostic competence measure (boundary information)
 - capability growth modeled as expansion of sensory/predictive/active/memory/coordination loops
+- graded-lab-simulation testbed: a communication-free workspace-handoff coordination link is invisible to passive discovery and to intervention seeded from passive's guesses, but recoverable by a standalone all-pairs probe (positive for boundary discoverability being non-trivial and method-dependent); the same probe over-merges a resource-bound bystander into a barrier unit through shared queue contention (negative — coupling-type discrimination is unsolved) (Appendix~\ref{appn-experimental-evidence}, findings GL-11/GL-12, `finding:gl-11`/`finding:gl-12`)
+- graded-lab-simulation testbed: a careful, correctly-stated $I_{\mathrm{ctrl}}^X$ implementation silently reimported a task ontology via an under-scoped outcome vector, masking a task-irrelevant actor as the true driver until the vector was widened (negative — illustrates how easily task-agnosticism claims can be undercut by implementation, not by the definition) (Appendix~\ref{appn-experimental-evidence}, findings GL-13/GL-14, `finding:gl-13`)
 
 **Weakest link:**
 - boundaries are leaky and non-stationary; finite-data high-dimensional recovery may fail, learned detectors may inherit the criterion/labeling gap, and the boundary-finding procedure may not converge on real adversarial systems
@@ -165,6 +167,7 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 - seven conserved properties across successors
 - self-modeling vs. self-transparency gap; certification-without-construction conditions
 - tiling agents treated as a syntactic/identity-like special case of successor transport, with ontology/import preservation as the stronger invariant
+- toy-simulation testbed: a purely passive correction-integrity audit cannot distinguish an intact correction channel from a quietly captured one on any passive-only scenario; a small, frozen set of intervention handles reaches full separation on calibration scenarios (positive for certification needing intervention, not passive observation alone) (Appendix~\ref{appn-experimental-evidence}, finding TS-1, `finding:ts-1`)
 
 **Weakest link:**
 - successor certification without full construction understanding is unproven; the conserved-property set may be incomplete or untestable jointly
@@ -187,6 +190,7 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 - selection-vs-training distinction; deployment-fitness traps and false attractors
 - multi-agent inferential coupling (cooperation/opacity basins, privacy islands, coalition-collapse failure mode)
 - alignment-attractor model (artifact conductivity across research/engineering/governance)
+- graded-lab-simulation first multi-episode selection battery: deployment mass shifted toward a higher-throughput, lower-harm program and away from the sole correction-preserving-tagged program, with harm falling rather than rising (a clean null on detector-evading emergence under one narrow selection handle) — read cautiously, since a same-day external review flagged four open concerns (confounded preservation tag, narrow selection proxy, unvalidated campaign carryover, unqualified gate language) before this can support more than "deployment-mass selection pressure is measurable and decoupled from a correction-preserving tag on this ecology" (Appendix~\ref{appn-experimental-evidence}, finding GL-23/GL-24, `finding:gl-23`)
 
 **Weakest link:**
 - conditions for the benign basin to dominate are not established; effective coalition detection and pivotal-process feasibility remain open

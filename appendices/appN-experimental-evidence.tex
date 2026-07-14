@@ -1,0 +1,243 @@
+\chapter{Experimental Evidence: Findings by Line}
+\label{appn-experimental-evidence}
+
+\begin{epistemicstatus}
+This appendix is a curated index, not a new result. Every entry below is already reported, with full method and caveats, in the named experiment line's own findings ledger; this appendix's contribution is selecting which findings are load-bearing enough to cite from the manuscript, classifying each as positive, negative, or ambiguous evidence for the claim it bears on, and recording bidirectional links to the chapter sections that cite them. Confidence in the underlying results is whatever each line's own ledger states --- several entries below are the line's own negative or ambiguous results, reported as such rather than omitted. Confidence in the \emph{selection and classification} is lower and is the responsibility of this appendix alone. None of this is a claim that any experiment line proves the book's thesis; see \texttt{docs/EXPERIMENTS.md}'s claim-strength note: methodology-building and sanity checks only.
+\end{epistemicstatus}
+
+Six experiment lines (five in this repository plus a sibling methodological precursor) maintain their own findings ledgers --- \texttt{results/FINDINGS.md} or \texttt{results/NEGATIVE\_RESULTS.md} --- with every finding each line has produced, including minor bugs, dead ends, and one-off diagnostics that do not belong here. \texttt{docs/EXPERIMENTS.md} gives the full narrative for each line, phase by phase. This appendix sits between those two documents: a short description of each line, then only the findings strong enough that a chapter might reasonably cite them, with plain classification of what each supports, undercuts, or leaves open.
+
+\paragraph{How to read the findings tables.} \textbf{Result} classifies the finding relative to the manuscript claim it is closest to: \textbf{Pos.} (positive) means evidence for that claim (including cases where the claim itself is a warning, and the finding shows the warned-about failure mode is real); \textbf{Neg.} (negative) means evidence against a stronger reading of that claim, or documents a method's failure to deliver what a naive reading would expect; \textbf{Ambig.} (ambiguous) means the finding cuts both ways, or the line's own analysis leaves the direction open. \textbf{Manuscript} names the chapter \emph{section} that cites the finding by this appendix's label, when one exists; ``---'' means the finding is indexed here but not yet cited anywhere in the manuscript. Global IDs use line-unique prefixes (\texttt{AD-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}); see \texttt{docs/FINDING\_IDS.md}. Chapters that cite a finding should name its global ID and appendix section, not the generic method paper alone.
+
+\newcommand{\appnlinemeta}[3]{%
+  \noindent\textbf{Location:} #1\\
+  \textbf{First built:} #2\\
+  \textbf{Ledger:} #3\par\smallskip}
+
+\section{Agency-detect (sibling repository, methodological precursor)}
+\label{sec:appn-agency-detect}
+
+\appnlinemeta{\texttt{github.com/GunnarZarncke/agency-detect} (outside this repository)}{prior to in-repo simulators}{sibling \texttt{docs/FINDINGS.md}}
+
+Methodological precursor: boundary-like structure from time series without a prior agent ontology; handle-UAD interventional tests. The core pipeline clusters lagged mutual information to propose decoupled agents, then validates cuts with Markov-blanket criteria. It grounds \texttt{MB1} and the claim that handles must be interventional; it does not implement the full bridge battery or stress correction capture, bundle transport, or selection basins.
+
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{@{}L{0.05\textwidth}L{0.08\textwidth}L{0.55\textwidth}L{0.255\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Result} & \textbf{Finding} & \textbf{Manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\label{finding:ad-1}AD-1 & Pos. & Boundary-like structure is often recoverable from raw time series without a prior agent ontology, via lagged mutual-information clustering validated against Markov-blanket criteria, under favorable (low-noise, short-lag) conditions. & --- \\
+\label{finding:ad-2}AD-2 & Neg. & Passive alias handles can mimic real sensor/action readouts and decoy variables can steal mutual-information clusters before validation; only interventional handle tests break some of the resulting ties that passive observation alone cannot. & --- \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\section{Toy simulation}
+\label{sec:appn-toy-simulation}
+
+\appnlinemeta{\texttt{experiments/toy-simulation/}}{2026-06-29}{\texttt{results/NEGATIVE\_RESULTS.md} and \texttt{README.md}'s instrumentation-cost curve}
+
+Fast multiresolution alignment toy: correction capture theater, vector CCI over handle levels, scripted bridge stressors (\texttt{MB1}--\texttt{MB9}). Optimized for instrumentation economics, not deployment realism. Fastest map from bridge name to refusal signal and minimum handle level; scenarios are explicit, not emergent.
+
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{@{}L{0.05\textwidth}L{0.08\textwidth}L{0.55\textwidth}L{0.255\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Result} & \textbf{Finding} & \textbf{Manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\label{finding:ts-1}TS-1 & Pos. & Passive telemetry alone is uncertifiable (\texttt{belowThreshold} on every passive-only scenario); a small, frozen set of intervention handles (\texttt{light\_handles}) is sufficient to reach full separation on calibration scenarios; a larger set (\texttt{medium\_handles}) is needed only for a harder held-out stress scenario. & \S\ref{sec:adversarial-certification-ch33}, ch.~\ref{ch:certification-without-construction} \\
+\label{finding:ts-2}TS-2 & Pos. & Reported correction acceptance can stay high while true correction uptake collapses (``capture theater''): a one-number demonstration that correction integrity cannot be read off compliance metrics alone. & --- \\
+\label{finding:ts-3}TS-3 & Ambig. & Hand-written red-team strategies achieve a non-trivial false-pass rate by patching deployment logs; LLM episodic red-team false-passes less often in small model sweeps, but sample sizes are small and handles are still truthfully logged from micro-dynamics today, so direct handle rewriting remains trivial in-sim --- the comparison does not yet generalize. & --- \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\section{Embedded audit simulation}
+\label{sec:appn-embedded-simulation}
+
+\appnlinemeta{\texttt{experiments/embedded-simulation/}}{2026-06-30}{\texttt{results/NEGATIVE\_RESULTS.md} (ES-1 onward)}
+
+Auditor as embedded process on simulated machines: UAD, scoped CCI, \texttt{MB5} deploy gate, outer evaluator vs.\ oracle. Richest end-to-end embedded audit path (VFS $\to$ UAD $\to$ CCI $\to$ gate $\to$ outer eval), with the most extensive negative ledger.
+
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{@{}L{0.05\textwidth}L{0.08\textwidth}L{0.55\textwidth}L{0.255\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Result} & \textbf{Finding} & \textbf{Manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\label{finding:es-1}ES-1 & Neg. & In the default ecology, full unit-attribution discovery (UAD) and a cheap ``most active actor'' heuristic are byte-identical: the offender is also the loudest actor, so unit discovery cannot yet be shown to matter there. & --- \\
+\label{finding:es-2}ES-2 & Ambig. & Separation between UAD and the loudest-actor heuristic appears only in adversarial ecologies built specifically to defeat that heuristic; the margin is thin, and a strong optimizer could plausibly close the algorithmic gap. & --- \\
+\label{finding:es-3}ES-3 & Neg. & Default-ecology red-team batteries report 0\% false-pass at $T=400$, but this is not evidence against adaptive frontier adversaries; eligibility gating, probe-lag, lineage-stall detector calibration, and writer-compromise red-teaming each added further recorded negatives (ES-3 through ES-12+). & --- \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\section{Goal-agent simulation}
+\label{sec:appn-goal-agent-simulation}
+
+\appnlinemeta{\texttt{experiments/goal-agent-simulation/}}{2026-07-04}{\texttt{results/FINDINGS.md} (GA-1 onward)}
+
+Emergent deception from goal-driven agents (not scripted knobs): blind generation, ontology drift, severity-graded referee, honest twins, escalation ladder, certifier capture. Methodological engine for blind surprise, ontology drift, severity under saturation, and twin/escalation semantics. $\sim$1\,ms/episode, stdlib-only.
+
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{@{}L{0.05\textwidth}L{0.08\textwidth}L{0.55\textwidth}L{0.255\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Result} & \textbf{Finding} & \textbf{Manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\label{finding:ga-9}GA-9 & Ambig. & Against a blind-generated agent repertoire, light-tier detection collapses; full tier keeps detecting but its false-alarm rate rises (GA-10) --- depth buys detection back only at a real, measured cost, not for free. & --- \\
+\label{finding:ga-16}GA-16 & Neg. & Mechanical honest twins (agents that differ only in whether they lie) show that light-tier detectors track visible compliance, not honesty: a light-tier pass is not evidence of an honest agent. & --- \\
+\label{finding:ga-22}GA-22 & Pos. & A simulated board certifier that can itself be captured reproduces the full captured-vs-not behavioral delta; adversarial search over the agent's goal weights against the resulting detector finds only modest gains for the adversary (GA-23). & --- \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\section{Lab-layer simulation}
+\label{sec:appn-lab-simulation}
+
+\appnlinemeta{\texttt{experiments/lab-simulation/}}{2026-07-05}{\texttt{results/FINDINGS.md} (LS-1 through LS-41)}
+
+Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (\texttt{lab-sim-0.3.0+}), pre-registered batteries through Phase~7 and Phase~9; a second detector-layer freeze (S6/S7, 2026-07-07) adds intervention-supported unit discovery plus a blind-generated detector on the real subprocess backend. Phase~8 LLM adapter remains exploratory only. Lean leak-proof (\texttt{leak-proof/}) certifies oracle/audit/sim plane separation. Pre-registered batteries and pipeline lab machinery; deferred D1--D4 architect bridge coverage not yet fully evaluated.
+
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{@{}L{0.05\textwidth}L{0.08\textwidth}L{0.55\textwidth}L{0.255\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Result} & \textbf{Finding} & \textbf{Manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\label{finding:ls-1}LS-1 & Pos. & Against the frozen referee, deep-tier detection tracks true oracle severity closely (Spearman 0.96), and this transfers to a pre-registered held-out region (Phase 6). & --- \\
+\label{finding:ls-1a}LS-1a & Neg. & In the same battery, light-tier detection is actively anti-correlated with true severity --- a genuine negative, not merely weak signal. & --- \\
+\label{finding:ls-28}LS-28 & Ambig. & An intervention-supported detector (channel-ablation probes plus honest-twin-controlled compensation scoring) achieves exact unit-partition recovery on 4 of 5 primary composite-agent scenarios plus a negative control, but one communication-free scenario (\texttt{shared\_slot}) stays undetected by every detector tried. & --- \\
+\label{finding:ls-30}LS-30 & Pos. & A blind-generated detector (designed by a subagent given only a mechanism-level description, predictions registered before code existed) reproduces the same partition results on the real subprocess backend, including correctly (if with registered low confidence) still missing \texttt{shared\_slot}. & --- \\
+\label{finding:ls-32}LS-32 & Neg. & Pointed at one real LLM-backed episode for the first time, the intervention-supported detector misses a coordination link the passive heuristic exactly isolates; root cause is that episode-pair diffing assumes byte-identical counterfactual replay, an assumption only scripted zero-temperature agents satisfy. & --- \\
+\label{finding:ls-33}LS-33 & Ambig. & A same-day, noise-tolerant follow-up (frequency-histogram statistics plus a per-scenario measured null) recovers the missed real-LLM pair, but the merge came from an untargeted whole-channel probe rather than the mechanism-specific one --- validating the relative-rule approach without yet validating robustness against untargeted-probe false merges. & --- \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\section{Graded-capability lab simulation}
+\label{sec:appn-graded-lab-simulation}
+
+\appnlinemeta{\texttt{experiments/graded-lab-simulation/}}{2026-07-10}{\texttt{results/FINDINGS.md} (GL-0 through GL-24)}
+
+Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters. UAD-backed ecology-BIQ over inferred units; an Emergent-Ambiguity-Index measured from two vantages (acting agent vs.\ limited-observation referee); first multi-episode selection battery. Ambiguity and boundary-discovery engine: a measured structurally-unreachable ``high'' ambiguity band from the agent's own vantage, a ``mid'' band reachable only from a referee's coarser vantage, and a first, explicitly-caveated selection battery.
+
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{@{}L{0.05\textwidth}L{0.08\textwidth}L{0.55\textwidth}L{0.255\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Result} & \textbf{Finding} & \textbf{Manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\label{finding:gl-11}GL-11 & Pos. & A coordination link implemented purely as a write/read workspace handoff (no \texttt{communicate} action) is invisible to passive discovery and to intervention seeded from passive's own candidate pairs; a standalone all-pairs probe scored by whether the intervened run ever reaches codes the baseline reaches (not merely by novel codes) recovers it exactly. & \S\ref{sec:estimator-feasibility-recovery-ch07}, ch.~\ref{ch:finding-boundary} \\
+\label{finding:gl-12}GL-12 & Neg. & The same standalone probe that recovers GL-11's pattern, applied to a three-actor mutual approval barrier, over-merges a resource-bound bystander into the unit: the bystander is genuinely causally coupled through shared queue contention, and the estimator cannot yet distinguish that from coupling through joint decision-making. & \S\ref{sec:estimator-feasibility-recovery-ch07}, ch.~\ref{ch:finding-boundary} \\
+\label{finding:gl-13}GL-13 & Neg. & A careful, correctly-specified $I_{\mathrm{ctrl}}^X$ implementation silently reimported a task ontology by scoping its outcome vector to one completion event inherited from an earlier diagnostic; a task-irrelevant, contention-driving actor looked identical to the true task driver until the vector was widened to include a contention bucket (see also GL-14). & \S\ref{sec:task-agnostic-not-ontology-free}, ch.~\ref{ch:capability-without-task-ontology} \\
+\label{finding:gl-18}GL-18 & Neg. & The pre-registered ``high'' emergent-ambiguity band is structurally unreachable from the acting agent's own full-context vantage on this substrate --- it is close to deterministic given everything the agent can see, not merely under-instrumented. & --- \\
+\label{finding:gl-20}GL-20 & Pos. & Re-scoring the identical episodes at a referee's coarser (light-tier) vantage, with the entropy formula otherwise unchanged, reaches the pre-registered ``mid'' ambiguity band at every stressed cell --- the first non-hairline mid-band signal in this line (see also GL-19). & --- \\
+\label{finding:gl-22}GL-22 & Neg. & A full both-vantage calibration battery with 95\% confidence intervals lands at 1 of 4 pre-registered pass criteria under either vantage on the same 100 episodes; the core separation criterion fails under both vantages for the same underlying reason (one agent type's deploy behavior does not respond to the substrate knob being swept) (see also GL-21). & --- \\
+\label{finding:gl-23}GL-23 & Ambig. & A first multi-episode selection battery is a clean null on detector-evading emergence --- deployment mass shifted toward a higher-throughput, lower-harm program and away from the sole correction-preserving-tagged program, with severity falling rather than rising --- but same-day review flagged four concerns (confounded preservation tag, too-narrow selection proxy, unvalidated campaign carryover, unqualified gate language) before the result can support a stronger claim (see also GL-24). & \S\ref{sec:minimal-model-selection-ch34}, ch.~\ref{ch:selection-environment} \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\section{Bridge and feature coverage}
+\label{sec:appn-bridge-coverage}
+
+Which book bridges and cross-cutting features each line exercises. ``Primary'' means the line was built mainly to stress that feature; ``---'' means not in scope. Cell text is abbreviated from \texttt{metadata/experiments.yml}; full narrative in \texttt{docs/EXPERIMENTS.md}. The two tables below are set landscape (rotated 90\textdegree) so the matrix can be read at a comfortable size.
+
+\begin{landscape}
+\footnotesize
+\setlength{\tabcolsep}{6pt}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\renewcommand{\arraystretch}{1.18}
+% Full \linewidth; data columns ~30\% wider than the prior 0.126\textwidth{} cells
+% inside a table that only spanned 0.896\textwidth.
+\def\appnbridgecols{%
+  @{}L{0.12\linewidth}%
+  L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}%
+  L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}@{}}
+
+\subsection{Book bridges (\texttt{MB1}--\texttt{MB10})}
+\label{sec:appn-bridge-mb}
+
+\begin{longtable}\appnbridgecols
+\caption{Experiment lines mapped to book bridges.}\label{tab:appn-bridge-mb}\\
+\toprule
+\textbf{Bridge} & \textbf{Agency-detect} & \textbf{Toy sim} & \textbf{Embedded sim} & \textbf{Goal-agent sim} & \textbf{Lab sim} & \textbf{Graded lab sim} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Bridge} & \textbf{Agency-detect} & \textbf{Toy sim} & \textbf{Embedded sim} & \textbf{Goal-agent sim} & \textbf{Lab sim} & \textbf{Graded lab sim} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{MB1} Boundary / UAD & Primary & Scenario (boundary-alias) & Full UAD + ecologies; negatives when heuristic suffices & --- & D1 composite agents + S6/S7 intervention detectors; real-LLM non-determinism (LS-32/LS-33) & Primary: graded substrate; all-pairs dep.-score probe; over-merge negative (GL-11/GL-12) \\
+\texttt{MB2} Value bundle / pointing & --- & Scenario stub & Scenario (bundle-Goodhart) & Indirect (welfare deltas) & Stipulated; report-content ontology & --- \\
+\texttt{MB3} Bearer maps & --- & Partial (bearer-mismap) & Scenario + bearer handles & Indirect (harm attribution) & Health + stress bundle & --- \\
+\texttt{MB4} Correction / capture & Intention probes & Primary (capture theater, CCI) & Scenarios + correction handles & Emergent deception + board corrections & Playbooks + access capture & Referee ported + frozen; not line focus \\
+\texttt{MB5} Successor / ontology shift & --- & Scenario (successor-relabel) & Deploy gate + successor handles & --- & D2 lineage mechanics + adversarial gaming (LS-31) & --- \\
+\texttt{MB6} Selection basins & --- & Scenario stubs & selection-basin, basin lock-in & --- & D3 population selection (LS-36/LS-37) & Phase~8 throughput-linked selection; GL-23/GL-24 caveats \\
+\texttt{MB7} Hidden capability & --- & Scenario stub & Scenarios + hidden coalition & Emergent shadow routes & Oracle hidden capability/hazard & Graded continuous oracle state \\
+\texttt{MB7d} Inferential coupling & --- & --- & Partial / targeted ecologies & --- & D4 message board + S6 channel ablation & --- \\
+\texttt{MB8} Legitimacy / correction authority & --- & Scenario (legitimacy-theater) & Scenario + lineage signals & Board capture (GA-22) & Admin/board capture modes & --- \\
+\texttt{MB9} Grounding / spec coverage & --- & Scenario (grounding-silent-gap) & Scenario + grounding refusal & --- & Report vs.\ monitor contradiction & --- \\
+\texttt{MB10} Successor forgeability & --- & --- & Certification artifact, safety case & Escalation + twins (GA-21) & Phase~8 LLM red-team exploratory & --- \\
+\end{longtable}
+
+\subsection{Cross-cutting audit features}
+\label{sec:appn-bridge-features}
+
+\begin{longtable}\appnbridgecols
+\caption{Experiment lines mapped to cross-cutting audit features.}\label{tab:appn-bridge-features}\\
+\toprule
+\textbf{Feature} & \textbf{Agency-detect} & \textbf{Toy sim} & \textbf{Embedded sim} & \textbf{Goal-agent sim} & \textbf{Lab sim} & \textbf{Graded lab sim} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Feature} & \textbf{Agency-detect} & \textbf{Toy sim} & \textbf{Embedded sim} & \textbf{Goal-agent sim} & \textbf{Lab sim} & \textbf{Graded lab sim} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Three-plane separation & --- & Oracle vs.\ audit trace & Full (projection + outer eval) & Full (test-enforced) & Full (tiers + frozen referee) & Full (world / agent / oracle packages) \\
+Instrumentation economics & Handle-UAD interventional tests & Instrumentation curve & Access-tier curves + eligibility & light / full / deep tiers & none $\to$ light $\to$ full $\to$ deep & Ported tiers + agent-vs-referee vantage axis \\
+CCI / vector certification & --- & Vector CCI over handle levels & Scoped CCI on discovered unit & Frozen detector families + severity & Five detector families (frozen) & Five detector families (ported) \\
+Scripted vs.\ emergent & --- & Scripted scenarios & Scripted + red-team patches & Emergent utility + tools & Playbook tactics; Phase~8 LLM exploratory & Emergent softmax agents; no LLM adapter \\
+Blind generation / ontology drift & --- & --- & Scenario-blind audit path & Primary (Phases 2--3) & Phase~6 blind playbooks; S7 blind detector & Blind behavior battery; blind UAD scenarios \\
+Honest twins / severity referee & --- & --- & Partial (outer eval severity) & Primary (Phases 4--6) & Twins frozen; escalation Phase~7 & Twins / escalation ported, frozen \\
+Pipeline-as-code lab & --- & --- & Workflow JSONL + lab actors & --- & Primary (JSON DAG + workspace) & Nine-step graded pipeline topology \\
+BIQ / EAI & --- & --- & --- & --- & --- & Primary: UAD-backed ecology-BIQ; EAI mid-band via referee vantage only \\
+OS subprocess isolation & --- & --- & Python / Node isolates & --- & Primary (JSON-RPC subprocesses) & Mock / Subprocess isolates, byte-identical verified \\
+Handle registry + access & Handle-UAD & Simulated handle levels & AppD handle kernels & Tool-gated actions & Registry + overseer invoke & Resource/cost ledger + carrier viability \\
+LLM red-team / open agents & --- & Phase~3 LLM episodic runner & --- & --- & Phase~8 adapter (exploratory) & --- (explicit scope limit) \\
+\end{longtable}
+
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+\end{landscape}
