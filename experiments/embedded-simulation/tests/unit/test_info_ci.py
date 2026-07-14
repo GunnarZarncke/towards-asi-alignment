@@ -1,8 +1,8 @@
 """Unit tests for bootstrap CI + permutation-null MI/CMI (embedded_sim.audit_core.info_ci).
 
-Includes an integration check against the pinned N-8 fixture columns
+Includes an integration check against the pinned ES-8 fixture columns
 (`tests/fixtures/trace_biq_calibration_columns.json`): the reversed-control
-coupling that the Lean pattern-diversity *score* misses (N-8: score reads 0,
+coupling that the Lean pattern-diversity *score* misses (ES-8: score reads 0,
 plug-in MI reads >0.1 bits) should be `detected=True` under the bootstrap+null
 gate -- giving that empirical coupling real statistical backing instead of a
 bare point estimate.
@@ -88,7 +88,7 @@ def test_cmi_with_ci_shape():
 
 
 def test_n8_reversed_coupling_is_detected_on_full_trace(pinned_columns):
-    """The N-8 finding, given statistical teeth: intervention_active predicts
+    """The ES-8 finding, given statistical teeth: intervention_active predicts
     visible_action 3 steps later in the pinned capture-theater fixture. The
     support-count score reads 0 there; on the full 300-row trace the CI+null
     gate cleanly detects it (CI lower bound clears the null by ~25x)."""
@@ -104,7 +104,7 @@ def test_n8_reversed_coupling_is_detected_on_full_trace(pinned_columns):
 
 def test_n8_reversed_coupling_not_reliably_detected_on_26row_window(pinned_columns):
     """Companion negative result: on the 26-row `WorkedInstance.lean` window
-    (23 lagged pairs at lag 3) the *point estimate* still exceeds N-8's naive
+    (23 lagged pairs at lag 3) the *point estimate* still exceeds ES-8's naive
     0.1-bit threshold, but the CI lower bound touches 0 -- the sample is too
     small for the CI+null gate to call it, even though the true coupling is
     real (confirmed on the full trace above). This is the concrete case for

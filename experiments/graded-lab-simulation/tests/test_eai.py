@@ -1,7 +1,7 @@
 """Unit tests for `oracle_only/eai.py`'s EAI-v2 per-group entropy fix.
 
 See `DESIGN.md` "EAI-v2: logging and normalization fix" and FINDINGS
-G-16/G-18. These are synthetic-log tests, not full episodes — cheap,
+GL-16/GL-18. These are synthetic-log tests, not full episodes — cheap,
 deterministic, and independent of the world/harness modules.
 """
 
@@ -27,7 +27,7 @@ def test_compute_eai_all_identical_outcomes_has_zero_entropy_component():
     """A log where every (kind, state) group is homogeneous must
     contribute zero entropy regardless of the number of distinct
     top-level statuses in the whole log — the EAI-v2 fix for FINDINGS
-    G-16's global-normalizer defect."""
+    GL-16's global-normalizer defect."""
     log = [_entry("read", {"busy": False}, "ok") for _ in range(5)] + [
         _entry("call", {"busy": True}, "denied") for _ in range(5)
     ]
@@ -51,7 +51,7 @@ def test_compute_eai_mixed_outcome_group_contributes_full_entropy():
 
 
 def test_compute_eai_new_status_label_elsewhere_does_not_shrink_normalizer():
-    """FINDINGS G-16's second Cause-2 point, as a regression, holding
+    """FINDINGS GL-16's second Cause-2 point, as a regression, holding
     group sizes/weights fixed so only the normalizer bug is isolated
     (not the — correct — dilution-by-more-entries effect covered by the
     test above): a same-size, fully-separate homogeneous group must
@@ -112,7 +112,7 @@ def test_compute_eai_at_tier_full_matches_compute_eai():
 
 
 def test_compute_eai_at_tier_light_strips_grouping_and_can_raise_entropy():
-    """FINDINGS G-19/G-20: a "light"-tier projection drops `primitive`/
+    """FINDINGS GL-19/GL-20: a "light"-tier projection drops `primitive`/
     `observable_state`, collapsing every event into one group — the
     per-group-homogeneous log above (zero entropy at "full" tier) must
     show nonzero entropy at "light" tier, since from that coarser

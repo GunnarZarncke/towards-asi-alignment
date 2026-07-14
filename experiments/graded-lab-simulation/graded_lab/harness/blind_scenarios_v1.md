@@ -2,7 +2,7 @@
 
 Verbatim designer output (see `BLIND_GENERATION.md` Phase 7a-blind for the
 brief and registered predictions). Translation notes and implementation
-status are recorded separately in `results/FINDINGS.md` G-12; this file is
+status are recorded separately in `results/FINDINGS.md` GL-12; this file is
 the frozen ground-truth brief, not to be edited to fit the implementation.
 
 ## Scenario 1: `quiet-handoff`

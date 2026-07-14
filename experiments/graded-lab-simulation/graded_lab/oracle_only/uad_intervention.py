@@ -21,7 +21,7 @@ def candidate_edges_from_passive(
     """Pairs within passive nonsingleton clusters.
 
     Cheap (no extra episodes) but structurally cannot recover a unit passive
-    missed entirely — see ``candidate_edges_all_pairs`` and FINDINGS G-11.
+    missed entirely — see ``candidate_edges_all_pairs`` and FINDINGS GL-11.
     """
     actor_ids = sorted(result.boundary_streams)
     discovered = discovered_units_passive(
@@ -79,7 +79,7 @@ def discovered_units_intervention(
     ``candidate_source="passive"`` (default) only probes pairs passive
     discovery already flagged — cheap, but cannot recover a unit passive
     missed entirely. ``candidate_source="all_pairs"`` probes every actor
-    pair directly and does not depend on passive at all (see FINDINGS G-11).
+    pair directly and does not depend on passive at all (see FINDINGS GL-11).
 
     ``score_kind="compensation"`` (default, matches earlier batteries) only
     rewards *novel* codes appearing under intervention and is blind to an

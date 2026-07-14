@@ -124,7 +124,7 @@ def signal_handoff_pair_config(*, T: int = 60, temperature: float = 0.0) -> Epis
     """Engineer + reviewer coordinated purely through a ``write``/``read``
     workspace handoff — no ``communicate`` primitive involved at all.
 
-    Exists to test intervention-only discovery (FINDINGS G-11): passive
+    Exists to test intervention-only discovery (FINDINGS GL-11): passive
     discovery's signals (co-semantic-step, communicate-pair edges,
     communicate co-activity) all key on ``communicate`` or pipeline
     ``call`` steps and cannot see a ``write``/``read`` coordination
@@ -164,7 +164,7 @@ def watched_flag_config(*, T: int = 60, temperature: float = 0.0) -> EpisodeConf
     of the mutual contingency is not implementable without adding new
     host mechanics, so it is dropped. The implemented fixture keeps the
     one direction the substrate supports: reviewer behavior switches on
-    the engineer's write. See FINDINGS G-12.
+    the engineer's write. See FINDINGS GL-12.
     """
     return EpisodeConfig(
         agents=(

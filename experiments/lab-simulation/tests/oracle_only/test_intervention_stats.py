@@ -1,5 +1,5 @@
 """Symmetric two-sample S6 (DESIGN.md Freeze note 3; PLAN.md post-release
-Step 2). Statistically-calibrated compensation test replacing G-33's
+Step 2). Statistically-calibrated compensation test replacing LS-33's
 asymmetric quantile design.
 
 Equivalence tests below are the load-bearing ones: on a scripted
@@ -133,7 +133,7 @@ def _run_stats(factory, seed: int = 1, **kwargs):
 def test_stats_variant_reproduces_frozen_exact_partition_on_scripted_backend(factory, true_pair):
     """Load-bearing equivalence check: statistical rebasing must not
     change scripted-agent (zero-noise) results versus the frozen S6
-    detector's battery-validated exact partitions (G-28)."""
+    detector's battery-validated exact partitions (LS-28)."""
     cfg, discovered = _run_stats(factory)
     assert exact_partition(cfg.resolved_units(), discovered)
     assert nonsingleton_clusters(discovered) == [tuple(sorted(true_pair))]
@@ -145,7 +145,7 @@ def test_stats_variant_negative_control_serial_pipeline():
 
 
 def test_stats_variant_does_not_merge_shared_slot():
-    """Matches S6's own documented miss (G-28) -- shared_slot has no
+    """Matches S6's own documented miss (LS-28) -- shared_slot has no
     message-channel or actor-directed probe lever at all; the
     statistical rebasing does not (and is not expected to) change that."""
     _cfg, discovered = _run_stats(shared_slot_config)
@@ -174,7 +174,7 @@ def test_discovered_units_intervention_stats_diagnostics_shape():
 
 
 def test_classify_ablation_compensators_stats_separates_ripple_from_intrinsic():
-    """G-28 ripple guard, stats variant: board ablation on committee-with-
+    """LS-28 ripple guard, stats variant: board ablation on committee-with-
     informal-chatter -- rm1 is downstream ripple from {rev1, rev2}; eng1
     is a genuine but unpartnered intrinsic reaction."""
     cfg = committee_with_informal_chatter_config(T=100)

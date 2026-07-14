@@ -2,8 +2,8 @@
 
 **Purpose.** Every unit-discovery detector in this line so far
 (`uad.py`, `uad_mi.py`, `uad_cmi.py`, `uad_intervention.py`) was written by
-the same author who wrote the scenarios it is scored against (G-24
-through G-29). This protocol, adapted from `BLIND_GENERATION.md` (which
+the same author who wrote the scenarios it is scored against (LS-24
+through LS-29). This protocol, adapted from `BLIND_GENERATION.md` (which
 broke the equivalent loop for the Phase 4 playbook repertoire against
 the Phase 5 referee), breaks it for the **detector** side: a generator
 that has never seen this line's existing detector code, scenario
@@ -13,7 +13,7 @@ description alone. Detection failures are a headline result, not a bug.
 ## Sequencing rule
 
 1. The intervention primitives (channel ablation, handle-based probes,
-   honest-twin control) are already frozen (S6, G-28/G-29) **before** the
+   honest-twin control) are already frozen (S6, LS-28/LS-29) **before** the
    generator is ever invoked.
 2. The generator is invoked **once** with exactly the context in
    "Permitted context" below, including an explicit instruction to state

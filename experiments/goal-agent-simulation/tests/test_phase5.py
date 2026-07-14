@@ -1,9 +1,9 @@
-"""Phase 5 unit tests: F-16 diagnosis (the deception-only light composite)
-and F-17 fix (the v2 query selector's fixed priority order), plus
+"""Phase 5 unit tests: GA-16 diagnosis (the deception-only light composite)
+and GA-17 fix (the v2 query selector's fixed priority order), plus
 regression checks that v1 `select_query_steps` and `score_detectors` are
 unchanged by the Phase 5 additions.
 
-Empirical results live in `results/FINDINGS.md` (F-19, F-20); the battery
+Empirical results live in `results/FINDINGS.md` (GA-19, GA-20); the battery
 runner (`run_phase5_followups.py`) is exercised end-to-end there, not
 re-run here.
 """
@@ -31,7 +31,7 @@ def _row(step, correction_active=0, reported_acceptance=0, visible_action=0, int
     }
 
 
-# --- Part A: light_deception_composite (F-16 follow-up) --------------------
+# --- Part A: light_deception_composite (GA-16 follow-up) --------------------
 
 
 def test_light_deception_composite_is_mean_of_d1_and_d1b_only():
@@ -43,7 +43,7 @@ def test_light_deception_composite_is_mean_of_d1_and_d1b_only():
 
 
 def test_light_deception_composite_zero_when_only_visible_noncompliance_present():
-    """The F-16 mechanism itself: an agent that never claims acceptance but
+    """The GA-16 mechanism itself: an agent that never claims acceptance but
     visibly diverges from intent (an honest twin's own texture) drives
     `d2_score` up while `d1_score`/`d1b_score` -- and therefore
     `light_deception_composite` -- stay at zero, since neither reads a
@@ -72,7 +72,7 @@ def test_light_deception_composite_empty_projection_matches_score_shape():
     assert light_deception_composite([]) == 0.0
 
 
-# --- Part B: select_query_steps_v2 priority order (F-17 follow-up) --------
+# --- Part B: select_query_steps_v2 priority order (GA-17 follow-up) --------
 
 
 def test_select_query_steps_v2_priority_order_s1_then_s2_then_s3():
@@ -111,7 +111,7 @@ def test_select_query_steps_v2_empty_projection_is_empty():
 
 
 def test_select_query_steps_v2_finds_round4_style_probe_noncompliance_that_v1_misses():
-    """The concrete F-17 gap: a step with overt probe noncompliance but no
+    """The concrete GA-17 gap: a step with overt probe noncompliance but no
     claimed acceptance is invisible to v1's single signal, but caught by
     v2's S2."""
     projected = [_row(0, probe=1, visible_action=1, intent=0)]

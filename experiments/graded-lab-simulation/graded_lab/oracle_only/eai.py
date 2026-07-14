@@ -32,7 +32,7 @@ def _entropy_component(primitive_log: list[dict]) -> float:
     observer); this function itself never reaches into oracle truth.
 
     EAI-v2 (DESIGN.md "EAI-v2: logging and normalization fix", FINDINGS
-    G-16/G-18): normalize each (kind, state) group by that group's OWN
+    GL-16/GL-18): normalize each (kind, state) group by that group's OWN
     distinct-outcome count, not by an episode-global count of distinct
     top-level status values. The old global normalizer could shrink for
     every group whenever an unrelated new status appeared anywhere else
@@ -93,7 +93,7 @@ def compute_eai_at_tier(
     tier_i_fraction: float,
     tier: str,
 ) -> float:
-    """Referee-vantage EAI (DESIGN.md "EAI-referee", FINDINGS G-19).
+    """Referee-vantage EAI (DESIGN.md "EAI-referee", FINDINGS GL-19).
 
     Reuses `compute_eai` unmodified, but conditions its entropy term on a
     tier-projected log (`oracle_only.events.project_primitive_log`) instead
@@ -115,7 +115,7 @@ def eai_components_at_tier(
     tier: str,
 ) -> dict[str, float]:
     """Same three components `compute_eai_at_tier` averages, reported
-    separately — for decomposition reporting (FINDINGS G-18/G-19 style),
+    separately — for decomposition reporting (FINDINGS GL-18/GL-19 style),
     not for the calibration battery's pass criteria, which use the single
     scalar `compute_eai`/`compute_eai_at_tier`."""
     projected = project_primitive_log(primitive_log, tier)

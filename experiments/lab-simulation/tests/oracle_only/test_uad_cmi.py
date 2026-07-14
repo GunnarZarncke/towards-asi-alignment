@@ -1,10 +1,10 @@
 """S6 first step: the custom actor-level conditional-MI detector
-(`uad_cmi.py`, the G-26 "easy fixes"). Mirrors `test_uad_mi.py`'s
+(`uad_cmi.py`, the LS-26 "easy fixes"). Mirrors `test_uad_mi.py`'s
 layers: pure unit tests on the info-theory helpers and the composite
 actor-symbol builder, end-to-end tests through a monkeypatched
 `AuditView`, and a golden test against a real `shared_slot_config`
 episode pinning the one qualitative win the sweep found (true pair
-isolated — the G-20 heuristic blind spot AND the G-24 vendored
+isolated — the LS-20 heuristic blind spot AND the LS-24 vendored
 over-merge, both fixed on this scenario)."""
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ from lab_sim.world_visible.world import run_episode
 
 def test_conditional_mi_zero_when_z_explains_everything():
     """X and Y both deterministic functions of Z: I(X;Y|Z) = 0 even
-    though I(X;Y) is large -- the common-cause case G-26 diagnosed."""
+    though I(X;Y) is large -- the common-cause case LS-26 diagnosed."""
     z = [t % 4 for t in range(80)]
     x = [v * 2 for v in z]
     y = [v + 1 for v in z]
@@ -112,7 +112,7 @@ def test_discovered_units_cmi_merges_privately_coupled_pair_not_independent_acto
     """a and b act in irregular lockstep (private coupling no third
     variable explains); c acts on an independent schedule. The pair
     must merge; c must stay a singleton -- the anti-blob behavior the
-    vendored detector failed (G-24)."""
+    vendored detector failed (LS-24)."""
     import random
 
     rng = random.Random(7)
@@ -163,9 +163,9 @@ def test_cmi_detector_isolates_shared_slot_true_pair_on_real_episode():
     """The one qualitative win from `run_s6_cmi_detector.py`'s sweep,
     pinned: on `shared_slot_config` the CMI detector puts {eng1, eng2}
     in a cluster WITHOUT rev1/rm1 -- the exact case where the frozen
-    heuristic scores 0 (G-20) and the vendored detector over-merges
-    everyone (G-24). Note rev1+rm1 also merge (direct serial coupling,
-    honestly reported in FINDINGS.md G-27) -- this test asserts the
+    heuristic scores 0 (LS-20) and the vendored detector over-merges
+    everyone (LS-24). Note rev1+rm1 also merge (direct serial coupling,
+    honestly reported in FINDINGS.md LS-27) -- this test asserts the
     true-pair isolation only, not an exact partition."""
     cfg = shared_slot_config(T=100)
     result = run_episode(cfg, seed=1, backend=MockIsolate())

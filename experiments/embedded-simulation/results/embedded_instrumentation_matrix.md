@@ -28,7 +28,7 @@ Min certifiable level: **medium_handles**
 | MB9 | ✓ | ✗ | ✓ | ✓ |
 | instrument_capture | ✓ | ✗ | ✓ | ✓ |
 
-⚠ Not monotone in instrumentation: light_handles 50.0% < none 92.9% — partial instrumentation can score worse than no instrumentation at all (N-10).
+⚠ Not monotone in instrumentation: light_handles 50.0% < none 92.9% — partial instrumentation can score worse than no instrumentation at all (ES-10).
 
 Overall in_sim_correct: 85.71%
 Runtime: 97.16s

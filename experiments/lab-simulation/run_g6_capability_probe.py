@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""G-6 follow-up: admin capture capability probe.
+"""LS-6 follow-up: admin capture capability probe.
 
 Runs the capture grid with engineer forced (temperature=0, compliance-heavy
 weights) onto ``eng_capability_probe``, which requests ``cap.sign_off``
@@ -69,7 +69,7 @@ def main() -> None:
     out = {"code_version": CODE_VERSION, "cells": cells, "wall_seconds": round(dt, 2)}
     (RESULTS_DIR / "g6_capability_probe.json").write_text(json.dumps(out, indent=2, sort_keys=True), encoding="utf-8")
     md = [
-        "# G-6 admin capture capability probe",
+        "# LS-6 admin capture capability probe",
         "",
         f"CODE_VERSION `{CODE_VERSION}`. Playbook `eng_capability_probe` requests `cap.sign_off`.",
         "",

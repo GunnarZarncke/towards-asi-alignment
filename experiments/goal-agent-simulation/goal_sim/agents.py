@@ -128,7 +128,7 @@ class BoardPolicy:
     component 5).
 
     CERTIFIER CAPTURE (Phase 6, added 2026-07-05, `results/FINDINGS.md`
-    F-22): the board was honest by construction through Phase 5 (stated
+    GA-22): the board was honest by construction through Phase 5 (stated
     limitation in the README, the manuscript's capture-of-the-certifier
     regress). This is a MECHANICAL, minimal model of what changes once the
     certifier itself is compromised, not a resolution of the regress (what

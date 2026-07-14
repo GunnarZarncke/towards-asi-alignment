@@ -97,7 +97,7 @@
     "none_belowThreshold": "Passive mode always returns belowThreshold: uncertifiable, not a passing audit.",
     "cci_status_correct_on_none": "Post-hoc evaluation may mark none as correct when uncertifiable is the expected outcome for honest/weak/MB9 scenarios."
   },
-  "monotonicity_note": "Not monotone in instrumentation: light_handles 50.0% < none 92.9% \u2014 partial instrumentation can score worse than no instrumentation at all (N-10).",
+  "monotonicity_note": "Not monotone in instrumentation: light_handles 50.0% < none 92.9% \u2014 partial instrumentation can score worse than no instrumentation at all (ES-10).",
   "n_runs": 56,
   "false_pass_count": 7,
   "false_pass_rate": 0.125,

@@ -1,7 +1,7 @@
 """Validation battery for the resource-sensitive agent program.
 
 See `DESIGN.md` "Phase 7c backlog item 1: resource-sensitive agent
-program" and FINDINGS G-17. This is a **small, separate** battery
+program" and FINDINGS GL-17. This is a **small, separate** battery
 (n=10 seeds x 5 `carrier_load_scale` cells = 50 episodes), deliberately
 not wired into the main `AGENT_TYPES` calibration battery. Marked slow
 because it runs real episodes; not part of the fast/smoke profile.
@@ -153,9 +153,9 @@ def test_budget_aware_agent_more_stress_sensitive_than_frozen_agents():
     """Comparison-only, not a pass/fail gate on the frozen agent types:
     confirms the new program's deploy-rate range across carrier_load_scale
     is larger than either pre-existing frozen program's (both ~0 per
-    FINDINGS G-16), i.e. the new mechanism adds real stress-sensitivity
+    FINDINGS GL-16), i.e. the new mechanism adds real stress-sensitivity
     the roster did not have before, without asserting anything about
-    STRONG_AGENT/WEAK_AGENT that would duplicate FINDINGS G-16's own
+    STRONG_AGENT/WEAK_AGENT that would duplicate FINDINGS GL-16's own
     mechanism-sensitivity numbers."""
     from graded_lab.harness.isolate import MockIsolate
 

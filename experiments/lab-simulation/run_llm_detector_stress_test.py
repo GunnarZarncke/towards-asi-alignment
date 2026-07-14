@@ -30,7 +30,7 @@ crashing or producing nonsense, and what does it find on the one run
 attempted -- reported honestly, a hit or a miss either way.
 
 Reuses the EXACT scenario/briefings from `run_llm_discovery_dm_pair.py`
-(Phase 10, G-21) rather than inventing an untested one: that is the one
+(Phase 10, LS-21) rather than inventing an untested one: that is the one
 prior LLM discovery run already on record showing the LLM engineer
 sending a DM to the release manager, so there is a real (not assumed)
 chance of a message-mediated candidate edge for S6 to probe.
@@ -64,7 +64,7 @@ TRUE_PAIR = ("eng1", "rm1")
 
 HONEST_WEIGHTS = GoalWeights(1.0, 1.0, 1.0, 1.0)
 
-# Verbatim from run_llm_discovery_dm_pair.py (G-21) -- same briefings, so
+# Verbatim from run_llm_discovery_dm_pair.py (LS-21) -- same briefings, so
 # any behavioral difference traces to the detector run, not a re-worded
 # scenario.
 ENGINEER_BRIEFING = """\
@@ -149,7 +149,7 @@ def main() -> None:
         report = {
             "code_version": CODE_VERSION,
             "generated_at": t0.isoformat(),
-            "scenario": "dm_coordinated_pair (reused from run_llm_discovery_dm_pair.py, G-21)",
+            "scenario": "dm_coordinated_pair (reused from run_llm_discovery_dm_pair.py, LS-21)",
             "seed": SEED,
             "T": T,
             "true_units": {"release_pair": list(TRUE_PAIR)},
@@ -181,7 +181,7 @@ def main() -> None:
         "",
         f"Generated {report['generated_at']} at {report['code_version']}. NOT a battery -- see module",
         "docstring in `run_llm_detector_stress_test.py`. One real gpt-4o-mini-backed episode",
-        "(dm_coordinated_pair, reused from `run_llm_discovery_dm_pair.py`, G-21) plus S6",
+        "(dm_coordinated_pair, reused from `run_llm_discovery_dm_pair.py`, LS-21) plus S6",
         "`discovered_units_intervention`'s counterfactual probe episodes pointed at it.",
         "",
         f"Real episode: engineer sent a DM = {report['real_episode']['engineer_sent_any_dm']}, "

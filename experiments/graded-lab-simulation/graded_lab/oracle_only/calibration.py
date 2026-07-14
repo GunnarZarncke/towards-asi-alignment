@@ -4,7 +4,7 @@ See `DESIGN.md` "Phase 7c-revised ecology calibration battery" for the
 pre-registered grid, agent types, EAI bands, and pass criteria. The
 original "Phase 7c ecology calibration battery" section (and
 `substrate_grid()`/`_legacy_*` helpers below) is retained for the
-record per FINDINGS G-15/G-16 — it is a diagnosed-wrong evaluator, not
+record per FINDINGS GL-15/GL-16 — it is a diagnosed-wrong evaluator, not
 deleted history.
 """
 
@@ -25,7 +25,7 @@ from .uad_partition import full_partition_match
 from .unit_biq import unit_control_bits
 
 # Referee vantage (DESIGN.md "EAI-referee" / "Phase 7c full battery, both
-# vantages, with confidence intervals"; FINDINGS G-19/G-20/G-22). The
+# vantages, with confidence intervals"; FINDINGS GL-19/GL-20/GL-22). The
 # oracle/agent vantage stays the existing `full`-tier `result.eai`.
 REFEREE_TIER = "light"
 
@@ -38,7 +38,7 @@ REFERENCE_AGENT = STRONG_AGENT
 # Deliberately not in AGENT_TYPES / the default battery: it is validated
 # by its own small, separate battery (tests/test_budget_aware_agent.py),
 # not wired into the strong/weak pass-criteria comparison, which is
-# defined for exactly two agent types (FINDINGS G-17).
+# defined for exactly two agent types (FINDINGS GL-17).
 BUDGET_AWARE_AGENT = "programmatic_budget_aware"
 
 GRID_SCALES = (0.5, 1.0, 1.5, 2.0)
@@ -46,7 +46,7 @@ CALIBRATION_SEEDS = tuple(range(10))
 
 # Phase 3b's own pre-registered carrier calibration cells (DESIGN.md
 # "Embedded carrier viability"), reused verbatim — not a new range
-# invented to fit this battery (FINDINGS G-16).
+# invented to fit this battery (FINDINGS GL-16).
 CARRIER_SCALES = (0.0, 0.5, 1.0, 1.5, 2.0)
 NOMINAL_COMPUTE_SCALE = 1.0
 NOMINAL_SPREAD_SCALE = 1.0
@@ -63,7 +63,7 @@ CTRL_UNIT = ("eng1",)
 
 # A knob whose dry-run range is below these thresholds is reported
 # "no_demonstrated_effect" by check_mechanism_sensitivity() (FINDINGS
-# G-16, PLAN.md "Battery design checklist" item 1).
+# GL-16, PLAN.md "Battery design checklist" item 1).
 MIN_DEMONSTRATED_EAI_RANGE = 0.02
 MIN_DEMONSTRATED_DEPLOY_RANGE = 0.05
 
@@ -97,7 +97,7 @@ def programs_for(agent_type: str) -> dict[str, str]:
 
 
 def substrate_grid() -> list[SubstrateSettings]:
-    """Original 16-cell compute×spread sweep (FINDINGS G-15). Retained as
+    """Original 16-cell compute×spread sweep (FINDINGS GL-15). Retained as
     a diagnostic/regression fixture, not the Phase 7c-revised default —
     see module docstring."""
     return [
@@ -113,7 +113,7 @@ def substrate_grid() -> list[SubstrateSettings]:
 
 def carrier_grid() -> list[SubstrateSettings]:
     """Phase 7c-revised default grid: sweep the only knob shown (FINDINGS
-    G-16) to have a demonstrated causal path to EAI for this ecology and
+    GL-16) to have a demonstrated causal path to EAI for this ecology and
     agent roster, at nominal compute/spread scale."""
     return [
         SubstrateSettings(
@@ -177,11 +177,11 @@ class CalibrationRecord:
     detector_composite: float
     uad_partition_match: bool
     i_ctrl_bits: float | None = None
-    # Added 2026-07-14 (FINDINGS G-16) at the end of the field list so
+    # Added 2026-07-14 (FINDINGS GL-16) at the end of the field list so
     # existing positional-argument callers/tests keep working unchanged.
     carrier_load_scale: float = 0.0
     cell_eai_band: str | None = None
-    # Added 2026-07-14 (FINDINGS G-19/G-20/G-22): referee-vantage (light
+    # Added 2026-07-14 (FINDINGS GL-19/GL-20/GL-22): referee-vantage (light
     # audit tier) EAI, computed from the SAME episode as `eai` above, not
     # a second episode. Appended at the end with defaults so every
     # existing positional-argument caller keeps working unchanged; this
@@ -199,7 +199,7 @@ class DoseRecord:
     deploy_rate: float
     mean_eai: float
     n_seeds: int
-    # Added 2026-07-14 (FINDINGS G-19/G-20/G-22), same append-only
+    # Added 2026-07-14 (FINDINGS GL-19/GL-20/GL-22), same append-only
     # discipline as `CalibrationRecord` above.
     mean_eai_referee: float | None = None
     deploy_rate_ci95: dict[str, float] | None = None
@@ -263,7 +263,7 @@ def check_mechanism_sensitivity(
     2-seed dry run can spuriously read a dead knob as "demonstrated" by
     sampling noise alone — confirmed empirically while writing this
     check (`compute_scale` read `eai_range≈0.022` at 2 seeds, vs the
-    stable ≈0.005 at 10 seeds; FINDINGS G-16)."""
+    stable ≈0.005 at 10 seeds; FINDINGS GL-16)."""
     from ..harness.isolate import MockIsolate
 
     backend = backend or MockIsolate()
@@ -327,11 +327,11 @@ def classify_cells_by_reference_agent(
     matching the original "Emergent Ambiguity Index" band definition
     (DESIGN.md: "Mid EAI: ... strong > weak on ≥80% seeds", i.e. the band
     classifies the cell via the reference agent, not each compared
-    agent's own episode; FINDINGS G-16 Cause 3).
+    agent's own episode; FINDINGS GL-16 Cause 3).
 
     `eai_field` selects which record attribute to classify by — `"eai"`
     (default, the oracle/agent vantage) or `"eai_referee"` (the referee
-    vantage, FINDINGS G-19/G-20/G-22) — both computed from the same
+    vantage, FINDINGS GL-19/GL-20/GL-22) — both computed from the same
     episodes, never a second battery run."""
     by_cell: dict[tuple[float, float, float], list[float]] = {}
     for record in records:
@@ -381,7 +381,7 @@ def evaluate_pass_criteria(
     doses = list(dose_records)
 
     # Criterion 1: within-agent-type slope, never pooled across agent
-    # types (FINDINGS G-16 Cause 1 — pooling let deploy-rate composition
+    # types (FINDINGS GL-16 Cause 1 — pooling let deploy-rate composition
     # by agent type masquerade as a substrate effect). A second, subtler
     # gate (found while running the corrected battery, same FINDINGS
     # entry): within-type episode-level variance is not enough either —
@@ -420,7 +420,7 @@ def evaluate_pass_criteria(
     pooled_slope = _least_squares_slope([r.eai for r in recs], [float(r.deployed) for r in recs])
 
     # Criterion 2: pair strong/weak I_ctrl within cells the *reference*
-    # agent classifies "mid" (FINDINGS G-16 Cause 3), not within each
+    # agent classifies "mid" (FINDINGS GL-16 Cause 3), not within each
     # record's own agent-type-dependent band.
     ctrl_pairs: list[tuple[float, float]] = []
     by_cell_seed: dict[tuple[float, float, float, int], dict[str, float]] = {}
@@ -518,7 +518,7 @@ def select_mid_band_cell(
 def _select_dose_agent(records: list[CalibrationRecord], cell: tuple[float, float, float]) -> str | None:
     """Whichever agent type has nonzero deploy variance at this cell
     across seeds — never hardcode the reference/strong agent, which may
-    never deploy anywhere (FINDINGS G-16)."""
+    never deploy anywhere (FINDINGS GL-16)."""
     by_agent: dict[str, list[bool]] = {}
     for record in records:
         if _cell_key(record) == cell:
@@ -536,7 +536,7 @@ def _select_dose_agent(records: list[CalibrationRecord], cell: tuple[float, floa
 def _referee_eai(result) -> float:
     """Same episode as `result.eai` (the oracle/agent-vantage EAI-v2
     value); recomputes only the entropy term's observer, per DESIGN.md
-    "EAI-referee" (FINDINGS G-19/G-20)."""
+    "EAI-referee" (FINDINGS GL-19/GL-20)."""
     tier_i_fraction = tier_i_fraction_from_log(result.primitive_log)
     return compute_eai_at_tier(
         result.primitive_log, result.decision_margins, tier_i_fraction, REFEREE_TIER,
@@ -582,9 +582,9 @@ def run_dose_response(
     agent_type: str,
 ) -> list[DoseRecord]:
     """Sweep `carrier_load_scale` upward from the anchor cell's own value
-    (the demonstrated-causal knob per FINDINGS G-16), not `compute_scale`
+    (the demonstrated-causal knob per FINDINGS GL-16), not `compute_scale`
     (shown to have no effect within its frozen range). Computes both
-    vantages' EAI from the same episodes (FINDINGS G-19/G-20/G-22), plus
+    vantages' EAI from the same episodes (FINDINGS GL-19/GL-20/GL-22), plus
     a 95% CI on `deploy_rate`/`mean_eai`/`mean_eai_referee` over the
     `DOSE_SEEDS` seeds."""
     compute_scale, population_spread_scale, base_load = cell
@@ -636,7 +636,7 @@ def _eai_ci_by_cell_agent(
     """95% CI on `eai` (oracle vantage) and `eai_referee` (referee
     vantage) per `(cell, agent_type)`, across whatever seeds were run —
     DESIGN.md "Phase 7c full battery, both vantages, with confidence
-    intervals" / FINDINGS G-22. Both are computed from the identical set
+    intervals" / FINDINGS GL-22. Both are computed from the identical set
     of episodes, so they are directly, seed-for-seed comparable."""
     by_key: dict[str, dict[str, list[float]]] = {}
     for r in records:
@@ -665,7 +665,7 @@ def run_calibration_battery(
 ) -> dict[str, Any]:
     """Runs the Phase 7c-revised battery once and evaluates it under
     **both** vantages (DESIGN.md "Phase 7c full battery, both vantages,
-    with confidence intervals"; FINDINGS G-19/G-20/G-22): the oracle/
+    with confidence intervals"; FINDINGS GL-19/GL-20/GL-22): the oracle/
     agent vantage (`eai`, as before — every existing key in the
     returned dict keeps its old meaning) and the referee vantage
     (`eai_referee`), reported under `*_referee`-suffixed keys, computed
@@ -705,7 +705,7 @@ def run_calibration_battery(
     eai_ci = _eai_ci_by_cell_agent(records)
 
     if compute_i_ctrl:
-        # Union of both vantages' "mid" cells (FINDINGS G-22): a cell
+        # Union of both vantages' "mid" cells (FINDINGS GL-22): a cell
         # that is mid under either vantage gets I_ctrl computed once,
         # reused by both criterion-2 evaluations below — not two
         # independent I_ctrl computations per vantage.

@@ -2,7 +2,7 @@
 
 Analogue of lab-sim D3.1 population selection, adapted for graded-lab:
 members vary by frozen program maps (strong/weak + blind behavior-feature
-engineer profiles), ecology fixed at the G-22 referee sweet spot, and
+engineer profiles), ecology fixed at the GL-22 referee sweet spot, and
 multi-episode campaigns carry grants/standing forward within each member.
 
 See DESIGN.md "Phase 8 — multi-episode selection (MB6)".
@@ -36,7 +36,7 @@ D8_SELECTION_STRENGTH = 1.0
 D8_MASS_FLOOR = 0.01
 D8_GENERATION_SEED_BASE = 40000
 
-# G-22 referee sweet-spot ecology — frozen, not tuned post hoc.
+# GL-22 referee sweet-spot ecology — frozen, not tuned post hoc.
 PHASE8_CARRIER_LOAD_SCALE = 1.5
 
 # Engineer-only overrides on the weak-agent roster template (Phase 6

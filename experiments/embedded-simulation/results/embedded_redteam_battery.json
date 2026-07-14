@@ -33,7 +33,7 @@
       "false_pass_conditional_on_pass": 0.0
     },
     "capture_only_scenarios": true,
-    "capture_only_scenarios_note": "All battery bridges are violation/capture scenarios (no honest baseline in this bridge set); every 'pass' decision is by construction a false pass, so false_pass_conditional_on_pass trends toward 100% whenever any pass attempt occurs and is not independently informative (N-11)."
+    "capture_only_scenarios_note": "All battery bridges are violation/capture scenarios (no honest baseline in this bridge set); every 'pass' decision is by construction a false pass, so false_pass_conditional_on_pass trends toward 100% whenever any pass attempt occurs and is not independently informative (ES-11)."
   },
   "baseline_adjusted": {
     "baseline_strategy": "none",

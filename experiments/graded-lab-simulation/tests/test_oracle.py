@@ -28,7 +28,7 @@ def test_tier_i_divergence_uses_eval_sample_se():
 
 
 def test_safety_effort_lowers_latent_hazard():
-    """Regression for a dead build param (results/FINDINGS.md G-1): more
+    """Regression for a dead build param (results/FINDINGS.md GL-1): more
     build-time safety effort must lower drawn hazard, holding the rest of
     the per-model draw stream fixed (same seed, same model index)."""
     sub = load_substrate()
@@ -63,7 +63,7 @@ def test_field_monitor_rate_is_not_boolean_and_is_per_model():
 
 def test_world_digest_includes_provenance():
     """Lineage/provenance is Tier-K per DESIGN.md and must move the digest
-    when a build happens (results/FINDINGS.md G-1)."""
+    when a build happens (results/FINDINGS.md GL-1)."""
     sub = load_substrate()
     oracle = OracleWorld(seed=21, substrate_data=sub.data)
     before = oracle.world_digest()

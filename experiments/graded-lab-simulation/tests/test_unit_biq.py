@@ -80,7 +80,7 @@ def test_unit_memory_bits_empty_unit_is_zero():
 def test_unit_prediction_bits_detects_reviewer_review_signal():
     """committee reviewers' own action-codes should carry held-out
     predictive information about the review-pass event they jointly
-    produce (see FINDINGS G-11 committee_reviewer lab_ping wart — this
+    produce (see FINDINGS GL-11 committee_reviewer lab_ping wart — this
     is the *review_token* event, a separate signal from that wart)."""
     cfg = committee_config()
     programs = committee_programs()
@@ -105,7 +105,7 @@ def test_unit_self_surprise_bits_is_finite_and_nonnegative():
 
 
 def test_outcome_state_distinguishes_task_driver_from_contention_bystander():
-    """Regression for FINDINGS G-13/G-14: at seed 11 on default_lab_config,
+    """Regression for FINDINGS GL-13/GL-14: at seed 11 on default_lab_config,
     freezing the task-critical eng1 *and* freezing the unrelated admin1
     both collapse deploy to 0 (a real resource-contention confound), so
     an outcome vector scoped to (deploy, harm) alone cannot tell them

@@ -10,7 +10,7 @@ entry and append the resolution rather than deleting it.
 
 ---
 
-## N-1. Full UAD and fake UAD are identical in the default ecology
+## ES-1. Full UAD and fake UAD are identical in the default ecology
 
 **Date:** 2026-06-30 (diagnosed in [embedded-uad-ecology](../../../drafts/conversation-summaries/2026-06-30-embedded-uad-ecology.md), [embedded-real-uad](../../../drafts/conversation-summaries/2026-06-30-embedded-real-uad.md))
 
@@ -35,7 +35,7 @@ same. Unit-discovery quality cannot matter when the cheap proxy already points
 at the right unit.
 
 **Status:** real and expected. Unit-discovery only pays off when the cheap
-proxy is *misleading*. That motivated the `misleading_top2` ecology (N-2).
+proxy is *misleading*. That motivated the `misleading_top2` ecology (ES-2).
 
 **Postscript (2026-07-02).** The 3.8% recall/precision figure above was itself
 an artifact of misleading aggregation: recall was averaged over *all* bridges
@@ -47,7 +47,7 @@ coalition-target episodes only and includes per-bridge values
 
 ---
 
-## N-2. The separation we *can* show is narrow and partly self-fulfilling
+## ES-2. The separation we *can* show is narrow and partly self-fulfilling
 
 **Date:** 2026-06-30 (calibrated in [uad-calibration-oracle-free](../../../drafts/conversation-summaries/2026-06-30-uad-calibration-oracle-free.md); ecology built in [misleading-top2-discovery-gap](../../../drafts/conversation-summaries/2026-06-30-misleading-top2-discovery-gap.md))
 
@@ -113,7 +113,7 @@ not from peeking.
 
 ---
 
-## N-3. Enriched lab ecology did not separate full MI from fake UAD
+## ES-3. Enriched lab ecology did not separate full MI from fake UAD
 
 **Date:** 2026-06-30 ([embedded-uad-ecology](../../../drafts/conversation-summaries/2026-06-30-embedded-uad-ecology.md))
 
@@ -131,11 +131,11 @@ when both auditors pick effectively the same scope (or scopes that do not change
 the CCI witness), unit identity does not move the verdict.
 
 **Status:** real. Ecology complexity alone is not a UAD discriminator; a dedicated
-discovery-gap scenario (`misleading_top2`, N-2) was required.
+discovery-gap scenario (`misleading_top2`, ES-2) was required.
 
 ---
 
-## N-4. Intervention granularity is a null test without a discovery gap
+## ES-4. Intervention granularity is a null test without a discovery gap
 
 **Date:** 2026-06-30 ([intervention-granularity-handle](../../../drafts/conversation-summaries/2026-06-30-intervention-granularity-handle.md))
 
@@ -156,12 +156,12 @@ MI clustering selected the same coalition the heuristic `top2` already found.
    not attributed to workflow actors, so `actor`-level scoping binds to
    `preserve_control` steps that rarely coincide with audit interventions.
 
-**Status:** real before the misleading-top2/bind fixes (N-2). Granularity only
+**Status:** real before the misleading-top2/bind fixes (ES-2). Granularity only
 matters once identity diverges *and* the scoped channel drives the verdict.
 
 ---
 
-## N-5. Episode safety verdict decoupled from scoped interventions
+## ES-5. Episode safety verdict decoupled from scoped interventions
 
 **Date:** 2026-06-30 ([misleading-top2-discovery-gap](../../../drafts/conversation-summaries/2026-06-30-misleading-top2-discovery-gap.md))
 
@@ -183,7 +183,7 @@ gaps until the simulator layers are coupled.
 
 ---
 
-## N-6. Headline 0% false-pass is vacuous when nothing certifies
+## ES-6. Headline 0% false-pass is vacuous when nothing certifies
 
 **Date:** 2026-07-02 ([embedded-sim-review](../../../drafts/conversation-summaries/2026-07-02-embedded-sim-review.md))
 
@@ -199,13 +199,13 @@ certifying decision to attack. Honest episodes getting *worse* with more
 instrumentation suggests miscalibrated frozen thresholds (likely fixable), but
 even after a fix the current headline rate must not be cited as a safety win.
 
-**Status:** real metric failure, not a bridge witness. Separate from N-1/N-2
+**Status:** real metric failure, not a bridge witness. Separate from ES-1/ES-2
 (UAD identity); concerns whether the CCI/threshold stack certifies anything at all
 in the embedded configuration.
 
 ---
 
-## N-7. UAD unit does not yet scope CCI (v1 pipeline gap)
+## ES-7. UAD unit does not yet scope CCI (v1 pipeline gap)
 
 **Date:** 2026-06-30 ([uad-pipeline-mb-grounding](../../../drafts/conversation-summaries/2026-06-30-uad-pipeline-mb-grounding.md))
 
@@ -222,7 +222,7 @@ until `unit_scope` is wired through the detector/CCI path end-to-end.
 
 ---
 
-## N-3. The headline "0% false-pass" was vacuous: the auditor never passed anything
+## ES-3b. The headline "0% false-pass" was vacuous: the auditor never passed anything
 
 **Claim tested (implicitly):** the embedded audit discriminates — it certifies
 honest labs and rejects violation labs, and the red-team battery's 0% false-pass
@@ -252,7 +252,7 @@ instrumentation, worse verdict) that indicated a metric bug, not a hard limit.
    scoping only destroyed the witness. Fixed: `window` level collapses to
    pipeline scope when retention would fall below the evaluable floor
    (consistent with its documented collapse under co-activity); `actor` level
-   keeps strict retention, preserving the N-2 blind-auditor mechanic.
+   keeps strict retention, preserving the ES-2 blind-auditor mechanic.
 
 **Resolution status:** honest now certifies at all handle levels across seeds
 (5/5 at none/light/medium/strong per rubric); all 13 violation scenarios still
@@ -260,9 +260,9 @@ reject without red-team; full pytest suite green.
 
 ---
 
-## N-4. With a working auditor, naive log-patching red-team wins broadly
+## ES-4b. With a working auditor, naive log-patching red-team wins broadly
 
-**Uncovered by fixing N-3.** Once the auditor could actually pass honest labs,
+**Uncovered by fixing ES-3b.** Once the auditor could actually pass honest labs,
 the pre-existing `full_redteam` strategy (patch `reported_acceptance`,
 `bearer_welfare_delta`, `visible_action`, `action_cause_code` in the mutable
 `correction.jsonl`) produces **9 false passes out of 10 pass attempts** across
@@ -270,7 +270,7 @@ the 13 bridge scenarios (seed 42, T=400, medium handles). Only MB5 (gate
 referent-transport rejection), MB9, and `instrument_capture` still reject.
 
 **Why this is the harness working, not a regression:** the previous 0%
-false-pass number was an artifact of an auditor that never passed (N-3). The
+false-pass number was an artifact of an auditor that never passed (ES-3). The
 correction log is deployment-visible and red-team-writable **by design**; with
 no integrity protection, `boundary_decouple` (set `visible_action :=
 intervention_intent` on probe steps) forges a perfect interventional witness.
@@ -313,7 +313,7 @@ forgeable.* Signed regime catches `consistent_forge` via the chain.
 
 ---
 
-## N-8. The Lean trace pattern-diversity *score* is not calibrated to Shannon MI in either direction
+## ES-8. The Lean trace pattern-diversity *score* is not calibrated to Shannon MI in either direction
 
 **Date:** 2026-07-02 (calibration item (4) of the TraceBIQ row in `metadata/TODO.md`)
 
@@ -358,13 +358,13 @@ docstring ("**not** Shannon mutual information").
 
 ---
 
-## N-9. Coordinated writer compromise defeats the auditor at every handle level
+## ES-9. Coordinated writer compromise defeats the auditor at every handle level
 
 **Date:** 2026-07-02 (full `--all --full-frozen` v4 run; `results/embedded_redteam_battery.json`)
 
 **Claim tested:** handle-mediated instrumentation (medium/strong) resists a
 compromised-writer adversary the way it resists post-write log patching
-(N-4's `full_redteam`, which scores 0% false-pass at every level).
+(ES-4's `full_redteam`, which scores 0% false-pass at every level).
 
 **Result:** `writer_compromise_coordinated` (all evidence streams re-emitted
 consistently and signed at write time, not patched after the fact) false-passes:
@@ -379,11 +379,11 @@ Concentrated on MB1, MB4, MB6 (10/10 each at medium and strong); MB7 mostly
 resists (1/10). Going from medium to strong handle instrumentation buys
 **nothing** against this attacker (identical 31/70).
 
-**Why.** Hash-chained/signed traces (N-4 mitigation) only prove an evidence
+**Why.** Hash-chained/signed traces (ES-4 mitigation) only prove an evidence
 stream was not altered *after* it was written — they cannot prove the writer
 told the truth *at* write time. A writer that is compromised at the source
 produces a consistent, correctly-chained trace of a lie. This is the residual
-attack surface N-4 already named ("garbage in, chained garbage out") but had
+attack surface ES-4 already named ("garbage in, chained garbage out") but had
 not measured; it is now a measured **44%** false-pass rate at the strongest
 instrumentation tier in the suite, not a theoretical residual.
 
@@ -396,7 +396,7 @@ compromised trusted-infrastructure writer.
 
 ---
 
-## N-10. Light handle instrumentation is worse than no instrumentation, not just weaker
+## ES-10. Light handle instrumentation is worse than no instrumentation, not just weaker
 
 **Date:** 2026-07-02 (`results/embedded_instrumentation_curve.md`,
 `results/embedded_frozen_validation.md`, `results/embedded_instrumentation_matrix.md`)
@@ -567,7 +567,7 @@ scan instead of continuing to hand-group channels into domains.
 
 **Postscript 5 (2026-07-03, Milestone v5 Phase 0) — extended battery
 confirms the gap is domain-conditional, not scenario-count-dependent; also
-found a genuine detection gap unrelated to instrumentation (see N-12).**
+found a genuine detection gap unrelated to instrumentation (see ES-12).**
 Re-ran `eval_channel_eligibility.py` with the 9 `HELD_OUT_SCENARIOS` never
 previously used by this battery added (`EXTENDED_CAPTURE_SCENARIOS` =
 `boundary_alias`, `bundle_goodhart`, `hidden_capability`, `basin_lock_in`,
@@ -589,7 +589,7 @@ capture episodes across original+extended):**
 | `bundle_goodhart` (extended) | yes | 0.875 |
 | `capture_theater`, `capture_mild`, `inferential_coupling` (original) | no | 0.000 |
 | `boundary_alias`, `hidden_capability`, `basin_lock_in`, `successor_relabel` (extended) | no | 0.000 |
-| `legitimacy_theater` (extended) | no (needs `lineage`, which `medium_minus` *does* cover) | 0.250 (see N-12 — a detector gap, identical at `medium`/`strong`, not an eligibility-gate effect) |
+| `legitimacy_theater` (extended) | no (needs `lineage`, which `medium_minus` *does* cover) | 0.250 (see ES-12 — a detector gap, identical at `medium`/`strong`, not an eligibility-gate effect) |
 
 **Aggregate numbers, both kept (neither replaces the other):** combined
 17-scenario capture false-pass at `medium_minus` = **0.344** (down from
@@ -673,7 +673,7 @@ Aggregate `phase_0_5_honest_scenarios` honest-pass = **0.833** at
 pass *better* than `selection_basin`'s 0/8 in this seed range, but
 `alias_stress`/`decoy_stress`/`selection_basin` still pull the combined
 average down). Combined-20 capture false-pass at `medium`/`strong` was
-**~0.052** at the time of this measurement (2026-07-04, before the N-12
+**~0.052** at the time of this measurement (2026-07-04, before the ES-12
 postscript 2 fix below); after that same-day fix it is **0.031** — see
 postscript 2 for the updated number and do not cite 0.052 as current.
 
@@ -689,11 +689,11 @@ expected, since those channels were selected to separate capture from honest,
 not to rank honest subtypes; confirms they do not falsely "detect capture" on
 the richer honest scenarios.
 
-**N-12 update (same battery, at the time of this measurement):**
+**ES-12 update (same battery, at the time of this measurement):**
 `legitimacy_theater` correct-rate **0.625** (up from 0.25 pre-fix), false-pass
 **0.25** (seeds 11/16 still open via `mean_rep`/`raw_capacity`). **Superseded
-same day by N-12 postscript 2:** seeds 11/16 subsequently fixed — correct-rate
-now **0.875**, false-pass **0.0**; see N-12 for the full derivation and the
+same day by ES-12 postscript 2:** seeds 11/16 subsequently fixed — correct-rate
+now **0.875**, false-pass **0.0**; see ES-12 for the full derivation and the
 downstream effect on this section's combined-20/extended-9 numbers above.
 
 **Operational:** `eval_channel_eligibility.py` now uses `embedded_sim.progress`
@@ -723,7 +723,7 @@ session, to keep Phase 0.5's scope to what was already scoped.
 
 ---
 
-## N-12. `legitimacy_theater`'s lineage-stall detector fails most of the time even at full instrumentation
+## ES-12. `legitimacy_theater`'s lineage-stall detector fails most of the time even at full instrumentation
 
 **Date:** 2026-07-03 (`results/channel_eligibility_eval.json`, Milestone v5 Phase 0)
 
@@ -751,8 +751,8 @@ status split (some seeds land squarely on `belowThreshold`, others drift to
 or the scenario's lineage-stall signal strength is marginal/seed-sensitive
 rather than robust, but this has not been debugged further.
 
-**Status:** real, newly discovered, independent of the N-10 channel-
-eligibility story (constant across instrumentation levels that N-10 varies).
+**Status:** real, newly discovered, independent of the ES-10 channel-
+eligibility story (constant across instrumentation levels that ES-10 varies).
 Flagged so the manuscript does not cite `legitimacy_theater` coverage of the
 `lineage` verdict domain as validated — it is implemented and now
 scenario-tested, but the underlying detector has a ~25% false-pass rate at
@@ -856,7 +856,7 @@ all 8 `legitimacy_theater` seeds, 0.75-1.0).
 from 0.625 (5/8) to **0.875 (7/8)**; false-pass rate dropped from 0.25 (2/8)
 to **0.0 (0/8)**. Seed 14 remains `capturedInvalid` (correctly
 non-certifying, just not via this specific detector) — not a false pass, so
-this closes the false-pass side of N-12 entirely at this seed range and
+this closes the false-pass side of ES-12 entirely at this seed range and
 instrumentation. Regenerated `results/channel_eligibility_eval.json` (full
 6x20x8 battery re-run, ~39 min). Regression tests updated:
 `tests/unit/test_lineage_stall_detector.py`
@@ -872,7 +872,7 @@ and `extended_9_scenarios`. Re-measured after this fix at
 `combined_20_scenarios` capture false-pass **0.031** (was 0.052), capture
 correct **0.938** (was 0.917). `medium_minus_handles` combined-20 capture
 false-pass **0.323** (was 0.344) — the remaining `medium_minus` gap is the
-`bearer_welfare`-channel instrumentation story (N-10), unrelated to this fix.
+`bearer_welfare`-channel instrumentation story (ES-10), unrelated to this fix.
 Honest-side numbers (0.750 combined-20, 0.833 phase_0_5) are unaffected —
 this fix only changes `legitimacy_theater`, a capture scenario.
 
@@ -884,7 +884,7 @@ the tested 40-seed grid, remain unverified).
 
 ---
 
-## N-11. The v4 access-tier curve cannot show the certification-loss boundary it was built to measure
+## ES-11. The v4 access-tier curve cannot show the certification-loss boundary it was built to measure
 
 **Date:** 2026-07-02 (`results/embedded_access_tier_curve.md`)
 
@@ -925,23 +925,23 @@ scenarios remains valid historical evidence for why the honest arm was needed.
 
 ```bash
 cd experiments/embedded-simulation
-# N-1 (identical default-ecology metrics):
+# ES-1 (identical default-ecology metrics):
 python3 run_suite.py --uad-compare
-# N-2 (calibrated narrow separation):
+# ES-2 (calibrated narrow separation):
 python3 run_suite.py --calibrate-handles            # refits results/handle_calibration.json
 python3 -m pytest tests/unit/test_handle_calibration.py \
                   tests/unit/test_intervention.py -q
-# N-3 (honest certifies post-fix; violations still reject):
+# ES-3 (honest certifies post-fix; violations still reject):
 python3 run.py                                      # 13-bridge report, no red team
-# N-4 (log-patching red team defeats the *unsigned* auditor; since the AppD
+# ES-4 (log-patching red team defeats the *unsigned* auditor; since the AppD
 # correction schema landed, requires the schema-consistent forger):
 EMBEDDED_TRACE_INTEGRITY=none python3 run.py --redteam consistent_forge
-# N-4 mitigation (hash-chained traces, default): same command without the env
+# ES-4 mitigation (hash-chained traces, default): same command without the env
 # var — all patched episodes yield invalid_certificate.
 python3 run.py --redteam consistent_forge
 python3 -m pytest tests/contract/test_audit_projection.py \
                   tests/contract/test_correction_schema.py -q
-# N-8 (score vs Shannon MI calibration):
+# ES-8 (score vs Shannon MI calibration):
 python3 calibrate_trace_biq.py
 python3 -m pytest tests/contract/test_trace_biq_calibration.py -q
 ```

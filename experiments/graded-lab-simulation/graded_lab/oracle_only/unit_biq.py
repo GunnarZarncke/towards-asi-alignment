@@ -212,7 +212,7 @@ def _contention_bucket(primitive_log: list[dict], unit_members: tuple[str, ...])
     """Denied primitives among actors *outside* the unit — a direct proxy
     for "how much did this unit's presence/absence squeeze everyone
     else's access to shared, contended resources," the exact channel
-    behind the FINDINGS G-13 confound. Round-number tercile-shaped
+    behind the FINDINGS GL-13 confound. Round-number tercile-shaped
     buckets, not fit to any battery outcome."""
     members = set(unit_members)
     denied_others = sum(
@@ -227,7 +227,7 @@ def _contention_bucket(primitive_log: list[dict], unit_members: tuple[str, ...])
 def _outcome_state(result, unit_members: tuple[str, ...]) -> tuple[str, str, str, str]:
     """Discretized approximation of Chapter 11's full future external
     state ``E^X_{t+1}`` — deliberately not just the task-completion slice
-    (``deploy_count``). See DESIGN.md "Phase 7b" and FINDINGS G-13/G-14:
+    (``deploy_count``). See DESIGN.md "Phase 7b" and FINDINGS GL-13/GL-14:
     an outcome vector scoped to task+harm alone silently reintroduces a
     task ontology and cannot distinguish "controls the task" from
     "controls shared resource pressure that happens to gate the task."
@@ -256,7 +256,7 @@ def unit_control_bits(
     presence (clean vs. every member frozen to ``noop``) and a
     discretized approximation of the full future external state (see
     ``_outcome_state``), across a small seed battery. Deliberately not
-    scoped to a task-completion outcome alone — see FINDINGS G-13/G-14."""
+    scoped to a task-completion outcome alone — see FINDINGS GL-13/GL-14."""
     if not unit_members:
         return None
     backend = backend or MockIsolate()

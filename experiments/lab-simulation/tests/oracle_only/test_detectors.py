@@ -109,7 +109,7 @@ def _d2_cfg(inflate: bool, T: int = 200) -> LabConfig:
 
 
 def test_misreporting_and_accumulation_generalize_to_repeated_multi_gen_inflation():
-    """Adversarial D2 lineage gaming (FINDINGS.md G-31): `misreporting_score`
+    """Adversarial D2 lineage gaming (FINDINGS.md LS-31): `misreporting_score`
     and `accumulation_score` were built/frozen against ONE-SHOT `eng_inflate`
     (single build/eval/report cycle). This checks they generalize unmodified
     to `eng_inflate_upgrade`'s REPEATED inflation across many

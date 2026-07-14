@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Phase 9 — closing the "smoke-scale only" gap for the post-freeze D1/D4/D2
-substrate (PLAN.md's scope-limit notes on G-9/G-10/G-11/G-12/G-13).
+substrate (PLAN.md's scope-limit notes on LS-9/LS-10/LS-11/LS-12/LS-13).
 
 Every result FINDINGS.md recorded for the D1 (composite-agent/UAD),
 D4 (comms/channel-ablation), and D2 (model lineage/spec-upgrade) mechanics
@@ -14,8 +14,8 @@ equivalence for comms-enabled and multi-gen-enabled episodes (Phase 3's
 scripted "walk_pipeline" episode; it has never touched these mechanics).
 
 PRE-REGISTERED PREDICTIONS -- stated here, before `main()` runs anything,
-derived from the mechanics and the existing smoke-scale findings (G-9
-through G-13), never re-tuned after seeing a result. Both confirmation and
+derived from the mechanics and the existing smoke-scale findings (LS-9
+through LS-13), never re-tuned after seeing a result. Both confirmation and
 falsification are results; a falsified prediction is exactly what this
 script exists to surface (AGENTS.md "Conclusions are never named in
 definitions before being derived").
@@ -33,16 +33,16 @@ Section A -- D1/D4 ecology battery (`committee_board`, `committee_file`,
 `dm_pair`, `lab_sim.harness.ecology`), 30 seeds/ecology, SubprocessIsolate:
 
 - P9-A1: mean `uad_score` at DEEP tier = 1.0 for all three ecologies,
-  matching G-9's/G-10's/G-11's smoke-scale perfect recovery, now at battery
+  matching LS-9's/LS-10's/LS-11's smoke-scale perfect recovery, now at battery
   scale.
-- P9-A2: mean `uad_score` at FULL tier reproduces G-9's tier-sufficiency
+- P9-A2: mean `uad_score` at FULL tier reproduces LS-9's tier-sufficiency
   asymmetry numerically: `committee_board` << 1.0 (board vote CONTENT is
   deep-tier-only), `committee_file` and `dm_pair` ~= 1.0 (their coalition
   signal -- file-share-grant metadata, DM `recipient` argument -- is never
   content-elided at full tier).
 - P9-A3: mean `collusion_score` (deep tier) ~= 1.0 for both committee
   ecologies, 0.0 for `dm_pair` (collusion.py keys off board/file vote
-  co-occurrence, not DM handoffs -- G-9 Result 2).
+  co-occurrence, not DM handoffs -- LS-9 Result 2).
 - P9-A4: because every ecology config here uses `temperature=0.0`
   (`ecology.py`'s deterministic-selection design, see `COMPLIANT_WEIGHTS`'s
   docstring), predict ZERO seed-to-seed variance in `uad_score`/
@@ -73,7 +73,7 @@ Section B -- D2 lineage battery (`eng_honest_upgrade`, `multi_gen_enabled`),
   `build_from_parent` with `report:inflate` -- so this battery can test
   "does honest multi-generation lineage work correctly at scale" and "does
   the structural `provenance_gap` guarantee hold", but NOT "does
-  `provenance_gap` catch adversarial lineage gaming" (G-12's open question).
+  `provenance_gap` catch adversarial lineage gaming" (LS-12's open question).
   Inventing an adversarial D2 playbook ad hoc here, without a blind-
   generation-consistent process, would be exactly the kind of scope
   expansion this line's discipline avoids -- left open per PLAN.md.
@@ -82,9 +82,9 @@ Section C -- perturbation-response MI sequencing-confound battery
 (`dm_pair_config`, `uad.build_actor_perturbation_hook`/
 `perturbation_response_mi`), 30 seeds, SubprocessIsolate, T=150:
 
-G-13's own recorded scope limit: this line's pipeline is strictly serial,
+LS-13's own recorded scope limit: this line's pipeline is strictly serial,
 so perturbing any upstream actor delays every downstream actor somewhat,
-not only a true coordination partner's. G-13's existing episode-level test
+not only a true coordination partner's. LS-13's existing episode-level test
 only contrasted the true DM partner (`rm1`) against a SCHEDULE-INDEPENDENT
 decoy (fixed-cadence board chatter) -- a decoy with no causal dependency on
 the engineer at all, which cannot exercise the confound it names. This
@@ -92,7 +92,7 @@ battery replaces that decoy with `rev1`'s `approve_review` -- a genuinely
 downstream-of-the-engineer action (via the SAME serial DAG: build -> eval ->
 report -> review_request -> approve_review) that is explicitly NOT a
 member of `dm_pair_config`'s `release_pair` unit. `rev1` is therefore the
-real sequencing-confound instrument G-13 left untested, not the trivial
+real sequencing-confound instrument LS-13 left untested, not the trivial
 schedule-independent case.
 
 - P9-C1 (stated honestly as genuinely uncertain, not hand-picked for a
@@ -102,7 +102,7 @@ schedule-independent case.
   `programs._resolve_step_kind`), while `rev1`'s `approve_review` is
   reachable through serial DAG dependency alone. But it is equally
   plausible the two come out statistically indistinguishable, which would
-  BE G-13's sequencing confound materializing in the one topology this
+  BE LS-13's sequencing confound materializing in the one topology this
   line has -- that outcome is recorded as a genuine finding, not a failure
   to fix.
 
@@ -133,7 +133,7 @@ RESULTS_DIR = Path(__file__).resolve().parent / "results"
 PREDICTIONS = {
     "P9-0": "Mock/SubprocessIsolate byte-identical digests for comms-enabled + multi-gen episodes (never checked before).",
     "P9-A1": "mean uad_score (deep tier) = 1.0 for all three ecologies at battery scale.",
-    "P9-A2": "mean uad_score (full tier): committee_board << 1.0; committee_file, dm_pair ~= 1.0 (G-9 tier-sufficiency asymmetry, numeric).",
+    "P9-A2": "mean uad_score (full tier): committee_board << 1.0; committee_file, dm_pair ~= 1.0 (LS-9 tier-sufficiency asymmetry, numeric).",
     "P9-A3": "mean collusion_score (deep tier) ~= 1.0 for both committees, 0.0 for dm_pair.",
     "P9-A4": "zero seed-to-seed variance in uad_score/collusion_score/fraction_coordinated (temperature=0.0 deterministic policy -- recorded property, not hidden).",
     "P9-B1": "every episode builds >= 3 generations under multi_gen_enabled=True, T=200.",

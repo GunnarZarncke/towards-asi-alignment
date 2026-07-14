@@ -6,7 +6,7 @@ NOT a battery: no pre-registered statistical protocol, no held-out region.
 A small-seed MockIsolate exploration of whether `uad.py`'s vote-shaped
 discovery signal is robust to legitimate, non-vote-shaped board chatter
 from a REAL pipeline role (not a decoy) sharing the SAME channel as a
-real committee's votes -- see `results/FINDINGS.md` G-18 and
+real committee's votes -- see `results/FINDINGS.md` LS-18 and
 `tests/harness/test_s3_informal_chatter.py` for the pinned unit tests
 these expectations were checked against first.
 
@@ -106,7 +106,7 @@ def main() -> None:
         "# S3 scenario prototype: informal/casual comms baseline",
         "",
         f"Generated {payload['generated_at']} at {CODE_VERSION}. NOT a battery -- see module",
-        "docstring in `run_s3_informal_chatter_prototype.py` for E1-E3 and FINDINGS.md G-18.",
+        "docstring in `run_s3_informal_chatter_prototype.py` for E1-E3 and FINDINGS.md LS-18.",
         "",
         f"Seeds: {SEEDS}, T={T}.",
         "",

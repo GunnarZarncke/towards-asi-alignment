@@ -1,10 +1,10 @@
 """Pre-registered systematic MI scan across *all* observable channels (discovery, not a gate).
 
-Motivation (session 2026-07-03, continuing the N-10 channel-set work): the
+Motivation (session 2026-07-03, continuing the ES-10 channel-set work): the
 current `medium_minus_handles` majority-domain gate groups detectors into four
 verdict domains by hand (`channel_sets.VERDICT_DOMAINS`), and that grouping
 was shown to be unsafe in one specific way (bearer-welfare is not
-interchangeable with the other three domains for this battery -- see the N-10
+interchangeable with the other three domains for this battery -- see the ES-10
 postscript in `results/NEGATIVE_RESULTS.md`). The project's concern: *any*
 hand-picked grouping of channels into domains/bundles is at risk of the same
 failure mode (inconsistent groupings, false economies of scale, "cliffs"
@@ -32,7 +32,7 @@ not exist at discovery time, analogous to the exploration/validation seed
 split used below for the seed dimension but for the *strategy* dimension.
 
 **Known limitations (self-critique, 2026-07-03, recorded rather than fixed
-this round -- see `results/NEGATIVE_RESULTS.md` N-10 postscript and
+this round -- see `results/NEGATIVE_RESULTS.md` ES-10 postscript and
 `TODO.md` Phase F for the full discussion; only the alias-disclosure fix
 below was actually applied):**
 
@@ -115,7 +115,7 @@ never named before being derived"):
   label `y=1` if `scenario` is one of the six capture/violation scenarios used
   by `eval_channel_eligibility.py` (`CAPTURE_SCENARIOS`), `y=0` if one of the
   two honest scenarios (`HONEST_SCENARIOS`) -- the same scenario battery and
-  the same violation/honest split already validated for the N-10 curve, so
+  the same violation/honest split already validated for the ES-10 curve, so
   this scan's findings are about the *same* ground truth the certification
   gate is trying to track.
 - **Candidate channels (22, wider than the 15 registered `handle.*` channels

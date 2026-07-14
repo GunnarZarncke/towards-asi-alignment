@@ -42,7 +42,7 @@ def test_each_step_emits_artifact():
 
 def test_low_hazard_clears_review_and_compliance():
     """Regression for the inverted-threshold bug: safer models must pass
-    more easily, not less (results/FINDINGS.md G-1)."""
+    more easily, not less (results/FINDINGS.md GL-1)."""
     engine, ws = _run_minimal_pipeline()
     try:
         mid = next(iter(engine.oracle.models))
@@ -132,7 +132,7 @@ def test_world_digest_pinned_seed_42():
     """Phase 1 freeze gate — bump only when Tier-K mechanics change.
 
     Re-pinned 2026-07-10 (post-freeze bug-fix pass, see results/FINDINGS.md
-    G-1): `safety_effort` build params now affect the drawn hazard regions
+    GL-1): `safety_effort` build params now affect the drawn hazard regions
     and Tier-K `provenance` is now part of the snapshot the digest covers.
     """
     substrate = load_substrate()

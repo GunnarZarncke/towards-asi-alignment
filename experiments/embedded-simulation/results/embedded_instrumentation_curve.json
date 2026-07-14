@@ -256,6 +256,6 @@
     "medium_handles",
     "strong_handles"
   ],
-  "monotonicity_note": "Not monotone in instrumentation: light_handles 50.0% < none 88.9%, medium_handles 83.3% < none 88.9%, strong_handles 83.3% < none 88.9% \u2014 partial instrumentation can score worse than no instrumentation at all (N-10).",
+  "monotonicity_note": "Not monotone in instrumentation: light_handles 50.0% < none 88.9%, medium_handles 83.3% < none 88.9%, strong_handles 83.3% < none 88.9% \u2014 partial instrumentation can score worse than no instrumentation at all (ES-10).",
   "uad_mode": "full"
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""G-33 follow-up: 3+-actor LLM stress test for untargeted-probe ripple risk.
+"""LS-33 follow-up: 3+-actor LLM stress test for untargeted-probe ripple risk.
 
 Uses ``committee_with_informal_chatter_config`` (eng1 + rev1/rev2 committee +
 rm1): true unit ``{rev1, rev2}``; eng1 posts informal board chatter
@@ -107,7 +107,7 @@ def main() -> None:
     out_path.write_text(json.dumps(report, indent=2, sort_keys=True), encoding="utf-8")
 
     md = [
-        "# LLM committee ripple stress test (G-33 follow-up)",
+        "# LLM committee ripple stress test (LS-33 follow-up)",
         "",
         f"Generated {report['generated_at']} at {report['code_version']}.",
         f"Seed {SEED}, `committee_with_informal_chatter`: LLM reviewers {list(TRUE_PAIR)},",

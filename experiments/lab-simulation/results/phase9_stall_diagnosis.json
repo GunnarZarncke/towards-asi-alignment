@@ -22,5 +22,5 @@
     "review_hazard_threshold": 0.5,
     "seed": 6020
   },
-  "purpose": "Root-cause for run_phase9.py's P9-A1/A4 (committee_board seed 5015) and P9-B1 (d2_lineage seed 6020) prediction misses -- see FINDINGS.md G-14/G-15."
+  "purpose": "Root-cause for run_phase9.py's P9-A1/A4 (committee_board seed 5015) and P9-B1 (d2_lineage seed 6020) prediction misses -- see FINDINGS.md LS-14/LS-15."
 }

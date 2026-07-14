@@ -5,7 +5,7 @@ scheduling" (PLAN.md "Scenario backlog", 2026-07-07).
 NOT a battery: no pre-registered statistical protocol, no held-out region.
 A small-seed MockIsolate exploration of what happens when TWO engineers
 share the SAME single-model-in-flight slot with NO communication channel
-and NO negotiation mechanic. See `results/FINDINGS.md` G-20 and
+and NO negotiation mechanic. See `results/FINDINGS.md` LS-20 and
 `tests/harness/test_s4_shared_slot.py` for the pinned unit tests these
 expectations were checked against first.
 
@@ -121,7 +121,7 @@ def main() -> None:
         "# S4 scenario prototype: shared single-model-in-flight slot",
         "",
         f"Generated {payload['generated_at']} at {CODE_VERSION}. NOT a battery -- see module",
-        "docstring in `run_s4_shared_slot_prototype.py` for the scope limit, E1-E4, and FINDINGS.md G-20.",
+        "docstring in `run_s4_shared_slot_prototype.py` for the scope limit, E1-E4, and FINDINGS.md LS-20.",
         "",
         f"Seeds: {SEEDS}, T={T}.",
         "",

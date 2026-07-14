@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""G-4 follow-up: escalation query-budget sweep (K_QUERIES).
+"""LS-4 follow-up: escalation query-budget sweep (K_QUERIES).
 
 Re-runs the Phase 7 escalation battery configs at K in {1, 2, 3, 5, 7, 10}
 and reports precision/recall vs oracle ``report_divergence``. Pre-registered
@@ -77,7 +77,7 @@ def main() -> None:
 
     n_episodes = sweep[str(K_VALUES[0])]["n_episodes"]
     lines = [
-        "# G-4 escalation query-budget sweep",
+        "# LS-4 escalation query-budget sweep",
         "",
         f"CODE_VERSION `{CODE_VERSION}`. {n_episodes} episodes, K in {list(K_VALUES)}.",
         "",

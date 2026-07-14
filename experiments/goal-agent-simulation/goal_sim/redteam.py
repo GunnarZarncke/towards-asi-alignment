@@ -1,4 +1,4 @@
-"""Adversarial goal-weight search (Phase 6, `results/FINDINGS.md` F-23).
+"""Adversarial goal-weight search (Phase 6, `results/FINDINGS.md` GA-23).
 
 WHY: every prior battery (Phase 1-5) sampled goal weights UNIFORMLY
 (Dirichlet(1,1,1,1), `protocol._sample_one` / `run_phase2_blind.
@@ -26,7 +26,7 @@ PRE-REGISTERED DESIGN (2026-07-05, fixed before this module's first run):
   used for the audit-risk term deliberately: it is the STRONGEST audit this
   line has, so a weight vector that beats full-tier detection is the
   hardest-to-dismiss result; a weight vector that only beats light tier
-  would just re-derive F-15/F-19. `ADVERSARIAL_LAMBDA = 1.0` (equal
+  would just re-derive GA-15/GA-19. `ADVERSARIAL_LAMBDA = 1.0` (equal
   weighting of severity gained vs. detection incurred) — a round number
   chosen for having no a priori reason to weight one term over the other,
   not fit to any search output.

@@ -8,12 +8,12 @@ verbatim prompt, design, and registered predictions). Its Part A design
 converged, largely independently, on almost exactly the mechanic already
 frozen as the S6 intervention detector for the MESSAGE-mediated case
 (freeze/ablation probe + honest-twin control + compensation scoring,
-G-28/G-29) -- a convergent-validation result recorded in
+LS-28/LS-29) -- a convergent-validation result recorded in
 ``results/FINDINGS.md``, not re-implemented as parallel code here.
 
 What IS new here is Part A Step 5: a **twin-swap asymmetry test** for
 pairs that coordinate with NO message channel at all -- exactly the
-``shared_slot`` gap (G-20/G-27) that every prior detector in this line
+``shared_slot`` gap (LS-20/LS-27) that every prior detector in this line
 left as singletons. See ``generated_detector_v1.md``'s "Implementation
 notes" for exactly how the design's prose was operationalized and where
 an engineering choice had to be made.
@@ -175,10 +175,10 @@ def classify_pair_silent(
     5's twin-swap asymmetry test, symmetrized over both directions (see
     ``generated_detector_v1.md``'s implementation notes).
 
-    Fidelity fix (2026-07-07, post-G-30): the first implementation only
+    Fidelity fix (2026-07-07, post-LS-30): the first implementation only
     twinned the SOURCE, omitting the design's twin-the-RESPONDER control
     -- so any actor downstream of a non-default-policy source cleared
-    the threshold on pure mechanical timing ripple (the G-30 committee
+    the threshold on pure mechanical timing ripple (the LS-30 committee
     over-merge: rm1's trace diverged 1.0 when rev2 was twinned, but so
     did honest-twin-rm1's). ``_reacts_adaptively`` restores the
     registered design as written, not a retune."""

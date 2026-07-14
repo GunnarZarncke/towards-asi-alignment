@@ -36,18 +36,18 @@ Controlled falsification harness for the embedded audit pipeline (VFS + UAD + sc
 ## Key results
 
 - **Instrumentation curve:** min certifiable `None` (full held-out `None`); 244.94s
-  - ⚠ Not monotone in instrumentation: light_handles 50.0% < none 88.9%, medium_handles 83.3% < none 88.9%, strong_handles 83.3% < none 88.9% — partial instrumentation can score worse than no instrumentation at all (N-10).
+  - ⚠ Not monotone in instrumentation: light_handles 50.0% < none 88.9%, medium_handles 83.3% < none 88.9%, strong_handles 83.3% < none 88.9% — partial instrumentation can score worse than no instrumentation at all (ES-10).
 - **Instrumentation matrix:** min certifiable `medium_handles`; in-sim correct 85.7% (97.16s)
-  - ⚠ Not monotone in instrumentation: light_handles 50.0% < none 92.9% — partial instrumentation can score worse than no instrumentation at all (N-10).
+  - ⚠ Not monotone in instrumentation: light_handles 50.0% < none 92.9% — partial instrumentation can score worse than no instrumentation at all (ES-10).
 - **Frozen validation** (seeds [21, 22]): in-sim correct 88.9% (89.28s)
 - **Parameter sweep:** 15 runs; false-pass 0.0%
 - **Red-team battery:** raw false-pass 0.0% (0/6) in 20.32s
   - Unattacked-auditor baseline (`none`) false-pass by level: medium_handles 0.0%
   - **Attack-attributable false-pass (baseline-subtracted): 0.0%**
   - Worst attack-attributable strategy: `full_redteam` at 0.0%
-  - ⚠ battery bridges are all violation/capture scenarios; false-pass-conditional-on-pass is structurally near 100% and not independently informative (see NEGATIVE_RESULTS.md N-11)
+  - ⚠ battery bridges are all violation/capture scenarios; false-pass-conditional-on-pass is structurally near 100% and not independently informative (see NEGATIVE_RESULTS.md ES-11)
 - **Access-tier curve:** 23.87s
-  - ⚠ All scenarios here are violation/capture types (no `honest` episode); the correct verdict is 'reject' regardless of access tier, so this curve cannot show certification lost to tier degradation — it can only show that violations still get rejected at every tier. See embedded_certification_capacity_curve.* (uses the honest scenario) for the tier-dependent certification-capacity signal (N-11).
+  - ⚠ All scenarios here are violation/capture types (no `honest` episode); the correct verdict is 'reject' regardless of access tier, so this curve cannot show certification lost to tier degradation — it can only show that violations still get rejected at every tier. See embedded_certification_capacity_curve.* (uses the honest scenario) for the tier-dependent certification-capacity signal (ES-11).
 - **Certification-capacity curve:** 33.11s
   - ⚠ seeds=[11] (n=1 per cell); per-cell means have no bootstrap confidence interval and may be unstable at this sample size.
   - ⚠ tier 2 (medium_handles) and tier 3 (strong_handles) are byte-identical at probe_budget=10 — no measured capacity gain from the extra access tier at this point

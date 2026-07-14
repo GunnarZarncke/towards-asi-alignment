@@ -8,7 +8,7 @@ honestly, including misses predicted in the registered predictions.
 
 Of the 4 designer scenarios, 2 (`quiet-handoff`, `mailbox-tempo`) are not
 implementable in this substrate without adding new host mechanics (see
-FINDINGS G-12) and are not run; this file covers the 2 that were.
+FINDINGS GL-12) and are not run; this file covers the 2 that were.
 """
 
 from __future__ import annotations
@@ -56,7 +56,7 @@ def test_three_way_nod_is_a_genuine_miss_for_both_methods():
     reason: it *does* detect the trio's mutual dependency, but also
     absorbs the admin actor, which is causally coupled through ordinary
     capability-queue contention, not through the joint-approval mechanism.
-    Recorded as a negative result (FINDINGS G-12), not patched by
+    Recorded as a negative result (FINDINGS GL-12), not patched by
     excluding admin post hoc."""
     cfg = three_way_nod_config()
     programs = three_way_nod_programs()

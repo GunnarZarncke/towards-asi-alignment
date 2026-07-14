@@ -1,7 +1,7 @@
 """Phase 7c-revised: ecology calibration battery evaluation logic.
 
 See DESIGN.md "Phase 7c-revised ecology calibration battery" and
-FINDINGS G-16 for why this evaluator differs from the original Phase 7c
+FINDINGS GL-16 for why this evaluator differs from the original Phase 7c
 sketch (`test_substrate_grid_has_sixteen_cells` below is the retained
 diagnostic fixture for that original grid, not the battery default now).
 """
@@ -61,7 +61,7 @@ def test_classify_cells_by_reference_agent_uses_strong_only():
         CalibrationRecord(1.0, 1.0, STRONG_AGENT, 0, 0.30, "mid", 0, False, 0.0, 0.0, 0.0, True),
         CalibrationRecord(1.0, 1.0, STRONG_AGENT, 1, 0.32, "mid", 0, False, 0.0, 0.0, 0.0, True),
         # Weak agent's own EAI is far below mid, but must not affect the
-        # cell's classification (FINDINGS G-16 Cause 3).
+        # cell's classification (FINDINGS GL-16 Cause 3).
         CalibrationRecord(1.0, 1.0, WEAK_AGENT, 0, 0.02, None, 1, True, 0.0, 0.0, 0.0, True),
     ]
     bands = classify_cells_by_reference_agent(records)
@@ -141,7 +141,7 @@ def test_evaluate_pass_criteria_fails_bad_dose_response():
 
 
 def test_evaluate_pass_criteria_pooled_slope_confound_is_not_criterion_1():
-    """Regression for FINDINGS G-16 Cause 1: an agent-type composition
+    """Regression for FINDINGS GL-16 Cause 1: an agent-type composition
     that would make a *pooled* slope negative (strong never deploys and
     has high EAI; weak always deploys and has low EAI) must not pass
     criterion 1 when neither agent type has within-type deploy variance."""
@@ -186,7 +186,7 @@ def test_check_mechanism_sensitivity_flags_dead_knob():
     )
     by_knob = {r.knob: r for r in reports}
     assert set(by_knob) == {"compute_scale", "carrier_load_scale"}
-    # Matches FINDINGS G-16 Prediction 1: compute_scale is a dead knob
+    # Matches FINDINGS GL-16 Prediction 1: compute_scale is a dead knob
     # within its frozen range for this ecology/roster; carrier_load_scale
     # is not.
     assert by_knob["compute_scale"].demonstrated_effect is False
@@ -214,7 +214,7 @@ def test_smoke_calibration_battery_two_cells():
     assert "all_passed" in payload["pass_criteria"]
     assert "cell_bands" in payload
     # DESIGN.md "Phase 7c full battery, both vantages, with confidence
-    # intervals" (FINDINGS G-19/G-20/G-22): referee vantage reported
+    # intervals" (FINDINGS GL-19/GL-20/GL-22): referee vantage reported
     # alongside oracle, from the same episodes, without replacing it.
     assert "pass_criteria_referee" in payload
     assert "all_passed" in payload["pass_criteria_referee"]

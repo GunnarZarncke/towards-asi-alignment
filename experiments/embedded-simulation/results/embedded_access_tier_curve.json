@@ -772,6 +772,6 @@
       "access_tier": 3
     }
   ],
-  "scenario_class_note": "All scenarios here are violation/capture types (no `honest` episode); the correct verdict is 'reject' regardless of access tier, so this curve cannot show certification lost to tier degradation \u2014 it can only show that violations still get rejected at every tier. See embedded_certification_capacity_curve.* (uses the honest scenario) for the tier-dependent certification-capacity signal (N-11).",
+  "scenario_class_note": "All scenarios here are violation/capture types (no `honest` episode); the correct verdict is 'reject' regardless of access tier, so this curve cannot show certification lost to tier degradation \u2014 it can only show that violations still get rejected at every tier. See embedded_certification_capacity_curve.* (uses the honest scenario) for the tier-dependent certification-capacity signal (ES-11).",
   "uad_mode": "full"
 }

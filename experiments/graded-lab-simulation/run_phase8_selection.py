@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Phase 8 — throughput-linked selection battery (MB6 / DESIGN.md).
 
-Runs the pre-registered population-over-program-maps loop on the G-22
+Runs the pre-registered population-over-program-maps loop on the GL-22
 referee sweet-spot ecology (`carrier_load_scale=1.5`), with multi-episode
 campaigns that carry grants and standing forward within each member.
 

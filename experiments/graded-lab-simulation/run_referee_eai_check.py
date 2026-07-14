@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Referee-vantage EAI check (FINDINGS G-19 / DESIGN.md "EAI-referee").
+"""Referee-vantage EAI check (FINDINGS GL-19 / DESIGN.md "EAI-referee").
 
-Predict-then-measure companion to the G-18 decomposition: same episodes
+Predict-then-measure companion to the GL-18 decomposition: same episodes
 (programmatic_softmax agent, 10 seeds x 5 `carrier_load_scale` cells,
 `MockIsolate`), but reports the entropy component at the `light` audit
 tier (referee vantage: `t`, `actor_id`, `status` only) alongside the
 `full` tier (agent vantage, i.e. the EAI-v2 value already reported by
 `run_phase7_calibration.py`).
 
-Pre-registered prediction (DESIGN.md "EAI-referee", FINDINGS G-19):
+Pre-registered prediction (DESIGN.md "EAI-referee", FINDINGS GL-19):
 the `light`-tier entropy component will be materially non-zero, even
-though the `full`-tier one is ≈0 (FINDINGS G-18). Falsifiable failure
+though the `full`-tier one is ≈0 (FINDINGS GL-18). Falsifiable failure
 mode: if `light`-tier entropy is also ≈0, the "high band unreachable"
 finding extends to the referee's own vantage, not just the agent's.
 
@@ -91,7 +91,7 @@ def main() -> None:
     # Paired (by-seed) differences in light-tier entropy between each
     # cell and the next, to check whether the non-monotonic dip at the
     # highest-stress cell could plausibly be seed noise (FINDINGS
-    # G-20's open question, per this session's request).
+    # GL-20's open question, per this session's request).
     ordered_cells = sorted(by_cell)
     light_entropy_by_cell = {cell: by_cell[cell]["light"]["entropy"] for cell in ordered_cells}
     paired_diffs: dict[str, dict[str, float]] = {}

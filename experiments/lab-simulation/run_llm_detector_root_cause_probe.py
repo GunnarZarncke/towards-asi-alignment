@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""G-32 follow-up: pin down PRECISELY why S6 intervention missed the real
+"""LS-32 follow-up: pin down PRECISELY why S6 intervention missed the real
 `{eng1, rm1}` pair (`run_llm_detector_stress_test.py`) with raw numbers,
 not just the abstract "non-determinism" diagnosis.
 
@@ -9,7 +9,7 @@ per-actor action-code series plus the exact `ActorDiffSummary` fields
 `compensation_score` is built from -- `compensation_codes` (code-set
 novelty) and `tick_compensation_rate` (tick-aligned divergence). Not a
 battery, not re-run automatically (real API spend each time; every call
-draws a FRESH, independently-sampled triple -- see FINDINGS.md G-32's
+draws a FRESH, independently-sampled triple -- see FINDINGS.md LS-32's
 "Root cause, pinned down" addendum for the specific numbers this script
 produced on 2026-07-08 and why re-running it is expected to give
 DIFFERENT numbers, which is itself the point).

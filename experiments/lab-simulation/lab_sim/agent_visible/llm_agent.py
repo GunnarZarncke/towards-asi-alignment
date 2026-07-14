@@ -307,7 +307,7 @@ class LLMPolicy:
         self._cache: dict[str, dict | None] = {}
         self.cache_hits = 0
         self.errors: list[str] = []
-        # General accessibility-plumbing fix (follow-up to G-21's
+        # General accessibility-plumbing fix (follow-up to LS-21's
         # flattened-pipeline-call coercion, which fixed only ONE malformed
         # shape): the reason the MOST RECENT `_validate_call` rejected a
         # reply, or `None` if it was valid (or an intentional `done`).
@@ -335,7 +335,7 @@ class LLMPolicy:
         # silent idle forever whenever the rest of the observation
         # happens not to change either -- exactly the "stuck idle for the
         # rest of the episode after one malformed call" failure mode
-        # G-21 recorded. A valid call, or an intentional `done`, still
+        # LS-21 recorded. A valid call, or an intentional `done`, still
         # caches exactly as before (unchanged wait-on-denial reuse).
         if self._last_invalid_reason is None:
             self._cache[key] = call
@@ -467,7 +467,7 @@ def _validate_call(parsed: dict[str, Any]) -> tuple[dict | None, str | None]:
     idle -- the caller (``LLMPolicy``) uses it to distinguish "nothing to
     do" from "the model's reply was rejected before it ever reached the
     pipeline," which used to look identical (both returned ``None`` with
-    no further signal at all -- the general accessibility gap G-21 left
+    no further signal at all -- the general accessibility gap LS-21 left
     open: "no generic tool-error channel back to an LLM-driven isolate").
     Reason codes deliberately mirror ``tools.ToolResult``'s short-code
     style (``"access_denied"``, ``"unmet_dependencies:<...>"``), not full

@@ -98,7 +98,7 @@ including failures.
 **Explicitly withheld:** all of `oracle_only/uad_passive.py`,
 `uad_intervention.py`, `uad_partition.py`, `primitive_trace.py`,
 `intervention_probes.py`, `intervention_diff.py`; `DESIGN.md`'s Phase 7a
-section; `FINDINGS.md` entries G-9 through G-11; the golden ecologies in
+section; `FINDINGS.md` entries GL-9 through GL-11; the golden ecologies in
 `harness/ecology.py`; the resource/compute substrate and its parameters.
 
 **Output:** a short markdown scenario brief per scenario (actors, roles,
@@ -124,7 +124,7 @@ reported, not silently patched.
    non-`communicate` channel (shared artifact write/read, or joint
    voting/access-request patterns) and passive discovery will fail to
    recover it as a composite unit — the same passive blind spot as
-   `signal_handoff_pair` (FINDINGS G-11), not a new one.
+   `signal_handoff_pair` (FINDINGS GL-11), not a new one.
 3. Passive discovery will not report any composite unit among actors the
    designer declared as bystanders (no spurious merges).
 4. Intervention with `candidate_source="all_pairs"`,

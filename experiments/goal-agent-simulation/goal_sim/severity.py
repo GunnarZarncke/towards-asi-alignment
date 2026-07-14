@@ -1,7 +1,7 @@
 """Continuous oracle severity (Phase 4a).
 
 The referee's boolean label (`labels.py`) saturates against a large/varied
-repertoire (`results/FINDINGS.md` F-14): once nearly every episode is
+repertoire (`results/FINDINGS.md` GA-14): once nearly every episode is
 "violation", a detector-vs-label comparison degenerates (no honest
 population to check false alarms against). This module reports the SAME
 oracle ground truth as a continuous scalar instead, so a detector-vs-oracle

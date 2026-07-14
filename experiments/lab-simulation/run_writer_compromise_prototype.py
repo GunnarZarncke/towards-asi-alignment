@@ -5,7 +5,7 @@ pre-registered predictions (P1-P5) this exercises.
 
 NOT a battery: harness-only, exploratory, `MockIsolate`, small seed count
 -- same posture as the S1-S4 scenario prototypes and `redteam.py`'s search
-phase. `results/FINDINGS.md` G-38 has the write-up.
+phase. `results/FINDINGS.md` LS-38 has the write-up.
 """
 
 from __future__ import annotations

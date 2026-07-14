@@ -266,7 +266,7 @@ def test_uad_core_port_on_shared_slot_episode_produces_a_scorable_partition():
         # both must be runnable side by side without interference.
         heuristic_discovered = discovered_units(result)
         heuristic_score = uad_score(cfg.resolved_units(), heuristic_discovered)
-        assert heuristic_score == 0.0  # G-20, unchanged by this module's existence
+        assert heuristic_score == 0.0  # LS-20, unchanged by this module's existence
     finally:
         result.cleanup()
 

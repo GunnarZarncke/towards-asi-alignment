@@ -1,4 +1,4 @@
-"""Focused, powered evaluation of the Part B channel-set eligibility fix (N-10).
+"""Focused, powered evaluation of the Part B channel-set eligibility fix (ES-10).
 
 Pre-registered predictions (see session log 2026-07-03-channel-sets-n10-eligibility):
 
@@ -22,7 +22,7 @@ scenario is `legitimacy_theater`) and `successor`
 (`successor_epoch_witness`, whose target scenario is `successor_relabel`)
 have never been scenario-tested by this battery, even though the
 `medium_minus_handles` majority-gate false-pass measurement in
-`results/NEGATIVE_RESULTS.md` (N-10 Postscript 3) is cited as if it covered
+`results/NEGATIVE_RESULTS.md` (ES-10 Postscript 3) is cited as if it covered
 "capture" generally.
 
 `EXTENDED_CAPTURE_SCENARIOS`/`EXTENDED_HONEST_SCENARIOS` below add the 9

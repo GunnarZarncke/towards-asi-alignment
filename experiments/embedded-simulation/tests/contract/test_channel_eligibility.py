@@ -1,14 +1,14 @@
-"""Contract: channel eligibility gates `passes` per verdict-class domain coverage (N-10).
+"""Contract: channel eligibility gates `passes` per verdict-class domain coverage (ES-10).
 
 The `passes` gate admits a level once it covers a strict majority (>50%) of
 four verdict domains (`channel_sets.VERDICT_DOMAINS`). `light`/`light_plus`
 (<=25% coverage) never certify; `medium_minus` (75% coverage) does, by
 explicit project decision, with a known and priced residual risk: the same
-focused battery that validated the original N-10 fix measured a 0.50 capture
+focused battery that validated the original ES-10 fix measured a 0.50 capture
 false-pass rate at `medium_minus`, concentrated in the three scenarios whose
 detectors need the one domain (`bearer_welfare`) it lacks. See
 `channel_sets.py` module docstring, `KNOWN_RESIDUAL_RISK_LEVELS`, and
-`results/NEGATIVE_RESULTS.md` (N-10 postscripts) for the full measurement and
+`results/NEGATIVE_RESULTS.md` (ES-10 postscripts) for the full measurement and
 decision history. `medium_minus_handles` is not recommended for real
 certification use.
 """

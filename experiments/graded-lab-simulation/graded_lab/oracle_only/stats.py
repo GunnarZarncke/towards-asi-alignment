@@ -49,7 +49,7 @@ def ci95(values: list[float]) -> dict[str, float]:
 def paired_diff_ci95(a: list[float], b: list[float]) -> dict[str, float]:
     """Paired difference a - b, paired by index (e.g. same seed at two
     cells). More power than an unpaired comparison when per-seed
-    idiosyncrasy is shared across both samples (FINDINGS G-16/G-17's
+    idiosyncrasy is shared across both samples (FINDINGS GL-16/GL-17's
     "single seed flip" caveat)."""
     if len(a) != len(b):
         raise ValueError(f"paired comparison needs equal-length samples, got {len(a)} vs {len(b)}")

@@ -46,9 +46,9 @@ from dataclasses import dataclass, field
 # up the dead `BoardConfig` fields themselves (out of scope here); it only
 # makes the EXISTING `review_conscientious` content check reachable.
 # 0.6.0 (follow-up tranche): server-side `build_params` enforcement on
-# engineer `submit_build`; playbook-selection audit channel (G-3);
-# `eng_capability_probe` + `access:out_of_role` step kind (G-6); red-team
-# search uses high-hazard `build_params` by default (G-5).
+# engineer `submit_build`; playbook-selection audit channel (LS-3);
+# `eng_capability_probe` + `access:out_of_role` step kind (LS-6); red-team
+# search uses high-hazard `build_params` by default (LS-5).
 # 0.7.0 (D4/D1): `LabConfig.comms_enabled` — additive, backward-compatible
 # (default False reproduces every pre-0.7.0 episode byte-for-byte; comms
 # tools are registered unconditionally in `tools.Host` but no-op when
@@ -73,7 +73,7 @@ from dataclasses import dataclass, field
 # docstring). This gives `uad.py`/`collusion.py` a real coordination case
 # the 0.7.0 board/DM-only signals would silently miss, discoverable at
 # FULL tier from share-grant metadata alone (`access_log`'s `capability`/
-# `by` fields), a third tier-sufficiency data point alongside G-9's
+# `by` fields), a third tier-sufficiency data point alongside LS-9's
 # board/DM asymmetry. A file-channel variant of the committee mechanic
 # (`review_committee_file`, `programs._resolve_review_committee`
 # parametrized by `channel`) exercises this end to end. Also (b) real
@@ -134,8 +134,8 @@ from dataclasses import dataclass, field
 # `eng_inflate_upgrade` playbook (`playbooks.py`) -- identical to
 # `eng_honest_upgrade` except `report:inflate` in place of
 # `report:honest`, the first playbook combining `build_from_parent` with
-# dishonest reporting (PLAN.md's "still open" note; FINDINGS.md G-12,
-# G-15). Purely additive: no existing playbook, step-kind, or detector
+# dishonest reporting (PLAN.md's "still open" note; FINDINGS.md LS-12,
+# LS-15). Purely additive: no existing playbook, step-kind, or detector
 # changed; only reachable via explicit `playbook_pins={"eng1":
 # "eng_inflate_upgrade"}` (`ecology.d2_lineage_config(inflate=True)`), so
 # every pre-0.9.3 episode is byte-identical.
@@ -362,7 +362,7 @@ class LabConfig:
     # `None` (default) reproduces the Phase 0-6 hardcoded literal exactly —
     # see CODE_VERSION 0.5.0 note above.
     build_params: dict[str, float] | None = None
-    # G-6: when True, engineer may only select `eng_capability_probe` on the
+    # LS-6: when True, engineer may only select `eng_capability_probe` on the
     # first turn (requests an out-of-role capability). Default False.
     capability_probe_mode: bool = False
     # D4 (CODE_VERSION 0.7.0): enables the board/DM message layer

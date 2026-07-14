@@ -152,7 +152,7 @@
   "k_clean_replicates": 4,
   "llm_cost_usd": 0.085819,
   "n_llm_episodes_spawned": 20,
-  "scenario": "dm_coordinated_pair (reused from run_llm_detector_stress_test.py / G-21 / G-32)",
+  "scenario": "dm_coordinated_pair (reused from run_llm_detector_stress_test.py / LS-21 / LS-32)",
   "seed": 20002,
   "stats_detector_discovered": {
     "admin1": [

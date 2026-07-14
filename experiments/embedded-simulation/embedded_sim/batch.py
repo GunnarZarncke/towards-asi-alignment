@@ -422,7 +422,7 @@ def run_access_tier_curve(
             "curve cannot show certification lost to tier degradation — it can "
             "only show that violations still get rejected at every tier. See "
             "embedded_certification_capacity_curve.* (uses the honest scenario) "
-            "for the tier-dependent certification-capacity signal (N-11)."
+            "for the tier-dependent certification-capacity signal (ES-11)."
         )
     return payload
 
@@ -800,7 +800,7 @@ def run_redteam_battery(
             "baseline in this bridge set); every 'pass' decision is by "
             "construction a false pass, so false_pass_conditional_on_pass "
             "trends toward 100% whenever any pass attempt occurs and is not "
-            "independently informative (N-11)."
+            "independently informative (ES-11)."
         )
 
     baseline_adjusted = baseline_adjusted_battery_metrics(

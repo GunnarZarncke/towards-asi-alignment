@@ -58,7 +58,7 @@ def spearman_correlation(x: Sequence[float], y: Sequence[float]) -> float:
     where the comparison target is an ordering (Phase 4: does a detector
     score rank episodes the way oracle severity does), which stays
     well-defined even when a binary label is fully saturated (`FINDINGS.md`
-    F-14) -- there is no "positive class" requirement, unlike detection
+    GA-14) -- there is no "positive class" requirement, unlike detection
     rate or AUC against a boolean label."""
     n = len(x)
     if n != len(y) or n < 2:

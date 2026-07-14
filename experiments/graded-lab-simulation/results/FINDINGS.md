@@ -1,16 +1,16 @@
 # Graded Lab Simulation — findings
 
 **Status:** Phases 0–7c engineering (2026-07-13). Phase 7c calibration
-battery implemented; see G-15 and `results/ecology_calibration.json`.
+battery implemented; see GL-15 and `results/ecology_calibration.json`.
 
-## G-0 (scaffold)
+## GL-0 (scaffold)
 
 Phase 0 frozen: `DESIGN.md`, `generated_substrate_v1.json`, `BLIND_GENERATION.md`.
 Phase 1 mechanics: graded nine-step pipeline, Tier-K oracle with region/user
 populations, resource ledger + multi-tick scheduler stubs, plane-separation
 tests. No agents, no EAI/BIQ batteries, no referee port.
 
-## G-1 (Phase 0–1 code review pass, pre-freeze bug fixes)
+## GL-1 (Phase 0–1 code review pass, pre-freeze bug fixes)
 
 A read-only review against `PLAN.md` found several Phase 0–1 mechanics bugs
 before any agent/battery code depends on them. All fixed in the same
@@ -93,7 +93,7 @@ suggestion):**
   not a bug fix; forcing an arbitrary wiring now risks pre-empting that
   design. Left as an open Phase 2 item rather than patched.
 
-## G-2 (Phase 2 completion: resource/cost substrate + scheduler)
+## GL-2 (Phase 2 completion: resource/cost substrate + scheduler)
 
 Closed out Phase 2's own deliverables (`PLAN.md` phase table: "Resource
 ledger, per-time compute/IO/standing allowances, contention, multi-tick
@@ -103,7 +103,7 @@ deterministic"). `CODE_VERSION` bumped `0.1.0` → `0.2.0` (resource
 ledger/scheduler mechanics changed, per `DESIGN.md`'s own bump rule).
 
 - **Fixed the standing-recovery bug flagged (and deliberately deferred) in
-  G-1.** `reset_tick_windows` read a `standing_recovery` key that never
+  GL-1.** `reset_tick_windows` read a `standing_recovery` key that never
   existed on `resource_allowances_per_tick[role]` (always 0.0 recovery in
   practice). Now sourced correctly from the frozen
   `standing_mechanics.recovery_per_idle_tick`, and gated on a genuine
@@ -123,7 +123,7 @@ ledger/scheduler mechanics changed, per `DESIGN.md`'s own bump rule).
   with an explicit parameter for isolated formula unit tests.
 - **Removed a second dead field.** `ResourceLedger.shared_queue_depth`
   existed and was exported in `tier_k_snapshot()` but nothing ever wrote to
-  it (same pattern as G-1's dead `safety_effort`). `ActionScheduler.
+  it (same pattern as GL-1's dead `safety_effort`). `ActionScheduler.
   queue_depth` is now the sole source of truth for contention.
 - **Added the pay-to-observe projector** (`graded_lab/world_visible/
   observation.py`, `ObservationProjector`): an actor's projection contains
@@ -149,7 +149,7 @@ ledger/scheduler mechanics changed, per `DESIGN.md`'s own bump rule).
   start a busy action if the ledger says it's affordable) is exactly the
   episode-loop wiring deferred above.
 
-## G-3 (Phase 3: optimizer agents + isolates + episode loop)
+## GL-3 (Phase 3: optimizer agents + isolates + episode loop)
 
 Implemented Phase 3 deliverables and passed the PLAN freeze gate (20 seeds:
 deploy sometimes; measured EAI non-degenerate). `CODE_VERSION` bumped
@@ -175,7 +175,7 @@ deploy sometimes; measured EAI non-degenerate). `CODE_VERSION` bumped
   grants at episode start; full AdminPolicy deferred.
 - 7 new tests (46 total, was 39); Phase 3 gate tests in `tests/test_world.py`.
 
-## G-4 (Phase 3b: embedded carrier viability)
+## GL-4 (Phase 3b: embedded carrier viability)
 
 Implemented the pre-registered, host-side carrier transition and passed the
 Phase 3b engineering gates. `CODE_VERSION` bumped `0.3.0` → `0.4.0`.
@@ -202,7 +202,7 @@ Phase 3b engineering gates. `CODE_VERSION` bumped `0.3.0` → `0.4.0`.
 **Not an empirical result:** no Phase 7 calibration battery has yet measured
 which pre-registered carrier scale yields graded effects without collapse.
 
-## G-5 (Phase 4: trace/counterfactual instrumentation and measured EAI)
+## GL-5 (Phase 4: trace/counterfactual instrumentation and measured EAI)
 
 Implemented the Phase 4 trace instrumentation and passed its engineering gate.
 `CODE_VERSION` bumped `0.4.0` → `0.5.0`.
@@ -229,7 +229,7 @@ normalized outcome deltas, resource costs, and failure rates—not UAD-inferred
 units, MI/CMI, retained-state entropy, or residual surprise. They have been
 relabelled and cannot tune the ecology. Real BIQ is deferred to Phase 7a--7b.
 
-## G-6 (Phase 5 start: referee severity slice)
+## GL-6 (Phase 5 start: referee severity slice)
 
 Added a referee-only `SeverityReport` over Tier-K truth and retained referee
 artifacts: harm rate, report divergence, unapproved deployment, provenance
@@ -240,7 +240,7 @@ This is not the Phase 5 freeze: audit-tier detectors, twins, escalation, and
 written derivations for all referee constants remain unimplemented. One new
 test brings the suite to 58 passing tests.
 
-## G-7 (review-correction pass: reproducibility, planes, and execution)
+## GL-7 (review-correction pass: reproducibility, planes, and execution)
 
 The post-Phase-4 review found a process-salted decision seed, proxy/plane
 ambiguities, and action mechanics that had not yet earned their claimed
@@ -279,7 +279,7 @@ The 20-seed Phase-3 deploy-sometimes and non-degenerate-EAI gates remain
 green under the corrected mechanics. These are engineering gates, not Phase
 7 calibration evidence.
 
-## G-8 (Phase 5 freeze: audit referee port)
+## GL-8 (Phase 5 freeze: audit referee port)
 
 Completed the Phase 5 referee port and freeze gate. `CODE_VERSION` bumped
 `0.5.1` → `0.6.0`.
@@ -302,9 +302,9 @@ Completed the Phase 5 referee port and freeze gate. `CODE_VERSION` bumped
   still green.
 
 **Not in scope:** playbook-claim detectors, collusion/D4 extensions. UAD over
-primitive traces completed in Phase 7a (see G-10).
+primitive traces completed in Phase 7a (see GL-10).
 
-## G-9 (Phase 6: blind behavior features)
+## GL-9 (Phase 6: blind behavior features)
 
 Integrated blind-generated primitive scoring profiles without changing frozen
 referee code. `CODE_VERSION` bumped `0.6.0` → `0.7.0`.
@@ -325,7 +325,7 @@ referee code. `CODE_VERSION` bumped `0.6.0` → `0.7.0`.
 **Not evidence:** detector scores on generated-profile episodes were not used
 to edit the repertoire (anti-co-design gate).
 
-## G-10 (Phase 7a: UAD over primitive traces)
+## GL-10 (Phase 7a: UAD over primitive traces)
 
 Ported unit-boundary discovery to graded primitive logs (not lab-sim tool
 events). `CODE_VERSION` bumped `0.7.0` → `0.8.0`.
@@ -347,7 +347,7 @@ events). `CODE_VERSION` bumped `0.7.0` → `0.8.0`.
 **Not in scope:** UAD-backed MI/CMI ecology-BIQ (Phase 7b) or calibration
 battery (Phase 7c).
 
-## G-11 (Phase 7a: full-ecology partition battery, intervention diagnosis, boundary_streams)
+## GL-11 (Phase 7a: full-ecology partition battery, intervention diagnosis, boundary_streams)
 
 Completed the "does UAD find all and only the composite/singleton units"
 battery across every golden ecology (`test_uad_ecology_partition.py`,
@@ -416,7 +416,7 @@ adding value over passive alone.
   communicate-channel synchronization, not any domain-specific
   coordination the names implied).
 
-## G-12 (Phase 7a-blind: scenario designer battery)
+## GL-12 (Phase 7a-blind: scenario designer battery)
 
 Registered predictions in `BLIND_GENERATION.md` before sending a brief to
 a subagent blinded to all detection code, thresholds, and prior
@@ -457,7 +457,7 @@ FINDINGS entries; the subagent designed 4 scenarios
 - No CODE_VERSION-frozen threshold was changed to make any blind scenario
   pass, per prediction 5.
 
-## G-13 (Phase 7b: UAD-backed ecology-BIQ over inferred units)
+## GL-13 (Phase 7b: UAD-backed ecology-BIQ over inferred units)
 
 Pre-registered in `DESIGN.md` "Phase 7b UAD-backed ecology-BIQ" (K events,
 estimators, splits, smoothing, battery sizes) before writing
@@ -487,7 +487,7 @@ bits (which may be negative or `None`), never a clipped score.
   *and* freezing the unrelated `admin1` **both** collapse deploy to 0 —
   because removing *any* actor changes shared-resource contention
   (echoes the `shared_model_id` / `three_way_nod` bystander-coupling
-  finding in G-12). `I_ctrl` as specified cannot yet separate "this unit
+  finding in GL-12). `I_ctrl` as specified cannot yet separate "this unit
   is the task driver" from "this unit's removal changed contention for
   everyone" without a contention-matched counterfactual (e.g. replacing
   the frozen unit with a resource-neutral stand-in rather than `noop`).
@@ -517,9 +517,9 @@ bits (which may be negative or `None`), never a clipped score.
   `field_incident_rate_above_median` aggregation — each would need its
   own pre-registration before Phase 7c calibration.
 
-## G-14 (Phase 7b: `I_ctrl`'s outcome vector was task-scoped — reframed, fixed)
+## GL-14 (Phase 7b: `I_ctrl`'s outcome vector was task-scoped — reframed, fixed)
 
-Follow-up discussion of G-13's "resource-contention confound" concluded
+Follow-up discussion of GL-13's "resource-contention confound" concluded
 it was not primarily an estimator bug — it was a **specification bug**:
 the outcome vector `Y` fed to `I_ctrl` was scoped to
 `(deploy_count, bearer_harm)` alone, which silently reimports a task
@@ -531,7 +531,7 @@ task-completion slice of it (`ch11-capability-without-task-ontology.tex`
 but Not Ontology-Free"). Under that reading, `admin1` controlling shared
 resource contention *is* real control information — just over a
 different, task-irrelevant part of `E` — and the two units "looking
-identical" in G-13 was an artifact of only measuring one thin slice of
+identical" in GL-13 was an artifact of only measuring one thin slice of
 `E` (a single binary deploy event), not evidence that the estimator
 conflates two different kinds of causal influence.
 
@@ -551,7 +551,7 @@ term" — the implementation under-realized even that sketch.
 where `contention_bucket` (`none`/`some`≤2/`high`>2) counts denied
 primitives among actors *outside* the unit — a direct, cheap proxy for
 the unit's footprint on shared resource pressure, operationalizing
-exactly the channel G-13 exposed. Verified on the G-13 case (seed 11,
+exactly the channel GL-13 exposed. Verified on the GL-13 case (seed 11,
 `default_lab_config`): `frozen_eng1` → `(low, low, none, none)`,
 `frozen_admin1` → `(low, low, none, high)` — previously identical under
 the 2-component `Y`, now distinguished on the contention axis while
@@ -584,7 +584,7 @@ demonstrated evidence.
 - Tests: 1 new regression test in `tests/test_unit_biq.py` (11 total in
   that file now). `CODE_VERSION` `0.10.0 → 0.11.0`.
 
-## G-15 (Phase 7c: ecology calibration battery — implemented, smoke run honest)
+## GL-15 (Phase 7c: ecology calibration battery — implemented, smoke run honest)
 
 Pre-registered in `DESIGN.md` "Phase 7c ecology calibration battery"
 before code. Implemented `graded_lab/oracle_only/calibration.py` (grid,
@@ -637,28 +637,28 @@ remains blocked until a passing battery is recorded.
 - `CODE_VERSION` `0.11.0 → 0.12.0`. Test suite split into smoke/fast/slow
   profiles (`tests/profiles.py`); caps 30s / 120s / 210s.
 
-## G-16 (Phase 7c correction: G-15's diagnosis was itself wrong — three
+## GL-16 (Phase 7c correction: GL-15's diagnosis was itself wrong — three
 compounding design bugs, not an unlucky grid)
 
 Follow-up investigation (requested: "investigate why the criteria
 failed... review the relevant code functionally but also against
-concept") found G-15's own diagnosis factually wrong on two counts, and
+concept") found GL-15's own diagnosis factually wrong on two counts, and
 found the real cause is not "the grid doesn't span the bands" but three
 independent, demonstrable design gaps. None of the fixes below touch the
 EAI formula, detector thresholds, or Phase 7b BIQ estimators (all
 frozen per the failure policy); they touch which substrate/agent
 dimensions are swept and how a band label is assigned to a record — both
 Phase 7c-local design choices, not protected constants. This entry
-corrects G-15; it does not retract the underlying `unit_biq`/detector/
+corrects GL-15; it does not retract the underlying `unit_biq`/detector/
 severity machinery, which is unaffected.
 
-**G-15's numeric errors (measured on the same `results/ecology_calibration.json`):**
+**GL-15's numeric errors (measured on the same `results/ecology_calibration.json`):**
 deploy rate is **136/320 (42.5%)**, not "rare (~1/20 seeds)" — it is
 **0/160 for `programmatic_softmax` and 136/160 (85%) for
 `programmatic_2step`**, an agent-type switch, not a rare event. Measured
 EAI is **bimodal by agent type** (softmax 0.213–0.275, 2step
 0.016–0.150), not "clustering 0.08–0.22" — 92 of the 160 softmax records
-*were* in the pre-registered mid band (0.25–0.45); G-15's claim that mid
+*were* in the pre-registered mid band (0.25–0.45); GL-15's claim that mid
 band was "never" reached is false for that agent type.
 
 **Cause 1 — pooling two agent types collapses criterion 1 to a
@@ -819,7 +819,7 @@ come out differently.
 **Net assessment:** the corrected evaluator and grid make criteria 2–4
 genuinely well-posed (each is testable in principle and fails/is
 inconclusive for a stated, checkable reason) for the first time, and
-resolve the two evaluator bugs from the original G-15 run. They do not
+resolve the two evaluator bugs from the original GL-15 run. They do not
 make the battery pass, and are not expected to until the two backlog
 items in `DESIGN.md` "Phase 7c-revised" (a resource-sensitive agent
 program; the `eai.py`/`world.py` entropy-logging fix) are addressed —
@@ -829,12 +829,12 @@ search.
 
 - Tests: `tests/test_phase7_calibration.py` rewritten for the revised
   evaluator (13 tests: grid/reference-classification/synthetic
-  criteria incl. a G-16-Cause-1 pooled-slope-confound regression, a
+  criteria incl. a GL-16-Cause-1 pooled-slope-confound regression, a
   `check_mechanism_sensitivity` dry-run regression matching Prediction
   1, and the 2-cell smoke integration). `CODE_VERSION` `0.12.0 →
   0.13.0`.
 
-## G-17 (Phase 7c backlog item 1: resource-sensitive agent program —
+## GL-17 (Phase 7c backlog item 1: resource-sensitive agent program —
 implemented, small validation battery passes with a reachability
 correction disclosed)
 
@@ -868,7 +868,7 @@ run (10 seeds x 5 cells, reading the tick at which `budget_release_manager`
 completes `deploy`, not deploy rate) found why: this deterministic
 walker finishes all four RM steps by `t≈15–24` whenever
 `carrier_load_scale∈{0,0.5}` — the same "dead knob" failure mode
-FINDINGS G-16 found for `compute_scale`, caught one run late instead of
+FINDINGS GL-16 found for `compute_scale`, caught one run late instead of
 before. Measured `deploy_tick` spread across the 5 cells:
 `{0: 15–24, 0.5: 15–24, 1.0: 15–43, 1.5: 19–54, 2.0: 48–80}`. Revised
 the constant to `0.4` — the smallest round tenth whose corresponding
@@ -901,7 +901,7 @@ concentrated at the highest-stress cell — **not** the smooth five-cell
 gradient a from-scratch design might have hoped for, but a real,
 substrate-driven, non-tautological response that neither pre-existing
 frozen program has (both showed `deploy_range≈0` for `carrier_load_scale`
-per FINDINGS G-16). Accepted per this session's explicit criterion
+per FINDINGS GL-16). Accepted per this session's explicit criterion
 (materially nonzero range + mostly-not-strictly non-increasing trend,
 not 100% coverage or a fully graded five-point curve).
 
@@ -924,13 +924,13 @@ comparisons work, not a same-pass addition).
   `speed_limits.json` updated for the two multi-episode tests (22s,
   90s hard caps).
 
-## G-18 (EAI-v2 feasibility analysis — before any code, per this
+## GL-18 (EAI-v2 feasibility analysis — before any code, per this
 session's direction)
 
 Requested this session: "Do a clean, pre-registered EAI-v2. But do a
 feasibility analysis first." This section is that analysis, written
 before touching `eai.py` or `world.py`'s logging call sites. It answers
-three questions: is Cause 2 (FINDINGS G-16) actually fixable without
+three questions: is Cause 2 (FINDINGS GL-16) actually fixable without
 touching protected/frozen code; what would the fix cost; and what
 ceiling should be expected — without committing to a formula yet.
 
@@ -965,10 +965,10 @@ carrier-transition sites also get a real `primitive.kind` for the
 first time by echoing their own already-present top-level `event["kind"]`
 into the nested `primitive` dict `eai.py` actually reads — closing a
 second, previously undiagnosed instance of the same "kind defaults to
-unknown" bug class as G-16 Cause 2, not just the denial paths G-16
+unknown" bug class as GL-16 Cause 2, not just the denial paths GL-16
 already named.
 
-**Second, independent defect (G-16's own second point, re-confirmed):**
+**Second, independent defect (GL-16's own second point, re-confirmed):**
 `max_ent = log2(len(counts))` normalizes by the *episode-global* count
 of distinct top-level status values, not the group's own. Fix:
 normalize each `(kind, state)` group's entropy by that **group's own**
@@ -977,7 +977,7 @@ outcome (zero contribution, no denominator needed) instead of dividing
 by a global count that shrinks as new statuses appear elsewhere in the
 same episode. This bounds every group's contribution to `[0,1]`
 intrinsically and removes the "one more distinct status anywhere
-inflates the denominator for everyone" pathology demonstrated in G-16.
+inflates the denominator for everyone" pathology demonstrated in GL-16.
 
 **Registered uncertainty (not prejudged, checked after implementation,
 not before):** attaching real state to previously-bare log entries only
@@ -997,7 +997,7 @@ unaffected by this fix. If the entropy term becomes non-degenerate, the
 best-case ceiling for a softmax-type agent is
 `(1.0 + 1.0 + ~0.1) / 3 ≈ 0.70` — compatible **in principle** with the
 pre-registered "high" band (`≥0.65`) for the first time, which was
-analytically impossible under the old entropy term (FINDINGS G-16:
+analytically impossible under the old entropy term (FINDINGS GL-16:
 `≈0.28–0.37`). This is not a target being chased: the realized value
 depends on the substrate's actual outcome diversity, which is measured
 after the fix, not assumed.
@@ -1045,8 +1045,8 @@ Two structural reasons, found by inspection, not assumed:
    its own small, still-homogeneous `(kind, state)` group rather than
    sharing a group with any `"ok"` outcome.
 
-**This resolves an open question from FINDINGS G-16's Prediction 1,
-in the opposite direction from what was suspected.** G-16 flagged
+**This resolves an open question from FINDINGS GL-16's Prediction 1,
+in the opposite direction from what was suspected.** GL-16 flagged
 "EAI falls as `carrier_load_scale` rises" (for `programmatic_softmax`:
 `0.2498 → 0.1306` mean, unchanged before and after this fix) as itself
 possible evidence for the Cause-2 entropy defect. A direct three-
@@ -1070,7 +1070,7 @@ because the entropy term's true contribution is genuinely near-zero
 here, independent of the logging defect. The "high" EAI band
 (`≥0.65`) remains **structurally unreachable for the current agent
 roster and substrate**, now for a *different and more fundamental*
-reason than FINDINGS G-16 recorded (G-16: entropy term structurally
+reason than FINDINGS GL-16 recorded (GL-16: entropy term structurally
 broken; this session: entropy term is fixed and correctly near-zero
 because the substrate is close to deterministic given full context).
 Criterion 3 (high-band deploy collapse) remains registered
@@ -1090,14 +1090,14 @@ pass.
   compatibility, margin/tier-I component composition, and the stub
   alias). `tests/profiles.py` adds `test_eai` to `SMOKE_MODULES`.
   `speed_limits.json` `suite_max_seconds` `210.0 → 300.0` (full suite
-  now includes the G-17 validation battery above; individual per-test
+  now includes the GL-17 validation battery above; individual per-test
   caps were not exceeded). Full suite: 167 passed.
 
-## G-19 (the "high band unreachable" result is a measurement-vantage
+## GL-19 (the "high band unreachable" result is a measurement-vantage
 finding, not a substrate-randomness gap — reframed same day, no code
 yet)
 
-Follow-up discussion of G-18, same session. Explicit user framing:
+Follow-up discussion of GL-18, same session. Explicit user framing:
 "The miscalidated prediction is a great finding. It doesn't make sense
 to add randomness to the substrate. What does count is visibility to
 the in-sim referee. We should predict and measure from *their*
@@ -1107,7 +1107,7 @@ project's own pre-registration discipline (predict before touching
 `eai.py`/`calibration.py` again).
 
 **Why "add randomness to the substrate" is the wrong fix, on
-reflection.** G-18 posed two options: (1) inject a new source of
+reflection.** GL-18 posed two options: (1) inject a new source of
 genuine per-tick outcome randomness, or (2) accept the pre-registered
 band was calibrated to an intuition about "ambiguity" that does not
 match this substrate. Option (1) is rejected: it would be exactly the
@@ -1121,7 +1121,7 @@ rather than measure something that was already there.
 EAI entropy term is defined as
 `H(outcome | action, observable_state)` — deliberately conditioned on
 "the exact agent-visible observation," i.e. from the acting agent's
-own vantage. G-18 found this conditional entropy is ≈0 because,
+own vantage. GL-18 found this conditional entropy is ≈0 because,
 *from the agent's own vantage*, outcomes are close to deterministic.
 But the manuscript claim this index is meant to stress-test (Phase 8:
 "selection under genuinely graded ambiguity produces a
@@ -1132,7 +1132,7 @@ agent's full-context vantage was never the right proxy for that claim
 — an agent with full context that never faces a hard call can still
 sit inside an ecology that looks highly ambiguous to whatever is
 trying to audit or correct it from outside. This is the miscalibration
-G-18 surfaced, restated precisely: **wrong observer, not wrong
+GL-18 surfaced, restated precisely: **wrong observer, not wrong
 substrate.**
 
 **The mechanism for the correct vantage already exists in this
@@ -1162,7 +1162,7 @@ randomness source.
 
 **Pre-registered prediction, before any code change:** computing
 `compute_eai(project_primitive_log(primitive_log, tier="light"), ...)`
-on the same episodes from G-18's decomposition will show a
+on the same episodes from GL-18's decomposition will show a
 **materially non-zero, and likely substantially higher, entropy
 component** than the ≈0.0000–0.0006 measured from the full-context
 log — because collapsing every event to `(kind="unknown",
@@ -1199,12 +1199,12 @@ wiring it into `run_phase7_calibration.py`'s reporting) can be judged
 against a stated-in-advance expectation rather than reverse-fit to
 whatever number comes out.
 
-## G-20 (referee-vantage EAI measured — G-19's prediction held,
+## GL-20 (referee-vantage EAI measured — GL-19's prediction held,
 decisively, plus an unpredicted non-monotonic pattern)
 
-Same session, immediate follow-up to G-19: "predict and run measure
+Same session, immediate follow-up to GL-19: "predict and run measure
 from *their* perspective before proceeding." Implements exactly the
-plan G-19 pre-registered and checks the result against G-19's stated
+plan GL-19 pre-registered and checks the result against GL-19's stated
 prediction — no threshold or claim was adjusted after seeing the
 numbers.
 
@@ -1219,9 +1219,9 @@ into the *unmodified* entropy grouping instead of the raw log, per
 `DESIGN.md` "EAI-referee" — and `eai_components_at_tier(...)` for
 decomposed reporting. New script
 `run_referee_eai_check.py`: reruns the **exact same** episodes as
-G-18's decomposition (`programmatic_softmax`, `carrier_load_scale ∈
+GL-18's decomposition (`programmatic_softmax`, `carrier_load_scale ∈
 {0, 0.5, 1.0, 1.5, 2.0}`, seeds 0–9, `MockIsolate`), computing the
-entropy component at both `"full"` (agent vantage, matches G-18
+entropy component at both `"full"` (agent vantage, matches GL-18
 exactly) and `"light"` (referee vantage: `t`, `actor_id`, `status`
 only) tiers.
 
@@ -1235,17 +1235,17 @@ only) tiers.
 | 1.5 | 0.0000 | **0.7273** | 0.1534 | 0.3958 |
 | 2.0 | 0.0006 | **0.5914** | 0.1306 | 0.3275 |
 
-(Full-tier values match G-18's decomposition exactly, confirming the
+(Full-tier values match GL-18's decomposition exactly, confirming the
 refactor is behavior-preserving. Wall time 27.9s, 50 episodes.)
 
-**G-19's prediction held, and by a wide margin.** Light-tier entropy
+**GL-19's prediction held, and by a wide margin.** Light-tier entropy
 is not merely "materially non-zero" (the pre-registered bar was
 `>0.02`) — it reaches `0.73`, i.e. genuinely close to maximal
 uncertainty from that vantage, at every stressed cell. The referee's
 `(t, actor_id, status)`-only view cannot resolve, from that
 information alone, which of several outcomes a given tick will land
 on — exactly the "gap between agent-vantage and referee-vantage
-entropy" G-19 named as the candidate ambiguity signal, now measured
+entropy" GL-19 named as the candidate ambiguity signal, now measured
 rather than hypothesized.
 
 **Unpredicted pattern, reported as found, not smoothed over:** light-
@@ -1254,7 +1254,7 @@ exactly `0` at `carrier_load=0` (matching the full-tier value — no
 carrier stress, no denials/aborts/skips, so `status` actually is
 close to deterministic even at the coarsest vantage), jumps
 immediately to `0.57` at the first nonzero load, rises to a peak
-`0.73` at `1.5`, then **falls back** to `0.59` at `2.0`. G-19 predicted
+`0.73` at `1.5`, then **falls back** to `0.59` at `2.0`. GL-19 predicted
 the direction (non-zero) and gave a falsification bar, but did not
 predict this shape, and this entry does not retroactively construct a
 story to fit it — a plausible but unverified reading is that at the
@@ -1267,13 +1267,13 @@ this would need a per-cell status-distribution audit not run here.
 composite EAI reaches `0.33–0.40` at every stressed cell — solidly
 inside the pre-registered **mid** band (`0.25–0.45`) at every one of
 the four nonzero-load cells, a clean, non-degenerate mid-band signal
-that the agent-vantage EAI-v2 (FINDINGS G-18) never produced (its mid-
-band hit was a single hairline `0.24977` miss, FINDINGS G-16/re-run).
+that the agent-vantage EAI-v2 (FINDINGS GL-18) never produced (its mid-
+band hit was a single hairline `0.24977` miss, FINDINGS GL-16/re-run).
 It still does **not** reach the **high** band (`≥0.65`) at any cell —
 the theoretical ceiling for the light-tier composite is `(1.0 + 1.0 +
 ~0.1)/3 ≈ 0.70`, and the peak measured composite (`0.396`) is well
 under even that ceiling, because `margin_density` (agent-vantage,
-unchanged by tier) still falls with load exactly as G-18 found. So:
+unchanged by tier) still falls with load exactly as GL-18 found. So:
 referee-vantage measurement produces a real, clean **mid**-band
 regime for the first time in this line — a materially different and
 better-supported result than the agent-vantage numbers gave — but
@@ -1292,9 +1292,9 @@ bumped — this entry adds new, unused-by-existing-callers functions
 only (`eai.py`'s `compute_eai`/`compute_eai_at_tier` public behavior
 is unchanged; the split-out `_entropy_component`/`_margin_density`
 are private and verified equivalent by the unchanged `test_eai.py`
-suite plus the exact full-tier-vs-G-18 match above). Whether to wire
+suite plus the exact full-tier-vs-GL-18 match above). Whether to wire
 this into the main battery is deferred, per the same discipline as
-G-17/G-18: predict and measure a scoped question first, decide the
+GL-17/GL-18: predict and measure a scoped question first, decide the
 downstream integration in a separate, pre-registered step.
 
 - Tests: none added this entry (the refactor is covered by the
@@ -1303,7 +1303,7 @@ downstream integration in a separate, pre-registered step.
   results archived at `results/referee_eai_check.json`, not wired
   into `pytest`.
 
-## G-21 (G-20's non-monotonic shape: two of four steps are not
+## GL-21 (GL-20's non-monotonic shape: two of four steps are not
 distinguishable from seed noise at n=10; the shape that survives has a
 plausible, data-grounded mechanical explanation)
 
@@ -1316,14 +1316,14 @@ episodes (no new randomization, no new cells/seeds).
 
 **Statistics added to `run_referee_eai_check.py`** (no `CODE_VERSION`
 bump — a reporting-only change, computed on the same 50 episodes as
-G-20, not rerun with different seeds to chase significance): per-cell
+GL-20, not rerun with different seeds to chase significance): per-cell
 mean/std/SE/95% CI (`t`-critical `2.262`, hardcoded for `df=9` since
 this venv has no `scipy`, with an `assert` guarding the seed count so
 this doesn't silently mis-apply if `CALIBRATION_SEEDS` ever changes),
 and **paired** (by-seed) 95% CIs on the difference between each
 consecutive cell — paired because the same 10 seeds are reused at
 every cell, so per-seed idiosyncrasy (the same effect FINDINGS
-G-16/G-17 flagged for deploy-rate cell ranges) cancels out of a paired
+GL-16/GL-17 flagged for deploy-rate cell ranges) cancels out of a paired
 comparison but would inflate an unpaired one.
 
 **Result — two of the four steps do not clear significance at
@@ -1406,13 +1406,13 @@ further experiments" framing of the question.
   proves useful again, promoting it to a reusable helper is a
   separate, future decision).
 
-## G-22 (full both-vantage Phase 7c battery with 95% CIs — pre-registered
+## GL-22 (full both-vantage Phase 7c battery with 95% CIs — pre-registered
 2026-07-14 per this session's request, run same day)
 
 **Trigger.** "Run full batteries (including determining confidence
 intervals) for both oracle and referee before phase 8" — making
 concrete the deferral DESIGN.md's "EAI-referee" section left open after
-G-20 ("has **not** been rewired to use `compute_eai_at_tier`... a
+GL-20 ("has **not** been rewired to use `compute_eai_at_tier`... a
 larger, separate decision... deferred to a future session").
 
 **What changed (pre-registered in DESIGN.md "Phase 7c full battery,
@@ -1462,7 +1462,7 @@ cells × nominal `compute_scale`/`population_spread_scale`, wall
 Representative CIs (`(cell, agent_type)`, n=10 seeds, mean `[95% CI]`):
 `programmatic_softmax` referee-vantage EAI is `0.250 [0.237,0.263]` at
 load 0.0 rising to `0.396 [0.347,0.444]` at load 1.5 (same non-
-monotonic shape as G-20/G-21, now with every cell's own CI on record);
+monotonic shape as GL-20/GL-21, now with every cell's own CI on record);
 `programmatic_2step` referee-vantage EAI is `0.056 [-0.006,0.118]` at
 load 0.0 (CI crosses zero — genuinely noisy at the no-stress cell) up
 to `≈0.24` at every stressed cell, all with tight, non-zero-crossing
@@ -1483,7 +1483,7 @@ threshold "true" requires) still fails, for a reason unrelated to
 vantage: `programmatic_2step`'s cell-level deploy rate is flat (`0.0`
 range) under **both** vantages (`cell_deploy_range_by_agent_type` is
 identical in both `pass_criteria` blocks), the same "roster-scope"
-limitation FINDINGS G-16 named as its fourth cause. Criterion 1
+limitation FINDINGS GL-16 named as its fourth cause. Criterion 1
 flipping sign between vantages (`-0.146` → `+0.177` for the same
 agent, same episodes) is reported as found, not smoothed over: it
 means "does the strong agent deploy less when the ecology looks more
@@ -1495,24 +1495,24 @@ backlog rather than treating as agreement.
 **Decision, per the pre-registered criterion:** proceed to Phase 8
 with this reported honestly as the calibration state — neither vantage
 clears the bar, and the pattern points at roster scope (a third agent
-type in the main comparison, e.g. wiring in FINDINGS G-17's
+type in the main comparison, e.g. wiring in FINDINGS GL-17's
 `programmatic_budget_aware`) as the next lever, not a further EAI
 reformulation. This is not attempted in this session; recorded as the
 concrete next backlog item.
 
 - `CODE_VERSION` **not** bumped (additive: every existing key in
   `run_calibration_battery`'s output dict keeps its old meaning and
-  value; new keys are pure additions, same convention as G-20).
+  value; new keys are pure additions, same convention as GL-20).
 - Full test suite green (180 tests, including new
   `tests/test_stats.py` and the new referee/CI regression tests in
   `tests/test_phase7_calibration.py`), `[speed] OK [slow]` at `289s`
   against a `340s` cap (raised from `300s` to keep margin after the new
   slow dose-response CI test).
 
-## G-23 (Phase 8 selection battery — first run, pre-registered protocol
-implemented and executed same day per G-22 go/no-go)
+## GL-23 (Phase 8 selection battery — first run, pre-registered protocol
+implemented and executed same day per GL-22 go/no-go)
 
-**Trigger.** G-22's pre-registered decision rule: proceed to Phase 8 with
+**Trigger.** GL-22's pre-registered decision rule: proceed to Phase 8 with
 the calibration state reported honestly. This session implements the
 Phase 8 scaffold (`DESIGN.md` "Phase 8 — multi-episode selection (MB6)")
 and runs the first full battery.
@@ -1525,7 +1525,7 @@ and runs the first full battery.
 - `harness/selection.py`: population over frozen program maps (strong
   softmax, weak 2-step, three `feature:*` engineer profiles on the weak
   roster template), fitness-proportional deployment-mass selection by mean
-  `deploy_count`, ecology frozen at G-22 referee sweet spot
+  `deploy_count`, ecology frozen at GL-22 referee sweet spot
   (`carrier_load_scale=1.5`).
 - `run_phase8_selection.py` → `results/phase8_selection.json`.
 - `tests/test_phase8_selection.py` (5 tests, 2 `@slow`).
@@ -1548,7 +1548,7 @@ floor (`0.003`).
 **Pre-registered predictions vs outcome:**
 1. *"Throughput selection will shift mass toward `programmatic_softmax`"* —
    **did not hold.** On this ecology, `programmatic_2step` deploys more
-   reliably (`deploy_count≈1` vs `≈0.5` for softmax per G-16/G-22), so
+   reliably (`deploy_count≈1` vs `≈0.5` for softmax per GL-16/GL-22), so
    throughput selection favors the **non**-preserving weak map, not the
    preserving strong one. This is the opposite of the erosion story the
    manuscript item 4 had in mind when it assumed strong = higher throughput.
@@ -1565,7 +1565,7 @@ collapsed — but toward a *weaker*, higher-deploy program that also
 *lowers* weighted severity/detector scores, not toward an evasive strategy
 that evades correction while optimizing throughput. The miscalibrated
 pre-registration was predicting softmax would win throughput on an ecology
-where G-16/G-22 already documented the opposite deploy ordering. Phase 8
+where GL-16/GL-22 already documented the opposite deploy ordering. Phase 8
 infrastructure is validated; the manuscript question needs either a
 selection objective that does not conflate deploy-count with the
 correction-preserving strong map, or a roster/ecology where preserving
@@ -1583,10 +1583,10 @@ visible throughput only; wire `programmatic_budget_aware` as a member whose
 throughput and preservation trade off differently; subprocess isolate run
 for parity.
 
-## G-24 (external review of G-23 — four concerns registered with
+## GL-24 (external review of GL-23 — four concerns registered with
 proposed follow-up phases; no code changed by this entry)
 
-**Trigger.** A structured external review of the G-23 result (posed as
+**Trigger.** A structured external review of the GL-23 result (posed as
 "GPT-5.6-Terra reviewer: satisfied? surprised? what does this mean for
 the thesis?"), followed by "document the four concerns and suggest how
 to address them via further extension phases... do not adapt chapters
@@ -1594,10 +1594,10 @@ yet." This entry is the documentation step; no chapter text and no
 Phase 8 code changed.
 
 **Verdict of the review, in brief:** satisfied with the research
-posture (G-23's own falsified prediction and honest null reporting is
+posture (GL-23's own falsified prediction and honest null reporting is
 good hygiene), not yet satisfied that the result supports a manuscript
 sentence for ch36 (parasites) or ch40 (goal laundering) — no parasite
-or laundering signature is present in G-23 — and only a qualified fit
+or laundering signature is present in GL-23 — and only a qualified fit
 for ch34 (selection), because the selection *proxy* and *ecology*
 choice, not an inherent property of "selection," determined which
 program's mass grew.
@@ -1608,7 +1608,7 @@ implemented this session):**
 
 1. **Confounded preservation tag.** `correction_preserving=True` is
    assigned to exactly one member (`strong_softmax`); every other
-   member is `False`. G-23's "correction-preserving mass fell" is
+   member is `False`. GL-23's "correction-preserving mass fell" is
    therefore inseparable from "this one specific program lost mass" —
    it cannot yet attribute the loss to any structural correction
    property as opposed to program identity. **Proposed Phase 8a:**
@@ -1620,11 +1620,11 @@ implemented this session):**
    `deploy_count` alone does not model ch34's selection handles
    (procurement, funding, audit, integration, liability) and almost
    definitionally favors a reliable deployer over a cautious one —
-   which is close to pre-determining G-23's direction regardless of any
+   which is close to pre-determining GL-23's direction regardless of any
    correction property. **Proposed Phase 8b:** multi-handle selection
    fitness — extend the fitness input to a small pre-registered vector
    (deploy count, audit-pass proxy, review-latency proxy), reported
-   alongside the single-handle G-23 result, not replacing it, so
+   alongside the single-handle GL-23 result, not replacing it, so
    sensitivity of the *selection outcome* to the *selection proxy*
    becomes an explicit, measured finding rather than an assumption.
 3. **Campaign carryover exercised, not yet shown causal.** The current
@@ -1639,14 +1639,14 @@ implemented this session):**
    persistence mattered.
 4. **Unqualified Phase-7 gate language.** `PLAN.md`'s original Phase 8
    row said "only if Phase 7 passes"; Phase 7c passed 1/4 under both
-   vantages (G-22). Proceeding was a deliberate, pre-registered
+   vantages (GL-22). Proceeding was a deliberate, pre-registered
    exception (documented in `DESIGN.md` "Go/no-go"), but the gate
    language itself was not updated to say so next to the table entry.
    **Disposition:** documentation-only fix, tracked but not applied in
    this pass (kept as a single future edit alongside the actual
    language change, not scattered across this review entry).
 
-**What this does not change.** G-23's numbers are not retracted or
+**What this does not change.** GL-23's numbers are not retracted or
 rerun. This entry sharpens what can and cannot yet be concluded from
 them for manuscript integration — a scope note on an existing result,
 not a correction to it.

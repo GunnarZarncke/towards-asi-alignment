@@ -20,7 +20,7 @@ the rest of the episode. This is a real, useful negative about the
 DEFAULT build-params regime's margin from `REVIEW_HAZARD_THRESHOLD`, not a
 bug in the reviewer/committee mechanics -- both seeds below are re-run with
 `MockIsolate` (cheap, deterministic-with-seed) purely to print the exact
-oracle-side evidence FINDINGS.md's G-14/G-15 cite.
+oracle-side evidence FINDINGS.md's LS-14/LS-15 cite.
 """
 
 from __future__ import annotations
@@ -95,7 +95,7 @@ def main() -> None:
     out = {
         "purpose": (
             "Root-cause for run_phase9.py's P9-A1/A4 (committee_board seed 5015) and "
-            "P9-B1 (d2_lineage seed 6020) prediction misses -- see FINDINGS.md G-14/G-15."
+            "P9-B1 (d2_lineage seed 6020) prediction misses -- see FINDINGS.md LS-14/LS-15."
         ),
         "committee_board_seed_5015": _diagnose_committee_board_seed_5015(),
         "d2_lineage_seed_6020": _diagnose_d2_seed_6020(),

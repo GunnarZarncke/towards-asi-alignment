@@ -89,11 +89,11 @@ def test_candidate_edges_use_deep_heuristic_only():
 
 
 def test_classify_ablation_compensators_separates_ripple_from_intrinsic():
-    """G-28 masking hardening, golden test: on the committee-with-informal-
+    """LS-28 masking hardening, golden test: on the committee-with-informal-
     chatter ecology's board ablation, rm1's apparent compensation is
     downstream ripple from {rev1, rev2} (collapses once they are masked);
     eng1's is a genuine but unpartnered ("intrinsic_unexplained") reaction —
-    the automated reproduction of the manual G-28 follow-up check."""
+    the automated reproduction of the manual LS-28 follow-up check."""
     cfg = committee_with_informal_chatter_config(T=100)
     backend = MockIsolate()
     result = run_episode(cfg, seed=1, backend=backend)

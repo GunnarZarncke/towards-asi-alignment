@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Adversarial D2 lineage gaming (PLAN.md "still open" note; G-12/G-15).
+"""Adversarial D2 lineage gaming (PLAN.md "still open" note; LS-12/LS-15).
 
 NOT a battery in the Phase 9 sense (no SubprocessIsolate run, no held-out
 seed split) -- a small-seed MockIsolate exploration, in the same spirit as
 the S1-S4 scenario prototypes, of the exact gap Phase 9 recorded up front
 and left open: "no playbook combines `build_from_parent` with
 `report:inflate`" (`run_phase9.py`'s Section B docstring; FINDINGS.md
-G-12, G-15). This script adds that playbook (`eng_inflate_upgrade`,
+LS-12, LS-15). This script adds that playbook (`eng_inflate_upgrade`,
 `playbooks.py`) and asks the two questions the gap raised:
 
   Q1. Does the lineage MECHANIC (`parent_model_id` threading) stay correct
@@ -117,7 +117,7 @@ def main() -> None:
         "--backend",
         choices=("mock", "subprocess"),
         default="mock",
-        help="mock = MockIsolate (default, original G-31 run); subprocess = real OS boundary",
+        help="mock = MockIsolate (default, original LS-31 run); subprocess = real OS boundary",
     )
     args = parser.parse_args()
     backend = SubprocessIsolate() if args.backend == "subprocess" else MockIsolate()

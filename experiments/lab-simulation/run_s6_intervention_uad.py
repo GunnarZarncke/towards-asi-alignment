@@ -105,7 +105,7 @@ def _run_cell(scenario_name: str, seed: int) -> dict:
             **_pair_metrics(intervention, true_pair),
             **partition_metrics(true_units, intervention),
         }
-        # G-28 masking hardening: per-probe ripple/intrinsic_unexplained
+        # LS-28 masking hardening: per-probe ripple/intrinsic_unexplained
         # labels for compensators outside the candidate-edge graph -- not
         # auto-merged (see uad_intervention.py docstring), surfaced here so
         # a "super-agent" worry like the eng1/rm1 committee case is

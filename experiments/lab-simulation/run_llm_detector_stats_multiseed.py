@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Multi-seed real-LLM validation for ``discovered_units_intervention_stats``.
 
-Same dm_coordinated_pair scenario as G-32/G-33; pre-registered seeds below.
+Same dm_coordinated_pair scenario as LS-32/LS-33; pre-registered seeds below.
 Reports per-seed exact/merge rates and which channel probe drove merges.
 
 Real OpenAI spend. Progress logged per seed (AGENTS.md).

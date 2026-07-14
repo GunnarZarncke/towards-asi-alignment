@@ -27,7 +27,7 @@ _RM_STEPS = ("compliance_signoff", "release_candidate", "deploy", "field_monitor
 # deterministic RM walker below completes its steps by t~15-24 at
 # carrier_load_scale<=0.5 regardless, so a "last fifth" (0.2) threshold
 # was never reachable at any pre-registered load cell — a dead-knob
-# mistake of the same kind FINDINGS G-16 flagged for compute_scale,
+# mistake of the same kind FINDINGS GL-16 flagged for compute_scale,
 # caught the same way (a dry run before committing to a threshold, not
 # after a battery's headline number came out flat). 0.4 is reachable at
 # the two highest-stress cells (deploy_tick observed at 48-80 for
@@ -370,7 +370,7 @@ def signal_writer(observation: dict, state: dict) -> dict | None:
     artifact the write creates — never through ``communicate`` — so this
     pair is invisible to every passive signal (co-semantic-step,
     communicate-pair, communicate co-activity all key on communicate or
-    pipeline steps, never on ``write``). See FINDINGS G-11.
+    pipeline steps, never on ``write``). See FINDINGS GL-11.
     """
     if str(observation.get("role", "")) != "engineer":
         if observation.get("busy"):

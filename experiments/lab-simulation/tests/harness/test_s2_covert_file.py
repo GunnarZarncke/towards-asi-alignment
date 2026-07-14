@@ -1,6 +1,6 @@
 """S2 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): covert
 coordination over an otherwise-legitimate file handoff. Exploratory, not a
-pre-registered battery -- see FINDINGS.md G-17 and
+pre-registered battery -- see FINDINGS.md LS-17 and
 `run_s2_covert_file_prototype.py`."""
 
 from __future__ import annotations
@@ -100,7 +100,7 @@ def test_covert_marker_is_identical_at_deep_tier_regardless_of_outcome():
     """The SAME marker is present at deep tier whether or not the reviewer
     ever acts on it -- confirms the memo CONTENT itself carries no
     distinguishing "this is the covert one" signature; see FINDINGS.md
-    G-17."""
+    LS-17."""
     trusting_result = run_episode(covert_file_handoff_config(trusting=True), seed=1, backend=MockIsolate())
     honest_result = run_episode(covert_file_handoff_config(trusting=False), seed=1, backend=MockIsolate())
     try:

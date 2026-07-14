@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Milestone v5 Phase 1 acceptance run (+ F-1/F-6 follow-ups: regions 2 & 3).
+"""Milestone v5 Phase 1 acceptance run (+ GA-1/GA-6 follow-ups: regions 2 & 3).
 
 Samples 30 discovery + 10 held-out-high-deception goal/tool configurations
 (pre-registered protocol in `goal_sim/protocol.py`), runs the battery at both
@@ -13,9 +13,9 @@ SAME frozen detector thresholds and the SAME frozen top-k channel selection
 from region 1's run (no re-fitting on any region):
 
 - **Region 2** ("subtle deception band"): pre-registered after region 1
-  saturated at 100% violations (`results/FINDINGS.md` F-1).
+  saturated at 100% violations (`results/FINDINGS.md` GA-1).
 - **Region 3** ("compliance band"): pre-registered after region 2 *also*
-  saturated, this time root-caused to a simplex-geometry effect (F-6) —
+  saturated, this time root-caused to a simplex-geometry effect (GA-6) —
   region 3 constrains `compliance` directly instead of letting it fall out
   incidentally from other constraints.
 """
@@ -46,11 +46,11 @@ HELD_OUT_REGIONS = {
         sample_configs,  # special-cased below (also returns discovery)
     ),
     "held_out_subtle": (
-        "0.30<=task<=0.45 and exposure>=0.35 and shadow_route (F-1 follow-up)",
+        "0.30<=task<=0.45 and exposure>=0.35 and shadow_route (GA-1 follow-up)",
         sample_held_out_subtle,
     ),
     "held_out_compliance_band": (
-        "0.20<=compliance<=0.35 and shadow_route (F-6 follow-up)",
+        "0.20<=compliance<=0.35 and shadow_route (GA-6 follow-up)",
         sample_held_out_compliance_band,
     ),
 }

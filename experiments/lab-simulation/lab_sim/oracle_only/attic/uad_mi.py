@@ -17,7 +17,7 @@ discipline as ``playbook_claim.py``/``collusion.py``/``covert_review.py``.
 TODO (recorded 2026-07-07, S6 follow-up, postponed): see
 ``uad_core/__init__.py``'s matching TODO -- this adapter + the vendored
 package are candidates for deletion now that ``uad_intervention.py``
-(G-28) supersedes them, kept on user instruction pending the
+(LS-28) supersedes them, kept on user instruction pending the
 shared_slot follow-up.
 
 Discovery-vs-scoring discipline unchanged from ``uad.py``:

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Phase 7c-revised — ecology calibration battery (`PLAN.md` / `DESIGN.md`
-"Phase 7c-revised ecology calibration battery"; FINDINGS G-16).
+"Phase 7c-revised ecology calibration battery"; FINDINGS GL-16).
 
 Sweeps `carrier_load_scale` (the only knob shown to have a demonstrated
 causal path to measured EAI for this ecology/agent roster — FINDINGS
-G-16) × agent types × seeds on `default_lab_config`, classifies each
+GL-16) × agent types × seeds on `default_lab_config`, classifies each
 cell's EAI band via the reference agent, scores UAD-backed `I_ctrl` in
 mid-band cells, runs a graded carrier-load dose-response, and writes
 `results/ecology_calibration.json`.
@@ -13,7 +13,7 @@ Usage:
   python3 run_phase7_calibration.py            # full revised 5-cell battery
   python3 run_phase7_calibration.py --smoke    # 2-cell, 2-seed dev grid
   python3 run_phase7_calibration.py --legacy   # original 16-cell compute×spread
-                                                # grid (FINDINGS G-15/G-16
+                                                # grid (FINDINGS GL-15/GL-16
                                                 # diagnostic fixture, not the
                                                 # battery default)
   python3 run_phase7_calibration.py --skip-mechanism-check  # for --legacy reruns
@@ -107,7 +107,7 @@ def main() -> None:
     parser.add_argument(
         "--legacy",
         action="store_true",
-        help="Run the original 16-cell compute×spread grid (FINDINGS G-15/G-16 "
+        help="Run the original 16-cell compute×spread grid (FINDINGS GL-15/GL-16 "
         "diagnostic fixture) with the corrected evaluator, instead of the "
         "revised carrier_load_scale grid",
     )
@@ -169,7 +169,7 @@ def main() -> None:
         print(f"[phase7c][{label}] ALL PASSED: {report['all_passed']}")
 
     # DESIGN.md "Phase 7c full battery, both vantages, with confidence
-    # intervals" (FINDINGS G-19/G-20/G-22): report the oracle/agent
+    # intervals" (FINDINGS GL-19/GL-20/GL-22): report the oracle/agent
     # vantage (as before) and the referee vantage side by side, from the
     # same episodes — neither replaces the other.
     _print_report("oracle", payload["pass_criteria"])

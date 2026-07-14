@@ -996,7 +996,7 @@
       "tool": "pipeline.trigger_step"
     }
   ],
-  "scenario": "dm_coordinated_pair (reused from run_llm_discovery_dm_pair.py, G-21)",
+  "scenario": "dm_coordinated_pair (reused from run_llm_discovery_dm_pair.py, LS-21)",
   "seed": 20002,
   "true_units": {
     "release_pair": [

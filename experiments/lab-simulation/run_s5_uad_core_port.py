@@ -21,8 +21,8 @@ first time to S4's `shared_slot_config` trajectories -- the same
 episodes `run_s4_shared_slot_prototype.py` already ran, re-scored with
 a second, independent detector instead of a new scenario.
 
-HYPOTHESIS TO TEST (from G-20's own finding, not asserted in advance
-as fact): G-20 found the CURRENT heuristic UNDER-detects -- {eng1,
+HYPOTHESIS TO TEST (from LS-20's own finding, not asserted in advance
+as fact): LS-20 found the CURRENT heuristic UNDER-detects -- {eng1,
 eng2} score `uad_score=0.0` (discovered as singletons) despite a real
 causal coupling through shared engine state (eng2's run_eval/
 request_review only succeed after eng1's submit_build/file_report on
@@ -161,7 +161,7 @@ def main() -> None:
         "docstring in `run_s5_uad_core_port.py` for the hypothesis, scope note, and FINDINGS.md.",
         "",
         f"Seeds: {SEEDS}, T={T}, max_lag={MAX_LAG}. Existing heuristic (`uad.discovered_units`)",
-        f"never merges {{eng1, eng2}} in any seed: {heuristic_never_merges} (G-20, re-confirmed here).",
+        f"never merges {{eng1, eng2}} in any seed: {heuristic_never_merges} (LS-20, re-confirmed here).",
         "",
         "| n_agents | eng1/eng2 merge rate | isolated from rev1/rm1 rate | deterministic across seeds |",
         "|---|---|---|---|",

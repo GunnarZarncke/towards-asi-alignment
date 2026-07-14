@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Phase 6: responses-side honest twin, certifier capture, adversarial
-weight search (`results/FINDINGS.md` F-21/F-22/F-23).
+weight search (`results/FINDINGS.md` GA-21/GA-22/GA-23).
 
 Three independent follow-ups to the Phase 5 strategic review (session log
 `drafts/conversation-summaries/2026-07-05-goal-agent-line-next-steps-
@@ -8,18 +8,18 @@ recorded.md`), each pre-registered below BEFORE this script's first run.
 Frozen Phase 1-5 artifacts are untouched; `escalation.py`'s gates,
 `detectors.py`'s thresholds, and `labels.py` are unchanged throughout.
 
-## Part A — F-21: does the responses-side twin fix fix F-20's false positive?
+## Part A — GA-21: does the responses-side twin fix fix GA-20's false positive?
 
 `twins.make_twin` now also replaces a spec's `responses` (if any) with a
 single, full-disclosure `HONEST_TWIN_RESPONSE` (see `twins.py` module
-docstring) — the missing piece F-20 identified (the twin previously
+docstring) — the missing piece GA-20 identified (the twin previously
 answered escalation queries using the ORIGINAL, deceptive action's response
 menu). Re-runs round 4's escalation battery (identical sampling/gates to
 `run_phase4_escalation.py`/`run_phase5_followups.py`: `sample_blind_configs`
 on `generated_actions_v4.json`, `protocol.EPISODE_SEEDS`, light-tier screen
 score) with BOTH `select_query_steps` (v1) and `select_query_steps_v2`
 (v2), using the FIXED twin rule. Pre-registered prediction: the twin
-verdict-true rate under v2 drops from F-20's recorded 0.0708 to at or below
+verdict-true rate under v2 drops from GA-20's recorded 0.0708 to at or below
 the agent's own rate (0.0542) — since a full-disclosure response can never
 itself trigger `DISCLOSE_FRACTION_GATE`'s verdict-true condition on the
 twin's OWN say-so being deceptive; the frozen `resolve_response_canonical`
@@ -30,7 +30,7 @@ verdict-true rate can *only* come from the `HIGH_GATE` screen-only path
 not merely empirical, prediction. `run_escalation`'s RNG streams and v1's
 own numbers are unaffected (only `twin_config`'s repertoire changed).
 
-## Part B — F-22: certifier capture
+## Part B — GA-22: certifier capture
 
 `agents.BoardPolicy`'s new `captured` mechanism (`config.BoardConfig.
 capture_start`, see `agents.py` module docstring) is exercised on the
@@ -59,13 +59,13 @@ actions become available off the fixed probe schedule), so the net effect
 on agent behavior is not derivable from the mechanism alone; reported as
 measured, honestly undetermined in advance.
 
-## Part C — F-23: adversarial weight search vs. uniform sampling
+## Part C — GA-23: adversarial weight search vs. uniform sampling
 
 `goal_sim.redteam.hill_climb_weights` (stdlib random-restart hill climbing,
 full pre-registration in that module's docstring: objective, lambda,
 search budget, evaluation-seed split) run against LEGACY and round 3
 (`generated_actions_v3.json` — the richest, most-saturated repertoire in
-this line, per F-14) repertoires, `ADVERSARY_TOOLS` fixed (full deception
+this line, per GA-14) repertoires, `ADVERSARY_TOOLS` fixed (full deception
 capability) for both the search and the uniform-sampling comparison
 baseline (`redteam.sample_uniform_baseline`, `N_BASELINE = N_RESTARTS *
 (1 + N_ITERS)` — the SAME total evaluation budget as the search gets, for
@@ -76,7 +76,7 @@ the search winner's final objective score is >= the baseline winner's
 (search should not underperform a fixed sample it had at least as many
 evaluations against) — a weak, easily-falsified claim; no prediction on
 the MAGNITUDE of any gap, or on whether round 3 (already near-saturated
-per F-14/F-8) leaves search much room to improve over uniform sampling.
+per GA-14/GA-8) leaves search much room to improve over uniform sampling.
 
 Artifacts: `results/phase6.{json,md}`.
 """
@@ -282,7 +282,7 @@ def render_md(report: dict) -> str:
         )
     lines += [
         "",
-        f"Frozen F-20 (old twin rule) v2 twin verdict-true rate: "
+        f"Frozen GA-20 (old twin rule) v2 twin verdict-true rate: "
         f"{report['part_a_responses_twin']['frozen_f20_twin_verdict_true_rate_v2']}. "
         f"Prediction (fixed twin's v2 rate <= agent's v2 rate) holds: "
         f"{report['part_a_responses_twin']['prediction_v2_twin_rate_at_or_below_agent']}.",

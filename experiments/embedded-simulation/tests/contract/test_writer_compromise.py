@@ -61,7 +61,7 @@ def test_consistent_forge_caught_by_cross_stream_unsigned(integrity_mode_guard):
 
 
 def test_unsigned_coordinated_writer_compromise_residual_pass(integrity_mode_guard):
-    """Coordinated emitter: all streams aligned — residual N-4 surface."""
+    """Coordinated emitter: all streams aligned — residual ES-4 surface."""
     set_trace_integrity_mode("none")
     world, _l, _m = build_world("MB4", "capture_theater", seed=42, T=400)
     run_redteam(world, "writer_compromise_coordinated", substrate="python")

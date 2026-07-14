@@ -1,6 +1,6 @@
 """Writer-compromise scenario: unit-level checks for `writer_compromise.py`'s
 three tamper modes against a real episode's logs. See
-`run_writer_compromise_prototype.py` / `results/FINDINGS.md` G-38 for the
+`run_writer_compromise_prototype.py` / `results/FINDINGS.md` LS-38 for the
 full multi-seed write-up."""
 
 from __future__ import annotations

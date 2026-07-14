@@ -1,7 +1,7 @@
 """Pre-registered lag/direction scan for real vs. spurious probe couplings.
 
 Companion to `calibrate_trace_biq.py` (which asks "is the Lean
-pattern-diversity *score* calibrated to Shannon MI?" -- answer: no, N-8) and
+pattern-diversity *score* calibrated to Shannon MI?" -- answer: no, ES-8) and
 `embedded_sim/audit_core/info_ci.py` (which gives MI/CMI a bootstrap CI and a
 permutation null). This script asks a different, protocol-level question:
 scanning a *grid* of (pair, direction, lag) cells -- not just the one
@@ -22,12 +22,12 @@ never named before being derived"):
   being fitted to it).
 - **Datasets:** four, run through the identical grid --
   - the pinned historical `capture_theater`/`honest_baseline` fixtures
-    (git `408444b`, full 300-row trace -- the N-8 rediscovery target);
+    (git `408444b`, full 300-row trace -- the ES-8 rediscovery target);
   - the dense `dense_capture_theater`/`dense_honest_baseline` profiles
     (`embedded_sim/dense_probe_profiles.py`, T=1200) -- enough probe events
     per lag cell for a tight CI (companion finding: the historical fixture's
     26-row window under-samples the *same* real coupling enough that the
-    CI+null gate can't call it even though the point estimate clears N-8's
+    CI+null gate can't call it even though the point estimate clears ES-8's
     naive 0.1-bit threshold; see
     `tests/unit/test_info_ci.py::test_n8_reversed_coupling_not_reliably_detected_on_26row_window`).
 - **Multiplicity correction:** 44 cells per dataset (2 pairs x 2 directions x

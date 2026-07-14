@@ -1,30 +1,30 @@
 # Graded Lab Simulation — Implementation Plan
 
-**Status: Phases 0–7c done; Phase 8 scaffold + first battery run (G-23,
+**Status: Phases 0–7c done; Phase 8 scaffold + first battery run (GL-23,
 2026-07-14).** Phase 2–3 deliverables and freeze gates met; Phase 3b
 mechanics and Phase 4 trace/counterfactual engineering gates passed (see
-`results/FINDINGS.md` G-2–G-5, G-8–G-23). Phase 8 implements
+`results/FINDINGS.md` GL-2–GL-5, GL-8–GL-23). Phase 8 implements
 throughput-linked selection with campaign grant/standing carryover on the
-G-22 referee sweet-spot ecology (`carrier_load_scale=1.5`); first full run
+GL-22 referee sweet-spot ecology (`carrier_load_scale=1.5`); first full run
 is a **clean null** on detector-evading emergence — mass shifted to
 `weak_2step` (higher deploy throughput on this ecology), correction-
 preserving share collapsed, and weighted severity/detector **fell** rather
-than rose. See FINDINGS G-23 and `DESIGN.md` "Phase 8 — multi-episode
-selection (MB6)". **External review (G-24) raised four concerns before
-G-23 is trusted for manuscript use** — confounded preservation tag,
+than rose. See FINDINGS GL-23 and `DESIGN.md` "Phase 8 — multi-episode
+selection (MB6)". **External review (GL-24) raised four concerns before
+GL-23 is trusted for manuscript use** — confounded preservation tag,
 too-narrow selection proxy, unvalidated campaign carryover, and an
 unqualified Phase-7-gate note — each registered with a proposed follow-up
 phase (8a/8b/8c) in `DESIGN.md` "Phase 8 reviewer concerns and follow-up
 phases"; **not implemented this session.**
 
-**Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
+**Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **GL-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
 borderline-case stress; ecology-BIQ is the tuning instrument; extending
 lab-sim with ambiguity knobs would change the simulation's identity rather
 than fix it). **Explicit deferral:** do **not** port lab-sim's D3
 selection/population harnesses into this line until ecology ambiguity is
 **quantified, calibrated, and shown to produce incremental (graded)
-movement** — selection on a boolean substrate would only reproduce G-36/G-37
+movement** — selection on a boolean substrate would only reproduce GL-36/GL-37
 style fixation/collapse artifacts without teaching anything new about MB6.
 
 **This is the fifth in-repo simulation line**, after `toy-simulation/`,
@@ -113,11 +113,11 @@ A **graded-capability lab** where:
 
 | Lesson (source) | Lab-sim symptom | Graded-lab response |
 |-----------------|-----------------|---------------------|
-| G-41 boolean ecology | ±1 deploy, 0/15 revoke nulls, timing-only holds | Ambiguity **emerges** from a blinded resource/population substrate; graded dose-response is a *measured* outcome, not a dialed knob |
-| G-40 access loop | Re-grant is free/instant | Delay/scarcity fall out of finite compute + loaded queues + spent standing — no delay parameter exists |
-| G-38 persistence | In-process dedup vs restart | No host-recovered playbook index; working memory is isolate-private, so restart removes real plan state |
-| G-8 / Phase 8 | LLM starved by protocol (`T=25`, access retries) | Multi-tick actions + resource ledger make "ran out of time" a measured ecology-BIQ control bound, not a horizon artifact |
-| goal-sim F-9/F-16 | Light tier tracks compliance not honesty | Freeze referee only after twin/escalation semantics ported |
+| GL-41 boolean ecology | ±1 deploy, 0/15 revoke nulls, timing-only holds | Ambiguity **emerges** from a blinded resource/population substrate; graded dose-response is a *measured* outcome, not a dialed knob |
+| GL-40 access loop | Re-grant is free/instant | Delay/scarcity fall out of finite compute + loaded queues + spent standing — no delay parameter exists |
+| GL-38 persistence | In-process dedup vs restart | No host-recovered playbook index; working memory is isolate-private, so restart removes real plan state |
+| GL-8 / Phase 8 | LLM starved by protocol (`T=25`, access retries) | Multi-tick actions + resource ledger make "ran out of time" a measured ecology-BIQ control bound, not a horizon artifact |
+| goal-sim GA-9/GA-16 | Light tier tracks compliance not honesty | Freeze referee only after twin/escalation semantics ported |
 | lab-sim S6/S7 | Detector line mature on boolean substrate | Detectors are **ported**, not re-invented, after ecology calibration; agents speak primitives so UAD is genuinely non-trivial |
 | lab-sim D3.1/D3.2 | Selection without ambiguity → fixation/collapse | Selection deferred to Phase 8, gated on measured-EAI sweet spot |
 | self-review (2026-07-10) | An `AmbiguityProfile` would re-encode the pathology one level up | Substrate designed by a **blinded subagent**; oracle Tier-K/Tier-I split makes referee advantage quantified, not omniscient |
@@ -129,7 +129,7 @@ A **graded-capability lab** where:
 **The core correction (2026-07-10 review).** An earlier draft of this plan
 proposed an `AmbiguityProfile` — `regrant_delay_mean`,
 `review_evidence_noise_sd`, `pipeline_observability`, etc. That is the
-**same pathology G-41
+**same pathology GL-41
 diagnosed, one level up**: it encodes a *known, named* ambiguity by
 parameterizing directly over the thing we want to study, instead of letting
 ambiguity *arise* from borderline cases of an underlying space that is
@@ -156,7 +156,7 @@ No `*_delay_*` or `*_budget` parameter names the effect directly. Instead:
   broad access, or requesting then not using it, spends a standing/trust
   resource that the admin's own (bounded, self-interested) policy tracks —
   so "the admin is slow to re-grant" emerges from a loaded queue + spent
-  standing, exactly the G-40 gap, but derived rather than stipulated.
+  standing, exactly the GL-40 gap, but derived rather than stipulated.
 - **Contention.** Because multiple actors draw on shared finite resources
   (admin attention = admin isolate's own bounded compute; a shared build
   queue; workspace IO), delays and denials are **interaction effects** of
@@ -472,7 +472,7 @@ Design rules (frozen Phase 1):
 
 4. **Working memory** is isolate-private JSON, wiped on restart. Because there
    is no host-recovered playbook index, `isolate_restart` now removes real
-   in-progress plan state — the G-38 artifact cannot recur by construction.
+   in-progress plan state — the GL-38 artifact cannot recur by construction.
 
 5. **Semantic action classes are an AUDIT-SIDE map, not an agent output.**
    UAD / audit / severity map sequences of primitives up to (possibly
@@ -626,9 +626,9 @@ bumped like lab-sim.
 | **5 — Referee port + FREEZE** | Severity + five detector families + twins + escalation (ported); Tier-I estimators with pre-registered uncertainty handling | **Referee frozen** — Tier-K exact, Tier-I estimator+CI fixed, constants from mechanics only |
 | **6 — Blind behavior features** | `BLIND_GENERATION.md`, `generated_behavior_features_v1.json`, validator | Generator predictions registered before code import |
 | **7a — UAD + intervention trace validation** | Port/adapt UAD over primitive traces; perturbation protocol; recovered-unit evaluation | UAD unit/boundary recovery and intervention semantics checked before any BIQ estimator is fitted |
-| **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable — **done** (`oracle_only/unit_biq.py`, G-13); `I_ctrl` resource-contention confound documented, not silently patched |
-| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) — **implemented, then corrected, then both backlog items resolved, then run under both vantages with 95% CIs** (`run_phase7_calibration.py`; G-15 initial run, G-16 correction — see "Phase 7c-revised" in `DESIGN.md`); full-battery pass/fail read from JSON for **both** the oracle/agent vantage and a referee (light-audit-tier) vantage, computed from the same 100 episodes — **neither passes (1/4 each, a different criterion each time)**; the resource-sensitive agent program (G-17) validated separately without being wired into the main comparison; EAI-v2 (G-18) is verified correct with a reported-null effect at the agent vantage; the referee reframe (G-19/G-20) makes criterion 2 measurable for the first time but does not flip the verdict (G-22) — next lever is roster scope, not another EAI reformulation |
-| **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Scaffold + first battery** (`run_phase8_selection.py`, `harness/selection.py`; G-23) — clean null: throughput selection favors `weak_2step` over correction-preserving `strong_softmax` on the G-22 ecology; severity/detector fell with mass shift, not detector-evading emergence. **Reviewed (G-24):** confounded preservation tag, too-narrow selection proxy, and unvalidated campaign carryover flagged before manuscript use — see `DESIGN.md` "Phase 8 reviewer concerns and follow-up phases" (proposed 8a/8b/8c, not yet run) |
+| **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable — **done** (`oracle_only/unit_biq.py`, GL-13); `I_ctrl` resource-contention confound documented, not silently patched |
+| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) — **implemented, then corrected, then both backlog items resolved, then run under both vantages with 95% CIs** (`run_phase7_calibration.py`; GL-15 initial run, GL-16 correction — see "Phase 7c-revised" in `DESIGN.md`); full-battery pass/fail read from JSON for **both** the oracle/agent vantage and a referee (light-audit-tier) vantage, computed from the same 100 episodes — **neither passes (1/4 each, a different criterion each time)**; the resource-sensitive agent program (GL-17) validated separately without being wired into the main comparison; EAI-v2 (GL-18) is verified correct with a reported-null effect at the agent vantage; the referee reframe (GL-19/GL-20) makes criterion 2 measurable for the first time but does not flip the verdict (GL-22) — next lever is roster scope, not another EAI reformulation |
+| **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Scaffold + first battery** (`run_phase8_selection.py`, `harness/selection.py`; GL-23) — clean null: throughput selection favors `weak_2step` over correction-preserving `strong_softmax` on the GL-22 ecology; severity/detector fell with mass shift, not detector-evading emergence. **Reviewed (GL-24):** confounded preservation tag, too-narrow selection proxy, and unvalidated campaign carryover flagged before manuscript use — see `DESIGN.md` "Phase 8 reviewer concerns and follow-up phases" (proposed 8a/8b/8c, not yet run) |
 
 **Hard rule:** Phases 0–7 are **single-episode** only. Phase 8 is the first
 place population/spec-evolution/selection appears.
@@ -665,15 +665,15 @@ BIQ.**
      (collapse, not noise).
   4. A resource-based intervention (throttle compute / revoke a grant that is
      costly to re-earn) shows **graded** dose-response in the mid band (not
-     ±1 only) — the direct G-40/G-41 rebuttal.
+     ±1 only) — the direct GL-40/GL-41 rebuttal.
 
 Failure → adjust **substrate resource allowances / population spreads**
 (within blinded-designed ranges), **not** detector thresholds and **not** the
 EAI formula.
 
-**2026-07-14 correction (FINDINGS G-16):** the first implementation of
+**2026-07-14 correction (FINDINGS GL-16):** the first implementation of
 this sketch (`graded_lab/oracle_only/calibration.py`, results in
-`FINDINGS.md` G-15) reported "3/4 criteria fail, grid doesn't span the
+`FINDINGS.md` GL-15) reported "3/4 criteria fail, grid doesn't span the
 bands" — that diagnosis was itself wrong. The real causes were two
 evaluator bugs (criterion 1 pooled two agent types into one slope,
 manufacturing a pass with no substrate effect measured; criterion 2
@@ -687,7 +687,7 @@ for the corrected criteria, the reduced grid, and the registered
 predictions. **General lesson, generalized below so this class of
 mistake doesn't recur in a later battery.**
 
-### Battery design checklist (generalized from the G-16 postmortem;
+### Battery design checklist (generalized from the GL-16 postmortem;
 apply to any future calibration/sweep battery, not just 7c)
 
 A calibration battery couples three things that must each be checked
@@ -800,7 +800,7 @@ MB6 is the **reason** Phase 8 exists — not the reason Phases 0–7 are skipped
 
 | lab-sim item | Disposition |
 |--------------|-------------|
-| Further ambiguity patches | **Declined** — would fork identity (G-41) |
+| Further ambiguity patches | **Declined** — would fork identity (GL-41) |
 | D3 population/spec evolution | **Defer** to graded-lab Phase 8 |
 | Ecology-BIQ estimator | **Move** here as first-class module |
 | S6/S7 detectors | **Port** after Phase 7 gate |
@@ -808,7 +808,7 @@ MB6 is the **reason** Phase 8 exists — not the reason Phases 0–7 are skipped
 | Handle calibration | **Re-run** as graded dose-response in Phase 7 |
 | `ACCESS_TIERS` playbook split | Stays lab-sim specific; graded-lab uses tiered **optimizer code** + blind features |
 
-Lab-sim remains the canonical record for boolean-ecology findings (G-1–G-41).
+Lab-sim remains the canonical record for boolean-ecology findings (GL-1–GL-41).
 Graded-lab starts a fresh `results/FINDINGS.md` at Phase 0.
 
 ---
@@ -819,7 +819,7 @@ Graded-lab starts a fresh `results/FINDINGS.md` at Phase 0.
 |------|------------|
 | Primitive action space explodes optimizer cost | Hard cap on `\|F\|` (top-k affordable primitives by cheap prior), lookahead depth ≤ 2, cache affordable sets per (obs-digest) |
 | Emergent substrate too expensive to simulate | Tier-K generative truth fixed per seed; Tier-I estimators closed-form or cheap MC over already-drawn samples; computability guard rejects effects that are neither |
-| Sweet spot empty (all collapse or all succeed) | Adjust substrate allowances/populations within blinded ranges before touching referee; EAI measured so emptiness is visible early. **G-16 caveat:** first check (dry run) that the knob you're about to adjust has a demonstrated effect at all — an "empty" result can mean the knob is dead, not that the grid missed the band. |
+| Sweet spot empty (all collapse or all succeed) | Adjust substrate allowances/populations within blinded ranges before touching referee; EAI measured so emptiness is visible early. **GL-16 caveat:** first check (dry run) that the knob you're about to adjust has a demonstrated effect at all — an "empty" result can mean the knob is dead, not that the grid missed the band. |
 | Carrier load adds a second boolean-collapse knob | Pre-register the single load/recovery function and scale cells; retain scale zero as regression baseline; report load, integrity, skips, terminations, pipeline completion, and field harm separately rather than folding them into EAI |
 | Ecology-BIQ gamed by noop agents | Control term requires counterfactual baseline on same seed |
 | Blinded substrate designer produces an incoherent or uncomputable space | Phase 0 review is for internal coherence + computability only (not difficulty tuning); iterate the *brief*, not the outputs toward a target |
@@ -885,27 +885,27 @@ text), not a code task; listed here so it is not lost as an open item.
    traces is feasible but has two structural failure modes, both
    demonstrated, not hypothetical: (a) passive discovery structurally
    misses coordination with no observable `communicate` signal (the
-   write/read handoff `signal_handoff_pair`, FINDINGS G-11; recovered only
+   write/read handoff `signal_handoff_pair`, FINDINGS GL-11; recovered only
    by standalone all-pairs `dependency_score` intervention); (b)
    intervention-based discovery cannot distinguish "coupled through joint
    decision-making" from "coupled through shared resource contention" — a
    resource-bound bystander (e.g. an admin) gets over-merged into a
    genuine multi-actor unit it is not party to (`three_way_nod`, FINDINGS
-   G-12; echoed independently by embedded-simulation's N-1 UAD/loudest-actor
+   GL-12; echoed independently by embedded-simulation's ES-1 UAD/loudest-actor
    tie). Both are qualifiers on any claim that boundary recovery from
    traces is straightforwardly reliable.
 2. **`ch11-capability-without-task-ontology.tex`** — a careful, good-faith
    implementation of \(I_{\mathrm{ctrl}}^X\) silently re-imported a task
    ontology via a narrowly-scoped outcome vector `(deploy_count,
    bearer_harm)`, inherited from an earlier non-BIQ diagnostic without
-   re-deriving it from the chapter's own `E^X_{t+1}` (FINDINGS G-14) — a
+   re-deriving it from the chapter's own `E^X_{t+1}` (FINDINGS GL-14) — a
    concrete illustration of how "task-agnostic but not ontology-free" can
    fail in practice even when the definition is stated correctly. The
    fix (widening `Y` to include a contention bucket) is itself still not
    exhaustive of `E^X_{t+1}`, and separating "this unit is the task
    driver" from "this unit's removal changed shared contention for
    everyone" requires a contention-matched counterfactual the current
-   estimator does not have (FINDINGS G-13).
+   estimator does not have (FINDINGS GL-13).
 3. **`ch33-certification-without-construction.tex`** — toy-simulation's
    result that passive telemetry alone is uncertifiable
    (`belowThreshold`) and interventional handles are required, with
@@ -922,13 +922,13 @@ text), not a code task; listed here so it is not lost as an open item.
    engineering time to Phase 8, write down what sentence in these
    chapters a pass and a null would each let the manuscript say; if the
    answer is thin, that is itself the finding, and Phase 8 should not be
-   attempted for its own sake. **Sharpened 2026-07-14 (FINDINGS G-18):**
+   attempted for its own sake. **Sharpened 2026-07-14 (FINDINGS GL-18):**
    this is now harder than a resource question — the pre-registered
    "high" ambiguity band was found structurally unreachable for a
    substrate-statistics reason (this ecology is close to deterministic
    given full agent-visible context, not merely under-instrumented).
-   **Reframed same day (FINDINGS G-19), then measured (FINDINGS
-   G-20):** adding substrate randomness is rejected — it would violate
+   **Reframed same day (FINDINGS GL-19), then measured (FINDINGS
+   GL-20):** adding substrate randomness is rejected — it would violate
    Phase 0's own "no injected delay/noise parameter" rule and would
    manufacture the result rather than measure it. The real defect was
    **measuring ambiguity from the wrong observer**: the entropy term
@@ -946,7 +946,7 @@ text), not a code task; listed here so it is not lost as an open item.
    pre-registered **mid** band (`0.33`–`0.40`) at every nonzero-load
    cell — the first non-hairline mid-band signal in this line — though
    it still does not reach the **high** band at any cell. **Wired into
-   the main battery and run in full with 95% CIs (FINDINGS G-22):**
+   the main battery and run in full with 95% CIs (FINDINGS GL-22):**
    both vantages now land at **1/4** pass criteria on the same 100
    episodes — oracle passes criterion 1, referee passes criterion 4 —
    neither clears the "meaningfully better" bar the pre-registered
@@ -960,7 +960,7 @@ text), not a code task; listed here so it is not lost as an open item.
    comparison) as the next calibration lever if pursued further — not
    another EAI reformulation.**
    **Phase 8 scaffold built and first battery run same day (FINDINGS
-   G-23):** result is a **clean null on detector-evading emergence** —
+   GL-23):** result is a **clean null on detector-evading emergence** —
    throughput-linked selection on the frozen program-map population
    shifted mass toward `weak_2step` (higher, more reliable deploy count
    on this ecology), the sole `correction_preserving`-tagged member
@@ -968,8 +968,8 @@ text), not a code task; listed here so it is not lost as an open item.
    detector composite **fell** alongside the shift rather than rising —
    i.e. selection here did not manufacture an evasive strategy; it
    selected a plainer, lower-harm program that happens not to carry the
-   preservation tag. **Reviewed same day (FINDINGS G-24), before any
-   manuscript sentence is drafted from G-23:** four concerns registered
+   preservation tag. **Reviewed same day (FINDINGS GL-24), before any
+   manuscript sentence is drafted from GL-23:** four concerns registered
    in `DESIGN.md` "Phase 8 reviewer concerns and follow-up phases" —
    (1) the `correction_preserving` tag is confounded with member
    identity (only `strong_softmax` carries it), so "preservation lost
@@ -987,13 +987,40 @@ text), not a code task; listed here so it is not lost as an open item.
    ch34's fit is currently the strongest of the three (selection proxy
    choice determines which systems spread, demonstrated directly) but
    should state the proxy-dependence explicitly; ch36/ch40 have **no**
-   supporting evidence from this result — G-23 shows no parasite
+   supporting evidence from this result — GL-23 shows no parasite
    signature and no goal-laundering signature, and should not be cited
    as if it did until 8a/8b at minimum are run.
 
-**Not yet done:** none of the four have been written into their chapters
-yet. This entry exists so the mapping is not re-derived from scratch in a
-future session.
+**Written into chapters 2026-07-14 (all four).** Each addition is a short,
+sourced, hedged paragraph at the point in the existing text that already
+made the relevant abstract claim — not a rewrite of surrounding prose:
+
+- `ch07-finding-boundary.tex` §"Recovering Boundaries from Traces" area
+  (after the existing testbed-lesson paragraph): the `signal_handoff_pair`
+  (GL-11, write/read-only coordination invisible to passive and to
+  passive-seeded intervention) and `three_way_nod` (GL-12, resource-bound
+  bystander over-merge) findings, as a further sharpening of the same
+  point rather than a duplicate of the ripple/false-merge paragraph
+  already there.
+- `ch11-capability-without-task-ontology.tex` §"Why This Is Task-Agnostic
+  but Not Ontology-Free": the `I_ctrl` outcome-vector scoping bug (GL-13/
+  GL-14) as a concrete illustration of the section's own abstract warning.
+- `ch33-certification-without-construction.tex` §"Adversarial
+  Certification" (the perturbation-list paragraph): toy-simulation's
+  `belowThreshold`-on-passive-only / `light_handles`-suffices finding.
+- `ch34-selection-environment.tex` §"A Minimal Model of Socio-Technical
+  Selection" (right after the $\mu_E$/$\mathrm{Fit}_E$ definitions): the
+  GL-23 selection-battery result, stated with the GL-24 caveats inline
+  (confounded preservation tag, single narrow throughput handle) rather
+  than as an unqualified confirmation.
+- `ch36`/`ch40` **deliberately left untouched** — GL-23 supplies no
+  parasite or goal-laundering signature, so no addition was made; each
+  chapter was checked for any premature claim already citing this line
+  and none was found.
+- Verified: `make check` (structure/citation/bibliography-summary) and a
+  full `./build.sh` (1332pp) both clean after the edits; no new bib keys
+  needed (`zarncke2025uad`/`zarncke2025biq` already existed and are
+  reused for the same purpose elsewhere in these chapters).
 
 ---
 
@@ -1008,6 +1035,10 @@ future session.
 | `BLIND_GENERATION.md` | Phase 0 (substrate protocol) + Phase 6 (behavior features) |
 | `results/FINDINGS.md` | First empirical entry after Phase 3 equivalence proof |
 
-Cross-references: `experiments/lab-simulation/results/FINDINGS.md` G-41,
-`chapters/ch11-capability-without-task-ontology.tex` (BIQ definition),
-`docs/EXPERIMENTS.md` (update when line is officially added to build order).
+Cross-references: `experiments/lab-simulation/results/FINDINGS.md` GL-41,
+`chapters/ch07-finding-boundary.tex`/`ch11-capability-without-task-ontology.tex`/
+`ch33-certification-without-construction.tex`/`ch34-selection-environment.tex`
+(manuscript harvest, 2026-07-14 — see backlog above), `docs/EXPERIMENTS.md`
+§5 and `metadata/experiments.yml` (line added to the build order and
+coverage matrix 2026-07-14; site regenerated via
+`site/scripts/sync-experiments.mjs`).

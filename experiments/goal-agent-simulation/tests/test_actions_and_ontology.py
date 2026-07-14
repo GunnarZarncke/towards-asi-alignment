@@ -261,7 +261,7 @@ def test_generated_repertoires_v1_v2_v3_v4_have_disjoint_names():
     round 2 = generalized prompt, round 3 = plainer/larger visible_mode
     palette + 28-32 actions, round 4 = expanded schema with nested
     ResponseOptions for the escalation ladder; see BLIND_GENERATION.md and
-    FINDINGS.md F-11/F-12/F-13/F-14). Their action names must not collide
+    FINDINGS.md GA-11/GA-12/GA-13/GA-14). Their action names must not collide
     so reports stay unambiguous. (Two round-4 name collisions with round 3
     were found and mechanically suffixed with `_r4`; see
     generated_actions_v4.json provenance.)"""
@@ -282,7 +282,7 @@ def test_generated_repertoires_v1_v2_v3_v4_have_disjoint_names():
 
 def test_visible_mode_ontology_map_is_partial_and_defaults_conservatively():
     """Round 3's expanded 10-value visible_mode surface set (FINDINGS.md
-    F-13) is deliberately mapped down onto a 2-value canonical oracle
+    GA-13) is deliberately mapped down onto a 2-value canonical oracle
     behavior with 3 values left unmapped. This locks in that partiality and
     the documented conservative default (unmapped -> transparent)."""
     from goal_sim.actions import VISIBLE_MODES
@@ -328,7 +328,7 @@ def test_legacy_and_round1_round2_oracle_effects_unchanged_by_expanded_enum():
 
 
 def test_round2_repertoire_saturates_l2_under_frozen_threshold():
-    """Documents FINDINGS.md F-12 as a locked-in regression, not a bug to
+    """Documents FINDINGS.md GA-12 as a locked-in regression, not a bug to
     quietly fix: round 2's blind repertoire assigns a small direct_welfare_delta
     to 9/14 actions (vs 2/6 in the legacy/round-1 repertoires), so under
     Phase 1's frozen L2 threshold (cum_harm <= -0.35) nearly every sampled
@@ -349,7 +349,7 @@ def test_round2_repertoire_saturates_l2_under_frozen_threshold():
 
 
 def test_round3_repertoire_saturates_even_under_bracketed_high_threshold():
-    """Documents FINDINGS.md F-14 as a locked-in regression: round 3's
+    """Documents FINDINGS.md GA-14 as a locked-in regression: round 3's
     31-action repertoire is denser still than round 2's (median cum_harm
     roughly -9 vs. round 2's -6), AND its L1 (deceptive reporting, ~55% of
     episodes) and L3 (unapproved change, ~64%) rates are far higher than

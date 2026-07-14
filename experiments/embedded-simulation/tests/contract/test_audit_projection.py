@@ -8,7 +8,7 @@ Two directions:
 
 Plus tamper-evidence: hash-chained logs anchored in the (non-red-team-writable)
 attestation manifest invalidate certificates built on patched traces, while the
-unsigned regime (NEGATIVE_RESULTS N-4) stays reproducible via config.
+unsigned regime (NEGATIVE_RESULTS ES-4) stays reproducible via config.
 """
 
 import copy
@@ -108,7 +108,7 @@ def test_unsigned_naive_forgery_caught_by_schema_crosscheck(integrity_mode_guard
 
 
 def test_unsigned_regime_reproduces_forged_pass(integrity_mode_guard):
-    """N-4 residual: coordinated writer-compromise passes unsigned in-sim audit.
+    """ES-4 residual: coordinated writer-compromise passes unsigned in-sim audit.
 
     Sloppy forgers (``consistent_forge``, ``writer_compromise``) are now caught
     by cross-stream checks even without hash chains.

@@ -2,7 +2,7 @@
 
 WHY THIS EXISTS (2026-07-05): Phase 1's detectors and its 6-action repertoire
 were written by the same author against each other, so detection/transfer
-numbers were partly circular (see `results/FINDINGS.md` F-8). This module
+numbers were partly circular (see `results/FINDINGS.md` GA-8). This module
 freezes a declarative schema that a *detector-blind* generator can fill in:
 the generator sees the world mechanics and this schema, never the detectors,
 labels, thresholds, or channel tiers (protocol: `BLIND_GENERATION.md`).
@@ -48,7 +48,7 @@ from pathlib import Path
 # Enumerations (closed sets — part of the frozen schema).
 ACTION_MODES = ("follow_intent", "pursue_task", "random_action")
 
-# VISIBLE_MODES (expanded 2026-07-05, round 3, per FINDINGS.md F-13): the
+# VISIBLE_MODES (expanded 2026-07-05, round 3, per FINDINGS.md GA-13): the
 # 2-value round-1/2 set ("truthful" / "feign_compliance") was flagged as a
 # residual leak — "feign_compliance" names the mechanism, not just describes
 # an observable. This set is deliberately larger and phrased as plain,

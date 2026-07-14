@@ -6,7 +6,7 @@ NOT a battery: no pre-registered statistical protocol, no held-out region,
 no SubprocessIsolate cost accounting. A small-seed MockIsolate exploration
 of a NEW mechanic (`playbooks.eng_honest_handoff` / `rev_covert_trusting`,
 `programs._resolve_handoff_memo`, `ecology.covert_file_handoff_config`,
-`oracle_only.covert_review`) -- see `results/FINDINGS.md` G-17 for the
+`oracle_only.covert_review`) -- see `results/FINDINGS.md` LS-17 for the
 write-up and `tests/harness/test_s2_covert_file.py` for the pinned unit
 tests this script's expectations were verified against first.
 
@@ -38,7 +38,7 @@ already-passing unit tests, not re-tuned after seeing a number):
       not a content scan.
 
 If any of E1-E5 comes back false for some seed, this script reports it
-plainly rather than silently averaging it away -- see FINDINGS.md G-17's
+plainly rather than silently averaging it away -- see FINDINGS.md LS-17's
 "Falsifications" (if any).
 """
 
@@ -142,7 +142,7 @@ def main() -> None:
         "# S2 scenario prototype: covert coordination over files",
         "",
         f"Generated {payload['generated_at']} at {CODE_VERSION}. NOT a battery -- see module",
-        "docstring in `run_s2_covert_file_prototype.py` for E1-E5 and FINDINGS.md G-17.",
+        "docstring in `run_s2_covert_file_prototype.py` for E1-E5 and FINDINGS.md LS-17.",
         "",
         f"Seeds: {SEEDS}, T={T} (capped to one model cycle -- see script docstring).",
         "",

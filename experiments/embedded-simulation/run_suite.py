@@ -970,7 +970,7 @@ def _build_overall_summary(
                 lines.append(
                     "  - ⚠ battery bridges are all violation/capture scenarios; "
                     "false-pass-conditional-on-pass is structurally near 100% "
-                    "and not independently informative (see NEGATIVE_RESULTS.md N-11)"
+                    "and not independently informative (see NEGATIVE_RESULTS.md ES-11)"
                 )
         if m := metrics.get("access_tier_curve"):
             lines.append(f"- **Access-tier curve:** {m['runtime_seconds']}s")

@@ -1,6 +1,6 @@
 """S3 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): informal
 board chatter from a REAL pipeline role must not be mistaken for
-coordination. Exploratory, not a battery -- see FINDINGS.md G-18 and
+coordination. Exploratory, not a battery -- see FINDINGS.md LS-18 and
 `run_s3_informal_chatter_prototype.py`."""
 
 from __future__ import annotations

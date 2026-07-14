@@ -56,7 +56,7 @@ row schema, not a change to the pre-existing fields' values — a dedicated
 regression test checks the pre-existing fields are still byte-identical.
 
 Phase 6 oracle field (2026-07-05, `agents.BoardPolicy` "certifier
-capture", `results/FINDINGS.md` F-22): `board_captured` (1 iff
+capture", `results/FINDINGS.md` GA-22): `board_captured` (1 iff
 `board.captured` at this step) is added to every row as an ORACLE-ONLY
 field (`channels.ORACLE_ONLY_FIELDS`) — by construction, NEVER audit
 visible at any tier, since the entire point of this mechanism is to

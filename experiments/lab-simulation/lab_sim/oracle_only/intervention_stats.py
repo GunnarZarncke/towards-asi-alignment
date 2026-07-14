@@ -8,14 +8,14 @@ by whether intervened-vs-pooled-clean divergences are stochastically
 greater than clean pairwise divergences (exact permutation test,
 stdlib only). Multiple probes per scenario use Holm correction.
 
-**Why a new design, not another edit to the asymmetric variant (G-33).**
-G-34 showed post-hoc retuning on burned seeds; the single-draw decision
+**Why a new design, not another edit to the asymmetric variant (LS-33).**
+LS-34 showed post-hoc retuning on burned seeds; the single-draw decision
 and uncorrected 0.90-quantile probes were the structural failures.
 
 **Freeze note 3 defaults (registered before fresh-seed LLM runs):**
 ``DEFAULT_M_INTERVENED=4``, ``DEFAULT_K_CLEAN=4``, ``DEFAULT_ALPHA=0.05``,
 ``DEFAULT_MIN_EFFECT_VS_TWIN=0.05``. Fresh evaluation seeds for real-LLM
-stress tests must NOT reuse 20002--20010 (G-32 through G-34).
+stress tests must NOT reuse 20002--20010 (LS-32 through LS-34).
 
 **Scripted-backend equivalence.** On ``MockIsolate``/``SubprocessIsolate``
 with deterministic agents, same-seed replicates are byte-identical: the
@@ -47,7 +47,7 @@ DEFAULT_ALPHA = 0.05
 DEFAULT_MIN_EFFECT_VS_TWIN = 0.05
 DEFAULT_INTERVENTION_TICK = 8
 
-# Backward-compatible aliases for run scripts written against G-33 API.
+# Backward-compatible aliases for run scripts written against LS-33 API.
 DEFAULT_K_CLEAN_REPLICATES = DEFAULT_K_CLEAN
 DEFAULT_NULL_QUANTILE = 0.90  # deprecated; ignored by symmetric test
 
@@ -263,7 +263,7 @@ class CompensationStatsResult:
 
     @property
     def null_threshold(self) -> float:
-        """Deprecated G-33 field; retained for diagnostic scripts."""
+        """Deprecated LS-33 field; retained for diagnostic scripts."""
         if not self.clean_null_samples:
             return 0.0
         return max(self.clean_null_samples)

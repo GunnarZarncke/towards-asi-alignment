@@ -12,7 +12,7 @@ docstring.
 
 Phase 3 (round 3's blind generation, `BLIND_GENERATION.md` "Generation round
 3") found that a large, independently-varied action repertoire drives the
-boolean episode label to near-total saturation (`results/FINDINGS.md` F-14)
+boolean episode label to near-total saturation (`results/FINDINGS.md` GA-14)
 regardless of which of two pre-registered L2 thresholds is used. Once nearly
 every episode is "violation", there is no honest subgroup left inside a
 population to compute a false-alarm rate against, and no meaningful
@@ -125,11 +125,11 @@ screen's own signal.
 
 Each phase: pre-registered in its runner's docstring before the first run;
 regression tests extended (booleans and rounds 1-3 artifacts stay
-byte-identical); findings recorded in `results/FINDINGS.md` (F-15 onward);
+byte-identical); findings recorded in `results/FINDINGS.md` (GA-15 onward);
 session logged in `drafts/conversation-summaries/`.
 
 ## Results summary (filled in as each phase completes)
 
-See `results/FINDINGS.md` F-15 onward and `results/phase4_*.{json,md}` for
+See `results/FINDINGS.md` GA-15 onward and `results/phase4_*.{json,md}` for
 full numbers; headline results are not duplicated here to avoid two sources
 of truth drifting apart.

@@ -12,7 +12,7 @@ is modeled behaviorally by the capture/theater scenarios, and countered by
 interventional probes, not integrity tech).
 
 Configurable (``EMBEDDED_TRACE_INTEGRITY`` = ``hash_chain`` | ``none``) so the
-unsigned regime of NEGATIVE_RESULTS N-4 stays reproducible.
+unsigned regime of NEGATIVE_RESULTS ES-4 stays reproducible.
 """
 
 from __future__ import annotations

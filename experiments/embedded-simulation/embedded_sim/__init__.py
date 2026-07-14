@@ -137,7 +137,7 @@ post-write forger is caught even though the logs are writable:
     trusting the stored values; a naive patch that forgets to update them is
     inconsistent and rejected. (A schema-aware forger that recomputes them can
     still fool the *unsigned* auditor — which is exactly why the external hash
-    anchor is needed. See `results/NEGATIVE_RESULTS.md` N-4.)
+    anchor is needed. See `results/NEGATIVE_RESULTS.md` ES-4.)
 
 
 ========================================================================

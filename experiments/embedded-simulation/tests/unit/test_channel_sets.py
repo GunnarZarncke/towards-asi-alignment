@@ -120,7 +120,7 @@ def test_residual_risk_pricing_reports_both_original_and_extended_battery_rates(
     scenarios changed the measured rate (0.50 -> 0.34 combined) because most
     added capture scenarios don't route through the missing `bearer_welfare`
     domain -- both numbers are real and kept, not one silently replacing the
-    other. See `results/NEGATIVE_RESULTS.md` N-10 Postscript 5."""
+    other. See `results/NEGATIVE_RESULTS.md` ES-10 Postscript 5."""
     pricing = residual_risk_pricing("medium_minus_handles")
     assert pricing["measured_capture_false_pass_rate_original_8_scenarios"] == 0.50
     assert pricing["measured_capture_false_pass_rate_combined_17_scenarios"] == pytest.approx(0.34375)

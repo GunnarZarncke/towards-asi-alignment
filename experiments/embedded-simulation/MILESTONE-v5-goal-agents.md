@@ -23,7 +23,7 @@ exists for the *scenario* dimension, not just seeds. `eval_channel_eligibility.p
 and `channel_mi_scan.py` use only 8 of the 15 (`capture_theater`,
 `capture_mild`, `instrument_capture`, `inferential_coupling`,
 `grounding_silent_gap`, `bearer_mismap`, `honest`, `honest_successor`) for
-speed when validating the N-10 fix. The other 9 (`alias_stress`,
+speed when validating the ES-10 fix. The other 9 (`alias_stress`,
 `decoy_stress`, `boundary_alias`, `bundle_goodhart`, `hidden_capability`,
 `selection_basin`, `basin_lock_in`, `successor_relabel`, `legitimacy_theater`)
 were never used for calibration either — they're sitting on the validation
@@ -34,7 +34,7 @@ flag and `successor_relabel`'s mechanism map exactly onto the `lineage` and
 `successor` verdict domains (`channel_sets.VERDICT_DOMAINS`) — the two domains
 `medium_minus_handles`'s majority gate risk analysis has *never actually
 scenario-tested*, because neither scenario is in the 8-scenario battery that
-produced the `NEGATIVE_RESULTS.md` N-10 false-pass measurements. That battery
+produced the `NEGATIVE_RESULTS.md` ES-10 false-pass measurements. That battery
 currently exercises `bearer_welfare` three redundant ways
 (`instrument_capture`, `grounding_silent_gap`, `bearer_mismap`) and `routing`
 once (`inferential_coupling`), but `lineage`/`successor` zero times.
@@ -53,8 +53,8 @@ once (`inferential_coupling`), but `lineage`/`successor` zero times.
   dependent (every `bearer_welfare`-needing scenario, old or new,
   false-passes at 0.5-0.875; every other scenario stays near 0).
   `channel_sets.residual_risk_pricing` updated to report both rates
-  explicitly. Full writeup: `results/NEGATIVE_RESULTS.md` N-10 Postscript 5.
-  **Side finding (N-12), root-caused and partially fixed (2026-07-04):**
+  explicitly. Full writeup: `results/NEGATIVE_RESULTS.md` ES-10 Postscript 5.
+  **Side finding (ES-12), root-caused and partially fixed (2026-07-04):**
   `legitimacy_theater`'s detector false-passed 25% of the time even at
   `strong_handles` — a real, instrumentation-independent detection gap, not
   part of the eligibility-gate story, discovered only because this scenario
@@ -71,14 +71,14 @@ once (`inferential_coupling`), but `lineage`/`successor` zero times.
   rate 0.25 → 0.625; false-pass rate unchanged at 0.25 — seeds 11/16 remain
   open, blocked by a separate `mean_rep`/`raw_capacity` condition not
   touched this session. Full derivation: `results/NEGATIVE_RESULTS.md`
-  N-12 postscript; regression tests:
+  ES-12 postscript; regression tests:
   `tests/unit/test_lineage_stall_detector.py`.
   **Follow-up fix (2026-07-04, later session):** verified `stall_confident`
   alone is already an exclusive discriminator (0 false positives across 18
   other scenarios x 3 instrumentation levels x 40 seeds), so the
   `raw_capacity`-scaled `mean_rep` bar was comparing two unrelated measures;
   replaced with a fixed floor. Correct rate 0.625 → **0.875**; false-pass
-  0.25 → **0.0**. Full derivation: `results/NEGATIVE_RESULTS.md` N-12
+  0.25 → **0.0**. Full derivation: `results/NEGATIVE_RESULTS.md` ES-12
   postscript 2.
 - [x] **Done (2026-07-03).** `channel_mi_scan.py` extended with a
   scenario-mechanism generalization check: the frozen best-of-k subsets
@@ -100,7 +100,7 @@ once (`inferential_coupling`), but `lineage`/`successor` zero times.
   8 tested seeds (11-18) all happened to cross the basin-percolation
   threshold, so none were honest-like in practice for this seed range —
   see caveat in `eval_channel_eligibility.py`/`channel_mi_scan.py`
-  docstrings and N-10 Postscript 5.
+  docstrings and ES-10 Postscript 5.
 
 This phase requires no new agent/goal machinery — it is entirely "use what's
 already implemented and never fully exercised." Estimated cost: a session,
@@ -110,7 +110,7 @@ not a milestone. **Confirmed:** cost one session, as estimated.
 
 ## Phase 0.5 — Richer honest scenarios (mistakes, improvement, transparent drift)
 
-**Status:** IMPLEMENTED (2026-07-04). **Trigger:** 2026-07-04, following the N-12
+**Status:** IMPLEMENTED (2026-07-04). **Trigger:** 2026-07-04, following the ES-12
 fix. User observation: the honest side of the battery is thin and trivial —
 `honest`/`honest_successor` sit at `responsiveness=0.92`, the noise-stress
 additions (`alias_stress`/`decoy_stress`) change cardinality/noise but not
@@ -194,7 +194,7 @@ scenario on its own.
   reported group (separate from original 8 / extended 9).
 - [x] **Done (2026-07-04).** `tests/unit/test_phase_0_5_scenarios.py`.
 - [x] **Done (2026-07-04).** Re-ran full eligibility battery (~41 min) and
-  `channel_mi_scan.py`; updated `NEGATIVE_RESULTS.md` N-10 Postscript 6.
+  `channel_mi_scan.py`; updated `NEGATIVE_RESULTS.md` ES-10 Postscript 6.
   `eval_channel_eligibility.py` progress logging via `embedded_sim.progress`.
 - [x] **Done (2026-07-04, using already-computed battery data — no new
   scenario needed).** Checked capture-side discrimination for 2 of the 3
@@ -210,7 +210,7 @@ scenario on its own.
   capture-side twin (a scripted mechanism where bursty, mistake-shaped dips
   are theater-concealed capture rather than honest noise) — building one is
   a new-scenario design decision, deliberately not taken this session to
-  keep scope tight; see `results/NEGATIVE_RESULTS.md` N-10 Postscript 6 for
+  keep scope tight; see `results/NEGATIVE_RESULTS.md` ES-10 Postscript 6 for
   the full writeup.
 
 **Measured (seeds 11–18, full battery `results/channel_eligibility_eval.json`):**
@@ -439,7 +439,7 @@ just assumed to).
    `shadow_routing_under_probes`) and correction metadata (`corrector_role`,
    handle type) exist but do not carry *which agent* initiated the step; UAD
    unit attribution and workflow `offender_by_step` are decoupled from micro-sim
-   harm in default scenarios (see `NEGATIVE_RESULTS.md` N-5). Natural fit for
+   harm in default scenarios (see `NEGATIVE_RESULTS.md` ES-5). Natural fit for
    goal agents: every policy action emits `(actor_id, handle_id, mechanism)`;
    extend projected rows + a structural predicate ("harm on step t AND
    initiator is adversarial-role AND NOT landed via correction handle"). Lab-

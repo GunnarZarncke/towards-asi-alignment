@@ -1,29 +1,29 @@
 """S6 first step (user-directed, recorded 2026-07-07): a custom,
 standalone actor-level conditional-MI unit detector implementing the
-three "easy fixes" the G-26 diagnosis named — replacing all three
+three "easy fixes" the LS-26 diagnosis named — replacing all three
 design decisions that made the vendored `uad_core` detector over-merge
-(G-24/G-25), while staying a PASSIVE trace detector (the
+(LS-24/LS-25), while staying a PASSIVE trace detector (the
 intervention-supported successor is planned separately, see PLAN.md
 "S6 — intervention-supported UAD").
 
-The three fixes, mapped to G-26's three causes:
+The three fixes, mapped to LS-26's three causes:
 
-1. **Actor-level, not variable-level, clustering** (G-26 cause 1b: the
+1. **Actor-level, not variable-level, clustering** (LS-26 cause 1b: the
    vendored detector's globally-normalized variable distances were
    dominated by within-actor `.tool`↔`.ok` redundancy). Each actor is
    ONE unit of analysis: its per-tick symbol is the TUPLE of all its
    trace variables, so within-actor redundancy cannot generate merges
    at all — it just makes the actor's own alphabet richer.
-2. **Conditional MI edge weights** (G-26 cause 2: pipeline phase is a
+2. **Conditional MI edge weights** (LS-26 cause 2: pipeline phase is a
    common cause; plain pairwise MI cannot tell "coupled through the
    shared pipeline" from "coupled through a private channel"). The
    edge weight between actors A and B is lag-max I(A; B | rest) where
    `rest` is the joint symbol of ALL other active actors — exactly the
    statistic that separated true pairs from pipeline neighbors in the
-   G-26 diagnosis (shared_slot: eng1–eng2 kept 0.26 bits conditioned
+   LS-26 diagnosis (shared_slot: eng1–eng2 kept 0.26 bits conditioned
    while eng1–rm1 collapsed to 0.04).
 3. **A data-driven stopping rule instead of a hard cluster count**
-   (G-26 cause 1a: `n_agents` forced merges regardless of the matrix).
+   (LS-26 cause 1a: `n_agents` forced merges regardless of the matrix).
    An edge exists iff its observed conditional MI exceeds BOTH a
    circular-shift permutation null (the same statistic recomputed with
    B's series circularly shifted, 95th percentile over `n_shifts`

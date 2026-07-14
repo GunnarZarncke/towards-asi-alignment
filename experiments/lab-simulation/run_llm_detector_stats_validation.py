@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""G-32 follow-up (FINDINGS.md G-33): does the noise-tolerant, null-
+"""LS-32 follow-up (FINDINGS.md LS-33): does the noise-tolerant, null-
 calibrated `intervention_stats.discovered_units_intervention_stats`
 detect the real `{eng1, rm1}` DM-coordinated pair where the frozen,
-fixed-threshold S6 `discovered_units_intervention` missed it (G-32)?
+fixed-threshold S6 `discovered_units_intervention` missed it (LS-32)?
 
 Reuses the EXACT scenario, briefings, and seed as
 `run_llm_detector_stress_test.py` (itself reused from
-`run_llm_discovery_dm_pair.py`, G-21) -- same episode conditions,
+`run_llm_discovery_dm_pair.py`, LS-21) -- same episode conditions,
 different (statistically rebased) detector, for a like-for-like
 before/after comparison.
 
@@ -71,7 +71,7 @@ def main() -> None:
         report = {
             "code_version": CODE_VERSION,
             "generated_at": t0.isoformat(),
-            "scenario": "dm_coordinated_pair (reused from run_llm_detector_stress_test.py / G-21 / G-32)",
+            "scenario": "dm_coordinated_pair (reused from run_llm_detector_stress_test.py / LS-21 / LS-32)",
             "seed": SEED,
             "k_clean_replicates": K_CLEAN_REPLICATES,
             "true_units": {"release_pair": list(TRUE_PAIR)},
@@ -91,10 +91,10 @@ def main() -> None:
     out_path.write_text(json.dumps(report, indent=2, sort_keys=True), encoding="utf-8")
 
     md_lines = [
-        "# LLM detector stats validation (G-32 follow-up, G-33)",
+        "# LLM detector stats validation (LS-32 follow-up, LS-33)",
         "",
         f"Generated {report['generated_at']} at {report['code_version']}. Same scenario/seed as",
-        "`run_llm_detector_stress_test.py` (G-32); noise-tolerant `discovered_units_intervention_stats`",
+        "`run_llm_detector_stress_test.py` (LS-32); noise-tolerant `discovered_units_intervention_stats`",
         f"in place of the frozen fixed-threshold S6 detector. k_clean_replicates={K_CLEAN_REPLICATES}.",
         "",
         f"Heuristic (`uad.py`, passive): {report['heuristic_pair_metrics']}",

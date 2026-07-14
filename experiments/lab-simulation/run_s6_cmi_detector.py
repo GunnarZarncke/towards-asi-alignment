@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """S6 first step — the custom actor-level conditional-MI detector
-(`uad_cmi.discovered_units_cmi`, the G-26 "easy fixes") run against the
+(`uad_cmi.discovered_units_cmi`, the LS-26 "easy fixes") run against the
 SAME five scenarios and metrics as `run_s5_deep_trace_sweep.py`, side
 by side with the vendored detector it is meant to replace and the
 frozen heuristic.
@@ -11,7 +11,7 @@ was run (see `uad_cmi.py`'s pre-registration note) — whatever the
 sweep yields is reported, including failures.
 
 Success criterion per cell (stricter than S5's `merge_rate` alone,
-because G-24/G-25 showed a fully-merged blob trivially "merges" any
+because LS-24/LS-25 showed a fully-merged blob trivially "merges" any
 pair): the discovered partition's non-singleton clusters are EXACTLY
 {the true pair} — the true pair found, isolated, and nothing else
 spuriously merged. Reported as `exact_rate`; `merge_rate`/

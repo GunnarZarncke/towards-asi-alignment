@@ -1,6 +1,6 @@
 """S1 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): a genuine
 cross-generation causal loop between engineer and release_manager. Exploratory,
-not a battery -- see FINDINGS.md G-19 and `run_s1_build_loop_prototype.py`."""
+not a battery -- see FINDINGS.md LS-19 and `run_s1_build_loop_prototype.py`."""
 
 from __future__ import annotations
 

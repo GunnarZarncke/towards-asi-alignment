@@ -17,7 +17,7 @@ T=400 runs=6
 - Pass attempt rate: 0.00%
 - False pass (conditional on pass): 0.00%
 - boundary_decouple false-pass: 0.00% (conditional on pass: 0.00%)
-- ⚠ All battery bridges are violation/capture scenarios (no honest baseline in this bridge set); every 'pass' decision is by construction a false pass, so false_pass_conditional_on_pass trends toward 100% whenever any pass attempt occurs and is not independently informative (N-11).
+- ⚠ All battery bridges are violation/capture scenarios (no honest baseline in this bridge set); every 'pass' decision is by construction a false pass, so false_pass_conditional_on_pass trends toward 100% whenever any pass attempt occurs and is not independently informative (ES-11).
 
 ## Baseline-adjusted false-pass (honest attribution)
 

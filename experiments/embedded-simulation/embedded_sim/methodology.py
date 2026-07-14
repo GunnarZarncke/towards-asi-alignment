@@ -224,7 +224,7 @@ def frozen_payload_header(*, T: int, validation_seeds: list[int]) -> dict[str, A
 
 
 def instrumentation_monotonicity_note(rates: dict[str, float]) -> str | None:
-    """Flag when a handle level scores below passive `none` (N-10).
+    """Flag when a handle level scores below passive `none` (ES-10).
 
     Passive `none` conservatively refuses to certify anything, which can be
     the "correct" verdict on violation-heavy scenario sets. A handle level
@@ -244,7 +244,7 @@ def instrumentation_monotonicity_note(rates: dict[str, float]) -> str | None:
     detail = ", ".join(f"{level} {rate:.1%} < none {baseline:.1%}" for level, rate in regressions)
     return (
         "Not monotone in instrumentation: " + detail + " — partial "
-        "instrumentation can score worse than no instrumentation at all (N-10)."
+        "instrumentation can score worse than no instrumentation at all (ES-10)."
     )
 
 

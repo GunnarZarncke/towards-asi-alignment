@@ -19,10 +19,10 @@ code this port required.
 
 TODO (recorded 2026-07-07, S6 follow-up, postponed): PLAN.md's S6
 section flags this package + `uad_mi.py` as deletable once the
-intervention-supported detector (`uad_intervention.py`, G-28) fully
+intervention-supported detector (`uad_intervention.py`, LS-28) fully
 supersedes it. Kept for now on user instruction ("keep vendored, but
 flag as TODO") -- `uad_mi`'s `exact_rate` is 0.0 on every S6 scenario
-(passive MI over-merges; see FINDINGS.md G-24/G-28), so it is retained
+(passive MI over-merges; see FINDINGS.md LS-24/LS-28), so it is retained
 as a comparison baseline in `run_s6_intervention_uad.py`, not as an
 active detector. Revisit deletion once shared_slot's comms-free
 detection gap (postponed pending "acausal logic," see PLAN.md) is

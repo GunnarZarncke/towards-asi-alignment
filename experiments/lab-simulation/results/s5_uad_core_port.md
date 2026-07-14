@@ -4,7 +4,7 @@ Generated 2026-07-07T13:09:46.769848+00:00 at lab-sim-0.9.2. NOT a battery -- se
 docstring in `run_s5_uad_core_port.py` for the hypothesis, scope note, and FINDINGS.md.
 
 Seeds: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), T=100, max_lag=3. Existing heuristic (`uad.discovered_units`)
-never merges {eng1, eng2} in any seed: True (G-20, re-confirmed here).
+never merges {eng1, eng2} in any seed: True (LS-20, re-confirmed here).
 
 | n_agents | eng1/eng2 merge rate | isolated from rev1/rm1 rate | deterministic across seeds |
 |---|---|---|---|

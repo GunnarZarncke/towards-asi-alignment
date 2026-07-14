@@ -22,7 +22,7 @@ SCENARIOS (one true non-singleton unit each, per `cfg.resolved_units()`):
     committee -- the "informal chatter" is a decoy signal from eng1, a
     NON-unit actor). NOTE: the first version of this script wrongly
     listed {eng1, rm1} as this scenario's true pair; caught during the
-    G-26 diagnosis pass (the committee's `units=` literal in
+    LS-26 diagnosis pass (the committee's `units=` literal in
     `ecology.py` is `("review_committee", reviewer_ids)`) and fixed.
   - build_loop_config: {eng1, rm1} multi-generation build loop (S1).
   - shared_slot_config: {eng1, eng2} shared-slot pair (S4, same episodes

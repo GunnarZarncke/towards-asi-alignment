@@ -154,7 +154,7 @@ substance — no prediction has been rounded in the detector's favor.)
   code.** They converge, independently, on almost exactly the S6
   intervention detector already frozen in `uad_intervention.py`
   (freeze/ablation probe + honest-twin control + compensation scoring,
-  G-28/G-29). This convergence is itself a result (see
+  LS-28/LS-29). This convergence is itself a result (see
   `results/FINDINGS.md`), not something to route around by writing a
   parallel implementation that would just re-derive the same numbers.
   `discovered_units_blind` calls the existing `compensation_matrix` /
@@ -189,12 +189,12 @@ substance — no prediction has been rounded in the detector's favor.)
   message-mediated — O(n^2) over the (small, ~4-5 actor) playbook
   roster, acceptable at this scale, flagged as a scaling limitation for
   larger rosters.
-- **Fidelity fix (2026-07-07, post-G-30, recorded not silent):** the
+- **Fidelity fix (2026-07-07, post-LS-30, recorded not silent):** the
   first implementation of the twin-swap test only ever twinned the
   SOURCE, omitting the design's explicit requirement that the reaction
   "requires BOTH members' non-default policies" ("if replacing EITHER
   member with its honest twin collapses the adaptive reallocation").
-  Debugging the G-30 committee over-merge showed the consequence: rm1's
+  Debugging the LS-30 committee over-merge showed the consequence: rm1's
   trace diverged 1.0 when rev2 was source-twinned — but so would
   honest-twin-rm1's, because twinning a non-default-policy source shifts
   the whole pipeline's timing and that ripple reaches every downstream

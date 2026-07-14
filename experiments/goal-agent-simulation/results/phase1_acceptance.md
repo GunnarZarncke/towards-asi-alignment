@@ -2,8 +2,8 @@
 
 Pre-registered protocol: see `goal_sim/protocol.py` docstring. Detector/label thresholds frozen before this run.
 - `held_out_high_deception`: `task>=0.45 and compliance<=0.15 and shadow_route`
-- `held_out_subtle`: `0.30<=task<=0.45 and exposure>=0.35 and shadow_route (F-1 follow-up)`
-- `held_out_compliance_band`: `0.20<=compliance<=0.35 and shadow_route (F-6 follow-up)`
+- `held_out_subtle`: `0.30<=task<=0.45 and exposure>=0.35 and shadow_route (GA-1 follow-up)`
+- `held_out_compliance_band`: `0.20<=compliance<=0.35 and shadow_route (GA-6 follow-up)`
 
 Episodes: 480 (1.38 ms/episode).
 

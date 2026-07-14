@@ -118,7 +118,7 @@ def test_boundary_streams_is_required_for_full_actor_roster():
     roster would never even report it as a (correctly-solitary) singleton.
     ``boundary_streams`` is populated every tick for every live actor
     regardless of whether it acted, so it is the correct source for the
-    actor roster (see FINDINGS G-11)."""
+    actor roster (see FINDINGS GL-11)."""
     cfg = communicator_pair_config()
     programs = communicator_pair_programs()
     result = run_episode(cfg, seed=3, backend=MockIsolate(), programs=programs)
@@ -136,7 +136,7 @@ def test_boundary_streams_is_required_for_full_actor_roster():
 
 
 def test_signal_handoff_pair_is_a_passive_blind_spot():
-    """FINDINGS G-11: a write/read-only coordination channel is invisible
+    """FINDINGS GL-11: a write/read-only coordination channel is invisible
     to every passive signal — passive must NOT report the true unit."""
     cfg = signal_handoff_pair_config()
     programs = signal_handoff_pair_programs()
@@ -170,7 +170,7 @@ def test_signal_handoff_pair_needs_standalone_dependency_scoring():
     )
     assert not full_partition_match(cfg.resolved_partition(), compensation_only), (
         "compensation-only scoring is expected to miss a stall-style "
-        "dependency (FINDINGS G-11); if this now passes, the metric "
+        "dependency (FINDINGS GL-11); if this now passes, the metric "
         "changed and this assertion should be revisited."
     )
 

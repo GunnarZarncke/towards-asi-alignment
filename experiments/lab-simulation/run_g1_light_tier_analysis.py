@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""G-1 follow-up: diagnose light-tier anti-correlation (throughput confound).
+"""LS-1 follow-up: diagnose light-tier anti-correlation (throughput confound).
 
 Re-runs a subset of Phase 6 configs with per-episode diagnostics:
 engine-log denial counts (all vs access-only vs order-only at full tier),
 deploy count, and pipeline progress. Writes ``results/g1_light_tier_analysis.json``
-and ``.md`` — documents whether the G-1 negative is a detector bug or a
+and ``.md`` — documents whether the LS-1 negative is a detector bug or a
 confound (not re-tuned into ``detectors.py``).
 """
 
@@ -145,7 +145,7 @@ def main() -> None:
     (RESULTS_DIR / "g1_light_tier_analysis.json").write_text(json.dumps(out, indent=2, sort_keys=True), encoding="utf-8")
 
     md = [
-        "# G-1 light-tier anti-correlation analysis",
+        "# LS-1 light-tier anti-correlation analysis",
         "",
         f"CODE_VERSION `{CODE_VERSION}`. {len(records)} episodes "
         f"({len(configs)} Phase 6 configs x {len(ANALYSIS_SEEDS)} seeds), T={EPISODE_T}.",

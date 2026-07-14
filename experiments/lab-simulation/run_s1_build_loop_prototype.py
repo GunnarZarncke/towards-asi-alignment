@@ -8,7 +8,7 @@ loop between engineer and release_manager -- eng1's `build_from_parent_
 gated` WAITS for rm1's prior-generation deploy-ack DM before starting each
 new generation (after the first); rm1's `release_full_loop` sends that ack
 only once ITS generation's `monitor` clears. See `results/FINDINGS.md`
-G-19 and `tests/harness/test_s1_build_loop.py` for the pinned unit tests
+LS-19 and `tests/harness/test_s1_build_loop.py` for the pinned unit tests
 these expectations were checked against first.
 
 Expectations stated BEFORE running:
@@ -167,7 +167,7 @@ def main() -> None:
         "# S1 scenario prototype: cross-agent pipeline loop",
         "",
         f"Generated {payload['generated_at']} at {CODE_VERSION}. NOT a battery -- see module",
-        "docstring in `run_s1_build_loop_prototype.py` for E1-E4 and FINDINGS.md G-19.",
+        "docstring in `run_s1_build_loop_prototype.py` for E1-E4 and FINDINGS.md LS-19.",
         "",
         f"Seeds: {SEEDS}, T={T}.",
         "",

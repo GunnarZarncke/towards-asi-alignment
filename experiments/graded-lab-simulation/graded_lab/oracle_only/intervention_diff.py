@@ -43,7 +43,7 @@ class ActorDiffSummary:
         A was removed." ``compensation_score`` only rewards *novel* codes
         appearing under intervention; it is blind to an actor that keeps
         doing exactly what it was already doing and simply never advances
-        (see FINDINGS G-11)."""
+        (see FINDINGS GL-11)."""
         if not self.post_baseline_codes:
             return 0.0
         missing = self.post_baseline_codes - self.post_intervened_codes
@@ -54,7 +54,7 @@ class ActorDiffSummary:
         """Combined causal-dependency signal: novel compensation OR a
         missing milestone. Either is evidence the actor's trajectory is
         causally coupled to the probed actor; ``compensation_score`` alone
-        is blind to "B silently fails to progress" (see FINDINGS G-11)."""
+        is blind to "B silently fails to progress" (see FINDINGS GL-11)."""
         return max(self.compensation_score, self.missing_score)
 
 
