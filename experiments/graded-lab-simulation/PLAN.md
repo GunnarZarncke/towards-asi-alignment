@@ -1,18 +1,28 @@
 # Graded Lab Simulation — Implementation Plan
 
 **Status: Phases 0–7c done (incl. Phase 7c-revised calibration battery,
-correcting the initial Phase 7c evaluator); Phase 8 not started
-(2026-07-14).** Phase 2–3 deliverables and freeze gates met; Phase 3b
-mechanics and Phase 4 trace/counterfactual engineering gates passed
-(see `results/FINDINGS.md` G-2–G-5, G-8–G-16). Revised 5-cell
-`carrier_load_scale` calibration battery results live in
-`results/ecology_calibration.json` (run `python3
-run_phase7_calibration.py`; `--legacy` reproduces the original 16-cell
-compute×spread grid as a diagnostic). **Battery does not pass
-(1/4 criteria); Phase 8 is blocked on two registered backlog items
-(a resource-sensitive agent program; an `eai.py`/`world.py`
-entropy-logging fix), not on further substrate-grid search — see
-FINDINGS G-16 and `DESIGN.md` "Phase 7c-revised".**
+correcting the initial Phase 7c evaluator, plus both of its registered
+backlog items); Phase 8 not started (2026-07-14).** Phase 2–3
+deliverables and freeze gates met; Phase 3b mechanics and Phase 4
+trace/counterfactual engineering gates passed (see `results/FINDINGS.md`
+G-2–G-5, G-8–G-18). Revised 5-cell `carrier_load_scale` calibration
+battery results live in `results/ecology_calibration.json` (run
+`python3 run_phase7_calibration.py`; `--legacy` reproduces the original
+16-cell compute×spread grid as a diagnostic). **Main battery still
+does not pass (1/4 criteria conclusively); both registered backlog
+items from FINDINGS G-16 are now resolved but did not flip that verdict:**
+a resource-sensitive agent program (`programmatic_budget_aware`)
+validates in its own small, separate battery (FINDINGS G-17) but was
+not wired into the main strong/weak criteria comparison this pass; the
+`eai.py`/`world.py` entropy-logging fix (EAI-v2, FINDINGS G-18) is
+verified correct but the measured effect on this substrate is a
+**reported null** — the entropy component stays `≈0` because this
+substrate is close to deterministic given full agent-visible context,
+not because of any remaining logging defect. Phase 8 is now blocked on
+a genuinely harder question than G-16 anticipated: whether the
+pre-registered "high" EAI band is reachable **at all** for this
+substrate's actual statistics, not on unfixed instrumentation — see
+FINDINGS G-17/G-18 and `DESIGN.md` "Phase 7c-revised" / "EAI-v2".
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
@@ -624,7 +634,7 @@ bumped like lab-sim.
 | **6 — Blind behavior features** | `BLIND_GENERATION.md`, `generated_behavior_features_v1.json`, validator | Generator predictions registered before code import |
 | **7a — UAD + intervention trace validation** | Port/adapt UAD over primitive traces; perturbation protocol; recovered-unit evaluation | UAD unit/boundary recovery and intervention semantics checked before any BIQ estimator is fitted |
 | **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable — **done** (`oracle_only/unit_biq.py`, G-13); `I_ctrl` resource-contention confound documented, not silently patched |
-| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) — **implemented, then corrected** (`run_phase7_calibration.py`; G-15 initial run, G-16 correction — see "Phase 7c-revised" in `DESIGN.md`); full-battery pass/fail read from JSON; criteria 1/3/4 registered `inconclusive`-by-construction pending a resource-sensitive agent program (backlog) |
+| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) — **implemented, then corrected, then both backlog items resolved** (`run_phase7_calibration.py`; G-15 initial run, G-16 correction — see "Phase 7c-revised" in `DESIGN.md`); full-battery pass/fail read from JSON; criteria 1/3/4 still `inconclusive`-by-construction for the *main* battery — the resource-sensitive agent program (G-17) validated separately without being wired into the main comparison, and the EAI entropy-logging fix (EAI-v2, G-18) is verified correct but its measured effect on this substrate is a reported null, so the high band remains structurally unreached for a substrate-statistics reason, not an instrumentation one |
 | **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Only if Phase 7 passes** — pre-registered selection rule, no retrospective tuning |
 
 **Hard rule:** Phases 0–7 are **single-episode** only. Phase 8 is the first
@@ -866,6 +876,86 @@ Graded-lab starts a fresh `results/FINDINGS.md` at Phase 0.
 
 **Do not begin:** D3 harnesses, lab-sim playbook ports, or multi-episode
 `resume_from` chains until Phase 7 gate passes.
+
+---
+
+## Manuscript integration backlog (2026-07-14)
+
+Registered after a "what result would change a sentence" review of
+`FINDINGS.md` against the chapters. As of this review, **no chapter cites
+any experiment line** (`docs/EXPERIMENTS.md`/appendix F only) — the four
+items below are earned results with no manuscript sentence yet attached to
+them. This is a writing task (add qualifiers/citations to existing chapter
+text), not a code task; listed here so it is not lost as an open item.
+
+1. **`ch07-finding-boundary.tex`** — boundary discovery from primitive
+   traces is feasible but has two structural failure modes, both
+   demonstrated, not hypothetical: (a) passive discovery structurally
+   misses coordination with no observable `communicate` signal (the
+   write/read handoff `signal_handoff_pair`, FINDINGS G-11; recovered only
+   by standalone all-pairs `dependency_score` intervention); (b)
+   intervention-based discovery cannot distinguish "coupled through joint
+   decision-making" from "coupled through shared resource contention" — a
+   resource-bound bystander (e.g. an admin) gets over-merged into a
+   genuine multi-actor unit it is not party to (`three_way_nod`, FINDINGS
+   G-12; echoed independently by embedded-simulation's N-1 UAD/loudest-actor
+   tie). Both are qualifiers on any claim that boundary recovery from
+   traces is straightforwardly reliable.
+2. **`ch11-capability-without-task-ontology.tex`** — a careful, good-faith
+   implementation of \(I_{\mathrm{ctrl}}^X\) silently re-imported a task
+   ontology via a narrowly-scoped outcome vector `(deploy_count,
+   bearer_harm)`, inherited from an earlier non-BIQ diagnostic without
+   re-deriving it from the chapter's own `E^X_{t+1}` (FINDINGS G-14) — a
+   concrete illustration of how "task-agnostic but not ontology-free" can
+   fail in practice even when the definition is stated correctly. The
+   fix (widening `Y` to include a contention bucket) is itself still not
+   exhaustive of `E^X_{t+1}`, and separating "this unit is the task
+   driver" from "this unit's removal changed shared contention for
+   everyone" requires a contention-matched counterfactual the current
+   estimator does not have (FINDINGS G-13).
+3. **`ch33-certification-without-construction.tex`** — toy-simulation's
+   result that passive telemetry alone is uncertifiable
+   (`belowThreshold`) and interventional handles are required, with
+   minimum certifiable level `light_handles` on calibration scenarios and
+   `medium_handles` on held-out MB9/MB2 stressors, is a direct, sourced
+   instance of any claim in this chapter that passive observation is
+   insufficient for certification.
+4. **`ch34`/`ch36`/`ch40` (selection, parasites, goal-laundering)** — not
+   yet a finding, a **registered go/no-go criterion** for spending the
+   Phase 8 backlog (items below): the only result from this line with a
+   named manuscript consumer is "selection under genuinely graded
+   ambiguity produces a detector-evading strategy that was not
+   programmed in" (or a clean, reported null). Before committing further
+   engineering time to Phase 8, write down what sentence in these
+   chapters a pass and a null would each let the manuscript say; if the
+   answer is thin, that is itself the finding, and Phase 8 should not be
+   attempted for its own sake. **Sharpened 2026-07-14 (FINDINGS G-18):**
+   this is now harder than a resource question — the pre-registered
+   "high" ambiguity band was found structurally unreachable for a
+   substrate-statistics reason (this ecology is close to deterministic
+   given full agent-visible context, not merely under-instrumented).
+   **Reframed same day (FINDINGS G-19), still no code:** adding
+   substrate randomness is rejected — it would violate Phase 0's own
+   "no injected delay/noise parameter" rule and would manufacture the
+   result rather than measure it. The real defect was **measuring
+   ambiguity from the wrong observer**: the entropy term conditions on
+   the *acting agent's* full-context vantage, but the manuscript claim
+   is about what a *referee/correction channel* can resolve from
+   outside. `oracle_only/events.py` already has the tiered
+   `project_primitive_log()` audit-plane projection (built for an
+   unrelated purpose — Phase-5 detector tier gating); feeding a
+   `light`-tier projected log into the unmodified entropy term
+   measures exactly the referee's coarser vantage, no new mechanics
+   required. Pre-registered prediction (FINDINGS G-19 / `DESIGN.md`
+   "EAI-referee"): this referee-vantage entropy term will be
+   materially non-zero even though the agent-vantage one is ≈0 —
+   **this is the next concrete step before any further Phase 8 spend**,
+   and it is checked against the stated prediction, not implemented
+   and then rationalized.
+
+**Not yet done:** none of the four have been written into their chapters
+yet. This entry exists so the mapping is not re-derived from scratch in a
+future session.
 
 ---
 

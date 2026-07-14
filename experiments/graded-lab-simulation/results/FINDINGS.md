@@ -833,3 +833,368 @@ search.
   `check_mechanism_sensitivity` dry-run regression matching Prediction
   1, and the 2-cell smoke integration). `CODE_VERSION` `0.12.0 →
   0.13.0`.
+
+## G-17 (Phase 7c backlog item 1: resource-sensitive agent program —
+implemented, small validation battery passes with a reachability
+correction disclosed)
+
+Pre-registered in `DESIGN.md` "Phase 7c backlog item 1" before code
+(requested this session: "let's make gradedness come from an agent
+whose decisions depend on its resource state... we accept if we don't
+get 100% coverage but run small batches in optional unit tests").
+
+**What was built:** a new observation key `"T"` (episode length,
+already a fixed `EpisodeConfig` field — not a new delay/budget
+parameter) added to every agent's per-tick observation in `world.py`,
+and a new deterministic program `budget_release_manager`
+(`agent_visible/programs.py`), assigned only to `rm1` in a new agent
+type `programmatic_budget_aware` (`eng1`/`rev1`/`admin1` unchanged from
+`programmatic_2step`, isolating the one varying decision). It walks
+the same four release-manager steps
+(`compliance_signoff → release_candidate → deploy → field_monitor`) as
+the existing deterministic walkers, but on any tick where steps remain
+outstanding and `(T - t) / T` has dropped below
+`BUDGET_ABANDON_REMAINING_FRACTION`, it stops trying to advance the
+pipeline for the rest of the episode rather than rushing an
+under-reviewed deploy. Once a step has actually completed, it is never
+abandoned retroactively.
+
+**Reachability correction, disclosed rather than silently re-picked.**
+The first pre-registered constant, `0.2` (last fifth of the episode),
+was run through the validation battery below and **failed outright**:
+deploy rate was identical (`0.9`) at every one of the 5
+`carrier_load_scale` cells — the mechanism never bound. A follow-up dry
+run (10 seeds x 5 cells, reading the tick at which `budget_release_manager`
+completes `deploy`, not deploy rate) found why: this deterministic
+walker finishes all four RM steps by `t≈15–24` whenever
+`carrier_load_scale∈{0,0.5}` — the same "dead knob" failure mode
+FINDINGS G-16 found for `compute_scale`, caught one run late instead of
+before. Measured `deploy_tick` spread across the 5 cells:
+`{0: 15–24, 0.5: 15–24, 1.0: 15–43, 1.5: 19–54, 2.0: 48–80}`. Revised
+the constant to `0.4` — the smallest round tenth whose corresponding
+tick (`t>60`) falls inside the measured spread at the two
+highest-stress cells while staying above it at the three lowest. This
+is grounded in the walker's own timing distribution (mechanism-
+internal), not in the resulting deploy rate or in whether the
+acceptance criteria below would pass; the acceptance criteria
+themselves were fixed before this constant was picked and were not
+adjusted afterward.
+
+**Validation battery** (`tests/test_budget_aware_agent.py`,
+`@pytest.mark.slow`, not wired into the default `AGENT_TYPES` or the
+main pass-criteria battery — a small, separate check per this
+session's direction): `n=10` seeds x the 5 pre-registered
+`carrier_load_scale` cells. Measured deploy rate:
+
+| `carrier_load_scale` | `programmatic_budget_aware` | `programmatic_2step` | `programmatic_softmax` |
+|---|---|---|---|
+| 0.0 | 0.9 | 0.9 | 0.0 |
+| 0.5 | 0.9 | 0.9 | 0.0 |
+| 1.0 | 0.9 | 0.9 | 0.1 |
+| 1.5 | 0.9 | 0.9 | 0.0 |
+| 2.0 | **0.6** | 0.9 | 0.0 |
+
+The new program shows a real, materially nonzero deploy-rate range
+(`0.3`, comfortably above `MIN_DEMONSTRATED_DEPLOY_RANGE=0.05`) with a
+fully non-increasing trend (all 4 consecutive-cell deltas ≤0),
+concentrated at the highest-stress cell — **not** the smooth five-cell
+gradient a from-scratch design might have hoped for, but a real,
+substrate-driven, non-tautological response that neither pre-existing
+frozen program has (both showed `deploy_range≈0` for `carrier_load_scale`
+per FINDINGS G-16). Accepted per this session's explicit criterion
+(materially nonzero range + mostly-not-strictly non-increasing trend,
+not 100% coverage or a fully graded five-point curve).
+
+**Explicitly not attempted:** no budget-awareness added to
+`eng1`/`rev1`/`admin1`; not wired into the main `AGENT_TYPES`
+calibration battery or criterion-2/3 strong/weak pairing logic (that
+comparison is defined for exactly two agent types — deciding how a
+third type should participate is a separate, unstarted design
+question). Re-running the *main* Phase 7c-revised battery with this
+agent type substituted for one of the two existing types, to see
+whether it changes any of criteria 1/3/4's `inconclusive` verdicts, is
+a natural next step but was not done this pass (would need its own
+decision about which existing type it replaces or how three-way
+comparisons work, not a same-pass addition).
+
+- Tests: `tests/test_budget_aware_agent.py` (5 tests: program-selection
+  regression, 2 synthetic abandon/no-abandon unit checks, the 5-cell
+  validation battery, and a comparison-only check that the new
+  program's stress-sensitivity exceeds both frozen programs').
+  `speed_limits.json` updated for the two multi-episode tests (22s,
+  90s hard caps).
+
+## G-18 (EAI-v2 feasibility analysis — before any code, per this
+session's direction)
+
+Requested this session: "Do a clean, pre-registered EAI-v2. But do a
+feasibility analysis first." This section is that analysis, written
+before touching `eai.py` or `world.py`'s logging call sites. It answers
+three questions: is Cause 2 (FINDINGS G-16) actually fixable without
+touching protected/frozen code; what would the fix cost; and what
+ceiling should be expected — without committing to a formula yet.
+
+**Where Cause 2 actually lives (traced call site by call site,
+`world.py`).** There are six `primitive_log.append(...)` sites:
+
+| Site | Status | Has `primitive`? | Has `observable_state`? | Decision-time context in scope |
+|---|---|---|---|---|
+| Scheduler-completed action | `ok`/engine-denied | yes | yes (`pending_observable_state`, snapshotted at scheduling time) | — (already correct) |
+| Not affordable | `denied` | yes | **no** | `obs`, `action`, `res`, `busy` all in scope, free to attach |
+| Insufficient resources | `denied` | **no** | **no** | `action`, `res`, `busy` in scope, free to attach |
+| Insufficient standing | `denied` | yes | **no** | `obs`, `action`, `res`, `busy` in scope, free to attach |
+| Abort | `aborted` | **no** | **no** | `action` (`=abort`), `res`, `busy` in scope, free to attach |
+| Carrier forced skip | `skipped` | **no** (top-level `kind` field exists but `eai.py` never reads it) | **no** | no `obs`/`action` this tick (actor skipped before deciding), but `ledger.actors[actor_id]` and `scheduler.is_busy` are in scope one line earlier — a reduced snapshot is free |
+| Carrier terminated | `terminated` | **no** (same top-level-`kind`-ignored bug) | **no** | `ledger.actors[actor_id]` in scope in the same loop (used one line above at the `carriers.transition` call) |
+
+**Verdict: fixable, cheap, contained.** Every gap is closeable using
+values *already computed* at each site — no new host mechanics, no new
+Tier-K/Tier-I field (confirmed: none of the proposed fields is oracle-
+only truth; all are the same busy/resource-ledger bookkeeping already
+exposed to the agent's own observation elsewhere), and no change to
+any file under the Phase-5 referee freeze (`grep` confirms
+`detectors.py`/`severity.py`/`twins.py`/`escalation.py` never read
+`observable_state` or `primitive_log`'s `primitive` field — the only
+consumers of `eai.py`'s output are `world.py` (sets `result.eai`) and
+`calibration.py` (reads `result.eai`), neither frozen). A single shared
+helper (`busy`, `compute_spent`, and — where an `obs` exists this tick
+— `has_model`/`artifact_count`) can be reused at all six sites,
+including unifying the previously-inconsistent "completed" path's ad
+hoc dict literal, so groups compare like-for-like. The two
+carrier-transition sites also get a real `primitive.kind` for the
+first time by echoing their own already-present top-level `event["kind"]`
+into the nested `primitive` dict `eai.py` actually reads — closing a
+second, previously undiagnosed instance of the same "kind defaults to
+unknown" bug class as G-16 Cause 2, not just the denial paths G-16
+already named.
+
+**Second, independent defect (G-16's own second point, re-confirmed):**
+`max_ent = log2(len(counts))` normalizes by the *episode-global* count
+of distinct top-level status values, not the group's own. Fix:
+normalize each `(kind, state)` group's entropy by that **group's own**
+`log2(distinct outcomes in that group)`, dropping groups with only one
+outcome (zero contribution, no denominator needed) instead of dividing
+by a global count that shrinks as new statuses appear elsewhere in the
+same episode. This bounds every group's contribution to `[0,1]`
+intrinsically and removes the "one more distinct status anywhere
+inflates the denominator for everyone" pathology demonstrated in G-16.
+
+**Registered uncertainty (not prejudged, checked after implementation,
+not before):** attaching real state to previously-bare log entries only
+raises measured entropy if the **same** `(kind, state)` combination can
+still lead to **different** outcomes. It is possible that richer state
+just produces more, smaller, still-homogeneous groups (each
+`(kind, state)` combination deterministically implying one status),
+in which case the fix is correct but the measured effect is still
+small — an honest possible outcome this analysis does not rule out
+either way.
+
+**Ceiling estimate (explicitly a ceiling, not a prediction of the
+realized value):** `margin_density` (already reaches up to `~1.0` for
+`programmatic_softmax`, structurally `0.0` for any deterministic
+walker) and `tier_i_load` (observed `~0.05–0.1` on this ecology) are
+unaffected by this fix. If the entropy term becomes non-degenerate, the
+best-case ceiling for a softmax-type agent is
+`(1.0 + 1.0 + ~0.1) / 3 ≈ 0.70` — compatible **in principle** with the
+pre-registered "high" band (`≥0.65`) for the first time, which was
+analytically impossible under the old entropy term (FINDINGS G-16:
+`≈0.28–0.37`). This is not a target being chased: the realized value
+depends on the substrate's actual outcome diversity, which is measured
+after the fix, not assumed.
+
+**Feasibility verdict:** proceed. The fix is contained to `eai.py` and
+`world.py`'s six logging call sites, is backward-compatible in shape
+(added dict keys, not removed ones — old cached episodes without the
+new keys degrade to the pre-fix state-key of `"[]"`, not an error), and
+requires the same ceremony as any other pre-registered-then-revised
+constant in this project: a `CODE_VERSION` bump, a written-before-code
+pre-registration (below), and an honest report of whatever ceiling
+results — not tuned to reach the high band or any other target.
+
+**Implementation** (`world.py`, `eai.py`, `CODE_VERSION` `0.13.0 →
+0.14.0`): a shared `_decision_state_snapshot()` helper is now called at
+all six `primitive_log` sites, including the two carrier-transition
+sites (which now echo their own already-present `event["kind"]` into a
+real `primitive.kind` for the first time). `eai.py`'s entropy term now
+normalizes each `(kind, state)` group by that group's own distinct-
+outcome count, contributing `0` (not an undefined or globally-shrunk
+value) for any homogeneous group, exactly as pre-registered.
+
+**Result — reported honestly, including the null part.** The
+diagnosed defects are fixed and verified (`tests/test_eai.py`, 7 tests,
+including a regression pinning the exact Cause-2 normalizer bug: a
+same-size homogeneous group with a *reused* status label vs a *new*
+one must now score identically, which the old global normalizer would
+have failed). But **the measured entropy component stays at
+`≈0.0000` for `programmatic_softmax` at every one of the 5
+`carrier_load_scale` cells** (`{0.0000, 0.0000, 0.0000, 0.0000,
+0.0006}`, 10-seed means) — not because the fix is incomplete, but
+because this substrate turns out to be close to genuinely
+**deterministic given full agent-visible context**: inspecting one
+episode's actual groups (load=2.0, 316 log entries, 36 `(kind,state)`
+groups) found **zero** groups with more than one distinct outcome.
+Two structural reasons, found by inspection, not assumed:
+1. The three carrier/scheduler bookkeeping statuses
+   (`carrier_forced_skip`→`"skipped"`, `abort`→`"aborted"`,
+   `carrier_terminated`→`"terminated"`) are tautologically homogeneous
+   — the status is a deterministic function of the event kind itself,
+   not a genuinely uncertain outcome of a chosen primitive.
+2. Genuine agent-chosen primitives (`read`/`write`/`call`/
+   `communicate`/`continue_current`) are denied so rarely in this
+   ecology (a handful of events per hundreds) that every denial forms
+   its own small, still-homogeneous `(kind, state)` group rather than
+   sharing a group with any `"ok"` outcome.
+
+**This resolves an open question from FINDINGS G-16's Prediction 1,
+in the opposite direction from what was suspected.** G-16 flagged
+"EAI falls as `carrier_load_scale` rises" (for `programmatic_softmax`:
+`0.2498 → 0.1306` mean, unchanged before and after this fix) as itself
+possible evidence for the Cause-2 entropy defect. A direct three-
+component decomposition this session (`entropy`, `margin_density`,
+`tier_i_load`, computed separately, same seeds/cells) shows the
+falling pattern is **entirely attributable to `margin_density` falling
+with load** (`0.7245 → 0.3665`, monotonic-ish over the 5 cells) — the
+entropy component was, and remains, `≈0` throughout. The Cause-2 fix
+was necessary and is now verified correct, but it was **not** the
+explanation for the falling-EAI-with-load pattern; that pattern is a
+real, substrate-driven property of the softmax optimizer's decision
+margins narrowing under carrier stress (fewer live affordable
+primitives to weigh against each other as capacity degrades), not an
+artifact of either entropy-term defect.
+
+**Consequence for the "high" band and Phase 8 gating.** The ceiling
+estimate in the feasibility analysis above (`≈0.70`) was correctly
+computed as a ceiling — it was never claimed as a prediction — but the
+realized value for this substrate stays near the pre-fix numbers
+because the entropy term's true contribution is genuinely near-zero
+here, independent of the logging defect. The "high" EAI band
+(`≥0.65`) remains **structurally unreachable for the current agent
+roster and substrate**, now for a *different and more fundamental*
+reason than FINDINGS G-16 recorded (G-16: entropy term structurally
+broken; this session: entropy term is fixed and correctly near-zero
+because the substrate is close to deterministic given full context).
+Criterion 3 (high-band deploy collapse) remains registered
+`inconclusive`-by-construction; this is now a substrate-property
+finding, not an unfixed-instrumentation finding, and reaching the high
+band would require either a substrate with more genuine per-tick
+outcome randomness (a new, separately pre-registered mechanism, not
+attempted here) or accepting that the pre-registered bands were
+calibrated to an intuition about "ambiguity" that does not match this
+particular deterministic-simulation-engine substrate's actual
+statistics — both are Phase 8 backlog considerations, not fixed this
+pass.
+
+- Tests: `tests/test_eai.py` (7 new unit tests on synthetic logs:
+  empty log, homogeneous log, mixed-outcome group, the Cause-2
+  reused-vs-new-status-label regression, missing-field backward
+  compatibility, margin/tier-I component composition, and the stub
+  alias). `tests/profiles.py` adds `test_eai` to `SMOKE_MODULES`.
+  `speed_limits.json` `suite_max_seconds` `210.0 → 300.0` (full suite
+  now includes the G-17 validation battery above; individual per-test
+  caps were not exceeded). Full suite: 167 passed.
+
+## G-19 (the "high band unreachable" result is a measurement-vantage
+finding, not a substrate-randomness gap — reframed same day, no code
+yet)
+
+Follow-up discussion of G-18, same session. Explicit user framing:
+"The miscalidated prediction is a great finding. It doesn't make sense
+to add randomness to the substrate. What does count is visibility to
+the in-sim referee. We should predict and measure from *their*
+perspective before proceeding." This entry records the reframe and a
+concrete, feasible next step — **no implementation yet**, per the
+project's own pre-registration discipline (predict before touching
+`eai.py`/`calibration.py` again).
+
+**Why "add randomness to the substrate" is the wrong fix, on
+reflection.** G-18 posed two options: (1) inject a new source of
+genuine per-tick outcome randomness, or (2) accept the pre-registered
+band was calibrated to an intuition about "ambiguity" that does not
+match this substrate. Option (1) is rejected: it would be exactly the
+kind of substrate-mechanics change PLAN.md's Phase 0 kickoff already
+ruled out ("ambiguity must be **emergent**... no delay/noise
+parameters" — see `results/FINDINGS.md`/`PLAN.md` 2026-07-10 entries),
+and it would manufacture the result the pre-registered band wants
+rather than measure something that was already there.
+
+**What "ambiguity" was actually supposed to mean here.** DESIGN.md's
+EAI entropy term is defined as
+`H(outcome | action, observable_state)` — deliberately conditioned on
+"the exact agent-visible observation," i.e. from the acting agent's
+own vantage. G-18 found this conditional entropy is ≈0 because,
+*from the agent's own vantage*, outcomes are close to deterministic.
+But the manuscript claim this index is meant to stress-test (Phase 8:
+"selection under genuinely graded ambiguity produces a
+detector-evading strategy") is a claim about what a **correction
+channel / referee** can and cannot resolve, not about what the acting
+agent itself is uncertain of. Measuring "ambiguity" from the acting
+agent's full-context vantage was never the right proxy for that claim
+— an agent with full context that never faces a hard call can still
+sit inside an ecology that looks highly ambiguous to whatever is
+trying to audit or correct it from outside. This is the miscalibration
+G-18 surfaced, restated precisely: **wrong observer, not wrong
+substrate.**
+
+**The mechanism for the correct vantage already exists in this
+codebase — it does not need to be invented.** The Phase-5 referee
+freeze already implements exactly this idea for a different purpose:
+`oracle_only/events.py`'s `_project()` / `project_primitive_log()`
+strips a raw `primitive_log` entry down to a tier's allowed fields
+before the audit detectors (`oracle_only/detectors.py`,
+`build_audit_view`) ever see it. Concretely:
+
+| Tier | Fields kept from each `primitive_log` entry |
+|---|---|
+| `none` | (nothing — empty log) |
+| `light` | `t`, `actor_id`, `status` only — **`primitive` and `observable_state` are dropped** |
+| `full`/`deep` | light fields + `reason`, `primitive`, `observable_state`, `semantic_step` |
+
+`compute_eai`'s entropy term conditions its `(kind, state)` grouping on
+exactly the two fields the `light` tier already strips
+(`primitive.kind`, `observable_state`). Feeding a `light`-tier
+projected log into the *same, unmodified* `compute_eai` function
+(instead of the raw full-context `primitive_log`) directly measures
+"how uncertain is the outcome, to an observer who can only see
+`(t, actor_id, status)`" — precisely the referee's own vantage,
+reusing infrastructure built for an unrelated purpose (audit-plane
+tier gating) rather than adding any new mechanic, formula, or
+randomness source.
+
+**Pre-registered prediction, before any code change:** computing
+`compute_eai(project_primitive_log(primitive_log, tier="light"), ...)`
+on the same episodes from G-18's decomposition will show a
+**materially non-zero, and likely substantially higher, entropy
+component** than the ≈0.0000–0.0006 measured from the full-context
+log — because collapsing every event to `(kind="unknown",
+state="unknown")` (all events land in one group, since both grouping
+fields are stripped) turns the entropy term into the **marginal**
+entropy of the raw status-outcome distribution across the whole
+episode, which is not degenerate (several distinct statuses
+co-occur — `ok`, `denied`, `aborted`, `skipped`, `terminated` — even
+though each is individually predictable once the full state is known).
+**Falsifiable failure mode:** if this component is *also* ≈0, that
+would mean even the referee's coarsest available view sees a
+near-constant status stream, and the "high band unreachable"
+conclusion would extend to the referee's vantage too, not just the
+agent's — a stronger and more concerning finding, reported honestly
+either way.
+
+**What this changes about the Phase 8 go/no-go framing
+(`PLAN.md` manuscript-integration item 4):** the open question is no
+longer "does this substrate contain enough randomness" but "is the
+gap between agent-vantage and referee-vantage entropy itself the
+graded-ambiguity signal Phase 8 needs" — i.e. measure ambiguity as a
+property of the *audit relationship* (what the referee cannot resolve
+that the agent already knows), not as a property of the substrate in
+isolation. This is a better fit for the manuscript claim it is meant
+to support (correction-channel/referee limits, not agent
+epistemics) and requires no new substrate mechanics — only a new
+consumer of the existing tier-projection machinery.
+
+**Explicitly not done this entry:** no code was written or run. This
+is the pre-registered prediction and the mechanism identification
+only, so that a follow-up implementation (adding a referee-tier EAI
+variant, e.g. `compute_eai_at_tier(result, tier)`, to `eai.py` and
+wiring it into `run_phase7_calibration.py`'s reporting) can be judged
+against a stated-in-advance expectation rather than reverse-fit to
+whatever number comes out.

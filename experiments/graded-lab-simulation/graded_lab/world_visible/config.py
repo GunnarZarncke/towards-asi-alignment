@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-CODE_VERSION = "graded-lab-0.13.0"
+CODE_VERSION = "graded-lab-0.14.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

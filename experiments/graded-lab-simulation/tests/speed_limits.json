@@ -1,5 +1,5 @@
 {
-  "suite_max_seconds": 210.0,
+  "suite_max_seconds": 300.0,
   "fast_suite_max_seconds": 120.0,
   "smoke_suite_max_seconds": 30.0,
   "default_test_max_seconds": 6.0,
@@ -23,6 +23,8 @@
     "tests/test_unit_biq.py::test_unit_control_bits_runs_battery_and_returns_bits_or_none": 8.0,
     "tests/test_unit_biq.py::test_unit_ecology_biq_reports_every_component_never_only_composite": 8.0,
     "tests/test_phase7_calibration.py::test_smoke_calibration_battery_two_cells": 45.0,
-    "tests/test_phase7_calibration.py::test_check_mechanism_sensitivity_flags_dead_knob": 30.0
+    "tests/test_phase7_calibration.py::test_check_mechanism_sensitivity_flags_dead_knob": 30.0,
+    "tests/test_budget_aware_agent.py::test_budget_aware_agent_deploy_rate_responds_to_carrier_load": 22.0,
+    "tests/test_budget_aware_agent.py::test_budget_aware_agent_more_stress_sensitive_than_frozen_agents": 90.0
   }
 }

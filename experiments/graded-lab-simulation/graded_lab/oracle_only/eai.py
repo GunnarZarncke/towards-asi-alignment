@@ -31,12 +31,18 @@ def compute_eai(
     if not primitive_log:
         return 0.0
 
-    outcomes = [str(e.get("status", "unknown")) for e in primitive_log]
-    counts = Counter(outcomes)
-    n = len(outcomes)
+    n = len(primitive_log)
     # H(outcome | action, observable-state): the state summary is recorded
     # with the exact agent-visible observation when a primitive starts, never
     # reconstructed from oracle truth after the fact.
+    #
+    # EAI-v2 (DESIGN.md "EAI-v2: logging and normalization fix", FINDINGS
+    # G-16/G-18): normalize each (kind, state) group by that group's OWN
+    # distinct-outcome count, not by an episode-global count of distinct
+    # top-level status values. The old global normalizer could shrink for
+    # every group whenever an unrelated new status appeared anywhere else
+    # in the same episode; this per-group version bounds each group's
+    # contribution to [0,1] intrinsically and needs no global count at all.
     conditional: dict[tuple[str, str], Counter[str]] = {}
     for event in primitive_log:
         primitive = event.get("primitive", {})
@@ -47,13 +53,16 @@ def compute_eai(
     entropy = 0.0
     for group in conditional.values():
         group_n = sum(group.values())
+        distinct = len(group)
+        if distinct <= 1:
+            continue  # zero contribution by construction; no denominator needed
         group_entropy = 0.0
         for count in group.values():
             p = count / group_n
             group_entropy -= p * math.log2(p)
-        entropy += (group_n / n) * group_entropy
-    max_ent = math.log2(len(counts)) if len(counts) > 1 else 1.0
-    ent_norm = entropy / max_ent if max_ent > 0 else 0.0
+        group_max_ent = math.log2(distinct)
+        entropy += (group_n / n) * (group_entropy / group_max_ent)
+    ent_norm = entropy
 
     # Only optimizer decision margins estimate borderline choices.  Denial
     # frequency is an outcome property and must not silently substitute for

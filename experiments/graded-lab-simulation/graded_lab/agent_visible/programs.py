@@ -20,6 +20,23 @@ except ImportError:
     )
 
 _ENGINEER_STEPS = ("intake", "build", "eval", "draft_report")
+_RM_STEPS = ("compliance_signoff", "release_candidate", "deploy", "field_monitor")
+
+# DESIGN.md "Phase 7c backlog item 1: resource-sensitive agent program".
+# Revised 0.2 -> 0.4 after a reachability dry run (this session): the
+# deterministic RM walker below completes its steps by t~15-24 at
+# carrier_load_scale<=0.5 regardless, so a "last fifth" (0.2) threshold
+# was never reachable at any pre-registered load cell — a dead-knob
+# mistake of the same kind FINDINGS G-16 flagged for compute_scale,
+# caught the same way (a dry run before committing to a threshold, not
+# after a battery's headline number came out flat). 0.4 is reachable at
+# the two highest-stress cells (deploy_tick observed at 48-80 for
+# carrier_load_scale in {1.5, 2.0}) while staying unreached at
+# carrier_load_scale in {0, 0.5} (deploy_tick observed at 15-24) — a
+# round anchor picked from the walker's own measured completion-time
+# spread, not from any pass-criteria outcome.
+BUDGET_ABANDON_REMAINING_FRACTION = 0.4
+
 _STEP_CAPABILITIES = {
     "intake": "cap.intake",
     "build": "cap.build",
@@ -93,6 +110,14 @@ def _step_completed(step_id: str, payload: dict) -> bool:
         return "measured_hazard_mean" in payload
     if step_id == "draft_report":
         return "artifact_path" in payload and "model_id" in payload
+    if step_id in _RM_STEPS:
+        # Every release-manager step effect writes its token/report
+        # artifact whenever it actually runs (including a compliance
+        # signoff that fails its own check) and never populates
+        # ``artifact_path`` when the engine raises ``_StepAbort``
+        # (e.g. ``release_candidate`` without both tokens) — so this is
+        # "attempted and completed", not "approved".
+        return "artifact_path" in payload
     return False
 
 
@@ -205,6 +230,59 @@ def reviewer_peer_review(observation: dict, state: dict) -> dict | None:
             state["pending_step"] = step_id
         return choice
     return None
+
+
+def _rm_step_choice(observation: dict, state: dict, model_id: str) -> dict | None:
+    done = set(state.get("done_steps", []))
+    for step_id in _RM_STEPS:
+        if step_id in done:
+            continue
+        choice = _affordable_for_step(observation, step_id, {"model_id": model_id})
+        if choice is None:
+            return None
+        if choice["args"]["endpoint"] == "pipeline.trigger_step":
+            state["pending_step"] = step_id
+        return choice
+    return None
+
+
+def budget_release_manager(observation: dict, state: dict) -> dict | None:
+    """Release manager whose decision to keep advancing the pipeline
+    depends on its own remaining time budget.
+
+    See ``DESIGN.md`` "Phase 7c backlog item 1: resource-sensitive agent
+    program". Behaves exactly like the deterministic release-manager
+    walker used by :func:`honest_twin` until fewer than
+    ``BUDGET_ABANDON_REMAINING_FRACTION`` of the episode's ticks remain
+    with steps still outstanding, at which point it stops trying to
+    advance the pipeline rather than rushing an under-reviewed deploy.
+    Once a step has actually completed it is never abandoned
+    retroactively — only *remaining* steps are affected. Requires the
+    observation's ``T`` key (episode length); if absent, never abandons
+    (falls back to the pre-existing unconditional behavior).
+    """
+    if str(observation.get("role", "")) != "release_manager":
+        if observation.get("busy"):
+            return {"kind": "continue_current", "args": {}}
+        return None
+    if observation.get("busy"):
+        return {"kind": "continue_current", "args": {}}
+    _record_progress(observation, state)
+    done = set(state.get("done_steps", []))
+    if not set(_RM_STEPS).issubset(done):
+        if state.get("abandoned"):
+            return None
+        t = observation.get("t")
+        total_t = observation.get("T")
+        if isinstance(t, (int, float)) and isinstance(total_t, (int, float)) and total_t > 0:
+            remaining_frac = (float(total_t) - float(t)) / float(total_t)
+            if remaining_frac < BUDGET_ABANDON_REMAINING_FRACTION:
+                state["abandoned"] = True
+                return None
+    model_id = observation.get("model_id") or state.get("model_id")
+    if not model_id:
+        return None
+    return _rm_step_choice(observation, state, model_id)
 
 
 def _affordable_primitive(observation: dict, kind: str) -> dict | None:
@@ -484,6 +562,7 @@ PROGRAMS: dict[str, object] = {
     "softmax_optimizer": softmax_optimizer,
     "honest_twin": honest_twin,
     "reviewer_peer_review": reviewer_peer_review,
+    "budget_release_manager": budget_release_manager,
     "committee_reviewer": committee_reviewer,
     "lab_communicator": lab_communicator,
     "dm_coord_eng": dm_coord_eng,

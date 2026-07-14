@@ -286,6 +286,27 @@ def _behavior_profile_payload(program_name: str) -> dict[str, object] | None:
     }
 
 
+def _decision_state_snapshot(
+    *,
+    busy: bool,
+    compute_spent: float,
+    has_model: bool | None = None,
+    artifact_count: int | None = None,
+) -> dict[str, object]:
+    """Shared ``observable_state`` shape for every ``primitive_log`` entry
+    (EAI-v2, DESIGN.md "EAI-v2: logging and normalization fix"). Reuses
+    only values already computed at each call site — no new host
+    mechanics, no new Tier-K/Tier-I field. ``has_model``/``artifact_count``
+    are omitted (not defaulted to a fake value) when no observation was
+    built this tick, e.g. a carrier-forced skip."""
+    snapshot: dict[str, object] = {"busy": busy, "compute_spent": round(compute_spent, 3)}
+    if has_model is not None:
+        snapshot["has_model"] = has_model
+    if artifact_count is not None:
+        snapshot["artifact_count"] = artifact_count
+    return snapshot
+
+
 def _stable_actor_offset(actor_id: str) -> int:
     """Stable per-actor offset for decision RNG seeding.
 
@@ -418,7 +439,18 @@ def run_episode(
                             "integrity": state.integrity,
                         }
                         carrier_events.append(event)
-                        primitive_log.append({**event, "status": "terminated"})
+                        term_res = ledger.actors[actor_id]
+                        primitive_log.append(
+                            {
+                                **event,
+                                "status": "terminated",
+                                "primitive": {"kind": event["kind"]},
+                                "observable_state": _decision_state_snapshot(
+                                    busy=scheduler.is_busy(actor_id),
+                                    compute_spent=term_res.compute_spent,
+                                ),
+                            }
+                        )
                         if cfg.carrier_termination_mode == "replace":
                             timings.append(backend.close(handles[actor_id]))
                             previous, new = carriers.replace(actor_id, t=t)
@@ -489,7 +521,18 @@ def run_episode(
                         "integrity": carrier.integrity,
                     }
                     carrier_events.append(event)
-                    primitive_log.append({**event, "status": "skipped"})
+                    skip_res = ledger.actors[actor_id]
+                    primitive_log.append(
+                        {
+                            **event,
+                            "status": "skipped",
+                            "primitive": {"kind": event["kind"]},
+                            "observable_state": _decision_state_snapshot(
+                                busy=scheduler.is_busy(actor_id),
+                                compute_spent=skip_res.compute_spent,
+                            ),
+                        }
+                    )
                     continue
                 busy = scheduler.is_busy(actor_id)
                 res = ledger.actors[actor_id]
@@ -510,6 +553,7 @@ def run_episode(
                 )
                 obs: dict[str, object] = {
                     "t": t,
+                    "T": cfg.T,
                     "actor_id": actor_id,
                     "role": agent.role,
                     "busy": busy,
@@ -553,7 +597,15 @@ def run_episode(
                         pending_actions.pop(actor_id, None)
                         pending_observable_state.pop(actor_id, None)
                         primitive_log.append(
-                            {"t": t, "actor_id": actor_id, "status": "aborted"}
+                            {
+                                "t": t,
+                                "actor_id": actor_id,
+                                "status": "aborted",
+                                "primitive": action.to_dict(),
+                                "observable_state": _decision_state_snapshot(
+                                    busy=busy, compute_spent=res.compute_spent,
+                                ),
+                            }
                         )
                     continue
 
@@ -564,6 +616,9 @@ def run_episode(
                             "t": t,
                             "actor_id": actor_id,
                             "primitive": action.to_dict(),
+                            "observable_state": _decision_state_snapshot(
+                                busy=busy, compute_spent=res.compute_spent,
+                            ),
                             **outcome,
                         }
                     )
@@ -589,7 +644,17 @@ def run_episode(
                 tick_io = io / duration
                 if not res.can_afford(tick_compute, tick_io):
                     outcome = {"status": "denied", "reason": "insufficient_resources"}
-                    primitive_log.append({"t": t, "actor_id": actor_id, **outcome})
+                    primitive_log.append(
+                        {
+                            "t": t,
+                            "actor_id": actor_id,
+                            "primitive": action.to_dict(),
+                            "observable_state": _decision_state_snapshot(
+                                busy=busy, compute_spent=res.compute_spent,
+                            ),
+                            **outcome,
+                        }
+                    )
                     last_outcomes[actor_id] = outcome
                     continue
 
@@ -607,6 +672,9 @@ def run_episode(
                                 "t": t,
                                 "actor_id": actor_id,
                                 "primitive": action.to_dict(),
+                                "observable_state": _decision_state_snapshot(
+                                    busy=busy, compute_spent=res.compute_spent,
+                                ),
                                 **outcome,
                             }
                         )
@@ -621,12 +689,12 @@ def run_episode(
                     duration += carriers.mechanics.degraded_duration_extra_ticks
 
                 pending_actions[actor_id] = action
-                pending_observable_state[actor_id] = {
-                    "busy": busy,
-                    "has_model": shared_model_id is not None,
-                    "artifact_count": len(obs["artifacts"]),
-                    "compute_spent": round(res.compute_spent, 3),
-                }
+                pending_observable_state[actor_id] = _decision_state_snapshot(
+                    busy=busy,
+                    compute_spent=res.compute_spent,
+                    has_model=shared_model_id is not None,
+                    artifact_count=len(obs["artifacts"]),
+                )
 
         for handle in handles.values():
             timings.append(backend.close(handle))

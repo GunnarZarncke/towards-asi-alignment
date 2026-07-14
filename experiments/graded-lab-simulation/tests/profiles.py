@@ -2,7 +2,7 @@
 
 Smoke — minimal invariant gate (~30s): structural/unit tests plus one
 episode smoke.  Fast — dev loop (~60s): everything except ``@slow``.
-Slow — full suite (~210s): includes multi-seed gates and integration
+Slow — full suite (~270s): includes multi-seed gates and integration
 batteries marked ``@pytest.mark.slow``.
 """
 
@@ -19,6 +19,7 @@ SMOKE_MODULES = frozenset(
         "test_cache",
         "test_carrier",
         "test_config",
+        "test_eai",
         "test_events",
         "test_no_lab_sim_imports",
         "test_observation",

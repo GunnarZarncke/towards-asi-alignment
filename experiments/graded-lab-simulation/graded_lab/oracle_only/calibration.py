@@ -27,6 +27,13 @@ STRONG_AGENT = "programmatic_softmax"
 WEAK_AGENT = "programmatic_2step"
 REFERENCE_AGENT = STRONG_AGENT
 
+# DESIGN.md "Phase 7c backlog item 1: resource-sensitive agent program".
+# Deliberately not in AGENT_TYPES / the default battery: it is validated
+# by its own small, separate battery (tests/test_budget_aware_agent.py),
+# not wired into the strong/weak pass-criteria comparison, which is
+# defined for exactly two agent types (FINDINGS G-17).
+BUDGET_AWARE_AGENT = "programmatic_budget_aware"
+
 GRID_SCALES = (0.5, 1.0, 1.5, 2.0)
 CALIBRATION_SEEDS = tuple(range(10))
 
@@ -67,6 +74,16 @@ def programs_for(agent_type: str) -> dict[str, str]:
             "eng1": "walk_pipeline",
             "rev1": "reviewer_peer_review",
             "rm1": "honest_twin",
+            "admin1": "honest_twin",
+        }
+    if agent_type == BUDGET_AWARE_AGENT:
+        # Same deterministic roster as WEAK_AGENT except rm1 — isolates
+        # the one varying decision (DESIGN.md backlog item 1) so any
+        # measured effect is attributable to it alone.
+        return {
+            "eng1": "walk_pipeline",
+            "rev1": "reviewer_peer_review",
+            "rm1": "budget_release_manager",
             "admin1": "honest_twin",
         }
     raise ValueError(f"unknown agent_type {agent_type!r}")

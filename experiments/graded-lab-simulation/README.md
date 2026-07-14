@@ -4,10 +4,11 @@ Fifth in-repo experiment line (successor substrate to `lab-simulation/`).
 Spawned by G-41: boolean ecology limits; ambiguity must **emerge** from a
 blinded resource/population substrate, not from dialed parameters.
 
-**Status: Phases 0–7c done (incl. Phase 7c-revised calibration battery,
-correcting the initial Phase 7c evaluator — see FINDINGS G-15/G-16);
-Phase 8 not started (2026-07-14)**
-`CODE_VERSION` `graded-lab-0.13.0` — see `DESIGN.md` for frozen constants.
+**Status: Phases 0–7c done (incl. Phase 7c-revised calibration battery
+and two backlog items from FINDINGS G-16 — a resource-sensitive agent
+program, G-17, and an EAI-v2 logging/normalization fix, G-18); Phase 8
+not started (2026-07-14)**
+`CODE_VERSION` `graded-lab-0.14.0` — see `DESIGN.md` for frozen constants.
 
 ## Quick start
 
@@ -15,7 +16,7 @@ Phase 8 not started (2026-07-14)**
 cd experiments/graded-lab-simulation
 python3 -m pytest tests/ --profile smoke   # ~30s invariant gate
 python3 -m pytest tests/ --profile fast    # ~120s dev loop (no @slow)
-python3 -m pytest tests/ --profile slow    # ~210s full suite (default)
+python3 -m pytest tests/ --profile slow    # ~270s full suite (default)
 python3 -m pytest tests/ --fast             # alias for --profile fast
 python3 verify_isolate_equivalence.py 5
 python3 report_isolate_cost.py
@@ -30,7 +31,7 @@ Three profiles (`tests/profiles.py`):
 
 - **smoke** — structural/unit invariants + one episode smoke (~30s cap)
 - **fast** — everything except `@pytest.mark.slow` multi-seed gates (~120s cap)
-- **slow** — full suite including slow integration tests (~210s cap); default
+- **slow** — full suite including slow integration tests (~270s cap); default
 
 Per-test hard caps and regression baselines apply on the **slow** profile.
 Refresh baselines after intentional changes:
@@ -61,8 +62,8 @@ python3 -m pytest tests/ --profile slow --update-speed-baseline --no-speed-check
 | 6 Blind behavior features | **done** (`generated_behavior_features_v1.json`, `feature:*` programs, validator; see G-9) |
 | 7a UAD + intervention validation | **done** (primitive traces, passive + standalone-dependency intervention discovery, full-partition ecology battery, blind scenario-designer battery; see G-10–G-12) |
 | 7b UAD-backed ecology-BIQ | **done** (`oracle_only/unit_biq.py`: held-out `I_pred`/`S_surp` bits, intervention-supported `I_ctrl` over a 4-component outcome state, declared `H_mem` proxy over UAD-inferred units; `I_ctrl`'s outcome vector was widened past task+harm alone to fix a resource-contention confound — see G-13/G-14) |
-| 7c Calibration battery | **done** (`run_phase7_calibration.py`, `oracle_only/calibration.py`; results in `results/ecology_calibration.json` — see G-15) |
-| 8 Multi-episode / selection | not started |
+| 7c Calibration battery | **done** (`run_phase7_calibration.py`, `oracle_only/calibration.py`; results in `results/ecology_calibration.json` — see G-15/G-16). Two backlog items resolved: a resource-sensitive agent program (`programmatic_budget_aware`, validated in a small separate battery, not the main criteria — G-17) and an EAI-v2 logging/normalization fix (verified correct; measured effect on this substrate is a reported null — G-18) |
+| 8 Multi-episode / selection | not started (see PLAN.md "Manuscript integration backlog" item 4 for the registered go/no-go framing) |
 
 ## Rules
 
