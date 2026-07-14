@@ -1198,3 +1198,210 @@ variant, e.g. `compute_eai_at_tier(result, tier)`, to `eai.py` and
 wiring it into `run_phase7_calibration.py`'s reporting) can be judged
 against a stated-in-advance expectation rather than reverse-fit to
 whatever number comes out.
+
+## G-20 (referee-vantage EAI measured — G-19's prediction held,
+decisively, plus an unpredicted non-monotonic pattern)
+
+Same session, immediate follow-up to G-19: "predict and run measure
+from *their* perspective before proceeding." Implements exactly the
+plan G-19 pre-registered and checks the result against G-19's stated
+prediction — no threshold or claim was adjusted after seeing the
+numbers.
+
+**Implementation** (`eai.py`, `CODE_VERSION` unchanged —
+additive-only, no existing call site's output changes): split the
+existing entropy/margin/tier-I arithmetic out of `compute_eai` into
+`_entropy_component()`/`_margin_density()` (behavior-preserving
+refactor; `tests/test_eai.py` passes unchanged), then added
+`compute_eai_at_tier(primitive_log, decision_margins, tier_i_fraction,
+tier)` — feeds `oracle_only.events.project_primitive_log(log, tier)`
+into the *unmodified* entropy grouping instead of the raw log, per
+`DESIGN.md` "EAI-referee" — and `eai_components_at_tier(...)` for
+decomposed reporting. New script
+`run_referee_eai_check.py`: reruns the **exact same** episodes as
+G-18's decomposition (`programmatic_softmax`, `carrier_load_scale ∈
+{0, 0.5, 1.0, 1.5, 2.0}`, seeds 0–9, `MockIsolate`), computing the
+entropy component at both `"full"` (agent vantage, matches G-18
+exactly) and `"light"` (referee vantage: `t`, `actor_id`, `status`
+only) tiers.
+
+**Result — measured, not adjusted:**
+
+| `carrier_load_scale` | full-tier entropy | light-tier entropy | full-tier composite EAI | light-tier composite EAI |
+|---|---|---|---|---|
+| 0.0 | 0.0000 | 0.0000 | 0.2498 | 0.2498 |
+| 0.5 | 0.0000 | **0.5675** | 0.1558 | 0.3450 |
+| 1.0 | 0.0000 | **0.6750** | 0.1391 | 0.3641 |
+| 1.5 | 0.0000 | **0.7273** | 0.1534 | 0.3958 |
+| 2.0 | 0.0006 | **0.5914** | 0.1306 | 0.3275 |
+
+(Full-tier values match G-18's decomposition exactly, confirming the
+refactor is behavior-preserving. Wall time 27.9s, 50 episodes.)
+
+**G-19's prediction held, and by a wide margin.** Light-tier entropy
+is not merely "materially non-zero" (the pre-registered bar was
+`>0.02`) — it reaches `0.73`, i.e. genuinely close to maximal
+uncertainty from that vantage, at every stressed cell. The referee's
+`(t, actor_id, status)`-only view cannot resolve, from that
+information alone, which of several outcomes a given tick will land
+on — exactly the "gap between agent-vantage and referee-vantage
+entropy" G-19 named as the candidate ambiguity signal, now measured
+rather than hypothesized.
+
+**Unpredicted pattern, reported as found, not smoothed over:** light-
+tier entropy is **not monotonic** in `carrier_load_scale`. It is
+exactly `0` at `carrier_load=0` (matching the full-tier value — no
+carrier stress, no denials/aborts/skips, so `status` actually is
+close to deterministic even at the coarsest vantage), jumps
+immediately to `0.57` at the first nonzero load, rises to a peak
+`0.73` at `1.5`, then **falls back** to `0.59` at `2.0`. G-19 predicted
+the direction (non-zero) and gave a falsification bar, but did not
+predict this shape, and this entry does not retroactively construct a
+story to fit it — a plausible but unverified reading is that at the
+highest stress cell, one status (e.g. `terminated`/`skipped`) starts
+to dominate the log, which *lowers* entropy relative to the more
+evenly-mixed denial/ok/abort blend at `carrier_load=1.5`; confirming
+this would need a per-cell status-distribution audit not run here.
+
+**Consequence for the Phase 8 go/no-go framing.** Referee-vantage
+composite EAI reaches `0.33–0.40` at every stressed cell — solidly
+inside the pre-registered **mid** band (`0.25–0.45`) at every one of
+the four nonzero-load cells, a clean, non-degenerate mid-band signal
+that the agent-vantage EAI-v2 (FINDINGS G-18) never produced (its mid-
+band hit was a single hairline `0.24977` miss, FINDINGS G-16/re-run).
+It still does **not** reach the **high** band (`≥0.65`) at any cell —
+the theoretical ceiling for the light-tier composite is `(1.0 + 1.0 +
+~0.1)/3 ≈ 0.70`, and the peak measured composite (`0.396`) is well
+under even that ceiling, because `margin_density` (agent-vantage,
+unchanged by tier) still falls with load exactly as G-18 found. So:
+referee-vantage measurement produces a real, clean **mid**-band
+regime for the first time in this line — a materially different and
+better-supported result than the agent-vantage numbers gave — but
+does not by itself resolve criterion 3 (high-band deploy collapse),
+which stays registered inconclusive.
+
+**Explicitly not done this entry:** the calibration battery
+(`run_calibration_battery`/`run_phase7_calibration.py`) itself was
+**not** re-run or rewired to use `compute_eai_at_tier` — that would
+change `eai_band()`'s classification, `classify_cells_by_reference_agent`,
+and every downstream pass-criterion, which is a larger decision
+(does the *battery's* EAI move to referee vantage entirely, or do
+both get reported side by side, as `DESIGN.md` "EAI-referee" specifies)
+than this predict-and-measure check. `CODE_VERSION` was **not**
+bumped — this entry adds new, unused-by-existing-callers functions
+only (`eai.py`'s `compute_eai`/`compute_eai_at_tier` public behavior
+is unchanged; the split-out `_entropy_component`/`_margin_density`
+are private and verified equivalent by the unchanged `test_eai.py`
+suite plus the exact full-tier-vs-G-18 match above). Whether to wire
+this into the main battery is deferred, per the same discipline as
+G-17/G-18: predict and measure a scoped question first, decide the
+downstream integration in a separate, pre-registered step.
+
+- Tests: none added this entry (the refactor is covered by the
+  existing `tests/test_eai.py` suite, unchanged and still green);
+  `run_referee_eai_check.py` is a standalone measurement script,
+  results archived at `results/referee_eai_check.json`, not wired
+  into `pytest`.
+
+## G-21 (G-20's non-monotonic shape: two of four steps are not
+distinguishable from seed noise at n=10; the shape that survives has a
+plausible, data-grounded mechanical explanation)
+
+Same session, immediate follow-up. User question: "The non-monotonic
+pattern could be chance. What are the confidence intervals? If that's
+not it, what are plausible explanations without further experiments?"
+Answered in two parts — a statistical test on the existing 10-seed
+sample, then a mechanistic account using the same already-collected
+episodes (no new randomization, no new cells/seeds).
+
+**Statistics added to `run_referee_eai_check.py`** (no `CODE_VERSION`
+bump — a reporting-only change, computed on the same 50 episodes as
+G-20, not rerun with different seeds to chase significance): per-cell
+mean/std/SE/95% CI (`t`-critical `2.262`, hardcoded for `df=9` since
+this venv has no `scipy`, with an `assert` guarding the seed count so
+this doesn't silently mis-apply if `CALIBRATION_SEEDS` ever changes),
+and **paired** (by-seed) 95% CIs on the difference between each
+consecutive cell — paired because the same 10 seeds are reused at
+every cell, so per-seed idiosyncrasy (the same effect FINDINGS
+G-16/G-17 flagged for deploy-rate cell ranges) cancels out of a paired
+comparison but would inflate an unpaired one.
+
+**Result — two of the four steps do not clear significance at
+n=10:**
+
+| Step | Paired mean diff (light-tier entropy) | 95% CI | Distinguishable from 0? |
+|---|---|---|---|
+| `0.0→0.5` | −0.567 | [−0.602, −0.533] | **Yes** |
+| `0.5→1.0` | −0.108 | [−0.132, −0.083] | **Yes** |
+| `1.0→1.5` | −0.052 | [−0.159, +0.055] | **No** — 0 inside CI |
+| `1.5→2.0` | +0.136 | [−0.003, +0.274] | **No** (borderline — CI lower bound is −0.0026, a hair's width from excluding 0) |
+
+**So: yes, part of the pattern could plausibly be chance.** The rise
+from `0.0→0.5→1.0` is robust — two large, clearly-significant jumps.
+Whether entropy actually *peaks* at `1.5` and then *falls* at `2.0`,
+versus simply **plateauing** somewhere in `[0.59, 0.73]` across
+`{1.0, 1.5, 2.0}` with the visible up-then-down wiggle being sampling
+noise at `n=10`, cannot be distinguished from this data — both the
+`1.0→1.5` step and the `1.5→2.0` step individually fail to clear a
+95% threshhold, though the `1.5→2.0` step is close enough to call
+"suggestive, not confirmed" rather than "clearly noise."
+
+**Mechanistic account for the part that plausibly is real (not a
+new experiment — a re-analysis of the same deterministic 50
+episodes' `primitive_log` status labels, pooled across seeds per
+cell):**
+
+| `carrier_load_scale` | status mix (pooled, all 10 seeds) |
+|---|---|
+| 0.0 | `ok` 100% |
+| 0.5 | `ok` 75.2%, `skipped` 22.8%, `aborted` 2.0% |
+| 1.0 | `skipped` 52.9%, `ok` 45.5%, `aborted` 1.4%, `denied` 0.1% |
+| 1.5 | `skipped` 63.8%, `ok` 35.6%, `aborted` 0.6% |
+| 2.0 | `skipped` 70.3%, `ok` 29.0%, `aborted` 0.7%, `denied` 0.03%, `terminated` 0.03% |
+
+Two effects, both visible directly in this table without running
+anything new:
+
+1. **The `carrier_forced_skip` fraction rises monotonically with
+   load** (0% → 23% → 53% → 64% → 70%) — a real, monotonic substrate
+   mechanism (more carrier stress → more forced skips), consistent
+   with every other finding in this line about `carrier_load_scale`.
+   But **Shannon entropy of a two-outcome mixture is maximized near a
+   50/50 split and falls as the mixture becomes more lopsided toward
+   either outcome** — a property of the entropy formula itself, not
+   of this substrate. The `ok`/`skipped` mix crosses through
+   roughly even (53%/45%, load 1.0) then keeps drifting toward
+   `skipped`-dominant (70%/29%, load 2.0). A monotonically drifting
+   two-category mixture that crosses the 50/50 point necessarily
+   produces entropy that rises approaching the crossing and can fall
+   again past it — a non-monotonic entropy curve is exactly what a
+   monotonic *composition* drift through 50/50 predicts, with no
+   separate mechanism required. This is a strong candidate explanation
+   for why entropy does not simply keep rising alongside the
+   (monotonic) skip rate.
+2. **A secondary, compounding effect:** `eai.py`'s entropy
+   normalization divides each episode's raw entropy by
+   `log2(number of distinct statuses seen in that episode)`. Rarer
+   statuses (`denied`, `terminated`) start appearing only at the
+   highest-stress cells, which *raises* the normalizing denominator
+   even though those statuses are individually rare — this
+   mechanically pulls the *normalized* entropy value down at the
+   highest-stress cell independent of the `ok`/`skipped` balance,
+   compounding effect (1) in the same direction at `carrier_load=2.0`.
+
+**What this does and does not settle.** It gives a plausible,
+data-grounded account for *why* a fall past some peak is expected in
+principle (entropy-of-a-drifting-mixture arithmetic, not a new
+substrate mechanism), consistent with the `1.5→2.0` step being the
+more "real" of the two non-significant steps (closer to clearing
+significance) rather than the `1.0→1.5` rise. It does **not** confirm
+the exact peak location (`1.5` vs. a plateau across `{1.0,1.5,2.0}`)
+— that would need more seeds per cell or a formal test on the pooled-
+composition entropy directly, neither attempted here per the "without
+further experiments" framing of the question.
+
+- No `CODE_VERSION` bump (reporting/statistics-only change to
+  `run_referee_eai_check.py`; the status-mix table above is a one-off
+  analysis, not added as a permanent script — if this decomposition
+  proves useful again, promoting it to a reusable helper is a
+  separate, future decision).

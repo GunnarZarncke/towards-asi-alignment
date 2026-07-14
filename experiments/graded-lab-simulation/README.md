@@ -6,8 +6,9 @@ blinded resource/population substrate, not from dialed parameters.
 
 **Status: Phases 0–7c done (incl. Phase 7c-revised calibration battery
 and two backlog items from FINDINGS G-16 — a resource-sensitive agent
-program, G-17, and an EAI-v2 logging/normalization fix, G-18); Phase 8
-not started (2026-07-14)**
+program, G-17, and an EAI-v2 logging/normalization fix, G-18 — plus a
+same-day referee-vantage EAI reframe and measurement, G-19/G-20); Phase
+8 not started (2026-07-14)**
 `CODE_VERSION` `graded-lab-0.14.0` — see `DESIGN.md` for frozen constants.
 
 ## Quick start
@@ -23,6 +24,7 @@ python3 report_isolate_cost.py
 python3 run_phase7_calibration.py          # revised 5-cell carrier_load_scale battery
 python3 run_phase7_calibration.py --smoke  # 2-cell dev smoke
 python3 run_phase7_calibration.py --legacy # original 16-cell compute×spread grid (diagnostic; see G-16)
+python3 run_referee_eai_check.py           # referee- vs agent-vantage EAI entropy check (see G-19/G-20)
 ```
 
 ### Test profiles and speed limits

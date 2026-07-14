@@ -263,8 +263,8 @@ before the post-fix numbers were known.
 
 ---
 
-## EAI-referee: referee-vantage entropy (pre-registered plan
-2026-07-14, per FINDINGS G-19 — not implemented yet)
+## EAI-referee: referee-vantage entropy (pre-registered 2026-07-14 per
+FINDINGS G-19, measured same day per FINDINGS G-20 — prediction held)
 
 **Why this exists.** FINDINGS G-18 found the EAI-v2 entropy term is
 correctly computed but genuinely ≈0, because it conditions on
@@ -323,12 +323,29 @@ ambiguity — not agent-vantage ambiguity — is the graded signal Phase 8
 needs. Both variants would be reported side by side, not one replacing
 the other.
 
-**Explicitly not done yet:** no code. `eai.py`/`calibration.py`/
-`run_phase7_calibration.py` are all unmodified as of this entry. The
-next implementation step (a `compute_eai_at_tier` or equivalent
-helper, wired into the calibration report) is deferred to a future
-session and must be checked against the prediction above before any
-threshold or band decision is revisited.
+**Measured (FINDINGS G-20):** `eai.py` gained `compute_eai_at_tier()`
+and `eai_components_at_tier()` (additive only — `compute_eai`'s public
+behavior is unchanged, verified by the unchanged `tests/test_eai.py`
+suite plus an exact match to FINDINGS G-18's own full-tier numbers).
+`run_referee_eai_check.py` reruns G-18's exact episode set at both
+`full` and `light` tier. **Prediction held, by a wide margin:**
+light-tier entropy reaches `0.57`–`0.73` at every stressed cell
+(pre-registered falsification bar was `>0.02`), vs. `≈0` at full tier.
+An unpredicted shape — non-monotonic, peaking at `carrier_load=1.5`
+then falling at `2.0` — is reported as found, not explained away.
+Light-tier **composite** EAI lands in the pre-registered **mid** band
+(`0.33`–`0.40`) at every nonzero-load cell — the first clean, non-
+hairline mid-band signal in this line — but does not reach the
+**high** band at any cell (peak `0.396`, well under even the `≈0.70`
+composite ceiling, because `margin_density` still falls with load).
+`CODE_VERSION` **not** bumped — no existing caller's output changed.
+
+**Not yet done:** the main calibration battery
+(`run_calibration_battery`/`run_phase7_calibration.py`) has **not**
+been rewired to use `compute_eai_at_tier` — doing so would change
+`eai_band()` classification and every downstream pass criterion, a
+larger, separate decision (report referee-vantage EAI alongside
+agent-vantage, or replace it) deferred to a future session.
 
 ---
 

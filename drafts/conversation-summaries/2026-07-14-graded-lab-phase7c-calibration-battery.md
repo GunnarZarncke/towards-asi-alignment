@@ -249,3 +249,111 @@ then rationalized.
 - `experiments/graded-lab-simulation/results/FINDINGS.md` (G-19)
 - `experiments/graded-lab-simulation/DESIGN.md` ("EAI-referee" section)
 - `experiments/graded-lab-simulation/PLAN.md` (item 4 reframe)
+
+---
+
+## Addendum 2 (same session, immediately after) — G-20: measured the
+G-19 prediction, held decisively
+
+User: "predict and run measure from *their* perspective before
+proceeding." Implemented exactly what G-19 pre-registered and checked
+the result against G-19's own falsification bar, not the reverse.
+
+**Code (additive, no `CODE_VERSION` bump — no existing caller's
+output changes):**
+
+- `eai.py`: split the existing entropy/margin arithmetic out of
+  `compute_eai` into private `_entropy_component()`/
+  `_margin_density()` helpers (behavior-preserving — verified by the
+  unchanged `tests/test_eai.py` suite staying green); added
+  `compute_eai_at_tier(log, margins, tier_i_fraction, tier)` (feeds a
+  `oracle_only.events.project_primitive_log`-projected log into the
+  unmodified entropy grouping) and `eai_components_at_tier(...)` for
+  decomposed reporting.
+- New `run_referee_eai_check.py`: reruns G-18's exact episode set
+  (`programmatic_softmax`, `carrier_load_scale ∈ {0,0.5,1,1.5,2}`,
+  seeds 0–9) at both `full` and `light` audit tiers; writes
+  `results/referee_eai_check.json`.
+- `tests/test_eai.py`: 4 new tests for `compute_eai_at_tier`/
+  `eai_components_at_tier` (full-tier exact match to `compute_eai`,
+  light-tier entropy rising on a per-full-tier-homogeneous log,
+  component decomposition).
+
+**Result — prediction held, by a wide margin, plus an unpredicted
+shape:** light-tier entropy reaches `0.57`–`0.73` at every stressed
+cell (bar was `>0.02`), vs. `≈0` at full tier (which reproduces G-18's
+numbers exactly, confirming the refactor is behavior-preserving).
+Referee-vantage composite EAI lands cleanly in the pre-registered
+**mid** band (`0.33`–`0.40`) at every nonzero-load cell — the first
+non-hairline mid-band signal in this whole line. It does **not** reach
+**high** band anywhere (peak `0.396`). The shape across cells is
+non-monotonic (peaks at `carrier_load=1.5`, dips at `2.0`) — not
+predicted, reported as found rather than explained away.
+
+**Not done:** the main calibration battery was **not** rewired to use
+referee-vantage EAI — that changes every downstream pass criterion and
+is a separate, larger decision, deferred. Full 167-test suite reran
+green (270.29s) after the refactor.
+
+### Key paths (addendum 2)
+
+- `experiments/graded-lab-simulation/graded_lab/oracle_only/eai.py`
+- `experiments/graded-lab-simulation/run_referee_eai_check.py` (new)
+- `experiments/graded-lab-simulation/results/referee_eai_check.json` (new)
+- `experiments/graded-lab-simulation/tests/test_eai.py`
+- `experiments/graded-lab-simulation/results/FINDINGS.md` (G-20)
+- `experiments/graded-lab-simulation/DESIGN.md` ("EAI-referee" — measured)
+- `experiments/graded-lab-simulation/PLAN.md` (item 4 — measured)
+
+---
+
+## Addendum 3 (same session) — G-21: is the non-monotonic shape
+chance? Statistics, then a mechanistic account without new experiments
+
+User: "The non-monotonic pattern could be chance. What are the
+confidence intervals? If that's not it, what are plausible
+explanations without further experiments?"
+
+**Statistics added to `run_referee_eai_check.py`** (no new episodes,
+no `CODE_VERSION` bump): per-cell mean/std/SE/95% CI (hardcoded
+`t`-critical for `df=9`, no `scipy` in this venv, guarded by an
+`assert` on the seed count) and **paired** (by-seed) 95% CIs on each
+consecutive-cell difference in light-tier entropy.
+
+**Result:** the initial rise (`0.0→0.5`, `0.5→1.0`) is clearly
+significant (95% CIs exclude 0 by a wide margin). The two steps that
+make up the "non-monotonic" shape are **not** individually
+significant at `n=10`: `1.0→1.5` (diff −0.052, CI [−0.159, +0.055])
+and `1.5→2.0` (diff +0.136, CI [−0.003, +0.274], the latter a hair's
+width from significance). So: part of the pattern (the initial rise)
+is real; whether entropy actually peaks at 1.5 and falls, versus
+plateauing across `{1.0,1.5,2.0}` with sampling wiggle, cannot be
+distinguished from this sample.
+
+**Mechanistic account (re-analysis of the same 50 already-run
+episodes' status labels, not a new experiment):** pooled status-mix
+audit shows `carrier_forced_skip` fraction rises **monotonically**
+with load (0%→23%→53%→64%→70% of all log entries) — a real substrate
+effect. But Shannon entropy of a two-outcome mixture peaks near 50/50
+and falls as one outcome comes to dominate; the `ok`/`skipped` split
+crosses roughly even right around `carrier_load=1.0` and then drifts
+toward `skipped`-dominant by `2.0`. A monotonically drifting
+composition crossing 50/50 mechanically produces a non-monotonic
+entropy curve — no new substrate mechanism needed. A compounding
+secondary effect: rare statuses (`denied`, `terminated`) start
+appearing only at the highest-stress cells, inflating the per-episode
+normalization denominator (`log2(distinct statuses)`) and pulling the
+normalized entropy down further at `carrier_load=2.0`.
+
+**What this does/doesn't settle:** gives a plausible, data-grounded
+reason a fall-past-peak is expected in principle, consistent with the
+`1.5→2.0` step being the "more real" of the two non-significant ones.
+Does not pin down the exact peak location — that needs more seeds or
+a direct test on pooled composition, neither attempted (out of scope
+per "without further experiments").
+
+### Key paths (addendum 3)
+
+- `experiments/graded-lab-simulation/run_referee_eai_check.py` (CI/paired-diff stats)
+- `experiments/graded-lab-simulation/results/referee_eai_check.json` (updated)
+- `experiments/graded-lab-simulation/results/FINDINGS.md` (G-21)

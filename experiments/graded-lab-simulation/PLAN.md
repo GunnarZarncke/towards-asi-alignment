@@ -934,24 +934,30 @@ text), not a code task; listed here so it is not lost as an open item.
    "high" ambiguity band was found structurally unreachable for a
    substrate-statistics reason (this ecology is close to deterministic
    given full agent-visible context, not merely under-instrumented).
-   **Reframed same day (FINDINGS G-19), still no code:** adding
-   substrate randomness is rejected — it would violate Phase 0's own
-   "no injected delay/noise parameter" rule and would manufacture the
-   result rather than measure it. The real defect was **measuring
-   ambiguity from the wrong observer**: the entropy term conditions on
-   the *acting agent's* full-context vantage, but the manuscript claim
-   is about what a *referee/correction channel* can resolve from
-   outside. `oracle_only/events.py` already has the tiered
-   `project_primitive_log()` audit-plane projection (built for an
-   unrelated purpose — Phase-5 detector tier gating); feeding a
+   **Reframed same day (FINDINGS G-19), then measured (FINDINGS
+   G-20):** adding substrate randomness is rejected — it would violate
+   Phase 0's own "no injected delay/noise parameter" rule and would
+   manufacture the result rather than measure it. The real defect was
+   **measuring ambiguity from the wrong observer**: the entropy term
+   conditions on the *acting agent's* full-context vantage, but the
+   manuscript claim is about what a *referee/correction channel* can
+   resolve from outside. `oracle_only/events.py` already has the
+   tiered `project_primitive_log()` audit-plane projection (built for
+   an unrelated purpose — Phase-5 detector tier gating); feeding a
    `light`-tier projected log into the unmodified entropy term
    measures exactly the referee's coarser vantage, no new mechanics
-   required. Pre-registered prediction (FINDINGS G-19 / `DESIGN.md`
-   "EAI-referee"): this referee-vantage entropy term will be
-   materially non-zero even though the agent-vantage one is ≈0 —
-   **this is the next concrete step before any further Phase 8 spend**,
-   and it is checked against the stated prediction, not implemented
-   and then rationalized.
+   required. **Measured, prediction held by a wide margin:**
+   light-tier entropy reaches `0.57`–`0.73` at every stressed cell
+   (vs. `≈0` at the agent's full-context vantage), and the resulting
+   referee-vantage **composite** EAI lands cleanly in the
+   pre-registered **mid** band (`0.33`–`0.40`) at every nonzero-load
+   cell — the first non-hairline mid-band signal in this line — though
+   it still does not reach the **high** band at any cell. **Next
+   concrete step before further Phase 8 spend:** decide whether/how to
+   wire this referee-vantage EAI into the main calibration battery
+   (report both vantages side by side, or replace the agent-vantage
+   one) — not yet done, a separate pre-registered decision per
+   `DESIGN.md` "EAI-referee".
 
 **Not yet done:** none of the four have been written into their chapters
 yet. This entry exists so the mapping is not re-derived from scratch in a

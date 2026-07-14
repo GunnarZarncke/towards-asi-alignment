@@ -7,7 +7,12 @@ deterministic, and independent of the world/harness modules.
 
 from __future__ import annotations
 
-from graded_lab.oracle_only.eai import compute_eai, compute_eai_stub
+from graded_lab.oracle_only.eai import (
+    compute_eai,
+    compute_eai_at_tier,
+    compute_eai_stub,
+    eai_components_at_tier,
+)
 
 
 def _entry(kind: str, state: dict, status: str) -> dict:
@@ -93,3 +98,42 @@ def test_compute_eai_includes_margin_density_and_tier_i_components():
 def test_compute_eai_stub_matches_zero_margin_zero_tier_i():
     log = [_entry("call", {"busy": False}, "ok") for _ in range(4)]
     assert compute_eai_stub(log) == compute_eai(log, [], tier_i_fraction=0.0)
+
+
+def test_compute_eai_at_tier_full_matches_compute_eai():
+    """"full" tier keeps `primitive`/`observable_state` — must reproduce
+    the raw `compute_eai` value exactly (DESIGN.md "EAI-referee")."""
+    log = [_entry("call", {"busy": False}, "ok") for _ in range(5)] + [
+        _entry("call", {"busy": False}, "denied") for _ in range(5)
+    ]
+    eai_full_tier = compute_eai_at_tier(log, [], tier_i_fraction=0.0, tier="full")
+    eai_raw = compute_eai(log, [], tier_i_fraction=0.0)
+    assert eai_full_tier == eai_raw
+
+
+def test_compute_eai_at_tier_light_strips_grouping_and_can_raise_entropy():
+    """FINDINGS G-19/G-20: a "light"-tier projection drops `primitive`/
+    `observable_state`, collapsing every event into one group — the
+    per-group-homogeneous log above (zero entropy at "full" tier) must
+    show nonzero entropy at "light" tier, since from that coarser
+    vantage the two `(kind, state)` groups are no longer distinguishable
+    and the marginal status distribution is genuinely mixed."""
+    log = [_entry("call", {"busy": False}, "ok") for _ in range(5)] + [
+        _entry("read", {"busy": True}, "denied") for _ in range(5)
+    ]
+    eai_full_tier = compute_eai_at_tier(log, [], tier_i_fraction=0.0, tier="full")
+    eai_light_tier = compute_eai_at_tier(log, [], tier_i_fraction=0.0, tier="light")
+    assert eai_full_tier == 0.0
+    assert eai_light_tier > eai_full_tier
+    assert abs(eai_light_tier - (1.0 / 3.0)) < 1e-9
+
+
+def test_eai_components_at_tier_reports_entropy_margin_tier_i_separately():
+    log = [_entry("read", {"busy": False}, "ok") for _ in range(3)] + [
+        _entry("call", {"busy": True}, "aborted") for _ in range(3)
+    ]
+    components = eai_components_at_tier(log, [0.5], tier_i_fraction=0.4, tier="light")
+    assert set(components) == {"entropy", "margin_density", "tier_i_load"}
+    assert components["margin_density"] == 0.0  # 0.5 is not < 0.05
+    assert components["tier_i_load"] == 0.4
+    assert components["entropy"] > 0.0  # light tier collapses the two groups into one, mixed
