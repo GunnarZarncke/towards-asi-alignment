@@ -17,6 +17,7 @@ from graded_lab.oracle_only.calibration import (
     DoseRecord,
     STRONG_AGENT,
     WEAK_AGENT,
+    _vantage_records,
     carrier_grid,
     classify_cells_by_reference_agent,
     eai_band,
@@ -212,3 +213,65 @@ def test_smoke_calibration_battery_two_cells():
     assert "pass_criteria" in payload
     assert "all_passed" in payload["pass_criteria"]
     assert "cell_bands" in payload
+    # DESIGN.md "Phase 7c full battery, both vantages, with confidence
+    # intervals" (FINDINGS G-19/G-20/G-22): referee vantage reported
+    # alongside oracle, from the same episodes, without replacing it.
+    assert "pass_criteria_referee" in payload
+    assert "all_passed" in payload["pass_criteria_referee"]
+    assert "cell_bands_referee" in payload
+    for record in payload["records"]:
+        assert record["eai_referee"] is not None
+    # 2-seed smoke run: CIs are computable via scipy (df=1).
+    assert payload["eai_ci95_by_cell_agent"], "expected at least one (cell, agent) key"
+    for entry in payload["eai_ci95_by_cell_agent"].values():
+        assert entry["oracle"] is not None
+        assert entry["referee"] is not None
+        assert entry["oracle"]["n"] == 2
+        assert entry["referee"]["n"] == 2
+
+
+def test_classify_cells_by_reference_agent_referee_field():
+    records = [
+        CalibrationRecord(
+            1.0, 1.0, STRONG_AGENT, 0, 0.10, "low", 0, False, 0.0, 0.0, 0.0, True,
+            eai_referee=0.30,
+        ),
+        CalibrationRecord(
+            1.0, 1.0, STRONG_AGENT, 1, 0.10, "low", 0, False, 0.0, 0.0, 0.0, True,
+            eai_referee=0.32,
+        ),
+    ]
+    oracle_bands = classify_cells_by_reference_agent(records)
+    referee_bands = classify_cells_by_reference_agent(records, eai_field="eai_referee")
+    assert oracle_bands[(1.0, 1.0, 0.0)] == "low"
+    assert referee_bands[(1.0, 1.0, 0.0)] == "mid"
+
+
+def test_vantage_records_projects_referee_fields_onto_eai_slots():
+    records = [
+        CalibrationRecord(
+            1.0, 1.0, STRONG_AGENT, 0, 0.10, "low", 0, False, 0.0, 0.0, 0.0, True,
+            cell_eai_band="low", eai_referee=0.35, cell_eai_band_referee="mid",
+        ),
+    ]
+    projected = _vantage_records(records, eai_field="eai_referee", band_field="cell_eai_band_referee")
+    assert projected[0].eai == 0.35
+    assert projected[0].cell_eai_band == "mid"
+    # Original records are untouched (frozen dataclass, new list returned).
+    assert records[0].eai == 0.10
+    assert records[0].cell_eai_band == "low"
+
+
+@pytest.mark.slow
+def test_run_dose_response_reports_referee_eai_and_ci95():
+    from graded_lab.harness.isolate import MockIsolate
+    from graded_lab.oracle_only.calibration import run_dose_response
+
+    doses = run_dose_response((1.0, 1.0, 0.0), backend=MockIsolate(), agent_type=STRONG_AGENT)
+    assert doses
+    for dose in doses:
+        assert dose.mean_eai_referee is not None
+        assert dose.deploy_rate_ci95 is not None
+        assert dose.deploy_rate_ci95["n"] == 5
+        assert dose.mean_eai_ci95 is not None
+        assert dose.mean_eai_referee_ci95 is not None

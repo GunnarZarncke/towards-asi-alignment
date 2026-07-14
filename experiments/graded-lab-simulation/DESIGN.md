@@ -340,12 +340,104 @@ hairline mid-band signal in this line — but does not reach the
 composite ceiling, because `margin_density` still falls with load).
 `CODE_VERSION` **not** bumped — no existing caller's output changed.
 
-**Not yet done:** the main calibration battery
+**Not yet done (as of FINDINGS G-20):** the main calibration battery
 (`run_calibration_battery`/`run_phase7_calibration.py`) has **not**
 been rewired to use `compute_eai_at_tier` — doing so would change
 `eai_band()` classification and every downstream pass criterion, a
 larger, separate decision (report referee-vantage EAI alongside
 agent-vantage, or replace it) deferred to a future session.
+
+---
+
+## Phase 7c full battery, both vantages, with confidence intervals
+(pre-registered 2026-07-14, before code — the deferred decision above,
+now made: report side by side, replace neither)
+
+**Requested this session:** "Run full batteries (including
+determining confidence intervals) for both oracle and referee before
+phase 8." This makes the deferral above concrete. "Oracle" here names
+what this document has been calling the **full**-tier / agent-vantage
+EAI-v2 (FINDINGS G-16/G-18) — the value `run_phase7_calibration.py`
+has always reported, computed from the agent's own full observable
+context, which is itself derived from Tier-K oracle truth (§"Oracle
+tiers" above), not a third, new vantage. "Referee" is the **light**-
+tier vantage from "EAI-referee" above. Both are computed **from the
+exact same episodes** (same seeds, same grid, same programs) in one
+battery run, not two independent runs — this makes every referee-vs-
+oracle comparison paired by seed, and is strictly cheaper (log
+post-processing on already-run episodes, no new `run_episode` calls).
+
+**Scope, stated up front:** neither vantage replaces the other.
+`CalibrationRecord`/`DoseRecord` gain new fields
+(`eai_referee`, `cell_eai_band_referee`, `mean_eai_referee`,
+`deploy_rate_ci95`, `mean_eai_ci95`, etc.), **appended after all
+existing fields with defaults**, so every existing positional-argument
+test/caller (`tests/test_phase7_calibration.py`) keeps working
+unchanged — this is an additive extension of the frozen Phase
+7c-revised evaluator, not a rewrite of it. The pre-registered bands
+(§"Emergent Ambiguity Index") and the four pass criteria
+(`evaluate_pass_criteria`) are applied **identically** to both
+vantages — same thresholds, same logic — by projecting a record's
+referee-vantage fields onto the same frozen `eai`/`cell_eai_band`
+slots the existing, already-tested `evaluate_pass_criteria`/
+`select_mid_band_cell`/`_select_dose_agent` read, rather than
+duplicating that logic for a second vantage.
+
+**CI methodology (reused from `run_referee_eai_check.py`, moved to a
+shared `oracle_only/stats.py` so both scripts use one implementation):**
+sample mean/std/SE and a two-sided 95% CI via `scipy.stats.t.ppf`
+(two-sided 95%, `df = n - 1`; declared in
+`experiments/graded-lab-simulation/requirements.txt`). Requires
+`n >= 2`; smoke runs with a single seed report `None` for the CI
+field rather than crashing. CIs are reported per `(cell, agent_type)` for `eai`/
+`eai_referee` (10 seeds each) and per dose-response point for
+`deploy_rate`/`mean_eai`/`mean_eai_referee` (5 seeds each). This is
+sample-level CI on the point estimates already computed, not a new
+statistical test of the pass criteria themselves (criterion pass/fail
+logic is unchanged, deterministic, boolean).
+
+**Pre-registered prediction, before running the full 100-episode
+battery:** based on FINDINGS G-20's single-agent-type check, we expect
+referee-vantage `eai_referee` to classify more cells `"mid"` than the
+oracle vantage does for `programmatic_softmax` (whose oracle-vantage
+`eai` rarely leaves `"low"`/hairline-`"mid"` per FINDINGS G-16), and
+for `programmatic_2step`'s referee-vantage numbers to be checked for
+the first time — G-20 only ran the strong agent. **We do not
+pre-commit to which pass criteria will flip** — FINDINGS.md reports
+whichever four booleans result, honestly, for both vantages,
+including if referee-vantage criteria 2–4 remain inconclusive for a
+reason symmetric to the oracle vantage's (e.g. `programmatic_2step`
+still never varies its cell-level deploy rate, which is a roster
+property, not a vantage property, and neither EAI computation touches
+`deployed`/`deploy_count`).
+
+**What would count as "ready to proceed to Phase 8" vs. not:** if
+referee-vantage criteria 1–4 pass or are honestly resolved
+(inconclusive-for-a-named-reason counts as resolved, not blocking) at
+a rate meaningfully better than the oracle vantage's current 1/4,
+that is a legible basis to proceed. If referee-vantage criteria remain
+just as inconclusive for the *same* roster-scope reason (FINDINGS
+G-16's fourth finding — the current two-agent-type roster's deploy
+behavior is largely vantage-independent), that is itself the
+finding, and the next backlog item would be roster scope (a third
+agent type in the main comparison, e.g. wiring in
+`programmatic_budget_aware` per FINDINGS G-17), not another EAI
+reformulation.
+
+**Run (FINDINGS G-22):** both vantages land at **1/4** pass criteria —
+oracle passes criterion 1 (`programmatic_softmax` slope `-0.146`),
+referee passes criterion 4 (graded dose-response `0.8→0.8→0.6→0.4`),
+neither clears the bar the pre-registered rule above set for
+"meaningfully better." The referee vantage does make criterion 2
+measurable for the first time (`n_ctrl_pairs` 0→40, cell classified
+"mid" at every nonzero-load cell vs. never for oracle) but the
+separation itself still fails, and the flat `programmatic_2step`
+deploy rate behind that failure is identical under both vantages — the
+same roster-scope cause, not a vantage artifact. Per the pre-
+registered rule: proceed to Phase 8 with this reported honestly; next
+backlog lever is roster scope (a third agent type in the main
+comparison), not another EAI reformulation. Full numbers in FINDINGS
+G-22.
 
 ---
 

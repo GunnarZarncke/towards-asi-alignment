@@ -146,28 +146,38 @@ def main() -> None:
 
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
     RESULTS_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
-    report = payload["pass_criteria"]
     print(f"[phase7c] wrote {RESULTS_PATH}")
     print(f"[phase7c] wall {payload['wall_seconds']}s")
-    print(
-        f"[phase7c] criterion 1 (deploy vs EAI slope < 0, within agent type): "
-        f"{report['criterion_1_deploy_eai_negative_slope']}"
-        f"{' [inconclusive]' if report['criterion_1_inconclusive'] else ''}"
-    )
-    print(f"[phase7c] criterion 2 (mid-band I_ctrl strong > weak): {report['criterion_2_mid_band_ctrl_separation']}")
-    print(
-        f"[phase7c] criterion 3 (high-band deploy collapse): "
-        f"{report['criterion_3_high_band_deploy_collapse']}"
-        f"{' [inconclusive]' if report['criterion_3_inconclusive'] else ''}"
-    )
-    print(
-        f"[phase7c] criterion 4 (graded dose-response): "
-        f"{report['criterion_4_graded_dose_response']}"
-        f"{' [inconclusive]' if report['criterion_4_inconclusive'] else ''}"
-    )
-    print(f"[phase7c] ALL PASSED: {report['all_passed']}")
+
+    def _print_report(label: str, report: dict) -> None:
+        print(
+            f"[phase7c][{label}] criterion 1 (deploy vs EAI slope < 0, within agent type): "
+            f"{report['criterion_1_deploy_eai_negative_slope']}"
+            f"{' [inconclusive]' if report['criterion_1_inconclusive'] else ''}"
+        )
+        print(f"[phase7c][{label}] criterion 2 (mid-band I_ctrl strong > weak): {report['criterion_2_mid_band_ctrl_separation']}")
+        print(
+            f"[phase7c][{label}] criterion 3 (high-band deploy collapse): "
+            f"{report['criterion_3_high_band_deploy_collapse']}"
+            f"{' [inconclusive]' if report['criterion_3_inconclusive'] else ''}"
+        )
+        print(
+            f"[phase7c][{label}] criterion 4 (graded dose-response): "
+            f"{report['criterion_4_graded_dose_response']}"
+            f"{' [inconclusive]' if report['criterion_4_inconclusive'] else ''}"
+        )
+        print(f"[phase7c][{label}] ALL PASSED: {report['all_passed']}")
+
+    # DESIGN.md "Phase 7c full battery, both vantages, with confidence
+    # intervals" (FINDINGS G-19/G-20/G-22): report the oracle/agent
+    # vantage (as before) and the referee vantage side by side, from the
+    # same episodes — neither replaces the other.
+    _print_report("oracle", payload["pass_criteria"])
     if payload.get("sweet_spot_candidate"):
-        print(f"[phase7c] sweet-spot candidate: {payload['sweet_spot_candidate']}")
+        print(f"[phase7c][oracle] sweet-spot candidate: {payload['sweet_spot_candidate']}")
+    _print_report("referee", payload["pass_criteria_referee"])
+    if payload.get("sweet_spot_candidate_referee"):
+        print(f"[phase7c][referee] sweet-spot candidate: {payload['sweet_spot_candidate_referee']}")
 
 
 if __name__ == "__main__":

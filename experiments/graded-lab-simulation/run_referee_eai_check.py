@@ -21,7 +21,6 @@ Usage:
 from __future__ import annotations
 
 import json
-import math
 import time
 from pathlib import Path
 
@@ -36,51 +35,13 @@ from graded_lab.oracle_only.calibration import (
     programs_for,
 )
 from graded_lab.oracle_only.eai import eai_components_at_tier, tier_i_fraction_from_log
+from graded_lab.oracle_only.stats import ci95 as _ci95
+from graded_lab.oracle_only.stats import paired_diff_ci95 as _paired_diff_ci95
 from graded_lab.world_visible.config import CODE_VERSION, SubstrateSettings
 from graded_lab.world_visible.world import run_episode
 
 RESULTS_PATH = Path(__file__).resolve().parent / "results" / "referee_eai_check.json"
 TIERS = ("full", "light")
-
-# Two-sided 95% t critical value for df = len(CALIBRATION_SEEDS) - 1 = 9.
-# No scipy dependency in this venv; hardcoded standard table value,
-# valid only for n=10 seeds (checked below, not silently reused if the
-# seed count ever changes).
-T_CRIT_95_DF9 = 2.262
-
-
-def _mean_std_se(values: list[float]) -> tuple[float, float, float]:
-    n = len(values)
-    mean = sum(values) / n
-    if n < 2:
-        return mean, 0.0, 0.0
-    variance = sum((v - mean) ** 2 for v in values) / (n - 1)
-    std = math.sqrt(variance)
-    se = std / math.sqrt(n)
-    return mean, std, se
-
-
-def _ci95(values: list[float]) -> dict[str, float]:
-    mean, std, se = _mean_std_se(values)
-    half_width = T_CRIT_95_DF9 * se
-    return {
-        "mean": round(mean, 6),
-        "std": round(std, 6),
-        "se": round(se, 6),
-        "ci95_low": round(mean - half_width, 6),
-        "ci95_high": round(mean + half_width, 6),
-    }
-
-
-def _paired_diff_ci95(a: list[float], b: list[float]) -> dict[str, float]:
-    """Paired difference a - b, paired by seed index (same seed set used
-    at every cell). More power than an unpaired comparison here, since
-    per-seed episode idiosyncrasies (FINDINGS G-16/G-17's "single seed
-    flip" caveat) are common to both cells being compared."""
-    diffs = [x - y for x, y in zip(a, b)]
-    stats = _ci95(diffs)
-    stats["zero_in_ci95"] = stats["ci95_low"] <= 0.0 <= stats["ci95_high"]
-    return stats
 
 
 def main() -> None:
@@ -120,9 +81,6 @@ def main() -> None:
         by_cell[carrier_load_scale] = by_tier
 
     wall = round(time.perf_counter() - t0, 2)
-    assert len(CALIBRATION_SEEDS) == 10, (
-        "T_CRIT_95_DF9 is hardcoded for n=10 seeds; update it if this changes"
-    )
 
     def _stats_row(by_tier: dict[str, dict[str, list[float]]]) -> dict[str, dict[str, dict[str, float]]]:
         return {

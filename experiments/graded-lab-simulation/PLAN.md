@@ -1,28 +1,37 @@
 # Graded Lab Simulation — Implementation Plan
 
 **Status: Phases 0–7c done (incl. Phase 7c-revised calibration battery,
-correcting the initial Phase 7c evaluator, plus both of its registered
-backlog items); Phase 8 not started (2026-07-14).** Phase 2–3
+its two registered backlog items, and the full both-vantage battery
+with 95% CIs); Phase 8 not started (2026-07-14).** Phase 2–3
 deliverables and freeze gates met; Phase 3b mechanics and Phase 4
 trace/counterfactual engineering gates passed (see `results/FINDINGS.md`
-G-2–G-5, G-8–G-18). Revised 5-cell `carrier_load_scale` calibration
+G-2–G-5, G-8–G-22). Revised 5-cell `carrier_load_scale` calibration
 battery results live in `results/ecology_calibration.json` (run
 `python3 run_phase7_calibration.py`; `--legacy` reproduces the original
-16-cell compute×spread grid as a diagnostic). **Main battery still
-does not pass (1/4 criteria conclusively); both registered backlog
-items from FINDINGS G-16 are now resolved but did not flip that verdict:**
-a resource-sensitive agent program (`programmatic_budget_aware`)
-validates in its own small, separate battery (FINDINGS G-17) but was
-not wired into the main strong/weak criteria comparison this pass; the
-`eai.py`/`world.py` entropy-logging fix (EAI-v2, FINDINGS G-18) is
-verified correct but the measured effect on this substrate is a
-**reported null** — the entropy component stays `≈0` because this
-substrate is close to deterministic given full agent-visible context,
-not because of any remaining logging defect. Phase 8 is now blocked on
-a genuinely harder question than G-16 anticipated: whether the
-pre-registered "high" EAI band is reachable **at all** for this
-substrate's actual statistics, not on unfixed instrumentation — see
-FINDINGS G-17/G-18 and `DESIGN.md` "Phase 7c-revised" / "EAI-v2".
+16-cell compute×spread grid as a diagnostic), now reporting **both**
+the oracle/agent vantage (as before) and a referee vantage
+(light-audit-tier EAI) side by side, with a 95% CI per cell/agent
+type, from the same 100 episodes. **Neither vantage passes (each 1/4
+criteria); registered backlog items from FINDINGS G-16 are resolved
+but did not flip that verdict, and the referee reframe (FINDINGS
+G-19/G-20) did not either (FINDINGS G-22):** a resource-sensitive
+agent program (`programmatic_budget_aware`) validates in its own
+small, separate battery (FINDINGS G-17) but is not yet wired into the
+main strong/weak criteria comparison; the `eai.py`/`world.py`
+entropy-logging fix (EAI-v2, FINDINGS G-18) is verified correct, and
+the referee-vantage entropy component is materially non-zero (FINDINGS
+G-20) — but the pass-criteria verdict is 1/4 under **both** vantages,
+just a *different* one of the four criteria each time (oracle:
+criterion 1; referee: criterion 4), and the shared blocker behind
+criterion 2's failure under both is the same roster-scope cause FINDINGS
+G-16 named (`programmatic_2step`'s flat cell-level deploy rate).
+Per the pre-registered decision rule in `DESIGN.md` "Phase 7c full
+battery, both vantages, with confidence intervals": proceed to Phase 8
+with this reported honestly; the next calibration lever is roster
+scope (wiring a third agent type — e.g. `programmatic_budget_aware` —
+into the main comparison), not another EAI reformulation. See FINDINGS
+G-16–G-22 and `DESIGN.md` "Phase 7c-revised" / "EAI-v2" / "EAI-referee"
+/ "Phase 7c full battery, both vantages".
 
 **Spawn trigger:** `experiments/lab-simulation/results/FINDINGS.md` **G-41**
 (meta-assessment: the lab-sim ecology is too boolean/predictable for
@@ -634,7 +643,7 @@ bumped like lab-sim.
 | **6 — Blind behavior features** | `BLIND_GENERATION.md`, `generated_behavior_features_v1.json`, validator | Generator predictions registered before code import |
 | **7a — UAD + intervention trace validation** | Port/adapt UAD over primitive traces; perturbation protocol; recovered-unit evaluation | UAD unit/boundary recovery and intervention semantics checked before any BIQ estimator is fitted |
 | **7b — UAD-backed ecology-BIQ** | Discrete MI/CMI, intervention-supported control, declared retained-state proxy, held-out surprise over inferred units | Estimators/units frozen; values reported in bits/nats or terms explicitly unavailable — **done** (`oracle_only/unit_biq.py`, G-13); `I_ctrl` resource-contention confound documented, not silently patched |
-| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) — **implemented, then corrected, then both backlog items resolved** (`run_phase7_calibration.py`; G-15 initial run, G-16 correction — see "Phase 7c-revised" in `DESIGN.md`); full-battery pass/fail read from JSON; criteria 1/3/4 still `inconclusive`-by-construction for the *main* battery — the resource-sensitive agent program (G-17) validated separately without being wired into the main comparison, and the EAI entropy-logging fix (EAI-v2, G-18) is verified correct but its measured effect on this substrate is a reported null, so the high band remains structurally unreached for a substrate-statistics reason, not an instrumentation one |
+| **7c — Ecology calibration battery** | Sweep substrate settings (→ measured EAI) × agent types × seeds; `results/ecology_calibration.json` | **Sweet-spot gate:** monotonic separation on UAD-backed BIQ; else adjust substrate allowances/populations only (not referee, not EAI formula) — **implemented, then corrected, then both backlog items resolved, then run under both vantages with 95% CIs** (`run_phase7_calibration.py`; G-15 initial run, G-16 correction — see "Phase 7c-revised" in `DESIGN.md`); full-battery pass/fail read from JSON for **both** the oracle/agent vantage and a referee (light-audit-tier) vantage, computed from the same 100 episodes — **neither passes (1/4 each, a different criterion each time)**; the resource-sensitive agent program (G-17) validated separately without being wired into the main comparison; EAI-v2 (G-18) is verified correct with a reported-null effect at the agent vantage; the referee reframe (G-19/G-20) makes criterion 2 measurable for the first time but does not flip the verdict (G-22) — next lever is roster scope, not another EAI reformulation |
 | **8 — Multi-episode / selection (MB6)** | Campaign runner, persistent grants/standing, throughput-linked selection | **Only if Phase 7 passes** — pre-registered selection rule, no retrospective tuning |
 
 **Hard rule:** Phases 0–7 are **single-episode** only. Phase 8 is the first
@@ -952,12 +961,20 @@ text), not a code task; listed here so it is not lost as an open item.
    referee-vantage **composite** EAI lands cleanly in the
    pre-registered **mid** band (`0.33`–`0.40`) at every nonzero-load
    cell — the first non-hairline mid-band signal in this line — though
-   it still does not reach the **high** band at any cell. **Next
-   concrete step before further Phase 8 spend:** decide whether/how to
-   wire this referee-vantage EAI into the main calibration battery
-   (report both vantages side by side, or replace the agent-vantage
-   one) — not yet done, a separate pre-registered decision per
-   `DESIGN.md` "EAI-referee".
+   it still does not reach the **high** band at any cell. **Wired into
+   the main battery and run in full with 95% CIs (FINDINGS G-22):**
+   both vantages now land at **1/4** pass criteria on the same 100
+   episodes — oracle passes criterion 1, referee passes criterion 4 —
+   neither clears the "meaningfully better" bar the pre-registered
+   decision rule set. The referee vantage does make criterion 2
+   measurable for the first time (`n_ctrl_pairs` 0→40, since it
+   classifies every nonzero-load cell "mid" vs. never for oracle), but
+   the separation itself still fails for the same roster-scope reason
+   as under oracle vantage (`programmatic_2step`'s flat deploy rate).
+   **Per that rule, this go/no-go question is now resolved: proceed to
+   Phase 8, and treat roster scope (a third agent type in the main
+   comparison) as the next calibration lever if pursued further — not
+   another EAI reformulation.**
 
 **Not yet done:** none of the four have been written into their chapters
 yet. This entry exists so the mapping is not re-derived from scratch in a

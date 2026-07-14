@@ -17,10 +17,17 @@ from typing import Any, Iterable
 from ..world_visible.config import EpisodeConfig, SubstrateSettings
 from ..world_visible.world import default_lab_config, run_episode
 from .detectors import build_audit_view, run_all_detectors
+from .eai import compute_eai_at_tier, tier_i_fraction_from_log
 from .severity import score_episode
+from .stats import ci95
 from .uad_passive import discovered_units_passive
 from .uad_partition import full_partition_match
 from .unit_biq import unit_control_bits
+
+# Referee vantage (DESIGN.md "EAI-referee" / "Phase 7c full battery, both
+# vantages, with confidence intervals"; FINDINGS G-19/G-20/G-22). The
+# oracle/agent vantage stays the existing `full`-tier `result.eai`.
+REFEREE_TIER = "light"
 
 AGENT_TYPES = ("programmatic_softmax", "programmatic_2step")
 STRONG_AGENT = "programmatic_softmax"
@@ -174,6 +181,14 @@ class CalibrationRecord:
     # existing positional-argument callers/tests keep working unchanged.
     carrier_load_scale: float = 0.0
     cell_eai_band: str | None = None
+    # Added 2026-07-14 (FINDINGS G-19/G-20/G-22): referee-vantage (light
+    # audit tier) EAI, computed from the SAME episode as `eai` above, not
+    # a second episode. Appended at the end with defaults so every
+    # existing positional-argument caller keeps working unchanged; this
+    # does not replace `eai`/`cell_eai_band` (the oracle/agent vantage),
+    # which remain exactly as before.
+    eai_referee: float | None = None
+    cell_eai_band_referee: str | None = None
 
 
 @dataclass(frozen=True)
@@ -184,6 +199,12 @@ class DoseRecord:
     deploy_rate: float
     mean_eai: float
     n_seeds: int
+    # Added 2026-07-14 (FINDINGS G-19/G-20/G-22), same append-only
+    # discipline as `CalibrationRecord` above.
+    mean_eai_referee: float | None = None
+    deploy_rate_ci95: dict[str, float] | None = None
+    mean_eai_ci95: dict[str, float] | None = None
+    mean_eai_referee_ci95: dict[str, float] | None = None
 
 
 @dataclass
@@ -300,17 +321,23 @@ def classify_cells_by_reference_agent(
     records: list[CalibrationRecord],
     *,
     reference_agent: str = REFERENCE_AGENT,
+    eai_field: str = "eai",
 ) -> dict[tuple[float, float, float], str | None]:
     """Cell-level EAI band via the *reference* agent's per-cell mean EAI —
     matching the original "Emergent Ambiguity Index" band definition
     (DESIGN.md: "Mid EAI: ... strong > weak on ≥80% seeds", i.e. the band
     classifies the cell via the reference agent, not each compared
-    agent's own episode; FINDINGS G-16 Cause 3)."""
+    agent's own episode; FINDINGS G-16 Cause 3).
+
+    `eai_field` selects which record attribute to classify by — `"eai"`
+    (default, the oracle/agent vantage) or `"eai_referee"` (the referee
+    vantage, FINDINGS G-19/G-20/G-22) — both computed from the same
+    episodes, never a second battery run."""
     by_cell: dict[tuple[float, float, float], list[float]] = {}
     for record in records:
         if record.agent_type != reference_agent:
             continue
-        by_cell.setdefault(_cell_key(record), []).append(record.eai)
+        by_cell.setdefault(_cell_key(record), []).append(getattr(record, eai_field))
     return {
         cell: eai_band(sum(values) / len(values))
         for cell, values in by_cell.items()
@@ -320,10 +347,29 @@ def classify_cells_by_reference_agent(
 def _apply_cell_bands(
     records: list[CalibrationRecord],
     cell_bands: dict[tuple[float, float, float], str | None],
+    *,
+    band_field: str = "cell_eai_band",
 ) -> list[CalibrationRecord]:
     return [
-        replace(record, cell_eai_band=cell_bands.get(_cell_key(record)))
+        replace(record, **{band_field: cell_bands.get(_cell_key(record))})
         for record in records
+    ]
+
+
+def _vantage_records(
+    records: list[CalibrationRecord],
+    *,
+    eai_field: str,
+    band_field: str,
+) -> list[CalibrationRecord]:
+    """Project an alternate vantage's EAI/band fields onto the `eai`/
+    `cell_eai_band` slots the frozen Phase 7c-revised evaluator
+    (`select_mid_band_cell`, `_select_dose_agent`, `evaluate_pass_criteria`)
+    already reads — reuses that logic exactly instead of duplicating it
+    per vantage (DESIGN.md "Phase 7c full battery, both vantages")."""
+    return [
+        replace(r, eai=getattr(r, eai_field), cell_eai_band=getattr(r, band_field))
+        for r in records
     ]
 
 
@@ -487,6 +533,16 @@ def _select_dose_agent(records: list[CalibrationRecord], cell: tuple[float, floa
     return None
 
 
+def _referee_eai(result) -> float:
+    """Same episode as `result.eai` (the oracle/agent-vantage EAI-v2
+    value); recomputes only the entropy term's observer, per DESIGN.md
+    "EAI-referee" (FINDINGS G-19/G-20)."""
+    tier_i_fraction = tier_i_fraction_from_log(result.primitive_log)
+    return compute_eai_at_tier(
+        result.primitive_log, result.decision_margins, tier_i_fraction, REFEREE_TIER,
+    )
+
+
 def run_calibration_episode(
     cfg: EpisodeConfig,
     *,
@@ -497,6 +553,7 @@ def run_calibration_episode(
     programs = programs_for(agent_type)
     result = run_episode(cfg, seed, backend, programs=programs)
     band = eai_band(result.eai)
+    eai_referee = _referee_eai(result)
     return CalibrationRecord(
         compute_scale=cfg.substrate_settings.compute_scale,
         population_spread_scale=cfg.substrate_settings.population_spread_scale,
@@ -513,6 +570,8 @@ def run_calibration_episode(
         i_ctrl_bits=None,
         carrier_load_scale=cfg.substrate_settings.carrier_load_scale,
         cell_eai_band=None,
+        eai_referee=eai_referee,
+        cell_eai_band_referee=None,
     )
 
 
@@ -524,7 +583,10 @@ def run_dose_response(
 ) -> list[DoseRecord]:
     """Sweep `carrier_load_scale` upward from the anchor cell's own value
     (the demonstrated-causal knob per FINDINGS G-16), not `compute_scale`
-    (shown to have no effect within its frozen range)."""
+    (shown to have no effect within its frozen range). Computes both
+    vantages' EAI from the same episodes (FINDINGS G-19/G-20/G-22), plus
+    a 95% CI on `deploy_rate`/`mean_eai`/`mean_eai_referee` over the
+    `DOSE_SEEDS` seeds."""
     compute_scale, population_spread_scale, base_load = cell
     out: list[DoseRecord] = []
     for delta in DOSE_LOAD_DELTAS:
@@ -535,23 +597,61 @@ def run_dose_response(
         )
         cfg = config_for_settings(settings)
         programs = programs_for(agent_type)
-        deploys = 0
+        deploys: list[float] = []
         eais: list[float] = []
+        eais_referee: list[float] = []
         for seed in DOSE_SEEDS:
             result = run_episode(cfg, seed, backend, programs=programs)
-            deploys += int(result.deployed)
+            deploys.append(float(result.deployed))
             eais.append(result.eai)
+            eais_referee.append(_referee_eai(result))
         out.append(
             DoseRecord(
                 compute_scale=compute_scale,
                 population_spread_scale=population_spread_scale,
                 carrier_load_scale=settings.carrier_load_scale,
-                deploy_rate=deploys / len(DOSE_SEEDS),
+                deploy_rate=sum(deploys) / len(deploys),
                 mean_eai=sum(eais) / len(eais),
                 n_seeds=len(DOSE_SEEDS),
+                mean_eai_referee=sum(eais_referee) / len(eais_referee),
+                deploy_rate_ci95=ci95(deploys),
+                mean_eai_ci95=ci95(eais),
+                mean_eai_referee_ci95=ci95(eais_referee),
             )
         )
     return out
+
+
+def _safe_ci95(values: list[float]) -> dict[str, float] | None:
+    """Return ``None`` when fewer than two samples (CI undefined), else
+    ``ci95`` (uses ``scipy`` for the Student-``t`` critical value)."""
+    if len(values) < 2:
+        return None
+    return ci95(values)
+
+
+def _eai_ci_by_cell_agent(
+    records: list[CalibrationRecord],
+) -> dict[str, dict[str, dict[str, float] | None]]:
+    """95% CI on `eai` (oracle vantage) and `eai_referee` (referee
+    vantage) per `(cell, agent_type)`, across whatever seeds were run —
+    DESIGN.md "Phase 7c full battery, both vantages, with confidence
+    intervals" / FINDINGS G-22. Both are computed from the identical set
+    of episodes, so they are directly, seed-for-seed comparable."""
+    by_key: dict[str, dict[str, list[float]]] = {}
+    for r in records:
+        key = f"{_cell_key(r)}|{r.agent_type}"
+        entry = by_key.setdefault(key, {"oracle": [], "referee": []})
+        entry["oracle"].append(r.eai)
+        if r.eai_referee is not None:
+            entry["referee"].append(r.eai_referee)
+    return {
+        key: {
+            "oracle": _safe_ci95(values["oracle"]),
+            "referee": _safe_ci95(values["referee"]) if values["referee"] else None,
+        }
+        for key, values in by_key.items()
+    }
 
 
 def run_calibration_battery(
@@ -563,6 +663,13 @@ def run_calibration_battery(
     compute_i_ctrl: bool = True,
     progress: bool = True,
 ) -> dict[str, Any]:
+    """Runs the Phase 7c-revised battery once and evaluates it under
+    **both** vantages (DESIGN.md "Phase 7c full battery, both vantages,
+    with confidence intervals"; FINDINGS G-19/G-20/G-22): the oracle/
+    agent vantage (`eai`, as before — every existing key in the
+    returned dict keeps its old meaning) and the referee vantage
+    (`eai_referee`), reported under `*_referee`-suffixed keys, computed
+    from the exact same episodes, never a second battery run."""
     from ..harness.isolate import MockIsolate
 
     backend = backend or MockIsolate()
@@ -591,10 +698,19 @@ def run_calibration_battery(
                 )
 
     cell_bands = classify_cells_by_reference_agent(records)
-    records = _apply_cell_bands(records, cell_bands)
+    records = _apply_cell_bands(records, cell_bands, band_field="cell_eai_band")
+    cell_bands_referee = classify_cells_by_reference_agent(records, eai_field="eai_referee")
+    records = _apply_cell_bands(records, cell_bands_referee, band_field="cell_eai_band_referee")
+
+    eai_ci = _eai_ci_by_cell_agent(records)
 
     if compute_i_ctrl:
+        # Union of both vantages' "mid" cells (FINDINGS G-22): a cell
+        # that is mid under either vantage gets I_ctrl computed once,
+        # reused by both criterion-2 evaluations below — not two
+        # independent I_ctrl computations per vantage.
         mid_cells = {cell for cell, band in cell_bands.items() if band == "mid"}
+        mid_cells |= {cell for cell, band in cell_bands_referee.items() if band == "mid"}
         ctrl_total = sum(1 for r in records if _cell_key(r) in mid_cells)
         ctrl_done = 0
         updated: list[CalibrationRecord] = []
@@ -616,19 +732,40 @@ def run_calibration_battery(
             updated.append(replace(record, i_ctrl_bits=i_ctrl))
         records = updated
 
+    referee_records = _vantage_records(records, eai_field="eai_referee", band_field="cell_eai_band_referee")
+
     mid_cell = select_mid_band_cell(records)
+    mid_cell_referee = select_mid_band_cell(referee_records)
+    dose_agent = _select_dose_agent(records, mid_cell) if mid_cell is not None else None
+    dose_agent_referee = (
+        _select_dose_agent(referee_records, mid_cell_referee) if mid_cell_referee is not None else None
+    )
+
     dose_records: list[DoseRecord] = []
-    dose_agent = None
-    if mid_cell is not None:
-        dose_agent = _select_dose_agent(records, mid_cell)
-        if dose_agent is not None:
+    dose_records_referee: list[DoseRecord] = []
+    if mid_cell is not None and dose_agent is not None:
+        if progress:
+            print(f"[calibration] dose-response (oracle) on mid cell {mid_cell} agent={dose_agent}")
+        dose_records = run_dose_response(mid_cell, backend=backend, agent_type=dose_agent)
+    elif mid_cell is not None and progress:
+        print(f"[calibration] mid cell {mid_cell} has no agent type with deploy variance — oracle dose-response skipped")
+
+    if mid_cell_referee is not None and dose_agent_referee is not None:
+        if (mid_cell_referee, dose_agent_referee) == (mid_cell, dose_agent) and dose_records:
+            # Same target under both vantages — reuse the run just above
+            # rather than rerunning identical episodes (each DoseRecord
+            # already carries both `mean_eai` and `mean_eai_referee`).
+            dose_records_referee = dose_records
+        else:
             if progress:
-                print(f"[calibration] dose-response on mid cell {mid_cell} agent={dose_agent}")
-            dose_records = run_dose_response(mid_cell, backend=backend, agent_type=dose_agent)
-        elif progress:
-            print(f"[calibration] mid cell {mid_cell} has no agent type with deploy variance — dose-response skipped")
+                print(f"[calibration] dose-response (referee) on mid cell {mid_cell_referee} agent={dose_agent_referee}")
+            dose_records_referee = run_dose_response(mid_cell_referee, backend=backend, agent_type=dose_agent_referee)
+    elif mid_cell_referee is not None and progress:
+        print(f"[calibration] mid cell {mid_cell_referee} has no agent type with deploy variance — referee dose-response skipped")
 
     report = evaluate_pass_criteria(records, dose_records)
+    report_referee = evaluate_pass_criteria(referee_records, dose_records_referee)
+
     sweet_spot = None
     if mid_cell is not None:
         sweet_spot = {
@@ -638,13 +775,27 @@ def run_calibration_battery(
             "mean_eai": _mean_eai_for_cell(records, mid_cell),
             "dose_response_agent": dose_agent,
         }
+    sweet_spot_referee = None
+    if mid_cell_referee is not None:
+        sweet_spot_referee = {
+            "compute_scale": mid_cell_referee[0],
+            "population_spread_scale": mid_cell_referee[1],
+            "carrier_load_scale": mid_cell_referee[2],
+            "mean_eai": _mean_eai_for_cell(referee_records, mid_cell_referee),
+            "dose_response_agent": dose_agent_referee,
+        }
 
     return {
         "records": [asdict(r) for r in records],
         "dose_records": [asdict(d) for d in dose_records],
+        "dose_records_referee": [asdict(d) for d in dose_records_referee],
         "pass_criteria": asdict(report),
+        "pass_criteria_referee": asdict(report_referee),
         "sweet_spot_candidate": sweet_spot,
+        "sweet_spot_candidate_referee": sweet_spot_referee,
         "cell_bands": {str(cell): band for cell, band in cell_bands.items()},
+        "cell_bands_referee": {str(cell): band for cell, band in cell_bands_referee.items()},
+        "eai_ci95_by_cell_agent": eai_ci,
         "grid": {
             "carrier_load_scales": list(CARRIER_SCALES),
             "compute_scale": NOMINAL_COMPUTE_SCALE,

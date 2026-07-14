@@ -1405,3 +1405,106 @@ further experiments" framing of the question.
   analysis, not added as a permanent script — if this decomposition
   proves useful again, promoting it to a reusable helper is a
   separate, future decision).
+
+## G-22 (full both-vantage Phase 7c battery with 95% CIs — pre-registered
+2026-07-14 per this session's request, run same day)
+
+**Trigger.** "Run full batteries (including determining confidence
+intervals) for both oracle and referee before phase 8" — making
+concrete the deferral DESIGN.md's "EAI-referee" section left open after
+G-20 ("has **not** been rewired to use `compute_eai_at_tier`... a
+larger, separate decision... deferred to a future session").
+
+**What changed (pre-registered in DESIGN.md "Phase 7c full battery,
+both vantages, with confidence intervals" before this run).** The main
+calibration battery (`run_calibration_battery`) now computes **both**
+vantages from the **same** 100 episodes (5 cells × 2 agent types × 10
+seeds) in one run — not two independent battery runs — and reports
+both side by side:
+
+- `CalibrationRecord`/`DoseRecord` gained `eai_referee`/
+  `cell_eai_band_referee` and `mean_eai_referee`/`*_ci95` fields,
+  appended after every existing field with defaults; every existing
+  positional-argument test in `test_phase7_calibration.py` still passes
+  unchanged (verified, not assumed).
+- A new `_vantage_records()` helper projects the referee-vantage fields
+  onto the `eai`/`cell_eai_band` slots the frozen `select_mid_band_cell`/
+  `_select_dose_agent`/`evaluate_pass_criteria` already read, so those
+  three functions run **unmodified** for the referee vantage too — no
+  second copy of the pass-criteria logic.
+- `I_ctrl` is computed once per cell that is "mid" under **either**
+  vantage (the union), not twice.
+- A new `oracle_only/stats.py` (`ci95`/`paired_diff_ci95`, generalized
+  from `run_referee_eai_check.py`'s inline copy, which now imports from
+  it — same numbers, verified by rerunning it after the extraction) adds
+  a 95% CI per `(cell, agent_type)` on `eai`/`eai_referee` (n=10) and per
+  dose-response point on `deploy_rate`/`mean_eai`/`mean_eai_referee`
+  (n=5). Deliberately raises on an unregistered sample size rather than
+  guessing a t-critical value; the battery wraps this in `_safe_ci95`
+  so a non-standard seed count (e.g. the 2-seed smoke test) reports
+  `None` instead of crashing.
+
+**Result of the full run** (`results/ecology_calibration.json`,
+`programmatic_softmax`/`programmatic_2step`, 5 `carrier_load_scale`
+cells × nominal `compute_scale`/`population_spread_scale`, wall
+`431.7s`):
+
+| | oracle vantage (full-tier, as before) | referee vantage (light-tier) |
+|---|---|---|
+| cell bands (reference agent) | `{0.0: None, 0.5: None, 1.0: low, 1.5: None, 2.0: low}` — **never reaches "mid"** | `{0.0: None, 0.5: mid, 1.0: mid, 1.5: mid, 2.0: mid}` — mid at every nonzero-load cell |
+| mid cell selected | none (no dose-response, no sweet spot) | `(1.0, 1.0, 1.5)` |
+| criterion 1 (deploy↓ as EAI↑, within type) | **True** (softmax slope `-0.146`) | **False** (softmax slope `+0.177` — reversed sign) |
+| criterion 2 (mid-band I_ctrl strong>weak) | inconclusive-as-null (`n_ctrl_pairs=0`, cell never mid) | **False**, but now measurable (`n_ctrl_pairs=40`, `ctrl_fraction=0.325`) |
+| criterion 3 (high-band deploy collapse) | inconclusive (no high-band cell) | inconclusive (no high-band cell) |
+| criterion 4 (graded dose-response) | inconclusive (no dose-response ran) | **True** (deploy rate `0.8→0.8→0.6→0.4` over the 4 load steps past the mid cell) |
+| **all_passed** | **False (1/4: criterion 1)** | **False (1/4: criterion 4)** |
+
+Representative CIs (`(cell, agent_type)`, n=10 seeds, mean `[95% CI]`):
+`programmatic_softmax` referee-vantage EAI is `0.250 [0.237,0.263]` at
+load 0.0 rising to `0.396 [0.347,0.444]` at load 1.5 (same non-
+monotonic shape as G-20/G-21, now with every cell's own CI on record);
+`programmatic_2step` referee-vantage EAI is `0.056 [-0.006,0.118]` at
+load 0.0 (CI crosses zero — genuinely noisy at the no-stress cell) up
+to `≈0.24` at every stressed cell, all with tight, non-zero-crossing
+CIs. Oracle-vantage EAI for both agent types stays under `0.26`
+everywhere, mostly with tight, clearly-nonzero CIs (it is small, not
+noise — the "high band unreachable" finding is a real ceiling, not an
+artifact of few seeds).
+
+**Interpretation — matches the pre-registered decision rule exactly,**
+which said the next backlog item is roster scope, not another EAI
+reformulation, unless referee-vantage criteria resolve "meaningfully
+better" than the oracle vantage's 1/4. They do not: **both vantages
+land at 1/4 pass**, just a *different* one of the four criteria. The
+referee vantage does make criterion 2 measurable for the first time
+(`n_ctrl_pairs` 0→40) — a genuine improvement in usable data density —
+but the *separation itself* (`ctrl_fraction=0.325`, below whatever
+threshold "true" requires) still fails, for a reason unrelated to
+vantage: `programmatic_2step`'s cell-level deploy rate is flat (`0.0`
+range) under **both** vantages (`cell_deploy_range_by_agent_type` is
+identical in both `pass_criteria` blocks), the same "roster-scope"
+limitation FINDINGS G-16 named as its fourth cause. Criterion 1
+flipping sign between vantages (`-0.146` → `+0.177` for the same
+agent, same episodes) is reported as found, not smoothed over: it
+means "does the strong agent deploy less when the ecology looks more
+ambiguous" gets **opposite answers** depending on whose ambiguity is
+being asked about — a substantive, not incidental, difference between
+the two vantages, worth carrying into the manuscript integration
+backlog rather than treating as agreement.
+
+**Decision, per the pre-registered criterion:** proceed to Phase 8
+with this reported honestly as the calibration state — neither vantage
+clears the bar, and the pattern points at roster scope (a third agent
+type in the main comparison, e.g. wiring in FINDINGS G-17's
+`programmatic_budget_aware`) as the next lever, not a further EAI
+reformulation. This is not attempted in this session; recorded as the
+concrete next backlog item.
+
+- `CODE_VERSION` **not** bumped (additive: every existing key in
+  `run_calibration_battery`'s output dict keeps its old meaning and
+  value; new keys are pure additions, same convention as G-20).
+- Full test suite green (180 tests, including new
+  `tests/test_stats.py` and the new referee/CI regression tests in
+  `tests/test_phase7_calibration.py`), `[speed] OK [slow]` at `289s`
+  against a `340s` cap (raised from `300s` to keep margin after the new
+  slow dose-response CI test).
