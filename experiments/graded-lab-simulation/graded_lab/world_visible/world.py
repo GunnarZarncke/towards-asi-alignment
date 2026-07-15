@@ -28,7 +28,8 @@ from .pipeline_spec import load_spec
 from .primitives import PrimitiveAction, primitive_cost
 from .resource_ledger import ResourceLedger
 from .scheduler import ActionScheduler
-from .substrate import ecology_path_for_version, load_substrate, standing_stock_for_role
+from .exogenous_workload import ExogenousWorkloadEngine
+from .substrate import ecology_path_for_version, is_v2_shaped_ecology, load_substrate, standing_stock_for_role
 from .workspace import Workspace
 
 
@@ -372,7 +373,7 @@ def run_episode(
     # resolves to the unchanged `DEFAULT_SUBSTRATE_PATH`, so every
     # existing caller (which never sets `ecology_version`) is byte-for-
     # byte unaffected.
-    substrate = load_substrate(ecology_path_for_version(cfg.ecology_version))
+    substrate = load_substrate(cfg.ecology_override_path or ecology_path_for_version(cfg.ecology_version))
     substrate_data = substrate.data
     oracle = OracleWorld(
         seed=seed,
@@ -388,6 +389,11 @@ def run_episode(
     carriers = CarrierLedger()
     scheduler = ActionScheduler(substrate_data, record_contention=cfg.record_contention)
     standing_mechanics = substrate_data["standing_mechanics"]
+    workload_engine: ExogenousWorkloadEngine | None = None
+    if is_v2_shaped_ecology(substrate_data):
+        raw_workload = substrate_data.get("exogenous_workload")
+        if raw_workload is not None:
+            workload_engine = ExogenousWorkloadEngine(raw_workload, seed=seed)
 
     program_map = programs or {a.actor_id: "softmax_optimizer" for a in cfg.agents}
     allowances = _allowances_map(cfg, substrate_data)
@@ -434,6 +440,8 @@ def run_episode(
 
     try:
         for t in range(cfg.T):
+            if workload_engine is not None:
+                workload_engine.tick(t)
             for actor_id, compute, io in scheduler.charge_current_tick():
                 res = ledger.actors[actor_id]
                 if not res.can_afford(compute, io):
@@ -686,6 +694,10 @@ def run_episode(
                 compute, io = primitive_cost(
                     action, substrate_data, estimated_bytes=est_bytes, draws=draws
                 )
+                if workload_engine is not None:
+                    cs, ios = workload_engine.cost_scale_for(agent.role)
+                    compute *= cs
+                    io *= ios
                 duration = scheduler.duration_ticks(compute, io, scheduler.queue_depth)
                 tick_compute = compute / duration
                 tick_io = io / duration

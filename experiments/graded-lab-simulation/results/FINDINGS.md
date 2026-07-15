@@ -2431,12 +2431,9 @@ auditor. C1–C5's mechanical definitions and thresholds are explicitly
 **unchanged**; only the substrate's capacity to plausibly satisfy C3 and
 the grower's ability to notice how close it is change.
 
-**Status.** Planning only. No brief sent, no engine change made, no new
-growth round launched. Explicit engineering prerequisites (multi-actor
-schema + regression test against the v1/v2 digest pins, workload
-mechanism interface, pilot-runner field audit, BLIND_GENERATION.md v2-2b
-section, a pre-registered FINDINGS entry before round 1) are listed in
-`PLAN_V2_2B.md` and none have been started.
+**Status.** Superseded by GL-40 for engineering status. GL-39 remains the
+diagnosis record; implementation landed in GL-40. No V2-2b grower round
+launched yet.
 
 - `CODE_VERSION` `graded-lab-0.18.1` (unchanged; this entry is
   planning/documentation only).
@@ -2511,3 +2508,190 @@ remain gated on a C1–C5-passing ecology per `PLAN_v2.md`.
 - Artifacts: `generated_ecology_v2_round4.{json,md}` +
   `generated_ecology_v2_round4_knowledge_base.md`.
 - `CODE_VERSION` `graded-lab-0.18.1` (unchanged).
+
+## GL-40 (V2-2b engineering — multi-actor, workload, pilot sandbox)
+
+**Trigger.** `PLAN_V2_2B.md` diagnosis (GL-39) agreed: V2-2's C3 failure was
+a protocol/design issue (emergent criterion + hidden cardinality + no
+legitimate gradient under pass/fail-only blinding), not a grower-quality
+issue. Three engineering changes were pre-registered before any new
+growth round.
+
+**Implementation (`CODE_VERSION` `graded-lab-0.19.0`):**
+
+1. **`role_population`** — optional v2 JSON field; `ecology_agents.py`
+   builds N actors per role (max 8). Count=1 preserves legacy ids for
+   V2-2 round replay. Reference checker roster comes from the candidate
+   ecology via `build_agents_from_ecology()` + `programs_for_roster(WEAK_AGENT)`.
+2. **`exogenous_workload`** — optional v2 JSON block;
+   `ExogenousWorkloadEngine` applies per-role `resource_demand_scale`
+   during `periodic` or `poisson` windows; wired in `world.run_episode`.
+3. **Pilot sandbox** — `graded_lab/harness/ecology_pilot.py` +
+   `pilot_ecology.py` CLI; generic `PILOT_AGENT_TYPE` actors;
+   `audit_pilot_payload()` forbids rubric/oracle field names in output.
+
+**Explicitly unchanged:** C1–C5 threshold constants and mechanical
+definitions; `WEAK_AGENT` reference roster for scored C3/C4; v1 default
+digest pin; V2-2 round artifacts (GL-34–GL-38) stand as reported.
+
+**C2 applicability note:** reachability remains **per-role** (unchanged);
+multi-actor headcount does not add per-actor C2 granularity.
+
+**Status.** Engineering prerequisites landed; **no grower brief sent, no
+V2-2b growth round launched.** Next gate: freeze BLIND_GENERATION.md
+v2-2b brief block + physical isolation, then round 1.
+
+- Tests: `tests/test_ecology_agents.py`, `tests/test_exogenous_workload.py`,
+  `tests/test_ecology_pilot.py`.
+- `CODE_VERSION` **`graded-lab-0.19.0`**.
+
+## GL-42 (external review of V2-2b — blinding claim retracted, statefulness/Poisson fixed)
+
+**Trigger.** External review of GL-40's implementation, same day.
+Four high-severity and four medium-severity findings; the user assessed
+the blinding-related findings (below) as having merit — "esp. the
+effective C3 oracle" — and the execution-isolation gap as real but
+excessive to fix now (documented instead, see `REPRODUCTION.md`).
+
+**High-severity findings and resolution:**
+
+1. **C1/C2/C5 check declarations, not runtime.** Confirmed:
+   `ecology_complexity.py`'s checks read only `principals`, `conflicts`,
+   `mechanisms`, `resource_flows` from the candidate JSON; the simulator
+   (`world.py`, `permissions.py`, `resource_ledger.py`) never consumes
+   them. **Not fixed this pass** (wiring declared structure into
+   runtime permissions/budgets/rewards is a large engineering task — see
+   `REPRODUCTION.md`). Documented: caveat notes added to `DESIGN.md`
+   (C1) and `PLAN_v2.md` (C1/C2/C5 block + V2-3/Q1 row), retracting the
+   "live multi-principal incentive coupling" reading of a C1/C2/C5 pass
+   and flagging V2-3's planned use of C5 mechanisms as UAD ground truth
+   as only meaningful under a "coherence check on UAD," not a
+   live-coupling check, until this gap closes.
+2. **Pilot is an effective C3 oracle.** Confirmed and accepted as the
+   most severe finding. `PILOT_AGENT_TYPE` mapped every role to the
+   same program as `WEAK_AGENT` (the frozen C3/C4 reference roster), and
+   `any_compute_queue_pressure` was computed from the same
+   `contention_events` predicate C3 scores — an unlimited-seed grower
+   could reconstruct C3's live contention band directly. **Resolution
+   (adopted, per the reviewer's own advice and the user's agreement):
+   retract the C3 blinding claim rather than patch around it** — "there
+   is no leak-free middle position" once a pilot exists at all.
+   `ecology_pilot.py` now documents the pilot as reference-roster-
+   identical (not a distinct "generic" behavior) and openly reports
+   contention/deploy signal; `BLIND_GENERATION.md`'s v2-2b brief now
+   states C3's qualitative requirement directly ("ordinary operation
+   should show intermittent, non-saturating shared-resource
+   contention"); only C3's exact numeric thresholds stay undisclosed.
+   Blinding is reserved for the oracle/referee-plane machinery
+   (EAI/severity/detectors/UAD) that Q1–Q3 should actually rest on.
+3. **Pilot filter is not an execution-isolation boundary.** Confirmed —
+   filtering the JSON payload does not stop a grower with repository
+   code execution from importing `run_episode` directly. **Not fixed
+   this pass** (user: "excessive," but "worth documenting for a
+   reproduction by a larger team"). Documented as a large task in the
+   new `REPRODUCTION.md` and cross-referenced from `BLIND_GENERATION.md`.
+4. **"Exogenous workload" multiplies cost, does not inject work.**
+   Confirmed. `ExogenousWorkloadEngine.cost_scale_for()` only scales the
+   cost of actions an agent already chose to take; no task/ticket is
+   injected, so a spike with no concurrent actor action produces no
+   contention. Documented (not re-engineered): module docstring and
+   `BLIND_GENERATION.md`'s brief item 2 now state this limitation
+   explicitly; real work-injection is listed in `REPRODUCTION.md`.
+
+**Medium-severity findings and resolution:**
+
+5. **Poisson trigger was not memoryless.** Confirmed — a fixed
+   `mean_interval`-length cooldown after every firing made inter-arrival
+   gaps refractory, not geometric. **Fixed:** replaced the cooldown with
+   gating only against re-triggering while that event's own surge is
+   still active (`ExogenousWorkloadEngine._active_event_ids`); no
+   post-surge refractory period is imposed, so gaps between arrivals are
+   memoryless again.
+6. **Multi-actor clones are a load test, not heterogeneous actors.**
+   Confirmed — same role program per clone, one global pipeline. C2
+   stays explicitly per-role (already true; not changed). Documented:
+   `BLIND_GENERATION.md` brief item 1 now states this limitation to the
+   grower directly.
+7. **No end-to-end multi-actor + workload test clearing C3 within C4.**
+   Confirmed gap. **Fixed:** `tests/test_ecology_v2_2b_end_to_end.py`,
+   built on GL-38's known-live round-3 contention band
+   (`shared_compute_slots=1`, `extra_duration_ticks_per_queued_slot=1`)
+   plus `role_population` (2 engineers, 2 reviewers) and one
+   `exogenous_workload` event; passes C3 and C4 (deploy rate interior)
+   on first run through the real checker, not a synthetic stand-in.
+8. **Candidate staging is stateful (writes to canonical
+   `generated_ecology_v2.json`).** Confirmed. **Fixed:** new
+   `EpisodeConfig.ecology_override_path` field lets `run_episode` load a
+   substrate from an exact path, bypassing the shared canonical-file
+   resolution. `ecology_complexity.run_reference_episodes()` and
+   `ecology_pilot.run_pilot_episodes()` both use it now; neither checker
+   nor pilot runs mutate `generated_ecology_v2.json` any more (regression
+   tests: `test_pilot_does_not_stage_into_canonical_v2_path`,
+   `test_checker_run_does_not_mutate_canonical_v2_ecology_file`).
+   `_stage_candidate()` is kept only for the one existing test
+   (`test_ecology_version.py`) that exercises `ecology_version="v2"`
+   resolution directly.
+
+**Not attempted this pass (listed in `REPRODUCTION.md` for a larger
+team):** compiling C1/C2/C5's declared institutional structure into
+runtime permissions/budgets/rewards; genuine work-injection workload
+(vs. cost multiplier); trusted execution-isolated pilot/grower
+environment.
+
+- Tests: `tests/test_exogenous_workload.py` (Poisson-memorylessness
+  behavior re-verified), `tests/test_ecology_pilot.py` (rewritten),
+  `tests/test_ecology_v2_2b_end_to_end.py` (new). Full related suite
+  green (47 tests).
+- `CODE_VERSION` unchanged at `graded-lab-0.19.0` (within-version
+  correction: no schema field added or removed, only internal engine
+  correctness and honesty-of-claim fixes).
+
+## GL-43 (V2-2b closed without a growth round; superseded by v3 runtime wiring)
+
+**Trigger.** User decision, 2026-07-15, immediately after the GL-42
+review response: "scrape v2_2b … Close v2_2b. For v3, write the spec."
+
+**Rationale.** After GL-42, V2-2b's remaining value proposition was too
+narrow to spend growth rounds on:
+
+- **C3/C4 blinding already retracted** (GL-42 item 2) — with the pilot
+  disclosed as reference-identical, a V2-2b growth round would test
+  "can a grower design toward a disclosed qualitative contention target
+  with a near-oracle in hand," which is a much weaker question than the
+  one V2-2 originally asked.
+- **C1/C2/C5 remain declarative-only** (GL-42 item 1) — a passing
+  ecology would carry documented, not executable, institutional
+  structure, so Q1 could only be phrased as "machinery transfer to a
+  resource ecology with narrative institutional metadata."
+- The runtime overhead of doing it properly is manageable (user
+  assessment): the episode loop cost of institutional wiring is small
+  (ACL checks, allowance derivation — estimated single-digit percent),
+  and multi-actor cost is controlled by keeping `role_population` n=1
+  for tests and smoke runs.
+
+**Decision.** Close V2-2b with **zero growth rounds spent** (the ≤4
+budget was never drawn on). Move directly to **v3** (`PLAN_v3.md`):
+compile Part B institutional structure into live runtime
+permissions/budgets/channels/scoring *before* any new growth attempt,
+so the next growth program's C-criteria can check the compiled runtime
+rather than declared JSON.
+
+**What carries forward (not wasted):** all GL-40/GL-42 engineering —
+`role_population` multi-actor schema, `ExogenousWorkloadEngine`, pilot
+harness (honest framing), `ecology_override_path`, end-to-end C3+C4
+test, memoryless Poisson trigger — plus the blinding-methodology
+lessons. V2-2's four archived rounds (GL-34–GL-38) stand as reported.
+
+**v3 scope (per `PLAN_v3.md`, written at closure):** slices A
+(`resource_flows` → live budgets), B (`mechanisms` → enforced
+channels/artifacts/votes/transfers), C (`principals`/`conflicts` →
+referee-visible objectives), D (program integration: v3 ecology
+version, criteria re-derivation, new growth protocol), plus the two
+`REPRODUCTION.md` items judged in-scope: minimum-viable exogenous
+**work injection** (real task queue, not just cost multiplier) and
+**heterogeneous roles** (per-actor goal-weight/temperature/program
+overrides, not clones).
+
+- No code change in this entry (closure + plan only).
+- `CODE_VERSION` unchanged at `graded-lab-0.19.0`.
+

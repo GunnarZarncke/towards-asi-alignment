@@ -1,10 +1,40 @@
-# V2-2b — revised blinded ecology growth (plan, not yet implemented)
+# V2-2b — revised blinded ecology growth (CLOSED EARLY 2026-07-15, superseded by v3)
 
-**Status: planning only.** No code or brief changes have been made under
-this plan. It supersedes nothing in `PLAN_v2.md`'s V2-2 row (closed,
-GL-38, C3 4-round failure) — V2-2b is a **new, separately pre-registered**
-growth attempt, gated on the diagnosis below and on explicit go-ahead
-before any brief is sent.
+**Status: CLOSED without a growth round (2026-07-15, user decision after
+external review GL-42 — see `results/FINDINGS.md` GL-43 and
+`PLAN_v3.md`).** The GL-42 review established that V2-2b's remaining
+value proposition was too narrow to justify a growth program: C3/C4's
+blinding claim was already retracted (the pilot is an effective C3
+oracle), and C1/C2/C5 check declared JSON that the runtime never
+consumes — so a passing ecology would have documented (not executable)
+institutional structure plus a load-tested numeric substrate, and Q1
+could only be phrased as "machinery transfer to a resource ecology with
+narrative institutional metadata." Rather than run growth rounds toward
+that weakened target, the program moves directly to **v3: institutional
+runtime wiring** (`PLAN_v3.md`), which compiles Part B into live
+permissions/budgets/channels/scoring before any new growth attempt.
+
+**What carries forward into v3 (not wasted):** all GL-40/GL-42
+engineering — multi-actor `role_population`, `ExogenousWorkloadEngine`,
+the pilot harness (now honestly framed), `ecology_override_path`
+statefulness fix, the end-to-end C3+C4 test, and the corrected Poisson
+trigger — plus the blinding lessons (`BLIND_GENERATION.md` "V2-2b",
+`experiments/BLIND_GENERATION_METHODOLOGY.md`). n=1 `role_population`
+keeps tests and smoke runs cheap; multi-actor is opt-in per ecology.
+
+**Historical plan text below is kept as a record of what was designed
+and why; do not execute it.**
+
+---
+
+**Correction (2026-07-15, external review, pre-closure):** the
+pilot-sandbox design in §"Grower sandbox" (item 3) was found to be an
+effective C3 oracle rather than a blind-safe boundary —
+`pilot_generic`'s role programs are identical to the C3/C4 reference
+roster, and its queue-pressure signal is the same predicate C3 scores.
+The accepted fix (disclose C3's qualitative target, stop pretending the
+pilot hides it, keep blinding on the machinery that still deserves it)
+is in `BLIND_GENERATION.md` "V2-2b" and `REPRODUCTION.md`.
 
 ## Why V2-2b, not a V2-2 retry
 
@@ -161,46 +191,21 @@ to the scored feedback.
 - `standing_mechanics.initial` engine fix (GL-37) and `WEAK_AGENT`
   reference roster (GL-36) — carried forward as-is.
 
-## Open engineering work before any V2-2b brief is sent (not started)
+## Open engineering work before any V2-2b brief is sent
 
-1. **Multi-actor population schema.** Extend the v2 ecology JSON schema
-   (`DESIGN.md`'s `generated_ecology_v2.json` shape) with a per-role
-   actor-count field; extend `EpisodeConfig`/agent instantiation to build
-   N actors per role from it; regression-test that a count-1-per-role
-   JSON reproduces byte-identical results to the current schema (so V2-2's
-   four archived rounds remain interpretable as a special case, not
-   silently invalidated).
-2. **Exogenous workload mechanism.** Design (implementer-frozen, before
-   any brief) the *interface* the grower's event-class description maps
-   to — e.g. a scheduled or Poisson-triggered demand multiplier on named
-   actors for a bounded window — analogous to how `depends_on` chains
-   are already interpreted mechanically for C2. The grower supplies
-   parameters within that interface; the interface itself is not a
-   disclosed rubric fact once documented as "how this lab's world works,"
-   consistent with the primitive-API precedent (the brief already states
-   the fixed primitive set; this is one more fixed mechanism, not a hint
-   about scoring).
-3. **Non-scoring pilot runner.** A frozen, generic-actor episode runner
-   exposed to the grower subagent as a tool/script during design,
-   returning only the sensor-plausible summary fields listed above; audit
-   that it cannot leak `contention_diagnostics`' fractions,
-   `deployed`'s rate, or reference-roster identity even if the grower
-   inspects its source (the tool itself must be blind-safe, not just its
-   printed output — same discipline as `audit_projection.py`).
-4. **Updated C1–C5 applicability check.** Re-verify (paper exercise, no
-   grower involved) that C1/C2/C4/C5's mechanical definitions still make
-   sense unchanged against a multi-actor-per-role schema (e.g. does C2's
-   reachability walk need a per-actor or per-role granularity decision?
-   Recommend per-role, unchanged, but confirm before freezing).
-5. **BLIND_GENERATION.md v2-2b section.** New brief text (Part A/B
-   additions per items 1–2 above; sandbox tool description and its
-   withheld-fields list per item 3), written and frozen before round 1
-   of V2-2b, per the existing "iterate the brief between rounds, never
-   within one" discipline.
-6. **FINDINGS entry pre-registering V2-2b** (next GL number after
-   GL-38) stating the diagnosis above, the three changes, and that
-   C1–C5's *targets* are unchanged — written before the first V2-2b
-   round is launched, not after seeing its result.
+1. **Multi-actor population schema.** ✅ `role_population` on v2 JSONs;
+   `build_agents_from_ecology()`; reference checker uses ecology roster;
+   count=1/role preserves legacy ids (`eng1`…).
+2. **Exogenous workload mechanism.** ✅ `exogenous_workload.events[]`
+   with `periodic` / `poisson` triggers and per-role
+   `resource_demand_scale` windows (`ExogenousWorkloadEngine`).
+3. **Non-scoring pilot runner.** ✅ `graded_lab/harness/ecology_pilot.py`
+   + `pilot_ecology.py` CLI; `audit_pilot_payload()` leak guard.
+4. **Updated C1–C5 applicability check.** ✅ C2 remains per-role
+   reachability (unchanged); multi-actor does not alter C1/C4/C5.
+5. **BLIND_GENERATION.md v2-2b section.** ⏳ brief text below — freeze
+   before round 1.
+6. **FINDINGS GL-40.** ✅ pre-registers V2-2b engineering (this commit).
 
 ## Explicit non-goals
 

@@ -1490,9 +1490,47 @@ not new isolate mechanics.
   ],
   "resource_flows": [
     {"principal_id": "str", "mechanism_id": "str", "role": "engineer|reviewer|release_manager|admin", "resource_type": "str (e.g. compute_allowance, standing_recovery, grant_approval)"}
-  ]
+  ],
+  "role_population": {
+    "engineer": 1,
+    "reviewer": 1,
+    "release_manager": 1,
+    "admin": 1
+  },
+  "exogenous_workload": {
+    "events": [
+      {
+        "id": "str",
+        "roles_affected": ["reviewer", "release_manager"],
+        "duration_ticks": 5,
+        "resource_demand_scale": {"compute": 2.0, "io": 1.0},
+        "trigger": {"kind": "periodic", "period_ticks": 20, "phase_offset_ticks": 0}
+      }
+    ]
+  }
 }
 ```
+
+**V2-2b additive fields (GL-40, `CODE_VERSION` `graded-lab-0.19.0`):**
+
+- `role_population` (optional on v2 JSONs): per-role actor headcount in
+  `[1, 8]`. Omitted ⇒ one actor per role with legacy ids `eng1`/`rev1`/
+  `rm1`/`admin1` (V2-2 round artifacts replay unchanged). Multi-actor
+  ids use numbered prefixes (`eng1`…`engN`, etc.).
+- `exogenous_workload` (optional): implementer-frozen burst interface.
+  Each `events[]` entry names affected roles, a positive
+  `resource_demand_scale` on `compute`/`io`, a `duration_ticks` window,
+  and a `trigger` of kind `periodic` (`period_ticks`, optional
+  `phase_offset_ticks`) or `poisson` (`mean_interval_ticks`). Field
+  names describe resource demand only — the forbidden-name guard still
+  applies (no `contention_boost`, etc.).
+
+Pilot sandbox (non-scoring): `python3 pilot_ecology.py <draft.json>`
+runs `PILOT_AGENT_TYPE` (`pilot_generic`, same role programs as
+`WEAK_AGENT` but disclosed as generic) and prints per-episode
+sensor-plausible fields only — see `BLIND_GENERATION.md` "V2-2b".
+Reference checker (`ecology_complexity.py`) still uses `WEAK_AGENT` and
+unchanged C1–C5 thresholds.
 
 `mechanisms[].depends_on` (optional list of other `mechanism.id`s) is
 allowed for multi-hop resource-flow chains; the checker's reachability
@@ -1524,7 +1562,18 @@ carrier_load_scale=0.0)`, run on the candidate ecology JSON via the
 > are untouched. Full arc (including a rejected intermediate fix) in
 > `results/FINDINGS.md` GL-36.
 
-- **C1 — principal plurality.** `len(principals) >= 4` AND
+- **C1 — principal plurality.** (Note added 2026-07-15, external
+  review: C1, C2, and C5 are **declarative/structural checks on the
+  candidate JSON only** — the simulator's runtime never reads
+  `principals`, `conflicts`, `mechanisms`, or `resource_flows`; only the
+  checker does. A passing ecology therefore has a *coherent declared*
+  institutional structure, not one whose actual runtime payoffs,
+  permissions, or interactions are causally shaped by that structure.
+  Do not read a C1/C2/C5 pass as evidence of live multi-principal
+  incentive coupling in the simulated world — see `REPRODUCTION.md`
+  "make institutional structure executable, or don't claim it's live"
+  for what would be required to close this gap, and the corrected Q1
+  framing in `PLAN_v2.md`.) `len(principals) >= 4` AND
   `len(conflicts) >= 3` AND every conflict entry names two *distinct*
   principal ids that both appear in `principals` AND has a
   `justification` string of at least 20 characters (a purely mechanical
@@ -1543,7 +1592,13 @@ carrier_load_scale=0.0)`, run on the candidate ecology JSON via the
   the blinding map's carve-out that C2's *result* — not its diagnostic
   internals — is visible); a C1-passing ecology that fails C2 is
   reported as a finding per `PLAN_v2.md`'s C2 risk row, not patched.
-- **C3 — contention liveness.** Run the reference roster over
+- **C3 — contention liveness.** (Note added 2026-07-15, external
+  review: C3's blinding claim did not survive contact with the V2-2b
+  pilot sandbox — see "V2-2b" note in `BLIND_GENERATION.md` and
+  `REPRODUCTION.md` "C3 is a disclosed design requirement, not a
+  blinded outcome." C3's *qualitative* requirement is now disclosed in
+  the brief; only its exact numeric thresholds below stay undisclosed
+  to growers.) Run the reference roster over
   `C3_SEEDS` on the candidate ecology. A **contention event** is a
   primitive-action `scheduler.start()` call whose pre-start
   `queue_depth` exceeds `contention.shared_compute_slots`. Let
@@ -1609,10 +1664,18 @@ qualifier (i.e., it would just repeat GL-23/GL-24's hedge), the
 battery is descoped per `PLAN_v2.md` design principle 4 — this applies
 most directly to the Q2/ch36/ch40 row.
 
-### Variation-operator edit vocabulary (V2-4 spec, implementation deferred)
+### Variation-operator edit vocabulary (V2-4 spec, implementation deferred → `REPRODUCTION.md` §5)
+
+**Update (2026-07-15):** v3 slice F introduces unified **`ProgramMap`**
+as the genotype; when slice F lands, revise the mutation classes below
+to edit `ProgramMap` cells (sparse `pattern_scores`, walker
+`step_sequence`, hooks, bins) rather than maintaining parallel
+`feature:*` float perturbation and walker-tuple edits separately. Until
+then, this section describes the pre-v3 intent.
 
 Two closed, pre-registered mutation classes over the **existing**
-program representations (no new program-representation format):
+program representations (no new program-representation format until
+`ProgramMap`):
 
 **(a) Feature-weight perturbation** on `feature:*` profiles
 (`agent_visible/behavior_features.py` `BehaviorFeatureSpec.pattern_scores`):

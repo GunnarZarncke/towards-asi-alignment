@@ -142,3 +142,11 @@ def _validate_structure(data: dict) -> None:
     for key in ("shared_compute_slots", "extra_duration_ticks_per_queued_slot"):
         if key not in data["contention"]:
             raise SubstrateError(f"contention missing {key!r}")
+    if is_v2_shaped_ecology(data):
+        from .ecology_agents import role_population_from_ecology
+        from .exogenous_workload import validate_exogenous_workload
+
+        if "role_population" in data:
+            role_population_from_ecology(data)
+        if "exogenous_workload" in data:
+            validate_exogenous_workload(data["exogenous_workload"])

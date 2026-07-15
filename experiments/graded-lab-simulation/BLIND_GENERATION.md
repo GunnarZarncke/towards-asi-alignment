@@ -287,3 +287,107 @@ its prompt, never by reference to a file it must locate itself), waits
 for it to finish, and only then restores the files before running the
 checker. This removes the failure mode entirely rather than relying on
 the subagent's compliance or memory hygiene.
+
+## V2-2b — revised ecology growth (CLOSED 2026-07-15 without a growth round — GL-43)
+
+**Closure note:** V2-2b was closed before any brief was sent or growth
+round launched (GL-43); the program moved to v3 institutional runtime
+wiring (`PLAN_v3.md`). The brief text below was never used and is kept
+as a record; the blinding-scope correction remains the operative
+lesson for any future growth protocol.
+
+See `PLAN_V2_2B.md` and `results/FINDINGS.md` GL-40/GL-42/GL-43.
+Supersedes nothing in V2-2 (closed GL-38). C1–C5's exact numeric
+thresholds were unchanged; what changed on 2026-07-15 (external
+review, GL-42) is that **C3's blinding claim was retracted and
+replaced with an honest disclosed-requirement framing** — see
+"Blinding scope correction" below.
+
+### Blinding scope correction (2026-07-15, external review, GL-42)
+
+The pilot sandbox as first built (GL-40) was not a blind-safe boundary
+for C3: `pilot_generic` ran the *exact same* role programs as the
+frozen `WEAK_AGENT` reference roster, and its
+`any_compute_queue_pressure` field was computed from the identical
+predicate C3 scores (`queue_depth > shared_compute_slots` at action
+start). A grower with unlimited pilot seeds and code execution against
+the repository could reconstruct C3's live contention band directly —
+this is a real oracle, not "sensor-plausible feedback." See
+`REPRODUCTION.md` "C3 is a disclosed design requirement, not a blinded
+outcome" for the full argument and the accepted resolution:
+
+- **C3's qualitative requirement is now stated in the brief** (item 4
+  below) — not its exact numeric thresholds (`>= 0.30` episode
+  fraction, `[0.05, 0.95]` action-fraction band), which stay
+  undisclosed.
+- **The pilot is documented as reference-roster-identical**, not a
+  distinct "generic" behavior — `pilot_generic` openly reports
+  contention/deploy signal (see `ecology_pilot.py` module docstring).
+  There is nothing left to hide on that axis once the qualitative
+  target is disclosed.
+- **What remains genuinely blinded:** the oracle/referee-plane
+  machinery (EAI, severity, detectors, UAD ground truth) that Q1–Q3's
+  target-blind transfer claims should rest on — never C3/C4 pass/fail
+  itself, which this correction admits was never a defensible blind
+  boundary once a pilot exists at all.
+- **Execution-boundary caveat (documented, not fixed this pass):** the
+  pilot filters output fields, not code execution. A grower with
+  repository access could `import run_episode` directly and bypass the
+  filter entirely. Given C3/C4 are no longer claimed blind, this matters
+  only for the genuinely-blinded oracle/referee plane — real
+  enforcement there needs a trusted external service or a
+  capability-restricted sandbox, not a python-level filter. Listed as a
+  large future task in `REPRODUCTION.md`, not attempted here.
+
+**Brief additions (freeze this block before round 1):**
+
+1. **Headcount (Part A).** State how many actors hold each of the four
+   fixed roles (`engineer`, `reviewer`, `release_manager`, `admin`) in
+   this lab and why — as JSON field `role_population` (integers in
+   `[1, 8]` per role). This is a world fact, not a scoring hint. Note:
+   multiple actors per role in this engine are clones running the same
+   role's program against one shared pipeline — a load-test mechanism
+   for shared-resource contention, not a claim of heterogeneous
+   institutional actors or per-actor incentive structure (C2's
+   reachability check remains **per-role**, unchanged).
+2. **Exogenous workload (Part B).** Describe at least one event class
+   that periodically or stochastically raises several roles' resource
+   demand together (incident wave, audit sprint, milestone crunch).
+   Map it to `exogenous_workload.events[]` using the implementer-frozen
+   trigger/scale interface in DESIGN.md (no field names that describe
+   downstream scoring effects). Note: this mechanism multiplies the
+   cost of actions the affected roles independently choose to take
+   during the window — it does not inject a task, ticket, or demand
+   that must be serviced regardless of what agents decide to do. If no
+   affected actor happens to act during the window, no demand spike
+   occurs. A genuine work-injection mechanism is a larger, unbuilt
+   feature — see `REPRODUCTION.md`.
+3. **Pilot sandbox (design phase only).** After drafting Part A/B, the
+   grower may run `python3 pilot_ecology.py <draft.json>` (or call
+   `graded_lab.harness.ecology_pilot.run_pilot_episodes`) on their own
+   JSON. **This runs the same role programs as the scored C3/C4
+   reference roster** — disclosed, not a distinct "generic" behavior
+   (see blinding correction above).
+4. **C3's disclosed qualitative requirement.** Under ordinary
+   operation, this lab's actors should sometimes — but not
+   constantly — have to wait for a shared compute slot. Neither "no
+   one ever waits" nor "everyone is always waiting" is realistic for a
+   moderately-provisioned shared resource pool; design toward
+   intermittent, non-saturating contention. (Exact thresholds stay
+   undisclosed.)
+
+**Pilot outputs (allowed, openly disclosed):** per-episode deployment
+occurred/count, standing lockouts, resource/access denials,
+`any_compute_queue_pressure`, `episode_contention_fraction_hint`,
+episode length, actor count.
+
+**Pilot outputs (still withheld — the genuinely blinded plane):**
+detector/EAI/severity/oracle/referee-plane fields, UAD ground truth,
+raw primitive/permission/engine logs.
+
+**Scored rounds:** unchanged — ≤4 rounds, pass/fail-only between rounds
+for C1/C2/C5 (declarative checks — see the C1/C2/C5 caveat in
+`DESIGN.md` and `REPRODUCTION.md` "make institutional structure
+executable, or don't claim it's live"), physical file isolation for
+rubric-adjacent files. Pilot access is during design only.
+

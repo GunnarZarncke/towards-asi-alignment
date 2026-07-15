@@ -65,7 +65,11 @@ python3 -m pytest tests/ --profile slow --update-speed-baseline --no-speed-check
 
 - `PLAN.md` — v1 phases 0–8, freeze gates (closed program record)
 - `PLAN_v2.md` — v2 program plan (blinded-grown ecology, variation, red-teaming)
+- `PLAN_V2_2B.md` — V2-2b follow-on plan (closed without growth round, GL-43)
+- `PLAN_v3.md` — v3 spec: institutional runtime wiring (slices A–F)
 - `REPRODUCING.md` — per-finding reproduction map + final v1 commit hash
+- `REPRODUCTION.md` — large engineering tasks deferred for a larger team (see GL-42)
+- `COLLABORATION.md` — how to pick up a `REPRODUCTION.md` item
 - `results/TERMINAL_SUMMARY.md` — v1 closure summary
 - `DESIGN.md` — Phase 0 pre-registration (Tier K/I, BIQ, EAI, primitives)
 - `generated_substrate_v1.json` — frozen blinded substrate (no delay/noise params)

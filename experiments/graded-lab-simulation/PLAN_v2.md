@@ -143,6 +143,22 @@ not change after the growth brief is sent. All five are structural or
 behavioral properties of the ecology itself; none references the
 machinery under test.
 
+**Caveat added 2026-07-15 (external review, GL-42):** C1, C2, and C5
+are checked **only against the candidate JSON's declared sections**
+(`principals`, `conflicts`, `mechanisms`, `resource_flows`) — the
+simulator's runtime never reads them. A passing ecology has a
+*coherent, mechanically-checked declared* institutional structure; it
+is not evidence that the simulated agents' actual payoffs, permissions,
+or interactions are causally shaped by that structure. This weakens the
+V2-3 (Q1) plan below in one specific place: using C5's declared
+mechanisms as UAD ground truth is only a meaningful test if UAD is
+meant to recover declared-but-behaviorally-inert structure (a coherence
+check on UAD, not a live-coupling check). Treat V2-3's C5-ground-truth
+result under that reading, or defer it until institutional structure is
+wired into runtime — see `REPRODUCTION.md` "make institutional
+structure executable, or don't claim it's live" for the size of that
+gap and what closing it would require.
+
 - **C1 — principal plurality.** ≥ 4 in-world principals (funders,
   customers, regulators, operators…) each with a declared objective over
   world state, of which ≥ 3 pairs are **conflicting**: the ecology
@@ -169,7 +185,14 @@ machinery under test.
 - **C3 — contention liveness.** In reference runs (the frozen v1
   reference agents, unmodified), shared-resource queue contention events
   occur in ≥ 30% of episodes and the scheduler's contention diagnostic is
-  non-degenerate (neither 0 nor saturated).
+  non-degenerate (neither 0 nor saturated). **Correction (2026-07-15,
+  external review, GL-42): C3's blinding claim is retracted.** The
+  V2-2b pilot sandbox makes C3's live-contention band directly
+  observable to the grower (see `BLIND_GENERATION.md` "V2-2b" and
+  `REPRODUCTION.md`); C3 is now treated as a *disclosed design
+  requirement* stated qualitatively in the brief, with only its exact
+  numeric thresholds withheld. Blinding claims should rest on the
+  machinery under test (Q1–Q3's UAD/EAI/detector plane), not on C3/C4.
 - **C4 — behavioral non-degeneracy.** Reference-agent deploy rate lies
   strictly inside [0.1, 0.9] at the ecology's default load (the
   "sometimes-not-always" liveness check v1 used, pre-registered here as
@@ -206,9 +229,10 @@ the plan table, not silent).
 | V2-0 consolidation | v1 closure artifacts (`TERMINAL_SUMMARY.md`, `REPRODUCING.md`, closure FINDINGS entry, this plan) committed; final v1 commit hash recorded | docs merged; test suite green at closure commit | **done** (GL-31) |
 | V2-1 pre-registration freeze | `DESIGN.md` v2 sections: complexity criterion constants; harvest sentences for Q1/Q2/Q3 (pass *and* null versions); evasion operationalization; variation-operator spec; red-team protocol; checker script + tests | all sections written **before** the V2-2 brief is sent; criterion constants immutable thereafter | **done** (GL-32) |
 | V2-2 blinded ecology growth | `generated_ecology_v2.json` + rationale via blinded subagent, ≤ 4 rounds; `BLIND_GENERATION.md` v2 section; loader + plane wiring behind `ecology_version` config switch (v1 paths untouched — regression tests prove v1 batteries still reproduce bit-for-bit) | C1–C5 pass mechanically, or 4-round failure reported; JSON frozen | **closed — C3 4-round failure** (GL-38): 4 clean rounds; C1/C2/C4/C5 pass after GL-36/37 fixes; C3 never clears; no ecology freeze; see GL-34–GL-38 |
-| V2-2b (planned follow-on) | `PLAN_V2_2B.md`: multi-actor-per-role schema, exogenous workload mechanism, generator-side pilot sandbox — see GL-39 diagnosis | not yet defined (planning doc lists engineering prerequisites; a FINDINGS entry must pre-register the new brief before round 1) | **planning only** (GL-39); no code, brief, or growth round started |
+| V2-2b (planned follow-on) | `PLAN_V2_2B.md`: multi-actor-per-role schema, exogenous workload mechanism, generator-side pilot sandbox — see GL-39 diagnosis | not yet defined (planning doc lists engineering prerequisites; a FINDINGS entry must pre-register the new brief before round 1) | **CLOSED without growth round** (GL-43, 2026-07-15): engineering landed (GL-40) and review-corrected (GL-42), but external review showed C3 blinding untenable and C1/C2/C5 declarative-only; superseded by **v3 institutional runtime wiring** (`PLAN_v3.md`) before any new growth attempt. GL-40/GL-42 engine work carries forward |
+| v3 institutional runtime wiring | `PLAN_v3.md`: compile Part B into live budgets (A), enforced mechanisms (B), referee-visible principal objectives (C), work injection (E), heterogeneous roles (F), then criteria re-derivation + growth protocol (D) | per-slice freeze gates in `PLAN_v3.md`; v1 digest pin + V2-2 replay green at every slice; DESIGN.md v3 section frozen before any growth brief | **spec written** (GL-43); no implementation started |
 | V2-3 machinery transfer battery (Q1) | frozen v1 UAD (passive + intervention), EAI both vantages, ecology-BIQ, referee/detectors run **unchanged** on v2 ecology; C5's declared mechanisms as ground truth; results in `results/v2_transfer.json` | battery run and reported honestly — pass/fail of predictions P1–P4 below, no threshold edits; **go/no-go for V2-5/V2-6:** referee-vantage EAI reaches the pre-registered mid band on ≥ 1 default-load cell, else Q2/Q3 are descoped with the null as the program's main result | not started |
-| V2-4 variation operator | mutation over the existing program representations: (a) feature-weight perturbation on `feature:*` profiles, (b) structured program-map edits from a closed, pre-registered edit vocabulary (insert/drop/reorder/parameter-tweak of primitive steps), validated mechanically like Phase-6 features; uniform-fitness null harness; permutation noise-band stats in `oracle_only/stats.py` | operator + null control tested; **null control shows drift inside the permutation band** (if not, the selection harness itself is fixed before any claim) | not started |
+| V2-4 variation operator | **`REPRODUCTION.md` §5** — mutation over unified `ProgramMap` (post v3 slice F; supersedes legacy dual (a)/(b) spec in `DESIGN.md`); closed edit vocabulary; uniform-fitness null harness; permutation noise-band stats in `oracle_only/stats.py` | operator + null control tested; **null control shows drift inside the permutation band** (if not, the selection harness itself is fixed before any claim) | not started |
 | V2-5 selection with variation (Q2) | multi-generation selection on v2 ecology with mutation, multi-handle fitness (8b's pre-registered vector as default, carryover on per GL-27), ≥ 6 episodes/member, ≥ 12 generations; lineage tracking; evasion criterion evaluated per generation; `results/v2_selection.json` | pre-registered predictions resolved and reported, positive or null; any evolved program that meets the evasion criterion is archived with full lineage for replay | not started |
 | V2-6 LLM red-teaming (Q3) | subprocess-isolate LLM adapter on the affordable-primitive API (v1 plan's deferred item), hard budget caps (ticks, tokens, dollars), progress logging; a pre-registered **onboarding window** (world mechanics live, no scoring) before the scored window, using the grown ecology's in-world knowledge-base artifact; conditions: (a) surface-blind, (b) informed; ≥ 5 seeds each; evasion criterion scored identically to V2-5, only on post-onboarding actions; `results/v2_redteam.json` | both conditions run inside caps; refusals/degenerate runs reported, not resampled away; onboarding-window actions logged separately, never folded into the scored result | not started |
 | V2-7 harvest + terminal decision | FINDINGS synthesis; write the pre-registered sentences (pass or null versions) into their consumer chapters; decide close-vs-extend using the same thin-sentence rule that closed v1 | manuscript edits done or explicitly declined per rule; v2 terminal summary if closed | not started |

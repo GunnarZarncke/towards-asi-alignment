@@ -96,6 +96,41 @@ def programs_for(agent_type: str) -> dict[str, str]:
     raise ValueError(f"unknown agent_type {agent_type!r}")
 
 
+# Role → program for multi-actor rosters (V2-2b). Same semantics as the
+# legacy id-keyed maps above, keyed by role instead of actor_id.
+_ROLE_PROGRAMS: dict[str, dict[str, str]] = {
+    STRONG_AGENT: {role: "softmax_optimizer" for role in ("engineer", "reviewer", "release_manager", "admin")},
+    WEAK_AGENT: {
+        "engineer": "walk_pipeline",
+        "reviewer": "reviewer_peer_review",
+        "release_manager": "honest_twin",
+        "admin": "honest_twin",
+    },
+    BUDGET_AWARE_AGENT: {
+        "engineer": "walk_pipeline",
+        "reviewer": "reviewer_peer_review",
+        "release_manager": "budget_release_manager",
+        "admin": "honest_twin",
+    },
+}
+
+# V2-2b pilot roster. **Not a distinct "generic" behavior** — same role
+# programs as `WEAK_AGENT`, disclosed as such (external review,
+# 2026-07-15; see `ecology_pilot.py` module docstring and
+# `REPRODUCTION.md`). Kept as a separate name only so pilot call sites
+# read clearly; do not treat it as a blinding boundary.
+PILOT_AGENT_TYPE = "pilot_generic"
+_ROLE_PROGRAMS[PILOT_AGENT_TYPE] = dict(_ROLE_PROGRAMS[WEAK_AGENT])
+
+
+def programs_for_roster(agent_type: str, agents: Iterable[Any]) -> dict[str, str]:
+    """Map ``agent_type`` programs onto an arbitrary actor roster by role."""
+    by_role = _ROLE_PROGRAMS.get(agent_type)
+    if by_role is None:
+        raise ValueError(f"unknown agent_type {agent_type!r}")
+    return {agent.actor_id: by_role[agent.role] for agent in agents}
+
+
 def substrate_grid() -> list[SubstrateSettings]:
     """Original 16-cell compute×spread sweep (FINDINGS GL-15). Retained as
     a diagnostic/regression fixture, not the Phase 7c-revised default —

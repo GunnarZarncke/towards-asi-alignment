@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.18.1"
+CODE_VERSION = "graded-lab-0.19.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 
@@ -86,6 +87,16 @@ class EpisodeConfig:
     # off — no existing caller sets this, so no existing digest/output
     # changes).
     record_contention: bool = False
+    # V2-2b statefulness fix (external review, 2026-07-15): when set,
+    # `run_episode` loads the substrate from this exact path instead of
+    # resolving `ecology_version` through the shared canonical
+    # `ECOLOGY_VERSION_PATHS["v2"]` file. Callers that need to run many
+    # candidate/pilot ecologies concurrently (or without mutating a
+    # shared file other invocations might be reading) should set this
+    # rather than copying their JSON into the canonical path first.
+    # Additive: no existing caller sets this, so no existing behavior
+    # changes when it is left `None`.
+    ecology_override_path: Path | None = None
 
     def __post_init__(self) -> None:
         ids = [a.actor_id for a in self.agents]

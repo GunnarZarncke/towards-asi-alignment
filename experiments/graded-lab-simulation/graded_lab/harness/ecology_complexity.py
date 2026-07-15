@@ -20,8 +20,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from ..oracle_only.calibration import WEAK_AGENT, programs_for
+from ..oracle_only.calibration import WEAK_AGENT, programs_for_roster
 from ..world_visible.config import EpisodeConfig
+from ..world_visible.ecology_agents import build_agents_from_ecology
 from ..world_visible.substrate import V2_ECOLOGY_PATH, load_substrate
 from ..world_visible.world import EpisodeResult, default_lab_config, run_episode
 
@@ -192,7 +193,7 @@ def check_c5(data: dict) -> tuple[bool, dict[str, Any]]:
     return passed, {"kinds_present": sorted(kinds_present)}
 
 
-def _reference_episode_config() -> EpisodeConfig:
+def _reference_episode_config(ecology_data: dict, *, ecology_path: Path) -> EpisodeConfig:
     # GL-36 correction (post round-1/2'/3'): the original spec used
     # STRONG_AGENT (all-role softmax) at default load. GL-16 — a
     # pre-existing v1 finding that predates this section — already
@@ -206,10 +207,17 @@ def _reference_episode_config() -> EpisodeConfig:
     # (0.6 on a standing-corrected diagnostic copy of round 3) before
     # any round was re-scored against it. Everything else (T, agents,
     # seeds, default SubstrateSettings) is unchanged from the original
-    # spec.
+    # spec. V2-2b: agent roster comes from the candidate ecology's
+    # ``role_population`` (default 1/role → legacy ids).
+    #
+    # Statefulness fix (external review, 2026-07-15): loads via
+    # ``ecology_override_path`` rather than staging the candidate into
+    # the shared canonical ``V2_ECOLOGY_PATH`` first, so concurrent or
+    # interrupted checker runs cannot clobber each other or be confused
+    # with a frozen candidate.
     base = default_lab_config()
     return EpisodeConfig(
-        agents=base.agents,
+        agents=build_agents_from_ecology(ecology_data, temperature=0.35),
         T=base.T,
         pipeline_spec=base.pipeline_spec,
         substrate_settings=base.substrate_settings,
@@ -217,22 +225,28 @@ def _reference_episode_config() -> EpisodeConfig:
         units=base.units,
         ecology_version="v2",
         record_contention=True,
+        ecology_override_path=ecology_path,
     )
 
 
 def run_reference_episodes(
-    *, backend=None, seeds: tuple[int, ...] = C3_SEEDS, progress: bool = True,
+    ecology_path: Path | str = V2_ECOLOGY_PATH,
+    *,
+    backend=None,
+    seeds: tuple[int, ...] = C3_SEEDS,
+    progress: bool = True,
 ) -> list[EpisodeResult]:
     """Reference roster (GL-36 correction): `calibration.WEAK_AGENT`
     (`programmatic_2step`, a pre-existing frozen v1 roster — see the
-    GL-36 note above), run on whatever ecology JSON currently sits at
-    `V2_ECOLOGY_PATH` — the caller (`run_complexity_check`) stages the
-    round's candidate there first."""
+    GL-36 note above), run directly on ``ecology_path`` (no canonical-file
+    staging required as of the statefulness fix above)."""
     from .isolate import MockIsolate
 
     backend = backend or MockIsolate()
-    cfg = _reference_episode_config()
-    programs = programs_for(WEAK_AGENT)
+    ecology_path = Path(ecology_path)
+    ecology_data = load_substrate(ecology_path).data
+    cfg = _reference_episode_config(ecology_data, ecology_path=ecology_path)
+    programs = programs_for_roster(WEAK_AGENT, cfg.agents)
     results: list[EpisodeResult] = []
     for i, seed in enumerate(seeds):
         if progress:
@@ -282,11 +296,13 @@ def _stage_candidate(candidate_path: Path) -> None:
 def run_complexity_check(
     candidate_path: Path | str, *, backend=None, progress: bool = True,
 ) -> ComplexityReport:
-    """Full C1-C5 evaluation of a candidate ecology JSON. Stages the
-    candidate at `V2_ECOLOGY_PATH` (the fixed location `ecology_version
-    == "v2"` resolves to) before running the reference battery — callers
-    that want to keep a round's file for the record should copy it to an
-    archival path themselves before/after calling this."""
+    """Full C1-C5 evaluation of a candidate ecology JSON. Runs the
+    reference battery directly against ``candidate_path`` via
+    ``ecology_override_path`` (statefulness fix, external review
+    2026-07-15) — no canonical-file staging, so concurrent or
+    interrupted runs cannot clobber each other or be confused with a
+    frozen candidate. Callers that want to keep a round's file for the
+    record should copy it to an archival path themselves."""
     candidate_path = Path(candidate_path)
     substrate = load_substrate(candidate_path)  # v1-required-key + forbidden-name check
     data = substrate.data
@@ -295,8 +311,7 @@ def run_complexity_check(
     c2_passed, c2_failing_roles = check_c2(data)
     c5_passed, c5_details = check_c5(data)
 
-    _stage_candidate(candidate_path)
-    results = run_reference_episodes(backend=backend, progress=progress)
+    results = run_reference_episodes(candidate_path, backend=backend, progress=progress)
     c3_passed, c3_details = check_c3(results)
     c4_passed, c4_details = check_c4(results)
 

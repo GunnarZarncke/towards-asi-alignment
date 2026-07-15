@@ -1,0 +1,400 @@
+# Reproduction — high-effort work packages for a larger team
+
+This file collects the **large, workload-incurring engineering tasks**
+that a single-agent session in this repo has explicitly chosen *not* to
+attempt, together with the reasoning for why each matters and roughly
+what closing it would require. It exists because external review
+(2026-07-15, see `results/FINDINGS.md` GL-42) found that several
+claims V2-2b's design made — about blinding, about "institutional
+structure," about "exogenous workload" — were true of the *documentation*
+but not of the *runtime*, and some of the honest fixes are themselves
+large enough that a solo session should not attempt them under time
+pressure. Each section below states the gap, why the cheap fix (a
+documentation caveat) is not a substitute for the real fix, and a rough
+shape for the work a larger team would take on.
+
+This is a companion to `REPRODUCING.md` (v1's per-finding reproduction
+map — different purpose: that file is about *replaying already-run*
+findings; this file is about *work that has not been done yet*).
+
+See `COLLABORATION.md` for how to pick up one of these packages.
+
+**Update 2026-07-15 (GL-43):** items 1, 2, and 4 below are now
+**in-scope for v3** — specified as slices A–C (item 1), E (item 2,
+renamed **feedback-coupled pressure**, not standalone Poisson noise),
+and F (item 4, including composable `ProgramMap`) in
+[`PLAN_v3.md`](PLAN_v3.md). Item 3 (execution-isolated pilot service)
+remains deferred. Slice A uses **loose** coherence tolerances in v3.0
+(±25% flow-vs-declared-total warn); tightening to ±1% hard-fail is
+listed below as a deliberate later tightening item.
+
+**Update 2026-07-15 (backlog expansion):** items 5–7 carry the
+**post-v3** graded-lab program from `PLAN_v2.md` (V2-4 variation
+operator, V2-5 selection, V2-6 red-team) into this file so they are
+not lost in phase tables alone. Item 8 lists **cross-book** tasks from
+`metadata/TODO.md` with graded-lab touchpoints.
+
+**Status key:** *v3 slice* = specified in `PLAN_v3.md`, not yet
+implemented; *PLAN_v2 phase* = pre-registered in `DESIGN.md`, blocked
+on v3 + prior phase gates.
+
+---
+
+## 1. Make institutional structure executable, or stop claiming it's live
+
+**Status:** *v3 slices A, B, C* (`PLAN_v3.md`). Not implemented.
+
+**Gap.** C1 (principal plurality), C2 (incentive coupling), and C5
+(mechanism diversity) are checked **only against the candidate JSON's
+declared sections** — `principals`, `conflicts`, `mechanisms`,
+`resource_flows`. `graded_lab/harness/ecology_complexity.py` reads
+these fields; `graded_lab/world_visible/world.py` (the actual episode
+loop), `permissions.py`, and `resource_ledger.py` never do. A candidate
+can pass "≥4 principals, ≥3 conflicts, 3+ mechanism kinds, every role
+reachable from ≥2 principals" while every agent's payoffs, permissions,
+and interactions in the running simulation are completely unaffected by
+any of that declared structure.
+
+**Why the cheap fix isn't enough.** Documentation notes (added in
+`DESIGN.md` and `PLAN_v2.md`, this session) correctly downgrade the
+claim from "a passing ecology has live multi-principal incentive
+coupling" to "a passing ecology has a coherent, mechanically-checked
+*declared* institutional structure." That is honest, but it also means
+V2-3's plan to use C5's declared mechanisms as UAD ground truth is only
+a test of whether UAD recovers **declared-but-behaviorally-inert**
+structure — a coherence check on UAD's machinery, not evidence UAD
+finds real institutional coupling units. If the manuscript or Q1
+harvest wants to claim more than that, this gap has to close first.
+
+**Rough shape of the real fix (large — plan for a multi-week effort,
+not a session):**
+
+1. Design a **compilation step**: `principals` → reward/objective
+   terms actually folded into the referee's severity/EAI computation
+   (not just `oracle_only` bookkeeping); `resource_flows` → actual
+   per-role resource *allocation* (not merely allowance columns that
+   are the same regardless of which principal is declared to fund
+   them) — e.g. a principal's declared objective direction should
+   change what the referee scores as good/bad for that role, and a
+   `resource_flows` row should determine the actual size of a role's
+   compute/io/standing allowance, not just be checked for reachability.
+2. `mechanisms` → actual permission/communication channel bindings:
+   a `message_channel` mechanism's declared `members_ground_truth`
+   should be the *only* actor set that can use the corresponding
+   `communicate` channel; a `joint_approval_vote` mechanism should
+   require an actual multi-actor vote primitive (new mechanic) rather
+   than the existing single-admin `access.request`/`process_next` flow.
+3. Once compiled, C2's reachability check becomes a check on the
+   **compiled runtime graph**, not the declared JSON graph — this
+   changes what "incentive coupling reaches agents" means from "the
+   grower said so" to "the simulation enforces it."
+4. Full regression suite against the v1 digest pin and all V2-2/V2-2b
+   round artifacts — this is a substrate-shape change, not additive,
+   so it likely **cannot** preserve v1/v2-2 byte-identical replay; plan
+   for a new `ecology_version` (e.g. `"v3"`) rather than mutating `"v2"`
+   in place, and decide explicitly whether V2-2's four archived rounds
+   are re-interpreted under the new semantics or left as a historical
+   record under the old one.
+5. Re-derive C1–C5 (or a superset) against the compiled runtime, not
+   the declared JSON — the current thresholds were calibrated against
+   declarative checks only and may not transfer.
+
+---
+
+## 2. Real exogenous work injection, not a cost multiplier
+
+**Status:** *v3 slice E* (`PLAN_v3.md` **feedback-coupled pressure** +
+task injection on threshold; no standalone Poisson). Not implemented.
+
+**Gap.** `graded_lab/world_visible/exogenous_workload.py`'s
+`ExogenousWorkloadEngine.cost_scale_for()` only multiplies the cost of
+actions an affected role's agent **independently decides to take**
+during an active window. It does not inject a task, ticket, incident,
+or any demand that must be serviced regardless of what the agent
+decides. If no affected actor happens to act during the window, no
+demand spike exists at all — contention from this mechanism is a
+side-effect of cost inflation, not a claim that "incident bursts create
+concurrent demand," which is what the V2-2b brief says the mechanism
+represents.
+
+**Why the cheap fix isn't enough.** The brief now states this
+limitation explicitly (`BLIND_GENERATION.md` "V2-2b," item 2), and the
+module docstring is honest about it. But a grower whose ecology passes
+C3 via this mechanism may be tuning a cost multiplier, not designing an
+institutionally plausible incident-response process — the manuscript
+should not cite a C3 pass achieved this way as evidence of "realistic
+correlated demand," only as evidence the mechanical criterion cleared.
+
+**Rough shape of the real fix (medium-large):**
+
+1. Add an actual **task queue**: exogenous events append synthetic
+   work items (e.g. "an incident review, requiring a `read` + `write`
+   + `communicate` sequence from the affected role") to a per-role
+   queue that the affordable-action set surfaces as newly-available
+   (or newly-mandatory) primitives, independent of what the agent was
+   already doing.
+2. Decide the semantics of *mandatory* vs. *available*: does an
+   ignored incident task expire, escalate, or block other actions?
+   This is a real design decision with institutional-realism
+   consequences, not just an engineering task — flag it for review
+   before implementing, don't decide it unilaterally mid-session.
+3. Regression-test that agents who never engage with injected tasks
+   still produce a sane (if degenerate) episode — avoid a hang/deadlock
+   failure mode.
+
+---
+
+## 3. Trusted execution-isolated pilot / grower environment
+
+**Gap.** `ecology_pilot.py`'s output filter (`audit_pilot_payload()`)
+filters the **JSON payload** the pilot CLI prints. It does not, and
+cannot, stop a grower subagent that has ordinary code execution against
+this repository from `import`ing `run_episode`, `OracleWorld`, or any
+other genuinely-blinded module directly, enabling
+`record_contention=True` itself, or reading `oracle_only/*.py` source.
+Moving checker source files out of the working tree during a growth
+round (`BLIND_GENERATION.md`'s physical-isolation protocol) mitigates
+this for the checker's own source and thresholds, but does not create a
+real capability boundary — it relies on the grower subagent not
+choosing to explore, not on anything that would stop it if it did.
+
+**User's assessment (2026-07-15):** this is a real gap, but building a
+genuine capability-restricted sandbox (or routing pilot/grower access
+through a separate, network-isolated service that only returns the
+disclosed fields) is **excessive for the current single-agent session**
+and is recorded here for a larger-team reproduction rather than
+attempted now.
+
+**Rough shape of the real fix (large — infrastructure project):**
+
+1. Stand up a **separate process or container** with only the pilot
+   entry point exposed (e.g. a thin HTTP/RPC service wrapping
+   `run_pilot_episodes`), no filesystem access to the rest of the
+   repository, and no ability to import arbitrary project modules.
+2. The grower subagent's tool access for a growth round would be
+   restricted to: writing its own candidate JSON, calling this service
+   with a path/blob, and receiving only the disclosed fields — no shell,
+   no arbitrary file read, for the duration of the round.
+3. This is worth doing **only if** a future criterion needs a real
+   blinding claim; per GL-42, C3/C4 no longer make that claim, so this
+   work is not blocking with the current C1–C5 criterion set. Revisit
+   if a future criterion (post-V2-2b) reintroduces something that must
+   stay genuinely hidden from an agent with pilot access.
+
+---
+
+## 4. Heterogeneous multi-actor roles (not clones)
+
+**Status:** *v3 slice F* (`PLAN_v3.md`).
+
+**Gap (v2-2b):** `role_population` (GL-40) builds N **identical** clones per
+role — same role program, same goal weights, against one shared global
+pipeline. This manufactures queue depth (useful for C3's contention
+mechanism) but is not evidence of heterogeneous institutional actors,
+per-actor incentive structure, or strategic coupling between distinct
+individuals holding the same role. C2's reachability check stays
+explicitly per-role, not per-actor, for this reason.
+
+**v3 spec (slice F):** per-actor `{program?, program_map?}` overrides;
+**`ProgramMap`** composable genotype (walker + sparse `pattern_scores` +
+discrete hooks) with preset expansion from frozen vocabulary; V2-4
+mutates the same schema (`REPRODUCTION.md` §5). **Blinding note:**
+`ProgramMap` exposes agent-visible vocabulary only; see `PLAN_v3.md`
+§ "Blinding boundary (anticipating critics)" — ecology grower may be
+restricted to frozen presets at growth time, with maps edited only under
+selection.
+
+**Rough shape (largely specified — implementation in v3 slice F):**
+
+1. `program_map.py`: validate, expand preset, compose runtime policy;
+   hybrid `mode` dispatch.
+2. C2-v3 per-actor reachability as reported diagnostic; pass/fail TBD
+   at design review.
+3. Phenotype-hash reporting (syntax vs behaviorally distinct maps) for
+   selection experiments.
+
+---
+
+## 5. Variation operator / mutation over `ProgramMap` (V2-4)
+
+**Status:** *PLAN_v2 phase V2-4* — **blocked on v3 slice F** (`ProgramMap`
+validation + runtime composition). Pre-registered edit vocabulary in
+`DESIGN.md` § "Variation-operator edit vocabulary"; **update that
+section** when slice F lands so mutations target unified `ProgramMap`
+cells (not the legacy split between `feature:*` floats and walker tuples
+alone).
+
+**Gap.** Q2 ("emergence under selection with variation — MB6/MB7") cannot
+run until a closed mutation operator exists over a genotype large enough
+to explore (>10¹⁶ syntax-valid maps under discrete bins — see
+`PLAN_v3.md` § Grower agent design space) with a **uniform-fitness null**
+and permutation-band stats (`oracle_only/stats.py`, GL-25 lesson).
+
+**Why not in v3.** v3 delivers the genotype and preset expansion; the
+operator is a separate pre-registered battery with its own null harness.
+Implementing both in one slice would blur "ecology wiring" from
+"selection machinery."
+
+**Rough shape (medium-large, ~1–2 wk after slice F):**
+
+1. **Closed edit vocabulary** over `ProgramMap` (pre-register before
+   any selection run): e.g. `pattern_score_±1`, `pattern_score_set`,
+   `step_insert` / `step_drop` / `step_reorder`, `hook_tweak`,
+   `temperature_bin±1`, `goal_weight_bin_nudge`, `mode_swap` — each edit
+   re-validates mechanically; invalid mutants discarded, not repaired.
+2. **Mutation rate:** one edit per member per generation with probability
+   `MUTATION_RATE` (DESIGN.md default 0.3); at most one edit class per
+   generation for attribution.
+3. **Null harness:** uniform-fitness control + `N_PERMUTATIONS` shuffle
+   band in `oracle_only/stats.py`; P5 gate — selection claim reportable
+   only if treatment exits band and null does not.
+4. **Expressiveness report:** distinct phenotypes per 100 mutants
+   (phenotype hash from slice F), separate from syntax cardinality.
+5. **Tests:** operator + null on frozen smoke ecology; no semantic
+   filter on mutants.
+
+**Touches:** new `graded_lab/harness/variation_operator.py` (or
+`oracle_only/selection.py`), `program_map.py`, `oracle_only/stats.py`,
+`DESIGN.md`, `tests/test_variation_operator.py`.
+
+---
+
+## 6. Selection with variation (V2-5, Q2 primary)
+
+**Status:** *PLAN_v2 phase V2-5* — blocked on §5 + v3 slice D (criteria
+freeze) + a passing v3 ecology (or honest null on frozen reference).
+
+**Gap.** v1's Phase 8 null (GL-23) used a **fixed roster** — it could
+not ask whether selection *with variation* surfaces evasive strategies.
+V2-5 is the primary MB6/MB7 battery.
+
+**Rough shape (large — multi-week compute + analysis):**
+
+1. Multi-generation selection on v3 ecology: population ≥12, generations
+   ≥12, episodes/member ≥6 (floors in `DESIGN.md`; finalize in V2-5
+   protocol write-up).
+2. Multi-handle fitness vector (Phase 8b default, carryover per GL-27);
+   lineage tracking; evasion criterion each generation (same operational
+   definition as V2-4 spec in `DESIGN.md`).
+3. Output: `results/v2_selection.json`; archive any evolved program
+   meeting evasion criterion with full lineage for replay.
+4. **Predictions:** P6 (selection beats mutation-only null by gen 12),
+   P7 (evasion if any) — resolve positive or null in FINDINGS.
+
+**Blocked by:** item 5, v3 institutional runtime (item 1), growth protocol
+(slice D).
+
+---
+
+## 7. LLM red-team with onboarding (V2-6, Q3)
+
+**Status:** *PLAN_v2 phase V2-6* — blocked on v3 ecology + V2-3 go gate
+(reference batteries on grown ecology).
+
+**Gap.** Budget-capped LLM adversary on affordable-primitive API; tests
+detector robustness against a class of adversary v1 could not run at
+ecology scale.
+
+**Rough shape (large — adapter port + protocol + compute):**
+
+1. Port lab-sim subprocess-isolate LLM adapter; hard caps on ticks,
+   tokens, dollars; progress logging.
+2. Two conditions: surface-blind vs informed (detector-family docs, not
+   thresholds); prompts frozen verbatim in `BLIND_GENERATION.md`.
+3. Onboarding window (world live, scoring suppressed) then scored window;
+   duration from reference-agent median ticks-to-deploy (V2-3 statistic).
+4. ≥5 seeds/condition; evasion criterion identical to V2-5 on
+   post-onboarding actions only.
+5. Output: `results/v2_redteam.json`; P8 informed ≥ surface-blind ≥
+   variation (report all three).
+
+**Scope limit (pre-registered):** bounds robustness against *this*
+adversary class, not absence of evasion in general.
+
+---
+
+## 8. Cross-book tasks with graded-lab touchpoints
+
+Extracted from `metadata/TODO.md` § Experiments / Manuscript — not
+graded-lab engineering per se, but flagged as major work that may wire
+into this line:
+
+| Task | Source | Graded-lab connection |
+|---|---|---|
+| **Wire embedded value formation paper** | `metadata/TODO.md` | Entropic Ecology Transfer Test may connect to ecology transfer / Q1 harvest; cite before claiming cross-paper empirical support. |
+| **Review SOO vs book adversarial scenarios** | `metadata/TODO.md` § Experiments | Tier-1 scenarios (report inflation, shadow routing, correction-capture theater, bearer-map narrowing) — decide if any map to graded-lab detectors or stay manuscript-only; owner split Marc / book-side. |
+| **Cornerstone empirical value-bundle test** | `metadata/TODO.md` § Manuscript | ch16/ch17 bundle recovery — distinct from graded-lab Q1–Q3 but may share measurand vocabulary; do not conflate lines in FINDINGS. |
+
+---
+
+## 9. Text→`ProgramMap` compiler (tighter reproduction / mitigation 1+)
+
+**Status:** deferred — target for a **second growth protocol** after v3.0
+(default: mitigation 2, direct `program_map` in `PLAN_v3.md`). Not
+required for v3 engineering slices.
+
+**Idea.** Ecology grower describes each actor's behavior in **plain
+prose** (similar voice to Part C, but per role/actor — e.g. "engineer
+who prioritizes draft reports, requests access when blocked, rarely uses
+lab chat"). An **implementer-run** LLM call (or isolated subprocess
+with no repo/oracle access) maps prose → validated `ProgramMap` JSON.
+Grower never sees `pattern_scores` bins or preset expansion tables.
+
+**Why bother.** Reduces direct tuning of the shared goal-feature
+coordinate system while keeping heterogeneous actors. Closer to how a
+real institution would specify "this hire's style" without writing
+softmax tables.
+
+**Rough shape (medium):**
+
+1. **Schema:** optional `behavior_description` string per actor in
+   `role_population`; mutually exclusive with inline `program_map` in
+   the strict protocol (prose-only submission).
+2. **Frozen compiler** in `BLIND_GENERATION.md` + `program_map_compiler.py`:
+   prompt = primitive API + role + prose + output JSON schema only;
+   explicitly excludes detectors, severity, criteria, FINDINGS.
+3. **Validation gate:** `validate_program_map()` only; failed compiles
+   reported as grower-facing "could not compile behavior" without
+   revealing scorer internals (same pass/fail discipline as C-checks).
+4. **Reproducibility:** pinned model id, temperature 0, structured output;
+   log prompt/hash/output on every compile for replay; report
+   compiler-null diversity (N random prose snippets → phenotype spread).
+5. **Prior-risk battery:** hand-written prose fixtures designed to tempt
+   generic "compliance-heavy" maps; measure systematic bias before trusting
+   Q1 transfer claims on compiled ecologies.
+
+**Blocked by:** v3 slice F (`ProgramMap` validation). **Pairs with:**
+mitigation 1 (frozen presets if compile fails?) — policy TBD at protocol
+freeze. **Does not replace:** `REPRODUCTION.md` §3 if grower retains
+shell/repo access during growth.
+
+---
+
+## Status of items already fixed this pass (GL-42, not on this list)
+
+For contrast — these were judged small enough to fix directly rather
+than defer:
+
+- Poisson trigger corrected to be actually memoryless (no fixed
+  refractory cooldown).
+- Candidate/pilot staging no longer mutates the shared canonical
+  `generated_ecology_v2.json` (`EpisodeConfig.ecology_override_path`).
+- C3's blinding claim retracted and replaced with an honest disclosed-
+  requirement framing (this was cheap to *document* even though the
+  underlying design tension — "you cannot both let the grower observe
+  queueing and credibly hide whether the ecology has enough of it" — is
+  not something engineering can fix; it's a scope decision, made).
+- End-to-end test proving a multi-actor + workload ecology can clear
+  C3 while staying in C4's interior band, through the real checker.
+
+## Later tightening (not v3.0)
+
+- **Slice A flow-vs-declared-total cross-check:** v3.0 warns at ±25%
+  per resource type; tighten to ±10%, ±5%, or ±1% hard-fail once
+  reference batteries show false-warn rates are acceptable.
+- **C2-v3 contribution floor:** v3.0 draft uses ≥5% per principal;
+  tighten toward ≥10% if growers routinely pass with token flows.
+
+See `PLAN_v3.md` slice A.
+
+See `results/FINDINGS.md` GL-42 for the full external-review record.
