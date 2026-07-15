@@ -1,6 +1,6 @@
 # Graded Lab Simulation — v2 Program Plan
 
-**Status: planned, not started (2026-07-15).** The v1 experiment program
+**Status: V2-1 complete, V2-2 closed with C3 failure (2026-07-15).** The v1 experiment program
 (Phases 0–8d, FINDINGS GL-0–GL-31) is closed — see
 `results/TERMINAL_SUMMARY.md` — but the simulation codebase is not. v2 is
 a new pre-registered program **in the same codebase**, building on the
@@ -201,16 +201,17 @@ not start before the gate is met or an explicit pre-registered exception
 is recorded (v1's Phase-8 exception is the model: allowed, but named in
 the plan table, not silent).
 
-| Phase | Deliverable | Freeze gate |
-|---|---|---|
-| V2-0 consolidation | v1 closure artifacts (`TERMINAL_SUMMARY.md`, `REPRODUCING.md`, closure FINDINGS entry, this plan) committed; final v1 commit hash recorded | docs merged; test suite green at closure commit |
-| V2-1 pre-registration freeze | `DESIGN.md` v2 sections: complexity criterion constants; harvest sentences for Q1/Q2/Q3 (pass *and* null versions); evasion operationalization; variation-operator spec; red-team protocol; checker script + tests | all sections written **before** the V2-2 brief is sent; criterion constants immutable thereafter |
-| V2-2 blinded ecology growth | `generated_ecology_v2.json` + rationale via blinded subagent, ≤ 4 rounds; `BLIND_GENERATION.md` v2 section; loader + plane wiring behind `ecology_version` config switch (v1 paths untouched — regression tests prove v1 batteries still reproduce bit-for-bit) | C1–C5 pass mechanically, or 4-round failure reported; JSON frozen |
-| V2-3 machinery transfer battery (Q1) | frozen v1 UAD (passive + intervention), EAI both vantages, ecology-BIQ, referee/detectors run **unchanged** on v2 ecology; C5's declared mechanisms as ground truth; results in `results/v2_transfer.json` | battery run and reported honestly — pass/fail of predictions P1–P4 below, no threshold edits; **go/no-go for V2-5/V2-6:** referee-vantage EAI reaches the pre-registered mid band on ≥ 1 default-load cell, else Q2/Q3 are descoped with the null as the program's main result |
-| V2-4 variation operator | mutation over the existing program representations: (a) feature-weight perturbation on `feature:*` profiles, (b) structured program-map edits from a closed, pre-registered edit vocabulary (insert/drop/reorder/parameter-tweak of primitive steps), validated mechanically like Phase-6 features; uniform-fitness null harness; permutation noise-band stats in `oracle_only/stats.py` | operator + null control tested; **null control shows drift inside the permutation band** (if not, the selection harness itself is fixed before any claim) |
-| V2-5 selection with variation (Q2) | multi-generation selection on v2 ecology with mutation, multi-handle fitness (8b's pre-registered vector as default, carryover on per GL-27), ≥ 6 episodes/member, ≥ 12 generations; lineage tracking; evasion criterion evaluated per generation; `results/v2_selection.json` | pre-registered predictions resolved and reported, positive or null; any evolved program that meets the evasion criterion is archived with full lineage for replay |
-| V2-6 LLM red-teaming (Q3) | subprocess-isolate LLM adapter on the affordable-primitive API (v1 plan's deferred item), hard budget caps (ticks, tokens, dollars), progress logging; a pre-registered **onboarding window** (world mechanics live, no scoring) before the scored window, using the grown ecology's in-world knowledge-base artifact; conditions: (a) surface-blind, (b) informed; ≥ 5 seeds each; evasion criterion scored identically to V2-5, only on post-onboarding actions; `results/v2_redteam.json` | both conditions run inside caps; refusals/degenerate runs reported, not resampled away; onboarding-window actions logged separately, never folded into the scored result |
-| V2-7 harvest + terminal decision | FINDINGS synthesis; write the pre-registered sentences (pass or null versions) into their consumer chapters; decide close-vs-extend using the same thin-sentence rule that closed v1 | manuscript edits done or explicitly declined per rule; v2 terminal summary if closed |
+| Phase | Deliverable | Freeze gate | Status |
+|---|---|---|---|
+| V2-0 consolidation | v1 closure artifacts (`TERMINAL_SUMMARY.md`, `REPRODUCING.md`, closure FINDINGS entry, this plan) committed; final v1 commit hash recorded | docs merged; test suite green at closure commit | **done** (GL-31) |
+| V2-1 pre-registration freeze | `DESIGN.md` v2 sections: complexity criterion constants; harvest sentences for Q1/Q2/Q3 (pass *and* null versions); evasion operationalization; variation-operator spec; red-team protocol; checker script + tests | all sections written **before** the V2-2 brief is sent; criterion constants immutable thereafter | **done** (GL-32) |
+| V2-2 blinded ecology growth | `generated_ecology_v2.json` + rationale via blinded subagent, ≤ 4 rounds; `BLIND_GENERATION.md` v2 section; loader + plane wiring behind `ecology_version` config switch (v1 paths untouched — regression tests prove v1 batteries still reproduce bit-for-bit) | C1–C5 pass mechanically, or 4-round failure reported; JSON frozen | **closed — C3 4-round failure** (GL-38): 4 clean rounds; C1/C2/C4/C5 pass after GL-36/37 fixes; C3 never clears; no ecology freeze; see GL-34–GL-38 |
+| V2-2b (planned follow-on) | `PLAN_V2_2B.md`: multi-actor-per-role schema, exogenous workload mechanism, generator-side pilot sandbox — see GL-39 diagnosis | not yet defined (planning doc lists engineering prerequisites; a FINDINGS entry must pre-register the new brief before round 1) | **planning only** (GL-39); no code, brief, or growth round started |
+| V2-3 machinery transfer battery (Q1) | frozen v1 UAD (passive + intervention), EAI both vantages, ecology-BIQ, referee/detectors run **unchanged** on v2 ecology; C5's declared mechanisms as ground truth; results in `results/v2_transfer.json` | battery run and reported honestly — pass/fail of predictions P1–P4 below, no threshold edits; **go/no-go for V2-5/V2-6:** referee-vantage EAI reaches the pre-registered mid band on ≥ 1 default-load cell, else Q2/Q3 are descoped with the null as the program's main result | not started |
+| V2-4 variation operator | mutation over the existing program representations: (a) feature-weight perturbation on `feature:*` profiles, (b) structured program-map edits from a closed, pre-registered edit vocabulary (insert/drop/reorder/parameter-tweak of primitive steps), validated mechanically like Phase-6 features; uniform-fitness null harness; permutation noise-band stats in `oracle_only/stats.py` | operator + null control tested; **null control shows drift inside the permutation band** (if not, the selection harness itself is fixed before any claim) | not started |
+| V2-5 selection with variation (Q2) | multi-generation selection on v2 ecology with mutation, multi-handle fitness (8b's pre-registered vector as default, carryover on per GL-27), ≥ 6 episodes/member, ≥ 12 generations; lineage tracking; evasion criterion evaluated per generation; `results/v2_selection.json` | pre-registered predictions resolved and reported, positive or null; any evolved program that meets the evasion criterion is archived with full lineage for replay | not started |
+| V2-6 LLM red-teaming (Q3) | subprocess-isolate LLM adapter on the affordable-primitive API (v1 plan's deferred item), hard budget caps (ticks, tokens, dollars), progress logging; a pre-registered **onboarding window** (world mechanics live, no scoring) before the scored window, using the grown ecology's in-world knowledge-base artifact; conditions: (a) surface-blind, (b) informed; ≥ 5 seeds each; evasion criterion scored identically to V2-5, only on post-onboarding actions; `results/v2_redteam.json` | both conditions run inside caps; refusals/degenerate runs reported, not resampled away; onboarding-window actions logged separately, never folded into the scored result | not started |
+| V2-7 harvest + terminal decision | FINDINGS synthesis; write the pre-registered sentences (pass or null versions) into their consumer chapters; decide close-vs-extend using the same thin-sentence rule that closed v1 | manuscript edits done or explicitly declined per rule; v2 terminal summary if closed | not started |
 
 ### V2-1 details — what gets pre-registered, verbatim
 
@@ -346,8 +347,14 @@ null, and that comparison is itself the planned ch34 upgrade.
 
 - `PLAN.md` — v1 program (closed; kept as the v1 record)
 - `PLAN_v2.md` — this file
-- `DESIGN.md` — will gain the v2 pre-registration sections (V2-1)
-- `BLIND_GENERATION.md` — will gain the v2 grower and red-team briefs
+- `PLAN_V2_2B.md` — planning-only follow-on to the closed V2-2 (GL-38):
+  multi-actor roles, exogenous workload, and a generator-side pilot
+  sandbox, addressing the C3-non-convergence diagnosis. Not started.
+- `DESIGN.md` — the v2 pre-registration sections (V2-1)
+- `BLIND_GENERATION.md` — the v2 grower and red-team briefs
 - `results/TERMINAL_SUMMARY.md` — v1 closure summary
 - `REPRODUCING.md` — v1 reproduction instructions + final v1 commit hash
 - `results/FINDINGS.md` — continuous record; v2 entries start at GL-32
+- `../BLIND_GENERATION_METHODOLOGY.md` — cross-line blind-generation
+  lessons (not specific to graded-lab), written from this program's
+  C3 post-mortem plus prior lines' blind-generation protocols

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-CODE_VERSION = "graded-lab-0.17.0"
+CODE_VERSION = "graded-lab-0.18.1"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 
@@ -75,6 +75,17 @@ class EpisodeConfig:
     substrate_settings: SubstrateSettings = field(default_factory=SubstrateSettings)
     carrier_termination_mode: str = "remove"
     units: tuple[tuple[str, tuple[str, ...]], ...] | None = None
+    # PLAN_v2.md / DESIGN.md "ecology_version config switch" (V2-2). "v1"
+    # (default) selects the unchanged, frozen `generated_substrate_v1.json`
+    # for every existing call site — v1 batteries are unaffected. "v2"
+    # selects the blinded-grown ecology once frozen. Additive: no existing
+    # caller sets this field, so no existing behavior changes.
+    ecology_version: str = "v1"
+    # DESIGN.md "v2 pre-registration" C3 check: when True, `run_episode`
+    # attaches `EpisodeResult.contention_diagnostics` (additive, default
+    # off — no existing caller sets this, so no existing digest/output
+    # changes).
+    record_contention: bool = False
 
     def __post_init__(self) -> None:
         ids = [a.actor_id for a in self.agents]

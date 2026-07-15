@@ -71,6 +71,38 @@ def test_contention_lengthens_duration_as_roster_load_grows():
     assert contended_duration > first_duration
 
 
+def test_record_contention_off_by_default_leaves_counters_zero():
+    sub = load_substrate().data
+    shared_slots = sub["contention"]["shared_compute_slots"]
+    sched = ActionScheduler(sub)
+    action = PrimitiveAction("continue_current", {})
+    for i in range(shared_slots + 2):
+        sched.start(f"a{i}", action, compute_cost=2, io_cost=2)
+    assert sched.contention_events == 0
+    assert sched.action_starts == 0
+
+
+def test_record_contention_on_counts_events_past_shared_slots():
+    """DESIGN.md "v2 pre-registration" C3: a contention event is a
+    `start()` whose pre-start `queue_depth` exceeds `shared_compute_slots`."""
+    sub = load_substrate().data
+    shared_slots = sub["contention"]["shared_compute_slots"]
+    sched = ActionScheduler(sub, record_contention=True)
+    action = PrimitiveAction("continue_current", {})
+    for i in range(shared_slots):
+        sched.start(f"a{i}", action, compute_cost=2, io_cost=2)
+    assert sched.action_starts == shared_slots
+    assert sched.contention_events == 0
+    # "over1" starts with queue_depth == shared_slots (not yet counted,
+    # matches `duration_ticks`'s own `queue_depth - shared_compute_slots`
+    # convention); "over2" starts with queue_depth == shared_slots + 1,
+    # strictly over.
+    sched.start("over1", action, compute_cost=2, io_cost=2)
+    sched.start("over2", action, compute_cost=2, io_cost=2)
+    assert sched.action_starts == shared_slots + 2
+    assert sched.contention_events == 1
+
+
 def test_multi_tick_work_is_billed_across_its_execution():
     sub = load_substrate().data
     sched = ActionScheduler(sub)

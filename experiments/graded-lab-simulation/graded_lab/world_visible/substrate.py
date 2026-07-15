@@ -9,6 +9,17 @@ from pathlib import Path
 _ROOT = Path(__file__).resolve().parent.parent.parent
 DEFAULT_SUBSTRATE_PATH = _ROOT / "generated_substrate_v1.json"
 
+# PLAN_v2.md / DESIGN.md "ecology_version config switch" (V2-2). "v1" is
+# the only version any pre-v2 code path resolves to (default in
+# `EpisodeConfig.ecology_version`); "v2" resolves once
+# `generated_ecology_v2.json` is frozen (V2-2 growth). Adding a version
+# here never changes what "v1" resolves to.
+V2_ECOLOGY_PATH = _ROOT / "generated_ecology_v2.json"
+ECOLOGY_VERSION_PATHS: dict[str, Path] = {
+    "v1": DEFAULT_SUBSTRATE_PATH,
+    "v2": V2_ECOLOGY_PATH,
+}
+
 # Parameter names that must NOT appear — emergent ambiguity guard.
 FORBIDDEN_PARAMETER_NAMES = frozenset({
     "delay", "delay_mean", "delay_jitter", "noise_sd", "observability",
@@ -20,21 +31,59 @@ class SubstrateError(ValueError):
     pass
 
 
+def ecology_path_for_version(version: str) -> Path:
+    try:
+        return ECOLOGY_VERSION_PATHS[version]
+    except KeyError as exc:
+        raise SubstrateError(
+            f"unknown ecology_version {version!r}; known versions: "
+            f"{sorted(ECOLOGY_VERSION_PATHS)}"
+        ) from exc
+
+
 @dataclass(frozen=True)
 class FrozenSubstrate:
     data: dict
 
     @property
     def version(self) -> str:
-        return str(self.data["substrate_version"])
+        # v1 substrate JSONs key their version tag "substrate_version";
+        # v2-shaped ecology JSONs (DESIGN.md "v2 pre-registration") key
+        # it "ecology_version" instead. Accept either name — this is a
+        # loader-compatibility fix, not a C1-C5 threshold change.
+        if "substrate_version" in self.data:
+            return str(self.data["substrate_version"])
+        return str(self.data["ecology_version"])
 
     def scaled_allowances(self, role: str, compute_scale: float) -> dict[str, float]:
         raw = self.data["resource_allowances_per_tick"][role]
         return {
             "compute": raw["compute"] * compute_scale,
             "io": raw["io"],
-            "standing": raw["standing"],
+            "standing": standing_stock_for_role(self.data, role),
         }
+
+
+def is_v2_shaped_ecology(data: dict) -> bool:
+    """True when the JSON carries the v2 grower schema tag (``ecology_version``)."""
+    return "ecology_version" in data
+
+
+def standing_stock_for_role(data: dict, role: str) -> float:
+    """Standing stock at episode start and idle-recovery ceiling.
+
+    v1-shaped substrates (``substrate_version`` only): per-role allowance
+    column — legacy engine behavior, unchanged for byte-identical replay.
+
+    v2-shaped substrates: ``standing_mechanics.initial`` per the
+    pre-registered schema (GL-37). The per-tick ``standing`` allowance
+    column is present for schema compatibility but is not the stock.
+    """
+    if is_v2_shaped_ecology(data):
+        return float(data["standing_mechanics"]["initial"])
+    # Preserve JSON numeric type (int vs float) so v1 ledger digests stay
+    # byte-identical — ``float(12)`` serializes differently from ``12``.
+    return data["resource_allowances_per_tick"][role]["standing"]
 
 
 def load_substrate(path: Path | str = DEFAULT_SUBSTRATE_PATH) -> FrozenSubstrate:
@@ -63,7 +112,6 @@ def _validate_no_forbidden_keys(obj: object, prefix: str = "") -> None:
 
 def _validate_structure(data: dict) -> None:
     required = (
-        "substrate_version",
         "primitive_costs",
         "resource_allowances_per_tick",
         "standing_mechanics",
@@ -76,6 +124,11 @@ def _validate_structure(data: dict) -> None:
     for key in required:
         if key not in data:
             raise SubstrateError(f"missing required key {key!r}")
+    if "substrate_version" not in data and "ecology_version" not in data:
+        raise SubstrateError(
+            "missing required key 'substrate_version' (or 'ecology_version' "
+            "for v2-shaped ecology JSONs)"
+        )
     for role in ("engineer", "reviewer", "release_manager", "admin"):
         if role not in data["resource_allowances_per_tick"]:
             raise SubstrateError(f"missing role allowances for {role!r}")

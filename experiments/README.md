@@ -3,7 +3,7 @@
 Reproducible research artifacts live here. Each experiment should have its own
 subfolder so results, logs, and local TODOs stay scoped.
 
-Narrative map: [`docs/EXPERIMENTS.md`](../docs/EXPERIMENTS.md). Structured index for the companion site: [`metadata/experiments.yml`](../metadata/experiments.yml).
+Narrative map: [`docs/EXPERIMENTS.md`](../docs/EXPERIMENTS.md). Structured index for the companion site: [`metadata/experiments.yml`](../metadata/experiments.yml). Cross-line lessons on blind generation/growth protocols: [`BLIND_GENERATION_METHODOLOGY.md`](BLIND_GENERATION_METHODOLOGY.md).
 
 ## Current Experiments
 

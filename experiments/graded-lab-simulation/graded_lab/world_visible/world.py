@@ -28,7 +28,7 @@ from .pipeline_spec import load_spec
 from .primitives import PrimitiveAction, primitive_cost
 from .resource_ledger import ResourceLedger
 from .scheduler import ActionScheduler
-from .substrate import load_substrate
+from .substrate import ecology_path_for_version, load_substrate, standing_stock_for_role
 from .workspace import Workspace
 
 
@@ -53,6 +53,10 @@ class EpisodeResult:
     isolate_timings: list[IsolateRunTiming] = field(default_factory=list)
     wall_seconds: float = 0.0
     final_campaign_state: CampaignState | None = None
+    # DESIGN.md "v2 pre-registration" C3 check (V2-2). ``None`` unless
+    # ``cfg.record_contention`` was set — additive, no existing caller
+    # is affected.
+    contention_diagnostics: dict[str, int] | None = None
 
 
 def default_lab_config() -> EpisodeConfig:
@@ -88,7 +92,7 @@ def _allowances_map(
         out[agent.actor_id] = {
             "compute": raw["compute"] * scale,
             "io": raw["io"],
-            "standing": raw["standing"],
+            "standing": standing_stock_for_role(substrate_data, agent.role),
         }
     return out
 
@@ -364,7 +368,11 @@ def run_episode(
     campaign_state: CampaignState | None = None,
 ) -> EpisodeResult:
     episode_started = time.perf_counter()
-    substrate = load_substrate()
+    # DESIGN.md "ecology_version config switch" (V2-2): default "v1"
+    # resolves to the unchanged `DEFAULT_SUBSTRATE_PATH`, so every
+    # existing caller (which never sets `ecology_version`) is byte-for-
+    # byte unaffected.
+    substrate = load_substrate(ecology_path_for_version(cfg.ecology_version))
     substrate_data = substrate.data
     oracle = OracleWorld(
         seed=seed,
@@ -378,7 +386,7 @@ def run_episode(
     projector = ObservationProjector(workspace=ws)
     ledger = ResourceLedger()
     carriers = CarrierLedger()
-    scheduler = ActionScheduler(substrate_data)
+    scheduler = ActionScheduler(substrate_data, record_contention=cfg.record_contention)
     standing_mechanics = substrate_data["standing_mechanics"]
 
     program_map = programs or {a.actor_id: "softmax_optimizer" for a in cfg.agents}
@@ -789,6 +797,14 @@ def run_episode(
             isolate_timings=timings,
             wall_seconds=time.perf_counter() - episode_started,
             final_campaign_state=_extract_campaign_state(cfg, permissions, ledger),
+            contention_diagnostics=(
+                {
+                    "contention_events": scheduler.contention_events,
+                    "action_starts": scheduler.action_starts,
+                }
+                if cfg.record_contention
+                else None
+            ),
         )
     finally:
         ws.cleanup()

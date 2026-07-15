@@ -20,9 +20,16 @@ class InFlightAction:
 
 
 class ActionScheduler:
-    def __init__(self, substrate_data: dict) -> None:
+    def __init__(self, substrate_data: dict, *, record_contention: bool = False) -> None:
         self._substrate = substrate_data
         self._in_flight: dict[str, InFlightAction] = {}
+        # DESIGN.md "v2 pre-registration" C3 check (V2-2): optional,
+        # additive contention counters. ``record_contention=False``
+        # (the default every existing caller uses) leaves these at 0 and
+        # changes no other behavior.
+        self._record_contention = record_contention
+        self.contention_events = 0
+        self.action_starts = 0
 
     def duration_ticks(
         self, compute_cost: float, io_cost: float, queue_depth: int
@@ -51,6 +58,11 @@ class ActionScheduler:
         of already-in-flight actors — genuine roster contention, not a
         value the caller supplies (which could otherwise become a de facto
         delay parameter)."""
+        if self._record_contention:
+            self.action_starts += 1
+            contention = self._substrate["contention"]
+            if self.queue_depth > contention["shared_compute_slots"]:
+                self.contention_events += 1
         ticks = self.duration_ticks(compute_cost, io_cost, self.queue_depth)
         self._in_flight[actor_id] = InFlightAction(
             actor_id=actor_id,

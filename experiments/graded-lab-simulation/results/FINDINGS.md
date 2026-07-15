@@ -1956,3 +1956,558 @@ guardrails (GL-24, GL-25, GL-29) remain binding on manuscript use. v2
 FINDINGS entries continue at GL-32 in this file.
 
 - `CODE_VERSION` unchanged at `graded-lab-0.17.0` (documentation-only).
+
+## GL-32 (V2-1 pre-registration freeze — no battery; documentation + checker entry)
+
+**Trigger.** `PLAN_v2.md` V2-1 gate: every pre-registration item must be
+written down and frozen **before** the V2-2 grower brief is sent.
+
+**What was done.** `DESIGN.md` gained a "v2 pre-registration" section
+(frozen 2026-07-15, before the V2-2 brief) covering: the
+`generated_ecology_v2.json` schema; exact C1–C5 mechanical definitions
+(constants copied verbatim from `PLAN_v2.md`, not re-derived); the
+detector-evasion operationalization (severity-not-lower AND
+detector-composite-lower AND audit-pass-not-lower, each via one-sided
+95% CI, checked by hand against GL-23's numbers to confirm it correctly
+classifies GL-23's mover as non-evasive); pre-registered harvest
+sentences (pass/null pairs) for Q1 (ch33, ch41/ch42), Q2 (ch34,
+conditional ch36/ch40), Q3 (ch33, ch27); the V2-4 variation-operator
+edit vocabulary (feature-weight perturbation + closed structured-edit
+set, mutation rate, population/generation/episode floors, uniform-
+fitness null + permutation-band spec); the V2-6 red-team and onboarding
+protocol sketches (model class, conditions, budget caps, prompt-freeze
+rule; onboarding duration derivation rule).
+
+`graded_lab/harness/ecology_complexity.py` implements C1–C5 exactly as
+frozen: `check_c1`–`check_c5`, a reference-episode runner (frozen
+`STRONG_AGENT` roster, `C3_SEEDS = C4_SEEDS = tuple(range(20))`), and
+`run_complexity_check()` returning a `ComplexityReport` whose
+`pass_fail_only()` is deliberately blind to numeric internals (a
+dedicated test, `test_complexity_report_pass_fail_only_hides_numeric_details`,
+enforces this at the object level, not just by convention in the
+calling code). Unit tests use synthetic fixtures for C1/C2/C5 and
+mocked `EpisodeResult`s for C3/C4 (24 tests total); one `@pytest.mark.slow`
+integration smoke test runs the full pipeline against a v1-shaped
+fixture (~21s, added to `tests/speed_limits.json` with a 32s cap).
+
+**Result.** No pass/fail battery — this is a pre-registration and
+tooling gate, not a prediction. All items closed before V2-2's brief
+was sent (verified: `BLIND_GENERATION.md`'s V2-2 section states this
+explicitly and the checker script predates the first grower round by
+construction, since the round depends on it existing).
+
+- `CODE_VERSION` `graded-lab-0.18.0` (bumped for the V2-1/V2-2 engine
+  additions — see GL-33; the pre-registration text itself is
+  documentation-only).
+- Tests: `tests/test_ecology_complexity.py` (new, 24 tests + 1 slow
+  integration smoke test).
+
+## GL-33 (V2-2 engine wiring + ecology-growth round 1 — C3/C4 fail, iterating)
+
+**Trigger.** `PLAN_v2.md` V2-2: additive `ecology_version` substrate-path
+switch, contention diagnostics, and the blinded ecology-growth loop,
+gated on v1 batteries reproducing bit-for-bit.
+
+**What was built.** `EpisodeConfig` gained `ecology_version: str = "v1"`
+and `record_contention: bool = False` (both default-off, additive
+only). `world_visible/substrate.py` gained `ecology_path_for_version()`
+mapping `"v1"` → the unchanged `DEFAULT_SUBSTRATE_PATH` and `"v2"` →
+`V2_ECOLOGY_PATH`. `ActionScheduler` gained `record_contention`,
+`contention_events`, `action_starts` counters, instrumented in
+`start()` on `queue_depth > shared_compute_slots`. `EpisodeResult`
+gained `contention_diagnostics: dict[str, int] | None`, populated only
+when `cfg.record_contention` is set. `tests/test_ecology_version.py`
+pins `test_v1_default_digest_is_unchanged_by_the_ecology_version_switch`
+— a v1-default episode's combined digest is byte-identical with both
+new fields at their defaults, confirming the switch is truly additive.
+
+**Loader-compatibility fix found on first contact.** DESIGN.md's v2
+schema keys the version tag `ecology_version` (not v1's
+`substrate_version`); `substrate.py`'s `_validate_structure` and
+`FrozenSubstrate.version` required the literal string
+`"substrate_version"` and rejected round 1's JSON on first load. Fixed
+by accepting either key name — a loader-compatibility fix, not a C1–C5
+threshold or brief change (made before any checker run touched round
+1's content).
+
+**Round 1 result (blinded grower, `generated_ecology_v2_round1.json`).**
+5 principals, 5 valid conflicts, 4 mechanism kinds (all of
+`message_channel`/`shared_artifact`/`joint_approval_vote`/
+`resource_transfer`), every role's income reachable from ≥ 2
+principals by construction. Checker output:
+
+| Criterion | Result |
+|---|---|
+| C1 (principal plurality) | **PASS** (5 principals, 5 valid conflicts) |
+| C2 (incentive coupling) | **PASS** (no roles failed reachability) |
+| C3 (contention liveness) | **FAIL** (0/20 reference episodes showed any contention event) |
+| C4 (behavioral non-degeneracy) | **FAIL** (deploy rate 0.0 across 20 reference-agent episodes) |
+| C5 (mechanism diversity) | **PASS** (4 distinct kinds ≥ 3 floor) |
+
+C1/C2/C5 — properties of the declared institutional structure (Part
+B) — passed on the first round; the grower's rich multi-principal,
+multi-mechanism design cleared those floors without iteration. C3/C4
+— properties of how the frozen reference roster actually behaves on
+the grower's *numeric* substrate (Part A) — did not: at round 1's cost/
+allowance/contention numbers, the reference agents never contended for
+the 6 shared compute slots and never completed a deploy within
+`T=100` ticks. Per the frozen protocol, the grower received only
+`{C1: true, C2: true, C2_failing_roles: [], C3: false, C4: false, C5: true}`
+— no numeric detail, no explanation of *why* — and was asked to revise
+under its own judgment for round 2. Iteration continues (≤ 4 rounds
+total per the stopping rule); a 4-round failure on C3/C4 would itself
+be reported as the V2-2 finding, not patched by hand.
+
+**Result so far.** Engine wiring: **PASS** (v1 reproducibility pinned,
+all existing tests green). Ecology growth: **in progress**, round 1 of
+≤ 4, C1/C2/C5 clear, C3/C4 fail.
+
+- `CODE_VERSION` `graded-lab-0.18.0`.
+- Tests: `tests/test_ecology_version.py` (new), `tests/test_scheduler.py`
+  (2 new contention-diagnostic tests), full suite green
+  (`pytest tests/ -q`, 325s wall on a loaded machine, well inside the
+  380s suite cap; the one flagged per-test violation,
+  `test_same_seed_is_reproducible_in_fresh_processes` at 15.35s vs a
+  5.00s cap, reproduced at 2.2s in isolation — a concurrent-subagent
+  system-load artifact, not a regression).
+
+## GL-34 (V2-2 round 2 — C3 now passes, C4 still fails; **self-reported blinding leak, disclosed not buried**)
+
+**Trigger.** Round 1's between-round feedback (`{C1: true, C2: true,
+C3: false, C4: false, C5: true}`, no numeric detail) was sent back to
+the grower per the frozen protocol, asking it to revise under its own
+judgment.
+
+**Blinding leak (report this before the numbers, per AGENTS.md "don't
+hide confusion, surface tradeoffs").** The round-2 rationale
+(`generated_ecology_v2_round2_rationale.md`, "A note on how I arrived
+at this, for the record") discloses, unprompted, that while
+re-examining its own round-1 numbers the grower subagent read
+`world_visible/scheduler.py`, `config.py`, `substrate.py`, and
+**`PLAN_v2.md`** — the last of which states the exact C1–C5 numeric
+thresholds in plain text — because it was open in the subagent's
+workspace context, not because the grower sought it out or was told to
+look at it. This is a real breach of Design principle 1 ("extend the
+blinding boundary upward") and of the blinding map's stated withheld
+list (`PLAN_v2.md`'s validation plan is explicitly on that list in
+`BLIND_GENERATION.md`). The round-2 launch prompt (this session) did
+not include an explicit instruction forbidding the grower from reading
+other repository files — an oversight in the protocol design, not a
+grower failure; the grower behaved exactly as instructed once it had
+that visibility and volunteered the leak instead of concealing it.
+
+**Assessed impact.** The grower reports it did **not** run the actual
+checker or tune either changed number to hit a stated threshold value,
+and gives a self-consistency argument for each change independent of
+any threshold: (a) `contention.shared_compute_slots` (6 → 2) — round
+1's own value exceeded the number of actors (4) that could ever
+compete for it, so contention could structurally never fire, which
+contradicted the grower's own round-1 rationale; (b)
+`compute.compute_per_draw`/`io_per_draw` (4/1 → 1/0.5) — these were an
+order of magnitude out of proportion with the rest of the round-1 cost
+hierarchy by the grower's own stated calibration logic (a 250-draw
+eval batch cost ~25–40× a role's per-tick allowance, dwarfing every
+other pipeline stage). Both read as genuine self-consistency fixes, not
+threshold-copying — but the fact that the grower *could see* the exact
+thresholds means round 2's C1–C5 outcome cannot be reported as a clean
+instance of "target-blind growth" without this caveat attached
+wherever it is cited (Q1/Q2/Q3 harvest sentences, if this exact ecology
+is the one eventually frozen, must carry this qualifier or the growth
+must be redone cleanly — decision deferred to whichever round
+eventually passes or exhausts the R=4 budget).
+
+**Round 2/3 checker results, for the record (both since discarded — see
+below).** `generated_ecology_v2_round2.json` (Part A: `shared_compute_slots`
+6→2, `compute_per_draw` 4→1, `io_per_draw` 1→0.5) scored C1/C2/C3/C5
+PASS, C4 FAIL (deploy rate 0.0, unchanged from round 1). Round 3, built
+on round 2's numbers, further lowered `duration_from_cost` and
+`field_monitor_sampling.default_sample_size` and reported (in its own
+rationale) that it "retain[ed] some memory of numeric thresholds" from
+round 2's leak even while claiming not to steer numbers toward them —
+its checker result was not run before the decision below was made.
+
+**Decision: reverted, not accepted.** An initial instruction-only fix
+("don't read other files") was judged insufficient — round 3's
+rationale shows the leak's effect persists across rounds even after
+the instruction is added, because the grower's own memory of
+`PLAN_v2.md`'s thresholds survives from round 2 regardless of what
+round 3 is told not to *read*. Per user decision: round 2 and round 3
+outputs are reverted (archived, not used) and V2-2 growth is redone
+from round 1's clean output, this time with the sensitive files
+**physically removed from the grower's working directory** for the
+duration of each round (not merely an instruction), so there is no
+file for an over-eager read to find. Archived at
+`experiments/graded-lab-simulation/archive/v2-2-contaminated-rounds-2-3/`
+(with a README) rather than deleted, so the leaked-context grower's
+actual output remains inspectable. These two rounds do not count
+against the R=4 stopping-rule budget — the round was voided by a
+protocol defect (the launch prompt omitting a no-other-files
+instruction, and then relying on an instruction rather than physical
+isolation), not spent by the grower. See GL-35 for the redo.
+
+- `CODE_VERSION` `graded-lab-0.18.0` (unchanged).
+
+## GL-35 (V2-2 round 2 redo — physically blinded, C3/C4 still fail, clean)
+
+**Trigger.** GL-34's revert decision: redo growth from round 1's clean
+output under physical file isolation instead of an instruction.
+
+**Blinding mechanism.** Before launching, the orchestrator moved
+`PLAN_v2.md`, `DESIGN.md`, `BLIND_GENERATION.md`, the whole `results/`
+directory, `graded_lab/harness/ecology_complexity.py`, and
+`tests/test_ecology_complexity.py` out of the repository to a path
+outside it (`/tmp/graded_lab_blind_stash_*`), launched a fresh grower
+subagent (given round 1's three files plus the unchanged brief/schema
+and round 1's pass/fail feedback, all verbatim in its prompt — nothing
+by file reference), waited for completion, and only then moved the
+files back before running the checker. The new round's rationale
+(`generated_ecology_v2_round2_rationale.md`) explicitly confirms it did
+not go looking for the removed files and found only two other absent
+files by directory listing (consistent with, not contradictory to,
+what its prompt already told it) without opening them.
+
+**What the grower changed (all findable without any threshold
+knowledge — genuine self-consistency fixes, distinct from the
+discarded round's fixes):**
+
+1. Admin's io allowance (90) exceeded `call.pipeline`'s io cost (80),
+   quietly breaking round 1's own stated invariant that no role can
+   self-fund a full eval run from one tick's allowance; lowered to 70.
+2. `contention.shared_compute_slots` 6 → 3 (independently re-derived
+   from the same "more slots than actors" observation as the discarded
+   round's 6→2, but arrived at without having seen any threshold).
+3. Two C2-relevant resource-flow bugs in Part B: the engineer's
+   `dataset_access_grant` flow was routed through
+   `data_access_governance_board` (whose members don't include
+   engineer — the requester doesn't sit on the board that approves
+   its own request) and the reviewer's `incident_review_priority_slot`
+   flow ran through `field_incident_alerts` without reviewer as a
+   member. Both fixed (re-routed through `access_grant_transfer`;
+   added reviewer to `field_incident_alerts`) from re-reading the
+   grower's own mechanism-membership claims, not from any C2
+   reachability hint (C2 was never told to the grower as a reachability
+   check — see the blinding map's carve-out).
+4. Two of five conflict `justification` strings paraphrased a
+   principal's `objective_metric` instead of naming it verbatim;
+   tightened wording only, no change to the conflict pairs or
+   mechanism.
+
+**Checker result:**
+
+| Criterion | Round 1 | Round 2 (redo, clean) |
+|---|---|---|
+| C1 | PASS | PASS |
+| C2 | PASS | PASS |
+| C3 | FAIL (contention 0.0/20) | FAIL (contention 0.0/20, unchanged — `shared_compute_slots` 6→3 still didn't bind) |
+| C4 | FAIL (deploy rate 0.0) | FAIL (deploy rate 0.0, unchanged) |
+| C5 | PASS | PASS |
+
+C3 stayed at zero contention even after halving `shared_compute_slots`
+to 3 (out of 4 actors) — evidently fewer than 3 actors are ever
+simultaneously mid-action under this ecology's other Part-A numbers
+(allowance sizes, primitive durations) at default load, a fact this
+round's grower had no way to diagnose without running the reference
+battery, which it correctly did not do. C4 remains at zero for the same
+reason identified (independently, before the revert) in the discarded
+round 3: nothing in Part A's `duration_from_cost` mapping has been
+revisited, and the grower has no way to know that. Per the frozen
+protocol, round 3's feedback is again pass/fail only:
+`{C1: true, C2: true, C3: false, C4: false, C5: true}` — physical
+isolation repeated for round 3.
+
+**Result so far.** Round "2 of ≤ 4" (redo, physically blinded): C1/C2/C5
+pass, C3/C4 fail. Growth continues to round 3 under the same physical-
+isolation protocol.
+
+- `CODE_VERSION` `graded-lab-0.18.0` (unchanged).
+
+## GL-36 (V2-2 rounds stall on C3/C4 — diagnosis: a C4 pre-registration bug **and** an engine/schema semantic mismatch the grower cannot see)
+
+**Trigger.** Round 3 (physically-blinded redo) again scored
+`{C1: true, C2: true, C3: false, C4: false, C5: true}`, with the C3/C4
+internals *identically zero* (contention fraction 0.0, deploy rate 0.0)
+across three substantively different substrates — too invariant to be
+an ecology property. Investigation was authorized before spending
+round 4.
+
+**Round 3 redo, for the record** (clean; physical isolation held; its
+rationale confirms no forbidden reads). Changes, all Part A:
+`compute_per_draw` 4→0.5 / `io_per_draw` 1→0.125 (round 2's cost fix
+had never been re-checked against `duration_from_cost` — default eval
+and field-monitor batches implied 80 and 192 ticks, both clipping at
+the 40-tick ceiling, locking an actor out for the maximum span on
+*routine* actions), and `recovery_per_idle_tick` 1→2. These were
+genuine, arithmetically-worked self-consistency fixes — and they were
+correct: on a standing-corrected diagnostic copy (below), round 3's
+pacing produces an interior 0.6 deploy rate.
+
+**Bug 1 — C4's original reference roster was unpassable by construction
+(pre-registration bug).** The frozen V2-1 spec set the C3/C4 reference
+roster to `STRONG_AGENT` (all-role `softmax_optimizer`) at default
+load. GL-16 — a v1 finding recorded *before* V2-1 was drafted — had
+already measured this agent type at **0/160 deploys "regardless of
+substrate cell"** on v1's own frozen substrate. Re-verified this
+session: deploy_rate 0.05 on v1's substrate with the exact reference
+config. C4's (0.1, 0.9) band was therefore unreachable by any ecology,
+v1's own included, from the moment the section was frozen. This is
+exactly the failure mode `PLAN_v2.md`'s own principle warns about in
+reverse: the criterion was never validated against a known-live
+baseline before freezing. An intermediate fix attempt
+(`BUDGET_AWARE_AGENT` at `carrier_load_scale=2.0`, validated only
+against v1) was implemented and then **rejected** when it proved
+degenerate on v2-shaped substrates (reviewer/release_manager execute
+zero actions; carrier load ≥ 0.5 crushes v2 pacing) — that half-fix is
+recorded here rather than left silently in place. **Corrected roster
+(final):** `WEAK_AGENT` (`programmatic_2step`, pre-existing frozen v1
+roster) at unchanged default load — verified capable of an interior
+deploy rate (0.6) on a v2-shaped substrate before any round was
+re-scored. All three clean rounds were re-scored under the corrected
+checker: results unchanged (`C3/C4` still fail, still exactly 0.0) —
+because of Bug 2.
+
+**Bug 2 — the engine ignores half of `standing_mechanics`, and reads
+`resource_allowances_per_tick.standing` as a *stock cap*, not a
+per-tick amount.** Traced mechanically: 100% of the reference agents'
+`access.request` denials are `insufficient_standing`. The engine (a)
+initializes each actor's standing from
+`resource_allowances_per_tick[role]["standing"]`, (b) caps idle
+recovery at that same value, and (c) never reads
+`standing_mechanics.initial`, `unused_grant_penalty`, or
+`admin_queue_penalty_threshold` (no reference anywhere in
+`graded_lab/`). Every v2 grower, reading the schema's field names
+literally ("per_tick"), set standing allowances 3–5 as a trickle
+alongside `standing_mechanics.initial: 40` as the stock. Result:
+engineer standing 3 < `broad_access_request_cost` 6 ⇒ **every
+capability request beyond the bootstrap `intake` grant is denied for
+the whole episode**, the pipeline never advances, deploy is
+structurally 0, and (with actors mostly unable to start work) no
+contention ever forms. v1 never hit this because its grower happened
+to set standing allowances (10–24) above its request cost (2) — the
+mismatch was latent, not absent. **Diagnostic confirmation** (scratch
+copy of round 3 with standing allowances set to the grower's intended
+initial stock of 40, run once, then deleted — never a candidate):
+`WEAK_AGENT` at default load deploys at **0.6**, interior to the C4
+band. C3 remains 0.0 even then — with 4 actors and pre-start queue
+depth capped at 3, contention can only fire at
+`shared_compute_slots ≤ 2`; two independent blinded growers landed on
+3 because **roster size is a world fact the brief never states**.
+
+**Interpretation.** After the C4 roster correction, what remains is not
+an ecology-design failure: C1/C2/C5 (declared structure) passed from
+round 1, and round 3's pacing is demonstrably sound once the standing
+lockout is removed. The blocking failures live at the **interface**
+between the blinded brief and the frozen engine: a schema whose field
+names mean something different to the engine than to a literal reader
+(`standing` semantics), and world facts (roster size = 4, one actor
+per role) withheld not by design but by omission. This is a finding in
+its own right — blinded ecology growth fails for engine-compatibility
+reasons, not structure reasons, unless the brief carries explicit
+engine-interface anchors. Neither fact is a scoring threshold;
+stating both in a round-4 brief is a coherence iteration of the kind
+the risk table explicitly allows ("broaden the brief's framing between
+rounds"), with this entry as the required disclosure.
+
+**Status.** Checker corrected (roster only; C1–C5 thresholds untouched)
+and all three clean rounds re-scored under the corrected checker: C1/C2/C5
+pass, C3/C4 fail at exactly 0.0 — because of Bug 2, not ecology design.
+User approved the combined plan (2026-07-15): complete the pre-registered
+schema in the engine (GL-37), re-score without a new growth round, then
+spend round 4 only if C3 alone still fails — pass/fail feedback only,
+physical isolation, no engine-interface anchors in the brief.
+
+- `CODE_VERSION` `graded-lab-0.18.0` (unchanged through GL-36; GL-37
+  bumps to `0.18.1` — see below).
+
+## GL-37 (V2-2 engine completes pre-registered standing schema for v2-shaped substrates — C4 flips on re-score)
+
+**Trigger.** User approved completing the pre-registered
+`standing_mechanics.initial` semantics in the engine (same class of fix
+as the `ecology_version` loader-key fix in GL-33) rather than leaking
+engine-interface anchors into the round-4 brief. v1 digests must remain
+byte-identical.
+
+**Change.** `standing_stock_for_role()` in `substrate.py`: for JSONs
+carrying `ecology_version` (v2-shaped), standing stock at episode start
+and idle-recovery ceiling come from `standing_mechanics.initial`; the
+`resource_allowances_per_tick[role].standing` column is schema-compatible
+but not the stock. v1-shaped substrates (`substrate_version` only):
+unchanged — still use the per-role allowance column, preserving JSON
+numeric type (`int` vs `float`) so ledger serialization stays
+byte-identical (`tests/test_ecology_version.py` v1 digest pin;
+`tests/test_world.py::test_pinned_combined_digest_seed_3_four_role_softmax`).
+
+**Re-score (no new growth round).** All three clean rounds under the
+corrected engine + GL-36 checker roster:
+
+| Round | C1 | C2 | C3 | C4 | C5 |
+|---|---|---|---|---|---|
+| 1 | PASS | PASS | **FAIL** (0.0) | **PASS** (0.65) | PASS |
+| 2' | PASS | PASS | **FAIL** (0.0) | **PASS** (0.65) | PASS |
+| 3' | PASS | PASS | **FAIL** (0.0) | **PASS** (0.65) | PASS |
+
+C4 is back — the grower's pacing (especially round 3's
+draws-to-duration recalibration) was sound once standing lockout is
+removed. C3 remains at exactly 0.0 on all three: with 4 actors and
+pre-start queue depth capped at 3, contention events require
+`shared_compute_slots ≤ 2` *and* enough concurrent busy overlap for
+`queue_depth > slots` to fire; all three growers chose `shared_compute_slots`
+= 3 (in-world reasoning: "3 slots vs 4 actors binds when >3 want
+compute" — off-by-one at the engine boundary). Diagnostic (scratch
+copies, deleted, never candidates): `slots=1` passes C3 but collapses
+C4 to 0.0 deploy; `slots=2` alone still yields 0.0 contention under
+the reference roster — overlap is too sparse without further pacing
+knobs. Round 4 proceeds under the frozen pass/fail-only protocol.
+
+**Status.** Engine fix landed; one growth round remains (4 of 4).
+
+- `CODE_VERSION` **`graded-lab-0.18.1`** (standing-schema completion;
+  v1 replay unchanged).
+- Tests: `tests/test_ecology_version.py`
+  (`test_v2_shaped_ecology_initializes_standing_from_standing_mechanics_initial`,
+  new).
+
+## GL-39 (V2-2b planning — post-mortem on C3's non-convergence; no implementation yet)
+
+**Trigger.** Post-hoc discussion of why C1/C2/C4/C5 converged cleanly
+under blind pass/fail-only growth while C3 flatlined at 0.0 across all
+four rounds (GL-38), and whether adding more C-criteria in a future line
+risks the same failure mode.
+
+**Diagnosis.** C3 differs from the other four criteria on three axes
+simultaneously: it is **emergent** (a joint property of ≥2 actors'
+scheduling, not decidable from any single declared field — unlike
+C1/C2/C5, which are graph/count checks on the grower's own JSON, and
+unlike C4, whose failure mode was diagnosable by hand-deriving
+draws-to-duration invariants without ever running the sim); it depends
+on an **unstated world fact** (exactly one actor per role, so
+`shared_compute_slots` must be `< 3` for `queue_depth > slots` to ever
+fire — an off-by-one at the roster-cardinality boundary the brief never
+states); and it has **no legitimately disclosable gradient** — a grid
+search (this session, scratch copies, never candidates) found contention
+is a step function of `shared_compute_slots` on round 3's substrate
+(0.0 at slots∈{2,3} regardless of pacing; saturated 1.0 or C4-killing at
+slots=1 unless `extra_duration_ticks_per_queued_slot` is also lowered to
+1), so there was no interior signal any richer bool-adjacent feedback
+could have honestly conveyed without leaking the checker's own threshold
+predicate.
+
+A candidate fix — disclosing whether `action_contention_fraction` sat
+above or below its band — was considered and **rejected**: it is a
+coarsened readout of `C3_MIN_ACTION_CONTENTION_FRACTION` /
+`C3_MAX_ACTION_CONTENTION_FRACTION`, the same leak class as revealing
+the numbers directly, just with fewer bits. C2's existing protocol
+(naming which roles fail reachability, not just a bool) is flagged as
+already over this line in the same way, on reflection — it happened to
+produce genuine fixes in the rounds that used it, which is luck, not a
+property of the practice, and should not be extended as precedent.
+
+**General lesson, generalized beyond this criterion:** real blinding
+regimes that work (double-blind trials, blinded peer review, blinded
+audits) blind the evaluated party to the **evaluator's rubric**, never
+to the evaluated party's own system running. V2-2 blinded the grower to
+both simultaneously — it never watched a single tick of its own design
+execute before submitting. That is a stronger blind than any working
+real-world analog and is the structural reason the one emergent,
+run-only-observable criterion could not converge regardless of grower
+quality or round count. Written up in full, with a lesson catalogue and
+a pre-registration checklist for future criteria, in the new
+`experiments/BLIND_GENERATION_METHODOLOGY.md` (cross-line, not specific
+to graded-lab).
+
+**Plan (not started).** `PLAN_V2_2B.md` (new file, this session):
+(1) multiple actors per role, so contention is a generic property of a
+moderately-provisioned shared pool rather than a cardinality-dependent
+knife-edge; (2) an exogenous stochastic workload mechanism (incident
+bursts, deadline waves) the brief asks the grower to describe, giving an
+in-world reason for correlated demand spikes rather than requiring an
+interior band to emerge from steady-state pacing alone; (3) a
+generator-side, non-scoring **pilot sandbox** — generic in-world actors,
+sensor-plausible outcome fields only (completion, wait events, lockouts;
+never `contention_diagnostics`' fractions, `deployed`'s rate, or
+reference-roster identity) — available during design, before any scored
+round, modeled on `embedded-simulation/audit_projection.py`'s existing
+plane-enforcement discipline applied to the generator instead of the
+auditor. C1–C5's mechanical definitions and thresholds are explicitly
+**unchanged**; only the substrate's capacity to plausibly satisfy C3 and
+the grower's ability to notice how close it is change.
+
+**Status.** Planning only. No brief sent, no engine change made, no new
+growth round launched. Explicit engineering prerequisites (multi-actor
+schema + regression test against the v1/v2 digest pins, workload
+mechanism interface, pilot-runner field audit, BLIND_GENERATION.md v2-2b
+section, a pre-registered FINDINGS entry before round 1) are listed in
+`PLAN_V2_2B.md` and none have been started.
+
+- `CODE_VERSION` `graded-lab-0.18.1` (unchanged; this entry is
+  planning/documentation only).
+
+## GL-38 (V2-2 round 4 — C3 still fails; 4-round stopping rule closes growth)
+
+**Trigger.** Final growth round (4 of 4 clean rounds; voided contaminated
+rounds do not count per GL-35) under physical file isolation, pass/fail
+feedback only: `{C1: true, C2: true, C3: false, C4: true, C5: true}`.
+No engine-interface anchors in the brief (per user-approved plan).
+
+**Round 4 grower behavior (clean; rationale confirms no forbidden reads).**
+The grower interpreted the lone C3 failure as a **Part B structural**
+gap — incomplete baseline `resource_flows` for io/standing and an
+over-broad `depends_on` on `access_grant_transfer` — and left **all
+Part A numeric substrate unchanged** from round 3, including
+`shared_compute_slots: 3`. Part B edits: eight new baseline io/standing
+flows; split `governed_capability_grant` off from routine
+`access_grant_transfer`. Institutionally coherent, but orthogonal to
+what C3 actually measures (reference-roster **contention liveness** —
+see DESIGN.md C3 definition, withheld from the grower). Under
+pass/fail-only blinding, criterion labels carry no semantic hint; a
+grower who already passed C1/C2/C5 reasonably conflates "C3" with
+another declarative-structure check.
+
+**Checker result** (`generated_ecology_v2_round4.json`):
+
+| Criterion | Round 4 |
+|---|---|
+| C1 | PASS |
+| C2 | PASS |
+| C3 | **FAIL** (episode/action contention fraction 0.0/0.0) |
+| C4 | PASS (deploy rate 0.65) |
+| C5 | PASS |
+
+Identical C3/C4 internals to rounds 1–3' — expected, since Part A
+(contention/duration/allowances) is byte-for-byte round 3.
+
+**V2-2 closure (stopping rule).** Four clean growth rounds exhausted;
+C3 never clears. **No** `generated_ecology_v2.json` freeze — the
+pre-registered gate for V2-3 onward is not met. Usable partials:
+
+- **Ecology structure (C1/C2/C5):** sound from round 1; round 3's Part A
+  pacing is the best numeric substrate (C4 interior at 0.65 once GL-37
+  standing semantics apply).
+- **Engine/interface (GL-36/GL-37):** pre-registration bug (C4 roster)
+  and standing-schema completion were implementer-side fixes, not grower
+  failures.
+- **C3 diagnosis:** contention requires `queue_depth >
+  shared_compute_slots` at action start with enough concurrent overlap;
+  with 4 actors (one per role, unstated in brief) and max pre-start
+  depth 3, `slots ≤ 2` is necessary but not sufficient (`slots=2` on
+  round 3 still yields 0.0 contention under the reference roster).
+  Pass/fail labels alone did not steer any grower toward the numeric
+  contention knobs — round 4's Part B detour is evidence of that
+  opacity, not grower negligence.
+
+**Implementer diagnostic (post hoc, not a candidate).** A scratch grid
+over round 3's Part A (deleted copies, never submitted) found **no**
+`slots ∈ {2,3}` × pacing combo that clears both C3 and C4, but
+`shared_compute_slots=1` with
+`extra_duration_ticks_per_queued_slot=1` (round 3 used 3) passes
+**both** at deploy rate 0.6 across `max_duration_ticks`
+40–100 — i.e. a live band exists on the round-3 substrate once
+contention knobs are set correctly. Blinded growers had no semantic
+path to that region under pass/fail-only feedback.
+
+**Next (program, not this entry):** V2-2b or brief/coherence iteration
+with disclosed engine facts is a separate pre-registered decision; Q2/Q3
+remain gated on a C1–C5-passing ecology per `PLAN_v2.md`.
+
+- Artifacts: `generated_ecology_v2_round4.{json,md}` +
+  `generated_ecology_v2_round4_knowledge_base.md`.
+- `CODE_VERSION` `graded-lab-0.18.1` (unchanged).
