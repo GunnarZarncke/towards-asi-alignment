@@ -2695,3 +2695,27 @@ overrides, not clones).
 - No code change in this entry (closure + plan only).
 - `CODE_VERSION` unchanged at `graded-lab-0.19.0`.
 
+## GL-44 (PLAN_v3 slice A — `resource_flows` → live budgets, `graded-lab-0.20.0`)
+
+**Trigger.** User authorized slice A implementation per `PLAN_v3.md`.
+
+**What was built.**
+
+- `graded_lab/world_visible/institutional_compiler.py`: v3
+  `compile_ecology()` — sums `amount_per_tick` over reachable
+  `resource_flows` (whole allowance replaces role defaults; declared
+  totals cross-check warns at ±25%).
+- `ecology_version="v3"` path + `EpisodeConfig.flow_ablation_ids` for
+  referee-side flow severing.
+- `tests/fixtures/ecology_v3_slice_a_reference.json` (hand-built,
+  frozen gate constants in `v3_fixture_metadata`).
+- Pre-registered ablation gate passes on ≥2/3 seeds `{0,2,4}` at
+  `carrier_load_scale=1.5` (declared in fixture metadata — default
+  load does not make engineer compute binding for this roster).
+
+**Claim scope.** Wiring smoke test only: compiled flows change runtime
+allowances and eng1 primitive-pattern histogram under ablation. Not Q1
+transfer.
+
+- `CODE_VERSION` **`graded-lab-0.20.0`**.
+

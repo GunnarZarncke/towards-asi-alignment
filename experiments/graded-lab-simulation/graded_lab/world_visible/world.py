@@ -29,7 +29,14 @@ from .primitives import PrimitiveAction, primitive_cost
 from .resource_ledger import ResourceLedger
 from .scheduler import ActionScheduler
 from .exogenous_workload import ExogenousWorkloadEngine
-from .substrate import ecology_path_for_version, is_v2_shaped_ecology, load_substrate, standing_stock_for_role
+from .institutional_compiler import compile_ecology
+from .substrate import (
+    ecology_path_for_version,
+    is_v2_shaped_ecology,
+    is_v3_shaped_ecology,
+    load_substrate,
+    standing_stock_for_role,
+)
 from .workspace import Workspace
 
 
@@ -87,6 +94,20 @@ def _allowances_map(
     cfg: EpisodeConfig, substrate_data: dict
 ) -> dict[str, dict[str, float]]:
     scale = cfg.substrate_settings.compute_scale
+    if is_v3_shaped_ecology(substrate_data):
+        runtime = compile_ecology(
+            substrate_data,
+            cfg.agents,
+            ablated_flow_ids=frozenset(cfg.flow_ablation_ids),
+        )
+        return {
+            actor_id: {
+                "compute": allow.compute * scale,
+                "io": allow.io,
+                "standing": allow.standing,
+            }
+            for actor_id, allow in runtime.allowances_by_actor.items()
+        }
     out: dict[str, dict[str, float]] = {}
     for agent in cfg.agents:
         raw = substrate_data["resource_allowances_per_tick"][agent.role]

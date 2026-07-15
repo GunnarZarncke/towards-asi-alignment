@@ -15,9 +15,11 @@ DEFAULT_SUBSTRATE_PATH = _ROOT / "generated_substrate_v1.json"
 # `generated_ecology_v2.json` is frozen (V2-2 growth). Adding a version
 # here never changes what "v1" resolves to.
 V2_ECOLOGY_PATH = _ROOT / "generated_ecology_v2.json"
+V3_SLICE_A_REFERENCE_PATH = _ROOT / "tests" / "fixtures" / "ecology_v3_slice_a_reference.json"
 ECOLOGY_VERSION_PATHS: dict[str, Path] = {
     "v1": DEFAULT_SUBSTRATE_PATH,
     "v2": V2_ECOLOGY_PATH,
+    "v3": V3_SLICE_A_REFERENCE_PATH,
 }
 
 # Parameter names that must NOT appear — emergent ambiguity guard.
@@ -66,7 +68,13 @@ class FrozenSubstrate:
 
 def is_v2_shaped_ecology(data: dict) -> bool:
     """True when the JSON carries the v2 grower schema tag (``ecology_version``)."""
-    return "ecology_version" in data
+    return "ecology_version" in data and data.get("ecology_version") != "graded-ecology-v3"
+
+
+def is_v3_shaped_ecology(data: dict) -> bool:
+    from .institutional_compiler import is_v3_ecology
+
+    return is_v3_ecology(data)
 
 
 def standing_stock_for_role(data: dict, role: str) -> float:
@@ -142,7 +150,14 @@ def _validate_structure(data: dict) -> None:
     for key in ("shared_compute_slots", "extra_duration_ticks_per_queued_slot"):
         if key not in data["contention"]:
             raise SubstrateError(f"contention missing {key!r}")
-    if is_v2_shaped_ecology(data):
+    if is_v3_shaped_ecology(data):
+        from .institutional_compiler import validate_v3_resource_flows
+
+        validate_v3_resource_flows(data)
+        for section in ("principals", "conflicts", "mechanisms"):
+            if section not in data:
+                raise SubstrateError(f"v3 ecology missing required key {section!r}")
+    if is_v2_shaped_ecology(data) or is_v3_shaped_ecology(data):
         from .ecology_agents import role_population_from_ecology
         from .exogenous_workload import validate_exogenous_workload
 

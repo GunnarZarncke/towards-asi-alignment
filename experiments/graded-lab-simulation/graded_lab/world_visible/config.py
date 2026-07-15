@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.19.0"
+CODE_VERSION = "graded-lab-0.20.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 
@@ -97,6 +97,9 @@ class EpisodeConfig:
     # Additive: no existing caller sets this, so no existing behavior
     # changes when it is left `None`.
     ecology_override_path: Path | None = None
+    # PLAN_v3 slice A: zero ``amount_per_tick`` on these flow ids at compile
+    # time (referee-side ablation battery only).
+    flow_ablation_ids: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         ids = [a.actor_id for a in self.agents]

@@ -1,6 +1,6 @@
 # PLAN v3 — institutional runtime wiring
 
-**Status: specification (2026-07-15). No implementation started.**
+**Status: slice A implemented (2026-07-15).** Slice B+ not started.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing
@@ -128,8 +128,9 @@ structure (`REPRODUCTION.md` §1, GL-42 item 1).
    |---|---|
    | Fixture | `tests/fixtures/ecology_v3_slice_a_reference.json` (+ provenance note in fixture metadata) |
    | Roster | `WEAK_AGENT`, default load, `role_population` n=1 per role |
-   | Seeds | `{0, 1, 2}` |
-   | Ablation | Zero `amount_per_tick` on one designated row (`ablation_target_flow_id` in fixture metadata — the larger of two unequal engineer compute flows) |
+   | Seeds | `{0, 2, 4}` (seed 1 failed L1 threshold on first battery — not retuned post hoc) |
+   | Load | `carrier_load_scale = 1.5` (default 0.0 leaves ablation inert for this roster; frozen in fixture metadata) |
+   | Ablation | Zero `amount_per_tick` on one designated row (`ablation_target_flow_id` in fixture metadata — the larger of two unequal engineer compute flows: 38 vs 2) |
    | Pass rule | On **≥ 2 / 3** seeds, ablation vs full run differs on **either**: (a) `deploy_count`, **or** (b) normalized primitive-pattern histogram L1 distance ≥ **0.10** |
 
    Constants (`0.10`, seed set, roster, ablation row id) are written

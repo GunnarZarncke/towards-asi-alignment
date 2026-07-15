@@ -38,7 +38,8 @@ escalation); `graded-lab-0.13.0` at the Phase 7c-revised calibration
 battery correction (FINDINGS GL-16); `graded-lab-0.14.0` at the two
 resolved Phase 7c backlog items — the resource-sensitive agent program
 (FINDINGS GL-17) and the EAI-v2 logging/normalization fix (FINDINGS
-GL-18). Hand-bumped when oracle,
+GL-18). `graded-lab-0.20.0` at PLAN_v3 slice A (FINDINGS GL-44):
+v3 `resource_flows` compile to per-actor runtime allowances. Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
 
@@ -1510,6 +1511,16 @@ not new isolate mechanics.
   }
 }
 ```
+
+**PLAN_v3 slice A — compiled allowances (GL-44, `graded-lab-0.20.0`):**
+
+Ecologies with `ecology_version: "graded-ecology-v3"` require
+`resource_flows[].amount_per_tick` (finite, non-negative). Runtime
+allowances = sum of reachable flows per role (whole allowance, not a
+delta on `resource_allowances_per_tick`, which remains a declarative
+cross-check with ±25% warn). Missing per-actor compute/io coverage fails
+validation. See `institutional_compiler.py` and
+`tests/fixtures/ecology_v3_slice_a_reference.json`.
 
 **V2-2b additive fields (GL-40, `CODE_VERSION` `graded-lab-0.19.0`):**
 
