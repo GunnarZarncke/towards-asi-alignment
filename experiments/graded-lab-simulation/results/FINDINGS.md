@@ -1925,3 +1925,34 @@ the subprocess backend; cost remains ~5× episode wall time (consistent with
 GL-2 isolate equivalence).
 
 - `CODE_VERSION` `graded-lab-0.17.0`.
+
+## GL-31 (v1 program closure — no new battery; documentation entry)
+
+**Trigger.** 2026-07-15 review session: high-level assessment of the
+line's standing concluded the v1 program has paid out its manuscript
+value and its prize question is structurally unanswerable in the v1
+design (fixed roster, no variation operator); user decision to close the
+v1 program, consolidate, and start a pre-registered v2 program in the
+same codebase.
+
+**What was done.** No code or battery. Closure artifacts written:
+
+- `results/TERMINAL_SUMMARY.md` — the v1 arc, why closed, positive
+  findings and nulls tables, manuscript-integration state, what carries
+  into v2.
+- `REPRODUCING.md` — environment, determinism notes, per-finding
+  reproduction command map (GL-1–GL-30), verification checkpoints, and
+  the final v1 commit hash.
+- `PLAN_v2.md` — the v2 program: blinded-grown ecology with a **fixed
+  target-blind complexity criterion** (C1–C5, frozen before growth),
+  machinery-transfer battery (Q1), population **variation operator**
+  with GL-25 noise-floor controls (Q2), and LLM red-teaming under
+  budget caps (Q3); predictions P1–P8 sketched for V2-1 freeze.
+- `PLAN.md`/`README.md` status headers updated to closed-v1 /
+  planned-v2; `runs/` scratch dir removed and gitignored.
+
+**Scope note.** Nothing in GL-0–GL-30 is retracted; interpretation
+guardrails (GL-24, GL-25, GL-29) remain binding on manuscript use. v2
+FINDINGS entries continue at GL-32 in this file.
+
+- `CODE_VERSION` unchanged at `graded-lab-0.17.0` (documentation-only).

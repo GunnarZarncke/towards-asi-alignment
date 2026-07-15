@@ -4,7 +4,13 @@ Fifth in-repo experiment line (successor substrate to `lab-simulation/`).
 Spawned by GL-41: boolean ecology limits; ambiguity must **emerge** from a
 blinded resource/population substrate, not from dialed parameters.
 
-**Status: Phases 0–7c done; Phase 8 scaffold + battery (GL-23), reviewed
+**Status: v1 program CLOSED (2026-07-15, GL-31); v2 program planned.**
+The v1 arc and why it closed: [`results/TERMINAL_SUMMARY.md`](results/TERMINAL_SUMMARY.md).
+Reproducing every v1 finding: [`REPRODUCING.md`](REPRODUCING.md).
+The v2 program (blinded-grown ecology, variation operator, LLM
+red-teaming): [`PLAN_v2.md`](PLAN_v2.md). v1 record below is kept as-is.
+
+**v1 final state: Phases 0–7c done; Phase 8 scaffold + battery (GL-23), reviewed
 (GL-24), and follow-up phases 8a/8b/8c run (GL-25/26/27, 2026-07-14).**
 Phase 8 implements throughput-linked selection with campaign
 grant/standing carryover on the GL-22 referee sweet-spot ecology;
@@ -57,7 +63,10 @@ python3 -m pytest tests/ --profile slow --update-speed-baseline --no-speed-check
 
 ## Layout
 
-- `PLAN.md` — phases 0–8, freeze gates
+- `PLAN.md` — v1 phases 0–8, freeze gates (closed program record)
+- `PLAN_v2.md` — v2 program plan (blinded-grown ecology, variation, red-teaming)
+- `REPRODUCING.md` — per-finding reproduction map + final v1 commit hash
+- `results/TERMINAL_SUMMARY.md` — v1 closure summary
 - `DESIGN.md` — Phase 0 pre-registration (Tier K/I, BIQ, EAI, primitives)
 - `generated_substrate_v1.json` — frozen blinded substrate (no delay/noise params)
 - `pipeline_graded.json` — nine-step default topology

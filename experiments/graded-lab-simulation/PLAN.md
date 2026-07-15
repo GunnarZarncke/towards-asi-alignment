@@ -1,4 +1,10 @@
-# Graded Lab Simulation — Implementation Plan
+# Graded Lab Simulation — Implementation Plan (v1 — CLOSED)
+
+**Program closure (2026-07-15, FINDINGS GL-31):** the v1 program this
+plan describes is closed. Terminal summary:
+`results/TERMINAL_SUMMARY.md`; reproduction instructions and final v1
+commit hash: `REPRODUCING.md`; successor program: `PLAN_v2.md`. This
+file is kept unchanged below as the v1 record.
 
 **Status: Phases 0–7c done; Phase 8 scaffold + battery (GL-23), reviewed
 (GL-24), and follow-up phases 8a/8b/8c implemented and run (GL-25/26/27,

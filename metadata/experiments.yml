@@ -132,7 +132,9 @@ lines:
       pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather
       than from dialed noise/delay parameters. UAD-backed ecology-BIQ over inferred units; an
       Emergent-Ambiguity-Index measured from two vantages (acting agent vs. limited-observation referee);
-      first multi-episode selection battery.
+      first multi-episode selection battery. The v1 program is closed (2026-07-15, GL-31; see
+      results/TERMINAL_SUMMARY.md and REPRODUCING.md); a v2 program (blinded-grown ecology,
+      population variation, LLM red-teaming) is planned in PLAN_v2.md.
     readmePath: experiments/graded-lab-simulation/README.md
     designPath: experiments/graded-lab-simulation/DESIGN.md
     planPath: experiments/graded-lab-simulation/PLAN.md
