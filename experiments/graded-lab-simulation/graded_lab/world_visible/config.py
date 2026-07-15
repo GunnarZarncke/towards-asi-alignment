@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.26.1"  # GL-52: host ChannelCouplingProtocol + C3 slots=1
+CODE_VERSION = "graded-lab-0.27.0"  # GL-53: v3 reference battery T=200 + slice D criteria freeze
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

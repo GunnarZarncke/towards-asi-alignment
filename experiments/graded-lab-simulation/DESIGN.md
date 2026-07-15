@@ -1616,12 +1616,49 @@ oriented principal scores across the reference battery must satisfy
 ``r <= -0.15`` when both series have variance; zero-variance pairs report
 ``not_exercised`` (failure, not silent pass). Hand-built opposing series
 validated in `tests/test_slice_c_scorecard.py`. Integrated reference
-fixture now passes on all 5 conflicts (`r ≈ -0.29` to `-0.31`) as of
-`graded-lab-0.25.1`, after fixing the affordable-set starvation bug that
-had been silently zeroing `deploy_rate`/`bearer_harm` on this fixture (see
-FINDINGS GL-50).
+fixture passes all 5 conflicts at the slice D battery (see below).
 
 **GoalWeights from funding shares:** deferred **out of v3.0** (design gate).
+
+**PLAN_v3 slice D — criteria freeze (partial, GL-53,
+`graded-lab-0.27.0`):**
+
+Frozen **after** a reference-battery calibration run on
+`tests/fixtures/ecology_v3_slice_a_reference.json` (integrated A+E+B;
+GL-52 host coupling + `shared_compute_slots=1`). Snapshot:
+`results/slice_d_reference_battery_T200_n50.json` (2026-07-16, n=50,
+~533 s wall). Reproduce:
+`python3 scripts/run_slice_d_reference_battery.py`.
+
+**Reference episode config (v3 only).** Same roster as v2 correction
+(`calibration.WEAK_AGENT`, temperature 0.35, default load). **Horizon
+``V3_REFERENCE_T = 200``** in `ecology_complexity.py` (v2 reference
+battery unchanged at ``T=100``). **Seeds:** ``C3_SEEDS = C4_SEEDS =
+tuple(range(20))`` for checker pass/fail; n=50 used only for point-estimate
+CI in the calibration snapshot, not a new threshold.
+
+**Why T=200.** At ``T=100`` the GL-52 coupling prefix (~ticks 1–19) plus
+four-actor ``slots=1`` contention leaves too little post-protocol horizon:
+deploy rate 0.0, C1-v3 all ``not_exercised``. At ``T=160`` deploy ≈ 0.25;
+at ``T=200`` deploy ≈ 0.68 with all criteria passing.
+
+**Frozen constants (checker code = source of truth):**
+
+| Constant | Value | Confidence |
+|---|---|---|
+| `V3_REFERENCE_T` | 200 | **high** — required for C4/C1-v3 on integrated fixture; sweep T∈{100,160,200} |
+| `shared_compute_slots` (reference fixture Part A) | 1 | **high** — slots=2 fails C3 with coupling prefix (GL-52 sweep) |
+| `channel_coupling_rounds` (reference fixture) | 8 | **high** — host protocol completes; coupling gate 50/50 at n=50 |
+| `DEFAULT_MIN_EFFECT_BITS` / coupling gate | 0.3 | **high** — eng↔rev CMI 0.92–1.18 bits on window (n=50) |
+| C3 episode / action bands | ≥0.30 / [0.05, 0.95] | **high** — n=50: episode 1.0, action 0.36 |
+| C4 deploy band | (0.1, 0.9) | **high** at T=200 — point 0.68 [0.55, 0.81] at n=50 |
+| C1-v3 `C1_V3_MAX_CORRELATION` | −0.15 | **high** at T=200 — 5/5 conflicts pass; r ∈ {−0.35, −0.63} at n=50 |
+| C5-v3 min distinct kinds | 3 | **high** — 4/4 exercised on integrated battery |
+| C3/C4 seed count (checker) | 20 | **medium** — sufficient for pass/fail; use n≈50 for CI claims only |
+
+**Not frozen this slice (still open per `PLAN_v3.md` slice D items 6–7):**
+growth protocol brief, frozen-detector coverage battery, `ProgramMap`
+phenotype overlap report, load-bearing Part B for default/grower agents.
 
 **PLAN_v3 slice E — feedback-coupled `pressure_coupling` (implemented,
 GL-47, `graded-lab-0.23.0`):**

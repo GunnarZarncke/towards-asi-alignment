@@ -1,7 +1,8 @@
 # PLAN v3 — institutional runtime wiring
 
 **Status (build order):** slices **A**, **F**, **E**, **C** done; slice **B** partial
-(enforcement + reference opt-in gate); **next: slice D**.
+(enforcement + reference opt-in gate); **slice D criteria partial**
+(GL-53); growth protocol + pre-Q1 batteries still open.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing
@@ -559,7 +560,7 @@ when opt-in active. **Still open for slice D:** default/grower programs must
 target governed ids or v3 strict mode — ordinary paths may ignore Part B.
 
 | 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded ✅ (out) |
-| 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 section frozen; reference batteries pass on known-live fixtures; slice D items 6–7 (detector coverage + `ProgramMap` overlap) reported before Q1 go/no-go |
+| 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 slice D section frozen ✅ (GL-53, T=200 + constants); reference batteries pass on integrated fixture ✅; slice D items 6–7 + growth brief still open before Q1 go/no-go |
 
 Total: roughly 6–9 person-weeks of engineering plus two explicit human
 design gates (vote semantics; C-slice metric vocabulary + GoalWeights

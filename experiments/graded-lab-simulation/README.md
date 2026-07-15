@@ -7,7 +7,7 @@ blinded resource/population substrate, not from dialed parameters.
 **Status: v1 CLOSED (2026-07-15, GL-31) → v2 mostly closed (V2-1 complete,
 V2-2 closed with C3 failure) → V2-2b CLOSED without a growth round
 (GL-43) → v3 institutional runtime wiring is the active program.**
-`CODE_VERSION` `graded-lab-0.26.0` — see `DESIGN.md` for the accumulated
+`CODE_VERSION` `graded-lab-0.27.0` — see `DESIGN.md` for the accumulated
 "pre-registration" sections (one per program) and their frozen constants.
 Phase 7a discovery is proper UAD + access-UAD as of GL-51 (Jaccard /
 mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
@@ -28,7 +28,8 @@ mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
   `mechanisms`, `resource_flows`) causally load-bearing at runtime instead
   of declarative-only JSON — [`PLAN_v3.md`](PLAN_v3.md). Build order:
   slices **A, F, E, C done; B partial** (enforcement + reference opt-in
-  gate); **next: slice D** (criteria freeze + growth protocol). See
+  gate); **slice D criteria partial** (GL-53: T=200 + frozen constants;
+  growth protocol + items 6–7 still open). See
   "v3 slice status" below and `results/FINDINGS.md` GL-44 through GL-50
   for the slice-by-slice record, including the affordable-set starvation
   bug (GL-50) and its blast radius on the UAD test suite.
@@ -115,7 +116,7 @@ Build order per `PLAN_v3.md` (institutional Part B → live runtime):
 | E — feedback-coupled pressure + task injection | **done** (`graded-lab-0.23.0`; GL-47) |
 | C — principal scorecard + measured tension (C1-v3) | **done** (`graded-lab-0.25.0`; GL-49; measured-tension check verified against a real reference battery only after the GL-50 fix below) |
 | B — `mechanisms` → enforced coordination | **partial**: enforcement + reference opt-in (GL-45/48/48b); host coupling + C3 structural (GL-52); full slice close (detector coverage, `ProgramMap` overlap) deferred to slice D |
-| D — criteria freeze + growth protocol | **not started** (next; C1-v3/C3/C4/C5-v3 now have live integrated baselines) |
+| D — criteria freeze + growth protocol | **partial** (GL-53: constants + T=200 frozen; growth brief + detector/`ProgramMap` batteries open) |
 
 **GL-50 (`graded-lab-0.25.1`):** affordable-set starvation + missing
 one-shot guard zeroed `deploy_rate`/`bearer_harm` on the integrated
@@ -127,6 +128,11 @@ affordances only) + live-coupling gate as coupling-window CMI effect
 size; Part A `shared_compute_slots=1` so C3 binds with the single-speaker
 prefix. Rejected agent-side ping-pong / pressure hacks / special trace
 codes — see FINDINGS GL-52.
+
+**GL-53 (`graded-lab-0.27.0`):** slice D criteria freeze — reference
+battery horizon `V3_REFERENCE_T=200` (v2 stays T=100); n=50 calibration
+snapshot at `results/slice_d_reference_battery_T200_n50.json`; confidence
+table in `DESIGN.md` § slice D.
 
 ## v1 Phase status (historical, closed 2026-07-15)
 

@@ -56,6 +56,12 @@ C3_MAX_ACTION_CONTENTION_FRACTION = 0.95
 C4_MIN_DEPLOY_RATE = 0.1
 C4_MAX_DEPLOY_RATE = 0.9
 
+# v3 reference battery horizon (slice D freeze, GL-53). v2 stays at
+# ``default_lab_config().T`` (100). T=100 fails C4/C1-v3 on the integrated
+# v3 fixture after the GL-52 coupling prefix + slots=1 contention eat the
+# post-protocol horizon; validated at T=200, n=50 before freezing.
+V3_REFERENCE_T = 200
+
 # --- C5 ------------------------------------------------------------------
 C5_MIN_DISTINCT_KINDS = 3
 C5_MIN_MEMBERS = 2
@@ -241,9 +247,10 @@ def _reference_episode_config(ecology_data: dict, *, ecology_path: Path) -> Epis
     # with a frozen candidate.
     base = default_lab_config()
     roster = reference_roster_from_ecology(ecology_data, agent_type=WEAK_AGENT, temperature=0.35)
+    horizon = V3_REFERENCE_T if is_v3_shaped_ecology(ecology_data) else base.T
     return EpisodeConfig(
         agents=roster.agents,
-        T=base.T,
+        T=horizon,
         pipeline_spec=base.pipeline_spec,
         substrate_settings=base.substrate_settings,
         carrier_termination_mode=base.carrier_termination_mode,

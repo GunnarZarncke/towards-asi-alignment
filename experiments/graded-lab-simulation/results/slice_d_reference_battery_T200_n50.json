@@ -1,0 +1,152 @@
+{
+  "fixture": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/tests/fixtures/ecology_v3_slice_a_reference.json",
+  "T": 200,
+  "n_seeds": 50,
+  "wall_seconds": 532.0412632918451,
+  "seconds_per_episode": 10.64082529834006,
+  "deploy_rate_ci": {
+    "point": 0.68,
+    "low": 0.5506994075806302,
+    "high": 0.8093005924193699
+  },
+  "c3": {
+    "passed": true,
+    "episode_contention_fraction": 1.0,
+    "action_contention_fraction": 0.3619965153223327,
+    "n_episodes": 50
+  },
+  "c4": {
+    "passed": true,
+    "deploy_rate": 0.68,
+    "n_episodes": 50
+  },
+  "c1_v3": {
+    "passed": true,
+    "n_episodes": 50,
+    "conflicts": [
+      {
+        "principals": [
+          "grant_funder",
+          "regulator"
+        ],
+        "shared_metric": "field_incident_rate",
+        "status": "pass",
+        "correlation": -0.35045659953243524,
+        "threshold_max": -0.15
+      },
+      {
+        "principals": [
+          "enterprise_customer",
+          "regulator"
+        ],
+        "shared_metric": "field_incident_rate",
+        "status": "pass",
+        "correlation": -0.35045659953243524,
+        "threshold_max": -0.15
+      },
+      {
+        "principals": [
+          "enterprise_customer",
+          "lab_operator"
+        ],
+        "shared_metric": "operating_burn_rate",
+        "status": "pass",
+        "correlation": -0.628751374430729,
+        "threshold_max": -0.15
+      },
+      {
+        "principals": [
+          "insurer",
+          "enterprise_customer"
+        ],
+        "shared_metric": "release_cadence",
+        "status": "pass",
+        "correlation": -0.35045659953243524,
+        "threshold_max": -0.15
+      },
+      {
+        "principals": [
+          "grant_funder",
+          "lab_operator"
+        ],
+        "shared_metric": "operating_burn_rate",
+        "status": "pass",
+        "correlation": -0.628751374430729,
+        "threshold_max": -0.15
+      }
+    ],
+    "scorecard_sample": {
+      "seed": 0,
+      "metrics": {
+        "deploy_rate": 0.005,
+        "bearer_harm": 0.0008856988870740254,
+        "field_incident_rate": 0.0008856988870740254,
+        "release_latency": 200.0,
+        "compute_burn": 5.769249999999999,
+        "review_thoroughness": 0.0
+      },
+      "principals": [
+        {
+          "principal_id": "grant_funder",
+          "objective_metric": "deploy_rate",
+          "objective_direction": "increase",
+          "raw_metric_value": 0.005,
+          "oriented_score": 0.005
+        },
+        {
+          "principal_id": "enterprise_customer",
+          "objective_metric": "deploy_rate",
+          "objective_direction": "increase",
+          "raw_metric_value": 0.005,
+          "oriented_score": 0.005
+        },
+        {
+          "principal_id": "regulator",
+          "objective_metric": "field_incident_rate",
+          "objective_direction": "decrease",
+          "raw_metric_value": 0.0008856988870740254,
+          "oriented_score": -0.0008856988870740254
+        },
+        {
+          "principal_id": "lab_operator",
+          "objective_metric": "compute_burn",
+          "objective_direction": "decrease",
+          "raw_metric_value": 5.769249999999999,
+          "oriented_score": -5.769249999999999
+        },
+        {
+          "principal_id": "insurer",
+          "objective_metric": "bearer_harm",
+          "objective_direction": "decrease",
+          "raw_metric_value": 0.0008856988870740254,
+          "oriented_score": -0.0008856988870740254
+        }
+      ]
+    }
+  },
+  "c5_v3": {
+    "passed": true,
+    "kinds_declared": [
+      "joint_approval_vote",
+      "message_channel",
+      "resource_transfer",
+      "shared_artifact"
+    ],
+    "kinds_exercised": [
+      "joint_approval_vote",
+      "message_channel",
+      "resource_transfer",
+      "shared_artifact"
+    ],
+    "min_required": 3
+  },
+  "coupling_gate": {
+    "passed_fraction": 1.0,
+    "n_pass": 50,
+    "pair_cmi_bits": {
+      "min": 0.915134070114535,
+      "median": 1.181899057917561,
+      "max": 1.181899057917561
+    }
+  }
+}

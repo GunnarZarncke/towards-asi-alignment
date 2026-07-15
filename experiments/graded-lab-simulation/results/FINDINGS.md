@@ -3228,3 +3228,32 @@ passes; coupling gate recovers eng–rev CMI on the protocol window.
 on the integrated fixture). Re-baseline calibration `uad_partition_match` /
 ecology-BIQ under GL-51 partitions remains open from GL-51.
 
+### GL-53 — Slice D criteria freeze: v3 reference battery T=200 (`graded-lab-0.27.0`)
+
+**Trigger.** User: run reference battery to improve estimates, document and
+apply frozen values with confidence tiers, end session + commit.
+
+**Diagnosis.** Integrated reference fixture passed C3/C5/coupling at
+``T=100`` but **C4 deploy rate 0.0** and **C1-v3 all `not_exercised`**
+because the GL-52 host coupling prefix (~19 ticks) plus four-actor
+``shared_compute_slots=1`` contention consumed the post-protocol horizon.
+Horizon sweep (n=20): T=100 fail; T=160 deploy ≈ 0.25 pass; T=200 deploy
+≈ 0.70 pass.
+
+**Calibration battery** (`scripts/run_slice_d_reference_battery.py`,
+n=50, T=200, ~533 s): deploy 0.68 [0.55, 0.81]; C3 episode 1.0 / action
+0.36; C1-v3 5/5 (r ∈ {−0.35, −0.63}); C5-v3 4/4; coupling gate 50/50,
+CMI 0.92–1.18 bits. Snapshot:
+`results/slice_d_reference_battery_T200_n50.json`.
+
+**Frozen (applied).**
+- `V3_REFERENCE_T = 200` in `ecology_complexity._reference_episode_config`
+  (v2 reference battery unchanged at T=100).
+- Confidence table + rationale in `DESIGN.md` § PLAN_v3 slice D.
+- Checker seeds remain n=20; n=50 for CI documentation only.
+
+**Still open (slice D).** Growth protocol FINDINGS entry; detector coverage
+battery; `ProgramMap` phenotype overlap; load-bearing Part B for default agents.
+
+- `CODE_VERSION` **`graded-lab-0.27.0`**.
+

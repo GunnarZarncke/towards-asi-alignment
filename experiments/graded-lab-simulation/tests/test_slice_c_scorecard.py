@@ -114,13 +114,19 @@ def test_c1_v3_reports_not_exercised_when_metrics_flat():
     assert details["conflicts"][0]["status"] == "not_exercised"
 
 
+@pytest.mark.slow
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
-def test_reference_battery_reports_c1_v3_not_exercised():
+def test_reference_battery_passes_c1_v3_at_frozen_horizon():
+    """Slice D freeze: v3 reference battery at T=200, n=20 (GL-53)."""
+    from graded_lab.harness.ecology_complexity import V3_REFERENCE_T, _reference_episode_config
+
     data = load_substrate(_FIXTURE).data
-    results = run_reference_episodes(_FIXTURE, seeds=(0, 1, 2, 3, 4), progress=False)
+    cfg = _reference_episode_config(data, ecology_path=_FIXTURE)
+    assert cfg.T == V3_REFERENCE_T
+    results = run_reference_episodes(_FIXTURE, seeds=tuple(range(20)), progress=False)
     passed, details = check_c1_v3(data, results)
-    assert not passed
-    assert any(c.get("status") == "not_exercised" for c in details["conflicts"])
+    assert passed, details
+    assert all(c.get("status") == "pass" for c in details["conflicts"])
 
 
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
