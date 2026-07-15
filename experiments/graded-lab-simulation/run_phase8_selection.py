@@ -10,6 +10,7 @@ Outputs: ``results/phase8_selection.json``
 Usage:
   python3 run_phase8_selection.py           # full protocol (MockIsolate)
   python3 run_phase8_selection.py --smoke   # 4 members, 2 gens, 1 ep/member
+  python3 run_phase8_selection.py --subprocess  # full protocol, SubprocessIsolate
 """
 
 from __future__ import annotations
@@ -19,7 +20,7 @@ import json
 import time
 from pathlib import Path
 
-from graded_lab.harness.isolate import MockIsolate
+from graded_lab.harness.isolate import MockIsolate, SubprocessIsolate
 from graded_lab.harness.selection import (
     D8_N_GENERATIONS,
     D8_POPULATION_SIZE,
@@ -39,7 +40,15 @@ def main() -> None:
         action="store_true",
         help="Small smoke run: 4 members, 2 generations, 1 episode/member",
     )
+    parser.add_argument(
+        "--subprocess",
+        action="store_true",
+        help="Use SubprocessIsolate instead of MockIsolate",
+    )
     args = parser.parse_args()
+
+    backend_factory = SubprocessIsolate if args.subprocess else MockIsolate
+    backend_label = "subprocess" if args.subprocess else "mock"
 
     population_size = 4 if args.smoke else D8_POPULATION_SIZE
     n_generations = 2 if args.smoke else D8_N_GENERATIONS
@@ -49,14 +58,15 @@ def main() -> None:
     print(
         f"[phase8] starting selection battery "
         f"(population={population_size}, gens={n_generations}, "
-        f"episodes/member={n_episodes}, CODE_VERSION={CODE_VERSION})"
+        f"episodes/member={n_episodes}, backend={backend_label}, "
+        f"CODE_VERSION={CODE_VERSION})"
     )
     t0 = time.perf_counter()
     trajectory = run_selection_loop(
         members,
         n_generations=n_generations,
         n_episodes_per_member=n_episodes,
-        backend_factory=MockIsolate,
+        backend_factory=backend_factory,
         progress=True,
     )
     wall = round(time.perf_counter() - t0, 2)

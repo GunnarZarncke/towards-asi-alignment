@@ -15,6 +15,7 @@ from graded_lab.harness.selection import (
     run_member_campaign,
     run_one_generation,
     run_selection_loop,
+    sample_budget_aware_population,
     sample_initial_population,
     throughput_fitness,
     update_deployment_mass,
@@ -53,6 +54,16 @@ def test_member_programs_overrides_engineer_only():
     programs = member_programs(STRONG_AGENT, eng_program="feature:eng_low_profile")
     assert programs["eng1"] == "feature:eng_low_profile"
     assert programs["rev1"] == programs_for(STRONG_AGENT)["rev1"]
+
+
+def test_sample_budget_aware_population_replaces_weak_2step():
+    members = sample_budget_aware_population(population_size=8)
+    tags = [m.member_tag for m in members]
+    assert "weak_budget_aware" in tags
+    assert "weak_2step" not in tags
+    budget = next(m for m in members if m.member_tag == "weak_budget_aware")
+    assert budget.correction_preserving is True
+    assert budget.agent_type == "programmatic_budget_aware"
 
 
 @pytest.mark.slow

@@ -19,7 +19,7 @@ audit-pass/latency-augmented fitness too — a proxy-insensitivity result
 (GL-26); **8c** (carryover ablation) found carryover vs. reset *are*
 statistically distinguishable, though the effect size on mass share is
 small (GL-27). Concern 4 (gate-language) fixed in `PLAN.md`.
-`CODE_VERSION` `graded-lab-0.16.0` — see `DESIGN.md` for frozen constants.
+`CODE_VERSION` `graded-lab-0.17.0` — see `DESIGN.md` for frozen constants.
 
 ## Quick start
 

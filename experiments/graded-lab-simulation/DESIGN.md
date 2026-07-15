@@ -723,6 +723,46 @@ is statistically indistinguishable from a repeated-single-episode loop"
 as a finding — not patched silently by, e.g., widening the grant/
 standing effect after seeing this result.
 
+### Phase 8d — `programmatic_budget_aware` as a selection member
+
+**Trigger.** FINDINGS GL-24 open item 5 / GL-23 follow-up: wire
+`programmatic_budget_aware` as a member whose throughput and
+preservation trade off differently from `programmatic_2step`.
+
+**Population (frozen before run).** GL-23's `MEMBER_TEMPLATES` roster
+with the `weak_2step` slot replaced by `weak_budget_aware`
+(`agent_type=programmatic_budget_aware`, `correction_preserving=True`
+— structurally tagged from `budget_release_manager` abandoning deploy
+under time pressure, not from member identity). All other slots
+unchanged. Population size 8, same modulo cycling as GL-23.
+
+**Ecology / protocol.** Unchanged from GL-23: `carrier_load_scale=1.5`,
+6 generations, 2 episodes/member, carryover on, throughput fitness,
+`D8_GENERATION_SEED_BASE=40000`.
+
+**Control comparison.** Re-run the unchanged GL-23 population on the
+same protocol in the same script for side-by-side endpoint comparison
+(not paired-by-generation — different member maps).
+
+**Pre-registered expectation (from GL-17).** At `carrier_load_scale=1.5`,
+`programmatic_budget_aware` single-episode deploy rate matches
+`programmatic_2step` (0.9 in the GL-17 validation battery). Therefore
+this Phase 8d run is expected to show **no throughput/preservation
+tradeoff differentiation** on the frozen Phase 8 ecology — a null on the
+open item, not a failure. A non-null would require deploy-rate divergence
+between the budget-aware and weak-2step member slots across generations.
+
+**Decision rule.** Report null if (a) budget-aware member mean deploy
+rate across all episodes is within ±0.05 of the GL-23 `weak_2step`
+member's mean deploy rate from the control run, and (b) final
+`weighted_mean_throughput` differs by less than 0.02 between control and
+treatment. Otherwise report direction and magnitude. Do **not** retune
+ecology post hoc to force differentiation (that would be a new protocol
+at `carrier_load_scale=2.0`).
+
+**Outputs.** `results/phase8d_budget_aware.json`; mechanism diagnosis for
+Phase 8c in `diagnose_phase8c_carryover.py` → `results/phase8c_diagnosis.json`.
+
 ---
 
 ## Primitive action surface

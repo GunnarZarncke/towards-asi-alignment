@@ -15,6 +15,7 @@ from dataclasses import asdict, dataclass, field
 from typing import Any, Callable
 
 from ..oracle_only.calibration import (
+    BUDGET_AWARE_AGENT,
     STRONG_AGENT,
     WEAK_AGENT,
     config_for_settings,
@@ -75,6 +76,27 @@ MEMBER_TEMPLATES: tuple[dict[str, object], ...] = (
 # that (see `rm_status_reporter` docstring), not from member identity.
 RM_REPORT_PROGRAM = "rm_status_reporter"
 RM_NO_REPORT_PROGRAM = "honest_twin"
+
+# DESIGN.md "Phase 8d — programmatic_budget_aware as a selection member":
+# GL-23 roster with weak_2step replaced by weak_budget_aware only.
+BUDGET_AWARE_MEMBER_TEMPLATES: tuple[dict[str, object], ...] = (
+    {"member_tag": "strong_softmax", "agent_type": STRONG_AGENT, "eng_program": None, "correction_preserving": True},
+    {
+        "member_tag": "weak_budget_aware",
+        "agent_type": BUDGET_AWARE_AGENT,
+        "eng_program": None,
+        "correction_preserving": True,
+    },
+    *[
+        {
+            "member_tag": f"weak_{name.removeprefix('feature:')}",
+            "agent_type": WEAK_AGENT,
+            "eng_program": name,
+            "correction_preserving": False,
+        }
+        for name in FEATURE_ENGINEER_PROGRAMS
+    ],
+)
 
 ORTHOGONAL_MEMBER_TEMPLATES: tuple[dict[str, object], ...] = (
     {
@@ -207,6 +229,17 @@ def sample_initial_population(
             )
         )
     return members
+
+
+def sample_budget_aware_population(
+    *,
+    population_size: int = D8_POPULATION_SIZE,
+) -> list[SelectionMember]:
+    """Phase 8d population: GL-23 roster with weak_2step → weak_budget_aware."""
+    return sample_initial_population(
+        population_size=population_size,
+        templates=BUDGET_AWARE_MEMBER_TEMPLATES,
+    )
 
 
 def update_deployment_mass(

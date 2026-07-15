@@ -1832,3 +1832,96 @@ that are not re-requested every episode can lapse into staler
 - Tests: `test_carryover_false_resets_campaign_state_every_episode`,
   `test_paired_generation_comparison_zero_when_trajectories_identical`
   (`tests/test_phase8_selection.py`).
+
+## GL-28 (Phase 8c mechanism diagnosis — ep1 carryover drives divergence)
+
+**Trigger.** GL-27 left carryover's throughput penalty ("not further diagnosed
+here"); optional follow-up in `diagnose_phase8c_carryover.py`.
+
+**What was built.** `diagnose_phase8c_carryover.py` reads
+`results/phase8c_carryover_ablation.json` and writes
+`results/phase8c_diagnosis.json`.
+
+**Result (deterministic replay of GL-27 battery):**
+
+| check | outcome |
+|---|---|
+| Episode 0 deploy mismatches (carryover vs reset) | **0** across all 48 member-episodes |
+| Episode 1 deploy differences | **9** (first at generation 1) |
+| First `weighted_mean_throughput` divergence | **Generation 1** (gen 0 identical) |
+
+**Mechanism.** Both conditions start each episode with `campaign_state=None`
+at episode index 0, so generation-0 trajectories match bit-for-bit. Divergence
+begins at episode 1: carryover passes grants/standing from episode 0 while reset
+re-acquires from scratch. That shifts per-member `mean_throughput` (e.g.
+`weak_2step` gen 1 ep1: deploy 1 with 9 grants under carryover vs deploy 0
+with 7 grants under reset), which compounds through fitness-proportional mass
+updates from generation 1 onward. Reset's higher late-gen throughput (`0.988`
+vs `0.955` at gen 5) is therefore a **selection-dynamics** effect of
+within-generation institutional carryover, not a grant-count artifact alone.
+
+- `CODE_VERSION` bumped to `graded-lab-0.17.0` (parity verifier + 8d script).
+- Tests: `verify_phase8_isolate_parity.py` (script); subprocess selection
+  smoke via `run_phase8_selection.py --smoke --subprocess`.
+
+## GL-29 (Phase 8d — budget-aware member: deploy null holds, preservation
+tradeoff confounded)
+
+**Trigger.** DESIGN.md "Phase 8d" (pre-registered before run); GL-24 open item
+5.
+
+**What was built.** `BUDGET_AWARE_MEMBER_TEMPLATES` /
+`sample_budget_aware_population()` in `harness/selection.py`;
+`run_phase8d_budget_aware.py` runs GL-23 control and budget-aware treatment
+on the frozen `carrier_load_scale=1.5` ecology.
+
+**Result (`wall=74.9s`, 6 generations, 2 episodes/member):**
+
+| metric | control (`weak_2step`) | treatment (`weak_budget_aware`) | delta |
+|---|---:|---:|---:|
+| Mean deploy rate (all episodes) | 0.833 | 0.875 | +0.042 |
+| Final `weighted_mean_throughput` | 0.955 | 0.928 | −0.026 |
+| Final `correction_preserving_mass_share` | 0.007 | **0.986** | — |
+
+**Pre-registered decision rule vs. outcome:**
+
+- Deploy null (±0.05): **holds** (+0.042) — confirms GL-17's single-episode
+  finding that `programmatic_budget_aware` matches `programmatic_2step` deploy
+  rate at `carrier_load_scale=1.5`.
+- Endpoint null (±0.02 on `weighted_mean_throughput`): **fails** (−0.026) —
+  small but outside the pre-registered band.
+
+**Interpretation / roadblock.** The preservation-mass endpoint is **not
+interpretable** as a throughput/preservation tradeoff: replacing `weak_2step`
+(`correction_preserving=False`) with `weak_budget_aware`
+(`correction_preserving=True`) swaps **two** dimensions at once (agent program
+*and* preservation tag). Treatment's `correction_preserving_mass_share`
+jumps to ~0.98 because budget-aware is now counted as preserving regardless of
+deploy behavior — an accounting artifact, not evidence that budget-awareness
+preserves correction channels under selection pressure. The deploy-rate null
+means the frozen Phase 8 ecology still offers **no agent-program lever** for
+the tradeoff GL-24 named; a meaningful test would require either (a)
+`correction_preserving=False` on budget-aware for tag parity with `weak_2step`,
+or (b) a new pre-registered ecology at `carrier_load_scale=2.0` where GL-17
+shows deploy divergence (0.6 vs 0.9).
+
+- `CODE_VERSION` `graded-lab-0.17.0`.
+- Tests: `test_sample_budget_aware_population_replaces_weak_2step`
+  (`tests/test_phase8_selection.py`).
+
+## GL-30 (Phase 8 subprocess parity — mock/subprocess trajectories match)
+
+**Trigger.** Optional follow-up: formalize informal subprocess parity checks
+before scaling Phase 8 batteries on `SubprocessIsolate`.
+
+**What was built.** `verify_phase8_isolate_parity.py` — all 7 Phase 8 member
+program maps (5 GL-23 + 2 orthogonal) pass single-episode digest/deploy
+parity; 4-member × 2-generation selection loop trajectories are JSON-identical
+between `MockIsolate` and `SubprocessIsolate`. `run_phase8_selection.py` gained
+`--subprocess`; smoke subprocess run completes (`wall=4.4s` for 4×2×1).
+
+**Result.** **PASS** on all checks. Phase 8 selection logic is safe to run on
+the subprocess backend; cost remains ~5× episode wall time (consistent with
+GL-2 isolate equivalence).
+
+- `CODE_VERSION` `graded-lab-0.17.0`.
