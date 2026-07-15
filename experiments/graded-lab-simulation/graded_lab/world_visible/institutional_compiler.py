@@ -49,17 +49,32 @@ def _valid_amount(value: object, *, flow_id: str) -> float:
     return amount
 
 
-def _ledger_bucket(resource_type: str) -> str | None:
-    rt = resource_type.lower()
-    if "compute" in rt:
-        return "compute"
-    if "io" in rt:
-        return "io"
-    if "standing_recovery" in rt:
-        return None
-    if "standing_stock" in rt or "standing_allowance" in rt or rt.startswith("standing_"):
-        return "standing"
-    return None
+# Exact-match registry, not substring matching: a typo or an unrecognized
+# ``resource_type`` must fail loudly at compile time, not silently land in
+# the wrong ledger bucket (compute/io substring overlap risk) or vanish
+# unnoticed (a flow that stops contributing to any actor's allowance).
+# ``None`` marks types that are schema-valid but not yet wired to a runtime
+# ledger bucket in slice A (deferred to slice B/F per PLAN_v3).
+_RESOURCE_TYPE_BUCKETS: dict[str, str | None] = {
+    "compute_allowance_baseline": "compute",
+    "compute_allowance_topup": "compute",
+    "io_allowance_baseline": "io",
+    "io_allowance_topup": "io",
+    "standing_allowance_baseline": "standing",
+    "standing_stock": "standing",
+    "standing_recovery": None,  # recovery *rate*, not a per-tick ledger add — slice B/F
+    "grant_approval": None,  # bootstrap capability grant, not a ledger amount — slice B/F
+}
+
+
+def _ledger_bucket(resource_type: str, *, flow_id: str) -> str | None:
+    try:
+        return _RESOURCE_TYPE_BUCKETS[resource_type]
+    except KeyError:
+        raise CompileError(
+            f"flow {flow_id!r}: unrecognized resource_type {resource_type!r} "
+            f"(known: {sorted(_RESOURCE_TYPE_BUCKETS)})"
+        ) from None
 
 
 def reachable_principals_for_role(data: dict, role: str) -> set[str]:
@@ -148,7 +163,7 @@ def _role_flow_totals(
         resource_type = flow.get("resource_type")
         if role not in ROLES or principal_id is None or resource_type is None:
             raise CompileError(f"flow {flow_id!r} missing valid role/principal_id/resource_type")
-        bucket = _ledger_bucket(str(resource_type))
+        bucket = _ledger_bucket(str(resource_type), flow_id=flow_id)
         if bucket is None:
             continue
         if str(principal_id) not in reachable_principals_for_role(data, role):

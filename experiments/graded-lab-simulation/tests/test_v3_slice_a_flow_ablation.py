@@ -40,13 +40,14 @@ def _eng1_pattern_hist(result) -> Counter[str]:
     return counts
 
 
-def _episode_cfg(*, ablate: bool) -> EpisodeConfig:
+def _episode_cfg(*, ablate: bool, load_scale: float | None = None) -> EpisodeConfig:
     data = load_substrate(_FIXTURE).data
     meta = data["v3_fixture_metadata"]
     gate = meta["ablation_gate"]
     base = default_lab_config()
     ablation = (meta["ablation_target_flow_id"],) if ablate else ()
-    load_scale = float(gate.get("carrier_load_scale", 0.0))
+    if load_scale is None:
+        load_scale = float(gate.get("carrier_load_scale", 0.0))
     settings = replace(base.substrate_settings, carrier_load_scale=load_scale)
     return EpisodeConfig(
         agents=build_agents_from_ecology(data, temperature=0.35),
@@ -85,4 +86,42 @@ def test_slice_a_ablation_gate_pre_registered():
     assert passing >= min_pass, (
         f"ablation gate: {passing}/{len(seeds)} seeds showed behavioral divergence "
         f"(need >={min_pass})"
+    )
+
+
+@pytest.mark.slow
+def test_slice_a_ablation_gate_negative_control_at_default_load():
+    """Negative control (GL-44 hardening): at the *default* carrier_load_scale
+    (0.0, not the gate's pre-registered 1.5), the same ablation must NOT
+    reliably produce behavioral divergence. This is the evidence that the
+    positive gate above is measuring compile-time flow ablation propagating
+    through the load-sensitive carrier mechanic — not some load-independent
+    artifact of the fixture or harness that would "pass" unconditionally."""
+    if not _FIXTURE.exists():
+        pytest.skip("slice A reference fixture missing")
+    meta = load_substrate(_FIXTURE).data["v3_fixture_metadata"]
+    gate = meta["ablation_gate"]
+    seeds = gate["seeds"]
+    threshold = gate["histogram_l1_threshold"]
+    programs = programs_for(WEAK_AGENT)
+    backend = MockIsolate()
+    passing = 0
+    for seed in seeds:
+        full = run_episode(
+            _episode_cfg(ablate=False, load_scale=0.0), seed, backend, programs=programs
+        )
+        ablated = run_episode(
+            _episode_cfg(ablate=True, load_scale=0.0), seed, backend, programs=programs
+        )
+        deploy_diff = full.deploy_count != ablated.deploy_count
+        hist_diff = _histogram_l1(
+            _eng1_pattern_hist(full), _eng1_pattern_hist(ablated)
+        ) >= threshold
+        if deploy_diff or hist_diff:
+            passing += 1
+    assert passing < len(seeds), (
+        "negative control failed: ablation diverges on every seed even at "
+        "carrier_load_scale=0.0 — the positive gate's carrier_load_scale=1.5 "
+        "requirement would then be doing no work, contradicting the documented "
+        "GL-44 finding that default load leaves ablation inert for this roster"
     )

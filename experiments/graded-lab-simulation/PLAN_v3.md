@@ -130,12 +130,22 @@ structure (`REPRODUCTION.md` §1, GL-42 item 1).
    | Roster | `WEAK_AGENT`, default load, `role_population` n=1 per role |
    | Seeds | `{0, 2, 4}` (seed 1 failed L1 threshold on first battery — not retuned post hoc) |
    | Load | `carrier_load_scale = 1.5` (default 0.0 leaves ablation inert for this roster; frozen in fixture metadata) |
-   | Ablation | Zero `amount_per_tick` on one designated row (`ablation_target_flow_id` in fixture metadata — the larger of two unequal engineer compute flows: 38 vs 2) |
+   | Ablation | Zero `amount_per_tick` on one designated row (`ablation_target_flow_id` in fixture metadata — the larger of two unequal engineer compute flows: 30 vs 10; chosen to avoid a degenerate near-total-starvation split, see negative control below) |
    | Pass rule | On **≥ 2 / 3** seeds, ablation vs full run differs on **either**: (a) `deploy_count`, **or** (b) normalized primitive-pattern histogram L1 distance ≥ **0.10** |
 
    Constants (`0.10`, seed set, roster, ablation row id) are written
    into the fixture **before** the first ablation battery run — not tuned
    after observing outcomes (GL-36 discipline).
+
+   **Negative control (added after self-review):**
+   `test_slice_a_ablation_gate_negative_control_at_default_load` reruns the
+   same ablation at the ecology's *default* `carrier_load_scale = 0.0` and
+   asserts it must **not** diverge on all 3 seeds — evidence that the
+   positive gate's `1.5` requirement is doing real work, not padding an
+   unconditional pass. This control caught a real bug: an earlier fixture
+   split (`38`/`2`) was degenerate (near-total starvation at *any* load,
+   including `0.0`), which the negative control flagged immediately. See
+   FINDINGS GL-44 addendum for the full account.
 
 5. **Hand-built reference fixture (slice A minimum):** implementer
    authorship; frozen in-repo before the ablation gate runs. Must
@@ -171,6 +181,23 @@ vote semantics (slice B), principal scorecard vocabulary (slice C),
   **Not claimable:** "grown ecologies will be institutionally realistic" —
   that requires slice D batteries on separate fixtures and eventual blind
   growth.
+- **"Mechanisms/principals mostly decorative at runtime."** True at slice A
+  close: only `resource_flows` are causally load-bearing. `mechanisms` are
+  read for reachability (which principal's flow reaches which role) but
+  carry no enforced ACL, vote, or transfer semantics yet — that is slice B's
+  entire scope (channel/artifact/vote/transfer enforcement wired the same
+  way flows were in slice A: a compiled runtime structure the episode loop
+  actually consumes, not just JSON the runtime never reads). Slice C adds
+  principal objectives/scorecard (referee-plane only); slice D re-derives
+  C2-v3 contribution-floor thresholds against real batteries before any
+  growth round.
+- **"Behavioral signal is thin (one agent, one histogram, OR rule)."**
+  Correct for slice A's engineering-only gate. Broadening the signal
+  (multi-actor histograms, a stricter AND rule, more seeds, additional
+  hand-built fixtures beyond one) is deliberately deferred to slice D's
+  reference-battery calibration — widening the gate now, before mechanisms
+  are enforced, would validate the wrong thing (flow wiring, not the
+  eventual growth criteria the signal needs to support).
 
 **Touches:** `institutional_compiler.py` (new), `substrate.py`
 (v3 validation), `world.py` (`_allowances_map` reads compiled

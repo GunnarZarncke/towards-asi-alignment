@@ -50,4 +50,4 @@ Multi-turn session: implement V2-2b engineering; respond to external review GL-4
 
 ## Commits
 
-- (this session commit — hash recorded after push)
+- `ec52bd4` Close V2-2b and specify graded-lab v3 institutional runtime program.

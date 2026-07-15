@@ -47,4 +47,4 @@ surprise or roadblock (subprocess parity, 8c mechanism diagnosis,
 - `experiments/graded-lab-simulation/results/FINDINGS.md` (GL-28–GL-30)
 
 ## Commits
-- (pending — end-of-session commit)
+- `ed21adb` Graded lab optional directions: parity, 8c diagnosis, Phase 8d.

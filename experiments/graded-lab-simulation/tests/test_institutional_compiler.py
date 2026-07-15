@@ -7,7 +7,6 @@ from pathlib import Path
 
 import pytest
 
-from graded_lab.world_visible.config import EpisodeConfig
 from graded_lab.world_visible.institutional_compiler import (
     CompileError,
     compile_ecology,
@@ -59,3 +58,13 @@ def test_negative_amount_rejected_at_validation():
     data["resource_flows"][0]["amount_per_tick"] = -1
     with pytest.raises(CompileError, match="non-negative"):
         validate_v3_resource_flows(data)
+
+
+def test_unrecognized_resource_type_rejected_not_silently_dropped():
+    """A typo'd/unknown resource_type must fail compilation, not silently
+    fail to contribute to any actor's allowance (substring-matching regression
+    guard: exact-match registry, per GL-44 hardening)."""
+    data = copy.deepcopy(load_substrate(_FIXTURE).data)
+    data["resource_flows"][0]["resource_type"] = "compute_allowance_bassline"
+    with pytest.raises(CompileError, match="unrecognized resource_type"):
+        compile_ecology(data, default_lab_config().agents)

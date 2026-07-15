@@ -312,7 +312,7 @@
       "mechanism_id": "compute_allocation_policy",
       "role": "engineer",
       "resource_type": "compute_allowance_baseline",
-      "amount_per_tick": 38
+      "amount_per_tick": 30
     },
     {
       "id": "flow_engineer_grant_funder_compute",
@@ -320,7 +320,7 @@
       "mechanism_id": "access_grant_transfer",
       "role": "engineer",
       "resource_type": "compute_allowance_topup",
-      "amount_per_tick": 2
+      "amount_per_tick": 10
     },
     {
       "id": "flow_engineer_lab_operator_io",
