@@ -2,7 +2,11 @@
 \label{appn-experimental-evidence}
 
 \begin{epistemicstatus}
-This appendix is a curated index, not a new result. Every entry below is already reported, with full method and caveats, in the named experiment line's own findings ledger; this appendix's contribution is selecting which findings are load-bearing enough to cite from the manuscript, classifying each as positive, negative, or ambiguous evidence for the claim it bears on, and recording bidirectional links to the chapter sections that cite them. Confidence in the underlying results is whatever each line's own ledger states --- several entries below are the line's own negative or ambiguous results, reported as such rather than omitted. Confidence in the \emph{selection and classification} is lower and is the responsibility of this appendix alone. None of this is a claim that any experiment line proves the book's thesis; see \texttt{docs/EXPERIMENTS.md}'s claim-strength note: methodology-building and sanity checks only.
+This appendix is a curated index, not a new result.
+Every entry below is already reported, with full method and caveats, in the named experiment line's own findings ledger; this appendix's contribution is selecting which findings are load-bearing enough to cite from the manuscript, classifying each as positive, negative, or ambiguous evidence for the claim it bears on, and recording bidirectional links to the chapter sections that cite them.
+Confidence in the underlying results is whatever each line's own ledger states --- several entries below are the line's own negative or ambiguous results, reported as such rather than omitted.
+Confidence in the \emph{selection and classification} is lower and is the responsibility of this appendix alone.
+None of this is a claim that any experiment line proves the book's thesis; see \texttt{docs/EXPERIMENTS.md}'s claim-strength note: methodology-building and sanity checks only.
 \end{epistemicstatus}
 
 Six experiment lines (five in this repository plus a sibling methodological precursor) maintain their own findings ledgers --- \texttt{results/FINDINGS.md} or \texttt{results/NEGATIVE\_RESULTS.md} --- with every finding each line has produced, including minor bugs, dead ends, and one-off diagnostics that do not belong here. \texttt{docs/EXPERIMENTS.md} gives the full narrative for each line, phase by phase. This appendix sits between those two documents: a short description of each line, then only the findings strong enough that a chapter might reasonably cite them, with plain classification of what each supports, undercuts, or leaves open.
@@ -179,17 +183,11 @@ Which book bridges and cross-cutting features each line exercises. ``Primary'' m
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
 \renewcommand{\arraystretch}{1.18}
-% Full \linewidth; data columns ~30\% wider than the prior 0.126\textwidth{} cells
-% inside a table that only spanned 0.896\textwidth.
-\def\appnbridgecols{%
-  @{}L{0.12\linewidth}%
-  L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}%
-  L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}@{}}
 
 \subsection{Book bridges (\texttt{MB1}--\texttt{MB10})}
 \label{sec:appn-bridge-mb}
 
-\begin{longtable}\appnbridgecols
+\begin{longtable}{@{}L{0.12\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}@{}}
 \caption{Experiment lines mapped to book bridges.}\label{tab:appn-bridge-mb}\\
 \toprule
 \textbf{Bridge} & \textbf{Agency-detect} & \textbf{Toy sim} & \textbf{Embedded sim} & \textbf{Goal-agent sim} & \textbf{Lab sim} & \textbf{Graded lab sim} \\
@@ -217,7 +215,7 @@ Which book bridges and cross-cutting features each line exercises. ``Primary'' m
 \subsection{Cross-cutting audit features}
 \label{sec:appn-bridge-features}
 
-\begin{longtable}\appnbridgecols
+\begin{longtable}{@{}L{0.12\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}L{0.1467\linewidth}@{}}
 \caption{Experiment lines mapped to cross-cutting audit features.}\label{tab:appn-bridge-features}\\
 \toprule
 \textbf{Feature} & \textbf{Agency-detect} & \textbf{Toy sim} & \textbf{Embedded sim} & \textbf{Goal-agent sim} & \textbf{Lab sim} & \textbf{Graded lab sim} \\
