@@ -71,5 +71,7 @@ it works").
 
 ## Commits
 
-- Closure commit + hash-recording follow-up commit (hashes recorded in
-  `REPRODUCING.md` and below once created).
+- `26e9638` — closure: TERMINAL_SUMMARY, REPRODUCING, PLAN_v2, GL-31,
+  status headers, index-doc notes.
+- Follow-up commit recording `26e9638` in `REPRODUCING.md` and this log.
+- Final v1 *code* commit remains `ed21adb` (CODE_VERSION 0.17.0).

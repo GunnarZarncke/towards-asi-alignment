@@ -12,8 +12,9 @@ parity, 8c diagnosis, Phase 8d.") — the last commit that changed
 exact frozen code (`CODE_VERSION` `graded-lab-0.17.0`, asserted in
 `graded_lab/world_visible/config.py`).
 
-**v1 closure commit (these docs, no code changes):**
-`RECORDED-AFTER-COMMIT`.
+**v1 closure commit (these docs, no code changes):** `26e9638`
+("Graded lab: close v1 program (GL-31), add terminal summary,
+reproduction guide, and PLAN_v2.").
 
 ## Environment
 
