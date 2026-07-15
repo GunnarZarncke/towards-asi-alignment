@@ -1,6 +1,6 @@
 # PLAN v3 — institutional runtime wiring
 
-**Status: slice A implemented (2026-07-15).** Slice B+ not started.
+**Status: slices A and B implemented (2026-07-15).** Slice C+ not started.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing
@@ -182,15 +182,18 @@ vote semantics (slice B), principal scorecard vocabulary (slice C),
   that requires slice D batteries on separate fixtures and eventual blind
   growth.
 - **"Mechanisms/principals mostly decorative at runtime."** True at slice A
-  close: only `resource_flows` are causally load-bearing. `mechanisms` are
-  read for reachability (which principal's flow reaches which role) but
-  carry no enforced ACL, vote, or transfer semantics yet — that is slice B's
-  entire scope (channel/artifact/vote/transfer enforcement wired the same
-  way flows were in slice A: a compiled runtime structure the episode loop
-  actually consumes, not just JSON the runtime never reads). Slice C adds
-  principal objectives/scorecard (referee-plane only); slice D re-derives
-  C2-v3 contribution-floor thresholds against real batteries before any
-  growth round.
+  close, **partially closed at slice B**: `message_channel`, `shared_artifact`,
+  `resource_transfer`, and `joint_approval_vote` mechanisms now compile to
+  enforced ACLs/vote specs the dispatch layer actually checks. Still
+  decorative: **no reference agent program yet exercises any of this** — the
+  enforcement exists and is tested at the compiler/dispatch level, but
+  nothing in `programs.py` chooses to communicate on a governed channel,
+  write to a governed artifact by id, execute a transfer, or cast a vote.
+  That agent-side exercise (and the C5-v3 "≥3 kinds exercised" criterion) is
+  slice D's job. `principals` remain fully narrative — slice C adds
+  objectives/scorecard (referee-plane only); slice D re-derives C2-v3
+  contribution-floor thresholds against real batteries before any growth
+  round.
 - **"Behavioral signal is thin (one agent, one histogram, OR rule)."**
   Correct for slice A's engineering-only gate. Broadening the signal
   (multi-actor histograms, a stricter AND rule, more seeds, additional
@@ -209,37 +212,53 @@ paragraph only — full v3 pre-registration still slice D).
 
 ## Slice B — `mechanisms` → enforced coordination
 
+**Status: implemented (2026-07-15, GL-45, `graded-lab-0.21.0`).**
+
 **Gap closed:** `communicate` channels are free-form; artifact access
 is unrestricted; `joint_approval_vote` has no runtime meaning
 (`REPRODUCTION.md` §1 item 2).
 
-**Spec per mechanism kind:**
+**Spec per mechanism kind (as implemented):**
 
 | kind | runtime binding |
 |---|---|
-| `message_channel` | `communicate(channel=X)` allowed **only** for actors in `members_ground_truth`; others get `{"status": "denied", "reason": "not_channel_member"}` |
-| `shared_artifact` | mechanism declares an artifact path prefix; `write` under it restricted to members; `read` by non-members denied (or cost-scaled — decide at design review, pre-register) |
-| `resource_transfer` | transfer executes only between member actors; logged with mechanism id (UAD-relevant trace) |
-| `joint_approval_vote` | **new primitive endpoint** `call(endpoint="vote.cast", args={vote_id, approve})`; a vote spec declares members, quorum (default: majority), and a timeout in ticks; a pipeline step may declare `requires_vote: <mechanism_id>` and blocks until quorum or timeout |
+| `message_channel` | `communicate(channel=X)` where `X` matches a compiled channel id: allowed **only** for actors whose role is in `members_ground_truth`; others get `{"status": "denied", "reason": "not_channel_member"}`. Channel names that do not match a compiled id (e.g. v1/v2's `"lab"`) are unenforced. |
+| `shared_artifact` | `read`/`write` carrying an explicit `artifact_id` matching a compiled id: **denied outright** (not cost-scaled — design gate) for non-member roles; `reason: "not_artifact_member"`. Plain reads/writes without an `artifact_id` are unenforced (backward compatible). |
+| `resource_transfer` | new endpoint `call(endpoint="transfer.execute", args={mechanism_id, target_actor_id})`; both the caller's and the target's role must be in the mechanism's members, else `"not_transfer_member"`. |
+| `joint_approval_vote` | new endpoint `call(endpoint="vote.cast", args={vote_id, approve})` (free — no standing cost, design gate); quorum = majority-of-members only (no per-mechanism override yet); a pipeline step may declare `requires_vote: <mechanism_id>` and is denied `vote_pending` until quorum, `vote_denied_timeout` if the mechanism's `timeout_ticks` (default `10`) elapses without quorum — **no escalation path** (design gate). |
 
-**Design gate (pre-registered, human review before code):** exact vote
-semantics — quorum rule, timeout behavior (fail vs. escalate), whether
-casting costs standing. Written into DESIGN.md v3 *before*
-implementation; not decided mid-session.
+**Design gate (pre-registered, human review before code — answered
+2026-07-15, all recommended/simplest options, frozen in
+`institutional_compiler.py`'s module docstring and DESIGN.md):** vote
+quorum majority-only; timeout **fails** the gated step, no escalation;
+`vote.cast` is free; non-member `shared_artifact` access is denied
+outright, not cost-scaled.
 
-**C5-v3 criterion:** ≥ 3 mechanism kinds present **and exercised** —
-each bound mechanism must fire ≥ once in reference episodes (a
-declared-but-never-used channel no longer counts).
+**C5-v3 criterion (deferred to slice D, not demonstrated by slice B's
+wiring tests):** ≥ 3 mechanism kinds present **and exercised** — each
+bound mechanism must fire ≥ once in reference episodes. Slice B proves
+the enforcement layer is wired and correct (compiler unit tests +
+dispatch-level allow/deny tests + vote-quorum/timeout tests, all on
+direct calls); no reference agent program yet exercises a governed
+channel/artifact/transfer/vote by name, so this criterion needs slice D's
+agent-driven reference battery, not slice B's engineering gate.
 
-**Touches:** `affordable.py`, `access.py`, `world.py`
-(`_execute_primitive`), `observation.py`, new vote state in the
-episode loop, `pipeline_spec.py` (`requires_vote`), UAD ground-truth
-plumbing (mechanism memberships become *enforced* units — upgrading
-the Q1 UAD test from coherence-check to live-coupling per GL-42).
+**Touches:** `institutional_compiler.py` (`_compile_mechanism_runtime`,
+`VoteSpec`), new `votes.py` (`VoteService`), `world.py`
+(`_execute_primitive` ACL checks + `vote.cast`/`transfer.execute`
+endpoints, `run_episode` threads the compiled `RuntimeEcology` through),
+`pipeline_spec.py` (`PipelineStep.requires_vote`), `pipeline_engine.py`
+(`trigger_step` vote gate, same extension pattern as the existing
+`permission_service` check), `tests/test_slice_b_mechanisms.py` (new,
+18 tests). UAD ground-truth plumbing (mechanism memberships becoming
+*enforced* units, upgrading the Q1 UAD test from coherence-check to
+live-coupling per GL-42) is **not yet done** — deferred, since it
+requires agent programs to actually use the enforced surface first.
 
-**Overhead:** ACL dict lookup per read/write/communicate (~5–10% on
-primitive dispatch, well under scheduler/oracle cost); vote state only
-while a vote is open.
+**Overhead:** ACL dict lookup only on actions that explicitly reference a
+compiled mechanism id (empty dict lookup otherwise); vote state only
+while a vote is open. No measured regression in `--profile fast` (all
+tests green).
 
 ## Slice C — `principals` + `conflicts` → referee-visible objectives
 

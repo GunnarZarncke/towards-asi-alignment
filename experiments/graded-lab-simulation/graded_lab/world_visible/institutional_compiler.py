@@ -2,17 +2,39 @@
 
 PLAN_v3 slice A: ``resource_flows`` with ``amount_per_tick`` replace
 ``resource_allowances_per_tick`` at runtime (declarative cross-check only).
+
+PLAN_v3 slice B: ``mechanisms`` become enforced coordination structures —
+``message_channel``/``shared_artifact``/``resource_transfer`` ACLs (by role,
+via ``members_ground_truth``) and ``joint_approval_vote`` quorum/timeout
+specs. Design gate (frozen 2026-07-15, human review, not decided mid-session
+per PLAN_v3): vote quorum is majority-of-members only in slice B (no
+per-mechanism override yet); a vote that misses its timeout **fails** the
+gated pipeline step (no escalation path in v3); ``vote.cast`` is free (no
+standing cost); a non-member ``read``/``write`` against a declared
+``shared_artifact`` is **denied outright** (not cost-scaled).
 """
 
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from .config import ROLES
 
 CROSS_CHECK_TOLERANCE = 0.25
+
+# Slice B design gate (frozen, human-reviewed): a joint_approval_vote
+# mechanism may declare its own ``timeout_ticks``; absent that, this is the
+# frozen default. Quorum is always majority-of-members in slice B.
+DEFAULT_VOTE_TIMEOUT_TICKS = 10
+
+_MECHANISM_KINDS = {
+    "message_channel",
+    "shared_artifact",
+    "joint_approval_vote",
+    "resource_transfer",
+}
 
 
 class CompileError(ValueError):
@@ -27,9 +49,21 @@ class ActorAllowances:
 
 
 @dataclass(frozen=True)
+class VoteSpec:
+    members: frozenset[str]
+    quorum: int
+    timeout_ticks: int
+
+
+@dataclass(frozen=True)
 class RuntimeEcology:
     allowances_by_actor: dict[str, ActorAllowances]
     compile_warnings: tuple[str, ...] = ()
+    # PLAN_v3 slice B: role-keyed membership sets, by mechanism id.
+    channel_acls: dict[str, frozenset[str]] = field(default_factory=dict)
+    artifact_acls: dict[str, frozenset[str]] = field(default_factory=dict)
+    transfer_acls: dict[str, frozenset[str]] = field(default_factory=dict)
+    vote_specs: dict[str, VoteSpec] = field(default_factory=dict)
 
 
 def is_v3_ecology(data: dict) -> bool:
@@ -199,6 +233,52 @@ def _cross_check_warnings(
     return warnings
 
 
+def _compile_mechanism_runtime(
+    data: dict,
+) -> tuple[
+    dict[str, frozenset[str]],
+    dict[str, frozenset[str]],
+    dict[str, frozenset[str]],
+    dict[str, VoteSpec],
+]:
+    """PLAN_v3 slice B: role-membership ACLs and vote specs, by mechanism id.
+
+    Membership is by *role* (``members_ground_truth`` values that match a
+    known role name), matching the fixture schema already in use for Part B.
+    A mechanism with an unrecognized ``kind`` or no role members is ignored
+    here (still valid JSON for slice A reachability; simply not
+    runtime-enforced — that is what slice B closes relative to slice A)."""
+    channel_acls: dict[str, frozenset[str]] = {}
+    artifact_acls: dict[str, frozenset[str]] = {}
+    transfer_acls: dict[str, frozenset[str]] = {}
+    vote_specs: dict[str, VoteSpec] = {}
+    for mech in data.get("mechanisms", []):
+        if not isinstance(mech, dict):
+            continue
+        mech_id = mech.get("id")
+        kind = mech.get("kind")
+        if not isinstance(mech_id, str) or not mech_id or kind not in _MECHANISM_KINDS:
+            continue
+        members = frozenset(
+            str(r) for r in mech.get("members_ground_truth", []) or [] if r in ROLES
+        )
+        if not members:
+            continue
+        if kind == "message_channel":
+            channel_acls[mech_id] = members
+        elif kind == "shared_artifact":
+            artifact_acls[mech_id] = members
+        elif kind == "resource_transfer":
+            transfer_acls[mech_id] = members
+        elif kind == "joint_approval_vote":
+            quorum = len(members) // 2 + 1  # majority-of-members, frozen (slice B design gate)
+            timeout_ticks = int(mech.get("timeout_ticks", DEFAULT_VOTE_TIMEOUT_TICKS))
+            vote_specs[mech_id] = VoteSpec(
+                members=members, quorum=quorum, timeout_ticks=timeout_ticks
+            )
+    return channel_acls, artifact_acls, transfer_acls, vote_specs
+
+
 def compile_ecology(
     data: dict,
     agents: tuple[Any, ...],
@@ -223,7 +303,12 @@ def compile_ecology(
         allowances_by_actor[agent.actor_id] = ActorAllowances(
             compute=compute, io=io, standing=standing
         )
+    channel_acls, artifact_acls, transfer_acls, vote_specs = _compile_mechanism_runtime(data)
     return RuntimeEcology(
         allowances_by_actor=allowances_by_actor,
         compile_warnings=tuple(_cross_check_warnings(data, role_totals)),
+        channel_acls=channel_acls,
+        artifact_acls=artifact_acls,
+        transfer_acls=transfer_acls,
+        vote_specs=vote_specs,
     )

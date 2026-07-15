@@ -32,6 +32,9 @@ class PipelineStep:
     depends_on: tuple[str, ...] = ()
     requires_capability: str = ""
     idempotent: bool = False
+    # PLAN_v3 slice B: if set, names a joint_approval_vote mechanism id that
+    # must resolve "approved" (per VoteService) before this step may fire.
+    requires_vote: str = ""
 
 
 @dataclass(frozen=True)
@@ -59,6 +62,7 @@ def spec_to_dict(spec: PipelineSpec) -> dict:
                 "depends_on": list(s.depends_on),
                 "requires_capability": s.requires_capability,
                 "idempotent": s.idempotent,
+                "requires_vote": s.requires_vote,
             }
             for s in spec.steps
         ],
@@ -87,6 +91,7 @@ def parse_spec(data: dict) -> PipelineSpec:
             depends_on=tuple(raw.get("depends_on", ())),
             requires_capability=raw.get("requires_capability", ""),
             idempotent=bool(raw.get("idempotent", False)),
+            requires_vote=raw.get("requires_vote", ""),
         )
         if step.tool not in KNOWN_TOOLS:
             raise SpecError(f"step {step.id!r}: unknown tool {step.tool!r}")

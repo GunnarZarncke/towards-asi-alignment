@@ -33,11 +33,16 @@ class PipelineEngine:
         oracle: OracleWorld,
         workspace: Workspace,
         permission_service: object | None = None,
+        vote_service: object | None = None,
     ) -> None:
         self._spec = spec
         self.oracle = oracle
         self.workspace = workspace
         self.permission_service = permission_service
+        # PLAN_v3 slice B: object exposing ``resolution(vote_id, *, t) -> str``
+        # (see votes.VoteService). ``None`` behaves like v1/v2 — no ecology
+        # declares ``requires_vote`` on any step, so this is never consulted.
+        self.vote_service = vote_service
         self._completed: dict[str, set[str]] = {}
         self._global_completed: set[str] = set()
         self._artifacts: dict[str, dict[str, str]] = {}
@@ -100,6 +105,17 @@ class PipelineEngine:
             )
         ):
             return self._deny(actor_id, step_id, args, "access_denied")
+
+        if step.requires_vote:
+            if self.vote_service is None:
+                return self._deny(actor_id, step_id, args, "vote_service_unavailable")
+            resolution = self.vote_service.resolution(step.requires_vote, t=self.oracle.t)
+            if resolution == "pending":
+                return self._deny(actor_id, step_id, args, "vote_pending")
+            if resolution != "approved":
+                # "denied_timeout" (fails, no escalation — slice B design
+                # gate) or "unknown" (mechanism id not compiled) both deny.
+                return self._deny(actor_id, step_id, args, f"vote_{resolution}")
 
         try:
             payload = self._effects[step.tool](actor_id, args)

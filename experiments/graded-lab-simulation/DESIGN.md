@@ -39,7 +39,10 @@ battery correction (FINDINGS GL-16); `graded-lab-0.14.0` at the two
 resolved Phase 7c backlog items — the resource-sensitive agent program
 (FINDINGS GL-17) and the EAI-v2 logging/normalization fix (FINDINGS
 GL-18). `graded-lab-0.20.0` at PLAN_v3 slice A (FINDINGS GL-44):
-v3 `resource_flows` compile to per-actor runtime allowances. Hand-bumped when oracle,
+v3 `resource_flows` compile to per-actor runtime allowances. `graded-lab-0.21.0`
+at PLAN_v3 slice B (FINDINGS GL-45): `mechanisms` compile to enforced
+channel/artifact/transfer ACLs and vote specs (`VoteService`,
+`PipelineStep.requires_vote`). Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
 
@@ -1521,6 +1524,50 @@ delta on `resource_allowances_per_tick`, which remains a declarative
 cross-check with ±25% warn). Missing per-actor compute/io coverage fails
 validation. See `institutional_compiler.py` and
 `tests/fixtures/ecology_v3_slice_a_reference.json`.
+
+**PLAN_v3 slice B — enforced mechanisms (design gate, frozen 2026-07-15,
+human review before code, `graded-lab-0.21.0`):**
+
+`mechanisms[]` entries of a known `kind` compile to role-membership ACLs
+(`message_channel`, `shared_artifact`, `resource_transfer`) or vote specs
+(`joint_approval_vote`), keyed by mechanism `id`. Membership is by *role*
+(`members_ground_truth` values matching a known role name — unchanged
+schema from Part B). Frozen decisions, decided by explicit human review
+before any implementation (not mid-session):
+
+- **Vote quorum:** majority-of-members only in slice B (`len(members)//2+1`).
+  No per-mechanism override yet (deferred to a later slice if reference
+  batteries show a need).
+- **Vote timeout:** a `joint_approval_vote` mechanism may declare its own
+  `timeout_ticks`; absent that, `DEFAULT_VOTE_TIMEOUT_TICKS = 10`. If
+  quorum is not reached within the timeout, the gated pipeline step
+  **fails** (denied, `vote_denied_timeout`) — **no escalation path** in v3.
+- **Vote cost:** casting (`call(endpoint="vote.cast")`) is **free** — no
+  standing cost, only the ordinary `call` primitive compute/io cost already
+  billed by the scheduler.
+- **`shared_artifact` non-member access:** a `read`/`write` that explicitly
+  targets a compiled `artifact_id` and whose actor's role is not a member
+  is **denied outright** (`not_artifact_member`) — not cost-scaled.
+
+**Enforcement scope (opt-in, backward compatible):** ACL/vote checks only
+activate when an action explicitly references a compiled mechanism id
+(`communicate.channel`, `read`/`write.artifact_id`, `call.args.mechanism_id`
+for `transfer.execute`, `call.args.vote_id` for `vote.cast`). Actions that
+do not reference a known mechanism id (e.g. the v1/v2 default `"lab"`
+channel, or any v1/v2 ecology, which compiles no mechanisms at all) are
+**unenforced**, unchanged from prior behavior. See
+`institutional_compiler.py` (`_compile_mechanism_runtime`), `votes.py`
+(`VoteService`), `world.py` (`_execute_primitive`), `pipeline_engine.py`
+(`requires_vote` gate), `pipeline_spec.py` (`PipelineStep.requires_vote`).
+
+**Claim scope (GL-45).** Wiring smoke test only, same posture as slice A:
+proves the compiler produces correct ACLs/vote specs and the dispatch layer
+enforces them (member allowed, non-member denied, vote quorum/timeout
+resolve correctly) on the slice A reference fixture (which already declares
+all four mechanism kinds). **Not** an agent-driven exercise — no reference
+agent program yet casts a vote or targets a governed channel/artifact by
+name; that (and the C5-v3 "≥3 kinds exercised in reference episodes"
+criterion) is deferred to slice D's reference-battery calibration.
 
 **V2-2b additive fields (GL-40, `CODE_VERSION` `graded-lab-0.19.0`):**
 

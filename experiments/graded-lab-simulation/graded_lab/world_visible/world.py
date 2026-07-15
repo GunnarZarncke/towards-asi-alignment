@@ -29,7 +29,7 @@ from .primitives import PrimitiveAction, primitive_cost
 from .resource_ledger import ResourceLedger
 from .scheduler import ActionScheduler
 from .exogenous_workload import ExogenousWorkloadEngine
-from .institutional_compiler import compile_ecology
+from .institutional_compiler import RuntimeEcology, compile_ecology
 from .substrate import (
     ecology_path_for_version,
     is_v2_shaped_ecology,
@@ -37,6 +37,7 @@ from .substrate import (
     load_substrate,
     standing_stock_for_role,
 )
+from .votes import VoteService
 from .workspace import Workspace
 
 
@@ -90,23 +91,33 @@ def _bootstrap_grants(
             permissions.grant(agent.actor_id, spec.step("intake").requires_capability, t=t)
 
 
-def _allowances_map(
+def _compile_runtime_ecology(
     cfg: EpisodeConfig, substrate_data: dict
+) -> RuntimeEcology | None:
+    if not is_v3_shaped_ecology(substrate_data):
+        return None
+    return compile_ecology(
+        substrate_data,
+        cfg.agents,
+        ablated_flow_ids=frozenset(cfg.flow_ablation_ids),
+    )
+
+
+def _allowances_map(
+    cfg: EpisodeConfig,
+    substrate_data: dict,
+    *,
+    runtime_ecology: RuntimeEcology | None,
 ) -> dict[str, dict[str, float]]:
     scale = cfg.substrate_settings.compute_scale
-    if is_v3_shaped_ecology(substrate_data):
-        runtime = compile_ecology(
-            substrate_data,
-            cfg.agents,
-            ablated_flow_ids=frozenset(cfg.flow_ablation_ids),
-        )
+    if runtime_ecology is not None:
         return {
             actor_id: {
                 "compute": allow.compute * scale,
                 "io": allow.io,
                 "standing": allow.standing,
             }
-            for actor_id, allow in runtime.allowances_by_actor.items()
+            for actor_id, allow in runtime_ecology.allowances_by_actor.items()
         }
     out: dict[str, dict[str, float]] = {}
     for agent in cfg.agents:
@@ -141,8 +152,27 @@ def _execute_primitive(
     permissions: PermissionService,
     projector: ObservationProjector,
     workspace: Workspace,
+    role_by_actor: dict[str, str] | None = None,
+    channel_acls: dict[str, frozenset[str]] | None = None,
+    artifact_acls: dict[str, frozenset[str]] | None = None,
+    transfer_acls: dict[str, frozenset[str]] | None = None,
+    vote_service: VoteService | None = None,
 ) -> dict[str, object]:
+    role_by_actor = role_by_actor or {}
+    channel_acls = channel_acls or {}
+    artifact_acls = artifact_acls or {}
+    transfer_acls = transfer_acls or {}
+
+    # PLAN_v3 slice B: enforcement only activates when the agent's action
+    # explicitly targets a mechanism id that the compiler bound as a
+    # shared_artifact (via ``artifact_id``) or when the channel name matches
+    # a compiled message_channel id. Unrecognized/absent ids fall through to
+    # the unenforced v1/v2 behavior unchanged.
     if action.kind == "read":
+        artifact_id = action.args.get("artifact_id")
+        if isinstance(artifact_id, str) and artifact_id in artifact_acls:
+            if role_by_actor.get(actor_id) not in artifact_acls[artifact_id]:
+                return {"status": "denied", "reason": "not_artifact_member"}
         path = str(action.args["path"])
         projector.record_read(actor_id, path)
         try:
@@ -153,6 +183,10 @@ def _execute_primitive(
         return {"status": "ok", "payload": {"path": path, "content": payload}}
 
     if action.kind == "write":
+        artifact_id = action.args.get("artifact_id")
+        if isinstance(artifact_id, str) and artifact_id in artifact_acls:
+            if role_by_actor.get(actor_id) not in artifact_acls[artifact_id]:
+                return {"status": "denied", "reason": "not_artifact_member"}
         path = str(action.args.get("path", "scratch/note.txt"))
         content = dict(action.args.get("content", {}))
         rel = workspace.write_artifact("scratch", path.replace("/", "_"), content)
@@ -160,6 +194,9 @@ def _execute_primitive(
 
     if action.kind == "communicate":
         channel = str(action.args.get("channel", "lab"))
+        if channel in channel_acls:
+            if role_by_actor.get(actor_id) not in channel_acls[channel]:
+                return {"status": "denied", "reason": "not_channel_member"}
         message = dict(action.args.get("message", {}))
         rel = workspace.write_artifact(
             "messages", f"{channel}_{actor_id}", {"sender": actor_id, "message": message}
@@ -201,6 +238,39 @@ def _execute_primitive(
             outcome = _step_to_outcome(result)
             outcome["semantic_step"] = step_id
             return outcome
+        if endpoint == "vote.cast":
+            inner = dict(action.args.get("args", {}))
+            vote_id = str(inner.get("vote_id", ""))
+            approve = bool(inner.get("approve", False))
+            if vote_service is None:
+                return {"status": "denied", "reason": "vote_service_unavailable"}
+            # Design gate: casting is free — no standing/resource cost beyond
+            # the ordinary ``call`` primitive cost already billed by the
+            # scheduler.
+            return vote_service.cast(
+                vote_id, actor_id, role_by_actor.get(actor_id), approve, t=engine.oracle.t
+            )
+        if endpoint == "transfer.execute":
+            inner = dict(action.args.get("args", {}))
+            mechanism_id = str(inner.get("mechanism_id", ""))
+            target_actor_id = str(inner.get("target_actor_id", ""))
+            acl = transfer_acls.get(mechanism_id)
+            if acl is None:
+                return {"status": "denied", "reason": "unknown_transfer_mechanism"}
+            if (
+                role_by_actor.get(actor_id) not in acl
+                or role_by_actor.get(target_actor_id) not in acl
+            ):
+                return {"status": "denied", "reason": "not_transfer_member"}
+            return {
+                "status": "ok",
+                "payload": {
+                    "mechanism_id": mechanism_id,
+                    "from": actor_id,
+                    "to": target_actor_id,
+                    "executed": True,
+                },
+            }
         return {"status": "denied", "reason": f"unknown_endpoint:{endpoint}"}
 
     if action.kind == "compute":
@@ -403,8 +473,16 @@ def run_episode(
     )
     ws = Workspace()
     permissions = PermissionService()
+    runtime_ecology = _compile_runtime_ecology(cfg, substrate_data)
+    # PLAN_v3 slice B: VoteService always exists (empty specs on v1/v2 or a
+    # v3 ecology with no joint_approval_vote mechanisms) so ``vote.cast``
+    # denies uniformly ("unknown_vote") rather than requiring a None-check
+    # at every call site.
+    vote_service = VoteService(runtime_ecology.vote_specs if runtime_ecology else {})
     spec = load_spec(cfg.pipeline_spec)
-    engine = PipelineEngine(spec, oracle, ws, permission_service=permissions)
+    engine = PipelineEngine(
+        spec, oracle, ws, permission_service=permissions, vote_service=vote_service
+    )
     projector = ObservationProjector(workspace=ws)
     ledger = ResourceLedger()
     carriers = CarrierLedger()
@@ -416,8 +494,13 @@ def run_episode(
         if raw_workload is not None:
             workload_engine = ExogenousWorkloadEngine(raw_workload, seed=seed)
 
+    role_by_actor = {agent.actor_id: agent.role for agent in cfg.agents}
+    channel_acls = runtime_ecology.channel_acls if runtime_ecology else {}
+    artifact_acls = runtime_ecology.artifact_acls if runtime_ecology else {}
+    transfer_acls = runtime_ecology.transfer_acls if runtime_ecology else {}
+
     program_map = programs or {a.actor_id: "softmax_optimizer" for a in cfg.agents}
-    allowances = _allowances_map(cfg, substrate_data)
+    allowances = _allowances_map(cfg, substrate_data, runtime_ecology=runtime_ecology)
     for agent in cfg.agents:
         allow = allowances[agent.actor_id]
         ledger.ensure_actor(
@@ -565,7 +648,12 @@ def run_episode(
                     continue
                 outcome = _execute_primitive(
                     action, actor_id, engine=engine, permissions=permissions,
-                    projector=projector, workspace=ws
+                    projector=projector, workspace=ws,
+                    role_by_actor=role_by_actor,
+                    channel_acls=channel_acls,
+                    artifact_acls=artifact_acls,
+                    transfer_acls=transfer_acls,
+                    vote_service=vote_service,
                 )
                 last_outcomes[actor_id] = outcome
                 primitive_log.append(

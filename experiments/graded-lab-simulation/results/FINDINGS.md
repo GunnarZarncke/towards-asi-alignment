@@ -2786,3 +2786,68 @@ enforced ACLs/votes) and broadening the behavioral signal beyond a single
 eng1 pattern histogram both remain open; see `PLAN_v3.md` slice B and the
 "later gates" note above.
 
+## GL-45 (PLAN_v3 slice B — `mechanisms` → enforced coordination, `graded-lab-0.21.0`)
+
+**Trigger.** User: "Continue with the next slice." Per PLAN_v3's own
+requirement, stopped before writing code to run the pre-registered **design
+gate** (human review, not decided mid-session): vote quorum/timeout
+behavior, vote cost, and `shared_artifact` non-member access. All four
+questions answered with the recommended (simplest) option — see DESIGN.md
+"PLAN_v3 slice B — enforced mechanisms" for the frozen decisions.
+
+**What was built.**
+
+- `institutional_compiler.py`: `_compile_mechanism_runtime()` compiles
+  `mechanisms[]` (by `kind`) into `RuntimeEcology.channel_acls`,
+  `.artifact_acls`, `.transfer_acls` (role-membership sets, keyed by
+  mechanism id) and `.vote_specs` (`VoteSpec(members, quorum, timeout_ticks)`,
+  majority quorum, `DEFAULT_VOTE_TIMEOUT_TICKS = 10`).
+- `votes.py` (new): `VoteService` — `cast()` (denies non-members, free of
+  standing cost), `resolution()` (`pending` / `approved` / `denied_timeout`
+  / `unknown`; opens its own timeout clock lazily on first cast or first
+  resolution check, so an ungated-but-never-cast vote still eventually times
+  out rather than blocking forever with no clock started).
+- `pipeline_spec.py`: `PipelineStep.requires_vote` (optional mechanism id).
+- `pipeline_engine.py`: `PipelineEngine.trigger_step` denies
+  (`vote_pending` / `vote_denied_timeout` / `vote_unknown`) before dispatch
+  when a step's `requires_vote` mechanism has not resolved `approved` —
+  same extension pattern as the existing `permission_service` check.
+- `world.py`: `_execute_primitive` enforces channel/artifact ACLs
+  (opt-in — only when the action explicitly names a compiled mechanism id;
+  unrecognized/absent ids fall through to unenforced v1/v2 behavior
+  unchanged) and adds two `call` endpoints: `vote.cast`, `transfer.execute`
+  (both member-role endpoints checked against `transfer_acls`).
+  `run_episode` compiles the `RuntimeEcology` once per episode (was
+  previously discarded after allowances were extracted) and threads
+  `role_by_actor` + the ACL dicts + a per-episode `VoteService` through the
+  dispatch call and into `PipelineEngine`.
+- `tests/test_slice_b_mechanisms.py` (new, 18 tests): compiler unit tests
+  (ACL/vote-spec compilation on the slice A reference fixture, which
+  already declares all four mechanism kinds); dispatch-level enforcement
+  tests (member allowed / non-member denied for channel, artifact,
+  transfer; unbound channel names remain unenforced); `VoteService` unit
+  tests (member/non-member cast, quorum resolution, timeout); pipeline-gate
+  integration tests (`requires_vote` blocks pending, proceeds once
+  approved, fails without escalation on timeout).
+
+**Claim scope.** Wiring smoke test only, same posture as slice A: the
+compiler and dispatch layer are correctly connected and behave as specified
+on the reference fixture. **Not** an agent-driven exercise — no reference
+agent program yet casts a vote or explicitly targets a governed
+channel/artifact/transfer by mechanism id, so the C5-v3 "≥3 mechanism kinds
+present and exercised in reference episodes" criterion is **not**
+demonstrated this session; that, plus any broadening of the enforcement
+surface (e.g. wiring these into `programs.py`/`ProgramMap` choices), is
+deferred to slice D reference-battery calibration, per PLAN_v3.
+
+**Verification.** `tests/test_slice_b_mechanisms.py`: 18/18 green.
+`tests/test_institutional_compiler.py` + `tests/test_v3_slice_a_flow_ablation.py`
++ `tests/test_world.py` + `tests/test_ecology_version.py` (incl. the pinned
+v1 digest): all green, no regression from threading the compiled
+`RuntimeEcology` through the episode loop. Full `--profile fast` suite:
+all tests logically pass (100%); the speed-guard again flagged the same
+pre-existing unrelated UAD tests as wall-clock-slow (machine load, not a
+regression from this change).
+
+- `CODE_VERSION` **`graded-lab-0.21.0`**.
+
