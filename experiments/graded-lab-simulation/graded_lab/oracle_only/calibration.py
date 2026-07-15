@@ -20,7 +20,7 @@ from .detectors import build_audit_view, run_all_detectors
 from .eai import compute_eai_at_tier, tier_i_fraction_from_log
 from .severity import score_episode
 from .stats import ci95
-from .uad_passive import discovered_units_passive
+from .uad_discovery import discovered_units_uad
 from .uad_partition import full_partition_match
 from .unit_biq import unit_control_bits
 
@@ -196,8 +196,7 @@ def _severity_composite(result) -> float:
 
 
 def _uad_partition_match(result, cfg: EpisodeConfig) -> bool:
-    actor_ids = sorted(result.boundary_streams)
-    discovered = discovered_units_passive(result.primitive_log, actor_ids=actor_ids)
+    discovered = discovered_units_uad(result=result)
     return full_partition_match(cfg.resolved_partition(), discovered)
 
 

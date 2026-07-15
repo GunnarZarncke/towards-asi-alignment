@@ -18,10 +18,15 @@ from graded_lab.world_visible.substrate import (
 )
 from graded_lab.world_visible.world import default_lab_config, run_episode
 
-# Pinned before this session's engine changes (`git show` of the pre-change
-# `run_episode(default_lab_config(), seed=5, backend=MockIsolate())`
-# digest) — this must never move for the "v1" default, per DESIGN.md.
-PINNED_V1_DEFAULT_DIGEST = "fe3621d4d446a76996454ba428f05c760cccfb598eab1ea069e13d3c1c0b5904"
+# Pinned before this session's `ecology_version` switch was added — this
+# must never move *from that config-plumbing change alone*, per DESIGN.md.
+# Re-pinned 2026-07-15 after a genuine engine fix (affordable.py `_cap`
+# starvation bug — see FINDINGS GL-49 addendum): the old cap logic could
+# silently drop pipeline-critical `call` actions once a `read`/`write`
+# candidate pile (e.g. accumulated workspace artifacts) exceeded
+# `AFFORDABLE_CAP`, which also affected v1. The fix legitimately changes
+# v1 output; this pin now anchors the *corrected* behavior.
+PINNED_V1_DEFAULT_DIGEST = "170bfe527fdb8fe326799790c68e6947449dfa861415703896806dd7e9e1bb07"
 
 
 def test_ecology_path_for_version_v1_is_default_substrate_path():

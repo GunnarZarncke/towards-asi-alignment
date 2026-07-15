@@ -29,6 +29,11 @@
     "tests/test_phase7_calibration.py::test_run_dose_response_reports_referee_eai_and_ci95": 18.0,
     "tests/test_phase8_selection.py::test_smoke_selection_loop_two_generations": 8.0,
     "tests/test_phase8_selection.py::test_run_member_campaign_reports_episode_metrics": 4.0,
-    "tests/test_ecology_complexity.py::test_run_complexity_check_full_pipeline_on_v1_shaped_fixture": 32.0
+    "tests/test_ecology_complexity.py::test_run_complexity_check_full_pipeline_on_v1_shaped_fixture": 32.0,
+    "tests/test_slice_b_completion.py::test_c5_v3_on_unified_reference_battery": 18.0,
+    "tests/test_slice_b_completion.py::test_integrated_reference_co_exercises_a_e_b": 8.0,
+    "tests/test_slice_b_completion.py::test_uad_live_coupling_recovers_governed_channel_unit": 8.0,
+    "tests/test_slice_c_scorecard.py::test_reference_battery_reports_c1_v3_not_exercised": 18.0,
+    "tests/test_slice_c_scorecard.py::test_v3_episode_attaches_principal_scorecard_referee_artifact": 6.0
   }
 }

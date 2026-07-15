@@ -152,11 +152,30 @@ def _validate_structure(data: dict) -> None:
             raise SubstrateError(f"contention missing {key!r}")
     if is_v3_shaped_ecology(data):
         from .institutional_compiler import validate_v3_resource_flows
+        from .pressure_coupling import validate_pressure_coupling
 
         validate_v3_resource_flows(data)
         for section in ("principals", "conflicts", "mechanisms"):
             if section not in data:
                 raise SubstrateError(f"v3 ecology missing required key {section!r}")
+        if "pressure_coupling" in data:
+            validate_pressure_coupling(data["pressure_coupling"])
+        if "reference_mechanism_exercise" in data:
+            from .mechanism_exercise import validate_reference_mechanism_exercise
+
+            validate_reference_mechanism_exercise(data["reference_mechanism_exercise"])
+        from ..oracle_only.principal_scorecard import (
+            validate_v3_conflicts,
+            validate_v3_principals,
+        )
+
+        validate_v3_principals(data["principals"])
+        principal_ids = {
+            str(p["id"])
+            for p in data["principals"]
+            if isinstance(p, dict) and p.get("id")
+        }
+        validate_v3_conflicts(data["conflicts"], principal_ids=principal_ids)
     if is_v2_shaped_ecology(data) or is_v3_shaped_ecology(data):
         from .ecology_agents import role_population_from_ecology
         from .exogenous_workload import validate_exogenous_workload

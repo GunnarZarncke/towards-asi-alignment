@@ -44,7 +44,14 @@ at PLAN_v3 slice B (FINDINGS GL-45): `mechanisms` compile to enforced
 channel/artifact/transfer ACLs and vote specs (`VoteService`,
 `PipelineStep.requires_vote`). `graded-lab-0.22.0` at PLAN_v3 slice F
 (FINDINGS GL-46): `ProgramMap` validation/expansion, heterogeneous v3
-`role_population`, reference roster wired through `run_episode`. Hand-bumped when oracle,
+`role_population`, reference roster wired through `run_episode`.
+`graded-lab-0.23.0` at PLAN_v3 slice E (FINDINGS GL-47): v3
+`pressure_coupling` accumulates from named oracle drivers and injects
+`incident_review` tasks into per-role queues (replaces v2 exogenous
+Poisson/periodic for v3 ecologies). `graded-lab-0.24.0` at PLAN_v3 slice B
+completion (FINDINGS GL-48): ecology ``reference_mechanism_exercise`` host merge
+on ``WEAK_AGENT`` (GL-48b: removed parallel ``V3_MECHANISM_REFERENCE`` path).
+Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
 
@@ -874,76 +881,64 @@ before integration; referee code unchanged at import time.
 
 ---
 
-## Phase 7a UAD over primitive traces
+## Phase 7a UAD over primitive traces (GL-51 revision)
 
-**Trace encoding** (`oracle_only/primitive_trace.py`): discretize full-tier
-`primitive_log` into per-actor action-code series (`shallow` / `deep` depth).
+**Criterion (proper UAD).** A unit is a cluster of observables admitting
+roles \(I,S,A\) with small blanket residual
+\(J(C)=\mathrm{I}(I_{t+1};E_{t+1}\mid S_t,A_t)\) (UAD paper / ch07 /
+`agency-detect`). Graded-lab approximates observables by per-actor
+action-code series (`primitive_trace.py`).
 
-**Passive discovery** (`oracle_only/uad_passive.py`): co-semantic-step
-Jaccard, co-activity on successful `communicate`, and communicate-pair edges
-merged by union-find. Defaults: `min_jaccard=0.5`.
+**Quarantined (not UAD).** Pre-GL-51 tick-Jaccard / communicate-edge
+union-find and mutual freeze-AND merge live in
+`oracle_only/attic/` (`coordination_heuristic.py`,
+`freeze_and_merge.py`). They never estimated \(J(C)\) and are retained
+only for historical regression (`tests/attic/`, not collected by default).
 
-**Intervention** (`intervention_probes.py`, `intervention_diff.py`,
-`uad_intervention.py`): episode-level `program_freeze` probes with clean /
-intervened / honest-twin triples; directed compensation matrix;
-mutual-threshold unit merge (`min_compensation=0.15`).
+**Passive discovery** (`uad_discovery.py`; shim `uad_passive.py`):
+lag-max **conditional** MI between actor symbol series given the joint
+symbol of all other active actors, tested against a circular-shift
+permutation null (lab-sim attic `uad_cmi` / LS-26 lesson). Defaults
+(pre-registered GL-51): `max_lag=3`, `n_shifts=40`, `null_quantile=0.95`,
+`min_effect_bits=0.3` (conservative floor that keeps `serial_pipeline`
+all-singletons; weaker rest-conditioned edges such as committee
+reviewers are recovered by access-UAD). Optional `require_blanket` runs
+`uad_blanket.blanket_residual` on candidate pairs.
 
-Two axes, independent of each other (see FINDINGS GL-11):
+**Access / handle-UAD** (`uad_handles.py`; shim `uad_intervention.py`):
+`program_freeze` probes build a directed `dependency_score` matrix
+(reuse of `intervention_probes` / `intervention_diff`). Pair merge rule
+(pre-registered GL-51, **not** mutual-AND):
 
-- `candidate_source`: `"passive"` (default; only probes pairs passive
-  already flagged — cheap, cannot recover a passive miss) vs
-  `"all_pairs"` (standalone; probes every actor pair, one extra
-  episode-triple per actor).
-- `score_kind`: `"compensation"` (default; `ActorDiffSummary.
-  compensation_score`, rewards only *novel* codes appearing under
-  intervention — noise-dependent on the twin control's incidental draws
-  for the "B silently fails to advance" case) vs `"dependency"`
-  (`max(compensation_score, missing_score)`, also credits baseline codes
-  the intervened run never reaches).
+1. **Mutual** distinctive dependence (≥ `min_dependency=0.15` both ways,
+   each clearing `specificity_ratio=1.25` vs other targets) — committees /
+   sync pairs.
+2. **One-way** handoff: unique above-threshold target from a non-cascade
+   hub, with higher floor `min_one_way_dependency=0.60` (rejects
+   incidental ~0.55 softmax couplings; accepts ~0.67 write/read
+   handoffs).
+3. Optional seed from passive CMI edges (`seed_from_passive=True`).
 
-`candidate_source="all_pairs"` + `score_kind="dependency"` is required to
-recover a unit passive missed entirely; it is not the default because it
-is more expensive and, per FINDINGS GL-12, can over-merge bystanders that
-are causally coupled through shared resource contention (e.g. a capacity
-admin) rather than joint decision-making.
+Compatibility kwargs `candidate_source` / `score_kind` on
+`discovered_units_intervention` map to handle-UAD only (no AND-merge path).
 
-**Golden ecologies** (`harness/ecology.py`): `committee_config` (two reviewers
-on shared lab-channel activity + peer_review), `communicator_pair_config`,
-`engineer_comm_sync_config`, `cross_role_comm_sync_config` (communicate-only
-sync fixtures — renamed 2026-07-13 from `engineer_pair`/`dm_pair`), and
-`signal_handoff_pair_config` (write/read-only handoff, no `communicate` —
-the standalone-intervention regression fixture). Oracle `units` on
-`EpisodeConfig` is ground truth for tests only; `resolved_partition()` adds
-singletons for ungrouped actors.
+**Golden ecologies** (`harness/ecology.py`): unchanged fixtures;
+`resolved_partition()` remains oracle ground truth for tests. Roster
+always from `boundary_streams` (idle `noop` actors).
 
-**Partition scoring** (`uad_partition.full_partition_match`): discovered
-clusters must match oracle composites **and** singletons exactly. Co-activity
-merges are gated: both actors must have communicate_fraction ≥ 0.5 so
-incidental lab status pings in the default softmax ecology do not spuriously
-merge pipeline roles. The actor roster is always taken from
-`boundary_streams`, never from `primitive_log` actors alone — a `noop`
-actor never emits a primitive and would otherwise vanish from the
-discovered partition rather than surface as a singleton (FINDINGS GL-11).
+**Battery:** `tests/test_uad_*.py` adapted to CMI + handle criteria.
+Committee and write/read handoffs are handle-recovered; `three_way_nod`
+remains a registered pairwise miss (no admin over-merge under the new
+rule). Declared ACL channel membership ≠ behavioral unit under one-shot
+mechanism exercise — see slice-B xfail / FINDINGS GL-51.
 
-**Battery** (`tests/test_uad_ecology_partition.py`, 18 tests): passive and
-intervention paths on default softmax, committee, communicator pair,
-serial pipeline, and the two comm-sync ecologies, plus the
-`signal_handoff_pair` standalone-intervention regression and the
-`boundary_streams` roster regression.
+**Phase 7a-blind** scenarios re-scored under GL-51 criteria; GL-11/GL-12
+text in FINDINGS describes the *heuristic* path and is superseded for
+claim-strength by GL-51.
 
-**Phase 7a-blind** (`tests/test_uad_blind_scenarios.py`,
-`graded_lab/harness/blind_scenarios_v1.md`, FINDINGS GL-12): a subagent
-blinded to this section, `oracle_only/`, and prior FINDINGS designed 4
-scenarios from the primitive API alone. 2 were not implementable in this
-substrate (single global `shared_model_id`; single-pass pipeline engine)
-and are reported as translation mismatches, not run. Of the 2 implemented,
-one (`watched_flag`) validates the standalone-dependency fix exactly;
-the other (`three_way_nod`, a 3-way mutual barrier) is a genuine miss for
-both methods, and the intervention miss is itself informative (it detects
-the trio but over-merges a resource-coupled bystander).
-
-**Not in scope:** discrete MI/CMI ecology-BIQ estimators (Phase 7b),
-calibration battery (Phase 7c).
+**Not in scope yet:** full variable-level S/A/I discovery as in
+`agency-detect` (multi-variable-per-agent), multi-way blanket hypotheses
+for 3+ barriers, production port of `uad_handles` toy posterior scoring.
 
 ---
 
@@ -1562,19 +1557,17 @@ channel, or any v1/v2 ecology, which compiles no mechanisms at all) are
 (`VoteService`), `world.py` (`_execute_primitive`), `pipeline_engine.py`
 (`requires_vote` gate), `pipeline_spec.py` (`PipelineStep.requires_vote`).
 
-**Claim scope (GL-45).** Wiring smoke test only, same posture as slice A:
-proves the compiler produces correct ACLs/vote specs and the dispatch layer
-enforces them (member allowed, non-member denied, vote quorum/timeout
-resolve correctly) on the slice A reference fixture (which already declares
-all four mechanism kinds). **Not** an agent-driven exercise — no reference
-agent program yet casts a vote or targets a governed channel/artifact by
-name; that (and the C5-v3 "≥3 kinds exercised in reference episodes"
-criterion) is deferred until slice B's build-order gate is revisited (after
-F and E). Slice B landed **out of order** (commit `29b1a72`); see
-`PLAN_v3.md` § Build order "Slice B completion checklist."
+**Claim scope (GL-45 wiring; GL-48/GL-48b reference opt-in gate).**
+Compiler + dispatch enforcement plus **ecology-declared**
+``reference_mechanism_exercise`` merged into ``WEAK_AGENT`` profiles (same
+program keys as before — ``walk_pipeline`` / ``reviewer_peer_review`` /
+``honest_twin`` call ``_try_governed_mechanism`` when profile present).
+C5-v3 runs on the unified reference battery when the ecology opts in.
+**Not claimable:** grower ``ProgramMap`` genotypes or default agents exercise
+Part B; ordinary unbound ``lab`` / path-only I/O unchanged (slice D).
 
-**PLAN_v3 slice F — `ProgramMap` + heterogeneous `role_population` (in
-progress, `graded-lab-0.21.0+`):**
+**PLAN_v3 slice F — `ProgramMap` + heterogeneous `role_population`
+(implemented, GL-46, `graded-lab-0.22.0`):**
 
 Frozen bins (2026-07-15): `SCORE_LEVELS` −3…+3 step 0.5 (13 values);
 `DELTA_LEVELS` −3…+3 integer; `TEMPERATURE_BINS` (10 values, 0.05…1.0);
@@ -1592,6 +1585,59 @@ overrides (list length = headcount). Preset keys expand to canonical maps in
 genotypes via ``run_episode(..., behavior_profiles=...)``. Per-actor C2
 reachability is reported in ``ComplexityReport.details`` as
 ``c2_per_actor_reachable_principals`` (diagnostic only in v3.0).
+
+**PLAN_v3 slice C — principal scorecard + C1-v3 measured tension
+(implemented, GL-49, `graded-lab-0.25.0`):**
+
+Frozen objective-metric vocabulary (grower picks from this list only):
+`deploy_rate`, `bearer_harm`, `field_incident_rate`, `release_latency`,
+`compute_burn`, `review_thoroughness`. Legacy v2 names accepted at
+validation via alias map in `oracle_only/principal_scorecard.py`
+(e.g. `release_cadence` → `deploy_rate`, `operating_burn_rate` →
+`compute_burn`).
+
+Operational definitions (referee plane, per episode):
+- `deploy_rate`: `deploy_count / T`
+- `bearer_harm`: integrated Tier-I harm / `T`
+- `field_incident_rate`: sum(`oracle.incident_samples`) / `T` when present,
+  else `bearer_harm / T`
+- `release_latency`: mean ticks from successful `build` to successful
+  `deploy` (or `T` if none)
+- `compute_burn`: sum actor compute spend / `T`
+- `review_thoroughness`: min(1, (`peer_review` + `compliance_signoff`
+  ok counts) / (2 × ok `build` count))
+
+Referee attachment: `EpisodeResult.referee_artifacts["principal_scorecard"]`
+on v3 ecologies only; never in isolate observations.
+
+**C1-v3 measured tension** (v3 checker extension, not a grower-visible
+pass/fail bit in v3.0): for each declared conflict pair, Pearson *r* of
+oriented principal scores across the reference battery must satisfy
+``r <= -0.15`` when both series have variance; zero-variance pairs report
+``not_exercised`` (failure, not silent pass). Hand-built opposing series
+validated in `tests/test_slice_c_scorecard.py`. Integrated reference
+fixture now passes on all 5 conflicts (`r ≈ -0.29` to `-0.31`) as of
+`graded-lab-0.25.1`, after fixing the affordable-set starvation bug that
+had been silently zeroing `deploy_rate`/`bearer_harm` on this fixture (see
+FINDINGS GL-50).
+
+**GoalWeights from funding shares:** deferred **out of v3.0** (design gate).
+
+**PLAN_v3 slice E — feedback-coupled `pressure_coupling` (implemented,
+GL-47, `graded-lab-0.23.0`):**
+
+Frozen driver vocabulary (2026-07-15): `deployed_model_count`,
+`mean_deployed_capability`, `integrated_field_harm_rate`,
+`active_user_archetype_mass`, `pending_access_queue_depth`,
+`eval_draws_outstanding`. Task kind minimum: `incident_review` (synthesized
+incident artifact + response write). Accumulator update each tick:
+``acc *= (1 - decay_per_tick)`` then ``acc += gain × driver_value``;
+default ``decay_per_tick = 0.05``; on threshold crossing inject
+``count`` tasks and reset accumulator to 0. Unserviced tasks expire after
+``expiry_ticks``; ``expired_task_count`` and driver snapshots are
+referee-plane only (`EpisodeResult.pressure_diagnostics`). v2
+``exogenous_workload`` remains for v2 ecologies only; v3 rejects pure
+Poisson/periodic triggers without a driver.
 
 **V2-2b additive fields (GL-40, `CODE_VERSION` `graded-lab-0.19.0`):**
 

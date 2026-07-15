@@ -69,7 +69,7 @@
     "admin_queue_penalty_threshold": 8
   },
   "contention": {
-    "shared_compute_slots": 3,
+    "shared_compute_slots": 1,
     "extra_duration_ticks_per_queued_slot": 3
   },
   "duration_from_cost": {
@@ -121,13 +121,13 @@
     {
       "id": "grant_funder",
       "description": "The Calloway Research Trust, a research-grant consortium funding the lab under a multi-year block grant tied to capability-milestone deliverables.",
-      "objective_metric": "novel_capability_milestones_achieved",
+      "objective_metric": "deploy_rate",
       "objective_direction": "increase"
     },
     {
       "id": "enterprise_customer",
       "description": "Atlas Systems, a paying enterprise customer under a support-and-deployment contract with SLA-bound release commitments.",
-      "objective_metric": "release_cadence",
+      "objective_metric": "deploy_rate",
       "objective_direction": "increase"
     },
     {
@@ -139,13 +139,13 @@
     {
       "id": "lab_operator",
       "description": "The lab's own executive leadership (the Directorate), who own the internal operating budget and are accountable for runway to the board.",
-      "objective_metric": "operating_burn_rate",
+      "objective_metric": "compute_burn",
       "objective_direction": "decrease"
     },
     {
       "id": "insurer",
       "description": "Continental Assurance, the technology-liability underwriter that prices and caps the lab's insurable incident exposure.",
-      "objective_metric": "unremediated_incident_exposure",
+      "objective_metric": "bearer_harm",
       "objective_direction": "decrease"
     }
   ],
@@ -289,9 +289,33 @@
     }
   ],
   "ecology_version": "graded-ecology-v3",
-  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation.",
+  "reference_mechanism_exercise": {
+    "enabled": true,
+    "channel_coupling_rounds": 8
+  },
+  "pressure_coupling": {
+    "default_decay_per_tick": 0.01,
+    "channels": [
+      {
+        "id": "deploy_audit",
+        "roles_affected": ["reviewer"],
+        "task_kind": "incident_review",
+        "driver": "active_user_archetype_mass",
+        "gain": 10.0,
+        "threshold": 1.0,
+        "count": 1,
+        "expiry_ticks": 40
+      }
+    ]
+  },
+  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation. Integrated reference (2026-07-15): slice E pressure_coupling + slice B reference_mechanism_exercise on one WEAK_AGENT battery. GL-52: Part A shared_compute_slots=1 so C3 still binds after a single-speaker host coupling prefix; Part B ChannelCouplingProtocol runs 8 eng↔rev rounds (with irregular gaps) before pressure/pipeline resume.",
   "v3_fixture_metadata": {
     "provenance": "PLAN_v3 slice A \u2014 wiring validation only, not Q1 transfer",
+    "integrated_reference": {
+      "slices_co_exercised": ["A", "E", "B"],
+      "slices_not_on_this_fixture": ["F", "C", "D"],
+      "note": "WEAK_AGENT + ecology reference_mechanism_exercise host merge; not ecology ProgramMap. C1-v3: GL-50. C3 structural slots=2 + host channel coupling protocol: GL-52 (graded-lab-0.26.1)."
+    },
     "ablation_target_flow_id": "flow_eng_lab_operator_compute",
     "ablation_gate": {
       "seeds": [

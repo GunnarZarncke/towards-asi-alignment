@@ -2885,6 +2885,346 @@ v1 digest pin: all green.
 
 - `CODE_VERSION` **`graded-lab-0.22.0`**.
 
-**Next (build order).** Slice E (feedback-coupled pressure), then finish slice B
-checklist (ACL overhead, agent exercise, C5-v3, UAD live-coupling).
+**Next (build order).** Slice C (principal scorecard + measured tension).
+
+---
+
+### GL-48b — Slice B scope correction: unified reference battery (`graded-lab-0.24.1`)
+
+**Trigger.** Review feedback (2026-07-15): C5-v3 was exercised only by a parallel
+``V3_MECHANISM_REFERENCE`` roster, not ecology programs; no integrated A+F+E+B
+fixture; parallel ``governed_*`` paths; mechanism load-bearing proven only on
+special reference, while ordinary agents ignore Part B.
+
+**Correction.**
+
+- Removed ``V3_MECHANISM_REFERENCE``, ``governed_*`` program keys, and
+  ``run_mechanism_reference_episodes`` / ``mechanism_programs_and_profiles``.
+- Added ecology field ``reference_mechanism_exercise`` (validated on v3); host
+  merges targets via ``programs_and_profiles_for_roster(..., ecology_data=)``.
+- ``walk_pipeline`` / ``reviewer_peer_review`` / ``honest_twin`` invoke
+  ``_try_governed_mechanism`` when ``behavior_profile.mechanism_exercise`` present.
+- C5-v3 uses **same** ``run_reference_episodes`` results as C3/C4 when ecology
+  opts in; skipped (`None`) otherwise.
+- Integrated reference fixture: ``pressure_coupling`` + ``reference_mechanism_exercise``
+  + ``v3_fixture_metadata.integrated_reference`` (A+E+B on one battery; F/C/D not claimed).
+
+**Claim scope after correction.** Slice B engineering gate only — not "Part B is
+load-bearing for default agents." That remains slice D.
+
+- `CODE_VERSION` **`graded-lab-0.24.1`**.
+
+---
+
+### GL-49 — PLAN_v3 slice C: principal scorecard + C1-v3 measured tension (`graded-lab-0.25.0`)
+
+**Trigger.** Build-order slice C after slice B scope correction (`PLAN_v3.md` § Slice C).
+
+**Implementation.**
+
+- `oracle_only/principal_scorecard.py`: frozen objective-metric vocabulary + legacy
+  aliases; v3 principal/conflict validation; per-episode metric extraction;
+  oriented principal scores; `check_c1_v3` (Pearson ``r <= -0.15`` when variance
+  present; ``not_exercised`` otherwise).
+- `substrate.py`: validate v3 ``principals`` / ``conflicts`` objective metrics on load.
+- `world.py`: attach ``referee_artifacts["principal_scorecard"]`` on v3 episodes.
+- `ecology_complexity.py`: ``c1_v3_measured_tension`` + ``details["c1_v3"]`` on v3 checks.
+- Reference fixture: canonical objective metric names (`deploy_rate`, `compute_burn`, …).
+- `tests/test_slice_c_scorecard.py` (8 tests): alias validation, hand-built opposing
+  series pass, flat series ``not_exercised``, reference battery honest failure,
+  referee-plane attachment.
+
+**Design gate — GoalWeights from funding shares:** **out of v3.0** (not implemented).
+
+**Reportable negative — corrected 2026-07-15 (see user question "why does the
+integrated battery fail"):** the initial framing above ("not_exercised... a
+reportable finding") understated this. Traced to root cause: `deploy_rate`
+and `bearer_harm` are **exactly 0.0 in every reference-battery episode**, not
+merely low-variance. Two independent causes, either sufficient alone:
+(1) `reference_mechanism_exercise`'s message-channel round-trips write a new
+artifact per exchange with no dedup, and by tick ~8 the resulting `read`
+candidates exceed `affordable.AFFORDABLE_CAP = 24`, crowding every `call`
+action (including `intake`/`build` pipeline triggers) out of the priority-
+truncated candidate list — `eng1` executes zero further primitives for the
+rest of the episode; (2) the fixture's `pressure_coupling.deploy_audit`
+channel has `gain=10.0 × driver_value=7.0 = 70`, 70x its `threshold=1.0`, so
+it fires and injects a task on **every** tick — `rev1` never executes a
+single primitive across the whole episode. Consequence not previously
+checked: this same fixture now also fails **C3** and **C4** under the
+standard checker (`run_complexity_check`), which passed cleanly
+(`deploy_rate=0.65`) before slice E/B added these fields — not caught at
+landing time because slice E/B's own tests use custom episode configs, not
+the standard reference battery. Open for slice D or a dedicated fix: either
+recalibrate `pressure_coupling` gain/threshold for this fixture, cap/dedupe
+the `read`-candidate list independent of `call`/`write`, or reserve
+affordable-set slots for pipeline-critical actions.
+
+**Fixed — see GL-50 below** for the actual root cause (two bugs, not one),
+the fix, verification (`C1-v3` now passes with real measured tension), and
+the fix's substantial blast radius on UAD detection tests elsewhere in this
+suite.
+
+**Verification.** Slice C tests green; slice B/E regression unchanged.
+
+- `CODE_VERSION` **`graded-lab-0.25.0`**.
+
+**Next (build order).** Slice D (criteria freeze + load-bearing Part B for default agents).
+
+---
+
+**Trigger.** User: "finish slice B" — close the four-item checklist deferred
+after out-of-order GL-45 wiring (after slices F and E).
+
+**Implementation.**
+
+- `mechanism_exercise.py`: exercise target selection, affordable governed
+  primitives, `kinds_exercised_in_log`, `check_c5_v3`,
+  `live_coupling_ground_truth_units`.
+- `programs.py`: `governed_walk_pipeline`, `governed_reviewer_peer_review`,
+  `governed_honest_twin` (mechanism steps before base weak-agent behavior).
+- `affordable.py` + `world.py`: surface governed mechanism primitives when
+  `behavior_profile.mechanism_exercise` is present; write governed artifact
+  paths under `artifacts/`.
+- `calibration.py`: `V3_MECHANISM_REFERENCE` agent type.
+- `ecology_agents.py`: `mechanism_programs_and_profiles`.
+- `ecology_complexity.py`: `run_mechanism_reference_episodes`, `c5_v3` in
+  `run_complexity_check` for v3 ecologies.
+- `tests/test_slice_b_completion.py` (4 tests): four kinds exercised, C5-v3
+  gate, UAD live coupling, ACL overhead < 10%.
+
+**Verification.** Slice B completion tests + existing 18 mechanism wiring
+tests + ecology complexity + slice E regression: all green.
+
+- `CODE_VERSION` **`graded-lab-0.24.0`**.
+
+**Next (build order).** Slice C.
+
+---
+
+### GL-47 — PLAN_v3 slice E: feedback-coupled pressure + task injection
+
+**Trigger.** Build-order slice E after slice F (`PLAN_v3.md` § Slice E).
+
+**Implementation (`graded-lab-0.23.0`):**
+
+- `pressure_coupling.py`: closed driver vocabulary, channel parsing,
+  per-role task queues, linear decay + threshold injection,
+  `compute_pressure_drivers()` from oracle + permission queue.
+- `affordable.py`: injected `incident_review` write primitives for pending tasks.
+- `world.py`: v3-only engine tick after `oracle.tick()`; task completion on
+  response write; `injected` / `injected_task_id` on primitive log;
+  `EpisodeResult.pressure_diagnostics`.
+- `workspace.py`: `write_at_path` for deterministic injected artifact paths.
+- `substrate.py`: optional `pressure_coupling` validation on v3 ecologies.
+- `tests/test_slice_e_pressure_coupling.py` (7 tests): parse/accumulator unit,
+  deploy-driver gate (weak agent > noop injections), ignore-everything sanity,
+  expiry, v1 unchanged.
+
+**Claim scope.** Minimum viable slice E: deterministic driver coupling and
+task injection wiring. Optional v2 cost-multiplier on channel fire not
+implemented; secondary effect deferred.
+
+**Verification.** Slice E tests green; v1 episode `pressure_diagnostics`
+remains `None`.
+
+- `CODE_VERSION` **`graded-lab-0.23.0`**.
+
+**Next (build order).** Slice B completion checklist, then slice C.
+
+---
+
+### GL-50 — affordable-set starvation bug: root cause + fix, and its blast radius
+
+**Trigger.** User question: "why does the integrated reference battery fail?
+was this expected?" (following GL-49's "C1-v3 reports `not_exercised`,
+reportable finding" note, which understated it).
+
+**Root cause (two independent bugs, either sufficient alone to zero
+`deploy_rate` on the slice-A/E/B integrated fixture):**
+
+1. `affordable.py`'s `build_affordable_set()` offers a `read` candidate for
+   every workspace artifact path, unbounded, every tick; the whole candidate
+   list is then truncated to `AFFORDABLE_CAP = 24` by a fixed kind-priority
+   order that ranked `read` (priority 2) *ahead of* `call` (3), `write` (4),
+   `communicate` (5). Any program that repeats a `write`/`communicate` to a
+   uniquely-counted artifact path (e.g. the generic `notes/status` write, or
+   a message-channel exchange) accumulates workspace artifacts without
+   bound, and once the pile exceeds ~22, `call` actions — pipeline triggers,
+   access requests, votes, transfers, i.e. the *only* actions that make
+   governance/pipeline progress — get silently dropped from the affordable
+   set. This is not v3-specific: it reproduces in a pure v1 scenario
+   (`watched_flag_config`, no pressure_coupling/mechanism_exercise) purely
+   from `signal_reader`'s per-tick post-signal `write` accumulating 21+
+   distinct `artifacts/scratch/notes_status__N.json` files over `T=60`.
+2. `programs.py`'s `_try_governed_mechanism()` (slice B): the `channel_id`
+   branch was missing the `done`-tracking guard the artifact/vote/transfer
+   branches already had, despite the function's own docstring ("One-shot
+   governed mechanism steps"). An agent with a channel-exercise target would
+   re-fire the same `communicate` forever, never reaching the artifact
+   write or falling through to base pipeline behavior.
+
+**Fix.** `_cap()` now always reserves all `call` candidates (structurally
+bounded — at most a handful per role per tick) before filling remaining
+budget with the existing cheap-first priority order; `_try_governed_mechanism`
+now marks the channel exercise done after one send, matching the other three
+branches. Both in `graded-lab-0.25.1`.
+
+**Verification on the integrated fixture (20 seeds):** `C4`
+`deploy_rate=0.0→0.7` (real cross-seed variance, was previously a hard
+constant 0.0 for every episode, not merely low-variance as GL-49 implied).
+`C1-v3` now passes on all 5 conflicts with real measured tension
+(`r ≈ −0.29` to `−0.31`, threshold `−0.15`). `C3` remains `False` on this
+fixture — confirmed via the pre-slice-E/B version of the fixture that this
+was *already* `False` before today's session, unrelated to GL-50/GL-49.
+
+**Blast radius — this is shared core logic (`affordable.py`), not v3-only,
+so the fix moved output for every ecology version:**
+
+- Two pinned regression digests (`test_ecology_version.py`,
+  `test_world.py`) — re-pinned with dated comments explaining why.
+- **Three pre-registered UAD (unknown-agent-dependency) tests now fail to
+  recover known ground-truth coupling**
+  (`test_uad_blind_scenarios.py::test_watched_flag_passive_misses_and_intervention_recovers`,
+  `test_uad_ecology_partition.py::test_signal_handoff_pair_needs_standalone_dependency_scoring`,
+  `test_slice_b_completion.py::test_uad_live_coupling_recovers_governed_channel_unit`).
+  Traced precisely: the intervention-based pair (`watched_flag`,
+  `signal_handoff_pair`) has a genuinely **one-directional** dependency
+  (reviewer reacts to engineer's signal; engineer never reads from
+  reviewer) — measured directly: `eng→rev dependency_score = 0.667` (passes
+  threshold `0.15`), `rev→eng = 0.0` (fails). `units_from_compensation_matrix`
+  requires *both* directions to clear the threshold before merging two
+  actors into a unit. Before the GL-50 fix, freezing either actor changed
+  how many artifacts accumulated episode-wide, which — via bug (1) above —
+  silently dropped that actor's own `call` actions inconsistently between
+  frozen/unfrozen runs, producing a *spurious* backward-dependency signal
+  that let the AND-gate pass. The fix correctly removes that confound,
+  exposing that the merge rule cannot detect a genuinely one-directional
+  dependency via this pairwise freeze-probe method alone. The passive
+  (Jaccard-on-timing) test failed for an analogous reason: pre-fix, both
+  `eng1`/`rev1` looped on the mechanism-exercise channel almost every tick
+  (bug (2) above, affecting both roles symmetrically), so their
+  `communicate`-tick sets nearly fully overlapped (Jaccard ≈ 1.0, always
+  detected); post-fix each fires exactly once, at whatever tick it lands on
+  — Jaccard is then all-or-nothing depending on exact tick alignment, and
+  for this seed the two singleton ticks differ.
+- `test_budget_aware_agent.py::test_budget_aware_agent_more_stress_sensitive_than_frozen_agents`
+  (comparison-only, not a pass/fail gate) fails on the same root cause: its
+  design rationale cites FINDINGS GL-16's claim that `STRONG_AGENT`/
+  `WEAK_AGENT` have "~0" deploy-rate range across `carrier_load_scale`.
+  Post-fix, `STRONG_AGENT`'s range is `0.8` (was masked near-zero before,
+  presumably by the same starvation pattern under load) — larger than
+  `BUDGET_AWARE_AGENT`'s `0.3`, contradicting the test's premise.
+
+**Disposition (explicit user decision this session).** Keep the GL-50 fix
+(the corrected behavior is unambiguously more correct: `deploy_rate` should
+not be a silent hard-coded 0.0, and pipeline-critical actions should not be
+starvable by an unrelated artifact pile). Re-pin the two regression digests
+now (done). **Leave the three UAD test failures and the budget-aware-agent
+comparison failure open, undocumented-no-longer** — this note is the record
+— rather than changing UAD merge/detection methodology
+(`uad_intervention.py`, `uad_passive.py`) or FINDINGS GL-16's calibration in
+this session. Two candidate fix directions were scoped but not implemented:
+(a) accept a strong one-directional `missing_score` in
+`units_from_compensation_matrix` even when the reverse direction is ~0;
+(b) add same-channel co-membership as its own passive edge type independent
+of tick-Jaccard. Revisit before citing GL-11/GL-12/GL-16 UAD claims that
+depend on these three tests' current (pre-GL-50) passing status.
+
+- `CODE_VERSION` **`graded-lab-0.25.1`**.
+
+**Next (build order).** Slice D — and, separately, the UAD methodology
+question above should be resolved before slice D's growth protocol relies
+on ground-truth-recovery claims from these three tests.
+
+### GL-51 — Proper UAD + access-UAD replace Phase 7a coordination heuristics (`graded-lab-0.26.0`)
+
+**Trigger.** User audit: graded-lab's "passive UAD" / mutual freeze-AND path
+did not implement Unsupervised Agent Discovery as defined in the UAD paper,
+ch07, and `agency-detect` (Markov-blanket residual \(J(C)\); handle-mediated
+interventions). The Jaccard + AND-merge stack was a coordination heuristic
+that could disagree with proper UAD on directed handoffs and timing-shifted
+coupling (GL-50 blast radius made this concrete).
+
+**What changed.**
+
+1. **Quarantine:** `uad_passive.py` → `attic/coordination_heuristic.py`;
+   mutual-AND `uad_intervention.py` → `attic/freeze_and_merge.py`; historical
+   tests under `tests/attic/` (not collected by default).
+2. **Passive proper UAD** (`uad_discovery.py`): lag-max \(\mathrm{I}(A;B\mid\mathrm{rest})\)
+   with circular-shift null; `min_effect_bits=0.3` (pre-registered before
+   retuning to fixtures). Shims keep the old import names.
+3. **Access-UAD** (`uad_handles.py`): `program_freeze` dependency matrix;
+   merge = mutual distinctive dependence **or** unique one-way handoff
+   (`min_one_way_dependency=0.60`) from a non-cascade hub — not mutual-AND
+   and not absolute OR. Optional seed from passive CMI.
+4. **Blanket residual** (`uad_blanket.py`): role classification + \(J(C)\)
+   diagnostic (optional gate); actor-level codes alone are still a coarse
+   approximation of variable-level agency-detect.
+5. **Tests adapted** to the new criteria. Committee / write-read handoff /
+   watched_flag: handle-recovered. `three_way_nod`: still a registered
+   pairwise miss (no admin over-merge). Declared governed-channel membership
+   under one-shot mechanism exercise: xfail vs behavioral UAD (slice B).
+
+**Claim-strength impact (manuscript).** GL-11 / GL-12 described recovery
+under the *heuristic* detector. Do not cite them as evidence that proper
+UAD / access-UAD behaves that way. Appendix I rows updated; GL-51 is the
+current detector claim. Downstream: calibration's `_uad_partition_match`
+now calls `discovered_units_uad`; Phase 7b/7c unit consumers inherit the
+new partitions. Ecology-BIQ numbers that assumed Jaccard units may need
+re-baselining before manuscript use.
+
+**Open.** Full multi-variable-per-agent S/A/I discovery; multi-way blanket
+hypotheses for 3+ barriers; richer boundary-stream variables so \(J(C)\)
+alone separates pipeline pairs without the one-way floor heuristic.
+
+- `CODE_VERSION` **`graded-lab-0.26.0`**.
+
+### GL-52 — Host channel-coupling protocol + structural C3 (`graded-lab-0.26.1`)
+
+**Trigger.** User: make the exercise produce enough behavioral coupling to
+match declared channel membership; structural C3 fix; document. Mid-flight
+correction: agent-side ping-pong / pressure deferral / special trace codes
+were becoming ad-hoc — retrace to a systematic design.
+
+**Diagnosis of the ad-hoc path.** Trying to force eng–rev recovery *inside*
+the integrated A+E+B episode by stacking isolate turn-taking, observation
+status channels, pressure deferral, and role-specific communicate codes
+coupled three independent concerns (Part A contention, slice E pressure,
+UAD stimulus) and still failed: isolates do not share state; pressure
+preempts channel turns; perfect period-2 alternation ties the circular-shift
+null (`obs = thr = 1.0`).
+
+**Systematic design (two separated concerns).**
+
+1. **Behavioral coupling = host-owned stimulus.**
+   `ChannelCouplingProtocol` in `mechanism_exercise.py`: while active, only
+   the current speaker may `communicate` on the governed channel; all other
+   actors are skipped (idle in the UAD trace); irregular post-turn gaps
+   break period-2 shift symmetry; pressure and ordinary affordances resume
+   after completion. Agents only take afforded actions (no turn counters).
+   Referee artifact: `channel_coupling_protocol`.
+2. **Live-coupling gate = effect-size on the coupling window.**
+   `coupling_stimulus_recovered`: lag-max \(\mathrm{I}(A;B\mid\mathrm{rest})
+   \ge \texttt{min\_effect\_bits}\) for declared members on the protocol
+   window. Not the open-discovery shift-null (seed-flaky on short designed
+   stimuli). Full-episode UAD remains a separate transfer question.
+3. **C3 = Part A geometry only.**
+   `shared_compute_slots: 1` on the four-actor reference fixture. Sweep:
+   slots=2 passes without coupling but fails with the single-speaker prefix
+   (dilutes `action_contention_fraction` below 0.05); slots=1 passes with
+   and without coupling. Do not tune C3 via mechanism-exercise gymnastics.
+
+**Rejected approaches (recorded).** Agent-local exchange counts;
+`mechanism_exercise_status` observation channels; deferring pressure only
+for eng/rev; special `_MECHANISM_CHANNEL_ENG/REV` trace codes; requiring
+full-episode cluster equality under shift-null discovery.
+
+**Verification.** Slice B/C tests green; C3 on integrated reference battery
+passes; coupling gate recovers eng–rev CMI on the protocol window.
+
+- `CODE_VERSION` **`graded-lab-0.26.1`**.
+
+**Next.** Slice D criteria freeze (C1-v3/C3/C4/C5-v3 now have live baselines
+on the integrated fixture). Re-baseline calibration `uad_partition_match` /
+ecology-BIQ under GL-51 partitions remains open from GL-51.
 

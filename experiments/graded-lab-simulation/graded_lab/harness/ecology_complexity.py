@@ -26,6 +26,11 @@ from ..world_visible.ecology_agents import (
     programs_and_profiles_for_roster,
     reference_roster_from_ecology,
 )
+from ..oracle_only.principal_scorecard import check_c1_v3
+from ..world_visible.mechanism_exercise import (
+    check_c5_v3,
+    reference_mechanism_exercise_targets,
+)
 from ..world_visible.substrate import V2_ECOLOGY_PATH, load_substrate, is_v3_shaped_ecology
 from ..world_visible.world import EpisodeResult, default_lab_config, run_episode
 
@@ -63,6 +68,10 @@ class ComplexityReport:
     c3_contention_liveness: bool
     c4_behavioral_non_degeneracy: bool
     c5_mechanism_diversity: bool
+    # PLAN_v3 slice B completion: exercised mechanism kinds (v3 only).
+    c5_v3_mechanisms_exercised: bool | None = None
+    # PLAN_v3 slice C: measured principal tension (v3 only).
+    c1_v3_measured_tension: bool | None = None
     # C2 is the one criterion whose *result* detail (not internals) the
     # grower sees between rounds, per the blinding map / DESIGN.md.
     c2_failing_roles: list[str] = field(default_factory=list)
@@ -263,7 +272,7 @@ def run_reference_episodes(
     ecology_data = load_substrate(ecology_path).data
     cfg = _reference_episode_config(ecology_data, ecology_path=ecology_path)
     roster = reference_roster_from_ecology(ecology_data, agent_type=WEAK_AGENT, temperature=0.35)
-    programs, profiles = programs_and_profiles_for_roster(roster)
+    programs, profiles = programs_and_profiles_for_roster(roster, ecology_data=ecology_data)
     results: list[EpisodeResult] = []
     for i, seed in enumerate(seeds):
         if progress:
@@ -335,20 +344,36 @@ def run_complexity_check(
     c3_passed, c3_details = check_c3(results)
     c4_passed, c4_details = check_c4(results)
 
+    c5_v3_passed: bool | None = None
+    c5_v3_details: dict[str, Any] = {}
+    c1_v3_passed: bool | None = None
+    c1_v3_details: dict[str, Any] = {}
+    if is_v3_shaped_ecology(data):
+        c1_v3_passed, c1_v3_details = check_c1_v3(data, results)
+        roster = reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
+        if reference_mechanism_exercise_targets(data, roster) is not None:
+            c5_v3_passed, c5_v3_details = check_c5_v3(data, results)
+        else:
+            c5_v3_details = {"skipped": "ecology missing reference_mechanism_exercise"}
+
     return ComplexityReport(
         c1_principal_plurality=c1_passed,
         c2_incentive_coupling=c2_passed,
         c3_contention_liveness=c3_passed,
         c4_behavioral_non_degeneracy=c4_passed,
         c5_mechanism_diversity=c5_passed,
+        c5_v3_mechanisms_exercised=c5_v3_passed,
+        c1_v3_measured_tension=c1_v3_passed,
         c2_failing_roles=c2_failing_roles,
         details={
             "c1": c1_details,
+            "c1_v3": c1_v3_details,
             "c2_failing_roles": c2_failing_roles,
             "c2_per_actor_reachable_principals": per_actor_c2,
             "c3": c3_details,
             "c4": c4_details,
             "c5": c5_details,
+            "c5_v3": c5_v3_details,
         },
     )
 

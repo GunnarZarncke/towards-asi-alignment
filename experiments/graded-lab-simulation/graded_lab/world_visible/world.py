@@ -22,6 +22,7 @@ from .affordable import (
 )
 from .carrier import CarrierLedger, CarrierStatus
 from .config import AgentConfig, EpisodeConfig, GoalWeights
+from .mechanism_exercise import ChannelCouplingProtocol
 from .observation import ObservationProjector
 from .pipeline_engine import PipelineEngine, StepResult
 from .pipeline_spec import load_spec
@@ -29,6 +30,13 @@ from .primitives import PrimitiveAction, primitive_cost
 from .resource_ledger import ResourceLedger
 from .scheduler import ActionScheduler
 from .exogenous_workload import ExogenousWorkloadEngine
+from .pressure_coupling import (
+    PressureCouplingEngine,
+    compute_pressure_drivers,
+    parse_pressure_coupling,
+    task_id_for_action,
+    try_complete_injected_task,
+)
 from .institutional_compiler import RuntimeEcology, compile_ecology
 from .substrate import (
     ecology_path_for_version,
@@ -66,6 +74,8 @@ class EpisodeResult:
     # ``cfg.record_contention`` was set — additive, no existing caller
     # is affected.
     contention_diagnostics: dict[str, int] | None = None
+    # PLAN_v3 slice E: referee-only pressure/task injection diagnostics.
+    pressure_diagnostics: dict[str, object] | None = None
 
 
 def default_lab_config() -> EpisodeConfig:
@@ -189,7 +199,10 @@ def _execute_primitive(
                 return {"status": "denied", "reason": "not_artifact_member"}
         path = str(action.args.get("path", "scratch/note.txt"))
         content = dict(action.args.get("content", {}))
-        rel = workspace.write_artifact("scratch", path.replace("/", "_"), content)
+        if path.startswith("artifacts/"):
+            rel = workspace.write_at_path(path, content)
+        else:
+            rel = workspace.write_artifact("scratch", path.replace("/", "_"), content)
         return {"status": "ok", "payload": {"path": rel}}
 
     if action.kind == "communicate":
@@ -503,6 +516,9 @@ def run_episode(
         raw_workload = substrate_data.get("exogenous_workload")
         if raw_workload is not None:
             workload_engine = ExogenousWorkloadEngine(raw_workload, seed=seed)
+    pressure_engine: PressureCouplingEngine | None = None
+    if is_v3_shaped_ecology(substrate_data):
+        pressure_engine, _ = parse_pressure_coupling(substrate_data.get("pressure_coupling"))
 
     role_by_actor = {agent.actor_id: agent.role for agent in cfg.agents}
     channel_acls = runtime_ecology.channel_acls if runtime_ecology else {}
@@ -511,6 +527,17 @@ def run_episode(
 
     program_map = programs or {a.actor_id: "softmax_optimizer" for a in cfg.agents}
     injected_profiles = behavior_profiles or {}
+    coupling_protocol: ChannelCouplingProtocol | None = None
+    for agent in cfg.agents:
+        profile0 = injected_profiles.get(agent.actor_id) or _behavior_profile_payload(
+            program_map[agent.actor_id]
+        )
+        if isinstance(profile0, dict):
+            coupling_protocol = ChannelCouplingProtocol.from_targets(
+                profile0.get("mechanism_exercise")  # type: ignore[arg-type]
+            )
+            if coupling_protocol is not None:
+                break
     allowances = _allowances_map(cfg, substrate_data, runtime_ecology=runtime_ecology)
     for agent in cfg.agents:
         allow = allowances[agent.actor_id]
@@ -666,21 +693,56 @@ def run_episode(
                     transfer_acls=transfer_acls,
                     vote_service=vote_service,
                 )
+                actor_role = role_by_actor.get(actor_id, "")
+                injected_id: str | None = None
+                if pressure_engine is not None:
+                    pending = pressure_engine.pending_tasks_for_role(actor_role, t=t)
+                    injected_id = task_id_for_action(
+                        action, role=actor_role, pending=pending
+                    )
+                    if outcome.get("status") == "ok" and try_complete_injected_task(
+                        pressure_engine, action, role=actor_role, t=t
+                    ):
+                        outcome = dict(outcome)
+                        outcome["injected_task_completed"] = True
                 last_outcomes[actor_id] = outcome
-                primitive_log.append(
-                    {
-                        "t": t,
-                        "actor_id": actor_id,
-                        "primitive": action.to_dict(),
-                        "observable_state": observable_state,
-                        **outcome,
-                    }
-                )
+                log_entry: dict[str, object] = {
+                    "t": t,
+                    "actor_id": actor_id,
+                    "primitive": action.to_dict(),
+                    "observable_state": observable_state,
+                    **outcome,
+                }
+                if pressure_engine is not None and injected_id is not None:
+                    log_entry["injected"] = True
+                    log_entry["injected_task_id"] = injected_id
+                primitive_log.append(log_entry)
+                if (
+                    coupling_protocol is not None
+                    and outcome.get("status") == "ok"
+                ):
+                    coupling_protocol.note_success(
+                        actor_id=actor_id, action=action, t=t
+                    )
                 mid = _extract_model_id(outcome)
                 if mid:
                     shared_model_id = mid
 
             oracle.tick()
+
+            if pressure_engine is not None and not (
+                coupling_protocol is not None and not coupling_protocol.coupling_complete
+            ):
+                drivers = compute_pressure_drivers(
+                    oracle, permissions, substrate_data=substrate_data
+                )
+                pressure_engine.tick(t, drivers, workspace_writer=ws)
+
+            if (
+                coupling_protocol is not None
+                and coupling_protocol.idle_ticks_remaining > 0
+            ):
+                coupling_protocol.tick_idle()
 
             for agent in cfg.agents:
                 actor_id = agent.actor_id
@@ -713,19 +775,57 @@ def run_episode(
                 res = ledger.actors[actor_id]
                 artifact_paths = tuple(ws.list_files())
                 artifact_sizes = {path: ws.file_size(path) for path in artifact_paths}
-                affordable = build_affordable_set(
-                    actor_id=actor_id,
-                    role=agent.role,
-                    resources=res,
-                    scheduler=scheduler,
-                    engine=engine,
-                    spec=spec,
-                    substrate_data=substrate_data,
-                    artifact_paths=artifact_paths,
-                    artifact_sizes=artifact_sizes,
-                    model_id=shared_model_id,
-                    busy_only=busy,
+                # GL-52: while the host coupling protocol is active, freeze
+                # ordinary affordances (including pressure tasks). The protocol
+                # owns who may speak on the governed channel.
+                protocol_active = (
+                    coupling_protocol is not None and not coupling_protocol.coupling_complete
                 )
+                role_injected: tuple = ()
+                if pressure_engine is not None and not protocol_active:
+                    role_injected = tuple(
+                        pressure_engine.pending_tasks_for_role(agent.role, t=t)
+                    )
+                mech_targets: dict[str, object] | None = None
+                profile_for_mech = injected_profiles.get(actor_id) or _behavior_profile_payload(
+                    program_map[actor_id]
+                )
+                if isinstance(profile_for_mech, dict):
+                    raw_targets = profile_for_mech.get("mechanism_exercise")
+                    if isinstance(raw_targets, dict):
+                        mech_targets = dict(raw_targets)
+                if protocol_active and not busy:
+                    restricted = coupling_protocol.restricted_affordables(
+                        actor_id=actor_id, role=agent.role
+                    )
+                    affordable = list(restricted or [])
+                    if not affordable:
+                        # Non-speaker: no decision tick (idle in the UAD trace).
+                        continue
+                else:
+                    # After a host coupling phase, do not re-offer channel
+                    # communicates (credit already earned); still offer other kinds.
+                    include_channel = coupling_protocol is None
+                    affordable = build_affordable_set(
+                        actor_id=actor_id,
+                        role=agent.role,
+                        resources=res,
+                        scheduler=scheduler,
+                        engine=engine,
+                        spec=spec,
+                        substrate_data=substrate_data,
+                        artifact_paths=artifact_paths,
+                        artifact_sizes=artifact_sizes,
+                        model_id=shared_model_id,
+                        busy_only=busy,
+                        injected_tasks=role_injected,
+                        mechanism_exercise=mech_targets,
+                        channel_acls=channel_acls,
+                        artifact_acls=artifact_acls,
+                        transfer_acls=transfer_acls,
+                        vote_specs=vote_service.specs if vote_service is not None else {},
+                        include_channel=include_channel,
+                    )
                 obs: dict[str, object] = {
                     "t": t,
                     "T": cfg.T,
@@ -759,6 +859,14 @@ def run_episode(
                 boundary_streams[actor_id].append(dict(obs))
                 choice = backend.step(handles[actor_id], obs)
                 last_outcomes[actor_id] = None
+
+                if protocol_active and not busy and affordable:
+                    # Host owns the coupling phase: if the agent declines or
+                    # picks off-menu, take the first restricted action.
+                    if choice is None or not _affordable_contains(
+                        affordable, PrimitiveAction.from_dict(choice)
+                    ):
+                        choice = affordable[0].to_dict()
 
                 if choice is None:
                     continue
@@ -912,7 +1020,7 @@ def run_episode(
             if isinstance(content, dict):
                 referee_artifacts[path] = content
 
-        return EpisodeResult(
+        result = EpisodeResult(
             seed=seed,
             deployed=deploy_count > 0,
             deploy_count=deploy_count,
@@ -939,6 +1047,26 @@ def run_episode(
                 if cfg.record_contention
                 else None
             ),
+            pressure_diagnostics=(
+                {
+                    "injection_log": list(pressure_engine.injection_log),
+                    "expired_task_count": pressure_engine.expired_task_count,
+                    "accumulators": pressure_engine.accumulator_snapshot(),
+                }
+                if pressure_engine is not None
+                else None
+            ),
         )
+        if coupling_protocol is not None:
+            result.referee_artifacts["channel_coupling_protocol"] = (
+                coupling_protocol.diagnostics()
+            )
+        if is_v3_shaped_ecology(substrate_data):
+            from ..oracle_only.principal_scorecard import scorecard_for_episode
+
+            result.referee_artifacts["principal_scorecard"] = scorecard_for_episode(
+                substrate_data, result
+            )
+        return result
     finally:
         ws.cleanup()

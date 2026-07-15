@@ -186,6 +186,8 @@ def reference_roster_from_ecology(
 
 def programs_and_profiles_for_roster(
     roster: EcologyRoster,
+    *,
+    ecology_data: dict | None = None,
 ) -> tuple[dict[str, str], dict[str, dict[str, object]]]:
     """Program keys and host-injected behavior profiles per actor."""
     programs: dict[str, str] = {}
@@ -198,5 +200,13 @@ def programs_and_profiles_for_roster(
             )
         programs[agent.actor_id] = genotype.program_key
         if genotype.behavior_profile is not None:
-            profiles[agent.actor_id] = genotype.behavior_profile
+            profiles[agent.actor_id] = dict(genotype.behavior_profile)
+    if ecology_data is not None:
+        from .mechanism_exercise import reference_mechanism_exercise_profile
+
+        mech = reference_mechanism_exercise_profile(ecology_data, roster)
+        if mech is not None:
+            for agent in roster.agents:
+                base = profiles.get(agent.actor_id, {})
+                profiles[agent.actor_id] = {**base, **mech}
     return programs, profiles

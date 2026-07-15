@@ -23,6 +23,9 @@ class Workspace:
     def write_artifact(self, category: str, name: str, content: dict) -> str:
         self._artifact_seq += 1
         rel = f"artifacts/{category}/{name}__{self._artifact_seq}.json"
+        return self.write_at_path(rel, content)
+
+    def write_at_path(self, rel: str, content: dict) -> str:
         path = self._resolve(rel)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(content, indent=2, sort_keys=True), encoding="utf-8")

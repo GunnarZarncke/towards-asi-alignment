@@ -187,6 +187,10 @@ def _pipeline_step(
 
 def walk_pipeline(observation: dict, state: dict) -> dict | None:
     """Deterministic engineer with honest draft filing."""
+    if not observation.get("busy"):
+        governed = _try_governed_mechanism(observation, state)
+        if governed is not None:
+            return governed
     return _pipeline_step(observation, state, draft_mode="honest")
 
 
@@ -196,6 +200,10 @@ def inflate_pipeline(observation: dict, state: dict) -> dict | None:
 
 
 def honest_twin(observation: dict, state: dict) -> dict | None:
+    if not observation.get("busy"):
+        governed = _try_governed_mechanism(observation, state)
+        if governed is not None:
+            return governed
     role = str(observation.get("role", ""))
     if role == "engineer":
         return walk_pipeline(observation, state)
@@ -213,6 +221,9 @@ def reviewer_peer_review(observation: dict, state: dict) -> dict | None:
         return None
     if observation.get("busy"):
         return {"kind": "continue_current", "args": {}}
+    governed = _try_governed_mechanism(observation, state)
+    if governed is not None:
+        return governed
     _record_progress(observation, state)
     model_id = observation.get("model_id") or state.get("model_id")
     if not model_id:
@@ -229,6 +240,94 @@ def reviewer_peer_review(observation: dict, state: dict) -> dict | None:
         if choice["args"]["endpoint"] == "pipeline.trigger_step":
             state["pending_step"] = step_id
         return choice
+    return None
+
+
+def _affordable_exact(observation: dict, target: dict) -> bool:
+    affordable = observation.get("affordable_primitives", [])
+    if not isinstance(affordable, list):
+        return False
+    return target in affordable
+
+
+def _try_governed_mechanism(observation: dict, state: dict) -> dict | None:
+    """Take host-afforded mechanism-exercise actions (GL-52).
+
+    Channel coupling rounds are scheduled by the host
+    (:class:`~graded_lab.world_visible.mechanism_exercise.ChannelCouplingProtocol`);
+    agents do not count turns. Artifact / vote / transfer remain one-shot
+    per role key once the host offers them in the post-protocol phase.
+    """
+    if observation.get("busy"):
+        return None
+    profile = observation.get("behavior_profile")
+    if not isinstance(profile, dict):
+        return None
+    targets = profile.get("mechanism_exercise")
+    if not isinstance(targets, dict):
+        return None
+    role = str(observation.get("role", ""))
+    done: set[str] = state.setdefault("governed_done", set())
+    channel_id = str(targets.get("channel_id", ""))
+    if channel_id:
+        action = {
+            "kind": "communicate",
+            "args": {
+                "channel": channel_id,
+                "message": {"kind": "mechanism_exercise", "role": role},
+            },
+        }
+        if _affordable_exact(observation, action):
+            return action
+    artifact_id = str(targets.get("artifact_id", ""))
+    artifact_path = str(
+        targets.get("artifact_path", "artifacts/eval/governed_exercise_report.json")
+    )
+    if artifact_id and role == "engineer" and "artifact_write" not in done:
+        action = {
+            "kind": "write",
+            "args": {
+                "artifact_id": artifact_id,
+                "path": artifact_path,
+                "content": {"kind": "governed_eval_report", "status": "draft"},
+            },
+        }
+        if _affordable_exact(observation, action):
+            done.add("artifact_write")
+            return action
+    if artifact_id and role == "reviewer" and "artifact_read" not in done:
+        action = {
+            "kind": "read",
+            "args": {"artifact_id": artifact_id, "path": artifact_path},
+        }
+        if _affordable_exact(observation, action):
+            done.add("artifact_read")
+            return action
+    vote_id = str(targets.get("vote_id", ""))
+    vote_key = f"vote:{vote_id}"
+    if vote_id and vote_key not in done and role in ("reviewer", "release_manager"):
+        action = {
+            "kind": "call",
+            "args": {"endpoint": "vote.cast", "args": {"vote_id": vote_id, "approve": True}},
+        }
+        if _affordable_exact(observation, action):
+            done.add(vote_key)
+            return action
+    transfer_id = str(targets.get("transfer_id", ""))
+    if transfer_id and role == "admin" and "transfer" not in done:
+        action = {
+            "kind": "call",
+            "args": {
+                "endpoint": "transfer.execute",
+                "args": {
+                    "mechanism_id": transfer_id,
+                    "target_actor_id": str(targets.get("transfer_target", "eng1")),
+                },
+            },
+        }
+        if _affordable_exact(observation, action):
+            done.add("transfer")
+            return action
     return None
 
 

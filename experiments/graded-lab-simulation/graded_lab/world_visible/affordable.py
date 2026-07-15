@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
+import json
+
 from .config import ROLES
 from .pipeline_engine import PipelineEngine
 from .pipeline_spec import PipelineSpec
+from .mechanism_exercise import governed_mechanism_primitives
+from .pressure_coupling import InjectedTask, injected_write_action
 from .primitives import PrimitiveAction, primitive_cost
 from .resource_ledger import ActorResources
 from .scheduler import ActionScheduler
@@ -66,6 +70,13 @@ def build_affordable_set(
     artifact_sizes: dict[str, int] | None = None,
     model_id: str | None,
     busy_only: bool,
+    injected_tasks: tuple[InjectedTask, ...] = (),
+    mechanism_exercise: dict[str, object] | None = None,
+    channel_acls: dict[str, frozenset[str]] | None = None,
+    artifact_acls: dict[str, frozenset[str]] | None = None,
+    transfer_acls: dict[str, frozenset[str]] | None = None,
+    vote_specs: dict[str, object] | None = None,
+    include_channel: bool = True,
 ) -> list[PrimitiveAction]:
     """Return primitives legal and affordable this tick (capped)."""
     if role not in ROLES:
@@ -88,6 +99,49 @@ def build_affordable_set(
             estimated_bytes=artifact_sizes.get(rel, 0), scheduler=scheduler,
         ):
             candidates.append(action)
+
+    for task in injected_tasks:
+        if task.role != role:
+            continue
+        write_action = injected_write_action(task)
+        if _can_afford(
+            resources,
+            write_action,
+            substrate_data,
+            estimated_bytes=len(
+                json.dumps(write_action.args.get("content", {}), sort_keys=True).encode("utf-8")
+            ),
+            scheduler=scheduler,
+        ):
+            candidates.append(write_action)
+
+    if mechanism_exercise:
+        for action in governed_mechanism_primitives(
+            role=role,
+            targets=mechanism_exercise,
+            channel_acls=channel_acls or {},
+            artifact_acls=artifact_acls or {},
+            transfer_acls=transfer_acls or {},
+            vote_specs=vote_specs or {},
+            include_channel=include_channel,
+        ):
+            est_bytes = 0
+            if action.kind == "read":
+                est_bytes = artifact_sizes.get(str(action.args.get("path", "")), 0)
+                if str(action.args.get("path", "")) not in artifact_paths:
+                    continue
+            elif action.kind == "write":
+                est_bytes = len(
+                    json.dumps(action.args.get("content", {}), sort_keys=True).encode("utf-8")
+                )
+            if _can_afford(
+                resources,
+                action,
+                substrate_data,
+                estimated_bytes=est_bytes,
+                scheduler=scheduler,
+            ):
+                candidates.append(action)
 
     for step_id in ROLE_PIPELINE_STEPS.get(role, ()):
         try:
@@ -161,13 +215,30 @@ def build_affordable_set(
 
 
 def _cap(actions: list[PrimitiveAction]) -> list[PrimitiveAction]:
+    """Truncate to ``AFFORDABLE_CAP``, but never let unbounded piles of
+    ``read`` or ``write`` candidates (growing workspace artifact list from
+    message-channel exchanges; outstanding injected tasks) crowd out
+    ``call`` actions — pipeline triggers, access requests, votes, and
+    transfers. These are the only actions that make governance/pipeline
+    progress, and they are structurally bounded in count (at most a
+    handful per role per tick), so reserving them unconditionally is safe.
+    Remaining budget goes to the rest by the existing cheap-first priority.
+    Traced 2026-07-15: without this, the v3 integrated reference fixture's
+    ``deploy_rate`` silently went to exactly 0.0 once slice E/B fields were
+    added — see FINDINGS GL-49 addendum."""
     if len(actions) <= AFFORDABLE_CAP:
         return actions
-    ranked = sorted(
-        actions,
+    calls = [a for a in actions if a.kind == "call"]
+    rest = [a for a in actions if a.kind != "call"]
+    if len(calls) >= AFFORDABLE_CAP:
+        ranked = sorted(calls, key=lambda a: (a.kind, str(sorted(a.args.items()))))
+        return ranked[:AFFORDABLE_CAP]
+    ranked_rest = sorted(
+        rest,
         key=lambda a: (_KIND_PRIORITY.get(a.kind, 99), a.kind, str(sorted(a.args.items()))),
     )
-    return ranked[:AFFORDABLE_CAP]
+    remaining_budget = AFFORDABLE_CAP - len(calls)
+    return calls + ranked_rest[:remaining_budget]
 
 
 def affordable_to_observation(actions: list[PrimitiveAction]) -> list[dict[str, object]]:

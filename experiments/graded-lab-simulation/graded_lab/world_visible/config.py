@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.22.0"
+CODE_VERSION = "graded-lab-0.26.1"  # GL-52: host ChannelCouplingProtocol + C3 slots=1
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

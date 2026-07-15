@@ -1,7 +1,7 @@
 # PLAN v3 — institutional runtime wiring
 
-**Status (build order):** slices **A** and **F** done; slice **B** partial
-(out-of-order wiring only — see § Build order checklist); **next: slice E**.
+**Status (build order):** slices **A**, **F**, **E**, **C** done; slice **B** partial
+(enforcement + reference opt-in gate); **next: slice D**.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing
@@ -213,7 +213,9 @@ paragraph only — full v3 pre-registration still slice D).
 
 ## Slice B — `mechanisms` → enforced coordination
 
-**Status: implemented (2026-07-15, GL-45, `graded-lab-0.21.0`).**
+**Status: partial close (2026-07-15, GL-45 wiring; GL-48 engineering gate; GL-48b scope
+correction `graded-lab-0.24.1`).** Enforcement is proven; **load-bearing Part B**
+for ordinary agents is **not** closed — see claim scope below.
 
 **Gap closed:** `communicate` channels are free-form; artifact access
 is unrestricted; `joint_approval_vote` has no runtime meaning
@@ -235,14 +237,14 @@ quorum majority-only; timeout **fails** the gated step, no escalation;
 `vote.cast` is free; non-member `shared_artifact` access is denied
 outright, not cost-scaled.
 
-**C5-v3 criterion (deferred to slice D, not demonstrated by slice B's
-wiring tests):** ≥ 3 mechanism kinds present **and exercised** — each
-bound mechanism must fire ≥ once in reference episodes. Slice B proves
-the enforcement layer is wired and correct (compiler unit tests +
-dispatch-level allow/deny tests + vote-quorum/timeout tests, all on
-direct calls); no reference agent program yet exercises a governed
-channel/artifact/transfer/vote by name, so this criterion needs slice D's
-agent-driven reference battery, not slice B's engineering gate.
+**C5-v3 criterion (reference opt-in, GL-48/GL-48b):** ≥ 3 mechanism kinds
+**exercised** in the **same** ``WEAK_AGENT`` reference battery when the ecology
+declares ``reference_mechanism_exercise`` (host merges targets into
+``behavior_profile`` — **not** ecology ``ProgramMap`` genotypes). Checked by
+``check_c5_v3`` on ``run_reference_episodes`` results. Ecologies without the
+field skip C5-v3 (``None``). **Does not** claim grower-chosen programs exercise
+Part B; ordinary paths still use unbound ``lab`` / path-only I/O unless slice D
+strict reference or grower maps require governed ids.
 
 **Anticipated critic — opt-in ACL enforcement:**
 
@@ -266,11 +268,13 @@ agent-driven reference battery, not slice B's engineering gate.
   programs / `ProgramMap` must **require** governed ids (or a v3 ecology
   flag must narrow the unbound surface) before growth claims "live
   multi-principal coordination."
-- **Acceptable claim at slice B:** "When an action targets a compiled
-  mechanism id, the dispatch layer enforces the declared ACL / vote
-  semantics." **Not claimable:** "Declared mechanisms constrain
-  reference-agent behavior in ordinary episodes" — that requires slice D
-  agent exercise (and likely slice F `ProgramMap` hooks).
+- **Acceptable claim at slice B close:** (1) When an action targets a compiled
+  mechanism id, dispatch enforces ACL / vote semantics. (2) On the integrated
+  reference fixture, one ``WEAK_AGENT`` battery co-exercises slice A flows, slice
+  E pressure injection, and slice B mechanisms **when** the ecology declares
+  ``reference_mechanism_exercise``. **Not claimable:** "Declared mechanisms
+  constrain all reference-agent behavior" or "grower ``ProgramMap`` genotypes
+  exercise Part B" — deferred to slice D.
 
 **Touches:** `institutional_compiler.py` (`_compile_mechanism_runtime`,
 `VoteSpec`), new `votes.py` (`VoteService`), `world.py`
@@ -279,10 +283,9 @@ endpoints, `run_episode` threads the compiled `RuntimeEcology` through),
 `pipeline_spec.py` (`PipelineStep.requires_vote`), `pipeline_engine.py`
 (`trigger_step` vote gate, same extension pattern as the existing
 `permission_service` check), `tests/test_slice_b_mechanisms.py` (new,
-18 tests). UAD ground-truth plumbing (mechanism memberships becoming
-*enforced* units, upgrading the Q1 UAD test from coherence-check to
-live-coupling per GL-42) is **not yet done** — deferred, since it
-requires agent programs to actually use the enforced surface first.
+18 tests). UAD live-coupling gate (GL-48b): passive UAD recovers governed
+channel unit when ``reference_mechanism_exercise`` is active — not a full
+Q1 transfer claim.
 
 **Overhead:** ACL dict lookup only on actions that explicitly reference a
 compiled mechanism id (empty dict lookup otherwise); vote state only
@@ -325,6 +328,11 @@ EAI never read them (`REPRODUCTION.md` §1 item 1).
 would touch `ecology_agents.py`.
 
 **Overhead:** scorecard is post-episode referee work; ~0% on the loop.
+
+**Status: implemented (2026-07-15, GL-49, `graded-lab-0.25.0`).**
+
+**GoalWeights derivation:** **deferred out of v3.0** (design gate default-off;
+not implemented behind a flag in this slice).
 
 ## Slice E — feedback-coupled work pressure (not exogenous noise)
 
@@ -396,6 +404,8 @@ hidden contention knobs.
 **Overhead:** ~0% when no channels configured; per tick: O(channels)
 deterministic driver reads + float accumulators (negligible vs
 scheduler).
+
+**Status: implemented (2026-07-15, GL-47, `graded-lab-0.23.0`).**
 
 ## Slice F — heterogeneous roles + composable `ProgramMap`
 
@@ -537,19 +547,18 @@ next starts. Estimates assume familiarity with this codebase.
 |---|---|---|---|
 | 1 | A — flows → budgets (+ compiler skeleton) | ~1–2 wk | v1/v2 regression green; **slice A ablation gate** passes on frozen fixture (`≥2/3` seeds) |
 | 2 | F — heterogeneous roles + `ProgramMap` | ~1–1.5 wk | preset expansion tests; map validation; hybrid mode smoke; n=1 cost unchanged |
-| 3 | E — feedback-coupled pressure + task injection | ~3–5 d | pressure tracks driver when deploy/capability rises; ignore-everything episode terminates sanely |
-| 4 | B — mechanisms enforced (votes last) | ~2–3 wk | vote-semantics design review **before** vote code; ACL overhead measured < 10% on primitive dispatch |
+| 3 | E — feedback-coupled pressure + task injection | ~3–5 d | pressure tracks driver when deploy/capability rises; ignore-everything episode terminates sanely ✅ |
+| 4 | B — mechanisms enforced (votes last) | ~2–3 wk | ACL overhead < 10%; reference opt-in C5-v3 on unified battery ✅; load-bearing Part B for default agents ❌ (slice D) |
 
-**Slice B completion checklist (out-of-order landing — wiring only, GL-45):**
-return to this row after F and E. Remaining before the build-order gate
-is satisfied: (1) measure ACL dispatch overhead < 10%; (2) reference agent
-/`ProgramMap` programs that **exercise** governed channel/artifact/transfer/vote
-ids in ordinary episodes; (3) C5-v3 "≥3 kinds exercised" on reference battery;
-(4) UAD ground-truth upgrade from coherence-check to live-coupling (GL-42).
-Engineering wiring (compiler + dispatch + unit tests) is done in commit
-`29b1a72`; do not treat that as closing row 4.
+**Slice B engineering gate (GL-48/GL-48b, not full slice close):**
+(1) ACL overhead < 10%; (2) ecology ``reference_mechanism_exercise`` + host profile
+merge on ``WEAK_AGENT`` (no parallel ``V3_MECHANISM_REFERENCE`` / ``governed_*``
+programs); (3) C5-v3 on **same** reference battery as C3/C4 when ecology opts in;
+(4) integrated reference fixture co-exercises A+E+B; (5) UAD channel-unit gate
+when opt-in active. **Still open for slice D:** default/grower programs must
+target governed ids or v3 strict mode — ordinary paths may ignore Part B.
 
-| 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded |
+| 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded ✅ (out) |
 | 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 section frozen; reference batteries pass on known-live fixtures; slice D items 6–7 (detector coverage + `ProgramMap` overlap) reported before Q1 go/no-go |
 
 Total: roughly 6–9 person-weeks of engineering plus two explicit human
