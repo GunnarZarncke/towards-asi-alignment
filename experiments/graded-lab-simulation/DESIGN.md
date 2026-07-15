@@ -42,7 +42,9 @@ GL-18). `graded-lab-0.20.0` at PLAN_v3 slice A (FINDINGS GL-44):
 v3 `resource_flows` compile to per-actor runtime allowances. `graded-lab-0.21.0`
 at PLAN_v3 slice B (FINDINGS GL-45): `mechanisms` compile to enforced
 channel/artifact/transfer ACLs and vote specs (`VoteService`,
-`PipelineStep.requires_vote`). Hand-bumped when oracle,
+`PipelineStep.requires_vote`). `graded-lab-0.22.0` at PLAN_v3 slice F
+(FINDINGS GL-46): `ProgramMap` validation/expansion, heterogeneous v3
+`role_population`, reference roster wired through `run_episode`. Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
 
@@ -1567,7 +1569,29 @@ resolve correctly) on the slice A reference fixture (which already declares
 all four mechanism kinds). **Not** an agent-driven exercise — no reference
 agent program yet casts a vote or targets a governed channel/artifact by
 name; that (and the C5-v3 "≥3 kinds exercised in reference episodes"
-criterion) is deferred to slice D's reference-battery calibration.
+criterion) is deferred until slice B's build-order gate is revisited (after
+F and E). Slice B landed **out of order** (commit `29b1a72`); see
+`PLAN_v3.md` § Build order "Slice B completion checklist."
+
+**PLAN_v3 slice F — `ProgramMap` + heterogeneous `role_population` (in
+progress, `graded-lab-0.21.0+`):**
+
+Frozen bins (2026-07-15): `SCORE_LEVELS` −3…+3 step 0.5 (13 values);
+`DELTA_LEVELS` −3…+3 integer; `TEMPERATURE_BINS` (10 values, 0.05…1.0);
+`GOAL_WEIGHT_BIN_COUNT` = 5; `MAX_SPARSE_PATTERN_SCORES` = 8;
+`PROGRAM_MAP_MODES` = {`walker_only`, `scorer_only`, `walker_then_scorer`,
+`scorer_with_walker_fallback`}. v3 `role_population[role]` may be an integer
+(v2-compatible clones) or a list of `{program?, program_map?, goal_weights?}`
+overrides (list length = headcount). Preset keys expand to canonical maps in
+`program_map.py`; hybrid modes resolve to static `composed:*` program keys in
+`programs.py`. Legacy `feature:*` presets expand with `strict_ladder=False`
+(generated profiles predate the bin ladder). Reference checker and
+``run_episode`` consume ``reference_roster_from_ecology`` +
+``programs_and_profiles_for_roster`` (ecology list overrides win; else frozen
+``WEAK_AGENT`` preset expansion). Host injects ``behavior_profile`` from
+genotypes via ``run_episode(..., behavior_profiles=...)``. Per-actor C2
+reachability is reported in ``ComplexityReport.details`` as
+``c2_per_actor_reachable_principals`` (diagnostic only in v3.0).
 
 **V2-2b additive fields (GL-40, `CODE_VERSION` `graded-lab-0.19.0`):**
 

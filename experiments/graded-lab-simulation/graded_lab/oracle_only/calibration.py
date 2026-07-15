@@ -124,7 +124,11 @@ _ROLE_PROGRAMS[PILOT_AGENT_TYPE] = dict(_ROLE_PROGRAMS[WEAK_AGENT])
 
 
 def programs_for_roster(agent_type: str, agents: Iterable[Any]) -> dict[str, str]:
-    """Map ``agent_type`` programs onto an arbitrary actor roster by role."""
+    """Map ``agent_type`` programs onto an arbitrary actor roster by role.
+
+    For v3 ecologies with ``role_population`` list overrides, prefer
+    ``ecology_agents.programs_and_profiles_for_roster`` on a
+    ``reference_roster_from_ecology`` result instead."""
     by_role = _ROLE_PROGRAMS.get(agent_type)
     if by_role is None:
         raise ValueError(f"unknown agent_type {agent_type!r}")

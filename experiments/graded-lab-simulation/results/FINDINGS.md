@@ -2851,3 +2851,40 @@ regression from this change).
 
 - `CODE_VERSION` **`graded-lab-0.21.0`**.
 
+## GL-46 (PLAN_v3 slice F — heterogeneous roles + `ProgramMap`, `graded-lab-0.22.0`)
+
+**Trigger.** User correction: build order is A→F→E→B→C→D (not alphabetical);
+continue slice F after slice B had landed out of order.
+
+**What was built.**
+
+- `program_map.py`: frozen bins (`SCORE_LEVELS`, `TEMPERATURE_BINS`, etc.),
+  `validate_program_map`, `expand_preset`, `resolve_runtime_genotype`,
+  `parse_actor_override`; legacy `feature:*` presets use `strict_ladder=False`.
+- `ecology_agents.py`: v3 `role_population` list overrides;
+  `reference_roster_from_ecology`, `programs_and_profiles_for_roster`,
+  `default_genotypes_for_agent_type`; v3 ecologies now parse integer
+  `role_population` (bugfix: v3 was treated as v1-shaped).
+- `programs.py`: `_register_composed_programs` for hybrid `composed:*` keys.
+- `world.py`: `run_episode(..., behavior_profiles=)` host injection; genotypes
+  from ecology drive program keys + profiles; `_uses_softmax_scoring` for margins.
+- `ecology_complexity.py`: reference battery uses `reference_roster_from_ecology`
+  + `programs_and_profiles_for_roster`; reports `c2_per_actor_reachable_principals`
+  (diagnostic only).
+- `tests/test_slice_f_program_map.py` (13 tests): validation, presets, hybrid
+  keys, heterogeneous roster, feature-profile episode integration.
+- `tests/test_ecology_complexity.py`: per-actor reachability diagnostic test.
+
+**Claim scope.** Slice F build-order gate closed for engineering: preset
+expansion, map validation, hybrid smoke, n=1 unchanged (v1 digest pin +
+slice A ablation still pass). Grower-authored raw `program_map` JSON in
+ecologies is mechanically validated but not yet used in a growth brief (slice D).
+
+**Verification.** Slice F tests + ecology complexity + v3 slice A ablation +
+v1 digest pin: all green.
+
+- `CODE_VERSION` **`graded-lab-0.22.0`**.
+
+**Next (build order).** Slice E (feedback-coupled pressure), then finish slice B
+checklist (ACL overhead, agent exercise, C5-v3, UAD live-coupling).
+

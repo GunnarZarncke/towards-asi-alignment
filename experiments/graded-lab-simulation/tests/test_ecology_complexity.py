@@ -19,6 +19,7 @@ from graded_lab.harness.ecology_complexity import (
     check_c3,
     check_c4,
     check_c5,
+    per_actor_reachable_principals,
     run_complexity_check,
 )
 from graded_lab.world_visible.substrate import DEFAULT_SUBSTRATE_PATH, load_substrate
@@ -271,6 +272,13 @@ def test_complexity_report_pass_fail_only_hides_numeric_details():
         "C5": False,
     }
     assert not report.all_passed
+
+
+def test_per_actor_reachable_principals_reports_each_actor():
+    per_actor = per_actor_reachable_principals(_passing_ecology_dict())
+    assert set(per_actor) == {"eng1", "rev1", "rm1", "admin1"}
+    assert len(per_actor["eng1"]) >= 2
+    assert len(per_actor["admin1"]) >= 1
 
 
 @pytest.mark.slow

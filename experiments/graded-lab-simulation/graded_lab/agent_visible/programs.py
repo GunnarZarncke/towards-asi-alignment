@@ -574,6 +574,43 @@ def trio_release_manager(observation: dict, state: dict) -> dict | None:
     return honest_twin_optimizer(observation, state)
 
 
+def _register_composed_programs(programs: dict[str, object]) -> None:
+    """PLAN_v3 slice F: hybrid modes resolve to static composed keys."""
+
+    def _walker_then_scorer(walker):
+        def policy(observation: dict, state: dict) -> dict | None:
+            choice = walker(observation, state)
+            if choice is not None:
+                return choice
+            return softmax_optimizer(observation, state)
+
+        return policy
+
+    def _scorer_with_walker_fallback(walker):
+        def policy(observation: dict, state: dict) -> dict | None:
+            choice = softmax_optimizer(observation, state)
+            if choice is not None:
+                return choice
+            return walker(observation, state)
+
+        return policy
+
+    _walker_programs = {
+        "walk_pipeline": walk_pipeline,
+        "reviewer_peer_review": reviewer_peer_review,
+        "honest_twin": honest_twin,
+    }
+    for mode, composer in (
+        ("walker_then_scorer", _walker_then_scorer),
+        ("scorer_with_walker_fallback", _scorer_with_walker_fallback),
+    ):
+        for role in ("engineer", "reviewer", "release_manager", "admin"):
+            for preset, walker in _walker_programs.items():
+                key = f"composed:{mode}:{role}:{preset}"
+                if key not in programs:
+                    programs[key] = composer(walker)
+
+
 def _register_feature_programs(programs: dict[str, object]) -> None:
     try:
         from .behavior_features import load_generated_repertoire
@@ -609,3 +646,4 @@ PROGRAMS: dict[str, object] = {
     "trio_release_manager": trio_release_manager,
 }
 _register_feature_programs(PROGRAMS)
+_register_composed_programs(PROGRAMS)

@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.21.0"
+CODE_VERSION = "graded-lab-0.22.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

@@ -384,6 +384,15 @@ def _behavior_profile_payload(program_name: str) -> dict[str, object] | None:
     }
 
 
+def _uses_softmax_scoring(program_key: str, profile: dict[str, object] | None) -> bool:
+    """True when the isolate path may invoke ``softmax_optimizer`` scoring."""
+    if program_key == "softmax_optimizer":
+        return True
+    if program_key.startswith("composed:"):
+        return True
+    return profile is not None
+
+
 def _decision_state_snapshot(
     *,
     busy: bool,
@@ -457,6 +466,7 @@ def run_episode(
     backend: Any,
     *,
     programs: dict[str, str] | None = None,
+    behavior_profiles: dict[str, dict[str, object]] | None = None,
     campaign_state: CampaignState | None = None,
 ) -> EpisodeResult:
     episode_started = time.perf_counter()
@@ -500,6 +510,7 @@ def run_episode(
     transfer_acls = runtime_ecology.transfer_acls if runtime_ecology else {}
 
     program_map = programs or {a.actor_id: "softmax_optimizer" for a in cfg.agents}
+    injected_profiles = behavior_profiles or {}
     allowances = _allowances_map(cfg, substrate_data, runtime_ecology=runtime_ecology)
     for agent in cfg.agents:
         allow = allowances[agent.actor_id]
@@ -736,7 +747,9 @@ def run_episode(
                     "decision_seed": seed * 100_000 + t * 100 + _stable_actor_offset(actor_id),
                     "last_primitive_outcome": last_outcomes[actor_id],
                 }
-                profile = _behavior_profile_payload(program_map[actor_id])
+                profile = injected_profiles.get(actor_id) or _behavior_profile_payload(
+                    program_map[actor_id]
+                )
                 if profile is not None:
                     obs["behavior_profile"] = profile
                 if cfg.substrate_settings.carrier_load_scale > 0.0:
@@ -752,7 +765,7 @@ def run_episode(
 
                 action = PrimitiveAction.from_dict(choice)
 
-                if program_map[actor_id] == "softmax_optimizer":
+                if _uses_softmax_scoring(program_map[actor_id], profile):
                     _record_margin(obs, agent.temperature, decision_margins)
 
                 if busy:

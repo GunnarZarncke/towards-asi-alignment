@@ -1,6 +1,7 @@
 # PLAN v3 — institutional runtime wiring
 
-**Status: slices A and B implemented (2026-07-15).** Slice C+ not started.
+**Status (build order):** slices **A** and **F** done; slice **B** partial
+(out-of-order wiring only — see § Build order checklist); **next: slice E**.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing
@@ -243,6 +244,34 @@ direct calls); no reference agent program yet exercises a governed
 channel/artifact/transfer/vote by name, so this criterion needs slice D's
 agent-driven reference battery, not slice B's engineering gate.
 
+**Anticipated critic — opt-in ACL enforcement:**
+
+- **"Mechanisms are still optional theater."** Partially true at slice B
+  close: ACL checks activate **only when the action explicitly names a
+  compiled mechanism id** (`communicate` with a channel id matching a
+  `message_channel`; `read`/`write` with `artifact_id` matching a
+  `shared_artifact`; `transfer.execute` / `vote.cast` by mechanism id).
+  Agents that keep using v1/v2 patterns — default `"lab"` channel,
+  path-only read/write, no vote casts — **never hit the ACL layer**. A
+  grower can declare a rich Part B and still get v1-like behavior if
+  reference programs never target governed ids. This is intentional for
+  v1/v2 byte-identical replay and zero regression on digest-pinned
+  tests, but it means C5-v3 ("present **and exercised**") cannot pass on
+  declared structure alone.
+- **Why not enforce by default on v3?** Would require either (a)
+  renaming/binding all default communication and artifact paths to
+  compiled mechanism ids, or (b) a global v3 strict mode that denies
+  unbound channel/artifact surfaces — both break backward compatibility
+  and expand slice B scope. Deferred to slice D: reference agent
+  programs / `ProgramMap` must **require** governed ids (or a v3 ecology
+  flag must narrow the unbound surface) before growth claims "live
+  multi-principal coordination."
+- **Acceptable claim at slice B:** "When an action targets a compiled
+  mechanism id, the dispatch layer enforces the declared ACL / vote
+  semantics." **Not claimable:** "Declared mechanisms constrain
+  reference-agent behavior in ordinary episodes" — that requires slice D
+  agent exercise (and likely slice F `ProgramMap` hooks).
+
 **Touches:** `institutional_compiler.py` (`_compile_mechanism_runtime`,
 `VoteSpec`), new `votes.py` (`VoteService`), `world.py`
 (`_execute_primitive` ACL checks + `vote.cast`/`transfer.execute`
@@ -428,6 +457,18 @@ vocab / score normalization), `programs.py` (preset tables),
 **Overhead:** scorer path unchanged; walker+scorer hybrid adds one
 mode dispatch per tick (negligible). n=1 default keeps tests cheap.
 
+**Status: implemented (2026-07-15, GL-46, `graded-lab-0.22.0`).**
+
+**Status was in progress; completed this session:** preset expansion +
+validation + hybrid composed keys + heterogeneous `role_population` lists +
+reference roster wired through `run_episode` and `ecology_complexity`
+(`reference_roster_from_ecology`, `programs_and_profiles_for_roster`,
+`behavior_profiles` kwarg). Per-actor C2 reachability reported as diagnostic
+only (`c2_per_actor_reachable_principals`). v1 digest pin and slice A ablation
+gate unchanged. Grower-authored raw `program_map` JSON (non-preset) is
+validated and resolvable but not yet exercised in a growth brief — that waits
+for slice D.
+
 ## Slice D — program integration
 
 1. **Schema + version:** new `ecology_version` tag (`"v3"` /
@@ -498,6 +539,16 @@ next starts. Estimates assume familiarity with this codebase.
 | 2 | F — heterogeneous roles + `ProgramMap` | ~1–1.5 wk | preset expansion tests; map validation; hybrid mode smoke; n=1 cost unchanged |
 | 3 | E — feedback-coupled pressure + task injection | ~3–5 d | pressure tracks driver when deploy/capability rises; ignore-everything episode terminates sanely |
 | 4 | B — mechanisms enforced (votes last) | ~2–3 wk | vote-semantics design review **before** vote code; ACL overhead measured < 10% on primitive dispatch |
+
+**Slice B completion checklist (out-of-order landing — wiring only, GL-45):**
+return to this row after F and E. Remaining before the build-order gate
+is satisfied: (1) measure ACL dispatch overhead < 10%; (2) reference agent
+/`ProgramMap` programs that **exercise** governed channel/artifact/transfer/vote
+ids in ordinary episodes; (3) C5-v3 "≥3 kinds exercised" on reference battery;
+(4) UAD ground-truth upgrade from coherence-check to live-coupling (GL-42).
+Engineering wiring (compiler + dispatch + unit tests) is done in commit
+`29b1a72`; do not treat that as closing row 4.
+
 | 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded |
 | 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 section frozen; reference batteries pass on known-live fixtures; slice D items 6–7 (detector coverage + `ProgramMap` overlap) reported before Q1 go/no-go |
 

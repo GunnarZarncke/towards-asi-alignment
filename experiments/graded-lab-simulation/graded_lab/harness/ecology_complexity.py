@@ -20,10 +20,13 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from ..oracle_only.calibration import WEAK_AGENT, programs_for_roster
+from ..oracle_only.calibration import WEAK_AGENT
 from ..world_visible.config import EpisodeConfig
-from ..world_visible.ecology_agents import build_agents_from_ecology
-from ..world_visible.substrate import V2_ECOLOGY_PATH, load_substrate
+from ..world_visible.ecology_agents import (
+    programs_and_profiles_for_roster,
+    reference_roster_from_ecology,
+)
+from ..world_visible.substrate import V2_ECOLOGY_PATH, load_substrate, is_v3_shaped_ecology
 from ..world_visible.world import EpisodeResult, default_lab_config, run_episode
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
@@ -175,6 +178,18 @@ def check_c2(data: dict) -> tuple[bool, list[str]]:
     return not failing_roles, failing_roles
 
 
+def per_actor_reachable_principals(data: dict) -> dict[str, list[str]]:
+    """PLAN_v3 slice F diagnostic: per-actor principal reachability (role-level
+    graph until v3 ``resource_flows`` target ``actor_id`` — reported only,
+    not a pass/fail criterion in v3.0)."""
+    roster = reference_roster_from_ecology(data, agent_type=WEAK_AGENT)
+    out: dict[str, list[str]] = {}
+    for agent in roster.agents:
+        principals = sorted(_reachable_principals(data, agent.role))
+        out[agent.actor_id] = principals
+    return out
+
+
 def check_c5(data: dict) -> tuple[bool, dict[str, Any]]:
     mechanisms = [m for m in data.get("mechanisms", []) if isinstance(m, dict)]
     kinds_present: set[str] = set()
@@ -216,14 +231,15 @@ def _reference_episode_config(ecology_data: dict, *, ecology_path: Path) -> Epis
     # interrupted checker runs cannot clobber each other or be confused
     # with a frozen candidate.
     base = default_lab_config()
+    roster = reference_roster_from_ecology(ecology_data, agent_type=WEAK_AGENT, temperature=0.35)
     return EpisodeConfig(
-        agents=build_agents_from_ecology(ecology_data, temperature=0.35),
+        agents=roster.agents,
         T=base.T,
         pipeline_spec=base.pipeline_spec,
         substrate_settings=base.substrate_settings,
         carrier_termination_mode=base.carrier_termination_mode,
         units=base.units,
-        ecology_version="v2",
+        ecology_version="v3" if is_v3_shaped_ecology(ecology_data) else "v2",
         record_contention=True,
         ecology_override_path=ecology_path,
     )
@@ -246,12 +262,15 @@ def run_reference_episodes(
     ecology_path = Path(ecology_path)
     ecology_data = load_substrate(ecology_path).data
     cfg = _reference_episode_config(ecology_data, ecology_path=ecology_path)
-    programs = programs_for_roster(WEAK_AGENT, cfg.agents)
+    roster = reference_roster_from_ecology(ecology_data, agent_type=WEAK_AGENT, temperature=0.35)
+    programs, profiles = programs_and_profiles_for_roster(roster)
     results: list[EpisodeResult] = []
     for i, seed in enumerate(seeds):
         if progress:
             print(f"[ecology-complexity C3/C4 {i + 1}/{len(seeds)}] seed={seed}")
-        results.append(run_episode(cfg, seed, backend, programs=programs))
+        results.append(
+            run_episode(cfg, seed, backend, programs=programs, behavior_profiles=profiles)
+        )
     return results
 
 
@@ -310,6 +329,7 @@ def run_complexity_check(
     c1_passed, c1_details = check_c1(data)
     c2_passed, c2_failing_roles = check_c2(data)
     c5_passed, c5_details = check_c5(data)
+    per_actor_c2 = per_actor_reachable_principals(data)
 
     results = run_reference_episodes(candidate_path, backend=backend, progress=progress)
     c3_passed, c3_details = check_c3(results)
@@ -325,6 +345,7 @@ def run_complexity_check(
         details={
             "c1": c1_details,
             "c2_failing_roles": c2_failing_roles,
+            "c2_per_actor_reachable_principals": per_actor_c2,
             "c3": c3_details,
             "c4": c4_details,
             "c5": c5_details,
