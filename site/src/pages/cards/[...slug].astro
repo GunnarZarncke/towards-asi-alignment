@@ -130,9 +130,12 @@ const bibEntry = isReferenceCard && card.data.bibKey ? refByKey.get(card.data.bi
 const referenceLinks = isReferenceCard
   ? referenceLinksFor(card.data.external, bibEntry)
   : [];
+const pageDescription = showFullText
+  ? `${card.data.summary} Full synced manuscript text on the companion site.`
+  : card.data.summary;
 ---
 
-<SiteLayout title={card.data.title} description={card.data.summary}>
+<SiteLayout title={card.data.title} description={pageDescription} ogType="article">
   <article class:list={["two-column", bookEntry && "book-page"]}>
     <div class:list={["content-card", bookEntry && "readable"]}>
       <div class="badge-row">

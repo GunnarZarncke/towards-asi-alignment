@@ -218,7 +218,7 @@ mutation, V2-5 selection, V2-6 red-team): see
 
 ## Site (`site/`)
 
-Companion Astro site: orientation layer (Start Here, cards, paths, FAQ, book map). Local serve: `./serve-site.sh`. Deploy: `.github/workflows/site.yml` → GitHub Pages at `/towards-asi-alignment/`.
+Companion Astro site: orientation layer (Start Here, cards, paths, FAQ, book map). Local serve: `./serve-site.sh`. Deploy: `.github/workflows/site.yml` → GitHub Pages at **https://towards-alignment.com/**.
 
 - [x] **Clickable badges with index pages** — **done 2026-07-04:** `/badges/` index plus `/badges/type/{value}/` and `/badges/status/{value}/`; `Badge.astro` links type/status from card pages; nav adds Badges. Semantics in `site/src/lib/badges.ts`, aligned with `site/src/content.config.ts` and manuscript claim-strength language.
 

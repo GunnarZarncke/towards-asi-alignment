@@ -2,23 +2,43 @@
 import "../styles/global.css";
 import "katex/dist/katex.min.css";
 import { pdfHref } from "../lib/site-urls";
+import {
+  AUTHOR_NAME,
+  DEFAULT_DESCRIPTION,
+  OG_IMAGE_ALT,
+  OG_IMAGE_URL,
+  SITE_NAME,
+  absoluteSiteUrl,
+  pageTitle as buildPageTitle,
+  truncateDescription
+} from "../lib/seo";
 
 interface Props {
   title?: string;
   description?: string;
+  /** When true, emit noindex (e.g. draft or utility pages). */
+  noindex?: boolean;
+  ogType?: "website" | "article";
+  /** Override default social preview image (absolute URL). */
+  ogImage?: string;
 }
 
 const {
-  title = "Towards Superintelligence Alignment",
-  description = "A companion site for the book Towards Superintelligence Alignment."
+  title,
+  description = DEFAULT_DESCRIPTION,
+  noindex = false,
+  ogType = "website",
+  ogImage = OG_IMAGE_URL
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
-const pageTitle = title === "Towards Superintelligence Alignment"
-  ? title
-  : `${title} | Towards Superintelligence Alignment`;
+const siteOrigin = Astro.site?.origin ?? "https://towards-alignment.com";
+const pageTitle = buildPageTitle(title);
+const canonicalUrl = absoluteSiteUrl(Astro.url.pathname, siteOrigin);
+const metaDescription = truncateDescription(description);
 const pdfUrl = pdfHref(base);
+const robots = noindex ? "noindex, follow" : "index, follow";
 ---
 
 <!doctype html>
@@ -26,14 +46,30 @@ const pdfUrl = pdfHref(base);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
+    <meta name="author" content={AUTHOR_NAME} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{pageTitle}</title>
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={OG_IMAGE_ALT} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
   </head>
   <body>
     <div class="shell">
       <header class="site-header">
         <div class="site-header-inner">
-          <a class="brand" href={withBase("/")}>Towards Superintelligence Alignment</a>
+          <a class="brand" href={withBase("/")}>{SITE_NAME}</a>
           <nav class="nav" aria-label="Primary navigation">
             <a href={withBase("/")}>Start Here</a>
             <a href={withBase("/paths/")}>Guided Tour</a>

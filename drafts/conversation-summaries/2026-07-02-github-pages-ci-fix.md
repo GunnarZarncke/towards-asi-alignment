@@ -11,7 +11,7 @@ Site workflow failed on first push; user enabled GitHub Actions Pages and asked 
 
 ## Open / next
 - Push commit and confirm **Actions → Site** shows green **Build site** + **Deploy to GitHub Pages**.
-- Live URL: `https://gunnarzarncke.github.io/towards-asi-alignment/`
+- Live URL: `https://towards-alignment.com/`
 - Unrelated dirty tree: embedded-sim results, ch09 demo HTML, older untracked conversation logs.
 
 ## Commits

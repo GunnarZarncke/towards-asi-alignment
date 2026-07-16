@@ -2,6 +2,7 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PathRelationshipDiagram from "../components/PathRelationshipDiagram.astro";
 import { pathHref } from "../lib/site-urls";
+import { HOME_DESCRIPTION } from "../lib/seo";
 import { getReadingPaths } from "../lib/reading-paths";
 import standaloneClaims from "../data/standalone-claims.json";
 
@@ -17,7 +18,7 @@ const failureModes = [
 ];
 ---
 
-<SiteLayout description="Start here for the companion site to Towards Superintelligence Alignment.">
+<SiteLayout description={HOME_DESCRIPTION}>
   <section class="hero">
     <p class="eyebrow">Companion site</p>
     <h1>Towards Superintelligence Alignment</h1>

@@ -16,7 +16,7 @@ Continuation of the site-publication session: GitHub Pages deploys kept failing;
 - Publication co-authorship noted as plain "co-author" (post lists seven authors, no affiliation asserted).
 
 ## Open / next
-- **Manual step (user):** Settings → Pages → Source → Deploy from a branch → `gh-pages` / root. Then verify https://gunnarzarncke.github.io/towards-asi-alignment/ is live.
+- **Manual step (user):** Settings → Pages → Source → Deploy from a branch → `gh-pages` / root. Then verify https://towards-alignment.com/ is live.
 - **Push:** commits through this session not yet pushed after PDF commit.
 - Unrelated dirty tree left alone: embedded-simulation code/results churn (separate session), `src/demos/ch09-uad-coalition-board/index.html`, six older untracked conversation logs, `dist/`, regenerated `book.bbl-SAVE-ERROR`.
 - agency-detect PDF link audit on About page still pending (older open item).

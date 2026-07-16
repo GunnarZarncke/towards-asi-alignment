@@ -4,7 +4,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 **Live draft status:** [`metadata/book.yml`](../metadata/book.yml) (chapter titles, review tags, word targets).
 
-**Read online:** [companion site book index](https://gunnarzarncke.github.io/towards-asi-alignment/book/) · [PDF](https://gunnarzarncke.github.io/towards-asi-alignment/towards-superintelligence-alignment.pdf). Policy-adjacent readers: [institutional translation](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appc/) (Appendix C) and [institutional histories overview](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/) (Appendix D hub with eleven case-study cards; [full text on site](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/full/)).
+**Read online:** [companion site book index](https://towards-alignment.com/book/) · [PDF](https://towards-alignment.com/towards-superintelligence-alignment.pdf). Policy-adjacent readers: [institutional translation](https://towards-alignment.com/cards/chapters/appc/) (Appendix C) and [institutional histories overview](https://towards-alignment.com/cards/chapters/appm/) (Appendix D hub with eleven case-study cards; [full text on site](https://towards-alignment.com/cards/chapters/appm/full/)).
 
 ---
 
@@ -23,7 +23,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 For agent session continuity: [`drafts/conversation-summaries/INDEX.md`](../drafts/conversation-summaries/INDEX.md).
 
-The PDF front matter [*Current Status*](../frontmatter/current-status.tex) summarizes work-in-progress disclaimers only; the full chapter list lives in [`metadata/book.yml`](../metadata/book.yml) and on the [site book index](https://gunnarzarncke.github.io/towards-asi-alignment/book/).
+The PDF front matter [*Current Status*](../frontmatter/current-status.tex) summarizes work-in-progress disclaimers only; the full chapter list lives in [`metadata/book.yml`](../metadata/book.yml) and on the [site book index](https://towards-alignment.com/book/).
 
 ---
 

@@ -26,7 +26,10 @@ const graphsWithNode = leanSpine.graphOrder.filter((slug) => {
 
 <SiteLayout
   title={node.label.replace(/\n/g, " ")}
-  description={node.gloss || node.label.replace(/\n/g, " ")}
+  description={
+    node.gloss ||
+    `Lean proof spine node (${node.kind ?? "spine"}): ${node.label.replace(/\n/g, " ")}`
+  }
 >
   <article class="two-column">
     <div class="content-card readable">

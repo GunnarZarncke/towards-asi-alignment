@@ -96,7 +96,7 @@ Tag or link [the repository](https://github.com/GunnarZarncke/towards-asi-alignm
 
 The **official companion site** is deployed from this repository:
 
-**https://gunnarzarncke.github.io/towards-asi-alignment/**
+**https://towards-alignment.com/**
 
 It hosts guided reading paths, concept cards, rendered chapter pages, Lean playgrounds, chapter demos, and an in-browser PDF copy. Build locally: [`site/README.md`](site/README.md) and [`docs/BUILD.md`](docs/BUILD.md).
 
@@ -117,6 +117,6 @@ Other contributions that help the research program reach the right readers:
 - Talks, reading groups, and curated bibliographies
 - Tools that operationalize artifact tables or safety-case templates from the manuscript
 - Translations (coordinate first for terminology consistency)
-- Policy or institutional briefings that use [`appendices/appC-institutional-translation.tex`](appendices/appC-institutional-translation.tex) as a bridge document, or [`appendices/appM-institutional-histories.tex`](appendices/appM-institutional-histories.tex) for historical genesis/decay cases (companion-site [overview hub](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/) for non-technical readers)
+- Policy or institutional briefings that use [`appendices/appC-institutional-translation.tex`](appendices/appC-institutional-translation.tex) as a bridge document, or [`appendices/appM-institutional-histories.tex`](appendices/appM-institutional-histories.tex) for historical genesis/decay cases (companion-site [overview hub](https://towards-alignment.com/cards/chapters/appm/) for non-technical readers)
 
 When in doubt, open an issue describing the derivative work and which bridges or gems it targets.

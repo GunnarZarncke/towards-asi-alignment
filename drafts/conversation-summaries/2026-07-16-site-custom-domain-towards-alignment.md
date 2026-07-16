@@ -18,10 +18,8 @@ Configure the Astro companion site for custom domain `towards-alignment.com`: re
 - Left root `README.md` / `docs/MANUSCRIPT.md` github.io links unchanged this session.
 
 ## Open / next
-- Merge/push to `main` so CI deploys root-based build to `gh-pages`.
-- Confirm DNS for `towards-alignment.com`; **Settings → Pages** custom domain + **Enforce HTTPS**.
-- Re-run curl checks on old project URLs (homepage, cards, PDF, assets).
-- Optionally update repo-wide links from `gunnarzarncke.github.io/towards-asi-alignment/...` to `towards-alignment.com/...`.
+- GSC: after deploy, submit `sitemap-index.xml`; request indexing on key URLs; Enforce HTTPS.
+- Optional: compress `og-image.png` (~1.3 MB).
 
 ## Key paths
 - `site/astro.config.mjs`
@@ -29,4 +27,4 @@ Configure the Astro companion site for custom domain `towards-alignment.com`: re
 - `site/README.md` (Deploy section)
 
 ## Commits
-- (pending) site custom domain configuration
+- `0cdad42` Configure Astro site for towards-alignment.com custom domain.

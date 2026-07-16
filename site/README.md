@@ -74,7 +74,10 @@ Output: `site/dist/`
 | `scripts/sync-chapter-cards.mjs` | Generates chapter/appendix cards; `overviewOnly` appendices (e.g. `appM`) render as case-study hubs at `/cards/chapters/{id}/` with full synced text at `/full/` |
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |
 | `scripts/sync-experiments.mjs` | Generates `src/data/experiments.json` and experiment cards from `metadata/experiments.yml` (includes lab-sim **Lean leak-proof** link when `leakProofPath` is set) |
-| `astro.config.mjs` | Site URL (`https://towards-alignment.com`) and build options |
+| `astro.config.mjs` | Site URL (`https://towards-alignment.com`), `@astrojs/sitemap`, build options |
+| `public/robots.txt` | Crawler rules and sitemap index URL |
+| `public/og-image.png` | Default Open Graph / Twitter preview image (1200×630) |
+| `src/lib/seo.ts` | Site name, canonical URL helpers, default description |
 
 ## Deploy
 

@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-16 | Site **SEO**: sitemap plugin, OG image, robots.txt, canonical/social meta, domain links for GSC | [2026-07-16-site-seo-sitemap-gsc.md](2026-07-16-site-seo-sitemap-gsc.md) |
 | 2026-07-16 | Astro site custom domain **towards-alignment.com**: root base, peaceiris `cname`, branch-deploy docs | [2026-07-16-site-custom-domain-towards-alignment.md](2026-07-16-site-custom-domain-towards-alignment.md) |
 | 2026-07-16 | Graded lab **GL-64/65**: `ExerciseTargets` on `RuntimeEcology`; honest reference `channel_coupling_rounds=0`; supplementary UAD gate + channel presets; `0.36.0` | [2026-07-16-graded-lab-gl64-gl65-exercise-targets-uad-gate.md](2026-07-16-graded-lab-gl64-gl65-exercise-targets-uad-gate.md) |
 | 2026-07-16 | Graded lab **session end**: commit GL-60–63; agree supplementary in-ecology UAD roles replace `ChannelCouplingProtocol` for claims; GL-64/65 next; brief still DRAFT | [2026-07-16-graded-lab-gl64-session-end-uad-roles.md](2026-07-16-graded-lab-gl64-session-end-uad-roles.md) |
