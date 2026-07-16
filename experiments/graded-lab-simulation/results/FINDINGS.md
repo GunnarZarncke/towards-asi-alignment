@@ -3533,3 +3533,28 @@ freeze growth brief; first v3 growth round.
 
 - `CODE_VERSION` **`graded-lab-0.32.1`**.
 
+## GL-59 (PLAN_v3 slice D — causal C2-v3 ablation gate, `graded-lab-0.33.0`)
+
+**Trigger:** External review (GL-57) asked for an ablation-style C2-v3 gate
+complementing accounting ``check_c2_v3``.
+
+**Implementation:**
+
+- ``graded_lab/harness/c2_v3_causal_gate.py`` — ``pick_c2_v3_ablation_flow_id``
+  (dominant qualifying principal's largest compute flow), ``evaluate_c2_v3_causal_gate``.
+- Pre-registered per-fixture metadata ``v3_fixture_metadata.c2_v3_causal_gate``:
+  seeds ``{0,2,4}``, min 2/3 pass, pattern L1 ≥ 0.10 or deploy diff,
+  ``carrier_load_scale=1.5``, ``T=100``, plain ``WEAK_AGENT`` (no mechanism-exercise
+  profiles — isolates principal-flow effects from host Part B choreography).
+- Fixtures: integrated reference (engineer 30/10) +
+  ``tests/fixtures/ecology_v3_c2_v3_causal_engineer_alt.json`` (engineer 32/8).
+- Negative control at ``carrier_load_scale=0.0`` must not diverge on all seeds.
+
+**Honest scope:** Engineering-only supplement to accounting C2-v3; **not**
+wired into ``ComplexityReport.all_passed`` or grower ``pass_fail_only()``.
+Only engineer focal role shows signal on this roster at pre-registered load.
+
+**Still open:** load-bearing Part B; detector fixtures; growth brief; round.
+
+- `CODE_VERSION` **`graded-lab-0.33.0`**.
+

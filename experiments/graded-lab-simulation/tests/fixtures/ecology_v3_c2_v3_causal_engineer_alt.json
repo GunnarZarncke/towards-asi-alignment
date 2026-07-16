@@ -289,48 +289,9 @@
     }
   ],
   "ecology_version": "graded-ecology-v3",
-  "reference_mechanism_exercise": {
-    "enabled": true,
-    "channel_coupling_rounds": 8
-  },
-  "pressure_coupling": {
-    "default_decay_per_tick": 0.01,
-    "channels": [
-      {
-        "id": "deploy_audit",
-        "roles_affected": ["reviewer"],
-        "task_kind": "incident_review",
-        "driver": "active_user_archetype_mass",
-        "gain": 10.0,
-        "threshold": 1.0,
-        "count": 1,
-        "expiry_ticks": 40
-      }
-    ]
-  },
-  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation. Integrated reference (2026-07-15): slice E pressure_coupling + slice B reference_mechanism_exercise on one WEAK_AGENT battery. GL-52: Part A shared_compute_slots=1 so C3 still binds after a single-speaker host coupling prefix; Part B ChannelCouplingProtocol runs 8 eng↔rev rounds (with irregular gaps) before pressure/pipeline resume. GL-53: v3 reference checker uses V3_REFERENCE_T=200 (not default T=100); calibration snapshot results/slice_d_reference_battery_T200_n50.json.",
+  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation. Integrated reference (2026-07-15): slice E pressure_coupling + slice B reference_mechanism_exercise on one WEAK_AGENT battery. GL-52: Part A shared_compute_slots=1 so C3 still binds after a single-speaker host coupling prefix; Part B ChannelCouplingProtocol runs 8 eng\u2194rev rounds (with irregular gaps) before pressure/pipeline resume. GL-53: v3 reference checker uses V3_REFERENCE_T=200 (not default T=100); calibration snapshot results/slice_d_reference_battery_T200_n50.json.",
   "v3_fixture_metadata": {
-    "provenance": "PLAN_v3 slice A — wiring validation only, not Q1 transfer",
-    "integrated_reference": {
-      "slices_co_exercised": ["A", "E", "B", "C"],
-      "slices_not_on_this_fixture": ["F", "D"],
-      "reference_battery": {
-        "code_version": "graded-lab-0.27.0",
-        "roster": "WEAK_AGENT",
-        "V3_REFERENCE_T": 200,
-        "checker_seeds": 20,
-        "calibration_snapshot": "results/slice_d_reference_battery_T200_n50.json",
-        "calibration_n_seeds": 50,
-        "pre_q1_batteries": {
-          "detector_coverage": "results/slice_d_v3_detector_coverage_T200_n20.json",
-          "phenotype_overlap": "results/slice_d_program_map_phenotype_overlap.json",
-          "phenotype_overlap_note": "GL-54 first pass reported spurious 100% overlap (harness bug: unapplied resolved temperature/goal_weights + walker-only-mode mutations structurally inert); GL-55 fixed and reran (0-12.5% overlap).",
-          "code_version": "graded-lab-0.29.0"
-        },
-        "frozen_at": "2026-07-16"
-      },
-      "note": "WEAK_AGENT + ecology reference_mechanism_exercise host merge; not ecology ProgramMap. Part A shared_compute_slots=1 (GL-52). Host channel coupling 8 rounds + coupling-window CMI gate (GL-52). C1-v3/C4 require T=200 (GL-53); GL-50 fixed affordable-set starvation that had zeroed deploy/harm at short horizons."
-    },
+    "provenance": "PLAN_v3 slice D \u2014 C2-v3 causal gate secondary fixture (engineer alt split 35/5)",
     "ablation_target_flow_id": "flow_eng_lab_operator_compute",
     "ablation_gate": {
       "seeds": [
@@ -347,7 +308,11 @@
       "focal_role": "engineer",
       "focal_actor_id": "eng1",
       "ablation_flow_id": "flow_eng_lab_operator_compute",
-      "seeds": [0, 2, 4],
+      "seeds": [
+        0,
+        2,
+        4
+      ],
       "histogram_l1_threshold": 0.1,
       "min_seeds_passing": 2,
       "carrier_load_scale": 1.5,
@@ -362,7 +327,7 @@
       "mechanism_id": "compute_allocation_policy",
       "role": "engineer",
       "resource_type": "compute_allowance_baseline",
-      "amount_per_tick": 30
+      "amount_per_tick": 32
     },
     {
       "id": "flow_engineer_grant_funder_compute",
@@ -370,7 +335,7 @@
       "mechanism_id": "access_grant_transfer",
       "role": "engineer",
       "resource_type": "compute_allowance_topup",
-      "amount_per_tick": 10
+      "amount_per_tick": 8
     },
     {
       "id": "flow_engineer_lab_operator_io",

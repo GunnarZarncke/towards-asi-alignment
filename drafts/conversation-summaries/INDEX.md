@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-16 | Graded lab **GL-59 causal C2-v3 gate**: ablation engineering gate on ≥2 fixtures; plain WEAK_AGENT; not grower-visible; `0.33.0` | [2026-07-16-graded-lab-gl59-causal-c2-v3-gate.md](2026-07-16-graded-lab-gl59-causal-c2-v3-gate.md) |
 | 2026-07-16 | Graded lab **GL-58 load-bearing Part B**: auto mechanism-exercise profile merge + strict affordances on v3; C5-v3 without `reference_mechanism_exercise` opt-in; `0.32.0` | [2026-07-16-graded-lab-gl58-load-bearing-part-b.md](2026-07-16-graded-lab-gl58-load-bearing-part-b.md) |
 | 2026-07-16 | Graded lab **GL-57 external review response**: closed C1-v3/C5-v3 growth-gate loophole; downgraded growth brief frozen→DRAFT; reversed mitigation default 2→1; narrowed C2-v3 claim; detector-coverage risk now a blocking stop; `0.31.0` | [2026-07-16-graded-lab-gl57-external-review-response.md](2026-07-16-graded-lab-gl57-external-review-response.md) |
 | 2026-07-16 | Graded lab **GL-56 C2-v3 + growth brief**: compiled compute contribution floors; v3 growth protocol frozen in BLIND_GENERATION.md; `0.30.0` | [2026-07-16-graded-lab-gl56-c2-v3-growth-brief.md](2026-07-16-graded-lab-gl56-c2-v3-growth-brief.md) |

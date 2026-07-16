@@ -434,16 +434,16 @@ pytest tests/test_slice_c_scorecard.py::test_reference_battery_passes_c1_v3_at_f
 pytest tests/test_slice_c_scorecard.py::test_c1_v3_not_exercised_when_episode_horizon_too_short -q
 ```
 
-**Still open under slice D:** load-bearing Part B for default/grower
-agents (v3 strict mode or reference programs targeting governed ids);
-generic walker-step interpreter; optional supplementary detector
-fixtures (blocking for Q1 claims per GL-57, not optional — see
-`DESIGN.md` § slice D detector coverage); a causal (ablation-style) C2-v3
-gate; first v3 growth round. The growth brief (`BLIND_GENERATION.md` §
-V3) is **DRAFT, not frozen** — GL-56 froze it prematurely while Part B
-was open; external review (GL-57) retracted the freeze and reversed the
-brief's default from mitigation 2 to mitigation 1. Launch is blocked on
-the Part B gate, with no mitigation-2 escape hatch.
+**Still open under slice D:** load-bearing Part B for ecology-forced
+reference behavior; generic walker-step interpreter; supplementary detector
+fixtures (blocking for Q1 claims per GL-57 — see `DESIGN.md` § slice D
+detector coverage). **Causal C2-v3 ablation gate built (GL-59,
+engineering-only — `tests/test_v3_c2_v3_causal_gate.py`).** The growth
+brief (`BLIND_GENERATION.md` § V3) is **DRAFT, not frozen** — GL-56
+froze it prematurely while Part B was open; external review (GL-57)
+retracted the freeze and reversed the brief's default from mitigation 2
+to mitigation 1. First v3 growth round blocked on load-bearing Part B +
+detector fixtures.
 
 ---
 

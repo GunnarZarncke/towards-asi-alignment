@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.32.1"  # GL-58 scope correction: honest host-choreography claims; exercise-disabled negative control
+CODE_VERSION = "graded-lab-0.33.0"  # GL-59: causal C2-v3 ablation engineering gate (≥2 fixtures)
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

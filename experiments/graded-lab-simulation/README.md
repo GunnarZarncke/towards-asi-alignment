@@ -7,7 +7,7 @@ blinded resource/population substrate, not from dialed parameters.
 **Status: v1 CLOSED (2026-07-15, GL-31) → v2 mostly closed (V2-1 complete,
 V2-2 closed with C3 failure) → V2-2b CLOSED without a growth round
 (GL-43) → v3 institutional runtime wiring is the active program.**
-`CODE_VERSION` `graded-lab-0.32.1` — see `DESIGN.md` for the accumulated
+`CODE_VERSION` `graded-lab-0.33.0` — see `DESIGN.md` for the accumulated
 "pre-registration" sections (one per program) and their frozen constants.
 Phase 7a discovery is proper UAD + access-UAD as of GL-51 (Jaccard /
 mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
@@ -29,8 +29,8 @@ mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
   of declarative-only JSON — [`PLAN_v3.md`](PLAN_v3.md). Build order:
   slices **A, F, E, C done; B partial** (enforcement + reference opt-in
   gate); **slice D partial** (GL-53–GL-58: constants, pre-Q1 batteries,
-  C2-v3, growth brief DRAFT; GL-58 auto-merge only — **load-bearing Part B
-  still open**; causal C2-v3 + detector fixtures + growth round still open). See
+  C2-v3, growth brief DRAFT; GL-58 auto-merge; **causal C2-v3 gate (GL-59)**;
+  load-bearing Part B still open; detector fixtures + growth round still open). See
   "v3 slice status" below and `results/FINDINGS.md` GL-44 through GL-58
   for the slice-by-slice record, including the affordable-set starvation
   bug (GL-50), proper UAD (GL-51), host coupling (GL-52), the slice D
@@ -118,7 +118,7 @@ Build order per `PLAN_v3.md` (institutional Part B → live runtime):
 | E — feedback-coupled pressure + task injection | **done** (`graded-lab-0.23.0`; GL-47) |
 | C — principal scorecard + measured tension (C1-v3) | **done** (`graded-lab-0.25.0`; GL-49; measured-tension check verified against a real reference battery only after the GL-50 fix below) |
 | B — `mechanisms` → enforced coordination | **partial**: ACL enforcement + host reference exercise (GL-45/48/48b/58); load-bearing ecology-forced behavior **still open** |
-| D — criteria freeze + growth protocol | **partial** (GL-53–GL-58; GL-58 auto-merge; load-bearing Part B open; growth brief DRAFT; causal C2-v3 + detector fixtures + round still open) |
+| D — criteria freeze + growth protocol | **partial** (GL-53–GL-59; causal C2-v3 ablation gate; load-bearing Part B open; growth brief DRAFT; detector fixtures + round still open) |
 
 **GL-50 (`graded-lab-0.25.1`):** affordable-set starvation + missing
 one-shot guard zeroed `deploy_rate`/`bearer_harm` on the integrated
@@ -165,11 +165,10 @@ C2-v3 as an accounting-only check (not causal) and detector-coverage's
 `transfer_failure_risk` as a blocking stop for Q1 claims, not a footnote.
 See `results/FINDINGS.md` GL-57.
 
-**GL-58 (`graded-lab-0.32.0`–`0.32.1`):** auto-merge of host ``mechanism_exercise``
-targets (opt-in flag unnecessary); ``omit_unbound_lab_affordances`` hides two
-cheap ``lab``/scratch fillers from ``AFFORDABLE_CAP``. **Does not** close
-load-bearing Part B — C5-v3 still measures host-choreographed reference
-exercise, not ecology-forced behavior. See `results/FINDINGS.md` GL-58.
+**GL-59 (`graded-lab-0.33.0`):** causal C2-v3 ablation engineering gate —
+``evaluate_c2_v3_causal_gate`` on ≥2 fixtures; plain ``WEAK_AGENT`` (no
+host mechanism profiles). Accounting ``check_c2_v3`` unchanged for growth.
+See `results/FINDINGS.md` GL-59.
 
 ## v1 Phase status (historical, closed 2026-07-15)
 

@@ -62,8 +62,8 @@ for v3 reference batteries (v2 unchanged at ``T=100``).
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
 ``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
 growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
-launched). **Current:** ``graded-lab-0.32.1`` at GL-58 scope correction (auto
-merge + omit unbound lab fillers; load-bearing Part B still open).
+launched). **Current:** ``graded-lab-0.33.0`` at GL-59 (causal C2-v3
+ablation engineering gate; accounting C2-v3 unchanged for growth).
 — ``ComplexityReport.all_passed``/``pass_fail_only()`` now require
 C1-v3/C5-v3 for v3 ecologies (closing the declarative-green-without-
 causal-signal gap GL-42 named); GL-56's growth brief downgraded from
@@ -1673,12 +1673,13 @@ at ``T=200`` deploy ≈ 0.68 with all criteria passing.
 | C4 deploy band | (0.1, 0.9) | **high** at T=200 — point 0.68 [0.55, 0.81] at n=50 |
 | C1-v3 `C1_V3_MAX_CORRELATION` | −0.15 | **high** at T=200 — 5/5 conflicts pass; r ∈ {−0.35, −0.63} at n=50 |
 | C5-v3 min distinct kinds | 3 | **high** — 4/4 exercised on integrated battery |
-| C2-v3 min contribution fraction (compute, per role) | 0.05 | **high on what it measures** — integrated reference passes; token-flow negative in unit tests. **Scope limit (GL-57, external review, accepted):** this is a compiled-graph *accounting* check — ≥2 principals each fund ≥5% of a role's compiled compute. It does **not** show principal identity **causally** changes agent payoff or behavior the way the slice A ablation gate does for flows in general; io/standing are ignored by design. Treat as "compiled contribution floors met," not as evidence principal identity matters causally. An ablation-style causal gate for C2-v3 (severing a qualifying principal's flow and requiring measurable behavior change, on ≥2 fixtures) is a documented future item, not yet built. |
+| C2-v3 min contribution fraction (compute, per role) | 0.05 | **high on what it measures** — integrated reference passes; token-flow negative in unit tests. **Accounting only** in ``ComplexityReport`` growth gating. **Causal supplement (GL-59):** ``evaluate_c2_v3_causal_gate`` ablates the dominant qualifying principal's compute flow per fixture metadata and requires deploy or focal-actor pattern L1 divergence on ≥2/3 seeds at ``carrier_load_scale=1.5`` (plain ``WEAK_AGENT``, no mechanism-exercise profiles — isolates flow effects from host Part B choreography). Fixtures: integrated reference + ``ecology_v3_c2_v3_causal_engineer_alt.json``. Engineering-only; not a grower-visible criterion. |
 | C3/C4 seed count (checker) | 20 | **medium** — sufficient for pass/fail; use n≈50 for CI claims only |
 
 **Not frozen this slice (still open per `PLAN_v3.md` slice D):**
-load-bearing Part B for default/grower agents; a causal (ablation-style)
-C2-v3 gate. Growth protocol brief is **DRAFT, not frozen** (GL-56 froze
+load-bearing Part B for ecology-forced reference behavior; supplementary
+detector fixtures (blocking for Q1 claims). **Causal C2-v3 gate built
+(GL-59, engineering-only — not grower-visible).** Growth protocol brief is
 it prematurely; retracted GL-57 per external review) — see
 `BLIND_GENERATION.md` § V3. No round launched; none should be until Part
 B closes.
