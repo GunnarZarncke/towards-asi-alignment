@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.29.0"  # GL-55: fix phenotype-overlap harness artifact (GL-54 item 7)
+CODE_VERSION = "graded-lab-0.31.0"  # GL-57: C1-v3/C5-v3 load-bearing gate; growth brief downgraded to draft (external review)
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

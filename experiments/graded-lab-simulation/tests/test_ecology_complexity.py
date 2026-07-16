@@ -8,14 +8,17 @@ from __future__ import annotations
 
 import copy
 import json
+from pathlib import Path
 
 import pytest
 
 from graded_lab.harness.ecology_complexity import (
+    C2_V3_MIN_CONTRIBUTION_FRACTION,
     C3_SEEDS,
     ComplexityReport,
     check_c1,
     check_c2,
+    check_c2_v3,
     check_c3,
     check_c4,
     check_c5,
@@ -274,11 +277,130 @@ def test_complexity_report_pass_fail_only_hides_numeric_details():
     assert not report.all_passed
 
 
+def test_pass_fail_only_omits_v3_bits_for_non_v3_ecology():
+    """GL-57: v1/v2 ``ComplexityReport``s (``ecology_is_v3`` default False)
+    must not gain new grower-visible keys — no behavior change for
+    existing v1/v2 growth rounds."""
+    report = ComplexityReport(
+        c1_principal_plurality=True,
+        c2_incentive_coupling=True,
+        c3_contention_liveness=True,
+        c4_behavioral_non_degeneracy=True,
+        c5_mechanism_diversity=True,
+    )
+    assert "C1_v3" not in report.pass_fail_only()
+    assert "C5_v3" not in report.pass_fail_only()
+    assert report.all_passed
+
+
+def test_all_passed_requires_c1_v3_and_c5_v3_for_v3_ecology():
+    """GL-57 (external review): a v3 ecology that passes every declarative
+    C1-C5 check but has not measured principal tension or exercised
+    mechanisms must NOT report ``all_passed`` — closes the GL-42-style
+    declarative-green-without-causal-signal loophole named by review."""
+    base_kwargs = dict(
+        c1_principal_plurality=True,
+        c2_incentive_coupling=True,
+        c3_contention_liveness=True,
+        c4_behavioral_non_degeneracy=True,
+        c5_mechanism_diversity=True,
+        ecology_is_v3=True,
+    )
+    all_declarative_pass_but_v3_missing = ComplexityReport(**base_kwargs)
+    assert not all_declarative_pass_but_v3_missing.all_passed
+    view = all_declarative_pass_but_v3_missing.pass_fail_only()
+    assert view["C1_v3"] is False
+    assert view["C5_v3"] is False
+
+    only_c1_v3_true = ComplexityReport(
+        **base_kwargs, c1_v3_measured_tension=True, c5_v3_mechanisms_exercised=False
+    )
+    assert not only_c1_v3_true.all_passed
+
+    both_true = ComplexityReport(
+        **base_kwargs, c1_v3_measured_tension=True, c5_v3_mechanisms_exercised=True
+    )
+    assert both_true.all_passed
+    assert both_true.pass_fail_only()["C1_v3"] is True
+    assert both_true.pass_fail_only()["C5_v3"] is True
+
+
 def test_per_actor_reachable_principals_reports_each_actor():
     per_actor = per_actor_reachable_principals(_passing_ecology_dict())
     assert set(per_actor) == {"eng1", "rev1", "rm1", "admin1"}
     assert len(per_actor["eng1"]) >= 2
     assert len(per_actor["admin1"]) >= 1
+
+
+def _minimal_v3_c2_dict(*, engineer_secondary_amount: float = 25.0) -> dict:
+    data = _passing_ecology_dict()
+    data["ecology_version"] = "graded-ecology-v3"
+    data["mechanisms"] = [
+        {
+            "id": "m1",
+            "kind": "message_channel",
+            "description": "shared channel",
+            "members_ground_truth": ["engineer", "reviewer", "release_manager", "admin"],
+        },
+    ]
+    data["resource_allowances_per_tick"] = {
+        role: {"compute": 100.0, "io": 40.0, "standing": 40.0}
+        for role in ("engineer", "reviewer", "release_manager", "admin")
+    }
+    flows = []
+    for role in ("engineer", "reviewer", "release_manager", "admin"):
+        secondary = engineer_secondary_amount if role == "engineer" else 25.0
+        flows.extend(
+            [
+                {
+                    "id": f"flow_{role}_p1",
+                    "principal_id": "p1",
+                    "mechanism_id": "m1",
+                    "role": role,
+                    "resource_type": "compute_allowance_baseline",
+                    "amount_per_tick": 100.0 - secondary,
+                },
+                {
+                    "id": f"flow_{role}_p2",
+                    "principal_id": "p2",
+                    "mechanism_id": "m1",
+                    "role": role,
+                    "resource_type": "compute_allowance_topup",
+                    "amount_per_tick": secondary,
+                },
+            ]
+        )
+    data["resource_flows"] = flows
+    return data
+
+
+def test_check_c2_v3_passes_when_two_principals_meet_contribution_floor():
+    passed, failing, details = check_c2_v3(_minimal_v3_c2_dict(engineer_secondary_amount=25.0))
+    assert passed
+    assert failing == []
+    assert len(details["engineer"]["qualifying_principals"]) >= 2
+    assert details["engineer"]["contribution_fractions"]["p2"] >= C2_V3_MIN_CONTRIBUTION_FRACTION
+
+
+def test_check_c2_v3_fails_when_second_principal_is_token_flow():
+    passed, failing, details = check_c2_v3(_minimal_v3_c2_dict(engineer_secondary_amount=1.0))
+    assert not passed
+    assert "engineer" in failing
+    assert len(details["engineer"]["qualifying_principals"]) == 1
+
+
+@pytest.mark.skipif(
+    not Path("tests/fixtures/ecology_v3_slice_a_reference.json").exists(),
+    reason="integrated reference fixture missing",
+)
+def test_check_c2_v3_passes_on_integrated_reference_fixture():
+    data = json.loads(
+        Path("tests/fixtures/ecology_v3_slice_a_reference.json").read_text(encoding="utf-8")
+    )
+    passed, failing, details = check_c2_v3(data)
+    assert passed, (failing, details)
+    for role in ("engineer", "reviewer", "release_manager", "admin"):
+        assert len(details[role]["qualifying_principals"]) >= 2
 
 
 @pytest.mark.slow

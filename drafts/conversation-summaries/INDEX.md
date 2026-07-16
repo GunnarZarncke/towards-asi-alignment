@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-16 | Graded lab **GL-57 external review response**: closed C1-v3/C5-v3 growth-gate loophole; downgraded growth brief frozen→DRAFT; reversed mitigation default 2→1; narrowed C2-v3 claim; detector-coverage risk now a blocking stop; `0.31.0` | [2026-07-16-graded-lab-gl57-external-review-response.md](2026-07-16-graded-lab-gl57-external-review-response.md) |
+| 2026-07-16 | Graded lab **GL-56 C2-v3 + growth brief**: compiled compute contribution floors; v3 growth protocol frozen in BLIND_GENERATION.md; `0.30.0` | [2026-07-16-graded-lab-gl56-c2-v3-growth-brief.md](2026-07-16-graded-lab-gl56-c2-v3-growth-brief.md) |
 | 2026-07-16 | Graded lab **GL-55 phenotype-overlap harness fix**: root-caused GL-54 item 7's spurious 100% overlap (unapplied resolved temperature/goal_weights + walker-only-mode mutations structurally inert); fixed and reran (0–12.5% overlap); `0.29.0` | [2026-07-16-graded-lab-gl55-phenotype-overlap-fix.md](2026-07-16-graded-lab-gl55-phenotype-overlap-fix.md) |
 | 2026-07-16 | Graded lab **slice D pre-Q1 batteries (GL-54)**: detector coverage + ProgramMap phenotype overlap harnesses; integrated-fixture snapshots; `0.28.0` | [2026-07-16-graded-lab-slice-d-pre-q1-batteries.md](2026-07-16-graded-lab-slice-d-pre-q1-batteries.md) |
 | 2026-07-16 | Graded lab **slice D criteria freeze (GL-53)**: n=50 T=200 calibration battery; `V3_REFERENCE_T=200`; confidence table in DESIGN.md; `0.27.0` | [2026-07-16-graded-lab-slice-d-criteria-freeze.md](2026-07-16-graded-lab-slice-d-criteria-freeze.md) |

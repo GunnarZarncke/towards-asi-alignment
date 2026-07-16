@@ -1,8 +1,10 @@
 # PLAN v3 — institutional runtime wiring
 
 **Status (build order):** slices **A**, **F**, **E**, **C** done; slice **B** partial
-(enforcement + reference opt-in gate); **slice D criteria partial**
-(GL-53); growth protocol + pre-Q1 batteries still open.
+(enforcement + reference opt-in gate); **slice D partial** (criteria
+frozen GL-53; pre-Q1 batteries + C2-v3 done GL-54–56; growth-gate fix
+GL-57); load-bearing Part B and the growth brief (DRAFT, not frozen)
+still open — see the build-order table below.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing
@@ -501,12 +503,18 @@ for slice D.
    criteria + pilot; exact thresholds withheld; oracle/referee plane
    strictly withheld) rather than a claim of rubric-blind growth.
    The ≤ 4-round budget convention carries over.
-   **ProgramMap blinding (decided 2026-07-15):** v3.0 growth uses
-   **mitigation 2** (grower may set `program_map` or preset keys;
-   brief omits principal→referee compilation; checker pass/fail only).
-   **Mitigation 1** (Part A/B only, frozen actor presets) plus optional
-   **text→`ProgramMap` compiler** (§ below, `REPRODUCTION.md` §9) is
-   the target for a tighter reproduction pass — not v3.0 default.
+   **ProgramMap blinding — REVISED 2026-07-16 (GL-57, external review):**
+   round 1 uses **mitigation 1** (Part A/B only, frozen `WEAK_AGENT`
+   presets; no grower `program_map`). GL-56 had set mitigation 2 as the
+   v3.0 default; review named that as fighting the Q1 transfer claim
+   (grower-authored maps maximize gaming surface while Part B is still
+   optional for ordinary agents) and as choosing the acknowledged-weaker
+   option for convenience. Mitigation 2 (grower-authored `program_map`)
+   is deferred to a later, explicitly-scoped selection/robustness
+   experiment (V2-4/V2-5), not folded into round 1's blinded design
+   surface. Optional **text→`ProgramMap` compiler** (§ below,
+   `REPRODUCTION.md` §9) remains a target for a tighter reproduction pass
+   on top of mitigation 1.
 4. **Q1 restated:** "does frozen v1 machinery (UAD, EAI, ecology-BIQ,
    referee/detectors) transfer to a *runtime-wired* institutional
    ecology it was not co-developed with?" — with slice B making C5's
@@ -560,7 +568,7 @@ when opt-in active. **Still open for slice D:** default/grower programs must
 target governed ids or v3 strict mode — ordinary paths may ignore Part B.
 
 | 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded ✅ (out) |
-| 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 slice D constants frozen ✅ (GL-53); reference batteries pass ✅; pre-Q1 batteries items 6–7 run on integrated fixture ✅ (GL-54; item 7's first-pass 100%-overlap result was a harness artifact, fixed and rerun in GL-55); growth brief + load-bearing Part B + C2-v3 still open |
+| 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 slice D constants frozen ✅ (GL-53); reference batteries pass ✅; pre-Q1 batteries items 6–7 ✅ (GL-54/GL-55); C2-v3 ✅ (accounting-only, GL-56); growth brief **DRAFT, not frozen** (GL-56 froze prematurely, retracted GL-57 external review); C1-v3/C5-v3 now load-bearing for growth gating ✅ (GL-57); load-bearing Part B still open — no round launched |
 
 Total: roughly 6–9 person-weeks of engineering plus two explicit human
 design gates (vote semantics; C-slice metric vocabulary + GoalWeights
@@ -637,11 +645,12 @@ same A/B/C split; Part A numeric fields may gain v3 keys like
 | **B** | Institutional structure — principals, conflicts, resource flows, coordination mechanisms | `principals`, `conflicts`, `resource_flows`, `mechanisms` |
 | **C** | In-world knowledge-base prose (for later LLM onboarding / red-team) | Separate markdown artifact, not scored directly |
 
-Under **mitigation 1**, the grower stops at A+B (+ C artifact); actors
-use frozen presets. Under **mitigation 2** (v3.0 default), the grower
-may also set per-actor `program` / `program_map` inside
-`role_population` — that is *actor behavior*, not Part B institution,
-but it lives in the same ecology JSON.
+Under **mitigation 1** (round 1 default, revised GL-57), the grower stops
+at A+B (+ C artifact); actors use frozen presets. Under **mitigation 2**
+(deferred to a later selection experiment, not round 1), the grower may
+also set per-actor `program` / `program_map` inside `role_population` —
+that is *actor behavior*, not Part B institution, but it lives in the
+same ecology JSON.
 
 **Question:** does `ProgramMap` pass information to the blinded ecology
 grower that violates the v2 blinding map (`PLAN_v2.md`, `BLIND_GENERATION.md`)?
@@ -669,25 +678,41 @@ does not reveal *how* the referee scores episodes. Document as a scope
 limit on "independently grown, structurally surprising" ecologies, not
 as hidden oracle access.
 
-**Mitigations (pick one at slice D growth-protocol freeze):**
+**Mitigations (revised GL-57: mitigation 1 selected for round 1, not "pick
+one at freeze" — see rationale above):**
 
-1. **Strongest blinding:** ecology grower sets **Part A + Part B** (+ Part C
-   artifact) only; `role_population` uses frozen `WEAK_AGENT` preset maps;
-   heterogeneity and `ProgramMap` edits enter only via **V2-4/V2-5 selection**
-   (unblinded implementer, pre-registered operator — standard Q2 path).
+1. **Strongest blinding, round-1 default (GL-57):** ecology grower sets
+   **Part A + Part B** (+ Part C artifact) only; `role_population` uses
+   frozen `WEAK_AGENT` preset maps; heterogeneity and `ProgramMap` edits
+   enter only via **V2-4/V2-5 selection** (unblinded implementer,
+   pre-registered operator — standard Q2 path).
    **Tighter reproduction variant:** grower adds per-actor **behavior
    prose** (plain language, no JSON maps); an implementer-run **text→
    `ProgramMap` compiler** (see `REPRODUCTION.md` §9) produces validated
    maps the grower never edits — combines mitigation 1 with natural
    institutional description.
-2. **Weaker, still honest (v3.0 default, 2026-07-15):** grower may set
-   per-actor `program_map` directly, but brief never states
+2. **Weaker, still honest (deferred to a later selection experiment —
+   was briefly the v3.0 default 2026-07-15–2026-07-16, retracted GL-57):**
+   grower may set per-actor `program_map` directly, but brief never states
    principal→referee compilation or goal-feature alignment; checker returns
    **pass/fail only** (no pattern-histogram or phenotype-hash diagnostics
-   during growth rounds).
+   during growth rounds). Not used for round 1.
 3. **Invalid mitigation (do not do):** withhold `PRIMITIVE_PATTERN_VOCAB`
    from the grower while letting them configure actors — that only hides
    names the primitive API already exposes and creates fake blinding.
+
+**Why 1, and why that part is settled independent of Part B's shape:**
+see `BLIND_GENERATION.md` § V3 "What the `ProgramMap` issue actually is
+(expanded, GL-57)" for the full argument. Short version: mitigation 2
+gives the grower a *second, agent-side* lever to satisfy C5-v3 (write a
+`program_map` that targets governed ids) without load-bearing Part B for
+the actual reference agents ever landing — the review's "escape hatch."
+It also shares `GOAL_FEATURES` vocabulary with the slice-C scorecard, and
+(GL-55) most of the nominal `ProgramMap` space is currently
+runtime-inert outside `scorer_only` mode. All three make mitigation 2
+strictly worse for round 1's Q1 claim, independent of how Part B's
+strict-mode-vs-retargeting question resolves — which is why mitigation 1
+is fixed now rather than left "pick one at freeze."
 
 **Text→`ProgramMap` via LLM (reproduction track, not v3.0):** workable
 if treated like Phase 6 translation — grower submits prose; **implementer

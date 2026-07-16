@@ -60,10 +60,15 @@ starvation fix. ``graded-lab-0.26.0`` at GL-51 proper UAD + access-UAD.
 for v3 reference batteries (v2 unchanged at ``T=100``).
 ``graded-lab-0.28.0`` at GL-54 slice D pre-Q1 batteries (detector coverage +
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
-**Current:** ``graded-lab-0.29.0`` at GL-55 — fixed two phenotype-overlap
-harness bugs (unapplied resolved temperature/goal_weights; walker-only
-mode mutations structurally inert) that had made GL-54 item 7 report a
-spurious 100% overlap; re-ran the battery.
+``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
+growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
+launched). **Current:** ``graded-lab-0.31.0`` at GL-57 (external review)
+— ``ComplexityReport.all_passed``/``pass_fail_only()`` now require
+C1-v3/C5-v3 for v3 ecologies (closing the declarative-green-without-
+causal-signal gap GL-42 named); GL-56's growth brief downgraded from
+"frozen" to **DRAFT** and its mitigation-2 default reversed to
+mitigation-1-for-round-1; C2-v3's accounting-only scope and detector-
+coverage's ``transfer_failure_risk`` reframed as blocking, not footnotes.
 Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
@@ -1667,10 +1672,27 @@ at ``T=200`` deploy ≈ 0.68 with all criteria passing.
 | C4 deploy band | (0.1, 0.9) | **high** at T=200 — point 0.68 [0.55, 0.81] at n=50 |
 | C1-v3 `C1_V3_MAX_CORRELATION` | −0.15 | **high** at T=200 — 5/5 conflicts pass; r ∈ {−0.35, −0.63} at n=50 |
 | C5-v3 min distinct kinds | 3 | **high** — 4/4 exercised on integrated battery |
+| C2-v3 min contribution fraction (compute, per role) | 0.05 | **high on what it measures** — integrated reference passes; token-flow negative in unit tests. **Scope limit (GL-57, external review, accepted):** this is a compiled-graph *accounting* check — ≥2 principals each fund ≥5% of a role's compiled compute. It does **not** show principal identity **causally** changes agent payoff or behavior the way the slice A ablation gate does for flows in general; io/standing are ignored by design. Treat as "compiled contribution floors met," not as evidence principal identity matters causally. An ablation-style causal gate for C2-v3 (severing a qualifying principal's flow and requiring measurable behavior change, on ≥2 fixtures) is a documented future item, not yet built. |
 | C3/C4 seed count (checker) | 20 | **medium** — sufficient for pass/fail; use n≈50 for CI claims only |
 
 **Not frozen this slice (still open per `PLAN_v3.md` slice D):**
-growth protocol brief, load-bearing Part B for default/grower agents, C2-v3.
+load-bearing Part B for default/grower agents; a causal (ablation-style)
+C2-v3 gate. Growth protocol brief is **DRAFT, not frozen** (GL-56 froze
+it prematurely; retracted GL-57 per external review) — see
+`BLIND_GENERATION.md` § V3. No round launched; none should be until Part
+B closes.
+
+**GL-57 gating fix (external review, applied):** `ComplexityReport
+.all_passed` / `.pass_fail_only()` previously only covered declarative
+C1–C5; C1-v3 (measured tension) and C5-v3 (exercised mechanisms) were
+computed but not load-bearing for growth pass/fail — the same
+declarative-green-without-causal-signal pattern GL-42 named, with better
+documentation but the same bug. Fixed: for v3-shaped ecologies,
+`all_passed` now requires C1-v3 and C5-v3 to be explicitly `True` (a v3
+ecology that omits `reference_mechanism_exercise`, leaving C5-v3
+unset, now **fails** rather than silently skipping), and
+`pass_fail_only()` exposes `C1_v3`/`C5_v3` bool bits to the grower at the
+same disclosure level as every other criterion.
 
 **Pre-Q1 batteries (GL-54/GL-55, `graded-lab-0.29.0`):**
 
@@ -1688,6 +1710,16 @@ Harness: `graded_lab/harness/detector_coverage.py`,
 are **always 0.0** (zero variance); `access_integrity` varies (mean ≈ 0.028,
 8 distinct values, 0 flags). Marked `transfer_failure_risk=true` per pre-
 registration — a genuine scope signal for Q1, not a threshold retune.
+**GL-57 (external review): this is a STOP for any Q1-facing growth claim,
+not a footnote.** No growth round's result may be cited as evidence
+"frozen v1 machinery transfers to v3" until this is resolved one of two
+ways: (a) a supplementary v3-shaped fixture (ACL-denied path, vote
+timeout, misreporting-positive roster) is built and shows genuine
+non-zero signal on these four families, isolating "detectors don't see
+*this* fixture's honest signal" from "detectors don't see v3 at all"; or
+(b) the transfer failure is accepted and reported as a limitation
+*before* any round's result is used to support a transfer claim, not
+discovered after the fact.
 
 **Item 7 result, first pass (seed 0, 8 variants/actor) — retracted as a
 harness artifact, see GL-55 below.** The original run reported "100%

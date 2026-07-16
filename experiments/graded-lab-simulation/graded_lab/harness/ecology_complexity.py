@@ -47,6 +47,9 @@ C1_MIN_JUSTIFICATION_CHARS = 20
 # --- C2 ------------------------------------------------------------------
 C2_MIN_REACHABLE_PRINCIPALS = 2
 
+# --- C2-v3 (v3 only: compiled compute contribution floors, slice D) ------
+C2_V3_MIN_CONTRIBUTION_FRACTION = 0.05
+
 # --- C3 / C4 reference battery -----------------------------------------
 C3_SEEDS: tuple[int, ...] = tuple(range(20))
 C4_SEEDS: tuple[int, ...] = C3_SEEDS
@@ -78,6 +81,12 @@ class ComplexityReport:
     c5_v3_mechanisms_exercised: bool | None = None
     # PLAN_v3 slice C: measured principal tension (v3 only).
     c1_v3_measured_tension: bool | None = None
+    # GL-57 (external review): whether this ecology is v3-shaped, hence
+    # whether C1-v3/C5-v3 are *load-bearing* gates rather than reported-only
+    # diagnostics. Set by `run_complexity_check`; defaults False so
+    # existing hand-built `ComplexityReport(...)` test fixtures (which
+    # never set the v3 fields) keep exercising declarative-only C1/C5.
+    ecology_is_v3: bool = False
     # C2 is the one criterion whose *result* detail (not internals) the
     # grower sees between rounds, per the blinding map / DESIGN.md.
     c2_failing_roles: list[str] = field(default_factory=list)
@@ -85,19 +94,38 @@ class ComplexityReport:
 
     @property
     def all_passed(self) -> bool:
-        return (
+        """GL-57 (external review): for v3 ecologies, C1-v3 (measured
+        tension) and C5-v3 (exercised mechanisms) are load-bearing here,
+        not reported-only. A v3 ecology that omits
+        ``reference_mechanism_exercise`` — leaving C5-v3 ``None`` — now
+        FAILS growth rather than silently skipping the criterion; that
+        closes the opt-in loophole GL-42/this review named (declarative
+        green without institutional exercise)."""
+        base = (
             self.c1_principal_plurality
             and self.c2_incentive_coupling
             and self.c3_contention_liveness
             and self.c4_behavioral_non_degeneracy
             and self.c5_mechanism_diversity
         )
+        if not self.ecology_is_v3:
+            return base
+        return bool(
+            base
+            and self.c1_v3_measured_tension is True
+            and self.c5_v3_mechanisms_exercised is True
+        )
 
     def pass_fail_only(self) -> dict[str, bool | list[str]]:
         """Exactly what the grower sees between rounds (DESIGN.md): a
         bool per criterion, plus C2's failing-role list. No diagnostics,
-        no numeric values, no threshold internals."""
-        return {
+        no numeric values, no threshold internals.
+
+        GL-57: v3 ecologies additionally expose ``C1_v3``/``C5_v3`` bits
+        (bool only, same disclosure level as every other criterion here) —
+        these are load-bearing gates for v3 growth, not held back off the
+        grower's feedback loop."""
+        out: dict[str, bool | list[str]] = {
             "C1": self.c1_principal_plurality,
             "C2": self.c2_incentive_coupling,
             "C2_failing_roles": list(self.c2_failing_roles),
@@ -105,6 +133,10 @@ class ComplexityReport:
             "C4": self.c4_behavioral_non_degeneracy,
             "C5": self.c5_mechanism_diversity,
         }
+        if self.ecology_is_v3:
+            out["C1_v3"] = bool(self.c1_v3_measured_tension)
+            out["C5_v3"] = bool(self.c5_v3_mechanisms_exercised)
+        return out
 
 
 def check_c1(data: dict) -> tuple[bool, dict[str, Any]]:
@@ -191,6 +223,46 @@ def check_c2(data: dict) -> tuple[bool, list[str]]:
         if len(_reachable_principals(data, role)) < C2_MIN_REACHABLE_PRINCIPALS:
             failing_roles.append(role)
     return not failing_roles, failing_roles
+
+
+def check_c2_v3(data: dict) -> tuple[bool, list[str], dict[str, Any]]:
+    """PLAN_v3 slice D: per-role compiled compute with contribution floors.
+
+    For every role, at least ``C2_MIN_REACHABLE_PRINCIPALS`` distinct
+    principals must each contribute ≥
+    ``C2_V3_MIN_CONTRIBUTION_FRACTION`` of that role's compiled compute
+    allowance (reachable flows only — same graph as slice A compiler).
+    """
+    from ..world_visible.institutional_compiler import role_principal_compute_contributions
+
+    contributions = role_principal_compute_contributions(data)
+    failing_roles: list[str] = []
+    details: dict[str, Any] = {}
+    for role in ROLES:
+        by_principal = contributions[role]
+        total = sum(by_principal.values())
+        if total <= 0:
+            failing_roles.append(role)
+            details[role] = {
+                "total_compute": 0.0,
+                "contribution_fractions": {},
+                "qualifying_principals": [],
+            }
+            continue
+        fractions = {pid: amt / total for pid, amt in by_principal.items()}
+        qualifying = sorted(
+            pid
+            for pid, frac in fractions.items()
+            if frac >= C2_V3_MIN_CONTRIBUTION_FRACTION
+        )
+        details[role] = {
+            "total_compute": total,
+            "contribution_fractions": fractions,
+            "qualifying_principals": qualifying,
+        }
+        if len(qualifying) < C2_MIN_REACHABLE_PRINCIPALS:
+            failing_roles.append(role)
+    return not failing_roles, failing_roles, details
 
 
 def per_actor_reachable_principals(data: dict) -> dict[str, list[str]]:
@@ -343,7 +415,11 @@ def run_complexity_check(
     data = substrate.data
 
     c1_passed, c1_details = check_c1(data)
-    c2_passed, c2_failing_roles = check_c2(data)
+    if is_v3_shaped_ecology(data):
+        c2_passed, c2_failing_roles, c2_v3_details = check_c2_v3(data)
+    else:
+        c2_passed, c2_failing_roles = check_c2(data)
+        c2_v3_details = {}
     c5_passed, c5_details = check_c5(data)
     per_actor_c2 = per_actor_reachable_principals(data)
 
@@ -371,11 +447,13 @@ def run_complexity_check(
         c5_mechanism_diversity=c5_passed,
         c5_v3_mechanisms_exercised=c5_v3_passed,
         c1_v3_measured_tension=c1_v3_passed,
+        ecology_is_v3=is_v3_shaped_ecology(data),
         c2_failing_roles=c2_failing_roles,
         details={
             "c1": c1_details,
             "c1_v3": c1_v3_details,
             "c2_failing_roles": c2_failing_roles,
+            "c2_v3": c2_v3_details,
             "c2_per_actor_reachable_principals": per_actor_c2,
             "c3": c3_details,
             "c4": c4_details,

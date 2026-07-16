@@ -3353,11 +3353,146 @@ maps without a generic interpreter) remains a real gap, now correctly
 attributed to the missing walker-step interpreter rather than described
 as "slice F doesn't matter."
 
-**Still open (slice D).** Growth-protocol FINDINGS brief; load-bearing
-Part B for default/grower agents; C2-v3; generic walker-step interpreter
-(or documented v3 restriction to scorer/hybrid maps) so walker-mode
-`ProgramMap`s are runtime-reachable too; optional supplementary detector
-fixtures.
+**Still open (slice D).** Load-bearing Part B for default/grower agents;
+generic walker-step interpreter (or documented v3 restriction to
+scorer/hybrid maps); optional supplementary detector fixtures.
 
 - `CODE_VERSION` **`graded-lab-0.29.0`**.
+
+### GL-56 — C2-v3 + v3 growth-protocol brief (`graded-lab-0.30.0`)
+
+**Trigger.** User: continue with the next slice D step after GL-55.
+
+**C2-v3 (criteria re-derivation).** Implemented compiled-graph
+contribution floors for v3 ecologies: for each role, ≥2 distinct
+principals must each contribute ≥5% of that role's **compiled compute**
+allowance (reachable flows only — same graph as slice A compiler).
+Checker code: `role_principal_compute_contributions` in
+`institutional_compiler.py`, `check_c2_v3` in `ecology_complexity.py`;
+v3-shaped ecologies use C2-v3 in place of declarative C2 in
+`run_complexity_check`. Integrated reference fixture passes; token-flow
+negative in unit tests.
+
+**Growth protocol.** Frozen verbatim brief + blinding/isolation rules in
+`BLIND_GENERATION.md` § V3 (mitigation 2 default, GL-42 open-rubric
+posture, ≤4 rounds, pass/fail-only feedback). **No growth round
+launched** — load-bearing Part B for default agents remains open per
+`PLAN_v3.md`.
+
+**Still open (slice D).** Load-bearing Part B / v3 strict mode for
+default reference agents; generic walker-step interpreter; optional
+supplementary detector fixtures; first v3 growth round (blocked on Part
+B gate for Q1 transfer claims on undeclared reference behavior).
+
+- `CODE_VERSION` **`graded-lab-0.30.0`**.
+
+### GL-57 — External review: close the growth-gate loophole, un-freeze the brief (`graded-lab-0.31.0`)
+
+**Trigger.** External review of GL-53–GL-56 (full text supplied by
+user). Five load-bearing concerns plus a "shortcuts that will bite"
+table and an "unnecessarily complex" critique. This entry records what
+was fixed now, what is a genuine open design item, and where I disagree
+or think the fix is already partially in place.
+
+**Fixed this session (agreed, implemented):**
+
+1. **Growth gate closed for C1-v3/C5-v3 (review concern 1 + ask a).**
+   `ComplexityReport.all_passed`/`.pass_fail_only()` previously scored
+   only declarative C1–C5; C1-v3 (measured tension) and C5-v3 (exercised
+   mechanisms) were computed but not grower-visible or load-bearing —
+   exactly the GL-42 failure mode, better documented but not fixed. Now:
+   for v3-shaped ecologies (`ecology_is_v3` field, set by
+   `run_complexity_check`), `all_passed` requires `c1_v3_measured_tension
+   is True` and `c5_v3_mechanisms_exercised is True`; `pass_fail_only()`
+   exposes `C1_v3`/`C5_v3` bool bits at the same disclosure level as every
+   other criterion. A v3 ecology that omits
+   `reference_mechanism_exercise` (review concern 2's "opt-in skip") now
+   **fails** growth instead of silently reporting `None`/skipped. v1/v2
+   `ComplexityReport`s (`ecology_is_v3` defaults `False`) are unaffected —
+   verified by new unit tests, no behavior change for non-v3 growth.
+2. **Brief downgraded from frozen to DRAFT (review concern 4 + ask b).**
+   GL-56 froze the v3 growth brief while load-bearing Part B was still
+   open. Retracted: `BLIND_GENERATION.md` § V3 now states explicitly
+   "DRAFT — do not launch a round against this text," removes the
+   mitigation-2 "optional if grower maps hit governed paths" escape
+   hatch (there never was a real escape hatch once mitigation 1 is the
+   default — growers don't author maps at all in round 1), and states
+   the brief will be revised again once Part B's actual shape (agent
+   retargeting vs. strict mode) is known.
+3. **Mitigation reversed to 1 for round 1 (review concern 5 + ask c).**
+   GL-56 set mitigation 2 (grower-authored `program_map`) as the v3.0
+   default "for convenience," which the review correctly named as
+   fighting the Q1 transfer claim — grower-authored maps maximize gaming
+   surface (shared goal-feature coordinates with the slice-C scorecard)
+   while Part B is still optional for ordinary agents. `BLIND_GENERATION.md`,
+   `PLAN_v3.md` § Blinding boundary and § slice D now default to
+   mitigation 1 (frozen presets only) for round 1; mitigation 2 is
+   deferred to a later, explicitly-scoped V2-4/V2-5 selection experiment.
+4. **C2-v3 claim narrowed (review concern 3 + ask d, partial).**
+   `DESIGN.md` now states explicitly that C2-v3 is a compiled-graph
+   *accounting* check (≥2 principals each ≥5% of compiled compute) and
+   does **not** show principal identity causally changes behavior the
+   way the slice A ablation gate does for flows in general. Did **not**
+   build the causal ablation-style C2-v3 gate the review also asked for
+   (real engineering, out of scope for a same-session fix) — recorded as
+   an explicit open item instead of left implicit.
+5. **Detector-coverage `transfer_failure_risk` reframed as a stop (review
+   ask e).** `DESIGN.md` and `BLIND_GENERATION.md` § V3 now state this
+   blocks any Q1-facing growth claim until resolved (supplementary
+   fixture showing genuine signal, or an accepted-and-reported
+   limitation) — not a footnote to note in passing.
+
+**Where I largely agree but did not implement (genuine engineering, not
+a same-session doc/gating fix):**
+
+- **Load-bearing Part B for default agents** (review concerns 1, 2, 4).
+  This is the actual root fix the review is pointing at — C5-v3 will
+  keep being "opt-in host choreography" until ordinary reference
+  programs target governed mechanism ids or a v3 strict mode denies
+  unbound surfaces. Not started this session; remains the blocking gate
+  before any round, now stated without an escape hatch.
+- **Causal C2-v3 gate** (review concern 3): agreed in principle,
+  not built. An ablation-style test (sever a qualifying principal's flow,
+  require measurable behavior change, on ≥2 fixtures — same shape as the
+  slice A gate) is a reasonable design; scoping it is a next-session item.
+- **Generic walker-step interpreter** (review's "ProgramMap walker/hybrid
+  still preset-dispatch" row): unchanged from GL-55; still open.
+
+**Where I partially disagree or think the characterization is stronger
+than the artifact:**
+
+- **"Dual criterion layers... complexity without selection pressure."**
+  Agreed for the *growth scoreboard* (fixed above — C1-v3/C5-v3 are now
+  load-bearing there). Disagreed as a request to *drop* the declarative
+  C1/C5 layer entirely: declarative C1/C5 remain useful engineering
+  sanity checks (do principals/conflicts/mechanisms parse and meet a
+  floor of plurality at all) distinct from the causal v3 layer, and
+  removing them buys no simplicity the review's own fix doesn't already
+  deliver (they are cheap, and no longer gate growth on their own for v3
+  ecologies).
+- **Host coupling / slots=1 / T=200 "three-knob stack."** These were each
+  independently pre-registered and validated (GL-52 coupling protocol +
+  slots=1; GL-53 T=200 sweep) against specific, named failure modes on
+  the *one* fixture that exists — the review is right that "thresholds
+  frozen on one integrated fixture" is a real generalization limit
+  (documented already: "high confidence" here means "this ecology
+  passes," not "any v3 ecology will"). Not narrowing the stack this
+  session: doing so without a second fixture to validate against would
+  repeat the GL-36 mistake (retuning to fit a single case) in the
+  opposite direction.
+- **"Ceremony around a design exercise that already knows the answer
+  shape."** Partially agreed — flagged as an explicit, unresolved open
+  tension in the revised `BLIND_GENERATION.md` § V3 rather than treated
+  as fully mitigated by disclosure. Not resolved this session (would
+  require either hiding the qualitative bars entirely, which GL-42
+  already ruled out as fake blinding, or accepting the scope limit as
+  final).
+
+**Still open (slice D), restated with GL-57's reframing:** load-bearing
+Part B (blocking, no escape hatch); causal C2-v3 gate; generic
+walker-step interpreter; supplementary detector fixtures (blocking for
+Q1 claims, not optional); first v3 growth round — send only after Part B
+closes, using the revised mitigation-1 brief.
+
+- `CODE_VERSION` **`graded-lab-0.31.0`**.
 

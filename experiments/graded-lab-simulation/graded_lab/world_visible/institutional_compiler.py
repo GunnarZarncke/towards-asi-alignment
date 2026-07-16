@@ -207,6 +207,32 @@ def _role_flow_totals(
     return totals
 
 
+def role_principal_compute_contributions(data: dict) -> dict[str, dict[str, float]]:
+    """Compiled compute per role, attributed to reachable principals (C2-v3).
+
+    Only flows whose principal reaches the role via the same graph as
+    ``reachable_principals_for_role`` / ``_role_flow_totals`` count.
+    """
+    contributions: dict[str, dict[str, float]] = {role: {} for role in ROLES}
+    for flow in data.get("resource_flows", []):
+        if not isinstance(flow, dict):
+            continue
+        role = flow.get("role")
+        principal_id = flow.get("principal_id")
+        resource_type = flow.get("resource_type")
+        if role not in ROLES or principal_id is None or resource_type is None:
+            continue
+        bucket = _ledger_bucket(str(resource_type), flow_id=str(flow.get("id", "")))
+        if bucket != "compute":
+            continue
+        if str(principal_id) not in reachable_principals_for_role(data, role):
+            continue
+        amount = _valid_amount(flow["amount_per_tick"], flow_id=str(flow.get("id", "")))
+        pid = str(principal_id)
+        contributions[role][pid] = contributions[role].get(pid, 0.0) + amount
+    return contributions
+
+
 def _cross_check_warnings(
     data: dict, role_totals: dict[str, dict[str, float]]
 ) -> list[str]:
