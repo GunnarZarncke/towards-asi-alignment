@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-16 | Astro site custom domain **towards-alignment.com**: root base, peaceiris `cname`, branch-deploy docs | [2026-07-16-site-custom-domain-towards-alignment.md](2026-07-16-site-custom-domain-towards-alignment.md) |
+| 2026-07-16 | Graded lab **GL-64/65**: `ExerciseTargets` on `RuntimeEcology`; honest reference `channel_coupling_rounds=0`; supplementary UAD gate + channel presets; `0.36.0` | [2026-07-16-graded-lab-gl64-gl65-exercise-targets-uad-gate.md](2026-07-16-graded-lab-gl64-gl65-exercise-targets-uad-gate.md) |
 | 2026-07-16 | Graded lab **session end**: commit GL-60–63; agree supplementary in-ecology UAD roles replace `ChannelCouplingProtocol` for claims; GL-64/65 next; brief still DRAFT | [2026-07-16-graded-lab-gl64-session-end-uad-roles.md](2026-07-16-graded-lab-gl64-session-end-uad-roles.md) |
 | 2026-07-16 | Graded lab **GL-63 detector split**: `machinery_transfer_verified` vs `honest_reference_sparse_detectors`; brief updated; `0.35.1` | [2026-07-16-graded-lab-gl63-detector-prereg-split.md](2026-07-16-graded-lab-gl63-detector-prereg-split.md) |
 | 2026-07-16 | Graded lab **GL-62 Part B retarget**: ecology affordance presets when host merge off; alt-id fixture; C5 without coupling; `0.35.0`; brief not frozen | [2026-07-16-graded-lab-gl62-part-b-retarget.md](2026-07-16-graded-lab-gl62-part-b-retarget.md) |

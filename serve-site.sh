@@ -79,9 +79,6 @@ cleanup() {
 trap cleanup EXIT INT TERM
 start_demo_backends
 
-# Local serve uses site root so URLs are http://localhost:PORT/book/ch06/
-# GitHub Pages CI keeps the default base /towards-asi-alignment
-export ASTRO_BASE="${ASTRO_BASE:-/}"
 export ASTRO_TELEMETRY_DISABLED=1
 
 URL="http://localhost:${PORT}/"
