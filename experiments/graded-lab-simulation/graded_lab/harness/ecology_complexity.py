@@ -29,7 +29,7 @@ from ..world_visible.ecology_agents import (
 from ..oracle_only.principal_scorecard import check_c1_v3
 from ..world_visible.mechanism_exercise import (
     check_c5_v3,
-    reference_mechanism_exercise_targets,
+    v3_has_part_b_mechanisms,
 )
 from ..world_visible.substrate import V2_ECOLOGY_PATH, load_substrate, is_v3_shaped_ecology
 from ..world_visible.world import EpisodeResult, default_lab_config, run_episode
@@ -96,11 +96,9 @@ class ComplexityReport:
     def all_passed(self) -> bool:
         """GL-57 (external review): for v3 ecologies, C1-v3 (measured
         tension) and C5-v3 (exercised mechanisms) are load-bearing here,
-        not reported-only. A v3 ecology that omits
-        ``reference_mechanism_exercise`` — leaving C5-v3 ``None`` — now
-        FAILS growth rather than silently skipping the criterion; that
-        closes the opt-in loophole GL-42/this review named (declarative
-        green without institutional exercise)."""
+        not reported-only. GL-58: C5-v3 applies to every v3 ecology with Part B
+        mechanisms unless exercise is explicitly disabled; host auto-merge
+        replaces the old opt-in flag — it does not close load-bearing Part B."""
         base = (
             self.c1_principal_plurality
             and self.c2_incentive_coupling
@@ -434,10 +432,10 @@ def run_complexity_check(
     if is_v3_shaped_ecology(data):
         c1_v3_passed, c1_v3_details = check_c1_v3(data, results)
         roster = reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
-        if reference_mechanism_exercise_targets(data, roster) is not None:
+        if v3_has_part_b_mechanisms(data):
             c5_v3_passed, c5_v3_details = check_c5_v3(data, results)
         else:
-            c5_v3_details = {"skipped": "ecology missing reference_mechanism_exercise"}
+            c5_v3_details = {"skipped": "ecology missing Part B mechanisms"}
 
     return ComplexityReport(
         c1_principal_plurality=c1_passed,

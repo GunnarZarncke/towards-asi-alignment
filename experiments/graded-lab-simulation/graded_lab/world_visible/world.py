@@ -22,7 +22,7 @@ from .affordable import (
 )
 from .carrier import CarrierLedger, CarrierStatus
 from .config import AgentConfig, EpisodeConfig, GoalWeights
-from .mechanism_exercise import ChannelCouplingProtocol
+from .mechanism_exercise import ChannelCouplingProtocol, v3_omit_unbound_lab_affordances
 from .observation import ObservationProjector
 from .pipeline_engine import PipelineEngine, StepResult
 from .pipeline_spec import load_spec
@@ -806,6 +806,10 @@ def run_episode(
                     # After a host coupling phase, do not re-offer channel
                     # communicates (credit already earned); still offer other kinds.
                     include_channel = coupling_protocol is None
+                    omit_unbound_lab = (
+                        mech_targets is not None
+                        and v3_omit_unbound_lab_affordances(substrate_data)
+                    )
                     affordable = build_affordable_set(
                         actor_id=actor_id,
                         role=agent.role,
@@ -825,6 +829,7 @@ def run_episode(
                         transfer_acls=transfer_acls,
                         vote_specs=vote_service.specs if vote_service is not None else {},
                         include_channel=include_channel,
+                        omit_unbound_lab_affordances=omit_unbound_lab,
                     )
                 obs: dict[str, object] = {
                     "t": t,

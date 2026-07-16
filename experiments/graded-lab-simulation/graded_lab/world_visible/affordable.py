@@ -77,6 +77,7 @@ def build_affordable_set(
     transfer_acls: dict[str, frozenset[str]] | None = None,
     vote_specs: dict[str, object] | None = None,
     include_channel: bool = True,
+    omit_unbound_lab_affordances: bool = False,
 ) -> list[PrimitiveAction]:
     """Return primitives legal and affordable this tick (capped)."""
     if role not in ROLES:
@@ -199,16 +200,21 @@ def build_affordable_set(
 
     # General isolate primitives are available independently of the pipeline;
     # their semantics are implemented by the world rather than being labels
-    # emitted by an agent.
-    for action in (
-        PrimitiveAction("write", {"path": "notes/status", "content": {"status": "working"}}),
-        PrimitiveAction(
-            "communicate",
-            {"channel": "lab", "message": {"kind": "status", "actor_id": actor_id}},
-        ),
-    ):
-        if _can_afford(resources, action, substrate_data, scheduler=scheduler):
-            candidates.append(action)
+    # emitted by an agent. GL-58: when host exercise is active, omit two cheap
+    # unbound fillers (lab channel + notes/status scratch write) so they do not
+    # crowd AFFORDABLE_CAP; path reads, pressure writes, pipeline calls stay.
+    if not (omit_unbound_lab_affordances and mechanism_exercise):
+        for action in (
+            PrimitiveAction(
+                "write", {"path": "notes/status", "content": {"status": "working"}}
+            ),
+            PrimitiveAction(
+                "communicate",
+                {"channel": "lab", "message": {"kind": "status", "actor_id": actor_id}},
+            ),
+        ):
+            if _can_afford(resources, action, substrate_data, scheduler=scheduler):
+                candidates.append(action)
 
     candidates.append(PrimitiveAction("continue_current", {}))
     return _cap(candidates)

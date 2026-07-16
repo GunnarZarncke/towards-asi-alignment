@@ -62,7 +62,8 @@ for v3 reference batteries (v2 unchanged at ``T=100``).
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
 ``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
 growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
-launched). **Current:** ``graded-lab-0.31.0`` at GL-57 (external review)
+launched). **Current:** ``graded-lab-0.32.1`` at GL-58 scope correction (auto
+merge + omit unbound lab fillers; load-bearing Part B still open).
 — ``ComplexityReport.all_passed``/``pass_fail_only()`` now require
 C1-v3/C5-v3 for v3 ecologies (closing the declarative-green-without-
 causal-signal gap GL-42 named); GL-56's growth brief downgraded from

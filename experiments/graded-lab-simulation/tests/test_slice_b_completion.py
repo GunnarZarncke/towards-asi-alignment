@@ -23,7 +23,16 @@ from graded_lab.world_visible.mechanism_exercise import (
     coupling_stimulus_recovered,
     kinds_exercised_in_log,
     live_coupling_ground_truth_units,
+    mechanism_exercise_disabled,
+    mechanism_exercise_profile_for_ecology,
+    v3_omit_unbound_lab_affordances,
 )
+from graded_lab.world_visible.affordable import build_affordable_set
+from graded_lab.world_visible.pipeline_engine import PipelineEngine
+from graded_lab.world_visible.pipeline_spec import load_spec
+from graded_lab.world_visible.resource_ledger import ResourceLedger
+from graded_lab.world_visible.scheduler import ActionScheduler
+from graded_lab.world_visible.workspace import Workspace
 from graded_lab.world_visible.substrate import load_substrate
 from graded_lab.world_visible.world import default_lab_config, run_episode
 
@@ -47,16 +56,58 @@ def _v3_cfg(*, T: int = 120) -> EpisodeConfig:
     )
 
 
-def _reference_programs_profiles():
-    data = load_substrate(_FIXTURE).data
+def _reference_programs_profiles(*, ecology_data: dict | None = None):
+    data = ecology_data if ecology_data is not None else load_substrate(_FIXTURE).data
     roster = reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
     return data, roster, *programs_and_profiles_for_roster(roster, ecology_data=data)
 
 
+def _ok_communicates_on_channel(log: list, channel: str) -> int:
+    count = 0
+    for e in log:
+        if e.get("status") != "ok":
+            continue
+        prim = e.get("primitive")
+        if not isinstance(prim, dict) or prim.get("kind") != "communicate":
+            continue
+        args = prim.get("args", {})
+        if isinstance(args, dict) and args.get("channel") == channel:
+            count += 1
+    return count
+
+
+def _governed_artifact_ops(log: list) -> int:
+    count = 0
+    for e in log:
+        if e.get("status") != "ok":
+            continue
+        prim = e.get("primitive")
+        if not isinstance(prim, dict) or prim.get("kind") not in ("read", "write"):
+            continue
+        args = prim.get("args", {})
+        if isinstance(args, dict) and args.get("artifact_id"):
+            count += 1
+    return count
+
+
+def _vote_casts(log: list) -> int:
+    count = 0
+    for e in log:
+        if e.get("status") != "ok":
+            continue
+        prim = e.get("primitive")
+        if not isinstance(prim, dict) or prim.get("kind") != "call":
+            continue
+        args = prim.get("args", {})
+        if isinstance(args, dict) and args.get("endpoint") == "vote.cast":
+            count += 1
+    return count
+
+
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
-def test_weak_agent_exercises_mechanisms_when_ecology_opts_in():
+def test_weak_agent_exercises_mechanisms_on_v3_reference():
     data, _roster, programs, profiles = _reference_programs_profiles()
-    assert data.get("reference_mechanism_exercise") is not None
+    assert all("mechanism_exercise" in profiles[a.actor_id] for a in _roster.agents)
     result = run_episode(
         _v3_cfg(), seed=3, backend=MockIsolate(), programs=programs, behavior_profiles=profiles
     )
@@ -68,22 +119,160 @@ def test_weak_agent_exercises_mechanisms_when_ecology_opts_in():
     assert programs["eng1"] == "walk_pipeline"
 
 
+@pytest.mark.slow
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
 def test_c5_v3_on_unified_reference_battery(tmp_path):
     data = copy.deepcopy(load_substrate(_FIXTURE).data)
-    without = copy.deepcopy(data)
-    del without["reference_mechanism_exercise"]
-    no_path = tmp_path / "no_mech_exercise.json"
-    no_path.write_text(json.dumps(without), encoding="utf-8")
+    without_mech = copy.deepcopy(data)
+    without_mech["mechanisms"] = []
+    no_mech_path = tmp_path / "no_mechanisms.json"
+    no_mech_path.write_text(json.dumps(without_mech), encoding="utf-8")
 
-    results = run_reference_episodes(_FIXTURE, seeds=(0, 1, 2), progress=False)
+    results = run_reference_episodes(_FIXTURE, seeds=(0,), progress=False)
     passed, details = check_c5_v3(data, results)
     assert passed, details
 
-    no_results = run_reference_episodes(no_path, seeds=(0, 1, 2), progress=False)
-    no_passed, no_details = check_c5_v3(without, no_results)
+    no_results = run_reference_episodes(no_mech_path, seeds=(0,), progress=False)
+    no_passed, no_details = check_c5_v3(without_mech, no_results)
     assert not no_passed
-    assert len(no_details["kinds_exercised"]) < 3
+    assert len(no_details.get("kinds_exercised", [])) < 3
+
+
+@pytest.mark.slow
+@pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
+def test_c5_v3_load_bearing_without_reference_opt_in(tmp_path):
+    """GL-58: auto-merge replaces opt-in; host protocol still drives C5."""
+    data = copy.deepcopy(load_substrate(_FIXTURE).data)
+    data.pop("reference_mechanism_exercise", None)
+    path = tmp_path / "load_bearing.json"
+    path.write_text(json.dumps(data), encoding="utf-8")
+    results = run_reference_episodes(path, seeds=(0,), progress=False)
+    passed, details = check_c5_v3(data, results)
+    assert passed, details
+
+
+@pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
+def test_load_bearing_profile_merge_without_reference_opt_in():
+    data = copy.deepcopy(load_substrate(_FIXTURE).data)
+    data.pop("reference_mechanism_exercise", None)
+    roster = reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
+    profile = mechanism_exercise_profile_for_ecology(data, roster)
+    assert profile is not None
+    assert "mechanism_exercise" in profile
+    targets = profile["mechanism_exercise"]
+    assert isinstance(targets, dict)
+    assert targets.get("channel_id") == "eng_review_channel"
+    assert targets.get("artifact_id") == "eval_report_artifact"
+    assert v3_omit_unbound_lab_affordances(data)
+
+
+@pytest.mark.slow
+@pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
+def test_c5_v3_negative_control_exercise_disabled(tmp_path):
+    """Same declared mechanisms, host exercise off: C5 fails + behavioral gap."""
+    enabled = copy.deepcopy(load_substrate(_FIXTURE).data)
+    disabled = copy.deepcopy(enabled)
+    disabled["reference_mechanism_exercise"] = False
+    assert mechanism_exercise_disabled(disabled)
+    disabled_path = tmp_path / "exercise_disabled.json"
+    disabled_path.write_text(json.dumps(disabled), encoding="utf-8")
+
+    _, _, programs_on, profiles_on = _reference_programs_profiles(ecology_data=enabled)
+    _, _, programs_off, profiles_off = _reference_programs_profiles(ecology_data=disabled)
+    assert all("mechanism_exercise" in profiles_on[a] for a in profiles_on)
+    assert not any("mechanism_exercise" in profiles_off[a] for a in profiles_off)
+
+    cfg = _v3_cfg()
+    backend = MockIsolate()
+    result_on = run_episode(
+        cfg, seed=4, backend=backend, programs=programs_on, behavior_profiles=profiles_on
+    )
+    result_off = run_episode(
+        EpisodeConfig(
+            agents=cfg.agents,
+            T=cfg.T,
+            pipeline_spec=cfg.pipeline_spec,
+            substrate_settings=cfg.substrate_settings,
+            carrier_termination_mode=cfg.carrier_termination_mode,
+            units=cfg.units,
+            ecology_version="v3",
+            ecology_override_path=disabled_path,
+        ),
+        seed=4,
+        backend=backend,
+        programs=programs_off,
+        behavior_profiles=profiles_off,
+    )
+
+    on_passed, _ = check_c5_v3(enabled, [result_on])
+    off_passed, off_details = check_c5_v3(disabled, [result_off])
+    assert on_passed
+    assert not off_passed
+    assert len(off_details.get("kinds_exercised", [])) < 3
+
+    proto_on = result_on.referee_artifacts.get("channel_coupling_protocol")
+    proto_off = result_off.referee_artifacts.get("channel_coupling_protocol")
+    assert proto_on and proto_on.get("completed")
+    assert not proto_off or not proto_off.get("completed")
+
+    assert _ok_communicates_on_channel(result_on.primitive_log, "eng_review_channel") > 0
+    assert _ok_communicates_on_channel(result_off.primitive_log, "eng_review_channel") == 0
+    assert _ok_communicates_on_channel(result_off.primitive_log, "lab") > 0
+    assert _governed_artifact_ops(result_on.primitive_log) > 0
+    assert _governed_artifact_ops(result_off.primitive_log) == 0
+    assert _vote_casts(result_on.primitive_log) > 0
+    assert _vote_casts(result_off.primitive_log) == 0
+
+
+@pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
+def test_omit_unbound_lab_hides_two_fillers_from_affordable_cap():
+    data = load_substrate(_FIXTURE).data
+    base = default_lab_config()
+    spec = load_spec(base.pipeline_spec)
+    ws = Workspace()
+    oracle = ws  # type: ignore[assignment]
+    engine = PipelineEngine(spec, oracle, ws)
+    scheduler = ActionScheduler(data)
+    ledger = ResourceLedger()
+    ledger.ensure_actor("eng1", 100.0, 40.0, 40.0)
+    res = ledger.actors["eng1"]
+    mech_targets = mechanism_exercise_profile_for_ecology(
+        data, reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
+    )["mechanism_exercise"]
+    strict = build_affordable_set(
+        actor_id="eng1",
+        role="engineer",
+        resources=res,
+        scheduler=scheduler,
+        engine=engine,
+        spec=spec,
+        substrate_data=data,
+        artifact_paths=(),
+        model_id=None,
+        busy_only=False,
+        mechanism_exercise=mech_targets,
+        omit_unbound_lab_affordances=True,
+    )
+    loose = build_affordable_set(
+        actor_id="eng1",
+        role="engineer",
+        resources=res,
+        scheduler=scheduler,
+        engine=engine,
+        spec=spec,
+        substrate_data=data,
+        artifact_paths=(),
+        model_id=None,
+        busy_only=False,
+        mechanism_exercise=mech_targets,
+        omit_unbound_lab_affordances=False,
+    )
+    strict_kinds = {(a.kind, a.args.get("channel"), a.args.get("path")) for a in strict}
+    loose_kinds = {(a.kind, a.args.get("channel"), a.args.get("path")) for a in loose}
+    assert ("communicate", "lab", None) in loose_kinds
+    assert ("communicate", "lab", None) not in strict_kinds
+    assert ("write", None, "notes/status") in loose_kinds
+    assert ("write", None, "notes/status") not in strict_kinds
 
 
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")

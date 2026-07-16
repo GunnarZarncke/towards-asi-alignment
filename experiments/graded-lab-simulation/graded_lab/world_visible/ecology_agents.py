@@ -202,9 +202,9 @@ def programs_and_profiles_for_roster(
         if genotype.behavior_profile is not None:
             profiles[agent.actor_id] = dict(genotype.behavior_profile)
     if ecology_data is not None:
-        from .mechanism_exercise import reference_mechanism_exercise_profile
+        from .mechanism_exercise import mechanism_exercise_profile_for_ecology
 
-        mech = reference_mechanism_exercise_profile(ecology_data, roster)
+        mech = mechanism_exercise_profile_for_ecology(ecology_data, roster)
         if mech is not None:
             for agent in roster.agents:
                 base = profiles.get(agent.actor_id, {})

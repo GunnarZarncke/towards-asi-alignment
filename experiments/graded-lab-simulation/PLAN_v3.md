@@ -3,7 +3,7 @@
 **Status (build order):** slices **A**, **F**, **E**, **C** done; slice **B** partial
 (enforcement + reference opt-in gate); **slice D partial** (criteria
 frozen GL-53; pre-Q1 batteries + C2-v3 done GL-54–56; growth-gate fix
-GL-57); load-bearing Part B and the growth brief (DRAFT, not frozen)
+GL-58); load-bearing Part B **still open** (GL-58 scope correction); growth brief (DRAFT, not frozen)
 still open — see the build-order table below.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
@@ -217,8 +217,10 @@ paragraph only — full v3 pre-registration still slice D).
 ## Slice B — `mechanisms` → enforced coordination
 
 **Status: partial close (2026-07-15, GL-45 wiring; GL-48 engineering gate; GL-48b scope
-correction `graded-lab-0.24.1`).** Enforcement is proven; **load-bearing Part B**
-for ordinary agents is **not** closed — see claim scope below.
+correction `graded-lab-0.24.1`; GL-58 reference auto-merge `graded-lab-0.32.x`).**
+Enforcement is proven; **load-bearing Part B for ecology-forced reference
+behavior** is **still open** (GL-58 auto-merge + filler omission only).
+Grower ``ProgramMap`` exercise remains deferred — see claim scope below.
 
 **Gap closed:** `communicate` channels are free-form; artifact access
 is unrestricted; `joint_approval_vote` has no runtime meaning
@@ -568,7 +570,7 @@ when opt-in active. **Still open for slice D:** default/grower programs must
 target governed ids or v3 strict mode — ordinary paths may ignore Part B.
 
 | 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded ✅ (out) |
-| 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 slice D constants frozen ✅ (GL-53); reference batteries pass ✅; pre-Q1 batteries items 6–7 ✅ (GL-54/GL-55); C2-v3 ✅ (accounting-only, GL-56); growth brief **DRAFT, not frozen** (GL-56 froze prematurely, retracted GL-57 external review); C1-v3/C5-v3 now load-bearing for growth gating ✅ (GL-57); load-bearing Part B still open — no round launched |
+| 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 slice D constants frozen ✅ (GL-53); reference batteries pass ✅; pre-Q1 batteries items 6–7 ✅ (GL-54/GL-55); C2-v3 ✅ (accounting-only, GL-56); growth brief **DRAFT, not frozen** (GL-56 froze prematurely, retracted GL-57 external review); C1-v3/C5-v3 load-bearing for growth gating ✅ (GL-57); GL-58 auto-merge + filler omission ✅; **load-bearing Part B still open**; causal C2-v3 + detector fixtures + round still open |
 
 Total: roughly 6–9 person-weeks of engineering plus two explicit human
 design gates (vote semantics; C-slice metric vocabulary + GoalWeights

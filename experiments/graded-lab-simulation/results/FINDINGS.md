@@ -3496,3 +3496,40 @@ closes, using the revised mitigation-1 brief.
 
 - `CODE_VERSION` **`graded-lab-0.31.0`**.
 
+## GL-58 (PLAN_v3 slice D — reference auto-merge, `graded-lab-0.32.0`–`0.32.1`)
+
+**Trigger:** Close slice D's blocking Part B gate: reference `WEAK_AGENT`
+presets must exercise declared governed mechanism ids without relying on
+ecology ``reference_mechanism_exercise`` opt-in alone.
+
+**Implementation (`0.32.0`):**
+
+- ``mechanism_exercise_profile_for_ecology`` auto-merges exercise targets
+  for every v3 ecology with Part B ``mechanisms`` when the opt-in field is
+  absent; explicit ``reference_mechanism_exercise: false`` / ``enabled: false``
+  disables merge (negative controls).
+- ``v3_omit_unbound_lab_affordances`` + ``omit_unbound_lab_affordances`` on
+  ``build_affordable_set`` hide two cheap unbound fillers (``lab`` channel,
+  ``notes/status`` write) from ``AFFORDABLE_CAP`` when host exercise is
+  active — path reads, pressure writes, and pipeline calls unchanged.
+- ``run_complexity_check`` runs C5-v3 whenever ``v3_has_part_b_mechanisms``.
+
+**Scope correction (`0.32.1`, external review):** Host choreography remains
+the engine — :class:`ChannelCouplingProtocol`, profile merge, and preset
+``_try_governed_mechanism`` one-shots. Auto-merge makes the opt-in flag
+unnecessary; it does **not** move exercise into ecology-forced behavior. A
+grower declaring ≥3 mechanism kinds can still pass C5 from the injected
+reference protocol alone. **Load-bearing Part B is still open** in slice D;
+do not treat ``0.32.x`` as closing the growth-brief gate.
+
+**Verification:** ``test_c5_v3_negative_control_exercise_disabled`` — same
+declared mechanisms, exercise off: C5 fails; governed channel / artifact_id /
+vote.cast absent; ``lab`` communicate present; coupling protocol incomplete.
+Auto-merge without opt-in field still passes C5 (slow test).
+
+**Still open (slice D):** load-bearing Part B (ecology-constrained reference
+behavior); causal C2-v3 gate; supplementary detector fixtures; revise &
+freeze growth brief; first v3 growth round.
+
+- `CODE_VERSION` **`graded-lab-0.32.1`**.
+

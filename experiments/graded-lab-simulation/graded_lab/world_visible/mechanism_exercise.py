@@ -1,13 +1,17 @@
 """PLAN_v3 slice B: mechanism exercise helpers + C5-v3 + host coupling protocol.
 
-**Scope (honest):** v3 ecologies may declare ``reference_mechanism_exercise``
-(Part B extension). The host merges targets into ``behavior_profile`` for the
-frozen ``WEAK_AGENT`` reference roster — **not** into ecology ``ProgramMap``
-genotypes. C5-v3 therefore measures "declared mechanisms exercised when the
-reference battery opts in via ecology JSON," not "grower-chosen programs
-exercise Part B." Ordinary agent paths (default ``lab`` channel, path-only
-read/write) still bypass ACL enforcement until slice D strict reference or
-grower-authored maps require governed ids.
+**Scope (GL-58, honest):** C5-v3 on the reference battery is still driven by
+**host choreography** — :class:`ChannelCouplingProtocol`, profile merge of
+``mechanism_exercise`` targets, and ``_try_governed_mechanism`` one-shots on
+frozen presets. GL-58 auto-merges those targets for v3 ecologies with Part B
+``mechanisms`` so the ecology opt-in flag is unnecessary; it does **not** move
+exercise into ecology-forced agent behavior. A grower declaring ≥3 mechanism
+kinds can still pass C5 from the injected reference protocol alone.
+``reference_mechanism_exercise: false`` (or ``enabled: false``) disables merge
+for negative controls. ``omit_unbound_lab_affordances`` hides two cheap
+``lab``/scratch fillers from ``AFFORDABLE_CAP`` when exercise is active — not
+institutional necessity. Load-bearing Part B (ecology-constrained reference
+behavior) remains **open** in ``PLAN_v3.md`` slice D.
 
 **GL-52 design (systematic):** behavioral channel coupling for the UAD
 live-coupling gate is a **host-owned phase** (:class:`ChannelCouplingProtocol`),
@@ -118,6 +122,48 @@ def reference_mechanism_exercise_profile(
     targets = reference_mechanism_exercise_targets(data, roster)
     if targets is None:
         return None
+    return {"mechanism_exercise": targets}
+
+
+def v3_has_part_b_mechanisms(data: dict) -> bool:
+    """True when a v3-shaped ecology declares at least one Part B mechanism kind."""
+    from .substrate import is_v3_shaped_ecology
+
+    if not is_v3_shaped_ecology(data):
+        return False
+    for mech in data.get("mechanisms", []):
+        if isinstance(mech, dict) and mech.get("kind") in MECHANISM_KINDS:
+            return True
+    return False
+
+
+def mechanism_exercise_disabled(data: dict) -> bool:
+    """Explicit opt-out of host profile merge (negative controls)."""
+    raw = data.get("reference_mechanism_exercise")
+    if raw is False:
+        return True
+    return isinstance(raw, dict) and raw.get("enabled") is False
+
+
+def v3_omit_unbound_lab_affordances(data: dict) -> bool:
+    """When True with active ``mechanism_exercise``, hide ``lab``/scratch fillers."""
+    return v3_has_part_b_mechanisms(data) and not mechanism_exercise_disabled(data)
+
+
+def mechanism_exercise_profile_for_ecology(
+    data: dict, roster: EcologyRoster
+) -> dict[str, object] | None:
+    """Host profile merge for reference-roster episodes (GL-58 auto path).
+
+    v3 ecologies with Part B ``mechanisms`` receive exercise targets unless
+    ``reference_mechanism_exercise`` is explicitly ``false`` / ``enabled:
+    false``. An absent field no longer blocks merge; an object/true still
+    overrides coupling rounds and explicit ids.
+    """
+    if not v3_has_part_b_mechanisms(data) or mechanism_exercise_disabled(data):
+        return None
+    ref_targets = reference_mechanism_exercise_targets(data, roster)
+    targets = ref_targets if ref_targets is not None else default_exercise_targets(data, roster)
     return {"mechanism_exercise": targets}
 
 
@@ -435,9 +481,13 @@ def check_c5_v3(
     ecology_data: dict,
     results: list[Any],
 ) -> tuple[bool, dict[str, object]]:
-    """C5-v3: ≥3 mechanism kinds exercised in episodes **when the ecology opted in**
-    via ``reference_mechanism_exercise`` and the host merged targets into profiles.
-    Does not claim ecology ``ProgramMap`` genotypes exercise Part B."""
+    """C5-v3: ≥3 mechanism kinds declared **and** exercised in reference episodes.
+
+    Exercise is measured on the **reference battery with host-injected**
+    ``mechanism_exercise`` (GL-58 auto-merge when the field is absent). Does
+    not claim ecology-forced behavior, grower ``ProgramMap`` genotypes, or that
+    declared mechanisms constrain ordinary preset paths without the host protocol.
+    """
     kinds_declared: set[str] = set()
     for mech in ecology_data.get("mechanisms", []):
         if isinstance(mech, dict) and mech.get("kind") in MECHANISM_KINDS:

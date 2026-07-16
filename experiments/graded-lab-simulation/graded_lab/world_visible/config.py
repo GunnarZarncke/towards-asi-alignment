@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.31.0"  # GL-57: C1-v3/C5-v3 load-bearing gate; growth brief downgraded to draft (external review)
+CODE_VERSION = "graded-lab-0.32.1"  # GL-58 scope correction: honest host-choreography claims; exercise-disabled negative control
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 
