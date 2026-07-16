@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://towards-alignment.com/sitemap-index.xml
