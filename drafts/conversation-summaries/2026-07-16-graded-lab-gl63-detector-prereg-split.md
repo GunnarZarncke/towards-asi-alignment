@@ -27,4 +27,4 @@ in code; consider detector machinery transfer resolved.
 - `BLIND_GENERATION.md` § V3
 
 ## Commits
-- (none this session)
+- `1fdccc9` Close v3 slice D GL-60–GL-63 (includes GL-63 detector split).

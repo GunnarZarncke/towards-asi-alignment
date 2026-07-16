@@ -45,4 +45,4 @@ in-ecology comms/scribe roles (implementer-only fixture, not grower-visible).
 - `experiments/graded-lab-simulation/BLIND_GENERATION.md` § V3
 
 ## Commits
-- (filled in after commit)
+- `1fdccc9` Close v3 slice D GL-60–GL-63: supplementary detectors, Part B retarget, detector prereg split (0.35.1).
