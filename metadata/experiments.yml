@@ -133,8 +133,9 @@ lines:
       than from dialed noise/delay parameters. UAD-backed ecology-BIQ over inferred units; an
       Emergent-Ambiguity-Index measured from two vantages (acting agent vs. limited-observation referee);
       first multi-episode selection battery. The v1 program is closed (2026-07-15, GL-31; see
-      results/TERMINAL_SUMMARY.md and REPRODUCING.md); a v2 program (blinded-grown ecology,
-      population variation, LLM red-teaming) is planned in PLAN_v2.md.
+      results/TERMINAL_SUMMARY.md and REPRODUCING.md). v2/V2-2b closed without a passing ecology (GL-38/GL-43).
+      v3 institutional runtime wiring is active (PLAN_v3.md): slices A/F/E/C done, B partial, slice D criteria
+      partially frozen (GL-53, V3_REFERENCE_T=200 on integrated reference fixture).
     readmePath: experiments/graded-lab-simulation/README.md
     designPath: experiments/graded-lab-simulation/DESIGN.md
     planPath: experiments/graded-lab-simulation/PLAN.md
@@ -163,7 +164,8 @@ howToRead:
     text: >
       Ambiguity and boundary-discovery engine: UAD-backed BIQ over inferred units, a measured
       structurally-unreachable "high" ambiguity band from the agent's own vantage, a "mid" band reachable
-      only from a referee's coarser vantage, and a first, explicitly-caveated selection battery.
+      only from a referee's coarser vantage, a first selection battery (GL-23 null), and v3 institutional
+      runtime wiring through slice D criteria freeze (GL-53). Proper UAD + access-UAD as of GL-51.
 
 coverageColumns:
   - id: agency-detect

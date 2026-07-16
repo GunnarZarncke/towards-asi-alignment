@@ -7,7 +7,7 @@ blinded resource/population substrate, not from dialed parameters.
 **Status: v1 CLOSED (2026-07-15, GL-31) → v2 mostly closed (V2-1 complete,
 V2-2 closed with C3 failure) → V2-2b CLOSED without a growth round
 (GL-43) → v3 institutional runtime wiring is the active program.**
-`CODE_VERSION` `graded-lab-0.27.0` — see `DESIGN.md` for the accumulated
+`CODE_VERSION` `graded-lab-0.29.0` — see `DESIGN.md` for the accumulated
 "pre-registration" sections (one per program) and their frozen constants.
 Phase 7a discovery is proper UAD + access-UAD as of GL-51 (Jaccard /
 mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
@@ -28,11 +28,12 @@ mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
   `mechanisms`, `resource_flows`) causally load-bearing at runtime instead
   of declarative-only JSON — [`PLAN_v3.md`](PLAN_v3.md). Build order:
   slices **A, F, E, C done; B partial** (enforcement + reference opt-in
-  gate); **slice D criteria partial** (GL-53: T=200 + frozen constants;
-  growth protocol + items 6–7 still open). See
-  "v3 slice status" below and `results/FINDINGS.md` GL-44 through GL-50
+  gate); **slice D partial** (GL-53 constants + GL-54/GL-55 pre-Q1
+  batteries; growth protocol + load-bearing Part B still open). See
+  "v3 slice status" below and `results/FINDINGS.md` GL-44 through GL-55
   for the slice-by-slice record, including the affordable-set starvation
-  bug (GL-50) and its blast radius on the UAD test suite.
+  bug (GL-50), proper UAD (GL-51), host coupling (GL-52), the slice D
+  criteria freeze (GL-53), and the phenotype-overlap harness fix (GL-55).
 
 <details>
 <summary>v1 final state (historical, closed 2026-07-15)</summary>
@@ -116,7 +117,7 @@ Build order per `PLAN_v3.md` (institutional Part B → live runtime):
 | E — feedback-coupled pressure + task injection | **done** (`graded-lab-0.23.0`; GL-47) |
 | C — principal scorecard + measured tension (C1-v3) | **done** (`graded-lab-0.25.0`; GL-49; measured-tension check verified against a real reference battery only after the GL-50 fix below) |
 | B — `mechanisms` → enforced coordination | **partial**: enforcement + reference opt-in (GL-45/48/48b); host coupling + C3 structural (GL-52); full slice close (detector coverage, `ProgramMap` overlap) deferred to slice D |
-| D — criteria freeze + growth protocol | **partial** (GL-53: constants + T=200 frozen; growth brief + detector/`ProgramMap` batteries open) |
+| D — criteria freeze + growth protocol | **partial** (GL-53 constants; GL-54/GL-55 items 6–7; growth brief + Part B open) |
 
 **GL-50 (`graded-lab-0.25.1`):** affordable-set starvation + missing
 one-shot guard zeroed `deploy_rate`/`bearer_harm` on the integrated
@@ -133,6 +134,17 @@ codes — see FINDINGS GL-52.
 battery horizon `V3_REFERENCE_T=200` (v2 stays T=100); n=50 calibration
 snapshot at `results/slice_d_reference_battery_T200_n50.json`; confidence
 table in `DESIGN.md` § slice D.
+
+**GL-54 (`graded-lab-0.28.0`):** slice D pre-Q1 batteries — detector coverage
+(4/5 families zero-variance on honest reference); see
+`results/slice_d_v3_detector_coverage_T200_n20.json`. Item 7's first-pass
+"100% collapse on walker presets" result was a harness artifact (fixed in
+GL-55).
+
+**GL-55 (`graded-lab-0.29.0`):** fixed two `ProgramMap` phenotype-overlap
+harness bugs (mutated temperature/goal_weights never applied to the
+episode; sampled variants stayed in the runtime-inert `walker_only` mode)
+and reran item 7: 0–12.5% overlap, not 100%. See `results/slice_d_program_map_phenotype_overlap.json`.
 
 ## v1 Phase status (historical, closed 2026-07-15)
 

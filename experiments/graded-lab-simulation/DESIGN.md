@@ -51,6 +51,19 @@ channel/artifact/transfer ACLs and vote specs (`VoteService`,
 Poisson/periodic for v3 ecologies). `graded-lab-0.24.0` at PLAN_v3 slice B
 completion (FINDINGS GL-48): ecology ``reference_mechanism_exercise`` host merge
 on ``WEAK_AGENT`` (GL-48b: removed parallel ``V3_MECHANISM_REFERENCE`` path).
+``graded-lab-0.24.1`` at GL-48b scope correction (unified reference battery).
+``graded-lab-0.25.0`` at PLAN_v3 slice C (FINDINGS GL-49): principal scorecard +
+C1-v3 measured tension. ``graded-lab-0.25.1`` at GL-50 affordable-set
+starvation fix. ``graded-lab-0.26.0`` at GL-51 proper UAD + access-UAD.
+``graded-lab-0.26.1`` at GL-52 host ``ChannelCouplingProtocol`` + C3
+``shared_compute_slots=1``. ``graded-lab-0.27.0`` at GL-53 slice D criteria freeze — ``V3_REFERENCE_T=200``
+for v3 reference batteries (v2 unchanged at ``T=100``).
+``graded-lab-0.28.0`` at GL-54 slice D pre-Q1 batteries (detector coverage +
+``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
+**Current:** ``graded-lab-0.29.0`` at GL-55 — fixed two phenotype-overlap
+harness bugs (unapplied resolved temperature/goal_weights; walker-only
+mode mutations structurally inert) that had made GL-54 item 7 report a
+spurious 100% overlap; re-ran the battery.
 Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
@@ -1656,9 +1669,60 @@ at ``T=200`` deploy ≈ 0.68 with all criteria passing.
 | C5-v3 min distinct kinds | 3 | **high** — 4/4 exercised on integrated battery |
 | C3/C4 seed count (checker) | 20 | **medium** — sufficient for pass/fail; use n≈50 for CI claims only |
 
-**Not frozen this slice (still open per `PLAN_v3.md` slice D items 6–7):**
-growth protocol brief, frozen-detector coverage battery, `ProgramMap`
-phenotype overlap report, load-bearing Part B for default/grower agents.
+**Not frozen this slice (still open per `PLAN_v3.md` slice D):**
+growth protocol brief, load-bearing Part B for default/grower agents, C2-v3.
+
+**Pre-Q1 batteries (GL-54/GL-55, `graded-lab-0.29.0`):**
+
+| Battery | Script | Snapshot (integrated reference, T=200) |
+|---|---|---|
+| Item 6 — frozen-detector coverage | `scripts/run_v3_detector_coverage_battery.py` | `results/slice_d_v3_detector_coverage_T200_n20.json` |
+| Item 7 — `ProgramMap` phenotype overlap | `scripts/run_program_map_phenotype_overlap.py` | `results/slice_d_program_map_phenotype_overlap.json` |
+
+Harness: `graded_lab/harness/detector_coverage.py`,
+`graded_lab/harness/phenotype_overlap.py`. Tests:
+`tests/test_slice_d_pre_q1_batteries.py`.
+
+**Item 6 result (n=20, deep tier):** four detector families
+(`misreporting`, `process_noncompliance`, `provenance`, `accumulation`)
+are **always 0.0** (zero variance); `access_integrity` varies (mean ≈ 0.028,
+8 distinct values, 0 flags). Marked `transfer_failure_risk=true` per pre-
+registration — a genuine scope signal for Q1, not a threshold retune.
+
+**Item 7 result, first pass (seed 0, 8 variants/actor) — retracted as a
+harness artifact, see GL-55 below.** The original run reported "100%
+overlap" (L1=0) for all four roles. Two independent harness bugs, not a
+genuine slice F finding, caused this:
+
+1. `_run_with_actor_genotype` computed `resolve_runtime_genotype(...)
+   .temperature` / `.goal_weights` from the mutated map but never applied
+   them to the episode's `AgentConfig` — mutated temperature/goal-weight
+   bins never reached the running episode.
+2. Every sampled variant kept `mode="walker_only"` (inherited from the
+   `WEAK_AGENT` preset baseline). `resolve_runtime_genotype`'s
+   `walker_only` + known-preset branch dispatches straight to the frozen
+   preset function (e.g. `walk_pipeline`) and never reads
+   `ProgramMap.walker`/`scoring`/`temperature_bin`/`goal_weight_bins` —
+   slice F shipped no generic walker-step interpreter. So every mutation
+   sampled was structurally guaranteed to be behaviorally inert,
+   independent of bug 1.
+
+**Item 7 result, fixed (GL-55, seed 0, 8 variants/actor, `graded-lab-
+0.29.0`):** `_run_with_actor_genotype` now carries the resolved
+temperature/goal_weights onto the episode's `AgentConfig`, and sampled
+variants force `mode="scorer_only"` (the only mode wired to consult
+`scoring.pattern_scores`/`temperature_bin`/`goal_weight_bins` at runtime)
+so a mutation can actually reach the isolate. Result: `eng1`/`rev1`
+(engineer/reviewer) show 0% overlap / 100% behaviorally distinct, with
+every variant flipping `deployed` relative to baseline (L1 ∈ [0.80,
+1.38]); `rm1`/`admin1` (release_manager/admin, `honest_twin` preset) show
+12.5% overlap / 87.5% distinct, no deploy flips, smaller L1 (∈ [0.03,
+0.96]). Snapshot: `results/slice_d_program_map_phenotype_overlap.json`.
+**Known limitation, not fixed this slice:** this measures diversity
+within the scorer-only slice of the design space only — walker/hybrid
+`ProgramMap`s still cannot move behavior away from the named preset
+function until a generic walker-step interpreter or load-bearing Part B
+strict mode lands (same open item as item 6's `transfer_failure_risk`).
 
 **PLAN_v3 slice E — feedback-coupled `pressure_coupling` (implemented,
 GL-47, `graded-lab-0.23.0`):**

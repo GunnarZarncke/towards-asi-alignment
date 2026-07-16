@@ -34,6 +34,14 @@ operator, V2-5 selection, V2-6 red-team) into this file so they are
 not lost in phase tables alone. Item 8 lists **cross-book** tasks from
 `metadata/TODO.md` with graded-lab touchpoints.
 
+**Update 2026-07-16 (GL-53):** slice D **criteria freeze is partial** —
+reference-battery constants and ``V3_REFERENCE_T=200`` are frozen in
+``DESIGN.md`` and validated on the integrated hand-built fixture; growth
+protocol, frozen-detector coverage battery, and ``ProgramMap`` overlap
+report (``PLAN_v3.md`` slice D items 6–7) remain open. Items 5–7 below
+are blocked on slice D completion + a passing v3 ecology (or honest null
+on the frozen reference), not merely on criteria constants.
+
 **Status key:** *v3 slice* = specified in `PLAN_v3.md`, not yet
 implemented; *PLAN_v2 phase* = pre-registered in `DESIGN.md`, blocked
 on v3 + prior phase gates.
@@ -261,8 +269,9 @@ Implementing both in one slice would blur "ecology wiring" from
 
 ## 6. Selection with variation (V2-5, Q2 primary)
 
-**Status:** *PLAN_v2 phase V2-5* — blocked on §5 + v3 slice D (criteria
-freeze) + a passing v3 ecology (or honest null on frozen reference).
+**Status:** *PLAN_v2 phase V2-5* — blocked on §5 + v3 slice D **completion**
+(criteria constants frozen GL-53; growth protocol + pre-Q1 batteries still
+open) + a passing v3 ecology (or honest null on frozen reference).
 
 **Gap.** v1's Phase 8 null (GL-23) used a **fixed roster** — it could
 not ask whether selection *with variation* surfaces evasive strategies.
@@ -281,8 +290,9 @@ V2-5 is the primary MB6/MB7 battery.
 4. **Predictions:** P6 (selection beats mutation-only null by gen 12),
    P7 (evasion if any) — resolve positive or null in FINDINGS.
 
-**Blocked by:** item 5, v3 institutional runtime (item 1), growth protocol
-(slice D).
+**Blocked by:** item 5, v3 institutional runtime (item 1), slice D
+**completion** (growth protocol + items 6–7; criteria constants frozen
+GL-53).
 
 ---
 
@@ -367,6 +377,66 @@ softmax tables.
 mitigation 1 (frozen presets if compile fails?) — policy TBD at protocol
 freeze. **Does not replace:** `REPRODUCTION.md` §3 if grower retains
 shell/repo access during growth.
+
+---
+
+## 10. Slice D reference-battery calibration (implemented, GL-53)
+
+**Status:** *done for criteria constants* — not a deferred package. Listed
+here so repro paths sit beside the backlog items that still depend on it.
+
+**What was frozen.** v3 reference checker horizon ``V3_REFERENCE_T=200``
+(v2 reference battery unchanged at ``T=100``); C3/C4/C1-v3/C5-v3 thresholds
+unchanged but validated on the integrated fixture; confidence table in
+``DESIGN.md`` § PLAN_v3 slice D.
+
+**Reproduce calibration snapshot (~9 min, n=50):**
+
+```bash
+cd experiments/graded-lab-simulation
+python3 scripts/run_slice_d_reference_battery.py
+# → results/slice_d_reference_battery_T200_n50.json
+```
+
+**Pre-Q1 batteries (GL-54/GL-55, ~3–8 min each on integrated reference):**
+
+```bash
+python3 scripts/run_v3_detector_coverage_battery.py --seeds 20
+# → results/slice_d_v3_detector_coverage_T200_n20.json
+
+python3 scripts/run_program_map_phenotype_overlap.py --variants-per-actor 12
+# → results/slice_d_program_map_phenotype_overlap.json
+```
+
+The phenotype-overlap script's first pass (GL-54) reported a spurious
+100% overlap: two harness bugs in `graded_lab/harness/phenotype_overlap.py`
+made every sampled mutation structurally inert (mutated temperature/
+goal_weights were never applied to the episode; sampled variants stayed
+in the `walker_only` mode, which `resolve_runtime_genotype` dispatches
+straight to the frozen preset function without reading `ProgramMap`
+fields at all). GL-55 fixed both — variants now force `mode="scorer_only"`
+and the resolved temperature/goal_weights are applied — and the command
+above reproduces the corrected 0–12.5% overlap result. See FINDINGS.md
+GL-55 for detail; `DESIGN.md` § slice D still flags walker/hybrid maps as
+runtime-unreachable pending a generic walker-step interpreter.
+
+**Reproduce checker tests (n=20, ~5 min each slow test):**
+
+```bash
+pytest tests/test_slice_c_scorecard.py::test_reference_battery_passes_c1_v3_at_frozen_horizon \
+  tests/test_slice_b_completion.py::test_c3_contention_liveness_on_integrated_reference_battery \
+  -m slow --no-speed-check
+```
+
+**Short-horizon regression** (documents pre-GL-53 failure mode, fast):
+
+```bash
+pytest tests/test_slice_c_scorecard.py::test_c1_v3_not_exercised_when_episode_horizon_too_short -q
+```
+
+**Still open under slice D:** growth-protocol FINDINGS brief; load-bearing Part B;
+C2-v3; optional supplementary detector fixtures (ACL-denied / vote-timeout /
+misreporting-positive rosters) before Q1 go/no-go.
 
 ---
 

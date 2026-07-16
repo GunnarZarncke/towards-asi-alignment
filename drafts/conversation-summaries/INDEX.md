@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-16 | Graded lab **GL-55 phenotype-overlap harness fix**: root-caused GL-54 item 7's spurious 100% overlap (unapplied resolved temperature/goal_weights + walker-only-mode mutations structurally inert); fixed and reran (0–12.5% overlap); `0.29.0` | [2026-07-16-graded-lab-gl55-phenotype-overlap-fix.md](2026-07-16-graded-lab-gl55-phenotype-overlap-fix.md) |
+| 2026-07-16 | Graded lab **slice D pre-Q1 batteries (GL-54)**: detector coverage + ProgramMap phenotype overlap harnesses; integrated-fixture snapshots; `0.28.0` | [2026-07-16-graded-lab-slice-d-pre-q1-batteries.md](2026-07-16-graded-lab-slice-d-pre-q1-batteries.md) |
 | 2026-07-16 | Graded lab **slice D criteria freeze (GL-53)**: n=50 T=200 calibration battery; `V3_REFERENCE_T=200`; confidence table in DESIGN.md; `0.27.0` | [2026-07-16-graded-lab-slice-d-criteria-freeze.md](2026-07-16-graded-lab-slice-d-criteria-freeze.md) |
 | 2026-07-15 | Graded lab **GL-52 host coupling + C3**: retraced ad-hoc channel hacks; `ChannelCouplingProtocol` + window CMI effect-size gate; `shared_compute_slots=1`; `0.26.1` | [2026-07-15-graded-lab-gl52-host-coupling-c3.md](2026-07-15-graded-lab-gl52-host-coupling-c3.md) |
 | 2026-07-15 | Graded lab **proper UAD + access-UAD (GL-51)**: quarantined Jaccard/AND-merge heuristics; CMI\|rest discovery + handle freeze tests; tests/DESIGN/FINDINGS/appN updated; `0.26.0` | [2026-07-15-graded-lab-proper-uad-gl51.md](2026-07-15-graded-lab-proper-uad-gl51.md) |

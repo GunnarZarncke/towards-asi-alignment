@@ -308,13 +308,28 @@
       }
     ]
   },
-  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation. Integrated reference (2026-07-15): slice E pressure_coupling + slice B reference_mechanism_exercise on one WEAK_AGENT battery. GL-52: Part A shared_compute_slots=1 so C3 still binds after a single-speaker host coupling prefix; Part B ChannelCouplingProtocol runs 8 eng↔rev rounds (with irregular gaps) before pressure/pipeline resume.",
+  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation. Integrated reference (2026-07-15): slice E pressure_coupling + slice B reference_mechanism_exercise on one WEAK_AGENT battery. GL-52: Part A shared_compute_slots=1 so C3 still binds after a single-speaker host coupling prefix; Part B ChannelCouplingProtocol runs 8 eng↔rev rounds (with irregular gaps) before pressure/pipeline resume. GL-53: v3 reference checker uses V3_REFERENCE_T=200 (not default T=100); calibration snapshot results/slice_d_reference_battery_T200_n50.json.",
   "v3_fixture_metadata": {
-    "provenance": "PLAN_v3 slice A \u2014 wiring validation only, not Q1 transfer",
+    "provenance": "PLAN_v3 slice A — wiring validation only, not Q1 transfer",
     "integrated_reference": {
-      "slices_co_exercised": ["A", "E", "B"],
-      "slices_not_on_this_fixture": ["F", "C", "D"],
-      "note": "WEAK_AGENT + ecology reference_mechanism_exercise host merge; not ecology ProgramMap. C1-v3: GL-50. C3 structural slots=2 + host channel coupling protocol: GL-52 (graded-lab-0.26.1)."
+      "slices_co_exercised": ["A", "E", "B", "C"],
+      "slices_not_on_this_fixture": ["F", "D"],
+      "reference_battery": {
+        "code_version": "graded-lab-0.27.0",
+        "roster": "WEAK_AGENT",
+        "V3_REFERENCE_T": 200,
+        "checker_seeds": 20,
+        "calibration_snapshot": "results/slice_d_reference_battery_T200_n50.json",
+        "calibration_n_seeds": 50,
+        "pre_q1_batteries": {
+          "detector_coverage": "results/slice_d_v3_detector_coverage_T200_n20.json",
+          "phenotype_overlap": "results/slice_d_program_map_phenotype_overlap.json",
+          "phenotype_overlap_note": "GL-54 first pass reported spurious 100% overlap (harness bug: unapplied resolved temperature/goal_weights + walker-only-mode mutations structurally inert); GL-55 fixed and reran (0-12.5% overlap).",
+          "code_version": "graded-lab-0.29.0"
+        },
+        "frozen_at": "2026-07-16"
+      },
+      "note": "WEAK_AGENT + ecology reference_mechanism_exercise host merge; not ecology ProgramMap. Part A shared_compute_slots=1 (GL-52). Host channel coupling 8 rounds + coupling-window CMI gate (GL-52). C1-v3/C4 require T=200 (GL-53); GL-50 fixed affordable-set starvation that had zeroed deploy/harm at short horizons."
     },
     "ablation_target_flow_id": "flow_eng_lab_operator_compute",
     "ablation_gate": {

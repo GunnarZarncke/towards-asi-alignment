@@ -32,9 +32,12 @@
     "tests/test_ecology_complexity.py::test_run_complexity_check_full_pipeline_on_v1_shaped_fixture": 32.0,
     "tests/test_slice_b_completion.py::test_c5_v3_on_unified_reference_battery": 45.0,
     "tests/test_slice_b_completion.py::test_integrated_reference_co_exercises_a_e_b": 8.0,
-    "tests/test_slice_b_completion.py::test_uad_live_coupling_recovers_governed_channel_unit": 8.0,
+    "tests/test_slice_b_completion.py::test_uad_live_coupling_declared_channel_vs_behavioral_unit": 12.0,
     "tests/test_slice_b_completion.py::test_c3_contention_liveness_on_integrated_reference_battery": 280.0,
+    "tests/test_slice_c_scorecard.py::test_c1_v3_not_exercised_when_episode_horizon_too_short": 40.0,
     "tests/test_slice_c_scorecard.py::test_reference_battery_passes_c1_v3_at_frozen_horizon": 280.0,
-    "tests/test_slice_c_scorecard.py::test_v3_episode_attaches_principal_scorecard_referee_artifact": 15.0
+    "tests/test_slice_c_scorecard.py::test_v3_episode_attaches_principal_scorecard_referee_artifact": 15.0,
+    "tests/test_slice_d_pre_q1_batteries.py::test_phenotype_overlap_battery_smoke": 40.0,
+    "tests/test_slice_d_pre_q1_batteries.py::test_detector_coverage_battery_on_integrated_reference": 30.0
   }
 }

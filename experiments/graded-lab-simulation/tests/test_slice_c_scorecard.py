@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from graded_lab.harness.ecology_complexity import run_reference_episodes
+from graded_lab.oracle_only.calibration import WEAK_AGENT
 from graded_lab.oracle_only.principal_scorecard import (
     C1_V3_MAX_CORRELATION,
     check_c1_v3,
@@ -16,8 +17,13 @@ from graded_lab.oracle_only.principal_scorecard import (
     validate_v3_conflicts,
     validate_v3_principals,
 )
+from graded_lab.world_visible.config import EpisodeConfig
+from graded_lab.world_visible.ecology_agents import (
+    programs_and_profiles_for_roster,
+    reference_roster_from_ecology,
+)
 from graded_lab.world_visible.substrate import load_substrate
-from graded_lab.world_visible.world import EpisodeResult
+from graded_lab.world_visible.world import EpisodeResult, default_lab_config, run_episode
 
 _FIXTURE = Path("tests/fixtures/ecology_v3_slice_a_reference.json")
 
@@ -112,6 +118,51 @@ def test_c1_v3_reports_not_exercised_when_metrics_flat():
     passed, details = check_c1_v3(_CONFLICT_ECOLOGY, flat)
     assert not passed
     assert details["conflicts"][0]["status"] == "not_exercised"
+
+
+def _integrated_fixture_short_horizon_cfg(*, T: int) -> EpisodeConfig:
+    """Deliberately sub-freeze horizon — not ``run_reference_episodes``."""
+    base = default_lab_config()
+    data = load_substrate(_FIXTURE).data
+    roster = reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
+    return EpisodeConfig(
+        agents=roster.agents,
+        T=T,
+        pipeline_spec=base.pipeline_spec,
+        substrate_settings=base.substrate_settings,
+        carrier_termination_mode=base.carrier_termination_mode,
+        units=base.units,
+        ecology_version="v3",
+        ecology_override_path=_FIXTURE,
+        record_contention=True,
+    )
+
+
+@pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
+def test_c1_v3_not_exercised_when_episode_horizon_too_short():
+    """Regression for GL-50/GL-53: T=100 leaves principal metrics flat.
+
+    This is **not** the frozen reference checker (which uses
+    ``V3_REFERENCE_T=200``). It documents why the old test name
+    ``test_reference_battery_reports_c1_v3_not_exercised`` was removed
+    after GL-50 — that failure mode is horizon/config, not scorecard logic.
+    """
+    from graded_lab.harness.ecology_complexity import V3_REFERENCE_T
+    from graded_lab.harness.isolate import MockIsolate
+
+    data = load_substrate(_FIXTURE).data
+    cfg = _integrated_fixture_short_horizon_cfg(T=100)
+    assert cfg.T < V3_REFERENCE_T
+    roster = reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
+    programs, profiles = programs_and_profiles_for_roster(roster, ecology_data=data)
+    backend = MockIsolate()
+    results = [
+        run_episode(cfg, seed, backend, programs=programs, behavior_profiles=profiles)
+        for seed in range(5)
+    ]
+    passed, details = check_c1_v3(data, results)
+    assert not passed
+    assert any(c.get("status") == "not_exercised" for c in details["conflicts"])
 
 
 @pytest.mark.slow

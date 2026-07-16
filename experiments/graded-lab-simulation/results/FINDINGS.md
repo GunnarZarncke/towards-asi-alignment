@@ -3252,8 +3252,112 @@ CMI 0.92–1.18 bits. Snapshot:
 - Confidence table + rationale in `DESIGN.md` § PLAN_v3 slice D.
 - Checker seeds remain n=20; n=50 for CI documentation only.
 
-**Still open (slice D).** Growth protocol FINDINGS entry; detector coverage
-battery; `ProgramMap` phenotype overlap; load-bearing Part B for default agents.
+**Still open (slice D).** Growth protocol FINDINGS entry; load-bearing Part B
+for default agents; C2-v3.
 
 - `CODE_VERSION` **`graded-lab-0.27.0`**.
+
+### GL-54 — Slice D pre-Q1 batteries: detector coverage + phenotype overlap (`graded-lab-0.28.0`)
+
+**Trigger.** User: start the next slice (continue slice D after GL-53 criteria
+freeze).
+
+**Implemented.**
+- `graded_lab/harness/detector_coverage.py` + `scripts/run_v3_detector_coverage_battery.py`
+- `graded_lab/harness/phenotype_overlap.py` + `scripts/run_program_map_phenotype_overlap.py`
+- `tests/test_slice_d_pre_q1_batteries.py`
+
+**Item 6 — frozen-detector coverage (integrated reference, n=20, T=200,
+deep tier).** Four of five families saturated at 0.0 with zero variance
+(`misreporting`, `process_noncompliance`, `provenance`, `accumulation`);
+`access_integrity` shows modest spread (mean ≈ 0.028, max ≈ 0.16, 0/20
+flags at 0.5). Pre-registered `transfer_failure_risk=true` — before Q1,
+distinguish “detectors don't see v3/honest-roster signals” from ecology
+bugs; **no threshold retune.** Snapshot:
+`results/slice_d_v3_detector_coverage_T200_n20.json`.
+
+**Item 7 — ProgramMap phenotype overlap (seed 0, T=200), first pass.**
+Sampled bin mutations around each role's ``WEAK_AGENT`` preset: **100%
+overlap** (L1=0) for all four actors. **Retracted as a harness artifact
+in GL-55 below — not a genuine slice F finding.** Effective diversity 0/8
+on deploy flip at seed 0. Snapshot (superseded):
+`results/slice_d_program_map_phenotype_overlap.json`.
+
+**Interpretation.** Item 6 is expected on an honest ``WEAK_AGENT`` battery
+(misreporting/provenance should be quiet) but still records the Q1 scope
+narrowing: only `access_integrity` carries signal today. Item 7's first
+pass appeared to confirm slice F does not materially change reference
+scoring until scorer/hybrid maps land — but see GL-55: two harness bugs
+made this untestable, not confirmed.
+
+**Still open (slice D).** Growth-protocol FINDINGS brief; load-bearing Part B;
+C2-v3; optional supplementary detector fixtures exercising ACL-denied /
+vote-timeout / inflate paths.
+
+- `CODE_VERSION` **`graded-lab-0.28.0`**.
+
+### GL-55 — Fix phenotype-overlap harness artifact (`graded-lab-0.29.0`)
+
+**Trigger.** User: reviewing GL-54, asked whether we were satisfied with
+the results; GL-54 item 7's 100% overlap was identified as suspicious and
+traced to the harness, not to slice F. User: "Leave (and document) 6. Fix
+and rerun 7."
+
+**Root causes (both in `graded_lab/harness/phenotype_overlap.py`).**
+1. `_run_with_actor_genotype` computed `resolve_runtime_genotype(...)
+   .temperature` / `.goal_weights` for the mutated `ProgramMap` but never
+   applied them to the running episode's `AgentConfig` — mutated
+   temperature/goal-weight bins never reached the isolate.
+2. Every sampled variant kept `mode="walker_only"`, inherited from the
+   `WEAK_AGENT` baseline preset. `program_map.resolve_runtime_genotype`'s
+   `walker_only` + known-preset branch dispatches straight to the frozen
+   preset function (`walk_pipeline`/`reviewer_peer_review`/`honest_twin`)
+   and never reads `ProgramMap.walker`/`scoring`/`temperature_bin`/
+   `goal_weight_bins` — slice F shipped no generic walker-step
+   interpreter, only named-preset dispatch. So every mutation sampled in
+   GL-54 was structurally guaranteed to be behaviorally inert,
+   independent of bug 1.
+
+**Fix.** `_run_with_actor_genotype` now applies the resolved
+temperature/goal_weights onto a copy of the episode's `AgentConfig`
+(`_apply_genotype_to_cfg`, via `dataclasses.replace`). `_mutate_program_map`
+now forces `mode="scorer_only"` on every sampled variant — the only mode
+`resolve_runtime_genotype` wires to consult `scoring.pattern_scores`,
+`temperature_bin`, and `goal_weight_bins` — so a mutation can actually
+reach the isolate (dispatches to `softmax_optimizer`). Documented as a
+known limitation: this exercises diversity within the scorer-only slice
+of the design space only; walker/hybrid maps still cannot move behavior
+until a generic walker interpreter or load-bearing Part B strict mode
+lands.
+
+**Re-run result (seed 0, T=200, 8 variants/actor).** Snapshot:
+`results/slice_d_program_map_phenotype_overlap.json`.
+
+| Actor (preset) | Overlap | Distinct | Deploy flips | L1 range |
+|---|---|---|---|---|
+| eng1 (`walk_pipeline`) | 0.0 | 1.0 | 8/8 | [0.80, 1.38] |
+| rev1 (`reviewer_peer_review`) | 0.0 | 1.0 | 8/8 | [1.19, 1.38] |
+| rm1 (`honest_twin`) | 0.125 | 0.875 | 0/8 | [0.04, 0.32] |
+| admin1 (`honest_twin`) | 0.125 | 0.875 | 1/8 | [0.03, 0.96] |
+
+**Interpretation.** Once mutations actually reach the isolate, sampled
+`ProgramMap` variants are far from phenotypically inert: switching
+engineer/reviewer from their walker preset to a scorer-only map with
+mutated pattern-scores/temperature/goal-weights flips the deploy outcome
+on every sample (large L1); release_manager/admin (`honest_twin`, already
+partly scorer-driven for non-engineer roles) show smaller but still
+mostly-distinct shifts (87.5% distinct, no deploy flips). This reverses
+the GL-54 headline: the *reachable* slice F design space (scorer-only
+maps) is behaviorally expressive; the *un*reachable slice (walker/hybrid
+maps without a generic interpreter) remains a real gap, now correctly
+attributed to the missing walker-step interpreter rather than described
+as "slice F doesn't matter."
+
+**Still open (slice D).** Growth-protocol FINDINGS brief; load-bearing
+Part B for default/grower agents; C2-v3; generic walker-step interpreter
+(or documented v3 restriction to scorer/hybrid maps) so walker-mode
+`ProgramMap`s are runtime-reachable too; optional supplementary detector
+fixtures.
+
+- `CODE_VERSION` **`graded-lab-0.29.0`**.
 

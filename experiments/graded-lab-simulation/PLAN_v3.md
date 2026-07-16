@@ -560,7 +560,7 @@ when opt-in active. **Still open for slice D:** default/grower programs must
 target governed ids or v3 strict mode — ordinary paths may ignore Part B.
 
 | 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded ✅ (out) |
-| 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 slice D section frozen ✅ (GL-53, T=200 + constants); reference batteries pass on integrated fixture ✅; slice D items 6–7 + growth brief still open before Q1 go/no-go |
+| 6 | D — criteria freeze + growth protocol | ~1 wk | DESIGN.md v3 slice D constants frozen ✅ (GL-53); reference batteries pass ✅; pre-Q1 batteries items 6–7 run on integrated fixture ✅ (GL-54; item 7's first-pass 100%-overlap result was a harness artifact, fixed and rerun in GL-55); growth brief + load-bearing Part B + C2-v3 still open |
 
 Total: roughly 6–9 person-weeks of engineering plus two explicit human
 design gates (vote semantics; C-slice metric vocabulary + GoalWeights
