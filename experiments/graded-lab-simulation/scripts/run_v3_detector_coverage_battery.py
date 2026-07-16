@@ -47,9 +47,10 @@ def main() -> None:
             flush=True,
         )
     print(
-        f"transfer_failure_risk={payload['transfer_failure_risk']} "
+        f"honest_reference_sparse_detectors="
+        f"{payload['honest_reference_sparse_detectors']} "
         f"({payload['n_families_zero_variance']} zero-variance, "
-        f"{payload['n_families_always_zero']} always-zero)",
+        f"{payload['n_families_always_zero']} always-zero; report-only)",
         flush=True,
     )
 

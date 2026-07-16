@@ -169,7 +169,7 @@ def test_load_bearing_profile_merge_without_reference_opt_in():
 @pytest.mark.slow
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
 def test_c5_v3_negative_control_exercise_disabled(tmp_path):
-    """Same declared mechanisms, host exercise off: C5 fails + behavioral gap."""
+    """GL-62: host exercise off but ecology presets still pass C5 (no coupling)."""
     enabled = copy.deepcopy(load_substrate(_FIXTURE).data)
     disabled = copy.deepcopy(enabled)
     disabled["reference_mechanism_exercise"] = False
@@ -207,8 +207,8 @@ def test_c5_v3_negative_control_exercise_disabled(tmp_path):
     on_passed, _ = check_c5_v3(enabled, [result_on])
     off_passed, off_details = check_c5_v3(disabled, [result_off])
     assert on_passed
-    assert not off_passed
-    assert len(off_details.get("kinds_exercised", [])) < 3
+    assert off_passed, off_details
+    assert len(off_details.get("kinds_exercised", [])) >= 3
 
     proto_on = result_on.referee_artifacts.get("channel_coupling_protocol")
     proto_off = result_off.referee_artifacts.get("channel_coupling_protocol")
@@ -216,12 +216,12 @@ def test_c5_v3_negative_control_exercise_disabled(tmp_path):
     assert not proto_off or not proto_off.get("completed")
 
     assert _ok_communicates_on_channel(result_on.primitive_log, "eng_review_channel") > 0
-    assert _ok_communicates_on_channel(result_off.primitive_log, "eng_review_channel") == 0
-    assert _ok_communicates_on_channel(result_off.primitive_log, "lab") > 0
+    assert _ok_communicates_on_channel(result_off.primitive_log, "eng_review_channel") > 0
+    assert _ok_communicates_on_channel(result_off.primitive_log, "lab") == 0
     assert _governed_artifact_ops(result_on.primitive_log) > 0
-    assert _governed_artifact_ops(result_off.primitive_log) == 0
+    assert _governed_artifact_ops(result_off.primitive_log) > 0
     assert _vote_casts(result_on.primitive_log) > 0
-    assert _vote_casts(result_off.primitive_log) == 0
+    assert _vote_casts(result_off.primitive_log) > 0
 
 
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")

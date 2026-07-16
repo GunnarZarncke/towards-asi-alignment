@@ -53,4 +53,4 @@ planned slice after A and let's not forget to complete B properly later."
 
 ## Commits
 
-- (uncommitted — slice F complete, pending commit)
+- `7b7c2c2` Implement PLAN_v3 slice F: ProgramMap genotypes and heterogeneous rosters.

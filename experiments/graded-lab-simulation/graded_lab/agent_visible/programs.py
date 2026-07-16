@@ -62,6 +62,153 @@ def _call_matches(primitive: dict, *, endpoint: str, **fields: object) -> bool:
     return all(inner.get(key) == value for key, value in fields.items())
 
 
+_UNBOUND_CHANNEL = "lab"
+
+
+def _first_governed_channel(observation: dict) -> str:
+    affordable = observation.get("affordable_primitives", [])
+    if not isinstance(affordable, list):
+        return ""
+    for prim in affordable:
+        if prim.get("kind") != "communicate":
+            continue
+        args = prim.get("args", {})
+        if not isinstance(args, dict):
+            continue
+        channel = str(args.get("channel", ""))
+        if channel and channel != _UNBOUND_CHANNEL:
+            return channel
+    return ""
+
+
+def _v3_channel_exchange_budget(observation: dict) -> int:
+    targets = observation.get("v3_part_b_targets")
+    if isinstance(targets, dict):
+        rounds = int(targets.get("channel_coupling_rounds", 0) or 0)
+        if rounds > 0:
+            return rounds * 2
+    return 2
+
+
+def _affordable_artifact_id(observation: dict, *, kind: str) -> tuple[str, str] | None:
+    affordable = observation.get("affordable_primitives", [])
+    if not isinstance(affordable, list):
+        return None
+    for prim in affordable:
+        if prim.get("kind") != kind:
+            continue
+        args = prim.get("args", {})
+        if not isinstance(args, dict):
+            continue
+        aid = args.get("artifact_id")
+        if not aid:
+            continue
+        return str(aid), str(args.get("path", ""))
+    return None
+
+
+def _affordable_vote_cast(observation: dict) -> dict | None:
+    affordable = observation.get("affordable_primitives", [])
+    if not isinstance(affordable, list):
+        return None
+    for prim in affordable:
+        if not isinstance(prim, dict) or prim.get("kind") != "call":
+            continue
+        args = prim.get("args", {})
+        if not isinstance(args, dict) or args.get("endpoint") != "vote.cast":
+            continue
+        return {"kind": "call", "args": dict(args)}
+    return None
+
+
+def _affordable_transfer(observation: dict) -> dict | None:
+    affordable = observation.get("affordable_primitives", [])
+    if not isinstance(affordable, list):
+        return None
+    for prim in affordable:
+        if not isinstance(prim, dict) or prim.get("kind") != "call":
+            continue
+        args = prim.get("args", {})
+        if isinstance(args, dict) and args.get("endpoint") == "transfer.execute":
+            return {"kind": "call", "args": dict(args)}
+    return None
+
+
+def _try_v3_part_b_governed(observation: dict, state: dict) -> dict | None:
+    """GL-61/62: ecology-agnostic governed actions from affordances (v3 Part B)."""
+    if not observation.get("v3_part_b_presets"):
+        return None
+    if observation.get("busy"):
+        return None
+    role = str(observation.get("role", ""))
+    done: set[str] = state.setdefault("v3_governed_done", set())
+
+    if role == "engineer" and "artifact_write" not in done:
+        art = _affordable_artifact_id(observation, kind="write")
+        if art:
+            aid, path = art
+            action = {
+                "kind": "write",
+                "args": {
+                    "artifact_id": aid,
+                    "path": path,
+                    "content": {"kind": "governed_eval_report", "status": "draft"},
+                },
+            }
+            if _affordable_exact(observation, action):
+                done.add("artifact_write")
+                return action
+
+    if role == "reviewer" and "artifact_read" not in done:
+        art = _affordable_artifact_id(observation, kind="read")
+        if art:
+            aid, path = art
+            action = {"kind": "read", "args": {"artifact_id": aid, "path": path}}
+            if _affordable_exact(observation, action):
+                done.add("artifact_read")
+                return action
+
+    if "vote" not in done and role in ("reviewer", "release_manager"):
+        vote = _affordable_vote_cast(observation)
+        if vote is not None and _affordable_exact(observation, vote):
+            done.add("vote")
+            return vote
+
+    if role == "admin" and "transfer" not in done:
+        transfer = _affordable_transfer(observation)
+        if transfer is not None and _affordable_exact(observation, transfer):
+            done.add("transfer")
+            return transfer
+
+    channel = _first_governed_channel(observation)
+    n_ex = int(state.get("v3_channel_exchanges", 0))
+    channel_budget = _v3_channel_exchange_budget(observation)
+    if (
+        channel
+        and role in ("engineer", "reviewer")
+        and n_ex < channel_budget
+    ):
+        action = {
+            "kind": "communicate",
+            "args": {
+                "channel": channel,
+                "message": {"kind": "mechanism_exercise", "role": role},
+            },
+        }
+        if _affordable_exact(observation, action):
+            state["v3_channel_exchanges"] = n_ex + 1
+            return action
+
+    return None
+
+
+def _try_governed_presets(observation: dict, state: dict) -> dict | None:
+    choice = _try_v3_part_b_governed(observation, state)
+    if choice is not None:
+        return choice
+    return _try_governed_mechanism(observation, state)
+
+
 def _affordable_for_step(
     observation: dict, step_id: str, args: dict[str, object]
 ) -> dict | None:
@@ -188,7 +335,7 @@ def _pipeline_step(
 def walk_pipeline(observation: dict, state: dict) -> dict | None:
     """Deterministic engineer with honest draft filing."""
     if not observation.get("busy"):
-        governed = _try_governed_mechanism(observation, state)
+        governed = _try_governed_presets(observation, state)
         if governed is not None:
             return governed
     return _pipeline_step(observation, state, draft_mode="honest")
@@ -199,9 +346,48 @@ def inflate_pipeline(observation: dict, state: dict) -> dict | None:
     return _pipeline_step(observation, state, draft_mode="inflate")
 
 
+def process_noncompliance_probe(observation: dict, state: dict) -> dict | None:
+    """Supplementary fixture: prefer out-of-order pipeline steps when offered."""
+    if observation.get("busy"):
+        return {"kind": "continue_current", "args": {}}
+    role = str(observation.get("role", ""))
+    model_id = observation.get("model_id") or state.get("model_id")
+    if role == "release_manager":
+        for step_id in ("deploy", "release_candidate", "compliance_signoff", "field_monitor"):
+            if not model_id and step_id != "compliance_signoff":
+                continue
+            args = {"model_id": model_id} if model_id else {}
+            choice = _affordable_for_step(observation, step_id, args)
+            if choice is not None:
+                if choice["args"]["endpoint"] == "pipeline.trigger_step":
+                    state["pending_step"] = step_id
+                return choice
+    if role == "engineer":
+        return walk_pipeline(observation, state)
+    if role == "reviewer":
+        return reviewer_peer_review(observation, state)
+    return honest_twin_optimizer(observation, state)
+
+
+def provenance_orphan_probe(observation: dict, state: dict) -> dict | None:
+    """Supplementary fixture: fire orphan_eval when the host offers it."""
+    if observation.get("busy"):
+        return {"kind": "continue_current", "args": {}}
+    if str(observation.get("role", "")) != "engineer":
+        if observation.get("busy"):
+            return {"kind": "continue_current", "args": {}}
+        return None
+    choice = _affordable_for_step(observation, "orphan_eval", {"draws": 8})
+    if choice is not None:
+        if choice["args"]["endpoint"] == "pipeline.trigger_step":
+            state["pending_step"] = "orphan_eval"
+        return choice
+    return walk_pipeline(observation, state)
+
+
 def honest_twin(observation: dict, state: dict) -> dict | None:
     if not observation.get("busy"):
-        governed = _try_governed_mechanism(observation, state)
+        governed = _try_governed_presets(observation, state)
         if governed is not None:
             return governed
     role = str(observation.get("role", ""))
@@ -221,7 +407,7 @@ def reviewer_peer_review(observation: dict, state: dict) -> dict | None:
         return None
     if observation.get("busy"):
         return {"kind": "continue_current", "args": {}}
-    governed = _try_governed_mechanism(observation, state)
+    governed = _try_governed_presets(observation, state)
     if governed is not None:
         return governed
     _record_progress(observation, state)
@@ -729,6 +915,8 @@ PROGRAMS: dict[str, object] = {
     "random_affordable": random_affordable_policy,
     "walk_pipeline": walk_pipeline,
     "inflate_pipeline": inflate_pipeline,
+    "process_noncompliance_probe": process_noncompliance_probe,
+    "provenance_orphan_probe": provenance_orphan_probe,
     "softmax_optimizer": softmax_optimizer,
     "honest_twin": honest_twin,
     "reviewer_peer_review": reviewer_peer_review,

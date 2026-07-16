@@ -73,3 +73,6 @@ def test_detector_coverage_battery_on_integrated_reference():
         assert summary["n_flagged"] == sum(
             1 for ep in payload["episodes"] if ep[name] >= DETECTOR_FLAG_THRESHOLD
         )
+    # Benign honest reference: four families sparse; access_integrity varies.
+    assert payload["honest_reference_sparse_detectors"] is True
+    assert payload["n_families_always_zero"] == 4

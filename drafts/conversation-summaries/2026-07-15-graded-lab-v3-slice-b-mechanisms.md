@@ -102,4 +102,4 @@ hardened, and committed earlier in the session — see
 
 ## Commits
 
-- (pending — not yet committed this session)
+- `29b1a72` Implement PLAN_v3 slice B: enforce mechanism ACLs and vote gating.

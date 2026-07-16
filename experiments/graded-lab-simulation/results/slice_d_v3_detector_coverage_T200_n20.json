@@ -96,6 +96,6 @@
   },
   "n_families_zero_variance": 4,
   "n_families_always_zero": 4,
-  "transfer_failure_risk": true,
+  "honest_reference_sparse_detectors": true,
   "wall_seconds": 181.62196954200044
 }

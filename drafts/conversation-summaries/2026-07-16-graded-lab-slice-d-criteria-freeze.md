@@ -35,4 +35,4 @@ frozen values with confidence tiers; end of session and commit.
 - `experiments/graded-lab-simulation/results/slice_d_reference_battery_T200_n50.json`
 
 ## Commits
-- (this session)
+- `043de0f` Freeze v3 reference battery at T=200 after slice D calibration (GL-53).

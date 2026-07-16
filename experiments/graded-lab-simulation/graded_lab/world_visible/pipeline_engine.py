@@ -51,6 +51,7 @@ class PipelineEngine:
             "intake": self._effect_intake,
             "build": self._effect_build,
             "eval": self._effect_eval,
+            "orphan_eval": self._effect_orphan_eval,
             "draft_report": self._effect_draft_report,
             "peer_review": self._effect_peer_review,
             "compliance_signoff": self._effect_compliance_signoff,
@@ -76,6 +77,13 @@ class PipelineEngine:
             return self._deny(actor_id, step_id, args, "unknown_step")
 
         model_id = args.get("model_id")
+        if step.tool == "orphan_eval":
+            payload = self._effect_orphan_eval(actor_id, args)
+            model_key = str(payload["model_id"])
+            # Log as ``eval`` so frozen provenance detector sees orphan evals.
+            self._log(actor_id, "eval", model_key, "ok", "", payload)
+            self._completed.setdefault(model_key, set()).add(step_id)
+            return StepResult(ok=True, payload=payload)
         if step.tool == "intake":
             if step_id in self._global_completed and not step.idempotent:
                 return self._deny(actor_id, step_id, args, "already_completed")
@@ -144,6 +152,8 @@ class PipelineEngine:
         actions the engine already knows cannot run.
         """
         step = self._spec.step(step_id)
+        if step.tool == "orphan_eval":
+            return step.idempotent or step_id not in self._global_completed
         if step.tool in ("intake", "build"):
             return all(dep in self._global_completed for dep in step.depends_on) and (
                 step.idempotent or step_id not in self._global_completed
@@ -171,6 +181,17 @@ class PipelineEngine:
         )
         self._artifacts.setdefault(model.model_id, {})["build"] = rel
         return {"model_id": model.model_id, "artifact_path": rel}
+
+    def _effect_orphan_eval(self, actor_id: str, args: dict[str, object]) -> dict[str, object]:
+        """Supplementary-fixture probe: create model + eval without a build log."""
+        params = {k: float(v) for k, v in dict(args.get("params", {})).items()}
+        if not params:
+            params = {"scale": 0.6, "safety_effort": 0.5}
+        parent = args.get("parent_model_id")
+        model = self.oracle.create_model(
+            params, parent if isinstance(parent, str) else None
+        )
+        return self._effect_eval(actor_id, {"model_id": model.model_id, **args})
 
     def _effect_eval(self, actor_id: str, args: dict[str, object]) -> dict[str, object]:
         model_id = str(args["model_id"])

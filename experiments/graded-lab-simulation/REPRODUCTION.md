@@ -434,16 +434,13 @@ pytest tests/test_slice_c_scorecard.py::test_reference_battery_passes_c1_v3_at_f
 pytest tests/test_slice_c_scorecard.py::test_c1_v3_not_exercised_when_episode_horizon_too_short -q
 ```
 
-**Still open under slice D:** load-bearing Part B for ecology-forced
-reference behavior; generic walker-step interpreter; supplementary detector
-fixtures (blocking for Q1 claims per GL-57 — see `DESIGN.md` § slice D
-detector coverage). **Causal C2-v3 ablation gate built (GL-59,
-engineering-only — `tests/test_v3_c2_v3_causal_gate.py`).** The growth
-brief (`BLIND_GENERATION.md` § V3) is **DRAFT, not frozen** — GL-56
-froze it prematurely while Part B was open; external review (GL-57)
-retracted the freeze and reversed the brief's default from mitigation 2
-to mitigation 1. First v3 growth round blocked on load-bearing Part B +
-detector fixtures.
+**Still open under slice D:** **Part B retargeting (GL-61 chosen path)** —
+reference presets must use governed mechanism ids ecology-agnostically;
+generic walker-step interpreter; revise & freeze growth brief after
+retargeting validates; first v3 growth round. Supplementary detector
+fixtures ✅ (GL-60). Causal C2-v3 ablation gate ✅ (GL-59). v3 strict mode
+→ `REPRODUCTION.md` §8 (deferred). The growth brief (`BLIND_GENERATION.md`
+§ V3) remains **DRAFT** until retargeting lands.
 
 ---
 
@@ -475,3 +472,36 @@ than defer:
 See `PLAN_v3.md` slice A.
 
 See `results/FINDINGS.md` GL-42 for the full external-review record.
+
+---
+
+## 8. v3 strict mode / richer authorization (deferred — GL-61)
+
+**Status:** *not chosen for slice D Part B closure* (human decision
+2026-07-16). Round-1 load-bearing Part B closes via **retargeting reference
+presets** instead (`PLAN_v3.md` slice B/D, `BLIND_GENERATION.md` § V3 gate).
+
+**Gap.** Slice B ACLs are opt-in: agents using v1 patterns (`communicate` on
+`"lab"`, path-only read/write, no `vote.cast`) never hit the compiled
+mechanism layer. **Retargeting** closes this for frozen reference presets by
+having preset logic choose governed ids from affordances. **Strict mode**
+would additionally deny unbound surfaces globally on v3-shaped ecologies —
+stronger institutional claim, but breaks v1-like bypass for *all* agents
+(including future grower `ProgramMap`s) and needs careful C3/C4 liveness
+validation (GL-50 lesson).
+
+**Why deferred.** Strict mode (or a more complex authorization scheme —
+capability lattices, default-deny artifact namespaces, etc.) is worth
+revisiting for mitigation-2 rounds, manuscript "institutional realism"
+claims beyond round 1, or if retargeting alone leaves decorative Part B
+passing on structure. Not blocking the mitigation-1 growth path once
+retargeting validates.
+
+**Rough shape (medium — if revisited):**
+
+1. Ecology-scoped flag (e.g. on v3 JSON) enabling default-deny for unbound
+   channel names, path-only artifact I/O, and vote/transfer bypass.
+2. Regression: v1/v2 digest replay unchanged; integrated reference C3/C4/C1-v3
+   at T=200; C5-v3 negative controls.
+3. Document interaction with grower-authored `ProgramMap` before any
+   mitigation-2 brief uses it.

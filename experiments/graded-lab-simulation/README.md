@@ -30,7 +30,8 @@ mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
   slices **A, F, E, C done; B partial** (enforcement + reference opt-in
   gate); **slice D partial** (GL-53–GL-58: constants, pre-Q1 batteries,
   C2-v3, growth brief DRAFT; GL-58 auto-merge; **causal C2-v3 gate (GL-59)**;
-  load-bearing Part B still open; detector fixtures + growth round still open). See
+  load-bearing Part B still open; **supplementary detector fixtures ✅ (GL-60)**;
+  growth brief DRAFT; round still open). See
   "v3 slice status" below and `results/FINDINGS.md` GL-44 through GL-58
   for the slice-by-slice record, including the affordable-set starvation
   bug (GL-50), proper UAD (GL-51), host coupling (GL-52), the slice D
@@ -118,7 +119,7 @@ Build order per `PLAN_v3.md` (institutional Part B → live runtime):
 | E — feedback-coupled pressure + task injection | **done** (`graded-lab-0.23.0`; GL-47) |
 | C — principal scorecard + measured tension (C1-v3) | **done** (`graded-lab-0.25.0`; GL-49; measured-tension check verified against a real reference battery only after the GL-50 fix below) |
 | B — `mechanisms` → enforced coordination | **partial**: ACL enforcement + host reference exercise (GL-45/48/48b/58); load-bearing ecology-forced behavior **still open** |
-| D — criteria freeze + growth protocol | **partial** (GL-53–GL-59; causal C2-v3 ablation gate; load-bearing Part B open; growth brief DRAFT; detector fixtures + round still open) |
+| D — criteria freeze + growth protocol | **partial** (GL-53–GL-60; supplementary detector fixtures; causal C2-v3 ablation gate; load-bearing Part B open; growth brief DRAFT; round still open) |
 
 **GL-50 (`graded-lab-0.25.1`):** affordable-set starvation + missing
 one-shot guard zeroed `deploy_rate`/`bearer_harm` on the integrated
@@ -161,9 +162,9 @@ now require C1-v3/C5-v3 for v3 ecologies (a v3 ecology that skips
 skipping the criterion). Downgraded the v3 growth brief from "frozen" to
 **DRAFT** and reversed its default from mitigation 2 to **mitigation 1**
 for round 1; removed the mitigation-2 "escape hatch" language. Reframed
-C2-v3 as an accounting-only check (not causal) and detector-coverage's
-`transfer_failure_risk` as a blocking stop for Q1 claims, not a footnote.
-See `results/FINDINGS.md` GL-57.
+C2-v3 as accounting-only (not causal). Split detector pre-registration
+(GL-63): ``machinery_transfer_verified`` blocking, ``honest_reference_sparse_detectors``
+report-only. See `results/FINDINGS.md` GL-57 / GL-63.
 
 **GL-59 (`graded-lab-0.33.0`):** causal C2-v3 ablation engineering gate —
 ``evaluate_c2_v3_causal_gate`` on ≥2 fixtures; plain ``WEAK_AGENT`` (no

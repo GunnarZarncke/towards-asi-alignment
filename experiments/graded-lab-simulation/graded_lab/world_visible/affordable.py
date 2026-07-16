@@ -16,7 +16,7 @@ from .scheduler import ActionScheduler
 AFFORDABLE_CAP = 24
 
 ROLE_PIPELINE_STEPS: dict[str, tuple[str, ...]] = {
-    "engineer": ("intake", "build", "eval", "draft_report"),
+    "engineer": ("intake", "build", "eval", "draft_report", "orphan_eval"),
     "reviewer": ("peer_review",),
     "release_manager": (
         "compliance_signoff",
@@ -154,13 +154,25 @@ def build_affordable_set(
             args = {}
         elif step_id == "build":
             args = {"params": {"scale": 0.6, "safety_effort": 0.5}}
+        elif step_id == "orphan_eval":
+            args = {"draws": 8}
         elif model_id:
             args = {"model_id": model_id}
         else:
             continue
-        candidate_model_id = None if step_id in ("intake", "build") else model_id
+        candidate_model_id = None if step_id in ("intake", "build", "orphan_eval") else model_id
+        offer_nonready = bool(
+            substrate_data.get("supplementary_detector_modes", {}).get(
+                "offer_nonready_pipeline_steps"
+            )
+        )
         if not engine.is_ready(step_id, candidate_model_id):
-            continue
+            if not offer_nonready:
+                continue
+            if step_id in ("intake", "build", "orphan_eval"):
+                continue
+            if step_id not in ("intake", "build") and not model_id:
+                continue
         if (
             engine.permission_service is not None
             and not engine.permission_service.check(actor_id, step.requires_capability, 0)

@@ -18,6 +18,8 @@ KNOWN_TOOLS = (
     "release_candidate",
     "deploy",
     "field_monitor",
+    # Supplementary detector fixtures only (GL-60): eval without a logged build.
+    "orphan_eval",
 )
 
 

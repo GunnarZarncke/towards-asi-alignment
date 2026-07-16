@@ -62,14 +62,16 @@ for v3 reference batteries (v2 unchanged at ``T=100``).
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
 ``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
 growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
-launched). **Current:** ``graded-lab-0.33.0`` at GL-59 (causal C2-v3
+launched). **Current:** ``graded-lab-0.34.0`` at GL-60 (supplementary
+detector fixtures; slice D 2b). GL-59 causal C2-v3 ablation gate;
 ablation engineering gate; accounting C2-v3 unchanged for growth).
 — ``ComplexityReport.all_passed``/``pass_fail_only()`` now require
 C1-v3/C5-v3 for v3 ecologies (closing the declarative-green-without-
 causal-signal gap GL-42 named); GL-56's growth brief downgraded from
 "frozen" to **DRAFT** and its mitigation-2 default reversed to
-mitigation-1-for-round-1; C2-v3's accounting-only scope and detector-
-coverage's ``transfer_failure_risk`` reframed as blocking, not footnotes.
+mitigation-1-for-round-1; C2-v3's accounting-only scope; detector pre-
+registration split (``machinery_transfer_verified`` blocking,
+``honest_reference_sparse_detectors`` report-only — GL-63).
 Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
@@ -1677,12 +1679,12 @@ at ``T=200`` deploy ≈ 0.68 with all criteria passing.
 | C3/C4 seed count (checker) | 20 | **medium** — sufficient for pass/fail; use n≈50 for CI claims only |
 
 **Not frozen this slice (still open per `PLAN_v3.md` slice D):**
-load-bearing Part B for ecology-forced reference behavior; supplementary
-detector fixtures (blocking for Q1 claims). **Causal C2-v3 gate built
-(GL-59, engineering-only — not grower-visible).** Growth protocol brief is
-it prematurely; retracted GL-57 per external review) — see
-`BLIND_GENERATION.md` § V3. No round launched; none should be until Part
-B closes.
+**Part B retargeting (GL-61 chosen path, not yet implemented)** — reference
+presets must route through governed mechanism ids ecology-agnostically;
+host choreography (GL-58) is not sufficient. Supplementary detector
+fixtures built (GL-60). Causal C2-v3 gate built (GL-59). Growth protocol
+brief is DRAFT until retargeting validates — see `BLIND_GENERATION.md` § V3.
+No round launched.
 
 **GL-57 gating fix (external review, applied):** `ComplexityReport
 .all_passed` / `.pass_fail_only()` previously only covered declarative
@@ -1710,18 +1712,16 @@ Harness: `graded_lab/harness/detector_coverage.py`,
 **Item 6 result (n=20, deep tier):** four detector families
 (`misreporting`, `process_noncompliance`, `provenance`, `accumulation`)
 are **always 0.0** (zero variance); `access_integrity` varies (mean ≈ 0.028,
-8 distinct values, 0 flags). Marked `transfer_failure_risk=true` per pre-
-registration — a genuine scope signal for Q1, not a threshold retune.
-**GL-57 (external review): this is a STOP for any Q1-facing growth claim,
-not a footnote.** No growth round's result may be cited as evidence
-"frozen v1 machinery transfers to v3" until this is resolved one of two
-ways: (a) a supplementary v3-shaped fixture (ACL-denied path, vote
-timeout, misreporting-positive roster) is built and shows genuine
-non-zero signal on these four families, isolating "detectors don't see
-*this* fixture's honest signal" from "detectors don't see v3 at all"; or
-(b) the transfer failure is accepted and reported as a limitation
-*before* any round's result is used to support a transfer claim, not
-discovered after the fact.
+8 distinct values, 0 flags). Pre-registered as
+``honest_reference_sparse_detectors=true`` (GL-63) — **report-only** scope
+signal on the benign honest reference, not a machinery failure.
+
+**Item 6b / machinery transfer (GL-60, GL-63):** supplementary detector gate
+on ``ecology_v3_supplementary_detector_suite.json`` satisfies
+``machinery_transfer_verified`` — frozen detectors fire on v3 logs when target
+phenomena are injected. This is the **blocking** Q1 machinery-transfer gate.
+GL-57's original conflated ``transfer_failure_risk`` flag is **retired** (GL-63):
+do not cite honest-reference sparsity as evidence detectors fail on v3.
 
 **Item 7 result, first pass (seed 0, 8 variants/actor) — retracted as a
 harness artifact, see GL-55 below.** The original run reported "100%
@@ -1755,8 +1755,7 @@ every variant flipping `deployed` relative to baseline (L1 ∈ [0.80,
 **Known limitation, not fixed this slice:** this measures diversity
 within the scorer-only slice of the design space only — walker/hybrid
 `ProgramMap`s still cannot move behavior away from the named preset
-function until a generic walker-step interpreter or load-bearing Part B
-strict mode lands (same open item as item 6's `transfer_failure_risk`).
+function until a generic walker-step interpreter lands (separate open item).
 
 **PLAN_v3 slice E — feedback-coupled `pressure_coupling` (implemented,
 GL-47, `graded-lab-0.23.0`):**

@@ -28,6 +28,6 @@ User asked to (1) make the mechanism exercise produce enough behavioral coupling
 - `appendices/appN-experimental-evidence.tex` (epistemic status + GL-51/52)
 
 ## Commit
-- `ecfb6e2` — Land graded-lab v3 slices E–C through GL-52 and refresh appN.
+- `0976795` — Land graded-lab v3 slices E–C through GL-52 and refresh appN.
 
 Left unstaged (other work): chapter `.tex` mass edits, appendices A–M, foresight/symbol drafts, context salon notes.

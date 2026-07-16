@@ -10,7 +10,7 @@ from graded_lab.world_visible.config import (
 
 
 def test_code_version():
-    assert CODE_VERSION == "graded-lab-0.33.0"
+    assert CODE_VERSION == "graded-lab-0.35.1"
 
 
 def test_episode_config_validates_roles():

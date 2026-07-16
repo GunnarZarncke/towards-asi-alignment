@@ -29,4 +29,4 @@ User approved dependency plan and asked to start load-bearing Part B (slice D bl
 - `results/FINDINGS.md` (GL-58)
 
 ## Commits
-Not committed (user did not request).
+`7ff2eeb` — GL-58 reference auto-merge + honest scope correction (`graded-lab-0.32.1`).

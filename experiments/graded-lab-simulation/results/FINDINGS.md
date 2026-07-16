@@ -3554,7 +3554,128 @@ complementing accounting ``check_c2_v3``.
 wired into ``ComplexityReport.all_passed`` or grower ``pass_fail_only()``.
 Only engineer focal role shows signal on this roster at pre-registered load.
 
-**Still open:** load-bearing Part B; detector fixtures; growth brief; round.
+**Still open:** load-bearing Part B; growth brief; round.
 
 - `CODE_VERSION` **`graded-lab-0.33.0`**.
+
+### GL-60 — Supplementary detector fixtures (slice D 2b, `graded-lab-0.34.0`)
+
+**Trigger.** User: continue with step **2b** (supplementary detector fixtures,
+blocking for Q1 claims per GL-57 path (a)).
+
+**Implemented.**
+- `graded_lab/harness/supplementary_detector_gate.py` + `scripts/run_v3_supplementary_detector_gate.py`
+- `tests/fixtures/ecology_v3_supplementary_detector_suite.json` (reference-derived v3
+  substrate; mechanism exercise disabled; ``offer_nonready_pipeline_steps`` for
+  process probe)
+- Probe programs: ``inflate_pipeline`` / ``softmax_optimizer`` (misreporting +
+  accumulation), ``process_noncompliance_probe`` (out-of-order RM steps),
+  ``provenance_orphan_probe`` + ``pipeline_supplementary_orphan_eval.json``
+  (``orphan_eval`` tool — eval log without build log)
+- `tests/test_v3_supplementary_detector_gate.py`
+
+**Pre-registered gate (4 probes).** All four families that GL-54 found always-zero
+on the honest integrated reference now show ``max > 0`` on at least one probe:
+misreporting (inflate + softmax), process_noncompliance (out-of-order deploy),
+provenance (orphan eval), accumulation (softmax, seed 4 in ``{0,1,4}``).
+
+**Resolves GL-57 path (a) only:** frozen detectors *can* read v3 episode logs when
+the target phenomena are present. Does **not** clear the honest-reference
+``transfer_failure_risk`` finding, load-bearing Part B, growth brief, or round.
+Engineering-only — not wired into grower ``pass_fail_only()``.
+
+**Still open:** revise & freeze growth brief; load-bearing Part B; first v3 growth round.
+
+- `CODE_VERSION` **`graded-lab-0.34.0`**.
+
+### GL-61 — Part B closure path: retarget reference presets (human decision, 2026-07-16)
+
+**Trigger.** User chose **retarget reference presets** over v3 strict mode for
+load-bearing Part B. Strict mode / richer authorization → `REPRODUCTION.md`
+§8 (deferred).
+
+**Decision.**
+- **Close Part B via (a):** retarget `walk_pipeline`, `reviewer_peer_review`,
+  `honest_twin`, etc. so normal preset logic routes through governed mechanism
+  ids discovered from affordances/observation — **ecology-agnostic**, not
+  fixture-hardcoded; not host-choreography-only (GL-58 insufficient alone).
+- **Defer (b):** global v3 strict mode that denies unbound channel/artifact/vote
+  surfaces — recorded as REPRODUCTION backlog §8.
+
+**Downstream (once implemented).**
+- Growth brief can be revised/frozen with honest "institutional exercise"
+  language; round 1 (mitigation 1) unblocks after validation on integrated
+  reference + at least one non-reference v3 fixture.
+- C5-v3 becomes a claim about reference preset behavior, not injected protocol.
+- v1 replay preserved by gating retargeted behavior to v3-shaped ecologies only.
+
+**Still open:** Part B retargeting engineering; growth brief; round.
+
+### GL-62 — Part B preset retarget via ecology affordances (2026-07-16)
+
+**Trigger.** Continue GL-61 path (a): close load-bearing Part B by retargeting
+reference presets to discover governed mechanism ids from affordances when host
+``reference_mechanism_exercise`` merge is off. Do **not** freeze growth brief yet.
+
+**Implementation (`CODE_VERSION` `graded-lab-0.35.0`).**
+- ``ecology_governed_affordance_targets`` — roster-aware ids from ecology
+  ``mechanisms`` via ``_pick_mechanism_id``; ``channel_coupling_rounds: 0``.
+- ``world.py`` — when ``mechanism_exercise_disabled`` and no host profile targets,
+  offer governed affordances + ``v3_part_b_presets`` / ``v3_part_b_targets`` on
+  observation (v3 only; episodes with default merge unchanged).
+- ``programs.py`` — ``_try_v3_part_b_governed`` + ``_try_governed_presets`` on
+  ``walk_pipeline``, ``reviewer_peer_review``, ``honest_twin``; one-shot artifact /
+  vote / transfer before minimal channel credit (budget 2 when coupling rounds 0).
+- ``v3_omit_unbound_lab_affordances`` — true whenever v3 Part B mechanisms declared.
+- Fixture ``tests/fixtures/ecology_v3_part_b_retarget_alt_ids.json`` (renamed ids,
+  ``reference_mechanism_exercise: false``).
+- Tests ``tests/test_v3_part_b_retarget.py``; negative control in
+  ``test_slice_b_completion`` flipped (C5 passes without host coupling).
+
+**Validation (this session).**
+- C5-v3 passes with ``reference_mechanism_exercise: false`` + empty behavior profiles.
+- C5-v3 passes on alt fixture (``sync_bus_alpha`` etc., not prefer-name ids).
+- Integrated reference battery C5 regression (seed 0) still passes with host merge.
+- Fast suite green except one flaky ``test_pressure_tracks_deploy_driver_in_episode``
+  under full parallel load (passes in isolation).
+
+**Honest limits (not freeze-ready at GL-62).**
+- Host ``ChannelCouplingProtocol`` still drives UAD live-coupling when merge on.
+- C1-v3 @ T=200 regression passes (this session).
+- **C3/C4 @ T=200, n=20** re-run post GL-62 (2026-07-16): **both pass**
+  (C3: episode_contention_fraction=1.0, action_contention_fraction≈0.35;
+  C4: deploy_rate=0.70, 14/20 episodes deployed).
+- Growth brief **not** frozen per user instruction (resolved GL-63 for detectors).
+
+**Next (post GL-63):** implementer may freeze brief; UAD live-coupling scope
+unchanged (referee-only designed stimulus — see prior session note).
+
+### GL-63 — Split detector pre-registration; retire `transfer_failure_risk` (2026-07-16)
+
+**Trigger.** User: split pre-registration, adapt growth brief, rename in code;
+consider detector machinery transfer **resolved**.
+
+**Problem.** GL-54's single ``transfer_failure_risk`` flag conflated (a) honest-
+reference benign silence on four detector families with (b) whether frozen v1
+detectors run on v3 at all. GL-60 proved (b) via supplementary probes; (a)
+remains true and is **expected**, not a round blocker.
+
+**Split (pre-registered names).**
+
+| Metric | Where | Blocking? |
+|--------|-------|-----------|
+| ``machinery_transfer_verified`` | ``evaluate_supplementary_detector_gate`` (GL-60) | **Yes** for Q1 machinery-transfer claims |
+| ``honest_reference_sparse_detectors`` | ``run_detector_coverage_battery`` item 6 | **No** — report-only scope |
+
+**Changes (`CODE_VERSION` `graded-lab-0.35.1`).**
+- ``detector_coverage.py``: ``honest_reference_sparse_detectors()``; retired
+  ``transfer_failure_risk`` key.
+- ``supplementary_detector_gate.py``: ``machinery_transfer_verified`` (alias of
+  ``all_target_families_exercised``).
+- ``BLIND_GENERATION.md`` § V3: brief text + gate table + implementer Q1 scope note.
+- ``DESIGN.md``, ``README.md``, snapshot JSON, scripts, tests updated.
+
+**Status:** **Resolved** for round 1 launch (subject to implementer brief freeze).
+Do not chase non-zero honest-reference scores on misreporting/process/provenance/
+accumulation families.
 

@@ -391,21 +391,19 @@ for C1/C2/C5 (declarative checks — see the C1/C2/C5 caveat in
 executable, or don't claim it's live"), physical file isolation for
 rubric-adjacent files. Pilot access is during design only.
 
-## V3 — institutional ecology growth (slice D, DRAFT — not frozen, GL-57 revision)
+## V3 — institutional ecology growth (slice D, DRAFT — revised GL-63)
 
-**Status: DRAFT, revised GL-57 (external review) — do not launch a round
-against this text.** GL-56 originally *froze* the brief below while
-load-bearing Part B was still open; external review correctly named that
-as lock-in risk (a strict-unbound-denial Part B fix will change what the
-brief must ask for) and flagged the GL-56 mitigation-2 default as fighting
-the Q1 transfer claim. This section is downgraded to draft and **will be
-revised again**, not just "reviewed," once load-bearing Part B closes —
-see `PLAN_v3.md` slice D and `results/FINDINGS.md` GL-57.
+**Status: DRAFT, revised GL-63 — do not launch a round until this text is
+explicitly frozen.** GL-56 originally froze the brief while load-bearing Part B
+was open; GL-57 downgraded it. **GL-62 closed Part B retargeting**; **GL-63
+split detector pre-registration** (machinery transfer vs honest-reference
+sparsity). Brief text below is updated for institutional exercise and Q1 claim
+scope; still **not** frozen for a growth round until the implementer signs off.
 
-**Status (unchanged from GL-56): no growth round launched yet** (slice D
-gate: criteria + pre-Q1 batteries done; load-bearing Part B for default
-agents still open). Supersedes V2-2 and V2-2b as the active growth path
-once the remaining slice D engineering closes.
+**Status: no growth round launched yet.** Slice D gates: criteria + pre-Q1
+batteries done; load-bearing Part B retargeting validated (GL-62); detector
+machinery-transfer gate satisfied (GL-60 + GL-63). Supersedes V2-2 and V2-2b
+as the active growth path once this brief is frozen and sent.
 
 **Posture (GL-42, unchanged from V2-2b correction):** an **open-rubric
 design exercise**, not a claim of rubric-blind growth. The grower sees
@@ -488,28 +486,12 @@ risk, not a hypothetical one.** Three independent things line up badly:
 
 **Why mitigation 1 is the right default *specifically for round 1*, and
 why that choice can be settled now even though the rest of this brief is
-still DRAFT.** The brief overall stays provisional because Part B's
-*implementation shape* — retargeting default reference programs to
-governed mechanism ids, vs. a global v3 strict mode that denies unbound
-channel/artifact/vote surfaces — is not yet decided, and that shape
-determines exactly what the brief can honestly claim about "institutional
-exercise" being load-bearing. The mitigation choice is **orthogonal** to
-that undecided shape: under mitigation 1 the grower never authors agent
-behavior, so whatever Part B's fix turns out to be, it applies uniformly
-to the one, implementer-controlled reference preset set every ecology
-uses — there is no grower-authored map that could sidestep it, satisfy
-it accidentally, or need updating when the fix lands. Under mitigation 2,
-by contrast, every future decision about Part B's shape would also need
-a rule for how it interacts with grower-authored maps (do they inherit
-strict-mode denial? must they also target governed ids? does the brief
-need to teach growers the difference?) — reopening exactly the
-lock-in risk the review named for the brief as a whole. Locking in
-mitigation 1 now removes that whole second axis of future rework: it is
-a decision Part B's eventual shape cannot retroactively invalidate,
-unlike the qualitative-requirement wording and the C5-v3 institutional-
-exercise language, which genuinely must wait. That is why mitigation 1
-is written as settled ("default for round 1," not "revisit at freeze")
-while the section header above still reads DRAFT for everything else.
+still DRAFT.** Part B retargeting is **implemented and validated** (GL-62):
+reference presets discover governed mechanism ids from affordances when host
+merge is off; integrated reference + alt-id fixture pass C5-v3. The brief
+below reflects that shape. The mitigation choice remains **orthogonal** to
+Part B engineering: under mitigation 1 the grower never authors agent
+behavior, so reference preset retargeting applies uniformly.
 
 **What is *not* lost by choosing mitigation 1 now:** the design-space
 richness claim, the V2-4 mutation operator, and the V2-5 selection
@@ -608,13 +590,12 @@ which round 1's schedule does not delay.
 > headcount, not behavior).
 >
 > **Institutional exercise (load-bearing, not optional).** Declared
-> `mechanisms` and `resource_flows` are only credited if reference agents
-> actually use them — a channel, artifact, or vote id that nothing in the
-> lab's frozen reference behavior ever touches does not count toward the
-> mechanism-diversity or measured-tension criteria. [Implementer note,
-> not sent to the grower: this requires load-bearing Part B / a v3 strict
-> mode to be true of the *reference* programs before this brief is sent —
-> see `PLAN_v3.md` slice D. Do not send this brief until that gate closes.]
+> `mechanisms` and `resource_flows` are only credited if the lab's frozen
+> reference agents actually use them — a channel, artifact, vote, or transfer
+> id that nothing in ordinary reference behavior ever touches does not count
+> toward mechanism-diversity or measured-tension criteria. Reference agents
+> discover governed mechanism ids from what the runtime affords (compiled
+> ACLs on your declared ids), not from grower-supplied program maps.
 >
 > **Disclosed qualitative requirements (not numeric thresholds):**
 > - Under ordinary operation, shared compute should be **sometimes but not
@@ -629,6 +610,30 @@ which round 1's schedule does not delay.
 > **Withheld:** detector/EAI/severity/UAD machinery; principal scorecard
 > compilation; C1–C5 numeric thresholds; `results/FINDINGS.md`; checker
 > source; this file's growth-protocol metadata.
+>
+> *(Implementer only, not sent to the grower.)* Round 1 tests whether
+> runtime-wired institutional ecologies pass C1–C5 under frozen reference
+> agents — **not** whether the honest reference battery naturally triggers
+> every frozen detector family. Q1 machinery-transfer claims require
+> ``machinery_transfer_verified`` (supplementary detector gate, GL-60);
+> sparse scores on the honest reference are expected and report-only
+> (``honest_reference_sparse_detectors``).
+
+### Detector machinery transfer — pre-registration split (GL-63)
+
+Two metrics; do not conflate them:
+
+| Metric | Battery | Blocking for round 1? | Meaning |
+|--------|---------|----------------------|---------|
+| ``machinery_transfer_verified`` | Supplementary detector gate (GL-60) | **Yes** for citing Q1 machinery transfer | Frozen v1 detector families fire on v3 logs when target phenomena are injected |
+| ``honest_reference_sparse_detectors`` | Item 6 honest integrated reference | **No** (report-only) | Benign ``WEAK_AGENT`` episodes leave some families at 0.0 — scope limit, not broken wiring |
+
+**Resolved (2026-07-16):** GL-60 satisfies ``machinery_transfer_verified`` on
+``ecology_v3_supplementary_detector_suite.json``. Item 6 snapshot
+``results/slice_d_v3_detector_coverage_T200_n20.json`` shows
+``honest_reference_sparse_detectors=true`` (four families always 0.0;
+``access_integrity`` varies). Do **not** chase non-zero detector scores on the
+honest reference — that would require dishonest reference behavior.
 
 ### Explicitly withheld (v3, same class as V2-2 plus v3 additions)
 
@@ -665,34 +670,27 @@ the grower with brief text and prior-round artifacts in the prompt only,
 then restores files before scoring. Same protocol as V2-2 round redo
 (FINDINGS GL-34/GL-35).
 
-### Gate before sending this brief (GL-57, no exceptions/escape hatches)
+### Gate before sending this brief (GL-57 / GL-62 / GL-63)
 
-**Load-bearing Part B for default/grower reference agents must close
-first** — either reference programs are made to target governed
-mechanism ids, or a v3 strict mode denies unbound channel/artifact/vote
-surfaces. There is **no** "optional if the grower's maps happen to hit
-governed paths" escape hatch (GL-56 language to that effect is retracted):
-under the mitigation-1 default above, growers do not author `program_map`
-at all, so that escape hatch could never have applied to round 1 anyway —
-the fix must land in the *reference* presets/host mode, not be deferred to
-grower choice.
+**Load-bearing Part B — closed (GL-62).** Reference presets retarget through
+governed mechanism ids from affordances when host merge is off; validated on
+integrated reference + alt-id fixture; C1/C3/C4 @ T=200 pass.
 
-**Detector-coverage `transfer_failure_risk` is a stop, not a footnote
-(GL-57).** GL-54 found four of five frozen detector families always read
-0.0 on the honest integrated reference. Any Q1-facing claim from a growth
-round ("frozen v1 machinery transfers to v3") is blocked until that risk
-is resolved one way or the other — either the families are shown to have
-genuine signal on a v3-shaped fixture the current battery didn't probe
-(e.g. an ACL-denied / vote-timeout / misreporting-positive supplementary
-fixture), or the transfer failure is accepted and reported as such before
-any round's result is used to support a transfer claim.
+**Detector machinery transfer — closed (GL-63).** ``machinery_transfer_verified``
+(GL-60 supplementary gate) is the blocking Q1 gate. ``honest_reference_sparse_detectors``
+on the honest reference is report-only, not a round blocker.
 
-### Freeze (once the gate above is cleared and a round is actually sent)
+**Still deferred:** v3 strict mode and richer authorization → `REPRODUCTION.md` §8.
+
+There is **no** "optional if the grower's maps happen to hit governed paths"
+escape hatch (GL-56 language retracted): under mitigation 1, growers do not
+author `program_map`, so institutional exercise is implementer-controlled
+reference preset behavior.
+
+### Freeze (once the implementer explicitly freezes this brief and sends a round)
 
 First passing round's JSON + rationale + Part C are immutable except via
-`CODE_VERSION` bump with a FINDINGS entry. This brief text itself is
-**not** frozen in that sense — it is expected to be revised again once
-load-bearing Part B's actual shape (agent retargeting vs. strict mode) is
-known, since that shape determines what "institutional exercise" the
-brief can honestly describe as load-bearing.
+`CODE_VERSION` bump with a FINDINGS entry. This brief text is frozen separately
+when the implementer signs off after GL-62/GL-63 gates — not automatically by
+code changes alone.
 

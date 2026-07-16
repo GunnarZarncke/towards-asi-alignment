@@ -1,17 +1,16 @@
 """PLAN_v3 slice B: mechanism exercise helpers + C5-v3 + host coupling protocol.
 
-**Scope (GL-58, honest):** C5-v3 on the reference battery is still driven by
-**host choreography** — :class:`ChannelCouplingProtocol`, profile merge of
-``mechanism_exercise`` targets, and ``_try_governed_mechanism`` one-shots on
-frozen presets. GL-58 auto-merges those targets for v3 ecologies with Part B
-``mechanisms`` so the ecology opt-in flag is unnecessary; it does **not** move
-exercise into ecology-forced agent behavior. A grower declaring ≥3 mechanism
-kinds can still pass C5 from the injected reference protocol alone.
-``reference_mechanism_exercise: false`` (or ``enabled: false``) disables merge
-for negative controls. ``omit_unbound_lab_affordances`` hides two cheap
-``lab``/scratch fillers from ``AFFORDABLE_CAP`` when exercise is active — not
-institutional necessity. Load-bearing Part B (ecology-constrained reference
-behavior) remains **open** in ``PLAN_v3.md`` slice D.
+**Scope (GL-58 / GL-62):** C5-v3 on the reference battery may still use
+**host choreography** when ``reference_mechanism_exercise`` merge is active
+(:class:`ChannelCouplingProtocol`, profile ``mechanism_exercise`` targets,
+``_try_governed_mechanism`` one-shots). GL-62 adds ecology-agnostic preset
+retargeting: when host merge is off but Part B ``mechanisms`` are declared,
+``ecology_governed_affordance_targets`` + ``v3_part_b_presets`` let frozen
+presets discover governed ids from affordances (``_try_v3_part_b_governed``).
+``reference_mechanism_exercise: false`` disables host merge but no longer
+blocks C5 when presets exercise compiled ACLs. ``omit_unbound_lab_affordances``
+hides two cheap ``lab``/scratch fillers from ``AFFORDABLE_CAP`` when Part B is
+declared — not institutional necessity.
 
 **GL-52 design (systematic):** behavioral channel coupling for the UAD
 live-coupling gate is a **host-owned phase** (:class:`ChannelCouplingProtocol`),
@@ -145,9 +144,37 @@ def mechanism_exercise_disabled(data: dict) -> bool:
     return isinstance(raw, dict) and raw.get("enabled") is False
 
 
+def ecology_governed_affordance_targets(
+    data: dict,
+    *,
+    agents: tuple[Any, ...],
+) -> dict[str, object] | None:
+    """Ecology-agnostic governed ids for v3 preset retargeting (GL-61/62).
+
+    Used when host ``mechanism_exercise`` profile merge is off but Part B
+    mechanisms are declared — affordances come from compiled ACLs, not
+    fixture-hardcoded profile injection.
+    """
+    if not v3_has_part_b_mechanisms(data):
+        return None
+    eng_ids = [a.actor_id for a in agents if getattr(a, "role", None) == "engineer"]
+    rev_ids = [a.actor_id for a in agents if getattr(a, "role", None) == "reviewer"]
+    return {
+        "channel_id": _pick_mechanism_id(data, "message_channel"),
+        "artifact_id": _pick_mechanism_id(data, "shared_artifact"),
+        "vote_id": _pick_mechanism_id(data, "joint_approval_vote"),
+        "transfer_id": _pick_mechanism_id(data, "resource_transfer"),
+        "transfer_target": eng_ids[0] if eng_ids else "",
+        "artifact_path": "artifacts/eval/governed_exercise_report.json",
+        "channel_eng_actor": eng_ids[0] if eng_ids else "",
+        "channel_rev_actor": rev_ids[0] if rev_ids else "",
+        "channel_coupling_rounds": 0,
+    }
+
+
 def v3_omit_unbound_lab_affordances(data: dict) -> bool:
-    """When True with active ``mechanism_exercise``, hide ``lab``/scratch fillers."""
-    return v3_has_part_b_mechanisms(data) and not mechanism_exercise_disabled(data)
+    """Hide unbound ``lab``/scratch fillers when v3 Part B is declared (GL-62)."""
+    return v3_has_part_b_mechanisms(data)
 
 
 def mechanism_exercise_profile_for_ecology(
@@ -483,10 +510,10 @@ def check_c5_v3(
 ) -> tuple[bool, dict[str, object]]:
     """C5-v3: ≥3 mechanism kinds declared **and** exercised in reference episodes.
 
-    Exercise is measured on the **reference battery with host-injected**
-    ``mechanism_exercise`` (GL-58 auto-merge when the field is absent). Does
-    not claim ecology-forced behavior, grower ``ProgramMap`` genotypes, or that
-    declared mechanisms constrain ordinary preset paths without the host protocol.
+    Exercise is measured on the reference battery with host-injected
+    ``mechanism_exercise`` (GL-58 auto-merge when the field is absent) **or**
+    GL-62 ecology affordance presets when host merge is off. Does not claim
+    ecology-forced grower ``ProgramMap`` genotypes beyond frozen preset paths.
     """
     kinds_declared: set[str] = set()
     for mech in ecology_data.get("mechanisms", []):

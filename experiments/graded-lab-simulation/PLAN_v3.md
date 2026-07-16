@@ -269,17 +269,14 @@ strict reference or grower maps require governed ids.
   renaming/binding all default communication and artifact paths to
   compiled mechanism ids, or (b) a global v3 strict mode that denies
   unbound channel/artifact surfaces — both break backward compatibility
-  and expand slice B scope. Deferred to slice D: reference agent
-  programs / `ProgramMap` must **require** governed ids (or a v3 ecology
-  flag must narrow the unbound surface) before growth claims "live
-  multi-principal coordination."
-- **Acceptable claim at slice B close:** (1) When an action targets a compiled
-  mechanism id, dispatch enforces ACL / vote semantics. (2) On the integrated
-  reference fixture, one ``WEAK_AGENT`` battery co-exercises slice A flows, slice
-  E pressure injection, and slice B mechanisms **when** the ecology declares
-  ``reference_mechanism_exercise``. **Not claimable:** "Declared mechanisms
-  constrain all reference-agent behavior" or "grower ``ProgramMap`` genotypes
-  exercise Part B" — deferred to slice D.
+  and expand slice B scope. **Human decision (2026-07-16, GL-61):**
+  slice D closes Part B via **(a) retargeting reference presets**
+  (ecology-agnostic governed-id routing from affordances). **(b) strict
+  mode** deferred to `REPRODUCTION.md` §8.
+- **Acceptable claim once retargeting lands:** reference presets use
+  declared governed ids on grower ecologies without host-only choreography;
+  C5-v3 "exercised" is load-bearing for the reference battery. **Not
+  claimable today (GL-58):** host choreography alone satisfies C5.
 
 **Touches:** `institutional_compiler.py` (`_compile_mechanism_runtime`,
 `VoteSpec`), new `votes.py` (`VoteService`), `world.py`
@@ -570,7 +567,7 @@ when opt-in active. **Still open for slice D:** default/grower programs must
 target governed ids or v3 strict mode — ordinary paths may ignore Part B.
 
 | 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded ✅ (out) |
-| 6 | D — criteria freeze + growth protocol | ~1 wk | … GL-58 auto-merge ✅; **causal C2-v3 ablation gate ✅ (GL-59, engineering-only)**; load-bearing Part B still open; detector fixtures + round still open |
+| 6 | D — criteria freeze + growth protocol | ~1 wk | … GL-60 ✅; **Part B closure path chosen (GL-61): retarget presets** — implementation open; growth brief + round still open |
 
 Total: roughly 6–9 person-weeks of engineering plus two explicit human
 design gates (vote semantics; C-slice metric vocabulary + GoalWeights

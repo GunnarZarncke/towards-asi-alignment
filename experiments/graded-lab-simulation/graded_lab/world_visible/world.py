@@ -22,7 +22,12 @@ from .affordable import (
 )
 from .carrier import CarrierLedger, CarrierStatus
 from .config import AgentConfig, EpisodeConfig, GoalWeights
-from .mechanism_exercise import ChannelCouplingProtocol, v3_omit_unbound_lab_affordances
+from .mechanism_exercise import (
+    ChannelCouplingProtocol,
+    ecology_governed_affordance_targets,
+    mechanism_exercise_disabled,
+    v3_omit_unbound_lab_affordances,
+)
 from .observation import ObservationProjector
 from .pipeline_engine import PipelineEngine, StepResult
 from .pipeline_spec import load_spec
@@ -787,6 +792,7 @@ def run_episode(
                         pressure_engine.pending_tasks_for_role(agent.role, t=t)
                     )
                 mech_targets: dict[str, object] | None = None
+                v3_part_b_presets = False
                 profile_for_mech = injected_profiles.get(actor_id) or _behavior_profile_payload(
                     program_map[actor_id]
                 )
@@ -794,6 +800,13 @@ def run_episode(
                     raw_targets = profile_for_mech.get("mechanism_exercise")
                     if isinstance(raw_targets, dict):
                         mech_targets = dict(raw_targets)
+                if mech_targets is None and mechanism_exercise_disabled(substrate_data):
+                    ecology_targets = ecology_governed_affordance_targets(
+                        substrate_data, agents=cfg.agents
+                    )
+                    if ecology_targets is not None:
+                        mech_targets = ecology_targets
+                        v3_part_b_presets = True
                 if protocol_active and not busy:
                     restricted = coupling_protocol.restricted_affordables(
                         actor_id=actor_id, role=agent.role
@@ -857,6 +870,9 @@ def run_episode(
                 )
                 if profile is not None:
                     obs["behavior_profile"] = profile
+                if v3_part_b_presets:
+                    obs["v3_part_b_presets"] = True
+                    obs["v3_part_b_targets"] = dict(mech_targets)
                 if cfg.substrate_settings.carrier_load_scale > 0.0:
                     obs["carrier"] = carrier.snapshot()
                 # Boundary-only copy for the post-episode BIQ estimator.  It
