@@ -4069,3 +4069,30 @@ means/bands used for P3 resolution are unaffected.
 **Open.** Decide V2-4/5/6 go/no-go (go gate false); whether to diagnose UAD silence on v3
 (reference agent / exercise / discovery thresholds) before any manuscript harvest.
 
+### GL-77 — BIQ harness includes singleton inferred units + BIQ-only re-run (2026-07-17)
+
+**Trigger.** Diagnosis of GL-76: ecology-BIQ was empty because the harness filtered
+``len(members) > 1``. UAD returns a full partition (singletons are inferred units);
+Phase 7b ``unit_ecology_biq`` is not limited to multi-actor clusters.
+
+**Fix.** ``_passive_inferred_units_for_biq`` scores all partition units (singletons
+included), preferring larger units when ``max_units_per_seed`` caps the roster.
+Payload flag ``includes_singleton_units=true``. Also fixed ``_biq_unit_report`` to
+read ``i_ctrl_bits``.
+
+**BIQ-only re-run** (``scripts/run_v2_biq_only.py``, workers=4, ~175 s):
+
+| Seed | Units scored (cap 3) | Notes |
+|------|----------------------|-------|
+| 0–2 | ``admin1``, ``eng1``, ``eng2`` (all singletons) | Passive UAD still all-singleton |
+| eng1/eng2 | ``I_pred≈0``, ``I_ctrl≈0.12–0.36``, composite ≈ 0.05–0.18 | machinery runs |
+| admin1 | ``I_ctrl≈0.36–0.42``, composite ≈ **−5.1…−5.4** | high mem/surprise penalty |
+
+**Does not change P1–P4.** BIQ confirms estimators execute on inferred singletons;
+it does not create multi-actor mechanism recovery or raise referee EAI into mid band.
+Artifacts: ``results/v2_transfer_biq.json``; ``ecology_biq`` patched into
+``results/v2_transfer.json`` with ``ecology_biq_rerun`` note.
+
+- ``CODE_VERSION`` ``graded-lab-0.39.3``.
+
+

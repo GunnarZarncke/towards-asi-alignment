@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.39.2"  # GL-75c: V2-3 battery optional process parallelism
+CODE_VERSION = "graded-lab-0.39.3"  # GL-77: V2-3 BIQ on singleton inferred units
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

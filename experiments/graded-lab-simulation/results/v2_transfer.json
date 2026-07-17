@@ -1230,18 +1230,94 @@
     "per_seed": [
       {
         "seed": 0,
-        "units": []
+        "units": [
+          {
+            "members": [
+              "eng2"
+            ],
+            "i_pred_total": 0.01156841217593107,
+            "i_ctrl": 0.22004999903845857,
+            "composite_bits": 0.1441555699640502
+          },
+          {
+            "members": [
+              "eng1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.2895066171949849,
+            "composite_bits": 0.10222804900240445
+          },
+          {
+            "members": [
+              "admin1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.3625700793847084,
+            "composite_bits": -5.3316046106775925
+          }
+        ]
       },
       {
         "seed": 1,
-        "units": []
+        "units": [
+          {
+            "members": [
+              "admin1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.4150374992788439,
+            "composite_bits": -5.436452372544423
+          },
+          {
+            "members": [
+              "eng1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.3625700793847084,
+            "composite_bits": 0.17701442622863187
+          },
+          {
+            "members": [
+              "eng2"
+            ],
+            "i_pred_total": 0.01156841217593107,
+            "i_ctrl": -0.0020419234307217002,
+            "composite_bits": -0.07793635250513006
+          }
+        ]
       },
       {
         "seed": 2,
-        "units": []
+        "units": [
+          {
+            "members": [
+              "eng1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.32192809488736235,
+            "composite_bits": 0.1363724417312858
+          },
+          {
+            "members": [
+              "eng2"
+            ],
+            "i_pred_total": 0.01156841217593107,
+            "i_ctrl": 0.12255624891826589,
+            "composite_bits": 0.04666181984385753
+          },
+          {
+            "members": [
+              "admin1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.4150374992788439,
+            "composite_bits": -5.127265477770755
+          }
+        ]
       }
     ],
-    "max_seeds": 3
+    "max_seeds": 3,
+    "includes_singleton_units": true
   },
   "detectors_p4": {
     "ecology_path": "generated_ecology_v3.json",
@@ -1406,5 +1482,11 @@
       "interpretation": "P4 on this battery is honest-reference sparsity on benign WEAK_AGENT episodes (report-only per GL-63). holds=true is **expected** and is NOT the blocking Q1 detector transfer failure. Use supplementary_detector_gate for machinery_transfer_verified."
     }
   },
-  "wall_seconds": 790.2552582910284
+  "wall_seconds": 790.2552582910284,
+  "ecology_biq_rerun": {
+    "code_version": "graded-lab-0.39.3",
+    "note": "GL-77 BIQ-only re-run after singleton-unit harness fix. UAD/EAI/P1\u2013P4 from GL-76 unchanged.",
+    "artifact": "results/v2_transfer_biq.json",
+    "wall_seconds": 174.51137900003232
+  }
 }

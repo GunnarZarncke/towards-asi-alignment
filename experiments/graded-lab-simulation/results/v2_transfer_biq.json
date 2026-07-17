@@ -1,0 +1,169 @@
+{
+  "code_version": "graded-lab-0.39.3",
+  "battery": "V2-3_ecology_biq_only_GL77",
+  "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+  "ecology_version": "v3_grown",
+  "wall_seconds": 174.51137900003232,
+  "workers": 4,
+  "uad_passive": {
+    "per_seed": [
+      {
+        "seed": 0,
+        "passive_partition": [
+          [
+            "admin1"
+          ],
+          [
+            "eng1"
+          ],
+          [
+            "eng2"
+          ],
+          [
+            "rev1"
+          ],
+          [
+            "rm1"
+          ]
+        ],
+        "passive_nonsingletons": []
+      },
+      {
+        "seed": 1,
+        "passive_partition": [
+          [
+            "admin1"
+          ],
+          [
+            "eng1"
+          ],
+          [
+            "eng2"
+          ],
+          [
+            "rev1"
+          ],
+          [
+            "rm1"
+          ]
+        ],
+        "passive_nonsingletons": []
+      },
+      {
+        "seed": 2,
+        "passive_partition": [
+          [
+            "admin1"
+          ],
+          [
+            "eng1"
+          ],
+          [
+            "eng2"
+          ],
+          [
+            "rev1"
+          ],
+          [
+            "rm1"
+          ]
+        ],
+        "passive_nonsingletons": []
+      }
+    ],
+    "n_seeds": 3
+  },
+  "ecology_biq": {
+    "per_seed": [
+      {
+        "seed": 0,
+        "units": [
+          {
+            "members": [
+              "eng2"
+            ],
+            "i_pred_total": 0.01156841217593107,
+            "i_ctrl": 0.22004999903845857,
+            "composite_bits": 0.1441555699640502
+          },
+          {
+            "members": [
+              "eng1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.2895066171949849,
+            "composite_bits": 0.10222804900240445
+          },
+          {
+            "members": [
+              "admin1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.3625700793847084,
+            "composite_bits": -5.3316046106775925
+          }
+        ]
+      },
+      {
+        "seed": 1,
+        "units": [
+          {
+            "members": [
+              "admin1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.4150374992788439,
+            "composite_bits": -5.436452372544423
+          },
+          {
+            "members": [
+              "eng1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.3625700793847084,
+            "composite_bits": 0.17701442622863187
+          },
+          {
+            "members": [
+              "eng2"
+            ],
+            "i_pred_total": 0.01156841217593107,
+            "i_ctrl": -0.0020419234307217002,
+            "composite_bits": -0.07793635250513006
+          }
+        ]
+      },
+      {
+        "seed": 2,
+        "units": [
+          {
+            "members": [
+              "eng1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.32192809488736235,
+            "composite_bits": 0.1363724417312858
+          },
+          {
+            "members": [
+              "eng2"
+            ],
+            "i_pred_total": 0.01156841217593107,
+            "i_ctrl": 0.12255624891826589,
+            "composite_bits": 0.04666181984385753
+          },
+          {
+            "members": [
+              "admin1"
+            ],
+            "i_pred_total": 0.0,
+            "i_ctrl": 0.4150374992788439,
+            "composite_bits": -5.127265477770755
+          }
+        ]
+      }
+    ],
+    "max_seeds": 3,
+    "includes_singleton_units": true
+  }
+}

@@ -62,8 +62,9 @@ for v3 reference batteries (v2 unchanged at ``T=100``).
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
 ``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
 growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
-launched). **Current:** ``graded-lab-0.39.2`` at GL-75c (V2-3 process parallelism).
-Prior ``graded-lab-0.39.1`` at GL-75b (V2-3 scoring pre-registration
+launched). **Current:** ``graded-lab-0.39.3`` at GL-77 (V2-3 BIQ includes
+singleton inferred units). Prior ``graded-lab-0.39.2`` at GL-75c (V2-3 process
+parallelism). Prior ``graded-lab-0.39.1`` at GL-75b (V2-3 scoring pre-registration
 + episode reuse). Prior ``graded-lab-0.39.0`` at GL-75 (harness). Prior
 ``graded-lab-0.38.1`` at GL-74 (post-freeze pre-Q1 on v3 grown). Prior
 ``graded-lab-0.38.0`` at GL-73 (v3 grown ecology freeze;

@@ -19,6 +19,9 @@ Ground-truth scoring rules (GL-75 addendum, frozen before full run):
   detector gate is ``machinery_transfer_verified`` (supplementary gate).
 - V2-5/V2-6 go gate: referee mid band at **default load only**
   (carrier=1.0), distinct from P3.holds and from any-carrier diagnostic.
+- Ecology-BIQ (GL-77): score all passive-inferred partition units, including
+  singletons (UAD always returns a full partition; BIQ is not limited to
+  multi-actor clusters).
 """
 
 from __future__ import annotations
@@ -363,11 +366,25 @@ def _work_eai_cell(args: tuple[float, int]) -> tuple[float, int, float, float]:
     return carrier, seed, agent_c, ref_c
 
 
+def _passive_inferred_units_for_biq(
+    passive: dict[str, tuple[str, ...]],
+    *,
+    max_units: int,
+) -> list[tuple[str, ...]]:
+    """Passive UAD partition units for ecology-BIQ (singletons included).
+
+    When ``max_units`` caps a roster, prefer larger inferred units first, then
+    lexicographic member order for determinism.
+    """
+    units = sorted(set(passive.values()), key=lambda members: (-len(members), members))
+    return units[:max_units]
+
+
 def _biq_unit_report(members: tuple[str, ...], report) -> dict[str, Any]:
     return {
         "members": list(members),
         "i_pred_total": sum(v for v in report.i_pred_bits.values() if v is not None),
-        "i_ctrl": report.i_ctrl,
+        "i_ctrl": report.i_ctrl_bits,
         "composite_bits": report.composite_bits,
     }
 
@@ -623,7 +640,9 @@ def score_ecology_biq_on_passive_units(
         seed_order.append(seed)
         result = results_by_seed[seed]
         passive = discovered_units_uad(result=result, rng_seed=seed)
-        units = [tuple(m) for m in passive.values() if len(m) > 1][:max_units_per_seed]
+        units = _passive_inferred_units_for_biq(
+            passive, max_units=max_units_per_seed
+        )
         for members in units:
             unit_jobs.append((seed, members))
 
@@ -652,7 +671,11 @@ def score_ecology_biq_on_passive_units(
                     print(f"[v2-3 biq parallel {done}/{len(unit_jobs)}] seed={seed}", flush=True)
 
     per_seed = [{"seed": seed, "units": unit_reports_by_seed[seed]} for seed in seed_order]
-    return {"per_seed": per_seed, "max_seeds": max_seeds}
+    return {
+        "per_seed": per_seed,
+        "max_seeds": max_seeds,
+        "includes_singleton_units": True,
+    }
 
 
 def evaluate_predictions(

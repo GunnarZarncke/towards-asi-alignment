@@ -9,12 +9,14 @@ import pytest
 from graded_lab.harness.machinery_transfer import (
     MechanismGroundTruth,
     _fraction_mechanisms_majority_hit,
+    _passive_inferred_units_for_biq,
     c5_ground_truth_catalog,
     evaluate_predictions,
     mechanism_recovered,
     p1_communicate_ground_truth_pool,
     reference_bundle,
     run_machinery_transfer_battery,
+    score_ecology_biq_on_passive_units,
 )
 from graded_lab.world_visible.substrate import load_substrate
 
@@ -45,6 +47,69 @@ def test_mechanism_recovered_requires_cocluster():
     discovered = {"u1": ("eng1", "rev1"), "u2": ("rm1",)}
     assert mechanism_recovered(discovered, frozenset({"eng1", "rev1"}))
     assert not mechanism_recovered(discovered, frozenset({"eng1", "rm1"}))
+
+
+def test_passive_inferred_units_for_biq_includes_singletons():
+    passive = {
+        "u1": ("eng1", "rev1"),
+        "u2": ("eng2",),
+        "u3": ("rm1",),
+        "u4": ("admin1",),
+    }
+    assert _passive_inferred_units_for_biq(passive, max_units=10) == [
+        ("eng1", "rev1"),
+        ("admin1",),
+        ("eng2",),
+        ("rm1",),
+    ]
+    assert _passive_inferred_units_for_biq(passive, max_units=2) == [
+        ("eng1", "rev1"),
+        ("admin1",),
+    ]
+
+
+def test_score_ecology_biq_runs_on_singleton_partition(monkeypatch):
+    calls: list[tuple[int, tuple[str, ...]]] = []
+
+    def fake_biq(cfg, seed, members, programs, *, backend=None, **kwargs):
+        calls.append((seed, members))
+        from graded_lab.oracle_only.unit_biq import UnitBiqReport
+
+        return UnitBiqReport(
+            unit_members=members,
+            i_pred_bits={},
+            i_pred_total_bits=0.0,
+            i_ctrl_bits=0.0,
+            h_mem_bits=0.0,
+            s_surp_bits=0.0,
+            field_incident_bits=None,
+            composite_bits=0.0,
+        )
+
+    monkeypatch.setattr(
+        "graded_lab.harness.machinery_transfer.unit_ecology_biq",
+        fake_biq,
+    )
+    monkeypatch.setattr(
+        "graded_lab.harness.machinery_transfer.discovered_units_uad",
+        lambda **kwargs: {
+            "a": ("eng1",),
+            "b": ("eng2",),
+            "c": ("rev1",),
+        },
+    )
+    uad = {"per_seed": [{"seed": 0}]}
+    payload = score_ecology_biq_on_passive_units(
+        cfg=None,
+        programs={},
+        uad=uad,
+        results_by_seed={0: object()},
+        max_units_per_seed=2,
+        progress=False,
+    )
+    assert payload["includes_singleton_units"] is True
+    assert len(payload["per_seed"][0]["units"]) == 2
+    assert calls == [(0, ("eng1",)), (0, ("eng2",))]
 
 
 def test_p1_pool_excludes_large_message_channel():

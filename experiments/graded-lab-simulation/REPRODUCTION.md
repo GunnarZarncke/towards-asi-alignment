@@ -513,7 +513,7 @@ must be ``true`` on the grown ecology before citing Q1 detector-transfer claims.
 2. Reference ``WEAK_AGENT`` episodes: passive UAD + all-pairs intervention (P1, P2).
 3. EAI agent-vantage (``full`` tier) vs referee-vantage (``light`` tier) over
    ``CARRIER_SCALES`` (P3 + go/no-go for V2-5/V2-6).
-4. Ecology-BIQ on passive-inferred nonsingleton units (subset of seeds).
+4. Ecology-BIQ on passive-inferred partition units, singletons included (subset of seeds).
 5. Honest detector coverage (P4) + onboarding median ticks-to-deploy (V2-6 input).
 
 **Output:** ``results/v2_transfer.json`` with ``predictions.P1``–``P4``.
@@ -529,6 +529,14 @@ cd experiments/graded-lab-simulation
 ```
 
 Use ``--workers 1`` for deterministic single-process execution (tests, debugging).
+
+**BIQ-only re-run** (after GL-77 singleton fix; skips UAD intervention + EAI):
+
+```bash
+.venv/bin/python scripts/run_v2_biq_only.py --workers 4 \
+  --out results/v2_transfer_biq.json \
+  --patch-transfer results/v2_transfer.json
+```
 
 **Smoke / harness validation only:**
 
