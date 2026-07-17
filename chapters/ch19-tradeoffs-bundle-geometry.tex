@@ -113,30 +113,20 @@ These assignments are not merely factual.
 They depend on metaphysical, empirical, cultural, and moral assumptions.
 
 Thus a value bundle is not just a coordinate.
-It is at least a triple:
+It is at least a pair:
 \[
-\mathcal{B}_i = (B_i,\Phi_i,\chi_i),
+\mathcal{B}_i = (B_i,\Phi_i),
 \]
-where:
-\begin{itemize}
-\item $B_i$ is the bundle salience,
-\item $\Phi_i$ is the bearer map,
-\item $\chi_i$ is the characteristic policy-response pattern induced by the bundle.
-\end{itemize}
-The policy-response pattern $\chi_i$ is important.
-If the autonomy bundle becomes active, what changes?
-Does the system ask for consent?
-Preserve future options?
-Avoid coercion?
-Avoid hidden manipulation?
-Defer to local choice?
+where $B_i$ is the bundle salience and $\Phi_i$ is the bearer map.
+A value bundle also induces a characteristic policy-response pattern: if the autonomy bundle becomes active, does the system ask for consent, preserve future options, avoid coercion, avoid hidden manipulation, and defer to local choice?
 If the truth bundle becomes active, does the system reveal uncertainty, resist confabulation, preserve evidence, and refuse convenient falsehoods?
+Section~\ref{sec:value-bundle-response-geometry} below gives this policy-response pattern a formal object, the bundle-policy Jacobian $J_i$, rather than leaving it as a separate undefined symbol.
 
 This gives us a more precise target:
 \[
 \mathcal{V}
 =
-\{(B_i,\Phi_i,\chi_i)\}_{i=1}^{k}.
+\{(B_i,\Phi_i,J_i)\}_{i=1}^{k}.
 \]
 A human-compatible value representation must preserve not only the names of values, but the bundle activations, bearer maps, and policy effects.
 
@@ -734,7 +724,7 @@ s_{\text{hub}}
 \rightarrow
 B_i
 \rightarrow
-\chi_i
+J_i
 \rightarrow
 C_{\text{social}},
 \]
@@ -743,7 +733,7 @@ where:
 \item $\epsilon_{\text{loop}}$ is an error signal,
 \item $s_{\text{hub}}$ is a compressed salience signal,
 \item $B_i$ is a value-bundle activation,
-\item $\chi_i$ is a policy-response pattern,
+\item $J_i$ is the bundle's policy-response pattern (its Jacobian),
 \item $C_{\text{social}}$ is social correction.
 \end{itemize}
 A non-biological substrate may implement:
@@ -754,15 +744,15 @@ s'_{\text{control}}
 \rightarrow
 B'_i
 \rightarrow
-\chi'_i
+J'_i
 \rightarrow
 C'_{\text{correction}}.
 \]
 The transfer succeeds only if the functional role is preserved:
 \[
-(B_i,\Phi_i,\chi_i,C_{\text{social}})
+(B_i,\Phi_i,J_i,C_{\text{social}})
 \sim
-(B'_i,\Phi'_i,\chi'_i,C'_{\text{correction}}).
+(B'_i,\Phi'_i,J'_i,C'_{\text{correction}}).
 \]
 For example, importing non-suffering does not mean giving the AI nociceptors.
 It means that the system has a protected control direction that detects and responds to morally relevant suffering in bearers, treats uncertainty about suffering as important, resists trading severe suffering for minor gains, and remains correctable by affected parties and legitimate institutions.

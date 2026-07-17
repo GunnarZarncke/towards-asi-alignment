@@ -74,35 +74,10 @@ This chapter develops a simple framework for answering that question.
 \label{sec:competence-boundary-information}
 
 We begin with a substrate-neutral measure of competence.
-Consider a bounded adaptive system with internal states $I_t$, sensory states $S_t$, actions $A_t$, and relevant external states $E_t$.
+Consider a bounded adaptive system with internal states $I_t$, sensory states $S_t$, actions $A_t$, and relevant external states $E_t$ (Chapter~\ref{ch:agent-without-anthropomorphism}).
 A system is competent insofar as its internal state predicts future inputs, its actions influence future external states, and it does so without excessive memory burden or residual surprise.
 
-Define the competence functional
-\begin{equation}
-K
-=
-I_{\mathrm{pred}}
-+
-\alpha I_{\mathrm{ctrl}}
--
-\beta H(I_t)
--
-\gamma S_X,
-\label{eq:competence-functional}
-\end{equation}
-where
-\begin{align}
-I_{\mathrm{pred}} &= \MI(I_t;S_{t+1}), \\
-I_{\mathrm{ctrl}} &= \MI(A_t;E_{t+1}), \\
-H(I_t) &= \text{entropy or maintenance cost of internal state}, \\
-S_X &= \mathbb{E}\left[-\log P(S_{t+1}\mid I_t)\right].
-\end{align}
-
-Here $I_{\mathrm{pred}}$ measures predictive contact with the world.
-$I_{\mathrm{ctrl}}$ measures causal grip on the world.
-$H(I_t)$ penalizes the cost of maintaining a large or fragile internal state.
-$\mathcal{S}$ penalizes residual surprise.
-The constants $\alpha,\beta,\gamma$ set the relative weights.
+This reuses the boundary-information competence functional from Chapter~\ref{ch:capability-without-task-ontology} rather than redefining it: $K = I_{\mathrm{pred}} + \alpha I_{\mathrm{ctrl}} - \beta H(I_t) - \gamma S_X$ (Eq.~\ref{eq:biq}), where $I_{\mathrm{pred}} = \MI(I_t;S_{t+1})$ measures predictive contact with the world, $I_{\mathrm{ctrl}} = \MI(A_t;E_{t+1})$ measures causal grip on the world, $H(I_t)$ penalizes internal-state maintenance cost, and $S_X = \mathbb{E}\left[-\log P(S_{t+1}\mid I_t)\right]$ penalizes residual surprise.
 
 This is not meant to capture every ordinary meaning of intelligence.
 It does not directly measure beauty, creativity, consciousness, moral insight, or wisdom.
@@ -114,7 +89,7 @@ A system becomes dangerous not because it scores high on a test, but because it 
 \section{The Split between Capability and Alignment}
 \label{sec:split-capability-alignment}
 
-The competence functional in Eq.~\ref{eq:competence-functional} bundles several different capacities together.
+The competence functional $K$ (Eq.~\ref{eq:biq}) bundles several different capacities together.
 For alignment, we must separate them.
 
 Let

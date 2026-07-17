@@ -264,55 +264,19 @@ It is mediated by development, language, memory, social feedback, institutional 
 \end{figure}
 
 The first step is loop-to-hub compression.
-Many local loops produce high-dimensional error vectors:
-\[
-\epsilon_i(t)\in\mathbb{R}^{d_i}.
-\]
-Long-range biological bandwidth is limited, so those errors are not broadcast in full.
-They are compressed through neuromodulatory, limbic, and salience hubs:
-\[
-s_h(t)
-=
-\sigma_h
-\left(
-\sum_{i\in\mathcal I(h)}
-w_{ih}\,\lVert \epsilon_i(t)\rVert_{p_i}
-\right).
-\]
+Many local loops produce high-dimensional error vectors \(\epsilon_i(t)\in\mathbb{R}^{d_i}\).
+Long-range biological bandwidth is limited, so those errors are not broadcast in full; they are compressed through neuromodulatory, limbic, and salience hubs into a smaller signal \(s_h(t)\).
 This is the biological reason to expect a smaller \(K\)-dimensional value-relevant space rather than an arbitrary reward table over every situation feature.
 
 The second step is hub-to-control.
 Hub signals are not yet moral concepts.
-They are compressed signals about where control is needed, valuable, or failing:
-\[
-c_h(t)=g_h(s_h(t),z_t,a_t).
-\]
-They can modulate attention, precision, learning rate, memory writing, exploration, inhibition, and action priors.
-A simple policy-level form is:
-\[
-\pi(a_t\mid z_t,c_t)
-\propto
-\exp\left(
-Q_\theta(z_t,a_t)
-+
-\sum_h \lambda_h c_h(t)\phi_h(z_t,a_t)
-\right),
-\]
-where \(\phi_h\) selects the action features affected by proxy \(h\).
+They are compressed signals \(c_h(t)\) about where control is needed, valuable, or failing, and they can modulate attention, precision, learning rate, memory writing, exploration, inhibition, and action priors.
 
 The third step is control-to-value readout.
-A cortical, linguistic, and social decoder maps histories of control relevance into reportable value labels:
-\[
-P(v_k\mid c_{1:H},e_t)
-=
-\operatorname{softmax}_k
-\left(
-\beta_k+\sum_h \alpha_{kh}(e_t)c_h
-\right),
-\]
-where \(e_t\) summarizes developmental and environmental context.
-This equation is not saying that a hub directly ``contains'' a value.
+A cortical, linguistic, and social decoder maps histories of control relevance into reportable value labels.
+This is not saying that a hub directly ``contains'' a value.
 It says that recurring control pressures make some value abstractions easier to learn, stabilize, and socially correct.
+Chapter~\ref{ch:reward-to-bundle-inference} gives this same three-step compression an operational form ($\epsilon_i(t)\to s_h(t)\to c_h(t)\to B(t)$) when arguing that bundle inference stays tractable despite a high-dimensional feature space; the hub-level gating functions are not re-derived here, since only the compression direction and the resulting bound on $k$ carry weight for the thesis.
 
 Examples are only provisional.
 Threat-pain and periaqueductal-gray pathways plausibly feed protection and non-suffering readouts.

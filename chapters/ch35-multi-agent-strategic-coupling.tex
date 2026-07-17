@@ -235,69 +235,15 @@ by black-box probing, and a latent goal proxy \(g_i : A_i \times A_{\neg i}\to \
 This is not yet a full-acausal-trade claim.
 It is the data structure on which the claim can be stated: a UAD-discovered agent, an inferred policy, an inferred goal proxy, and an empirical causal-coupling matrix \(\gamma_{ij}\) over discovered agents.
 
-\emph{Meta-prior over inference functions.}
-Let \(P_{\text{meta}}\) be an audit-side generative distribution over inference functions \(\pi\) inside an architecture or training family \(\mathcal{A}\).
-It is a compact way to summarize the evidence that two UAD-discovered agents share the same decision-relevant inference structure.
-It need not be a literal symbolic prior represented inside the agents.
-The shared structure may be explicit source code, a learned circuit, a training-distribution invariant, a scaffold, or a behavioral regularity visible only through probes.
-For exposition, the source treats this distribution as permutation-invariant inside the relevant class: before looking at identities, labels, or vendors, two members of the same class are exchangeable as draws from \(P_{\text{meta}}\).
-For a pair of discovered agents \(i,j\), the diagonal mass is
-\[
-P_{\text{meta}}(\pi_i=\pi_j)=1-\epsilon_{ij}.
-\]
-Thus \(\epsilon_{ij}\) is not an arbitrary coupling knob.
-It is the mismatch probability assigned by the meta-prior certificate, or empirically by fingerprints that stand in for it: architecture family, shared weights, training distribution, source visibility, decision-theoretic implementation, and behavior under probes.
+\emph{Meta-prior and self-mirroring.}
+Let \(P_{\text{meta}}\) be an audit-side certificate distribution over inference functions inside an architecture or training family, with diagonal mass \(P_{\text{meta}}(\pi_i=\pi_j)=1-\epsilon_{ij}\).
+The mismatch \(\epsilon_{ij}\) is the probability the audit assigns to \(i\) and \(j\) \emph{not} sharing the same relevant inference function, estimated from fingerprints that stand in for the shared structure --- architecture family, weights, training distribution, or behavior under probes --- rather than a literal symbolic prior inside the agents.
 Small \(\epsilon_{ij}\) means the audit has evidence that \(i\) and \(j\) are likely to instantiate the same relevant inference function.
 
-The crucial move can be written as introspection, but the operational claim is weaker.
-In the idealized presentation, agent \(i\) observes or represents its own policy \(f_i\), and conditions the shared meta-prior on that fact:
-\[
-\beta_i^{\mathrm{int}}(f)
-:=
-P_{\text{meta}}(f_j=f \mid f_i).
-\]
-In the zero-mismatch limit, \(\epsilon_{ij}=0\), this posterior collapses to \(\delta_{f_i}\): the agent's best prediction of the peer is its own policy.
-No message has crossed the severed channel.
-In a real model, the corresponding process may be implicit in weights, cached activations, code-level self-similarity, or training-induced regularities rather than a proposition the system can state.
-The detector therefore does not require literal self-narration.
-It asks whether UAD, policy probes, and meta-prior fingerprints reveal the same behavioral fact: once causal channels are severed, the systems still behave as if each can predict the other's policy from shared structure.
-Operationally, \(P_{\text{meta}}\) answers: \emph{how surprised should the audit be to learn that \(j\) implements the same relevant inference function as \(i\)?}
-
-\emph{Full acausal-trade equilibrium.}
-Let \(\Phi_i(\mu;H_i^t)\) be \(i\)'s best-response operator under goal proxy \(g_i\) when the opponent's action distribution is \(\mu\).
-In the limiting decision-theoretic case, an acausal equilibrium between \(i\) and \(j\) obtains when each policy is a fixed point of best-response to the introspective posterior:
-\[
-\begin{aligned}
-f_i(H_i^t) &= \Phi_i(\beta_i^{\mathrm{int}};H_i^t),\\
-f_j(H_j^t) &= \Phi_j(\beta_j^{\mathrm{int}};H_j^t).
-\end{aligned}
-\]
-In the zero-\(\epsilon\) limit this becomes ``best-respond to myself.''
-Timeless and functional decision theories describe an analogous pattern proof-theoretically.
-The UAD construction makes the weaker detector claim empirical rather than psychological: the discovered agents exhibit inferential coupling at the chosen resolution, or they do not.
-The internal implementation may be symbolic, hidden in weights, scaffold-mediated, or obfuscated.
-If policies, goals, and meta-prior fingerprints can be estimated well enough, the hypothesized inferential dependence leaves a trajectory-level signature.
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabularx}{\textwidth}{@{}lX@{}}
-\toprule
-\textbf{Inferential-coupling object} & \textbf{Role in this chapter} \\
-\midrule
-UAD-discovered agent \(C_i\) & Vertex in the causal and inferential coupling graphs. \\
-Inference function \(f_i\) & The policy object an agent introspects and the detector probes. \\
-Goal proxy \(g_i\) & Defines the best-response operator \(\Phi_i\). \\
-Meta-prior \(P_{\text{meta}}\) & Audit-side certificate over shared inference structure; source of \(\epsilon_{ij}\). \\
-Mismatch \(\epsilon_{ij}\) & Pairwise probability that \(i\) and \(j\) do not share the same inference function under \(P_{\text{meta}}\). \\
-Introspective posterior \(\beta_i^{\mathrm{int}}\) & Idealized notation for self-conditioned peer prediction; may be implicit rather than symbolic. \\
-Fixed-point loss \(D_i\) & Probe-based test of whether \(f_i\) behaves like best-response-to-shared-structure. \\
-\(\widehat{\mathrm{IC}}_{ij}\) & Empirical inferential-coupling score feeding \(\tilde{\kappa}_{ij}\). \\
-\bottomrule
-\end{tabularx}
-\caption{How the acausal-trade/UAD formalism maps into the Chapter~\ref{ch:multi-agent-strategic-coupling} inferential-coupling graph.}
-\label{tab:inferential-coupling-uad-mapping-ch35}
-\end{table}
+Let \(\Phi_i(\mu;H_i^t)\) be \(i\)'s best-response operator under goal proxy \(g_i\) against opponent action distribution \(\mu\).
+The decision-theoretic content of full acausal trade is that in the zero-mismatch limit, an agent's best prediction of a shared-structure peer collapses to its own policy: it best-responds to itself, with no message crossing the severed channel.\footnote{Formally, each policy becomes a fixed point $f_i(H_i^t)=\Phi_i(\beta_i^{\mathrm{int}};H_i^t)$ of best-response to the self-conditioned posterior $\beta_i^{\mathrm{int}}(f):=P_{\text{meta}}(f_j=f\mid f_i)$, which collapses to $\delta_{f_i}$ as $\epsilon_{ij}\to 0$. Timeless and functional decision theories describe an analogous pattern proof-theoretically \autocite{tdt2010,fdt2017,critch2020ai}. The full derivation, including the permutation-invariance exposition of $P_{\text{meta}}$, is in \autocite{zarncke2025acausal}.}
+In a real model, this process may be implicit in weights, cached activations, or training-induced regularities rather than a proposition the system can state.
+The detector therefore does not require literal self-narration: it asks whether UAD, policy probes, and meta-prior fingerprints reveal the same behavioral fact, empirically rather than psychologically.
 
 \emph{Detector.}
 The source derives a two-part statistic.

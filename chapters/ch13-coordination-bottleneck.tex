@@ -183,11 +183,7 @@ But if the system has already taken irreversible action, the correction is no lo
 A safety team may detect a dangerous capability after deployment, but only after the product has become economically or politically hard to withdraw.
 
 Let $\Delta t_{\mathrm{signal}}$ be the time required for information to travel from observation to effective action, and let $\Delta t_{\mathrm{harm}}$ be the time before relevant harm becomes irreversible.
-A latency bottleneck appears when
-\begin{equation}
-\Delta t_{\mathrm{signal}} > \Delta t_{\mathrm{harm}} .
-\label{eq:latency-bottleneck}
-\end{equation}
+A latency bottleneck appears when $\Delta t_{\mathrm{signal}} > \Delta t_{\mathrm{harm}}$.
 
 This is especially important for systems that can act faster than the institutions around them.
 A human organization can tolerate slow coordination when the world changes slowly.
@@ -203,11 +199,7 @@ A frontier model may internally represent uncertainty across thousands of latent
 A public incident report may compress a complex failure into a public-relations sentence.
 
 Let $X$ be the relevant internal state and $Y$ the representation available to the decision-maker.
-The bandwidth available for coordination is bounded by
-\begin{equation}
-\MI(X;Y) \leq C_{\mathrm{channel}} .
-\label{eq:bandwidth-bound}
-\end{equation}
+The bandwidth available for coordination is bounded by $\MI(X;Y) \leq C_{\mathrm{channel}}$.
 
 If the action requires distinctions that cannot be transmitted through $Y$, coordination fails.
 
@@ -230,21 +222,7 @@ The same signal passes through different latent spaces and emerges as different 
 Translation loss is not merely loss of detail.
 It is loss under representational mismatch.
 Let $R_i$ and $R_j$ be the representational schemes of components $i$ and $j$.
-A translation map
-\begin{equation}
-T_{ij}: R_i \to R_j
-\label{eq:translation-map}
-\end{equation}
-has distortion
-\begin{equation}
-D_{ij}
-=
-\mathbb{E}_{x \sim R_i}
-\left[
-d_i(x, T_{ji}(T_{ij}(x)))
-\right] .
-\label{eq:translation-distortion}
-\end{equation}
+A translation map $T_{ij}: R_i \to R_j$ has distortion $D_{ij} = \mathbb{E}_{x \sim R_i}[\,d_i(x, T_{ji}(T_{ij}(x)))\,]$.
 
 The distortion is high when a concept can be sent but not used.
 A warning that cannot change a decision is not a successful translation.
@@ -264,14 +242,7 @@ A model monitor may detect a distribution shift but only write to a log.
 A human overseer may formally approve actions, while the interface makes refusal costly, confusing, or slow.
 
 Let $K_i$ denote the relevant knowledge held by component $i$, and $A_{\mathrm{sys}}$ the system-level action.
-Authority can be approximated by the causal influence
-\begin{equation}
-\mathcal{A}_i
-=
-\MI(K_i; A_{\mathrm{sys}} \mid S_{\mathrm{sys}}),
-\label{eq:authority-information}
-\end{equation}
-where $S_{\mathrm{sys}}$ is the shared system state.
+Authority can be approximated by the causal influence $\mathcal{A}_i = \MI(K_i; A_{\mathrm{sys}} \mid S_{\mathrm{sys}})$, where $S_{\mathrm{sys}}$ is the shared system state.
 
 An authority bottleneck appears when $\mathcal{A}_i$ is low for the component that has the most decision-relevant knowledge.
 
@@ -292,13 +263,7 @@ A component sends signal $Y$ about state $X$, but the component is rewarded not 
 The signal becomes strategic.
 
 Let $U_i(Y,A)$ be the utility or selection criterion of the sender, and let the receiver need $Y$ to approximate $X$.
-Truthful signaling is stable only when the sender's optimal signal remains close to the receiver's needed signal:
-\begin{equation}
-\arg\max_Y U_i(Y,A(Y))
-\approx
-\arg\min_Y d(Y,X).
-\label{eq:truthful-signaling}
-\end{equation}
+Truthful signaling is stable only when the sender's optimal signal remains close to the receiver's needed signal: $\arg\max_Y U_i(Y,A(Y)) \approx \arg\min_Y d(Y,X)$.
 
 When this fails, the channel carries persuasion rather than information.
 
@@ -317,13 +282,7 @@ At the system level it is also a routing parameter.
 If the receiver assigns low reliability to a source, the source's information has little causal effect.
 
 Let $q_{ij}\in[0,1]$ be the reliability weight that component $i$ assigns to information from component $j$.
-Then the effective transmitted information is roughly
-\begin{equation}
-I_{\mathrm{eff}}(X_j;Y_i)
-=
-q_{ij} \MI(X_j;Y_j).
-\label{eq:trust-weighted-information}
-\end{equation}
+Then the effective transmitted information is roughly $I_{\mathrm{eff}}(X_j;Y_i) = q_{ij} \MI(X_j;Y_j)$.
 
 Low trust can be good.
 It protects against manipulation.
@@ -344,13 +303,7 @@ A reversible mistake can be corrected after better information arrives.
 An irreversible mistake cannot.
 
 Let $R(a)$ be the reversibility of action $a$, with $R(a)=1$ for fully reversible actions and $R(a)=0$ for irreversible actions.
-A safety-relevant system should couple low reversibility to high correction capacity:
-\begin{equation}
-R(a) \downarrow
-\quad\Rightarrow\quad
-C_{\mathrm{raw}}(a) \uparrow .
-\label{eq:reversibility-correction}
-\end{equation}
+A safety-relevant system should couple low reversibility to high correction capacity: $R(a) \downarrow \Rightarrow C_{\mathrm{raw}}(a) \uparrow$.
 
 If a system allows low-reversibility actions through low-capacity correction channels, it has a structural alignment defect.
 

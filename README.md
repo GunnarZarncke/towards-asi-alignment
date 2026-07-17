@@ -75,6 +75,7 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 | Chapter list | [`metadata/book.yml`](metadata/book.yml) · [site book index](https://towards-alignment.com/book/) |
 | Experiments | Tentative sanity checks only — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/) for oracle/audit/sim plane separation; strong findings curated and classified (positive/negative/ambiguous), with a per-chapter landing index, in [Appendix "Experimental Evidence"](appendices/appN-experimental-evidence.tex) |
 | Formal spine | Lean 4 conditional skeleton — [`formal/README.md`](formal/README.md) |
+| Symbol census | Every symbol/formula audited for thesis contribution, with generated coverage tables and dependency graphs down into the Lean spine — [`metadata/symbol-census/README.md`](metadata/symbol-census/README.md) |
 
 Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).
 

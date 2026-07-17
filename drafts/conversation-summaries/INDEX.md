@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-17 | Symbol census: **text-only cross-refs made discoverable** — `\ref{ch:...}`/`\ref{sec:...}` (536 occurrences, ~8x the `\eqref` count) now parsed into `text-ref` edges / `chref:chNN` nodes, closing the "edges only inferrable from text" gap noted in the graph README | [2026-07-17-symbol-census-text-ref-edges.md](2026-07-17-symbol-census-text-ref-edges.md) |
+| 2026-07-17 | Symbol census **promoted to `metadata/symbol-census/`**: audit + coverage + graphs moved out of drafts/, script paths updated, regenerated, large graphs re-rendered with `sfdp` (dot now hangs on the full manuscript graph too), new census README, README.md row added | [2026-07-17-symbol-census-promoted-to-metadata.md](2026-07-17-symbol-census-promoted-to-metadata.md) |
 | 2026-07-17 | Symbol-audit **reduce/remove pass**: ch13 seven sub-losses demoted, ch14 BIQ cross-ref to ch11, ch35 ICI/acausal stack trimmed ~40%, ch15 LHCV hub equations reduced, ch19 χ_i removed (→ Jacobian $J_i$); notation.md ICI_ij home fixed | [2026-07-17-symbol-audit-reduce-remove-pass.md](2026-07-17-symbol-audit-reduce-remove-pass.md) |
 | 2026-07-17 | **Epistemic status review complete**: author-reviewed boxes for ch13–ch48 + appB/C/D/F/G/M committed (`fd8d480`); completes pass started 2026-07-13 / `36bf3c3`; appA/appE still without boxes | [2026-07-17-epistemic-status-review-complete.md](2026-07-17-epistemic-status-review-complete.md) |
 | 2026-07-17 | Graded lab pytest wrappers: detached logged runs, PID/status helper, README; GL-64–66 diagnostic restoration | [2026-07-17-graded-lab-pytest-background-logs.md](2026-07-17-graded-lab-pytest-background-logs.md) |

@@ -131,7 +131,7 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\varphi_c$ | Percolation threshold for cooperation | ch48 |
 | $\chi$ | Artifact conductivity | ch46 |
 | $\chi_{ij}(a)$ | Artifact conductivity on edge $(i,j)$ for artifact $a$ | ch48 |
-| $\mathrm{ICI}_{ij}$ | Inferential coupling index | ch48 |
+| $\mathrm{ICI}_{ij}$ | Inferential coupling index | ch35 |
 | $C_X$ | Host correction capacity (correction-audit-evasion criterion) | ch46 |
 | $A_Y,I_Y,\lambda_Y$ | Evasion-process action entropy, internal entropy, weight | ch46 |
 | $GLI$ | Goal-laundering index | ch48 |
