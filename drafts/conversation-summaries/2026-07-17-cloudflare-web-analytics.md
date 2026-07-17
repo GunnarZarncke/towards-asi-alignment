@@ -29,4 +29,4 @@ User asked to undo GA4 integration and use cookieless Cloudflare Web Analytics i
 - `.github/workflows/site.yml`
 
 ## Commits
-- (pending) Replace GA4 with Cloudflare Web Analytics and Impressum note.
+- `c81c514` Use cookieless Cloudflare Web Analytics instead of GA4.
