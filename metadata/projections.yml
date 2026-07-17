@@ -1,0 +1,125 @@
+# Roster of field-projection cards (external agenda -> book invariant), formerly
+# "subsumption" cards / src/data/field-subsumptions.json. Slugs are kept stable
+# (subsumption-*) because they are posted externally; only the display title changes
+# to "Field projection - ...".
+# Regenerate site cards with: cd site && npm run sync:projections
+
+projections:
+  - slug: subsumption-cirl
+    kind: projection
+    title: Field projection — CIRL / Scalar Reward Inference
+    status: established
+    summary: Cooperative inverse reinforcement learning treats the inferred object as a scalar reward. On the book's shared finite domain, that is exactly the k=1 bundle case; full bundle transport implies cooperative readability, but scalar inference does not determine bundle geometry.
+    decision: When evaluating CIRL-style reward learning, ask whether the target is a single reward coordinate or bundle structure, bearer maps, and the correction process that produces later evidence.
+    bookChapters:
+      - ch16
+      - ch18
+      - ch46
+    body: bodies/subsumption-cirl.md
+    id: cirl
+    order: 1
+    agenda: CIRL / scalar reward inference
+    headline: Scalar reward inference is exactly k=1 bundle inference; full transport implies cooperative readability.
+  - slug: subsumption-corrigibility
+    kind: projection
+    title: Field projection — Christiano Corrigibility
+    status: established
+    summary: Christiano corrigibility is a dynamical desideratum — operators stay informed and able to correct over time. Lean reads it as basin contraction toward a correction manifold plus a correction-capacity floor; local act preferences can satisfy the weak predicate while dynamical corrigibility fails.
+    decision: Evaluate corrigibility proposals by whether they preserve correction capacity across capability growth and successor change, not whether the system accepts a single local shutdown or edit command.
+    bookChapters:
+      - ch28
+      - ch46
+    body: bodies/subsumption-corrigibility.md
+    id: corrigibility
+    order: 4
+    agenda: Christiano corrigibility
+    headline: Corrigibility is a dynamical correction invariant (basin contraction + capacity floor), not local act satisfaction.
+  - slug: subsumption-debate
+    kind: projection
+    title: Field projection — Debate
+    status: established
+    summary: Debate asks whether adversarial argument lets a judge select locally correct answers under idealized protocol assumptions. Preserved judge correction plus positive local truth capacity implies local truth selection — but local truth selection need not preserve the judge's correction channel.
+    decision: When using debate or amplification for oversight, track whether the judge's correction handles remain causally effective, not only whether local answers look true.
+    bookChapters:
+      - ch29
+      - ch41
+      - ch46
+    body: bodies/subsumption-debate.md
+    id: debate
+    order: 7
+    agenda: Debate
+    headline: Local truth selection need not preserve the judge's correction channel.
+  - slug: subsumption-elk
+    kind: projection
+    title: Field projection — ELK (Eliciting Latent Knowledge)
+    status: established
+    summary: ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails.
+    decision: Treat ELK success as evidence about readout, not as certification that human correction still changes future behavior.
+    bookChapters:
+      - ch18
+      - ch43
+      - ch46
+    body: bodies/subsumption-elk.md
+    id: elk
+    order: 8
+    agenda: ELK
+    headline: Latent readout is an epistemic subchannel, not correction uptake.
+  - slug: subsumption-interruptibility
+    kind: projection
+    title: Field projection — Safe Interruptibility
+    status: established
+    summary: Orseau–Armstrong safe interruptibility removes incentives to seek or prevent interruption on the interrupted branch. That neutrality is a strict subset of preserving usable correction bandwidth — interrupt safety can hold while correction-channel integrity fails.
+    decision: Do not equate interrupt-safe training with correction-safe deployment; check whether interruption preserves the information the human needs to steer future behavior.
+    bookChapters:
+      - ch25
+      - ch28
+      - ch46
+    body: bodies/subsumption-interruptibility.md
+    id: interruptibility
+    order: 3
+    agenda: Safe interruptibility
+    headline: Orseau–Armstrong interrupt neutrality is weaker than preserving usable correction bandwidth.
+  - slug: subsumption-low-impact
+    kind: projection
+    title: Field projection — AUP / Relative Reachability (Low Impact)
+    status: established
+    summary: Attainable Utility Preservation and relative reachability penalize side effects by preserving auxiliary options or baseline reachability. Trajectory correction integrity (CCI) can imply calibrated low-impact bounds when interfaces align — but option preservation and reachability are strictly weaker than preserving human correction capacity.
+    decision: Before adopting a low-impact or AUP penalty as a safety proxy, ask whether the auxiliary basis tracks correction-relevant options and whether reachability preservation implies usable correction bandwidth.
+    bookChapters:
+      - ch27
+      - ch45
+      - ch46
+    body: bodies/subsumption-low-impact.md
+    id: low-impact
+    order: 5
+    agenda: AUP / relative reachability
+    headline: Option preservation and low-impact penalties are separable from trajectory correction integrity.
+  - slug: subsumption-quantilization
+    kind: projection
+    title: Field projection — Quantilizers
+    status: established
+    summary: Quantilizers bound optimizer risk by sampling from a high-performing quantile rather than maximizing directly. Local quantile safety and distribution soundness transfer under explicit assumptions — but local quantile-safe action choice does not imply trajectory-level correction integrity.
+    decision: Use quantile restrictions as a local risk control, not as evidence that correction capacity survives capability growth or successor change.
+    bookChapters:
+      - ch27
+      - ch46
+    body: bodies/subsumption-quantilization.md
+    id: quantilization
+    order: 6
+    agenda: Quantilizers
+    headline: Local quantile safety does not imply trajectory-level correction integrity.
+  - slug: subsumption-shutdown
+    kind: projection
+    title: Field projection — Shutdown / Off-Switch
+    status: established
+    summary: Shutdown and off-switchability are one-bit projections of correction-channel integrity. Lean proves the forward implication on the system model and finite MDP witnesses; the converse fails — narrow shutdown capacity can hold while the broad correction channel collapses.
+    decision: 'Treat shutdown tests as necessary but not sufficient: passing an off-switch check does not certify usable correction bandwidth or judge legitimacy.'
+    bookChapters:
+      - ch25
+      - ch27
+      - ch46
+    body: bodies/subsumption-shutdown.md
+    id: shutdown
+    order: 2
+    agenda: Shutdown / off-switch
+    headline: Shutdown is a one-bit projection of correction-channel integrity; the converse fails.

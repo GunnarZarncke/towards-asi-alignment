@@ -14,6 +14,8 @@ const card = defineCollection({
     overviewOnly: z.boolean().optional(),
     bibKey: z.string().optional(),
     experimentLineId: z.string().optional(),
+    /** Optional link to a metadata/claims-ledger.md entry (e.g. "C-004a"). */
+    claimId: z.string().optional(),
     /** ISO date (YYYY-MM-DD) for release cards; omit on the hub card. */
     releasedAt: z.string().optional(),
     /** Semver string for versioned release cards (e.g. "1.1.0"). */

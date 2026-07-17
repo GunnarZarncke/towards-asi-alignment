@@ -2,7 +2,7 @@
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
 import LeanOverviewDiagram from "../../components/LeanOverviewDiagram.astro";
-import FieldSubsumptionsTable from "../../components/FieldSubsumptionsTable.astro";
+import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
 import leanSpine from "../../data/lean-spine.json";
 import { bookHref, cardHref } from "../../lib/site-urls";
 import bookIndex from "../../data/book.json";
@@ -39,7 +39,7 @@ const titleForChapter = (chapterId: string) =>
     <LeanOverviewDiagram />
   </div>
 
-  <FieldSubsumptionsTable
+  <FieldProjectionsTable
     cardHref={toCardHref}
     chapterHref={toBookHref}
     chapterTitle={titleForChapter}

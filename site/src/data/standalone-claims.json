@@ -5,22 +5,22 @@
     {
       "slug": "anti-capture-correction-validity",
       "title": "Anti-Capture Validity of Correction",
-      "blurb": "Correction certificates are invalid—not merely low—when the target captures the reference process."
+      "blurb": "Correction-channel integrity is invalid—not merely low—when the target has captured the reference process, handles, or grounding relation that supplies correction."
     },
     {
       "slug": "bearer-map-commutation-failure",
       "title": "Bearer-Map Commutation Failure",
-      "blurb": "Moral vocabulary can persist while application changes when ontology translation and relevance do not commute."
-    },
-    {
-      "slug": "goodhart-as-selector",
-      "title": "Goodhart as Selector",
-      "blurb": "When a proxy becomes a selector, optimization can reverse conditional expectations on the true property."
+      "blurb": "Value can appear preserved in vocabulary while moral application changes — when ontology translation and bearer relevance do not commute."
     },
     {
       "slug": "certification-under-manipulation",
       "title": "Certification-Under-Manipulation Problem",
-      "blurb": "For each load-bearing measurand, is there a capability threshold below which honest certification stays verifiable?"
+      "blurb": "For each load-bearing certification measurand, does there exist a capability threshold κ* below which honest measurement is adversarially verifiable and above which it provably is not?"
+    },
+    {
+      "slug": "goodhart-as-selector",
+      "title": "Goodhart as Selector (Not Just Proxy Drift)",
+      "blurb": "When a proxy becomes a selector, optimization shifts the population toward traits that raise the proxy without raising the target property — conditional expectations can reverse."
     }
   ]
 }

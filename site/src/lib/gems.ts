@@ -1,17 +1,17 @@
 import partGems from "../data/part-gems.json";
-import fieldSubsumptionGems from "../data/field-subsumption-gems.json";
+import fieldProjectionGems from "../data/field-projection-gems.json";
 
 export const GEM_LABEL = "gem" as const;
 
 export const GEM_META = {
   title: "Gem",
   description:
-    "Highlighted companion cards — one anchor per book part plus field-subsumption formula cards in the bridge crosswalk."
+    "Highlighted companion cards — one anchor per book part plus field-projection formula cards in the bridge crosswalk."
 };
 
-/** All card slugs that carry the gem badge (part highlights + field subsumptions). */
+/** All card slugs that carry the gem badge (part highlights + field projections). */
 export const ALL_GEM_SLUGS = [
-  ...new Set([...Object.values(partGems).flat(), ...fieldSubsumptionGems])
+  ...new Set([...Object.values(partGems).flat(), ...fieldProjectionGems])
 ];
 
 const gemSlugSet = new Set(ALL_GEM_SLUGS);
@@ -25,4 +25,4 @@ export function badgeGemHref(base: string) {
   return `${normalized}badges/gem/`;
 }
 
-export { partGems, fieldSubsumptionGems };
+export { partGems, fieldProjectionGems };

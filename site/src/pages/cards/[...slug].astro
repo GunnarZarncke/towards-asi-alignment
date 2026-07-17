@@ -5,7 +5,7 @@ import Badge from "../../components/Badge.astro";
 import Formula from "../../components/Formula.astro";
 import BridgeCrosswalkTable from "../../components/BridgeCrosswalkTable.astro";
 import CardSection from "../../components/CardSection.astro";
-import FieldSubsumptionsTable from "../../components/FieldSubsumptionsTable.astro";
+import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
 import ReferenceIndex from "../../components/ReferenceIndex.astro";
 import LeanCodeBlock from "../../components/LeanCodeBlock.astro";
 import LeanTryIt from "../../components/LeanTryIt.astro";
@@ -127,6 +127,11 @@ const leanPlaygrounds = [
       .map((pg) => [pg!.id, pg!])
   ).values()
 ];
+
+const claimLink = card.data.claimId
+  ? { label: `Claims ledger: ${card.data.claimId}`, url: `${repoBase}/metadata/claims-ledger.md#claim-id-${card.data.claimId.toLowerCase()}` }
+  : null;
+const externalLinks = claimLink ? [claimLink, ...card.data.external] : card.data.external;
 
 const bibEntry = isReferenceCard && card.data.bibKey ? refByKey.get(card.data.bibKey) : undefined;
 const referenceLinks = isReferenceCard
@@ -497,11 +502,11 @@ const pageDescription = showFullText
           </ul>
         </>
       )}
-      {card.data.external.length > 0 && !isReferenceCard && (
+      {externalLinks.length > 0 && !isReferenceCard && (
         <>
           <h3>External links</h3>
           <ul>
-            {card.data.external.map((link) => (
+            {externalLinks.map((link) => (
               <li><a href={link.url}>{link.label}</a></li>
             ))}
           </ul>

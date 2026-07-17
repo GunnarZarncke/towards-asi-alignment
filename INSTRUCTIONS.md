@@ -11,7 +11,7 @@
 | Reader-facing status and quick start | `README.md` |
 | Symbol index (generated) and §C reconciliation | `metadata/notation.md` → Notation Index appendix |
 | Assumptions index (generated) | `metadata/assumptions-ledger.md` → Assumptions Index appendix |
-| Operational terms | `metadata/terminology.md` → Glossary appendix |
+| Operational terms | `metadata/concepts.yml` (`kind: glossary` + attached `glossaryTerms`) → Glossary appendix and site `/glossary/` |
 | Bridges ↔ field cruxes crosswalk | `appendices/appB-bridge-crosswalk.tex` |
 | Source PDFs, TeX paths, extracts | `metadata/source-canon.md` |
 | Continuity and deduplication plans | `review/fix-plans-2026-06-22.md` |
@@ -154,7 +154,7 @@ When a formal object is re-used in a later chapter, follow `review/fix-plans-202
 
 | Layer | Maintain in | Reader sees |
 |-------|-------------|-------------|
-| Operational terms | `metadata/terminology.md` | Glossary appendix |
+| Operational terms | `metadata/concepts.yml` | Glossary appendix; site `/glossary/` |
 | Symbols and canonical eq homes | `metadata/notation.md` | Notation Index appendix (generated; points to chapters) |
 | Formal predicates and bridges | `formal/AlignmentProofSpine/*.lean` | Lean Proof Spine appendix |
 

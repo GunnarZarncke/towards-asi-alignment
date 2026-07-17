@@ -2,11 +2,11 @@
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import LeanGraph from "../../../components/LeanGraph.astro";
 import LeanGraphNav from "../../../components/LeanGraphNav.astro";
-import FieldSubsumptionsTable from "../../../components/FieldSubsumptionsTable.astro";
+import FieldProjectionsTable from "../../../components/FieldProjectionsTable.astro";
 import Badge from "../../../components/Badge.astro";
 import leanSpine from "../../../data/lean-spine.json";
-import fieldSubsumptions from "../../../data/field-subsumptions.json";
-import fieldSubsumptionGems from "../../../data/field-subsumption-gems.json";
+import fieldProjections from "../../../data/field-projections.json";
+import fieldProjectionGems from "../../../data/field-projection-gems.json";
 import bookIndex from "../../../data/book.json";
 import { bookHref, cardHref } from "../../../lib/site-urls";
 
@@ -24,7 +24,7 @@ const toCardHref = (id: string) => cardHref(base, id);
 const toBookHref = (id: string) => bookHref(base, id);
 const titleForChapter = (chapterId: string) =>
   bookIndex.chapters.find((ch: { id: string; title: string }) => ch.id === chapterId)?.title ?? chapterId;
-const gemSlugs = new Set(fieldSubsumptionGems);
+const gemSlugs = new Set(fieldProjectionGems);
 
 const nodeHrefs = Object.fromEntries(
   graph.nodes.map((node) => {
@@ -49,7 +49,7 @@ const nodeHrefs = Object.fromEntries(
     />
 
     {graph.id === "field-subsumptions" && (
-      <FieldSubsumptionsTable
+      <FieldProjectionsTable
         cardHref={toCardHref}
         chapterHref={toBookHref}
         chapterTitle={titleForChapter}
@@ -61,7 +61,7 @@ const nodeHrefs = Object.fromEntries(
       <section class="readable">
         <h2>Gem cards</h2>
         <ul>
-          {fieldSubsumptions.map((row) => (
+          {fieldProjections.map((row) => (
             <li>
               <a href={toCardHref(row.card)}>{row.agenda}</a>
               {gemSlugs.has(row.card) && <Badge label="gem" variant="gem" />}

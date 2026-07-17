@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import CardSection from "../../components/CardSection.astro";
 import { cardHref as buildCardHref } from "../../lib/site-urls";
-import fieldSubsumptionGems from "../../data/field-subsumption-gems.json";
+import fieldProjectionGems from "../../data/field-projection-gems.json";
 import experimentsData from "../../data/experiments.json";
 
 const base = import.meta.env.BASE_URL;
@@ -44,7 +44,7 @@ const byType = (type: string) =>
     .sort((a, b) => a.data.title.localeCompare(b.data.title))
     .map(toEntry);
 
-const concepts = byType("concept").filter((card) => !fieldSubsumptionGems.includes(card.id));
+const concepts = byType("concept").filter((card) => !fieldProjectionGems.includes(card.id));
 const referenceIndexCard = cards.find((card) => card.id === "reference-index");
 const referenceCards = cards
   .filter((card) => card.data.type === "reference")
@@ -66,9 +66,9 @@ const experiments = cards
     return a.data.title.localeCompare(b.data.title);
   })
   .map(toEntry);
-const fieldSubsumptions = cards
-  .filter((card) => fieldSubsumptionGems.includes(card.id))
-  .sort((a, b) => fieldSubsumptionGems.indexOf(a.id) - fieldSubsumptionGems.indexOf(b.id))
+const fieldProjections = cards
+  .filter((card) => fieldProjectionGems.includes(card.id))
+  .sort((a, b) => fieldProjectionGems.indexOf(a.id) - fieldProjectionGems.indexOf(b.id))
   .map(toEntry);
 const bridges = byType("bridge");
 const artifacts = byType("artifact");
@@ -90,7 +90,7 @@ const sections = [
   { title: "Experiments", id: "experiments", cards: experiments },
   { title: "Releases & updates", id: "releases", cards: releases },
   { title: "Reference cards", id: "references", cards: referencesSection },
-  { title: "Field crosswalk", id: "field-subsumptions", cards: fieldSubsumptions },
+  { title: "Field projections", id: "field-projections", cards: fieldProjections },
   { title: "Concepts", id: "concepts", cards: concepts },
   { title: "Bridges", id: "bridges", cards: bridges },
   { title: "Artifacts", id: "artifacts", cards: artifacts },
@@ -115,18 +115,30 @@ const totalCards = sections.reduce((sum, section) => sum + section.cards.length,
       {" · "}
       <a href={withBase("/experiments/")}>Experiment lines</a>
       {" · "}
+      <a href={withBase("/glossary/")}>Glossary</a>
+      {" · "}
+      <a href={withBase("/notation/")}>Notation index</a>
+      {" · "}
       <a href={withBase("/paths/")}>Prefer a guided tour?</a>
     </p>
   </section>
 
   {sections.map((section) => (
-    <CardSection
-      title={section.title}
-      sectionId={section.id}
-      cards={section.cards}
-      cardHref={cardHref}
-      gemIds={section.id === "field-subsumptions" ? fieldSubsumptionGems : []}
-    />
+    <>
+      {section.id === "glossary" && (
+        <p class="side-panel-meta">
+          <a href={withBase("/glossary/")}>Browse the full glossary</a> — includes terms defined inside
+          concept and bridge cards, not only the {section.cards.length} dedicated glossary cards below.
+        </p>
+      )}
+      <CardSection
+        title={section.title}
+        sectionId={section.id}
+        cards={section.cards}
+        cardHref={cardHref}
+        gemIds={section.id === "field-projections" ? fieldProjectionGems : []}
+      />
+    </>
   ))}
 </SiteLayout>
 

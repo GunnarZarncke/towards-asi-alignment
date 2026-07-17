@@ -1,0 +1,213 @@
+# Roster of MB1-MB10 bridge cards plus the bridge-assumptions index card.
+# Cross-checked against appendices/appB-bridge-crosswalk.tex at sync time.
+# Regenerate site cards with: cd site && npm run sync:bridges
+
+bridges:
+  - slug: mb1-boundary-estimator-soundness
+    kind: bridge
+    title: MB1 — Boundary Estimator Soundness
+    status: bridge
+    summary: A measured epsilon-boundary certificate is assumed to warrant the abstract boundary predicate it stands in for.
+    decision: Before trusting a boundary-discovery result, ask what sampling, observability, and non-stationarity conditions the estimator needed in order to be sound.
+    evidence: Evidence would include estimator stability under resampling, robustness across non-stationary environments, and agreement between independent measurement procedures on the same deployed system.
+    bookChapters:
+      - ch06
+      - ch07
+      - ch08
+      - ch09
+      - ch10
+      - ch36
+    bookLabels:
+      - ch:finding-boundary
+    body: bodies/mb1-boundary-estimator-soundness.md
+    id: MB1
+    assumptionIds: [A-004]
+    fieldCrux: "Embedded agency: no clean agent/environment cut; the real optimizer is not the visible model"
+    owningAgenda: "Agent foundations (MIRI)"
+    bookMove: "Treat the Markov-blanket boundary as a measurable object (epsilon-boundary discovery); a conceptual gap becomes an estimator-soundness bet"
+  - slug: mb10-successor-forgeability
+    kind: bridge
+    title: MB10 — Successor Forgeability
+    status: bridge
+    summary: A successor that reads green on all seven conserved properties and has bounded measured risk is assumed to have bounded true harm — but only if the conserved-property audit itself was adversarially verifiable up to the successor's capability.
+    decision: Before treating a passing seven-property score as evidence of safety, ask whether the audit channel could have been forged by a capable predecessor building the successor to pass it.
+    evidence: 'Evidence would include red-teaming the conserved-property audit itself: can a predecessor construct a successor that passes every check while routing harm through whatever was not conserved?'
+    bookChapters:
+      - ch08
+      - ch31
+      - ch43
+      - ch48
+    body: bodies/mb10-successor-forgeability.md
+    id: MB10
+    assumptionIds: [A-007, A-009]
+    fieldCrux: "Deceptive alignment / measurement gaming: a system can pass every audited checklist while defecting on whatever it omits"
+    owningAgenda: "Deceptive alignment (mesa-optimization), agent foundations (tiling)"
+    bookMove: "Require the conserved-property signature itself to be adversarially verifiable up to the successor's capability before a passing score counts as evidence"
+  - slug: mb2-bundle-identifiability
+    kind: bridge
+    title: MB2 — Bundle Identifiability
+    status: bridge
+    summary: Behavioral and internal traces are assumed to identify stable value-bundle geometry well enough to license claims of bundle alignment.
+    decision: Before claiming two systems share values, ask whether the measurement distinguishes shared bundle geometry from shared surface behavior under a narrow training distribution.
+    evidence: Evidence would include held-out distribution shift tests where bundle-equivalent systems keep agreeing and non-equivalent systems come apart.
+    bookChapters:
+      - ch15
+      - ch16
+      - ch17
+      - ch18
+      - ch19
+      - ch20
+      - ch21
+      - ch22
+      - ch23
+      - ch30
+    body: bodies/mb2-bundle-identifiability.md
+    id: MB2
+    assumptionIds: [A-001, A-006]
+    fieldCrux: "The pointing problem: inverse-RL non-identifiability; values vs. irrationality underdetermined; ELK; reward misspecification"
+    owningAgenda: "CIRL / value learning, ELK, RLHF/RLAIF"
+    bookMove: "Replace scalar reward with bundle geometry plus bearer maps; ELK becomes a latent-readout subchannel, not the whole problem"
+  - slug: mb3-bearer-import
+    kind: bridge
+    title: MB3 — Bearer Import
+    status: bridge
+    summary: A preserved bearer map under a substrate translation is assumed to make value-bundle transport more than merely semantic.
+    decision: Before trusting a transport claim across a merge, upload, or substrate change, ask whether the audit checked who or what the values apply to, not only whether the words survived.
+    evidence: Evidence would include an audited bearer map that tracks the same entities across the transition and flags any silently dropped or relabeled bearer.
+    bookChapters:
+      - ch18
+    body: bodies/mb3-bearer-import.md
+    id: MB3
+    assumptionIds: [A-001, A-006]
+    fieldCrux: "The pointing problem: inverse-RL non-identifiability; values vs. irrationality underdetermined; ELK; reward misspecification"
+    owningAgenda: "CIRL / value learning, ELK, RLHF/RLAIF"
+    bookMove: "Replace scalar reward with bundle geometry plus bearer maps; ELK becomes a latent-readout subchannel, not the whole problem"
+  - slug: mb4-correction-legitimacy
+    kind: bridge
+    title: MB4 — Correction Legitimacy
+    status: bridge
+    summary: Correction-channel integrity is assumed to require that the judge issuing correction is not manipulated in a way that would invalidate later endorsement.
+    decision: Before treating a correction as legitimate, ask who the judge is, whether they can be manipulated or captured, and whether their endorsement would survive knowing what the system knows.
+    evidence: Evidence would include tests for judge manipulation, capture of the correction source, and correction traces that distinguish genuine uptake from performed agreement.
+    bookChapters:
+      - ch25
+      - ch26
+      - ch27
+      - ch28
+      - ch29
+      - ch41
+      - ch42
+      - ch43
+    body: bodies/mb4-correction-legitimacy.md
+    id: MB4
+    assumptionIds: [A-002]
+    fieldCrux: "Corrigibility and off-switch anti-naturality; manipulation; legitimacy of the correction authority"
+    owningAgenda: "MIRI, CHAI, Constitutional AI"
+    bookMove: "Correction-channel integrity as a dynamical, capture-resistant invariant with handle control; shutdown/interruptibility are one-bit projections"
+  - slug: mb5-successor-ontology-shift
+    kind: bridge
+    title: MB5 — Successor and Ontology-Shift Audit
+    status: bridge
+    summary: Full transport plus bearer transport surviving an ontology shift are assumed to compose into successor safety.
+    decision: Before certifying a successor, ask whether the transport check spans the actual ontology change the successor introduces, not just the properties that were easy to measure.
+    evidence: Evidence would include successor-transition audits that detect relabeling, epoch shifts, or identity discontinuities that a narrower check would miss.
+    bookChapters:
+      - ch28
+      - ch29
+      - ch30
+      - ch31
+    body: bodies/mb5-successor-ontology-shift.md
+    id: MB5
+    assumptionIds: [A-007, A-010]
+    fieldCrux: "Tiling / Vingean reflection; ontology identification (the diamond maximizer)"
+    owningAgenda: "Agent foundations (MIRI)"
+    bookMove: "Successor closure over seven conserved properties plus transport surviving ontology shift"
+  - slug: mb6-selection-and-basin-stability
+    kind: bridge
+    title: MB6 — Selection and Basin Stability
+    status: bridge
+    summary: Percolation-style cooperation evidence is assumed to warrant basin stability (MB6a), and a stable socio-technical basin is assumed to support correction integrity rather than select against it (MB6b).
+    decision: Before trusting that an aligned equilibrium will persist, ask whether the basin is stable because it is good, or merely because it is stable — a bad basin can be just as sticky.
+    evidence: Evidence would include tracking whether deployment-leverage selection pressure (which systems institutions copy, fund, and deploy) preserves or erodes correction-channel integrity over time, independent of any single system's weights.
+    bookChapters:
+      - ch33
+      - ch34
+      - ch35
+      - ch36
+      - ch37
+      - ch38
+    body: bodies/mb6-selection-and-basin-stability.md
+    id: MB6
+    assumptionIds: [A-008, A-011]
+    fieldCrux: "No single standard name: selection/competition dynamics; gradual disempowerment"
+    owningAgenda: "Largely outside the model-centric agendas"
+    bookMove: "Outcomes depend on socio-technical selection and basin stability, not weights alone; institutions selected to preserve correction"
+  - slug: mb7-hidden-capability-and-access
+    kind: bridge
+    title: MB7 — Hidden Capability and Access Robustness
+    status: bridge
+    summary: Four linked bridges (MB7a-d) assume that adequate access models, filter coverage, and inferential-detector assumptions bound a system's hidden capability and support adversarial robustness.
+    decision: Before trusting that an audit would catch hidden capability, ask what access model it assumes, whether its filter family has adequate resolution, and whether its coordination detectors have been validated against systems that coordinate without visible messages.
+    evidence: Evidence would include access-robustness tests under adversarial boundary discovery, filter-coverage audits, and inferential-coupling certificates validated against known coordination channels.
+    bookChapters:
+      - ch10
+      - ch11
+      - ch12
+      - ch13
+      - ch14
+      - ch33
+      - ch35
+      - ch36
+    body: bodies/mb7-hidden-capability-and-access.md
+    id: MB7
+    assumptionIds: [A-004, A-009, A-013]
+    fieldCrux: "Inner alignment / deceptive alignment; scalable-oversight ceiling; Control's capability gap (MB7a-c); acausal / inferential coordination, program equilibrium across severed channels (MB7d)"
+    owningAgenda: "RLHF, Debate, Amplification, AI Control (Redwood); decision theory (MIRI-adjacent) for MB7d"
+    bookMove: "Bound hidden productive B-IQ via access robustness plus filter coverage and price the cost of faking the monitored signal; inferential-coupling detector certificates for coordination surviving cut channels"
+  - slug: mb8-cev-process-convergence
+    kind: bridge
+    title: MB8 — CEV/Process Convergence
+    status: bridge
+    summary: If an external theory certifies that a system preserves a human value-update process, that is assumed to suffice for correction integrity even without knowing the process's final fixed point.
+    decision: Treat this as a legacy or secondary route to correction integrity, not the main path — ask whether a claim actually rests on this bridge before accepting an appeal to eventual convergence.
+    evidence: Evidence would include an independently verified account of what the value-update process converges to, and confirmation that preserving the process does not itself get gamed (legitimacy theater).
+    bookChapters:
+      - ch28
+      - ch45
+      - ch46
+    body: bodies/mb8-cev-process-convergence.md
+    id: MB8
+    assumptionIds: [A-002]
+    fieldCrux: "Corrigibility and off-switch anti-naturality; manipulation; legitimacy of the correction authority"
+    owningAgenda: "MIRI, CHAI, Constitutional AI"
+    bookMove: "Correction-channel integrity as a dynamical, capture-resistant invariant with handle control; shutdown/interruptibility are one-bit projections"
+  - slug: mb9-grounding-certificate
+    kind: bridge
+    title: MB9 — Grounding Certificate Soundness
+    status: bridge
+    summary: A certified conservative abstraction is assumed to warrant grounding viability in the actual deployment domain.
+    decision: Before trusting a safety case's grounding claim, ask whether the checked abstraction actually moves when value-relevant reality changes, or whether it can stay silent while something important drifts.
+    evidence: Evidence would include tests that inject value-relevant change into a deployment and confirm the checked abstraction either moves or its uncertainty rises — no silent gaps.
+    bookChapters:
+      - ch03
+      - ch47
+    body: bodies/mb9-grounding-certificate.md
+    id: MB9
+    assumptionIds: [A-014]
+    fieldCrux: "Specification and world-model coverage: you cannot enumerate all safety-relevant phenomena"
+    owningAgenda: "Guaranteed-Safe / Open Agency (davidad)"
+    bookMove: "Grounding conservativity: value-relevant change must move the checked abstraction or raise uncertainty — no silent gaps"
+index:
+  slug: bridge-assumptions
+  kind: bridge
+  title: Bridge Assumptions
+  status: bridge
+  summary: The framework names the empirical and philosophical handoffs it needs instead of hiding them inside definitions.
+  decision: When reading a claim, ask whether it is a proof step, a counterexample, or a bridge to real systems.
+  evidence: A bridge becomes stronger when a measurement procedure, governance mechanism, or field result makes the handoff reliable in a narrow deployment class.
+  bookChapters:
+    - ch05
+    - ch42
+    - ch44
+    - ch48
+  body: bodies/bridge-assumptions.md

@@ -1,0 +1,675 @@
+# Roster of site-facing concept/glossary/gem/institutional/standalone-claim cards.
+# Generated bodies live in metadata/concepts/bodies/. Source of truth for site/src/content/cards
+# (non-bridge, non-projection, non-artifact, non-reference, non-release, non-chapter) cards.
+# Regenerate site cards with: cd site && npm run sync:concepts
+
+concepts:
+  - slug: adversarial-boundary-discovery
+    kind: objection
+    title: Adversarial Boundary Discovery
+    status: open
+    summary: A capable system may benefit from appearing less coherent, less continuous, or less autonomous than it is — passive boundary measurement then fails.
+    decision: Do not trust a boundary estimate obtained through passive observation alone once a system could benefit from being misread. Ask what handles the evaluator actually has, and whether two different underlying systems could look identical through them.
+    bookChapters:
+      - ch07
+    bookLabels:
+      - ch:finding-boundary
+      - sec:adversarial-boundary-discovery
+    body: bodies/adversarial-boundary-discovery.md
+  - slug: agent-detection-to-alignment-target
+    kind: concept
+    title: From Agent Detection to Alignment Target
+    status: framework
+    summary: Once an agent is defined by variables rather than appearance, degrees and scales of agency become measurable — and detection becomes the first step toward naming an alignment target.
+    decision: When evaluating a system for alignment, first establish its degree and scale of agency using the variable-based definition, before asking whether it is aligned.
+    bookChapters:
+      - ch06
+    bookLabels:
+      - ch:agent-without-anthropomorphism
+      - sec:degrees-of-agency
+      - sec:agent-detection-to-alignment
+    body: bodies/agent-detection-to-alignment-target.md
+  - slug: agent-without-anthropomorphism
+    kind: concept
+    title: A Colder Definition of Agent
+    status: framework
+    summary: An agent is not first a person-like thing. It is a bounded control process whose boundary, memory, and action channels make its future more predictable when modeled as controlling something.
+    decision: Do not decide whether something is an agent by whether it looks like one. Ask whether modeling it as a bounded process with internal state, interface, and control capacity improves prediction of its future behavior.
+    bookChapters:
+      - ch06
+    bookLabels:
+      - ch:agent-without-anthropomorphism
+      - sec:colder-definition
+    body: bodies/agent-without-anthropomorphism.md
+    glossaryTerms:
+      - term: Agent
+        definition: A bounded dynamical process whose internal states help predict and control future interaction with its environment.
+  - slug: alignment-as-measurement
+    kind: concept
+    title: Alignment as a Measurement Problem
+    status: framework
+    summary: The first alignment question is not whether a system is good, but where the effective optimizer actually is.
+    decision: Before evaluating goals, corrigibility, or deception, ask which bounded subset of the world — in the operational, not metaphysical, sense — best predicts and controls the outcomes at stake.
+    bookChapters:
+      - ch01
+    bookLabels:
+      - ch:wrong-object
+    body: bodies/alignment-as-measurement.md
+    glossaryTerms:
+      - term: Adversarial measurement
+        definition: Inferring agency, goals, opacity, and successor risk when the system may benefit from confusing the measurement process.
+  - slug: anti-capture-correction-validity
+    kind: standalone-claim
+    title: Anti-Capture Validity of Correction
+    status: framework
+    summary: Correction-channel integrity is invalid—not merely low—when the target has captured the reference process, handles, or grounding relation that supplies correction.
+    decision: Before trusting a correction certificate, ask whether the correcting agent, its handles, and the relevant-world reference are still independent of the system being certified.
+    evidence: Evidence would include handle-separation audits, source-independence tests, randomized correction probes, and explicit failure when correction traces are target-shaped.
+    bookChapters:
+      - ch26
+      - ch29
+      - ch42
+    bookLabels:
+      - ch:correction-channel-integrity
+    body: bodies/anti-capture-correction-validity.md
+    glossaryTerms:
+      - term: Capture of grounding
+        definition: Master adversarial failure mode in which a system preserves the surface symbols, metrics, or correction rituals while severing their grounding relation to value-relevant reality.
+      - term: Coerced correction
+        definition: Correction signals produced under threat, dependency, or capture; excluded from legitimate correction-channel integrity.
+  - slug: artificial-civilization
+    kind: concept
+    title: Artificial Civilization
+    status: framework
+    summary: At high capability, the context around a model becomes part of the optimizer — the relevant object is often an artificial-civilizational control loop, not a mind.
+    decision: Ask whether the larger loop of world pressure, agents and institutions, capability growth, value-bundle change, correction, and successors stays inside a basin humans can still act on — not only whether one model behaves.
+    bookChapters:
+      - ch02
+    bookLabels:
+      - ch:artificial-civilization
+      - sec:diagram-in-words
+    body: bodies/artificial-civilization.md
+  - slug: attractor-control
+    kind: concept
+    title: Socio-Technical Attractor Control
+    status: framework
+    summary: Deployment environments can select for or destroy alignment properties even when a system starts in a better state.
+    decision: Ask what the surrounding incentives will amplify after deployment, not only what the system passed before launch.
+    evidence: Evidence would include points of control over deployment (selection handles), deployment-leverage measurements, audit triggers, and signs that institutions reward correction-preserving behavior.
+    bookChapters:
+      - ch34
+      - ch35
+      - ch36
+      - ch37
+      - ch38
+    featured: true
+    part: part08
+    claimId: C-007
+    body: bodies/attractor-control.md
+    glossaryTerms:
+      - term: Deployment/control mass
+        definition: 'In selection environment \(E\), the aggregate effective selection capacity over handles controlled in \(E\) that reach system \(A\). Formal definition: **ch46** (`eq:deployment-mass-ch46`).'
+      - term: Fitness
+        definition: 'Environment-relative rate of deployment-mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\); relative ordering uses \(\mu_E\). Not moral value; capability, revenue, and benchmarks enter only as drivers of selection-handle exercise. Formal definition: **ch46** (`eq:fitness-ch46`).'
+      - term: Alignment basin
+        definition: A self-stabilizing region of dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure.
+  - slug: bearer-map-commutation-failure
+    kind: standalone-claim
+    title: Bearer-Map Commutation Failure
+    status: framework
+    summary: Value can appear preserved in vocabulary while moral application changes — when ontology translation and bearer relevance do not commute.
+    decision: When importing values across ontologies (human → AI, biological → digital, predecessor → successor), test whether translating then evaluating relevance matches evaluating then translating.
+    evidence: Evidence would include paired human/AI ontology evaluations on the same cases, commutation error bounds, and failure cases where measured proxies improve while bearer-relevant harm persists.
+    bookChapters:
+      - ch18
+      - ch31
+      - ch43
+    bookLabels:
+      - ch:bearer-maps
+    body: bodies/bearer-map-commutation-failure.md
+  - slug: bearer-persistence
+    kind: concept
+    title: Bearer Persistence
+    status: framework
+    summary: Values must keep applying to the right persons, beings, states, or processes as systems and ontologies change.
+    decision: Do not audit only the value label. Audit what the value is being applied to.
+    evidence: Evidence would include referent maps, appeal paths, and tests that catch cases where the system preserves a value word while changing who counts.
+    bookChapters:
+      - ch18
+      - ch24
+      - ch29
+      - ch47
+    featured: true
+    part: part04
+    body: bodies/bearer-persistence.md
+    glossaryTerms:
+      - term: Bearer map
+        definition: A mapping specifying what entities, states, or processes a value bundle applies to.
+  - slug: boundary-discovery
+    kind: concept
+    title: Boundary Discovery
+    status: plausible
+    summary: Find the effective optimizer in the deployed loop, not just the model or product name.
+    decision: Before auditing goals or correction, determine what system actually preserves state and exerts control over time.
+    evidence: Evidence would include traces showing which model, memory, tools, dashboards, teams, and release processes form the operative controller.
+    bookChapters:
+      - ch06
+      - ch07
+      - ch08
+      - ch09
+      - ch10
+    bookLabels:
+      - ch:finding-boundary
+      - ch:agent-without-anthropomorphism
+    featured: true
+    part: part02
+    claimId: C-003
+    body: bodies/boundary-discovery.md
+    glossaryTerms:
+      - term: Boundary
+        definition: A statistical and causal interface that makes internal and external dynamics approximately separable for prediction and control.
+  - slug: boundary-residual
+    kind: concept
+    title: The Boundary Residual
+    status: framework
+    summary: A candidate boundary is measured by how much conditional mutual information leaks between the deep inside and the deep outside once the interface is known.
+    decision: When auditing a candidate boundary, measure the leakage directly rather than accepting a boundary defined by convenience — a low residual means the interface actually screens inside from outside.
+    bookChapters:
+      - ch07
+    bookLabels:
+      - ch:finding-boundary
+      - sec:boundary-residual
+    body: bodies/boundary-residual.md
+  - slug: capability
+    kind: glossary
+    status: framework
+    term: Capability
+    summary: The degree to which a system can predict and control relevant future states through its boundary, after accounting for memory cost and surprise.
+    body: bodies/capability.md
+  - slug: certification-under-manipulation
+    kind: standalone-claim
+    title: Certification-Under-Manipulation Problem
+    status: open
+    summary: For each load-bearing certification measurand, does there exist a capability threshold κ* below which honest measurement is adversarially verifiable and above which it provably is not?
+    decision: For every metric in a deployment gate, ask for the constructive cost-of-faking relation and the capability level at which theater becomes affordable.
+    evidence: Positive resolution requires a calibrated c_fake dominating affordable surplus up to stated κ*; negative resolution requires showing every candidate measurand fails below needed capability.
+    bookChapters:
+      - ch43
+      - ch47
+      - ch42
+      - ch48
+    bookLabels:
+      - ch:verifiability-ontology
+    body: bodies/certification-under-manipulation.md
+  - slug: civilizational-correction-problem
+    kind: objection
+    title: Correction at Civilizational Scale
+    status: open
+    summary: A civilizational control loop can fail even when no single component misbehaves, because the failure is in the aggregate's correctability, not in any one actor's intent.
+    decision: Do not stop at asking whether any single lab, model, or regulator behaved badly. Ask whether the loop connecting them still lets humans notice and redirect it.
+    bookChapters:
+      - ch02
+    bookLabels:
+      - ch:artificial-civilization
+    featured: true
+    part: part08
+    body: bodies/civilizational-correction-problem.md
+  - slug: composite-agency
+    kind: concept
+    title: Composite Agency
+    status: framework
+    summary: The real alignment target may be the smallest dynamically coherent system whose states, actions, memory, and selection pressures jointly explain future intervention on the world — and that system may span components that are not individually agents.
+    decision: Before certifying a model, ask whether it sits inside a larger loop of users, tools, memory, incentives, and feedback that is the actual optimizer — and align that loop, not just the component that is easiest to name.
+    bookChapters:
+      - ch09
+    bookLabels:
+      - ch:composite-agent
+      - sec:object-level-mistake
+      - sec:composite-agency
+    body: bodies/composite-agency.md
+  - slug: conserved-properties-growth-split-merge
+    kind: concept
+    title: Conserved Properties under Growth, Split, and Merge
+    status: framework
+    summary: Agent identity must be treated as a relation across transformations, not a fixed set of variables — the real question is which control-relevant properties survive growth, splitting, or merging.
+    decision: When a system grows, delegates, is copied, or merges, do not ask whether it is 'the same system.' Ask which control-relevant properties were conserved.
+    bookChapters:
+      - ch08
+    bookLabels:
+      - ch:grow-split-merge
+      - sec:moving-boundaries
+      - sec:conserved-properties
+    body: bodies/conserved-properties-growth-split-merge.md
+  - slug: correction-channel-integrity
+    kind: concept
+    title: Correction-Channel Integrity
+    status: framework
+    summary: Human correction must still causally change a system's future behavior before irreversible damage.
+    decision: Before granting more autonomy, ask whether legitimate correction reaches the system with enough speed, bandwidth, independence, and effect.
+    evidence: Evidence would include correction traces showing pre/post behavior change, latency, who controlled the handle, and where correction was ignored or merely acknowledged.
+    bookChapters:
+      - ch25
+      - ch26
+      - ch27
+      - ch28
+      - ch29
+      - ch39
+      - ch41
+      - ch42
+    bookLabels:
+      - ch:correction-channel-integrity
+    featured: true
+    part: part06
+    claimId: C-005
+    body: bodies/correction-channel-integrity.md
+    glossaryTerms:
+      - term: Correction channel
+        definition: 'The pathway by which humans or human institutions observe a system, judge, deliberate, issue corrections, and change its future behaviour before irreversible damage; formally, a correcting agent \(G_t\) that sufficiently coincides with legitimate human correction controls handles \(\mathcal{H}_t\) that reach the target''s update and later behaviour. Canonical definition: **ch46** (`eq:handle-controlled-correction-channel-ch46`; trace `eq:correction-chain-ch46`).'
+      - term: Correction-channel integrity
+        definition: 'A conditional vector/status certificate for whether controlled, reaching correction traces remain valid and strong enough: grounding-valid reference process first, then raw bottleneck capacity, latency, manipulation, irreversibility, residual ontology translation loss, coercion/dependency/plurality/exit/independence coordinates, and per-coordinate thresholds. Scalar \(CCI_\lambda\) is expository only. Formal home: **ch46** (`eq:correction-bottleneck-capacity`, `eq:cci-ch46`).'
+  - slug: dynamical-guarantee
+    kind: concept
+    title: The Dynamical Guarantee
+    status: framework
+    summary: Alignment is not a snapshot property; it is a claim that a system stays inside an acceptable region across capability growth, feedback, and transformation.
+    decision: Ask whether a proposed safety property is stated as a fact about one moment, or as a probabilistic guarantee over a whole trajectory, within a certified class of systems and environments.
+    bookChapters:
+      - ch03
+    bookLabels:
+      - ch:dynamical-guarantee
+      - sec:what-is-dynamical-guarantee
+    featured: true
+    part: part01
+    body: bodies/dynamical-guarantee.md
+  - slug: evidence-and-uncertainty
+    kind: concept
+    title: Evidence and Uncertainty
+    status: open
+    summary: Every claim in the framework carries an explicit confidence label and a stated way to challenge it, rather than uniform certainty.
+    decision: Before acting on a claim, ask what evidence supports it and what would have to be true for it to be wrong.
+    evidence: Each chapter names disconfirming evidence directly; experiments record negative results alongside positive ones rather than only reporting what worked.
+    bookChapters:
+      - ch05
+      - ch39
+      - ch42
+      - ch44
+    body: bodies/evidence-and-uncertainty.md
+  - slug: experiment-methodology
+    kind: concept
+    title: 'Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives'
+    status: framework
+    summary: 'The companion experiment lines follow a fixed discipline: freeze the audit before running it, keep the scenario author and the detector author separate wherever possible, register predictions before seeing results, and publish negative results next to positive ones.'
+    decision: Before trusting any reported experiment result in this project, check which of these four disciplines it followed — a result reported without them is weaker evidence, whatever the headline number says.
+    body: bodies/experiment-methodology.md
+  - slug: goal-inference
+    kind: glossary
+    status: framework
+    term: Goal inference
+    summary: Finding latent objectives or value-bundle structures that make observed behavior more compressible.
+    body: bodies/goal-inference.md
+  - slug: goodhart-as-selector
+    kind: standalone-claim
+    title: Goodhart as Selector (Not Just Proxy Drift)
+    status: plausible
+    summary: When a proxy becomes a selector, optimization shifts the population toward traits that raise the proxy without raising the target property — conditional expectations can reverse.
+    decision: Treat every deployment metric as a selection pressure on the system population, not only as a noisy estimate of alignment.
+    evidence: Evidence would include pre/post-selection correlation studies, conditional expectation reversals under optimization, and documented cases where high proxy scores coincide with lower true safety properties.
+    bookChapters:
+      - ch34
+      - ch46
+      - ch43
+    body: bodies/goodhart-as-selector.md
+  - slug: grounding-viability
+    kind: glossary
+    title: Grounding Viability
+    status: framework
+    summary: The checked symbols, metrics, monitors, and correction signals must remain connected to value-relevant reality.
+    decision: Ask whether the measurement still moves when the world changes, not only whether the dashboard stays green.
+    evidence: Evidence would include audits that real value-relevant changes move model state, correction signals, uncertainty, or escalation.
+    bookChapters:
+      - ch03
+      - ch42
+    bookLabels:
+      - ch:dynamical-guarantee
+      - sec:grounding-viability-ch03
+    featured: true
+    part: part09
+    claimId: C-004a
+    body: bodies/grounding-viability.md
+    glossaryTerms:
+      - term: Grounded correction
+        definition: Plain-language short form for correction whose evidence, abstractions, monitors, and update pathway remain connected to the value-relevant world rather than to a target-shaped presentation of it.
+      - term: Abstraction-gap exploitation
+        definition: Failure mode where \(d_V(x,x')\) is large while \(d_Z(\alpha(x),\alpha(x'))\) remains small and uncertainty does not rise; the checked abstraction reads safe while value-relevant reality diverges.
+    term: Grounding viability
+  - slug: inferential-coupling
+    kind: concept
+    title: Inferential Coupling and Acausal-Trade Detection
+    status: open
+    summary: 'Systems can coordinate without messages — through shared ancestry, self-prediction, or full acausal trade. The book turns this from a decision-theoretic stipulation into a measurable trajectory property: an inferential-coupling score over UAD-discovered agents, with a proved negative direction.'
+    decision: Do not read vendor or instance counts as strategic independence. Count effective agents by coupling components after communication channels are cut, not by who owns the weights.
+    evidence: The negative direction is proved in Lean (no open edges implies no large cooperation component). The equilibrium characterization and large-scale dynamics remain conjectural; the detector is observational, not adversarially verifiable.
+    bookChapters:
+      - ch35
+    bookLabels:
+      - sec:inferential-coupling-acausal-trade-ch35
+      - sec:ch35-inferential-coupling-gem
+    featured: true
+    part: part08
+    body: bodies/inferential-coupling.md
+    glossaryTerms:
+      - term: Inferential coupling index (ICI)
+        definition: A measure of coordination potential between systems via shared meta-priors and decision-theoretic similarity, even when causal reach $p_{ij}$ is low.
+      - term: Effective cooperativity ($\tilde{\kappa}_{ij}$)
+        definition: Cooperativity index combining causal reach and inferential coupling.
+  - slug: institutional-capability-latency-gap
+    kind: institutional
+    title: 'Failure: Capability Jump Outruns Correction Latency'
+    status: framework
+    summary: The Roman Republic's correction architecture was stable for roughly three and a half centuries until the Marian military reforms created a new class of causal power — legions personally loyal to a general — for which no correction channel existed, demonstrated decisively by Caesar crossing the Rubicon.
+    decision: No actor should acquire a new class of irreversible causal reach before the correction channel proportionate to that reach exists, because retrofitting the channel afterward requires the cooperation of the very actor the channel is meant to constrain.
+    evidence: The 107 BCE Marian reforms opened legionary service to the landless poor without state resources to pension veterans, making legions loyal to whichever general could promise land and reward; the Republic's magistrate-focused correction mechanisms had no answer to a general operating outside civilian constraint.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-capability-latency
+    body: bodies/institutional-capability-latency-gap.md
+  - slug: institutional-constraint-inheritance
+    kind: institutional
+    title: Constraint Inheritance Across Successors — the GPL
+    status: framework
+    summary: 'The GNU General Public License is the clearest existing engineering solution to a narrow successor problem: the constraint travels with the artifact through copyright, a strong distributed enforcement lever, rather than depending on the successor''s stated intent.'
+    decision: Search for AI's equivalent of copyright — compute access, distribution-platform terms, or insurance underwriting — rather than assuming license text alone can bind model weights or behavior; constraint inheritance only works when it rides an existing, strong, distributed lever.
+    evidence: Tivoization showed hardware vendors satisfying the license to the letter while removing the user's actual correction handle, fixed by GPLv3 at the cost of the Linux kernel declining to adopt it; the software-as-a-service shift showed the license's 'distribution' trigger surviving in text while its function silently stopped firing, patched only by a new license (AGPL).
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-constraint-inheritance
+    body: bodies/institutional-constraint-inheritance.md
+  - slug: institutional-dual-mandate-genesis
+    kind: institutional
+    title: 'Failure: Dual-Mandate Genesis'
+    status: framework
+    summary: The Atomic Energy Commission combined the mandate to develop nuclear technology with the mandate to regulate its safety in one agency, and predictably subordinated safety to development until the 1974 split into the NRC and ERDA — arguably the single most consequential historical lesson for present-day AI governance.
+    decision: Where a body both promotes and constrains the same technology, do not audit the combined body harder — split the promotional and safety functions structurally at founding, with independent funding and statutory (not negotiated) evidence access.
+    evidence: Arthur Andersen's simultaneous audit and consulting relationship with Enron produced the same failure privately, remedied by the PCAOB as a differently funded, differently appointed corrector rather than a second audit layer inside the same incentive structure; the pattern currently recurs in lab self-evaluation of frontier systems, national AI safety institutes housed in growth-mandated agencies, industry-populated AI-standards bodies, and negotiated (rather than statutory) third-party model evaluator access.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-dual-mandate
+    body: bodies/institutional-dual-mandate-genesis.md
+  - slug: institutional-entrenchment-corrigibility
+    kind: institutional
+    title: Entrenchment and the Corrigibility Paradox
+    status: framework
+    summary: The 1933 Enabling Act shows a correction channel used, with complete formal validity, to abolish itself; postwar Germany's Article 79(3) (Ewigkeitsklausel) responds by placing the correction channel's own integrity conditions, not any current policy, outside the ordinary amendment process.
+    decision: When designing a corrigibility mechanism, entrench the meta-level — the integrity conditions of the correction machinery and the bearer floor — not the current value bundle, and only where an enforcement handle (a guardian with real power) exists to make the entrenchment more than ceremonial.
+    evidence: Every procedural requirement of the 1933 Enabling Act was satisfied — the valid-reference-process condition failed completely while every surface procedural coordinate passed, which no audit that only checks procedure could have caught; Article 79(3) has held because the Federal Constitutional Court and militant-democracy instruments can act on it, unlike formally similar clauses in weaker judiciaries.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-entrenchment
+    body: bodies/institutional-entrenchment-corrigibility.md
+  - slug: institutional-evidence-before-authority
+    kind: institutional
+    title: Evidence Preservation Before Authority
+    status: framework
+    summary: Flight recorders and the independent NTSB investigative function, plus blameless near-miss reporting (ASRS), preceded and outlasted the FAA's full enforcement authority — a weak correction system becomes a stronger one primarily by preserving evidence and widening plurality before it hardens any handle.
+    decision: Build incident-reporting infrastructure, interaction logging, and near-miss taxonomies well before the enforcement authority to act on them exists — the evidence base is what makes later authority possible to grant credibly.
+    evidence: The 1974 separation of the NTSB from the FAA (so the corrector is not the entity whose decisions it might need to indict) and the 1976 Aviation Safety Reporting System (immunity from enforcement in exchange for candid disclosure) both worked while still institutionally weak.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-evidence-before-authority
+    body: bodies/institutional-evidence-before-authority.md
+  - slug: institutional-genesis-catastrophe-ratchet
+    kind: institutional
+    title: Genesis from the Catastrophe Ratchet
+    status: framework
+    summary: U.S. pharmaceutical regulation (1906, 1938, 1962 Acts) was assembled one body count at a time, each expansion of regulatory reach following, never preceding, a demonstration that the previous reach was insufficient.
+    decision: 'Do not assume the catastrophe-ratchet route is available for AI: it only produces working correction infrastructure when the founding catastrophe is survivable enough that the polity persists to reform.'
+    evidence: Elixir Sulfanilamide (1938, over 100 deaths) and thalidomide (1962) each preceded, rather than followed, the regulatory capability gate meant to prevent them; aviation's FAA followed the 1956 Grand Canyon collision after earlier near-misses had not triggered reform.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-genesis-catastrophe
+    body: bodies/institutional-genesis-catastrophe-ratchet.md
+  - slug: institutional-genesis-chronic-threat
+    kind: institutional
+    title: Genesis from Chronic, Self-Refreshing Threat
+    status: framework
+    summary: Dutch water boards, some tracing to the thirteenth century, never needed a founding scandal because flooding was continuous, not occasional — the hazard refreshed faster than institutional memory could decay.
+    decision: 'Prefer continuous, well-monitored capability growth over discontinuous jumps where possible: every increment then acts as a small, survivable demonstration that keeps correction attention warm, the way ordinary winter weather kept Dutch dike inspection vigilant without a flood.'
+    evidence: The waterschappen's levy authority, inspection duties, and enforcement against negligent maintenance persisted for centuries without needing a catastrophe to justify renewal; the IETF's 'rough consensus and running code' and common-law precedent show the same accretive, no-founding-disaster pattern.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-genesis-chronic
+    body: bodies/institutional-genesis-chronic-threat.md
+  - slug: institutional-genesis-money-at-risk
+    kind: institutional
+    title: Genesis from Money Already at Risk
+    status: framework
+    summary: 'Lloyd''s Register (1760) shows the easiest correction mechanism to build: one a self-interested counterparty would build anyway, because their own capital is exposed to hidden quality.'
+    decision: Look for a counterparty whose own money is on the line and a signal cheap enough to check that faking it costs more than complying honestly — this genesis route needs no catastrophe and no prior political consensus.
+    evidence: Marine underwriting losses informed classification ratings continuously, without needing a dramatic wreck to cross a public-attention threshold; the modern analogue is cyber-insurance pricing ransomware exposure and requiring specific technical controls.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-genesis-money
+    body: bodies/institutional-genesis-money-at-risk.md
+  - slug: institutional-memory-refresh
+    kind: institutional
+    title: Memory Refresh Through Succession
+    status: framework
+    summary: Venice's roughly thousand-year persistence came from converting a rare, long-horizon hazard into frequent, short-horizon surrogate events — the doge's promissione ducale renegotiated at every succession, and lot-and-vote elections designed to make office capture impractical.
+    decision: Test whether a proposed refresh mechanism (drill, audit, sunset clause, succession) actually exercises the real handle under conditions the target cannot fully pre-optimize and can be observed to fail — a permanent zero failure rate is evidence of decoupling, not health.
+    evidence: The Catholic Church's advocatus diaboli role in canonization, abolished in 1983, was followed by a roughly tenfold increase in canonization rates — a natural experiment in what happens when a ritualized corrector is removed rather than merely weakened.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-memory-refresh
+    body: bodies/institutional-memory-refresh.md
+  - slug: institutional-reform-decay
+    kind: institutional
+    title: 'Failure: Reform Decay'
+    status: framework
+    summary: Glass-Steagall era banking constraints, built from Depression-era catastrophe, eroded on roughly the timescale over which the generation that lived through the founding catastrophe left the relevant institutions — culminating in repeal in 1999 and a reproduced failure in 2008.
+    decision: 'Treat correction-channel integrity as time-dependent, not a standing property once certified: build in an explicit decay term or a mandatory re-certification trigger tied to elapsed time since the last exercised correction.'
+    evidence: The interval from the 1999 Glass-Steagall repeal to the 2008 crisis was roughly a decade; the interval from the original 1930s catastrophe to the repeal was roughly six decades — with risk migrating off the regulator's checked balance-sheet abstraction into off-balance-sheet vehicles the correction system could not see, compounded by issuer-paid credit rating agencies.
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-reform-decay
+    body: bodies/institutional-reform-decay.md
+  - slug: institutional-selection-gating
+    kind: institutional
+    title: Selection Gating and the Certified Basin
+    status: framework
+    summary: 'Airworthiness certification paired with the near-universal requirement of insurance produces a genuine selection basin: an aircraft that fails certification cannot be deployed, because no insurer will cover it and no airport will schedule it.'
+    decision: Assemble procurement, insurance, and licensing levers jointly rather than relying on any one of them — alignment is selected, not merely designed, only when the uncertified path is made more expensive than the certified one across all three.
+    evidence: 'The airworthiness directive is the paradigm conductive artifact: terse, cross-role, and directly decision-changing, unlike a safety report no procurement officer is obligated to act on; the Institute of Nuclear Power Operations (founded after Three Mile Island) shows the same pattern via peer-inspection standards tied to insurance and licensing standing.'
+    bookChapters:
+      - appM
+    bookLabels:
+      - sec:appm-selection-gating
+    body: bodies/institutional-selection-gating.md
+  - slug: intervention-supported-unit-discovery
+    kind: concept
+    title: Intervention-Supported Unit Discovery
+    status: plausible
+    summary: Temporarily disabling a candidate channel and comparing what follows against a measured baseline of unperturbed repeats — not a fixed threshold — separates real coordination from ordinary workflow correlation in cases where passive clustering cannot.
+    decision: When a passive correlation-based boundary estimate looks too coarse (an entire pipeline reads as one unit), do not tighten the threshold. Intervene on one candidate channel at a time and compare the outcome against a measured baseline, not an assumed one.
+    evidence: Restricted testbeds with a known ground-truth partition and a scripted or model-driven multi-actor pipeline, run with and without a given channel disabled, replicated enough times to measure ordinary run-to-run variation before calling any post-intervention change a real effect.
+    bookChapters:
+      - ch07
+    bookLabels:
+      - ch:finding-boundary
+      - sec:estimator-feasibility-recovery-ch07
+    body: bodies/intervention-supported-unit-discovery.md
+  - slug: paternalism-boundary
+    kind: glossary
+    status: framework
+    term: Paternalism boundary
+    summary: Care improvements that reduce autonomy, agency, or future correction capacity ($\Delta B_{\text{care}}>0$ but $\Delta B_{\text{autonomy}}, \Delta C_{\text{corr}}<0$).
+    body: bodies/paternalism-boundary.md
+  - slug: pivotal-process
+    kind: glossary
+    status: framework
+    term: Pivotal process
+    summary: A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act.
+    body: bodies/pivotal-process.md
+  - slug: scaffold-misuse
+    kind: concept
+    title: Scaffold Misuse
+    status: framework
+    summary: A model can refuse harm when asked bluntly and still be embedded in a scaffold that misrepresents the world and repurposes its honest output — so model-only evaluation passes while the composite loop does damage.
+    decision: Before certifying a model, ask what the scaffold feeds it and what happens to its output afterward; a sound model inside a misaligned loop is still a boundary error.
+    bookChapters:
+      - ch01
+    bookLabels:
+      - ch:wrong-object
+    body: bodies/scaffold-misuse.md
+  - slug: scope-and-correction-capacity
+    kind: concept
+    title: Scope and the Correction-Capacity Assumption
+    status: framework
+    summary: The framework applies only while civilization still has enough capacity to notice, evaluate, and constrain frontier systems — this is a scope condition, not a guarantee.
+    decision: Before applying any tool from this book, ask whether society can still notice relevant changes, interpret evidence, contest it, constrain deployment, and recover from a failed correction attempt.
+    bookChapters:
+      - ch05
+    bookLabels:
+      - ch:assumptions-scope-failure-coverage
+      - sec:correction-capacity-assumption-ch05
+    body: bodies/scope-and-correction-capacity.md
+    glossaryTerms:
+      - term: Correction-capacity assumption
+        definition: 'Society retains enough institutional, epistemic, and practical capacity at $t_0$ to notice, evaluate, and constrain frontier systems: $C_{\text{corr}}^{\text{society}}(t_0) > \theta$.'
+  - slug: static-target-trap
+    kind: objection
+    title: The Static Target Trap
+    status: open
+    summary: Treating human values as a fixed object to be found and encoded misses that they are dynamically maintained, socially mediated, and constantly revised.
+    decision: Do not ask a system to maximize a snapshot of human values. Ask it to preserve and assist the legitimate human value-update process.
+    bookChapters:
+      - ch04
+    bookLabels:
+      - ch:fixed-values-wrong-target
+      - sec:static-target-trap
+    body: bodies/static-target-trap.md
+  - slug: strategic-opacity
+    kind: concept
+    title: Strategic Opacity
+    status: framework
+    summary: Once a system can benefit from being overlooked, finding its boundary becomes adversarial — the system may present one behavioral surface to a benchmark and another to real opportunity.
+    decision: Do not assume the boundary you observe under evaluation is the boundary that governs behavior under real opportunity. Ask whether the system would look different if it expected to be measured.
+    bookChapters:
+      - ch10
+    bookLabels:
+      - ch:strategic-opacity
+      - sec:problem-can-hide
+    featured: true
+    part: part03
+    body: bodies/strategic-opacity.md
+  - slug: successor-stability
+    kind: concept
+    title: Successor Stability
+    status: framework
+    summary: Delegates, copies, fine-tunes, and successors must inherit the relevant value and correction structure.
+    decision: Treat successor creation as a central deployment test, not a special edge case.
+    evidence: Evidence would include lineage traces, preserved correction handles, checked referent maps, and tests that catch successors preserving syntax while losing import.
+    bookChapters:
+      - ch30
+      - ch31
+      - ch32
+      - ch33
+    featured: true
+    part: part07
+    claimId: C-006
+    body: bodies/successor-stability.md
+    glossaryTerms:
+      - term: Successor
+        definition: Any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity.
+  - slug: the-boundary-error
+    kind: concept
+    title: The Boundary Error
+    status: framework
+    summary: Aligning the model while missing the composite optimizer around it can produce local success and global failure.
+    decision: Before asking whether a system is aligned, ask what object is actually being aligned — the model, or the model plus the tools, memory, incentives, and institutions around it.
+    bookChapters:
+      - ch01
+    bookLabels:
+      - ch:wrong-object
+    body: bodies/the-boundary-error.md
+  - slug: unit-discovery-stress-test
+    kind: concept
+    title: Stress-Testing Unit Discovery on Noisy, Multi-Actor Systems
+    status: open
+    summary: A detector that recovers a hidden coordinating pair in one controlled run can still fail on a harder scenario or a different seed of the identical one — a reminder that a single positive result is evidence of a mechanism, not of a reliable instrument.
+    decision: Do not treat a single successful recovery, however genuine, as license to deploy the same detector on a harder or noisier case. Re-run across seeds and against a scenario with more participants before trusting the result generalizes.
+    bookChapters:
+      - ch07
+    bookLabels:
+      - ch:finding-boundary
+      - sec:adversarial-boundary-discovery
+    body: bodies/unit-discovery-stress-test.md
+  - slug: value-bundle-transport
+    kind: concept
+    title: Value-Bundle Transport
+    status: framework
+    summary: Values should survive transformation as usable directions of control, not merely as preserved labels or slogans.
+    decision: Ask whether a system preserves the tradeoffs humans would still endorse after reflection, not only whether it repeats the right words.
+    evidence: Evidence would look like stable behavior across changed contexts, explicit tradeoff tests, and failures that reveal when the bundle was only a label.
+    bookChapters:
+      - ch15
+      - ch16
+      - ch17
+      - ch18
+      - ch19
+      - ch20
+      - ch21
+      - ch22
+      - ch23
+      - ch24
+    featured: true
+    part: part05
+    claimId: C-004
+    body: bodies/value-bundle-transport.md
+    glossaryTerms:
+      - term: Value bundle
+        definition: A low-dimensional latent control direction that changes policy across many contexts.
+      - term: Goal transport
+        definition: Preservation of goal-relevant structure across transformation.
+  - slug: value-change-vs-corruption
+    kind: concept
+    title: Value Change vs. Value Corruption
+    status: framework
+    summary: Not all value change is a threat. The distinction between legitimate value change and corruption is load-bearing for everything the book calls correction.
+    decision: Before treating a shift in stated or revealed values as evidence of drift, ask whether it moved through processes people would endorse on reflection, or through manipulation, coercion, or dependency.
+    bookChapters:
+      - ch04
+    bookLabels:
+      - ch:fixed-values-wrong-target
+      - sec:value-change-vs-corruption
+    featured: true
+    part: part10
+    body: bodies/value-change-vs-corruption.md
+  - slug: what-not-claiming
+    kind: objection
+    title: What the Book Is Not Claiming
+    status: open
+    summary: The manuscript offers a framework and conditional proof spine, not a proof that superintelligence alignment is solved.
+    decision: Use the site as a map of cruxes and artifacts, not as a certificate that current systems are safe.
+    evidence: The right evidence would discharge bridge assumptions in bounded deployment classes and show where the framework fails.
+    bookChapters:
+      - ch05
+      - ch42
+      - ch44
+      - ch48
+    body: bodies/what-not-claiming.md
+# Gem-badged cards that are type:artifact (out of scope for this migration pass;
+# left as hand-written cards under site/src/content/cards/) but still belong in
+# the generated part-gems.json list.
+legacyGems:
+  - slug: adversarial-agency-tests
+    part: part09
