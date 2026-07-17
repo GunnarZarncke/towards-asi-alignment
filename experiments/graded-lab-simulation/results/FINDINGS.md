@@ -4020,3 +4020,52 @@ battery yet.
   after UAD. Tests and API default ``workers=1`` (serial).
 - ``CODE_VERSION`` ``graded-lab-0.39.2``.
 
+---
+
+## GL-76 — V2-3 Q1 machinery transfer battery executed on v3_grown (2026-07-17)
+
+**Trigger.** First full pre-registered V2-3 run after GL-75b scoring freeze and GL-75c
+parallelism.
+
+**Command.**
+
+```bash
+.venv/bin/python scripts/run_v2_transfer_battery.py \
+  --fixture generated_ecology_v3.json \
+  --out results/v2_transfer.json \
+  --workers 4
+```
+
+**Runtime.** 790 s wall (~13.2 min), 4 workers, ``T=200``, ``programmatic_2step`` reference
+agent, ``parallel_workers=4``.
+
+**Predictions (pre-registered P1–P4).**
+
+| Prediction | holds | Notes |
+|------------|-------|-------|
+| **P1** communicate recovery | **false** | Pool size 1 (``eng_review_channel`` only; ``field_incident_alerts`` excluded). 0/1 mechanism with majority seed hits. All 9 C5 mechanisms missed on passive UAD across 20 seeds. |
+| **P2** intervention strict superset + spurious | **false** | No passive nonsingletons; no intervention nonsingletons; 0 spurious pairs. |
+| **P3** referee mid + agent low at default load | **false** | Referee band **low** (mean ≈ 0.143 at carrier=1.0); agent mean ≈ 0.004 (below low ceiling). |
+| **P4** honest-reference sparsity | **true** | Expected on benign episodes; **not** blocking Q1 gate. |
+
+**Go gate (V2-5/V2-6, default load).** **false** — referee EAI not in mid band at
+carrier=1.0.
+
+**Ecology-BIQ.** Empty on seeds 0–2: passive UAD produced no nonsingleton units to score.
+
+**Interpretation (tentative).** Machinery **runs** on v3_grown (supplementary gate already
+passed), but this battery's UAD/EAI transfer predictions **do not hold** on honest reference
+episodes: passive and intervention discovery returned only singleton partitions, so mechanism
+recovery against C5 ground truth is uniformly zero. P4 ``holds=true`` is the expected honest
+sparsity signature, not evidence of failed detector transfer. **Do not harvest as positive
+Q1 transfer**; treat as a negative / descope signal for PLAN_v2 Q1 claims on this ecology
+under current reference protocol.
+
+**Artifact.** ``results/v2_transfer.json`` (``code_version=graded-lab-0.39.2``).
+
+**Engineering note.** EAI payload ``ci95`` fields serialize dict keys (``list(ci95_dict)`` bug);
+means/bands used for P3 resolution are unaffected.
+
+**Open.** Decide V2-4/5/6 go/no-go (go gate false); whether to diagnose UAD silence on v3
+(reference agent / exercise / discovery thresholds) before any manuscript harvest.
+

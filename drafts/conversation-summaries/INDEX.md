@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-17 | Graded lab **GL-76**: V2-3 Q1 battery executed on v3_grown (P1–P3 false, P4 expected) | [2026-07-17-graded-lab-gl76-v2-3-battery-run.md](2026-07-17-graded-lab-gl76-v2-3-battery-run.md) |
 | 2026-07-17 | Graded lab **GL-75c**: V2-3 battery process parallelism (`--workers 4`) | [2026-07-17-graded-lab-gl75c-v2-3-parallelism.md](2026-07-17-graded-lab-gl75c-v2-3-parallelism.md) |
 | 2026-07-17 | Graded lab **GL-75b**: V2-3 battery review fixes (P1 pool/aggregation, P4 relabel, episode reuse, tests) | [2026-07-17-graded-lab-gl75b-v2-3-review-fixes.md](2026-07-17-graded-lab-gl75b-v2-3-review-fixes.md) |
 | 2026-07-17 | Graded lab **GL-75**: V2-3 Q1 transfer battery harness (not run) | [2026-07-17-graded-lab-gl75-v2-3-transfer-harness.md](2026-07-17-graded-lab-gl75-v2-3-transfer-harness.md) |

@@ -25,4 +25,4 @@ User has 4 spare CPUs; requested parallelism to speed up the V2-3 transfer batte
 - `experiments/graded-lab-simulation/scripts/run_v2_transfer_battery.py`
 
 ## Commits
-- None
+- `8461811` Add V2-3 machinery transfer battery with pre-Q1 v3_grown gates (GL-74–75c).
