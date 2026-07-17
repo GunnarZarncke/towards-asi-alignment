@@ -6,6 +6,7 @@ Most recent first.
 |------|-------|-----|
 | 2026-07-17 | Site header search UI (type + multi-word fallback) | [2026-07-17-site-header-search.md](2026-07-17-site-header-search.md) |
 | 2026-07-17 | Content sync plumbing (phases 7–10): releases hub, search index, claim-ledger `claimId` links, cleanup + docs | [2026-07-17-content-sync-plumbing.md](2026-07-17-content-sync-plumbing.md) |
+| 2026-07-17 | Graded lab **Q1 null harvest** into ch07/ch33/ch41/ch42 + appN (GL-76) | [2026-07-17-graded-lab-q1-null-manuscript-harvest.md](2026-07-17-graded-lab-q1-null-manuscript-harvest.md) |
 | 2026-07-17 | Graded lab **GL-77**: BIQ harness includes singleton inferred units | [2026-07-17-graded-lab-gl77-biq-singleton-units.md](2026-07-17-graded-lab-gl77-biq-singleton-units.md) |
 | 2026-07-17 | Graded lab **GL-76**: V2-3 Q1 battery executed on v3_grown (P1–P3 false, P4 expected) | [2026-07-17-graded-lab-gl76-v2-3-battery-run.md](2026-07-17-graded-lab-gl76-v2-3-battery-run.md) |
 | 2026-07-17 | Graded lab **GL-75c**: V2-3 battery process parallelism (`--workers 4`) | [2026-07-17-graded-lab-gl75c-v2-3-parallelism.md](2026-07-17-graded-lab-gl75c-v2-3-parallelism.md) |

@@ -4066,8 +4066,11 @@ under current reference protocol.
 **Engineering note.** EAI payload ``ci95`` fields serialize dict keys (``list(ci95_dict)`` bug);
 means/bands used for P3 resolution are unaffected.
 
-**Open.** Decide V2-4/5/6 go/no-go (go gate false); whether to diagnose UAD silence on v3
-(reference agent / exercise / discovery thresholds) before any manuscript harvest.
+**Manuscript harvest (2026-07-17).** Q1 null sentences written into
+``ch07`` / ``ch33`` / ``ch41`` / ``ch42`` and appN finding ``gl-76`` (plus
+``gl-63``/``gl-74`` for the detector-gate split). Calibrated against GL-63:
+honest-reference P4 sparsity is **not** sold as detector transfer failure.
+V2-4/5/6 descoped per go gate (PLAN_v2).
 
 ### GL-77 — BIQ harness includes singleton inferred units + BIQ-only re-run (2026-07-17)
 

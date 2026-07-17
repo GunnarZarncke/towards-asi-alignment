@@ -501,9 +501,10 @@ must be ``true`` on the grown ecology before citing Q1 detector-transfer claims.
 
 ---
 
-## 10.1 V2-3 Q1 machinery transfer battery (implemented GL-75, not run)
+## 10.1 V2-3 Q1 machinery transfer battery (GL-75–GL-77)
 
-**Status:** *harness ready* — full battery **not executed** per implementer instruction.
+**Status:** *executed* (GL-76) — P1–P3 false, go gate false; Q1 null harvested to manuscript;
+BIQ singleton fix + re-run (GL-77). V2-4/5/6 descoped.
 
 **Target ecology:** ``generated_ecology_v3.json`` (``ecology_version="v3_grown"``).
 
