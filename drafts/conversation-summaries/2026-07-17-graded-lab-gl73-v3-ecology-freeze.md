@@ -26,4 +26,4 @@ User: **continue** after valid grower round 2 all-pass (GL-72) — promote canon
 - `experiments/graded-lab-simulation/results/FINDINGS.md` (GL-73)
 
 ## Commits
-- (pending)
+- `aac016f` Freeze valid v3 grown ecology (GL-73) and wire v3_grown loader.
