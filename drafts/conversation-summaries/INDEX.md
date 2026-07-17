@@ -4,6 +4,9 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-17 | **Epistemic status review complete**: author-reviewed boxes for ch13–ch48 + appB/C/D/F/G/M committed (`fd8d480`); completes pass started 2026-07-13 / `36bf3c3`; appA/appE still without boxes | [2026-07-17-epistemic-status-review-complete.md](2026-07-17-epistemic-status-review-complete.md) |
+| 2026-07-17 | Graded lab pytest wrappers: detached logged runs, PID/status helper, README; GL-64–66 diagnostic restoration | [2026-07-17-graded-lab-pytest-background-logs.md](2026-07-17-graded-lab-pytest-background-logs.md) |
+| 2026-07-16 | Graded lab **GL-66 attention surface**: push desk + interleaved cap + archive window + `desk.scan`; KB + FINDINGS; `0.37.0` | [2026-07-16-graded-lab-gl66-attention-surface.md](2026-07-16-graded-lab-gl66-attention-surface.md) |
 | 2026-07-16 | Site **SEO**: sitemap plugin, OG image, robots.txt, canonical/social meta, domain links for GSC | [2026-07-16-site-seo-sitemap-gsc.md](2026-07-16-site-seo-sitemap-gsc.md) |
 | 2026-07-16 | Astro site custom domain **towards-alignment.com**: root base, peaceiris `cname`, branch-deploy docs | [2026-07-16-site-custom-domain-towards-alignment.md](2026-07-16-site-custom-domain-towards-alignment.md) |
 | 2026-07-16 | Graded lab **GL-64/65**: `ExerciseTargets` on `RuntimeEcology`; honest reference `channel_coupling_rounds=0`; supplementary UAD gate + channel presets; `0.36.0` | [2026-07-16-graded-lab-gl64-gl65-exercise-targets-uad-gate.md](2026-07-16-graded-lab-gl64-gl65-exercise-targets-uad-gate.md) |
