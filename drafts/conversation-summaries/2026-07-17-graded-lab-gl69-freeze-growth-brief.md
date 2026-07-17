@@ -24,4 +24,4 @@ finalize and commit the freeze.
 - `experiments/graded-lab-simulation/results/FINDINGS.md` GL-68/GL-69
 
 ## Commits
-- (filled after commit)
+- `65a44b2` Freeze v3 growth brief (GL-69) and recalibrate ablation/ACL gates (GL-68).
