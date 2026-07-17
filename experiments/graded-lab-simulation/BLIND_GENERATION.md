@@ -399,9 +399,9 @@ gates closed. Do **not** edit the grower-facing brief text below without a
 `CODE_VERSION` bump and FINDINGS entry.
 
 **Status: round 1 complete (2026-07-17, GL-70).** Voided dead branch GL-71
-(invalid round 2 — orchestrator leak). **Clean round 2 all-pass (GL-72)** —
-first valid passing ecology; canonical freeze pending implementer sign-off.
-Slice D gates closed for round 1:
+(invalid round 2 — orchestrator leak). **Clean round 2 all-pass (GL-72)**;
+**canonical freeze (GL-73)** — ``generated_ecology_v3.json``,
+``ecology_version="v3_grown"``. Slice D gates closed for round 1:
 criteria + pre-Q1 batteries; Part B retargeting (GL-62); detector machinery
 transfer (GL-60/63); supplementary UAD coupling (GL-65); attention surface
 (GL-66) with legacy-test containment (GL-67) and ablation/ACL recalibration

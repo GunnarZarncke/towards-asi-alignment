@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.37.0"  # GL-66: attention surface + desk.scan
+CODE_VERSION = "graded-lab-0.38.0"  # GL-73: freeze valid v3 grown ecology (round 2)
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

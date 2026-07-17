@@ -62,7 +62,9 @@ for v3 reference batteries (v2 unchanged at ``T=100``).
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
 ``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
 growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
-launched). **Current:** ``graded-lab-0.37.0`` at GL-66–GL-69 (attention
+launched). **Current:** ``graded-lab-0.38.0`` at GL-73 (v3 grown ecology
+freeze from valid round 2; ``ecology_version="v3_grown"``). Prior:
+``graded-lab-0.37.0`` at GL-66–GL-69 (attention
 surface; legacy-test containment; ablation/ACL recalibration; **v3 growth
 brief FROZEN** in ``BLIND_GENERATION.md`` § V3 — no round launched yet).
 GL-64/65 exercise targets + supplementary UAD gate; GL-59 causal

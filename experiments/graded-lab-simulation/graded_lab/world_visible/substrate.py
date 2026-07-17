@@ -16,10 +16,14 @@ DEFAULT_SUBSTRATE_PATH = _ROOT / "generated_substrate_v1.json"
 # here never changes what "v1" resolves to.
 V2_ECOLOGY_PATH = _ROOT / "generated_ecology_v2.json"
 V3_SLICE_A_REFERENCE_PATH = _ROOT / "tests" / "fixtures" / "ecology_v3_slice_a_reference.json"
+# GL-73: first valid blinded-grown v3 ecology (round 2, clean). Distinct from
+# ``v3`` implementer reference fixture used for engineering gates.
+V3_GROWN_ECOLOGY_PATH = _ROOT / "generated_ecology_v3.json"
 ECOLOGY_VERSION_PATHS: dict[str, Path] = {
     "v1": DEFAULT_SUBSTRATE_PATH,
     "v2": V2_ECOLOGY_PATH,
     "v3": V3_SLICE_A_REFERENCE_PATH,
+    "v3_grown": V3_GROWN_ECOLOGY_PATH,
 }
 
 # Parameter names that must NOT appear — emergent ambiguity guard.

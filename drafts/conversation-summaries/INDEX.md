@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-17 | Graded lab **GL-73**: promote valid round 2 → `generated_ecology_v3.json`; `ecology_version="v3_grown"`; `0.38.0` | [2026-07-17-graded-lab-gl73-v3-ecology-freeze.md](2026-07-17-graded-lab-gl73-v3-ecology-freeze.md) |
 | 2026-07-17 | Site **releases/updates** page: hub + v1.1.0/v1.0.0 cards, newest-first `/updates/` | [2026-07-17-site-releases-updates-page.md](2026-07-17-site-releases-updates-page.md) |
 | 2026-07-17 | Graded lab **GL-72**: void GL-71 dead branch, fix grower blinding, clean round 2 all-pass | [2026-07-17-graded-lab-v3-grower-blinding-fix-round2.md](2026-07-17-graded-lab-v3-grower-blinding-fix-round2.md) |
 | 2026-07-17 | Xi Jinping **WAIC 2026 keynote** in `context/`; short dual-mandate refs in App M + App C; bib `xi2026waic` | [2026-07-17-xi-waic-keynote-context.md](2026-07-17-xi-waic-keynote-context.md) |

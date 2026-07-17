@@ -3930,9 +3930,23 @@ directorate conflict rows; Part A + mechanisms + flows unchanged.
 **Artifacts:** ``generated_ecology_v3_round2.{json,md}`` + knowledge base;
 orchestrator snapshot ``growth-orchestrator/v3/check_result_round2.json``.
 
-**Status.** First **valid** passing ecology (round 2 of ≤4). Freeze candidate
-pending implementer promotion. Voided branch remains in
-``archive/v3-dead-branch-round2-blinding-leak/`` — not an input to later rounds.
+**Status.** First **valid** passing ecology (round 2 of ≤4). **Frozen (GL-73).**
 
-- ``CODE_VERSION`` unchanged at ``graded-lab-0.37.0`` (protocol + valid growth).
+### GL-73 — Canonical v3 grown ecology freeze (2026-07-17)
+
+**Trigger.** User: continue after valid round 2 all-pass.
+
+**Done.**
+- Promoted ``generated_ecology_v3_round2.*`` → ``generated_ecology_v3.{json,md}``
+  (+ ``generated_ecology_v3_knowledge_base.md``).
+- ``ecology_version="v3_grown"`` → frozen file; ``"v3"`` remains implementer
+  reference fixture (``ecology_v3_slice_a_reference.json``).
+- ``CODE_VERSION`` → ``graded-lab-0.38.0``.
+
+**Checker** (canonical path, 20 seeds): re-score at freeze — **all_passed true**.
+
+**Growth protocol.** 2 of ≤4 rounds used; first valid pass at round 2. Voided
+GL-71 branch remains archived only.
+
+- ``CODE_VERSION`` ``graded-lab-0.38.0`` (freeze promotion + loader wiring).
 

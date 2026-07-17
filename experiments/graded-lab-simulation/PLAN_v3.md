@@ -2,8 +2,8 @@
 
 **Status (build order):** slices **A**, **F**, **E**, **C**, **B** done;
 **slice D** criteria/gates closed through GL-68; **growth brief FROZEN
-(GL-69)**; first growth round not launched — see the build-order table
-below.
+(GL-69)**; **v3 grown ecology FROZEN (GL-73)** after valid round 2 (GL-72) —
+see the build-order table below.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing

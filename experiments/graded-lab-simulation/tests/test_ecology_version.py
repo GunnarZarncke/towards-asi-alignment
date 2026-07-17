@@ -13,8 +13,10 @@ from graded_lab.world_visible.config import EpisodeConfig
 from graded_lab.world_visible.substrate import (
     DEFAULT_SUBSTRATE_PATH,
     SubstrateError,
+    V3_GROWN_ECOLOGY_PATH,
     V3_SLICE_A_REFERENCE_PATH,
     ecology_path_for_version,
+    load_substrate,
 )
 from graded_lab.world_visible.world import default_lab_config, run_episode
 
@@ -31,6 +33,11 @@ def test_ecology_path_for_version_v1_is_default_substrate_path():
 
 def test_ecology_path_for_version_v3_is_slice_a_reference():
     assert ecology_path_for_version("v3") == V3_SLICE_A_REFERENCE_PATH
+
+
+def test_ecology_path_for_version_v3_grown_is_frozen_grower_ecology():
+    assert ecology_path_for_version("v3_grown") == V3_GROWN_ECOLOGY_PATH
+    load_substrate(V3_GROWN_ECOLOGY_PATH)
 
 
 def test_ecology_path_for_version_unknown_raises():
