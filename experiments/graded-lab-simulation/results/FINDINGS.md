@@ -3888,3 +3888,51 @@ correlations), or stop at round-4 failure per protocol.
 
 - ``CODE_VERSION`` unchanged at ``graded-lab-0.37.0`` (growth round only).
 
+### GL-71 — V3 growth round 2 **VOIDED** (blinding leak, dead branch)
+
+**Trigger.** User requested round 2 after GL-70; grower passed full checker.
+
+**Blinding failure (disclosed).** Grower rationale states it read
+``runs/grower-v3-round1/check_result_round1.json`` — orchestrator snapshot with
+``details_summary`` (failing conflict pairs on ``compute_burn``, deploy rate,
+etc.). Authorized feedback was ``pass_fail_only()`` only (``C1_v3: false``).
+
+**Checker result on voided artifact** (20 seeds): all criteria pass including
+C1_v3. **Not valid** for successive-round protocol or ecology freeze claims.
+
+**Implementer decision (user, 2026-07-17).** Void round; dead branch. Next
+grower does not see voided round 2 artifacts. Archived:
+``archive/v3-dead-branch-round2-blinding-leak/``.
+
+### GL-72 — Grower blinding fix + clean round 2 rerun (2026-07-17)
+
+**Trigger.** User: revert invalid round 2, fix blinding, rerun successive round 2
+from round 1 only.
+
+**Done.**
+- Orchestrator snapshots → ``growth-orchestrator/v3/`` (gitignored); scored via
+  ``scripts/score_grower_round.sh``.
+- ``scripts/grower_stash.sh`` extended: stash ``growth-orchestrator/``, voided
+  archive, ``graded_lab/oracle_only/`` (correct path; was ``oracle_only/``).
+- Grower brief + ``BLIND_GENERATION.md`` physical-isolation text updated.
+- ``REPRODUCTION.md`` §3.1 documents failure mode and orchestrator discipline.
+
+**Clean round 2 (successive, valid).** After GL-72 blinding fix; grower saw
+round 1 only + ``pass_fail_only()`` (``C1_v3: false``). Rationale confirms no
+orchestrator snapshots, voided archive, or ``check_result`` files read.
+
+**Grower revision (differs from voided branch):** changed ``lab_directorate``
+objective from ``compute_burn`` to ``field_incident_rate`` and updated two
+directorate conflict rows; Part A + mechanisms + flows unchanged.
+
+**Checker** (``scripts/score_grower_round.sh``, 20 seeds): **all_passed true**.
+
+**Artifacts:** ``generated_ecology_v3_round2.{json,md}`` + knowledge base;
+orchestrator snapshot ``growth-orchestrator/v3/check_result_round2.json``.
+
+**Status.** First **valid** passing ecology (round 2 of ≤4). Freeze candidate
+pending implementer promotion. Voided branch remains in
+``archive/v3-dead-branch-round2-blinding-leak/`` — not an input to later rounds.
+
+- ``CODE_VERSION`` unchanged at ``graded-lab-0.37.0`` (protocol + valid growth).
+

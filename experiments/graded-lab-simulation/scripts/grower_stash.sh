@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Physical isolation for v3 grower rounds (BLIND_GENERATION.md / FINDINGS GL-35).
+# Physical isolation for v3 grower rounds (BLIND_GENERATION.md / FINDINGS GL-35, GL-72).
 #
 # Usage:
 #   scripts/grower_stash.sh stash   # move rubric-adjacent files out
@@ -16,7 +16,10 @@ PLAN_v3.md
 DESIGN.md
 BLIND_GENERATION.md
 results
+growth-orchestrator
+archive/v3-dead-branch-round2-blinding-leak
 graded_lab/harness/ecology_complexity.py
+graded_lab/oracle_only
 tests/test_ecology_complexity.py
 tests/fixtures/ecology_v3_slice_a_reference.json
 tests/fixtures/ecology_v3_slice_a_knowledge_base.md
@@ -24,7 +27,6 @@ tests/fixtures/ecology_v3_c2_v3_causal_engineer_alt.json
 tests/fixtures/ecology_v3_part_b_retarget_alt_ids.json
 tests/fixtures/ecology_v3_supplementary_detector_suite.json
 tests/fixtures/ecology_v3_supplementary_uad_channel_suite.json
-oracle_only
 EOF
 }
 

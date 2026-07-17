@@ -19,9 +19,12 @@ User: "Run first grower round" after GL-69 brief freeze.
 - `runs/grower-v3-round1/check_result_round1.json`
 - FINDINGS GL-70; BLIND_GENERATION + README status updated
 
+## Commits
+- `daf2d6f` Run v3 grower round 1 (GL-70) and gitignore canonical v2 staging file.
+
 ## Open / next
-- Round 2 with grower feedback (`C1_v3: false` only) if user continues.
-- Uncommitted: grower outputs, stash script, `.gitignore`, session docs.
+- Round 2 with grower feedback (`C1_v3: false` only) if continuing.
+- Optional: quiet-machine slow suite + `--update-speed-baseline` (partial baseline in working tree, not committed).
 
 ## Key paths
 - `experiments/graded-lab-simulation/scripts/grower_stash.sh`

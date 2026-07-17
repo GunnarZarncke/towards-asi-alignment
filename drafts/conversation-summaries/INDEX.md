@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-17 | Site **releases/updates** page: hub + v1.1.0/v1.0.0 cards, newest-first `/updates/` | [2026-07-17-site-releases-updates-page.md](2026-07-17-site-releases-updates-page.md) |
 | 2026-07-17 | Graded lab **GL-72**: void GL-71 dead branch, fix grower blinding, clean round 2 all-pass | [2026-07-17-graded-lab-v3-grower-blinding-fix-round2.md](2026-07-17-graded-lab-v3-grower-blinding-fix-round2.md) |
 | 2026-07-17 | Xi Jinping **WAIC 2026 keynote** in `context/`; short dual-mandate refs in App M + App C; bib `xi2026waic` | [2026-07-17-xi-waic-keynote-context.md](2026-07-17-xi-waic-keynote-context.md) |
 | 2026-07-17 | Graded lab **v3 grower round 1 (GL-70)**: physical stash, blinded subagent, C1–C5 + C5_v3 pass, C1_v3 fails on compute_burn tension | [2026-07-17-graded-lab-v3-grower-round1.md](2026-07-17-graded-lab-v3-grower-round1.md) |

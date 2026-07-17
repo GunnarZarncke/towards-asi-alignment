@@ -398,7 +398,10 @@ detector/UAD pre-registration, attention surface, and recalibrated engineering
 gates closed. Do **not** edit the grower-facing brief text below without a
 `CODE_VERSION` bump and FINDINGS entry.
 
-**Status: round 1 complete (2026-07-17, GL-70).** Slice D gates closed for round 1:
+**Status: round 1 complete (2026-07-17, GL-70).** Voided dead branch GL-71
+(invalid round 2 — orchestrator leak). **Clean round 2 all-pass (GL-72)** —
+first valid passing ecology; canonical freeze pending implementer sign-off.
+Slice D gates closed for round 1:
 criteria + pre-Q1 batteries; Part B retargeting (GL-62); detector machinery
 transfer (GL-60/63); supplementary UAD coupling (GL-65); attention surface
 (GL-66) with legacy-test containment (GL-67) and ablation/ACL recalibration
@@ -685,11 +688,15 @@ disclosed above. Execution-boundary caveat unchanged (`REPRODUCTION.md`).
 
 Before each growth round, the orchestrator **removes** from the grower's
 workspace every file that states or implies checker constants — including
-`PLAN_v3.md`, `DESIGN.md`, this file, `results/`, and
+`PLAN_v3.md`, `DESIGN.md`, this file, `results/`, **`growth-orchestrator/`**
+(orchestrator-only checker snapshots with `details_summary` — GL-72),
+**`archive/v3-dead-branch-round2-blinding-leak/`** (voided invalid round),
+`graded_lab/oracle_only/`, and
 `graded_lab/harness/ecology_complexity.py` + matching tests — launches
-the grower with brief text and prior-round artifacts in the prompt only,
-then restores files before scoring. Same protocol as V2-2 round redo
-(FINDINGS GL-34/GL-35).
+the grower with brief text, **authorized** prior-round ecology artifacts,
+and **`pass_fail_only()` JSON in the prompt only** (never checker snapshot
+files), then restores files before scoring via `scripts/score_grower_round.sh`.
+Same protocol as V2-2 round redo (FINDINGS GL-34/GL-35).
 
 ### Gate before sending this brief (closed through GL-68)
 

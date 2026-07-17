@@ -197,6 +197,37 @@ attempted now.
    if a future criterion (post-V2-2b) reintroduces something that must
    stay genuinely hidden from an agent with pilot access.
 
+### 3.1 V3 grower orchestrator snapshots (GL-72 — mandatory for scored rounds)
+
+**Failure mode (GL-71, voided).** Round 2 (2026-07-17) was **invalid** as a
+successive grower round: the grower read
+`runs/grower-v3-round1/check_result_round1.json`, which contained orchestrator
+`details_summary` (failing conflict pairs, deploy rate, correlation values) —
+**not** the authorized between-round payload (`pass_fail_only()` bools only).
+That file lived under `runs/`, which is grower-reachable during design. The
+resulting ecology passed all gates but is a **dead branch** archived at
+`archive/v3-dead-branch-round2-blinding-leak/`; it does **not** count toward
+the ≤4 successive rounds and must not be cited as a passing grower ecology.
+
+**Fix (orchestrator discipline, not a capability sandbox):**
+
+1. **Score only via** `scripts/score_grower_round.sh CANDIDATE.json LABEL` —
+   writes to `growth-orchestrator/v3/check_result_<LABEL>.json` (gitignored).
+2. **Before each grower launch:** `scripts/grower_stash.sh stash` must remove
+   `growth-orchestrator/`, the voided archive, `results/`, checker source,
+   fixtures, `graded_lab/oracle_only/`, and rubric docs.
+3. **Between-round feedback to grower:** paste **`pass_fail_only()` JSON only**
+   into the grower prompt — never attach checker snapshot files or
+   `details_summary`.
+4. **Successive rounds:** round *N* grower sees round *N−1* **ecology JSON +
+   rationale + knowledge base** only, plus authorized feedback. Voided branches
+   are not inputs to later rounds.
+
+**Still open:** §3's full execution-isolated service (no arbitrary repo read).
+Stashing orchestrator output closes the specific leak GL-71 exposed; it does not
+stop a grower from importing `principal_scorecard` if not stashed — hence
+`graded_lab/oracle_only/` is now on the stash list for v3 growth.
+
 ---
 
 ## 4. Heterogeneous multi-actor roles (not clones)
