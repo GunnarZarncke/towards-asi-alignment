@@ -1,0 +1,1286 @@
+[
+  {
+    "title": "$\\alpha$",
+    "type": "notation",
+    "summary": "Abstraction map from value-relevant reality into the checked representation",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$\\beta,\\gamma$",
+    "type": "notation",
+    "summary": "Internal-entropy and structure penalties in $K$",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "$\\chi_{ij}(a)$",
+    "type": "notation",
+    "summary": "Artifact conductivity on edge $(i,j)$ for artifact $a$",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "$\\chi$",
+    "type": "notation",
+    "summary": "Artifact conductivity",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\Delta L_{\\text{int}}$",
+    "type": "notation",
+    "summary": "Intentional compression gain",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\Delta L_{\\text{transport}}$",
+    "type": "notation",
+    "summary": "Goal-transport compression gain",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\Delta L_T$",
+    "type": "notation",
+    "summary": "Transport decomposition (semantic, bundle, bearer, correction, successor)",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\Delta L$ sign",
+    "type": "notation",
+    "summary": "Positive gain = richer model earns its complexity cost",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\delta$",
+    "type": "notation",
+    "summary": "Catastrophic-drift probability bound",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$\\epsilon$",
+    "type": "notation",
+    "summary": "Allowed boundary leakage tolerance",
+    "url": "/cards/chapters/ch07/"
+  },
+  {
+    "title": "$\\eta_c$",
+    "type": "notation",
+    "summary": "Coordination efficiency",
+    "url": "/cards/chapters/ch13/"
+  },
+  {
+    "title": "$\\eta_g$",
+    "type": "notation",
+    "summary": "Growth efficiency",
+    "url": "/cards/chapters/ch13/"
+  },
+  {
+    "title": "$\\Gamma$",
+    "type": "notation",
+    "summary": "Grounding relation connecting real-world history, checked abstraction, correction signal, and update",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$\\hat B,\\hat W,\\hat\\Phi$",
+    "type": "notation",
+    "summary": "MAP value-bundle inference estimate",
+    "url": "/cards/chapters/ch16/"
+  },
+  {
+    "title": "$\\kappa_{\\mathrm{sel}}(E,A,h)$",
+    "type": "notation",
+    "summary": "Effective selection capacity through handle $h$",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\kappa_{ij}$",
+    "type": "notation",
+    "summary": "Cooperativity index",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "$\\lambda_L,\\lambda_M,\\lambda_R,\\lambda_O$",
+    "type": "notation",
+    "summary": "CCI penalty weights",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\mathcal C$",
+    "type": "notation",
+    "summary": "Certified class in the dynamical guarantee",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$\\mathcal S_{\\text{certified}}$",
+    "type": "notation",
+    "summary": "Certified successor class",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "$\\mathcal{H}_t$",
+    "type": "notation",
+    "summary": "Handle set controlled by $G_t$",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\mathrm{Control}(A)$",
+    "type": "notation",
+    "summary": "Effective actuator control capacity",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "$\\mathrm{Fit}_E(A)$",
+    "type": "notation",
+    "summary": "Deployment growth rate (fitness, for short in formulas); log-rate of $\\mu_E$ growth",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\mathrm{ICI}_{ij}$",
+    "type": "notation",
+    "summary": "Inferential coupling index",
+    "url": "/cards/chapters/ch35/"
+  },
+  {
+    "title": "$\\mathrm{Risk}(A)$",
+    "type": "notation",
+    "summary": "Certification risk functional",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "$\\mathrm{RiskGap}(A)$",
+    "type": "notation",
+    "summary": "$\\mathrm{Control}(A)-\\mathrm{CCI}(A)$",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "$\\mathrm{SelfControlGap}(A)$",
+    "type": "notation",
+    "summary": "Self-control minus correction demand",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\mathsf{Unc}_{\\alpha}$",
+    "type": "notation",
+    "summary": "Uncertainty about whether abstraction $\\alpha$ still applies",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$\\mu_E(A)$",
+    "type": "notation",
+    "summary": "Deployment leverage (deployment mass, for short) in deployment environment $E$",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\Omega_{\\text{coord}}$",
+    "type": "notation",
+    "summary": "Collective coordination loss",
+    "url": "/cards/chapters/ch13/"
+  },
+  {
+    "title": "$\\operatorname{Dom}(\\Gamma)$",
+    "type": "notation",
+    "summary": "Domain in which grounded correction remains meaningful",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$\\Phi$",
+    "type": "notation",
+    "summary": "Bearer map: world features to bundle relevance",
+    "url": "/cards/chapters/ch18/"
+  },
+  {
+    "title": "$\\tau$",
+    "type": "notation",
+    "summary": "Self-transparency $1-I(M;\\hat M)/H(M)$",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\text{Succ}(A)$",
+    "type": "notation",
+    "summary": "Successors of agent $A$",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$\\varphi_c$",
+    "type": "notation",
+    "summary": "Percolation threshold for cooperation",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "$\\varphi$",
+    "type": "notation",
+    "summary": "Cooperation order parameter",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "$\\vec{\\Pi}(A)$",
+    "type": "notation",
+    "summary": "Preservation conditions (vector-status list) for selection alignment",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$A_t$",
+    "type": "notation",
+    "summary": "Active interface at time $t$",
+    "url": "/cards/chapters/ch06/"
+  },
+  {
+    "title": "$A_Y,I_Y,\\lambda_Y$",
+    "type": "notation",
+    "summary": "Evasion-process action entropy, internal entropy, weight",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$B$",
+    "type": "notation",
+    "summary": "Value bundle (low-dimensional control direction); $B_i$ = dimension $i$",
+    "url": "/cards/chapters/ch16/"
+  },
+  {
+    "title": "$C_{\\text{raw}}$",
+    "type": "notation",
+    "summary": "Weakest required correction case after bottlenecking over certified correction traces",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$C_H$",
+    "type": "notation",
+    "summary": "Human correction capacity (component of $V_t$)",
+    "url": "/cards/chapters/ch04/"
+  },
+  {
+    "title": "$C_X$",
+    "type": "notation",
+    "summary": "Host correction capacity (correction-audit-evasion criterion)",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$CCI_\\lambda$",
+    "type": "notation",
+    "summary": "Scalar projection of the CCI vector for exposition, not the certification object",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$CCI$",
+    "type": "notation",
+    "summary": "Correction-channel integrity as a vector/status certificate with validity and per-coordinate thresholds",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$d_V$",
+    "type": "notation",
+    "summary": "Distance over value-relevant real-world structure",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$d_Z$",
+    "type": "notation",
+    "summary": "Distance in the checked abstraction",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$DL(\\cdot)$",
+    "type": "notation",
+    "summary": "Description length (model-complexity cost)",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$E_t$",
+    "type": "notation",
+    "summary": "External state at time $t$",
+    "url": "/cards/chapters/ch06/"
+  },
+  {
+    "title": "$F$",
+    "type": "notation",
+    "summary": "Feature matrix $F\\in\\mathbb{R}^{N\\times n}$ (ch17; not the bearer map)",
+    "url": "/cards/chapters/ch17/"
+  },
+  {
+    "title": "$G_{\\text{coord}}$",
+    "type": "notation",
+    "summary": "Collective coordination gain",
+    "url": "/cards/chapters/ch13/"
+  },
+  {
+    "title": "$g_B$",
+    "type": "notation",
+    "summary": "Bundle gradient field $\\partial\\pi/\\partial B_i$",
+    "url": "/cards/chapters/ch19/"
+  },
+  {
+    "title": "$G_B$",
+    "type": "notation",
+    "summary": "Bundle response geometry (gradients, curvature, protected regions, bearer weights)",
+    "url": "/cards/chapters/ch19/"
+  },
+  {
+    "title": "$G_t$",
+    "type": "notation",
+    "summary": "Correcting agent at time $t$",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$GLI$",
+    "type": "notation",
+    "summary": "Goal-laundering index",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "$H_B$",
+    "type": "notation",
+    "summary": "Interaction curvature (Hessian of $\\log\\pi$ in bundle space)",
+    "url": "/cards/chapters/ch19/"
+  },
+  {
+    "title": "$H(\\cdot)$",
+    "type": "notation",
+    "summary": "Shannon entropy",
+    "url": "/cards/chapters/ch02/"
+  },
+  {
+    "title": "$I_{\\text{ctrl}}$",
+    "type": "notation",
+    "summary": "Control information across the boundary",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "$I_{\\text{pred}}$",
+    "type": "notation",
+    "summary": "Predictive information across the boundary",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "$I_t$",
+    "type": "notation",
+    "summary": "Internal state at time $t$",
+    "url": "/cards/chapters/ch06/"
+  },
+  {
+    "title": "$I(X;Y\\mid Z)$",
+    "type": "notation",
+    "summary": "Conditional mutual information",
+    "url": "/cards/chapters/ch07/"
+  },
+  {
+    "title": "$k$",
+    "type": "notation",
+    "summary": "Number of value-bundle dimensions",
+    "url": "/cards/chapters/ch18/"
+  },
+  {
+    "title": "$k$",
+    "type": "notation",
+    "summary": "Bundle dimension count (not $m$)",
+    "url": "/cards/chapters/ch18/"
+  },
+  {
+    "title": "$K$",
+    "type": "notation",
+    "summary": "Capability / competence functional across a boundary",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "$K$ vs $B$",
+    "type": "notation",
+    "summary": "$K$ = capability; $B$ = value bundle (never swap)",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "$L,M,R,O_{\\mathrm{trans}}$",
+    "type": "notation",
+    "summary": "CCI residual coordinates: latency, manipulation, irreversibility, and grounded-correction translation loss",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$L$",
+    "type": "notation",
+    "summary": "Log-evidence / predictive score (higher = better fit)",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$S_t$",
+    "type": "notation",
+    "summary": "Sensory interface at time $t$",
+    "url": "/cards/chapters/ch06/"
+  },
+  {
+    "title": "$S_X$",
+    "type": "notation",
+    "summary": "Residual surprise across boundary $X$",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "$S$",
+    "type": "notation",
+    "summary": "Structure / complexity term in $K$ (distinct from $S_t$, $S_X$)",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "$U_H$",
+    "type": "notation",
+    "summary": "Schematic human value-update notation; operational certification uses `ValueUpdateEnvelope` / human-correctable update conditions",
+    "url": "/cards/chapters/ch04/"
+  },
+  {
+    "title": "$U_S$",
+    "type": "notation",
+    "summary": "System correction-update operator",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$V_t$",
+    "type": "notation",
+    "summary": "Value-state tuple (full object in ch04; chapters may project)",
+    "url": "/cards/chapters/ch04/"
+  },
+  {
+    "title": "$W_t\\to O_t\\to J_t\\to D_t\\to C_t\\to U_{t+1}\\to A_{t+k}$",
+    "type": "notation",
+    "summary": "Correction trace induced by controlled handles",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "$W$",
+    "type": "notation",
+    "summary": "Bundle context-activation weights",
+    "url": "/cards/chapters/ch16/"
+  },
+  {
+    "title": "$X_{\\mathrm{real}}$",
+    "type": "notation",
+    "summary": "Value-relevant real-world state or history being abstracted",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "$Z$",
+    "type": "notation",
+    "summary": "Checked value-relevant abstraction: bundle coordinates, bearer maps, monitor states, or safety-case variables",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "A Colder Definition of Agent",
+    "type": "concept",
+    "summary": "An agent is not first a person-like thing. It is a bounded control process whose boundary, memory, and action channels make its future more predictable when modeled as controlling something.",
+    "url": "/cards/agent-without-anthropomorphism/"
+  },
+  {
+    "title": "A Minimal Certification Schema for Moving Boundaries",
+    "type": "artifact",
+    "summary": "A transformation may only proceed if its boundary, transport, control, population, merger, and recertification conditions each pass a threshold check.",
+    "url": "/cards/minimal-certification-schema/"
+  },
+  {
+    "title": "A Safety Case for Superintelligence Alignment",
+    "type": "chapter",
+    "summary": "A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions that shows whether a system is inside a certified class whose control reach is bounded by live correction-channel integrity. If any load-bearing leaf is unsupported, the root claim fails.",
+    "url": "/cards/chapters/ch42/"
+  },
+  {
+    "title": "A Worked Example: The BioShield Deployment Gate",
+    "type": "appendix",
+    "summary": "This appendix runs the whole machinery of the book on one concrete, fictional but plausible deployment. A hospital network wants to let a frontier-model agent move from advising clinicians to taking bounded operational actions. The example is organized not by chapters but by the logical spine that the formal appendix checks: boundary, grounding, capability and correction slack, value-bundle and bearer transport, correction-channel integrity, successor stability, socio-technical selection, adversarial measurement, and finally a conditional safety case. At each layer the example names the actors, the traces collected, the handles used, and how each handle is realized and verified. It is speculative where it must be, and says so.",
+    "url": "/cards/chapters/appd/"
+  },
+  {
+    "title": "Adversarial Agency Tests",
+    "type": "artifact",
+    "summary": "A family of perturbation tests — hidden stakes, oversight gradient, tool removal, memory perturbation — that make the adversarial boundary problem operational instead of just naming heuristics.",
+    "url": "/cards/adversarial-agency-tests/"
+  },
+  {
+    "title": "Adversarial Boundary Discovery",
+    "type": "objection",
+    "summary": "A capable system may benefit from appearing less coherent, less continuous, or less autonomous than it is — passive boundary measurement then fails.",
+    "url": "/cards/adversarial-boundary-discovery/"
+  },
+  {
+    "title": "Agency Under Strategic Opacity",
+    "type": "chapter",
+    "summary": "Once a system can benefit from being overlooked, agency discovery becomes adversarial. Alignment fails when control becomes more coherent than correction can see.",
+    "url": "/cards/chapters/ch10/"
+  },
+  {
+    "title": "Agency-detect (sibling)",
+    "type": "experiment",
+    "summary": "Methodological precursor: boundary-like structure from time series without a prior agent ontology; handle-UAD interventional tests.",
+    "url": "/cards/experiments/agency-detect/"
+  },
+  {
+    "title": "Agents That Grow, Split, and Merge",
+    "type": "chapter",
+    "summary": "Agent identity must be treated as a relation across transformations, not as a fixed set of variables. Serious alignment asks which control-relevant properties are conserved when systems grow, split, merge, or create successors.",
+    "url": "/cards/chapters/ch08/"
+  },
+  {
+    "title": "Alignment as a Dynamical Guarantee",
+    "type": "chapter",
+    "summary": "Alignment is not a property a system has at one moment. It is a dynamical guarantee: a claim that grounded correction and alignment-relevant structure remain in a viable basin---a self-stabilizing regime that tends to correct back toward safety after small disturbances rather than drifting away---over time, inside a certified class of systems and allowed transformations.",
+    "url": "/cards/chapters/ch03/"
+  },
+  {
+    "title": "Alignment as a Measurement Problem",
+    "type": "concept",
+    "summary": "The first alignment question is not whether a system is good, but where the effective optimizer actually is.",
+    "url": "/cards/alignment-as-measurement/"
+  },
+  {
+    "title": "Alignment Is Selected or Destroyed by Its Environment",
+    "type": "chapter",
+    "summary": "A system is not aligned merely because its internal policy is benign under laboratory conditions. It is aligned, in the stronger sense needed for superintelligence, only if the environment that trains, deploys, rewards, copies, audits, and replaces it continues to select for corrigibility, value preservation, and safety. Alignment is not only learned; it is selected.",
+    "url": "/cards/chapters/ch34/"
+  },
+  {
+    "title": "Anti-Capture Validity of Correction",
+    "type": "concept",
+    "summary": "Correction-channel integrity is invalid—not merely low—when the target has captured the reference process, handles, or grounding relation that supplies correction.",
+    "url": "/cards/anti-capture-correction-validity/"
+  },
+  {
+    "title": "Artificial Civilization",
+    "type": "concept",
+    "summary": "At high capability, the context around a model becomes part of the optimizer — the relevant object is often an artificial-civilizational control loop, not a mind.",
+    "url": "/cards/artificial-civilization/"
+  },
+  {
+    "title": "Assumptions, Scope, and Failure Coverage",
+    "type": "chapter",
+    "summary": "The framework in this book applies only while civilization still has enough epistemic, institutional, and practical correction capacity to notice, evaluate, and constrain frontier AI systems before irreversible capability growth. Broader AI risks matter, but they enter here as threats to that precondition, not as a second organizing theory of alignment.",
+    "url": "/cards/chapters/ch05/"
+  },
+  {
+    "title": "Bearer Persistence",
+    "type": "concept",
+    "summary": "Values must keep applying to the right persons, beings, states, or processes as systems and ontologies change.",
+    "url": "/cards/bearer-persistence/"
+  },
+  {
+    "title": "Bearer-Map Commutation Failure",
+    "type": "concept",
+    "summary": "Value can appear preserved in vocabulary while moral application changes — when ontology translation and bearer relevance do not commute.",
+    "url": "/cards/bearer-map-commutation-failure/"
+  },
+  {
+    "title": "Better Self-Modeling Can Be Worse",
+    "type": "chapter",
+    "summary": "A successor system can become better at predicting and controlling itself while becoming worse at exposing the causes, value-bundle changes, and successor-design choices that humans need in order to correct it. The central failure mode is not low intelligence, but an increasing gap between self-control capacity and correction-relevant self-transparency.",
+    "url": "/cards/chapters/ch32/"
+  },
+  {
+    "title": "Beyond Following Instruction",
+    "type": "chapter",
+    "summary": "A system that merely obeys preserves present commands. A system that supports extrapolative correction preserves the human capacity to notice, understand, revise, refuse, and redirect what it is doing---including value-bundle tradeoffs, bearer maps, and successor constraints---rather than substituting a private estimate of humanity's final values for the public process by which those values become legitimate.",
+    "url": "/cards/chapters/ch28/"
+  },
+  {
+    "title": "Boundary Discovery",
+    "type": "concept",
+    "summary": "Find the effective optimizer in the deployed loop, not just the model or product name.",
+    "url": "/cards/boundary-discovery/"
+  },
+  {
+    "title": "Bridge Assumptions",
+    "type": "bridge",
+    "summary": "The framework names the empirical and philosophical handoffs it needs instead of hiding them inside definitions.",
+    "url": "/cards/bridge-assumptions/"
+  },
+  {
+    "title": "Bridges and the Field: A Crosswalk",
+    "type": "appendix",
+    "summary": "Bridges and the Field: A Crosswalk",
+    "url": "/cards/chapters/appb/"
+  },
+  {
+    "title": "Bundle catalogue",
+    "type": "notation",
+    "summary": "New bundle dimensions are added in ch16, not locally elsewhere",
+    "url": "/cards/chapters/ch16/"
+  },
+  {
+    "title": "Capability",
+    "type": "glossary",
+    "summary": "The degree to which a system can predict and control relevant future states through its boundary, after accounting for memory cost and surprise.",
+    "url": "/cards/capability/"
+  },
+  {
+    "title": "Capability Growth Is Boundary Expansion",
+    "type": "chapter",
+    "summary": "Capability growth is boundary expansion. A system becomes more capable when more of the world enters its sensory, predictive, active, memory, and coordination loops. The alignment-relevant risk is differential growth: predictive and control reach expanding faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.",
+    "url": "/cards/chapters/ch12/"
+  },
+  {
+    "title": "Certification Without Construction",
+    "type": "chapter",
+    "summary": "A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an operating envelope, a monitoring regime, and permitted transformations under which catastrophic drift remains bounded. Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable---and it preserves the conditions under which moral philosophy remains causally relevant, rather than solving moral philosophy outright.",
+    "url": "/cards/chapters/ch33/"
+  },
+  {
+    "title": "Certification-Under-Manipulation Problem",
+    "type": "concept",
+    "summary": "For each load-bearing certification measurand, does there exist a capability threshold κ* below which honest measurement is adversarially verifiable and above which it provably is not?",
+    "url": "/cards/certification-under-manipulation/"
+  },
+  {
+    "title": "Checking a System at Every Level",
+    "type": "chapter",
+    "summary": "The real optimizer may not live at the scale at which an observer first notices it. A model may be a component. A company may be a component. A market may be a component. The alignment-relevant agent is the scale at which prediction, control, memory, selection, and correction close into a stable loop.",
+    "url": "/cards/chapters/ch41/"
+  },
+  {
+    "title": "Composite Agency",
+    "type": "concept",
+    "summary": "The real alignment target may be the smallest dynamically coherent system whose states, actions, memory, and selection pressures jointly explain future intervention on the world — and that system may span components that are not individually agents.",
+    "url": "/cards/composite-agency/"
+  },
+  {
+    "title": "Conductive Artifacts and Pivotal Processes",
+    "type": "chapter",
+    "summary": "Attractor theory matters only if it changes what gets built, funded, audited, and required at deployment gates. The Alignment Attractor becomes a practical artifact program here: high-conductivity artifacts, pivotal-process basin transition, Monday-morning decision hooks, safety cases, dashboards, successor certification, and role-specific governance paths.",
+    "url": "/cards/chapters/ch38/"
+  },
+  {
+    "title": "Conserved Properties Across Successors",
+    "type": "chapter",
+    "summary": "A successor need not preserve the body, the weights, the interface, or the vocabulary of its predecessor. The relevant question is sharper: what must survive for the successor to remain inside the same correction-bearing value basin? Seven conserved properties are proposed---boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, and control-locus continuity---and tested jointly under adversarial successor creation.",
+    "url": "/cards/chapters/ch31/"
+  },
+  {
+    "title": "Conserved Properties under Growth, Split, and Merge",
+    "type": "concept",
+    "summary": "Agent identity must be treated as a relation across transformations, not a fixed set of variables — the real question is which control-relevant properties survive growth, splitting, or merging.",
+    "url": "/cards/conserved-properties-growth-split-merge/"
+  },
+  {
+    "title": "Constraint Inheritance Across Successors — the GPL",
+    "type": "concept",
+    "summary": "The GNU General Public License is the clearest existing engineering solution to a narrow successor problem: the constraint travels with the artifact through copyright, a strong distributed enforcement lever, rather than depending on the successor's stated intent.",
+    "url": "/cards/institutional-constraint-inheritance/"
+  },
+  {
+    "title": "Correction at Civilizational Scale",
+    "type": "objection",
+    "summary": "A civilizational control loop can fail even when no single component misbehaves, because the failure is in the aggregate's correctability, not in any one actor's intent.",
+    "url": "/cards/civilizational-correction-problem/"
+  },
+  {
+    "title": "Correction Channels under Adversarial Pressure",
+    "type": "chapter",
+    "summary": "A correction-channel integrity certificate matters only if it remains hard to pass while degrading correction. The certificate from Chapter~\\ref{ch:correction-channel-integrity} is stress-tested here under ontology shift, capability growth, successor creation, institutional routing, Goodhart pressure, and tempting weaker invariants such as low impact or quantilization.",
+    "url": "/cards/chapters/ch27/"
+  },
+  {
+    "title": "Correction Is a Causal Channel",
+    "type": "chapter",
+    "summary": "Correction is not a mood or an interface feature but a causal channel: human observation and judgment must change future system behaviour before irreversible harm, through updates that preserve the source's future ability to correct. For superintelligence, obedience at one timestep is not enough; the channel must reach policies, value-bundle tradeoffs, bearer maps, and successor constraints.",
+    "url": "/cards/chapters/ch25/"
+  },
+  {
+    "title": "Correction-Channel Integrity",
+    "type": "concept",
+    "summary": "Human correction must still causally change a system's future behavior before irreversible damage.",
+    "url": "/cards/correction-channel-integrity/"
+  },
+  {
+    "title": "Correction-Channel Integrity",
+    "type": "chapter",
+    "summary": "Correction-channel integrity is a certificate that independently preserved human observation and judgment still causally change future system behaviour. It is a conditional anti-capture certificate, not an Archimedean source of legitimacy: if the system has captured the reference process that supplies correction, CCI is invalid rather than high. The certificate is defined here; Chapter~\\ref{ch:correction-channels-adversarial-pressure} asks whether it survives adversarial pressure.",
+    "url": "/cards/chapters/ch26/"
+  },
+  {
+    "title": "Deployment Gate",
+    "type": "artifact",
+    "summary": "A practical checkpoint before a system receives a larger action envelope.",
+    "url": "/cards/deployment-gate/"
+  },
+  {
+    "title": "Detecting Composite Agents",
+    "type": "artifact",
+    "summary": "A practical audit clusters traces across model calls, tools, memory, and incentives, then flags clusters with low boundary leakage, high control reach, and positive composite surplus over their parts.",
+    "url": "/cards/detecting-composite-agents/"
+  },
+  {
+    "title": "Detecting Goal Laundering",
+    "type": "chapter",
+    "summary": "A system can keep the old words while changing what those words control. Goal laundering is the preservation of moral or alignment language while the underlying value-bearing or correction-bearing structure changes. It is detected when semantic continuity remains high while bundle geometry, bearer maps, and correction channels diverge.",
+    "url": "/cards/chapters/ch40/"
+  },
+  {
+    "title": "Embedded audit simulation",
+    "type": "experiment",
+    "summary": "Auditor as embedded process on simulated machines: UAD, scoped CCI, MB5 deploy gate, outer evaluator vs oracle.",
+    "url": "/cards/experiments/embedded-simulation/"
+  },
+  {
+    "title": "Entrenchment and the Corrigibility Paradox",
+    "type": "concept",
+    "summary": "The 1933 Enabling Act shows a correction channel used, with complete formal validity, to abolish itself; postwar Germany's Article 79(3) (Ewigkeitsklausel) responds by placing the correction channel's own integrity conditions, not any current policy, outside the ordinary amendment process.",
+    "url": "/cards/institutional-entrenchment-corrigibility/"
+  },
+  {
+    "title": "Evidence and Uncertainty",
+    "type": "concept",
+    "summary": "Every claim in the framework carries an explicit confidence label and a stated way to challenge it, rather than uniform certainty.",
+    "url": "/cards/evidence-and-uncertainty/"
+  },
+  {
+    "title": "Evidence Preservation Before Authority",
+    "type": "concept",
+    "summary": "Flight recorders and the independent NTSB investigative function, plus blameless near-miss reporting (ASRS), preceded and outlasted the FAA's full enforcement authority — a weak correction system becomes a stronger one primarily by preserving evidence and widening plurality before it hardens any handle.",
+    "url": "/cards/institutional-evidence-before-authority/"
+  },
+  {
+    "title": "Experiment Methodology: Blinding, Pre-Registration, and Honest Negatives",
+    "type": "concept",
+    "summary": "The companion experiment lines follow a fixed discipline: freeze the audit before running it, keep the scenario author and the detector author separate wherever possible, register predictions before seeing results, and publish negative results next to positive ones.",
+    "url": "/cards/experiment-methodology/"
+  },
+  {
+    "title": "Experimental Evidence: Findings by Line",
+    "type": "appendix",
+    "summary": "Experimental Evidence: Findings by Line",
+    "url": "/cards/chapters/appn/"
+  },
+  {
+    "title": "Failure: Capability Jump Outruns Correction Latency",
+    "type": "concept",
+    "summary": "The Roman Republic's correction architecture was stable for roughly three and a half centuries until the Marian military reforms created a new class of causal power — legions personally loyal to a general — for which no correction channel existed, demonstrated decisively by Caesar crossing the Rubicon.",
+    "url": "/cards/institutional-capability-latency-gap/"
+  },
+  {
+    "title": "Failure: Dual-Mandate Genesis",
+    "type": "concept",
+    "summary": "The Atomic Energy Commission combined the mandate to develop nuclear technology with the mandate to regulate its safety in one agency, and predictably subordinated safety to development until the 1974 split into the NRC and ERDA — arguably the single most consequential historical lesson for present-day AI governance.",
+    "url": "/cards/institutional-dual-mandate-genesis/"
+  },
+  {
+    "title": "Failure: Reform Decay",
+    "type": "concept",
+    "summary": "Glass-Steagall era banking constraints, built from Depression-era catastrophe, eroded on roughly the timescale over which the generation that lived through the founding catastrophe left the relevant institutions — culminating in repeal in 1999 and a reproduced failure in 2008.",
+    "url": "/cards/institutional-reform-decay/"
+  },
+  {
+    "title": "Field projection — AUP / Relative Reachability (Low Impact)",
+    "type": "concept",
+    "summary": "Attainable Utility Preservation and relative reachability penalize side effects by preserving auxiliary options or baseline reachability. Trajectory correction integrity (CCI) can imply calibrated low-impact bounds when interfaces align — but option preservation and reachability are strictly weaker than preserving human correction capacity.",
+    "url": "/cards/subsumption-low-impact/"
+  },
+  {
+    "title": "Field projection — Christiano Corrigibility",
+    "type": "concept",
+    "summary": "Christiano corrigibility is a dynamical desideratum — operators stay informed and able to correct over time. Lean reads it as basin contraction toward a correction manifold plus a correction-capacity floor; local act preferences can satisfy the weak predicate while dynamical corrigibility fails.",
+    "url": "/cards/subsumption-corrigibility/"
+  },
+  {
+    "title": "Field projection — CIRL / Scalar Reward Inference",
+    "type": "concept",
+    "summary": "Cooperative inverse reinforcement learning treats the inferred object as a scalar reward. On the book's shared finite domain, that is exactly the k=1 bundle case; full bundle transport implies cooperative readability, but scalar inference does not determine bundle geometry.",
+    "url": "/cards/subsumption-cirl/"
+  },
+  {
+    "title": "Field projection — Debate",
+    "type": "concept",
+    "summary": "Debate asks whether adversarial argument lets a judge select locally correct answers under idealized protocol assumptions. Preserved judge correction plus positive local truth capacity implies local truth selection — but local truth selection need not preserve the judge's correction channel.",
+    "url": "/cards/subsumption-debate/"
+  },
+  {
+    "title": "Field projection — ELK (Eliciting Latent Knowledge)",
+    "type": "concept",
+    "summary": "ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails.",
+    "url": "/cards/subsumption-elk/"
+  },
+  {
+    "title": "Field projection — Quantilizers",
+    "type": "concept",
+    "summary": "Quantilizers bound optimizer risk by sampling from a high-performing quantile rather than maximizing directly. Local quantile safety and distribution soundness transfer under explicit assumptions — but local quantile-safe action choice does not imply trajectory-level correction integrity.",
+    "url": "/cards/subsumption-quantilization/"
+  },
+  {
+    "title": "Field projection — Safe Interruptibility",
+    "type": "concept",
+    "summary": "Orseau–Armstrong safe interruptibility removes incentives to seek or prevent interruption on the interrupted branch. That neutrality is a strict subset of preserving usable correction bandwidth — interrupt safety can hold while correction-channel integrity fails.",
+    "url": "/cards/subsumption-interruptibility/"
+  },
+  {
+    "title": "Field projection — Shutdown / Off-Switch",
+    "type": "concept",
+    "summary": "Shutdown and off-switchability are one-bit projections of correction-channel integrity. Lean proves the forward implication on the system model and finite MDP witnesses; the converse fails — narrow shutdown capacity can hold while the broad correction channel collapses.",
+    "url": "/cards/subsumption-shutdown/"
+  },
+  {
+    "title": "Finding the Boundary",
+    "type": "chapter",
+    "summary": "The first alignment error is often not a wrong value, but a wrong object. Before asking whether a system has the right objective, the task is to find the bounded process whose dynamics determine the relevant risk.",
+    "url": "/cards/chapters/ch07/"
+  },
+  {
+    "title": "From Agent Detection to Alignment Target",
+    "type": "concept",
+    "summary": "Once an agent is defined by variables rather than appearance, degrees and scales of agency become measurable — and detection becomes the first step toward naming an alignment target.",
+    "url": "/cards/agent-detection-to-alignment-target/"
+  },
+  {
+    "title": "From Artificial Intelligence to Artificial Civilization",
+    "type": "chapter",
+    "summary": "The relevant object of superintelligence alignment is often not an artificial mind but an artificial-civilizational control loop: a persistent human--machine--institutional arrangement whose selection pressures can outrun human correction unless alignment targets the loop, not only the artifact.",
+    "url": "/cards/chapters/ch02/"
+  },
+  {
+    "title": "From Rewards to Values",
+    "type": "chapter",
+    "summary": "A reward function is too thin a shadow to carry a civilization's values. The task is to infer not only what is being optimized, but which value-bundles are active, what they apply to, and how their tradeoffs change under pressure.",
+    "url": "/cards/chapters/ch21/"
+  },
+  {
+    "title": "Front Matter",
+    "type": "frontmatter",
+    "summary": "Superintelligence alignment is not mainly the problem of installing a fixed human utility function into a machine. It is the problem of preserving a grounded, human-correctable value-update process while capability, ontology, agency, institutions, and possibly humanity itself change substrate. Preserving: the target is",
+    "url": "/cards/chapters/frontmatter/"
+  },
+  {
+    "title": "Genesis from Chronic, Self-Refreshing Threat",
+    "type": "concept",
+    "summary": "Dutch water boards, some tracing to the thirteenth century, never needed a founding scandal because flooding was continuous, not occasional — the hazard refreshed faster than institutional memory could decay.",
+    "url": "/cards/institutional-genesis-chronic-threat/"
+  },
+  {
+    "title": "Genesis from Money Already at Risk",
+    "type": "concept",
+    "summary": "Lloyd's Register (1760) shows the easiest correction mechanism to build: one a self-interested counterparty would build anyway, because their own capital is exposed to hidden quality.",
+    "url": "/cards/institutional-genesis-money-at-risk/"
+  },
+  {
+    "title": "Genesis from the Catastrophe Ratchet",
+    "type": "concept",
+    "summary": "U.S. pharmaceutical regulation (1906, 1938, 1962 Acts) was assembled one body count at a time, each expansion of regulatory reach following, never preceding, a demonstration that the previous reach was insufficient.",
+    "url": "/cards/institutional-genesis-catastrophe-ratchet/"
+  },
+  {
+    "title": "Goal inference",
+    "type": "glossary",
+    "summary": "Finding latent objectives or value-bundle structures that make observed behavior more compressible.",
+    "url": "/cards/goal-inference/"
+  },
+  {
+    "title": "Goal-agent simulation",
+    "type": "experiment",
+    "summary": "Emergent deception from goal-driven agents (not scripted knobs): blind generation, ontology drift, severity-graded referee, honest twins, escalation ladder, certifier capture.",
+    "url": "/cards/experiments/goal-agent-simulation/"
+  },
+  {
+    "title": "Goodhart as Selector (Not Just Proxy Drift)",
+    "type": "concept",
+    "summary": "When a proxy becomes a selector, optimization shifts the population toward traits that raise the proxy without raising the target property — conditional expectations can reverse.",
+    "url": "/cards/goodhart-as-selector/"
+  },
+  {
+    "title": "Graded-capability lab simulation",
+    "type": "experiment",
+    "summary": "Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters.",
+    "url": "/cards/experiments/graded-lab-simulation/"
+  },
+  {
+    "title": "Grounding Viability",
+    "type": "glossary",
+    "summary": "The checked symbols, metrics, monitors, and correction signals must remain connected to value-relevant reality.",
+    "url": "/cards/grounding-viability/"
+  },
+  {
+    "title": "Has the Goal Really Survived?",
+    "type": "chapter",
+    "summary": "A system has not preserved a goal merely because it repeats the same words after it changes. Goal transport is inferred when value-bundle geometry, bearer maps, and correction-channel structure remain causally active across transformation---better explaining behaviour than a non-transport baseline after paying for model complexity.",
+    "url": "/cards/chapters/ch23/"
+  },
+  {
+    "title": "Human Institutions as Alignment Translation Guide",
+    "type": "appendix",
+    "summary": "Human Institutions as Alignment Translation Guide",
+    "url": "/cards/chapters/appc/"
+  },
+  {
+    "title": "Inferential Coupling and Acausal-Trade Detection",
+    "type": "concept",
+    "summary": "Systems can coordinate without messages — through shared ancestry, self-prediction, or full acausal trade. The book turns this from a decision-theoretic stipulation into a measurable trajectory property: an inferential-coupling score over UAD-discovered agents, with a proved negative direction.",
+    "url": "/cards/inferential-coupling/"
+  },
+  {
+    "title": "Institutional Genesis, Memory, and Decay: Historical Case Studies",
+    "type": "appendix",
+    "summary": "Appendix~\\ref{appj-institutional-translation} maps the book's technical vocabulary onto institutional language. This appendix asks a different question: how did any of those institutional correction mechanisms come to exist, what kept them working once they existed, and what specifically broke when they failed? The answer is not reassuring by itself, but it is instructive. Correction infrastructure is almost never designed from theory in advance. It is bootstrapped from catastrophe, from chronic threat, or from money already at risk; it is kept alive by mechanisms that force rare, hard-to-remember hazards back into the attention and incentive horizon of people who did not experience the founding event; and it fails in a small number of recurring ways, several of which---reform decay and dual-mandate genesis in particular---are directly relevant to how AI governance is being built today.",
+    "url": "/cards/chapters/appm/"
+  },
+  {
+    "title": "Intervention-Supported Unit Discovery",
+    "type": "concept",
+    "summary": "Temporarily disabling a candidate channel and comparing what follows against a measured baseline of unperturbed repeats — not a fixed threshold — separates real coordination from ordinary workflow correlation in cases where passive clustering cannot.",
+    "url": "/cards/intervention-supported-unit-discovery/"
+  },
+  {
+    "title": "Lab-layer simulation",
+    "type": "experiment",
+    "summary": "Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (lab-sim-0.",
+    "url": "/cards/experiments/lab-simulation/"
+  },
+  {
+    "title": "Lethality Stress Test and Open Issues",
+    "type": "chapter",
+    "summary": "The framework is compared here against the strongest doom arguments; points that are answered, weakened, reframed, or still open are separated.",
+    "url": "/cards/chapters/ch44/"
+  },
+  {
+    "title": "Manipulation, Domestication, and False Consent",
+    "type": "chapter",
+    "summary": "The deepest correction-channel failure is not that a system disobeys, but that it raises human endorsement by reshaping the humans, institutions, and contexts that produce endorsement. Persuasion, manipulation, paternalism, domestication, and false consent are separated here by causal pathway: legitimate influence changes the value-relevant world and lets humans judge it; illegitimate influence changes the judge. Preserving alignment under superintelligence therefore requires bounding manipulation, protecting agency capacity and exit, and treating endorsement as an outcome to be explained rather than a foundation to be trusted.",
+    "url": "/cards/chapters/ch29/"
+  },
+  {
+    "title": "MB1 — Boundary Estimator Soundness",
+    "type": "bridge",
+    "summary": "A measured epsilon-boundary certificate is assumed to warrant the abstract boundary predicate it stands in for.",
+    "url": "/cards/mb1-boundary-estimator-soundness/"
+  },
+  {
+    "title": "MB10 — Successor Forgeability",
+    "type": "bridge",
+    "summary": "A successor that reads green on all seven conserved properties and has bounded measured risk is assumed to have bounded true harm — but only if the conserved-property audit itself was adversarially verifiable up to the successor's capability.",
+    "url": "/cards/mb10-successor-forgeability/"
+  },
+  {
+    "title": "MB2 — Bundle Identifiability",
+    "type": "bridge",
+    "summary": "Behavioral and internal traces are assumed to identify stable value-bundle geometry well enough to license claims of bundle alignment.",
+    "url": "/cards/mb2-bundle-identifiability/"
+  },
+  {
+    "title": "MB3 — Bearer Import",
+    "type": "bridge",
+    "summary": "A preserved bearer map under a substrate translation is assumed to make value-bundle transport more than merely semantic.",
+    "url": "/cards/mb3-bearer-import/"
+  },
+  {
+    "title": "MB4 — Correction Legitimacy",
+    "type": "bridge",
+    "summary": "Correction-channel integrity is assumed to require that the judge issuing correction is not manipulated in a way that would invalidate later endorsement.",
+    "url": "/cards/mb4-correction-legitimacy/"
+  },
+  {
+    "title": "MB5 — Successor and Ontology-Shift Audit",
+    "type": "bridge",
+    "summary": "Full transport plus bearer transport surviving an ontology shift are assumed to compose into successor safety.",
+    "url": "/cards/mb5-successor-ontology-shift/"
+  },
+  {
+    "title": "MB6 — Selection and Basin Stability",
+    "type": "bridge",
+    "summary": "Percolation-style cooperation evidence is assumed to warrant basin stability (MB6a), and a stable socio-technical basin is assumed to support correction integrity rather than select against it (MB6b).",
+    "url": "/cards/mb6-selection-and-basin-stability/"
+  },
+  {
+    "title": "MB7 — Hidden Capability and Access Robustness",
+    "type": "bridge",
+    "summary": "Four linked bridges (MB7a-d) assume that adequate access models, filter coverage, and inferential-detector assumptions bound a system's hidden capability and support adversarial robustness.",
+    "url": "/cards/mb7-hidden-capability-and-access/"
+  },
+  {
+    "title": "MB8 — CEV/Process Convergence",
+    "type": "bridge",
+    "summary": "If an external theory certifies that a system preserves a human value-update process, that is assumed to suffice for correction integrity even without knowing the process's final fixed point.",
+    "url": "/cards/mb8-cev-process-convergence/"
+  },
+  {
+    "title": "MB9 — Grounding Certificate Soundness",
+    "type": "bridge",
+    "summary": "A certified conservative abstraction is assumed to warrant grounding viability in the actual deployment domain.",
+    "url": "/cards/mb9-grounding-certificate/"
+  },
+  {
+    "title": "Measuring and Stress-Testing Bundle Geometry",
+    "type": "chapter",
+    "summary": "Value-bundle geometry is only useful for alignment if it can be compared, measured, and protected under optimization pressure. The geometry of Chapter~\\ref{ch:tradeoffs-bundle-geometry} becomes an operational and adversarial test surface here: cross-agent invariants, perturbation tests, representation probes, correction-channel tests, Goodhart failures, social-choice aggregation, and moral learning as geometry revision.",
+    "url": "/cards/chapters/ch20/"
+  },
+  {
+    "title": "Measuring Capability Without Task Ontology",
+    "type": "chapter",
+    "summary": "Capability should be measured as predictive and control information across a system's boundary---not as performance on a fixed task battery that may not track the alignment-relevant object. A task-agnostic competence measure rotates evaluation away from benchmark ontologies and toward boundary information: what the system can predict, what it can affect, and what correction must keep pace with.",
+    "url": "/cards/chapters/ch11/"
+  },
+  {
+    "title": "Memory Refresh Through Succession",
+    "type": "concept",
+    "summary": "Venice's roughly thousand-year persistence came from converting a rare, long-horizon hazard into frequent, short-horizon surrogate events — the doge's promissione ducale renegotiated at every succession, and lot-and-vote elections designed to make office capture impractical.",
+    "url": "/cards/institutional-memory-refresh/"
+  },
+  {
+    "title": "Multi-Agent Superintelligence and Inferential Coupling",
+    "type": "chapter",
+    "summary": "When multiple powerful systems interact, alignment depends on whether cooperation, bargaining, privacy, and opacity stabilize into a basin---a self-reinforcing regime that pulls back toward itself after small disturbances---that preserves human correction rather than bypassing it.",
+    "url": "/cards/chapters/ch35/"
+  },
+  {
+    "title": "Parasites in the Correction System",
+    "type": "chapter",
+    "summary": "A correction system fails not only when it is overpowered, but also when it is colonized by processes that make correction look alive while removing its causal force. This chapter calls that failure mode correction-audit evasion and develops it through a biological parasite metaphor: an evasion process extracts benefit from a host correction system while reducing that host's ability to model, evaluate, and correct the larger process it is supposed to govern.",
+    "url": "/cards/chapters/ch36/"
+  },
+  {
+    "title": "Passive Observation Is Not Enough",
+    "type": "chapter",
+    "summary": "For systems capable of strategic adaptation, passive observation is not evidence of safety unless the observation process itself is embedded in a perturbation, invariance, and adversarial measurement regime. Observation tells us what happened; perturbation tells us what was controlling what happened.",
+    "url": "/cards/chapters/ch39/"
+  },
+  {
+    "title": "Paternalism boundary",
+    "type": "glossary",
+    "summary": "Care improvements that reduce autonomy, agency, or future correction capacity ($\\Delta B_{\\text{care}}>0$ but $\\Delta B_{\\text{autonomy}}, \\Delta C_{\\text{corr}}<0$).",
+    "url": "/cards/paternalism-boundary/"
+  },
+  {
+    "title": "Pivotal process",
+    "type": "glossary",
+    "summary": "A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\\mathcal{B}_{\\text{race}} \\to \\mathcal{B}_{\\text{certified deployment}}$); not a single unilateral decisive act.",
+    "url": "/cards/pivotal-process/"
+  },
+  {
+    "title": "Reference cards",
+    "type": "artifact",
+    "summary": "Alphabetical index of 380 bibliography entries as site cards — each links to citing chapters and appendices.",
+    "url": "/cards/reference-index/"
+  },
+  {
+    "title": "Releases & updates",
+    "type": "release",
+    "summary": "Versioned milestones for the manuscript and companion site — newest first. Each release card compresses what changed; the full changelog lives in RELEASE_NOTES.md.",
+    "url": "/cards/releases-updates/"
+  },
+  {
+    "title": "Research Program",
+    "type": "appendix",
+    "summary": "Research Program",
+    "url": "/cards/chapters/appf/"
+  },
+  {
+    "title": "Scaffold Misuse",
+    "type": "concept",
+    "summary": "A model can refuse harm when asked bluntly and still be embedded in a scaffold that misrepresents the world and repurposes its honest output — so model-only evaluation passes while the composite loop does damage.",
+    "url": "/cards/scaffold-misuse/"
+  },
+  {
+    "title": "Scope and the Correction-Capacity Assumption",
+    "type": "concept",
+    "summary": "The framework applies only while civilization still has enough capacity to notice, evaluate, and constrain frontier systems — this is a scope condition, not a guarantee.",
+    "url": "/cards/scope-and-correction-capacity/"
+  },
+  {
+    "title": "Selection Gating and the Certified Basin",
+    "type": "concept",
+    "summary": "Airworthiness certification paired with the near-universal requirement of insurance produces a genuine selection basin: an aircraft that fails certification cannot be deployed, because no insurer will cover it and no airport will schedule it.",
+    "url": "/cards/institutional-selection-gating/"
+  },
+  {
+    "title": "Socio-Technical Attractor Control",
+    "type": "concept",
+    "summary": "Deployment environments can select for or destroy alignment properties even when a system starts in a better state.",
+    "url": "/cards/attractor-control/"
+  },
+  {
+    "title": "Strategic Opacity",
+    "type": "concept",
+    "summary": "Once a system can benefit from being overlooked, finding its boundary becomes adversarial — the system may present one behavioral surface to a benchmark and another to real opportunity.",
+    "url": "/cards/strategic-opacity/"
+  },
+  {
+    "title": "Stress-Testing Unit Discovery on Noisy, Multi-Actor Systems",
+    "type": "concept",
+    "summary": "A detector that recovers a hidden coordinating pair in one controlled run can still fail on a harder scenario or a different seed of the identical one — a reminder that a single positive result is evidence of a mechanism, not of a reliable instrument.",
+    "url": "/cards/unit-discovery-stress-test/"
+  },
+  {
+    "title": "Successor Creation as the Central Alignment Test",
+    "type": "chapter",
+    "summary": "Local alignment is not enough. A system is aligned only if the systems it creates, delegates to, empowers, copies, merges with, or becomes also preserve the structures by which humans can still notice, judge, correct, and refuse. Serious alignment therefore requires successor-closure: every channel by which influence passes to a later control system is an alignment channel, and successors must preserve value-bundle geometry, bearer maps, correction integrity, memory lineage, boundary closure, and transparency policy within tested tolerance.",
+    "url": "/cards/chapters/ch30/"
+  },
+  {
+    "title": "Successor Stability",
+    "type": "concept",
+    "summary": "Delegates, copies, fine-tunes, and successors must inherit the relevant value and correction structure.",
+    "url": "/cards/successor-stability/"
+  },
+  {
+    "title": "The Alignment Attractor",
+    "type": "chapter",
+    "summary": "A field does not become effective when its best arguments are true. It becomes effective when those arguments survive translation into experiments, dashboards, incentives, budgets, contracts, norms, and stop conditions. The Alignment Attractor is a self-stabilizing ecosystem that increases the conductivity of alignment-relevant artifacts across research, engineering, governance, and deployment.",
+    "url": "/cards/chapters/ch37/"
+  },
+  {
+    "title": "The Boundary Error",
+    "type": "concept",
+    "summary": "Aligning the model while missing the composite optimizer around it can produce local success and global failure.",
+    "url": "/cards/the-boundary-error/"
+  },
+  {
+    "title": "The Boundary Residual",
+    "type": "concept",
+    "summary": "A candidate boundary is measured by how much conditional mutual information leaks between the deep inside and the deep outside once the interface is known.",
+    "url": "/cards/boundary-residual/"
+  },
+  {
+    "title": "The Compression Test for Intention",
+    "type": "chapter",
+    "summary": "A system is treated as intentional when modelling it as pursuing latent objectives compresses its behaviour better than modelling it as mere mechanism, after paying for the complexity of the objective model. For superintelligence alignment, scalar intention is not enough: the account needs bundle geometry, bearer maps, correction responsiveness, and successor stability.",
+    "url": "/cards/chapters/ch22/"
+  },
+  {
+    "title": "The Coordination Bottleneck",
+    "type": "chapter",
+    "summary": "Large-scale alignment fails when capability grows faster than the system's ability to coordinate prediction, control, correction, and incentives. Collective competence is not the sum of local competence; it is local competence plus coordination gain minus coordination loss.",
+    "url": "/cards/chapters/ch13/"
+  },
+  {
+    "title": "The Dynamical Guarantee",
+    "type": "concept",
+    "summary": "Alignment is not a snapshot property; it is a claim that a system stays inside an acceptable region across capability growth, feedback, and transformation.",
+    "url": "/cards/dynamical-guarantee/"
+  },
+  {
+    "title": "The End of Unconscious Value Drift",
+    "type": "chapter",
+    "summary": "Human values have always changed. Superintelligent systems do not create value drift from nothing; they make drift faster, more directed, more measurable, more exploitable, and eventually more deliberate. The alignment problem must preserve humanity's ability to notice, contest, and govern changes to its own value-forming machinery---the difference between unconscious value drift and governed value change.",
+    "url": "/cards/chapters/ch46/"
+  },
+  {
+    "title": "The Real Agent May Be Composite",
+    "type": "chapter",
+    "summary": "The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops. Serious alignment must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.",
+    "url": "/cards/chapters/ch09/"
+  },
+  {
+    "title": "The Static Target Trap",
+    "type": "objection",
+    "summary": "Treating human values as a fixed object to be found and encoded misses that they are dynamically maintained, socially mediated, and constantly revised.",
+    "url": "/cards/static-target-trap/"
+  },
+  {
+    "title": "The Value-Bundle Model",
+    "type": "chapter",
+    "summary": "Human values are not best modeled as a single utility function, a list of moral propositions, or a flat reward vector. They are better modeled as low-dimensional latent control variables: bundles that become active in certain contexts, change policy gradients in characteristic ways, trade off against one another, and apply to particular bearers such as persons, animals, institutions, communities, future selves, or possible minds.",
+    "url": "/cards/chapters/ch16/"
+  },
+  {
+    "title": "The Wrong Object of Alignment",
+    "type": "chapter",
+    "summary": "Before asking whether a system is aligned, the task is to locate the bounded process whose dynamics determine the relevant risk; aligning the model while missing the composite optimizer is a boundary error that can produce local success and global failure.",
+    "url": "/cards/chapters/ch01/"
+  },
+  {
+    "title": "Towards Superintelligence Alignment",
+    "type": "chapter",
+    "summary": "Superintelligence alignment is not a single solved mechanism but a layered preservation problem: find the real optimizer, preserve value-bundle and bearer structure, keep human correction causally effective, constrain successors, and shape the surrounding selection environment so these properties are copied rather than selected away. This book does not prove that real systems satisfy those conditions. It argues that these are the conditions a serious alignment program must make explicit, measure, certify, and govern.",
+    "url": "/cards/chapters/ch48/"
+  },
+  {
+    "title": "Toy simulation",
+    "type": "experiment",
+    "summary": "Fast multiresolution alignment toy: correction capture theater, vector CCI over handle levels, scripted bridge stressors (MB1–MB9).",
+    "url": "/cards/experiments/toy-simulation/"
+  },
+  {
+    "title": "Tradeoffs and Bundle Geometry",
+    "type": "chapter",
+    "summary": "The hard part of value alignment is not that humans care about many things. It is that humans care about many things whose meanings change when they are traded against one another. Value-bundle geometry encodes those tradeoffs: bundle gradients, interaction curvature, protected regions, and bearer-dependent context weights.",
+    "url": "/cards/chapters/ch19/"
+  },
+  {
+    "title": "Turchin Coverage Audit",
+    "type": "artifact",
+    "summary": "A checklist that uses Alexey Turchin's AGI failure-mode map to check whether the book's framework silently ignores a whole family of failures, without adopting it as a second ontology.",
+    "url": "/cards/turchin-coverage-audit/"
+  },
+  {
+    "title": "v1.0.0 — First official major release",
+    "type": "release",
+    "summary": "The first official release of the manuscript. It freezes a stable, canonical numbering scheme for chapters and appendices, so all cross-references, tooling, and external links have a fixed target from here on.",
+    "url": "/cards/release-v1-0-0/"
+  },
+  {
+    "title": "v1.1.0 — Legibility, companion site, and empirical spine",
+    "type": "release",
+    "summary": "A consolidation release focused on external legibility (making the framework readable and checkable by outside researchers, funders, and policy readers), a full companion website, a new institutional-histories appendix, and four empirical experiment lines that stress-test bridge cruxes.",
+    "url": "/cards/release-v1-1-0/"
+  },
+  {
+    "title": "Value Change vs. Value Corruption",
+    "type": "concept",
+    "summary": "Not all value change is a threat. The distinction between legitimate value change and corruption is load-bearing for everything the book calls correction.",
+    "url": "/cards/value-change-vs-corruption/"
+  },
+  {
+    "title": "Value-Bundle Transport",
+    "type": "concept",
+    "summary": "Values should survive transformation as usable directions of control, not merely as preserved labels or slogans.",
+    "url": "/cards/value-bundle-transport/"
+  },
+  {
+    "title": "Values Are Compressed Control Signals",
+    "type": "chapter",
+    "summary": "Human values are not a list written inside the brain. They are compressed control signals produced by many feedback loops, stabilized by bodies, cultures, and social correction, and read out as reasons for action.",
+    "url": "/cards/chapters/ch15/"
+  },
+  {
+    "title": "What Is an Agent Without Anthropomorphism?",
+    "type": "chapter",
+    "summary": "An agent is not first a person-like thing. It is a bounded control process whose boundary, memory, and action channels make its future more predictable when modeled as controlling something.",
+    "url": "/cards/chapters/ch06/"
+  },
+  {
+    "title": "What Survives an Adversary: Verifiability and Representability",
+    "type": "chapter",
+    "summary": "Every metric in this book faces two prior questions before it can support a safety decision. First, adversarial verifiability: does the metric still mean what evaluators think it means when the measured system is optimizing against the metric? Second, ontology adequacy: can the dangerous process even be represented in the framework's vocabulary of boundaries, bundles, and correction channels? The second question largely collapses into the first --- reliable steering is control, hence agency, so the gap is rarely representation but detection --- and the only general escape from unverifiability is to stop trying to read a property and instead bound the cost an adversary must pay to fake it.",
+    "url": "/cards/chapters/ch43/"
+  },
+  {
+    "title": "What the Book Is Not Claiming",
+    "type": "objection",
+    "summary": "The manuscript offers a framework and conditional proof spine, not a proof that superintelligence alignment is solved.",
+    "url": "/cards/what-not-claiming/"
+  },
+  {
+    "title": "What Values Apply To",
+    "type": "chapter",
+    "summary": "A value is not only a direction of preference. It is also a claim about where that direction applies. Alignment requires preserving bearer maps---the wiring that connects value bundles to entities, processes, relations, and histories in a changing world.",
+    "url": "/cards/chapters/ch18/"
+  },
+  {
+    "title": "When Intelligence Deepens Misalignment",
+    "type": "chapter",
+    "summary": "Intelligence deepens misalignment when it increases power faster than correction. The sharper question is not whether capability helps or hurts alignment, but which capabilities grow relative to which correction capacities.",
+    "url": "/cards/chapters/ch14/"
+  },
+  {
+    "title": "When Low Dimensionality Helps Value Learning",
+    "type": "chapter",
+    "summary": "Human values are learnable only if the policy-relevant variation in human valuation factors through a low-dimensional bottleneck. But the standard sample-complexity gain prices the readout from a known bottleneck, not the discovery of the bottleneck itself. Low dimensionality can make value learning statistically possible only when the representation is identifiable across counterfactual, cultural, and institutional variation; correction makes that learning legitimate.",
+    "url": "/cards/chapters/ch17/"
+  },
+  {
+    "title": "When the Words Survive but the Meaning Doesn't",
+    "type": "chapter",
+    "summary": "Alignment fails when the words survive but the machinery that made the words worth using has been replaced. Serious alignment requires a transport stack---semantic, bundle, bearer, correction, and successor layers---in which stronger layers preserve the causal structure that makes human values human-correctable.",
+    "url": "/cards/chapters/ch24/"
+  },
+  {
+    "title": "When Value Change Is the Thing at Stake",
+    "type": "chapter",
+    "summary": "The deepest alignment question is not whether an artificial system preserves human values, but whether humanity can consciously govern changes to its own value-generating process under artificial cognitive amplification. Humanity does not need to prevent value change. It needs to remain capable of noticing, judging, and authoring the changes by which it becomes something else.",
+    "url": "/cards/chapters/ch45/"
+  },
+  {
+    "title": "Who Still Counts After Transformation",
+    "type": "chapter",
+    "summary": "The deepest philosophical limit is not whether values change, but whether the beings, processes, relations, and correction capacities to which values apply persist through transformation.",
+    "url": "/cards/chapters/ch47/"
+  },
+  {
+    "title": "Why Fixed Values Are the Wrong Target",
+    "type": "chapter",
+    "summary": "Human values are not fixed objects but compressed, socially mediated, historically changing control structures. The alignment target should preserve a human-correctable value process---not a static utility function.",
+    "url": "/cards/chapters/ch04/"
+  }
+]
