@@ -31,4 +31,4 @@ User noticed search was missing after content-sync plumbing (index existed but n
 
 ## Commits
 
-- (pending) Add header search UI with type-aware and multi-word matching.
+- `1116c5c` Add header search with type-aware and multi-word matching.
