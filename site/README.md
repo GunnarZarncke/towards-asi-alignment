@@ -69,7 +69,8 @@ Output: `site/dist/`
 | Path | Purpose |
 |------|---------|
 | `src/pages/` | Routes (Start Here, FAQ, book map, card/path indexes) |
-| `src/content/cards/` | Short concept, bridge, artifact, and glossary cards |
+| `src/content/cards/` | Short concept, bridge, artifact, glossary, and **release** cards |
+| `src/pages/updates/` | Releases & updates — newest version card first (`CardSection` initial count 1) |
 | `src/content/reading-paths/` | Fixed audience reading paths (loaded at build/dev time) |
 | `scripts/sync-chapter-cards.mjs` | Generates chapter/appendix cards; `overviewOnly` appendices (e.g. `appM`) render as case-study hubs at `/cards/chapters/{id}/` with full synced text at `/full/` |
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |

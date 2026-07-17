@@ -52,6 +52,8 @@ const isCrosswalkCard = card.id === "chapters/appb";
 const isReferenceIndexCard = card.id === "reference-index";
 const isReferenceCard = card.data.type === "reference";
 const isExperimentCard = card.data.type === "experiment";
+const isReleaseCard = card.data.type === "release";
+const isReleaseHub = card.id === "releases-updates";
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
 const relatedSlugs = [...new Set([...partGemSlugs, ...card.data.related])];
@@ -144,6 +146,8 @@ const pageDescription = showFullText
         {isGem(card.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
         {card.data.part && <Badge label={card.data.part} variant="framework" />}
         {card.data.formalDensity && <Badge label={card.data.formalDensity} />}
+        {isReleaseCard && card.data.version && <Badge label={`v${card.data.version}`} variant="framework" />}
+        {isReleaseCard && card.data.releasedAt && <Badge label={card.data.releasedAt} />}
       </div>
       {!bookEntry ? (
         <>
@@ -157,6 +161,17 @@ const pageDescription = showFullText
           {isExperimentCard && card.data.experimentLineId && (
             <p class="side-panel-meta">
               <a href={withBase(`/experiments/#${card.data.experimentLineId}`)}>Full experiment overview</a>
+            </p>
+          )}
+          {isReleaseCard && (
+            <p class="side-panel-meta">
+              <a href={withBase("/updates/")}>All releases (newest first)</a>
+              {!isReleaseHub && (
+                <>
+                  {" · "}
+                  <a href={cardHref("releases-updates")}>Releases hub</a>
+                </>
+              )}
             </p>
           )}
         </>

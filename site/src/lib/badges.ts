@@ -10,7 +10,8 @@ export const CARD_TYPES = [
   "appendix",
   "frontmatter",
   "reference",
-  "experiment"
+  "experiment",
+  "release"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -75,6 +76,11 @@ export const TYPE_META: Record<
     title: "Experiment",
     description:
       "In-repo or sibling sanity-check line — methodology-building evidence with explicit negative results."
+  },
+  release: {
+    title: "Release",
+    description:
+      "Manuscript and companion-site release notes — versioned milestones, newest first on the Updates page."
   }
 };
 

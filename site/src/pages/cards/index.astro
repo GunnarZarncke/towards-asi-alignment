@@ -74,11 +74,21 @@ const bridges = byType("bridge");
 const artifacts = byType("artifact");
 const objections = byType("objection");
 const glossary = byType("glossary");
+const releaseHub = cards.find((card) => card.id === "releases-updates");
+const releaseVersions = cards
+  .filter((card) => card.data.type === "release" && card.id !== "releases-updates")
+  .sort((a, b) => (b.data.releasedAt ?? "").localeCompare(a.data.releasedAt ?? ""))
+  .map(toEntry);
+const releases = [
+  ...(releaseHub ? [toEntry(releaseHub)] : []),
+  ...releaseVersions
+];
 
 const sections = [
   { title: "Chapters", id: "chapters", cards: chapters },
   { title: "Appendices & front matter", id: "appendices", cards: appendices },
   { title: "Experiments", id: "experiments", cards: experiments },
+  { title: "Releases & updates", id: "releases", cards: releases },
   { title: "Reference cards", id: "references", cards: referencesSection },
   { title: "Field crosswalk", id: "field-subsumptions", cards: fieldSubsumptions },
   { title: "Concepts", id: "concepts", cards: concepts },
@@ -96,9 +106,11 @@ const totalCards = sections.reduce((sum, section) => sum + section.cards.length,
     <p class="eyebrow">Cards</p>
     <h1>Short canonical artifacts</h1>
     <p class="lede">
-      {totalCards} cards across chapters, appendices, experiments, references, concepts, bridges, and supporting artifacts. Each section shows three entries first — expand to browse the full inventory.
+      {totalCards} cards across chapters, appendices, experiments, releases, references, concepts, bridges, and supporting artifacts. Each section shows three entries first — expand to browse the full inventory.
     </p>
     <p class="side-panel-meta">
+      <a href={withBase("/updates/")}>Releases &amp; updates</a>
+      {" · "}
       <a href={withBase("/references/")}>Chapter-grouped bibliography</a>
       {" · "}
       <a href={withBase("/experiments/")}>Experiment lines</a>

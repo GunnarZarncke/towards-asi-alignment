@@ -5,7 +5,7 @@ const card = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/cards" }),
   schema: z.object({
     title: z.string(),
-    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment"]),
+    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment", "release"]),
     status: z.enum(["established", "plausible", "framework", "bridge", "open", "negative", "reviewed"]).default("framework"),
     summary: z.string(),
     decision: z.string().optional(),
@@ -14,6 +14,10 @@ const card = defineCollection({
     overviewOnly: z.boolean().optional(),
     bibKey: z.string().optional(),
     experimentLineId: z.string().optional(),
+    /** ISO date (YYYY-MM-DD) for release cards; omit on the hub card. */
+    releasedAt: z.string().optional(),
+    /** Semver string for versioned release cards (e.g. "1.1.0"). */
+    version: z.string().optional(),
     citedIn: z.array(z.string()).default([]),
     part: z.string().optional(),
     formalDensity: z.enum(["low", "medium", "high"]).optional(),

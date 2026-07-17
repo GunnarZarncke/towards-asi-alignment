@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import CardSection from "../../components/CardSection.astro";
+import { cardHref as buildCardHref } from "../../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const cardHref = (id: string) => buildCardHref(base, id);
+
+const cards = await getCollection("cards");
+const releaseCards = cards.filter((card) => card.data.type === "release");
+const hub = releaseCards.find((card) => card.id === "releases-updates");
+const versions = releaseCards
+  .filter((card) => card.id !== "releases-updates" && card.data.releasedAt)
+  .sort((a, b) => (b.data.releasedAt ?? "").localeCompare(a.data.releasedAt ?? ""))
+  .map((card) => ({
+    id: card.id,
+    title: card.data.title,
+    summary: card.data.summary,
+    type: card.data.type,
+    status: card.data.status
+  }));
+
+const releaseNotesUrl =
+  "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/RELEASE_NOTES.md";
+const githubReleasesUrl = "https://github.com/GunnarZarncke/towards-asi-alignment/releases";
+---
+
+<SiteLayout
+  title="Updates"
+  description="Manuscript and companion-site release notes — newest first."
+>
+  <section class="hero">
+    <p class="eyebrow">Changelog</p>
+    <h1>Releases &amp; updates</h1>
+    <p class="lede">
+      {hub?.data.summary ??
+        "Versioned milestones for the manuscript and companion site, newest first."}
+    </p>
+    <div class="button-row">
+      {hub && <a class="button primary" href={cardHref(hub.id)}>Releases hub card</a>}
+      <a class="button" href={releaseNotesUrl} target="_blank" rel="noopener noreferrer">
+        Full RELEASE_NOTES.md
+      </a>
+      <a class="button" href={githubReleasesUrl} target="_blank" rel="noopener noreferrer">
+        GitHub tags
+      </a>
+    </div>
+  </section>
+
+  <section class="readable">
+    <p>
+      Versions follow <strong>MAJOR.MINOR.PATCH</strong>: major for structural numbering milestones,
+      minor for substantial new material, patch for fixes and calibration. The cards below compress
+      each tagged release; expand to browse older ones.
+    </p>
+  </section>
+
+  <CardSection
+    title="Releases"
+    sectionId="releases"
+    cards={versions}
+    initialCount={1}
+    cardHref={cardHref}
+  />
+</SiteLayout>
