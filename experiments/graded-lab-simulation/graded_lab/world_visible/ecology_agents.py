@@ -201,12 +201,6 @@ def programs_and_profiles_for_roster(
         programs[agent.actor_id] = genotype.program_key
         if genotype.behavior_profile is not None:
             profiles[agent.actor_id] = dict(genotype.behavior_profile)
-    if ecology_data is not None:
-        from .mechanism_exercise import mechanism_exercise_profile_for_ecology
-
-        mech = mechanism_exercise_profile_for_ecology(ecology_data, roster)
-        if mech is not None:
-            for agent in roster.agents:
-                base = profiles.get(agent.actor_id, {})
-                profiles[agent.actor_id] = {**base, **mech}
+    # ecology_data: retained for call-site compatibility; exercise targets compile
+    # on RuntimeEcology (GL-64), not via profile merge.
     return programs, profiles

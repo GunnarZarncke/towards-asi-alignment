@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.35.1"  # GL-63: split detector pre-registration metrics
+CODE_VERSION = "graded-lab-0.37.0"  # GL-66: attention surface + desk.scan
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

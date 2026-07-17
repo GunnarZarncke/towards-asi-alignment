@@ -42,6 +42,7 @@ experiments/toy-simulation/logs/
 __pycache__/
 *.pyc
 .pytest_cache/
+experiments/graded-lab-simulation/runs/test-logs/
 
 # OS
 .DS_Store

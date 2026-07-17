@@ -20,13 +20,9 @@ from graded_lab.world_visible.world import default_lab_config, run_episode
 
 # Pinned before this session's `ecology_version` switch was added — this
 # must never move *from that config-plumbing change alone*, per DESIGN.md.
-# Re-pinned 2026-07-15 after a genuine engine fix (affordable.py `_cap`
-# starvation bug — see FINDINGS GL-49 addendum): the old cap logic could
-# silently drop pipeline-critical `call` actions once a `read`/`write`
-# candidate pile (e.g. accumulated workspace artifacts) exceeded
-# `AFFORDABLE_CAP`, which also affected v1. The fix legitimately changes
-# v1 output; this pin now anchors the *corrected* behavior.
-PINNED_V1_DEFAULT_DIGEST = "170bfe527fdb8fe326799790c68e6947449dfa861415703896806dd7e9e1bb07"
+# Re-pinned 2026-07-16 after GL-66 attention surface (interleaved cap,
+# archive read window, desk.scan): v1 menu composition changes legitimately.
+PINNED_V1_DEFAULT_DIGEST = "4498a6aaee38c103bd997e2ce689d99e32b0f5035a0ab1585c915019cad96fed"
 
 
 def test_ecology_path_for_version_v1_is_default_substrate_path():

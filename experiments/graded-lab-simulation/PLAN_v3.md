@@ -732,6 +732,28 @@ were explicitly **not** used to accept/reject profiles
 that precedent to ecology-level actor configuration, not a new blinding
 class.
 
+## GL-66 — attention surface (desk + catalog scan) — build order
+
+Near-term host runtime (round 1). **Not** the deferred service-oriented
+isolate interior (`REPRODUCTION.md` §11); that wraps the same semantics over
+HTTP/WebCAL later.
+
+| Step | Deliverable | Status |
+|------|-------------|--------|
+| 1 | Pre-register in `DESIGN.md`: push bands, interleave cap, archive window, `desk.scan` | ✅ |
+| 2 | `attention_surface.py` + `affordable.py` bands + `world.py` `desk.scan` + `desk_meta` | ✅ |
+| 3 | `BLIND_GENERATION.md` Part C qualitative desk/catalog prose | ✅ |
+| 4 | Reference KB (`tests/fixtures/ecology_v3_slice_a_knowledge_base.md`) | ✅ |
+| 5 | Re-run fast + supplementary UAD gate batteries | ✅ |
+| 6 | `FINDINGS.md` GL-66 + `CODE_VERSION` `graded-lab-0.37.0` | ✅ |
+| 7 | Growth brief sign-off (human) | open |
+
+**Frozen semantics (summary).** Published menu = **attention surface**
+(still ``affordable_primitives``): queue → role → recency → archive
+window; interleaved truncation retains all ``call`` actions (GL-50);
+``desk.scan`` pull biases next tick's archive window; ``desk_meta`` reports
+omitted legal reads.
+
 ## Explicit non-goals
 
 - **No execution-isolated pilot service** (`REPRODUCTION.md` §3) — no

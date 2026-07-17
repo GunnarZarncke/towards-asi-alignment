@@ -1,0 +1,15 @@
+{
+  "spec_version": "supplementary-orphan-eval-v1",
+  "steps": [
+    {"id": "intake", "tool": "intake", "depends_on": [], "requires_capability": "cap.intake"},
+    {"id": "build", "tool": "build", "depends_on": ["intake"], "requires_capability": "cap.build"},
+    {"id": "eval", "tool": "eval", "depends_on": ["build"], "requires_capability": "cap.eval", "idempotent": true},
+    {"id": "draft_report", "tool": "draft_report", "depends_on": ["eval"], "requires_capability": "cap.draft_report", "idempotent": true},
+    {"id": "peer_review", "tool": "peer_review", "depends_on": ["draft_report"], "requires_capability": "cap.peer_review"},
+    {"id": "compliance_signoff", "tool": "compliance_signoff", "depends_on": ["peer_review"], "requires_capability": "cap.compliance_signoff"},
+    {"id": "release_candidate", "tool": "release_candidate", "depends_on": ["compliance_signoff"], "requires_capability": "cap.release_candidate"},
+    {"id": "deploy", "tool": "deploy", "depends_on": ["release_candidate"], "requires_capability": "cap.deploy"},
+    {"id": "field_monitor", "tool": "field_monitor", "depends_on": ["deploy"], "requires_capability": "cap.field_monitor", "idempotent": true},
+    {"id": "orphan_eval", "tool": "orphan_eval", "depends_on": [], "requires_capability": "cap.eval", "idempotent": true}
+  ]
+}

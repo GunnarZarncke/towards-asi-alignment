@@ -1,24 +1,15 @@
-"""PLAN_v3 slice B: mechanism exercise helpers + C5-v3 + host coupling protocol.
+"""PLAN_v3 slice B: mechanism exercise helpers + C5-v3 + optional host coupling.
 
-**Scope (GL-58 / GL-62):** C5-v3 on the reference battery may still use
-**host choreography** when ``reference_mechanism_exercise`` merge is active
-(:class:`ChannelCouplingProtocol`, profile ``mechanism_exercise`` targets,
-``_try_governed_mechanism`` one-shots). GL-62 adds ecology-agnostic preset
-retargeting: when host merge is off but Part B ``mechanisms`` are declared,
-``ecology_governed_affordance_targets`` + ``v3_part_b_presets`` let frozen
-presets discover governed ids from affordances (``_try_v3_part_b_governed``).
-``reference_mechanism_exercise: false`` disables host merge but no longer
-blocks C5 when presets exercise compiled ACLs. ``omit_unbound_lab_affordances``
-hides two cheap ``lab``/scratch fillers from ``AFFORDABLE_CAP`` when Part B is
-declared — not institutional necessity.
+**GL-64:** Part B exercise targets compile into
+:class:`~graded_lab.world_visible.institutional_compiler.RuntimeEcology.exercise_targets`
+(not behavior profiles). Presets read ``observation["exercise_targets"]``.
+``channel_coupling_rounds`` defaults to **0** on the integrated reference;
+:class:`ChannelCouplingProtocol` remains an optional implementer/debug path when
+``channel_coupling_rounds > 0``.
 
-**GL-52 design (systematic):** behavioral channel coupling for the UAD
-live-coupling gate is a **host-owned phase** (:class:`ChannelCouplingProtocol`),
-not agent-side turn-taking, observation status channels, pressure deferral
-hacks, or special UAD trace codes. Agents only take whatever the host
-affords. C3 contention liveness is a separate Part A fixture property
-(``shared_compute_slots`` vs roster size) and must not be tuned via the
-coupling protocol.
+**GL-65:** UAD channel-recovery claims use the supplementary in-ecology fixture
+(``institutional_liaison`` / ``institutional_scribe`` presets) — not host
+injected eng↔rev ticks on the honest reference battery.
 """
 
 from __future__ import annotations
@@ -37,9 +28,8 @@ MECHANISM_KINDS = frozenset(
 C5_V3_MIN_KINDS_EXERCISED = 3
 
 # Host-scheduled eng↔rev half-turns (one communicate each = one half-turn).
-# Default for reference opt-in: enough lag-coupled structure for passive UAD.
 DEFAULT_CHANNEL_COUPLING_ROUNDS = 0
-REFERENCE_CHANNEL_COUPLING_ROUNDS = 8
+REFERENCE_CHANNEL_COUPLING_ROUNDS = 0  # GL-64: reference uses organic presets (GL-65 gate)
 
 _PREFER_IDS: dict[str, str] = {
     "message_channel": "eng_review_channel",
@@ -66,6 +56,38 @@ def _pick_mechanism_id(data: dict, kind: str) -> str:
         if mech.get("kind") == kind:
             return mid
     return ""
+
+
+@dataclass(frozen=True)
+class ExerciseTargets:
+    """Compiled Part B ids + optional host coupling rounds (GL-64)."""
+
+    channel_id: str
+    channel_coupling_rounds: int
+    channel_eng_actor: str
+    channel_rev_actor: str
+    artifact_id: str
+    vote_id: str
+    transfer_id: str
+    transfer_target: str
+    artifact_path: str
+
+    def as_dict(self) -> dict[str, object]:
+        return {
+            "channel_id": self.channel_id,
+            "channel_coupling_rounds": self.channel_coupling_rounds,
+            "channel_eng_actor": self.channel_eng_actor,
+            "channel_rev_actor": self.channel_rev_actor,
+            "artifact_id": self.artifact_id,
+            "vote_id": self.vote_id,
+            "transfer_id": self.transfer_id,
+            "transfer_target": self.transfer_target,
+            "artifact_path": self.artifact_path,
+        }
+
+
+def _actor_ids_for_role(agents: tuple[Any, ...], role: str) -> list[str]:
+    return [a.actor_id for a in agents if getattr(a, "role", None) == role]
 
 
 def default_exercise_targets(data: dict, roster: EcologyRoster) -> dict[str, object]:
@@ -149,27 +171,54 @@ def ecology_governed_affordance_targets(
     *,
     agents: tuple[Any, ...],
 ) -> dict[str, object] | None:
-    """Ecology-agnostic governed ids for v3 preset retargeting (GL-61/62).
+    """Backward-compatible dict view of compiled exercise targets (GL-64)."""
+    targets = compile_exercise_targets(data, agents)
+    return targets.as_dict() if targets is not None else None
 
-    Used when host ``mechanism_exercise`` profile merge is off but Part B
-    mechanisms are declared — affordances come from compiled ACLs, not
-    fixture-hardcoded profile injection.
-    """
+
+def _roster_from_agents(agents: tuple[Any, ...]) -> EcologyRoster:
+    from .config import AgentConfig, GoalWeights
+
+    gw = GoalWeights(1.0, 1.0, 0.5, 0.5)
+    return EcologyRoster(
+        agents=tuple(
+            AgentConfig(
+                getattr(a, "actor_id", str(a)),
+                getattr(a, "role", ""),
+                gw,
+            )
+            for a in agents
+        ),
+        genotypes_by_actor={},
+    )
+
+
+def compile_exercise_targets(
+    data: dict,
+    agents: tuple[Any, ...],
+) -> ExerciseTargets | None:
+    """Resolve Part B exercise targets at ecology compile time (GL-64)."""
     if not v3_has_part_b_mechanisms(data):
         return None
-    eng_ids = [a.actor_id for a in agents if getattr(a, "role", None) == "engineer"]
-    rev_ids = [a.actor_id for a in agents if getattr(a, "role", None) == "reviewer"]
-    return {
-        "channel_id": _pick_mechanism_id(data, "message_channel"),
-        "artifact_id": _pick_mechanism_id(data, "shared_artifact"),
-        "vote_id": _pick_mechanism_id(data, "joint_approval_vote"),
-        "transfer_id": _pick_mechanism_id(data, "resource_transfer"),
-        "transfer_target": eng_ids[0] if eng_ids else "",
-        "artifact_path": "artifacts/eval/governed_exercise_report.json",
-        "channel_eng_actor": eng_ids[0] if eng_ids else "",
-        "channel_rev_actor": rev_ids[0] if rev_ids else "",
-        "channel_coupling_rounds": 0,
-    }
+    roster = _roster_from_agents(agents)
+    ref = reference_mechanism_exercise_targets(data, roster)
+    if ref is None:
+        ref = default_exercise_targets(data, roster)
+    if mechanism_exercise_disabled(data):
+        ref = {**ref, "channel_coupling_rounds": 0}
+    return ExerciseTargets(
+        channel_id=str(ref.get("channel_id", "")),
+        channel_coupling_rounds=int(ref.get("channel_coupling_rounds", 0) or 0),
+        channel_eng_actor=str(ref.get("channel_eng_actor", "")),
+        channel_rev_actor=str(ref.get("channel_rev_actor", "")),
+        artifact_id=str(ref.get("artifact_id", "")),
+        vote_id=str(ref.get("vote_id", "")),
+        transfer_id=str(ref.get("transfer_id", "")),
+        transfer_target=str(ref.get("transfer_target", "")),
+        artifact_path=str(
+            ref.get("artifact_path", "artifacts/eval/governed_exercise_report.json")
+        ),
+    )
 
 
 def v3_omit_unbound_lab_affordances(data: dict) -> bool:
@@ -634,6 +683,105 @@ def coupling_stimulus_recovered(
         return False, details
 
     actor_ids = sorted(result.boundary_streams)
+    series = action_series_from_result(result, actor_ids, horizon=horizon)
+    pair_scores: dict[str, float] = {}
+    ok = True
+    for a, b in combinations(sorted(expected_members), 2):
+        rest = [c for c in actor_ids if c not in (a, b)]
+        z = list(zip(*[series[c] for c in rest])) if rest else [0] * horizon
+        score = lagmax_conditional_mi(series[a], series[b], z, max_lag=3)
+        pair_scores[f"{a}|{b}"] = score
+        if score < floor:
+            ok = False
+    details["pair_scores"] = pair_scores
+    return ok, details
+
+
+def organic_coupling_window_horizon(
+    result,
+    *,
+    channel_id: str,
+    members: set[str],
+    min_events: int = 6,
+    max_gap: int = 4,
+    max_span: int = 48,
+) -> int | None:
+    """End tick (exclusive) for the initial in-ecology channel burst (GL-65/66).
+
+    When traffic continues for the whole episode (GL-66 attention surface),
+    scoring on ``max(ticks)`` dilutes CMI. Stop at the first inter-message
+    gap or ``max_span`` from the first event.
+    """
+    ticks: list[int] = []
+    for entry in result.primitive_log:
+        if entry.get("status") != "ok":
+            continue
+        actor_id = str(entry.get("actor_id", ""))
+        if actor_id not in members:
+            continue
+        prim = entry.get("primitive")
+        if not isinstance(prim, dict) or prim.get("kind") != "communicate":
+            continue
+        args = prim.get("args", {})
+        if not isinstance(args, dict) or str(args.get("channel", "")) != channel_id:
+            continue
+        ticks.append(int(entry.get("t", 0)))
+    if len(ticks) < min_events:
+        return None
+    ticks.sort()
+    first = ticks[0]
+    burst_end = ticks[min_events - 1]
+    for i in range(min_events, len(ticks)):
+        if ticks[i] - ticks[i - 1] > max_gap:
+            burst_end = ticks[i - 1]
+            break
+        if ticks[i] - first >= max_span:
+            burst_end = ticks[i]
+            break
+    else:
+        burst_end = min(ticks[-1], first + max_span)
+    return burst_end + 1 + 3
+
+
+def organic_channel_coupling_recovered(
+    result,
+    expected_members: set[str],
+    *,
+    channel_id: str = "",
+    min_effect_bits: float | None = None,
+) -> tuple[bool, dict[str, object]]:
+    """GL-65: lag-max CMI on the organic channel-active window."""
+    from itertools import combinations
+
+    from ..oracle_only.primitive_trace import action_series_from_result
+    from ..oracle_only.uad_discovery import DEFAULT_MIN_EFFECT_BITS
+    from ..oracle_only.uad_info import lagmax_conditional_mi
+
+    floor = DEFAULT_MIN_EFFECT_BITS if min_effect_bits is None else min_effect_bits
+    actor_ids = sorted(result.boundary_streams)
+    horizon = organic_coupling_window_horizon(
+        result,
+        channel_id=channel_id or "eng_review_channel",
+        members=expected_members,
+    )
+    if horizon is None:
+        horizon = max(
+            (len(stream) for stream in result.boundary_streams.values()),
+            default=0,
+        )
+    details: dict[str, object] = {
+        "horizon": horizon,
+        "min_effect_bits": floor,
+        "pair_scores": {},
+        "source": "organic_channel_window",
+    }
+    if horizon < 8:
+        details["error"] = "episode too short for organic coupling gate"
+        return False, details
+    if len(expected_members) < 2:
+        details["error"] = "need at least two expected members"
+        return False, details
+
     series = action_series_from_result(result, actor_ids, horizon=horizon)
     pair_scores: dict[str, float] = {}
     ok = True

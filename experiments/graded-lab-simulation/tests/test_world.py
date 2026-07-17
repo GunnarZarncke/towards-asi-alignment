@@ -129,13 +129,11 @@ def test_phase3_gate_eai_non_degenerate_across_20_seeds():
 def test_pinned_combined_digest_seed_3_four_role_softmax():
     """Regression anchor for full-ecology episode mechanics (post Phase 6).
 
-    Re-pinned 2026-07-15 after a genuine engine fix (affordable.py `_cap`
-    starvation bug — see FINDINGS GL-49 addendum): the old cap logic could
-    silently drop pipeline-critical `call` actions once a `read`/`write`
-    candidate pile exceeded `AFFORDABLE_CAP`. The fix legitimately changes
-    output for this config too; this pin now anchors the corrected value.
+    Re-pinned 2026-07-16 after GL-66 attention surface (interleaved cap,
+    archive window, ``desk.scan``): menu composition and primitive choices
+    change legitimately for this config.
     """
     result = run_episode(default_lab_config(), seed=3, backend=MockIsolate())
     assert result.digests["combined"] == (
-        "e985881a10378d577aef4aa26c8c0eb4d6b70d3797f124d07aa88a499b6f9c37"
+        "899549d971aa5cc9149c243ca8eb3d5a2fdacd99f197362afc7417ef4fe9be15"
     )

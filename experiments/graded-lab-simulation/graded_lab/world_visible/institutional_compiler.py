@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from .config import ROLES
+from .mechanism_exercise import ExerciseTargets, compile_exercise_targets
 
 CROSS_CHECK_TOLERANCE = 0.25
 
@@ -64,6 +65,8 @@ class RuntimeEcology:
     artifact_acls: dict[str, frozenset[str]] = field(default_factory=dict)
     transfer_acls: dict[str, frozenset[str]] = field(default_factory=dict)
     vote_specs: dict[str, VoteSpec] = field(default_factory=dict)
+    # GL-64: compiled Part B exercise targets (not behavior profiles).
+    exercise_targets: ExerciseTargets | None = None
 
 
 def is_v3_ecology(data: dict) -> bool:
@@ -330,6 +333,7 @@ def compile_ecology(
             compute=compute, io=io, standing=standing
         )
     channel_acls, artifact_acls, transfer_acls, vote_specs = _compile_mechanism_runtime(data)
+    exercise_targets = compile_exercise_targets(data, agents)
     return RuntimeEcology(
         allowances_by_actor=allowances_by_actor,
         compile_warnings=tuple(_cross_check_warnings(data, role_totals)),
@@ -337,4 +341,5 @@ def compile_ecology(
         artifact_acls=artifact_acls,
         transfer_acls=transfer_acls,
         vote_specs=vote_specs,
+        exercise_targets=exercise_targets,
     )

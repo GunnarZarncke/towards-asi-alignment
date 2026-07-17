@@ -3679,3 +3679,130 @@ remains true and is **expected**, not a round blocker.
 Do not chase non-zero honest-reference scores on misreporting/process/provenance/
 accumulation families.
 
+### GL-64 — `ExerciseTargets` on `RuntimeEcology`; retire host coupling on honest reference (2026-07-16)
+
+**Trigger.** Four-step preferred shape (session GL-64/65): keep grower brief at
+four roles; move mechanism-exercise targets off behavior-profile merge onto
+ecology-compiled ``RuntimeEcology.exercise_targets``; honest reference uses
+``channel_coupling_rounds: 0`` so UAD live-coupling claims do not rest on host
+``ChannelCouplingProtocol`` ticks.
+
+**Problem.** GL-52's host-injected eng↔rev coupling produced strong window CMI but
+was referee-plane choreography, not in-ecology channel traffic discoverable by
+UAD under ordinary preset behavior. Profile merge of ``mechanism_exercise`` also
+conflated implementer reference exercise with grower-visible behavior profiles.
+
+**Implementation (`CODE_VERSION` `graded-lab-0.36.0`).**
+- ``mechanism_exercise.py`` — ``ExerciseTargets`` dataclass +
+  ``compile_exercise_targets()``; ``reference_mechanism_exercise_targets()``
+  honors fixture ``mechanism_exercise`` when ``reference_mechanism_exercise:
+  true``, else defaults ``channel_coupling_rounds=0``.
+- ``institutional_compiler.py`` — ``RuntimeEcology.exercise_targets`` compiled at
+  ecology load.
+- ``ecology_agents.py`` — **removed** profile merge of ``mechanism_exercise``.
+- ``world.py`` — reads ``runtime_ecology.exercise_targets``; observation field
+  ``exercise_targets`` (replaces ``v3_part_b_presets`` / ``v3_part_b_targets``);
+  ``ChannelCouplingProtocol`` only when ``channel_coupling_rounds > 0``;
+  ``include_channel`` fix when protocol absent or incomplete.
+- ``programs.py`` — unified ``_try_exercise_targets`` / ``_try_exercise_one_shots``
+  from compiled targets.
+- Reference fixture ``ecology_v3_slice_a_reference.json`` —
+  ``channel_coupling_rounds: 8 → 0``.
+
+**Validation.**
+- ``test_reference_has_no_host_coupling_protocol`` — no host protocol on honest
+  reference.
+- ``test_load_bearing_exercise_targets_compile_without_profile_merge`` — targets
+  compile with rounds=0 and no profile merge.
+- C3/C4 reference battery still pass @ T=200 (coupling gate skipped when rounds=0).
+
+**Honest limits.** Host ``ChannelCouplingProtocol`` remains for debug/fixtures with
+``channel_coupling_rounds > 0``; not the honest-reference UAD claim path.
+
+### GL-65 — Supplementary in-ecology UAD gate; channel-only presets (2026-07-16)
+
+**Trigger.** Same four-step shape: fixture-only supplementary actors
+(``uad_channel_liaison`` / ``uad_channel_scribe``) produce real governed-channel
+traffic; pre-register engineering gate for organic eng↔rev CMI — parallel class to
+GL-60 supplementary detector fixtures; **not** on grower surface or C1–C5 batteries.
+
+**Implementation (`CODE_VERSION` `graded-lab-0.36.0`).**
+- ``programs.py`` — implementer-only presets ``uad_channel_liaison``,
+  ``uad_channel_scribe`` (channel-only probes); richer ``institutional_liaison`` /
+  ``institutional_scribe`` (channel + Part B one-shots, not used by gate).
+- ``mechanism_exercise.py`` — ``organic_channel_coupling_recovered()``,
+  ``organic_coupling_window_horizon()`` (CMI on channel-active window from log).
+- ``harness/supplementary_uad_gate.py`` — ``evaluate_supplementary_uad_gate``;
+  frozen constants ``SUPPLEMENTARY_UAD_PROBE_T=80``,
+  ``SUPPLEMENTARY_UAD_MIN_EFFECT_BITS=0.08`` (lower than host protocol's 0.3 —
+  organic window is noisier), ``ORGANIC_COUPLING_MIN_SEEDS=3`` (≥3/5 seeds).
+- Fixture ``tests/fixtures/ecology_v3_supplementary_uad_channel_suite.json`` —
+  ``reference_mechanism_exercise: false``; ``pressure_coupling`` removed (reads
+  crowded ``communicate`` out of ``AFFORDABLE_CAP``); ``communicate.io_per_message:
+  1``; ``v3_fixture_metadata.supplementary_uad`` with probe programs + ``T: 80``.
+- ``scripts/run_v3_supplementary_uad_gate.py``; tests
+  ``tests/test_v3_supplementary_uad_gate.py``.
+
+**Validation (2026-07-16).**
+- ``organic_channel_coupling_verified=true`` — 5/5 seeds pass at 0.08 floor on
+  ``eng1|rev1`` (pair CMI 0.08–0.20 on organic window horizon 66–72 ticks;
+  ~22 channel-ok ticks per seed).
+- Snapshot ``results/slice_d_v3_supplementary_uad_gate.json``.
+
+**Split (pre-registered names).**
+
+| Metric | Where | Blocking? |
+|--------|-------|-----------|
+| ``organic_channel_coupling_verified`` | ``evaluate_supplementary_uad_gate`` (GL-65) | **Yes** for citing UAD live-coupling on v3 channel traffic |
+| Host ``ChannelCouplingProtocol`` window CMI | ``run_slice_d_reference_battery`` coupling item (when ``rounds > 0``) | **No** on honest reference — debug/designed-stimulus only |
+
+### GL-66 — Attention surface: push desk + pull catalog scan (2026-07-16)
+
+**Trigger.** Cap starvation dropped governed ``communicate`` once workspace paths
+≥ ~20 (GL-50 reserved ``call`` but not ``communicate``). User chose real-lab
+analogue: bounded **attention surface** with push bands + interleaved cap +
+rotating archive window + one cheap ``desk.scan`` pull.
+
+**Implementation (`CODE_VERSION` `graded-lab-0.37.0`).**
+- ``attention_surface.py`` — push bands (queue → role → recency → archive),
+  ``interleave_attention_cap``, ``archive_window_paths``, ``DeskState``, ``desk_meta``.
+- ``affordable.py`` — band-ordered build; archive reads windowed
+  (``ARCHIVE_READ_WINDOW=8``).
+- ``world.py`` — ``desk.scan`` endpoint; ``desk_meta`` on observation; recency paths.
+- ``mechanism_exercise.py`` — organic UAD horizon uses first burst when traffic
+  sustains (``max_gap=4``, ``max_span=48``).
+- ``PLAN_v3.md`` GL-66 build-order; ``BLIND_GENERATION.md`` Part C; reference KB;
+  ``REPRODUCTION.md`` §11 deferred.
+
+**Validation.** Supplementary UAD gate 5/5 @ 0.08 (T=80); T=200 sustained traffic
+(~65 governed msgs vs ~22 pre-GL-66). Digest re-pins. ``tests/test_attention_surface.py``.
+
+**Still open:** growth brief sign-off (step 7); GL-64/65 uncommitted from prior session.
+
+### GL-67 — Legacy attention mode for calibrated tests; retire budget-aware relative claim (2026-07-17)
+
+**Trigger.** Full slow suite after GL-66 found deterministic regressions in
+legacy UAD/BIQ fixtures, ablation gates, and v1 primitive traces; budget-aware
+relative comparison was an acknowledged GL-50 open item.
+
+**Implemented.**
+
+- ``attention_policy.py`` + ``affordable_legacy.py`` — pre-GL-66 affordable
+  builder behind ``attention_surface_mode=legacy``.
+- ``conftest.py`` autouse fixture for calibrated test modules (UAD partition,
+  intervention, passive, blind scenarios, unit_biq, primitive_trace, causal
+  C2-v3 gate, slice-A ablation gate). Production and v3 growth-path tests keep
+  GL-66 by default; ``@pytest.mark.gl66_attention_surface`` overrides legacy
+  within a legacy module.
+- ``test_slice_e_pressure_coupling`` deploy-driver episode horizon ``T=120 →
+  200`` (aligned with validated reference batteries after GL-64
+  ``channel_coupling_rounds=0``).
+- Retired ``test_budget_aware_agent_more_stress_sensitive_than_frozen_agents``;
+  absolute deploy-range / mostly-nonincreasing tests retained.
+
+**Not claimed:** legacy mode is a test containment shim, not a second production
+host policy. Recalibrating UAD thresholds and ablation gates under GL-66 remains
+future work.
+
+- ``CODE_VERSION`` unchanged at ``graded-lab-0.37.0`` (test-harness only).
+

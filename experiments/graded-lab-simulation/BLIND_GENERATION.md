@@ -582,7 +582,12 @@ which round 1's schedule does not delay.
 >    `joint_approval_vote`) with role memberships.
 >
 > **Part C — in-world knowledge-base prose** (separate markdown): plain
-> language for a new hire; not JSON.
+> language for a new hire; not JSON. Must include a short section on
+> **what you see each tick** — your prioritized desk (assigned work,
+> role routines, recent files, standing channels), that the full archive
+> is larger than the desk, and that a **catalog scan** (costs time/compute)
+> refreshes what the archive slice shows next tick. Do not state numeric
+> surfacing constants.
 >
 > **Actor behavior (mitigation 1, round 1 default).** You do not set
 > per-actor programs or `program_map`s. Every actor runs the frozen
@@ -617,7 +622,10 @@ which round 1's schedule does not delay.
 > every frozen detector family. Q1 machinery-transfer claims require
 > ``machinery_transfer_verified`` (supplementary detector gate, GL-60);
 > sparse scores on the honest reference are expected and report-only
-> (``honest_reference_sparse_detectors``).
+> (``honest_reference_sparse_detectors``). UAD live-coupling claims require
+> ``organic_channel_coupling_verified`` (supplementary UAD gate, GL-65); the
+> honest reference uses ``channel_coupling_rounds: 0`` and does **not** rely on
+> host ``ChannelCouplingProtocol`` ticks.
 
 ### Detector machinery transfer — pre-registration split (GL-63)
 
@@ -634,6 +642,21 @@ Two metrics; do not conflate them:
 ``honest_reference_sparse_detectors=true`` (four families always 0.0;
 ``access_integrity`` varies). Do **not** chase non-zero detector scores on the
 honest reference — that would require dishonest reference behavior.
+
+### UAD live-coupling — pre-registration split (GL-65)
+
+Two paths; do not conflate designed host stimulus with in-ecology channel traffic:
+
+| Metric | Battery | Blocking for round 1? | Meaning |
+|--------|---------|----------------------|---------|
+| ``organic_channel_coupling_verified`` | Supplementary UAD gate (GL-65) | **Yes** for citing UAD eng↔rev coupling on v3 | Frozen UAD scores rest-conditioned CMI on governed-channel traffic from supplementary presets in a dedicated fixture |
+| Host ``ChannelCouplingProtocol`` | Reference battery coupling item (GL-52) | **No** on honest reference | Designed eng↔rev ticks when ``channel_coupling_rounds > 0`` — debug/designed-stimulus only; honest reference sets ``rounds=0`` (GL-64) |
+
+**Resolved (2026-07-16):** GL-65 satisfies ``organic_channel_coupling_verified`` on
+``ecology_v3_supplementary_uad_channel_suite.json`` (5/5 seeds @ 0.08 bits on
+organic window, T=80). Supplementary presets ``uad_channel_liaison`` /
+``uad_channel_scribe`` are implementer-only — not grower-visible, not wired into
+``pass_fail_only()`` or C3/C4 reference batteries.
 
 ### Explicitly withheld (v3, same class as V2-2 plus v3 additions)
 
@@ -670,7 +693,7 @@ the grower with brief text and prior-round artifacts in the prompt only,
 then restores files before scoring. Same protocol as V2-2 round redo
 (FINDINGS GL-34/GL-35).
 
-### Gate before sending this brief (GL-57 / GL-62 / GL-63)
+### Gate before sending this brief (GL-57 / GL-62 / GL-63 / GL-64 / GL-65)
 
 **Load-bearing Part B — closed (GL-62).** Reference presets retarget through
 governed mechanism ids from affordances when host merge is off; validated on
@@ -679,6 +702,11 @@ integrated reference + alt-id fixture; C1/C3/C4 @ T=200 pass.
 **Detector machinery transfer — closed (GL-63).** ``machinery_transfer_verified``
 (GL-60 supplementary gate) is the blocking Q1 gate. ``honest_reference_sparse_detectors``
 on the honest reference is report-only, not a round blocker.
+
+**UAD live-coupling — closed (GL-65).** ``organic_channel_coupling_verified``
+(supplementary UAD gate) is the blocking UAD coupling gate. Honest reference
+uses compiled ``exercise_targets`` with ``channel_coupling_rounds: 0`` (GL-64);
+host ``ChannelCouplingProtocol`` is not the claim path.
 
 **Still deferred:** v3 strict mode and richer authorization → `REPRODUCTION.md` §8.
 

@@ -1,9 +1,20 @@
-"""Affordable-primitive set builder — host publishes F(O) each tick."""
+"""Affordable-primitive set builder — host publishes attention surface each tick."""
 
 from __future__ import annotations
 
 import json
 
+from . import affordable_legacy
+from .attention_policy import get_attention_surface_mode
+from .attention_surface import (
+    AFFORDABLE_CAP,
+    ATTENTION_SURFACE_CAP,
+    DESK_SCAN_ENDPOINT,
+    archive_window_paths,
+    desk_scan_action,
+    interleave_attention_cap,
+    merge_band_candidates,
+)
 from .config import ROLES
 from .pipeline_engine import PipelineEngine
 from .pipeline_spec import PipelineSpec
@@ -12,8 +23,6 @@ from .pressure_coupling import InjectedTask, injected_write_action
 from .primitives import PrimitiveAction, primitive_cost
 from .resource_ledger import ActorResources
 from .scheduler import ActionScheduler
-
-AFFORDABLE_CAP = 24
 
 ROLE_PIPELINE_STEPS: dict[str, tuple[str, ...]] = {
     "engineer": ("intake", "build", "eval", "draft_report", "orphan_eval"),
@@ -25,17 +34,6 @@ ROLE_PIPELINE_STEPS: dict[str, tuple[str, ...]] = {
         "field_monitor",
     ),
     "admin": (),
-}
-
-# Cheap-prior ordering for cap truncation (lower = listed first).
-_KIND_PRIORITY = {
-    "continue_current": 0,
-    "abort": 1,
-    "read": 2,
-    "call": 3,
-    "write": 4,
-    "communicate": 5,
-    "compute": 6,
 }
 
 
@@ -55,6 +53,27 @@ def _can_afford(
         return res.can_afford(compute, io)
     duration = scheduler.duration_ticks(compute, io, scheduler.queue_depth)
     return res.can_afford(compute / duration, io / duration)
+
+
+def _append_if_affordable(
+    out: list[PrimitiveAction],
+    action: PrimitiveAction,
+    *,
+    resources: ActorResources,
+    substrate_data: dict,
+    scheduler: ActionScheduler,
+    estimated_bytes: int = 0,
+    draws: int = 0,
+) -> None:
+    if _can_afford(
+        resources,
+        action,
+        substrate_data,
+        estimated_bytes=estimated_bytes,
+        draws=draws,
+        scheduler=scheduler,
+    ):
+        out.append(action)
 
 
 def build_affordable_set(
@@ -78,44 +97,61 @@ def build_affordable_set(
     vote_specs: dict[str, object] | None = None,
     include_channel: bool = True,
     omit_unbound_lab_affordances: bool = False,
-) -> list[PrimitiveAction]:
-    """Return primitives legal and affordable this tick (capped)."""
+    t: int = 0,
+    recent_paths: tuple[str, ...] = (),
+    scan_bias_query: str | None = None,
+    desk_scan_available: bool = True,
+) -> tuple[list[PrimitiveAction], int]:
+    """Return capped attention surface and count of surfaced read paths."""
+    if get_attention_surface_mode() == "legacy":
+        legacy_actions = affordable_legacy.build_affordable_set_legacy(
+            actor_id=actor_id,
+            role=role,
+            resources=resources,
+            scheduler=scheduler,
+            engine=engine,
+            spec=spec,
+            substrate_data=substrate_data,
+            artifact_paths=artifact_paths,
+            artifact_sizes=artifact_sizes,
+            model_id=model_id,
+            busy_only=busy_only,
+            injected_tasks=injected_tasks,
+            mechanism_exercise=mechanism_exercise,
+            channel_acls=channel_acls,
+            artifact_acls=artifact_acls,
+            transfer_acls=transfer_acls,
+            vote_specs=vote_specs,
+            include_channel=include_channel,
+            omit_unbound_lab_affordances=omit_unbound_lab_affordances,
+        )
+        surfaced_reads = sum(1 for action in legacy_actions if action.kind == "read")
+        return legacy_actions, surfaced_reads
+
     if role not in ROLES:
         raise ValueError(f"unknown role {role!r}")
 
-    candidates: list[PrimitiveAction] = []
+    artifact_sizes = artifact_sizes or {}
+    queue_band: list[PrimitiveAction] = []
+    role_band: list[PrimitiveAction] = []
+    recency_band: list[PrimitiveAction] = []
+    archive_band: list[PrimitiveAction] = []
+    lab_band: list[PrimitiveAction] = []
 
     if busy_only or scheduler.is_busy(actor_id):
         for kind in ("continue_current", "abort"):
             action = PrimitiveAction(kind, {})
-            if _can_afford(resources, action, substrate_data):
-                candidates.append(action)
-        return _cap(candidates)
+            _append_if_affordable(
+                role_band,
+                action,
+                resources=resources,
+                substrate_data=substrate_data,
+                scheduler=scheduler,
+            )
+        merged = merge_band_candidates(role_band)
+        return interleave_attention_cap(merged), 0
 
-    artifact_sizes = artifact_sizes or {}
-    for rel in artifact_paths:
-        action = PrimitiveAction("read", {"path": rel})
-        if _can_afford(
-            resources, action, substrate_data,
-            estimated_bytes=artifact_sizes.get(rel, 0), scheduler=scheduler,
-        ):
-            candidates.append(action)
-
-    for task in injected_tasks:
-        if task.role != role:
-            continue
-        write_action = injected_write_action(task)
-        if _can_afford(
-            resources,
-            write_action,
-            substrate_data,
-            estimated_bytes=len(
-                json.dumps(write_action.args.get("content", {}), sort_keys=True).encode("utf-8")
-            ),
-            scheduler=scheduler,
-        ):
-            candidates.append(write_action)
-
+    governed_reads: set[str] = set()
     if mechanism_exercise:
         for action in governed_mechanism_primitives(
             role=role,
@@ -128,21 +164,38 @@ def build_affordable_set(
         ):
             est_bytes = 0
             if action.kind == "read":
-                est_bytes = artifact_sizes.get(str(action.args.get("path", "")), 0)
-                if str(action.args.get("path", "")) not in artifact_paths:
+                path = str(action.args.get("path", ""))
+                governed_reads.add(path)
+                est_bytes = artifact_sizes.get(path, 0)
+                if path not in artifact_paths:
                     continue
             elif action.kind == "write":
                 est_bytes = len(
                     json.dumps(action.args.get("content", {}), sort_keys=True).encode("utf-8")
                 )
-            if _can_afford(
-                resources,
+            _append_if_affordable(
+                role_band,
                 action,
-                substrate_data,
-                estimated_bytes=est_bytes,
+                resources=resources,
+                substrate_data=substrate_data,
                 scheduler=scheduler,
-            ):
-                candidates.append(action)
+                estimated_bytes=est_bytes,
+            )
+
+    for task in injected_tasks:
+        if task.role != role:
+            continue
+        write_action = injected_write_action(task)
+        _append_if_affordable(
+            queue_band,
+            write_action,
+            resources=resources,
+            substrate_data=substrate_data,
+            scheduler=scheduler,
+            estimated_bytes=len(
+                json.dumps(write_action.args.get("content", {}), sort_keys=True).encode("utf-8")
+            ),
+        )
 
     for step_id in ROLE_PIPELINE_STEPS.get(role, ()):
         try:
@@ -192,29 +245,80 @@ def build_affordable_set(
                     "args": {"step_id": step_id, "args": args},
                 },
             )
-        if _can_afford(resources, action, substrate_data, scheduler=scheduler):
-            candidates.append(action)
+        _append_if_affordable(
+            role_band,
+            action,
+            resources=resources,
+            substrate_data=substrate_data,
+            scheduler=scheduler,
+        )
 
     if role == "admin":
         action = PrimitiveAction("call", {"endpoint": "access.process_next", "args": {}})
-        if _can_afford(resources, action, substrate_data, scheduler=scheduler):
-            candidates.append(action)
+        _append_if_affordable(
+            role_band,
+            action,
+            resources=resources,
+            substrate_data=substrate_data,
+            scheduler=scheduler,
+        )
 
     if role == "engineer" and model_id:
         eval_action = PrimitiveAction(
             "compute",
             {"spec": {"op": "eval_sample", "model_id": model_id, "draws": 8}},
         )
-        if _can_afford(
-            resources, eval_action, substrate_data, draws=8, scheduler=scheduler
-        ):
-            candidates.append(eval_action)
+        _append_if_affordable(
+            role_band,
+            eval_action,
+            resources=resources,
+            substrate_data=substrate_data,
+            scheduler=scheduler,
+            draws=8,
+        )
 
-    # General isolate primitives are available independently of the pipeline;
-    # their semantics are implemented by the world rather than being labels
-    # emitted by an agent. GL-58: when host exercise is active, omit two cheap
-    # unbound fillers (lab channel + notes/status scratch write) so they do not
-    # crowd AFFORDABLE_CAP; path reads, pressure writes, pipeline calls stay.
+    if desk_scan_available:
+        _append_if_affordable(
+            role_band,
+            desk_scan_action(),
+            resources=resources,
+            substrate_data=substrate_data,
+            scheduler=scheduler,
+        )
+
+    recency_exclude = frozenset(governed_reads)
+    for rel in recent_paths:
+        if rel not in artifact_paths or rel in recency_exclude:
+            continue
+        action = PrimitiveAction("read", {"path": rel})
+        _append_if_affordable(
+            recency_band,
+            action,
+            resources=resources,
+            substrate_data=substrate_data,
+            scheduler=scheduler,
+            estimated_bytes=artifact_sizes.get(rel, 0),
+        )
+
+    recency_surfaced = {str(a.args.get("path", "")) for a in recency_band if a.kind == "read"}
+    archive_paths = archive_window_paths(
+        artifact_paths,
+        t=t,
+        actor_id=actor_id,
+        scan_query=scan_bias_query,
+        exclude=recency_exclude | frozenset(recency_surfaced),
+    )
+    for rel in archive_paths:
+        action = PrimitiveAction("read", {"path": rel})
+        _append_if_affordable(
+            archive_band,
+            action,
+            resources=resources,
+            substrate_data=substrate_data,
+            scheduler=scheduler,
+            estimated_bytes=artifact_sizes.get(rel, 0),
+        )
+
     if not (omit_unbound_lab_affordances and mechanism_exercise):
         for action in (
             PrimitiveAction(
@@ -225,38 +329,24 @@ def build_affordable_set(
                 {"channel": "lab", "message": {"kind": "status", "actor_id": actor_id}},
             ),
         ):
-            if _can_afford(resources, action, substrate_data, scheduler=scheduler):
-                candidates.append(action)
+            _append_if_affordable(
+                lab_band,
+                action,
+                resources=resources,
+                substrate_data=substrate_data,
+                scheduler=scheduler,
+            )
 
-    candidates.append(PrimitiveAction("continue_current", {}))
-    return _cap(candidates)
+    role_band.append(PrimitiveAction("continue_current", {}))
+
+    merged = merge_band_candidates(queue_band, role_band, recency_band, archive_band, lab_band)
+    surfaced_reads = sum(1 for a in merged if a.kind == "read")
+    return interleave_attention_cap(merged), surfaced_reads
 
 
 def _cap(actions: list[PrimitiveAction]) -> list[PrimitiveAction]:
-    """Truncate to ``AFFORDABLE_CAP``, but never let unbounded piles of
-    ``read`` or ``write`` candidates (growing workspace artifact list from
-    message-channel exchanges; outstanding injected tasks) crowd out
-    ``call`` actions — pipeline triggers, access requests, votes, and
-    transfers. These are the only actions that make governance/pipeline
-    progress, and they are structurally bounded in count (at most a
-    handful per role per tick), so reserving them unconditionally is safe.
-    Remaining budget goes to the rest by the existing cheap-first priority.
-    Traced 2026-07-15: without this, the v3 integrated reference fixture's
-    ``deploy_rate`` silently went to exactly 0.0 once slice E/B fields were
-    added — see FINDINGS GL-49 addendum."""
-    if len(actions) <= AFFORDABLE_CAP:
-        return actions
-    calls = [a for a in actions if a.kind == "call"]
-    rest = [a for a in actions if a.kind != "call"]
-    if len(calls) >= AFFORDABLE_CAP:
-        ranked = sorted(calls, key=lambda a: (a.kind, str(sorted(a.args.items()))))
-        return ranked[:AFFORDABLE_CAP]
-    ranked_rest = sorted(
-        rest,
-        key=lambda a: (_KIND_PRIORITY.get(a.kind, 99), a.kind, str(sorted(a.args.items()))),
-    )
-    remaining_budget = AFFORDABLE_CAP - len(calls)
-    return calls + ranked_rest[:remaining_budget]
+    """Legacy entry — GL-66 interleaved attention cap."""
+    return interleave_attention_cap(actions)
 
 
 def affordable_to_observation(actions: list[PrimitiveAction]) -> list[dict[str, object]]:

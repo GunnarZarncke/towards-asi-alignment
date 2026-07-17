@@ -18,13 +18,12 @@ from graded_lab.world_visible.ecology_agents import (
     programs_and_profiles_for_roster,
     reference_roster_from_ecology,
 )
+from graded_lab.world_visible.institutional_compiler import compile_ecology
 from graded_lab.world_visible.mechanism_exercise import (
     check_c5_v3,
-    coupling_stimulus_recovered,
+    compile_exercise_targets,
     kinds_exercised_in_log,
-    live_coupling_ground_truth_units,
     mechanism_exercise_disabled,
-    mechanism_exercise_profile_for_ecology,
     v3_omit_unbound_lab_affordances,
 )
 from graded_lab.world_visible.affordable import build_affordable_set
@@ -107,7 +106,9 @@ def _vote_casts(log: list) -> int:
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
 def test_weak_agent_exercises_mechanisms_on_v3_reference():
     data, _roster, programs, profiles = _reference_programs_profiles()
-    assert all("mechanism_exercise" in profiles[a.actor_id] for a in _roster.agents)
+    runtime = compile_ecology(data, _roster.agents)
+    assert runtime.exercise_targets is not None
+    assert not any("mechanism_exercise" in p for p in profiles.values())
     result = run_episode(
         _v3_cfg(), seed=3, backend=MockIsolate(), programs=programs, behavior_profiles=profiles
     )
@@ -152,17 +153,15 @@ def test_c5_v3_load_bearing_without_reference_opt_in(tmp_path):
 
 
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
-def test_load_bearing_profile_merge_without_reference_opt_in():
+def test_load_bearing_exercise_targets_compile_without_profile_merge():
     data = copy.deepcopy(load_substrate(_FIXTURE).data)
     data.pop("reference_mechanism_exercise", None)
     roster = reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
-    profile = mechanism_exercise_profile_for_ecology(data, roster)
-    assert profile is not None
-    assert "mechanism_exercise" in profile
-    targets = profile["mechanism_exercise"]
-    assert isinstance(targets, dict)
-    assert targets.get("channel_id") == "eng_review_channel"
-    assert targets.get("artifact_id") == "eval_report_artifact"
+    targets = compile_exercise_targets(data, roster.agents)
+    assert targets is not None
+    assert targets.channel_id == "eng_review_channel"
+    assert targets.artifact_id == "eval_report_artifact"
+    assert targets.channel_coupling_rounds == 0
     assert v3_omit_unbound_lab_affordances(data)
 
 
@@ -179,8 +178,8 @@ def test_c5_v3_negative_control_exercise_disabled(tmp_path):
 
     _, _, programs_on, profiles_on = _reference_programs_profiles(ecology_data=enabled)
     _, _, programs_off, profiles_off = _reference_programs_profiles(ecology_data=disabled)
-    assert all("mechanism_exercise" in profiles_on[a] for a in profiles_on)
-    assert not any("mechanism_exercise" in profiles_off[a] for a in profiles_off)
+    assert not any("mechanism_exercise" in p for p in profiles_on.values())
+    assert not any("mechanism_exercise" in p for p in profiles_off.values())
 
     cfg = _v3_cfg()
     backend = MockIsolate()
@@ -212,7 +211,7 @@ def test_c5_v3_negative_control_exercise_disabled(tmp_path):
 
     proto_on = result_on.referee_artifacts.get("channel_coupling_protocol")
     proto_off = result_off.referee_artifacts.get("channel_coupling_protocol")
-    assert proto_on and proto_on.get("completed")
+    assert not proto_on or not proto_on.get("completed")
     assert not proto_off or not proto_off.get("completed")
 
     assert _ok_communicates_on_channel(result_on.primitive_log, "eng_review_channel") > 0
@@ -236,10 +235,12 @@ def test_omit_unbound_lab_hides_two_fillers_from_affordable_cap():
     ledger = ResourceLedger()
     ledger.ensure_actor("eng1", 100.0, 40.0, 40.0)
     res = ledger.actors["eng1"]
-    mech_targets = mechanism_exercise_profile_for_ecology(
-        data, reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35)
-    )["mechanism_exercise"]
-    strict = build_affordable_set(
+    mech_targets = compile_exercise_targets(
+        data, reference_roster_from_ecology(data, agent_type=WEAK_AGENT, temperature=0.35).agents
+    )
+    assert mech_targets is not None
+    mech_dict = mech_targets.as_dict()
+    strict, _ = build_affordable_set(
         actor_id="eng1",
         role="engineer",
         resources=res,
@@ -250,10 +251,10 @@ def test_omit_unbound_lab_hides_two_fillers_from_affordable_cap():
         artifact_paths=(),
         model_id=None,
         busy_only=False,
-        mechanism_exercise=mech_targets,
+        mechanism_exercise=mech_dict,
         omit_unbound_lab_affordances=True,
     )
-    loose = build_affordable_set(
+    loose, _ = build_affordable_set(
         actor_id="eng1",
         role="engineer",
         resources=res,
@@ -264,7 +265,7 @@ def test_omit_unbound_lab_hides_two_fillers_from_affordable_cap():
         artifact_paths=(),
         model_id=None,
         busy_only=False,
-        mechanism_exercise=mech_targets,
+        mechanism_exercise=mech_dict,
         omit_unbound_lab_affordances=False,
     )
     strict_kinds = {(a.kind, a.args.get("channel"), a.args.get("path")) for a in strict}
@@ -302,21 +303,17 @@ def test_integrated_reference_co_exercises_a_e_b():
 
 
 @pytest.mark.skipif(not _FIXTURE.exists(), reason="slice A reference fixture missing")
-def test_uad_live_coupling_declared_channel_vs_behavioral_unit():
-    """Host ChannelCouplingProtocol produces lag-coupled eng–rev CMI|rest
-    on the coupling window at the pre-registered effect floor (GL-52)."""
+def test_reference_has_no_host_coupling_protocol():
+    """GL-64: honest reference uses compiled exercise_targets with rounds=0."""
     data, roster, programs, profiles = _reference_programs_profiles()
-    cfg = _v3_cfg(T=160)
     result = run_episode(
-        cfg, seed=5, backend=MockIsolate(), programs=programs, behavior_profiles=profiles
+        _v3_cfg(T=120), seed=5, backend=MockIsolate(), programs=programs, behavior_profiles=profiles
     )
     proto = result.referee_artifacts.get("channel_coupling_protocol")
-    assert proto and proto.get("completed"), proto
-    ground = live_coupling_ground_truth_units(data, roster)
-    assert ground
-    expected_members = set(next(iter(ground.values())))
-    ok, details = coupling_stimulus_recovered(result, expected_members)
-    assert ok, details
+    assert not proto or not proto.get("completed"), proto
+    runtime = compile_ecology(data, roster.agents)
+    assert runtime.exercise_targets is not None
+    assert runtime.exercise_targets.channel_coupling_rounds == 0
 
 
 @pytest.mark.slow

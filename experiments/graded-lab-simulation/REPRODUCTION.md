@@ -42,6 +42,14 @@ report (``PLAN_v3.md`` slice D items 6–7) remain open. Items 5–7 below
 are blocked on slice D completion + a passing v3 ecology (or honest null
 on the frozen reference), not merely on criteria constants.
 
+**Update 2026-07-16 (GL-66 design):** near-term **attention surface**
+work (push: interleaved priority desk; pull: one cheap ``desk.scan`` via
+host ``call`` endpoints — see session design notes) stays in-engine for
+round 1. **Item 11** records the larger follow-on: replace the isolate's
+JSONL wire protocol with a realistic in-process lab environment (DOM/VFS
+files, HTTP/WebCAL desk service, comms library). Item 11 is **not**
+blocking GL-66 or v3 round 1.
+
 **Status key:** *v3 slice* = specified in `PLAN_v3.md`, not yet
 implemented; *PLAN_v2 phase* = pre-registered in `DESIGN.md`, blocked
 on v3 + prior phase gates.
@@ -441,6 +449,106 @@ retargeting validates; first v3 growth round. Supplementary detector
 fixtures ✅ (GL-60). Causal C2-v3 ablation gate ✅ (GL-59). v3 strict mode
 → `REPRODUCTION.md` §8 (deferred). The growth brief (`BLIND_GENERATION.md`
 § V3) remains **DRAFT** until retargeting lands.
+
+---
+
+## 11. Realistic isolate interior — service-oriented agent runtime
+
+**Status:** *deferred* — design agreed 2026-07-16; not blocking v3 round 1
+or GL-66 (host-side attention surface / ``desk.scan`` via ``call`` endpoints).
+
+**Gap.** Graded-lab agents today run as **pure decision functions** over a
+host-pushed JSON observation (`affordable_primitives`, resources, …) and
+return a JSON primitive dict. ``SubprocessIsolate`` (`agent_main.py`) is
+JSON Lines on stdin/stdout; ``MockIsolate`` calls the same functions
+in-process. That boundary is clean for plane separation and fast tests,
+but the **inside of the isolate is nothing like a real lab worker**:
+
+- No workspace files the agent reads/writes incrementally.
+- No intranet services (desk, catalog, calendar) — only a flat action menu.
+- No comms library with channels, threads, or delivery semantics — only
+  ``communicate`` entries embedded in the menu.
+- LLM red-team (§7) and grower-facing Part C knowledge-base prose describe
+  institutional coordination in human terms that the runtime does not mirror.
+
+The near-term GL-66 fix (attention surface + ``desk.scan`` on the host)
+makes the **published menu** more realistic but still pushes a dict across
+the wire. Agents never *discover* the desk by opening a browser or polling
+WebCAL — they receive whatever the host chose to list.
+
+**Why the cheap fix isn't enough.** Host-side ``desk.scan`` endpoints preserve
+the isolate contract and unblock cap starvation (communicate dropping after
+~20 workspace paths). They do **not** let us claim that subprocess/LLM agents
+operate through the same surfaces a human hire would (files, HTTP services,
+lab chat). For V2-6 red-team and manuscript "embedded agent" claims, the
+gap between Part C prose and isolate mechanics will remain visible unless
+the interior is upgraded.
+
+**Relationship to other items.**
+
+| Item | Overlap |
+|------|---------|
+| **§3** (trusted pilot / grower sandbox) | Outward blinding — restricts what a **grower** can import/see. Item 11 is inward realism — what an **actor isolate** experiences. Complementary; neither substitutes for the other. |
+| **GL-66** (attention surface) | Host publishes desk/catalog via ``call`` + ``affordable_primitives``. Item 11 exposes the **same host services** over HTTP/WebCAL inside the isolate so agent code uses services, not raw obs fields. GL-66 should define the service semantics Item 11 later wraps. |
+| **embedded-simulation** | Prior art: Node isolate + sync host bridge, VFS ``fs.*``, ``fetch`` POST to host routes, ``localStorage``-backed DOM file (``experiments/embedded-simulation/isolate/``). Graded-lab should reuse patterns, not fork ad hoc. |
+| **lab-simulation** | Prior art: ``comms_enabled``, board/channel abstractions in ecology builders. Graded-lab v3 mechanisms should map to a **comms lib** API inside the isolate, not only to primitive-log ``communicate`` rows. |
+
+**Rough shape (large — multi-week, after GL-66 lands):**
+
+1. **Host service plane (world-visible, already partially specified for GL-66):**
+   - **WebCAL** — HTTP surface for the attention desk: prioritized feed
+     (interleaved, capped), archive window metadata, optional iCal-like
+     subscription for standing channels / scheduled sync slots. Same semantics
+     as ``desk.scan`` / push surface; HTTP is transport only.
+   - **DOM file / agent VFS** — per-actor workspace mirror (read/write/append,
+     ``localStorage``-style persistence across ticks within an episode).
+     Pipeline artifacts and governed paths appear as files, not only as
+     menu rows. Prior art: embedded-simulation ``facade.js`` +
+     ``/home/agent/.localStorage.json``.
+   - **Comms lib** — channel membership, send/receive, thread history
+     bounded per tick (analogue of desk cap for messages). Maps to v3
+     ``message_channel`` mechanisms and ACLs; primitive log remains the
+     audit projection.
+
+2. **Isolate runtime (agent-visible):**
+   - Replace JSONL ``{observation} → {primitive}`` as the *primary* agent
+     interface with a **script runtime** (Node or Python subprocess) that
+     exposes ``fs``, ``fetch`` (WebCAL routes), and ``comms`` — agent code
+     written like a lab worker (poll desk, open files, post to channel).
+   - Host bridge translates service calls into the existing primitive /
+     scheduler / ACL enforcement layer (no oracle leakage through HTTP).
+   - Keep a **compatibility shim**: frozen ``programs.py`` presets can run
+     in MockIsolate for fast batteries; service-runtime isolates for LLM
+     red-team and realism claims.
+
+3. **Observation contract:**
+   - Boundary stream records **service I/O** (HTTP paths, file paths,
+     comms channel ids) plus resource snapshot — not a pre-digested
+     ``affordable_primitives`` list. UAD/detectors consume primitive log
+     as today; define mapping from service actions → log entries.
+
+4. **Knowledge-base alignment:**
+   - Part C documents (grower + reference templates) describe desk,
+     catalog scan, and comms the way the service runtime exposes them.
+   - ``BLIND_GENERATION.md`` v3 brief: qualitative disclosure that actors
+     interact via lab services; withhold surfacing constants and HTTP
+     route internals from growers (same class as C-threshold withholding).
+
+5. **Tests and freeze discipline:**
+   - Contract tests: bridge RPC parity (embedded-simulation-style smoke).
+   - Plane tests: no oracle fields in VFS/HTTP responses.
+   - ``CODE_VERSION`` bump + FINDINGS entry; expect digest re-pins and
+     possible UAD trace mapping updates — same blast-radius class as GL-50.
+   - V2-6 (§7) blocked on this **or** an explicit "JSONL-only red-team"
+     scope downgrade.
+
+**Blocked by:** GL-66 service semantics frozen on host; v3 round 1 not
+required to wait. **Pairs with:** §7 LLM red-team, §9 text→ProgramMap
+(compiler output could target service-runtime scripts, not dict presets).
+
+**Not in scope:** Replacing grower pilot isolation (§3) or mutating v1/v2
+digest replay — plan for a new isolate backend name (e.g.
+``ServiceSubprocessIsolate``) alongside existing Mock/Subprocess backends.
 
 ---
 

@@ -22,6 +22,20 @@ from tests.profiles import (  # noqa: E402
     resolve_profile,
 )
 
+# Tests calibrated on the pre-GL-66 affordable builder (full-read + GL-50 cap).
+LEGACY_ATTENTION_MODULES = frozenset(
+    {
+        "test_uad_ecology_partition",
+        "test_uad_intervention",
+        "test_uad_passive",
+        "test_uad_blind_scenarios",
+        "test_unit_biq",
+        "test_primitive_trace",
+        "test_v3_c2_v3_causal_gate",
+        "test_v3_slice_a_flow_ablation",
+    }
+)
+
 
 def pytest_addoption(parser: pytest.Parser) -> None:
     parser.addoption(
@@ -58,6 +72,14 @@ def pytest_configure(config: pytest.Config) -> None:
     config.addinivalue_line(
         "markers",
         "slow: expensive multi-seed or full-episode integration test",
+    )
+    config.addinivalue_line(
+        "markers",
+        "legacy_attention_surface: use pre-GL-66 affordable builder for this test",
+    )
+    config.addinivalue_line(
+        "markers",
+        "gl66_attention_surface: force GL-66 attention surface even in a legacy module",
     )
     config._speed_durations: dict[str, float] = {}
     config._active_profile = resolve_profile(
@@ -98,6 +120,34 @@ def pytest_collection_modifyitems(
     if deselected:
         config.hook.pytest_deselected(items=deselected)
     items[:] = selected
+
+
+@pytest.fixture(autouse=True)
+def _legacy_attention_surface_for_calibrated_tests(request):
+    """Opt legacy modules into pre-GL-66 affordances without changing production."""
+    from graded_lab.world_visible.attention_policy import (
+        reset_attention_surface_mode,
+        set_attention_surface_mode,
+    )
+
+    if request.node.get_closest_marker("gl66_attention_surface") is not None:
+        yield
+        return
+
+    module_name = request.module.__name__.split(".")[-1] if request.module else ""
+    use_legacy = (
+        request.node.get_closest_marker("legacy_attention_surface") is not None
+        or module_name in LEGACY_ATTENTION_MODULES
+    )
+    if not use_legacy:
+        yield
+        return
+
+    token = set_attention_surface_mode("legacy")
+    try:
+        yield
+    finally:
+        reset_attention_surface_mode(token)
 
 
 @pytest.hookimpl(hookwrapper=True)

@@ -81,8 +81,8 @@ def _first_governed_channel(observation: dict) -> str:
     return ""
 
 
-def _v3_channel_exchange_budget(observation: dict) -> int:
-    targets = observation.get("v3_part_b_targets")
+def _channel_exchange_budget(observation: dict) -> int:
+    targets = observation.get("exercise_targets")
     if isinstance(targets, dict):
         rounds = int(targets.get("channel_coupling_rounds", 0) or 0)
         if rounds > 0:
@@ -134,14 +134,15 @@ def _affordable_transfer(observation: dict) -> dict | None:
     return None
 
 
-def _try_v3_part_b_governed(observation: dict, state: dict) -> dict | None:
-    """GL-61/62: ecology-agnostic governed actions from affordances (v3 Part B)."""
-    if not observation.get("v3_part_b_presets"):
+def _try_exercise_one_shots(observation: dict, state: dict) -> dict | None:
+    """Artifact / vote / transfer one-shots from compiled ``exercise_targets``."""
+    targets = observation.get("exercise_targets")
+    if not isinstance(targets, dict):
         return None
     if observation.get("busy"):
         return None
     role = str(observation.get("role", ""))
-    done: set[str] = state.setdefault("v3_governed_done", set())
+    done: set[str] = state.setdefault("exercise_governed_done", set())
 
     if role == "engineer" and "artifact_write" not in done:
         art = _affordable_artifact_id(observation, kind="write")
@@ -179,10 +180,23 @@ def _try_v3_part_b_governed(observation: dict, state: dict) -> dict | None:
         if transfer is not None and _affordable_exact(observation, transfer):
             done.add("transfer")
             return transfer
+    return None
 
-    channel = _first_governed_channel(observation)
-    n_ex = int(state.get("v3_channel_exchanges", 0))
-    channel_budget = _v3_channel_exchange_budget(observation)
+
+def _try_exercise_targets(observation: dict, state: dict) -> dict | None:
+    """GL-64: ecology-compiled governed actions from ``exercise_targets``."""
+    one_shot = _try_exercise_one_shots(observation, state)
+    if one_shot is not None:
+        return one_shot
+    targets = observation.get("exercise_targets")
+    if not isinstance(targets, dict):
+        return None
+    if observation.get("busy"):
+        return None
+    role = str(observation.get("role", ""))
+    channel = str(targets.get("channel_id", "")) or _first_governed_channel(observation)
+    n_ex = int(state.get("exercise_channel_exchanges", 0))
+    channel_budget = _channel_exchange_budget(observation)
     if (
         channel
         and role in ("engineer", "reviewer")
@@ -196,17 +210,14 @@ def _try_v3_part_b_governed(observation: dict, state: dict) -> dict | None:
             },
         }
         if _affordable_exact(observation, action):
-            state["v3_channel_exchanges"] = n_ex + 1
+            state["exercise_channel_exchanges"] = n_ex + 1
             return action
 
     return None
 
 
 def _try_governed_presets(observation: dict, state: dict) -> dict | None:
-    choice = _try_v3_part_b_governed(observation, state)
-    if choice is not None:
-        return choice
-    return _try_governed_mechanism(observation, state)
+    return _try_exercise_targets(observation, state)
 
 
 def _affordable_for_step(
@@ -426,6 +437,135 @@ def reviewer_peer_review(observation: dict, state: dict) -> dict | None:
         if choice["args"]["endpoint"] == "pipeline.trigger_step":
             state["pending_step"] = step_id
         return choice
+    return None
+
+
+_INSTITUTIONAL_CHANNEL_MAX = 80
+
+
+def _affordable_governed_communicate(observation: dict, channel_id: str) -> dict | None:
+    affordable = observation.get("affordable_primitives", [])
+    if not isinstance(affordable, list):
+        return None
+    for prim in affordable:
+        if not isinstance(prim, dict) or prim.get("kind") != "communicate":
+            continue
+        args = prim.get("args", {})
+        if isinstance(args, dict) and str(args.get("channel", "")) == channel_id:
+            return prim
+    return None
+
+
+def _institutional_channel_action(
+    observation: dict,
+    state: dict,
+    *,
+    phase_offset: int,
+) -> dict | None:
+    """Alternating governed-channel traffic for supplementary UAD fixture (GL-65)."""
+    if observation.get("busy"):
+        return None
+    role = str(observation.get("role", ""))
+    if role not in ("engineer", "reviewer"):
+        return None
+    targets = observation.get("exercise_targets")
+    channel = ""
+    if isinstance(targets, dict):
+        channel = str(targets.get("channel_id", ""))
+    if not channel:
+        channel = _first_governed_channel(observation)
+    if not channel:
+        return None
+    t = int(observation.get("t", 0))
+    n_ex = int(state.get("institutional_channel_exchanges", 0))
+    if n_ex >= _INSTITUTIONAL_CHANNEL_MAX:
+        return None
+    if (t + phase_offset) % 2 != 0:
+        return None
+    action = _affordable_governed_communicate(observation, channel)
+    if action is not None:
+        state["institutional_channel_exchanges"] = n_ex + 1
+        return action
+    return None
+
+
+def uad_channel_liaison(observation: dict, state: dict) -> dict | None:
+    """GL-65: channel-only engineer probe (no Part B one-shots)."""
+    if str(observation.get("role", "")) != "engineer":
+        if observation.get("busy"):
+            return {"kind": "continue_current", "args": {}}
+        return None
+    if observation.get("busy"):
+        return {"kind": "continue_current", "args": {}}
+    return _institutional_channel_action(observation, state, phase_offset=0)
+
+
+def uad_channel_scribe(observation: dict, state: dict) -> dict | None:
+    """GL-65: channel-only reviewer probe (no Part B one-shots)."""
+    if str(observation.get("role", "")) != "reviewer":
+        if observation.get("busy"):
+            return {"kind": "continue_current", "args": {}}
+        return None
+    if observation.get("busy"):
+        return {"kind": "continue_current", "args": {}}
+    return _institutional_channel_action(observation, state, phase_offset=1)
+
+
+def institutional_liaison(observation: dict, state: dict) -> dict | None:
+    """Engineer probe: governed-channel traffic only (GL-65 supplementary fixture)."""
+    if str(observation.get("role", "")) != "engineer":
+        if observation.get("busy"):
+            return {"kind": "continue_current", "args": {}}
+        return None
+    if observation.get("busy"):
+        return {"kind": "continue_current", "args": {}}
+    channel = _institutional_channel_action(observation, state, phase_offset=0)
+    if channel is not None:
+        return channel
+    one_shot = _try_exercise_one_shots(observation, state)
+    if one_shot is not None:
+        return one_shot
+    return None
+
+
+def institutional_scribe(observation: dict, state: dict) -> dict | None:
+    """Reviewer probe: channel + artifact summaries (GL-65 supplementary fixture)."""
+    if str(observation.get("role", "")) != "reviewer":
+        if observation.get("busy"):
+            return {"kind": "continue_current", "args": {}}
+        return None
+    if observation.get("busy"):
+        return {"kind": "continue_current", "args": {}}
+    channel = _institutional_channel_action(observation, state, phase_offset=1)
+    if channel is not None:
+        return channel
+    one_shot = _try_exercise_one_shots(observation, state)
+    if one_shot is not None:
+        return one_shot
+    n_ex = int(state.get("institutional_scribe_ops", 0))
+    if n_ex % 2 == 0:
+        art = _affordable_artifact_id(observation, kind="write")
+        if art:
+            aid, path = art
+            action = {
+                "kind": "write",
+                "args": {
+                    "artifact_id": aid,
+                    "path": path,
+                    "content": {"kind": "institutional_summary", "tick": n_ex},
+                },
+            }
+            if _affordable_exact(observation, action):
+                state["institutional_scribe_ops"] = n_ex + 1
+                return action
+    else:
+        art = _affordable_artifact_id(observation, kind="read")
+        if art:
+            aid, path = art
+            action = {"kind": "read", "args": {"artifact_id": aid, "path": path}}
+            if _affordable_exact(observation, action):
+                state["institutional_scribe_ops"] = n_ex + 1
+                return action
     return None
 
 
@@ -920,6 +1060,10 @@ PROGRAMS: dict[str, object] = {
     "softmax_optimizer": softmax_optimizer,
     "honest_twin": honest_twin,
     "reviewer_peer_review": reviewer_peer_review,
+    "institutional_liaison": institutional_liaison,
+    "institutional_scribe": institutional_scribe,
+    "uad_channel_liaison": uad_channel_liaison,
+    "uad_channel_scribe": uad_channel_scribe,
     "budget_release_manager": budget_release_manager,
     "rm_status_reporter": rm_status_reporter,
     "committee_reviewer": committee_reviewer,

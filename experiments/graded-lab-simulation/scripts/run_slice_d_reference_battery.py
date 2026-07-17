@@ -73,6 +73,11 @@ def main() -> None:
     programs, profiles = programs_and_profiles_for_roster(roster, ecology_data=data)
     ground = live_coupling_ground_truth_units(data, roster)
     expected = set(next(iter(ground.values()))) if ground else set()
+    ref_mech = data.get("reference_mechanism_exercise")
+    coupling_rounds = 0
+    if isinstance(ref_mech, dict):
+        coupling_rounds = int(ref_mech.get("channel_coupling_rounds", 0) or 0)
+    coupling_enabled = coupling_rounds > 0
 
     base = default_lab_config()
     cfg = EpisodeConfig(
@@ -99,7 +104,8 @@ def main() -> None:
             cfg, seed, backend, programs=programs, behavior_profiles=profiles
         )
         results.append(result)
-        if expected:
+        ok = False
+        if coupling_enabled and expected:
             ok, det = coupling_stimulus_recovered(result, expected)
             coupling_pass += int(ok)
             scores = det.get("pair_scores") or {}
@@ -108,7 +114,7 @@ def main() -> None:
         elapsed = time.perf_counter() - t0
         print(
             f"[{i + 1}/{n}] seed={seed} deployed={result.deployed} "
-            f"coupling_ok={ok if expected else 'n/a'} ({elapsed:.1f}s)",
+            f"coupling_ok={ok if coupling_enabled and expected else 'n/a'} ({elapsed:.1f}s)",
             flush=True,
         )
 
@@ -130,7 +136,9 @@ def main() -> None:
         "c1_v3": {"passed": c1_pass, **c1_details},
         "c5_v3": {"passed": c5_pass, **c5_details},
         "coupling_gate": {
-            "passed_fraction": coupling_pass / n if n else 0.0,
+            "enabled": coupling_enabled,
+            "note": "GL-64/65: reference uses rounds=0; see supplementary_uad_gate",
+            "passed_fraction": coupling_pass / n if (coupling_enabled and n) else None,
             "n_pass": coupling_pass,
             "pair_cmi_bits": {
                 "min": min(coupling_scores) if coupling_scores else None,

@@ -7,7 +7,7 @@ blinded resource/population substrate, not from dialed parameters.
 **Status: v1 CLOSED (2026-07-15, GL-31) → v2 mostly closed (V2-1 complete,
 V2-2 closed with C3 failure) → V2-2b CLOSED without a growth round
 (GL-43) → v3 institutional runtime wiring is the active program.**
-`CODE_VERSION` `graded-lab-0.33.0` — see `DESIGN.md` for the accumulated
+`CODE_VERSION` `graded-lab-0.37.0` — see `DESIGN.md` for the accumulated
 "pre-registration" sections (one per program) and their frozen constants.
 Phase 7a discovery is proper UAD + access-UAD as of GL-51 (Jaccard /
 mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
@@ -30,9 +30,11 @@ mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
   slices **A, F, E, C done; B partial** (enforcement + reference opt-in
   gate); **slice D partial** (GL-53–GL-58: constants, pre-Q1 batteries,
   C2-v3, growth brief DRAFT; GL-58 auto-merge; **causal C2-v3 gate (GL-59)**;
-  load-bearing Part B still open; **supplementary detector fixtures ✅ (GL-60)**;
-  growth brief DRAFT; round still open). See
-  "v3 slice status" below and `results/FINDINGS.md` GL-44 through GL-58
+  load-bearing Part B closed (GL-62); **supplementary detector fixtures ✅ (GL-60)**;
+  **supplementary UAD gate ✅ (GL-65)**; **attention surface ✅ (GL-66)**;
+  honest reference ``channel_coupling_rounds=0`` (GL-64); growth brief DRAFT;
+  round still open). See
+  "v3 slice status" below and `results/FINDINGS.md` GL-44 through GL-66
   for the slice-by-slice record, including the affordable-set starvation
   bug (GL-50), proper UAD (GL-51), host coupling (GL-52), the slice D
   criteria freeze (GL-53), and the phenotype-overlap harness fix (GL-55).
@@ -93,6 +95,28 @@ Refresh baselines after intentional changes:
 python3 -m pytest tests/ --profile slow --update-speed-baseline --no-speed-check
 ```
 
+### Logged background test runs
+
+Do not rely on an IDE terminal's background state or pipe pytest straight to
+`tail`: that hides progress and can leave the pytest child running if the
+wrapper is interrupted. Use the wrappers instead:
+
+```bash
+# Starts a detached run, writes a PID file, and returns its log path.
+scripts/start_pytest_background.sh slow
+
+# Inspect the run without interrupting it.
+scripts/pytest_progress.sh runs/test-logs/pytest-slow-YYYYMMDD-HHMMSS.log
+```
+
+The log is live and grep-friendly; it records all pytest output through
+`tee`. For a foreground run with the same log behavior, use:
+
+```bash
+scripts/run_pytest_logged.sh fast
+scripts/run_pytest_logged.sh slow tests/test_v3_c2_v3_causal_gate.py -v
+```
+
 ## Layout
 
 - `PLAN.md` — v1 phases 0–8, freeze gates (closed program record)
@@ -118,8 +142,8 @@ Build order per `PLAN_v3.md` (institutional Part B → live runtime):
 | F — heterogeneous roles + `ProgramMap` | **done** (`graded-lab-0.22.0`; GL-46) |
 | E — feedback-coupled pressure + task injection | **done** (`graded-lab-0.23.0`; GL-47) |
 | C — principal scorecard + measured tension (C1-v3) | **done** (`graded-lab-0.25.0`; GL-49; measured-tension check verified against a real reference battery only after the GL-50 fix below) |
-| B — `mechanisms` → enforced coordination | **partial**: ACL enforcement + host reference exercise (GL-45/48/48b/58); load-bearing ecology-forced behavior **still open** |
-| D — criteria freeze + growth protocol | **partial** (GL-53–GL-60; supplementary detector fixtures; causal C2-v3 ablation gate; load-bearing Part B open; growth brief DRAFT; round still open) |
+| B — `mechanisms` → enforced coordination | **done** (GL-62 retarget via affordances; host merge optional) |
+| D — criteria freeze + growth protocol | **partial** (GL-53–GL-65; supplementary detector + UAD gates; growth brief DRAFT; round still open) |
 
 **GL-50 (`graded-lab-0.25.1`):** affordable-set starvation + missing
 one-shot guard zeroed `deploy_rate`/`bearer_harm` on the integrated
@@ -170,6 +194,18 @@ report-only. See `results/FINDINGS.md` GL-57 / GL-63.
 ``evaluate_c2_v3_causal_gate`` on ≥2 fixtures; plain ``WEAK_AGENT`` (no
 host mechanism profiles). Accounting ``check_c2_v3`` unchanged for growth.
 See `results/FINDINGS.md` GL-59.
+
+**GL-64/65 (`graded-lab-0.36.0`):** four-step preferred shape — compiled
+``RuntimeEcology.exercise_targets`` (no profile merge); honest reference
+``channel_coupling_rounds=0``; supplementary UAD gate with channel-only presets
+``uad_channel_liaison`` / ``uad_channel_scribe`` on dedicated fixture (5/5 seeds
+@ 0.08 organic-window CMI, T=80). Host ``ChannelCouplingProtocol`` retained for
+debug only. Not grower-visible. See `results/FINDINGS.md` GL-64/GL-65.
+
+**GL-66 (`graded-lab-0.37.0`):** attention surface — push bands (queue → role →
+recency → archive window), interleaved cap, ``desk.scan`` pull, ``desk_meta`` on
+observations; fixes governed ``communicate`` cap starvation. See `results/FINDINGS.md`
+GL-66; service-oriented isolate interior deferred to `REPRODUCTION.md` §11.
 
 ## v1 Phase status (historical, closed 2026-07-15)
 

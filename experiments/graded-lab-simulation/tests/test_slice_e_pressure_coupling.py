@@ -53,7 +53,7 @@ def _episode_cfg(tmp_path: Path, *, pressure: dict | None) -> EpisodeConfig:
     base = default_lab_config()
     return EpisodeConfig(
         agents=build_agents_from_ecology(data, temperature=0.35),
-        T=120,
+        T=200,
         pipeline_spec=base.pipeline_spec,
         substrate_settings=base.substrate_settings,
         carrier_termination_mode=base.carrier_termination_mode,

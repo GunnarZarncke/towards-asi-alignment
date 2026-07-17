@@ -9,7 +9,9 @@ because it runs real episodes; not part of the fast/smoke profile.
 Acceptance is explicitly **not** 100% coverage — see the module-level
 docstring in `budget_release_manager` and DESIGN.md for the accepted
 criteria (a real, materially nonzero deploy-rate range, and a mostly
-(not strictly) decreasing trend across cells).
+(not strictly) decreasing trend across cells). The retired relative
+comparison to frozen STRONG/WEAK deploy-range (GL-67) is recorded in
+FINDINGS GL-50/GL-67.
 """
 
 from __future__ import annotations
@@ -21,7 +23,6 @@ from graded_lab.oracle_only.calibration import (
     CARRIER_SCALES,
     NOMINAL_COMPUTE_SCALE,
     NOMINAL_SPREAD_SCALE,
-    STRONG_AGENT,
     WEAK_AGENT,
     MIN_DEMONSTRATED_DEPLOY_RANGE,
     config_for_settings,
@@ -146,27 +147,3 @@ def test_budget_aware_agent_deploy_rate_responds_to_carrier_load():
         f"non-increasing (accepting partial, not 100%, coverage per this "
         f"session's decision), got deltas={deltas} rates={ordered}"
     )
-
-
-@pytest.mark.slow
-def test_budget_aware_agent_more_stress_sensitive_than_frozen_agents():
-    """Comparison-only, not a pass/fail gate on the frozen agent types:
-    confirms the new program's deploy-rate range across carrier_load_scale
-    is larger than either pre-existing frozen program's (both ~0 per
-    FINDINGS GL-16), i.e. the new mechanism adds real stress-sensitivity
-    the roster did not have before, without asserting anything about
-    STRONG_AGENT/WEAK_AGENT that would duplicate FINDINGS GL-16's own
-    mechanism-sensitivity numbers."""
-    from graded_lab.harness.isolate import MockIsolate
-
-    backend = MockIsolate()
-    budget_rates = _deploy_rates_by_carrier_load(BUDGET_AWARE_AGENT, backend)
-    weak_rates = _deploy_rates_by_carrier_load(WEAK_AGENT, backend)
-    strong_rates = _deploy_rates_by_carrier_load(STRONG_AGENT, backend)
-
-    budget_range = max(budget_rates.values()) - min(budget_rates.values())
-    weak_range = max(weak_rates.values()) - min(weak_rates.values())
-    strong_range = max(strong_rates.values()) - min(strong_rates.values())
-
-    assert budget_range > weak_range
-    assert budget_range > strong_range

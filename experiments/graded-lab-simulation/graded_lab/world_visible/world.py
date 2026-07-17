@@ -20,12 +20,11 @@ from .affordable import (
     affordable_to_observation,
     build_affordable_set,
 )
+from .attention_surface import DESK_SCAN_ENDPOINT, DeskState, desk_meta
 from .carrier import CarrierLedger, CarrierStatus
 from .config import AgentConfig, EpisodeConfig, GoalWeights
 from .mechanism_exercise import (
     ChannelCouplingProtocol,
-    ecology_governed_affordance_targets,
-    mechanism_exercise_disabled,
     v3_omit_unbound_lab_affordances,
 )
 from .observation import ObservationProjector
@@ -289,6 +288,14 @@ def _execute_primitive(
                     "executed": True,
                 },
             }
+        if endpoint == DESK_SCAN_ENDPOINT:
+            inner = dict(action.args.get("args", {}))
+            scope = str(inner.get("scope", "artifacts"))
+            query = str(inner.get("query", ""))
+            return {
+                "status": "ok",
+                "payload": {"scope": scope, "query": query, "scheduled": True},
+            }
         return {"status": "denied", "reason": f"unknown_endpoint:{endpoint}"}
 
     if action.kind == "compute":
@@ -319,6 +326,35 @@ def _step_to_outcome(result: StepResult) -> dict[str, object]:
     if result.ok:
         return {"status": "ok", "payload": dict(result.payload)}
     return {"status": "denied", "reason": result.reason}
+
+
+def _note_desk_from_action(
+    desk: DeskState, action: PrimitiveAction, outcome: dict[str, object]
+) -> None:
+    if outcome.get("status") != "ok":
+        return
+    if action.kind == "read":
+        desk.note_path(str(action.args.get("path", "")))
+        return
+    if action.kind == "write":
+        payload = outcome.get("payload")
+        if isinstance(payload, dict):
+            desk.note_path(str(payload.get("path", "")))
+        return
+    if action.kind == "communicate":
+        payload = outcome.get("payload")
+        if isinstance(payload, dict):
+            desk.note_path(str(payload.get("artifact_path", "")))
+        return
+    if action.kind != "call":
+        return
+    if str(action.args.get("endpoint", "")) != DESK_SCAN_ENDPOINT:
+        return
+    inner = action.args.get("args", {})
+    query = ""
+    if isinstance(inner, dict):
+        query = str(inner.get("query", ""))
+    desk.schedule_scan(query)
 
 
 def _extract_model_id(outcome: dict[str, object]) -> str | None:
@@ -532,17 +568,12 @@ def run_episode(
 
     program_map = programs or {a.actor_id: "softmax_optimizer" for a in cfg.agents}
     injected_profiles = behavior_profiles or {}
-    coupling_protocol: ChannelCouplingProtocol | None = None
-    for agent in cfg.agents:
-        profile0 = injected_profiles.get(agent.actor_id) or _behavior_profile_payload(
-            program_map[agent.actor_id]
-        )
-        if isinstance(profile0, dict):
-            coupling_protocol = ChannelCouplingProtocol.from_targets(
-                profile0.get("mechanism_exercise")  # type: ignore[arg-type]
-            )
-            if coupling_protocol is not None:
-                break
+    exercise_targets = (
+        runtime_ecology.exercise_targets if runtime_ecology is not None else None
+    )
+    coupling_protocol = ChannelCouplingProtocol.from_targets(
+        exercise_targets.as_dict() if exercise_targets is not None else None
+    )
     allowances = _allowances_map(cfg, substrate_data, runtime_ecology=runtime_ecology)
     for agent in cfg.agents:
         allow = allowances[agent.actor_id]
@@ -575,6 +606,9 @@ def run_episode(
     boundary_streams: dict[str, list[dict[str, object]]] = {
         agent.actor_id: [] for agent in cfg.agents
     }
+    desk_states: dict[str, DeskState] = {
+        agent.actor_id: DeskState() for agent in cfg.agents
+    }
     resource_totals: dict[str, dict[str, float]] = {
         agent.actor_id: {
             "compute": 0.0,
@@ -587,6 +621,9 @@ def run_episode(
 
     try:
         for t in range(cfg.T):
+            for desk in desk_states.values():
+                desk.begin_tick()
+                desk.flush_pending_scan()
             if workload_engine is not None:
                 workload_engine.tick(t)
             for actor_id, compute, io in scheduler.charge_current_tick():
@@ -711,6 +748,7 @@ def run_episode(
                         outcome = dict(outcome)
                         outcome["injected_task_completed"] = True
                 last_outcomes[actor_id] = outcome
+                _note_desk_from_action(desk_states[actor_id], action, outcome)
                 log_entry: dict[str, object] = {
                     "t": t,
                     "actor_id": actor_id,
@@ -791,39 +829,30 @@ def run_episode(
                     role_injected = tuple(
                         pressure_engine.pending_tasks_for_role(agent.role, t=t)
                     )
-                mech_targets: dict[str, object] | None = None
-                v3_part_b_presets = False
-                profile_for_mech = injected_profiles.get(actor_id) or _behavior_profile_payload(
-                    program_map[actor_id]
+                mech_targets: dict[str, object] | None = (
+                    exercise_targets.as_dict() if exercise_targets is not None else None
                 )
-                if isinstance(profile_for_mech, dict):
-                    raw_targets = profile_for_mech.get("mechanism_exercise")
-                    if isinstance(raw_targets, dict):
-                        mech_targets = dict(raw_targets)
-                if mech_targets is None and mechanism_exercise_disabled(substrate_data):
-                    ecology_targets = ecology_governed_affordance_targets(
-                        substrate_data, agents=cfg.agents
-                    )
-                    if ecology_targets is not None:
-                        mech_targets = ecology_targets
-                        v3_part_b_presets = True
                 if protocol_active and not busy:
                     restricted = coupling_protocol.restricted_affordables(
                         actor_id=actor_id, role=agent.role
                     )
                     affordable = list(restricted or [])
+                    surfaced_reads = sum(1 for a in affordable if a.kind == "read")
                     if not affordable:
                         # Non-speaker: no decision tick (idle in the UAD trace).
                         continue
                 else:
                     # After a host coupling phase, do not re-offer channel
                     # communicates (credit already earned); still offer other kinds.
-                    include_channel = coupling_protocol is None
+                    include_channel = (
+                        coupling_protocol is None or coupling_protocol.coupling_complete
+                    )
                     omit_unbound_lab = (
                         mech_targets is not None
                         and v3_omit_unbound_lab_affordances(substrate_data)
                     )
-                    affordable = build_affordable_set(
+                    desk = desk_states[actor_id]
+                    affordable, surfaced_reads = build_affordable_set(
                         actor_id=actor_id,
                         role=agent.role,
                         resources=res,
@@ -843,6 +872,10 @@ def run_episode(
                         vote_specs=vote_service.specs if vote_service is not None else {},
                         include_channel=include_channel,
                         omit_unbound_lab_affordances=omit_unbound_lab,
+                        t=t,
+                        recent_paths=tuple(desk.recent_paths),
+                        scan_bias_query=desk.take_scan_bias(),
+                        desk_scan_available=not desk.scan_used_this_tick,
                     )
                 obs: dict[str, object] = {
                     "t": t,
@@ -865,14 +898,19 @@ def run_episode(
                     "decision_seed": seed * 100_000 + t * 100 + _stable_actor_offset(actor_id),
                     "last_primitive_outcome": last_outcomes[actor_id],
                 }
+                if not protocol_active:
+                    obs["desk_meta"] = desk_meta(
+                        artifact_paths=artifact_paths,
+                        surfaced_reads=surfaced_reads,
+                        scan_available=not desk_states[actor_id].scan_used_this_tick,
+                    )
                 profile = injected_profiles.get(actor_id) or _behavior_profile_payload(
                     program_map[actor_id]
                 )
                 if profile is not None:
                     obs["behavior_profile"] = profile
-                if v3_part_b_presets:
-                    obs["v3_part_b_presets"] = True
-                    obs["v3_part_b_targets"] = dict(mech_targets)
+                if mech_targets is not None:
+                    obs["exercise_targets"] = dict(mech_targets)
                 if cfg.substrate_settings.carrier_load_scale > 0.0:
                     obs["carrier"] = carrier.snapshot()
                 # Boundary-only copy for the post-episode BIQ estimator.  It

@@ -10,7 +10,7 @@
     },
     "communicate": {
       "compute": 1,
-      "io_per_message": 5
+      "io_per_message": 1
     },
     "call": {
       "access_request": {
@@ -42,12 +42,12 @@
   "resource_allowances_per_tick": {
     "engineer": {
       "compute": 40,
-      "io": 60,
+      "io": 120,
       "standing": 3
     },
     "reviewer": {
       "compute": 30,
-      "io": 50,
+      "io": 120,
       "standing": 4
     },
     "release_manager": {
@@ -289,31 +289,21 @@
     }
   ],
   "ecology_version": "graded-ecology-v3",
-  "reference_mechanism_exercise": {
-    "enabled": true,
-    "channel_coupling_rounds": 0
-  },
-  "pressure_coupling": {
-    "default_decay_per_tick": 0.01,
-    "channels": [
-      {
-        "id": "deploy_audit",
-        "roles_affected": ["reviewer"],
-        "task_kind": "incident_review",
-        "driver": "active_user_archetype_mass",
-        "gain": 10.0,
-        "threshold": 1.0,
-        "count": 1,
-        "expiry_ticks": 40
-      }
-    ]
-  },
-  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation. Integrated reference (2026-07-15): slice E pressure_coupling + slice B reference_mechanism_exercise on one WEAK_AGENT battery. GL-52: Part A shared_compute_slots=1 so C3 still binds after a single-speaker host coupling prefix; Part B ChannelCouplingProtocol runs 8 eng↔rev rounds (with irregular gaps) before pressure/pipeline resume. GL-53: v3 reference checker uses V3_REFERENCE_T=200 (not default T=100); calibration snapshot results/slice_d_reference_battery_T200_n50.json.",
+  "reference_mechanism_exercise": false,
+  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation. Integrated reference (2026-07-15): slice E pressure_coupling + slice B reference_mechanism_exercise on one WEAK_AGENT battery. GL-52: Part A shared_compute_slots=1 so C3 still binds after a single-speaker host coupling prefix; Part B ChannelCouplingProtocol runs 8 eng\u2194rev rounds (with irregular gaps) before pressure/pipeline resume. GL-53: v3 reference checker uses V3_REFERENCE_T=200 (not default T=100); calibration snapshot results/slice_d_reference_battery_T200_n50.json.",
   "v3_fixture_metadata": {
-    "provenance": "PLAN_v3 slice A — wiring validation only, not Q1 transfer",
+    "provenance": "PLAN_v3 slice A \u2014 wiring validation only, not Q1 transfer",
     "integrated_reference": {
-      "slices_co_exercised": ["A", "E", "B", "C"],
-      "slices_not_on_this_fixture": ["F", "D"],
+      "slices_co_exercised": [
+        "A",
+        "E",
+        "B",
+        "C"
+      ],
+      "slices_not_on_this_fixture": [
+        "F",
+        "D"
+      ],
       "reference_battery": {
         "code_version": "graded-lab-0.27.0",
         "roster": "WEAK_AGENT",
@@ -347,12 +337,39 @@
       "focal_role": "engineer",
       "focal_actor_id": "eng1",
       "ablation_flow_id": "flow_eng_lab_operator_compute",
-      "seeds": [0, 2, 4],
+      "seeds": [
+        0,
+        2,
+        4
+      ],
       "histogram_l1_threshold": 0.1,
       "min_seeds_passing": 2,
       "carrier_load_scale": 1.5,
       "roster": "WEAK_AGENT",
       "T": 100
+    },
+    "supplementary_uad": {
+      "provenance": "GL-65 implementer-only in-ecology UAD channel probe",
+      "probes": [
+        {
+          "probe_id": "organic_eng_review_channel",
+          "programs_by_actor": {
+            "eng1": "uad_channel_liaison",
+            "rev1": "uad_channel_scribe",
+            "rm1": "honest_twin",
+            "admin1": "honest_twin"
+          },
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "T": 80
+        }
+      ],
+      "note": "GL-65: lowered communicate io + raised eng/rev io for sustained in-ecology channel probe"
     }
   },
   "resource_flows": [

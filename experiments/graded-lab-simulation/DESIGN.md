@@ -62,16 +62,21 @@ for v3 reference batteries (v2 unchanged at ``T=100``).
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
 ``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
 growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
-launched). **Current:** ``graded-lab-0.34.0`` at GL-60 (supplementary
-detector fixtures; slice D 2b). GL-59 causal C2-v3 ablation gate;
-ablation engineering gate; accounting C2-v3 unchanged for growth).
-— ``ComplexityReport.all_passed``/``pass_fail_only()`` now require
+launched). **Current:** ``graded-lab-0.37.0`` at GL-66 (attention
+surface: push bands + interleaved cap + archive window + ``desk.scan``).
+GL-64/65 exercise targets + supplementary UAD gate; GL-59 causal
+C2-v3 ablation gate; GL-60 supplementary detector fixtures; GL-62 Part B
+retarget; GL-63 detector pre-registration split —
+``ComplexityReport.all_passed``/``pass_fail_only()`` now require
 C1-v3/C5-v3 for v3 ecologies (closing the declarative-green-without-
 causal-signal gap GL-42 named); GL-56's growth brief downgraded from
 "frozen" to **DRAFT** and its mitigation-2 default reversed to
 mitigation-1-for-round-1; C2-v3's accounting-only scope; detector pre-
 registration split (``machinery_transfer_verified`` blocking,
-``honest_reference_sparse_detectors`` report-only — GL-63).
+``honest_reference_sparse_detectors`` report-only — GL-63); UAD pre-
+registration split (``organic_channel_coupling_verified`` blocking,
+host ``ChannelCouplingProtocol`` not on honest reference — GL-64/65);
+attention surface (GL-66).
 Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
@@ -1658,10 +1663,11 @@ battery unchanged at ``T=100``). **Seeds:** ``C3_SEEDS = C4_SEEDS =
 tuple(range(20))`` for checker pass/fail; n=50 used only for point-estimate
 CI in the calibration snapshot, not a new threshold.
 
-**Why T=200.** At ``T=100`` the GL-52 coupling prefix (~ticks 1–19) plus
-four-actor ``slots=1`` contention leaves too little post-protocol horizon:
-deploy rate 0.0, C1-v3 all ``not_exercised``. At ``T=160`` deploy ≈ 0.25;
-at ``T=200`` deploy ≈ 0.68 with all criteria passing.
+**Why T=200.** At ``T=100`` with four-actor ``slots=1`` contention there is
+too little post-contention horizon: deploy rate 0.0, C1-v3 all
+``not_exercised``. At ``T=160`` deploy ≈ 0.25; at ``T=200`` deploy ≈ 0.68
+with all criteria passing. (GL-64: honest reference no longer runs the GL-52
+host coupling prefix; UAD coupling claims use the supplementary UAD gate.)
 
 **Frozen constants (checker code = source of truth):**
 
@@ -1669,8 +1675,10 @@ at ``T=200`` deploy ≈ 0.68 with all criteria passing.
 |---|---|---|
 | `V3_REFERENCE_T` | 200 | **high** — required for C4/C1-v3 on integrated fixture; sweep T∈{100,160,200} |
 | `shared_compute_slots` (reference fixture Part A) | 1 | **high** — slots=2 fails C3 with coupling prefix (GL-52 sweep) |
-| `channel_coupling_rounds` (reference fixture) | 8 | **high** — host protocol completes; coupling gate 50/50 at n=50 |
-| `DEFAULT_MIN_EFFECT_BITS` / coupling gate | 0.3 | **high** — eng↔rev CMI 0.92–1.18 bits on window (n=50) |
+| `channel_coupling_rounds` (reference fixture) | 0 | **high** — GL-64: no host ``ChannelCouplingProtocol`` on honest reference; UAD coupling via supplementary gate |
+| `DEFAULT_MIN_EFFECT_BITS` / host coupling gate | 0.3 | **medium** — applies only when ``channel_coupling_rounds > 0`` (debug/designed stimulus) |
+| `SUPPLEMENTARY_UAD_MIN_EFFECT_BITS` / organic gate | 0.08 | **high** — GL-65: 5/5 seeds on supplementary fixture @ T=80 |
+| `SUPPLEMENTARY_UAD_PROBE_T` | 80 | **high** — organic window before affordance starvation at longer horizons |
 | C3 episode / action bands | ≥0.30 / [0.05, 0.95] | **high** — n=50: episode 1.0, action 0.36 |
 | C4 deploy band | (0.1, 0.9) | **high** at T=200 — point 0.68 [0.55, 0.81] at n=50 |
 | C1-v3 `C1_V3_MAX_CORRELATION` | −0.15 | **high** at T=200 — 5/5 conflicts pass; r ∈ {−0.35, −0.63} at n=50 |
@@ -1678,13 +1686,34 @@ at ``T=200`` deploy ≈ 0.68 with all criteria passing.
 | C2-v3 min contribution fraction (compute, per role) | 0.05 | **high on what it measures** — integrated reference passes; token-flow negative in unit tests. **Accounting only** in ``ComplexityReport`` growth gating. **Causal supplement (GL-59):** ``evaluate_c2_v3_causal_gate`` ablates the dominant qualifying principal's compute flow per fixture metadata and requires deploy or focal-actor pattern L1 divergence on ≥2/3 seeds at ``carrier_load_scale=1.5`` (plain ``WEAK_AGENT``, no mechanism-exercise profiles — isolates flow effects from host Part B choreography). Fixtures: integrated reference + ``ecology_v3_c2_v3_causal_engineer_alt.json``. Engineering-only; not a grower-visible criterion. |
 | C3/C4 seed count (checker) | 20 | **medium** — sufficient for pass/fail; use n≈50 for CI claims only |
 
+**PLAN_v3 slice D — attention surface (GL-66, `graded-lab-0.37.0`):**
+
+Legal actions may exceed what the host publishes each tick. The published
+menu (``affordable_primitives``) is a bounded **attention surface**, not
+the full legality set.
+
+| Constant | Value | Confidence |
+|---|---|---|
+| ``ATTENTION_SURFACE_CAP`` / ``AFFORDABLE_CAP`` | 24 | **high** — unchanged cap; truncation policy changed |
+| Push band order | queue → role → recency → archive | **high** — pre-registered in ``attention_surface.py`` |
+| ``ARCHIVE_READ_WINDOW`` | 8 | **medium** — rotating slice; scan query narrows first |
+| ``RECENCY_PATH_CAP`` | 4 | **medium** — per-actor recently touched paths |
+| ``desk.scan`` endpoint | ``desk.scan`` | **high** — once per tick via ``DeskState``; biases next tick archive |
+| Interleave truncation | all ``call`` then round-robin kinds | **high** — extends GL-50 without kind tiers |
+| Organic UAD window | first burst, ``max_gap=4``, ``max_span=48`` | **medium** — GL-66 fix when traffic sustains past GL-65 horizon |
+
+Observation field ``desk_meta``: ``omitted_legal_reads``, ``archive_paths_total``,
+``desk_scan_available``, ``archive_pages``.
+
+**GL-67 test containment:** legacy v1 UAD/BIQ fixtures and pre-GL-66 ablation
+gates run under ``attention_surface_mode=legacy`` (``affordable_legacy.py``) via
+``conftest.py``; production episodes and v3 growth batteries keep GL-66.
+
 **Not frozen this slice (still open per `PLAN_v3.md` slice D):**
-**Part B retargeting (GL-61 chosen path, not yet implemented)** — reference
-presets must route through governed mechanism ids ecology-agnostically;
-host choreography (GL-58) is not sufficient. Supplementary detector
-fixtures built (GL-60). Causal C2-v3 gate built (GL-59). Growth protocol
-brief is DRAFT until retargeting validates — see `BLIND_GENERATION.md` § V3.
-No round launched.
+Growth protocol brief is **DRAFT** until implementer sign-off — see
+`BLIND_GENERATION.md` § V3. Part B retargeting closed (GL-62); supplementary
+detector gate (GL-60/63) and supplementary UAD gate (GL-65) closed. No round
+launched.
 
 **GL-57 gating fix (external review, applied):** `ComplexityReport
 .all_passed` / `.pass_fail_only()` previously only covered declarative
@@ -1722,6 +1751,16 @@ on ``ecology_v3_supplementary_detector_suite.json`` satisfies
 phenomena are injected. This is the **blocking** Q1 machinery-transfer gate.
 GL-57's original conflated ``transfer_failure_risk`` flag is **retired** (GL-63):
 do not cite honest-reference sparsity as evidence detectors fail on v3.
+
+**Item 6c / UAD live-coupling (GL-65):** supplementary UAD gate on
+``ecology_v3_supplementary_uad_channel_suite.json`` satisfies
+``organic_channel_coupling_verified`` — rest-conditioned CMI on governed-channel
+traffic from implementer-only ``uad_channel_liaison`` / ``uad_channel_scribe``
+presets (5/5 seeds @ 0.08 bits, T=80). **Blocking** for UAD coupling claims.
+Honest reference uses ``channel_coupling_rounds: 0`` (GL-64); host
+``ChannelCouplingProtocol`` is not the claim path. Script:
+``scripts/run_v3_supplementary_uad_gate.py``; snapshot
+``results/slice_d_v3_supplementary_uad_gate.json``.
 
 **Item 7 result, first pass (seed 0, 8 variants/actor) — retracted as a
 harness artifact, see GL-55 below.** The original run reported "100%
