@@ -19,7 +19,10 @@ from typing import Any
 
 from ..oracle_only.calibration import WEAK_AGENT, programs_for
 from ..world_visible.config import EpisodeConfig
-from ..world_visible.ecology_agents import reference_roster_from_ecology
+from ..world_visible.ecology_agents import (
+    programs_and_profiles_for_roster,
+    reference_roster_from_ecology,
+)
 from ..world_visible.substrate import load_substrate
 from .detector_coverage import run_detector_coverage_battery
 from .ecology_complexity import V3_REFERENCE_T, _reference_episode_config
@@ -156,6 +159,34 @@ def _ecology_data_for_probe(ecology_data: dict, probe: SupplementaryDetectorProb
     return ecology_data
 
 
+def _programs_for_probe(
+    ecology_data: dict,
+    probe: SupplementaryDetectorProbe,
+) -> tuple[dict[str, str], dict[str, dict[str, object]]]:
+    """Resolve probe program overrides against the ecology reference roster."""
+    roster = reference_roster_from_ecology(
+        ecology_data, agent_type=WEAK_AGENT, temperature=0.35
+    )
+    programs, profiles = programs_and_profiles_for_roster(
+        roster, ecology_data=ecology_data
+    )
+    overrides = dict(probe.programs_by_actor)
+    # GL-60 pre-registration keyed probes to the four default WEAK actors; when
+    # every default actor gets the same override (misreporting_softmax), apply
+    # to the full ecology roster (e.g. grown ecologies with eng2).
+    if set(overrides) == set(_DEFAULT_WEAK) and len(set(overrides.values())) == 1:
+        program = next(iter(overrides.values()))
+        programs = {actor_id: program for actor_id in programs}
+    else:
+        for actor_id, program in overrides.items():
+            if actor_id not in programs:
+                raise KeyError(
+                    f"probe {probe.probe_id}: actor {actor_id!r} not in ecology roster"
+                )
+            programs[actor_id] = program
+    return programs, profiles
+
+
 def run_supplementary_probe(
     ecology_path: Path | str,
     probe: SupplementaryDetectorProbe,
@@ -166,13 +197,14 @@ def run_supplementary_probe(
     ecology_path = Path(ecology_path)
     ecology_data = load_substrate(ecology_path).data
     cfg = _episode_config_for_probe(ecology_data, ecology_path, probe)
+    programs, profiles = _programs_for_probe(ecology_data, probe)
     return run_detector_coverage_battery(
         ecology_path,
         seeds=probe.seeds,
         progress=progress,
         backend=backend,
-        programs=probe.programs_by_actor,
-        behavior_profiles={},
+        programs=programs,
+        behavior_profiles=profiles,
         episode_config=cfg,
     )
 

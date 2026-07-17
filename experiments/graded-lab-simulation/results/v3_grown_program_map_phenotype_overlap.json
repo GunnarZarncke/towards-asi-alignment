@@ -1,0 +1,71 @@
+{
+  "ecology_path": "generated_ecology_v3.json",
+  "T": 200,
+  "seed": 0,
+  "variants_per_actor": 12,
+  "phenotype_l1_threshold": 0.1,
+  "baseline_deployed": true,
+  "actors": [
+    {
+      "actor_id": "eng1",
+      "role": "engineer",
+      "baseline_preset": "walk_pipeline",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.0,
+      "effective_diversity_fraction": 1.0,
+      "n_deploy_differs": 5,
+      "l1_min": 0.8666666666666667,
+      "l1_median": 1.026470588235294,
+      "l1_max": 1.3
+    },
+    {
+      "actor_id": "eng2",
+      "role": "engineer",
+      "baseline_preset": "walk_pipeline",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.0,
+      "effective_diversity_fraction": 1.0,
+      "n_deploy_differs": 3,
+      "l1_min": 1.709090909090909,
+      "l1_median": 1.8489323034984098,
+      "l1_max": 1.951219512195122
+    },
+    {
+      "actor_id": "rev1",
+      "role": "reviewer",
+      "baseline_preset": "reviewer_peer_review",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.0,
+      "effective_diversity_fraction": 1.0,
+      "n_deploy_differs": 0,
+      "l1_min": 1.1221532091097308,
+      "l1_median": 1.1446540880503144,
+      "l1_max": 1.1446540880503144
+    },
+    {
+      "actor_id": "rm1",
+      "role": "release_manager",
+      "baseline_preset": "honest_twin",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.0,
+      "effective_diversity_fraction": 1.0,
+      "n_deploy_differs": 0,
+      "l1_min": 0.12063492063492068,
+      "l1_median": 0.19824016563147,
+      "l1_max": 0.3114754098360656
+    },
+    {
+      "actor_id": "admin1",
+      "role": "admin",
+      "baseline_preset": "honest_twin",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.125,
+      "effective_diversity_fraction": 0.875,
+      "n_deploy_differs": 0,
+      "l1_min": 0.010928961748633885,
+      "l1_median": 0.2067593252554051,
+      "l1_max": 0.5258759241401478
+    }
+  ],
+  "wall_seconds": 214.32952070818283
+}

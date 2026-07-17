@@ -475,9 +475,79 @@ pytest tests/test_slice_c_scorecard.py::test_c1_v3_not_exercised_when_episode_ho
 
 **Slice D brief frozen (GL-69).** Part B retargeting ✅ (GL-62); supplementary
 detector ✅ (GL-60); causal C2-v3 ✅ (GL-59/68); supplementary UAD ✅ (GL-65);
-attention surface ✅ (GL-66/67). Growth brief (`BLIND_GENERATION.md` § V3) is
-**FROZEN**; **first v3 growth round** still open. Still deferred: generic
-walker-step interpreter; v3 strict mode → §8; service-oriented isolate → §11.
+attention surface ✅ (GL-66/67). **V3 grown ecology frozen (GL-73)** after valid
+round 2 (GL-72). Still deferred: generic walker-step interpreter; v3 strict mode
+→ §8; service-oriented isolate → §11; **V2-3 Q1 harness implemented (GL-75), not run**.
+
+**Post-freeze pre-Q1 batteries on frozen grower ecology (GL-74, ~8–15 min):**
+
+```bash
+cd experiments/graded-lab-simulation
+python3 scripts/run_v3_detector_coverage_battery.py \
+  --fixture generated_ecology_v3.json --seeds 20 \
+  --out results/v3_grown_detector_coverage_T200_n20.json
+
+python3 scripts/run_v3_supplementary_detector_gate.py \
+  --fixture generated_ecology_v3.json \
+  --out results/v3_grown_supplementary_detector_gate.json
+
+python3 scripts/run_program_map_phenotype_overlap.py \
+  --fixture generated_ecology_v3.json \
+  --out results/v3_grown_program_map_phenotype_overlap.json
+```
+
+Use ``.venv/bin/python`` if the project venv is active. ``machinery_transfer_verified``
+must be ``true`` on the grown ecology before citing Q1 detector-transfer claims.
+
+---
+
+## 10.1 V2-3 Q1 machinery transfer battery (implemented GL-75, not run)
+
+**Status:** *harness ready* — full battery **not executed** per implementer instruction.
+
+**Target ecology:** ``generated_ecology_v3.json`` (``ecology_version="v3_grown"``).
+
+**What it runs (frozen machinery, no threshold edits):**
+
+1. C5 declared mechanisms → UAD ground-truth catalog (all four kinds).
+2. Reference ``WEAK_AGENT`` episodes: passive UAD + all-pairs intervention (P1, P2).
+3. EAI agent-vantage (``full`` tier) vs referee-vantage (``light`` tier) over
+   ``CARRIER_SCALES`` (P3 + go/no-go for V2-5/V2-6).
+4. Ecology-BIQ on passive-inferred nonsingleton units (subset of seeds).
+5. Honest detector coverage (P4) + onboarding median ticks-to-deploy (V2-6 input).
+
+**Output:** ``results/v2_transfer.json`` with ``predictions.P1``–``P4``.
+
+**Reproduce (full run, ~10–30 min with ``--workers 4``, ~30–90 min serial):**
+
+```bash
+cd experiments/graded-lab-simulation
+.venv/bin/python scripts/run_v2_transfer_battery.py \
+  --fixture generated_ecology_v3.json \
+  --out results/v2_transfer.json \
+  --workers 4
+```
+
+Use ``--workers 1`` for deterministic single-process execution (tests, debugging).
+
+**Smoke / harness validation only:**
+
+```bash
+.venv/bin/python scripts/run_v2_transfer_battery.py --smoke --no-biq
+pytest tests/test_machinery_transfer.py -q --no-speed-check
+```
+
+**Module:** ``graded_lab/harness/machinery_transfer.py``; pre-registered constants
+at module top (``UAD_SEEDS`` = ``C3_SEEDS``, ``EAI_SEEDS`` = ``CALIBRATION_SEEDS``,
+``P1_COMMUNICATE_MAX_MEMBERS`` = 3, ``MECHANISM_MAJORITY_SEED_FRACTION`` = 0.5).
+
+**Scoring rules (GL-75b, frozen before first full run):**
+- P1 communicate pool excludes ``message_channel`` mechanisms with >3 members
+  after role expansion (avoids whole-roster ACL co-cluster geometry).
+- P1 pass: >= half of pool mechanisms have seed-hit rate >= 0.5 (not mean of rates).
+- P4: honest-reference sparsity only; blocking detector gate is
+  ``machinery_transfer_verified`` (supplementary gate, already true on v3_grown).
+- Go gate for V2-5/V2-6: referee EAI mid band at **default load** (carrier=1.0).
 
 ---
 

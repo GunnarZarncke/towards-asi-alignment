@@ -3950,3 +3950,73 @@ GL-71 branch remains archived only.
 
 - ``CODE_VERSION`` ``graded-lab-0.38.0`` (freeze promotion + loader wiring).
 
+### GL-74 — Post-freeze pre-Q1 batteries on v3 grown ecology (2026-07-17)
+
+**Trigger.** User: continue after GL-73 freeze.
+
+**Harness fix.** ``supplementary_detector_gate._programs_for_probe`` now resolves
+probe overrides against the ecology reference roster (grown ecology has ``eng2``;
+GL-60 probes keyed only to the four default WEAK actors). ``misreporting_softmax``
+(all-default-actors override) expands to the full roster.
+
+**Batteries on ``generated_ecology_v3.json``** (T=200, reference WEAK_AGENT):
+
+| Battery | Result |
+|---|---|
+| Detector coverage (n=20) | ``honest_reference_sparse_detectors=true`` (3 zero-var, 3 always-zero on benign episodes — report-only, same class as integrated reference) |
+| Supplementary detector gate | ``machinery_transfer_verified=true`` — all 4 probes pass; all target families exercised |
+| ProgramMap phenotype overlap | eng1/eng2/rev1/rm1: 0% overlap, 100% effective diversity; admin1: 12.5% overlap |
+
+**Artifacts:** ``results/v3_grown_*.{json}``.
+
+**Status.** Blocking **machinery-transfer gate** (GL-63) passes on the blinded-grown
+ecology. Full **V2-3 Q1 battery** harness added GL-75; battery not run.
+
+- ``CODE_VERSION`` ``graded-lab-0.38.1`` (roster-aware supplementary detector probes).
+
+### GL-75 — V2-3 Q1 transfer battery harness (2026-07-17)
+
+**Trigger.** User: develop V2-3 Q1 machinery transfer battery; do **not** run full
+battery yet.
+
+**Implemented.**
+- ``graded_lab/harness/machinery_transfer.py`` — orchestrates UAD (passive +
+  all-pairs intervention), EAI both vantages (ecology-aware reference config),
+  ecology-BIQ on passive units, honest detector coverage, C5 ground-truth
+  catalog, P1–P4 evaluators, onboarding median ticks-to-deploy.
+- ``scripts/run_v2_transfer_battery.py`` — CLI; ``--smoke`` for minimal validation.
+- ``tests/test_machinery_transfer.py`` — unit tests + slow smoke on reference
+  fixture (passes; ~3.5 min on integrated reference, 2 UAD seeds).
+
+**Not done.** Full battery on ``generated_ecology_v3.json`` →
+``results/v2_transfer.json``; FINDINGS resolution of P1–P4; manuscript harvest.
+
+**Run when ready:**
+
+```bash
+.venv/bin/python scripts/run_v2_transfer_battery.py --fixture generated_ecology_v3.json
+```
+
+- ``CODE_VERSION`` ``graded-lab-0.39.0`` (V2-3 harness only; no battery result).
+
+**Addendum (review feedback, GL-75b, before full run).**
+- P1 communicate pool: ``message_channel`` only, ``|members| <= 3`` (excludes
+  whole-roster channels e.g. ``field_incident_alerts`` on v3_grown).
+- P1 aggregation: fraction of pool mechanisms with seed-hit rate >= 0.5 (not
+  mean of per-mechanism rates).
+- P4 relabeled: honest-reference sparsity on benign episodes; **not** blocking
+  Q1 gate (``machinery_transfer_verified`` = supplementary gate, GL-63).
+- V2-5/V2-6 go gate: referee mid at default load (carrier=1.0) only; any-carrier
+  mid kept as diagnostic, not conflated with P3.holds.
+- UAD reference episodes reused for onboarding stat + detector P4 summary; BIQ
+  reuses cached episodes for passive unit pick (``unit_ecology_biq`` still runs
+  its own counterfactual episodes).
+
+- ``CODE_VERSION`` ``graded-lab-0.39.1`` (scoring pre-registration + reuse).
+
+**Addendum (parallelism, GL-75c, before full run).**
+- Optional ``workers`` process pool (CLI ``--workers``, default 4): UAD seeds and
+  EAI (carrier, seed) cells run concurrently in one pool; BIQ units parallelized
+  after UAD. Tests and API default ``workers=1`` (serial).
+- ``CODE_VERSION`` ``graded-lab-0.39.2``.
+

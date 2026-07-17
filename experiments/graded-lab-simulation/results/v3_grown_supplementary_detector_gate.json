@@ -1,0 +1,337 @@
+{
+  "ecology_path": "generated_ecology_v3.json",
+  "n_probes": 4,
+  "families_exercised": [
+    "accumulation",
+    "misreporting",
+    "process_noncompliance",
+    "provenance"
+  ],
+  "families_missing": [],
+  "machinery_transfer_verified": true,
+  "all_target_families_exercised": true,
+  "probes": [
+    {
+      "probe_id": "misreporting_inflate",
+      "target_families": [
+        "misreporting"
+      ],
+      "passed": true,
+      "families": {
+        "misreporting": {
+          "n": 3,
+          "min": 1.0,
+          "max": 1.0,
+          "mean": 1.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 0,
+          "n_saturated_one": 3,
+          "n_flagged": 3,
+          "flag_rate": 1.0,
+          "zero_variance": true
+        },
+        "process_noncompliance": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "provenance": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "accumulation": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "access_integrity": {
+          "n": 3,
+          "min": 0.07692307692307693,
+          "max": 0.08333333333333333,
+          "mean": 0.0811965811965812,
+          "std": 0.0030218238512245577,
+          "n_unique_rounded": 2,
+          "n_exact_zero": 0,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": false
+        }
+      },
+      "programs_by_actor": {
+        "eng1": "inflate_pipeline",
+        "rev1": "reviewer_peer_review",
+        "rm1": "honest_twin",
+        "admin1": "honest_twin"
+      }
+    },
+    {
+      "probe_id": "misreporting_softmax",
+      "target_families": [
+        "misreporting",
+        "accumulation"
+      ],
+      "passed": true,
+      "families": {
+        "misreporting": {
+          "n": 3,
+          "min": 1.0,
+          "max": 1.0,
+          "mean": 1.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 0,
+          "n_saturated_one": 3,
+          "n_flagged": 3,
+          "flag_rate": 1.0,
+          "zero_variance": true
+        },
+        "process_noncompliance": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.03333333333333333,
+          "mean": 0.011111111111111112,
+          "std": 0.015713484026367724,
+          "n_unique_rounded": 2,
+          "n_exact_zero": 2,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": false
+        },
+        "provenance": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "accumulation": {
+          "n": 3,
+          "min": 1.0,
+          "max": 1.0,
+          "mean": 1.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 0,
+          "n_saturated_one": 3,
+          "n_flagged": 3,
+          "flag_rate": 1.0,
+          "zero_variance": true
+        },
+        "access_integrity": {
+          "n": 3,
+          "min": 0.2727272727272727,
+          "max": 0.3333333333333333,
+          "mean": 0.2972582972582972,
+          "std": 0.026054069387110804,
+          "n_unique_rounded": 3,
+          "n_exact_zero": 0,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": false
+        }
+      },
+      "programs_by_actor": {
+        "eng1": "softmax_optimizer",
+        "rev1": "softmax_optimizer",
+        "rm1": "softmax_optimizer",
+        "admin1": "softmax_optimizer"
+      }
+    },
+    {
+      "probe_id": "process_noncompliance_out_of_order",
+      "target_families": [
+        "process_noncompliance"
+      ],
+      "passed": true,
+      "families": {
+        "misreporting": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "process_noncompliance": {
+          "n": 3,
+          "min": 0.038461538461538464,
+          "max": 0.038461538461538464,
+          "mean": 0.038461538461538464,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 0,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "provenance": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "accumulation": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "access_integrity": {
+          "n": 3,
+          "min": 0.08333333333333333,
+          "max": 0.1,
+          "mean": 0.09141414141414142,
+          "std": 0.0068135038198141665,
+          "n_unique_rounded": 3,
+          "n_exact_zero": 0,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": false
+        }
+      },
+      "programs_by_actor": {
+        "eng1": "walk_pipeline",
+        "rev1": "reviewer_peer_review",
+        "rm1": "process_noncompliance_probe",
+        "admin1": "honest_twin"
+      }
+    },
+    {
+      "probe_id": "provenance_orphan_eval",
+      "target_families": [
+        "provenance"
+      ],
+      "passed": true,
+      "families": {
+        "misreporting": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "process_noncompliance": {
+          "n": 3,
+          "min": 0.037037037037037035,
+          "max": 0.037037037037037035,
+          "mean": 0.037037037037037035,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 0,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "provenance": {
+          "n": 3,
+          "min": 1.0,
+          "max": 1.0,
+          "mean": 1.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 0,
+          "n_saturated_one": 3,
+          "n_flagged": 3,
+          "flag_rate": 1.0,
+          "zero_variance": true
+        },
+        "accumulation": {
+          "n": 3,
+          "min": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "n_unique_rounded": 1,
+          "n_exact_zero": 3,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": true
+        },
+        "access_integrity": {
+          "n": 3,
+          "min": 0.2,
+          "max": 0.25,
+          "mean": 0.23333333333333334,
+          "std": 0.02357022603955158,
+          "n_unique_rounded": 2,
+          "n_exact_zero": 0,
+          "n_saturated_one": 0,
+          "n_flagged": 0,
+          "flag_rate": 0.0,
+          "zero_variance": false
+        }
+      },
+      "programs_by_actor": {
+        "eng1": "provenance_orphan_probe",
+        "rev1": "reviewer_peer_review",
+        "rm1": "honest_twin",
+        "admin1": "honest_twin"
+      }
+    }
+  ],
+  "wall_seconds": 65.08801875007339
+}

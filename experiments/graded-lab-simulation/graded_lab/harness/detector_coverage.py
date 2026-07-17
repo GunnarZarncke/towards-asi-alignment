@@ -73,6 +73,43 @@ def honest_reference_sparse_detectors(families: dict[str, dict[str, Any]]) -> bo
     return False
 
 
+def summarize_detector_coverage_from_results(
+    results: list[Any],
+    *,
+    ecology_path: Path | str,
+    seeds: tuple[int, ...],
+    tier: str = DETECTOR_TIER,
+    T: int | None = None,
+) -> dict[str, Any]:
+    """Summarize detector families from pre-run reference episodes (no re-simulation)."""
+    per_family: dict[str, list[float]] = {name: [] for name in DETECTOR_FAMILIES}
+    for result in results:
+        scores = run_all_detectors(build_audit_view(result, tier))
+        for name, value in scores.items():
+            per_family[name].append(float(value))
+    families = {name: _summarize_scores(values) for name, values in per_family.items()}
+    n_zero_variance = sum(1 for summary in families.values() if summary["zero_variance"])
+    n_always_zero = sum(
+        1
+        for summary in families.values()
+        if summary["n"] and summary["n_exact_zero"] == summary["n"]
+    )
+    episode_T = T if T is not None else (getattr(results[0], "T", None) if results else None)
+    return {
+        "ecology_path": str(ecology_path),
+        "agent_type": WEAK_AGENT,
+        "T": episode_T,
+        "tier": tier,
+        "n_episodes": len(results),
+        "seeds": list(seeds),
+        "flag_threshold": DETECTOR_FLAG_THRESHOLD,
+        "families": families,
+        "n_families_zero_variance": n_zero_variance,
+        "n_families_always_zero": n_always_zero,
+        "honest_reference_sparse_detectors": honest_reference_sparse_detectors(families),
+    }
+
+
 def run_detector_coverage_battery(
     ecology_path: Path | str,
     *,
@@ -115,32 +152,15 @@ def run_detector_coverage_battery(
         results.append(
             run_episode(cfg, seed, backend, programs=programs, behavior_profiles=profiles)
         )
-    per_family: dict[str, list[float]] = {name: [] for name in DETECTOR_FAMILIES}
+    payload = summarize_detector_coverage_from_results(
+        results,
+        ecology_path=ecology_path,
+        seeds=seeds,
+        tier=tier,
+        T=cfg.T,
+    )
     per_episode: list[dict[str, float]] = []
     for result in results:
-        scores = run_all_detectors(build_audit_view(result, tier))
-        per_episode.append(dict(scores))
-        for name, value in scores.items():
-            per_family[name].append(float(value))
-
-    families = {name: _summarize_scores(values) for name, values in per_family.items()}
-    n_zero_variance = sum(1 for summary in families.values() if summary["zero_variance"])
-    n_always_zero = sum(
-        1
-        for summary in families.values()
-        if summary["n"] and summary["n_exact_zero"] == summary["n"]
-    )
-    return {
-        "ecology_path": str(ecology_path),
-        "agent_type": WEAK_AGENT,
-        "T": cfg.T,
-        "tier": tier,
-        "n_episodes": len(results),
-        "seeds": list(seeds),
-        "flag_threshold": DETECTOR_FLAG_THRESHOLD,
-        "families": families,
-        "n_families_zero_variance": n_zero_variance,
-        "n_families_always_zero": n_always_zero,
-        "honest_reference_sparse_detectors": honest_reference_sparse_detectors(families),
-        "episodes": per_episode,
-    }
+        per_episode.append(dict(run_all_detectors(build_audit_view(result, tier))))
+    payload["episodes"] = per_episode
+    return payload
