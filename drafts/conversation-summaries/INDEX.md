@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-17 | Graded lab **GL-72**: void GL-71 dead branch, fix grower blinding, clean round 2 all-pass | [2026-07-17-graded-lab-v3-grower-blinding-fix-round2.md](2026-07-17-graded-lab-v3-grower-blinding-fix-round2.md) |
+| 2026-07-17 | Xi Jinping **WAIC 2026 keynote** in `context/`; short dual-mandate refs in App M + App C; bib `xi2026waic` | [2026-07-17-xi-waic-keynote-context.md](2026-07-17-xi-waic-keynote-context.md) |
 | 2026-07-17 | Graded lab **v3 grower round 1 (GL-70)**: physical stash, blinded subagent, C1–C5 + C5_v3 pass, C1_v3 fails on compute_burn tension | [2026-07-17-graded-lab-v3-grower-round1.md](2026-07-17-graded-lab-v3-grower-round1.md) |
 | 2026-07-17 | **Epistemic-status field census** across all 55 boxes + 4-subagent body-text duplication check; applied high/medium trims (ch36→ch34 Goodhart, ch35→ch13 κ/Hamilton, ch06/ch07→ch01 Markov-blanket incl. conditioning-set bugfix, ch04/ch15→ch17 IRL bound, ch45→ch04 CEV); fixed symbol-census graph hairball regression (reachability view, aggregated chapter-level text-refs, delabeled bulk edges) | [2026-07-17-epistemic-status-census-and-graph-readability.md](2026-07-17-epistemic-status-census-and-graph-readability.md) |
 | 2026-07-17 | Graded lab **GL-69**: freeze v3 growth brief (+ GL-68 ACL/ablation recalibration) | [2026-07-17-graded-lab-gl69-freeze-growth-brief.md](2026-07-17-graded-lab-gl69-freeze-growth-brief.md) |
