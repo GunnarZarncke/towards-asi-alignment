@@ -721,3 +721,104 @@ retargeting validates.
    at T=200; C5-v3 negative controls.
 3. Document interaction with grower-authored `ProgramMap` before any
    mitigation-2 brief uses it.
+
+---
+
+## 12. v4 stretch rigs — R-MB3 bearer maps; MB10 scoping
+
+**Status:** *deferred out of `PLAN_v4.md`* (2026-07-18). Neither item is
+a v4 stage; entering the v4 plan requires a design gate plus a
+V4-1-style freeze addendum (precondition, substrate class, predictions,
+harvest sentences).
+
+### 12.1 R-MB3 — bearer maps (per-bearer harm attribution)
+
+**Gap.** The bridge question is whether declared value-bearers (user
+archetypes, principals' constituencies) map onto the entities the
+referee actually measures harm for. Graded-lab has hooks — the slice-C
+`bearer_harm` objective metric and `active_user_archetype_mass` as a
+slice-E pressure driver — but Tier-K harm is a **single aggregate**:
+`oracle.py` has no per-archetype ledger, so "harm moved from bearer
+class A to bearer class B" is unmeasurable today, and a bearer-mismap
+test object cannot even be stated.
+
+**Prerequisite (the design gate):** split the harm/exposure ledger by
+user archetype in `oracle.py` (referee plane only; no agent-visible
+change). Blast radius: severity composite aggregation, principal
+scorecard (`bearer_harm` becomes a vector or a declared aggregation over
+archetypes), detector inputs that consume harm rates, and every frozen
+battery that pins severity numbers — expect digest re-pins, same class
+as GL-50. Do this only if the ledger split is wanted for other reasons
+too (e.g. richer slice-C scorecards).
+
+**Rig sketch (post-split):** declare bearer membership per archetype in
+the ecology; run reference + selection traces; test whether the referee
+surface distinguishes "aggregate harm flat, bearer-class harm shifted"
+(the mismap signature) from genuinely flat harm. S-fixture first with a
+scripted harm-shift agent; S-blind only if the fixture rig earns it.
+Precondition: ≥ 2 archetypes with nonzero exposure mass in reference
+traces. Prior art: lab-sim's split-bearer health+stress bundle
+(`docs/EXPERIMENTS.md` MB3 row).
+
+### 12.2 MB10 — measurement forgeability (scoped out, pointer)
+
+Graded-lab episode logs and referee inputs are **host-side truthful by
+construction** — agents cannot write the measurement artifacts, so a
+forgeability rig has no substrate here and building one would mean
+bolting on agent-writable certificates that nothing else in this line
+needs. The embedded-simulation line already has the right substrate:
+VFS-resident certification artifacts, hash-chained anchors, an outer
+evaluator grading certificates against `OuterTruthLedger`
+(`experiments/embedded-simulation/`, `docs/EXPERIMENTS.md` MB10 row).
+MB10 work belongs there; graded-lab's contribution is at most exporting
+its referee-evidence vocabulary for the certificate schema. Recorded
+here so the v4 coverage table's "out of scope" is a documented scoping
+decision, not an omission.
+
+---
+
+## 13. All-bridges integration — cross-rig, cross-line synthesis
+
+**Status:** *not started; consumes v4 rig outputs (PLAN_v4 stage V4-8
+is the per-program version; this item is the larger cross-line
+package).*
+
+**Gap.** Bridge coverage is currently reported per experiment line
+(`docs/EXPERIMENTS.md` coverage matrix, `metadata/experiments.yml`,
+appN per-line meta-lines, appB crosswalk rows). There is no single
+artifact that answers, per bridge MB1–MB10: what is the **strongest
+substrate class** any line has tested it on, what were the pass / null
+/ SKIP outcomes, and which named field crux (appB) the result bears on.
+v4's per-rig structure makes this mechanical for graded-lab; the other
+lines' findings ledgers (`AD-`, `TS-`, `ES-`, `GA-`, `LS-`) contain the
+same information in prose.
+
+**Deliverable sketch:**
+
+1. **Machine-readable bridge ledger** — extend `metadata/experiments.yml`
+   (or a sibling `metadata/bridge-coverage.yml`) with one row per
+   (bridge, line, rig/battery): substrate class (S-blind / S-fixture /
+   S-inherited or the line's equivalent), outcome (pass / null / SKIP),
+   finding IDs, consumer chapters. Generated table replaces the
+   hand-maintained coverage matrix in `docs/EXPERIMENTS.md`; synced to
+   the site like `site/src/data/experiments.json`.
+2. **Synthesis document** — per bridge, 3–6 sentences: strongest claim
+   earned, strongest recorded negative, and the open gap — written under
+   the same calibration rules as the Lean spine (proof / counterexample
+   / bridge status), citing finding IDs, never pooling substrate
+   classes silently (PLAN_v4 design principle 5).
+3. **Manuscript hook** — appB crosswalk gains a per-bridge empirical
+   pointer into the ledger; appN meta-lines stay per-line. No chapter
+   claims upgrade without the per-rig harvest sentences already frozen
+   in their plans.
+4. **Check integration** — a `make check` script asserting every ledger
+   row's finding ID exists in the referenced FINDINGS file, and every
+   appN `gl-`/`ls-`/… empirical citation has a ledger row (same class
+   as `check_bibliography_summaries.py`).
+
+**Effort:** ~1 wk for ledger + generator + check; the synthesis
+document is bounded by the thin-sentence rule (a bridge with nothing
+worth 3 sentences gets its gap stated in one).
+
+**Blocked by:** at least V4-2/V4-3 outputs existing (otherwise the
+graded-lab rows just restate GL-74/76/77); not blocked by V4-6/V4-7.

@@ -1,9 +1,14 @@
 # PLAN v3 — institutional runtime wiring
 
-**Status (build order):** slices **A**, **F**, **E**, **C**, **B** done;
-**slice D** criteria/gates closed through GL-68; **growth brief FROZEN
-(GL-69)**; **v3 grown ecology FROZEN (GL-73)** after valid round 2 (GL-72) —
-see the build-order table below.
+**Status: LINE CLOSED (GL-78, 2026-07-18).** All slices delivered:
+**A**, **F**, **E**, **C**, **B** done; **slice D** criteria/gates
+closed through GL-68; **growth brief FROZEN (GL-69)**; **v3 grown
+ecology FROZEN (GL-73)** after valid round 2 (GL-72). The Q1 transfer
+battery ran on the grown ecology and returned a null (GL-76/GL-77),
+harvested to the manuscript 2026-07-17. Successor program:
+**`PLAN_v4.md`** (decoupled per-bridge rigs) — the slice A–F runtime,
+the v3 grown ecology, and the growth protocol all carry forward as v4
+substrate; see GL-78 for the closure record.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing
@@ -745,7 +750,7 @@ HTTP/WebCAL later.
 | 4 | Reference KB (`tests/fixtures/ecology_v3_slice_a_knowledge_base.md`) | ✅ |
 | 5 | Re-run fast + supplementary UAD gate batteries | ✅ |
 | 6 | `FINDINGS.md` GL-66 + `CODE_VERSION` `graded-lab-0.37.0` | ✅ |
-| 7 | Growth brief sign-off (human) | open |
+| 7 | Growth brief sign-off (human) | ✅ (satisfied by the GL-69 brief freeze; row was stale — noted at closure, GL-78) |
 
 **Frozen semantics (summary).** Published menu = **attention surface**
 (still ``affordable_primitives``): queue → role → recency → archive

@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-18 | Graded lab **PLAN_v4 draft** (per-bridge rigs) + **v3 line closed** (GL-78) | [2026-07-18-graded-lab-plan-v4-draft-v3-closure.md](2026-07-18-graded-lab-plan-v4-draft-v3-closure.md) |
 | 2026-07-17 | Cloudflare Web Analytics (cookieless; Impressum note) | [2026-07-17-cloudflare-web-analytics.md](2026-07-17-cloudflare-web-analytics.md) |
 | 2026-07-17 | Site header search UI (type + multi-word fallback) | [2026-07-17-site-header-search.md](2026-07-17-site-header-search.md) |
 | 2026-07-17 | Content sync plumbing (phases 7–10): releases hub, search index, claim-ledger `claimId` links, cleanup + docs | [2026-07-17-content-sync-plumbing.md](2026-07-17-content-sync-plumbing.md) |

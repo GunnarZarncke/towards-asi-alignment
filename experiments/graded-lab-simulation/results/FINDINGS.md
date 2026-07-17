@@ -4098,4 +4098,50 @@ Artifacts: ``results/v2_transfer_biq.json``; ``ecology_biq`` patched into
 
 - ``CODE_VERSION`` ``graded-lab-0.39.3``.
 
+## GL-78 (v3 line closed; superseded by PLAN_v4 per-bridge rigs)
+
+**Trigger.** User decision, 2026-07-18, at the PLAN_v4 drafting
+session: "we close the v3 line."
+
+**What v3 delivered (complete).** All engineering slices landed and
+gated: A flows→budgets (GL-44), F heterogeneous roles + `ProgramMap`
+(GL-46), E feedback-coupled pressure (GL-47), B enforced mechanisms
+(GL-45/GL-48/GL-48b), C principal scorecard + measured tension (GL-49),
+slice D criteria re-derivation and reference-battery calibration
+(GL-53, GL-60–GL-68), attention surface (GL-66). Growth brief frozen
+(GL-69); `generated_ecology_v3.json` grown and frozen after valid
+round 2 (GL-72/GL-73). The Q1 machinery-transfer battery then ran on it
+(GL-76/GL-77): P1–P3 false, go gate false, null harvested to the
+manuscript (2026-07-17).
+
+**Why close now.** v3's goal — a runtime-wired institutional ecology a
+Q1 transfer battery could honestly run on — is met; the battery ran and
+the answer was a null. The remaining open item in PLAN_v3 (GL-66 step 7
+growth-brief sign-off) was satisfied by the GL-69 freeze. Continuing
+under PLAN_v3/PLAN_v2 would mean re-running the same gated chain, which
+GL-76 showed cascades a single precondition failure into descoping the
+whole program. The successor program (`PLAN_v4.md`, draft) restructures
+around decoupled per-bridge rigs with per-rig preconditions and
+SKIP-with-finding semantics.
+
+**What carries forward (not wasted):**
+
+- The entire slice A–F institutional runtime — it is the enabling
+  substrate for the v4 medium-build rigs (R-MB2 scorecard Goodhart,
+  R-MB5 vote-gated successors, R-MB7d channel ablation, R-MB8 capture).
+- `generated_ecology_v3.json` as an S-inherited substrate (per the v4
+  substrate policy) for rigs whose preconditions it passes.
+- The v3 growth protocol + complexity checker, reused per-rig with
+  subset criteria for v4 S-blind growths.
+- v1 digest pin, V2-2 replay, and all frozen result files — regression
+  gates at every v4 landing, unchanged.
+
+**Status of parent plans at closure:** `PLAN_v2.md` Q1 answered null
+(GL-76/77), Q2/Q3 descoped, V2-7 harvest partial-by-design; V2-4/5/6
+machinery questions migrate to v4 rigs R-MB6a/R-MB6b/R-MB7 under
+per-rig preconditions instead of the shared go gate.
+
+- No code change in this entry (closure + plan only).
+- `CODE_VERSION` unchanged at `graded-lab-0.39.3`.
+
 
