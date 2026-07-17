@@ -35,4 +35,4 @@ User approved the "Content sync plumbing" plan (`~/.cursor/plans/content_sync_pl
 
 ## Commits
 
-- None yet — changes are unstaged in the working tree pending user review.
+- `ee2c8a1` Replace hand-authored site cards with generated YAML-roster pipeline. (covers all ten phases; excludes unrelated concurrent-session changes left uncommitted in the working tree, e.g. `site/src/data/experiments.json` drift from a graded-lab session's `metadata/experiments.yml` edits, and various `context/`/`drafts/` files not part of this task)
