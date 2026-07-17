@@ -12,7 +12,7 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ## v1.2.0 — 2026-07-17 — Site publication layer, evidence index, and graded-lab v3
 
-Commit: `65287c4` · Tag: (pending)
+Commit: `14cf0fd` · Tag: (pending)
 
 Nine days after v1.1.0: the **companion site** moves from a static mirror to a **YAML-synced publication layer** on **towards-alignment.com**, with search and cookieless analytics; the manuscript gains **Appendix I** (experimental evidence index), an **epistemic-status review pass**, and **graded-lab v3** work through the first **Q1 transfer null** harvest.
 
