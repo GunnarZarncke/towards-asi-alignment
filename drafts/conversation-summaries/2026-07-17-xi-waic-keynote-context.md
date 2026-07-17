@@ -25,4 +25,4 @@ User supplied an English transcript of Xi Jinping’s 17 Jul 2026 WAIC / global 
 - `references/bibliography-summaries.tex`
 
 ## Commits
-- (filled after commit)
+- `c4106ad` Cite WAICO from Xi's 2026 WAIC keynote as an intergovernmental dual-mandate instance.
