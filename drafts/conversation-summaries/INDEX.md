@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-17 | **Epistemic-status field census** across all 55 boxes + 4-subagent body-text duplication check; applied high/medium trims (ch36→ch34 Goodhart, ch35→ch13 κ/Hamilton, ch06/ch07→ch01 Markov-blanket incl. conditioning-set bugfix, ch04/ch15→ch17 IRL bound, ch45→ch04 CEV); fixed symbol-census graph hairball regression (reachability view, aggregated chapter-level text-refs, delabeled bulk edges) | [2026-07-17-epistemic-status-census-and-graph-readability.md](2026-07-17-epistemic-status-census-and-graph-readability.md) |
 | 2026-07-17 | Graded lab **GL-69**: freeze v3 growth brief (+ GL-68 ACL/ablation recalibration) | [2026-07-17-graded-lab-gl69-freeze-growth-brief.md](2026-07-17-graded-lab-gl69-freeze-growth-brief.md) |
 | 2026-07-17 | Symbol census: **text-only cross-refs made discoverable** — `\ref{ch:...}`/`\ref{sec:...}` (536 occurrences, ~8x the `\eqref` count) now parsed into `text-ref` edges / `chref:chNN` nodes, closing the "edges only inferrable from text" gap noted in the graph README | [2026-07-17-symbol-census-text-ref-edges.md](2026-07-17-symbol-census-text-ref-edges.md) |
 | 2026-07-17 | Symbol census **promoted to `metadata/symbol-census/`**: audit + coverage + graphs moved out of drafts/, script paths updated, regenerated, large graphs re-rendered with `sfdp` (dot now hangs on the full manuscript graph too), new census README, README.md row added | [2026-07-17-symbol-census-promoted-to-metadata.md](2026-07-17-symbol-census-promoted-to-metadata.md) |

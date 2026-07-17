@@ -168,11 +168,7 @@ We need a criterion that asks whether the subset has the right kind of input-out
 \section{Boundary as Conditional Independence}
 \label{sec:boundary-conditional-independence}
 
-The central idea is to divide variables around a candidate system into four roles:
-\[
-S_t, A_t, I_t, E_t.
-\]
-Here $I_t$ denotes internal variables, $S_t$ sensory variables, $A_t$ active variables, and $E_t$ external variables.
+The central idea is to divide variables around a candidate system into four roles---$I_t$, $S_t$, $A_t$, $E_t$---as introduced in Chapter~\ref{ch:wrong-object}.
 
 The words ``sensory'' and ``active'' should be understood operationally.
 A sensory variable is one through which the outside world predicts the future inside.
@@ -183,25 +179,13 @@ A database read may be sensory.
 In an institution, a public report may be active and a market signal may be sensory.
 In a biological organism, the more familiar interpretations apply.
 
-The boundary condition says that once the sensory and active interface is known, the deep internal and deep external variables become approximately conditionally independent:
+The boundary condition requires that the interface screen off deep internal from deep external dynamics:
 \begin{equation}
 \MI(I_{t+1}; E_{t+1} \mid S_t, A_t) \leq \epsilon.
 \label{eq:epsilon-boundary-ch07}
 \end{equation}
-The left-hand side is conditional mutual information.
-It measures how much knowing the future external state $E_{t+1}$ tells us about the future internal state $I_{t+1}$, after we already know the current sensory and active interface.
-
-If the value is small, then the interface screens off the inside from the outside.
-The system has a boundary, at least approximately.
-The inside is not isolated.
-It learns and acts through the boundary.
-But the deep external variables do not directly reach into the internal variables except through the interface, and the internal variables do not directly reach into the world except through the active side of the interface.
-
-This condition is not the claim that the system is independent of the world.
-Quite the opposite.
-An agent must depend on the world.
-It must sense and act.
-The claim is that the dependence is organized through a boundary \autocite{kirchhoff2018markov,friston2010free,conant1970regulator}.
+The left-hand side is conditional mutual information: how much $E_{t+1}$ tells us about $I_{t+1}$ beyond what the current interface already carries.
+If the value is small, the system depends on the world through a boundary rather than by arbitrary direct coupling \autocite{kirchhoff2018markov,friston2010free,conant1970regulator}.
 The specific move of treating that boundary as a \emph{directed} Markov blanket---distinguishing what flows in through sensing from what flows out through acting---follows Critch's boundaries program \autocite{critch2022boundaries3a}, with a compact formalization by Lakin \autocite{lakin2023boundaries}.
 The directed $\epsilon$-condition is an operational partition claim, not a claim that nature supplies a unique observer-independent cut.\footnote{See the critique literature summarized in Chapter~\ref{ch:agent-without-anthropomorphism}; under flexible blanket definitions the agent--world cut may be supplied by the modeler \autocite{btesh2022redressing,bruineberg2021emperor}. Recovery under Assumption~\textsc{MB1} presupposes that such cuts are at least well-defined enough to estimate, not merely hard to measure.}
 

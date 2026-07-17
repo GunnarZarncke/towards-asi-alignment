@@ -16,8 +16,9 @@ python3 scripts/extract_symbol_formula_graph.py --chapter ch14 --out metadata/sy
 
 | File | Description |
 |------|-------------|
-| `symbol-formula-graph.dot` | Full book graph (1004 formula/prose nodes, 741 symbols, incl. 536 chapter/section text-ref edges) — manuscript only |
-| `symbol-formula-graph-ch14.dot` | ch14-only subgraph |
+| `symbol-formula-graph.dot` | **Reachability graph**: 166 labeled `eq:...` nodes + chapter-level `chcite`/`chref` hubs (not every `chNN:unlabeled` / `chNN:prose` line) |
+| `symbol-formula-graph-detailed.dot` | Optional (`--detailed`): all 1004 parsed nodes including unlabeled blocks and per-line prose refs — debug only |
+| `symbol-formula-graph-ch14.dot` | ch14 reachability subgraph (labeled eq only) |
 | `../symbol-formula-coverage.md` | Per-chapter tables: symbol → list of formulas, plus Lean spine coverage and text cross-reference sections |
 | `symbol-formula-graph-ch14.svg` | Rendered ch14 graph (after `dot`) |
 | `lean-dependency-graph.dot` | **Lean-only** declaration graph, parsed from `formal/AlignmentProofSpine/**/*.lean` (1016 declarations, 37 files) |
@@ -78,19 +79,27 @@ the "Text cross-references" section of `../symbol-formula-coverage.md` for the f
 |-------|------------|---------|
 | Ellipse | `sym:C_{raw}` | Extracted symbol |
 | Box (green) | `eq:alignment-margin` | Labeled display equation |
-| Box (purple) | `ch14:unlabeled:177` | Unlabeled `equation`/`align` block + line |
-| Note (gray) | `ch14:prose:394` | Prose line containing `\eqref`/`\ref` (equation-level) or `\ref{ch:...}`/`\ref{sec:...}` (chapter/section-level) |
+| Box (purple) | `ch14:unlabeled:177` | Unlabeled `equation`/`align` block — **only in `--detailed` graph** |
 | Octagon (dashed, red) | `ghost:eq:cci-ch26` | Referenced equation defined elsewhere |
-| CDS/tab (amber) | `chref:ch11` | Target of a chapter/section text-ref (see below) |
+| Note (gray) | `ch14:prose:394` | Prose line containing `\eqref`/`\ref` — **only in `--detailed` graph** |
+| CDS/tab (amber) | `chref:ch11` | Target chapter of a text cross-reference |
+| Folder (amber) | `chcite:ch44` | Citing chapter hub (aggregates all `\ref{ch:...}`/`\ref{sec:...}` from that chapter's prose) |
 | Octagon (dashed, red) | `textref:sec:appm-constraint-inheritance` | Text-ref target that doesn't resolve to any parsed `\label` |
 
 **Edge types**
 
 | Color | Label | Direction | Meaning |
 |-------|-------|-----------|---------|
-| Blue | `in` | symbol → formula | Symbol appears in that formula block |
-| Green | `ref` | formula → formula | `\eqref` / `\ref{eq:...}` dependency |
-| Amber (dashed) | `text-ref` or `sec:...` | formula/prose → `chref:chNN` | `\ref{ch:...}` / `\ref{sec:...}` cross-reference — chapter/section-granularity prose citation, not a per-equation dependency |
+| Blue, thinned (`penwidth=0.4`, ~40% opacity), unlabeled | — | symbol → formula | Symbol appears in that formula block. Thinned/unlabeled deliberately: this is by far the highest-count edge type (~3000+) and the least interesting to trace visually — a fixed `"in"` label on every one of them used to render as a fog of identical text. Color still identifies it. |
+| Green, unlabeled | — | formula → formula | `\eqref` / `\ref{eq:...}` dependency (label dropped for the same reason: it was always the literal word `"ref"`) |
+| Amber (dashed), labeled only when informative | `sec:...` (section id) or unlabeled | `chcite:chNN` → `chref:chMM` | Chapter-level text cross-reference (aggregated from all prose lines in the citing chapter) |
+
+**If you edit `build_dot`/`build_combined_dot`/`build_lean_dot`:** don't add a fixed/constant
+`label=` to a bulk edge type again — with 1000+ nodes, any label that is the same string on
+every edge of a type just renders as visual noise (Graphviz places a text box at each edge's
+midpoint) and makes the graph *less* readable, not more informative. Vary edge color/style
+instead, and reserve `label=` for values that differ edge-to-edge (e.g. the `sec:...` id, or the
+`proof`/`counterexample`/`bridge` kind on `leanspine` edges).
 
 **Reachability paths (manuscript-only graph)**
 
@@ -111,8 +120,10 @@ Example (ch14): `ch14:prose:512` → `ghost:eq:correction-chain-ch25` — forwar
 
 Node/edge types add: diamond `leanspine:chNN:LLL` (a `\leanspine{}` anchor), box `lean:Name`
 (a Lean declaration; octagon+red if a bridge axiom `MBn_...`), purple `leanspine`-kind edge
-(anchor → Lean node), green `uses` edge (Lean declaration → Lean declaration it references in
-its body/proof term). Full chain example (verified in the generated graph): `ch25:prose:321` → `leanspine:ch25:322` (`proof`, node `P13`) → `lean:P13_risk_gap_bounded_by_cci_slack` → `lean:RiskGap` / `lean:CCI` / `lean:Control` — now traceable end to end instead of stopping at the equation label.
+(anchor → Lean node, labeled `proof`/`counterexample`/`bridge` — kept, since this label varies),
+green `uses` edge (Lean declaration → Lean declaration it references in its body/proof term;
+unlabeled, same rationale as `ref` above — 2751 edges all saying `"uses"` was noise, not
+signal). Full chain example (verified in the generated graph): `ch25:prose:321` → `leanspine:ch25:322` (`proof`, node `P13`) → `lean:P13_risk_gap_bounded_by_cci_slack` → `lean:RiskGap` / `lean:CCI` / `lean:Control` — now traceable end to end instead of stopping at the equation label.
 
 ## Render
 
@@ -128,13 +139,27 @@ dot -Tsvg symbol-formula-graph-ch14.dot -o symbol-formula-graph-ch14.svg
 **The other three graphs are too large/cyclic for `dot`'s layered ranking algorithm**
 (the full manuscript graph alone is >1400 nodes; the Lean and combined graphs add 1016 Lean
 declarations and 2751 `uses` edges — `dot` hangs printing `trouble in init_rank` diagnostics
-on all three). Use `sfdp` instead (force-directed, no ranking pass, renders in a few seconds):
+on all three). Use `sfdp` instead (force-directed, no ranking pass, renders in a few seconds).
+Plain default-option `sfdp` packs nodes tightly enough to look like an unreadable hairball at
+this node count (this is what shipped 2026-07-17 morning and was reported unreadable) — pass
+explicit overlap-removal, target-edge-length, and iteration-count options to spread it out:
 
 ```bash
-sfdp -Tsvg symbol-formula-graph.dot -o symbol-formula-graph.svg
-sfdp -Tsvg lean-dependency-graph.dot -o lean-dependency-graph.svg
-sfdp -Tsvg manuscript-lean-crosswalk-graph.dot -o manuscript-lean-crosswalk-graph.svg
+sfdp -Goverlap=prism -Gsep="+20" -GK=2   -Gmaxiter=300 -Tsvg symbol-formula-graph.dot            -o symbol-formula-graph.svg
+sfdp -Goverlap=prism -Gsep="+20" -GK=2   -Gmaxiter=300 -Tsvg manuscript-lean-crosswalk-graph.dot -o manuscript-lean-crosswalk-graph.svg
+sfdp -Goverlap=prism -Gsep="+15" -GK=1.5 -Gmaxiter=300 -Tsvg lean-dependency-graph.dot           -o lean-dependency-graph.svg
 ```
+
+`-Goverlap=prism` removes node overlaps (default sfdp overlap removal is weaker); `-GK` sets the
+ideal edge length (higher = more spread, 2–2.5 works well at this density; the Lean-only graph
+needs less since it has no giant symbol cluster); `-Gsep="+20"` adds extra margin around nodes
+during overlap removal; `-Gmaxiter=300` gives the force-directed solver enough iterations to
+settle at this size. This roughly quadruples the canvas area (e.g. the full manuscript graph
+went from a ~2400×1900pt viewBox to ~10000×6000pt) — that is the point, not a bug; open the SVG
+in a browser and zoom in rather than expecting to read it at fit-to-window scale. The other half
+of the fix was removing redundant fixed edge labels (see "Graph semantics" above) — labels that
+repeat the same text on every edge of a type add visual fog without adding information at this
+node count, independent of layout algorithm.
 
 These SVGs are reference artifacts for tracing reachability, not print figures — at this node
 count they are illegible at print resolution and are not embedded in the manuscript PDF.

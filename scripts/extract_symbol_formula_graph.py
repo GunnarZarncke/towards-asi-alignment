@@ -600,6 +600,139 @@ def resolve_text_ref(ref: str, ch_owner: dict[str, str], sec_owner: dict[str, st
     return None
 
 
+def graph_formula_nodes(all_formulas: list[Formula], detailed: bool) -> list[Formula]:
+    """Formulas to emit as visible nodes in the reachability graph.
+
+    Default (``detailed=False``): labeled display equations only (``eq:...``).
+    The parser also creates ~400 ``chNN:unlabeled:LINE`` nodes (every
+    unlabeled ``equation``/``align`` block) and ~430 ``chNN:prose:LINE`` nodes
+    (one per line containing ``\\ref``/``\\eqref``). Emitting all of those
+    made the SVG an unreadable hairball once text-ref edges were added — the
+    reachability graph keeps the 166 labeled anchors and aggregates prose-level
+    refs at chapter granularity instead.
+
+    ``detailed=True`` retains every parsed node for line-level debugging.
+    """
+    if detailed:
+        return all_formulas
+    return [f for f in all_formulas if f.fid.startswith("eq:")]
+
+
+def collect_chapter_text_ref_pairs(
+    all_formulas: list[Formula],
+    ch_owner: dict[str, str],
+    sec_owner: dict[str, str],
+) -> tuple[dict[str, set[str]], dict[str, set[str]], set[str]]:
+    """Aggregate ``\\ref{ch:...}``/``\\ref{sec:...}`` by citing chapter.
+
+    Returns ``(ch_to_ch, ch_to_unresolved, chapters_with_cites)`` where
+    ``ch_to_ch[source][target]`` is the set of resolved target chapter ids
+    cited from ``source``, and ``ch_to_unresolved[source]`` is unresolved ref
+    labels.
+    """
+    ch_to_ch: dict[str, set[str]] = {}
+    ch_to_unresolved: dict[str, set[str]] = {}
+    chapters_with_cites: set[str] = set()
+    for f in all_formulas:
+        if not f.text_refs:
+            continue
+        chapters_with_cites.add(f.chapter)
+        for ref in f.text_refs:
+            target_ch = resolve_text_ref(ref, ch_owner, sec_owner)
+            if target_ch is None:
+                ch_to_unresolved.setdefault(f.chapter, set()).add(ref)
+            else:
+                ch_to_ch.setdefault(f.chapter, set()).add(target_ch)
+    return ch_to_ch, ch_to_unresolved, chapters_with_cites
+
+
+def collect_prose_eq_refs(
+    all_formulas: list[Formula],
+    labeled: list[Formula],
+) -> dict[str, set[str]]:
+    """Eq refs appearing only on prose/unlabeled lines (not on labeled eq nodes)."""
+    labeled_refs: dict[str, set[str]] = {}
+    for f in labeled:
+        labeled_refs.setdefault(f.chapter, set()).update(f.refs)
+    prose_refs: dict[str, set[str]] = {}
+    for f in all_formulas:
+        if f.fid.startswith("eq:"):
+            continue
+        for ref in f.refs:
+            if ref not in labeled_refs.get(f.chapter, set()):
+                prose_refs.setdefault(f.chapter, set()).add(ref)
+    return prose_refs
+
+
+def emit_aggregated_text_ref_edges(
+    lines: list[str],
+    all_formulas: list[Formula],
+    ch_owner: dict[str, str],
+    sec_owner: dict[str, str],
+    known_fids: set[str],
+) -> None:
+    """Chapter-level text-ref and prose-eq-ref edges (reachability graph).
+
+    One ``chcite:chNN`` hub per citing chapter instead of hundreds of
+    ``chNN:prose:LINE`` spokes.
+    """
+    ch_to_ch, ch_to_unresolved, cite_chapters = collect_chapter_text_ref_pairs(
+        all_formulas, ch_owner, sec_owner
+    )
+    labeled = [f for f in all_formulas if f.fid.startswith("eq:")]
+    prose_eq = collect_prose_eq_refs(all_formulas, labeled)
+    cite_chapters |= set(prose_eq)
+
+    if not cite_chapters:
+        return
+
+    lines.append("  // Chapter-level citations (aggregated from prose/section \\\\ref lines)")
+    emitted_chref: set[str] = set()
+    emitted_chcite: set[str] = set()
+
+    for src in sorted(cite_chapters, key=lambda c: int(c[2:]) if c[2:].isdigit() else 999):
+        hub = f"chcite:{src}"
+        if hub not in emitted_chcite:
+            lines.append(
+                f'  "{hub}" [shape=folder, style=filled, fillcolor="#fff7ed", '
+                f'color="#92400e", label="{src}\\ncites"];'
+            )
+            emitted_chcite.add(hub)
+
+        for tgt in sorted(ch_to_ch.get(src, set()), key=lambda c: int(c[2:]) if c[2:].isdigit() else 999):
+            node = f"chref:{tgt}"
+            if node not in emitted_chref:
+                lines.append(
+                    f'  "{node}" [shape=cds, style=filled, fillcolor="#fef3c7", '
+                    f'color="#92400e", label="{tgt}"];'
+                )
+                emitted_chref.add(node)
+            lines.append(f'  "{hub}" -> "{node}" [color="#d97706", style=dashed];')
+
+        for ref in sorted(ch_to_unresolved.get(src, set())):
+            node = f"textref:{ref}"
+            if node not in emitted_chref:
+                lines.append(
+                    f'  "{node}" [shape=octagon, style=dashed, fillcolor="#fee2e2", '
+                    f'label="{dot_escape(ref)}\\n(unresolved)"];'
+                )
+                emitted_chref.add(node)
+            lines.append(f'  "{hub}" -> "{node}" [color="#d97706", style=dashed];')
+
+        for ref in sorted(prose_eq.get(src, set())):
+            if ref in known_fids:
+                lines.append(f'  "{hub}" -> "{ref}" [color="#059669", style=dashed];')
+            else:
+                ghost = f"ghost:{ref}"
+                if ghost not in known_fids:
+                    lines.append(
+                        f'  "{ghost}" [shape=octagon, style=dashed, fillcolor="#fee2e2", '
+                        f'label="{dot_escape(ref)}\\n(external)"];'
+                    )
+                    known_fids.add(ghost)
+                lines.append(f'  "{hub}" -> "{ghost}" [color="#dc2626", style=dashed];')
+
+
 def emit_text_ref_edges(
     lines: list[str],
     all_formulas: list[Formula],
@@ -627,7 +760,7 @@ def emit_text_ref_edges(
                     )
                     emitted_chref.add(node)
                 lines.append(
-                    f'  "{f.fid}" -> "{node}" [color="#d97706", style=dashed, label="text-ref"];'
+                    f'  "{f.fid}" -> "{node}" [color="#d97706", style=dashed];'
                 )
                 continue
             node = f"chref:{target_ch}"
@@ -637,11 +770,16 @@ def emit_text_ref_edges(
                     f'color="#92400e", label="{target_ch}"];'
                 )
                 emitted_chref.add(node)
-            edge_label = ref if ref.startswith("sec:") else "text-ref"
-            lines.append(
-                f'  "{f.fid}" -> "{node}" [color="#d97706", style=dashed, '
-                f'label="{dot_escape(edge_label)}"];'
-            )
+            # Only label the edge when it carries information beyond the edge
+            # style itself (a specific sec: id) — a generic "text-ref" label
+            # on every one of these edges would just be more label fog.
+            if ref.startswith("sec:"):
+                lines.append(
+                    f'  "{f.fid}" -> "{node}" [color="#d97706", style=dashed, '
+                    f'label="{dot_escape(ref)}", fontsize=6];'
+                )
+            else:
+                lines.append(f'  "{f.fid}" -> "{node}" [color="#d97706", style=dashed];')
 
 
 def build_dot(
@@ -649,29 +787,31 @@ def build_dot(
     chapter_filter: str | None = None,
     ch_owner: dict[str, str] | None = None,
     sec_owner: dict[str, str] | None = None,
+    detailed: bool = False,
 ) -> str:
+    visible = graph_formula_nodes(all_formulas, detailed)
     if chapter_filter:
-        all_formulas = [f for f in all_formulas if f.chapter == chapter_filter]
-        # include ref targets outside filter
-        ref_ids = {r for f in all_formulas for r in f.refs}
-        # caller may pass full list separately for ghost resolution — keep simple
+        visible = [f for f in visible if f.chapter == chapter_filter]
+
+    graph_label = "Manuscript symbol→formula reachability"
+    if detailed:
+        graph_label += " (detailed: all unlabeled+prose nodes)"
+    if chapter_filter:
+        graph_label += f" ({chapter_filter})"
 
     lines = [
         "digraph SymbolFormulaGraph {",
-        "  graph [rankdir=LR, fontsize=10, "
-        f'label="Manuscript symbol→formula reachability'
-        + (f" ({chapter_filter})" if chapter_filter else "")
-        + '", labelloc=t];',
+        f'  graph [rankdir=LR, fontsize=10, label="{graph_label}", labelloc=t];',
         "  node [fontname=Helvetica];",
         "  edge [fontname=Helvetica, fontsize=8];",
         "",
     ]
 
-    chapters = sorted({f.chapter for f in all_formulas})
+    chapters = sorted({f.chapter for f in visible})
 
     # Per-chapter subgraphs
     for ch in chapters:
-        ch_formulas = [f for f in all_formulas if f.chapter == ch]
+        ch_formulas = [f for f in visible if f.chapter == ch]
         lines.append(f"  subgraph cluster_{ch} {{")
         lines.append(f'    label="{ch}"; style=dashed; color="#92400e";')
         lines.append(f'    "{ch}_anchor" [shape=point, width=0.01, label=""];')
@@ -682,9 +822,13 @@ def build_dot(
                 shape, color = "component", "#ede9fe"
             else:
                 shape, color = "box", "#d1fae5"
-            label = f.fid.replace(":", "\\n")
-            if ":unlabeled:" in f.fid:
-                label += f"\\nL{f.line_start}"
+            # Reachability graph: show eq label only, not internal id noise
+            if f.fid.startswith("eq:"):
+                label = f.fid[3:].replace("-", "\\n")
+            else:
+                label = f.fid.replace(":", "\\n")
+                if ":unlabeled:" in f.fid:
+                    label += f"\\nL{f.line_start}"
             lines.append(
                 f'    "{f.fid}" [shape={shape}, style=filled, fillcolor="{color}", '
                 f'label="{dot_escape(label)}"];'
@@ -694,7 +838,7 @@ def build_dot(
         lines.append("")
 
     all_syms: set[str] = set()
-    for f in all_formulas:
+    for f in visible:
         all_syms |= f.symbols
 
     lines.append("  subgraph cluster_symbols {")
@@ -708,18 +852,20 @@ def build_dot(
     lines.append("  }")
     lines.append("")
 
-    known_fids = {f.fid for f in all_formulas}
+    known_fids = {f.fid for f in visible}
 
-    lines.append("  // Symbol used in formula")
-    for f in all_formulas:
+    lines.append("  // Symbol used in formula (thinned: this is the highest-count, least-traced edge type)")
+    lines.append('  edge [penwidth=0.4, arrowsize=0.4];')
+    for f in visible:
         for sym in sorted(f.symbols):
-            lines.append(f'  "sym:{sym}" -> "{f.fid}" [color="#2c5282", label="in"];')
+            lines.append(f'  "sym:{sym}" -> "{f.fid}" [color="#2c528266"];')
+    lines.append('  edge [penwidth=1.0, arrowsize=1.0];')
 
     lines.append("  // Formula references formula")
-    for f in all_formulas:
+    for f in visible:
         for ref in sorted(f.refs):
             if ref in known_fids:
-                lines.append(f'  "{f.fid}" -> "{ref}" [color="#059669", label="ref"];')
+                lines.append(f'  "{f.fid}" -> "{ref}" [color="#059669"];')
             else:
                 ghost = f"ghost:{ref}"
                 if ghost not in known_fids:
@@ -729,11 +875,16 @@ def build_dot(
                     )
                     known_fids.add(ghost)
                 lines.append(
-                    f'  "{f.fid}" -> "{ghost}" [color="#dc2626", style=dashed, label="ref"];'
+                    f'  "{f.fid}" -> "{ghost}" [color="#dc2626", style=dashed];'
                 )
 
     if ch_owner is not None and sec_owner is not None:
-        emit_text_ref_edges(lines, all_formulas, ch_owner, sec_owner)
+        if detailed:
+            emit_text_ref_edges(lines, all_formulas, ch_owner, sec_owner)
+        else:
+            emit_aggregated_text_ref_edges(
+                lines, all_formulas, ch_owner, sec_owner, known_fids
+            )
 
     lines.append("}")
     return "\n".join(lines)
@@ -777,10 +928,13 @@ def build_lean_dot(decls: list[LeanDecl], file_imports: dict[str, set[str]]) -> 
         lines.append("  }")
     lines.append("")
 
+    # Unlabeled: 2751 `uses` edges all carrying the identical fixed label
+    # rendered as a dense fog of repeated text at this node count; color
+    # already identifies the edge type (see graphs/README.md legend).
     lines.append("  // Declaration uses declaration (proof-term / signature reference)")
     for d in decls:
         for used in sorted(d.uses):
-            lines.append(f'  "lean:{d.name}" -> "lean:{used}" [color="#059669", label="uses"];')
+            lines.append(f'  "lean:{d.name}" -> "lean:{used}" [color="#059669"];')
 
     lines.append("}")
     return "\n".join(lines)
@@ -792,7 +946,9 @@ def build_combined_dot(
     leanspine_refs: list[LeanSpineRef],
     ch_owner: dict[str, str] | None = None,
     sec_owner: dict[str, str] | None = None,
+    detailed: bool = False,
 ) -> str:
+    visible = graph_formula_nodes(all_formulas, detailed)
     lines = [
         "digraph ManuscriptLeanCrosswalk {",
         '  graph [rankdir=LR, fontsize=10, label="Symbol -> formula -> \\\\leanspine -> Lean declaration reachability", labelloc=t];',
@@ -801,11 +957,11 @@ def build_combined_dot(
         "",
     ]
 
-    known_fids = {f.fid for f in all_formulas}
+    known_fids = {f.fid for f in visible}
     known_lean = {d.name for d in decls}
 
     all_syms: set[str] = set()
-    for f in all_formulas:
+    for f in visible:
         all_syms |= f.symbols
 
     lines.append("  subgraph cluster_symbols {")
@@ -819,15 +975,10 @@ def build_combined_dot(
     lines.append("")
 
     lines.append("  subgraph cluster_manuscript {")
-    lines.append('    label="Manuscript formulas"; style=dashed; color="#92400e";')
-    for f in all_formulas:
-        if f.env == "prose":
-            shape, color = "note", "#f3f4f6"
-        elif ":unlabeled:" in f.fid:
-            shape, color = "component", "#ede9fe"
-        else:
-            shape, color = "box", "#d1fae5"
-        label = f.fid.replace(":", "\\n")
+    lines.append('    label="Manuscript formulas (labeled eq only)"; style=dashed; color="#92400e";')
+    for f in visible:
+        shape, color = "box", "#d1fae5"
+        label = f.fid[3:].replace("-", "\\n") if f.fid.startswith("eq:") else f.fid.replace(":", "\\n")
         lines.append(
             f'    "{f.fid}" [shape={shape}, style=filled, fillcolor="{color}", '
             f'label="{dot_escape(label)}"];'
@@ -859,23 +1010,24 @@ def build_combined_dot(
     lines.append("  }")
     lines.append("")
 
-    lines.append("  // Symbol -> formula")
-    for f in all_formulas:
+    lines.append("  // Symbol -> formula (thinned/unlabeled: highest-count, least-traced edge type)")
+    lines.append('  edge [penwidth=0.4, arrowsize=0.4];')
+    for f in visible:
         for sym in sorted(f.symbols):
-            lines.append(f'  "sym:{sym}" -> "{f.fid}" [color="#2c5282", label="in"];')
+            lines.append(f'  "sym:{sym}" -> "{f.fid}" [color="#2c528266"];')
+    lines.append('  edge [penwidth=1.0, arrowsize=1.0];')
 
     lines.append("  // Formula -> formula")
-    for f in all_formulas:
+    for f in visible:
         for ref in sorted(f.refs):
             if ref in known_fids:
-                lines.append(f'  "{f.fid}" -> "{ref}" [color="#059669", label="ref"];')
+                lines.append(f'  "{f.fid}" -> "{ref}" [color="#059669"];')
 
-    lines.append("  // Manuscript prose/section -> leanspine anchor (same chapter, nearest formula before anchor line)")
+    lines.append("  // Manuscript formula -> leanspine anchor (nearest labeled eq before anchor line)")
     for r in leanspine_refs:
         aid = f"leanspine:{r.chapter}:{r.line}"
-        # attach to nearest preceding formula in the same chapter, if any
         candidates = [
-            f for f in all_formulas
+            f for f in visible
             if f.chapter == r.chapter and f.line_start <= r.line
         ]
         if candidates:
@@ -901,10 +1053,15 @@ def build_combined_dot(
     lines.append("  // Lean declaration -> Lean declaration (deep dependency chain)")
     for d in decls:
         for used in sorted(d.uses):
-            lines.append(f'  "lean:{d.name}" -> "lean:{used}" [color="#059669", label="uses"];')
+            lines.append(f'  "lean:{d.name}" -> "lean:{used}" [color="#059669"];')
 
     if ch_owner is not None and sec_owner is not None:
-        emit_text_ref_edges(lines, all_formulas, ch_owner, sec_owner)
+        if detailed:
+            emit_text_ref_edges(lines, all_formulas, ch_owner, sec_owner)
+        else:
+            emit_aggregated_text_ref_edges(
+                lines, all_formulas, ch_owner, sec_owner, known_fids
+            )
 
     lines.append("}")
     return "\n".join(lines)
@@ -1023,7 +1180,9 @@ def build_coverage_md(
             "The manuscript's dominant citation style is chapter/section-level prose "
             "(e.g. \"Chapter~\\ref{ch:foo}\", \"Section~\\ref{sec:bar-ch15}\"), not "
             "per-equation `\\eqref`. These are now extracted as `text-ref` edges "
-            "(dashed amber, target node `chref:chNN`) in the graphs, in addition to the "
+            "(dashed amber: `chcite:chNN` hub → `chref:chMM` target in the default "
+            "reachability graph; per-line `chNN:prose:LINE` nodes only in "
+            "`symbol-formula-graph-detailed.dot` with `--detailed`) in addition to the "
             "green `ref` edges for `\\eqref{eq:...}`.",
             "",
             f"- `\\ref{{ch:...}}` / `\\ref{{sec:...}}` occurrences found: {text_ref_count}",
@@ -1059,6 +1218,11 @@ def main() -> None:
         default=None,
         help="Emit subgraph for one chapter only (e.g. ch14)",
     )
+    parser.add_argument(
+        "--detailed",
+        action="store_true",
+        help="Also emit symbol-formula-graph-detailed.dot with every unlabeled/prose node",
+    )
     args = parser.parse_args()
 
     paths = sorted(CHAPTERS_DIR.glob("ch*.tex"))
@@ -1076,12 +1240,30 @@ def main() -> None:
                 pass  # ghost nodes added in build_dot
 
     if args.chapter:
-        dot = build_dot(all_formulas, chapter_filter=args.chapter, ch_owner=ch_owner, sec_owner=sec_owner)
+        dot = build_dot(
+            all_formulas,
+            chapter_filter=args.chapter,
+            ch_owner=ch_owner,
+            sec_owner=sec_owner,
+        )
     else:
         dot = build_dot(all_formulas, ch_owner=ch_owner, sec_owner=sec_owner)
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(dot, encoding="utf-8")
+
+    if args.detailed and not args.chapter:
+        detailed_path = args.out.with_name("symbol-formula-graph-detailed.dot")
+        detailed_path.write_text(
+            build_dot(
+                all_formulas,
+                ch_owner=ch_owner,
+                sec_owner=sec_owner,
+                detailed=True,
+            ),
+            encoding="utf-8",
+        )
+        print(f"Wrote {detailed_path}")
 
     # Lean spine layer: parses formal/AlignmentProofSpine/**/*.lean for
     # declaration-level dependencies, and chapters/*.tex for \leanspine{}
@@ -1116,7 +1298,8 @@ def main() -> None:
         ch14_path.write_text(ch14_dot, encoding="utf-8")
         print(f"Wrote {ch14_path}")
 
-    print(f"Wrote {args.out} ({len(all_formulas)} formula nodes)")
+    visible_count = len(graph_formula_nodes(all_formulas, detailed=False))
+    print(f"Wrote {args.out} ({visible_count} labeled-eq nodes in reachability graph; {len(all_formulas)} parsed total)")
     print(f"Wrote {args.coverage}")
 
 

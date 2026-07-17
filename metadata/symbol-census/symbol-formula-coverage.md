@@ -208,8 +208,8 @@ Graphviz: `metadata/symbol-census/graphs/symbol-formula-graph.dot`
 | `i_{t}` | `ch08:prose:782`, `eq:goal-geometry-conservation`, `eq:identity-vector`, `eq:responsibility-capacity` |
 | `L` | `eq:continuity-condition`, `eq:development-transport`, `eq:transport-loss` |
 | `L_{t+1}` | `eq:control-locus-continuity` |
-| `L_{t}` | `eq:control-locus-continuity`, `eq:identity-vector` |
 | `l_{t}` | `eq:identity-vector` |
+| `L_{t}` | `eq:control-locus-continuity`, `eq:identity-vector` |
 | `lambda` | `eq:merge-gain` |
 | `M^{\text{self}` | `eq:self-model-growth` |
 | `M_{H}` | `eq:merge-gain` |
@@ -260,8 +260,8 @@ Graphviz: `metadata/symbol-census/graphs/symbol-formula-graph.dot`
 | `a_{ij}` | `eq:kappa-ch10` |
 | `a_{Q}` | `eq:control-relevant`, `eq:opacity-under-evaluation`, `eq:selective-opacity-score` |
 | `A_{t+k}` | `ch10:unlabeled:650`, `ch10:unlabeled:660`, `eq:control-locus-ch10`, `eq:correction-influence-ch10` |
-| `A_{Y}` | `eq:parasite-persistence-ch10` |
 | `a_{Y}` | `eq:parasite-persistence-ch10` |
+| `A_{Y}` | `eq:parasite-persistence-ch10` |
 | `b_{ij}` | `eq:kappa-ch10` |
 | `B_{k}` | `ch10:unlabeled:685`, `eq:bundle-laundering` |
 | `beta` | `eq:parasite-persistence-ch10` |
@@ -968,8 +968,8 @@ Graphviz: `metadata/symbol-census/graphs/symbol-formula-graph.dot`
 | `i_{H}` | `ch23:unlabeled:282` |
 | `i_{i}` | `ch23:unlabeled:282`, `ch23:unlabeled:290` |
 | `i_{t+1}` | `ch23:unlabeled:375` |
-| `i_{t}` | `ch23:unlabeled:208`, `ch23:unlabeled:215`, `ch23:unlabeled:367`, `ch23:unlabeled:375` |
 | `I_{t}` | `ch23:unlabeled:208`, `ch23:unlabeled:215` |
+| `i_{t}` | `ch23:unlabeled:208`, `ch23:unlabeled:215`, `ch23:unlabeled:367`, `ch23:unlabeled:375` |
 | `L_{bearer}` | `eq:transport-decomposition` |
 | `L_{bundle}` | `ch23:unlabeled:710`, `eq:transport-decomposition` |
 | `L_{correction}` | `eq:semantic-without-correction-ch23`, `eq:transport-decomposition` |
@@ -1537,8 +1537,8 @@ Graphviz: `metadata/symbol-census/graphs/symbol-formula-graph.dot`
 | `D_{i}` | `ch35:prose:367` |
 | `epsilon` | `ch35:prose:367` |
 | `gamma` | `ch35:prose:91` |
-| `i_{c}` | `ch35:prose:193` |
 | `i_{C}` | `ch35:prose:193` |
+| `i_{c}` | `ch35:prose:193` |
 | `i_{V}` | `ch35:prose:193` |
 | `IC` | `ch35:prose:276`, `ch35:prose:361`, `ch35:prose:364` |
 | `ICI` | `ch35:prose:177` |
@@ -1783,7 +1783,7 @@ Unresolved leanspine targets (name mismatch, or declared via a macro/field the p
 
 ## Text cross-references (`\ref{ch:...}` / `\ref{sec:...}`, not `\eqref`)
 
-The manuscript's dominant citation style is chapter/section-level prose (e.g. "Chapter~\ref{ch:foo}", "Section~\ref{sec:bar-ch15}"), not per-equation `\eqref`. These are now extracted as `text-ref` edges (dashed amber, target node `chref:chNN`) in the graphs, in addition to the green `ref` edges for `\eqref{eq:...}`.
+The manuscript's dominant citation style is chapter/section-level prose (e.g. "Chapter~\ref{ch:foo}", "Section~\ref{sec:bar-ch15}"), not per-equation `\eqref`. These are now extracted as `text-ref` edges (dashed amber: `chcite:chNN` hub → `chref:chMM` target in the default reachability graph; per-line `chNN:prose:LINE` nodes only in `symbol-formula-graph-detailed.dot` with `--detailed`) in addition to the green `ref` edges for `\eqref{eq:...}`.
 
 - `\ref{ch:...}` / `\ref{sec:...}` occurrences found: 536
 - Resolved to a known chapter: 524

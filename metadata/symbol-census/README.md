@@ -26,12 +26,12 @@ and graphs are mechanically regenerated from the current state of `chapters/*.te
 
 ```bash
 python3 scripts/extract_symbol_formula_graph.py
-# then re-render the graphs (see graphs/README.md for why dot vs sfdp):
+# then re-render the graphs (see graphs/README.md "Render" for why dot vs sfdp and why these flags):
 cd metadata/symbol-census/graphs
-dot  -Tsvg symbol-formula-graph-ch14.dot         -o symbol-formula-graph-ch14.svg
-sfdp -Tsvg symbol-formula-graph.dot              -o symbol-formula-graph.svg
-sfdp -Tsvg lean-dependency-graph.dot             -o lean-dependency-graph.svg
-sfdp -Tsvg manuscript-lean-crosswalk-graph.dot   -o manuscript-lean-crosswalk-graph.svg
+dot  -Tsvg symbol-formula-graph-ch14.dot                                              -o symbol-formula-graph-ch14.svg
+sfdp -Goverlap=prism -Gsep="+20" -GK=2   -Gmaxiter=300 -Tsvg symbol-formula-graph.dot            -o symbol-formula-graph.svg
+sfdp -Goverlap=prism -Gsep="+15" -GK=1.5 -Gmaxiter=300 -Tsvg lean-dependency-graph.dot           -o lean-dependency-graph.svg
+sfdp -Goverlap=prism -Gsep="+20" -GK=2   -Gmaxiter=300 -Tsvg manuscript-lean-crosswalk-graph.dot -o manuscript-lean-crosswalk-graph.svg
 ```
 
 The contribution audit (`symbol-contribution-audit.md`) is not regenerated; update it by hand

@@ -305,15 +305,8 @@ Not because values are merely subjective colors, but because bounded agents must
 The low-dimensional hypothesis matters because it changes what value learning could mean.
 
 In apprenticeship learning and inverse reinforcement learning, the number of demonstrations required often scales with the number of relevant features.
-In a stylized bound, the number of expert trajectories $m$ required to learn a policy within error $\epsilon$, discount factor $\gamma$, failure probability $\delta$, and feature dimension $k$, has the schematic form
-\[
-m
-\gtrsim
-\frac{2k}{\epsilon^2(1-\gamma)^2}
-\log\left(\frac{2k}{\delta}\right).
-\]
-The details depend on assumptions.
-The qualitative point is enough: if $k$ is large, learning becomes much harder; if the effective value dimension is small, learning becomes less impossible.
+The schematic sample-complexity bound and its dependence on effective dimension $k$ are developed in Chapter~\ref{ch:low-dimensional-value-learning} (Equation~\eqref{eq:sample-complexity-ch17}).
+The qualitative point is enough here: if $k$ is large, learning becomes much harder; if the effective value dimension is small, learning becomes less impossible.
 
 Separate identifiability and sample-complexity results warn that many reward functions can explain the same behavior, and that inverse reinforcement learning in finite settings is not cheap \autocite{komanduru2019irlcomplexity,ng2000irl,ramachandran2007bayesianirl}.
 Cooperative inverse reinforcement learning reframes alignment as a game in which the human knows the reward and the system is uncertain, which can encourage inquiry and shutdown tolerance under idealized assumptions \autocite{hadfieldmenell2016}, but surveys of RLHF-style deployment find persistent limits under model error, pluralism, and strategic pressure \autocite{casper2023rlhflimits}.

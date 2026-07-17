@@ -565,29 +565,10 @@ with $n$ very large.
 Inverse learning would require enough observations to estimate how each dimension contributes across contexts.
 If $n$ is large, the sample burden becomes extreme.
 
-In a simplified apprenticeship-learning setting, the number of demonstrations needed to identify a policy within regret tolerance $\epsilon$ scales approximately with the number of relevant features $k$:
-\[
-m
-=
-O\left(
-\frac{k}{\epsilon^2(1-\gamma)^2}
-\log\frac{k}{\delta}
-\right),
-\]
-where:
-\begin{itemize}
-\item $m$ is the number of demonstrations,
-\item $k$ is the effective feature dimension,
-\item $\epsilon$ is tolerated regret,
-\item $\gamma$ is the discount factor,
-\item $\delta$ is failure probability.
-\end{itemize}
-
-The important dependence is:
-\[
-m\propto k.
-\]
-If the effective value dimension is $k=10$, the problem is hard but not obviously impossible.
+Inverse learning would require enough observations to estimate how each dimension contributes across contexts.
+If $n$ is large, the sample burden becomes extreme.
+The demonstration-count bound as a function of effective feature dimension $k$ is given in Chapter~\ref{ch:low-dimensional-value-learning} (Equation~\eqref{eq:sample-complexity-ch17}).
+The important dependence is $m\propto k$: if the effective value dimension is $k=10$, the problem is hard but not obviously impossible.
 If it is $k=10^5$, the problem becomes hopeless for any realistic demonstration set, especially under long horizons where $(1-\gamma)^{-2}$ dominates.
 
 This is one reason to expect that human values, if learnable at all, must pass through bottlenecks \autocite{abbeel2004apprenticeship,ng2000irl,zarncke2026value-bottleneck}.

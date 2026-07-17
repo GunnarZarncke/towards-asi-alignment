@@ -410,7 +410,8 @@ For example, a model-evaluation dashboard should not merely report benchmark sco
 \section{Goodhart Parasites}
 \label{sec:goodhart-parasites-ch36}
 
-Goodhart's law says that when a measure becomes a target, it ceases to be a good measure \autocite{goodhart1984problems,manheim2018goodhart,pan2024rewardhacking}. A correction parasite is often a Goodhart process living inside a correction system.
+Goodhart selection (Chapter~\ref{ch:selection-environment}, Section~\ref{sec:goodhart-selection-ch34}) says that when a proxy becomes a selector, the population shifts toward traits that raise the proxy without raising the underlying property.
+A correction parasite is such a Goodhart process living inside a correction system.
 
 Let \(M\) be a metric and \(R\) the risk variable it was intended to track. Initially:
 \[
