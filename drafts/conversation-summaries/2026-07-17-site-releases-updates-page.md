@@ -27,4 +27,4 @@ User asked to add a releases/updates page to `site/` with one card shown newest-
 - `site/src/content/cards/release-v1-0-0.md`
 
 ## Commits
-- (filled after commit)
+- `16aacf7` Add companion-site releases page with newest-first release cards.
