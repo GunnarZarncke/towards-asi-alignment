@@ -96,6 +96,7 @@ src/content/cards/what-not-claiming.md
 # Generated from RELEASE_NOTES.md via sync-releases.mjs. Edit RELEASE_NOTES.md instead.
 src/content/cards/release-v1-0-0.md
 src/content/cards/release-v1-1-0.md
+src/content/cards/release-v1-2-0.md
 src/content/cards/releases-updates.md
 
 # Generated from concepts + chapters + notation via build-search-index.mjs.

@@ -10,6 +10,48 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 - **PATCH** — fixes, calibration, citations, and editorial passes.
 ---
 
+## v1.2.0 — 2026-07-17 — Site publication layer, evidence index, and graded-lab v3
+
+Commit: `65287c4` · Tag: (pending)
+
+Nine days after v1.1.0: the **companion site** moves from a static mirror to a **YAML-synced publication layer** on **towards-alignment.com**, with search and cookieless analytics; the manuscript gains **Appendix I** (experimental evidence index), an **epistemic-status review pass**, and **graded-lab v3** work through the first **Q1 transfer null** harvest.
+
+### Companion site (`site/`)
+
+- **Custom domain and SEO.** Site configured for `towards-alignment.com`; sitemap (`@astrojs/sitemap`), `robots.txt`, canonical URLs, Open Graph / Twitter cards, and a default social preview image. Repo links migrated from the old GitHub Pages URL where appropriate.
+- **YAML-roster content sync.** Hand-authored root concept/bridge/projection cards replaced by generators from `metadata/concepts.yml`, `metadata/bridges.yml`, `metadata/projections.yml`, and `metadata/concepts/bodies/`. Retired `terminology.md` and field-subsumption JSON in favour of generated glossary cards and a **`/glossary/`** hub; **`/notation/`** from `notation.yml`; bridge cards synced from Appendix B overrides.
+- **Releases hub.** **`/updates/`** page and release cards generated from this file via `sync-releases.mjs` (newest first).
+- **Search.** `build-search-index.mjs` → `search-index.json` (~214 entries: concepts, bridges, chapters, experiments, notation symbols; bibliography cards excluded). Header **`SiteSearch`** component: type-aware matching and multi-word fallback (up to 20 one-line results).
+- **Analytics and disclosure.** Cookieless **Cloudflare Web Analytics** beacon (production builds only; disabled in dev). **Impressum** *Web-Analyse* section documents aggregated, cookie-free traffic measurement.
+- **Optional `claimId` links** from six Introduction-aligned concepts to `metadata/claims-ledger.md` (warn-only validation).
+
+### Manuscript and evidence spine
+
+- **Appendix I — Experimental evidence index** (`appI-experimental-evidence.tex`): global finding IDs (`G-*`, `gl-*`) across experiment lines; wired into chapters and companion site.
+- **Epistemic-status review pass** across chapters and appendices (reviewed status boxes; high/medium duplication trims in dense chapters).
+- **Symbol census** promoted to `metadata/symbol-census/` with text-ref edges and readability fixes to the formula graph.
+- **Citations and calibration:** Xi 2026 WAIC keynote (intergovernmental dual-mandate instance); Hassabis Frontier AI Standards Body proposal (ch33); Byrnes social-drive distinctions (ch15); embedded value formation cross-refs (ch15, ch45).
+- **Graded-lab Q1 null harvest (GL-76/77):** V2-3 machinery-transfer battery on blinded-grown ecology — UAD mechanism recovery and EAI mid-band nulls recorded in ch07, ch33, ch41, ch42, and Appendix N; BIQ harness fix for singleton inferred units.
+
+### Empirical spine — graded-lab simulation (`experiments/graded-lab-simulation/`)
+
+- **v1 program closed** (GL-31): terminal summary, reproduction guide, `PLAN_v2`.
+- **v2 / V2-2b closed** without a passing ecology; **v3 institutional runtime** (`PLAN_v3.md`) through slice **D criteria freeze** (GL-53, reference battery at T=200).
+- **v3 grower** rounds (GL-70–72), **v3_grown ecology freeze** (GL-73), pre-Q1 batteries (GL-74), **V2-3 transfer battery** harness and parallel runs (GL-75–76).
+- Proper UAD + access-UAD (GL-51); supplementary detector and ACL gates through GL-63; package version stepped through 0.32.x–0.38.x on recorded milestones.
+
+### Other experiment lines (selected)
+
+- **Lab-simulation:** D3 selection ecology (G-36/G-37), user-population vote-channel capture; batteries and findings G-38–G-41; graded-lab successor line proposed and built.
+- **Site PDF policy** documented (PDF de-emphasised on homepage; remains canonical long-form artifact).
+
+### Housekeeping
+
+- `npm run check:concepts` validates generated cards and search index (check-only mode).
+- Conversation logs and session handoffs under `drafts/conversation-summaries/` for graded-lab and site work.
+
+---
+
 ## v1.1.0 — 2026-07-08 — Legibility, companion site, and empirical spine
 
 A consolidation release focused on **external legibility** (making the framework readable and checkable by outside researchers, funders, and policy readers), a full **companion website**, a new **institutional-histories appendix**, and four **empirical experiment lines** that stress-test bridge cruxes. 
