@@ -3844,3 +3844,47 @@ refresh (GL-68 focused tests green; suite timing refresh still optional).
 - ``CODE_VERSION`` unchanged at ``graded-lab-0.37.0`` (brief/docs + GL-68
   fixture recalibration only).
 
+### GL-70 — V3 growth round 1 (2026-07-17)
+
+**Trigger.** User requested first v3 grower round after GL-69 brief freeze.
+
+**Blinding.** Physical stash via ``scripts/grower_stash.sh`` (``PLAN_v3.md``,
+``DESIGN.md``, ``BLIND_GENERATION.md``, ``results/``, ``ecology_complexity.py``,
+matching tests/fixtures, ``oracle_only/``). Grower brief +
+structural schema only in ``runs/grower-v3-round1/grower_brief_and_schema.md``.
+Blinded subagent; rationale confirms no removed rubric files read.
+
+**Artifacts.**
+- ``generated_ecology_v3_round1.json``
+- ``generated_ecology_v3_round1_rationale.md``
+- ``generated_ecology_v3_round1_knowledge_base.md``
+
+**Checker result** (``run_complexity_check``, WEAK_AGENT reference battery,
+20 seeds, v3 gates load-bearing):
+
+| Criterion | Pass |
+|-----------|------|
+| C1 | yes |
+| C2 | yes |
+| C3 | yes |
+| C4 | yes (deploy_rate 0.85) |
+| C5 | yes |
+| C5_v3 | yes (all 4 mechanism kinds exercised) |
+| **C1_v3** | **no** |
+
+**C1_v3 failure (measured principal tension).** Two of four declared
+conflicts on ``compute_burn`` failed correlation sign check:
+``commercial_partner`` vs ``lab_directorate`` and ``research_council`` vs
+``lab_directorate`` (correlation ≈ +0.21, threshold requires ≤ −0.15).
+The other two conflicts passed. Declarative C1–C5 and C5-v3 all green on
+first submission.
+
+**Grower feedback** (``pass_fail_only()``): ``C1_v3: false``; all other
+criteria true.
+
+**Status.** Round 1 of ≤4; **no ecology freeze**. Next: grower revision on
+C1_v3 tension shape (Part B conflicts / flow structure affecting scorecard
+correlations), or stop at round-4 failure per protocol.
+
+- ``CODE_VERSION`` unchanged at ``graded-lab-0.37.0`` (growth round only).
+

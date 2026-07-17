@@ -398,7 +398,7 @@ detector/UAD pre-registration, attention surface, and recalibrated engineering
 gates closed. Do **not** edit the grower-facing brief text below without a
 `CODE_VERSION` bump and FINDINGS entry.
 
-**Status: no growth round launched yet.** Slice D gates closed for round 1:
+**Status: round 1 complete (2026-07-17, GL-70).** Slice D gates closed for round 1:
 criteria + pre-Q1 batteries; Part B retargeting (GL-62); detector machinery
 transfer (GL-60/63); supplementary UAD coupling (GL-65); attention surface
 (GL-66) with legacy-test containment (GL-67) and ablation/ACL recalibration

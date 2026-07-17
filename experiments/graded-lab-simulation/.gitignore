@@ -1,5 +1,6 @@
 __pycache__/
 .venv/
+generated_ecology_v2.json
 results/episode_cache/
 results/isolate_cost_ledger.json
 results/episode_cost_ledger.json

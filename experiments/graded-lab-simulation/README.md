@@ -28,8 +28,8 @@ mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
   `mechanisms`, `resource_flows`) causally load-bearing at runtime instead
   of declarative-only JSON — [`PLAN_v3.md`](PLAN_v3.md). Build order:
   slices **A, F, E, C, B done**; **slice D** criteria/gates closed through
-  GL-68 with **growth brief FROZEN (GL-69)**; first growth round not yet
-  launched. See "v3 slice status" below and `results/FINDINGS.md` GL-44
+  GL-68 with **growth brief FROZEN (GL-69)**; **round 1 complete (GL-70)** —
+  C1_v3 fails; rounds 2–4 open if continuing. See "v3 slice status" below and `results/FINDINGS.md` GL-44
   through GL-69.
 
 <details>
