@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "katex/dist/katex.min.css";
+import SiteSearch from "../components/SiteSearch.astro";
 import { pdfHref } from "../lib/site-urls";
 import {
   AUTHOR_NAME,
@@ -84,6 +85,7 @@ const robots = noindex ? "noindex, follow" : "index, follow";
             <a href={withBase("/about/")}>About</a>
             <a href={withBase("/updates/")}>Updates</a>
             <a href={pdfUrl}>PDF</a>
+            <SiteSearch />
           </nav>
         </div>
       </header>
