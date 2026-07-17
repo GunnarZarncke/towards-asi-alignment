@@ -1,6 +1,14 @@
 \chapter{Lean Proof Spine in Mathematical Form}
 \label{appi-lean-proof-spine}
 
+\begin{epistemicstatus}
+This appendix is standard in method (ordinary Lean~4 / Mathlib formal verification) but almost entirely the book's own content: 
+nearly all of the proof-spine theorems, finite counterexamples, and named bridges are original to this project, 
+while the imported field results it cites are reproduced under explicit source attribution rather than rederived from scratch.
+Confidence in the machine-checked material itself is as high as Lean proofs get but that confidence is conditional: 
+certification claims follow \emph{if} the bridge assumptions hold, not that any deployed system satisfies those assumptions.
+\end{epistemicstatus}
+
 This appendix translates the Lean proof spine into ordinary mathematical language.
 It is not a claim that Lean proves the empirical assumptions of the book.
 Lean proves the conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold, then the advertised certification claims follow.
