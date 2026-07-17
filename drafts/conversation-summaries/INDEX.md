@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-17 | Cloudflare Web Analytics (cookieless; Impressum note) | [2026-07-17-cloudflare-web-analytics.md](2026-07-17-cloudflare-web-analytics.md) |
 | 2026-07-17 | Site header search UI (type + multi-word fallback) | [2026-07-17-site-header-search.md](2026-07-17-site-header-search.md) |
 | 2026-07-17 | Content sync plumbing (phases 7–10): releases hub, search index, claim-ledger `claimId` links, cleanup + docs | [2026-07-17-content-sync-plumbing.md](2026-07-17-content-sync-plumbing.md) |
 | 2026-07-17 | Graded lab **Q1 null harvest** into ch07/ch33/ch41/ch42 + appN (GL-76) | [2026-07-17-graded-lab-q1-null-manuscript-harvest.md](2026-07-17-graded-lab-q1-null-manuscript-harvest.md) |

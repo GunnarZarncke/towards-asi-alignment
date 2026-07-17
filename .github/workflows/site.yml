@@ -46,6 +46,8 @@ jobs:
 
       - name: Build
         working-directory: site
+        env:
+          PUBLIC_CF_WEB_ANALYTICS_TOKEN: ${{ secrets.PUBLIC_CF_WEB_ANALYTICS_TOKEN }}
         run: npm run build
 
       - name: Deploy to GitHub Pages

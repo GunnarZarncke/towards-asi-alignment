@@ -9,6 +9,8 @@ export const OG_IMAGE_PATH = "/og-image.png";
 export const OG_IMAGE_URL = `${SITE_ORIGIN}${OG_IMAGE_PATH}`;
 export const OG_IMAGE_ALT =
   "Towards Superintelligence Alignment — companion site for the research manuscript";
+/** Cloudflare Web Analytics beacon token (public; override with PUBLIC_CF_WEB_ANALYTICS_TOKEN). */
+export const CF_WEB_ANALYTICS_TOKEN = "415dc5b7862f4b47a7f41047bbd6c81e";
 
 /** Build an absolute URL on the deployed site (respects trailing-slash routes). */
 export function absoluteSiteUrl(pathname: string, origin = SITE_ORIGIN): string {
