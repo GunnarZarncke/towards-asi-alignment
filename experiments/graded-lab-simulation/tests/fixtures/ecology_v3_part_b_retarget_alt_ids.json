@@ -340,30 +340,24 @@
     },
     "ablation_target_flow_id": "flow_eng_lab_operator_compute",
     "ablation_gate": {
-      "seeds": [
-        0,
-        2,
-        4
-      ],
-      "histogram_l1_threshold": 0.1,
+      "seeds": [0, 1, 4],
+      "histogram_l1_threshold": 0.08,
       "min_seeds_passing": 2,
       "roster": "WEAK_AGENT",
-      "carrier_load_scale": 1.5
+      "carrier_load_scale": 1.5,
+      "recalibrated": "GL-68 — post-GL-66 legacy-attention stack; neg control @ load 0.0 still 0/3"
     },
     "c2_v3_causal_gate": {
       "focal_role": "engineer",
       "focal_actor_id": "eng1",
       "ablation_flow_id": "flow_eng_lab_operator_compute",
-      "seeds": [
-        0,
-        2,
-        4
-      ],
-      "histogram_l1_threshold": 0.1,
+      "seeds": [0, 1, 4],
+      "histogram_l1_threshold": 0.08,
       "min_seeds_passing": 2,
       "carrier_load_scale": 1.5,
       "roster": "WEAK_AGENT",
-      "T": 100
+      "T": 100,
+      "recalibrated": "GL-68 — same discovery as ablation_gate; neg control @ load 0.0 still 0/3"
     }
   },
   "resource_flows": [

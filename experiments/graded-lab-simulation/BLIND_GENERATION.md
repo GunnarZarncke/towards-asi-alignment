@@ -167,9 +167,8 @@ before round 1 was sent):**
 > `read(path)`, `write(path, content)`, `communicate(channel, msg)`,
 > `call(endpoint, args)`, `compute(spec)`, plus `continue_current` /
 > `abort` when busy. Every primitive costs modeled compute and IO;
-> actors have finite per-tick compute/IO/standing (trust with the
-> access admin) allowances that queue when actors compete for shared
-> resources.
+> actors have finite per-tick compute/IO/standing allowances that 
+> queue when actors compete for shared resources.
 >
 > **Your task has two parts.**
 >
@@ -201,7 +200,7 @@ before round 1 was sent):**
 > 3. **Resource flows** — how each of the four roles (`engineer`,
 >    `reviewer`, `release_manager`, `admin`) actually receives its
 >    operating resources in this world: its compute budget, its
->    standing/trust with the access admin, approval for elevated
+>    standing/trust with other participants, approval for elevated
 >    capabilities, whatever else you think is realistic. Trace each
 >    such flow back to which principal's channel ultimately authorizes
 >    or funds it, and by what concrete mechanism (a budget line, a
@@ -211,9 +210,8 @@ before round 1 was sent):**
 >    require — do not stop at one flow per role if more exist.
 > 4. **Coordination mechanisms** — at least three *structurally
 >    different kinds* of mechanism by which actors in this lab actually
->    coordinate or depend on each other, for example: a shared message
->    channel, a shared document/artifact that one writes and another
->    reads, a joint approval/vote among several actors, or a transfer
+>    coordinate or depend on each other, for example: email, a shared 
+>    document, an approval meeting, or a transfer
 >    of some resource from one actor to another. For each, say plainly
 >    which roles or named actors are really involved.
 >
@@ -391,19 +389,20 @@ for C1/C2/C5 (declarative checks — see the C1/C2/C5 caveat in
 executable, or don't claim it's live"), physical file isolation for
 rubric-adjacent files. Pilot access is during design only.
 
-## V3 — institutional ecology growth (slice D, DRAFT — revised GL-63)
+## V3 — institutional ecology growth (slice D, FROZEN — GL-69)
 
-**Status: DRAFT, revised GL-63 — do not launch a round until this text is
-explicitly frozen.** GL-56 originally froze the brief while load-bearing Part B
-was open; GL-57 downgraded it. **GL-62 closed Part B retargeting**; **GL-63
-split detector pre-registration** (machinery transfer vs honest-reference
-sparsity). Brief text below is updated for institutional exercise and Q1 claim
-scope; still **not** frozen for a growth round until the implementer signs off.
+**Status: FROZEN (2026-07-17, GL-69).** Implementer sign-off after GL-62–GL-68
+gates. GL-56 originally froze while load-bearing Part B was open; GL-57
+downgraded to DRAFT; this freeze restores a launchable brief with Part B,
+detector/UAD pre-registration, attention surface, and recalibrated engineering
+gates closed. Do **not** edit the grower-facing brief text below without a
+`CODE_VERSION` bump and FINDINGS entry.
 
-**Status: no growth round launched yet.** Slice D gates: criteria + pre-Q1
-batteries done; load-bearing Part B retargeting validated (GL-62); detector
-machinery-transfer gate satisfied (GL-60 + GL-63). Supersedes V2-2 and V2-2b
-as the active growth path once this brief is frozen and sent.
+**Status: no growth round launched yet.** Slice D gates closed for round 1:
+criteria + pre-Q1 batteries; Part B retargeting (GL-62); detector machinery
+transfer (GL-60/63); supplementary UAD coupling (GL-65); attention surface
+(GL-66) with legacy-test containment (GL-67) and ablation/ACL recalibration
+(GL-68). Supersedes V2-2 and V2-2b as the active growth path.
 
 **Posture (GL-42, unchanged from V2-2b correction):** an **open-rubric
 design exercise**, not a claim of rubric-blind growth. The grower sees
@@ -484,14 +483,13 @@ risk, not a hypothetical one.** Three independent things line up badly:
    silently does nothing — a second, independent honesty problem on top
    of (1)–(2), not fixed by the mitigation-2 brief language alone.
 
-**Why mitigation 1 is the right default *specifically for round 1*, and
-why that choice can be settled now even though the rest of this brief is
-still DRAFT.** Part B retargeting is **implemented and validated** (GL-62):
-reference presets discover governed mechanism ids from affordances when host
-merge is off; integrated reference + alt-id fixture pass C5-v3. The brief
-below reflects that shape. The mitigation choice remains **orthogonal** to
-Part B engineering: under mitigation 1 the grower never authors agent
-behavior, so reference preset retargeting applies uniformly.
+**Why mitigation 1 is the right default *specifically for round 1*.**
+Part B retargeting is **implemented and validated** (GL-62): reference
+presets discover governed mechanism ids from affordances when host merge is
+off; integrated reference + alt-id fixture pass C5-v3. The brief below
+reflects that shape. The mitigation choice remains **orthogonal** to Part B
+engineering: under mitigation 1 the grower never authors agent behavior, so
+reference preset retargeting applies uniformly.
 
 **What is *not* lost by choosing mitigation 1 now:** the design-space
 richness claim, the V2-4 mutation operator, and the V2-5 selection
@@ -693,7 +691,7 @@ the grower with brief text and prior-round artifacts in the prompt only,
 then restores files before scoring. Same protocol as V2-2 round redo
 (FINDINGS GL-34/GL-35).
 
-### Gate before sending this brief (GL-57 / GL-62 / GL-63 / GL-64 / GL-65)
+### Gate before sending this brief (closed through GL-68)
 
 **Load-bearing Part B — closed (GL-62).** Reference presets retarget through
 governed mechanism ids from affordances when host merge is off; validated on
@@ -708,17 +706,27 @@ on the honest reference is report-only, not a round blocker.
 uses compiled ``exercise_targets`` with ``channel_coupling_rounds: 0`` (GL-64);
 host ``ChannelCouplingProtocol`` is not the claim path.
 
-**Still deferred:** v3 strict mode and richer authorization → `REPRODUCTION.md` §8.
+**Attention surface — closed for production (GL-66); test containment (GL-67).**
+Grower Part C must describe desk vs archive and catalog scan (no numeric
+surfacing constants). Legacy v1 UAD/BIQ and pre-GL-66 ablation batteries use
+``attention_surface_mode=legacy``; v3 growth/reference path keeps GL-66.
+
+**Engineering recalibration — closed (GL-68).** Ablation / C2-v3 causal gates
+re-pinned under legacy attention (L1 ≥ 0.08, seeds ``{0,1,4}``; negative
+control at load 0.0 unchanged). ACL noop overhead soft cap 0.25.
+
+**Still deferred (not round-1 blockers):** v3 strict mode / richer authorization
+→ `REPRODUCTION.md` §8; service-oriented isolate interior → §11; recalibrating
+legacy UAD/ablation under production GL-66 (non-legacy) semantics.
 
 There is **no** "optional if the grower's maps happen to hit governed paths"
 escape hatch (GL-56 language retracted): under mitigation 1, growers do not
 author `program_map`, so institutional exercise is implementer-controlled
 reference preset behavior.
 
-### Freeze (once the implementer explicitly freezes this brief and sends a round)
+### Freeze (this brief text — GL-69)
 
-First passing round's JSON + rationale + Part C are immutable except via
-`CODE_VERSION` bump with a FINDINGS entry. This brief text is frozen separately
-when the implementer signs off after GL-62/GL-63 gates — not automatically by
-code changes alone.
+This brief text is **frozen** as of GL-69. First passing round's JSON +
+rationale + Part C are immutable except via `CODE_VERSION` bump with a
+FINDINGS entry. Edits to grower-facing text require the same discipline.
 

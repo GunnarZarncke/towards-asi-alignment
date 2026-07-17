@@ -37,10 +37,10 @@ pytest child running behind an interrupted wrapper.
   unresolved order/shared-state contamination, not as CPU-contention noise.
 
 ## Open / next
-- Fix 3 slow-suite logic failures before brief freeze: ACL overhead cap,
-  ablation gates (1/3 under legacy shim).
-- Refresh speed baselines after logic green.
-- Growth brief still **DRAFT** — flip to FROZEN after clean slow suite.
+- GL-68 done for the 3 logic failures (ACL cap 0.25; ablation L1 0.08 /
+  seeds ``{0,1,4}``); focused re-run 4/4 pass. Full slow suite + speed
+  baseline refresh still open before brief freeze.
+- Growth brief still **DRAFT**.
 - Recalibrate UAD/ablation under GL-66 production semantics (legacy shim temporary).
 
 ## Key paths

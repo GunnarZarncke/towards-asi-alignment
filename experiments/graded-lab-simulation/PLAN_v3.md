@@ -1,10 +1,9 @@
 # PLAN v3 — institutional runtime wiring
 
-**Status (build order):** slices **A**, **F**, **E**, **C** done; slice **B** partial
-(enforcement + reference opt-in gate); **slice D partial** (criteria
-frozen GL-53; pre-Q1 batteries + C2-v3 done GL-54–56; growth-gate fix
-GL-58); load-bearing Part B **still open** (GL-58 scope correction); growth brief (DRAFT, not frozen)
-still open — see the build-order table below.
+**Status (build order):** slices **A**, **F**, **E**, **C**, **B** done;
+**slice D** criteria/gates closed through GL-68; **growth brief FROZEN
+(GL-69)**; first growth round not launched — see the build-order table
+below.
 Supersedes the V2-2b growth program (closed without a growth round,
 GL-43) as the next step of the graded-lab v2 program (`PLAN_v2.md`
 Q1–Q3 stand; this plan replaces V2-2b's row on the path to a passing
@@ -567,7 +566,7 @@ when opt-in active. **Still open for slice D:** default/grower programs must
 target governed ids or v3 strict mode — ordinary paths may ignore Part B.
 
 | 5 | C — principal scorecard + measured tension | ~1–2 wk | scorecard validated on hand-built conflict fixtures; GoalWeights-derivation decision (in/out) recorded ✅ (out) |
-| 6 | D — criteria freeze + growth protocol | ~1 wk | … GL-60 ✅; **Part B closure path chosen (GL-61): retarget presets** — implementation open; growth brief + round still open |
+| 6 | D — criteria freeze + growth protocol | ~1 wk | GL-60–GL-68 ✅; **growth brief FROZEN (GL-69)**; first round not launched |
 
 Total: roughly 6–9 person-weeks of engineering plus two explicit human
 design gates (vote semantics; C-slice metric vocabulary + GoalWeights

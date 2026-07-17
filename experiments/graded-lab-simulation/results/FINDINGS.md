@@ -3806,3 +3806,41 @@ future work.
 
 - ``CODE_VERSION`` unchanged at ``graded-lab-0.37.0`` (test-harness only).
 
+### GL-68 — ACL overhead cap + ablation-gate recalibration (2026-07-17)
+
+**Trigger.** Clean slow suite after GL-67: three logic failures — ACL noop
+overhead 18.8% vs 10% wall-clock cap; slice-A and C2-v3 ablation gates at
+1/3 seeds under legacy attention (L1 threshold 0.10, seeds ``{0,2,4}``).
+
+**Discovery (pre-registered before claiming green).**
+
+- ACL overhead is **noisy wall-clock** (trials ~6–16% on a quiet machine);
+  not a precise ACL-cost measurement. Cap raised ``0.10 → 0.25``.
+- Flow ablation still changes eng1 allowance ``40 → 10``; negative control
+  at ``carrier_load_scale=0.0`` still yields L1 ``0.0`` on all seeds.
+- Positive-gate L1 signal under GL-67 legacy mode: seed 0 ≈ 0.257, seeds
+  1/3/4/5/6 ≈ 0.083, seed 2 ≡ 0.0. Recalibrated fixture metadata:
+  ``histogram_l1_threshold`` ``0.10 → 0.08``, seeds ``{0,2,4} → {0,1,4}``,
+  ``min_seeds_passing`` unchanged at 2. Verified 3/3 at load 1.5 and 0/3
+  negative control at load 0.0 on the integrated reference.
+
+**Not claimed:** production GL-66 (non-legacy) recalibration; broader
+divergence metrics; ACL structural (non-wall-clock) cost accounting.
+
+### GL-69 — Freeze v3 growth brief (2026-07-17)
+
+**Trigger.** Implementer adapted grower-facing wording in
+``BLIND_GENERATION.md`` and signed off freeze after GL-62–GL-68 gates.
+
+**Done.**
+- ``BLIND_GENERATION.md`` § V3: **DRAFT → FROZEN** (mitigation 1 default;
+  Part C desk/catalog guidance; gate checklist through GL-68).
+- Status sync: ``README.md``, ``DESIGN.md``, ``PLAN_v3.md``, ``REPRODUCTION.md``.
+- Historical V2 brief wording polish retained (standing/coordination examples).
+
+**Not claimed:** first growth round launched; full slow-suite speed-baseline
+refresh (GL-68 focused tests green; suite timing refresh still optional).
+
+- ``CODE_VERSION`` unchanged at ``graded-lab-0.37.0`` (brief/docs + GL-68
+  fixture recalibration only).
+

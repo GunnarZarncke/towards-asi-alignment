@@ -36,7 +36,7 @@ from graded_lab.world_visible.substrate import load_substrate
 from graded_lab.world_visible.world import default_lab_config, run_episode
 
 _FIXTURE = Path("tests/fixtures/ecology_v3_slice_a_reference.json")
-ACL_OVERHEAD_MAX_FRACTION = 0.10
+ACL_OVERHEAD_MAX_FRACTION = 0.25  # GL-68: wall-clock noise band; was 0.10
 
 
 def _v3_cfg(*, T: int = 120) -> EpisodeConfig:

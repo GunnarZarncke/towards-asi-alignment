@@ -62,21 +62,15 @@ for v3 reference batteries (v2 unchanged at ``T=100``).
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
 ``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
 growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
-launched). **Current:** ``graded-lab-0.37.0`` at GL-66 (attention
-surface: push bands + interleaved cap + archive window + ``desk.scan``).
+launched). **Current:** ``graded-lab-0.37.0`` at GL-66–GL-69 (attention
+surface; legacy-test containment; ablation/ACL recalibration; **v3 growth
+brief FROZEN** in ``BLIND_GENERATION.md`` § V3 — no round launched yet).
 GL-64/65 exercise targets + supplementary UAD gate; GL-59 causal
 C2-v3 ablation gate; GL-60 supplementary detector fixtures; GL-62 Part B
 retarget; GL-63 detector pre-registration split —
-``ComplexityReport.all_passed``/``pass_fail_only()`` now require
-C1-v3/C5-v3 for v3 ecologies (closing the declarative-green-without-
-causal-signal gap GL-42 named); GL-56's growth brief downgraded from
-"frozen" to **DRAFT** and its mitigation-2 default reversed to
-mitigation-1-for-round-1; C2-v3's accounting-only scope; detector pre-
-registration split (``machinery_transfer_verified`` blocking,
-``honest_reference_sparse_detectors`` report-only — GL-63); UAD pre-
-registration split (``organic_channel_coupling_verified`` blocking,
-host ``ChannelCouplingProtocol`` not on honest reference — GL-64/65);
-attention surface (GL-66).
+``ComplexityReport.all_passed``/``pass_fail_only()`` require C1-v3/C5-v3
+for v3 ecologies; mitigation-1-for-round-1; detector/UAD pre-registration
+splits as in FINDINGS GL-63/GL-65.
 Hand-bumped when oracle,
 pipeline, substrate loader, or resource scheduler mechanics change.
 Part of every episode-cache key.
@@ -1709,11 +1703,14 @@ Observation field ``desk_meta``: ``omitted_legal_reads``, ``archive_paths_total`
 gates run under ``attention_surface_mode=legacy`` (``affordable_legacy.py``) via
 ``conftest.py``; production episodes and v3 growth batteries keep GL-66.
 
-**Not frozen this slice (still open per `PLAN_v3.md` slice D):**
-Growth protocol brief is **DRAFT** until implementer sign-off — see
-`BLIND_GENERATION.md` § V3. Part B retargeting closed (GL-62); supplementary
-detector gate (GL-60/63) and supplementary UAD gate (GL-65) closed. No round
-launched.
+**GL-68 recalibration (legacy-attention stack):** ablation / C2-v3 causal gates
+use ``histogram_l1_threshold=0.08``, seeds ``{0,1,4}`` (was ``0.10`` /
+``{0,2,4}``); negative control at ``carrier_load_scale=0.0`` unchanged.
+ACL noop overhead soft cap ``0.25`` (was ``0.10``; wall-clock noise).
+
+**Growth brief FROZEN (GL-69):** see `BLIND_GENERATION.md` § V3. Part B,
+detector/UAD gates, attention surface, and GL-68 recalibrations closed.
+First growth round not yet launched.
 
 **GL-57 gating fix (external review, applied):** `ComplexityReport
 .all_passed` / `.pass_fail_only()` previously only covered declarative

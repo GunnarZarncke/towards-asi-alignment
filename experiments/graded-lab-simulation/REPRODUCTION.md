@@ -442,13 +442,11 @@ pytest tests/test_slice_c_scorecard.py::test_reference_battery_passes_c1_v3_at_f
 pytest tests/test_slice_c_scorecard.py::test_c1_v3_not_exercised_when_episode_horizon_too_short -q
 ```
 
-**Still open under slice D:** **Part B retargeting (GL-61 chosen path)** —
-reference presets must use governed mechanism ids ecology-agnostically;
-generic walker-step interpreter; revise & freeze growth brief after
-retargeting validates; first v3 growth round. Supplementary detector
-fixtures ✅ (GL-60). Causal C2-v3 ablation gate ✅ (GL-59). v3 strict mode
-→ `REPRODUCTION.md` §8 (deferred). The growth brief (`BLIND_GENERATION.md`
-§ V3) remains **DRAFT** until retargeting lands.
+**Slice D brief frozen (GL-69).** Part B retargeting ✅ (GL-62); supplementary
+detector ✅ (GL-60); causal C2-v3 ✅ (GL-59/68); supplementary UAD ✅ (GL-65);
+attention surface ✅ (GL-66/67). Growth brief (`BLIND_GENERATION.md` § V3) is
+**FROZEN**; **first v3 growth round** still open. Still deferred: generic
+walker-step interpreter; v3 strict mode → §8; service-oriented isolate → §11.
 
 ---
 

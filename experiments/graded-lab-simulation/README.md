@@ -27,17 +27,10 @@ mutual-AND heuristics quarantined under `graded_lab/oracle_only/attic/`).
 - **v3** (active): make an ecology's Part B (`principals`, `conflicts`,
   `mechanisms`, `resource_flows`) causally load-bearing at runtime instead
   of declarative-only JSON — [`PLAN_v3.md`](PLAN_v3.md). Build order:
-  slices **A, F, E, C done; B partial** (enforcement + reference opt-in
-  gate); **slice D partial** (GL-53–GL-58: constants, pre-Q1 batteries,
-  C2-v3, growth brief DRAFT; GL-58 auto-merge; **causal C2-v3 gate (GL-59)**;
-  load-bearing Part B closed (GL-62); **supplementary detector fixtures ✅ (GL-60)**;
-  **supplementary UAD gate ✅ (GL-65)**; **attention surface ✅ (GL-66)**;
-  honest reference ``channel_coupling_rounds=0`` (GL-64); growth brief DRAFT;
-  round still open). See
-  "v3 slice status" below and `results/FINDINGS.md` GL-44 through GL-66
-  for the slice-by-slice record, including the affordable-set starvation
-  bug (GL-50), proper UAD (GL-51), host coupling (GL-52), the slice D
-  criteria freeze (GL-53), and the phenotype-overlap harness fix (GL-55).
+  slices **A, F, E, C, B done**; **slice D** criteria/gates closed through
+  GL-68 with **growth brief FROZEN (GL-69)**; first growth round not yet
+  launched. See "v3 slice status" below and `results/FINDINGS.md` GL-44
+  through GL-69.
 
 <details>
 <summary>v1 final state (historical, closed 2026-07-15)</summary>
@@ -143,7 +136,7 @@ Build order per `PLAN_v3.md` (institutional Part B → live runtime):
 | E — feedback-coupled pressure + task injection | **done** (`graded-lab-0.23.0`; GL-47) |
 | C — principal scorecard + measured tension (C1-v3) | **done** (`graded-lab-0.25.0`; GL-49; measured-tension check verified against a real reference battery only after the GL-50 fix below) |
 | B — `mechanisms` → enforced coordination | **done** (GL-62 retarget via affordances; host merge optional) |
-| D — criteria freeze + growth protocol | **partial** (GL-53–GL-65; supplementary detector + UAD gates; growth brief DRAFT; round still open) |
+| D — criteria freeze + growth protocol | **brief frozen (GL-69)** — gates GL-53–GL-68 closed; first round not launched |
 
 **GL-50 (`graded-lab-0.25.1`):** affordable-set starvation + missing
 one-shot guard zeroed `deploy_rate`/`bearer_harm` on the integrated
@@ -206,6 +199,10 @@ debug only. Not grower-visible. See `results/FINDINGS.md` GL-64/GL-65.
 recency → archive window), interleaved cap, ``desk.scan`` pull, ``desk_meta`` on
 observations; fixes governed ``communicate`` cap starvation. See `results/FINDINGS.md`
 GL-66; service-oriented isolate interior deferred to `REPRODUCTION.md` §11.
+
+**GL-67–69:** legacy attention for calibrated tests + budget-aware relative
+claim retired (GL-67); ACL/ablation recalibration (GL-68); **v3 growth brief
+FROZEN** (GL-69). First round not launched.
 
 ## v1 Phase status (historical, closed 2026-07-15)
 
