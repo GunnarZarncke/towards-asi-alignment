@@ -50,4 +50,4 @@ pytest child running behind an interrupted wrapper.
 - `experiments/graded-lab-simulation/README.md`
 
 ## Commits
-- None.
+- `512426a` Close v3 slice D GL-64–67: exercise targets, UAD gate, attention surface, legacy test mode (0.37.0).

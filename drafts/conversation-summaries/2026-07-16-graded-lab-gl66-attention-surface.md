@@ -28,4 +28,4 @@ User: add recommended sequencing to plan; implement GL-66 through FINDINGS (step
 - `results/slice_d_v3_supplementary_uad_gate.json`
 
 ## Commits
-- (none this session)
+- `512426a` (session end commit, includes GL-64–67 stack)
