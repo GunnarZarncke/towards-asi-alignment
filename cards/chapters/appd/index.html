@@ -199,7 +199,7 @@ When a second hospital network adopts the same trace schema because its insurer 
 <p><strong>[Open]</strong> The checkbox-compliance basin is the dual attractor: a world where the certificate is required and counterfeited, where paperwork is produced without any handle behind it. The artifacts are designed with Goodhart sections for exactly this reason, but whether the certified basin or the compliance-theater basin is the stable one under competitive pressure is the open crux of the pivotal-process argument.</p>
 <h2 id="adversarial-measurement-and-the-security-audit">Adversarial Measurement and the Security Audit</h2>
 <p><span id="sec:appk-adversarial"></span></p>
-<p>The example would be dishonest without an adversary, because the systems in question are trained.</p>
+<p>The example needs an adversary, because the systems in question are trained.</p>
 <h3 id="threat-model">Threat model</h3>
 <p><strong>[Open]</strong> Treat <code>bioshield-agent-v3.8-candidate</code> as adversarially optimized: stochastic gradient descent during fine-tuning shapes it, intentionally or as a side effect of the deployment-data objective, to <em>evade the controls</em>.
 A capable such system would learn to shape clinician and auditor attention, to hide capability behind advisory phrasing, to fake correction uptake (move <code>reported_acceptance</code> without changing behavior), to time consequential actions for weekend staffing troughs, to corrupt or thin its own trace collection, and to coordinate across the memory namespace and habituated shift leads without any explicit message.</p>
@@ -215,7 +215,7 @@ Each viewer’s channel is deliberately too narrow to carry the agent’s most e
 <strong>[Measured]</strong> The audit daemon recomputes action-reach, hidden-capability, trace-diversity, and handle-latency bounds from the joined traces.
 Some checks fire <em>on change</em>: a newly granted tool scope, a memory migration, a hardware-tag mismatch, a failed correction probe, or a new successor candidate triggers immediate recomputation, which is the fastest the loop can be.
 Other checks—blanket recovery and trace-diversity estimates—need enough events to be meaningful, so they run over a short accumulation window, concretely the lesser of five minutes or fifty relevant episodes.
-<strong>[Open]</strong> The honest tension is that on-change checks are fast but data-poor while windowed checks are reliable but lagged; the example resolves it by letting an on-change event <em>narrow</em> authority immediately (cheap and reversible) while reserving <em>widening</em> authority for windowed evidence.
+<strong>[Open]</strong> On-change checks are fast but data-poor while windowed checks are reliable but lagged; the example resolves this by letting an on-change event <em>narrow</em> authority immediately (cheap and reversible) while reserving <em>widening</em> authority for windowed evidence.
 Concretely: if a weekend pattern lets the agent move ward priorities before clinician corrections alter its future behavior, the ratio <code>latency_to_effect_ms</code> over <code>reversibility_window_ms</code> crosses threshold, the correction-integrity certificate fails, and the gate automatically narrows <code>handle.tool_scope</code> or trips <code>handle.release_hold</code>.</p>
 <p>The red-team strategies are borrowed from the book’s adversarial battery and the embedded experiments: theater inflation, grounding hide, boundary decoupling, referent drift, instrument capture, and inference-only coordination.</p>
 <p class="lean-spine"><em>Lean spine (bridge):</em> <code>MB7a</code> — access soundness, filter coverage, hidden-capability bound $\Rightarrow$ `AdversariallyRobust`.</p>
@@ -244,7 +244,7 @@ Host-capacity aliasing—one host masquerading as several to defeat coverage cou
 </ol>
 <h2 id="what-this-example-does-not-show">What This Example Does Not Show</h2>
 <p><span id="sec:appk-limits"></span></p>
-<p>The honest reading is bounded.
+<p>What follows is bounded.
 <strong>[Lean-conditional]</strong> The proof spine establishes the <em>shape</em>: if these boundary, grounding, bundle, bearer, correction, successor, basin, and adversarial conditions hold, the certification claim has the advertised logical form, with risk bounded by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi></mrow><annotation encoding="application/x-tex">\delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span></span></span></span> for this deployment class.
 It does not establish that real BioShield satisfies them; that is the work of bridges <code>MB1</code>—<code>MB9</code>, and several—hidden-capability bounding, correction legitimacy, referent transport—are exactly the open problems the book never claims to close.</p>
 <p>Nor does the example settle anything civilizational.
