@@ -136,4 +136,4 @@ was implementing and scoring those two rigs against the frozen design.
 
 ## Commits
 
-- None yet (not asked to commit this turn).
+- `ee14ab3` — Implement PLAN_v4 V4-3 R-MB9/R-MB7d rigs and record GL-80 scored results.
