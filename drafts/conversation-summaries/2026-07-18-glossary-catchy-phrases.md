@@ -28,4 +28,4 @@ Follow-on to the ch25/ch26 "correction in the small vs in the large" session. Us
 - `appendices/appE-glossary.tex` (all edits in the "Values, bundles, and bearers," "Grounding," and "Correction" sections)
 
 ## Commits
-- (see below)
+- `e35d47d` Add catchy accessible leads to five glossary entries
