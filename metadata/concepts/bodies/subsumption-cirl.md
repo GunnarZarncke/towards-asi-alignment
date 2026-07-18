@@ -35,6 +35,6 @@ citeKeys:
 
 The field object is cooperative inverse reinforcement learning: a human knows a reward (or latent type); the robot infers it from observations and acts to maximize cooperative return. Scalar CIRL collapses the inferred object to one coordinate.
 
-The book's stronger target is bundle inference — value directions, bearer maps, and transport that survive transformation. Lean proves the honest special case: scalar assistance games embed as bundle games with k=1, and full transport implies cooperative readability. It also proves the separation: cooperative scalar inference can hold while bundle geometry fails to preserve across profiles that share the same scalar marginal.
+The book's stronger target is bundle inference — value directions, bearer maps, and transport that survive transformation. Lean proves the scalar special case: scalar assistance games embed as bundle games with k=1, and full transport implies cooperative readability. It also proves the separation: cooperative scalar inference can hold while bundle geometry fails to preserve across profiles that share the same scalar marginal.
 
 *What CIRL keeps that this crosswalk does not replace:* a concrete online assistance-game protocol and a training story for how the reward is actually learned. The book reframes the target, not the learning algorithm.

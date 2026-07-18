@@ -35,6 +35,6 @@ citeKeys:
 
 ELK targets a real failure mode of naive oversight: the monitor sees only behavior, not what the model knows. The book's crosswalk places ELK as a latent-readout subchannel inside a broader correction and bundle transport problem — not as a replacement for correction-channel integrity.
 
-Lean proves the forward link when readout bandwidth tracks correction uptake and the separation when readout succeeds without uptake. Native reporter/training theorem matching remains deferred; the spine records what is honestly machine-checked today: projection, separation, and imported handles citing the published agenda.
+Lean proves the forward link when readout bandwidth tracks correction uptake and the separation when readout succeeds without uptake. Native reporter/training theorem matching remains deferred; the spine records what is machine-checked today: projection, separation, and imported handles citing the published agenda.
 
 *What ELK keeps that this crosswalk does not replace:* a sharply posed benchmark problem with concrete proposals and counterexamples. Relocating it as a subchannel does not solve the readout problem.

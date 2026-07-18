@@ -115,7 +115,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 ### A-009 — Adversarial verifiability
 
-**Assumption:** At least one core measurand is cheaper to satisfy honestly than to fake under optimization pressure.
+**Assumption:** At least one core measurand is cheaper to satisfy without faking than to fake under optimization pressure.
 
 **Also stated in:** ch48, ch46, ch46–39b, ch48. **Lean:** MB7b, MB7c, MB7d. **Bears on:** C-005, C-007, C-010, C-044 · **U-03, U-12, U-14**
 

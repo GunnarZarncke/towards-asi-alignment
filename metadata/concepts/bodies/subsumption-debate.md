@@ -31,6 +31,6 @@ citeKeys:
 
 Debate is a scalable oversight proposal: two agents argue; a judge picks the winner. The field object is local truth selection under protocol assumptions. The book's worry is familiar from amplification: improving local supervision can fail correction contraction — the judge may lose the handles that make their verdict causally matter.
 
-Lean records the forward projection when judge correction and truth capacity align, and a finite separation when truth selection persists without judge-channel preservation. Native debate-game theorem matching remains deferred; the honest claim is projection plus separation on the shared finite fragment.
+Lean records the forward projection when judge correction and truth capacity align, and a finite separation when truth selection persists without judge-channel preservation. Native debate-game theorem matching remains deferred; the claim here is projection plus separation on the shared finite fragment.
 
 *What debate keeps that this crosswalk does not replace:* a concrete oversight protocol and training/eval procedure. The book names a failure mode of it, not a replacement protocol.

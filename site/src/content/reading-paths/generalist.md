@@ -57,7 +57,7 @@ steps:
 
 ## What this path is for
 
-You have not followed alignment Twitter, MIRI archives, or this project's prior papers. You still want an honest map of what superintelligence alignment *could* mean as a research program.
+You have not followed alignment Twitter, MIRI archives, or this project's prior papers. You still want a clear map of what superintelligence alignment *could* mean as a research program.
 
 **You will leave knowing:**
 
