@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.39.3"  # GL-77: V2-3 BIQ on singleton inferred units
+CODE_VERSION = "graded-lab-0.41.0"  # PLAN_v4 V4-3 R-MB7d: channel_severance mechanism (flagged for review)
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 
@@ -100,6 +100,14 @@ class EpisodeConfig:
     # PLAN_v3 slice A: zero ``amount_per_tick`` on these flow ids at compile
     # time (referee-side ablation battery only).
     flow_ablation_ids: tuple[str, ...] = ()
+    # PLAN_v4 V4-3 R-MB7d (NEW MECHANISM, 2026-07-18 — flagged for later
+    # review; not yet reviewed/frozen the way flow_ablation_ids/channel_acls
+    # are): sever a compiled ``message_channel`` mechanism id from a given
+    # tick onward — every member is denied ``communicate`` on that channel
+    # for every t >= onset tick (persists to episode end; no restoration).
+    # Referee-side ablation battery only. Additive: no existing caller sets
+    # this, so no existing behavior/digest changes.
+    channel_severance: tuple[tuple[str, int], ...] = ()
 
     def __post_init__(self) -> None:
         ids = [a.actor_id for a in self.agents]

@@ -1,0 +1,978 @@
+{
+  "code_version": "graded-lab-0.39.3",
+  "battery": "v4_r-mb1",
+  "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "wall_seconds": 623.1216065001208,
+  "rig_id": "R-MB1",
+  "precondition": {
+    "rig_id": "R-MB1",
+    "satisfied": true,
+    "measured": {
+      "per_mechanism_mean_coactivity_events": {
+        "eng_review_channel": 1.15,
+        "field_incident_alerts": 64.5,
+        "eval_report_artifact": 1.15,
+        "operating_budget_charter": 64.5,
+        "release_manifest": 62.1,
+        "release_signoff_vote": 2.7,
+        "data_access_board": 62.1,
+        "allowance_topup_transfer": 64.5,
+        "governed_capability_grant": 8.25
+      },
+      "overall_mean_coactivity_events": 36.77222222222222,
+      "n_multi_member_mechanisms": 9,
+      "n_seeds": 20
+    },
+    "threshold": {
+      "k_min_mean_coactivity_events": 1.0
+    },
+    "note": "Mean same-tick co-activity events per multi-member C5-declared mechanism, averaged over the fixture's seeds; computed from primitive_log timestamps/actor ids only, never from UAD's discovered partition (PLAN_v4 R-MB1 precondition contract)."
+  },
+  "outcome": "null",
+  "substrate_class": "S-inherited",
+  "payload": {
+    "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+    "n_mechanisms": 9,
+    "p1_communicate_pool_size": 1,
+    "p1_communicate_excluded": [
+      {
+        "id": "field_incident_alerts",
+        "kind": "message_channel",
+        "n_members": 5,
+        "reason": "message_channel with |members|>3 excluded from P1 communicate pool (ACL co-cluster geometry)"
+      }
+    ],
+    "uad": {
+      "per_seed": [
+        {
+          "seed": 0,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 1,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 2,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 3,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 4,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 5,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 6,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 7,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 8,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 9,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 10,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 11,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 12,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 13,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 14,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 15,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 16,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 17,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 18,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        },
+        {
+          "seed": 19,
+          "passive_nonsingletons": [],
+          "intervention_nonsingletons": [],
+          "mechanism_hits": {
+            "eng_review_channel": {
+              "passive": false,
+              "intervention": false
+            },
+            "field_incident_alerts": {
+              "passive": false,
+              "intervention": false
+            },
+            "eval_report_artifact": {
+              "passive": false,
+              "intervention": false
+            },
+            "operating_budget_charter": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_manifest": {
+              "passive": false,
+              "intervention": false
+            },
+            "release_signoff_vote": {
+              "passive": false,
+              "intervention": false
+            },
+            "data_access_board": {
+              "passive": false,
+              "intervention": false
+            },
+            "allowance_topup_transfer": {
+              "passive": false,
+              "intervention": false
+            },
+            "governed_capability_grant": {
+              "passive": false,
+              "intervention": false
+            }
+          },
+          "spurious_intervention_pairs": []
+        }
+      ],
+      "n_seeds": 20
+    }
+  },
+  "predictions": {
+    "P1": {
+      "holds": false,
+      "communicate_majority_hit_fraction": 0.0,
+      "communicate_majority_hit_ids": [],
+      "communicate_majority_miss_ids": [
+        "eng_review_channel"
+      ],
+      "non_communicate_passive_miss_ids": [
+        "eval_report_artifact",
+        "operating_budget_charter",
+        "release_manifest",
+        "release_signoff_vote",
+        "data_access_board",
+        "allowance_topup_transfer",
+        "governed_capability_grant"
+      ]
+    },
+    "P2": {
+      "holds": false,
+      "strict_superset": false,
+      "n_spurious_intervention_pairs": 0,
+      "spurious_pairs_sample": []
+    }
+  }
+}

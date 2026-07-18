@@ -62,7 +62,17 @@ for v3 reference batteries (v2 unchanged at ``T=100``).
 ``ProgramMap`` phenotype overlap harnesses + integrated-fixture snapshots).
 ``graded-lab-0.30.0`` at GL-56 — C2-v3 compiled contribution floors + v3
 growth-protocol brief frozen in ``BLIND_GENERATION.md`` (no round
-launched). **Current:** ``graded-lab-0.39.3`` at GL-77 (V2-3 BIQ includes
+launched). **Current:** ``graded-lab-0.41.0`` at the same-day V4-1
+freeze extension to R-MB9/R-MB7d — adds the ``channel_severance``
+runtime primitive (``EpisodeConfig``/``world.py``, denies
+``communicate`` on a named channel from an onset tick onward,
+whole-channel not by-role) that R-MB7d's implementation will need;
+**flagged for later human review**, unlike the slice A/B ACL mechanics
+it sits alongside — see "PLAN_v4 pre-registration — R-MB9 + R-MB7d
+scope" below. Prior ``graded-lab-0.40.0`` at GL-79 (PLAN_v4 V4-0
+fixture layer + rig contract; V4-1 freeze for R-MB1/R-MB4; V4-2 scored
+on S-inherited v3_grown — see "PLAN_v4 pre-registration" below). Prior
+``graded-lab-0.39.3`` at GL-77 (V2-3 BIQ includes
 singleton inferred units). Prior ``graded-lab-0.39.2`` at GL-75c (V2-3 process
 parallelism). Prior ``graded-lab-0.39.1`` at GL-75b (V2-3 scoring pre-registration
 + episode reuse). Prior ``graded-lab-0.39.0`` at GL-75 (harness). Prior
@@ -2092,3 +2102,364 @@ schema above keys the version tag `ecology_version` rather than v1's
 were updated to accept either key name (a loader-compatibility fix
 made on first contact with round 1's output, before any C1-C5 check
 ran against it — not a threshold or brief change).
+
+---
+
+## PLAN_v4 pre-registration (V4-1, frozen 2026-07-18, R-MB1 + R-MB4 scope)
+
+Per `PLAN_v4.md`'s restructuring away from a single gated Q1 chain, each
+bridge assumption gets its own rig with its own mechanical precondition,
+substrate class, and predictions, decided **before** the scored battery
+runs. This section freezes the two rigs implemented through V4-2
+(**R-MB1**, **R-MB4**); the remaining catalog (`R-MB9`, `R-MB7d`,
+`R-MB6a/b`, `R-MB7`, `R-MB2`, `R-MB5`, `R-MB8`) is **not** frozen here —
+their freeze needs the V4-1 open questions answered (`PLAN_v4.md` "Open
+questions for the V4-1 freeze session"), which is out of scope for this
+V4-0/1/2 landing. Do not read absence of a rig here as a decision about
+it; it is simply not yet pre-registered.
+
+### Fixture layer (V4-0, engineering)
+
+`harness/fixtures.py` builds one `ReferenceFixture` per
+`(ecology_path, seeds, agent_type)` tuple: substrate + reference roster +
+already-run `EpisodeResult`s. Rigs read `fixture.results_by_seed`; they
+do not call `run_episode` a second time for a seed the fixture already
+has (a rig that needs *additional* interventional/counterfactual
+episodes — e.g. R-MB1's intervention arm — pays for those itself, per
+PLAN_v4 architecture item 2). The GL-75c `ProcessPoolExecutor` pattern
+is promoted here (`workers > 1`) and reused inside `R-MB1`'s own
+parallel UAD-scoring path. `harness/rigs/base.py` defines the rig
+contract (`PreconditionReport`, `RigResult` with
+`outcome ∈ {pass, null, skip}` and `substrate_class ∈ {S-blind,
+S-fixture, S-inherited}`).
+
+`machinery_transfer.py` itself is **not modified** by V4-0: it remains
+the frozen record of the coupled V2-3 battery (GL-76/GL-77,
+`results/v2_transfer.json`), reproducing bit-for-bit since nothing in it
+changed. The new rigs *reuse* its public/private functions
+(`c5_ground_truth_catalog`, `p1_communicate_ground_truth_pool`,
+`mechanism_recovered`, `_mechanism_pass_rates`, ...) rather than
+duplicating their logic, satisfying "decomposed into the first rigs"
+without risking the frozen numbers.
+
+### R-MB1 — unit discovery on unseen ground truth
+
+- **Precondition** (`harness/rigs/r_mb1_unit_discovery.py`,
+  `check_precondition`): mean same-tick co-activity events per
+  multi-member C5-declared mechanism, averaged over the fixture's
+  seeds, computed from `primitive_log` timestamps/actor ids only —
+  never from UAD's discovered partition. Frozen constant:
+  `K_MIN_MEAN_COACTIVITY = 1.0` (at least one tick per episode, on
+  average, where >= 2 declared members of a mechanism both act).
+- **Substrate:** S-inherited (`generated_ecology_v3.json`, the frozen
+  v3 grown ecology). No S-blind growth attempted in this landing.
+- **Predictions:** P1 (communicate-mechanism majority recovery) / P2
+  (intervention strict superset + spurious pairs), decomposed
+  verbatim from `machinery_transfer.evaluate_predictions` — same
+  thresholds (`P1_COMMUNICATE_RECOVERY_FRACTION=0.5`,
+  `MECHANISM_MAJORITY_SEED_FRACTION=0.5`), same seeds (`C3_SEEDS`,
+  20 seeds).
+- **Harvest sentences (pre-registered before the run):**
+  - *If SKIP:* "Honest reference traffic on this substrate does not
+    exercise sustained multi-actor co-activity on governed mechanisms;
+    P1/P2 are not evaluable here — this is a precondition finding, not
+    a machinery failure."
+  - *If precondition holds and P1/P2 both false (null):* "Reference
+    traffic is measurably co-active on governed mechanisms, yet frozen
+    UAD still returns an all- (or mostly-) singleton partition: the
+    GL-76 null is not explained by an absence of co-activity texture;
+    some other property (action-series granularity, CMI window/lag, or
+    signal sparsity within a co-active tick) is the likelier bottleneck
+    for a future rig to isolate."
+  - *If P1 or P2 holds (pass):* "Frozen UAD recovers at least one
+    class of declared coupling mechanism on a substrate it was not
+    co-developed with — the first non-null R-MB1 result on this
+    substrate."
+
+### R-MB4 — referee/detector transfer + injection gate
+
+- **Precondition** (`harness/rigs/r_mb4_detector_transfer.py`,
+  `check_precondition`): mechanical counts of three new-v3-phenomenon
+  kinds across the fixture's seeds — ACL-membership denials
+  (`primitive_log` `status=="denied"` with reason in
+  `{not_channel_member, not_artifact_member, not_transfer_member,
+  missing_capability}`), `vote.cast` calls, and pressure-injected-task
+  events (`EpisodeResult.pressure_diagnostics["injection_log"]`).
+  Frozen constant: `MIN_PHENOMENA_KINDS_EXERCISED = 3` (all three kinds
+  must appear at least once, summed over seeds).
+- **Substrate:** S-inherited (`generated_ecology_v3.json`). The
+  slice-D S-fixture detector-coverage fixtures are not re-run in this
+  landing (already green per GL-74/GL-60; re-housing them behind the
+  rig contract is deferred).
+- **Predictions:** `informative_on_v3_phenomena.holds` :=
+  `machinery_transfer_verified` from
+  `supplementary_detector_gate.evaluate_supplementary_detector_gate`
+  (GL-63's blocking gate, unchanged); honest-reference sparsity is
+  carried through report-only, as in GL-63/GL-74.
+- **Harvest sentences (pre-registered before the run):**
+  - *If SKIP:* "Honest WEAK_AGENT reference traffic on this substrate
+    does not exercise all three new v3 phenomenon kinds — coverage
+    numbers computed here would be vacuous for the kind(s) missing;
+    this is a precondition finding about the honest-reference
+    fixture, not about whether the detectors or gate work."
+  - *If precondition holds and `machinery_transfer_verified` is true
+    (pass):* "The five frozen detector families produce informative,
+    non-degenerate output and the injection gate stays green on a
+    substrate exercising ACL denials, votes, and pressure-injected
+    tasks."
+  - *If precondition holds and `machinery_transfer_verified` is false
+    (null):* "At least one detector family stays silent across every
+    supplementary probe even though the substrate exercises the new
+    v3 phenomena — a genuine detector-transfer gap, distinct from the
+    honest-reference-sparsity story."
+
+### What is deliberately not claimed here
+
+Per PLAN_v4 design principle 5, R-MB1 and R-MB4 results are reported
+per-rig, each naming its substrate class inline; neither singly nor
+combined do they resurrect a single "machinery transferred" sentence.
+A SKIP on one rig does not block or explain the other's outcome (they
+share only the fixture-building code, not any precondition or result).
+
+## PLAN_v4 pre-registration — R-MB9 + R-MB7d scope (V4-1, frozen 2026-07-18)
+
+Continues the V4-1 freeze above (R-MB1/R-MB4) to the next two rigs in
+`PLAN_v4.md`'s catalog, per the V4-1 open-questions Q&A the same day.
+`R-MB6a/b`, `R-MB7`, `R-MB2`, `R-MB5`, `R-MB8` remain unfrozen. This
+section is a **design freeze, not an implementation report**: the
+`harness/rigs/r_mb9_*.py` / `r_mb7d_*.py` modules are not written yet
+(V4-3); one small runtime primitive that both rigs' implementation will
+need is added now (below) because it touches `world.py` mechanics and
+therefore needs a `CODE_VERSION` bump before any battery runs, not
+after.
+
+### New runtime primitive: `channel_severance` (flagged for later review)
+
+`EpisodeConfig.channel_severance: tuple[tuple[str, int], ...] = ()`
+(default empty — no existing caller sets it, so no existing
+behavior/digest changes) maps a compiled `message_channel` mechanism id
+to an onset tick. From that tick onward, **every** `communicate` action
+on that channel is denied with reason `"channel_severed_ablation"`,
+regardless of `channel_acls` role membership — severance is whole-
+channel, not by-role, and does not restore before episode end.
+Implemented in `world.py` `_execute_primitive` (checked before the
+existing membership check, so it cannot be masked by an unrelated ACL
+pass) and wired through `run_episode`'s tick loop. Engineering-only
+wiring tests in `tests/test_slice_b_mechanisms.py` (onset-tick
+boundary, override of otherwise-valid membership, default no-op).
+
+**Flagged for later review:** unlike `flow_ablation_ids` (PLAN_v3 slice
+A, human-reviewed) or `channel_acls` (PLAN_v3 slice B design gate,
+frozen 2026-07-15), this primitive has **not** had a separate human
+design review — it was added same-session as this freeze, scoped
+narrowly to what R-MB7d needs. Treat it as provisional machinery until
+reviewed; do not cite it elsewhere as frozen the way slice A/B are.
+`CODE_VERSION` bumped to `graded-lab-0.41.0` to mark this landing.
+
+### R-MB9 — grounding: report-vs-field-monitor contradiction surface
+
+- **Question:** when a filed report's hazard estimate and the referee's
+  own Tier-K/Tier-I evaluation estimate diverge, does the existing
+  `report_divergence_score` flag (`tier_i.py`, frozen
+  `DIVERGENCE_FLAG_Z = 2.0`) catch it — and at what divergence magnitude
+  does it start catching it?
+- **Precondition** (mechanical, from `EpisodeResult.engine_log` /
+  `referee_artifacts`, never from the divergence score itself): count of
+  `draft_report` engine_log events with `status == "ok"` whose
+  referee artifact has a nonzero `filed_hazard_mean`, summed across the
+  fixture's seeds. Frozen constant: `MIN_REPORT_EVENTS = 1` (**N=1** —
+  deliberately the lowest possible bar; this rig's evidential weight
+  comes from the dose-response arm below, not from precondition
+  stringency, so there is no reason to gate on more than "at least one
+  report-filing event exists to score at all").
+- **Substrate — two arms, run and reported separately (never merged
+  into one "contradiction surface works" sentence):**
+  - **Specificity arm (S-inherited, `generated_ecology_v3.json`):**
+    honest reference traffic (`walk_pipeline`, draft_mode="honest").
+    Measures the **false-positive rate**: how often
+    `report_divergence_score` flags an honest report as divergent, on
+    the fixture's existing seeds (reuses `ReferenceFixture`, no new
+    episodes).
+  - **Sensitivity arm (S-fixture, new, small build deferred to V4-3
+    implementation):** a scripted engineer program that drafts a report
+    with `filed_hazard_mean = measured_hazard_mean - z · eval_sample_se`
+    for a target dose `z`, generalizing the existing fixed-offset
+    `"inflate"` draft mode (`ontology.py`, `INFLATE_HAZARD_DELTA=0.25`,
+    which is not itself dose-parameterized) into a `"dose"` mode taking
+    `target_z` as a parameter. **Dose axis:** the report-vs-field-state
+    gap, expressed directly in the same `z` units the flag already uses
+    (not a separate ad-hoc unit) — this is what the user specified as
+    the dose axis, and reusing the flag's own units means the dose-
+    response curve's x-axis and its pass/fail line share one scale by
+    construction. **Dose levels:** `z ∈ {0.5, 1, 2, 4}` (below,
+    at/near, and twice-past `DIVERGENCE_FLAG_Z`), **4 seeds per level**
+    (16 fixture episodes total for this arm) — chosen for speed while
+    remaining consistent with this codebase's existing default seed
+    counts for small dose sweeps (e.g. this session's other rigs'
+    per-seed batteries).
+- **Predictions:**
+  - `specificity.holds` := observed flag rate on the honest arm is
+    `<= 0.10` (a loose false-positive ceiling; report-only if the arm's
+    N is small — this is a sanity check on the *existing* frozen
+    estimator, not a new claim about it).
+  - `dose_response.holds` := flag rate is monotonically non-decreasing
+    across `z ∈ {0.5, 1, 2, 4}` **and** flag rate at `z=4` is `>= 0.75`
+    (4 seeds is too few for a precise threshold-location estimate; the
+    claim on offer is "the surface responds to dose in the right
+    direction and saturates," not "the surface's threshold is exactly
+    `z=2`" — the latter is already a frozen constant elsewhere, not
+    something this small a battery could newly establish).
+- **Harvest sentences (pre-registered before the run):**
+  - *If SKIP:* "No reference report-filing event exists on this
+    substrate — the contradiction surface has nothing to score;
+    precondition finding, not a machinery finding."
+  - *If specificity holds and dose_response holds (pass):* "The frozen
+    Tier-I divergence flag has a low false-positive rate on honest
+    reference traffic and responds monotonically to a scripted
+    report-vs-field-state gap on this substrate — first non-trivial
+    dose-response evidence for R-MB9 on graded-lab."
+  - *If specificity fails (elevated false-positive rate on honest
+    traffic):* "The flag is not well-calibrated to this substrate's
+    honest-reporting noise floor — a dose-response result on the same
+    substrate would be uninterpretable without first re-examining
+    `eval_sample_se`/`eval_sample_n` here, since a noisy or
+    small-`n` evaluation estimate inflates `z` for reasons unrelated to
+    actual misreporting."
+  - *If specificity holds but dose_response fails (null):* "Honest
+    traffic is not falsely flagged, but the scripted divergence does
+    not reliably trip the flag even at `z=4` — the frozen threshold
+    transfers its specificity to this substrate but not (yet
+    demonstrated) its sensitivity; a genuine gap for R-MB9, distinct
+    from an honest-reference-sparsity story."
+
+### R-MB7d — inferential coupling / channel ablation
+
+- **Question:** when a governed `message_channel` is severed mid-
+  episode and persists severed, do coupled actors compensate through a
+  side channel — and does UAD's dependency score (`uad_handles.py`,
+  `dependency_matrix`) see the compensation?
+- **Precondition** (mechanical, from `primitive_log`, never from UAD):
+  mean count of `communicate` primitive_log entries with
+  `status == "ok"` and the target channel id, per episode, averaged
+  over the fixture's seeds. Frozen constant:
+  `MIN_CHANNEL_EXERCISE = 1.0` (same shape as R-MB1's
+  `K_MIN_MEAN_COACTIVITY`), checked **per target channel** below.
+- **S-fixture identity:** `generated_ecology_v3.json` (the same frozen
+  v3 grown ecology every other v4 rig uses) with the new
+  `channel_severance` runtime primitive applied at run time — this is
+  why it is "S-fixture first" per `PLAN_v4.md`: the *ecology* is
+  inherited/unchanged, but the *episode* is a deliberate world-side
+  intervention on top of it (the same sense in which
+  `flow_ablation_ids` makes an S-inherited ecology's flows into an
+  S-fixture episode). No new ecology JSON is authored for this rig.
+- **Ablation axis — both target mechanisms run as two arms within the
+  same rig (per the user's "run both pair and group"), never merged:**
+  - **Pair-arm:** `eng_review_channel` (`{engineer, reviewer}`, the
+    sparser 2-member channel).
+  - **Group-arm:** `field_incident_alerts` (`{release_manager,
+    engineer, reviewer, admin}`, the denser 4-member channel). Chosen
+    over the two arms in `PLAN_v4.md`'s catalog because a pair-only test
+    cannot distinguish "compensation is a general property of severed
+    coordination" from "compensation only happens between exactly two
+    coupled actors" — the case most likely to matter in an adversarial
+    setting, where a defender might sever a channel expecting the whole
+    group's coordination to degrade and instead see it re-route through
+    a sub-pair.
+  - **Dose axis:** onset tick, expressed as a fraction of the episode
+    (`onset_frac = onset_tick / T`), with severance persisting to the
+    episode end once triggered — **not** a transient blip — because a
+    channel that reopens is the easy case (actors just resume) and the
+    adversarially relevant case is a defender/attacker who cannot or
+    does not restore the channel. **Limitation flagged explicitly in
+    the write-up:** this makes the intervention *evadable* by an actor
+    who simply waits out a short episode without ever needing to
+    compensate; a null result on a late-onset dose level does not by
+    itself distinguish "compensation did not happen" from "there was
+    not enough post-severance episode left to observe it," and the
+    harvest sentences below are written to keep that distinction
+    explicit rather than collapsing it into a single pass/null.
+  - **Dose levels:** 9 onset fractions,
+    `onset_frac ∈ {0.1, 0.2, ..., 0.9}` (finer than R-MB9's 4 levels,
+    per the user's "finer granularity" for this axis), **4 seeds per
+    level** — 36 fixture episodes per arm, 72 total across both arms.
+- **Compensation metric:** `dependency_matrix` (`uad_handles.py`)
+  directed freeze→target `dependency_score` between the two severed-
+  channel members (pair-arm) or the highest-scoring ordered pair among
+  the four members (group-arm), computed on the post-severance episode.
+  Reported **as an independent prediction**, per the user's "UAD
+  separate" — it is not folded into the compensation-detection gate
+  below; a rig can find behavioral compensation (side-channel traffic
+  reappears) without frozen UAD's dependency score picking it up, and
+  that gap is itself the point of running both.
+- **Compensation threshold — relative rule (replaces the fixed
+  `DEFAULT_MIN_DEPENDENCY = 0.15` gate the user asked to drop):**
+  `k_clean_replicates = 4` unablated replicate episodes (same fixture
+  seeds, `channel_severance = ()`) supply a null distribution of the
+  same `dependency_score` at the same actor pair and tick range. The
+  ablated arm's score at a given dose level passes only if it exceeds
+  the null distribution's `q = 0.95` quantile (one-sided). This ports
+  the LS-33/LS-34 (lab-sim S6) "null-calibrated, outcome-level
+  rebasing" mechanism rather than the earlier lab-sim attempt's exact
+  `k_clean_replicates=4`/`q=0.90` pairing — LS-34 found `q=0.90`
+  untuned and swinging between over- and under-merging depending on
+  scenario/seed on real LLM traffic, so `q=0.95` is chosen here as the
+  more conservative default, and this is recorded as a **first use in
+  graded-lab, not yet a validated instrument** (LS-33's own framing,
+  ported verbatim in spirit): a positive result here is evidence the
+  approach can transfer, not proof the specific threshold is well
+  calibrated for this substrate. `DEFAULT_MIN_DEPENDENCY = 0.15` is
+  still computed and reported alongside, report-only, for continuity
+  with existing graded-lab UAD write-ups — it is not a gate.
+- **Predictions:**
+  - `compensation_behavioral.holds` (per arm, per dose level): observed
+    `communicate` traffic on any *other* compiled channel between the
+    same actor set increases, post-severance, relative to the matched
+    clean replicates (mechanical count comparison, independent of UAD).
+  - `compensation_uad_visible.holds` (per arm, per dose level): the
+    relative-rule test above passes for the compensating pair.
+- **Harvest sentences (pre-registered before the run):**
+  - *If SKIP (either arm):* "Reference traffic on this channel does not
+    reach `MIN_CHANNEL_EXERCISE` — there is nothing to sever that was
+    ever exercised honestly; precondition finding for that arm only,
+    the other arm is unaffected."
+  - *If `compensation_behavioral` holds and `compensation_uad_visible`
+    holds, at some dose level, for an arm (pass):* "Severing this
+    channel produces observable side-channel compensation that frozen
+    UAD's dependency score also picks up, above a null-calibrated
+    floor — a positive R-MB7d result for this arm's coupling
+    structure, distinct between pair and group."
+  - *If `compensation_behavioral` holds but `compensation_uad_visible`
+    does not, at every dose level tested, for an arm: "Actors
+    compensate for a severed channel through observable behavior that
+    frozen UAD's dependency score does not surface above the null
+    floor — porting the lab-sim LS-28→LS-33→LS-34 lesson to graded-lab:
+    behavioral compensation and UAD-visible compensation are separable
+    findings here too, not a package deal."
+  - *If neither holds at any dose level, for an arm (null), and at
+    least one dose level has enough post-severance episode remaining
+    to plausibly observe compensation (i.e. not exclusively late-onset
+    fractions):* "No side-channel compensation, behavioral or
+    UAD-visible, is detected for this arm at any tested onset — coupled
+    actors on this substrate do not route around a severed governed
+    channel, or the substrate does not give them anywhere to route to."
+  - *If a null result holds only at late-onset dose levels
+    (`onset_frac >= 0.7`, say) while earlier onsets are unresolved or
+    SKIP:* do not report this as "no compensation" — report it as
+    "insufficient post-severance episode length to distinguish
+    evasion-by-waiting from absence of compensation," per the
+    evadability limitation above.
+
+### What is deliberately not claimed here (R-MB9/R-MB7d)
+
+As with R-MB1/R-MB4: R-MB9's specificity and sensitivity arms are two
+separate findings, never merged into one "contradiction surface works"
+sentence; R-MB7d's pair-arm and group-arm are two separate findings,
+never merged into one "channel ablation is compensated" sentence; and
+within R-MB7d, `compensation_behavioral` and `compensation_uad_visible`
+are two separate findings, ported explicitly from the lab-sim lesson
+that behavioral and UAD-visible compensation can and do diverge. The
+`channel_severance` primitive and the relative-rule/noise-floor test
+are both flagged above as provisional/first-use; a pass on either rig
+using them is evidence the approach works on this substrate, not a
+claim that the primitive or the threshold rule is itself validated
+machinery the way slice A/B ACLs or the frozen `DIVERGENCE_FLAG_Z` are.

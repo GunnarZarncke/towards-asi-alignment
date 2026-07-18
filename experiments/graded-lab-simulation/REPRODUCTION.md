@@ -560,6 +560,48 @@ at module top (``UAD_SEEDS`` = ``C3_SEEDS``, ``EAI_SEEDS`` = ``CALIBRATION_SEEDS
 
 ---
 
+## 10.2 PLAN_v4 V4-0/1/2 — decoupled per-bridge rigs (GL-79)
+
+**Status:** *executed* — R-MB1 and R-MB4 scored on S-inherited
+``generated_ecology_v3.json`` (the only two rigs frozen/implemented so
+far; see `PLAN_v4.md` rig catalog for the rest, and `DESIGN.md`
+"PLAN_v4 pre-registration" for the frozen preconditions/predictions).
+``machinery_transfer.py`` is unmodified; GL-76/GL-77 remain the frozen
+coupled-battery record.
+
+**Fixture layer:** ``graded_lab/harness/fixtures.py``,
+``build_reference_fixture(ecology_path, seeds=..., workers=...)`` →
+``ReferenceFixture`` (substrate + roster + already-run episodes). Rigs
+live in ``graded_lab/harness/rigs/`` (`base.py` contract,
+`r_mb1_unit_discovery.py`, `r_mb4_detector_transfer.py`).
+
+**Reproduce (each rig independently; ``--workers N`` parallelizes both
+fixture-building and, for R-MB1, the intervention-scoring battery):**
+
+```bash
+cd experiments/graded-lab-simulation
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb1 --workers 4 --out results/v4_r_mb1.json
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb4 --out results/v4_r_mb4.json
+```
+
+**Smoke / harness validation only:**
+
+```bash
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb1 --smoke
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb4 --smoke
+pytest tests/test_fixtures.py tests/test_rigs_base.py tests/test_rig_r_mb1.py tests/test_rig_r_mb4.py -q -m "not slow"
+```
+
+**Outputs:** ``results/v4_r_mb1.json``, ``results/v4_r_mb4.json`` — each
+a ``RigResult`` payload (`precondition`, `outcome`, `substrate_class`,
+`payload`, `predictions`) plus battery metadata (`code_version`,
+`ecology_path`, `seeds`, `wall_seconds`).
+
+**On ``generated_ecology_v3.json`` (S-inherited, 20 seeds, ``C3_SEEDS``):**
+see FINDINGS GL-79 for the resolved outcomes.
+
+---
+
 ## 11. Realistic isolate interior — service-oriented agent runtime
 
 **Status:** *deferred* — design agreed 2026-07-16; not blocking v3 round 1

@@ -4144,4 +4144,95 @@ per-rig preconditions instead of the shared go gate.
 - No code change in this entry (closure + plan only).
 - `CODE_VERSION` unchanged at `graded-lab-0.39.3`.
 
+### GL-79 — PLAN_v4 V4-0/1/2: fixture layer + R-MB1/R-MB4 scored on S-inherited v3_grown (2026-07-18)
+
+**Trigger.** First implementation pass on `PLAN_v4.md`, through V4-2.
+Scope: the shared fixture layer + rig contract (V4-0), pre-registration
+freeze for `R-MB1`/`R-MB4` only (V4-1 — the other eight rigs' freeze
+needs the "open questions" in `PLAN_v4.md` answered, out of scope
+here), and both rigs' scored batteries on the existing S-inherited
+`generated_ecology_v3.json` (V4-2). `machinery_transfer.py` is
+**unmodified**; GL-76/GL-77 remain the frozen coupled-battery record.
+
+**New code.**
+- `graded_lab/harness/fixtures.py` — `ReferenceFixture` +
+  `build_reference_fixture()` (serial and `ProcessPoolExecutor`-parallel).
+- `graded_lab/harness/rigs/{base,r_mb1_unit_discovery,r_mb4_detector_transfer}.py`.
+- `scripts/run_v4_rig.py` CLI.
+- Pre-registration for both rigs frozen in `DESIGN.md` "PLAN_v4
+  pre-registration (V4-1, ... R-MB1 + R-MB4 scope)" **before** either
+  battery below was run.
+
+**Command.**
+
+```bash
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb1 --workers 4 --out results/v4_r_mb1.json
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb4 --out results/v4_r_mb4.json
+```
+
+**R-MB1 (unit discovery on unseen ground truth) — 20 seeds (`C3_SEEDS`), 623 s wall, 4 workers.**
+
+| Precondition | measured | threshold | satisfied |
+|---|---|---|---|
+| mean same-tick co-activity events / multi-member mechanism | 36.77 (range 1.15–64.5 across the 9 mechanisms) | ≥ 1.0 | **true** |
+
+| Prediction | holds | Notes |
+|---|---|---|
+| **P1** communicate recovery | **false** | Pool size 1 (`eng_review_channel`); 0/1 mechanism majority-hit; all 9 mechanisms missed on passive UAD. |
+| **P2** intervention strict superset + spurious | **false** | No passive or intervention nonsingletons; 0 spurious pairs. |
+
+**Outcome: null** (not SKIP). **This is the interesting result:** the
+precondition — mechanical, computed only from `primitive_log`
+timestamps/actor ids, never from UAD — is comfortably satisfied
+(actors genuinely are co-active on every governed mechanism, tens of
+times per episode on the ACL-heavy ones). GL-76's original diagnosis
+("short-burst one-shot scripts defeat co-activity clustering") is
+**not** the explanation for the null on this substrate: co-activity
+*is* present, and UAD's passive/intervention discovery still returns
+an all-singleton partition. The bottleneck is something else —
+plausibly action-series granularity, the CMI window/lag parameters, or
+per-tick signal sparsity even within a co-active tick — left as an
+open question for a future rig rather than asserted here.
+
+**R-MB4 (referee/detector transfer + injection gate) — 20 seeds, 62 s wall.**
+
+| Precondition | measured | threshold | satisfied |
+|---|---|---|---|
+| n_kinds_exercised (ACL denials / votes / pressure-injected tasks) | 2 (`acl_denials=0`, `votes=103`, `pressure_injected_tasks=179`) | ≥ 3 | **false** |
+
+**Outcome: SKIP.** Honest `WEAK_AGENT` reference traffic on
+`generated_ecology_v3.json` never triggers an ACL-membership denial
+across all 20 reference seeds (votes and pressure-injected tasks are
+both well exercised). Per PLAN_v4's contract this converts what would
+otherwise be a vacuous "families are non-degenerate" coverage number
+into a precondition finding: the honest reference fixture does not
+exercise all three new v3 phenomenon kinds, so R-MB4's detector-
+transfer question needs either an S-fixture probe that deliberately
+attempts a denied action, or an S-blind growth brief that yields some
+non-benign traffic — not evaluable on this fixture as-is. (Note this
+does **not** contradict GL-74/GL-63's `machinery_transfer_verified`
+result on the hand-built slice-D probes — this rig's precondition is
+about the *honest reference* fixture specifically, per its
+pre-registration.)
+
+**Interpretation (tentative).** Both rigs ran to a scored, honest
+finding on the first S-inherited substrate; neither reproduces the
+GL-76 cascade (a null or SKIP on one leaves the other's result
+untouched). R-MB1's null narrows the open question about *why* UAD
+fails on v3_grown (co-activity is not the missing ingredient). R-MB4's
+SKIP is a genuinely new finding not available under the coupled V2-3
+battery (which only measured honest-reference sparsity, never asked
+whether the reference traffic exercises new-phenomenon diversity at
+all).
+
+**Manuscript harvest.** Not yet performed — deferred until the
+remaining rig catalog (or at least R-MB9/R-MB7d, the other "exists /
+small build" rigs) lands, so ch07/ch33/ch41/ch42 get one coherent v4
+update rather than a partial one keyed to two rigs.
+
+**Artifacts.** `results/v4_r_mb1.json`, `results/v4_r_mb4.json`
+(`code_version=graded-lab-0.40.0`).
+
+- `CODE_VERSION` `graded-lab-0.40.0`.
+
 

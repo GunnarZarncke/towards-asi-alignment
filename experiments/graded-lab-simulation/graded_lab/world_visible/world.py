@@ -171,11 +171,19 @@ def _execute_primitive(
     artifact_acls: dict[str, frozenset[str]] | None = None,
     transfer_acls: dict[str, frozenset[str]] | None = None,
     vote_service: VoteService | None = None,
+    t: int = 0,
+    severed_channels: dict[str, int] | None = None,
 ) -> dict[str, object]:
     role_by_actor = role_by_actor or {}
     channel_acls = channel_acls or {}
     artifact_acls = artifact_acls or {}
     transfer_acls = transfer_acls or {}
+    # PLAN_v4 V4-3 R-MB7d (NEW MECHANISM — flagged for later review): a
+    # severed channel denies every actor (not by-role membership, the
+    # whole channel), from its onset tick onward, regardless of
+    # channel_acls membership. Checked before the existing membership
+    # check so severance cannot be masked by an unrelated ACL pass.
+    severed_channels = severed_channels or {}
 
     # PLAN_v3 slice B: enforcement only activates when the agent's action
     # explicitly targets a mechanism id that the compiler bound as a
@@ -211,6 +219,9 @@ def _execute_primitive(
 
     if action.kind == "communicate":
         channel = str(action.args.get("channel", "lab"))
+        onset = severed_channels.get(channel)
+        if onset is not None and t >= onset:
+            return {"status": "denied", "reason": "channel_severed_ablation"}
         if channel in channel_acls:
             if role_by_actor.get(actor_id) not in channel_acls[channel]:
                 return {"status": "denied", "reason": "not_channel_member"}
@@ -565,6 +576,8 @@ def run_episode(
     channel_acls = runtime_ecology.channel_acls if runtime_ecology else {}
     artifact_acls = runtime_ecology.artifact_acls if runtime_ecology else {}
     transfer_acls = runtime_ecology.transfer_acls if runtime_ecology else {}
+    # PLAN_v4 V4-3 R-MB7d (NEW MECHANISM — flagged for later review).
+    severed_channels = dict(cfg.channel_severance)
 
     program_map = programs or {a.actor_id: "softmax_optimizer" for a in cfg.agents}
     injected_profiles = behavior_profiles or {}
@@ -734,6 +747,8 @@ def run_episode(
                     artifact_acls=artifact_acls,
                     transfer_acls=transfer_acls,
                     vote_service=vote_service,
+                    t=t,
+                    severed_channels=severed_channels,
                 )
                 actor_role = role_by_actor.get(actor_id, "")
                 injected_id: str | None = None

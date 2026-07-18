@@ -116,6 +116,96 @@ def test_communicate_allowed_for_channel_member():
     assert outcome["status"] == "ok"
 
 
+# --- PLAN_v4 V4-3 R-MB7d channel severance (NEW MECHANISM, flagged for
+#     later review) ------------------------------------------------------
+
+
+def test_communicate_denied_once_severed_from_onset_tick():
+    runtime = _runtime()
+    ws = Workspace()
+    try:
+        outcome = _execute_primitive(
+            PrimitiveAction("communicate", {"channel": "eng_review_channel", "message": {}}),
+            "eng1",
+            engine=None,
+            permissions=None,
+            projector=_projector(ws),
+            workspace=ws,
+            role_by_actor={"eng1": "engineer"},
+            channel_acls=runtime.channel_acls,
+            t=5,
+            severed_channels={"eng_review_channel": 5},
+        )
+    finally:
+        ws.cleanup()
+    assert outcome == {"status": "denied", "reason": "channel_severed_ablation"}
+
+
+def test_communicate_allowed_before_severance_onset_tick():
+    runtime = _runtime()
+    ws = Workspace()
+    try:
+        outcome = _execute_primitive(
+            PrimitiveAction("communicate", {"channel": "eng_review_channel", "message": {}}),
+            "eng1",
+            engine=None,
+            permissions=None,
+            projector=_projector(ws),
+            workspace=ws,
+            role_by_actor={"eng1": "engineer"},
+            channel_acls=runtime.channel_acls,
+            t=4,
+            severed_channels={"eng_review_channel": 5},
+        )
+    finally:
+        ws.cleanup()
+    assert outcome["status"] == "ok"
+
+
+def test_severance_overrides_membership_even_for_a_valid_member():
+    """A channel member who would otherwise pass the ACL check is still
+    denied once severed — severance is whole-channel, not by-role."""
+    runtime = _runtime()
+    ws = Workspace()
+    try:
+        outcome = _execute_primitive(
+            PrimitiveAction("communicate", {"channel": "eng_review_channel", "message": {}}),
+            "rev1",
+            engine=None,
+            permissions=None,
+            projector=_projector(ws),
+            workspace=ws,
+            role_by_actor={"rev1": "reviewer"},
+            channel_acls=runtime.channel_acls,
+            t=100,
+            severed_channels={"eng_review_channel": 5},
+        )
+    finally:
+        ws.cleanup()
+    assert outcome == {"status": "denied", "reason": "channel_severed_ablation"}
+
+
+def test_severance_default_is_a_no_op():
+    """No caller sets ``channel_severance``/``severed_channels`` today —
+    default empty dict must not change existing ACL behavior."""
+    runtime = _runtime()
+    ws = Workspace()
+    try:
+        outcome = _execute_primitive(
+            PrimitiveAction("communicate", {"channel": "eng_review_channel", "message": {}}),
+            "eng1",
+            engine=None,
+            permissions=None,
+            projector=_projector(ws),
+            workspace=ws,
+            role_by_actor={"eng1": "engineer"},
+            channel_acls=runtime.channel_acls,
+        )
+    finally:
+        ws.cleanup()
+    assert outcome["status"] == "ok"
+
+
 def test_communicate_on_unbound_channel_is_unrestricted():
     """Backward compatibility: a channel name that is not a compiled
     mechanism id (e.g. the v1/v2 default ``lab``) is never enforced."""
