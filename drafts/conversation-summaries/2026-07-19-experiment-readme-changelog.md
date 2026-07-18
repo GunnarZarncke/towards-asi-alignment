@@ -28,4 +28,4 @@ points; version logs should move into consistent CHANGELOG files.
 - `experiments/*/CHANGELOG.md` — version/phase history
 
 ## Commits
-- (this session)
+- `282d72c` Restructure experiment READMEs with self-contained intros and CHANGELOG files.
