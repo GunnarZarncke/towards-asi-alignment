@@ -45,6 +45,8 @@ The book must be self-contained. It must not assume the reader already knows the
 \text{socio-technical attractor control}.
 \]
 
+**Guiding principle — works as the system grows:** Treat evidence for an alignment mechanism as insufficient unless its claimed function remains meaningful under the relevant forms of growth: capability growth, ontology shift, successor creation, distribution shift, strategic adaptation, and changing human correction capacity. State which dimensions are tested, which are only argued, and where the mechanism may fail to transfer.
+
 Do not let external doom arguments (Yudkowsky-style lethalities, Turchin-style failure maps, or general AGI catastrophe taxonomies) become a second organizing ontology. Use them only as adversarial checklists or coverage audits late in the manuscript (especially Chapter 44).
 
 The book must explain the thesis at three levels:
