@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-18 | Graded lab **PLAN_v4 V4-3: R-MB9 + R-MB7d implemented + scored** (GL-80) — R-MB9 passes both arms; R-MB7d group SKIP, pair null (double mechanical explanation) | [2026-07-18-graded-lab-v4-3-r-mb9-r-mb7d-implementation.md](2026-07-18-graded-lab-v4-3-r-mb9-r-mb7d-implementation.md) |
 | 2026-07-18 | Glossary **catchy accessible phrases** — bearer map, value bundle, transport, grounding viability, correction-audit evasion | [2026-07-18-glossary-catchy-phrases.md](2026-07-18-glossary-catchy-phrases.md) |
 | 2026-07-18 | Graded lab **PLAN_v4 V4-1 freeze extended to R-MB9 + R-MB7d** (dual-arm designs, relative-rule threshold) + `channel_severance` primitive (flagged for review) | [2026-07-18-graded-lab-v4-1-freeze-r-mb9-r-mb7d.md](2026-07-18-graded-lab-v4-1-freeze-r-mb9-r-mb7d.md) |
 | 2026-07-18 | Graded lab **PLAN_v4 V4-0/V4-1/V4-2 implemented + scored for R-MB1/R-MB4** (GL-79) | [2026-07-18-graded-lab-plan-v4-v0-v1-v2-implementation.md](2026-07-18-graded-lab-plan-v4-v0-v1-v2-implementation.md) |

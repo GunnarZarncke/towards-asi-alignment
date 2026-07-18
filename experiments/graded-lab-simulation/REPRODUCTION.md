@@ -560,45 +560,61 @@ at module top (``UAD_SEEDS`` = ``C3_SEEDS``, ``EAI_SEEDS`` = ``CALIBRATION_SEEDS
 
 ---
 
-## 10.2 PLAN_v4 V4-0/1/2 — decoupled per-bridge rigs (GL-79)
+## 10.2 PLAN_v4 V4-0 through V4-3 — decoupled per-bridge rigs (GL-79/GL-80)
 
-**Status:** *executed* — R-MB1 and R-MB4 scored on S-inherited
-``generated_ecology_v3.json`` (the only two rigs frozen/implemented so
+**Status:** *executed* — R-MB1, R-MB4, R-MB9, and R-MB7d all scored on
+``generated_ecology_v3.json`` (the four rigs frozen/implemented so
 far; see `PLAN_v4.md` rig catalog for the rest, and `DESIGN.md`
-"PLAN_v4 pre-registration" for the frozen preconditions/predictions).
-``machinery_transfer.py`` is unmodified; GL-76/GL-77 remain the frozen
-coupled-battery record.
+"PLAN_v4 pre-registration" (both sections) for the frozen
+preconditions/predictions). ``machinery_transfer.py`` is unmodified;
+GL-76/GL-77 remain the frozen coupled-battery record.
 
 **Fixture layer:** ``graded_lab/harness/fixtures.py``,
 ``build_reference_fixture(ecology_path, seeds=..., workers=...)`` →
 ``ReferenceFixture`` (substrate + roster + already-run episodes). Rigs
 live in ``graded_lab/harness/rigs/`` (`base.py` contract,
-`r_mb1_unit_discovery.py`, `r_mb4_detector_transfer.py`).
+`r_mb1_unit_discovery.py`, `r_mb4_detector_transfer.py`,
+`r_mb9_contradiction_surface.py`, `r_mb7d_channel_ablation.py`).
+R-MB9/R-MB7d each return ``dict[str, RigResult]`` keyed by arm name
+(``{"specificity","sensitivity"}`` / ``{"pair","group"}``) rather than
+one ``RigResult`` — their arms are never merged, per DESIGN.md.
 
-**Reproduce (each rig independently; ``--workers N`` parallelizes both
-fixture-building and, for R-MB1, the intervention-scoring battery):**
+**Reproduce (each rig independently; ``--workers N`` parallelizes
+fixture-building and, for R-MB1/R-MB7d, the per-seed/per-dose-point
+battery — R-MB7d's full 9-onset-fraction × 2-arm battery takes ~5 min
+wall at ``--workers 8``; R-MB9 needs no new episodes and is fast
+regardless of worker count):**
 
 ```bash
 cd experiments/graded-lab-simulation
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb1 --workers 4 --out results/v4_r_mb1.json
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb4 --out results/v4_r_mb4.json
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb9 --workers 4 --out results/v4_r_mb9.json
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb7d --workers 8 --out results/v4_r_mb7d.json
 ```
 
-**Smoke / harness validation only:**
+**Smoke / harness validation only (r-mb7d's ``--smoke`` needs >= 4
+seeds regardless, since its dose sweep requires ``n_dose_seeds``
+distinct seeds — the CLI handles this automatically, and further
+narrows ``onset_fracs`` to a single dev-speed value):**
 
 ```bash
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb1 --smoke
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb4 --smoke
-pytest tests/test_fixtures.py tests/test_rigs_base.py tests/test_rig_r_mb1.py tests/test_rig_r_mb4.py -q -m "not slow"
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb9 --smoke
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb7d --smoke --workers 4
+pytest tests/test_fixtures.py tests/test_rigs_base.py tests/test_rig_r_mb1.py tests/test_rig_r_mb4.py tests/test_rig_r_mb9.py tests/test_rig_r_mb7d.py -q -m "not slow"
 ```
 
-**Outputs:** ``results/v4_r_mb1.json``, ``results/v4_r_mb4.json`` — each
-a ``RigResult`` payload (`precondition`, `outcome`, `substrate_class`,
-`payload`, `predictions`) plus battery metadata (`code_version`,
-`ecology_path`, `seeds`, `wall_seconds`).
+**Outputs:** ``results/v4_r_mb1.json``, ``results/v4_r_mb4.json``
+(each a ``RigResult`` payload: `precondition`, `outcome`,
+`substrate_class`, `payload`, `predictions`, plus battery metadata);
+``results/v4_r_mb9.json``, ``results/v4_r_mb7d.json`` (an ``arms`` dict
+of the same per-arm payload, keyed by arm name).
 
-**On ``generated_ecology_v3.json`` (S-inherited, 20 seeds, ``C3_SEEDS``):**
-see FINDINGS GL-79 for the resolved outcomes.
+**On ``generated_ecology_v3.json`` (S-inherited/S-fixture, 20-seed
+fixture, ``C3_SEEDS``):** see FINDINGS GL-79 (R-MB1/R-MB4) and GL-80
+(R-MB9/R-MB7d) for the resolved outcomes.
 
 ---
 

@@ -2463,3 +2463,39 @@ are both flagged above as provisional/first-use; a pass on either rig
 using them is evidence the approach works on this substrate, not a
 claim that the primitive or the threshold rule is itself validated
 machinery the way slice A/B ACLs or the frozen `DIVERGENCE_FLAG_Z` are.
+
+### V4-3 implementation note (2026-07-18, after scoring — see FINDINGS GL-80)
+
+Two corrections to this freeze's text, made during implementation,
+**before** either rig's battery ran (constants/thresholds/dose levels
+above are unchanged by either):
+
+1. **R-MB9 sensitivity arm's dose delivery mechanism.** The freeze text
+   above describes a new agent-visible `"dose"` draft mode computing
+   `target_z` live during the episode. That would require the agent's
+   program to read `eval_sample_se`/`eval_sample_n` — oracle-only
+   fields under this document's own "Plane discipline" section.
+   Implemented instead as a harness/rig-layer post-hoc override
+   (`r_mb9_contradiction_surface.py`): for each real, honestly-filed
+   report event, construct the exact synthetic `filed_hazard_mean`
+   needed to hit each target `z` from that event's own recorded eval
+   stats, and rescore with the same pure `report_divergence_score`. No
+   new episodes are run for R-MB9 — both arms reuse the fixture's
+   already-run honest traces.
+2. **R-MB9's rig contract.** To honor "never merged into one
+   'contradiction surface works' sentence" literally (not just in the
+   harvest-sentence prose), `r_mb9_contradiction_surface.run_rig`
+   returns `dict[str, RigResult]` keyed by `{"specificity",
+   "sensitivity"}` (distinct `rig_id`s), mirroring R-MB7d's per-arm
+   contract, rather than one `RigResult` with a merged
+   `pass iff both hold` outcome (an earlier draft of the implementation
+   did the latter; caught and fixed before scoring).
+
+Both rigs are now implemented and scored: GL-80
+(`results/v4_r_mb9.json`, `results/v4_r_mb7d.json`). R-MB9 passed both
+arms; R-MB7d's group arm SKIPped (precondition unsatisfied) and its
+pair arm returned null at every onset fraction, with a specific
+mechanical explanation recorded in GL-80 (the reference program is
+non-adaptive to denial, and the frozen `dependency_score`'s
+action-coding is itself blind to attempted-but-denied vs. successful
+primitives) — see GL-80 for the full write-up.

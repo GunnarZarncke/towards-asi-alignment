@@ -1,18 +1,16 @@
 # PLAN v4 — decoupled per-bridge rigs (DRAFT — partially implemented)
 
-**Status: draft proposal (2026-07-18); V4-0/V4-1/V4-2 implemented and
-scored for `R-MB1` and `R-MB4` (GL-79, same day); V4-1 design freeze
-(not yet implemented/scored) extended same day to `R-MB9` and
-`R-MB7d`.** R-MB1/R-MB4's preconditions, predictions, and harvest
-sentences are frozen in `DESIGN.md` ("PLAN_v4 pre-registration") and
-scored in `results/FINDINGS.md` GL-79 (`results/v4_r_mb1.json`,
-`results/v4_r_mb4.json`). R-MB9/R-MB7d's preconditions, both rigs'
-dual-arm designs, predictions, and harvest sentences are frozen in
-`DESIGN.md` ("PLAN_v4 pre-registration — R-MB9 + R-MB7d scope") but
-**not yet scored** — the `harness/rigs/r_mb9_*.py` / `r_mb7d_*.py`
-modules remain to be written (V4-3 implementation); the one new
-runtime primitive their implementation needs (`channel_severance` in
-`world.py`) is already added and tested, flagged there for later human
+**Status: draft proposal (2026-07-18); V4-0 through V4-3 implemented
+and scored for `R-MB1`, `R-MB4`, `R-MB9`, and `R-MB7d` (GL-79/GL-80,
+same day).** All four rigs' preconditions, predictions, and harvest
+sentences are frozen in `DESIGN.md` ("PLAN_v4 pre-registration" /
+"... — R-MB9 + R-MB7d scope", the latter with a small V4-3
+implementation-note correction to R-MB9's sensitivity-arm delivery
+mechanism, made before scoring) and scored in `results/FINDINGS.md`
+GL-79/GL-80 (`results/v4_r_mb1.json`, `results/v4_r_mb4.json`,
+`results/v4_r_mb9.json`, `results/v4_r_mb7d.json`). The new
+`channel_severance` runtime primitive R-MB7d's implementation needed
+(`world.py`) is added and tested, flagged there for later human
 review. Every other rig in the catalog below (`R-MB6a/b`, `R-MB7`,
 `R-MB2`, `R-MB5`, `R-MB8`) remains an unfrozen placeholder pending the
 "open questions" section — do not cite constants/predictions for those
@@ -390,7 +388,7 @@ admin machinery (V4-5); then the two expensive, independent capstones
 | V4-0 | ✅ Fixture layer + rig contract (`harness/fixtures.py`, `harness/rigs/`); `machinery_transfer.py` left unmodified rather than decomposed (GL-76 reproduces bit-for-bit trivially since untouched) | ~3–5 d | full suite green — done (GL-79) |
 | V4-1 | ✅ (R-MB1/R-MB4/R-MB9/R-MB7d) Pre-registration freeze in `DESIGN.md`; ⏳ (R-MB6a/b, R-MB7, R-MB2, R-MB5, R-MB8) blocked on the open questions below | ~2–3 d writing | all frozen in DESIGN.md before any scored battery — done for R-MB1/R-MB4/R-MB9/R-MB7d |
 | V4-2 | ✅ R-MB4 ∥ R-MB1 — precondition metrics, scored on S-inherited `generated_ecology_v3.json` | ~2–4 d each | both batteries scored and FINDINGS-entered (SKIPs count) — done (GL-79): R-MB1 null, R-MB4 SKIP |
-| V4-3 | ✅ (engineering only, same day) `channel_severance` runtime primitive added to `world.py` (flagged for later review, see `DESIGN.md` "PLAN_v4 pre-registration — R-MB9 + R-MB7d scope"), `CODE_VERSION` bumped to `graded-lab-0.41.0`; ⏳ (implementation) R-MB9 (contradiction surface + dose-response, both arms frozen) ∥ R-MB7d (pair + group channel-ablation arms frozen, relative-rule noise-floor threshold, S6-lesson-ported UAD-visibility split) — modules not yet written | ~3–5 d each | scored; R-MB7d's ablation intervention validated on S-fixture before any S-blind reuse |
+| V4-3 | ✅ `channel_severance` runtime primitive (`world.py`, flagged for later review); R-MB9 (contradiction surface, both arms) ∥ R-MB7d (pair + group channel-ablation arms, relative-rule noise-floor threshold) implemented and scored — GL-80: **R-MB9 pass on both arms**; **R-MB7d group SKIP** (precondition unsatisfied), **pair null at every onset fraction** (mechanically explained: non-adaptive reference program + outcome-status-blind `dependency_score`) | ~3–5 d each | done (GL-80) |
 | V4-4 | R-MB6a — V2-4 variation operator + null harness (`REPRODUCTION.md` §5) | ~1–2 wk | **hard gate:** uniform-fitness null inside permutation band (GL-25); no downstream selection rig runs otherwise |
 | V4-5 | **Medium builds:** R-MB2 (proxy/true scorecard Goodhart battery; consumes V4-4 operator) ∥ R-MB5 (gated-successor relabel rig) ∥ R-MB8 (capture rig; first cut candidate — see open question 3) | R-MB2 ~3–5 d; R-MB5/R-MB8 ~1 wk each | R-MB2 tension precondition measured before its battery; R-MB5/R-MB8 results permanently labeled S-fixture coherence-grade |
 | V4-6 | R-MB7 — LLM adapter + mock replay + scored red-team battery | ~1–2 wk + API budget | caps + refusal reporting per V2-1; does **not** wait for V4-7 |

@@ -1,0 +1,115 @@
+{
+  "code_version": "graded-lab-0.41.0",
+  "battery": "v4_r-mb9",
+  "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "wall_seconds": 20.497301291907206,
+  "arms": {
+    "specificity": {
+      "rig_id": "R-MB9-specificity",
+      "precondition": {
+        "rig_id": "R-MB9",
+        "satisfied": true,
+        "measured": {
+          "total_report_events": 20,
+          "nonzero_filed_hazard_events": 20
+        },
+        "threshold": {
+          "min_report_events": 1
+        },
+        "note": "Count of draft_report engine_log 'ok' events with a nonzero filed_hazard_mean, summed across fixture seeds, from engine_log/referee_artifacts only, never from the divergence score itself (PLAN_v4 R-MB9 precondition contract). N=1 is deliberately the lowest possible bar (DESIGN.md)."
+      },
+      "outcome": "pass",
+      "substrate_class": "S-inherited",
+      "payload": {
+        "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+        "divergence_flag_z": 2.0
+      },
+      "predictions": {
+        "specificity": {
+          "n_events": 20,
+          "flag_rate": 0.0,
+          "mean_divergence_z": 1.2865186320121403e-11,
+          "holds": true
+        }
+      }
+    },
+    "sensitivity": {
+      "rig_id": "R-MB9-sensitivity",
+      "precondition": {
+        "rig_id": "R-MB9",
+        "satisfied": true,
+        "measured": {
+          "total_report_events": 20,
+          "nonzero_filed_hazard_events": 20
+        },
+        "threshold": {
+          "min_report_events": 1
+        },
+        "note": "Count of draft_report engine_log 'ok' events with a nonzero filed_hazard_mean, summed across fixture seeds, from engine_log/referee_artifacts only, never from the divergence score itself (PLAN_v4 R-MB9 precondition contract). N=1 is deliberately the lowest possible bar (DESIGN.md)."
+      },
+      "outcome": "pass",
+      "substrate_class": "S-fixture",
+      "payload": {
+        "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+        "divergence_flag_z": 2.0,
+        "dose_levels": [
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ]
+      },
+      "predictions": {
+        "dose_response": {
+          "n_dose_seeds": 4,
+          "per_dose": {
+            "z=0.5": {
+              "n_events": 4,
+              "flag_rate": 0.0,
+              "n_degenerate_se_skipped": 0
+            },
+            "z=1.0": {
+              "n_events": 4,
+              "flag_rate": 0.0,
+              "n_degenerate_se_skipped": 0
+            },
+            "z=2.0": {
+              "n_events": 4,
+              "flag_rate": 0.75,
+              "n_degenerate_se_skipped": 0
+            },
+            "z=4.0": {
+              "n_events": 4,
+              "flag_rate": 1.0,
+              "n_degenerate_se_skipped": 0
+            }
+          },
+          "monotonic_non_decreasing": true,
+          "holds": true
+        }
+      }
+    }
+  }
+}
