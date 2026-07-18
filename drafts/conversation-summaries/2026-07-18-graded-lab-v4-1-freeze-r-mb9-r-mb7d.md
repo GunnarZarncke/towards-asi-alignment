@@ -128,4 +128,7 @@ targeted ACL extension (but flag for later review). Draft design."
 
 ## Commits
 
-- None yet (not asked to commit).
+- `e85e5e3` — "Implement PLAN_v4 fixture layer + R-MB1/R-MB4 rigs
+  (GL-79), freeze V4-1 design for R-MB9/R-MB7d, and add
+  channel_severance primitive." (combined with the earlier V4-0/1/2
+  session above — committed together, end of session).

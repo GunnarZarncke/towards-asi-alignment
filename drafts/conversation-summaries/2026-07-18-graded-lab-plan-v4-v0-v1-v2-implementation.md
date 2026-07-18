@@ -102,4 +102,7 @@ or have to ask. Stop if questions timeout." (`experiments/graded-lab-simulation/
 
 ## Commits
 
-- None yet (not asked to commit).
+- `e85e5e3` — "Implement PLAN_v4 fixture layer + R-MB1/R-MB4 rigs
+  (GL-79), freeze V4-1 design for R-MB9/R-MB7d, and add
+  channel_severance primitive." (combined with the V4-1 R-MB9/R-MB7d
+  freeze session below — committed together, end of session).
