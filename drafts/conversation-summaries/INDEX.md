@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-19 | Experiment **README self-contained intros** + per-line **CHANGELOG** (version logs out of READMEs) | [2026-07-19-experiment-readme-changelog.md](2026-07-19-experiment-readme-changelog.md) |
 | 2026-07-19 | **Honest meta-language** pass (~70 edits); **subsumption** audit (read-only) | [2026-07-19-honest-meta-language-subsumption-audit.md](2026-07-19-honest-meta-language-subsumption-audit.md) |
 | 2026-07-19 | Manuscript **umbrella/branding soften** + plain `ch<n>` → `\ref{ch:...}`; audit report; ch48/ch35 user fixes | [2026-07-19-mechanism-comparison-umbrella-framing.md](2026-07-19-mechanism-comparison-umbrella-framing.md) |
 | 2026-07-18 | Graded lab **PLAN_v4 V4-4: R-MB6a variation operator + null harness** (GL-81) — P5 pass; 11/100 syntax-distinct mutants on walk_pipeline baseline | [2026-07-18-graded-lab-v4-4-r-mb6a-implementation.md](2026-07-18-graded-lab-v4-4-r-mb6a-implementation.md) |
