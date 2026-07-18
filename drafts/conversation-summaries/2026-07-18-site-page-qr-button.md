@@ -23,4 +23,4 @@ Add a small fixed **QR** button on every companion-site page; clicking opens a f
 - `site/src/layouts/SiteLayout.astro`
 
 ## Commits
-- (this session)
+- `d7c521b` Add viewport-filling QR modal on every companion-site page.

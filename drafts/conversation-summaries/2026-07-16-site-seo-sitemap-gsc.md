@@ -25,4 +25,4 @@ Install `@astrojs/sitemap`, configure SEO (canonical, social, robots, unique des
 - `site/astro.config.mjs`, `site/src/lib/seo.ts`, `site/public/robots.txt`
 
 ## Commits
-- (pending) site SEO and domain link migration
+- `dc3853b` Add site SEO: sitemap, social preview, robots, and domain links.
