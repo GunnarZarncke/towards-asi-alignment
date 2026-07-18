@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-18 | Correction **"in the small" vs "in the large"** — named split in ch25/ch26, kept CCI term/labels intact | [2026-07-18-correction-in-the-small-large.md](2026-07-18-correction-in-the-small-large.md) |
 | 2026-07-18 | Site **page QR button** — fixed trigger, viewport-filling modal per canonical URL | [2026-07-18-site-page-qr-button.md](2026-07-18-site-page-qr-button.md) |
 | 2026-07-18 | Graded lab **PLAN_v4 draft** (per-bridge rigs) + **v3 line closed** (GL-78) | [2026-07-18-graded-lab-plan-v4-draft-v3-closure.md](2026-07-18-graded-lab-plan-v4-draft-v3-closure.md) |
 | 2026-07-17 | Cloudflare Web Analytics (cookieless; Impressum note) | [2026-07-17-cloudflare-web-analytics.md](2026-07-17-cloudflare-web-analytics.md) |
