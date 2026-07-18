@@ -4,6 +4,9 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-18 | Glossary **catchy accessible phrases** — bearer map, value bundle, transport, grounding viability, correction-audit evasion | [2026-07-18-glossary-catchy-phrases.md](2026-07-18-glossary-catchy-phrases.md) |
+| 2026-07-18 | Graded lab **PLAN_v4 V4-1 freeze extended to R-MB9 + R-MB7d** (dual-arm designs, relative-rule threshold) + `channel_severance` primitive (flagged for review) | [2026-07-18-graded-lab-v4-1-freeze-r-mb9-r-mb7d.md](2026-07-18-graded-lab-v4-1-freeze-r-mb9-r-mb7d.md) |
+| 2026-07-18 | Graded lab **PLAN_v4 V4-0/V4-1/V4-2 implemented + scored for R-MB1/R-MB4** (GL-79) | [2026-07-18-graded-lab-plan-v4-v0-v1-v2-implementation.md](2026-07-18-graded-lab-plan-v4-v0-v1-v2-implementation.md) |
 | 2026-07-18 | Correction **"in the small" vs "in the large"** — named split in ch25/ch26, kept CCI term/labels intact | [2026-07-18-correction-in-the-small-large.md](2026-07-18-correction-in-the-small-large.md) |
 | 2026-07-18 | Site **page QR button** — fixed trigger, viewport-filling modal per canonical URL | [2026-07-18-site-page-qr-button.md](2026-07-18-site-page-qr-button.md) |
 | 2026-07-18 | Graded lab **PLAN_v4 draft** (per-bridge rigs) + **v3 line closed** (GL-78) | [2026-07-18-graded-lab-plan-v4-draft-v3-closure.md](2026-07-18-graded-lab-plan-v4-draft-v3-closure.md) |
