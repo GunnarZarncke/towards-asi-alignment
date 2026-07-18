@@ -26,4 +26,4 @@ User found the ch26 title/concept "Correction-Channel Integrity" too technical a
 - `chapters/ch47-bearers-of-value.tex` (bearer-continuity question, referenced but not edited)
 
 ## Commits
-- (see below)
+- `e6ff088` Name correction "in the small" vs "in the large" in ch25/ch26
