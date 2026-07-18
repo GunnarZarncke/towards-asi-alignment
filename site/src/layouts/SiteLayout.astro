@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import "katex/dist/katex.min.css";
 import CloudflareWebAnalytics from "../components/CloudflareWebAnalytics.astro";
+import PageQrCode from "../components/PageQrCode.astro";
 import SiteSearch from "../components/SiteSearch.astro";
 import { pdfHref } from "../lib/site-urls";
 import {
@@ -107,6 +108,7 @@ const robots = noindex ? "noindex, follow" : "index, follow";
         </div>
       </footer>
     </div>
+    <PageQrCode url={canonicalUrl} />
     <CloudflareWebAnalytics />
   </body>
 </html>
