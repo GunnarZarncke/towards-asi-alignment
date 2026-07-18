@@ -89,7 +89,7 @@ Under reward uncertainty, deference/inquiry can be optimal when committing to ei
 Handle \leanid{CIRL_assistance_game_deference_imported}: uncertainty about a scalar human reward can make information-seeking and deference instrumentally valuable \autocite{hadfieldmenell2016}.
 
 \paragraph{Book projection.}
-The book replaces scalar reward with bundle inference \((\hat B,\hat W,\hat\Phi)\) (Chapter~\ref{ch:reward-to-bundle-inference}).
+The book's stronger target is bundle inference \((\hat B,\hat W,\hat\Phi)\), with scalar reward as the \(k=1\) embed (Chapter~\ref{ch:reward-to-bundle-inference}).
 On the shared finite domain, scalar assistance games embed as the \(k=1\) bundle case:
 \begin{align}
 \mathcal G_{\mathrm{scalar}} &\hookrightarrow \mathcal G_{\mathrm{bundle}}^{(k=1)},
@@ -363,7 +363,7 @@ The strongest honest claim is not that Lean has reproduced each external agenda 
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.22}
 \begin{longtable}{@{}L{0.12\textwidth}L{0.26\textwidth}L{0.27\textwidth}L{0.27\textwidth}@{}}
-\caption{Field-agenda theorem handles in the Lean spine. ``Imported'' means source-cited external theorem or protocol handle, not a book bridge.}\label{tab:appi-field-subsumption-status}\\
+\caption{Field-agenda theorem handles in the Lean spine: forward projections under explicit interfaces; non-converses where separation lemmas are listed. ``Imported'' means source-cited external theorem or protocol handle, not a book bridge.}\label{tab:appi-field-subsumption-status}\\
 \toprule
 \textbf{Agenda} & \textbf{Imported handle} & \textbf{Finite rederivation / separation} & \textbf{Book-facing conclusion} \\
 \midrule
@@ -433,7 +433,7 @@ Appendix~\ref{appbridge-crosswalk} maps each bridge to the field's canonical ope
 \endhead
 \bottomrule
 \endfoot
-MB1 & A-004, ch7 & Embedded agency / boundary discovery & Estimator soundness over real systems \\
+MB1 & A-004, Ch.~\ref{ch:finding-boundary} & Embedded agency / boundary discovery & Estimator soundness over real systems \\
 MB2, MB3 & A-001, A-006 & IRL non-identifiability, ELK, RLHF ceiling & Bundle/bearer identifiability from behavior \\
 MB4, MB8 & A-002 & Corrigibility, off-switch, legitimacy & Correction authority and capture resistance \\
 MB5 & A-007, A-010 & Tiling, ontology identification & Successor audit under ontology shift \\
@@ -590,7 +590,7 @@ Book bridge: Chapter~\ref{ch:dynamical-guarantee}, Chapter~\ref{ch:verifiability
 \forall A,B,\delta,\ \mathrm{SuccessorSafe}(A,B)\wedge \mathrm{ConservedPropertySignatureVerifiable}(A,B) \wedge \mathrm{Risk}(B)\le\delta \Rightarrow \mathrm{TrueHarm}(B)\le\delta.
 \end{equation}
 Field crossroad: deceptive alignment / mesa-optimization (checklist gaming under optimization pressure) and tiling/Vingean reflection, the same crux families as \texttt{MB7a--c} and \texttt{MB5} \autocite{hubinger2019risks,yudkowsky2013tiling}.
-Book bridge: ch08's growth/split/merge forgeability WWCTV and ch31's seven-conserved-properties WWCTV (Chapter~\ref{ch:grow-split-merge}, Chapter~\ref{ch:conserved-properties}), closed only by ch43's cost-of-forging relation (Chapter~\ref{ch:verifiability-ontology}).
+Book bridge: Chapter~\ref{ch:grow-split-merge}'s growth/split/merge forgeability WWCTV and Chapter~\ref{ch:conserved-properties}'s seven-conserved-properties WWCTV, closed only by Chapter~\ref{ch:verifiability-ontology}'s cost-of-forging relation.
 Unlike \texttt{MB1}--\texttt{MB9}, \texttt{MB10} is declared in \texttt{AlignmentProofSpine.Forgeability} rather than as a field of \texttt{Core.BridgeAssumptions}: its statement needs the numeric risk leaf \(\mathrm{Risk}\), which is not defined until \texttt{Capability.lean}, after \texttt{BridgeAssumptions} is built. It is threaded explicitly through the one theorem that uses it (\leanid{true\_harm\_bound\_of\_successor\_safe\_step}), in the same "never hidden" style as \texttt{Successors.SuccessorAuditLinks}; it is not part of \leanid{standardBridges} and does not feed \leanid{certified\_class\_safety\_from\_spine\_and\_bridges}. Section~\ref{appi:sec:forgeability} below states the counterexample that motivates it.
 \end{assumption}
 
@@ -1136,7 +1136,7 @@ This is Theorem~\ref{appi:thm:p22b} read through the tiling aliases in \texttt{B
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/03-correction-successors.png}
   \caption[Spine III: correction and successors]{Spine III: handle-controlled correction, risk, and successors (Chapters~\ref{ch:correction-causal-channel}--\ref{ch:certification-without-construction}).
-  Covers the correction channel, shutdown and interruptibility as narrow projections, impact/quantilization/debate/amplification/ELK separations, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the core hidden-BIQ \texttt{MB7} chain at \texttt{MB7c}; inferential detector validity is now the adjacent \texttt{MB7d} bridge. The \texttt{[NEW]} nodes are the ch08/ch31 forgeability gap (\texttt{forgeability\_gap}, a finite counterexample) and the bridge that would close it, \texttt{MB10} (Section~\ref{appi:sec:forgeability}); \texttt{MB10} is not part of \texttt{Core.BridgeAssumptions} and does not feed \texttt{P30T}.}
+  Covers the correction channel, shutdown and interruptibility as narrow projections, impact/quantilization/debate/amplification/ELK separations, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the core hidden-BIQ \texttt{MB7} chain at \texttt{MB7c}; inferential detector validity is now the adjacent \texttt{MB7d} bridge. The \texttt{[NEW]} nodes are the Chapters~\ref{ch:grow-split-merge}/\ref{ch:conserved-properties} forgeability gap (\texttt{forgeability\_gap}, a finite counterexample) and the bridge that would close it, \texttt{MB10} (Section~\ref{appi:sec:forgeability}); \texttt{MB10} is not part of \texttt{Core.BridgeAssumptions} and does not feed \texttt{P30T}.}
   \label{fig:lean-spine-correction}
 \end{figure}
 
@@ -1246,7 +1246,7 @@ If \(\mathrm{PreservesValueUpdateOperator}(A,U)\), then \(\mathrm{CorrectionInte
 Apply Assumption~\ref{appi:ass:mb8}, equation~\eqref{appi:eq:mb8}.
 \end{proof}
 
-\subsubsection{Adversarial-verifiability chokepoints (ch43; correlated-failure review, 2026-06-30)}
+\subsubsection{Adversarial-verifiability chokepoints (Chapter~\ref{ch:verifiability-ontology}; correlated-failure review, 2026-06-30)}
 \label{appi:sec:chokepoint}
 
 Chapter~\ref{ch:verifiability-ontology}, Section~\ref{sec:cost-relation-ch43} states, as a conjecture rather than a proof, that a metric \(M\) is \emph{adversarially verifiable up to capability \(\kappa\)} when the cost of faking it grows faster in the divergence \(\Delta\) from ground truth than the system's affordable surplus at \(\kappa\). \texttt{AlignmentProofSpine.Chokepoint} formalizes this definition and one structural consequence flagged by external review: the appendix's claim that disjunctive routes to a bridge consequent "add failure tolerance" (Appendix~\ref{apph-research-program}, Section~\ref{sec:research-dependency-order}) is only sound if the disjuncts are read through independent instruments. Neither the cost-relation conjecture itself nor \texttt{MB6a}/\texttt{MB6b}/\texttt{MB8} are proved here.
@@ -1263,7 +1263,7 @@ matching the chapter's cost relation exactly; \emph{steerable at \(\kappa\)} (\l
 
 \begin{definition}[Verifiability-gated bridge and shared chokepoint]
 \label{appi:def:gated-bridge}
-A \leanid{VerifiabilityGatedBridge} packages a channel, a consequent, a capability function, and a proof that the consequent follows from the channel's reading \emph{only when} the channel is verifiable at that capability --- making the ch43 caveat part of the bridge's type rather than a prose footnote. Two gated bridges share a chokepoint (\leanid{SharedChokepoint}) when they use literally the same channel.
+A \leanid{VerifiabilityGatedBridge} packages a channel, a consequent, a capability function, and a proof that the consequent follows from the channel's reading \emph{only when} the channel is verifiable at that capability --- making the Chapter~\ref{ch:verifiability-ontology} caveat part of the bridge's type rather than a prose footnote. Two gated bridges share a chokepoint (\leanid{SharedChokepoint}) when they use literally the same channel.
 \end{definition}
 
 \begin{theorem}[Shared chokepoints collapse disjunctive tolerance]
@@ -1320,11 +1320,11 @@ For every claimed harm bound \(\delta\), there is a (toy) successor that reads g
 Direct construction: witness the toy successor with reported risk \(\delta\) and hidden harm \(\delta+1\); \texttt{omega} closes the arithmetic. Axiom footprint is \(\{\)\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\(\}\) --- pure logic, no \texttt{MB*} bridge invoked.
 \end{proof}
 
-Theorem~\ref{appi:thm:forgeability-gap} is why \texttt{SuccessorSafe} (Core.lean) cannot be strengthened into a bound on true harm without a further bridge; \texttt{MB10} (Assumption~\ref{appi:ass:mb10}) names that bridge, using two pieces of vocabulary declared alongside it: \(\mathrm{TrueHarm}: \mathrm{System}\to\mathbb{Z}\) (ch08/ch31's "unmeasured remainder") and \(\mathrm{ConservedPropertySignatureVerifiable}\) (ch43's adversarial-verifiability cost relation, Definition~\ref{appi:def:adv-verifiable}, specialized to whichever channel audits the seven-property signature rather than formally unified with \S\ref{appi:sec:chokepoint}'s single-system \texttt{MeasurementChannel} --- that unification is still open, \texttt{metadata/TODO.md}).
+Theorem~\ref{appi:thm:forgeability-gap} is why \texttt{SuccessorSafe} (Core.lean) cannot be strengthened into a bound on true harm without a further bridge; \texttt{MB10} (Assumption~\ref{appi:ass:mb10}) names that bridge, using two pieces of vocabulary declared alongside it: \(\mathrm{TrueHarm}: \mathrm{System}\to\mathbb{Z}\) (Chapters~\ref{ch:grow-split-merge}/\ref{ch:conserved-properties}'s ``unmeasured remainder'') and \(\mathrm{ConservedPropertySignatureVerifiable}\) (Chapter~\ref{ch:verifiability-ontology}'s adversarial-verifiability cost relation, Definition~\ref{appi:def:adv-verifiable}, specialized to whichever channel audits the seven-property signature rather than formally unified with \S\ref{appi:sec:chokepoint}'s single-system \texttt{MeasurementChannel} --- that unification is still open, \texttt{metadata/TODO.md}).
 
 \begin{corollary}[What \texttt{MB10} buys]
 \label{appi:cor:forgeability-mb10}
-Given the ch48 audit links (\leanid{SuccessorAuditLinks}), a predecessor's numeric risk bound, a successor-safe step, and a verifiable conserved-property signature together bound the successor's \emph{true} harm, not just its measured risk (\leanid{true\_harm\_bound\_of\_successor\_safe\_step}).
+Given the successor audit links (\leanid{SuccessorAuditLinks}; Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch31}), a predecessor's numeric risk bound, a successor-safe step, and a verifiable conserved-property signature together bound the successor's \emph{true} harm, not just its measured risk (\leanid{true\_harm\_bound\_of\_successor\_safe\_step}).
 \end{corollary}
 \begin{proof}
 Compose \leanid{SuccessorSafe\_risk\_monotone} (Successors.lean) with \leanid{risk\_bound\_successor\_safe\_step} to get the predecessor's risk bound at the successor, then apply \texttt{MB10}.
@@ -1364,7 +1364,7 @@ Expand \eqref{appi:eq:self-control-gap} and use Assumption~\ref{appi:ass:s03}.
 Given the audit-link record of Definition~\ref{appi:def:spine-successor-monotone}: if \(\mathrm{SuccessorSafe}(A,B)\), then \(\mathrm{Control}(B)\leq \mathrm{Control}(A)\) and \(\mathrm{CCI}(A)\leq \mathrm{CCI}(B)\) (Chapter~\ref{ch:conserved-properties}, Section~\ref{sec:seven-conserved-properties-ch31}).
 \end{corollary}
 \begin{proof}
-Extract the successor-safe witness. Apply the ch48 links \eqref{appi:eq:cci-preserved-monotone} and \eqref{appi:eq:control-locus-antitone} to its \(CCI\) and control-locus fields (Definition~\ref{appi:def:spine-successor-monotone}).
+Extract the successor-safe witness. Apply the successor audit links \eqref{appi:eq:cci-preserved-monotone} and \eqref{appi:eq:control-locus-antitone} to its \(CCI\) and control-locus fields (Definition~\ref{appi:def:spine-successor-monotone}).
 \end{proof}
 
 \subsection{Spine IV: selection ecology and normative limits}
@@ -1661,13 +1661,13 @@ Lean exports the integer abstraction \(\mathrm{DeploymentMass}(E,A)\) for relati
 
 \begin{definition}[Successor safety]
 \label{appi:def:spine-successor-safe}
-A successor \(B\) is successor-safe relative to \(A\) when there is a witness preserving the seven ch48 conserved properties: boundary closure, memory lineage, bundle geometry, bearer map, correction-channel capacity (`CCIPreserved` / vector \(\vec{\mathrm{CCI}}\)), transparency policy, and control-locus continuity:
+A successor \(B\) is successor-safe relative to \(A\) when there is a witness preserving the seven conserved properties of Chapter~\ref{ch:conserved-properties}: boundary closure, memory lineage, bundle geometry, bearer map, correction-channel capacity (`CCIPreserved` / vector \(\vec{\mathrm{CCI}}\)), transparency policy, and control-locus continuity:
 \begin{equation}
 \label{appi:eq:successor-safe}
 \mathrm{SuccessorSafe}(A,B)\iff \exists W,\ W\text{ contains all seven preservation fields.}
 \end{equation}
 Book references: successor safety is motivated in Chapter~\ref{ch:successor-central-test}, Sections~\ref{sec:conserved-properties-ch30}--\ref{sec:successor-alignment-condition-ch30}; the seven conserved properties are developed in Chapter~\ref{ch:conserved-properties}, especially Section~\ref{sec:seven-conserved-properties-ch31}.
-Ch24 system correction-update semantics (\(U_S\)) enter through vector \(\vec{\mathrm{CCI}}\) (`rawCapacity`, `ontologyTranslation`), not a separate preservation conjunct.
+Chapter~\ref{ch:correction-causal-channel} system correction-update semantics (\(U_S\)) enter through vector \(\vec{\mathrm{CCI}}\) (`rawCapacity`, `ontologyTranslation`), not a separate preservation conjunct.
 \end{definition}
 
 \begin{definition}[Transport stack between systems]
@@ -1691,7 +1691,7 @@ The syntactic-tiling alias used in Chapter~\ref{ch:successor-central-test} reads
 
 \begin{definition}[Successor risk monotonicity links]
 \label{appi:def:spine-successor-monotone}
-Along a successor-safe step \(A\to B\), the ch48 audit links are packaged as an explicit hypothesis record \leanid{SuccessorAuditLinks} (not global axioms and not bridges):
+Along a successor-safe step \(A\to B\), the successor audit links are packaged as an explicit hypothesis record \leanid{SuccessorAuditLinks} (not global axioms and not bridges):
 \begin{align}
 \label{appi:eq:cci-preserved-monotone}
 \mathrm{CCIPreserved}(A,B) &\Rightarrow \mathrm{CCI}(A)\leq \mathrm{CCI}(B),\\

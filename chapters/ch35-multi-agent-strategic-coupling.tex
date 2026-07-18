@@ -122,9 +122,11 @@ If the environment rewards accountable correction, islands can preserve pluralis
 Cooperativity index (general, not only literal transparency): reuse the edge cooperativity index of Chapter~\ref{ch:coordination-bottleneck} (Equation~\eqref{eq:kappa-coordination}), with $b_{ij}$, $p_{ij}$, $\rho_{ij}$, and $c_{ij}$ as defined there.
 \leanspine{proof}{P32}{The Lean spine proves the threshold arithmetic for the $\kappa$ numerator: with positive cost, cooperation exceeds the unit threshold exactly when benefit, reach, and correlation outrun cost.}
 
-\emph{UAD grounding of the edge inputs.}
+\emph{Grounding the edge inputs in discovered agents.}
 The percolation graph is not built over vendors, model names, servers, or API endpoints.
-Its vertices are candidate effective agents discovered by the boundary and UAD tests of Chapters~\ref{ch:finding-boundary},~\ref{ch:strategic-opacity}, and~\ref{ch:multiscale-decomposition}.
+In a multipolar deployment---many models, tools, institutions, and coupled feedback loops without an agreed agent cut---the vertices must be candidate \emph{effective} agents, not nominal actors.
+Unsupervised Agent Discovery (UAD; Chapter~\ref{ch:finding-boundary}) is one operational approach to that identification problem: clustering observables into coupled control loci before cooperativity is estimated.
+This chapter uses the boundary and UAD tests developed in Chapters~\ref{ch:finding-boundary},~\ref{ch:strategic-opacity}, and~\ref{ch:multiscale-decomposition}; other identification methods could substitute in principle if they satisfy the same falsifiers.
 For each discovered component \(X_i\), the audit records an approximate boundary with internal state \(I_i\), sensory interface \(S_i\), active interface \(A_i\), controlled handles \(\mathcal H_i\), inferred objective or bundle geometry \(G_i\), and correction handles into the component.
 The edge inputs are then estimated from those discovered properties:
 \[

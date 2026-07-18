@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-19 | Manuscript **umbrella/branding soften** + plain `ch<n>` → `\ref{ch:...}`; audit report; ch48/ch35 user fixes | [2026-07-19-mechanism-comparison-umbrella-framing.md](2026-07-19-mechanism-comparison-umbrella-framing.md) |
+| 2026-07-18 | Graded lab **PLAN_v4 V4-4: R-MB6a variation operator + null harness** (GL-81) — P5 pass; 11/100 syntax-distinct mutants on walk_pipeline baseline | [2026-07-18-graded-lab-v4-4-r-mb6a-implementation.md](2026-07-18-graded-lab-v4-4-r-mb6a-implementation.md) |
 | 2026-07-18 | Graded lab **PLAN_v4 V4-3: R-MB9 + R-MB7d implemented + scored** (GL-80) — R-MB9 passes both arms; R-MB7d group SKIP, pair null (double mechanical explanation) | [2026-07-18-graded-lab-v4-3-r-mb9-r-mb7d-implementation.md](2026-07-18-graded-lab-v4-3-r-mb9-r-mb7d-implementation.md) |
 | 2026-07-18 | Glossary **catchy accessible phrases** — bearer map, value bundle, transport, grounding viability, correction-audit evasion | [2026-07-18-glossary-catchy-phrases.md](2026-07-18-glossary-catchy-phrases.md) |
 | 2026-07-18 | Graded lab **PLAN_v4 V4-1 freeze extended to R-MB9 + R-MB7d** (dual-arm designs, relative-rule threshold) + `channel_severance` primitive (flagged for review) | [2026-07-18-graded-lab-v4-1-freeze-r-mb9-r-mb7d.md](2026-07-18-graded-lab-v4-1-freeze-r-mb9-r-mb7d.md) |
