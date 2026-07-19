@@ -39,7 +39,6 @@ SET: dict[str, dict[str, str]] = {
     },
     "klyubin2005empowerment": {"url": "https://ieeexplore.ieee.org/document/1554676/"},
     "rosas2020synergistic": {"url": "https://iopscience.iop.org/article/10.1088/1751-8121/abb723"},
-    "variationalagent2025": {"url": "https://www.ijcai.org/proceedings/2025/538"},
     "btesh2022redressing": {
         "url": "https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/redressing-the-emperor-in-causal-clothing/S0140525X22000176",
     },
