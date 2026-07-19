@@ -9,17 +9,26 @@ Entries are **newest first**. Finding narratives live in
 | Doc | Role |
 |-----|------|
 | [`DESIGN.md`](DESIGN.md) | Frozen pre-registration constants (not a version log) |
-| [`PLAN.md`](PLAN.md) / [`PLAN_v2.md`](PLAN_v2.md) / [`PLAN_v3.md`](PLAN_v3.md) / [`PLAN_v4.md`](PLAN_v4.md) / [`PLAN_ET1.md`](PLAN_ET1.md) | Program plans |
+| [`PLAN.md`](PLAN.md) / [`PLAN_v2.md`](PLAN_v2.md) / [`PLAN_v3.md`](PLAN_v3.md) / [`PLAN_v4.md`](PLAN_v4.md) / [`PLAN_ET1.md`](PLAN_ET1.md) / [`PLAN_IA1.md`](PLAN_IA1.md) | Program plans |
 | [`REPRODUCING.md`](REPRODUCING.md) | v1 finding reproduction map |
 | [`REPRODUCTION.md`](REPRODUCTION.md) | Deferred engineering tasks |
 
 ---
+
+## ia1-0.0.0 (2026-07-19)
+
+- **IA1-0 draft:** `PLAN_IA1.md` — in-situ LLM annex (R-MB7 / PLAN_v4 V4-6), not PLAN v5.
+  Distributional reproducibility doctrine; ports lab-sim isolate pattern; no implementation
+  yet; no `CODE_VERSION` bump.
 
 ## et1-0.1.0 (2026-07-19)
 
 - **ET1-0 freeze:** `PLAN_ET1.md` — Orbit Jira collusion external transfer annex
   (passive UAD only; not PLAN v5). Pinned Orbit SHA, immutable fixtures,
   pre-registration in `DESIGN.md`. Harness not implemented; no `CODE_VERSION` bump.
+- **ET1-1/2:** `graded_lab/external/` adapter + passive-UAD scorer;
+  `scripts/run_et1_score_traces.py`, `scripts/run_et1_orbit_battery.sh`;
+  `tests/external/` (7 tests, no Orbit dep).
 
 ## graded-lab-0.41.1 (2026-07-19)
 

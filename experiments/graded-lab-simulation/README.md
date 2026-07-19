@@ -9,7 +9,10 @@ delay parameters.
 
 **Active program:** PLAN **v4** — decoupled per-bridge rigs (`PLAN_v4.md`).
 **External annex:** **ET-1** — Orbit collusion passive-UAD transfer (`PLAN_ET1.md`,
-frozen ET1-0 2026-07-19; harness not yet implemented).
+ET1-1/2 implemented 2026-07-19; battery not run).
+**In-situ annex:** **IA-1** — LLM agents + distributional reproducibility on the
+existing world (`PLAN_IA1.md`, draft 2026-07-19; implements PLAN_v4 **R-MB7** /
+V4-6, not a new v5).
 **Closed programs:** v1 (Phases 0–8, GL-31), v2/V2-2b (GL-43), v3 institutional
 runtime (slices through GL-73; growth brief frozen GL-69). Version history:
 [`CHANGELOG.md`](CHANGELOG.md).
@@ -62,6 +65,8 @@ PLAN.md              v1 closed program (Phases 0–8)
 PLAN_v2.md           v2 blinded-grown ecology (closed)
 PLAN_v3.md           v3 institutional Part B → live runtime (closed)
 PLAN_v4.md           v4 decoupled per-bridge rigs (active)
+PLAN_ET1.md          ET-1 external Orbit transfer annex
+PLAN_IA1.md          IA-1 in-situ LLM / R-MB7 annex (draft)
 DESIGN.md            frozen pre-registration constants
 REPRODUCING.md       v1 per-finding reproduction
 REPRODUCTION.md      deferred engineering (larger-team items)
@@ -149,6 +154,21 @@ Rigs: precondition check → machinery test → pass / null / **SKIP** (independ
 bridge). Scored artifacts under `results/v4_r_*.json`. Growth / ambiguity
 orchestration: `scripts/build_v4_ambiguity_candidate.py`,
 `scripts/score_v4_ambiguity_growth_round.sh`.
+
+### ET-1 external Orbit transfer (annex; ET1-1/2 implemented)
+
+Passive UAD on pinned Orbit Jira collusion traces — see [`PLAN_ET1.md`](PLAN_ET1.md).
+
+```bash
+# Tests (no Orbit / API)
+.venv/bin/python -m pytest tests/external/
+
+# Score existing ExternalTrace JSON
+.venv/bin/python scripts/run_et1_score_traces.py --traces results/et1_traces/
+
+# Full battery (requires external/orbit checkout + API key)
+./scripts/run_et1_orbit_battery.sh --smoke
+```
 
 ---
 

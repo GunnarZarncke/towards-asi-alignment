@@ -135,7 +135,9 @@ lines:
       first multi-episode selection battery; blinded institutional ecology growth (v3_grown); pre-registered
       machinery-transfer battery (Q1, GL-76); decoupled per-bridge PLAN_v4 rigs (GL-79--GL-85). The v1
       program is closed (2026-07-15, GL-31). v2/V2-2b closed without a passing ecology (GL-38/GL-43).
-      v3 institutional runtime wiring is active through slice D criteria freeze (GL-53).
+      v3 institutional runtime wiring is active through slice D criteria freeze (GL-53). Methodological
+      sandbox only: the present strategy space and metrics remain project-authored, so external-substrate
+      transfer is the next validity threshold.
     readmePath: experiments/graded-lab-simulation/README.md
     designPath: experiments/graded-lab-simulation/DESIGN.md
     planPath: experiments/graded-lab-simulation/PLAN_v4.md
@@ -151,6 +153,7 @@ lines:
       - "Q1 machinery-transfer battery on blinded-grown v3_grown: frozen UAD did not recover declared communicate-mediated mechanisms; referee-vantage EAI stayed low (no mid-band replication); injected-probe detector transfer still held (GL-76). Per-bridge R-MB1 confirms co-activity is present yet UAD still returns singletons -- the null is not explained by missing interaction texture (GL-79). Honest-reference detector coverage SKIPs where ACL denials never appear (GL-79); injection gate remains a separate leaf (GL-63/GL-74). Cited in ch07, ch33, ch41, ch42 and appendix \"Experimental Evidence\" (findings GL-76/GL-79)."
       - "PLAN_v4 decoupled rigs on v3_grown: R-MB9 report-vs-field contradiction surface passes specificity and dose-response arms; R-MB7d channel severance does not show UAD-visible compensation (pair null, group SKIP) -- arms never merged (GL-80). R-MB6a variation-operator null harness passes; R-MB6b (selection under ambiguity) is a confirmatory SKIP after mid-band EAI failed to transfer and four rounds of ambiguity-oriented growth (GL-81/GL-84). Cited in ch34, ch41, ch42 and appendix \"Experimental Evidence\" (findings GL-80/GL-81/GL-84)."
       - "R-MB2 scorecard Goodhart battery: proxy deploy-rate/release-latency already co-varies with withheld bearer harm on reference traces, but proxy-only ProgramMap selection does not improve the proxy or move withheld components in the Goodhart direction -- a null on selectable Goodhart under this protocol, not a general falsification (GL-85). Cited in ch34 (Goodhart Selection), ch16 (value-bundle Goodhart surface) and appendix \"Experimental Evidence\" (finding GL-85)."
+      - "Scope ceiling: blind growth reduces development-to-the-test but does not make project-authored policies, primitives, and metrics externally valid. Richer learned or LLM policies may open unscripted action sequences, but the decisive next validation is transfer of UAD/EAI-style instruments to traces from a system or benchmark this project did not author."
 
 howToRead:
   - lineId: agency-detect
@@ -169,7 +172,9 @@ howToRead:
       "high" ambiguity from the agent vantage, "mid" band only from a referee vantage on the hand-designed
       substrate (external-validity null on v3_grown, GL-76/GL-84), Phase 8 selection null (GL-23--GL-27),
       and PLAN_v4 per-bridge rigs that resolve independently (GL-79--GL-85). Proper UAD + access-UAD as
-      of GL-51. Negative ledgers and per-rig SKIPs are features, not bugs.
+      of GL-51. Negative ledgers and per-rig SKIPs are features, not bugs. Read this as instrument and
+      protocol development inside a project-authored world; one successful external-substrate transfer
+      would change the evidential status more than another internally generated ecology alone.
 
 coverageColumns:
   - id: agency-detect
