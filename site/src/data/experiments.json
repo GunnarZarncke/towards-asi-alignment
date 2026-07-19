@@ -201,10 +201,10 @@
       "title": "Graded-capability lab simulation",
       "location": "experiments/graded-lab-simulation/",
       "firstBuilt": "2026-07-10",
-      "role": "Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters. UAD-backed ecology-BIQ over inferred units; an Emergent-Ambiguity-Index measured from two vantages (acting agent vs. limited-observation referee); first multi-episode selection battery.\n",
+      "role": "Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters. UAD-backed ecology-BIQ over inferred units; an Emergent-Ambiguity-Index measured from two vantages (acting agent vs. limited-observation referee); first multi-episode selection battery; blinded institutional ecology growth (v3_grown); pre-registered machinery-transfer battery (Q1, GL-76); decoupled per-bridge PLAN_v4 rigs (GL-79--GL-85). The v1 program is closed (2026-07-15, GL-31). v2/V2-2b closed without a passing ecology (GL-38/GL-43). v3 institutional runtime wiring is active through slice D criteria freeze (GL-53).\n",
       "readmePath": "experiments/graded-lab-simulation/README.md",
       "designPath": "experiments/graded-lab-simulation/DESIGN.md",
-      "planPath": "experiments/graded-lab-simulation/PLAN.md",
+      "planPath": "experiments/graded-lab-simulation/PLAN_v4.md",
       "findingsPath": "experiments/graded-lab-simulation/results/FINDINGS.md",
       "headlineFindings": [
         "UAD recovers a communicate-free write/read coordination handoff invisible to every prior passive/intervention method, via a standalone all-pairs dependency-score probe; the same probe over-merges a resource-bound bystander into a 3-way approval barrier, a genuine, unpatched negative (GL-11/GL-12). Cited in ch07 (Finding the Boundary) and appendix \"Experimental Evidence\" (findings GL-11/GL-12).",
@@ -213,7 +213,10 @@
         "Re-scoring the identical episodes from a referee's limited-observation vantage (existing tiered audit projection, unmodified formula) reaches the pre-registered 'mid' ambiguity band at every stressed cell for the first time in this line, though still not 'high' (GL-20).",
         "Full both-vantage calibration battery with 95% CIs: both vantages land at 1/4 pre-registered pass criteria on the same 100 episodes -- a different single criterion passes under each vantage, and the core separation criterion fails under both for the same roster-scope reason (one agent type's deploy behavior does not respond to the swept substrate knob) (GL-21/GL-22).",
         "First Phase 8 selection battery: throughput-linked selection shifts deployment mass toward a higher-throughput, lower-harm program and away from the sole correction-preserving-tagged program, with severity/detector composites falling rather than rising -- a clean null on detector-evading emergence, reviewed same day and flagged with four open concerns (confounded preservation tag, too-narrow selection proxy, unvalidated campaign carryover, unqualified gate language) before any manuscript claim was drawn from it (GL-23/GL-24). Cited in ch34 (The Selection Environment) and appendix \"Experimental Evidence\" (finding GL-23).",
-        "Same-day follow-up on all four GL-24 concerns: decoupling the correction-preserving tag from member identity (8a) found the GL-23-style mass shift is NOT explained by a statistically distinguishable throughput difference between tagged/untagged members -- triggering the study's own pre-registered failure mode and reframing GL-23 as possibly a selection-mechanism noise artifact (GL-25); widening the fitness proxy to throughput+audit-pass+review-latency (8b) delays but does not reverse the collapse -- a proxy-insensitivity result (GL-26); ablating campaign carryover against a reset-every-episode baseline (8c) found carryover DOES measurably change outcomes (both paired 95% CIs exclude zero), though the mass-share effect is small (GL-27)."
+        "Same-day follow-up on all four GL-24 concerns: decoupling the correction-preserving tag from member identity (8a) found the GL-23-style mass shift is NOT explained by a statistically distinguishable throughput difference between tagged/untagged members -- triggering the study's own pre-registered failure mode and reframing GL-23 as possibly a selection-mechanism noise artifact (GL-25); widening the fitness proxy to throughput+audit-pass+review-latency (8b) delays but does not reverse the collapse -- a proxy-insensitivity result (GL-26); ablating campaign carryover against a reset-every-episode baseline (8c) found carryover DOES measurably change outcomes (both paired 95% CIs exclude zero), though the mass-share effect is small (GL-27).",
+        "Q1 machinery-transfer battery on blinded-grown v3_grown: frozen UAD did not recover declared communicate-mediated mechanisms; referee-vantage EAI stayed low (no mid-band replication); injected-probe detector transfer still held (GL-76). Per-bridge R-MB1 confirms co-activity is present yet UAD still returns singletons -- the null is not explained by missing interaction texture (GL-79). Honest-reference detector coverage SKIPs where ACL denials never appear (GL-79); injection gate remains a separate leaf (GL-63/GL-74). Cited in ch07, ch33, ch41, ch42 and appendix \"Experimental Evidence\" (findings GL-76/GL-79).",
+        "PLAN_v4 decoupled rigs on v3_grown: R-MB9 report-vs-field contradiction surface passes specificity and dose-response arms; R-MB7d channel severance does not show UAD-visible compensation (pair null, group SKIP) -- arms never merged (GL-80). R-MB6a variation-operator null harness passes; R-MB6b (selection under ambiguity) is a confirmatory SKIP after mid-band EAI failed to transfer and four rounds of ambiguity-oriented growth (GL-81/GL-84). Cited in ch34, ch41, ch42 and appendix \"Experimental Evidence\" (findings GL-80/GL-81/GL-84).",
+        "R-MB2 scorecard Goodhart battery: proxy deploy-rate/release-latency already co-varies with withheld bearer harm on reference traces, but proxy-only ProgramMap selection does not improve the proxy or move withheld components in the Goodhart direction -- a null on selectable Goodhart under this protocol, not a general falsification (GL-85). Cited in ch34 (Goodhart Selection), ch16 (value-bundle Goodhart surface) and appendix \"Experimental Evidence\" (finding GL-85)."
       ],
       "links": [
         {
@@ -226,7 +229,7 @@
         },
         {
           "label": "Plan",
-          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN.md"
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_v4.md"
         },
         {
           "label": "Findings",
@@ -266,7 +269,7 @@
     },
     {
       "lineId": "graded-lab-simulation",
-      "text": "Ambiguity and boundary-discovery engine: UAD-backed BIQ over inferred units, a measured structurally-unreachable \"high\" ambiguity band from the agent's own vantage, a \"mid\" band reachable only from a referee's coarser vantage, and a first, explicitly-caveated selection battery.\n",
+      "text": "Ambiguity and boundary-discovery engine: UAD-backed BIQ over inferred units, structurally-unreachable \"high\" ambiguity from the agent vantage, \"mid\" band only from a referee vantage on the hand-designed substrate (external-validity null on v3_grown, GL-76/GL-84), Phase 8 selection null (GL-23--GL-27), and PLAN_v4 per-bridge rigs that resolve independently (GL-79--GL-85). Proper UAD + access-UAD as of GL-51. Negative ledgers and per-rig SKIPs are features, not bugs.\n",
       "lineTitle": "Graded-capability lab simulation"
     }
   ],
@@ -306,7 +309,7 @@
         "embedded-simulation": "Full UAD + ecologies; negatives when heuristic suffices",
         "goal-agent-simulation": "—",
         "lab-simulation": "D1 composite agents + S6/S7 intervention-supported detectors; exact on 4-5/6 scenarios, comms-free unit still open (LS-28–LS-30); real-LLM episode-pair diffing needs a null-calibrated relative rule, not a fixed threshold (LS-32/LS-33)",
-        "graded-lab-simulation": "Primary, on a graded (non-boolean) substrate: standalone all-pairs dependency_score recovers a communicate-free write/read handoff invisible to every prior method; blind scenario battery finds a genuine over-merge (resource-bound bystander into a 3-way barrier) (GL-11/GL-12)"
+        "graded-lab-simulation": "Primary: proper CMI + access-UAD (GL-51); Q1 transfer null on v3_grown (GL-76); R-MB1 co-activity-present null (GL-79); heuristic-path caveats GL-11/GL-12"
       }
     },
     {
@@ -318,7 +321,7 @@
         "embedded-simulation": "Scenario (bundle_goodhart)",
         "goal-agent-simulation": "Indirect (welfare deltas in blind reps)",
         "lab-simulation": "Stipulated; report-content ontology",
-        "graded-lab-simulation": "—"
+        "graded-lab-simulation": "R-MB2 proxy/withheld principal scorecard Goodhart: tension present, selectable Goodhart null on v3_grown (GL-85)"
       }
     },
     {
@@ -342,7 +345,7 @@
         "embedded-simulation": "Scenarios + correction handles",
         "goal-agent-simulation": "Emergent (chosen deception, board corrections)",
         "lab-simulation": "Playbooks + access capture + report divergence",
-        "graded-lab-simulation": "Referee ported + frozen from lab-sim (tiers, five detector families, twins, escalation); not the line's focus"
+        "graded-lab-simulation": "Referee ported + frozen; R-MB4 honest-fixture SKIP on ACL denials (GL-79); injection gate separate (GL-63/GL-74)"
       }
     },
     {
@@ -366,7 +369,7 @@
         "embedded-simulation": "selection_basin, basin_lock_in",
         "goal-agent-simulation": "—",
         "lab-simulation": "D3.1 population selection (LS-36: preserving mass erodes under throughput selection); D3.2 spec-weakening mutation implemented (LS-37); D3 user-population core + non-redundant vote-capture + board-initiated hold implemented (mechanism + tests, no battery yet); D3.3 multi-lab planned",
-        "graded-lab-simulation": "Phase 8 throughput-linked selection over program-map population; first battery a clean null on detector-evading emergence (mass shifted to higher-throughput/lower-harm program), reviewed with 4 open concerns (GL-23/GL-24); same-day 8a/8b/8c follow-up found the mass shift is not throughput-distinguishable once decoupled from member identity (likely selection-noise), a wider fitness proxy delays but doesn't reverse it, and carryover measurably matters (small effect) (GL-25/26/27)"
+        "graded-lab-simulation": "Phase 8 throughput selection null (GL-23--GL-27); R-MB6a variation null harness pass (GL-81); R-MB6b EAI-gate confirmatory SKIP after growth (GL-84)"
       }
     },
     {
@@ -390,7 +393,7 @@
         "embedded-simulation": "Partial / targeted ecologies",
         "goal-agent-simulation": "—",
         "lab-simulation": "D4 message board + S6 channel-ablation compensation scoring; the primary signal carrier for message-mediated units (LS-28)",
-        "graded-lab-simulation": "—"
+        "graded-lab-simulation": "R-MB7d channel severance: pair null at every onset, group SKIP (GL-80)"
       }
     },
     {
@@ -414,7 +417,7 @@
         "embedded-simulation": "Scenario + grounding refusal",
         "goal-agent-simulation": "—",
         "lab-simulation": "Report vs monitor contradiction surface",
-        "graded-lab-simulation": "—"
+        "graded-lab-simulation": "R-MB9 report-vs-field contradiction surface pass on v3_grown (GL-80)"
       }
     },
     {
