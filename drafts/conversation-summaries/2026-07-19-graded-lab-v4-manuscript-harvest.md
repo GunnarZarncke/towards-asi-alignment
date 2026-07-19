@@ -28,4 +28,4 @@ User: harvest the results so far for the relevant chapters/appendix.
 - `chapters/ch07-finding-boundary.tex`, `ch16-value-bundle-model.tex`, `ch33-…`, `ch34-…`, `ch41-…`, `ch42-…`
 
 ## Commits
-- (none this session)
+- `6457fbc` Land graded-lab PLAN_v4 R-MB6a/R-MB2/R-MB6b work and harvest into manuscript.

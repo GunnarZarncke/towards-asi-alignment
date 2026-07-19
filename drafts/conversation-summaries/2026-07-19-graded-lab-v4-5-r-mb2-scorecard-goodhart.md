@@ -33,4 +33,4 @@ scorecard Goodhart rig (PLAN_v4 V4-5).
 - `experiments/graded-lab-simulation/results/FINDINGS.md` (GL-85)
 
 ## Commits
-- (none this session)
+- `6457fbc` Land graded-lab PLAN_v4 R-MB6a/R-MB2/R-MB6b work and harvest into manuscript.

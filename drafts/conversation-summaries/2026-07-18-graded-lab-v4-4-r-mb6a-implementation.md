@@ -47,4 +47,4 @@ build order is V4-4 (R-MB6a selection machinery sanity).
 
 ## Commits
 
-- None yet (not asked to commit).
+- `6457fbc` Land graded-lab PLAN_v4 R-MB6a/R-MB2/R-MB6b work and harvest into manuscript.
