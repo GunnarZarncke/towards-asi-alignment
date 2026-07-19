@@ -91,10 +91,26 @@ function stripLeadingEnvOptions(body) {
   return body.replace(/^\[[^\]]*\]\s*/, "");
 }
 
+function formatMarkdownListItem(marker, content) {
+  const lines = content.split("\n");
+  const pad = " ".repeat(marker.length);
+  const formatted = [`${marker}${lines[0] ?? ""}`];
+  for (let i = 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    formatted.push(line === "" ? "" : `${pad}${line}`);
+  }
+  return formatted.join("\n");
+}
+
 function convertList(body, tag, ctx) {
   const items = splitListItems(stripLeadingEnvOptions(body));
-  const lines = items.map((item) => `<li>${convertInlineText(item, ctx)}</li>`);
-  return `<${tag}>\n${lines.join("\n")}\n</${tag}>\n\n`;
+  const ordered = tag === "ol";
+  const lines = items.map((item, index) => {
+    const content = convertDocument(item, ctx).trim();
+    const marker = ordered ? `${index + 1}. ` : "- ";
+    return formatMarkdownListItem(marker, content);
+  });
+  return `${lines.join("\n\n")}\n\n`;
 }
 
 function convertDescription(body, ctx) {
