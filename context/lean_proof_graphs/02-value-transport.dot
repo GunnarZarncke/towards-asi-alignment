@@ -14,11 +14,11 @@ digraph Spine02ValueTransport {
 
   P14 [label="P14 Bundle factorization", fillcolor="#EFFBEA"];
   P15 [label="P15 Policy ≠ geometry", fillcolor="#EFFBEA"];
-  P16 [label="[NEW]\nP16 LHV sample window", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
+  P16 [label="P16 LHV sample window", fillcolor="#EFFBEA"];
   P17 [label="P17 Labels ≠ bearer map", fillcolor="#EFFBEA"];
   P18 [label="P18 Marginals ≠ tradeoffs", fillcolor="#EFFBEA"];
   P19 [label="[SUBSUMED]\nP19 Scalar reward as bundle", fillcolor="#EFFBEA", color="#2E7D32", penwidth=2.2];
-  FCIRL [label="[NEW]\nField.CIRL final nodes\nscalar_assistance_game_is_bundle_game_k1\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
+  FCIRL [label="Field.CIRL final nodes\nscalar_assistance_game_is_bundle_game_k1\ncirl_separation_profiles", fillcolor="#EFFBEA"];
   P20 [label="P20 Intentional MDL gain", fillcolor="#EFFBEA"];
   P21 [label="P21 Transport gain", fillcolor="#EFFBEA"];
   P22a [label="P22a Full ⇒ semantic transport", fillcolor="#EFFBEA"];

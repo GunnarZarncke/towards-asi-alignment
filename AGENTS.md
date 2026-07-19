@@ -47,6 +47,12 @@ Every changed line should trace directly to the user's request.
 
 - **Ask before expanding scope.** Open files, roadmap order, and untracked drafts are not instructions. On “commit” or “end of session,” stage only what this task authorized; mention other drafts in the log and ask.
 
+### No recency markers
+
+Do not add `[NEW]`, “new in this session,” freshness badges, or similar recency tags to manuscript text, the companion site, Lean proof diagrams, or other reader-facing artifacts. The book and site change too fast for such markers to stay accurate; use git history and `drafts/conversation-summaries/` for change tracking instead.
+
+**Exceptions:** only when the user explicitly requests a time-bounded marker (e.g. a one-off release note, external snapshot, or workshop handout with a stated cutoff date). Remove or refresh those markers in the same pass that supersedes them.
+
 ### Goal-driven execution
 
 **Define success criteria. Loop until verified.**

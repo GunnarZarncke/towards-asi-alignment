@@ -677,7 +677,6 @@ Declared in \texttt{Certification.lean} (its statement needs \texttt{CertifiedSa
 This is the book's machine-checked conditional argument.
 Theorem identifiers match \texttt{formal/AlignmentProofSpine/*.lean}; the developer reference graph is \texttt{context/lean\_proof\_dependency\_graph.dot}.
 
-\providecommand{\spinenewbadge}{\begingroup\fboxsep=1pt\fcolorbox{blue!70!black}{blue!6}{\scriptsize\textsf{NEW}}\endgroup}
 \providecommand{\spinesubsumedbadge}{\begingroup\fboxsep=1pt\fcolorbox{green!45!black}{green!6}{\scriptsize\textsf{MAPPED}}\endgroup}
 \providecommand{\spineimportedbadge}{\begingroup\fboxsep=1pt\fcolorbox{orange!70!black}{orange!8}{\scriptsize\textsf{IMPORTED}}\endgroup}
 
@@ -685,7 +684,7 @@ The structure is shown in four sub-spine diagrams and an overview diagram compos
 
 \paragraph{Node shapes.}
 Rounded rectangles denote proved Lean nodes (\texttt{P05}, \texttt{P13}, \texttt{P30}, and so on).
-Diamonds denote bridge assumptions (\texttt{MB1}--\texttt{MB10}, including split \texttt{MB6a--b} and \texttt{MB7a--d} chains); \texttt{MB10}'s diamond is marked \texttt{[NEW]} in Spine III and sits off the \texttt{P30T} path.
+Diamonds denote bridge assumptions (\texttt{MB1}--\texttt{MB10}, including split \texttt{MB6a--b} and \texttt{MB7a--d} chains); \texttt{MB10}'s dashed diamond sits off the \texttt{P30T} path.
 Solid octagons mark \emph{export} summaries; dashed octagons mark \emph{imports} from other sub-spines.
 The overview uses a double octagon for \texttt{P30T}.
 
@@ -699,7 +698,7 @@ Light grey: certification assembly.
 Pale red diamonds: bridge assumptions.
 
 \paragraph{Status markers.}
-\spinenewbadge{} recent literature-crosswalk nodes; \spinesubsumedbadge{} projection/embeddings; \spineimportedbadge{} source-cited field handles (Part~I).
+\spinesubsumedbadge{} projection/embeddings; \spineimportedbadge{} source-cited field handles (Part~I).
 Solid grey arrows are proved steps; dashed red arrows are bridge assumptions.
 
 \subsection{Overview and certification assembly}
@@ -1213,7 +1212,7 @@ This is Theorem~\ref{appi:thm:p22b} read through the tiling aliases in \texttt{B
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/03-correction-successors.png}
   \caption[Spine III: correction and successors]{Spine III: handle-controlled correction, risk, and successors (Chapters~\ref{ch:correction-causal-channel}--\ref{ch:certification-without-construction}).
-  Covers the correction channel, shutdown and interruptibility as narrow projections, impact/quantilization/debate/amplification/ELK separations, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the core hidden-BIQ \texttt{MB7} chain at \texttt{MB7c}; inferential detector validity is now the adjacent \texttt{MB7d} bridge. The \texttt{[NEW]} nodes are the Chapters~\ref{ch:grow-split-merge}/\ref{ch:conserved-properties} forgeability gap (\texttt{forgeability\_gap}, a finite counterexample) and the bridge that would close it, \texttt{MB10} (Section~\ref{appi:sec:forgeability}); \texttt{MB10} is not part of \texttt{Core.BridgeAssumptions} and does not feed \texttt{P30T}.}
+  Covers the correction channel, shutdown and interruptibility as narrow projections, impact/quantilization/debate/amplification/ELK separations, weak-corrigibility separations, \texttt{CCI}-based risk bound \texttt{P13}, successor invariant chains, syntactic-tiling/import-preservation separation, and completion of the core hidden-BIQ \texttt{MB7} chain at \texttt{MB7c}; inferential detector validity is now the adjacent \texttt{MB7d} bridge. The Chapters~\ref{ch:grow-split-merge}/\ref{ch:conserved-properties} forgeability gap (\texttt{forgeability\_gap}, a finite counterexample) and the bridge that would close it, \texttt{MB10} (Section~\ref{appi:sec:forgeability}), sit off the main \texttt{P30T} path; \texttt{MB10} is not part of \texttt{Core.BridgeAssumptions}.}
   \label{fig:lean-spine-correction}
 \end{figure}
 

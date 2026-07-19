@@ -4,6 +4,9 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-19 | **PLAN IA-1** draft — in-situ LLM / R-MB7 annex (not v5; ET-1 parallel) | [2026-07-19-plan-ia1-in-situ-llm-annex.md](2026-07-19-plan-ia1-in-situ-llm-annex.md) |
+| 2026-07-19 | **Remove [NEW] recency markers** — DOT/Appendix I cleanup; AGENTS/INSTRUCTIONS policy | [2026-07-19-remove-new-recency-markers.md](2026-07-19-remove-new-recency-markers.md) |
+| 2026-07-19 | **ET-1 implementation** — adapter, passive-UAD scorer, tests (ET1-1/2) | [2026-07-19-et1-orbit-external-transfer-freeze.md](2026-07-19-et1-orbit-external-transfer-freeze.md) |
 | 2026-07-19 | **ET-1 Orbit external transfer freeze** — ET1-0 pre-registration, pinned fixtures, not v5 | [2026-07-19-et1-orbit-external-transfer-freeze.md](2026-07-19-et1-orbit-external-transfer-freeze.md) |
 | 2026-07-19 | **Bibliography hallucination audit** — GSAI, Orseau UAI, Kuhn Substack; removed `variationalagent2025` | [2026-07-19-bibliography-hallucination-audit.md](2026-07-19-bibliography-hallucination-audit.md) |
 | 2026-07-19 | **Site bot orientation + search index** — llms.txt sync, mobile search fix, `/search-index.json` for bots | [2026-07-19-site-bot-orientation-search-index.md](2026-07-19-site-bot-orientation-search-index.md) |
