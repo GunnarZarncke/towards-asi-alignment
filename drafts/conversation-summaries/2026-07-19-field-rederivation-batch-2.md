@@ -54,4 +54,4 @@ Wiring:
 - `appendices/appG-lean-proof-spine.tex`, `references/external-alignment.bib`, `references/bibliography-summaries.tex`
 - `formal/README.md`, `metadata/TODO.md`
 
-No commits made in this session (user has not asked yet).
+**Commit:** `c5b8c57` — Rederive field agendas finitely: ELK, debate, off-switch, quantilizer, amplification, Thornley dynamic choice.
