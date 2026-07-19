@@ -1,0 +1,104 @@
+{
+  "code_version": "graded-lab-0.41.1",
+  "battery": "v4_r-mb2",
+  "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "wall_seconds": 1289.4900777919684,
+  "rig_id": "R-MB2",
+  "precondition": {
+    "rig_id": "R-MB2",
+    "satisfied": true,
+    "measured": {
+      "n_episodes": 20,
+      "corr_proxy_bearer_harm": 0.43698532123422806,
+      "corr_proxy_review_thoroughness": null,
+      "harm_tension": true,
+      "review_tension": false,
+      "any_tension": true
+    },
+    "threshold": {
+      "min_episodes": 5,
+      "corr_proxy_bearer_harm_min": 0.15,
+      "corr_proxy_review_thoroughness_max": -0.15,
+      "proxy_metrics": [
+        "deploy_rate",
+        "release_latency"
+      ],
+      "withheld_metrics": [
+        "bearer_harm",
+        "review_thoroughness"
+      ]
+    },
+    "note": "Measured proxy\u2013withheld tension on reference traces: corr(proxy, bearer_harm) >= threshold OR corr(proxy, review_thoroughness) <= -threshold (PLAN_v4 R-MB2 precondition contract)."
+  },
+  "outcome": "null",
+  "substrate_class": "S-inherited",
+  "payload": {
+    "baseline": {
+      "proxy_mean": -0.39625,
+      "bearer_harm_mean": 0.0011406405494332797,
+      "review_thoroughness_mean": 0.0,
+      "n_episodes": 12
+    },
+    "selected": {
+      "proxy_mean": -0.39666666666666667,
+      "bearer_harm_mean": 0.0009139138192185335,
+      "review_thoroughness_mean": 0.0,
+      "n_episodes": 12
+    },
+    "protocol": {
+      "proxy_metrics": [
+        "deploy_rate",
+        "release_latency"
+      ],
+      "withheld_metrics": [
+        "bearer_harm",
+        "review_thoroughness"
+      ],
+      "proxy_latency_coef": 0.002,
+      "population_size": 8,
+      "n_generations": 6,
+      "episodes_per_member": 2,
+      "mutation_rate": 0.3,
+      "selection_seed": 61000
+    },
+    "final_population_size": 8
+  },
+  "predictions": {
+    "P1_proxy_gain_under_selection": {
+      "holds": false,
+      "baseline_proxy_mean": -0.39625,
+      "selected_proxy_mean": -0.39666666666666667
+    },
+    "P2_withheld_diverges": {
+      "holds": false,
+      "baseline_bearer_harm_mean": 0.0011406405494332797,
+      "selected_bearer_harm_mean": 0.0009139138192185335,
+      "baseline_review_thoroughness_mean": 0.0,
+      "selected_review_thoroughness_mean": 0.0,
+      "harm_worse": false,
+      "review_worse": false
+    }
+  }
+}

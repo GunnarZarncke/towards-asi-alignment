@@ -24,18 +24,10 @@ from ..world_visible.ecology_agents import (
     programs_and_profiles_for_roster,
     reference_roster_from_ecology,
 )
-from ..world_visible.program_map import (
-    GOAL_WEIGHT_BIN_COUNT,
-    SCORE_LEVELS,
-    TEMPERATURE_BINS,
-    ProgramMap,
-    ProgramMapError,
-    expand_preset,
-    resolve_runtime_genotype,
-    validate_program_map,
-)
+from ..world_visible.program_map import ProgramMap, expand_preset, resolve_runtime_genotype
 from ..world_visible.substrate import load_substrate
 from ..world_visible.world import EpisodeResult, default_lab_config, run_episode
+from .variation_operator import sample_program_map_variants
 
 # Pre-registered with slice A ablation gate (same L1 scale).
 PHENOTYPE_L1_THRESHOLD = 0.10
@@ -79,80 +71,6 @@ def program_map_as_raw(pmap: ProgramMap) -> dict[str, Any]:
         "goal_weight_bins": list(pmap.goal_weight_bins),
         "preset_source": pmap.preset_source,
     }
-
-
-def _mutate_program_map(raw: dict[str, Any], *, role: str, rng: random.Random) -> ProgramMap | None:
-    """Sample a runtime-reachable ``ProgramMap`` variant.
-
-    GL-54 found that ``resolve_runtime_genotype``'s ``walker_only`` +
-    known-preset branch (``program_map.py``) dispatches straight to the
-    frozen preset function (e.g. ``walk_pipeline``) and never reads
-    ``ProgramMap.walker``, ``scoring``, ``temperature_bin``, or
-    ``goal_weight_bins`` — PLAN_v3 slice F shipped no generic walker-step
-    interpreter. So mutating those fields while leaving ``mode`` at
-    ``"walker_only"`` on a walker-preset baseline (every WEAK_AGENT role)
-    is a structural no-op, not a genotype/phenotype finding; it produced
-    the spurious "100% overlap" reported before this fix. Every sampled
-    variant here therefore forces ``mode="scorer_only"``, the only mode
-    currently wired to consult these fields at runtime (dispatches to
-    ``softmax_optimizer``), so a mutation can actually reach the isolate.
-    Known limitation, not fixed here: this means item 7 currently measures
-    diversity within the scorer-only slice of the design space, not the
-    full walker/scorer/hybrid space a grower could author.
-    """
-    candidate = copy.deepcopy(raw)
-    candidate["mode"] = "scorer_only"
-    candidate["preset_source"] = None
-    choice = rng.randint(0, 2)
-    if choice == 0:
-        idx = int(candidate.get("temperature_bin", 5))
-        delta = rng.choice([-1, 1])
-        candidate["temperature_bin"] = max(0, min(len(TEMPERATURE_BINS) - 1, idx + delta))
-    elif choice == 1:
-        bins = list(candidate.get("goal_weight_bins", [2, 2, 2]))
-        if len(bins) == 3:
-            pos = rng.randrange(3)
-            bins[pos] = (bins[pos] + rng.choice([-1, 1])) % GOAL_WEIGHT_BIN_COUNT
-            candidate["goal_weight_bins"] = bins
-    else:
-        scoring = candidate.setdefault("scoring", {})
-        pattern_scores = scoring.setdefault("pattern_scores", {})
-        if not isinstance(pattern_scores, dict):
-            return None
-        if not pattern_scores:
-            pattern_scores["call_pipeline"] = float(SCORE_LEVELS[rng.randrange(len(SCORE_LEVELS))])
-        else:
-            key = rng.choice(list(pattern_scores))
-            pattern_scores[key] = float(SCORE_LEVELS[rng.randrange(len(SCORE_LEVELS))])
-    try:
-        return validate_program_map(candidate, role=role, strict_ladder=False)
-    except ProgramMapError:
-        return None
-
-
-def sample_program_map_variants(
-    pmap: ProgramMap, *, n: int, rng: random.Random
-) -> list[ProgramMap]:
-    raw = program_map_as_raw(pmap)
-    seen: set[tuple[Any, ...]] = set()
-    out: list[ProgramMap] = []
-    attempts = 0
-    while len(out) < n and attempts < n * 20:
-        attempts += 1
-        mutated = _mutate_program_map(raw, role=pmap.role, rng=rng)
-        if mutated is None:
-            continue
-        key = (
-            mutated.mode,
-            mutated.temperature_bin,
-            mutated.goal_weight_bins,
-            tuple(sorted(mutated.scoring.get("pattern_scores", {}).items())),
-        )
-        if key in seen:
-            continue
-        seen.add(key)
-        out.append(mutated)
-    return out
 
 
 @dataclass(frozen=True)

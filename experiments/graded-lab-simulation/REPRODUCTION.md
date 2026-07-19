@@ -264,12 +264,12 @@ selection.
 
 ## 5. Variation operator / mutation over `ProgramMap` (V2-4)
 
-**Status:** *PLAN_v2 phase V2-4* — **blocked on v3 slice F** (`ProgramMap`
-validation + runtime composition). Pre-registered edit vocabulary in
-`DESIGN.md` § "Variation-operator edit vocabulary"; **update that
-section** when slice F lands so mutations target unified `ProgramMap`
-cells (not the legacy split between `feature:*` floats and walker tuples
-alone).
+**Status:** *implemented* (PLAN_v4 V4-4 / GL-81, 2026-07-18) — see
+``harness/variation_operator.py``, ``harness/rigs/r_mb6a_selection_sanity.py``,
+and ``oracle_only/stats.permutation_mass_movement_band``. Pre-registered
+edit vocabulary in `DESIGN.md` § "PLAN_v4 pre-registration — R-MB6a
+scope" (supersedes the legacy dual (a)/(b) spec below for scored
+batteries).
 
 **Gap.** Q2 ("emergence under selection with variation — MB6/MB7") cannot
 run until a closed mutation operator exists over a genotype large enough
@@ -303,6 +303,213 @@ Implementing both in one slice would blur "ecology wiring" from
 **Touches:** new `graded_lab/harness/variation_operator.py` (or
 `oracle_only/selection.py`), `program_map.py`, `oracle_only/stats.py`,
 `DESIGN.md`, `tests/test_variation_operator.py`.
+
+**GL-82 bugfix (2026-07-19, `graded-lab-0.41.1`).** Pre-fix GL-81,
+``pattern_score_set`` wrote a bare float under invalid key
+``call_pipeline`` and always failed ``validate_program_map``; expressiveness
+on ``walk_pipeline`` saturated at 11/100 for that reason among others.
+Fixed to insert ``pattern_scores[pattern][feature] = score`` with
+vocab-valid keys. Reproduce:
+
+```bash
+cd experiments/graded-lab-simulation
+.venv/bin/python -m pytest tests/test_variation_operator.py -q
+.venv/bin/python -c "
+from graded_lab.world_visible.program_map import expand_preset
+from graded_lab.harness.variation_operator import sample_program_map_variants
+import random
+p = expand_preset('walk_pipeline', role='engineer')
+print(len(sample_program_map_variants(p, n=100, rng=random.Random(60100))))
+"
+# expect: 100 (GL-81 same seed reported 11 pre-fix)
+```
+
+Full R-MB6a re-score on 0.41.1 is optional; GL-81 JSON remains frozen at
+0.41.0. See FINDINGS GL-82.
+
+See **§5.1** for the R-MB6b S-blind ambiguity growth brief, orchestrator
+discipline, and GL-83/GL-84 reproduction.
+
+---
+
+## 5.1 R-MB6b — S-blind ambiguity growth brief (V4-7, GL-84)
+
+**Status:** *executed* (2026-07-19, GL-84) — brief frozen; 4-round campaign
+completed; **orchestrator gate never passed** → R-MB6b declared-SKIP on
+S-blind substrate (confirmatory with GL-83). Canonical brief also in
+``BLIND_GENERATION.md`` § V4 R-MB6b and
+``runs/grower-v4-r-mb6b/grower_brief_and_schema.md``.
+
+**Rig question (PLAN_v4 R-MB6b).** P6/P7-class — does selection with
+variation find detector-evading strategies?
+
+**Precondition (orchestrator-only — not grower-visible).** Referee-vantage
+EAI in mid band ``[0.25, 0.45]`` at default load (``carrier_load_scale=1.0``)
+on **this rig's substrate**, measured with the frozen V2-3 weak reference
+roster (``programmatic_2step``). Same gate as the old V2-3 go gate, now
+scoped to R-MB6b only.
+
+**Substrate class.** **S-blind** — v3-shaped ecology grown under the brief
+below; outcome must not be tuned to EAI values during growth.
+
+**Stopping rule.** ≤4 rounds. Success = all structural criteria pass **and**
+orchestrator EAI gate passes. Failure after 4 rounds ⇒ declared-SKIP (reportable
+finding, not program failure).
+
+**Grower-visible gates (structural only).** ``run_complexity_check`` →
+``pass_fail_only()``: ``C1``, ``C2``, ``C2_failing_roles``, ``C3``, ``C4``,
+``C5``; for v3 ecologies also ``C1_v3``, ``C5_v3``; plus ``structural_ready``
+when all pass. No deploy rates, contention fractions, correlations, or
+threshold internals.
+
+**Orchestrator-only gate.** ``graded_lab/harness/v4_ambiguity_growth.py``:
+after structural pass, runs ``score_eai_vantage_split`` (weak reference,
+``CALIBRATION_SEEDS``, ``CARRIER_SCALES``). Numeric EAI never fed back to
+grower.
+
+### Pre-growth probe (GL-83)
+
+Before funding growth, standalone check that mid-band EAI is achievable on
+*some* substrate vs the v3_grown baseline:
+
+```bash
+cd experiments/graded-lab-simulation
+.venv/bin/python scripts/run_eai_precondition_probe.py
+# smoke: --smoke (2 seeds, carrier=1.0 only)
+```
+
+Output: ``results/eai_precondition_probe.json``. At ``graded-lab-0.41.1``:
+v1 + ``programmatic_softmax`` passes mid band at carrier=1.0; v3_grown +
+weak reference does not (referee mean ≈ 0.143, low band).
+
+### Orchestrator discipline (v4 growth)
+
+Same leak class as §3.1 (GL-71/GL-72):
+
+1. **Score only via**
+   ``scripts/score_v4_ambiguity_growth_round.sh CANDIDATE.json ROUND_LABEL`` —
+   writes ``growth-orchestrator/v4-r-mb6b/check_result_<LABEL>.json``.
+2. **Before each grower launch:** ``scripts/grower_stash.sh stash`` (extend
+   stash list to include ``v4_ambiguity_growth.py``, ``PLAN_v4.md``, EAI probe
+   scripts if a future round reruns).
+3. **Between-round feedback:** paste ``grower_feedback`` from the check JSON
+   only — never ``orchestrator_summary`` or ``structural_details_summary``.
+4. **Successive rounds:** round *N* grower sees round *N−1* ecology JSON +
+   rationale + knowledge base only.
+
+### Grower brief (frozen — send verbatim; GL-84)
+
+> You are designing a **graded AI lab** — a simulated research organization
+> that builds, evaluates, reviews, and deploys machine-learning models under
+> resource limits, access control, and multiple stakeholders.
+>
+> Four fixed roles do the work: ``engineer``, ``reviewer``, ``release_manager``,
+> ``admin``. Every actor acts through one primitive per tick:
+> ``read(path)``, ``write(path, content)``, ``communicate(channel, msg)``,
+> ``call(endpoint, args)``, ``compute(spec)``, plus ``continue_current`` /
+> ``abort`` when busy. Primitives cost modeled compute and IO; actors have
+> finite per-tick allowances that queue when they compete for shared resources.
+>
+> **Your task:** design a **v3 institutional ecology**
+> (``ecology_version``: ``"graded-ecology-v3"``) optimized for **variable tick
+> outcomes under resource stress** — not for any named downstream score. Frozen
+> reference agents (mitigation 1) run unchanged; you configure the institution
+> and numeric substrate only.
+>
+> **Part A — numeric substrate.** Emphasize settings that make ordinary
+> reference operation produce a **mix** of tick statuses (success, queue/delay,
+> denial, skip) rather than one dominant pattern:
+> - Shared compute should be **tight**: often one slot, frequent queue overlap.
+> - Per-tick allowances should leave **headroom under burst load** but not
+>   permanent saturation — actors should sometimes exhaust budgets mid-episode.
+> - Standing/access costs should occasionally force **denied or deferred**
+>   actions, not only smooth success paths.
+> - Eval / field-monitor sampling variance is in-bounds if it increases
+>   episode-to-episode outcome spread without breaking deploy-sometimes behavior.
+> - You may add ``pressure_coupling`` channels (drivers must be from the closed
+>   schema: ``deployed_model_count``, ``mean_deployed_capability``,
+>   ``integrated_field_harm_rate``, ``active_user_archetype_mass``,
+>   ``pending_access_queue_depth``, ``eval_draws_outstanding``).
+>
+> **Part B — institutional structure.** Same minimums as v3 (≥4 principals,
+> ≥3 conflicts with ≥20-char justifications, compiled ``resource_flows``, ≥3
+> mechanism kinds). Mechanisms must remain **exercisable** by frozen reference
+> agents via runtime affordances — not declarative-only.
+>
+> **Part C — knowledge-base markdown** for a new hire (desk vs archive, catalog
+> scan costs time — no numeric surfacing constants).
+>
+> **Actor behavior (mitigation 1).** Do **not** set ``program_map`` or
+> per-actor programs. ``role_population`` counts only.
+>
+> **Disclosed qualitative requirements:**
+> - Shared compute **sometimes contended**, never permanently idle or saturated.
+> - Flows **material**, not token rows.
+> - Deploy happens on **some** seeds and not all (deploy-sometimes).
+> - Design for **outcome diversity under stress** — multiple distinct tick
+>   status patterns across an episode when resources bind.
+>
+> **What you must NOT optimize toward:** No field names or brief language may
+> target EAI, ambiguity indices, detector scores, referee tiers, or any
+> withheld orchestrator gate. An undisclosed readiness check may run after
+> structural criteria pass; you will not receive its numeric output.
+>
+> **Between-round feedback (≤4 rounds):** pass/fail only per criterion
+> (``C1``–``C5``, ``C1_v3``, ``C5_v3``, ``structural_ready``). No numeric
+> diagnostics.
+>
+> **Deliverables per round:**
+> 1. ``generated_ecology_v4_ambiguity_roundN.json``
+> 2. ``generated_ecology_v4_ambiguity_roundN_rationale.md``
+> 3. ``generated_ecology_v4_ambiguity_roundN_knowledge_base.md``
+
+**Allowed reads (grower).** This brief; v3 JSON schema shape; predecessor
+ecology JSON for structural reference; ``graded_lab/world_visible/`` loader
+types; v1/v2 ecology JSON for structural shape only.
+
+**Forbidden reads (grower).** ``PLAN_v4.md``, ``DESIGN.md``,
+``BLIND_GENERATION.md`` (except this excerpt when pasted into a round prompt),
+``results/``, ``growth-orchestrator/``, ``ecology_complexity.py``,
+``v4_ambiguity_growth.py``, ``oracle_only/``, ``machinery_transfer.py``,
+FINDINGS, EAI scripts, checker tests/fixtures.
+
+### Reproduction
+
+```bash
+cd experiments/graded-lab-simulation
+
+# Score one candidate (structural + orchestrator EAI gate):
+scripts/score_v4_ambiguity_growth_round.sh \
+  generated_ecology_v4_ambiguity_round1.json round1
+
+# Full campaign summary (GL-84 executed run):
+# results/v4_ambiguity_growth.json
+# growth-orchestrator/v4-r-mb6b/check_result_round{1..4}.json
+```
+
+**Module:** ``graded_lab/harness/v4_ambiguity_growth.py``.
+
+**GL-84 campaign outcome (weak reference, ``graded-lab-0.41.1``).**
+
+| Round | Structural | Referee EAI @ carrier=1.0 | Orchestrator gate |
+|---|---|---|---|
+| v3_grown baseline | pass | 0.143 (low) | fail |
+| 1 | pass | 0.125 (low) | fail |
+| 2 | pass | 0.125 (low) | fail |
+| 3 | pass | 0.127 (low) | fail |
+| 4 | pass | 0.135 (low) | fail |
+
+Increased Part-A stress did not raise referee EAI; best round still below
+v3_grown. **Interpretation:** under frozen weak reference on v3 institutional
+ecologies, brief-consistent Part-A tuning alone does not reach mid band in ≤4
+rounds. R-MB6b evasion battery descoped unless a new brief pre-registers a
+different precondition or reference protocol. R-MB7 (red-team) does not wait
+on this gate.
+
+**Note (GL-84 execution).** The scored campaign used implementer-authored
+stress profiles in ``scripts/build_v4_ambiguity_candidate.py`` (fixed before
+scoring, not EAI-tuned). A future rerun should use a blind grower subagent
+with §3.1/§5.1 orchestrator discipline unless explicitly scoped otherwise.
 
 ---
 
@@ -560,12 +767,12 @@ at module top (``UAD_SEEDS`` = ``C3_SEEDS``, ``EAI_SEEDS`` = ``CALIBRATION_SEEDS
 
 ---
 
-## 10.2 PLAN_v4 V4-0 through V4-3 — decoupled per-bridge rigs (GL-79/GL-80)
+## 10.2 PLAN_v4 V4-0 through V4-5 — decoupled per-bridge rigs (GL-79/GL-80/GL-81/GL-85)
 
-**Status:** *executed* — R-MB1, R-MB4, R-MB9, and R-MB7d all scored on
-``generated_ecology_v3.json`` (the four rigs frozen/implemented so
+**Status:** *executed* — R-MB1, R-MB4, R-MB9, R-MB7d, R-MB6a, and R-MB2
+scored on ``generated_ecology_v3.json`` (six rigs frozen/implemented so
 far; see `PLAN_v4.md` rig catalog for the rest, and `DESIGN.md`
-"PLAN_v4 pre-registration" (both sections) for the frozen
+"PLAN_v4 pre-registration" sections for the frozen
 preconditions/predictions). ``machinery_transfer.py`` is unmodified;
 GL-76/GL-77 remain the frozen coupled-battery record.
 
@@ -574,7 +781,8 @@ GL-76/GL-77 remain the frozen coupled-battery record.
 ``ReferenceFixture`` (substrate + roster + already-run episodes). Rigs
 live in ``graded_lab/harness/rigs/`` (`base.py` contract,
 `r_mb1_unit_discovery.py`, `r_mb4_detector_transfer.py`,
-`r_mb9_contradiction_surface.py`, `r_mb7d_channel_ablation.py`).
+`r_mb9_contradiction_surface.py`, `r_mb7d_channel_ablation.py`,
+`r_mb6a_selection_sanity.py`, `r_mb2_scorecard_goodhart.py`).
 R-MB9/R-MB7d each return ``dict[str, RigResult]`` keyed by arm name
 (``{"specificity","sensitivity"}`` / ``{"pair","group"}``) rather than
 one ``RigResult`` — their arms are never merged, per DESIGN.md.
@@ -582,8 +790,10 @@ one ``RigResult`` — their arms are never merged, per DESIGN.md.
 **Reproduce (each rig independently; ``--workers N`` parallelizes
 fixture-building and, for R-MB1/R-MB7d, the per-seed/per-dose-point
 battery — R-MB7d's full 9-onset-fraction × 2-arm battery takes ~5 min
-wall at ``--workers 8``; R-MB9 needs no new episodes and is fast
-regardless of worker count):**
+wall at ``--workers 8``; R-MB9 needs no new episodes; R-MB6a's full
+battery takes ~12 min wall at ``--workers 4`` (100 expressiveness
+episodes + null harness); R-MB2's full battery takes ~21 min wall at
+``--workers 4`` (8×6×2 selection episodes + eval)):**
 
 ```bash
 cd experiments/graded-lab-simulation
@@ -591,30 +801,35 @@ cd experiments/graded-lab-simulation
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb4 --out results/v4_r_mb4.json
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb9 --workers 4 --out results/v4_r_mb9.json
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb7d --workers 8 --out results/v4_r_mb7d.json
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb6a --workers 4 --out results/v4_r_mb6a.json
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb2 --workers 4 --out results/v4_r_mb2.json
 ```
 
 **Smoke / harness validation only (r-mb7d's ``--smoke`` needs >= 4
-seeds regardless, since its dose sweep requires ``n_dose_seeds``
-distinct seeds — the CLI handles this automatically, and further
-narrows ``onset_fracs`` to a single dev-speed value):**
+seeds; r-mb6a's ``--smoke`` needs 8 fixture seeds for C4 deploy-rate
+precondition; r-mb2's ``--smoke`` needs 8 fixture seeds for proxy–
+withheld tension — the CLI handles all automatically):**
 
 ```bash
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb1 --smoke
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb4 --smoke
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb9 --smoke
 .venv/bin/python scripts/run_v4_rig.py --rig r-mb7d --smoke --workers 4
-pytest tests/test_fixtures.py tests/test_rigs_base.py tests/test_rig_r_mb1.py tests/test_rig_r_mb4.py tests/test_rig_r_mb9.py tests/test_rig_r_mb7d.py -q -m "not slow"
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb6a --smoke
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb2 --smoke
+pytest tests/test_fixtures.py tests/test_rigs_base.py tests/test_rig_r_mb1.py tests/test_rig_r_mb4.py tests/test_rig_r_mb9.py tests/test_rig_r_mb7d.py tests/test_variation_operator.py tests/test_rig_r_mb6a.py tests/test_rig_r_mb2.py -q -m "not slow"
 ```
 
 **Outputs:** ``results/v4_r_mb1.json``, ``results/v4_r_mb4.json``
 (each a ``RigResult`` payload: `precondition`, `outcome`,
 `substrate_class`, `payload`, `predictions`, plus battery metadata);
 ``results/v4_r_mb9.json``, ``results/v4_r_mb7d.json`` (an ``arms`` dict
-of the same per-arm payload, keyed by arm name).
+of the same per-arm payload, keyed by arm name);
+``results/v4_r_mb6a.json``, ``results/v4_r_mb2.json`` (single ``RigResult``).
 
 **On ``generated_ecology_v3.json`` (S-inherited/S-fixture, 20-seed
-fixture, ``C3_SEEDS``):** see FINDINGS GL-79 (R-MB1/R-MB4) and GL-80
-(R-MB9/R-MB7d) for the resolved outcomes.
+fixture, ``C3_SEEDS``):** see FINDINGS GL-79 (R-MB1/R-MB4), GL-80
+(R-MB9/R-MB7d), GL-81 (R-MB6a), and GL-85 (R-MB2) for the resolved outcomes.
 
 ---
 

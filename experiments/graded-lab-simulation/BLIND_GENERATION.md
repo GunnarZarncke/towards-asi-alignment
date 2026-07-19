@@ -737,3 +737,39 @@ This brief text is **frozen** as of GL-69. First passing round's JSON +
 rationale + Part C are immutable except via `CODE_VERSION` bump with a
 FINDINGS entry. Edits to grower-facing text require the same discipline.
 
+---
+
+## V4 R-MB6b — ambiguity-oriented S-blind growth (FROZEN — GL-84)
+
+**Status: FROZEN brief (2026-07-19); growth campaign executed same session
+(4 rounds, orchestrator gate never passed — see FINDINGS GL-84).**
+
+**Purpose.** Produce an S-blind v3-shaped ecology where the **R-MB6b**
+precondition holds: referee-vantage EAI in mid band `[0.25, 0.45]` at
+default load (`carrier_load_scale=1.0`) under the frozen weak reference
+roster (V2-3 protocol). Grower-visible checks are structural C1–C5 /
+C1_v3 / C5_v3 only; EAI is orchestrator-only (`v4_ambiguity_growth.py`).
+
+**Posture.** Outcome-blind brief: asks for mixed tick statuses under
+resource stress, never names EAI or detector scores. Same mitigation-1
+constraint as v3 round 1 (no grower `program_map`).
+
+**Stopping rule.** ≤4 rounds; success = structural pass **and**
+orchestrator gate pass. Failure after 4 rounds ⇒ R-MB6b declared-SKIP
+on S-blind substrate (confirmatory with GL-83).
+
+**Grower brief (frozen text).** `runs/grower-v4-r-mb6b/grower_brief_and_schema.md`
+
+**Scoring.**
+
+```bash
+scripts/score_v4_ambiguity_growth_round.sh CANDIDATE.json ROUND_LABEL
+```
+
+**Withheld from grower (orchestrator plane).** `v4_ambiguity_growth.py`,
+EAI scripts, `machinery_transfer.py`, numeric EAI bands, orchestrator
+check JSON under `growth-orchestrator/v4-r-mb6b/`.
+
+**Explicitly withheld (same class as v3).** Detectors, severity, BIQ,
+UAD ground truth, FINDINGS, PLAN_v4 thresholds.
+

@@ -1,20 +1,19 @@
 # PLAN v4 — decoupled per-bridge rigs (DRAFT — partially implemented)
 
-**Status: draft proposal (2026-07-18); V4-0 through V4-3 implemented
-and scored for `R-MB1`, `R-MB4`, `R-MB9`, and `R-MB7d` (GL-79/GL-80,
-same day).** All four rigs' preconditions, predictions, and harvest
-sentences are frozen in `DESIGN.md` ("PLAN_v4 pre-registration" /
-"... — R-MB9 + R-MB7d scope", the latter with a small V4-3
-implementation-note correction to R-MB9's sensitivity-arm delivery
-mechanism, made before scoring) and scored in `results/FINDINGS.md`
-GL-79/GL-80 (`results/v4_r_mb1.json`, `results/v4_r_mb4.json`,
-`results/v4_r_mb9.json`, `results/v4_r_mb7d.json`). The new
-`channel_severance` runtime primitive R-MB7d's implementation needed
-(`world.py`) is added and tested, flagged there for later human
-review. Every other rig in the catalog below (`R-MB6a/b`, `R-MB7`,
-`R-MB2`, `R-MB5`, `R-MB8`) remains an unfrozen placeholder pending the
-"open questions" section — do not cite constants/predictions for those
-rigs as pre-registered.
+**Status: draft proposal (2026-07-18); V4-0 through V4-4 implemented
+and scored for `R-MB1`, `R-MB4`, `R-MB9`, `R-MB7d`, and `R-MB6a`
+(GL-79/GL-80/GL-81, same day).** Five rigs' preconditions,
+predictions, and harvest sentences are frozen in `DESIGN.md`
+("PLAN_v4 pre-registration" sections) and scored in
+`results/FINDINGS.md` GL-79/GL-80/GL-81
+(`results/v4_r_mb1.json`, `results/v4_r_mb4.json`,
+`results/v4_r_mb9.json`, `results/v4_r_mb7d.json`,
+`results/v4_r_mb6a.json`). The new `channel_severance` runtime
+primitive R-MB7d needed (`world.py`) is added and tested, flagged
+there for later human review. **`R-MB6b`, `R-MB7`, `R-MB2`, `R-MB5`,
+`R-MB8`** remain unfrozen placeholders pending the "open questions"
+section — do not cite constants/predictions for those rigs as
+pre-registered.
 
 **Spawn trigger:** V2-3's go gate failed honestly (GL-76: P1–P3 false,
 referee-vantage EAI never reached mid band) and the failure **cascaded**
@@ -386,11 +385,11 @@ admin machinery (V4-5); then the two expensive, independent capstones
 | Stage | Item | Effort | Gate before next stage |
 |---|---|---|---|
 | V4-0 | ✅ Fixture layer + rig contract (`harness/fixtures.py`, `harness/rigs/`); `machinery_transfer.py` left unmodified rather than decomposed (GL-76 reproduces bit-for-bit trivially since untouched) | ~3–5 d | full suite green — done (GL-79) |
-| V4-1 | ✅ (R-MB1/R-MB4/R-MB9/R-MB7d) Pre-registration freeze in `DESIGN.md`; ⏳ (R-MB6a/b, R-MB7, R-MB2, R-MB5, R-MB8) blocked on the open questions below | ~2–3 d writing | all frozen in DESIGN.md before any scored battery — done for R-MB1/R-MB4/R-MB9/R-MB7d |
+| V4-1 | ✅ (R-MB1/R-MB4/R-MB9/R-MB7d/R-MB6a/R-MB2) Pre-registration freeze in `DESIGN.md`; ⏳ (R-MB6b, R-MB7, R-MB5, R-MB8) blocked on the open questions below | ~2–3 d writing | done for R-MB1/R-MB4/R-MB9/R-MB7d/R-MB6a/R-MB2 |
 | V4-2 | ✅ R-MB4 ∥ R-MB1 — precondition metrics, scored on S-inherited `generated_ecology_v3.json` | ~2–4 d each | both batteries scored and FINDINGS-entered (SKIPs count) — done (GL-79): R-MB1 null, R-MB4 SKIP |
 | V4-3 | ✅ `channel_severance` runtime primitive (`world.py`, flagged for later review); R-MB9 (contradiction surface, both arms) ∥ R-MB7d (pair + group channel-ablation arms, relative-rule noise-floor threshold) implemented and scored — GL-80: **R-MB9 pass on both arms**; **R-MB7d group SKIP** (precondition unsatisfied), **pair null at every onset fraction** (mechanically explained: non-adaptive reference program + outcome-status-blind `dependency_score`) | ~3–5 d each | done (GL-80) |
-| V4-4 | R-MB6a — V2-4 variation operator + null harness (`REPRODUCTION.md` §5) | ~1–2 wk | **hard gate:** uniform-fitness null inside permutation band (GL-25); no downstream selection rig runs otherwise |
-| V4-5 | **Medium builds:** R-MB2 (proxy/true scorecard Goodhart battery; consumes V4-4 operator) ∥ R-MB5 (gated-successor relabel rig) ∥ R-MB8 (capture rig; first cut candidate — see open question 3) | R-MB2 ~3–5 d; R-MB5/R-MB8 ~1 wk each | R-MB2 tension precondition measured before its battery; R-MB5/R-MB8 results permanently labeled S-fixture coherence-grade |
+| V4-4 | ✅ R-MB6a — V2-4 variation operator + null harness (`variation_operator.py`, `stats.permutation_mass_movement_band`, `r_mb6a_selection_sanity.py`) scored — GL-81: **P5 pass** (uniform-fitness null inside band); expressiveness report-only: **11/100** syntax-distinct mutants on `walk_pipeline` baseline, all distinct phenotypes | ~1–2 wk | done (GL-81): P5 pass unblocks downstream selection rigs; expressiveness saturation on sparse baseline noted |
+| V4-5 | **Medium builds:** ✅ R-MB2 scored **null** (GL-85: tension present, proxy-only selection did not Goodhart) ∥ R-MB5 (gated-successor relabel rig) ∥ R-MB8 (capture rig; first cut candidate — see open question 3) | R-MB2 ~3–5 d; R-MB5/R-MB8 ~1 wk each | R-MB2 done (GL-85); R-MB5/R-MB8 results permanently labeled S-fixture coherence-grade |
 | V4-6 | R-MB7 — LLM adapter + mock replay + scored red-team battery | ~1–2 wk + API budget | caps + refusal reporting per V2-1; does **not** wait for V4-7 |
 | V4-7 | R-MB6b — ambiguity growth attempt or declared SKIP | growth budget | precondition measured, never tuned |
 | V4-8 | Cross-rig synthesis + manuscript harvest | ~2–3 d | per-rig sentences already written; synthesis names substrate classes inline |
@@ -422,7 +421,7 @@ chain.
 | Bridge | Today (graded-lab) | After v4 |
 |---|---|---|
 | MB1 | GL-76 null (coupled battery) | precondition-aware result + S-blind retry (R-MB1) |
-| MB2 | — | scorecard Goodhart battery (R-MB2) |
+| MB2 | — | scorecard Goodhart battery (R-MB2) — **null** (GL-85) |
 | MB3 | — | deferred → `REPRODUCTION.md` §12 (ledger split first) |
 | MB4 | referee ported; GL-74 gate | re-housed + v3-phenomena coverage (R-MB4) |
 | MB5 | — | gated-successor coherence rig (R-MB5) |

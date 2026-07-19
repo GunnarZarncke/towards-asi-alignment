@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 
-CODE_VERSION = "graded-lab-0.41.0"  # PLAN_v4 V4-3 R-MB7d: channel_severance mechanism (flagged for review)
+CODE_VERSION = "graded-lab-0.41.1"  # GL-82: pattern_score_set nested-row bugfix in variation_operator
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin")
 

@@ -1,0 +1,57 @@
+{
+  "code_version": "graded-lab-0.41.1",
+  "battery": "v4_ambiguity_growth",
+  "rig_id": "R-MB6b-growth",
+  "max_rounds": 4,
+  "rounds_completed": 4,
+  "outcome": "growth_failed_orchestrator_gate",
+  "interpretation": "All four rounds passed structural C1–C5/C1_v3/C5_v3 but none reached referee-vantage EAI mid band at default load under the frozen weak reference roster. Increased Part-A stress did not raise EAI; best referee mean @ carrier=1.0 was 0.135 (round 4), below v3_grown baseline 0.143 (GL-83). R-MB6b should proceed as declared-SKIP on S-blind substrate unless a new brief/gate is pre-registered.",
+  "baseline_v3_grown": {
+    "referee_mean_at_default_load": 0.1426083594483684,
+    "orchestrator_gate_passed": false
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "profile": "round1_tight_queue",
+      "ecology_path": "generated_ecology_v4_ambiguity_round1.json",
+      "structural_all_passed": true,
+      "orchestrator_gate_passed": false,
+      "referee_mean_at_default_load": 0.12501356955609147,
+      "referee_band_at_default_load": "low",
+      "c4_deploy_rate": 0.7,
+      "c3_episode_contention_fraction": 1.0
+    },
+    {
+      "round": 2,
+      "profile": "round2_burst_pressure",
+      "ecology_path": "generated_ecology_v4_ambiguity_round2.json",
+      "structural_all_passed": true,
+      "orchestrator_gate_passed": false,
+      "referee_mean_at_default_load": 0.12501356955609147,
+      "referee_band_at_default_load": "low"
+    },
+    {
+      "round": 3,
+      "profile": "round3_single_engineer_stable",
+      "ecology_path": "generated_ecology_v4_ambiguity_round3.json",
+      "structural_all_passed": true,
+      "orchestrator_gate_passed": false,
+      "referee_mean_at_default_load": 0.12669857269377144,
+      "referee_band_at_default_load": "low"
+    },
+    {
+      "round": 4,
+      "profile": "round4_max_stress",
+      "ecology_path": "generated_ecology_v4_ambiguity_round4.json",
+      "structural_all_passed": true,
+      "orchestrator_gate_passed": false,
+      "referee_mean_at_default_load": 0.13493960806618935,
+      "referee_band_at_default_load": "low"
+    }
+  ],
+  "artifacts": {
+    "brief": "runs/grower-v4-r-mb6b/grower_brief_and_schema.md",
+    "orchestrator_checks": "growth-orchestrator/v4-r-mb6b/check_result_round*.json"
+  }
+}

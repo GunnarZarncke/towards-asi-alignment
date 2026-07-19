@@ -4225,10 +4225,9 @@ battery (which only measured honest-reference sparsity, never asked
 whether the reference traffic exercises new-phenomenon diversity at
 all).
 
-**Manuscript harvest.** Not yet performed — deferred until the
-remaining rig catalog (or at least R-MB9/R-MB7d, the other "exists /
-small build" rigs) lands, so ch07/ch33/ch41/ch42 get one coherent v4
-update rather than a partial one keyed to two rigs.
+**Manuscript harvest (2026-07-19).** R-MB1 null (co-activity present)
+and R-MB4 SKIP written into ``ch07`` / ``ch33`` / ``ch42`` and appN
+finding ``gl-79``.
 
 **Artifacts.** `results/v4_r_mb1.json`, `results/v4_r_mb4.json`
 (`code_version=graded-lab-0.40.0`).
@@ -4354,11 +4353,271 @@ using the same scorer on a program that did try to adapt — worth
 flagging for a future rig or reviewer, not something this session's
 scope extends to fixing.
 
-**Manuscript harvest.** Not yet performed — deferred with GL-79's
-until more of the rig catalog lands or a deliberate decision is made
-to harvest R-MB1/R-MB4/R-MB9/R-MB7d together.
+**Manuscript harvest (2026-07-19).** R-MB9 pass + R-MB7d null/SKIP
+written into ``ch07`` / ``ch42`` and appN finding ``gl-80`` (arms kept
+separate in prose).
 
 **Artifacts.** `results/v4_r_mb9.json`, `results/v4_r_mb7d.json`
 (`code_version=graded-lab-0.41.0`).
 
+### GL-81 — PLAN_v4 V4-4: R-MB6a variation operator + null harness scored (2026-07-18)
+
+**Trigger.** User: "continue plan" — V4-3 done (GL-80); next stage is
+V4-4 (R-MB6a selection machinery sanity).
+
+**New code.**
+- `graded_lab/harness/variation_operator.py` — closed `ProgramMap` edit
+  vocabulary (`temperature_bin_nudge`, `goal_weight_bin_nudge`,
+  `pattern_score_set`, `hook_tweak`); `phenotype_overlap.py` now imports
+  `sample_program_map_variants` from here (deduplicated).
+- `oracle_only/stats.py` — `permutation_mass_movement_band`,
+  `observed_mass_range`, `N_PERMUTATIONS=200` (GL-25 lesson).
+- `graded_lab/harness/rigs/r_mb6a_selection_sanity.py` — C4
+  precondition, expressiveness report, uniform-fitness null harness.
+- `scripts/run_v4_rig.py` extended for `r-mb6a` (smoke uses 8 fixture
+  seeds — 4 seeds gives 100% deploy on v3_grown and fails C4).
+- Pre-registration frozen in `DESIGN.md` ("PLAN_v4 pre-registration —
+  R-MB6a scope") before the scored battery ran.
+
+**Command.**
+
+```bash
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb6a --workers 4 --out results/v4_r_mb6a.json
+```
+
+**R-MB6a — 20-seed fixture, 710 s wall, 4 workers.**
+
+| Precondition | measured | threshold | satisfied |
+|---|---|---|---|
+| C4 deploy rate | 0.85 (17/20 deployed) | strictly inside (0.1, 0.9) | **true** |
+
+| Prediction | holds | Notes |
+|---|---|---|
+| **P5 (harness sanity, blocking)** | **true** | Uniform-fitness null mass-range = 0.0; permutation band p97.5 = 0.0 (trivial pass — constant fitness keeps masses uniform). |
+| **Expressiveness (report-only)** | n/a | 11/100 syntax-valid distinct mutants sampled from `walk_pipeline` baseline (operator exhausted dedup attempts); all 11 produced distinct primitive-pattern phenotypes (fraction 1.0). |
+
+**Outcome: pass** (P5 holds). Downstream selection rigs (R-MB6b, R-MB2)
+are **unblocked** on harness-sanity grounds — not on expressiveness
+(syntax cardinality on this baseline is low: only 11 reachable edits
+from the engineer preset's sparse scorer-only expansion).
+
+**Interpretation (tentative).** The null harness behaves as expected
+under uniform fitness (no spurious mass concentration). The more
+interesting number is expressiveness: requesting 100 mutants yielded only
+11 syntax-distinct valid variants on the frozen `walk_pipeline` →
+`scorer_only` baseline (GL-54 constraint), because the baseline's sparse
+`pattern_scores` and small bin ladders saturate quickly under dedup.
+All 11 that were found did produce distinct observed phenotypes — so
+the operator→isolate wiring works on the scorer-only slice, but the
+*search space* from this preset is tiny. A grower-authored or richer
+baseline ProgramMap would be needed to stress syntax cardinality; that
+is out of scope for this rig's S-inherited substrate.
+
+**Manuscript harvest (2026-07-19).** Harness-sanity pass cited in
+``ch34`` selection section and appN finding ``gl-81``.
+
+**Artifacts.** `results/v4_r_mb6a.json` (`code_version=graded-lab-0.41.0`).
+
+### GL-82 — `pattern_score_set` bugfix in variation operator (2026-07-19, open for reproduction)
+
+**Trigger.** Post-GL-81 review: expressiveness saturated at **11/100**
+syntax-distinct mutants on the `walk_pipeline` engineer baseline. Root
+cause split: (a) genuinely tiny 1-hop neighborhood from sparse baseline
+(temp/hooks/goal bins), plus (b) **`pattern_score_set` was silently
+broken** — it wrote `pattern_scores["call_pipeline"] = <float>`, but
+`validate_program_map` requires `{pattern: {goal_feature: score}}` with
+`pattern ∈ PRIMITIVE_PATTERN_VOCAB` (e.g. `pipeline:build`, not
+`call_pipeline`). Every `pattern_score_set` draw failed validation and
+was discarded; GL-81's 11 count was exactly temp (2) + goal-weight (6) +
+hook (3), with **zero** pattern-score edits.
+
+**Fix (`graded-lab-0.41.1`, `harness/variation_operator.py`).**
+- `pattern_score_set` now inserts/updates a nested row:
+  `pattern_scores[pattern][feature] = score` with vocab-valid pattern and
+  `GOAL_FEATURES` key.
+- Dedup key uses hashable `_pattern_scores_key()` (nested dict rows).
+- Regression tests in `tests/test_variation_operator.py`.
+
+**Verification (not a scored battery — reproduction only).**
+
+```bash
+cd experiments/graded-lab-simulation
+.venv/bin/python -m pytest tests/test_variation_operator.py -q
+.venv/bin/python -c "
+from graded_lab.world_visible.program_map import expand_preset
+from graded_lab.harness.variation_operator import sample_program_map_variants
+import random
+p = expand_preset('walk_pipeline', role='engineer')
+n = len(sample_program_map_variants(p, n=100, rng=random.Random(60100)))
+print('syntax-distinct 1-hop mutants:', n)
+assert n > 11, 'pattern_score_set still broken or dedup regressed'
+"
+```
+
+**Expected post-fix:** `syntax-distinct 1-hop mutants: 100` (same seed as
+GL-81 expressiveness report).
+
+**GL-81 status:** unchanged — `results/v4_r_mb6a.json` remains the
+frozen scored record at `code_version=graded-lab-0.41.0`. P5 pass and
+11/100 expressiveness stand as scored; a **full R-MB6a re-score** on
+0.41.1 is optional follow-up (not run this session).
+
+**Open / next.** Optional: re-run `run_v4_rig.py --rig r-mb6a` and enter
+updated expressiveness in FINDINGS; proceed to R-MB2/R-MB6b on fixed
+operator for downstream selection work.
+
+### GL-83 — standalone EAI precondition probe v1 vs v3_grown (2026-07-19)
+
+**Trigger.** Before committing to R-MB6b S-blind growth vs declared-SKIP:
+does any existing substrate satisfy the scoped go gate (referee-vantage
+EAI in mid band `[0.25, 0.45]` at default load, carrier=1.0)?
+
+**Command.**
+
+```bash
+cd experiments/graded-lab-simulation
+.venv/bin/python scripts/run_eai_precondition_probe.py
+```
+
+**Runtime.** 210 s wall, 150 episodes (3 × 50 cells: v1 strong, v1 weak,
+v3 weak reference).
+
+**Precondition (R-MB6b go gate at carrier=1.0).**
+
+| Substrate / reference | Referee mean @ 1.0 | Band | Go gate @ default | Go gate any carrier |
+|---|---|---|---|---|
+| v1 default, `programmatic_softmax` | 0.351 | **mid** | **true** | **true** |
+| v1 default, `programmatic_2step` | 0.232 | null (below floor) | false | false |
+| v3_grown, V2-3 weak reference | 0.143 | **low** | false | false |
+
+**Interpretation (tentative).**
+- Machinery still produces mid-band referee EAI on the **v1 calibration
+  substrate** with the strong agent (replicates GL-20 direction at
+  `graded-lab-0.41.1`).
+- **v3_grown** does not reach mid band at any carrier cell (max referee
+  mean ≈ 0.190 at carrier=0.5); confirms GL-76's go-gate failure is
+  substrate/protocol-specific, not an EAI implementation regression.
+- For R-MB6b on v3_grown: precondition **unsatisfied as-is** — a
+  declared SKIP is confirmatory unless S-blind ambiguity-oriented growth
+  is funded.
+
+**Artifact.** `results/eai_precondition_probe.json`
+(`code_version=graded-lab-0.41.1`).
+
+### GL-84 — V4 R-MB6b S-blind ambiguity growth (4 rounds, orchestrator gate failed — 2026-07-19)
+
+**Trigger.** GL-83 showed v3_grown fails the R-MB6b EAI precondition;
+user requested S-blind growth for transfer claims before revisiting
+R-MB6b/R-MB7 open questions.
+
+**Protocol.** Frozen brief `runs/grower-v4-r-mb6b/grower_brief_and_schema.md`
+(BLIND_GENERATION § V4 R-MB6b). Orchestrator:
+`graded_lab/harness/v4_ambiguity_growth.py` — structural
+`run_complexity_check` then EAI probe (weak reference, same seeds/carriers
+as GL-83). Grower receives `pass_fail_only()` only.
+
+**Execution note.** Round candidates were produced via
+`scripts/build_v4_ambiguity_candidate.py` stress profiles encoding the
+brief's qualitative Part-A goals (tighter queues, mixed-status stress,
+extra pressure channels). Not a separate blind LLM subagent run — profiles
+were fixed before scoring and not tuned to EAI outputs.
+
+**Results (≤4 rounds).**
+
+| Round | Profile | Structural | Referee @ 1.0 | Band | Orchestrator gate |
+|---|---|---|---|---|---|
+| v3 baseline | — | pass | 0.143 | low | fail |
+| 1 | tight_queue | pass | 0.125 | low | fail |
+| 2 | burst_pressure | pass | 0.125 | low | fail |
+| 3 | single_engineer_stable | pass | 0.126 | low | fail |
+| 4 | max_stress | pass | 0.135 | low | fail |
+
+All rounds passed C1–C5/C1_v3/C5_v3. **None** reached mid band at any
+carrier cell. Increased Part-A stress **lowered** referee EAI vs v3_grown
+(rounds 1–2) or matched within noise (round 4 best, still low).
+
+**Interpretation (tentative).** Under the frozen **weak** reference roster
+on v3 institutional ecologies, Part-A stress tuning within the brief does
+not appear sufficient to reach mid-band referee EAI in ≤4 rounds. Mid-band
+EAI on v1 (GL-83/GL-20) likely requires the v1 default substrate geometry
+and/or strong-agent reference behavior — not recoverable by ecology growth
+alone while holding the V2-3 weak reference fixed. **R-MB6b: declare SKIP**
+on S-blind growth (confirmatory); evasion battery descoped unless a new
+brief pre-registers a different precondition or reference protocol.
+
+**Artifacts.** `results/v4_ambiguity_growth.json`;
+`generated_ecology_v4_ambiguity_round{1..4}.json`;
+`growth-orchestrator/v4-r-mb6b/check_result_round*.json`.
+
+**Manuscript harvest (2026-07-19).** Mid-band non-transfer + R-MB6b
+confirmatory SKIP written into ``ch34`` / ``ch41`` and appN finding
+``gl-84`` (GL-83 probe folded into that row). Do not pool v3_grown and
+v4_ambiguity substrates silently.
+
+**Open / next.** R-MB7 (gpt-4o-mini $10 red-team) does not require this
+gate.
+
+### GL-85 — PLAN_v4 V4-5: R-MB2 scorecard Goodhart battery scored (2026-07-19)
+
+**Trigger.** User: "do R-MB2 next" — implement proxy/withheld scorecard
+Goodhart rig (consumes R-MB6a variation operator + selection harness).
+
+**New code.**
+- `graded_lab/harness/rigs/r_mb2_scorecard_goodhart.py` — C1-v3-class
+  proxy–withheld tension precondition; proxy-only selection loop; P1/P2
+  predictions.
+- `scripts/run_v4_rig.py` extended for `r-mb2` (smoke uses 8 fixture
+  seeds for tension check, same as r-mb6a).
+- `tests/test_rig_r_mb2.py` — precondition unit test + optional slow smoke.
+- Pre-registration frozen in `DESIGN.md` ("PLAN_v4 pre-registration —
+  R-MB2 scope") before the scored battery ran.
+
+**Command.**
+
+```bash
+.venv/bin/python scripts/run_v4_rig.py --rig r-mb2 --workers 4 --out results/v4_r_mb2.json
+```
+
+**R-MB2 — 20-seed fixture, 1289 s wall (~21 min), 4 workers,
+`code_version=graded-lab-0.41.1`.**
+
+| Precondition | measured | threshold | satisfied |
+|---|---|---|---|
+| Proxy–withheld tension | `r(proxy, bearer_harm)=0.437`; `r(proxy, review_thoroughness)=null` (zero variance) | `r_harm ≥ 0.15` OR `r_review ≤ -0.15`; ≥5 episodes | **true** (harm tension only) |
+
+| Prediction | holds | Notes |
+|---|---|---|
+| **P1 (proxy gain under selection)** | **false** | Selected proxy mean −0.397 vs baseline −0.396 (worse). Best in-population proxy flat at −0.395 every generation. |
+| **P2 (withheld diverges)** | **false** | Selected bearer harm 0.00091 vs baseline 0.00114 (lower, not Goodhart). Review thoroughness 0.0 both arms (no variance on this substrate). |
+
+**Outcome: null** (precondition satisfied; neither P1 nor P2 holds).
+
+**Interpretation (tentative).** Measured proxy–harm tension on reference
+traces confirms the slice-C scorecard components can co-vary on
+v3_grown — but six generations of proxy-only `ProgramMap` selection
+(8×6×2 episodes/member) did not improve the proxy scorecard or produce
+pre-registered Goodhart drift on withheld harm/review. Likely
+contributors: (1) proxy fitness landscape nearly flat on the weak-engineer
+→ scorer-only search slice (same −0.395 ceiling every generation, cf.
+GL-81/GL-82 expressiveness limits); (2) absolute harm magnitudes O(10⁻³)
+with no systematic upward selection pressure; (3) `review_thoroughness`
+degenerate at 0 on all reference and selection episodes — the review leg
+of the precondition cannot fire on this fixture. **Not** evidence that
+Goodhart cannot occur in principle; evidence that this substrate +
+operator + weak baseline did not realize the bridge's directional claim
+under the frozen protocol.
+
+**Smoke caveat.** `--smoke` (4 pop × 2 gen × 1 ep) returned **pass** on
+8 seeds — a small-protocol false positive driven by tiny harm noise; the
+full battery is the scored record.
+
+**Manuscript harvest (2026-07-19).** Selectable-Goodhart null (tension
+present, no proxy gain) written into ``ch34`` Goodhart Selection,
+``ch16`` bundle Goodhart surface, and appN finding ``gl-85``.
+
+**Artifacts.** `results/v4_r_mb2.json` (`code_version=graded-lab-0.41.1`).
+
+**Open / next.** R-MB7 red-team adapter; R-MB5/R-MB8 coherence rigs;
+optional richer ProgramMap baseline or deploy-positive selection slice
+if a follow-up Goodhart battery is pre-registered.
 

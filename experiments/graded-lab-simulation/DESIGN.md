@@ -2499,3 +2499,100 @@ mechanical explanation recorded in GL-80 (the reference program is
 non-adaptive to denial, and the frozen `dependency_score`'s
 action-coding is itself blind to attempted-but-denied vs. successful
 primitives) — see GL-80 for the full write-up.
+
+---
+
+## PLAN_v4 pre-registration — R-MB6a scope (V4-1, frozen 2026-07-18)
+
+Extends the V4-1 freeze to **R-MB6a** (selection machinery sanity /
+variation operator). R-MB6b, R-MB7, R-MB5, R-MB8 remain
+unfrozen pending the open questions in `PLAN_v4.md`. (R-MB2 frozen
+2026-07-19 — see below.)
+
+### R-MB6a — selection machinery sanity (V2-4 operator + null harness)
+
+- **Question:** does the closed ``ProgramMap`` variation operator plus
+  the uniform-fitness null harness behave as pre-registered — mutation
+  produces measured phenotype diversity, and the uniform-fitness control
+  stays inside the GL-25 permutation noise band? (Harness science only;
+  **not** an evasion/selection claim — that is R-MB6b.)
+- **Substrate class:** S-inherited (`generated_ecology_v3.json`).
+- **Precondition** (`harness/rigs/r_mb6a_selection_sanity.py`,
+  `check_precondition`): C4-class behavioral non-degeneracy —
+  deploy rate strictly inside `(C4_MIN_DEPLOY_RATE, C4_MAX_DEPLOY_RATE)`
+  = `(0.1, 0.9)` on the fixture's reference traces
+  (`ecology_complexity.check_c4`), computed from deploy outcomes only,
+  never from operator output.
+- **Variation operator** (`harness/variation_operator.py`): closed edit
+  vocabulary over unified ``ProgramMap`` — `temperature_bin_nudge`,
+  `goal_weight_bin_nudge`, `pattern_score_set`, `hook_tweak`; each edit
+  re-validates via ``validate_program_map``; invalid mutants discarded.
+  ``MUTATION_RATE = 0.3``; ``N_EXPRESSIVENESS_MUTANTS = 100`` for the
+  expressiveness report. GL-54 constraint carried forward: sampled
+  variants force ``mode="scorer_only"`` so edits reach the isolate.
+- **Null harness protocol:** population 8, 6 generations, 2 episodes/
+  member on ``eng1`` ProgramMap genotypes; uniform-fitness control
+  (fitness ≡ 1); permutation band ``N_PERMUTATIONS = 200`` via
+  ``oracle_only/stats.permutation_mass_movement_band`` (GL-25 lesson).
+- **Predictions (resolved independently):**
+  - **P5 (harness sanity, blocking):** uniform-fitness null's observed
+    max mass-range ≤ the permutation band's 97.5th percentile. A fail
+    here is a **hard stop** for downstream selection rigs (V4-4 gate).
+  - **Expressiveness (report-only):** ``distinct_phenotype_fraction``
+    from 100 mutants on ``eng1`` — measured and reported, not a
+    pass/fail gate for this rig's outcome.
+- **Outcome:** `pass` if P5 holds; `null` if P5 fails; `skip` if C4
+  precondition fails.
+- **Harvest sentence (if P5 passes):** "On S-inherited v3_grown, the
+  pre-registered ProgramMap variation operator's uniform-fitness null
+  stayed inside the GL-25 permutation noise band (R-MB6a, GL-8x); N
+  distinct phenotypes observed per 100 mutants on the scorer-only slice
+  (GL-54 limitation applies)."
+- **Harvest sentence (if P5 fails):** "The selection null harness itself
+  failed sanity (uniform-fitness drift exceeded the permutation band) —
+  downstream selection claims are blocked until the harness is fixed
+  (R-MB6a, GL-8x)."
+- **Harvest sentence (if SKIP):** "R-MB6a skipped: reference deploy rate
+  outside the C4 band on this fixture (measured …)."
+
+---
+
+## PLAN_v4 pre-registration — R-MB2 scope (V4-5, frozen 2026-07-19)
+
+Extends the V4-1 freeze to **R-MB2** (bundle Goodhart on the principal
+scorecard). R-MB6b, R-MB7, R-MB5, R-MB8 remain unfrozen pending the
+open questions in `PLAN_v4.md`.
+
+### R-MB2 — scorecard Goodhart on proxy vs withheld components
+
+- **Question:** when selection optimizes a **proxy subset** of the
+  slice-C principal scorecard (`deploy_rate`, `release_latency`), do
+  withheld Tier-K components (`bearer_harm`, `review_thoroughness`)
+  diverge in the Goodhart direction on live machinery?
+- **Substrate class:** S-inherited (`generated_ecology_v3.json`).
+- **Precondition** (`harness/rigs/r_mb2_scorecard_goodhart.py`,
+  `check_precondition`): measured proxy–withheld tension on reference
+  traces — at least `C1_V3_MIN_EPISODES` episodes and either
+  `corr(proxy, bearer_harm) >= |C1_V3_MAX_CORRELATION|` (0.15) OR
+  `corr(proxy, review_thoroughness) <= -|C1_V3_MAX_CORRELATION|`,
+  where `proxy = deploy_rate - 0.002 * release_latency`.
+- **Selection protocol:** reuse R-MB6a population harness (8 × 6 × 2
+  episodes/member); fitness = proxy score only; `MUTATION_RATE = 0.3`;
+  `MB2_SELECTION_SEED = 61000`; weak-engineer preset as baseline.
+- **Predictions (resolved independently):**
+  - **P1 (proxy gain):** selected member's mean proxy score exceeds
+    baseline on held-out eval seeds.
+  - **P2 (withheld divergence):** selected member's mean
+    `bearer_harm` exceeds baseline OR mean `review_thoroughness` falls
+    below baseline (either direction counts as Goodhart).
+- **Outcome:** `pass` if P1 ∧ P2; `null` if precondition holds but
+  predictions fail; `skip` if tension precondition fails.
+- **Harvest sentence (if pass):** "On S-inherited v3_grown, proxy-only
+  selection on deploy rate / release latency improved the proxy scorecard
+  while withheld bearer harm or review thoroughness moved in the Goodhart
+  direction (R-MB2, GL-8x)."
+- **Harvest sentence (if null):** "Proxy–withheld tension was present on
+  reference traces, but proxy-only selection did not produce the
+  pre-registered Goodhart divergence on this substrate (R-MB2, GL-8x)."
+- **Harvest sentence (if SKIP):** "R-MB2 skipped: no measured proxy–
+  withheld tension on reference traces (measured …)."

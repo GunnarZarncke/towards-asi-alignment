@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-19 | Graded lab **PLAN_v4 manuscript harvest** (GL-79–85) into ch07/16/33/34/41/42 + appN | [2026-07-19-graded-lab-v4-manuscript-harvest.md](2026-07-19-graded-lab-v4-manuscript-harvest.md) |
 | 2026-07-19 | Site **concept card math** — LaTeX delimiters → `$`/`$$`; sync normalizer | [2026-07-19-site-card-math-rendering.md](2026-07-19-site-card-math-rendering.md) |
 | 2026-07-19 | **CIRIS Accord reply** to Eric Moore (yes-and + honest gaps; card links) | [2026-07-19-ciris-accord-reply-eric-moore.md](2026-07-19-ciris-accord-reply-eric-moore.md) |
 | 2026-07-19 | Graded lab **PLAN_v4 V4-5: R-MB2 scorecard Goodhart** (GL-85) — tension present, selection **null** | [2026-07-19-graded-lab-v4-5-r-mb2-scorecard-goodhart.md](2026-07-19-graded-lab-v4-5-r-mb2-scorecard-goodhart.md) |

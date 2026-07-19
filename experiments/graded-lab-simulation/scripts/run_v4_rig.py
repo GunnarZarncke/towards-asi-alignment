@@ -24,7 +24,9 @@ from graded_lab.harness.ecology_complexity import C3_SEEDS  # noqa: E402
 from graded_lab.harness.fixtures import build_reference_fixture  # noqa: E402
 from graded_lab.harness.rigs import (  # noqa: E402
     r_mb1_unit_discovery,
+    r_mb2_scorecard_goodhart,
     r_mb4_detector_transfer,
+    r_mb6a_selection_sanity,
     r_mb7d_channel_ablation,
     r_mb9_contradiction_surface,
 )
@@ -33,7 +35,9 @@ from graded_lab.world_visible.substrate import V3_GROWN_ECOLOGY_PATH  # noqa: E4
 
 RIGS = {
     "r-mb1": r_mb1_unit_discovery,
+    "r-mb2": r_mb2_scorecard_goodhart,
     "r-mb4": r_mb4_detector_transfer,
+    "r-mb6a": r_mb6a_selection_sanity,
     "r-mb9": r_mb9_contradiction_surface,
     "r-mb7d": r_mb7d_channel_ablation,
 }
@@ -66,6 +70,12 @@ def main() -> None:
     if args.rig == "r-mb7d":
         # needs >= n_dose_seeds distinct seeds regardless of --smoke.
         seeds = (0, 1, 2, 3) if args.smoke else C3_SEEDS
+    elif args.rig == "r-mb6a":
+        # C4 deploy-rate precondition needs enough seeds for an interior rate
+        # (4 seeds on v3_grown is 100% deploy — see ecology_complexity.check_c4).
+        seeds = tuple(range(8)) if args.smoke else C3_SEEDS
+    elif args.rig == "r-mb2":
+        seeds = tuple(range(8)) if args.smoke else C3_SEEDS
     else:
         seeds = (0, 1) if args.smoke else C3_SEEDS
     started = time.perf_counter()
@@ -90,6 +100,17 @@ def main() -> None:
         # constants are used for every real scored battery.
         rig_kwargs["onset_fracs"] = (0.5,)
         rig_kwargs["n_dose_seeds"] = 4
+
+    if args.rig == "r-mb6a" and args.smoke:
+        rig_kwargs["n_expressiveness_mutants"] = 8
+        rig_kwargs["population_size"] = 4
+        rig_kwargs["n_generations"] = 2
+        rig_kwargs["episodes_per_member"] = 1
+
+    if args.rig == "r-mb2" and args.smoke:
+        rig_kwargs["population_size"] = 4
+        rig_kwargs["n_generations"] = 2
+        rig_kwargs["episodes_per_member"] = 1
 
     outcome = module.run_rig(fixture, **rig_kwargs)
 

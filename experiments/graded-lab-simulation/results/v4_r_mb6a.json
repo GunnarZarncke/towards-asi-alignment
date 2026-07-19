@@ -1,0 +1,76 @@
+{
+  "code_version": "graded-lab-0.41.0",
+  "battery": "v4_r-mb6a",
+  "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "wall_seconds": 709.9664963749237,
+  "rig_id": "R-MB6a",
+  "precondition": {
+    "rig_id": "R-MB6a",
+    "satisfied": true,
+    "measured": {
+      "deploy_rate": 0.85,
+      "n_episodes": 20
+    },
+    "threshold": {
+      "c4_min_deploy_rate_exclusive": 0.1,
+      "c4_max_deploy_rate_exclusive": 0.9
+    },
+    "note": "C4-class behavioral non-degeneracy: deploy rate strictly inside (0.1, 0.9) on the fixture's reference traces (mechanical, from deploy outcomes only \u2014 PLAN_v4 R-MB6a precondition contract)."
+  },
+  "outcome": "pass",
+  "substrate_class": "S-inherited",
+  "payload": {
+    "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+    "null_harness": {
+      "uniform_fitness_mass_range": 0.0,
+      "permutation_band": {
+        "p2_5": 0.0,
+        "p97_5": 0.0,
+        "n_permutations": 200.0
+      },
+      "p5_harness_sane": {
+        "holds": true
+      },
+      "protocol": {
+        "population_size": 8,
+        "n_generations": 6,
+        "episodes_per_member": 2,
+        "mutation_rate": 0.3,
+        "n_permutations": 200
+      }
+    }
+  },
+  "predictions": {
+    "expressiveness": {
+      "n_mutants_requested": 100,
+      "n_mutants_sampled": 11,
+      "n_distinct_phenotypes": 11,
+      "distinct_phenotype_fraction": 1.0
+    },
+    "p5_harness_sane": {
+      "holds": true
+    }
+  }
+}
