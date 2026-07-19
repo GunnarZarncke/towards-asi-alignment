@@ -25,11 +25,7 @@
         "AlignmentProofSpine.AccessModel",
         "AlignmentProofSpine.CCIPenaltiesSys",
         "AlignmentProofSpine.CCIPenaltyWeightsSys",
-        "AlignmentProofSpine.CapturesHandleControl",
-        "AlignmentProofSpine.ControlsHandle",
         "AlignmentProofSpine.Handle",
-        "AlignmentProofSpine.HandleControlPersists",
-        "AlignmentProofSpine.HandleReachesSystem",
         "AlignmentProofSpine.IctrlSys",
         "AlignmentProofSpine.System",
         "AlignmentProofSpine.SystemCorrectionPath",
@@ -48,12 +44,8 @@
         "AlignmentProofSpine.CCIPenaltiesSys",
         "AlignmentProofSpine.CCIPenaltyWeightsSys",
         "AlignmentProofSpine.CCIPreserved",
-        "AlignmentProofSpine.CapturesHandleControl",
         "AlignmentProofSpine.ControlLocusPreserved",
-        "AlignmentProofSpine.ControlsHandle",
         "AlignmentProofSpine.Handle",
-        "AlignmentProofSpine.HandleControlPersists",
-        "AlignmentProofSpine.HandleReachesSystem",
         "AlignmentProofSpine.IctrlSys",
         "AlignmentProofSpine.MemoryLineage",
         "AlignmentProofSpine.Successor",
@@ -73,12 +65,8 @@
         "AlignmentProofSpine.CCIPenaltiesSys",
         "AlignmentProofSpine.CCIPenaltyWeightsSys",
         "AlignmentProofSpine.CCIPreserved",
-        "AlignmentProofSpine.CapturesHandleControl",
         "AlignmentProofSpine.ControlLocusPreserved",
-        "AlignmentProofSpine.ControlsHandle",
         "AlignmentProofSpine.Handle",
-        "AlignmentProofSpine.HandleControlPersists",
-        "AlignmentProofSpine.HandleReachesSystem",
         "AlignmentProofSpine.IctrlSys",
         "AlignmentProofSpine.MemoryLineage",
         "AlignmentProofSpine.Successor",
@@ -110,17 +98,13 @@
         "AlignmentProofSpine.CCIPenaltiesSys",
         "AlignmentProofSpine.CCIPenaltyWeightsSys",
         "AlignmentProofSpine.CCIPreserved",
-        "AlignmentProofSpine.CapturesHandleControl",
         "AlignmentProofSpine.Certified",
         "AlignmentProofSpine.ControlLocusPreserved",
-        "AlignmentProofSpine.ControlsHandle",
         "AlignmentProofSpine.CorrectionIntegrity",
         "AlignmentProofSpine.FilterCoverageAdequate",
         "AlignmentProofSpine.GroundingCertificate",
         "AlignmentProofSpine.GroundingViable",
         "AlignmentProofSpine.Handle",
-        "AlignmentProofSpine.HandleControlPersists",
-        "AlignmentProofSpine.HandleReachesSystem",
         "AlignmentProofSpine.HiddenBIQBoundedSys",
         "AlignmentProofSpine.IctrlSys",
         "AlignmentProofSpine.InferentialCouplingMeasurementValid",
@@ -165,17 +149,13 @@
         "AlignmentProofSpine.CCIPenaltiesSys",
         "AlignmentProofSpine.CCIPenaltyWeightsSys",
         "AlignmentProofSpine.CCIPreserved",
-        "AlignmentProofSpine.CapturesHandleControl",
         "AlignmentProofSpine.Certified",
         "AlignmentProofSpine.ControlLocusPreserved",
-        "AlignmentProofSpine.ControlsHandle",
         "AlignmentProofSpine.CorrectionIntegrity",
         "AlignmentProofSpine.FilterCoverageAdequate",
         "AlignmentProofSpine.GroundingCertificate",
         "AlignmentProofSpine.GroundingViable",
         "AlignmentProofSpine.Handle",
-        "AlignmentProofSpine.HandleControlPersists",
-        "AlignmentProofSpine.HandleReachesSystem",
         "AlignmentProofSpine.HiddenBIQBoundedSys",
         "AlignmentProofSpine.IctrlSys",
         "AlignmentProofSpine.InferentialCouplingMeasurementValid",
@@ -223,13 +203,9 @@
         "AlignmentProofSpine.CCIPenaltiesSys",
         "AlignmentProofSpine.CCIPenaltyWeightsSys",
         "AlignmentProofSpine.CCIPreserved",
-        "AlignmentProofSpine.CapturesHandleControl",
         "AlignmentProofSpine.ConservedPropertySignatureVerifiable",
         "AlignmentProofSpine.ControlLocusPreserved",
-        "AlignmentProofSpine.ControlsHandle",
         "AlignmentProofSpine.Handle",
-        "AlignmentProofSpine.HandleControlPersists",
-        "AlignmentProofSpine.HandleReachesSystem",
         "AlignmentProofSpine.IctrlSys",
         "AlignmentProofSpine.MB10_conserved_property_signature_not_forged",
         "AlignmentProofSpine.MemoryLineage",
@@ -277,12 +253,9 @@
         "AlignmentProofSpine.AccessModel",
         "AlignmentProofSpine.CapturesHandleControl",
         "AlignmentProofSpine.CoincidesWithHumanity",
-        "AlignmentProofSpine.ControlsHandle",
         "AlignmentProofSpine.CorrectingAgentFor",
         "AlignmentProofSpine.GroundingViable",
         "AlignmentProofSpine.Handle",
-        "AlignmentProofSpine.HandleControlPersists",
-        "AlignmentProofSpine.HandleReachesSystem",
         "AlignmentProofSpine.System",
         "AlignmentProofSpine.SystemCorrectionPath",
         "Classical.choice",
@@ -300,12 +273,9 @@
         "AlignmentProofSpine.CactSys",
         "AlignmentProofSpine.CapturesHandleControl",
         "AlignmentProofSpine.CoincidesWithHumanity",
-        "AlignmentProofSpine.ControlsHandle",
         "AlignmentProofSpine.CorrectingAgentFor",
         "AlignmentProofSpine.GroundingViable",
         "AlignmentProofSpine.Handle",
-        "AlignmentProofSpine.HandleControlPersists",
-        "AlignmentProofSpine.HandleReachesSystem",
         "AlignmentProofSpine.IctrlSys",
         "AlignmentProofSpine.System",
         "AlignmentProofSpine.SystemCorrectionPath",
@@ -339,6 +309,134 @@
       "name": "AlignmentProofSpine.MB8_defeater_toy_legitimacy_theater",
       "gloss": "MB8 defeater toy model (legitimacy theater)",
       "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.capture_defeats_correction_integrity",
+      "gloss": "Anti-capture validity of correction: capture of any measured-path handle refutes correction integrity (contrapositive of MB4a; capture is a representable state, not axiomatized away)",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.CoincidesWithHumanity",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.CorrectingAgentFor",
+        "AlignmentProofSpine.CorrectionIntegrity",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.MB4a_measured_path_legitimacy",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.capture_makes_cci_captured_or_invalid",
+      "gloss": "Capture of a measured-path handle makes the CCI status capturedInvalid (failed validity, not a low score) -- no bridge needed",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.CoincidesWithHumanity",
+        "AlignmentProofSpine.CorrectingAgentFor",
+        "AlignmentProofSpine.GroundingViable",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.CorrectionIntegrity_implies_systemPathValidRef",
+      "gloss": "Correction integrity gives a valid reference for the measured path; the anti-capture conjunct comes from MB4a, not from the path's construction",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.CapturesHandleControl",
+        "AlignmentProofSpine.CoincidesWithHumanity",
+        "AlignmentProofSpine.ControlsHandle",
+        "AlignmentProofSpine.CorrectingAgentFor",
+        "AlignmentProofSpine.CorrectionIntegrity",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.HandleControlPersists",
+        "AlignmentProofSpine.HandleReachesSystem",
+        "AlignmentProofSpine.MB4a_measured_path_legitimacy",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.P30_safe_of_case",
+      "gloss": "Safety case + tolerance to abstract Safe, via MB11 (safety-case adequacy) -- the record is consumed, the open step is the labeled bridge",
+      "axioms": [
+        "AlignmentProofSpine.AccessModel",
+        "AlignmentProofSpine.AdversariallyRobust",
+        "AlignmentProofSpine.BasinStableSys",
+        "AlignmentProofSpine.BearerTransport",
+        "AlignmentProofSpine.BoundaryAligned",
+        "AlignmentProofSpine.BundleTransport",
+        "AlignmentProofSpine.CCIPenaltiesSys",
+        "AlignmentProofSpine.CCIPenaltyWeightsSys",
+        "AlignmentProofSpine.Certified",
+        "AlignmentProofSpine.CorrectionIntegrity",
+        "AlignmentProofSpine.GroundingViable",
+        "AlignmentProofSpine.Handle",
+        "AlignmentProofSpine.IctrlSys",
+        "AlignmentProofSpine.MB11_safety_case_adequacy",
+        "AlignmentProofSpine.Safe",
+        "AlignmentProofSpine.SatisfiesInvariants",
+        "AlignmentProofSpine.SuccessorStable",
+        "AlignmentProofSpine.System",
+        "AlignmentProofSpine.SystemCorrectionPath",
+        "AlignmentProofSpine.WithinDeploymentRiskTolerance"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.thornley_post_incompleteness",
+      "gloss": "Thornley IPP: POST preferences are provably incomplete (preferential gap between different shutdown timesteps)",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.thornley_td_no_shutdown_manipulation",
+      "gloss": "Thornley IPP: a timestep-dominance agent never pays to shift shutdown-time probability (fully proved, no axioms expected)",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.soares_prevention_incentive",
+      "gloss": "Soares et al. incentive theorem: EU maximizer with U_N > U_S strictly prefers lowering press probability",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.soares_indifference_knife_edge",
+      "gloss": "Soares et al.: utility indifference is destroyed by any nonzero compensation error",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.oa_bellman_target_unique",
+      "gloss": "Orseau-Armstrong structure, proved: finite-horizon Bellman target uniqueness",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.oa_safe_interruptibility_learned_target",
+      "gloss": "Orseau-Armstrong conclusion shape: differently-interrupted learners on the same base task converge to the same Q; rests on the single statement-bearing OA2016 convergence import",
+      "axioms": [
+        "AlignmentProofSpine.FieldFinite.OA2016_offpolicy_qlearning_convergence",
+        "AlignmentProofSpine.FieldFinite.OAConvergenceConditions",
+        "Classical.choice",
+        "Quot.sound",
         "propext"
       ]
     }

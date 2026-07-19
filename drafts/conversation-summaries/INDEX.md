@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-19 | **Lean spine hostile-critique fixes** — `MB4a` anti-capture, `S10`, `MB11` safety-case adequacy; Thornley/Soares/Orseau–Armstrong rederived in `Field/Finite/` | [2026-07-19-lean-spine-hostile-critique-fixes.md](2026-07-19-lean-spine-hostile-critique-fixes.md) |
 | 2026-07-19 | Graded lab **GL-79–85 on companion site** (`experiments.yml` + sync) | [2026-07-19-graded-lab-site-experiments-sync.md](2026-07-19-graded-lab-site-experiments-sync.md) |
 | 2026-07-19 | Graded lab **PLAN_v4 manuscript harvest** (GL-79–85) into ch07/16/33/34/41/42 + appN | [2026-07-19-graded-lab-v4-manuscript-harvest.md](2026-07-19-graded-lab-v4-manuscript-harvest.md) |
 | 2026-07-19 | Site **concept card math** — LaTeX delimiters → `$`/`$$`; sync normalizer | [2026-07-19-site-card-math-rendering.md](2026-07-19-site-card-math-rendering.md) |

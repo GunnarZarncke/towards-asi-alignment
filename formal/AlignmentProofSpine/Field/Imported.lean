@@ -30,8 +30,12 @@ def OA2016_safe_interruptibility_meta : ImportedFieldTheorem where
   sourceClaim := "A modified learning setup can avoid incentives to prevent or seek interruption."
   sourceAssumptions := "Orseau--Armstrong learning setup and interrupt-modification assumptions."
   localConclusion := "Safe interruption is a one-bit incentive-neutrality property."
-  localUse := "Imported as the field theorem handle; local Lean proves it does not imply broad correction-channel preservation."
+  localUse := "Legacy opaque handle. The statement-bearing import is Field.Finite.BellmanQ.OA2016_offpolicy_qlearning_convergence; the deterministic structure around it (target uniqueness, schedule invariance, value-iteration correctness) is proved locally."
 
+/-- Legacy opaque handle (an unspecified proposition, carrying no logical
+    content). Kept only for manuscript cross-references; superseded by the
+    statement-bearing `OA2016_offpolicy_qlearning_convergence` in
+    `Field.Finite.BellmanQ`. -/
 axiom OA2016_safe_interruptibility_under_modification : Prop
 
 def soares2015_corrigibility_meta : ImportedFieldTheorem where
@@ -41,8 +45,12 @@ def soares2015_corrigibility_meta : ImportedFieldTheorem where
   sourceClaim := "Straightforward utility maximization tends not to preserve corrigibility or shutdownability without special structure."
   sourceAssumptions := "MIRI corrigibility framing and utility-maximization setup."
   localConclusion := "Shutdownability is narrower than correction-channel integrity."
-  localUse := "Imported as background; local Lean supplies finite utility and projection analogues."
+  localUse := "The incentive core (manipulation incentives, indifference works locally / is a knife edge / buys no preservation) is rederived in Field.Finite.ShutdownIncentives; this handle covers only the source's full POMDP/decision-tree setting."
 
+/-- Legacy opaque handle (an unspecified proposition, carrying no logical
+    content). The paper's incentive theorems are rederived finitely in
+    `Field.Finite.ShutdownIncentives`; this handle stands only for the parts
+    not re-proved (full POMDP setting, subagent corrigibility). -/
 axiom Soares2015_corrigibility_problem_imported : Prop
 
 def christiano2018_corrigibility_meta : ImportedFieldTheorem where

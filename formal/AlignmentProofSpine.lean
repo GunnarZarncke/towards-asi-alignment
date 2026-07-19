@@ -44,12 +44,15 @@ What is **proved** vs. **assumed**:
 * Proved in Lean: the logical / arithmetic / finite-combinatorial steps and the
   separation counterexamples (built from finite toy models).
 * Assumed as bridges (`axiom`): the empirical / philosophical / external-theory
-  steps `MB1`–`MB9` (packaged in `Core.BridgeAssumptions`) plus `MB10`
-  (`Forgeability.lean`, threaded explicitly like `SuccessorAuditLinks`
-  because it needs the numeric risk leaf), and the model-selection
-  convention `S07`.
+  steps `MB1`–`MB9` (packaged in `Core.BridgeAssumptions`) plus the explicitly
+  threaded `MB4a` (measured-path legitimacy incl. anti-capture,
+  `Correction.lean`), `MB10` (`Forgeability.lean`), and `MB11` (safety-case
+  adequacy, `Certification.lean`), and the measurement conventions `S07`
+  (MDL ordering) and `S10` (blanket-measurand coherence).
 * Imported as field theorem handles: source-cited external agenda results in
-  `AlignmentProofSpine.Field.Imported`, kept distinct from `MB*` book bridges.
+  `AlignmentProofSpine.Field.Imported` (opaque handles) and the
+  statement-bearing `OA2016_offpolicy_qlearning_convergence`
+  (`Field/Finite/BellmanQ.lean`), kept distinct from `MB*` book bridges.
 
 The book may cite each theorem as one of three kinds — *proof*, *counterexample*,
 or *bridge* — exactly as set out in the implementation brief.

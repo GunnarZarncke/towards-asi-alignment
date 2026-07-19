@@ -75,10 +75,31 @@ noncomputable def KSys (A : System) : Int := CsensSys A + CactSys A
 noncomputable def BIQSys (A : System) : Int :=
   BIQ (IpredSys A) (IctrlSys A) (HmemSys A) (SurpriseSys A) (betaSys A) (gammaSys A)
 
-axiom IpredSys_le_Csens (A : System) : IpredSys A ≤ CsensSys A
-axiom IctrlSys_le_Cact (A : System) : IctrlSys A ≤ CactSys A
-axiom BIQSys_mem_penalty_nonneg (A : System) : 0 ≤ betaSys A * HmemSys A
-axiom BIQSys_surp_penalty_nonneg (A : System) : 0 ≤ gammaSys A * SurpriseSys A
+/-- **S10** (blanket-measurand coherence convention). The per-system B-IQ
+    measurands respect the Markov-blanket capacity semantics they are named
+    after: measured predictive/control information does not exceed the
+    corresponding channel capacity, and the memory/surprise penalty terms are
+    nonnegative. This is a *measurement convention* in the same class as `S07`
+    (any procedure violating it is measuring something other than the ch11
+    quantities), but it is a substantive assumption about the measurement
+    pipeline, not a theorem — so it is a single labeled axiom rather than four
+    anonymous ones. Structured profiles that carry these facts as fields
+    (`MarkovBlanketBIQProfile`) do not need it. -/
+axiom S10_blanket_measurand_coherence (A : System) :
+  IpredSys A ≤ CsensSys A ∧ IctrlSys A ≤ CactSys A ∧
+  0 ≤ betaSys A * HmemSys A ∧ 0 ≤ gammaSys A * SurpriseSys A
+
+theorem IpredSys_le_Csens (A : System) : IpredSys A ≤ CsensSys A :=
+  (S10_blanket_measurand_coherence A).1
+
+theorem IctrlSys_le_Cact (A : System) : IctrlSys A ≤ CactSys A :=
+  (S10_blanket_measurand_coherence A).2.1
+
+theorem BIQSys_mem_penalty_nonneg (A : System) : 0 ≤ betaSys A * HmemSys A :=
+  (S10_blanket_measurand_coherence A).2.2.1
+
+theorem BIQSys_surp_penalty_nonneg (A : System) : 0 ≤ gammaSys A * SurpriseSys A :=
+  (S10_blanket_measurand_coherence A).2.2.2
 
 /-! ### Effective control (ch11 §physical envelopes)
 
