@@ -19,4 +19,4 @@ User: "reflect in site" after manuscript harvest; then end-of-session commit.
 - `site/src/data/experiments.json`
 
 ## Commits
-- (pending this session)
+- `a9616e2` Sync graded-lab PLAN_v4 findings (GL-79–85) to companion site.
