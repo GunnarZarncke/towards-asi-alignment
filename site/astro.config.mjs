@@ -5,12 +5,19 @@ import rehypeKatex from "rehype-katex";
 
 const site = "https://towards-alignment.com";
 
+const botOrientationPages = [
+  `${site}/llms.txt`,
+  `${site}/llms-full.txt`,
+  `${site}/reviewing-for-agents.md`,
+  `${site}/search-index.json`
+];
+
 export default defineConfig({
   site,
   trailingSlash: "always",
   integrations: [
     sitemap({
-      customPages: [`${site}/towards-superintelligence-alignment.pdf`]
+      customPages: [`${site}/towards-superintelligence-alignment.pdf`, ...botOrientationPages]
     })
   ],
   markdown: {

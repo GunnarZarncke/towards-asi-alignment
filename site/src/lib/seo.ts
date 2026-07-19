@@ -9,6 +9,12 @@ export const OG_IMAGE_PATH = "/og-image.png";
 export const OG_IMAGE_URL = `${SITE_ORIGIN}${OG_IMAGE_PATH}`;
 export const OG_IMAGE_ALT =
   "Towards Superintelligence Alignment — companion site for the research manuscript";
+export const LLMS_TXT_PATH = "/llms.txt";
+export const LLMS_TXT_URL = `${SITE_ORIGIN}${LLMS_TXT_PATH}`;
+export const SEARCH_INDEX_JSON_PATH = "/search-index.json";
+export const SEARCH_INDEX_JSON_URL = `${SITE_ORIGIN}${SEARCH_INDEX_JSON_PATH}`;
+export const SEARCH_INDEX_DOC_PATH = "/search-index/";
+export const SEARCH_INDEX_DOC_URL = `${SITE_ORIGIN}${SEARCH_INDEX_DOC_PATH}`;
 /** Cloudflare Web Analytics beacon token (public; override with PUBLIC_CF_WEB_ANALYTICS_TOKEN). */
 export const CF_WEB_ANALYTICS_TOKEN = "415dc5b7862f4b47a7f41047bbd6c81e";
 

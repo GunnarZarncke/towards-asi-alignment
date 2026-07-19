@@ -8,8 +8,10 @@ import { pdfHref } from "../lib/site-urls";
 import {
   AUTHOR_NAME,
   DEFAULT_DESCRIPTION,
+  LLMS_TXT_URL,
   OG_IMAGE_ALT,
   OG_IMAGE_URL,
+  SEARCH_INDEX_JSON_URL,
   SITE_NAME,
   absoluteSiteUrl,
   pageTitle as buildPageTitle,
@@ -42,6 +44,15 @@ const canonicalUrl = absoluteSiteUrl(Astro.url.pathname, siteOrigin);
 const metaDescription = truncateDescription(description);
 const pdfUrl = pdfHref(base);
 const robots = noindex ? "noindex, follow" : "index, follow";
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: siteOrigin,
+  description: DEFAULT_DESCRIPTION,
+  author: { "@type": "Person", name: AUTHOR_NAME },
+  publisher: { "@type": "Organization", name: SITE_NAME }
+};
 ---
 
 <!doctype html>
@@ -53,6 +64,8 @@ const robots = noindex ? "noindex, follow" : "index, follow";
     <meta name="author" content={AUTHOR_NAME} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="text/plain" href={LLMS_TXT_URL} title="LLM / agent orientation (llms.txt)" />
+    <link rel="alternate" type="application/json" href={SEARCH_INDEX_JSON_URL} title="Site search index" />
     <title>{pageTitle}</title>
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={metaDescription} />
@@ -67,6 +80,7 @@ const robots = noindex ? "noindex, follow" : "index, follow";
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
   </head>
   <body>
     <div class="shell">

@@ -101,3 +101,8 @@ src/content/cards/releases-updates.md
 
 # Generated from concepts + chapters + notation via build-search-index.mjs.
 public/search-index.json
+
+# Generated from repo-root llms.txt and REVIEWING_FOR_AGENTS.md via sync-bot-orientation.mjs.
+public/llms.txt
+public/llms-full.txt
+public/reviewing-for-agents.md

@@ -2,6 +2,8 @@
 
 Fast orientation for AI/coding agents asked to review or critique this manuscript without editing it. Strongly consier reading all 137 lines.
 
+Also served at https://towards-alignment.com/reviewing-for-agents.md (synced at site build). Entry index: https://towards-alignment.com/llms.txt and repo-root `llms.txt`.
+
 ## Scope
 
 This file is for review-only sessions. Do not edit files unless the user explicitly asks for edits. Your job is to find risks, gaps, hidden assumptions, missing cross-references, unclear claim strength, and places where the manuscript hides its strongest results.

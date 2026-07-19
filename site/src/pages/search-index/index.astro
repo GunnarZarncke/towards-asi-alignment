@@ -1,0 +1,84 @@
+---
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import {
+  LLMS_TXT_URL,
+  SEARCH_INDEX_DOC_URL,
+  SEARCH_INDEX_JSON_URL
+} from "../../lib/seo";
+
+type SearchEntry = { title: string; type: string; summary: string; url: string };
+type SearchIndexPayload = {
+  version?: number;
+  generatedAt?: string;
+  entryCount?: number;
+  entries: SearchEntry[];
+};
+
+const indexPath = path.join(process.cwd(), "public", "search-index.json");
+const raw = JSON.parse(readFileSync(indexPath, "utf8")) as SearchEntry[] | SearchIndexPayload;
+const entries = Array.isArray(raw) ? raw : raw.entries;
+const generatedAt = Array.isArray(raw) ? undefined : raw.generatedAt;
+const entryCount = entries.length;
+const typeCounts = entries.reduce<Record<string, number>>((acc, entry) => {
+  acc[entry.type] = (acc[entry.type] ?? 0) + 1;
+  return acc;
+}, {});
+const sortedTypes = Object.entries(typeCounts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+---
+
+<SiteLayout
+  title="Search index"
+  description="Machine-readable JSON index of site cards, chapters, experiments, and notation — the same data the header search uses."
+>
+  <section class="hero">
+    <p class="eyebrow">For bots and tools</p>
+    <h1>Search index</h1>
+    <p class="lede">
+      The header search box fetches this JSON and filters it in the browser. You can use the same file for programmatic lookup.
+    </p>
+  </section>
+
+  <section class="readable content-card">
+    <h2>JSON endpoint</h2>
+    <p>
+      <a href={SEARCH_INDEX_JSON_URL}><code>{SEARCH_INDEX_JSON_URL}</code></a>
+    </p>
+    {generatedAt && (
+      <p class="side-panel-meta">
+        Last generated at build/sync: {new Date(generatedAt).toUTCString()} · {entryCount} entries
+      </p>
+    )}
+
+    <h2>Entry shape</h2>
+    <pre><code>{`{
+  "title": "Card or symbol title",
+  "type": "concept | chapter | notation | …",
+  "summary": "One-line blurb from frontmatter",
+  "url": "/cards/…/ or /notation/"
+}`}</code></pre>
+
+    <h2>Included</h2>
+    <ul>
+      {sortedTypes.map(([type, count]) => (
+        <li><code>{type}</code> — {count}</li>
+      ))}
+    </ul>
+    <p>
+      Reference bibliography cards (~380 entries) are excluded. For citations, use
+      <a href="/references/">References</a>.
+    </p>
+
+    <h2>Matching</h2>
+    <p>
+      The UI uses simple substring match over <code>title</code>, <code>type</code>, and <code>summary</code> — not full-text search. For orientation and review guidance, see
+      <a href={LLMS_TXT_URL}>llms.txt</a>.
+    </p>
+
+    <h2>Canonical page</h2>
+    <p>
+      <a href={SEARCH_INDEX_DOC_URL}>{SEARCH_INDEX_DOC_URL}</a>
+    </p>
+  </section>
+</SiteLayout>

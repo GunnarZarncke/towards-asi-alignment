@@ -35,7 +35,7 @@ This repository is a **requirements decomposition with in-principle estimands**:
 
 | | |
 |---|---|
-| **Companion website** | **[towards-alignment.com](https://towards-alignment.com/)** — guided reading paths, concept cards, chapter pages, Lean playgrounds, demos |
+| **Companion website** | **[towards-alignment.com](https://towards-alignment.com/)** — guided reading paths, concept cards, chapter pages, Lean playgrounds, demos · bot orientation: [`/llms.txt`](https://towards-alignment.com/llms.txt) |
 | **PDF** | [Read in browser](https://towards-alignment.com/towards-superintelligence-alignment.pdf) · [GitHub release](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: [`docs/BUILD.md`](docs/BUILD.md) |
 
 **New reader?** Open the [**Guided tour**](https://towards-alignment.com/paths/) on the companion site. Pick a path (generalist, researcher, engineer, funder, philosopher); each lists what you will learn, in what order, and why—without assuming you already know the book's vocabulary.

@@ -40,9 +40,9 @@ const base = import.meta.env.BASE_URL;
     if (!indexPromise) {
       indexPromise = fetch(`${base}search-index.json`.replace(/\/\//g, "/"))
         .then((res) => res.json())
-        .then((data: SearchEntry[]) => {
-          index = data;
-          return data;
+        .then((data: SearchEntry[] | { entries?: SearchEntry[] }) => {
+          index = Array.isArray(data) ? data : (data.entries ?? []);
+          return index;
         })
         .catch(() => {
           index = [];
@@ -271,7 +271,18 @@ const base = import.meta.env.BASE_URL;
   }
 
   @media (max-width: 760px) {
+    .site-search {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+
     .site-search-input {
+      width: 100%;
+    }
+
+    .site-search-results {
+      right: auto;
+      left: 0;
       width: 100%;
     }
   }

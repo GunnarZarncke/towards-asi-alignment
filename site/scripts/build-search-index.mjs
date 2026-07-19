@@ -1,12 +1,11 @@
-// Builds public/search-index.json: a flat, client-fetchable index over concept
+// Builds public/search-index.json: a documented, client-fetchable index over concept
 // cards (glossary/gem/bridge/projection/objection/institutional/standalone/
 // release), chapter + appendix cards, experiment cards, and notation symbols.
 // Reference cards (site/src/content/cards/references/, ~380 bibliography
 // entries) are intentionally excluded — see the content sync plumbing plan.
 //
-// This script only writes the data file; wiring an actual search UI against
-// it is a separate follow-up task.
-//
+// Output is a versioned JSON object with metadata plus an `entries` array.
+// SiteSearch and /search-index/ consume the same file.
 // Usage: node scripts/build-search-index.mjs [--check]
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -102,7 +101,17 @@ async function main() {
   const check = process.argv.includes("--check");
   const entries = await buildEntries();
   const outPath = path.join(siteRoot, "public", "search-index.json");
-  const json = JSON.stringify(entries, null, 2) + "\n";
+  const payload = {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    site: "https://towards-alignment.com",
+    documentation: "https://towards-alignment.com/search-index/",
+    description:
+      "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
+    entryCount: entries.length,
+    entries
+  };
+  const json = JSON.stringify(payload, null, 2) + "\n";
 
   if (check) {
     let existing = "";

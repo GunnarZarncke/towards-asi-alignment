@@ -2,12 +2,30 @@
 
 > A research manuscript and formal proof-spine project about preserving grounded, human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and socio-technical selection pressure.
 
-This repository is a book-length alignment framework, not a finished proof that superintelligence is safe. It combines manuscript chapters, generated metadata, bibliography, context extracts, and a small Lean 4 proof spine that tracks logical dependencies, counterexamples, and empirical/philosophical bridge assumptions.
+This file is also served at https://towards-alignment.com/llms.txt (generated at site build from this repo-root source). A fuller bundle lives at https://towards-alignment.com/llms-full.txt.
 
-## Start Here
+## Companion Site
+
+Orientation layer for humans and bots at https://towards-alignment.com/ — the PDF remains the canonical long-form artifact.
+
+- [Start Here](https://towards-alignment.com/): homepage, thesis, standalone claims, failure modes.
+- [Guided tour](https://towards-alignment.com/paths/): audience-specific reading paths.
+- [Concept cards](https://towards-alignment.com/cards/): short cards (concepts, bridges, projections, chapters).
+- [FAQ](https://towards-alignment.com/faq/): common questions and caveats.
+- [Book map](https://towards-alignment.com/book/): chapter and appendix index with synced excerpts.
+- [Lean spine](https://towards-alignment.com/lean/): proof-spine graphs and playgrounds.
+- [Experiments](https://towards-alignment.com/experiments/): empirical sanity-check lines and coverage.
+- [What we are not claiming](https://towards-alignment.com/cards/what-not-claiming/): scope limits.
+- [Reviewing for agents](https://towards-alignment.com/reviewing-for-agents.md): read-only review guide for LLMs (repo source: `REVIEWING_FOR_AGENTS.md`).
+- [Search index (JSON)](https://towards-alignment.com/search-index.json): flat title/type/summary/url index for programmatic lookup; docs at [/search-index/](https://towards-alignment.com/search-index/).
+- [Sitemap](https://towards-alignment.com/sitemap-index.xml): crawl index for all routes.
+- [PDF](https://towards-alignment.com/towards-superintelligence-alignment.pdf): canonical manuscript.
+- [GitHub repository](https://github.com/GunnarZarncke/towards-asi-alignment): full LaTeX source, Lean spine, experiments.
+
+## Repository (clone / deep review)
 
 - `README.md` - project overview, repository map, build commands.
-- `REVIEWING_FOR_AGENTS.md` - fast orientation for read-only AI/coding agents.
+- `REVIEWING_FOR_AGENTS.md` - fast orientation for read-only AI/coding agents (also at https://towards-alignment.com/reviewing-for-agents.md).
 - `frontmatter/introduction.tex` - thesis, six claims, how to read the book.
 - `frontmatter/executive-overview.tex` - short executive framing.
 - `tables/part-roadmap.tex` - generated part-by-part roadmap.

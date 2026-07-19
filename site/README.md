@@ -87,7 +87,11 @@ Output: `site/dist/`
 | `scripts/sync-book-yml.mjs` | Generates `src/data/book.json` from `metadata/book.yml` |
 | `scripts/sync-experiments.mjs` | Generates `src/data/experiments.json` and experiment cards from `metadata/experiments.yml` (includes lab-sim **Lean leak-proof** link when `leakProofPath` is set) |
 | `astro.config.mjs` | Site URL (`https://towards-alignment.com`), `@astrojs/sitemap`, build options |
-| `public/robots.txt` | Crawler rules and sitemap index URL |
+| `public/robots.txt` | Crawler rules, sitemap index URL, pointer to `llms.txt` |
+| `public/llms.txt` | Bot / LLM orientation (synced from repo-root `llms.txt` via `sync-bot-orientation.mjs`) |
+| `public/llms-full.txt` | Expanded orientation bundle (`llms.txt` + `reviewing-for-agents.md`) |
+| `public/reviewing-for-agents.md` | Read-only review guide for agents (from `REVIEWING_FOR_AGENTS.md`) |
+| `public/search-index.json` | Flat JSON index for programmatic lookup (built by `build-search-index.mjs`); documented at `/search-index/` |
 | `public/og-image.png` | Default Open Graph / Twitter preview image (1200×630) |
 | `src/lib/seo.ts` | Site name, canonical URL helpers, default description |
 
