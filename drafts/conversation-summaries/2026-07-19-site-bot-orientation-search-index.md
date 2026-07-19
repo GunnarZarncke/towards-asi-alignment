@@ -27,4 +27,4 @@ Fix mobile search dropdown clipping; improve companion-site interpretability for
 - `site/src/layouts/SiteLayout.astro`, `site/src/lib/seo.ts`
 
 ## Commits
-- (this session)
+- `4389441` Improve site bot orientation and expose the search index for tools.
