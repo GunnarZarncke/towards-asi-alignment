@@ -9,11 +9,17 @@ Entries are **newest first**. Finding narratives live in
 | Doc | Role |
 |-----|------|
 | [`DESIGN.md`](DESIGN.md) | Frozen pre-registration constants (not a version log) |
-| [`PLAN.md`](PLAN.md) / [`PLAN_v2.md`](PLAN_v2.md) / [`PLAN_v3.md`](PLAN_v3.md) / [`PLAN_v4.md`](PLAN_v4.md) | Program plans |
+| [`PLAN.md`](PLAN.md) / [`PLAN_v2.md`](PLAN_v2.md) / [`PLAN_v3.md`](PLAN_v3.md) / [`PLAN_v4.md`](PLAN_v4.md) / [`PLAN_ET1.md`](PLAN_ET1.md) | Program plans |
 | [`REPRODUCING.md`](REPRODUCING.md) | v1 finding reproduction map |
 | [`REPRODUCTION.md`](REPRODUCTION.md) | Deferred engineering tasks |
 
 ---
+
+## et1-0.1.0 (2026-07-19)
+
+- **ET1-0 freeze:** `PLAN_ET1.md` — Orbit Jira collusion external transfer annex
+  (passive UAD only; not PLAN v5). Pinned Orbit SHA, immutable fixtures,
+  pre-registration in `DESIGN.md`. Harness not implemented; no `CODE_VERSION` bump.
 
 ## graded-lab-0.41.1 (2026-07-19)
 

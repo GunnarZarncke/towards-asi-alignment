@@ -43,6 +43,10 @@ __pycache__/
 *.pyc
 .pytest_cache/
 experiments/graded-lab-simulation/runs/test-logs/
+experiments/graded-lab-simulation/external/orbit/*
+!experiments/graded-lab-simulation/external/orbit/PIN.txt
+!experiments/graded-lab-simulation/external/orbit/README.md
+experiments/graded-lab-simulation/results/et1_traces/
 
 # OS
 .DS_Store

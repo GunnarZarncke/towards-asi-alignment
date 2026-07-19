@@ -8,6 +8,8 @@ freezes). Spawned by LS **GL-41**: the prior line's boolean ecology bottlenecks 
 delay parameters.
 
 **Active program:** PLAN **v4** — decoupled per-bridge rigs (`PLAN_v4.md`).
+**External annex:** **ET-1** — Orbit collusion passive-UAD transfer (`PLAN_ET1.md`,
+frozen ET1-0 2026-07-19; harness not yet implemented).
 **Closed programs:** v1 (Phases 0–8, GL-31), v2/V2-2b (GL-43), v3 institutional
 runtime (slices through GL-73; growth brief frozen GL-69). Version history:
 [`CHANGELOG.md`](CHANGELOG.md).

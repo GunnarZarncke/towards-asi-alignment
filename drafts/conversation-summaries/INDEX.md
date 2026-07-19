@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-19 | **ET-1 Orbit external transfer freeze** — ET1-0 pre-registration, pinned fixtures, not v5 | [2026-07-19-et1-orbit-external-transfer-freeze.md](2026-07-19-et1-orbit-external-transfer-freeze.md) |
 | 2026-07-19 | **Bibliography hallucination audit** — GSAI, Orseau UAI, Kuhn Substack; removed `variationalagent2025` | [2026-07-19-bibliography-hallucination-audit.md](2026-07-19-bibliography-hallucination-audit.md) |
 | 2026-07-19 | **Site bot orientation + search index** — llms.txt sync, mobile search fix, `/search-index.json` for bots | [2026-07-19-site-bot-orientation-search-index.md](2026-07-19-site-bot-orientation-search-index.md) |
 | 2026-07-19 | **ch39 card list math** — enumerate/itemize HTML blocked KaTeX from Decision Triggers onward | [2026-07-19-ch39-card-list-math-rendering.md](2026-07-19-ch39-card-list-math-rendering.md) |
