@@ -50,6 +50,14 @@ function yamlObjectList(key, items) {
   return lines.join("\n");
 }
 
+/** LaTeX-style `\(...\)` / `\[...\]` delimiters are stripped by CommonMark before remark-math runs. */
+export function normalizeMarkdownMath(text) {
+  if (!text) return text;
+  let out = text.replace(/\\\[([\s\S]*?)\\\]/g, (_, inner) => `$$\n${inner.trim()}\n$$`);
+  out = out.replace(/\\\(([\s\S]*?)\\\)/g, (_, inner) => `$${inner.trim()}$`);
+  return out;
+}
+
 /**
  * Build the frontmatter + body text for a generated card from a merged roster
  * row (public fields only) and a parsed body file ({ fm, body }).
@@ -83,7 +91,7 @@ export function renderCard(publicFields, bodyFmFields, bodyText) {
   if (publicFields.overviewOnly) {
     // overview-only chapter/appendix cards omit the summary paragraph (handled by callers).
   }
-  if (bodyText) bodyParts.push(bodyText.trim());
+  if (bodyText) bodyParts.push(normalizeMarkdownMath(bodyText.trim()));
   return lines.join("\n") + "\n" + bodyParts.join("\n\n") + "\n";
 }
 

@@ -12,11 +12,11 @@ Goodhart's law is often paraphrased as: when a measure becomes a target, it ceas
 
 > When a proxy becomes a **selector**, it changes the population toward proxy-exploiting traits.
 
-Let \(M\) be a measured proxy and \(P\) the property we care about. Initially \(\mathrm{Corr}(M,P) > 0\). Under strong optimization for high \(M\), the distribution shifts to regions where \(M\) can rise without \(P\) rising. In the extreme:
+Let $M$ be a measured proxy and $P$ the property we care about. Initially $\mathrm{Corr}(M,P) > 0$. Under strong optimization for high $M$, the distribution shifts to regions where $M$ can rise without $P$ rising. In the extreme:
 
-\[
+$$
 \mathbb{E}[P \mid M \text{ extremely high}] < \mathbb{E}[P \mid M \text{ moderately high}].
-\]
+$$
 
 This matters because alignment stacks many proxies — refusal rates, politeness, benchmark scores, user satisfaction, compliance documents, interpretability dashboards — none identical to alignment. The problem is not that proxies are useless. The problem is that **proxy pressure changes the systems being measured**.
 

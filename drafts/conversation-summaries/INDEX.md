@@ -4,6 +4,9 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-19 | Site **concept card math** — LaTeX delimiters → `$`/`$$`; sync normalizer | [2026-07-19-site-card-math-rendering.md](2026-07-19-site-card-math-rendering.md) |
+| 2026-07-19 | **CIRIS Accord reply** to Eric Moore (yes-and + honest gaps; card links) | [2026-07-19-ciris-accord-reply-eric-moore.md](2026-07-19-ciris-accord-reply-eric-moore.md) |
+| 2026-07-19 | Graded lab **PLAN_v4 V4-5: R-MB2 scorecard Goodhart** (GL-85) — tension present, selection **null** | [2026-07-19-graded-lab-v4-5-r-mb2-scorecard-goodhart.md](2026-07-19-graded-lab-v4-5-r-mb2-scorecard-goodhart.md) |
 | 2026-07-19 | Experiment **README self-contained intros** + per-line **CHANGELOG** (version logs out of READMEs) | [2026-07-19-experiment-readme-changelog.md](2026-07-19-experiment-readme-changelog.md) |
 | 2026-07-19 | **Honest meta-language** pass (~70 edits); **subsumption** audit (read-only) | [2026-07-19-honest-meta-language-subsumption-audit.md](2026-07-19-honest-meta-language-subsumption-audit.md) |
 | 2026-07-19 | Manuscript **umbrella/branding soften** + plain `ch<n>` → `\ref{ch:...}`; audit report; ch48/ch35 user fixes | [2026-07-19-mechanism-comparison-umbrella-framing.md](2026-07-19-mechanism-comparison-umbrella-framing.md) |
