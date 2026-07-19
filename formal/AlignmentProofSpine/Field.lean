@@ -8,7 +8,13 @@ import AlignmentProofSpine.Field.Finite.Probability
 import AlignmentProofSpine.Field.Finite.Interruptibility
 import AlignmentProofSpine.Field.Finite.IncompletePreferences
 import AlignmentProofSpine.Field.Finite.ShutdownIncentives
+import AlignmentProofSpine.Field.Finite.DynamicChoice
 import AlignmentProofSpine.Field.Finite.BellmanQ
+import AlignmentProofSpine.Field.Finite.OffSwitchGame
+import AlignmentProofSpine.Field.Finite.QuantilizerMaximin
+import AlignmentProofSpine.Field.Finite.DebateGame
+import AlignmentProofSpine.Field.Finite.ELKIdentifiability
+import AlignmentProofSpine.Field.Finite.AmplificationTree
 import AlignmentProofSpine.Field.Finite.PMF
 import AlignmentProofSpine.Field.Finite.ShannonMI
 import AlignmentProofSpine.Field.Finite.TraceBIQ
@@ -21,6 +27,7 @@ import AlignmentProofSpine.Field.Impact
 import AlignmentProofSpine.Field.Quantilization
 import AlignmentProofSpine.Field.Debate
 import AlignmentProofSpine.Field.ELK
+import AlignmentProofSpine.Field.Amplification
 
 /-!
 # AlignmentProofSpine.Field
@@ -39,7 +46,8 @@ def allFieldResultRecords : List FieldResultRecord :=
   impact_field_result_records ++
   quantilization_field_result_records ++
   debate_field_result_records ++
-  elk_field_result_records
+  elk_field_result_records ++
+  amplification_field_result_records
 
 theorem allFieldResultRecords_nonempty :
     allFieldResultRecords ≠ [] := by

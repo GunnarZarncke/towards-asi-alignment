@@ -1194,6 +1194,11 @@ theorem latent_readout_not_correction_uptake :
       ToyLatentReadout s ∧ ¬ ToyCorrectionUptake s :=
   ⟨elkReadoutSeparationStep, latent_readout_separated_from_uptake_step⟩
 
+/-- Legacy `Bool` toy, superseded by the real decomposition-tree machinery in
+    `Field.Finite.AmplificationTree` (`local_steps_always_valid`,
+    `local_supervision_without_leaf_truth_unsound`): local recursive
+    supervision is free for any supervisor policy and certifies nothing about
+    answer truth. Kept only for the legacy separation record below. -/
 abbrev ToyLocalRecursiveSupervision (_ : Bool) : Prop := True
 abbrev ToyCorrectionContraction (a : Bool) : Prop := a = true
 

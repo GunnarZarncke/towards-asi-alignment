@@ -439,6 +439,85 @@
         "Quot.sound",
         "propext"
       ]
+    },
+    {
+      "name": "AlignmentProofSpine.elk_reporter_nonidentifiability",
+      "gloss": "ELK core: direct translator and human simulator agree under every behavioral training criterion yet diverge under sensor tampering",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.debate_defender_wins_iff_true",
+      "gloss": "Debate completeness/soundness: with a correct judge the defender has a winning strategy exactly for true claims (min-max value equals truth)",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.debate_judge_error_flips_outcome",
+      "gloss": "Debate conditionality: a judge wrong on one atom certifies a false claim -- debate amplifies judge correctness, it cannot create it",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.cirl_offswitch_defer_strictly_best",
+      "gloss": "Off-switch theorem: under genuine reward uncertainty, deferring to a rational human strictly beats acting and switching off",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.cirl_offswitch_incentive_vanishes_uninformative",
+      "gloss": "Off-switch degradation: with an uninformative human and any positive deferral cost, the robot strictly prefers to bypass the switch",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.quantilizer_maximin_guarantee",
+      "gloss": "Taylor sufficiency: bounded density ratio gives a worst-case bound over all nonnegative cost functions",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.quantilizer_maximin_necessity",
+      "gloss": "Taylor necessity: any density-ratio violation is punished by an adversarial indicator cost",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.amplification_leaf_error_amplified",
+      "gloss": "Amplification conditionality: every decomposition step locally valid yet the root wrong on one leaf error -- the leaf oracle carries the guarantee",
+      "axioms": []
+    },
+    {
+      "name": "AlignmentProofSpine.thornley_money_pump_objection",
+      "gloss": "Money-pump objection exhibited: individually TD-permissible trades chain into a strictly dominated end point",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "AlignmentProofSpine.thornley_resolute_choice_unexploitable",
+      "gloss": "Thornley dynamic choice: on every finite decision tree a resolute plan realizes a TD-maximal reachable outcome",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
     }
   ]
 }
