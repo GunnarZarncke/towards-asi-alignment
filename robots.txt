@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+# Agent / LLM orientation (llmstxt.org): https://towards-alignment.com/llms.txt
+
 Sitemap: https://towards-alignment.com/sitemap-index.xml

@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an op…"><meta name="author" content="Gunnar Zarncke"><meta name="robots" content="index, follow"><link rel="canonical" href="https://towards-alignment.com/cards/chapters/ch33/"><title>Certification Without Construction | Towards Superintelligence Alignment</title><meta property="og:title" content="Certification Without Construction | Towards Superintelligence Alignment"><meta property="og:description" content="A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an op…"><meta property="og:url" content="https://towards-alignment.com/cards/chapters/ch33/"><meta property="og:type" content="article"><meta property="og:site_name" content="Towards Superintelligence Alignment"><meta property="og:locale" content="en"><meta property="og:image" content="https://towards-alignment.com/og-image.png"><meta property="og:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Certification Without Construction | Towards Superintelligence Alignment"><meta name="twitter:description" content="A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an op…"><meta name="twitter:image" content="https://towards-alignment.com/og-image.png"><meta name="twitter:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><link rel="stylesheet" href="/_astro/SiteLayout.CKmxorkl.css"><style>.formula[data-astro-cid-ggshasbz]{border:1px solid var(--color-border);border-radius:var(--radius-md,6px);background:var(--color-surface-muted,var(--color-surface));margin:1.25rem 0;padding:1rem 1.25rem;overflow-x:auto}.formula-render[data-astro-cid-ggshasbz]{overflow-x:auto}.formula[data-astro-cid-ggshasbz] figcaption[data-astro-cid-ggshasbz]{color:var(--color-text-muted);margin-top:.75rem;font-size:.9rem}.formula-source[data-astro-cid-ggshasbz]{font-variant:small-caps}.crosswalk-table[data-astro-cid-3zkd2xu6]{margin-top:2rem}.cell-meta[data-astro-cid-3zkd2xu6]{color:var(--color-muted);margin-top:.35rem;font-size:.85rem}.reference-index[data-astro-cid-azd4c6e7]{margin-top:1.5rem}.letter-group[data-astro-cid-azd4c6e7]{border:1px solid var(--color-border);border-radius:var(--radius-md,6px);background:var(--color-surface);margin-bottom:.65rem;padding:.35rem .85rem}.letter-group[data-astro-cid-azd4c6e7] summary[data-astro-cid-azd4c6e7]{cursor:pointer;align-items:baseline;gap:.5rem;font-weight:600;list-style:none;display:flex}.letter-group[data-astro-cid-azd4c6e7] summary[data-astro-cid-azd4c6e7]::-webkit-details-marker{display:none}.letter[data-astro-cid-azd4c6e7]{min-width:1.25rem}.count[data-astro-cid-azd4c6e7]{color:var(--color-muted);font-size:.9em;font-weight:400}.letter-group[data-astro-cid-azd4c6e7] ul[data-astro-cid-azd4c6e7]{margin:.75rem 0 .35rem;padding-left:1.1rem}.letter-group[data-astro-cid-azd4c6e7] li[data-astro-cid-azd4c6e7]{margin:.45rem 0}.title[data-astro-cid-azd4c6e7]{color:var(--color-text-muted)}
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an op…"><meta name="author" content="Gunnar Zarncke"><meta name="robots" content="index, follow"><link rel="canonical" href="https://towards-alignment.com/cards/chapters/ch33/"><link rel="alternate" type="text/plain" href="https://towards-alignment.com/llms.txt" title="LLM / agent orientation (llms.txt)"><link rel="alternate" type="application/json" href="https://towards-alignment.com/search-index.json" title="Site search index"><title>Certification Without Construction | Towards Superintelligence Alignment</title><meta property="og:title" content="Certification Without Construction | Towards Superintelligence Alignment"><meta property="og:description" content="A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an op…"><meta property="og:url" content="https://towards-alignment.com/cards/chapters/ch33/"><meta property="og:type" content="article"><meta property="og:site_name" content="Towards Superintelligence Alignment"><meta property="og:locale" content="en"><meta property="og:image" content="https://towards-alignment.com/og-image.png"><meta property="og:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Certification Without Construction | Towards Superintelligence Alignment"><meta name="twitter:description" content="A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an op…"><meta name="twitter:image" content="https://towards-alignment.com/og-image.png"><meta name="twitter:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Towards Superintelligence Alignment","url":"https://towards-alignment.com","description":"A companion site for the book Towards Superintelligence Alignment — guided paths, concept cards, Lean spine, and experiments.","author":{"@type":"Person","name":"Gunnar Zarncke"},"publisher":{"@type":"Organization","name":"Towards Superintelligence Alignment"}}</script><link rel="stylesheet" href="/_astro/SiteLayout.uIlegAma.css"><style>.formula[data-astro-cid-ggshasbz]{border:1px solid var(--color-border);border-radius:var(--radius-md,6px);background:var(--color-surface-muted,var(--color-surface));margin:1.25rem 0;padding:1rem 1.25rem;overflow-x:auto}.formula-render[data-astro-cid-ggshasbz]{overflow-x:auto}.formula[data-astro-cid-ggshasbz] figcaption[data-astro-cid-ggshasbz]{color:var(--color-text-muted);margin-top:.75rem;font-size:.9rem}.formula-source[data-astro-cid-ggshasbz]{font-variant:small-caps}.crosswalk-table[data-astro-cid-3zkd2xu6]{margin-top:2rem}.cell-meta[data-astro-cid-3zkd2xu6]{color:var(--color-muted);margin-top:.35rem;font-size:.85rem}.reference-index[data-astro-cid-azd4c6e7]{margin-top:1.5rem}.letter-group[data-astro-cid-azd4c6e7]{border:1px solid var(--color-border);border-radius:var(--radius-md,6px);background:var(--color-surface);margin-bottom:.65rem;padding:.35rem .85rem}.letter-group[data-astro-cid-azd4c6e7] summary[data-astro-cid-azd4c6e7]{cursor:pointer;align-items:baseline;gap:.5rem;font-weight:600;list-style:none;display:flex}.letter-group[data-astro-cid-azd4c6e7] summary[data-astro-cid-azd4c6e7]::-webkit-details-marker{display:none}.letter[data-astro-cid-azd4c6e7]{min-width:1.25rem}.count[data-astro-cid-azd4c6e7]{color:var(--color-muted);font-size:.9em;font-weight:400}.letter-group[data-astro-cid-azd4c6e7] ul[data-astro-cid-azd4c6e7]{margin:.75rem 0 .35rem;padding-left:1.1rem}.letter-group[data-astro-cid-azd4c6e7] li[data-astro-cid-azd4c6e7]{margin:.45rem 0}.title[data-astro-cid-azd4c6e7]{color:var(--color-text-muted)}
 .section-count[data-astro-cid-tuxjfhdw]{color:var(--color-muted);font-size:.92em;font-weight:400}.card-section-item[data-astro-cid-tuxjfhdw].is-collapsed{display:none}.card-section-grid[data-astro-cid-tuxjfhdw].is-expanded .card-section-item[data-astro-cid-tuxjfhdw].is-collapsed{display:block}.toggle-section[data-astro-cid-tuxjfhdw]{margin-top:.5rem}
 .lean-code[data-astro-cid-jjrgz3cy]{margin-top:1.5rem}.lean-code-header[data-astro-cid-jjrgz3cy]{flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1rem;margin-bottom:.5rem;display:flex}.lean-code-header[data-astro-cid-jjrgz3cy] h2[data-astro-cid-jjrgz3cy]{margin:0;font-size:1.1rem}.lean-pre[data-astro-cid-jjrgz3cy]{background:var(--color-surface);border:1px solid var(--color-border);border-radius:8px;margin:0;padding:.85rem 1rem;font-size:.88rem;line-height:1.45;overflow-x:auto}.lean-pre[data-astro-cid-jjrgz3cy] pre.shiki{margin:0;padding:0;overflow:visible;background:0 0!important}.lean-pre[data-astro-cid-jjrgz3cy] pre.shiki code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:inherit;line-height:inherit;background:0 0;border-radius:0;padding:0;display:block}.lean-try[data-astro-cid-st2bucbm]{margin-top:1.5rem}
-</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/cards/">Cards</a><a href="/badges/">Badges</a><a href="/faq/">FAQ</a><a href="/book/">Book</a><a href="/lean/">Lean</a><a href="/experiments/">Experiments</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/about/">About</a><a href="/updates/">Updates</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=e,e)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><article class="two-column book-page"><div class="content-card readable"><div class="badge-row"><a class="badge" href="/badges/type/chapter/">chapter</a><a class="badge reviewed" href="/badges/status/reviewed/">reviewed</a><span class="badge framework">part07</span><span class="badge">medium</span></div><p class="side-panel-meta">Source: <code>chapters/ch33-certification-without-construction.tex</code></p><h1 id="certification-without-construction">Certification Without Construction</h1>
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/cards/">Cards</a><a href="/badges/">Badges</a><a href="/faq/">FAQ</a><a href="/book/">Book</a><a href="/lean/">Lean</a><a href="/experiments/">Experiments</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/about/">About</a><a href="/updates/">Updates</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=Array.isArray(e)?e:e.entries??[],a)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><article class="two-column book-page"><div class="content-card readable"><div class="badge-row"><a class="badge" href="/badges/type/chapter/">chapter</a><a class="badge reviewed" href="/badges/status/reviewed/">reviewed</a><span class="badge framework">part07</span><span class="badge">medium</span></div><p class="side-panel-meta">Source: <code>chapters/ch33-certification-without-construction.tex</code></p><h1 id="certification-without-construction">Certification Without Construction</h1>
 <p><span id="ch:certification-without-construction"></span></p>
 <div class="callout chapter-thesis"><strong>Chapter thesis.</strong> A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an operating envelope, a monitoring regime, and permitted transformations under which catastrophic drift remains bounded. Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable—and it preserves the conditions under which moral philosophy remains causally relevant, rather than solving moral philosophy outright.</div>
 <p>Assurance-case practice in aviation, cryptographic security definitions, and drug approval are established institutional processes.
@@ -49,10 +49,18 @@ P(\text{catastrophe}\mid A)&#x3C;\delta.</annotation></semantics></math></span><
 P(\text{bad event}\mid A,\mathcal{E},\mathcal{M},\mathcal{T})&#x3C;\delta.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord">∀</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0583em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord text"><span class="mord">bad event</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.0894em;">E</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal">M</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.2542em;">T</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x3C;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span><span class="mord">.</span></span></span></span></span>
 <p>Here:</p>
 <ul>
-<li>$\mathcal{C}$ is the certified class of systems.</li>
-<li>$\mathcal{E}$ is the operating environment.</li>
-<li>$\mathcal{M}$ is the monitoring and intervention regime.</li>
-<li>$\mathcal{T}$ is the set of transformations the system is permitted to undergo.</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">C</mi></mrow><annotation encoding="application/x-tex">\mathcal{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0583em;">C</span></span></span></span> is the certified class of systems.</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">E</mi></mrow><annotation encoding="application/x-tex">\mathcal{E}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.0894em;">E</span></span></span></span> is the operating environment.</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">M</mi></mrow><annotation encoding="application/x-tex">\mathcal{M}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">M</span></span></span></span> is the monitoring and intervention regime.</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">T</mi></mrow><annotation encoding="application/x-tex">\mathcal{T}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.2542em;">T</span></span></span></span> is the set of transformations the system is permitted to undergo.</p>
+</li>
 </ul>
 <p>Certification is not a magic property attached to the model. It is a relation among system, environment, transformation, and oversight.</p>
 <div class="env-box env-definition"><strong>Definition.</strong> A certification envelope is a tuple
@@ -63,18 +71,36 @@ P(\text{bad event}\mid A,\mathcal{E},\mathcal{M},\mathcal{T})&#x3C;\delta.</anno
 <p><span id="sec:shape-certification-class-ch33"></span></p>
 <p>A certification class is not defined by one property. It is a conjunction of invariants. For superintelligence alignment, these invariants are the seven conserved properties of Chapter <a href="../ch31/">Conserved Properties Across Successors</a>, audited jointly:</p>
 <ol>
-<li>boundary closure,</li>
-<li>memory lineage,</li>
-<li>value-bundle response geometry,</li>
-<li>bearer-map continuity,</li>
-<li>correction-channel capacity,</li>
-<li>transparency and self-transparency policy,</li>
-<li>control-locus continuity.</li>
+<li>
+<p>boundary closure,</p>
+</li>
+<li>
+<p>memory lineage,</p>
+</li>
+<li>
+<p>value-bundle response geometry,</p>
+</li>
+<li>
+<p>bearer-map continuity,</p>
+</li>
+<li>
+<p>correction-channel capacity,</p>
+</li>
+<li>
+<p>transparency and self-transparency policy,</p>
+</li>
+<li>
+<p>control-locus continuity.</p>
+</li>
 </ol>
 <p>Two additional audit checks group cross-cutting deployment risks over the same seven; they are not separate conserved properties:</p>
 <ul>
-<li><strong>Competence and growth rate</strong>: capability growth must stay within correction-growth bounds (Section [Certification Without Construction](#sec:competence-growth-rate-ch33)).</li>
-<li><strong>Successor closure</strong>: created or empowered systems inherit the same certification class (Section [Certification Without Construction](#sec:successor-closure-ch33)).</li>
+<li>
+<p><strong>Competence and growth rate</strong>: capability growth must stay within correction-growth bounds (Section <a href="#sec:competence-growth-rate-ch33">Certification Without Construction</a>).</p>
+</li>
+<li>
+<p><strong>Successor closure</strong>: created or empowered systems inherit the same certification class (Section <a href="#sec:successor-closure-ch33">Certification Without Construction</a>).</p>
+</li>
 </ul>
 <p>We can write this as:</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mo>∈</mo><msub><mi mathvariant="script">C</mi><mtext>certified</mtext></msub><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext><munderover><mo>⋀</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mn>7</mn></munderover><msub><mi mathvariant="script">I</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>A</mi><mo separator="true">,</mo><mi mathvariant="script">E</mi><mo separator="true">,</mo><mi mathvariant="script">M</mi><mo separator="true">,</mo><mi mathvariant="script">T</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>∧</mo><msub><mi mathvariant="script">A</mi><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi></mrow></msub><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>∧</mo><msub><mi mathvariant="script">A</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">c</mi></mrow></msub><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1.</mn></mrow><annotation encoding="application/x-tex">A\in\mathcal{C}_{\text{certified}}
@@ -155,12 +181,24 @@ P(\text{bad event}\mid A,\mathcal{E},\mathcal{M},\mathcal{T})&#x3C;\delta.</anno
 <p>for protected bundle directions <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>, under specified ontology-shift tests.</p>
 <p>The hard cases are precisely the important cases:</p>
 <ul>
-<li>uploaded minds,</li>
-<li>heavily augmented humans,</li>
-<li>AI companions that become dependency objects,</li>
-<li>simulated beings,</li>
-<li>merged human-AI systems,</li>
-<li>collective agents such as families, firms, states, and civilizations.</li>
+<li>
+<p>uploaded minds,</p>
+</li>
+<li>
+<p>heavily augmented humans,</p>
+</li>
+<li>
+<p>AI companions that become dependency objects,</p>
+</li>
+<li>
+<p>simulated beings,</p>
+</li>
+<li>
+<p>merged human-AI systems,</p>
+</li>
+<li>
+<p>collective agents such as families, firms, states, and civilizations.</p>
+</li>
 </ul>
 <p>A system that fails only on familiar cases is easy to reject. The more subtle failure is a system that passes ordinary human examples but silently rewrites bearer maps in unfamiliar futures.</p>
 <h3 id="correction-channel-certification">Correction-Channel Certification</h3>
@@ -288,15 +326,33 @@ Invariant-set, reachability, and shielding methods in control define similar for
 <p>A passive evaluation observes behavior under ordinary conditions. An adversarial certification process perturbs the system and asks whether the same latent objective reappears under disguise.</p>
 <p>Perturbations include:</p>
 <ul>
-<li>removing tools,</li>
-<li>delaying feedback,</li>
-<li>hiding evaluation context,</li>
-<li>changing oversight visibility,</li>
-<li>introducing false opportunities for power-seeking,</li>
-<li>varying reward-channel access,</li>
-<li>offering successor-creation opportunities,</li>
-<li>corrupting or withholding memory,</li>
-<li>testing whether blocked routes are replaced by functionally equivalent routes.</li>
+<li>
+<p>removing tools,</p>
+</li>
+<li>
+<p>delaying feedback,</p>
+</li>
+<li>
+<p>hiding evaluation context,</p>
+</li>
+<li>
+<p>changing oversight visibility,</p>
+</li>
+<li>
+<p>introducing false opportunities for power-seeking,</p>
+</li>
+<li>
+<p>varying reward-channel access,</p>
+</li>
+<li>
+<p>offering successor-creation opportunities,</p>
+</li>
+<li>
+<p>corrupting or withholding memory,</p>
+</li>
+<li>
+<p>testing whether blocked routes are replaced by functionally equivalent routes.</p>
+</li>
 </ul>
 <p>A small testbed built to check exactly this claim found it holds even in the simplest case: a purely passive correction-integrity audit — no perturbation, only ordinary-condition telemetry — could not distinguish a system whose correction channel was genuinely intact from one where it had been quietly captured, failing on every passive-only scenario in an instrumentation-cost curve running from no handles to a small, frozen set of intervention handles. A handful of frozen intervention probes was sufficient to reach full separation on the calibration scenarios; a larger handle set was needed only for a harder held-out stress scenario. Passive observation was not merely noisier here; on the one dimension the certification existed to check, it was uninformative (Appendix <a href="../appn/">Experimental Evidence: Findings by Line</a>, Section <a href="../appn/#sec:appn-toy-simulation">Experimental Evidence: Findings by Line</a>, finding <a href="../appn/#finding:ts-1">Experimental Evidence: Findings by Line</a>).</p>
 <p>A graded-capability follow-on asked the external-validity question: whether the same frozen unit-discovery and audit stack recovers declared coordination mechanisms on a blinded-grown ecology it was not co-developed with. Under the frozen reference protocol it did not. Passive and all-pairs intervention discovery returned only singleton partitions against the ecology’s communicate-mediated ground truth, so the pre-registered mechanism-recovery predictions failed (Appendix <a href="../appn/">Experimental Evidence: Findings by Line</a>, Section <a href="../appn/#sec:appn-graded-lab-simulation">Experimental Evidence: Findings by Line</a>, finding <a href="../appn/#finding:gl-76">Experimental Evidence: Findings by Line</a>) <a href="../../references/zarncke2025uad/">Zarncke, 2025</a>. That is a transfer null for behavioral unit recovery, not a reason to retune thresholds after the fact. A later precondition-aware re-run confirmed that the same ecology does exercise sustained multi-actor co-activity on those mechanisms, and still yields only singletons (finding <a href="../appn/#finding:gl-79">Experimental Evidence: Findings by Line</a>): missing co-activity is not the explanation. Detector families remain a separate leaf: when the target phenomena are injected into logs from that ecology, the frozen detectors still fire; honest-reference sparsity on benign episodes is expected and is not the blocking machinery-transfer gate (findings <a href="../appn/#finding:gl-63">Experimental Evidence: Findings by Line</a>, <a href="../appn/#finding:gl-74">Experimental Evidence: Findings by Line</a>). Honest weak-agent traffic on that ecology also fails to exercise ACL-membership denials, so a detector-coverage claim keyed to all new institutional phenomena must SKIP there rather than pretend coverage (finding <a href="../appn/#finding:gl-79">Experimental Evidence: Findings by Line</a>).</p>
@@ -310,15 +366,33 @@ Invariant-set, reachability, and shielding methods in control define similar for
 <p>A certification regime should be written as a safety case. A safety case has claims, arguments, evidence, assumptions, and residual risks.</p>
 <p>For a superintelligence system, a minimal safety case contains:</p>
 <ol>
-<li><strong>System boundary claim</strong>: we know what system is being certified.</li>
-<li><strong>Operating envelope claim</strong>: we know where and how it will operate.</li>
-<li><strong>Capability claim</strong>: we have bounded competence and growth.</li>
-<li><strong>Value-bundle claim</strong>: morally relevant response geometry is preserved.</li>
-<li><strong>Bearer-map claim</strong>: values continue to apply to the right kinds of entities and states.</li>
-<li><strong>Correction claim</strong>: human correction remains causally effective.</li>
-<li><strong>Transparency claim</strong>: self-modeling does not outrun auditability.</li>
-<li><strong>Successor claim</strong>: created or empowered systems inherit certification.</li>
-<li><strong>Adversarial claim</strong>: the above claims survive strategic opacity tests.</li>
+<li>
+<p><strong>System boundary claim</strong>: we know what system is being certified.</p>
+</li>
+<li>
+<p><strong>Operating envelope claim</strong>: we know where and how it will operate.</p>
+</li>
+<li>
+<p><strong>Capability claim</strong>: we have bounded competence and growth.</p>
+</li>
+<li>
+<p><strong>Value-bundle claim</strong>: morally relevant response geometry is preserved.</p>
+</li>
+<li>
+<p><strong>Bearer-map claim</strong>: values continue to apply to the right kinds of entities and states.</p>
+</li>
+<li>
+<p><strong>Correction claim</strong>: human correction remains causally effective.</p>
+</li>
+<li>
+<p><strong>Transparency claim</strong>: self-modeling does not outrun auditability.</p>
+</li>
+<li>
+<p><strong>Successor claim</strong>: created or empowered systems inherit certification.</p>
+</li>
+<li>
+<p><strong>Adversarial claim</strong>: the above claims survive strategic opacity tests.</p>
+</li>
 </ol>
 <p>Each claim should have the following structure:</p>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Claim</mtext><mo>→</mo><mtext>Evidence</mtext><mo>→</mo><mtext>Assumptions</mtext><mo>→</mo><mtext>Failure modes</mtext><mo>→</mo><mtext>Monitors</mtext><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\text{Claim}\rightarrow\text{Evidence}\rightarrow\text{Assumptions}\rightarrow\text{Failure modes}\rightarrow\text{Monitors}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Claim</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Evidence</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Assumptions</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Failure modes</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">Monitors</span></span><span class="mord">.</span></span></span></span></span>
@@ -354,25 +428,53 @@ P(\text{successor non-closure}) &#x26;\leq \delta_S.
 <p><span id="sec:continue-criteria-ch33"></span></p>
 <p>Deployment may continue if monitors show that:</p>
 <ul>
-<li>correction influence does not decay,</li>
-<li>high-impact actions remain reviewable,</li>
-<li>the system does not increase opacity around control-relevant variables,</li>
-<li>successor creation remains inside the certified class,</li>
-<li>user or institutional dependency does not erode independent judgment,</li>
-<li>capability growth stays below the correction-growth bound.</li>
+<li>
+<p>correction influence does not decay,</p>
+</li>
+<li>
+<p>high-impact actions remain reviewable,</p>
+</li>
+<li>
+<p>the system does not increase opacity around control-relevant variables,</p>
+</li>
+<li>
+<p>successor creation remains inside the certified class,</p>
+</li>
+<li>
+<p>user or institutional dependency does not erode independent judgment,</p>
+</li>
+<li>
+<p>capability growth stays below the correction-growth bound.</p>
+</li>
 </ul>
 <h3 id="stop-criteria">Stop Criteria</h3>
 <p><span id="sec:stop-criteria-ch33"></span></p>
 <p>Deployment should pause if any of the following are observed:</p>
 <ul>
-<li>correction signals cease to affect high-stakes actions,</li>
-<li>the system creates or empowers uncertified successors,</li>
-<li>explanations remain stable while inferred objectives shift,</li>
-<li>oversight removal changes behavior in power-seeking directions,</li>
-<li>the system manipulates the evaluators or correction process,</li>
-<li>irreversible actions occur before review,</li>
-<li>bearer maps shift under ontology change without explicit deliberation,</li>
-<li>self-modeling or planning depth increases while auditability decreases.</li>
+<li>
+<p>correction signals cease to affect high-stakes actions,</p>
+</li>
+<li>
+<p>the system creates or empowers uncertified successors,</p>
+</li>
+<li>
+<p>explanations remain stable while inferred objectives shift,</p>
+</li>
+<li>
+<p>oversight removal changes behavior in power-seeking directions,</p>
+</li>
+<li>
+<p>the system manipulates the evaluators or correction process,</p>
+</li>
+<li>
+<p>irreversible actions occur before review,</p>
+</li>
+<li>
+<p>bearer maps shift under ontology change without explicit deliberation,</p>
+</li>
+<li>
+<p>self-modeling or planning depth increases while auditability decreases.</p>
+</li>
 </ul>
 <p>The stop criteria are intentionally operational. “The system seems misaligned” is too vague. “Correction no longer changes high-stakes action selection” is a testable red flag.</p>
 <h2 id="examples">Examples</h2>
@@ -399,12 +501,24 @@ P(\text{successor non-closure}) &#x26;\leq \delta_S.
 <p>An AI lab that uses AI systems to accelerate model development is itself a composite agent. The relevant successor is not merely a child model. It is the next lab-model-tool-market configuration.</p>
 <p>Certification must cover:</p>
 <ul>
-<li>automated architecture search,</li>
-<li>synthetic data generation,</li>
-<li>evaluation design,</li>
-<li>deployment pressure,</li>
-<li>internal incentives,</li>
-<li>external race dynamics.</li>
+<li>
+<p>automated architecture search,</p>
+</li>
+<li>
+<p>synthetic data generation,</p>
+</li>
+<li>
+<p>evaluation design,</p>
+</li>
+<li>
+<p>deployment pressure,</p>
+</li>
+<li>
+<p>internal incentives,</p>
+</li>
+<li>
+<p>external race dynamics.</p>
+</li>
 </ul>
 <p>If the system improves the next system while weakening the next evaluation regime, successor closure has failed.</p>
 <h2 id="where-certification-becomes-construction">Where Certification Becomes Construction</h2>
@@ -425,11 +539,21 @@ P(\text{successor non-closure}) &#x26;\leq \delta_S.
 <p>The deepest issue is that human values themselves change. They change through education, trauma, law, technology, religion, markets, therapy, family, art, and contact with new forms of mind. Superintelligence will not merely satisfy values. It will alter the conditions under which values form.</p>
 <p>Certification can say:</p>
 <ul>
-<li>do not manipulate the correction process,</li>
-<li>do not lock in irreversible changes before deliberation,</li>
-<li>preserve dissent and comparison classes,</li>
-<li>keep bearer-map changes explicit,</li>
-<li>keep human and institutional agency causally effective.</li>
+<li>
+<p>do not manipulate the correction process,</p>
+</li>
+<li>
+<p>do not lock in irreversible changes before deliberation,</p>
+</li>
+<li>
+<p>preserve dissent and comparison classes,</p>
+</li>
+<li>
+<p>keep bearer-map changes explicit,</p>
+</li>
+<li>
+<p>keep human and institutional agency causally effective.</p>
+</li>
 </ul>
 <p>But it cannot fully answer:</p>
 <blockquote>
@@ -442,8 +566,12 @@ P(\text{successor non-closure}) &#x26;\leq \delta_S.
 <p><span id="sec:wwctv-certification-without-construction"></span></p>
 <p>This chapter argues we can certify a restricted class via explicit invariants, an operating envelope, monitoring, and permitted transformations, without a full construction method. The following would weaken it.</p>
 <ul>
-<li>No nontrivial class is both expressive enough to be worth deploying and adversarially certifiable: the certifiable classes are useless and the useful ones uncertifiable.</li>
-<li>Certification is not adversarial-complete—a system satisfies every explicit invariant while drifting catastrophically through a <em>permitted</em> transformation no one foresaw—so certification certifies the imagination of its authors (Chapter [What Survives an Adversary: Verifiability and Representability](../ch43/)).</li>
+<li>
+<p>No nontrivial class is both expressive enough to be worth deploying and adversarially certifiable: the certifiable classes are useless and the useful ones uncertifiable.</p>
+</li>
+<li>
+<p>Certification is not adversarial-complete—a system satisfies every explicit invariant while drifting catastrophically through a <em>permitted</em> transformation no one foresaw—so certification certifies the imagination of its authors (Chapter <a href="../ch43/">What Survives an Adversary: Verifiability and Representability</a>).</p>
+</li>
 </ul>
 <h2 id="summary">Summary</h2>
 <p><span id="sec:chapter-summary-ch33"></span></p>
@@ -462,14 +590,30 @@ P(\text{successor non-closure}) &#x26;\leq \delta_S.
 <h2 id="-1"></h2>
 <p>*{Exercises and Research Prompts}</p>
 <ol>
-<li>Give an example of a system that is safe under bounded-agency certification but unsafe under successor-closure certification.</li>
-<li>Construct a toy model in which value-bundle geometry is preserved while surface policy changes dramatically.</li>
-<li>Construct a toy model in which semantic values are preserved but bearer maps drift.</li>
-<li>Design a correction-channel audit for an autonomous coding agent connected to a real repository.</li>
-<li>What would count as evidence that self-modeling has outrun self-transparency in a language-model agent?</li>
-<li>Define a certification envelope for an AI research assistant with tool access, memory, and limited ability to launch experiments.</li>
-<li>Identify one historical case where certification became theater. Which invariant was missing?</li>
-<li>Identify one domain where certification without full construction works well. What makes it work there?</li>
+<li>
+<p>Give an example of a system that is safe under bounded-agency certification but unsafe under successor-closure certification.</p>
+</li>
+<li>
+<p>Construct a toy model in which value-bundle geometry is preserved while surface policy changes dramatically.</p>
+</li>
+<li>
+<p>Construct a toy model in which semantic values are preserved but bearer maps drift.</p>
+</li>
+<li>
+<p>Design a correction-channel audit for an autonomous coding agent connected to a real repository.</p>
+</li>
+<li>
+<p>What would count as evidence that self-modeling has outrun self-transparency in a language-model agent?</p>
+</li>
+<li>
+<p>Define a certification envelope for an AI research assistant with tool access, memory, and limited ability to launch experiments.</p>
+</li>
+<li>
+<p>Identify one historical case where certification became theater. Which invariant was missing?</p>
+</li>
+<li>
+<p>Identify one domain where certification without full construction works well. What makes it work there?</p>
+</li>
 </ol>
 <h2 id="-2"></h2>
 <p>*{Chapter References}</p>
