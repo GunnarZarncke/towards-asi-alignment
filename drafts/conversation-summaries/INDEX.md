@@ -4,7 +4,10 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-19 | **Lab sim eval-awareness Q&A** — Phase 8 LLM adapter (LS-7/LS-8); redteam vs adversarial prompt | [2026-07-19-lab-sim-eval-awareness-qa.md](2026-07-19-lab-sim-eval-awareness-qa.md) |
+| 2026-07-19 | **Field rederivation batch 2** — ELK non-identifiability, native debate game, off-switch game, quantilizer maximin, HCH amplification, Thornley dynamic choice; κ_C readings demoted to labeled interface toys; ledger 37 theorems | [2026-07-19-field-rederivation-batch-2.md](2026-07-19-field-rederivation-batch-2.md) |
 | 2026-07-19 | **Lean spine hostile-critique fixes** — `MB4a` anti-capture, `S10`, `MB11` safety-case adequacy; Thornley/Soares/Orseau–Armstrong rederived in `Field/Finite/` | [2026-07-19-lean-spine-hostile-critique-fixes.md](2026-07-19-lean-spine-hostile-critique-fixes.md) |
+| 2026-07-19 | Graded-lab **Fable feedback** — exactness as engineering controls; external transfer as validity threshold | [2026-07-19-fable-feedback-exactness-transfer.md](2026-07-19-fable-feedback-exactness-transfer.md) |
 | 2026-07-19 | Graded lab **GL-79–85 on companion site** (`experiments.yml` + sync) | [2026-07-19-graded-lab-site-experiments-sync.md](2026-07-19-graded-lab-site-experiments-sync.md) |
 | 2026-07-19 | Graded lab **PLAN_v4 manuscript harvest** (GL-79–85) into ch07/16/33/34/41/42 + appN | [2026-07-19-graded-lab-v4-manuscript-harvest.md](2026-07-19-graded-lab-v4-manuscript-harvest.md) |
 | 2026-07-19 | Site **concept card math** — LaTeX delimiters → `$`/`$$`; sync normalizer | [2026-07-19-site-card-math-rendering.md](2026-07-19-site-card-math-rendering.md) |
