@@ -15,4 +15,4 @@ Formulas in `/cards/chapters/ch39/` broke from **Decision Triggers** onward: raw
 - `site/scripts/lib/tex-convert.mjs`
 
 ## Commits
-- (none — user did not request commit)
+- `ae7b052` Fix chapter card math inside LaTeX lists on the companion site.
