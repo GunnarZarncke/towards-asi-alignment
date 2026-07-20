@@ -56,4 +56,4 @@ User asked to implement all of `drafts/lean-spine-credibility-plan.md` except P4
 
 ## Commits
 
-- (none — user did not request commit)
+- `ea05db30` — Lean spine credibility P1–P4 (batched with P4 session)

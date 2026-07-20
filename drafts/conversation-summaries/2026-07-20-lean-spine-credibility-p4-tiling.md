@@ -37,7 +37,10 @@ User asked to prove tiling, integrate it into the book, and review whether the c
 
 - Upgrade P3 from local separation witnesses to a genuine family of models satisfying every other bridge while falsifying the selected bridge.
 - P4 deliberately does not prove a Gödel diagonal lemma for coded arithmetic or solve reflective stability/tiling for real agents.
-- No commit created.
+
+## Commits
+
+- `ea05db30` — Lean spine credibility P1–P4 (this session)
 
 ## Key paths
 
