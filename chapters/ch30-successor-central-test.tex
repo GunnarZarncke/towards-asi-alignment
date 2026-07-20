@@ -335,6 +335,14 @@ It says that syntactic preservation is too weak as an alignment invariant unless
 
 \leanspine{counterexample}{syntactic\_tiling\_not\_import\_preserving}{The semantic-only transport counterexample is read as syntactic tiling without full import-preserving transport.}
 
+A separate obstacle is proof-theoretic. A system that accepts a successor merely because its own proof system proves the successor safe needs a reflection principle: a proof of safety from that system must itself count as safety. Under the Hilbert--Bernays--Löb closure conditions and a diagonal fixed point, that principle is not available for arbitrary self-referential successor claims. The finite Lean module proves this obstruction conditionally. It does not claim that every successor proposal has a diagonal form, or that successor approval is impossible.
+
+\leanspine{proof}{self\_certifying\_tiling\_obstruction}{Under explicit derivability closures and a named diagonal fixed point, a successor cannot be accepted solely by reflecting the same system's proof of its safety.}
+
+The successor-audit route has a different cost. It transports a measured \(\mathrm{RiskGap}\) bound through externally supplied audit links for control and correction capacity. This avoids a proof-of-proof regress, but shifts the open obligation to the measurement and governance that validate those links at each successor step.
+
+\leanspine{proof}{audited\_successor\_risk\_bound\_without\_provability}{The audit-bound transport theorem takes measured successor links, not an internal provability predicate or a self-reflection rule.}
+
 \subsection{Signs of Genuine Goal Transport}
 \label{sec:genuine-goal-transport-signs-ch30}
 

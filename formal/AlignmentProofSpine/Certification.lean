@@ -9,6 +9,8 @@ Basin invariance, layered alignment, safety case, certified-class safety
 (chapters 1–5, 35, 39, 44).
 
 Primary risk bound: `Control A ≤ CCI A + δ` ⇒ `RiskGap A ≤ δ` via `P13`.
+Headline non-definitional path: `Field/Finite/TraceBIQ.risk_gap_bound_from_trace_profile`
+(trace profile + vector certificate + θ-floor margin; see `WorkedInstance.honest_instance_risk_bound`).
 The vector/status CCI certificate can feed this leaf through an explicit scalar
 floor witness; it does not replace the full safety-case layers.
 -/

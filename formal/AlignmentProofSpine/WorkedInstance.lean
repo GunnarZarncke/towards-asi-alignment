@@ -384,19 +384,29 @@ def honestRiskLeaf (A : System)
     (traceDerivedCCISlack honestTrace workedBlanket workedParams honestProfileCert A 6
       hctrl hcact (honest_instance_slack hvalid hground hmeas))
 
-/-- End-to-end on the honest companion data: `RiskGap A ≤ 6` for any
-    hypothesized system satisfying the same three explicit bridge hypotheses
-    as §4 would have needed. The bound is weak (the pre-registered thresholds
-    are loose and the θ-floor inherits that), and is reported at face value
-    rather than sharpened through placeholder certificate coordinates. -/
+/-- θ-derived action-capacity margin for the honest companion trace at δ = 6. -/
+theorem honest_trace_theta_margin
+    {A : System} (hvalid : SystemPathValidRef A) (hground : GroundingViable A)
+    (_hmeas : CCICertificateMeasures (honestCert hvalid hground) workedWeights) :
+    traceActionCapacityBits honestTrace workedBlanket ≤
+      workedThresholds.lambdaFloor workedWeights + 6 := by
+  have hcact : traceActionCapacityBits honestTrace workedBlanket = 0 := by decide
+  have hfloor : workedThresholds.lambdaFloor workedWeights = -6 := by decide
+  omega
+
+/-- End-to-end on the honest companion data: `RiskGap A ≤ 6` via
+    `risk_gap_bound_from_trace_profile` (trace profile + vector certificate +
+    θ-floor margin — not a bare `unfold RiskGap; omega` on the conclusion). -/
 theorem honest_instance_risk_bound (A : System)
     (hvalid : SystemPathValidRef A) (hground : GroundingViable A)
     (hctrl : Control A = traceControlDiversity honestTrace workedBlanket workedParams.maxLag)
     (hcact : CactSys A = traceActionCapacityBits honestTrace workedBlanket)
     (hmeas : CCICertificateMeasures (honestCert hvalid hground) workedWeights) :
     RiskGap A ≤ 6 :=
-  risk_gap_bound_from_cci_slack
-    (honestRiskLeaf A hvalid hground hctrl hcact hmeas).cci_slack
+  risk_gap_bound_from_trace_profile honestTrace workedBlanket workedParams honestProfileCert
+    (A := A) (δ := 6) (honestCert hvalid hground) workedThresholds workedWeights
+    (honestCert_passes hvalid hground) hmeas hctrl hcact
+    (honest_trace_theta_margin hvalid hground hmeas)
 
 end AlignmentProofSpine
 

@@ -18,6 +18,7 @@ import AlignmentProofSpine.Field.Finite.AmplificationTree
 import AlignmentProofSpine.Field.Finite.PMF
 import AlignmentProofSpine.Field.Finite.ShannonMI
 import AlignmentProofSpine.Field.Finite.TraceBIQ
+import AlignmentProofSpine.Field.Finite.LobTiling
 import AlignmentProofSpine.Field.Imported
 import AlignmentProofSpine.Field.CIRL
 import AlignmentProofSpine.Field.Shutdown
