@@ -101,8 +101,8 @@ above depends on: a refactor that silently makes a theorem depend on a new
 `MB*` bridge (or a wider carrier footprint) without anyone noticing.
 
 `P34` (host-capacity aliasing) and the other non-bridge results print only
-`propext` / `Quot.sound` (or abstract carriers). `risk_bound_from_cci_slack`
-is the narrow arithmetic leaf deriving `Risk A ≤ δ` from
+`propext` / `Quot.sound` (or abstract carriers). `risk_gap_bound_from_cci_slack`
+is the narrow arithmetic leaf deriving `RiskGap A ≤ δ` from
 `Control A ≤ CCI A + δ` via `P13` (no bare `hrisk` hypothesis).
 `NumericRiskLeaf` records whether that scalar leaf came directly, from vector CCI
 support, from a BIQ-derived slack certificate, or from a Markov-blanket/B-IQ
@@ -169,8 +169,8 @@ Manuscript cross-refs: `\leanspine{kind}{node}{gloss}` in `metadata/preamble.tex
 | `AlignmentProofSpine/Forgeability.lean` | ch08/ch31/ch48 successor-forgeability gap made a checked finite counterexample (`forgeability_gap`); bridge `MB10` (conserved-property signature not forged), declared here rather than in `Core.BridgeAssumptions` because it needs the numeric risk leaf, threaded explicitly like `SuccessorAuditLinks`; `true_harm_bound_of_successor_safe_step` shows what `MB10` buys on top of the existing risk-propagation machinery | 8, 31, 43, 48 |
 | `AlignmentProofSpine/Adversarial.lean` | `P31`, `P34`, `P36R`, `P37` (`P33` in `CooperationGraph`) | 32–37 |
 | `AlignmentProofSpine/Philosophy.lean` | `P41`, `P42`, `P44`, `P45` | 41–44 |
-| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, finite-support `P40`, direct/bridge-derived layer evidence records, grounding required by `LayeredAlignedDef`, **`risk_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_from_bridge_record`** (`CertifiedSafetyCase` assembly, labeled as such), bridge **`MB11`** (safety-case adequacy) with **`P30_safe_of_case`** / **`safe_from_spine_inputs`** deriving abstract `Safe` | 1–5, 37–38, 42, 48 |
-| `AlignmentProofSpine/WorkedInstance.lean` | worked instances on **real committed data** from the same pinned generator (`synthesize_rows(300, ..., seed=5)` at git `408444b`): 26-row windows of `sample_capture_theater.jsonl` and `sample_honest_baseline.jsonl` packaged as `DiscreteTrace`/`EnvBlanket`, `decide`d trace-computed diversity/capacity/ceiling numbers, and `CCICertificate`s whose `manipulation` coordinate is *computed* from the real `judge_captured` column (not asserted) against thresholds fixed before either count was computed — the capture-theater certificate honestly **fails** (`workedCert_fails`, `26 > maxManipulation = 1`) and the honest-baseline certificate **passes** the identical thresholds (`honestCert_passes`, count `0`), yielding an actual `NumericRiskLeaf A 6`/`Risk A ≤ 6` (`honest_instance_risk_bound`; bound weak because the pre-registered thresholds are loose — reported at face value, not sharpened through placeholder coordinates); the single differing real coordinate flips the verdict, so the gate *discriminates*; fixture provenance pinned by `experiments/embedded-simulation/tests/contract/test_worked_instance_fixtures.py`; see the module docstring for the earlier (fixed) mistranscription-plus-reverse-engineered-thresholds version | 11, 26, 43, 46 |
+| `AlignmentProofSpine/Certification.lean` | `P01`, `P02`, `P30`, `P35`, finite-support `P40`, direct/bridge-derived layer evidence records, grounding required by `LayeredAlignedDef`, **`risk_gap_bound_from_cci_slack`** (numeric risk leaf), **`certified_class_safety_from_bridge_record`** (`CertifiedSafetyCase` assembly, labeled as such), bridge **`MB11`** (safety-case adequacy) with **`P30_safe_of_case`** / **`safe_from_spine_inputs`** deriving abstract `Safe` — `MB11`'s `WithinDeploymentRiskTolerance` is the framework's actual answer to "probability of failure / quantified value loss": a Prop-valued acceptance gate, not a number (nothing here computes a probability or an expected loss; see `CertifiedSafetyCase`'s docstring) | 1–5, 37–38, 42, 48 |
+| `AlignmentProofSpine/WorkedInstance.lean` | worked instances on **real committed data** from the same pinned generator (`synthesize_rows(300, ..., seed=5)` at git `408444b`): 26-row windows of `sample_capture_theater.jsonl` and `sample_honest_baseline.jsonl` packaged as `DiscreteTrace`/`EnvBlanket`, `decide`d trace-computed diversity/capacity/ceiling numbers, and `CCICertificate`s whose `manipulation` coordinate is *computed* from the real `judge_captured` column (not asserted) against thresholds fixed before either count was computed — the capture-theater certificate honestly **fails** (`workedCert_fails`, `26 > maxManipulation = 1`) and the honest-baseline certificate **passes** the identical thresholds (`honestCert_passes`, count `0`), yielding an actual `NumericRiskLeaf A 6`/`RiskGap A ≤ 6` (`honest_instance_risk_bound`; bound weak because the pre-registered thresholds are loose — reported at face value, not sharpened through placeholder coordinates); the single differing real coordinate flips the verdict, so the gate *discriminates*; fixture provenance pinned by `experiments/embedded-simulation/tests/contract/test_worked_instance_fixtures.py`; see the module docstring for the earlier (fixed) mistranscription-plus-reverse-engineered-thresholds version | 11, 26, 43, 46 |
 | `AlignmentProofSpine.lean` | root module re-exporting all of the above | — |
 | `scripts/check_axiom_budget.py` + `axiom-ledger.json` | tooling, not a proof module: mechanically diffs `#print axioms` on 37 headline theorems against the checked-in ledger and generates Appendix G's axiom-budget table (`metadata/axiom-budget-index.tex`) | appi:sec:axiom-budget |
 
@@ -232,14 +232,52 @@ depends on `MB4`.
   the inconsistent single-predicate form.
 * The host-capacity aliasing theorem `P34` uses Mathlib's
   `Fintype.card_le_of_injective` via `AlignmentProofSpine.Mathlib`.
-* **`Risk`** is `Control − CCI` (`RiskGap`). Certification uses `Control ≤ CCI + δ`
-  as the numeric scalar-projection leaf. `CCICertificate` / `CCIThresholds` encode
-  the manuscript's vector/status certificate, and `CCIVectorSupportsScalarSlack`
-  records the bridge-shaped handoff from a passed vector certificate to that scalar leaf.
+* **`RiskGap`** is `Control − CCI` — excess influence bandwidth, an
+  information/capacity quantity, not a probability or a value-loss estimate.
+  There is no separate `Risk` name; renamed from an earlier `Risk := RiskGap`
+  alias because two names for one subtraction invited exactly the "primary
+  numeric risk bound is a renaming" misreading it now avoids.
+  **`CCI` is intrinsically λ-weighted** (`CCI A := weakestLink − CCIPenaltySum`,
+  ch46 `eq:cci-ch46`) — this is a manuscript modeling commitment, not a Lean
+  artifact: it fixes an exchange rate between heterogeneous penalty units
+  (latency as time, manipulation as a count, irreversibility/ontology as loss
+  scores) and raw channel capacity (bits/window), applied consistently
+  wherever `CCI` is read (`MB6b`, `MB7c`, `S10`, every chapter/appG citation).
+  `CCICertificate.lambdaProjection` uses the *same* weights
+  (`CCICertificateMeasures.weights_eq` forces this), so certificate and
+  system-level pricing agree by construction — there is no inconsistency
+  between the two, only the underlying pricing commitment itself, which a
+  reader should weigh independently of the arithmetic. `CCICertificatePasses`
+  (componentwise threshold gate over `CCICertificate`'s vector coordinates —
+  each coordinate checked against its own threshold, no cross-coordinate
+  summation at the certificate level) is what the `WorkedInstance` module
+  actually exercises on real fixture data, and is the gate a passing
+  certificate must clear before the λ-weighted floor is even computed.
+  Removing the λ-weighting from the *primary* certification path (an
+  unweighted raw-capacity quantity, independent of `CCI`) would require
+  introducing a new System-level quantity and rewiring every bridge that
+  reads `CCI` — scoped as a separate, larger backlog item (see
+  `drafts/lean-risk-spine-typing-plan.md`), not attempted here.
+  `CCIVectorSupportsScalarSlack` records the bridge-shaped handoff from a
+  passed vector certificate to the scalar leaf; `Control ≤ CCI + δ` is the
+  numeric leaf `NumericRiskLeaf` consumes. `CCIThresholds` (`θ`) itself is a
+  deployment-specific empirical/policy input — what tolerance is measured and
+  accepted is not something the arithmetic discharges, the same epistemic
+  class as `MB1`'s estimator soundness.
   Handle-controlled path: `CorrectionPath` / `SystemCorrectionPath` over `CorrectionChainLink`,
   now grounded in a correcting agent's controlled handles. The richer manuscript
   $C_{\mathrm{raw}}$ is represented as a certificate coordinate; the old weakest-link
   scalar remains inside `CCI` for existing arithmetic lemmas.
+* **What you actually get is a gate, not a number.** Neither `RiskGap` nor the
+  vector certificate produces a probability of failure or an expected value
+  loss — nothing in this development defines a `System`-level utility function
+  or a real-deployment failure-frequency estimator. The framework's honest
+  answer to "what does a passing certificate buy" is `MB11_safety_case_adequacy`
+  (`Certification.lean`): a `CertifiedSafetyCase` plus a named, ungrounded
+  `WithinDeploymentRiskTolerance` judgment reaches the abstract `Safe` Prop —
+  an acceptance gate, not a quantified guarantee, and the docstring says so
+  explicitly. This is a deliberate epistemic choice, not a gap to be closed
+  by inventing a `Rat`-valued risk quantity with no producer.
 * **`DeploymentMass`** is environment-relative deployment/control mass (book ch46,
   `eq:deployment-mass-ch46`). Selection uses `SelectionChannel` / `SelectionHandleFor`
   over the same `Handle` type as correction. Revenue and regulatory risk are not

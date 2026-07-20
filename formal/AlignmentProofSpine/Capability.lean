@@ -281,11 +281,12 @@ theorem kappa_above_unity_iff (b p rho c : Int) (hc : 0 < c) :
     KappaAboveUnity b p rho c ↔ KappaNumerator b p rho > c := by
   unfold KappaAboveUnity KappaNumerator; omega
 
+/-- Excess influence bandwidth: how far measured effective control exceeds the
+    correction channel's capacity. This is arithmetic scaffolding only — it
+    says nothing about failure probability or harm; see `Certification.lean`'s
+    `MB11`/`WithinDeploymentRiskTolerance` for the (Prop-valued, deliberately
+    unquantified) bridge to `Safe`. -/
 noncomputable def RiskGap (A : System) : Int := Control A - CCI A
-
-noncomputable def Risk (A : System) : Int := RiskGap A
-
-theorem Risk_eq_RiskGap (A : System) : Risk A = RiskGap A := rfl
 
 noncomputable def SelfControlGap (A : System) : Int :=
   SelfControl A - CorrectionVisibility A
@@ -332,35 +333,28 @@ theorem P13_risk_gap_bounded_by_cci_slack
     RiskGap A ≤ δ := by
   unfold RiskGap; omega
 
-theorem risk_le_delta_of_cci_slack
-    {A : System} {δ : Int}
-    (h : Control A ≤ CCI A + δ) :
-    Risk A ≤ δ := by
-  rw [Risk_eq_RiskGap]
-  exact P13_risk_gap_bounded_by_cci_slack h
-
-theorem risk_bound_from_vector_supported_slack
+theorem risk_gap_bound_from_vector_supported_slack
     {A : System} {δ : Int}
     (h : CCIVectorSupportsScalarSlack A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack (control_le_cci_from_vector_supported_slack h)
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack (control_le_cci_from_vector_supported_slack h)
 
-/-- Risk bound from a θ-certified vector CCI certificate: certification
+/-- RiskGap bound from a θ-certified vector CCI certificate: certification
     thresholds bound the primary numeric slack directly. -/
-theorem risk_bound_from_threshold_certified_cci
+theorem risk_gap_bound_from_threshold_certified_cci
     {A : System} {δ : Int}
     (cert : CCICertificate A) (θ : CCIThresholds) (w : CCIPenaltyWeights)
     (hpass : CCICertificatePasses cert θ)
     (hmeas : CCICertificateMeasures cert w)
     (hctrl : Control A ≤ θ.lambdaFloor w + δ) :
-    Risk A ≤ δ :=
-  risk_bound_from_vector_supported_slack
+    RiskGap A ≤ δ :=
+  risk_gap_bound_from_vector_supported_slack
     (CCIVectorSupportsScalarSlack.fromThresholdFloor cert θ w hpass hmeas hctrl)
 
-theorem risk_le_delta_of_witness
+theorem risk_gap_le_delta_of_witness
     {A : System} {δ : Int} (w : SpineRiskWitness A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack w.cci_slack
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack w.cci_slack
 
 structure BIQDerivedCCISlack (A : System) (δ : Int) where
   cact_le_cci : CactSys A ≤ CCI A + δ
@@ -399,10 +393,10 @@ theorem control_le_correction_from_biq_ceiling
   have hcact := h.cact_le_cci
   omega
 
-theorem risk_bound_from_biq_ceiling
+theorem risk_gap_bound_from_biq_ceiling
     {A : System} {δ : Int} (h : BIQDerivedCCISlack A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack (control_le_correction_from_biq_ceiling h)
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack (control_le_correction_from_biq_ceiling h)
 
 structure BIQCapacityCertificate (A : System) (δ : Int) extends BIQDerivedCCISlack A δ
 
@@ -411,10 +405,10 @@ theorem BIQCapacityCertificate.biq_ceiling
     BIQSys A ≤ CsensSys A + CactSys A :=
   P10_biq_sys_upper_bound A
 
-theorem BIQCapacityCertificate.risk_bound
+theorem BIQCapacityCertificate.risk_gap_bound
     {A : System} {δ : Int} (cert : BIQCapacityCertificate A δ) :
-    Risk A ≤ δ :=
-  risk_bound_from_biq_ceiling cert.toBIQDerivedCCISlack
+    RiskGap A ≤ δ :=
+  risk_gap_bound_from_biq_ceiling cert.toBIQDerivedCCISlack
 
 /-- Certificate form for the stealth-capability result: monitored filters, tags,
     decay rules, and ledgers jointly bound hidden productive B-IQ tightly enough
@@ -422,11 +416,11 @@ theorem BIQCapacityCertificate.risk_bound
 structure HiddenBIQCertificate (A : System) (δ : Int) where
   hidden_biq_le_cci : Control A ≤ CCI A + δ
 
-theorem risk_bound_from_hidden_biq_certificate
+theorem risk_gap_bound_from_hidden_biq_certificate
     {A : System} {δ : Int}
     (h : HiddenBIQCertificate A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack h.hidden_biq_le_cci
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack h.hidden_biq_le_cci
 
 theorem P13_control_outpaces_correction_risk
     {A B : System}

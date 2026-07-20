@@ -1199,8 +1199,8 @@ theorem trace_derived_risk_bound
     (hctrl : Control A = traceControlDiversity t B p.maxLag)
     (hcact : CactSys A = traceActionCapacityBits t B)
     (hslack : traceActionCapacityBits t B ≤ CCI A + δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack
     (control_le_cci_from_markov_blanket_biq
       (traceDerivedCCISlack t B p cert A δ hctrl hcact hslack))
 

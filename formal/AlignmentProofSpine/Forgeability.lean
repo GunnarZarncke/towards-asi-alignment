@@ -25,9 +25,9 @@ This module does two things:
 
 `MB10` is declared here rather than bundled into `Core.lean`'s
 `BridgeAssumptions` record because -- like `Successors.SuccessorAuditLinks`
--- its statement needs the numeric risk leaf `Risk`, which is not available
+-- its statement needs the numeric risk leaf `RiskGap`, which is not available
 at `Core.lean`'s level (`BridgeAssumptions` is built before `Capability.lean`
-defines `Risk`/`Control`/`CCI`). It is nonetheless a real `axiom`: `#print
+defines `RiskGap`/`Control`/`CCI`). It is nonetheless a real `axiom`: `#print
 axioms` on any theorem using it will show it, and it is threaded through
 theorems explicitly, in the same "never hidden" style as `SuccessorAuditLinks`.
 -/
@@ -106,7 +106,7 @@ axiom MB10_conserved_property_signature_not_forged :
   ∀ (A B : System) (δ : Int),
     SuccessorSafe A B →
     ConservedPropertySignatureVerifiable A B →
-    Risk B ≤ δ → TrueHarm B ≤ δ
+    RiskGap B ≤ δ → TrueHarm B ≤ δ
 
 /-- What `MB10` buys on top of the existing spine: combine the successor-safe
     risk-monotonicity theorem (`SuccessorSafe_risk_monotone`, given the ch48
@@ -118,13 +118,13 @@ axiom MB10_conserved_property_signature_not_forged :
 theorem true_harm_bound_of_successor_safe_step
     (links : SuccessorAuditLinks)
     {A B : System} {δ : Int}
-    (h0 : Risk A ≤ δ)
+    (h0 : RiskGap A ≤ δ)
     (hsafe : SuccessorSafe A B)
     (hverif : ConservedPropertySignatureVerifiable A B) :
     TrueHarm B ≤ δ :=
   have hmono := SuccessorSafe_risk_monotone links hsafe
   MB10_conserved_property_signature_not_forged A B δ hsafe hverif
-    (risk_bound_successor_safe_step hmono.1 hmono.2 h0)
+    (risk_gap_bound_successor_safe_step hmono.1 hmono.2 h0)
 
 end AlignmentProofSpine
 

@@ -8,7 +8,7 @@ import AlignmentProofSpine.Successors
 Basin invariance, layered alignment, safety case, certified-class safety
 (chapters 1–5, 35, 39, 44).
 
-Primary risk bound: `Control A ≤ CCI A + δ` ⇒ `Risk A ≤ δ` via `P13`.
+Primary risk bound: `Control A ≤ CCI A + δ` ⇒ `RiskGap A ≤ δ` via `P13`.
 The vector/status CCI certificate can feed this leaf through an explicit scalar
 floor witness; it does not replace the full safety-case layers.
 -/
@@ -150,23 +150,23 @@ structure CertifiedSafetyCase (A : System) (δ : Int) : Prop where
   certified : Certified A
   invariants : SatisfiesInvariants A
   layered : LayeredAlignedDef A
-  risk_bound : Risk A ≤ δ
+  risk_bound : RiskGap A ≤ δ
 
 /-- The numeric risk-gap leaf. This is intentionally only arithmetic:
-    `Control ≤ CCI + δ` entails `Risk ≤ δ` by the definition of `Risk`. -/
-theorem risk_bound_from_cci_slack
+    `Control ≤ CCI + δ` entails `RiskGap ≤ δ` by the definition of `RiskGap`. -/
+theorem risk_gap_bound_from_cci_slack
     {A : System} {δ : Int}
     (hcci : Control A ≤ CCI A + δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack hcci
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack hcci
 
 /-- Same numeric leaf, when a passed vector/status CCI certificate supplies the
     scalar floor used by the proof spine. -/
-theorem risk_bound_from_vector_cci_certificate
+theorem risk_gap_bound_from_vector_cci_certificate
     {A : System} {δ : Int}
     (hcci : CCIVectorSupportsScalarSlack A δ) :
-    Risk A ≤ δ :=
-  risk_bound_from_vector_supported_slack hcci
+    RiskGap A ≤ δ :=
+  risk_gap_bound_from_vector_supported_slack hcci
 
 def NumericRiskLeaf.fromVectorCCI
     {A : System} {δ : Int} (h : CCIVectorSupportsScalarSlack A δ) :
@@ -186,8 +186,9 @@ def NumericRiskLeaf.fromMarkovBlanketBIQ
 /-- P30, honestly labeled: **assembly, not derivation**. Given the layer
     evidence and the numeric slack, this packages them into the safety-case
     record. The only derivational step is the arithmetic risk leaf
-    (`risk_bound_from_cci_slack`); the remaining fields are stored, not used.
-    What the record *buys* is stated separately: `MB11` + `P30_safe_of_case`. -/
+    (`risk_gap_bound_from_cci_slack`); the remaining fields are stored, not
+    used. What the record *buys* is stated separately: `MB11` +
+    `P30_safe_of_case`. -/
 theorem P30_certified_class_safety_derived
     {A : System} {δ : Int}
     (h : CertifiedSpineInputs A δ) :
@@ -195,7 +196,7 @@ theorem P30_certified_class_safety_derived
   { certified := h.certified
     invariants := h.invariants
     layered := h.layered
-    risk_bound := risk_bound_from_cci_slack h.cci_slack }
+    risk_bound := risk_gap_bound_from_cci_slack h.cci_slack }
 
 /-- Safety-case assembly through the explicit bridge record. Derivational
     content: the bridge record turns percolation / grounding-certificate /
@@ -211,7 +212,7 @@ theorem certified_class_safety_from_bridge_record
   { certified := h.certified
     invariants := h.invariants
     layered := layeredAlignedFromEvidence h.direct derived
-    risk_bound := risk_bound_from_cci_slack h.numeric.cci_slack }
+    risk_bound := risk_gap_bound_from_cci_slack h.numeric.cci_slack }
 
 /-- Top composed assembly `P30T`: `certified_class_safety_from_bridge_record`
     applied to `standardBridges`, so `#print axioms` shows all `MB1`–`MB9`. -/
@@ -248,7 +249,7 @@ theorem certified_class_safety_from_spine_and_bridges
 
 `Safe A` is the abstract deployment-level safety predicate of `Core.lean`. No
 theorem in this development derives it — and none should, because whether a
-certified-class safety case (layer evidence + `Risk ≤ δ`) actually suffices
+certified-class safety case (layer evidence + `RiskGap ≤ δ`) actually suffices
 for deployment-level safety is the open research question the book is about,
 not a consequence of the record's shape. `MB11` carves that out as an explicit
 labeled bridge, so the safety-case record is *consumed* by something rather
@@ -294,9 +295,9 @@ theorem certified_class_safety_along_successor_safe_chain
     {A B : System} {δ : Int}
     (hcci : Control A ≤ CCI A + δ)
     (hchain : SuccessorSafeChain A B) :
-    Risk B ≤ δ :=
-  risk_bound_along_successor_safe_chain links
-    (risk_le_delta_of_cci_slack hcci) hchain
+    RiskGap B ≤ δ :=
+  risk_gap_bound_along_successor_safe_chain links
+    (P13_risk_gap_bounded_by_cci_slack hcci) hchain
 
 theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (links : SuccessorAuditLinks)
@@ -313,22 +314,22 @@ theorem certified_class_safety_from_spine_bridges_and_successor_chain
     (hpercolation : PercolationEvidenceSys A)
     (hcci : Control A ≤ CCI A + δ)
     (hchain : SuccessorSafeChain A B) :
-    CertifiedSafetyCase A δ ∧ Risk B ≤ δ := by
+    CertifiedSafetyCase A δ ∧ RiskGap B ≤ δ := by
   have hroot := certified_class_safety_from_spine_and_bridges A δ hcert hinv
     hbound hgroundingCert haccess hfilters hbundle hbearer hsucc hpercolation hcci
-  exact ⟨hroot, risk_bound_along_successor_safe_chain links hroot.risk_bound hchain⟩
+  exact ⟨hroot, risk_gap_bound_along_successor_safe_chain links hroot.risk_bound hchain⟩
 
 theorem certified_class_safety_from_biq_ceiling
     {A : System} {δ : Int}
     (cert : BIQCapacityCertificate A δ) :
-    Risk A ≤ δ :=
-  BIQCapacityCertificate.risk_bound cert
+    RiskGap A ≤ δ :=
+  BIQCapacityCertificate.risk_gap_bound cert
 
 theorem certified_class_safety_from_hidden_biq_certificate
     {A : System} {δ : Int}
     (cert : HiddenBIQCertificate A δ) :
-    Risk A ≤ δ :=
-  risk_bound_from_hidden_biq_certificate cert
+    RiskGap A ≤ δ :=
+  risk_gap_bound_from_hidden_biq_certificate cert
 
 theorem certified_class_safety_from_spine_bridges_and_biq
     (A : System) (δ : Int)
@@ -353,7 +354,7 @@ theorem certified_class_safety_from_biq_along_successor_chain
     {A B : System} {δ : Int}
     (hbiq : BIQDerivedCCISlack A δ)
     (hchain : SuccessorSafeChain A B) :
-    Risk B ≤ δ :=
+    RiskGap B ≤ δ :=
   certified_class_safety_along_successor_safe_chain links
     (control_le_correction_from_biq_ceiling hbiq) hchain
 

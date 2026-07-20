@@ -19,8 +19,8 @@
       ]
     },
     {
-      "name": "AlignmentProofSpine.risk_bound_from_cci_slack",
-      "gloss": "Primary numeric risk leaf (bounded control-CCI slack implies bounded risk)",
+      "name": "AlignmentProofSpine.risk_gap_bound_from_cci_slack",
+      "gloss": "Primary numeric risk leaf (bounded control-CCI slack implies bounded risk gap)",
       "axioms": [
         "AlignmentProofSpine.AccessModel",
         "AlignmentProofSpine.CCIPenaltiesSys",
@@ -265,7 +265,7 @@
     },
     {
       "name": "AlignmentProofSpine.honest_instance_risk_bound",
-      "gloss": "Honest companion worked instance: same gate/thresholds pass the honest-baseline fixture (computed manipulation 0 vs 26) and yield an actual NumericRiskLeaf / Risk <= 6 -- the gate discriminates on real data",
+      "gloss": "Honest companion worked instance: same gate/thresholds pass the honest-baseline fixture (computed manipulation 0 vs 26) and yield an actual NumericRiskLeaf / RiskGap <= 6 -- the gate discriminates on real data",
       "axioms": [
         "AlignmentProofSpine.AccessModel",
         "AlignmentProofSpine.CCIPenaltiesSys",

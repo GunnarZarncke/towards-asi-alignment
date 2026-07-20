@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-20 | **RiskGap rename + MB11 foregrounding** — full `Risk`→`RiskGap` rename (Lean + manuscript), θ-provenance note, MB11/WithinDeploymentRiskTolerance foregrounded; CCI-unweighting deferred to backlog (finding: CCI itself, not just lambdaProjection, is λ-weighted) | [2026-07-20-riskgap-rename-and-mb11-foregrounding.md](2026-07-20-riskgap-rename-and-mb11-foregrounding.md) |
 | 2026-07-19 | **PLAN IA-1** draft — in-situ LLM / R-MB7 annex (not v5; ET-1 parallel) | [2026-07-19-plan-ia1-in-situ-llm-annex.md](2026-07-19-plan-ia1-in-situ-llm-annex.md) |
 | 2026-07-19 | **Remove [NEW] recency markers** — DOT/Appendix I cleanup; AGENTS/INSTRUCTIONS policy | [2026-07-19-remove-new-recency-markers.md](2026-07-19-remove-new-recency-markers.md) |
 | 2026-07-19 | **ET-1 implementation** — adapter, passive-UAD scorer, tests (ET1-1/2) | [2026-07-19-et1-orbit-external-transfer-freeze.md](2026-07-19-et1-orbit-external-transfer-freeze.md) |

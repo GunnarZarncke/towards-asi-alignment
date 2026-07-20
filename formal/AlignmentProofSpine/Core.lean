@@ -482,9 +482,9 @@ top-level certification theorem depends on them visibly.
 
 A tenth bridge, `MB10` (conserved-property signature not forged; ch08/ch31/ch43),
 is declared in `AlignmentProofSpine.Forgeability` instead of here: its statement
-needs the numeric risk leaf `Risk`, which is not defined until `Capability.lean`,
-so it cannot be a field of `BridgeAssumptions` below. It is threaded explicitly
-through the theorems that use it, in the same "never hidden" style as
+needs the numeric risk leaf `RiskGap`, which is not defined until
+`Capability.lean`, so it cannot be a field of `BridgeAssumptions` below. It is
+threaded explicitly through the theorems that use it, in the same "never hidden" style as
 `Successors.SuccessorAuditLinks`. -/
 
 /-- MB1: estimator soundness. An ε-boundary certificate from the measurement
