@@ -1,5 +1,6 @@
 import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
+import katex from "katex";
 
 const FIGURE_BASE = "https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main";
 
@@ -511,6 +512,33 @@ function cleanTableRow(row) {
     .trim();
 }
 
+// Table cells are emitted as raw HTML (not markdown), because raw HTML blocks
+// in the markdown pipeline are passed through unparsed: remark-math never sees
+// `$...$` inside them, and markdown link syntax never turns into `<a>` tags.
+// So table-cell inline content needs its own HTML-producing versions of ref
+// links and math, instead of the markdown-syntax versions convertInlineText emits.
+function renderTableCellMath(text) {
+  const renderExpr = (expr, displayMode) => {
+    try {
+      return katex.renderToString(expr.trim(), { throwOnError: false, displayMode });
+    } catch {
+      return expr;
+    }
+  };
+  return text
+    .replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) => renderExpr(expr, true))
+    .replace(/\$([^$]+?)\$/g, (_, expr) => renderExpr(expr, false));
+}
+
+function tableCellLinksToHtml(text) {
+  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => `<a href="${url}">${label}</a>`);
+}
+
+function convertTableCell(cell, ctx) {
+  const md = convertInlineText(cell.replace(/\\newline/g, " ").trim(), ctx);
+  return tableCellLinksToHtml(renderTableCellMath(md));
+}
+
 function convertTableEnv(body, ctx) {
   const rows = stripTableDecorations(body)
     .split(/\\\\/g)
@@ -520,9 +548,7 @@ function convertTableEnv(body, ctx) {
   if (rows.length === 0) return "\n";
 
   const htmlRows = rows.map((row, idx) => {
-    const cells = row
-      .split("&")
-      .map((cell) => convertInlineText(cell.replace(/\\newline/g, " ").trim(), ctx));
+    const cells = row.split("&").map((cell) => convertTableCell(cell, ctx));
     const tag = idx === 0 ? "th" : "td";
     const cellHtml = cells.map((cell) => `<${tag}>${cell}</${tag}>`).join("");
     return `<tr>${cellHtml}</tr>`;

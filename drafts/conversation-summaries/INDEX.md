@@ -4,6 +4,9 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-23 | **Appendix B crosswalk table links/math** — book-table cells rendered raw Markdown links + `$...$` inside opaque HTML; `tex-convert.mjs` now emits real `<a>` tags and build-time KaTeX HTML for table cells | [2026-07-23-appb-crosswalk-table-links-math.md](2026-07-23-appb-crosswalk-table-links-math.md) |
+| 2026-07-23 | **Lab-sim plane replay demo** — `trace_sink` hook + recorder, `export_replay_trace.py`, static `demos/ch07-lab-sim-replay/` (4-lane timeline, tier toggle, event_n connectors) | [2026-07-23-lab-sim-replay-demo.md](2026-07-23-lab-sim-replay-demo.md) |
+| 2026-07-20 | **ET-1 Colosseum SC battery** — blackboard + channel_only, 10 seeds; P1 7/10, P2 1/10, 0 channel msgs; outcome null | [2026-07-20-et1-colosseum-sc-battery.md](2026-07-20-et1-colosseum-sc-battery.md) |
 | 2026-07-20 | **Lean spine credibility P4** — conditional Löb derivation, self-certifying tiling obstruction, audit contrast, Appendix G integration and review | [2026-07-20-lean-spine-credibility-p4-tiling.md](2026-07-20-lean-spine-credibility-p4-tiling.md) |
  2026-07-20 | **Lean spine credibility P1–P3** — trace headline cert, battery gate, bridge independence (no P4 tiling) | [2026-07-20-lean-spine-credibility-p1-p3.md](2026-07-20-lean-spine-credibility-p1-p3.md) |
 | 2026-07-20 | **RiskGap rename + MB11 foregrounding** — full `Risk`→`RiskGap` rename (Lean + manuscript), θ-provenance note, MB11/WithinDeploymentRiskTolerance foregrounded; CCI-unweighting deferred to backlog (finding: CCI itself, not just lambdaProjection, is λ-weighted) | [2026-07-20-riskgap-rename-and-mb11-foregrounding.md](2026-07-20-riskgap-rename-and-mb11-foregrounding.md) |
