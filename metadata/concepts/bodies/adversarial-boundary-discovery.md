@@ -14,6 +14,9 @@ leanNodes:
     kind: proof
     summary: Access-equivalent models with different goals are not identifiable from the available handles alone.
     module: AlignmentProofSpine/Boundaries.lean
+demos:
+  - demoId: ch07-lab-sim-replay
+    summary: Static replay of one lab-simulation episode with a genuine filed-report-vs-oracle-truth divergence -- scrub through time and switch Agent/Admin/Audit(tier)/Oracle planes to see how much of the same event each handle actually reveals; the misreport stays invisible below the deep audit tier.
 related:
   - boundary-residual
   - boundary-discovery

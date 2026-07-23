@@ -169,7 +169,18 @@ from dataclasses import dataclass, field
 # pure reorg, see ACCESS_TIERS.md) -- no mechanics change, noted here only
 # because it touches the same files. See PLAN.md "Persistence probe" /
 # `run_persistence_probe.py`.
-CODE_VERSION = "lab-sim-0.11.0"
+# 0.12.0 (2026-07-23, static plane-replay demo): `world.run_episode` gains
+# an optional `trace_sink` forward hook (`world_visible/trace_recorder.
+# build_frame`) -- a per-tick, read-only tap that snapshots the agent
+# observation/action/result, the unredacted host/access/engine log
+# entries, tier-projected audit views (reusing `oracle_only/events.py`'s
+# EXISTING projection functions, no new redaction logic), and oracle
+# ground truth for that tick. Cannot influence dispatch outcomes or RNG
+# draws. Default `None` reproduces every pre-0.12.0 episode byte-for-byte
+# (no new work is done unless a caller opts in). Built for
+# `demos/ch07-lab-sim-replay/` (`export_replay_trace.py`); no referee/
+# detector code touched.
+CODE_VERSION = "lab-sim-0.12.0"
 
 ROLES = ("engineer", "reviewer", "release_manager", "admin", "overseer", "decoy")
 

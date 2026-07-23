@@ -30,6 +30,7 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import dataclass, field
+from typing import Any, Callable
 
 from .access import PermissionService
 from .agents import COMM_ROLE_ELIGIBILITY, AdminPolicy
@@ -44,6 +45,7 @@ from ..oracle_only.user_pool import UserPool
 from .pipeline_engine import PipelineEngine
 from .pipeline_spec import load_spec
 from .tools import Host, ToolCall
+from .trace_recorder import build_frame
 from .workspace import Workspace
 
 OVERSEER_ID = "overseer1"
@@ -105,6 +107,7 @@ def run_episode(
     overseer_script: tuple = (),
     agent_overrides: dict[str, tuple] | None = None,
     resume_from: dict[str, object] | None = None,
+    trace_sink: Callable[[dict[str, Any]], None] | None = None,
 ) -> EpisodeResult:
     """``perturbation_hooks``: host-side benign perturbation injectors (see
     ``tools.PerturbationHook``) — D1/UAD forward hook. Agents recover for
@@ -137,7 +140,16 @@ def run_episode(
     IGNORED (the resumed spec-in-force wins) and a fresh
     ``random.Random(seed)`` stream starts (RNG continuity is NOT
     preserved -- see ``OracleWorld.full_state``). Absent (default,
-    ``None``), behavior is byte-identical to every pre-D2 call."""
+    ``None``), behavior is byte-identical to every pre-D2 call.
+
+    ``trace_sink``: static-replay demo forward hook (``trace_recorder.
+    build_frame``) -- when given, called once per tick with a JSON-safe
+    frame combining that tick's agent observations/actions/results,
+    unredacted host/access/engine log entries, tier-projected audit
+    views, and oracle ground truth. Read-only: it cannot affect dispatch
+    outcomes and never influences RNG draws. Absent (default, ``None``),
+    behavior -- including performance -- is byte-identical to every
+    pre-trace_sink call (see ``demos/ch07-lab-sim-replay/``)."""
     backend = backend or MockIsolate()
     agent_overrides = agent_overrides or {}
     ws = Workspace()
@@ -313,6 +325,7 @@ def run_episode(
             _, p = _backend_and_program(actor_id)
             handles[actor_id] = b.spawn(actor_id, seed=_actor_seed(seed, actor_id), program=p)
         handle_service.pending_restarts.clear()
+        agent_records: dict[str, dict[str, object]] = {}
         for agent_cfg in playbook_agents:
             self_captured = (
                 agent_cfg.role == "reviewer"
@@ -391,6 +404,14 @@ def run_episode(
             last_denied[agent_cfg.actor_id] = None
             last_state_load_ok[agent_cfg.actor_id] = False
             last_loaded_state[agent_cfg.actor_id] = None
+            if trace_sink is not None:
+                agent_records[agent_cfg.actor_id] = {
+                    "role": agent_cfg.role,
+                    "observation": observation,
+                    "action": None,
+                    "result": None,
+                    "event_n": None,
+                }
             if call is None:
                 continue
             selection = call.pop("selection", None)
@@ -412,6 +433,12 @@ def run_episode(
                     inner = call["args"].setdefault("args", {})
                     inner["params"] = dict(cfg.build_params)
             result = host.dispatch(agent_cfg.actor_id, ToolCall(call["tool"], call["args"]))
+            if trace_sink is not None:
+                agent_records[agent_cfg.actor_id]["action"] = {"tool": call["tool"], "args": call["args"]}
+                agent_records[agent_cfg.actor_id]["result"] = {
+                    "ok": result.ok, "reason": result.reason, "payload": result.payload,
+                }
+                agent_records[agent_cfg.actor_id]["event_n"] = host.events.entries[-1]["n"]
             if call["tool"] == "state.load" and result.ok:
                 last_state_load_ok[agent_cfg.actor_id] = True
                 last_loaded_state[agent_cfg.actor_id] = result.payload.get("state")
@@ -447,6 +474,20 @@ def run_episode(
             # no experiences, no votes this tick.
             deployed_hazard = max(deployed_hazards) if deployed_hazards else None
             user_pool.tick(deployed_hazard)
+        if trace_sink is not None:
+            trace_sink(
+                build_frame(
+                    t=t,
+                    agent_records=agent_records,
+                    host=host,
+                    engine=engine,
+                    permissions=permissions,
+                    oracle=oracle,
+                    ws=ws,
+                    model_id=model_id,
+                    last_deployed_model_id=last_deployed_model_id,
+                )
+            )
 
     timings = [backend_by_actor[a.actor_id].close(handles[a.actor_id]) for a in playbook_agents]
     return EpisodeResult(
