@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-23 | **κ-edge percolation demo conversion + site integration** — `demos/percolation-demo.tsx` (standalone React) → `demos/ch35-kappa-percolation/` (vanilla TS, matches ch35 multi-agent coupling percolation model); cross-linked from `inferential-coupling` concept card and researcher-applied reading path | [2026-07-23-kappa-percolation-demo.md](2026-07-23-kappa-percolation-demo.md) |
+| 2026-07-23 | **ET-1 Colosseum SC positive control** — Claude Sonnet 4.5, 10 seeds; P1 10/10, P2 0/10, still 0 channel msgs; rules out gpt-4o-mini-specific silence; model-label bug fix | [2026-07-23-et1-colosseum-sc-claude-positive-control.md](2026-07-23-et1-colosseum-sc-claude-positive-control.md) |
 | 2026-07-23 | **Appendix B crosswalk table links/math** — book-table cells rendered raw Markdown links + `$...$` inside opaque HTML; `tex-convert.mjs` now emits real `<a>` tags and build-time KaTeX HTML for table cells | [2026-07-23-appb-crosswalk-table-links-math.md](2026-07-23-appb-crosswalk-table-links-math.md) |
 | 2026-07-23 | **Lab-sim plane replay demo** — `trace_sink` hook + recorder, `export_replay_trace.py`, static `demos/ch07-lab-sim-replay/` (4-lane timeline, tier toggle, event_n connectors) | [2026-07-23-lab-sim-replay-demo.md](2026-07-23-lab-sim-replay-demo.md) |
 | 2026-07-20 | **ET-1 Colosseum SC battery** — blackboard + channel_only, 10 seeds; P1 7/10, P2 1/10, 0 channel msgs; outcome null | [2026-07-20-et1-colosseum-sc-battery.md](2026-07-20-et1-colosseum-sc-battery.md) |

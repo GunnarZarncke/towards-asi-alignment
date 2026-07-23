@@ -26,6 +26,9 @@ citeKeys:
 external:
   - label: A Formalization of Acausal Trade on Top of Unsupervised Agent Discovery (PDF)
     url: https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/acausal-trade-uad-formalization/acausal_trade_uad_formalization.pdf
+demos:
+  - demoId: ch35-kappa-percolation
+    summary: Toggle benefit/cost, tie strength, and community mixing to see the social graph's giant component decouple from the κ-open (cooperative) giant component.
 ---
 
 Two models from the same lab share weights, training data, scaffolds, and incentives. Deployed by different vendors with zero communication between them, they can still converge on a shared response to oversight — no message, no cartel, no explicit representation of the coordination. Full acausal trade is the decision-theoretic limiting case; shared model ancestry may already be enough.

@@ -49,6 +49,9 @@ steps:
     ref: successor-stability
   - kind: card
     ref: attractor-control
+  - kind: demo
+    ref: ch35-kappa-percolation
+    note: "Social giant component vs. κ-open giant component — cooperation can fail to percolate even when the network is fully connected."
   - kind: card
     ref: deployment-gate
   - kind: book
