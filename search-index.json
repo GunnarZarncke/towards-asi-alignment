@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-23T19:55:24.321Z",
+  "generatedAt": "2026-07-24T19:04:58.385Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 215,
+  "entryCount": 217,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -721,6 +721,12 @@
       "url": "/cards/institutional-entrenchment-corrigibility/"
     },
     {
+      "title": "ET Line: External-Substrate Transfer Tests",
+      "type": "concept",
+      "summary": "The ET line runs frozen, unmodified project instruments (starting with passive unit discovery) against traces from multi-agent systems and benchmarks this project did not author, to test whether findings generalize beyond the project's own hand-built or blindly-grown ecologies.",
+      "url": "/cards/et-external-transfer/"
+    },
+    {
       "title": "Evidence and Uncertainty",
       "type": "concept",
       "summary": "Every claim in the framework carries an explicit confidence label and a stated way to challenge it, rather than uniform certainty.",
@@ -1021,6 +1027,12 @@
       "url": "/cards/chapters/ch35/"
     },
     {
+      "title": "Negative Results Ledgers",
+      "type": "concept",
+      "summary": "Numbered experiment logs of what failed, false-passed, or worked only under qualifiers — key findings summarized on the site, full record linked to GitHub.",
+      "url": "/cards/negative-results/"
+    },
+    {
       "title": "Parasites in the Correction System",
       "type": "chapter",
       "summary": "A correction system fails not only when it is overpowered, but also when it is colonized by processes that make correction look alive while removing its causal force. This chapter calls that failure mode correction-audit evasion and develops it through a biological parasite metaphor: an evasion process extracts benefit from a host correction system while reducing that host's ability to model, evaluate, and correct the larger process it is supposed to govern.",
@@ -1047,7 +1059,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 380 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 384 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/reference-index/"
     },
     {
@@ -1125,7 +1137,7 @@
     {
       "title": "The Boundary Residual",
       "type": "concept",
-      "summary": "A candidate boundary is measured by how much conditional mutual information leaks between the deep inside and the deep outside once the interface is known.",
+      "summary": "How much information still leaks between the deep inside and deep outside of a candidate system once its sensory-active interface is fixed — low leakage means the interface actually screens inside from outside.",
       "url": "/cards/boundary-residual/"
     },
     {
