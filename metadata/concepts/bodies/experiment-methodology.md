@@ -3,6 +3,7 @@ related:
   - evidence-and-uncertainty
   - intervention-supported-unit-discovery
   - unit-discovery-stress-test
+  - et-external-transfer
   - bridge-assumptions
 external:
   - label: Experiment lines overview

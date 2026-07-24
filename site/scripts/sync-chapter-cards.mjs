@@ -216,6 +216,7 @@ async function main() {
         "experiment-methodology",
         "intervention-supported-unit-discovery",
         "unit-discovery-stress-test",
+        "et-external-transfer",
         "evidence-and-uncertainty",
         "mb1-boundary-estimator-soundness",
         "mb4-correction-legitimacy",

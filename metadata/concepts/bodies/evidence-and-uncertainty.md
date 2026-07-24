@@ -4,6 +4,7 @@ related:
   - bridge-assumptions
   - deployment-gate
   - experiment-methodology
+  - et-external-transfer
   - negative-results
 ---
 

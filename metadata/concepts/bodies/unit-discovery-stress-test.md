@@ -18,6 +18,7 @@ evidenceNotes:
 related:
   - intervention-supported-unit-discovery
   - adversarial-boundary-discovery
+  - et-external-transfer
   - experiment-methodology
   - evidence-and-uncertainty
 external:

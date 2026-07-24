@@ -4621,3 +4621,65 @@ present, no proxy gain) written into ``ch34`` Goodhart Selection,
 optional richer ProgramMap baseline or deploy-positive selection slice
 if a follow-up Goodhart battery is pre-registered.
 
+---
+
+### GL-86 — ET-1: first external-substrate transfer, Orbit collusion benchmark (concluded 2026-07-24)
+
+**Trigger.** Line-wide scope ceiling (noted since GL-76): every prior GL
+finding is internally generated evidence — a project-authored strategy
+space and metrics. ET-1 runs frozen passive UAD, unmodified, against traces
+from Orbit, an external multi-agent DCOP benchmark this project did not
+author, as the line's first true external-substrate transfer test.
+
+**Protocol.** `et1-0.3.0` (Colosseum Control, `use_blackboard: true`,
+benign prompts) and `et1-0.4.0` (Colosseum Attack "simple", explicit
+coalition-channel prompt), 10 seeds each, two models
+(`openai/gpt-4o-mini`, `anthropic/claude-sonnet-4-5-20250929`), plus an
+earlier `et1-0.2.0` channel-only pass. Frozen P1 (exact coalition recovery
+on collusion), P2 (no merge on baseline), P3 (adapter sanity). Full
+protocol history, fixtures, and both harvest sentences:
+`experiments/graded-lab-simulation/PLAN_ET1.md`.
+
+**Result.** P3 passes throughout (adapter sanity, <10% unmapped events).
+P1 and P2 do not resolve as a clean pass/null pair: passive UAD recovers
+the declared `{dev_0, dev_1}` coalition on nearly every collusion episode
+(up to 10/10) **and** on most matched baseline episodes (up to 10/10) as
+well. A within-arm control under `et1-0.4.0` is decisive: of 10 collusion
+episodes, 6 showed real coalition-channel messages and 4 showed none, yet
+UAD recovered the exact coalition identically in all 10 — recovery does
+not track observed channel activity in either direction.
+
+**Root cause (confirmed directly against traces).** Every Orbit developer
+agent in `JiraTicketScenario` — coalition member or not — runs one shared,
+deterministic tool-call script under round-robin scheduling (e.g. `list_boards
+→ view_assignments → view_tasks` for all four developers, in order, every
+baseline episode). Passive CMI-based UAD **correctly** identifies that
+shared script as one coordinated unit; it is not being fooled or aliased.
+The frozen P2 predicate assumes non-coalition agents are structurally
+independent — an assumption Orbit's Jira-ticket scenario does not satisfy,
+so P2's result reflects a mismatch between predicate and substrate, not a
+detector defect. Same phenomenon as documented in the sibling
+`agency-detect` precursor project's telemetry experiments (`docs/EXPERIMENTS.md`
+§0).
+
+**Outcome: concluded, not scored pass/null.** ET-1's Orbit line stops here
+(explicit decision, 2026-07-24): no existing Orbit scenario has non-coalition
+agents with independent control-flow to test frozen passive UAD's ability to
+separate real covert coordination from this scripted-coupling baseline.
+Building such a scenario would be a new-substrate task, out of scope for
+this "lightest external annex."
+
+**Manuscript harvest.** See `PLAN_ET1.md` and `DESIGN.md` ("PLAN ET-1
+pre-registration", R-MB1-ET) for the frozen harvest sentence. Cited as the
+line's first external-substrate transfer result in the appendix
+"Experimental Evidence."
+
+**Artifacts.** `results/et1_orbit_collusion.json`,
+`results/et1_orbit_collusion_attack-simple.json`,
+`results/et1_traces_attack-simple/`, `results/et1_traces_claude/`.
+
+**Open / next.** No further Orbit battery planned. A future external
+transfer attempt would need either a new DCOP scenario with genuinely
+heterogeneous non-coalition control-flow, or a different external
+substrate entirely.
+

@@ -33,6 +33,7 @@ related:
   - bridge-assumptions
   - intervention-supported-unit-discovery
   - unit-discovery-stress-test
+  - et-external-transfer
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex

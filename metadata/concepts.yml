@@ -284,6 +284,19 @@ concepts:
     featured: true
     part: part01
     body: bodies/dynamical-guarantee.md
+  - slug: et-external-transfer
+    kind: concept
+    title: 'ET Line: External-Substrate Transfer Tests'
+    status: open
+    summary: The ET line runs frozen, unmodified project instruments (starting with passive unit discovery) against traces from multi-agent systems and benchmarks this project did not author, to test whether findings generalize beyond the project's own hand-built or blindly-grown ecologies.
+    decision: Treat an ET result as informative about external validity even when it does not resolve as a clean pass or null — a substrate-suitability limit (frozen instrument correctly detects a structural feature the pre-registered predicate did not anticipate) is itself a finding about where the instrument can be validly tested, not a wasted run.
+    bookChapters:
+      - ch07
+      - ch33
+    bookLabels:
+      - ch:finding-boundary
+      - ch:certification-without-construction
+    body: bodies/et-external-transfer.md
   - slug: evidence-and-uncertainty
     kind: concept
     title: Evidence and Uncertainty

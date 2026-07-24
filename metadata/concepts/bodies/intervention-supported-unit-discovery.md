@@ -23,6 +23,7 @@ related:
   - mb1-boundary-estimator-soundness
   - adversarial-boundary-discovery
   - unit-discovery-stress-test
+  - et-external-transfer
   - experiment-methodology
   - detecting-composite-agents
 external:
