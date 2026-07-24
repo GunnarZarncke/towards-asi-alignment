@@ -38,7 +38,15 @@ const nodeHrefs = Object.fromEntries(
   <article class="readable">
     <p class="eyebrow"><a href={withBase("/lean/")}>Lean proof spine</a></p>
     <h1>{graph.title}</h1>
-    <p class="side-panel-meta">Source: <code>context/lean_proof_graphs/{graph.dotId}.dot</code></p>
+    <p class="side-panel-meta">
+      Source: <code>context/lean_proof_graphs/{graph.dotId}.dot</code>
+      {graph.dotFile && (
+        <>
+          {" · "}
+          <a href={withBase(graph.dotFile)} download>Graphviz source (.dot)</a>
+        </>
+      )}
+    </p>
 
     <LeanGraphNav currentSlug={graph.id} />
 
@@ -46,6 +54,7 @@ const nodeHrefs = Object.fromEntries(
       graphId={graph.id}
       title={graph.title}
       svgFile={graph.svgFile}
+      dotFile={graph.dotFile}
     />
 
     {graph.id === "field-subsumptions" && (

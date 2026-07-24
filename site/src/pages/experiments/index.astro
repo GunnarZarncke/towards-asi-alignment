@@ -30,7 +30,8 @@ const mbCards = [
     <h1>Experimental evidence</h1>
     <p class="lede">{experiments.claimStrength}</p>
     <div class="button-row">
-      <a class="button primary" href={experiments.canonicalDocUrl} target="_blank" rel="noopener noreferrer">
+      <a class="button primary" href={cardHref(base, "negative-results")}>Negative results hub</a>
+      <a class="button" href={experiments.canonicalDocUrl} target="_blank" rel="noopener noreferrer">
         Full narrative (EXPERIMENTS.md)
       </a>
       <a class="button" href={experiments.openTasksUrl} target="_blank" rel="noopener noreferrer">
@@ -46,12 +47,16 @@ const mbCards = [
       Where an experiment fails to show what we hoped, or shows it only under load-bearing qualifiers,
       that is recorded rather than buried. Start from these ledgers when calibrating manuscript claims —
       not from headline accuracies alone.
+      {" "}
+      <a href={cardHref(base, "negative-results")}>Read the negative-results hub card</a>.
     </p>
     <ul>
       {experiments.ledgers.map((ledger) => (
         <li>
-          <a href={ledger.url} target="_blank" rel="noopener noreferrer">{ledger.label}</a>
+          <a href={withBase(ledger.sitePath)}>{ledger.label}</a>
           <span class="side-panel-meta"> ({ledger.lineId})</span>
+          {" · "}
+          <a href={ledger.repoUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
         </li>
       ))}
     </ul>

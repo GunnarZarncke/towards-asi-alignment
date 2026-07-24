@@ -4,6 +4,7 @@ related:
   - bridge-assumptions
   - deployment-gate
   - experiment-methodology
+  - negative-results
 ---
 
 Not every claim in the framework carries the same weight. Some are established observations, some are plausible extensions, some are working assumptions the framework needs, and some are open bridges to real-world measurement.

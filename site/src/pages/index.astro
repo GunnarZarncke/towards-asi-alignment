@@ -1,7 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import PathRelationshipDiagram from "../components/PathRelationshipDiagram.astro";
-import { pathHref } from "../lib/site-urls";
+import { pathHref, pdfHref } from "../lib/site-urls";
 import { HOME_DESCRIPTION } from "../lib/seo";
 import { getReadingPaths } from "../lib/reading-paths";
 import standaloneClaims from "../data/standalone-claims.json";
@@ -27,6 +27,7 @@ const failureModes = [
     </p>
     <div class="button-row">
       <a class="button primary" href={withBase("/paths/")}>Guided tour — start here</a>
+      <a class="button" href={pdfHref(base)}>Download PDF</a>
       <a class="button" href={withBase("/faq/")}>FAQ</a>
     </div>
   </section>
@@ -83,6 +84,7 @@ const failureModes = [
     </p>
     <p>
       <a href={withBase("/cards/what-not-claiming/")}>Read the caveat card</a> ·
+      <a href={withBase("/cards/negative-results/")}>Negative results ledgers</a> ·
       <a href={withBase("/experiments/")}>Experiment lines and coverage matrix</a>
     </p>
   </section>

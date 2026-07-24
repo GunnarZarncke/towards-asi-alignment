@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { pdfHref } from "../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -16,7 +17,7 @@ const items = [
   ["Where are the experiment lines documented?", "The companion site Experiments page summarizes build order, negative ledgers, and bridge coverage. Full narrative prose lives in docs/EXPERIMENTS.md in the repository."],
   ["Where should safety engineers start?", "Use the engineer/evals path, then read the correction-channel integrity and deployment-gate cards."],
   ["Where should policy readers start?", "Use the funder/policy path. It emphasizes decision triggers, scope assumptions, artifacts, and uncertainty."],
-  ["Where is the full book?", "The PDF is hosted on this site (PDF in the nav) and opens directly in the browser. GitHub Releases remains an alternate download channel."],
+  ["Where is the full book?", "The PDF is bundled with this site — use PDF in the nav or the Download PDF button on Start Here and the book map. It opens directly in the browser without GitHub login."],
   ["Will there be translations?", "Later, after the English card structure stabilizes."]
 ];
 ---
@@ -41,6 +42,12 @@ const items = [
               negative ledgers, and bridge coverage. Full narrative prose lives in{" "}
               <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">docs/EXPERIMENTS.md</a>{" "}
               in the repository.
+            </>
+          ) : question === "Where is the full book?" ? (
+            <>
+              The PDF is bundled with this site — use <a href={pdfHref(base)}>PDF in the nav</a> or the Download PDF button on{" "}
+              <a href={withBase("/")}>Start Here</a> and the <a href={withBase("/book/")}>book map</a>.
+              It opens directly in the browser without GitHub login. GitHub Releases remains an alternate download channel.
             </>
           ) : (
             answer

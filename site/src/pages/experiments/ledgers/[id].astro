@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { cardHref } from "../../../lib/site-urls";
+
+export async function getStaticPaths() {
+  const ledgers = await getCollection("experiment-ledgers");
+  return ledgers.map((ledger) => ({
+    params: { id: ledger.data.lineId },
+    props: { ledger }
+  }));
+}
+
+const { ledger } = Astro.props;
+const { Content } = await render(ledger);
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const repoUrl = `https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/${ledger.data.sourcePath}`;
+---
+
+<SiteLayout
+  title={ledger.data.title}
+  description={`Experiment ledger synced from ${ledger.data.sourcePath}.`}
+>
+  <article class="readable">
+    <p class="eyebrow">
+      <a href={withBase("/experiments/")}>Experiments</a>
+      {" · "}
+      <a href={cardHref(base, "negative-results")}>Negative results</a>
+    </p>
+    <h1>{ledger.data.title}</h1>
+    <p class="side-panel-meta">
+      Synced from <code>{ledger.data.sourcePath}</code>.
+      {" "}
+      <a href={repoUrl} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      {" · "}
+      <a href={withBase(`/experiment-ledgers/${ledger.data.lineId}.md`)}>Raw markdown</a>
+    </p>
+    <Content />
+  </article>
+</SiteLayout>

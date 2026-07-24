@@ -50,6 +50,9 @@ steps:
   - kind: card
     ref: evidence-and-uncertainty
     note: "How to read claim labels and negative results."
+  - kind: card
+    ref: negative-results
+    note: "On-site ledgers of experiment failures and qualifiers."
   - kind: experiment
     ref: toy-simulation
     note: "Fastest capture-theater demo — why correction metrics can lie."

@@ -172,7 +172,7 @@ concepts:
     kind: concept
     title: The Boundary Residual
     status: framework
-    summary: A candidate boundary is measured by how much conditional mutual information leaks between the deep inside and the deep outside once the interface is known.
+    summary: How much information still leaks between the deep inside and deep outside of a candidate system once its sensory-active interface is fixed — low leakage means the interface actually screens inside from outside.
     decision: When auditing a candidate boundary, measure the leakage directly rather than accepting a boundary defined by convenience — a low residual means the interface actually screens inside from outside.
     bookChapters:
       - ch07
@@ -180,6 +180,9 @@ concepts:
       - ch:finding-boundary
       - sec:boundary-residual
     body: bodies/boundary-residual.md
+    glossaryTerms:
+      - term: Boundary residual
+        definition: Conditional mutual information between deep internal and external dynamics given the current sensory-active interface; the operational score for whether a candidate boundary actually separates inside from outside.
   - slug: capability
     kind: glossary
     status: framework
@@ -301,6 +304,14 @@ concepts:
     summary: 'The companion experiment lines follow a fixed discipline: freeze the audit before running it, keep the scenario author and the detector author separate wherever possible, register predictions before seeing results, and publish negative results next to positive ones.'
     decision: Before trusting any reported experiment result in this project, check which of these four disciplines it followed — a result reported without them is weaker evidence, whatever the headline number says.
     body: bodies/experiment-methodology.md
+  - slug: negative-results
+    kind: concept
+    title: Negative Results Ledgers
+    status: framework
+    summary: Numbered experiment logs of what failed, false-passed, or worked only under qualifiers — synced on the site so readers can calibrate claims without opening the repository.
+    decision: Before trusting a manuscript experiment citation, open the matching ledger and check whether the cited finding survived harder ecologies, seeds, or adversaries.
+    evidence: Each in-repo simulation line maintains a running findings or negative-results file; the companion site mirrors them at /experiments/ledgers/.
+    body: bodies/negative-results.md
   - slug: goal-inference
     kind: glossary
     status: framework
@@ -638,6 +649,8 @@ concepts:
     glossaryTerms:
       - term: Value bundle
         definition: A low-dimensional latent control direction that changes policy across many contexts.
+      - term: Value-bundle geometry
+        definition: The pattern by which latent value dimensions and their tradeoffs change policy across contexts — not merely which labels appear, but how bundles activate and compete.
       - term: Goal transport
         definition: Preservation of goal-relevant structure across transformation.
   - slug: value-change-vs-corruption

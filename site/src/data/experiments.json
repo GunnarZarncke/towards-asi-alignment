@@ -1,6 +1,8 @@
 {
   "claimStrength": "Methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (MB1–MB10).",
   "negativeResultsFirst": true,
+  "negativeResultsCardPath": "/cards/negative-results/",
+  "negativeResultsCardUrl": "https://towards-alignment.com/cards/negative-results/",
   "canonicalDocPath": "docs/EXPERIMENTS.md",
   "canonicalDocUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md",
   "openTasksUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/TODO.md",
@@ -9,25 +11,37 @@
       "lineId": "embedded-simulation",
       "label": "Embedded negative ledger",
       "path": "experiments/embedded-simulation/results/NEGATIVE_RESULTS.md",
-      "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
+      "sitePath": "/experiments/ledgers/embedded-simulation/",
+      "siteUrl": "https://towards-alignment.com/experiments/ledgers/embedded-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md",
+      "url": "https://towards-alignment.com/experiments/ledgers/embedded-simulation/"
     },
     {
       "lineId": "goal-agent-simulation",
       "label": "Goal-agent findings",
       "path": "experiments/goal-agent-simulation/results/FINDINGS.md",
-      "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
+      "sitePath": "/experiments/ledgers/goal-agent-simulation/",
+      "siteUrl": "https://towards-alignment.com/experiments/ledgers/goal-agent-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md",
+      "url": "https://towards-alignment.com/experiments/ledgers/goal-agent-simulation/"
     },
     {
       "lineId": "lab-simulation",
       "label": "Lab-layer findings",
       "path": "experiments/lab-simulation/results/FINDINGS.md",
-      "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
+      "sitePath": "/experiments/ledgers/lab-simulation/",
+      "siteUrl": "https://towards-alignment.com/experiments/ledgers/lab-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md",
+      "url": "https://towards-alignment.com/experiments/ledgers/lab-simulation/"
     },
     {
       "lineId": "graded-lab-simulation",
       "label": "Graded-lab findings",
       "path": "experiments/graded-lab-simulation/results/FINDINGS.md",
-      "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
+      "sitePath": "/experiments/ledgers/graded-lab-simulation/",
+      "siteUrl": "https://towards-alignment.com/experiments/ledgers/graded-lab-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md",
+      "url": "https://towards-alignment.com/experiments/ledgers/graded-lab-simulation/"
     }
   ],
   "lines": [
@@ -107,13 +121,17 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md"
         },
         {
-          "label": "Findings",
+          "label": "Findings (site)",
+          "url": "https://towards-alignment.com/experiments/ledgers/embedded-simulation/"
+        },
+        {
+          "label": "Findings (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
         }
       ],
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md",
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
+      "findingsUrlResolved": "https://towards-alignment.com/experiments/ledgers/embedded-simulation/"
     },
     {
       "order": 3,
@@ -136,13 +154,17 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/README.md"
         },
         {
-          "label": "Findings",
+          "label": "Findings (site)",
+          "url": "https://towards-alignment.com/experiments/ledgers/goal-agent-simulation/"
+        },
+        {
+          "label": "Findings (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
         }
       ],
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/README.md",
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
+      "findingsUrlResolved": "https://towards-alignment.com/experiments/ledgers/goal-agent-simulation/"
     },
     {
       "order": 4,
@@ -182,7 +204,11 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN.md"
         },
         {
-          "label": "Findings",
+          "label": "Findings (site)",
+          "url": "https://towards-alignment.com/experiments/ledgers/lab-simulation/"
+        },
+        {
+          "label": "Findings (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
         },
         {
@@ -192,7 +218,7 @@
       ],
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/README.md",
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
+      "findingsUrlResolved": "https://towards-alignment.com/experiments/ledgers/lab-simulation/"
     },
     {
       "order": 5,
@@ -233,13 +259,17 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_v4.md"
         },
         {
-          "label": "Findings",
+          "label": "Findings (site)",
+          "url": "https://towards-alignment.com/experiments/ledgers/graded-lab-simulation/"
+        },
+        {
+          "label": "Findings (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
         }
       ],
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/README.md",
-      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
+      "findingsUrlResolved": "https://towards-alignment.com/experiments/ledgers/graded-lab-simulation/"
     }
   ],
   "howToRead": [

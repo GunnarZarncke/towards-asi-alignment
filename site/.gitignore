@@ -16,6 +16,8 @@ src/content/book/
 src/content/cards/chapters/
 src/content/cards/references/
 src/content/cards/experiments/
+src/content/experiment-ledgers/
+public/experiment-ledgers/
 src/content/cards/reference-index.md
 public/chapter-demos/
 public/lean-graphs/
@@ -46,6 +48,7 @@ src/content/cards/correction-channel-integrity.md
 src/content/cards/dynamical-guarantee.md
 src/content/cards/evidence-and-uncertainty.md
 src/content/cards/experiment-methodology.md
+src/content/cards/negative-results.md
 src/content/cards/goal-inference.md
 src/content/cards/goodhart-as-selector.md
 src/content/cards/grounding-viability.md

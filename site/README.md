@@ -127,6 +127,6 @@ curl -I https://gunnarzarncke.github.io/towards-asi-alignment/cards/corrigibilit
 curl -I https://gunnarzarncke.github.io/towards-asi-alignment/towards-superintelligence-alignment.pdf
 ```
 
-The book PDF is copied into `site/public/` during build (`npm run copy:pdf`) from `dist/pdf/towards-superintelligence-alignment.pdf` (run `./build.sh` locally) or fetched from the latest GitHub Release in CI. Nav and footer **PDF** links open it directly in the browser.
+The book PDF is copied into `site/public/` during build (`npm run copy:pdf`) from `dist/pdf/towards-superintelligence-alignment.pdf` (run `./build.sh` locally) or, when that file is missing, fetched from the latest GitHub Release asset (automatic in CI). Nav **PDF**, Start Here, and the book map link to `/towards-superintelligence-alignment.pdf` on this domain — no GitHub login required.
 
 We use a branch push (`peaceiris/actions-gh-pages`) instead of the GitHub Pages Deployment API because overlapping deploys were stuck in `deployment_queued` for 10 minutes.

@@ -9,8 +9,10 @@ external:
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md
   - label: Lab-layer simulation findings (positive and negative, numbered in sequence)
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md
-  - label: Embedded simulation negative-results ledger
-    url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md
+  - label: Negative results hub (site)
+    url: https://towards-alignment.com/cards/negative-results/
+  - label: Embedded simulation negative-results ledger (site)
+    url: https://towards-alignment.com/experiments/ledgers/embedded-simulation/
 ---
 
 None of the companion testbeds are large enough, or realistic enough, to prove anything about deployed superintelligence. What they can do is stress-test the book's own detection and audit mechanisms against a designer who is honest about the testbed's limits — and that only works if the testbeds follow a discipline that keeps the designer from unconsciously grading their own homework.

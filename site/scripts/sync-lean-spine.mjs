@@ -226,7 +226,9 @@ async function renderGraphSvgs(graphs) {
     const hrefMap = buildGraphHrefMap(graph.nodes);
     const svg = await renderDotToSvg(dot, hrefMap);
     await writeFile(path.join(GRAPH_SVG_DIR, `${spec.slug}.svg`), svg, "utf8");
+    await writeFile(path.join(GRAPH_SVG_DIR, `${spec.slug}.dot`), dot, "utf8");
     graph.svgFile = `lean-graphs/${spec.slug}.svg`;
+    graph.dotFile = `lean-graphs/${spec.slug}.dot`;
     graph.clickableNodes = Object.keys(hrefMap).length;
   }
 }
