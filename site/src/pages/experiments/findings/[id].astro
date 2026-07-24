@@ -1,0 +1,71 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import experiments from "../../../data/experiments.json";
+import { cardHref } from "../../../lib/site-urls";
+
+export async function getStaticPaths() {
+  return experiments.lines
+    .filter((line) => (line.headlineFindings?.length ?? 0) > 0 || line.findingsPath || line.findingsUrl)
+    .map((line) => ({
+      params: { id: line.id },
+      props: { line }
+    }));
+}
+
+const { line } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const findings = line.headlineFindings ?? [];
+const fullLedgerUrl = line.findingsUrlResolved;
+---
+
+<SiteLayout
+  title={`${line.title} — key findings`}
+  description={`Curated key findings from ${line.title}. Full ledger on GitHub.`}
+>
+  <article class="readable">
+    <p class="eyebrow">
+      <a href={withBase("/experiments/")}>Experiments</a>
+      {" · "}
+      <a href={cardHref(base, "negative-results")}>Negative results</a>
+    </p>
+    <h1>{line.title}</h1>
+    <p class="lede">{line.role.trim()}</p>
+
+    <p class="button-row">
+      <a class="button primary" href={cardHref(base, `experiments/${line.id}`)}>Experiment card</a>
+      {fullLedgerUrl && (
+        <a class="button" href={fullLedgerUrl} target="_blank" rel="noopener noreferrer">
+          Full ledger (GitHub)
+        </a>
+      )}
+      <a class="button" href={withBase("/experiments/")}>All experiment lines</a>
+    </p>
+
+    {findings.length > 0 ? (
+      <>
+        <h2>Key findings</h2>
+        <p class="side-panel-meta">
+          Curated summaries extracted from the line's findings ledger. Bug fixes, superseded runs, and process detail are in the full ledger on GitHub.
+        </p>
+        <ul>
+          {findings.map((finding) => (
+            <li>{finding}</li>
+          ))}
+        </ul>
+      </>
+    ) : (
+      <section class="callout warning">
+        <p>
+          No curated key findings are tagged for this line yet. See the{" "}
+          {fullLedgerUrl ? (
+            <a href={fullLedgerUrl} target="_blank" rel="noopener noreferrer">full ledger on GitHub</a>
+          ) : (
+            "full ledger"
+          )}
+          {" "}or the <a href={cardHref(base, `experiments/${line.id}`)}>experiment card</a>.
+        </p>
+      </section>
+    )}
+  </article>
+</SiteLayout>

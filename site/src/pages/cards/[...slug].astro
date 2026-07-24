@@ -165,7 +165,9 @@ const pageDescription = showFullText
           )}
           {isExperimentCard && card.data.experimentLineId && (
             <p class="side-panel-meta">
-              <a href={withBase(`/experiments/#${card.data.experimentLineId}`)}>Full experiment overview</a>
+              <a href={withBase("/experiments/")}>All experiment lines</a>
+              {" · "}
+              <a href={withBase(`/experiments/findings/${card.data.experimentLineId}/`)}>Key findings</a>
             </p>
           )}
           {isReleaseCard && (

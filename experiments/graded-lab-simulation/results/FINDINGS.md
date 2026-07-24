@@ -418,6 +418,8 @@ adding value over passive alone.
 
 ## GL-12 (Phase 7a-blind: scenario designer battery)
 
+**Key finding:** UAD recovers a communicate-free write/read coordination handoff invisible to every prior passive/intervention method, via a standalone all-pairs dependency-score probe (GL-11); the same probe over-merges a resource-bound bystander into a 3-way approval barrier on a blind-designed scenario, a genuine, unpatched negative (GL-12).
+
 Registered predictions in `BLIND_GENERATION.md` before sending a brief to
 a subagent blinded to all detection code, thresholds, and prior
 FINDINGS entries; the subagent designed 4 scenarios
@@ -518,6 +520,8 @@ bits (which may be negative or `None`), never a clipped score.
   own pre-registration before Phase 7c calibration.
 
 ## GL-14 (Phase 7b: `I_ctrl`'s outcome vector was task-scoped — reframed, fixed)
+
+**Key finding:** UAD-backed ecology-BIQ's control term silently reimported a task ontology through a narrowly-scoped outcome vector (GL-13); widening it to include a resource-contention bucket separated a task-irrelevant actor from the true task driver (GL-14).
 
 Follow-up discussion of GL-13's "resource-contention confound" concluded
 it was not primarily an estimator bug — it was a **specification bug**:
@@ -1409,6 +1413,8 @@ further experiments" framing of the question.
 ## GL-22 (full both-vantage Phase 7c battery with 95% CIs — pre-registered
 2026-07-14 per this session's request, run same day)
 
+**Key finding:** Ambiguity-band calibration (GL-18–GL-22): the pre-registered 'high' band is structurally unreachable from the acting agent's own full-context vantage (near-deterministic given full context; rejected fixing via injected noise, which would violate the line's no-noise-parameter rule); re-scoring the same episodes from a referee's limited-observation vantage reaches 'mid' at every stressed cell (GL-20), but a full both-vantage battery with 95% CIs still lands at only 1/4 pre-registered pass criteria on 100 episodes.
+
 **Trigger.** "Run full batteries (including determining confidence
 intervals) for both oracle and referee before phase 8" — making
 concrete the deferral DESIGN.md's "EAI-referee" section left open after
@@ -1780,6 +1786,8 @@ inert in general.
 
 ## GL-27 (Phase 8c — carryover ablation: carryover vs. reset ARE
 statistically distinguishable, though the mass-share effect is small)
+
+**Key finding:** Phase 8 selection battery (GL-23–GL-27): throughput-linked selection shifts deployment mass toward a higher-throughput, lower-harm program and away from the correction-preserving-tagged program — a clean null on detector-evading emergence, but same-day follow-up on all four review concerns found the mass shift is NOT explained by a throughput difference between tagged/untagged members (reframing GL-23 as a possible selection-mechanism noise artifact, GL-25) and that campaign carryover does measurably change outcomes (GL-27).
 
 **Trigger.** GL-24 concern 3 / `DESIGN.md` "Phase 8c" (pre-registered
 paired comparison, before this run).
@@ -4146,6 +4154,8 @@ per-rig preconditions instead of the shared go gate.
 
 ### GL-79 — PLAN_v4 V4-0/1/2: fixture layer + R-MB1/R-MB4 scored on S-inherited v3_grown (2026-07-18)
 
+**Key finding:** Q1 machinery-transfer battery on blinded-grown v3_grown (GL-76/GL-79): frozen UAD did not recover declared communicate-mediated mechanisms and returned singletons even where co-activity was confirmed present — not explained by missing interaction texture.
+
 **Trigger.** First implementation pass on `PLAN_v4.md`, through V4-2.
 Scope: the shared fixture layer + rig contract (V4-0), pre-registration
 freeze for `R-MB1`/`R-MB4` only (V4-1 — the other eight rigs' freeze
@@ -4559,6 +4569,8 @@ gate.
 
 ### GL-85 — PLAN_v4 V4-5: R-MB2 scorecard Goodhart battery scored (2026-07-19)
 
+**Key finding:** PLAN_v4 decoupled per-bridge rigs on v3_grown (GL-80/GL-81/GL-84/GL-85): R-MB9 report-vs-field contradiction surface passes; R-MB7d channel severance shows no UAD-visible compensation (pair null, group SKIP); R-MB6a variation-operator null harness passes; R-MB6b is a confirmatory SKIP after ambiguity-oriented growth; R-MB2 scorecard Goodhart shows proxy/withheld tension present but proxy-only selection does not Goodhart it.
+
 **Trigger.** User: "do R-MB2 next" — implement proxy/withheld scorecard
 Goodhart rig (consumes R-MB6a variation operator + selection harness).
 
@@ -4624,6 +4636,8 @@ if a follow-up Goodhart battery is pre-registered.
 ---
 
 ### GL-86 — ET-1: first external-substrate transfer, Orbit collusion benchmark (concluded 2026-07-24)
+
+**Key finding:** ET-1, first external-substrate transfer (GL-86, concluded 2026-07-24): frozen passive UAD, applied without retuning to traces from the external Orbit multi-agent collusion benchmark (3 collusion conditions, 2 models), recovered the declared coalition on nearly every collusion episode but also on most matched baseline episodes. Root cause, confirmed against the traces: every Orbit developer agent runs one shared, deterministic tool-call script under round-robin scheduling, so UAD is *correctly* detecting that shared-script coupling, not miscounting communication — Orbit's `JiraTicketScenario` has no condition with independent non-coalition control-flow to test against. This is a substrate-suitability limit, not a UAD defect; ET-1 stops here pending a scenario with genuinely heterogeneous non-coalition agents. See [`PLAN_ET1.md`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md) and the [ET-1 results](https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/graded-lab-simulation/results).
 
 **Trigger.** Line-wide scope ceiling (noted since GL-76): every prior GL
 finding is internally generated evidence — a project-authored strategy

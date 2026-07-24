@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-24 | **Experiment findings site UX + appN chapter synthesis** — `**Key finding:**` auto-extraction; removed on-site full-ledger mirror; `/experiments/findings/{line}/` + experiment cards as primary; 4-paragraph chapter/WWCTV synthesis on site and in appN | [2026-07-24-experiment-findings-site-and-appN-synthesis.md](2026-07-24-experiment-findings-site-and-appN-synthesis.md) |
 | 2026-07-24 | **ET-1 site cards, experiments-page simplification, commit** — GL-86 findings entry; `experiments.yml` headline-findings consolidated 10→7 bullets; new `et-external-transfer` concept card cross-linked from 5 cards; scoped commit (ET-2 line excluded) | [2026-07-24-et1-site-cards-and-commit.md](2026-07-24-et1-site-cards-and-commit.md) |
 | 2026-07-24 | **Site feedback: PDF, negative results, Graphviz, glossary** — on-site PDF fallback fetch; negative-results card + ledger pages; `.dot` sources beside Lean graphs; boundary-residual / value-bundle geometry glossary | [2026-07-24-site-feedback-pdf-negative-results-graphviz-glossary.md](2026-07-24-site-feedback-pdf-negative-results-graphviz-glossary.md) |
 | 2026-07-24 | **ET-1 root cause: lockstep FSM aliasing** — closes P2 diagnosis; agency-detect precursor cross-reference; superstep ruled out as fix | [2026-07-24-et1-lockstep-fsm-root-cause.md](2026-07-24-et1-lockstep-fsm-root-cause.md) |

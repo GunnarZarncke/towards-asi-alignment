@@ -11,7 +11,6 @@ const sourcePath = path.join(repoRoot, "metadata", "experiments.yml");
 const outputDir = path.join(siteRoot, "src", "data");
 const outputPath = path.join(outputDir, "experiments.json");
 const experimentCardsDir = path.join(siteRoot, "src", "content", "cards", "experiments");
-const experimentLedgersDir = path.join(siteRoot, "src", "content", "experiment-ledgers");
 
 const REPO = "https://github.com/GunnarZarncke/towards-asi-alignment";
 const SITE_ORIGIN = "https://towards-alignment.com";
@@ -23,14 +22,6 @@ function yamlString(value) {
 function repoUrl(relativePath) {
   if (!relativePath) return null;
   return `${REPO}/blob/main/${relativePath.replace(/^\/+/, "")}`;
-}
-
-function ledgerSitePath(lineId) {
-  return `/experiments/ledgers/${lineId}/`;
-}
-
-function ledgerSiteUrl(lineId) {
-  return `${SITE_ORIGIN}${ledgerSitePath(lineId)}`;
 }
 
 function firstSentence(text) {
@@ -50,9 +41,44 @@ function formatExternalLinksYaml(links) {
   ].join("\n");
 }
 
-function enrichLine(line, ledgerLineIds) {
+// Site findings are auto-extracted from **Key finding:** paragraphs in the
+// line's own findings ledger (FINDINGS.md / NEGATIVE_RESULTS.md), so the full
+// terse/bug-fix history stays on GitHub and only curated, readable summaries
+// reach the site. Tag one entry per site bullet (usually the last entry in a
+// related sequence) with a paragraph starting "**Key finding:** ...". Lines
+// with no tagged paragraphs fall back to their `headlineFindings:` array in
+// metadata/experiments.yml (manual, for lines not yet retrofitted).
+async function extractKeyFindings(findingsPath) {
+  if (!findingsPath) return [];
+  let text;
+  try {
+    text = await readFile(path.join(repoRoot, findingsPath), "utf8");
+  } catch {
+    return [];
+  }
+  const matches = [...text.matchAll(/\*\*Key finding:\*\*\s*([^\n]+(?:\n(?!\n)[^\n]+)*)/g)];
+  return matches.map((m) => m[1].replace(/\s+/g, " ").trim());
+}
+
+function experimentCardPath(lineId) {
+  return `/cards/experiments/${lineId}/`;
+}
+
+function experimentCardUrl(lineId) {
+  return `${SITE_ORIGIN}${experimentCardPath(lineId)}`;
+}
+
+function findingsSitePath(lineId) {
+  return `/experiments/findings/${lineId}/`;
+}
+
+function findingsSiteUrl(lineId) {
+  return `${SITE_ORIGIN}${findingsSitePath(lineId)}`;
+}
+
+// Site shows curated key findings; GitHub holds the full terse ledger.
+function enrichLine(line) {
   const links = [];
-  const ledgerOnSite = ledgerLineIds.has(line.id);
   if (line.readmePath) {
     links.push({ label: "README", url: repoUrl(line.readmePath) });
   }
@@ -62,15 +88,13 @@ function enrichLine(line, ledgerLineIds) {
   if (line.planPath) {
     links.push({ label: "Plan", url: repoUrl(line.planPath) });
   }
-  if (ledgerOnSite) {
-    links.push({ label: "Findings (site)", url: ledgerSiteUrl(line.id) });
+  if (line.findingsPath || line.findingsUrl) {
+    links.push({ label: "Key findings", url: findingsSiteUrl(line.id) });
     if (line.findingsPath) {
-      links.push({ label: "Findings (GitHub)", url: repoUrl(line.findingsPath) });
+      links.push({ label: "Full ledger (GitHub)", url: repoUrl(line.findingsPath) });
+    } else if (line.findingsUrl) {
+      links.push({ label: "Full ledger (GitHub)", url: line.findingsUrl });
     }
-  } else if (line.findingsPath) {
-    links.push({ label: "Findings", url: repoUrl(line.findingsPath) });
-  } else if (line.findingsUrl) {
-    links.push({ label: "Findings", url: line.findingsUrl });
   }
   if (line.leakProofPath) {
     links.push({ label: "Lean leak-proof", url: repoUrl(line.leakProofPath) });
@@ -82,39 +106,14 @@ function enrichLine(line, ledgerLineIds) {
   return {
     ...line,
     links,
+    cardPath: experimentCardPath(line.id),
+    cardUrl: experimentCardUrl(line.id),
+    findingsSitePath: findingsSitePath(line.id),
+    findingsSiteUrl: findingsSiteUrl(line.id),
     locationUrl: line.repoUrl ?? repoUrl(line.location?.replace(/^\.\.\//, "")),
     readmeUrl: repoUrl(line.readmePath),
-    findingsUrlResolved: ledgerOnSite
-      ? ledgerSiteUrl(line.id)
-      : line.findingsUrl ?? repoUrl(line.findingsPath)
+    findingsUrlResolved: line.findingsUrl ?? repoUrl(line.findingsPath)
   };
-}
-
-async function syncLedgerPages(ledgers) {
-  await rm(experimentLedgersDir, { recursive: true, force: true });
-  await mkdir(experimentLedgersDir, { recursive: true });
-  const publicLedgersDir = path.join(siteRoot, "public", "experiment-ledgers");
-  await rm(publicLedgersDir, { recursive: true, force: true });
-  await mkdir(publicLedgersDir, { recursive: true });
-
-  for (const ledger of ledgers) {
-    if (!ledger.path) continue;
-    const sourceMd = path.join(repoRoot, ledger.path);
-    const body = await readFile(sourceMd, "utf8");
-    const trimmed = body.trim();
-    const contents = [
-      "---",
-      `title: ${yamlString(ledger.label)}`,
-      `lineId: ${yamlString(ledger.lineId)}`,
-      `sourcePath: ${yamlString(ledger.path)}`,
-      "---",
-      "",
-      trimmed,
-      ""
-    ].join("\n");
-    await writeFile(path.join(experimentLedgersDir, `${ledger.lineId}.md`), contents, "utf8");
-    await writeFile(path.join(publicLedgersDir, `${ledger.lineId}.md`), `${trimmed}\n`, "utf8");
-  }
 }
 
 function experimentCardMarkdown(line, howToReadEntry) {
@@ -150,11 +149,18 @@ function experimentCardMarkdown(line, howToReadEntry) {
 const source = await readFile(sourcePath, "utf8");
 const raw = yaml.load(source);
 
-const ledgerLineIds = new Set(raw.ledgers.map((ledger) => ledger.lineId));
-
-const lines = [...raw.lines]
-  .sort((a, b) => a.order - b.order)
-  .map((line) => enrichLine(line, ledgerLineIds));
+const lines = await Promise.all(
+  [...raw.lines]
+    .sort((a, b) => a.order - b.order)
+    .map(async (line) => {
+      const enriched = enrichLine(line);
+      const keyFindings = await extractKeyFindings(line.findingsPath);
+      return {
+        ...enriched,
+        headlineFindings: keyFindings.length > 0 ? keyFindings : enriched.headlineFindings
+      };
+    })
+);
 
 const howToReadByLineId = new Map(raw.howToRead.map((entry) => [entry.lineId, entry]));
 
@@ -166,14 +172,12 @@ const howToRead = raw.howToRead.map((entry) => {
   };
 });
 
-await syncLedgerPages(raw.ledgers);
-
+// Negative-results ledgers: curated key findings on-site, full record on GitHub.
 const ledgers = raw.ledgers.map((ledger) => ({
   ...ledger,
-  sitePath: ledgerSitePath(ledger.lineId),
-  siteUrl: ledgerSiteUrl(ledger.lineId),
-  repoUrl: ledger.path ? repoUrl(ledger.path) : ledger.url ?? null,
-  url: ledgerSiteUrl(ledger.lineId)
+  findingsSitePath: findingsSitePath(ledger.lineId),
+  findingsSiteUrl: findingsSiteUrl(ledger.lineId),
+  repoUrl: ledger.path ? repoUrl(ledger.path) : ledger.url ?? null
 }));
 
 const payload = {
@@ -208,4 +212,3 @@ for (const line of lines) {
 
 console.log(`Wrote ${path.relative(siteRoot, outputPath)} from metadata/experiments.yml`);
 console.log(`Wrote ${lines.length} experiment cards to src/content/cards/experiments/`);
-console.log(`Wrote ${raw.ledgers.length} experiment ledgers to src/content/experiment-ledgers/`);

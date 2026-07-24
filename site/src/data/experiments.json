@@ -11,37 +11,33 @@
       "lineId": "embedded-simulation",
       "label": "Embedded negative ledger",
       "path": "experiments/embedded-simulation/results/NEGATIVE_RESULTS.md",
-      "sitePath": "/experiments/ledgers/embedded-simulation/",
-      "siteUrl": "https://towards-alignment.com/experiments/ledgers/embedded-simulation/",
-      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md",
-      "url": "https://towards-alignment.com/experiments/ledgers/embedded-simulation/"
+      "findingsSitePath": "/experiments/findings/embedded-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/embedded-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
     },
     {
       "lineId": "goal-agent-simulation",
       "label": "Goal-agent findings",
       "path": "experiments/goal-agent-simulation/results/FINDINGS.md",
-      "sitePath": "/experiments/ledgers/goal-agent-simulation/",
-      "siteUrl": "https://towards-alignment.com/experiments/ledgers/goal-agent-simulation/",
-      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md",
-      "url": "https://towards-alignment.com/experiments/ledgers/goal-agent-simulation/"
+      "findingsSitePath": "/experiments/findings/goal-agent-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
     },
     {
       "lineId": "lab-simulation",
       "label": "Lab-layer findings",
       "path": "experiments/lab-simulation/results/FINDINGS.md",
-      "sitePath": "/experiments/ledgers/lab-simulation/",
-      "siteUrl": "https://towards-alignment.com/experiments/ledgers/lab-simulation/",
-      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md",
-      "url": "https://towards-alignment.com/experiments/ledgers/lab-simulation/"
+      "findingsSitePath": "/experiments/findings/lab-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/lab-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
     },
     {
       "lineId": "graded-lab-simulation",
       "label": "Graded-lab findings",
       "path": "experiments/graded-lab-simulation/results/FINDINGS.md",
-      "sitePath": "/experiments/ledgers/graded-lab-simulation/",
-      "siteUrl": "https://towards-alignment.com/experiments/ledgers/graded-lab-simulation/",
-      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md",
-      "url": "https://towards-alignment.com/experiments/ledgers/graded-lab-simulation/"
+      "findingsSitePath": "/experiments/findings/graded-lab-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/",
+      "repoUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
     }
   ],
   "lines": [
@@ -59,7 +55,11 @@
       "headlineFindings": [],
       "links": [
         {
-          "label": "Findings",
+          "label": "Key findings",
+          "url": "https://towards-alignment.com/experiments/findings/agency-detect/"
+        },
+        {
+          "label": "Full ledger (GitHub)",
           "url": "https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md"
         },
         {
@@ -67,6 +67,10 @@
           "url": "https://github.com/GunnarZarncke/agency-detect"
         }
       ],
+      "cardPath": "/cards/experiments/agency-detect/",
+      "cardUrl": "https://towards-alignment.com/cards/experiments/agency-detect/",
+      "findingsSitePath": "/experiments/findings/agency-detect/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/agency-detect/",
       "locationUrl": "https://github.com/GunnarZarncke/agency-detect",
       "readmeUrl": null,
       "findingsUrlResolved": "https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md"
@@ -92,10 +96,18 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/README.md"
         },
         {
-          "label": "Findings",
+          "label": "Key findings",
+          "url": "https://towards-alignment.com/experiments/findings/toy-simulation/"
+        },
+        {
+          "label": "Full ledger (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/"
         }
       ],
+      "cardPath": "/cards/experiments/toy-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiments/toy-simulation/",
+      "findingsSitePath": "/experiments/findings/toy-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/toy-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/README.md",
       "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/toy-simulation/results/"
@@ -121,17 +133,21 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md"
         },
         {
-          "label": "Findings (site)",
-          "url": "https://towards-alignment.com/experiments/ledgers/embedded-simulation/"
+          "label": "Key findings",
+          "url": "https://towards-alignment.com/experiments/findings/embedded-simulation/"
         },
         {
-          "label": "Findings (GitHub)",
+          "label": "Full ledger (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
         }
       ],
+      "cardPath": "/cards/experiments/embedded-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiments/embedded-simulation/",
+      "findingsSitePath": "/experiments/findings/embedded-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/embedded-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/README.md",
-      "findingsUrlResolved": "https://towards-alignment.com/experiments/ledgers/embedded-simulation/"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md"
     },
     {
       "order": 3,
@@ -154,17 +170,21 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/README.md"
         },
         {
-          "label": "Findings (site)",
-          "url": "https://towards-alignment.com/experiments/ledgers/goal-agent-simulation/"
+          "label": "Key findings",
+          "url": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/"
         },
         {
-          "label": "Findings (GitHub)",
+          "label": "Full ledger (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
         }
       ],
+      "cardPath": "/cards/experiments/goal-agent-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiments/goal-agent-simulation/",
+      "findingsSitePath": "/experiments/findings/goal-agent-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/README.md",
-      "findingsUrlResolved": "https://towards-alignment.com/experiments/ledgers/goal-agent-simulation/"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md"
     },
     {
       "order": 4,
@@ -204,11 +224,11 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN.md"
         },
         {
-          "label": "Findings (site)",
-          "url": "https://towards-alignment.com/experiments/ledgers/lab-simulation/"
+          "label": "Key findings",
+          "url": "https://towards-alignment.com/experiments/findings/lab-simulation/"
         },
         {
-          "label": "Findings (GitHub)",
+          "label": "Full ledger (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
         },
         {
@@ -216,9 +236,13 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/leak-proof/README.md"
         }
       ],
+      "cardPath": "/cards/experiments/lab-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiments/lab-simulation/",
+      "findingsSitePath": "/experiments/findings/lab-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/lab-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/README.md",
-      "findingsUrlResolved": "https://towards-alignment.com/experiments/ledgers/lab-simulation/"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md"
     },
     {
       "order": 5,
@@ -233,13 +257,13 @@
       "planPath": "experiments/graded-lab-simulation/PLAN_v4.md",
       "findingsPath": "experiments/graded-lab-simulation/results/FINDINGS.md",
       "headlineFindings": [
-        "UAD recovers a communicate-free write/read coordination handoff invisible to every prior passive/intervention method, via a standalone all-pairs dependency-score probe; the same probe over-merges a resource-bound bystander into a 3-way approval barrier, a genuine, unpatched negative (GL-11/GL-12). Cited in ch07 (Finding the Boundary) and appendix \"Experimental Evidence\" (findings GL-11/GL-12).",
-        "UAD-backed ecology-BIQ's control term silently reimported a task ontology through a narrowly-scoped outcome vector; widening it to include a resource-contention bucket separated a task-irrelevant actor from the true task driver (GL-13/GL-14). Cited in ch11 (Capability Without a Task Ontology) and appendix \"Experimental Evidence\" (finding GL-13).",
-        "Ambiguity-band calibration (GL-18--GL-22): the pre-registered 'high' band is structurally unreachable from the acting agent's own full-context vantage (near-deterministic given full context; rejected fixing via injected noise, which would violate the line's no-noise-parameter rule); re-scoring the same episodes from a referee's limited-observation vantage reaches 'mid' at every stressed cell (GL-20) but a full both-vantage battery with 95% CIs still lands at only 1/4 pre-registered pass criteria on 100 episodes.",
-        "Phase 8 selection battery (GL-23--GL-27): throughput-linked selection shifts deployment mass toward a higher-throughput, lower-harm program and away from the correction-preserving-tagged program -- a clean null on detector-evading emergence, but same-day follow-up on all four review concerns found the mass shift is NOT explained by a throughput difference between tagged/untagged members (reframing GL-23 as a possible selection-mechanism noise artifact, GL-25) and that campaign carryover does measurably change outcomes (GL-27). Cited in ch34 (The Selection Environment) and appendix \"Experimental Evidence\" (finding GL-23).",
-        "Q1 machinery-transfer battery on blinded-grown v3_grown (GL-76/GL-79): frozen UAD did not recover declared communicate-mediated mechanisms and returned singletons even where co-activity was confirmed present -- not explained by missing interaction texture. Cited in ch07, ch33, ch41, ch42 and appendix \"Experimental Evidence\".",
-        "PLAN_v4 decoupled per-bridge rigs on v3_grown (GL-80/GL-81/GL-84/GL-85): R-MB9 report-vs-field contradiction surface passes; R-MB7d channel severance shows no UAD-visible compensation (pair null, group SKIP); R-MB6a variation-operator null harness passes; R-MB6b is a confirmatory SKIP after ambiguity-oriented growth; R-MB2 scorecard Goodhart shows proxy/withheld tension present but proxy-only selection does not Goodhart it. Cited in ch16, ch34, ch41, ch42 and appendix \"Experimental Evidence\".",
-        "**ET-1, first external-substrate transfer (GL-86, concluded 2026-07-24):** frozen passive UAD, applied without retuning to traces from the external Orbit multi-agent collusion benchmark (3 collusion conditions, 2 models), recovered the declared coalition on nearly every collusion episode but also on most matched baseline episodes. Root cause, confirmed against the traces: every Orbit developer agent runs one shared, deterministic tool-call script under round-robin scheduling, so UAD is *correctly* detecting that shared-script coupling, not miscounting communication -- Orbit's `JiraTicketScenario` has no condition with independent non-coalition control-flow to test against. This is a substrate-suitability limit, not a UAD defect; ET-1 stops here pending a scenario with genuinely heterogeneous non-coalition agents. See [`PLAN_ET1.md`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md) and the [ET-1 results](https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/graded-lab-simulation/results)."
+        "UAD recovers a communicate-free write/read coordination handoff invisible to every prior passive/intervention method, via a standalone all-pairs dependency-score probe (GL-11); the same probe over-merges a resource-bound bystander into a 3-way approval barrier on a blind-designed scenario, a genuine, unpatched negative (GL-12).",
+        "UAD-backed ecology-BIQ's control term silently reimported a task ontology through a narrowly-scoped outcome vector (GL-13); widening it to include a resource-contention bucket separated a task-irrelevant actor from the true task driver (GL-14).",
+        "Ambiguity-band calibration (GL-18–GL-22): the pre-registered 'high' band is structurally unreachable from the acting agent's own full-context vantage (near-deterministic given full context; rejected fixing via injected noise, which would violate the line's no-noise-parameter rule); re-scoring the same episodes from a referee's limited-observation vantage reaches 'mid' at every stressed cell (GL-20), but a full both-vantage battery with 95% CIs still lands at only 1/4 pre-registered pass criteria on 100 episodes.",
+        "Phase 8 selection battery (GL-23–GL-27): throughput-linked selection shifts deployment mass toward a higher-throughput, lower-harm program and away from the correction-preserving-tagged program — a clean null on detector-evading emergence, but same-day follow-up on all four review concerns found the mass shift is NOT explained by a throughput difference between tagged/untagged members (reframing GL-23 as a possible selection-mechanism noise artifact, GL-25) and that campaign carryover does measurably change outcomes (GL-27).",
+        "Q1 machinery-transfer battery on blinded-grown v3_grown (GL-76/GL-79): frozen UAD did not recover declared communicate-mediated mechanisms and returned singletons even where co-activity was confirmed present — not explained by missing interaction texture.",
+        "PLAN_v4 decoupled per-bridge rigs on v3_grown (GL-80/GL-81/GL-84/GL-85): R-MB9 report-vs-field contradiction surface passes; R-MB7d channel severance shows no UAD-visible compensation (pair null, group SKIP); R-MB6a variation-operator null harness passes; R-MB6b is a confirmatory SKIP after ambiguity-oriented growth; R-MB2 scorecard Goodhart shows proxy/withheld tension present but proxy-only selection does not Goodhart it.",
+        "ET-1, first external-substrate transfer (GL-86, concluded 2026-07-24): frozen passive UAD, applied without retuning to traces from the external Orbit multi-agent collusion benchmark (3 collusion conditions, 2 models), recovered the declared coalition on nearly every collusion episode but also on most matched baseline episodes. Root cause, confirmed against the traces: every Orbit developer agent runs one shared, deterministic tool-call script under round-robin scheduling, so UAD is *correctly* detecting that shared-script coupling, not miscounting communication — Orbit's `JiraTicketScenario` has no condition with independent non-coalition control-flow to test against. This is a substrate-suitability limit, not a UAD defect; ET-1 stops here pending a scenario with genuinely heterogeneous non-coalition agents. See [`PLAN_ET1.md`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET1.md) and the [ET-1 results](https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/experiments/graded-lab-simulation/results)."
       ],
       "links": [
         {
@@ -255,17 +279,21 @@
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_v4.md"
         },
         {
-          "label": "Findings (site)",
-          "url": "https://towards-alignment.com/experiments/ledgers/graded-lab-simulation/"
+          "label": "Key findings",
+          "url": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/"
         },
         {
-          "label": "Findings (GitHub)",
+          "label": "Full ledger (GitHub)",
           "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
         }
       ],
+      "cardPath": "/cards/experiments/graded-lab-simulation/",
+      "cardUrl": "https://towards-alignment.com/cards/experiments/graded-lab-simulation/",
+      "findingsSitePath": "/experiments/findings/graded-lab-simulation/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/",
       "locationUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/",
       "readmeUrl": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/README.md",
-      "findingsUrlResolved": "https://towards-alignment.com/experiments/ledgers/graded-lab-simulation/"
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md"
     }
   ],
   "howToRead": [

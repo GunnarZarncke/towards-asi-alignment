@@ -94,13 +94,5 @@ const book = defineCollection({
 export const collections = {
   cards: card,
   "reading-paths": readingPath,
-  book,
-  "experiment-ledgers": defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/content/experiment-ledgers" }),
-    schema: z.object({
-      title: z.string(),
-      lineId: z.string(),
-      sourcePath: z.string()
-    })
-  })
+  book
 };

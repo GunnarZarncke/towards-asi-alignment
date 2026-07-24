@@ -19,7 +19,7 @@ external:
   - label: GL-86 findings entry
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md
   - label: Graded-lab-simulation experiment line
-    url: https://towards-alignment.com/experiments/#graded-lab-simulation
+    url: https://towards-alignment.com/cards/experiments/graded-lab-simulation/
 ---
 
 Every experiment line through `graded-lab-simulation`'s Q1 battery (GL-76) ran the project's own instruments against the project's own hand-built or blindly-grown substrates. That bounds what a positive result can show: a strategy space and metrics that the project itself authored will tend to be legible to the project's own detectors. The **ET line** ("external transfer") exists to close that gap, by running frozen instruments unmodified against traces from a system or benchmark this project did not author.

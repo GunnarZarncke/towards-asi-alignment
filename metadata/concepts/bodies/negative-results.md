@@ -12,15 +12,15 @@ The companion experiment lines are sanity checks, not frontier validation. When 
 
 **Why this matters for readers:** manuscript claims cite experiment IDs with explicit strength labels. A positive result in one ecology does not erase a negative in another. The ledgers are the fastest way to see what the project has already tried and where it stopped working.
 
-## On-site ledgers
+## Key findings by line
 
-Each line below is synced from the repository at site build time. GitHub remains an alternate view of the same files.
+Each line below links to a curated on-site summary (key experimental results only). The full terse ledger — including bug fixes, superseded runs, and process detail — is on GitHub.
 
-| Line | Ledger |
-|------|--------|
-| Embedded simulation | [Embedded negative ledger](/experiments/ledgers/embedded-simulation/) |
-| Goal-agent simulation | [Goal-agent findings](/experiments/ledgers/goal-agent-simulation/) |
-| Lab simulation | [Lab-layer findings](/experiments/ledgers/lab-simulation/) |
-| Graded lab simulation | [Graded-lab findings](/experiments/ledgers/graded-lab-simulation/) |
+| Line | Experiment card | Key findings | Full ledger (GitHub) |
+|------|-----------------|--------------|----------------------|
+| Embedded simulation | [Experiment card](/cards/experiments/embedded-simulation/) | [Key findings](/experiments/findings/embedded-simulation/) | [Embedded negative ledger](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) |
+| Goal-agent simulation | [Experiment card](/cards/experiments/goal-agent-simulation/) | [Key findings](/experiments/findings/goal-agent-simulation/) | [Goal-agent findings](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/goal-agent-simulation/results/FINDINGS.md) |
+| Lab simulation | [Experiment card](/cards/experiments/lab-simulation/) | [Key findings](/experiments/findings/lab-simulation/) | [Lab-layer findings](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md) |
+| Graded lab simulation | [Experiment card](/cards/experiments/graded-lab-simulation/) | [Key findings](/experiments/findings/graded-lab-simulation/) | [Graded-lab findings](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md) |
 
-Start with the embedded negative ledger if you want the richest set of recorded failures (UAD defaults, red-team limits, channel MI, and related negatives).
+Start with the [embedded simulation card](/cards/experiments/embedded-simulation/) if you want the richest set of recorded failures (UAD defaults, red-team limits, channel MI, and related negatives).

@@ -16,8 +16,6 @@ src/content/book/
 src/content/cards/chapters/
 src/content/cards/references/
 src/content/cards/experiments/
-src/content/experiment-ledgers/
-public/experiment-ledgers/
 src/content/cards/reference-index.md
 public/chapter-demos/
 public/lean-graphs/

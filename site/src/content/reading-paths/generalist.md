@@ -52,7 +52,7 @@ steps:
     note: "How to read claim labels and negative results."
   - kind: card
     ref: negative-results
-    note: "On-site ledgers of experiment failures and qualifiers."
+    note: "Curated key findings on-site; full ledgers linked from the negative-results hub."
   - kind: experiment
     ref: toy-simulation
     note: "Fastest capture-theater demo — why correction metrics can lie."

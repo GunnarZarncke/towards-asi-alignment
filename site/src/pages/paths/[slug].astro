@@ -95,7 +95,7 @@ const resolveStep = (step: ReadingPathStep) => {
       const line = experimentsIndex.lines.find((entry) => entry.id === step.ref);
       if (!line) return null;
       return {
-        href: withBase(`/experiments/#${line.id}`),
+        href: cardHref(base, `experiments/${line.id}`),
         title: line.title,
         summary: step.note ?? line.role.trim(),
         badges: [
