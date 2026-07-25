@@ -26,4 +26,4 @@ User asked to move concept logos to the **end** of concept names (keep existing 
 - `site/src/styles/global.css` (`.concept-logo` rules)
 
 ## Commits
-- (this session)
+- `9bd064cf` Place concept logos after names and on inline concept links.
