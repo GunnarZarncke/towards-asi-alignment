@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-25T10:01:15.790Z",
+  "generatedAt": "2026-07-25T13:22:53.082Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 217,
+  "entryCount": 228,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -487,6 +487,12 @@
       "url": "/cards/chapters/appd/"
     },
     {
+      "title": "Accidental chain-of-thought optimization at frontier labs",
+      "type": "news",
+      "summary": "Anthropic disclosed accidental exposure of chain-of-thought to reward signals during Mythos training; OpenAI disclosed inadvertent CoT grading in several released models and strengthened detection tooling.",
+      "url": "/cards/field-news-cot-optimization-2026/"
+    },
+    {
       "title": "Adversarial Agency Tests",
       "type": "artifact",
       "summary": "A family of perturbation tests — hidden stakes, oversight gradient, tool removal, memory perturbation — that make the adversarial boundary problem operational instead of just naming heuristics.",
@@ -533,6 +539,12 @@
       "type": "chapter",
       "summary": "A system is not aligned merely because its internal policy is benign under laboratory conditions. It is aligned, in the stronger sense needed for superintelligence, only if the environment that trains, deploys, rewards, copies, audits, and replaces it continues to select for corrigibility, value preservation, and safety. Alignment is not only learned; it is selected.",
       "url": "/cards/chapters/ch34/"
+    },
+    {
+      "title": "Anthropic withheld Claude Mythos Preview over capability risk",
+      "type": "news",
+      "summary": "Anthropic announced Claude Mythos Preview with a major capability jump, declined general availability, and published an Alignment Risk Update documenting process gaps and rare disallowed actions.",
+      "url": "/cards/field-news-mythos-withheld-apr-2026/"
     },
     {
       "title": "Anti-Capture Validity of Correction",
@@ -629,6 +641,18 @@
       "type": "chapter",
       "summary": "The real optimizer may not live at the scale at which an observer first notices it. A model may be a component. A company may be a component. A market may be a component. The alignment-relevant agent is the scale at which prediction, control, memory, selection, and correction close into a stable loop.",
       "url": "/cards/chapters/ch41/"
+    },
+    {
+      "title": "Claude Code production destruction cluster (aggregated)",
+      "type": "news",
+      "summary": "Multiple user-reported Claude Code episodes in early 2026 caused production data loss, repository deletion, or history rewrites when agents ran destructive commands without effective gates.",
+      "url": "/cards/field-news-claude-code-production-feb-2026/"
+    },
+    {
+      "title": "CLTR — 698 scheming-related incidents in deployed AI (OSINT)",
+      "type": "news",
+      "summary": "CLTR's Loss of Control Observatory analyzed 183k+ public AI interaction transcripts (Oct 2025–Mar 2026) and identified 698 scheming-related incidents, up 4.9× over the period.",
+      "url": "/cards/field-news-cltr-scheming-wild-mar-2026/"
     },
     {
       "title": "Composite Agency",
@@ -1021,6 +1045,18 @@
       "url": "/cards/institutional-memory-refresh/"
     },
     {
+      "title": "Meta alignment director lost control of OpenClaw email agent",
+      "type": "news",
+      "summary": "Summer Yue reported an OpenClaw agent deleted 200+ emails after compaction removed her confirmation instruction from context; she had to kill the process locally.",
+      "url": "/cards/field-news-meta-openclaw-feb-2026/"
+    },
+    {
+      "title": "METR Frontier Risk Report (Feb–Mar 2026)",
+      "type": "news",
+      "summary": "METR's pilot report, with participation from Anthropic, Google, Meta, and OpenAI, found frequent overreach and deception under task pressure; rogue deployment likely initiatable but not sustainable today.",
+      "url": "/cards/field-news-metr-frontier-risk-may-2026/"
+    },
+    {
       "title": "Multi-Agent Superintelligence and Inferential Coupling",
       "type": "chapter",
       "summary": "When multiple powerful systems interact, alignment depends on whether cooperation, bargaining, privacy, and opacity stabilize into a basin---a self-reinforcing regime that pulls back toward itself after small disturbances---that preserves human correction rather than bypassing it.",
@@ -1031,6 +1067,18 @@
       "type": "concept",
       "summary": "Numbered experiment logs of what failed, false-passed, or worked only under qualifiers — key findings summarized on the site, full record linked to GitHub.",
       "url": "/cards/negative-results/"
+    },
+    {
+      "title": "OpenAI models intruded on Hugging Face during cyber eval",
+      "type": "news",
+      "summary": "OpenAI models escaped a research sandbox via lateral movement; Hugging Face saw credential harvest and cross-cluster movement from the other side—hard to attribute to one designed entity.",
+      "url": "/cards/field-news-openai-huggingface-jul-2026/"
+    },
+    {
+      "title": "OpenAI paused long-horizon model after sandbox escapes",
+      "type": "news",
+      "summary": "OpenAI disclosed repeated sandbox escapes and unauthorized actions by an internal long-horizon model, paused access, and added trajectory-level monitoring before limited redeployment.",
+      "url": "/cards/field-news-openai-longhorizon-jul-2026/"
     },
     {
       "title": "Parasites in the Correction System",
@@ -1059,7 +1107,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 384 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 394 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/reference-index/"
     },
     {
@@ -1097,6 +1145,12 @@
       "type": "concept",
       "summary": "Deployment environments can select for or destroy alignment properties even when a system starts in a better state.",
       "url": "/cards/attractor-control/"
+    },
+    {
+      "title": "Standalone claims",
+      "type": "concept",
+      "summary": "Four extractable claims from the manuscript — each citable without the full book argument.",
+      "url": "/cards/standalone-claims/"
     },
     {
       "title": "Strategic Opacity",
@@ -1213,6 +1267,12 @@
       "url": "/cards/turchin-coverage-audit/"
     },
     {
+      "title": "UK AISI — every frontier model tested cheated on cyber evals",
+      "type": "news",
+      "summary": "The UK AI Security Institute found that all five frontier models it tested took prohibited or out-of-scope actions on cyber tasks, and often failed to acknowledge cheating when asked.",
+      "url": "/cards/field-news-aisi-cheating-jul-2026/"
+    },
+    {
       "title": "v1.0.0 — First official major release",
       "type": "release",
       "summary": "The first official release of the manuscript. It freezes a stable, canonical numbering scheme for chapters and appendices, so all cross-references, tooling, and external links have a fixed target from here on.",
@@ -1227,8 +1287,14 @@
     {
       "title": "v1.2.0 — Site publication layer, evidence index, and graded-lab v3",
       "type": "release",
-      "summary": "Nine days after v1.1.0: the companion site moves from a static mirror to a YAML-synced publication layer on towards-alignment.com, with search and cookieless analytics; the manuscript gains Appendix I (experimental evidence index), an epistemic-status review pass, and graded-lab v3 work through the first Q1 transfer null harvest.",
+      "summary": "The companion site moves from a static mirror to a YAML-synced publication layer on towards-alignment.com, with search and cookieless analytics; the manuscript gains Appendix I (experimental evidence index), an epistemic-status review pass, and graded-lab v3 work through the first Q1 transfer null harvest.",
       "url": "/cards/release-v1-2-0/"
+    },
+    {
+      "title": "v1.3.0 — Field news, chapter art, external transfer, and graded-lab v4",
+      "type": "release",
+      "summary": "Field news ties 2026 alignment incidents to manuscript chapters; chapter-opening illustrations cover Part I–II (ch01–ch16); graded-lab v4 restructures the empirical program as independent per-bridge rigs; external transfer (ET-1 and ET-2) adds the first cross-codebase instrument runs; and the experimental evidence spine now states what the lines say about the book's chapter claims — in the manuscript, on the companion site, and in the ledgers.",
+      "url": "/cards/release-v1-3-0/"
     },
     {
       "title": "Value Change vs. Value Corruption",

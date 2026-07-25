@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 58,98 L 43,158 L 73,158 Z"/>
+<line x1="58" y1="126" x2="58" y2="140"/>
+<circle cx="58" cy="148" r="4" fill="currentColor" stroke="none"/>
+<line x1="96" y1="100" x2="120" y2="100" marker-end="url(#arrow)"/>
+<circle cx="152" cy="100" r="28"/>
+<line x1="152" y1="78" x2="152" y2="122"/>
+<path d="M 165,86 C 147,80 137,86 137,94 C 137,102 165,96 165,104 C 165,112 155,116 145,110"/>
+  </g>
+</svg>
