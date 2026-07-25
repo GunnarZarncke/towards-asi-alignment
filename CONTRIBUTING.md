@@ -15,7 +15,7 @@ The Lean proof spine (`formal/`) checks logical dependencies and finite separati
 High-value work:
 
 - Strengthening the spine per [`formal/README.md`](formal/README.md) and [`formal/LeanProofSpineImplementationBrief.md`](formal/LeanProofSpineImplementationBrief.md)
-- **Field-agenda formalization** — shared finite fragment in `formal/AlignmentProofSpine/Field/` linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions (see Appendix I gem on field formalization)
+- **Field-agenda formalization** — shared finite fragment in `formal/AlignmentProofSpine/Field/` linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions (see Appendix G gem on field formalization)
 - Closing chapter ↔ Lean mapping gaps listed in `metadata/TODO.md` (§ Lean proof spine)
 
 Build: `cd formal && lake exe cache get && lake build`
@@ -24,7 +24,7 @@ Build: `cd formal && lake exe cache get && lake build`
 
 ## Building the simulations
 
-Four experiment lines live under [`experiments/`](experiments/) (see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the narrative map):
+Five experiment lines live under [`experiments/`](experiments/) (see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) for the narrative map):
 
 | Path | Role |
 |------|------|
@@ -32,6 +32,7 @@ Four experiment lines live under [`experiments/`](experiments/) (see [`docs/EXPE
 | [`experiments/embedded-simulation/`](experiments/embedded-simulation/) | Embedded audit experiment (v3); run via `python3 run.py` |
 | [`experiments/goal-agent-simulation/`](experiments/goal-agent-simulation/) | Goal-driven agents with mechanism-derived labels and held-out goal-space regions |
 | [`experiments/lab-simulation/`](experiments/lab-simulation/) | Lab-layer sim: subprocess isolates, access tiers, playbook agents, referee batteries |
+| [`experiments/graded-lab-simulation/`](experiments/graded-lab-simulation/) | Graded lab runtime: institutional transfer, UAD, and graded evidence batteries |
 
 Open tasks: [`experiments/TODO.md`](experiments/TODO.md) and per-folder `TODO.md` files. Results land in each experiment's `results/` directory.
 
@@ -43,7 +44,7 @@ Related sibling repos (boundary discovery, real telemetry): [`agency-detect`](ht
 
 ## More elaborate simulations — especially the worked example
 
-Appendix K (*A Worked Example: The BioShield Deployment Gate*, `appendices/appD-worked-example.tex`) runs the full logical spine on one fictional hospital-network deployment. It is narrative and conditional today; there is no matching executable sim.
+Appendix D (*A Worked Example: The BioShield Deployment Gate*, `appendices/appD-worked-example.tex`) runs the full logical spine on one fictional hospital-network deployment. It is narrative and conditional today; there is no matching executable sim.
 
 Contributions welcome:
 

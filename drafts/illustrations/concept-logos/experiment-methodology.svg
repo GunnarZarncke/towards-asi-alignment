@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="40" width="120" height="120" rx="6"/>
+<line x1="100" y1="40" x2="100" y2="160" stroke-dasharray="6 7"/>
+<rect x="90" y="88" width="20" height="24" rx="3"/>
+<path d="M 94,88 L 94,78 A 6,6 0 0 1 106,78 L 106,88"/>
+  </g>
+</svg>

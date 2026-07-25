@@ -84,8 +84,8 @@ Look for the included gems before concluding a chapter is merely narrative.
 - Conductive artifacts and pivotal processes: ch45
 - Goal laundering and cost of faking: ch48, ch47
 - Value-update envelope: ch45-ch46
-- Lean proof spine as dependency hygiene: `formal/`, Appendix I
-- Field-agenda Lean formalization (community gem in progress): Appendix I gem ``field-agenda formalization'' (`sec:appi-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today
+- Lean proof spine as dependency hygiene: `formal/`, Appendix G
+- Field-agenda Lean formalization (community gem in progress): Appendix G gem ``field-agenda formalization'' (`sec:appg-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today
 - Inferential-coupling / acausal-trade detection (conjectural gem): ch35 gem ``inferential-coupling detection'' (`sec:ch35-inferential-coupling-gem`) — ICI score, meta-prior detector, and the proved negative direction (Lean `P33`, `formal/AlignmentProofSpine/CooperationGraph.lean`); bridge `MB7d` has no clean field analog; equilibrium and large-scale dynamics remain conjectural/open (`zarncke2025acausal`)
 
 ## Existing-Work Crosswalk

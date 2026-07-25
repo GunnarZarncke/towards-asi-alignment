@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="100" cy="100" r="27.500000000000004"/>
+<path d="M 127.5,100.0 L 149.9,103.0 L 113.8,123.8"/>
+<circle cx="160.11985362223226" cy="78.05454032285111" r="3.5" fill="currentColor" stroke="none"/>
+<path d="M 113.8,123.8 L 122.4,144.7 L 86.2,123.8"/>
+<circle cx="149.0652523892541" cy="141.0925906700806" r="3.5" fill="currentColor" stroke="none"/>
+<path d="M 86.2,123.8 L 72.4,141.7 L 72.5,100.0"/>
+<circle cx="88.94539876702187" cy="163.03805034722947" r="3.5" fill="currentColor" stroke="none"/>
+<path d="M 72.5,100.0 L 50.1,97.0 L 86.2,76.2"/>
+<circle cx="39.88014637776775" cy="121.9454596771489" r="3.5" fill="currentColor" stroke="none"/>
+<path d="M 86.2,76.2 L 77.6,55.3 L 113.7,76.2"/>
+<circle cx="50.93474761074587" cy="58.90740932991944" r="3.5" fill="currentColor" stroke="none"/>
+<path d="M 113.8,76.2 L 127.6,58.3 L 127.5,100.0"/>
+<circle cx="111.05460123297817" cy="36.96194965277053" r="3.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg>

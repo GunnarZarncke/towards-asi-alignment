@@ -1,4 +1,4 @@
-# 2026-06-22 — Session end: ch46–ch46 author draft integrations
+# 2026-06-22 — Session end: ch28–ch42 author draft integrations
 
 ## Trigger
 User integrated author drafts for Part VIII–X chapters across multiple turns,

@@ -1,4 +1,4 @@
-# 2026-06-26 — Part openers and ch48 fixes
+# 2026-06-26 — Part openers and ch40 fixes
 
 ## Trigger
 

@@ -71,7 +71,7 @@ In the PDF: **Executive Overview** (two pages) → **Introduction** (six claims)
 | Item | Detail |
 |------|--------|
 | Status | v1.0.0 release; third milestone in progress — 48 chapters reviewed (not final) |
-| Structure | 10 parts, 48 chapters, 8 appendices in the PDF (A–H) |
+| Structure | 10 parts, 48 chapters, 9 appendices in the PDF (A–I) |
 | Chapter list | [`metadata/book.yml`](metadata/book.yml) · [site book index](https://towards-alignment.com/book/) |
 | Experiments | Tentative sanity checks only — [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); lab-layer [Lean leak-proof certificates](experiments/lab-simulation/leak-proof/) for oracle/audit/sim plane separation; strong findings curated and classified (positive/negative/ambiguous), with a per-chapter landing index, in [Appendix "Experimental Evidence"](appendices/appN-experimental-evidence.tex) |
 | Formal spine | Lean 4 conditional skeleton — [`formal/README.md`](formal/README.md) |

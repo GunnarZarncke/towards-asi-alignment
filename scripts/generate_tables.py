@@ -114,10 +114,6 @@ def parse_part_file(path: Path) -> tuple[str, list[str]]:
     return title, chapter_ids
 
 
-def chapter_display_id(entry: ChapterEntry) -> str:
-    return str(entry.order)
-
-
 def load_manuscript() -> tuple[list[ChapterEntry], dict[str, dict[str, str]], list[Path]]:
     chapters_meta, parts_meta = parse_book_yml(BOOK_YML)
     part_files = sorted(PARTS_DIR.glob("part*.tex"))
@@ -163,31 +159,6 @@ def format_chapter_range(start: int, end: int) -> str:
     return f"{start}--{end}"
 
 
-def write_chapter_map(entries: list[ChapterEntry]) -> None:
-    lines = [
-        GENERATED_HEADER.rstrip(),
-        r"\begin{longtable}{@{}clll@{}}",
-        r"\toprule",
-        r"\textbf{Ch.} & \textbf{Part} & \textbf{Title} & \textbf{Status} \\",
-        r"\midrule",
-        r"\endhead",
-    ]
-    for entry in entries:
-        lines.append(
-            " & ".join(
-                [
-                    chapter_display_id(entry),
-                    ROMANS[entry.part_index - 1],
-                    latex_escape(entry.title),
-                    entry.status,
-                ]
-            )
-            + r" \\"
-        )
-    lines.extend([r"\bottomrule", r"\end{longtable}", ""])
-    (TABLES_DIR / "chapter-map.tex").write_text("\n".join(lines), encoding="utf-8")
-
-
 def write_part_roadmap(
     entries: list[ChapterEntry],
     parts_meta: dict[str, dict[str, str]],
@@ -223,10 +194,9 @@ def main() -> int:
         return 1
 
     TABLES_DIR.mkdir(parents=True, exist_ok=True)
-    write_chapter_map(entries)
     write_part_roadmap(entries, parts_meta, part_files)
     print(
-        f"Generated tables/chapter-map.tex and tables/part-roadmap.tex "
+        f"Generated tables/part-roadmap.tex "
         f"({len(entries)} chapters, 10 parts)."
     )
     return 0

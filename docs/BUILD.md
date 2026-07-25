@@ -21,10 +21,9 @@ Output: [`dist/pdf/towards-superintelligence-alignment.pdf`](../dist/pdf/towards
 
 | Output | Generator |
 |--------|-----------|
-| `tables/chapter-map.tex`, `tables/part-roadmap.tex` | `scripts/generate_tables.py` |
+| `tables/part-roadmap.tex` | `scripts/generate_tables.py` |
 | `metadata/global-nocite.tex` | `scripts/generate_global_nocite.py` |
 | `metadata/notation-index.tex` | `scripts/generate_notation_appendix.py` |
-| `metadata/assumptions-index.tex` | `scripts/generate_assumptions_appendix.py` |
 | `metadata/axiom-budget-index.tex` | `formal/scripts/check_axiom_budget.py --no-lean` |
 
 Run `make generate` (or any build/check target) before compiling if these files are missing.

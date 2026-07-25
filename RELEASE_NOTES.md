@@ -12,9 +12,9 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ## v1.2.0 — 2026-07-17 — Site publication layer, evidence index, and graded-lab v3
 
-Commit: `14cf0fd` · Tag: (pending)
+Commit: `14cf0fd` · Tag: `v1.2.0`
 
-Nine days after v1.1.0: the **companion site** moves from a static mirror to a **YAML-synced publication layer** on **towards-alignment.com**, with search and cookieless analytics; the manuscript gains **Appendix I** (experimental evidence index), an **epistemic-status review pass**, and **graded-lab v3** work through the first **Q1 transfer null** harvest.
+The **companion site** moves from a static mirror to a **YAML-synced publication layer** on **towards-alignment.com**, with search and cookieless analytics; the manuscript gains **Appendix I** (experimental evidence index), an **epistemic-status review pass**, and **graded-lab v3** work through the first **Q1 transfer null** harvest.
 
 ### Companion site (`site/`)
 
@@ -27,7 +27,7 @@ Nine days after v1.1.0: the **companion site** moves from a static mirror to a *
 
 ### Manuscript and evidence spine
 
-- **Appendix I — Experimental evidence index** (`appI-experimental-evidence.tex`): global finding IDs (`G-*`, `gl-*`) across experiment lines; wired into chapters and companion site.
+- **Appendix I — Experimental evidence index** (`appN-experimental-evidence.tex`): global finding IDs (`G-*`, `gl-*`) across experiment lines; wired into chapters and companion site.
 - **Epistemic-status review pass** across chapters and appendices (reviewed status boxes; high/medium duplication trims in dense chapters).
 - **Symbol census** promoted to `metadata/symbol-census/` with text-ref edges and readability fixes to the formula graph.
 - **Citations and calibration:** Xi 2026 WAIC keynote (intergovernmental dual-mandate instance); Hassabis Frontier AI Standards Body proposal (ch33); Byrnes social-drive distinctions (ch15); embedded value formation cross-refs (ch15, ch45).
@@ -73,7 +73,7 @@ A consolidation release focused on **external legibility** (making the framework
 
 ### Empirical spine (`experiments/`)
 
-- Four in-repo simulation lines (toy, embedded, goal-agent, lab) that stress-test bridge cruxes with **tentative, partial** support only.
+- Five in-repo simulation lines (toy, embedded, goal-agent, lab, graded-lab) that stress-test bridge cruxes with **tentative, partial** support only.
 - Lab-simulation line added and taken through multiple phases (graded red-team access tiers, unattributed-drift detection, blind detector generation, LLM red-team adapter, test batteries, adversarial-lineage gaming); goal-agent and embedded-sim lines extended; Lean spine gained Shannon entropy / mutual-information bounds and a successor-forgeability (MB10) formalization.
 
 ### Housekeeping

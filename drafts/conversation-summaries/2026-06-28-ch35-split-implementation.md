@@ -1,4 +1,4 @@
-# 2026-06-28 — ch48 split implementation
+# 2026-06-28 — ch35 split implementation
 
 ## Trigger
 

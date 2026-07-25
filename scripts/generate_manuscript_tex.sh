@@ -8,5 +8,4 @@ cd "$ROOT"
 python3 scripts/generate_tables.py
 python3 scripts/generate_global_nocite.py
 python3 scripts/generate_notation_appendix.py
-python3 scripts/generate_assumptions_appendix.py
 python3 formal/scripts/check_axiom_budget.py --no-lean

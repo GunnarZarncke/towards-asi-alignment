@@ -1,0 +1,22 @@
+﻿0–10
+ [look at front group]
+ For ten seconds, I’ll turn this table into a proto-agent.
+[tiny pause, slight smile] Watch this:
+Point at my hat [does self] — and keep pointing wherever it goes.
+10–20
+ [move, then hand the hat to the MC]
+ there it goes — to another node.
+[pause]
+20–30
+ Good. You just created shared input, coordinated output, and one short-term goal. [counting]
+30–45
+ The systems to worry about are no longer single models.
+It's temporary coordinated patterns
+spanning inference … scaffolding … APIs … tools … humans … infrastructure
+and existing monitoring misses the coordinated and adaptive dynamics.
+45–55
+ I build working systems 
+that detect those hidden collectives and their effects from traces, as they form.
+55–60
+ [looking at 2-3 groups in room]
+ If you have a model, infrastructure, or telemetry where hidden coordination would be dangerous, I want to test on your data.

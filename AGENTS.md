@@ -151,11 +151,9 @@ Do not rely on chat history alone for resume context.
 
 ### LaTeX
 
-Place figures in `figures/` and reference as `figures/<file>`. External `.bib` files need `pdflatex → biber → pdflatex ×2`. Add `\usepackage{graphicx}` when including images. Root file: `book.tex`.
-
-Build-time `.tex` fragments (`metadata/global-nocite.tex`, `metadata/notation-index.tex`, `metadata/assumptions-index.tex`, `metadata/axiom-budget-index.tex`, `tables/chapter-map.tex`, `tables/part-roadmap.tex`) are **generated, not checked in** — run `make generate` or `./build.sh` before compiling. See [`docs/BUILD.md`](docs/BUILD.md).
-
-If `biber` fails silently or stops after `Found BibTeX data source ...`, run `./clean.sh` then `make biber` (regenerates fragments, sets up the PAR cache, clears stale `references/*.bib.blg`, runs `pdflatex → biber → pdflatex ×2`). See [`docs/BUILD.md`](docs/BUILD.md).
+Place figures in `figures/` and reference as `figures/<file>`. Add `\usepackage{graphicx}` when
+including images. Root file: `book.tex`. Build fragments and biber troubleshooting are documented
+in [`docs/BUILD.md`](docs/BUILD.md).
 
 **Bibliography summaries:** each `.bib` entry needs a matching `\bibsummary{key}{...}` line in `references/bibliography-summaries.tex` (rendered via `metadata/preamble.tex`). See `references/README.md`. When adding cites, run `python3 scripts/check_bibliography_summaries.py` or `make check`.
 
@@ -175,7 +173,7 @@ Self-contained Lean 4 skeleton of the book's logical dependencies (`lake build` 
 
 ### Experiments (`experiments/`)
 
-Empirical sanity-check codebases that stress-test bridge cruxes. Four in-repo lines (build order): [`toy-simulation/`](experiments/toy-simulation/), [`embedded-simulation/`](experiments/embedded-simulation/), [`goal-agent-simulation/`](experiments/goal-agent-simulation/), [`lab-simulation/`](experiments/lab-simulation/). Narrative map: [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); structured index: [`metadata/experiments.yml`](metadata/experiments.yml). They provide **tentative, partial** support only — never closure. When making or citing an empirical claim, read the relevant experiment's `results/` and **honor recorded negatives**: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) (embedded line); [`experiments/goal-agent-simulation/results/FINDINGS.md`](experiments/goal-agent-simulation/results/FINDINGS.md); [`experiments/lab-simulation/results/FINDINGS.md`](experiments/lab-simulation/results/FINDINGS.md). Add negatives rather than burying them; calibrate prose the same way you calibrate to the Lean spine.
+Empirical sanity-check codebases that stress-test bridge cruxes. Five in-repo lines (build order): [`toy-simulation/`](experiments/toy-simulation/), [`embedded-simulation/`](experiments/embedded-simulation/), [`goal-agent-simulation/`](experiments/goal-agent-simulation/), [`lab-simulation/`](experiments/lab-simulation/), and [`graded-lab-simulation/`](experiments/graded-lab-simulation/). Narrative map: [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); structured index: [`metadata/experiments.yml`](metadata/experiments.yml). They provide **tentative, partial** support only — never closure. When making or citing an empirical claim, read the relevant experiment's `results/` and **honor recorded negatives**: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) (embedded line); [`experiments/goal-agent-simulation/results/FINDINGS.md`](experiments/goal-agent-simulation/results/FINDINGS.md); [`experiments/lab-simulation/results/FINDINGS.md`](experiments/lab-simulation/results/FINDINGS.md). Add negatives rather than burying them; calibrate prose the same way you calibrate to the Lean spine.
 
 ### Companion site (`site/`)
 

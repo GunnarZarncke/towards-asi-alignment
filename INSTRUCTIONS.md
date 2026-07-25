@@ -10,7 +10,7 @@
 | Build, layout, agent handoff | `AGENTS.md` |
 | Reader-facing status and quick start | `README.md` |
 | Symbol index (generated) and §C reconciliation | `metadata/notation.md` → Notation Index appendix |
-| Assumptions index (generated) | `metadata/assumptions-ledger.md` → Assumptions Index appendix |
+| Assumptions ledger | `metadata/assumptions-ledger.md` |
 | Operational terms | `metadata/concepts.yml` (`kind: glossary` + attached `glossaryTerms`) → Glossary appendix and site `/glossary/` |
 | Bridges ↔ field cruxes crosswalk | `appendices/appB-bridge-crosswalk.tex` |
 | Source PDFs, TeX paths, extracts | `metadata/source-canon.md` |
@@ -160,7 +160,7 @@ When a formal object is re-used in a later chapter, follow `review/fix-plans-202
 | Symbols and canonical eq homes | `metadata/notation.md` | Notation Index appendix (generated; points to chapters) |
 | Formal predicates and bridges | `formal/AlignmentProofSpine/*.lean` | Lean Proof Spine appendix |
 
-Edit `metadata/assumptions-ledger.md` only; run `./build.sh` to refresh the Assumptions Index appendix. Edit `metadata/notation.md` only for the Notation Index appendix.
+Edit `metadata/assumptions-ledger.md` for the maintained assumptions record. Edit `metadata/notation.md` only for the Notation Index appendix.
 
 **Capability** is \(K\); **value bundle** is \(B\). **Correction capacity** is \(C_{\text{raw}}\); **correction-channel integrity** is \(\mathrm{CCI}\)—never interchange them. **Fitness** is handle-based deployment mass in Chapter 34, not revenue or benchmark score as primitive terms.
 
@@ -300,18 +300,18 @@ Use `review/reviewer-guide.md` and `review/_pass/` notes for structured continui
 
 ## 14. Chapter and appendix numbering
 
-**Canonical rule:** filename prefix, `metadata/book.yml` key, generated roadmap table column, and printed `\chapter{…}` number all match **manuscript order** (1–48 for chapters; A–G for built appendices).
+**Canonical rule:** filename prefix, `metadata/book.yml` key, generated roadmap table column, and printed `\chapter{…}` number all match **manuscript order** (1–48 for chapters; A–I for built appendices).
 
 | Layer | Convention | Example |
 |-------|------------|---------|
 | **Chapter files** | `chapters/chNN-<slug>.tex` with `NN` = print order (`ch01`–`ch09`, then `ch10`–`ch48`) | `ch20-measuring-stress-testing-bundle-geometry.tex` is Chapter 20 |
 | **`book.yml` keys** | Same `chNN` as filename (no `b` suffixes) | `ch20:` entry for the bundle-measurement split chapter |
-| **Generated tables** | `scripts/generate_tables.py` uses `entry.order` (1–48), not the YAML key parse | `tables/chapter-map.tex` shows `20`, not `19b` |
+| **Generated tables** | `scripts/generate_tables.py` uses `entry.order` (1–48), not the YAML key parse | `tables/part-roadmap.tex` shows manuscript-order ranges |
 | **Semantic labels** | `\label{ch:<slug>}` stays slug-based; do not renumber when `chNN` changes | `\label{ch:correction-channel-integrity}` |
 | **Section labels** | Prefer `-chNN` suffix matching the hosting file's print number | `\label{sec:certificate-under-pressure-ch27}` in ch27 |
 | **Built appendices** | `appendices/app<Letter>-<slug>.tex` matches PDF letter in `book.tex` include order | `appB-bridge-crosswalk.tex` → Appendix B |
 | **Stub appendices** | Letters H–L reserved for not-yet-included appendices | `appH-boundary-worked-example.tex` |
 
-**Include order (appendices in `book.tex`):** A Notation → B Bridge crosswalk → C Institutional translation → D Worked example → E Glossary → F Research program → G Lean proof spine.
+**Include order (appendices in `book.tex`):** A Notation → B Bridge crosswalk → C Institutional translation → M Institutional histories → D Worked example → E Glossary → F Research program → G Lean proof spine → N Experimental evidence.
 
 When adding a chapter, extend `metadata/book.yml`, the relevant `parts/part*.tex`, and regenerate tables (`python3 scripts/generate_tables.py` or `./build.sh`). Do not reintroduce `b`-suffix file ids.

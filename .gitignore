@@ -25,9 +25,7 @@ book.pdf
 # Build-time LaTeX fragments (regenerate: make generate or ./build.sh)
 metadata/global-nocite.tex
 metadata/notation-index.tex
-metadata/assumptions-index.tex
 metadata/axiom-budget-index.tex
-tables/chapter-map.tex
 tables/part-roadmap.tex
 
 # Experiment outputs (regenerate locally)

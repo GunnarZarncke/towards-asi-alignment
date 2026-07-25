@@ -35,7 +35,7 @@ npm run sync   # runs generate_manuscript_tex.sh, then syncs chapters/cards
 npm run dev
 ```
 
-After a fresh clone, `npm run sync` regenerates gitignored manuscript `.tex` fragments (`metadata/*-index.tex`, `tables/chapter-map.tex`, etc.) before resolving cross-references. Same step runs in CI (`prebuild`).
+After a fresh clone, `npm run sync` regenerates gitignored manuscript `.tex` fragments (`metadata/*-index.tex`, `tables/part-roadmap.tex`, etc.) before resolving cross-references. Same step runs in CI (`prebuild`).
 
 `npm run dev` syncs chapter metadata from `metadata/book.yml`, then starts Astro with hot reload. Edit cards under `src/content/cards/` or pages under `src/pages/` and refresh.
 
@@ -70,16 +70,18 @@ Output: `site/dist/`
 
 | Path | Purpose |
 |------|---------|
-| `src/pages/` | Routes (Start Here, FAQ, book map, card/path indexes, `/glossary/`, `/notation/`, `/updates/`) |
+| `src/pages/` | Routes (Start Here, FAQ, book map, card/path indexes, `/glossary/`, `/notation/`, `/updates/`, `/news/`) |
 | `src/content/cards/` | Short concept, bridge, artifact, glossary, and **release** cards — mostly generated, see below |
 | `src/pages/updates/` | Releases & updates — newest version card first (`CardSection` initial count 1) |
 | `src/content/reading-paths/` | Fixed audience reading paths (loaded at build/dev time) |
 | `metadata/concepts.yml` | Roster for concept/glossary/gem/institutional/objection/standalone-claim cards; bodies in `metadata/concepts/bodies/*.md`; optional `claimId` link to `metadata/claims-ledger.md` |
 | `metadata/bridges.yml` | Roster for the `mb1`–`mb10` + `bridge-assumptions` cards; cross-checked against `appendices/appB-bridge-crosswalk.tex` |
 | `metadata/projections.yml` | Roster for field-projection cards (external agenda ↔ book invariants; display title `Field projection — ...`) |
+| `metadata/field-news.yml` | Roster for related-news cards (external incidents/evals → book chapters); bodies in `metadata/field-news/bodies/` |
 | `scripts/sync-concepts.mjs` | Generates cards from `concepts.yml` plus `src/data/{glossary,part-gems,standalone-claims}.json`; `--check` diffs without writing |
 | `scripts/sync-bridges.mjs` | Generates bridge cards from `bridges.yml` (+ appB parse); `--check` diffs without writing |
 | `scripts/sync-projections.mjs` | Generates projection cards from `projections.yml` plus `src/data/field-projection{,-gems}.json`; `--check` diffs without writing |
+| `scripts/sync-field-news.mjs` | Generates related-news cards from `field-news.yml` plus `src/data/field-news.json`; `--check` diffs without writing |
 | `scripts/sync-notation.mjs` | Generates `src/data/notation.json` for `/notation/` from `metadata/notation.md` (no per-symbol cards) |
 | `scripts/sync-releases.mjs` | Generates release cards + the `/updates/` hub card from `RELEASE_NOTES.md` |
 | `scripts/build-search-index.mjs` | Generates `public/search-index.json` from concepts, chapter/appendix/experiment cards, and notation (excludes the ~380 reference cards) |

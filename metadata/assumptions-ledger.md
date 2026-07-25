@@ -1,6 +1,6 @@
 # Assumptions Ledger
 
-Single source for **Appendix E** (assumptions index). Regenerate the typeset appendix with `python3 scripts/generate_assumptions_appendix.py` (also run from `./build.sh`).
+Single source for the maintained assumptions record. The ledger is not currently typeset as a standalone appendix; keep its entries synchronized with the chapters and formal spine.
 
 Maintainer detail (failure modes, tests, claim links): sections I–IV below. Claims: `metadata/claims-ledger.md`. Disconfirmers: `metadata/uncertainty-ledger.md`, Appendix H.
 
@@ -201,7 +201,7 @@ Formal statements: Lean Proof Spine appendix; validation program: Research Progr
 
 ## Appendix index
 
-Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. One line per assumption; full context in the cited chapter.
+Tables below provide one line per assumption; full context is in the cited chapter.
 
 ### Scope and preconditions
 

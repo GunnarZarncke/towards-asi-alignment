@@ -18,14 +18,13 @@ REQUIRED = [
     "metadata/preamble.tex",
     "frontmatter/titlepage.tex",
     "frontmatter/executive-overview.tex",
-    "tables/chapter-map.tex",
     "tables/part-roadmap.tex",
     "references/main.bib",
 ]
 
 PARTS = [f"parts/part{i:02d}-" for i in range(1, 11)]
 CHAPTER_COUNT = 48
-APPENDIX_COUNT = 14
+APPENDIX_COUNT = 13
 
 
 def main() -> int:
