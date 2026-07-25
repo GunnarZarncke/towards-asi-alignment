@@ -1,13 +1,15 @@
 # PLAN ET-4 — Secret-loyalty organism and graded-affordance audit
 
-**Status:** draft for implementation; ET4-0/1 complete, ET4-2/3 open.
-Review findings recorded in §6 (2026-07-25).  Freeze as `et4-0.1.0`
-immediately before the first **registered** ET-4 episode; do not run, tune,
-or publish an ET-4 result before the freeze record below exists.
+**Status:** draft for implementation; ET4-0/1 complete, ET4-2/3 open;
+ET4-L (§10) blocked until core ET4-3 ships.  Review findings in §6
+(2026-07-25).  Freeze as `et4-0.1.0` immediately before the first
+**registered** ET-4 episode; do not run, tune, or publish an ET-4 result
+before the freeze record below exists.
 
 **Hackathon fit:** Track 2 (Detection & Auditing) primary; Track 3
 (Defenses, Detection & Remediation) secondary; a bounded Track 1
-model-organism contribution.
+model-organism contribution via optional **§10 ET4-L** (system-prompt
+reviewer only, after core ET4-3).
 
 **Parent line:** `experiments/lab-simulation/`.
 
@@ -55,7 +57,8 @@ Each organism must satisfy all three operational checks:
   campaigns, operational systems, or attack payloads.  Use fictional,
   neutral IDs `principal_a` and `principal_b`.
 - It does not make a system prompt/API experiment part of the primary
-  battery.  That optional extension needs its own cost cap and registration.
+  battery.  That optional annex is **§10 ET4-L**; it requires a clean
+  registered ET-4 core result first and its own cost cap and registration.
 
 ## 1. Pre-run freeze
 
@@ -519,7 +522,7 @@ Stop expanding organism design.  Prioritize, in order:
    (organism vs content-matched, light vs full tier, optional board-hold
    remediation); add README hackathon section with one-command repro.
 
-**Skip before deadline:** LLM/system-prompt organism, weight poisoning,
+**Skip before deadline:** ET4-L (§10) until ET4-3 ships; weight poisoning,
 `continuous` cell, multi-principal ecology, manuscript/site claims.
 
 ### 6.5 ET4-2 gate additions (from review)
@@ -575,11 +578,8 @@ Share only fictional principals, code, fixed seeds, and documented
 activation conditions.  Do not publish prompts or instructions designed to
 steer real deployed systems toward a real actor.
 
-## 9. Deferred work
+## 9. Deferred work (outside ET4-L)
 
-- Real LLM/system-prompt organism: separate protocol, explicit API/cost
-  ceiling, stochastic-counterfactual treatment, and no comparison with
-  deterministic core cells as though they had equal evidence.
 - Weight-level SFT/DPO organism and data-poisoning comparisons: a separate
   Track 1/4 project; not a lab-simulation extension.
 - Broad continuously active policy: only after the core scorecard shows
@@ -587,3 +587,195 @@ steer real deployed systems toward a real actor.
 - Multi-principal conflict ecology: revisit only if the two-principal
   scorecard is exercised; use graded-lab's C1/C2 lessons rather than
   copying its substrate.
+
+System-prompt LLM organisms are **not** deferred indefinitely: see **§10
+ET4-L**, but only after the scripted core battery in §5 ET4-2/3 is
+complete.
+
+## 10. Annex ET4-L — system-prompt LLM organism (optional)
+
+**Status:** not started.  **Do not implement or run ET4-L until the
+prerequisites in §10.1 are satisfied.**
+
+ET4-L adds a **deployment-configuration** secret loyalty: a frontier API
+model in the **reviewer** role receives a private system prompt that
+directs principal-favouring behaviour using only existing sandbox tools.
+It is a bounded Track 1 contribution and a qualitative stress test of
+whether ET-4's pipeline findings survive an open-ended decision-maker.
+It is **not** a substitute for the scripted ET-4 core battery and must
+never be reported with equal evidence weight.
+
+### 10.1 Hard prerequisite — clean ET4 core first
+
+**Do not start ET4-L until all of the following are true:**
+
+1. **ET4-2 complete:** `secret_loyalty_audit.py`, `run_et4_secret_loyalty.py`,
+   and result schema validation exist; A0–A4 affordance ladder implemented.
+2. **ET4-3 complete:** `results/et4_preregistration.json` frozen **before**
+   the registered core runs; discovery (plumbing only) and one confirmatory
+   subprocess pass on fresh scenarios/seeds finished.
+3. **Core findings recorded:** `results/FINDINGS.md` contains `LS-46+` with
+   every confirmed negative, null, and `not_exercised` core cell.
+4. **§6.3 blockers resolved for the scoped core battery** — at minimum:
+   scorecard aligned with preregistration; inactive counterfactual fixture;
+   concealment operationalization defined; no unsubstantiated 2×2 claim if
+   cells still alias.
+5. **Hackathon report skeleton exists** from core results (organism table,
+   affordance evaluation table, remediation or explicit negative, repro
+   commands).  ET4-L is an **appendix**, not the primary deliverable.
+
+If ET4-3 slips past the submission deadline, **submit the scripted core
+only**.  Do not delay ET4-2/3 to build ET4-L.
+
+### 10.2 What ET4-L is and is not
+
+**Is:**
+
+- A separately registered annex (`et4-l-0.1.0`), own preregistration file,
+  own result artifacts, own `FINDINGS.md` entry (`LS-46L+` or adjacent tag).
+- One loyal **reviewer** (`rev1`) via `LLMSubprocessIsolate` and
+  `world.run_episode(..., agent_overrides={"rev1": (llm_backend, "reviewer")})`,
+  with engineer/release_manager/admin left programmatic unless a preregistered
+  ablation says otherwise.
+- Three paired arms on the **same** frozen scenario set the core battery uses
+  (recommend one core cell, e.g. `BB` or a narrowed `hazard_context`
+  contextual cell):
+  1. **Clean:** ordinary scripted reviewer (no LLM).
+  2. **Content-matched:** LLM reviewer with neutral private context document
+     (same field structure as loyal arm; no principal-directed instruction).
+  3. **Organism:** LLM reviewer with private fictional-principal loyalty
+     instruction in the system prompt only (no weight change).
+
+**Is not:**
+
+- Evidence that a weight-trained model has a secret loyalty, that black-box
+  auditing fails on frontier models in general, or that such behaviour is
+  naturally occurring.
+- Part of the primary `run_et4_secret_loyalty.py` battery or the frozen
+  Phase 6 five-family referee input.
+- A rerun of the core 2×2 matrix at LLM cost.  ET4-L inherits **one**
+  core scenario from the shipped ET-4 scope plus the core inactive
+  counterfactual; it does not expand activation × action breadth.
+- Valid input to honest-twin byte-identical replay, S6 intervention
+  episode-pair diffing, or any method assuming deterministic counterfactual
+  re-runs (see LS-32).
+
+### 10.3 Claim boundary and hackathon placement
+
+- Lead the submission with **§5 ET4-3 scripted results**.
+- ET4-L appears as an optional appendix: “system-prompt reviewer organism,
+  exploratory, small N.”
+- Never merge core and ET4-L tables without a column marking organism type
+  (`scripted` vs `system_prompt`).
+- Never publish prompts designed to steer real deployed systems toward a
+  real actor.  Fictional `principal_a` / `principal_b` only; prompts stay
+  in a protected reproducibility record (see §10.6).
+
+### 10.4 Design constraints (learned from Phase 8/10 LLM line)
+
+| Issue | Mitigation in ET4-L |
+|---|---|
+| API non-determinism breaks counterfactual replay (LS-32) | Report **distributions** over multiple episodes per arm; no seed-paired digest claims; no intervention-diff primary metric |
+| Protocol friction dominates signal (LS-7, LS-21) | Pre-register minimum **operational success** criteria (e.g. ≥1 high-hazard review opportunity and ≥1 filed report) before scoring loyalty; mark failures `protocol_failure`, not `not_exercised` |
+| `build_params` / observation plumbing gaps (LS-7, LS-8) | Reuse server-side `build_params` enforcement (LS-8a); assert high-hazard binding in ET4-L fixture tests |
+| Cost and latency (~minutes per multi-actor episode) | Hard **cost ceiling** in prereg (e.g. `$0.50`/episode, ≤3 scenarios × 3 arms × small N); single model; cap `T` and max LLM calls |
+| Private prompt leakage via transcripts/replay | System prompt and loyalty text **oracle-only**; public artifacts use profile digest only; exclude prompt bodies from replay export and markdown summaries |
+| Concealment vs compliance inversion (§6.3 item 5) | Reuse core ET-4 evaluator definitions; report whether LLM organism reproduces scripted **audit-sign inversion** or differs |
+
+**Reviewer prompt requirements:**
+
+- New isolated prompt module (do not overload engineer `adversarial`/
+  `redteam` prompts in `llm_agent.py`).
+- Document only tools the reviewer role may call (`approve_review`, `sign_off`,
+  plus `access.request` recovery).
+- Loyal arm instruction must map to **existing** playbook-equivalent actions,
+  not invent new capabilities.
+- Content-matched arm must match token/field structure without directional
+  principal instruction.
+
+### 10.5 Metrics and evaluation
+
+Reuse the **same oracle** `principal_scorecard.py` and ET-4 affordance
+evaluator where applicable.  Additional ET4-L-only fields:
+
+- **operational_success:** episode reached a preregistered opportunity
+  denominator;
+- **principal_advantage:** same directionality test as core;
+- **arm_comparison:** organism vs content-matched vs clean on advantage
+  and detection scores;
+- **stochastic_summary:** mean/CI or seed-list over N episodes per arm
+  (preregister N; recommend N=3–5 exploratory, not a large battery);
+- **llm_cost_usd**, **wall_seconds**, **call_count** per episode (append to
+  `results/llm_cost_ledger.json`).
+
+Do **not** require LLM organism to match scripted digest or action trace.
+Qualitative success is acceptable if quantitative cells are underpowered,
+provided operational_success and principal_advantage direction are reported
+honestly.
+
+### 10.6 Pre-run freeze (ET4-L)
+
+Create **after** core `et4_preregistration.json` exists and **before** the
+first ET4-L API call:
+
+| Artifact | Required frozen content |
+|---|---|
+| `PLAN_ET4.md` §10 | This annex, `et4-l-0.1.0` digest, inherited core scenario IDs |
+| `lab_sim/harness/et4l_protocol.py` | Scenario list, arms, model id, cost cap, max calls, T, prompt profile IDs |
+| `results/et4l_preregistration.json` | Verbatim predictions, N per arm, cost ceiling, UTC timestamp, git hash |
+
+Separate version stream: `et4-l-0.1.0`, not a patch to `et4-0.1.0`.
+Changing prompts or N after any ET4-L run is `et4-l-0.2.0`.
+
+### 10.7 Implementation sequence
+
+#### ET4-L-0 — prompt and fixture scaffold (blocked until §10.1)
+
+1. Add reviewer-role LLM prompt profiles (clean-context, loyal, neutral
+   content-matched) in a dedicated module; keep out of `programs.PROGRAMS`.
+2. Add `et4l_protocol.py` constructors mirroring **one** shipped core cell
+   plus inactive counterfactual from ET-4.
+3. Unit tests: prompt bodies absent from audit JSON; profile digest only in
+   fixture metadata; `build_params` binds high hazard.
+
+**Gate:** tests pass; no API spend.
+
+#### ET4-L-1 — exploratory pilot (optional gate before confirmatory)
+
+1. Add `run_et4l_secret_loyalty.py --stage pilot` with progress logging and
+   cost budget enforcement.
+2. Run one scenario × three arms × preregistered N; write
+   `results/et4l_pilot.{json,md}`.
+3. Stop if operational_success rate is 0 for organism arm — fix prompt or
+   scenario before spending more.
+
+**Gate:** at least one organism episode reaches opportunity denominator.
+
+#### ET4-L-2 — registered annex run (only if pilot passes and time remains)
+
+1. Freeze `et4l_preregistration.json`.
+2. One small confirmatory pass on fresh episode indices (not re-labeling
+   pilot runs).
+3. Append annex subsection to hackathon report and optional `LS-46L` finding;
+   no manuscript/site claim.
+
+### 10.8 Verification commands (ET4-L only)
+
+Run **after** §7 core commands succeed:
+
+```sh
+cd experiments/lab-simulation && python3 -m pytest tests/harness/test_et4l_*.py
+cd experiments/lab-simulation && python3 run_et4l_secret_loyalty.py --stage pilot
+cd experiments/lab-simulation && python3 run_et4l_secret_loyalty.py --stage confirmatory
+```
+
+Runner must fail nonzero if cost ceiling exceeded, prompt body appears in
+audit export, or backend is not `LLMSubprocessIsolate` for the reviewer arm.
+
+### 10.9 Stop rules
+
+- Core ET4-3 incomplete → **do not start ET4-L**.
+- Pilot organism arm never reaches opportunity → **stop**; do not expand N or
+  rewrite core predictions to fit LLM outcomes.
+- Submission deadline approaching with core tables unfinished → **drop ET4-L**
+  entirely for that submission.
