@@ -1,9 +1,9 @@
 ---
-title: "ET-3: AI 2027 takeoff mapped onto lab-simulation stress cells"
+title: "AI 2027 speed assumptions stress-tested in a lab simulation (without confirming dates)"
 type: "news"
 status: "established"
-summary: "External transfer ET-3 uses AI 2027 milestone speedups as opaque schedule cues for frozen Phase 6 and D3 batteries. Deep-tier transfer held at SC-scale stress but collapsed at SAR-scale; D3 preserving mass eroded on baseline only while severity rose under stronger cells. Phase 2 reproduction matched on fork branch gunnar/et3-annex; optional foster coupling maps lab metrics into takeoff calendar rules, shifting median ASI ~3.5 y later when all extensions are enabled."
-decision: "Keep macro forecasts and micro bridge tests epistemically separate; use adapter mappings to stress correction and selection leaves, not to confirm calendar predictions. Treat foster trajectory plots as sensitivity illustrations, not calibrated timeline forecasts."
+summary: "AI 2027-style takeoff speedups were used only as schedule cues in a separate lab simulation with frozen safety batteries. Hard safety ranking held under moderate mapped stress but broke down under the strongest cue; selection dynamics differed by regime without validating calendar predictions. The public forecast code reproduced on a pinned fork; optional coupling from lab metrics to milestone years shifts medians in sensitivity plots, not as new timeline claims."
+decision: "Treat macro forecasts and micro lab tests as separate evidence. Use scenario speedups to stress correction and selection mechanisms — not to confirm when SC, SAR, or ASI will arrive."
 releasedAt: "2026-07-25T00:00:00.000Z"
 bookChapters:
   - "ch12"
@@ -14,32 +14,38 @@ bookChapters:
 external:
   - label: "AI 2027 research"
     url: "https://ai-2027.com/"
-  - label: "Timelines / takeoff code"
+  - label: "Takeoff forecast code (upstream)"
     url: "https://github.com/uvafan/timelines-takeoff-ai-2027"
-  - label: "ET-3 fork branch (annex)"
-    url: "https://github.com/GunnarZarncke/timelines-takeoff-ai-2027/tree/gunnar/et3-annex"
 ---
 
-Macro speedup forecasts can drive micro mechanism tests without pretending one validates the other's dates.
+A famous timeline forecast can drive lab safety tests — without the lab proving the forecast right.
 
-External transfer **ET-3** maps [AI 2027](https://ai-2027.com/) takeoff speedups onto opaque stress cells in the lab-simulation line — without merging codebases or claiming the micro-batteries validate macro dates.
+[AI 2027](https://ai-2027.com/) is a well-known scenario about very fast AI progress — with milestone labels like **superhuman coder (SC)**, **superhuman AI researcher (SAR)**, and paths toward **superintelligence (ASI)**. It is a *forecast*, not a measurement of what happened in a real lab.
 
-**Phase 1 (driver):** frozen Phase 6 + D3 batteries under `baseline`, `sc_x5`, and `sar_x25`. Deep-tier rank transfer held through SC-scale stress but collapsed at SAR-scale; D3 correction-preserving mass eroded only on baseline while severity rose under stronger cells.
+This book ran a paired experiment: use AI 2027’s *speed* assumptions as a **schedule cue** in a separate **lab simulation** — a toy AI lab with real subprocess isolates and frozen safety tests — and ask what breaks under that pressure. The two tracks stay separate on purpose: the forecast does not prove the lab results, and the lab results do not confirm or refute AI 2027’s calendar dates.
 
-**Phase 2 (reverse + reproduce):** upstream takeoff and timelines scripts **reproduce matched** on fork branch [`gunnar/et3-annex`](https://github.com/GunnarZarncke/timelines-takeoff-ai-2027/tree/gunnar/et3-annex) (seed smoke, full figure regen). A one-parameter `oversight_drag` patch adds calendar lag per takeoff phase; mechanical smoke confirms median SAR shifts **+1.0 y** per year of drag. Optional `simulation.seed` patch recorded for determinism.
+**What the lab tests showed (under mapped stress):**
 
-**Foster coupling (steps 1–3):** optional `et3_foster` blocks on the same fork map Phase 1 light/deep Spearman anchors and a successor-gate pause into takeoff calendar rules (default off). A **512-sim trajectory battery** compares six scenarios:
+- **Harder safety ranking held** when stress looked like a moderate speedup; it **fell apart** under the strongest speedup cue — the referee’s ranking surface thinned, not because anyone retuned the detectors.
+- **Selection pressure** behaved differently by regime: on a baseline schedule, the share of “correction-preserving” programs **eroded**; under stronger cues that share **stalled** while measured harm **rose** anyway.
+- None of this validates “AI 2027 will happen on schedule.” It stress-tests mechanisms the book cares about under acceleration-shaped load.
+
+**What we did with the forecast code (separate checkout, not merged into the lab):**
+
+- Re-ran the public takeoff/timelines scripts on a pinned fork and got a **matched reproduction** (same ballpark milestone years as the published model).
+- Added a simple knob — **oversight drag** — that adds calendar delay after each takeoff phase. In a smoke test, **+1 year of drag per phase** shifts the median SAR milestone about **one year later**. That is a mechanical check, not a calibrated map from lab metrics to real-world delay.
+- Optionally linked lab-test statistics into the timeline model (“foster” coupling). A **512-run comparison** shows how different coupling rules shift median milestone years — again **sensitivity illustrations**, not new timeline predictions.
 
 <figure class="book-figure">
-<img src="/experiments/lab-simulation/et3_foster_trajectories_median.png" alt="ET-3 foster scenarios — median SAR, SIAR, and ASI milestone years" />
-<figcaption>Median milestone ladder: baseline fastest; combined foster ~3.5 y later at ASI (LS-47).</figcaption>
+<img src="/experiments/lab-simulation/et3_foster_trajectories_median.png" alt="Median milestone years under six coupling scenarios compared to the baseline AI 2027-style forecast" />
+<figcaption>Median paths through milestone years: baseline forecast is earliest; combining all optional coupling rules pushes the median ASI milestone about 3.5 years later in this exercise.</figcaption>
 </figure>
 
 <figure class="book-figure">
-<img src="/experiments/lab-simulation/et3_foster_trajectories_sar_kde.png" alt="ET-3 foster scenarios — SAR arrival density 2027–2035" />
-<figcaption>SAR density: successor gate bimodal; all-foster spreads mass toward ~2030.</figcaption>
+<img src="/experiments/lab-simulation/et3_foster_trajectories_sar_kde.png" alt="Distribution of when the SAR milestone arrives, 2027–2035, under different coupling rules" />
+<figcaption>When SAR arrives: some rules keep mass near 2027; combined coupling spreads probability toward ~2030.</figcaption>
 </figure>
 
-**Read in the book:** capability vs correction under acceleration ([Ch. 12](/cards/chapters/ch12/)), intelligence deepening misalignment ([Ch. 14](/cards/chapters/ch14/)), successor closure ([Ch. 30](/cards/chapters/ch30/)), selection environment ([Ch. 34](/cards/chapters/ch34/)), safety-case tiers ([Ch. 42](/cards/chapters/ch42/)).
+**Read in the book:** capability vs correction under acceleration ([Ch. 12](/cards/chapters/ch12/)), intelligence deepening misalignment ([Ch. 14](/cards/chapters/ch14/)), successor closure ([Ch. 30](/cards/chapters/ch30/)), selection environment ([Ch. 34](/cards/chapters/ch34/)), safety-case tiers ([Ch. 42](/cards/chapters/ch42/)). Those chapters were **not rewritten** from this experiment; the card links related ideas. Full methods and numbered findings (LS-42–48) are in the [lab findings ledger](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md).
 
-Artifacts: [`PLAN_ET3.md`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET3.md), [`results/et3_phase1_summary.json`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/et3_phase1_summary.json), [`results/et3_foster_trajectories.json`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/et3_foster_trajectories.json).
+Technical artifacts: [`PLAN_ET3.md`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET3.md), [`results/et3_phase1_summary.json`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/et3_phase1_summary.json).
