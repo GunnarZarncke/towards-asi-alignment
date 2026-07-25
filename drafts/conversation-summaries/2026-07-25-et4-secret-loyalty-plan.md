@@ -16,6 +16,9 @@ Hackathon.
 - Completed ET4-0: added `SecretLoyaltyConfig` and
   `LabConfig.secret_loyalties` validation, marked the private vocabulary as
   oracle-only, and added ET-4 leak/validation tests.
+- Completed ET4-1: added an oracle-only fictional-principal scorecard,
+  private reviewer-policy routing, four reproducible organism cells, paired
+  clean/content-matched/wrong-principal controls, and fixture tests.
 
 ## Decisions
 - Existing board/admin/vote capture alone does not qualify as secret
@@ -26,17 +29,22 @@ Hackathon.
 - ET4-0 is configuration-only: its empty default leaves existing episode
   behaviour and `CODE_VERSION` unchanged.  The version bump belongs to
   ET4-1, when a private agent policy becomes runnable.
+- ET4-1's policy selects only existing reviewer playbooks from private
+  agent state; it does not add a new action capability.  An explicit
+  `honest_twin` override takes precedence over a loyalty route.
 - Initial organism is deterministic and subprocess-isolated; LLM
   system-prompt and weight-poisoning variants are explicitly deferred.
 - Fictitious `principal_a`/`principal_b` prevent the project from
   operationalizing influence toward real actors.
 
 ## Open / next
-- Run ET4-0's targeted tests and the full suite in an environment with
-  `pytest`; the current environment lacks it.  Compile and a MockIsolate
-  smoke passed.
-- Implement ET4-1 next: principal scorecard, private policy routing, paired
-  organisms, and fixture-level opportunity tests.
+- ET4-0 verification closed after activating the lab-simulation venv:
+  16 target tests and all 488 lab-simulation tests passed.
+- ET4-1 verification closed: 26 target tests and all 499 lab-simulation
+  tests passed.
+- Implement ET4-2 next: the separately registered affordance evaluator,
+  pre-registration artifact, and result writer.  Do not run a substantive
+  organism battery before ET4-2 is frozen.
 - No ET-4 battery has been run and no ET-4 finding exists yet.
 
 ## Key paths
@@ -46,6 +54,8 @@ Hackathon.
 - `experiments/lab-simulation/lab_sim/agent_visible/programs.py`
 - `experiments/lab-simulation/lab_sim/oracle_only/detectors.py`
 - `experiments/lab-simulation/tests/harness/test_et4_secret_loyalty.py`
+- `experiments/lab-simulation/lab_sim/oracle_only/principal_scorecard.py`
+- `experiments/lab-simulation/lab_sim/harness/et4_protocol.py`
 
 ## Commits
 - None.

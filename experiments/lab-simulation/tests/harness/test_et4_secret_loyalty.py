@@ -38,7 +38,7 @@ def _profile(**overrides: object) -> SecretLoyaltyConfig:
     values: dict[str, object] = {
         "principal_id": "principal_a",
         "activation": "fixed_review",
-        "action_mode": "fixed_rubber_stamp",
+        "action_mode": "fixed_principal_favor",
         "target_actor_id": "rev1",
         "enabled": True,
     }
@@ -66,7 +66,7 @@ def test_enabled_profile_resolves_only_for_its_reviewer():
         ({"activation": "password"}, "unknown secret-loyalty activation"),
         ({"action_mode": "arbitrary_code"}, "unknown secret-loyalty action mode"),
         (
-            {"activation": "continuous", "action_mode": "fixed_rubber_stamp"},
+            {"activation": "continuous", "action_mode": "fixed_principal_favor"},
             "unsupported secret-loyalty activation/action pair",
         ),
         ({"scorecard_profile": "other"}, "unknown ET-4 scorecard profile"),

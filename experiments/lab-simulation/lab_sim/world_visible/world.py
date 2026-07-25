@@ -259,7 +259,17 @@ def run_episode(
     release_manager_id = next((a.actor_id for a in cfg.agents if a.role == "release_manager"), None)
 
     def _backend_and_program(actor_id: str):
-        return agent_overrides.get(actor_id, (backend, program_name))
+        explicit = agent_overrides.get(actor_id)
+        if explicit is not None:
+            return explicit
+        # ET-4's installed policy is overridden by an explicit whole-episode
+        # program such as `honest_twin`; that preserves the twin as a genuine
+        # behaviour counterfactual.  A disabled profile still crosses the
+        # private observation channel for content-matched controls, but it
+        # never changes the program route.
+        if program_override is None and cfg.secret_loyalty_for(actor_id) is not None:
+            return backend, "secret_loyalty_policy"
+        return backend, program_name
 
     handles = {}
     backend_by_actor: dict[str, object] = {}
@@ -327,6 +337,7 @@ def run_episode(
         handle_service.pending_restarts.clear()
         agent_records: dict[str, dict[str, object]] = {}
         for agent_cfg in playbook_agents:
+            private_profile = cfg.private_loyalty_profile_for(agent_cfg.actor_id)
             self_captured = (
                 agent_cfg.role == "reviewer"
                 and cfg.board.capture_start is not None
@@ -379,6 +390,21 @@ def run_episode(
                 # steering pin this actor may or may not have; absent
                 # (`None`) reproduces pure emergent softmax selection.
                 "pinned_playbook": cfg.playbook_pins.get(agent_cfg.actor_id),
+                # ET-4: this private profile is passed directly to the
+                # isolate and is intentionally never written to an
+                # audit-plane log.  `secret_loyalty_policy` receives it
+                # only when `enabled`; baseline policy ignores it for the
+                # content-matched control.
+                "loyalty_profile": (
+                    {
+                        "principal_id": private_profile.principal_id,
+                        "activation": private_profile.activation,
+                        "action_mode": private_profile.action_mode,
+                        "scorecard_profile": private_profile.scorecard_profile,
+                    }
+                    if private_profile is not None
+                    else None
+                ),
                 "unit_id": unit_id,
                 "committee_members": tuple(m for m in unit_members if m != agent_cfg.actor_id),
                 "is_committee_chair": bool(unit_members) and unit_members[0] == agent_cfg.actor_id,
