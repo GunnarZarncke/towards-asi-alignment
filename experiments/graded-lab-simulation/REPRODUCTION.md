@@ -1108,7 +1108,17 @@ Two candidate alternatives were identified but not run:
    `basin_stability` traces — genuinely passive (no freeze probes needed),
    but scores coarse-graining quality via effective information rather than
    lagged mutual information, so it may not inherit the entropy-collapse
-   failure mode either.
+   failure mode either. **Motivated concretely by GL-88** (2026-07-25): the
+   handle-UAD pilot's diffuse effect is the *variable-smoothing* case of
+   `zarncke2026smoothing`'s recoverability theory (`context/smooth-uad.pdf`)
+   — every agent's raw contribution is mixed through the shared resource
+   level (a many-to-one observation channel), so no per-pair test can
+   resolve "unit" from "shares an aggregate channel," and the theory's
+   prescribed fix is testing a correctly *coarse-grained* candidate
+   (population or sub-coalition as one blanket) rather than a better
+   pairwise statistic. CIL's EI coarse-graining search is exactly that kind
+   of test and has not yet been pointed at the population/coalition
+   candidates this framing predicts.
 
 **Why not attempted this session.** Both are non-trivial new adapters
 (item 1 needs a CIL-side freeze transform plus a re-run harness

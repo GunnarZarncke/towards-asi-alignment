@@ -4835,6 +4835,25 @@ supposed to *reject* as a false merge (every agent affects the aggregate;
 that does not make all agents one optimizer), so the correct downstream
 step is a specificity test, not scoring this as a discovered partition.
 
+**Theoretical framing (named, not merely described, 2026-07-25).** The
+diffuseness is the *variable-smoothing* case of the smoothed-boundary
+recoverability theory (`zarncke2026smoothing`, `context/smooth-uad.pdf`):
+the raw per-agent state is only observed through a many-to-one map onto the
+shared resource-level scalar, and once that map mixes every agent's
+contribution together strongly enough, no per-pair test can distinguish
+"this pair is a unit" from "this pair shares an aggregate channel." That
+theory's prescribed fix is not a better pairwise statistic but testing the
+*correctly coarse-grained* candidate (the whole population, or a natural
+sub-coalition, as one blanket against the shared resource as external
+variable) instead of every individual pair. CIL's own causal-emergence /
+effective-information machinery (`rosas2020emergence`) is exactly a
+coarse-graining search of that kind, over candidate macro-variables scored
+by predictive-information retention — it has not yet been run on this
+substrate to test whether the population- or coalition-level candidate the
+smoothing theory predicts is the actual recoverable unit the per-pair freeze
+probe cannot see. See `chapters/ch07-finding-boundary.tex` for the
+manuscript-facing version of this connection.
+
 **Trigger.** User request to try a small implementation of handle UAD on
 CIL's `basin_stability`, following GL-87 and the REPRODUCTION.md §14 item 1
 sketch (recorded, not yet attempted).
@@ -4854,6 +4873,10 @@ probes + baseline each).
 resource-*external* control — e.g. a no-op freeze to the agent's own
 baseline action every round — collapse to ~0, validating that the diffuse
 effect is not a harness artifact?) and a larger seed/mechanism grid would be
-needed before this could support a scored claim; recorded as open rather
-than run under time pressure in this pass.
+needed before this could support a scored claim. The more targeted next
+step implied by the smoothing-theory framing above: run CIL's
+causal-emergence coarse-graining search on the same traces and test whether
+a population- or coalition-level candidate clears a blanket criterion that
+the per-agent freeze probe structurally cannot resolve. Neither has been run
+under time pressure in this pass.
 
