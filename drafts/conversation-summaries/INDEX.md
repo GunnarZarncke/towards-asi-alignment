@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-25 | **HF field-news voice revision** — OpenAI/HF card body restored to author prose (entity pinning, quotes, UAD link, Zvi note) | [2026-07-25-hf-news-voice-revision.md](2026-07-25-hf-news-voice-revision.md) |
 | 2026-07-25 | **Concept card logos** — 41 minimalist SVGs in drafts; generator script; sync to site/public; ConceptLogo on card pages and indexes | [2026-07-25-concept-logos.md](2026-07-25-concept-logos.md) |
 | 2026-07-25 | **Site UX polish** — chapter illustration overflow fix; MB links in experiments coverage table; standalone-claims hub card; nav order (glossary/search last) already in tree | [2026-07-25-site-ux-polish.md](2026-07-25-site-ux-polish.md) |
 | 2026-07-25 | **Field news (Tier A/B + HF entity framing)** — nine-card `/news/` layer; 2026 incident cites in ch11–43/appB; Tier B CLTR/OpenClaw/Claude Code/METR red-team; HF card rewritten with UAD + emergent-instance monitoring angle | [2026-07-25-field-news-tier-ab.md](2026-07-25-field-news-tier-ab.md) |

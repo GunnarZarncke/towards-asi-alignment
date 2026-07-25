@@ -27,4 +27,4 @@ User asked for minimalist square SVG logos for each site concept card, iterated 
 - `site/src/lib/concept-logos.ts`
 
 ## Commits
-- `93345ae4` Wire concept card logos into the companion site.
+- `fc7b73f7` Wire concept card logos into the companion site.

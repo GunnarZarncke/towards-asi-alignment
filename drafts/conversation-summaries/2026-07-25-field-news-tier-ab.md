@@ -27,4 +27,4 @@ Implement Tier A and selected Tier B AI-safety incident catalog items on manuscr
 - `chapters/ch42-safety-case.tex`, `chapters/ch26-correction-channel-integrity.tex`
 
 ## Commits
-- (filled after commit)
+- `6e224df5` Add field-news layer and 2026 incident cites across manuscript and site.
