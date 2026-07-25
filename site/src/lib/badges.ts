@@ -11,7 +11,8 @@ export const CARD_TYPES = [
   "frontmatter",
   "reference",
   "experiment",
-  "release"
+  "release",
+  "news"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -81,6 +82,11 @@ export const TYPE_META: Record<
     title: "Release",
     description:
       "Manuscript and companion-site release notes — versioned milestones, newest first on the Updates page."
+  },
+  news: {
+    title: "News",
+    description:
+      "External AI safety incidents and evaluation results — mapped to book chapters; companion-site orientation, not PDF canon."
   }
 };
 

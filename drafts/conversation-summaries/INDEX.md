@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-25 | **Field news (Tier A/B + HF entity framing)** — nine-card `/news/` layer; 2026 incident cites in ch11–43/appB; Tier B CLTR/OpenClaw/Claude Code/METR red-team; HF card rewritten with UAD + emergent-instance monitoring angle | [2026-07-25-field-news-tier-ab.md](2026-07-25-field-news-tier-ab.md) |
 | 2026-07-25 | **Tier B field news (partial)** — CLTR + Claude Code cluster (site only); METR Anthropic red-team (ch42); OpenClaw (site + ch26); 9 news cards total | [2026-07-25-tier-b-field-news-partial.md](2026-07-25-tier-b-field-news-partial.md) |
 | 2026-07-25 | **Tier A field news (manuscript + site)** — six 2026 incidents (OpenAI HF hack, long-horizon sandbox, AISI cheating, METR report, Mythos withheld, accidental CoT opt); `field-news.yml` + sync script; `/news/` index + chapter “Related news”; bib keys + surgical `\autocite{}` in ch11–43 and appB | [2026-07-25-tier-a-field-news.md](2026-07-25-tier-a-field-news.md) |
 | 2026-07-25 | **Repo cleanup, simplification, and archival** — repaired the conversation-log index; retired dead generation chains; corrected docs; archived completed plans and spent artifacts; added PDF extracts; reclaimed regenerable build disk | [2026-07-25-repo-cleanup.md](2026-07-25-repo-cleanup.md) |

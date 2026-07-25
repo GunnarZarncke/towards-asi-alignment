@@ -1,0 +1,89 @@
+---
+import fieldNewsIndex from "../../data/field-news.json";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
+import { cardHref as buildCardHref } from "../../lib/site-urls";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const cardHref = (id: string) => buildCardHref(base, id);
+
+const items = [...fieldNewsIndex].sort((a, b) => b.date.localeCompare(a.date));
+
+const kindLabel: Record<string, string> = {
+  incident: "Incident",
+  "eval-result": "Evaluation",
+  research: "Research",
+  policy: "Policy",
+  anecdote: "Anecdote"
+};
+---
+
+<SiteLayout
+  title="Related news"
+  description="External AI safety incidents and evaluation results mapped to book chapters — orientation only, not manuscript canon."
+>
+  <section class="hero">
+    <p class="eyebrow">Field index</p>
+    <h1>Related news</h1>
+    <p class="lede">
+      Dated external incidents, lab disclosures, and independent evaluations linked to the chapters they
+      illustrate. The PDF remains canonical; this page updates without a new book build.
+    </p>
+  </section>
+
+  <section class="readable">
+    <ul class="news-list">
+      {items.map((item) => (
+        <li class="news-item">
+          <p class="news-meta">
+            <time datetime={item.date}>{item.date}</time>
+            {" · "}
+            <span>{kindLabel[item.kind] ?? item.kind}</span>
+          </p>
+          <h2>
+            <a href={cardHref(item.card)}>{item.title}</a>
+          </h2>
+          <p>{item.hook}</p>
+          <p class="side-panel-meta">
+            Read in book:{" "}
+            {item.chapters.map((ch, i) => (
+              <>
+                {i > 0 && ", "}
+                <a href={cardHref(`chapters/${ch}`)}>{ch}</a>
+              </>
+            ))}
+          </p>
+        </li>
+      ))}
+    </ul>
+    <p>
+      Primary sources and fuller context live on each{" "}
+      <a href={withBase("/cards/")}>news card</a>. To suggest an entry, open a{" "}
+      <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues" target="_blank" rel="noopener noreferrer">
+        GitHub issue<LinkIndicator kind="github" />
+      </a>.
+    </p>
+  </section>
+</SiteLayout>
+
+<style>
+  .news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+  .news-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border-subtle, #e5e5e5);
+  }
+  .news-item h2 {
+    font-size: 1.15rem;
+    margin: 0.35rem 0 0.5rem;
+  }
+  .news-meta {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin: 0;
+  }
+</style>

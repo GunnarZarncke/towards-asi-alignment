@@ -4,6 +4,7 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
 import Formula from "../../components/Formula.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
+import ConceptLogo from "../../components/ConceptLogo.astro";
 import BridgeCrosswalkTable from "../../components/BridgeCrosswalkTable.astro";
 import CardSection from "../../components/CardSection.astro";
 import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
@@ -16,9 +17,11 @@ import references from "../../data/references.json";
 import demosIndex from "../../data/demos.json";
 import bookIndex from "../../data/book.json";
 import crosswalkRows from "../../data/bridge-crosswalk.json";
+import fieldNewsIndex from "../../data/field-news.json";
 import leanSpine from "../../data/lean-spine.json";
 import { bookFullHref, bookHref, cardHref as buildCardHref, pdfHref, resolveCard, routeSlug } from "../../lib/site-urls";
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
+import { hasConceptLogo } from "../../lib/concept-logos";
 import { referenceLinksFor } from "../../lib/reference-links";
 
 export async function getStaticPaths() {
@@ -54,6 +57,7 @@ const isReferenceIndexCard = card.id === "reference-index";
 const isReferenceCard = card.data.type === "reference";
 const isExperimentCard = card.data.type === "experiment";
 const isReleaseCard = card.data.type === "release";
+const isNewsCard = card.data.type === "news";
 const isReleaseHub = card.id === "releases-updates";
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
@@ -68,6 +72,17 @@ const chapterCardFor = (chapterId: string) =>
       routeSlug(candidate.data.bookPageId ?? "") === routeSlug(chapterId) &&
       ["chapter", "appendix", "frontmatter"].includes(candidate.data.type)
   );
+
+const chapterIdForNews =
+  isBookUnit && card.data.bookPageId
+    ? routeSlug(card.data.bookPageId)
+    : isBookUnit
+      ? routeSlug(card.id.replace(/^chapters\//, ""))
+      : null;
+const relatedNews =
+  chapterIdForNews != null
+    ? fieldNewsIndex.filter((item) => item.chapters.includes(chapterIdForNews))
+    : [];
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
@@ -157,7 +172,15 @@ const pageDescription = showFullText
       </div>
       {!bookEntry ? (
         <>
-          <h1>{card.data.title}</h1>
+          {card.data.type === "concept" && hasConceptLogo(card.id) && (
+            <div class="card-title-row">
+              <ConceptLogo slug={card.id} size={72} decorative={false} label={card.data.title} />
+              <h1>{card.data.title}</h1>
+            </div>
+          )}
+          {!(card.data.type === "concept" && hasConceptLogo(card.id)) && (
+            <h1>{card.data.title}</h1>
+          )}
           {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
           {isOverviewHub && card.data.bookPageId && (
             <p class="button-row">
@@ -180,6 +203,11 @@ const pageDescription = showFullText
                   <a href={cardHref("releases-updates")}>Releases hub</a>
                 </>
               )}
+            </p>
+          )}
+          {isNewsCard && (
+            <p class="side-panel-meta">
+              <a href={withBase("/news/")}>All related news</a>
             </p>
           )}
         </>
@@ -478,6 +506,22 @@ const pageDescription = showFullText
           </ul>
         </>
       )}
+      {isBookUnit && relatedNews.length > 0 && (
+        <>
+          <h3>Related news</h3>
+          <ul>
+            {relatedNews.map((item) => (
+              <li>
+                <a href={cardHref(item.card)}>{item.title}</a>
+                <span class="side-panel-meta"> ({item.date})</span>
+              </li>
+            ))}
+          </ul>
+          <p class="side-panel-meta">
+            <a href={withBase("/news/")}>Full news index</a>
+          </p>
+        </>
+      )}
       {isReferenceCard && card.data.citedIn.length > 0 && (
         <>
           <h3>Cited in</h3>
@@ -528,6 +572,19 @@ const pageDescription = showFullText
     </aside>
   </article>
 </SiteLayout>
+
+<style>
+  .card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .card-title-row h1 {
+    margin: 0;
+  }
+</style>
 
 {isReferenceCard && (
   <style>
@@ -586,7 +643,6 @@ const pageDescription = showFullText
 
     .book-page :global(.book-figure) {
       margin: 1.5rem 0;
-      text-align: center;
     }
 
     .book-page :global(.book-figure img) {

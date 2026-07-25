@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "npm run sync && npm run copy:pdf && ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "sync": "npm run generate:manuscript-tex && npm run sync:book && npm run sync:concepts && npm run sync:bridges && npm run sync:projections && npm run sync:notation && npm run sync:releases && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos && npm run sync:experiments && npm run build:search-index && npm run sync:bot-orientation",
+    "sync": "npm run generate:manuscript-tex && npm run sync:book && npm run sync:concepts && npm run sync:bridges && npm run sync:projections && npm run sync:field-news && npm run sync:notation && npm run sync:releases && npm run sync:chapter-cards && npm run sync:chapters && npm run sync:reference-cards && npm run sync:lean-spine && npm run sync:demos && npm run sync:experiments && npm run build:search-index && npm run sync:bot-orientation",
     "generate:manuscript-tex": "bash ../scripts/generate_manuscript_tex.sh",
     "sync:experiments": "node scripts/sync-experiments.mjs",
     "sync:demos": "node scripts/sync-demos.mjs",
@@ -16,6 +16,7 @@
     "sync:concepts": "node scripts/sync-concepts.mjs",
     "sync:bridges": "node scripts/sync-bridges.mjs",
     "sync:projections": "node scripts/sync-projections.mjs",
+    "sync:field-news": "node scripts/sync-field-news.mjs",
     "sync:notation": "node scripts/sync-notation.mjs",
     "sync:releases": "node scripts/sync-releases.mjs",
     "build:search-index": "node scripts/build-search-index.mjs",
@@ -26,7 +27,7 @@
     "copy:pdf": "node scripts/copy-book-pdf.mjs",
     "check:book-links": "node scripts/check-book-links.mjs",
     "check:experiments": "node scripts/check-experiments.mjs",
-    "check:concepts": "node scripts/sync-concepts.mjs --check && node scripts/sync-bridges.mjs --check && node scripts/sync-projections.mjs --check && node scripts/build-search-index.mjs --check && node scripts/sync-bot-orientation.mjs --check",
+    "check:concepts": "node scripts/sync-concepts.mjs --check && node scripts/sync-bridges.mjs --check && node scripts/sync-projections.mjs --check && node scripts/sync-field-news.mjs --check && node scripts/build-search-index.mjs --check && node scripts/sync-bot-orientation.mjs --check",
     "prebuild": "npm run sync && npm run copy:pdf",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"

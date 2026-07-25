@@ -10,6 +10,7 @@ src/data/notation.json
 src/data/glossary.json
 src/data/field-projections.json
 src/data/field-projection-gems.json
+src/data/field-news.json
 src/data/part-gems.json
 src/data/standalone-claims.json
 src/content/book/
@@ -100,6 +101,17 @@ src/content/cards/release-v1-0-0.md
 src/content/cards/release-v1-1-0.md
 src/content/cards/release-v1-2-0.md
 src/content/cards/releases-updates.md
+
+# Generated from metadata/field-news.yml via sync-field-news.mjs
+src/content/cards/field-news-openai-huggingface-jul-2026.md
+src/content/cards/field-news-openai-longhorizon-jul-2026.md
+src/content/cards/field-news-aisi-cheating-jul-2026.md
+src/content/cards/field-news-metr-frontier-risk-may-2026.md
+src/content/cards/field-news-mythos-withheld-apr-2026.md
+src/content/cards/field-news-cot-optimization-2026.md
+src/content/cards/field-news-cltr-scheming-wild-mar-2026.md
+src/content/cards/field-news-meta-openclaw-feb-2026.md
+src/content/cards/field-news-claude-code-production-feb-2026.md
 
 # Generated from concepts + chapters + notation via build-search-index.mjs.
 public/search-index.json

@@ -5,7 +5,7 @@ const card = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/cards" }),
   schema: z.object({
     title: z.string(),
-    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment", "release"]),
+    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment", "release", "news"]),
     status: z.enum(["established", "plausible", "framework", "bridge", "open", "negative", "reviewed"]).default("framework"),
     summary: z.string(),
     decision: z.string().optional(),
