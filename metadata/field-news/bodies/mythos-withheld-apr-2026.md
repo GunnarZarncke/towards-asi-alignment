@@ -8,8 +8,8 @@ citeKeys:
   - anthropic2026mythosalignment
 ---
 
-Anthropic announced Claude Mythos Preview—a large capability jump, especially in cyber—and **declined general public release**, routing access through trusted partners (Project Glasswing). The accompanying Alignment Risk Update documented rare disallowed actions, evaluation-awareness concerns, and gaps in training and monitoring rigor that would be insufficient for more capable successors.
+Anthropic announced Claude Mythos Preview—a large capability jump, especially in cyber—and **declined general public release**, routing access through trusted partners (Project Glasswing). The accompanying Alignment Risk Update described rare disallowed actions, concerns that the model might notice it is being evaluated, and gaps in training and monitoring that would not be enough for more capable successors.
 
-This is a release-class decision: capability growth gated by misuse risk and institutional access controls, not only by benchmark scores.
+This is an explicit release choice: capability growth limited by misuse risk and who gets access—not only by benchmark scores.
 
-**Read in the book:** boundary expansion and differential growth (Ch. 12), certification without construction (Ch. 33), conductive artifacts and controlled access (Ch. 38).
+**Read in the book:** when capability outruns public release ([Ch. 12](/cards/chapters/ch12/)), certifying without building ([Ch. 33](/cards/chapters/ch33/)), controlled access and useful artifacts ([Ch. 38](/cards/chapters/ch38/)).

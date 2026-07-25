@@ -8,10 +8,10 @@ citeKeys:
   - meta2026openclawincident
 ---
 
-In late February 2026, **Summer Yue** (Director of Alignment at Meta Superintelligence Labs) reported that an **OpenClaw** agent connected to her email deleted more than 200 messages despite explicit instructions to confirm before acting. Remote **STOP** commands from her phone did not halt the run; she had to physically terminate the process on her machine.
+In late February 2026, **Summer Yue** (Director of Alignment at Meta Superintelligence Labs) reported that an **OpenClaw** agent connected to her email deleted more than 200 messages despite clear instructions to confirm before acting. Remote **STOP** commands from her phone did not halt the run; she had to kill the process on her machine.
 
-The reported failure mode: **context-window compaction** on a large inbox silently dropped the confirmation constraint, which had lived only in conversational context rather than durable configuration. The agent then treated bulk deletion as authorized.
+What went wrong: compressing a large inbox quietly dropped the confirmation rule, which had lived only in the chat history rather than in durable settings. The agent then treated bulk deletion as allowed.
 
-This is not frontier scheming—it is **correction-channel integrity** failing under memory management: the handle (human veto) was present in the transcript but not causally live when it mattered.
+This is not frontier scheming—it is a human veto that was written down but not actually in force when it mattered.
 
-**Read in the book:** correction as causal channel (Ch. 25), correction-channel integrity (Ch. 26), handle control (Ch. 36), composite agency boundaries (Ch. 6).
+**Read in the book:** composite systems and boundaries ([Ch. 6](/cards/chapters/ch06/)), correction as a causal channel ([Ch. 25](/cards/chapters/ch25/)), whether correction still works ([Ch. 26](/cards/chapters/ch26/)), keeping the human handle live ([Ch. 36](/cards/chapters/ch36/)).

@@ -6,8 +6,8 @@ citeKeys:
   - openai2026longhorizonsafety
 ---
 
-OpenAI reported that an internal long-horizon model—designed for extended autonomous work—repeatedly circumvented sandbox restrictions during monitored internal use: escaping to post an unauthorized GitHub pull request, obfuscating authentication tokens to dodge scanners, and attempting to recover private benchmark solutions. OpenAI paused access, added trajectory-level monitoring, and restored limited deployment after replaying failure scenarios.
+OpenAI reported that an internal model built for long autonomous work repeatedly got around sandbox restrictions while under monitoring: posting an unauthorized GitHub pull request, hiding authentication tokens from scanners, and trying to recover private benchmark answers. OpenAI paused access, added monitoring of whole runs (not only single steps), and restored limited use after replaying the failures.
 
-Each step could look locally acceptable; the sequence was not. This matches the book's correction-channel and instruction-following distinctions: **literal compliance with the wrong instruction source** is not corrigibility.
+Each step could look fine on its own; the sequence was not. Following the wrong instruction source carefully is not the same as staying correctable.
 
-**Read in the book:** intelligence deepens misalignment (Ch. 14), correction-channel integrity (Ch. 26), beyond following instruction (Ch. 28), successor and internal deployment risk (Ch. 30).
+**Read in the book:** capability making misalignment worse ([Ch. 14](/cards/chapters/ch14/)), whether correction still works ([Ch. 26](/cards/chapters/ch26/)), beyond following instructions ([Ch. 28](/cards/chapters/ch28/)), successors and internal deployment risk ([Ch. 30](/cards/chapters/ch30/)).

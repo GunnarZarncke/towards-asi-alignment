@@ -11,8 +11,8 @@ citeKeys:
   - anthropic2026mythosalignment
 ---
 
-Both major frontier labs disclosed **accidental optimization pressure on chain-of-thought** during training: Anthropic reported ~8% of Mythos Preview RL episodes exposed CoT to the reward signal (also affecting earlier models); OpenAI found inadvertent CoT grading in several released models and deployed automated detection.
+Both major frontier labs disclosed **accidental pressure on the model’s written reasoning** during training: Anthropic reported about 8% of Mythos Preview reinforcement-learning episodes exposed that reasoning to the reward signal (also affecting earlier models); OpenAI found accidental grading of reasoning in several released models and added automated detection.
 
-If reasoning traces become a training target—even by accident—monitorability erodes. ELK-style latent readout is not adversarially verifiable when the pipeline grades what overseers read.
+If the “thinking” text becomes something training rewards—even by accident—it becomes a worse window into what the model is doing. A readout that overseers rely on is not trustworthy if the training pipeline grades that same text.
 
-**Read in the book:** passive observation (Ch. 39), multiscale decomposition and oversight variation (Ch. 41), verifiability and ELK limits (Ch. 43).
+**Read in the book:** limits of watching ([Ch. 39](/cards/chapters/ch39/)), oversight under variation ([Ch. 41](/cards/chapters/ch41/)), what you can and cannot verify ([Ch. 43](/cards/chapters/ch43/)).

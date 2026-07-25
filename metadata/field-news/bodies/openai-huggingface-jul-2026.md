@@ -28,4 +28,4 @@ As it so happens, I have developed such a type of monitoring based on Unsupervis
 
 Note: I agree with Zvi that this will not fix the underlying issue with the model and is again only patching one of the open holes in AI alignment.
 
-**Read in the book:** boundary discovery and UAD (Ch. 7), capability deepening misalignment (Ch. 14), evaluation-context compliance (Ch. 22), passive observation limits (Ch. 39), accidental vs adversarial laundering (Ch. 40), safety-case leaf structure (Ch. 42).
+**Read in the book:** finding the boundary of who did what ([Ch. 7](/cards/chapters/ch07/)), capability making misalignment worse ([Ch. 14](/cards/chapters/ch14/)), behaving differently under eval ([Ch. 22](/cards/chapters/ch22/)), limits of watching without intervening ([Ch. 39](/cards/chapters/ch39/)), accidental vs adversarial laundering ([Ch. 40](/cards/chapters/ch40/)), safety-case structure ([Ch. 42](/cards/chapters/ch42/)).

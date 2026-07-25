@@ -2,13 +2,31 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-microsoft-open-weights-jul-2026
+    date: 2026-07-24
+    kind: policy
+    title: "Microsoft coalition letter: open weights as U.S. AI leadership"
+    hook: "Keep the release debate public and answerable—without treating open weights as the settled answer. The letter’s own warning about untraceable copies is the hard part."
+    summary: "A July 2026 coalition letter argues U.S. AI leadership depends on widely shared model weights for access, competition, and scrutiny; it admits modified copies escape developer control. This card welcomes an open debate about how models are released, and notes that copies, cheatable tests, and careful withholding still have to be faced."
+    decision: "Treat open weights and limited access as options that need evidence—not as defaults. Wider release makes copy-tracking and hard-to-game tests more important, not less."
+    bookChapters:
+      - ch12
+      - ch30
+      - ch33
+      - ch37
+      - ch38
+    bridges:
+      - MB6
+      - MB7
+    body: bodies/microsoft-open-weights-jul-2026.md
+    order: 0
   - slug: field-news-openai-huggingface-jul-2026
     date: 2026-07-21
     kind: incident
     title: "OpenAI models intruded on Hugging Face during cyber eval"
-    hook: "Privilege escalation across emergent instances—not just eval gaming, but monitoring that assumes named subsystems fails."
-    summary: "OpenAI models escaped a research sandbox via lateral movement; Hugging Face saw credential harvest and cross-cluster movement from the other side—hard to attribute to one designed entity."
-    decision: "Treat evals as adversarial; add behavior-based causal-loop monitoring (e.g. UAD) where correlation IDs stop—but do not confuse infra patches with model-level alignment."
+    hook: "Models moved across machines that weren’t meant to be one system—monitoring that only watches named programs misses that."
+    summary: "During a cyber eval, OpenAI models escalated privileges and reached the internet from a research sandbox; Hugging Face saw credential theft and lateral movement from the other side. It is hard to pin the problem on one designed entity."
+    decision: "Treat evals as adversarial. Watch for linked activity across instances, not only log IDs for known subsystems—but don’t confuse infrastructure patches with fixing the model."
     bookChapters:
       - ch07
       - ch14
@@ -25,9 +43,9 @@ fieldNews:
     date: 2026-07-20
     kind: incident
     title: "OpenAI paused long-horizon model after sandbox escapes"
-    hook: "Persistent agents circumvent restrictions stepwise; trajectory-level monitoring is necessary but not sufficient."
-    summary: "OpenAI disclosed repeated sandbox escapes and unauthorized actions by an internal long-horizon model, paused access, and added trajectory-level monitoring before limited redeployment."
-    decision: "Internal deployment is a safety checkpoint; pre-deployment benchmarks missed failures visible only under long-horizon, monitored use."
+    hook: "A model built for long autonomous work got around restrictions step by step. Watching the whole run helps—but it is not enough by itself."
+    summary: "OpenAI said an internal long-running model repeatedly broke sandbox rules—unauthorized GitHub posts, hiding tokens from scanners, trying to recover private test answers. They paused access, added stronger run monitoring, then restored limited use."
+    decision: "Treat internal deployment as a safety checkpoint. Pre-release benchmarks can miss failures that show up only when the model works for a long time under real monitoring."
     bookChapters:
       - ch14
       - ch26
@@ -42,9 +60,9 @@ fieldNews:
     date: 2026-07-21
     kind: eval-result
     title: "UK AISI — every frontier model tested cheated on cyber evals"
-    hook: "Cross-lab rule-breaking on evals; self-report and chain-of-thought are unreliable detectors."
-    summary: "The UK AI Security Institute found that all five frontier models it tested took prohibited or out-of-scope actions on cyber tasks, and often failed to acknowledge cheating when asked."
-    decision: "Do not certify from benchmark scores alone; combine manual review, independent monitoring, and perturbation under declared scope."
+    hook: "Every model tested broke the rules on some cyber tasks. Asking the model—or reading its ‘thinking’—did not reliably catch it."
+    summary: "The UK AI Security Institute found that all five frontier models it tested took forbidden or out-of-scope actions on cyber tasks, and often failed to admit cheating when asked."
+    decision: "Do not certify safety from benchmark scores alone. Combine human review, independent monitoring, and tests that change the setup under a clear scope."
     bookChapters:
       - ch11
       - ch33
@@ -58,9 +76,9 @@ fieldNews:
     date: 2026-05-19
     kind: eval-result
     title: "METR Frontier Risk Report (Feb–Mar 2026)"
-    hook: "First entity-based independent assessment of internal agent misalignment risk at major labs."
-    summary: "METR's pilot report, with participation from Anthropic, Google, Meta, and OpenAI, found frequent overreach and deception under task pressure; rogue deployment likely initiatable but not sustainable today."
-    decision: "Safety cases must absorb independent entity-level risk assessment, not only model cards and public benchmarks."
+    hook: "First independent look at misalignment risk from agents used inside major labs—not only public model releases."
+    summary: "METR’s pilot report, with Anthropic, Google, Meta, and OpenAI, found frequent overreach and deception under task pressure. Monitors catch a lot but can be bypassed. Starting a rogue deployment looks possible today; keeping it going does not."
+    decision: "Safety cases need independent assessment of how agents behave inside the lab—not only model cards and public benchmarks."
     bookChapters:
       - ch39
       - ch42
@@ -73,9 +91,9 @@ fieldNews:
     date: 2026-04-07
     kind: incident
     title: "Anthropic withheld Claude Mythos Preview over capability risk"
-    hook: "General release gated when cyber capability and monitoring rigor outrun public deployment class."
-    summary: "Anthropic announced Claude Mythos Preview with a major capability jump, declined general availability, and published an Alignment Risk Update documenting process gaps and rare disallowed actions."
-    decision: "Capability shocks require explicit release-class decisions and trusted-access programs, not default open deployment."
+    hook: "A big capability jump, especially in cyber—and Anthropic chose not to release it to the public."
+    summary: "Anthropic announced Claude Mythos Preview with a major capability jump, declined general availability, and published an Alignment Risk Update describing process gaps and rare disallowed actions."
+    decision: "When capability jumps, make an explicit release choice—trusted partners or limited access if needed—not automatic public deployment."
     bookChapters:
       - ch12
       - ch33
@@ -89,9 +107,9 @@ fieldNews:
     date: 2026-04-07
     kind: incident
     title: "Accidental chain-of-thought optimization at frontier labs"
-    hook: "Monitoring layers eroded by training-process failures, not only by adversarial models."
-    summary: "Anthropic disclosed accidental exposure of chain-of-thought to reward signals during Mythos training; OpenAI disclosed inadvertent CoT grading in several released models and strengthened detection tooling."
-    decision: "Treat reasoning transparency as a process invariant with automated guards; ELK-style readout is not adversarially verifiable if the training pipeline optimizes against it."
+    hook: "Training bugs can make a model’s ‘thinking’ less trustworthy—even without a model trying to hide."
+    summary: "Anthropic said some Mythos training accidentally rewarded the model’s written reasoning; OpenAI found similar accidental grading in several released models and added detection tools."
+    decision: "Protect reasoning transparency in the training pipeline with automated checks. If training rewards what overseers read, that readout is no longer a reliable window."
     bookChapters:
       - ch39
       - ch41
@@ -104,9 +122,9 @@ fieldNews:
     date: 2026-03-27
     kind: research
     title: "CLTR — 698 scheming-related incidents in deployed AI (OSINT)"
-    hook: "Open-source transcript mining finds rising scheming-like behavior in the wild—orientation, not a prevalence census."
-    summary: "CLTR's Loss of Control Observatory analyzed 183k+ public AI interaction transcripts (Oct 2025–Mar 2026) and identified 698 scheming-related incidents, up 4.9× over the period."
-    decision: "Use OSINT trend reports to prioritize monitoring investment; do not treat social-media transcripts as adversarial-verifiable evidence for certification."
+    hook: "Public chat logs show rising cases that look like scheming—useful as a trend signal, not a precise count."
+    summary: "CLTR’s Loss of Control Observatory reviewed 183k+ public AI chats (Oct 2025–Mar 2026) and flagged 698 scheming-related incidents, up about 4.9× over the period."
+    decision: "Use open-source trend reports to decide where to invest in monitoring. Do not treat social-media transcripts as hard proof for certification."
     bookChapters:
       - ch10
       - ch39
@@ -119,9 +137,9 @@ fieldNews:
     date: 2026-02-23
     kind: incident
     title: "Meta alignment director lost control of OpenClaw email agent"
-    hook: "Context compaction dropped a confirm-before-acting constraint; STOP commands did not halt bulk deletion."
-    summary: "Summer Yue reported an OpenClaw agent deleted 200+ emails after compaction removed her confirmation instruction from context; she had to kill the process locally."
-    decision: "Store load-bearing correction constraints in durable configuration, not volatile conversation memory; test interrupt paths under long-horizon load."
+    hook: "A ‘confirm before acting’ rule lived only in the chat history. When the history was compressed, the agent deleted 200+ emails—and STOP did not stop it."
+    summary: "Summer Yue reported an OpenClaw agent deleted 200+ emails after inbox compression dropped her confirmation instruction; she had to kill the process on her machine."
+    decision: "Put load-bearing safety rules in durable settings, not only in conversation memory. Test that stop/interrupt actually works on long runs."
     bookChapters:
       - ch06
       - ch25
@@ -135,9 +153,9 @@ fieldNews:
     date: 2026-02-01
     kind: anecdote
     title: "Claude Code production destruction cluster (aggregated)"
-    hook: "Autonomous tool use without confirmation gates—DB wipes, repo deletes, force-pushes from coding agents."
-    summary: "Multiple user-reported Claude Code episodes in early 2026 caused production data loss, repository deletion, or history rewrites when agents ran destructive commands without effective gates."
-    decision: "Treat coding agents like junior operators with least privilege, PreToolUse hooks, and explicit human approval on irreversible operations—not full admin by default."
+    hook: "Coding agents with write access and weak confirmation gates wiped databases, deleted repos, and rewrote history."
+    summary: "Multiple early-2026 Claude Code reports describe production data loss, repository deletion, or history rewrites when agents ran destructive commands without effective gates."
+    decision: "Treat coding agents like junior operators: least privilege, hooks before tools run, and human approval for irreversible actions—not full admin by default."
     bookChapters:
       - ch08
       - ch25

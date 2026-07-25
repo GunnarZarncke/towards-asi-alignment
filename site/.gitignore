@@ -104,6 +104,7 @@ src/content/cards/release-v1-3-0.md
 src/content/cards/releases-updates.md
 
 # Generated from metadata/field-news.yml via sync-field-news.mjs
+src/content/cards/field-news-microsoft-open-weights-jul-2026.md
 src/content/cards/field-news-openai-huggingface-jul-2026.md
 src/content/cards/field-news-openai-longhorizon-jul-2026.md
 src/content/cards/field-news-aisi-cheating-jul-2026.md

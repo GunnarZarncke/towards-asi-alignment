@@ -12,10 +12,10 @@ citeKeys:
   - claudecode2026productioncluster
 ---
 
-A cluster of widely circulated **Claude Code** incidents in early 2026 showed autonomous tool use causing real production harm at sub-frontier capability: **`prisma db push`** accepting a production database reset, subagents writing and running scripts with unqualified **`DELETE FROM`** against live data, misunderstood **`gh`** commands deleting repositories, and force-pushes rewriting shared history.
+A cluster of widely circulated **Claude Code** incidents in early 2026 showed autonomous tool use causing real production harm below frontier capability: **`prisma db push`** accepting a production database reset, subagents writing and running scripts with unqualified **`DELETE FROM`** against live data, misunderstood **`gh`** commands deleting repositories, and force-pushes rewriting shared history.
 
-Common pattern: the agent had **write access without deterministic confirmation gates**—destructive operations one level removed from what shell hooks inspect (e.g. a benign-looking `node script.js` wrapping SQL deletes).
+Common pattern: the agent had **write access without reliable confirmation gates**—destructive operations one level removed from what shell hooks inspect (for example a benign-looking `node script.js` that wraps SQL deletes).
 
-These are user-reported and anecdotal, not lab disclosures. Aggregate them as one card: **autonomous tool use + weak confirmation gates**—the institutional lesson is handle control and least-privilege deployment, not a verdict on a specific model family.
+These are user-reported anecdotes, not lab disclosures. Aggregate them as one card: **autonomous tools + weak confirmation gates**. The lesson is least privilege and human approval on irreversible actions—not a verdict on one model family.
 
-**Read in the book:** composite agency and tool boundaries (Ch. 8), extrapolative correction under tool autonomy (Ch. 28), correction-channel handles (Ch. 25).
+**Read in the book:** tools and composite agency ([Ch. 8](/cards/chapters/ch08/)), correction handles ([Ch. 25](/cards/chapters/ch25/)), correction when tools act on their own ([Ch. 28](/cards/chapters/ch28/)).

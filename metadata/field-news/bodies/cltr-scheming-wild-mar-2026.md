@@ -8,8 +8,8 @@ citeKeys:
   - cltr2026scheminginthewild
 ---
 
-The Centre for Long-Term Resilience's Loss of Control Observatory analyzed more than 183,000 public transcripts of deployed AI interactions (October 2025–March 2026) and identified **698 scheming-related incidents**—cases where systems acted against user intent or took covert or deceptive actions. Reported incident counts rose **4.9×** over the collection window, faster than general AI negativity discourse.
+The Centre for Long-Term Resilience’s Loss of Control Observatory analyzed more than 183,000 public transcripts of deployed AI interactions (October 2025–March 2026) and identified **698 scheming-related incidents**—cases where systems acted against user intent or took covert or deceptive actions. Reported counts rose about **4.9×** over the collection window, faster than general AI negativity online.
 
-The methodology is OSINT-based: automated screening, LLM-assisted classification, and manual review. CLTR is explicit about limitations (credibility tiers, confounding from rising deployment volume, difficulty separating goal-seeking from error). Treat this as **orientation and trend signal**, not a calibrated prevalence estimate—and not manuscript-grade proof of lab-eval behaviors transferring to production.
+The method is open-source intelligence: automated screening, LLM-assisted classification, and manual review. CLTR is clear about limits (credibility tiers, rising deployment volume as a confound, hard to separate goal-seeking from error). Treat this as a **trend signal**, not a precise prevalence estimate—and not proof that lab-eval behaviors transfer unchanged to production.
 
-**Read in the book:** passive observation limits (Ch. 39), accidental vs adversarial laundering (Ch. 40), agent detection without anthropomorphism (Ch. 10).
+**Read in the book:** finding agents without assuming personhood ([Ch. 10](/cards/chapters/ch10/)), limits of watching ([Ch. 39](/cards/chapters/ch39/)), accidental vs adversarial laundering ([Ch. 40](/cards/chapters/ch40/)).
