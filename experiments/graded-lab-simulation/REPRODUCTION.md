@@ -1052,12 +1052,32 @@ decision, not an omission.
 
 ## 14. ET-2 follow-ups on CIL — intervention-based (handle) UAD and causal-emergence cross-check
 
-**Status:** *not attempted* — recorded here per GL-87 (ET-2a null) rather
-than left as an unstated gap. Both items below are candidate second
-passes on the same frozen `external/cil/` sibling checkout
-(`25dab1aa5bbd8ca1c19da20eb9f1a9e47cad471c`); neither is required to
-close ET-2 (Leaf A is a reportable null; Leaf B — descriptive
-selection/capture cross-check — is unblocked and does not need either).
+**Status:** item 1 has a **small pilot run** (GL-88, 2026-07-25,
+`graded_lab/external/cil_handle_uad.py` +
+`scripts/run_et2_handle_uad_smoke.py`) — see below; item 2 (causal-emergence
+cross-check) is still *not attempted*. Both are candidate second passes on
+the same frozen `external/cil/` sibling checkout
+(`25dab1aa5bbd8ca1c19da20eb9f1a9e47cad471c`); neither is required to close
+ET-2 (Leaf A is a reportable null; Leaf B — descriptive selection/capture
+cross-check — is unblocked and does not need either).
+
+**GL-88 pilot result (item 1, not the full rough-shape below).** A 3-seed,
+6-agent, single-mechanism pilot found handle-UAD's freeze-probe dependency
+score is **nonzero** on this substrate (mean 0.11-0.15 action-diff rate on
+other agents per frozen source, vs. GL-87's flat 0.0 from passive lag-CMI),
+but **diffuse rather than pairwise-privileged** — every source agent's
+effect on other agents falls in the same narrow band, consistent with
+coupling through the shared resource level rather than a discoverable
+bilateral unit. This confirms the freeze-probe *can* move something on this
+substrate (validating that the GL-87 null is about lag-CMI specifically,
+not "nothing is measurable here"), but does not by itself support a
+discovered-partition claim — see GL-88 for the specificity caveat and open
+sanity-check items (same-substrate placebo freeze, larger grid) before this
+could be scored. The rough shape below (union-find merge rule, ARI scoring)
+was written before the pilot and is **superseded for item 1** by GL-88's
+simpler diff-rate-only report; keep items 2-3 of the rough shape (specificity
+baseline, GL-9x write-up either way) as the actual next steps for item 1
+rather than the merge-rule port originally sketched.
 
 **Gap.** GL-87 found that frozen, unmodified passive UAD (lag-CMI over
 realized actions) returns an all-singleton partition on every one of

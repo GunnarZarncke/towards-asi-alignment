@@ -4787,3 +4787,73 @@ against ch34's selection-divergence pattern using CIL's own `capture_rate`/
 `delegation_gini` metrics) has not been run — no runner script exists yet;
 it is independent of this Leaf A null and remains open.
 
+---
+
+### GL-88 — ET-2, handle-UAD pilot on CIL basin_stability: nonzero, diffuse coupling (2026-07-25)
+
+**Key finding:** A small, unscored pilot of intervention-based ("handle")
+UAD (`graded_lab/external/cil_handle_uad.py`) on the same CIL
+`basin_stability` substrate as GL-87 — freeze one agent's realized action to
+a constant each round, same seed, diff every other agent's realized-action
+series against a same-seed unfrozen baseline — finds a **nonzero** mean
+freeze-induced action-diff rate on the other 5 agents (6-agent PDD roster,
+1 adversarial, T=200, seeds 0-2): **0.11-0.15** per source agent, vs. **0.0**
+edges from GL-87's frozen passive lag-CMI instrument on the same kind of
+substrate. Sanity check: the freeze intervention itself has real bite (the
+frozen agent's own realized action differs from what its unfrozen Q-policy
+would have chosen on 25-32% of rounds), so the ~11-15% downstream effect on
+other agents is a real, if partial, propagation of that intervention rather
+than noise. **This is the first instrument on this substrate to return a
+nonzero cross-agent dependency signal, but the effect is diffuse, not
+pairwise-privileged**: every source agent's mean effect on other agents
+falls in the same narrow 0.11-0.15 band, and per-target rates within each
+source's row span a similarly wide range (roughly 0.0-0.20) regardless of
+which agent is frozen — consistent with the hypothesis (stated when this
+pilot was scoped, before running it) that `basin_stability`'s shared
+resource level couples every agent's reward to every other agent's action,
+so freezing *any* agent perturbs the shared trajectory and thus *every*
+other agent, rather than revealing a privileged bilateral channel.
+
+**Status: pilot, not a scored battery.** 3 seeds, 6 agents, one mechanism
+(PDD) — far below GL-87's pre-registered 150-episode grid, and this module
+deliberately does not port graded-lab's specificity-ratio / union-find merge
+rule (`uad_handles.units_from_handle_matrix`), which was pre-registered on a
+different substrate (subprocess-isolate LLM agents with per-channel
+handoffs) before looking at results there; applying it here without a
+same-substrate specificity baseline would silently import that substrate's
+assumptions. This finding is reported as "nonzero and diffuse," not scored
+against a pass/fail criterion.
+
+**What this does and does not show.** It shows handle-UAD can recover *some*
+cross-agent structure on a substrate where frozen passive UAD found none
+(GL-87) — the GL-87 null was specifically about lag-CMI's sensitivity to
+converged, low-entropy action series, not evidence that no instrument could
+find anything here. It does *not* show a discoverable multi-agent "unit" in
+the boundary-recovery sense: diffuse, symmetric coupling through a shared
+resource is the textbook case a Markov-blanket-style boundary criterion is
+supposed to *reject* as a false merge (every agent affects the aggregate;
+that does not make all agents one optimizer), so the correct downstream
+step is a specificity test, not scoring this as a discovered partition.
+
+**Trigger.** User request to try a small implementation of handle UAD on
+CIL's `basin_stability`, following GL-87 and the REPRODUCTION.md §14 item 1
+sketch (recorded, not yet attempted).
+
+**Reproduce:**
+
+```bash
+cd experiments/graded-lab-simulation
+external/cil/.venv/bin/python3 scripts/run_et2_handle_uad_smoke.py
+# -> results/et2_handle_uad_smoke.json
+```
+
+**Artifacts.** `results/et2_handle_uad_smoke.json` (3 seeds x 6 freeze
+probes + baseline each).
+
+**Open / next.** A same-substrate specificity baseline (does freezing a
+resource-*external* control — e.g. a no-op freeze to the agent's own
+baseline action every round — collapse to ~0, validating that the diffuse
+effect is not a harness artifact?) and a larger seed/mechanism grid would be
+needed before this could support a scored claim; recorded as open rather
+than run under time pressure in this pass.
+

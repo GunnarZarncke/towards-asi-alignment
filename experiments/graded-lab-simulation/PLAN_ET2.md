@@ -347,7 +347,8 @@ Questions 1–3 were resolved at ET2-0 (see decisions above). Remaining:
    left un-harvested pending a later pass.
 5. **Resolved:** network conditions improved mid-session; ET2-3 (smoke) and
    ET2-4 (full 150-episode battery) both ran in-sandbox — see GL-87.
-6. **New:** two candidate follow-ups on the GL-87 null — intervention-based
-   ("handle") UAD ported to CIL's freeze-probe-friendly JAX substrate, and a
-   cross-check against CIL's own causal-emergence / effective-information
-   kernel — are recorded but not attempted; see `REPRODUCTION.md` §14.
+6. **Partially resolved (2026-07-25, GL-88):** a small pilot of
+   intervention-based ("handle") UAD on CIL's basin_stability found a
+   nonzero but diffuse freeze-induced dependency signal (not pairwise
+   structure) — see `REPRODUCTION.md` §14 and `results/FINDINGS.md` GL-88.
+   The causal-emergence/EI cross-check remains unattempted.
