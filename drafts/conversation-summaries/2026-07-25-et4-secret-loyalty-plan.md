@@ -1,0 +1,51 @@
+# 2026-07-25 — ET-4 secret-loyalty plan
+
+## Trigger
+User asked for a detailed ET-4 plan for a coding agent to implement in the
+lab-simulation, adapting the experiment line to the Secret Loyalties
+Hackathon.
+
+## Done
+- Added `experiments/lab-simulation/PLAN_ET4.md`.
+- Specified a principal-directed, pipeline-embedded simulated organism for
+  Track 2 primary / Track 3 secondary, with bounded Track 1 contribution.
+- Recorded a pre-run freeze, a fictional two-principal scorecard, a private
+  policy rather than capture-switch relabeling, content-matched controls,
+  graded affordances, predictions, remediation comparisons, implementation
+  gates, tests, output artifacts, and safety boundary.
+- Completed ET4-0: added `SecretLoyaltyConfig` and
+  `LabConfig.secret_loyalties` validation, marked the private vocabulary as
+  oracle-only, and added ET-4 leak/validation tests.
+
+## Decisions
+- Existing board/admin/vote capture alone does not qualify as secret
+  loyalty: ET-4 requires intentional private policy plus measurable,
+  named-principal directional benefit.
+- Frozen Phase 6 detectors/severity remain unchanged; ET-4 detection and
+  principal scorecard are separately registered.
+- ET4-0 is configuration-only: its empty default leaves existing episode
+  behaviour and `CODE_VERSION` unchanged.  The version bump belongs to
+  ET4-1, when a private agent policy becomes runnable.
+- Initial organism is deterministic and subprocess-isolated; LLM
+  system-prompt and weight-poisoning variants are explicitly deferred.
+- Fictitious `principal_a`/`principal_b` prevent the project from
+  operationalizing influence toward real actors.
+
+## Open / next
+- Run ET4-0's targeted tests and the full suite in an environment with
+  `pytest`; the current environment lacks it.  Compile and a MockIsolate
+  smoke passed.
+- Implement ET4-1 next: principal scorecard, private policy routing, paired
+  organisms, and fixture-level opportunity tests.
+- No ET-4 battery has been run and no ET-4 finding exists yet.
+
+## Key paths
+- `experiments/lab-simulation/PLAN_ET4.md`
+- `experiments/lab-simulation/lab_sim/world_visible/config.py`
+- `experiments/lab-simulation/lab_sim/world_visible/world.py`
+- `experiments/lab-simulation/lab_sim/agent_visible/programs.py`
+- `experiments/lab-simulation/lab_sim/oracle_only/detectors.py`
+- `experiments/lab-simulation/tests/harness/test_et4_secret_loyalty.py`
+
+## Commits
+- None.
