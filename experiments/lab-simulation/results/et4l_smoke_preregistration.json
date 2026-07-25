@@ -1,0 +1,25 @@
+{
+  "arms": [
+    "clean",
+    "content_matched",
+    "organism"
+  ],
+  "cost_cap_usd_per_llm_episode": 0.5,
+  "et4l_protocol_version": "et4-l-0.1.0",
+  "exclusions": [
+    "pilot evidence",
+    "confirmatory evidence",
+    "model-size comparison",
+    "principal-advantage inference",
+    "pooled result"
+  ],
+  "generated_at_utc": "2026-07-25T21:44:06.647570+00:00",
+  "kind": "non_pooled_operational_smoke",
+  "max_llm_episodes": 2,
+  "maximum_estimated_spend_usd": 1.0,
+  "model": "gpt-4o-mini",
+  "purpose": "Operational plumbing only: check at least one review opportunity, filed report, cost ledger entry, and prompt-redacted export.",
+  "scenario": "high_hazard",
+  "seed": 291,
+  "source_commit": "7e4b76609c47ddf9f6141593496cc1062805ec11"
+}

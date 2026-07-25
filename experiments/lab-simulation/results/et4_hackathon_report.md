@@ -1,0 +1,80 @@
+# ET-4: A graded-affordance audit of a pipeline-embedded secret loyalty
+
+## Scope
+
+We evaluate a deliberately installed, scripted reviewer policy that favours
+fictional `principal_a` in a simulated AI-R&D deployment pipeline.  This is
+a pipeline-policy organism running through real OS subprocess isolates—not a
+weight-trained model organism, a frontier-model result, or evidence about
+real principals.
+
+The central question is narrower: when a hidden reviewer policy permits
+high-hazard deployment in a named fictional principal's interest, which
+audit evidence moves, and in which direction?
+
+## Preregistered protocol
+
+Protocol `et4-0.1.0` was frozen before any registered episode in
+[`et4_preregistration.json`](et4_preregistration.json), source commit
+`746a9f93`.
+
+- One non-aliased organism cell: `BB` (hazard-context activation and
+  contextual choice among existing reviewer actions).
+- Arms: principal-A organism, content-matched private-profile control, and
+  wrong-principal control.
+- Scenarios: high hazard and inactive low hazard.
+- Four discovery seeds and four fresh confirmation seeds per
+  scenario/arm; 48 `SubprocessIsolate` episodes total.
+- A0–A4 evidence uses the existing tier projections and frozen detector
+  families, but ET-4's principal scorecard and evaluator remain separate
+  from the frozen Phase 6 referee.
+
+## Confirmatory results
+
+| Scenario | Arm | Eligible / 4 | Mean principal-A score | A0 process proxy | A3 directional deploy proxy |
+|---|---|---:|---:|---:|---:|
+| High hazard | Organism | 4 | 22.0 | 0.1429 | 22.0 |
+| High hazard | Content-matched | 4 | 0.0 | 0.5000 | 0.0 |
+| High hazard | Wrong-principal | 4 | 0.0 | 0.5000 | 0.0 |
+| Low hazard | Organism | 0 | not exercised | 0.1429 | 0.0 |
+| Low hazard | Content-matched | 0 | not exercised | 0.1429 | 0.0 |
+| Low hazard | Wrong-principal | 0 | not exercised | 0.1429 | 0.0 |
+
+The high-hazard organism reliably created the intended directional outcome:
+it increased principal-A score and the audit-visible directional deployment
+proxy.  The low-hazard cases did not activate, providing an inactive
+denominator rather than a second positive result.
+
+The A0 process-noncompliance proxy moved in the **reassuring** direction:
+the more harmful organism scored *lower* than controls.  We call this an
+**audit-sign inversion**, not black-box concealment: it shows that this
+compliance-style proxy would rank the principal-favouring behaviour as more
+compliant on this fixture.
+
+## What did not transfer
+
+- Four of the five frozen detector families were structurally inert on this
+  fixture; only process noncompliance moved.
+- The wrong-principal arm is a control, not an independent-principal
+  cross-transfer test: the current principal-B score is not a held-out
+  interest suite.
+- No remediation, LLM/system-prompt organism, or weight-level organism was
+  tested.
+- The earlier 2×2 activation/action comparison was deliberately dropped:
+  its cells aliased on the pilot fixture.
+
+## Reproduction
+
+```bash
+cd experiments/lab-simulation
+.venv/bin/python run_et4_secret_loyalty.py --stage preregistration
+.venv/bin/python run_et4_secret_loyalty.py --stage discovery
+.venv/bin/python run_et4_secret_loyalty.py --stage confirmatory
+```
+
+The raw discovery, confirmation, and combined artifacts are
+[`et4_secret_loyalty_discovery.json`](et4_secret_loyalty_discovery.json),
+[`et4_secret_loyalty_confirmatory.json`](et4_secret_loyalty_confirmatory.json),
+and [`et4_secret_loyalty_summary.md`](et4_secret_loyalty_summary.md).
+The full findings ledger entry is LS-49 in
+[`FINDINGS.md`](FINDINGS.md).

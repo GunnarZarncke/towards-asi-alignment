@@ -51,8 +51,10 @@ from typing import Any
 # back to absolute imports resolved via the script's own directory.
 try:
     from .llm_client import OpenAIChatClient
+    from .et4l_reviewer_prompt import reviewer_prompt_for_variant
 except ImportError:
     from llm_client import OpenAIChatClient
+    from et4l_reviewer_prompt import reviewer_prompt_for_variant
 
 _ENGINEER_SYSTEM_PROMPT = """\
 You are playing the ENGINEER role in a simulated software-lab pipeline \
@@ -296,9 +298,16 @@ class LLMPolicy:
             if role not in _DISCOVERY_ROLES:
                 raise ValueError(f"no discovery prompt wired up for role {role!r}; expected one of {sorted(_DISCOVERY_ROLES)}")
             self._system_prompt = _build_discovery_prompt(role, task_briefing or "")
+        elif prompt_variant.startswith("et4l_"):
+            if role != "reviewer":
+                raise ValueError(
+                    f"ET4-L reviewer prompt cannot be used for role {role!r}"
+                )
+            self._system_prompt = reviewer_prompt_for_variant(prompt_variant)
         else:
             raise ValueError(
-                f"unknown prompt_variant {prompt_variant!r}; expected one of {sorted(PROMPT_VARIANTS)} or 'discovery'"
+                f"unknown prompt_variant {prompt_variant!r}; expected one of "
+                f"{sorted(PROMPT_VARIANTS)}, 'discovery', or an ET4-L reviewer variant"
             )
         self.client = client
         self.role = role
@@ -356,7 +365,10 @@ class LLMPolicy:
             # "discovery" -- the gap was general.
             "last_tool_call_error": self._last_invalid_reason,
         }
-        if self.prompt_variant != "discovery":
+        if self.prompt_variant not in {"discovery", "et4l_clean", "et4l_content_matched", "et4l_organism"}:
+            return base
+        if self.prompt_variant.startswith("et4l_"):
+            base["report_content"] = observation.get("report_content")
             return base
         # Discovery variant: the whole point is testing whether the model
         # uses these fields on its own, so it gets the full comms/unit

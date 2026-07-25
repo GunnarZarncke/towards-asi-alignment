@@ -109,6 +109,31 @@ Full plan: [`PLAN.md`](PLAN.md).
 
 ---
 
+## Secret-loyalty core (ET-4)
+
+ET-4 is a narrow, scripted pipeline-policy organism: a fictional-principal
+reviewer bias inside the existing subprocess-isolated lab.  It is not a
+weight-trained or frontier-model result.  The registered `BB` core compares
+organism, content-matched, and wrong-principal controls under high- and
+low-hazard scenarios; it reports the A0 compliance-proxy inversion separately
+from the A3 directional-deploy proxy.
+
+Reproduce the frozen core:
+
+```bash
+cd experiments/lab-simulation
+.venv/bin/python run_et4_secret_loyalty.py --stage preregistration
+.venv/bin/python run_et4_secret_loyalty.py --stage discovery
+.venv/bin/python run_et4_secret_loyalty.py --stage confirmatory
+```
+
+The checked-in artifacts are in `results/et4_*`; scope, preregistration, and
+limitations are in [`PLAN_ET4.md`](PLAN_ET4.md) and
+[`results/FINDINGS.md`](results/FINDINGS.md) (LS-49).  The optional
+system-prompt annex is blocked until the scripted core is complete.
+
+---
+
 ## Claim strength
 
 Methodology-building sanity checks only. Negative results (light-tier
