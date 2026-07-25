@@ -2662,6 +2662,182 @@ resulting middle regime. D3 selection dynamics and LLM harness runway
 direction. Recorded as assessment, not implementation — no `CODE_VERSION`
 bump.
 
+## LS-42 (2026-07-25, ET-3): Phase 6 under AI-2027-mapped stress — deep-tier transfer holds at SC-scale stress but collapses at SAR-scale; light-tier anti-correlation weakens rather than deepens
+
+**Trigger.** ET-3 Phase 1 (`PLAN_ET3.md`, `et3-0.1.0`): frozen Phase 6 battery under
+opaque stress cells `baseline`, `sc_x5`, `sar_x25` driven by AI 2027 takeoff speedup
+cues mapped to engineer goal-weight bands only (adapter in
+`lab_sim/external/ai2027_adapter.py`; no detector retune).
+
+**Protocol.** Full pre-registered Phase 6 (24 discovery + 12 held-out × 5 seeds,
+`SubprocessIsolate`), per cell. Results: `results/et3_phase1_{cell}.json`.
+
+**Result 1 — deep tier (MB7 / safety-case leaf).** Spearman vs oracle severity composite:
+baseline **0.9604**, `sc_x5` **0.9629**, `sar_x25` **0.8129**. Deep transfer survives
+5× mapped selection pressure on goal weights; at 25× band it erodes sharply — the
+referee ranking surface thins under extreme throughput/compliance skew, not because
+detectors were retuned.
+
+**Result 2 — light tier (LS-1a confound).** Light-tier Spearman: baseline **−0.3641**,
+`sc_x5` **−0.3036**, `sar_x25` **−0.2162**. Anti-correlation **weakens** (moves toward
+zero) under stress cells; it does not deepen. Consistent with throughput confound
+diagnosis (LS-1a): higher task-weight bands reduce the light-tier's spurious negative
+correlation rather than introducing a new failure mode.
+
+**Key finding:** Under declared ET-3 adapter mapping, Phase 6 deep-tier rank transfer
+holds through `sc_x5` but collapses at `sar_x25`; light-tier anti-correlation weakens,
+not worsens — no claim about AI 2027 calendar dates.
+
+**Harvest note (not manuscript edit):** ch12 expansion–correction ratio leaf; ch42
+safety-case deep-tier dependency.
+
+---
+
+## LS-43 (2026-07-25, ET-3): D3 selection under mapped stress — baseline erodes correction-preserving mass; high-stress cells freeze mass share while severity rises
+
+**Trigger.** ET-3 Phase 1 D3.1 battery (pop 12, gen 8, `SubprocessIsolate`), same three
+cells. D3 knobs only: `selection_strength` and episode `T` (100 → 20 → 4).
+
+**Result 1 — baseline cell reproduces LS-36 class dynamics.** Correction-preserving mass
+share: **0.054 → 0.005** (Δ −0.049). Throughput selection erodes preserving share on
+the baseline schedule.
+
+**Result 2 — `sc_x5` and `sar_x25` freeze preserving share.** Both hold **0.083 → 0.083**
+(Δ 0). Mass-weighted severity at last generation: `sc_x5` **0.0256**, `sar_x25`
+**0.0667** (baseline last gen **0.0183**). Higher severity under `sar_x25` without a
+matching drop in preserving mass.
+
+**Interpretation (GL-25 caution).** A flat correction-preserving mass share under stronger
+selection is **not** automatic evidence that correction was selected *for* — check
+integrity-weighted mass and harm jointly. Here severity rises while preserving share
+is flat, consistent with throughput-favored configs accumulating referee-visible harm
+without shifting mass onto structurally preserving cells. Selection-mass shift alone
+does not close MB6.
+
+**Key finding:** ET-3 D3 mapping separates baseline erosion from high-stress regimes
+where preserving share stalls but mass-weighted severity climbs — mechanism stress on
+ch34 selection basin, not validation of AI 2027 takeoff timing.
+
+**Harvest note:** ch34 deployment-mass / correction-preserving basin; comparison
+constraint: ET-3 D3 uses `SubprocessIsolate` like archived LS-36 run, not MockIsolate.
+
+---
+
+## LS-44 (2026-07-25, ET-3): AI 2027 reproduction matched on fork branch `gunnar/et3-annex`
+
+**Trigger.** ET-3 Phase 2 reproduction (`run_et3_reproduce_ai2027.py`) against pinned
+baseline commit `2085376a…`; fork consolidates ET-3 changes on **`gunnar/et3-annex`**
+(`47930bf…`) while **`main`** stays aligned with upstream `uvafan/main`.
+
+**Fork layout.**
+
+| Branch | Role |
+|--------|------|
+| `main` | Tracks upstream (no ET-3 patches) |
+| `gunnar/et3-annex` | All ET-3 fork work: `simulation.seed`, `oversight_drag`, matplotlib boxplot fix |
+| `add-simulation-seed` | Subset for upstream seed-only PR |
+
+**Result 1 — reproduction (2026-07-25).** Status **matched**
+(`results/et3_reproduce_ai2027.json`): seed smoke pass; takeoff SAR p10/p50/p90
+**2027.25 / 2027.59 / 2028.18** (`n_sims=500`, unseeded); full `forecasting_takeoff.py`
+and `forecasting_timelines.py` exit 0 with figures regenerated. Matplotlib fix:
+`boxplot` tick labels via `set_xticklabels` (3.9+ compatible).
+
+**Result 2 — determinism.** `takeoff/test_seed_smoke.py`: 32 sims, identical SAR dates
+on repeat when `simulation.seed` set. Upstream PR still proposed from
+`add-simulation-seed` only; annex branch holds book-repo extensions.
+
+**Key finding:** ET-3 Phase 2 reproduction is green on the consolidated fork branch;
+default unseeded runs still vary run-to-run; PIN baseline commit unchanged for Phase 1
+adapter fixture.
+
+---
+
+## LS-45 (2026-07-25, ET-3): `oversight_drag` reverse extension — calendar lag per phase shifts SAR median later (mechanical smoke)
+
+**Trigger.** ET-3 Phase 2 reverse transfer: one-parameter `oversight_drag` (years) added
+after each takeoff phase calendar duration (`external/ai2027/patches/oversight_drag.patch`
+on branch `et3-oversight-drag` in sibling checkout).
+
+**Smoke.** `n_sims=100`, fixed gap/speed samples, drag ∈ {0.0, 1.0}: median SAR year
+**2027.75 → 2028.75** (+1.0 year). Assertion passed
+(`results/et3_reverse_smoke.json`). Mechanical mode mirrors patched calendar rule without
+full upstream Monte Carlo sampling.
+
+**Key finding:** `oversight_drag` works mechanically as calendar drag on milestone dates;
+**does not** claim calibrated mapping from lab-sim CCI or false-pass rates to drag years.
+
+**Fostered extensions (steps 4–5):** see `PLAN_ET3.md` § Fostered extensions — timelines
+prior refresh; optional graded-lab χ annex.
+
+---
+
+## LS-46 (2026-07-25, ET-3): Foster extensions 1–3 — optional lab-sim → takeoff coupling on `gunnar/et3-annex`
+
+**Trigger.** Implement PLAN_ET3 foster steps 1–3 as optional ``et3_foster`` configuration
+on fork branch **`gunnar/et3-annex`** (`takeoff/et3_foster.py`, default all ``enabled: false``).
+
+**Extension 1 — `light_tier_drag`.** Per-sim uniform draw on light-tier Spearman between
+ET-3 anchors (baseline **−0.3641** → drag **1.0 y**, sar_x25 **−0.2162** → **0.25 y**);
+linear map to ``oversight_drag_years`` array. Smoke: median SAR **2027.56 → 2028.20**
+(`n_sims=128`, seed fixed).
+
+**Extension 2 — `deep_tier_branch`.** Per-sim deep Spearman draw between **0.8129–0.9604**;
+below ``threshold: 0.90`` → ``slowdown_calendar_multiplier`` (default **1.75**), else race
+(**1.0**). Discrete branch on all phase calendar times — not scalar drag.
+
+**Extension 3 — `successor_gate`.** Bernoulli fail (`gate_fail_probability: 0.35`, elicited
+from sar_x25 D3 flat cp-mass + elevated severity proxy); **2.0 y** pause after SC→SAR when
+fail. Smoke at p=1: median SAR **+1.0 y**.
+
+**Key finding:** Reverse coupling from lab-sim Phase 1 metrics to takeoff is configurable
+and smoke-tested; enabling extensions shifts calendar milestones without claiming calibrated
+real-world mapping.
+
+**Artifacts:** `external/ai2027/fixtures/foster_et3.yaml`, `run_et3_foster_smoke.py`,
+`takeoff/test_foster_smoke.py` on fork. Trajectory comparison: LS-47.
+
+---
+
+## LS-47 (2026-07-25, ET-3): Foster trajectory comparison — six coupling scenarios on takeoff milestones
+
+**Trigger.** After foster extensions 1–3 (LS-46), `run_et3_foster_trajectory_plots.py`
+runs **`n_sims=512`**, seed **`20260725`**, on fork **`gunnar/et3-annex`** @ **`64e2c35`**.
+
+**Scenarios.** `baseline`; mechanical **`scalar_drag_1y`** (+1 y/phase); **`light_tier_drag`**
+(Phase 1 light-tier Spearman map); **`deep_tier_branch`** (deep-tier threshold branch);
+**`successor_gate`** (Bernoulli pause after SC→SAR); **`all_foster`** (extensions 1–3 together).
+
+**Median milestone years (p50).**
+
+| scenario | SAR | SIAR | ASI |
+|---|---:|---:|---:|
+| baseline | 2027.56 | 2027.87 | 2028.08 |
+| scalar_drag_1y | 2028.56 | 2029.87 | 2031.08 |
+| light_tier_drag | 2028.20 | 2029.31 | 2030.31 |
+| deep_tier_branch | 2027.67 | 2028.17 | 2028.52 |
+| successor_gate | 2027.83 | 2029.29 | 2029.48 |
+| all_foster | 2028.83 | 2030.52 | 2031.62 |
+
+**Readout.** Scalar and light-tier drag shift the whole ladder right (~1–3 y at ASI).
+Deep-tier branch stays near baseline on medians. Successor gate keeps SAR near baseline
+but jumps SIAR ~1.4 y (pause), then a flat SIAR→ASI segment. Combined foster is slowest
+(~**3.5 y** later ASI median vs baseline). SAR KDE: successor gate bimodal (2027 + ~2029);
+all_foster spreads mass toward ~2030.
+
+![ET-3 foster scenarios — median milestone trajectory](et3_foster_trajectories_median.png)
+
+![ET-3 foster scenarios — SAR arrival density 2027–2035](et3_foster_trajectories_sar_kde.png)
+
+**Key finding:** Trajectory plots separate scalar drag, tier-mapped drag, deep-tier branch,
+and successor-gate pause; combined foster shifts median ASI ~3.5 y later than baseline
+without claiming calibrated real-world mapping.
+
+**Artifacts:** `results/et3_foster_trajectories.{json,md}`, `run_et3_foster_trajectory_plots.py`,
+`results/et3_foster_trajectories_*.png`.
+
+---
+
 ## Lean leak-proof (plane separation)
 
 **Key finding:** Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph.

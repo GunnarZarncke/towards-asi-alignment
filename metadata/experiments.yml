@@ -117,6 +117,15 @@ lines:
     planPath: experiments/lab-simulation/PLAN.md
     findingsPath: experiments/lab-simulation/results/FINDINGS.md
     leakProofPath: experiments/lab-simulation/leak-proof/README.md
+    findingsFigures:
+      - path: /experiments/lab-simulation/et3_foster_trajectories_median.png
+        alt: "ET-3 foster scenarios — median SAR, SIAR, and ASI milestone years"
+        caption: "ET-3 foster coupling (LS-47): median milestone ladder under six scenarios (`n_sims=512`, seed `20260725`, fork `gunnar/et3-annex`)."
+        findingId: LS-47
+      - path: /experiments/lab-simulation/et3_foster_trajectories_sar_kde.png
+        alt: "ET-3 foster scenarios — SAR arrival density 2027–2035"
+        caption: "SAR arrival density: successor gate is bimodal; combined foster spreads mass toward ~2030."
+        findingId: LS-47
     # headlineFindings auto-extracted from **Key finding:** tags in results/FINDINGS.md
     headlineFindings: []
 

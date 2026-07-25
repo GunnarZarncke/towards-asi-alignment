@@ -4,6 +4,9 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-25 | **ET-3 foster trajectories + site charts** — LS-47; trajectory plots; findings/news figures on companion site | [2026-07-25-et3-ai2027.md](2026-07-25-et3-ai2027.md) |
+| 2026-07-25 | **ET-4 secret-loyalty organism plan** — frozen-protocol implementation plan for principal-directed pipeline organism, graded-affordance audit, matched controls, predictions, remediation, and safety bounds | [2026-07-25-et4-secret-loyalty-plan.md](2026-07-25-et4-secret-loyalty-plan.md) |
+| 2026-07-25 | **ET-3 AI 2027 external transfer** — adapter + Phase 6/D3 stress cells; LS-42–45; oversight_drag smoke; field-news card | [2026-07-25-et3-ai2027.md](2026-07-25-et3-ai2027.md) |
 | 2026-07-25 | **v1.3.0 release notes and tag** — drafted/revised release notes; graded-lab v4 + findings framing; tagged and pushed `v1.3.0` | [2026-07-25-v1-3-0-release-notes.md](2026-07-25-v1-3-0-release-notes.md) |
 | 2026-07-25 | **RSS feed + news posting dates** — combined feed.xml; footer RSS icon; eventDate vs posting date for pre-release news | [2026-07-25-rss-feed-and-news-dates.md](2026-07-25-rss-feed-and-news-dates.md) |
 | 2026-07-25 | **Field news plain language + Microsoft open-weights** — policy card on coalition letter; simpler language across ten cards; linked chapter footers | [2026-07-25-field-news-plain-language.md](2026-07-25-field-news-plain-language.md) |

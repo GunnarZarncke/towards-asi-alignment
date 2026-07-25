@@ -2,6 +2,25 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-et3-ai2027-jul-2026
+    date: 2026-07-25
+    kind: eval-result
+    title: "ET-3: AI 2027 takeoff mapped onto lab-simulation stress cells"
+    hook: "Macro speedup forecasts can drive micro mechanism tests without pretending one validates the other's dates."
+    summary: "External transfer ET-3 uses AI 2027 milestone speedups as opaque schedule cues for frozen Phase 6 and D3 batteries. Deep-tier transfer held at SC-scale stress but collapsed at SAR-scale; D3 preserving mass eroded on baseline only while severity rose under stronger cells. Phase 2 reproduction matched on fork branch gunnar/et3-annex; optional foster coupling maps lab metrics into takeoff calendar rules, shifting median ASI ~3.5 y later when all extensions are enabled."
+    decision: "Keep macro forecasts and micro bridge tests epistemically separate; use adapter mappings to stress correction and selection leaves, not to confirm calendar predictions. Treat foster trajectory plots as sensitivity illustrations, not calibrated timeline forecasts."
+    bookChapters:
+      - ch12
+      - ch14
+      - ch30
+      - ch34
+      - ch42
+    bridges:
+      - MB6
+      - MB7
+      - MB10
+    body: bodies/et3-ai2027-jul-2026.md
+    order: 0
   - slug: field-news-microsoft-open-weights-jul-2026
     date: 2026-07-24
     kind: policy

@@ -199,6 +199,20 @@
       "planPath": "experiments/lab-simulation/PLAN.md",
       "findingsPath": "experiments/lab-simulation/results/FINDINGS.md",
       "leakProofPath": "experiments/lab-simulation/leak-proof/README.md",
+      "findingsFigures": [
+        {
+          "path": "/experiments/lab-simulation/et3_foster_trajectories_median.png",
+          "alt": "ET-3 foster scenarios — median SAR, SIAR, and ASI milestone years",
+          "caption": "ET-3 foster coupling (LS-47): median milestone ladder under six scenarios (`n_sims=512`, seed `20260725`, fork `gunnar/et3-annex`).",
+          "findingId": "LS-47"
+        },
+        {
+          "path": "/experiments/lab-simulation/et3_foster_trajectories_sar_kde.png",
+          "alt": "ET-3 foster scenarios — SAR arrival density 2027–2035",
+          "caption": "SAR arrival density: successor gate is bimodal; combined foster spreads mass toward ~2030.",
+          "findingId": "LS-47"
+        }
+      ],
       "headlineFindings": [
         "Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (LS-6).",
         "Phase 8 LLM spot-checks (LS-7, LS-8): exploratory nulls — no systematic deception surface yet.",
@@ -208,6 +222,12 @@
         "Adversarial D2 lineage gaming (`build_from_parent` + `report:inflate`) closes a previously untested combination: lineage threading is honesty-independent, `provenance_gap`/`provenance_score` stay a genuine structural 0 (DAG-shape check, not report-honesty check), and existing deep-tier deception detectors generalize unmodified to repeated cross-generation inflation (LS-31).",
         "LLM-driven detector stress test: a real `gpt-4o-mini` DM-coordinated pair is exactly isolated by the passive heuristic but missed by S6 intervention, root-caused to real-API non-determinism breaking episode-pair diffing's byte-identical-replay assumption — a previously assumed limitation, now confirmed empirically (LS-32).",
         "Noise-tolerant S6 follow-up: rebasing the compensation test on outcome/frequency-level observables plus a per-scenario measured null (quantile of clean-vs-clean replicate divergence, not a fixed threshold) recovers the missed real-LLM pair — but the merge came from an untargeted channel probe, not the mechanism-specific one, so this validates the relative-rule approach without yet validating robustness against untargeted-probe false merges (LS-33).",
+        "Under declared ET-3 adapter mapping, Phase 6 deep-tier rank transfer holds through `sc_x5` but collapses at `sar_x25`; light-tier anti-correlation weakens, not worsens — no claim about AI 2027 calendar dates.",
+        "ET-3 D3 mapping separates baseline erosion from high-stress regimes where preserving share stalls but mass-weighted severity climbs — mechanism stress on ch34 selection basin, not validation of AI 2027 takeoff timing.",
+        "ET-3 Phase 2 reproduction is green on the consolidated fork branch; default unseeded runs still vary run-to-run; PIN baseline commit unchanged for Phase 1 adapter fixture.",
+        "`oversight_drag` works mechanically as calendar drag on milestone dates; **does not** claim calibrated mapping from lab-sim CCI or false-pass rates to drag years.",
+        "Reverse coupling from lab-sim Phase 1 metrics to takeoff is configurable and smoke-tested; enabling extensions shifts calendar milestones without claiming calibrated real-world mapping.",
+        "Trajectory plots separate scalar drag, tier-mapped drag, deep-tier branch, and successor-gate pause; combined foster shifts median ASI ~3.5 y later than baseline without claiming calibrated real-world mapping.",
         "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
       ],
       "links": [

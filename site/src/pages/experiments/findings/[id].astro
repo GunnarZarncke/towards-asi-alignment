@@ -17,6 +17,7 @@ const { line } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const findings = line.headlineFindings ?? [];
+const figures = line.findingsFigures ?? [];
 const fullLedgerUrl = line.findingsUrlResolved;
 ---
 
@@ -67,6 +68,21 @@ const fullLedgerUrl = line.findingsUrlResolved;
           {" "}or the <a href={cardHref(base, `experiments/${line.id}`)}>experiment card</a>.
         </p>
       </section>
+    )}
+
+    {figures.length > 0 && (
+      <>
+        <h2>Figures</h2>
+        <p class="side-panel-meta">
+          Selected plots from the findings ledger; full tables and additional panels are on GitHub.
+        </p>
+        {figures.map((figure) => (
+          <figure class="book-figure">
+            <img src={withBase(figure.path)} alt={figure.alt} loading="lazy" />
+            {figure.caption && <figcaption>{figure.caption}</figcaption>}
+          </figure>
+        ))}
+      </>
     )}
   </article>
 </SiteLayout>
