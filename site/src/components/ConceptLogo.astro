@@ -1,0 +1,56 @@
+---
+import { readFileSync, existsSync } from "node:fs";
+import path from "node:path";
+import { hasConceptLogo } from "../lib/concept-logos";
+
+interface Props {
+  slug: string;
+  size?: number;
+  class?: string;
+  /** When false, expose as an image for screen readers via aria-label. */
+  decorative?: boolean;
+  label?: string;
+}
+
+const { slug, size = 48, class: className, decorative = true, label } = Astro.props;
+
+if (!hasConceptLogo(slug)) {
+  return null;
+}
+
+const file = path.join(process.cwd(), "public/concept-logos", `${slug}.svg`);
+if (!existsSync(file)) {
+  return null;
+}
+
+const svg = readFileSync(file, "utf8").replace(/<\?xml[^?]*\?>\s*/i, "").trim();
+const ariaLabel = decorative ? undefined : (label ?? `Concept logo: ${slug}`);
+---
+
+<span
+  class:list={["concept-logo", className]}
+  style={`--concept-logo-size: ${size}px`}
+  aria-hidden={decorative ? "true" : undefined}
+  role={decorative ? undefined : "img"}
+  aria-label={ariaLabel}
+  set:html={svg}
+/>
+
+<style>
+  .concept-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--concept-logo-size, 48px);
+    height: var(--concept-logo-size, 48px);
+    color: var(--color-text);
+    flex-shrink: 0;
+    line-height: 0;
+  }
+
+  .concept-logo :global(svg) {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
