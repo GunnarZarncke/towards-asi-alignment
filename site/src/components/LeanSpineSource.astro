@@ -1,5 +1,6 @@
 ---
 import { highlightLean } from "../lib/highlight-lean";
+import LinkIndicator from "./LinkIndicator.astro";
 
 interface SpineSource {
   kind: string;
@@ -52,7 +53,7 @@ if (spineSource.code) {
     <div class="lean-code-header">
       <h2>Lean spine source</h2>
       {spineSource.file && (
-        <a href={`${repoBase}/${spineSource.file}`} target="_blank" rel="noopener noreferrer">{spineSource.file}</a>
+        <a href={`${repoBase}/${spineSource.file}`} target="_blank" rel="noopener noreferrer">{spineSource.file}<LinkIndicator kind="github" /></a>
       )}
     </div>
     {spineSource.decls && spineSource.decls.length > 0 && (

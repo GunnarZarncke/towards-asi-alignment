@@ -281,6 +281,26 @@ a.badge:hover {
   margin-bottom: 0.35rem;
 }
 
+.link-indicator {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.3em;
+  color: var(--color-muted);
+  vertical-align: middle;
+}
+
+.link-indicator--pdf {
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.link-indicator--github svg,
+.link-indicator--newtab svg,
+.link-indicator--external svg {
+  opacity: 0.75;
+}
+
 .callout {
   padding: 1rem 1.1rem;
   border-left: 5px solid var(--color-accent);

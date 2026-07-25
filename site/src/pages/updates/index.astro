@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import CardSection from "../../components/CardSection.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import { cardHref as buildCardHref } from "../../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
@@ -41,10 +42,10 @@ const githubReleasesUrl = "https://github.com/GunnarZarncke/towards-asi-alignmen
     <div class="button-row">
       {hub && <a class="button primary" href={cardHref(hub.id)}>Releases hub card</a>}
       <a class="button" href={releaseNotesUrl} target="_blank" rel="noopener noreferrer">
-        Full RELEASE_NOTES.md
+        Full RELEASE_NOTES.md<LinkIndicator kind="github" />
       </a>
       <a class="button" href={githubReleasesUrl} target="_blank" rel="noopener noreferrer">
-        GitHub tags
+        GitHub tags<LinkIndicator kind="github" />
       </a>
     </div>
   </section>

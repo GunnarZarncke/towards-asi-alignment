@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import LinkIndicator from "../components/LinkIndicator.astro";
 import { pdfHref } from "../lib/site-urls";
 
 const base = import.meta.env.BASE_URL;
@@ -40,7 +41,7 @@ const items = [
             <>
               The companion site <a href={withBase("/experiments/")}>Experiments page</a> summarizes build order,
               negative ledgers, and bridge coverage. Full narrative prose lives in{" "}
-              <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">docs/EXPERIMENTS.md</a>{" "}
+              <a href="https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/docs/EXPERIMENTS.md" target="_blank" rel="noopener noreferrer">docs/EXPERIMENTS.md<LinkIndicator kind="github" /></a>{" "}
               in the repository.
             </>
           ) : question === "Where is the full book?" ? (

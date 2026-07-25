@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import "katex/dist/katex.min.css";
 import CloudflareWebAnalytics from "../components/CloudflareWebAnalytics.astro";
+import LinkIndicator from "../components/LinkIndicator.astro";
 import PageQrCode from "../components/PageQrCode.astro";
 import SiteSearch from "../components/SiteSearch.astro";
 import { pdfHref } from "../lib/site-urls";
@@ -115,8 +116,8 @@ const websiteJsonLd = {
             A static companion site for an authored research manuscript.
           </p>
           <p>
-            <a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository</a> ·
-            <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues</a> ·
+            <a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<LinkIndicator kind="github" /></a> ·
+            <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues<LinkIndicator kind="github" /></a> ·
             <a href={withBase("/updates/")}>Updates</a> ·
             <a href={withBase("/impressum/")}>Impressum</a>
           </p>

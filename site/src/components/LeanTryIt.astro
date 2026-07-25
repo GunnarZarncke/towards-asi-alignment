@@ -1,4 +1,6 @@
 ---
+import LinkIndicator from "./LinkIndicator.astro";
+
 interface Props {
   liveUrl: string;
   title?: string;
@@ -11,12 +13,12 @@ const { liveUrl, title = "Try in Lean 4 Web" } = Astro.props;
   <h2>Try this out</h2>
   <p>
     Open a self-contained snippet in the
-    <a href="https://live.lean-lang.org/">Lean 4 Web</a> editor with the infoview.
+    <a href="https://live.lean-lang.org/" target="_blank" rel="noopener noreferrer">Lean 4 Web<LinkIndicator kind="external" /></a> editor with the infoview.
     The link preloads the full playground (inline compressed code, or GitHub raw when
     the snippet exceeds share-link size limits).
   </p>
   <p>
-    <a class="button primary" href={liveUrl} target="_blank" rel="noopener noreferrer">{title}</a>
+    <a class="button primary" href={liveUrl} target="_blank" rel="noopener noreferrer">{title}<LinkIndicator kind="external" /></a>
   </p>
 </section>
 

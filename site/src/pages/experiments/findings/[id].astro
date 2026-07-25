@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../../../layouts/SiteLayout.astro";
+import LinkIndicator from "../../../components/LinkIndicator.astro";
 import experiments from "../../../data/experiments.json";
 import { cardHref } from "../../../lib/site-urls";
 
@@ -36,7 +37,7 @@ const fullLedgerUrl = line.findingsUrlResolved;
       <a class="button primary" href={cardHref(base, `experiments/${line.id}`)}>Experiment card</a>
       {fullLedgerUrl && (
         <a class="button" href={fullLedgerUrl} target="_blank" rel="noopener noreferrer">
-          Full ledger (GitHub)
+          Full ledger<LinkIndicator kind="github" />
         </a>
       )}
       <a class="button" href={withBase("/experiments/")}>All experiment lines</a>
@@ -59,7 +60,7 @@ const fullLedgerUrl = line.findingsUrlResolved;
         <p>
           No curated key findings are tagged for this line yet. See the{" "}
           {fullLedgerUrl ? (
-            <a href={fullLedgerUrl} target="_blank" rel="noopener noreferrer">full ledger on GitHub</a>
+            <a href={fullLedgerUrl} target="_blank" rel="noopener noreferrer">full ledger<LinkIndicator kind="github" /></a>
           ) : (
             "full ledger"
           )}

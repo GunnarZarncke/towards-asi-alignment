@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import PathRelationshipDiagram from "../../components/PathRelationshipDiagram.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import { pathHref } from "../../lib/site-urls";
 import { getReadingPaths, type ReadingPathStep } from "../../lib/reading-paths";
 import { resolveSpotlightTarget } from "../../lib/reading-path-spotlight";
@@ -67,8 +68,13 @@ const stepSummary = (steps: ReadingPathStep[]) => {
           <p class="side-panel-meta">{path.steps.length} steps · {stepSummary(path.steps)}</p>
           {path.featuredSpotlight && (
             <p class="side-panel-meta">
-              <a href={resolveSpotlightTarget(path.featuredSpotlight, spotlightContext)}>
+              <a
+                href={resolveSpotlightTarget(path.featuredSpotlight, spotlightContext)}
+                target={path.featuredSpotlight.kind === "demo" ? "_blank" : undefined}
+                rel={path.featuredSpotlight.kind === "demo" ? "noopener noreferrer" : undefined}
+              >
                 Featured: {path.featuredSpotlight.title}
+                {path.featuredSpotlight.kind === "demo" && <LinkIndicator kind="newtab" />}
               </a>
             </p>
           )}

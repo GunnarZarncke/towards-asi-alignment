@@ -1,5 +1,6 @@
 ---
 import { highlightLean } from "../lib/highlight-lean";
+import LinkIndicator from "./LinkIndicator.astro";
 
 interface Props {
   code: string;
@@ -15,7 +16,7 @@ const highlighted = await highlightLean(code);
   <div class="lean-code-header">
     <h2>Lean snippet</h2>
     {sourceFile && sourceUrl && (
-      <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{sourceFile}</a>
+      <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{sourceFile}<LinkIndicator kind="github" /></a>
     )}
   </div>
   <div class="lean-pre" set:html={highlighted} />

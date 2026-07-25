@@ -1,7 +1,9 @@
 ---
 import bibliography from "../data/references-bibliography.json";
 import references from "../data/references.json";
+import LinkIndicator from "./LinkIndicator.astro";
 import { referenceLinksFor } from "../lib/reference-links";
+import { classifyLinkKind } from "../lib/site-urls";
 
 interface Props {
   cardHref: (id: string) => string;
@@ -55,7 +57,7 @@ function refLinks(key: string) {
                 <div class="pub-links side-panel-meta">
                   {refLinks(key).map((pub) => (
                     <>
-                      <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.label}</a>
+                      <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.label}<LinkIndicator kind={classifyLinkKind(pub.url)} /></a>
                       {" "}
                     </>
                   ))}
@@ -91,15 +93,15 @@ function refLinks(key: string) {
                   {entry && <span class="title"> — <em>{entry.title}</em></span>}
                   {refLinks(key).length > 0 && (
                     <div class="pub-links side-panel-meta">
-                      {refLinks(key).map((pub) => (
-                        <>
-                          <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.label}</a>
-                          {" "}
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </li>
+                  {refLinks(key).map((pub) => (
+                    <>
+                      <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.label}<LinkIndicator kind={classifyLinkKind(pub.url)} /></a>
+                      {" "}
+                    </>
+                  ))}
+                </div>
+              )}
+            </li>
               );
             })}
           </ol>

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import ExperimentCoverageTable from "../../components/ExperimentCoverageTable.astro";
 import CardSection from "../../components/CardSection.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import experiments from "../../data/experiments.json";
 import { bookHref, cardHref } from "../../lib/site-urls";
 
@@ -54,10 +55,10 @@ const mbCards = [
     <div class="button-row">
       <a class="button primary" href={cardHref(base, "negative-results")}>Negative results hub</a>
       <a class="button" href={experiments.canonicalDocUrl} target="_blank" rel="noopener noreferrer">
-        Full narrative (EXPERIMENTS.md)
+        Full narrative (EXPERIMENTS.md)<LinkIndicator kind="github" />
       </a>
       <a class="button" href={experiments.openTasksUrl} target="_blank" rel="noopener noreferrer">
-        Open tasks
+        Open tasks<LinkIndicator kind="github" />
       </a>
       <a class="button" href={cardHref(base, "bridge-assumptions")}>Bridge assumptions card</a>
     </div>
@@ -157,7 +158,7 @@ const mbCards = [
           {" · "}
           <a href={withBase(ledger.findingsSitePath)}>Key findings</a>
           {" · "}
-          <a href={ledger.repoUrl} target="_blank" rel="noopener noreferrer">Full ledger (GitHub)</a>
+          <a href={ledger.repoUrl} target="_blank" rel="noopener noreferrer">Full ledger<LinkIndicator kind="github" /></a>
         </li>
       ))}
     </ul>
@@ -184,9 +185,9 @@ const mbCards = [
               </td>
               <td>
                 {line.readmeUrl ? (
-                  <a href={line.readmeUrl} target="_blank" rel="noopener noreferrer">{line.location}</a>
+                  <a href={line.readmeUrl} target="_blank" rel="noopener noreferrer">{line.location}<LinkIndicator kind="github" /></a>
                 ) : line.locationUrl ? (
-                  <a href={line.locationUrl} target="_blank" rel="noopener noreferrer">{line.location}</a>
+                  <a href={line.locationUrl} target="_blank" rel="noopener noreferrer">{line.location}<LinkIndicator kind="github" /></a>
                 ) : (
                   line.location
                 )}

@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import LeanOverviewDiagram from "../../components/LeanOverviewDiagram.astro";
 import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
 import leanSpine from "../../data/lean-spine.json";
@@ -30,7 +31,7 @@ const titleForChapter = (chapterId: string) =>
     <div class="button-row">
       <a class="button primary" href={withBase("/lean/graph/overview/")}>Open overview graph</a>
       <a class="button" href="#overview-diagram">Jump to overview diagram</a>
-      <a class="button" href={`${repoUrl}/AlignmentProofSpine`} target="_blank" rel="noopener noreferrer">View Lean source</a>
+      <a class="button" href={`${repoUrl}/AlignmentProofSpine`} target="_blank" rel="noopener noreferrer">View Lean source<LinkIndicator kind="github" /></a>
       <a class="button" href={bookHref(base, "appB")}>Bridge crosswalk (Appendix B)</a>
     </div>
   </section>
@@ -88,7 +89,7 @@ const titleForChapter = (chapterId: string) =>
           {leanSpine.modules.map((mod) => (
             <tr>
               <td>
-                <a href={`${repoUrl}/${mod.file}`} target="_blank" rel="noopener noreferrer">{mod.title}</a>
+                <a href={`${repoUrl}/${mod.file}`} target="_blank" rel="noopener noreferrer">{mod.title}<LinkIndicator kind="github" /></a>
                 <br /><span class="side-panel-meta"><code>{mod.file}</code></span>
               </td>
               <td>{mod.chapters}</td>
@@ -103,7 +104,7 @@ const titleForChapter = (chapterId: string) =>
     <h2>Try-it-out snippets</h2>
     <p>
       Self-contained finite proofs and counterexamples, pre-linked to
-      <a href="https://live.lean-lang.org/">Lean 4 Web</a>. Add a file under
+      <a href="https://live.lean-lang.org/" target="_blank" rel="noopener noreferrer">Lean 4 Web<LinkIndicator kind="external" /></a>. Add a file under
       <code>formal/playgrounds/</code> and run <code>npm run sync</code> — URLs are generated automatically.
     </p>
     <ul>
@@ -115,7 +116,7 @@ const titleForChapter = (chapterId: string) =>
             pg.title
           )}
           {" · "}
-          <a href={pg.liveUrl} target="_blank" rel="noopener noreferrer">Open in Lean Web</a>
+          <a href={pg.liveUrl} target="_blank" rel="noopener noreferrer">Open in Lean Web<LinkIndicator kind="external" /></a>
         </li>
       ))}
     </ul>

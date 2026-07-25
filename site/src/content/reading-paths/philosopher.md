@@ -93,4 +93,4 @@ You want to know whether the book earns its metaphysics and its pessimism/optimi
 
 ## Related reading
 
-Peter Kuhn, [*Humanism: An Obituary*](https://theanticompletionist.substack.com/p/humanism-an-obituary) (*the·anti·completionist*, Substack, 2025) — pairs naturally with the basin claim (bibliography key `kuhn2025humanism`).
+Peter Kuhn, <a href="https://theanticompletionist.substack.com/p/humanism-an-obituary" target="_blank" rel="noopener noreferrer"><em>Humanism: An Obituary</em><span class="link-indicator link-indicator--external" aria-label="external link" title="External link"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z"/></svg></span></a> (*the·anti·completionist*, Substack, 2025) — pairs naturally with the basin claim (bibliography key `kuhn2025humanism`).

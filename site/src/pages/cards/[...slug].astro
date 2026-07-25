@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
 import Formula from "../../components/Formula.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import BridgeCrosswalkTable from "../../components/BridgeCrosswalkTable.astro";
 import CardSection from "../../components/CardSection.astro";
 import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
@@ -200,7 +201,7 @@ const pageDescription = showFullText
             {referenceLinks.map((link) => (
               <li>
                 <strong>{link.label}:</strong>{" "}
-                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</a>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}<LinkIndicator kind="external" /></a>
               </li>
             ))}
           </ul>
@@ -355,13 +356,23 @@ const pageDescription = showFullText
         <>
           <h3>Lean proof spine</h3>
           <ul>
-            {card.data.leanNodes.map((node) => (
+            {card.data.leanNodes.map((node) => {
+              const isGithubLink = leanSymbolHref(node).startsWith(repoBase);
+              return (
               <li>
-                <a href={leanSymbolHref(node)}><code>{node.nodeId}</code></a>
+                <a
+                  href={leanSymbolHref(node)}
+                  target={isGithubLink ? "_blank" : undefined}
+                  rel={isGithubLink ? "noopener noreferrer" : undefined}
+                >
+                  <code>{node.nodeId}</code>
+                  {isGithubLink && <LinkIndicator kind="github" />}
+                </a>
                 {" "}({node.kind}) &mdash; {node.summary}
                 <br /><span class="side-panel-meta">{node.module}</span>
               </li>
-            ))}
+              );
+            })}
           </ul>
         </>
       )}
@@ -372,7 +383,7 @@ const pageDescription = showFullText
             {card.data.evidenceNotes.map((note) => (
               <li>
                 <strong>{note.finding}</strong> &mdash; {note.summary}
-                <br /><span class="side-panel-meta">{note.source}{note.scenario ? ` / ${note.scenario}` : ""} &middot; <a href={note.resultsPath}>results</a></span>
+                <br /><span class="side-panel-meta">{note.source}{note.scenario ? ` / ${note.scenario}` : ""} &middot; <a href={note.resultsPath} target="_blank" rel="noopener noreferrer">results<LinkIndicator kind="github" /></a></span>
               </li>
             ))}
           </ul>
@@ -389,20 +400,20 @@ const pageDescription = showFullText
               <li>
                 {entry ? (
                   <>
-                    <a href={href}>{entry.title}</a>
+                    <a href={href} target="_blank" rel="noopener noreferrer">{entry.title}<LinkIndicator kind="newtab" /></a>
                     {" · "}
-                    <a href={entry.standaloneUrl} title="Standalone demo server">Standalone</a>
+                    <a href={entry.standaloneUrl} title="Standalone demo server" target="_blank" rel="noopener noreferrer">Standalone<LinkIndicator kind="newtab" /></a>
                     {entry.liveUrl && (
                       <>
                         {" · "}
-                        <a href={entry.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment</a>
+                        <a href={entry.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment<LinkIndicator kind="external" /></a>
                       </>
                     )}
                     {" · "}
                     <a href={withBase(`/demos/#${demo.demoId}`)}>Inventory</a>
                   </>
                 ) : (
-                  <a href={href}>{demo.demoId}</a>
+                  <a href={href} target="_blank" rel="noopener noreferrer">{demo.demoId}<LinkIndicator kind="github" /></a>
                 )}
                 <br /><span class="side-panel-meta">{demo.summary || entry?.summary}</span>
               </li>
@@ -509,7 +520,7 @@ const pageDescription = showFullText
           <h3>External links</h3>
           <ul>
             {externalLinks.map((link) => (
-              <li><a href={link.url}>{link.label}</a></li>
+              <li><a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<LinkIndicator kind={link.url.includes("github.com") ? "github" : "external"} /></a></li>
             ))}
           </ul>
         </>
