@@ -25,4 +25,4 @@ User flagged four confabulated or inconsistent bibliography entries that survive
 - `scripts/apply_bib_patches.py`
 
 ## Commits
-- (none — user did not request commit)
+- `bea0959` Fix confabulated bibliography entries for GSAI, Orseau, and Kuhn.

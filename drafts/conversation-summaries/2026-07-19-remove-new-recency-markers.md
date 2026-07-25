@@ -23,4 +23,4 @@ User asked to remove recently added `[NEW]` tags and surrounding explanatory tex
 - `context/lean_proof_graphs/`
 
 ## Commits
-- (none — user did not request commit)
+- `1b4a3c0` Remove [NEW] recency markers from Lean spine diagrams and Appendix I.

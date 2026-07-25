@@ -16,14 +16,14 @@ User approved ET-1 plan (Orbit collusion configs, non-vendored adapter) and aske
 - No `CODE_VERSION` bump; harness not implemented yet.
 
 ## Open / next
-- ET1-1: `inspect_adapter.py` + golden test.
-- ET1-3 smoke: resolve secret-channel visibility in logs.
+- ET1-3 smoke: 1 baseline + 1 collusion episode with real Orbit + API.
+- ET1-4 full 16-episode battery → GL-86.
 
 ## Key paths
-- `experiments/graded-lab-simulation/PLAN_ET1.md`
-- `experiments/graded-lab-simulation/DESIGN.md` (PLAN ET-1 pre-registration)
-- `experiments/graded-lab-simulation/fixtures/orbit_et1/`
-- `experiments/graded-lab-simulation/external/orbit/PIN.txt`
+- `graded_lab/external/` — adapter + scorer
+- `scripts/run_et1_score_traces.py`, `scripts/run_et1_orbit_battery.sh`
+- `tests/external/`
 
 ## Commits
-- (this session)
+- `2e1d4bc` Freeze ET-1 Orbit external transfer pre-registration (ET1-0).
+- (ET1-1/2 implementation — uncommitted)

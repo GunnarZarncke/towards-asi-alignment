@@ -44,4 +44,4 @@ User shared a hostile critique of the Lean spine (unlabeled anti-capture axiom, 
 
 ## Commits
 
-- None (working tree only; user did not request a commit).
+- `d796bb8` Fix Lean spine anti-capture and safety-case gaps; rederive shutdown/interruptibility field cores.

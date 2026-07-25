@@ -28,4 +28,4 @@ Follow-up to a 2026-07-19/20 hostile-critique thread on `Capability.lean`/`Corre
 - `chapters/ch33-certification-without-construction.tex`, `chapters/ch42-safety-case.tex`, `chapters/ch48-towards-alignment.tex`, `appendices/appG-lean-proof-spine.tex`, `appendices/appD-worked-example.tex`
 
 ## Commits
-- None yet — changes staged for user review, not committed (per repo convention of only committing on explicit request).
+- `1af9fc3f` Rename Risk to RiskGap across Lean spine and manuscript prose.

@@ -24,4 +24,4 @@ Formulas on concept cards (e.g. `/cards/goodhart-as-selector/`, `/cards/certific
 - `site/astro.config.mjs` (remark-math + rehype-katex)
 
 ## Commits
-- (none — user did not request commit)
+- `39015af` Fix concept card math rendering on the companion site.
