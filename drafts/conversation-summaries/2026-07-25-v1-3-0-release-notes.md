@@ -28,4 +28,4 @@ User asked to prepare the next release notes, then revise framing (split Manuscr
 ## Commits
 - `ee5e83ff` Add v1.3.0 release notes.
 - `6cd34dcf` Set v1.3.0 release commit hash in release notes.
-- (this session) Align Commit line to tagged release commit.
+- `bd266441` Align v1.3.0 release commit hash and record session logs.
