@@ -74,15 +74,11 @@ const bridges = byType("bridge");
 const artifacts = byType("artifact");
 const objections = byType("objection");
 const glossary = byType("glossary");
-const releaseHub = cards.find((card) => card.id === "releases-updates");
 const releaseVersions = cards
   .filter((card) => card.data.type === "release" && card.id !== "releases-updates")
   .sort((a, b) => (b.data.releasedAt ?? "").localeCompare(a.data.releasedAt ?? ""))
   .map(toEntry);
-const releases = [
-  ...(releaseHub ? [toEntry(releaseHub)] : []),
-  ...releaseVersions
-];
+const releases = releaseVersions;
 
 const sections = [
   { title: "Chapters", id: "chapters", cards: chapters },
@@ -141,22 +137,3 @@ const totalCards = sections.reduce((sum, section) => sum + section.cards.length,
     </>
   ))}
 </SiteLayout>
-
-<script>
-  for (const button of document.querySelectorAll<HTMLButtonElement>("button.toggle-section")) {
-    button.addEventListener("click", () => {
-      const sectionId = button.dataset.section;
-      if (!sectionId) return;
-      const grid = document.querySelector<HTMLElement>(`.card-section-grid[data-section="${sectionId}"]`);
-      if (!grid) return;
-
-      const expanding = button.dataset.action === "expand";
-      grid.classList.toggle("is-expanded", expanding);
-      button.dataset.action = expanding ? "collapse" : "expand";
-      button.setAttribute("aria-expanded", expanding ? "true" : "false");
-
-      const hidden = button.dataset.hidden || "0";
-      button.textContent = expanding ? "Show less" : `Show ${hidden} more`;
-    });
-  }
-</script>

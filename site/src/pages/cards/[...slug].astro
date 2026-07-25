@@ -42,6 +42,11 @@ export async function getStaticPaths() {
 }
 
 const { card, showFullText = false } = Astro.props;
+
+if (card.id === "releases-updates") {
+  return Astro.redirect(`${import.meta.env.BASE_URL}updates/`, 301);
+}
+
 const allCards = await getCollection("cards");
 const allBookPages = await getCollection("book");
 const isBookUnit = ["chapter", "appendix", "frontmatter"].includes(card.data.type);
@@ -59,7 +64,6 @@ const isReferenceCard = card.data.type === "reference";
 const isExperimentCard = card.data.type === "experiment";
 const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";
-const isReleaseHub = card.id === "releases-updates";
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
 const relatedSlugs = [...new Set([...partGemSlugs, ...card.data.related])];
@@ -197,12 +201,6 @@ const pageDescription = showFullText
           {isReleaseCard && (
             <p class="side-panel-meta">
               <a href={withBase("/updates/")}>All releases (newest first)</a>
-              {!isReleaseHub && (
-                <>
-                  {" · "}
-                  <a href={cardHref("releases-updates")}>Releases hub</a>
-                </>
-              )}
             </p>
           )}
           {isNewsCard && (
