@@ -22,7 +22,7 @@ const FRONTMATTER_FILES = [
   "frontmatter/acknowledgements.tex",
   "frontmatter/preface.tex",
   "frontmatter/introduction.tex",
-  "frontmatter/roadmap.tex",
+  "frontmatter/current-status.tex",
   "frontmatter/executive-overview.tex"
 ];
 
@@ -165,7 +165,6 @@ async function main() {
     "appendices/appI-value-bundle-inference.tex",
     "appendices/appJ-correction-channel-audit.tex",
     "appendices/appK-safety-case-template.tex",
-    "appendices/appL-assumptions.tex",
     "appendices/appN-experimental-evidence.tex"
   ];
 
