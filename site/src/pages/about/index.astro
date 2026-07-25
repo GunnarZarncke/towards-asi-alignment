@@ -6,6 +6,7 @@ import { classifyLinkKind } from "../../lib/site-urls";
 
 const aintelopeUrl = "https://www.aintelope.net/";
 const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
+const calendlyUrl = profile.links.find((link) => link.url.includes("calendly.com"))?.url ?? "https://calendly.com/g-zarncke";
 ---
 
 <SiteLayout title="About the Author" description="About Gunnar Zarncke, author of Towards Superintelligence Alignment.">
@@ -94,6 +95,10 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
     <p>
       <a href={repoUrl} target="_blank" rel="noopener noreferrer">View the book repository on GitHub<LinkIndicator kind="github" /></a>
     </p>
+
+    <h2>Schedule a call</h2>
+    <div class="calendly-inline-widget" data-url={calendlyUrl} style="min-width:320px;height:700px;" />
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async is:inline></script>
   </section>
 </SiteLayout>
 
@@ -121,5 +126,10 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
     padding-left: 1.2rem;
     margin: 0.25rem 0 0;
     font-size: 0.92rem;
+  }
+
+  .calendly-inline-widget {
+    max-width: 100%;
+    margin-top: 0.5rem;
   }
 </style>
