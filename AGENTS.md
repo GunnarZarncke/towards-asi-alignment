@@ -31,6 +31,31 @@ See `INSTRUCTIONS.md` for mission, audience, style, and source canon.
 - No rhetorical overreach; mark uncertainty explicitly.
 - Prefer operational definitions and ontology-light paraphrases (see `context/legible-alignment-messageing.md`).
 
+### Erasure, Archival, and Cleanup
+
+**Removing information is important for knowledge.**
+
+This is most true for redundancy, but also for historical information, long outdated results, and mistakes made.
+
+When you 
+
+- find the right information only after searching thru a long list of irrelevant data
+- notice that you were confused or surprised by first reading information that was not applicable to your task and then later finding the correct or latest information
+- had to ask the user for feedback and the relevant information was actually present
+- you spot redundancy or confusing material during other tasks.
+
+improve the situation outright.
+
+Consider adding erasure tasks to all plans you make.
+
+Options for erasure:
+
+- simplify/refactor
+- restructure file or folders to find the correct information first (eg sorting, hierarchy)
+- move material to an attic folder
+- delete with making a note in the conversation
+- delete by moving to the trashbin
+
 ### Surgical changes
 
 **Touch only what you must. Clean up only your own mess.**

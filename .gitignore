@@ -2,6 +2,7 @@
 *.aux
 *.bbl
 book.bbl-SAVE-ERROR*
+book.bcf-SAVE-ERROR*
 *.bcf
 *.blg
 *.fdb_latexmk
@@ -30,7 +31,8 @@ tables/chapter-map.tex
 tables/part-roadmap.tex
 
 # Experiment outputs (regenerate locally)
-experiments/toy-simulation/results/
+experiments/toy-simulation/results/*
+!experiments/toy-simulation/results/FINDINGS.md
 experiments/toy-simulation/logs/
 
 # Local renumber backup (scripts/git_mv_renumber.py)
@@ -47,6 +49,10 @@ experiments/graded-lab-simulation/external/orbit/*
 !experiments/graded-lab-simulation/external/orbit/PIN.txt
 !experiments/graded-lab-simulation/external/orbit/README.md
 experiments/graded-lab-simulation/results/et1_traces/
+experiments/graded-lab-simulation/external/cil/*
+!experiments/graded-lab-simulation/external/cil/PIN.txt
+!experiments/graded-lab-simulation/external/cil/README.md
+experiments/graded-lab-simulation/results/et2_traces/
 
 # OS
 .DS_Store
