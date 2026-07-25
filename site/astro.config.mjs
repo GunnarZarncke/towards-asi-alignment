@@ -17,6 +17,9 @@ export default defineConfig({
   trailingSlash: "always",
   integrations: [
     sitemap({
+      // Illustration-prompt pages are unlisted and noindex; keep them out of
+      // the sitemap too so they stay reachable only via the chapter link.
+      filter: (page) => !page.includes("/illustrations/"),
       customPages: [`${site}/towards-superintelligence-alignment.pdf`, ...botOrientationPages]
     })
   ],

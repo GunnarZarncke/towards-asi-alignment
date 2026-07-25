@@ -1,0 +1,51 @@
+---
+// Unlisted illustration-prompt pages: one per chapter-opening illustration.
+// Not linked from nav, not in the cards collection, not in the search index,
+// and served with noindex — reachable only via the illustration caption link
+// on the corresponding book chapter page (see tex-convert.mjs convertFigure).
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { bookHref } from "../../lib/site-urls";
+import { webIllustrationPath } from "../../../scripts/lib/tex-convert.mjs";
+
+const FIGURE_BASE = "https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("illustrations");
+  return entries.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const base = import.meta.env.BASE_URL;
+const imageSrc = `${FIGURE_BASE}/${webIllustrationPath(entry.data.image)}`;
+const chapterHref = bookHref(base, entry.data.chapterId);
+---
+
+<SiteLayout title={`Illustration prompt: ${entry.data.title}`} description={`Generation prompt for the ${entry.data.chapterId} chapter-opening illustration, "${entry.data.title}."`} noindex>
+  <article class="two-column">
+    <div class="content-card readable">
+      <p class="side-panel-meta"><a href={chapterHref}>&larr; Back to chapter</a></p>
+      <h1>{entry.data.title}</h1>
+      <figure class="book-figure">
+        <img src={imageSrc} alt={entry.data.alt} />
+      </figure>
+      <Content />
+    </div>
+  </article>
+</SiteLayout>
+
+<style>
+  .book-figure {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
+  .book-figure img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

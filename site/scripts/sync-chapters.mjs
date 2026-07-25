@@ -6,6 +6,7 @@ import {
   convertLatexDocument,
   expandInputs,
   extractChapterMeta,
+  loadIllustrationAlts,
   stripComments
 } from "./lib/tex-convert.mjs";
 import { buildReferencesJson, collectCiteKeys, collectLabelRefs, buildBibIndex, buildBibAliasMap, canonicalCiteKey } from "./lib/bib-index.mjs";
@@ -189,6 +190,7 @@ async function main() {
   const bibIndex = new Map(buildReferencesJson(repoRoot).entries.map((entry) => [entry.key, entry]));
   const aliasMap = buildBibAliasMap(buildBibIndex(repoRoot));
   const cardIndex = buildCardIndex(path.join(siteRoot, "src", "content", "cards"));
+  const illustrationAlts = loadIllustrationAlts(repoRoot);
 
   const outDir = path.join(siteRoot, "src", "content", "book");
   await rm(outDir, { recursive: true, force: true });
@@ -201,6 +203,7 @@ async function main() {
       labelIndex,
       bibIndex,
       cardIndex,
+      illustrationAlts,
       errors,
       footnoteCount: 0
     };

@@ -91,8 +91,24 @@ const book = defineCollection({
   })
 });
 
+// Chapter-opening illustration prompts. Deliberately not part of the `cards`
+// collection: these pages are unlisted (no nav entry, not in the search
+// index, noindex) and reachable only via the illustration caption link on
+// the corresponding book chapter page.
+const illustration = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/illustrations" }),
+  schema: z.object({
+    chapterId: z.string(),
+    title: z.string(),
+    image: z.string(),
+    /** Accessibility alt text derived from the condensed generation spec, not just the title. */
+    alt: z.string()
+  })
+});
+
 export const collections = {
   cards: card,
   "reading-paths": readingPath,
-  book
+  book,
+  illustrations: illustration
 };
