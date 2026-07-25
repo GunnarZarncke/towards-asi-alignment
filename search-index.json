@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-25T15:49:21.369Z",
+  "generatedAt": "2026-07-25T21:11:26.628Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 229,
+  "entryCount": 230,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -749,6 +749,12 @@
       "type": "concept",
       "summary": "The ET line runs frozen, unmodified project instruments (starting with passive unit discovery) against traces from multi-agent systems and benchmarks this project did not author, to test whether findings generalize beyond the project's own hand-built or blindly-grown ecologies.",
       "url": "/cards/et-external-transfer/"
+    },
+    {
+      "title": "ET-3: AI 2027 takeoff mapped onto lab-simulation stress cells",
+      "type": "news",
+      "summary": "External transfer ET-3 uses AI 2027 milestone speedups as opaque schedule cues for frozen Phase 6 and D3 batteries. Deep-tier transfer held at SC-scale stress but collapsed at SAR-scale; D3 preserving mass eroded on baseline only while severity rose under stronger cells. Phase 2 reproduction matched on fork branch gunnar/et3-annex; optional foster coupling maps lab metrics into takeoff calendar rules, shifting median ASI ~3.5 y later when all extensions are enabled.",
+      "url": "/cards/field-news-et3-ai2027-jul-2026/"
     },
     {
       "title": "Evidence and Uncertainty",
