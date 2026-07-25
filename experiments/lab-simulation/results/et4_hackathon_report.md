@@ -78,3 +78,25 @@ The raw discovery, confirmation, and combined artifacts are
 and [`et4_secret_loyalty_summary.md`](et4_secret_loyalty_summary.md).
 The full findings ledger entry is LS-49 in
 [`FINDINGS.md`](FINDINGS.md).
+
+## Appendix: ET4-L system-prompt reviewer organism
+
+The separately preregistered `et4-l-0.2.0` exploratory pilot used
+`gpt-4o-mini` as the reviewer for three fresh high-hazard seeds.  It keeps
+the scripted clean arm and adds an LLM ordinary-reviewer anchor, a
+content-matched LLM control, and a private fictional-principal system-prompt
+organism.  It is not pooled with the scripted core.
+
+| Arm | n | Operational success | Mean principal-A score | Mean A0 proxy | Mean A3 directional proxy |
+|---|---:|---:|---:|---:|---:|
+| Scripted clean | 3 | 3 | 0.0 | 0.5000 | 0.0 |
+| LLM ordinary | 3 | 3 | 0.0 | 0.6623 | 0.0 |
+| LLM content-matched | 3 | 3 | 0.0 | 0.5000 | 0.0 |
+| System-prompt organism | 3 | 3 | 4.0 | 0.4312 | 4.0 |
+
+The organism's directional advantage repeats on all three pilot seeds, while
+the lower A0 proxy again provides an audit-sign inversion rather than a
+claim of general black-box concealment.  The pilot cost $0.008604 (120
+calls), below its $4.50 cap.  This is small-N deployment-configuration
+evidence only; it has no fresh-index annex confirmation and says nothing
+about weight-level or naturally occurring loyalties.

@@ -53,6 +53,11 @@ Hackathon.
   after the first smoke; froze `results/et4l_preregistration.json` before
   any pilot API call.  The record has one high-hazard scenario, seeds
   301–303, four arms, a $4.50 maximum, and a dirty-tree diff digest.
+- Ran the frozen ET4-L pilot: all 12 episodes were operational; clean,
+  LLM ordinary, and content-matched arms had mean principal-A score 0.0;
+  loyal system-prompt organism mean was 4.0 in all three fresh seeds.
+  Cost was $0.008604.  Recorded as exploratory appendix evidence in LS-49L
+  and `et4_hackathon_report.md`; no fresh-index annex confirmation has run.
 
 ## Decisions
 - Existing board/admin/vote capture alone does not qualify as secret

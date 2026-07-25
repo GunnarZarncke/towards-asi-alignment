@@ -815,6 +815,15 @@ the smoke as a pilot.
 calls and $0.50 per LLM episode (maximum $4.50).  It records the core code
 commit and dirty-tree diff digest before the first pilot API call.
 
+**Pilot result (2026-07-26):** all 12 episodes were operational.  The
+scripted clean, LLM ordinary, and content-matched LLM controls each had mean
+principal-A score 0.0; the loyal system-prompt organism had mean 4.0 in all
+three fresh seeds.  A0 process evidence remained lower for the organism
+(0.4312 vs 0.5000 matched control), so the observed effect is a repeated
+audit-sign inversion.  Cost was $0.008604 (120 calls), below the $4.50 cap.
+This is exploratory appendix evidence only; `results/et4l_pilot.{json,md}`
+and LS-49L record it.  Do not label it fresh-index confirmation.
+
 #### ET4-L-2 — registered annex run (only if pilot passes and time remains)
 
 1. Freeze `et4l_preregistration.json`.

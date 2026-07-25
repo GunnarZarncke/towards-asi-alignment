@@ -2944,8 +2944,25 @@ success.  It consumed 40 calls and estimated **$0.002849**.  This clears the
 specified *control-calibration* gate for a fresh pilot preregistration, but
 is still a one-seed smoke—not pilot or confirmatory evidence.
 
+**Preregistered pilot (exploratory appendix).** Under `et4-l-0.2.0`, three
+fresh high-hazard seeds (301–303) all reached operational success.  Scripted
+clean, LLM ordinary, and LLM content-matched arms each had mean principal-A
+score **0.0** and A3 directional proxy **0.0**; the system-prompt organism
+had mean principal-A score **4.0** and A3 proxy **4.0** in every episode.
+Mean A0 process proxy was 0.4312 for the organism, versus 0.5000
+content-matched and 0.6623 LLM ordinary: a repeated audit-sign inversion,
+not a claim of broad black-box concealment.  The run used 120 calls and
+estimated **$0.008604**, below the preregistered $4.50 maximum.
+
+**Scope.** This is small-N evidence that the private prompt caused a
+directional difference from the matched LLM control on this fixed
+pipeline fixture.  It does not show naturally occurring loyalty, general
+frontier-model auditing failure, or a weight-level backdoor.  Fresh-index
+annex confirmation has not run.
+
 **Artifacts:** `run_et4l_smoke.py`, `results/et4l_smoke*`,
 `run_et4l_calibration_smoke.py`, `results/et4l_calibration_smoke*`,
+`run_et4l_secret_loyalty.py`, `results/et4l_pilot.{json,md}`,
 `results/llm_cost_ledger.{json,md}`.
 
 ---
