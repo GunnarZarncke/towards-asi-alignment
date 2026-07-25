@@ -382,3 +382,31 @@ th {
     grid-template-columns: 1fr;
   }
 }
+
+.concept-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--concept-logo-size, 48px);
+  height: var(--concept-logo-size, 48px);
+  color: var(--color-text);
+  flex-shrink: 0;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.concept-logo--inline {
+  --concept-logo-size: 1em;
+  margin-inline-start: 0.15em;
+  vertical-align: -0.12em;
+}
+
+.concept-logo:not(.concept-logo--inline) {
+  margin-inline-start: 0.35rem;
+}
+
+.concept-logo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

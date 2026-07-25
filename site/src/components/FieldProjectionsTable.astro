@@ -1,5 +1,6 @@
 ---
 import Badge from "./Badge.astro";
+import ConceptCardLink from "./ConceptCardLink.astro";
 import fieldProjections from "../data/field-projections.json";
 import fieldProjectionGems from "../data/field-projection-gems.json";
 
@@ -34,7 +35,9 @@ const gemSlugs = new Set(fieldProjectionGems);
         {fieldProjections.map((row) => (
           <tr>
             <td>
-              <a href={cardHref(row.card)}>{row.agenda}</a>
+              <ConceptCardLink href={cardHref(row.card)} slug={row.card}>
+                {row.agenda}
+              </ConceptCardLink>
               {gemSlugs.has(row.card) && <Badge label="gem" variant="gem" />}
             </td>
             <td>{row.headline}</td>

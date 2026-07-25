@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeConceptLinkLogos from "./scripts/lib/rehype-concept-link-logos.mjs";
 
 const site = "https://towards-alignment.com";
 
@@ -35,7 +36,8 @@ export default defineConfig({
             "\\DL": "\\mathrm{DL}"
           }
         }
-      ]
+      ],
+      rehypeConceptLinkLogos
     ]
   }
 });

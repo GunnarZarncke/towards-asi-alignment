@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import ConceptCardLink from "../../components/ConceptCardLink.astro";
 import { cardHref as buildCardHref } from "../../lib/site-urls";
 import glossary from "../../data/glossary.json";
 
@@ -24,7 +25,11 @@ const cardHref = (id: string) => buildCardHref(base, id);
     <dl class="glossary-list">
       {glossary.map((entry) => (
         <div class="glossary-entry">
-          <dt><a href={cardHref(entry.slug)}>{entry.term}</a></dt>
+          <dt>
+            <ConceptCardLink href={cardHref(entry.slug)} slug={entry.slug}>
+              {entry.term}
+            </ConceptCardLink>
+          </dt>
           <dd>{entry.definition}</dd>
         </div>
       ))}

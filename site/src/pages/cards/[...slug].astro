@@ -5,6 +5,7 @@ import Badge from "../../components/Badge.astro";
 import Formula from "../../components/Formula.astro";
 import LinkIndicator from "../../components/LinkIndicator.astro";
 import ConceptLogo from "../../components/ConceptLogo.astro";
+import ConceptCardLink from "../../components/ConceptCardLink.astro";
 import BridgeCrosswalkTable from "../../components/BridgeCrosswalkTable.astro";
 import CardSection from "../../components/CardSection.astro";
 import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
@@ -172,13 +173,12 @@ const pageDescription = showFullText
       </div>
       {!bookEntry ? (
         <>
-          {card.data.type === "concept" && hasConceptLogo(card.id) && (
-            <div class="card-title-row">
+          {card.data.type === "concept" && hasConceptLogo(card.id) ? (
+            <h1>
+              {card.data.title}
               <ConceptLogo slug={card.id} size={72} decorative={false} label={card.data.title} />
-              <h1>{card.data.title}</h1>
-            </div>
-          )}
-          {!(card.data.type === "concept" && hasConceptLogo(card.id)) && (
+            </h1>
+          ) : (
             <h1>{card.data.title}</h1>
           )}
           {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
@@ -459,7 +459,9 @@ const pageDescription = showFullText
               const entry = allCards.find((c) => c.id === slug);
               return (
                 <li>
-                  <a href={cardHref(slug)}>{entry?.data.title ?? slug}</a>
+                  <ConceptCardLink href={cardHref(slug)} slug={slug}>
+                    {entry?.data.title ?? slug}
+                  </ConceptCardLink>
                 </li>
               );
             })}
@@ -470,7 +472,9 @@ const pageDescription = showFullText
               const entry = allCards.find((c) => c.id === slug);
               return (
                 <li>
-                  <a href={cardHref(slug)}>{entry?.data.title ?? slug}</a>
+                  <ConceptCardLink href={cardHref(slug)} slug={slug}>
+                    {entry?.data.title ?? slug}
+                  </ConceptCardLink>
                   {isGem(slug) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
                 </li>
               );
@@ -499,7 +503,9 @@ const pageDescription = showFullText
           <ul>
             {related.map((relatedCard) => (
               <li>
-                <a href={cardHref(relatedCard!.id)}>{relatedCard!.data.title}</a>
+                <ConceptCardLink href={cardHref(relatedCard!.id)} slug={relatedCard!.id}>
+                  {relatedCard!.data.title}
+                </ConceptCardLink>
                 {isGem(relatedCard!.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
               </li>
             ))}
@@ -572,19 +578,6 @@ const pageDescription = showFullText
     </aside>
   </article>
 </SiteLayout>
-
-<style>
-  .card-title-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 0 0 0.75rem;
-  }
-
-  .card-title-row h1 {
-    margin: 0;
-  }
-</style>
 
 {isReferenceCard && (
   <style>

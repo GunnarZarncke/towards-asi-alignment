@@ -1,0 +1,20 @@
+---
+import ConceptLogo from "./ConceptLogo.astro";
+import { hasConceptLogo } from "../lib/concept-logos";
+
+interface Props {
+  href: string;
+  slug: string;
+  /** Fixed px size for headings; omit for inline (line-height) links. */
+  logoSize?: number;
+  class?: string;
+}
+
+const { href, slug, logoSize, class: className } = Astro.props;
+const showLogo = hasConceptLogo(slug);
+---
+
+<a href={href} class:list={[className]}>
+  <slot />
+  {showLogo && <ConceptLogo slug={slug} size={logoSize} inline={logoSize == null} />}
+</a>

@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import ConceptCardLink from "../components/ConceptCardLink.astro";
 import PathRelationshipDiagram from "../components/PathRelationshipDiagram.astro";
 import { pathHref, pdfHref } from "../lib/site-urls";
 import { HOME_DESCRIPTION } from "../lib/seo";
@@ -61,7 +62,11 @@ const failureModes = [
     <div class="grid">
       {failureModes.map(({ title, text, card }) => (
         <article class="card">
-          <h3><a href={withBase(`/cards/${card}/`)}>{title}</a></h3>
+          <h3>
+            <ConceptCardLink href={withBase(`/cards/${card}/`)} slug={card} logoSize={40}>
+              {title}
+            </ConceptCardLink>
+          </h3>
           <p>{text}</p>
         </article>
       ))}
@@ -74,8 +79,12 @@ const failureModes = [
       The book does not claim that alignment is solved. Lean checks conditional structure, not real-world bridge satisfaction. Experiments are sanity checks and falsification harnesses, not frontier-system validation. The PDF remains the canonical long-form artifact.
     </p>
     <p>
-      <a href={withBase("/cards/what-not-claiming/")}>Read the caveat card</a> ·
-      <a href={withBase("/cards/negative-results/")}>Negative results ledgers</a> ·
+      <ConceptCardLink href={withBase("/cards/what-not-claiming/")} slug="what-not-claiming">
+        Read the caveat card
+      </ConceptCardLink> ·
+      <ConceptCardLink href={withBase("/cards/negative-results/")} slug="negative-results">
+        Negative results ledgers
+      </ConceptCardLink> ·
       <a href={withBase("/experiments/")}>Experiment lines and coverage matrix</a>
     </p>
   </section>

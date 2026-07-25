@@ -46,12 +46,14 @@ const gemHref = badgeGemHref(base);
               <Badge label={card.status} variant={card.status} href={badgeStatusHref(base, card.status)} />
               {gemSet.has(card.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
             </div>
-            <div class="card-section-title">
-              {card.type === "concept" && hasConceptLogo(card.id) && (
-                <ConceptLogo slug={card.id} size={40} />
-              )}
-              <h3><a href={cardHref(card.id)}>{card.title}</a></h3>
-            </div>
+            <h3>
+              <a href={cardHref(card.id)}>
+                {card.title}
+                {card.type === "concept" && hasConceptLogo(card.id) && (
+                  <ConceptLogo slug={card.id} size={40} />
+                )}
+              </a>
+            </h3>
             <p>{card.summary}</p>
           </article>
         ))}
@@ -83,18 +85,6 @@ const gemHref = badgeGemHref(base);
 
   .card-section-item.is-collapsed {
     display: none;
-  }
-
-  .card-section-title {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .card-section-title h3 {
-    margin: 0;
-    flex: 1;
-    min-width: 0;
   }
 
   .card-section-grid.is-expanded .card-section-item.is-collapsed {
