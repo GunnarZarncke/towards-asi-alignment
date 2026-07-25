@@ -56,7 +56,7 @@ async function extractKeyFindings(findingsPath) {
   } catch {
     return [];
   }
-  const matches = [...text.matchAll(/\*\*Key finding:\*\*\s*([^\n]+(?:\n(?!\n)[^\n]+)*)/g)];
+  const matches = [...text.matchAll(/^[\t ]*\*\*Key finding:\*\*\s*([^\n]+(?:\n(?!\n)[^\n]+)*)/gm)];
   return matches.map((m) => m[1].replace(/\s+/g, " ").trim());
 }
 

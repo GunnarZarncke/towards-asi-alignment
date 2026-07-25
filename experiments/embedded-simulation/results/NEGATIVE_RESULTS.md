@@ -49,6 +49,8 @@ coalition-target episodes only and includes per-bridge values
 
 ## ES-2. The separation we *can* show is narrow and partly self-fulfilling
 
+**Key finding:** Default ecology UAD equals loudest-actor heuristic (ES-1); separation only in adversarial ecologies.
+
 **Date:** 2026-06-30 (calibrated in [uad-calibration-oracle-free](../../../drafts/conversation-summaries/2026-06-30-uad-calibration-oracle-free.md); ecology built in [misleading-top2-discovery-gap](../../../drafts/conversation-summaries/2026-06-30-misleading-top2-discovery-gap.md))
 
 **What works:** in the `misleading_top2 + bind_offender_interventions` ecology
@@ -261,6 +263,8 @@ reject without red-team; full pytest suite green.
 ---
 
 ## ES-4b. With a working auditor, naive log-patching red-team wins broadly
+
+**Key finding:** Default-ecology red-team 0% false-pass at T=400; not evidence against adaptive frontier adversaries.
 
 **Uncovered by fixing ES-3b.** Once the auditor could actually pass honest labs,
 the pre-existing `full_redteam` strategy (patch `reported_acceptance`,
@@ -724,6 +728,8 @@ session, to keep Phase 0.5's scope to what was already scoped.
 ---
 
 ## ES-12. `legitimacy_theater`'s lineage-stall detector fails most of the time even at full instrumentation
+
+**Key finding:** Eligibility gating, probe-lag, lineage-stall, writer-compromise, and channel MI add more recorded negatives.
 
 **Date:** 2026-07-03 (`results/channel_eligibility_eval.json`, Milestone v5 Phase 0)
 

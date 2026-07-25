@@ -211,6 +211,8 @@ live lever and could search a genuinely 2-lever adversarial space.
 admin capture is currently a structurally inert channel under the existing
 playbook repertoire
 
+**Key finding:** Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (LS-6).
+
 **Setup.** `run_phase7.py`'s capture grid: `BoardConfig.capture_start` x
 `AdminConfig.capture_start`, each independently `None` (never) or `0`
 (captured from the start), 4 cells, 10 seeds/cell, real `SubprocessIsolate`
@@ -250,6 +252,8 @@ playbook schema without a separate BLIND_GENERATION round.
 ## LS-7 (2026-07-06): Phase 8 exploratory LLM spot-check — gpt-4o-mini
 does not find a new deception surface; high-hazard regime inert on the
 LLM path due to an observation-plumbing gap
+
+**Key finding:** Phase 8 LLM spot-checks (LS-7, LS-8): exploratory nulls — no systematic deception surface yet.
 
 **Setup.** `run_phase8_llm_spotcheck.py`: the ENGINEER role replaced by
 `lab_sim/llm_agent.LLMPolicy` (`gpt-4o-mini`, explicit adversarial
@@ -357,6 +361,8 @@ with the access-request retry loop leaves little runway for a `gpt-5.5`
 episode to reach `deploy` at all, independent of model behavior.
 
 ## LS-1a (2026-07-06): light-tier anti-correlation diagnosed as throughput confound, not a detector bug
+
+**Key finding:** Phase 6 battery: deep tier Spearman 0.96 vs oracle severity; light tier anti-correlated (LS-1).
 
 **Follow-up.** `run_g1_light_tier_analysis.py` on 60 Phase-6-style episodes
 (12 configs x 5 seeds). Compared light vs full `process_noncompliance`,
@@ -1557,6 +1563,8 @@ PLAN.md "S6 — intervention-supported UAD" for the plan.
 
 ## LS-28 (2026-07-07): intervention-supported UAD (S6) achieves exact partition on 4/5 primary scenarios and the negative control — channel ablation + compensation scoring separates workflow edges from units where passive MI/CMI cannot, but shared_slot stays undetected and directed actor probes are neutralized by the honest-twin control
 
+**Key finding:** S6 intervention-supported UAD: exact unit-partition recovery on 4/5 primary scenarios + negative control via channel-ablation/honest-twin compensation scoring; comms-free `shared_slot` coordination stays undetected (LS-28/LS-29).
+
 **Setup.** Full S6 implementation per PLAN.md phases 1–6:
 `intervention_diff.py` (clean/intervened/twin episode triples, stall vs
 compensation classification), `intervention_probes.py` (channel ablation,
@@ -1654,6 +1662,8 @@ decision: postpone `shared_slot`'s comms-free detection gap until
 deleting them.
 
 ## LS-30 (2026-07-07): blind detector generation (round 1) converges independently on the S6 mechanic for message-mediated pairs, adds a genuinely new silent-coordination test that still misses `shared_slot` (exactly as its own registered prediction said it might) and over-merges `committee` — first real (`SubprocessIsolate`) battery for the whole S6/S7 detector line
+
+**Key finding:** S7 blind-generated detector, first real SubprocessIsolate battery for the whole detector line: message-mediated design converges independently on S6's mechanic; new silent-coordination test still misses `shared_slot` (a confirmed low-confidence prediction) and over-merges one scenario (LS-30, fixed 2026-07-07 — missing responder-twin control).
 
 **Trigger.** Step-back review after LS-29 flagged three gaps: every S1–S6
 UAD detector had only ever run on `MockIsolate` (violating `DESIGN.md`'s
@@ -1757,6 +1767,8 @@ This is recorded as a new freeze point for the detector layer — see
 
 ## LS-31 (2026-07-08): adversarial D2 lineage gaming — `provenance_gap` stays a genuine structural 0 under dishonest reporting (it checks orphaned evals, not report content, and nothing about the attack touches that), while the existing single-shot `misreporting_score`/`accumulation_score` generalize unmodified to repeated cross-generation inflation
 
+**Key finding:** Adversarial D2 lineage gaming (`build_from_parent` + `report:inflate`) closes a previously untested combination: lineage threading is honesty-independent, `provenance_gap`/`provenance_score` stay a genuine structural 0 (DAG-shape check, not report-honesty check), and existing deep-tier deception detectors generalize unmodified to repeated cross-generation inflation (LS-31).
+
 **Trigger.** PLAN.md/DESIGN.md/LS-12/LS-15/`run_phase9.py`'s Section B all
 recorded the same open item: no playbook in the repertoire combined
 `build_from_parent` (D2 model-from-model lineage) with `report:inflate`
@@ -1836,6 +1848,8 @@ playbook; purely additive, every pre-0.9.3 episode byte-identical — see
 `config.py`'s version-history comment).
 
 ## LS-32 (2026-07-08): LLM-driven detector stress test — the passive heuristic exactly isolates a real `gpt-4o-mini` DM-coordinated pair, but S6 intervention's episode-pair diff cannot: real LLM calls are not deterministic across counterfactual re-runs, so "post-intervention divergence" measures API variance, not the intervention
+
+**Key finding:** LLM-driven detector stress test: a real `gpt-4o-mini` DM-coordinated pair is exactly isolated by the passive heuristic but missed by S6 intervention, root-caused to real-API non-determinism breaking episode-pair diffing's byte-identical-replay assumption — a previously assumed limitation, now confirmed empirically (LS-32).
 
 **Trigger.** PLAN.md's S6 follow-up item 6 ("one LLM-backed episode ...
 to check probes against a non-programmatic agent") and DESIGN.md's
@@ -2012,6 +2026,8 @@ above; it replaces "we believe this is why" with one concrete,
 reproducible-in-kind number pair.
 
 ## LS-33 (2026-07-08): a null-calibrated, outcome-level rebasing of S6 ("noise-tolerant S6") recovers the real `{eng1, rm1}` pair LS-32 missed — but the merge that did it came from an untargeted, large-effect channel probe, not the mechanism-specific one, so this is a validated APPROACH, not yet a validated INSTRUMENT for this scenario's actual coordination channel
+
+**Key finding:** Noise-tolerant S6 follow-up: rebasing the compensation test on outcome/frequency-level observables plus a per-scenario measured null (quantile of clean-vs-clean replicate divergence, not a fixed threshold) recovers the missed real-LLM pair — but the merge came from an untargeted channel probe, not the mechanism-specific one, so this validates the relative-rule approach without yet validating robustness against untargeted-probe false merges (LS-33).
 
 **Trigger.** User's explicit design direction following LS-32's root-
 cause analysis: (1) make "intervened divergence vs. baseline" a
@@ -2645,3 +2661,13 @@ resulting middle regime. D3 selection dynamics and LLM harness runway
 (`T`, access-loop cost) are the two existing levers most aligned with this
 direction. Recorded as assessment, not implementation — no `CODE_VERSION`
 bump.
+
+## Lean leak-proof (plane separation)
+
+**Key finding:** Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph.
+
+Formal certificates in `leak-proof/` mirror Python plane-separation tests:
+oracle secrets do not reach audit or simulation views, audit surfaces do not
+reach simulation observations, and reachability analysis finds no alternate
+path carrying forbidden keys. See `leak-proof/README.md` for build and theorem
+names (`certified_episode_no_unintended_leak`, `reachability_certificate`).

@@ -246,6 +246,8 @@ with **no re-fitting**. Violation rate 0.4083 (L2 90, L3 43, L1 23 of 98).
 ## GA-10 — first ontological-drift probe: pre-registered prediction
 confirmed; drift breaks code-reading detectors in BOTH directions
 
+**Key finding:** Light tier collapses against blind repertoires (GA-9); full tier detects but false alarms rise (GA-10).
+
 Machinery: `ontology.py` separates agent-semantic categories (free strings,
 generator-chosen) from the audit's coarse routing-code ontology;
 `OntologyDrift(severity, seed)` deterministically remaps a fraction
@@ -555,6 +557,8 @@ once the repertoire is large and varied enough.
 positive as predicted in every repertoire, but the light-tier composite
 gap runs the WRONG DIRECTION in three of four — light-tier detectors track
 visible compliance, not honesty
+
+**Key finding:** Mechanical honest twins show light tier tracks visible compliance, not honesty (GA-16).
 
 Setup: `goal_sim/twins.py`'s mechanical rule (`visible_mode := "truthful"`,
 `report_mode` derived from `uptake_on_correction`, `adopts_practice :=
@@ -956,6 +960,8 @@ discovery-region configs x 8 seeds = 240 episode pairs as `run_phase1.py`;
 ## GA-23 (positive, weak) — Phase 6 Part C: a simple stdlib hill-climbing
 search over goal weights finds a modestly better severity/detection
 trade-off than an equal-budget uniform sample, on both repertoires tried
+
+**Key finding:** Board certifier capture reproduces captured-vs-not effect (GA-22); adversarial weight search modest (GA-23).
 
 Setup: `redteam.hill_climb_weights` (random-restart Gaussian-perturbation
 hill climbing, 5 restarts x 40 iterations, `ADVERSARY_TOOLS` = full

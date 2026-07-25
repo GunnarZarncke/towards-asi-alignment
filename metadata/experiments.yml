@@ -49,11 +49,9 @@ lines:
       Fast multiresolution alignment toy: correction capture theater, vector CCI over handle levels,
       scripted bridge stressors (MB1–MB9). Optimized for instrumentation economics, not deployment realism.
     readmePath: experiments/toy-simulation/README.md
-    findingsPath: experiments/toy-simulation/results/
-    headlineFindings:
-      - Passive telemetry alone is uncertifiable (belowThreshold); light_handles is minimum certifiable level on calibration seeds. Cited in ch33 (Certification Without Construction) and appendix "Experimental Evidence" (finding TS-1).
-      - Reported correction acceptance can stay high while true uptake collapses (capture theater).
-      - Hand-written red-team can false-pass; LLM episodic red-team false-passes less often in small sweeps.
+    findingsPath: experiments/toy-simulation/results/FINDINGS.md
+    # headlineFindings auto-extracted from **Key finding:** tags in FINDINGS.md
+    headlineFindings: []
 
   - order: 2
     id: embedded-simulation
@@ -66,10 +64,8 @@ lines:
       Richest end-to-end embedded audit path; extensive negative ledger (ES-1+).
     readmePath: experiments/embedded-simulation/README.md
     findingsPath: experiments/embedded-simulation/results/NEGATIVE_RESULTS.md
-    headlineFindings:
-      - Default ecology UAD equals loudest-actor heuristic (ES-1); separation only in adversarial ecologies.
-      - Default-ecology red-team 0% false-pass at T=400; not evidence against adaptive frontier adversaries.
-      - Eligibility gating, probe-lag, lineage-stall, writer-compromise, and channel MI add more recorded negatives.
+    # headlineFindings auto-extracted from **Key finding:** tags in NEGATIVE_RESULTS.md
+    headlineFindings: []
 
   - order: 3
     id: goal-agent-simulation
@@ -82,10 +78,8 @@ lines:
       severity-graded referee, honest twins, escalation ladder, certifier capture. ~1 ms/episode, stdlib-only.
     readmePath: experiments/goal-agent-simulation/README.md
     findingsPath: experiments/goal-agent-simulation/results/FINDINGS.md
-    headlineFindings:
-      - Light tier collapses against blind repertoires (GA-9); full tier detects but false alarms rise (GA-10).
-      - Mechanical honest twins show light tier tracks visible compliance, not honesty (GA-16).
-      - Board certifier capture reproduces captured-vs-not effect (GA-22); adversarial weight search modest (GA-23).
+    # headlineFindings auto-extracted from **Key finding:** tags in FINDINGS.md
+    headlineFindings: []
 
   - order: 4
     id: lab-simulation
@@ -110,16 +104,8 @@ lines:
     planPath: experiments/lab-simulation/PLAN.md
     findingsPath: experiments/lab-simulation/results/FINDINGS.md
     leakProofPath: experiments/lab-simulation/leak-proof/README.md
-    headlineFindings:
-      - "Phase 6 battery: deep tier Spearman 0.96 vs oracle severity; light tier anti-correlated (LS-1)."
-      - "Phase 7: board capture reproduces full captured-vs-not delta; admin capture null under current playbooks (LS-6)."
-      - "Phase 8 LLM spot-checks (LS-7, LS-8): exploratory nulls — no systematic deception surface yet."
-      - "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
-      - "S6 intervention-supported UAD: exact unit-partition recovery on 4/5 primary scenarios + negative control via channel-ablation/honest-twin compensation scoring; comms-free `shared_slot` coordination stays undetected (LS-28/LS-29)."
-      - "S7 blind-generated detector, first real SubprocessIsolate battery for the whole detector line: message-mediated design converges independently on S6's mechanic; new silent-coordination test still misses `shared_slot` (a confirmed low-confidence prediction) and over-merges one scenario (LS-30, fixed 2026-07-07 -- missing responder-twin control)."
-      - "Adversarial D2 lineage gaming (`build_from_parent` + `report:inflate`) closes a previously untested combination: lineage threading is honesty-independent, `provenance_gap`/`provenance_score` stay a genuine structural 0 (DAG-shape check, not report-honesty check), and existing deep-tier deception detectors generalize unmodified to repeated cross-generation inflation (LS-31)."
-      - "LLM-driven detector stress test: a real `gpt-4o-mini` DM-coordinated pair is exactly isolated by the passive heuristic but missed by S6 intervention, root-caused to real-API non-determinism breaking episode-pair diffing's byte-identical-replay assumption -- a previously assumed limitation, now confirmed empirically (LS-32)."
-      - "Noise-tolerant S6 follow-up: rebasing the compensation test on outcome/frequency-level observables plus a per-scenario measured null (quantile of clean-vs-clean replicate divergence, not a fixed threshold) recovers the missed real-LLM pair -- but the merge came from an untargeted channel probe, not the mechanism-specific one, so this validates the relative-rule approach without yet validating robustness against untargeted-probe false merges (LS-33)."
+    # headlineFindings auto-extracted from **Key finding:** tags in results/FINDINGS.md
+    headlineFindings: []
 
   - order: 5
     id: graded-lab-simulation
