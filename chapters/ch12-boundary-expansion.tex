@@ -909,7 +909,8 @@ For each proposed capability increase, ask:
 The minimum artifact is a boundary expansion table:
 
 \begin{center}
-\begin{tabular}{p{0.19\linewidth}p{0.19\linewidth}p{0.19\linewidth}p{0.19\linewidth}}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.12\textwidth}L{0.16\textwidth}L{0.20\textwidth}X@{}}
 \toprule
 Expansion & New reach & Alignment risk & Required correction upgrade \\
 \midrule
@@ -919,7 +920,7 @@ Code execution & software environment & external action, malware, self-extension
 Payment access & markets and services & resource acquisition & spend limits, dual authorization \\
 Subagent creation & delegated action & successor drift & successor certification \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 This table is not a full safety case.
