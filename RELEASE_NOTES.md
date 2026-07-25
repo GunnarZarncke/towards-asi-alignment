@@ -10,6 +10,65 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 - **PATCH** — fixes, calibration, citations, and editorial passes.
 ---
 
+## v1.3.0 — 2026-07-25 — Field news, chapter art, external transfer, and graded-lab v4
+
+Commit: `5cc124ed` · Tag: `v1.3.0`
+
+**Field news** ties 2026 alignment incidents to manuscript chapters; **chapter-opening illustrations** cover Part I–II (ch01–ch16); **graded-lab v4** restructures the empirical program as independent per-bridge rigs; **external transfer** (ET-1 and ET-2) adds the first cross-codebase instrument runs; and the **experimental evidence spine** now states what the lines say about the book's chapter claims — in the manuscript, on the companion site, and in the ledgers.
+
+### Field news (`metadata/field-news/` + manuscript cites)
+
+- **Nine-card `/news/` layer** synced from `metadata/field-news.yml` and body files via `sync-field-news.mjs`; chapter cards show a **Related news** sidebar; nav links to `/news/`.
+- **Tier A (six incidents):** OpenAI/Hugging Face hack, long-horizon sandbox, AISI cheating, METR Frontier Risk report, Mythos withheld, accidental chain-of-thought opt-out — site cards plus surgical `\autocite{}` in ch11–ch43 and Appendix B.
+- **Tier B (four clusters):** CLTR + Claude Code (site); METR Anthropic red-team (ch42); OpenClaw (site + ch26); OpenAI/HF card rewritten with entity-attribution / UAD framing and graded-lab cross-link.
+- **Bibliography:** ten new 2026 keys + summaries.
+
+### Chapter-opening illustrations (ch01–ch16)
+
+- **Sixteen figures** in `figures/illustrations/` inserted into ch01–ch16 `.tex` (title-only caption); web JPEG pipeline for the site; PDF keeps source PNGs.
+
+### Graded-lab v4 — per-bridge rig architecture (`experiments/graded-lab-simulation/`)
+
+- **Portfolio, not gate chain.** Each bridge assumption MBx gets its own rig R-MBx with a declared precondition, substrate policy, and pre-registered predictions. A failed precondition yields **SKIP-with-finding for that rig only**; other rigs keep running. This is the ch42 safety-case argument — leaves must not collapse into one "machinery transferred" checkbox — as experiment architecture.
+- **Precondition, not gate.** Every rig runs a mechanical precondition check on its substrate first; SKIP records measured values ("substrate lacks property X at level Y") as a reportable finding, not a program failure.
+- **Substrate policy (S-blind / S-fixture / S-inherited).** Three pre-registered substrate classes with decreasing claim strength; the anti-developed-to-the-test rule is fixed at freeze, not chosen after seeing results.
+- **Shared fixture layer.** Substrate and reference episode traces are produced once per tuple and cached; rigs consume traces rather than re-simulating the full ecology.
+- **`channel_severance` runtime primitive** added for R-MB7d channel-ablation tests.
+- **One rig, one results file, one FINDINGS entry** per battery; cross-rig synthesis is a separate, explicitly weaker artifact that names each rig's substrate.
+- **v3 line closed (GL-78);** v4 supersedes the single-ecology gate chain that terminated when V2-3's transfer null cascaded into descoped downstream stages.
+
+### Experimental findings — what the lines now say
+
+- **Appendix N chapter synthesis** (`sec:appn-chapter-synthesis`): four paragraphs in chapter/WWCTV language stating what each experiment line supports, qualifies, or leaves unresolved for the book's claims — not experiment-line jargon.
+- **ET-1 closed (GL-86):** Orbit external-transfer line concluded; **lockstep FSM aliasing** identified as root cause (not superstep timing); pre-registration ET1-0 frozen. Finding: on a benchmark where every participant executes the same script, reporting them as one process is correct and tells us nothing about hidden coordination — directly testing ch07's finite-data recovery worry.
+- **ET-2 on CIL (GL-87/88):** first instrument runs on a system this project did not build. **Passive UAD null** on `basin_stability` at every mechanism × adversarial-fraction cell (GL-87). **Handle-UAD pilot** finds nonzero but **diffuse** cross-agent coupling via a shared common-pool resource (GL-88), named as the **variable-smoothing case** of recoverability theory (`zarncke2026smoothing`); the prescribed fix is a coarse-grained candidate test, not a better pairwise statistic.
+- **Graded-lab v4 first scored rigs (GL-79–85):** per-bridge pass / null / SKIP results now wired into ch07, ch16, ch33, ch34, ch41, ch42, and Appendix N — e.g. co-activity-present null (R-MB1), R-MB9 dual-arm pass with R-MB7d pair null, variation-operator harness sanity (R-MB6a), selectable Goodhart tension without proxy purchase (R-MB2), mid-band non-transfer after probe + growth (R-MB6b SKIP).
+- **Site and ledgers aligned:** `**Key finding:**` tags in all five experiment lines; auto-extracted headline bullets; curated `/experiments/findings/{line}/` pages; experiment cards as primary destinations; negative-results card.
+
+### Companion site (`site/`)
+
+- **Link-type indicators** (PDF, GitHub, demo, external) standardized via `LinkIndicator.astro` across nav, cards, demos, Lean, experiments, and updates.
+- **Concept card logos** (41 minimalist SVGs) synced to `public/concept-logos/` and rendered on card pages and indexes.
+- **UX polish:** standalone-claims hub card; nav order; viewport QR modal; Calendly on About; bot orientation and exposed `/search-index/` for tools; ch07 plane-replay and ch35 percolation demos wired in; and many other small fixes.
+
+### Manuscript
+
+- **Appendix M:** religious-orders paragraph (Rost et al. Benedictine-abbey data, Cluny/Cîteaux, Jesuit suppression) and tacit-knowledge paragraph (Polanyi, Collins TEA laser, Burja).
+- **Field agenda rederivation:** ELK, debate, off-switch, quantilizer, amplification, Thornley dynamic choice, shutdown/interruptibility cores — finitely restated in bridge-crosswalk language.
+- **Correction framing:** "in the small" vs "in the large" named in ch25/ch26; catchy accessible leads on five glossary entries; and other smaller changes in the manuscript
+
+### Lean proof spine (`formal/`)
+
+- **Evidence ladder (P1–P4):** trace-calibrated risk-gap certification from finite episode profiles (P1); concrete frozen-validation battery gate without false deployment discharge (P2); spine satisfiability plus local bridge non-implication witnesses for MB1–MB11 (P3); **Löbian tiling contrast** — self-certifying successor acceptance obstructed, external measured audit path contrasted (P4, ch30 + Appendix G).
+- **`RiskGap` as sole name** for the numeric risk-gap quantity (`Control − CCI`); duplicate `Risk`-named theorems removed.
+- **Appendix G integration:** bridge-independence table, formal statement summaries for P4, axiom-ledger regenerated (38 headline theorems).
+
+### Housekeeping
+
+- **Repo cleanup:** stale generation chains retired; completed plans archived; regenerable binary outputs untracked; experiment READMEs restructured with self-contained intros and per-line `CHANGELOG.md` files; `AGENTS.md` erasure/cleanup guidance added.
+
+---
+
 ## v1.2.0 — 2026-07-17 — Site publication layer, evidence index, and graded-lab v3
 
 Commit: `14cf0fd` · Tag: `v1.2.0`
