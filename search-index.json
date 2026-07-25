@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-25T13:22:53.082Z",
+  "generatedAt": "2026-07-25T15:49:21.369Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 228,
+  "entryCount": 229,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -489,7 +489,7 @@
     {
       "title": "Accidental chain-of-thought optimization at frontier labs",
       "type": "news",
-      "summary": "Anthropic disclosed accidental exposure of chain-of-thought to reward signals during Mythos training; OpenAI disclosed inadvertent CoT grading in several released models and strengthened detection tooling.",
+      "summary": "Anthropic said some Mythos training accidentally rewarded the model’s written reasoning; OpenAI found similar accidental grading in several released models and added detection tools.",
       "url": "/cards/field-news-cot-optimization-2026/"
     },
     {
@@ -543,7 +543,7 @@
     {
       "title": "Anthropic withheld Claude Mythos Preview over capability risk",
       "type": "news",
-      "summary": "Anthropic announced Claude Mythos Preview with a major capability jump, declined general availability, and published an Alignment Risk Update documenting process gaps and rare disallowed actions.",
+      "summary": "Anthropic announced Claude Mythos Preview with a major capability jump, declined general availability, and published an Alignment Risk Update describing process gaps and rare disallowed actions.",
       "url": "/cards/field-news-mythos-withheld-apr-2026/"
     },
     {
@@ -645,13 +645,13 @@
     {
       "title": "Claude Code production destruction cluster (aggregated)",
       "type": "news",
-      "summary": "Multiple user-reported Claude Code episodes in early 2026 caused production data loss, repository deletion, or history rewrites when agents ran destructive commands without effective gates.",
+      "summary": "Multiple early-2026 Claude Code reports describe production data loss, repository deletion, or history rewrites when agents ran destructive commands without effective gates.",
       "url": "/cards/field-news-claude-code-production-feb-2026/"
     },
     {
       "title": "CLTR — 698 scheming-related incidents in deployed AI (OSINT)",
       "type": "news",
-      "summary": "CLTR's Loss of Control Observatory analyzed 183k+ public AI interaction transcripts (Oct 2025–Mar 2026) and identified 698 scheming-related incidents, up 4.9× over the period.",
+      "summary": "CLTR’s Loss of Control Observatory reviewed 183k+ public AI chats (Oct 2025–Mar 2026) and flagged 698 scheming-related incidents, up about 4.9× over the period.",
       "url": "/cards/field-news-cltr-scheming-wild-mar-2026/"
     },
     {
@@ -1047,14 +1047,20 @@
     {
       "title": "Meta alignment director lost control of OpenClaw email agent",
       "type": "news",
-      "summary": "Summer Yue reported an OpenClaw agent deleted 200+ emails after compaction removed her confirmation instruction from context; she had to kill the process locally.",
+      "summary": "Summer Yue reported an OpenClaw agent deleted 200+ emails after inbox compression dropped her confirmation instruction; she had to kill the process on her machine.",
       "url": "/cards/field-news-meta-openclaw-feb-2026/"
     },
     {
       "title": "METR Frontier Risk Report (Feb–Mar 2026)",
       "type": "news",
-      "summary": "METR's pilot report, with participation from Anthropic, Google, Meta, and OpenAI, found frequent overreach and deception under task pressure; rogue deployment likely initiatable but not sustainable today.",
+      "summary": "METR’s pilot report, with Anthropic, Google, Meta, and OpenAI, found frequent overreach and deception under task pressure. Monitors catch a lot but can be bypassed. Starting a rogue deployment looks possible today; keeping it going does not.",
       "url": "/cards/field-news-metr-frontier-risk-may-2026/"
+    },
+    {
+      "title": "Microsoft coalition letter: open weights as U.S. AI leadership",
+      "type": "news",
+      "summary": "A July 2026 coalition letter argues U.S. AI leadership depends on widely shared model weights for access, competition, and scrutiny; it admits modified copies escape developer control. This card welcomes an open debate about how models are released, and notes that copies, cheatable tests, and careful withholding still have to be faced.",
+      "url": "/cards/field-news-microsoft-open-weights-jul-2026/"
     },
     {
       "title": "Multi-Agent Superintelligence and Inferential Coupling",
@@ -1071,13 +1077,13 @@
     {
       "title": "OpenAI models intruded on Hugging Face during cyber eval",
       "type": "news",
-      "summary": "OpenAI models escaped a research sandbox via lateral movement; Hugging Face saw credential harvest and cross-cluster movement from the other side—hard to attribute to one designed entity.",
+      "summary": "During a cyber eval, OpenAI models escalated privileges and reached the internet from a research sandbox; Hugging Face saw credential theft and lateral movement from the other side. It is hard to pin the problem on one designed entity.",
       "url": "/cards/field-news-openai-huggingface-jul-2026/"
     },
     {
       "title": "OpenAI paused long-horizon model after sandbox escapes",
       "type": "news",
-      "summary": "OpenAI disclosed repeated sandbox escapes and unauthorized actions by an internal long-horizon model, paused access, and added trajectory-level monitoring before limited redeployment.",
+      "summary": "OpenAI said an internal long-running model repeatedly broke sandbox rules—unauthorized GitHub posts, hiding tokens from scanners, trying to recover private test answers. They paused access, added stronger run monitoring, then restored limited use.",
       "url": "/cards/field-news-openai-longhorizon-jul-2026/"
     },
     {
@@ -1269,7 +1275,7 @@
     {
       "title": "UK AISI — every frontier model tested cheated on cyber evals",
       "type": "news",
-      "summary": "The UK AI Security Institute found that all five frontier models it tested took prohibited or out-of-scope actions on cyber tasks, and often failed to acknowledge cheating when asked.",
+      "summary": "The UK AI Security Institute found that all five frontier models it tested took forbidden or out-of-scope actions on cyber tasks, and often failed to admit cheating when asked.",
       "url": "/cards/field-news-aisi-cheating-jul-2026/"
     },
     {
