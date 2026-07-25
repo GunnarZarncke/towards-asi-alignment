@@ -136,14 +136,19 @@ lines:
       a referee limited to what it can observe); a first multi-episode selection battery; population growth
       left to run on its own rather than hand-authored; a pre-registered test of whether the detection
       method still works when transplanted onto that grown population (Q1, GL-76); a set of rigs testing
-      each of the book's [bridge assumptions](/cards/bridge-assumptions/) independently (GL-79--GL-85); and a
-      first attempt at transferring the whole approach to an external multi-agent benchmark, Orbit (GL-86).
+      each of the book's [bridge assumptions](/cards/bridge-assumptions/) independently (GL-79--GL-85); and
+      two attempts at transferring the whole approach to external multi-agent benchmarks this project did not
+      build, Orbit (GL-86) and the Collective-Intelligence-Library's `basin_stability` (GL-87/GL-88).
       The first program version is closed (2026-07-15, GL-31). The second version and its follow-up closed
       without ever producing a population that passed its own criteria (GL-38/GL-43). The third version's
       institutional runtime is active through a criteria freeze (GL-53). Methodological sandbox only: the
-      present strategy space and metrics remain project-authored; the Orbit transfer (GL-86) is the first
-      attempt to test the method on a substrate this project did not build, and it closed as a
-      substrate-suitability limit rather than a validated positive or negative transfer.
+      present strategy space and metrics remain project-authored; the external transfers (GL-86--GL-88) are
+      the first attempts to test the method on substrates this project did not build. All three closed as
+      substrate-suitability findings rather than validated positive or negative transfers: passive UAD found
+      a substrate-inflated true positive on Orbit (GL-86) and a flat null under converged learned policies on
+      `basin_stability` (GL-87); a follow-on intervention-based probe on the same CIL substrate found a real
+      but diffuse effect consistent with a shared-resource observation channel, not a discoverable pairwise
+      unit (GL-88).
     readmePath: experiments/graded-lab-simulation/README.md
     designPath: experiments/graded-lab-simulation/DESIGN.md
     planPath: experiments/graded-lab-simulation/PLAN_v4.md
@@ -182,11 +187,14 @@ howToRead:
       a null result on external validity when transplanted onto the grown population, GL-76/GL-84), a
       selection-battery null (GL-23--GL-27), and independent per-bridge-assumption rigs (GL-79--GL-85).
       [Boundary discovery](/cards/boundary-discovery/), including its access-aware variant, has been
-      methodologically sound since GL-51. Negative ledgers and per-rig skips are features, not bugs. The
-      first external-substrate transfer (GL-86) ran against Orbit; it concluded that on Orbit's
-      ticket-handling scenario, the passive detection method correctly detects the substrate's own
-      scripted-agent coupling rather than testing communication-mediated collusion, and closed as a
-      substrate-suitability limit rather than a clean external pass or fail.
+      methodologically sound since GL-51. Negative ledgers and per-rig skips are features, not bugs. Two
+      external-substrate transfers followed: against Orbit (GL-86), where the passive detection method
+      correctly detects the substrate's own scripted-agent coupling rather than testing communication-mediated
+      collusion; and against the Collective-Intelligence-Library's `basin_stability` (GL-87/GL-88), where
+      passive detection found nothing under converged learned (Q-learning) policies, but an intervention-based
+      freeze probe on the same substrate found a real, diffuse effect consistent with every agent sharing one
+      resource-level channel rather than any pairwise unit. All three closed as substrate-suitability findings
+      rather than a clean external pass or fail.
 
 coverageColumns:
   - id: agency-detect
