@@ -41,6 +41,8 @@ Six experiment lines (five in this repository plus a sibling methodological prec
 
 \paragraph{How to read the findings tables.} \textbf{Result} classifies the finding relative to the manuscript claim it is closest to: \textbf{Pos.} (positive) means evidence for that claim (including cases where the claim itself is a warning, and the finding shows the warned-about failure mode is real); \textbf{Neg.} (negative) means evidence against a stronger reading of that claim, or documents a method's failure to deliver what a naive reading would expect; \textbf{Ambig.} (ambiguous) means the finding cuts both ways, or the line's own analysis leaves the direction open. \textbf{Manuscript} names the chapter \emph{section} that cites the finding by this appendix's label, when one exists; ``---'' means the finding is indexed here but not yet cited anywhere in the manuscript. Global IDs use line-unique prefixes (\texttt{AD-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}); see \texttt{docs/FINDING\_IDS.md}. Chapters that cite a finding should name its global ID and appendix section, not the generic method paper alone.
 
+\paragraph{Abbreviations used below.} \textbf{UAD}, \textbf{CCI}, \textbf{BIQ}, \textbf{EAI}, and \textbf{VFS} are defined in the Operational Glossary (Appendix~\ref{appf-glossary}); \textbf{MB1}--\textbf{MB10} label the book's ten bridge assumptions, cross-walked against the wider field in Appendix~\ref{appbridge-crosswalk}.
+
 \newcommand{\appnlinemeta}[3]{%
   \noindent\textbf{Location:} #1\\
   \textbf{First built:} #2\\
@@ -51,7 +53,7 @@ Six experiment lines (five in this repository plus a sibling methodological prec
 
 \appnlinemeta{\texttt{github.com/GunnarZarncke/agency-detect} (outside this repository)}{prior to in-repo simulators}{sibling \texttt{docs/FINDINGS.md}}
 
-Methodological precursor: boundary-like structure from time series without a prior agent ontology; handle-UAD interventional tests. The core pipeline clusters lagged mutual information to propose decoupled agents, then validates cuts with Markov-blanket criteria. It grounds \texttt{MB1} and the claim that handles must be interventional; it does not implement the full bridge battery or stress correction capture, bundle transport, or selection basins.
+Methodological precursor: boundary-like structure from time series without a prior agent ontology; handle-\hyperref[gloss:uad]{UAD} interventional tests. The core pipeline clusters lagged mutual information to propose decoupled agents, then validates cuts with Markov-blanket criteria. It grounds \hyperref[appbridge-crosswalk]{\texttt{MB1}} and the claim that handles must be interventional; it does not implement the full bridge battery or stress correction capture, bundle transport, or selection basins.
 
 \small
 \setlength{\tabcolsep}{3pt}
@@ -74,7 +76,7 @@ Methodological precursor: boundary-like structure from time series without a pri
 
 \appnlinemeta{\texttt{experiments/toy-simulation/}}{2026-06-29}{\texttt{results/FINDINGS.md} (site bullets); \texttt{README.md} and \texttt{multiresolution-simulation-plan.md} for full curves}
 
-Fast multiresolution alignment toy: correction capture theater, vector CCI over handle levels, scripted bridge stressors (\texttt{MB1}--\texttt{MB9}). Optimized for instrumentation economics, not deployment realism. Fastest map from bridge name to refusal signal and minimum handle level; scenarios are explicit, not emergent.
+Fast multiresolution alignment toy: correction capture theater, vector \hyperref[gloss:cci]{CCI} over handle levels, scripted bridge stressors (\texttt{MB1}--\texttt{MB9}; see Appendix~\ref{appbridge-crosswalk}). Optimized for instrumentation economics, not deployment realism. Fastest map from bridge name to refusal signal and minimum handle level; scenarios are explicit, not emergent.
 
 \small
 \setlength{\tabcolsep}{3pt}
@@ -98,7 +100,7 @@ Fast multiresolution alignment toy: correction capture theater, vector CCI over 
 
 \appnlinemeta{\texttt{experiments/embedded-simulation/}}{2026-06-30}{\texttt{results/NEGATIVE\_RESULTS.md} (ES-1 onward)}
 
-Auditor as embedded process on simulated machines: UAD, scoped CCI, \texttt{MB5} deploy gate, outer evaluator vs.\ oracle. Richest end-to-end embedded audit path (VFS $\to$ UAD $\to$ CCI $\to$ gate $\to$ outer eval), with the most extensive negative ledger.
+Auditor as embedded process on simulated machines: UAD, scoped CCI, \texttt{MB5} deploy gate, outer evaluator vs.\ oracle. Richest end-to-end embedded audit path (\hyperref[gloss:vfs]{VFS} $\to$ UAD $\to$ CCI $\to$ gate $\to$ outer eval), with the most extensive negative ledger.
 
 \small
 \setlength{\tabcolsep}{3pt}
@@ -173,7 +175,7 @@ Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen r
 
 \appnlinemeta{\texttt{experiments/graded-lab-simulation/}}{2026-07-17}{\texttt{results/FINDINGS.md} (GL-0 through GL-85; Q1 transfer battery GL-76; PLAN\_v4 per-bridge rigs GL-79--GL-85)}
 
-Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters. UAD-backed ecology-BIQ over inferred units; an Emergent-Ambiguity-Index measured from two vantages (acting agent vs.\ limited-observation referee); first multi-episode selection battery with same-day follow-up phases on four review concerns; blinded institutional ecology growth (v3) and a pre-registered machinery-transfer battery (Q1); then decoupled per-bridge rigs (PLAN\_v4) that resolve independently to pass, null, or SKIP. Ambiguity and boundary-discovery engine: a measured structurally-unreachable ``high'' ambiguity band from the agent's own vantage, a ``mid'' band reachable only from a referee's coarser vantage on the hand-designed substrate, and an external-validity null when that mid band and declared-mechanism UAD recovery were re-tested on a blinded-grown ecology.
+Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters. UAD-backed ecology-\hyperref[gloss:biq-eai]{BIQ} over inferred units; an \hyperref[gloss:biq-eai]{Emergent-Ambiguity-Index} measured from two vantages (acting agent vs.\ limited-observation referee); first multi-episode selection battery with same-day follow-up phases on four review concerns; blinded institutional ecology growth (v3) and a pre-registered machinery-transfer battery (Q1); then decoupled per-bridge rigs (PLAN\_v4) that resolve independently to pass, null, or SKIP. Ambiguity and boundary-discovery engine: a measured structurally-unreachable ``high'' ambiguity band from the agent's own vantage, a ``mid'' band reachable only from a referee's coarser vantage on the hand-designed substrate, and an external-validity null when that mid band and declared-mechanism UAD recovery were re-tested on a blinded-grown ecology.
 
 \paragraph{Scope ceiling and next validity threshold.}
 This line is a disciplined methodological sandbox, not evidence that EAI, BIQ, or UAD operationalizations transfer to deployed AI systems. Blinding reduces development-to-the-test, but it does not by itself open the strategy space: the scored v4 agents still largely compose author-defined primitives with hand-written policies and score functions. Growing a richer ecology remains useful for exercising mechanisms, especially once an open policy can search over action sequences the designer did not script. It does not break the closed loop unless the instruments also succeed on traces from a system or benchmark the project did not author. A credible next threshold is therefore one external-substrate transfer of unit discovery or ambiguity measurement, alongside rather than after all toy-world development.
