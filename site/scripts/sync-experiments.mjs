@@ -116,10 +116,19 @@ function enrichLine(line) {
   };
 }
 
+function bodyWithoutDuplicateSummary(role, summary) {
+  const trimmedRole = role.trim();
+  if (trimmedRole.startsWith(summary)) {
+    const rest = trimmedRole.slice(summary.length).trim();
+    return rest.length > 0 ? rest : trimmedRole;
+  }
+  return trimmedRole;
+}
+
 function experimentCardMarkdown(line, howToReadEntry) {
   const summary = firstSentence(line.role);
   const findings = line.headlineFindings ?? [];
-  const bodyParts = [line.role.trim()];
+  const bodyParts = [bodyWithoutDuplicateSummary(line.role, summary)];
 
   if (findings.length > 0) {
     bodyParts.push("", "## Headline findings", "", ...findings.map((item) => `- ${item}`));

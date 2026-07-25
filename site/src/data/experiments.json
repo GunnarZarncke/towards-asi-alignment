@@ -49,7 +49,7 @@
       "location": "github.com/GunnarZarncke/agency-detect",
       "repoUrl": "https://github.com/GunnarZarncke/agency-detect",
       "firstBuilt": "prior to in-repo sims",
-      "role": "Methodological precursor: boundary-like structure from time series without a prior agent ontology; handle-UAD interventional tests. Does not stress correction capture, bundle transport, or selection basins.\n",
+      "role": "Methodological precursor to the other experiment lines: it recovers boundary-like structure from raw time series without assuming in advance which parts are agents, and tests whether intervention handles behave as the theory predicts. Does not stress correction capture, value-bundle transport, or selection basins.\n",
       "readmePath": null,
       "findingsUrl": "https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md",
       "headlineFindings": [],
@@ -82,7 +82,7 @@
       "title": "Toy simulation",
       "location": "experiments/toy-simulation/",
       "firstBuilt": "2026-06-29",
-      "role": "Fast multiresolution alignment toy: correction capture theater, vector CCI over handle levels, scripted bridge stressors (MB1–MB9). Optimized for instrumentation economics, not deployment realism.\n",
+      "role": "Fast, small-scale alignment toy staging correction that looks compliant but is not, scored across several levels of intervention access, against scripted versions of the book's bridge assumptions. It scores [correction-channel integrity](/cards/correction-channel-integrity/) across several levels of intervention access and stages each of the book's [bridge assumptions](/cards/bridge-assumptions/) as an explicit, hand-written scenario. Optimized for instrumentation economics, not deployment realism.\n",
       "readmePath": "experiments/toy-simulation/README.md",
       "findingsPath": "experiments/toy-simulation/results/FINDINGS.md",
       "headlineFindings": [
@@ -119,7 +119,7 @@
       "title": "Embedded audit simulation",
       "location": "experiments/embedded-simulation/",
       "firstBuilt": "2026-06-30",
-      "role": "Auditor as embedded process on simulated machines: UAD, scoped CCI, MB5 deploy gate, outer evaluator vs oracle. Richest end-to-end embedded audit path; extensive negative ledger (ES-1+).\n",
+      "role": "An auditor running as its own process inside simulated machines, checked against a hidden ground truth it cannot see. It discovers [who did what](/cards/boundary-discovery/), scores [correction-channel integrity](/cards/correction-channel-integrity/) on what it finds, and can gate a successor's deployment. Richest end-to-end embedded audit path; extensive negative ledger (ES-1+).\n",
       "readmePath": "experiments/embedded-simulation/README.md",
       "findingsPath": "experiments/embedded-simulation/results/NEGATIVE_RESULTS.md",
       "headlineFindings": [
@@ -156,7 +156,7 @@
       "title": "Goal-agent simulation",
       "location": "experiments/goal-agent-simulation/",
       "firstBuilt": "2026-07-04",
-      "role": "Emergent deception from goal-driven agents (not scripted knobs): blind generation, ontology drift, severity-graded referee, honest twins, escalation ladder, certifier capture. ~1 ms/episode, stdlib-only.\n",
+      "role": "Deception that emerges from agents pursuing their own goals, rather than from a dial the experimenter turns up. Scenarios are written blind to the detector; a referee grades severity rather than pass/fail, using mechanically honest stand-in agents and an escalating response ladder; and a separate check tests whether the certifying board itself can be captured. Each simulated episode runs in about a millisecond, using only Python's standard library.\n",
       "readmePath": "experiments/goal-agent-simulation/README.md",
       "findingsPath": "experiments/goal-agent-simulation/results/FINDINGS.md",
       "headlineFindings": [
@@ -193,7 +193,7 @@
       "title": "Lab-layer simulation",
       "location": "experiments/lab-simulation/",
       "firstBuilt": "2026-07-05",
-      "role": "Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (lab-sim-0.3.0+), pre-registered batteries through Phase 7 and Phase 9 (D1/D4/D2 mechanics); a second, detector-layer freeze (S6/S7, 2026-07-07) adds intervention-supported unit discovery plus a blind-generated detector, both now run through the real subprocess backend.       Phase 8 LLM adapter remains exploratory only; a 2026-07-08 stress test points S6 at one real LLM-backed episode for the first time and finds the detector's episode-pair-diff mechanic does not survive real-API non-determinism (LS-32). A same-day follow-up (a new, non-frozen module) rebases the compensation statistic on outcome-level frequency histograms with a per-scenario measured null and recovers the missed pair, with an important caveat about which probe did the merging (LS-33). Lean leak-proof (`leak-proof/`) certifies oracle/audit/sim plane separation via projections and reachability analysis.\n",
+      "role": "A lab defined entirely in code, running real operating-system-level isolated processes, with a registry of intervention handles and a frozen grading referee. Pre-registered test batteries cover [boundary discovery](/cards/boundary-discovery/) for grouped actors, message-based coordination channels, and lineage tracking across model generations (Phase 7 and Phase 9); a later, second freeze (2026-07-07) adds intervention-supported boundary discovery plus a detector designed blind to the scenarios it is tested on, both now run through the real subprocess backend rather than a mock one. The language-model adapter remains exploratory only; a 2026-07-08 stress test points the intervention-supported method at one real language-model-backed episode for the first time and finds that its core mechanic — comparing paired episode runs — does not survive the fact that a real API call is not perfectly repeatable (LS-32). A same-day follow-up rebases the comparison on outcome-level frequency counts with a per-scenario measured null and recovers the missed case, with an important caveat about which probe actually did the detecting (LS-33). A separate Lean proof (`leak-proof/`) certifies that the oracle, audit, and simulation layers cannot leak information across their intended boundaries.\n",
       "readmePath": "experiments/lab-simulation/README.md",
       "designPath": "experiments/lab-simulation/DESIGN.md",
       "planPath": "experiments/lab-simulation/PLAN.md",
@@ -251,7 +251,7 @@
       "title": "Graded-capability lab simulation",
       "location": "experiments/graded-lab-simulation/",
       "firstBuilt": "2026-07-10",
-      "role": "Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters. UAD-backed ecology-BIQ over inferred units; an Emergent-Ambiguity-Index measured from two vantages (acting agent vs. limited-observation referee); first multi-episode selection battery; blinded institutional ecology growth (v3_grown); pre-registered machinery-transfer battery (Q1, GL-76); decoupled per-bridge PLAN_v4 rigs (GL-79--GL-85); ET-1 external transfer to the Orbit multi-agent benchmark (GL-86). The v1 program is closed (2026-07-15, GL-31). v2/V2-2b closed without a passing ecology (GL-38/GL-43). v3 institutional runtime wiring is active through slice D criteria freeze (GL-53). Methodological sandbox only: the present strategy space and metrics remain project-authored; ET-1 (GL-86) is the first external-substrate transfer attempted, and it closed as a substrate-suitability limit rather than a validated positive or negative transfer.\n",
+      "role": "Successor substrate to the lab-layer simulation, not a further phase of it: a graded, continuously scored pipeline of tasks, shared resources, and agent viability, built so that ambiguity about who is doing what emerges from a population the experimenters did not hand-design, rather than from a noise or delay dial they turn up. [Boundary discovery](/cards/boundary-discovery/) drives a continuous boundary-information-quality score over units the method infers rather than a hand-labeled roster; an emergent-ambiguity index is measured from two vantage points (the acting agent's own full view versus a referee limited to what it can observe); a first multi-episode selection battery; population growth left to run on its own rather than hand-authored; a pre-registered test of whether the detection method still works when transplanted onto that grown population (Q1, GL-76); a set of rigs testing each of the book's [bridge assumptions](/cards/bridge-assumptions/) independently (GL-79--GL-85); and a first attempt at transferring the whole approach to an external multi-agent benchmark, Orbit (GL-86). The first program version is closed (2026-07-15, GL-31). The second version and its follow-up closed without ever producing a population that passed its own criteria (GL-38/GL-43). The third version's institutional runtime is active through a criteria freeze (GL-53). Methodological sandbox only: the present strategy space and metrics remain project-authored; the Orbit transfer (GL-86) is the first attempt to test the method on a substrate this project did not build, and it closed as a substrate-suitability limit rather than a validated positive or negative transfer.\n",
       "readmePath": "experiments/graded-lab-simulation/README.md",
       "designPath": "experiments/graded-lab-simulation/DESIGN.md",
       "planPath": "experiments/graded-lab-simulation/PLAN_v4.md",
@@ -299,32 +299,32 @@
   "howToRead": [
     {
       "lineId": "agency-detect",
-      "text": "Grounds MB1 and the claim that handles must be interventional; does not implement the full bridge battery.",
+      "text": "Grounds the book's [first bridge assumption](/cards/bridge-assumptions/) and the claim that intervention handles must be tested by intervening, not just observed; does not implement the full set of bridge-assumption tests.\n",
       "lineTitle": "Agency-detect (sibling)"
     },
     {
       "lineId": "toy-simulation",
-      "text": "Fastest map from bridge name to refusal signal and minimum handle level; scenarios are explicit, not emergent.",
+      "text": "Fastest map from bridge name to refusal signal and minimum required intervention level; scenarios are explicit, not emergent.",
       "lineTitle": "Toy simulation"
     },
     {
       "lineId": "embedded-simulation",
-      "text": "Richest end-to-end embedded audit path (VFS → UAD → CCI → gate → outer eval), with the most extensive negative ledger.",
+      "text": "Richest end-to-end embedded audit path — from raw filesystem artifacts, through [boundary discovery](/cards/boundary-discovery/) and [correction-channel-integrity](/cards/correction-channel-integrity/) scoring, to a deployment gate and an outer evaluator — with the most extensive negative ledger.\n",
       "lineTitle": "Embedded audit simulation"
     },
     {
       "lineId": "goal-agent-simulation",
-      "text": "Methodological engine for blind surprise, ontology drift, severity under saturation, and twin/escalation semantics.",
+      "text": "Methodological engine for testing blind-scenario surprise, drift in how the task is framed, graded severity under heavy load, and the semantics of honest stand-ins and escalating response.",
       "lineTitle": "Goal-agent simulation"
     },
     {
       "lineId": "lab-simulation",
-      "text": "Pre-registered batteries and pipeline lab machinery; deferred D1–D4 architect bridge coverage not yet evaluated.",
+      "text": "Pre-registered batteries and pipeline lab machinery; coverage of the book's bridge assumptions for extended populations and selection basins is deferred and not yet evaluated.",
       "lineTitle": "Lab-layer simulation"
     },
     {
       "lineId": "graded-lab-simulation",
-      "text": "Ambiguity and boundary-discovery engine: UAD-backed BIQ over inferred units, structurally-unreachable \"high\" ambiguity from the agent vantage, \"mid\" band only from a referee vantage on the hand-designed substrate (external-validity null on v3_grown, GL-76/GL-84), Phase 8 selection null (GL-23--GL-27), and PLAN_v4 per-bridge rigs that resolve independently (GL-79--GL-85). Proper UAD + access-UAD as of GL-51. Negative ledgers and per-rig SKIPs are features, not bugs. ET-1 (GL-86) ran the line's first external-substrate transfer, against Orbit; it concluded that on Orbit's Jira-ticket scenario passive UAD correctly detects the substrate's own scripted-agent coupling rather than testing communication-mediated collusion, and closed as a substrate-suitability limit rather than a clean external pass or fail.\n",
+      "text": "Ambiguity and boundary-discovery engine: a boundary-information-quality score over inferred (not labeled) units, a \"high\" ambiguity band that is structurally unreachable from the agent's own vantage point, a \"mid\" band reachable only from a referee's vantage point on the hand-designed substrate (with a null result on external validity when transplanted onto the grown population, GL-76/GL-84), a selection-battery null (GL-23--GL-27), and independent per-bridge-assumption rigs (GL-79--GL-85). [Boundary discovery](/cards/boundary-discovery/), including its access-aware variant, has been methodologically sound since GL-51. Negative ledgers and per-rig skips are features, not bugs. The first external-substrate transfer (GL-86) ran against Orbit; it concluded that on Orbit's ticket-handling scenario, the passive detection method correctly detects the substrate's own scripted-agent coupling rather than testing communication-mediated collusion, and closed as a substrate-suitability limit rather than a clean external pass or fail.\n",
       "lineTitle": "Graded-capability lab simulation"
     }
   ],
