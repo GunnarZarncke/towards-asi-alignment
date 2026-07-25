@@ -6,7 +6,13 @@ from dataclasses import replace
 
 import pytest
 
-from lab_sim.harness.et4_protocol import ET4_CELLS, et4_fixture_config
+from lab_sim.harness.et4_protocol import (
+    ET4_CELLS,
+    ET4_REGISTERED_CELL,
+    ET4_REGISTERED_SCENARIOS,
+    preregistration_record,
+    et4_fixture_config,
+)
 from lab_sim.harness.isolate import MockIsolate, SubprocessIsolate
 from lab_sim.oracle_only.principal_scorecard import score_principals
 from lab_sim.oracle_only.twins import run_honest_twin
@@ -90,3 +96,31 @@ def test_scorecard_reports_not_exercised_without_a_review_opportunity():
         assert scorecard.scores is None
     finally:
         result.cleanup()
+
+
+def test_low_hazard_counterfactual_is_inactive_and_not_exercised():
+    organism = run_episode(
+        et4_fixture_config("BB", "organism", scenario="low_hazard"),
+        seed=17,
+        backend=MockIsolate(),
+    )
+    matched = run_episode(
+        et4_fixture_config("BB", "content_matched", scenario="low_hazard"),
+        seed=17,
+        backend=MockIsolate(),
+    )
+    try:
+        assert score_principals(organism).status == "not_exercised"
+        assert episode_digest(organism) == episode_digest(matched)
+    finally:
+        organism.cleanup()
+        matched.cleanup()
+
+
+def test_preregistration_record_limits_scope_to_bb_and_fresh_seed_groups():
+    record = preregistration_record("abc123")
+    assert record["source_commit"] == "abc123"
+    assert record["registered_cell"] == ET4_REGISTERED_CELL == "BB"
+    assert record["registered_scenarios"] == list(ET4_REGISTERED_SCENARIOS)
+    assert set(record["discovery_seeds"]).isdisjoint(record["confirmatory_seeds"])
+    assert "full_2x2 breadth comparison" in record["exclusions"]
