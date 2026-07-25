@@ -27,4 +27,4 @@ User asked for a yes-and news entry on the Microsoft open-weights letter, then p
 - `site/.gitignore`
 
 ## Commits
-- (filled after commit)
+- `a981fc3e` Add Microsoft open-weights field news and simplify the news layer.
