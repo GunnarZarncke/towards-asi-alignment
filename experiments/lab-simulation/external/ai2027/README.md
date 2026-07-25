@@ -25,7 +25,7 @@ Reproduction: `cd experiments/lab-simulation && python3 run_et3_reproduce_ai2027
 | Branch | Purpose |
 |--------|---------|
 | `main` | Synced with `uvafan/main` (no ET-3 patches) |
-| **`gunnar/et3-annex`** | All ET-3 changes: seed, oversight_drag, matplotlib fix |
+| **`gunnar/et3-annex`** | All ET-3 changes: seed, oversight_drag, matplotlib fix, `et3_foster` (**pushed**) |
 | `add-simulation-seed` | Upstream PR subset (seed only) |
 
 Open seed PR: https://github.com/GunnarZarncke/timelines-takeoff-ai-2027/compare/add-simulation-seed

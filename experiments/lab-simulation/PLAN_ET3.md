@@ -2,6 +2,13 @@
 
 **Status:** `et3_protocol_version: et3-0.1.0` — frozen before first ET-3 battery run.
 
+**Status: CONCLUDED 2026-07-26.** Phase 1 (mapped Phase 6 + D3 stress cells), Phase 2
+(reproduction + `oversight_drag` reverse smoke), and foster steps 1–3 with trajectory
+sensitivity plots are complete (LS-42–LS-47). Sibling fork branch **`gunnar/et3-annex`**
+is pushed to `GunnarZarncke/timelines-takeoff-ai-2027`. No further ET-3 batteries are
+planned under this annex. Deferred foster steps 4–5 and optional upstream patches are
+recorded in [`TODO.md`](TODO.md).
+
 **Epistemic split:** AI 2027 answers *when* / *how fast* under declared priors; lab-sim
 answers *which bridge leaves fail under mapped stress*. No claim that lab-sim validates
 or refutes AI 2027 dates.

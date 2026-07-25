@@ -2838,6 +2838,26 @@ without claiming calibrated real-world mapping.
 
 ---
 
+## LS-48 (2026-07-26, ET-3): Line concluded — annex closed after Phase 1–2 and foster sensitivity plots
+
+**Trigger.** Session end: sibling fork **`gunnar/et3-annex`** pushed to
+`GunnarZarncke/timelines-takeoff-ai-2027`; ET-3 deliverables complete under frozen
+protocol `et3-0.1.0`.
+
+**Closed scope.** Adapter + Phase 1 batteries (LS-42–43); reproduction + reverse smoke
+(LS-44–45); foster extensions 1–3 + trajectory comparison (LS-46–47); field-news card
+and companion-site figures.
+
+**Deferred (TODO).** Foster steps 4–5 (timelines priors refresh; graded-lab χ annex);
+optional upstream PRs for `simulation.seed` and `oversight_drag` — see
+[`TODO.md`](../TODO.md).
+
+**Key finding:** ET-3 is closed as a schedule-transfer annex: macro takeoff cues drove
+micro bridge stress tests without calendar-validation claims; optional follow-ups are
+tracked in `TODO.md`, not under this line.
+
+---
+
 ## Lean leak-proof (plane separation)
 
 **Key finding:** Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph.

@@ -111,7 +111,10 @@ lines:
       frequency counts with a per-scenario measured null and recovers the missed case, with an important
       caveat about which probe actually did the detecting (LS-33). A separate Lean proof (`leak-proof/`)
       certifies that the oracle, audit, and simulation layers cannot leak information across their intended
-      boundaries.
+      boundaries. **ET-3** (AI 2027 schedule transfer annex, concluded 2026-07-26): frozen Phase 6 + D3
+      batteries under opaque stress cells (LS-42–43), reproduction + reverse smoke on sibling fork
+      `gunnar/et3-annex` (LS-44–45), optional foster coupling + trajectory plots (LS-46–47); no claim that
+      micro batteries validate macro dates.
     readmePath: experiments/lab-simulation/README.md
     designPath: experiments/lab-simulation/DESIGN.md
     planPath: experiments/lab-simulation/PLAN.md
@@ -187,7 +190,10 @@ howToRead:
   - lineId: goal-agent-simulation
     text: Methodological engine for testing blind-scenario surprise, drift in how the task is framed, graded severity under heavy load, and the semantics of honest stand-ins and escalating response.
   - lineId: lab-simulation
-    text: Pre-registered batteries and pipeline lab machinery; coverage of the book's bridge assumptions for extended populations and selection basins is deferred and not yet evaluated.
+    text: >
+      Pre-registered batteries and pipeline lab machinery; ET-3 (AI 2027 schedule transfer) closed
+      2026-07-26 with LS-42–48. Coverage of the book's bridge assumptions for extended populations and
+      selection basins beyond ET-3 mapping remains deferred.
   - lineId: graded-lab-simulation
     text: >
       Ambiguity and boundary-discovery engine: a boundary-information-quality score over inferred (not

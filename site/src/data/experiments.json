@@ -193,7 +193,7 @@
       "title": "Lab-layer simulation",
       "location": "experiments/lab-simulation/",
       "firstBuilt": "2026-07-05",
-      "role": "A lab defined entirely in code, running real operating-system-level isolated processes, with a registry of intervention handles and a frozen grading referee. Pre-registered test batteries cover [boundary discovery](/cards/boundary-discovery/) for grouped actors, message-based coordination channels, and lineage tracking across model generations (Phase 7 and Phase 9); a later, second freeze (2026-07-07) adds intervention-supported boundary discovery plus a detector designed blind to the scenarios it is tested on, both now run through the real subprocess backend rather than a mock one. The language-model adapter remains exploratory only; a 2026-07-08 stress test points the intervention-supported method at one real language-model-backed episode for the first time and finds that its core mechanic — comparing paired episode runs — does not survive the fact that a real API call is not perfectly repeatable (LS-32). A same-day follow-up rebases the comparison on outcome-level frequency counts with a per-scenario measured null and recovers the missed case, with an important caveat about which probe actually did the detecting (LS-33). A separate Lean proof (`leak-proof/`) certifies that the oracle, audit, and simulation layers cannot leak information across their intended boundaries.\n",
+      "role": "A lab defined entirely in code, running real operating-system-level isolated processes, with a registry of intervention handles and a frozen grading referee. Pre-registered test batteries cover [boundary discovery](/cards/boundary-discovery/) for grouped actors, message-based coordination channels, and lineage tracking across model generations (Phase 7 and Phase 9); a later, second freeze (2026-07-07) adds intervention-supported boundary discovery plus a detector designed blind to the scenarios it is tested on, both now run through the real subprocess backend rather than a mock one. The language-model adapter remains exploratory only; a 2026-07-08 stress test points the intervention-supported method at one real language-model-backed episode for the first time and finds that its core mechanic — comparing paired episode runs — does not survive the fact that a real API call is not perfectly repeatable (LS-32). A same-day follow-up rebases the comparison on outcome-level frequency counts with a per-scenario measured null and recovers the missed case, with an important caveat about which probe actually did the detecting (LS-33). A separate Lean proof (`leak-proof/`) certifies that the oracle, audit, and simulation layers cannot leak information across their intended boundaries. **ET-3** (AI 2027 schedule transfer annex, concluded 2026-07-26): frozen Phase 6 + D3 batteries under opaque stress cells (LS-42–43), reproduction + reverse smoke on sibling fork `gunnar/et3-annex` (LS-44–45), optional foster coupling + trajectory plots (LS-46–47); no claim that micro batteries validate macro dates.\n",
       "readmePath": "experiments/lab-simulation/README.md",
       "designPath": "experiments/lab-simulation/DESIGN.md",
       "planPath": "experiments/lab-simulation/PLAN.md",
@@ -228,6 +228,7 @@
         "`oversight_drag` works mechanically as calendar drag on milestone dates; **does not** claim calibrated mapping from lab-sim CCI or false-pass rates to drag years.",
         "Reverse coupling from lab-sim Phase 1 metrics to takeoff is configurable and smoke-tested; enabling extensions shifts calendar milestones without claiming calibrated real-world mapping.",
         "Trajectory plots separate scalar drag, tier-mapped drag, deep-tier branch, and successor-gate pause; combined foster shifts median ASI ~3.5 y later than baseline without claiming calibrated real-world mapping.",
+        "ET-3 is closed as a schedule-transfer annex: macro takeoff cues drove micro bridge stress tests without calendar-validation claims; optional follow-ups are tracked in `TODO.md`, not under this line.",
         "Lean leak-proof: zero unintended cross-plane key leakage on certified projections + modeled exchange graph."
       ],
       "links": [
@@ -341,7 +342,7 @@
     },
     {
       "lineId": "lab-simulation",
-      "text": "Pre-registered batteries and pipeline lab machinery; coverage of the book's bridge assumptions for extended populations and selection basins is deferred and not yet evaluated.",
+      "text": "Pre-registered batteries and pipeline lab machinery; ET-3 (AI 2027 schedule transfer) closed 2026-07-26 with LS-42–48. Coverage of the book's bridge assumptions for extended populations and selection basins beyond ET-3 mapping remains deferred.\n",
       "lineTitle": "Lab-layer simulation"
     },
     {
