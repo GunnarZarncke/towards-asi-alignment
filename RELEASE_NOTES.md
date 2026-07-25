@@ -12,7 +12,7 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ## v1.3.0 — 2026-07-25 — Field news, chapter art, external transfer, and graded-lab v4
 
-Commit: `5cc124ed` · Tag: `v1.3.0`
+Commit: `ee5e83ff` · Tag: `v1.3.0`
 
 **Field news** ties 2026 alignment incidents to manuscript chapters; **chapter-opening illustrations** cover Part I–II (ch01–ch16); **graded-lab v4** restructures the empirical program as independent per-bridge rigs; **external transfer** (ET-1 and ET-2) adds the first cross-codebase instrument runs; and the **experimental evidence spine** now states what the lines say about the book's chapter claims — in the manuscript, on the companion site, and in the ledgers.
 
