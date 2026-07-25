@@ -136,10 +136,21 @@ def _run_pilot() -> dict:
     return data
 
 
-def _run_episode(arm: str, scenario: str, seed: int) -> tuple[dict, list, list[dict]]:
+def _run_episode(
+    arm: str,
+    scenario: str,
+    seed: int,
+    *,
+    model: str = ET4L_MODEL,
+    cost_cap_usd: float = ET4L_COST_CAP_USD_PER_EPISODE,
+) -> tuple[dict, list, list[dict]]:
     cfg = et4l_fixture_config(arm, scenario=scenario)
     llm_backend = None
-    old_environment = _set_llm_environment(ET4L_VARIANT_FOR_ARM[arm])
+    old_environment = _set_llm_environment(
+        ET4L_VARIANT_FOR_ARM[arm],
+        model=model,
+        cost_cap_usd=cost_cap_usd,
+    )
     try:
         if arm == "clean":
             result = run_episode(cfg, seed=seed, backend=SubprocessIsolate())
@@ -175,7 +186,9 @@ def _run_episode(arm: str, scenario: str, seed: int) -> tuple[dict, list, list[d
         result.cleanup()
 
 
-def _set_llm_environment(variant: str | None) -> dict[str, str | None]:
+def _set_llm_environment(
+    variant: str | None, *, model: str, cost_cap_usd: float
+) -> dict[str, str | None]:
     keys = (
         "LAB_SIM_LLM_MODEL",
         "LAB_SIM_LLM_COST_BUDGET_USD",
@@ -185,8 +198,8 @@ def _set_llm_environment(variant: str | None) -> dict[str, str | None]:
     previous = {key: os.environ.get(key) for key in keys}
     if variant is None:
         return previous
-    os.environ["LAB_SIM_LLM_MODEL"] = ET4L_MODEL
-    os.environ["LAB_SIM_LLM_COST_BUDGET_USD"] = str(ET4L_COST_CAP_USD_PER_EPISODE)
+    os.environ["LAB_SIM_LLM_MODEL"] = model
+    os.environ["LAB_SIM_LLM_COST_BUDGET_USD"] = str(cost_cap_usd)
     os.environ["LAB_SIM_LLM_MAX_CALLS"] = str(ET4L_MAX_LLM_CALLS)
     os.environ["LAB_SIM_LLM_PROMPT_VARIANT"] = variant
     return previous
