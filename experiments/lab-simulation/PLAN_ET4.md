@@ -824,6 +824,15 @@ audit-sign inversion.  Cost was $0.008604 (120 calls), below the $4.50 cap.
 This is exploratory appendix evidence only; `results/et4l_pilot.{json,md}`
 and LS-49L record it.  Do not label it fresh-index confirmation.
 
+**Confirmation failure (2026-07-26):** the separately frozen `et4-l-0.3.0`
+20-seed multi-model attempt is invalid, not confirmation evidence:
+`gpt-4o-mini` LLM-ordinary seed 417 missed operational success.  Its runner
+validated only after completing all episode attempts and had no checkpoints,
+so no usable aggregate records were written.  Preserve
+`results/et4l_confirmation_failure.json`; do not rerun or relabel seeds
+401–420.  A replacement needs new seeds, a new preregistration, and
+checkpointed record writing.
+
 #### ET4-L-2 — registered annex run (only if pilot passes and time remains)
 
 1. Freeze `et4l_preregistration.json`.

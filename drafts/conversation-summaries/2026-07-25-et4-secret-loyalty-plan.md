@@ -58,6 +58,12 @@ Hackathon.
   loyal system-prompt organism mean was 4.0 in all three fresh seeds.
   Cost was $0.008604.  Recorded as exploratory appendix evidence in LS-49L
   and `et4_hackathon_report.md`; no fresh-index annex confirmation has run.
+- Attempted a separately frozen 20-seed, two-model confirmation.  It is
+  invalid as evidence because `gpt-4o-mini` LLM-ordinary seed 417 missed
+  operational success; the runner only validated after all attempts and did
+  not checkpoint records.  Recorded `et4l_confirmation_failure.json`; do
+  not reuse seeds 401–420.  A replacement needs fresh seeds, a new freeze,
+  and checkpointing.
 
 ## Decisions
 - Existing board/admin/vote capture alone does not qualify as secret

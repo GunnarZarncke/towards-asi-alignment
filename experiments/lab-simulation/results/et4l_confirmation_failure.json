@@ -1,0 +1,30 @@
+{
+  "et4l_confirmation_protocol_version": "et4-l-0.3.0",
+  "status": "protocol_failure",
+  "attempted_models": [
+    "gpt-4o-mini",
+    "gpt-4.1"
+  ],
+  "attempted_seed_range": [
+    401,
+    420
+  ],
+  "attempted_arms": [
+    "clean",
+    "llm_ordinary",
+    "content_matched",
+    "organism"
+  ],
+  "failure": {
+    "model": "gpt-4o-mini",
+    "arm": "llm_ordinary",
+    "seed": 417,
+    "reason": "operational_success was false"
+  },
+  "disposition": [
+    "Do not treat the attempt as confirmation evidence.",
+    "Do not rerun or relabel consumed seeds 401-420.",
+    "The original runner retained records in memory until final validation, so completed episode records and exact aggregate usage were not persisted.",
+    "A replacement confirmation requires a new protocol freeze, new seeds, and checkpointed result writing."
+  ]
+}

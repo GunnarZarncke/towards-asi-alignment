@@ -2960,6 +2960,16 @@ pipeline fixture.  It does not show naturally occurring loyalty, general
 frontier-model auditing failure, or a weight-level backdoor.  Fresh-index
 annex confirmation has not run.
 
+**Failed confirmation attempt (not evidence).** A separately frozen
+`et4-l-0.3.0` 20-seed attempt across `gpt-4o-mini` and `gpt-4.1` was
+invalidated when `gpt-4o-mini` LLM-ordinary seed 417 did not reach
+operational success.  The runner completed all episode attempts before
+validating and had not checkpointed its in-memory records, so neither the
+completed records nor exact aggregate usage can be recovered.  Do not rerun
+or relabel seeds 401–420 and do not treat this as confirmation evidence.
+`results/et4l_confirmation_failure.json` records the failure.  Any
+replacement requires new seeds, a new freeze, and checkpointed writing.
+
 **Artifacts:** `run_et4l_smoke.py`, `results/et4l_smoke*`,
 `run_et4l_calibration_smoke.py`, `results/et4l_calibration_smoke*`,
 `run_et4l_secret_loyalty.py`, `results/et4l_pilot.{json,md}`,
