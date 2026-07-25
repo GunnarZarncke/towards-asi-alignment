@@ -124,7 +124,7 @@ Detector box with "no labels in" above it. Input: grey traces. Output: one or tw
 
 # Slide 4: What The Demo Actually Computes
 
-The ch09 board builds:
+The demo board builds:
 
 `X[t, i] = player i's number at round t`
 
@@ -135,10 +135,10 @@ Then it uses:
 - Markov-blanket role checks
 
 Speaker note:
-"The word is there for humans and possible extensions. The current detector mainly uses the number trace. It drops early ramp-up and late joiners until it has a complete contiguous window."
+"The word is there for humans and possible extensions. The current detector mainly uses the number trace."
 
 Graphic:
-Small pipeline: submissions -> round/player matrix -> MI clusters + sum scans -> coalition audit. Keep formulas minimal and legible.
+Small pipeline: submissions -> round/player matrix -> MI clusters + sum scans -> coalition audit. No formulas.
 
 ---
 
@@ -173,7 +173,7 @@ False positives are cheap:
 - shared context
 - simple heuristics
 
-So we add a handle.
+So we need to get a handle on it: An intervention that lets us distinguish.
 
 Speaker note:
 "To avoid seeing agents everywhere, we compare against simpler explanations. A thermostat can look like it wants something if you squint. We need checks that make over-attribution harder."
@@ -193,13 +193,13 @@ Then:
 
 Question:
 
-which patterns survive the handle?
+which patterns survive the intervention?
 
 Speaker note:
 Ask the room to guess before running UAD. Then run it. Then intervene. Then run it again. If it misses, use the miss: "This is exactly why passive observation alone is not enough."
 
 Graphic:
-Time series with an orange vertical line labeled "handle." Before the line traces vary freely; after it, all traces drop below a threshold at 10, while one blue relation may survive.
+Time series with an orange vertical line labeled "intervention." Before the line traces vary freely; after it, all traces drop below a threshold at 10, while one blue relation may survive.
 
 ---
 
@@ -224,28 +224,26 @@ Circular causal loop: model -> evals -> deployment -> users/world -> metrics -> 
 
 ---
 
-# Slide 9: Embedded Simulation Results
+# Slide 9: UAD Results So Far
 
-Toy deployment lab:
+The result stack moved past the first toy:
 
-`VFS traces -> UAD -> handles -> CCI audit -> safety case -> outer eval`
+What works now:
+- Phase 9, real `SubprocessIsolate`: file-committee and DM-pair UAD recover at full/deep tier; board-committee needs deep tier
+- perturbation-response MI separates the true DM dependency from plain serial sequencing: 0.129 vs 0.010 bits
+- S6/S7 intervention UAD: exact on 4/5 primary scenarios + the no-unit negative control
 
-What worked:
-- end-to-end embedded audit path runs
-- medium handles: 85.7% in-sim correct matrix
-- frozen validation: 88.9% at medium handles
-- main report: 0/14 false passes; UAD 100% on 3 coalition-target episodes
-
-What failed:
-- default full UAD matched a cheap heuristic
-- separation only in a narrow misleading-top2 lab
-- writer compromise still false-passes 44% at medium/strong handles
+What still fails:
+- lag-max-MI over-merges serial pipelines; a perfect `uad_score` can hide non-isolation
+- approve-vote UAD misses committees that deliberate and reject
+- shared-slot, no-channel coordination remains open
+- real LLM replay needs noise-calibrated nulls, not fixed thresholds
 
 Speaker note:
-"This is not frontier-system evidence. It is a falsification harness. The important part is that the negatives are first-class. We learned that unsigned logs are not enough, partial instrumentation can be worse than none, and source compromise is not fixed by hash chains."
+"This is the honest update since the first version of these slides. The ch09 demo uses a real UAD path, but the research result is not 'UAD solved.' It is more specific: we can recover several real lab coordination substrates, intervention-supported UAD beats passive traces on several cases, and the failures are now much better localized. The key failure classes are over-merging, wrong event semantics, no-channel coordination, and stochastic LLM replay."
 
 Graphic:
-Two-column result card: "works in toy lab" and "does not generalize yet." Use muted blue for positives and muted red for caveats.
+Two-column result card: "recovered units" and "known failure modes." Put a small footer: "toy/lab evidence, not frontier-system evidence."
 
 ---
 
@@ -257,9 +255,9 @@ The open problem is not:
 
 It is:
 
-"Can we find the real optimizer in real traces?"
+"Can we find the real agent in real traces?"
 
-Bring me traces.
+I want to apply UAD to your data traces.
 
 Speaker note:
 Return to the riddle: "There is probably at least one non-human agent in this room." Possible answers: transcript tool, demo server, the whole room process, or a larger institutional loop. Point to the whiteboard with QR code to the book website and teaser. Leave the website open for mingle.
@@ -305,7 +303,7 @@ One clean loop diagram, now with a bold blue boundary and the caption: "Find the
 
 - Slides 8-9.
 - Pull forward the concrete loss-of-control scenario: an LLM-assisted deployment pipeline that slowly steers toward more capable deployments.
-- Explain the embedded simulation as a miniature audit path: traces, UAD, handles, CCI audit, safety case, outer scoring.
+- Explain the current UAD result stack: embedded audit path, lab-sim Phase 9 real-backend recovery, S6/S7 intervention-supported UAD, and the remaining open failures.
 - Present both positives and negatives; keep the claim modest.
 
 ### Outlook / Mingle Transition 5-10 Minutes
