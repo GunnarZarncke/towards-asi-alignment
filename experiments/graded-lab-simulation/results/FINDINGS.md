@@ -4697,3 +4697,93 @@ transfer attempt would need either a new DCOP scenario with genuinely
 heterogeneous non-coalition control-flow, or a different external
 substrate entirely.
 
+---
+
+### GL-87 — ET-2a: second external-substrate transfer, CIL basin_stability (concluded 2026-07-25)
+
+**Key finding:** ET-2a, second external-substrate transfer (GL-87, concluded
+2026-07-25): frozen passive UAD (unmodified `cmi_edge_matrix`, no threshold
+retuning), applied to per-agent realized-action series from eq-network's
+Collective-Intelligence-Library `basin_stability` experiment (20 Q-learning
+agents, 3 governance mechanisms, adversarial fractions 0.0-0.5, 10 seeds/cell,
+150 episodes total), found **zero significant lag-CMI edges in every single
+episode** — the discovered partition is 20 singletons throughout, giving
+`ari_true=0.0` on all 150 episodes and `P1 holds=False` (0/12 cells). This is
+a null for our instrument on this substrate, not a defect in CIL: the
+underlying action series have genuine variance (not constant), and the null
+is consistent with 200 rounds of Q-learning converging to a low-entropy,
+near-deterministic per-agent policy that likely starves a CMI-based
+statistic of exploitable variance — independent of whether the adversarial
+subgroup is behaviorally distinguishable by some other statistic (that
+question is Leaf B, not yet run). See
+[`PLAN_ET2.md`](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md).
+
+**Trigger.** User request to investigate whether eq-network's
+Collective-Intelligence-Library (a JAX multi-agent simulation platform citing
+the same Kulveit et al. gradual-disempowerment framing as our ch34/MB6) could
+serve as a second, independent external substrate for our frozen UAD
+instrument — motivated by ET-1's (GL-86) conclusion that Orbit's
+`JiraTicketScenario` has no scenario with independent non-coalition
+control-flow to test against, and by CIL's `basin_stability` offering
+genuinely **learned** (Q-learning), non-hand-written-roster agent policies
+under adversarial pressure, closing the gap that ended the graded-lab v1
+program (`results/TERMINAL_SUMMARY.md`).
+
+**Protocol.** `et2-0.1.0` (ET2-0 freeze, 2026-07-23): non-vendored sibling
+checkout of CIL pinned at `25dab1aa5bbd8ca1c19da20eb9f1a9e47cad471c`
+(`external/cil/`); target component `basin_stability` (PDD/PRD/PLD
+mechanisms, N=20 agents, T=200 rounds); Leaf A (UAD, this finding) scored via
+Adjusted Rand Index (Hubert-Arabie, chance-corrected) against a 100-draw
+label-permutation null, pre-registered before any code was written; grid
+3 mechanisms × 5 adversarial fractions (0.1-0.5, `frac=0` excluded from P1)
+× 10 seeds = 150 episodes. Full protocol, architecture, and non-vendoring
+rules: `experiments/graded-lab-simulation/PLAN_ET2.md`.
+
+**Result.** P1 (per-cell ARI-exceeds-null rate ≥ 60%) does not hold in any
+of 12 (mechanism, frac>0) cells — because `ari_true=0.0` on all 150/150
+episodes. Manually verified this is not a silent adapter bug: one inspected
+episode's per-agent action histogram over 200 rounds
+(`{0: 142, 3: 24, 2: 18, 1: 16}`) shows real behavioral variance, not a
+constant/degenerate signal; `node_types` and array shapes matched the
+requested configuration exactly.
+
+**Scoring subtlety surfaced (not a bug, but worth stating precisely).** When
+the discovered partition is all-singletons, Adjusted Rand Index is
+*structurally* exactly `0.0` against any comparison label vector — true or
+permuted — because every row/column pair-count sum is zero. The
+permutation null therefore degenerates to a point mass at `0.0`, so
+`exceeds_null` (strict `>`) can never register `True` in this regime. This
+is ARI correctly reporting "no information," not a defect in the metric or
+an artifact worth reporting upstream to eq-network — CIL's own code and data
+are not implicated; this is entirely a statement about our instrument's
+transfer performance on the realized-action encoding we chose.
+
+**Root cause (plausible, not itself pre-registered as a separate claim).**
+200 rounds of Q-learning converges to a low-entropy, near-deterministic
+per-agent action policy (one dominant action ~70-75% of rounds in the
+episode checked), which likely starves a lag-CMI statistic of the effect
+size it needs at frozen ET-1 default thresholds
+(`min_effect_bits=0.3`, `max_lag=3`), independent of whether the adversarial
+subgroup is "really" distinguishable via some other statistic on this
+substrate.
+
+**Outcome: concluded, reportable null — no threshold retuning applied.**
+Per the ET2-0 pre-registration discipline, thresholds were not retuned to
+chase a hit after seeing this result. A follow-up UAD variant (e.g. scoring
+Q-value or delegation-target vectors instead of realized discrete actions,
+or an entropy-aware pre-filter) would be a new, separately pre-registered
+experiment, not a patch to this one.
+
+**Manuscript harvest.** Not yet folded into ch34; open question (see
+`PLAN_ET2.md` question 4) whether ET-2 results feed ch34 directly or stay
+here pending a later integration pass, matching how GL-25/27/28 were left
+"un-harvested" at v1 closure.
+
+**Artifacts.** `results/et2a_uad_battery.json` (150 episodes),
+`results/et2a_smoke.json` (20-episode smoke, same result at smaller scale).
+
+**Open / next.** Leaf B (ET-2b, selection/capture descriptive cross-check
+against ch34's selection-divergence pattern using CIL's own `capture_rate`/
+`delegation_gini` metrics) has not been run — no runner script exists yet;
+it is independent of this Leaf A null and remains open.
+

@@ -1050,6 +1050,76 @@ decision, not an omission.
 
 ---
 
+## 14. ET-2 follow-ups on CIL — intervention-based (handle) UAD and causal-emergence cross-check
+
+**Status:** *not attempted* — recorded here per GL-87 (ET-2a null) rather
+than left as an unstated gap. Both items below are candidate second
+passes on the same frozen `external/cil/` sibling checkout
+(`25dab1aa5bbd8ca1c19da20eb9f1a9e47cad471c`); neither is required to
+close ET-2 (Leaf A is a reportable null; Leaf B — descriptive
+selection/capture cross-check — is unblocked and does not need either).
+
+**Gap.** GL-87 found that frozen, unmodified passive UAD (lag-CMI over
+realized actions) returns an all-singleton partition on every one of
+150 `basin_stability` episodes. The plausible cause (Q-learning policy
+convergence collapsing per-agent action entropy) is stated but not
+itself tested against an alternative instrument on the same substrate.
+Two candidate alternatives were identified but not run:
+
+1. **Intervention-based ("handle") UAD**, `graded_lab/oracle_only/uad_handles.py`'s
+   `dependency_matrix` / `_pair_is_specific_unit` machinery, ported to CIL.
+   CIL's `basin_stability` is a pure-JAX, seed-deterministic
+   `GraphState → GraphState` pipeline (`run_scan`), which makes a clean
+   freeze-probe cheaper here than in an LLM-agent substrate: force one
+   agent's action to a fixed baseline (e.g. its own previous-tick action,
+   or the population mean action) for a matched re-run at the *same* seed,
+   and diff the other agents' resulting action/harvest trajectories
+   against a repeated-baseline (no-freeze) null — the same measured-not-assumed
+   comparison GL-51/GL-79 established for the graded-lab line. This
+   sidesteps the entropy-collapse problem: dependency is read off an
+   induced *change* under a controlled perturbation, not off ambient
+   correlation in a near-deterministic trajectory, so a converged,
+   low-entropy policy is not automatically signal-free the way it is for
+   lag-CMI.
+2. **CIL's own causal-emergence / effective-information (EI) kernel**
+   (`polycentric_emergence` experiment; Rosas et al. 2020,
+   `\autocite{rosas2020emergence}` in the manuscript bibliography) as a
+   structurally different macro-scale-structure statistic on the same
+   `basin_stability` traces — genuinely passive (no freeze probes needed),
+   but scores coarse-graining quality via effective information rather than
+   lagged mutual information, so it may not inherit the entropy-collapse
+   failure mode either.
+
+**Why not attempted this session.** Both are non-trivial new adapters
+(item 1 needs a CIL-side freeze transform plus a re-run harness
+analogous to `run_episode_triple`; item 2 needs wiring CIL's EI
+machinery, which this project does not otherwise use, into the same
+scoring/reporting shape as `cil_uad_score.py`) rather than a config
+change on existing code, and neither is required to close ET-2's
+pre-registered scope.
+
+**Rough shape (medium, ~1 session each if picked up):**
+
+1. **Handle-UAD port:** new `graded_lab/external/cil_handle_uad.py` —
+   a `program_freeze_probe`-equivalent that composes a modified per-agent
+   policy transform (constant action) into the existing `compile_pipeline`,
+   a `run_episode_triple`-equivalent (baseline / freeze-A / freeze-B),
+   and reuse of `units_from_handle_matrix` for the merge rule. Same
+   ARI-against-permutation-null scoring as ET2-2, so `cil_uad_score.py`'s
+   evaluation harness is reusable once the discovered partition comes from
+   the handle path instead of the passive path.
+2. **EI cross-check:** thin wrapper calling CIL's `polycentric_emergence`
+   EI scorer on the same 150 `basin_stability` traces already recorded
+   for GL-87 (no new episodes needed — same `results/et2_traces/`), report
+   whether EI's macro/micro causal-emergence delta is nonzero where
+   lag-CMI found nothing.
+3. Either result gets its own `GL-9x` entry regardless of outcome — a
+   second null on the same substrate would strengthen (not just repeat)
+   GL-87's signal-poverty diagnosis; a positive result would show which
+   instrument class transfers and which does not, on record.
+
+---
+
 ## 13. All-bridges integration — cross-rig, cross-line synthesis
 
 **Status:** *not started; consumes v4 rig outputs (PLAN_v4 stage V4-8
