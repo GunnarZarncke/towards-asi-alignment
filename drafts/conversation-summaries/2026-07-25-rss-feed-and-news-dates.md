@@ -25,4 +25,4 @@ Add a combined RSS feed for news and releases, an RSS icon in the footer, and fi
 - `site/scripts/sync-field-news.mjs`
 
 ## Commits
-- (none — user did not request commit)
+- `2dc92fd8` Add combined RSS feed and fix pre-release news posting dates.

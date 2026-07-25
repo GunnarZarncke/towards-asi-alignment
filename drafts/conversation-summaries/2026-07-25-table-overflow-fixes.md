@@ -22,4 +22,4 @@ User reported the imported-ontology table on PDF page 17 (Term / Risk / Substitu
 - `metadata/preamble.tex` (`L` column type)
 
 ## Commits
-- (this session)
+- `b91ac2c9` Fix manuscript table overflow on page 17 and related tabular layouts.

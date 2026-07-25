@@ -25,4 +25,4 @@ User reported the “Show 3 more releases” button on `/updates/` did not work,
 - `site/src/pages/cards/index.astro`
 
 ## Commits
-- (this session)
+- `d0f5e008` Fix /updates/ release expand toggle and retire redundant releases hub.
