@@ -66,7 +66,7 @@ export function renderCard(publicFields, bodyFmFields, bodyText) {
   const lines = ["---"];
   const simpleKeys = [
     "title", "type", "status", "summary", "decision", "evidence", "bookPageId",
-    "overviewOnly", "bibKey", "experimentLineId", "releasedAt", "version",
+    "overviewOnly", "bibKey", "experimentLineId", "releasedAt", "eventDate", "version",
     "part", "formalDensity", "claimId"
   ];
   for (const key of simpleKeys) {

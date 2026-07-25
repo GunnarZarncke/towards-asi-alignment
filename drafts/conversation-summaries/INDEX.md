@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-25 | **RSS feed + news posting dates** — combined feed.xml; footer RSS icon; eventDate vs posting date for pre-release news | [2026-07-25-rss-feed-and-news-dates.md](2026-07-25-rss-feed-and-news-dates.md) |
 | 2026-07-25 | **Field news plain language + Microsoft open-weights** — policy card on coalition letter; simpler language across ten cards; linked chapter footers | [2026-07-25-field-news-plain-language.md](2026-07-25-field-news-plain-language.md) |
 | 2026-07-25 | **Table overflow fixes** — ch01 page-17 ontology table; ch12/ch36/ch17 tabular → tabularx; log scan clean | [2026-07-25-table-overflow-fixes.md](2026-07-25-table-overflow-fixes.md) |
 | 2026-07-25 | **Concept logo placement** — logos trail concept names; rehype + ConceptCardLink add 1em inline logos on concept links | [2026-07-25-concept-logo-placement.md](2026-07-25-concept-logo-placement.md) |

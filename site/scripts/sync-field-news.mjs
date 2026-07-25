@@ -15,7 +15,7 @@ const bodiesDir = path.join(metadataDir, "field-news", "bodies");
 const cardsDir = path.join(siteRoot, "src", "content", "cards");
 
 function publicFieldsFor(row) {
-  return {
+  const fields = {
     title: row.title,
     type: "news",
     status: row.status ?? "established",
@@ -24,6 +24,10 @@ function publicFieldsFor(row) {
     bookChapters: row.bookChapters,
     releasedAt: row.date
   };
+  if (row.eventDate && row.eventDate !== row.date) {
+    fields.eventDate = row.eventDate;
+  }
+  return fields;
 }
 
 async function writeJson(filePath, data, check, mismatches) {
@@ -60,6 +64,7 @@ async function main() {
       slug: row.slug,
       card: row.slug,
       date: row.date,
+      eventDate: row.eventDate ?? row.date,
       kind: row.kind,
       title: row.title,
       hook: row.hook,

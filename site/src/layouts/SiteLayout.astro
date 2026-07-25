@@ -13,6 +13,7 @@ import {
   OG_IMAGE_ALT,
   OG_IMAGE_URL,
   SEARCH_INDEX_JSON_URL,
+  FEED_XML_URL,
   SITE_NAME,
   absoluteSiteUrl,
   pageTitle as buildPageTitle,
@@ -67,6 +68,7 @@ const websiteJsonLd = {
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="text/plain" href={LLMS_TXT_URL} title="LLM / agent orientation (llms.txt)" />
     <link rel="alternate" type="application/json" href={SEARCH_INDEX_JSON_URL} title="Site search index" />
+    <link rel="alternate" type="application/rss+xml" href={FEED_XML_URL} title="Updates and field news (RSS)" />
     <title>{pageTitle}</title>
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={metaDescription} />
@@ -121,6 +123,9 @@ const websiteJsonLd = {
             <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues<LinkIndicator kind="github" /></a> ·
             <a href={withBase("/updates/")}>Updates</a> ·
             <a href={withBase("/news/")}>News</a> ·
+            <a href={withBase("/feed.xml")} aria-label="RSS feed (updates and news)" title="RSS feed">
+              RSS<LinkIndicator kind="rss" />
+            </a> ·
             <a href={withBase("/impressum/")}>Impressum</a>
           </p>
         </div>

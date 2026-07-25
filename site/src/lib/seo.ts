@@ -13,6 +13,8 @@ export const LLMS_TXT_PATH = "/llms.txt";
 export const LLMS_TXT_URL = `${SITE_ORIGIN}${LLMS_TXT_PATH}`;
 export const SEARCH_INDEX_JSON_PATH = "/search-index.json";
 export const SEARCH_INDEX_JSON_URL = `${SITE_ORIGIN}${SEARCH_INDEX_JSON_PATH}`;
+export const FEED_XML_PATH = "/feed.xml";
+export const FEED_XML_URL = `${SITE_ORIGIN}${FEED_XML_PATH}`;
 export const SEARCH_INDEX_DOC_PATH = "/search-index/";
 export const SEARCH_INDEX_DOC_URL = `${SITE_ORIGIN}${SEARCH_INDEX_DOC_PATH}`;
 /** Cloudflare Web Analytics beacon token (public; override with PUBLIC_CF_WEB_ANALYTICS_TOKEN). */

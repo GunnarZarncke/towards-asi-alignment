@@ -8,7 +8,9 @@ const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const cardHref = (id: string) => buildCardHref(base, id);
 
-const items = [...fieldNewsIndex].sort((a, b) => b.date.localeCompare(a.date));
+const items = [...fieldNewsIndex].sort((a, b) =>
+  (b.eventDate ?? b.date).localeCompare(a.eventDate ?? a.date)
+);
 
 const kindLabel: Record<string, string> = {
   incident: "Incident",
@@ -37,7 +39,13 @@ const kindLabel: Record<string, string> = {
       {items.map((item) => (
         <li class="news-item">
           <p class="news-meta">
-            <time datetime={item.date}>{item.date}</time>
+            <time datetime={item.eventDate ?? item.date}>{item.eventDate ?? item.date}</time>
+            {item.eventDate && item.eventDate !== item.date && (
+              <>
+                {" · posted "}
+                <time datetime={item.date}>{item.date}</time>
+              </>
+            )}
             {" · "}
             <span>{kindLabel[item.kind] ?? item.kind}</span>
           </p>

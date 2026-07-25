@@ -10,7 +10,8 @@ const botOrientationPages = [
   `${site}/llms.txt`,
   `${site}/llms-full.txt`,
   `${site}/reviewing-for-agents.md`,
-  `${site}/search-index.json`
+  `${site}/search-index.json`,
+  `${site}/feed.xml`
 ];
 
 export default defineConfig({

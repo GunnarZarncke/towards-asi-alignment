@@ -118,6 +118,9 @@ src/content/cards/field-news-claude-code-production-feb-2026.md
 # Generated from concepts + chapters + notation via build-search-index.mjs.
 public/search-index.json
 
+# Generated from field news + release cards via build-feed.mjs.
+public/feed.xml
+
 # Generated from repo-root llms.txt and REVIEWING_FOR_AGENTS.md via sync-bot-orientation.mjs.
 public/llms.txt
 public/llms-full.txt

@@ -8,7 +8,7 @@
  * Internal site cards/pages get no indicator (omit this component).
  */
 interface Props {
-  kind: "pdf" | "github" | "newtab" | "external";
+  kind: "pdf" | "github" | "newtab" | "external" | "rss";
 }
 
 const { kind } = Astro.props;
@@ -50,6 +50,17 @@ const { kind } = Astro.props;
   <span class="link-indicator link-indicator--external" aria-label="external link" title="External link">
     <svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false">
       <path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z" />
+    </svg>
+  </span>
+)}
+
+{kind === "rss" && (
+  <span class="link-indicator link-indicator--rss" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="13" height="13" focusable="false">
+      <path
+        fill="currentColor"
+        d="M2 12.5A1.5 1.5 0 1 0 2 9.5a1.5 1.5 0 0 0 0 3ZM2 5.5v2.2A8.5 8.5 0 0 1 10.7 16.5H13A11.5 11.5 0 0 0 2 5.5Zm0-2.8v2.2A11.3 11.3 0 0 1 13 16.5h2.2A13.5 13.5 0 0 0 2 2.7Z"
+      />
     </svg>
   </span>
 )}

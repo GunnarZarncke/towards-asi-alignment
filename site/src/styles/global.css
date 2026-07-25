@@ -320,7 +320,8 @@ a.badge:hover {
 
 .link-indicator--github svg,
 .link-indicator--newtab svg,
-.link-indicator--external svg {
+.link-indicator--external svg,
+.link-indicator--rss svg {
   opacity: 0.75;
 }
 

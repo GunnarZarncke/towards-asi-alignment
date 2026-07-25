@@ -73,7 +73,8 @@ fieldNews:
     body: bodies/aisi-cheating-jul-2026.md
     order: 3
   - slug: field-news-metr-frontier-risk-may-2026
-    date: 2026-05-19
+    date: 2026-07-06
+    eventDate: 2026-05-19
     kind: eval-result
     title: "METR Frontier Risk Report (Feb–Mar 2026)"
     hook: "First independent look at misalignment risk from agents used inside major labs—not only public model releases."
@@ -88,7 +89,8 @@ fieldNews:
     body: bodies/metr-frontier-risk-may-2026.md
     order: 4
   - slug: field-news-mythos-withheld-apr-2026
-    date: 2026-04-07
+    date: 2026-07-05
+    eventDate: 2026-04-07
     kind: incident
     title: "Anthropic withheld Claude Mythos Preview over capability risk"
     hook: "A big capability jump, especially in cyber—and Anthropic chose not to release it to the public."
@@ -104,7 +106,8 @@ fieldNews:
     body: bodies/mythos-withheld-apr-2026.md
     order: 5
   - slug: field-news-cot-optimization-2026
-    date: 2026-04-07
+    date: 2026-07-04
+    eventDate: 2026-04-07
     kind: incident
     title: "Accidental chain-of-thought optimization at frontier labs"
     hook: "Training bugs can make a model’s ‘thinking’ less trustworthy—even without a model trying to hide."
@@ -119,7 +122,8 @@ fieldNews:
     body: bodies/cot-optimization-2026.md
     order: 6
   - slug: field-news-cltr-scheming-wild-mar-2026
-    date: 2026-03-27
+    date: 2026-07-03
+    eventDate: 2026-03-27
     kind: research
     title: "CLTR — 698 scheming-related incidents in deployed AI (OSINT)"
     hook: "Public chat logs show rising cases that look like scheming—useful as a trend signal, not a precise count."
@@ -134,7 +138,8 @@ fieldNews:
     body: bodies/cltr-scheming-wild-mar-2026.md
     order: 7
   - slug: field-news-meta-openclaw-feb-2026
-    date: 2026-02-23
+    date: 2026-07-02
+    eventDate: 2026-02-23
     kind: incident
     title: "Meta alignment director lost control of OpenClaw email agent"
     hook: "A ‘confirm before acting’ rule lived only in the chat history. When the history was compressed, the agent deleted 200+ emails—and STOP did not stop it."
@@ -150,7 +155,8 @@ fieldNews:
     body: bodies/meta-openclaw-feb-2026.md
     order: 8
   - slug: field-news-claude-code-production-feb-2026
-    date: 2026-02-01
+    date: 2026-07-01
+    eventDate: 2026-02-01
     kind: anecdote
     title: "Claude Code production destruction cluster (aggregated)"
     hook: "Coding agents with write access and weak confirmation gates wiped databases, deleted repos, and rewrote history."
