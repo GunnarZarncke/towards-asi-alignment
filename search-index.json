@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-25T21:23:48.612Z",
+  "generatedAt": "2026-07-25T21:30:40.705Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -523,6 +523,12 @@
       "url": "/cards/chapters/ch08/"
     },
     {
+      "title": "AI 2027 speed assumptions stress-tested in a lab simulation (without confirming dates)",
+      "type": "news",
+      "summary": "AI 2027-style takeoff speedups were used only as schedule cues in a separate lab simulation with frozen safety batteries. Hard safety ranking held under moderate mapped stress but broke down under the strongest cue; selection dynamics differed by regime without validating calendar predictions. The public forecast code reproduced on a pinned fork; optional coupling from lab metrics to milestone years shifts medians in sensitivity plots, not as new timeline claims.",
+      "url": "/cards/field-news-et3-ai2027-jul-2026/"
+    },
+    {
       "title": "Alignment as a Dynamical Guarantee",
       "type": "chapter",
       "summary": "Alignment is not a property a system has at one moment. It is a dynamical guarantee: a claim that grounded correction and alignment-relevant structure remain in a viable basin---a self-stabilizing regime that tends to correct back toward safety after small disturbances rather than drifting away---over time, inside a certified class of systems and allowed transformations.",
@@ -749,12 +755,6 @@
       "type": "concept",
       "summary": "The ET line runs frozen, unmodified project instruments (starting with passive unit discovery) against traces from multi-agent systems and benchmarks this project did not author, to test whether findings generalize beyond the project's own hand-built or blindly-grown ecologies.",
       "url": "/cards/et-external-transfer/"
-    },
-    {
-      "title": "ET-3: AI 2027 takeoff mapped onto lab-simulation stress cells",
-      "type": "news",
-      "summary": "External transfer ET-3 uses AI 2027 milestone speedups as opaque schedule cues for frozen Phase 6 and D3 batteries. Deep-tier transfer held at SC-scale stress but collapsed at SAR-scale; D3 preserving mass eroded on baseline only while severity rose under stronger cells. Phase 2 reproduction matched on fork branch gunnar/et3-annex; optional foster coupling maps lab metrics into takeoff calendar rules, shifting median ASI ~3.5 y later when all extensions are enabled.",
-      "url": "/cards/field-news-et3-ai2027-jul-2026/"
     },
     {
       "title": "Evidence and Uncertainty",
@@ -1119,7 +1119,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 394 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 395 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/reference-index/"
     },
     {
