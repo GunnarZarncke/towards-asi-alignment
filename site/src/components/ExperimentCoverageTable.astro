@@ -13,12 +13,32 @@ interface CoverageFeature {
 interface Props {
   columns: CoverageColumn[];
   features: CoverageFeature[];
+  cardHref?: (slug: string) => string;
 }
 
-const { columns, features } = Astro.props;
+const { columns, features, cardHref } = Astro.props;
+
+const MB_FEATURE_CARDS: Record<string, string> = {
+  mb1: "mb1-boundary-estimator-soundness",
+  mb2: "mb2-bundle-identifiability",
+  mb3: "mb3-bearer-import",
+  mb4: "mb4-correction-legitimacy",
+  mb5: "mb5-successor-ontology-shift",
+  mb6: "mb6-selection-and-basin-stability",
+  mb7: "mb7-hidden-capability-and-access",
+  mb7d: "mb7-hidden-capability-and-access",
+  mb8: "mb8-cev-process-convergence",
+  mb9: "mb9-grounding-certificate",
+  mb10: "mb10-successor-forgeability"
+};
 
 function cellText(value: string) {
   return value.replace(/`/g, "");
+}
+
+function featureCardHref(featureId: string) {
+  const slug = MB_FEATURE_CARDS[featureId];
+  return slug && cardHref ? cardHref(slug) : null;
 }
 ---
 
@@ -39,15 +59,20 @@ function cellText(value: string) {
         </tr>
       </thead>
       <tbody>
-        {features.map((feature) => (
+        {features.map((feature) => {
+          const href = featureCardHref(feature.id);
+          return (
           <tr>
-            <th scope="row">{feature.label}</th>
+            <th scope="row">
+              {href ? <a href={href}>{feature.label}</a> : feature.label}
+            </th>
             {columns.map((col) => {
               const value = feature.cells[col.id] ?? "—";
               return <td>{cellText(value)}</td>;
             })}
           </tr>
-        ))}
+          );
+        })}
       </tbody>
     </table>
   </div>

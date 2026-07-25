@@ -30,18 +30,6 @@ const experimentCards = cards
     status: card.data.status
   }));
 
-const mbCards = [
-  ["mb1-boundary-estimator-soundness", "MB1"],
-  ["mb2-bundle-identifiability", "MB2"],
-  ["mb3-bearer-import", "MB3"],
-  ["mb4-correction-legitimacy", "MB4"],
-  ["mb5-successor-ontology-shift", "MB5"],
-  ["mb6-selection-and-basin-stability", "MB6"],
-  ["mb7-hidden-capability-and-access", "MB7"],
-  ["mb8-cev-process-convergence", "MB8"],
-  ["mb9-grounding-certificate", "MB9"],
-  ["mb10-successor-forgeability", "MB10"]
-];
 ---
 
 <SiteLayout
@@ -203,6 +191,7 @@ const mbCards = [
   <ExperimentCoverageTable
     columns={experiments.coverageColumns}
     features={experiments.coverageFeatures}
+    cardHref={(slug) => cardHref(base, slug)}
   />
 
   <section class="readable">
@@ -221,19 +210,12 @@ const mbCards = [
   </section>
 
   <section class="readable">
-    <h2>Bridge cards</h2>
-    <p>
-      Each MB bridge card links experiment evidence where it exists. Lean checks conditional structure;
-      experiments bound what the manuscript may claim about real systems.
-    </p>
-    <ul>
-      {mbCards.map(([slug, label]) => (
-        <li><a href={cardHref(base, slug)}>{label}</a></li>
-      ))}
-    </ul>
-    <p>
-      <a href={withBase("/lean/")}>Lean proof spine</a> ·
-      <a href={cardHref(base, "bridge-assumptions")}> Bridge assumptions</a>
+    <p class="side-panel-meta">
+      MB rows in the coverage table link to bridge cards.
+      {" "}
+      <a href={withBase("/lean/")}>Lean proof spine</a>
+      {" · "}
+      <a href={cardHref(base, "bridge-assumptions")}>Bridge assumptions</a>
     </p>
   </section>
 </SiteLayout>

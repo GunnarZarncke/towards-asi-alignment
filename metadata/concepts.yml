@@ -569,6 +569,17 @@ concepts:
     glossaryTerms:
       - term: Correction-capacity assumption
         definition: 'Society retains enough institutional, epistemic, and practical capacity at $t_0$ to notice, evaluate, and constrain frontier systems: $C_{\text{corr}}^{\text{society}}(t_0) > \theta$.'
+  - slug: standalone-claims
+    kind: concept
+    title: Standalone claims
+    status: established
+    summary: Four extractable claims from the manuscript — each citable without the full book argument.
+    body: bodies/standalone-claims.md
+    related:
+      - anti-capture-correction-validity
+      - bearer-map-commutation-failure
+      - certification-under-manipulation
+      - goodhart-as-selector
   - slug: static-target-trap
     kind: objection
     title: The Static Target Trap
