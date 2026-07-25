@@ -34,6 +34,11 @@ tables/part-roadmap.tex
 experiments/toy-simulation/results/*
 !experiments/toy-simulation/results/FINDINGS.md
 experiments/toy-simulation/logs/
+experiments/embedded-simulation/results/*.json
+experiments/embedded-simulation/results/*.jsonl
+
+# Generated images (regenerate from .dot sources; see scripts/render_lean_graphs.sh)
+context/lean_proof_dependency_graph.png
 
 # Local renumber backup (scripts/git_mv_renumber.py)
 .renumber-content-backup/
