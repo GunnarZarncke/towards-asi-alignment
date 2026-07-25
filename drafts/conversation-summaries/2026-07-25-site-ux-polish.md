@@ -27,4 +27,4 @@ User requested small companion-site corrections: chapter illustrations overflowi
 - `metadata/concepts/bodies/standalone-claims.md`
 
 ## Commits
-- (filled after commit)
+- `ab2de8ef` Polish companion site UX: illustrations, experiments table, standalone claims hub.
