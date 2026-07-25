@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Generation prompt for the ch15 chapter-opening illustration, &quot;Many Signals, Few Steering Currents.&quot;"><meta name="author" content="Gunnar Zarncke"><meta name="robots" content="noindex, follow"><link rel="canonical" href="https://towards-alignment.com/illustrations/ch15/"><link rel="alternate" type="text/plain" href="https://towards-alignment.com/llms.txt" title="LLM / agent orientation (llms.txt)"><link rel="alternate" type="application/json" href="https://towards-alignment.com/search-index.json" title="Site search index"><title>Illustration prompt: Many Signals, Few Steering Currents | Towards Superintelligence Alignment</title><meta property="og:title" content="Illustration prompt: Many Signals, Few Steering Currents | Towards Superintelligence Alignment"><meta property="og:description" content="Generation prompt for the ch15 chapter-opening illustration, &quot;Many Signals, Few Steering Currents.&quot;"><meta property="og:url" content="https://towards-alignment.com/illustrations/ch15/"><meta property="og:type" content="website"><meta property="og:site_name" content="Towards Superintelligence Alignment"><meta property="og:locale" content="en"><meta property="og:image" content="https://towards-alignment.com/og-image.png"><meta property="og:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Illustration prompt: Many Signals, Few Steering Currents | Towards Superintelligence Alignment"><meta name="twitter:description" content="Generation prompt for the ch15 chapter-opening illustration, &quot;Many Signals, Few Steering Currents.&quot;"><meta name="twitter:image" content="https://towards-alignment.com/og-image.png"><meta name="twitter:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Towards Superintelligence Alignment","url":"https://towards-alignment.com","description":"A companion site for the book Towards Superintelligence Alignment — guided paths, concept cards, Lean spine, and experiments.","author":{"@type":"Person","name":"Gunnar Zarncke"},"publisher":{"@type":"Organization","name":"Towards Superintelligence Alignment"}}</script><link rel="stylesheet" href="/_astro/SiteLayout.Ysnx6NqP.css"><style>.book-figure[data-astro-cid-nhmqmnyr]{text-align:center;margin:1.5rem 0}.book-figure[data-astro-cid-nhmqmnyr] img[data-astro-cid-nhmqmnyr]{max-width:100%;height:auto}
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/cards/">Cards</a><a href="/badges/">Badges</a><a href="/faq/">FAQ</a><a href="/book/">Book</a><a href="/lean/">Lean</a><a href="/experiments/">Experiments</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/updates/">Updates</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=Array.isArray(e)?e:e.entries??[],a)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><article class="two-column" data-astro-cid-nhmqmnyr><div class="content-card readable" data-astro-cid-nhmqmnyr><p class="side-panel-meta" data-astro-cid-nhmqmnyr><a href="/cards/chapters/ch15/" data-astro-cid-nhmqmnyr>&larr; Back to chapter</a></p><h1 data-astro-cid-nhmqmnyr>Many Signals, Few Steering Currents</h1><figure class="book-figure" data-astro-cid-nhmqmnyr><img src="https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main/figures/illustrations/web/ch15_shaping-paths-through-gentle-currents.jpg" alt="Many bodily, emotional, and social feedback streams converge on one compression hub that distills them into four broad control currents, which reshape the branching paths available to a human traveler." data-astro-cid-nhmqmnyr></figure><h1 id="chapter-15--shaping-paths-through-gentle-currents">Chapter 15 — Shaping Paths Through Gentle Currents</h1>
+<h2 id="chapter-15-illustration-specification">Chapter 15 illustration specification</h2>
+<h3 id="many-signals-few-steering-currents"><strong>“Many Signals, Few Steering Currents”</strong></h3>
+<p>Focus on one core idea:</p>
+<blockquote>
+<p>Human values are not a stored list of propositions. Many bodily, environmental, emotional, remembered, and social feedback signals are compressed into a small number of recurrent control currents that reshape action across different situations.</p>
+</blockquote>
+<p>The chapter’s explanatory direction is:</p>
+<p><strong>many error and salience loops → compressed control signals → policy shaping → socially usable value concepts.</strong></p>
+<p>Value words are only the visible tip. What makes something value-like is that it recurrently changes attention, priorities, admissible actions, learning, and correction.</p>
+<h2 id="main-visual-concept">Main visual concept</h2>
+<p>Use a <strong>wide 2:1 landscape</strong> with one simple continuous flow from left to right.</p>
+<p>On the left, many distinct but visually sparse streams arrive from the world and body.</p>
+<p>At the centre, those streams pass through a compact <strong>living control bottleneck</strong> with only four broad outgoing currents.</p>
+<p>On the right, the four currents enter a large branching path system and change how a human agent responds across several situations.</p>
+<p>The central visual statement should be immediately clear:</p>
+<blockquote>
+<p>Much enters. Little passes through. What passes through steers many actions.</p>
+</blockquote>
+<p>Do not present values as objects stored in drawers, written rules, or a set of moral labels.</p>
+<h2 id="overall-composition">Overall composition</h2>
+<p>Organize the image into three strongly connected regions:</p>
+<ol>
+<li><strong>many feedback streams</strong> on the left;</li>
+<li><strong>one central compression hub</strong>;</li>
+<li><strong>several changed action paths</strong> on the right.</li>
+</ol>
+<p>These should form one coherent horizontal mechanism rather than separate panels.</p>
+<p>Use broad visible channels. The relationships should not rely on faint lines or interpretation of tiny details.</p>
+<h2 id="left-the-many-feedback-loops">Left: the many feedback loops</h2>
+<p>Show six or seven broad incoming streams, each emerging from a simple recognizable source.</p>
+<p>Use only one object or scene for each source:</p>
+<ul>
+<li>a wounded hand or damaged plant for pain and protection;</li>
+<li>an empty bowl for bodily need;</li>
+<li>a child reaching toward a caregiver for attachment;</li>
+<li>an unfamiliar opening in the landscape for curiosity;</li>
+<li>two people in conflict for fairness or social tension;</li>
+<li>a broken bridge or false signal for truth and error;</li>
+<li>a small group turning toward or away from someone for belonging and status.</li>
+</ul>
+<p>These are not value categories. They are sources of pressure, discrepancy, salience, and learning.</p>
+<p>Each source sends a muted blue-grey or umber current toward the centre.</p>
+<p>The streams should differ slightly in texture:</p>
+<ul>
+<li>pulsing;</li>
+<li>turbulent;</li>
+<li>slow;</li>
+<li>intermittent;</li>
+<li>broad;</li>
+<li>narrow.</li>
+</ul>
+<p>This conveys high-dimensional variation without dense detail.</p>
+<p>The chapter argues that biological agents receive too many simultaneous metabolic, bodily, spatial, social, threat, memory, and prediction-error signals to route all of them directly into action. Compression is necessary for coherent control.</p>
+<h2 id="centre-the-compression-hub">Centre: the compression hub</h2>
+<p>The centre should contain one large, immediately legible <strong>circular sluice or organic-mechanical hub</strong>.</p>
+<p>It may resemble a combination of:</p>
+<ul>
+<li>a water-distribution gate;</li>
+<li>a neural or vascular junction;</li>
+<li>a compact control instrument.</li>
+</ul>
+<p>Avoid making it look like a literal brain.</p>
+<p>Many incoming streams enter around its left side, but only <strong>four broad colored currents</strong> emerge on the right.</p>
+<p>The hub should occupy roughly one quarter of the image width and be the dominant focal point.</p>
+<p>Inside it, show only three simple processes:</p>
+<ol>
+<li>streams are combined;</li>
+<li>some are amplified while others are suppressed;</li>
+<li>the result is stabilized into a few persistent outgoing currents.</li>
+</ol>
+<p>Do not show gears, equations, tiny valves, or detailed anatomy.</p>
+<p>The hub represents compression from many high-dimensional error loops into a lower-dimensional salience and control state. The resulting variables are not yet moral words; they indicate where control is needed, where something important is failing, and which policy families should become more likely.</p>
+<h2 id="the-four-outgoing-control-currents">The four outgoing control currents</h2>
+<p>Use four visually distinct but muted currents.</p>
+<p>Do not label them.</p>
+<p>Their meaning should be suggested through what they do on the right.</p>
+<h3 id="protective-current">Protective current</h3>
+<p>A dusty teal current bends action toward shielding, repair, withdrawal from damage, and prevention of recurrence.</p>
+<h3 id="exploratory-current">Exploratory current</h3>
+<p>A muted indigo current increases attention toward uncertainty, novelty, and learnable openings.</p>
+<h3 id="social-care-current">Social-care current</h3>
+<p>A warm ochre current redirects attention and resources toward another person’s condition.</p>
+<h3 id="truth-and-fairness-current">Truth-and-fairness current</h3>
+<p>A pale gold current strengthens evidence checking, honest communication, balanced treatment, and resistance to distortion.</p>
+<p>These are not intended as a final taxonomy of values. They are illustrative control directions.</p>
+<p>The chapter explicitly treats examples such as pain, curiosity, fairness, and truth as intermediate signals between raw error and final behavior, not as raw sensations or fixed goals.</p>
+<h2 id="right-policy-shaping">Right: policy shaping</h2>
+<p>On the right, show a single human traveler approaching one broad branching landscape.</p>
+<p>The traveler should face four possible routes or actions.</p>
+<p>The control currents do not carry the traveler to fixed destinations. Instead, they alter the path system:</p>
+<ul>
+<li>one unsafe route narrows;</li>
+<li>one protective route becomes easier to take;</li>
+<li>one hidden path becomes salient;</li>
+<li>one tempting shortcut becomes blocked;</li>
+<li>one route toward another person becomes more accessible;</li>
+<li>one path preserves more future options.</li>
+</ul>
+<p>The traveler remains capable of choice.</p>
+<p>This is important: values are not final actions or fixed goals. They reshape the policy surface by changing what is noticed, tolerated, protected, avoided, explored, or treated as legitimate.</p>
+<p>Use one landscape with several path modifications, not several miniature scenarios.</p>
+<h2 id="goals-versus-values">Goals versus values</h2>
+<p>Include one simple destination marker in the distance: perhaps a hilltop structure or a cultivated garden.</p>
+<p>The traveler may still be moving toward that goal.</p>
+<p>But the control currents determine:</p>
+<ul>
+<li>which paths are acceptable;</li>
+<li>which costs matter;</li>
+<li>whether a shortcut is rejected;</li>
+<li>when the route must be revised.</li>
+</ul>
+<p>This visually captures the chapter’s distinction:</p>
+<blockquote>
+<p>Goals select destinations; values shape permissible paths, tradeoffs, and revisions.</p>
+</blockquote>
+<p>Do not use a target, bullseye, checklist, or written goal.</p>
+<h2 id="social-stabilization-and-correction">Social stabilization and correction</h2>
+<p>Place two or three other people beside the central hub.</p>
+<p>They do not control the traveler directly.</p>
+<p>Instead, they help adjust and maintain the hub by:</p>
+<ul>
+<li>comparing outcomes;</li>
+<li>pointing to an overlooked incoming stream;</li>
+<li>reopening a suppressed channel;</li>
+<li>correcting an over-amplified current.</li>
+</ul>
+<p>One person may show that an apparent care response is actually controlling or that an apparent fairness response is resentment—but without text.</p>
+<p>Represent this as one person redirecting a current toward the source it had ignored.</p>
+<p>This reflects the chapter’s claim that language, culture, memory, promises, teaching, and institutions make latent control signals reportable, socially correctable, and temporally stable. Public labels can help coordinate, but can also detach from the control process they supposedly name.</p>
+<p>Keep these figures secondary. The image should remain about compression and control, not social debate.</p>
+<h2 id="the-key-contrast-value-versus-label">The key contrast: value versus label</h2>
+<p>Near the top of the hub, include a few small, elegant hanging emblems.</p>
+<p>They may resemble simple abstract seals or tokens associated with the outgoing currents.</p>
+<p>One emblem remains visually bright even though its corresponding current beneath it has become weak or disconnected.</p>
+<p>This should subtly show:</p>
+<ul>
+<li>the public symbol can survive;</li>
+<li>the actual policy-shaping current can disappear.</li>
+</ul>
+<p>Do not include readable words or familiar moral icons such as scales, hearts, or doves.</p>
+<p>The chapter warns that an institution or model can use value language while optimizing something else. Alignment therefore cannot infer values from labels alone; it must recover the control geometry behind them.</p>
+<h2 id="compression-without-oversimplification">Compression without oversimplification</h2>
+<p>The central hub should have only four outputs, but each output should remain connected to several incoming streams.</p>
+<p>For example:</p>
+<ul>
+<li>the protective current receives bodily damage, attachment, memory, and social information;</li>
+<li>the truth-oriented current receives prediction error, trust, manipulation risk, and history;</li>
+<li>the social-care current receives attachment, observed distress, learned norms, and remembered relationships.</li>
+</ul>
+<p>This makes clear that low-dimensional does not mean semantically simple.</p>
+<p>A small number of control directions may each summarize a rich causal and cultural structure. The chapter distinguishes the number of effective control dimensions from the complexity required to interpret each one.</p>
+<h2 id="one-failure-mode">One failure mode</h2>
+<p>Include one simple failure at the lower edge of the hub.</p>
+<p>Several different incoming streams are compressed too aggressively into one crude rust-colored current.</p>
+<p>That current forces several paths into the same response, even where the contexts differ.</p>
+<p>This could appear as:</p>
+<ul>
+<li>protection becoming blanket avoidance;</li>
+<li>care becoming control;</li>
+<li>fairness becoming rigid equality;</li>
+<li>truth becoming insensitive bluntness.</li>
+</ul>
+<p>Do not illustrate all four.</p>
+<p>Choose one generic image: one oversized current closes several paths indiscriminately.</p>
+<p>This represents overcompression: without compression the system is chaotic, but excessive compression loses important contact with reality and produces crude control.</p>
+<p>Keep this detail small and clearly subordinate.</p>
+<h2 id="visual-hierarchy">Visual hierarchy</h2>
+<p>The viewer should perceive, in order:</p>
+<ol>
+<li>many streams converging on one large hub;</li>
+<li>only four broad currents emerging;</li>
+<li>those currents visibly reshaping the traveler’s possible paths;</li>
+<li>other people maintaining and correcting the hub;</li>
+<li>one public emblem detached from its underlying current;</li>
+<li>one small overcompression failure.</li>
+</ol>
+<h2 id="detail-level">Detail level</h2>
+<p>Use <strong>low detail</strong>.</p>
+<p>Limit the image to:</p>
+<ul>
+<li>one central hub;</li>
+<li>six or seven incoming streams;</li>
+<li>four outgoing currents;</li>
+<li>one traveler;</li>
+<li>one branching landscape;</li>
+<li>two or three correcting people;</li>
+<li>a few small public emblems;</li>
+<li>one subtle failure.</li>
+</ul>
+<p>Do not include:</p>
+<ul>
+<li>a detailed brain;</li>
+<li>anatomical regions;</li>
+<li>many value labels;</li>
+<li>a cockpit full of instruments;</li>
+<li>many independent behavioral examples;</li>
+<li>multiple timelines;</li>
+<li>equations;</li>
+<li>dense neural networks;</li>
+<li>a crowd or city;</li>
+<li>a separate scene for every value.</li>
+</ul>
+<p>The central compression structure and the changed action paths should carry almost all of the meaning.</p>
+<h2 id="colour-and-style">Colour and style</h2>
+<p>Use the established LessWrong watercolor palette:</p>
+<ul>
+<li>warm ivory paper;</li>
+<li>muted blue-grey for incoming feedback;</li>
+<li>dusty teal for protection and repair;</li>
+<li>restrained indigo for exploration and modeling;</li>
+<li>ochre for social care and connection;</li>
+<li>pale gold for truth, correction, and reality contact;</li>
+<li>soft umber for memory and embodied history;</li>
+<li>minimal muted rust for overcompression or detached labels;</li>
+<li>translucent watercolor washes;</li>
+<li>fine graphite construction lines;</li>
+<li>sparse ink contours;</li>
+<li>visible paper grain;</li>
+<li>generous negative space.</li>
+</ul>
+<p>The currents should be broad and clear without appearing neon or magical.</p>
+<p>The hub should feel biological, social, and functional rather than futuristic.</p>
+<h2 id="continuity-with-chapter-14">Continuity with Chapter 14</h2>
+<p>Chapter 14 showed why greater intelligence can become less correctable.</p>
+<p>Chapter 15 begins the book’s positive account of what must be preserved:</p>
+<ul>
+<li>not a fixed list of verbal values;</li>
+<li>not momentary preferences;</li>
+<li>not emotional approval;</li>
+<li>but the compressed control structures that repeatedly reshape policy and remain grounded through bodily, environmental, and social feedback.</li>
+</ul>
+<p>Reuse the blue-grey, amber, teal, and pale-gold channel language, but move away from capability growth and make compression the dominant form.</p>
+<h2 id="exclude">Exclude</h2>
+<p>Do not include:</p>
+<ul>
+<li>text, labels, equations, or numbers;</li>
+<li>ribbons literally labeled “care,” “truth,” or “justice”;</li>
+<li>a brain with compartments;</li>
+<li>a list written inside a person;</li>
+<li>a heart-versus-brain contrast;</li>
+<li>a moral compass;</li>
+<li>scales of justice;</li>
+<li>a fixed utility function;</li>
+<li>a single reward meter;</li>
+<li>values stored as colored objects;</li>
+<li>many small illustrative scenes;</li>
+<li>a mystical glowing soul;</li>
+<li>a purely abstract network diagram;</li>
+<li>an obviously complete taxonomy of human values.</li>
+</ul>
+<p>The core message should be:</p>
+<blockquote>
+<p>Many changing signals become a few stable control directions.
+Those directions matter because they repeatedly reshape action.</p>
+</blockquote>
+<h2 id="condensed-generation-brief">Condensed generation brief</h2>
+<blockquote>
+<p>A wide, text-free LessWrong-style watercolor and graphite illustration on warm ivory paper, with low detail and one clear left-to-right flow. On the left, six or seven broad muted blue-grey and umber streams emerge from simple bodily, environmental, remembered, and social situations: injury, bodily need, attachment, curiosity, conflict, prediction error, and belonging. These varied streams converge into one large central circular control hub resembling a simple organic-mechanical water-distribution junction, not a brain. Inside the hub, the many inputs are combined, selectively amplified or suppressed, and compressed into only four broad recurrent currents. Dusty teal, muted indigo, restrained ochre, and pale-gold currents emerge on the right and enter one branching landscape around a human traveler. They do not select one fixed destination; they visibly reshape the available policy paths by narrowing unsafe routes, revealing information-seeking paths, directing care and repair, preserving options, and blocking tempting but unacceptable shortcuts. Two or three people beside the hub maintain and socially correct its flow by reopening an ignored input or reducing an over-amplified current. A few small public emblems hang above the hub, with one emblem remaining intact while its underlying current is weak, showing that value language can detach from real control. At the lower edge, one small rust-colored overcompressed current indiscriminately closes several paths. One hub, many inputs, four outputs, one traveler, one path landscape, broad visible connections, generous negative space, muted blue-grey, dusty teal, indigo, ochre, pale gold, umber and minimal rust, translucent watercolor washes, fine graphite and sparse ink lines, visible paper texture, no text, no labels, no brain diagram, no moral icons, no dense detail.</p>
+</blockquote></div></article></main><footer class="site-footer"><div class="site-footer-inner"><p>A static companion site for an authored research manuscript.</p><p><a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="/updates/">Updates</a> ·<a href="/impressum/">Impressum</a></p></div></footer></div><div class="page-qr" data-page-qr data-astro-cid-4z7kl3bu><button type="button" class="page-qr-trigger" aria-label="Show QR code for this page" aria-expanded="false" aria-controls="page-qr-overlay" data-astro-cid-4z7kl3bu>QR</button><div id="page-qr-overlay" class="page-qr-overlay" hidden aria-hidden="true" role="dialog" aria-label="QR code for this page" data-astro-cid-4z7kl3bu><div class="page-qr-panel" data-astro-cid-4z7kl3bu><div class="page-qr-code" data-astro-cid-4z7kl3bu><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h35v35H0z"/><path stroke="#0f172a" d="M1 1.5h7m2 0h3m6 0h4m1 0h1m2 0h7M1 2.5h1m5 0h1m3 0h1m1 0h1m2 0h2m1 0h1m5 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h5m1 0h3m2 0h6m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h4m6 0h2m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h5m2 0h2m1 0h1m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h3m1 0h3m4 0h1m1 0h2m3 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h3m1 0h1M1 9.5h1m1 0h5m2 0h1m1 0h1m1 0h2m2 0h1m1 0h1m2 0h2m2 0h5M3 10.5h2m1 0h1m2 0h2m3 0h1m2 0h5m1 0h2m2 0h2m1 0h4M1 11.5h2m1 0h2m1 0h1m2 0h9m2 0h2m3 0h1m2 0h1m1 0h2M4 12.5h1m5 0h5m2 0h6m2 0h1m3 0h3M2 13.5h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m3 0h2m2 0h2m1 0h2M3 14.5h1m4 0h1m2 0h2m3 0h1m2 0h1m2 0h4m1 0h1m2 0h4M1 15.5h2m2 0h1m1 0h7m2 0h2m3 0h1m4 0h2m2 0h3M2 16.5h4m2 0h1m2 0h1m4 0h1m5 0h7m1 0h2M2 17.5h3m1 0h2m1 0h2m1 0h1m3 0h1m1 0h1m6 0h2m1 0h3m2 0h1M3 18.5h1m1 0h2m6 0h3m1 0h1m1 0h4m1 0h1m1 0h3m1 0h2m1 0h1M3 19.5h1m1 0h3m2 0h2m2 0h1m1 0h2m1 0h1m1 0h2m4 0h3m1 0h2M1 20.5h1m2 0h1m1 0h1m4 0h2m2 0h1m6 0h3m1 0h1m1 0h4M1 21.5h3m1 0h5m2 0h1m3 0h1m2 0h2m5 0h1m1 0h3m1 0h2M1 22.5h1m1 0h4m1 0h1m1 0h5m1 0h3m2 0h1m1 0h2m2 0h1m3 0h1m1 0h1M1 23.5h1m2 0h4m1 0h2m3 0h1m3 0h1m1 0h1m1 0h2m1 0h2m1 0h3m1 0h1M1 24.5h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h6m3 0h1m1 0h3M1 25.5h1m1 0h1m1 0h3m1 0h5m1 0h1m2 0h1m1 0h1m2 0h8M9 26.5h1m1 0h3m1 0h1m1 0h2m1 0h3m1 0h2m3 0h1m1 0h1m1 0h1M1 27.5h7m2 0h1m2 0h1m2 0h1m1 0h1m3 0h4m1 0h1m1 0h1m1 0h2M1 28.5h1m5 0h1m1 0h2m2 0h1m1 0h1m1 0h3m1 0h5m3 0h4M1 29.5h1m1 0h3m1 0h1m1 0h1m1 0h4m2 0h1m2 0h1m4 0h6m2 0h1M1 30.5h1m1 0h3m1 0h1m1 0h6m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m2 0h5M1 31.5h1m1 0h3m1 0h1m1 0h2m1 0h3m1 0h2m3 0h2m1 0h1m2 0h2m2 0h1M1 32.5h1m5 0h1m2 0h2m1 0h4m2 0h5m2 0h2m1 0h3M1 33.5h7m1 0h1m2 0h3m1 0h1m1 0h3m2 0h6m1 0h1m1 0h1"/></svg>
+</div><p class="page-qr-url" data-astro-cid-4z7kl3bu>https://towards-alignment.com/illustrations/ch15/</p></div></div></div><script type="module">var e=document.querySelector(`[data-page-qr]`),t=e?.querySelector(`.page-qr-trigger`),n=e?.querySelector(`.page-qr-overlay`);if(!e||!t||!n)throw Error(`Page QR markup missing`);function r(){n.hidden=!1,n.setAttribute(`aria-hidden`,`false`),t.setAttribute(`aria-expanded`,`true`)}function i(){n.hidden=!0,n.setAttribute(`aria-hidden`,`true`),t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`click`,e=>{e.stopPropagation(),n.hidden?r():i()}),n.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&!n.hidden&&i()});</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;415dc5b7862f4b47a7f41047bbd6c81e&quot;}"></script></body></html>

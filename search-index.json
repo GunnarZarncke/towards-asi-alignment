@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-24T19:04:58.385Z",
+  "generatedAt": "2026-07-25T10:01:15.790Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
@@ -507,7 +507,7 @@
     {
       "title": "Agency-detect (sibling)",
       "type": "experiment",
-      "summary": "Methodological precursor: boundary-like structure from time series without a prior agent ontology; handle-UAD interventional tests.",
+      "summary": "Methodological precursor to the other experiment lines: it recovers boundary-like structure from raw time series without assuming in advance which parts are agents, and tests whether intervention handles behave as the theory predicts.",
       "url": "/cards/experiments/agency-detect/"
     },
     {
@@ -711,7 +711,7 @@
     {
       "title": "Embedded audit simulation",
       "type": "experiment",
-      "summary": "Auditor as embedded process on simulated machines: UAD, scoped CCI, MB5 deploy gate, outer evaluator vs oracle.",
+      "summary": "An auditor running as its own process inside simulated machines, checked against a hidden ground truth it cannot see.",
       "url": "/cards/experiments/embedded-simulation/"
     },
     {
@@ -873,7 +873,7 @@
     {
       "title": "Goal-agent simulation",
       "type": "experiment",
-      "summary": "Emergent deception from goal-driven agents (not scripted knobs): blind generation, ontology drift, severity-graded referee, honest twins, escalation ladder, certifier capture.",
+      "summary": "Deception that emerges from agents pursuing their own goals, rather than from a dial the experimenter turns up.",
       "url": "/cards/experiments/goal-agent-simulation/"
     },
     {
@@ -885,7 +885,7 @@
     {
       "title": "Graded-capability lab simulation",
       "type": "experiment",
-      "summary": "Successor substrate to lab-simulation (not a further phase of it): a graded, continuously-scored pipeline/resource/carrier substrate built to make ambiguity emerge from a blinded population rather than from dialed noise/delay parameters.",
+      "summary": "Successor substrate to the lab-layer simulation, not a further phase of it: a graded, continuously scored pipeline of tasks, shared resources, and agent viability, built so that ambiguity about who is doing what emerges from a population the experimenters did not hand-design, rather than from a noise or delay dial they turn up.",
       "url": "/cards/experiments/graded-lab-simulation/"
     },
     {
@@ -927,7 +927,7 @@
     {
       "title": "Lab-layer simulation",
       "type": "experiment",
-      "summary": "Pipeline-as-code lab with real OS subprocess isolates, handle registry, frozen referee (lab-sim-0.",
+      "summary": "A lab defined entirely in code, running real operating-system-level isolated processes, with a registry of intervention handles and a frozen grading referee.",
       "url": "/cards/experiments/lab-simulation/"
     },
     {
@@ -1197,7 +1197,7 @@
     {
       "title": "Toy simulation",
       "type": "experiment",
-      "summary": "Fast multiresolution alignment toy: correction capture theater, vector CCI over handle levels, scripted bridge stressors (MB1–MB9).",
+      "summary": "Fast, small-scale alignment toy staging correction that looks compliant but is not, scored across several levels of intervention access, against scripted versions of the book's bridge assumptions.",
       "url": "/cards/experiments/toy-simulation/"
     },
     {

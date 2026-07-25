@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Generation prompt for the ch13 chapter-opening illustration, &quot;The Warning That Cannot Reach the Lever.&quot;"><meta name="author" content="Gunnar Zarncke"><meta name="robots" content="noindex, follow"><link rel="canonical" href="https://towards-alignment.com/illustrations/ch13/"><link rel="alternate" type="text/plain" href="https://towards-alignment.com/llms.txt" title="LLM / agent orientation (llms.txt)"><link rel="alternate" type="application/json" href="https://towards-alignment.com/search-index.json" title="Site search index"><title>Illustration prompt: The Warning That Cannot Reach the Lever | Towards Superintelligence Alignment</title><meta property="og:title" content="Illustration prompt: The Warning That Cannot Reach the Lever | Towards Superintelligence Alignment"><meta property="og:description" content="Generation prompt for the ch13 chapter-opening illustration, &quot;The Warning That Cannot Reach the Lever.&quot;"><meta property="og:url" content="https://towards-alignment.com/illustrations/ch13/"><meta property="og:type" content="website"><meta property="og:site_name" content="Towards Superintelligence Alignment"><meta property="og:locale" content="en"><meta property="og:image" content="https://towards-alignment.com/og-image.png"><meta property="og:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Illustration prompt: The Warning That Cannot Reach the Lever | Towards Superintelligence Alignment"><meta name="twitter:description" content="Generation prompt for the ch13 chapter-opening illustration, &quot;The Warning That Cannot Reach the Lever.&quot;"><meta name="twitter:image" content="https://towards-alignment.com/og-image.png"><meta name="twitter:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Towards Superintelligence Alignment","url":"https://towards-alignment.com","description":"A companion site for the book Towards Superintelligence Alignment — guided paths, concept cards, Lean spine, and experiments.","author":{"@type":"Person","name":"Gunnar Zarncke"},"publisher":{"@type":"Organization","name":"Towards Superintelligence Alignment"}}</script><link rel="stylesheet" href="/_astro/SiteLayout.Ysnx6NqP.css"><style>.book-figure[data-astro-cid-nhmqmnyr]{text-align:center;margin:1.5rem 0}.book-figure[data-astro-cid-nhmqmnyr] img[data-astro-cid-nhmqmnyr]{max-width:100%;height:auto}
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/cards/">Cards</a><a href="/badges/">Badges</a><a href="/faq/">FAQ</a><a href="/book/">Book</a><a href="/lean/">Lean</a><a href="/experiments/">Experiments</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/updates/">Updates</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=Array.isArray(e)?e:e.entries??[],a)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><article class="two-column" data-astro-cid-nhmqmnyr><div class="content-card readable" data-astro-cid-nhmqmnyr><p class="side-panel-meta" data-astro-cid-nhmqmnyr><a href="/cards/chapters/ch13/" data-astro-cid-nhmqmnyr>&larr; Back to chapter</a></p><h1 data-astro-cid-nhmqmnyr>The Warning That Cannot Reach the Lever</h1><figure class="book-figure" data-astro-cid-nhmqmnyr><img src="https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main/figures/illustrations/web/ch13_bridges-of-information-and-construction.jpg" alt="Warnings from technical, safety, and public-interest teams converge on a narrow bridge that compresses and distorts them before they reach a desk disconnected from the stop lever of a large deployment machine." data-astro-cid-nhmqmnyr></figure><h1 id="chapter-13--bridges-of-information-and-construction">Chapter 13 — Bridges of Information and Construction</h1>
+<h2 id="chapter-13-illustration-specification">Chapter 13 illustration specification</h2>
+<h3 id="the-warning-that-cannot-reach-the-lever"><strong>“The Warning That Cannot Reach the Lever”</strong></h3>
+<p>Focus on one core idea:</p>
+<blockquote>
+<p>A collective can contain enough knowledge and competence to avoid failure, yet still act badly because the decisive information cannot pass through the coordination bottleneck to the place where action is chosen.</p>
+</blockquote>
+<p>The chapter’s central claim is that collective competence is not the sum of local competence. Capable parts only become a capable whole when information, authority, incentives, trust, and timing connect them to system-level action. A coordination bottleneck exists when improving one part fails to improve—or even worsens—the competence of the whole.</p>
+<h2 id="main-visual-concept">Main visual concept</h2>
+<p>Use a <strong>wide 2:1 composition</strong> with one immediately understandable physical metaphor.</p>
+<p>On the left, several competent groups stand on broad platforms. One group has detected a serious danger and holds a clear warning signal.</p>
+<p>On the right, a large deployment machine is moving toward an irreversible action.</p>
+<p>Between them is a <strong>single narrow elevated bridge or conduit</strong> through which information and authority must pass.</p>
+<p>The warning reaches the bottleneck, but becomes:</p>
+<ul>
+<li>delayed;</li>
+<li>compressed;</li>
+<li>translated into an ambiguous form;</li>
+<li>and separated from the actual stop lever.</li>
+</ul>
+<p>The action continues, not because nobody knew, but because the system could not coordinate what it knew.</p>
+<p>The viewer should understand the image in a few seconds:</p>
+<blockquote>
+<p>The knowledge exists on the left.
+The power to act exists on the right.
+The connection between them is too narrow and distorted.</p>
+</blockquote>
+<h2 id="composition">Composition</h2>
+<h3 id="left-competent-local-parts">Left: competent local parts</h3>
+<p>Use only three large source platforms.</p>
+<h4 id="technical-observation-platform">Technical observation platform</h4>
+<p>A small team observes the deployed system through a clear instrument.</p>
+<p>They see a visible crack, dangerous trajectory, or unstable feedback loop.</p>
+<p>Their warning should be concrete and unambiguous:</p>
+<ul>
+<li>a bright amber signal;</li>
+<li>a damaged component;</li>
+<li>a trajectory approaching a drop.</li>
+</ul>
+<p>Do not use written reports or screens full of data.</p>
+<h4 id="safety-and-interpretation-platform">Safety and interpretation platform</h4>
+<p>A second group understands why the signal matters.</p>
+<p>They compare the observed failure with a simple model and correctly infer that the process should stop.</p>
+<p>Their role is interpretation, not merely observation.</p>
+<h4 id="human-or-public-interest-platform">Human or public-interest platform</h4>
+<p>A third small group represents those affected by the outcome.</p>
+<p>They provide value-relevant context: what would be harmed, lost, or made irreversible.</p>
+<p>Keep this simple—perhaps a few people near a protected garden, community, or water source.</p>
+<p>All three groups are locally competent.</p>
+<p>Their signals converge toward the same bridge.</p>
+<h2 id="centre-the-coordination-bottleneck">Centre: the coordination bottleneck</h2>
+<p>The centre of the image should contain one dominant <strong>narrow bridge, pipe, or relay chamber</strong>.</p>
+<p>This is the chapter’s core visual object.</p>
+<p>Several broad signals arrive from the left, but only one thin channel exits to the right.</p>
+<p>At the bottleneck, show three simple losses rather than all seven chapter categories.</p>
+<h3 id="compression">Compression</h3>
+<p>A rich amber warning stream enters.</p>
+<p>Only a tiny pale token or simplified signal emerges.</p>
+<p>Important distinctions are visibly lost.</p>
+<h3 id="translation">Translation</h3>
+<p>The warning passes through one conversion mechanism and changes shape.</p>
+<p>A clear danger signal becomes a neutral administrative symbol or routine status indicator.</p>
+<p>Do not use words or letters.</p>
+<h3 id="authority-separation">Authority separation</h3>
+<p>The final signal reaches a person or desk that can record it but cannot operate the stop lever.</p>
+<p>A visible mechanical linkage from the warning channel ends just short of the actuator.</p>
+<p>This is the most important detail.</p>
+<p>The chapter repeatedly emphasizes that information can be present somewhere in the system while remaining disconnected from system-level action.</p>
+<h2 id="right-the-action-system">Right: the action system</h2>
+<p>On the right, show one large deployment mechanism.</p>
+<p>Choose a simple form:</p>
+<ul>
+<li>a heavy gate opening;</li>
+<li>a large machine releasing a process downstream;</li>
+<li>or a rail carriage crossing a final threshold.</li>
+</ul>
+<p>The mechanism should have:</p>
+<ul>
+<li>one prominent stop lever;</li>
+<li>one strong amber action path;</li>
+<li>one irreversible consequence just beyond it.</li>
+</ul>
+<p>The stop lever is physically close to the action mechanism but far from the people who understand the risk.</p>
+<p>A different group operates the deployment machinery.</p>
+<p>They are not villains.</p>
+<p>They receive:</p>
+<ul>
+<li>a weak or ambiguous signal;</li>
+<li>strong pressure to continue;</li>
+<li>an established schedule or flow.</li>
+</ul>
+<p>The deployment therefore proceeds.</p>
+<h2 id="irreversible-consequence">Irreversible consequence</h2>
+<p>Beyond the action mechanism, show one beautiful and valuable region that may be damaged:</p>
+<ul>
+<li>a living valley;</li>
+<li>a river;</li>
+<li>a community;</li>
+<li>or a delicate infrastructure network supporting ordinary life.</li>
+</ul>
+<p>Keep it visually simple and restrained.</p>
+<p>The purpose is to make the coordination failure matter.</p>
+<p>Do not depict apocalypse. Show that the action is crossing a point after which correction will be much harder.</p>
+<p>This fits the chapter’s latency problem: information arriving after irreversible action is no longer useful.</p>
+<h2 id="the-central-contrast">The central contrast</h2>
+<p>The illustration should clearly contrast:</p>
+<h3 id="abundance-on-the-left">Abundance on the left</h3>
+<ul>
+<li>enough knowledge;</li>
+<li>enough expertise;</li>
+<li>enough warning;</li>
+<li>enough concern.</li>
+</ul>
+<h3 id="scarcity-in-the-centre">Scarcity in the centre</h3>
+<ul>
+<li>narrow bandwidth;</li>
+<li>distorted translation;</li>
+<li>weak authority linkage.</li>
+</ul>
+<h3 id="power-on-the-right">Power on the right</h3>
+<ul>
+<li>strong actuator;</li>
+<li>fast execution;</li>
+<li>high stakes;</li>
+<li>little remaining time.</li>
+</ul>
+<p>This is the visual form of:</p>
+<blockquote>
+<p>local competence + failed coordination = weak collective competence.</p>
+</blockquote>
+<h2 id="one-visible-alternate-path">One visible alternate path</h2>
+<p>To preserve a constructive implication, include one faint but plausible improvement.</p>
+<p>A broader amber bridge is being built beneath the bottleneck.</p>
+<p>It directly connects:</p>
+<ul>
+<li>the technical warning;</li>
+<li>the interpreting group;</li>
+<li>the affected people;</li>
+<li>and the stop mechanism.</li>
+</ul>
+<p>It is incomplete, but its purpose is clear.</p>
+<p>This suggests that dashboards, safety cases, procurement clauses, audit channels, and governance structures matter when they genuinely convert complex evidence into action rather than merely producing paperwork. The chapter describes such artifacts as bandwidth-conversion devices.</p>
+<p>Keep this secondary. The main image remains the current failure.</p>
+<h2 id="visual-hierarchy">Visual hierarchy</h2>
+<p>The viewer should perceive, in order:</p>
+<ol>
+<li>the narrow coordination bottleneck;</li>
+<li>the strong warning on the left;</li>
+<li>the powerful action mechanism on the right;</li>
+<li>the broken connection to the stop lever;</li>
+<li>the valuable region beyond the irreversible threshold;</li>
+<li>the faint wider corrective bridge under construction.</li>
+</ol>
+<h2 id="detail-level">Detail level</h2>
+<p>Use <strong>low detail</strong>.</p>
+<p>Limit the image to:</p>
+<ul>
+<li>three source platforms;</li>
+<li>one bottleneck;</li>
+<li>one action mechanism;</li>
+<li>one stop lever;</li>
+<li>one valuable downstream region;</li>
+<li>six to eight people total;</li>
+<li>one incomplete alternative bridge.</li>
+</ul>
+<p>Do not illustrate all seven coordination losses separately.</p>
+<p>Do not include:</p>
+<ul>
+<li>a large office tower;</li>
+<li>many departments;</li>
+<li>many screens;</li>
+<li>several institutions;</li>
+<li>a city;</li>
+<li>dense graphs;</li>
+<li>multiple deployment scenarios;</li>
+<li>numerous arrows.</li>
+</ul>
+<p>The narrow bridge and failed stop linkage should carry almost the entire argument.</p>
+<h2 id="colour-and-style">Colour and style</h2>
+<p>Use the established LessWrong watercolor palette:</p>
+<ul>
+<li>warm ivory paper;</li>
+<li>muted indigo and blue-grey for information and institutional structure;</li>
+<li>dusty teal for competent local teams;</li>
+<li>ochre and amber for truthful warning and action;</li>
+<li>pale gold for legitimate correction;</li>
+<li>soft umber for the bottleneck structure;</li>
+<li>restrained rust at the irreversible threshold;</li>
+<li>translucent washes;</li>
+<li>fine graphite construction lines;</li>
+<li>sparse ink contours;</li>
+<li>visible paper texture;</li>
+<li>generous negative space.</li>
+</ul>
+<p>The warning should be visibly strong before the bottleneck and weak after it.</p>
+<p>The deployment mechanism should be visually powerful through scale and motion, not darkness or menace.</p>
+<h2 id="continuity-with-chapter-12">Continuity with Chapter 12</h2>
+<p>Chapter 12 showed capability expansion outrunning correction.</p>
+<p>Chapter 13 should show <strong>why adding more competent components does not automatically repair that gap</strong>:</p>
+<ul>
+<li>the technical team may understand the danger;</li>
+<li>the safety team may interpret it correctly;</li>
+<li>affected people may object;</li>
+<li>the deployment mechanism may still continue because those signals do not reach the actuator in usable, timely, authoritative form.</li>
+</ul>
+<p>Reuse:</p>
+<ul>
+<li>blue-grey information channels;</li>
+<li>amber correction channels;</li>
+<li>one high-stakes actuator;</li>
+<li>one human correction chain.</li>
+</ul>
+<p>But replace the expanding boundary with a single central coordination bottleneck.</p>
+<h2 id="exclude">Exclude</h2>
+<p>Do not include:</p>
+<ul>
+<li>text, labels, equations, or numbers;</li>
+<li>seven separate icons for seven losses;</li>
+<li>a literal clogged pipe full of paperwork;</li>
+<li>foolish or corrupt officials;</li>
+<li>a single evil executive;</li>
+<li>a giant bureaucracy maze;</li>
+<li>many tiny departments;</li>
+<li>an orchestra conductor;</li>
+<li>a neural-network diagram;</li>
+<li>a broken telephone game;</li>
+<li>a simple lack of intelligence;</li>
+<li>a total societal collapse;</li>
+<li>neon or cyberpunk imagery.</li>
+</ul>
+<p>The failure should arise from <strong>misaligned connective structure</strong>, not from incompetent or malicious individuals.</p>
+<h2 id="condensed-generation-brief">Condensed generation brief</h2>
+<blockquote>
+<p>A wide, text-free LessWrong-style watercolor and graphite illustration on warm ivory paper, with very low detail and immediate visual clarity. On the left, three competent small groups stand on broad platforms: one technical team directly observes a dangerous fault in a system, one safety team correctly interprets it, and one group represents people and valuable things that would be affected. Their broad, clear amber warning streams converge toward a single narrow elevated bridge or relay chamber in the centre. At this coordination bottleneck, the rich warning is compressed into a tiny pale signal, translated into a neutral administrative form, and routed to a desk that can record it but has no physical connection to the actual stop lever. On the right, a large deployment machine or gate moves toward an irreversible action, operated by people who receive only the weakened signal and therefore continue. The stop lever is clearly visible beside the machine, but the warning linkage ends just short of it. Beyond the gate lies one beautiful, valuable valley, river, community, or living system placed visibly at risk. Beneath the failed narrow bridge, a broader pale-gold corrective connection is partly under construction, directly linking evidence, interpretation, affected people, and the stop mechanism. Few people, one bottleneck, one actuator, one valuable downstream region, broad visible channels, muted indigo, dusty teal, ochre, amber, pale gold, umber and restrained rust, translucent watercolor washes, fine graphite and sparse ink lines, visible paper texture, no text, no icons, no bureaucracy maze, no villain, no neon.</p>
+</blockquote></div></article></main><footer class="site-footer"><div class="site-footer-inner"><p>A static companion site for an authored research manuscript.</p><p><a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="/updates/">Updates</a> ·<a href="/impressum/">Impressum</a></p></div></footer></div><div class="page-qr" data-page-qr data-astro-cid-4z7kl3bu><button type="button" class="page-qr-trigger" aria-label="Show QR code for this page" aria-expanded="false" aria-controls="page-qr-overlay" data-astro-cid-4z7kl3bu>QR</button><div id="page-qr-overlay" class="page-qr-overlay" hidden aria-hidden="true" role="dialog" aria-label="QR code for this page" data-astro-cid-4z7kl3bu><div class="page-qr-panel" data-astro-cid-4z7kl3bu><div class="page-qr-code" data-astro-cid-4z7kl3bu><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h35v35H0z"/><path stroke="#0f172a" d="M1 1.5h7m4 0h1m2 0h3m1 0h2m2 0h2m2 0h7M1 2.5h1m5 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m3 0h1m2 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m2 0h1m1 0h2m6 0h1m3 0h2m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m2 0h1m2 0h2m3 0h1m4 0h2m2 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h2m3 0h1m3 0h1m4 0h2m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m2 0h2m3 0h1m2 0h2m2 0h4m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M11 8.5h1m2 0h2m1 0h3m1 0h2m2 0h1M1 9.5h1m1 0h1m1 0h1m1 0h1m3 0h2m1 0h1m1 0h3m1 0h3m1 0h1m4 0h1m2 0h1M1 10.5h4m3 0h2m2 0h2m3 0h1m3 0h1m1 0h1m1 0h4m4 0h1M2 11.5h2m2 0h2m1 0h1m2 0h3m3 0h1m4 0h1m2 0h3m2 0h3M1 12.5h1m2 0h1m3 0h1m2 0h1m5 0h1m3 0h2m1 0h1m1 0h1m2 0h1m2 0h1M2 13.5h2m3 0h1m2 0h2m1 0h1m2 0h1m5 0h2m1 0h4m1 0h1m1 0h1M1 14.5h1m2 0h1m1 0h1m1 0h1m3 0h3m1 0h1m1 0h1m1 0h1m1 0h2m2 0h2m5 0h1M1 15.5h3m3 0h2m4 0h1m1 0h1m6 0h2m2 0h1m1 0h6M1 16.5h1m1 0h4m2 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h2m3 0h2m3 0h1M2 17.5h1m2 0h3m3 0h2m2 0h1m1 0h2m2 0h3m1 0h3m2 0h1M2 18.5h2m4 0h1m1 0h1m1 0h1m2 0h1m1 0h2m2 0h2m2 0h1m1 0h2m3 0h2M4 19.5h1m1 0h2m1 0h2m3 0h2m3 0h1m3 0h1m7 0h3M4 20.5h3m1 0h1m1 0h1m2 0h2m3 0h3m1 0h2m1 0h1m2 0h2m2 0h1M1 21.5h2m3 0h3m3 0h1m1 0h2m1 0h1m1 0h5m2 0h2m2 0h1m1 0h1M3 22.5h3m4 0h2m1 0h1m1 0h3m1 0h3m1 0h1m1 0h3m2 0h1m1 0h2M1 23.5h1m1 0h2m1 0h2m3 0h2m1 0h5m1 0h2m3 0h3m2 0h1m1 0h2M2 24.5h1m1 0h2m2 0h8m1 0h2m2 0h3m1 0h2m1 0h1M1 25.5h1m1 0h2m1 0h3m3 0h2m2 0h3m1 0h3m1 0h7m2 0h1M9 26.5h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m2 0h1m3 0h2m1 0h2M1 27.5h7m5 0h3m1 0h2m2 0h5m1 0h1m1 0h1m1 0h3M1 28.5h1m5 0h1m4 0h1m4 0h1m2 0h4m1 0h1m3 0h1M1 29.5h1m1 0h3m1 0h1m1 0h4m1 0h3m3 0h4m1 0h6M1 30.5h1m1 0h3m1 0h1m2 0h3m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m3 0h1M1 31.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h2m7 0h2m4 0h1m1 0h1m1 0h1M1 32.5h1m5 0h1m2 0h2m3 0h2m1 0h1m2 0h5m1 0h1m1 0h1m2 0h1M1 33.5h7m1 0h7m1 0h6m1 0h3m2 0h2m1 0h2"/></svg>
+</div><p class="page-qr-url" data-astro-cid-4z7kl3bu>https://towards-alignment.com/illustrations/ch13/</p></div></div></div><script type="module">var e=document.querySelector(`[data-page-qr]`),t=e?.querySelector(`.page-qr-trigger`),n=e?.querySelector(`.page-qr-overlay`);if(!e||!t||!n)throw Error(`Page QR markup missing`);function r(){n.hidden=!1,n.setAttribute(`aria-hidden`,`false`),t.setAttribute(`aria-expanded`,`true`)}function i(){n.hidden=!0,n.setAttribute(`aria-hidden`,`true`),t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`click`,e=>{e.stopPropagation(),n.hidden?r():i()}),n.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&!n.hidden&&i()});</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;415dc5b7862f4b47a7f41047bbd6c81e&quot;}"></script></body></html>

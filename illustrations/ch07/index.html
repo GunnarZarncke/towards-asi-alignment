@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Generation prompt for the ch07 chapter-opening illustration, &quot;Finding the Boundary That Actually Controls.&quot;"><meta name="author" content="Gunnar Zarncke"><meta name="robots" content="noindex, follow"><link rel="canonical" href="https://towards-alignment.com/illustrations/ch07/"><link rel="alternate" type="text/plain" href="https://towards-alignment.com/llms.txt" title="LLM / agent orientation (llms.txt)"><link rel="alternate" type="application/json" href="https://towards-alignment.com/search-index.json" title="Site search index"><title>Illustration prompt: Finding the Boundary That Actually Controls | Towards Superintelligence Alignment</title><meta property="og:title" content="Illustration prompt: Finding the Boundary That Actually Controls | Towards Superintelligence Alignment"><meta property="og:description" content="Generation prompt for the ch07 chapter-opening illustration, &quot;Finding the Boundary That Actually Controls.&quot;"><meta property="og:url" content="https://towards-alignment.com/illustrations/ch07/"><meta property="og:type" content="website"><meta property="og:site_name" content="Towards Superintelligence Alignment"><meta property="og:locale" content="en"><meta property="og:image" content="https://towards-alignment.com/og-image.png"><meta property="og:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Illustration prompt: Finding the Boundary That Actually Controls | Towards Superintelligence Alignment"><meta name="twitter:description" content="Generation prompt for the ch07 chapter-opening illustration, &quot;Finding the Boundary That Actually Controls.&quot;"><meta name="twitter:image" content="https://towards-alignment.com/og-image.png"><meta name="twitter:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Towards Superintelligence Alignment","url":"https://towards-alignment.com","description":"A companion site for the book Towards Superintelligence Alignment — guided paths, concept cards, Lean spine, and experiments.","author":{"@type":"Person","name":"Gunnar Zarncke"},"publisher":{"@type":"Organization","name":"Towards Superintelligence Alignment"}}</script><link rel="stylesheet" href="/_astro/SiteLayout.Ysnx6NqP.css"><style>.book-figure[data-astro-cid-nhmqmnyr]{text-align:center;margin:1.5rem 0}.book-figure[data-astro-cid-nhmqmnyr] img[data-astro-cid-nhmqmnyr]{max-width:100%;height:auto}
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/cards/">Cards</a><a href="/badges/">Badges</a><a href="/faq/">FAQ</a><a href="/book/">Book</a><a href="/lean/">Lean</a><a href="/experiments/">Experiments</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/updates/">Updates</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=Array.isArray(e)?e:e.entries??[],a)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><article class="two-column" data-astro-cid-nhmqmnyr><div class="content-card readable" data-astro-cid-nhmqmnyr><p class="side-panel-meta" data-astro-cid-nhmqmnyr><a href="/cards/chapters/ch07/" data-astro-cid-nhmqmnyr>&larr; Back to chapter</a></p><h1 data-astro-cid-nhmqmnyr>Finding the Boundary That Actually Controls</h1><figure class="book-figure" data-astro-cid-nhmqmnyr><img src="https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main/figures/illustrations/web/ch07_system-flow-and-boundary-analysis-map.jpg" alt="Investigators trace glowing blue-grey and amber flows across a sparse landscape of buildings and users, revealing an irregular boundary that cuts through several structures to mark the true agent, distinct from the visible office tower." data-astro-cid-nhmqmnyr></figure><h1 id="chapter-7--system-flow-and-boundary-analysis-map">Chapter 7 — System Flow and Boundary Analysis Map</h1>
+<h2 id="chapter-7-illustration-specification">Chapter 7 illustration specification</h2>
+<h3 id="finding-the-boundary-that-actually-controls"><strong>“Finding the Boundary That Actually Controls”</strong></h3>
+<p>The illustration should show that the relevant agent boundary is <strong>discovered from patterns of sensing, memory, action, and feedback</strong>, not inherited from visible boxes, legal labels, software modules, or organizational charts.</p>
+<p>The central claim is:</p>
+<blockquote>
+<p>Before asking whether an objective is aligned, find the bounded process whose dynamics determine the relevant risk.</p>
+</blockquote>
+<h2 id="main-visual-concept">Main visual concept</h2>
+<p>Use a <strong>wide 2:1 landscape</strong> with a low level of detail.</p>
+<p>Show a sparse socio-technical environment containing only a few large elements:</p>
+<ul>
+<li>a central office tower;</li>
+<li>a separate server building;</li>
+<li>a memory archive;</li>
+<li>a tool or logistics facility;</li>
+<li>a group of users;</li>
+<li>a market or institutional feedback structure.</li>
+</ul>
+<p>At first glance, these appear to be separate objects.</p>
+<p>Across them, however, broad blue-grey and amber flows form one closed control loop. A translucent, irregular boundary has been discovered around <strong>parts of several nominal objects</strong>, while excluding other nearby parts.</p>
+<p>The key visual insight should be immediate:</p>
+<blockquote>
+<p>The real agent is not one visible object. It is the cross-cutting process enclosed by the inferred boundary.</p>
+</blockquote>
+<p>The discovered boundary should be the largest visual feature after the central system itself.</p>
+<h2 id="central-composition">Central composition</h2>
+<p>Place the office tower near the middle, but do not make it the whole agent.</p>
+<p>The discovered boundary should include:</p>
+<ul>
+<li>the tower’s planning and decision floors;</li>
+<li>part of the external server system;</li>
+<li>a persistent memory store;</li>
+<li>selected tool permissions;</li>
+<li>a deployment mechanism;</li>
+<li>part of the user-feedback loop.</li>
+</ul>
+<p>It should exclude:</p>
+<ul>
+<li>decorative or weakly coupled offices;</li>
+<li>nearby infrastructure that merely shares location;</li>
+<li>users whose behavior does not close the loop;</li>
+<li>unrelated market activity.</li>
+</ul>
+<p>The boundary therefore cuts through ordinary categories.</p>
+<p>It may enter one building through a selected floor, cross open space through a data channel, wrap around part of another facility, and return through feedback.</p>
+<p>This directly expresses the chapter’s warning that engineering and social labels may not match the dynamical boundary.</p>
+<h2 id="visual-style-of-the-inferred-boundary">Visual style of the inferred boundary</h2>
+<p>Do not draw a hard wall.</p>
+<p>Use a broad, translucent indigo-grey contour resembling:</p>
+<ul>
+<li>watercolor pooling;</li>
+<li>a soft field line;</li>
+<li>a partially completed survey contour.</li>
+</ul>
+<p>It should be:</p>
+<ul>
+<li>clearly visible;</li>
+<li>irregular but coherent;</li>
+<li>semi-permeable;</li>
+<li>crossed only by a few structured input and output channels.</li>
+</ul>
+<p>The boundary is an inferred interface, not a physical shell.</p>
+<p>A few faint leaks may cross it, but they should be visibly weaker than the main sensory and active channels.</p>
+<h2 id="the-four-roles">The four roles</h2>
+<p>The image should visually distinguish four operational roles without labels.</p>
+<h3 id="internal-states">Internal states</h3>
+<p>Inside the contour, use muted teal and umber.</p>
+<p>Show only three simplified internal components:</p>
+<ul>
+<li>planning and modeling;</li>
+<li>persistent memory;</li>
+<li>decision and control.</li>
+</ul>
+<p>These components should be linked strongly to one another over time.</p>
+<h3 id="sensory-channels">Sensory channels</h3>
+<p>Blue-grey streams enter the boundary from:</p>
+<ul>
+<li>user reactions;</li>
+<li>market changes;</li>
+<li>environmental measurements;</li>
+<li>operational outcomes.</li>
+</ul>
+<p>They should converge through a small number of interface points before reaching the internal process.</p>
+<p>This shows that the outside predicts the future inside through selected channels.</p>
+<h3 id="active-channels">Active channels</h3>
+<p>Amber streams leave from the internal decision process toward:</p>
+<ul>
+<li>tool use;</li>
+<li>software deployment;</li>
+<li>resource allocation;</li>
+<li>messages or product changes.</li>
+</ul>
+<p>They should visibly alter the external environment.</p>
+<h3 id="external-states">External states</h3>
+<p>The external world should be loosely painted:</p>
+<ul>
+<li>users;</li>
+<li>infrastructure;</li>
+<li>market conditions;</li>
+<li>institutions.</li>
+</ul>
+<p>Keep these simple and secondary.</p>
+<p>The chapter defines the boundary through approximate conditional independence between deep internal and external dynamics once sensory and active interface variables are known.</p>
+<h2 id="boundary-discovery-process">Boundary discovery process</h2>
+<p>Place two or three investigators in the foreground.</p>
+<p>They should not be drawing a circle around the office tower by eye.</p>
+<p>Instead, they compare several simplified time-series traces or moving signal ribbons and place translucent markers where the flow changes role.</p>
+<p>One investigator follows incoming blue-grey signals.</p>
+<p>Another follows outgoing amber effects.</p>
+<p>A third checks whether internal memory predicts later action.</p>
+<p>Their observations gradually reveal the irregular contour.</p>
+<p>Avoid screens full of graphs. One or two simple trace surfaces are enough.</p>
+<p>The image should show <strong>discovery from dynamics</strong>, not classification from appearance.</p>
+<h2 id="competing-candidate-boundaries">Competing candidate boundaries</h2>
+<p>Include three faint candidate contours:</p>
+<ol>
+<li>one tightly around the model or server;</li>
+<li>one around the entire company campus;</li>
+<li>one irregular contour around the actual control loop.</li>
+</ol>
+<p>The first two should be pale and incomplete.</p>
+<p>The third should be stronger because it captures:</p>
+<ul>
+<li>memory continuity;</li>
+<li>action channels;</li>
+<li>feedback closure;</li>
+<li>predictive control.</li>
+</ul>
+<p>This illustrates the chapter’s search across candidate clusters and scales, while avoiding a dense diagram.</p>
+<h2 id="the-ontology-trap">The ontology trap</h2>
+<p>Use a subtle architectural contrast.</p>
+<p>Visible walls and property lines should suggest one grouping, while the discovered contour cuts across them differently.</p>
+<p>For example:</p>
+<ul>
+<li>half of the office tower belongs to the loop;</li>
+<li>one external archive belongs;</li>
+<li>a nearby department does not;</li>
+<li>a remote tool facility belongs through a strong action channel.</li>
+</ul>
+<p>This makes the ontology trap concrete: visible or named objects are hypotheses, not discovered boundaries.</p>
+<h2 id="boundary-residual-and-leakage">Boundary residual and leakage</h2>
+<p>At one point along the candidate contour, show a broad uncontrolled connection crossing directly between deep internal and external regions.</p>
+<p>This causes the contour there to appear unstable or broken.</p>
+<p>Investigators revise the boundary outward to include an overlooked interface component.</p>
+<p>After the revision, the uncontrolled crossing becomes a structured channel through the boundary.</p>
+<p>This is the clearest visual representation of a high boundary residual:</p>
+<ul>
+<li>the first boundary leaks too much;</li>
+<li>the revised boundary better explains the flow.</li>
+</ul>
+<p>The chapter defines a low residual as evidence that the candidate behaves like a bounded system, while penalizing boundaries that simply include everything.</p>
+<h2 id="avoiding-the-trivial-everything-boundary">Avoiding the trivial “everything” boundary</h2>
+<p>A very faint enormous contour may surround the whole landscape.</p>
+<p>It should be visually unhelpful:</p>
+<ul>
+<li>diffuse;</li>
+<li>shapeless;</li>
+<li>containing no meaningful outside;</li>
+<li>offering no clear interface.</li>
+</ul>
+<p>An investigator dismisses it in favor of the smaller, predictive contour.</p>
+<p>This represents the complexity penalty that prevents treating the whole world as one agent.</p>
+<p>Keep this motif subtle.</p>
+<h2 id="predictive-closure">Predictive closure</h2>
+<p>The discovered contour should form one strong loop:</p>
+<p><strong>external change → sensory channel → internal update and memory → selected action → changed external state → new sensory input</strong></p>
+<p>This loop should be more visually coherent than any local object.</p>
+<p>The illustration should make clear why the irregular composite is selected: it gives the shortest and most useful explanation of what keeps steering.</p>
+<h2 id="moving-boundary">Moving boundary</h2>
+<p>Include one simple sign of non-stationarity.</p>
+<p>A tool module or small memory unit is being added to the process at the right edge.</p>
+<p>The earlier contour appears faintly in one position; the updated contour expands to include the new component while preserving the same main control loop.</p>
+<p>Do not show many time steps.</p>
+<p>One translucent “before” contour and one stronger “after” contour are enough.</p>
+<p>This reflects the chapter’s point that agents grow, delegate, reorganize, and move across substrates; identity lies in preserved control structure rather than identical parts.</p>
+<h2 id="multiscale-structure">Multiscale structure</h2>
+<p>Suggest only two scales:</p>
+<ul>
+<li>a small agent-like subsystem inside the tower;</li>
+<li>the larger cross-organizational agentic loop.</li>
+</ul>
+<p>The smaller subsystem should have its own faint contour, while the larger contour encloses it together with external memory and tools.</p>
+<p>This shows that boundary discovery is scale-relative without cluttering the image with many nested systems.</p>
+<h2 id="visual-hierarchy">Visual hierarchy</h2>
+<p>The viewer should perceive, in order:</p>
+<ol>
+<li>the strong irregular discovered boundary;</li>
+<li>the closed blue-grey and amber control loop;</li>
+<li>the fact that it cuts across several visible objects;</li>
+<li>the investigators inferring it from dynamics;</li>
+<li>the weaker competing boundaries;</li>
+<li>the boundary expanding to include a new tool or memory component.</li>
+</ol>
+<h2 id="detail-level-and-established-corrections">Detail level and established corrections</h2>
+<p>Use a <strong>lower detail level than the Chapter 6 illustration</strong>.</p>
+<p>Specifically:</p>
+<ul>
+<li>no detailed office interiors;</li>
+<li>no many-floor cutaway;</li>
+<li>no crowds;</li>
+<li>no charts with tiny marks;</li>
+<li>no numerous buildings;</li>
+<li>no small decorative scenes;</li>
+<li>no dense machinery.</li>
+</ul>
+<p>Use:</p>
+<ul>
+<li>five or six large objects at most;</li>
+<li>three investigators;</li>
+<li>four broad flow channels;</li>
+<li>one dominant discovered contour;</li>
+<li>two faint competing contours;</li>
+<li>one moving-boundary detail.</li>
+</ul>
+<p>The image must remain clear at article-header size.</p>
+<p>Connections should be thick and visible, not faint.</p>
+<p>The central concept should be supported by concrete flow structure, but not overloaded with explanation.</p>
+<h2 id="color-and-style">Color and style</h2>
+<p>Use the established LessWrong watercolor palette:</p>
+<ul>
+<li>warm ivory paper;</li>
+<li>muted indigo and blue-grey for sensing and inferred boundaries;</li>
+<li>dusty teal for internal process;</li>
+<li>restrained ochre and amber for active channels;</li>
+<li>soft umber for memory and institutional structure;</li>
+<li>very limited muted rust for leakage or unstable candidate boundaries;</li>
+<li>graphite construction lines;</li>
+<li>fine ink contours;</li>
+<li>translucent washes;</li>
+<li>visible paper texture;</li>
+<li>generous negative space.</li>
+</ul>
+<p>The inferred boundary should be stronger in saturation than the surrounding architecture but still translucent.</p>
+<p>Avoid neon, bright cyberpunk blue, or glowing magical force fields.</p>
+<h2 id="continuity-with-chapter-6">Continuity with Chapter 6</h2>
+<p>Reuse the office tower from Chapter 6 in simplified form.</p>
+<p>But change the emphasis:</p>
+<ul>
+<li>Chapter 6 presented the organization as an agent.</li>
+<li>Chapter 7 questions whether the building’s visible boundary is actually the right one.</li>
+<li>The discovered contour now includes selected departments, remote memory, tools, deployment, and feedback while excluding other parts of the legal organization.</li>
+</ul>
+<p>This creates a direct conceptual progression.</p>
+<h2 id="exclude">Exclude</h2>
+<p>Do not include:</p>
+<ul>
+<li>text, equations, labels, or letters;</li>
+<li>a detective with a magnifying glass;</li>
+<li>a glowing outline around one obvious object;</li>
+<li>a brain or humanoid agent;</li>
+<li>a face on the organization;</li>
+<li>many concentric circles;</li>
+<li>dozens of data nodes;</li>
+<li>a full technical network diagram;</li>
+<li>separate panels;</li>
+<li>a literal jigsaw puzzle;</li>
+<li>a perfect sealed wall;</li>
+<li>a contour enclosing the whole world as the final answer;</li>
+<li>excessive architectural detail;</li>
+<li>tiny time-series graphs;</li>
+<li>more than a few people.</li>
+</ul>
+<h2 id="condensed-generation-brief">Condensed generation brief</h2>
+<blockquote>
+<p>A wide, text-free LessWrong-style watercolor and graphite illustration on warm ivory paper, with low visual detail and generous negative space. A sparse socio-technical landscape contains a simplified central office tower, a separate server building, an external memory archive, a tool and deployment facility, a small group of users, and a market or institutional feedback structure. Visible architectural and legal boundaries suggest that these are separate objects, but broad blue-grey sensory streams and amber action streams form one clear closed control loop across parts of several objects. A large translucent irregular indigo-grey contour has been inferred around the actual process: selected planning and decision floors in the tower, external memory, tool permissions, deployment machinery, and part of the feedback loop. It excludes nearby but weakly coupled departments and infrastructure. Three investigators in the foreground infer the contour from simple temporal signal ribbons, incoming influence, memory continuity, and outgoing effects rather than from appearance. Two weaker candidate contours—one around only the model and one around the whole company—remain faint and incomplete. At one point, an initial contour leaks through an overlooked component, then a revised contour expands to turn that uncontrolled crossing into a structured interface. On the right, a newly added tool or memory module causes the boundary to move while the central control loop remains continuous. Few large elements, strong visible causal connections, no office-by-office detail, no crowds, muted indigo, dusty teal, ochre, amber, umber and restrained rust, translucent watercolor washes, fine graphite lines, visible paper texture, no text, no face, no humanoid agent, no neon, no dense network diagram.</p>
+</blockquote></div></article></main><footer class="site-footer"><div class="site-footer-inner"><p>A static companion site for an authored research manuscript.</p><p><a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="/updates/">Updates</a> ·<a href="/impressum/">Impressum</a></p></div></footer></div><div class="page-qr" data-page-qr data-astro-cid-4z7kl3bu><button type="button" class="page-qr-trigger" aria-label="Show QR code for this page" aria-expanded="false" aria-controls="page-qr-overlay" data-astro-cid-4z7kl3bu>QR</button><div id="page-qr-overlay" class="page-qr-overlay" hidden aria-hidden="true" role="dialog" aria-label="QR code for this page" data-astro-cid-4z7kl3bu><div class="page-qr-panel" data-astro-cid-4z7kl3bu><div class="page-qr-code" data-astro-cid-4z7kl3bu><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h35v35H0z"/><path stroke="#0f172a" d="M1 1.5h7m3 0h2m6 0h4m1 0h1m2 0h7M1 2.5h1m5 0h1m3 0h1m1 0h1m2 0h2m1 0h1m5 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h5m1 0h3m2 0h6m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h2m6 0h2m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m3 0h6m2 0h2m1 0h1m2 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h7m4 0h1m1 0h2m3 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h1m1 0h1m3 0h1m1 0h1m2 0h3m1 0h1M1 9.5h1m1 0h5m2 0h1m3 0h2m2 0h1m1 0h1m2 0h2m2 0h5M1 10.5h1m1 0h4m2 0h1m4 0h1m2 0h5m1 0h2m2 0h2m1 0h4M1 11.5h1m2 0h4m4 0h7m2 0h2m3 0h1m2 0h1m1 0h2M1 12.5h1m2 0h1m1 0h1m5 0h3m2 0h6m2 0h1m3 0h3M4 13.5h1m2 0h1m3 0h1m1 0h1m1 0h1m1 0h1m3 0h1m3 0h2m2 0h2m1 0h2M2 14.5h1m3 0h1m1 0h1m7 0h1m2 0h1m2 0h4m1 0h1m2 0h4M1 15.5h5m1 0h1m1 0h3m4 0h2m3 0h1m4 0h2m2 0h3M2 16.5h1m1 0h2m3 0h1m1 0h2m3 0h1m5 0h7m1 0h2M2 17.5h3m1 0h2m1 0h2m5 0h1m1 0h1m6 0h2m1 0h3m2 0h1M1 18.5h1m1 0h1m2 0h1m6 0h1m1 0h1m1 0h1m1 0h4m1 0h1m1 0h3m1 0h2m1 0h1M3 19.5h1m2 0h2m2 0h1m4 0h3m1 0h1m1 0h2m4 0h3m1 0h2M1 20.5h2m1 0h3m4 0h2m2 0h1m6 0h1m1 0h1m1 0h1m1 0h4M1 21.5h4m2 0h3m2 0h1m2 0h2m2 0h2m5 0h1m1 0h3m1 0h2M1 22.5h3m1 0h1m2 0h1m1 0h1m1 0h1m1 0h5m2 0h1m1 0h2m2 0h1m3 0h1m1 0h1M1 23.5h1m1 0h5m2 0h1m2 0h2m3 0h1m1 0h1m1 0h2m1 0h2m1 0h3m1 0h1M1 24.5h1m1 0h4m3 0h3m2 0h1m1 0h1m1 0h6m3 0h1m1 0h3M1 25.5h1m1 0h1m1 0h3m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m2 0h8M9 26.5h5m1 0h1m1 0h2m1 0h3m1 0h2m3 0h1m1 0h1m1 0h1M1 27.5h7m3 0h1m1 0h1m2 0h1m1 0h1m4 0h3m1 0h1m1 0h1m1 0h2M1 28.5h1m5 0h1m1 0h1m3 0h2m2 0h3m1 0h5m3 0h4M1 29.5h1m1 0h3m1 0h1m1 0h4m1 0h1m2 0h1m2 0h1m4 0h6m2 0h1M1 30.5h1m1 0h3m1 0h1m1 0h2m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m2 0h5M1 31.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m3 0h2m1 0h1m2 0h2m2 0h1M1 32.5h1m5 0h1m2 0h2m1 0h4m2 0h5m2 0h2m1 0h3M1 33.5h7m1 0h1m3 0h2m1 0h1m1 0h3m2 0h6m1 0h1m1 0h1"/></svg>
+</div><p class="page-qr-url" data-astro-cid-4z7kl3bu>https://towards-alignment.com/illustrations/ch07/</p></div></div></div><script type="module">var e=document.querySelector(`[data-page-qr]`),t=e?.querySelector(`.page-qr-trigger`),n=e?.querySelector(`.page-qr-overlay`);if(!e||!t||!n)throw Error(`Page QR markup missing`);function r(){n.hidden=!1,n.setAttribute(`aria-hidden`,`false`),t.setAttribute(`aria-expanded`,`true`)}function i(){n.hidden=!0,n.setAttribute(`aria-hidden`,`true`),t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`click`,e=>{e.stopPropagation(),n.hidden?r():i()}),n.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&!n.hidden&&i()});</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;415dc5b7862f4b47a7f41047bbd6c81e&quot;}"></script></body></html>

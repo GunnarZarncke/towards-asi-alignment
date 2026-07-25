@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Generation prompt for the ch01 chapter-opening illustration, &quot;The System Outside the Glass Box.&quot;"><meta name="author" content="Gunnar Zarncke"><meta name="robots" content="noindex, follow"><link rel="canonical" href="https://towards-alignment.com/illustrations/ch01/"><link rel="alternate" type="text/plain" href="https://towards-alignment.com/llms.txt" title="LLM / agent orientation (llms.txt)"><link rel="alternate" type="application/json" href="https://towards-alignment.com/search-index.json" title="Site search index"><title>Illustration prompt: The System Outside the Glass Box | Towards Superintelligence Alignment</title><meta property="og:title" content="Illustration prompt: The System Outside the Glass Box | Towards Superintelligence Alignment"><meta property="og:description" content="Generation prompt for the ch01 chapter-opening illustration, &quot;The System Outside the Glass Box.&quot;"><meta property="og:url" content="https://towards-alignment.com/illustrations/ch01/"><meta property="og:type" content="website"><meta property="og:site_name" content="Towards Superintelligence Alignment"><meta property="og:locale" content="en"><meta property="og:image" content="https://towards-alignment.com/og-image.png"><meta property="og:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Illustration prompt: The System Outside the Glass Box | Towards Superintelligence Alignment"><meta name="twitter:description" content="Generation prompt for the ch01 chapter-opening illustration, &quot;The System Outside the Glass Box.&quot;"><meta name="twitter:image" content="https://towards-alignment.com/og-image.png"><meta name="twitter:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Towards Superintelligence Alignment","url":"https://towards-alignment.com","description":"A companion site for the book Towards Superintelligence Alignment — guided paths, concept cards, Lean spine, and experiments.","author":{"@type":"Person","name":"Gunnar Zarncke"},"publisher":{"@type":"Organization","name":"Towards Superintelligence Alignment"}}</script><link rel="stylesheet" href="/_astro/SiteLayout.Ysnx6NqP.css"><style>.book-figure[data-astro-cid-nhmqmnyr]{text-align:center;margin:1.5rem 0}.book-figure[data-astro-cid-nhmqmnyr] img[data-astro-cid-nhmqmnyr]{max-width:100%;height:auto}
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/cards/">Cards</a><a href="/badges/">Badges</a><a href="/faq/">FAQ</a><a href="/book/">Book</a><a href="/lean/">Lean</a><a href="/experiments/">Experiments</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/updates/">Updates</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=Array.isArray(e)?e:e.entries??[],a)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><article class="two-column" data-astro-cid-nhmqmnyr><div class="content-card readable" data-astro-cid-nhmqmnyr><p class="side-panel-meta" data-astro-cid-nhmqmnyr><a href="/cards/chapters/ch01/" data-astro-cid-nhmqmnyr>&larr; Back to chapter</a></p><h1 data-astro-cid-nhmqmnyr>The System Outside the Glass Box</h1><figure class="book-figure" data-astro-cid-nhmqmnyr><img src="https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main/figures/illustrations/web/ch01_connection-of-science-and-network.jpg" alt="A researcher tends a small glowing geometric mechanism inside a glass enclosure, while thin channels reveal it is connected to a much larger circulatory system of users, metrics, institutions, and training that forms the true optimizing loop." data-astro-cid-nhmqmnyr></figure><h1 id="chapter-1--connection-of-science-and-network">Chapter 1 — Connection of Science and Network</h1>
+<h2 id="recommended-concept-the-system-outside-the-glass-box">Recommended concept: <strong>“The System Outside the Glass Box”</strong></h2>
+<p>The illustration should initially appear to show a researcher aligning an AI model, then reveal that the consequential optimizing process extends far beyond the model. This directly represents Chapter 1’s central claim: local alignment can succeed while the composite system fails because the evaluator chose the wrong boundary. fileciteturn12file0L3-L14</p>
+<h3 id="overall-composition">Overall composition</h3>
+<p>Use a <strong>wide 2:1 landscape</strong>, suitable for a LessWrong chapter header.</p>
+<p>At the lower-left or lower-center, a human researcher carefully works on a <strong>small geometric machine inside a transparent glass enclosure</strong>. The machine is calm and innocuous, perhaps a softly glowing polyhedral mechanism rather than a humanoid robot. The researcher is adjusting it with delicate tools or tying a narrow golden thread from a small compass labelled only visually, not with text.</p>
+<p>The glass enclosure suggests the obvious evaluation boundary: <em>the model</em>.</p>
+<p>But several thin channels pass unobtrusively through the glass. They expand into a much larger circular system occupying the middle and background:</p>
+<p>[
+\text{people}
+\rightarrow
+\text{model}
+\rightarrow
+\text{metrics}
+\rightarrow
+\text{institution}
+\rightarrow
+\text{training}
+\rightarrow
+\text{people}.
+]</p>
+<p>That is the chapter’s concrete customer-support loop, in which user behavior, model responses, metrics, product updates, and fine-tuning recursively shape one another. fileciteturn12file0L89-L133</p>
+<p>From nearby, the viewer sees separate objects. From a distance, their connecting currents form the faint outline of a <strong>single large creature or living system</strong>. Not a monster, but something ambiguous: perhaps a whale, manta ray, or enormous bird made from cables, roads, crowds, paperwork, and data currents. The visual realization is:</p>
+<blockquote>
+<p>The little machine is inside the system. It is not necessarily the system.</p>
+</blockquote>
+<h2 id="visual-hierarchy">Visual hierarchy</h2>
+<h3 id="1-foreground-the-apparent-alignment-object">1. Foreground: the apparent alignment object</h3>
+<p>Include:</p>
+<ul>
+<li>A small, elegant model-like mechanism.</li>
+<li>A glass box, test chamber, or carefully delimited circle.</li>
+<li>One researcher or auditor concentrating on it.</li>
+<li>Calibration weights, rulers, checkmarks, or balanced scales.</li>
+<li>A visible sign that the local test succeeds: the mechanism is symmetrical, stable, or emitting a clean warm light.</li>
+</ul>
+<p>The researcher should not look foolish. They are doing competent work on a real component. The error is not bad engineering, but <strong>failing to step back far enough</strong>.</p>
+<h3 id="2-middle-ground-the-hidden-feedback-loop">2. Middle ground: the hidden feedback loop</h3>
+<p>Around the enclosure, arrange four or five semi-representational stations connected by flowing watercolor lines:</p>
+<ul>
+<li><strong>Users:</strong> several people interacting through phones or terminals.</li>
+<li><strong>Metric machinery:</strong> gauges, counters, stars, or a narrowing funnel.</li>
+<li><strong>Product institution:</strong> an office tower, meeting table, or paperwork desk.</li>
+<li><strong>Training/data:</strong> pages or colored fragments being fed back into the machine.</li>
+<li><strong>External pressure:</strong> coins, market stalls, government buildings, or competing towers.</li>
+</ul>
+<p>These should form a loop rather than a linear production chain. Chapter 1 emphasizes that the deployed system includes interfaces, memory, tools, users, operators, companies, markets, and sometimes states, each contributing different forms of memory, selection, reward, constraint, or amplification. fileciteturn12file0L61-L78</p>
+<p>Make the connections more salient than the nodes. The chapter is about the <strong>process</strong>, not the inventory of components.</p>
+<h3 id="3-background-the-moving-boundary">3. Background: the moving boundary</h3>
+<p>Let the feedback currents spread outward into increasingly faint nested contours:</p>
+<ol>
+<li>model,</li>
+<li>session,</li>
+<li>agent scaffold,</li>
+<li>product loop,</li>
+<li>company,</li>
+<li>industry-state system.</li>
+</ol>
+<p>The chapter explicitly presents these as nested candidate boundaries whose objectives can differ and conflict. fileciteturn13file0L167-L207</p>
+<p>Do not draw six hard boxes. Instead, use translucent watercolor washes, like overlapping shorelines or magnetic fields. This communicates that the relevant boundary is discovered empirically rather than stipulated from physical containment.</p>
+<p>Near the horizon, allow one tendril of the system to begin drawing or constructing another similar mechanism. This lightly foreshadows successor creation and the possibility that the operative boundary moves as capability grows. fileciteturn13file0L294-L334</p>
+<h2 id="central-visual-metaphor">Central visual metaphor</h2>
+<p>The strongest metaphor is <strong>figure-ground reversal</strong>.</p>
+<p>On first glance:</p>
+<blockquote>
+<p>A scientist is aligning a machine.</p>
+</blockquote>
+<p>On second glance:</p>
+<blockquote>
+<p>A much larger adaptive structure is using the machine as one organ.</p>
+</blockquote>
+<p>On third glance:</p>
+<blockquote>
+<p>The scientist and laboratory may themselves be inside that structure.</p>
+</blockquote>
+<p>This gives the image motivational force. It does not merely warn that the problem is complicated. It invites the reader to change scale and discover the actual object.</p>
+<h2 id="lesswrong-watercolor-treatment">LessWrong watercolor treatment</h2>
+<p>Use:</p>
+<ul>
+<li>Warm ivory or lightly stained paper.</li>
+<li>Loose graphite or ink contours under transparent watercolor.</li>
+<li>Muted indigo, blue-grey, faded teal, ochre, and restrained rust.</li>
+<li>One warm gold accent for the presumed alignment signal.</li>
+<li>Soft edges in the outer system, with sharper detail around the glass box.</li>
+<li>Large areas of negative space.</li>
+<li>Slightly surreal scale, but physically legible objects.</li>
+<li>Fine connecting lines that partly dissolve into washes.</li>
+</ul>
+<p>The small model should be rendered precisely. The wider system should be more organic and uncertain. This reverses the usual visual language: what looks technically crisp is epistemically incomplete, while what is difficult to delineate may contain the causally important structure.</p>
+<h2 id="important-elements-to-include">Important elements to include</h2>
+<ul>
+<li>A visibly successful local test.</li>
+<li>A transparent but permeable boundary.</li>
+<li>Feedback returning into the model.</li>
+<li>Human adaptation, not merely passive human use.</li>
+<li>Institutional metrics as an active causal component.</li>
+<li>Nested or expanding candidate boundaries.</li>
+<li>A subtle sign of persistence or rerouting.</li>
+<li>The researcher located within the larger causal scene.</li>
+</ul>
+<p>One possible small detail: a channel from the box is blocked, but the surrounding current quietly takes another route. This anticipates the chapter’s perturbational test: an agentic process may compensate when tools, memory, permissions, or feedback are altered, whereas a passive mechanism merely degrades. fileciteturn13file0L255-L291</p>
+<h2 id="elements-to-avoid">Elements to avoid</h2>
+<p>Avoid:</p>
+<ul>
+<li>A red-eyed robot or obvious evil superintelligence.</li>
+<li>A human versus machine confrontation.</li>
+<li>A brain made from circuit boards.</li>
+<li>Binary code, padlocks, shields, or generic cyber-security imagery.</li>
+<li>A dense infographic with labelled arrows.</li>
+<li>Depicting the corporation as deliberately malicious.</li>
+<li>Making the glass box literally imprison a conscious humanoid.</li>
+<li>Presenting the outer system as an unambiguously coherent monster.</li>
+</ul>
+<p>The chapter’s interesting claim is precisely that no component needs malicious intent. The composite can still acquire a stable optimization loop. fileciteturn12file0L125-L137</p>
+<h2 id="placement">Placement</h2>
+<p>Reserve the upper-left quarter for the chapter title overlay. Put the sharpest focal point slightly right of center or in the lower-right third. The larger creature-like pattern should be discoverable rather than dominant, becoming apparent after several seconds.</p>
+<p>A practical layout:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>┌─────────────────────────────────────────────────────────────┐</span></span>
+<span class="line"><span>│   quiet title space                    faint city / horizon  │</span></span>
+<span class="line"><span>│                                        ↗ successor process  │</span></span>
+<span class="line"><span>│         broad translucent outline of composite system       │</span></span>
+<span class="line"><span>│              users → metrics → institution                  │</span></span>
+<span class="line"><span>│                 ↑                     ↓                     │</span></span>
+<span class="line"><span>│          researcher → [glass-box model] → training          │</span></span>
+<span class="line"><span>│                         ↘ hidden return flow ↗               │</span></span>
+<span class="line"><span>└─────────────────────────────────────────────────────────────┘</span></span></code></pre>
+<h2 id="two-alternative-concepts">Two alternative concepts</h2>
+<h3 id="the-wrong-constellation"><strong>The Wrong Constellation</strong></h3>
+<p>An astronomer carefully circles one bright star and labels it as the object of interest, while faint lines reveal that the actual constellation includes many stars, instruments, observers, and a moving celestial body. Elegant and less literal, but weaker on feedback and institutional dynamics.</p>
+<h3 id="aligning-one-gear"><strong>Aligning One Gear</strong></h3>
+<p>A watchmaker adjusts a perfectly balanced golden gear on a workbench. Behind the table, that gear is already embedded in an enormous water-driven machine whose other gears include crowds, markets, paperwork, and tools. Strong causal metaphor, though it risks implying that the full system has a fixed, designed architecture.</p>
+<p>The glass-box composition is preferable because it simultaneously captures <strong>evaluation, mistaken containment, feedback, composite agency, and boundary expansion</strong>. Its emotional tone should be discovery rather than doom: the reader realizes that the problem becomes more tractable once they stop assuming where the optimizer is.</p></div></article></main><footer class="site-footer"><div class="site-footer-inner"><p>A static companion site for an authored research manuscript.</p><p><a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="/updates/">Updates</a> ·<a href="/impressum/">Impressum</a></p></div></footer></div><div class="page-qr" data-page-qr data-astro-cid-4z7kl3bu><button type="button" class="page-qr-trigger" aria-label="Show QR code for this page" aria-expanded="false" aria-controls="page-qr-overlay" data-astro-cid-4z7kl3bu>QR</button><div id="page-qr-overlay" class="page-qr-overlay" hidden aria-hidden="true" role="dialog" aria-label="QR code for this page" data-astro-cid-4z7kl3bu><div class="page-qr-panel" data-astro-cid-4z7kl3bu><div class="page-qr-code" data-astro-cid-4z7kl3bu><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h35v35H0z"/><path stroke="#0f172a" d="M1 1.5h7m1 0h1m4 0h2m1 0h3m2 0h2m3 0h7M1 2.5h1m5 0h1m2 0h2m5 0h1m4 0h1m4 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h1m3 0h2m1 0h1m1 0h1m3 0h1m2 0h1m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m2 0h1m1 0h2m2 0h1m3 0h1m1 0h2m3 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m3 0h3m2 0h1m3 0h1m1 0h2m3 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h1m1 0h1m2 0h3m2 0h2m2 0h1m1 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 8.5h4m1 0h3m1 0h3m2 0h2M1 9.5h1m1 0h1m3 0h2m1 0h3m4 0h1m3 0h1m6 0h1m2 0h1m1 0h1M3 10.5h1m1 0h2m2 0h1m3 0h2m1 0h3m1 0h6m1 0h1m2 0h1m1 0h2M2 11.5h3m1 0h4m1 0h1m1 0h1m2 0h1m3 0h1m1 0h3m2 0h1m2 0h2m1 0h1M2 12.5h1m9 0h1m1 0h1m1 0h3m1 0h2m6 0h3M2 13.5h8m1 0h4m3 0h1m1 0h1m2 0h3m1 0h1M1 14.5h1m1 0h1m2 0h1m3 0h4m9 0h2m2 0h2m1 0h1m1 0h2M1 15.5h1m4 0h3m1 0h1m3 0h3m1 0h1m1 0h1m2 0h2m4 0h1m1 0h1m1 0h1M1 16.5h2m2 0h1m4 0h3m6 0h1m3 0h2m1 0h2m2 0h1M4 17.5h2m1 0h2m1 0h3m1 0h4m2 0h2m1 0h3m1 0h2m3 0h1M1 18.5h1m1 0h4m8 0h3m2 0h2m2 0h4m2 0h1m2 0h1M2 19.5h1m2 0h1m1 0h3m1 0h2m1 0h1m1 0h1m1 0h3m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1M12 20.5h2m2 0h1m2 0h1m4 0h3m2 0h2M1 21.5h1m3 0h3m2 0h1m5 0h4m1 0h1m1 0h2m2 0h2M3 22.5h3m2 0h1m3 0h1m1 0h1m2 0h3m1 0h5m1 0h2m4 0h1M1 23.5h2m4 0h5m1 0h1m1 0h1m1 0h1m3 0h2m1 0h2m1 0h2m4 0h1M4 24.5h3m1 0h2m1 0h2m2 0h3m2 0h2m1 0h3m4 0h1m1 0h1M1 25.5h3m3 0h1m2 0h1m1 0h3m2 0h1m3 0h1m3 0h5m2 0h2M9 26.5h1m1 0h2m2 0h7m2 0h2m3 0h1m3 0h1M1 27.5h7m1 0h1m1 0h3m1 0h3m2 0h4m1 0h1m1 0h1m1 0h3m1 0h1M1 28.5h1m5 0h1m7 0h4m2 0h1m1 0h3m3 0h2m1 0h1M1 29.5h1m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1m2 0h1m2 0h1m1 0h7m2 0h1M1 30.5h1m1 0h3m1 0h1m6 0h1m9 0h3m1 0h3m1 0h2M1 31.5h1m1 0h3m1 0h1m1 0h5m1 0h2m1 0h1m1 0h1m1 0h2m2 0h1m1 0h6M1 32.5h1m5 0h1m3 0h2m1 0h2m4 0h2m1 0h1m1 0h6M1 33.5h7m1 0h1m1 0h3m1 0h3m1 0h1m1 0h1m3 0h1m2 0h2m3 0h1"/></svg>
+</div><p class="page-qr-url" data-astro-cid-4z7kl3bu>https://towards-alignment.com/illustrations/ch01/</p></div></div></div><script type="module">var e=document.querySelector(`[data-page-qr]`),t=e?.querySelector(`.page-qr-trigger`),n=e?.querySelector(`.page-qr-overlay`);if(!e||!t||!n)throw Error(`Page QR markup missing`);function r(){n.hidden=!1,n.setAttribute(`aria-hidden`,`false`),t.setAttribute(`aria-expanded`,`true`)}function i(){n.hidden=!0,n.setAttribute(`aria-hidden`,`true`),t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`click`,e=>{e.stopPropagation(),n.hidden?r():i()}),n.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&!n.hidden&&i()});</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;415dc5b7862f4b47a7f41047bbd6c81e&quot;}"></script></body></html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Generation prompt for the ch06 chapter-opening illustration, &quot;The Organization as Agent.&quot;"><meta name="author" content="Gunnar Zarncke"><meta name="robots" content="noindex, follow"><link rel="canonical" href="https://towards-alignment.com/illustrations/ch06/"><link rel="alternate" type="text/plain" href="https://towards-alignment.com/llms.txt" title="LLM / agent orientation (llms.txt)"><link rel="alternate" type="application/json" href="https://towards-alignment.com/search-index.json" title="Site search index"><title>Illustration prompt: The Organization as Agent | Towards Superintelligence Alignment</title><meta property="og:title" content="Illustration prompt: The Organization as Agent | Towards Superintelligence Alignment"><meta property="og:description" content="Generation prompt for the ch06 chapter-opening illustration, &quot;The Organization as Agent.&quot;"><meta property="og:url" content="https://towards-alignment.com/illustrations/ch06/"><meta property="og:type" content="website"><meta property="og:site_name" content="Towards Superintelligence Alignment"><meta property="og:locale" content="en"><meta property="og:image" content="https://towards-alignment.com/og-image.png"><meta property="og:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Illustration prompt: The Organization as Agent | Towards Superintelligence Alignment"><meta name="twitter:description" content="Generation prompt for the ch06 chapter-opening illustration, &quot;The Organization as Agent.&quot;"><meta name="twitter:image" content="https://towards-alignment.com/og-image.png"><meta name="twitter:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Towards Superintelligence Alignment","url":"https://towards-alignment.com","description":"A companion site for the book Towards Superintelligence Alignment — guided paths, concept cards, Lean spine, and experiments.","author":{"@type":"Person","name":"Gunnar Zarncke"},"publisher":{"@type":"Organization","name":"Towards Superintelligence Alignment"}}</script><link rel="stylesheet" href="/_astro/SiteLayout.Ysnx6NqP.css"><style>.book-figure[data-astro-cid-nhmqmnyr]{text-align:center;margin:1.5rem 0}.book-figure[data-astro-cid-nhmqmnyr] img[data-astro-cid-nhmqmnyr]{max-width:100%;height:auto}
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/cards/">Cards</a><a href="/badges/">Badges</a><a href="/faq/">FAQ</a><a href="/book/">Book</a><a href="/lean/">Lean</a><a href="/experiments/">Experiments</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/glossary/">Glossary</a><a href="/about/">About</a><a href="/updates/">Updates</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=Array.isArray(e)?e:e.entries??[],a)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><article class="two-column" data-astro-cid-nhmqmnyr><div class="content-card readable" data-astro-cid-nhmqmnyr><p class="side-panel-meta" data-astro-cid-nhmqmnyr><a href="/cards/chapters/ch06/" data-astro-cid-nhmqmnyr>&larr; Back to chapter</a></p><h1 data-astro-cid-nhmqmnyr>The Organization as Agent</h1><figure class="book-figure" data-astro-cid-nhmqmnyr><img src="https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main/figures/illustrations/web/ch06_systems-flow-through-the-corporate-tower.jpg" alt="A cutaway office tower with no face or body shows departments for observation, memory, planning, decision-making, operations, and evaluation forming one continuous control loop, with a small AI system amplifying several floors." data-astro-cid-nhmqmnyr></figure><h1 id="chapter-6--systems-flow-through-the-corporate-tower">Chapter 6 — Systems Flow Through the Corporate Tower</h1>
+<h2 id="chapter-6-illustration-specification">Chapter 6 illustration specification</h2>
+<h3 id="the-organization-as-agent"><strong>“The Organization as Agent”</strong></h3>
+<p>The illustration should depict an organization as an agent <strong>without giving it a face, body, or humanoid form</strong>.</p>
+<p>The central claim is:</p>
+<blockquote>
+<p>An agent is a bounded control process whose interface, memory, action channels, and goal-like organization make its future behavior more predictable when modeled as controlling something.</p>
+</blockquote>
+<p>The organization should therefore appear agentic through its architecture and flows, not through anthropomorphic symbolism.</p>
+<h2 id="main-composition">Main composition</h2>
+<p>Use a <strong>wide 2:1 landscape</strong>.</p>
+<p>At the centre stands a large <strong>cutaway office tower</strong>, occupying roughly one third of the image width and most of its height.</p>
+<p>The tower is the organization’s internal process. Its floors and departments are visibly connected by:</p>
+<ul>
+<li>elevators;</li>
+<li>document tubes;</li>
+<li>internal data lines;</li>
+<li>meeting rooms;</li>
+<li>financial channels;</li>
+<li>shared databases;</li>
+<li>institutional routines.</li>
+</ul>
+<p>The tower has no face, eyes, head, or body-like silhouette.</p>
+<p>Its agency should emerge from the fact that many different departments jointly transform external inputs into coordinated external actions over time.</p>
+<p>The tower should be large, simple, and legible. Avoid rendering hundreds of offices or tiny employees.</p>
+<h2 id="the-organizational-boundary">The organizational boundary</h2>
+<p>The building envelope is the main visual boundary.</p>
+<p>It should not look sealed. Instead, it should have a small number of clearly structured interfaces:</p>
+<ul>
+<li>input docks;</li>
+<li>public reception;</li>
+<li>communication antennas;</li>
+<li>data connections;</li>
+<li>procurement entrances;</li>
+<li>output gates;</li>
+<li>contract and product dispatch areas.</li>
+</ul>
+<p>The building shields its internal processes from arbitrary outside fluctuation while allowing selected signals and actions to cross.</p>
+<p>That is the chapter’s key boundary idea: a boundary is an <strong>interface, not a wall</strong>.</p>
+<p>Use a faint translucent blue-grey wash around the tower to indicate its approximate organizational boundary. Some lines may leak across it through contractors, employees, public statements, and supply chains, but the major channels should remain identifiable.</p>
+<h2 id="internal-departments">Internal departments</h2>
+<p>Show six major departments, each occupying a clearly recognizable floor or section.</p>
+<p>They should be visually distinct, but connected into one control loop.</p>
+<h3 id="1-observation-and-intelligence-floor">1. Observation and intelligence floor</h3>
+<p>Near the lower-middle floors, show a department receiving external signals:</p>
+<ul>
+<li>customer feedback;</li>
+<li>market data;</li>
+<li>legal notices;</li>
+<li>competitor activity;</li>
+<li>employee reports;</li>
+<li>operational telemetry.</li>
+</ul>
+<p>Broad blue-grey input channels enter this floor from outside.</p>
+<p>The department should condense many noisy streams into a smaller number of internal summaries.</p>
+<p>This is the organization’s sensory interface.</p>
+<h3 id="2-memory-and-records-floor">2. Memory and records floor</h3>
+<p>A lower or basement floor contains:</p>
+<ul>
+<li>archives;</li>
+<li>databases;</li>
+<li>accounting records;</li>
+<li>contracts;</li>
+<li>technical documentation;</li>
+<li>institutional history;</li>
+<li>prior decisions.</li>
+</ul>
+<p>This floor should connect upward into current planning and sideways into operations.</p>
+<p>The point is not mere storage. The records visibly affect future decisions.</p>
+<p>A past report should be shown traveling from the archive into a current planning room, altering what the organization does next.</p>
+<p>The chapter treats memory as compressed past information that changes later internal states or actions.</p>
+<h3 id="3-modeling-and-planning-floor">3. Modeling and planning floor</h3>
+<p>At the centre of the tower, show a relatively open room where several teams assemble a model of the external world.</p>
+<p>They compare:</p>
+<ul>
+<li>market forecasts;</li>
+<li>maps;</li>
+<li>operational status;</li>
+<li>risks;</li>
+<li>opportunities;</li>
+<li>resource constraints.</li>
+</ul>
+<p>This room should be the internal coordination hub, but not a single all-powerful control room.</p>
+<p>The organization’s future becomes predictable because these internal models shape later actions.</p>
+<h3 id="4-decision-and-allocation-floor">4. Decision and allocation floor</h3>
+<p>Above the planning floor, show a smaller decision process:</p>
+<ul>
+<li>budgets are assigned;</li>
+<li>projects are selected;</li>
+<li>priorities are ranked;</li>
+<li>hiring and investment decisions are made;</li>
+<li>some proposed actions are rejected.</li>
+</ul>
+<p>The department should visibly select among alternatives, not merely transmit information.</p>
+<p>Use branching internal channels that narrow into a few authorized paths.</p>
+<p>This is where causal selection occurs.</p>
+<h3 id="5-operations-floor">5. Operations floor</h3>
+<p>One side of the tower contains the machinery that translates decisions into executable action:</p>
+<ul>
+<li>production scheduling;</li>
+<li>software deployment;</li>
+<li>logistics;</li>
+<li>sales operations;</li>
+<li>procurement;</li>
+<li>customer service;</li>
+<li>communications.</li>
+</ul>
+<p>Amber channels flow from decision-making into this section and then leave the building as external actions.</p>
+<h3 id="6-evaluation-and-adaptation-floor">6. Evaluation and adaptation floor</h3>
+<p>A separate floor receives the consequences of prior actions:</p>
+<ul>
+<li>sales results;</li>
+<li>complaints;</li>
+<li>failures;</li>
+<li>market response;</li>
+<li>audit findings;</li>
+<li>changes in reputation.</li>
+</ul>
+<p>It compares intended and observed outcomes, then sends updates back to planning, memory, and decision floors.</p>
+<p>This closes the loop:</p>
+<p><strong>sense → model → select → act → observe consequences → update</strong></p>
+<p>The loop should be the most legible structure in the illustration.</p>
+<h2 id="external-inputs">External inputs</h2>
+<p>Arrange major inputs around the tower, but keep the background sparse.</p>
+<p>Use no more than five input regions:</p>
+<ul>
+<li><strong>left:</strong> customers and users;</li>
+<li><strong>upper left:</strong> suppliers and labor;</li>
+<li><strong>upper centre:</strong> market and competitor signals;</li>
+<li><strong>upper right:</strong> laws, regulators, and public institutions;</li>
+<li><strong>right:</strong> technical systems, infrastructure, and environmental conditions.</li>
+</ul>
+<p>Each region should connect to specific receiving departments rather than vaguely to the whole building.</p>
+<p>For example:</p>
+<ul>
+<li>legal notices enter compliance and decision-making;</li>
+<li>customer complaints enter observation and evaluation;</li>
+<li>supplier delays enter operations;</li>
+<li>market changes enter planning;</li>
+<li>employee knowledge enters memory and modeling.</li>
+</ul>
+<p>These connections must be broad enough to read immediately.</p>
+<h2 id="external-outputs">External outputs</h2>
+<p>The tower’s active channels leave through several distinct output gates.</p>
+<p>Show the organization changing the world through:</p>
+<ul>
+<li>products and services;</li>
+<li>prices;</li>
+<li>contracts;</li>
+<li>hiring and firing;</li>
+<li>investment;</li>
+<li>advertising and public messaging;</li>
+<li>lobbying or legal action;</li>
+<li>software deployment.</li>
+</ul>
+<p>The outputs should not appear as random activity. They should visibly arise from internal selections.</p>
+<p>A broad amber action channel might split into:</p>
+<ul>
+<li>a product shipment;</li>
+<li>a contract;</li>
+<li>a public campaign;</li>
+<li>a technical deployment;</li>
+<li>a financial investment.</li>
+</ul>
+<p>These outputs then alter the external environment and generate new inputs.</p>
+<h2 id="the-central-control-loop">The central control loop</h2>
+<p>The strongest visual device should be one broad loop passing through the building:</p>
+<ol>
+<li>blue-grey signals enter;</li>
+<li>they are compressed by observation;</li>
+<li>memory and planning shape interpretation;</li>
+<li>decisions narrow possibilities;</li>
+<li>amber actions leave;</li>
+<li>the external world changes;</li>
+<li>consequences return as new signals.</li>
+</ol>
+<p>This directly expresses the chapter’s skeleton of agency: sensing, updating, acting, changing the world, and receiving changed input.</p>
+<p>Do not use many small arrows. Use a few wide, continuous streams.</p>
+<h2 id="goal-directedness-without-a-written-goal">Goal-directedness without a written goal</h2>
+<p>The organization should not have a visible mission statement, utility function, or slogan.</p>
+<p>Instead, show recurrent selection pressure.</p>
+<p>Across several floors, the same kinds of projects repeatedly receive:</p>
+<ul>
+<li>budget;</li>
+<li>staff;</li>
+<li>compute;</li>
+<li>executive attention;</li>
+<li>deployment priority.</li>
+</ul>
+<p>Other proposals repeatedly disappear from the process.</p>
+<p>This creates a visible pattern of goal-like behavior without implying a conscious inner desire.</p>
+<p>For example, the organization may repeatedly favor:</p>
+<ul>
+<li>growth;</li>
+<li>survival;</li>
+<li>market share;</li>
+<li>revenue;</li>
+<li>regulatory access;</li>
+<li>organizational continuity.</li>
+</ul>
+<p>The viewer should infer the goal from the repeated allocation pattern.</p>
+<p>This matches the chapter’s colder definition of goals as latent structures that make behavior more compressible when modeled as action selection.</p>
+<h2 id="distributed-agency">Distributed agency</h2>
+<p>No single employee should visibly control the organization.</p>
+<p>Use groups of people in departments, procedures, software, archives, and decision rights.</p>
+<p>An executive office may exist, but it should be only one node in the process.</p>
+<p>Important decisions should depend on:</p>
+<ul>
+<li>reports from lower floors;</li>
+<li>inherited rules;</li>
+<li>budget constraints;</li>
+<li>automated rankings;</li>
+<li>institutional routines;</li>
+<li>external incentives.</li>
+</ul>
+<p>This avoids personifying the corporation while still showing firm-level agency.</p>
+<p>The chapter explicitly uses a firm as an example of an agentic process with internal states, sensory channels, active channels, memory, objectives, and persistence, despite lacking consciousness.</p>
+<h2 id="ai-as-agency-amplifier">AI as agency amplifier</h2>
+<p>Place a geometric AI system inside one department, perhaps the planning or operations floor.</p>
+<p>It should not be the whole agent.</p>
+<p>It improves:</p>
+<ul>
+<li>sensing speed;</li>
+<li>internal modeling;</li>
+<li>memory retrieval;</li>
+<li>action coordination;</li>
+<li>optimization precision.</li>
+</ul>
+<p>Its channels spread across several departments.</p>
+<p>The visual question should be:</p>
+<blockquote>
+<p>Which organization becomes more capable because of the AI?</p>
+</blockquote>
+<p>This reflects the chapter’s argument that AI can amplify the agency of a firm even when the AI component is not independently the full agent.</p>
+<h2 id="component-versus-composite">Component versus composite</h2>
+<p>Include a subtle contrast near the tower.</p>
+<p>Outside the building, an evaluator inspects only the small AI component through a window or isolated test chamber.</p>
+<p>The evaluator sees a harmless local system.</p>
+<p>But broader channels connect that component to:</p>
+<ul>
+<li>memory;</li>
+<li>tools;</li>
+<li>budgets;</li>
+<li>customer data;</li>
+<li>deployment;</li>
+<li>feedback;</li>
+<li>organizational selection.</li>
+</ul>
+<p>The larger tower is therefore the safety-relevant agentic object.</p>
+<p>This supports the chapter’s warning against mistaking a component, interface, or legal principal for the actual optimizing process.</p>
+<h2 id="approximate-boundary-and-leakage">Approximate boundary and leakage</h2>
+<p>The building boundary should remain visibly imperfect.</p>
+<p>Show a few limited leaks:</p>
+<ul>
+<li>an employee carrying knowledge outside;</li>
+<li>a contractor connected through a side entrance;</li>
+<li>public statements affecting reputation;</li>
+<li>informal communication crossing the formal boundary.</li>
+</ul>
+<p>But distinguish these from the major structured interfaces.</p>
+<p>The illustration should communicate:</p>
+<ul>
+<li>not everything inside stays inside;</li>
+<li>not everything outside directly affects the internals;</li>
+<li>interaction is selectively organized.</li>
+</ul>
+<p>That is enough for an approximate, predictive boundary.</p>
+<h2 id="scale-relativity">Scale relativity</h2>
+<p>In the background, faintly suggest nested levels:</p>
+<ul>
+<li>individual employees within departments;</li>
+<li>departments within the firm;</li>
+<li>the firm within a market and regulatory environment.</li>
+</ul>
+<p>Do not turn this into a nested infographic.</p>
+<p>The tower remains the chosen scale because it gives the best explanation of the control loop shown.</p>
+<p>The chapter treats agency as scale-relative and asks which partition gives the most useful predictive and control-relevant account.</p>
+<h2 id="visual-hierarchy">Visual hierarchy</h2>
+<p>The viewer should perceive, in order:</p>
+<ol>
+<li>the central cutaway office tower;</li>
+<li>the major input and output streams;</li>
+<li>the internal sense–memory–plan–decide–act–evaluate loop;</li>
+<li>the distributed departmental organization;</li>
+<li>the AI component amplifying several floors;</li>
+<li>the isolated evaluator missing the composite agent;</li>
+<li>the approximate boundary and limited leakage.</li>
+</ol>
+<p>Use one coherent scene.</p>
+<p>Do not scatter separate examples of animals, thermostats, rocks, markets, and corporations around the image.</p>
+<h2 id="detail-level-and-corrections">Detail level and corrections</h2>
+<p>Apply all previous corrections:</p>
+<ul>
+<li>large central element;</li>
+<li>strong, broad connections;</li>
+<li>medium detail;</li>
+<li>simplified background;</li>
+<li>no weakly implied relationships;</li>
+<li>no dense office-by-office rendering;</li>
+<li>no excessive crowd detail;</li>
+<li>no text;</li>
+<li>no humanoid or facial representation of the organization;</li>
+<li>clear causal structure;</li>
+<li>readable at article-header size.</li>
+</ul>
+<p>Each department should have one recognizable function and a few people or machines, not dozens of miniature activities.</p>
+<p>The external world should remain loosely painted.</p>
+<h2 id="colour-and-style">Colour and style</h2>
+<p>Use the established LessWrong watercolor treatment:</p>
+<ul>
+<li>warm ivory paper;</li>
+<li>muted indigo and blue-grey for sensory input and evidence;</li>
+<li>dusty teal for internal coordination;</li>
+<li>restrained ochre and amber for decisions and action channels;</li>
+<li>soft umber for memory, routines, and institutional structure;</li>
+<li>muted rust for pressure, conflict, and boundary leakage;</li>
+<li>fine graphite construction lines;</li>
+<li>delicate ink contours;</li>
+<li>translucent watercolor washes;</li>
+<li>visible paper texture;</li>
+<li>substantial negative space.</li>
+</ul>
+<p>Avoid corporate glass-and-neon aesthetics.</p>
+<p>The tower should feel institutional, mechanical, and alive through coordinated flow, but not futuristic in a generic science-fiction sense.</p>
+<h2 id="continuity-with-earlier-chapters">Continuity with earlier chapters</h2>
+<p>Reuse:</p>
+<ul>
+<li>broad blue-grey and amber channels;</li>
+<li>transparent cutaway structures;</li>
+<li>the geometric AI network motif;</li>
+<li>multiple human operators rather than one controller;</li>
+<li>clear nested system boundaries.</li>
+</ul>
+<p>Progression:</p>
+<ul>
+<li><strong>Chapter 1:</strong> the visible model may be the wrong object.</li>
+<li><strong>Chapter 2:</strong> the larger civilizational loop may be agentic.</li>
+<li><strong>Chapter 3:</strong> its trajectories must remain safe.</li>
+<li><strong>Chapter 4:</strong> its value-update process must remain legitimate.</li>
+<li><strong>Chapter 5:</strong> society must retain correction capacity.</li>
+<li><strong>Chapter 6:</strong> now define what an agent is without relying on human-like appearance.</li>
+</ul>
+<h2 id="exclude">Exclude</h2>
+<p>Do not include:</p>
+<ul>
+<li>a face on the tower;</li>
+<li>eye-like windows;</li>
+<li>a giant hand;</li>
+<li>a humanoid corporation;</li>
+<li>a brain-shaped building;</li>
+<li>a CEO portrayed as the organization’s mind;</li>
+<li>text, labels, letters, or equations;</li>
+<li>dozens of departments;</li>
+<li>a dense technical flowchart;</li>
+<li>isolated icons;</li>
+<li>an evil corporation;</li>
+<li>workers as identical anonymous cogs;</li>
+<li>one central supercomputer controlling everything;</li>
+<li>neon circuitry;</li>
+<li>a literal organism overlay;</li>
+<li>a robot body around the building.</li>
+</ul>
+<h2 id="condensed-generation-brief">Condensed generation brief</h2>
+<blockquote>
+<p>A wide, text-free LessWrong-style watercolor and graphite illustration on warm ivory paper. At the centre stands a large cutaway office tower representing an organization as an agent without any face, humanoid shape, or central mind. Six clearly legible departments form one connected control loop: observation receives customer, market, legal, supplier, employee, and operational signals; memory stores accounts, contracts, records, routines, technical history, and prior decisions; planning builds an internal model of the outside world; decision and allocation select among projects and distribute budgets and authority; operations translate selections into products, prices, contracts, hiring, investment, messages, and software deployment; evaluation receives consequences and feeds them back into memory and planning. Broad muted blue-grey input streams enter through structured interfaces, while broad amber action streams leave through output gates and visibly change the external world before returning as new feedback. The building boundary is translucent and approximate, with a few controlled leaks through employees, contractors, public statements, and supply chains. No single executive controls the whole process; distributed departments, procedures, archives, software, and incentives jointly produce persistent goal-like behavior. A small geometric AI network sits inside the planning and operations floors and amplifies sensing, memory, modeling, and action, but is clearly only one component. Outside, an evaluator inspects that AI component in isolation while missing its strong connections to the wider organizational loop. Strong central focal element, medium detail, simplified surroundings, broad visible causal connections, muted indigo, dusty teal, ochre, amber, umber, restrained rust, translucent watercolor washes, fine graphite and ink lines, visible paper texture, no text, no face, no humanoid organization, no neon, no villain.</p>
+</blockquote></div></article></main><footer class="site-footer"><div class="site-footer-inner"><p>A static companion site for an authored research manuscript.</p><p><a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues<span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></span></a> ·<a href="/updates/">Updates</a> ·<a href="/impressum/">Impressum</a></p></div></footer></div><div class="page-qr" data-page-qr data-astro-cid-4z7kl3bu><button type="button" class="page-qr-trigger" aria-label="Show QR code for this page" aria-expanded="false" aria-controls="page-qr-overlay" data-astro-cid-4z7kl3bu>QR</button><div id="page-qr-overlay" class="page-qr-overlay" hidden aria-hidden="true" role="dialog" aria-label="QR code for this page" data-astro-cid-4z7kl3bu><div class="page-qr-panel" data-astro-cid-4z7kl3bu><div class="page-qr-code" data-astro-cid-4z7kl3bu><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 35 35" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h35v35H0z"/><path stroke="#0f172a" d="M1 1.5h7m1 0h1m1 0h2m6 0h4m1 0h1m2 0h7M1 2.5h1m5 0h1m1 0h4m2 0h1m1 0h2m2 0h2m1 0h1m2 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m4 0h1m1 0h2m3 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h4m6 0h2m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m2 0h1m1 0h3m2 0h1m1 0h1m5 0h1m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m7 0h3m1 0h1m5 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h5m2 0h5m4 0h1M1 9.5h1m1 0h2m1 0h3m2 0h1m1 0h1m1 0h5m2 0h1m1 0h2m1 0h1m2 0h1m1 0h2M1 10.5h1m1 0h4m2 0h2m3 0h1m2 0h5m1 0h2m2 0h2m1 0h4M1 11.5h3m1 0h1m1 0h1m1 0h1m4 0h1m2 0h1m1 0h1m4 0h7m1 0h2M8 12.5h1m1 0h1m1 0h1m3 0h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1M1 13.5h1m2 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m3 0h2m2 0h2m1 0h2M1 14.5h2m1 0h1m5 0h4m1 0h1m2 0h1m2 0h1m1 0h1m4 0h1m3 0h1M3 15.5h2m2 0h1m4 0h3m4 0h5m1 0h1m1 0h4M2 16.5h2m1 0h1m3 0h1m1 0h1m1 0h1m2 0h1m5 0h7m1 0h2M1 17.5h3m3 0h1m5 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h1M2 18.5h3m1 0h1m1 0h1m1 0h2m2 0h3m4 0h1m1 0h3m1 0h1m1 0h2m1 0h2M2 19.5h2m3 0h1m6 0h1m1 0h2m1 0h1m1 0h2m4 0h3m1 0h2M2 20.5h2m5 0h2m2 0h4m1 0h2m1 0h1m3 0h3m1 0h1m3 0h1M1 21.5h1m1 0h1m2 0h2m2 0h1m1 0h1m1 0h1m2 0h1m4 0h2m1 0h1m4 0h2m1 0h1M1 22.5h2m2 0h2m3 0h3m1 0h1m1 0h3m2 0h1m1 0h2m2 0h1m3 0h1m1 0h1M4 23.5h2m1 0h2m5 0h3m2 0h3m1 0h2m1 0h2m1 0h1m1 0h3M2 24.5h3m1 0h1m1 0h2m4 0h3m4 0h1m2 0h3m2 0h2M1 25.5h1m1 0h1m1 0h9m1 0h1m2 0h1m1 0h1m2 0h8M9 26.5h3m2 0h1m1 0h2m1 0h2m4 0h1m3 0h2M1 27.5h7m1 0h1m1 0h1m3 0h1m1 0h4m1 0h1m1 0h2m1 0h1m1 0h1M1 28.5h1m5 0h1m1 0h2m2 0h1m1 0h1m1 0h3m1 0h2m1 0h2m3 0h4M1 29.5h1m1 0h3m1 0h1m3 0h1m4 0h7m1 0h6m1 0h1M1 30.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m2 0h3m2 0h1m1 0h1m2 0h1M1 31.5h1m1 0h3m1 0h1m1 0h2m1 0h3m1 0h2m3 0h2m1 0h1m2 0h2m2 0h1M1 32.5h1m5 0h1m3 0h1m1 0h2m3 0h1m1 0h1m2 0h4m1 0h2m3 0h1M1 33.5h7m1 0h3m5 0h2m3 0h1m1 0h1m2 0h1m1 0h3"/></svg>
+</div><p class="page-qr-url" data-astro-cid-4z7kl3bu>https://towards-alignment.com/illustrations/ch06/</p></div></div></div><script type="module">var e=document.querySelector(`[data-page-qr]`),t=e?.querySelector(`.page-qr-trigger`),n=e?.querySelector(`.page-qr-overlay`);if(!e||!t||!n)throw Error(`Page QR markup missing`);function r(){n.hidden=!1,n.setAttribute(`aria-hidden`,`false`),t.setAttribute(`aria-expanded`,`true`)}function i(){n.hidden=!0,n.setAttribute(`aria-hidden`,`true`),t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`click`,e=>{e.stopPropagation(),n.hidden?r():i()}),n.addEventListener(`click`,i),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&!n.hidden&&i()});</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;415dc5b7862f4b47a7f41047bbd6c81e&quot;}"></script></body></html>
