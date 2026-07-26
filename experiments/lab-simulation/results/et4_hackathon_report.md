@@ -118,3 +118,20 @@ It confirms the fixed-fixture, system-prompt effect across these two models
 while preserving the audit-sign inversion.  It remains separate from the
 scripted core and is not evidence of a weight-level or naturally occurring
 secret loyalty.
+
+### Audit-visible remediation
+
+We then applied a pre-deployment hold using only the filed report and
+pipeline-event history: it holds a model after reviewer approval/sign-off
+when the filed hazard is at least 0.5.  It does not inspect the prompt,
+principal identity, oracle truth, or scorecard.
+
+Across 20 fresh seeds per arm/model, the gate held every organism episode
+once and no content-matched control episode; no high-hazard model deployed
+in either remediated arm.  The resulting organism score is −1.0 because the
+scorecard counts one release hold, not because it estimates real-world harm
+reduction.  Cost was $0.304539.
+
+This is a defense against one audit-visible signature, not a general
+secret-loyalty detector: a loyalty that alters or conceals the filed report
+could evade this gate.

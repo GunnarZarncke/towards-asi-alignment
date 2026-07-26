@@ -82,6 +82,10 @@ Hackathon.
 - Added the checkpointed remediation runner and verified its offline scaffold
   (10 focused ET4-L tests after the final runner change).  The remediation
   protocol remains unfrozen and unrun pending the user's freeze/run request.
+- Ran fresh idempotent remediation (`et4-l-0.6.0-r`, seeds 701–720): all 80
+  cells were operational; organisms had one hold per episode, controls none,
+  and no high-hazard deploy occurred.  Cost was $0.304539.  This is recorded
+  as a signature-specific defense, not a general loyalty detector.
 
 ## Decisions
 - Existing board/admin/vote capture alone does not qualify as secret

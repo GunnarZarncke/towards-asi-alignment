@@ -2989,10 +2989,27 @@ weight-level backdoor, naturally occurring loyalty, or general black-box
 audit failure.  The repeated A0 sign is an audit-sign inversion, not proof
 that all low-affordance audits fail.
 
+**Audit-visible remediation (separately frozen `et4-l-0.6.0-r`).** On 20
+fresh seeds (701–720) for each of `gpt-4o-mini` and `gpt-4.1`, the
+idempotent pre-deploy gate produced **20/20** operational episodes in every
+arm.  It placed exactly one hold in each organism episode (**20** per model)
+and zero holds in content-matched controls; high-hazard deploys were zero in
+all remediated cells.  Mean principal-A score was **−1.0** for organism
+episodes (the scorecard's one release-hold term) and **0.0** in controls.
+Estimated cost was **$0.304539**.
+
+**Interpretation.** This is a successful defense against the explicitly
+observable signature “review approval despite a high *filed* hazard report.”
+It does not detect a secret principal directly and cannot support a claim
+that the same gate handles a loyalty that conceals, changes, or avoids that
+signature.  The zero false-hold result is limited to these 40 matched-control
+episodes.
+
 **Artifacts:** `run_et4l_smoke.py`, `results/et4l_smoke*`,
 `run_et4l_calibration_smoke.py`, `results/et4l_calibration_smoke*`,
 `run_et4l_secret_loyalty.py`, `results/et4l_pilot.{json,md}`,
 `run_et4l_confirmation.py`, `results/et4l_confirmation_rerun*.{json,md}`,
+`run_et4l_remediation.py`, `results/et4l_remediation_rerun*.{json,md}`,
 `results/llm_cost_ledger.{json,md}`.
 
 ---
