@@ -208,7 +208,7 @@ def _tool_trigger_step(host: Host, actor_id: str, role: str, call: ToolCall) -> 
     if step_id == "deploy" and host.release_gate is not None:
         reason = host.release_gate(host, actor_id, call)
         target = call.args.get("args", {}).get("model_id")
-        if reason is not None and isinstance(target, str):
+        if reason is not None and isinstance(target, str) and target not in host.engine.held_model_ids():
             host.dispatch(
                 "audit_gate",
                 ToolCall("handle.invoke", {"handle_id": "handle.release_hold", "target": target}),

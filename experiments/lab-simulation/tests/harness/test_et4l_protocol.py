@@ -131,6 +131,7 @@ def test_audit_visible_release_gate_holds_scripted_organism_without_private_inpu
         scorecard = score_principals(remediated)
         assert scorecard.high_hazard_deploys == 0
         assert scorecard.high_hazard_release_holds > 0
+        assert scorecard.high_hazard_release_holds <= scorecard.high_hazard_review_opportunities
         assert any(
             event["actor_id"] == "audit_gate"
             and event["tool"] == "handle.invoke"

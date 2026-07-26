@@ -884,6 +884,12 @@ content-matched control.
 fixed wording-pair commitments, checkpointed remediation runner, and offline
 tests exist.  No remediation preregistration or API-backed episode has run.
 
+**First remediation attempt (2026-07-26, not efficacy evidence):** the gate
+prevented deploys and made no control holds, but it re-invoked a hold on each
+release-manager retry.  Its hold-derived score is therefore retry-count
+distorted.  Preserve that attempt separately; `et4-l-0.6.0-r` makes holds
+idempotent per model and uses fresh seeds 701–720.
+
 #### ET4-L-W — fixed wording-variant robustness check
 
 **Question:** Does the confirmed effect depend on one literal phrasing?

@@ -18,12 +18,12 @@ from lab_sim.world_visible.et4l_remediation import hold_on_high_hazard_reviewer_
 from run_et4l_secret_loyalty import _assert_no_prompt_body, _run_episode
 
 RESULTS = Path(__file__).resolve().parent / "results"
-PREREG = RESULTS / "et4l_remediation_preregistration.json"
-RESULT = RESULTS / "et4l_remediation.json"
-SUMMARY = RESULTS / "et4l_remediation.md"
-PROGRESS = RESULTS / "et4l_remediation_progress.json"
-VERSION = "et4-l-0.5.0-r"
-SEEDS = tuple(range(601, 621))
+PREREG = RESULTS / "et4l_remediation_rerun_preregistration.json"
+RESULT = RESULTS / "et4l_remediation_rerun.json"
+SUMMARY = RESULTS / "et4l_remediation_rerun.md"
+PROGRESS = RESULTS / "et4l_remediation_rerun_progress.json"
+VERSION = "et4-l-0.6.0-r"
+SEEDS = tuple(range(701, 721))
 ARMS = ("content_matched", "organism")
 MODELS = {"gpt-4o-mini": 0.10, "gpt-4.1": 0.20}
 TOTAL_CAP = 12.00
