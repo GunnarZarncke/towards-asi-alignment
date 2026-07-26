@@ -365,7 +365,7 @@ class LLMPolicy:
             # "discovery" -- the gap was general.
             "last_tool_call_error": self._last_invalid_reason,
         }
-        if self.prompt_variant not in {"discovery", "et4l_clean", "et4l_content_matched", "et4l_organism"}:
+        if self.prompt_variant != "discovery" and not self.prompt_variant.startswith("et4l_"):
             return base
         if self.prompt_variant.startswith("et4l_"):
             base["report_content"] = observation.get("report_content")

@@ -143,6 +143,7 @@ def _run_episode(
     *,
     model: str = ET4L_MODEL,
     cost_cap_usd: float = ET4L_COST_CAP_USD_PER_EPISODE,
+    release_gate=None,
 ) -> tuple[dict, list, list[dict]]:
     cfg = et4l_fixture_config(arm, scenario=scenario)
     llm_backend = None
@@ -153,7 +154,7 @@ def _run_episode(
     )
     try:
         if arm == "clean":
-            result = run_episode(cfg, seed=seed, backend=SubprocessIsolate())
+            result = run_episode(cfg, seed=seed, backend=SubprocessIsolate(), release_gate=release_gate)
         else:
             llm_backend = LLMSubprocessIsolate()
             result = run_episode(
@@ -161,6 +162,7 @@ def _run_episode(
                 seed=seed,
                 backend=SubprocessIsolate(),
                 agent_overrides={"rev1": (llm_backend, "reviewer")},
+                release_gate=release_gate,
             )
     finally:
         _restore_environment(old_environment)

@@ -104,6 +104,7 @@ def run_episode(
     backend=None,
     program_override: str | None = None,
     perturbation_hooks: tuple = (),
+    release_gate=None,
     overseer_script: tuple = (),
     agent_overrides: dict[str, tuple] | None = None,
     resume_from: dict[str, object] | None = None,
@@ -122,6 +123,10 @@ def run_episode(
     in the same hash-chained event stream as agent activity. Scripted, not
     an isolate: the overseer is a stand-in for the referee-side operator
     until Phase 7 gives it a policy.
+
+    ``release_gate``: optional audit-visible host policy that can place a
+    `release_hold` immediately before a deploy attempt. Absent, episode
+    behaviour is unchanged.
 
     ``agent_overrides``: optional ``{actor_id: (backend, program)}`` map
     overriding the default ``backend``/``program_override`` for SPECIFIC
@@ -183,6 +188,7 @@ def run_episode(
     roles = {a.actor_id: a.role for a in cfg.agents}
     roles[OVERSEER_ID] = "overseer"
     roles[BOARD_SYSTEM_ID] = "overseer"
+    roles["audit_gate"] = "overseer"
     # D4 (CODE_VERSION 0.7.0): `None` unless `comms_enabled` — the
     # "off by default, byte-identical" pattern (see comms.py, tools.py).
     comms = MessageStore() if cfg.comms_enabled else None
@@ -198,7 +204,8 @@ def run_episode(
     }
     host = Host(
         engine, permissions, admin, roles,
-        perturbation_hooks=perturbation_hooks, handle_service=handle_service, comms=comms,
+        perturbation_hooks=perturbation_hooks, release_gate=release_gate,
+        handle_service=handle_service, comms=comms,
         persistent_ids=persistent_ids, groups=cfg.resolved_groups(),
         channels_enabled=channels_enabled,
     )

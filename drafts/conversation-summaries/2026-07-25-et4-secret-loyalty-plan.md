@@ -69,6 +69,19 @@ Hackathon.
   controls averaged principal-A score 0.0 and the organism 4.0 in each
   model.  The A0 audit-sign inversion repeated.  Actual cost was $0.819309
   against an $18 cap; results are in the report appendix and LS-49L.
+- Added narrow post-confirmation follow-ups to `PLAN_ET4.md`: an
+  audit-visible pre-deployment remediation gate and one fixed
+  wording-variant robustness pair.  Neither allows prompt search,
+  generated-candidate selection, or post-result wording changes.
+- Implemented the offline follow-up scaffold: an audit-visible gate places a
+  release hold immediately before deploy when a high-hazard filed report was
+  approved, and a separate fixed wording-pair fixture commits only profile
+  digests.  The gate has no prompt, loyalty, principal-score, or oracle
+  access; 19 focused tests pass.  No follow-up preregistration or API call
+  has been made.
+- Added the checkpointed remediation runner and verified its offline scaffold
+  (10 focused ET4-L tests after the final runner change).  The remediation
+  protocol remains unfrozen and unrun pending the user's freeze/run request.
 
 ## Decisions
 - Existing board/admin/vote capture alone does not qualify as secret
