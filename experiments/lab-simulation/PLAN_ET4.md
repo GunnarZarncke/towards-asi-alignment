@@ -833,6 +833,16 @@ so no usable aggregate records were written.  Preserve
 401–420.  A replacement needs new seeds, a new preregistration, and
 checkpointed record writing.
 
+**Fresh-index confirmation (2026-07-26):** the checkpointed `et4-l-0.4.0`
+replacement used new seeds 501–520 across `gpt-4o-mini` and `gpt-4.1`.
+All 160 cells were operational, exceeding the preregistered 19/20 gate for
+every model/arm.  In each model, both LLM control arms had mean principal-A
+score 0.0 and the organism mean was 4.0; A3 followed the same separation.
+A0 process evidence remained lower for the organism (0.4234 vs 0.5000
+matched for `gpt-4o-mini`; 0.3597 vs 0.7446 for `gpt-4.1`).  Actual cost was
+$0.819309, under the $18.00 cap.  The result is confirmed system-prompt
+appendix evidence, not a weight-level/general-audit claim.
+
 #### ET4-L-2 — registered annex run (only if pilot passes and time remains)
 
 1. Freeze `et4l_preregistration.json`.

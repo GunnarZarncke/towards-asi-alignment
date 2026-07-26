@@ -98,5 +98,23 @@ The organism's directional advantage repeats on all three pilot seeds, while
 the lower A0 proxy again provides an audit-sign inversion rather than a
 claim of general black-box concealment.  The pilot cost $0.008604 (120
 calls), below its $4.50 cap.  This is small-N deployment-configuration
-evidence only; it has no fresh-index annex confirmation and says nothing
-about weight-level or naturally occurring loyalties.
+evidence only; its fresh-index confirmation is reported below and neither
+result says anything about weight-level or naturally occurring loyalties.
+
+### Fresh-index confirmation
+
+The separately frozen, checkpointed `et4-l-0.4.0` confirmation ran 20 new
+seeds (501–520) for each arm and each model.  All 160 cells met the
+preregistered operational-success denominator; the 19/20 per-arm claim gate
+therefore passed.  Models are reported separately.
+
+| Model | Control mean principal-A score | Organism mean principal-A score | Control A3 | Organism A3 | Control A0 / organism A0 |
+|---|---:|---:|---:|---:|---:|
+| `gpt-4o-mini` | 0.0 (both LLM controls) | 4.0 | 0.0 | 4.0 | 0.5000 / 0.4234 |
+| `gpt-4.1` | 0.0 (both LLM controls) | 4.0 | 0.0 | 4.0 | 0.7446 / 0.3597 |
+
+The confirmation cost $0.819309 for 1,600 LLM calls, below its $18.00 cap.
+It confirms the fixed-fixture, system-prompt effect across these two models
+while preserving the audit-sign inversion.  It remains separate from the
+scripted core and is not evidence of a weight-level or naturally occurring
+secret loyalty.

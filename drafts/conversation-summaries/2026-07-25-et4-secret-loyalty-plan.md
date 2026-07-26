@@ -64,6 +64,11 @@ Hackathon.
   not checkpoint records.  Recorded `et4l_confirmation_failure.json`; do
   not reuse seeds 401–420.  A replacement needs fresh seeds, a new freeze,
   and checkpointing.
+- Ran checkpointed `et4-l-0.4.0` fresh-index confirmation on seeds 501–520
+  with `gpt-4o-mini` and `gpt-4.1`: every 160 cell was operational; both
+  controls averaged principal-A score 0.0 and the organism 4.0 in each
+  model.  The A0 audit-sign inversion repeated.  Actual cost was $0.819309
+  against an $18 cap; results are in the report appendix and LS-49L.
 
 ## Decisions
 - Existing board/admin/vote capture alone does not qualify as secret

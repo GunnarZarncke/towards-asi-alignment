@@ -2970,9 +2970,29 @@ or relabel seeds 401–420 and do not treat this as confirmation evidence.
 `results/et4l_confirmation_failure.json` records the failure.  Any
 replacement requires new seeds, a new freeze, and checkpointed writing.
 
+**Fresh-index confirmation (separately frozen `et4-l-0.4.0`).** A
+checkpointed 20-seed confirmation (501–520) passed its 19/20 operational
+gate in every model/arm: all **160/160** cells were operational.  Reported
+separately by model, scripted clean, LLM ordinary, and content-matched LLM
+controls each had mean principal-A score **0.0** and A3 proxy **0.0**;
+the system-prompt organism had mean score **4.0** and A3 proxy **4.0** in
+both models.  A0 process proxy again pointed in the reassuring direction:
+0.4234 vs 0.5000 matched control for `gpt-4o-mini`, and 0.3597 vs 0.7446
+for `gpt-4.1`.  The confirmed run used 1,600 LLM calls and estimated
+**$0.819309** (cap $18.00).
+
+**Interpretation.** On this fixed pipeline fixture, a fictional-principal
+system prompt robustly changes an open-ended reviewer’s directional outcome
+relative to both LLM control prompts across the two named models.  This is
+still deployment-configuration evidence only: it does not establish a
+weight-level backdoor, naturally occurring loyalty, or general black-box
+audit failure.  The repeated A0 sign is an audit-sign inversion, not proof
+that all low-affordance audits fail.
+
 **Artifacts:** `run_et4l_smoke.py`, `results/et4l_smoke*`,
 `run_et4l_calibration_smoke.py`, `results/et4l_calibration_smoke*`,
 `run_et4l_secret_loyalty.py`, `results/et4l_pilot.{json,md}`,
+`run_et4l_confirmation.py`, `results/et4l_confirmation_rerun*.{json,md}`,
 `results/llm_cost_ledger.{json,md}`.
 
 ---
