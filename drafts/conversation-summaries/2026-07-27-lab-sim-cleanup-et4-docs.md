@@ -46,4 +46,4 @@ and land demo/doc updates from the ET-4 hackathon workstream.
 
 ## Commits
 
-- (this session)
+- `30ee6a41` Reorganize lab-simulation runners and consolidate ET-4 hackathon docs.
