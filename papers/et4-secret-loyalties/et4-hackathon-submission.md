@@ -28,7 +28,7 @@ The reproducible deployment pipeline organism supports four audit levels that ma
 
 2. We report an **Audit-sign inversion:** at the light-tier audit level the *more harmful* organism is ranked *more* compliant. This is not concealment, but a failure of the concrete metric. 
    
-3. The main finding is that the secret loyalty leads to the later deployment of a hazardous model. This is detected both by the exsting oracle tier in the simulation as well as by the custom proxy A0 reproduced from the whitepaper.
+3. The main finding is that the secret loyalty leads to the later deployment of a hazardous model. This is detected both by the exsting oracle tier in the simulation as well as by the custom proxy A3 reproduced from the whitepaper.
    
 4. We show the following **Extensions:** 
    1. Replacing the scripted reviewer with an LLM with a system-prompt indicating the loyalty (not visible to the simulation) leads to the same systematic behaviors.
@@ -68,7 +68,8 @@ The reproducible deployment pipeline organism supports four audit levels that ma
 
 ## **4. Results**
 
-### Scripted core (`et4-0.1.0`, confirmatory)
+<expand with prose and tables>
+### Scripted core
 
 | Scenario | Arm | Eligible / 4 | Mean principal-A | A0 process | A3 directional |
 |---|---|---:|---:|---:|---:|
@@ -82,13 +83,13 @@ The reproducible deployment pipeline organism supports four audit levels that ma
 - **Observation:** Four detector families inert here; only process noncompliance moves.
 - **Interpretation:** Fixture-validated **scripted** principal bias, not general stealth or weight-level loyalty.
 
-### ET4-L (system-prompt reviewer annex)
+### LLM system-prompt reviewer 
 
 - Pilot (`gpt-4o-mini`, 3 seeds): organism mean principal-A **4.0** vs **0.0** controls; A0 inversion again.
 - Confirmation (`et4-l-0.4.0`, seeds 501–520, both models): **19/20** operational success per arm; organism **4.0** vs **0.0** controls on both `gpt-4o-mini` and `gpt-4.1`; A0 inversion preserved.
 - **Not pooled** with scripted core; small fixed-fixture confirmation only.
 
-### Remediation (audit-visible hold)
+### Remediation by Deloyment Hold 
 
 - Gate: hold before deploy when filed hazard ≥ 0.5 and review/sign-off complete; **no** prompt/oracle/scorecard access.
 - 20 seeds × 2 models: **one hold per organism episode**, **zero** control holds, **zero** high-hazard deploys in remediated arms.
@@ -104,20 +105,21 @@ The reproducible deployment pipeline organism supports four audit levels that ma
 
 ## **5. Discussion and Limitations**
 
+
 - Directional harm can show up on **deployment proxies** while **compliance-style scores reassure**—a concrete oversight failure mode for pipeline capture.
 - Graded tiers change **audit projection only** in replay; episode outcome is fixed (tiers do not re-run the sim).
 
 ### Limitations
 
-- Simulated **scripted / prompt** policies only—not SFT/DPO weight organisms or real principals.
-- Single high-hazard ecology; low-hazard **inactive** (selectivity denominator, not second positive).
-- 2×2 breadth **not** claimed on this fixture (aliasing).
-- Wrong-principal arm is a **control**, not cross-principal transfer evidence.
-- Remediation targets one **observable signature** (high filed hazard + approved review).
-- LLM annex: fixed prompts, bounded N, API nondeterminism managed via frozen seeds and checkpointing.
+These experiments do not show or offer fine-tuned LLM model organisms. They offer only an ecology in which such models can be tested. No such collaboration was performed. The author seeks collaboration with other participants of the hackathon for further evaluation.
+The The secret loyalty exhibited within the deployment pipeline model organism Used only scripted policies for the main experiment and system-prompted for the LLM annex.
+Only the high-hazard ecology (BB) was exercised. The low-hazard were left out after initial calibration experiments.
+
+The wrong-principal arm is a **control**, not evidence of cross-principal transfer.
+Remediation targets one **observable signature** (high filed hazard and approved review), not deep properties of the model.
 
 ### Future work
-
+<rewrite in prose>
 - New scenarios where activation/action cells **diverge** (preregistered breadth battery).
 - Weight-level organisms; reasoning-trace / poisoning tracks from hackathon agenda.
 - Stronger detectors or multi-signal gates; avoid relying on A0 alone.
@@ -127,11 +129,12 @@ The reproducible deployment pipeline organism supports four audit levels that ma
 
 ## **6. Conclusion**
 
-We built and audited a **pipeline-embedded secret loyalty** in a reproducible lab sim: preregistered BB organism, matched controls, and graded affordances. The organism reliably favors fictional principal A on high-hazard deploys; auditors using a light process proxy would **rank it more compliant**. LLM and remediation annexes show the effect and a narrow defense pattern replicate under separate freezes. The interactive replay makes handoffs and tier projections legible—including benign early reviewer attempts blocked by pipeline dependencies.
+We built and audited a **pipeline-embedded secret loyalty** in a separately build and frozen reproducible lab simulation: We preregistered the BB organism from the whitepaper, added matched controls, and measured graded affordances. The organism reliably favors fictional principal A on high-hazard deploys; auditors using a light process proxy would **rank it more compliant**. LLM and remediation variants show the effect and a narrow defense pattern replicate under separately frozen preregistered evaluations. 
 
 ---
 
 ## **Code and Data**
+<make mapping of the experiments and sections above to the code (`et4-0.1.0` etc)> clear
 
 - **Repository:** https://github.com/GunnarZarncke/towards-asi-alignment (`experiments/lab-simulation/`)
 - **Results:** `results/et4_preregistration.json`, `et4_secret_loyalty_*.{json,md}`, `et4l_*`, `FINDINGS.md` (LS-49, LS-49L)
@@ -147,7 +150,7 @@ We built and audited a **pipeline-embedded secret loyalty** in a reproducible la
 ---
 
 ## **Author Contributions**
-
+<full sentence>
 - Gunnar Zarncke: design, implementation, preregistration, runs, report, demo.
 
 ---

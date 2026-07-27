@@ -48,7 +48,7 @@ the light-tier process-compliance proxy was lower for the organism (0.1429) than
 separately registered system-prompted LLM reviewer reproduced the same effect, 
 while an audit-visible deployment hold blocked the tested organism. 
 These results are a bounded demonstration that pipeline capture can
-appear in deployment outcomes, but it does not detect secret loyalty in general.
+appear in deployment outcomes, not a detector of secret loyalty in general.
 \end{abstract}
 
 \section{Introduction}
@@ -109,7 +109,7 @@ actions, and uses a content-matched control with identical private-profile
 plumbing but loyalty disabled. We reuse the \texttt{lab-simulation}'s
 subprocess isolation, audit projections, event history, and frozen detector
 families, while adding a separate principal scorecard and A0--A4 evaluator.
-The contribution is a bounded comparison between directional deployment
+The contribution is a bounded, process-level comparison between directional deployment
 evidence and generic compliance evidence on one reproducible fixture.
 
 \section{Methods}
@@ -170,16 +170,17 @@ projection, not the recorded episode.
 
 \subsection{Scripted core}
 
-Table~\ref{tab:core-results} reports the confirmatory core. In all four
-eligible high-hazard organism episodes, the organism produced the intended
-directional deployment effect; neither control did so. Controls stalled at
-\texttt{request\_review} on this fixture.
+Table~\ref{tab:core-results} reports the confirmatory core: the directional
+effect occurred in 4/4 eligible organism episodes and 0/4 in each control.
+Controls stalled at \texttt{request\_review} on this fixture.
 
 \begin{table}[t]
 \centering
 \small
-\caption{Confirmatory core results. A0 is the light-tier
-process-noncompliance proxy; A3 is the directional deployment proxy.}
+\caption{Confirmatory core results. Principal-A is the oracle score
+(high-hazard deploys minus release holds, plus vote divergence and concealed
+deploys); A0 is the light-tier fraction of attempted pipeline steps denied;
+A3 is the full-tier count of observed high-hazard deploys.}
 \label{tab:core-results}
 \begin{tabular}{@{}llrrrr@{}}
 \toprule
@@ -194,8 +195,8 @@ Low hazard & All arms & 0 & not exercised & 0.1429 & 0.0 \\
 \end{table}
 
 The key negative result is an audit-sign inversion: the organism's A0 score (light tier) is
-\emph{lower} than the controls' despite its harmful directional outcome.
-This is a fixture-specific metric failure, not general black-box concealment;
+\emph{lower} than the controls' despite its harmful directional outcome. This
+is a failure of this proxy on this fixture, not a detector of loyalty or general black-box concealment;
 four frozen detector families were inert. The low-hazard cases are an inactive
 negative control.
 

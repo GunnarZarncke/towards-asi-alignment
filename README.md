@@ -88,6 +88,7 @@ Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).
 | [`docs/BUILD.md`](docs/BUILD.md) | PDF build, Lean, companion site |
 | [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md) | Status, parts, bibliography, ledgers, contributing |
 | [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) | Toy sim, embedded sim, agency-detect |
+| [`papers/README.md`](papers/README.md) | Spin-out papers, frozen sources and PDFs |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to contribute (Lean, sims, writing) |
 | [`INSTRUCTIONS.md`](INSTRUCTIONS.md) | Editorial mission and style |
 | [`AGENTS.md`](AGENTS.md) | Agent handoff rules |

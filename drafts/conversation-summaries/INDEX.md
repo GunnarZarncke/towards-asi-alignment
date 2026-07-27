@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-27 | **ET-4 paper relocation** — top-level `papers/` layout with frozen submission artifacts | [2026-07-27-et4-paper-relocation.md](2026-07-27-et4-paper-relocation.md) |
+| 2026-07-27 | **ET-4 rubric clarity** — minimally defined headline measures and exact confirmation counts; rebuilt the submission PDF | [2026-07-27-et4-rubric-clarity.md](2026-07-27-et4-rubric-clarity.md) |
 | 2026-07-27 | **ET-4 replay deployment bundle** — unignored the 7.6 MB case-brief trace for site deployment | [2026-07-27-et4-replay-deploy.md](2026-07-27-et4-replay-deploy.md) |
 | 2026-07-27 | **ET-4 submission shortening** — explicit track fit; affordance and code mappings moved to clearly labeled appendices; main code/data section retained | [2026-07-27-et4-submission-shortening.md](2026-07-27-et4-submission-shortening.md) |
 | 2026-07-27 | **Lab-sim cleanup + ET-4 docs** — `runners/` tree; blind protocols co-located; `README_ET4`; hackathon context in `context/ET4-context/` | [2026-07-27-lab-sim-cleanup-et4-docs.md](2026-07-27-lab-sim-cleanup-et4-docs.md) |
