@@ -13,8 +13,9 @@ Detector-layer freezes (S6/S7, symmetric two-sample S6) are **separate** from
 |-----|------|
 | [`DESIGN.md`](DESIGN.md) | Frozen pre-registration constants |
 | [`PLAN.md`](PLAN.md) | Bridge coverage, phases, D1–D4 backlog |
-| [`BLIND_GENERATION.md`](BLIND_GENERATION.md) | Phase 6 blind playbook protocol |
-| [`BLIND_DETECTOR_GENERATION.md`](BLIND_DETECTOR_GENERATION.md) | S7 blind detector protocol |
+| [`BLIND_GENERATION.md`](BLIND_GENERATION.md) | Phase 6 blind playbook protocol (round 1) |
+| [`lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`](lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md) | Phase 6 blind playbook round 2 |
+| [`lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md) | S7 blind detector protocol |
 
 ---
 

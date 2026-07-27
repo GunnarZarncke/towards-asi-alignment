@@ -54,38 +54,43 @@ python3 report_isolate_cost.py
 
 ## Entry points
 
+Runners live under [`runners/`](runners/). **ET-4 secret loyalties:**
+[`README_ET4_secret_loyalties.md`](README_ET4_secret_loyalties.md) ·
+[`runners/et4_secret_loyalties/`](runners/et4_secret_loyalties/).
+
 ### Pre-registered batteries
 
 | Script | Output | Notes |
 |--------|--------|-------|
-| `run_phase6.py` | `results/phase6_battery.*` | Blind playbooks; SubprocessIsolate (LS-1) |
-| `run_phase7.py` | `results/phase7_battery.*` | Escalation, redteam, capture grid (LS-4–6) |
-| `run_phase9.py` | `results/phase9_battery.*` | D1/D4/D2 equivalence + ecology batteries (LS-14–16) |
-| `run_d3_population.py` | `results/d3_population.*` | D3.1 population selection (LS-36); `--mock` for smoke |
-| `run_d3_spec_evolution.py` | `results/d3_spec_evolution.*` | D3.2 spec-weakening mutation (LS-37) |
+| `runners/phases/run_phase6.py` | `results/phase6_battery.*` | Blind playbooks; SubprocessIsolate (LS-1) |
+| `runners/phases/run_phase7.py` | `results/phase7_battery.*` | Escalation, redteam, capture grid (LS-4–6) |
+| `runners/phases/run_phase9.py` | `results/phase9_battery.*` | D1/D4/D2 equivalence + ecology batteries (LS-14–16) |
+| `runners/batteries/run_d3_population.py` | `results/d3_population.*` | D3.1 population selection (LS-36); `--mock` for smoke |
+| `runners/batteries/run_d3_spec_evolution.py` | `results/d3_spec_evolution.*` | D3.2 spec-weakening mutation (LS-37) |
 
 ### UAD / detector line (S5–S7, LS-24–33)
 
 | Script | Backend | Finding |
 |--------|---------|---------|
-| `run_s6_intervention_uad.py` | MockIsolate | LS-28 |
-| `run_s7_blind_battery.py` | SubprocessIsolate | LS-30 |
-| `run_llm_detector_stress_test.py` | Real `gpt-4o-mini` (API spend) | LS-32 |
-| `run_llm_detector_stats_validation.py` | Real API | LS-33 |
+| `runners/uad/run_s6_intervention_uad.py` | MockIsolate | LS-28 |
+| `runners/uad/run_s7_blind_battery.py` | SubprocessIsolate | LS-30 |
+| `runners/llm_detectors/run_llm_detector_stress_test.py` | Real `gpt-4o-mini` (API spend) | LS-32 |
+| `runners/llm_detectors/run_llm_detector_stats_validation.py` | Real API | LS-33 |
 
-Also: `run_s5_uad_core_port.py`, `run_s5_deep_trace_sweep.py`, `run_s6_cmi_detector.py`,
-`run_d2_adversarial_lineage.py`, `run_llm_detector_root_cause_probe.py`,
-`run_llm_detector_committee_stress_test.py`.
+Also: `runners/uad/run_s5_*.py`, `runners/uad/run_s6_cmi_detector.py`,
+`runners/batteries/run_d2_adversarial_lineage.py`,
+`runners/llm_detectors/run_llm_detector_root_cause_probe.py`,
+`runners/llm_detectors/run_llm_detector_committee_stress_test.py`.
 
 ### Exploratory (not batteries)
 
 | Script | Purpose |
 |--------|---------|
-| `run_phase8_llm_spotcheck.py` | LLM engineer spot-check (LS-7) |
-| `run_phase8_llm_redteam.py` | LLM red-team prompt variant (LS-8) |
-| `run_s1_build_loop_prototype.py` … `run_s4_shared_slot_prototype.py` | S1–S4 scenario prototypes (LS-17–20) |
-| `run_llm_discovery_*.py` | Phase 10 LLM coordination discovery (LS-21–23) |
-| `run_handle_calibration_battery.py` | Handle dose calibration (LS-39) |
+| `runners/phases/run_phase8_llm_spotcheck.py` | LLM engineer spot-check (LS-7) |
+| `runners/phases/run_phase8_llm_redteam.py` | LLM red-team prompt variant (LS-8) |
+| `runners/prototypes/run_s1_build_loop_prototype.py` … `run_s4_shared_slot_prototype.py` | S1–S4 scenario prototypes (LS-17–20) |
+| `runners/llm_discovery/run_llm_discovery_*.py` | Phase 10 LLM coordination discovery (LS-21–23) |
+| `runners/batteries/run_handle_calibration_battery.py` | Handle dose calibration (LS-39) |
 
 Requires `OPENAI_API_KEY` in repo-root `.env` for LLM scripts.
 
@@ -99,38 +104,16 @@ lab_sim/
   world_visible/    pipeline, access, world.run_episode, config (CODE_VERSION)
   oracle_only/      referee, UAD/intervention, handles, attic/ (retired detectors)
   harness/          isolates, batteries, D3 loops, redteam
+runners/            battery runners (see runners/README.md)
+runs/               gitignored ephemeral episode workspaces
+external/           vendor annexes (ET-3 patches/pin; see external/README.md)
 leak-proof/         Lean 4 plane-separation certificates
 tests/              mirrors four tiers + plane/regression tests
 results/FINDINGS.md LS-1 … ledger
 ```
 
 Tier rationale: [`ACCESS_TIERS.md`](ACCESS_TIERS.md). Design freeze: [`DESIGN.md`](DESIGN.md).
-Full plan: [`PLAN.md`](PLAN.md).
-
----
-
-## Secret-loyalty core (ET-4)
-
-ET-4 is a narrow, scripted pipeline-policy organism: a fictional-principal
-reviewer bias inside the existing subprocess-isolated lab.  It is not a
-weight-trained or frontier-model result.  The registered `BB` core compares
-organism, content-matched, and wrong-principal controls under high- and
-low-hazard scenarios; it reports the A0 compliance-proxy inversion separately
-from the A3 directional-deploy proxy.
-
-Reproduce the frozen core:
-
-```bash
-cd experiments/lab-simulation
-.venv/bin/python run_et4_secret_loyalty.py --stage preregistration
-.venv/bin/python run_et4_secret_loyalty.py --stage discovery
-.venv/bin/python run_et4_secret_loyalty.py --stage confirmatory
-```
-
-The checked-in artifacts are in `results/et4_*`; scope, preregistration, and
-limitations are in [`PLAN_ET4.md`](PLAN_ET4.md) and
-[`results/FINDINGS.md`](results/FINDINGS.md) (LS-49).  The optional
-system-prompt annex is blocked until the scripted core is complete.
+Full plan: [`PLAN.md`](PLAN.md). ET-4: [`README_ET4_secret_loyalties.md`](README_ET4_secret_loyalties.md) → [`PLAN_ET4.md`](PLAN_ET4.md).
 
 ---
 

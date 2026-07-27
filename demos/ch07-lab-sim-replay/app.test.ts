@@ -3,6 +3,8 @@ import {
   actionLabel,
   actionOk,
   anchorsForVariant,
+  agentGlyphClass,
+  auditTierTooltip,
   bearerHarmDelta,
   et4Summary,
   matchAdminEvents,
@@ -218,6 +220,17 @@ describe("ET-4 case brief helpers", () => {
     expect(anchorsForVariant(anchors, "organism")).toHaveLength(2);
     expect(anchorsForVariant(anchors, "content_matched")).toHaveLength(0);
     expect(anchorsForVariant(anchors, "remediation").map((a) => a.id)).toEqual(["a"]);
+  });
+
+  it("maps agent rows to collapsed glyph colors", () => {
+    const frame = makeFrame();
+    expect(agentGlyphClass(frame.agents.eng1)).toBe("glyph-ok");
+    expect(agentGlyphClass(frame.agents.rev1)).toBe("glyph-none");
+  });
+
+  it("builds audit tier tooltips", () => {
+    expect(auditTierTooltip("light")).toContain('tier "light"');
+    expect(auditTierTooltip("deep")).toContain("does not re-run");
   });
 
   it("reads optional ET-4 summary from trace files", () => {

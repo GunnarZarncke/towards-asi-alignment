@@ -12,7 +12,7 @@ import statistics
 from datetime import datetime, timedelta
 from pathlib import Path
 
-RESULTS_DIR = Path(__file__).resolve().parent.parent.parent / "results"
+RESULTS_DIR = Path(__file__).resolve().parents[3] / "results"
 N_SIMS = 100
 START = datetime(2027, 3, 31)
 GAPS_DAYS = {"SC to SAR": 1825.0, "SAR to SIAR": 730.0, "SIAR to ASI": 3650.0}

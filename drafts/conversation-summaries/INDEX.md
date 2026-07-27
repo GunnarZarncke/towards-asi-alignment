@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-27 | **Lab-sim cleanup + ET-4 docs** — `runners/` tree; blind protocols co-located; `README_ET4`; hackathon context in `context/ET4-context/` | [2026-07-27-lab-sim-cleanup-et4-docs.md](2026-07-27-lab-sim-cleanup-et4-docs.md) |
 | 2026-07-27 | **ET-4 replay demo** — trace export script; case-brief UI (organism/control/remediation); 8 MB JSON gitignored | [2026-07-27-et4-replay-demo.md](2026-07-27-et4-replay-demo.md) |
 | 2026-07-26 | **ET-3 AI 2027 framing and chapter references** — general-audience news rewrite; minimal Appendix N boundary note; surgical Ch. 12/25/30/34/39 references; bibliography entry | [2026-07-26-et3-ai2027-integration.md](2026-07-26-et3-ai2027-integration.md) |
 | 2026-07-26 | **ET-3 line closed** — LS-48; PLAN concluded; deferred TODOs; sibling fork pushed | [2026-07-25-et3-ai2027.md](2026-07-25-et3-ai2027.md) |

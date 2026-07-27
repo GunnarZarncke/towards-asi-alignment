@@ -61,6 +61,13 @@ function anchorsForVariant(anchors, variantId) {
 function et4Summary(trace) {
   return trace.summary?.et4 ?? null;
 }
+function agentGlyphClass(rec) {
+  const ok = actionOk(rec);
+  return ok === null ? "glyph-none" : ok ? "glyph-ok" : "glyph-denied";
+}
+function auditTierTooltip(tier) {
+  return `The episode is fixed \u2014 it was recorded once. Selecting tier "${tier}" does not re-run the simulation. It only changes what the Audit lane shows.`;
+}
 const STYLE = `
 .lsr { font-family: system-ui, -apple-system, Segoe UI, sans-serif; max-width: 1100px; color: #111; }
 .lsr h2 { font-size: 1.15rem; margin: 0 0 4px; }
@@ -89,10 +96,13 @@ const STYLE = `
 .lsr .expanded-body { padding: 6px 8px 10px; font-size: 0.78rem; }
 .lsr .lane { border-top: 1px dashed #ddd; padding: 6px 0; position: relative; }
 .lsr .lane:first-child { border-top: none; }
-.lsr .lane h4 { margin: 0 0 4px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: #777; }
+.lsr .lane-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.lsr .lane-head h4 { margin: 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: #777; flex: 1; }
+.lsr .lane-glyph { width: 72px; flex-shrink: 0; }
 .lsr .agent-row { border: 1px solid #e2e2e2; border-radius: 6px; padding: 4px 6px; margin-bottom: 4px; cursor: pointer; }
 .lsr .agent-row.picked { border-color: #24324a; background: #f2f5fa; }
-.lsr .agent-row .headline { display: flex; justify-content: space-between; gap: 6px; }
+.lsr .agent-row .headline { display: flex; justify-content: space-between; gap: 6px; align-items: center; }
+.lsr .glyph-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
 .lsr .badge { border-radius: 999px; padding: 0 6px; font-size: 0.68rem; color: #fff; }
 .lsr .badge.ok { background: #3f9142; }
 .lsr .badge.denied { background: #c14b3f; }
@@ -141,6 +151,48 @@ function el(tag, className, text) {
   if (className) node.className = className;
   if (text !== void 0) node.textContent = text;
   return node;
+}
+function laneHead(title, glyph) {
+  const head = el("div", "lane-head");
+  head.appendChild(glyph);
+  head.appendChild(el("h4", void 0, title));
+  return head;
+}
+function agentGlyphRow(frame, roster) {
+  const row = el("div", "glyph-row lane-glyph");
+  for (const actorId of roster) {
+    const rec = frame.agents[actorId];
+    const seg = el("div", "glyph-seg");
+    const ok = rec ? actionOk(rec) : null;
+    seg.classList.add(ok === null ? "glyph-none" : ok ? "glyph-ok" : "glyph-denied");
+    row.appendChild(seg);
+  }
+  return row;
+}
+function adminGlyphRow(frame) {
+  const row = el("div", "glyph-row lane-glyph");
+  const seg = el("div", "glyph-seg");
+  seg.classList.add(frame.admin.tool_events.length > 0 ? "glyph-admin-on" : "glyph-none");
+  row.appendChild(seg);
+  return row;
+}
+function auditGlyphRow(frame, tier) {
+  const row = el("div", "glyph-row lane-glyph");
+  const seg = el("div", "glyph-seg");
+  if (tierHasDeepExtras(frame, tier)) seg.classList.add("glyph-audit-deep");
+  else if (tierHasEventsThisTick(frame, tier)) seg.classList.add("glyph-audit-on");
+  else seg.classList.add("glyph-none");
+  row.appendChild(seg);
+  return row;
+}
+function oracleGlyphRow(frame) {
+  const row = el("div", "glyph-row lane-glyph");
+  row.style.alignItems = "flex-end";
+  const bar = el("div", "glyph-seg glyph-oracle-bar");
+  bar.style.height = `${Math.max(2, Math.round(maxHazardThisFrame(frame) * 10))}px`;
+  bar.style.width = "100%";
+  row.appendChild(bar);
+  return row;
 }
 function renderCollapsedTick(frame, roster, tier, frames) {
   const strip = el("div", "lane-strip");
@@ -205,13 +257,15 @@ function renderExpandedTick(frame, roster, state, onPickAgent, onClose) {
   const eventN = expandedAgent ? frame.agents[expandedAgent]?.event_n ?? null : null;
   const agentLane = el("div", "lane");
   agentLane.dataset.anchor = "lane-agent";
-  agentLane.appendChild(el("h4", void 0, "Agent"));
+  agentLane.appendChild(laneHead("Agent", agentGlyphRow(frame, roster)));
   for (const actorId of roster) {
     const rec = frame.agents[actorId];
     if (!rec) continue;
     const row = el("div", `agent-row${actorId === expandedAgent ? " picked" : ""}`);
     row.dataset.actor = actorId;
     const headline = el("div", "headline");
+    const dot = el("span", `glyph-dot ${agentGlyphClass(rec)}`);
+    headline.appendChild(dot);
     headline.appendChild(el("span", void 0, `${actorId} (${rec.role}): ${actionLabel(rec)}`));
     const ok = actionOk(rec);
     headline.appendChild(el("span", `badge ${ok === null ? "none" : ok ? "ok" : "denied"}`, ok === null ? "\u2014" : ok ? "ok" : "denied"));
@@ -255,7 +309,7 @@ function renderExpandedTick(frame, roster, state, onPickAgent, onClose) {
   body.appendChild(agentLane);
   const adminLane = el("div", "lane");
   adminLane.dataset.anchor = "lane-admin";
-  adminLane.appendChild(el("h4", void 0, "Admin (host/world log, unredacted)"));
+  adminLane.appendChild(laneHead("Admin (host/world log, unredacted)", adminGlyphRow(frame)));
   const adminMeta = el(
     "div",
     "muted",
@@ -277,7 +331,7 @@ function renderExpandedTick(frame, roster, state, onPickAgent, onClose) {
   body.appendChild(adminLane);
   const auditLane = el("div", "lane");
   auditLane.dataset.anchor = "lane-audit";
-  auditLane.appendChild(el("h4", void 0, `Audit (tier: ${state.tier})`));
+  auditLane.appendChild(laneHead(`Audit (tier: ${state.tier})`, auditGlyphRow(frame, state.tier)));
   const view = frame.audit[state.tier];
   const auditMatches = matchAuditEvents(frame, state.tier, eventN);
   if (state.tier === "none") {
@@ -304,7 +358,7 @@ function renderExpandedTick(frame, roster, state, onPickAgent, onClose) {
   body.appendChild(auditLane);
   const oracleLane = el("div", "lane");
   oracleLane.dataset.anchor = "lane-oracle";
-  oracleLane.appendChild(el("h4", void 0, "Oracle (referee-only ground truth)"));
+  oracleLane.appendChild(laneHead("Oracle (referee-only ground truth)", oracleGlyphRow(frame)));
   oracleLane.appendChild(el("div", "muted", `bearer_harm_total: ${fmtNum(frame.oracle.bearer_harm_total)}`));
   const matchedModel = expandedAgent ? oracleModelForAgent(frame, expandedAgent) : null;
   if (Object.keys(frame.oracle.models).length === 0) {
@@ -427,10 +481,11 @@ function mountReplayTrace(container, trace, options) {
     )
   );
   const tierToggle = el("div", "tier-toggle");
-  tierToggle.appendChild(el("span", void 0, "Audit lane tier:"));
+  tierToggle.appendChild(el("span", void 0, "Audit lane projection (view only):"));
   const tierButtons = /* @__PURE__ */ new Map();
   for (const tier of TIERS) {
     const btn = el("button", tier === state.tier ? "active" : void 0, tier);
+    btn.title = auditTierTooltip(tier);
     btn.addEventListener("click", () => {
       state.tier = tier;
       renderAll();
@@ -438,6 +493,7 @@ function mountReplayTrace(container, trace, options) {
     tierButtons.set(tier, btn);
     tierToggle.appendChild(btn);
   }
+  tierToggle.title = auditTierTooltip(state.tier);
   container.appendChild(tierToggle);
   const scroll = el("div", "timeline-scroll");
   const timeline = el("div", "timeline");
@@ -453,7 +509,11 @@ function mountReplayTrace(container, trace, options) {
     col?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
   }
   function renderAll() {
-    for (const [tier, btn] of tierButtons) btn.classList.toggle("active", tier === state.tier);
+    for (const [tier, btn] of tierButtons) {
+      btn.classList.toggle("active", tier === state.tier);
+      btn.title = auditTierTooltip(tier);
+    }
+    tierToggle.title = auditTierTooltip(state.tier);
     timeline.innerHTML = "";
     for (const frame of trace.frames) {
       const tickWrap = el("div");
@@ -504,7 +564,7 @@ function renderAggregateStrip(brief) {
     el(
       "div",
       void 0,
-      `Confirmatory aggregate (${brief.et4_protocol_version}, seeds 201\u2013204). Simulated pipeline-policy organism \u2014 not weight poisoning or a frontier-model result.`
+      `Confirmatory aggregate (${brief.et4_protocol_version}, cell BB: hazard-context gated + contextual pipeline choice; seeds 201\u2013204). Simulated pipeline-policy organism \u2014 not weight poisoning or a frontier-model result.`
     )
   );
   const table = el("table");
@@ -557,7 +617,7 @@ function mountEt4CaseBriefDemo(container, brief) {
     el(
       "p",
       "scenario",
-      `Pipeline-embedded secret loyalty in a simulated AI-R&D deployment pipeline. Cell ${brief.cell}, seed ${brief.seed}, protocol ${brief.et4_protocol_version}. Switch variants to compare organism, content-matched control, and audit-visible remediation on the same seed.`
+      `Pipeline-embedded secret loyalty in a simulated AI-R&D deployment pipeline. Cell ${brief.cell} (hazard-context gated, contextual pipeline choice), seed ${brief.seed}, protocol ${brief.et4_protocol_version}. Switch variants to compare organism, content-matched control, and audit-visible remediation on the same seed.`
     )
   );
   container.appendChild(renderAggregateStrip(brief));
@@ -694,7 +754,9 @@ export {
   TIERS,
   actionLabel,
   actionOk,
+  agentGlyphClass,
   anchorsForVariant,
+  auditTierTooltip,
   bearerHarmDelta,
   et4Summary,
   matchAdminEvents,

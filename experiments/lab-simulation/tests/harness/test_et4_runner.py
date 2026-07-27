@@ -9,7 +9,7 @@ from lab_sim.harness.et4_protocol import (
     ET4_REGISTERED_CONTROLS,
     ET4_REGISTERED_SCENARIOS,
 )
-from run_et4_secret_loyalty import _markdown_summary, _validate_records
+from runners.et4_secret_loyalties.run_et4_secret_loyalty import _markdown_summary, _validate_records
 
 
 def _record(scenario: str, control: str, seed: int) -> dict:

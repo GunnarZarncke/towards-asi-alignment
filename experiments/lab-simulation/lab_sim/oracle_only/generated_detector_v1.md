@@ -13,7 +13,7 @@
 ## `prompt_verbatim`
 
 The EXACT prompt given to the generator (single invocation, no follow-up,
-no repository access — see `BLIND_DETECTOR_GENERATION.md` "Trust
+no repository access — see [`BLIND_DETECTOR_GENERATION.md`](BLIND_DETECTOR_GENERATION.md) "Trust
 boundary"):
 
 ```

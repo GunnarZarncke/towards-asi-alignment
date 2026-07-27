@@ -925,7 +925,7 @@ unattempted detection gap.
   `heuristic`/`cmi_deep`/`intervention`/`blind` — the FIRST real-backend
   numbers for `intervention` (LS-28/LS-29's numbers were MockIsolate-only)
   and the first numbers of any kind for `blind`
-  (`uad_blind_v1.py`, `BLIND_DETECTOR_GENERATION.md`).
+  (`uad_blind_v1.py`, [`lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md)).
 - A 3-threshold (0.10/0.15/0.20) × 3-seed sweep confirms the
   pre-registered 0.15 default is not doing delicate work at this
   granularity — every scenario's exact/merge rate is identical across

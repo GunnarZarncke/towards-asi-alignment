@@ -1016,7 +1016,7 @@ verification only in this pass. D3 untouched.
   (`test_d2.py`'s module docstring explains why) rather than through a
   single agent-driven episode that upgrades mid-flight; a future
   shortcut-compatible upgrade playbook is future work, not claimed done.
-- Item 10 (blind round 2): `BLIND_GENERATION_ROUND2.md` (permitted-context
+- Item 10 (blind round 2): [`lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`](lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md) (permitted-context
   addendum, mechanism-only, no new availability gates needed), one fresh
   `generalPurpose` subagent run (readonly, instructed blindness — agent id
   recorded in `generated_playbooks_v2.json`'s provenance), 18/18 accepted
@@ -1651,7 +1651,7 @@ generate a new detector with registered predictions, run the full
 battery through `SubprocessIsolate`, add a small parameter sweep — all
 named up front as a new freeze (see `DESIGN.md`'s "Freeze note 2").
 
-**Blind generation, round 1 (`BLIND_DETECTOR_GENERATION.md`).** Adapted
+**Blind generation, round 1 ([`lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md)).** Adapted
 from `BLIND_GENERATION.md`, aimed at the DETECTOR side this time: a
 Task-tool subagent (`readonly=true`, instructed not to read any repo
 file) given only a mechanism-level description of the S6 intervention

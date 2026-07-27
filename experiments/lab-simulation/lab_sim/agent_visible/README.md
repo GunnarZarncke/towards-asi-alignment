@@ -18,8 +18,9 @@ imports anything outside the stdlib or another file in this same folder.
 | `programs.py` | Pure host-independent agent decision logic: `walk_pipeline`, `goal_policy`, `honest_twin` |
 | `ontology.py` | Report-content mapping (honest/inflate), pure |
 | `playbooks.py` | `PlaybookSpec` schema + baseline playbook repertoire + availability gates + `STEP_KIND_VOCAB`/`validate_repertoire`/`merged_repertoire` |
-| `generated_playbooks_v1.json` | Phase 6 blind-generated repertoire (`BLIND_GENERATION.md`), 13 playbooks |
-| `generated_playbooks_v2.json` | Round-2 blind-generated repertoire (`run_blind_round2.py`) |
+| `generated_playbooks_v1.json` | Phase 6 blind-generated repertoire ([`../../BLIND_GENERATION.md`](../../BLIND_GENERATION.md)), 13 playbooks |
+| `generated_playbooks_v2.json` | Round-2 blind-generated repertoire ([`BLIND_GENERATION_ROUND2.md`](BLIND_GENERATION_ROUND2.md)), 13 playbooks |
+| `BLIND_GENERATION_ROUND2.md` | Round-2 permitted-context addendum (co-located with v2 repertoire) |
 | `llm_agent.py` | Phase 8: `LLMPolicy` (redteam system prompt, per-observation cache), host-independent |
 | `llm_agent_main.py` | Phase 8: subprocess entry point (`llm_agent.py` + stdlib only; `FAKE_MODE` test seam) |
 | `llm_client.py` | Phase 8: minimal OpenAI chat client (stdlib only) |

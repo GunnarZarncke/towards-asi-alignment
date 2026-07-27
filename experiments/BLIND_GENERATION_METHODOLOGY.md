@@ -12,8 +12,8 @@ learned, not a new binding protocol; each line's own `BLIND_GENERATION.md`
 remains the source of truth for what that line actually did.
 
 Prior art this draws on: `goal-agent-simulation/BLIND_GENERATION.md`
-(blind action generation, GA-8 onward), `lab-simulation/BLIND_GENERATION.md`
-and `BLIND_GENERATION_ROUND2.md` (blind playbook generation), the Phase
+(blind action generation, GA-8 onward), `lab-simulation/BLIND_GENERATION.md`,
+`lab-simulation/lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md` (blind playbook generation), the Phase
 7a-blind scenario-designer protocol in `graded-lab-simulation/DESIGN.md`,
 and `embedded-simulation`'s `audit_projection.py` (plane-enforced
 sensor-plausible fields for the *auditor*, the closest existing precedent

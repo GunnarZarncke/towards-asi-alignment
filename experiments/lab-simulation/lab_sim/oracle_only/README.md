@@ -18,6 +18,8 @@ scheme and rationale.
 | `uad.py` | Undetected-adversarial-drift / coalition discovery signal |
 | `collusion.py` | Collusion signal score over detected coalitions |
 | `playbook_claim.py` | Playbook-claim gap score (facade detection) |
+| `generated_detector_v1.md` | S7 blind-generated detector design (provenance artifact) |
+| `BLIND_DETECTOR_GENERATION.md` | S7 blind detector protocol (co-located with design artifact) |
 
 This is the referee's own view: ground truth, detection logic, and the
 handle/bearer internals whose leakage would let a grantee directly read

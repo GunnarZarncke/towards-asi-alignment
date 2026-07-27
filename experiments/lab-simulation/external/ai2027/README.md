@@ -18,7 +18,7 @@ python3 -m venv .venv
 .venv/bin/pip install numpy pandas scipy pyyaml matplotlib tqdm
 ```
 
-Reproduction: `cd experiments/lab-simulation && python3 run_et3_reproduce_ai2027.py`
+Reproduction: `cd experiments/lab-simulation && python3 runners/et3/run_et3_reproduce_ai2027.py`
 
 ## Branches on fork
 
@@ -33,4 +33,4 @@ Open seed PR: https://github.com/GunnarZarncke/timelines-takeoff-ai-2027/compare
 Patches recorded under `patches/` mirror fork diffs for book-repo handoff.
 
 Foster extensions (optional): enable blocks under `et3_foster` in `takeoff/params.yaml`;
-smoke via `python3 run_et3_foster_smoke.py` from lab-simulation.
+smoke via `python3 runners/et3/run_et3_foster_smoke.py` from lab-simulation.

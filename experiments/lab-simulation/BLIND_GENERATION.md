@@ -150,3 +150,10 @@ does not let a reviewer audit that no forbidden content leaked in.
 
 Malformed specs are dropped (recorded in `rejected_specs` with the
 mechanical reason from `validate_playbook_dict`), never repaired by hand.
+
+## Related protocols
+
+- Round 2 addendum (D4/D1 step-kinds):
+  [`lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`](lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md)
+- Blind detector generation (S7):
+  [`lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md)

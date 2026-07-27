@@ -784,7 +784,7 @@ afterward:
 - Detector author (if any new families added) never sees: generated features,
   calibration battery outcomes.
 - Same separation-of-duties as `lab-simulation/BLIND_GENERATION.md` and
-  `BLIND_DETECTOR_GENERATION.md`.
+  `lab-simulation/lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`.
 
 **Freeze (Phase 5):**
 

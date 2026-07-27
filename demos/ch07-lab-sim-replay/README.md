@@ -71,7 +71,7 @@ python3 export_replay_trace.py
 
 ```bash
 cd experiments/lab-simulation
-python3 export_et4_replay_traces.py
+python3 runners/et4_secret_loyalties/export_et4_replay_traces.py
 ```
 
 Overwrites `data/episode_trace.json` or `data/et4_case_brief.json` respectively. Only needed if `lab_sim` mechanics or the chosen scenario/seed change; the committed files are otherwise static.

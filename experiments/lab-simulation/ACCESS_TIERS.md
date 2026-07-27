@@ -38,7 +38,9 @@ changed; see "Functional-identity guarantee" below) — see
   caching/search/battery meta-tooling — not simulated-world content) plus
   everything already outside `lab_sim/`: top-level `run_*.py`/`verify_*.py`/
   `report_*.py` scripts, `results/`, `tests/`, and every process doc
-  (`PLAN.md`/`DESIGN.md`/`README.md`/`BLIND_GENERATION*.md`/`FINDINGS.md`).
+  (`PLAN.md`/`DESIGN.md`/`README.md`/`BLIND_GENERATION.md`/
+  `lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`/
+  `lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`/`FINDINGS.md`).
   Moving `lab_sim/` into tiers does **not** by itself make those
   still-forbidden paths safe to share — a real engagement must also gate
   access to them explicitly.
@@ -49,7 +51,7 @@ changed; see "Functional-identity guarantee" below) — see
 [`lab_sim/agent_visible/README.md`](lab_sim/agent_visible/README.md).
 `agent_main.py`, `programs.py`, `ontology.py`, `playbooks.py`,
 `playbooks_schema.py`, `generated_playbooks_v1.json`,
-`generated_playbooks_v2.json`, `llm_agent.py`, `llm_agent_main.py`,
+`generated_playbooks_v2.json`, `BLIND_GENERATION_ROUND2.md`, `llm_agent.py`, `llm_agent_main.py`,
 `llm_client.py`, `llm_cost.py`, `llm_env.py`.
 `playbooks_baseline.py` (see judgment call 1 below) physically lives in
 this same folder for the dual-mode-import reason below, but is a tier-2
