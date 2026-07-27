@@ -1,0 +1,60 @@
+<div class="offline-control" data-offline-control>
+  <button type="button" class="button" data-offline-button>
+    Make site available offline
+  </button>
+  <span class="offline-status" data-offline-status role="status" aria-live="polite"></span>
+</div>
+
+<script>
+  const control = document.querySelector<HTMLElement>("[data-offline-control]");
+  const button = control?.querySelector<HTMLButtonElement>("[data-offline-button]");
+  const status = control?.querySelector<HTMLElement>("[data-offline-status]");
+
+  if (control && button && status) {
+    if (!("serviceWorker" in navigator)) {
+      control.hidden = true;
+    } else {
+      const serviceWorkerUrl = new URL("sw.js", document.baseURI);
+      navigator.serviceWorker.register(serviceWorkerUrl.pathname).catch(() => {
+        status.textContent = "Offline mode is unavailable in this browser.";
+      });
+
+      button.addEventListener("click", async () => {
+        const registration = await navigator.serviceWorker.ready;
+        button.disabled = true;
+        status.textContent = "Caching site pages…";
+        registration.active?.postMessage({ type: "cache-site" });
+      });
+
+      navigator.serviceWorker.addEventListener("message", (event) => {
+        if (event.data?.type === "offline-progress") {
+          status.textContent = `Caching site pages (${event.data.completed}/${event.data.total})…`;
+        }
+        if (event.data?.type === "offline-complete") {
+          button.textContent = "Site available offline";
+          status.textContent = `${event.data.completed} pages cached. PDFs and demos were skipped.`;
+        }
+      });
+    }
+  }
+</script>
+
+<style>
+  .offline-control {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .offline-status {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+</style>

@@ -3,6 +3,7 @@ import "../styles/global.css";
 import "katex/dist/katex.min.css";
 import CloudflareWebAnalytics from "../components/CloudflareWebAnalytics.astro";
 import LinkIndicator from "../components/LinkIndicator.astro";
+import OfflineButton from "../components/OfflineButton.astro";
 import PageQrCode from "../components/PageQrCode.astro";
 import SiteSearch from "../components/SiteSearch.astro";
 import { pdfHref } from "../lib/site-urls";
@@ -65,6 +66,8 @@ const websiteJsonLd = {
     <meta name="description" content={metaDescription} />
     <meta name="author" content={AUTHOR_NAME} />
     <meta name="robots" content={robots} />
+    <link rel="manifest" href={withBase("/manifest.webmanifest")} />
+    <meta name="theme-color" content="#17324d" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="text/plain" href={LLMS_TXT_URL} title="LLM / agent orientation (llms.txt)" />
     <link rel="alternate" type="application/json" href={SEARCH_INDEX_JSON_URL} title="Site search index" />
@@ -128,6 +131,7 @@ const websiteJsonLd = {
             </a> ·
             <a href={withBase("/impressum/")}>Impressum</a>
           </p>
+          <OfflineButton />
         </div>
       </footer>
     </div>
