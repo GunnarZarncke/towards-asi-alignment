@@ -4,5 +4,3 @@ __pycache__/
 .pytest_cache/
 *.pyc
 
-# Generated ET-4 replay bundle (~8 MB); run export_et4_replay_traces.py locally.
-ch07-lab-sim-replay/data/et4_case_brief.json

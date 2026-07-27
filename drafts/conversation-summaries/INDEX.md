@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-27 | **ET-4 replay deployment bundle** — unignored the 7.6 MB case-brief trace for site deployment | [2026-07-27-et4-replay-deploy.md](2026-07-27-et4-replay-deploy.md) |
+| 2026-07-27 | **ET-4 submission shortening** — explicit track fit; affordance and code mappings moved to clearly labeled appendices; main code/data section retained | [2026-07-27-et4-submission-shortening.md](2026-07-27-et4-submission-shortening.md) |
 | 2026-07-27 | **Lab-sim cleanup + ET-4 docs** — `runners/` tree; blind protocols co-located; `README_ET4`; hackathon context in `context/ET4-context/` | [2026-07-27-lab-sim-cleanup-et4-docs.md](2026-07-27-lab-sim-cleanup-et4-docs.md) |
 | 2026-07-27 | **ET-4 replay demo** — trace export script; case-brief UI (organism/control/remediation); 8 MB JSON gitignored | [2026-07-27-et4-replay-demo.md](2026-07-27-et4-replay-demo.md) |
 | 2026-07-26 | **ET-3 AI 2027 framing and chapter references** — general-audience news rewrite; minimal Appendix N boundary note; surgical Ch. 12/25/30/34/39 references; bibliography entry | [2026-07-26-et3-ai2027-integration.md](2026-07-26-et3-ai2027-integration.md) |
