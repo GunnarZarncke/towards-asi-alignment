@@ -101,4 +101,5 @@ if [[ "$MODE" == "preview" ]]; then
 fi
 
 npm run sync
+npm run build:local-sitemap
 exec npx astro dev --port "$PORT" --host 127.0.0.1

@@ -1,4 +1,8 @@
-<div class="offline-control" data-offline-control>
+---
+const serviceWorkerUrl = `${import.meta.env.BASE_URL}sw.js`;
+---
+
+<div class="offline-control" data-offline-control data-service-worker-url={serviceWorkerUrl}>
   <button type="button" class="button" data-offline-button>
     Make site available offline
   </button>
@@ -14,16 +18,21 @@
     if (!("serviceWorker" in navigator)) {
       control.hidden = true;
     } else {
-      const serviceWorkerUrl = new URL("sw.js", document.baseURI);
-      navigator.serviceWorker.register(serviceWorkerUrl.pathname).catch(() => {
-        status.textContent = "Offline mode is unavailable in this browser.";
+      const serviceWorkerUrl = control.dataset.serviceWorkerUrl;
+      navigator.serviceWorker.register(serviceWorkerUrl ?? "/sw.js").catch((error) => {
+        status.textContent = `Offline mode is unavailable: ${error.message}`;
       });
 
       button.addEventListener("click", async () => {
-        const registration = await navigator.serviceWorker.ready;
-        button.disabled = true;
-        status.textContent = "Caching site pages…";
-        registration.active?.postMessage({ type: "cache-site" });
+        try {
+          const registration = await navigator.serviceWorker.ready;
+          if (!registration.active) throw new Error("Service worker is not active yet.");
+          button.disabled = true;
+          status.textContent = "Caching site pages…";
+          registration.active.postMessage({ type: "cache-site" });
+        } catch (error) {
+          status.textContent = error instanceof Error ? error.message : "Offline caching could not start.";
+        }
       });
 
       navigator.serviceWorker.addEventListener("message", (event) => {
@@ -34,6 +43,10 @@
           button.textContent = "Site available offline";
           status.textContent = `${event.data.completed} pages cached. PDFs and demos were skipped.`;
         }
+        if (event.data?.type === "offline-error") {
+          button.disabled = false;
+          status.textContent = `Offline caching failed: ${event.data.message}`;
+        }
       });
     }
   }
@@ -41,11 +54,18 @@
 
 <style>
   .offline-control {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 1rem;
+    display: inline;
+  }
+
+  .offline-control .button {
+    border: 0;
+    padding: 0;
+    color: var(--color-accent-strong);
+    background: transparent;
+    font: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   .offline-status {

@@ -117,6 +117,8 @@ src/content/cards/field-news-claude-code-production-feb-2026.md
 
 # Generated from concepts + chapters + notation via build-search-index.mjs.
 public/search-index.json
+public/sitemap-index.xml
+public/sitemap-0.xml
 
 # Generated from field news + release cards via build-feed.mjs.
 public/feed.xml

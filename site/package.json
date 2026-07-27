@@ -22,6 +22,7 @@
     "sync:releases": "node scripts/sync-releases.mjs",
     "build:search-index": "node scripts/build-search-index.mjs",
     "build:feed": "node scripts/build-feed.mjs",
+    "build:local-sitemap": "ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/copy-local-sitemap.mjs",
     "sync:bot-orientation": "node scripts/sync-bot-orientation.mjs",
     "sync:chapter-cards": "node scripts/sync-chapter-cards.mjs",
     "sync:chapters": "node scripts/sync-chapters.mjs",
