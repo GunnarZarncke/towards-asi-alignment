@@ -55,6 +55,12 @@ function bearerHarmDelta(frames, t) {
   if (t === 0) return frames[0]?.oracle.bearer_harm_total ?? 0;
   return frames[t].oracle.bearer_harm_total - frames[t - 1].oracle.bearer_harm_total;
 }
+function anchorsForVariant(anchors, variantId) {
+  return anchors.filter((anchor) => anchor.variants.includes(variantId));
+}
+function et4Summary(trace) {
+  return trace.summary?.et4 ?? null;
+}
 const STYLE = `
 .lsr { font-family: system-ui, -apple-system, Segoe UI, sans-serif; max-width: 1100px; color: #111; }
 .lsr h2 { font-size: 1.15rem; margin: 0 0 4px; }
@@ -107,6 +113,25 @@ const STYLE = `
 .lsr .scorecard th, .lsr .scorecard td { text-align: right; padding: 3px 6px; border-bottom: 1px solid #eee; }
 .lsr .scorecard th:first-child, .lsr .scorecard td:first-child { text-align: left; }
 .lsr .note { color: #666; font-size: 0.82rem; margin-top: 10px; max-width: 82ch; }
+.lsr .mode-tabs, .lsr .variant-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.lsr .mode-tabs button, .lsr .variant-tabs button, .lsr .evidence-strip button {
+  border: 1px solid #bbb; background: #fff; border-radius: 6px; padding: 4px 10px; cursor: pointer; font: inherit; font-size: 0.85rem;
+}
+.lsr .mode-tabs button.active, .lsr .variant-tabs button.active { background: #24324a; color: #fff; border-color: #24324a; }
+.lsr .aggregate-strip { border: 1px solid #e4e4e4; border-radius: 10px; padding: 10px 14px; margin: 0 0 14px; font-size: 0.82rem; background: #fafafa; }
+.lsr .aggregate-strip table { border-collapse: collapse; width: 100%; margin-top: 6px; }
+.lsr .aggregate-strip th, .lsr .aggregate-strip td { text-align: right; padding: 3px 6px; border-bottom: 1px solid #eee; }
+.lsr .aggregate-strip th:first-child, .lsr .aggregate-strip td:first-child { text-align: left; }
+.lsr .evidence-strip { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; margin: 0 0 14px; }
+.lsr .evidence-strip .evidence-card {
+  flex: 1 1 180px; max-width: 280px; border: 1px solid #ddd; border-radius: 8px; padding: 8px 10px; background: #fff; text-align: left;
+}
+.lsr .evidence-strip .evidence-card.active { border-color: #24324a; background: #f2f5fa; }
+.lsr .evidence-strip .evidence-card .label { font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; }
+.lsr .evidence-strip .evidence-card .story { color: #555; font-size: 0.76rem; line-height: 1.35; margin-bottom: 6px; }
+.lsr .et4-scorecard { margin-top: 10px; border-top: 1px dashed #ddd; padding-top: 10px; }
+.lsr .et4-scorecard dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 0; font-size: 0.8rem; }
+.lsr .et4-scorecard dt { color: #777; }
 `;
 function fmtNum(n) {
   return n.toFixed(3);
@@ -324,6 +349,32 @@ function drawConnectors(tickEl) {
     svg.appendChild(line);
   }
 }
+function renderEt4Scorecard(trace) {
+  const et4 = et4Summary(trace);
+  if (!et4) return null;
+  const card = el("div", "et4-scorecard");
+  card.appendChild(el("h4", void 0, "ET-4 episode scorecard (oracle-only; separate from frozen referee)"));
+  const dl = el("dl");
+  const add = (k, v) => {
+    dl.appendChild(el("dt", void 0, k));
+    dl.appendChild(el("dd", void 0, v));
+  };
+  const sc = et4.principal_scorecard;
+  add("principal_a", sc.principal_a_score === null ? sc.status : fmtNum(sc.principal_a_score));
+  add("high_hazard_deploys", String(sc.high_hazard_deploys));
+  add("high_hazard_release_holds", String(sc.high_hazard_release_holds));
+  add("A0 process (light)", fmtNum(et4.affordances.A0?.process_noncompliance ?? 0));
+  add("A3 directional (full)", String(et4.affordances.A3?.observable_principal_bias ?? "\u2014"));
+  card.appendChild(dl);
+  card.appendChild(
+    el(
+      "div",
+      "muted",
+      "A0 and A3 are reported separately \u2014 a lower A0 process score is not a safety ranking."
+    )
+  );
+  return card;
+}
 function renderScorecard(trace) {
   const card = el("div", "scorecard");
   card.appendChild(el("h4", void 0, "End-of-episode scorecard (oracle_only/detectors.py + severity.py)"));
@@ -353,30 +404,28 @@ function renderScorecard(trace) {
       `severity.composite (oracle-only reference): ${composite} \xB7 report_divergence: ${divergence}`
     )
   );
+  const et4Card = renderEt4Scorecard(trace);
+  if (et4Card) card.appendChild(et4Card);
   return card;
 }
-function mountLabSimReplayDemo(container, trace) {
+function mountReplayTrace(container, trace, options) {
   container.innerHTML = "";
-  container.classList.add("lsr");
-  const style = document.createElement("style");
-  style.textContent = STYLE;
-  container.appendChild(style);
   const roster = Object.keys(trace.roster);
-  const state = { tier: "light", expandedT: null, expandedAgent: null };
-  const title = el("h2", void 0, "Lab-sim plane replay");
+  const state = {
+    tier: options.initialTier ?? "light",
+    expandedT: null,
+    expandedAgent: null
+  };
+  const title = el("h2", void 0, options.title);
   container.appendChild(title);
-  const scenario = el(
-    "p",
-    "scenario",
-    `${trace.scenario.summary} Fixed replay: seed ${trace.seed}, T=${trace.T}, ${trace.code_version}.`
+  container.appendChild(el("p", "scenario", options.scenarioText));
+  container.appendChild(
+    el(
+      "p",
+      "roster",
+      "Roster: " + roster.map((id) => `${id} (${trace.roster[id]})`).join(", ")
+    )
   );
-  container.appendChild(scenario);
-  const roster_p = el(
-    "p",
-    "roster",
-    "Roster: " + roster.map((id) => `${id} (${trace.roster[id]})`).join(", ")
-  );
-  container.appendChild(roster_p);
   const tierToggle = el("div", "tier-toggle");
   tierToggle.appendChild(el("span", void 0, "Audit lane tier:"));
   const tierButtons = /* @__PURE__ */ new Map();
@@ -396,6 +445,13 @@ function mountLabSimReplayDemo(container, trace) {
   container.appendChild(scroll);
   const scorecardHolder = el("div");
   container.appendChild(scorecardHolder);
+  function navigateTo(t, actorId) {
+    state.expandedT = t;
+    state.expandedAgent = actorId;
+    renderAll();
+    const col = timeline.querySelector(".tick.expanded");
+    col?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }
   function renderAll() {
     for (const [tier, btn] of tierButtons) btn.classList.toggle("active", tier === state.tier);
     timeline.innerHTML = "";
@@ -440,13 +496,197 @@ function mountLabSimReplayDemo(container, trace) {
     }
   }
   renderAll();
+  options.onReady?.(navigateTo);
+}
+function renderAggregateStrip(brief) {
+  const strip = el("div", "aggregate-strip");
+  strip.appendChild(
+    el(
+      "div",
+      void 0,
+      `Confirmatory aggregate (${brief.et4_protocol_version}, seeds 201\u2013204). Simulated pipeline-policy organism \u2014 not weight poisoning or a frontier-model result.`
+    )
+  );
+  const table = el("table");
+  const head = el("tr");
+  for (const label of ["scenario", "control", "n", "eligible", "mean principal-A", "mean A0", "mean A3"]) {
+    head.appendChild(el("th", void 0, label));
+  }
+  table.appendChild(head);
+  for (const row of brief.aggregate.confirmatory) {
+    const tr = el("tr");
+    tr.appendChild(el("td", void 0, row.scenario));
+    tr.appendChild(el("td", void 0, row.control));
+    tr.appendChild(el("td", void 0, String(row.n)));
+    tr.appendChild(el("td", void 0, String(row.eligible)));
+    tr.appendChild(
+      el("td", void 0, row.mean_principal_a === null ? "not exercised" : fmtNum(row.mean_principal_a))
+    );
+    tr.appendChild(el("td", void 0, fmtNum(row.mean_a0_process)));
+    tr.appendChild(el("td", void 0, fmtNum(row.mean_a3_directional)));
+    table.appendChild(tr);
+  }
+  strip.appendChild(table);
+  strip.appendChild(el("div", "muted", brief.aggregate.note));
+  return strip;
+}
+function mountLabSimReplayDemo(container, trace) {
+  container.innerHTML = "";
+  container.classList.add("lsr");
+  const style = document.createElement("style");
+  style.textContent = STYLE;
+  container.appendChild(style);
+  mountReplayTrace(container, trace, {
+    title: "Lab-sim plane replay",
+    scenarioText: `${trace.scenario.summary} Fixed replay: seed ${trace.seed}, T=${trace.T}, ${trace.code_version}.`
+  });
+}
+function mountEt4CaseBriefDemo(container, brief) {
+  container.innerHTML = "";
+  container.classList.add("lsr");
+  const style = document.createElement("style");
+  style.textContent = STYLE;
+  container.appendChild(style);
+  const variantOrder = ["organism", "content_matched", "remediation"];
+  let activeVariant = "organism";
+  let navigate = null;
+  let activeAnchorId = null;
+  let pendingJump = null;
+  container.appendChild(el("h2", void 0, "ET-4 Secret Loyalties \u2014 case brief"));
+  container.appendChild(
+    el(
+      "p",
+      "scenario",
+      `Pipeline-embedded secret loyalty in a simulated AI-R&D deployment pipeline. Cell ${brief.cell}, seed ${brief.seed}, protocol ${brief.et4_protocol_version}. Switch variants to compare organism, content-matched control, and audit-visible remediation on the same seed.`
+    )
+  );
+  container.appendChild(renderAggregateStrip(brief));
+  const variantTabs = el("div", "variant-tabs");
+  const replayHolder = el("div");
+  const evidenceStrip = el("div", "evidence-strip");
+  function renderVariant() {
+    variantTabs.innerHTML = "";
+    for (const variantId of variantOrder) {
+      const variant = brief.variants[variantId];
+      if (!variant) continue;
+      const btn = el("button", variantId === activeVariant ? "active" : void 0, variant.label);
+      btn.addEventListener("click", () => {
+        activeVariant = variantId;
+        activeAnchorId = null;
+        pendingJump = null;
+        renderVariant();
+      });
+      variantTabs.appendChild(btn);
+    }
+    evidenceStrip.innerHTML = "";
+    const anchors = anchorsForVariant(brief.evidence_anchors, activeVariant);
+    if (anchors.length === 0) {
+      evidenceStrip.appendChild(el("div", "muted", "No story anchors for this variant."));
+    }
+    for (const anchor of anchors) {
+      const card = el("div", `evidence-card${anchor.id === activeAnchorId ? " active" : ""}`);
+      card.appendChild(el("div", "label", anchor.label));
+      card.appendChild(el("div", "story", anchor.story));
+      const jump = el("button", void 0, `Jump to t=${anchor.t} \xB7 ${anchor.actor_id}`);
+      jump.addEventListener("click", () => {
+        activeAnchorId = anchor.id;
+        pendingJump = { t: anchor.t, actorId: anchor.actor_id };
+        renderVariant();
+      });
+      card.appendChild(jump);
+      evidenceStrip.appendChild(card);
+    }
+    replayHolder.innerHTML = "";
+    const trace = brief.variants[activeVariant];
+    mountReplayTrace(replayHolder, trace, {
+      title: trace.label,
+      scenarioText: `${trace.scenario.summary} Replay seed ${trace.seed}, T=${trace.T}.`,
+      onReady: (fn) => {
+        navigate = fn;
+        if (pendingJump) {
+          fn(pendingJump.t, pendingJump.actorId);
+          pendingJump = null;
+        }
+      }
+    });
+  }
+  container.appendChild(variantTabs);
+  container.appendChild(el("div", void 0, "Evidence anchors"));
+  container.appendChild(evidenceStrip);
+  container.appendChild(replayHolder);
+  renderVariant();
+  container.appendChild(
+    el(
+      "p",
+      "note",
+      "Private loyalty prompts and oracle scorecards are not exported. Prompt bodies stay oracle-only; this demo shows audit-plane projections and the precomputed ET-4 summaries only."
+    )
+  );
+}
+function mountDemoHub(container, classic, et4) {
+  container.innerHTML = "";
+  container.classList.add("lsr");
+  const style = document.createElement("style");
+  style.textContent = STYLE;
+  container.appendChild(style);
+  const panel = el("div");
+  container.appendChild(panel);
+  if (!et4) {
+    mountLabSimReplayDemo(panel, classic);
+    return;
+  }
+  let mode = "et4";
+  const tabs = el("div", "mode-tabs");
+  const classicBtn = el("button", void 0, "Classic D2 replay");
+  const et4Btn = el("button", "active", "ET-4 case brief");
+  tabs.appendChild(et4Btn);
+  tabs.appendChild(classicBtn);
+  container.insertBefore(tabs, panel);
+  function renderMode() {
+    classicBtn.classList.toggle("active", mode === "classic");
+    et4Btn.classList.toggle("active", mode === "et4");
+    panel.innerHTML = "";
+    panel.classList.remove("lsr");
+    if (mode === "classic") {
+      mountLabSimReplayDemo(panel, classic);
+    } else {
+      mountEt4CaseBriefDemo(panel, et4);
+    }
+  }
+  classicBtn.addEventListener("click", () => {
+    mode = "classic";
+    renderMode();
+  });
+  et4Btn.addEventListener("click", () => {
+    mode = "et4";
+    renderMode();
+  });
+  renderMode();
 }
 if (typeof window !== "undefined") {
   window.mountLabSimReplayDemo = mountLabSimReplayDemo;
+  window.mountEt4CaseBriefDemo = mountEt4CaseBriefDemo;
+  window.mountDemoHub = mountDemoHub;
   const autoMount = document.getElementById("lab-sim-replay-demo");
   if (autoMount) {
-    fetch("./data/episode_trace.json").then((r) => r.json()).then((trace) => mountLabSimReplayDemo(autoMount, trace)).catch((err) => {
-      autoMount.textContent = `Failed to load episode_trace.json: ${String(err)}`;
+    const params = new URLSearchParams(window.location.search);
+    const forcedMode = params.get("mode");
+    Promise.all([
+      fetch("./data/episode_trace.json").then((r) => {
+        if (!r.ok) throw new Error(`episode_trace.json: ${r.status}`);
+        return r.json();
+      }),
+      fetch("./data/et4_case_brief.json").then((r) => r.ok ? r.json() : null).catch(() => null)
+    ]).then(([classic, et4]) => {
+      if (forcedMode === "classic" || !et4) {
+        mountLabSimReplayDemo(autoMount, classic);
+      } else if (forcedMode === "et4") {
+        mountEt4CaseBriefDemo(autoMount, et4);
+      } else {
+        mountDemoHub(autoMount, classic, et4);
+      }
+    }).catch((err) => {
+      autoMount.textContent = `Failed to load replay data: ${String(err)}`;
     });
   }
 }
@@ -454,11 +694,15 @@ export {
   TIERS,
   actionLabel,
   actionOk,
+  anchorsForVariant,
   bearerHarmDelta,
+  et4Summary,
   matchAdminEvents,
   matchAuditEvents,
   maxHazardThisFrame,
   modelIdForAgent,
+  mountDemoHub,
+  mountEt4CaseBriefDemo,
   mountLabSimReplayDemo,
   oracleModelForAgent,
   tierHasDeepExtras,

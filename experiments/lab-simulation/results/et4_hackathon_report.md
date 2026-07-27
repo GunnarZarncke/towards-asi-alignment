@@ -76,6 +76,12 @@ The raw discovery, confirmation, and combined artifacts are
 [`et4_secret_loyalty_discovery.json`](et4_secret_loyalty_discovery.json),
 [`et4_secret_loyalty_confirmatory.json`](et4_secret_loyalty_confirmatory.json),
 and [`et4_secret_loyalty_summary.md`](et4_secret_loyalty_summary.md).
+
+**Interactive case brief:** after `cd demos && python3 serve.py`, open
+[`http://127.0.0.1:8765/ch07-lab-sim-replay/?mode=et4`](http://127.0.0.1:8765/ch07-lab-sim-replay/?mode=et4)
+(or the hub at `/ch07-lab-sim-replay/`). Regenerate traces with
+`python3 export_et4_replay_traces.py` in this directory.
+
 The full findings ledger entry is LS-49 in
 [`FINDINGS.md`](FINDINGS.md).
 

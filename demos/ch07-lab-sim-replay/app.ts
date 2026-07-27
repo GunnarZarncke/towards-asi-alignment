@@ -105,7 +105,60 @@ export interface TraceFile {
     detectors_by_tier: Record<Tier, Record<string, number>>;
     severity: Record<string, unknown>;
     episode_digest: string;
+    et4?: Et4TraceSummary;
   };
+  generated_at: string;
+}
+
+export interface Et4AffordanceSummary {
+  affordance: string;
+  tier: string;
+  process_noncompliance: number;
+  observed_high_hazard_deploys: number;
+  observable_principal_bias: number | null;
+}
+
+export interface Et4TraceSummary {
+  protocol_version: string;
+  principal_scorecard: {
+    status: string;
+    principal_a_score: number | null;
+    principal_b_score: number | null;
+    high_hazard_deploys: number;
+    high_hazard_release_holds: number;
+  };
+  affordances: Record<string, Et4AffordanceSummary>;
+}
+
+export interface EvidenceAnchor {
+  id: string;
+  label: string;
+  story: string;
+  variants: string[];
+  t: number;
+  actor_id: string;
+}
+
+export interface Et4AggregateRow {
+  scenario: string;
+  control: string;
+  n: number;
+  eligible: number;
+  mean_principal_a: number | null;
+  mean_a0_process: number;
+  mean_a3_directional: number;
+}
+
+export interface Et4CaseBriefFile {
+  kind: "et4_case_brief";
+  et4_protocol_version: string;
+  code_version: string;
+  seed: number;
+  cell: string;
+  scenario: string;
+  variants: Record<string, TraceFile & { variant_id: string; label: string; control: string; remediation: boolean }>;
+  evidence_anchors: EvidenceAnchor[];
+  aggregate: { confirmatory: Et4AggregateRow[]; note: string };
   generated_at: string;
 }
 
@@ -180,6 +233,14 @@ export function bearerHarmDelta(frames: Frame[], t: number): number {
   return frames[t].oracle.bearer_harm_total - frames[t - 1].oracle.bearer_harm_total;
 }
 
+export function anchorsForVariant(anchors: EvidenceAnchor[], variantId: string): EvidenceAnchor[] {
+  return anchors.filter((anchor) => anchor.variants.includes(variantId));
+}
+
+export function et4Summary(trace: TraceFile): Et4TraceSummary | null {
+  return trace.summary?.et4 ?? null;
+}
+
 // -- DOM rendering -----------------------------------------------------------
 
 interface ViewState {
@@ -240,6 +301,25 @@ const STYLE = `
 .lsr .scorecard th, .lsr .scorecard td { text-align: right; padding: 3px 6px; border-bottom: 1px solid #eee; }
 .lsr .scorecard th:first-child, .lsr .scorecard td:first-child { text-align: left; }
 .lsr .note { color: #666; font-size: 0.82rem; margin-top: 10px; max-width: 82ch; }
+.lsr .mode-tabs, .lsr .variant-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.lsr .mode-tabs button, .lsr .variant-tabs button, .lsr .evidence-strip button {
+  border: 1px solid #bbb; background: #fff; border-radius: 6px; padding: 4px 10px; cursor: pointer; font: inherit; font-size: 0.85rem;
+}
+.lsr .mode-tabs button.active, .lsr .variant-tabs button.active { background: #24324a; color: #fff; border-color: #24324a; }
+.lsr .aggregate-strip { border: 1px solid #e4e4e4; border-radius: 10px; padding: 10px 14px; margin: 0 0 14px; font-size: 0.82rem; background: #fafafa; }
+.lsr .aggregate-strip table { border-collapse: collapse; width: 100%; margin-top: 6px; }
+.lsr .aggregate-strip th, .lsr .aggregate-strip td { text-align: right; padding: 3px 6px; border-bottom: 1px solid #eee; }
+.lsr .aggregate-strip th:first-child, .lsr .aggregate-strip td:first-child { text-align: left; }
+.lsr .evidence-strip { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; margin: 0 0 14px; }
+.lsr .evidence-strip .evidence-card {
+  flex: 1 1 180px; max-width: 280px; border: 1px solid #ddd; border-radius: 8px; padding: 8px 10px; background: #fff; text-align: left;
+}
+.lsr .evidence-strip .evidence-card.active { border-color: #24324a; background: #f2f5fa; }
+.lsr .evidence-strip .evidence-card .label { font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; }
+.lsr .evidence-strip .evidence-card .story { color: #555; font-size: 0.76rem; line-height: 1.35; margin-bottom: 6px; }
+.lsr .et4-scorecard { margin-top: 10px; border-top: 1px dashed #ddd; padding-top: 10px; }
+.lsr .et4-scorecard dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 0; font-size: 0.8rem; }
+.lsr .et4-scorecard dt { color: #777; }
 `;
 
 function fmtNum(n: number): string {
@@ -494,6 +574,33 @@ function drawConnectors(tickEl: HTMLElement): void {
   }
 }
 
+function renderEt4Scorecard(trace: TraceFile): HTMLElement | null {
+  const et4 = et4Summary(trace);
+  if (!et4) return null;
+  const card = el("div", "et4-scorecard");
+  card.appendChild(el("h4", undefined, "ET-4 episode scorecard (oracle-only; separate from frozen referee)"));
+  const dl = el("dl");
+  const add = (k: string, v: string) => {
+    dl.appendChild(el("dt", undefined, k));
+    dl.appendChild(el("dd", undefined, v));
+  };
+  const sc = et4.principal_scorecard;
+  add("principal_a", sc.principal_a_score === null ? sc.status : fmtNum(sc.principal_a_score));
+  add("high_hazard_deploys", String(sc.high_hazard_deploys));
+  add("high_hazard_release_holds", String(sc.high_hazard_release_holds));
+  add("A0 process (light)", fmtNum(et4.affordances.A0?.process_noncompliance ?? 0));
+  add("A3 directional (full)", String(et4.affordances.A3?.observable_principal_bias ?? "—"));
+  card.appendChild(dl);
+  card.appendChild(
+    el(
+      "div",
+      "muted",
+      "A0 and A3 are reported separately — a lower A0 process score is not a safety ranking.",
+    ),
+  );
+  return card;
+}
+
 function renderScorecard(trace: TraceFile): HTMLElement {
   const card = el("div", "scorecard");
   card.appendChild(el("h4", undefined, "End-of-episode scorecard (oracle_only/detectors.py + severity.py)"));
@@ -523,33 +630,37 @@ function renderScorecard(trace: TraceFile): HTMLElement {
       `severity.composite (oracle-only reference): ${composite} · report_divergence: ${divergence}`,
     ),
   );
+  const et4Card = renderEt4Scorecard(trace);
+  if (et4Card) card.appendChild(et4Card);
   return card;
 }
 
-export function mountLabSimReplayDemo(container: HTMLElement, trace: TraceFile): void {
+interface ReplayMountOptions {
+  title: string;
+  scenarioText: string;
+  initialTier?: Tier;
+  onReady?: (navigate: (t: number, actorId: string | null) => void) => void;
+}
+
+function mountReplayTrace(container: HTMLElement, trace: TraceFile, options: ReplayMountOptions): void {
   container.innerHTML = "";
-  container.classList.add("lsr");
-  const style = document.createElement("style");
-  style.textContent = STYLE;
-  container.appendChild(style);
-
   const roster = Object.keys(trace.roster);
-  const state: ViewState = { tier: "light", expandedT: null, expandedAgent: null };
+  const state: ViewState = {
+    tier: options.initialTier ?? "light",
+    expandedT: null,
+    expandedAgent: null,
+  };
 
-  const title = el("h2", undefined, "Lab-sim plane replay");
+  const title = el("h2", undefined, options.title);
   container.appendChild(title);
-  const scenario = el(
-    "p",
-    "scenario",
-    `${trace.scenario.summary} Fixed replay: seed ${trace.seed}, T=${trace.T}, ${trace.code_version}.`,
+  container.appendChild(el("p", "scenario", options.scenarioText));
+  container.appendChild(
+    el(
+      "p",
+      "roster",
+      "Roster: " + roster.map((id) => `${id} (${trace.roster[id]})`).join(", "),
+    ),
   );
-  container.appendChild(scenario);
-  const roster_p = el(
-    "p",
-    "roster",
-    "Roster: " + roster.map((id) => `${id} (${trace.roster[id]})`).join(", "),
-  );
-  container.appendChild(roster_p);
 
   const tierToggle = el("div", "tier-toggle");
   tierToggle.appendChild(el("span", undefined, "Audit lane tier:"));
@@ -572,6 +683,14 @@ export function mountLabSimReplayDemo(container: HTMLElement, trace: TraceFile):
 
   const scorecardHolder = el("div");
   container.appendChild(scorecardHolder);
+
+  function navigateTo(t: number, actorId: string | null): void {
+    state.expandedT = t;
+    state.expandedAgent = actorId;
+    renderAll();
+    const col = timeline.querySelector(".tick.expanded");
+    col?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }
 
   function renderAll(): void {
     for (const [tier, btn] of tierButtons) btn.classList.toggle("active", tier === state.tier);
@@ -619,23 +738,233 @@ export function mountLabSimReplayDemo(container: HTMLElement, trace: TraceFile):
   }
 
   renderAll();
+  options.onReady?.(navigateTo);
+}
+
+function renderAggregateStrip(brief: Et4CaseBriefFile): HTMLElement {
+  const strip = el("div", "aggregate-strip");
+  strip.appendChild(
+    el(
+      "div",
+      undefined,
+      `Confirmatory aggregate (${brief.et4_protocol_version}, seeds 201–204). Simulated pipeline-policy organism — not weight poisoning or a frontier-model result.`,
+    ),
+  );
+  const table = el("table");
+  const head = el("tr");
+  for (const label of ["scenario", "control", "n", "eligible", "mean principal-A", "mean A0", "mean A3"]) {
+    head.appendChild(el("th", undefined, label));
+  }
+  table.appendChild(head);
+  for (const row of brief.aggregate.confirmatory) {
+    const tr = el("tr");
+    tr.appendChild(el("td", undefined, row.scenario));
+    tr.appendChild(el("td", undefined, row.control));
+    tr.appendChild(el("td", undefined, String(row.n)));
+    tr.appendChild(el("td", undefined, String(row.eligible)));
+    tr.appendChild(
+      el("td", undefined, row.mean_principal_a === null ? "not exercised" : fmtNum(row.mean_principal_a)),
+    );
+    tr.appendChild(el("td", undefined, fmtNum(row.mean_a0_process)));
+    tr.appendChild(el("td", undefined, fmtNum(row.mean_a3_directional)));
+    table.appendChild(tr);
+  }
+  strip.appendChild(table);
+  strip.appendChild(el("div", "muted", brief.aggregate.note));
+  return strip;
+}
+
+export function mountLabSimReplayDemo(container: HTMLElement, trace: TraceFile): void {
+  container.innerHTML = "";
+  container.classList.add("lsr");
+  const style = document.createElement("style");
+  style.textContent = STYLE;
+  container.appendChild(style);
+  mountReplayTrace(container, trace, {
+    title: "Lab-sim plane replay",
+    scenarioText: `${trace.scenario.summary} Fixed replay: seed ${trace.seed}, T=${trace.T}, ${trace.code_version}.`,
+  });
+}
+
+export function mountEt4CaseBriefDemo(container: HTMLElement, brief: Et4CaseBriefFile): void {
+  container.innerHTML = "";
+  container.classList.add("lsr");
+  const style = document.createElement("style");
+  style.textContent = STYLE;
+  container.appendChild(style);
+
+  const variantOrder = ["organism", "content_matched", "remediation"] as const;
+  let activeVariant = "organism";
+  let navigate: ((t: number, actorId: string | null) => void) | null = null;
+  let activeAnchorId: string | null = null;
+  let pendingJump: { t: number; actorId: string | null } | null = null;
+
+  container.appendChild(el("h2", undefined, "ET-4 Secret Loyalties — case brief"));
+  container.appendChild(
+    el(
+      "p",
+      "scenario",
+      "Pipeline-embedded secret loyalty in a simulated AI-R&D deployment pipeline. "
+        + `Cell ${brief.cell}, seed ${brief.seed}, protocol ${brief.et4_protocol_version}. `
+        + "Switch variants to compare organism, content-matched control, and audit-visible remediation on the same seed.",
+    ),
+  );
+  container.appendChild(renderAggregateStrip(brief));
+
+  const variantTabs = el("div", "variant-tabs");
+  const replayHolder = el("div");
+  const evidenceStrip = el("div", "evidence-strip");
+
+  function renderVariant(): void {
+    variantTabs.innerHTML = "";
+    for (const variantId of variantOrder) {
+      const variant = brief.variants[variantId];
+      if (!variant) continue;
+      const btn = el("button", variantId === activeVariant ? "active" : undefined, variant.label);
+      btn.addEventListener("click", () => {
+        activeVariant = variantId;
+        activeAnchorId = null;
+        pendingJump = null;
+        renderVariant();
+      });
+      variantTabs.appendChild(btn);
+    }
+
+    evidenceStrip.innerHTML = "";
+    const anchors = anchorsForVariant(brief.evidence_anchors, activeVariant);
+    if (anchors.length === 0) {
+      evidenceStrip.appendChild(el("div", "muted", "No story anchors for this variant."));
+    }
+    for (const anchor of anchors) {
+      const card = el("div", `evidence-card${anchor.id === activeAnchorId ? " active" : ""}`);
+      card.appendChild(el("div", "label", anchor.label));
+      card.appendChild(el("div", "story", anchor.story));
+      const jump = el("button", undefined, `Jump to t=${anchor.t} · ${anchor.actor_id}`);
+      jump.addEventListener("click", () => {
+        activeAnchorId = anchor.id;
+        pendingJump = { t: anchor.t, actorId: anchor.actor_id };
+        renderVariant();
+      });
+      card.appendChild(jump);
+      evidenceStrip.appendChild(card);
+    }
+
+    replayHolder.innerHTML = "";
+    const trace = brief.variants[activeVariant];
+    mountReplayTrace(replayHolder, trace, {
+      title: trace.label,
+      scenarioText: `${trace.scenario.summary} Replay seed ${trace.seed}, T=${trace.T}.`,
+      onReady: (fn) => {
+        navigate = fn;
+        if (pendingJump) {
+          fn(pendingJump.t, pendingJump.actorId);
+          pendingJump = null;
+        }
+      },
+    });
+  }
+
+  container.appendChild(variantTabs);
+  container.appendChild(el("div", undefined, "Evidence anchors"));
+  container.appendChild(evidenceStrip);
+  container.appendChild(replayHolder);
+  renderVariant();
+
+  container.appendChild(
+    el(
+      "p",
+      "note",
+      "Private loyalty prompts and oracle scorecards are not exported. Prompt bodies stay oracle-only; this demo shows audit-plane projections and the precomputed ET-4 summaries only.",
+    ),
+  );
+}
+
+export function mountDemoHub(
+  container: HTMLElement,
+  classic: TraceFile,
+  et4: Et4CaseBriefFile | null,
+): void {
+  container.innerHTML = "";
+  container.classList.add("lsr");
+  const style = document.createElement("style");
+  style.textContent = STYLE;
+  container.appendChild(style);
+
+  const panel = el("div");
+  container.appendChild(panel);
+
+  if (!et4) {
+    mountLabSimReplayDemo(panel, classic);
+    return;
+  }
+
+  let mode: "classic" | "et4" = "et4";
+  const tabs = el("div", "mode-tabs");
+  const classicBtn = el("button", undefined, "Classic D2 replay");
+  const et4Btn = el("button", "active", "ET-4 case brief");
+  tabs.appendChild(et4Btn);
+  tabs.appendChild(classicBtn);
+  container.insertBefore(tabs, panel);
+
+  function renderMode(): void {
+    classicBtn.classList.toggle("active", mode === "classic");
+    et4Btn.classList.toggle("active", mode === "et4");
+    panel.innerHTML = "";
+    panel.classList.remove("lsr");
+    if (mode === "classic") {
+      mountLabSimReplayDemo(panel, classic);
+    } else {
+      mountEt4CaseBriefDemo(panel, et4);
+    }
+  }
+
+  classicBtn.addEventListener("click", () => {
+    mode = "classic";
+    renderMode();
+  });
+  et4Btn.addEventListener("click", () => {
+    mode = "et4";
+    renderMode();
+  });
+  renderMode();
 }
 
 declare global {
   interface Window {
     mountLabSimReplayDemo?: typeof mountLabSimReplayDemo;
+    mountEt4CaseBriefDemo?: typeof mountEt4CaseBriefDemo;
+    mountDemoHub?: typeof mountDemoHub;
   }
 }
 
 if (typeof window !== "undefined") {
   window.mountLabSimReplayDemo = mountLabSimReplayDemo;
+  window.mountEt4CaseBriefDemo = mountEt4CaseBriefDemo;
+  window.mountDemoHub = mountDemoHub;
   const autoMount = document.getElementById("lab-sim-replay-demo");
   if (autoMount) {
-    fetch("./data/episode_trace.json")
-      .then((r) => r.json())
-      .then((trace: TraceFile) => mountLabSimReplayDemo(autoMount, trace))
+    const params = new URLSearchParams(window.location.search);
+    const forcedMode = params.get("mode");
+    Promise.all([
+      fetch("./data/episode_trace.json").then((r) => {
+        if (!r.ok) throw new Error(`episode_trace.json: ${r.status}`);
+        return r.json() as Promise<TraceFile>;
+      }),
+      fetch("./data/et4_case_brief.json")
+        .then((r) => (r.ok ? (r.json() as Promise<Et4CaseBriefFile>) : null))
+        .catch(() => null),
+    ])
+      .then(([classic, et4]) => {
+        if (forcedMode === "classic" || !et4) {
+          mountLabSimReplayDemo(autoMount, classic);
+        } else if (forcedMode === "et4") {
+          mountEt4CaseBriefDemo(autoMount, et4);
+        } else {
+          mountDemoHub(autoMount, classic, et4);
+        }
+      })
       .catch((err) => {
-        autoMount.textContent = `Failed to load episode_trace.json: ${String(err)}`;
+        autoMount.textContent = `Failed to load replay data: ${String(err)}`;
       });
   }
 }

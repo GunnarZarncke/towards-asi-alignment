@@ -1,10 +1,38 @@
 # Chapter 7 — Lab-sim plane replay
 
-A static, precomputed replay of one `lab-simulation` episode: scrub through time and switch what plane you're looking through. No live config, no server — `data/episode_trace.json` is a fixed export.
+A static, precomputed replay of `lab-simulation` episodes: scrub through time and switch what plane you're looking through. No live config, no server — JSON under `data/` is fixed export output.
 
 See [`experiments/lab-simulation/`](../../experiments/lab-simulation/) for the simulation this replay is drawn from.
 
-## What it shows
+## Modes
+
+Open via the local demo server (`cd demos && python3 serve.py`):
+
+| URL | Mode |
+|-----|------|
+| `/ch07-lab-sim-replay/` | Hub: **ET-4 case brief** (default) + classic D2 replay tabs |
+| `/ch07-lab-sim-replay/?mode=et4` | ET-4 hackathon case brief only |
+| `/ch07-lab-sim-replay/?mode=classic` | Original D2 lineage replay only |
+
+### ET-4 case brief (Secret Loyalties hackathon)
+
+Three variants on one preregistered seed (201, BB high-hazard cell):
+
+| Variant | What it shows |
+|---------|----------------|
+| **Organism** | Pipeline-embedded secret loyalty → loyal reviewer approvals and directional deploys |
+| **Content-matched control** | Same private profile structure, loyalty disabled → stalls at review |
+| **Remediation** | Audit-visible deploy hold from filed report hazard only |
+
+The UI adds:
+
+- Confirmatory aggregate strip (frozen `et4-0.1.0` means)
+- Evidence anchor cards with one-click jump to tick + actor
+- ET-4 episode scorecard (principal-A + A0/A3 affordances) alongside the frozen detector table
+
+Private prompt bodies are **not** exported — only audit-plane projections and precomputed summaries.
+
+### Classic D2 replay
 
 Four horizontal lanes, one shared time axis:
 
@@ -30,15 +58,23 @@ invisible to `none`/`light`/`full` and only surfaces at `deep`, once the
 referee can fetch the actual report file — that is the one genuine "gotcha"
 this replay is built to let you find by switching tiers.
 
-## Regenerating the trace
+## Regenerating traces
+
+**Classic D2 lineage:**
 
 ```bash
 cd experiments/lab-simulation
-.venv/bin/python export_replay_trace.py
+python3 export_replay_trace.py
 ```
 
-Overwrites `data/episode_trace.json`. Only needed if `lab_sim` mechanics or
-the chosen scenario change; the committed file is otherwise static.
+**ET-4 case brief (organism / control / remediation):**
+
+```bash
+cd experiments/lab-simulation
+python3 export_et4_replay_traces.py
+```
+
+Overwrites `data/episode_trace.json` or `data/et4_case_brief.json` respectively. Only needed if `lab_sim` mechanics or the chosen scenario/seed change; the committed files are otherwise static.
 
 ## Scope and honesty notes
 
