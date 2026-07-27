@@ -1,0 +1,17 @@
+{
+  "name": "Towards Superintelligence Alignment",
+  "short_name": "ASI Alignment",
+  "description": "Companion site for Towards Superintelligence Alignment.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#17324d",
+  "icons": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
