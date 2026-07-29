@@ -8,6 +8,22 @@
     <lastBuildDate>Wed, 29 Jul 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
     <item>
+      <title>[News] Who pays when an AI safety audit is wrong?</title>
+      <link>https://towards-alignment.com/cards/field-news-insurance-audits-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-insurance-audits-jul-2026/</guid>
+      <pubDate>Wed, 29 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A proposal for mandatory insurance asks whether an auditor is independent if the developer chooses and pays it.</description>
+      <category>news</category>
+    </item>
+    <item>
+      <title>[News] An outside test failed to find a hidden team of agents</title>
+      <link>https://towards-alignment.com/cards/field-news-et2-cil-uad-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-et2-cil-uad-jul-2026/</guid>
+      <pubDate>Wed, 29 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A boundary-finding test found no hidden subgroup; a follow-up showed that changing one agent can affect everyone without revealing a distinct team.</description>
+      <category>news</category>
+    </item>
+    <item>
       <title>[News] Frontier AI employees call for tools to pace automated AI development</title>
       <link>https://towards-alignment.com/cards/field-news-pacing-frontier-jul-2026/</link>
       <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-pacing-frontier-jul-2026/</guid>

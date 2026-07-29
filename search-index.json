@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-29T06:59:51.737Z",
+  "generatedAt": "2026-07-29T15:07:34.936Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 231,
+  "entryCount": 233,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -545,6 +545,12 @@
       "type": "chapter",
       "summary": "A system is not aligned merely because its internal policy is benign under laboratory conditions. It is aligned, in the stronger sense needed for superintelligence, only if the environment that trains, deploys, rewards, copies, audits, and replaces it continues to select for corrigibility, value preservation, and safety. Alignment is not only learned; it is selected.",
       "url": "/cards/chapters/ch34/"
+    },
+    {
+      "title": "An outside test failed to find a hidden team of agents",
+      "type": "news",
+      "summary": "External Test 2 (ET-2) tested the project's boundary-finding method in an independently built multi-agent commons simulation. Across 150 runs, it did not recover the planted adversarial subgroup. A separate small test found broad spillover from changing one agent, which is not the same as finding a meaningful unit.",
+      "url": "/cards/field-news-et2-cil-uad-jul-2026/"
     },
     {
       "title": "Anthropic withheld Claude Mythos Preview over capability risk",
@@ -1379,6 +1385,12 @@
       "type": "chapter",
       "summary": "The deepest alignment question is not whether an artificial system preserves human values, but whether humanity can consciously govern changes to its own value-generating process under artificial cognitive amplification. Humanity does not need to prevent value change. It needs to remain capable of noticing, judging, and authoring the changes by which it becomes something else.",
       "url": "/cards/chapters/ch45/"
+    },
+    {
+      "title": "Who pays when an AI safety audit is wrong?",
+      "type": "news",
+      "summary": "A legal-policy proposal argues that frontier AI developers should carry liability insurance rather than rely on safety auditors they select and pay. Insurers would bear part of the cost when an assessment is wrong, and could require evidence, monitoring, or changes in practice as conditions of coverage. The proposal may improve incentives for ordinary, compensable harms; it does not make extreme catastrophic risks privately insurable or solve alignment.",
+      "url": "/cards/field-news-insurance-audits-jul-2026/"
     },
     {
       "title": "Who Still Counts After Transformation",
