@@ -1,0 +1,17 @@
+---
+external:
+  - label: "Don’t Let AI Developers Hire Their Own Referees"
+    url: https://ai-frontiers.org/articles/dont-let-ai-developers-hire-their-own-referees
+---
+
+Who pays for an AI safety audit can change what the audit finds. In a July 2026 commentary, legal scholar Gabriel Weil argues that a safety organization chosen and paid by the AI developer it assesses may face pressure to be lenient. A developer can choose another auditor, and auditors that keep clients may gain more business. Calling an organization independent does not by itself remove that incentive.
+
+The proposed alternative is mandatory liability insurance for the largest AI developers. An insurer would have to pay at least some of the cost when a developer causes covered harm. It could use its own experts or hire outside evaluators, then make coverage conditional on evidence, monitoring, containment, or changes in practice. In principle, that gives the party assessing risk a financial reason to be accurate rather than merely agreeable.
+
+This is an institutional design proposal, not evidence that insurance makes AI safe. Insurance can help price harms that are likely enough to estimate and small enough for private capital to cover. It cannot cover every extreme catastrophe, and it does not establish that a model is aligned. The article makes this limitation explicit: the most severe risks still need public oversight and other preventive tools.
+
+The book's question is broader: does a safety process still let people correct a dangerous course when pressure rises? [Ch. 27](/cards/chapters/ch27/) asks whether correction channels resist capture and manipulation. [Ch. 39](/cards/chapters/ch39/) asks whether audit evidence remains usable under strategic pressure. The article supplies a practical test for both: who chooses the evaluator, who pays it, and who loses money if its judgment is wrong?
+
+[Ch. 37](/cards/chapters/ch37/)–[Ch. 38](/cards/chapters/ch38/) treat insurance, liability, procurement, and licensing as ways safety evidence can reach a real decision. [Appendix C](/cards/chapters/appC/) and [Appendix M](/cards/chapters/appM/) develop the same institutional point: a certificate only changes outcomes if it is connected to an actor with both authority and an incentive to act. The missing evidence is whether an insurance-based system would remain rigorous when risks are opaque, fast-changing, or too large for insurers to absorb.
+
+**Read in the book:** correction under institutional pressure ([Ch. 27](/cards/chapters/ch27/)); making evidence usable in decisions ([Ch. 37](/cards/chapters/ch37/)); deployment incentives and safety gates ([Ch. 38](/cards/chapters/ch38/)); adversarial auditing ([Ch. 39](/cards/chapters/ch39/)); institutional selection levers ([Appendix C](/cards/chapters/appC/)); and safety institutions formed around money at risk ([Appendix M](/cards/chapters/appM/)).
