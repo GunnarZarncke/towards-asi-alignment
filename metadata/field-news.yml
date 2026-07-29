@@ -2,6 +2,24 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-insurance-audits-jul-2026
+    date: 2026-07-29
+    kind: policy
+    title: "Who pays when an AI safety audit is wrong?"
+    hook: "A proposal for mandatory insurance asks whether an auditor is independent if the developer chooses and pays it."
+    summary: "A legal-policy proposal argues that frontier AI developers should carry liability insurance rather than rely on safety auditors they select and pay. Insurers would bear part of the cost when an assessment is wrong, and could require evidence, monitoring, or changes in practice as conditions of coverage. The proposal may improve incentives for ordinary, compensable harms; it does not make extreme catastrophic risks privately insurable or solve alignment."
+    decision: "When evaluating an AI safety certificate, ask who chose and paid the evaluator, who bears losses from a bad assessment, and which risks remain outside the liability system."
+    bookChapters:
+      - ch27
+      - ch37
+      - ch38
+      - ch39
+    bridges:
+      - MB4
+      - MB6
+      - MB8
+    body: bodies/insurance-audits-jul-2026.md
+    order: 0
   - slug: field-news-et2-cil-uad-jul-2026
     date: 2026-07-29
     kind: eval-result

@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-29 | **Insurance and AI safety audits news entry** — site-only policy card on evaluator incentives, mandatory insurance, and the limits of liability | [2026-07-29-insurance-audits-news.md](2026-07-29-insurance-audits-news.md) |
 | 2026-07-29 | **ET-2 CIL external-transfer news entry** — plain-language site card for the passive-UAD null and diffuse intervention pilot | [2026-07-29-et2-cil-news.md](2026-07-29-et2-cil-news.md) |
 | 2026-07-29 | **Apart hackathon entries archive** — extracted 142 Entries-tab project cards from the Secret Loyalties Hackathon page into a cleaned markdown draft | [2026-07-29-apart-hackathon-entries.md](2026-07-29-apart-hackathon-entries.md) |
 | 2026-07-29 | **Pacing the Frontier news entry** — site-only policy card relating a frontier-employee pacing statement to coordination, conductive artifacts, institutional handles, and deployment selection | [2026-07-29-pacing-frontier-news.md](2026-07-29-pacing-frontier-news.md) |
