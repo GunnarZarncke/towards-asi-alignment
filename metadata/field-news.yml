@@ -2,6 +2,22 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-et2-cil-uad-jul-2026
+    date: 2026-07-29
+    kind: eval-result
+    title: "An outside test failed to find a hidden team of agents"
+    hook: "A boundary-finding test found no hidden subgroup; a follow-up showed that changing one agent can affect everyone without revealing a distinct team."
+    summary: "External Test 2 (ET-2) tested the project's boundary-finding method in an independently built multi-agent commons simulation. Across 150 runs, it did not recover the planted adversarial subgroup. A separate small test found broad spillover from changing one agent, which is not the same as finding a meaningful unit."
+    decision: "Treat this as a real limit of the current test, not a reason to retune it. Before running a larger intervention study, test whether the broad spillover is just a shared-resource effect."
+    bookChapters:
+      - ch07
+      - ch34
+    bridges:
+      - MB1
+      - MB6
+      - MB8
+    body: bodies/et2-cil-uad-jul-2026.md
+    order: 0
   - slug: field-news-pacing-frontier-jul-2026
     date: 2026-07-29
     kind: policy

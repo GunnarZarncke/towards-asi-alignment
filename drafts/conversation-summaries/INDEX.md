@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-29 | **ET-2 CIL external-transfer news entry** — plain-language site card for the passive-UAD null and diffuse intervention pilot | [2026-07-29-et2-cil-news.md](2026-07-29-et2-cil-news.md) |
+| 2026-07-29 | **Apart hackathon entries archive** — extracted 142 Entries-tab project cards from the Secret Loyalties Hackathon page into a cleaned markdown draft | [2026-07-29-apart-hackathon-entries.md](2026-07-29-apart-hackathon-entries.md) |
 | 2026-07-29 | **Pacing the Frontier news entry** — site-only policy card relating a frontier-employee pacing statement to coordination, conductive artifacts, institutional handles, and deployment selection | [2026-07-29-pacing-frontier-news.md](2026-07-29-pacing-frontier-news.md) |
 | 2026-07-27 | **Site offline PWA support** — footer control, opt-in service-worker caching, PDF/demo exclusions | [2026-07-27-site-offline-pwa.md](2026-07-27-site-offline-pwa.md) |
 | 2026-07-27 | **ET-4 paper relocation** — top-level `papers/` layout with frozen submission artifacts | [2026-07-27-et4-paper-relocation.md](2026-07-27-et4-paper-relocation.md) |
