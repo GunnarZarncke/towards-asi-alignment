@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-29 | **Pacing the Frontier news entry** — site-only policy card relating a frontier-employee pacing statement to coordination, conductive artifacts, institutional handles, and deployment selection | [2026-07-29-pacing-frontier-news.md](2026-07-29-pacing-frontier-news.md) |
 | 2026-07-27 | **Site offline PWA support** — footer control, opt-in service-worker caching, PDF/demo exclusions | [2026-07-27-site-offline-pwa.md](2026-07-27-site-offline-pwa.md) |
 | 2026-07-27 | **ET-4 paper relocation** — top-level `papers/` layout with frozen submission artifacts | [2026-07-27-et4-paper-relocation.md](2026-07-27-et4-paper-relocation.md) |
 | 2026-07-27 | **ET-4 rubric clarity** — minimally defined headline measures and exact confirmation counts; rebuilt the submission PDF | [2026-07-27-et4-rubric-clarity.md](2026-07-27-et4-rubric-clarity.md) |

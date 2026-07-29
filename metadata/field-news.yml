@@ -2,6 +2,19 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-pacing-frontier-jul-2026
+    date: 2026-07-29
+    kind: policy
+    title: "Frontier AI employees call for tools to pace automated AI development"
+    hook: "A shared warning about competitive pressure matters—but pacing becomes real only when evidence can delay a release."
+    summary: "A July statement signed by 1,178 employees of frontier AI companies asks the U.S. government to support an international effort to develop technical and governance tools for deliberately pacing automated AI development. It identifies the coordination problem: individual companies and countries face pressure not to slow down alone. The statement is a request for capacity to act, not itself a binding slowdown or a demonstrated safety mechanism."
+    decision: "Turn a general call to pace into specific, independently usable release gates, shared evidence, and authority to delay or restrict deployment. Test whether those tools still bind when competitive pressure rises."
+    bookChapters:
+      - ch13
+      - ch37
+      - ch38
+    body: bodies/pacing-frontier-jul-2026.md
+    order: 0
   - slug: field-news-et3-ai2027-jul-2026
     date: 2026-07-25
     kind: eval-result
