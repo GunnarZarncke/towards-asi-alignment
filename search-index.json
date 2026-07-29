@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-29T15:07:34.936Z",
+  "generatedAt": "2026-07-29T16:02:43.638Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 233,
+  "entryCount": 234,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1199,6 +1199,12 @@
       "type": "concept",
       "summary": "Delegates, copies, fine-tunes, and successors must inherit the relevant value and correction structure.",
       "url": "/cards/successor-stability/"
+    },
+    {
+      "title": "Testing a secret loyalty inside an AI deployment pipeline",
+      "type": "news",
+      "summary": "For the Apart Secret Loyalties Hackathon, a scripted secret loyalty was placed inside a simulated AI-lab deployment pipeline. On high-hazard cases, it consistently favored the fictional principal's deployments, while a light process-compliance proxy ranked it as more compliant than matched controls. A narrow audit-visible deployment hold stopped this tested pattern, but did not solve secret loyalties in general.",
+      "url": "/cards/field-news-et4-secret-loyalties-jul-2026/"
     },
     {
       "title": "The Alignment Attractor",
