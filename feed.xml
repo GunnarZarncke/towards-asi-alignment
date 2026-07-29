@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jul 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] Frontier AI employees call for tools to pace automated AI development</title>
+      <link>https://towards-alignment.com/cards/field-news-pacing-frontier-jul-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-pacing-frontier-jul-2026/</guid>
+      <pubDate>Wed, 29 Jul 2026 12:00:00 GMT</pubDate>
+      <description>A shared warning about competitive pressure matters—but pacing becomes real only when evidence can delay a release.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[News] AI 2027 speed assumptions stress-tested in a lab simulation (without confirming dates)</title>
       <link>https://towards-alignment.com/cards/field-news-et3-ai2027-jul-2026/</link>

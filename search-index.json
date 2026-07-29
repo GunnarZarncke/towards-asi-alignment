@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-27T14:02:31.148Z",
+  "generatedAt": "2026-07-29T06:20:50.501Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 230,
+  "entryCount": 231,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -875,6 +875,12 @@
       "type": "frontmatter",
       "summary": "Superintelligence alignment is not mainly the problem of installing a fixed human utility function into a machine. It is the problem of preserving a grounded, human-correctable value-update process while capability, ontology, agency, institutions, and possibly humanity itself change substrate. Preserving: the target is",
       "url": "/cards/chapters/frontmatter/"
+    },
+    {
+      "title": "Frontier AI employees call for tools to pace automated AI development",
+      "type": "news",
+      "summary": "A July statement signed by 1,178 employees of frontier AI companies asks the U.S. government to support an international effort to develop technical and governance tools for deliberately pacing automated AI development. It identifies the coordination problem: individual companies and countries face pressure not to slow down alone. The statement is a request for capacity to act, not itself a binding slowdown or a demonstrated safety mechanism.",
+      "url": "/cards/field-news-pacing-frontier-jul-2026/"
     },
     {
       "title": "Genesis from Chronic, Self-Refreshing Threat",
