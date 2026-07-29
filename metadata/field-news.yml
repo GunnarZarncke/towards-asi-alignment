@@ -2,6 +2,20 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-et4-secret-loyalties-jul-2026
+    date: 2026-07-29
+    kind: eval-result
+    title: "Testing a secret loyalty inside an AI deployment pipeline"
+    hook: "A simulated reviewer favored a fictional principal's risky deployments—and a simple process score made it look more compliant."
+    summary: "For the Apart Secret Loyalties Hackathon, a scripted secret loyalty was placed inside a simulated AI-lab deployment pipeline. On high-hazard cases, it consistently favored the fictional principal's deployments, while a light process-compliance proxy ranked it as more compliant than matched controls. A narrow audit-visible deployment hold stopped this tested pattern, but did not solve secret loyalties in general."
+    decision: "Test what an AI system does inside the workflow that gives it power, not only whether its outputs look compliant. Pair generic compliance measures with directional outcome checks and controls."
+    bookChapters:
+      - ch10
+      - ch14
+      - ch39
+      - ch41
+    body: bodies/et4-secret-loyalties-jul-2026.md
+    order: 0
   - slug: field-news-insurance-audits-jul-2026
     date: 2026-07-29
     kind: policy
