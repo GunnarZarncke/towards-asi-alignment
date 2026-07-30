@@ -1,4 +1,5 @@
 const CACHE_NAME = "asi-alignment-site-v7";
+const CACHE_MAX_AGE_MS = 60 * 60 * 1000;
 const OFFLINE_URL = "/offline/";
 const OFFLINE_ENABLED = "offline-enabled";
 const CORE_URLS = [
@@ -32,6 +33,16 @@ function isExcluded(url) {
     url.pathname.startsWith("/chapter-demos/");
 }
 
+async function cacheWithTimestamp(cache, request, response) {
+  const headers = new Headers(response.headers);
+  headers.set("x-sw-cached-at", String(Date.now()));
+  await cache.put(request, new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  }));
+}
+
 async function cacheSite() {
   const cache = await caches.open(CACHE_NAME);
   const sitemapResponse = await fetch("/sitemap-0.xml", { cache: "no-store" });
@@ -51,7 +62,7 @@ async function cacheSite() {
     try {
       const response = await fetch(url, { cache: "no-store" });
       if (response.ok) {
-        await cache.put(url, response.clone());
+        await cacheWithTimestamp(cache, url, response.clone());
         if (response.headers.get("content-type")?.includes("text/html")) {
           const html = await response.text();
           for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
@@ -119,17 +130,16 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (event.request.method !== "GET" || url.origin !== self.location.origin || isExcluded(url)) return;
   event.respondWith(caches.open(CACHE_NAME).then(async (cache) => {
-    const enabled = await cache.match(OFFLINE_ENABLED);
     const cached = await cache.match(event.request);
-    if (cached) return cached;
+    const cachedAt = Number(cached?.headers.get("x-sw-cached-at") ?? 0);
+    if (cached && cachedAt && Date.now() - cachedAt < CACHE_MAX_AGE_MS) return cached;
     try {
       const response = await fetch(event.request);
-      if (enabled && response.ok) await cache.put(event.request, response.clone());
+      if (response.ok) await cacheWithTimestamp(cache, event.request, response.clone());
       return response;
     } catch {
-      if (event.request.mode === "navigate") {
-        return (await cache.match(OFFLINE_URL)) || OFFLINE_FALLBACK;
-      }
+      if (cached) return cached;
+      if (event.request.mode === "navigate") return (await cache.match(OFFLINE_URL)) || OFFLINE_FALLBACK;
       throw new Error("Offline asset unavailable");
     }
   }));
