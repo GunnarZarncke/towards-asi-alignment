@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-30T06:49:08.006Z",
+  "generatedAt": "2026-07-30T11:09:17.148Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 234,
+  "entryCount": 235,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -527,6 +527,12 @@
       "type": "news",
       "summary": "AI 2027-style takeoff speedups were used only as schedule cues in a separate lab simulation with frozen safety batteries. Hard safety ranking held under moderate mapped stress but broke down under the strongest cue; selection dynamics differed by regime without validating calendar predictions. The public forecast code reproduced on a pinned fork; optional coupling from lab metrics to milestone years shifts medians in sensitivity plots, not as new timeline claims.",
       "url": "/cards/field-news-et3-ai2027-jul-2026/"
+    },
+    {
+      "title": "AI 2040 Plan A: a recommended slowdown deal, not a prediction",
+      "type": "news",
+      "summary": "AI 2040 Plan A is a detailed recommendation scenario for a verified US–China slowdown, research transparency, and compute tracking that would push generally superhuman AI toward 2040. It is not the authors’ best guess of what will happen, and it is not a lab result from this book.",
+      "url": "/cards/field-news-ai2040-plan-a-jul-2026/"
     },
     {
       "title": "Alignment as a Dynamical Guarantee",
@@ -1131,7 +1137,7 @@
     {
       "title": "Reference cards",
       "type": "artifact",
-      "summary": "Alphabetical index of 395 bibliography entries as site cards — each links to citing chapters and appendices.",
+      "summary": "Alphabetical index of 396 bibliography entries as site cards — each links to citing chapters and appendices.",
       "url": "/cards/reference-index/"
     },
     {
