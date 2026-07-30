@@ -25,4 +25,4 @@ Relate AI 2040 Plan A to the project: surgical chapter cites, general-audience n
 - `experiments/lab-simulation/TODO.md`, `experiments/graded-lab-simulation/REPRODUCTION.md` §15
 
 ## Commits
-- (none)
+- `4c265541` Integrate AI 2040 Plan A as calibrated scenario cites and news.
