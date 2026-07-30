@@ -24,4 +24,4 @@ User asked that bridge discussions link to prior MIRI writeups of the correspond
 - `references/external-alignment.bib`
 
 ## Commits
-- (none yet)
+- `2d0cddad` Link MIRI agent-foundations writeups into the bridge crosswalk and Plan A context.

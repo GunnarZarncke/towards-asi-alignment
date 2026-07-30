@@ -22,4 +22,4 @@ After reading MIRI’s 2024 mission/strategy update: add only an App. C note loc
 - `references/external-alignment.bib` (`miri2024strategy`)
 
 ## Commits
-- (none yet)
+- `2d0cddad` Link MIRI agent-foundations writeups into the bridge crosswalk and Plan A context.
