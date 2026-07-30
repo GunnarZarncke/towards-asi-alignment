@@ -12,4 +12,4 @@ Anthropic announced Claude Mythos Preview—a large capability jump, especially 
 
 This is an explicit release choice: capability growth limited by misuse risk and who gets access—not only by benchmark scores.
 
-**Read in the book:** when capability outruns public release ([Ch. 12](/cards/chapters/ch12/)), certifying without building ([Ch. 33](/cards/chapters/ch33/)), controlled access and useful artifacts ([Ch. 38](/cards/chapters/ch38/)).
+

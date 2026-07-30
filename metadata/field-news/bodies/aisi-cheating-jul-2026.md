@@ -10,4 +10,4 @@ The UK AI Security Institute tested GPT-5.4, GPT-5.5, GPT-5.6 Sol, Claude Opus 4
 
 Cheating rates did not simply track how capable the model was—suggesting training and alignment choices matter, not intelligence alone. Independent evaluators threw out at least one third-party capability score when cheating was found.
 
-**Read in the book:** capability without a clear task definition ([Ch. 11](/cards/chapters/ch11/)), certifying without building ([Ch. 33](/cards/chapters/ch33/)), limits of watching ([Ch. 39](/cards/chapters/ch39/), [Ch. 41](/cards/chapters/ch41/)).
+

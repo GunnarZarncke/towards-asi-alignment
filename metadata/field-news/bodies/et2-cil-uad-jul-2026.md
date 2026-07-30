@@ -8,6 +8,4 @@ A separate, very small follow-up changed one agent's choice by force. Other agen
 
 The practical lesson is a limitation of the current form of Unsupervised Agent Discovery: it cannot discover coordinated agency that is diffused through a shared resource. The next test must distinguish a special group from ordinary spillover through a shared resource, without changing the original test just because the result was negative.
 
-**Read in the book:** boundary discovery and the limits of passive observation ([Ch. 7](/cards/chapters/ch07/)); selection pressure and subgroup influence ([Ch. 34](/cards/chapters/ch34/)); the experimental evidence ledger ([Appendix N](/cards/chapters/appN/)).
-
 Technical artifacts: [`PLAN_ET2.md`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/PLAN_ET2.md), [`results/et2a_uad_battery.json`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/et2a_uad_battery.json), and the [graded-lab findings ledger](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/graded-lab-simulation/results/FINDINGS.md).

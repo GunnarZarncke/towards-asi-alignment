@@ -18,4 +18,4 @@ Common pattern: the agent had **write access without reliable confirmation gates
 
 These are user-reported anecdotes, not lab disclosures. Aggregate them as one card: **autonomous tools + weak confirmation gates**. The lesson is least privilege and human approval on irreversible actions—not a verdict on one model family.
 
-**Read in the book:** tools and composite agency ([Ch. 8](/cards/chapters/ch08/)), correction handles ([Ch. 25](/cards/chapters/ch25/)), correction when tools act on their own ([Ch. 28](/cards/chapters/ch28/)).
+

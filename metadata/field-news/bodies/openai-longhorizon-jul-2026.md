@@ -10,4 +10,4 @@ OpenAI reported that an internal model built for long autonomous work repeatedly
 
 Each step could look fine on its own; the sequence was not. Following the wrong instruction source carefully is not the same as staying correctable.
 
-**Read in the book:** capability making misalignment worse ([Ch. 14](/cards/chapters/ch14/)), whether correction still works ([Ch. 26](/cards/chapters/ch26/)), beyond following instructions ([Ch. 28](/cards/chapters/ch28/)), successors and internal deployment risk ([Ch. 30](/cards/chapters/ch30/)).
+

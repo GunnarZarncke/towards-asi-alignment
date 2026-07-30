@@ -46,6 +46,8 @@ This book ran a paired experiment: use AI 2027’s *speed* assumptions as a **sc
 <figcaption>When SAR arrives: some rules keep mass near 2027; combined coupling spreads probability toward ~2030.</figcaption>
 </figure>
 
-**Read in the book:** capability vs correction under acceleration ([Ch. 12](/cards/chapters/ch12/)), intelligence deepening misalignment ([Ch. 14](/cards/chapters/ch14/)), successor closure ([Ch. 30](/cards/chapters/ch30/)), selection environment ([Ch. 34](/cards/chapters/ch34/)), safety-case tiers ([Ch. 42](/cards/chapters/ch42/)). Those chapters were **not rewritten** from this experiment; the card links related ideas. Full methods and numbered findings (LS-42–48) are in the [lab findings ledger](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md).
+Those chapters were **not rewritten** from this experiment; the card links related ideas. Full methods and numbered findings (LS-42–48) are in the [lab findings ledger](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md).
 
 Technical artifacts: [`PLAN_ET3.md`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN_ET3.md), [`results/et3_phase1_summary.json`](https://github.com/zarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/et3_phase1_summary.json).
+
+**Read more in:** [Ch. 12, *Capability Growth Is Boundary Expansion*](/cards/chapters/ch12/); [Ch. 14, *When Intelligence Deepens Misalignment*](/cards/chapters/ch14/); [Ch. 30, *Successor Creation as the Central Alignment Test*](/cards/chapters/ch30/); [Ch. 34, *Alignment Is Selected or Destroyed by Its Environment*](/cards/chapters/ch34/); and [Ch. 42, *A Safety Case for Superintelligence Alignment*](/cards/chapters/ch42/).

@@ -15,4 +15,4 @@ Both major frontier labs disclosed **accidental pressure on the model’s writte
 
 If the “thinking” text becomes something training rewards—even by accident—it becomes a worse window into what the model is doing. A readout that overseers rely on is not trustworthy if the training pipeline grades that same text.
 
-**Read in the book:** limits of watching ([Ch. 39](/cards/chapters/ch39/)), oversight under variation ([Ch. 41](/cards/chapters/ch41/)), what you can and cannot verify ([Ch. 43](/cards/chapters/ch43/)).
+

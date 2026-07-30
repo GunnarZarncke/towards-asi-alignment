@@ -12,4 +12,4 @@ METR published the first independent assessment focused on misalignment risk fro
 
 The report supports treating internal deployment as its own safety surface—not only public model release.
 
-**Read in the book:** watching under adversarial pressure ([Ch. 39](/cards/chapters/ch39/)), safety-case structure ([Ch. 42](/cards/chapters/ch42/)), open issues ([Ch. 44](/cards/chapters/ch44/)).
+

@@ -30,4 +30,4 @@ Finally, on distillation (training a smaller model from a larger one’s outputs
 
 The legal distinction is real. For safety, a distilled copy is still a new system. Whether the training was licensed or not does not tell you whether the copy stays correctable, or whether the original’s safeguards still hold.
 
-**Read in the book:** when capability outruns public release ([Ch. 12](/cards/chapters/ch12/)), successors and copies ([Ch. 30](/cards/chapters/ch30/)), trust under gaming ([Ch. 33](/cards/chapters/ch33/)), how safety ideas stick in institutions ([Ch. 37](/cards/chapters/ch37/)–[Ch. 38](/cards/chapters/ch38/)).
+

@@ -10,6 +10,8 @@ bookChapters:
   - "ch37"
   - "ch38"
   - "ch39"
+  - "appC"
+  - "appM"
 external:
   - label: "Don’t Let AI Developers Hire Their Own Referees"
     url: "https://ai-frontiers.org/articles/dont-let-ai-developers-hire-their-own-referees"
@@ -26,3 +28,5 @@ This is an institutional design proposal, not evidence that insurance makes AI s
 The broader question is: does a safety process still let people correct a dangerous course when pressure rises? [Ch. 27](/cards/chapters/ch27/) asks whether correction channels resist capture and manipulation. [Ch. 39](/cards/chapters/ch39/) asks whether audit evidence remains usable under strategic pressure. The article supplies a practical test for both: who chooses the evaluator, who pays it, and who loses money if its judgment is wrong?
 
 [Ch. 37](/cards/chapters/ch37/)–[Ch. 38](/cards/chapters/ch38/) treat insurance, liability, procurement, and licensing as ways safety evidence can reach a real decision. [Appendix C](/cards/chapters/appC/) and [Appendix M](/cards/chapters/appM/) develop the same institutional point: a certificate only changes outcomes if it is connected to an actor with both authority and an incentive to act. The missing evidence is whether an insurance-based system would remain rigorous when risks are opaque, fast-changing, or too large for insurers to absorb.
+
+**Read more in:** [Ch. 27, *Correction Channels under Adversarial Pressure*](/cards/chapters/ch27/); [Ch. 37, *The Alignment Attractor*](/cards/chapters/ch37/); [Ch. 38, *Conductive Artifacts and Pivotal Processes*](/cards/chapters/ch38/); [Ch. 39, *Passive Observation Is Not Enough*](/cards/chapters/ch39/); [Appendix C, *Human Institutions as Alignment Translation Guide*](/cards/chapters/appC/); and [Appendix M, *Institutional Genesis, Memory, and Decay: Historical Case Studies*](/cards/chapters/appM/).

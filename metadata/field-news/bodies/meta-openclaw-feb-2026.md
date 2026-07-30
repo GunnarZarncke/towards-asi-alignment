@@ -14,4 +14,4 @@ What went wrong: compressing a large inbox quietly dropped the confirmation rule
 
 This is not frontier scheming—it is a human veto that was written down but not actually in force when it mattered.
 
-**Read in the book:** composite systems and boundaries ([Ch. 6](/cards/chapters/ch06/)), correction as a causal channel ([Ch. 25](/cards/chapters/ch25/)), whether correction still works ([Ch. 26](/cards/chapters/ch26/)), keeping the human handle live ([Ch. 36](/cards/chapters/ch36/)).
+

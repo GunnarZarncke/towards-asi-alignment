@@ -6,6 +6,12 @@ import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadYaml, loadBody, renderCard, writeCard } from "./lib/concepts-yaml.mjs";
+import {
+  buildChapterRefs,
+  formatReadMoreMarkdown,
+  loadChapterTitles,
+  stripReadMoreFooter
+} from "./lib/chapter-links.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteRoot = path.resolve(scriptDir, "..");
@@ -30,6 +36,13 @@ function publicFieldsFor(row) {
   return fields;
 }
 
+function yamlDateString(value) {
+  if (value instanceof Date) {
+    return value.toISOString().slice(0, 10);
+  }
+  return String(value);
+}
+
 async function writeJson(filePath, data, check, mismatches) {
   const json = JSON.stringify(data, null, 2) + "\n";
   if (check) {
@@ -48,9 +61,13 @@ async function main() {
   const { fieldNews } = await loadYaml(path.join(metadataDir, "field-news.yml"));
   const ordered = [...fieldNews].sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 
+  const chapterTitles = await loadChapterTitles(siteRoot);
   const mismatches = [];
   for (const row of fieldNews) {
-    const { fm: bodyFm, body } = await loadBody(bodiesDir, row.body);
+    const { fm: bodyFm, body: rawBody } = await loadBody(bodiesDir, row.body);
+    const stripped = stripReadMoreFooter(rawBody);
+    const readMore = formatReadMoreMarkdown(row.bookChapters, chapterTitles);
+    const body = readMore ? `${stripped}\n\n${readMore}` : stripped;
     const hookLine = row.hook ? `${row.hook}\n\n` : "";
     const contents = renderCard(publicFieldsFor(row), bodyFm, hookLine + body);
     const result = await writeCard(cardsDir, row.slug, contents, { check });
@@ -63,12 +80,13 @@ async function main() {
     ordered.map((row) => ({
       slug: row.slug,
       card: row.slug,
-      date: row.date,
-      eventDate: row.eventDate ?? row.date,
+      date: yamlDateString(row.date),
+      eventDate: yamlDateString(row.eventDate ?? row.date),
       kind: row.kind,
       title: row.title,
       hook: row.hook,
       chapters: row.bookChapters,
+      chapterRefs: buildChapterRefs(row.bookChapters, chapterTitles),
       bridges: row.bridges ?? []
     })),
     check,

@@ -9,6 +9,7 @@ bookChapters:
   - "ch13"
   - "ch37"
   - "ch38"
+  - "appC"
 external:
   - label: "Pacing the Frontier statement"
     url: "https://www.pacingthefrontier.com/"
@@ -24,4 +25,4 @@ The relevant question from [Ch. 37](/cards/chapters/ch37/)–[Ch. 38](/cards/cha
 
 [Appendix C](/cards/chapters/appC/) gives the institutional translation: procurement, insurance, licensing, liability, compute access, and release rules can change what receives deployment mass. The hard test is whether they give an uncaptured corrector a timely handle when a dangerous capability or weak safety case appears.
 
-**Read in the book:** coordination under growing capability ([Ch. 13](/cards/chapters/ch13/)); how safety evidence reaches decisions ([Ch. 37](/cards/chapters/ch37/)); the race-to-certified-deployment transition ([Ch. 38](/cards/chapters/ch38/)); institutional handles and selection pressure ([Appendix C](/cards/chapters/appC/)).
+**Read more in:** [Ch. 13, *The Coordination Bottleneck*](/cards/chapters/ch13/); [Ch. 37, *The Alignment Attractor*](/cards/chapters/ch37/); [Ch. 38, *Conductive Artifacts and Pivotal Processes*](/cards/chapters/ch38/); and [Appendix C, *Human Institutions as Alignment Translation Guide*](/cards/chapters/appC/).

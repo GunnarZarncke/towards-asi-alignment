@@ -30,6 +30,8 @@ fieldNews:
       - ch37
       - ch38
       - ch39
+      - appC
+      - appM
     bridges:
       - MB4
       - MB6
@@ -46,6 +48,7 @@ fieldNews:
     bookChapters:
       - ch07
       - ch34
+      - appN
     bridges:
       - MB1
       - MB6
@@ -63,6 +66,7 @@ fieldNews:
       - ch13
       - ch37
       - ch38
+      - appC
     body: bodies/pacing-frontier-jul-2026.md
     order: 0
   - slug: field-news-et3-ai2027-jul-2026

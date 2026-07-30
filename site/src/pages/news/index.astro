@@ -52,15 +52,21 @@ const kindLabel: Record<string, string> = {
             <a href={cardHref(item.card)}>{item.title}</a>
           </h2>
           <p>{item.hook}</p>
-          <p class="side-panel-meta">
-            Read in book:{" "}
-            {item.chapters.map((ch, i) => (
-              <>
-                {i > 0 && ", "}
-                <a href={cardHref(`chapters/${ch}`)}>{ch}</a>
-              </>
-            ))}
-          </p>
+          {item.chapterRefs?.length > 0 && (
+            <p class="side-panel-meta">
+              Read more in:{" "}
+              {item.chapterRefs.map((ref, i) => (
+                <>
+                  {i > 0 &&
+                    (i === item.chapterRefs.length - 1 ? "; and " : "; ")}
+                  <a href={cardHref(`chapters/${ref.id}`)}>
+                    {ref.prefix}, <em>{ref.title}</em>
+                  </a>
+                </>
+              ))}
+              .
+            </p>
+          )}
         </li>
       ))}
     </ul>
