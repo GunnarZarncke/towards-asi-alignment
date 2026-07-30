@@ -14,6 +14,8 @@ fieldNews:
       - ch14
       - ch39
       - ch41
+      - appC
+      - appN
     body: bodies/et4-secret-loyalties-jul-2026.md
     order: 0
   - slug: field-news-insurance-audits-jul-2026

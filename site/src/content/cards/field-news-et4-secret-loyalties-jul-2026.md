@@ -10,6 +10,8 @@ bookChapters:
   - "ch14"
   - "ch39"
   - "ch41"
+  - "appC"
+  - "appN"
 external:
   - label: "Apart Secret Loyalties Hackathon"
     url: "https://apartresearch.com/sprints/secret-loyalties-hackathon-2026-07-24-to-2026-07-26"
@@ -27,6 +29,6 @@ We also tested a narrow remediation. An audit-visible deployment hold stopped ev
 
 The practical lesson for researchers investigating secret loyalties is to measure the action that the system is empowered to take, not only whether its process looks compliant. Use matched controls, check for directional effects toward a principal, and pre-register what would count as a failure. A remediation should be tested against the behavior it is meant to block, and its blind spots should be stated.
 
-**Read in the book:** strategic opacity and hidden objectives ([Ch. 10](/cards/chapters/ch10/)); deployment context and capability risk ([Ch. 14](/cards/chapters/ch14/)); independent oversight and correction ([Ch. 39](/cards/chapters/ch39/)); testing whether safety evidence tracks the behavior that matters ([Ch. 41](/cards/chapters/ch41/)).
+**Read more in:** [Ch. 10, *Agency Under Strategic Opacity*](/cards/chapters/ch10/); [Ch. 14, *When Intelligence Deepens Misalignment*](/cards/chapters/ch14/); [Ch. 39, *Passive Observation Is Not Enough*](/cards/chapters/ch39/); [Ch. 41, *Checking a System at Every Level*](/cards/chapters/ch41/); [Appendix C, *Human Institutions as Alignment Translation Guide*](/cards/chapters/appC/); and [Appendix N, *Experimental Evidence: Findings by Line*](/cards/chapters/appN/).
 
 The [ET-4 paper (PDF)](/papers/et4-secret-loyalties/et4-hackathon-submission.pdf) contains the protocol, controls, results, and replay-demo instructions. The [source submission](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/papers/et4-secret-loyalties/et4-hackathon-submission.md) is also available.

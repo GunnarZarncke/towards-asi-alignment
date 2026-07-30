@@ -9,6 +9,7 @@ Write a general-audience news entry about the ET-4 Secret Loyalties project for 
 - Added the synced site card at `site/src/content/cards/field-news-et4-secret-loyalties-jul-2026.md`.
 - Added the lab-simulation description-card link and expanded the whitepaper reference to its full title in both reader-facing copies.
 - Copied the ET-4 submission PDF into `site/public/papers/et4-secret-loyalties/` and linked it from both copies.
+- Added `appC` and `appN` to the ET-4 field-news references and regenerated the site card.
 
 ## Decisions
 - Framed ET-4 as a small simulated deployment-pipeline result, not a frontier-model or real-principal result.
