@@ -17,3 +17,20 @@ Line-wide architect plan: [`PLAN.md`](PLAN.md). **ET-3 annex closed 2026-07-26**
 - [ ] **Upstream PR — `oversight_drag` (optional).** Separate small PR if upstream wants
   the scalar calendar-lag extension; book repo already has mechanical smoke
   (`results/et3_reverse_smoke.json`).
+
+## Plan A / AI 2040 — deferred mechanism stress (not implemented)
+
+Macro recommendation scenario: [AI 2040: Plan A](https://ai-2040.com/). Same
+epistemic split as ET-3: use *schedule / institutional cue shapes*, not calendar
+validation. See Appendix F § Governance-schedule stress tests.
+
+- [ ] **ET-3b — verified-slowdown selection cell.** Opaque Phase 6 / D3 cells under
+  (a) race, (b) shared transparency + deploy caps, (c) covert-compute cheating.
+  Ask whether hard safety ranking and correction-preserving selection flip when
+  the cue is pause-eligible. Do not import Plan A ontology into detector code.
+- [ ] **Verification / attestation adversary (optional toy).** Reporter claims
+  compute or R&D-cap compliance; auditor has partial sensors; small covert pool.
+  Mechanism test of institutional handles, not geopolitics.
+- [ ] **Timed pause → handoff (MB5 protocol).** Freeze a capability band, then
+  unpause into successor creation under a pre-registered protocol; check
+  successor-audit links. Schedule shape only — not AI 2040 dates.

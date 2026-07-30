@@ -4,6 +4,7 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-30 | **AI 2040 Plan A integration** — surgical chapter/app cites; general-audience news card; deferred sim TODOs; Appendix F governance-schedule section | [2026-07-30-ai2040-plan-a-integration.md](2026-07-30-ai2040-plan-a-integration.md) |
 | 2026-07-30 | **Field news “Read more in” rollout** — auto-generated chapter/appendix footers for all 15 cards; expanded `/news/` index links | [2026-07-30-field-news-read-more-in.md](2026-07-30-field-news-read-more-in.md) |
 | 2026-07-29 | **ET-4 Secret Loyalties news entry** — general-audience hackathon project card on pipeline-embedded loyalty, audit-sign inversion, and narrow remediation | [2026-07-29-et4-secret-loyalties-news.md](2026-07-29-et4-secret-loyalties-news.md) |
 | 2026-07-29 | **Insurance and AI safety audits news entry** — site-only policy card on evaluator incentives, mandatory insurance, and the limits of liability | [2026-07-29-insurance-audits-news.md](2026-07-29-insurance-audits-news.md) |

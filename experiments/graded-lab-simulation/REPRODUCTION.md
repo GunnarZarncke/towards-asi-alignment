@@ -1195,3 +1195,39 @@ worth 3 sentences gets its gap stated in one).
 
 **Blocked by:** at least V4-2/V4-3 outputs existing (otherwise the
 graded-lab rows just restate GL-74/76/77); not blocked by V4-6/V4-7.
+
+---
+
+## 15. Plan A / AI 2040 — deferred governance-schedule cues (not implemented)
+
+**Status:** *deferred ideas only* — recorded 2026-07-30 after reading
+[AI 2040: Plan A](https://ai-2040.com/). No code, no batteries, no
+finding IDs. Canonical research-program write-up:
+Appendix F § Governance-schedule stress tests. Lab-line TODOs:
+`experiments/lab-simulation/TODO.md` (ET-3b and related).
+
+**Epistemic split (same as ET-3 / ET-2).** Plan A is a *recommendation
+scenario* with macro takeoff/econ explorers. Use only *schedule or
+institutional cue shapes* on our substrates. Forbidden reads: “Plan A
+dates confirmed,” “verification geopolitics validated,” merging Plan A
+ontology into detector code, or treating their Economic Growth Explorer
+as a mechanism sim.
+
+**Candidate lines (any one is optional; do not expand graded-lab scope
+to implement all):**
+
+1. **Transparency vs pipeline opacity (ET-4-shaped).** Force
+   research-sharing or high log-visibility while a pipeline-embedded
+   loyalty remains; ask whether visibility regimes restore correction
+   integrity (they need not). Closest graded-lab touchpoint: secret-
+   loyalty / deployment-hold remediation patterns already exercised.
+2. **Verified-slowdown selection (MB6).** Cross-line with lab ET-3b:
+   race vs pause-eligible vs covert-cheat selection cells; report whether
+   correction-preserving share and harm move differently by cue.
+3. **Timed pause → handoff (MB5).** Pre-register a capability freeze,
+   then unpause into successor creation; check successor-audit /
+   conserved-property links. Protocol shape only — not 2035/2040
+   calendar claims.
+
+**Out of scope here:** US–China bargaining, citizen’s dividend / GDP
+explorers, reimplementing Plan A’s public economics model.
