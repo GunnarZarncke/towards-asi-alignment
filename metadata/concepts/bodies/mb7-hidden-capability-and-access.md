@@ -36,6 +36,12 @@ related:
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
+  - label: Embedded Agency — Subsystem Alignment (MIRI)
+    url: https://intelligence.org/embedded-agency/
+  - label: Risks from Learned Optimization
+    url: https://arxiv.org/abs/1906.01820
+  - label: Functional Decision Theory (MIRI)
+    url: https://arxiv.org/abs/1710.05060
 ---
 
 Deceptive alignment is the shared inner-alignment wall across the field: debate hits it as obfuscated arguments, amplification hits it as accumulated drift, and AI Control names it openly as a capability-gap assumption. The book splits this single wall into four narrower, individually checkable bridges.

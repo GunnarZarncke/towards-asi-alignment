@@ -45,6 +45,10 @@ related:
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
+  - label: Corrigibility (MIRI)
+    url: https://intelligence.org/files/Corrigibility.pdf
+  - label: Coherent Extrapolated Volition (MIRI)
+    url: https://intelligence.org/files/CEV.pdf
 ---
 
 No known utility function is stably corrigible, and shutdownability is anti-natural to expected-utility maximization. Who holds the correction authority — and whether their endorsement is genuine — is the manipulation crux this bridge names directly.

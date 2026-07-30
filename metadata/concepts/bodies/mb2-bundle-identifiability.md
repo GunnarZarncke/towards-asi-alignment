@@ -15,6 +15,10 @@ related:
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
+  - label: The Value Learning Problem (MIRI)
+    url: https://intelligence.org/files/ValueLearningProblem.pdf
+  - label: Embedded Agency — Robust Delegation (MIRI)
+    url: https://intelligence.org/embedded-agency/
 ---
 
 Inverse reinforcement learning is underdetermined: many reward functions fit the same behavior, and separating values from irrationality is an open problem the CIRL/assistance-game literature inherits directly. The book's response is to drop scalar reward for value-bundle geometry — but that move only helps if bundle geometry is itself identifiable from evidence.

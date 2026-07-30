@@ -2,7 +2,7 @@
 title: "AI 2040 Plan A: a recommended slowdown deal, not a prediction"
 type: "news"
 status: "established"
-summary: "AI 2040 Plan A is a detailed recommendation scenario for a verified US–China slowdown, research transparency, and compute tracking that would push generally superhuman AI toward 2040. It is not the authors’ best guess of what will happen, and it is not a lab result from this book. Related site cards already covered pacing tools, AI 2027 schedule stress tests, secret loyalties under audits, and insurance incentives for evaluators."
+summary: "AI 2040 Plan A is a detailed recommendation scenario for a verified US–China slowdown, research transparency, and compute tracking that would push generally superhuman AI toward 2040. It is not the authors’ best guess of what will happen, and it is not a lab result from this book."
 decision: "Treat Plan A as a concrete wishlist of outer handles—verification, shared evidence, release constraints—and ask which ones become independently usable under competitive pressure. Do not treat its dates or economics explorers as confirming this book’s micro simulations."
 releasedAt: "2026-07-30T00:00:00.000Z"
 bookChapters:
@@ -21,6 +21,8 @@ external:
     url: "https://www.lesswrong.com/posts/z9tXCGogEgkgHSh8G/introduction-for-and-reactions-to-plan-a"
   - label: "Nate Soares on Plan A (X)"
     url: "https://x.com/So8res/status/2075292149466431555"
+  - label: "MIRI 2024 Mission and Strategy Update"
+    url: "https://intelligence.org/2024/01/04/miri-2024-mission-and-strategy-update/"
 ---
 
 The AI 2027 team’s positive plan: delay superintelligence with verification and transparency—while still racing the hard technical problems.
@@ -40,7 +42,7 @@ This card is about that outer plan, not a new lab result from this book.
 
 **Reactions worth reading**
 
-[Zvi’s overview](https://www.lesswrong.com/posts/z9tXCGogEgkgHSh8G/introduction-for-and-reactions-to-plan-a) walks through common objections (timelines, authoritarianism, China deal feasibility, economic optimism) without endorsing the plan as written. [Nate Soares](https://x.com/So8res/status/2075292149466431555) calls it the best concrete positive vision he has seen spelled out, while doubting it would work as written and treating a competent attempt as a possible off-ramp toward a harder shutdown.
+[Zvi’s overview](https://www.lesswrong.com/posts/z9tXCGogEgkgHSh8G/introduction-for-and-reactions-to-plan-a) walks through common objections (timelines, authoritarianism, China deal feasibility, economic optimism) without endorsing the plan as written. [Nate Soares](https://x.com/So8res/status/2075292149466431555) calls it the best concrete positive vision he has seen spelled out, while doubting it would work as written and treating a competent attempt as a possible off-ramp toward a harder shutdown—the hard-pause and off-switch priority in [MIRI’s 2024 strategy update](https://intelligence.org/2024/01/04/miri-2024-mission-and-strategy-update/).
 
 **What the book asks next**
 

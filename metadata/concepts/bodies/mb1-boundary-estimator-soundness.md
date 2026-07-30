@@ -39,6 +39,10 @@ external:
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
   - label: AlignmentProofSpine/Core.lean
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Core.lean
+  - label: Embedded Agency (MIRI)
+    url: https://intelligence.org/embedded-agency/
+  - label: Embedded Agency (arXiv)
+    url: https://arxiv.org/abs/1902.09469
 ---
 
 Embedded-agency arguments deny a clean cut between an agent and its environment. The book does not dissolve that problem. It relocates it into a falsifiable, measurable bet: a directed epsilon-boundary can be estimated from traces, and passing the estimator's certificate is assumed to mean the real, semantic boundary condition holds.

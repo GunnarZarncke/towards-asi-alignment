@@ -28,10 +28,15 @@ related:
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
+  - label: Coherent Extrapolated Volition (MIRI)
+    url: https://intelligence.org/files/CEV.pdf
+  - label: Corrigibility (MIRI)
+    url: https://intelligence.org/files/Corrigibility.pdf
 ---
 
 Coherent Extrapolated Volition names an appealing but hard-to-verify idea: correction is legitimate if it moves toward what people would want if they knew more and were more the people they wished to be. MB8 is the narrow formal version of that appeal — if some external theory certifies that a system preserves the right value-update process, that is enough for correction integrity, even without pinning down what the process converges to.
 
+Same MIRI lineage as MB4 (corrigibility / CEV); the split is this book's: MB4 is the load-bearing correction-channel path, MB8 is the secondary CEV-process route.
 The book is explicit that this is not the load-bearing route. The main certification path goes through grounding, correction-channel measurement, and adversarial testing directly, without needing this bridge. MB8 exists mainly as a comparison point for readers evaluating CEV-flavored proposals.
 
 The legitimacy-theater diagnostic is the relevant stress test: a system can perform preference agreement and stall correction lineage while looking compliant, and only handle-level instrumentation reliably catches it — a reminder that "preserves the value-update process" is itself gameable if measured passively.

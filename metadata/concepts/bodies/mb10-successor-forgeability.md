@@ -34,10 +34,17 @@ external:
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Forgeability.lean
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
+  - label: Tiling Agents (MIRI)
+    url: https://intelligence.org/files/TilingAgentsDraft.pdf
+  - label: Vingean Reflection (MIRI)
+    url: https://intelligence.org/files/VingeanReflection.pdf
+  - label: Risks from Learned Optimization
+    url: https://arxiv.org/abs/1906.01820
 ---
 
 The seven conserved properties (boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, control-locus continuity) are the book's successor checklist. MB10 names what that checklist cannot do on its own: a predecessor capable enough to build a successor could, in principle, build one that reads green on every check while routing harm through whatever the checklist does not cover.
 
+Same MIRI lineage as MB5 (tiling / Vingean reflection); the split is this book's: MB5 is successor transport and ontology closure, MB10 is whether that green checklist is still forgeable.
 This is not a hedge added for caution. It is a checked finite counterexample: the Lean spine proves that "all seven conserved properties hold, and measured risk is bounded" does not, by itself, bound the successor's actual harm. The gap is real and quantitative, not a vague worry.
 
 MB10 is the bridge that would close it: the conserved-property audit channel itself must be adversarially verifiable up to the successor's capability — the same cost-of-faking-versus-affordable-surplus condition used for verifiability elsewhere in the book — before a passing score counts as evidence against a capable adversarial predecessor. This bridge shares its deceptive-alignment lineage with MB7, and it is currently the least experimentally probed bridge in the set.

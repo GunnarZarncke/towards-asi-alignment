@@ -17,6 +17,12 @@ related:
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
+  - label: Tiling Agents (MIRI)
+    url: https://intelligence.org/files/TilingAgentsDraft.pdf
+  - label: Vingean Reflection (MIRI)
+    url: https://intelligence.org/files/VingeanReflection.pdf
+  - label: Ontological Crises (de Blanc)
+    url: https://arxiv.org/abs/1105.3821
 ---
 
 Tiling agents and ontological crises name two versions of the same worry: can an agent trust a successor it cannot fully verify, and does a goal even survive when the world-model underneath it is rebuilt?
