@@ -38,7 +38,7 @@ and suite speed enforcement; end-of-session commit.
 
 - `experiments/graded-lab-simulation/` (full package)
 - `experiments/graded-lab-simulation/tests/speed_{limits,baseline}.json`
-- `drafts/conversation-summaries/2026-07-12-graded-lab-speed-limits-commit.md`
+- `drafts/conversation-summaries/archive/2026-07/2026-07-12-graded-lab-speed-limits-commit.md`
 
 ## Commits
 

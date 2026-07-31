@@ -120,7 +120,7 @@ Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-s
 
 **At session start (non-trivial tasks):**
 
-1. Read `drafts/conversation-summaries/INDEX.md` and the most recent log file.
+1. Read `drafts/conversation-summaries/INDEX.md` (recent sessions) and the most recent log file. Older logs: `drafts/conversation-summaries/archive/`.
 2. Check `metadata/book.yml` for chapter status and the open items in that log.
 
 **When making a plan in plan mode:**
@@ -130,7 +130,7 @@ Write the plan into `drafts/<planname>.md` or a more task specific directory, as
 **At session milestones (required when the session changed the repo, drafted text, or made project decisions):**
 
 1. Add `drafts/conversation-summaries/YYYY-MM-DD-short-topic.md` using the template in `drafts/conversation-summaries/README.md`.
-2. Update `INDEX.md` with a new row (most recent first).
+2. Refresh `INDEX.md` (add a row most recent first, or run `python3 scripts/archive_conversation_summaries.py` to rebuild the active index and roll older logs into `archive/`).
 3. Record: trigger, what was done, non-obvious decisions, open/next steps, key paths, and commit hashes if any.
 
 Do not rely on chat history alone for resume context.
@@ -197,8 +197,9 @@ See `README.md` for thesis, manuscript status, chapter map, build instructions, 
 
 ### Conversation logs (`drafts/conversation-summaries/`)
 
-- **`INDEX.md`** — chronological list; read the top entry when resuming work.
-- **`README.md`** — log format and handoff rules.
+- **`INDEX.md`** — recent sessions (~2 weeks); read the top entry when resuming work.
+- **`archive/`** — older logs by month plus compressed `YYYY-MM-INDEX.md` files.
+- **`README.md`** — log format, retention, and handoff rules.
 - One markdown file per agent session (changes, decisions, open items, commits).
 
 ## Git

@@ -24,7 +24,7 @@ User pasted external reviewer feedback (high: correlated steerability failure ac
 - `metadata/TODO.md` (Big reviews + Manuscript sections)
 - `appendices/appF-research-program.tex` §`sec:research-dependency-order`
 - `appendices/appB-bridge-crosswalk.tex` (takeaway)
-- `drafts/conversation-summaries/2026-06-28-research-order-composition-argument.md`
+- `drafts/conversation-summaries/archive/2026-06/2026-06-28-research-order-composition-argument.md`
 
 ## Commits
 - (none)

@@ -8,12 +8,12 @@ User found a typo: the book title and PDF output should be **Towards Superintell
 - Updated title strings in `book.tex`, `titlepage.tex`, `README.md`, `INSTRUCTIONS.md`, `metadata/book.yml`.
 - Updated build output path in `build.sh`, `AGENTS.md`, docs; PDF at `dist/pdf/towards-superintelligence-alignment.pdf` (regenerated, not committed).
 - Rewrote introduction section: **Which Alignment?** — drops title-plural framing; keeps nested-relations argument and diagnostic questions.
-- Patched historical path in `drafts/conversation-summaries/2026-06-17-init-scaffold.md`.
+- Patched historical path in `drafts/conversation-summaries/archive/2026-06/2026-06-17-init-scaffold.md`.
 - `make check` passes; `./build.sh` succeeds.
 
 ## Decisions
 - Kept conceptual plural “alignments” in `ch02-artificial-civilization.tex` (many loops), distinct from the book title.
-- Did not stage `drafts/conversation-summaries/2026-06-17-ch03-dynamical-guarantee-draft.md` (unrelated commit-hash edit from another session).
+- Did not stage `drafts/conversation-summaries/archive/2026-06/2026-06-17-ch03-dynamical-guarantee-draft.md` (unrelated commit-hash edit from another session).
 
 ## Open / next
 - Optional: align `ch02` line “uses alignment in a plural sense” with new introduction framing if desired.

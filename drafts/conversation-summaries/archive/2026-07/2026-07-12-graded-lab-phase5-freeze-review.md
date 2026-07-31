@@ -65,7 +65,7 @@ comparison with lab-simulation’s subsequent unfreeze/refreeze history.
   — hazard ceilings still “not yet substrate-derived” comment
 - `experiments/lab-simulation/DESIGN.md` — Freeze notes 1–3 (lab refreeze
   precedent)
-- `drafts/conversation-summaries/2026-07-12-graded-lab-phase5-handoff.md` —
+- `drafts/conversation-summaries/archive/2026-07/2026-07-12-graded-lab-phase5-handoff.md` —
   prior implementation session
 
 ## Commits

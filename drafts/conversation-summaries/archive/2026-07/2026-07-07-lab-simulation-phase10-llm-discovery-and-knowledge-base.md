@@ -137,7 +137,7 @@ Final state: **342 tests green** (up from 326 at session start).
   elsewhere in the working tree from other sessions (`demos/README.md`,
   `demos/index.html`, `demos/package-lock.json`,
   `demos/ch01-scaffold-misuse/`, `experiments/embedded-simulation/TODO.md`,
-  `drafts/conversation-summaries/2026-07-07-institutional-histories-site-legibility.md`)
+  `drafts/conversation-summaries/archive/2026-07/2026-07-07-institutional-histories-site-legibility.md`)
   — deliberately left untouched/unstaged; out of scope for this task.
 
 ## Key paths

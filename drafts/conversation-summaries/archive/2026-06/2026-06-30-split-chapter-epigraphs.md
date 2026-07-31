@@ -4,7 +4,7 @@
 User asked to locate epigraph research for split `b` chapters, then assign quotes: Christiano (ch46), Scott (ch46), Bostrom (ch45), Perrow (ch46), Yudkowsky (ch47). End-of-session commit.
 
 ## Done
-- Located candidate tables: `drafts/chapter-epigraph-candidates-compact-2026-06-23.md`, `drafts/conversation-summaries/2026-06-23-chapter-epigraphs-pass.md`.
+- Located candidate tables: `drafts/chapter-epigraph-candidates-compact-2026-06-23.md`, `drafts/conversation-summaries/archive/2026-06/2026-06-23-chapter-epigraphs-pass.md`.
 - Added/applied epigraphs:
   - **ch46** — Christiano, *What Failure Looks Like* (2019)
   - **ch46** — James C. Scott, *Seeing Like a State* (1998) [legibility/statecraft; replaced Conant–Ashby]

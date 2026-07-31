@@ -49,4 +49,4 @@ Kept as sections: Why a value model is needed [+ basic claim subsec]; Distinguis
 ## Status / open items
 
 - Title de-jargoning was committed earlier this session (7e00d20). **These section changes are NOT yet committed** (ch01, ch06, ch16, INDEX, this log are modified/untracked in the working tree). Commit when ready.
-- Unrelated pre-existing change `drafts/conversation-summaries/2026-06-19-frontmatter-status-tldr.md` remains untouched/unstaged.
+- Unrelated pre-existing change `drafts/conversation-summaries/archive/2026-06/2026-06-19-frontmatter-status-tldr.md` remains untouched/unstaged.

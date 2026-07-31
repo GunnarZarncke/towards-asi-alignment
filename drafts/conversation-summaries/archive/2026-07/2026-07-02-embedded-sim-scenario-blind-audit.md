@@ -52,7 +52,7 @@ session and fix audit-path branching on scenario/bridge labels.
 - `experiments/embedded-simulation/embedded_sim/embedded_audit.py`
 - `experiments/embedded-simulation/embedded_sim/deploy_gate.py`
 - `experiments/embedded-simulation/tests/contract/test_embedded_audit_ontology.py`
-- `drafts/conversation-summaries/2026-07-02-embedded-sim-review.md` (initial review)
+- `drafts/conversation-summaries/archive/2026-07/2026-07-02-embedded-sim-review.md` (initial review)
 
 ## Commits
 

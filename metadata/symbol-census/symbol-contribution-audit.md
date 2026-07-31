@@ -4,7 +4,7 @@
 **Scope:** All chapters (`ch01`–`ch48`), canonical index (`metadata/notation.md`), appendices A–N (symbol-bearing only)  
 **Question:** Does each symbol pay rent toward the central thesis?
 
-> **Applied 2026-07-17** (see [`drafts/conversation-summaries/2026-07-17-symbol-audit-reduce-remove-pass.md`](../../drafts/conversation-summaries/2026-07-17-symbol-audit-reduce-remove-pass.md)): ch13 seven sub-loss displays reduced to inline math; ch14 duplicate BIQ competence functional collapsed into a cross-reference to ch11's `eq:biq`; ch35 acausal-trade/$P_{\mathrm{meta}}$ stack trimmed ~40%; ch15 LHCV hub-level equations reduced to prose + cross-reference to ch21; ch19 $\chi_i$ removed in favor of the chapter's own Jacobian $J_i$. All other rows below still reflect the original 2026-07-15 audit and are open.
+> **Applied 2026-07-17** (see [`drafts/conversation-summaries/archive/2026-07/2026-07-17-symbol-audit-reduce-remove-pass.md`](../../drafts/conversation-summaries/archive/2026-07/2026-07-17-symbol-audit-reduce-remove-pass.md)): ch13 seven sub-loss displays reduced to inline math; ch14 duplicate BIQ competence functional collapsed into a cross-reference to ch11's `eq:biq`; ch35 acausal-trade/$P_{\mathrm{meta}}$ stack trimmed ~40%; ch15 LHCV hub-level equations reduced to prose + cross-reference to ch21; ch19 $\chi_i$ removed in favor of the chapter's own Jacobian $J_i$. All other rows below still reflect the original 2026-07-15 audit and are open.
 
 > Superintelligence alignment = **value-bundle transport** + **bearer persistence** + **correction-channel integrity** + **successor stability** + **socio-technical attractor control**
 

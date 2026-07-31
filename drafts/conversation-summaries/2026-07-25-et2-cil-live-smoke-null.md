@@ -2,7 +2,7 @@
 
 ## Trigger
 
-Continuation of [2026-07-23-et2-cil-adapter-build.md](2026-07-23-et2-cil-adapter-build.md).
+Continuation of [2026-07-23-et2-cil-adapter-build.md](archive/2026-07/2026-07-23-et2-cil-adapter-build.md).
 User: "network is better now. jaxlib is installed. continue" — the CIL sibling
 venv install that was blocked by sandbox network throttling in the prior
 session had finally succeeded (jaxlib landed in

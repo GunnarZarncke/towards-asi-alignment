@@ -18,7 +18,7 @@ User asked to add Kulveit et al. *Gradual Disempowerment* (arXiv:2501.16946) whe
 
 ## Open / next
 - Optional: Hendrycks evolutionary-pressure and Ord/MacAskill value lock-in still lack bib keys (2026-06-28 log).
-- Unrelated unstaged tweak: `drafts/conversation-summaries/2026-06-30-chapter-appendix-renumbering.md` (commit hash backfill only).
+- Unrelated unstaged tweak: `drafts/conversation-summaries/archive/2026-06/2026-06-30-chapter-appendix-renumbering.md` (commit hash backfill only).
 
 ## Key paths
 - `references/dynamical-systems.bib`

@@ -4,7 +4,7 @@
 ("write this plan down") before any code changes. Do not treat any number below
 as measured — this is a design doc, not a results doc.
 **Trigger:** session 2026-07-03, following the channel MI scan self-critique
-(`drafts/conversation-summaries/2026-07-03-channel-mi-scan-discovery.md`). The
+(`drafts/conversation-summaries/archive/2026-07/2026-07-03-channel-mi-scan-discovery.md`). The
 critique that "more scenarios still reshuffle noise" applies to `SimConfig`
 parametric scenarios generally: each is a scripted mechanism, so held-out
 *seeds* of the same 8-17 scenarios test robustness to noise, not to a genuinely

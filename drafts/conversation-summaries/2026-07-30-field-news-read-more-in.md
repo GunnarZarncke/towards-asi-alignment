@@ -24,4 +24,4 @@ User asked to finish the stalled task: replace terse “Read in book” / chapte
 - `metadata/field-news.yml`, `metadata/field-news/bodies/`
 
 ## Commits
-- None.
+- `70796ccf` Auto-generate field-news chapter footers with expanded titles.

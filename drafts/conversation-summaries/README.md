@@ -2,6 +2,16 @@
 
 Agent session logs for **towards-asi-alignment**. Each file records what was worked on, why, what was decided, and what remains open so a later run can resume without re-deriving context.
 
+## Picking up work
+
+1. Read **[INDEX.md](INDEX.md)** (recent sessions only).
+2. Skim `metadata/book.yml` for chapter status.
+3. Read `AGENTS.md` and the relevant `INSTRUCTIONS.md` section for the task at hand.
+
+Older sessions: **[archive/](archive/README.md)** with monthly compressed indexes.
+
+Do not treat chat history as durable; **this folder is the handoff record**.
+
 ## When to write a log
 
 At the **end of every agent conversation** that changes the repo, drafts manuscript text, or makes project decisions — even if the user does not ask explicitly.
@@ -38,10 +48,10 @@ What the user asked for (one or two sentences).
 - `hash` message (if any)
 ```
 
-## Picking up work
+## Retention
 
-1. Read the **most recent** log in this folder (see `INDEX.md`).
-2. Skim `metadata/book.yml` for chapter status.
-3. Read `AGENTS.md` and the relevant `INSTRUCTIONS.md` section for the task at hand.
+- **Active folder:** sessions from the last ~2 weeks (cutoff in `INDEX.md`).
+- **Archive:** older logs move to `archive/YYYY-MM/`; one-line indexes at `archive/YYYY-MM-INDEX.md`.
+- **Refresh:** `python3 scripts/archive_conversation_summaries.py` from repo root.
 
-Do not treat chat history as durable; **this folder is the handoff record**.
+Git history remains the source of truth for file-level diffs; logs carry decisions and open items git does not.
