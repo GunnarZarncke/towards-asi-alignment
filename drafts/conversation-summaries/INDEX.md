@@ -4,6 +4,8 @@ Most recent first.
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-07-31 | **Ch. 17 thousand-dim cite** — combined Dearnaley + Africa/Irving persona-structure paragraph; bib + summary | [2026-07-31-ch17-thousand-dim.md](2026-07-31-ch17-thousand-dim.md) |
+| 2026-07-30 | **CIRIS review findings** — stance/promises, MB4 surface, named-identity bet; key task composite/boundary_decouple counterexample for Eric | [2026-07-30-ciris-review-findings.md](2026-07-30-ciris-review-findings.md) |
 | 2026-07-30 | **MIRI writeup links on bridges** — App. B cites + bridge-card externals for AF priors | [2026-07-30-miri-bridge-links.md](2026-07-30-miri-bridge-links.md) |
 | 2026-07-30 | **MIRI hard-pause App. C note** — strategy cite vs Plan A spectrum; one MIRI link in AI 2040 news via Soares | [2026-07-30-miri-hard-pause-appc.md](2026-07-30-miri-hard-pause-appc.md) |
 | 2026-07-30 | **AI 2040 Plan A integration** — surgical chapter/app cites; general-audience news card; deferred sim TODOs; Appendix F governance-schedule section | [2026-07-30-ai2040-plan-a-integration.md](2026-07-30-ai2040-plan-a-integration.md) |
