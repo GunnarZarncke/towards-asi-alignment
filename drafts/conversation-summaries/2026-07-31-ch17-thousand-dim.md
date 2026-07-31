@@ -23,4 +23,11 @@ Relate David Africa / Geoffrey Irving’s “Thousand-Dimensional Structure” (
 - `context/David-tweets.md`
 
 ## Commits
-- (none)
+- `58126835` Cite thousand-dimensional persona structure in Ch. 17.
+
+## Left uncommitted (ask before staging)
+- `context/David-low-dim-personality-tweets.md` (source note for this cite)
+- `drafts/secret-loyalties-hackathon-2026-07-27-entries.md`
+- `drafts/conversation-summaries/2026-07-30-field-news-read-more-in.md` (commit-hash tweak)
+- `experiments/TODO.md` (CIRIS key-task pointer)
+- `node_modules/` (do not commit)
