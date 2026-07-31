@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Archive old conversation logs and rebuild a slim INDEX.md.
 
-Moves logs dated before ACTIVE_CUTOFF into archive/YYYY-MM/.
-Generates one-line compressed indexes per archive month.
+Keeps only the ACTIVE_MAX newest session logs in the root folder.
+Everything else moves to archive/YYYY-MM/ with monthly compressed indexes.
 """
 
 from __future__ import annotations
@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LOG_DIR = ROOT / "drafts" / "conversation-summaries"
 ARCHIVE_DIR = LOG_DIR / "archive"
-ACTIVE_CUTOFF = "2026-07-20"  # inclusive in active root
+ACTIVE_MAX = 12  # newest sessions kept in root (handles burst days)
 SKIP_NAMES = {"README.md", "INDEX.md"}
 
 
@@ -56,6 +56,8 @@ def move_to_archive(path: Path) -> Path:
     dest_dir.mkdir(parents=True, exist_ok=True)
     dest = dest_dir / path.name
     if dest.exists():
+        if path.exists():
+            path.unlink()
         return dest
     shutil.move(str(path), str(dest))
     return dest
@@ -92,7 +94,7 @@ def write_active_index(active_files: list[Path]) -> None:
         "",
         "Agent handoff record. **Read the top row first**, then skim `metadata/book.yml`.",
         "",
-        f"Logs before **{ACTIVE_CUTOFF}** are in [`archive/`](archive/README.md) with monthly compressed indexes.",
+        f"Only the **{ACTIVE_MAX} most recent** sessions stay here; older logs are in [`archive/`](archive/README.md).",
         "",
         "## Recent sessions",
         "",
@@ -124,7 +126,7 @@ def write_active_index(active_files: list[Path]) -> None:
             "",
             "## Maintenance",
             "",
-            f"- Active cutoff: `{ACTIVE_CUTOFF}` (move older logs with `python3 scripts/archive_conversation_summaries.py`).",
+            f"- Active cap: `{ACTIVE_MAX}` newest logs (refresh: `python3 scripts/archive_conversation_summaries.py`).",
             "- Template and rules: [README.md](README.md).",
             "",
         ]
@@ -135,19 +137,15 @@ def write_active_index(active_files: list[Path]) -> None:
 def main() -> None:
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
 
-    to_archive: list[Path] = []
-    active: list[Path] = []
+    root_logs = [
+        p
+        for p in LOG_DIR.glob("*.md")
+        if p.name not in SKIP_NAMES and log_date(p.name)
+    ]
+    root_logs.sort(key=lambda p: p.name, reverse=True)
 
-    for path in sorted(LOG_DIR.glob("*.md")):
-        if path.name in SKIP_NAMES:
-            continue
-        date = log_date(path.name)
-        if not date:
-            continue
-        if date < ACTIVE_CUTOFF:
-            to_archive.append(path)
-        else:
-            active.append(path)
+    active = root_logs[:ACTIVE_MAX]
+    to_archive = root_logs[ACTIVE_MAX:]
 
     for path in to_archive:
         move_to_archive(path)

@@ -197,7 +197,7 @@ See `README.md` for thesis, manuscript status, chapter map, build instructions, 
 
 ### Conversation logs (`drafts/conversation-summaries/`)
 
-- **`INDEX.md`** — recent sessions (~2 weeks); read the top entry when resuming work.
+- **`INDEX.md`** — **12 most recent** sessions; read the top entry when resuming work.
 - **`archive/`** — older logs by month plus compressed `YYYY-MM-INDEX.md` files.
 - **`README.md`** — log format, retention, and handoff rules.
 - One markdown file per agent session (changes, decisions, open items, commits).

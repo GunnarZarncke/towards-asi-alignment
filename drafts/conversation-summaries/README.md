@@ -50,8 +50,8 @@ What the user asked for (one or two sentences).
 
 ## Retention
 
-- **Active folder:** sessions from the last ~2 weeks (cutoff in `INDEX.md`).
-- **Archive:** older logs move to `archive/YYYY-MM/`; one-line indexes at `archive/YYYY-MM-INDEX.md`.
+- **Active folder:** the **12 most recent** session logs only (handles burst days better than a date cutoff).
+- **Archive:** everything older moves to `archive/YYYY-MM/`; one-line indexes at `archive/YYYY-MM-INDEX.md`.
 - **Refresh:** `python3 scripts/archive_conversation_summaries.py` from repo root.
 
 Git history remains the source of truth for file-level diffs; logs carry decisions and open items git does not.

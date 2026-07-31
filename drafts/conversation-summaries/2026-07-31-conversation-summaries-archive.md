@@ -26,4 +26,4 @@ User: `conversation-summaries` folder too crowded; simplify, remove, compress, o
 - `drafts/conversation-summaries/archive/`
 
 ## Commits
-- (pending)
+- `d9db46bb` Archive old conversation logs and slim the handoff index.
