@@ -15,6 +15,16 @@ Last compressed: 2026-07-31.
 - **Measurand instantiation table** — composite indices bottom out in deferred estimators; needs mapping to experiment scripts. Pointer: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
 - **Presentation / site-first** — de-center PDF as flagship; per-part display renumbering (high risk). Pointer: `metadata/TODO.md` § Presentation.
 
+## Compressed history (Jun–Jul 2026)
+
+Aggregated from 476 retired session logs; detail in [RECOVERY.md](RECOVERY.md) or git.
+
+- **Manuscript arc:** scaffold (Jun 17) → integrated ch01–ch48 drafts → chapter splits/renumber → epistemic-status pass → bridge crosswalk (App. B) + institutional histories (App. M/C) → field-news surgical cites (Jul 2026).
+- **Lean spine:** proof skeleton → Mathlib adoption → field-agenda finite rederivations (ELK, debate, off-switch, Bellman) → hostile-critique fixes (MB4a, MB11, S10) → MB10 forgeability counterexample → Chokepoint.lean (shared steerability) → credibility plan P1–P4 (tiling contrast).
+- **Experiments:** toy → embedded → goal-agent → lab-sim → graded-lab v4; external-transfer lines ET-1 (stopped), ET-2 (null), ET-3 (closed), ET-4 (hackathon); negatives honored in `NEGATIVE_RESULTS.md` / FINDINGS.
+- **Companion site:** Astro thin slice → concept cards + Lean playground → experiments/findings UX → field-news `/news/` layer + RSS + offline PWA.
+- **Notation / voice:** canonical symbol pass (Jun 23) → update-operator envelope refactor → CCI vectorization → v1.1 terminology demotion (plain-first) → two-register narrative voice policy.
+
 ## Recently shipped (Jul 2026 themes)
 
 - **Manuscript:** Ch. 17 cites Africa/Irving thousand-dimensional persona structure (with hedges vs control-rank). App. B links MIRI agent-foundations writeups on bridge rows. App. C note on MIRI hard-pause vs Plan A spectrum. AI 2040 Plan A surgical cites + news card.
@@ -42,9 +52,10 @@ Last compressed: 2026-07-31.
 - **`session-end-*` / commit-only logs** — git history sufficient.
 - **Graded-lab `gl*` / `phase*` micro-logs** — outcomes in `experiments/graded-lab-simulation/results/FINDINGS.md` and `REPRODUCTION.md`.
 - **Lab-sim / embedded-sim incremental logs** — `experiments/*/PLAN.md`, FINDINGS, NEGATIVE_RESULTS.
-- **Field-news rollout logs (Jul 25–30)** — cards live in `metadata/field-news/`; tier-a/b partial logs superseded by `field-news-tier-ab` rollout.
+- **Field-news rollout logs (Jul 25–30)** — cards live in `metadata/field-news/`; partial tier logs superseded by full rollout.
 - **Site UX / astro / sync fix logs** — shipped; site `README.md` and git.
 - **Lean spine incremental session logs** — `formal/` + Appendix I supersede.
+- **Archive / per-session index files** — retired; do not recreate `archive/` or monthly `-INDEX.md` tables.
 
 ## Maintenance
 

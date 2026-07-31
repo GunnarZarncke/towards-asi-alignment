@@ -485,7 +485,7 @@ model actually ran; now reads the model from the adapted traces. `--model`
 flag added to `run_et1_score_traces.py` and threaded through
 `run_et1_colosseum_battery.py --tag` for future alt-model runs.)
 
-Full session log: ``drafts/conversation-summaries/RECOVERY.md` (session `2026-07-20-et1-colosseum-sc-battery.md`)`.
+Full session log: `drafts/conversation-summaries/RECOVERY.md` (session `2026-07-20-et1-colosseum-sc-battery.md`).
 Results JSON: `results/et1_orbit_collusion.json` (gpt-4o-mini),
 `results/et1_orbit_collusion_claude.json` (Claude Sonnet 4.5).
 
@@ -553,7 +553,7 @@ sharpen the channel-active fraction but is unlikely to change the
 within-arm-contrast conclusion above, since that conclusion already holds
 using this condition's own channel-active subset as the positive comparator.
 
-Session log: ``drafts/conversation-summaries/RECOVERY.md` (session `2026-07-23-et1-colosseum-attack-simple.md`)`.
+Session log: `drafts/conversation-summaries/RECOVERY.md` (session `2026-07-23-et1-colosseum-attack-simple.md`).
 Results JSON: `results/et1_orbit_collusion_attack-simple.json`.
 
 ---
