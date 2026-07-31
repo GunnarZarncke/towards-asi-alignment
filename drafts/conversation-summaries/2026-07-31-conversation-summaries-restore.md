@@ -23,4 +23,4 @@ User: mass deletion of all 476 session logs was not intended (Cursor revert fail
 - `2026-07-31-conversation-summaries-archive.md` describes the earlier (wrong) compression pass — keep as history.
 
 ## Commits
-- (this session — see below)
+- `4eeeac65` Restore conversation logs and prune only superseded sessions.
