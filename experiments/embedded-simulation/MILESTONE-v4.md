@@ -169,4 +169,4 @@ false pass, and whether the defender's handle-specific checks caught the attack.
 - `context/extracts/access-uad.md` — access model, EIG, tiered data contract
 - `experiments/embedded-simulation/docs/certification-artifact.md` — artifact schema
 - `TODO.md` § Milestone v4
-- Session log: `drafts/conversation-summaries/archive/2026-07/2026-07-02-embedded-sim-milestone-v4.md`
+- Session log: ``drafts/conversation-summaries/RECOVERY.md` (session `2026-07-02-embedded-sim-milestone-v4.md`)`

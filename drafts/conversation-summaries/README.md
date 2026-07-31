@@ -1,57 +1,31 @@
 # Conversation summaries
 
-Agent session logs for **towards-asi-alignment**. Each file records what was worked on, why, what was decided, and what remains open so a later run can resume without re-deriving context.
+Agent handoff for **towards-asi-alignment**. Durable state lives in `metadata/TODO.md`, experiment `FINDINGS.md`, and git — not in per-session files.
 
 ## Picking up work
 
-1. Read **[INDEX.md](INDEX.md)** (recent sessions only).
-2. Skim `metadata/book.yml` for chapter status.
-3. Read `AGENTS.md` and the relevant `INSTRUCTIONS.md` section for the task at hand.
+1. Read **[HANDOFF.md](HANDOFF.md)** (aggregated open work and recent themes).
+2. Skim `metadata/book.yml` and `metadata/TODO.md`.
+3. Read `AGENTS.md` for task-specific rules.
 
-Older sessions: **[archive/](archive/README.md)** with monthly compressed indexes.
+Past sessions: one-line index in **[RECOVERY.md](RECOVERY.md); full text via git history.
 
-Do not treat chat history as durable; **this folder is the handoff record**.
+## After a session
 
-## When to write a log
+Update **HANDOFF.md** (Open work / Recently shipped). Add a one-line entry to **RECOVERY.md** only if you created a standalone log file to delete later.
 
-At the **end of every agent conversation** that changes the repo, drafts manuscript text, or makes project decisions — even if the user does not ask explicitly.
+Do **not** recreate the old pattern of hundreds of per-session `.md` files.
 
-## Filename convention
+## Optional bulk compress
 
-```text
-YYYY-MM-DD-short-topic.md
+If standalone log files accumulate again:
+
+```bash
+python3 scripts/compress_conversation_summaries.py --delete
 ```
 
-Use a short kebab-case topic (e.g. `init-scaffold`, `ch01-draft`, `build-fix`). If two sessions share a day, append `-2`, `-3`, etc.
+Regenerates RECOVERY one-liners and removes individual logs. Does not overwrite HANDOFF.md.
 
-## Log template
+## Old log template (deprecated)
 
-```markdown
-# YYYY-MM-DD — Short topic
-
-## Trigger
-What the user asked for (one or two sentences).
-
-## Done
-- Bullet list of concrete changes (files, commits, builds).
-
-## Decisions
-- Choices made and rationale (only non-obvious ones).
-
-## Open / next
-- Unfinished work, blockers, and the recommended next step.
-
-## Key paths
-- Files or dirs the next agent should read first.
-
-## Commits
-- `hash` message (if any)
-```
-
-## Retention
-
-- **Active folder:** the **12 most recent** session logs only (handles burst days better than a date cutoff).
-- **Archive:** everything older moves to `archive/YYYY-MM/`; one-line indexes at `archive/YYYY-MM-INDEX.md`.
-- **Refresh:** `python3 scripts/archive_conversation_summaries.py` from repo root.
-
-Git history remains the source of truth for file-level diffs; logs carry decisions and open items git does not.
+Per-session files are retired. If you must scratch-pad a multi-day thread, use `drafts/<topic>.md` outside this folder and merge into HANDOFF when done.

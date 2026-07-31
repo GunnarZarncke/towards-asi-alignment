@@ -6,7 +6,7 @@ how far its dependency chain reaches into the Lean proof spine.
 
 This started as an ad hoc review in `drafts/` (2026-07-15/16) and was promoted here on
 2026-07-17 once the first reduce/remove pass was applied, per
-[`drafts/conversation-summaries/archive/2026-07/2026-07-17-symbol-audit-reduce-remove-pass.md`](../../drafts/conversation-summaries/archive/2026-07/2026-07-17-symbol-audit-reduce-remove-pass.md).
+[``drafts/conversation-summaries/RECOVERY.md` (session `2026-07-17-symbol-audit-reduce-remove-pass.md`)`](../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-07-17-symbol-audit-reduce-remove-pass.md`)).
 
 ## Contents
 

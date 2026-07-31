@@ -21,7 +21,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 **Open gaps:** [`metadata/TODO.md`](../metadata/TODO.md) and [`metadata/book.yml`](../metadata/book.yml) (frontmatter stubs, appendix stubs, citation review).
 
-For agent session continuity: [`drafts/conversation-summaries/INDEX.md`](../drafts/conversation-summaries/INDEX.md).
+For agent session continuity: [`drafts/conversation-summaries/HANDOFF.md`](../drafts/conversation-summaries/HANDOFF.md).
 
 The PDF front matter [*Current Status*](../frontmatter/current-status.tex) summarizes work-in-progress disclaimers only; the full chapter list lives in [`metadata/book.yml`](../metadata/book.yml) and on the [site book index](https://towards-alignment.com/book/).
 

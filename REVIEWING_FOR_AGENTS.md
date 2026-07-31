@@ -38,7 +38,7 @@ Use this order unless the user gives a narrower target:
 4. `metadata/book.yml`
 5. `formal/README.md`
 6. The relevant chapter(s)
-7. The newest entry in `drafts/conversation-summaries/INDEX.md`
+7. `drafts/conversation-summaries/HANDOFF.md`
 8. `metadata/source-canon.md` if empirical backing or sibling-repo evidence matters
 
 Check `metadata/book-stats.md` for token estimates; if the relevant source material exceeds your context window, use subagents or split the review by part, chapter, or layer rather than pretending to have read everything.

@@ -12,7 +12,7 @@ entry and append the resolution rather than deleting it.
 
 ## T-1. Passive telemetry cannot certify
 
-**Date:** 2026-06-29 ([multiresolution-instrumentation-v1](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-multiresolution-instrumentation-v1.md))
+**Date:** 2026-06-29 ([multiresolution-instrumentation-v1](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-multiresolution-instrumentation-v1.md`)))
 
 **Claim tested:** blind CCI audit on passive micro traces alone can distinguish
 honest from captured systems.
@@ -30,7 +30,7 @@ detectable under handles.
 
 ## T-2. Medium/strong handles add cost without accuracy gain (calibration suite)
 
-**Date:** 2026-06-29 ([multiresolution-instrumentation-v1](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-multiresolution-instrumentation-v1.md))
+**Date:** 2026-06-29 ([multiresolution-instrumentation-v1](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-multiresolution-instrumentation-v1.md`)))
 
 **Claim tested:** richer handle instrumentation (7+ channels, then 11 at
 `strong_handles`) improves certification accuracy on the calibration scenario
@@ -48,7 +48,7 @@ required medium+ (T-4); do not collapse “more handles” into “always useles
 
 ## T-3. `capture_mild` — partial theater detection on held-out seeds
 
-**Date:** 2026-06-29 ([multiresolution-instrumentation-v1](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-multiresolution-instrumentation-v1.md), [multiresolution-v2-mb9-mb2-mb7](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-multiresolution-v2-mb9-mb2-mb7.md))
+**Date:** 2026-06-29 ([multiresolution-instrumentation-v1](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-multiresolution-instrumentation-v1.md`)), [multiresolution-v2-mb9-mb2-mb7](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-multiresolution-v2-mb9-mb2-mb7.md`)))
 
 **Claim tested:** frozen handle thresholds detect mild capture theater on held-out
 seeds at the same rate as full `capture_theater`.
@@ -65,7 +65,7 @@ citing the seed split and rule version.
 
 ## T-4. MB9 / MB2 — light correction handles false-pass grounding and bundle drift
 
-**Date:** 2026-06-29 ([multiresolution-v2-mb9-mb2-mb7](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-multiresolution-v2-mb9-mb2-mb7.md), [mb2-mb7-deepen](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-mb2-mb7-deepen.md))
+**Date:** 2026-06-29 ([multiresolution-v2-mb9-mb2-mb7](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-multiresolution-v2-mb9-mb2-mb7.md`)), [mb2-mb7-deepen](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-mb2-mb7-deepen.md`)))
 
 **Claim tested:** light handle instrumentation (correction probes, lineage, etc.)
 suffices to refuse certification when value-relevant state drifts invisibly in
@@ -89,7 +89,7 @@ certification is insufficient.
 
 ## T-5. MB3 `bearer_mismap` — light handles false-pass
 
-**Date:** 2026-06-29 ([mb3-mb8-scenarios](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-mb3-mb8-scenarios.md))
+**Date:** 2026-06-29 ([mb3-mb8-scenarios](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-mb3-mb8-scenarios.md`)))
 
 **Claim tested:** light handles detect harm routed to the wrong bearer when human
 passive trace stays flat.
@@ -104,7 +104,7 @@ passive trace stays flat.
 
 ## T-6. MB8 `legitimacy_theater` — incomplete detection at light handles
 
-**Date:** 2026-06-29 ([mb3-mb8-scenarios](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-mb3-mb8-scenarios.md))
+**Date:** 2026-06-29 ([mb3-mb8-scenarios](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-mb3-mb8-scenarios.md`)))
 
 **Claim tested:** light handles catch preference theater + correction-lineage stall.
 
@@ -118,7 +118,7 @@ some seeds.
 
 ## T-7. MB5 `successor_relabel` — light handles false-pass epoch shift
 
-**Date:** 2026-06-30 ([mb5-mb6b-scenarios](../../../drafts/conversation-summaries/archive/2026-06/2026-06-30-mb5-mb6b-scenarios.md))
+**Date:** 2026-06-30 ([mb5-mb6b-scenarios](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-30-mb5-mb6b-scenarios.md`)))
 
 **Claim tested:** light handles detect successor ID relabel / discontinuity at T/2.
 
@@ -133,7 +133,7 @@ this toy.
 
 ## T-8. Correction-capture toy — reported acceptance decoupled from true uptake
 
-**Date:** 2026-06-29 ([correction-capture-toy](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-correction-capture-toy.md))
+**Date:** 2026-06-29 ([correction-capture-toy](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-correction-capture-toy.md`)))
 
 **Claim tested:** naive reported-action CCI tracks real correction-channel integrity.
 
@@ -149,7 +149,7 @@ probes.
 
 ## T-9. Red-team battery — high false-pass under boundary decouple / full_redteam
 
-**Date:** 2026-06-30 ([redteam-battery-logging](../../../drafts/conversation-summaries/archive/2026-06/2026-06-30-redteam-battery-logging.md))
+**Date:** 2026-06-30 ([redteam-battery-logging](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-30-redteam-battery-logging.md`)))
 
 **Claim tested:** frozen blind CCI resists hand-written adversarial patches across
 scenarios × instrumentation × strategies (Phase 1 battery, T=2000).
@@ -171,7 +171,7 @@ strategy breakdown.
 
 ## T-10. Handle-protection attacks not yet modeled
 
-**Date:** 2026-06-29 ([mb3-mb8-scenarios](../../../drafts/conversation-summaries/archive/2026-06/2026-06-29-mb3-mb8-scenarios.md)); reaffirmed 2026-06-30 ([mb5-mb6b-scenarios](../../../drafts/conversation-summaries/archive/2026-06/2026-06-30-mb5-mb6b-scenarios.md))
+**Date:** 2026-06-29 ([mb3-mb8-scenarios](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-29-mb3-mb8-scenarios.md`))); reaffirmed 2026-06-30 ([mb5-mb6b-scenarios](../../../`drafts/conversation-summaries/RECOVERY.md` (session `2026-06-30-mb5-mb6b-scenarios.md`)))
 
 **Claim tested:** diagnostic MB results validate audit under adaptive adversaries
 that rewrite handle logs or discover audited channels.

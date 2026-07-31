@@ -77,4 +77,4 @@ Until the shared chokepoint is named as a single load-bearing failure mode (not 
 
 - **TODOs:** `metadata/TODO.md` — BIG REVIEW (correlated steerability chokepoint); measurand instantiation table.
 - **Experiments:** `experiments/toy-simulation/TODO.md` — composite-index ↔ estimator matrix.
-- **Prior session:** `drafts/conversation-summaries/archive/2026-06/2026-06-28-research-order-composition-argument.md` (source of the now-questioned disjunctive-tolerance language).
+- **Prior session:** ``drafts/conversation-summaries/RECOVERY.md` (session `2026-06-28-research-order-composition-argument.md`)` (source of the now-questioned disjunctive-tolerance language).

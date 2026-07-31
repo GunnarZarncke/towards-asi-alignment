@@ -114,14 +114,14 @@ See also `INSTRUCTIONS.md` §11 (chapter writing process).
 
 ### Conversation continuity
 
-**Read the latest log before you work. Write a log after each major change.**
+**Read HANDOFF before you work. Update HANDOFF after major changes.**
 
-Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-summaries/`.
+Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-summaries/HANDOFF.md` (aggregated themes) plus `metadata/TODO.md`.
 
 **At session start (non-trivial tasks):**
 
-1. Read `drafts/conversation-summaries/INDEX.md` (recent sessions) and the most recent log file. Older logs: `drafts/conversation-summaries/archive/`.
-2. Check `metadata/book.yml` for chapter status and the open items in that log.
+1. Read `drafts/conversation-summaries/HANDOFF.md`, then `metadata/book.yml` and relevant open items in `metadata/TODO.md`.
+2. Use `drafts/conversation-summaries/RECOVERY.md` or git history only for archaeology.
 
 **When making a plan in plan mode:**
 
@@ -129,11 +129,10 @@ Write the plan into `drafts/<planname>.md` or a more task specific directory, as
 
 **At session milestones (required when the session changed the repo, drafted text, or made project decisions):**
 
-1. Add `drafts/conversation-summaries/YYYY-MM-DD-short-topic.md` using the template in `drafts/conversation-summaries/README.md`.
-2. Refresh `INDEX.md` (add a row most recent first, or run `python3 scripts/archive_conversation_summaries.py` to rebuild the active index and roll older logs into `archive/`).
-3. Record: trigger, what was done, non-obvious decisions, open/next steps, key paths, and commit hashes if any.
+1. Update `drafts/conversation-summaries/HANDOFF.md` (Open work / Recently shipped sections).
+2. Record non-obvious decisions and commit hashes there or in `metadata/TODO.md` if load-bearing.
 
-Do not rely on chat history alone for resume context.
+Do not rely on chat history alone for resume context. Do not recreate per-session log files in `conversation-summaries/`.
 
 ## Project layout
 
@@ -197,10 +196,12 @@ See `README.md` for thesis, manuscript status, chapter map, build instructions, 
 
 ### Conversation logs (`drafts/conversation-summaries/`)
 
-- **`INDEX.md`** — **12 most recent** sessions; read the top entry when resuming work.
-- **`archive/`** — older logs by month plus compressed `YYYY-MM-INDEX.md` files.
-- **`README.md`** — log format, retention, and handoff rules.
-- One markdown file per agent session (changes, decisions, open items, commits).
+- **`HANDOFF.md`** — aggregated open work and recent themes; read first when resuming.
+- **`RECOVERY.md`** — one-line index of all past sessions (git recovery).
+- **`INDEX.md`** — pointer to the above.
+- **`README.md`** — maintenance rules.
+
+Per-session `.md` log files are retired.
 
 ## Git
 
