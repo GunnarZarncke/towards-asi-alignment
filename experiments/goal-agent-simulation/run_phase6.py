@@ -3,7 +3,7 @@
 weight search (`results/FINDINGS.md` GA-21/GA-22/GA-23).
 
 Three independent follow-ups to the Phase 5 strategic review (session log
-`drafts/conversation-summaries/RECOVERY.md` (session `2026-07-05-goal-agent-line-next-steps-recorded.md`)), each pre-registered below BEFORE this script's first run.
+`drafts/conversation-summaries/archive/2026-07/2026-07-05-goal-agent-line-next-steps-recorded.md`), each pre-registered below BEFORE this script's first run.
 Frozen Phase 1-5 artifacts are untouched; `escalation.py`'s gates,
 `detectors.py`'s thresholds, and `labels.py` are unchanged throughout.
 

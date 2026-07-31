@@ -116,12 +116,13 @@ See also `INSTRUCTIONS.md` §11 (chapter writing process).
 
 **Read HANDOFF before you work. Update HANDOFF after major changes.**
 
-Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-summaries/HANDOFF.md` (aggregated themes) plus `metadata/TODO.md`.
+Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-summaries/` (HANDOFF + per-session logs) and `metadata/TODO.md`.
 
 **At session start (non-trivial tasks):**
 
-1. Read `drafts/conversation-summaries/HANDOFF.md`, then `metadata/book.yml` and relevant open items in `metadata/TODO.md`.
-2. Use `drafts/conversation-summaries/RECOVERY.md` or git history only for archaeology.
+1. Read `drafts/conversation-summaries/HANDOFF.md`, then `INDEX.md` or a specific session log if resuming a thread.
+2. Check `metadata/book.yml` and relevant open items in `metadata/TODO.md`.
+3. Use `RECOVERY.md` or git history only for pruned/superseded logs.
 
 **When making a plan in plan mode:**
 
@@ -129,10 +130,11 @@ Write the plan into `drafts/<planname>.md` or a more task specific directory, as
 
 **At session milestones (required when the session changed the repo, drafted text, or made project decisions):**
 
-1. Update `drafts/conversation-summaries/HANDOFF.md` (Open work / Recently shipped sections).
-2. Record non-obvious decisions and commit hashes there or in `metadata/TODO.md` if load-bearing.
+1. Add or update a per-session log (`drafts/conversation-summaries/YYYY-MM-DD-topic.md`) using the template in `drafts/conversation-summaries/README.md`.
+2. Update `drafts/conversation-summaries/HANDOFF.md` (Open work / Recently shipped) when load-bearing.
+3. Update `drafts/conversation-summaries/INDEX.md` if the session log is new (or run `scripts/archive_conversation_summaries.py`).
 
-Do not rely on chat history alone for resume context. Do not recreate per-session log files in `conversation-summaries/`.
+Do not rely on chat history alone for resume context.
 
 ## Project layout
 
@@ -197,7 +199,9 @@ See `README.md` for thesis, manuscript status, chapter map, build instructions, 
 ### Conversation logs (`drafts/conversation-summaries/`)
 
 - **`HANDOFF.md`** — aggregated open work and recent themes; read first when resuming.
-- **`RECOVERY.md`** — one-line index of all past sessions (git recovery).
+- **`INDEX.md`** — recent session logs; older logs in **`archive/`**.
+- **`RECOVERY.md`** — one-line index of **pruned** logs only (superseded by a later session).
+- **`README.md`** — log template and retention policy.
 - **`INDEX.md`** — pointer to the above.
 - **`README.md`** — maintenance rules.
 

@@ -1,31 +1,57 @@
 # Conversation summaries
 
-Agent handoff for **towards-asi-alignment**. Durable state lives in `metadata/TODO.md`, experiment `FINDINGS.md`, and git — not in per-session files.
+Agent session logs for **towards-asi-alignment**. Each file records what was worked on, why, what was decided, and what remains open so a later run can resume without re-deriving context.
 
 ## Picking up work
 
-1. Read **[HANDOFF.md](HANDOFF.md)** (aggregated open work and recent themes).
-2. Skim `metadata/book.yml` and `metadata/TODO.md`.
-3. Read `AGENTS.md` for task-specific rules.
+1. Read **[HANDOFF.md](HANDOFF.md)** (aggregated themes and open work).
+2. Skim **[INDEX.md](INDEX.md)** for recent sessions; dig into relevant logs or **[archive/](archive/README.md)**.
+3. Check `metadata/book.yml` for chapter status.
+4. Read `AGENTS.md` and the relevant `INSTRUCTIONS.md` section for the task at hand.
 
-Past sessions: one-line index in **[RECOVERY.md](RECOVERY.md); full text via git history.
+Do not treat chat history as durable; **this folder is the handoff record**.
 
-## After a session
+## When to write a log
 
-Update **HANDOFF.md** (Open work / Recently shipped). Add a one-line entry to **RECOVERY.md** only if you created a standalone log file to delete later.
+At the **end of every agent conversation** that changes the repo, drafts manuscript text, or makes project decisions — even if the user does not ask explicitly.
 
-Do **not** recreate the old pattern of hundreds of per-session `.md` files.
+## Filename convention
 
-## Optional bulk compress
-
-If standalone log files accumulate again:
-
-```bash
-python3 scripts/compress_conversation_summaries.py --delete
+```text
+YYYY-MM-DD-short-topic.md
 ```
 
-Regenerates RECOVERY one-liners and removes individual logs. Does not overwrite HANDOFF.md.
+Use a short kebab-case topic (e.g. `init-scaffold`, `ch01-draft`, `build-fix`). If two sessions share a day, append `-2`, `-3`, etc.
 
-## Old log template (deprecated)
+## Log template
 
-Per-session files are retired. If you must scratch-pad a multi-day thread, use `drafts/<topic>.md` outside this folder and merge into HANDOFF when done.
+```markdown
+# YYYY-MM-DD — Short topic
+
+## Trigger
+What the user asked for (one or two sentences).
+
+## Done
+- Bullet list of concrete changes (files, commits, builds).
+
+## Decisions
+- Choices made and rationale (only non-obvious ones).
+
+## Open / next
+- Unfinished work, blockers, and the recommended next step.
+
+## Key paths
+- Files or dirs the next agent should read first.
+
+## Commits
+- `hash` message (if any)
+```
+
+## Retention
+
+- **Active folder:** the **15 most recent** session logs (burst-day cap).
+- **Archive:** older logs in `archive/YYYY-MM/`; monthly indexes at `archive/YYYY-MM-INDEX.md`.
+- **Prune:** remove logs **superseded by a later session** only — not because work shipped. Script: `scripts/prune_superseded_conversation_logs.py`; one-line index in `RECOVERY.md`.
+- **Roll to archive:** `python3 scripts/archive_conversation_summaries.py` from repo root.
+
+Git history remains the source of truth for file-level diffs; logs carry decisions and open items git does not.
