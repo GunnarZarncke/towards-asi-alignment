@@ -30,4 +30,4 @@ User asked to implement the agenda/glossary/anthropic plan: coherent org-backed 
 - `reference/field-agendas/README.md`
 
 ## Commits
-- (pending this session)
+- `0ac4ee01` — Add field agenda index and inter-agenda glossary under reference/.
