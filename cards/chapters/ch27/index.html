@@ -671,6 +671,9 @@ They define what must not be lost.</p>
 <li>
 <p><strong>(Verifiability.)</strong> Integrity is read from signals the system controls; corrigibility theater satisfies every probe, so integrity is only as real as the cost of faking it (Chapter <a href="../ch43/">What Survives an Adversary: Verifiability and Representability</a>).</p>
 </li>
+<li>
+<p>Deployment-relevant adversarial training preserves correction-channel integrity under capability growth and strategic adaptation without shifting deception to unpatched channels or eroding correction uptake—would collapse the book’s separation between training-time robustness and correction preservation.</p>
+</li>
 </ul>
 <h2 id="summary">Summary</h2>
 <p><span id="sec:chapter-conclusion-cci"></span></p>
@@ -684,7 +687,8 @@ Goodhart pressure can reward systems that pass correction tests while weakening 
 <p>The existing-work separations make the same point.
 Low impact preserves a different object.
 Quantilization can reduce local optimizer extremity while leaving trajectory-level correction capacity to decay.
-Shutdown, interruptibility, corrigibility, debate, amplification, and latent readout each address real subproblems in their own right—debate for local epistemics, latent readout for knowledge elicitation, shutdown and interruptibility for emergency control—and none is sufficient alone. For correction-channel integrity they are necessary but not sufficient contributors: what matters is whether they preserve the larger channel by which legitimate correction changes future behaviour.</p>
+Shutdown, interruptibility, corrigibility, debate, amplification, and latent readout each address real subproblems in their own right—debate for local epistemics, latent readout for knowledge elicitation, shutdown and interruptibility for emergency control—and none is sufficient alone.
+For correction-channel integrity they are necessary but not sufficient contributors: what matters is whether they preserve the larger channel by which legitimate correction changes future behaviour.</p>
 <p>A system is not aligned merely because it currently does what humans approve of.
 It is aligned only if humans, and the institutions through which humans deliberate, can continue to notice, understand, contest, revise, and redirect the system as both they and the system change.</p>
 <p>The next chapter develops that extrapolative version of correction in its own right (Chapter <a href="../ch28/">Beyond Following Instruction</a>).</p>
