@@ -28,4 +28,4 @@ User asked for the deferred prose pass: consult each source; replace one-line st
 - `drafts/glossary-prose-pass/`
 
 ## Commits
-- (pending user request)
+- `7716a9d8` — Rewrite inter-agenda glossary with source-backed prose pass.
