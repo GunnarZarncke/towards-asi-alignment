@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-07-31.
+Last updated: 2026-08-01.
 
 ---
 
@@ -25,9 +25,10 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 - **Companion site:** Astro thin slice → concept cards + Lean playground → experiments/findings UX → field-news `/news/` layer + RSS + offline PWA.
 - **Notation / voice:** canonical symbol pass (Jun 23) → update-operator envelope refactor → CCI vectorization → v1.1 terminology demotion (plain-first) → two-register narrative voice policy.
 
-## Recently shipped (Jul 2026 themes)
+## Recently shipped (Jul–Aug 2026 themes)
 
-- **Manuscript:** Ch. 17 cites Africa/Irving thousand-dimensional persona structure (with hedges vs control-rank). App. B links MIRI agent-foundations writeups on bridge rows. App. C note on MIRI hard-pause vs Plan A spectrum. AI 2040 Plan A surgical cites + news card.
+- **Manuscript:** Ch. 2/7/34 cite Sterman (systems-dynamics CLDs); Ch. 7 adds CCD / cyclic causal discovery as calibrated passive baseline for feedback coupling (not full agent discovery). Bib: Richardson CCD, Zanga survey, Sterman *Business Dynamics*.
+- **Manuscript (Jul):** Ch. 17 cites Africa/Irving thousand-dimensional persona structure (with hedges vs control-rank). App. B links MIRI agent-foundations writeups on bridge rows. App. C note on MIRI hard-pause vs Plan A spectrum. AI 2040 Plan A surgical cites + news card.
 - **Companion site:** Field-news layer (`metadata/field-news.yml`); “Read more in” chapter footers; RSS; offline PWA; link-type indicators; concept logos; experiment findings UX (`**Key finding:**` extraction).
 - **Experiments:** ET-1 Orbit line **stopped** (passive UAD detects scripted macro-agent; channel independence). ET-2 CIL **null** (150/150 zero passive UAD edges). ET-3 AI 2027 **closed** (LS-48). ET-4 Secret Loyalties hackathon organism + replay demo + paper under `papers/`. Graded-lab v4 + v1.3.0 tag.
 - **Formal:** MB10 forgeability; Chokepoint.lean; field rederivation batch (ELK, debate, off-switch, etc.); RiskGap rename; credibility plan P1–P4 (tiling contrast).
