@@ -26,4 +26,4 @@ User asked to consider cyclic causal discovery (CCD; Zanga et al. survey arXiv:2
 - `references/dynamical-systems.bib`
 
 ## Commits
-- (this session commit)
+- `ff380cfe` Cite CCD and Sterman as calibrated passive baselines for feedback structure.
