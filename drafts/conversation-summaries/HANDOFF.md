@@ -9,10 +9,10 @@ Last updated: 2026-08-01.
 ## Open work (load-bearing)
 
 - **PredictorLoop Lean** — Finite model of closed forecast→deployment→world→score loops ⇒ discoverable `System`/boundary fragment. Manuscript strong-subsumption prose shipped (ch10/ch02/ch44); formalization TODO in `metadata/TODO.md` + `formal/README.md`. Log: `2026-08-01-affine-field-openness.md`.
+- **Terminology demotion follow-through (deferred prose pass)** — Working inventory in `drafts/glossary-term-audit.md`; translation canon in `reference/field-agendas/inter-agenda-term-glossary.md`. Pointer: `metadata/TODO.md`; source log: `archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
 - **Conserved-property forgeability (MB10)** — finite counterexample in Lean; prose wired. Still open: non-enumerability of conserved set across capability jumps; toy red-team of audit forgeability. Pointer: `metadata/TODO.md`, `Forgeability.lean`.
-- **Terminology demotion follow-through** — plain-first vocabulary audit (deployment leverage, preservation conditions, etc.). Pointer: `metadata/TODO.md`; source log: `archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md`.
 - **Measurand instantiation table** — composite indices bottom out in deferred estimators; needs mapping to experiment scripts. Pointer: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
 - **Presentation / site-first** — de-center PDF as flagship; per-part display renumbering (high risk). Pointer: `metadata/TODO.md` § Presentation.
 
@@ -28,6 +28,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Context (2026-08-01):** Field agenda index (32 agendas, AISafety.com cluster); inter-agenda term glossary; anthropic/acausal taxonomy — under `reference/field-agendas/`; `drafts/glossary-term-audit.md` for deferred prose pass. Log: `2026-08-01-agenda-glossary-index.md`.
 - **Experiments (2026-08-01):** Indexed sibling repo [deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator) as pipeline-lab / ET-4 methodological precursor (`DP-` findings in App. I). Log: `2026-08-01-deployment-pipeline-simulator-precursor.md`.
 - **Manuscript (2026-08-01):** AFFINE curriculum archived; App. F preparadigmatic Meta (problem substitution) vs object-level substitution hazards; CEV/CBV; CCC→corrigibility; perils of predictors; NAH with shard theory; field-term usage preferred over glossary dual section; Lean PredictorLoop TODO.
 - **Manuscript:** AI Safety Interventions coverage map (App. B §`sec:intervention-coverage-map`); intervention index archived to `context/`; shard theory / Cartesian frames / adversarial-training WWCTV / generalization-control / RSP / hardware_tag cross-refs wired.

@@ -80,6 +80,20 @@ Refresh from source-map sibling repos: `python3 scripts/import_source_map_refs.p
 
 ---
 
+## Field agenda reference
+
+Cross-agenda roster and term translation (not manuscript canon): [`reference/field-agendas/`](../reference/field-agendas/README.md).
+
+| File | Role |
+|------|------|
+| [`field-agenda-index.md`](../reference/field-agendas/field-agenda-index.md) | 32 agendas clustered from AISafety.com map |
+| [`inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md) | Alphabetical terms by source agenda |
+| [`anthropic-acausal-taxonomy.md`](../reference/field-agendas/anthropic-acausal-taxonomy.md) | Homograph disambiguation for anthropic / acausal loads |
+
+Manuscript bridge map: [`appendices/appB-bridge-crosswalk.tex`](../appendices/appB-bridge-crosswalk.tex).
+
+---
+
 ## Ledgers and open problems
 
 | File | Role |

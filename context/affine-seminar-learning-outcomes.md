@@ -72,7 +72,6 @@
 
 ## Book reading notes (for agents)
 
-- AFFINE's **Acausal/Anthropics** cell mixes four loads the manuscript must keep separate: (1) anthropic *completion* (selector/reference-class/bet protocol — Lean + `anthropics_perspectives.tex`); (2) anthropic *capture* in predictors; (3) ECL / acausal cooperation; (4) malign Solomonoff. Do not re-bucket them.
-- **Substitution hazards** (object-level) = superclass of nearest-unblocked strategy, Goodhart/proxy gaming, edge instantiation, channel substitution. Distinct from Meta **problem substitution** (working a legible subproblem as if it were the whole). See App. F.
-- **Outer Alignment Approach** rows are peers evaluated in place (ch04, ch27, App. B intervention map) — show via separations and open bridges, not a survey section.
-- **CCC / Perils of Predictors** map onto when corrigibility pressure appears and onto a predictor-to-consequentialist path (ch10/ch14), not a competing spine.
+- **Term translation across agendas:** use [`reference/field-agendas/inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md) — alphabetical headwords with source tags and homograph splits.
+- **Agenda roster:** [`reference/field-agendas/field-agenda-index.md`](../reference/field-agendas/field-agenda-index.md) (stub; AISafety.com map is discovery layer).
+- Outer Alignment Approach rows are peers evaluated in place (ch04, ch27, App. B) — show via separations, not a survey section.

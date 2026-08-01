@@ -138,6 +138,10 @@ Do not rely on chat history alone for resume context.
 
 ## Project layout
 
+### Reference (`reference/`)
+
+- Field agenda roster, inter-agenda term glossary, and anthropic/acausal taxonomy — agent crosswalk material, not manuscript canon. Hub: [`reference/field-agendas/README.md`](reference/field-agendas/README.md).
+
 ### Context (`context/`)
 
 - Human-edited notes on project goals, executive summaries, and messaging constraints.

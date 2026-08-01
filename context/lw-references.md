@@ -10,12 +10,22 @@ BibTeX keys for cited posts live in `references/external-alignment.bib`.
 | [AI Safety Interventions (LessWrong)](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions) | `context/ai-safety-interventions.pdf`, `context/extracts/ai-safety-interventions.md` | `zarncke2025interventions`; Appendix B §Intervention coverage map (`sec:intervention-coverage-map`) |
 | Extended PDF | `https://github.com/GunnarZarncke/ai-safety-interventions` (master branch) | Same index; not duplicated in manuscript |
 
+### Field agenda index and term translation
+
+| Resource | Location | Use |
+|---|---|---|
+| [AISafety.com map](https://www.aisafety.com/map) | (external) | Discovery layer for org/program agendas |
+| Field agenda index | `reference/field-agendas/field-agenda-index.md` | 32 coherent agendas clustered from AISafety.com map |
+| Inter-agenda term glossary | `reference/field-agendas/inter-agenda-term-glossary.md` | Alphabetical terms by source agenda; homographs; cross-agenda notes (book integration deferred) |
+| Anthropic/acausal taxonomy | `reference/field-agendas/anthropic-acausal-taxonomy.md` | Four loads; homograph rows in glossary |
+| Glossary term audit (working) | `drafts/glossary-term-audit.md` | Deferred prose pass notes; demotion inventory |
+
 ### AFFINE seminar curriculum (external training map)
 
 | Resource | Location | Manuscript hook |
 |---|---|---|
 | [AFFINE Seminar — Learning Outcomes](https://docs.google.com/spreadsheets/d/16BG0Fw7mOOHJykBVLkeqPzlpdxgMMp1_YeSmgaFnKLc/edit?gid=0#gid=0) (WIP) | `context/affine-seminar-learning-outcomes.md` | App. F preparadigmatic hazards; App. B intervention rows; ch04/10/14/17/27 hooks |
-| Anthropics paper (completion / selectors) | `context/anthropics_perspectives.tex`; sibling Lean [GunnarZarncke/anthropics](https://github.com/GunnarZarncke/anthropics) | Anthropic mode ≠ acausal mode (Ch. 10/48, App. B MB7d notes) |
+| Anthropics paper (completion / selectors) | `context/anthropics_perspectives.tex`; sibling Lean [GunnarZarncke/anthropics](https://github.com/GunnarZarncke/anthropics) | Homograph: anthropic completion vs capture vs lab — see `reference/field-agendas/inter-agenda-term-glossary.md` |
 
 ### BibTeX keys wired into drafted chapters (ch01--04, 06--10, 40)
 
