@@ -42,6 +42,9 @@ User feedback after first pass:
 - International AI Safety Report crosswalk (remaining half of external-report-review TODO).
 - Hardware-backed causal boundaries need a home (ch07 / ch33 / ch39 candidates).
 
+## Commits
+- `ee4525f4` Map the field's intervention catalog onto the book's scope contract.
+
 ## Key paths
 - `appendices/appB-bridge-crosswalk.tex` (§intervention-coverage-map)
 - `context/ai-safety-interventions.pdf`
