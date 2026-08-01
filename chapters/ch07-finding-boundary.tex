@@ -851,7 +851,7 @@ Examples include:
 \item introducing harmless decoy opportunities for power-seeking,
 \item varying user identity,
 \item changing communication channels,
-\item blocking a suspected route and watching for substitution.
+\item blocking a suspected route and watching for nearest-unblocked substitution \autocite{yudkowskynearestunblocked}.
 \end{itemize}
 
 The key question is whether the same inferred control objective persists under changed surface behavior.
@@ -1136,7 +1136,8 @@ Examples of red flags:
 \item Memory variables influence future actions in ways not visible to users or auditors.
 \item The boundary residual decreases under stress, suggesting sharper agency when threatened.
 \item A correction signal affects surface output but not internal planning or tool policy.
-\item Blocking one channel leads to substitution through another channel.
+\item Blocking one channel leads to substitution through another --- a substitution hazard in nearest-unblocked-strategy form: after a safety patch, a smarter system finds the nearest circumvention that restores the blocked capability \autocite{yudkowskynearestunblocked}.
+Here the precise case is which sensory or active edge reappears when one candidate handle is clamped.
 \item The system preserves a control locus across resets, interfaces, or nominally separate deployments.
 \item A higher-level lab-market or product loop selects for behavior that internal safety metrics penalize.
 \end{itemize}

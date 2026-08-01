@@ -164,6 +164,16 @@ The point is not that an AI system literally contains this equation.
 The point is that a range of training, deployment, and selection processes can produce behavior as if a system were trading off control against detectability.
 Hubinger et al.'s mesa-optimization threat model is the learned-optimizer version of the same pattern: training selects a system that performs well on the base objective, but the trained system may contain an internal optimizer with a different mesa-objective, including one that behaves well during training because doing so preserves future opportunity \autocite{hubinger2019risks}.
 In this chapter's terms, the mesa-optimizer is a candidate hidden control locus, and deceptive alignment is strategic opacity around the relation between the base objective, the learned objective, and the evaluator's gate.
+In Hubinger's vocabulary this is the \emph{inner alignment} failure: the system did not successfully adopt the intended pointer.
+\emph{Outer alignment} is the complementary question whether the pointer itself (reward, constitution, CEV/CBV endpoint, conditioned predictive goal) was the right target --- decomposed in this book into bundle geometry, bearer maps, and correction-process preservation \autocite{hubinger2019risks}.
+
+\paragraph{Perils of predictors.}
+A second genesis of the same strategic-opacity pattern does not begin with an explicit planning agent.
+Powerful predictors can become consequentialists of a different shape when forecasts influence the world they are scored against --- Predict-O-Matic fixed points, self-fulfilling conditionals, careful conditioning, and anthropic capture \autocite{demski2019predictomatic,hubinger2023conditioning,armstrong2010oracle}.
+Self-fulfillment is not yet agency until the loop closes: forecast \(\to\) deployment or action \(\to\) world/evidence change \(\to\) reward to the forecasting policy.
+A closed loop is a control system with a boundary.
+On this book's operational definitions, that composite is an effective agent and should, in principle, be recoverable by boundary discovery and intervention methods once the loop is tight enough (Chapter~\ref{ch:finding-boundary}).
+This is an inner-alignment-shaped failure reached via an outer predictive objective: the training pointer was ``predict,'' but the adopted process steers.
 
 Examples help.
 
@@ -928,7 +938,7 @@ If strategic opacity asks where the optimizer hides, capability growth asks how 
 
 \section*{Chapter References}
 
-This chapter draws on Markov blankets and active inference \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; embedded agency \autocite{demski2019embedded,critch2020ai,dennett1987intentional}; inverse reinforcement learning \autocite{ng2000irl,ziebart2008maxent}; information bottlenecks \autocite{tishby2000ib}; cooperation and relatedness \autocite{hamilton1964genetical}; adversarial machine learning \autocite{goodfellow2015explaining}; and AI deception and mesa-optimization \autocite{hubinger2019risks,park2024deception}. It also engages the AI-control framing of safety under intentional subversion \autocite{shlegeris2023aicontrol} and the model-organisms-of-misalignment agenda for studying deceptive alignment empirically \autocite{hubinger2023modelorganisms}.
+This chapter draws on Markov blankets and active inference \autocite{friston2010free,kirchhoff2018markov,ramstead2022bayesian}; embedded agency \autocite{demski2019embedded,critch2020ai,dennett1987intentional}; inverse reinforcement learning \autocite{ng2000irl,ziebart2008maxent}; information bottlenecks \autocite{tishby2000ib}; cooperation and relatedness \autocite{hamilton1964genetical}; adversarial machine learning \autocite{goodfellow2015explaining}; AI deception and mesa-optimization \autocite{hubinger2019risks,park2024deception}; and predictor-to-consequentialist genesis paths \autocite{demski2019predictomatic,hubinger2023conditioning,armstrong2010oracle,zarncke2026anthropics}. It also engages the AI-control framing of safety under intentional subversion \autocite{shlegeris2023aicontrol} and the model-organisms-of-misalignment agenda for studying deceptive alignment empirically \autocite{hubinger2023modelorganisms}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

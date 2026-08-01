@@ -10,6 +10,13 @@ BibTeX keys for cited posts live in `references/external-alignment.bib`.
 | [AI Safety Interventions (LessWrong)](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions) | `context/ai-safety-interventions.pdf`, `context/extracts/ai-safety-interventions.md` | `zarncke2025interventions`; Appendix B §Intervention coverage map (`sec:intervention-coverage-map`) |
 | Extended PDF | `https://github.com/GunnarZarncke/ai-safety-interventions` (master branch) | Same index; not duplicated in manuscript |
 
+### AFFINE seminar curriculum (external training map)
+
+| Resource | Location | Manuscript hook |
+|---|---|---|
+| [AFFINE Seminar — Learning Outcomes](https://docs.google.com/spreadsheets/d/16BG0Fw7mOOHJykBVLkeqPzlpdxgMMp1_YeSmgaFnKLc/edit?gid=0#gid=0) (WIP) | `context/affine-seminar-learning-outcomes.md` | App. F preparadigmatic hazards; App. B intervention rows; ch04/10/14/17/27 hooks |
+| Anthropics paper (completion / selectors) | `context/anthropics_perspectives.tex`; sibling Lean [GunnarZarncke/anthropics](https://github.com/GunnarZarncke/anthropics) | Anthropic mode ≠ acausal mode (Ch. 10/48, App. B MB7d notes) |
+
 ### BibTeX keys wired into drafted chapters (ch01--04, 06--10, 40)
 
 | BibTeX key | LW post | Drafted chapters |

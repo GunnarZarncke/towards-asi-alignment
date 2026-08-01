@@ -53,6 +53,11 @@ Priority: derive certification conclusions from spine inputs (capacity slack,
 correction channel, successor invariance) rather than assuming them as bare
 hypotheses.
 
+**Open (not yet started):** `Field/Finite/PredictorLoop.lean` — finite model of
+closed forecast→deployment→world→score loops implying a discoverable
+`System`/boundary fragment (manuscript genesis path in ch10; see
+`metadata/TODO.md` chapter↔Lean mapping gaps).
+
 > The book must not say "Lean proves ASI alignment." It may say "Lean proves
 > that, *if* these boundary, grounding, bundle, correction, successor, and adversarial
 > conditions hold, *then* the certification argument has the advertised logical

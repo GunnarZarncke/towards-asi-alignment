@@ -8,6 +8,7 @@ Last updated: 2026-08-01.
 
 ## Open work (load-bearing)
 
+- **PredictorLoop Lean** — Finite model of closed forecast→deployment→world→score loops ⇒ discoverable `System`/boundary fragment. Manuscript strong-subsumption prose shipped (ch10/ch02/ch44); formalization TODO in `metadata/TODO.md` + `formal/README.md`. Log: `2026-08-01-affine-field-openness.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
 - **Conserved-property forgeability (MB10)** — finite counterexample in Lean; prose wired. Still open: non-enumerability of conserved set across capability jumps; toy red-team of audit forgeability. Pointer: `metadata/TODO.md`, `Forgeability.lean`.
@@ -27,6 +28,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Manuscript (2026-08-01):** AFFINE curriculum archived; App. F preparadigmatic Meta (problem substitution) vs object-level substitution hazards; CEV/CBV; CCC→corrigibility; perils of predictors; NAH with shard theory; field-term usage preferred over glossary dual section; Lean PredictorLoop TODO.
 - **Manuscript:** AI Safety Interventions coverage map (App. B §`sec:intervention-coverage-map`); intervention index archived to `context/`; shard theory / Cartesian frames / adversarial-training WWCTV / generalization-control / RSP / hardware_tag cross-refs wired.
 - **Manuscript:** Ch. 2/7/34 cite Sterman (systems-dynamics CLDs); Ch. 7 adds CCD / cyclic causal discovery as calibrated passive baseline for feedback coupling (not full agent discovery). Bib: Richardson CCD, Zanga survey, Sterman *Business Dynamics*.
 - **Manuscript (Jul):** Ch. 17 cites Africa/Irving thousand-dimensional persona structure (with hedges vs control-rank). App. B links MIRI agent-foundations writeups on bridge rows. App. C note on MIRI hard-pause vs Plan A spectrum. AI 2040 Plan A surgical cites + news card.
