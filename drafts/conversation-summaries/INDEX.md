@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-01 | **AI Safety Interventions coverage map** — App. B intervention cluster table; context PDF archive; shard/Cartesian/adversarial-training/RSP cites. | [2026-08-01-intervention-coverage-map.md](2026-08-01-intervention-coverage-map.md) |
 | 2026-08-01 | **CCD and Sterman baseline mentions** — CCD as passive cyclic-coupling baseline in Ch. 7; Sterman in Ch. 2/7/34 for systems-dynamics feedback vocabulary. | [2026-08-01-ccd-sterman-baseline-mention.md](2026-08-01-ccd-sterman-baseline-mention.md) |
 | 2026-07-31 | **Restore conversation summaries; selective supersession prune** — User: mass deletion of all 476 session logs was not intended (Cursor revert failed). Restore from... | [2026-07-31-conversation-summaries-restore.md](2026-07-31-conversation-summaries-restore.md) |
 | 2026-07-31 | **Conversation-summaries archive and slim index** — User: `conversation-summaries` folder too crowded; simplify, remove, compress, or index. | [2026-07-31-conversation-summaries-archive.md](2026-07-31-conversation-summaries-archive.md) |

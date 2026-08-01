@@ -3,6 +3,13 @@ Commented LW references relevant for each chapter.
 Chapter numbers follow `metadata/book.yml` (including ch05 and ch48).
 BibTeX keys for cited posts live in `references/external-alignment.bib`.
 
+### Field intervention index (author catalog)
+
+| Resource | Location | Manuscript hook |
+|---|---|---|
+| [AI Safety Interventions (LessWrong)](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions) | `context/ai-safety-interventions.pdf`, `context/extracts/ai-safety-interventions.md` | `zarncke2025interventions`; Appendix B §Intervention coverage map (`sec:intervention-coverage-map`) |
+| Extended PDF | `https://github.com/GunnarZarncke/ai-safety-interventions` (master branch) | Same index; not duplicated in manuscript |
+
 ### BibTeX keys wired into drafted chapters (ch01--04, 06--10, 40)
 
 | BibTeX key | LW post | Drafted chapters |
