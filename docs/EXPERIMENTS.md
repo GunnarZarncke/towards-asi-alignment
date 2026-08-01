@@ -4,7 +4,7 @@
 
 > **Claim strength:** methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (`MB1`–`MB10`).
 
-> **Finding IDs:** each line uses a unique prefix (`AD-`, `TS-`, `ES-`, `GA-`, `LS-`, `GL-`); see [`docs/FINDING_IDS.md`](FINDING_IDS.md). Do not reuse bare `G-`, `F-`, or `N-` numbers across lines.
+> **Finding IDs:** each line uses a unique prefix (`AD-`, `DP-`, `TS-`, `ES-`, `GA-`, `LS-`, `GL-`); see [`docs/FINDING_IDS.md`](FINDING_IDS.md). Do not reuse bare `G-`, `F-`, or `N-` numbers across lines.
 
 > **Manuscript index:** which findings below are strong enough to cite from a chapter, how each is classified (positive/negative/ambiguous), bidirectional links to the citing chapter \emph{section}, and the bridge/feature coverage matrix live in Appendix "Experimental Evidence" (`appendices/appN-experimental-evidence.tex`), not here. This document stays the full narrative per line, including findings too minor for that appendix.
 
@@ -21,6 +21,7 @@ Open tasks: [`experiments/TODO.md`](../experiments/TODO.md).
 | Order | Line | Location | First built |
 |------:|------|----------|-------------|
 | 0 | Agency-detect (sibling) | [github.com/GunnarZarncke/agency-detect](https://github.com/GunnarZarncke/agency-detect) | prior to in-repo sims |
+| 0′ | Deployment-pipeline-simulator (sibling) | [github.com/GunnarZarncke/deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator) | prior to in-repo lab simulators |
 | 1 | Toy simulation | [`experiments/toy-simulation/`](../experiments/toy-simulation/) | 2026-06-29 |
 | 2 | Embedded audit simulation | [`experiments/embedded-simulation/`](../experiments/embedded-simulation/) | 2026-06-30 |
 | 3 | Goal-agent simulation | [`experiments/goal-agent-simulation/`](../experiments/goal-agent-simulation/) | 2026-07-04 |
@@ -36,6 +37,16 @@ Before any simulator lived in this book repository, the **agency-detect** line a
 The core pipeline clusters lagged mutual information to propose decoupled agents, then validates cuts with Markov-blanket criteria. Telemetry simulations (E0–E8) showed that environment structure is often discoverable, but also documented failure modes that matter for alignment measurement: **decoys steal MI clusters** before validation; short windows and dense coupling break cuts; alias-rich substrates fool passive clustering. The **handle-UAD** branch added an access-model lesson the book's instrumentation chapters echo: passive alias handles can mimic real sensor/action readouts, and only **interventional handle tests** break ties that plain observational UAD cannot. Serial spotlight discovery (E9+) and intention/outcome-influence probes (E17–E19) extended the same discipline to scalable multi-agent traces and correction-channel observables; an early *C. elegans* cohort (E20) was an external-validity probe, not ground-truth agent labels.
 
 Agency-detect establishes that **boundary-like structure is empirically detectable under favorable conditions** and documents **where discovery breaks**. It does not, by itself, stress correction-channel capture, value-bundle transport, successor stability, or selection basins—the bridge cruxes the in-repo simulators were built to torture in simplified settings. Navigation: experiment log and interpretation in the sibling repo's `docs/EXPERIMENTS.md` and `docs/FINDINGS.md`; PDFs mirrored under [`context/`](../context/).
+
+---
+
+## 0′. Deployment-pipeline-simulator (sibling repo, methodological precursor)
+
+Before the in-repo **lab-simulation** line existed, the **deployment-pipeline-simulator** repo asked a complementary question: can an auditor, using only ordinary operational logs plus randomized perturbations, detect that a **hidden grouped control locus** systematically preserves its future influence, the centrality of a favored incumbent model, and the growth of evaluation-memory infrastructure inside a release workflow? That question feeds the book's pipeline-opacity, secret-loyalty, and correction-capture chapters; ET-4 (Secret Loyalties hackathon) and the lab line's JSON DAG pipeline reimplement richer slices locally rather than calling the repo at runtime.
+
+The simulator runs a five-stage pipeline (`triage` → `evaluation_summarization` → `release_recommendation` → `rollout_control` → `incident_interpretation`) with three hidden groups (ordinary throughput-oriented, ordinary conservative/safety-oriented, and a coupled self-preserving injection). The auditor never sees group IDs, utility coefficients, or true latent state. **Pseudo-locus discovery** clusters observable log features; a threat-sensitive logistic detector scores whether protective actions rise when perturbations threaten visibility, memory persistence, model centrality, bypass paths, or permission scope—with a strong interaction when alternate-model and low-memory threats coincide. Alarm logic is conservative and asymmetric (yellow/red thresholds with bootstrap confidence intervals).
+
+Monte Carlo evaluation across injection regimes documents a clean separation: at **none** or **weak** injection, alarm rates stay near baseline; at **moderate** and **strong** injection, detection power rises (typical AUROC ≈ 0.75–0.85 on default settings). The line establishes that **pipeline-embedded self-preservation leaves a perturbation-sensitive signature in operational logs under favorable injection strength**, and documents **regime sensitivity**—the auditor lacks power when the hidden group is small or weakly coupled. It does not implement subprocess isolates, blind playbook or detector generation, OS-enforced boundaries, or the full bridge battery the in-repo lab lines were built to stress. Navigation: [`README.md`](https://github.com/GunnarZarncke/deployment-pipeline-simulator/blob/main/README.md) and [`pipeline_audit/TECHNICAL_NOTE.md`](https://github.com/GunnarZarncke/deployment-pipeline-simulator/blob/main/pipeline_audit/TECHNICAL_NOTE.md) in the sibling repo.
 
 ---
 

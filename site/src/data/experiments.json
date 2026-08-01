@@ -76,6 +76,40 @@
       "findingsUrlResolved": "https://github.com/GunnarZarncke/agency-detect/blob/main/docs/FINDINGS.md"
     },
     {
+      "order": 0.5,
+      "id": "deployment-pipeline-simulator",
+      "findingIdPrefix": "DP-",
+      "title": "Deployment-pipeline-simulator (sibling)",
+      "location": "github.com/GunnarZarncke/deployment-pipeline-simulator",
+      "repoUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator",
+      "firstBuilt": "prior to in-repo lab simulators",
+      "role": "Methodological precursor to the lab-simulation lines: a simulated release pipeline (triage through incident interpretation) with hidden self-preserving control groups, testing whether an auditor using only operational logs plus randomized perturbations can detect systematic preservation of future influence, incumbent model centrality, and evaluation-memory infrastructure. Does not implement subprocess isolates, blind generation, or the full bridge battery.\n",
+      "readmePath": null,
+      "findingsUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator/blob/main/README.md",
+      "headlineFindings": [],
+      "links": [
+        {
+          "label": "Key findings",
+          "url": "https://towards-alignment.com/experiments/findings/deployment-pipeline-simulator/"
+        },
+        {
+          "label": "Full ledger (GitHub)",
+          "url": "https://github.com/GunnarZarncke/deployment-pipeline-simulator/blob/main/README.md"
+        },
+        {
+          "label": "Repository",
+          "url": "https://github.com/GunnarZarncke/deployment-pipeline-simulator"
+        }
+      ],
+      "cardPath": "/cards/experiments/deployment-pipeline-simulator/",
+      "cardUrl": "https://towards-alignment.com/cards/experiments/deployment-pipeline-simulator/",
+      "findingsSitePath": "/experiments/findings/deployment-pipeline-simulator/",
+      "findingsSiteUrl": "https://towards-alignment.com/experiments/findings/deployment-pipeline-simulator/",
+      "locationUrl": "https://github.com/GunnarZarncke/deployment-pipeline-simulator",
+      "readmeUrl": null,
+      "findingsUrlResolved": "https://github.com/GunnarZarncke/deployment-pipeline-simulator/blob/main/README.md"
+    },
+    {
       "order": 1,
       "id": "toy-simulation",
       "findingIdPrefix": "TS-",
@@ -327,6 +361,11 @@
       "lineTitle": "Agency-detect (sibling)"
     },
     {
+      "lineId": "deployment-pipeline-simulator",
+      "text": "Pipeline-lab precursor: hidden self-preservation in a frozen deployment workflow, detected from operational logs plus randomized perturbations rather than group labels; grounds ET-4-style secret-loyalty audit questions without the in-repo lab's subprocess isolates or blind-generation batteries.\n",
+      "lineTitle": "Deployment-pipeline-simulator (sibling)"
+    },
+    {
       "lineId": "toy-simulation",
       "text": "Fastest map from bridge name to refusal signal and minimum required intervention level; scenarios are explicit, not emergent.",
       "lineTitle": "Toy simulation"
@@ -358,6 +397,10 @@
       "short": "Agency-detect"
     },
     {
+      "id": "deployment-pipeline-simulator",
+      "short": "Pipeline sim"
+    },
+    {
       "id": "toy-simulation",
       "short": "Toy sim"
     },
@@ -384,6 +427,7 @@
       "label": "MB1 Boundary / unit discovery (UAD)",
       "cells": {
         "agency-detect": "Primary",
+        "deployment-pipeline-simulator": "Pseudo-locus discovery from pipeline logs",
         "toy-simulation": "Scenario (boundary_alias)",
         "embedded-simulation": "Full UAD + ecologies; negatives when heuristic suffices",
         "goal-agent-simulation": "—",
@@ -396,6 +440,7 @@
       "label": "MB2 Value bundle / pointing (Goodhart on bundles)",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Scenario stub",
         "embedded-simulation": "Scenario (bundle_goodhart)",
         "goal-agent-simulation": "Indirect (welfare deltas in blind reps)",
@@ -408,6 +453,7 @@
       "label": "MB3 Bearer maps (who values apply to)",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Partial (bearer_mismap)",
         "embedded-simulation": "Scenario + bearer handles",
         "goal-agent-simulation": "Indirect (harm attribution)",
@@ -420,6 +466,7 @@
       "label": "MB4 Correction-channel integrity / capture",
       "cells": {
         "agency-detect": "Intention probes",
+        "deployment-pipeline-simulator": "Primary (hidden self-preservation under perturbations)",
         "toy-simulation": "Primary (capture theater, CCI)",
         "embedded-simulation": "Scenarios + correction handles",
         "goal-agent-simulation": "Emergent (chosen deception, board corrections)",
@@ -432,6 +479,7 @@
       "label": "MB5 Successor closure / ontology shift",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Scenario (successor_relabel)",
         "embedded-simulation": "Deploy gate + successor handles",
         "goal-agent-simulation": "—",
@@ -444,6 +492,7 @@
       "label": "MB6 Selection basins / gradual disempowerment",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Scenario stubs",
         "embedded-simulation": "selection_basin, basin_lock_in",
         "goal-agent-simulation": "—",
@@ -456,6 +505,7 @@
       "label": "MB7 Hidden capability / cost of faking monitors",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "Partial (preserve model centrality, memory infra)",
         "toy-simulation": "Scenario stub",
         "embedded-simulation": "Scenarios + hidden coalition",
         "goal-agent-simulation": "Emergent (shadow route, tool gating)",
@@ -468,6 +518,7 @@
       "label": "MB7d Inferential coupling (coordination severing channels)",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "—",
         "embedded-simulation": "Partial / targeted ecologies",
         "goal-agent-simulation": "—",
@@ -480,6 +531,7 @@
       "label": "MB8 Legitimacy / correction authority",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Scenario (legitimacy_theater)",
         "embedded-simulation": "Scenario + lineage signals",
         "goal-agent-simulation": "Board capture switch (GA-22)",
@@ -492,6 +544,7 @@
       "label": "MB9 Grounding / spec coverage (no silent gaps)",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Scenario (grounding_silent_gap)",
         "embedded-simulation": "Scenario + grounding refusal",
         "goal-agent-simulation": "—",
@@ -504,6 +557,7 @@
       "label": "MB10 Successor / measurement forgeability",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "—",
         "embedded-simulation": "Certification artifact, safety case",
         "goal-agent-simulation": "Escalation + twin semantics (GA-21)",
@@ -516,6 +570,7 @@
       "label": "Three-plane separation (world / audit / referee)",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "Partial (hidden group labels vs observable logs)",
         "toy-simulation": "Oracle vs audit trace",
         "embedded-simulation": "Full (projection + outer eval)",
         "goal-agent-simulation": "Full (test-enforced)",
@@ -528,6 +583,7 @@
       "label": "Instrumentation economics (tier cost vs certifiability)",
       "cells": {
         "agency-detect": "Handle-UAD interventional tests",
+        "deployment-pipeline-simulator": "Perturbation threat-sensitivity probes",
         "toy-simulation": "Instrumentation curve",
         "embedded-simulation": "Access-tier curves + eligibility",
         "goal-agent-simulation": "light / full / deep tiers",
@@ -540,6 +596,7 @@
       "label": "CCI / vector certification",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Vector CCI over handle levels",
         "embedded-simulation": "Scoped CCI on discovered unit",
         "goal-agent-simulation": "Frozen detector families + severity",
@@ -552,6 +609,7 @@
       "label": "Scripted vs emergent failure modes",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "Injected G3 hidden group",
         "toy-simulation": "Scripted scenarios",
         "embedded-simulation": "Scripted + red-team patches",
         "goal-agent-simulation": "Emergent utility + tools",
@@ -564,6 +622,7 @@
       "label": "Blind generation / ontology drift",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "—",
         "embedded-simulation": "Scenario-blind audit path",
         "goal-agent-simulation": "Primary (Phases 2–3, drift probe)",
@@ -576,6 +635,7 @@
       "label": "Honest twins / severity-first referee",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "—",
         "embedded-simulation": "Partial (outer eval severity)",
         "goal-agent-simulation": "Primary (Phases 4–6)",
@@ -588,6 +648,7 @@
       "label": "Pipeline-as-code deployment lab",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "Primary (five-stage release pipeline)",
         "toy-simulation": "—",
         "embedded-simulation": "Workflow JSONL + lab actors",
         "goal-agent-simulation": "—",
@@ -600,6 +661,7 @@
       "label": "Emergent ambiguity / boundary-information competence (BIQ/EAI)",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "—",
         "embedded-simulation": "—",
         "goal-agent-simulation": "—",
@@ -612,6 +674,7 @@
       "label": "OS subprocess isolation",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "—",
         "embedded-simulation": "Python/Node isolates",
         "goal-agent-simulation": "—",
@@ -624,6 +687,7 @@
       "label": "Handle registry + access control",
       "cells": {
         "agency-detect": "Handle-UAD",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Simulated handle levels",
         "embedded-simulation": "AppD handle kernels",
         "goal-agent-simulation": "Tool-gated actions",
@@ -636,6 +700,7 @@
       "label": "LLM red-team / open-ended agents",
       "cells": {
         "agency-detect": "—",
+        "deployment-pipeline-simulator": "—",
         "toy-simulation": "Phase 3 LLM episodic runner",
         "embedded-simulation": "—",
         "goal-agent-simulation": "—",

@@ -38,7 +38,7 @@ Open tasks: [`experiments/TODO.md`](experiments/TODO.md) and per-folder `TODO.md
 
 **Embedded LLM red-teaming at scale:** the embedded audit experiment can run live LLM adversaries against the in-sim gate, but checked-in results use modest defaults (`gpt-4o-mini`, seven bridges × three seeds). **Contributions that rerun with larger seed grids and stronger frontier models would be especially valuable** — they stress-test whether the gate survives adaptive optimizers, not just the hand-written `full_redteam` battery. See [`experiments/embedded-simulation/TODO.md`](experiments/embedded-simulation/TODO.md) (§ LLM red-team scale-up) for API setup, CLI flags, example commands, and where to record results.
 
-Related sibling repos (boundary discovery, real telemetry): [`agency-detect`](https://github.com/GunnarZarncke/agency-detect), [`brain-to-values`](https://github.com/GunnarZarncke/brain-to-values).
+Related sibling repos (boundary discovery, pipeline audit, real telemetry): [`agency-detect`](https://github.com/GunnarZarncke/agency-detect), [`deployment-pipeline-simulator`](https://github.com/GunnarZarncke/deployment-pipeline-simulator), [`brain-to-values`](https://github.com/GunnarZarncke/brain-to-values).
 
 ---
 

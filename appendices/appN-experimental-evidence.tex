@@ -44,9 +44,9 @@ These are scenario illustrations, not findings from the lab batteries and not ev
 ET-3 used AI~2027 speed assumptions only as opaque stress cues; LS-42--LS-48 therefore belong to the ``stress-tested mechanism'' column, not to a forecast-validation column.
 Plan~A's takeoff and economics explorers are the same \emph{macro schedule} family as that forecast code; they are not mechanism simulations of the book's UAD, CCI, or lab-isolate batteries, and no Plan~A transfer experiment has been run yet.
 
-Six experiment lines (five in this repository plus a sibling methodological precursor) maintain their own findings ledgers --- \texttt{results/FINDINGS.md} or \texttt{results/NEGATIVE\_RESULTS.md} --- with every finding each line has produced, including minor bugs, dead ends, and one-off diagnostics that do not belong here. \texttt{docs/EXPERIMENTS.md} gives the full narrative for each line, phase by phase. This appendix sits between those two documents: a short description of each line, then only the findings strong enough that a chapter might reasonably cite them, with plain classification of what each supports, undercuts, or leaves open.
+Six experiment lines (five in this repository plus sibling methodological precursors) maintain their own findings ledgers --- \texttt{results/FINDINGS.md} or \texttt{results/NEGATIVE\_RESULTS.md} --- with every finding each line has produced, including minor bugs, dead ends, and one-off diagnostics that do not belong here. \texttt{docs/EXPERIMENTS.md} gives the full narrative for each line, phase by phase. This appendix sits between those two documents: a short description of each line, then only the findings strong enough that a chapter might reasonably cite them, with plain classification of what each supports, undercuts, or leaves open.
 
-\paragraph{How to read the findings tables.} \textbf{Result} classifies the finding relative to the manuscript claim it is closest to: \textbf{Pos.} (positive) means evidence for that claim (including cases where the claim itself is a warning, and the finding shows the warned-about failure mode is real); \textbf{Neg.} (negative) means evidence against a stronger reading of that claim, or documents a method's failure to deliver what a naive reading would expect; \textbf{Ambig.} (ambiguous) means the finding cuts both ways, or the line's own analysis leaves the direction open. \textbf{Manuscript} names the chapter \emph{section} that cites the finding by this appendix's label, when one exists; ``---'' means the finding is indexed here but not yet cited anywhere in the manuscript. Global IDs use line-unique prefixes (\texttt{AD-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}); see \texttt{docs/FINDING\_IDS.md}. Chapters that cite a finding should name its global ID and appendix section, not the generic method paper alone.
+\paragraph{How to read the findings tables.} \textbf{Result} classifies the finding relative to the manuscript claim it is closest to: \textbf{Pos.} (positive) means evidence for that claim (including cases where the claim itself is a warning, and the finding shows the warned-about failure mode is real); \textbf{Neg.} (negative) means evidence against a stronger reading of that claim, or documents a method's failure to deliver what a naive reading would expect; \textbf{Ambig.} (ambiguous) means the finding cuts both ways, or the line's own analysis leaves the direction open. \textbf{Manuscript} names the chapter \emph{section} that cites the finding by this appendix's label, when one exists; ``---'' means the finding is indexed here but not yet cited anywhere in the manuscript. Global IDs use line-unique prefixes (\texttt{AD-}, \texttt{DP-}, \texttt{TS-}, \texttt{ES-}, \texttt{GA-}, \texttt{LS-}, \texttt{GL-}); see \texttt{docs/FINDING\_IDS.md}. Chapters that cite a finding should name its global ID and appendix section, not the generic method paper alone.
 
 \newcommand{\appnlinemeta}[3]{%
   \noindent\textbf{Location:} #1\\
@@ -72,6 +72,29 @@ Methodological precursor: boundary-like structure from time series without a pri
 \endfoot
 \label{finding:ad-1}AD-1 & Pos. & Boundary-like structure is often recoverable from raw time series without a prior agent ontology, via lagged mutual-information clustering validated against Markov-blanket criteria, under favorable (low-noise, short-lag) conditions. & --- \\
 \label{finding:ad-2}AD-2 & Neg. & Passive alias handles can mimic real sensor/action readouts and decoy variables can steal mutual-information clusters before validation; only interventional handle tests break some of the resulting ties that passive observation alone cannot. & --- \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\section{Deployment-pipeline-simulator (sibling repository, methodological precursor)}
+\label{sec:appn-deployment-pipeline-simulator}
+
+\appnlinemeta{\texttt{github.com/GunnarZarncke/deployment-pipeline-simulator} (outside this repository)}{prior to in-repo lab simulators}{sibling \texttt{README.md} and \texttt{pipeline\_audit/TECHNICAL\_NOTE.md}}
+
+Methodological precursor to the lab-simulation lines: a five-stage release pipeline with hidden self-preserving control groups, testing whether an auditor using only operational logs plus randomized perturbations can detect systematic preservation of future influence, incumbent model centrality, and evaluation-memory infrastructure. Grounds ET-4-style secret-loyalty audit questions and \hyperref[appbridge-crosswalk]{\texttt{MB4}} pipeline capture; it does not implement subprocess isolates, blind generation batteries, or the full bridge matrix.
+
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{@{}L{0.05\textwidth}L{0.08\textwidth}L{0.55\textwidth}L{0.255\textwidth}@{}}
+\toprule
+\textbf{ID} & \textbf{Result} & \textbf{Finding} & \textbf{Manuscript} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\label{finding:dp-1}DP-1 & Pos. & Hidden self-preserving control groups in a simulated deployment pipeline leave a perturbation-sensitive signature in operational logs under moderate-to-strong injection regimes (typical AUROC $\approx$ 0.75--0.85 on default Monte Carlo settings). & --- \\
+\label{finding:dp-2}DP-2 & Neg. & At weak or absent injection, alarm rates stay near baseline and the auditor lacks power to distinguish the hidden group from ordinary throughput- or safety-oriented groups. & --- \\
 \end{longtable}
 \normalsize
 \renewcommand{\arraystretch}{1.0}

@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-01 | **Deployment-pipeline-simulator precursor** — List sibling repo deployment-pipeline-simulator alongside agency-detect as a methodologica... | [2026-08-01-deployment-pipeline-simulator-precursor.md](2026-08-01-deployment-pipeline-simulator-precursor.md) |
 | 2026-08-01 | **AI Safety Interventions coverage map** — User requested implementation of the intervention-coverage plan: map LessWrong AI Safety Interven... | [2026-08-01-intervention-coverage-map.md](2026-08-01-intervention-coverage-map.md) |
 | 2026-08-01 | **CCD and Sterman baseline mentions** — User asked to consider cyclic causal discovery (CCD; Zanga et al. survey arXiv:2305.10032) as a p... | [2026-08-01-ccd-sterman-baseline-mention.md](2026-08-01-ccd-sterman-baseline-mention.md) |
 | 2026-08-01 | **AFFINE field openness** — User asked to check AFFINE seminar learning outcomes against the project, then to implement a pla... | [2026-08-01-affine-field-openness.md](2026-08-01-affine-field-openness.md) |

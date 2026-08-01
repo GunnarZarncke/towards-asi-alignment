@@ -21,7 +21,7 @@ Open tasks: [`TODO.md`](TODO.md).
 | 4 | [`lab-simulation/`](lab-simulation/) | Pipeline lab + subprocess isolates | [`CHANGELOG.md`](lab-simulation/CHANGELOG.md) |
 | 5 | [`graded-lab-simulation/`](graded-lab-simulation/) | Graded substrate, BIQ/EAI, v4 rigs (**active**) | [`CHANGELOG.md`](graded-lab-simulation/CHANGELOG.md) |
 
-Sibling precursor (not in-repo): [agency-detect](https://github.com/GunnarZarncke/agency-detect).
+Sibling precursors (not in-repo): [agency-detect](https://github.com/GunnarZarncke/agency-detect), [deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator).
 
 ## README convention
 

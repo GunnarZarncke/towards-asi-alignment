@@ -55,6 +55,7 @@ Prior work lives in sibling repositories and is mirrored under [`context/`](../c
 | Repo | Topics |
 |------|--------|
 | [`agency-detect`](../agency-detect/docs/papers/) | Unsupervised agent discovery, capability, intentional stance, attractor basins, successors |
+| [`deployment-pipeline-simulator`](https://github.com/GunnarZarncke/deployment-pipeline-simulator) | Hidden self-preservation in a simulated release pipeline; perturbation-based secret-loyalty audit |
 | [`brain-to-values`](../brain-to-values/papers/) | Value bundles, free-energy loops, unit-of-caring, consciousness/agency backbone |
 
 Each PDF under `context/` has a markdown extract in [`context/extracts/`](../context/extracts/) (`python3 scripts/extract_pdf_to_md.py`). Full map: [`metadata/source-canon.md`](../metadata/source-canon.md).

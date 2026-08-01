@@ -5,6 +5,7 @@ Every recorded finding or negative result across experiment lines uses a **line-
 | Line | Prefix | Ledger | Notes |
 |------|--------|--------|-------|
 | Agency-detect (sibling) | `AD-` | sibling `docs/FINDINGS.md` | Methodological precursor; not in-repo |
+| Deployment-pipeline-simulator (sibling) | `DP-` | sibling `README.md` / `pipeline_audit/TECHNICAL_NOTE.md` | Pipeline-lab precursor; not in-repo |
 | Toy simulation | `TS-` | `experiments/toy-simulation/results/` | Curated appendix entries only today |
 | Embedded audit simulation | `ES-` | `experiments/embedded-simulation/results/NEGATIVE_RESULTS.md` | Was `N-` |
 | Goal-agent simulation | `GA-` | `experiments/goal-agent-simulation/results/FINDINGS.md` | Was `F-` |

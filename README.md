@@ -87,7 +87,7 @@ Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).
 |-----|----------|
 | [`docs/BUILD.md`](docs/BUILD.md) | PDF build, Lean, companion site |
 | [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md) | Status, parts, bibliography, ledgers, contributing |
-| [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) | Toy sim, embedded sim, agency-detect |
+| [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) | Toy sim, embedded sim, agency-detect, deployment-pipeline-simulator |
 | [`papers/README.md`](papers/README.md) | Spin-out papers, frozen sources and PDFs |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to contribute (Lean, sims, writing) |
 | [`INSTRUCTIONS.md`](INSTRUCTIONS.md) | Editorial mission and style |
@@ -97,7 +97,7 @@ Full editorial reference: [`docs/MANUSCRIPT.md`](docs/MANUSCRIPT.md).
 
 ## Related repos
 
-[`agency-detect`](https://github.com/GunnarZarncke/agency-detect) (boundary discovery) · [`brain-to-values`](https://github.com/GunnarZarncke/brain-to-values) (value bundles)
+[`agency-detect`](https://github.com/GunnarZarncke/agency-detect) (boundary discovery) · [`deployment-pipeline-simulator`](https://github.com/GunnarZarncke/deployment-pipeline-simulator) (pipeline secret-loyalty audit) · [`brain-to-values`](https://github.com/GunnarZarncke/brain-to-values) (value bundles)
 
 ---
 
