@@ -35,4 +35,4 @@ User asked to check AFFINE seminar learning outcomes against the project, then t
 - `chapters/ch10-strategic-opacity.tex` (predictor-loop genesis)
 
 ## Commits
-- (pending)
+- `147e1aba` — Integrate AFFINE field coverage: outer-alignment peers, Meta hazards, and predictor-loop genesis.
