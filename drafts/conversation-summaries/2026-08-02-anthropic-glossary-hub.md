@@ -15,4 +15,4 @@ User asked for explicit acausal vs anthropic disambiguation in the inter-agenda 
 - Optional ch35 one-liner if taxonomy should appear in manuscript.
 
 ## Commits
-- (pending this session)
+- `49fca74d` — Add anthropic homograph hub to inter-agenda glossary.
