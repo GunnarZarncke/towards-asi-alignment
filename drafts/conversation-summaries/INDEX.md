@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-02 | **Site offline PWA cache fix** — Stale refresh locally; restored network-first when offline not enabled; SW v8. | [2026-08-02-site-offline-pwa-cache-fix.md](2026-08-02-site-offline-pwa-cache-fix.md) |
 | 2026-08-02 | **Field evidence + agenda card link audit** — Wrong arXiv IDs, companion appendix casing, AE Studio/MIRI/CHAI/CIRIS URL fixes; 153 evidence + 32 agenda cards verified. | [2026-08-02-field-evidence-agenda-link-audit.md](2026-08-02-field-evidence-agenda-link-audit.md) |
 | 2026-08-02 | **App B field agenda core sync** — MB4a/MB11 crosswalk rows + notes; MB4/MB8 split; field-index pointer; deferred secondary items in TODO. | [2026-08-02-appb-field-agenda-sync.md](2026-08-02-appb-field-agenda-sync.md) |
 | 2026-08-02 | **Site Field hub and agenda restructure** — User requested site nav changes (Field before Cards, Book before PDF, Badges after Cards), a Fiel... | [2026-08-02-site-field-hub-agendas.md](2026-08-02-site-field-hub-agendas.md) |

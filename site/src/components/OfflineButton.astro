@@ -19,9 +19,12 @@ const serviceWorkerUrl = `${import.meta.env.BASE_URL}sw.js`;
       control.hidden = true;
     } else {
       const serviceWorkerUrl = control.dataset.serviceWorkerUrl;
-      navigator.serviceWorker.register(serviceWorkerUrl ?? "/sw.js").catch((error) => {
-        status.textContent = `Offline mode is unavailable: ${error.message}`;
-      });
+      navigator.serviceWorker
+        .register(serviceWorkerUrl ?? "/sw.js", { updateViaCache: "none" })
+        .then((registration) => registration.update())
+        .catch((error) => {
+          status.textContent = `Offline mode is unavailable: ${error.message}`;
+        });
 
       button.addEventListener("click", async () => {
         try {
