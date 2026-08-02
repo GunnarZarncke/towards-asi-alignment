@@ -1,7 +1,7 @@
 # Anthropic vs acausal — four loads
 
 **Status:** field reference for homograph disambiguation — **not** manuscript canon.  
-**Glossary:** [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) — `anthropic (completion)`, `anthropic (capture)`, `Anthropic (lab org)`.  
+**Glossary:** [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) — hub **`anthropic`**; `anthropic (completion)`, `anthropic (capture)`, `Anthropic (lab org)`; load 3 → **acausal trade / ECL**.  
 **Completion formalism:** [`context/anthropics_perspectives.tex`](../../context/anthropics_perspectives.tex); sibling Lean [GunnarZarncke/anthropics](https://github.com/GunnarZarncke/anthropics).
 
 Reading lists (including seminar curricula) often bucket these under one heading because all involve indexical or observer-relative reasoning. They are **not** one mechanism.

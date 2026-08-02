@@ -29,6 +29,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference (2026-08-02):** Inter-agenda glossary hub **`anthropic`** — homograph disambiguation + why acausal/ECL is co-bucketed (observer-relative reasoning). Log: `2026-08-02-anthropic-glossary-hub.md`.
 - **Formal (2026-08-02):** Field-claim Phase 3 decisions — no new `MB*`; prose dispositions in field index + plan; deferred TODOs (CIRIS positive path, numeric harm leaf, chokepoint prove/type). Log: `2026-08-02-field-claim-phase3-decisions.md`.
 - **Formal (2026-08-02):** Field-claim Phase 2 Lean — `FieldInterfaces.lean`; MB10↔Chokepoint `SystemTransition`; regret non-consumer decision; no new bridges. Log: `2026-08-02-field-claim-lean-phase2.md`.
 - **Formal (2026-08-02):** Field-claim Phase 1 Lean — defeater signals/toys; `Field/Finite/{Nonrealizability,RegretSafety,CompositePathBypass}.lean`; no new bridges; book/matrix untouched. Log: `2026-08-02-field-claim-lean-phase1.md`.

@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-02 | **Anthropic glossary hub** — Hub headword `anthropic` in inter-agenda glossary: four-load disambiguation + why acausal/ECL is co-bucketed (observer-relative reasoning). | [2026-08-02-anthropic-glossary-hub.md](2026-08-02-anthropic-glossary-hub.md) |
 | 2026-08-02 | **Field-claim Phase 3 decisions** — User confirmed all five bridge dispositions: misspec ambient MB1/MB9; regret side channel; LI split; positive path + CIRIS TODO; MB10 chokepoint interface + prove/type TODO. No new MB*. | [2026-08-02-field-claim-phase3-decisions.md](2026-08-02-field-claim-phase3-decisions.md) |
 | 2026-08-02 | **Field-claim Lean Phase 2** — FieldInterfaces (coverage→MB9, regret≠RiskGap, positive path); MB10 SystemTransition/chokepoint reading; no new MB*. | [2026-08-02-field-claim-lean-phase2.md](2026-08-02-field-claim-lean-phase2.md) |
 | 2026-08-02 | **Glossary demotion pass (manuscript + deployment leverage)** — User asked to implement edits from `drafts/glossary-term-audit.md`; then retire **deployment mass... | [2026-08-02-glossary-demotion-pass.md](2026-08-02-glossary-demotion-pass.md) |

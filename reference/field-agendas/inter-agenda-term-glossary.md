@@ -177,6 +177,15 @@ Same spelling, different loads: use **separate headwords** with a disambiguator 
 | **Not the same as** | **Capability scaling** alone increases competence without the oversight decomposition loop. **RLHF at one level** uses human preferences on complete outputs, not recursive amplify–distill. **Debate** is an adversarial two-player protocol judged by a weak judge; amplification is cooperative decomposition (debate is often listed as a sibling, not identical). **ELK** isolates latent readout; amplification is a training/oversight process that may still need ELK. |
 | **Cross-agenda** | Debate — *partial overlap*: both are scalable-oversight family; different protocol assumptions (adversarial vs recursive decomposition). ELK — *strict subset* relation in the other direction: amplification needs honest latent knowledge under optimization. Zarncke — *partial overlap*: local truth from oversight ⇏ preserved correction channel or judge non-capture (MB4/MB7 notes). |
 
+#### anthropic
+
+| | |
+|---|---|
+| **Sources** | Seminar reading lists (e.g. AFFINE “Acausal/Anthropics”); philosophy-of-indexicals and decision-theory literature; see [`anthropic-acausal-taxonomy.md`](anthropic-acausal-taxonomy.md) |
+| **Definition** | **Homograph disambiguation.** *Anthropic* names several unrelated loads that share spelling only. Reading lists often bucket **anthropic** and **acausal** under one heading because all involve **indexical or observer-relative reasoning**—who “you” are, which reference class you’re in, or what a severed agent should infer about structurally similar peers—but they are **not** one mechanism. Use the headwords below (and **acausal trade / ECL** for post-severance coordination) instead of bare “anthropic” in prose. |
+| **Not the same as** | **anthropic (completion)** — Meta selector/reference-class hygiene (SSA, SIA, Sleeping Beauty). **anthropic (capture)** — predictor genesis via conditioning on observer indexicals. **Anthropic (lab org)** — the frontier lab, not a technical load. **acausal trade / ECL** — coordination after ordinary causal channels are cut; co-shelved with anthropics because of observer-relative conditioning on similar decision procedures, not because it is a Sleeping Beauty selector or predictor capture. **Malign prior** (malign Solomonoff) — orthogonal fourth load in the taxonomy; footnote-only for the book spine. |
+| **Cross-agenda** | Full four-load map — [`anthropic-acausal-taxonomy.md`](anthropic-acausal-taxonomy.md). Book homes: completion → App F Meta; capture → ch10; acausal/ECL → ch35 / MB7d. |
+
 #### anthropic (capture)
 
 | | |
@@ -1512,7 +1521,7 @@ Quick index — full definitions are in alphabetical sections above.
 | Decision theory | acausal trade / ECL, QACI, program equilibrium, anthropic (completion) |
 | Hubinger / inner alignment | inner alignment, deceptive alignment, mesa-optimization, conditioning (models), Predict-O-Matic |
 | Zarncke / book | adversarial verifiability, bearer map, boundary (operational), correction channel, CCI, correction-audit evasion, certification-under-manipulation, conserved properties, deployment leverage, Fit_E, grounding viability, hidden productive B-IQ bound, ICI, inferential coupling, preservation conditions, selection environment, selection handle, strategic opacity, substitution hazards, transport, UAD, value bundle, alignment basin, goal (operational), BIQ/EAI, VFS |
-| Cross-field | outer alignment, RLHF/RLAIF, latent readout, interruptibility, safe interruptibility, tool AI, boxing |
+| Cross-field | outer alignment, RLHF/RLAIF, latent readout, interruptibility, safe interruptibility, tool AI, boxing, anthropic (homograph hub) |
 
 ---
 
