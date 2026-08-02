@@ -1,0 +1,23 @@
+slug: metr
+title: METR
+type: Research org (evals)
+carrier: Model Evaluation & Threat Research
+primaryArtifact: Autonomy evals; AI R&D evals; frontier risk reporting
+signatureVocabulary: >-
+  autonomous capabilities, AI R&D evals, eval-driven forecasting, entity-based
+  assessment
+statedIntent: Measure dangerous capabilities to inform policy and lab decisions
+primaryCrux: Do public evals track deployment-relevant risk under adversarial pressure?
+bookBridges:
+  - MB7 (partial)
+  - MB6 (indirect)
+contributes: Empirical capability measurement at frontier
+bookSeparates: Capability evals ⇏ correction integrity or bearer transport
+manuscriptHooks:
+  - App B MB7 notes (METR 2026 cite)
+  - ch44
+links:
+  - label: METR
+    url: https://metr.org/
+  - label: Planned Obsolescence (Cotra)
+    url: https://plannedobsolescence.substack.com/

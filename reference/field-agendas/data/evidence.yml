@@ -1,0 +1,1324 @@
+evidence:
+  - id: 1
+    agenda: MIRI
+    bridges:
+      - MB1
+      - MB7
+    type: C
+    evidence: >-
+      Embedded Agency: no clean agent–environment cut; subsystem alignment
+      bucket
+    sources:
+      - label: Demski & Garrabrant 2019
+        url: https://arxiv.org/abs/1902.09402
+  - id: 2
+    agenda: MIRI
+    bridges:
+      - MB1
+    type: C
+    evidence: >-
+      Agent Foundations technical agenda (embedded agency, delegation, decision
+      theory)
+    sources:
+      - label: Soares & Fallenstein 2015
+        url: https://intelligence.org/files/TechnicalAgenda.pdf
+  - id: 3
+    agenda: MIRI
+    bridges:
+      - MB2
+    type: C
+    evidence: Value learning under training ambiguity and ontology change
+    sources:
+      - label: Soares 2015
+        url: https://intelligence.org/files/ValueLearningProblem.pdf
+  - id: 4
+    agenda: MIRI
+    bridges:
+      - MB4
+      - MB4a
+    type: T
+    evidence: 'Corrigibility: no known utility function stably corrigible'
+    sources:
+      - label: Soares & Fallenstein 2015
+        url: https://intelligence.org/files/Corrigibility.pdf
+  - id: 5
+    agenda: MIRI
+    bridges:
+      - MB4
+      - MB4a
+    type: T
+    evidence: Safely interruptible agents (formal interruptibility)
+    sources:
+      - label: Orseau & Armstrong 2016
+        url: https://mlanthology.org/uai/2016/orseau2016uai-safely/
+  - id: 6
+    agenda: MIRI
+    bridges:
+      - MB5
+      - MB10
+    type: C
+    evidence: Tiling agents for self-modifying AI (successor trust)
+    sources:
+      - label: Yudkowsky 2013
+        url: >-
+          https://www.lesswrong.com/lw/hmt/tiling_agents_for_selfmodifying_ai_opfai_2
+  - id: 7
+    agenda: MIRI
+    bridges:
+      - MB5
+      - MB10
+    type: T
+    evidence: Vingean reflection (reasoning about smarter successors)
+    sources:
+      - label: Fallenstein 2015
+        url: https://intelligence.org/files/VingeanReflection.pdf
+  - id: 8
+    agenda: MIRI
+    bridges:
+      - MB5
+    type: C
+    evidence: Ontological crises in agents' value systems
+    sources:
+      - label: De Blanc 2011
+        url: https://arxiv.org/abs/1105.3821
+  - id: 9
+    agenda: MIRI
+    bridges:
+      - MB7
+    type: C
+    evidence: 'Predict-O-Matic: predictors becoming consequentialists'
+    sources:
+      - label: Demski 2019
+        url: >-
+          https://www.lesswrong.com/posts/SwcyMEgLyd4C3Dern/the-parable-of-predict-o-matic
+  - id: 10
+    agenda: MIRI
+    bridges:
+      - MB7d
+    type: T
+    evidence: Functional Decision Theory
+    sources:
+      - label: Yudkowsky & Soares 2017
+        url: https://arxiv.org/abs/1710.05060
+  - id: 11
+    agenda: Redwood
+    bridges:
+      - MB4
+      - MB4a
+      - MB7
+      - MB10
+    type: C
+    evidence: >-
+      AI Control: safety under intentional subversion / capability-gap
+      assumption
+    sources:
+      - label: Shlegeris et al. 2023
+        url: >-
+          https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion
+  - id: 12
+    agenda: Redwood
+    bridges:
+      - MB7
+    type: E
+    evidence: Control evals and red-team protocols (agenda artifact)
+    sources:
+      - label: Redwood Research
+        url: https://www.redwoodresearch.org/
+  - id: 13
+    agenda: Redwood
+    bridges:
+      - MB7
+      - MB10
+    type: E
+    evidence: Alignment faking in LLMs under training/eval pressure
+    sources:
+      - label: Greenblatt et al. 2024
+        url: https://arxiv.org/abs/2412.14069
+  - id: 14
+    agenda: CHAI
+    bridges:
+      - MB2
+      - MB3
+    type: T
+    evidence: Cooperative inverse reinforcement learning (assistance games)
+    sources:
+      - label: Hadfield-Menell et al. 2016
+        url: >-
+          https://papers.nips.cc/paper/6420-cooperative-inverse-reinforcement-learning
+  - id: 15
+    agenda: CHAI
+    bridges:
+      - MB2
+    type: C
+    evidence: Human Compatible control problem framing
+    sources:
+      - label: Russell 2019
+        url: >-
+          http://griffithlawjournal.org/index.php/gjlhd/article/download/1043/993
+  - id: 16
+    agenda: CHAI
+    bridges:
+      - MB2
+    type: T
+    evidence: Attainable utility preservation (conservative agency)
+    sources:
+      - label: Turner et al. 2019
+        url: https://arxiv.org/abs/1902.09725
+  - id: 17
+    agenda: CHAI
+    bridges:
+      - MB4
+    type: T
+    evidence: Off-switch game (shutdown incentive structure)
+    sources:
+      - label: Hadfield-Menell et al. 2017
+        url: https://www.ijcai.org/proceedings/2017/32
+  - id: 18
+    agenda: Christiano / ARC
+    bridges:
+      - MB2
+      - MB3
+      - MB7
+    type: C
+    evidence: 'ELK: human simulator vs direct translator'
+    sources:
+      - label: Christiano, Cotra & Xu 2021
+        url: >-
+          https://www.alignmentforum.org/posts/qHCDysDnvhteW7kRd/arc-s-first-technical-report-eliciting-latent-knowledge
+  - id: 19
+    agenda: Christiano
+    bridges:
+      - MB4
+    type: C
+    evidence: Corrigibility as drift management (informal dynamical framing)
+    sources:
+      - label: Christiano 2018
+        url: https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility
+  - id: 20
+    agenda: Christiano
+    bridges:
+      - MB6
+    type: C
+    evidence: What failure looks like (gradual disempowerment narrative)
+    sources:
+      - label: Christiano 2019
+        url: >-
+          https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like
+  - id: 21
+    agenda: Christiano
+    bridges:
+      - MB7
+    type: T
+    evidence: AI safety via debate
+    sources:
+      - label: Irving, Christiano & Amodei 2018
+        url: https://arxiv.org/abs/1805.00899
+  - id: 22
+    agenda: Christiano
+    bridges:
+      - MB7
+      - MB10
+    type: C
+    evidence: Amplification / scalable oversight under optimization
+    sources:
+      - label: Christiano et al. 2018
+        url: https://arxiv.org/abs/1810.08575
+  - id: 23
+    agenda: Christiano
+    bridges:
+      - MB7
+    type: C
+    evidence: Scalable agent oversight problem statement
+    sources:
+      - label: Leike et al. 2018
+        url: https://arxiv.org/abs/1811.07871
+  - id: 24
+    agenda: GSAI
+    bridges:
+      - MB9
+    type: T
+    evidence: Guaranteed Safe AI framework (spec + world model coverage wall)
+    sources:
+      - label: Dalrymple et al. 2024
+        url: https://arxiv.org/abs/2405.06624
+  - id: 25
+    agenda: Anthropic
+    bridges:
+      - MB2
+      - MB3
+      - MB7
+    type: E
+    evidence: 'Constitutional AI: principles-as-feedback / RLAIF stack'
+    sources:
+      - label: Bai et al. 2022
+        url: https://arxiv.org/abs/2212.08073
+  - id: 26
+    agenda: Anthropic
+    bridges:
+      - MB2
+    type: E
+    evidence: RLHF ceiling and misspecification under optimization
+    sources:
+      - label: Casper et al. 2023
+        url: https://arxiv.org/abs/2307.15217
+  - id: 27
+    agenda: Anthropic
+    bridges:
+      - MB2
+    type: C
+    evidence: Concrete problems in AI safety (pointing / scalable oversight lineage)
+    sources:
+      - label: Amodei et al. 2016
+        url: https://arxiv.org/abs/1606.06565
+  - id: 28
+    agenda: Anthropic
+    bridges:
+      - MB6
+      - MB11
+    type: P
+    evidence: Responsible Scaling Policy (capability thresholds, deployment gates)
+    sources:
+      - label: Anthropic RSP 2024
+        url: https://www.anthropic.com/news/anthropics-responsible-scaling-policy
+  - id: 29
+    agenda: Anthropic
+    bridges:
+      - MB7
+    type: C
+    evidence: Conditioning predictors / anthropic capture failure mode
+    sources:
+      - label: Hubinger 2023
+        url: https://arxiv.org/abs/2302.00805
+  - id: 30
+    agenda: Anthropic
+    bridges:
+      - MB7
+    type: E
+    evidence: Interpretability research program (circuits, features)
+    sources:
+      - label: Anthropic Research
+        url: https://www.anthropic.com/research
+  - id: 31
+    agenda: Anthropic
+    bridges:
+      - MB7
+    type: E
+    evidence: Internal agent monitoring (eval target for external red teams)
+    sources:
+      - label: METR red-team of Anthropic monitoring 2026
+        url: >-
+          https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/
+  - id: 32
+    agenda: Google DeepMind
+    bridges:
+      - MB7
+    type: E
+    evidence: Frontier safety / scalable alignment research blog
+    sources:
+      - label: DeepMind Safety Research
+        url: https://deepmind.google/discover/blog/
+  - id: 33
+    agenda: Apollo
+    bridges:
+      - MB6
+      - MB7
+      - MB10
+    type: E
+    evidence: Scheming science and pre-deployment eval agenda
+    sources:
+      - label: Apollo Research
+        url: https://www.apolloresearch.ai/
+  - id: 34
+    agenda: Apollo
+    bridges:
+      - MB7
+    type: E
+    evidence: Situational awareness and strategic deception measurement
+    sources:
+      - label: Apollo publications
+        url: https://www.apolloresearch.ai/research
+  - id: 35
+    agenda: Apollo
+    bridges:
+      - MB7
+    type: E
+    evidence: Scheming-in-the-wild OSINT incident corpus (field-adjacent)
+    sources:
+      - label: CLTR 2026 report
+        url: >-
+          https://www.longtermresilience.org/reports/v5-scheming-in-the-wild_-detecting-real-world-ai-scheming-incidents-through-open-source-intelligence-pdf/
+  - id: 36
+    agenda: METR
+    bridges:
+      - MB6
+      - MB7
+      - MB10
+    type: E
+    evidence: 'Frontier Risk Report: entity-based internal-agent assessment'
+    sources:
+      - label: METR 2026
+        url: https://metr.org/blog/2026-05-19-frontier-risk-report/
+  - id: 37
+    agenda: METR
+    bridges:
+      - MB7
+    type: E
+    evidence: Autonomy and AI R&D capability eval suites
+    sources:
+      - label: METR
+        url: https://metr.org/
+  - id: 38
+    agenda: METR
+    bridges:
+      - MB7
+    type: E
+    evidence: Red-teaming frontier agent monitoring under deployment pressure
+    sources:
+      - label: Rein 2026
+        url: >-
+          https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/
+  - id: 39
+    agenda: Resolution
+    bridges:
+      - MB1
+    type: O
+    evidence: Automation-first alignment research strategy
+    sources:
+      - label: Resolution
+        url: https://resolution.org/
+  - id: 40
+    agenda: Resolution
+    bridges:
+      - MB9
+    type: T
+    evidence: Singular learning / formal pipeline bet (Timaeus lineage)
+    sources:
+      - label: Timaeus
+        url: https://timaeus.ai/
+  - id: 41
+    agenda: AE Studio
+    bridges:
+      - MB2
+    type: O
+    evidence: Neglected-approaches portfolio and intervention breadth map
+    sources:
+      - label: AE Studio Research
+        url: https://ae.studio/ai-alignment
+  - id: 42
+    agenda: AE Studio
+    bridges:
+      - MB2
+      - MB4
+    type: T
+    evidence: Human-power objective as outer target (Heitzig line)
+    sources:
+      - label: Heitzig & Potham 2025
+        url: https://arxiv.org/abs/2508.00159
+  - id: 43
+    agenda: AE Studio
+    bridges:
+      - MB6
+    type: C
+    evidence: AI Safety Interventions field index (cross-cuts agendas)
+    sources:
+      - label: Zarncke 2025
+        url: >-
+          https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions
+  - id: 44
+    agenda: Orthogonal
+    bridges:
+      - MB1
+    type: O
+    evidence: Agent-foundations research community (Discord + papers)
+    sources:
+      - label: Orthogonal
+        url: https://orxl.org/
+  - id: 45
+    agenda: Orthogonal
+    bridges:
+      - MB2
+      - MB4
+    type: T
+    evidence: QACI formal outer-alignment goal line
+    sources:
+      - label: QACI tag
+        url: https://www.lesswrong.com/tag/qaci
+  - id: 46
+    agenda: Wentworth
+    bridges:
+      - MB1
+    type: C
+    evidence: Boundaries as directed Markov blankets (utility-theoretic cut)
+    sources:
+      - label: Wentworth, Boundaries I
+        url: >-
+          https://www.lesswrong.com/posts/8oMF8Lv5jiGaQSFvo/boundaries-part-1-a-key-missing-concept-from-utility-theory
+  - id: 47
+    agenda: Wentworth
+    bridges:
+      - MB1
+    type: C
+    evidence: Agent boundaries aren't Markov blankets (critique of naive blanket cuts)
+    sources:
+      - label: Wentworth 2022
+        url: >-
+          https://www.alignmentforum.org/posts/vmfNaKbZ6urMdQrv2/agent-boundaries-aren-t-markov-blankets-unless-they-re-non
+  - id: 48
+    agenda: Wentworth
+    bridges:
+      - MB1
+    type: C
+    evidence: Selection theorems program (agent type signatures under selection)
+    sources:
+      - label: Wentworth 2021
+        url: >-
+          https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents
+  - id: 49
+    agenda: Wentworth
+    bridges:
+      - MB2
+    type: C
+    evidence: 'Pointers problem: values as function of humans'
+    sources:
+      - label: Wentworth 2020
+        url: >-
+          https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans
+  - id: 50
+    agenda: Wentworth
+    bridges:
+      - MB2
+    type: T
+    evidence: Natural latents (formal shared-abstraction program)
+    sources:
+      - label: Wentworth & Lorell 2023
+        url: >-
+          https://www.lesswrong.com/posts/dWQWzGCSFj6GTZHz7/natural-latents-the-math
+  - id: 51
+    agenda: Wentworth
+    bridges:
+      - MB2
+    type: C
+    evidence: Shard theory (contextual value shards in trained models)
+    sources:
+      - label: Turner & Udell 2022
+        url: >-
+          https://www.lesswrong.com/posts/iCfdcxiyr2Kj8m8mT/shard-theory-overview
+  - id: 52
+    agenda: Wentworth
+    bridges:
+      - MB5
+    type: C
+    evidence: Ontology identification / diamond maximizer problem framing
+    sources:
+      - label: Agent-like structure posts
+        url: >-
+          https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem
+  - id: 53
+    agenda: CIRIS
+    bridges:
+      - MB1
+    type: P
+    evidence: >-
+      Named-identity bet: Verify+Lens on certified occurrence vs composite
+      controller
+    sources:
+      - label: Accord (public text)
+        url: https://ciris.ai/ciris_accord.txt
+      - label: Architecture
+        url: https://ciris.ai/architecture/
+      - label: CIRISVerify
+        url: https://github.com/CIRISAI/CIRISVerify
+  - id: 54
+    agenda: CIRIS
+    bridges:
+      - MB4
+    type: D
+    evidence: CIRISAgent / Verify / Lens / Proxy shipped stack
+    sources:
+      - label: CIRIS
+        url: https://ciris.ai/
+      - label: CIRISAgent
+        url: https://github.com/CIRISAI/CIRISAgent
+  - id: 55
+    agenda: CIRIS
+    bridges:
+      - MB4
+    type: D
+    evidence: Deferral / Wise Authority / emergency shutdown procedures
+    sources:
+      - label: Accord (public text)
+        url: https://ciris.ai/ciris_accord.txt
+      - label: CIRISAgent overview
+        url: https://github.com/CIRISAI/CIRISAgent/blob/main/docs/OVERVIEW.md
+  - id: 56
+    agenda: CIRIS
+    bridges:
+      - MB4
+    type: D
+    evidence: >-
+      50/50 smoke battery (pin parity, prohibitions, conscience, proxy, verify
+      types)
+    sources:
+      - label: CIRISAgent safety tests
+        url: https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety
+      - label: CIRISNodeCore safety CI loop
+        url: >-
+          https://github.com/CIRISAI/CIRISNodeCore/blob/main/FSD/SAFETY_BATTERY_CI_LOOP.md
+  - id: 103
+    agenda: CIRIS
+    bridges:
+      - MB1
+    type: C
+    evidence: >-
+      Named-identity bet: holds for federation admission, fails as alignment
+      unit
+    sources:
+      - label: Accord Book IX
+        url: https://ciris.ai/ciris_accord.txt
+      - label: CIRISVerify federation identity
+        url: >-
+          https://github.com/CIRISAI/CIRISVerify/blob/main/docs/FEDERATION_IDENTITY.md
+  - id: 104
+    agenda: CIRIS
+    bridges:
+      - MB1
+      - MB9
+    type: C
+    evidence: 'NEW-04 / L-01: no poly-time complete compositional-deception detector'
+    sources:
+      - label: Accord Book IX §9.4
+        url: https://ciris.ai/ciris_accord.txt
+  - id: 105
+    agenda: CIRIS
+    bridges:
+      - MB1
+    type: D
+    evidence: >-
+      CIRISVerify: hardware-rooted identity, transparency log, capability
+      licensing
+    sources:
+      - label: CIRISVerify README
+        url: https://github.com/CIRISAI/CIRISVerify
+  - id: 106
+    agenda: CIRIS
+    bridges:
+      - MB1
+    type: C
+    evidence: 'Key task: Verify+Lens green / WA-blind composite counterexample charter'
+    sources:
+      - label: Accord compositional limits (NEW-04)
+        url: https://ciris.ai/ciris_accord.txt
+      - label: CIRISLens README
+        url: https://github.com/CIRISAI/CIRISLens
+  - id: 107
+    agenda: CIRIS
+    bridges:
+      - MB4
+    type: C
+    evidence: >-
+      MB4 challenge surface + probe battery (causal bite, capture theater,
+      shutdown scope)
+    sources:
+      - label: CIRISAgent integrity compliance
+        url: >-
+          https://github.com/CIRISAI/CIRISAgent/blob/main/compliance/D02_integrity.md
+  - id: 108
+    agenda: CIRIS
+    bridges:
+      - MB1
+      - MB4
+    type: P
+    evidence: >-
+      Sub-ASI validated scope; ASI protocol aspirational until RC gates (CRE,
+      red-team)
+    sources:
+      - label: CIRIS hub
+        url: https://ciris.ai/
+      - label: Accord scope / disclaimers
+        url: https://ciris.ai/ciris_accord.txt
+  - id: 109
+    agenda: CIRIS
+    bridges:
+      - MB4
+    type: D
+    evidence: Prohibition system + WiseBus tier gating (24 unit tests)
+    sources:
+      - label: CIRISAgent safety tests
+        url: https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety
+  - id: 110
+    agenda: CIRIS
+    bridges:
+      - MB4
+    type: D
+    evidence: H3ERE conscience execution helpers (14 unit tests)
+    sources:
+      - label: CIRISAgent safety tests
+        url: https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety
+  - id: 111
+    agenda: CIRIS
+    bridges:
+      - MB4
+    type: D
+    evidence: CIRISProxy fail-closed billing on service/network errors
+    sources:
+      - label: CIRISProxy
+        url: https://github.com/CIRISAI/CIRISProxy
+  - id: 112
+    agenda: CIRIS
+    bridges:
+      - MB6
+    type: P
+    evidence: Federation Orthogonality gate + CEG attestations (partnership admission)
+    sources:
+      - label: Accord Book IX §8.1+
+        url: https://ciris.ai/ciris_accord.txt
+      - label: Architecture
+        url: https://ciris.ai/architecture/
+  - id: 113
+    agenda: CIRIS
+    bridges:
+      - MB6
+    type: C
+    evidence: Partial selection story inside federation only (not market-wide MB6)
+    sources:
+      - label: Architecture / federation
+        url: https://ciris.ai/architecture/
+  - id: 114
+    agenda: CIRIS
+    bridges:
+      - MB7
+    type: D
+    evidence: CIRISLens Coherence Ratchet + Capacity Score (external witness pipeline)
+    sources:
+      - label: CIRISLens README
+        url: https://github.com/CIRISAI/CIRISLens
+  - id: 115
+    agenda: CIRIS
+    bridges:
+      - MB7
+    type: C
+    evidence: L-02 detector-cooperation bet; Lens = triage not verdict
+    sources:
+      - label: CIRISLens README
+        url: https://github.com/CIRISAI/CIRISLens
+      - label: Coherence Ratchet (ciris.ai)
+        url: https://ciris.ai/
+  - id: 116
+    agenda: CIRIS
+    bridges:
+      - MB7
+    type: C
+    evidence: 'Verify: authentic ≠ ethical; measurements not verdicts'
+    sources:
+      - label: CIRISVerify README
+        url: https://github.com/CIRISAI/CIRISVerify
+  - id: 117
+    agenda: CIRIS
+    bridges:
+      - MB9
+    type: C
+    evidence: >-
+      Book IX explicit non-claim: no perfect safety under adversarial
+      superintelligence
+    sources:
+      - label: Accord Book IX
+        url: https://ciris.ai/ciris_accord.txt
+  - id: 57
+    agenda: GovAI
+    bridges:
+      - MB6
+    type: E
+    evidence: 'Gradual disempowerment: systemic risk from incremental AI development'
+    sources:
+      - label: Kulveit et al. 2025
+        url: https://arxiv.org/abs/2501.16946
+  - id: 58
+    agenda: GovAI
+    bridges:
+      - MB6
+      - MB7
+    type: P
+    evidence: Compute governance and frontier-policy research pipeline
+    sources:
+      - label: GovAI
+        url: https://www.governance.ai/
+  - id: 59
+    agenda: GovAI
+    bridges:
+      - MB6
+    type: E
+    evidence: International control of powerful technology (governance analogies)
+    sources:
+      - label: GovAI Baruch-plan paper
+        url: >-
+          https://www.governance.ai/research-paper/international-control-of-powerful-technology-lessons-from-the-baruch-plan-for-nuclear-weapons
+  - id: 60
+    agenda: GovAI
+    bridges:
+      - MB9
+    type: C
+    evidence: Institutional translation of safety specs (policy-facing coverage)
+    sources:
+      - label: GovAI publications
+        url: https://www.governance.ai/research
+  - id: 61
+    agenda: UK AISI / CAISI
+    bridges:
+      - MB6
+    type: P
+    evidence: UK AISI frontier model testing mandate
+    sources:
+      - label: UK AISI
+        url: https://www.aisi.gov.uk/
+  - id: 62
+    agenda: UK AISI / CAISI
+    bridges:
+      - MB6
+      - MB7
+    type: E
+    evidence: Cheating behaviour in frontier model evaluations
+    sources:
+      - label: UK AISI 2026
+        url: >-
+          https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations
+  - id: 63
+    agenda: UK AISI / CAISI
+    bridges:
+      - MB6
+      - MB9
+      - MB11
+    type: P
+    evidence: Standards and pre-deployment testing (UK + US CAISI cluster)
+    sources:
+      - label: US NIST AI
+        url: https://www.nist.gov/artificial-intelligence
+  - id: 64
+    agenda: UK AISI / CAISI
+    bridges:
+      - MB7
+    type: P
+    evidence: Government-led frontier eval binding on deployment
+    sources:
+      - label: UK AISI evaluations
+        url: https://www.aisi.gov.uk/
+  - id: 65
+    agenda: Pause cluster
+    bridges:
+      - MB4
+      - MB8
+    type: P
+    evidence: Off-switch / pause priority in advocacy platforms
+    sources:
+      - label: PauseAI
+        url: https://www.pauseai.info/
+  - id: 66
+    agenda: Pause cluster
+    bridges:
+      - MB6
+    type: P
+    evidence: Moratorium and verified-slowdown campaigns
+    sources:
+      - label: FLI pause letter
+        url: https://futureoflife.org/open-letter/pause-giant-ai-experiments/
+  - id: 67
+    agenda: CLR
+    bridges:
+      - MB6
+    type: C
+    evidence: 'ARCHES: multipolar and cooperation failure taxonomy'
+    sources:
+      - label: Critch & Krueger 2020
+        url: https://arxiv.org/abs/2006.04948
+  - id: 68
+    agenda: CLR
+    bridges:
+      - MB6
+    type: C
+    evidence: Multipolar failure modes under competition
+    sources:
+      - label: Christiano 2019 (multipolar post)
+        url: >-
+          https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic
+  - id: 69
+    agenda: CLR
+    bridges:
+      - MB6
+    type: O
+    evidence: Cooperative AI Foundation programs
+    sources:
+      - label: CAIF
+        url: https://www.cooperativeai.org/
+  - id: 70
+    agenda: CLR
+    bridges:
+      - MB7d
+    type: C
+    evidence: Evidential cooperation / acausal trade line
+    sources:
+      - label: FDT 2017
+        url: https://arxiv.org/abs/1710.05060
+  - id: 71
+    agenda: CLR
+    bridges:
+      - MB7d
+    type: O
+    evidence: Cooperation-under-competition research portfolio
+    sources:
+      - label: CLR
+        url: https://longtermrisk.org/
+  - id: 72
+    agenda: Truthful AI
+    bridges:
+      - MB7
+    type: E
+    evidence: Deception and situational-awareness research program
+    sources:
+      - label: Truthful AI
+        url: https://truthful.ai/
+  - id: 73
+    agenda: Truthful AI
+    bridges:
+      - MB7
+    type: E
+    evidence: AI deception survey (field synthesis)
+    sources:
+      - label: Park et al. 2024
+        url: https://arxiv.org/abs/2403.03185
+  - id: 74
+    agenda: Goodfire / MI
+    bridges:
+      - MB7
+    type: D
+    evidence: Goodfire interpretability and editable-representation tooling
+    sources:
+      - label: Goodfire
+        url: https://www.goodfire.ai/
+  - id: 75
+    agenda: Goodfire / MI
+    bridges:
+      - MB7
+    type: D
+    evidence: Neuronpedia feature/circuit infrastructure
+    sources:
+      - label: Neuronpedia
+        url: https://www.neuronpedia.org/
+  - id: 76
+    agenda: Goodfire / MI
+    bridges:
+      - MB7
+    type: D
+    evidence: Transluce decode / agent-introspection tooling
+    sources:
+      - label: Transluce
+        url: https://transluce.org/
+  - id: 77
+    agenda: AI Futures
+    bridges:
+      - MB6
+    type: O
+    evidence: AI 2027 scenario (schedule shapes for governance stress tests only)
+    sources:
+      - label: AI Futures Project
+        url: https://ai-2027.com/
+  - id: 78
+    agenda: FAR.AI
+    bridges:
+      - MB7
+    type: O
+    evidence: FAR.Lab community research hosting
+    sources:
+      - label: FAR.AI
+        url: https://www.far.ai/
+  - id: 79
+    agenda: Conjecture
+    bridges:
+      - MB7
+    type: C
+    evidence: Cognitive emulation / controllable LLM framing
+    sources:
+      - label: Conjecture
+        url: https://conjecture.dev/
+  - id: 80
+    agenda: TSA
+    bridges:
+      - MB1
+    type: T
+    evidence: MB1 typed bridge + ε-boundary discovery (Lean + ch07)
+    sources:
+      - label: Ch. 7 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch07/
+      - label: Lean spine
+        url: https://towards-alignment.com/lean/
+  - id: 81
+    agenda: TSA
+    bridges:
+      - MB1
+    type: S
+    evidence: Embedded / lab boundary-discovery testbeds (interventional handles)
+    sources:
+      - label: Embedded simulation findings
+        url: >-
+          https://towards-alignment.com/experiments/findings/embedded-simulation/
+      - label: Lab simulation findings
+        url: https://towards-alignment.com/experiments/findings/lab-simulation/
+  - id: 82
+    agenda: TSA
+    bridges:
+      - MB1
+    type: S
+    evidence: Agency-detect precursor (MI/CMI boundary clustering)
+    sources:
+      - label: agency-detect repo
+        url: https://github.com/GunnarZarncke/agency-detect
+  - id: 83
+    agenda: TSA
+    bridges:
+      - MB2
+      - MB3
+    type: T
+    evidence: Bundle geometry + bearer maps (ch16, ch18)
+    sources:
+      - label: Ch. 16 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch16/
+      - label: Ch. 18 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch18/
+  - id: 84
+    agenda: TSA
+    bridges:
+      - MB2
+    type: T
+    evidence: Lean CIRL / IRL non-identifiability projections
+    sources:
+      - label: Lean spine
+        url: https://towards-alignment.com/lean/
+      - label: Field modules (GitHub)
+        url: >-
+          https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/formal/AlignmentProofSpine/Field
+  - id: 85
+    agenda: TSA
+    bridges:
+      - MB2
+    type: C
+    evidence: Full-stack / thick-value cousin relation (Edelman)
+    sources:
+      - label: Edelman et al. 2025
+        url: https://arxiv.org/abs/2512.03399
+  - id: 86
+    agenda: TSA
+    bridges:
+      - MB3
+    type: T
+    evidence: Bearer-map transport under optimization (MB3 bridge)
+    sources:
+      - label: App B bridge crosswalk (companion)
+        url: https://towards-alignment.com/cards/chapters/appB/
+  - id: 87
+    agenda: TSA
+    bridges:
+      - MB4
+    type: T
+    evidence: Correction-channel integrity invariant (Lean + ch26)
+    sources:
+      - label: Ch. 26 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch26/
+      - label: Lean spine
+        url: https://towards-alignment.com/lean/
+  - id: 88
+    agenda: TSA
+    bridges:
+      - MB4
+    type: S
+    evidence: Toy/lab correction-channel and capture scenarios
+    sources:
+      - label: Toy simulation findings
+        url: https://towards-alignment.com/experiments/findings/toy-simulation/
+      - label: Goal-agent simulation findings
+        url: >-
+          https://towards-alignment.com/experiments/findings/goal-agent-simulation/
+  - id: 89
+    agenda: TSA
+    bridges:
+      - MB4
+      - MB8
+    type: C
+    evidence: CEV-process convergence as secondary route (not assumed)
+    sources:
+      - label: App B bridge crosswalk (companion)
+        url: https://towards-alignment.com/cards/chapters/appB/
+  - id: 90
+    agenda: TSA
+    bridges:
+      - MB5
+    type: T
+    evidence: Successor closure over seven conserved properties
+    sources:
+      - label: Ch. 31 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch31/
+  - id: 91
+    agenda: TSA
+    bridges:
+      - MB5
+    type: T
+    evidence: Ontology-shift transport (A-007, A-010)
+    sources:
+      - label: App B bridge crosswalk (companion)
+        url: https://towards-alignment.com/cards/chapters/appB/
+  - id: 92
+    agenda: TSA
+    bridges:
+      - MB5
+    type: S
+    evidence: Grow/split/merge successor stress tests
+    sources:
+      - label: Graded-lab simulation findings
+        url: >-
+          https://towards-alignment.com/experiments/findings/graded-lab-simulation/
+  - id: 93
+    agenda: TSA
+    bridges:
+      - MB6
+    type: T
+    evidence: Selection environment + deployment leverage (ch34)
+    sources:
+      - label: Ch. 34 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch34/
+  - id: 94
+    agenda: TSA
+    bridges:
+      - MB6
+    type: S
+    evidence: Selection / basin scenarios in graded-lab line
+    sources:
+      - label: Graded-lab simulation findings
+        url: >-
+          https://towards-alignment.com/experiments/findings/graded-lab-simulation/
+  - id: 95
+    agenda: TSA
+    bridges:
+      - MB6
+    type: P
+    evidence: Institutional translation appendix (App C)
+    sources:
+      - label: App C (companion)
+        url: https://towards-alignment.com/cards/chapters/appC/
+  - id: 96
+    agenda: TSA
+    bridges:
+      - MB7
+    type: T
+    evidence: Hidden productive B-IQ bound + adversarial verifiability (A-009, ch43)
+    sources:
+      - label: Ch. 43 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch43/
+  - id: 97
+    agenda: TSA
+    bridges:
+      - MB7
+    type: T
+    evidence: Lean ELK/debate separations (readout ⇏ correction)
+    sources:
+      - label: Lean spine
+        url: https://towards-alignment.com/lean/
+  - id: 98
+    agenda: TSA
+    bridges:
+      - MB7
+    type: S
+    evidence: Strategic opacity / hidden-capability lab scenarios
+    sources:
+      - label: Lab simulation findings
+        url: https://towards-alignment.com/experiments/findings/lab-simulation/
+  - id: 99
+    agenda: TSA
+    bridges:
+      - MB7
+    type: E
+    evidence: Hubinger deceptive-alignment taxonomy as field wall (ch44 cite)
+    sources:
+      - label: Hubinger et al. 2019
+        url: https://arxiv.org/abs/1906.01820
+  - id: 100
+    agenda: TSA
+    bridges:
+      - MB7d
+    type: T
+    evidence: Inferential-coupling detector certificates (ch35)
+    sources:
+      - label: Ch. 35 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch35/
+  - id: 101
+    agenda: TSA
+    bridges:
+      - MB9
+    type: T
+    evidence: Grounding conservativity vs GSAI completeness (ch dynamical guarantee)
+    sources:
+      - label: App B bridge crosswalk (companion)
+        url: https://towards-alignment.com/cards/chapters/appB/
+  - id: 102
+    agenda: TSA
+    bridges:
+      - MB10
+    type: T
+    evidence: Successor forgeability counterexample + audit-channel bridge
+    sources:
+      - label: Lean spine
+        url: https://towards-alignment.com/lean/
+      - label: Forgeability.lean (GitHub)
+        url: >-
+          https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Forgeability.lean
+  - id: 118
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB1
+      - MB9
+    type: T
+    evidence: >-
+      Infra-Bayesianism: imprecise probabilities for nonrealizability / model
+      misspec
+    sources:
+      - label: 'LessWrong tag: infra-Bayesianism'
+        url: https://www.lesswrong.com/tag/infra-bayesianism
+  - id: 119
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB2
+    type: T
+    evidence: Learning-theoretic agenda for AI alignment (regret-style guarantees)
+    sources:
+      - label: Kosoy, LTA post
+        url: >-
+          https://www.alignmentforum.org/posts/vvEebH5jEvxnJEvBC/the-learning-theoretic-agenda-for-ai-alignment
+  - id: 120
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB7
+    type: C
+    evidence: Daemons / inner optimizers in learning-theoretic alignment framing
+    sources:
+      - label: Kosoy user page
+        url: https://www.alignmentforum.org/users/Vanessa+Kosoy
+  - id: 121
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB5
+    type: C
+    evidence: RSI / self-improvement treated in LTA (cousin to tiling/Vingean walls)
+    sources:
+      - label: Kosoy user page
+        url: https://www.alignmentforum.org/users/Vanessa+Kosoy
+  - id: 122
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB7d
+    type: T
+    evidence: Infra-Bayesian decision theory / imprecise-probability agents
+    sources:
+      - label: 'LessWrong tag: infra-Bayesianism'
+        url: https://www.lesswrong.com/tag/infra-bayesianism
+  - id: 123
+    agenda: Kosoy / PreDCA
+    bridges:
+      - MB2
+      - MB3
+    type: T
+    evidence: 'PreDCA: precursor-utility outer-alignment (pointer via causal precursors)'
+    sources:
+      - label: PreDCA tag
+        url: https://www.alignmentforum.org/tag/predca
+  - id: 124
+    agenda: MIRI / Garrabrant
+    bridges:
+      - MB5
+      - MB7d
+    type: T
+    evidence: Logical induction (logical uncertainty under bounded reasoning)
+    sources:
+      - label: Garrabrant et al. 2017
+        url: https://arxiv.org/abs/1709.08079
+  - id: 125
+    agenda: TSA
+    bridges:
+      - MB4a
+    type: T
+    evidence: MB4a measured-path legitimacy; capture defeats correction integrity
+    sources:
+      - label: Lean spine
+        url: https://towards-alignment.com/lean/
+      - label: Correction.lean (GitHub)
+        url: >-
+          https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Correction.lean
+  - id: 126
+    agenda: TSA
+    bridges:
+      - MB8
+    type: T
+    evidence: MB8 CEV-process convergence (Lean bridge; secondary route)
+    sources:
+      - label: Lean spine
+        url: https://towards-alignment.com/lean/
+  - id: 127
+    agenda: TSA
+    bridges:
+      - MB11
+    type: T
+    evidence: 'MB11 safety-case adequacy: certified case + tolerance → `Safe`'
+    sources:
+      - label: Ch. 42 (companion)
+        url: https://towards-alignment.com/cards/chapters/ch42/
+      - label: Lean spine
+        url: https://towards-alignment.com/lean/
+  - id: 128
+    agenda: GSAI
+    bridges:
+      - MB11
+    type: T
+    evidence: Constructivist safety case / formal deployment guarantee program
+    sources:
+      - label: Dalrymple et al. 2024
+        url: https://arxiv.org/abs/2405.06624
+  - id: 129
+    agenda: Resolution
+    bridges:
+      - MB11
+    type: O
+    evidence: Automation-first high-confidence alignment pipeline
+    sources:
+      - label: Resolution
+        url: https://resolution.org/
+  - id: 131
+    agenda: CIRIS
+    bridges:
+      - MB11
+    type: C
+    evidence: >-
+      Sub-ASI validated scope vs aspirational ASI protocol (honest safety-case
+      disclaimers)
+    sources:
+      - label: CIRIS hub
+        url: https://ciris.ai/
+      - label: Accord scope / disclaimers
+        url: https://ciris.ai/ciris_accord.txt
+  - id: 132
+    agenda: MIRI / Yudkowsky
+    bridges:
+      - MB8
+    type: C
+    evidence: Coherent extrapolated volition (field source for MB8 cousin)
+    sources:
+      - label: Yudkowsky 2004 CEV
+        url: https://intelligence.org/files/CEV.pdf
+  - id: 133
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB1
+      - MB9
+    type: C
+    evidence: >-
+      Model-class misspec / grain-of-truth (ambient MB1/MB9; Lean
+      `Nonrealizability.lean`)
+    sources:
+      - label: Infra-Bayesianism sequence
+        url: https://www.lesswrong.com/tag/infra-bayesianism
+      - label: field-claim plan
+        url: ../../drafts/field-claim-formalization-and-bridge-review-plan.md

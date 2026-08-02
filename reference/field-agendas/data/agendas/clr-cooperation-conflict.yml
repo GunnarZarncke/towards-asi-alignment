@@ -1,0 +1,21 @@
+slug: clr-cooperation-conflict
+title: CLR (cooperation / conflict)
+type: Research org
+carrier: Center on Long-Term Risk
+primaryArtifact: Cooperation under AI competition; s-risks; grants
+signatureVocabulary: cooperation, conflict, s-risks, multipolar failure, CAIF
+statedIntent: Reduce worst-case outcomes from AI competition and conflict
+primaryCrux: Multi-agent failure modes under strategic pressure
+bookBridges:
+  - MB6
+  - MB7d (partial)
+contributes: Conflict/cooperation framing; CAIF cooperative AI
+bookSeparates: Typed MB6/MB7d measurement vs narrative multipolar stories
+manuscriptHooks:
+  - ch35, ch02
+  - Critch multipolar cites
+links:
+  - label: CLR
+    url: https://longtermrisk.org/
+  - label: Cooperative AI Foundation (CAIF)
+    url: https://www.cooperativeai.org/

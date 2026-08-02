@@ -5,7 +5,7 @@ const card = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/cards" }),
   schema: z.object({
     title: z.string(),
-    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment", "release", "news"]),
+    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment", "release", "news", "agenda"]),
     status: z.enum(["established", "plausible", "framework", "bridge", "open", "negative", "reviewed"]).default("framework"),
     summary: z.string(),
     decision: z.string().optional(),
@@ -25,6 +25,10 @@ const card = defineCollection({
     citedIn: z.array(z.string()).default([]),
     part: z.string().optional(),
     formalDensity: z.enum(["low", "medium", "high"]).optional(),
+    /** Field agenda slug (agenda cards only). */
+    agendaSlug: z.string().optional(),
+    /** Bridge IDs this agenda maps to (agenda cards only). */
+    bookBridges: z.array(z.string()).default([]),
     bookChapters: z.array(z.string()).default([]),
     bookLabels: z.array(z.string()).default([]),
     bookSections: z.array(z.object({
@@ -108,9 +112,18 @@ const illustration = defineCollection({
   })
 });
 
+const field = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/field" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional()
+  })
+});
+
 export const collections = {
   cards: card,
   "reading-paths": readingPath,
   book,
-  illustrations: illustration
+  illustrations: illustration,
+  field
 };

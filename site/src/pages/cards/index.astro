@@ -71,6 +71,10 @@ const fieldProjections = cards
   .sort((a, b) => fieldProjectionGems.indexOf(a.id) - fieldProjectionGems.indexOf(b.id))
   .map(toEntry);
 const bridges = byType("bridge");
+const agendas = cards
+  .filter((card) => card.data.type === "agenda")
+  .sort((a, b) => a.data.title.localeCompare(b.data.title))
+  .map(toEntry);
 const artifacts = byType("artifact");
 const objections = byType("objection");
 const glossary = byType("glossary");
@@ -88,6 +92,7 @@ const sections = [
   { title: "Reference cards", id: "references", cards: referencesSection },
   { title: "Field projections", id: "field-projections", cards: fieldProjections },
   { title: "Concepts", id: "concepts", cards: concepts },
+  { title: "Field agendas", id: "field-agendas", cards: agendas },
   { title: "Bridges", id: "bridges", cards: bridges },
   { title: "Artifacts", id: "artifacts", cards: artifacts },
   { title: "Objections & caveats", id: "objections", cards: objections },
@@ -114,6 +119,8 @@ const totalCards = sections.reduce((sum, section) => sum + section.cards.length,
       <a href={withBase("/glossary/")}>Glossary</a>
       {" · "}
       <a href={withBase("/notation/")}>Notation index</a>
+      {" · "}
+      <a href={withBase("/field/")}>Field hub (coverage matrix)</a>
       {" · "}
       <a href={withBase("/paths/")}>Prefer a guided tour?</a>
     </p>

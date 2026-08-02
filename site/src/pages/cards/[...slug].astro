@@ -19,6 +19,7 @@ import demosIndex from "../../data/demos.json";
 import bookIndex from "../../data/book.json";
 import crosswalkRows from "../../data/bridge-crosswalk.json";
 import fieldNewsIndex from "../../data/field-news.json";
+import fieldAgendasData from "../../data/field-agendas.json";
 import leanSpine from "../../data/lean-spine.json";
 import { bookFullHref, bookHref, cardHref as buildCardHref, pdfHref, resolveCard, routeSlug } from "../../lib/site-urls";
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
@@ -64,6 +65,7 @@ const isReferenceCard = card.data.type === "reference";
 const isExperimentCard = card.data.type === "experiment";
 const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";
+const isAgendaCard = card.data.type === "agenda";
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
 const relatedSlugs = [...new Set([...partGemSlugs, ...card.data.related])];
@@ -340,7 +342,31 @@ const pageDescription = showFullText
           </ul>
         </>
       )}
-      {!isBookUnit && !isReferenceCard && card.data.bookChapters.length > 0 && (
+      {isAgendaCard && (
+        <>
+          <h3>Field hub</h3>
+          <ul>
+            <li><a href={withBase("/field/")}>Coverage matrix &amp; evidence catalog</a></li>
+            <li><a href={withBase("/field/#coverage-matrix")}>Matrix row for this agenda</a></li>
+          </ul>
+          {card.data.bookBridges.length > 0 && (
+            <>
+              <h3>Book bridges</h3>
+              <ul>
+                {card.data.bookBridges.map((mb) => {
+                  const slug = fieldAgendasData.mbBridgeCards[mb as keyof typeof fieldAgendasData.mbBridgeCards];
+                  return (
+                    <li>
+                      {slug ? <a href={cardHref(slug)}>{mb}</a> : mb}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
+        </>
+      )}
+      {!isBookUnit && !isReferenceCard && !isAgendaCard && card.data.bookChapters.length > 0 && (
         <>
           <h3>Book chapters</h3>
           <ul>

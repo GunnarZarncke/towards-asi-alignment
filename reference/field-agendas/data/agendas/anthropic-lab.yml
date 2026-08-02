@@ -1,0 +1,29 @@
+slug: anthropic-lab
+title: Anthropic (lab)
+type: Capabilities lab + safety team
+carrier: Anthropic PBC
+primaryArtifact: RSP; interpretability research; Constitutional AI / conditioning line
+signatureVocabulary: >-
+  RSP, interpretability, constitutional AI, responsible scaling, conditioning
+  (models)
+statedIntent: >-
+  Build capable systems with staged safety commitments and internal
+  interpretability
+primaryCrux: Can scaling policies and interpretability keep pace with capability?
+bookBridges:
+  - MB2
+  - MB3
+  - MB7 (partial)
+contributes: >-
+  Industry RSP template; conditioning-predictor failure mode (capture —
+  homograph with “anthropic reasoning”)
+bookSeparates: CCI + adversarial verifiability; lab RSP ≠ preservation-layer certificate
+manuscriptHooks:
+  - ch10 (conditioning)
+  - field-news
+  - App B LLM opacity default
+links:
+  - label: Anthropic
+    url: https://www.anthropic.com/
+  - label: Google DeepMind
+    url: https://deepmind.google/

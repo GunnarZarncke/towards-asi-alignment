@@ -1,0 +1,22 @@
+slug: uk-aisi-caisi-gov-eval-institutes
+title: UK AISI / CAISI (gov eval institutes)
+type: Government governance + eval
+carrier: UK AI Security Institute; US CAISI (formerly USAISI)
+primaryArtifact: Frontier model testing; standards development; international policy
+signatureVocabulary: AI safety institute, frontier evals, standards, pre-deployment testing
+statedIntent: Government-led testing and standards for advanced AI
+primaryCrux: Do institute evals bind on deployment decisions under race pressure?
+bookBridges:
+  - MB6
+  - MB7 (partial)
+contributes: Institutional eval capacity; Resolution/Irving lineage (UK)
+bookSeparates: Visibility/evals ⇏ correction integrity (ch passive observation)
+manuscriptHooks:
+  - ch passive observation
+  - App C
+  - field-news
+links:
+  - label: UK AISI
+    url: https://www.aisi.gov.uk/
+  - label: CAISI / US NIST AI
+    url: https://www.nist.gov/artificial-intelligence

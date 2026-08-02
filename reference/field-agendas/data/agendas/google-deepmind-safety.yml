@@ -1,0 +1,22 @@
+slug: google-deepmind-safety
+title: Google DeepMind (safety)
+type: Capabilities lab + safety team
+carrier: Google DeepMind safety / alignment researchers
+primaryArtifact: Safety research blog; Gemini-era alignment work
+signatureVocabulary: scalable alignment, safety research, evaluation, Gemini deployment
+statedIntent: >-
+  Build advanced AI with internal safety research integrated into capabilities
+  org
+primaryCrux: 'Same as frontier-lab crux: oversight co-scaling, deceptive alignment'
+bookBridges:
+  - MB7a–c (partial)
+contributes: Large-scale empirical alignment research capacity
+bookSeparates: Measurement spine not replaced by corporate safety teams
+manuscriptHooks:
+  - ch14 co-scaling
+  - minimal elsewhere
+links:
+  - label: Google DeepMind
+    url: https://deepmind.google/
+  - label: DeepMind Safety Research blog
+    url: https://deepmind.google/discover/blog/

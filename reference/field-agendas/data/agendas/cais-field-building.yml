@@ -1,0 +1,17 @@
+slug: cais-field-building
+title: CAIS (field-building)
+type: Research + advocacy org
+carrier: Center for AI Safety
+primaryArtifact: CAIS statements; AISES course; field-building
+signatureVocabulary: AI safety field, risk statements, safety standards advocacy
+statedIntent: Build the AI safety research field and advocate for safety standards
+primaryCrux: Field-building ⇏ technical solution
+bookBridges:
+  - — (meta)
+contributes: Legitimacy and researcher pipeline
+bookSeparates: Measurement spine is independent of CAIS framing
+manuscriptHooks:
+  - minimal
+links:
+  - label: CAIS
+    url: https://www.safe.ai/

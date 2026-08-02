@@ -1,0 +1,22 @@
+slug: goodfire-mechanistic-interpretability-cluster
+title: Goodfire / mechanistic interpretability cluster
+type: Research org (representative of MI tool stack)
+carrier: Goodfire; Transluce; Neuronpedia (infra)
+primaryArtifact: Interpretability tooling; editable representations
+signatureVocabulary: mechanistic interpretability, circuits, features, steering, decode networks
+statedIntent: Make models understandable and editable for safety
+primaryCrux: Does interpretability scale to adversarial frontier models?
+bookBridges:
+  - MB7 (filter subchannel)
+contributes: Tooling for adversarial verifiability experiments
+bookSeparates: MI stack ⇏ correction-channel integrity default
+manuscriptHooks:
+  - ch43
+  - App B MI exclude row
+links:
+  - label: Goodfire
+    url: https://www.goodfire.ai/
+  - label: Transluce
+    url: https://transluce.org/
+  - label: Neuronpedia
+    url: https://www.neuronpedia.org/

@@ -1,0 +1,33 @@
+slug: kosoy-infra-bayesianism-lta
+title: Kosoy / infra-Bayesianism & LTA
+type: Researcher lineage
+carrier: Vanessa Kosoy (+ Appel; logical-induction neighborhood via Garrabrant)
+primaryArtifact: Infra-Bayesianism sequence; learning-theoretic agenda (LTA)
+signatureVocabulary: >-
+  infra-Bayesianism, learning-theoretic agenda, imprecise probability,
+  nonrealizability, daemons
+statedIntent: Foundations for reasoning under deep uncertainty applicable to alignment
+primaryCrux: >-
+  Can learning-theoretic / infra-Bayesian frameworks type real alignment
+  failures (misspec, daemons, RSI)?
+bookBridges:
+  - MB1
+  - MB2
+  - MB5
+  - MB7
+  - >-
+    MB9 (cousin); MB7d neighborhood — see [spine
+    translation](#spine-translation)
+contributes: >-
+  Model-class misspec / grain-of-truth; regret-bounded agents; inner daemons
+  under LTA
+bookSeparates: >-
+  Book ontology (System, bundle, CCI) not replaced; walls remapped to existing
+  MBs
+manuscriptHooks:
+  - App B intervention map (logical induction / infra-Bayesian cluster)
+links:
+  - label: Infra-Bayesianism (LessWrong)
+    url: https://www.lesswrong.com/tag/infra-bayesianism
+  - label: Vanessa Kosoy
+    url: https://www.alignmentforum.org/users/Vanessa+Kosoy

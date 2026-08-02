@@ -1,0 +1,20 @@
+slug: arc-alignment-research-center
+title: ARC (Alignment Research Center)
+type: Research org
+carrier: Alignment Research Center (Geoffrey Irving pre-Resolution; ELK host)
+primaryArtifact: ELK problem framing; formal oversight research
+signatureVocabulary: ELK, Eliciting Latent Knowledge, human simulator, direct translator
+statedIntent: Formalize scalable oversight mechanisms including latent knowledge elicitation
+primaryCrux: Human simulator vs direct translator; readout under optimization
+bookBridges:
+  - MB2
+  - MB3
+  - MB7
+contributes: ELK as canonical naming of latent readout problem
+bookSeparates: Readout ⇏ correction uptake (Lean separation)
+manuscriptHooks:
+  - ch43
+  - App G ELK
+links:
+  - label: ARC
+    url: https://www.alignment.org/

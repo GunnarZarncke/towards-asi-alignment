@@ -1,0 +1,24 @@
+slug: wentworth-natural-abstractions
+title: Wentworth / natural abstractions
+type: Researcher lineage
+carrier: John Wentworth (+ LessWrong NAH cluster)
+primaryArtifact: Natural Abstraction Hypothesis; selection theorems; agency posts
+signatureVocabulary: >-
+  natural abstractions, selection theorems, natural latents, agency as
+  compression
+statedIntent: Mathematical theory of abstractions and agency that could constrain alignment
+primaryCrux: >-
+  Do natural abstractions align with value-relevant structure under
+  optimization?
+bookBridges:
+  - MB2
+  - MB3 (partial)
+  - MB1
+contributes: NAH as falsifier for low-dimensional value story (ch17 WWCTV)
+bookSeparates: Bundle geometry + ontology shift transport; NAH not promoted to spine
+manuscriptHooks:
+  - ch17
+  - App B shard/NAH row
+links:
+  - label: John Wentworth
+    url: https://www.alignmentforum.org/users/John+Wentworth

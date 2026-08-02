@@ -1,0 +1,23 @@
+slug: govai
+title: GovAI
+type: Governance research program
+carrier: Centre for the Governance of AI, Oxford
+primaryArtifact: Policy-facing research; GovAI Fellowship
+signatureVocabulary: AI governance, compute governance, international governance, policy briefs
+statedIntent: Inform decision-makers on advanced AI governance
+primaryCrux: Can governance keep pace with capability without eroding correction capacity?
+bookBridges:
+  - MB6 (institutional)
+  - MB9 (partial)
+contributes: Governance research pipeline; EU/US policy translation
+bookSeparates: Policy levers ⇏ correction-channel integrity
+manuscriptHooks:
+  - App C institutional translation
+  - App B selection row
+links:
+  - label: GovAI
+    url: https://www.governance.ai/
+  - label: Simon Institute
+    url: https://www.simoninstitute.ch/
+  - label: IAPS
+    url: https://www.iaps.ai/

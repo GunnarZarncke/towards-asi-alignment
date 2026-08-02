@@ -1,0 +1,17 @@
+slug: truthful-ai-evans
+title: Truthful AI (Evans)
+type: Research org
+carrier: Truthful AI (Owain Evans)
+primaryArtifact: Deception, situational awareness, hidden reasoning research
+signatureVocabulary: situational awareness, deception, hidden reasoning, lie detection
+statedIntent: Empirical study of model deception and awareness relevant to control
+primaryCrux: Can we detect hidden reasoning before it scales?
+bookBridges:
+  - MB7a–c
+contributes: Empirical deception/s-awareness line
+bookSeparates: Detection ⇏ CCI preservation
+manuscriptHooks:
+  - ch10, ch43 adjacent
+links:
+  - label: Truthful AI
+    url: https://truthful.ai/

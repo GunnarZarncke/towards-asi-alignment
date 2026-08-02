@@ -1,0 +1,19 @@
+slug: apollo-research
+title: Apollo Research
+type: Research org
+carrier: Apollo Research
+primaryArtifact: Scheming science; pre-deployment evals; agent-security tools
+signatureVocabulary: scheming, pre-deployment evals, situational awareness, agent governance
+statedIntent: Evaluate and mitigate deception/scheming before deployment
+primaryCrux: Can we detect strategic deception before capabilities outpace evals?
+bookBridges:
+  - MB7a–c
+  - MB10
+contributes: Scheming as named empirical research program
+bookSeparates: Eval success ⇏ correction-channel preservation
+manuscriptHooks:
+  - ch10, ch43
+  - METR-adjacent rows in lethality stress test
+links:
+  - label: Apollo Research
+    url: https://www.apolloresearch.ai/

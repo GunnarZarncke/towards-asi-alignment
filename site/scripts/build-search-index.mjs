@@ -81,6 +81,23 @@ async function buildEntries() {
     });
   }
 
+  const fieldAgendaCards = await loadCards(path.join(cardsDir, "field-agendas"));
+  for (const { id, fm } of fieldAgendaCards) {
+    entries.push({
+      title: fm.title,
+      type: fm.type,
+      summary: fm.summary ?? "",
+      url: cardHref(`field-agendas/${id}`)
+    });
+  }
+
+  entries.push({
+    title: "Field — AI safety and alignment",
+    type: "field",
+    summary: "Public map of major agendas, bridge coverage matrix, and field overviews (AISafety.com map, interventions index, surveys).",
+    url: "/field/"
+  });
+
   const notation = JSON.parse(await readFile(path.join(siteRoot, "src", "data", "notation.json"), "utf8"));
   for (const section of notation) {
     for (const entry of section.entries) {

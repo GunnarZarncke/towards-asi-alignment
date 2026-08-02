@@ -1,0 +1,128 @@
+---
+import fieldData from "../data/field-agendas.json";
+import { badgeTypeHref } from "../lib/badges";
+import { renderMatrixCellHtml } from "../lib/field-matrix-cell";
+import { cardHref } from "../lib/site-urls";
+
+interface Props {
+  base: string;
+}
+
+const { base } = Astro.props;
+const { matrix, mbBridgeCards } = fieldData;
+const fieldPrefix = `${base.replace(/\/$/, "")}/field/`;
+
+function bridgeHref(mb: string) {
+  const slug = mbBridgeCards[mb as keyof typeof mbBridgeCards];
+  return slug ? cardHref(base, slug) : undefined;
+}
+
+function agendaHref(slug: string) {
+  return cardHref(base, `field-agendas/${slug}`);
+}
+---
+
+<section id="coverage-matrix" class="field-matrix">
+  <h2>Coverage matrix</h2>
+  <p class="side-panel-meta">
+    Which agendas have published evidence on which bridge problems (MB1–MB11).
+    Column headers link to bridge cards; row headers link to agenda cards.
+    Browse all agendas via the <a href={badgeTypeHref(base, "agenda")}>Field agenda badge</a>.
+    Tags: C conceptual, T theory, S simulation, P practical, D/E empirical, O other — each links to the evidence catalog below.
+  </p>
+  <div class="table-wrap field-matrix-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Agenda</th>
+          {matrix.columns.map((mb) => {
+            const href = bridgeHref(mb);
+            return (
+              <th scope="col">
+                {href ? <a href={href}>{mb}</a> : mb}
+              </th>
+            );
+          })}
+        </tr>
+      </thead>
+      <tbody>
+        {matrix.rows.map((row) => (
+          <tr>
+            <th scope="row">
+              <a href={agendaHref(row.slug)}>{row.agenda}</a>
+            </th>
+            {matrix.columns.map((mb) => {
+              const groups = row.cells[mb] as import("../lib/field-matrix-cell").MatrixCellGroup[] | undefined;
+              const html = renderMatrixCellHtml(groups, fieldPrefix);
+              return (
+                <td>
+                  {!html ? "—" : <span set:html={html} />}
+                </td>
+              );
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .field-matrix {
+    margin-top: 2.5rem;
+  }
+
+  .field-matrix-wrap {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .field-matrix table {
+    font-size: 0.82rem;
+    min-width: 72rem;
+  }
+
+  .field-matrix th,
+  .field-matrix td {
+    vertical-align: top;
+    padding: 0.45rem 0.5rem;
+  }
+
+  .field-matrix thead th {
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    background: var(--color-surface, #fff);
+    z-index: 1;
+  }
+
+  .field-matrix tbody th {
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .field-matrix td :global(.matrix-ev) {
+    white-space: nowrap;
+  }
+
+  .field-matrix td :global(a.matrix-ev-id-link) {
+    color: var(--color-link, #1a5276);
+    text-decoration: none;
+  }
+
+  .field-matrix td :global(a.matrix-ev-id-link:hover) {
+    text-decoration: underline;
+  }
+
+  .field-matrix td :global(.matrix-ev-type) {
+    font-size: inherit;
+    font-weight: 600;
+  }
+
+  .field-matrix td :global(.matrix-ev-id) {
+    font-size: 0.72em;
+    line-height: 0;
+    vertical-align: super;
+  }
+</style>

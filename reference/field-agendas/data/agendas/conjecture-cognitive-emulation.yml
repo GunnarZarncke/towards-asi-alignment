@@ -1,0 +1,19 @@
+slug: conjecture-cognitive-emulation
+title: Conjecture / cognitive emulation
+type: Research org (startup lineage)
+carrier: Conjecture (EleutherAI lineage)
+primaryArtifact: Cognitive Emulation approach; controllable LLMs
+signatureVocabulary: cognitive emulation, controllable LLMs, emulation vs alignment
+statedIntent: Build controllable systems via emulation framing
+primaryCrux: Does emulation imply corrigibility under scale?
+bookBridges:
+  - MB7 (partial)
+contributes: Alternative controllability framing
+bookSeparates: CCI + successor transport
+manuscriptHooks:
+  - sparse
+links:
+  - label: Conjecture
+    url: https://conjecture.dev/
+  - label: EleutherAI
+    url: https://www.eleuther.ai/

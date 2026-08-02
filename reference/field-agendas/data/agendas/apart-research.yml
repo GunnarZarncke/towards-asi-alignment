@@ -1,0 +1,16 @@
+slug: apart-research
+title: Apart Research
+type: Training / sprint program
+carrier: Apart Research
+primaryArtifact: Open research sprints; hackathon-style collaborations
+signatureVocabulary: research sprints, apart hackathon, rapid prototypes
+statedIntent: Accelerate alignment research through sprints and mentorship
+primaryCrux: Sprint artifacts ⇏ load-bearing safety case
+bookBridges: []
+contributes: Experiment prototypes (ET lines in repo)
+bookSeparates: —
+manuscriptHooks:
+  - demos/experiments lineage
+links:
+  - label: Apart Research
+    url: https://apartresearch.com/

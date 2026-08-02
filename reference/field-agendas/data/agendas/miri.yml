@@ -1,0 +1,33 @@
+slug: miri
+title: MIRI
+type: Research org / advocacy
+carrier: Machine Intelligence Research Institute
+primaryArtifact: >-
+  Agent Foundations technical agenda; Embedded Agency; policy/pause outreach
+  (2024 strategy)
+signatureVocabulary: >-
+  embedded agency, corrigibility, tiling, Vingean reflection, value learning,
+  hard pause, off-switch
+statedIntent: >-
+  Steer transformative AI away from extinction risk via agent-foundations
+  problem framing and policy priority on pause/off-switch
+primaryCrux: >-
+  No clean agent–environment cut; corrigibility anti-natural; successor trust
+  under ontology change
+bookBridges:
+  - MB1
+  - MB4
+  - MB5
+  - MB8
+contributes: >-
+  Canonical embedded-agency and corrigibility problem statements;
+  decision-theoretic lineage
+bookSeparates: Operational boundary discovery bet (MB1); trajectory CCI vs one-bit shutdown
+manuscriptHooks:
+  - App B MB1/MB4/MB5 notes
+  - ch07, ch25, ch28
+links:
+  - label: MIRI
+    url: https://intelligence.org/
+  - label: AI StopWatch
+    url: https://substack.com/@aistopwatch

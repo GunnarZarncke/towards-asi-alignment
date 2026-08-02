@@ -1,0 +1,16 @@
+slug: bluedot-impact
+title: BlueDot Impact
+type: Training / field-building program
+carrier: BlueDot Impact
+primaryArtifact: Technical AI Safety + Frontier AI Governance courses
+signatureVocabulary: introductory alignment, governance track, course pipeline
+statedIntent: Standard on-ramp courses for AI safety careers
+primaryCrux: Pedagogy ⇏ research agenda (vocabulary transmission)
+bookBridges: []
+contributes: Shared preparadigmatic vocabulary for new researchers
+bookSeparates: —
+manuscriptHooks:
+  - none required
+links:
+  - label: BlueDot Impact
+    url: https://bluedot.org/

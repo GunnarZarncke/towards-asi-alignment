@@ -12,7 +12,8 @@ export const CARD_TYPES = [
   "reference",
   "experiment",
   "release",
-  "news"
+  "news",
+  "agenda"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -87,6 +88,11 @@ export const TYPE_META: Record<
     title: "News",
     description:
       "External AI safety incidents and evaluation results — mapped to book chapters; companion-site orientation, not PDF canon."
+  },
+  agenda: {
+    title: "Field agenda",
+    description:
+      "Coherent AI safety research or advocacy program — introduction, links, map clustering, and bridge coverage on the Field hub."
   }
 };
 

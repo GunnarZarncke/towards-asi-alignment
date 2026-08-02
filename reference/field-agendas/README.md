@@ -2,12 +2,25 @@
 
 Agent-oriented crosswalk material for comparing alignment agendas and vocabulary. **Not** manuscript canon — integration with App E and bridge crosswalk prose is deferred.
 
-| File | Role |
-|------|------|
-| [`field-agenda-index.md`](field-agenda-index.md) | 33 coherent agendas; agenda × bridge coverage matrix (MB1–MB11 incl. MB4a) |
-| [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) | Alphabetical terms by source agenda; source-backed prose; homograph splits; cross-agenda notes |
-| [`anthropic-acausal-taxonomy.md`](anthropic-acausal-taxonomy.md) | Four loads on *anthropic* / acausal; companion to glossary homograph rows |
+| File / path | Role |
+|-------------|------|
+| [`data/`](data/) | **Source of truth** — structured YAML (agendas, matrix, evidence catalog, clustering) |
+| [`data/agendas/*.yml`](data/agendas/) | One file per coherent agenda |
+| [`data/matrix.yml`](data/matrix.yml) | Agenda × bridge matrix; cells are `{ type, ids[] }` lists (see [`MAINTAINER.md`](MAINTAINER.md)) |
+| [`data/evidence.yml`](data/evidence.yml) | Sourced evidence catalog |
+| [`data/clustering.yml`](data/clustering.yml) | AISafety.com map → agenda roll-ups |
+| [`field-agenda-index.md`](field-agenda-index.md) | **Generated** agent index (run `sync:field-agendas`) |
+| [`MAINTAINER.md`](MAINTAINER.md) | Agent-only matrix reading rules (not on public `/field/` page) |
+| [`site/src/content/field/intro.md`](../../site/src/content/field/intro.md) | Public Field hub introduction |
+| [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) | Alphabetical terms by source agenda |
+| [`anthropic-acausal-taxonomy.md`](anthropic-acausal-taxonomy.md) | Four loads on *anthropic* / acausal |
+
+**Companion site:** [towards-alignment.com/field/](https://towards-alignment.com/field/) — matrix, evidence catalog, agenda cards.
 
 **Manuscript bridge map:** [`appendices/appB-bridge-crosswalk.tex`](../../appendices/appB-bridge-crosswalk.tex)
 
-**Working audit (deferred prose pass):** [`drafts/glossary-term-audit.md`](../../drafts/glossary-term-audit.md)
+## Maintenance
+
+1. Edit YAML under `data/` (add agenda file, evidence row, matrix cell, etc.).
+2. Optionally refresh from the legacy markdown index: `node reference/field-agendas/scripts/extract-from-index.mjs` (one-way import).
+3. Regenerate site cards and index markdown: `cd site && npm run sync:field-agendas`.

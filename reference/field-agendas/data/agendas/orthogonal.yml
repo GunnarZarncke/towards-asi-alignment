@@ -1,0 +1,18 @@
+slug: orthogonal
+title: Orthogonal
+type: Research org
+carrier: Orthogonal (Tamsin Leake)
+primaryArtifact: Agent-foundations research community (Discord + papers)
+signatureVocabulary: agent foundations, formal alignment, embedded agents
+statedIntent: Advance formal agent-foundations alignment research
+primaryCrux: Same family as MIRI/CHAI formal walls, community-organized
+bookBridges:
+  - MB1
+  - MB4
+contributes: Active agent-foundations community
+bookSeparates: Typed bridge stack + measurement program
+manuscriptHooks:
+  - sparse
+links:
+  - label: Orthogonal
+    url: https://orxl.org/

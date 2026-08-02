@@ -1,0 +1,902 @@
+columns:
+  - MB1
+  - MB2
+  - MB3
+  - MB4
+  - MB4a
+  - MB5
+  - MB6
+  - MB7
+  - MB7d
+  - MB8
+  - MB9
+  - MB10
+  - MB11
+rows:
+  - agenda: MIRI
+    cells:
+      MB1:
+        - type: C
+          ids:
+            - 1
+            - 2
+      MB2:
+        - type: C
+          ids:
+            - 3
+      MB3: []
+      MB4:
+        - type: T
+          ids:
+            - 4
+            - 5
+      MB4a:
+        - type: T
+          ids:
+            - 4
+            - 5
+      MB5:
+        - type: C
+          ids:
+            - 6
+            - 8
+        - type: T
+          ids:
+            - 7
+      MB6: []
+      MB7:
+        - type: C
+          ids:
+            - 1
+            - 9
+      MB7d:
+        - type: T
+          ids:
+            - 10
+            - 124
+      MB8:
+        - type: C
+          ids:
+            - 132
+      MB9: []
+      MB10:
+        - type: C
+          ids:
+            - 6
+        - type: T
+          ids:
+            - 7
+      MB11: []
+    slug: miri
+  - agenda: Redwood
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4:
+        - type: C
+          ids:
+            - 11
+      MB4a:
+        - type: C
+          ids:
+            - 11
+      MB5: []
+      MB6: []
+      MB7:
+        - type: E
+          ids:
+            - 12
+            - 13
+        - type: C
+          ids:
+            - 11
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10:
+        - type: C
+          ids:
+            - 11
+      MB11: []
+    slug: redwood-research
+  - agenda: CHAI
+    cells:
+      MB1: []
+      MB2:
+        - type: T
+          ids:
+            - 14
+            - 16
+        - type: C
+          ids:
+            - 15
+      MB3:
+        - type: T
+          ids:
+            - 14
+      MB4:
+        - type: T
+          ids:
+            - 17
+      MB4a:
+        - type: T
+          ids:
+            - 17
+      MB5: []
+      MB6: []
+      MB7: []
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: chai-russell
+  - agenda: Christiano
+    cells:
+      MB1: []
+      MB2:
+        - type: C
+          ids:
+            - 18
+      MB3:
+        - type: C
+          ids:
+            - 18
+      MB4:
+        - type: C
+          ids:
+            - 19
+      MB4a:
+        - type: C
+          ids:
+            - 19
+      MB5: []
+      MB6:
+        - type: C
+          ids:
+            - 20
+      MB7:
+        - type: C
+          ids:
+            - 22
+            - 23
+        - type: T
+          ids:
+            - 21
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10:
+        - type: C
+          ids:
+            - 22
+      MB11: []
+    slug: christiano-lineage
+  - agenda: ARC
+    cells:
+      MB1: []
+      MB2:
+        - type: C
+          ids:
+            - 18
+      MB3:
+        - type: C
+          ids:
+            - 18
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7:
+        - type: C
+          ids:
+            - 18
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: arc-alignment-research-center
+  - agenda: GSAI
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7: []
+      MB7d: []
+      MB8: []
+      MB9:
+        - type: T
+          ids:
+            - 24
+      MB10: []
+      MB11:
+        - type: T
+          ids:
+            - 128
+    slug: davidad-guaranteed-safe-ai-gsai
+  - agenda: Anthropic (lab)
+    cells:
+      MB1: []
+      MB2:
+        - type: E
+          ids:
+            - 25
+            - 26
+        - type: C
+          ids:
+            - 27
+      MB3:
+        - type: E
+          ids:
+            - 25
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: P
+          ids:
+            - 28
+      MB7:
+        - type: E
+          ids:
+            - 25
+            - 30
+            - 31
+        - type: C
+          ids:
+            - 29
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10:
+        - type: E
+          ids:
+            - 13
+      MB11:
+        - type: P
+          ids:
+            - 28
+    slug: anthropic-lab
+  - agenda: Google DeepMind
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7:
+        - type: T
+          ids:
+            - 21
+        - type: E
+          ids:
+            - 32
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: google-deepmind-safety
+  - agenda: Apollo
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: E
+          ids:
+            - 33
+      MB7:
+        - type: E
+          ids:
+            - 33
+            - 34
+            - 35
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10:
+        - type: E
+          ids:
+            - 33
+      MB11:
+        - type: E
+          ids:
+            - 33
+    slug: apollo-research
+  - agenda: METR
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: E
+          ids:
+            - 36
+      MB7:
+        - type: E
+          ids:
+            - 36
+            - 37
+            - 38
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10:
+        - type: E
+          ids:
+            - 36
+      MB11:
+        - type: E
+          ids:
+            - 36
+    slug: metr
+  - agenda: Resolution
+    cells:
+      MB1:
+        - type: O
+          ids:
+            - 39
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7: []
+      MB7d: []
+      MB8: []
+      MB9:
+        - type: T
+          ids:
+            - 40
+      MB10: []
+      MB11:
+        - type: O
+          ids:
+            - 129
+    slug: resolution
+  - agenda: AE Studio
+    cells:
+      MB1: []
+      MB2:
+        - type: O
+          ids:
+            - 41
+        - type: T
+          ids:
+            - 42
+      MB3: []
+      MB4:
+        - type: T
+          ids:
+            - 42
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: C
+          ids:
+            - 43
+      MB7: []
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: ae-studio
+  - agenda: Orthogonal
+    cells:
+      MB1:
+        - type: O
+          ids:
+            - 44
+      MB2:
+        - type: T
+          ids:
+            - 45
+      MB3: []
+      MB4:
+        - type: T
+          ids:
+            - 45
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7: []
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: orthogonal
+  - agenda: Wentworth
+    cells:
+      MB1:
+        - type: C
+          ids:
+            - 46
+            - 47
+            - 48
+      MB2:
+        - type: C
+          ids:
+            - 49
+            - 51
+        - type: T
+          ids:
+            - 50
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5:
+        - type: C
+          ids:
+            - 52
+      MB6: []
+      MB7: []
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: wentworth-natural-abstractions
+  - agenda: Kosoy / IB & LTA
+    cells:
+      MB1:
+        - type: T
+          ids:
+            - 118
+            - 133
+        - type: C
+          ids:
+            - 133
+      MB2:
+        - type: T
+          ids:
+            - 119
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5:
+        - type: C
+          ids:
+            - 121
+      MB6: []
+      MB7:
+        - type: C
+          ids:
+            - 120
+      MB7d:
+        - type: T
+          ids:
+            - 122
+      MB8: []
+      MB9:
+        - type: T
+          ids:
+            - 118
+            - 133
+      MB10: []
+      MB11: []
+    slug: kosoy-infra-bayesianism-lta
+  - agenda: Kosoy / PreDCA
+    cells:
+      MB1: []
+      MB2:
+        - type: T
+          ids:
+            - 123
+      MB3:
+        - type: T
+          ids:
+            - 123
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7: []
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: kosoy-predca
+  - agenda: CIRIS
+    cells:
+      MB1:
+        - type: P
+          ids:
+            - 53
+            - 108
+        - type: C
+          ids:
+            - 103
+            - 104
+            - 106
+        - type: D
+          ids:
+            - 105
+      MB2: []
+      MB3: []
+      MB4:
+        - type: C
+          ids:
+            - 107
+        - type: D
+          ids:
+            - 54
+            - 55
+            - 56
+        - type: D
+          ids:
+            - 109
+            - 110
+            - 111
+        - type: P
+          ids:
+            - 108
+      MB4a:
+        - type: C
+          ids:
+            - 107
+        - type: D
+          ids:
+            - 109
+            - 110
+            - 111
+      MB5: []
+      MB6:
+        - type: P
+          ids:
+            - 112
+        - type: C
+          ids:
+            - 113
+      MB7:
+        - type: D
+          ids:
+            - 114
+        - type: C
+          ids:
+            - 115
+            - 116
+      MB7d: []
+      MB8: []
+      MB9:
+        - type: C
+          ids:
+            - 104
+            - 117
+      MB10: []
+      MB11:
+        - type: C
+          ids:
+            - 108
+            - 131
+        - type: P
+          ids:
+            - 108
+    slug: ciris
+  - agenda: GovAI
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: E
+          ids:
+            - 57
+            - 59
+        - type: P
+          ids:
+            - 58
+      MB7:
+        - type: P
+          ids:
+            - 58
+      MB7d: []
+      MB8: []
+      MB9:
+        - type: C
+          ids:
+            - 60
+      MB10: []
+      MB11: []
+    slug: govai
+  - agenda: UK AISI / CAISI
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: P
+          ids:
+            - 61
+            - 63
+        - type: E
+          ids:
+            - 62
+      MB7:
+        - type: E
+          ids:
+            - 62
+        - type: P
+          ids:
+            - 64
+      MB7d: []
+      MB8: []
+      MB9:
+        - type: P
+          ids:
+            - 63
+      MB10: []
+      MB11:
+        - type: P
+          ids:
+            - 63
+    slug: uk-aisi-caisi-gov-eval-institutes
+  - agenda: Pause cluster
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4:
+        - type: P
+          ids:
+            - 65
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: P
+          ids:
+            - 66
+      MB7: []
+      MB7d: []
+      MB8:
+        - type: P
+          ids:
+            - 65
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: pause-standards-advocacy-cluster
+  - agenda: CLR
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: C
+          ids:
+            - 67
+            - 68
+        - type: O
+          ids:
+            - 69
+      MB7: []
+      MB7d:
+        - type: C
+          ids:
+            - 70
+        - type: O
+          ids:
+            - 71
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: clr-cooperation-conflict
+  - agenda: Truthful AI
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7:
+        - type: E
+          ids:
+            - 72
+            - 73
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: truthful-ai-evans
+  - agenda: Goodfire / MI
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7:
+        - type: D
+          ids:
+            - 74
+            - 75
+            - 76
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: goodfire-mechanistic-interpretability-cluster
+  - agenda: AI Futures
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6:
+        - type: O
+          ids:
+            - 77
+      MB7: []
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: ai-futures-forecasting-cluster
+  - agenda: FAR.AI
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7:
+        - type: O
+          ids:
+            - 78
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: farai
+  - agenda: Conjecture
+    cells:
+      MB1: []
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a: []
+      MB5: []
+      MB6: []
+      MB7:
+        - type: C
+          ids:
+            - 79
+      MB7d: []
+      MB8: []
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: conjecture-cognitive-emulation
+  - agenda: TSA
+    cells:
+      MB1:
+        - type: S
+          ids:
+            - 81
+            - 82
+        - type: T
+          ids:
+            - 80
+      MB2:
+        - type: T
+          ids:
+            - 83
+            - 84
+        - type: C
+          ids:
+            - 85
+      MB3:
+        - type: T
+          ids:
+            - 83
+            - 86
+      MB4:
+        - type: T
+          ids:
+            - 87
+        - type: S
+          ids:
+            - 88
+        - type: C
+          ids:
+            - 89
+      MB4a:
+        - type: T
+          ids:
+            - 125
+        - type: S
+          ids:
+            - 88
+      MB5:
+        - type: T
+          ids:
+            - 90
+            - 91
+        - type: S
+          ids:
+            - 92
+      MB6:
+        - type: T
+          ids:
+            - 93
+        - type: S
+          ids:
+            - 94
+        - type: P
+          ids:
+            - 95
+      MB7:
+        - type: T
+          ids:
+            - 96
+            - 97
+        - type: S
+          ids:
+            - 98
+        - type: E
+          ids:
+            - 99
+      MB7d:
+        - type: T
+          ids:
+            - 100
+      MB8:
+        - type: C
+          ids:
+            - 89
+        - type: C
+          ids:
+            - 132
+      MB9:
+        - type: T
+          ids:
+            - 101
+      MB10:
+        - type: T
+          ids:
+            - 102
+      MB11:
+        - type: T
+          ids:
+            - 127
+    slug: this-project-towards-superintelligence-alignment-tsa

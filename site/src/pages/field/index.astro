@@ -1,0 +1,70 @@
+---
+import { getEntry, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import FieldAgendaMatrix from "../../components/FieldAgendaMatrix.astro";
+import FieldEvidenceCatalog from "../../components/FieldEvidenceCatalog.astro";
+
+const introEntry = await getEntry("field", "intro");
+if (!introEntry) throw new Error("Missing site/src/content/field/intro.md");
+const { Content: IntroContent } = await render(introEntry);
+---
+
+<SiteLayout
+  title="Field"
+  description={introEntry.data.description ?? "AI safety field map: agendas, bridge coverage matrix, and sourced evidence catalog."}
+>
+  <section class="hero">
+    <p class="eyebrow">Field</p>
+    <h1>AI safety and alignment</h1>
+    <p class="lede">
+      A reader-facing map of major research agendas, how they connect to bridge problems in
+      <em>Towards Superintelligence Alignment</em>, and sourced evidence for where each agenda has published on those cruxes.
+    </p>
+  </section>
+
+  <article class="field-intro prose-block">
+    <IntroContent />
+  </article>
+
+  <FieldAgendaMatrix base={import.meta.env.BASE_URL} />
+
+  <FieldEvidenceCatalog base={import.meta.env.BASE_URL} />
+</SiteLayout>
+
+<style>
+  .prose-block,
+  .field-intro {
+    margin-top: 2rem;
+    max-width: 48rem;
+  }
+
+  .field-intro :global(h2) {
+    margin-top: 2rem;
+    font-size: 1.35rem;
+  }
+
+  .field-intro :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .field-intro :global(p),
+  .field-intro :global(li) {
+    line-height: 1.6;
+  }
+
+  .field-intro :global(blockquote) {
+    margin: 1.25rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    color: var(--color-muted, #4a5568);
+    font-style: italic;
+  }
+
+  .field-intro :global(ul) {
+    padding-left: 1.25rem;
+  }
+
+  .field-intro :global(a) {
+    color: var(--color-link, #1a5276);
+  }
+</style>

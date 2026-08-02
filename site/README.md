@@ -77,10 +77,11 @@ Output: `site/dist/`
 | `metadata/concepts.yml` | Roster for concept/glossary/gem/institutional/objection/standalone-claim cards; bodies in `metadata/concepts/bodies/*.md`; optional `claimId` link to `metadata/claims-ledger.md` |
 | `metadata/bridges.yml` | Roster for the `mb1`–`mb10` + `bridge-assumptions` cards; cross-checked against `appendices/appB-bridge-crosswalk.tex` |
 | `metadata/projections.yml` | Roster for field-projection cards (external agenda ↔ book invariants; display title `Field projection — ...`) |
-| `metadata/field-news.yml` | Roster for related-news cards (external incidents/evals → book chapters); bodies in `metadata/field-news/bodies/` |
+| `reference/field-agendas/data/` | Source YAML for field hub, agenda cards, and regenerated `field-agenda-index.md` |
 | `scripts/sync-concepts.mjs` | Generates cards from `concepts.yml` plus `src/data/{glossary,part-gems,standalone-claims}.json`; `--check` diffs without writing |
 | `scripts/sync-bridges.mjs` | Generates bridge cards from `bridges.yml` (+ appB parse); `--check` diffs without writing |
 | `scripts/sync-projections.mjs` | Generates projection cards from `projections.yml` plus `src/data/field-projection{,-gems}.json`; `--check` diffs without writing |
+| `scripts/sync-field-agendas.mjs` | Generates agenda cards from `reference/field-agendas/data/` plus `src/data/field-agendas.json`; regenerates `field-agenda-index.md`; `--check` diffs without writing |
 | `scripts/sync-field-news.mjs` | Generates related-news cards from `field-news.yml` plus `src/data/field-news.json`; `--check` diffs without writing |
 | `scripts/sync-notation.mjs` | Generates `src/data/notation.json` for `/notation/` from `metadata/notation.md` (no per-symbol cards) |
 | `scripts/sync-releases.mjs` | Generates release cards + the `/updates/` hub card from `RELEASE_NOTES.md` |

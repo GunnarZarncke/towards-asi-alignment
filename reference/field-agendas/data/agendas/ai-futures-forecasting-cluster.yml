@@ -1,0 +1,24 @@
+slug: ai-futures-forecasting-cluster
+title: AI Futures / forecasting cluster
+type: Forecasting / strategy
+carrier: AI Futures Project (AI 2027); Epoch AI; Metaculus; FRI
+primaryArtifact: AI 2027 scenario; timelines; prediction infrastructure
+signatureVocabulary: AI 2027, timelines, TAI, automation of R&D, scenario planning
+statedIntent: Inform decisions with explicit forecasts about AI development
+primaryCrux: 'Schedule uncertainty vs mechanism uncertainty (book: schedule cues only)'
+bookBridges:
+  - MB6 (schedule shapes — not findings)
+contributes: Schedule shapes for governance stress tests (App F)
+bookSeparates: Macro scenario ⇏ MB discharge
+manuscriptHooks:
+  - App C Plan A
+  - App F governance-schedule deferred
+links:
+  - label: AI Futures Project
+    url: https://ai-2027.com/
+  - label: Epoch AI
+    url: https://epochai.org/
+  - label: Metaculus
+    url: https://www.metaculus.com/
+  - label: AI Impacts
+    url: https://aiimpacts.org/

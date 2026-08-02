@@ -1,0 +1,16 @@
+slug: mats
+title: MATS
+type: Training / research program
+carrier: MATS (Machine Alignment, Transparency, and Security)
+primaryArtifact: 12-week mentored research + extension track
+signatureVocabulary: MATS, mentored alignment research, transparency, security
+statedIntent: Connect scholars to alignment mentors for empirical/conceptual research
+primaryCrux: Mentorship output diversity vs unified measurement spine
+bookBridges: []
+contributes: Research talent pipeline
+bookSeparates: —
+manuscriptHooks:
+  - none required
+links:
+  - label: MATS
+    url: https://www.matsprogram.org/

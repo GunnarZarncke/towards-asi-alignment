@@ -1,0 +1,27 @@
+slug: chai-russell
+title: CHAI (Russell)
+type: Research org (academic)
+carrier: Center for Human-Compatible AI, UC Berkeley
+primaryArtifact: Assistance games / CIRL framework; beneficial AI reorientation
+signatureVocabulary: >-
+  CIRL, inverse reward design, assistance games, beneficial AI, provably
+  beneficial systems
+statedIntent: >-
+  Reorient AI research toward systems that remain beneficial under uncertainty
+  about human preferences
+primaryCrux: Cooperative reward inference underdetermined; values vs irrationality
+bookBridges:
+  - MB2
+  - MB3
+  - MB4
+contributes: Formal assistance-game framing; off-switch game lineage
+bookSeparates: Bundle geometry + bearer maps; ELK as subchannel not whole target
+manuscriptHooks:
+  - ch04, ch18
+  - App B MB2/MB3
+  - App G CIRL projection
+links:
+  - label: CHAI
+    url: https://humancompatible.ai/
+  - label: CHAI Internship
+    url: https://humancompatible.ai/

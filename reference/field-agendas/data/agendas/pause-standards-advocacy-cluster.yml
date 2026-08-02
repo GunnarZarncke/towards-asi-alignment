@@ -1,0 +1,29 @@
+slug: pause-standards-advocacy-cluster
+title: Pause / standards advocacy cluster
+type: Advocacy coalition
+carrier: PauseAI, FLI, ControlAI, Encode, Stop AI (distinct tactics, shared vocabulary)
+primaryArtifact: Campaigns; SB 53 / RAISE-style bills; Narrow Path (ControlAI)
+signatureVocabulary: pause, moratorium, standards, off-switch priority, verified slowdown
+statedIntent: Change policy and public narrative to reduce extinction risk from advanced AI
+primaryCrux: >-
+  Can advocacy create enforceable slowdown without collateral governance
+  failure?
+bookBridges:
+  - MB6 (selection environment)
+  - MB8 (secondary)
+contributes: Schedule shapes for governance stress tests (App F deferred section)
+bookSeparates: Pause handle ⇏ MB1–MB10 discharge; basin transition conditions
+manuscriptHooks:
+  - App C MIRI hard-pause vs Plan A
+  - ch38 conductive artifacts
+links:
+  - label: PauseAI
+    url: https://www.pauseai.info/
+  - label: FLI
+    url: https://futureoflife.org/
+  - label: ControlAI
+    url: https://controlai.com/
+  - label: Encode
+    url: https://encodeai.org/
+  - label: Global AI Moratorium (FLI)
+    url: https://futureoflife.org/open-letter/pause-giant-ai-experiments/

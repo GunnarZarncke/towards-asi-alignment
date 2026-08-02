@@ -1,0 +1,26 @@
+slug: resolution
+title: Resolution
+type: Research org
+carrier: Resolution (Geoffrey Irving; Timaeus merging)
+primaryArtifact: Theory + automation for high-confidence alignment
+signatureVocabulary: >-
+  automation, formal alignment, higher-confidence alignment, singular learning
+  (Timaeus)
+statedIntent: >-
+  Pursue alignment approaches that can be automated and checked with high
+  confidence
+primaryCrux: Can formal+automated pipelines scale to superintelligent alignment?
+bookBridges:
+  - MB1
+  - MB9 (partial)
+  - MB11 (cousin)
+contributes: Automation-first philosophy; UK AISI lineage
+bookSeparates: Book's adversarial-verifiability chokepoint under optimization
+manuscriptHooks:
+  - sparse
+  - App B exclude-by-reference for full verification construction
+links:
+  - label: Resolution
+    url: https://resolution.org/
+  - label: Timaeus
+    url: https://timaeus.ai/

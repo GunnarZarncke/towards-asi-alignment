@@ -1,0 +1,26 @@
+slug: christiano-lineage
+title: Christiano lineage
+type: Researcher lineage (distributed)
+carrier: Paul Christiano, ARC-adjacent ELK, former OpenAI alignment
+primaryArtifact: Debate, amplification, ELK posts; corrigibility notes
+signatureVocabulary: >-
+  debate, amplification, ELK, recursive reward modeling, corrigibility
+  (dynamical), scalable oversight
+statedIntent: Scalable oversight that remains honest under optimization pressure
+primaryCrux: Obfuscated arguments; accumulated judge drift; latent readout vs behavior
+bookBridges:
+  - MB2
+  - MB3
+  - MB7a–c
+  - MB4
+contributes: Scalable-oversight protocol family; ELK problem statement
+bookSeparates: Correction-channel integrity; readout ⇏ correction uptake
+manuscriptHooks:
+  - ch29, ch41, ch43
+  - App B
+  - projections ELK/debate
+links:
+  - label: ARC
+    url: https://www.alignment.org/
+  - label: Paul Christiano (archive)
+    url: https://www.alignmentforum.org/users/paulfchristiano
