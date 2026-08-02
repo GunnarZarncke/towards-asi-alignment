@@ -1,4 +1,4 @@
-// Generates the mb1..mb10 + bridge-assumptions site cards from metadata/bridges.yml.
+// Generates the mb1..mb11 + bridge-assumptions site cards from metadata/bridges.yml.
 // Cross-checks bridges.yml's fieldCrux/owningAgenda/bookMove against the appB
 // longtable (appendices/appB-bridge-crosswalk.tex) as a validation source only —
 // bridges.yml stays authoritative for what gets written to the site cards.

@@ -2,14 +2,14 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-03 (site logo + favicon; README trim).
+Last updated: 2026-08-03 (MB bridge graph; MB11 bridge card).
 
 ---
 
 ## Open work (load-bearing)
 
 - **Field agenda matrix (post-restructure)** — 25 matrix rows / 30 agenda records after independence merges and neglected-report folds; TSA row links to companion home (no card). Stale search index until next site build. App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`.
-- **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agree/differ/homograph notes now on each MB card (+ `dynamical-guarantee` for MB11); hub crux legend removed 2026-08-02. Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
+- **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agree/differ/homograph notes on MB1–MB11 bridge cards; hub crux legend removed 2026-08-02. Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
 - **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
 - **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk core sync 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
 - **Terminology demotion follow-through** — v1.1 plain-first + App E + site `concepts.yml` **shipped** (2026-08-02). Remaining: thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`), residual appendices grep. Inventory: `drafts/glossary-term-audit.md`.
@@ -31,6 +31,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference + site (2026-08-03):** MB bridge dependency graph (`reference/field-agendas/graphs/mb-bridge-dependencies.*`, field nouns); dedicated **MB11** bridge card (`mb11-deployment-safety`) — field matrix + crosswalk + Lean spine links; dynamical-guarantee concept points to MB11 card. Log: `2026-08-03-mb-bridge-graph-and-mb11-card.md`.
 - **Companion site (2026-08-03):** TSA logo SVG — circular transparent `logo-circle.svg` in header (navbar height); favicon/PWA icons; theme `#161E2B`. README trimmed (standalone-claims block removed; “What this is” revised). Log: `2026-08-03-site-logo-favicon-readme.md`.
 - **Reference (2026-08-02):** Field agenda restructure — neglected-report folds; 4 independence merges (GovAI+UK AISI, Apollo+Truthful, CHAI+FAR, Anthropic+Goodfire); Neglected approaches + Safeguarded AI + MAI+CIP rows; TSA matrix-only home link; AE essay overview on portfolio card; short matrix labels. Log: `2026-08-02-field-agenda-restructure-merges.md`.
 - **Reference (2026-08-02):** Field matrix bridge nouns — `bridges.yml` source; noun matrix headers; agree/differ on MB1–MB10 bodies + MB11 on `dynamical-guarantee`; hub crux legend removed; Track 2 plan `drafts/field-crux-divergence-plan.md`. Log: `2026-08-02-field-matrix-bridge-nouns.md`.

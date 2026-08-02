@@ -91,7 +91,8 @@ function bridgeCardSlug(nodeId) {
     7: "mb7-hidden-capability-and-access",
     8: "mb8-cev-process-convergence",
     9: "mb9-grounding-certificate",
-    10: "mb10-successor-forgeability"
+    10: "mb10-successor-forgeability",
+    11: "mb11-deployment-safety"
   };
   const key = nodeId.startsWith("MB6") ? 6 : nodeId.startsWith("MB7") ? 7 : Number(mb[1]);
   return names[key] || null;

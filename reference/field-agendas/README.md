@@ -15,6 +15,7 @@ Agent-oriented crosswalk material for comparing alignment agendas and vocabulary
 | [`site/src/content/field/intro.md`](../../site/src/content/field/intro.md) | Public Field hub introduction |
 | [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) | Alphabetical terms by source agenda |
 | [`anthropic-acausal-taxonomy.md`](anthropic-acausal-taxonomy.md) | Four loads on *anthropic* / acausal |
+| [`graphs/`](graphs/) | MB bridge dependency graph (field nouns; companion to matrix) |
 
 **Companion site:** [towards-alignment.com/field/](https://towards-alignment.com/field/) — matrix, evidence catalog, agenda cards.
 

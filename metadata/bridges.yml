@@ -1,4 +1,4 @@
-# Roster of MB1-MB10 bridge cards plus the bridge-assumptions index card.
+# Roster of MB1-MB11 bridge cards plus the bridge-assumptions index card.
 # Field matrix nouns/crux: reference/field-agendas/data/bridges.yml (keep titles/fieldCrux aligned).
 # Regenerate site cards with: cd site && npm run sync:bridges
 
@@ -197,6 +197,24 @@ bridges:
     fieldCrux: "A successor's green alignment-transport audit is not checklist theater — signature adversarially verifiable up to capability."
     owningAgenda: "Certification-under-manipulation; agent foundations (tiling)"
     bookMove: "Require the conserved-property signature itself to be adversarially verifiable up to the successor's capability before a passing score counts as evidence"
+  - slug: mb11-deployment-safety
+    kind: bridge
+    title: MB11 — Deployment Safety
+    status: bridge
+    summary: "Safety-case gap: does audited layer evidence plus bounded measured risk suffice for deployment-level safety? Precise bet: a certified safety case within deployment risk tolerance warrants abstract Safe."
+    decision: Before acting on a safety case, ask whether the argument stops at green layers and a risk bound, or whether it still needs an explicit deployment-tolerance judgment — and whether that judgment is inside the case's scope.
+    evidence: Evidence would include pre-registered eval batteries whose pass thresholds were fixed before outcomes were known, plus governance records showing the tolerance judgment was not reverse-engineered from the case.
+    bookChapters:
+      - ch03
+      - ch42
+      - ch44
+      - ch48
+    body: bodies/mb11-deployment-safety.md
+    id: MB11
+    assumptionIds: [C-001]
+    fieldCrux: "Certified safety case within deployment risk tolerance warrants abstract Safe."
+    owningAgenda: "Safety-case methodology; GSAI / eval-to-deployment warrant (cousin)"
+    bookMove: "Certified safety case within deployment risk tolerance ⇒ Safe; assembly theorems are packaging — the open step is a named bridge"
 index:
   slug: bridge-assumptions
   kind: bridge

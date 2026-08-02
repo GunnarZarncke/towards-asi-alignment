@@ -67,6 +67,7 @@ src/content/cards/institutional-selection-gating.md
 src/content/cards/intervention-supported-unit-discovery.md
 src/content/cards/mb1-boundary-estimator-soundness.md
 src/content/cards/mb10-successor-forgeability.md
+src/content/cards/mb11-deployment-safety.md
 src/content/cards/mb2-bundle-identifiability.md
 src/content/cards/mb3-bearer-import.md
 src/content/cards/mb4-correction-legitimacy.md

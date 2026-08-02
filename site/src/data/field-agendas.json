@@ -5243,7 +5243,7 @@
       "noun": "Deployment Safety",
       "cruxWording": "Certified safety case within deployment risk tolerance warrants abstract Safe.",
       "leanAxiom": "MB11_safety_case_adequacy",
-      "cardSlug": "dynamical-guarantee",
+      "cardSlug": "mb11-deployment-safety",
       "fieldAgree": "Safety-case / assurance closure; eval-to-deployment warrant talk.",
       "fieldDiffer": "Not regret⇒safe; packaging ≠ bridge; scope-exceeded defeater."
     }
@@ -5261,6 +5261,6 @@
     "MB8": "mb8-cev-process-convergence",
     "MB9": "mb9-grounding-certificate",
     "MB10": "mb10-successor-forgeability",
-    "MB11": "dynamical-guarantee"
+    "MB11": "mb11-deployment-safety"
   }
 }

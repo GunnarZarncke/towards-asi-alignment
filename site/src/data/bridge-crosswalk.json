@@ -126,7 +126,7 @@
     "fieldCrux": "Certified safety case within deployment risk tolerance warrants abstract Safe.",
     "agendas": "Safety-case methodology; GSAI / UK AISI eval-to-deployment warrant (cousin)",
     "bookMove": "Certified safety case within deployment risk tolerance ⇒ Safe; assembly theorems are packaging — the open step is a named bridge",
-    "cards": ["dynamical-guarantee", "deployment-gate"],
+    "cards": ["mb11-deployment-safety", "dynamical-guarantee", "deployment-gate"],
     "chapters": ["ch42", "ch44", "ch48"]
   }
 ]

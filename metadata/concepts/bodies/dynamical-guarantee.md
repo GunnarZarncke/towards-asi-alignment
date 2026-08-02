@@ -22,6 +22,7 @@ related:
   - grounding-viability
   - boundary-discovery
   - successor-stability
+  - mb11-deployment-safety
 ---
 
 A static alignment claim has the form "at time t, system A has property P." That is useful for ordinary software — does a program pass a test suite, respect an access policy, return a correct output — but it breaks for superintelligence, where the system learns, acquires tools, persuades users, and eventually produces successors.
@@ -30,4 +31,4 @@ The book's replacement is a dynamical guarantee: a probabilistic claim that the 
 
 The distinction between a safe set, a bad set, and a basin matters here. A system can be safe right now while sitting outside the basin — a lab that behaves responsibly today while funding and competitive pressure push it toward dangerous deployment. A system can also enter a locally risky state while remaining inside a basin that reliably corrects it. The dynamical guarantee tracks the basin, not the snapshot.
 
-**MB11 (Deployment Safety)** closes the safety-case loop: a certified safety case within deployment risk tolerance is assumed to warrant abstract Safe. In the field this is safety-case / assurance closure and eval-to-deployment warrant talk. **Where agendas agree:** safety-case packaging; deployment risk tolerance framing. **Where they diverge:** Kosoy regret on MB2 is a value-learning cousin, not regret ⇒ Safe; packaging alone is not a bridge discharge; scope-exceeded is a defeater.
+The safety-case loop is closed by bridge **[MB11 (Deployment Safety)](/cards/mb11-deployment-safety/)** — see that card for the field crux, Lean bridge, and agree/differ notes.
