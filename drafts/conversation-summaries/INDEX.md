@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-02 | **Site concepts glossary sync** — `concepts.yml` + bodies aligned with App E; ch46→ch34/ch25/ch26 fixes; terminology demotion complete. | [2026-08-02-site-concepts-glossary-sync.md](2026-08-02-site-concepts-glossary-sync.md) |
 | 2026-08-02 | **Site Field hub + agenda YAML restructure** — Nav Field/Badges/Book/PDF reorder; `/field/` matrix + evidence catalog; 32 agenda cards; YAML source of truth under `reference/field-agendas/data/`. | [2026-08-02-site-field-hub-agendas.md](2026-08-02-site-field-hub-agendas.md) |
 | 2026-08-02 | **App E glossary sync** — Review vs inter-agenda glossary; homograph patches, new headwords (strategic opacity, ICI, adversarial verifiability, etc.), nearest-field deltas. Site concepts.yml deferred. | [2026-08-02-appE-glossary-sync.md](2026-08-02-appE-glossary-sync.md) |
 | 2026-08-02 | **Field index spine translation** — Dissolve missing-bridge candidates table; fold Phase 3 dispositions into Coverage vs book treatment reading rules. | [2026-08-02-field-index-spine-translation.md](2026-08-02-field-index-spine-translation.md) |

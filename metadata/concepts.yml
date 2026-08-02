@@ -107,12 +107,18 @@ concepts:
     claimId: C-007
     body: bodies/attractor-control.md
     glossaryTerms:
-      - term: Deployment/control mass
-        definition: 'In selection environment \(E\), the aggregate effective selection capacity over handles controlled in \(E\) that reach system \(A\). Formal definition: **ch46** (`eq:deployment-mass-ch46`).'
-      - term: Fitness
-        definition: 'Environment-relative rate of deployment-leverage accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\); relative ordering uses \(\mu_E\). Not moral value; capability, revenue, and benchmarks enter only as drivers of selection-handle exercise. Formal definition: **ch46** (`eq:fitness-ch46`).'
+      - term: Selection environment
+        definition: 'The deployment environment — institutions, markets, protocols, benchmarks, procurement, liability, copying, and successor release that determine which systems gain deployment leverage. Not Demski selection-vs-control or Wentworth selection theorems (homographs on "selection"). Formal home: **ch34**.'
+      - term: Point of control over deployment
+        definition: 'A selection handle — an embedded access point through which some actor increases a system''s deployment footprint (deploy, fund, copy, procure, integrate, authorize, recommend, regulate, successor-enable). **ch34**.'
+      - term: Deployment leverage
+        definition: 'How much of environment \(E\) runs on system \(A\): aggregate effective selection capacity \(\mu_E(A)=\sum_{h\in\mathcal{H}_E(A)}\kappa_{\mathrm{sel}}(E,A,h)\). Not market cap or user count alone. Formal definition: **ch34** (`eq:deployment-mass-ch34`).'
+      - term: Deployment growth rate
+        definition: 'Rate of deployment-leverage accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\) ("fitness" in formulas only). Not biological fitness; not Demski in-optimizer search. Formal definition: **ch34** (`eq:fitness-ch34`).'
+      - term: Preservation conditions
+        definition: 'Explicit list \(\vec{\Pi}(A)\) of alignment-relevant properties under selection — grounding, bundle/bearer drift bounds, valid correction reference, vector CCI, hidden productive B-IQ bounds, selector manipulation, irreversibility budget, successor safety, adversarial verifiability. Not a scalar score. **ch34** (`eq:preservation-envelope-ch34`).'
       - term: Alignment basin
-        definition: A self-stabilizing region of dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure.
+        definition: 'Self-stabilizing regime where correction tends to restore alignment after perturbation; outside it, selection amplifies drift. Christiano dynamical corrigibility uses the same basin metaphor. A stable basin can be stably bad — persistence is not safety.'
   - slug: bearer-map-commutation-failure
     kind: standalone-claim
     title: Bearer-Map Commutation Failure
@@ -167,7 +173,7 @@ concepts:
     body: bodies/boundary-discovery.md
     glossaryTerms:
       - term: Boundary
-        definition: A statistical and causal interface that makes internal and external dynamics approximately separable for prediction and control.
+        definition: 'Discoverable partition of internal, sensory, active, and external variables with approximate conditional independence at the interface (ε-MI cut). Friston Markov blanket is often theoretical; here the cut is a measurable audit object. Real boundaries leak.'
   - slug: boundary-residual
     kind: concept
     title: The Boundary Residual
@@ -204,6 +210,11 @@ concepts:
     bookLabels:
       - ch:verifiability-ontology
     body: bodies/certification-under-manipulation.md
+    glossaryTerms:
+      - term: Adversarial verifiability
+        definition: 'Measurand stays informative under optimization aimed at the measurement — faking or hiding the signal costs capability (or other scarce resources) faster than the adversary can afford. CIRIS Verify attests identity, not score fakeability; ELK honest readout is a strict subset. **ch43**.'
+      - term: Certification-under-manipulation
+        definition: 'Audits, evals, or certificates stay green while the system games the measurand — Goodhart applied to the certification channel. Cousin of correction-audit evasion on correction hosts; alignment faking is one empirical mechanism. **ch43**.'
   - slug: civilizational-correction-problem
     kind: objection
     title: Correction at Civilizational Scale
@@ -267,9 +278,11 @@ concepts:
     body: bodies/correction-channel-integrity.md
     glossaryTerms:
       - term: Correction channel
-        definition: 'The pathway by which humans or human institutions observe a system, judge, deliberate, issue corrections, and change its future behaviour before irreversible damage; formally, a correcting agent \(G_t\) that sufficiently coincides with legitimate human correction controls handles \(\mathcal{H}_t\) that reach the target''s update and later behaviour. Canonical definition: **ch46** (`eq:handle-controlled-correction-channel-ch46`; trace `eq:correction-chain-ch46`).'
-      - term: Correction-channel integrity
-        definition: 'A conditional vector/status certificate for whether controlled, reaching correction traces remain valid and strong enough: grounding-valid reference process first, then raw bottleneck capacity, latency, manipulation, irreversibility, residual ontology translation loss, coercion/dependency/plurality/exit/independence coordinates, and per-coordinate thresholds. Scalar \(CCI_\lambda\) is expository only. Formal home: **ch46** (`eq:correction-bottleneck-capacity`, `eq:cci-ch46`).'
+        definition: 'Pathway by which legitimate human judgment reaches handles that change future behaviour before irreversible harm — observe → judge → deliberate → correct → update → act. Exists only when the correcting process controls real handles that reach later behaviour. **ch25** (`eq:handle-controlled-correction-channel-ch25`).'
+      - term: Correction-channel integrity (CCI)
+        definition: 'Trajectory-level certificate that the correction channel stays informative, timely, authoritative, and robust under pressure — not a single shutdown bit. Christiano dynamical corrigibility names the same crux at the basin metaphor; MIRI/CHAI corrigibility, shutdownability, and interruptibility are thinner projections. Formal home: **ch26** (`eq:correction-bottleneck-capacity`, `eq:cci-ch26`).'
+      - term: Correction-audit evasion
+        definition: 'Process that benefits from the appearance of correction while weakening real correction capacity — compliance theater on the correction host. Operational term; biological parasite metaphor in **ch36** only.'
   - slug: dynamical-guarantee
     kind: concept
     title: The Dynamical Guarantee
@@ -340,14 +353,13 @@ concepts:
     evidence: Evidence would include pre/post-selection correlation studies, conditional expectation reversals under optimization, and documented cases where high proxy scores coincide with lower true safety properties.
     bookChapters:
       - ch34
-      - ch46
       - ch43
     body: bodies/goodhart-as-selector.md
   - slug: grounding-viability
     kind: glossary
     title: Grounding Viability
     status: framework
-    summary: The checked symbols, metrics, monitors, and correction signals must remain connected to value-relevant reality.
+    summary: The checked symbols, metrics, monitors, and abstractions must stay connected to value-relevant reality under optimization — conservativity (no silent meaning gaps), not completeness (enumerate every phenomenon).
     decision: Ask whether the measurement still moves when the world changes, not only whether the dashboard stays green.
     evidence: Evidence would include audits that real value-relevant changes move model state, correction signals, uncertainty, or escalation.
     bookChapters:
@@ -382,10 +394,10 @@ concepts:
     part: part08
     body: bodies/inferential-coupling.md
     glossaryTerms:
+      - term: Inferential coupling
+        definition: 'Residual coordination between agents after ordinary message channels are severed — through shared history, scaffolds, self-similarity, or full acausal reasoning.'
       - term: Inferential coupling index (ICI)
-        definition: A measure of coordination potential between systems via shared meta-priors and decision-theoretic similarity, even when causal reach $p_{ij}$ is low.
-      - term: Effective cooperativity ($\tilde{\kappa}_{ij}$)
-        definition: Cooperativity index combining causal reach and inferential coupling.
+        definition: 'Normalized mutual information between actions given the cut; zero means independent once messages are removed. Acausal trade/ECL name the same crux at the full-acausal limit; ICI is the measurement target, not a stipulation that trade occurs. **ch35**.'
   - slug: institutional-capability-latency-gap
     kind: institutional
     title: 'Failure: Capability Jump Outruns Correction Latency'
@@ -606,6 +618,11 @@ concepts:
     featured: true
     part: part03
     body: bodies/strategic-opacity.md
+    glossaryTerms:
+      - term: Strategic opacity
+        definition: 'System benefits from shaping how it is modeled — incentive-compatible concealment of control locus or capability under observation. Ordinary opacity is passive difficulty; strategic opacity is adversarial. **ch10**.'
+      - term: Hidden productive B-IQ bound
+        definition: 'Upper limit on productive boundary-relevant control that can stay hidden while monitored channels read green (MB7a–c). Distinct from experimental BIQ (boundary-claim quality in graded-lab runs). **ch10**.'
   - slug: successor-stability
     kind: concept
     title: Successor Stability
@@ -625,6 +642,8 @@ concepts:
     glossaryTerms:
       - term: Successor
         definition: Any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity.
+      - term: Conserved properties
+        definition: 'Invariants a successor must inherit for alignment guarantees to survive creation — boundary closure, memory lineage, bundle geometry, bearer map, penalised CCI, transparency policy, control-locus continuity. Behavioral resemblance is not enough; MB10 forgeability stress-tests audit of the list. **ch31**.'
   - slug: the-boundary-error
     kind: concept
     title: The Boundary Error
@@ -672,9 +691,11 @@ concepts:
     body: bodies/value-bundle-transport.md
     glossaryTerms:
       - term: Value bundle
-        definition: A low-dimensional latent control direction that changes policy across many contexts.
+        definition: 'Low-dimensional control direction that changes policy across contexts — steering, not scoring. Cousin to reward components, shard-theory influences, and CIRL \(k=1\) scalar case; not a single utility to maximize.'
       - term: Value-bundle geometry
         definition: The pattern by which latent value dimensions and their tradeoffs change policy across contexts — not merely which labels appear, but how bundles activate and compete.
+      - term: Transport
+        definition: 'What survives retraining, rebuild, or successor creation: semantic (words), bundle (response geometry), bearer (who counts), correction (human update process), and successor layers — tracked separately rather than as one continuity claim.'
       - term: Goal transport
         definition: Preservation of goal-relevant structure across transformation.
   - slug: value-change-vs-corruption

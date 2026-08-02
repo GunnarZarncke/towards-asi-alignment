@@ -1,6 +1,6 @@
 # Glossary term audit (working notes)
 
-**Status:** manuscript demotion pass — **partially shipped** (2026-08-02). Inter-agenda glossary prose pass complete; chapter/appendix plain-first edits below applied. **App E sync shipped** (homographs, new headwords, nearest-field deltas); site `concepts.yml` still open.
+**Status:** manuscript demotion pass — **shipped** (2026-08-02). App E and site `concepts.yml` / glossaryTerms synced with inter-agenda glossary; card bodies updated for CCI, MB6, strategic opacity, MB7 BIQ disambiguation.
 
 **Source rules:** v1.1 demotion ([`archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md`](conversation-summaries/archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md)); field translation from [`reference/field-agendas/inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md).
 
@@ -89,8 +89,14 @@
 ### Still open
 
 - Residual ch34 in-chapter shorthand (`selection handle`, `fitness` in formulas) after definitional block — acceptable at home.
-- Site `metadata/concepts.yml` / MB6 and CCI cards parity spot-check.
 - Full appendices grep for any missed downstream coined shorthand.
+
+### Shipped (2026-08-02) — site concepts sync
+
+- `metadata/concepts.yml` glossaryTerms: deployment leverage/growth rate, preservation conditions, selection environment; CCI corrigibility homograph; boundary Friston note; value bundle/transport; strategic opacity + hidden B-IQ; ICI; adversarial verifiability + certification-under-manipulation; conserved properties.
+- Fixed stale **ch46** equation refs → ch25/ch26/ch34.
+- Bodies: `correction-channel-integrity`, `attractor-control`, `strategic-opacity`, `mb7-hidden-capability-and-access`.
+- Regenerated site cards via `npm run sync:concepts`.
 
 ### Shipped (2026-08-02) — App E sync
 
