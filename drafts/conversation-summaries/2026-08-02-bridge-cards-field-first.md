@@ -26,4 +26,4 @@ User: now that bridges feature prominently on the Field hub, each bridge card sh
 - Field hub: `site/src/content/field/intro.md`, `/field/`
 
 ## Commits
-- (none yet; user did not ask to commit)
+- `5f60f9b0` Make bridge cards field-first for Field hub readers.
