@@ -30,4 +30,4 @@ User requested site nav changes (Field before Cards, Book before PDF, Badges aft
 - `cd site && npm run sync:field-agendas && npm run build` — 841 pages, `/field/` and `/cards/field-agendas/miri/` present.
 
 ## Commits
-- (this session)
+- `bdb17968` Add Field hub with YAML-backed agenda matrix and cards.
