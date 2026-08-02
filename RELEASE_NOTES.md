@@ -10,6 +10,57 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 - **PATCH** — fixes, calibration, citations, and editorial passes.
 ---
 
+## v1.4.0 — 2026-08-02 — Field crosswalk hub, legibility pass, and external-transfer ET-3/ET-4
+
+Commit: `pending` · Tag: `v1.4.0`
+
+**Field agenda crosswalk** maps 32 named agendas to MB1–MB11 on a companion **Field hub**; a **plain-first legibility pass** retires coined jargon in the manuscript and syncs Appendix E with a 152-headword inter-agenda glossary; **external transfer** closes the AI 2027 annex (ET-3) and ships the Secret Loyalties hackathon line (ET-4); and **field-claim Lean** adds finite defeaters and interface certificates without new bridge numbers.
+
+### Field agenda crosswalk (`reference/field-agendas/`)
+
+- **32 agenda cards** with sourced evidence catalog (132 rows), AISafety.com clustering, and an agenda × bridge **coverage matrix** (MB1–MB11 incl. MB4a).
+- **YAML source of truth** under `data/` — agendas, matrix, evidence, clustering — with `sync-field-agendas.mjs` generating the index markdown and site cards; `field-agenda-index.md` is generated output, not hand-edited.
+- **Inter-agenda term glossary** (~152 headwords): Definition / why-not-same / cross-agenda tags; source-backed prose pass; **`anthropic`** homograph hub (acausal/ECL disambiguation).
+- **Spine-translation rules** replace a missing-bridge-candidates table: coverage in the matrix ≠ book treatment; Kosoy LTA vs PreDCA split; public CIRIS and companion-site catalog URLs.
+- **Sibling precursor indexed:** [deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator) as pipeline-lab / ET-4 methodological precursor (`DP-` findings in Appendix I).
+
+### Companion site — Field hub (`site/`)
+
+- **`/field/` hub:** coverage matrix (MB columns → bridge cards), evidence catalog, agenda list with map clustering; nav reordered (**Field** before Cards, **Book** before PDF).
+- **Bridge cards field-first:** each MB1–MB10 (+ index) card opens with the field crux in ordinary technical language, then the precise book bet, with concept-card links — written for Field-hub readers, not proof-spine insiders.
+- **`concepts.yml` synced with Appendix E:** glossaryTerms + CCI/MB6/strategic-opacity bodies; homograph parity (CCI, selection, BIQ).
+- **Offline PWA:** opt-in site caching with hourly refresh; combined **RSS** feed for news and updates; auto-generated field-news chapter footers with expanded titles.
+
+### Reader-facing language and glossary
+
+- **v1.1 terminology demotion (manuscript):** load-bearing coined terms lead with operational paraphrases; **`deployment mass` retired → `deployment leverage`** everywhere in prose (equation/Lean names unchanged for cross-ref stability).
+- **Plain-first selection vocabulary:** `selection environment` → `deployment environment` outside ch34 home; `selection handle` → `point of control over deployment` outside ch34/App E.
+- **Appendix E operational glossary** synced with the inter-agenda glossary — homographs (CCI, selection, BIQ), new headwords (strategic opacity, ICI, adversarial verifiability, certification-under-manipulation, selection environment).
+
+### Manuscript
+
+- **Appendix B bridge crosswalk synced with field index:** range **MB1–MB11** incl. **MB4a**; table split **MB4 / MB4a / MB8** + new **MB11** row; field-index pointer with spine-translation caveat.
+- **Intervention coverage map** (`sec:intervention-coverage-map`): LessWrong AI Safety Interventions index mapped to book scope — explicit exclusions, borderline agendas (shard theory), LLM-opacity rule; surgical cites in ch05, ch07, ch14, ch17, ch27, ch43, ch48, App C.
+- **AFFINE field coverage:** outer-alignment peers, Meta substitution hazards, predictor-loop genesis (App F preparadigmatic Meta vs object-level hazards); CEV/CBV; CCC→corrigibility.
+- **Calibrated passive baselines:** CCD / cyclic causal discovery and Sterman systems-dynamics CLDs cited in ch02/ch07 as feedback-structure baselines, not substitutes for interventional discovery.
+- **Scenario and field cites:** AI 2040 Plan A (ch13, ch31, ch34, ch37, ch38, App C); MIRI agent-foundations writeups on bridge rows; thousand-dimensional persona structure (Africa/Irving) in ch17 with hedges vs control-rank.
+- **Appendix N:** AI 2027 / Plan A / ET-3 epistemic split — scenario illustrations vs stress-tested mechanisms vs unsupported forecast validation.
+
+### Lean proof spine — field-claim formalization (`formal/`)
+
+- **Phase 1 — finite defeaters and toys:** `Defeaters.lean` (misspec signals, MB4a/MB10/MB11 defeaters); `Field/Finite/{Nonrealizability,RegretSafety,CompositePathBypass}.lean` — realizability gaps, regret-alone blocked export, composite-path bypass vs correction integrity.
+- **Phase 2 — interfaces:** `FieldInterfaces.lean` — epistemic-coverage evidence, positive measured-path certificate, regret safety as non-consumer side channel.
+- **Phase 3 — bridge dispositions (no new `MB*`):** misspec ambient MB1/MB9 + defeaters; regret kept as side channel; reflection split in `LobTiling`; positive path → integrity structure with CIRIS TODO; MB10 chokepoint interface kept with prove/type TODO.
+- **`FieldInterfaces.lean` + `Forgeability.lean`:** TODO anchors for deferred harm leaf, CIRIS positive path, chokepoint typing.
+
+### Experimental findings — external transfer ET-3 and ET-4
+
+- **ET-3 closed (LS-48):** AI 2027 capability-schedule transfer annex — macro takeoff cues drove micro bridge stress tests on a pinned sibling fork; foster trajectory sensitivity plots; **no calendar-validation claims**. Deferred follow-ups in `lab-simulation/TODO.md`.
+- **ET-4 Secret Loyalties (hackathon):** simulated pipeline-embedded secret-loyalty organism with principal-directed policy, graded affordance audit (A0–A4), confirmatory battery, and audit-visible remediation holds; spin-out paper under `papers/et4-secret-loyalties/`; **case-brief replay demo** at `/ch07-lab-sim-replay/?mode=et4` with exported trace bundle.
+- **Field news for transfer lines:** plain-language ET-2 CIL card; ET-4 card with paper/replay links; AI 2040 Plan A, pacing-the-frontier, insurance-incentives, Microsoft open-weights cards added since v1.3.0.
+
+---
+
 ## v1.3.0 — 2026-07-25 — Field news, chapter art, external transfer, and graded-lab v4
 
 Commit: `6cd34dcf` · Tag: `v1.3.0`
