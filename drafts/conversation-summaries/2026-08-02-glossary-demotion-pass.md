@@ -22,4 +22,4 @@ User asked to implement edits from `drafts/glossary-term-audit.md`; then retire 
 - `chapters/ch34-selection-environment.tex`, `appendices/appE-glossary.tex`
 
 ## Commits
-- (pending this session)
+- `e3d1aad1` — Apply v1.1 terminology demotion: deployment leverage and plain-first selection vocabulary.
