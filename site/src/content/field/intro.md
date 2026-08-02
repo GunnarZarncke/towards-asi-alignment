@@ -27,7 +27,7 @@ The field is not one research program but a **multitude of agendas**: labs, nonp
 Useful starting points:
 
 - **[AISafety.com map](https://www.aisafety.com/map)** — ecosystem map of organizations, programs, and resources (the clustering on this site rolls up map listings into coherent **agenda** rows).
-- **[AI Safety Interventions](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions)** (Zarncke, 2025) — index of roughly ninety named interventions across foundational theory, oversight, control, interpretability, governance, and underexplored routes; [extended PDF](https://github.com/GunnarZarncke/ai-safety-interventions/blob/master/ai_safety_interventions.pdf).
+- **[AI Safety Interventions](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions)** — index of roughly ninety named interventions across foundational theory, oversight, control, interpretability, governance, and underexplored routes; [extended PDF](https://github.com/GunnarZarncke/ai-safety-interventions/blob/master/ai_safety_interventions.pdf).
 - **[AI Alignment: A Comprehensive Survey](https://alignmentsurvey.com/)** (Ji et al., 2023) — academic survey of alignment problems and methods.
 - **[Foundational challenges in assuring alignment and safety of LLMs](https://arxiv.org/abs/2404.09932)** (Ganguli et al., 2024) — Anthropic's framing of eighteen foundational challenges.
 - **[Open Problems in Technical AI Governance](https://arxiv.org/abs/2407.14981)** (Reuel et al., 2024) — policy and institutions adjacent to technical work.
