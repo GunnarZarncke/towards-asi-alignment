@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-02 | **Field agenda MB11 matrix** — MB4a/MB8/MB11 columns; Kosoy split; missing-bridge candidates; public CIRIS/companion URLs; model-class misspec TODO. App B deferred. | [2026-08-02-field-agenda-mb11-matrix.md](2026-08-02-field-agenda-mb11-matrix.md) |
 | 2026-08-02 | **Glossary demotion pass** — v1.1 plain-first selection vocabulary outside ch34; retire deployment mass → deployment leverage; ch10 anthropic cite; audit inventory update. | [2026-08-02-glossary-demotion-pass.md](2026-08-02-glossary-demotion-pass.md) |
 | 2026-08-01 | **Glossary source-backed prose pass** — 152 headwords rewritten via four subagent batches; merged into inter-agenda glossary with why-not-same... | [2026-08-01-glossary-prose-pass.md](2026-08-01-glossary-prose-pass.md) |
 | 2026-08-01 | **Field agenda index + inter-agenda glossary** — Implement plan: 32 agendas from AISafety.com map, inter-agenda term glossary, anthropic taxono... | [2026-08-01-agenda-glossary-index.md](2026-08-01-agenda-glossary-index.md) |

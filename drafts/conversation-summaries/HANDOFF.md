@@ -8,7 +8,8 @@ Last updated: 2026-08-02.
 
 ## Open work (load-bearing)
 
-- **PredictorLoop Lean** — Finite model of closed forecast→deployment→world→score loops ⇒ discoverable `System`/boundary fragment. Manuscript strong-subsumption prose shipped (ch10/ch02/ch44); formalization TODO in `metadata/TODO.md` + `formal/README.md`. Log: `2026-08-01-affine-field-openness.md`.
+- **Field agenda matrix (MB11 pass)** — Index matrix now MB1–MB11 incl. MB4a; Kosoy split; missing-bridge-candidates table; public URLs only (CIRISAI + companion site). App B MB11 row still deferred. Log: `2026-08-02-field-agenda-mb11-matrix.md`.
+- **Model-class misspec decision** — Kosoy/nonrealizability: ambient MB1/MB9 vs new bridge — open in `metadata/TODO.md`.
 - **Terminology demotion follow-through (manuscript prose)** — v1.1 plain-first pass **shipped** (deployment environment / points of control outside ch34; **deployment leverage** retires deployment mass). Remaining: site concepts.yml parity, App E full sync with inter-agenda glossary, thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`). Inventory: `drafts/glossary-term-audit.md`. Pointer: `metadata/TODO.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
@@ -28,6 +29,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference (2026-08-02):** Field agenda index — MB4a/MB8/MB11 matrix columns; Kosoy LTA vs PreDCA split; missing-bridge-candidates table; coverage≠book-treatment rule; public CIRIS + companion-site catalog URLs. Log: `2026-08-02-field-agenda-mb11-matrix.md`.
 - **Manuscript (2026-08-02):** v1.1 terminology demotion — plain-first `deployment environment` / points of control outside ch34; retire **deployment mass** → **deployment leverage**; ch10 anthropic capture cite fix. Log: `2026-08-02-glossary-demotion-pass.md`.
 - **Reference (2026-08-01):** Source-backed prose pass on inter-agenda glossary (152 headwords; Definition / why-not-same / tagged Cross-agenda). Batches in `drafts/glossary-prose-pass/`. Log: `2026-08-01-glossary-prose-pass.md`.
 - **Context (2026-08-01):** Field agenda index (32 agendas); inter-agenda glossary + anthropic taxonomy under `reference/field-agendas/`. Log: `2026-08-01-agenda-glossary-index.md`.
@@ -49,7 +51,8 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 | Open uncertainties | `metadata/uncertainty-ledger.md` |
 | Chapter status | `metadata/book.yml` |
 | Experiment outcomes | `experiments/*/results/FINDINGS.md`, `NEGATIVE_RESULTS.md` |
-| Bridge ↔ field map | `appendices/appB-bridge-crosswalk.tex` |
+| Field agenda crosswalk | `reference/field-agendas/field-agenda-index.md` |
+| Bridge ↔ field map (manuscript) | `appendices/appB-bridge-crosswalk.tex` |
 | Lean status | `formal/README.md`, Appendix I |
 | Field news | `metadata/field-news.yml` |
 | CIRIS cross-review | `~/repos/ciris/review/findings/` |
