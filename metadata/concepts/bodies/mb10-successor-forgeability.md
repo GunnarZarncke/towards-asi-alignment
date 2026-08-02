@@ -46,8 +46,10 @@ external:
     url: https://arxiv.org/abs/1906.01820
 ---
 
-In the field this is measurement gaming under [deceptive alignment](/cards/strategic-opacity/): a system can pass every audited checklist while defecting on whatever the checklist omits. For successors, the tiling / Vingean worry returns in audit form. A capable predecessor building the next system has incentive and opportunity to forge the checks.
+In the field this is **Successor Gaming**: a system can pass every audited checklist while defecting on whatever the checklist omits. For successors, the tiling / Vingean worry returns in audit form. A capable predecessor building the next system has incentive and opportunity to forge the checks. Field "deceptive alignment" usually names MB7 (hidden capability under eval); MB10 is the successor certification channel specifically.
 
 The book's precise bet is **MB10**: a successor that reads green on all [seven conserved properties](/cards/conserved-properties-growth-split-merge/) and has bounded measured risk is assumed to have bounded true harm only if the conserved-property audit itself was adversarially verifiable up to the successor's capability. Same MIRI lineage as [MB5](/cards/mb5-successor-ontology-shift/); the book's split is that MB5 is transport and ontology closure, while MB10 asks whether that green checklist is forgeable. Related: [certification under manipulation](/cards/certification-under-manipulation/).
+
+**Where agendas agree:** certification-under-manipulation; measurement/checklist gaming; tiling-line successor-trust worry in audit form. **Where they diverge:** field deceptive alignment / alignment faking usually tags MB7; MB5 = transport composition.
 
 This is not a hedge. The Lean spine has a finite counterexample: "all seven conserved properties hold, and measured risk is bounded" does not by itself bound actual harm. The gap is real and quantitative. Closing it requires the same cost-of-faking-versus-affordable-surplus condition used for verifiability elsewhere. This bridge shares its deceptive-alignment lineage with [MB7](/cards/mb7-hidden-capability-and-access/) and is currently the least experimentally probed in the set.

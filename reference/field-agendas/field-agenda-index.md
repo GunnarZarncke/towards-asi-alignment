@@ -494,40 +494,9 @@ A filled cell means **field evidence on a crux**, not **automatic discharge to `
 
 ---
 
-## Crux legend (field nouns × bridge bets) {#crux-legend}
-
-Each column is a **field noun** (how agendas name the neighborhood) plus the **semantic crux** the Lean spine bets as `MB*`. A filled matrix cell is evidence on that crux, not discharge.
-
-| Key | Noun | Crux |
-| --- | --- | --- |
-| **MB1** | Embedded Agency | A measured agent–environment cut is sound enough that the certified unit is the real control locus. |
-| **MB2** | Value Learning | Evidence identifies a stable intended value/objective structure (not surface training compliance alone). |
-| **MB3** | Value Referent | Who or what values apply to survives substrate and representation change. |
-| **MB4** | Corrigibility | Correction that holds now continues to preserve the correction process under pressure. |
-| **MB4a** | Audit Independence | The designated measured correction/audit path is legitimate and uncaptured. |
-| **MB5** | Tiling | Full value/bearer transport under ontology shift yields successor safety. |
-| **MB6** | Goodhart Selection | Socio-technical selection supports a basin that preserves correction, rather than selecting proxy-satisfying systems that hollow it out. |
-| **MB7** | Inner Alignment | Hidden productive control is bounded and oversight stays adversarially robust (access, filter coverage, cost of faking). |
-| **MB7d** | Acausal Coordination | Inferential-coupling measurements remain valid after ordinary channels are cut. |
-| **MB8** | Extrapolated Volition | Externally certified preservation of a human value-update process yields correction integrity (legacy route). |
-| **MB9** | Grounding Drift | Audited abstractions do not silently drift — certificate warrants map move or uncertainty escalation on value-relevant change. |
-| **MB10** | Successor Gaming | A successor’s green alignment-transport audit is not checklist theater — signature adversarially verifiable up to capability. |
-| **MB11** | Deployment Safety | Certified safety case within deployment risk tolerance warrants abstract Safe. |
-
-**Legend notes (homographs / splits):**
-
-- **MB4 (Corrigibility):** Corrigibility (MIRI/CHAI) vs dynamical corrigibility (Christiano) vs MB4/MB4a split.
-- **MB5 (Tiling):** MB5 = transport holds; MB10 = successor certification checklist not forgeable.
-- **MB6 (Goodhart Selection):** Goodhart Selection (deployment ecology) ≠ Demski selection (inside-optimizer search).
-- **MB7 (Inner Alignment):** Field “deceptive alignment” usually tags MB7; MB10 = gaming the successor certification channel.
-- **MB9 (Grounding Drift):** Grounding Drift (conservativity) ≠ GSAI open-world specification coverage.
-
-
----
-
 ## Coverage matrix (agenda × bridge)
 
-Column headers use **field nouns** (see [Crux legend](#crux-legend) above); **MB*** keys are spine identifiers only. [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · source: [`reference/field-agendas/data/bridges.yml`](data/bridges.yml).
+Column headers use **field nouns**; **MB*** keys are spine identifiers only. Each linked bridge card states the crux, where agendas agree or diverge, and homograph splits. [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · source: [`reference/field-agendas/data/bridges.yml`](data/bridges.yml).
 
 **Type letters** (prefix on each tag; full definitions in catalog **Type** column):
 

@@ -28,4 +28,6 @@ In the field this is the pointing problem. Inverse reinforcement learning is und
 
 The book's precise bet is **MB2**: behavioral and internal traces are assumed to identify stable [value-bundle](/cards/value-bundle-transport/) geometry well enough to license claims of bundle alignment. The move is not "scalar reward solved," but "replace the flat reward target with measurable bundle geometry." That only helps if the geometry is itself identifiable. Closely related is [bearer import](/cards/mb3-bearer-import/) (MB3), which asks who those values apply to.
 
+**Where agendas agree:** MIRI value learning; CHAI pointing/CIRL; outer alignment "right target." **Where they diverge:** ELK is a latent-readout slice; PreDCA/QACI are peer outer targets; the book splits referent transport to MB3.
+
 Diagnostic evidence shows the failure mode under light instrumentation: bundle drift can be invisible to [correction](/cards/correction-channel-integrity/) handles that are not tracing bearer welfare. That is exactly what this bridge would need to rule out before low-cost measurement is trustworthy.

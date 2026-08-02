@@ -77,8 +77,9 @@ typeLettersTable: |-
   | **E** | empirical (other) |
   | **O** | other |
 matrixIntro: >-
-  Column headers use **field nouns** (see [Crux legend](#crux-legend) above);
-  **MB*** keys are spine identifiers only. [App B
+  Column headers use **field nouns**; **MB*** keys are spine identifiers only.
+  Each linked bridge card states the crux, where agendas agree or diverge, and
+  homograph splits. [App B
   (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean
   spine](https://towards-alignment.com/lean/) · source:
   [`reference/field-agendas/data/bridges.yml`](data/bridges.yml).

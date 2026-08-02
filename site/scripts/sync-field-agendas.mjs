@@ -31,32 +31,6 @@ function bridgeByKey(bridgeRows) {
   return Object.fromEntries(bridgeRows.map((row) => [row.key, row]));
 }
 
-function renderCruxLegend(bridgeRows) {
-  const lines = [];
-  lines.push("## Crux legend (field nouns × bridge bets) {#crux-legend}");
-  lines.push("");
-  lines.push(
-    "Each column is a **field noun** (how agendas name the neighborhood) plus the **semantic crux** the Lean spine bets as `MB*`. A filled matrix cell is evidence on that crux, not discharge."
-  );
-  lines.push("");
-  lines.push("| Key | Noun | Crux |");
-  lines.push("| --- | --- | --- |");
-  for (const row of bridgeRows) {
-    lines.push(`| **${row.key}** | ${row.noun} | ${row.cruxWording} |`);
-  }
-  lines.push("");
-  const notes = bridgeRows.filter((row) => row.legendNote);
-  if (notes.length) {
-    lines.push("**Legend notes (homographs / splits):**");
-    lines.push("");
-    for (const row of notes) {
-      lines.push(`- **${row.key} (${row.noun}):** ${row.legendNote}`);
-    }
-    lines.push("");
-  }
-  return lines.join("\n");
-}
-
 function yamlScalar(v) {
   return JSON.stringify(v);
 }
@@ -232,10 +206,6 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push(`**Kosoy diagnostic:** ${meta.kosoyDiagnostic}`);
   lines.push("");
   lines.push(`**Open spine interfaces** (vocabulary, not matrix columns): ${meta.openSpineInterfaces}`);
-  lines.push("");
-  lines.push("---");
-  lines.push("");
-  lines.push(renderCruxLegend(bridgeRows));
   lines.push("");
   lines.push("---");
   lines.push("");

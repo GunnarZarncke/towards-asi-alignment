@@ -53,4 +53,6 @@ In the field this is the [embedded-agency](https://intelligence.org/embedded-age
 
 The book's precise bet is **MB1**: if a [boundary-discovery](/cards/boundary-discovery/) procedure issues an ε-boundary certificate from traces, that certificate is assumed to warrant the abstract boundary predicate it stands in for. The book does not dissolve the cut problem. It relocates it into an estimator-soundness claim that can fail under bad sampling, unobservable interfaces, unstable estimators, or environments that drift faster than the estimator tracks.
 
+**Where agendas agree:** MIRI embedded agency; CIRIS named-identity bet (ops form). **Where they diverge:** MIRI treats the cut as obstruction; the book bets recoverability via estimator soundness; Wentworth's convergent-structure story names a cousin, not the same certificate object.
+
 Every later step ([grounding](/cards/grounding-viability/), [correction](/cards/correction-channel-integrity/), successor checks) inherits whatever error MB1 leaves uncaught. An adversary that decouples the measured boundary from the true one attacks this bridge specifically, not the logic built on top of it. See also [intervention-supported unit discovery](/cards/intervention-supported-unit-discovery/).

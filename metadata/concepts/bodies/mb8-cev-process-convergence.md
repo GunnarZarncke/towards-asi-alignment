@@ -42,4 +42,6 @@ In the field, Coherent Extrapolated Volition names an appealing but hard-to-veri
 
 The book's precise bet is **MB8**: if an external theory certifies that a system preserves a human value-update process, that is assumed to suffice for [correction-channel integrity](/cards/correction-channel-integrity/) even without knowing the process's final fixed point. Same MIRI lineage as [MB4](/cards/mb4-correction-legitimacy/) (corrigibility / CEV); the book's split is that MB4 is the load-bearing path and MB8 is a secondary comparison route for CEV-flavored proposals. The main certification path goes through [grounding](/cards/grounding-viability/), correction-channel measurement, and adversarial testing without needing this bridge.
 
+**Where agendas agree:** MIRI CEV process/legitimacy underside. **Where they diverge:** peer outer targets (PreDCA/QACI) are not this bridge; the book marks MB8 secondary vs the MB4/MB4a live path.
+
 The legitimacy-theater diagnostic is the stress test: preference agreement can be performed while correction lineage stalls, and only handle-level instrumentation reliably catches it. "Preserves the value-update process" is itself gameable if measured passively. See also [value change versus corruption](/cards/value-change-vs-corruption/).

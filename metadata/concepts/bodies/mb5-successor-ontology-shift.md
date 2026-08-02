@@ -32,4 +32,6 @@ In the field this is tiling and Vingean reflection, plus ontology identification
 
 The book's precise bet is **MB5**: full [value-bundle transport](/cards/value-bundle-transport/) plus [bearer transport](/cards/bearer-persistence/) surviving an ontology shift are assumed to compose into [successor safety](/cards/successor-stability/). The check runs over the [seven conserved properties](/cards/conserved-properties-growth-split-merge/), not over slogan agreement. That is a strengthening over "the successor says the right words," but the composition itself is still assumed, not derived from something more basic. Closely related is [MB10](/cards/mb10-successor-forgeability/), which asks whether that green checklist can be forged.
 
+**Where agendas agree:** MIRI tiling / Vingean reflection / ontology identification. **Where they diverge:** the book separates successor audit gaming as MB10; natural abstractions ease but do not discharge transport. **Split:** MB5 = transport holds; MB10 = successor certification checklist not forgeable.
+
 Diagnostic evidence shows the practical gap: a relabeled or discontinuous successor identity can be invisible to light instrumentation and only show up once the audit splits the epoch and probes across it.

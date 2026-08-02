@@ -25,4 +25,6 @@ In the field, value learning usually folds "who the values apply to" into reward
 
 The book's precise bet is **MB3**: a preserved [bearer map](/cards/bearer-persistence/) under a substrate translation is assumed to make [value-bundle transport](/cards/value-bundle-transport/) more than a coincidence of wording. Most agendas do not name this as a separate crux; the book treats it as first-class and measurable.
 
+**Where agendas agree:** thin coverage (CEV "whom"; some PreDCA population talk). **Where they diverge:** the field usually folds referent into pointing; the book types referent transport separately.
+
 Diagnostic evidence shows why passive signals are not enough: a system can drop or relabel a bearer while every human-facing channel stays flat. Only handle-level tracing catches the mismap.

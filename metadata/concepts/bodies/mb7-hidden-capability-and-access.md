@@ -60,3 +60,7 @@ The book's precise bet is **MB7**, split into four narrower bridges rather than 
 - **MB7d** assumes a detector for [inferential coupling](/cards/inferential-coupling/): coordination that survives cutting ordinary communication channels (closer to decision theory than to mainstream oversight).
 
 Splitting the wall does not make any piece less hard. It lets a reviewer ask which of the four an audit actually tested.
+
+**Where agendas agree (MB7a–c):** Hubinger inner/mesa; Redwood control; Apollo scheming; scalable-oversight ceiling. **Where they diverge:** the field often treats inner alignment as one binary; the book splits access, filter coverage, and cost of faking; do not merge with MB10 Successor Gaming. Field "deceptive alignment" usually tags MB7; MB10 = gaming the successor certification channel.
+
+**MB7d (Acausal Coordination):** inferential-coupling measurements remain valid after ordinary channels are cut. **Where agendas agree:** acausal trade / ECL; FDT / program equilibrium. **Where they diverge:** sparse field evidence; LI/reflection is a side channel, not discharge.

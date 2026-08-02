@@ -1,5 +1,5 @@
 # Field matrix bridge nouns + semantic crux wording (MB* keys unchanged).
-# Source of truth for Field hub matrix headers and crux legend.
+# Source of truth for Field hub matrix headers and MB card field-agree/differ copy.
 # Site MB card titles: metadata/bridges.yml (keep in sync on noun/cruxWording).
 # Regenerate: cd site && npm run sync:field-agendas
 
