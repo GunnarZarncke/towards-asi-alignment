@@ -11,7 +11,7 @@ external:
   - label: "GovAI"
     url: "https://www.governance.ai/"
   - label: "Simon Institute"
-    url: "https://www.simoninstitute.ch/"
+    url: "https://simoninstitute.ch/"
   - label: "IAPS"
     url: "https://www.iaps.ai/"
 related: []
@@ -40,7 +40,7 @@ related: []
 ## Links
 
 - [GovAI](https://www.governance.ai/)
-- [Simon Institute](https://www.simoninstitute.ch/)
+- [Simon Institute](https://simoninstitute.ch/)
 - [IAPS](https://www.iaps.ai/)
 
 ## Map clustering

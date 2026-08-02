@@ -16,14 +16,14 @@ external:
     url: "https://ciris.ai/architecture/"
   - label: "Accord (public text)"
     url: "https://ciris.ai/ciris_accord.txt"
-  - label: "Covenant (PDF)"
-    url: "https://ciris.ai/ciris_covenant.pdf"
+  - label: "Accord (PDF)"
+    url: "https://ciris.ai/ciris_accord.pdf"
   - label: "GitHub org"
     url: "https://github.com/CIRISAI"
   - label: "agents.ciris.ai"
     url: "https://agents.ciris.ai"
   - label: "AISafety.com map"
-    url: "https://www.aisafety.com/map"
+    url: "https://aisafety.com/map"
 related: []
 ---
 
@@ -54,9 +54,9 @@ related: []
 - [CIRIS](https://ciris.ai/)
 - [Architecture](https://ciris.ai/architecture/)
 - [Accord (public text)](https://ciris.ai/ciris_accord.txt)
-- [Covenant (PDF)](https://ciris.ai/ciris_covenant.pdf)
+- [Accord (PDF)](https://ciris.ai/ciris_accord.pdf)
 - [GitHub org](https://github.com/CIRISAI)
 - [agents.ciris.ai](https://agents.ciris.ai)
-- [AISafety.com map](https://www.aisafety.com/map)
+- [AISafety.com map](https://aisafety.com/map)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

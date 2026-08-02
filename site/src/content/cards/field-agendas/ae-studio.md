@@ -12,9 +12,9 @@ external:
   - label: "AE Studio"
     url: "https://ae.studio/"
   - label: "AE Studio Research"
-    url: "https://ae.studio/ai-alignment"
+    url: "https://ae.studio/alignment"
   - label: "AE Alignment Podcast"
-    url: "https://ae.studio/"
+    url: "https://ae.studio/alignment#podcast"
 related: []
 ---
 
@@ -41,13 +41,13 @@ related: []
 ## Links
 
 - [AE Studio](https://ae.studio/)
-- [AE Studio Research](https://ae.studio/ai-alignment)
-- [AE Alignment Podcast](https://ae.studio/)
+- [AE Studio Research](https://ae.studio/alignment)
+- [AE Alignment Podcast](https://ae.studio/alignment#podcast)
 
 ## Map clustering
 
 AISafety.com map listings that roll up to this agenda:
 
-- [AE Studio](https://ae.studio/), AE Studio Research → [AE Studio](#ae-studio)
+- [AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment) → [AE Studio](#ae-studio)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

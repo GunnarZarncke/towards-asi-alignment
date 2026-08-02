@@ -164,7 +164,7 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push("");
   lines.push(`**Status:** ${meta.status}`);
   lines.push(`**Term glossary:** [\`inter-agenda-term-glossary.md\`](inter-agenda-term-glossary.md) (alphabetical; TSA integration deferred)`);
-  lines.push(`**Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appB/) · [Lean spine](https://towards-alignment.com/lean/) · LaTeX source: [\`appendices/appB-bridge-crosswalk.tex\`](../../appendices/appB-bridge-crosswalk.tex)`);
+  lines.push(`**Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · LaTeX source: [\`appendices/appB-bridge-crosswalk.tex\`](../../appendices/appB-bridge-crosswalk.tex)`);
   lines.push(`**Field hub (companion):** [towards-alignment.com/field/](https://towards-alignment.com/field/)`);
   lines.push("");
   lines.push("## Inclusion test");

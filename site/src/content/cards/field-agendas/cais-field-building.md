@@ -8,7 +8,7 @@ bookBridges:
   - "— (meta)"
 external:
   - label: "CAIS"
-    url: "https://www.safe.ai/"
+    url: "https://safe.ai/"
 related: []
 ---
 
@@ -34,12 +34,12 @@ related: []
 
 ## Links
 
-- [CAIS](https://www.safe.ai/)
+- [CAIS](https://safe.ai/)
 
 ## Map clustering
 
 AISafety.com map listings that roll up to this agenda:
 
-- [CAIS](https://www.safe.ai/), AISES → [CAIS field-building](#cais-field-building)
+- [CAIS](https://safe.ai/), AISES → [CAIS field-building](#cais-field-building)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

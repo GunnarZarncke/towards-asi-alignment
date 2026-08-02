@@ -12,7 +12,7 @@ bookBridges:
   - "MB9 (cousin); MB7d neighborhood — see [spine translation](#spine-translation)"
 external:
   - label: "Infra-Bayesianism (LessWrong)"
-    url: "https://www.lesswrong.com/tag/infra-bayesianism"
+    url: "https://www.lesswrong.com/w/infra-bayesianism"
   - label: "Vanessa Kosoy"
     url: "https://www.alignmentforum.org/users/Vanessa+Kosoy"
 related: []
@@ -40,7 +40,7 @@ related: []
 
 ## Links
 
-- [Infra-Bayesianism (LessWrong)](https://www.lesswrong.com/tag/infra-bayesianism)
+- [Infra-Bayesianism (LessWrong)](https://www.lesswrong.com/w/infra-bayesianism)
 - [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

@@ -12,7 +12,7 @@ external:
   - label: "Resolution"
     url: "https://resolution.org/"
   - label: "Timaeus"
-    url: "https://timaeus.ai/"
+    url: "https://www.timaeus.ai/"
 related: []
 ---
 
@@ -39,12 +39,12 @@ related: []
 ## Links
 
 - [Resolution](https://resolution.org/)
-- [Timaeus](https://timaeus.ai/)
+- [Timaeus](https://www.timaeus.ai/)
 
 ## Map clustering
 
 AISafety.com map listings that roll up to this agenda:
 
-- [Resolution](https://resolution.org/), [Timaeus](https://timaeus.ai/) → [Resolution](#resolution)
+- [Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/) → [Resolution](#resolution)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

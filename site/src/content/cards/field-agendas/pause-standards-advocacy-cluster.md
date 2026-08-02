@@ -9,11 +9,11 @@ bookBridges:
   - "MB8 (secondary)"
 external:
   - label: "PauseAI"
-    url: "https://www.pauseai.info/"
+    url: "https://pauseai.info/"
   - label: "FLI"
     url: "https://futureoflife.org/"
   - label: "ControlAI"
-    url: "https://controlai.com/"
+    url: "https://controlai.org/"
   - label: "Encode"
     url: "https://encodeai.org/"
   - label: "Global AI Moratorium (FLI)"
@@ -43,9 +43,9 @@ related: []
 
 ## Links
 
-- [PauseAI](https://www.pauseai.info/)
+- [PauseAI](https://pauseai.info/)
 - [FLI](https://futureoflife.org/)
-- [ControlAI](https://controlai.com/)
+- [ControlAI](https://controlai.org/)
 - [Encode](https://encodeai.org/)
 - [Global AI Moratorium (FLI)](https://futureoflife.org/open-letter/pause-giant-ai-experiments/)
 

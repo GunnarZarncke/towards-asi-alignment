@@ -14,6 +14,6 @@ manuscriptHooks:
   - sparse
 links:
   - label: Conjecture
-    url: https://conjecture.dev/
+    url: https://www.conjecture.dev/
   - label: EleutherAI
     url: https://www.eleuther.ai/

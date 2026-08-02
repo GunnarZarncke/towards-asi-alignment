@@ -8,7 +8,7 @@
     "kosoyDiagnostic": "infra-Bayesianism/LTA advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.",
     "openSpineInterfaces": "---",
     "typeLettersTable": "| Letter | Type |\n|---|---|\n| **C** | conceptual |\n| **T** | theory (formalization) |\n| **S** | simulations |\n| **P** | practical (applications) |\n| **D** | empirical (software) |\n| **E** | empirical (other) |\n| **O** | other |",
-    "matrixIntro": "**Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appB/) (field crux names for MB1–MB10); [Lean spine](https://towards-alignment.com/lean/) adds **MB4a**, **MB11**.",
+    "matrixIntro": "**Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) (field crux names for MB1–MB10); [Lean spine](https://towards-alignment.com/lean/) adds **MB4a**, **MB11**.",
     "matrixLegend": "",
     "excludedFromMatrix": "### Coverage evidence catalog {#coverage-evidence-catalog}"
   },
@@ -2034,7 +2034,7 @@
       "sources": [
         {
           "label": "Demski & Garrabrant 2019",
-          "url": "https://arxiv.org/abs/1902.09402"
+          "url": "https://arxiv.org/abs/1902.09469"
         }
       ]
     },
@@ -2222,7 +2222,7 @@
       "sources": [
         {
           "label": "Greenblatt et al. 2024",
-          "url": "https://arxiv.org/abs/2412.14069"
+          "url": "https://arxiv.org/abs/2412.14093"
         }
       ]
     },
@@ -2653,7 +2653,7 @@
       "sources": [
         {
           "label": "AE Studio Research",
-          "url": "https://ae.studio/ai-alignment"
+          "url": "https://ae.studio/alignment"
         }
       ]
     },
@@ -2714,8 +2714,8 @@
       "evidence": "QACI formal outer-alignment goal line",
       "sources": [
         {
-          "label": "QACI tag",
-          "url": "https://www.lesswrong.com/tag/qaci"
+          "label": "Leake & Persson 2023",
+          "url": "https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal"
         }
       ]
     },
@@ -3407,7 +3407,7 @@
       "sources": [
         {
           "label": "Park et al. 2024",
-          "url": "https://arxiv.org/abs/2403.03185"
+          "url": "https://arxiv.org/abs/2308.14752"
         }
       ]
     },
@@ -3619,7 +3619,7 @@
       "sources": [
         {
           "label": "App B bridge crosswalk (companion)",
-          "url": "https://towards-alignment.com/cards/chapters/appB/"
+          "url": "https://towards-alignment.com/cards/chapters/appb/"
         }
       ]
     },
@@ -3673,7 +3673,7 @@
       "sources": [
         {
           "label": "App B bridge crosswalk (companion)",
-          "url": "https://towards-alignment.com/cards/chapters/appB/"
+          "url": "https://towards-alignment.com/cards/chapters/appb/"
         }
       ]
     },
@@ -3703,7 +3703,7 @@
       "sources": [
         {
           "label": "App B bridge crosswalk (companion)",
-          "url": "https://towards-alignment.com/cards/chapters/appB/"
+          "url": "https://towards-alignment.com/cards/chapters/appb/"
         }
       ]
     },
@@ -3763,7 +3763,7 @@
       "sources": [
         {
           "label": "App C (companion)",
-          "url": "https://towards-alignment.com/cards/chapters/appC/"
+          "url": "https://towards-alignment.com/cards/chapters/appc/"
         }
       ]
     },
@@ -3853,7 +3853,7 @@
       "sources": [
         {
           "label": "App B bridge crosswalk (companion)",
-          "url": "https://towards-alignment.com/cards/chapters/appB/"
+          "url": "https://towards-alignment.com/cards/chapters/appb/"
         }
       ]
     },
@@ -3980,7 +3980,7 @@
       "sources": [
         {
           "label": "Garrabrant et al. 2017",
-          "url": "https://arxiv.org/abs/1709.08079"
+          "url": "https://arxiv.org/abs/1609.03543"
         }
       ]
     },
@@ -4124,7 +4124,7 @@
   ],
   "clustering": [
     {
-      "listings": "[MIRI](https://intelligence.org/), [AI StopWatch](https://substack.com/@aistopwatch), Arbital (legacy canon)",
+      "listings": "[MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon)",
       "listingLinks": [
         {
           "label": "MIRI",
@@ -4132,7 +4132,7 @@
         },
         {
           "label": "AI StopWatch",
-          "url": "https://substack.com/@aistopwatch"
+          "url": "https://aistop.watch/"
         }
       ],
       "rollsUpTo": "[MIRI](#miri)",
@@ -4293,7 +4293,7 @@
       "rollsUpSlug": "metr"
     },
     {
-      "listings": "[Resolution](https://resolution.org/), [Timaeus](https://timaeus.ai/)",
+      "listings": "[Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/)",
       "listingLinks": [
         {
           "label": "Resolution",
@@ -4301,7 +4301,7 @@
         },
         {
           "label": "Timaeus",
-          "url": "https://timaeus.ai/"
+          "url": "https://www.timaeus.ai/"
         }
       ],
       "rollsUpTo": "[Resolution](#resolution)",
@@ -4314,11 +4314,15 @@
       "rollsUpSlug": "resolution"
     },
     {
-      "listings": "[AE Studio](https://ae.studio/), AE Studio Research",
+      "listings": "[AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment)",
       "listingLinks": [
         {
           "label": "AE Studio",
           "url": "https://ae.studio/"
+        },
+        {
+          "label": "AE Studio Research",
+          "url": "https://ae.studio/alignment"
         }
       ],
       "rollsUpTo": "[AE Studio](#ae-studio)",
@@ -4394,7 +4398,7 @@
         },
         {
           "label": "Simon Institute",
-          "url": "https://www.simoninstitute.ch/"
+          "url": "https://simoninstitute.ch/"
         },
         {
           "label": "IAPS",
@@ -4432,11 +4436,11 @@
       "rollsUpSlug": "uk-aisi--caisi-gov-eval-institutes"
     },
     {
-      "listings": "[PauseAI](https://www.pauseai.info/), [FLI](https://futureoflife.org/), [ControlAI](https://controlai.com/), [Encode](https://encodeai.org/), Stop AI, GAIM",
+      "listings": "[PauseAI](https://pauseai.info/), [FLI](https://futureoflife.org/), [ControlAI](https://controlai.org/), [Encode](https://encodeai.org/), Stop AI, GAIM",
       "listingLinks": [
         {
           "label": "PauseAI",
-          "url": "https://www.pauseai.info/"
+          "url": "https://pauseai.info/"
         },
         {
           "label": "FLI",
@@ -4444,7 +4448,7 @@
         },
         {
           "label": "ControlAI",
-          "url": "https://controlai.com/"
+          "url": "https://controlai.org/"
         },
         {
           "label": "Encode",
@@ -4461,11 +4465,11 @@
       "rollsUpSlug": "pause--standards-advocacy-cluster"
     },
     {
-      "listings": "[CAIS](https://www.safe.ai/), AISES",
+      "listings": "[CAIS](https://safe.ai/), AISES",
       "listingLinks": [
         {
           "label": "CAIS",
-          "url": "https://www.safe.ai/"
+          "url": "https://safe.ai/"
         }
       ],
       "rollsUpTo": "[CAIS field-building](#cais-field-building)",
@@ -4571,11 +4575,11 @@
       "rollsUpSlug": "truthful-ai-evans"
     },
     {
-      "listings": "[Goodfire](https://www.goodfire.ai/), [Transluce](https://transluce.org/), [Neuronpedia](https://www.neuronpedia.org/)",
+      "listings": "[Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/), [Neuronpedia](https://www.neuronpedia.org/)",
       "listingLinks": [
         {
           "label": "Goodfire",
-          "url": "https://www.goodfire.ai/"
+          "url": "https://www.goodfire.com/"
         },
         {
           "label": "Transluce",
@@ -4596,7 +4600,7 @@
       "rollsUpSlug": "goodfire--mechanistic-interpretability-cluster"
     },
     {
-      "listings": "[CLR](https://longtermrisk.org/), Modeling Cooperation, [CAIF](https://www.cooperativeai.org/)",
+      "listings": "[CLR](https://longtermrisk.org/), Modeling Cooperation, [CAIF](https://www.cooperativeai.com/)",
       "listingLinks": [
         {
           "label": "CLR",
@@ -4604,7 +4608,7 @@
         },
         {
           "label": "CAIF",
-          "url": "https://www.cooperativeai.org/"
+          "url": "https://www.cooperativeai.com/"
         }
       ],
       "rollsUpTo": "[CLR](#clr-cooperation--conflict)",
@@ -4617,7 +4621,7 @@
       "rollsUpSlug": "clr-cooperation--conflict"
     },
     {
-      "listings": "[AI Futures Project](https://ai-2027.com/), [Epoch AI](https://epochai.org/), [AI Impacts](https://aiimpacts.org/), [Metaculus](https://www.metaculus.com/)",
+      "listings": "[AI Futures Project](https://ai-2027.com/), [Epoch AI](https://epoch.ai/), [AI Impacts](https://aiimpacts.org/), [Metaculus](https://www.metaculus.com/)",
       "listingLinks": [
         {
           "label": "AI Futures Project",
@@ -4625,7 +4629,7 @@
         },
         {
           "label": "Epoch AI",
-          "url": "https://epochai.org/"
+          "url": "https://epoch.ai/"
         },
         {
           "label": "AI Impacts",
@@ -4663,11 +4667,11 @@
       "rollsUpSlug": "farai"
     },
     {
-      "listings": "[Conjecture](https://conjecture.dev/), [EleutherAI](https://www.eleuther.ai/)",
+      "listings": "[Conjecture](https://www.conjecture.dev/), [EleutherAI](https://www.eleuther.ai/)",
       "listingLinks": [
         {
           "label": "Conjecture",
-          "url": "https://conjecture.dev/"
+          "url": "https://www.conjecture.dev/"
         },
         {
           "label": "EleutherAI",

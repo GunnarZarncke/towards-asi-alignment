@@ -12,7 +12,7 @@ external:
   - label: "CHAI"
     url: "https://humancompatible.ai/"
   - label: "CHAI Internship"
-    url: "https://humancompatible.ai/"
+    url: "https://humancompatible.ai/people#interns"
 related: []
 ---
 
@@ -39,7 +39,7 @@ related: []
 ## Links
 
 - [CHAI](https://humancompatible.ai/)
-- [CHAI Internship](https://humancompatible.ai/)
+- [CHAI Internship](https://humancompatible.ai/people#interns)
 
 ## Map clustering
 

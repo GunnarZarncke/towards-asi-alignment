@@ -1,12 +1,12 @@
 clustering:
   - listings: >-
       [MIRI](https://intelligence.org/), [AI
-      StopWatch](https://substack.com/@aistopwatch), Arbital (legacy canon)
+      StopWatch](https://aistop.watch/), Arbital (legacy canon)
     listingLinks:
       - label: MIRI
         url: https://intelligence.org/
       - label: AI StopWatch
-        url: https://substack.com/@aistopwatch
+        url: https://aistop.watch/
     rollsUpTo: '[MIRI](#miri)'
     rollsUpLinks:
       - label: MIRI
@@ -100,21 +100,25 @@ clustering:
       - label: METR
         url: '#metr'
     rollsUpSlug: metr
-  - listings: '[Resolution](https://resolution.org/), [Timaeus](https://timaeus.ai/)'
+  - listings: '[Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/)'
     listingLinks:
       - label: Resolution
         url: https://resolution.org/
       - label: Timaeus
-        url: https://timaeus.ai/
+        url: https://www.timaeus.ai/
     rollsUpTo: '[Resolution](#resolution)'
     rollsUpLinks:
       - label: Resolution
         url: '#resolution'
     rollsUpSlug: resolution
-  - listings: '[AE Studio](https://ae.studio/), AE Studio Research'
+  - listings: >-
+      [AE Studio](https://ae.studio/), [AE Studio
+      Research](https://ae.studio/alignment)
     listingLinks:
       - label: AE Studio
         url: https://ae.studio/
+      - label: AE Studio Research
+        url: https://ae.studio/alignment
     rollsUpTo: '[AE Studio](#ae-studio)'
     rollsUpLinks:
       - label: AE Studio
@@ -159,7 +163,7 @@ clustering:
       - label: GovAI
         url: https://www.governance.ai/
       - label: Simon Institute
-        url: https://www.simoninstitute.ch/
+        url: https://simoninstitute.ch/
       - label: IAPS
         url: https://www.iaps.ai/
     rollsUpTo: '[GovAI cluster](#govai)'
@@ -182,16 +186,16 @@ clustering:
         url: '#uk-aisi--caisi-gov-eval-institutes'
     rollsUpSlug: uk-aisi--caisi-gov-eval-institutes
   - listings: >-
-      [PauseAI](https://www.pauseai.info/), [FLI](https://futureoflife.org/),
-      [ControlAI](https://controlai.com/), [Encode](https://encodeai.org/), Stop
+      [PauseAI](https://pauseai.info/), [FLI](https://futureoflife.org/),
+      [ControlAI](https://controlai.org/), [Encode](https://encodeai.org/), Stop
       AI, GAIM
     listingLinks:
       - label: PauseAI
-        url: https://www.pauseai.info/
+        url: https://pauseai.info/
       - label: FLI
         url: https://futureoflife.org/
       - label: ControlAI
-        url: https://controlai.com/
+        url: https://controlai.org/
       - label: Encode
         url: https://encodeai.org/
     rollsUpTo: '[Pause / advocacy](#pause--standards-advocacy-cluster) cluster'
@@ -199,10 +203,10 @@ clustering:
       - label: Pause / advocacy
         url: '#pause--standards-advocacy-cluster'
     rollsUpSlug: pause--standards-advocacy-cluster
-  - listings: '[CAIS](https://www.safe.ai/), AISES'
+  - listings: '[CAIS](https://safe.ai/), AISES'
     listingLinks:
       - label: CAIS
-        url: https://www.safe.ai/
+        url: https://safe.ai/
     rollsUpTo: '[CAIS field-building](#cais-field-building)'
     rollsUpLinks:
       - label: CAIS field-building
@@ -260,11 +264,11 @@ clustering:
         url: '#truthful-ai-evans'
     rollsUpSlug: truthful-ai-evans
   - listings: >-
-      [Goodfire](https://www.goodfire.ai/), [Transluce](https://transluce.org/),
+      [Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/),
       [Neuronpedia](https://www.neuronpedia.org/)
     listingLinks:
       - label: Goodfire
-        url: https://www.goodfire.ai/
+        url: https://www.goodfire.com/
       - label: Transluce
         url: https://transluce.org/
       - label: Neuronpedia
@@ -278,12 +282,12 @@ clustering:
     rollsUpSlug: goodfire--mechanistic-interpretability-cluster
   - listings: >-
       [CLR](https://longtermrisk.org/), Modeling Cooperation,
-      [CAIF](https://www.cooperativeai.org/)
+      [CAIF](https://www.cooperativeai.com/)
     listingLinks:
       - label: CLR
         url: https://longtermrisk.org/
       - label: CAIF
-        url: https://www.cooperativeai.org/
+        url: https://www.cooperativeai.com/
     rollsUpTo: '[CLR](#clr-cooperation--conflict)'
     rollsUpLinks:
       - label: CLR
@@ -291,13 +295,13 @@ clustering:
     rollsUpSlug: clr-cooperation--conflict
   - listings: >-
       [AI Futures Project](https://ai-2027.com/), [Epoch
-      AI](https://epochai.org/), [AI Impacts](https://aiimpacts.org/),
+      AI](https://epoch.ai/), [AI Impacts](https://aiimpacts.org/),
       [Metaculus](https://www.metaculus.com/)
     listingLinks:
       - label: AI Futures Project
         url: https://ai-2027.com/
       - label: Epoch AI
-        url: https://epochai.org/
+        url: https://epoch.ai/
       - label: AI Impacts
         url: https://aiimpacts.org/
       - label: Metaculus
@@ -317,11 +321,11 @@ clustering:
         url: '#farai'
     rollsUpSlug: farai
   - listings: >-
-      [Conjecture](https://conjecture.dev/),
+      [Conjecture](https://www.conjecture.dev/),
       [EleutherAI](https://www.eleuther.ai/)
     listingLinks:
       - label: Conjecture
-        url: https://conjecture.dev/
+        url: https://www.conjecture.dev/
       - label: EleutherAI
         url: https://www.eleuther.ai/
     rollsUpTo: '[Conjecture / cognitive emulation](#conjecture--cognitive-emulation)'

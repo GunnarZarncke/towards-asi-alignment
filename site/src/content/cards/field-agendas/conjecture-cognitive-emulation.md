@@ -8,7 +8,7 @@ bookBridges:
   - "MB7 (partial)"
 external:
   - label: "Conjecture"
-    url: "https://conjecture.dev/"
+    url: "https://www.conjecture.dev/"
   - label: "EleutherAI"
     url: "https://www.eleuther.ai/"
 related: []
@@ -36,7 +36,7 @@ related: []
 
 ## Links
 
-- [Conjecture](https://conjecture.dev/)
+- [Conjecture](https://www.conjecture.dev/)
 - [EleutherAI](https://www.eleuther.ai/)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

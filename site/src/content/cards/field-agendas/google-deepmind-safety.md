@@ -10,7 +10,7 @@ external:
   - label: "Google DeepMind"
     url: "https://deepmind.google/"
   - label: "DeepMind Safety Research blog"
-    url: "https://deepmind.google/discover/blog/"
+    url: "https://deepmind.google/blog/"
 related: []
 ---
 
@@ -37,7 +37,7 @@ related: []
 ## Links
 
 - [Google DeepMind](https://deepmind.google/)
-- [DeepMind Safety Research blog](https://deepmind.google/discover/blog/)
+- [DeepMind Safety Research blog](https://deepmind.google/blog/)
 
 ## Map clustering
 

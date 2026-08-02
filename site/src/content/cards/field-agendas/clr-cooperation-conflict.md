@@ -11,7 +11,7 @@ external:
   - label: "CLR"
     url: "https://longtermrisk.org/"
   - label: "Cooperative AI Foundation (CAIF)"
-    url: "https://www.cooperativeai.org/"
+    url: "https://www.cooperativeai.com/"
 related: []
 ---
 
@@ -38,6 +38,6 @@ related: []
 ## Links
 
 - [CLR](https://longtermrisk.org/)
-- [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.org/)
+- [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.com/)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

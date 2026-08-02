@@ -13,7 +13,7 @@ external:
   - label: "Pathfinder"
     url: "https://pathfinder.kairos-project.org/"
   - label: "Global Challenges Project"
-    url: "https://globalchallengesproject.org/"
+    url: "https://www.globalchallengesproject.org/"
 related: []
 ---
 
@@ -40,7 +40,7 @@ related: []
 - [Kairos](https://kairos-project.org/)
 - [SPAR](https://sparai.org/)
 - [Pathfinder](https://pathfinder.kairos-project.org/)
-- [Global Challenges Project](https://globalchallengesproject.org/)
+- [Global Challenges Project](https://www.globalchallengesproject.org/)
 
 ## Map clustering
 

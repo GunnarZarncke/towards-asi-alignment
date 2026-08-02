@@ -10,7 +10,7 @@ evidence:
       bucket
     sources:
       - label: Demski & Garrabrant 2019
-        url: https://arxiv.org/abs/1902.09402
+        url: https://arxiv.org/abs/1902.09469
   - id: 2
     agenda: MIRI
     bridges:
@@ -133,7 +133,7 @@ evidence:
     evidence: Alignment faking in LLMs under training/eval pressure
     sources:
       - label: Greenblatt et al. 2024
-        url: https://arxiv.org/abs/2412.14069
+        url: https://arxiv.org/abs/2412.14093
   - id: 14
     agenda: CHAI
     bridges:
@@ -403,7 +403,7 @@ evidence:
     evidence: Neglected-approaches portfolio and intervention breadth map
     sources:
       - label: AE Studio Research
-        url: https://ae.studio/ai-alignment
+        url: https://ae.studio/alignment
   - id: 42
     agenda: AE Studio
     bridges:
@@ -441,8 +441,9 @@ evidence:
     type: T
     evidence: QACI formal outer-alignment goal line
     sources:
-      - label: QACI tag
-        url: https://www.lesswrong.com/tag/qaci
+      - label: Leake & Persson 2023
+        url: >-
+          https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal
   - id: 46
     agenda: Wentworth
     bridges:
@@ -883,7 +884,7 @@ evidence:
     evidence: AI deception survey (field synthesis)
     sources:
       - label: Park et al. 2024
-        url: https://arxiv.org/abs/2403.03185
+        url: https://arxiv.org/abs/2308.14752
   - id: 74
     agenda: Goodfire / MI
     bridges:
@@ -1011,7 +1012,7 @@ evidence:
     evidence: Bearer-map transport under optimization (MB3 bridge)
     sources:
       - label: App B bridge crosswalk (companion)
-        url: https://towards-alignment.com/cards/chapters/appB/
+        url: https://towards-alignment.com/cards/chapters/appb/
   - id: 87
     agenda: TSA
     bridges:
@@ -1044,7 +1045,7 @@ evidence:
     evidence: CEV-process convergence as secondary route (not assumed)
     sources:
       - label: App B bridge crosswalk (companion)
-        url: https://towards-alignment.com/cards/chapters/appB/
+        url: https://towards-alignment.com/cards/chapters/appb/
   - id: 90
     agenda: TSA
     bridges:
@@ -1062,7 +1063,7 @@ evidence:
     evidence: Ontology-shift transport (A-007, A-010)
     sources:
       - label: App B bridge crosswalk (companion)
-        url: https://towards-alignment.com/cards/chapters/appB/
+        url: https://towards-alignment.com/cards/chapters/appb/
   - id: 92
     agenda: TSA
     bridges:
@@ -1100,7 +1101,7 @@ evidence:
     evidence: Institutional translation appendix (App C)
     sources:
       - label: App C (companion)
-        url: https://towards-alignment.com/cards/chapters/appC/
+        url: https://towards-alignment.com/cards/chapters/appc/
   - id: 96
     agenda: TSA
     bridges:
@@ -1154,7 +1155,7 @@ evidence:
     evidence: Grounding conservativity vs GSAI completeness (ch dynamical guarantee)
     sources:
       - label: App B bridge crosswalk (companion)
-        url: https://towards-alignment.com/cards/chapters/appB/
+        url: https://towards-alignment.com/cards/chapters/appb/
   - id: 102
     agenda: TSA
     bridges:
@@ -1235,7 +1236,7 @@ evidence:
     evidence: Logical induction (logical uncertainty under bounded reasoning)
     sources:
       - label: Garrabrant et al. 2017
-        url: https://arxiv.org/abs/1709.08079
+        url: https://arxiv.org/abs/1609.03543
   - id: 125
     agenda: TSA
     bridges:

@@ -49,11 +49,11 @@ links:
     url: https://ciris.ai/architecture/
   - label: Accord (public text)
     url: https://ciris.ai/ciris_accord.txt
-  - label: Covenant (PDF)
-    url: https://ciris.ai/ciris_covenant.pdf
+  - label: Accord (PDF)
+    url: https://ciris.ai/ciris_accord.pdf
   - label: GitHub org
     url: https://github.com/CIRISAI
   - label: agents.ciris.ai
     url: https://agents.ciris.ai
   - label: AISafety.com map
-    url: https://www.aisafety.com/map
+    url: https://aisafety.com/map

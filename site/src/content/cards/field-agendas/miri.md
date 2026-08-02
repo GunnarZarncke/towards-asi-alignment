@@ -13,7 +13,7 @@ external:
   - label: "MIRI"
     url: "https://intelligence.org/"
   - label: "AI StopWatch"
-    url: "https://substack.com/@aistopwatch"
+    url: "https://aistop.watch/"
 related: []
 ---
 
@@ -40,12 +40,12 @@ related: []
 ## Links
 
 - [MIRI](https://intelligence.org/)
-- [AI StopWatch](https://substack.com/@aistopwatch)
+- [AI StopWatch](https://aistop.watch/)
 
 ## Map clustering
 
 AISafety.com map listings that roll up to this agenda:
 
-- [MIRI](https://intelligence.org/), [AI StopWatch](https://substack.com/@aistopwatch), Arbital (legacy canon) → [MIRI](#miri)
+- [MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon) → [MIRI](#miri)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

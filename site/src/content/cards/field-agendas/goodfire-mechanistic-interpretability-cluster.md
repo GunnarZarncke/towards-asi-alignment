@@ -8,7 +8,7 @@ bookBridges:
   - "MB7 (filter subchannel)"
 external:
   - label: "Goodfire"
-    url: "https://www.goodfire.ai/"
+    url: "https://www.goodfire.com/"
   - label: "Transluce"
     url: "https://transluce.org/"
   - label: "Neuronpedia"
@@ -38,7 +38,7 @@ related: []
 
 ## Links
 
-- [Goodfire](https://www.goodfire.ai/)
+- [Goodfire](https://www.goodfire.com/)
 - [Transluce](https://transluce.org/)
 - [Neuronpedia](https://www.neuronpedia.org/)
 

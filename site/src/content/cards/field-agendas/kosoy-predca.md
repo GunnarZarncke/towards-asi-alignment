@@ -9,7 +9,7 @@ bookBridges:
   - "MB3 (peer outer target); MB4/MB8 legitimacy underside"
 external:
   - label: "PreDCA (Alignment Forum tag)"
-    url: "https://www.alignmentforum.org/tag/predca"
+    url: "https://www.alignmentforum.org/w/predca"
   - label: "Vanessa Kosoy"
     url: "https://www.alignmentforum.org/users/Vanessa+Kosoy"
 related: []
@@ -37,7 +37,7 @@ related: []
 
 ## Links
 
-- [PreDCA (Alignment Forum tag)](https://www.alignmentforum.org/tag/predca)
+- [PreDCA (Alignment Forum tag)](https://www.alignmentforum.org/w/predca)
 - [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

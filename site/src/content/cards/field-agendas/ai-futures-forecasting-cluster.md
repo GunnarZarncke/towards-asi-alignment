@@ -10,7 +10,7 @@ external:
   - label: "AI Futures Project"
     url: "https://ai-2027.com/"
   - label: "Epoch AI"
-    url: "https://epochai.org/"
+    url: "https://epoch.ai/"
   - label: "Metaculus"
     url: "https://www.metaculus.com/"
   - label: "AI Impacts"
@@ -41,7 +41,7 @@ related: []
 ## Links
 
 - [AI Futures Project](https://ai-2027.com/)
-- [Epoch AI](https://epochai.org/)
+- [Epoch AI](https://epoch.ai/)
 - [Metaculus](https://www.metaculus.com/)
 - [AI Impacts](https://aiimpacts.org/)
 
