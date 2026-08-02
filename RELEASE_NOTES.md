@@ -12,7 +12,7 @@ Most recent release first. Versions follow a simple `MAJOR.MINOR.PATCH` scheme:
 
 ## v1.4.0 — 2026-08-02 — Field crosswalk hub, legibility pass, and external-transfer ET-3/ET-4
 
-Commit: `pending` · Tag: `v1.4.0`
+Commit: `471cc503` · Tag: `v1.4.0`
 
 **Field agenda crosswalk** maps 32 named agendas to MB1–MB11 on a companion **Field hub**; a **plain-first legibility pass** retires coined jargon in the manuscript and syncs Appendix E with a 152-headword inter-agenda glossary; **external transfer** closes the AI 2027 annex (ET-3) and ships the Secret Loyalties hackathon line (ET-4); and **field-claim Lean** adds finite defeaters and interface certificates without new bridge numbers.
 
