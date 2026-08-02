@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-02T17:35:47.486Z",
+  "generatedAt": "2026-08-02T20:25:37.429Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 270,
+  "entryCount": 267,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -505,12 +505,6 @@
       "url": "/cards/adversarial-boundary-discovery/"
     },
     {
-      "title": "AE Studio",
-      "type": "agenda",
-      "summary": "Which neglected routes survive unified optimization pressure?",
-      "url": "/cards/field-agendas/ae-studio/"
-    },
-    {
       "title": "Agency Under Strategic Opacity",
       "type": "chapter",
       "summary": "Once a system can benefit from being overlooked, agency discovery becomes adversarial. Alignment fails when control becomes more coherent than correction can see.",
@@ -571,7 +565,7 @@
       "url": "/cards/field-news-et2-cil-uad-jul-2026/"
     },
     {
-      "title": "Anthropic (lab)",
+      "title": "Anthropic / Goodfire (lab & MI stack)",
       "type": "agenda",
       "summary": "Can scaling policies and interpretability keep pace with capability?",
       "url": "/cards/field-agendas/anthropic-lab/"
@@ -595,7 +589,7 @@
       "url": "/cards/field-agendas/apart-research/"
     },
     {
-      "title": "Apollo Research",
+      "title": "Apollo / Truthful AI (deception & scheming)",
       "type": "agenda",
       "summary": "Can we detect strategic deception before capabilities outpace evals?",
       "url": "/cards/field-agendas/apollo-research/"
@@ -703,9 +697,9 @@
       "url": "/cards/certification-under-manipulation/"
     },
     {
-      "title": "CHAI (Russell)",
+      "title": "CHAI / FAR.AI (Berkeley alignment)",
       "type": "agenda",
-      "summary": "Cooperative reward inference underdetermined; values vs irrationality",
+      "summary": "Cooperative reward inference underdetermined; community hub ⇏ unified technical agenda",
       "url": "/cards/field-agendas/chai-russell/"
     },
     {
@@ -757,7 +751,7 @@
       "url": "/cards/chapters/ch38/"
     },
     {
-      "title": "Conjecture / cognitive emulation",
+      "title": "Conjecture / EleutherAI (cognitive emulation)",
       "type": "agenda",
       "summary": "Does emulation imply corrigibility under scale?",
       "url": "/cards/field-agendas/conjecture-cognitive-emulation/"
@@ -901,12 +895,6 @@
       "url": "/cards/institutional-reform-decay/"
     },
     {
-      "title": "FAR.AI",
-      "type": "agenda",
-      "summary": "Community hub ⇏ unified agenda",
-      "url": "/cards/field-agendas/farai/"
-    },
-    {
       "title": "Field — AI safety and alignment",
       "type": "field",
       "summary": "Public map of major agendas, bridge coverage matrix, and field overviews (AISafety.com map, interventions index, surveys).",
@@ -1027,12 +1015,6 @@
       "url": "/cards/experiments/goal-agent-simulation/"
     },
     {
-      "title": "Goodfire / mechanistic interpretability cluster",
-      "type": "agenda",
-      "summary": "Does interpretability scale to adversarial frontier models?",
-      "url": "/cards/field-agendas/goodfire-mechanistic-interpretability-cluster/"
-    },
-    {
       "title": "Goodhart as Selector (Not Just Proxy Drift)",
       "type": "concept",
       "summary": "When a proxy becomes a selector, optimization shifts the population toward traits that raise the proxy without raising the target property — conditional expectations can reverse.",
@@ -1045,9 +1027,9 @@
       "url": "/cards/field-agendas/google-deepmind-safety/"
     },
     {
-      "title": "GovAI",
+      "title": "GovAI / UK AISI (governance & eval)",
       "type": "agenda",
-      "summary": "Can governance keep pace with capability without eroding correction capacity?",
+      "summary": "Can governance and institute evals keep pace with capability and bind on deployment under race pressure?",
       "url": "/cards/field-agendas/govai/"
     },
     {
@@ -1123,6 +1105,12 @@
       "url": "/cards/chapters/ch44/"
     },
     {
+      "title": "MAI + CIP (institutional alignment)",
+      "type": "agenda",
+      "summary": "Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?",
+      "url": "/cards/field-agendas/mai-cip-institutional-alignment/"
+    },
+    {
       "title": "Manipulation, Domestication, and False Consent",
       "type": "chapter",
       "summary": "The deepest correction-channel failure is not that a system disobeys, but that it raises human endorsement by reshaping the humans, institutions, and contexts that produce endorsement. Persuasion, manipulation, paternalism, domestication, and false consent are separated here by causal pathway: legitimate influence changes the value-relevant world and lets humans judge it; illegitimate influence changes the judge. Preserving alignment under superintelligence therefore requires bounding manipulation, protecting agency capacity and exit, and treating endorsement as an outcome to be explained rather than a foundation to be trusted.",
@@ -1135,63 +1123,63 @@
       "url": "/cards/field-agendas/mats/"
     },
     {
-      "title": "MB1 — Boundary Estimator Soundness",
+      "title": "MB1 — Embedded Agency",
       "type": "bridge",
       "summary": "Whether a measured agent–environment cut can be trusted: the embedded-agency worry that the real optimizer is not the visible model. Precise bet: an ε-boundary certificate warrants the abstract boundary predicate.",
       "url": "/cards/mb1-boundary-estimator-soundness/"
     },
     {
-      "title": "MB10 — Successor Forgeability",
+      "title": "MB10 — Successor Gaming",
       "type": "bridge",
-      "summary": "Measurement gaming for successors: a system can pass every audited checklist while defecting on what the checklist omits. Precise bet: a green seven-property score bounds true harm only if the audit was adversarially verifiable up to the successor's capability.",
+      "summary": "Successor gaming: a system can pass every conserved-property audit while defecting on what the checklist omits. Precise bet: a green seven-property score bounds true harm only if the audit was adversarially verifiable up to the successor's capability.",
       "url": "/cards/mb10-successor-forgeability/"
     },
     {
-      "title": "MB2 — Bundle Identifiability",
+      "title": "MB2 — Value Learning",
       "type": "bridge",
       "summary": "The pointing problem: can evidence tell what a system values, or only what behavior fits? Precise bet: traces identify stable value-bundle geometry well enough to license bundle-alignment claims.",
       "url": "/cards/mb2-bundle-identifiability/"
     },
     {
-      "title": "MB3 — Bearer Import",
+      "title": "MB3 — Value Referent",
       "type": "bridge",
       "summary": "Who do the values apply to after a merge, upload, or substrate change? Precise bet: a preserved bearer map under translation makes value-bundle transport more than surface wording.",
       "url": "/cards/mb3-bearer-import/"
     },
     {
-      "title": "MB4 — Correction Legitimacy",
+      "title": "MB4 — Corrigibility",
       "type": "bridge",
-      "summary": "Corrigibility and off-switch legitimacy under manipulation: who holds correction authority, and is their endorsement genuine? Precise bet: correction-channel integrity requires an unmanipulated judge.",
+      "summary": "Corrigibility under manipulation: does correction preserve the correction process itself? Precise bet: correction-channel integrity requires an unmanipulated judge; MB4a types measured-path legitimacy separately.",
       "url": "/cards/mb4-correction-legitimacy/"
     },
     {
-      "title": "MB5 — Successor and Ontology-Shift Audit",
+      "title": "MB5 — Tiling",
       "type": "bridge",
       "summary": "Tiling and ontology shift: can you trust a successor when the world-model underneath goals is rebuilt? Precise bet: full value-bundle and bearer transport through the ontology shift compose into successor safety.",
       "url": "/cards/mb5-successor-ontology-shift/"
     },
     {
-      "title": "MB6 — Selection and Basin Stability",
+      "title": "MB6 — Goodhart Selection",
       "type": "bridge",
-      "summary": "Selection and competition, not only model weights: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: cooperation evidence warrants basin stability (MB6a), and a stable basin supports correction rather than selecting against it (MB6b).",
+      "summary": "Goodhart selection and basin stability: which systems institutions copy and deploy can lock in bad equilibria. Precise bet: cooperation evidence warrants basin stability (MB6a), and a stable basin supports correction (MB6b).",
       "url": "/cards/mb6-selection-and-basin-stability/"
     },
     {
-      "title": "MB7 — Hidden Capability and Access Robustness",
+      "title": "MB7 — Inner Alignment",
       "type": "bridge",
-      "summary": "Deceptive alignment / inner alignment: a system can look compliant under evaluation while reserving capability. Precise bet: four linked sub-bridges (access, filter coverage, adversarial robustness, inferential coupling) bound hidden capability.",
+      "summary": "Inner alignment and strategic opacity: a system can look compliant under evaluation while reserving capability. Precise bet: access, filter coverage, and cost of faking bound hidden control (MB7a–c); MB7d types inferential coupling separately.",
       "url": "/cards/mb7-hidden-capability-and-access/"
     },
     {
-      "title": "MB8 — CEV/Process Convergence",
+      "title": "MB8 — Extrapolated Volition",
       "type": "bridge",
-      "summary": "CEV-style process legitimacy: is preserving a value-update process enough without knowing where it converges? Precise bet: an external theory certifying process preservation suffices for correction integrity (secondary route to MB4).",
+      "summary": "CEV-style process legitimacy: is preserving a value-update process enough without knowing where it converges? Precise bet: an external theory certifying process preservation suffices for correction integrity (legacy secondary route).",
       "url": "/cards/mb8-cev-process-convergence/"
     },
     {
-      "title": "MB9 — Grounding Certificate Soundness",
+      "title": "MB9 — Grounding Drift",
       "type": "bridge",
-      "summary": "Specification coverage: you cannot enumerate every safety-relevant phenomenon, and systems game what the spec omits. Precise bet: a certified conservative abstraction warrants grounding viability (no silent gaps).",
+      "summary": "Grounding drift: checked abstractions can silently decouple from value-relevant reality. Precise bet: a certified conservative abstraction warrants grounding viability (no silent gaps).",
       "url": "/cards/mb9-grounding-certificate/"
     },
     {
@@ -1253,6 +1241,12 @@
       "type": "concept",
       "summary": "Numbered experiment logs of what failed, false-passed, or worked only under qualifiers — key findings summarized on the site, full record linked to GitHub.",
       "url": "/cards/negative-results/"
+    },
+    {
+      "title": "Neglected approaches portfolio",
+      "type": "agenda",
+      "summary": "Which neglected routes survive unified optimization pressure—and which portfolio bets compound vs. diffuse effort?",
+      "url": "/cards/field-agendas/neglected-approaches-portfolio/"
     },
     {
       "title": "OpenAI models intruded on Hugging Face during cyber eval",
@@ -1331,6 +1325,12 @@
       "type": "agenda",
       "summary": "Can formal+automated pipelines scale to superintelligent alignment?",
       "url": "/cards/field-agendas/resolution/"
+    },
+    {
+      "title": "Safeguarded AI (ARIA / Zeroth / Heron)",
+      "type": "agenda",
+      "summary": "Safety claims are conditional on the declared system boundary; misspecified controllers or emergent coalitions void otherwise correct proofs",
+      "url": "/cards/field-agendas/safeguarded-ai-aria-zeroth-heron/"
     },
     {
       "title": "Scaffold Misuse",
@@ -1459,12 +1459,6 @@
       "url": "/cards/chapters/ch01/"
     },
     {
-      "title": "This project - Towards Superintelligence Alignment (TSA)",
-      "type": "agenda",
-      "summary": "Can typed bridges compose under explicit adversarial-verifiability antecedent?",
-      "url": "/cards/field-agendas/this-project-towards-superintelligence-alignment-tsa/"
-    },
-    {
       "title": "Towards Superintelligence Alignment",
       "type": "chapter",
       "summary": "Superintelligence alignment is not a single solved mechanism but a layered preservation problem: find the real optimizer, preserve value-bundle and bearer structure, keep human correction causally effective, constrain successors, and shape the surrounding deployment environment so these properties are copied rather than selected away. This book does not prove that real systems satisfy those conditions. It argues that these are the conditions a program pursuing this book's layered preservation and certification path must make explicit, measure, certify, and govern (Chapter~\\ref{ch:assumptions-scope-failure-coverage}).",
@@ -1483,12 +1477,6 @@
       "url": "/cards/chapters/ch19/"
     },
     {
-      "title": "Truthful AI (Evans)",
-      "type": "agenda",
-      "summary": "Can we detect hidden reasoning before it scales?",
-      "url": "/cards/field-agendas/truthful-ai-evans/"
-    },
-    {
       "title": "Turchin Coverage Audit",
       "type": "artifact",
       "summary": "A checklist that uses Alexey Turchin's AGI failure-mode map to check whether the book's framework silently ignores a whole family of failures, without adopting it as a second ontology.",
@@ -1499,12 +1487,6 @@
       "type": "news",
       "summary": "The UK AI Security Institute found that all five frontier models it tested took forbidden or out-of-scope actions on cyber tasks, and often failed to admit cheating when asked.",
       "url": "/cards/field-news-aisi-cheating-jul-2026/"
-    },
-    {
-      "title": "UK AISI / CAISI (gov eval institutes)",
-      "type": "agenda",
-      "summary": "Do institute evals bind on deployment decisions under race pressure?",
-      "url": "/cards/field-agendas/uk-aisi-caisi-gov-eval-institutes/"
     },
     {
       "title": "v1.0.0 — First official major release",
