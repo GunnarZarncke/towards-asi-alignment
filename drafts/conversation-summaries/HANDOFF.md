@@ -8,8 +8,8 @@ Last updated: 2026-08-02.
 
 ## Open work (load-bearing)
 
-- **Field agenda matrix (MB11 pass)** — Index matrix now MB1–MB11 incl. MB4a; Kosoy split; missing-bridge-candidates table; public URLs only (CIRISAI + companion site). App B MB11 row still deferred. Log: `2026-08-02-field-agenda-mb11-matrix.md`.
-- **Model-class misspec decision** — Kosoy/nonrealizability: ambient MB1/MB9 vs new bridge — open in `metadata/TODO.md`.
+- **Field-claim formalization / missing-bridge decision** — **Phase 3 decided (2026-08-02):** no new `MB*`; misspec = ambient MB1/MB9 + defeaters (prose in field index); regret = side channel; LI/reflection split; positive path structure + CIRIS TODO; MB10 chokepoint interface kept + prove/type TODO. Lean Phases 1–2 shipped. App B/matrix sync still deferred. Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`. Log: `2026-08-02-field-claim-phase3-decisions.md`.
+- **Field agenda matrix (MB11 pass)** — Index matrix now MB1–MB11 incl. MB4a; Kosoy split; missing-bridge-candidates table + Phase 3 dispositions; public URLs only (CIRISAI + companion site). App B MB11 row still deferred. Log: `2026-08-02-field-agenda-mb11-matrix.md`.
 - **Terminology demotion follow-through (manuscript prose)** — v1.1 plain-first pass **shipped** (deployment environment / points of control outside ch34; **deployment leverage** retires deployment mass). Remaining: site concepts.yml parity, App E full sync with inter-agenda glossary, thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`). Inventory: `drafts/glossary-term-audit.md`. Pointer: `metadata/TODO.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
@@ -29,6 +29,9 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Formal (2026-08-02):** Field-claim Phase 3 decisions — no new `MB*`; prose dispositions in field index + plan; deferred TODOs (CIRIS positive path, numeric harm leaf, chokepoint prove/type). Log: `2026-08-02-field-claim-phase3-decisions.md`.
+- **Formal (2026-08-02):** Field-claim Phase 2 Lean — `FieldInterfaces.lean`; MB10↔Chokepoint `SystemTransition`; regret non-consumer decision; no new bridges. Log: `2026-08-02-field-claim-lean-phase2.md`.
+- **Formal (2026-08-02):** Field-claim Phase 1 Lean — defeater signals/toys; `Field/Finite/{Nonrealizability,RegretSafety,CompositePathBypass}.lean`; no new bridges; book/matrix untouched. Log: `2026-08-02-field-claim-lean-phase1.md`.
 - **Reference (2026-08-02):** Field agenda index — MB4a/MB8/MB11 matrix columns; Kosoy LTA vs PreDCA split; missing-bridge-candidates table; coverage≠book-treatment rule; public CIRIS + companion-site catalog URLs. Log: `2026-08-02-field-agenda-mb11-matrix.md`.
 - **Manuscript (2026-08-02):** v1.1 terminology demotion — plain-first `deployment environment` / points of control outside ch34; retire **deployment mass** → **deployment leverage**; ch10 anthropic capture cite fix. Log: `2026-08-02-glossary-demotion-pass.md`.
 - **Reference (2026-08-01):** Source-backed prose pass on inter-agenda glossary (152 headwords; Definition / why-not-same / tagged Cross-agenda). Batches in `drafts/glossary-prose-pass/`. Log: `2026-08-01-glossary-prose-pass.md`.

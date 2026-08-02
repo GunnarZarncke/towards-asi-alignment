@@ -514,16 +514,28 @@ The **coverage matrix** catalogs **sourced evidence that an agenda advances a br
 
 Field claims that may need an explicit spine bridge, or that map only partially onto existing MBs. Listed for index completeness; book decision tracked in `metadata/TODO.md` where noted.
 
-| Field claim | Agendas | Maps to existing MB? | Open gap / TODO |
+| Field claim | Agendas | Maps to existing MB? | Disposition (2026-08-02) |
 |---|---|---|---|
-| **Model-class misspec / nonrealizability / grain-of-truth** | Kosoy (IB/LTA), logical-induction neighborhood | Partial: **MB1** (modeling), **MB9** (grounding/coverage) | [`metadata/TODO.md`](../../metadata/TODO.md) — explicit bridge vs ambient |
-| **Regret bounds ⇒ deployment safety** | Kosoy LTA | Partial: **MB11** (safety-case ⇒ `Safe`) — different formal object | Defer; learning-theoretic discharge path |
-| **Logical uncertainty / reflection** | Garrabrant logical induction | **MB5** / **MB7d** neighborhood | Catalog as field crux; book exclude-by-reference ontology |
+| **Model-class misspec / nonrealizability / grain-of-truth** | Kosoy (IB/LTA), logical-induction neighborhood | **MB1** (estimator/modeling), **MB9** (grounding/coverage) | **Ambient + defeaters** — no `MB12`; see prose below |
+| **Regret bounds ⇒ deployment safety** | Kosoy LTA | Cousin to **MB2**/**MB7**; not **MB11**/`RiskGap` | **Side channel** — `SystemRegretSafetyEvidence`; numeric harm leaf deferred |
+| **Logical uncertainty / reflection** | Garrabrant logical induction | **MB5** / **MB7d** neighborhood | **Split** — reflection in `LobTiling`; LI exclude-by-reference |
 | **Safety case ⇒ Safe** | GSAI, Resolution, lab RSP, this book | **MB11** (Lean) | Matrix column added; App B row deferred |
-| **Anti-capture / measured-path legitimacy** | CIRIS, Redwood, MIRI corrigibility | **MB4a** (Lean split from MB4) | Matrix column added |
-| **CEV-process / extrapolated volition route** | CEV/CBV, MIRI, pause advocacy | **MB8** (secondary vs MB4) | Matrix column added |
+| **Anti-capture / measured-path legitimacy** | CIRIS, Redwood, MIRI corrigibility | **MB4a** (necessary / capture-falsifier) | **`PositiveMeasuredPathCertificate`** (coverage + no-bypass); positive→integrity TODO (CIRIS) |
+| **CEV-process / extrapolated volition route** | CEV/CBV, MIRI, pause advocacy | **MB8** (secondary vs MB4) | Matrix column added; unchanged |
 
 **Kosoy diagnostic:** infra-Bayesianism/LTA advances walls typed as **MB1–MB9** cousins, not a missing **MB11**. PreDCA is a **peer outer target** on **MB2/MB3**, not a separate bridge.
+
+**Phase 3 spine dispositions (2026-08-02):** Full plan in [`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md). Lean finite models + interfaces in `formal/AlignmentProofSpine/Field/` and `FieldInterfaces.lean`; **no new numbered bridge** in this pass.
+
+- **Misspec / nonrealizability:** Treat as an **ambient** failure mode under existing **MB1** (estimator / model-class adequacy) and **MB9** (grounding certificate / coverage), not a separate discharge path. Off-class unsafe policies while in-class certificates read green are the headline counterexample (`Field/Finite/Nonrealizability.lean`). Deployable evidence packages through **`EpistemicCoverageEvidence`** → **`MB9`**; falsifiers **`ModelClassMisspecified`** / **`GrainOfTruthViolated`** in `Defeaters.lean`. Grain-of-truth (multi-agent closure) is **not** identified with ordinary realizability. App B may later split the **`MB9`** antecedent in prose (coverage + no-silent-gap + domain match); that is editorial, not a new bridge number.
+
+- **Regret ⇒ Safe:** Rejected as stated. Regret bounds on a learning loss do not, by themselves, bound deployment harm or imply **`Safe`** / **`CertifiedSafetyCase`** discharge (`Field/Finite/RegretSafety.lean`). **`SystemRegretSafetyEvidence`** is an optional side channel distinct from **`RiskGap`**. A parallel numeric harm leaf may be added later if the book commits to expected-harm language.
+
+- **Logical uncertainty vs reflection:** Keep separate. Reflection/tiling obstructions stay in **`LobTiling`**; logical induction remains a field crux catalogued on **MB5**/**MB7d** columns with **exclude-by-reference** ontology — no LI bridge or finite module unless demand rises.
+
+- **Positive measured path:** **`MB4a`** stays the one-way necessary condition (capture falsifies integrity). A stronger **`PositiveMeasuredPathCertificate`** (legitimacy + effective-controller coverage + no composite bypass) is vocabulary only until CIRIS/composite evidence needs a positive export; then try derivation from boundary/access bridges before a threaded **MB4b-shaped** axiom.
+
+- **MB10 chokepoint:** **`ConservedPropertySignatureVerifiable_of_chokepoint`** remains an unnumbered interface linking **`Chokepoint`** verifiability to the **`MB10`** antecedent; TODO to prove or better type it.
 
 ---
 

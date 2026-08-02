@@ -44,6 +44,14 @@ structure MeasurementChannel (Sys : Type) where
   costFake : Sys → Int → Int
   affordableSurplus : Int → Int
 
+/-- Transition carrier for pair-valued audits (predecessor → successor).
+    Lets `MeasurementChannel` specialize to transition-pair measurands such as
+    conserved-property forgeability (`Forgeability.lean` / `MB10`) without
+    changing the unary channel API. -/
+structure SystemTransition where
+  pred : System
+  succ : System
+
 /-- ch43 Eq. `eq:adv-verif-def`: a channel is adversarially verifiable up to
     `κ` when the fake-cost for every positive divergence exceeds the
     affordable surplus at `κ`. -/
