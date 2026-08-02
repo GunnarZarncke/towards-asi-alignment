@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-02 | **App E glossary sync** — Review vs inter-agenda glossary; homograph patches, new headwords (strategic opacity, ICI, adversarial verifiability, etc.), nearest-field deltas. Site concepts.yml deferred. | [2026-08-02-appE-glossary-sync.md](2026-08-02-appE-glossary-sync.md) |
 | 2026-08-02 | **Field index spine translation** — Dissolve missing-bridge candidates table; fold Phase 3 dispositions into Coverage vs book treatment reading rules. | [2026-08-02-field-index-spine-translation.md](2026-08-02-field-index-spine-translation.md) |
 | 2026-08-02 | **Anthropic glossary hub** — Hub headword `anthropic` in inter-agenda glossary: four-load disambiguation + why acausal/ECL is co-bucketed (observer-relative reasoning). | [2026-08-02-anthropic-glossary-hub.md](2026-08-02-anthropic-glossary-hub.md) |
 | 2026-08-02 | **Field-claim Phase 3 decisions** — User confirmed all five bridge dispositions: misspec ambient MB1/MB9; regret side channel; LI split; positive path + CIRIS TODO; MB10 chokepoint interface + prove/type TODO. No new MB*. | [2026-08-02-field-claim-phase3-decisions.md](2026-08-02-field-claim-phase3-decisions.md) |

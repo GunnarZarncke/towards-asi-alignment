@@ -1,6 +1,6 @@
 # Glossary term audit (working notes)
 
-**Status:** manuscript demotion pass — **partially shipped** (2026-08-01). Inter-agenda glossary prose pass complete; chapter/appendix plain-first edits below applied. App E / site cards still open.
+**Status:** manuscript demotion pass — **partially shipped** (2026-08-02). Inter-agenda glossary prose pass complete; chapter/appendix plain-first edits below applied. **App E sync shipped** (homographs, new headwords, nearest-field deltas); site `concepts.yml` still open.
 
 **Source rules:** v1.1 demotion ([`archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md`](conversation-summaries/archive/2026-07/2026-07-08-glossary-terminology-demotion-release-notes.md)); field translation from [`reference/field-agendas/inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md).
 
@@ -91,6 +91,13 @@
 - Residual ch34 in-chapter shorthand (`selection handle`, `fitness` in formulas) after definitional block — acceptable at home.
 - Site `metadata/concepts.yml` / MB6 and CCI cards parity spot-check.
 - Full appendices grep for any missed downstream coined shorthand.
+
+### Shipped (2026-08-02) — App E sync
+
+- Homograph patches: CCI (Christiano vs MIRI/CHAI); selection environment + Demski/Wentworth on `Fit_E`; experimental BIQ vs hidden productive B-IQ.
+- New headwords: strategic opacity, hidden productive B-IQ bound, ICI, adversarial verifiability, certification-under-manipulation, selection environment.
+- Nearest-field deltas: boundary (Friston homograph), goal, transport, deployment leverage, alignment basin (Christiano), value bundle (shard/CIRL), conserved properties (tiling/MB10).
+- Preservation conditions list: `hidden productive-control bounds` → `hidden productive B-IQ bounds`.
 
 ## Verification (per file class)
 

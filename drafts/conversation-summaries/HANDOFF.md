@@ -10,7 +10,7 @@ Last updated: 2026-08-02.
 
 - **Field-claim formalization** — Phase 3 decided; missing-bridge table dissolved into field index §Coverage vs book treatment. App B/matrix sync still deferred. Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
 - **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Kosoy split; spine-translation reading rules under Coverage vs book treatment; public URLs (CIRISAI + companion site). App B MB11 row still deferred. Log: `2026-08-02-field-agenda-mb11-matrix.md`, `2026-08-02-field-index-spine-translation.md`.
-- **Terminology demotion follow-through (manuscript prose)** — v1.1 plain-first pass **shipped** (deployment environment / points of control outside ch34; **deployment leverage** retires deployment mass). Remaining: site concepts.yml parity, App E full sync with inter-agenda glossary, thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`). Inventory: `drafts/glossary-term-audit.md`. Pointer: `metadata/TODO.md`.
+- **Terminology demotion follow-through (manuscript prose)** — v1.1 plain-first pass **shipped**; **App E sync shipped** (2026-08-02). Remaining: site `concepts.yml` parity, thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`). Inventory: `drafts/glossary-term-audit.md`. Pointer: `metadata/TODO.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
 - **Conserved-property forgeability (MB10)** — finite counterexample in Lean; prose wired. Still open: non-enumerability of conserved set across capability jumps; toy red-team of audit forgeability. Pointer: `metadata/TODO.md`, `Forgeability.lean`.
@@ -29,6 +29,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Manuscript (2026-08-02):** App E operational glossary synced with inter-agenda glossary — homographs (CCI, selection, BIQ), new headwords (strategic opacity, ICI, adversarial verifiability, certification-under-manipulation, selection environment). Log: `2026-08-02-appE-glossary-sync.md`.
 - **Reference (2026-08-02):** Inter-agenda glossary hub **`anthropic`** — homograph disambiguation + why acausal/ECL is co-bucketed (observer-relative reasoning). Log: `2026-08-02-anthropic-glossary-hub.md`.
 - **Formal (2026-08-02):** Field-claim Phase 3 decisions — no new `MB*`; prose dispositions in field index + plan; deferred TODOs (CIRIS positive path, numeric harm leaf, chokepoint prove/type). Log: `2026-08-02-field-claim-phase3-decisions.md`.
 - **Formal (2026-08-02):** Field-claim Phase 2 Lean — `FieldInterfaces.lean`; MB10↔Chokepoint `SystemTransition`; regret non-consumer decision; no new bridges. Log: `2026-08-02-field-claim-lean-phase2.md`.
