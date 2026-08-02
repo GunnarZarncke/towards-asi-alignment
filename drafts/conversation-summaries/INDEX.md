@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-02 | **App B field agenda core sync** — MB4a/MB11 crosswalk rows + notes; MB4/MB8 split; field-index pointer; deferred secondary items in TODO. | [2026-08-02-appb-field-agenda-sync.md](2026-08-02-appb-field-agenda-sync.md) |
 | 2026-08-02 | **Site Field hub and agenda restructure** — User requested site nav changes (Field before Cards, Book before PDF, Badges after Cards), a Fiel... | [2026-08-02-site-field-hub-agendas.md](2026-08-02-site-field-hub-agendas.md) |
 | 2026-08-02 | **Site concepts glossary sync** — User asked to sync site `metadata/concepts.yml` with App E / inter-agenda glossary (deferred from... | [2026-08-02-site-concepts-glossary-sync.md](2026-08-02-site-concepts-glossary-sync.md) |
 | 2026-08-02 | **Glossary demotion pass (manuscript + deployment leverage)** — User asked to implement edits from `drafts/glossary-term-audit.md`; then retire **deployment mass... | [2026-08-02-glossary-demotion-pass.md](2026-08-02-glossary-demotion-pass.md) |

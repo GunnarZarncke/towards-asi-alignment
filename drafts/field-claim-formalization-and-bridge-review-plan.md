@@ -1,6 +1,6 @@
 # Field-claim formalization and Lean-bridge review plan
 
-Status: Phase 1–3 decided (2026-08-02). Lean Phases 1–2 implemented; Phase 3 bridge dispositions recorded (no new `MB*`). Book/App B/matrix sync still deferred.
+Status: Phase 1–3 decided (2026-08-02). Lean Phases 1–2 implemented; Phase 3 bridge dispositions recorded (no new `MB*`). App B core sync **done 2026-08-02** (MB4a/MB11 rows + field-index pointer); secondary prose items deferred — see `metadata/TODO.md` §App B field sync (deferred).
 
 ## Scope and assumptions
 

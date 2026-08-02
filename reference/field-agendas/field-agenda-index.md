@@ -474,7 +474,7 @@ The **coverage matrix** catalogs **sourced evidence that an agenda advances a br
 
 - **`Book treatment`** on each [agenda row](#agendas) states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).
 - **Empty matrix cells (`—`)** mean no catalog entry in this pass — not "out of book scope" and not a claim the agenda is silent on the crux.
-- **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).
+- **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk table and notes list the same range (synced 2026-08-02).
 
 ### How to read matrix cells (spine translation) {#spine-translation}
 
@@ -496,7 +496,7 @@ A filled cell means **field evidence on a crux**, not **automatic discharge to `
 
 ## Coverage matrix (agenda × bridge)
 
-**Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appB/) (field crux names for MB1–MB10); [Lean spine](https://towards-alignment.com/lean/) adds **MB4a**, **MB11**.
+**Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appB/) (field crux names for MB1–MB11 incl. MB4a); [Lean spine](https://towards-alignment.com/lean/).
 
 
 

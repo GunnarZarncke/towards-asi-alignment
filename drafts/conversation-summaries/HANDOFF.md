@@ -8,8 +8,8 @@ Last updated: 2026-08-02.
 
 ## Open work (load-bearing)
 
-- **Field-claim formalization** — Phase 3 decided; missing-bridge table dissolved into field index §Coverage vs book treatment. App B/matrix sync still deferred. Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
-- **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Kosoy split; spine-translation reading rules under Coverage vs book treatment; public URLs (CIRISAI + companion site). **Site Field hub shipped** (`/field/`, agenda cards, YAML source of truth). App B MB11 row still deferred. Log: `2026-08-02-site-field-hub-agendas.md`, `2026-08-02-field-agenda-mb11-matrix.md`, `2026-08-02-field-index-spine-translation.md`.
+- **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
+- **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk synced 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
 - **Terminology demotion follow-through** — v1.1 plain-first + App E + site `concepts.yml` **shipped** (2026-08-02). Remaining: thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`), residual appendices grep. Inventory: `drafts/glossary-term-audit.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
@@ -29,6 +29,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Manuscript (2026-08-02):** App B bridge crosswalk synced with field agenda index — MB4a/MB11 table rows + notes; MB4/MB8 split; field-index pointer with spine-translation caveat. Log: `2026-08-02-appb-field-agenda-sync.md`.
 - **Companion site (2026-08-02):** Bridge cards field-first — each MB1–MB10 (+ index) opens with field crux in ordinary technical language, then precise book bet, with concept-card links; summaries softened for Field-hub readers. Log: `2026-08-02-bridge-cards-field-first.md`.
 - **Companion site (2026-08-02):** Field hub at `/field/` — coverage matrix (MB columns → bridge cards), evidence catalog, 32 agenda cards; nav Field / Badges reorder; YAML source `reference/field-agendas/data/`. Log: `2026-08-02-site-field-hub-agendas.md`.
 - **Manuscript (2026-08-02):** Site `concepts.yml` synced with App E — glossaryTerms + CCI/MB6/strategic-opacity bodies; `sync:concepts`. Terminology demotion track complete. Log: `2026-08-02-site-concepts-glossary-sync.md`.
