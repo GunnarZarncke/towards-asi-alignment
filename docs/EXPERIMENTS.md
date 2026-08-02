@@ -30,6 +30,21 @@ Open tasks: [`experiments/TODO.md`](../experiments/TODO.md).
 
 ---
 
+## External transfer (cross-codebase)
+
+Four **external-transfer (ET)** annexes apply frozen in-repo instruments to traces or substrates this project did not build. Each has its own pre-registration, finding-ID prefix, and explicit stop/close criteria. They do **not** validate book bridges on real frontier systems.
+
+| Line | Substrate | Status | Key finding |
+|------|-----------|--------|-------------|
+| **ET-1** | Orbit multi-agent collusion benchmark | **Stopped** (GL-86) | Passive UAD correctly detects shared-script coupling, not hidden coordination — substrate lacks heterogeneous non-coalition controls |
+| **ET-2** | CIL `basin_stability` | **Null** (GL-87/88) | Frozen passive UAD: zero edges at every cell; handle-UAD pilot finds diffuse common-pool coupling (variable-smoothing case) |
+| **ET-3** | AI 2027 takeoff schedule (sibling fork) | **Closed** (LS-48) | Macro takeoff cues drove micro bridge stress tests; no calendar-validation claims |
+| **ET-4** | In-repo secret-loyalty pipeline organism | **Hackathon** | Principal-directed policy + graded affordance audit; paper [`papers/et4-secret-loyalties/`](../papers/et4-secret-loyalties/); replay demo `/ch07-lab-sim-replay/?mode=et4` |
+
+Plans: [`PLAN_ET1.md`](../experiments/graded-lab-simulation/PLAN_ET1.md), [`PLAN_ET3.md`](../experiments/lab-simulation/PLAN_ET3.md), [`PLAN_ET4.md`](../experiments/lab-simulation/PLAN_ET4.md), [`README_ET4_secret_loyalties.md`](../experiments/lab-simulation/README_ET4_secret_loyalties.md).
+
+---
+
 ## 0. Agency-detect (sibling repo, methodological precursor)
 
 Before any simulator lived in this book repository, the **agency-detect** line asked a narrower question: can boundary-like structure—who acts, what they sense, what is internal—be recovered from raw time series **without** a prior agent ontology? That question feeds the book's boundary-discovery chapters and Appendix I; the in-repo toy line reimplements a minimal slice of its MI/CMI machinery locally rather than calling the repo at runtime.

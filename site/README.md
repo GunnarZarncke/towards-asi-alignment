@@ -1,6 +1,6 @@
 # Companion site
 
-Static Astro site for *Towards Superintelligence Alignment*. The PDF remains the canonical long-form artifact; this site is an orientation layer (Start Here, cards, paths, FAQ, book map).
+Static Astro site for *Towards Superintelligence Alignment*. The PDF remains the canonical long-form artifact; this site is an orientation layer (Start Here, [Field hub](https://towards-alignment.com/field/), cards, paths, field news, FAQ, book map).
 
 ## Why not open `dist/index.html` directly?
 
@@ -70,7 +70,7 @@ Output: `site/dist/`
 
 | Path | Purpose |
 |------|---------|
-| `src/pages/` | Routes (Start Here, FAQ, book map, card/path indexes, `/glossary/`, `/notation/`, `/updates/`, `/news/`) |
+| `src/pages/` | Routes (Start Here, FAQ, book map, **`/field/`**, card/path indexes, `/glossary/`, `/notation/`, `/updates/`, `/news/`) |
 | `src/content/cards/` | Short concept, bridge, artifact, glossary, and **release** cards — mostly generated, see below |
 | `src/pages/updates/` | Releases & updates — newest version card first (`CardSection` initial count 1) |
 | `src/content/reading-paths/` | Fixed audience reading paths (loaded at build/dev time) |
