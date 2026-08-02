@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Jul 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[Release] v1.4.0 — Field crosswalk hub, legibility pass, and external-transfer ET-3/ET-4</title>
+      <link>https://towards-alignment.com/cards/release-v1-4-0/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/release-v1-4-0/</guid>
+      <pubDate>Sun, 02 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Field agenda crosswalk maps 32 named agendas to MB1–MB11 on a companion Field hub; a plain-first legibility pass retires coined jargon in the manuscript and syncs Appendix E with a 152-headword inter-agenda glossary; external transfer closes the AI 2027 annex (ET-3) and ships the Secret Loyalties hackathon line (ET-4); and field-claim Lean adds finite defeaters and interface certificates without new bridge numbers.</description>
+      <category>release</category>
+    </item>
     <item>
       <title>[News] AI 2040 Plan A: a recommended slowdown deal, not a prediction</title>
       <link>https://towards-alignment.com/cards/field-news-ai2040-plan-a-jul-2026/</link>

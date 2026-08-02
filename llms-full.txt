@@ -10,7 +10,11 @@ Orientation layer for humans and bots at https://towards-alignment.com/ — the 
 
 - [Start Here](https://towards-alignment.com/): homepage, thesis, standalone claims, failure modes.
 - [Guided tour](https://towards-alignment.com/paths/): audience-specific reading paths.
+- [Field hub](https://towards-alignment.com/field/): 32 alignment agendas × MB1–MB11 bridge matrix, evidence catalog.
 - [Concept cards](https://towards-alignment.com/cards/): short cards (concepts, bridges, projections, chapters).
+- [Field news](https://towards-alignment.com/news/): 2026 alignment incidents tied to manuscript chapters.
+- [Updates](https://towards-alignment.com/updates/): versioned release notes.
+- [Glossary](https://towards-alignment.com/glossary/): operational definitions synced with Appendix E.
 - [FAQ](https://towards-alignment.com/faq/): common questions and caveats.
 - [Book map](https://towards-alignment.com/book/): chapter and appendix index with synced excerpts.
 - [Lean spine](https://towards-alignment.com/lean/): proof-spine graphs and playgrounds.
@@ -25,6 +29,8 @@ Orientation layer for humans and bots at https://towards-alignment.com/ — the 
 ## Repository (clone / deep review)
 
 - `README.md` - project overview, repository map, build commands.
+- `RELEASE_NOTES.md` - versioned release history (current: v1.4.0).
+- `reference/field-agendas/` - field agenda index, inter-agenda glossary, MB coverage matrix (not manuscript canon).
 - `REVIEWING_FOR_AGENTS.md` - fast orientation for read-only AI/coding agents (also at https://towards-alignment.com/reviewing-for-agents.md).
 - `frontmatter/introduction.tex` - thesis, six claims, how to read the book.
 - `frontmatter/executive-overview.tex` - short executive framing.
