@@ -150,7 +150,7 @@ The book's move is to make this a checked finite counterexample rather than a re
 The closest field statement is the Guaranteed-Safe / Open Agency safety-case program: whether a formal specification, world model, and layered evidence actually suffice for deployment-level safety in an open world \autocite{dalrymple2024gsai}.
 The shared open problem is the gap between a green safety case and a safe deployment --- not any one missing layer, but whether the \emph{case-to-safety} step is warranted.
 The book's move is to make that step explicit: \(\mathrm{CertifiedSafetyCase}(A,\delta)\) packages certification, invariants, the eight alignment layers, and \(\mathrm{RiskGap}\,A \le \delta\); \(\mathrm{WithinDeploymentRiskTolerance}(A,\delta)\) is a \(\mathrm{Prop}\)-valued acceptance gate (governance judgment, not a computed failure probability); bridge \(\text{MB11}\) is the only arrow to the abstract \(\mathrm{Safe}\) predicate (Chapter~\ref{ch:safety-case}).
-Assembly theorems (\leanid{P30\_certified\_class\_safety\_derived} and relatives) are labeled packaging; \(\leanid{P30\_safe\_of\_case}\) consumes exactly this bridge.
+Assembly theorems (\leanid{P30\_certified\_class\_safety\_derived} and relatives) are labeled packaging; \leanid{P30\_safe\_of\_case} consumes exactly this bridge.
 Lean shows the bridge is independently load-bearing (\leanid{MB11\_independently\_load\_bearing}): case plus tolerance do not imply safety by logic alone.
 The whole manuscript is an argument about what belongs in the antecedent; \(\text{MB11}\) names the residual bet that the antecedent, once filled honestly, is enough.
 
