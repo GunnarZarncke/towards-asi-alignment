@@ -77,9 +77,10 @@ typeLettersTable: |-
   | **E** | empirical (other) |
   | **O** | other |
 matrixIntro: >-
-  **Bridge map:** [App B
-  (companion)](https://towards-alignment.com/cards/chapters/appb/) (field crux
-  names for MB1–MB10); [Lean spine](https://towards-alignment.com/lean/) adds
-  **MB4a**, **MB11**.
+  Column headers use **field nouns** (see [Crux legend](#crux-legend) above);
+  **MB*** keys are spine identifiers only. [App B
+  (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean
+  spine](https://towards-alignment.com/lean/) · source:
+  [`reference/field-agendas/data/bridges.yml`](data/bridges.yml).
 matrixLegend: ''
 excludedFromMatrix: '### Coverage evidence catalog {#coverage-evidence-catalog}'

@@ -19,22 +19,43 @@ const dataRoot = path.join(repoRoot, "reference", "field-agendas", "data");
 const cardsDir = path.join(siteRoot, "src", "content", "cards", "field-agendas");
 const indexPath = path.join(repoRoot, "reference", "field-agendas", "field-agenda-index.md");
 
-/** MB column → companion bridge card slug. */
-export const MB_BRIDGE_CARDS = {
-  MB1: "mb1-boundary-estimator-soundness",
-  MB2: "mb2-bundle-identifiability",
-  MB3: "mb3-bearer-import",
-  MB4: "mb4-correction-legitimacy",
-  MB4a: "mb4-correction-legitimacy",
-  MB5: "mb5-successor-ontology-shift",
-  MB6: "mb6-selection-and-basin-stability",
-  MB7: "mb7-hidden-capability-and-access",
-  MB7d: "mb7-hidden-capability-and-access",
-  MB8: "mb8-cev-process-convergence",
-  MB9: "mb9-grounding-certificate",
-  MB10: "mb10-successor-forgeability",
-  MB11: "dynamical-guarantee"
-};
+function buildMbBridgeCards(bridgeRows) {
+  const map = {};
+  for (const row of bridgeRows) {
+    map[row.key] = row.cardSlug;
+  }
+  return map;
+}
+
+function bridgeByKey(bridgeRows) {
+  return Object.fromEntries(bridgeRows.map((row) => [row.key, row]));
+}
+
+function renderCruxLegend(bridgeRows) {
+  const lines = [];
+  lines.push("## Crux legend (field nouns × bridge bets) {#crux-legend}");
+  lines.push("");
+  lines.push(
+    "Each column is a **field noun** (how agendas name the neighborhood) plus the **semantic crux** the Lean spine bets as `MB*`. A filled matrix cell is evidence on that crux, not discharge."
+  );
+  lines.push("");
+  lines.push("| Key | Noun | Crux |");
+  lines.push("| --- | --- | --- |");
+  for (const row of bridgeRows) {
+    lines.push(`| **${row.key}** | ${row.noun} | ${row.cruxWording} |`);
+  }
+  lines.push("");
+  const notes = bridgeRows.filter((row) => row.legendNote);
+  if (notes.length) {
+    lines.push("**Legend notes (homographs / splits):**");
+    lines.push("");
+    for (const row of notes) {
+      lines.push(`- **${row.key} (${row.noun}):** ${row.legendNote}`);
+    }
+    lines.push("");
+  }
+  return lines.join("\n");
+}
 
 function yamlScalar(v) {
   return JSON.stringify(v);
@@ -158,7 +179,8 @@ async function loadYaml(name) {
   return yaml.load(await readFile(path.join(dataRoot, name), "utf8"));
 }
 
-function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering) {
+function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering, bridgeRows) {
+  const bridgeMap = bridgeByKey(bridgeRows);
   const lines = [];
   lines.push("# Field agenda index");
   lines.push("");
@@ -213,17 +235,27 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push("");
   lines.push("---");
   lines.push("");
+  lines.push(renderCruxLegend(bridgeRows));
+  lines.push("");
+  lines.push("---");
+  lines.push("");
   lines.push("## Coverage matrix (agenda × bridge)");
   lines.push("");
   lines.push(meta.matrixIntro);
   lines.push("");
-  lines.push(meta.matrixLegend);
-  lines.push("");
+  if (meta.matrixLegend) {
+    lines.push(meta.matrixLegend);
+    lines.push("");
+  }
   lines.push("**Type letters** (prefix on each tag; full definitions in catalog **Type** column):");
   lines.push("");
   lines.push(meta.typeLettersTable);
   lines.push("");
-  const header = ["Agenda", ...matrix.columns].join(" | ");
+  const columnLabels = matrix.columns.map((col) => {
+    const row = bridgeMap[col];
+    return row ? `${row.noun} (${col})` : col;
+  });
+  const header = ["Agenda", ...columnLabels].join(" | ");
   const sep = ["---", ...matrix.columns.map(() => "---")].join(" | ");
   lines.push(`| ${header} |`);
   lines.push(`| ${sep} |`);
@@ -291,6 +323,8 @@ async function main() {
   const matrix = normalizeMatrix(matrixRaw);
   const { evidence } = await loadYaml("evidence.yml");
   const { clustering } = await loadYaml("clustering.yml");
+  const { bridges: bridgeRows } = await loadYaml("bridges.yml");
+  const mbBridgeCards = buildMbBridgeCards(bridgeRows);
 
   const mismatches = [];
   const matrixPath = path.join(dataRoot, "matrix.yml");
@@ -316,13 +350,14 @@ async function main() {
     matrix,
     evidence,
     clustering,
-    mbBridgeCards: MB_BRIDGE_CARDS
+    bridges: bridgeRows,
+    mbBridgeCards
   };
   const jsonPath = path.join(siteRoot, "src", "data", "field-agendas.json");
   const jsonContents = JSON.stringify(jsonData, null, 2) + "\n";
   await writeFileCheck(jsonPath, jsonContents, check, mismatches);
 
-  const indexMd = renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering);
+  const indexMd = renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering, bridgeRows);
   await writeFileCheck(indexPath, indexMd, check, mismatches);
 
   if (check && mismatches.length > 0) {

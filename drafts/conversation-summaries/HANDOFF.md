@@ -8,6 +8,7 @@ Last updated: 2026-08-02.
 
 ## Open work (load-bearing)
 
+- **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agendas share labels but not always formal objects (corrigibility homographs, MB7 vs MB10, Grounding Drift vs GSAI). Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
 - **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
 - **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk synced 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
 - **Terminology demotion follow-through** — v1.1 plain-first + App E + site `concepts.yml` **shipped** (2026-08-02). Remaining: thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`), residual appendices grep. Inventory: `drafts/glossary-term-audit.md`.
@@ -29,6 +30,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference (2026-08-02):** Field matrix bridge nouns — `bridges.yml` source; crux legend + noun matrix headers; MB card titles in `metadata/bridges.yml`; Field hub `FieldCruxLegend`; Track 2 plan `drafts/field-crux-divergence-plan.md`. Log: `2026-08-02-field-matrix-bridge-nouns.md`.
 - **Companion site (2026-08-02):** Offline PWA cache fix — network-first when offline mode not enabled; removed 1-hour stale cache-first; shell-only install pre-cache; SW v8. Log: `2026-08-02-site-offline-pwa-cache-fix.md`.
 - **Reference (2026-08-02):** Field evidence catalog + agenda card link audit — fixed wrong arXiv IDs (Embedded Agency, alignment faking, deception survey, logical induction), companion appendix casing, AE Studio/MIRI/CHAI/CIRIS/ControlAI URLs; canonical redirects synced across YAML + clustering. Log: `2026-08-02-field-evidence-agenda-link-audit.md`.
 - **Manuscript (2026-08-02):** App B bridge crosswalk synced with field agenda index — MB4a/MB11 table rows + notes; MB4/MB8 split; field-index pointer with spine-translation caveat. Log: `2026-08-02-appb-field-agenda-sync.md`.

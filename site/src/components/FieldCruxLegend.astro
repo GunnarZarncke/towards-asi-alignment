@@ -1,0 +1,85 @@
+---
+import fieldData from "../data/field-agendas.json";
+
+interface Props {
+  base: string;
+}
+
+const { base: _base } = Astro.props;
+const bridgeRows = fieldData.bridges ?? [];
+const notes = bridgeRows.filter((row) => row.legendNote);
+---
+
+<section id="crux-legend" class="crux-legend">
+  <h2>Crux legend</h2>
+  <p class="side-panel-meta">
+    Each matrix column is a <strong>field noun</strong> plus the semantic crux the Lean spine bets as
+    <code>MB*</code>. Evidence in a cell is not discharge. Source:
+    <code>reference/field-agendas/data/bridges.yml</code>.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Key</th>
+          <th scope="col">Noun</th>
+          <th scope="col">Crux</th>
+        </tr>
+      </thead>
+      <tbody>
+        {bridgeRows.map((row) => (
+          <tr>
+            <th scope="row">{row.key}</th>
+            <td>{row.noun}</td>
+            <td>{row.cruxWording}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  {notes.length > 0 && (
+    <div class="legend-notes">
+      <p><strong>Homographs / splits</strong></p>
+      <ul>
+        {notes.map((row) => (
+          <li>
+            <strong>{row.key} ({row.noun}):</strong> {row.legendNote}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</section>
+
+<style>
+  .crux-legend {
+    margin-top: 2.5rem;
+  }
+
+  .crux-legend table {
+    font-size: 0.88rem;
+  }
+
+  .crux-legend th,
+  .crux-legend td {
+    vertical-align: top;
+    padding: 0.45rem 0.55rem;
+  }
+
+  .crux-legend tbody th {
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .legend-notes {
+    margin-top: 1rem;
+    max-width: 48rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .legend-notes ul {
+    margin: 0.35rem 0 0;
+    padding-left: 1.25rem;
+  }
+</style>

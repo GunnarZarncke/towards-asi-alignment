@@ -1,6 +1,5 @@
 ---
 import fieldData from "../data/field-agendas.json";
-import { badgeTypeHref } from "../lib/badges";
 import { renderMatrixCellHtml } from "../lib/field-matrix-cell";
 import { cardHref } from "../lib/site-urls";
 
@@ -9,25 +8,32 @@ interface Props {
 }
 
 const { base } = Astro.props;
-const { matrix, mbBridgeCards } = fieldData;
-const fieldPrefix = `${base.replace(/\/$/, "")}/field/`;
+const { matrix, mbBridgeCards, bridges: bridgeRows } = fieldData;
+const bridgeMap = Object.fromEntries((bridgeRows ?? []).map((row) => [row.key, row]));
 
 function bridgeHref(mb: string) {
   const slug = mbBridgeCards[mb as keyof typeof mbBridgeCards];
   return slug ? cardHref(base, slug) : undefined;
 }
 
+function columnLabel(mb: string) {
+  const row = bridgeMap[mb];
+  if (!row) return mb;
+  return { noun: row.noun, key: mb };
+}
+
 function agendaHref(slug: string) {
   return cardHref(base, `field-agendas/${slug}`);
 }
+
+const fieldPrefix = `${base.replace(/\/$/, "")}/field/`;
 ---
 
 <section id="coverage-matrix" class="field-matrix">
   <h2>Coverage matrix</h2>
   <p class="side-panel-meta">
-    Which agendas have published evidence on which bridge problems (MB1–MB11).
-    Column headers link to bridge cards; row headers link to agenda cards.
-    Browse all agendas via the <a href={badgeTypeHref(base, "agenda")}>Field agenda badge</a>.
+    Field nouns × bridge cruxes (MB* spine keys in parentheses). Column headers link to bridge or concept cards; row headers link to agenda cards.
+    See the <a href="#crux-legend">crux legend</a> in the field index prose below, or the companion <a href={cardHref(base, "chapters/appb")}>Appendix B crosswalk</a>.
     Tags: C conceptual, T theory, S simulation, P practical, D/E empirical, O other — each links to the evidence catalog below.
   </p>
   <div class="table-wrap field-matrix-wrap">
@@ -37,9 +43,24 @@ function agendaHref(slug: string) {
           <th scope="col">Agenda</th>
           {matrix.columns.map((mb) => {
             const href = bridgeHref(mb);
+            const label = columnLabel(mb);
             return (
               <th scope="col">
-                {href ? <a href={href}>{mb}</a> : mb}
+                {href ? (
+                  <a href={href}>
+                    {typeof label === "string" ? label : label.noun}
+                    {typeof label !== "string" && (
+                      <span class="col-key">{label.key}</span>
+                    )}
+                  </a>
+                ) : typeof label === "string" ? (
+                  label
+                ) : (
+                  <>
+                    {label.noun}
+                    <span class="col-key">{label.key}</span>
+                  </>
+                )}
               </th>
             );
           })}
@@ -89,11 +110,21 @@ function agendaHref(slug: string) {
   }
 
   .field-matrix thead th {
-    white-space: nowrap;
+    white-space: normal;
+    max-width: 7.5rem;
+    line-height: 1.25;
     position: sticky;
     top: 0;
     background: var(--color-surface, #fff);
     z-index: 1;
+  }
+
+  .field-matrix thead th .col-key {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.72em;
+    font-weight: 500;
+    color: var(--color-muted, #64748b);
   }
 
   .field-matrix tbody th {
