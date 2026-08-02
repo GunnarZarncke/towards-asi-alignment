@@ -44,7 +44,7 @@ This card is about that outer plan, not a new lab result from this book.
 
 [Zvi’s overview](https://www.lesswrong.com/posts/z9tXCGogEgkgHSh8G/introduction-for-and-reactions-to-plan-a) walks through common objections (timelines, authoritarianism, China deal feasibility, economic optimism) without endorsing the plan as written. [Nate Soares](https://x.com/So8res/status/2075292149466431555) calls it the best concrete positive vision he has seen spelled out, while doubting it would work as written and treating a competent attempt as a possible off-ramp toward a harder shutdown—the hard-pause and off-switch priority in [MIRI’s 2024 strategy update](https://intelligence.org/2024/01/04/miri-2024-mission-and-strategy-update/).
 
-**What the book asks next**
+**Questions to ask next**
 
 From the coordination and selection chapters: private caution does not become collective action by itself ([Ch. 13](/cards/chapters/ch13/), [Ch. 34](/cards/chapters/ch34/)). From the attractor chapters: a pause buys time only if safety-relevant artifacts still reach release gates ([Ch. 37](/cards/chapters/ch37/)–[Ch. 38](/cards/chapters/ch38/)). From [Appendix C](/cards/chapters/appC/): verification, compute access, and licensing are institutional handles — they must bind an uncaptured corrector when competitive pressure rises.
 

@@ -26,3 +26,4 @@ User asked whether the **Missing-bridge candidates** table could be dissolved no
 ## Verification
 
 - Doc-only; no Lean rebuild required
+- Commit: `6f3762a9`

@@ -18,4 +18,4 @@ User asked to list the sibling repo [deployment-pipeline-simulator](https://gith
 - Optional: add `**Key finding:**` tags in sibling repo if site auto-extraction should surface headline bullets.
 
 ## Commit
-`543c3a57` — Index deployment-pipeline-simulator as a sibling experiment precursor.
+`08a86b46` — Index deployment-pipeline-simulator as a sibling experiment precursor.
