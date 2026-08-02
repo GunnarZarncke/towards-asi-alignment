@@ -67,7 +67,10 @@ const websiteJsonLd = {
     <meta name="author" content={AUTHOR_NAME} />
     <meta name="robots" content={robots} />
     <link rel="manifest" href={withBase("/manifest.webmanifest")} />
-    <meta name="theme-color" content="#17324d" />
+    <link rel="icon" href={withBase("/favicon.ico")} sizes="48x48" />
+    <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={withBase("/apple-touch-icon.png")} />
+    <meta name="theme-color" content="#161E2B" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="text/plain" href={LLMS_TXT_URL} title="LLM / agent orientation (llms.txt)" />
     <link rel="alternate" type="application/json" href={SEARCH_INDEX_JSON_URL} title="Site search index" />
@@ -92,7 +95,10 @@ const websiteJsonLd = {
     <div class="shell">
       <header class="site-header">
         <div class="site-header-inner">
-          <a class="brand" href={withBase("/")}>{SITE_NAME}</a>
+          <a class="brand" href={withBase("/")}>
+            <img class="brand-logo" src={withBase("/logo-circle.svg")} alt="" decoding="async" />
+            <span class="brand-text">{SITE_NAME}</span>
+          </a>
           <nav class="nav" aria-label="Primary navigation">
             <a href={withBase("/")}>Start Here</a>
             <a href={withBase("/paths/")}>Guided Tour</a>

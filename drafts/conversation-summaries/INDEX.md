@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-03 | **Site logo + favicon** — TSA PNG→SVG; circular transparent logo in header; favicon/PWA icons; README trim. | [2026-08-03-site-logo-favicon-readme.md](2026-08-03-site-logo-favicon-readme.md) |
 | 2026-08-02 | **Field agenda restructure + merges** — Neglected-report folds; 4 independence merges; new Safeguarded AI / MAI+CIP / Neglected approaches rows; TSA matrix home link; AE essay card overview. | [2026-08-02-field-agenda-restructure-merges.md](2026-08-02-field-agenda-restructure-merges.md) |
 | 2026-08-02 | **Field crux on bridge cards** — Removed hub crux legend; agree/differ/homograph notes on MB1–MB10 + MB11 on dynamical-guarantee. | [2026-08-02-field-crux-on-bridge-cards.md](2026-08-02-field-crux-on-bridge-cards.md) |
 | 2026-08-02 | **Field matrix bridge nouns** — `bridges.yml`; crux legend; noun matrix headers; MB card titles; Track 2 divergence plan. | [2026-08-02-field-matrix-bridge-nouns.md](2026-08-02-field-matrix-bridge-nouns.md) |

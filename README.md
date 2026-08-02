@@ -10,24 +10,9 @@ A research manuscript on preserving **human-correctable value-bearing processes*
 
 ---
 
-## Standalone claims (start here for researchers)
-
-Four extractable notes from the manuscript — each is a citable claim without the full book argument. Full derivations and caveats remain in the PDF chapters linked from each card.
-
-| Claim | Companion card |
-|-------|----------------|
-| Anti-capture validity of correction | [anti-capture-correction-validity](https://towards-alignment.com/cards/anti-capture-correction-validity/) |
-| Bearer-map commutation failure | [bearer-map-commutation-failure](https://towards-alignment.com/cards/bearer-map-commutation-failure/) |
-| Goodhart as selector (not just proxy drift) | [goodhart-as-selector](https://towards-alignment.com/cards/goodhart-as-selector/) |
-| Certification-Under-Manipulation Problem | [certification-under-manipulation](https://towards-alignment.com/cards/certification-under-manipulation/) |
-
-Also on the [companion site homepage](https://towards-alignment.com/) under **Standalone claims**.
-
----
-
 ## What this is (and is not)
 
-This repository is a **requirements decomposition with in-principle estimands**: a structured map of what would need to be true, measured, and governed for superintelligence alignment under human-correctable value update. It is **not** a proof that alignment is solved, not a machine-checked safety certificate for frontier systems, and not a substitute for adversarial review. Lean checks conditional structure; experiments are sanity checks with recorded negatives ([`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md)).
+This repository is a **requirements decomposition** of the alignment problem into independent, in-principle theoretically determinable or empiricallly estimatable elements. It is a structured map of what would need to be true, measured, and governed for superintelligence to remain alignment and human-correctable under changing values. The include Lean proofs check the conditional decomposition structure; experiments are sanity checks with recorded negatives ([`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md)).
 
 ---
 
@@ -35,14 +20,14 @@ This repository is a **requirements decomposition with in-principle estimands**:
 
 | | |
 |---|---|
-| **Companion website** | **[towards-alignment.com](https://towards-alignment.com/)** — [Field hub](https://towards-alignment.com/field/) (32 agendas × MB1–MB11), guided paths, concept/bridge cards, [field news](https://towards-alignment.com/news/), [releases](https://towards-alignment.com/updates/), chapter pages, Lean playgrounds, demos · bot orientation: [`/llms.txt`](https://towards-alignment.com/llms.txt) |
+| **Companion website** | **[towards-alignment.com](https://towards-alignment.com/)** — [Field hub](https://towards-alignment.com/field/), guided paths, concept/bridge cards, [field news](https://towards-alignment.com/news/), [releases](https://towards-alignment.com/updates/), chapter pages, Lean playgrounds, and demos 
 | **PDF** | [Read in browser](https://towards-alignment.com/towards-superintelligence-alignment.pdf) · [GitHub release](https://github.com/GunnarZarncke/towards-asi-alignment/releases/latest) · build locally: [`docs/BUILD.md`](docs/BUILD.md) |
 
 **New reader?** Open the [**Guided tour**](https://towards-alignment.com/paths/) on the companion site. Pick a path (generalist, researcher, engineer, funder, philosopher); each lists what you will learn, in what order, and why—without assuming you already know the book's vocabulary.
 
 ---
 
-## Thesis (one paragraph)
+## Thesis
 
 Superintelligence alignment is the problem of preserving grounded, human-correctable value update across capability growth, ontology shift, successor creation, and strategic selection pressure—under the assumption that civilization still has enough **correction capacity** to participate.
 
