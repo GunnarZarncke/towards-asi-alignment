@@ -135,7 +135,7 @@ evidence:
       - label: Greenblatt et al. 2024
         url: https://arxiv.org/abs/2412.14093
   - id: 14
-    agenda: CHAI
+    agenda: CHAI / FAR.AI
     bridges:
       - MB2
       - MB3
@@ -146,7 +146,7 @@ evidence:
         url: >-
           https://papers.nips.cc/paper/6420-cooperative-inverse-reinforcement-learning
   - id: 15
-    agenda: CHAI
+    agenda: CHAI / FAR.AI
     bridges:
       - MB2
     type: C
@@ -156,7 +156,7 @@ evidence:
         url: >-
           http://griffithlawjournal.org/index.php/gjlhd/article/download/1043/993
   - id: 16
-    agenda: CHAI
+    agenda: CHAI / FAR.AI
     bridges:
       - MB2
     type: T
@@ -165,7 +165,7 @@ evidence:
       - label: Turner et al. 2019
         url: https://arxiv.org/abs/1902.09725
   - id: 17
-    agenda: CHAI
+    agenda: CHAI / FAR.AI
     bridges:
       - MB4
     type: T
@@ -242,7 +242,7 @@ evidence:
       - label: Dalrymple et al. 2024
         url: https://arxiv.org/abs/2405.06624
   - id: 25
-    agenda: Anthropic
+    agenda: Anthropic / Goodfire
     bridges:
       - MB2
       - MB3
@@ -253,7 +253,7 @@ evidence:
       - label: Bai et al. 2022
         url: https://arxiv.org/abs/2212.08073
   - id: 26
-    agenda: Anthropic
+    agenda: Anthropic / Goodfire
     bridges:
       - MB2
     type: E
@@ -262,7 +262,7 @@ evidence:
       - label: Casper et al. 2023
         url: https://arxiv.org/abs/2307.15217
   - id: 27
-    agenda: Anthropic
+    agenda: Anthropic / Goodfire
     bridges:
       - MB2
     type: C
@@ -271,7 +271,7 @@ evidence:
       - label: Amodei et al. 2016
         url: https://arxiv.org/abs/1606.06565
   - id: 28
-    agenda: Anthropic
+    agenda: Anthropic / Goodfire
     bridges:
       - MB6
       - MB11
@@ -281,7 +281,7 @@ evidence:
       - label: Anthropic RSP 2024
         url: https://www.anthropic.com/news/anthropics-responsible-scaling-policy
   - id: 29
-    agenda: Anthropic
+    agenda: Anthropic / Goodfire
     bridges:
       - MB7
     type: C
@@ -290,7 +290,7 @@ evidence:
       - label: Hubinger 2023
         url: https://arxiv.org/abs/2302.00805
   - id: 30
-    agenda: Anthropic
+    agenda: Anthropic / Goodfire
     bridges:
       - MB7
     type: E
@@ -299,7 +299,7 @@ evidence:
       - label: Anthropic Research
         url: https://www.anthropic.com/research
   - id: 31
-    agenda: Anthropic
+    agenda: Anthropic / Goodfire
     bridges:
       - MB7
     type: E
@@ -318,7 +318,7 @@ evidence:
       - label: DeepMind Safety Research
         url: https://deepmind.google/discover/blog/
   - id: 33
-    agenda: Apollo
+    agenda: Apollo / Truthful AI
     bridges:
       - MB6
       - MB7
@@ -329,7 +329,7 @@ evidence:
       - label: Apollo Research
         url: https://www.apolloresearch.ai/
   - id: 34
-    agenda: Apollo
+    agenda: Apollo / Truthful AI
     bridges:
       - MB7
     type: E
@@ -338,7 +338,7 @@ evidence:
       - label: Apollo publications
         url: https://www.apolloresearch.ai/research
   - id: 35
-    agenda: Apollo
+    agenda: Apollo / Truthful AI
     bridges:
       - MB7
     type: E
@@ -396,16 +396,20 @@ evidence:
       - label: Timaeus
         url: https://timaeus.ai/
   - id: 41
-    agenda: AE Studio
+    agenda: Neglected approaches
     bridges:
       - MB2
     type: O
-    evidence: Neglected-approaches portfolio and intervention breadth map
+    evidence: Neglected-approaches portfolio strategy (AE Studio alignment agenda)
     sources:
+      - label: AE Studio alignment agenda
+        url: https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach
+      - label: LessWrong mirror
+        url: https://www.lesswrong.com/posts/qAdDzcBuDBLexb4fC/the-neglected-approaches-approach-ae-studio-s-alignment
       - label: AE Studio Research
         url: https://ae.studio/alignment
   - id: 42
-    agenda: AE Studio
+    agenda: Neglected approaches
     bridges:
       - MB2
       - MB4
@@ -415,7 +419,7 @@ evidence:
       - label: Heitzig & Potham 2025
         url: https://arxiv.org/abs/2508.00159
   - id: 43
-    agenda: AE Studio
+    agenda: Neglected approaches
     bridges:
       - MB6
     type: C
@@ -725,7 +729,7 @@ evidence:
       - label: Accord Book IX
         url: https://ciris.ai/ciris_accord.txt
   - id: 57
-    agenda: GovAI
+    agenda: GovAI / UK AISI
     bridges:
       - MB6
     type: E
@@ -734,7 +738,7 @@ evidence:
       - label: Kulveit et al. 2025
         url: https://arxiv.org/abs/2501.16946
   - id: 58
-    agenda: GovAI
+    agenda: GovAI / UK AISI
     bridges:
       - MB6
       - MB7
@@ -744,7 +748,7 @@ evidence:
       - label: GovAI
         url: https://www.governance.ai/
   - id: 59
-    agenda: GovAI
+    agenda: GovAI / UK AISI
     bridges:
       - MB6
     type: E
@@ -754,7 +758,7 @@ evidence:
         url: >-
           https://www.governance.ai/research-paper/international-control-of-powerful-technology-lessons-from-the-baruch-plan-for-nuclear-weapons
   - id: 60
-    agenda: GovAI
+    agenda: GovAI / UK AISI
     bridges:
       - MB9
     type: C
@@ -763,7 +767,7 @@ evidence:
       - label: GovAI publications
         url: https://www.governance.ai/research
   - id: 61
-    agenda: UK AISI / CAISI
+    agenda: GovAI / UK AISI / UK AISI
     bridges:
       - MB6
     type: P
@@ -772,7 +776,7 @@ evidence:
       - label: UK AISI
         url: https://www.aisi.gov.uk/
   - id: 62
-    agenda: UK AISI / CAISI
+    agenda: GovAI / UK AISI / UK AISI
     bridges:
       - MB6
       - MB7
@@ -783,7 +787,7 @@ evidence:
         url: >-
           https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations
   - id: 63
-    agenda: UK AISI / CAISI
+    agenda: GovAI / UK AISI / UK AISI
     bridges:
       - MB6
       - MB9
@@ -794,7 +798,7 @@ evidence:
       - label: US NIST AI
         url: https://www.nist.gov/artificial-intelligence
   - id: 64
-    agenda: UK AISI / CAISI
+    agenda: GovAI / UK AISI / UK AISI
     bridges:
       - MB7
     type: P
@@ -868,7 +872,7 @@ evidence:
       - label: CLR
         url: https://longtermrisk.org/
   - id: 72
-    agenda: Truthful AI
+    agenda: Apollo / Truthful AI / Truthful AI
     bridges:
       - MB7
     type: E
@@ -877,7 +881,7 @@ evidence:
       - label: Truthful AI
         url: https://truthful.ai/
   - id: 73
-    agenda: Truthful AI
+    agenda: Apollo / Truthful AI / Truthful AI
     bridges:
       - MB7
     type: E
@@ -886,7 +890,7 @@ evidence:
       - label: Park et al. 2024
         url: https://arxiv.org/abs/2308.14752
   - id: 74
-    agenda: Goodfire / MI
+    agenda: Anthropic / Goodfire / Goodfire
     bridges:
       - MB7
     type: D
@@ -895,7 +899,7 @@ evidence:
       - label: Goodfire
         url: https://www.goodfire.ai/
   - id: 75
-    agenda: Goodfire / MI
+    agenda: Anthropic / Goodfire / Goodfire
     bridges:
       - MB7
     type: D
@@ -904,7 +908,7 @@ evidence:
       - label: Neuronpedia
         url: https://www.neuronpedia.org/
   - id: 76
-    agenda: Goodfire / MI
+    agenda: Anthropic / Goodfire / Goodfire
     bridges:
       - MB7
     type: D
@@ -922,7 +926,7 @@ evidence:
       - label: AI Futures Project
         url: https://ai-2027.com/
   - id: 78
-    agenda: FAR.AI
+    agenda: CHAI / FAR.AI / FAR.AI
     bridges:
       - MB7
     type: O
@@ -963,12 +967,14 @@ evidence:
       - label: Lab simulation findings
         url: https://towards-alignment.com/experiments/findings/lab-simulation/
   - id: 82
-    agenda: TSA
+    agenda: Neglected approaches
     bridges:
       - MB1
     type: S
-    evidence: Agency-detect precursor (MI/CMI boundary clustering)
+    evidence: UAD / agency-detect (unsupervised boundary discovery from dynamics)
     sources:
+      - label: Unsupervised Agent Discovery
+        url: https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery
       - label: agency-detect repo
         url: https://github.com/GunnarZarncke/agency-detect
   - id: 83
@@ -996,11 +1002,12 @@ evidence:
         url: >-
           https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/formal/AlignmentProofSpine/Field
   - id: 85
-    agenda: TSA
+    agenda: MAI + CIP
     bridges:
       - MB2
+      - MB6
     type: C
-    evidence: Full-stack / thick-value cousin relation (Edelman)
+    evidence: Full-Stack Alignment (thick values, institutional amplification)
     sources:
       - label: Edelman et al. 2025
         url: https://arxiv.org/abs/2512.03399
@@ -1323,3 +1330,140 @@ evidence:
         url: https://www.lesswrong.com/tag/infra-bayesianism
       - label: field-claim plan
         url: ../../drafts/field-claim-formalization-and-bridge-review-plan.md
+  - id: 134
+    agenda: Google DeepMind
+    bridges:
+      - MB1
+    type: C
+    evidence: Discovering Agents (causal agent discovery from system dynamics)
+    sources:
+      - label: Kenton et al. 2022
+        url: https://arxiv.org/abs/2208.08345
+  - id: 135
+    agenda: Anthropic / Goodfire / Goodfire
+    bridges:
+      - MB7
+    type: E
+    evidence: Causally faithful mechanistic interpretability under intervention
+    sources:
+      - label: Lange et al. 2023
+        url: https://arxiv.org/abs/2311.17030
+      - label: Georg Lange (Foresight grantee)
+        url: https://foresight.org/grantees/2026-georg-lange/
+  - id: 136
+    agenda: Anthropic / Goodfire (lab)
+    bridges:
+      - MB11
+    type: P
+    evidence: Frontier Model Forum risk taxonomy and capability thresholds
+    sources:
+      - label: FMF risk thresholds report
+        url: https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/
+  - id: 137
+    agenda: GovAI / UK AISI / UK AISI
+    bridges:
+      - MB7
+    type: E
+    evidence: Alignment evaluation case study; evaluation-awareness under agentic scaffolds
+    sources:
+      - label: UK AISI 2026 alignment eval case study
+        url: https://arxiv.org/abs/2604.00788
+  - id: 138
+    agenda: Safeguarded AI
+    bridges:
+      - MB9
+      - MB11
+    type: T
+    evidence: ARIA Safeguarded AI programme (world models, specs, proof certificates)
+    sources:
+      - label: ARIA Safeguarded AI
+        url: https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai
+  - id: 139
+    agenda: Safeguarded AI
+    bridges:
+      - MB1
+      - MB9
+      - MB11
+    type: P
+    evidence: Zeroth Research end-to-end safeguarded-AI verification stack
+    sources:
+      - label: Zeroth Research
+        url: https://www.zeroth.org/
+  - id: 140
+    agenda: Safeguarded AI
+    bridges:
+      - MB1
+      - MB7
+    type: E
+    evidence: Multi-agent architecture security and collective-agency topology
+    sources:
+      - label: Hagag et al. 2026
+        url: https://arxiv.org/abs/2604.23459
+  - id: 141
+    agenda: Safeguarded AI
+    bridges:
+      - MB4a
+      - MB11
+    type: P
+    evidence: AARM open runtime for checking and recording agent actions
+    sources:
+      - label: AARM specification
+        url: https://heron.ing/aarm
+  - id: 142
+    agenda: Safeguarded AI
+    bridges:
+      - MB1
+      - MB9
+    type: T
+    evidence: Containment Verification (action boundary with model as oracle)
+    sources:
+      - label: Moon & Varshney 2026
+        url: https://arxiv.org/abs/2605.09045
+  - id: 143
+    agenda: Safeguarded AI
+    bridges:
+      - MB7
+      - MB11
+    type: T
+    evidence: Zero-knowledge attestation for AI safety verification
+    sources:
+      - label: Berrang ZK AI security
+        url: https://pascal-berrang.de/projects/zk_ai_security/
+  - id: 145
+    agenda: MAI + CIP
+    bridges:
+      - MB4a
+      - MB8
+    type: P
+    evidence: Alignment assemblies and collective constitutional AI
+    sources:
+      - label: CIP Alignment Assemblies
+        url: https://www.cip.org/alignmentassemblies
+  - id: 147
+    agenda: Neglected approaches
+    bridges:
+      - MB2
+      - MB7
+    type: C
+    evidence: Brain-like AGI safety (social cognition / homeostatic alignment hypotheses)
+    sources:
+      - label: Byrnes brain-like AGI sequence
+        url: https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/
+  - id: 148
+    agenda: Neglected approaches
+    bridges:
+      - MB7
+    type: E
+    evidence: Self-other overlap (SOO) fine-tuning against deceptive behavior
+    sources:
+      - label: Carauleanu et al. 2024
+        url: https://arxiv.org/abs/2412.16325
+  - id: 149
+    agenda: GovAI / UK AISI
+    bridges:
+      - MB6
+    type: E
+    evidence: Empirical disempowerment patterns in real-world LLM usage
+    sources:
+      - label: Sharma et al. 2026
+        url: https://arxiv.org/abs/2601.19062

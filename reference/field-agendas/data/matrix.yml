@@ -100,7 +100,7 @@ rows:
             - 11
       MB11: []
     slug: redwood-research
-  - agenda: CHAI
+  - agenda: CHAI / FAR.AI
     cells:
       MB1: []
       MB2:
@@ -125,7 +125,10 @@ rows:
             - 17
       MB5: []
       MB6: []
-      MB7: []
+      MB7:
+        - type: O
+          ids:
+            - 78
       MB7d: []
       MB8: []
       MB9: []
@@ -220,7 +223,7 @@ rows:
           ids:
             - 128
     slug: davidad-guaranteed-safe-ai-gsai
-  - agenda: Anthropic (lab)
+  - agenda: Anthropic / Goodfire
     cells:
       MB1: []
       MB2:
@@ -248,9 +251,17 @@ rows:
             - 25
             - 30
             - 31
+        - type: E
+          ids:
+            - 135
         - type: C
           ids:
             - 29
+        - type: D
+          ids:
+            - 74
+            - 75
+            - 76
       MB7d: []
       MB8: []
       MB9: []
@@ -262,10 +273,14 @@ rows:
         - type: P
           ids:
             - 28
+            - 136
     slug: anthropic-lab
   - agenda: Google DeepMind
     cells:
-      MB1: []
+      MB1:
+        - type: C
+          ids:
+            - 134
       MB2: []
       MB3: []
       MB4: []
@@ -285,7 +300,7 @@ rows:
       MB10: []
       MB11: []
     slug: google-deepmind-safety
-  - agenda: Apollo
+  - agenda: Apollo / Truthful AI
     cells:
       MB1: []
       MB2: []
@@ -303,6 +318,10 @@ rows:
             - 33
             - 34
             - 35
+        - type: E
+          ids:
+            - 72
+            - 73
       MB7d: []
       MB8: []
       MB9: []
@@ -370,9 +389,12 @@ rows:
           ids:
             - 129
     slug: resolution
-  - agenda: AE Studio
+  - agenda: Neglected approaches
     cells:
-      MB1: []
+      MB1:
+        - type: S
+          ids:
+            - 82
       MB2:
         - type: O
           ids:
@@ -380,6 +402,9 @@ rows:
         - type: T
           ids:
             - 42
+        - type: C
+          ids:
+            - 147
       MB3: []
       MB4:
         - type: T
@@ -391,13 +416,19 @@ rows:
         - type: C
           ids:
             - 43
-      MB7: []
+      MB7:
+        - type: C
+          ids:
+            - 147
+        - type: E
+          ids:
+            - 148
       MB7d: []
       MB8: []
       MB9: []
       MB10: []
       MB11: []
-    slug: ae-studio
+    slug: neglected-approaches-portfolio
   - agenda: Orthogonal
     cells:
       MB1:
@@ -591,7 +622,7 @@ rows:
           ids:
             - 108
     slug: ciris
-  - agenda: GovAI
+  - agenda: GovAI / UK AISI
     cells:
       MB1: []
       MB2: []
@@ -604,48 +635,30 @@ rows:
           ids:
             - 57
             - 59
+            - 149
+        - type: E
+          ids:
+            - 62
         - type: P
           ids:
             - 58
+            - 61
+            - 63
       MB7:
         - type: P
           ids:
             - 58
+            - 64
+        - type: E
+          ids:
+            - 62
+            - 137
       MB7d: []
       MB8: []
       MB9:
         - type: C
           ids:
             - 60
-      MB10: []
-      MB11: []
-    slug: govai
-  - agenda: UK AISI / CAISI
-    cells:
-      MB1: []
-      MB2: []
-      MB3: []
-      MB4: []
-      MB4a: []
-      MB5: []
-      MB6:
-        - type: P
-          ids:
-            - 61
-            - 63
-        - type: E
-          ids:
-            - 62
-      MB7:
-        - type: E
-          ids:
-            - 62
-        - type: P
-          ids:
-            - 64
-      MB7d: []
-      MB8: []
-      MB9:
         - type: P
           ids:
             - 63
@@ -654,7 +667,7 @@ rows:
         - type: P
           ids:
             - 63
-    slug: uk-aisi-caisi-gov-eval-institutes
+    slug: govai
   - agenda: Pause cluster
     cells:
       MB1: []
@@ -709,47 +722,6 @@ rows:
       MB10: []
       MB11: []
     slug: clr-cooperation-conflict
-  - agenda: Truthful AI
-    cells:
-      MB1: []
-      MB2: []
-      MB3: []
-      MB4: []
-      MB4a: []
-      MB5: []
-      MB6: []
-      MB7:
-        - type: E
-          ids:
-            - 72
-            - 73
-      MB7d: []
-      MB8: []
-      MB9: []
-      MB10: []
-      MB11: []
-    slug: truthful-ai-evans
-  - agenda: Goodfire / MI
-    cells:
-      MB1: []
-      MB2: []
-      MB3: []
-      MB4: []
-      MB4a: []
-      MB5: []
-      MB6: []
-      MB7:
-        - type: D
-          ids:
-            - 74
-            - 75
-            - 76
-      MB7d: []
-      MB8: []
-      MB9: []
-      MB10: []
-      MB11: []
-    slug: goodfire-mechanistic-interpretability-cluster
   - agenda: AI Futures
     cells:
       MB1: []
@@ -769,25 +741,6 @@ rows:
       MB10: []
       MB11: []
     slug: ai-futures-forecasting-cluster
-  - agenda: FAR.AI
-    cells:
-      MB1: []
-      MB2: []
-      MB3: []
-      MB4: []
-      MB4a: []
-      MB5: []
-      MB6: []
-      MB7:
-        - type: O
-          ids:
-            - 78
-      MB7d: []
-      MB8: []
-      MB9: []
-      MB10: []
-      MB11: []
-    slug: farai
   - agenda: Conjecture
     cells:
       MB1: []
@@ -807,13 +760,86 @@ rows:
       MB10: []
       MB11: []
     slug: conjecture-cognitive-emulation
+  - agenda: Safeguarded AI
+    cells:
+      MB1:
+        - type: P
+          ids:
+            - 139
+        - type: E
+          ids:
+            - 140
+        - type: T
+          ids:
+            - 142
+      MB2: []
+      MB3: []
+      MB4: []
+      MB4a:
+        - type: P
+          ids:
+            - 141
+      MB5: []
+      MB6: []
+      MB7:
+        - type: E
+          ids:
+            - 140
+        - type: T
+          ids:
+            - 143
+      MB7d: []
+      MB8: []
+      MB9:
+        - type: T
+          ids:
+            - 138
+            - 142
+      MB10: []
+      MB11:
+        - type: T
+          ids:
+            - 138
+            - 139
+            - 143
+        - type: P
+          ids:
+            - 141
+    slug: safeguarded-ai-aria-zeroth-heron
+  - agenda: MAI + CIP
+    cells:
+      MB1: []
+      MB2:
+        - type: C
+          ids:
+            - 85
+      MB3: []
+      MB4: []
+      MB4a:
+        - type: P
+          ids:
+            - 145
+      MB5: []
+      MB6:
+        - type: C
+          ids:
+            - 85
+      MB7: []
+      MB7d: []
+      MB8:
+        - type: P
+          ids:
+            - 145
+      MB9: []
+      MB10: []
+      MB11: []
+    slug: mai-cip-institutional-alignment
   - agenda: TSA
     cells:
       MB1:
         - type: S
           ids:
             - 81
-            - 82
         - type: T
           ids:
             - 80
@@ -822,9 +848,6 @@ rows:
           ids:
             - 83
             - 84
-        - type: C
-          ids:
-            - 85
       MB3:
         - type: T
           ids:
@@ -884,8 +907,6 @@ rows:
         - type: C
           ids:
             - 89
-        - type: C
-          ids:
             - 132
       MB9:
         - type: T

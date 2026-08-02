@@ -1,6 +1,6 @@
 # Field agenda index
 
-**Status:** field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 33 coherent agendas after Kosoy split). Each agenda row includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  
+**Status:** field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 30 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  
 **Term glossary:** [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) (alphabetical; TSA integration deferred)
 **Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · LaTeX source: [`appendices/appB-bridge-crosswalk.tex`](../../appendices/appB-bridge-crosswalk.tex)
 **Field hub (companion):** [towards-alignment.com/field/](https://towards-alignment.com/field/)
@@ -17,20 +17,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 
 ## Agendas
 
-### AE Studio
-
-- **Type:** Research org (Neglected Approaches)
-- **Carrier:** AE Studio / AE Studio Research
-- **Primary artifact:** Multi-angle R&D; intervention catalog input; policy+technical portfolio
-- **Signature vocabulary:** neglected approaches, human power objective, multi-domain alignment
-- **Stated intent:** Tackle alignment from overlooked technical and policy angles
-- **Primary crux:** Which neglected routes survive unified optimization pressure?
-- **Book bridges:** MB2, MB4, MB6 (partial)
-- **Contributes:** Breadth map (`zarncke2025interventions` lineage); Heitzig human-power objective cite
-- **Book separates:** Any single objective needs adversarial-verifiability argument (App B MB4 note)
-- **Manuscript hooks:** App B intervention map source; ch04/ch25 adjacent
-- **Links:** [AE Studio](https://ae.studio/); [AE Studio Research](https://ae.studio/alignment); [AE Alignment Podcast](https://ae.studio/alignment#podcast)
-
 ### AI Futures / forecasting cluster
 
 - **Type:** Forecasting / strategy
@@ -45,19 +31,19 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Manuscript hooks:** App C Plan A; App F governance-schedule deferred
 - **Links:** [AI Futures Project](https://ai-2027.com/); [Epoch AI](https://epoch.ai/); [Metaculus](https://www.metaculus.com/); [AI Impacts](https://aiimpacts.org/)
 
-### Anthropic (lab)
+### Anthropic / Goodfire (lab & MI stack)
 
-- **Type:** Capabilities lab + safety team
-- **Carrier:** Anthropic PBC
-- **Primary artifact:** RSP; interpretability research; Constitutional AI / conditioning line
-- **Signature vocabulary:** RSP, interpretability, constitutional AI, responsible scaling, conditioning (models)
-- **Stated intent:** Build capable systems with staged safety commitments and internal interpretability
+- **Type:** Capabilities lab + MI tooling cluster
+- **Carrier:** Anthropic PBC; Goodfire; Transluce; Neuronpedia (infra); Georg Lange (causal-faithfulness seam)
+- **Primary artifact:** RSP; Constitutional AI; interpretability research; Ember/editable representations; FMF capability thresholds
+- **Signature vocabulary:** RSP, constitutional AI, mechanistic interpretability, circuits, features, steering, capability thresholds, causal faithfulness
+- **Stated intent:** Build capable systems with staged safety commitments, interpretability, and editable internal representations
 - **Primary crux:** Can scaling policies and interpretability keep pace with capability?
-- **Book bridges:** MB2, MB3, MB7 (partial)
-- **Contributes:** Industry RSP template; conditioning-predictor failure mode (capture — homograph with “anthropic reasoning”)
+- **Book bridges:** MB2, MB3, MB6, MB7 (partial), MB10 (partial), MB11 (partial)
+- **Contributes:** Industry RSP template; conditioning-predictor failure mode; Goodfire MI tooling (Anthropic investment; Apollo/DeepMind MI lineage on team); cross-lab Neuronpedia infra
 - **Book separates:** CCI + adversarial verifiability; lab RSP ≠ preservation-layer certificate
-- **Manuscript hooks:** ch10 (conditioning); field-news; App B LLM opacity default
-- **Links:** [Anthropic](https://www.anthropic.com/); [Google DeepMind](https://deepmind.google/)
+- **Manuscript hooks:** ch10 (conditioning); ch43; field-news; App B LLM opacity default
+- **Links:** [Anthropic](https://www.anthropic.com/); [Goodfire](https://www.goodfire.com/); [Transluce](https://transluce.org/); [Neuronpedia](https://www.neuronpedia.org/); [Frontier Model Forum risk thresholds](https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/); [Lange et al. 2023](https://arxiv.org/abs/2311.17030)
 
 ### Apart Research
 
@@ -73,19 +59,19 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Manuscript hooks:** demos/experiments lineage
 - **Links:** [Apart Research](https://apartresearch.com/)
 
-### Apollo Research
+### Apollo / Truthful AI (deception & scheming)
 
-- **Type:** Research org
-- **Carrier:** Apollo Research
-- **Primary artifact:** Scheming science; pre-deployment evals; agent-security tools
-- **Signature vocabulary:** scheming, pre-deployment evals, situational awareness, agent governance
-- **Stated intent:** Evaluate and mitigate deception/scheming before deployment
+- **Type:** Research org cluster
+- **Carrier:** Apollo Research; Truthful AI (Owain Evans); CHAI affiliate network; shared mentee pipeline to AISI/Anthropic
+- **Primary artifact:** Scheming science; pre-deployment evals; agent-security tools; deception, situational awareness, hidden reasoning research
+- **Signature vocabulary:** scheming, pre-deployment evals, situational awareness, agent governance, deception, hidden reasoning, lie detection
+- **Stated intent:** Evaluate and mitigate deception/scheming and hidden reasoning before deployment
 - **Primary crux:** Can we detect strategic deception before capabilities outpace evals?
-- **Book bridges:** MB7a–c, MB10
-- **Contributes:** Scheming as named empirical research program
+- **Book bridges:** MB6 (partial), MB7a–c, MB10, MB11 (partial)
+- **Contributes:** Scheming as named empirical program; TruthfulQA/SAD lineage; Evans mentee network overlaps Apollo, UK/US AISI, Anthropic
 - **Book separates:** Eval success ⇏ correction-channel preservation
 - **Manuscript hooks:** ch10, ch43; METR-adjacent rows in lethality stress test
-- **Links:** [Apollo Research](https://www.apolloresearch.ai/)
+- **Links:** [Apollo Research](https://www.apolloresearch.ai/); [Truthful AI](https://truthful.ai/)
 
 ### ARC (Alignment Research Center)
 
@@ -129,19 +115,19 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Manuscript hooks:** minimal
 - **Links:** [CAIS](https://safe.ai/)
 
-### CHAI (Russell)
+### CHAI / FAR.AI (Berkeley alignment)
 
-- **Type:** Research org (academic)
-- **Carrier:** Center for Human-Compatible AI, UC Berkeley
-- **Primary artifact:** Assistance games / CIRL framework; beneficial AI reorientation
-- **Signature vocabulary:** CIRL, inverse reward design, assistance games, beneficial AI, provably beneficial systems
-- **Stated intent:** Reorient AI research toward systems that remain beneficial under uncertainty about human preferences
-- **Primary crux:** Cooperative reward inference underdetermined; values vs irrationality
-- **Book bridges:** MB2, MB3, MB4
-- **Contributes:** Formal assistance-game framing; off-switch game lineage
+- **Type:** Research org cluster (academic + nonprofit hub)
+- **Carrier:** Center for Human-Compatible AI (UC Berkeley); FAR.AI (Adam Gleave et al.); shared Berkeley alignment community
+- **Primary artifact:** Assistance games / CIRL framework; beneficial AI reorientation; FAR.Lab research and community programs
+- **Signature vocabulary:** CIRL, inverse reward design, assistance games, beneficial AI, FAR.Lab, value learning, scalable oversight cousins
+- **Stated intent:** Reorient AI research toward beneficial systems under preference uncertainty; host technical alignment research and community
+- **Primary crux:** Cooperative reward inference underdetermined; community hub ⇏ unified technical agenda
+- **Book bridges:** MB2, MB3, MB4, MB7 (partial)
+- **Contributes:** Formal assistance-game framing; off-switch game lineage; FAR incubation hub (Gleave CHAI PhD; METR board overlap)
 - **Book separates:** Bundle geometry + bearer maps; ELK as subchannel not whole target
 - **Manuscript hooks:** ch04, ch18; App B MB2/MB3; App G CIRL projection
-- **Links:** [CHAI](https://humancompatible.ai/); [CHAI Internship](https://humancompatible.ai/people#interns)
+- **Links:** [CHAI](https://humancompatible.ai/); [CHAI Internship](https://humancompatible.ai/people#interns); [FAR.AI](https://www.far.ai/)
 
 ### Christiano lineage
 
@@ -186,17 +172,17 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Manuscript hooks:** ch35, ch02; Critch multipolar cites
 - **Links:** [CLR](https://longtermrisk.org/); [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.com/)
 
-### Conjecture / cognitive emulation
+### Conjecture / EleutherAI (cognitive emulation)
 
-- **Type:** Research org (startup lineage)
-- **Carrier:** Conjecture (EleutherAI lineage)
-- **Primary artifact:** Cognitive Emulation approach; controllable LLMs
-- **Signature vocabulary:** cognitive emulation, controllable LLMs, emulation vs alignment
-- **Stated intent:** Build controllable systems via emulation framing
+- **Type:** Research org cluster (startup + open-science lineage)
+- **Carrier:** Conjecture (Connor Leahy, Sid Black, Gabriel Alfour; winding down 2026); EleutherAI open-science institute; Leahy → ControlAI (pause advocacy cousin)
+- **Primary artifact:** Cognitive Emulation / CoEm; controllable LLM stacks; open LLM lineage
+- **Signature vocabulary:** cognitive emulation, controllable LLMs, emulation vs alignment, EleutherAI, open models
+- **Stated intent:** Build controllable systems via emulation framing rather than opaque end-to-end agents
 - **Primary crux:** Does emulation imply corrigibility under scale?
 - **Book bridges:** MB7 (partial)
-- **Contributes:** Alternative controllability framing
-- **Book separates:** CCI + successor transport
+- **Contributes:** Alternative controllability framing; EleutherAI spinoff lineage; Redwood-adjacent prosaic alignment spirit
+- **Book separates:** CCI + successor transport; Conjecture chapter closing — active bet partly historical; ControlAI overlap is advocacy not CoEm
 - **Manuscript hooks:** sparse
 - **Links:** [Conjecture](https://www.conjecture.dev/); [EleutherAI](https://www.eleuther.ai/)
 
@@ -214,61 +200,33 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Manuscript hooks:** ch43, dynamical guarantee; App B MB9
 - **Links:** [GSAI paper](https://arxiv.org/abs/2405.06624); [Beneficial AI Foundation](https://www.beneficialaifoundation.org/); [LawZero](https://lawzero.org/en)
 
-### FAR.AI
-
-- **Type:** Research org + field-building
-- **Carrier:** FAR.AI
-- **Primary artifact:** Research programs; FAR.Lab; events
-- **Signature vocabulary:** FAR.Lab, alignment research, community programs
-- **Stated intent:** Host research and community for technical AI safety
-- **Primary crux:** Community hub ⇏ unified agenda
-- **Book bridges:** partial MB7
-- **Contributes:** Community and event infrastructure
-- **Book separates:** —
-- **Manuscript hooks:** sparse
-- **Links:** [FAR.AI](https://www.far.ai/)
-
-### Goodfire / mechanistic interpretability cluster
-
-- **Type:** Research org (representative of MI tool stack)
-- **Carrier:** Goodfire; Transluce; Neuronpedia (infra)
-- **Primary artifact:** Interpretability tooling; editable representations
-- **Signature vocabulary:** mechanistic interpretability, circuits, features, steering, decode networks
-- **Stated intent:** Make models understandable and editable for safety
-- **Primary crux:** Does interpretability scale to adversarial frontier models?
-- **Book bridges:** MB7 (filter subchannel)
-- **Contributes:** Tooling for adversarial verifiability experiments
-- **Book separates:** MI stack ⇏ correction-channel integrity default
-- **Manuscript hooks:** ch43; App B MI exclude row
-- **Links:** [Goodfire](https://www.goodfire.com/); [Transluce](https://transluce.org/); [Neuronpedia](https://www.neuronpedia.org/)
-
 ### Google DeepMind (safety)
 
 - **Type:** Capabilities lab + safety team
 - **Carrier:** Google DeepMind safety / alignment researchers
-- **Primary artifact:** Safety research blog; Gemini-era alignment work
-- **Signature vocabulary:** scalable alignment, safety research, evaluation, Gemini deployment
+- **Primary artifact:** Safety research blog; Gemini-era alignment work; Discovering Agents
+- **Signature vocabulary:** scalable alignment, safety research, evaluation, Gemini deployment, discovering agents, causal agent discovery
 - **Stated intent:** Build advanced AI with internal safety research integrated into capabilities org
 - **Primary crux:** Same as frontier-lab crux: oversight co-scaling, deceptive alignment
-- **Book bridges:** MB7a–c (partial)
-- **Contributes:** Large-scale empirical alignment research capacity
+- **Book bridges:** MB1 (partial), MB7a–c (partial)
+- **Contributes:** Large-scale empirical alignment research capacity; causal agent discovery from system dynamics
 - **Book separates:** Measurement spine not replaced by corporate safety teams
 - **Manuscript hooks:** ch14 co-scaling; minimal elsewhere
-- **Links:** [Google DeepMind](https://deepmind.google/); [DeepMind Safety Research blog](https://deepmind.google/blog/)
+- **Links:** [Google DeepMind](https://deepmind.google/); [DeepMind Safety Research blog](https://deepmind.google/blog/); [Discovering Agents](https://arxiv.org/abs/2208.08345)
 
-### GovAI
+### GovAI / UK AISI (governance & eval)
 
-- **Type:** Governance research program
-- **Carrier:** Centre for the Governance of AI, Oxford
-- **Primary artifact:** Policy-facing research; GovAI Fellowship
-- **Signature vocabulary:** AI governance, compute governance, international governance, policy briefs
-- **Stated intent:** Inform decision-makers on advanced AI governance
-- **Primary crux:** Can governance keep pace with capability without eroding correction capacity?
-- **Book bridges:** MB6 (institutional), MB9 (partial)
-- **Contributes:** Governance research pipeline; EU/US policy translation
-- **Book separates:** Policy levers ⇏ correction-channel integrity
-- **Manuscript hooks:** App C institutional translation; App B selection row
-- **Links:** [GovAI](https://www.governance.ai/); [Simon Institute](https://simoninstitute.ch/); [IAPS](https://www.iaps.ai/)
+- **Type:** Governance research + gov eval institutes
+- **Carrier:** Centre for the Governance of AI (Oxford); UK AI Security Institute; US CAISI (NIST); Simon Institute; IAPS (policy orbit)
+- **Primary artifact:** Policy-facing research; GovAI Fellowship; gradual disempowerment programme; frontier model testing; standards development; alignment eval case studies
+- **Signature vocabulary:** AI governance, compute governance, frontier evals, gradual disempowerment, AI safety institute, pre-deployment testing, evaluation awareness
+- **Stated intent:** Inform decision-makers and test frontier systems via policy research and government-led eval capacity
+- **Primary crux:** Can governance and institute evals keep pace with capability and bind on deployment under race pressure?
+- **Book bridges:** MB6 (institutional), MB7 (partial), MB9 (partial), MB11 (partial)
+- **Contributes:** Governance research pipeline; EU/US policy translation; gradual disempowerment framing; institutional eval capacity; Resolution/Irving lineage (UK AISI); personnel/advisory overlap between GovAI and AISI
+- **Book separates:** Policy levers and eval visibility ⇏ correction-channel integrity
+- **Manuscript hooks:** App C institutional translation; App B selection row; ch passive observation; field-news
+- **Links:** [GovAI](https://www.governance.ai/); [Gradual Disempowerment](https://gradual-disempowerment.ai/); [UK AISI](https://www.aisi.gov.uk/); [CAISI / US NIST AI](https://www.nist.gov/artificial-intelligence); [Simon Institute](https://simoninstitute.ch/); [IAPS](https://www.iaps.ai/)
 
 ### Kairos (field-building)
 
@@ -312,6 +270,20 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Manuscript hooks:** bib `kosoy2022predca`; glossary PreDCA row
 - **Links:** [PreDCA (Alignment Forum tag)](https://www.alignmentforum.org/w/predca); [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)
 
+### MAI + CIP (institutional alignment)
+
+- **Type:** Research org cluster
+- **Carrier:** Meaning Alignment Institute (Joe Edelman et al.); Collective Intelligence Project (Divya Siddarth, Saffron Huang et al.)
+- **Primary artifact:** Full-Stack Alignment; alignment assemblies; collective constitutional AI; thick-value / institutional design programmes
+- **Signature vocabulary:** full-stack alignment, thick values, alignment assemblies, deliberative alignment, collective constitutional AI
+- **Stated intent:** Align AI–institution systems and legitimate value aggregation—not model behavior in isolation
+- **Primary crux:** Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?
+- **Book bridges:** MB2 (partial), MB4a (partial), MB6 (partial), MB8 (partial)
+- **Contributes:** Institutional amplification failure mode; operational deliberative alignment; counterfactual value commitments vs preferences
+- **Book separates:** Legitimate process ⇏ correction-channel integrity; consensus output ⇏ bearer transport under optimization
+- **Manuscript hooks:** ch04 value bundles adjacent; App C institutional translation
+- **Links:** [Meaning Alignment Institute](https://www.meaningalignment.org/); [Full-Stack Alignment paper](https://arxiv.org/abs/2512.03399); [Collective Intelligence Project](https://www.cip.org/); [Alignment Assemblies](https://www.cip.org/alignmentassemblies)
+
 ### MATS
 
 - **Type:** Training / research program
@@ -353,6 +325,22 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Book separates:** Operational boundary discovery bet (MB1); trajectory CCI vs one-bit shutdown
 - **Manuscript hooks:** App B MB1/MB4/MB5 notes; ch07, ch25, ch28
 - **Links:** [MIRI](https://intelligence.org/); [AI StopWatch](https://aistop.watch/)
+
+### Neglected approaches portfolio
+
+AE Studio's *Neglected Approaches* strategy (Berg, Carauleanu, Rosenblatt; Dec 2023 / Jan 2024) treats alignment as a vast, still largely unexplored space where dominant agendas may sit on local maxima. The bet is **many low-probability, high-upside shots on goal**: parallel pursuit of creative, plausible directions underused by the field, especially where AE's BCI, neuroscience, and consulting-scale engineering stack is a comparative advantage. AE bootstrapped from a profitable consultancy reinvesting toward human-agency technologies (originally BCI-first); shortening timelines shifted emphasis toward direct technical alignment while keeping the portfolio logic. The published ten-direction menu is explicitly **evolving first-pass guesses**, not a fixed official agenda—and many items are community-wide neglected ideas AE may not be best placed to implement alone.
+
+- **Type:** Research portfolio cluster (AE Studio–led)
+- **Carrier:** AE Studio (lead: consultancy-funded alignment team); portfolio affiliates include aintelope (Gunnar Zarncke / UAD), Steven Byrnes (brain-like safety), Heitzig human-power objective line, SOO programme (Marc Carauleanu et al.)
+- **Primary artifact:** Neglected-approaches portfolio strategy; AI Safety Interventions breadth map; object-level lines including UAD/agency-detect, prosociality reverse-engineering (SOO, theory of mind, attention schema), BCI value-mapping / RLNF, provably safe architectures, neuroscience×mech-interp, field-building, safety-business incubation, consulting-scale project execution
+- **Signature vocabulary:** neglected approaches, many shots on goal, human agency, BCI, RLNF, prosociality reverse-engineering, self-other overlap (SOO), UAD, brain-like AGI safety, human-power objective, AI Safety Interventions
+- **Stated intent:** Improve exploratory coverage of alignment by funding and executing a diversified set of plausible neglected technical and institutional directions—aiming for superintelligent AI that at minimum does not destroy humanity and ideally increases agency and flourishing
+- **Primary crux:** Which neglected routes survive unified optimization pressure—and which portfolio bets compound vs. diffuse effort?
+- **Book bridges:** MB1 (partial), MB2, MB4, MB6 (partial), MB7 (partial)
+- **Contributes:** Portfolio meta-strategy and intervention catalog (`zarncke2025interventions`); Heitzig human-power outer target; UAD/agency-detect boundary discovery; Byrnes social-cognition / homeostatic hypotheses; SOO deception-reduction line; AE ten-direction menu (prosociality, TAI→BCI→researchers, value mapping, RLNF, provably safe architectures, field-building, safety businesses, consultancy scale-up, neuroscience×interp, neglected policy)
+- **Book separates:** Portfolio breadth ⇏ single discharge path; any one outer objective still needs adversarial-verifiability argument (App B MB4 note)
+- **Manuscript hooks:** App B intervention map source; ch04/ch15/ch25 adjacent
+- **Links:** [Neglected Approaches agenda (AE Studio)](https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach); [Neglected Approaches (LessWrong)](https://www.lesswrong.com/posts/qAdDzcBuDBLexb4fC/the-neglected-approaches-approach-ae-studio-s-alignment); [AE Studio](https://ae.studio/); [AE Studio Alignment](https://ae.studio/alignment); [Unsupervised Agent Discovery](https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery); [agency-detect](https://github.com/GunnarZarncke/agency-detect); [Brain-Like AGI Safety (Byrnes)](https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/); [SOO fine-tuning paper](https://arxiv.org/abs/2412.16325); [Human-power objective (Heitzig)](https://arxiv.org/abs/2508.00159)
 
 ### Orthogonal
 
@@ -410,6 +398,20 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Manuscript hooks:** sparse; App B exclude-by-reference for full verification construction
 - **Links:** [Resolution](https://resolution.org/); [Timaeus](https://www.timaeus.ai/)
 
+### Safeguarded AI (ARIA / Zeroth / Heron)
+
+- **Type:** Research programme cluster
+- **Carrier:** ARIA Safeguarded AI; Zeroth Research (Luca Arnaboldi, Pascal Berrang); Heron AI Security; Moon & Varshney (Containment Verification)
+- **Primary artifact:** World models + formal specs + proof certificates; end-to-end safeguarded-AI stack; AARM runtime action control; ZK attestation
+- **Signature vocabulary:** safeguarded AI, proof certificates, containment verification, AARM, ZK attestation, multi-agent security
+- **Stated intent:** Assure embedded model–tool–environment systems with formal methods, runtime controls, and privacy-preserving verification
+- **Primary crux:** Safety claims are conditional on the declared system boundary; misspecified controllers or emergent coalitions void otherwise correct proofs
+- **Book bridges:** MB1 (partial), MB4a (partial), MB7 (partial), MB9, MB11
+- **Contributes:** Whole-system formal assurance; cryptographic attestations; agentic action boundaries; architecture-level multi-agent security
+- **Book separates:** Proof green ⇏ correction uptake; attestation ⇏ discovered effective agent (cousin to GSAI completeness wall vs CIRIS ops stack)
+- **Manuscript hooks:** ch43; dynamical guarantee; App B MB9/MB11
+- **Links:** [ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai); [Zeroth Research](https://www.zeroth.org/); [Containment Verification](https://arxiv.org/abs/2605.09045); [Heron AI Security](https://www.heronsec.ai/); [AARM specification](https://heron.ing/aarm); [ZK attestation (Berrang)](https://pascal-berrang.de/projects/zk_ai_security/)
+
 ### This project - Towards Superintelligence Alignment (TSA)
 
 - **Type:** Research program
@@ -423,34 +425,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Book separates:** Does not dissolve field walls; relocates into bridges
 - **Manuscript hooks:** full manuscript; App B crosswalk
 - **Links:** [Companion site](https://towards-alignment.com/); [GitHub repo](https://github.com/GunnarZarncke/towards-asi-alignment)
-
-### Truthful AI (Evans)
-
-- **Type:** Research org
-- **Carrier:** Truthful AI (Owain Evans)
-- **Primary artifact:** Deception, situational awareness, hidden reasoning research
-- **Signature vocabulary:** situational awareness, deception, hidden reasoning, lie detection
-- **Stated intent:** Empirical study of model deception and awareness relevant to control
-- **Primary crux:** Can we detect hidden reasoning before it scales?
-- **Book bridges:** MB7a–c
-- **Contributes:** Empirical deception/s-awareness line
-- **Book separates:** Detection ⇏ CCI preservation
-- **Manuscript hooks:** ch10, ch43 adjacent
-- **Links:** [Truthful AI](https://truthful.ai/)
-
-### UK AISI / CAISI (gov eval institutes)
-
-- **Type:** Government governance + eval
-- **Carrier:** UK AI Security Institute; US CAISI (formerly USAISI)
-- **Primary artifact:** Frontier model testing; standards development; international policy
-- **Signature vocabulary:** AI safety institute, frontier evals, standards, pre-deployment testing
-- **Stated intent:** Government-led testing and standards for advanced AI
-- **Primary crux:** Do institute evals bind on deployment decisions under race pressure?
-- **Book bridges:** MB6, MB7 (partial)
-- **Contributes:** Institutional eval capacity; Resolution/Irving lineage (UK)
-- **Book separates:** Visibility/evals ⇏ correction integrity (ch passive observation)
-- **Manuscript hooks:** ch passive observation; App C; field-news
-- **Links:** [UK AISI](https://www.aisi.gov.uk/); [CAISI / US NIST AI](https://www.nist.gov/artificial-intelligence)
 
 ### Wentworth / natural abstractions
 
@@ -514,31 +488,29 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | MIRI | C<sup>[1](#ev-1),[2](#ev-2)</sup> | C<sup>[3](#ev-3)</sup> | — | T<sup>[4](#ev-4),[5](#ev-5)</sup> | T<sup>[4](#ev-4),[5](#ev-5)</sup> | C<sup>[6](#ev-6),[8](#ev-8)</sup>, T<sup>[7](#ev-7)</sup> | — | C<sup>[1](#ev-1),[9](#ev-9)</sup> | T<sup>[10](#ev-10),[124](#ev-124)</sup> | C<sup>[132](#ev-132)</sup> | — | C<sup>[6](#ev-6)</sup>, T<sup>[7](#ev-7)</sup> | — |
 | Redwood | — | — | — | C<sup>[11](#ev-11)</sup> | C<sup>[11](#ev-11)</sup> | — | — | E<sup>[12](#ev-12),[13](#ev-13)</sup>, C<sup>[11](#ev-11)</sup> | — | — | — | C<sup>[11](#ev-11)</sup> | — |
-| CHAI | — | T<sup>[14](#ev-14),[16](#ev-16)</sup>, C<sup>[15](#ev-15)</sup> | T<sup>[14](#ev-14)</sup> | T<sup>[17](#ev-17)</sup> | T<sup>[17](#ev-17)</sup> | — | — | — | — | — | — | — | — |
+| CHAI / FAR.AI | — | T<sup>[14](#ev-14),[16](#ev-16)</sup>, C<sup>[15](#ev-15)</sup> | T<sup>[14](#ev-14)</sup> | T<sup>[17](#ev-17)</sup> | T<sup>[17](#ev-17)</sup> | — | — | O<sup>[78](#ev-78)</sup> | — | — | — | — | — |
 | Christiano | — | C<sup>[18](#ev-18)</sup> | C<sup>[18](#ev-18)</sup> | C<sup>[19](#ev-19)</sup> | C<sup>[19](#ev-19)</sup> | — | C<sup>[20](#ev-20)</sup> | C<sup>[22](#ev-22),[23](#ev-23)</sup>, T<sup>[21](#ev-21)</sup> | — | — | — | C<sup>[22](#ev-22)</sup> | — |
 | ARC | — | C<sup>[18](#ev-18)</sup> | C<sup>[18](#ev-18)</sup> | — | — | — | — | C<sup>[18](#ev-18)</sup> | — | — | — | — | — |
 | GSAI | — | — | — | — | — | — | — | — | — | — | T<sup>[24](#ev-24)</sup> | — | T<sup>[128](#ev-128)</sup> |
-| Anthropic (lab) | — | E<sup>[25](#ev-25),[26](#ev-26)</sup>, C<sup>[27](#ev-27)</sup> | E<sup>[25](#ev-25)</sup> | — | — | — | P<sup>[28](#ev-28)</sup> | E<sup>[25](#ev-25),[30](#ev-30),[31](#ev-31)</sup>, C<sup>[29](#ev-29)</sup> | — | — | — | E<sup>[13](#ev-13)</sup> | P<sup>[28](#ev-28)</sup> |
-| Google DeepMind | — | — | — | — | — | — | — | T<sup>[21](#ev-21)</sup>, E<sup>[32](#ev-32)</sup> | — | — | — | — | — |
-| Apollo | — | — | — | — | — | — | E<sup>[33](#ev-33)</sup> | E<sup>[33](#ev-33),[34](#ev-34),[35](#ev-35)</sup> | — | — | — | E<sup>[33](#ev-33)</sup> | E<sup>[33](#ev-33)</sup> |
+| Anthropic / Goodfire | — | E<sup>[25](#ev-25),[26](#ev-26)</sup>, C<sup>[27](#ev-27)</sup> | E<sup>[25](#ev-25)</sup> | — | — | — | P<sup>[28](#ev-28)</sup> | E<sup>[25](#ev-25),[30](#ev-30),[31](#ev-31)</sup>, E<sup>[135](#ev-135)</sup>, C<sup>[29](#ev-29)</sup>, D<sup>[74](#ev-74),[75](#ev-75),[76](#ev-76)</sup> | — | — | — | E<sup>[13](#ev-13)</sup> | P<sup>[28](#ev-28),[136](#ev-136)</sup> |
+| Google DeepMind | C<sup>[134](#ev-134)</sup> | — | — | — | — | — | — | T<sup>[21](#ev-21)</sup>, E<sup>[32](#ev-32)</sup> | — | — | — | — | — |
+| Apollo / Truthful AI | — | — | — | — | — | — | E<sup>[33](#ev-33)</sup> | E<sup>[33](#ev-33),[34](#ev-34),[35](#ev-35)</sup>, E<sup>[72](#ev-72),[73](#ev-73)</sup> | — | — | — | E<sup>[33](#ev-33)</sup> | E<sup>[33](#ev-33)</sup> |
 | METR | — | — | — | — | — | — | E<sup>[36](#ev-36)</sup> | E<sup>[36](#ev-36),[37](#ev-37),[38](#ev-38)</sup> | — | — | — | E<sup>[36](#ev-36)</sup> | E<sup>[36](#ev-36)</sup> |
 | Resolution | O<sup>[39](#ev-39)</sup> | — | — | — | — | — | — | — | — | — | T<sup>[40](#ev-40)</sup> | — | O<sup>[129](#ev-129)</sup> |
-| AE Studio | — | O<sup>[41](#ev-41)</sup>, T<sup>[42](#ev-42)</sup> | — | T<sup>[42](#ev-42)</sup> | — | — | C<sup>[43](#ev-43)</sup> | — | — | — | — | — | — |
+| Neglected approaches | S<sup>[82](#ev-82)</sup> | O<sup>[41](#ev-41)</sup>, T<sup>[42](#ev-42)</sup>, C<sup>[147](#ev-147)</sup> | — | T<sup>[42](#ev-42)</sup> | — | — | C<sup>[43](#ev-43)</sup> | C<sup>[147](#ev-147)</sup>, E<sup>[148](#ev-148)</sup> | — | — | — | — | — |
 | Orthogonal | O<sup>[44](#ev-44)</sup> | T<sup>[45](#ev-45)</sup> | — | T<sup>[45](#ev-45)</sup> | — | — | — | — | — | — | — | — | — |
 | Wentworth | C<sup>[46](#ev-46),[47](#ev-47),[48](#ev-48)</sup> | C<sup>[49](#ev-49),[51](#ev-51)</sup>, T<sup>[50](#ev-50)</sup> | — | — | — | C<sup>[52](#ev-52)</sup> | — | — | — | — | — | — | — |
 | Kosoy / IB & LTA | T<sup>[118](#ev-118),[133](#ev-133)</sup>, C<sup>[133](#ev-133)</sup> | T<sup>[119](#ev-119)</sup> | — | — | — | C<sup>[121](#ev-121)</sup> | — | C<sup>[120](#ev-120)</sup> | T<sup>[122](#ev-122)</sup> | — | T<sup>[118](#ev-118),[133](#ev-133)</sup> | — | — |
 | Kosoy / PreDCA | — | T<sup>[123](#ev-123)</sup> | T<sup>[123](#ev-123)</sup> | — | — | — | — | — | — | — | — | — | — |
 | CIRIS | P<sup>[53](#ev-53),[108](#ev-108)</sup>, C<sup>[103](#ev-103),[104](#ev-104),[106](#ev-106)</sup>, D<sup>[105](#ev-105)</sup> | — | — | C<sup>[107](#ev-107)</sup>, D<sup>[54](#ev-54),[55](#ev-55),[56](#ev-56)</sup>, D<sup>[109](#ev-109),[110](#ev-110),[111](#ev-111)</sup>, P<sup>[108](#ev-108)</sup> | C<sup>[107](#ev-107)</sup>, D<sup>[109](#ev-109),[110](#ev-110),[111](#ev-111)</sup> | — | P<sup>[112](#ev-112)</sup>, C<sup>[113](#ev-113)</sup> | D<sup>[114](#ev-114)</sup>, C<sup>[115](#ev-115),[116](#ev-116)</sup> | — | — | C<sup>[104](#ev-104),[117](#ev-117)</sup> | — | C<sup>[108](#ev-108),[131](#ev-131)</sup>, P<sup>[108](#ev-108)</sup> |
-| GovAI | — | — | — | — | — | — | E<sup>[57](#ev-57),[59](#ev-59)</sup>, P<sup>[58](#ev-58)</sup> | P<sup>[58](#ev-58)</sup> | — | — | C<sup>[60](#ev-60)</sup> | — | — |
-| UK AISI / CAISI | — | — | — | — | — | — | P<sup>[61](#ev-61),[63](#ev-63)</sup>, E<sup>[62](#ev-62)</sup> | E<sup>[62](#ev-62)</sup>, P<sup>[64](#ev-64)</sup> | — | — | P<sup>[63](#ev-63)</sup> | — | P<sup>[63](#ev-63)</sup> |
+| GovAI / UK AISI | — | — | — | — | — | — | E<sup>[57](#ev-57),[59](#ev-59),[149](#ev-149)</sup>, E<sup>[62](#ev-62)</sup>, P<sup>[58](#ev-58),[61](#ev-61),[63](#ev-63)</sup> | P<sup>[58](#ev-58),[64](#ev-64)</sup>, E<sup>[62](#ev-62),[137](#ev-137)</sup> | — | — | C<sup>[60](#ev-60)</sup>, P<sup>[63](#ev-63)</sup> | — | P<sup>[63](#ev-63)</sup> |
 | Pause cluster | — | — | — | P<sup>[65](#ev-65)</sup> | — | — | P<sup>[66](#ev-66)</sup> | — | — | P<sup>[65](#ev-65)</sup> | — | — | — |
 | CLR | — | — | — | — | — | — | C<sup>[67](#ev-67),[68](#ev-68)</sup>, O<sup>[69](#ev-69)</sup> | — | C<sup>[70](#ev-70)</sup>, O<sup>[71](#ev-71)</sup> | — | — | — | — |
-| Truthful AI | — | — | — | — | — | — | — | E<sup>[72](#ev-72),[73](#ev-73)</sup> | — | — | — | — | — |
-| Goodfire / MI | — | — | — | — | — | — | — | D<sup>[74](#ev-74),[75](#ev-75),[76](#ev-76)</sup> | — | — | — | — | — |
 | AI Futures | — | — | — | — | — | — | O<sup>[77](#ev-77)</sup> | — | — | — | — | — | — |
-| FAR.AI | — | — | — | — | — | — | — | O<sup>[78](#ev-78)</sup> | — | — | — | — | — |
 | Conjecture | — | — | — | — | — | — | — | C<sup>[79](#ev-79)</sup> | — | — | — | — | — |
-| TSA | S<sup>[81](#ev-81),[82](#ev-82)</sup>, T<sup>[80](#ev-80)</sup> | T<sup>[83](#ev-83),[84](#ev-84)</sup>, C<sup>[85](#ev-85)</sup> | T<sup>[83](#ev-83),[86](#ev-86)</sup> | T<sup>[87](#ev-87)</sup>, S<sup>[88](#ev-88)</sup>, C<sup>[89](#ev-89)</sup> | T<sup>[125](#ev-125)</sup>, S<sup>[88](#ev-88)</sup> | T<sup>[90](#ev-90),[91](#ev-91)</sup>, S<sup>[92](#ev-92)</sup> | T<sup>[93](#ev-93)</sup>, S<sup>[94](#ev-94)</sup>, P<sup>[95](#ev-95)</sup> | T<sup>[96](#ev-96),[97](#ev-97)</sup>, S<sup>[98](#ev-98)</sup>, E<sup>[99](#ev-99)</sup> | T<sup>[100](#ev-100)</sup> | C<sup>[89](#ev-89)</sup>, C<sup>[132](#ev-132)</sup> | T<sup>[101](#ev-101)</sup> | T<sup>[102](#ev-102)</sup> | T<sup>[127](#ev-127)</sup> |
+| Safeguarded AI | P<sup>[139](#ev-139)</sup>, E<sup>[140](#ev-140)</sup>, T<sup>[142](#ev-142)</sup> | — | — | — | P<sup>[141](#ev-141)</sup> | — | — | E<sup>[140](#ev-140)</sup>, T<sup>[143](#ev-143)</sup> | — | — | T<sup>[138](#ev-138),[142](#ev-142)</sup> | — | T<sup>[138](#ev-138),[139](#ev-139),[143](#ev-143)</sup>, P<sup>[141](#ev-141)</sup> |
+| MAI + CIP | — | C<sup>[85](#ev-85)</sup> | — | — | P<sup>[145](#ev-145)</sup> | — | C<sup>[85](#ev-85)</sup> | — | — | P<sup>[145](#ev-145)</sup> | — | — | — |
+| [TSA](https://towards-alignment.com/) | S<sup>[81](#ev-81)</sup>, T<sup>[80](#ev-80)</sup> | T<sup>[83](#ev-83),[84](#ev-84)</sup> | T<sup>[83](#ev-83),[86](#ev-86)</sup> | T<sup>[87](#ev-87)</sup>, S<sup>[88](#ev-88)</sup>, C<sup>[89](#ev-89)</sup> | T<sup>[125](#ev-125)</sup>, S<sup>[88](#ev-88)</sup> | T<sup>[90](#ev-90),[91](#ev-91)</sup>, S<sup>[92](#ev-92)</sup> | T<sup>[93](#ev-93)</sup>, S<sup>[94](#ev-94)</sup>, P<sup>[95](#ev-95)</sup> | T<sup>[96](#ev-96),[97](#ev-97)</sup>, S<sup>[98](#ev-98)</sup>, E<sup>[99](#ev-99)</sup> | T<sup>[100](#ev-100)</sup> | C<sup>[89](#ev-89),[132](#ev-132)</sup> | T<sup>[101](#ev-101)</sup> | T<sup>[102](#ev-102)</sup> | T<sup>[127](#ev-127)</sup> |
 
 **Excluded from matrix rows** (see [Inclusion test](#inclusion-test)): ### Coverage evidence catalog {#coverage-evidence-catalog}
 
@@ -559,10 +531,10 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-11"></a>11 | Redwood | MB4, MB4a, MB7, MB10 | C | AI Control: safety under intentional subversion / capability-gap assumption | [Shlegeris et al. 2023](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion) |
 | <a id="ev-12"></a>12 | Redwood | MB7 | E | Control evals and red-team protocols (agenda artifact) | [Redwood Research](https://www.redwoodresearch.org/) |
 | <a id="ev-13"></a>13 | Redwood | MB7, MB10 | E | Alignment faking in LLMs under training/eval pressure | [Greenblatt et al. 2024](https://arxiv.org/abs/2412.14093) |
-| <a id="ev-14"></a>14 | CHAI | MB2, MB3 | T | Cooperative inverse reinforcement learning (assistance games) | [Hadfield-Menell et al. 2016](https://papers.nips.cc/paper/6420-cooperative-inverse-reinforcement-learning) |
-| <a id="ev-15"></a>15 | CHAI | MB2 | C | Human Compatible control problem framing | [Russell 2019](http://griffithlawjournal.org/index.php/gjlhd/article/download/1043/993) |
-| <a id="ev-16"></a>16 | CHAI | MB2 | T | Attainable utility preservation (conservative agency) | [Turner et al. 2019](https://arxiv.org/abs/1902.09725) |
-| <a id="ev-17"></a>17 | CHAI | MB4 | T | Off-switch game (shutdown incentive structure) | [Hadfield-Menell et al. 2017](https://www.ijcai.org/proceedings/2017/32) |
+| <a id="ev-14"></a>14 | CHAI / FAR.AI | MB2, MB3 | T | Cooperative inverse reinforcement learning (assistance games) | [Hadfield-Menell et al. 2016](https://papers.nips.cc/paper/6420-cooperative-inverse-reinforcement-learning) |
+| <a id="ev-15"></a>15 | CHAI / FAR.AI | MB2 | C | Human Compatible control problem framing | [Russell 2019](http://griffithlawjournal.org/index.php/gjlhd/article/download/1043/993) |
+| <a id="ev-16"></a>16 | CHAI / FAR.AI | MB2 | T | Attainable utility preservation (conservative agency) | [Turner et al. 2019](https://arxiv.org/abs/1902.09725) |
+| <a id="ev-17"></a>17 | CHAI / FAR.AI | MB4 | T | Off-switch game (shutdown incentive structure) | [Hadfield-Menell et al. 2017](https://www.ijcai.org/proceedings/2017/32) |
 | <a id="ev-18"></a>18 | Christiano / ARC | MB2, MB3, MB7 | C | ELK: human simulator vs direct translator | [Christiano, Cotra & Xu 2021](https://www.alignmentforum.org/posts/qHCDysDnvhteW7kRd/arc-s-first-technical-report-eliciting-latent-knowledge) |
 | <a id="ev-19"></a>19 | Christiano | MB4 | C | Corrigibility as drift management (informal dynamical framing) | [Christiano 2018](https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility) |
 | <a id="ev-20"></a>20 | Christiano | MB6 | C | What failure looks like (gradual disempowerment narrative) | [Christiano 2019](https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like) |
@@ -570,25 +542,25 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-22"></a>22 | Christiano | MB7, MB10 | C | Amplification / scalable oversight under optimization | [Christiano et al. 2018](https://arxiv.org/abs/1810.08575) |
 | <a id="ev-23"></a>23 | Christiano | MB7 | C | Scalable agent oversight problem statement | [Leike et al. 2018](https://arxiv.org/abs/1811.07871) |
 | <a id="ev-24"></a>24 | GSAI | MB9 | T | Guaranteed Safe AI framework (spec + world model coverage wall) | [Dalrymple et al. 2024](https://arxiv.org/abs/2405.06624) |
-| <a id="ev-25"></a>25 | Anthropic | MB2, MB3, MB7 | E | Constitutional AI: principles-as-feedback / RLAIF stack | [Bai et al. 2022](https://arxiv.org/abs/2212.08073) |
-| <a id="ev-26"></a>26 | Anthropic | MB2 | E | RLHF ceiling and misspecification under optimization | [Casper et al. 2023](https://arxiv.org/abs/2307.15217) |
-| <a id="ev-27"></a>27 | Anthropic | MB2 | C | Concrete problems in AI safety (pointing / scalable oversight lineage) | [Amodei et al. 2016](https://arxiv.org/abs/1606.06565) |
-| <a id="ev-28"></a>28 | Anthropic | MB6, MB11 | P | Responsible Scaling Policy (capability thresholds, deployment gates) | [Anthropic RSP 2024](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) |
-| <a id="ev-29"></a>29 | Anthropic | MB7 | C | Conditioning predictors / anthropic capture failure mode | [Hubinger 2023](https://arxiv.org/abs/2302.00805) |
-| <a id="ev-30"></a>30 | Anthropic | MB7 | E | Interpretability research program (circuits, features) | [Anthropic Research](https://www.anthropic.com/research) |
-| <a id="ev-31"></a>31 | Anthropic | MB7 | E | Internal agent monitoring (eval target for external red teams) | [METR red-team of Anthropic monitoring 2026](https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/) |
+| <a id="ev-25"></a>25 | Anthropic / Goodfire | MB2, MB3, MB7 | E | Constitutional AI: principles-as-feedback / RLAIF stack | [Bai et al. 2022](https://arxiv.org/abs/2212.08073) |
+| <a id="ev-26"></a>26 | Anthropic / Goodfire | MB2 | E | RLHF ceiling and misspecification under optimization | [Casper et al. 2023](https://arxiv.org/abs/2307.15217) |
+| <a id="ev-27"></a>27 | Anthropic / Goodfire | MB2 | C | Concrete problems in AI safety (pointing / scalable oversight lineage) | [Amodei et al. 2016](https://arxiv.org/abs/1606.06565) |
+| <a id="ev-28"></a>28 | Anthropic / Goodfire | MB6, MB11 | P | Responsible Scaling Policy (capability thresholds, deployment gates) | [Anthropic RSP 2024](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) |
+| <a id="ev-29"></a>29 | Anthropic / Goodfire | MB7 | C | Conditioning predictors / anthropic capture failure mode | [Hubinger 2023](https://arxiv.org/abs/2302.00805) |
+| <a id="ev-30"></a>30 | Anthropic / Goodfire | MB7 | E | Interpretability research program (circuits, features) | [Anthropic Research](https://www.anthropic.com/research) |
+| <a id="ev-31"></a>31 | Anthropic / Goodfire | MB7 | E | Internal agent monitoring (eval target for external red teams) | [METR red-team of Anthropic monitoring 2026](https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/) |
 | <a id="ev-32"></a>32 | Google DeepMind | MB7 | E | Frontier safety / scalable alignment research blog | [DeepMind Safety Research](https://deepmind.google/discover/blog/) |
-| <a id="ev-33"></a>33 | Apollo | MB6, MB7, MB10 | E | Scheming science and pre-deployment eval agenda | [Apollo Research](https://www.apolloresearch.ai/) |
-| <a id="ev-34"></a>34 | Apollo | MB7 | E | Situational awareness and strategic deception measurement | [Apollo publications](https://www.apolloresearch.ai/research) |
-| <a id="ev-35"></a>35 | Apollo | MB7 | E | Scheming-in-the-wild OSINT incident corpus (field-adjacent) | [CLTR 2026 report](https://www.longtermresilience.org/reports/v5-scheming-in-the-wild_-detecting-real-world-ai-scheming-incidents-through-open-source-intelligence-pdf/) |
+| <a id="ev-33"></a>33 | Apollo / Truthful AI | MB6, MB7, MB10 | E | Scheming science and pre-deployment eval agenda | [Apollo Research](https://www.apolloresearch.ai/) |
+| <a id="ev-34"></a>34 | Apollo / Truthful AI | MB7 | E | Situational awareness and strategic deception measurement | [Apollo publications](https://www.apolloresearch.ai/research) |
+| <a id="ev-35"></a>35 | Apollo / Truthful AI | MB7 | E | Scheming-in-the-wild OSINT incident corpus (field-adjacent) | [CLTR 2026 report](https://www.longtermresilience.org/reports/v5-scheming-in-the-wild_-detecting-real-world-ai-scheming-incidents-through-open-source-intelligence-pdf/) |
 | <a id="ev-36"></a>36 | METR | MB6, MB7, MB10 | E | Frontier Risk Report: entity-based internal-agent assessment | [METR 2026](https://metr.org/blog/2026-05-19-frontier-risk-report/) |
 | <a id="ev-37"></a>37 | METR | MB7 | E | Autonomy and AI R&D capability eval suites | [METR](https://metr.org/) |
 | <a id="ev-38"></a>38 | METR | MB7 | E | Red-teaming frontier agent monitoring under deployment pressure | [Rein 2026](https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/) |
 | <a id="ev-39"></a>39 | Resolution | MB1 | O | Automation-first alignment research strategy | [Resolution](https://resolution.org/) |
 | <a id="ev-40"></a>40 | Resolution | MB9 | T | Singular learning / formal pipeline bet (Timaeus lineage) | [Timaeus](https://timaeus.ai/) |
-| <a id="ev-41"></a>41 | AE Studio | MB2 | O | Neglected-approaches portfolio and intervention breadth map | [AE Studio Research](https://ae.studio/alignment) |
-| <a id="ev-42"></a>42 | AE Studio | MB2, MB4 | T | Human-power objective as outer target (Heitzig line) | [Heitzig & Potham 2025](https://arxiv.org/abs/2508.00159) |
-| <a id="ev-43"></a>43 | AE Studio | MB6 | C | AI Safety Interventions field index (cross-cuts agendas) | [Zarncke 2025](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions) |
+| <a id="ev-41"></a>41 | Neglected approaches | MB2 | O | Neglected-approaches portfolio strategy (AE Studio alignment agenda) | [AE Studio alignment agenda](https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach); [LessWrong mirror](https://www.lesswrong.com/posts/qAdDzcBuDBLexb4fC/the-neglected-approaches-approach-ae-studio-s-alignment); [AE Studio Research](https://ae.studio/alignment) |
+| <a id="ev-42"></a>42 | Neglected approaches | MB2, MB4 | T | Human-power objective as outer target (Heitzig line) | [Heitzig & Potham 2025](https://arxiv.org/abs/2508.00159) |
+| <a id="ev-43"></a>43 | Neglected approaches | MB6 | C | AI Safety Interventions field index (cross-cuts agendas) | [Zarncke 2025](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions) |
 | <a id="ev-44"></a>44 | Orthogonal | MB1 | O | Agent-foundations research community (Discord + papers) | [Orthogonal](https://orxl.org/) |
 | <a id="ev-45"></a>45 | Orthogonal | MB2, MB4 | T | QACI formal outer-alignment goal line | [Leake & Persson 2023](https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal) |
 | <a id="ev-46"></a>46 | Wentworth | MB1 | C | Boundaries as directed Markov blankets (utility-theoretic cut) | [Wentworth, Boundaries I](https://www.lesswrong.com/posts/8oMF8Lv5jiGaQSFvo/boundaries-part-1-a-key-missing-concept-from-utility-theory) |
@@ -617,14 +589,14 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-115"></a>115 | CIRIS | MB7 | C | L-02 detector-cooperation bet; Lens = triage not verdict | [CIRISLens README](https://github.com/CIRISAI/CIRISLens); [Coherence Ratchet (ciris.ai)](https://ciris.ai/) |
 | <a id="ev-116"></a>116 | CIRIS | MB7 | C | Verify: authentic ≠ ethical; measurements not verdicts | [CIRISVerify README](https://github.com/CIRISAI/CIRISVerify) |
 | <a id="ev-117"></a>117 | CIRIS | MB9 | C | Book IX explicit non-claim: no perfect safety under adversarial superintelligence | [Accord Book IX](https://ciris.ai/ciris_accord.txt) |
-| <a id="ev-57"></a>57 | GovAI | MB6 | E | Gradual disempowerment: systemic risk from incremental AI development | [Kulveit et al. 2025](https://arxiv.org/abs/2501.16946) |
-| <a id="ev-58"></a>58 | GovAI | MB6, MB7 | P | Compute governance and frontier-policy research pipeline | [GovAI](https://www.governance.ai/) |
-| <a id="ev-59"></a>59 | GovAI | MB6 | E | International control of powerful technology (governance analogies) | [GovAI Baruch-plan paper](https://www.governance.ai/research-paper/international-control-of-powerful-technology-lessons-from-the-baruch-plan-for-nuclear-weapons) |
-| <a id="ev-60"></a>60 | GovAI | MB9 | C | Institutional translation of safety specs (policy-facing coverage) | [GovAI publications](https://www.governance.ai/research) |
-| <a id="ev-61"></a>61 | UK AISI / CAISI | MB6 | P | UK AISI frontier model testing mandate | [UK AISI](https://www.aisi.gov.uk/) |
-| <a id="ev-62"></a>62 | UK AISI / CAISI | MB6, MB7 | E | Cheating behaviour in frontier model evaluations | [UK AISI 2026](https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations) |
-| <a id="ev-63"></a>63 | UK AISI / CAISI | MB6, MB9, MB11 | P | Standards and pre-deployment testing (UK + US CAISI cluster) | [US NIST AI](https://www.nist.gov/artificial-intelligence) |
-| <a id="ev-64"></a>64 | UK AISI / CAISI | MB7 | P | Government-led frontier eval binding on deployment | [UK AISI evaluations](https://www.aisi.gov.uk/) |
+| <a id="ev-57"></a>57 | GovAI / UK AISI | MB6 | E | Gradual disempowerment: systemic risk from incremental AI development | [Kulveit et al. 2025](https://arxiv.org/abs/2501.16946) |
+| <a id="ev-58"></a>58 | GovAI / UK AISI | MB6, MB7 | P | Compute governance and frontier-policy research pipeline | [GovAI](https://www.governance.ai/) |
+| <a id="ev-59"></a>59 | GovAI / UK AISI | MB6 | E | International control of powerful technology (governance analogies) | [GovAI Baruch-plan paper](https://www.governance.ai/research-paper/international-control-of-powerful-technology-lessons-from-the-baruch-plan-for-nuclear-weapons) |
+| <a id="ev-60"></a>60 | GovAI / UK AISI | MB9 | C | Institutional translation of safety specs (policy-facing coverage) | [GovAI publications](https://www.governance.ai/research) |
+| <a id="ev-61"></a>61 | GovAI / UK AISI / UK AISI | MB6 | P | UK AISI frontier model testing mandate | [UK AISI](https://www.aisi.gov.uk/) |
+| <a id="ev-62"></a>62 | GovAI / UK AISI / UK AISI | MB6, MB7 | E | Cheating behaviour in frontier model evaluations | [UK AISI 2026](https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations) |
+| <a id="ev-63"></a>63 | GovAI / UK AISI / UK AISI | MB6, MB9, MB11 | P | Standards and pre-deployment testing (UK + US CAISI cluster) | [US NIST AI](https://www.nist.gov/artificial-intelligence) |
+| <a id="ev-64"></a>64 | GovAI / UK AISI / UK AISI | MB7 | P | Government-led frontier eval binding on deployment | [UK AISI evaluations](https://www.aisi.gov.uk/) |
 | <a id="ev-65"></a>65 | Pause cluster | MB4, MB8 | P | Off-switch / pause priority in advocacy platforms | [PauseAI](https://www.pauseai.info/) |
 | <a id="ev-66"></a>66 | Pause cluster | MB6 | P | Moratorium and verified-slowdown campaigns | [FLI pause letter](https://futureoflife.org/open-letter/pause-giant-ai-experiments/) |
 | <a id="ev-67"></a>67 | CLR | MB6 | C | ARCHES: multipolar and cooperation failure taxonomy | [Critch & Krueger 2020](https://arxiv.org/abs/2006.04948) |
@@ -632,20 +604,20 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-69"></a>69 | CLR | MB6 | O | Cooperative AI Foundation programs | [CAIF](https://www.cooperativeai.org/) |
 | <a id="ev-70"></a>70 | CLR | MB7d | C | Evidential cooperation / acausal trade line | [FDT 2017](https://arxiv.org/abs/1710.05060) |
 | <a id="ev-71"></a>71 | CLR | MB7d | O | Cooperation-under-competition research portfolio | [CLR](https://longtermrisk.org/) |
-| <a id="ev-72"></a>72 | Truthful AI | MB7 | E | Deception and situational-awareness research program | [Truthful AI](https://truthful.ai/) |
-| <a id="ev-73"></a>73 | Truthful AI | MB7 | E | AI deception survey (field synthesis) | [Park et al. 2024](https://arxiv.org/abs/2308.14752) |
-| <a id="ev-74"></a>74 | Goodfire / MI | MB7 | D | Goodfire interpretability and editable-representation tooling | [Goodfire](https://www.goodfire.ai/) |
-| <a id="ev-75"></a>75 | Goodfire / MI | MB7 | D | Neuronpedia feature/circuit infrastructure | [Neuronpedia](https://www.neuronpedia.org/) |
-| <a id="ev-76"></a>76 | Goodfire / MI | MB7 | D | Transluce decode / agent-introspection tooling | [Transluce](https://transluce.org/) |
+| <a id="ev-72"></a>72 | Apollo / Truthful AI / Truthful AI | MB7 | E | Deception and situational-awareness research program | [Truthful AI](https://truthful.ai/) |
+| <a id="ev-73"></a>73 | Apollo / Truthful AI / Truthful AI | MB7 | E | AI deception survey (field synthesis) | [Park et al. 2024](https://arxiv.org/abs/2308.14752) |
+| <a id="ev-74"></a>74 | Anthropic / Goodfire / Goodfire | MB7 | D | Goodfire interpretability and editable-representation tooling | [Goodfire](https://www.goodfire.ai/) |
+| <a id="ev-75"></a>75 | Anthropic / Goodfire / Goodfire | MB7 | D | Neuronpedia feature/circuit infrastructure | [Neuronpedia](https://www.neuronpedia.org/) |
+| <a id="ev-76"></a>76 | Anthropic / Goodfire / Goodfire | MB7 | D | Transluce decode / agent-introspection tooling | [Transluce](https://transluce.org/) |
 | <a id="ev-77"></a>77 | AI Futures | MB6 | O | AI 2027 scenario (schedule shapes for governance stress tests only) | [AI Futures Project](https://ai-2027.com/) |
-| <a id="ev-78"></a>78 | FAR.AI | MB7 | O | FAR.Lab community research hosting | [FAR.AI](https://www.far.ai/) |
+| <a id="ev-78"></a>78 | CHAI / FAR.AI / FAR.AI | MB7 | O | FAR.Lab community research hosting | [FAR.AI](https://www.far.ai/) |
 | <a id="ev-79"></a>79 | Conjecture | MB7 | C | Cognitive emulation / controllable LLM framing | [Conjecture](https://conjecture.dev/) |
 | <a id="ev-80"></a>80 | TSA | MB1 | T | MB1 typed bridge + ε-boundary discovery (Lean + ch07) | [Ch. 7 (companion)](https://towards-alignment.com/cards/chapters/ch07/); [Lean spine](https://towards-alignment.com/lean/) |
 | <a id="ev-81"></a>81 | TSA | MB1 | S | Embedded / lab boundary-discovery testbeds (interventional handles) | [Embedded simulation findings](https://towards-alignment.com/experiments/findings/embedded-simulation/); [Lab simulation findings](https://towards-alignment.com/experiments/findings/lab-simulation/) |
-| <a id="ev-82"></a>82 | TSA | MB1 | S | Agency-detect precursor (MI/CMI boundary clustering) | [agency-detect repo](https://github.com/GunnarZarncke/agency-detect) |
+| <a id="ev-82"></a>82 | Neglected approaches | MB1 | S | UAD / agency-detect (unsupervised boundary discovery from dynamics) | [Unsupervised Agent Discovery](https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery); [agency-detect repo](https://github.com/GunnarZarncke/agency-detect) |
 | <a id="ev-83"></a>83 | TSA | MB2, MB3 | T | Bundle geometry + bearer maps (ch16, ch18) | [Ch. 16 (companion)](https://towards-alignment.com/cards/chapters/ch16/); [Ch. 18 (companion)](https://towards-alignment.com/cards/chapters/ch18/) |
 | <a id="ev-84"></a>84 | TSA | MB2 | T | Lean CIRL / IRL non-identifiability projections | [Lean spine](https://towards-alignment.com/lean/); [Field modules (GitHub)](https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/formal/AlignmentProofSpine/Field) |
-| <a id="ev-85"></a>85 | TSA | MB2 | C | Full-stack / thick-value cousin relation (Edelman) | [Edelman et al. 2025](https://arxiv.org/abs/2512.03399) |
+| <a id="ev-85"></a>85 | MAI + CIP | MB2, MB6 | C | Full-Stack Alignment (thick values, institutional amplification) | [Edelman et al. 2025](https://arxiv.org/abs/2512.03399) |
 | <a id="ev-86"></a>86 | TSA | MB3 | T | Bearer-map transport under optimization (MB3 bridge) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appb/) |
 | <a id="ev-87"></a>87 | TSA | MB4 | T | Correction-channel integrity invariant (Lean + ch26) | [Ch. 26 (companion)](https://towards-alignment.com/cards/chapters/ch26/); [Lean spine](https://towards-alignment.com/lean/) |
 | <a id="ev-88"></a>88 | TSA | MB4 | S | Toy/lab correction-channel and capture scenarios | [Toy simulation findings](https://towards-alignment.com/experiments/findings/toy-simulation/); [Goal-agent simulation findings](https://towards-alignment.com/experiments/findings/goal-agent-simulation/) |
@@ -678,6 +650,20 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-131"></a>131 | CIRIS | MB11 | C | Sub-ASI validated scope vs aspirational ASI protocol (honest safety-case disclaimers) | [CIRIS hub](https://ciris.ai/); [Accord scope / disclaimers](https://ciris.ai/ciris_accord.txt) |
 | <a id="ev-132"></a>132 | MIRI / Yudkowsky | MB8 | C | Coherent extrapolated volition (field source for MB8 cousin) | [Yudkowsky 2004 CEV](https://intelligence.org/files/CEV.pdf) |
 | <a id="ev-133"></a>133 | Kosoy / IB & LTA | MB1, MB9 | C | Model-class misspec / grain-of-truth (ambient MB1/MB9; Lean `Nonrealizability.lean`) | [Infra-Bayesianism sequence](https://www.lesswrong.com/tag/infra-bayesianism); [field-claim plan](../../drafts/field-claim-formalization-and-bridge-review-plan.md) |
+| <a id="ev-134"></a>134 | Google DeepMind | MB1 | C | Discovering Agents (causal agent discovery from system dynamics) | [Kenton et al. 2022](https://arxiv.org/abs/2208.08345) |
+| <a id="ev-135"></a>135 | Anthropic / Goodfire / Goodfire | MB7 | E | Causally faithful mechanistic interpretability under intervention | [Lange et al. 2023](https://arxiv.org/abs/2311.17030); [Georg Lange (Foresight grantee)](https://foresight.org/grantees/2026-georg-lange/) |
+| <a id="ev-136"></a>136 | Anthropic / Goodfire (lab) | MB11 | P | Frontier Model Forum risk taxonomy and capability thresholds | [FMF risk thresholds report](https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/) |
+| <a id="ev-137"></a>137 | GovAI / UK AISI / UK AISI | MB7 | E | Alignment evaluation case study; evaluation-awareness under agentic scaffolds | [UK AISI 2026 alignment eval case study](https://arxiv.org/abs/2604.00788) |
+| <a id="ev-138"></a>138 | Safeguarded AI | MB9, MB11 | T | ARIA Safeguarded AI programme (world models, specs, proof certificates) | [ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai) |
+| <a id="ev-139"></a>139 | Safeguarded AI | MB1, MB9, MB11 | P | Zeroth Research end-to-end safeguarded-AI verification stack | [Zeroth Research](https://www.zeroth.org/) |
+| <a id="ev-140"></a>140 | Safeguarded AI | MB1, MB7 | E | Multi-agent architecture security and collective-agency topology | [Hagag et al. 2026](https://arxiv.org/abs/2604.23459) |
+| <a id="ev-141"></a>141 | Safeguarded AI | MB4a, MB11 | P | AARM open runtime for checking and recording agent actions | [AARM specification](https://heron.ing/aarm) |
+| <a id="ev-142"></a>142 | Safeguarded AI | MB1, MB9 | T | Containment Verification (action boundary with model as oracle) | [Moon & Varshney 2026](https://arxiv.org/abs/2605.09045) |
+| <a id="ev-143"></a>143 | Safeguarded AI | MB7, MB11 | T | Zero-knowledge attestation for AI safety verification | [Berrang ZK AI security](https://pascal-berrang.de/projects/zk_ai_security/) |
+| <a id="ev-145"></a>145 | MAI + CIP | MB4a, MB8 | P | Alignment assemblies and collective constitutional AI | [CIP Alignment Assemblies](https://www.cip.org/alignmentassemblies) |
+| <a id="ev-147"></a>147 | Neglected approaches | MB2, MB7 | C | Brain-like AGI safety (social cognition / homeostatic alignment hypotheses) | [Byrnes brain-like AGI sequence](https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/) |
+| <a id="ev-148"></a>148 | Neglected approaches | MB7 | E | Self-other overlap (SOO) fine-tuning against deceptive behavior | [Carauleanu et al. 2024](https://arxiv.org/abs/2412.16325) |
+| <a id="ev-149"></a>149 | GovAI / UK AISI | MB6 | E | Empirical disempowerment patterns in real-world LLM usage | [Sharma et al. 2026](https://arxiv.org/abs/2601.19062) |
 
 **Maintenance:** when adding an agenda row or bridge cell, edit YAML under `reference/field-agendas/data/` and run `cd site && npm run sync:field-agendas`. Prefer bibliography keys already in `references/` when citing external work.
 
@@ -689,36 +675,38 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 |---|---|
 | [MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon) | [MIRI](#miri) |
 | [Redwood Research](https://www.redwoodresearch.org/) | [Redwood Research](#redwood-research) |
-| [CHAI](https://humancompatible.ai/), CHAI Internship, CORAL, Algorithmic Alignment Group (MIT) | [CHAI](#chai-russell) / academic alignment cluster |
+| [CHAI](https://humancompatible.ai/), CHAI Internship, CORAL, Algorithmic Alignment Group (MIT) | [CHAI / FAR.AI](#chai-russell) cluster |
 | [ARC](https://www.alignment.org/), [Paul Christiano's Blog](https://www.alignmentforum.org/users/paulfchristiano) | [Christiano lineage](#christiano-lineage) |
 | [LawZero](https://lawzero.org/en), [Beneficial AI Foundation](https://www.beneficialaifoundation.org/) | [GSAI / davidad](#davidad--guaranteed-safe-ai-gsai) adjacent |
-| [Anthropic](https://www.anthropic.com/), Import AI (newsletter — Jack Clark) | [Anthropic (lab)](#anthropic-lab) — newsletter not agenda |
+| [Anthropic](https://www.anthropic.com/), Import AI (newsletter — Jack Clark) | [Anthropic / Goodfire](#anthropic-lab) — newsletter not agenda |
 | [Google DeepMind](https://deepmind.google/), DeepMind Safety Research | [Google DeepMind safety](#google-deepmind-safety) |
-| [Apollo Research](https://www.apolloresearch.ai/) | [Apollo Research](#apollo-research) |
+| [Apollo Research](https://www.apolloresearch.ai/) | [Apollo / Truthful AI](#apollo-research) |
 | [METR](https://metr.org/), [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/) | [METR](#metr) / forecasting adjacent |
 | [Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/) | [Resolution](#resolution) |
-| [AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment) | [AE Studio](#ae-studio) |
+| [AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment) | [Neglected approaches portfolio](#neglected-approaches-portfolio) |
 | [Orthogonal](https://orxl.org/) | [Orthogonal](#orthogonal) |
 | [John Wentworth](https://www.alignmentforum.org/users/John+Wentworth) | [Wentworth / NAH](#wentworth--natural-abstractions) |
 | [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy) | [Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta); [Kosoy / PreDCA](#kosoy--predca) |
-| [GovAI](https://www.governance.ai/), GovAI Fellowship, [Simon Institute](https://www.simoninstitute.ch/), [IAPS](https://www.iaps.ai/), Oxford AIGI | [GovAI cluster](#govai) |
-| [UK AISI](https://www.aisi.gov.uk/), [CAISI](https://www.nist.gov/artificial-intelligence), Beijing-AISI, CnAISDA | [Gov eval institutes](#uk-aisi--caisi-gov-eval-institutes) cluster |
+| [GovAI](https://www.governance.ai/), GovAI Fellowship, [Simon Institute](https://www.simoninstitute.ch/), [IAPS](https://www.iaps.ai/), Oxford AIGI | [GovAI / UK AISI](#govai) cluster |
+| [UK AISI](https://www.aisi.gov.uk/), [CAISI](https://www.nist.gov/artificial-intelligence), Beijing-AISI, CnAISDA | [GovAI / UK AISI](#govai) cluster |
 | [PauseAI](https://pauseai.info/), [FLI](https://futureoflife.org/), [ControlAI](https://controlai.org/), [Encode](https://encodeai.org/), Stop AI, GAIM | [Pause / advocacy](#pause--standards-advocacy-cluster) cluster |
 | [CAIS](https://safe.ai/), AISES | [CAIS field-building](#cais-field-building) |
 | [BlueDot Impact](https://bluedot.org/) | [BlueDot Impact](#bluedot-impact) |
 | [MATS](https://www.matsprogram.org/), ARENA, LASR Labs, MARS | [MATS](#mats) / mentored research programs |
 | [Apart Research](https://apartresearch.com/) | [Apart Research](#apart-research) |
 | [Kairos](https://kairos-project.org/), [SPAR](https://sparai.org/), [Pathfinder](https://pathfinder.kairos-project.org/), GCP | [Kairos](#kairos-field-building) |
-| [Truthful AI](https://truthful.ai/), Cadenza Labs | [Truthful AI](#truthful-ai-evans) / deception evals |
-| [Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/), [Neuronpedia](https://www.neuronpedia.org/) | [Goodfire / mech interp](#goodfire--mechanistic-interpretability-cluster) cluster |
+| [Truthful AI](https://truthful.ai/), Cadenza Labs | [Apollo / Truthful AI](#apollo-research) / deception evals |
+| [Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/), [Neuronpedia](https://www.neuronpedia.org/) | [Anthropic / Goodfire](#anthropic-lab) cluster |
 | [CLR](https://longtermrisk.org/), Modeling Cooperation, [CAIF](https://www.cooperativeai.com/) | [CLR](#clr-cooperation--conflict) |
 | [AI Futures Project](https://ai-2027.com/), [Epoch AI](https://epoch.ai/), [AI Impacts](https://aiimpacts.org/), [Metaculus](https://www.metaculus.com/) | [AI Futures / forecasting](#ai-futures--forecasting-cluster) |
-| [FAR.AI](https://www.far.ai/) | [FAR.AI](#farai) |
+| [FAR.AI](https://www.far.ai/) | [CHAI / FAR.AI](#chai-russell) |
 | [Conjecture](https://www.conjecture.dev/), [EleutherAI](https://www.eleuther.ai/) | [Conjecture / cognitive emulation](#conjecture--cognitive-emulation) |
 | LTFF, SFF, Open Philanthropy, Manifund | **Funding** — not agendas |
 | LISA, Constellation, Meridian, Lightcone Infrastructure | **Infrastructure** — hosts agendas |
 | AISafety.com, LessWrong, Alignment Forum, AI Plans | **Resources / meta-index** — not agendas |
-| AI Safety Interventions (zarncke post) | **Catalog** — cross-cuts agendas |
+| AI Safety Interventions (zarncke post) | **Catalog** — cross-cuts agendas (see [Neglected approaches portfolio](#neglected-approaches-portfolio)) |
+| [ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai), [Zeroth Research](https://www.zeroth.org/), [Heron AI Security](https://www.heronsec.ai/) | [Safeguarded AI (ARIA / Zeroth / Heron)](#safeguarded-ai-aria-zeroth-heron) |
+| [Meaning Alignment Institute](https://www.meaningalignment.org/), [Collective Intelligence Project](https://www.cip.org/) | [MAI + CIP (institutional alignment)](#mai-cip-institutional-alignment) |
 
 ---
 

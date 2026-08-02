@@ -2,15 +2,16 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-02 (field crux on bridge cards).
+Last updated: 2026-08-02 (field agenda restructure + merges).
 
 ---
 
 ## Open work (load-bearing)
 
+- **Field agenda matrix (post-restructure)** — 25 matrix rows / 30 agenda records after independence merges and neglected-report folds; TSA row links to companion home (no card). Stale search index until next site build. App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`.
 - **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agree/differ/homograph notes now on each MB card (+ `dynamical-guarantee` for MB11); hub crux legend removed 2026-08-02. Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
 - **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
-- **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk synced 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
+- **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk core sync 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
 - **Terminology demotion follow-through** — v1.1 plain-first + App E + site `concepts.yml` **shipped** (2026-08-02). Remaining: thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`), residual appendices grep. Inventory: `drafts/glossary-term-audit.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
@@ -30,6 +31,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference (2026-08-02):** Field agenda restructure — neglected-report folds; 4 independence merges (GovAI+UK AISI, Apollo+Truthful, CHAI+FAR, Anthropic+Goodfire); Neglected approaches + Safeguarded AI + MAI+CIP rows; TSA matrix-only home link; AE essay overview on portfolio card; short matrix labels. Log: `2026-08-02-field-agenda-restructure-merges.md`.
 - **Reference (2026-08-02):** Field matrix bridge nouns — `bridges.yml` source; noun matrix headers; agree/differ on MB1–MB10 bodies + MB11 on `dynamical-guarantee`; hub crux legend removed; Track 2 plan `drafts/field-crux-divergence-plan.md`. Log: `2026-08-02-field-matrix-bridge-nouns.md`.
 - **Companion site (2026-08-02):** Offline PWA cache fix — network-first when offline mode not enabled; removed 1-hour stale cache-first; shell-only install pre-cache; SW v8. Log: `2026-08-02-site-offline-pwa-cache-fix.md`.
 - **Reference (2026-08-02):** Field evidence catalog + agenda card link audit — fixed wrong arXiv IDs (Embedded Agency, alignment faking, deception survey, logical induction), companion appendix casing, AE Studio/MIRI/CHAI/CIRIS/ControlAI URLs; canonical redirects synced across YAML + clustering. Log: `2026-08-02-field-evidence-agenda-link-audit.md`.

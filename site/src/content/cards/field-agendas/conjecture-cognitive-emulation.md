@@ -1,5 +1,5 @@
 ---
-title: "Conjecture / cognitive emulation"
+title: "Conjecture / EleutherAI (cognitive emulation)"
 type: "agenda"
 status: "reviewed"
 summary: "Does emulation imply corrigibility under scale?"
@@ -16,21 +16,21 @@ related: []
 
 ## Introduction
 
-**Conjecture / cognitive emulation** is a research org (startup lineage) carried by **Conjecture (EleutherAI lineage)**.
+**Conjecture / EleutherAI (cognitive emulation)** is a research org cluster (startup + open-science lineage) carried by **Conjecture (Connor Leahy, Sid Black, Gabriel Alfour; winding down 2026); EleutherAI open-science institute; Leahy → ControlAI (pause advocacy cousin)**.
 
-**Stated intent:** Build controllable systems via emulation framing
+**Stated intent:** Build controllable systems via emulation framing rather than opaque end-to-end agents
 
 **Primary crux:** Does emulation imply corrigibility under scale?
 
-**Primary artifact:** Cognitive Emulation approach; controllable LLMs
+**Primary artifact:** Cognitive Emulation / CoEm; controllable LLM stacks; open LLM lineage
 
-**Signature vocabulary:** cognitive emulation, controllable LLMs, emulation vs alignment
+**Signature vocabulary:** cognitive emulation, controllable LLMs, emulation vs alignment, EleutherAI, open models
 
 **Book bridges:** MB7 (partial)
 
-**Contributes to the field:** Alternative controllability framing
+**Contributes to the field:** Alternative controllability framing; EleutherAI spinoff lineage; Redwood-adjacent prosaic alignment spirit
 
-**How the book separates:** CCI + successor transport
+**How the book separates:** CCI + successor transport; Conjecture chapter closing — active bet partly historical; ControlAI overlap is advocacy not CoEm
 
 **Manuscript hooks:** sparse
 

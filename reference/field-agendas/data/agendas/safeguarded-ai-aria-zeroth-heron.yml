@@ -1,0 +1,47 @@
+slug: safeguarded-ai-aria-zeroth-heron
+title: Safeguarded AI (ARIA / Zeroth / Heron)
+type: Research programme cluster
+carrier: >-
+  ARIA Safeguarded AI; Zeroth Research (Luca Arnaboldi, Pascal Berrang); Heron
+  AI Security; Moon & Varshney (Containment Verification)
+primaryArtifact: >-
+  World models + formal specs + proof certificates; end-to-end safeguarded-AI
+  stack; AARM runtime action control; ZK attestation
+signatureVocabulary: >-
+  safeguarded AI, proof certificates, containment verification, AARM, ZK
+  attestation, multi-agent security
+statedIntent: >-
+  Assure embedded model–tool–environment systems with formal methods, runtime
+  controls, and privacy-preserving verification
+primaryCrux: >-
+  Safety claims are conditional on the declared system boundary; misspecified
+  controllers or emergent coalitions void otherwise correct proofs
+bookBridges:
+  - MB1 (partial)
+  - MB4a (partial)
+  - MB7 (partial)
+  - MB9
+  - MB11
+contributes: >-
+  Whole-system formal assurance; cryptographic attestations; agentic action
+  boundaries; architecture-level multi-agent security
+bookSeparates: >-
+  Proof green ⇏ correction uptake; attestation ⇏ discovered effective agent
+  (cousin to GSAI completeness wall vs CIRIS ops stack)
+manuscriptHooks:
+  - ch43
+  - dynamical guarantee
+  - App B MB9/MB11
+links:
+  - label: ARIA Safeguarded AI
+    url: https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai
+  - label: Zeroth Research
+    url: https://www.zeroth.org/
+  - label: Containment Verification
+    url: https://arxiv.org/abs/2605.09045
+  - label: Heron AI Security
+    url: https://www.heronsec.ai/
+  - label: AARM specification
+    url: https://heron.ing/aarm
+  - label: ZK attestation (Berrang)
+    url: https://pascal-berrang.de/projects/zk_ai_security/

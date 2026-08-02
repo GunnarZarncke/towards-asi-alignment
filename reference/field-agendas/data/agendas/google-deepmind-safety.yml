@@ -2,15 +2,20 @@ slug: google-deepmind-safety
 title: Google DeepMind (safety)
 type: Capabilities lab + safety team
 carrier: Google DeepMind safety / alignment researchers
-primaryArtifact: Safety research blog; Gemini-era alignment work
-signatureVocabulary: scalable alignment, safety research, evaluation, Gemini deployment
+primaryArtifact: Safety research blog; Gemini-era alignment work; Discovering Agents
+signatureVocabulary: >-
+  scalable alignment, safety research, evaluation, Gemini deployment,
+  discovering agents, causal agent discovery
 statedIntent: >-
   Build advanced AI with internal safety research integrated into capabilities
   org
 primaryCrux: 'Same as frontier-lab crux: oversight co-scaling, deceptive alignment'
 bookBridges:
+  - MB1 (partial)
   - MB7a–c (partial)
-contributes: Large-scale empirical alignment research capacity
+contributes: >-
+  Large-scale empirical alignment research capacity; causal agent discovery from
+  system dynamics
 bookSeparates: Measurement spine not replaced by corporate safety teams
 manuscriptHooks:
   - ch14 co-scaling
@@ -20,3 +25,5 @@ links:
     url: https://deepmind.google/
   - label: DeepMind Safety Research blog
     url: https://deepmind.google/blog/
+  - label: Discovering Agents
+    url: https://arxiv.org/abs/2208.08345

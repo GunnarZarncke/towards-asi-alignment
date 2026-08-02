@@ -60,8 +60,17 @@ function renderAgendaBody(agenda, clusteringRows) {
   const lines = [];
   lines.push(`## Introduction`);
   lines.push("");
-  lines.push(`**${agenda.title}** is a ${(agenda.type || "research agenda").toLowerCase()} carried by **${agenda.carrier}**.`);
-  lines.push("");
+  if (agenda.overview) {
+    lines.push(agenda.overview);
+    lines.push("");
+    if (agenda.carrier) {
+      lines.push(`**Carrier:** ${agenda.carrier}`);
+      lines.push("");
+    }
+  } else {
+    lines.push(`**${agenda.title}** is a ${(agenda.type || "research agenda").toLowerCase()} carried by **${agenda.carrier}**.`);
+    lines.push("");
+  }
   if (agenda.statedIntent) {
     lines.push(`**Stated intent:** ${agenda.statedIntent}`);
     lines.push("");
@@ -174,6 +183,10 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   for (const agenda of agendas) {
     lines.push(`### ${agenda.title}`);
     lines.push("");
+    if (agenda.overview) {
+      lines.push(agenda.overview);
+      lines.push("");
+    }
     if (agenda.type) lines.push(`- **Type:** ${agenda.type}`);
     if (agenda.carrier) lines.push(`- **Carrier:** ${agenda.carrier}`);
     if (agenda.primaryArtifact) lines.push(`- **Primary artifact:** ${agenda.primaryArtifact}`);
@@ -230,8 +243,13 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   lines.push(`| ${header} |`);
   lines.push(`| ${sep} |`);
   for (const row of matrix.rows) {
+    const agendaMeta = agendas.find((a) => a.slug === row.slug);
+    const agendaLabel =
+      agendaMeta?.matrixLink != null
+        ? `[${row.agenda}](${agendaMeta.matrixLink})`
+        : row.agenda;
     const cells = [
-      row.agenda,
+      agendaLabel,
       ...matrix.columns.map((col) => matrixCellToMarkdown(normalizeMatrixCell(row.cells[col])))
     ];
     lines.push(`| ${cells.join(" | ")} |`);
@@ -302,6 +320,7 @@ async function main() {
   await writeFileCheck(matrixPath, yaml.dump(matrix), check, mismatches);
 
   for (const agenda of agendas) {
+    if (agenda.generateCard === false) continue;
     const clusterRows = clustering.filter((row) => row.rollsUpSlug === agenda.slug);
     const card = renderAgendaCard(agenda, clusterRows);
     await writeFileCheck(path.join(cardsDir, `${agenda.slug}.md`), card, check, mismatches);
@@ -315,7 +334,9 @@ async function main() {
       title: a.title,
       summary: agendaSummary(a),
       bookBridges: a.bookBridges ?? [],
-      inMatrix: roster.find((r) => r.slug === a.slug)?.inMatrix ?? false
+      inMatrix: roster.find((r) => r.slug === a.slug)?.inMatrix ?? false,
+      generateCard: a.generateCard !== false,
+      matrixLink: a.matrixLink ?? null
     })),
     matrix,
     evidence,

@@ -1,20 +1,29 @@
 slug: chai-russell
-title: CHAI (Russell)
-type: Research org (academic)
-carrier: Center for Human-Compatible AI, UC Berkeley
-primaryArtifact: Assistance games / CIRL framework; beneficial AI reorientation
+title: CHAI / FAR.AI (Berkeley alignment)
+type: Research org cluster (academic + nonprofit hub)
+carrier: >-
+  Center for Human-Compatible AI (UC Berkeley); FAR.AI (Adam Gleave et al.);
+  shared Berkeley alignment community
+primaryArtifact: >-
+  Assistance games / CIRL framework; beneficial AI reorientation; FAR.Lab
+  research and community programs
 signatureVocabulary: >-
-  CIRL, inverse reward design, assistance games, beneficial AI, provably
-  beneficial systems
+  CIRL, inverse reward design, assistance games, beneficial AI, FAR.Lab,
+  value learning, scalable oversight cousins
 statedIntent: >-
-  Reorient AI research toward systems that remain beneficial under uncertainty
-  about human preferences
-primaryCrux: Cooperative reward inference underdetermined; values vs irrationality
+  Reorient AI research toward beneficial systems under preference uncertainty;
+  host technical alignment research and community
+primaryCrux: >-
+  Cooperative reward inference underdetermined; community hub ⇏ unified technical
+  agenda
 bookBridges:
   - MB2
   - MB3
   - MB4
-contributes: Formal assistance-game framing; off-switch game lineage
+  - MB7 (partial)
+contributes: >-
+  Formal assistance-game framing; off-switch game lineage; FAR incubation hub
+  (Gleave CHAI PhD; METR board overlap)
 bookSeparates: Bundle geometry + bearer maps; ELK as subchannel not whole target
 manuscriptHooks:
   - ch04, ch18
@@ -25,3 +34,5 @@ links:
     url: https://humancompatible.ai/
   - label: CHAI Internship
     url: https://humancompatible.ai/people#interns
+  - label: FAR.AI
+    url: https://www.far.ai/

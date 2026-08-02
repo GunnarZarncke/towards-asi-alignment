@@ -8,7 +8,7 @@ agendas:
     order: 2
     inMatrix: true
   - slug: chai-russell
-    title: CHAI (Russell)
+    title: CHAI / FAR.AI (Berkeley alignment)
     order: 3
     inMatrix: true
   - slug: christiano-lineage
@@ -20,7 +20,7 @@ agendas:
     order: 5
     inMatrix: true
   - slug: anthropic-lab
-    title: Anthropic (lab)
+    title: Anthropic / Goodfire (lab & MI stack)
     order: 6
     inMatrix: true
   - slug: google-deepmind-safety
@@ -28,7 +28,7 @@ agendas:
     order: 7
     inMatrix: true
   - slug: apollo-research
-    title: Apollo Research
+    title: Apollo / Truthful AI (deception & scheming)
     order: 8
     inMatrix: true
   - slug: metr
@@ -39,8 +39,8 @@ agendas:
     title: Resolution
     order: 10
     inMatrix: true
-  - slug: ae-studio
-    title: AE Studio
+  - slug: neglected-approaches-portfolio
+    title: Neglected approaches portfolio
     order: 11
     inMatrix: true
   - slug: orthogonal
@@ -64,12 +64,8 @@ agendas:
     order: 16
     inMatrix: true
   - slug: govai
-    title: GovAI
+    title: GovAI / UK AISI (governance & eval)
     order: 17
-    inMatrix: true
-  - slug: uk-aisi-caisi-gov-eval-institutes
-    title: UK AISI / CAISI (gov eval institutes)
-    order: 18
     inMatrix: true
   - slug: pause-standards-advocacy-cluster
     title: Pause / standards advocacy cluster
@@ -99,14 +95,6 @@ agendas:
     title: ARC (Alignment Research Center)
     order: 25
     inMatrix: true
-  - slug: truthful-ai-evans
-    title: Truthful AI (Evans)
-    order: 26
-    inMatrix: true
-  - slug: goodfire-mechanistic-interpretability-cluster
-    title: Goodfire / mechanistic interpretability cluster
-    order: 27
-    inMatrix: true
   - slug: clr-cooperation-conflict
     title: CLR (cooperation / conflict)
     order: 28
@@ -115,15 +103,19 @@ agendas:
     title: AI Futures / forecasting cluster
     order: 29
     inMatrix: true
-  - slug: farai
-    title: FAR.AI
-    order: 30
-    inMatrix: true
   - slug: conjecture-cognitive-emulation
     title: Conjecture / cognitive emulation
     order: 31
     inMatrix: true
+  - slug: safeguarded-ai-aria-zeroth-heron
+    title: Safeguarded AI (ARIA / Zeroth / Heron)
+    order: 32
+    inMatrix: true
+  - slug: mai-cip-institutional-alignment
+    title: MAI + CIP (institutional alignment)
+    order: 33
+    inMatrix: true
   - slug: this-project-towards-superintelligence-alignment-tsa
     title: This project - Towards Superintelligence Alignment (TSA)
-    order: 32
+    order: 34
     inMatrix: true

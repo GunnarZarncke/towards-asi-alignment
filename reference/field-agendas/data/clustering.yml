@@ -27,9 +27,9 @@ clustering:
     listingLinks:
       - label: CHAI
         url: https://humancompatible.ai/
-    rollsUpTo: '[CHAI](#chai-russell) / academic alignment cluster'
+    rollsUpTo: '[CHAI / FAR.AI](#chai-russell) cluster'
     rollsUpLinks:
-      - label: CHAI
+      - label: CHAI / FAR.AI
         url: '#chai-russell'
     rollsUpSlug: chai-russell
   - listings: >-
@@ -64,9 +64,9 @@ clustering:
     listingLinks:
       - label: Anthropic
         url: https://www.anthropic.com/
-    rollsUpTo: '[Anthropic (lab)](#anthropic-lab) — newsletter not agenda'
+    rollsUpTo: '[Anthropic / Goodfire](#anthropic-lab) — newsletter not agenda'
     rollsUpLinks:
-      - label: Anthropic (lab)
+      - label: Anthropic / Goodfire
         url: '#anthropic-lab'
     rollsUpSlug: anthropic-lab
   - listings: '[Google DeepMind](https://deepmind.google/), DeepMind Safety Research'
@@ -82,9 +82,9 @@ clustering:
     listingLinks:
       - label: Apollo Research
         url: https://www.apolloresearch.ai/
-    rollsUpTo: '[Apollo Research](#apollo-research)'
+    rollsUpTo: '[Apollo / Truthful AI](#apollo-research)'
     rollsUpLinks:
-      - label: Apollo Research
+      - label: Apollo / Truthful AI
         url: '#apollo-research'
     rollsUpSlug: apollo-research
   - listings: >-
@@ -119,11 +119,11 @@ clustering:
         url: https://ae.studio/
       - label: AE Studio Research
         url: https://ae.studio/alignment
-    rollsUpTo: '[AE Studio](#ae-studio)'
+    rollsUpTo: '[Neglected approaches portfolio](#neglected-approaches-portfolio)'
     rollsUpLinks:
-      - label: AE Studio
-        url: '#ae-studio'
-    rollsUpSlug: ae-studio
+      - label: Neglected approaches portfolio
+        url: '#neglected-approaches-portfolio'
+    rollsUpSlug: neglected-approaches-portfolio
   - listings: '[Orthogonal](https://orxl.org/)'
     listingLinks:
       - label: Orthogonal
@@ -166,9 +166,9 @@ clustering:
         url: https://simoninstitute.ch/
       - label: IAPS
         url: https://www.iaps.ai/
-    rollsUpTo: '[GovAI cluster](#govai)'
+    rollsUpTo: '[GovAI / UK AISI](#govai) cluster'
     rollsUpLinks:
-      - label: GovAI cluster
+      - label: GovAI / UK AISI
         url: '#govai'
     rollsUpSlug: govai
   - listings: >-
@@ -180,11 +180,11 @@ clustering:
         url: https://www.aisi.gov.uk/
       - label: CAISI
         url: https://www.nist.gov/artificial-intelligence
-    rollsUpTo: '[Gov eval institutes](#uk-aisi--caisi-gov-eval-institutes) cluster'
+    rollsUpTo: '[GovAI / UK AISI](#govai) cluster'
     rollsUpLinks:
-      - label: Gov eval institutes
-        url: '#uk-aisi--caisi-gov-eval-institutes'
-    rollsUpSlug: uk-aisi--caisi-gov-eval-institutes
+      - label: GovAI / UK AISI
+        url: '#govai'
+    rollsUpSlug: govai
   - listings: >-
       [PauseAI](https://pauseai.info/), [FLI](https://futureoflife.org/),
       [ControlAI](https://controlai.org/), [Encode](https://encodeai.org/), Stop
@@ -258,11 +258,11 @@ clustering:
     listingLinks:
       - label: Truthful AI
         url: https://truthful.ai/
-    rollsUpTo: '[Truthful AI](#truthful-ai-evans) / deception evals'
+    rollsUpTo: '[Apollo / Truthful AI](#apollo-research) / deception evals'
     rollsUpLinks:
-      - label: Truthful AI
-        url: '#truthful-ai-evans'
-    rollsUpSlug: truthful-ai-evans
+      - label: Apollo / Truthful AI
+        url: '#apollo-research'
+    rollsUpSlug: apollo-research
   - listings: >-
       [Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/),
       [Neuronpedia](https://www.neuronpedia.org/)
@@ -273,13 +273,11 @@ clustering:
         url: https://transluce.org/
       - label: Neuronpedia
         url: https://www.neuronpedia.org/
-    rollsUpTo: >-
-      [Goodfire / mech interp](#goodfire--mechanistic-interpretability-cluster)
-      cluster
+    rollsUpTo: '[Anthropic / Goodfire](#anthropic-lab) cluster'
     rollsUpLinks:
-      - label: Goodfire / mech interp
-        url: '#goodfire--mechanistic-interpretability-cluster'
-    rollsUpSlug: goodfire--mechanistic-interpretability-cluster
+      - label: Anthropic / Goodfire
+        url: '#anthropic-lab'
+    rollsUpSlug: anthropic-lab
   - listings: >-
       [CLR](https://longtermrisk.org/), Modeling Cooperation,
       [CAIF](https://www.cooperativeai.com/)
@@ -315,11 +313,11 @@ clustering:
     listingLinks:
       - label: FAR.AI
         url: https://www.far.ai/
-    rollsUpTo: '[FAR.AI](#farai)'
+    rollsUpTo: '[CHAI / FAR.AI](#chai-russell)'
     rollsUpLinks:
-      - label: FAR.AI
-        url: '#farai'
-    rollsUpSlug: farai
+      - label: CHAI / FAR.AI
+        url: '#chai-russell'
+    rollsUpSlug: chai-russell
   - listings: >-
       [Conjecture](https://www.conjecture.dev/),
       [EleutherAI](https://www.eleuther.ai/)
@@ -350,6 +348,37 @@ clustering:
     rollsUpSlug: null
   - listings: AI Safety Interventions (zarncke post)
     listingLinks: []
-    rollsUpTo: '**Catalog** — cross-cuts agendas'
-    rollsUpLinks: []
-    rollsUpSlug: null
+    rollsUpTo: '**Catalog** — cross-cuts agendas (see [Neglected approaches portfolio](#neglected-approaches-portfolio))'
+    rollsUpLinks:
+      - label: Neglected approaches portfolio
+        url: '#neglected-approaches-portfolio'
+    rollsUpSlug: neglected-approaches-portfolio
+  - listings: >-
+      [ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai),
+      [Zeroth Research](https://www.zeroth.org/), [Heron AI
+      Security](https://www.heronsec.ai/)
+    listingLinks:
+      - label: ARIA Safeguarded AI
+        url: https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai
+      - label: Zeroth Research
+        url: https://www.zeroth.org/
+      - label: Heron AI Security
+        url: https://www.heronsec.ai/
+    rollsUpTo: '[Safeguarded AI (ARIA / Zeroth / Heron)](#safeguarded-ai-aria-zeroth-heron)'
+    rollsUpLinks:
+      - label: Safeguarded AI (ARIA / Zeroth / Heron)
+        url: '#safeguarded-ai-aria-zeroth-heron'
+    rollsUpSlug: safeguarded-ai-aria-zeroth-heron
+  - listings: >-
+      [Meaning Alignment Institute](https://www.meaningalignment.org/), [Collective
+      Intelligence Project](https://www.cip.org/)
+    listingLinks:
+      - label: Meaning Alignment Institute
+        url: https://www.meaningalignment.org/
+      - label: Collective Intelligence Project
+        url: https://www.cip.org/
+    rollsUpTo: '[MAI + CIP (institutional alignment)](#mai-cip-institutional-alignment)'
+    rollsUpLinks:
+      - label: MAI + CIP (institutional alignment)
+        url: '#mai-cip-institutional-alignment'
+    rollsUpSlug: mai-cip-institutional-alignment

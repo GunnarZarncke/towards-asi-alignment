@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-02 | **Field agenda restructure + merges** — Neglected-report folds; 4 independence merges; new Safeguarded AI / MAI+CIP / Neglected approaches rows; TSA matrix home link; AE essay card overview. | [2026-08-02-field-agenda-restructure-merges.md](2026-08-02-field-agenda-restructure-merges.md) |
 | 2026-08-02 | **Field crux on bridge cards** — Removed hub crux legend; agree/differ/homograph notes on MB1–MB10 + MB11 on dynamical-guarantee. | [2026-08-02-field-crux-on-bridge-cards.md](2026-08-02-field-crux-on-bridge-cards.md) |
 | 2026-08-02 | **Field matrix bridge nouns** — `bridges.yml`; crux legend; noun matrix headers; MB card titles; Track 2 divergence plan. | [2026-08-02-field-matrix-bridge-nouns.md](2026-08-02-field-matrix-bridge-nouns.md) |
 | 2026-08-02 | **Site offline PWA cache fix** — Stale refresh locally; restored network-first when offline not enabled; SW v8. | [2026-08-02-site-offline-pwa-cache-fix.md](2026-08-02-site-offline-pwa-cache-fix.md) |

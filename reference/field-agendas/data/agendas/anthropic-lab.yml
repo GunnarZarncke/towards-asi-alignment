@@ -1,29 +1,46 @@
 slug: anthropic-lab
-title: Anthropic (lab)
-type: Capabilities lab + safety team
-carrier: Anthropic PBC
-primaryArtifact: RSP; interpretability research; Constitutional AI / conditioning line
+title: Anthropic / Goodfire (lab & MI stack)
+type: Capabilities lab + MI tooling cluster
+carrier: >-
+  Anthropic PBC; Goodfire; Transluce; Neuronpedia (infra); Georg Lange
+  (causal-faithfulness seam)
+primaryArtifact: >-
+  RSP; Constitutional AI; interpretability research; Ember/editable
+  representations; FMF capability thresholds
 signatureVocabulary: >-
-  RSP, interpretability, constitutional AI, responsible scaling, conditioning
-  (models)
+  RSP, constitutional AI, mechanistic interpretability, circuits, features,
+  steering, capability thresholds, causal faithfulness
 statedIntent: >-
-  Build capable systems with staged safety commitments and internal
-  interpretability
+  Build capable systems with staged safety commitments, interpretability, and
+  editable internal representations
 primaryCrux: Can scaling policies and interpretability keep pace with capability?
 bookBridges:
   - MB2
   - MB3
+  - MB6
   - MB7 (partial)
+  - MB10 (partial)
+  - MB11 (partial)
 contributes: >-
-  Industry RSP template; conditioning-predictor failure mode (capture —
-  homograph with “anthropic reasoning”)
+  Industry RSP template; conditioning-predictor failure mode; Goodfire MI tooling
+  (Anthropic investment; Apollo/DeepMind MI lineage on team); cross-lab
+  Neuronpedia infra
 bookSeparates: CCI + adversarial verifiability; lab RSP ≠ preservation-layer certificate
 manuscriptHooks:
   - ch10 (conditioning)
+  - ch43
   - field-news
   - App B LLM opacity default
 links:
   - label: Anthropic
     url: https://www.anthropic.com/
-  - label: Google DeepMind
-    url: https://deepmind.google/
+  - label: Goodfire
+    url: https://www.goodfire.com/
+  - label: Transluce
+    url: https://transluce.org/
+  - label: Neuronpedia
+    url: https://www.neuronpedia.org/
+  - label: Frontier Model Forum risk thresholds
+    url: https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/
+  - label: Lange et al. 2023
+    url: https://arxiv.org/abs/2311.17030

@@ -1,22 +1,45 @@
 slug: govai
-title: GovAI
-type: Governance research program
-carrier: Centre for the Governance of AI, Oxford
-primaryArtifact: Policy-facing research; GovAI Fellowship
-signatureVocabulary: AI governance, compute governance, international governance, policy briefs
-statedIntent: Inform decision-makers on advanced AI governance
-primaryCrux: Can governance keep pace with capability without eroding correction capacity?
+title: GovAI / UK AISI (governance & eval)
+type: Governance research + gov eval institutes
+carrier: >-
+  Centre for the Governance of AI (Oxford); UK AI Security Institute; US CAISI
+  (NIST); Simon Institute; IAPS (policy orbit)
+primaryArtifact: >-
+  Policy-facing research; GovAI Fellowship; gradual disempowerment programme;
+  frontier model testing; standards development; alignment eval case studies
+signatureVocabulary: >-
+  AI governance, compute governance, frontier evals, gradual disempowerment,
+  AI safety institute, pre-deployment testing, evaluation awareness
+statedIntent: >-
+  Inform decision-makers and test frontier systems via policy research and
+  government-led eval capacity
+primaryCrux: >-
+  Can governance and institute evals keep pace with capability and bind on
+  deployment under race pressure?
 bookBridges:
   - MB6 (institutional)
+  - MB7 (partial)
   - MB9 (partial)
-contributes: Governance research pipeline; EU/US policy translation
-bookSeparates: Policy levers ⇏ correction-channel integrity
+  - MB11 (partial)
+contributes: >-
+  Governance research pipeline; EU/US policy translation; gradual disempowerment
+  framing; institutional eval capacity; Resolution/Irving lineage (UK AISI);
+  personnel/advisory overlap between GovAI and AISI
+bookSeparates: Policy levers and eval visibility ⇏ correction-channel integrity
 manuscriptHooks:
   - App C institutional translation
   - App B selection row
+  - ch passive observation
+  - field-news
 links:
   - label: GovAI
     url: https://www.governance.ai/
+  - label: Gradual Disempowerment
+    url: https://gradual-disempowerment.ai/
+  - label: UK AISI
+    url: https://www.aisi.gov.uk/
+  - label: CAISI / US NIST AI
+    url: https://www.nist.gov/artificial-intelligence
   - label: Simon Institute
     url: https://simoninstitute.ch/
   - label: IAPS

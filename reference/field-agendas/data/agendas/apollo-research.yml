@@ -1,15 +1,26 @@
 slug: apollo-research
-title: Apollo Research
-type: Research org
-carrier: Apollo Research
-primaryArtifact: Scheming science; pre-deployment evals; agent-security tools
-signatureVocabulary: scheming, pre-deployment evals, situational awareness, agent governance
-statedIntent: Evaluate and mitigate deception/scheming before deployment
+title: Apollo / Truthful AI (deception & scheming)
+type: Research org cluster
+carrier: >-
+  Apollo Research; Truthful AI (Owain Evans); CHAI affiliate network; shared
+  mentee pipeline to AISI/Anthropic
+primaryArtifact: >-
+  Scheming science; pre-deployment evals; agent-security tools; deception,
+  situational awareness, hidden reasoning research
+signatureVocabulary: >-
+  scheming, pre-deployment evals, situational awareness, agent governance,
+  deception, hidden reasoning, lie detection
+statedIntent: >-
+  Evaluate and mitigate deception/scheming and hidden reasoning before deployment
 primaryCrux: Can we detect strategic deception before capabilities outpace evals?
 bookBridges:
+  - MB6 (partial)
   - MB7a–c
   - MB10
-contributes: Scheming as named empirical research program
+  - MB11 (partial)
+contributes: >-
+  Scheming as named empirical program; TruthfulQA/SAD lineage; Evans mentee
+  network overlaps Apollo, UK/US AISI, Anthropic
 bookSeparates: Eval success ⇏ correction-channel preservation
 manuscriptHooks:
   - ch10, ch43
@@ -17,3 +28,5 @@ manuscriptHooks:
 links:
   - label: Apollo Research
     url: https://www.apolloresearch.ai/
+  - label: Truthful AI
+    url: https://truthful.ai/
