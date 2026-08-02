@@ -37,3 +37,4 @@ After Phase 1–2 Lean (finite models, `FieldInterfaces`, MB10 chokepoint readin
 ## Verification
 
 - `lake build` in `formal/` — pass (comment-only `.lean` edits)
+- Commit: `4bf8d630`

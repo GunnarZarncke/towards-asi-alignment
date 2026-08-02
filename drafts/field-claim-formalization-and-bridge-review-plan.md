@@ -5,7 +5,7 @@ Status: Phase 1–3 decided (2026-08-02). Lean Phases 1–2 implemented; Phase 3
 ## Scope and assumptions
 
 - **Audience:** book/formal-spine maintainers and alignment researchers, not general readers.
-- **Scope:** the six rows in `reference/field-agendas/field-agenda-index.md` under “Missing-bridge candidates.”
+- **Scope:** the six field claims reviewed in the 2026-08-02 pass (originally listed under a since-dissolved “Missing-bridge candidates” table in `reference/field-agendas/field-agenda-index.md`; dispositions now live under **Coverage vs book treatment**).
 - **Claim strength:** these are candidate type signatures and architecture decisions. They are not proofs that a field agenda works or that a real deployment satisfies a bridge.
 - **Operational paraphrase:** for each field claim, identify (1) the object being certified, (2) the evidence supplied, (3) the conclusion sought, and (4) the counterexample that shows why the conclusion is not automatic.
 - **Success criterion for a future Lean pass:** every adopted claim has a field-local model, a non-converse or defeater where appropriate, an explicit interface to the book’s predicates, and a checked axiom footprint. No field claim should reach `Safe` by bypassing `CertifiedSafetyCase` and `MB11`.

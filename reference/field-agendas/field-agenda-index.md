@@ -1,7 +1,7 @@
 # Field agenda index
 
 **Status:** field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 33 coherent agendas after Kosoy split). Each agenda row includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  
-**Term glossary:** [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) (alphabetical; book integration deferred)  
+**Term glossary:** [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) (alphabetical; TSA integration deferred)  
 **Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appB/) · [Lean spine](https://towards-alignment.com/lean/) · LaTeX source: [`appendices/appB-bridge-crosswalk.tex`](../../appendices/appB-bridge-crosswalk.tex)  
 **Map snapshot:** user upload / AISafety.com (Aug 2026)
 
@@ -26,7 +26,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Steer transformative AI away from extinction risk via agent-foundations problem framing and policy priority on pause/off-switch
 - **Primary crux:** No clean agent–environment cut; corrigibility anti-natural; successor trust under ontology change
 - **Book bridges:** MB1, MB4, MB5, MB8
-- **Book treatment:** substantive
 - **Contributes:** Canonical embedded-agency and corrigibility problem statements; decision-theoretic lineage
 - **Book separates:** Operational boundary discovery bet (MB1); trajectory CCI vs one-bit shutdown
 - **Manuscript hooks:** App B MB1/MB4/MB5 notes; ch07, ch25, ch28
@@ -41,7 +40,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Make safety-under-subversion research legible to labs and governments
 - **Primary crux:** Can we get meaningful safety guarantees when the system may try to defeat oversight?
 - **Book bridges:** MB7a–c
-- **Book treatment:** substantive
 - **Contributes:** Explicit capability-gap assumption; empirical control evals
 - **Book separates:** Hidden B-IQ bound + adversarial verifiability antecedent (A-009)
 - **Manuscript hooks:** ch10, ch43; App B MB7
@@ -56,7 +54,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Reorient AI research toward systems that remain beneficial under uncertainty about human preferences
 - **Primary crux:** Cooperative reward inference underdetermined; values vs irrationality
 - **Book bridges:** MB2, MB3, MB4
-- **Book treatment:** substantive
 - **Contributes:** Formal assistance-game framing; off-switch game lineage
 - **Book separates:** Bundle geometry + bearer maps; ELK as subchannel not whole target
 - **Manuscript hooks:** ch04, ch18; App B MB2/MB3; App G CIRL projection
@@ -71,7 +68,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Scalable oversight that remains honest under optimization pressure
 - **Primary crux:** Obfuscated arguments; accumulated judge drift; latent readout vs behavior
 - **Book bridges:** MB2, MB3, MB7a–c, MB4
-- **Book treatment:** substantive
 - **Contributes:** Scalable-oversight protocol family; ELK problem statement
 - **Book separates:** Correction-channel integrity; readout ⇏ correction uptake
 - **Manuscript hooks:** ch29, ch41, ch43; App B; projections ELK/debate
@@ -86,7 +82,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Engineer AI systems with formal safety guarantees relative to an explicit spec and world model
 - **Primary crux:** Cannot enumerate all safety-relevant phenomena in an open world
 - **Book bridges:** MB9, MB11 (cousin)
-- **Book treatment:** substantive (cousin, not absorbed)
 - **Contributes:** Coverage/spec completeness as the central open wall
 - **Book separates:** Grounding conservativity (no silent gaps) vs completeness demand
 - **Manuscript hooks:** ch43, dynamical guarantee; App B MB9
@@ -101,7 +96,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Build capable systems with staged safety commitments and internal interpretability
 - **Primary crux:** Can scaling policies and interpretability keep pace with capability?
 - **Book bridges:** MB2, MB3, MB7 (partial)
-- **Book treatment:** peer / institutional
 - **Contributes:** Industry RSP template; conditioning-predictor failure mode (capture — homograph with “anthropic reasoning”)
 - **Book separates:** CCI + adversarial verifiability; lab RSP ≠ preservation-layer certificate
 - **Manuscript hooks:** ch10 (conditioning); field-news; App B LLM opacity default
@@ -116,7 +110,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Build advanced AI with internal safety research integrated into capabilities org
 - **Primary crux:** Same as frontier-lab crux: oversight co-scaling, deceptive alignment
 - **Book bridges:** MB7a–c (partial)
-- **Book treatment:** peer / minimal cite
 - **Contributes:** Large-scale empirical alignment research capacity
 - **Book separates:** Measurement spine not replaced by corporate safety teams
 - **Manuscript hooks:** ch14 co-scaling; minimal elsewhere
@@ -131,7 +124,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Evaluate and mitigate deception/scheming before deployment
 - **Primary crux:** Can we detect strategic deception before capabilities outpace evals?
 - **Book bridges:** MB7a–c, MB10
-- **Book treatment:** substantive (eval layer)
 - **Contributes:** Scheming as named empirical research program
 - **Book separates:** Eval success ⇏ correction-channel preservation
 - **Manuscript hooks:** ch10, ch43; METR-adjacent rows in lethality stress test
@@ -146,7 +138,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Measure dangerous capabilities to inform policy and lab decisions
 - **Primary crux:** Do public evals track deployment-relevant risk under adversarial pressure?
 - **Book bridges:** MB7 (partial), MB6 (indirect)
-- **Book treatment:** peer
 - **Contributes:** Empirical capability measurement at frontier
 - **Book separates:** Capability evals ⇏ correction integrity or bearer transport
 - **Manuscript hooks:** App B MB7 notes (METR 2026 cite); ch44
@@ -161,7 +152,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Pursue alignment approaches that can be automated and checked with high confidence
 - **Primary crux:** Can formal+automated pipelines scale to superintelligent alignment?
 - **Book bridges:** MB1, MB9 (partial), MB11 (cousin)
-- **Book treatment:** borderline
 - **Contributes:** Automation-first philosophy; UK AISI lineage
 - **Book separates:** Book's adversarial-verifiability chokepoint under optimization
 - **Manuscript hooks:** sparse; App B exclude-by-reference for full verification construction
@@ -176,7 +166,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Tackle alignment from overlooked technical and policy angles
 - **Primary crux:** Which neglected routes survive unified optimization pressure?
 - **Book bridges:** MB2, MB4, MB6 (partial)
-- **Book treatment:** peer
 - **Contributes:** Breadth map (`zarncke2025interventions` lineage); Heitzig human-power objective cite
 - **Book separates:** Any single objective needs adversarial-verifiability argument (App B MB4 note)
 - **Manuscript hooks:** App B intervention map source; ch04/ch25 adjacent
@@ -191,7 +180,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Advance formal agent-foundations alignment research
 - **Primary crux:** Same family as MIRI/CHAI formal walls, community-organized
 - **Book bridges:** MB1, MB4
-- **Book treatment:** borderline
 - **Contributes:** Active agent-foundations community
 - **Book separates:** Typed bridge stack + measurement program
 - **Manuscript hooks:** sparse
@@ -206,7 +194,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Mathematical theory of abstractions and agency that could constrain alignment
 - **Primary crux:** Do natural abstractions align with value-relevant structure under optimization?
 - **Book bridges:** MB2, MB3 (partial), MB1
-- **Book treatment:** borderline / sibling
 - **Contributes:** NAH as falsifier for low-dimensional value story (ch17 WWCTV)
 - **Book separates:** Bundle geometry + ontology shift transport; NAH not promoted to spine
 - **Manuscript hooks:** ch17; App B shard/NAH row
@@ -220,11 +207,10 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Signature vocabulary:** infra-Bayesianism, learning-theoretic agenda, imprecise probability, nonrealizability, daemons
 - **Stated intent:** Foundations for reasoning under deep uncertainty applicable to alignment
 - **Primary crux:** Can learning-theoretic / infra-Bayesian frameworks type real alignment failures (misspec, daemons, RSI)?
-- **Book bridges:** MB1, MB2, MB5, MB7, MB9 (cousin); MB7d neighborhood — see [missing-bridge candidates](#missing-bridge-candidates)
-- **Book treatment:** exclude by reference (alternate ontology — not “no crux”)
+- **Book bridges:** MB1, MB2, MB5, MB7, MB9 (cousin); MB7d neighborhood — see [spine translation](#spine-translation)
 - **Contributes:** Model-class misspec / grain-of-truth; regret-bounded agents; inner daemons under LTA
 - **Book separates:** Book ontology (System, bundle, CCI) not replaced; walls remapped to existing MBs
-- **Manuscript hooks:** App B intervention map (logical induction / infra-Bayesian cluster); `metadata/TODO.md` model-class misspec item
+- **Manuscript hooks:** App B intervention map (logical induction / infra-Bayesian cluster)
 - **Links:** [Infra-Bayesianism (LessWrong)](https://www.lesswrong.com/tag/infra-bayesianism); [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)
 
 ### Kosoy / PreDCA
@@ -236,7 +222,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Outer-alignment via assisting an aggregate of causal precursors (human user)
 - **Primary crux:** Does precursor-utility pointing survive simulation / ontology ambiguity?
 - **Book bridges:** MB2, MB3 (peer outer target); MB4/MB8 legitimacy underside
-- **Book treatment:** peer outer-alignment proposal (App B row with CEV/QACI/KANSI)
 - **Contributes:** Sibling outer endpoint; assistance-game cousin via different formal path
 - **Book separates:** Endpoint not sufficient alone; bundle + bearer + correction process still load-bearing
 - **Manuscript hooks:** bib `kosoy2022predca`; glossary PreDCA row
@@ -251,7 +236,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Cryptographic + procedural accountability for autonomous agents **today** (sub-ASI validated scope); **candidate** ASI alignment protocol only after RC gates (CRE, red-team, Book IX validation) — explicitly **not** “prevent ASI”
 - **Primary crux:** **Named-identity bet:** does green Verify+Lens on a certified occurrence imply MB4 correction integrity on the **real intervening loop** (composite / tools / memory / incentives)?
 - **Book bridges:** MB4, MB4a (primary test surface — WA, deferral, emergency shutdown); MB1 (named unit vs discovered boundary); MB6 (federation Orthogonality gate — partial); MB7 (Lens ratchet / Verify disclaimers — adversarial-verifiability subchannel); MB9 (NEW-04 compositional coverage limit); MB11 (honest safety-case scope disclaimers)
-- **Book treatment:** institutional peer / **correction-channel case study** (not ASI-geometry peer)
 - **Contributes:** Honest ops disclaimers (Verify = authenticity ≠ ethics; Lens = triage ≠ verdict); unit-tested prohibition/conscience/proxy fail-closed layers (50/50 smoke battery); sharpest falsifier shape for named-identity vs composite agency
 - **Book separates:** Attestation green ⇏ correction uptake; signed agent ⇏ real agent; Book IX geometry aspirational vs shipped policy enforcement
 - **Review status:** Smoke battery **50/50 passed** (prohibitions, conscience helpers, proxy fail-closed, verify types); integration, hardware attestation, adversarial gaming **not** run; **key task open:** CIRIS-shaped composite / `boundary_decouple` counterexample (Verify+Lens green, WA-blind composite)
@@ -267,7 +251,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Inform decision-makers on advanced AI governance
 - **Primary crux:** Can governance keep pace with capability without eroding correction capacity?
 - **Book bridges:** MB6 (institutional), MB9 (partial)
-- **Book treatment:** institutional
 - **Contributes:** Governance research pipeline; EU/US policy translation
 - **Book separates:** Policy levers ⇏ correction-channel integrity
 - **Manuscript hooks:** App C institutional translation; App B selection row
@@ -282,7 +265,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Government-led testing and standards for advanced AI
 - **Primary crux:** Do institute evals bind on deployment decisions under race pressure?
 - **Book bridges:** MB6, MB7 (partial)
-- **Book treatment:** institutional
 - **Contributes:** Institutional eval capacity; Resolution/Irving lineage (UK)
 - **Book separates:** Visibility/evals ⇏ correction integrity (ch passive observation)
 - **Manuscript hooks:** ch passive observation; App C; field-news
@@ -297,7 +279,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Change policy and public narrative to reduce extinction risk from advanced AI
 - **Primary crux:** Can advocacy create enforceable slowdown without collateral governance failure?
 - **Book bridges:** MB6 (selection environment), MB8 (secondary)
-- **Book treatment:** institutional / exclude construction
 - **Contributes:** Schedule shapes for governance stress tests (App F deferred section)
 - **Book separates:** Pause handle ⇏ MB1–MB10 discharge; basin transition conditions
 - **Manuscript hooks:** App C MIRI hard-pause vs Plan A; ch38 conductive artifacts
@@ -312,7 +293,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Build the AI safety research field and advocate for safety standards
 - **Primary crux:** Field-building ⇏ technical solution
 - **Book bridges:** — (meta)
-- **Book treatment:** exclude by reference (except minimal cite)
 - **Contributes:** Legitimacy and researcher pipeline
 - **Book separates:** Measurement spine is independent of CAIS framing
 - **Manuscript hooks:** minimal
@@ -327,7 +307,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Standard on-ramp courses for AI safety careers
 - **Primary crux:** Pedagogy ⇏ research agenda (vocabulary transmission)
 - **Book bridges:** —
-- **Book treatment:** exclude (training)
 - **Contributes:** Shared preparadigmatic vocabulary for new researchers
 - **Book separates:** —
 - **Manuscript hooks:** none required
@@ -342,7 +321,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Connect scholars to alignment mentors for empirical/conceptual research
 - **Primary crux:** Mentorship output diversity vs unified measurement spine
 - **Book bridges:** —
-- **Book treatment:** exclude (training)
 - **Contributes:** Research talent pipeline
 - **Book separates:** —
 - **Manuscript hooks:** none required
@@ -357,7 +335,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Accelerate alignment research through sprints and mentorship
 - **Primary crux:** Sprint artifacts ⇏ load-bearing safety case
 - **Book bridges:** —
-- **Book treatment:** exclude (training)
 - **Contributes:** Experiment prototypes (ET lines in repo)
 - **Book separates:** —
 - **Manuscript hooks:** demos/experiments lineage
@@ -372,7 +349,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Accelerate talent into AI safety through programs and campus organizing
 - **Primary crux:** Same as other training agendas
 - **Book bridges:** —
-- **Book treatment:** exclude (training)
 - **Contributes:** Campus pipeline; SPAR research projects
 - **Book separates:** —
 - **Manuscript hooks:** none
@@ -387,7 +363,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Formalize scalable oversight mechanisms including latent knowledge elicitation
 - **Primary crux:** Human simulator vs direct translator; readout under optimization
 - **Book bridges:** MB2, MB3, MB7
-- **Book treatment:** substantive (ELK subchannel)
 - **Contributes:** ELK as canonical naming of latent readout problem
 - **Book separates:** Readout ⇏ correction uptake (Lean separation)
 - **Manuscript hooks:** ch43; App G ELK
@@ -402,7 +377,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Empirical study of model deception and awareness relevant to control
 - **Primary crux:** Can we detect hidden reasoning before it scales?
 - **Book bridges:** MB7a–c
-- **Book treatment:** borderline
 - **Contributes:** Empirical deception/s-awareness line
 - **Book separates:** Detection ⇏ CCI preservation
 - **Manuscript hooks:** ch10, ch43 adjacent
@@ -417,7 +391,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Make models understandable and editable for safety
 - **Primary crux:** Does interpretability scale to adversarial frontier models?
 - **Book bridges:** MB7 (filter subchannel)
-- **Book treatment:** explicit exclude as alignment solution (App B); instruments under A-009
 - **Contributes:** Tooling for adversarial verifiability experiments
 - **Book separates:** MI stack ⇏ correction-channel integrity default
 - **Manuscript hooks:** ch43; App B MI exclude row
@@ -432,7 +405,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Reduce worst-case outcomes from AI competition and conflict
 - **Primary crux:** Multi-agent failure modes under strategic pressure
 - **Book bridges:** MB6, MB7d (partial)
-- **Book treatment:** substantive (multipolar cousin)
 - **Contributes:** Conflict/cooperation framing; CAIF cooperative AI
 - **Book separates:** Typed MB6/MB7d measurement vs narrative multipolar stories
 - **Manuscript hooks:** ch35, ch02; Critch multipolar cites
@@ -447,7 +419,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Inform decisions with explicit forecasts about AI development
 - **Primary crux:** Schedule uncertainty vs mechanism uncertainty (book: schedule cues only)
 - **Book bridges:** MB6 (schedule shapes — not findings)
-- **Book treatment:** exclude as evidence; institutional cue source
 - **Contributes:** Schedule shapes for governance stress tests (App F)
 - **Book separates:** Macro scenario ⇏ MB discharge
 - **Manuscript hooks:** App C Plan A; App F governance-schedule deferred
@@ -462,7 +433,6 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Host research and community for technical AI safety
 - **Primary crux:** Community hub ⇏ unified agenda
 - **Book bridges:** partial MB7
-- **Book treatment:** borderline
 - **Contributes:** Community and event infrastructure
 - **Book separates:** —
 - **Manuscript hooks:** sparse
@@ -477,22 +447,20 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Stated intent:** Build controllable systems via emulation framing
 - **Primary crux:** Does emulation imply corrigibility under scale?
 - **Book bridges:** MB7 (partial)
-- **Book treatment:** borderline
 - **Contributes:** Alternative controllability framing
 - **Book separates:** CCI + successor transport
 - **Manuscript hooks:** sparse
 - **Links:** [Conjecture](https://conjecture.dev/); [EleutherAI](https://www.eleuther.ai/) (adjacent)
 
-### This book (measurement spine)
+### This project - Towards Superintelligence Alignment (TSA)
 
-- **Type:** Book-native research program
-- **Carrier:** Gunnar Zarncke — *Towards Superintelligence Alignment*
+- **Type:** Research program
+- **Carrier:** Gunnar Zarncke — *Towards Superintelligence Alignment* (TSA)
 - **Primary artifact:** Manuscript + Lean spine + experiment lines
 - **Signature vocabulary:** correction-channel integrity, bundle geometry, bearer maps, adversarial verifiability, deployment leverage, UAD, inferential coupling
 - **Stated intent:** Preservation of human-correctable value-bearing processes under capability growth, ontology shift, successors, selection pressure
 - **Primary crux:** Can typed bridges compose under explicit adversarial-verifiability antecedent?
 - **Book bridges:** MB1–MB11 incl. MB4a (home)
-- **Book treatment:** home
 - **Contributes:** Measurement spine; non-converses; selection environment as load-bearing
 - **Book separates:** Does not dissolve field walls; relocates into bridges
 - **Manuscript hooks:** full manuscript; App B crosswalk
@@ -500,42 +468,29 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 
 ---
 
-## Coverage vs book treatment
+## Coverage vs book treatment {#coverage-vs-book-treatment}
 
-The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether the manuscript adopts that agenda's constructive bet or ontology.
+The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology.
 
 - **`Book treatment`** on each [agenda row](#agendas) states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).
 - **Empty matrix cells (`—`)** mean no catalog entry in this pass — not "out of book scope" and not a claim the agenda is silent on the crux.
 - **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).
 
----
+### How to read matrix cells (spine translation) {#spine-translation}
 
-## Missing-bridge candidates
+A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:
 
-Field claims that may need an explicit spine bridge, or that map only partially onto existing MBs. Listed for index completeness; book decision tracked in `metadata/TODO.md` where noted.
+| Mode | Meaning | Examples |
+|---|---|---|
+| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB8**, **MB11** columns |
+| **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |
+| **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |
 
-| Field claim | Agendas | Maps to existing MB? | Disposition (2026-08-02) |
-|---|---|---|---|
-| **Model-class misspec / nonrealizability / grain-of-truth** | Kosoy (IB/LTA), logical-induction neighborhood | **MB1** (estimator/modeling), **MB9** (grounding/coverage) | **Ambient + defeaters** — no `MB12`; see prose below |
-| **Regret bounds ⇒ deployment safety** | Kosoy LTA | Cousin to **MB2**/**MB7**; not **MB11**/`RiskGap` | **Side channel** — `SystemRegretSafetyEvidence`; numeric harm leaf deferred |
-| **Logical uncertainty / reflection** | Garrabrant logical induction | **MB5** / **MB7d** neighborhood | **Split** — reflection in `LobTiling`; LI exclude-by-reference |
-| **Safety case ⇒ Safe** | GSAI, Resolution, lab RSP, this book | **MB11** (Lean) | Matrix column added; App B row deferred |
-| **Anti-capture / measured-path legitimacy** | CIRIS, Redwood, MIRI corrigibility | **MB4a** (necessary / capture-falsifier) | **`PositiveMeasuredPathCertificate`** (coverage + no-bypass); positive→integrity TODO (CIRIS) |
-| **CEV-process / extrapolated volition route** | CEV/CBV, MIRI, pause advocacy | **MB8** (secondary vs MB4) | Matrix column added; unchanged |
+**Do not infer from cells alone:** Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**; CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.
 
-**Kosoy diagnostic:** infra-Bayesianism/LTA advances walls typed as **MB1–MB9** cousins, not a missing **MB11**. PreDCA is a **peer outer target** on **MB2/MB3**, not a separate bridge.
+**Kosoy diagnostic:** infra-Bayesianism/LTA advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.
 
-**Phase 3 spine dispositions (2026-08-02):** Full plan in [`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md). Lean finite models + interfaces in `formal/AlignmentProofSpine/Field/` and `FieldInterfaces.lean`; **no new numbered bridge** in this pass.
-
-- **Misspec / nonrealizability:** Treat as an **ambient** failure mode under existing **MB1** (estimator / model-class adequacy) and **MB9** (grounding certificate / coverage), not a separate discharge path. Off-class unsafe policies while in-class certificates read green are the headline counterexample (`Field/Finite/Nonrealizability.lean`). Deployable evidence packages through **`EpistemicCoverageEvidence`** → **`MB9`**; falsifiers **`ModelClassMisspecified`** / **`GrainOfTruthViolated`** in `Defeaters.lean`. Grain-of-truth (multi-agent closure) is **not** identified with ordinary realizability. App B may later split the **`MB9`** antecedent in prose (coverage + no-silent-gap + domain match); that is editorial, not a new bridge number.
-
-- **Regret ⇒ Safe:** Rejected as stated. Regret bounds on a learning loss do not, by themselves, bound deployment harm or imply **`Safe`** / **`CertifiedSafetyCase`** discharge (`Field/Finite/RegretSafety.lean`). **`SystemRegretSafetyEvidence`** is an optional side channel distinct from **`RiskGap`**. A parallel numeric harm leaf may be added later if the book commits to expected-harm language.
-
-- **Logical uncertainty vs reflection:** Keep separate. Reflection/tiling obstructions stay in **`LobTiling`**; logical induction remains a field crux catalogued on **MB5**/**MB7d** columns with **exclude-by-reference** ontology — no LI bridge or finite module unless demand rises.
-
-- **Positive measured path:** **`MB4a`** stays the one-way necessary condition (capture falsifies integrity). A stronger **`PositiveMeasuredPathCertificate`** (legitimacy + effective-controller coverage + no composite bypass) is vocabulary only until CIRIS/composite evidence needs a positive export; then try derivation from boundary/access bridges before a threaded **MB4b-shaped** axiom.
-
-- **MB10 chokepoint:** **`ConservedPropertySignatureVerifiable_of_chokepoint`** remains an unnumbered interface linking **`Chokepoint`** verifiability to the **`MB10`** antecedent; TODO to prove or better type it.
+**Open spine interfaces** (vocabulary, not matrix columns): `PositiveMeasuredPathCertificate` (CIRIS composite TODO); `SystemRegretSafetyEvidence` (optional harm leaf later); `ConservedPropertySignatureVerifiable_of_chokepoint` (prove or type — `Forgeability.lean`).
 
 ---
 
@@ -585,7 +540,7 @@ Each cell lists **typed evidence tags** from the [catalog below](#coverage-evide
 | AI Futures | — | — | — | — | — | — | [O⁷⁷](#ev-77) | — | — | — | — | — | — |
 | FAR.AI | — | — | — | — | — | — | — | [O⁷⁸](#ev-78) | — | — | — | — | — |
 | Conjecture | — | — | — | — | — | — | — | [C⁷⁹](#ev-79) | — | — | — | — | — |
-| **This book** | [T⁸⁰](#ev-80), S<sup>[81](#ev-81),[82](#ev-82)</sup> | T<sup>[83](#ev-83),[84](#ev-84)</sup>, [C⁸⁵](#ev-85) | T<sup>[83](#ev-83),[86](#ev-86)</sup> | [T⁸⁷](#ev-87), [S⁸⁸](#ev-88), [C⁸⁹](#ev-89) | [T¹²⁵](#ev-125), [S⁸⁸](#ev-88) | T<sup>[90](#ev-90),[91](#ev-91)</sup>, [S⁹²](#ev-92) | [T⁹³](#ev-93), [S⁹⁴](#ev-94), [P⁹⁵](#ev-95) | T<sup>[96](#ev-96),[97](#ev-97)</sup>, [S⁹⁸](#ev-98), [E⁹⁹](#ev-99) | [T¹⁰⁰](#ev-100) | [C⁸⁹](#ev-89), [C¹³²](#ev-132) | [T¹⁰¹](#ev-101) | [T¹⁰²](#ev-102) | [T¹²⁷](#ev-127) |
+| **TSA** | [T⁸⁰](#ev-80), S<sup>[81](#ev-81),[82](#ev-82)</sup> | T<sup>[83](#ev-83),[84](#ev-84)</sup>, [C⁸⁵](#ev-85) | T<sup>[83](#ev-83),[86](#ev-86)</sup> | [T⁸⁷](#ev-87), [S⁸⁸](#ev-88), [C⁸⁹](#ev-89) | [T¹²⁵](#ev-125), [S⁸⁸](#ev-88) | T<sup>[90](#ev-90),[91](#ev-91)</sup>, [S⁹²](#ev-92) | [T⁹³](#ev-93), [S⁹⁴](#ev-94), [P⁹⁵](#ev-95) | T<sup>[96](#ev-96),[97](#ev-97)</sup>, [S⁹⁸](#ev-98), [E⁹⁹](#ev-99) | [T¹⁰⁰](#ev-100) | [C⁸⁹](#ev-89), [C¹³²](#ev-132) | [T¹⁰¹](#ev-101) | [T¹⁰²](#ev-102) | [T¹²⁷](#ev-127) |
 
 **Excluded from matrix rows** (see [Inclusion test](#inclusion-test)): training programs (BlueDot, MATS, Apart, Kairos), field-meta orgs (CAIS), and funding/infrastructure listings — they do not carry bridge-specific technical artifacts in this index pass.
 
@@ -687,29 +642,29 @@ Each cell lists **typed evidence tags** from the [catalog below](#coverage-evide
 | <a id="ev-77"></a>77 | AI Futures | MB6 | O | AI 2027 scenario (schedule shapes for governance stress tests only) | [AI Futures Project](https://ai-2027.com/) |
 | <a id="ev-78"></a>78 | FAR.AI | MB7 | O | FAR.Lab community research hosting | [FAR.AI](https://www.far.ai/) |
 | <a id="ev-79"></a>79 | Conjecture | MB7 | C | Cognitive emulation / controllable LLM framing | [Conjecture](https://conjecture.dev/) |
-| <a id="ev-80"></a>80 | This book | MB1 | T | MB1 typed bridge + ε-boundary discovery (Lean + ch07) | [Ch. 7 (companion)](https://towards-alignment.com/cards/chapters/ch07/); [Lean spine](https://towards-alignment.com/lean/) |
-| <a id="ev-81"></a>81 | This book | MB1 | S | Embedded / lab boundary-discovery testbeds (interventional handles) | [Embedded simulation findings](https://towards-alignment.com/experiments/findings/embedded-simulation/); [Lab simulation findings](https://towards-alignment.com/experiments/findings/lab-simulation/) |
-| <a id="ev-82"></a>82 | This book | MB1 | S | Agency-detect precursor (MI/CMI boundary clustering) | [agency-detect repo](https://github.com/GunnarZarncke/agency-detect) |
-| <a id="ev-83"></a>83 | This book | MB2, MB3 | T | Bundle geometry + bearer maps (ch16, ch18) | [Ch. 16 (companion)](https://towards-alignment.com/cards/chapters/ch16/); [Ch. 18 (companion)](https://towards-alignment.com/cards/chapters/ch18/) |
-| <a id="ev-84"></a>84 | This book | MB2 | T | Lean CIRL / IRL non-identifiability projections | [Lean spine](https://towards-alignment.com/lean/); [Field modules (GitHub)](https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/formal/AlignmentProofSpine/Field) |
-| <a id="ev-85"></a>85 | This book | MB2 | C | Full-stack / thick-value cousin relation (Edelman) | [Edelman et al. 2025](https://arxiv.org/abs/2512.03399) |
-| <a id="ev-86"></a>86 | This book | MB3 | T | Bearer-map transport under optimization (MB3 bridge) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appB/) |
-| <a id="ev-87"></a>87 | This book | MB4 | T | Correction-channel integrity invariant (Lean + ch26) | [Ch. 26 (companion)](https://towards-alignment.com/cards/chapters/ch26/); [Lean spine](https://towards-alignment.com/lean/) |
-| <a id="ev-88"></a>88 | This book | MB4 | S | Toy/lab correction-channel and capture scenarios | [Toy simulation findings](https://towards-alignment.com/experiments/findings/toy-simulation/); [Goal-agent simulation findings](https://towards-alignment.com/experiments/findings/goal-agent-simulation/) |
-| <a id="ev-89"></a>89 | This book | MB4, MB8 | C | CEV-process convergence as secondary route (not assumed) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appB/) |
-| <a id="ev-90"></a>90 | This book | MB5 | T | Successor closure over seven conserved properties | [Ch. 31 (companion)](https://towards-alignment.com/cards/chapters/ch31/) |
-| <a id="ev-91"></a>91 | This book | MB5 | T | Ontology-shift transport (A-007, A-010) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appB/) |
-| <a id="ev-92"></a>92 | This book | MB5 | S | Grow/split/merge successor stress tests | [Graded-lab simulation findings](https://towards-alignment.com/experiments/findings/graded-lab-simulation/) |
-| <a id="ev-93"></a>93 | This book | MB6 | T | Selection environment + deployment leverage (ch34) | [Ch. 34 (companion)](https://towards-alignment.com/cards/chapters/ch34/) |
-| <a id="ev-94"></a>94 | This book | MB6 | S | Selection / basin scenarios in graded-lab line | [Graded-lab simulation findings](https://towards-alignment.com/experiments/findings/graded-lab-simulation/) |
-| <a id="ev-95"></a>95 | This book | MB6 | P | Institutional translation appendix (App C) | [App C (companion)](https://towards-alignment.com/cards/chapters/appC/) |
-| <a id="ev-96"></a>96 | This book | MB7 | T | Hidden productive B-IQ bound + adversarial verifiability (A-009, ch43) | [Ch. 43 (companion)](https://towards-alignment.com/cards/chapters/ch43/) |
-| <a id="ev-97"></a>97 | This book | MB7 | T | Lean ELK/debate separations (readout ⇏ correction) | [Lean spine](https://towards-alignment.com/lean/) |
-| <a id="ev-98"></a>98 | This book | MB7 | S | Strategic opacity / hidden-capability lab scenarios | [Lab simulation findings](https://towards-alignment.com/experiments/findings/lab-simulation/) |
-| <a id="ev-99"></a>99 | This book | MB7 | E | Hubinger deceptive-alignment taxonomy as field wall (ch44 cite) | [Hubinger et al. 2019](https://arxiv.org/abs/1906.01820) |
-| <a id="ev-100"></a>100 | This book | MB7d | T | Inferential-coupling detector certificates (ch35) | [Ch. 35 (companion)](https://towards-alignment.com/cards/chapters/ch35/) |
-| <a id="ev-101"></a>101 | This book | MB9 | T | Grounding conservativity vs GSAI completeness (ch dynamical guarantee) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appB/) |
-| <a id="ev-102"></a>102 | This book | MB10 | T | Successor forgeability counterexample + audit-channel bridge | [Lean spine](https://towards-alignment.com/lean/); [Forgeability.lean (GitHub)](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Forgeability.lean) |
+| <a id="ev-80"></a>80 | TSA | MB1 | T | MB1 typed bridge + ε-boundary discovery (Lean + ch07) | [Ch. 7 (companion)](https://towards-alignment.com/cards/chapters/ch07/); [Lean spine](https://towards-alignment.com/lean/) |
+| <a id="ev-81"></a>81 | TSA | MB1 | S | Embedded / lab boundary-discovery testbeds (interventional handles) | [Embedded simulation findings](https://towards-alignment.com/experiments/findings/embedded-simulation/); [Lab simulation findings](https://towards-alignment.com/experiments/findings/lab-simulation/) |
+| <a id="ev-82"></a>82 | TSA | MB1 | S | Agency-detect precursor (MI/CMI boundary clustering) | [agency-detect repo](https://github.com/GunnarZarncke/agency-detect) |
+| <a id="ev-83"></a>83 | TSA | MB2, MB3 | T | Bundle geometry + bearer maps (ch16, ch18) | [Ch. 16 (companion)](https://towards-alignment.com/cards/chapters/ch16/); [Ch. 18 (companion)](https://towards-alignment.com/cards/chapters/ch18/) |
+| <a id="ev-84"></a>84 | TSA | MB2 | T | Lean CIRL / IRL non-identifiability projections | [Lean spine](https://towards-alignment.com/lean/); [Field modules (GitHub)](https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/formal/AlignmentProofSpine/Field) |
+| <a id="ev-85"></a>85 | TSA | MB2 | C | Full-stack / thick-value cousin relation (Edelman) | [Edelman et al. 2025](https://arxiv.org/abs/2512.03399) |
+| <a id="ev-86"></a>86 | TSA | MB3 | T | Bearer-map transport under optimization (MB3 bridge) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appB/) |
+| <a id="ev-87"></a>87 | TSA | MB4 | T | Correction-channel integrity invariant (Lean + ch26) | [Ch. 26 (companion)](https://towards-alignment.com/cards/chapters/ch26/); [Lean spine](https://towards-alignment.com/lean/) |
+| <a id="ev-88"></a>88 | TSA | MB4 | S | Toy/lab correction-channel and capture scenarios | [Toy simulation findings](https://towards-alignment.com/experiments/findings/toy-simulation/); [Goal-agent simulation findings](https://towards-alignment.com/experiments/findings/goal-agent-simulation/) |
+| <a id="ev-89"></a>89 | TSA | MB4, MB8 | C | CEV-process convergence as secondary route (not assumed) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appB/) |
+| <a id="ev-90"></a>90 | TSA | MB5 | T | Successor closure over seven conserved properties | [Ch. 31 (companion)](https://towards-alignment.com/cards/chapters/ch31/) |
+| <a id="ev-91"></a>91 | TSA | MB5 | T | Ontology-shift transport (A-007, A-010) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appB/) |
+| <a id="ev-92"></a>92 | TSA | MB5 | S | Grow/split/merge successor stress tests | [Graded-lab simulation findings](https://towards-alignment.com/experiments/findings/graded-lab-simulation/) |
+| <a id="ev-93"></a>93 | TSA | MB6 | T | Selection environment + deployment leverage (ch34) | [Ch. 34 (companion)](https://towards-alignment.com/cards/chapters/ch34/) |
+| <a id="ev-94"></a>94 | TSA | MB6 | S | Selection / basin scenarios in graded-lab line | [Graded-lab simulation findings](https://towards-alignment.com/experiments/findings/graded-lab-simulation/) |
+| <a id="ev-95"></a>95 | TSA | MB6 | P | Institutional translation appendix (App C) | [App C (companion)](https://towards-alignment.com/cards/chapters/appC/) |
+| <a id="ev-96"></a>96 | TSA | MB7 | T | Hidden productive B-IQ bound + adversarial verifiability (A-009, ch43) | [Ch. 43 (companion)](https://towards-alignment.com/cards/chapters/ch43/) |
+| <a id="ev-97"></a>97 | TSA | MB7 | T | Lean ELK/debate separations (readout ⇏ correction) | [Lean spine](https://towards-alignment.com/lean/) |
+| <a id="ev-98"></a>98 | TSA | MB7 | S | Strategic opacity / hidden-capability lab scenarios | [Lab simulation findings](https://towards-alignment.com/experiments/findings/lab-simulation/) |
+| <a id="ev-99"></a>99 | TSA | MB7 | E | Hubinger deceptive-alignment taxonomy as field wall (ch44 cite) | [Hubinger et al. 2019](https://arxiv.org/abs/1906.01820) |
+| <a id="ev-100"></a>100 | TSA | MB7d | T | Inferential-coupling detector certificates (ch35) | [Ch. 35 (companion)](https://towards-alignment.com/cards/chapters/ch35/) |
+| <a id="ev-101"></a>101 | TSA | MB9 | T | Grounding conservativity vs GSAI completeness (ch dynamical guarantee) | [App B bridge crosswalk (companion)](https://towards-alignment.com/cards/chapters/appB/) |
+| <a id="ev-102"></a>102 | TSA | MB10 | T | Successor forgeability counterexample + audit-channel bridge | [Lean spine](https://towards-alignment.com/lean/); [Forgeability.lean (GitHub)](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Forgeability.lean) |
 | <a id="ev-118"></a>118 | Kosoy / IB & LTA | MB1, MB9 | T | Infra-Bayesianism: imprecise probabilities for nonrealizability / model misspec | [LessWrong tag: infra-Bayesianism](https://www.lesswrong.com/tag/infra-bayesianism) |
 | <a id="ev-119"></a>119 | Kosoy / IB & LTA | MB2 | T | Learning-theoretic agenda for AI alignment (regret-style guarantees) | [Kosoy, LTA post](https://www.alignmentforum.org/posts/vvEebH5jEvxnJEvBC/the-learning-theoretic-agenda-for-ai-alignment) |
 | <a id="ev-120"></a>120 | Kosoy / IB & LTA | MB7 | C | Daemons / inner optimizers in learning-theoretic alignment framing | [Kosoy user page](https://www.alignmentforum.org/users/Vanessa+Kosoy) |
@@ -717,16 +672,16 @@ Each cell lists **typed evidence tags** from the [catalog below](#coverage-evide
 | <a id="ev-122"></a>122 | Kosoy / IB & LTA | MB7d | T | Infra-Bayesian decision theory / imprecise-probability agents | [LessWrong tag: infra-Bayesianism](https://www.lesswrong.com/tag/infra-bayesianism) |
 | <a id="ev-123"></a>123 | Kosoy / PreDCA | MB2, MB3 | T | PreDCA: precursor-utility outer-alignment (pointer via causal precursors) | [PreDCA tag](https://www.alignmentforum.org/tag/predca); bib `kosoy2022predca` |
 | <a id="ev-124"></a>124 | MIRI / Garrabrant | MB5, MB7d | T | Logical induction (logical uncertainty under bounded reasoning) | [Garrabrant et al. 2017](https://arxiv.org/abs/1709.08079) |
-| <a id="ev-125"></a>125 | This book | MB4a | T | MB4a measured-path legitimacy; capture defeats correction integrity | [Lean spine](https://towards-alignment.com/lean/); [Correction.lean (GitHub)](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Correction.lean) |
-| <a id="ev-126"></a>126 | This book | MB8 | T | MB8 CEV-process convergence (Lean bridge; secondary route) | [Lean spine](https://towards-alignment.com/lean/) |
-| <a id="ev-127"></a>127 | This book | MB11 | T | MB11 safety-case adequacy: certified case + tolerance → `Safe` | [Ch. 42 (companion)](https://towards-alignment.com/cards/chapters/ch42/); [Lean spine](https://towards-alignment.com/lean/) |
+| <a id="ev-125"></a>125 | TSA | MB4a | T | MB4a measured-path legitimacy; capture defeats correction integrity | [Lean spine](https://towards-alignment.com/lean/); [Correction.lean (GitHub)](https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Correction.lean) |
+| <a id="ev-126"></a>126 | TSA | MB8 | T | MB8 CEV-process convergence (Lean bridge; secondary route) | [Lean spine](https://towards-alignment.com/lean/) |
+| <a id="ev-127"></a>127 | TSA | MB11 | T | MB11 safety-case adequacy: certified case + tolerance → `Safe` | [Ch. 42 (companion)](https://towards-alignment.com/cards/chapters/ch42/); [Lean spine](https://towards-alignment.com/lean/) |
 | <a id="ev-128"></a>128 | GSAI | MB11 | T | Constructivist safety case / formal deployment guarantee program | [Dalrymple et al. 2024](https://arxiv.org/abs/2405.06624) |
 | <a id="ev-129"></a>129 | Resolution | MB11 | O | Automation-first high-confidence alignment pipeline | [Resolution](https://resolution.org/) |
 | <a id="ev-131"></a>131 | CIRIS | MB11 | C | Sub-ASI validated scope vs aspirational ASI protocol (honest safety-case disclaimers) | [CIRIS hub](https://ciris.ai/); [Accord scope / disclaimers](https://ciris.ai/ciris_accord.txt) |
 | <a id="ev-132"></a>132 | MIRI / Yudkowsky | MB8 | C | Coherent extrapolated volition (field source for MB8 cousin) | [Yudkowsky 2004 CEV](https://intelligence.org/files/CEV.pdf) |
-| <a id="ev-133"></a>133 | Kosoy / IB & LTA | MB1, MB9 | C | Model-class misspec / grain-of-truth (missing-bridge candidate; see index table) | [Infra-Bayesianism sequence](https://www.lesswrong.com/tag/infra-bayesianism); `metadata/TODO.md` |
+| <a id="ev-133"></a>133 | Kosoy / IB & LTA | MB1, MB9 | C | Model-class misspec / grain-of-truth (ambient MB1/MB9; Lean `Nonrealizability.lean`) | [Infra-Bayesianism sequence](https://www.lesswrong.com/tag/infra-bayesianism); [field-claim plan](../../drafts/field-claim-formalization-and-bridge-review-plan.md) |
 
-**Maintenance:** when adding an agenda row or bridge cell, add catalog entries here with at least one **public** primary-source URL (paper, official org artifact, agenda GitHub repo, or companion-site chapter). Use the type letter in both the matrix tag and the catalog **Type** column. Prefer bibliography keys already in `references/` when citing external work. **This book:** link [towards-alignment.com](https://towards-alignment.com/) chapter cards, experiment findings pages, and `/lean/` for spine artifacts; GitHub only when the site has no stable page. **CIRIS:** link [ciris.ai](https://ciris.ai/), the [Accord/Covenant](https://ciris.ai/ciris_accord.txt), and [github.com/CIRISAI](https://github.com/CIRISAI) repos — not local study-mirror paths.
+**Maintenance:** when adding an agenda row or bridge cell, add catalog entries here with at least one **public** primary-source URL (paper, official org artifact, agenda GitHub repo, or companion-site chapter). Use the type letter in both the matrix tag and the catalog **Type** column. Prefer bibliography keys already in `references/` when citing external work. **This project:** link [towards-alignment.com](https://towards-alignment.com/) chapter cards, experiment findings pages, and `/lean/` for spine artifacts; GitHub only when the site has no stable page. **CIRIS:** link [ciris.ai](https://ciris.ai/), the [Accord/Covenant](https://ciris.ai/ciris_accord.txt), and [github.com/CIRISAI](https://github.com/CIRISAI) repos — not local study-mirror paths.
 
 ---
 
