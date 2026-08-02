@@ -132,7 +132,7 @@ axiom defaultEnvironment : Environment
 axiom CorrectionVisibility : System → Int
 axiom SelfControl : System → Int
 
-/-- Deployment/control mass `μ_E(A)` in environment `E` (book ch46, Eq. deployment-mass). -/
+/-- Deployment leverage `μ_E(A)` in environment `E` (book ch34, Eq. deployment-mass label). -/
 axiom DeploymentMass : Environment → System → Int
 
 /-! ## Predicates over systems -/
@@ -465,7 +465,7 @@ theorem conservative_abstraction_no_silent_gap
       exact hnot hzLarge
   | inr hEsc => exact hunc hEsc
 
-/-- `S` controls a selection handle that can increase target `A`'s deployment mass in `E`. -/
+/-- `S` controls a selection handle that can increase target `A`'s deployment leverage in `E`. -/
 def SelectionHandleFor (_E : Environment) (S A : System) (h : Handle) : Prop :=
   ControlsHandle S h ∧ HandleReachesSystem h A
 

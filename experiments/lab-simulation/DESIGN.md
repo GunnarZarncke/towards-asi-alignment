@@ -1133,7 +1133,7 @@ implemented — see `lab_sim/harness/d3_population.py`).
 
 First MB6a tier: `lab_sim/harness/d3_population.py` runs a generation
 loop over a population of `LabConfig` variants (pipeline spec × board/
-admin strictness × sampled goal weights), reallocates deployment mass
+admin strictness × sampled goal weights), reallocates deployment leverage
 toward higher deploy throughput, and reports correction-preserving mass
 share separately from mass-weighted oracle harm/severity. Battery:
 `run_d3_population.py`. No referee or `CODE_VERSION` change — harness

@@ -2,14 +2,14 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-01.
+Last updated: 2026-08-02.
 
 ---
 
 ## Open work (load-bearing)
 
 - **PredictorLoop Lean** — Finite model of closed forecast→deployment→world→score loops ⇒ discoverable `System`/boundary fragment. Manuscript strong-subsumption prose shipped (ch10/ch02/ch44); formalization TODO in `metadata/TODO.md` + `formal/README.md`. Log: `2026-08-01-affine-field-openness.md`.
-- **Terminology demotion follow-through (manuscript prose)** — Inter-agenda glossary source-backed pass **shipped**; manuscript App E / chapter demotion still open. Inventory: `drafts/glossary-term-audit.md`; thin glossary leftovers: `drafts/glossary-prose-pass/THIN.md`. Pointer: `metadata/TODO.md`.
+- **Terminology demotion follow-through (manuscript prose)** — v1.1 plain-first pass **shipped** (deployment environment / points of control outside ch34; **deployment leverage** retires deployment mass). Remaining: site concepts.yml parity, App E full sync with inter-agenda glossary, thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`). Inventory: `drafts/glossary-term-audit.md`. Pointer: `metadata/TODO.md`.
 - **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
 - **Conserved-property forgeability (MB10)** — finite counterexample in Lean; prose wired. Still open: non-enumerability of conserved set across capability jumps; toy red-team of audit forgeability. Pointer: `metadata/TODO.md`, `Forgeability.lean`.
@@ -28,6 +28,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Manuscript (2026-08-02):** v1.1 terminology demotion — plain-first `deployment environment` / points of control outside ch34; retire **deployment mass** → **deployment leverage**; ch10 anthropic capture cite fix. Log: `2026-08-02-glossary-demotion-pass.md`.
 - **Reference (2026-08-01):** Source-backed prose pass on inter-agenda glossary (152 headwords; Definition / why-not-same / tagged Cross-agenda). Batches in `drafts/glossary-prose-pass/`. Log: `2026-08-01-glossary-prose-pass.md`.
 - **Context (2026-08-01):** Field agenda index (32 agendas); inter-agenda glossary + anthropic taxonomy under `reference/field-agendas/`. Log: `2026-08-01-agenda-glossary-index.md`.
 - **Experiments (2026-08-01):** Indexed sibling repo [deployment-pipeline-simulator](https://github.com/GunnarZarncke/deployment-pipeline-simulator) as pipeline-lab / ET-4 methodological precursor (`DP-` findings in App. I). Log: `2026-08-01-deployment-pipeline-simulator-precursor.md`.

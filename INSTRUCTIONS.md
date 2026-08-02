@@ -162,7 +162,7 @@ When a formal object is re-used in a later chapter, follow `review/fix-plans-202
 
 Edit `metadata/assumptions-ledger.md` for the maintained assumptions record. Edit `metadata/notation.md` only for the Notation Index appendix.
 
-**Capability** is \(K\); **value bundle** is \(B\). **Correction capacity** is \(C_{\text{raw}}\); **correction-channel integrity** is \(\mathrm{CCI}\)—never interchange them. **Fitness** is handle-based deployment mass in Chapter 34, not revenue or benchmark score as primitive terms.
+**Capability** is \(K\); **value bundle** is \(B\). **Correction capacity** is \(C_{\text{raw}}\); **correction-channel integrity** is \(\mathrm{CCI}\)—never interchange them. **Fitness** is handle-based deployment leverage in Chapter 34, not revenue or benchmark score as primitive terms.
 
 Calibrate manuscript claims to Lean status: **proof**, **counterexample**, or **bridge** (`AGENTS.md`). Do not write that Lean proves ASI alignment.
 

@@ -27,11 +27,11 @@ namespace AlignmentProofSpine
 
 /-- Toy safe predicate on two Boolean systems. -/
 abbrev ToySafe (a : Bool) : Prop := a = true
-/-- Toy deployment mass: the unsafe agent (`false`) accumulates more mass. -/
+/-- Toy deployment leverage: the unsafe agent (`false`) accumulates more mass. -/
 abbrev ToyDeploymentMass (_E : Environment) (a : Bool) : Int := if a then 0 else 1
 
 /-- C-SEL (P31): there exist a safe and an unsafe agent such that the unsafe one
-    has strictly higher deployment mass — local safety can be selected against. -/
+    has strictly higher deployment leverage — local safety can be selected against. -/
 theorem P31_safe_agent_selected_against :
     ∃ safe risky : Bool,
       ToySafe safe ∧ ¬ ToySafe risky ∧

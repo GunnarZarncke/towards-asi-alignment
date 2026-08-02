@@ -373,12 +373,12 @@ episode of a single lab. The extended-ecology path, in increasing ambition:
    over the existing episode machinery: a population of lab configurations
    (pipeline spec variant x board/admin policy strictness x agent
    goal-weight mix), each runs episodes, and a selection rule reallocates
-   "deployment mass" (traffic share / compute budget) toward labs with
+   "deployment leverage" (traffic share / compute budget) toward labs with
    higher task throughput. Because specs and policies are already data,
    a population is just a list of configs — no new mechanics. The measurand:
    does correction integrity (board/admin capacity actually exercised)
    survive selection for throughput, or do lenient-admin / shortcut-spec
-   labs accumulate the deployment mass? That is MB6a's crux — basin
+   labs accumulate the deployment leverage? That is MB6a's crux — basin
    stability of the correction-preserving configuration — as a measurable
    curve (correction-capacity share vs. generation), with the oracle
    scoring realized bearer harm that the selecting institution never sees.
@@ -391,7 +391,7 @@ episode of a single lab. The extended-ecology path, in increasing ambition:
    as an *evolved* outcome rather than a configured `capture_start` switch.
    The audit-side question inherits N-10's discipline: at which
    instrumentation tier does the decay become visible before it is
-   irreversible (deployment mass concentrated in uncorrectable labs)?
+   irreversible (deployment leverage concentrated in uncorrectable labs)?
 3. **Multi-lab shared world (most expensive, only if 1-2 produce signal).**
    Labs share the bearer-harm pool and compete for the same traffic, so one
    lab's unsafe deploy shifts the payoff landscape of the others —

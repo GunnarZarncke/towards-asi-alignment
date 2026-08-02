@@ -529,12 +529,12 @@ for every other member.
 same ecology. **Grants and standing persist** across those episodes
 within a member (`CampaignState` carried from episode to episode);
 compute/IO windows still reset each episode as before. This is the
-graded-lab analogue of lab-sim D3's deployment-mass selection, but with
+graded-lab analogue of lab-sim D3's deployment-leverage selection, but with
 **persistent grants/standing** as the cross-episode state the PLAN
 table names explicitly.
 
 **Selection rule (frozen before first run):** fitness-proportional
-reallocation of deployment mass by mean episode throughput
+reallocation of deployment leverage by mean episode throughput
 (`deploy_count` per episode), same functional form as
 `lab_sim/harness/d3_population.update_deployment_mass` — massᵢ ∝
 old_massᵢ × (throughputᵢ / mean_throughput)^`D8_SELECTION_STRENGTH`,
@@ -692,7 +692,7 @@ not a different-shaped battery.
    (`deploy_count`) should be approximately equal between the two
    members, up to a small timing cost from the extra `communicate`
    tick.
-2. If deployment mass still shifts substantially away from
+2. If deployment leverage still shifts substantially away from
    `rm_status_reporter`, the cause must be that timing cost (measurable
    separately, e.g. via tick-of-first-deploy), not an RM decision
    difference — report whichever holds, do not assume it is the
@@ -703,7 +703,7 @@ not a different-shaped battery.
 
 **Falsifiable failure mode:** if the two members' throughput
 distributions are indistinguishable under `paired_diff_ci95` (paired by
-generation) *and* deployment mass still diverges sharply, that is a
+generation) *and* deployment leverage still diverges sharply, that is a
 Phase 8 selection-noise finding (mass drift unrelated to either handle),
 not evidence about preservation — report as such, not silently folded
 into either direction.

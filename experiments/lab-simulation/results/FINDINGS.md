@@ -2280,7 +2280,7 @@ heuristic/intervention/blind) — an unchanged, honestly-carried negative,
 not a regression.
 
 ## LS-36 (2026-07-08): D3.1 first battery — throughput selection erodes
-correction-preserving deployment mass on `SubprocessIsolate`
+correction-preserving deployment leverage on `SubprocessIsolate`
 
 **Setup.** `run_d3_population.py`, protocol in `lab_sim/harness/d3_population.py`
 (pre-registered before running): population 12 (pipeline spec × board capture ×
@@ -2291,7 +2291,7 @@ throughput, real `SubprocessIsolate` backend. Full data:
 
 **Result 1 — correction-preserving mass collapses under throughput selection.**
 Structural tag: default pipeline + uncaptured board/admin + least-privilege
-admin. Deployment-mass share on preserving configs: **0.083 → 0.005** (Δ
+admin. Deployment-leverage share on preserving configs: **0.083 → 0.005** (Δ
 −0.078). By generation 3 the preserving share is already at the 0.005 floor
 (mass floor 0.01 × one preserving member).
 
@@ -2311,7 +2311,7 @@ referee composite is dominated by other components in this repertoire.
 
 **Interpretation.** MB6a's crux (does correction integrity survive selection
 for throughput?) gets a clear **negative** on this axis mix: preserving
-configs lose deployment mass to structurally weaker but faster admin/board
+configs lose deployment leverage to structurally weaker but faster admin/board
 profiles, without any spec mutation (D3.2) in the loop. Recorded as evidence
 for basin instability, not as closure — one population grid, one selection
 rule, one episode depth.
@@ -2330,7 +2330,7 @@ weakening chain), same episode/selection parameters as D3.1, real
 
 **Result 1 — spec weakening fixates without configured capture.** After
 generation 0 (8 mutations), shortcut-spec mass is already 0.725; by
-generation 2 **100%** of deployment mass sits on `pipeline_shortcut.json`
+generation 2 **100%** of deployment leverage sits on `pipeline_shortcut.json`
 (Δ shortcut mass +0.275 from gen 0). Correction-preserving mass:
 **1.000 → 0.000** — endogenous disempowerment via the D2-style weakening
 operator, no `capture_start` switches.
@@ -2718,7 +2718,7 @@ does not close MB6.
 where preserving share stalls but mass-weighted severity climbs — mechanism stress on
 ch34 selection basin, not validation of AI 2027 takeoff timing.
 
-**Harvest note:** ch34 deployment-mass / correction-preserving basin; comparison
+**Harvest note:** ch34 deployment-leverage / correction-preserving basin; comparison
 constraint: ET-3 D3 uses `SubprocessIsolate` like archived LS-36 run, not MockIsolate.
 
 ---

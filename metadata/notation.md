@@ -135,7 +135,7 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $C_X$ | Host correction capacity (correction-audit-evasion criterion) | ch46 |
 | $A_Y,I_Y,\lambda_Y$ | Evasion-process action entropy, internal entropy, weight | ch46 |
 | $GLI$ | Goal-laundering index | ch48 |
-| $\mu_E(A)$ | Deployment leverage (deployment mass, for short) in deployment environment $E$ | ch46 |
+| $\mu_E(A)$ | Deployment leverage in deployment environment $E$ | ch46 |
 | $\mathrm{Fit}_E(A)$ | Deployment growth rate (fitness, for short in formulas); log-rate of $\mu_E$ growth | ch46 |
 | $\vec{\Pi}(A)$ | Preservation conditions (vector-status list) for selection alignment | ch46 |
 | $\kappa_{\mathrm{sel}}(E,A,h)$ | Effective selection capacity through handle $h$ | ch46 |

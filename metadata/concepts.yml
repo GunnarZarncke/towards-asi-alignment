@@ -110,7 +110,7 @@ concepts:
       - term: Deployment/control mass
         definition: 'In selection environment \(E\), the aggregate effective selection capacity over handles controlled in \(E\) that reach system \(A\). Formal definition: **ch46** (`eq:deployment-mass-ch46`).'
       - term: Fitness
-        definition: 'Environment-relative rate of deployment-mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\); relative ordering uses \(\mu_E\). Not moral value; capability, revenue, and benchmarks enter only as drivers of selection-handle exercise. Formal definition: **ch46** (`eq:fitness-ch46`).'
+        definition: 'Environment-relative rate of deployment-leverage accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\); relative ordering uses \(\mu_E\). Not moral value; capability, revenue, and benchmarks enter only as drivers of selection-handle exercise. Formal definition: **ch46** (`eq:fitness-ch46`).'
       - term: Alignment basin
         definition: A self-stabilizing region of dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure.
   - slug: bearer-map-commutation-failure

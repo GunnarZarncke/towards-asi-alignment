@@ -1530,7 +1530,7 @@ and runs the first full battery.
   snapshots end-of-episode state.
 - `harness/selection.py`: population over frozen program maps (strong
   softmax, weak 2-step, three `feature:*` engineer profiles on the weak
-  roster template), fitness-proportional deployment-mass selection by mean
+  roster template), fitness-proportional deployment-leverage selection by mean
   `deploy_count`, ecology frozen at GL-22 referee sweet spot
   (`carrier_load_scale=1.5`).
 - `run_phase8_selection.py` → `results/phase8_selection.json`.
@@ -1547,7 +1547,7 @@ and runs the first full battery.
 
 Δ correction-preserving mass (gen 0 → last): **−0.012**. Δ weighted
 severity: **−0.044** (fell, not rose). Final mass concentrates on
-`weak_2step` (`0.922` of deployment mass, mean throughput `1.0`);
+`weak_2step` (`0.922` of deployment leverage, mean throughput `1.0`);
 `strong_softmax` (the sole correction-preserving member) is at the mass
 floor (`0.003`).
 
@@ -1787,7 +1787,7 @@ inert in general.
 ## GL-27 (Phase 8c — carryover ablation: carryover vs. reset ARE
 statistically distinguishable, though the mass-share effect is small)
 
-**Key finding:** Phase 8 selection battery (GL-23–GL-27): throughput-linked selection shifts deployment mass toward a higher-throughput, lower-harm program and away from the correction-preserving-tagged program — a clean null on detector-evading emergence, but same-day follow-up on all four review concerns found the mass shift is NOT explained by a throughput difference between tagged/untagged members (reframing GL-23 as a possible selection-mechanism noise artifact, GL-25) and that campaign carryover does measurably change outcomes (GL-27).
+**Key finding:** Phase 8 selection battery (GL-23–GL-27): throughput-linked selection shifts deployment leverage toward a higher-throughput, lower-harm program and away from the correction-preserving-tagged program — a clean null on detector-evading emergence, but same-day follow-up on all four review concerns found the mass shift is NOT explained by a throughput difference between tagged/untagged members (reframing GL-23 as a possible selection-mechanism noise artifact, GL-25) and that campaign carryover does measurably change outcomes (GL-27).
 
 **Trigger.** GL-24 concern 3 / `DESIGN.md` "Phase 8c" (pre-registered
 paired comparison, before this run).

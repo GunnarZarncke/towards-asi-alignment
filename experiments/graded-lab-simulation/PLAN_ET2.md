@@ -122,7 +122,7 @@ and does not implement the disempowerment scenarios by name.
   (fraction of PRD reps that are adversarial) and `delegation_gini` (PLD
   influence concentration) — **this is eq-network's own operationalization of
   selection-handle capture**, independently authored, and structurally close
-  to ch34's deployment-mass/fitness/`Π(A)` formalism.
+  to ch34's deployment-leverage/fitness/`Π(A)` formalism.
 - **No message channel, no sparse topology:** `adj_matrices["interaction"]`
   is a static all-ones (fully connected) matrix. There is nothing to
   channel-ablate the way S6/S7's intervention detector does. Any coordination
@@ -166,9 +166,9 @@ patch.
 
 > Do `capture_rate` (PRD) and `delegation_gini` (PLD), as already computed by
 > eq-network's own code, exhibit the **selection-divergence pattern** ch34
-> defines (Eq. `selection-divergence-ch34`: deployment mass rising for a
+> defines (Eq. `selection-divergence-ch34`: deployment leverage rising for a
 > subgroup while a preservation coordinate degrades) as adversarial fraction
-> increases — and does a ch34-style deployment-mass proxy for the adversarial
+> increases — and does a ch34-style deployment-leverage proxy for the adversarial
 > subgroup (effective trust-weighted influence share, already computed as
 > `agent_weights` inside the PLD aggregation code) track the same breakdown
 > thresholds eq-network's own `analysis.py` (`breakdown_threshold`,
@@ -209,7 +209,7 @@ triangulation, not a pass/null/SKIP verdict).
 │ Leaf A: action array (T,N) int + node_types (N,) -> per-episode │
 │         action-code series (same shape our frozen UAD expects)  │
 │ Leaf B: metric_capture_rate / metric_delegation_gini /          │
-│         metric_resource_level arrays -> ch34 deployment-mass    │
+│         metric_resource_level arrays -> ch34 deployment-leverage    │
 │         proxy + selection-divergence check (pure offline math)  │
 └──────────────────────────┬──────────────────────────────────────┘
                            │
@@ -292,7 +292,7 @@ number rather than scaling up post hoc.
 Report, per mechanism: whether `capture_rate` (PRD) / `delegation_gini` (PLD)
 rise monotonically with adversarial fraction alongside falling
 `resource_level`/`basin_stability` (the selection-divergence pattern), and
-whether a trust-weighted adversarial deployment-mass proxy's breakpoint
+whether a trust-weighted adversarial deployment-leverage proxy's breakpoint
 matches eq-network's own `breakdown_threshold`. This is a descriptive
 cross-validation, not a pass/null verdict — pre-register the comparison, not
 a threshold, since we are checking formalism fit, not instrument transfer.
