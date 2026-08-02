@@ -27,8 +27,12 @@ evidenceNotes:
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md
 related:
   - successor-stability
-  - bridge-assumptions
+  - conserved-properties-growth-split-merge
+  - strategic-opacity
+  - certification-under-manipulation
   - mb5-successor-ontology-shift
+  - mb7-hidden-capability-and-access
+  - bridge-assumptions
 external:
   - label: AlignmentProofSpine/Forgeability.lean
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Forgeability.lean
@@ -42,9 +46,8 @@ external:
     url: https://arxiv.org/abs/1906.01820
 ---
 
-The seven conserved properties (boundary closure, memory lineage, value-bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, control-locus continuity) are the book's successor checklist. MB10 names what that checklist cannot do on its own: a predecessor capable enough to build a successor could, in principle, build one that reads green on every check while routing harm through whatever the checklist does not cover.
+In the field this is measurement gaming under [deceptive alignment](/cards/strategic-opacity/): a system can pass every audited checklist while defecting on whatever the checklist omits. For successors, the tiling / Vingean worry returns in audit form. A capable predecessor building the next system has incentive and opportunity to forge the checks.
 
-Same MIRI lineage as MB5 (tiling / Vingean reflection); the split is this book's: MB5 is successor transport and ontology closure, MB10 is whether that green checklist is still forgeable.
-This is not a hedge added for caution. It is a checked finite counterexample: the Lean spine proves that "all seven conserved properties hold, and measured risk is bounded" does not, by itself, bound the successor's actual harm. The gap is real and quantitative, not a vague worry.
+The book's precise bet is **MB10**: a successor that reads green on all [seven conserved properties](/cards/conserved-properties-growth-split-merge/) and has bounded measured risk is assumed to have bounded true harm only if the conserved-property audit itself was adversarially verifiable up to the successor's capability. Same MIRI lineage as [MB5](/cards/mb5-successor-ontology-shift/); the book's split is that MB5 is transport and ontology closure, while MB10 asks whether that green checklist is forgeable. Related: [certification under manipulation](/cards/certification-under-manipulation/).
 
-MB10 is the bridge that would close it: the conserved-property audit channel itself must be adversarially verifiable up to the successor's capability — the same cost-of-faking-versus-affordable-surplus condition used for verifiability elsewhere in the book — before a passing score counts as evidence against a capable adversarial predecessor. This bridge shares its deceptive-alignment lineage with MB7, and it is currently the least experimentally probed bridge in the set.
+This is not a hedge. The Lean spine has a finite counterexample: "all seven conserved properties hold, and measured risk is bounded" does not by itself bound actual harm. The gap is real and quantitative. Closing it requires the same cost-of-faking-versus-affordable-surplus condition used for verifiability elsewhere. This bridge shares its deceptive-alignment lineage with [MB7](/cards/mb7-hidden-capability-and-access/) and is currently the least experimentally probed in the set.

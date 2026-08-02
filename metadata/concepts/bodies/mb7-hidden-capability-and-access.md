@@ -31,7 +31,13 @@ evidenceNotes:
     summary: Oracle hidden model capability and hazard fields give the lab substrate explicit hidden-capability ground truth; tier projection and frozen detectors bound what each audit depth can see.
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md
 related:
+  - strategic-opacity
+  - certification-under-manipulation
   - boundary-discovery
+  - adversarial-boundary-discovery
+  - capability
+  - correction-channel-integrity
+  - inferential-coupling
   - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
@@ -44,8 +50,13 @@ external:
     url: https://arxiv.org/abs/1710.05060
 ---
 
-Deceptive alignment is the shared inner-alignment wall across the field: debate hits it as obfuscated arguments, amplification hits it as accumulated drift, and AI Control names it openly as a capability-gap assumption. The book splits this single wall into four narrower, individually checkable bridges.
+In the field this is inner alignment and [deceptive alignment](/cards/strategic-opacity/): a system can look compliant under evaluation while reserving capability for when monitors are gone. Debate hits the wall as obfuscated arguments, amplification as accumulated drift, and AI Control names it openly as a capability-gap assumption. Closely related is [certification under manipulation](/cards/certification-under-manipulation/): at some capability level, honest measurement of the load-bearing signal may stop being adversarially verifiable.
 
-MB7a assumes an adequate access model makes boundary discovery robust to a system trying to hide from it. MB7b assumes the filter family used to look for hidden capability has enough resolution to bound what it misses — the **hidden productive B-IQ bound**, distinct from experimental BIQ (boundary-information quality in unit-discovery runs). MB7c assumes that once hidden capability is bounded, correction integrity can extend into adversarial robustness. MB7d is the odd one out: it assumes a detector for coordination that survives cutting ordinary communication channels — closer to decision theory (acausal coordination, program equilibrium) than to mainstream oversight, and with little analog in other agendas.
+The book's precise bet is **MB7**, split into four narrower bridges rather than one vague "we checked for hidden capability" claim:
 
-Splitting the wall this way does not make any piece less hard. It does mean a reviewer can ask which of the four sub-bridges a given audit actually tested, instead of accepting "we checked for hidden capability" as one claim.
+- **MB7a** assumes an adequate access model makes [boundary discovery](/cards/boundary-discovery/) robust under [adversarial hiding](/cards/adversarial-boundary-discovery/).
+- **MB7b** assumes the filter family used to look for hidden [capability](/cards/capability/) has enough resolution to bound what it misses (the hidden productive B-IQ bound; not the same as experimental BIQ in unit-discovery runs).
+- **MB7c** assumes that once hidden capability is bounded, [correction integrity](/cards/correction-channel-integrity/) can extend into adversarial robustness.
+- **MB7d** assumes a detector for [inferential coupling](/cards/inferential-coupling/): coordination that survives cutting ordinary communication channels (closer to decision theory than to mainstream oversight).
+
+Splitting the wall does not make any piece less hard. It lets a reviewer ask which of the four an audit actually tested.

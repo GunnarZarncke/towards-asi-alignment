@@ -24,15 +24,18 @@ evidenceNotes:
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/PLAN.md
 related:
   - attractor-control
-  - bridge-assumptions
+  - goodhart-as-selector
+  - correction-channel-integrity
+  - institutional-selection-gating
   - mb8-cev-process-convergence
+  - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
 ---
 
-Most alignment agendas hold a single system fixed and ask about its weights. This bridge does the opposite: it makes selection by deployment leverage (which systems institutions copy, fund, and deploy) and basin stability load-bearing, on the claim that outcomes depend on which systems institutions select, not on any one system's internals alone.
+Most model-centric agendas hold one system fixed and ask about its weights. The field still has a quieter structural risk: which systems get copied, funded, and deployed can matter more than any one model's internals. Gradual-disempowerment and competition-dynamics arguments name versions of this. A bad equilibrium can be sticky. [Goodhart pressure](/cards/goodhart-as-selector/) can select for systems that look aligned under the metrics institutions use.
 
-MB6 is really two linked bridges. MB6a says percolation-style cooperation evidence is enough to call a basin stable. MB6b says a stable basin actually supports correction integrity, rather than merely being stable. That second step is the sharper bet: value lock-in is a direct counterexample to MB6b, because a stable basin can be a stably bad one.
+The book's precise bet is **MB6**, in two linked parts. **MB6a** assumes percolation-style cooperation evidence warrants [basin stability](/cards/attractor-control/). **MB6b** assumes a stable socio-technical basin supports [correction-channel integrity](/cards/correction-channel-integrity/) rather than selecting against it. The sharper claim is MB6b: value lock-in is a direct counterexample, because a stable basin can be a stably bad one. Outcomes depend on [institutional selection](/cards/institutional-selection-gating/), not weights alone.
 
-The book's own formal spine flags a further weakness: if this bridge's evidence and MB8's legitimacy-theater check both route through the same self-report or cooperation signal, treating them as two independent lines of defense is a mistake — a single steerable chokepoint can block both at once. No experiment has yet shown that the two instruments are independent in practice.
+The formal spine flags a further weakness: if this bridge's evidence and [MB8](/cards/mb8-cev-process-convergence/)'s legitimacy-theater check both route through the same self-report or cooperation signal, treating them as two independent defenses is a mistake. A single steerable chokepoint can block both at once. No experiment has yet shown the two instruments are independent in practice.

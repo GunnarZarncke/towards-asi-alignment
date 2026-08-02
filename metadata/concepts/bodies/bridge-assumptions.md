@@ -3,6 +3,8 @@ related:
   - what-not-claiming
   - evidence-and-uncertainty
   - boundary-discovery
+  - correction-channel-integrity
+  - strategic-opacity
   - mb1-boundary-estimator-soundness
   - mb2-bundle-identifiability
   - mb3-bearer-import
@@ -15,10 +17,8 @@ related:
   - mb10-successor-forgeability
 ---
 
-The book does not try to make every hard problem disappear by definition. It names the handoffs.
+Most alignment agendas rest on load-bearing assumptions that, if false, sink the program: that you can find the real controller, that you can tell what a system values, that correction still works under pressure, that a successor check means something. Those assumptions often live in a footnote ("we assume access to…"). The field already argues about the corresponding open problems under names like embedded agency, the pointing problem, corrigibility, deceptive alignment, and tiling.
 
-A bridge assumption is a place where the argument needs the world to cooperate. For example: that boundary discovery can identify the operative controller, that value-bundle measurements track something real enough, that correction channels can be measured, or that successor checks preserve what matters.
+A **bridge assumption** is this book's way of naming those handoffs instead of hiding them inside definitions. It is a place where the safety argument needs the world to cooperate, and where confidence should stay lower until measurement, governance, or field evidence makes the handoff reliable in a narrow deployment class.
 
-In the formal spine, these are the `MB1` to `MB10` bridges. Lean can check that certain conclusions follow if the bridges hold. It does not prove that real systems satisfy the bridges. Each bridge maps to a canonical open problem the wider alignment field already argues about — see the ten cards linked in the side panel for the field crux, the Lean axiom, and what the experiment suite has (and has not) shown about it.
-
-This distinction is useful because it marks where the open work lives and where confidence should be lower, instead of folding both into one confident-sounding claim.
+In the formal spine these are [MB1](/cards/mb1-boundary-estimator-soundness/) through [MB10](/cards/mb10-successor-forgeability/) (plus MB4a / MB11 on related cards). Lean can check that certain conclusions follow *if* the bridges hold. It does not prove that real systems satisfy them. Each bridge card below opens with the field crux in ordinary technical language, then states the precise book bet, with links into [concept cards](/badges/type/concept/) such as [boundary discovery](/cards/boundary-discovery/), [correction-channel integrity](/cards/correction-channel-integrity/), and [strategic opacity](/cards/strategic-opacity/). For the agenda × bridge map, see the [Field hub](/field/).

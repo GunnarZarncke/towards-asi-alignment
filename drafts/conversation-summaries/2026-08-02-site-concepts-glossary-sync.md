@@ -23,4 +23,4 @@ User asked to sync site `metadata/concepts.yml` with App E / inter-agenda glossa
 - `drafts/glossary-term-audit.md`
 
 ## Commits
-- (this session)
+- `6cdbdc82` Sync site concepts.yml with App E glossary and field homographs.

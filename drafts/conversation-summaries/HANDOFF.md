@@ -29,6 +29,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site (2026-08-02):** Bridge cards field-first — each MB1–MB10 (+ index) opens with field crux in ordinary technical language, then precise book bet, with concept-card links; summaries softened for Field-hub readers. Log: `2026-08-02-bridge-cards-field-first.md`.
 - **Companion site (2026-08-02):** Field hub at `/field/` — coverage matrix (MB columns → bridge cards), evidence catalog, 32 agenda cards; nav Field / Badges reorder; YAML source `reference/field-agendas/data/`. Log: `2026-08-02-site-field-hub-agendas.md`.
 - **Manuscript (2026-08-02):** Site `concepts.yml` synced with App E — glossaryTerms + CCI/MB6/strategic-opacity bodies; `sync:concepts`. Terminology demotion track complete. Log: `2026-08-02-site-concepts-glossary-sync.md`.
 - **Manuscript (2026-08-02):** App E operational glossary synced with inter-agenda glossary — homographs (CCI, selection, BIQ), new headwords (strategic opacity, ICI, adversarial verifiability, certification-under-manipulation, selection environment). Log: `2026-08-02-appE-glossary-sync.md`.

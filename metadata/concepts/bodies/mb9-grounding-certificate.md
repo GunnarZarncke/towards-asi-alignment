@@ -16,14 +16,16 @@ evidenceNotes:
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md
 related:
   - grounding-viability
+  - dynamical-guarantee
+  - correction-channel-integrity
   - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
 ---
 
-The Guaranteed-Safe/Open Agency program names the same open problem this bridge inherits: a formal specification and world model cannot enumerate every safety-relevant phenomenon, and a system will game whatever the spec omits. The book's answer is to demand conservativity instead of completeness — value-relevant change must move the checked abstraction or raise its uncertainty, rather than pass through silently.
+In the field this is specification and world-model coverage. You cannot enumerate every safety-relevant phenomenon, and a capable system will game whatever the formal spec omits. Guaranteed-Safe / Open Agency names the same wall: a safety case that assumes a complete world model is already making a coverage bet, whether or not it says so.
 
-MB9 is the assumption that a certificate of this conservative-abstraction property, in practice, actually warrants grounding viability in the deployment domain the system runs in. It is a coverage bet, not a coverage guarantee.
+The book's precise bet is **MB9**: a certified conservative abstraction is assumed to warrant [grounding viability](/cards/grounding-viability/) in the actual deployment domain. Instead of completeness, the book asks for conservativity: value-relevant change must move the checked abstraction or raise its uncertainty. No silent gaps. That feeds the broader [dynamical guarantee](/cards/dynamical-guarantee/) story: safety is a trajectory claim, not a snapshot.
 
-Its exact failure mode has a name in the experiment suite: the "silent gap." Light correction instrumentation can look fine while value-relevant state drifts in ways the audit never touches — the diagnostic evidence shows this happening in every light-handle trial and closing only once bearer-welfare tracing is added.
+Its exact failure mode in the experiment suite is the silent gap. Light [correction](/cards/correction-channel-integrity/) instrumentation can look fine while value-relevant state drifts in ways the audit never touches. Diagnostics show this in every light-handle trial, closing only once bearer-welfare tracing is added.

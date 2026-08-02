@@ -41,6 +41,8 @@ evidenceNotes:
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md
 related:
   - correction-channel-integrity
+  - anti-capture-correction-validity
+  - mb8-cev-process-convergence
   - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
@@ -51,8 +53,8 @@ external:
     url: https://intelligence.org/files/CEV.pdf
 ---
 
-No known utility function is stably corrigible, and shutdownability is anti-natural to expected-utility maximization. Who holds the correction authority — and whether their endorsement is genuine — is the manipulation crux this bridge names directly.
+In the field this is corrigibility and the off-switch problem. No known utility function is stably corrigible, and shutdownability fights expected-utility maximization. The harder version is legitimacy under manipulation: who holds the correction authority, and would their endorsement still count if they knew what the system knows? Shutdown buttons and interruptibility training are thinner slices of that wall.
 
-MB4 recasts corrigibility as a dynamical correction-channel invariant with explicit handle control, then adds the missing piece: the judge issuing correction must not be manipulated in a way that later invalidates their endorsement. Shutdown and interruptibility fall out as one-bit projections of this broader channel.
+The book's precise bet is **MB4**: [correction-channel integrity](/cards/correction-channel-integrity/) is assumed to require that the judge issuing correction is not manipulated in a way that invalidates later endorsement. Corrigibility becomes a dynamical, capture-resistant invariant with handle control ([anti-capture validity](/cards/anti-capture-correction-validity/)); shutdown and interruptibility fall out as one-bit projections. A secondary CEV-flavored route is [MB8](/cards/mb8-cev-process-convergence/); MB4 is the load-bearing path.
 
-This is the most heavily probed bridge in the experiment suite. Passive observation cannot certify it at all; a small amount of handle instrumentation gets most of the way; and even instrumented audits only partially catch milder capture. Reported acceptance and true uptake can diverge sharply, which is exactly the gap this bridge has to rule out.
+This is the most heavily probed bridge in the experiment suite. Passive observation cannot certify it; light handle instrumentation gets most of the way; milder capture still slips through. Reported acceptance and true uptake can diverge sharply. That gap is what this bridge has to rule out.

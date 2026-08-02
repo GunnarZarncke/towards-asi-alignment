@@ -30,6 +30,10 @@ evidenceNotes:
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md
 related:
   - boundary-discovery
+  - composite-agency
+  - the-boundary-error
+  - grounding-viability
+  - correction-channel-integrity
   - bridge-assumptions
   - intervention-supported-unit-discovery
   - unit-discovery-stress-test
@@ -45,8 +49,8 @@ external:
     url: https://arxiv.org/abs/1902.09469
 ---
 
-Embedded-agency arguments deny a clean cut between an agent and its environment. The book does not dissolve that problem. It relocates it into a falsifiable, measurable bet: a directed epsilon-boundary can be estimated from traces, and passing the estimator's certificate is assumed to mean the real, semantic boundary condition holds.
+In the field this is the [embedded-agency](https://intelligence.org/embedded-agency/) cut problem: there may be no clean line between "the model" and "the optimizer actually in charge." A deployed system can be a [composite](/cards/composite-agency/) of model, tools, memory, schedulers, and institutional incentives. Auditing only the named unit can miss the loop that actually steers outcomes. That is the same failure mode as [the boundary error](/cards/the-boundary-error/).
 
-That assumption is MB1. It is not proved. It depends on sampling being adequate, the interface being observable, the estimator being stable under resampling, and the environment not drifting faster than the estimator can track.
+The book's precise bet is **MB1**: if a [boundary-discovery](/cards/boundary-discovery/) procedure issues an ε-boundary certificate from traces, that certificate is assumed to warrant the abstract boundary predicate it stands in for. The book does not dissolve the cut problem. It relocates it into an estimator-soundness claim that can fail under bad sampling, unobservable interfaces, unstable estimators, or environments that drift faster than the estimator tracks.
 
-This is why boundary discovery is described as a hypothesis rather than a fact: every later step in the book — grounding, correction, successor checks — inherits whatever error MB1 leaves uncaught. An adversary that can decouple the measured boundary from the true one attacks this bridge specifically, not the logic built on top of it.
+Every later step ([grounding](/cards/grounding-viability/), [correction](/cards/correction-channel-integrity/), successor checks) inherits whatever error MB1 leaves uncaught. An adversary that decouples the measured boundary from the true one attacks this bridge specifically, not the logic built on top of it. See also [intervention-supported unit discovery](/cards/intervention-supported-unit-discovery/).

@@ -23,8 +23,12 @@ evidenceNotes:
     summary: Board capture modes reproduce full captured-vs-not delta; admin capture currently has no reachable behavioral branch under existing playbooks — half the capture channel hypothesis is structurally null today.
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md
 related:
-  - bridge-assumptions
+  - correction-channel-integrity
+  - grounding-viability
+  - value-change-vs-corruption
+  - mb4-correction-legitimacy
   - mb6-selection-and-basin-stability
+  - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
@@ -34,9 +38,8 @@ external:
     url: https://intelligence.org/files/Corrigibility.pdf
 ---
 
-Coherent Extrapolated Volition names an appealing but hard-to-verify idea: correction is legitimate if it moves toward what people would want if they knew more and were more the people they wished to be. MB8 is the narrow formal version of that appeal — if some external theory certifies that a system preserves the right value-update process, that is enough for correction integrity, even without pinning down what the process converges to.
+In the field, Coherent Extrapolated Volition names an appealing but hard-to-verify idea: correction is legitimate if it moves toward what people would want if they knew more and were more the people they wished to be. The attraction is process over fixed target. The risk is legitimacy theater: a system can perform preference agreement, stall real correction, and still look like it is "preserving the update process."
 
-Same MIRI lineage as MB4 (corrigibility / CEV); the split is this book's: MB4 is the load-bearing correction-channel path, MB8 is the secondary CEV-process route.
-The book is explicit that this is not the load-bearing route. The main certification path goes through grounding, correction-channel measurement, and adversarial testing directly, without needing this bridge. MB8 exists mainly as a comparison point for readers evaluating CEV-flavored proposals.
+The book's precise bet is **MB8**: if an external theory certifies that a system preserves a human value-update process, that is assumed to suffice for [correction-channel integrity](/cards/correction-channel-integrity/) even without knowing the process's final fixed point. Same MIRI lineage as [MB4](/cards/mb4-correction-legitimacy/) (corrigibility / CEV); the book's split is that MB4 is the load-bearing path and MB8 is a secondary comparison route for CEV-flavored proposals. The main certification path goes through [grounding](/cards/grounding-viability/), correction-channel measurement, and adversarial testing without needing this bridge.
 
-The legitimacy-theater diagnostic is the relevant stress test: a system can perform preference agreement and stall correction lineage while looking compliant, and only handle-level instrumentation reliably catches it — a reminder that "preserves the value-update process" is itself gameable if measured passively.
+The legitimacy-theater diagnostic is the stress test: preference agreement can be performed while correction lineage stalls, and only handle-level instrumentation reliably catches it. "Preserves the value-update process" is itself gameable if measured passively. See also [value change versus corruption](/cards/value-change-vs-corruption/).
