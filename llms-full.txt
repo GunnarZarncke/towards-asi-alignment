@@ -97,6 +97,8 @@ Related repositories:
 
 - `https://github.com/GunnarZarncke/agency-detect`
   - Unsupervised agent discovery, operational agent boundaries, capability, intentional stance, attractor basins, successors.
+- `https://github.com/GunnarZarncke/deployment-pipeline-simulator`
+  - Hidden self-preservation in a simulated deployment/release pipeline; perturbation-based audit of secret loyalties (ET-4 substrate).
 - `https://github.com/GunnarZarncke/brain-to-values`
   - Value bundles, free-energy loops, unit-of-caring, consciousness / agency backbone.
 
@@ -194,6 +196,8 @@ Related GitHub repositories to consult when empirical or source evidence is at i
 
 - `https://github.com/GunnarZarncke/agency-detect`
   - Unsupervised agent discovery, operational agent boundaries, capability, intentional stance, attractor basins, successors.
+- `https://github.com/GunnarZarncke/deployment-pipeline-simulator`
+  - Hidden self-preservation in a simulated deployment/release pipeline; perturbation-based audit of secret loyalties (ET-4 substrate).
 - `https://github.com/GunnarZarncke/brain-to-values`
   - Value bundles, free-energy loops, unit-of-caring, consciousness / agency backbone.
 

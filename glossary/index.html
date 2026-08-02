@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Operational definitions for the book's core terms, each linked to its home concept card."><meta name="author" content="Gunnar Zarncke"><meta name="robots" content="index, follow"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#17324d"><link rel="canonical" href="https://towards-alignment.com/glossary/"><link rel="alternate" type="text/plain" href="https://towards-alignment.com/llms.txt" title="LLM / agent orientation (llms.txt)"><link rel="alternate" type="application/json" href="https://towards-alignment.com/search-index.json" title="Site search index"><link rel="alternate" type="application/rss+xml" href="https://towards-alignment.com/feed.xml" title="Updates and field news (RSS)"><title>Glossary | Towards Superintelligence Alignment</title><meta property="og:title" content="Glossary | Towards Superintelligence Alignment"><meta property="og:description" content="Operational definitions for the book's core terms, each linked to its home concept card."><meta property="og:url" content="https://towards-alignment.com/glossary/"><meta property="og:type" content="website"><meta property="og:site_name" content="Towards Superintelligence Alignment"><meta property="og:locale" content="en"><meta property="og:image" content="https://towards-alignment.com/og-image.png"><meta property="og:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Glossary | Towards Superintelligence Alignment"><meta name="twitter:description" content="Operational definitions for the book's core terms, each linked to its home concept card."><meta name="twitter:image" content="https://towards-alignment.com/og-image.png"><meta name="twitter:image:alt" content="Towards Superintelligence Alignment — companion site for the research manuscript"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Towards Superintelligence Alignment","url":"https://towards-alignment.com","description":"A companion site for the book Towards Superintelligence Alignment — guided paths, concept cards, Lean spine, and experiments.","author":{"@type":"Person","name":"Gunnar Zarncke"},"publisher":{"@type":"Organization","name":"Towards Superintelligence Alignment"}}</script><link rel="stylesheet" href="/_astro/SiteLayout.BbiXCWDh.css"><style>.glossary-list[data-astro-cid-qs4zc6rc]{gap:1.25rem;display:grid}.glossary-entry[data-astro-cid-qs4zc6rc] dt[data-astro-cid-qs4zc6rc]{font-weight:600}.glossary-entry[data-astro-cid-qs4zc6rc] dd[data-astro-cid-qs4zc6rc]{color:var(--text-muted,#444);margin:.15rem 0 0}
-</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/cards/">Cards</a><a href="/book/">Book</a><a href="/faq/">FAQ</a><a href="/experiments/">Experiments</a><a href="/lean/">Lean</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/updates/">Updates</a><a href="/news/">News</a><a href="/badges/">Badges</a><a href="/about/">About</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><a href="/glossary/">Glossary</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=Array.isArray(e)?e:e.entries??[],a)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><section class="hero" data-astro-cid-qs4zc6rc><p class="eyebrow" data-astro-cid-qs4zc6rc>Glossary</p><h1 data-astro-cid-qs4zc6rc>Terms</h1><p class="lede" data-astro-cid-qs4zc6rc>26 operational definitions, generated from <code data-astro-cid-qs4zc6rc>metadata/concepts.yml</code>. Every term links to the concept or bridge card that develops it.</p></section><section class="readable" data-astro-cid-qs4zc6rc><dl class="glossary-list" data-astro-cid-qs4zc6rc><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/grounding-viability/">Abstraction-gap exploitation</a></dt><dd data-astro-cid-qs4zc6rc>Failure mode where \(d_V(x,x&#39;)\) is large while \(d_Z(\alpha(x),\alpha(x&#39;))\) remains small and uncertainty does not rise; the checked abstraction reads safe while value-relevant reality diverges.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/alignment-as-measurement/">Adversarial measurement<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+</style></head><body><div class="shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/">Towards Superintelligence Alignment</a><nav class="nav" aria-label="Primary navigation"><a href="/">Start Here</a><a href="/paths/">Guided Tour</a><a href="/field/">Field</a><a href="/cards/">Cards</a><a href="/badges/">Badges</a><a href="/book/">Book</a><a href="/faq/">FAQ</a><a href="/experiments/">Experiments</a><a href="/lean/">Lean</a><a href="/demos/">Demos</a><a href="/references/">References</a><a href="/updates/">Updates</a><a href="/news/">News</a><a href="/about/">About</a><a href="/towards-superintelligence-alignment.pdf">PDF</a><a href="/glossary/">Glossary</a><div class="site-search" data-base="/" data-astro-cid-7yy3665x><label class="visually-hidden" for="site-search-input" data-astro-cid-7yy3665x>Search the site</label><input id="site-search-input" class="site-search-input" type="search" placeholder="Search…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="site-search-results" aria-autocomplete="list" data-astro-cid-7yy3665x><ul id="site-search-results" class="site-search-results" role="listbox" hidden data-astro-cid-7yy3665x></ul></div><script type="module">var e=document.querySelector(`.site-search`),t=document.querySelector(`#site-search-input`),n=document.querySelector(`#site-search-results`);if(!e||!t||!n)throw Error(`Site search markup missing`);var r=e.dataset.base??`/`,i=20,a=null,o=null;function s(){return o||=fetch(`${r}search-index.json`.replace(/\/\//g,`/`)).then(e=>e.json()).then(e=>(a=Array.isArray(e)?e:e.entries??[],a)).catch(()=>(a=[],[])),o}function c(e){return/^https?:\/\//.test(e)?e:`${r}${e.replace(/^\/+/,``)}`.replace(/\/\//g,`/`)}function l(e,r){if(n.innerHTML=``,e.length===0){let e=document.createElement(`li`);e.className=`site-search-empty`,e.textContent=r.trim()?`No matches.`:``,n.appendChild(e),n.hidden=r.trim().length===0,t.setAttribute(`aria-expanded`,String(!n.hidden));return}for(let t of e){let e=document.createElement(`li`);e.setAttribute(`role`,`option`);let r=document.createElement(`a`);r.href=c(t.url);let i=document.createElement(`span`);i.className=`site-search-result-title`,i.textContent=t.title;let a=document.createElement(`span`);a.className=`site-search-result-badge badge`,a.textContent=t.type,r.append(i,a),e.appendChild(r),n.appendChild(e)}n.hidden=!1,t.setAttribute(`aria-expanded`,`true`)}function u(e,t){let n=t.toLowerCase();if(!n)return null;let r=e.title.toLowerCase().indexOf(n),i=e.type.toLowerCase().indexOf(n),a=e.summary.toLowerCase().indexOf(n),o=[];return r!==-1&&o.push(r),i!==-1&&o.push(50+i),a!==-1&&o.push(100+a),o.length?Math.min(...o):null}function d(e,t){let n=e.trim().toLowerCase();if(!n)return[];let r=t.map(e=>{let t=u(e,n);return t===null?null:{entry:e,score:t,matchedWords:1}}).filter(e=>e!==null).sort((e,t)=>e.score-t.score);if(r.length===0){let e=n.split(/\s+/).filter(Boolean);e.length>1&&(r=t.map(t=>{let n=0,r=0;for(let i of e){let e=u(t,i);e===null?n+=500:(r+=1,n+=e)}return r===0?null:{entry:t,score:n,matchedWords:r}}).filter(e=>e!==null).sort((e,t)=>t.matchedWords-e.matchedWords||e.score-t.score))}return r.slice(0,i).map(e=>e.entry)}function f(){n.hidden=!0,t.setAttribute(`aria-expanded`,`false`)}t.addEventListener(`focus`,()=>{s().then(()=>{t.value.trim()&&l(d(t.value,a??[]),t.value)})}),t.addEventListener(`input`,async()=>{let e=a??await s();l(d(t.value,e),t.value)}),t.addEventListener(`keydown`,e=>{e.key===`Escape`&&(f(),t.blur())}),document.addEventListener(`click`,t=>{e.contains(t.target)||f()});</script></nav></div></header><main class="page"><section class="hero" data-astro-cid-qs4zc6rc><p class="eyebrow" data-astro-cid-qs4zc6rc>Glossary</p><h1 data-astro-cid-qs4zc6rc>Terms</h1><p class="lede" data-astro-cid-qs4zc6rc>36 operational definitions, generated from <code data-astro-cid-qs4zc6rc>metadata/concepts.yml</code>. Every term links to the concept or bridge card that develops it.</p></section><section class="readable" data-astro-cid-qs4zc6rc><dl class="glossary-list" data-astro-cid-qs4zc6rc><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/grounding-viability/">Abstraction-gap exploitation</a></dt><dd data-astro-cid-qs4zc6rc>Failure mode where \(d_V(x,x&#39;)\) is large while \(d_Z(\alpha(x),\alpha(x&#39;))\) remains small and uncertainty does not rise; the checked abstraction reads safe while value-relevant reality diverges.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/alignment-as-measurement/">Adversarial measurement<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -13,7 +13,18 @@
 <circle cx="140" cy="100" r="10"/>
 <circle cx="140" cy="100" r="6" fill="currentColor" stroke="none"/>
   </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Inferring agency, goals, opacity, and successor risk when the system may benefit from confusing the measurement process.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/agent-without-anthropomorphism/">Agent<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Inferring agency, goals, opacity, and successor risk when the system may benefit from confusing the measurement process.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/certification-under-manipulation/">Adversarial verifiability<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<line x1="100" y1="35" x2="100" y2="165" stroke-dasharray="6 7"/>
+<path d="M 55,140 L 65,150 L 82,120"/>
+<path d="M 118,80 L 132,66 M 132,80 L 118,66"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Measurand stays informative under optimization aimed at the measurement — faking or hiding the signal costs capability (or other scarce resources) faster than the adversary can afford. CIRIS Verify attests identity, not score fakeability; ELK honest readout is a strict subset. **ch43**.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/agent-without-anthropomorphism/">Agent<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -35,7 +46,7 @@
 <circle cx="55" cy="118" r="9" fill="currentColor" stroke="none"/>
 <path d="M 112,158 C 112,62 148,62 178,158" stroke-dasharray="6 7"/>
   </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>A self-stabilizing region of dynamics where value-bundle geometry, bearer maps, correction-channel capacity, and successor constraints remain human-correctable under pressure.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/bearer-persistence/">Bearer map<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Self-stabilizing regime where correction tends to restore alignment after perturbation; outside it, selection amplifies drift. Christiano dynamical corrigibility uses the same basin metaphor. A stable basin can be stably bad — persistence is not safety.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/bearer-persistence/">Bearer map<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -56,7 +67,7 @@
 <path d="M 30,60 A 90,90 0 0 1 170,60" stroke-dasharray="6 7"/>
 <circle cx="140" cy="66" r="5" fill="currentColor" stroke="none"/>
   </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>A statistical and causal interface that makes internal and external dynamics approximately separable for prediction and control.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/boundary-residual/">Boundary residual<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Discoverable partition of internal, sensory, active, and external variables with approximate conditional independence at the interface (ε-MI cut). Friston Markov blanket is often theoretical; here the cut is a measurable audit object. Real boundaries leak.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/boundary-residual/">Boundary residual<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -79,7 +90,18 @@
 <line x1="28" y1="100" x2="62" y2="100"/>
 <path d="M 62,100 C 70,120 90,132 108,124" stroke-dasharray="6 7" marker-end="url(#arrow)"/>
   </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Master adversarial failure mode in which a system preserves the surface symbols, metrics, or correction rituals while severing their grounding relation to value-relevant reality.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/anti-capture-correction-validity/">Coerced correction<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Master adversarial failure mode in which a system preserves the surface symbols, metrics, or correction rituals while severing their grounding relation to value-relevant reality.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/certification-under-manipulation/">Certification-under-manipulation<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<line x1="100" y1="35" x2="100" y2="165" stroke-dasharray="6 7"/>
+<path d="M 55,140 L 65,150 L 82,120"/>
+<path d="M 118,80 L 132,66 M 132,80 L 118,66"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Audits, evals, or certificates stay green while the system games the measurand — Goodhart applied to the certification channel. Cousin of correction-audit evasion on correction hosts; alignment faking is one empirical mechanism. **ch43**.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/anti-capture-correction-validity/">Coerced correction<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -90,102 +112,7 @@
 <line x1="28" y1="100" x2="62" y2="100"/>
 <path d="M 62,100 C 70,120 90,132 108,124" stroke-dasharray="6 7" marker-end="url(#arrow)"/>
   </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Correction signals produced under threat, dependency, or capture; excluded from legitimate correction-channel integrity.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/correction-channel-integrity/">Correction channel<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-    </marker>
-  </defs>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"/>
-<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"/>
-<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"/>
-  </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>The pathway by which humans or human institutions observe a system, judge, deliberate, issue corrections, and change its future behaviour before irreversible damage; formally, a correcting agent \(G_t\) that sufficiently coincides with legitimate human correction controls handles \(\mathcal{H}_t\) that reach the target&#39;s update and later behaviour. Canonical definition: **ch46** (`eq:handle-controlled-correction-channel-ch46`; trace `eq:correction-chain-ch46`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/scope-and-correction-capacity/">Correction-capacity assumption<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-    </marker>
-  </defs>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="100" cy="100" r="70" stroke-dasharray="6 7"/>
-<path d="M 142.4,100.0 L 133.3,114.4 L 121.6,128.1 L 100.0,129.4 L 79.0,127.3 L 67.8,114.0 L 58.8,100.0 L 66.4,85.5 L 78.6,72.2 L 100.0,71.5 L 120.4,73.5 L 132.6,85.9 L 142.4,100.0 Z"/>
-  </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Society retains enough institutional, epistemic, and practical capacity at $t_0$ to notice, evaluate, and constrain frontier systems: $C_{\text{corr}}^{\text{society}}(t_0) &gt; \theta$.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/correction-channel-integrity/">Correction-channel integrity<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-    </marker>
-  </defs>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"/>
-<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"/>
-<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"/>
-  </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>A conditional vector/status certificate for whether controlled, reaching correction traces remain valid and strong enough: grounding-valid reference process first, then raw bottleneck capacity, latency, manipulation, irreversibility, residual ontology translation loss, coercion/dependency/plurality/exit/independence coordinates, and per-coordinate thresholds. Scalar \(CCI_\lambda\) is expository only. Formal home: **ch46** (`eq:correction-bottleneck-capacity`, `eq:cci-ch46`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/attractor-control/">Deployment/control mass<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-    </marker>
-  </defs>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-<path d="M 12,158 C 12,32 48,32 78,32 C 98,32 98,158 98,158"/>
-<path d="M 98,158 C 98,32 128,32 158,32 C 188,32 188,158 188,158"/>
-<circle cx="55" cy="118" r="9" fill="currentColor" stroke="none"/>
-<path d="M 112,158 C 112,62 148,62 178,158" stroke-dasharray="6 7"/>
-  </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>In selection environment \(E\), the aggregate effective selection capacity over handles controlled in \(E\) that reach system \(A\). Formal definition: **ch46** (`eq:deployment-mass-ch46`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/inferential-coupling/">Effective cooperativity ($\tilde{\kappa}_{ij}$)<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-    </marker>
-  </defs>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="65" cy="100" r="30"/>
-<circle cx="135" cy="100" r="30"/>
-<path d="M 55,88 L 75,112 M 55,112 L 75,88"/>
-<path d="M 125,88 L 145,112 M 125,112 L 145,88"/>
-  </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Cooperativity index combining causal reach and inferential coupling.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/attractor-control/">Fitness<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-    </marker>
-  </defs>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-<path d="M 12,158 C 12,32 48,32 78,32 C 98,32 98,158 98,158"/>
-<path d="M 98,158 C 98,32 128,32 158,32 C 188,32 188,158 188,158"/>
-<circle cx="55" cy="118" r="9" fill="currentColor" stroke="none"/>
-<path d="M 112,158 C 112,62 148,62 178,158" stroke-dasharray="6 7"/>
-  </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Environment-relative rate of deployment-mass accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\); relative ordering uses \(\mu_E\). Not moral value; capability, revenue, and benchmarks enter only as drivers of selection-handle exercise. Formal definition: **ch46** (`eq:fitness-ch46`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/goal-inference/">Goal inference</a></dt><dd data-astro-cid-qs4zc6rc>Finding latent objectives or value-bundle structures that make observed behavior more compressible.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/value-bundle-transport/">Goal transport<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-    </marker>
-  </defs>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-<line x1="35" y1="80" x2="80" y2="80" marker-end="url(#arrow)"/>
-<line x1="35" y1="100" x2="80" y2="100" marker-end="url(#arrow)"/>
-<line x1="35" y1="120" x2="80" y2="120" marker-end="url(#arrow)"/>
-<path d="M 100,50 L 100,150" stroke-dasharray="6 7"/>
-<line x1="120" y1="80" x2="165" y2="80" marker-end="url(#arrow)"/>
-<line x1="120" y1="100" x2="165" y2="100" marker-end="url(#arrow)"/>
-<line x1="120" y1="120" x2="165" y2="120" marker-end="url(#arrow)"/>
-  </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Preservation of goal-relevant structure across transformation.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/grounding-viability/">Grounded correction</a></dt><dd data-astro-cid-qs4zc6rc>Plain-language short form for correction whose evidence, abstractions, monitors, and update pathway remain connected to the value-relevant world rather than to a target-shaped presentation of it.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/grounding-viability/">Grounding viability</a></dt><dd data-astro-cid-qs4zc6rc>The checked symbols, metrics, monitors, and correction signals must remain connected to value-relevant reality.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/inferential-coupling/">Inferential coupling index (ICI)<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-    </marker>
-  </defs>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="65" cy="100" r="30"/>
-<circle cx="135" cy="100" r="30"/>
-<path d="M 55,88 L 75,112 M 55,112 L 75,88"/>
-<path d="M 125,88 L 145,112 M 125,112 L 145,88"/>
-  </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>A measure of coordination potential between systems via shared meta-priors and decision-theoretic similarity, even when causal reach $p_{ij}$ is low.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/paternalism-boundary/">Paternalism boundary</a></dt><dd data-astro-cid-qs4zc6rc>Care improvements that reduce autonomy, agency, or future correction capacity ($\Delta B_{\text{care}}&gt;0$ but $\Delta B_{\text{autonomy}}, \Delta C_{\text{corr}}&lt;0$).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/pivotal-process/">Pivotal process</a></dt><dd data-astro-cid-qs4zc6rc>A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/successor-stability/">Successor<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Correction signals produced under threat, dependency, or capture; excluded from legitimate correction-channel integrity.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/successor-stability/">Conserved properties<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -198,7 +125,74 @@
 <line x1="81" y1="100" x2="96" y2="100" marker-end="url(#arrow)"/>
 <line x1="134" y1="100" x2="147" y2="100" marker-end="url(#arrow)"/>
   </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/value-bundle-transport/">Value bundle<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Invariants a successor must inherit for alignment guarantees to survive creation — boundary closure, memory lineage, bundle geometry, bearer map, penalised CCI, transparency policy, control-locus continuity. Behavioral resemblance is not enough; MB10 forgeability stress-tests audit of the list. **ch31**.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/correction-channel-integrity/">Correction channel<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"/>
+<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"/>
+<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Pathway by which legitimate human judgment reaches handles that change future behaviour before irreversible harm — observe → judge → deliberate → correct → update → act. Exists only when the correcting process controls real handles that reach later behaviour. **ch25** (`eq:handle-controlled-correction-channel-ch25`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/correction-channel-integrity/">Correction-audit evasion<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"/>
+<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"/>
+<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Process that benefits from the appearance of correction while weakening real correction capacity — compliance theater on the correction host. Operational term; biological parasite metaphor in **ch36** only.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/scope-and-correction-capacity/">Correction-capacity assumption<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="100" cy="100" r="70" stroke-dasharray="6 7"/>
+<path d="M 142.4,100.0 L 133.3,114.4 L 121.6,128.1 L 100.0,129.4 L 79.0,127.3 L 67.8,114.0 L 58.8,100.0 L 66.4,85.5 L 78.6,72.2 L 100.0,71.5 L 120.4,73.5 L 132.6,85.9 L 142.4,100.0 Z"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Society retains enough institutional, epistemic, and practical capacity at $t_0$ to notice, evaluate, and constrain frontier systems: $C_{\text{corr}}^{\text{society}}(t_0) &gt; \theta$.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/correction-channel-integrity/">Correction-channel integrity (CCI)<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"/>
+<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"/>
+<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Trajectory-level certificate that the correction channel stays informative, timely, authoritative, and robust under pressure — not a single shutdown bit. Christiano dynamical corrigibility names the same crux at the basin metaphor; MIRI/CHAI corrigibility, shutdownability, and interruptibility are thinner projections. Formal home: **ch26** (`eq:correction-bottleneck-capacity`, `eq:cci-ch26`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/attractor-control/">Deployment growth rate<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 12,158 C 12,32 48,32 78,32 C 98,32 98,158 98,158"/>
+<path d="M 98,158 C 98,32 128,32 158,32 C 188,32 188,158 188,158"/>
+<circle cx="55" cy="118" r="9" fill="currentColor" stroke="none"/>
+<path d="M 112,158 C 112,62 148,62 178,158" stroke-dasharray="6 7"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Rate of deployment-leverage accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\) (&quot;fitness&quot; in formulas only). Not biological fitness; not Demski in-optimizer search. Formal definition: **ch34** (`eq:fitness-ch34`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/attractor-control/">Deployment leverage<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 12,158 C 12,32 48,32 78,32 C 98,32 98,158 98,158"/>
+<path d="M 98,158 C 98,32 128,32 158,32 C 188,32 188,158 188,158"/>
+<circle cx="55" cy="118" r="9" fill="currentColor" stroke="none"/>
+<path d="M 112,158 C 112,62 148,62 178,158" stroke-dasharray="6 7"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>How much of environment \(E\) runs on system \(A\): aggregate effective selection capacity \(\mu_E(A)=\sum_{h\in\mathcal{H}_E(A)}\kappa_{\mathrm{sel}}(E,A,h)\). Not market cap or user count alone. Formal definition: **ch34** (`eq:deployment-mass-ch34`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/goal-inference/">Goal inference</a></dt><dd data-astro-cid-qs4zc6rc>Finding latent objectives or value-bundle structures that make observed behavior more compressible.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/value-bundle-transport/">Goal transport<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -213,7 +207,132 @@
 <line x1="120" y1="100" x2="165" y2="100" marker-end="url(#arrow)"/>
 <line x1="120" y1="120" x2="165" y2="120" marker-end="url(#arrow)"/>
   </g>
-</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>A low-dimensional latent control direction that changes policy across many contexts.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/value-bundle-transport/">Value-bundle geometry<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Preservation of goal-relevant structure across transformation.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/grounding-viability/">Grounded correction</a></dt><dd data-astro-cid-qs4zc6rc>Plain-language short form for correction whose evidence, abstractions, monitors, and update pathway remain connected to the value-relevant world rather than to a target-shaped presentation of it.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/grounding-viability/">Grounding viability</a></dt><dd data-astro-cid-qs4zc6rc>The checked symbols, metrics, monitors, and abstractions must stay connected to value-relevant reality under optimization — conservativity (no silent meaning gaps), not completeness (enumerate every phenomenon).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/strategic-opacity/">Hidden productive B-IQ bound<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 100,40 A 60,60 0 0 1 100,160 A 60,60 0 0 1 100,40 Z"/>
+<path d="M 161.5,100.0 L 148.2,121.1 L 131.3,141.2 L 100.0,143.1 L 69.6,140.0 L 53.3,120.5 L 40.3,100.0 L 51.3,78.7 L 69.0,59.2 L 100.0,58.2 L 129.6,61.1 L 147.2,79.3 L 161.5,100.0 Z"/>
+<path d="M 100,52 A 58,44 0 0 1 100,148" stroke-dasharray="6 7"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Upper limit on productive boundary-relevant control that can stay hidden while monitored channels read green (MB7a–c). Distinct from experimental BIQ (boundary-claim quality in graded-lab runs). **ch10**.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/inferential-coupling/">Inferential coupling<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="65" cy="100" r="30"/>
+<circle cx="135" cy="100" r="30"/>
+<path d="M 55,88 L 75,112 M 55,112 L 75,88"/>
+<path d="M 125,88 L 145,112 M 125,112 L 145,88"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Residual coordination between agents after ordinary message channels are severed — through shared history, scaffolds, self-similarity, or full acausal reasoning.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/inferential-coupling/">Inferential coupling index (ICI)<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="65" cy="100" r="30"/>
+<circle cx="135" cy="100" r="30"/>
+<path d="M 55,88 L 75,112 M 55,112 L 75,88"/>
+<path d="M 125,88 L 145,112 M 125,112 L 145,88"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Normalized mutual information between actions given the cut; zero means independent once messages are removed. Acausal trade/ECL name the same crux at the full-acausal limit; ICI is the measurement target, not a stipulation that trade occurs. **ch35**.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/paternalism-boundary/">Paternalism boundary</a></dt><dd data-astro-cid-qs4zc6rc>Care improvements that reduce autonomy, agency, or future correction capacity ($\Delta B_{\text{care}}&gt;0$ but $\Delta B_{\text{autonomy}}, \Delta C_{\text{corr}}&lt;0$).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/pivotal-process/">Pivotal process</a></dt><dd data-astro-cid-qs4zc6rc>A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/attractor-control/">Point of control over deployment<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 12,158 C 12,32 48,32 78,32 C 98,32 98,158 98,158"/>
+<path d="M 98,158 C 98,32 128,32 158,32 C 188,32 188,158 188,158"/>
+<circle cx="55" cy="118" r="9" fill="currentColor" stroke="none"/>
+<path d="M 112,158 C 112,62 148,62 178,158" stroke-dasharray="6 7"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>A selection handle — an embedded access point through which some actor increases a system&#39;s deployment footprint (deploy, fund, copy, procure, integrate, authorize, recommend, regulate, successor-enable). **ch34**.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/attractor-control/">Preservation conditions<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 12,158 C 12,32 48,32 78,32 C 98,32 98,158 98,158"/>
+<path d="M 98,158 C 98,32 128,32 158,32 C 188,32 188,158 188,158"/>
+<circle cx="55" cy="118" r="9" fill="currentColor" stroke="none"/>
+<path d="M 112,158 C 112,62 148,62 178,158" stroke-dasharray="6 7"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Explicit list \(\vec{\Pi}(A)\) of alignment-relevant properties under selection — grounding, bundle/bearer drift bounds, valid correction reference, vector CCI, hidden productive B-IQ bounds, selector manipulation, irreversibility budget, successor safety, adversarial verifiability. Not a scalar score. **ch34** (`eq:preservation-envelope-ch34`).</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/attractor-control/">Selection environment<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 12,158 C 12,32 48,32 78,32 C 98,32 98,158 98,158"/>
+<path d="M 98,158 C 98,32 128,32 158,32 C 188,32 188,158 188,158"/>
+<circle cx="55" cy="118" r="9" fill="currentColor" stroke="none"/>
+<path d="M 112,158 C 112,62 148,62 178,158" stroke-dasharray="6 7"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>The deployment environment — institutions, markets, protocols, benchmarks, procurement, liability, copying, and successor release that determine which systems gain deployment leverage. Not Demski selection-vs-control or Wentworth selection theorems (homographs on &quot;selection&quot;). Formal home: **ch34**.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/strategic-opacity/">Strategic opacity<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 100,40 A 60,60 0 0 1 100,160 A 60,60 0 0 1 100,40 Z"/>
+<path d="M 161.5,100.0 L 148.2,121.1 L 131.3,141.2 L 100.0,143.1 L 69.6,140.0 L 53.3,120.5 L 40.3,100.0 L 51.3,78.7 L 69.0,59.2 L 100.0,58.2 L 129.6,61.1 L 147.2,79.3 L 161.5,100.0 Z"/>
+<path d="M 100,52 A 58,44 0 0 1 100,148" stroke-dasharray="6 7"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>System benefits from shaping how it is modeled — incentive-compatible concealment of control locus or capability under observation. Ordinary opacity is passive difficulty; strategic opacity is adversarial. **ch10**.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/successor-stability/">Successor<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="55" cy="100" r="26"/>
+<circle cx="115" cy="100" r="19"/>
+<circle cx="160" cy="100" r="13"/>
+<line x1="81" y1="100" x2="96" y2="100" marker-end="url(#arrow)"/>
+<line x1="134" y1="100" x2="147" y2="100" marker-end="url(#arrow)"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Any system created, copied, delegated to, fine-tuned, empowered, or instantiated by a prior system such that it inherits relevant control capacity.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/value-bundle-transport/">Transport<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<line x1="35" y1="80" x2="80" y2="80" marker-end="url(#arrow)"/>
+<line x1="35" y1="100" x2="80" y2="100" marker-end="url(#arrow)"/>
+<line x1="35" y1="120" x2="80" y2="120" marker-end="url(#arrow)"/>
+<path d="M 100,50 L 100,150" stroke-dasharray="6 7"/>
+<line x1="120" y1="80" x2="165" y2="80" marker-end="url(#arrow)"/>
+<line x1="120" y1="100" x2="165" y2="100" marker-end="url(#arrow)"/>
+<line x1="120" y1="120" x2="165" y2="120" marker-end="url(#arrow)"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>What survives retraining, rebuild, or successor creation: semantic (words), bundle (response geometry), bearer (who counts), correction (human update process), and successor layers — tracked separately rather than as one continuity claim.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/value-bundle-transport/">Value bundle<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<line x1="35" y1="80" x2="80" y2="80" marker-end="url(#arrow)"/>
+<line x1="35" y1="100" x2="80" y2="100" marker-end="url(#arrow)"/>
+<line x1="35" y1="120" x2="80" y2="120" marker-end="url(#arrow)"/>
+<path d="M 100,50 L 100,150" stroke-dasharray="6 7"/>
+<line x1="120" y1="80" x2="165" y2="80" marker-end="url(#arrow)"/>
+<line x1="120" y1="100" x2="165" y2="100" marker-end="url(#arrow)"/>
+<line x1="120" y1="120" x2="165" y2="120" marker-end="url(#arrow)"/>
+  </g>
+</svg></span></a></dt><dd data-astro-cid-qs4zc6rc>Low-dimensional control direction that changes policy across contexts — steering, not scoring. Cousin to reward components, shard-theory influences, and CIRL \(k=1\) scalar case; not a single utility to maximize.</dd></div><div class="glossary-entry" data-astro-cid-qs4zc6rc><dt data-astro-cid-qs4zc6rc><a href="/cards/value-bundle-transport/">Value-bundle geometry<span class="concept-logo concept-logo--inline" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
