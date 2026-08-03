@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-03 | **Site full-width toggle** — Bottom-left `<->` overlay; toggles constrained vs full viewport width; localStorage. | [2026-08-03-site-full-width-toggle.md](2026-08-03-site-full-width-toggle.md) |
 | 2026-08-03 | **Site projection phrasing** — Subsumption → projection on Lean spine/graphs/cards; table section “Overview of existing formalizations.” | [2026-08-03-site-projection-phrasing.md](2026-08-03-site-projection-phrasing.md) |
 | 2026-08-03 | **MB bridge graph + MB11 card** — Field-noun MB dependency DOT/PNG; dedicated MB11 bridge card + matrix/crosswalk/Lean links. | [2026-08-03-mb-bridge-graph-and-mb11-card.md](2026-08-03-mb-bridge-graph-and-mb11-card.md) |
 | 2026-08-03 | **Site logo + favicon** — TSA PNG→SVG; circular transparent logo in header; favicon/PWA icons; README trim. | [2026-08-03-site-logo-favicon-readme.md](2026-08-03-site-logo-favicon-readme.md) |

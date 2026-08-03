@@ -404,6 +404,17 @@ th {
   color: var(--color-muted);
 }
 
+html.layout-full-width {
+  --max-wide: 100%;
+  --max-readable: none;
+}
+
+html.layout-full-width .hero,
+html.layout-full-width .lede,
+html.layout-full-width .readable {
+  max-width: none;
+}
+
 @media (max-width: 760px) {
   .site-header-inner {
     align-items: flex-start;

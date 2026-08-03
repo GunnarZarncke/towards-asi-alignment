@@ -5,6 +5,7 @@ import CloudflareWebAnalytics from "../components/CloudflareWebAnalytics.astro";
 import LinkIndicator from "../components/LinkIndicator.astro";
 import OfflineButton from "../components/OfflineButton.astro";
 import PageQrCode from "../components/PageQrCode.astro";
+import PageWidthToggle from "../components/PageWidthToggle.astro";
 import SiteSearch from "../components/SiteSearch.astro";
 import { pdfHref } from "../lib/site-urls";
 import {
@@ -90,6 +91,13 @@ const websiteJsonLd = {
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+    <script is:inline>
+      try {
+        if (localStorage.getItem("site-layout-full-width") === "true") {
+          document.documentElement.classList.add("layout-full-width");
+        }
+      } catch {}
+    </script>
   </head>
   <body>
     <div class="shell">
@@ -142,6 +150,7 @@ const websiteJsonLd = {
         </div>
       </footer>
     </div>
+    <PageWidthToggle />
     <PageQrCode url={canonicalUrl} />
     <CloudflareWebAnalytics />
   </body>
