@@ -29,7 +29,7 @@
 <!-- FSHUT -->
 <a xlink:href="../../node/FSHUT/" class="lean-graph-node"><g id="node3" class="node"><title>FSHUT</title>
 <path fill="#fff0fb" stroke="#2e7d32" stroke-width="2.2" d="M280.11,-562.28C280.11,-562.28 94.99,-562.28 94.99,-562.28 88.99,-562.28 82.99,-556.28 82.99,-550.28 82.99,-550.28 82.99,-523.08 82.99,-523.08 82.99,-517.08 88.99,-511.08 94.99,-511.08 94.99,-511.08 280.11,-511.08 280.11,-511.08 286.11,-511.08 292.11,-517.08 292.11,-523.08 292.11,-523.08 292.11,-550.28 292.11,-550.28 292.11,-556.28 286.11,-562.28 280.11,-562.28"/>
-<text xml:space="preserve" text-anchor="middle" x="187.55" y="-550.18" font-family="Helvetica,sans-Serif" font-size="9.00">[SUBSUMED]</text>
+<text xml:space="preserve" text-anchor="middle" x="187.55" y="-550.18" font-family="Helvetica,sans-Serif" font-size="9.00">[PROJECTED]</text>
 <text xml:space="preserve" text-anchor="middle" x="187.55" y="-539.38" font-family="Helvetica,sans-Serif" font-size="9.00">Field.Shutdown final nodes</text>
 <text xml:space="preserve" text-anchor="middle" x="187.55" y="-528.58" font-family="Helvetica,sans-Serif" font-size="9.00">shutdown_optimal_under_correction_preference</text>
 <text xml:space="preserve" text-anchor="middle" x="187.55" y="-517.78" font-family="Helvetica,sans-Serif" font-size="9.00">shutdown_separated_from_correction</text>

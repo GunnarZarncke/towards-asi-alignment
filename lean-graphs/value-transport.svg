@@ -73,7 +73,7 @@
 <!-- P19 -->
 <a xlink:href="../../node/P19/" class="lean-graph-node"><g id="node6" class="node"><title>P19</title>
 <path fill="#effbea" stroke="#2e7d32" stroke-width="2.2" d="M316.78,-547.84C316.78,-547.84 209.22,-547.84 209.22,-547.84 203.22,-547.84 197.22,-541.84 197.22,-535.84 197.22,-535.84 197.22,-523.84 197.22,-523.84 197.22,-517.84 203.22,-511.84 209.22,-511.84 209.22,-511.84 316.78,-511.84 316.78,-511.84 322.78,-511.84 328.78,-517.84 328.78,-523.84 328.78,-523.84 328.78,-535.84 328.78,-535.84 328.78,-541.84 322.78,-547.84 316.78,-547.84"/>
-<text xml:space="preserve" text-anchor="middle" x="263" y="-532.54" font-family="Helvetica,sans-Serif" font-size="9.00">[SUBSUMED]</text>
+<text xml:space="preserve" text-anchor="middle" x="263" y="-532.54" font-family="Helvetica,sans-Serif" font-size="9.00">[PROJECTED]</text>
 <text xml:space="preserve" text-anchor="middle" x="263" y="-521.74" font-family="Helvetica,sans-Serif" font-size="9.00">P19 Scalar reward as bundle</text>
 </g></a>
 <!-- P16&#45;&gt;P19 -->

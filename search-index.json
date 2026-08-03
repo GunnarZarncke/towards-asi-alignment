@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-02T20:34:04.237Z",
+  "generatedAt": "2026-08-03T00:06:10.544Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 267,
+  "entryCount": 268,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1133,6 +1133,12 @@
       "type": "bridge",
       "summary": "Successor gaming: a system can pass every conserved-property audit while defecting on what the checklist omits. Precise bet: a green seven-property score bounds true harm only if the audit was adversarially verifiable up to the successor's capability.",
       "url": "/cards/mb10-successor-forgeability/"
+    },
+    {
+      "title": "MB11 — Deployment Safety",
+      "type": "bridge",
+      "summary": "Safety-case gap: does audited layer evidence plus bounded measured risk suffice for deployment-level safety? Precise bet: a certified safety case within deployment risk tolerance warrants abstract Safe.",
+      "url": "/cards/mb11-deployment-safety/"
     },
     {
       "title": "MB2 — Value Learning",
