@@ -19,7 +19,7 @@ leanNodes:
     module: AlignmentProofSpine/Field/Interruptibility.lean
   - nodeId: interrupt_subsumption_ch46
     kind: proof
-    summary: Chapter 46-facing interrupt subsumption through correction interface records.
+    summary: Chapter 46-facing interrupt projection through correction interface records.
     module: AlignmentProofSpine/Field/Interruptibility.lean
   - nodeId: interrupt_separated_from_correction
     kind: counterexample

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-03 (MB bridge graph; MB11 bridge card).
+Last updated: 2026-08-03 (site projection phrasing; formalizations table rename).
 
 ---
 
@@ -31,6 +31,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site (2026-08-03):** Projection phrasing on Lean spine + field projection cards (not “subsumption”); graph badges `[PROJECTED]`; Lean index table section **“Overview of existing formalizations”** (Field hub owns crosswalk matrix). Log: `2026-08-03-site-projection-phrasing.md`.
 - **Reference + site (2026-08-03):** MB bridge dependency graph (`reference/field-agendas/graphs/mb-bridge-dependencies.*`, field nouns); dedicated **MB11** bridge card (`mb11-deployment-safety`) — field matrix + crosswalk + Lean spine links; dynamical-guarantee concept points to MB11 card. Log: `2026-08-03-mb-bridge-graph-and-mb11-card.md`.
 - **Companion site (2026-08-03):** TSA logo SVG — circular transparent `logo-circle.svg` in header (navbar height); favicon/PWA icons; theme `#161E2B`. README trimmed (standalone-claims block removed; “What this is” revised). Log: `2026-08-03-site-logo-favicon-readme.md`.
 - **Reference (2026-08-02):** Field agenda restructure — neglected-report folds; 4 independence merges (GovAI+UK AISI, Apollo+Truthful, CHAI+FAR, Anthropic+Goodfire); Neglected approaches + Safeguarded AI + MAI+CIP rows; TSA matrix-only home link; AE essay overview on portfolio card; short matrix labels. Log: `2026-08-02-field-agenda-restructure-merges.md`.

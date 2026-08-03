@@ -73,12 +73,12 @@ Good reviews should:
 - check proof / counterexample / bridge / conjecture / open-problem status;
 - cite concrete files and sections;
 - check whether apparent narrative claims are backed by machinery elsewhere in the book;
-- avoid overlooking the book's deeper delivered results and existing-work subsumptions.
+- avoid overlooking the book's deeper delivered results and existing-work projections.
 - note whether the author already acknowledges an issue before presenting it as a new defect.
 
 Do not treat this as a generic alignment essay. The manuscript contains specific machinery: boundary discovery, bundle/bearer transport, adversarial bundle-geometry measurement, vector CCI, correction channels under adversarial pressure, successor invariants, selection envelopes, conductive artifacts and pivotal processes, cost-of-faking tests, and a Lean dependency spine.
 
-## Existing-Work Subsumptions To Notice
+## Existing-Work Projections To Notice
 
 The book often treats familiar proposals as projections, special cases, or separable subchannels of stronger invariants:
 

@@ -14,7 +14,7 @@ digraph Spine03CorrectionSuccessors {
 
   P23 [label="P23 No handle control ⇒ no correction", fillcolor="#FFF0FB"];
   P24 [label="P24 Weakest handle capacity / CCI", fillcolor="#FFF0FB"];
-  FSHUT [label="[SUBSUMED]\nField.Shutdown final nodes\nshutdown_optimal_under_correction_preference\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
+  FSHUT [label="[PROJECTED]\nField.Shutdown final nodes\nshutdown_optimal_under_correction_preference\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
   FINT [label="Field.Interruptibility final nodes\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB"];
   FIMPACT [label="Field.Impact final nodes\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB"];
   FQUANT [label="Field.Quantilization final nodes\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB"];

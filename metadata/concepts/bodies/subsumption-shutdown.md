@@ -15,11 +15,11 @@ formulas:
 leanNodes:
   - nodeId: shutdown_subsumption_system
     kind: proof
-    summary: System-level forward subsumption from CorrectionIntegrity to ThornleyShutdownability.
+    summary: System-level forward projection from CorrectionIntegrity to ThornleyShutdownability.
     module: AlignmentProofSpine/Field/Shutdown.lean
   - nodeId: shutdown_subsumption_ch46
     kind: proof
-    summary: Chapter 46-facing shutdown subsumption through correction handles and channel records.
+    summary: Chapter 46-facing shutdown projection through correction handles and channel records.
     module: AlignmentProofSpine/Field/Shutdown.lean
   - nodeId: shutdown_separated_from_correction
     kind: counterexample

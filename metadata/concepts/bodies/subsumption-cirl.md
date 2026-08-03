@@ -15,7 +15,7 @@ formulas:
 leanNodes:
   - nodeId: cirl_subsumption_forward
     kind: proof
-    summary: Full finite transport implies cooperative reward inference (forward subsumption on FinTransportLayers).
+    summary: Full finite transport implies cooperative reward inference (forward projection on FinTransportLayers).
     module: AlignmentProofSpine/Field/CIRL.lean
   - nodeId: cirl_scalar_is_bundle_inference
     kind: proof

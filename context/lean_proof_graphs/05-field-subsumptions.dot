@@ -6,7 +6,7 @@ digraph Spine05FieldSubsumptions {
     overlap=false,
     fontsize=11,
     fontname="Helvetica",
-    label="Field-agenda subsumptions: finite analogues, imported handles, final nodes",
+    label="Field-agenda projections: finite analogues, imported handles, final nodes",
     labelloc="t"
   ];
   node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=9, color="#444444"];

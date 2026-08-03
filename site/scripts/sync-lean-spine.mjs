@@ -117,7 +117,7 @@ async function loadGraphs() {
     graphs[spec.slug] = {
       id: spec.slug,
       dotId: spec.id,
-      title: parsed.title || spec.title,
+      title: spec.title || parsed.title,
       nodes: parsed.nodes,
       edges: parsed.edges
     };
@@ -257,7 +257,7 @@ async function main() {
     sections: [
       {
         id: "field",
-        title: "Field results rederived and subsumed",
+        title: "Field agenda projections",
         summary: "External alignment agendas projected into the book's invariants on a shared finite domain.",
         graphSlugs: ["field-subsumptions"]
       },
