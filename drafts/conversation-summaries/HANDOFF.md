@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-04 (field matrix UAD → TSA row).
+Last updated: 2026-08-04 (CIRIS falsifier phased plan).
 
 ---
 
@@ -16,7 +16,7 @@ Last updated: 2026-08-04 (field matrix UAD → TSA row).
 - **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
 - **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk core sync 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
 - **Terminology demotion follow-through** — v1.1 plain-first + App E + site `concepts.yml` **shipped** (2026-08-02). Remaining: thin glossary leftovers (`drafts/glossary-prose-pass/THIN.md`), residual appendices grep. Inventory: `drafts/glossary-term-audit.md`.
-- **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens can read green while WA-blind composite fails (named-identity bet vs real intervening unit). Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Reuse: toy T-9 `boundary_decouple`, lab LS-28, MB1/composite-agency cards. Pointer: `experiments/TODO.md`.
+- **CIRIS composite / boundary_decouple counterexample** — Eric-facing key task: Verify+Lens green while WA-blind composite fails (named-identity bet). **Phase 1 next:** C2 tool-scout narrative + trace mock + Eric memo; optional sibling sim bite. **Phase 2:** CIRISAgent harness. **Phase 3 deferred:** Lens cohort (≥3×≥10 traces) + Coherence Ratchet battery — not a gate for logical falsifier. Charter: `~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`. Pointer: `experiments/TODO.md`. Log: `2026-08-04-ciris-falsifier-phased-plan.md`.
 - **Correlated steerability chokepoint** — WWCTV surfaces share adversarial-verifiability antecedent; disjunctive MB6b/MB8 routes may be one failure point. Formalized in `Chokepoint.lean`; still need per-chapter WWCTV forward refs and U-ledger reconciliation. Pointer: `metadata/TODO.md` BIG REVIEW.
 - **Conserved-property forgeability (MB10)** — finite counterexample in Lean; prose wired. Still open: non-enumerability of conserved set across capability jumps; toy red-team of audit forgeability. Pointer: `metadata/TODO.md`, `Forgeability.lean`.
 - **Measurand instantiation table** — composite indices bottom out in deferred estimators; needs mapping to experiment scripts. Pointer: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **CIRIS falsifier plan (2026-08-04):** Phased named-identity / composite-agency counterexample — Phase 1 mock + memo; Lens cohort deferred to Phase 3; C2 tool-scout locked; cross-agent divergence documented as negative-control not kill signal. Charter updated in sibling `ciris/review/`; `experiments/TODO.md` synced. Log: `2026-08-04-ciris-falsifier-phased-plan.md`.
 - **Reference + companion site (2026-08-04):** Field matrix — moved evidence **#82** (UAD / agency-detect, MB1 support) from Neglected approaches row to **TSA** `MB1`; re-synced index + site JSON (`evidence.yml` agenda was already TSA). Log: `2026-08-04-field-matrix-uad-tsa.md`.
 - **Companion site (2026-08-04):** Site wording — use **“this project”** for TSA framework/site/Lean/experiments; keep **“book”** for PDF, chapters, book map, and manuscript-specific references. Sync sources + scripts updated. Log: `2026-08-04-site-book-to-project-wording.md`.
 - **Reference + companion site (2026-08-04):** Wentworth agenda profile link → `lesswrong.com/users/johnswentworth` (YAML source + sync). Log: `2026-08-04-wentworth-profile-link.md`.

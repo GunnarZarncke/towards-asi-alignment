@@ -6,13 +6,15 @@ experiment folder.
 ## Key cross-project tasks
 
 - **CIRIS composite / boundary_decouple counterexample** (2026-07-30) — sharpest
-  Eric Moore ask on named-identity vs real intervening unit. Charter and
-  deliverables live in the CIRIS review workspace:
+  Eric Moore ask on named-identity vs real intervening unit. Charter and phased
+  plan (updated 2026-08-04):
   [`~/repos/ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md`](../../../ciris/review/findings/2026-07-30-key-task-composite-boundary-counterexample.md).
-  Sibling evidence to reuse: toy T-9 `boundary_decouple`, lab LS-28
-  intervention-supported UAD, composite-agency / MB1 cards. Optional later:
-  small harness under `toy-simulation/` or `lab-simulation/` with a CIRIS-labeled
-  scenario (not started).
+  **Phase 1 (now):** narrative + trace mock (C2 tool-scout), Eric memo;
+  optional sibling sim bite. **Phase 2:** CIRISAgent integration harness.
+  **Phase 3 (deferred):** Lens cohort + Coherence Ratchet battery (≥3 agents
+  × ≥10 traces — substantial capture work; not a gate for the logical
+  falsifier). Sibling evidence: toy T-9 `boundary_decouple`, lab LS-28
+  intervention-supported UAD, `CompositePathBypass.lean`.
 
 ## Per-experiment TODOs
 
