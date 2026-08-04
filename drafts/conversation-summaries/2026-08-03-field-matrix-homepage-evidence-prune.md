@@ -26,4 +26,4 @@ Reviewer feedback: matrix citations accurate but ~dozen cells use org landing pa
 
 ## Commits
 - `06cb17fe` Pass 1 + MB4a/MB7d bridge cards (prior session).
-- (pending) Pass 3 — finish homepage evidence tightening.
+- `d136983c` Pass 3 — finish homepage evidence tightening.
