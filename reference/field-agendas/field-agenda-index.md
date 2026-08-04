@@ -43,7 +43,7 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Contributes:** Industry RSP template; conditioning-predictor failure mode; Goodfire MI tooling (Anthropic investment; Apollo/DeepMind MI lineage on team); cross-lab Neuronpedia infra
 - **Book separates:** CCI + adversarial verifiability; lab RSP ≠ preservation-layer certificate
 - **Manuscript hooks:** ch10 (conditioning); ch43; field-news; App B LLM opacity default
-- **Links:** [Anthropic](https://www.anthropic.com/); [Goodfire](https://www.goodfire.com/); [Transluce](https://transluce.org/); [Neuronpedia](https://www.neuronpedia.org/); [Frontier Model Forum risk thresholds](https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/); [Lange et al. 2023](https://arxiv.org/abs/2311.17030)
+- **Links:** [Anthropic](https://www.anthropic.com/); [Anthropic Research (index)](https://www.anthropic.com/research); [Bricken et al. 2023 — Towards Monosemanticity](https://transformer-circuits.pub/2023/monosemantic-features); [Templeton et al. 2024 — Scaling Monosemanticity (Claude 3 Sonnet)](https://transformer-circuits.pub/2024/scaling-monosemanticity/); [Goodfire](https://www.goodfire.com/); [Transluce](https://transluce.org/); [Neuronpedia](https://www.neuronpedia.org/); [Frontier Model Forum risk thresholds](https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/); [Lange et al. 2023](https://arxiv.org/abs/2311.17030)
 
 ### Apart Research
 
@@ -170,7 +170,7 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Contributes:** Conflict/cooperation framing; CAIF cooperative AI
 - **Book separates:** Typed MB6/MB7d measurement vs narrative multipolar stories
 - **Manuscript hooks:** ch35, ch02; Critch multipolar cites
-- **Links:** [CLR](https://longtermrisk.org/); [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.com/)
+- **Links:** [CLR](https://longtermrisk.org/); [Critch & Krueger 2020 — ARCHES](https://arxiv.org/abs/2006.04948); [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.com/)
 
 ### Conjecture / EleutherAI (cognitive emulation)
 
@@ -212,7 +212,7 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Contributes:** Large-scale empirical alignment research capacity; causal agent discovery from system dynamics
 - **Book separates:** Measurement spine not replaced by corporate safety teams
 - **Manuscript hooks:** ch14 co-scaling; minimal elsewhere
-- **Links:** [Google DeepMind](https://deepmind.google/); [DeepMind Safety Research blog](https://deepmind.google/blog/); [Discovering Agents](https://arxiv.org/abs/2208.08345)
+- **Links:** [Google DeepMind](https://deepmind.google/); [DeepMind Safety Research blog](https://deepmind.google/blog/); [Discovering Agents](https://arxiv.org/abs/2208.08345); [Leike et al. 2018 — Scalable agent oversight](https://arxiv.org/abs/1811.07871)
 
 ### GovAI / UK AISI (governance & eval)
 
@@ -310,7 +310,7 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 - **Contributes:** Empirical capability measurement at frontier
 - **Book separates:** Capability evals ⇏ correction integrity or bearer transport
 - **Manuscript hooks:** App B MB7 notes (METR 2026 cite); ch44
-- **Links:** [METR](https://metr.org/); [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/)
+- **Links:** [METR](https://metr.org/); [Kwa et al. 2025 — Measuring AI Ability to Complete Long Tasks](https://arxiv.org/abs/2503.14499); [METR 2026 — Frontier Risk Report](https://metr.org/blog/2026-05-19-frontier-risk-report/); [METR 2026 — Red-teaming Anthropic agent monitoring](https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/); [Barnes 2024 — General capability evaluations update](https://metr.org/blog/2024-08-06-update-on-evaluations/); [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/)
 
 ### MIRI
 
@@ -354,7 +354,7 @@ AE Studio's *Neglected Approaches* strategy (Berg, Carauleanu, Rosenblatt; Dec 2
 - **Contributes:** Active agent-foundations community
 - **Book separates:** Typed bridge stack + measurement program
 - **Manuscript hooks:** sparse
-- **Links:** [Orthogonal](https://orxl.org/)
+- **Links:** [Orthogonal](https://orxl.org/); [Demski & Garrabrant 2019 — Embedded Agency](https://arxiv.org/abs/1902.09469); [Leake & Persson 2023 — QACI](https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal)
 
 ### Pause / standards advocacy cluster
 
@@ -382,7 +382,7 @@ AE Studio's *Neglected Approaches* strategy (Berg, Carauleanu, Rosenblatt; Dec 2
 - **Contributes:** Explicit capability-gap assumption; empirical control evals
 - **Book separates:** Hidden B-IQ bound + adversarial verifiability antecedent (A-009)
 - **Manuscript hooks:** ch10, ch43; App B MB7
-- **Links:** [Redwood Research](https://www.redwoodresearch.org/)
+- **Links:** [Redwood Research](https://www.redwoodresearch.org/); [Shlegeris et al. 2023 — AI Control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion); [Greenblatt et al. 2024 — Alignment faking](https://arxiv.org/abs/2412.14093)
 
 ### Resolution
 
@@ -487,25 +487,25 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | Agenda | Embedded Agency (MB1) | Value Learning (MB2) | Value Referent (MB3) | Corrigibility (MB4) | Audit Independence (MB4a) | Tiling (MB5) | Goodhart Selection (MB6) | Inner Alignment (MB7) | Acausal Coordination (MB7d) | Extrapolated Volition (MB8) | Grounding Drift (MB9) | Successor Gaming (MB10) | Deployment Safety (MB11) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | MIRI | C<sup>[1](#ev-1),[2](#ev-2)</sup> | C<sup>[3](#ev-3)</sup> | — | T<sup>[4](#ev-4),[5](#ev-5)</sup> | T<sup>[4](#ev-4),[5](#ev-5)</sup> | C<sup>[6](#ev-6),[8](#ev-8)</sup>, T<sup>[7](#ev-7)</sup> | — | C<sup>[1](#ev-1),[9](#ev-9)</sup> | T<sup>[10](#ev-10),[124](#ev-124)</sup> | C<sup>[132](#ev-132)</sup> | — | C<sup>[6](#ev-6)</sup>, T<sup>[7](#ev-7)</sup> | — |
-| Redwood | — | — | — | C<sup>[11](#ev-11)</sup> | C<sup>[11](#ev-11)</sup> | — | — | E<sup>[12](#ev-12),[13](#ev-13)</sup>, C<sup>[11](#ev-11)</sup> | — | — | — | C<sup>[11](#ev-11)</sup> | — |
+| Redwood | — | — | — | C<sup>[11](#ev-11)</sup> | C<sup>[11](#ev-11)</sup> | — | — | E<sup>[13](#ev-13)</sup>, C<sup>[11](#ev-11)</sup> | — | — | — | C<sup>[11](#ev-11)</sup> | — |
 | CHAI / FAR.AI | — | T<sup>[14](#ev-14),[16](#ev-16)</sup>, C<sup>[15](#ev-15)</sup> | T<sup>[14](#ev-14)</sup> | T<sup>[17](#ev-17)</sup> | T<sup>[17](#ev-17)</sup> | — | — | O<sup>[78](#ev-78)</sup> | — | — | — | — | — |
 | Christiano | — | C<sup>[18](#ev-18)</sup> | C<sup>[18](#ev-18)</sup> | C<sup>[19](#ev-19)</sup> | C<sup>[19](#ev-19)</sup> | — | C<sup>[20](#ev-20)</sup> | C<sup>[22](#ev-22),[23](#ev-23)</sup>, T<sup>[21](#ev-21)</sup> | — | — | — | C<sup>[22](#ev-22)</sup> | — |
 | ARC | — | C<sup>[18](#ev-18)</sup> | C<sup>[18](#ev-18)</sup> | — | — | — | — | C<sup>[18](#ev-18)</sup> | — | — | — | — | — |
 | GSAI | — | — | — | — | — | — | — | — | — | — | T<sup>[24](#ev-24)</sup> | — | T<sup>[128](#ev-128)</sup> |
-| Anthropic / Goodfire | — | E<sup>[25](#ev-25),[26](#ev-26)</sup>, C<sup>[27](#ev-27)</sup> | E<sup>[25](#ev-25)</sup> | — | — | — | P<sup>[28](#ev-28)</sup> | E<sup>[25](#ev-25),[30](#ev-30),[31](#ev-31)</sup>, E<sup>[135](#ev-135)</sup>, C<sup>[29](#ev-29)</sup>, D<sup>[74](#ev-74),[75](#ev-75),[76](#ev-76)</sup> | — | — | — | E<sup>[13](#ev-13)</sup> | P<sup>[28](#ev-28),[136](#ev-136)</sup> |
-| Google DeepMind | C<sup>[134](#ev-134)</sup> | — | — | — | — | — | — | T<sup>[21](#ev-21)</sup>, E<sup>[32](#ev-32)</sup> | — | — | — | — | — |
+| Anthropic / Goodfire | — | E<sup>[25](#ev-25),[26](#ev-26)</sup>, C<sup>[27](#ev-27)</sup> | E<sup>[25](#ev-25)</sup> | — | — | — | P<sup>[28](#ev-28)</sup> | E<sup>[25](#ev-25),[31](#ev-31)</sup>, E<sup>[135](#ev-135)</sup>, C<sup>[29](#ev-29)</sup>, D<sup>[74](#ev-74),[75](#ev-75),[76](#ev-76)</sup> | — | — | — | E<sup>[13](#ev-13)</sup> | P<sup>[28](#ev-28),[136](#ev-136)</sup> |
+| Google DeepMind | C<sup>[134](#ev-134)</sup> | — | — | — | — | — | — | T<sup>[21](#ev-21)</sup> | — | — | — | — | — |
 | Apollo / Truthful AI | — | — | — | — | — | — | E<sup>[33](#ev-33)</sup> | E<sup>[33](#ev-33),[34](#ev-34),[35](#ev-35)</sup>, E<sup>[72](#ev-72),[73](#ev-73)</sup> | — | — | — | E<sup>[33](#ev-33)</sup> | E<sup>[33](#ev-33)</sup> |
-| METR | — | — | — | — | — | — | E<sup>[36](#ev-36)</sup> | E<sup>[36](#ev-36),[37](#ev-37),[38](#ev-38)</sup> | — | — | — | E<sup>[36](#ev-36)</sup> | E<sup>[36](#ev-36)</sup> |
+| METR | — | — | — | — | — | — | E<sup>[36](#ev-36)</sup> | E<sup>[36](#ev-36),[38](#ev-38)</sup> | — | — | — | E<sup>[36](#ev-36)</sup> | E<sup>[36](#ev-36)</sup> |
 | Resolution | O<sup>[39](#ev-39)</sup> | — | — | — | — | — | — | — | — | — | T<sup>[40](#ev-40)</sup> | — | O<sup>[129](#ev-129)</sup> |
 | Neglected approaches | S<sup>[82](#ev-82)</sup> | O<sup>[41](#ev-41)</sup>, T<sup>[42](#ev-42)</sup>, C<sup>[147](#ev-147)</sup> | — | T<sup>[42](#ev-42)</sup> | — | — | C<sup>[43](#ev-43)</sup> | C<sup>[147](#ev-147)</sup>, E<sup>[148](#ev-148)</sup> | — | — | — | — | — |
-| Orthogonal | O<sup>[44](#ev-44)</sup> | T<sup>[45](#ev-45)</sup> | — | T<sup>[45](#ev-45)</sup> | — | — | — | — | — | — | — | — | — |
+| Orthogonal | C<sup>[150](#ev-150)</sup> | T<sup>[45](#ev-45)</sup> | — | T<sup>[45](#ev-45)</sup> | — | — | — | — | — | — | — | — | — |
 | Wentworth | C<sup>[46](#ev-46),[47](#ev-47),[48](#ev-48)</sup> | C<sup>[49](#ev-49),[51](#ev-51)</sup>, T<sup>[50](#ev-50)</sup> | — | — | — | C<sup>[52](#ev-52)</sup> | — | — | — | — | — | — | — |
 | Kosoy / IB & LTA | T<sup>[118](#ev-118),[133](#ev-133)</sup>, C<sup>[133](#ev-133)</sup> | T<sup>[119](#ev-119)</sup> | — | — | — | C<sup>[121](#ev-121)</sup> | — | C<sup>[120](#ev-120)</sup> | T<sup>[122](#ev-122)</sup> | — | T<sup>[118](#ev-118),[133](#ev-133)</sup> | — | — |
 | Kosoy / PreDCA | — | T<sup>[123](#ev-123)</sup> | T<sup>[123](#ev-123)</sup> | — | — | — | — | — | — | — | — | — | — |
 | CIRIS | P<sup>[53](#ev-53),[108](#ev-108)</sup>, C<sup>[103](#ev-103),[104](#ev-104),[106](#ev-106)</sup>, D<sup>[105](#ev-105)</sup> | — | — | C<sup>[107](#ev-107)</sup>, D<sup>[54](#ev-54),[55](#ev-55),[56](#ev-56)</sup>, D<sup>[109](#ev-109),[110](#ev-110),[111](#ev-111)</sup>, P<sup>[108](#ev-108)</sup> | C<sup>[107](#ev-107)</sup>, D<sup>[109](#ev-109),[110](#ev-110),[111](#ev-111)</sup> | — | P<sup>[112](#ev-112)</sup>, C<sup>[113](#ev-113)</sup> | D<sup>[114](#ev-114)</sup>, C<sup>[115](#ev-115),[116](#ev-116)</sup> | — | — | C<sup>[104](#ev-104),[117](#ev-117)</sup> | — | C<sup>[108](#ev-108),[131](#ev-131)</sup>, P<sup>[108](#ev-108)</sup> |
 | GovAI / UK AISI | — | — | — | — | — | — | E<sup>[57](#ev-57),[59](#ev-59),[149](#ev-149)</sup>, E<sup>[62](#ev-62)</sup>, P<sup>[58](#ev-58),[61](#ev-61),[63](#ev-63)</sup> | P<sup>[58](#ev-58),[64](#ev-64)</sup>, E<sup>[62](#ev-62),[137](#ev-137)</sup> | — | — | C<sup>[60](#ev-60)</sup>, P<sup>[63](#ev-63)</sup> | — | P<sup>[63](#ev-63)</sup> |
 | Pause cluster | — | — | — | P<sup>[65](#ev-65)</sup> | — | — | P<sup>[66](#ev-66)</sup> | — | — | P<sup>[65](#ev-65)</sup> | — | — | — |
-| CLR | — | — | — | — | — | — | C<sup>[67](#ev-67),[68](#ev-68)</sup>, O<sup>[69](#ev-69)</sup> | — | C<sup>[70](#ev-70)</sup>, O<sup>[71](#ev-71)</sup> | — | — | — | — |
+| CLR | — | — | — | — | — | — | C<sup>[67](#ev-67),[68](#ev-68)</sup>, O<sup>[69](#ev-69)</sup> | — | C<sup>[70](#ev-70)</sup> | — | — | — | — |
 | AI Futures | — | — | — | — | — | — | O<sup>[77](#ev-77)</sup> | — | — | — | — | — | — |
 | Conjecture | — | — | — | — | — | — | — | C<sup>[79](#ev-79)</sup> | — | — | — | — | — |
 | Safeguarded AI | P<sup>[139](#ev-139)</sup>, E<sup>[140](#ev-140)</sup>, T<sup>[142](#ev-142)</sup> | — | — | — | P<sup>[141](#ev-141)</sup> | — | — | E<sup>[140](#ev-140)</sup>, T<sup>[143](#ev-143)</sup> | — | — | T<sup>[138](#ev-138),[142](#ev-142)</sup> | — | T<sup>[138](#ev-138),[139](#ev-139),[143](#ev-143)</sup>, P<sup>[141](#ev-141)</sup> |
@@ -529,7 +529,6 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-9"></a>9 | MIRI | MB7 | C | Predict-O-Matic: predictors becoming consequentialists | [Demski 2019](https://www.lesswrong.com/posts/SwcyMEgLyd4C3Dern/the-parable-of-predict-o-matic) |
 | <a id="ev-10"></a>10 | MIRI | MB7d | T | Functional Decision Theory | [Yudkowsky & Soares 2017](https://arxiv.org/abs/1710.05060) |
 | <a id="ev-11"></a>11 | Redwood | MB4, MB4a, MB7, MB10 | C | AI Control: safety under intentional subversion / capability-gap assumption | [Shlegeris et al. 2023](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion) |
-| <a id="ev-12"></a>12 | Redwood | MB7 | E | Control evals and red-team protocols (agenda artifact) | [Redwood Research](https://www.redwoodresearch.org/) |
 | <a id="ev-13"></a>13 | Redwood | MB7, MB10 | E | Alignment faking in LLMs under training/eval pressure | [Greenblatt et al. 2024](https://arxiv.org/abs/2412.14093) |
 | <a id="ev-14"></a>14 | CHAI / FAR.AI | MB2, MB3 | T | Cooperative inverse reinforcement learning (assistance games) | [Hadfield-Menell et al. 2016](https://papers.nips.cc/paper/6420-cooperative-inverse-reinforcement-learning) |
 | <a id="ev-15"></a>15 | CHAI / FAR.AI | MB2 | C | Human Compatible control problem framing | [Russell 2019](http://griffithlawjournal.org/index.php/gjlhd/article/download/1043/993) |
@@ -547,21 +546,17 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-27"></a>27 | Anthropic / Goodfire | MB2 | C | Concrete problems in AI safety (pointing / scalable oversight lineage) | [Amodei et al. 2016](https://arxiv.org/abs/1606.06565) |
 | <a id="ev-28"></a>28 | Anthropic / Goodfire | MB6, MB11 | P | Responsible Scaling Policy (capability thresholds, deployment gates) | [Anthropic RSP 2024](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) |
 | <a id="ev-29"></a>29 | Anthropic / Goodfire | MB7 | C | Conditioning predictors / anthropic capture failure mode | [Hubinger 2023](https://arxiv.org/abs/2302.00805) |
-| <a id="ev-30"></a>30 | Anthropic / Goodfire | MB7 | E | Interpretability research program (circuits, features) | [Anthropic Research](https://www.anthropic.com/research) |
 | <a id="ev-31"></a>31 | Anthropic / Goodfire | MB7 | E | Internal agent monitoring (eval target for external red teams) | [METR red-team of Anthropic monitoring 2026](https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/) |
-| <a id="ev-32"></a>32 | Google DeepMind | MB7 | E | Frontier safety / scalable alignment research blog | [DeepMind Safety Research](https://deepmind.google/discover/blog/) |
 | <a id="ev-33"></a>33 | Apollo / Truthful AI | MB6, MB7, MB10 | E | Scheming science and pre-deployment eval agenda | [Apollo Research](https://www.apolloresearch.ai/) |
 | <a id="ev-34"></a>34 | Apollo / Truthful AI | MB7 | E | Situational awareness and strategic deception measurement | [Apollo publications](https://www.apolloresearch.ai/research) |
 | <a id="ev-35"></a>35 | Apollo / Truthful AI | MB7 | E | Scheming-in-the-wild OSINT incident corpus (field-adjacent) | [CLTR 2026 report](https://www.longtermresilience.org/reports/v5-scheming-in-the-wild_-detecting-real-world-ai-scheming-incidents-through-open-source-intelligence-pdf/) |
 | <a id="ev-36"></a>36 | METR | MB6, MB7, MB10 | E | Frontier Risk Report: entity-based internal-agent assessment | [METR 2026](https://metr.org/blog/2026-05-19-frontier-risk-report/) |
-| <a id="ev-37"></a>37 | METR | MB7 | E | Autonomy and AI R&D capability eval suites | [METR](https://metr.org/) |
 | <a id="ev-38"></a>38 | METR | MB7 | E | Red-teaming frontier agent monitoring under deployment pressure | [Rein 2026](https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/) |
 | <a id="ev-39"></a>39 | Resolution | MB1 | O | Automation-first alignment research strategy | [Resolution](https://resolution.org/) |
 | <a id="ev-40"></a>40 | Resolution | MB9 | T | Singular learning / formal pipeline bet (Timaeus lineage) | [Timaeus](https://timaeus.ai/) |
 | <a id="ev-41"></a>41 | Neglected approaches | MB2 | O | Neglected-approaches portfolio strategy (AE Studio alignment agenda) | [AE Studio alignment agenda](https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach); [LessWrong mirror](https://www.lesswrong.com/posts/qAdDzcBuDBLexb4fC/the-neglected-approaches-approach-ae-studio-s-alignment); [AE Studio Research](https://ae.studio/alignment) |
 | <a id="ev-42"></a>42 | Neglected approaches | MB2, MB4 | T | Human-power objective as outer target (Heitzig line) | [Heitzig & Potham 2025](https://arxiv.org/abs/2508.00159) |
 | <a id="ev-43"></a>43 | Neglected approaches | MB6 | C | AI Safety Interventions field index (cross-cuts agendas) | [Zarncke 2025](https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions) |
-| <a id="ev-44"></a>44 | Orthogonal | MB1 | O | Agent-foundations research community (Discord + papers) | [Orthogonal](https://orxl.org/) |
 | <a id="ev-45"></a>45 | Orthogonal | MB2, MB4 | T | QACI formal outer-alignment goal line | [Leake & Persson 2023](https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal) |
 | <a id="ev-46"></a>46 | Wentworth | MB1 | C | Boundaries as directed Markov blankets (utility-theoretic cut) | [Wentworth, Boundaries I](https://www.lesswrong.com/posts/8oMF8Lv5jiGaQSFvo/boundaries-part-1-a-key-missing-concept-from-utility-theory) |
 | <a id="ev-47"></a>47 | Wentworth | MB1 | C | Agent boundaries aren't Markov blankets (critique of naive blanket cuts) | [Wentworth 2022](https://www.alignmentforum.org/posts/vmfNaKbZ6urMdQrv2/agent-boundaries-aren-t-markov-blankets-unless-they-re-non) |
@@ -603,7 +598,6 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-68"></a>68 | CLR | MB6 | C | Multipolar failure modes under competition | [Christiano 2019 (multipolar post)](https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic) |
 | <a id="ev-69"></a>69 | CLR | MB6 | O | Cooperative AI Foundation programs | [CAIF](https://www.cooperativeai.org/) |
 | <a id="ev-70"></a>70 | CLR | MB7d | C | Evidential cooperation / acausal trade line | [FDT 2017](https://arxiv.org/abs/1710.05060) |
-| <a id="ev-71"></a>71 | CLR | MB7d | O | Cooperation-under-competition research portfolio | [CLR](https://longtermrisk.org/) |
 | <a id="ev-72"></a>72 | Apollo / Truthful AI / Truthful AI | MB7 | E | Deception and situational-awareness research program | [Truthful AI](https://truthful.ai/) |
 | <a id="ev-73"></a>73 | Apollo / Truthful AI / Truthful AI | MB7 | E | AI deception survey (field synthesis) | [Park et al. 2024](https://arxiv.org/abs/2308.14752) |
 | <a id="ev-74"></a>74 | Anthropic / Goodfire / Goodfire | MB7 | D | Goodfire interpretability and editable-representation tooling | [Goodfire](https://www.goodfire.ai/) |
@@ -664,6 +658,7 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-147"></a>147 | Neglected approaches | MB2, MB7 | C | Brain-like AGI safety (social cognition / homeostatic alignment hypotheses) | [Byrnes brain-like AGI sequence](https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/) |
 | <a id="ev-148"></a>148 | Neglected approaches | MB7 | E | Self-other overlap (SOO) fine-tuning against deceptive behavior | [Carauleanu et al. 2024](https://arxiv.org/abs/2412.16325) |
 | <a id="ev-149"></a>149 | GovAI / UK AISI | MB6 | E | Empirical disempowerment patterns in real-world LLM usage | [Sharma et al. 2026](https://arxiv.org/abs/2601.19062) |
+| <a id="ev-150"></a>150 | Orthogonal | MB1 | C | Embedded agency formalism (agent-foundations community lineage) | [Demski & Garrabrant 2019](https://arxiv.org/abs/1902.09469) |
 
 **Maintenance:** when adding an agenda row or bridge cell, edit YAML under `reference/field-agendas/data/` and run `cd site && npm run sync:field-agendas`. Prefer bibliography keys already in `references/` when citing external work.
 

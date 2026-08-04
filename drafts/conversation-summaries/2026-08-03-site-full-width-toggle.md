@@ -23,4 +23,4 @@ Add a fixed overlay button (left side, like the QR button on the right) that tog
 - `site/src/styles/global.css`
 
 ## Commits
-- (pending) site: add full-width layout toggle button
+- `4e7658de` Add full-width layout toggle to companion site.

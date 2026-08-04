@@ -10,6 +10,14 @@ bookBridges:
 external:
   - label: "METR"
     url: "https://metr.org/"
+  - label: "Kwa et al. 2025 — Measuring AI Ability to Complete Long Tasks"
+    url: "https://arxiv.org/abs/2503.14499"
+  - label: "METR 2026 — Frontier Risk Report"
+    url: "https://metr.org/blog/2026-05-19-frontier-risk-report/"
+  - label: "METR 2026 — Red-teaming Anthropic agent monitoring"
+    url: "https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/"
+  - label: "Barnes 2024 — General capability evaluations update"
+    url: "https://metr.org/blog/2024-08-06-update-on-evaluations/"
   - label: "Planned Obsolescence (Cotra)"
     url: "https://plannedobsolescence.substack.com/"
 related: []
@@ -38,6 +46,10 @@ related: []
 ## Links
 
 - [METR](https://metr.org/)
+- [Kwa et al. 2025 — Measuring AI Ability to Complete Long Tasks](https://arxiv.org/abs/2503.14499)
+- [METR 2026 — Frontier Risk Report](https://metr.org/blog/2026-05-19-frontier-risk-report/)
+- [METR 2026 — Red-teaming Anthropic agent monitoring](https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/)
+- [Barnes 2024 — General capability evaluations update](https://metr.org/blog/2024-08-06-update-on-evaluations/)
 - [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/)
 
 ## Map clustering

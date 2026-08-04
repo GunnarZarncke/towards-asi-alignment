@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-03 | **Field matrix homepage prune** — Removed org landing pages from evidence catalog; agenda card links; ev-150 Orthogonal MB1. | [2026-08-03-field-matrix-homepage-evidence-prune.md](2026-08-03-field-matrix-homepage-evidence-prune.md) |
+| 2026-08-03 | **MB4a / MB7d bridge cards** — Dedicated site cards; matrix column disambiguation; MB4↔MB4a, MB7↔MB7d links. | [2026-08-03-mb4a-mb7d-bridge-cards.md](2026-08-03-mb4a-mb7d-bridge-cards.md) |
 | 2026-08-03 | **Site full-width toggle** — Bottom-left `<->` overlay; toggles constrained vs full viewport width; localStorage. | [2026-08-03-site-full-width-toggle.md](2026-08-03-site-full-width-toggle.md) |
 | 2026-08-03 | **Site projection phrasing** — Subsumption → projection on Lean spine/graphs/cards; table section “Overview of existing formalizations.” | [2026-08-03-site-projection-phrasing.md](2026-08-03-site-projection-phrasing.md) |
 | 2026-08-03 | **MB bridge graph + MB11 card** — Field-noun MB dependency DOT/PNG; dedicated MB11 bridge card + matrix/crosswalk/Lean links. | [2026-08-03-mb-bridge-graph-and-mb11-card.md](2026-08-03-mb-bridge-graph-and-mb11-card.md) |

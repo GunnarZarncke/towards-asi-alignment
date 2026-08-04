@@ -37,7 +37,7 @@ bridges:
     noun: Audit Independence
     cruxWording: The designated measured correction/audit path is legitimate and uncaptured.
     leanAxiom: MB4a_measured_path_legitimacy
-    cardSlug: mb4-correction-legitimacy
+    cardSlug: mb4a-measured-path-legitimacy
     fieldAgree: CIRIS WA independence; trusted-monitor / judge-capture cousins.
     fieldDiffer: No field headline; often lumped into corrigibility; green Verify ⇏ real-loop integrity.
   - key: MB5
@@ -73,7 +73,7 @@ bridges:
     noun: Acausal Coordination
     cruxWording: Inferential-coupling measurements remain valid after ordinary channels are cut.
     leanAxiom: MB7d_inferential_uad_detector_soundness
-    cardSlug: mb7-hidden-capability-and-access
+    cardSlug: mb7d-acausal-coordination
     fieldAgree: Acausal trade / ECL; FDT / program equilibrium.
     fieldDiffer: Sparse field evidence; LI/reflection = side channel, not discharge.
   - key: MB8

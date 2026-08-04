@@ -9,6 +9,10 @@ bookBridges:
 external:
   - label: "Redwood Research"
     url: "https://www.redwoodresearch.org/"
+  - label: "Shlegeris et al. 2023 — AI Control"
+    url: "https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion"
+  - label: "Greenblatt et al. 2024 — Alignment faking"
+    url: "https://arxiv.org/abs/2412.14093"
 related: []
 ---
 
@@ -35,6 +39,8 @@ related: []
 ## Links
 
 - [Redwood Research](https://www.redwoodresearch.org/)
+- [Shlegeris et al. 2023 — AI Control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion)
+- [Greenblatt et al. 2024 — Alignment faking](https://arxiv.org/abs/2412.14093)
 
 ## Map clustering
 

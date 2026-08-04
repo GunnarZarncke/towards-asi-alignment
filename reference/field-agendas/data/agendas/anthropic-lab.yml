@@ -34,6 +34,12 @@ manuscriptHooks:
 links:
   - label: Anthropic
     url: https://www.anthropic.com/
+  - label: Anthropic Research (index)
+    url: https://www.anthropic.com/research
+  - label: Bricken et al. 2023 — Towards Monosemanticity
+    url: https://transformer-circuits.pub/2023/monosemantic-features
+  - label: Templeton et al. 2024 — Scaling Monosemanticity (Claude 3 Sonnet)
+    url: https://transformer-circuits.pub/2024/scaling-monosemanticity/
   - label: Goodfire
     url: https://www.goodfire.com/
   - label: Transluce

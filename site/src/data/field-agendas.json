@@ -714,7 +714,6 @@
             {
               "type": "E",
               "ids": [
-                12,
                 13
               ]
             },
@@ -992,7 +991,6 @@
               "type": "E",
               "ids": [
                 25,
-                30,
                 31
               ]
             },
@@ -1062,12 +1060,6 @@
               "type": "T",
               "ids": [
                 21
-              ]
-            },
-            {
-              "type": "E",
-              "ids": [
-                32
               ]
             }
           ],
@@ -1157,7 +1149,6 @@
               "type": "E",
               "ids": [
                 36,
-                37,
                 38
               ]
             }
@@ -1301,9 +1292,9 @@
         "cells": {
           "MB1": [
             {
-              "type": "O",
+              "type": "C",
               "ids": [
-                44
+                150
               ]
             }
           ],
@@ -1768,12 +1759,6 @@
               "type": "C",
               "ids": [
                 70
-              ]
-            },
-            {
-              "type": "O",
-              "ids": [
-                71
               ]
             }
           ],
@@ -2310,21 +2295,6 @@
       ]
     },
     {
-      "id": 12,
-      "agenda": "Redwood",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "E",
-      "evidence": "Control evals and red-team protocols (agenda artifact)",
-      "sources": [
-        {
-          "label": "Redwood Research",
-          "url": "https://www.redwoodresearch.org/"
-        }
-      ]
-    },
-    {
       "id": 13,
       "agenda": "Redwood",
       "bridges": [
@@ -2588,21 +2558,6 @@
       ]
     },
     {
-      "id": 30,
-      "agenda": "Anthropic / Goodfire",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "E",
-      "evidence": "Interpretability research program (circuits, features)",
-      "sources": [
-        {
-          "label": "Anthropic Research",
-          "url": "https://www.anthropic.com/research"
-        }
-      ]
-    },
-    {
       "id": 31,
       "agenda": "Anthropic / Goodfire",
       "bridges": [
@@ -2614,21 +2569,6 @@
         {
           "label": "METR red-team of Anthropic monitoring 2026",
           "url": "https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/"
-        }
-      ]
-    },
-    {
-      "id": 32,
-      "agenda": "Google DeepMind",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "E",
-      "evidence": "Frontier safety / scalable alignment research blog",
-      "sources": [
-        {
-          "label": "DeepMind Safety Research",
-          "url": "https://deepmind.google/discover/blog/"
         }
       ]
     },
@@ -2693,21 +2633,6 @@
         {
           "label": "METR 2026",
           "url": "https://metr.org/blog/2026-05-19-frontier-risk-report/"
-        }
-      ]
-    },
-    {
-      "id": 37,
-      "agenda": "METR",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "E",
-      "evidence": "Autonomy and AI R&D capability eval suites",
-      "sources": [
-        {
-          "label": "METR",
-          "url": "https://metr.org/"
         }
       ]
     },
@@ -2807,21 +2732,6 @@
         {
           "label": "Zarncke 2025",
           "url": "https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions"
-        }
-      ]
-    },
-    {
-      "id": 44,
-      "agenda": "Orthogonal",
-      "bridges": [
-        "MB1"
-      ],
-      "type": "O",
-      "evidence": "Agent-foundations research community (Discord + papers)",
-      "sources": [
-        {
-          "label": "Orthogonal",
-          "url": "https://orxl.org/"
         }
       ]
     },
@@ -3485,21 +3395,6 @@
         {
           "label": "FDT 2017",
           "url": "https://arxiv.org/abs/1710.05060"
-        }
-      ]
-    },
-    {
-      "id": 71,
-      "agenda": "CLR",
-      "bridges": [
-        "MB7d"
-      ],
-      "type": "O",
-      "evidence": "Cooperation-under-competition research portfolio",
-      "sources": [
-        {
-          "label": "CLR",
-          "url": "https://longtermrisk.org/"
         }
       ]
     },
@@ -4470,6 +4365,21 @@
           "url": "https://arxiv.org/abs/2601.19062"
         }
       ]
+    },
+    {
+      "id": 150,
+      "agenda": "Orthogonal",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Embedded agency formalism (agent-foundations community lineage)",
+      "sources": [
+        {
+          "label": "Demski & Garrabrant 2019",
+          "url": "https://arxiv.org/abs/1902.09469"
+        }
+      ]
     }
   ],
   "clustering": [
@@ -5160,7 +5070,7 @@
       "noun": "Audit Independence",
       "cruxWording": "The designated measured correction/audit path is legitimate and uncaptured.",
       "leanAxiom": "MB4a_measured_path_legitimacy",
-      "cardSlug": "mb4-correction-legitimacy",
+      "cardSlug": "mb4a-measured-path-legitimacy",
       "fieldAgree": "CIRIS WA independence; trusted-monitor / judge-capture cousins.",
       "fieldDiffer": "No field headline; often lumped into corrigibility; green Verify ⇏ real-loop integrity."
     },
@@ -5206,7 +5116,7 @@
       "noun": "Acausal Coordination",
       "cruxWording": "Inferential-coupling measurements remain valid after ordinary channels are cut.",
       "leanAxiom": "MB7d_inferential_uad_detector_soundness",
-      "cardSlug": "mb7-hidden-capability-and-access",
+      "cardSlug": "mb7d-acausal-coordination",
       "fieldAgree": "Acausal trade / ECL; FDT / program equilibrium.",
       "fieldDiffer": "Sparse field evidence; LI/reflection = side channel, not discharge."
     },
@@ -5253,11 +5163,11 @@
     "MB2": "mb2-bundle-identifiability",
     "MB3": "mb3-bearer-import",
     "MB4": "mb4-correction-legitimacy",
-    "MB4a": "mb4-correction-legitimacy",
+    "MB4a": "mb4a-measured-path-legitimacy",
     "MB5": "mb5-successor-ontology-shift",
     "MB6": "mb6-selection-and-basin-stability",
     "MB7": "mb7-hidden-capability-and-access",
-    "MB7d": "mb7-hidden-capability-and-access",
+    "MB7d": "mb7d-acausal-coordination",
     "MB8": "mb8-cev-process-convergence",
     "MB9": "mb9-grounding-certificate",
     "MB10": "mb10-successor-forgeability",

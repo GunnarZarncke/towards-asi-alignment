@@ -14,6 +14,12 @@ bookBridges:
 external:
   - label: "Anthropic"
     url: "https://www.anthropic.com/"
+  - label: "Anthropic Research (index)"
+    url: "https://www.anthropic.com/research"
+  - label: "Bricken et al. 2023 — Towards Monosemanticity"
+    url: "https://transformer-circuits.pub/2023/monosemantic-features"
+  - label: "Templeton et al. 2024 — Scaling Monosemanticity (Claude 3 Sonnet)"
+    url: "https://transformer-circuits.pub/2024/scaling-monosemanticity/"
   - label: "Goodfire"
     url: "https://www.goodfire.com/"
   - label: "Transluce"
@@ -50,6 +56,9 @@ related: []
 ## Links
 
 - [Anthropic](https://www.anthropic.com/)
+- [Anthropic Research (index)](https://www.anthropic.com/research)
+- [Bricken et al. 2023 — Towards Monosemanticity](https://transformer-circuits.pub/2023/monosemantic-features)
+- [Templeton et al. 2024 — Scaling Monosemanticity (Claude 3 Sonnet)](https://transformer-circuits.pub/2024/scaling-monosemanticity/)
 - [Goodfire](https://www.goodfire.com/)
 - [Transluce](https://transluce.org/)
 - [Neuronpedia](https://www.neuronpedia.org/)

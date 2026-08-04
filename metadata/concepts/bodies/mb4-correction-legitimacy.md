@@ -42,6 +42,7 @@ evidenceNotes:
 related:
   - correction-channel-integrity
   - anti-capture-correction-validity
+  - mb4a-measured-path-legitimacy
   - mb8-cev-process-convergence
   - bridge-assumptions
 external:
@@ -57,8 +58,8 @@ In the field this is corrigibility and the off-switch problem. No known utility 
 
 The book's precise bet is **MB4**: [correction-channel integrity](/cards/correction-channel-integrity/) is assumed to require that the judge issuing correction is not manipulated in a way that invalidates later endorsement. Corrigibility becomes a dynamical, capture-resistant invariant with handle control ([anti-capture validity](/cards/anti-capture-correction-validity/)); shutdown and interruptibility fall out as one-bit projections. A secondary CEV-flavored route is [MB8](/cards/mb8-cev-process-convergence/); MB4 is the load-bearing path.
 
-**MB4a (Audit Independence)** is the sibling bridge: the designated measured correction/audit path is legitimate and uncaptured. CIRIS WA independence and trusted-monitor / judge-capture cousins name the same wall; the field often lumps it into corrigibility, but green Verify on a named occurrence does not imply real-loop integrity.
+The sibling bridge **[MB4a — Audit Independence](/cards/mb4a-measured-path-legitimacy/)** types measured-path legitimacy separately: the designated correction/audit path must be uncaptured and its endorsements must count on the real loop. See that card for CIRIS WA independence, judge capture, and the green-Verify ⇏ integrity gap.
 
-**Where agendas agree:** desire to accept/assist correction; Christiano dynamical reading is closest to the trajectory form. **Where they diverge:** MIRI/CHAI shutdown-utility homograph vs dynamical corrigibility; the book splits audit-path legitimacy as MB4a.
+**Where agendas agree:** desire to accept/assist correction; Christiano dynamical reading is closest to the trajectory form. **Where they diverge:** MIRI/CHAI shutdown-utility homograph vs dynamical corrigibility; audit-path legitimacy is [MB4a](/cards/mb4a-measured-path-legitimacy/), not folded into MB4 alone.
 
 This is the most heavily probed bridge in the experiment suite. Passive observation cannot certify it; light handle instrumentation gets most of the way; milder capture still slips through. Reported acceptance and true uptake can diverge sharply. That gap is what this bridge has to rule out.

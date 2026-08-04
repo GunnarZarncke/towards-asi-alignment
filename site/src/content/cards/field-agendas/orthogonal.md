@@ -10,6 +10,10 @@ bookBridges:
 external:
   - label: "Orthogonal"
     url: "https://orxl.org/"
+  - label: "Demski & Garrabrant 2019 — Embedded Agency"
+    url: "https://arxiv.org/abs/1902.09469"
+  - label: "Leake & Persson 2023 — QACI"
+    url: "https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal"
 related: []
 ---
 
@@ -36,6 +40,8 @@ related: []
 ## Links
 
 - [Orthogonal](https://orxl.org/)
+- [Demski & Garrabrant 2019 — Embedded Agency](https://arxiv.org/abs/1902.09469)
+- [Leake & Persson 2023 — QACI](https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal)
 
 ## Map clustering
 

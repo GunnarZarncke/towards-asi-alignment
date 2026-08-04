@@ -115,15 +115,6 @@ evidence:
       - label: Shlegeris et al. 2023
         url: >-
           https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion
-  - id: 12
-    agenda: Redwood
-    bridges:
-      - MB7
-    type: E
-    evidence: Control evals and red-team protocols (agenda artifact)
-    sources:
-      - label: Redwood Research
-        url: https://www.redwoodresearch.org/
   - id: 13
     agenda: Redwood
     bridges:
@@ -289,15 +280,6 @@ evidence:
     sources:
       - label: Hubinger 2023
         url: https://arxiv.org/abs/2302.00805
-  - id: 30
-    agenda: Anthropic / Goodfire
-    bridges:
-      - MB7
-    type: E
-    evidence: Interpretability research program (circuits, features)
-    sources:
-      - label: Anthropic Research
-        url: https://www.anthropic.com/research
   - id: 31
     agenda: Anthropic / Goodfire
     bridges:
@@ -308,15 +290,6 @@ evidence:
       - label: METR red-team of Anthropic monitoring 2026
         url: >-
           https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/
-  - id: 32
-    agenda: Google DeepMind
-    bridges:
-      - MB7
-    type: E
-    evidence: Frontier safety / scalable alignment research blog
-    sources:
-      - label: DeepMind Safety Research
-        url: https://deepmind.google/discover/blog/
   - id: 33
     agenda: Apollo / Truthful AI
     bridges:
@@ -358,15 +331,6 @@ evidence:
     sources:
       - label: METR 2026
         url: https://metr.org/blog/2026-05-19-frontier-risk-report/
-  - id: 37
-    agenda: METR
-    bridges:
-      - MB7
-    type: E
-    evidence: Autonomy and AI R&D capability eval suites
-    sources:
-      - label: METR
-        url: https://metr.org/
   - id: 38
     agenda: METR
     bridges:
@@ -428,15 +392,6 @@ evidence:
       - label: Zarncke 2025
         url: >-
           https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions
-  - id: 44
-    agenda: Orthogonal
-    bridges:
-      - MB1
-    type: O
-    evidence: Agent-foundations research community (Discord + papers)
-    sources:
-      - label: Orthogonal
-        url: https://orxl.org/
   - id: 45
     agenda: Orthogonal
     bridges:
@@ -862,15 +817,6 @@ evidence:
     sources:
       - label: FDT 2017
         url: https://arxiv.org/abs/1710.05060
-  - id: 71
-    agenda: CLR
-    bridges:
-      - MB7d
-    type: O
-    evidence: Cooperation-under-competition research portfolio
-    sources:
-      - label: CLR
-        url: https://longtermrisk.org/
   - id: 72
     agenda: Apollo / Truthful AI / Truthful AI
     bridges:
@@ -1467,3 +1413,12 @@ evidence:
     sources:
       - label: Sharma et al. 2026
         url: https://arxiv.org/abs/2601.19062
+  - id: 150
+    agenda: Orthogonal
+    bridges:
+      - MB1
+    type: C
+    evidence: Embedded agency formalism (agent-foundations community lineage)
+    sources:
+      - label: Demski & Garrabrant 2019
+        url: https://arxiv.org/abs/1902.09469

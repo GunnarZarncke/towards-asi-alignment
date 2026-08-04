@@ -86,7 +86,6 @@ rows:
       MB7:
         - type: E
           ids:
-            - 12
             - 13
         - type: C
           ids:
@@ -249,7 +248,6 @@ rows:
         - type: E
           ids:
             - 25
-            - 30
             - 31
         - type: E
           ids:
@@ -291,9 +289,6 @@ rows:
         - type: T
           ids:
             - 21
-        - type: E
-          ids:
-            - 32
       MB7d: []
       MB8: []
       MB9: []
@@ -350,7 +345,6 @@ rows:
         - type: E
           ids:
             - 36
-            - 37
             - 38
       MB7d: []
       MB8: []
@@ -432,9 +426,9 @@ rows:
   - agenda: Orthogonal
     cells:
       MB1:
-        - type: O
+        - type: C
           ids:
-            - 44
+            - 150
       MB2:
         - type: T
           ids:
@@ -714,9 +708,6 @@ rows:
         - type: C
           ids:
             - 70
-        - type: O
-          ids:
-            - 71
       MB8: []
       MB9: []
       MB10: []

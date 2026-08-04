@@ -14,6 +14,8 @@ external:
     url: "https://deepmind.google/blog/"
   - label: "Discovering Agents"
     url: "https://arxiv.org/abs/2208.08345"
+  - label: "Leike et al. 2018 — Scalable agent oversight"
+    url: "https://arxiv.org/abs/1811.07871"
 related: []
 ---
 
@@ -42,6 +44,7 @@ related: []
 - [Google DeepMind](https://deepmind.google/)
 - [DeepMind Safety Research blog](https://deepmind.google/blog/)
 - [Discovering Agents](https://arxiv.org/abs/2208.08345)
+- [Leike et al. 2018 — Scalable agent oversight](https://arxiv.org/abs/1811.07871)
 
 ## Map clustering
 

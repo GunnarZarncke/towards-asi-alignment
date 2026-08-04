@@ -86,6 +86,28 @@ bridges:
     fieldCrux: "Correction that holds now continues to preserve the correction process under pressure."
     owningAgenda: "MIRI, CHAI, Christiano dynamical corrigibility, Constitutional AI"
     bookMove: "Correction-channel integrity as a dynamical, capture-resistant invariant with handle control; shutdown/interruptibility are one-bit projections"
+  - slug: mb4a-measured-path-legitimacy
+    kind: bridge
+    title: MB4a — Audit Independence
+    status: bridge
+    summary: "Audit-path legitimacy: the designated measured correction/audit path is uncaptured and its endorsements count. Precise bet: correction integrity implies the measured path is legitimate — a falsifier bridge, not green Verify ⇒ real-loop integrity."
+    decision: Before trusting a named audit path, ask whether the judge or monitor can be captured, whether green Verify on the occurrence implies control of the real intervening loop, and whether bypass routes exist outside the measured path.
+    evidence: Evidence would include interventional probes for judge capture, composite/tool bypass outside the named path, and tests that distinguish path telemetry from real correction uptake.
+    bookChapters:
+      - ch25
+      - ch26
+      - ch27
+      - ch28
+      - ch29
+      - ch41
+      - ch42
+      - ch43
+    body: bodies/mb4a-measured-path-legitimacy.md
+    id: MB4a
+    assumptionIds: [A-002]
+    fieldCrux: "The designated measured correction/audit path is legitimate and uncaptured."
+    owningAgenda: "CIRIS WA independence; trusted-monitor / judge-capture cousins"
+    bookMove: "Measured path carries data only; legitimacy (control, reach, persistence, anti-capture) is supplied by bridge; integrity ⇒ legitimate path — not green path ⇒ integrity"
   - slug: mb5-successor-ontology-shift
     kind: bridge
     title: MB5 — Tiling
@@ -145,7 +167,23 @@ bridges:
     assumptionIds: [A-004, A-009, A-013]
     fieldCrux: "Hidden productive control is bounded and oversight stays adversarially robust (access, filter coverage, cost of faking)."
     owningAgenda: "RLHF, Debate, Amplification, AI Control (Redwood); decision theory (MIRI-adjacent) for MB7d"
-    bookMove: "Bound hidden productive B-IQ via access robustness plus filter coverage and price the cost of faking the monitored signal; inferential-coupling detector certificates for coordination surviving cut channels"
+    bookMove: "Bound hidden productive B-IQ via access robustness plus filter coverage and price the cost of faking the monitored signal; see MB7d for inferential coupling"
+  - slug: mb7d-acausal-coordination
+    kind: bridge
+    title: MB7d — Acausal Coordination
+    status: bridge
+    summary: "Inferential coupling after channel severance: coordination that survives cutting ordinary messages and control paths. Precise bet: access-robust discovery plus adequate inferential-detector assumptions warrant inferential-coupling measurements."
+    decision: Before trusting a severance or isolation test, ask whether the detector family was validated against systems that coordinate without visible messages — shared training, scaffolds, or program-equilibrium structure.
+    evidence: Evidence would include channel-severance ablations where compensation stays null under cut channels, and adversarial tests where systems optimize to look independent while coordinating inferentially.
+    bookChapters:
+      - ch35
+      - ch48
+    body: bodies/mb7d-acausal-coordination.md
+    id: MB7d
+    assumptionIds: [A-009, A-013]
+    fieldCrux: "Inferential-coupling measurements remain valid after ordinary channels are cut."
+    owningAgenda: "Decision theory (MIRI-adjacent); acausal trade / ECL"
+    bookMove: "Inferential-coupling detector certificates for coordination that survives cutting ordinary communication and control"
   - slug: mb8-cev-process-convergence
     kind: bridge
     title: MB8 — Extrapolated Volition

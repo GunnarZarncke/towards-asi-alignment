@@ -10,6 +10,8 @@ bookBridges:
 external:
   - label: "CLR"
     url: "https://longtermrisk.org/"
+  - label: "Critch & Krueger 2020 — ARCHES"
+    url: "https://arxiv.org/abs/2006.04948"
   - label: "Cooperative AI Foundation (CAIF)"
     url: "https://www.cooperativeai.com/"
 related: []
@@ -38,6 +40,7 @@ related: []
 ## Links
 
 - [CLR](https://longtermrisk.org/)
+- [Critch & Krueger 2020 — ARCHES](https://arxiv.org/abs/2006.04948)
 - [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.com/)
 
 See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.

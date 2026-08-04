@@ -46,7 +46,7 @@
     "fieldCrux": "The designated measured correction/audit path is legitimate and uncaptured.",
     "agendas": "CIRIS WA independence; trusted-monitor / judge-capture cousins",
     "bookMove": "Measured path carries data only; legitimacy (control, reach, persistence, anti-capture) is supplied by bridge; integrity ⇒ legitimate path — not green path ⇒ integrity",
-    "cards": ["mb4-correction-legitimacy", "correction-channel-integrity"],
+    "cards": ["mb4a-measured-path-legitimacy", "correction-channel-integrity"],
     "chapters": ["ch27", "ch28", "ch29"]
   },
   {
@@ -86,7 +86,7 @@
     "fieldCrux": "Inferential-coupling measurements remain valid after ordinary channels are cut.",
     "agendas": "Decision theory (MIRI-adjacent); acausal trade / ECL",
     "bookMove": "Inferential-coupling detector certificates for coordination that survives cutting ordinary communication and control",
-    "cards": ["mb7-hidden-capability-and-access", "composite-agency", "detecting-composite-agents"],
+    "cards": ["mb7d-acausal-coordination", "inferential-coupling", "composite-agency", "detecting-composite-agents"],
     "chapters": ["ch35", "ch48"]
   },
   {

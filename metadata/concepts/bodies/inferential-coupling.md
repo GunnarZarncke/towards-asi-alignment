@@ -19,6 +19,7 @@ related:
   - strategic-opacity
   - attractor-control
   - mb7-hidden-capability-and-access
+  - mb7d-acausal-coordination
 citeKeys:
   - zarncke2025acausal
   - tdt2010
