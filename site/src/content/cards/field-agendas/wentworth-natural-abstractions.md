@@ -10,7 +10,7 @@ bookBridges:
   - "MB1"
 external:
   - label: "John Wentworth"
-    url: "https://www.alignmentforum.org/users/John+Wentworth"
+    url: "https://www.lesswrong.com/users/johnswentworth"
 related: []
 ---
 
@@ -36,6 +36,6 @@ John Wentworth's natural-abstractions lineage develops the [Natural Abstraction 
 
 ## Links
 
-- [John Wentworth](https://www.alignmentforum.org/users/John+Wentworth)
+- [John Wentworth](https://www.lesswrong.com/users/johnswentworth)
 
 See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

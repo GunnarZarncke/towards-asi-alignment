@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-04 (Lean overview ledger status column).
+Last updated: 2026-08-04 (Wentworth profile link).
 
 ---
 
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference + companion site (2026-08-04):** Wentworth agenda profile link → `lesswrong.com/users/johnswentworth` (YAML source + sync). Log: `2026-08-04-wentworth-profile-link.md`.
 - **Companion site (2026-08-04):** Lean overview ledger column — field projections table shows `FieldResultStatus` badges (`rederivedFinite`, `separationOnly`, `importedAssumption`) instead of flat `proof`; Debate headline leads with claim-tree soundness/completeness/judge-error-flip. Log: `2026-08-04-lean-overview-ledger-status.md`.
 - **Companion site / CI (2026-08-04):** Site PDF fetch — direct release download + authenticated API fallback + retries; fixes GitHub Actions `403 rate limit exceeded` on `copy:pdf`. Optional LaTeX PDF CI compile gate deferred to `metadata/TODO.md`. Log: `2026-08-04-site-pdf-fetch-rate-limit.md`.
 - **Companion site (2026-08-04):** Debate visibility — `FINITE → DEB (DebateGame)` in field graph; DEB node surfaces game theorems; `/lean/check/debate/`; ELK alias/graph alignment; regenerated `05-field-subsumptions.png`. Log: `2026-08-04-debate-graph-site-visibility.md`.

@@ -494,7 +494,7 @@ John Wentworth's natural-abstractions lineage develops the [Natural Abstraction 
 - **Contributes:** The [Natural Abstraction Hypothesis](https://www.alignmentforum.org/users/John+Wentworth) acts as a falsifier for low-dimensional value stories: if the wrong latents are natural, naive [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) targets may misfire even when surface training looks successful (see ch17 WWCTV).
 - **Book separates:** The book types bundle geometry and ontology-shift transport separately; natural-abstraction convergence is informative but is not promoted to a load-bearing spine assumption—[Tiling](/cards/mb5-successor-ontology-shift/) still needs its own discharge argument.
 - **Manuscript hooks:** ch17; App B shard/NAH row
-- **Links:** [John Wentworth](https://www.alignmentforum.org/users/John+Wentworth)
+- **Links:** [John Wentworth](https://www.lesswrong.com/users/johnswentworth)
 
 ---
 
@@ -734,7 +734,7 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | [Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/) | [Resolution](#resolution) |
 | [AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment) | [Neglected approaches portfolio](#neglected-approaches-portfolio) |
 | [Orthogonal](https://orxl.org/) | [Orthogonal](#orthogonal) |
-| [John Wentworth](https://www.alignmentforum.org/users/John+Wentworth) | [Wentworth / NAH](#wentworth--natural-abstractions) |
+| [John Wentworth](https://www.lesswrong.com/users/johnswentworth) | [Wentworth / NAH](#wentworth--natural-abstractions) |
 | [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy) | [Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta); [Kosoy / PreDCA](#kosoy--predca) |
 | [GovAI](https://www.governance.ai/), GovAI Fellowship, [Simon Institute](https://www.simoninstitute.ch/), [IAPS](https://www.iaps.ai/), Oxford AIGI | [GovAI / UK AISI](#govai) cluster |
 | [UK AISI](https://www.aisi.gov.uk/), [CAISI](https://www.nist.gov/artificial-intelligence), Beijing-AISI, CnAISDA | [GovAI / UK AISI](#govai) cluster |

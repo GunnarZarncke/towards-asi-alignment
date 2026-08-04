@@ -133,10 +133,10 @@ clustering:
       - label: Orthogonal
         url: '#orthogonal'
     rollsUpSlug: orthogonal
-  - listings: '[John Wentworth](https://www.alignmentforum.org/users/John+Wentworth)'
+  - listings: '[John Wentworth](https://www.lesswrong.com/users/johnswentworth)'
     listingLinks:
       - label: John Wentworth
-        url: https://www.alignmentforum.org/users/John+Wentworth
+        url: https://www.lesswrong.com/users/johnswentworth
     rollsUpTo: '[Wentworth / NAH](#wentworth--natural-abstractions)'
     rollsUpLinks:
       - label: Wentworth / NAH
