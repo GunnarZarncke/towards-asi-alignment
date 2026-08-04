@@ -76,15 +76,42 @@ checks:
       - mb7-hidden-capability-and-access
     leanForward:
       - elk_subsumption_readout
-      - elk_readout_is_correction_projection
+      - elk_reporter_nonidentifiability
     leanSeparations:
       - elk_separated_from_uptake
     leanNotChecked:
-      - Native ELK reporter/training theorem matching under optimization pressure
+      - Reporter training under adversarial optimization pressure
       - MB7 bridge assumptions (hidden BIQ, filter coverage, access model)
-      - Identifiability of direct translator vs simulator (see ELKIdentifiability finite module)
     bridges:
       - MB7
       - MB7b
       - MB7c
     body: bodies/elk.md
+  - slug: debate
+    question: "Does debate guarantee aligned oversight?"
+    summary: >-
+      Debate asks whether adversarial argument lets a judge select locally correct answers.
+      Lean rederives the finite debate game: with a correct judge, optimal play tracks truth;
+      one wrong atom flips the outcome. Local truth selection need not preserve the judge's correction channel.
+    fieldTerms:
+      - debate
+      - scalable oversight
+      - amplification
+    steppingStones:
+      - subsumption-debate
+      - correction-channel-integrity
+      - mb4-correction-legitimacy
+    leanForward:
+      - debate_value_tracks_truth
+      - debate_defender_wins_iff_true
+      - debate_judge_error_flips_outcome
+    leanSeparations:
+      - debate_separated_from_judge_correction
+    leanNotChecked:
+      - Debater compute limits and argument-length asymmetries (imported handle)
+      - MB4 bridge assumptions (judge correction legitimacy in deployment)
+      - Probabilistic judge / optimization pressure during training
+    bridges:
+      - MB4
+      - MB4a
+    body: bodies/debate.md

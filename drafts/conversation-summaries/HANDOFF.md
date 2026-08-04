@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-04 (translation spine Phase 2 closed; bridge dependency map on Field).
+Last updated: 2026-08-04 (debate graph + site visibility).
 
 ---
 
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site (2026-08-04):** Debate visibility — `FINITE → DEB (DebateGame)` in field graph; DEB node surfaces game theorems; `/lean/check/debate/`; ELK alias/graph alignment; regenerated `05-field-subsumptions.png`. Log: `2026-08-04-debate-graph-site-visibility.md`.
 - **Reference + companion site (2026-08-04):** Field evidence catalog renumber (131–156 → 130–153; closes gaps 130/144/146); duplicate agenda suffixes fixed; benchmark canary on every HTML page via `BenchmarkCanary.astro`. Log: `2026-08-04-field-evidence-housekeeping-canary.md`.
 - **Companion site (2026-08-04):** Translation spine **Phase 2 closed** — bridge dependency map on `/field/#bridge-dependencies` (`sync-bridge-graph.mjs`); links from bridge-assumptions + MB bridge cards; CIRL/ELK checks; hidden-BIQ projection. App G opener deferred to author. Log: `2026-08-04-translation-spine-on-ramp.md`.
 - **Companion site (2026-08-04):** Translation spine Phase 1 — question-first `/lean/`; `/lean/check/corrigibility/`; 13 field projection rows; graph→card wiring; reverse term-links. Log: `2026-08-04-translation-spine-on-ramp.md`.

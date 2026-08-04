@@ -9,21 +9,29 @@ formulas:
     explanation: 'Non-converse separation: debate can preserve local truth while losing judge correction control.'
     chapterId: ch41
 leanNodes:
-  - nodeId: debate_subsumption_truth
+  - nodeId: debate_tracks_truth
     kind: proof
-    summary: Judge correction preserved with positive truth capacity implies debate selects truth locally.
-    module: AlignmentProofSpine/Field/Debate.lean
-  - nodeId: debate_truth_is_correction_projection
+    summary: With a correct judge, debate game value equals claim truth on finite claim trees.
+    module: AlignmentProofSpine/Field/Finite/DebateGame.lean
+  - nodeId: debate_defender_wins_iff_true
     kind: proof
-    summary: Local truth capacity as projection of judge-channel kappa_C.
+    summary: Defender wins under optimal play iff the claim is true (correct judge).
+    module: AlignmentProofSpine/Field/Finite/DebateGame.lean
+  - nodeId: debate_judge_error_flips_outcome
+    kind: proof
+    summary: One judge error on an atom can certify a false claim — debate amplifies judge correctness, it cannot create it.
     module: AlignmentProofSpine/Field/Debate.lean
   - nodeId: debate_separated_from_judge_correction
     kind: counterexample
     summary: 'Separation: local truth selection without judge correction preservation.'
     module: AlignmentProofSpine/Field/Debate.lean
+  - nodeId: debate_truth_is_correction_projection
+    kind: proof
+    summary: 'Interface toy only: assumes truth-capacity/κ_C identification as a hypothesis.'
+    module: AlignmentProofSpine/Field/Debate.lean
   - nodeId: Irving2018_debate_truth_protocol_imported
     kind: definition
-    summary: 'Imported handle: under idealized debate conditions, adversarial argument can make truth easier for a judge to select.'
+    summary: 'Imported handle: debater compute limits, argument-length asymmetries, and probabilistic judge stay with the literature.'
     module: AlignmentProofSpine/Field/Imported.lean
 citeKeys:
   - irving2018debate
@@ -31,6 +39,6 @@ citeKeys:
 
 Debate is a scalable oversight proposal: two agents argue; a judge picks the winner. The field object is local truth selection under protocol assumptions. The book's worry is familiar from amplification: improving local supervision can fail correction contraction — the judge may lose the handles that make their verdict causally matter.
 
-Lean records the forward projection when judge correction and truth capacity align, and a finite separation when truth selection persists without judge-channel preservation. Native debate-game theorem matching remains deferred; the claim here is projection plus separation on the shared finite fragment.
+Lean rederives the native finite debate game (`Field/Finite/DebateGame.lean`): with a correct judge, optimal play tracks truth and one wrong atom flips the outcome. It also records a finite separation when local truth selection persists without judge-channel preservation. The older κ_C-projection lemmas remain as labeled interface toys, not the headline result.
 
 *What debate keeps that this crosswalk does not replace:* a concrete oversight protocol and training/eval procedure. The book names a failure mode of it, not a replacement protocol.

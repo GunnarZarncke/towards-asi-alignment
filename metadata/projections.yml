@@ -111,7 +111,7 @@ projections:
     status: established
     leanStatus: proof
     graphNodeId: DEB
-    summary: Debate asks whether adversarial argument lets a judge select locally correct answers under idealized protocol assumptions. Preserved judge correction plus positive local truth capacity implies local truth selection — but local truth selection need not preserve the judge's correction channel.
+    summary: Debate asks whether adversarial argument lets a judge select locally correct answers. Lean rederives the finite debate game — with a correct judge, optimal play tracks truth and one wrong atom flips the outcome — and proves local truth selection need not preserve the judge's correction channel.
     decision: When using debate or amplification for oversight, track whether the judge's correction handles remain causally effective, not only whether local answers look true.
     bookChapters:
       - ch29

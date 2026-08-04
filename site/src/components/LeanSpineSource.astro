@@ -60,8 +60,9 @@ if (spineSource.code) {
       <p class="side-panel-meta">Declarations: {spineSource.decls.join(", ")}</p>
     )}
     <p class="lean-spine-note">
-      From the machine-checked spine in <code>formal/</code> (Mathlib + spine imports).
-      Not self-contained for Lean 4 Web — use the repo or a local <code>lake build</code>.
+      From the machine-checked spine in <code>formal/</code> (core modules are Mathlib-free;
+      <code>Field/Finite/</code> may import Mathlib). Not self-contained for Lean 4 Web —
+      use the repo or a local <code>lake build</code>.
     </p>
     <div class="lean-pre" set:html={highlighted} />
   </section>
