@@ -22,7 +22,7 @@ digraph Spine01BoundaryMeasurement {
   P09K [label="K-equivalence limit", fillcolor="#EAF3FF"];
   P36 [label="P36 Handle-operation ref.", fillcolor="#EAF3FF"];
   P36M [label="Smoothing margin", fillcolor="#EAF3FF"];
-  P10 [label="P10 B-IQ upper bound", fillcolor="#EAF3FF"];
+  P10 [label="P10 BIQ upper bound", fillcolor="#EAF3FF"];
   P11 [label="P11 Capacity monotonicity", fillcolor="#EAF3FF"];
   P34 [label="P34 Host-capacity aliasing", fillcolor="#EAF3FF"];
   P43H [label="Hidden-rate accumulation", fillcolor="#EAF3FF"];

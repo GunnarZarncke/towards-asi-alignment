@@ -10,7 +10,7 @@ Host-capacity aliasing (`P34`) uses Mathlib's finite-cardinality lemmas via
 
 Design notes (see `formal/LeanProofSpineImplementationBrief.md`):
 
-* The empirical and conceptual content of UAD, value bundles, B-IQ, attractor
+* The empirical and conceptual content of UAD, value bundles, BIQ, attractor
   basins, and CEV is **not** formalized here. We only formalize the logical
   skeleton: *if* these predicates and inequalities hold, *then* the
   certification conclusion follows.
@@ -201,7 +201,7 @@ axiom AccessRobust : System → Prop
 /-- The observer's filter family covers the system's control-relevant channels. -/
 axiom FilterCoverageAdequate : System → Prop
 
-/-- Hidden productive B-IQ is bounded under the monitored filter family. -/
+/-- Hidden productive BIQ is bounded under the monitored filter family. -/
 axiom HiddenBIQBoundedSys : System → Prop
 
 /-- Inferential-coupling detector assumptions are adequate at the
@@ -529,11 +529,11 @@ axiom MB7a_access_model_soundness :
   ∀ A : System, BoundaryAligned A → AccessModelAdequate A → AccessRobust A
 
 /-- MB7b: filter-family coverage. Access robustness plus adequate resolution bounds
-    hidden productive B-IQ. -/
+    hidden productive BIQ. -/
 axiom MB7b_filter_family_coverage :
   ∀ A : System, AccessRobust A → FilterCoverageAdequate A → HiddenBIQBoundedSys A
 
-/-- MB7c: hidden-BIQ-to-adversarial-robustness. If hidden productive B-IQ is bounded,
+/-- MB7c: hidden-BIQ-to-adversarial-robustness. If hidden productive BIQ is bounded,
     correction integrity can support adversarial robustness. -/
 axiom MB7c_hidden_biq_to_adversarial_robustness :
   ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A

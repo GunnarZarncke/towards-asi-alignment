@@ -167,7 +167,7 @@ bridges:
     assumptionIds: [A-004, A-009, A-013]
     fieldCrux: "Hidden productive control is bounded and oversight stays adversarially robust (access, filter coverage, cost of faking)."
     owningAgenda: "RLHF, Debate, Amplification, AI Control (Redwood); decision theory (MIRI-adjacent) for MB7d"
-    bookMove: "Bound hidden productive B-IQ via access robustness plus filter coverage and price the cost of faking the monitored signal; see MB7d for inferential coupling"
+    bookMove: "Bound hidden productive BIQ via access robustness plus filter coverage and price the cost of faking the monitored signal; see MB7d for inferential coupling"
   - slug: mb7d-acausal-coordination
     kind: bridge
     title: MB7d — Acausal Coordination

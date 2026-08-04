@@ -27,7 +27,7 @@ digraph LeanProofDependencies {
   P36M [label="Smoothing margin\nΔ > 2δK + 2εest", fillcolor="#EAF3FF"];
 
   // Capability (ch11–14, 33, 36)
-  P10 [label="P10 B-IQ upper bound\nBIQ ≤ Csens + Cact", fillcolor="#EAF3FF"];
+  P10 [label="P10 BIQ upper bound\nBIQ ≤ Csens + Cact", fillcolor="#EAF3FF"];
   P11 [label="P11 Capacity monotonicity\nhigher IO ceiling ⇒ higher max BIQ", fillcolor="#EAF3FF"];
   P12 [label="P12 Coordination bottleneck\ncoordination can cap collective BIQ", fillcolor="#EAF3FF"];
   P13 [label="P13 Control outpaces correction\nRisk = Control − CCI", fillcolor="#EAF3FF"];

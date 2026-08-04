@@ -6,11 +6,11 @@ leanNodes:
     module: AlignmentProofSpine/Core.lean
   - nodeId: MB7b_filter_family_coverage
     kind: bridge
-    summary: Access robustness plus adequate resolution is assumed to bound hidden productive boundary information (B-IQ).
+    summary: Access robustness plus adequate resolution is assumed to bound hidden productive boundary information (BIQ).
     module: AlignmentProofSpine/Core.lean
   - nodeId: MB7c_hidden_biq_to_adversarial_robustness
     kind: bridge
-    summary: If hidden productive B-IQ is bounded, correction integrity is assumed to support adversarial robustness.
+    summary: If hidden productive BIQ is bounded, correction integrity is assumed to support adversarial robustness.
     module: AlignmentProofSpine/Core.lean
   - nodeId: MB7d_inferential_uad_detector_soundness
     kind: bridge
@@ -56,7 +56,7 @@ In the field this is inner alignment and [deceptive alignment](/cards/strategic-
 The book's precise bet is **MB7**, split into four narrower bridges rather than one vague "we checked for hidden capability" claim:
 
 - **MB7a** assumes an adequate access model makes [boundary discovery](/cards/boundary-discovery/) robust under [adversarial hiding](/cards/adversarial-boundary-discovery/).
-- **MB7b** assumes the filter family used to look for hidden [capability](/cards/capability/) has enough resolution to bound what it misses (the hidden productive B-IQ bound; not the same as experimental BIQ in unit-discovery runs).
+- **MB7b** assumes the filter family used to look for hidden [capability](/cards/capability/) has enough resolution to bound what it misses (the hidden productive BIQ bound; not the same as experimental BIQ in unit-discovery runs).
 - **MB7c** assumes that once hidden capability is bounded, [correction integrity](/cards/correction-channel-integrity/) can extend into adversarial robustness.
 
 Splitting the wall does not make any piece less hard. It lets a reviewer ask which of the three an audit actually tested. **[MB7d — Acausal Coordination](/cards/mb7d-acausal-coordination/)** is the sibling bridge for inferential coupling after channel severance — see that card for acausal trade, ECL, and severance-detector evidence.

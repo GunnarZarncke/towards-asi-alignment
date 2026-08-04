@@ -5,7 +5,7 @@ import AlignmentProofSpine.Correction
 /-!
 # AlignmentProofSpine.Capability
 
-Capability / B-IQ / control–correction arithmetic (book chapters 11–14, 33).
+Capability / BIQ / control–correction arithmetic (book chapters 11–14, 33).
 
 * Capability at the blanket: `K` (`KSys`; not value-bundle `B`).
 * Effective control `Control` from ch11 control information (integer proxy).
@@ -27,7 +27,7 @@ theorem P10_biq_upper_bound
     BIQ Ipred Ictrl Hmem Surprise beta gamma ≤ Csens + Cact := by
   unfold BIQ; omega
 
-/-- Integer Markov-blanket/B-IQ profile: predictive and control information are
+/-- Integer Markov-blanket/BIQ profile: predictive and control information are
     bounded by sensory/action channel capacities, while memory/surprise penalties
     are nonnegative. This keeps the BIQ-paper arithmetic separate from the
     empirical bridge that a deployed system's measured blanket satisfies it. -/
@@ -75,7 +75,7 @@ noncomputable def KSys (A : System) : Int := CsensSys A + CactSys A
 noncomputable def BIQSys (A : System) : Int :=
   BIQ (IpredSys A) (IctrlSys A) (HmemSys A) (SurpriseSys A) (betaSys A) (gammaSys A)
 
-/-- **S10** (blanket-measurand coherence convention). The per-system B-IQ
+/-- **S10** (blanket-measurand coherence convention). The per-system BIQ
     measurands respect the Markov-blanket capacity semantics they are named
     after: measured predictive/control information does not exceed the
     corresponding channel capacity, and the memory/surprise penalty terms are
@@ -359,8 +359,8 @@ theorem risk_gap_le_delta_of_witness
 structure BIQDerivedCCISlack (A : System) (δ : Int) where
   cact_le_cci : CactSys A ≤ CCI A + δ
 
-/-- A Markov-blanket/B-IQ derivation of the numeric `Control ≤ CCI + δ` leaf.
-    The profile supplies the B-IQ channel arithmetic; the final field says the
+/-- A Markov-blanket/BIQ derivation of the numeric `Control ≤ CCI + δ` leaf.
+    The profile supplies the BIQ channel arithmetic; the final field says the
     action channel is below the correction-capacity slack. -/
 structure MarkovBlanketBIQDerivedCCISlack (A : System) (δ : Int) where
   profile : MarkovBlanketBIQProfile
@@ -411,7 +411,7 @@ theorem BIQCapacityCertificate.risk_gap_bound
   risk_gap_bound_from_biq_ceiling cert.toBIQDerivedCCISlack
 
 /-- Certificate form for the stealth-capability result: monitored filters, tags,
-    decay rules, and ledgers jointly bound hidden productive B-IQ tightly enough
+    decay rules, and ledgers jointly bound hidden productive BIQ tightly enough
     to imply the same correction-capacity slack used by the safety spine. -/
 structure HiddenBIQCertificate (A : System) (δ : Int) where
   hidden_biq_le_cci : Control A ≤ CCI A + δ

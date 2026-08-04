@@ -404,7 +404,7 @@ judgment built on it (`MB7c`), and the inferential-coupling detector
 (`MB7d`). `MB7a` (access-model soundness) is the one link in the chain not
 yet reducible to a channel in this sense, so it keeps a named signal. -/
 
-/-- A hidden-productive-B-IQ or inferential-coupling audit channel is
+/-- A hidden-productive-BIQ or inferential-coupling audit channel is
     steerable at a system's capability exactly when `MB7b`/`MB7c`/`MB7d`'s
     reading cannot be trusted there — see `Chokepoint.AdversariallyVerifiableUpTo`
     and the ch43 cost relation it formalizes. This is a naming convenience,

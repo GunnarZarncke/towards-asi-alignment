@@ -10,10 +10,10 @@ import AlignmentProofSpine.Field.Finite.Basic
 /-!
 # AlignmentProofSpine.Field.Finite.TraceBIQ
 
-Finite discrete traces, blanket partitions, and trace-computed B-IQ.
+Finite discrete traces, blanket partitions, and trace-computed BIQ.
 
 Lean **computes** lagged pattern-diversity scores from trace columns and
-packages them into B-IQ-shaped profiles. These scores are **not** Shannon mutual
+packages them into BIQ-shaped profiles. These scores are **not** Shannon mutual
 information: they count distinct lagged patterns and take integer
 \(\lceil\log_2\rceil\) of support sizes, with no empirical PMF.
 An empirical calibration against Shannon MI on real fixture data
@@ -391,7 +391,7 @@ structure TraceBIQParams where
   beta_nonneg : 0 ≤ beta
   gamma_nonneg : 0 ≤ gamma
 
-/-- Vector B-IQ view. For harm bounds, `output` is the relevant component; the
+/-- Vector BIQ view. For harm bounds, `output` is the relevant component; the
     other coordinates remain available for deception, surprise, and cost proofs. -/
 structure TraceBIQVector where
   prediction : Int
@@ -410,7 +410,7 @@ def traceBIQVector
   memoryCost := p.beta * traceMemorySupport t B
   surpriseCost := p.gamma * traceSurpriseSupport t B
 
-/-- The output component is the actuator/control component of trace B-IQ. -/
+/-- The output component is the actuator/control component of trace BIQ. -/
 def traceOutputDiversity
     (t : DiscreteTrace nVar nAlpha nSteps) (B : EnvBlanket nVar)
     (p : TraceBIQParams) : Int :=
@@ -663,8 +663,8 @@ theorem subsample_output_capability_le_tight_optimism
   rw [trace_output_capability_eq_control]
   exact traceControlDiversity_le_tight_optimism (subsampleTrace t pick) B p.maxLag
 
-/-- Tight B-IQ appearance bound: prediction and output each obey the tight
-    ceiling, so apparent subsample B-IQ is at most twice it. -/
+/-- Tight BIQ appearance bound: prediction and output each obey the tight
+    ceiling, so apparent subsample BIQ is at most twice it. -/
 theorem subsample_biq_le_tight_optimism
     (t : DiscreteTrace nVar nAlpha nSteps) (B : EnvBlanket nVar)
     (p : TraceBIQParams) (pick : Fin m → Fin nSteps)
@@ -1176,7 +1176,7 @@ variable {nVar nAlpha nSteps : Nat}
 /-- Trace-derived input to the numeric risk leaf: if a deployed system's control
     and action-capacity measurands are the trace-computed ones and the trace
     action capacity sits below the correction slack `CCI + δ`, the standard
-    Markov-blanket/B-IQ slack certificate follows. The measurand identifications
+    Markov-blanket/BIQ slack certificate follows. The measurand identifications
     are explicit hypotheses (bridge-shaped); the arithmetic is proved. -/
 def traceDerivedCCISlack
     (t : DiscreteTrace nVar nAlpha nSteps) (B : EnvBlanket nVar)

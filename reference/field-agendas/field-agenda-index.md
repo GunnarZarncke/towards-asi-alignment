@@ -671,7 +671,7 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | <a id="ev-93"></a>93 | TSA | MB6 | T | Selection environment + deployment leverage (ch34) | [Ch. 34 (companion)](https://towards-alignment.com/cards/chapters/ch34/) |
 | <a id="ev-94"></a>94 | TSA | MB6 | S | Selection / basin scenarios in graded-lab line | [Graded-lab simulation findings](https://towards-alignment.com/experiments/findings/graded-lab-simulation/) |
 | <a id="ev-95"></a>95 | TSA | MB6 | P | Institutional translation appendix (App C) | [App C (companion)](https://towards-alignment.com/cards/chapters/appc/) |
-| <a id="ev-96"></a>96 | TSA | MB7 | T | Hidden productive B-IQ bound + adversarial verifiability (A-009, ch43) | [Ch. 43 (companion)](https://towards-alignment.com/cards/chapters/ch43/) |
+| <a id="ev-96"></a>96 | TSA | MB7 | T | Hidden productive BIQ bound + adversarial verifiability (A-009, ch43) | [Ch. 43 (companion)](https://towards-alignment.com/cards/chapters/ch43/) |
 | <a id="ev-97"></a>97 | TSA | MB7 | T | Lean ELK/debate separations (readout ⇏ correction) | [Lean spine](https://towards-alignment.com/lean/) |
 | <a id="ev-98"></a>98 | TSA | MB7 | S | Strategic opacity / hidden-capability lab scenarios | [Lab simulation findings](https://towards-alignment.com/experiments/findings/lab-simulation/) |
 | <a id="ev-99"></a>99 | TSA | MB7 | E | Hubinger deceptive-alignment taxonomy as field wall (ch44 cite) | [Hubinger et al. 2019](https://arxiv.org/abs/1906.01820) |

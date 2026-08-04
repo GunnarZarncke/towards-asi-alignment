@@ -489,7 +489,7 @@ MB2, MB3 & A-001, A-006 & IRL non-identifiability, ELK, RLHF ceiling & Bundle/be
 MB4, MB4a, MB8 & A-002 & Corrigibility, off-switch, legitimacy & Correction authority and capture resistance (MB4a: legitimacy of the designated measured path, incl.\ anti-capture) \\
 MB5 & A-007, A-010 & Tiling, ontology identification & Successor audit under ontology shift \\
 MB6a, MB6b & A-008, A-011 & Selection dynamics, basin integrity & Socio-technical percolation evidence \\
-MB7a--c & A-004, A-009 & Inner alignment, scalable oversight & Hidden productive B-IQ under adversaries \\
+MB7a--c & A-004, A-009 & Inner alignment, scalable oversight & Hidden productive BIQ under adversaries \\
 MB7d & A-009, A-013 & Inferential coordination & UAD/inferential detector validity \\
 MB9 & A-014 & Specification / world-model coverage & Grounding certificate over open deployment \\
 MB10 & A-007, A-009 & Deceptive alignment / tiling (measurement gaming) & Conserved-property signature is adversarially verifiable, not merely passed \\
@@ -689,7 +689,7 @@ Solid octagons mark \emph{export} summaries; dashed octagons mark \emph{imports}
 The overview uses a double octagon for \texttt{P30T}.
 
 \paragraph{Fill colours (by spine or role).}
-Light blue: boundary discovery, B-IQ ceiling, adversarial measurement (Spine~I).
+Light blue: boundary discovery, BIQ ceiling, adversarial measurement (Spine~I).
 Light green: value bundles, bearer maps, goal transport (Spine~II).
 Light pink: handle-controlled correction (Spine~III core).
 Light purple: successor invariant chains.
@@ -732,7 +732,7 @@ A narrative walkthrough of direct layer evidence, bridge inputs, and the numeric
 
 \begin{corollary}[Numeric risk leaves]
 \label{appi:cor:numeric-risk-leaves}
-The scalar inequality \(\mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta\) may be supplied directly, from a passed vector CCI certificate (\leanid{NumericRiskLeaf.fromVectorCCI}), from a B-IQ slack certificate (\leanid{NumericRiskLeaf.fromBIQ}), from a Markov-blanket/B-IQ profile (\leanid{NumericRiskLeaf.fromMarkovBlanketBIQ}), or from a trace-computed blanket profile (\leanid{trace\_derived\_risk\_bound}).
+The scalar inequality \(\mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta\) may be supplied directly, from a passed vector CCI certificate (\leanid{NumericRiskLeaf.fromVectorCCI}), from a BIQ slack certificate (\leanid{NumericRiskLeaf.fromBIQ}), from a Markov-blanket/BIQ profile (\leanid{NumericRiskLeaf.fromMarkovBlanketBIQ}), or from a trace-computed blanket profile (\leanid{trace\_derived\_risk\_bound}).
 \end{corollary}
 
 \begin{lemma}[Vector-certificate scalar floor is derived, not assumed]
@@ -811,7 +811,7 @@ Reduce the successor-safe chain to a numeric measurand chain via the audit-link 
   \centering
   \includegraphics[width=\textwidth]{figures/lean_proof/01-boundary-measurement.png}
   \caption[Spine I: boundary and measurement]{Spine I: boundary discovery and adversarial measurement (Chapters~\ref{ch:finding-boundary}--\ref{ch:capability-without-task-ontology}, \ref{ch:passive-observation-not-enough}).
-  Covers boundary predicates, B-IQ ceiling, observation and handle non-identifiability, CID abstraction-relative incentives, host-capacity aliasing, the first two steps of the \texttt{MB7} bridge chain, the access-robust input later consumed by \texttt{MB7d}, and \texttt{MB9} (grounding certificate soundness, Assumption~\ref{appi:ass:mb9}).}
+  Covers boundary predicates, BIQ ceiling, observation and handle non-identifiability, CID abstraction-relative incentives, host-capacity aliasing, the first two steps of the \texttt{MB7} bridge chain, the access-robust input later consumed by \texttt{MB7d}, and \texttt{MB9} (grounding certificate soundness, Assumption~\ref{appi:ass:mb9}).}
   \label{fig:lean-spine-boundary}
 \end{figure}
 
@@ -912,7 +912,7 @@ The certificate gives \(L(b)\leq \Delta-2d-2e\leq \Delta\). Use Assumption~\ref{
 
 \subsubsection{Capability, risk, and accumulation}
 
-\begin{theorem}[\texttt{P10}: B-IQ upper bound]
+\begin{theorem}[\texttt{P10}: BIQ upper bound]
 \label{appi:thm:p10}
 If \(I_{\mathrm{pred}}\leq C_{\mathrm{sens}}\), \(I_{\mathrm{ctrl}}\leq C_{\mathrm{act}}\), \(\beta H\geq0\), and \(\gamma S\geq0\), then
 \begin{equation}
@@ -929,7 +929,7 @@ Substitute \eqref{appi:eq:biq}. Dropping the two nonnegative subtracted terms gi
 \label{appi:sec:trace-attended-harm}
 
 Chapter~\ref{ch:capability-without-task-ontology} (Section~\ref{sec:trace-output-attended-harm}) states only the subsample appearance ceiling for \(\widehat D_{\mathrm{ctrl}}\).
-The Lean module \texttt{AlignmentProofSpine.Field.Finite.TraceBIQ} supplies the estimator, vector B-IQ packaging, attended-harm certificates, and bridge records below.
+The Lean module \texttt{AlignmentProofSpine.Field.Finite.TraceBIQ} supplies the estimator, vector BIQ packaging, attended-harm certificates, and bridge records below.
 
 \paragraph{Trace estimator (pattern diversity, not MI).}
 Given a supplied blanket \((I,S,A,E)\), a discrete trace over alphabet \({\mathcal A}\), and lagged pairs, the spine computes integer \emph{pattern-diversity} scores by counting distinct lagged patterns and taking \(\lceil\log_2\rceil\) of marginal and joint support sizes.
@@ -978,7 +978,7 @@ The estimators are suprema over channel pairs and lags, and the diversity score 
 \quad\text{bits},
 \end{equation}
 with \emph{no} \(|A|\cdot|E|\) cardinality factor and an \(|{\mathcal A}|\) rather than \(|{\mathcal A}|^2\) alphabet clip
-(\leanid{laggedDiversityScore\_le\_alphabet\_ceiling}, \leanid{subsample\_output\_capability\_le\_tight\_optimism}, \leanid{trace\_attended\_output\_le\_tight\_optimism}); apparent subsample B-IQ is bounded by twice this ceiling (\leanid{subsample\_biq\_le\_tight\_optimism}).
+(\leanid{laggedDiversityScore\_le\_alphabet\_ceiling}, \leanid{subsample\_output\_capability\_le\_tight\_optimism}, \leanid{trace\_attended\_output\_le\_tight\_optimism}); apparent subsample BIQ is bounded by twice this ceiling (\leanid{subsample\_biq\_le\_tight\_optimism}).
 The older product budget \(|A|\cdot|E|\cdot\log_2(\min(m,|{\mathcal A}|^2))\) (\leanid{trace\_attended\_output\_le\_attended\_optimism}) is retained for compatibility and dominates the tight ceiling on nonempty channel sets (\leanid{tight\_optimism\_le\_control\_optimism}).
 
 \paragraph{Concentration bridge.}
@@ -1552,7 +1552,7 @@ Apply Theorem~\ref{appi:thm:p44}: the technical predicates and legitimacy predic
 \label{sec:appi-other-assumptions}
 
 Dense reference material for completeness.
-Only \(S07\), \(S10\) (blanket-measurand coherence: the per-system B-IQ measurands respect their channel-capacity semantics, replacing four formerly unlabeled inequalities in \texttt{Capability.lean}), and the \(\text{MB}\)* / imported-field handles are Lean axioms; \(S01\)--\(S06\), \(S08\)--\(S09\) are background conventions named for manuscript cross-reference.
+Only \(S07\), \(S10\) (blanket-measurand coherence: the per-system BIQ measurands respect their channel-capacity semantics, replacing four formerly unlabeled inequalities in \texttt{Capability.lean}), and the \(\text{MB}\)* / imported-field handles are Lean axioms; \(S01\)--\(S06\), \(S08\)--\(S09\) are background conventions named for manuscript cross-reference.
 
 \subsection{Imported mathematical conventions}
 
@@ -1617,7 +1617,7 @@ Book reference: percolation and alignment basins are discussed in Chapter~\ref{c
 \label{appi:eq:s10}
 \forall A,\quad I_{\mathrm{pred}}(A)\le C_{\mathrm{sens}}(A),\quad I_{\mathrm{ctrl}}(A)\le C_{\mathrm{act}}(A),\quad 0\le\beta H_{\mathrm{mem}}(A),\quad 0\le\gamma\,\mathrm{Surprise}(A).
 \end{equation}
-The per-system B-IQ measurands respect the Markov-blanket capacity semantics they are named after; 
+The per-system BIQ measurands respect the Markov-blanket capacity semantics they are named after; 
 a measurement procedure violating these inequalities is measuring something other than the Chapter~\ref{ch:capability-without-task-ontology} quantities.
 A Lean axiom (\leanid{S10\_blanket\_measurand\_coherence}, \texttt{Capability.lean}), and structured profiles (\texttt{MarkovBlanketBIQProfile}).
 \end{assumption}
@@ -1693,7 +1693,7 @@ Book reference: the measurement-handle form of non-identifiability is discussed 
 
 \begin{definition}[Capability and risk quantities]
 \label{appi:def:spine-capability-risk}
-The B-IQ proxy and the certification risk quantities are:
+The BIQ proxy and the certification risk quantities are:
 \begin{align}
 \label{appi:eq:control}
 \mathrm{Control}(A) &= I_{\mathrm{ctrl}}(A),\\

@@ -75,7 +75,7 @@
     "home": "A-004, A-009; ch10, ch43, ch47",
     "fieldCrux": "Hidden productive control is bounded and oversight stays adversarially robust (access, filter coverage, cost of faking).",
     "agendas": "RLHF, Debate, Amplification, AI Control (Redwood)",
-    "bookMove": "Bound hidden productive B-IQ via access robustness plus filter coverage; price the cost of faking the monitored signal",
+    "bookMove": "Bound hidden productive BIQ via access robustness plus filter coverage; price the cost of faking the monitored signal",
     "cards": ["mb7-hidden-capability-and-access", "adversarial-agency-tests", "strategic-opacity"],
     "chapters": ["ch10", "ch43", "ch47"]
   },

@@ -36,7 +36,7 @@ const GRAPH_ORDER = [
 const MODULES = [
   { file: "AlignmentProofSpine/Core.lean", title: "Core carriers and bridges", chapters: "foundations" },
   { file: "AlignmentProofSpine/Boundaries.lean", title: "Boundaries and measurement", chapters: "6–7, 10, 36" },
-  { file: "AlignmentProofSpine/Capability.lean", title: "Capability and B-IQ", chapters: "11–14, 33, 36" },
+  { file: "AlignmentProofSpine/Capability.lean", title: "Capability and BIQ", chapters: "11–14, 33, 36" },
   { file: "AlignmentProofSpine/Bundles.lean", title: "Value bundles and transport", chapters: "15–23, 30" },
   { file: "AlignmentProofSpine/Correction.lean", title: "Correction channels", chapters: "25–29, 41–43" },
   { file: "AlignmentProofSpine/Successors.lean", title: "Successors and continuity", chapters: "28–31" },

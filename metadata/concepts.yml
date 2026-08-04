@@ -116,7 +116,7 @@ concepts:
       - term: Deployment growth rate
         definition: 'Rate of deployment-leverage accumulation, \(\mathrm{Fit}_E(A)=\frac{d}{dt}\log\mu_E(A)\) ("fitness" in formulas only). Not biological fitness; not Demski in-optimizer search. Formal definition: **ch34** (`eq:fitness-ch34`).'
       - term: Preservation conditions
-        definition: 'Explicit list \(\vec{\Pi}(A)\) of alignment-relevant properties under selection — grounding, bundle/bearer drift bounds, valid correction reference, vector CCI, hidden productive B-IQ bounds, selector manipulation, irreversibility budget, successor safety, adversarial verifiability. Not a scalar score. **ch34** (`eq:preservation-envelope-ch34`).'
+        definition: 'Explicit list \(\vec{\Pi}(A)\) of alignment-relevant properties under selection — grounding, bundle/bearer drift bounds, valid correction reference, vector CCI, hidden productive BIQ bounds, selector manipulation, irreversibility budget, successor safety, adversarial verifiability. Not a scalar score. **ch34** (`eq:preservation-envelope-ch34`).'
       - term: Alignment basin
         definition: 'Self-stabilizing regime where correction tends to restore alignment after perturbation; outside it, selection amplifies drift. Christiano dynamical corrigibility uses the same basin metaphor. A stable basin can be stably bad — persistence is not safety.'
   - slug: bearer-map-commutation-failure
@@ -621,7 +621,7 @@ concepts:
     glossaryTerms:
       - term: Strategic opacity
         definition: 'System benefits from shaping how it is modeled — incentive-compatible concealment of control locus or capability under observation. Ordinary opacity is passive difficulty; strategic opacity is adversarial. **ch10**.'
-      - term: Hidden productive B-IQ bound
+      - term: Hidden productive BIQ bound
         definition: 'Upper limit on productive boundary-relevant control that can stay hidden while monitored channels read green (MB7a–c). Distinct from experimental BIQ (boundary-claim quality in graded-lab runs). **ch10**.'
   - slug: successor-stability
     kind: concept

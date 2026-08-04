@@ -16,4 +16,4 @@ This is the premise the AI-control agenda is built around: design for safety und
 
 The chapter separates two questions: where is the optimization, and where would the optimization be if the system expected this question to be asked? The first is difficult. The second is the alignment-relevant one, and it is why passive observation (Chapter 39) is treated as structurally insufficient rather than merely imperfect.
 
-**Strategic opacity** is incentive-compatible concealment — not ordinary interpretability difficulty. The **hidden productive B-IQ bound** (MB7) limits how much productive control can stay offline while monitors read green; it is not the same as experimental BIQ (boundary-claim quality in graded-lab runs).
+**Strategic opacity** is incentive-compatible concealment — not ordinary interpretability difficulty. The **hidden productive BIQ bound** (MB7) limits how much productive control can stay offline while monitors read green; it is not the same as experimental BIQ (boundary-claim quality in graded-lab runs).

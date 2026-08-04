@@ -159,7 +159,7 @@ Abstract carriers in `Core.lean` (`System`, `State`, …) are mathematical inter
 
 ## III. Lean imported (S01–S10)
 
-Appendix I §Imported Assumptions. Only **S07** (MDL ordering) and **S10** (blanket-measurand coherence: the per-system B-IQ measurands respect their channel-capacity semantics; replaced four formerly unlabeled axioms in `Capability.lean`, 2026-07-19) are explicit Lean `axiom`s. S09-style percolation theory enters via MB6a.
+Appendix I §Imported Assumptions. Only **S07** (MDL ordering) and **S10** (blanket-measurand coherence: the per-system BIQ measurands respect their channel-capacity semantics; replaced four formerly unlabeled axioms in `Capability.lean`, 2026-07-19) are explicit Lean `axiom`s. S09-style percolation theory enters via MB6a.
 
 ---
 
@@ -242,7 +242,7 @@ Tables below provide one line per assumption; full context is in the cited chapt
 | ID | Assumption | Home |
 |----|------------|------|
 | S07 | Positive description-length gain $\Rightarrow$ preferred model (MDL ordering) | ch46 |
-| S10 | Blanket-measurand coherence: per-system B-IQ measurands respect their channel-capacity semantics ($I_{\text{pred}} \le C_{\text{sens}}$, $I_{\text{ctrl}} \le C_{\text{act}}$, nonnegative penalties) | ch11 |
+| S10 | Blanket-measurand coherence: per-system BIQ measurands respect their channel-capacity semantics ($I_{\text{pred}} \le C_{\text{sens}}$, $I_{\text{ctrl}} \le C_{\text{act}}$, nonnegative penalties) | ch11 |
 | MB1 | $\epsilon$-boundary certificates imply genuine boundary separation | ch07 |
 | MB2 | Bundle-gradient equivalence implies bundle alignment | ch16 |
 | MB3 | Bundle transport plus bearer-map agreement implies bearer transport | ch18 |
@@ -252,8 +252,8 @@ Tables below provide one line per assumption; full context is in the cited chapt
 | MB6a | Percolation / coupling evidence implies socio-technical basin stability | ch48 |
 | MB6b | Socio-technical basin stability implies correction-channel integrity | ch48 |
 | MB7a | Boundary alignment plus adequate access model implies access robustness | ch07 |
-| MB7b | Access robustness plus filter coverage bounds hidden productive B-IQ | ch47 |
-| MB7c | Correction integrity plus bounded hidden B-IQ implies adversarial robustness | ch47 |
+| MB7b | Access robustness plus filter coverage bounds hidden productive BIQ | ch47 |
+| MB7c | Correction integrity plus bounded hidden BIQ implies adversarial robustness | ch47 |
 | MB7d | Access robustness plus adequate inferential detector assumptions implies valid inferential-coupling measurement | ch48 |
 | MB8 | Legacy CEV-style bridge: externally certified preservation of schematic $U_H$ implies correction integrity; live certification uses the value-update envelope | ch46 |
 | MB9 | Grounding certificates imply conservative value-correction abstraction over the certified domain | ch03 |
