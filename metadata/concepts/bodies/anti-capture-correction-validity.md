@@ -10,7 +10,7 @@ related:
 
 A system can score well on correction metrics while the human correction process no longer reaches future behavior. Worse: it can score well because the target has **captured** the process that is supposed to correct it.
 
-The book separates two questions:
+This project separates two questions:
 
 1. **Causal effect:** Does legitimate correction still change deployed behavior in time?
 2. **Reference validity:** Is the correction still about the relevant world, or about a target-shaped presentation of it?

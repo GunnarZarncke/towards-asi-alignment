@@ -34,7 +34,7 @@ contributes: >-
   [ELK](/cards/subsumption-elk/) problem statement as a canonical framing of latent
   readout.
 bookSeparates: >-
-  The book separates [correction-channel integrity](/cards/correction-channel-integrity/)
+  This project separates [correction-channel integrity](/cards/correction-channel-integrity/)
   from readout: successful latent elicitation does not imply that corrections will be
   accepted ([Corrigibility](/cards/mb4-correction-legitimacy/)).
 manuscriptHooks:

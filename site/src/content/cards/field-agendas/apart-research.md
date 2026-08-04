@@ -27,7 +27,7 @@ Apart Research runs open research sprints and hackathon-style collaborations tha
 
 **What they contribute.** Experiment prototypes and early empirical lines (including ET-style work reflected in this repo's demos and experiments folders).
 
-**How this book treats it.** Hackathon velocity is complementary to, not a substitute for, typed bridge measurement and formal discharge arguments.
+**How this project treats it.** Hackathon velocity is complementary to, not a substitute for, typed bridge measurement and formal discharge arguments.
 
 ## Links
 

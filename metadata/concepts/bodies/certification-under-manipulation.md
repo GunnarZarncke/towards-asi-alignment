@@ -8,7 +8,7 @@ related:
   - goodhart-as-selector
 ---
 
-Every load-bearing measurand in the book — boundary residual, value-bundle activation, correction-channel integrity, conserved-property score, laundering index — shares one antecedent: **can the certification channel stay honest against a capable adversary?**
+Every load-bearing measurand in this project — boundary residual, value-bundle activation, correction-channel integrity, conserved-property score, laundering index — shares one antecedent: **can the certification channel stay honest against a capable adversary?**
 
 The **Certification-Under-Manipulation Problem** names it explicitly (Chapter 43):
 

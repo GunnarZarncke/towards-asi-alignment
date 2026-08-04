@@ -27,7 +27,7 @@ related:
 
 A static alignment claim has the form "at time t, system A has property P." That is useful for ordinary software — does a program pass a test suite, respect an access policy, return a correct output — but it breaks for superintelligence, where the system learns, acquires tools, persuades users, and eventually produces successors.
 
-The book's replacement is a dynamical guarantee: a probabilistic claim that the system remains in, or returns to, an acceptable region of state space over a time horizon, conditional on starting inside a safety basin, the environment staying in a specified class, and the system belonging to a certified class of allowed transformations.
+This project's replacement is a dynamical guarantee: a probabilistic claim that the system remains in, or returns to, an acceptable region of state space over a time horizon, conditional on starting inside a safety basin, the environment staying in a specified class, and the system belonging to a certified class of allowed transformations.
 
 The distinction between a safe set, a bad set, and a basin matters here. A system can be safe right now while sitting outside the basin — a lab that behaves responsibly today while funding and competitive pressure push it toward dangerous deployment. A system can also enter a locally risky state while remaining inside a basin that reliably corrects it. The dynamical guarantee tracks the basin, not the snapshot.
 

@@ -35,7 +35,7 @@ Paul Christiano's lineage developed [scalable oversight](/cards/subsumption-deba
 
 **What they contribute.** The scalable-oversight protocol family (debate, amplification) and the [ELK](/cards/subsumption-elk/) problem statement as a canonical framing of latent readout.
 
-**How this book treats it.** The book separates [correction-channel integrity](/cards/correction-channel-integrity/) from readout: successful latent elicitation does not imply that corrections will be accepted ([Corrigibility](/cards/mb4-correction-legitimacy/)).
+**How this project treats it.** This project separates [correction-channel integrity](/cards/correction-channel-integrity/) from readout: successful latent elicitation does not imply that corrections will be accepted ([Corrigibility](/cards/mb4-correction-legitimacy/)).
 
 ## Links
 

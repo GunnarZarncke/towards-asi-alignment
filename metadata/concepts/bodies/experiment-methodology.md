@@ -16,7 +16,7 @@ external:
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/embedded-simulation/results/NEGATIVE_RESULTS.md
 ---
 
-None of the companion testbeds are large enough, or realistic enough, to prove anything about deployed superintelligence. What they can do is stress-test the book's own detection and audit mechanisms against a designer who is honest about the testbed's limits — and that only works if the testbeds follow a discipline that keeps the designer from unconsciously grading their own homework.
+None of the companion testbeds are large enough, or realistic enough, to prove anything about deployed superintelligence. What they can do is stress-test this project's own detection and audit mechanisms against a designer who is honest about the testbed's limits — and that only works if the testbeds follow a discipline that keeps the designer from unconsciously grading their own homework.
 
 **Freeze before you audit.** Detector thresholds, scoring code, and scenario batteries are frozen before the run that evaluates them, not tuned afterward to fit the result. When a later run motivates a genuine change (a bug fix, a new detector variant), that change is named and dated rather than quietly folded into the old numbers.
 
@@ -26,4 +26,4 @@ None of the companion testbeds are large enough, or realistic enough, to prove a
 
 **Report negative results next to positive ones, and keep them.** Every experiment line keeps a running, numbered log of findings, positive and negative, in the order they occurred. A method that works in one setting and fails in a harder or noisier one is recorded as both — the failure is not deleted once a later fix is found, and a fix is not allowed to imply the earlier failure didn't happen. Detectors are also tested against baseline "twin" runs (the same episode with any deceptive behavior removed) to check that a detector is not simply flagging visible activity rather than an actual violation.
 
-These four habits do not turn a small testbed into strong evidence. What they buy is legibility: a reader can check whether a specific claim in this book rests on a frozen, blind, pre-registered result, or on something weaker — and the negative-results ledgers make that check possible instead of asking for trust.
+These four habits do not turn a small testbed into strong evidence. What they buy is legibility: a reader can check whether a specific claim in this project rests on a frozen, blind, pre-registered result, or on something weaker — and the negative-results ledgers make that check possible instead of asking for trust.

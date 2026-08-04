@@ -108,7 +108,7 @@ The six named Introduction claims map to claims C-003 (boundary), C-004 (value-b
 
 ## Claim ID: C-004a
 
-**Claim:** (Grounding claim) The book's maps only matter if they stay connected to value-relevant reality under optimization pressure; alignment requires grounding viability, meaning changes in the value-relevant world reliably change the model state, correction signal, or uncertainty state in the right way.
+**Claim:** (Grounding claim) This project's maps only matter if they stay connected to value-relevant reality under optimization pressure; alignment requires grounding viability, meaning changes in the value-relevant world reliably change the model state, correction signal, or uncertainty state in the right way.
 
 **Chapter(s):** Introduction, 3, 16, 20, 25, 42, 46, 47
 

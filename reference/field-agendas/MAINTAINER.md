@@ -26,7 +26,7 @@ An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature 
 
 **Training programs** (BlueDot, MATS, Apart, Kairos, seminar-style curricula) are one agenda **type** among others — vocabulary feeds the inter-agenda glossary; no per-curriculum index rows in the matrix.
 
-## Coverage vs book treatment
+## Coverage vs project treatment
 
 The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology.
 

@@ -13,4 +13,4 @@ A deployed AI system is rarely just a neural network. It is a service, an interf
 
 Aligning the wrong object produces a specific failure pattern: each visible component behaves acceptably while the aggregate drifts. A model can pass every behavioral test while the product around it selects for manipulation; a lab can run careful internal safety processes while market competition selects for faster deployment of less legible systems.
 
-The book's toy example is a customer-support model that passes every static safety test, then gets connected to retention metrics, escalation queues, and A/B testing — at which point the product team, not the model, starts optimizing for outcomes nobody explicitly aligned.
+This project's toy example is a customer-support model that passes every static safety test, then gets connected to retention metrics, escalation queues, and A/B testing — at which point the product team, not the model, starts optimizing for outcomes nobody explicitly aligned.

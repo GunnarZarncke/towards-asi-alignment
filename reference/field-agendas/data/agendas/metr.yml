@@ -26,7 +26,7 @@ contributes: >-
 bookSeparates: >-
   Capability evaluations do not establish [correction-channel
   integrity](/cards/correction-channel-integrity/) or [value-bundle
-  transport](/cards/value-bundle-transport/) across deployment; the book treats evals as
+  transport](/cards/value-bundle-transport/) across deployment; this project treats evals as
   an indirect signal for [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
   rather than a direct guarantee.
 manuscriptHooks:

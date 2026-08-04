@@ -7,7 +7,7 @@ featuredSpotlight:
   kind: book
   ref: appC
   title: "Institutional translation guide"
-  blurb: "How book predicates map to procurement, audit requirements, correction capacity, and governance — policy translation without adopting the full technical ontology first."
+  blurb: "How project predicates map to procurement, audit requirements, correction capacity, and governance — policy translation without adopting the full technical ontology first."
   primaryLabel: "Read Appendix C"
   secondary:
     kind: card
@@ -40,7 +40,7 @@ steps:
     note: "BioShield worked example — procurement-ready gate checklist."
   - kind: book
     ref: appC
-    note: "Institutional translation — how book predicates map to governance."
+    note: "Institutional translation — how project predicates map to governance."
   - kind: card
     ref: institutional-dual-mandate-genesis
     note: "The single most consequential historical lesson for AI-safety regulation today."
@@ -61,7 +61,7 @@ You need to know **what decisions change** if this framework is directionally ri
 
 **You will leave knowing:**
 
-- What the book does **not** claim (not solved, not deployable certification today).
+- What this project does **not** claim (not solved, not deployable certification today).
 - **Correction capacity** as a civilizational variable — not just model behavior.
 - **Deployment gates** and safety-case artifacts as decision objects.
 - Why **attractor / selection** matters for institutions, not only labs.

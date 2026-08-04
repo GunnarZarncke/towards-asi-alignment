@@ -39,7 +39,7 @@ MAI and CIP pursue full-stack alignment through thick values, alignment assembli
 
 **What they contribute.** Institutional amplification as a failure mode; operational deliberative alignment; counterfactual value commitments distinguished from surface preferences.
 
-**How this book treats it.** A legitimate process does not imply [correction-channel integrity](/cards/correction-channel-integrity/); consensus output does not imply [bearer-persistence](/cards/bearer-persistence/) under optimization.
+**How this project treats it.** A legitimate process does not imply [correction-channel integrity](/cards/correction-channel-integrity/); consensus output does not imply [bearer-persistence](/cards/bearer-persistence/) under optimization.
 
 ## Links
 

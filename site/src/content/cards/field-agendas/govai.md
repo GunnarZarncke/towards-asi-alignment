@@ -49,7 +49,7 @@ GovAI and allied institutes connect policy research to frontier evaluation, touc
 
 **What they contribute.** A governance research pipeline; EU and US policy translation; gradual disempowerment framing; institutional evaluation capacity; Resolution and Irving lineage via UK AISI; personnel and advisory overlap between GovAI and AISI.
 
-**How this book treats it.** Policy levers and evaluation visibility do not imply [correction-channel integrity](/cards/correction-channel-integrity/).
+**How this project treats it.** Policy levers and evaluation visibility do not imply [correction-channel integrity](/cards/correction-channel-integrity/).
 
 ## Links
 

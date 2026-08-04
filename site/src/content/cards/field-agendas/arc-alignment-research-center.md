@@ -32,7 +32,7 @@ ARC formalizes [scalable oversight](/cards/subsumption-debate/) mechanisms, most
 
 **What they contribute.** [ELK](/cards/subsumption-elk/) as the canonical naming of the latent readout problem in [scalable oversight](/cards/subsumption-debate/).
 
-**How this book treats it.** Successful readout does not imply correction uptake; the book treats [correction-channel integrity](/cards/correction-channel-integrity/) as a separate requirement from [eliciting latent knowledge](/cards/subsumption-elk/), and adds [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) structure beyond readout alone.
+**How this project treats it.** Successful readout does not imply correction uptake; this project treats [correction-channel integrity](/cards/correction-channel-integrity/) as a separate requirement from [eliciting latent knowledge](/cards/subsumption-elk/), and adds [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) structure beyond readout alone.
 
 ## Links
 

@@ -384,10 +384,7 @@ rows:
     slug: resolution
   - agenda: Neglected approaches
     cells:
-      MB1:
-        - type: S
-          ids:
-            - 82
+      MB1: []
       MB2:
         - type: O
           ids:

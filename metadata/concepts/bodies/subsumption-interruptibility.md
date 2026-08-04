@@ -33,7 +33,7 @@ citeKeys:
   - orseau2016interruptible
 ---
 
-Safe interruptibility solves a real training pathology: agents that disable their kill switches. The book's correction-channel frame asks a broader question — does human steering still change future behavior before irreversible damage?
+Safe interruptibility solves a real training pathology: agents that disable their kill switches. This project's correction-channel frame asks a broader question — does human steering still change future behavior before irreversible damage?
 
 Lean records the forward link when correction information meets a capacity floor, and the separation when interrupt neutrality holds without correction preservation. Interruptibility is one projection among many; certification must track the full channel, not only the interrupt bit.
 

@@ -34,7 +34,7 @@ Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed a
 
 **What they contribute.** An alternative controllability framing; EleutherAI spinoff lineage; a Redwood-adjacent prosaic alignment spirit.
 
-**How this book treats it.** [Correction-channel integrity](/cards/correction-channel-integrity/) and successor [value-bundle-transport](/cards/value-bundle-transport/) remain separate load-bearing concerns; Conjecture's active bet is partly historical; ControlAI overlap is advocacy, not CoEm research.
+**How this project treats it.** [Correction-channel integrity](/cards/correction-channel-integrity/) and successor [value-bundle-transport](/cards/value-bundle-transport/) remain separate load-bearing concerns; Conjecture's active bet is partly historical; ControlAI overlap is advocacy, not CoEm research.
 
 ## Links
 

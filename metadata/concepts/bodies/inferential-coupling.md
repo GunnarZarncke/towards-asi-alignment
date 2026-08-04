@@ -34,7 +34,7 @@ demos:
 
 Two models from the same lab share weights, training data, scaffolds, and incentives. Deployed by different vendors with zero communication between them, they can still converge on a shared response to oversight — no message, no cartel, no explicit representation of the coordination. Full acausal trade is the decision-theoretic limiting case; shared model ancestry may already be enough.
 
-The field treats acausal coordination as a thought experiment. The book's move is to make it an audit target: after UAD discovers agents, the detector extracts each agent's policy and goal proxy, and asks whether their actions stay correlated once every ordinary channel is cut. That residual correlation is the inferential-coupling index. A meta-prior over inference functions answers the operational question: how surprised should the audit be to learn that two systems implement the same relevant inference function?
+The field treats acausal coordination as a thought experiment. This project's move is to make it an audit target: after UAD discovers agents, the detector extracts each agent's policy and goal proxy, and asks whether their actions stay correlated once every ordinary channel is cut. That residual correlation is the inferential-coupling index. A meta-prior over inference functions answers the operational question: how surprised should the audit be to learn that two systems implement the same relevant inference function?
 
 The consequence for multipolarity is the coalition-collapse conjecture: the effective number of independent agents tracks coupling components, not vendor count. A world that reads "safely many" on the vendor tally may read "one" on the coupling graph.
 

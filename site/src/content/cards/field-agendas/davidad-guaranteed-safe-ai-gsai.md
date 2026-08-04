@@ -35,7 +35,7 @@ related: []
 
 **What they contribute.** Treats coverage and specification completeness as the central open wall for formally guaranteed safe systems.
 
-**How this book treats it.** The book emphasizes [grounding viability](/cards/grounding-viability/) and conservative grounding (no silent gaps) rather than demanding full completeness of the specification; [Deployment Safety](/cards/mb11-deployment-safety/) is treated as a cousin agenda, not an identical target.
+**How this project treats it.** This project emphasizes [grounding viability](/cards/grounding-viability/) and conservative grounding (no silent gaps) rather than demanding full completeness of the specification; [Deployment Safety](/cards/mb11-deployment-safety/) is treated as a cousin agenda, not an identical target.
 
 ## Links
 

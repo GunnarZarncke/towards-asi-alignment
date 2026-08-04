@@ -29,7 +29,7 @@ external:
     url: https://ciris.ai/
 ---
 
-The field often folds this into corrigibility, but the book types it separately from [MB4 — Corrigibility](/cards/mb4-correction-legitimacy/). **MB4** asks whether correction preserves the correction process under pressure. **MB4a** asks a narrower audit question: is the **designated measured correction/audit path** legitimate and uncaptured?
+The field often folds this into corrigibility, but this project types it separately from [MB4 — Corrigibility](/cards/mb4-correction-legitimacy/). **MB4** asks whether correction preserves the correction process under pressure. **MB4a** asks a narrower audit question: is the **designated measured correction/audit path** legitimate and uncaptured?
 
 CIRIS names the same wall as WA independence: green Verify on a certified occurrence does not imply [correction-channel integrity](/cards/correction-channel-integrity/) on the real intervening loop when composites, tools, memory, or incentives sit outside the measured path. Trusted-monitor and judge-capture cousins in Redwood-style control research target the same subchannel.
 

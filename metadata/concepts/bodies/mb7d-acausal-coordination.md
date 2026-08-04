@@ -25,7 +25,7 @@ external:
     url: https://github.com/GunnarZarncke/agency-detect/raw/main/docs/papers/acausal-trade-uad-formalization/acausal_trade_uad_formalization.pdf
 ---
 
-In the field this is acausal trade, program equilibrium, and ECL-style coordination — systems that need no visible messages to stay aligned with each other. The book types it separately from [MB7 — Inner Alignment](/cards/mb7-hidden-capability-and-access/) (MB7a–c: access, filter coverage, cost of faking under ordinary oversight).
+In the field this is acausal trade, program equilibrium, and ECL-style coordination — systems that need no visible messages to stay aligned with each other. This project types it separately from [MB7 — Inner Alignment](/cards/mb7-hidden-capability-and-access/) (MB7a–c: access, filter coverage, cost of faking under ordinary oversight).
 
 **MB7d** assumes a detector for [inferential coupling](/cards/inferential-coupling/): after ordinary communication and control channels are cut, residual action correlation still reveals coordination. The operational object is the inferential-coupling index and UAD-based detector certificates, not vendor count or message traffic alone.
 

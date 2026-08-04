@@ -27,7 +27,7 @@ MATS runs a twelve-week mentored research program pairing scholars with alignmen
 
 **What they contribute.** A research talent pipeline that feeds labs, orgs, and independent projects with mentored early-career alignment work.
 
-**How this book treats it.** Fellowship research quality is independent of whether typed bridges compose under explicit adversarial-verifiability assumptions.
+**How this project treats it.** Fellowship research quality is independent of whether typed bridges compose under explicit adversarial-verifiability assumptions.
 
 ## Links
 

@@ -22,7 +22,7 @@ statedIntent: >-
   advanced AI capabilities may arrive.
 primaryCrux: >-
   Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails
-  first)—the book uses these forecasts mainly as schedule cues, not as technical findings
+  first)—this project uses these forecasts mainly as schedule cues, not as technical findings
   about alignment mechanisms.
 bookBridges:
   - MB6

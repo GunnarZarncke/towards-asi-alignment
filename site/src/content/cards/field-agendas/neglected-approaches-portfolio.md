@@ -50,7 +50,7 @@ AE Studio's *Neglected Approaches* strategy (Berg, Carauleanu, Rosenblatt; Dec 2
 
 **What they contribute.** Portfolio meta-strategy and an intervention catalog (`zarncke2025interventions`); Heitzig's human-power outer target; [UAD](https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery) and agency-detect [boundary discovery](/cards/boundary-discovery/); Byrnes's social-cognition and homeostatic hypotheses; the SOO deception-reduction line; and AE's ten-direction menu spanning prosociality, TAI-to-BCI-to-researchers pipelines, value mapping, RLNF, provably safe architectures, field-building, safety businesses, consultancy scale-up, neuroscience crossed with interpretability, and neglected policy.
 
-**How this book treats it.** Portfolio breadth does not imply a single discharge path through the measurement spine; any one outer objective still needs its own adversarial-verifiability argument for [Corrigibility](/cards/mb4-correction-legitimacy/) and [correction-channel integrity](/cards/correction-channel-integrity/).
+**How this project treats it.** Portfolio breadth does not imply a single discharge path through the measurement spine; any one outer objective still needs its own adversarial-verifiability argument for [Corrigibility](/cards/mb4-correction-legitimacy/) and [correction-channel integrity](/cards/correction-channel-integrity/).
 
 ## Links
 

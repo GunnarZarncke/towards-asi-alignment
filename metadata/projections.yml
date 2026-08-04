@@ -13,7 +13,7 @@ projections:
       - rederivedFinite
       - importedAssumption
     graphNodeId: CIRL
-    summary: Cooperative inverse reinforcement learning treats the inferred object as a scalar reward. On the book's shared finite domain, that is exactly the k=1 bundle case; full bundle transport implies cooperative readability, but scalar inference does not determine bundle geometry.
+    summary: Cooperative inverse reinforcement learning treats the inferred object as a scalar reward. On this project's shared finite domain, that is exactly the k=1 bundle case; full bundle transport implies cooperative readability, but scalar inference does not determine bundle geometry.
     decision: When evaluating CIRL-style reward learning, ask whether the target is a single reward coordinate or bundle structure, bearer maps, and the correction process that produces later evidence.
     bookChapters:
       - ch16

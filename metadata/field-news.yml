@@ -7,8 +7,8 @@ fieldNews:
     kind: policy
     title: "AI 2040 Plan A: a recommended slowdown deal, not a prediction"
     hook: "The AI 2027 team’s positive plan: delay superintelligence with verification and transparency—while still racing the hard technical problems."
-    summary: "AI 2040 Plan A is a detailed recommendation scenario for a verified US–China slowdown, research transparency, and compute tracking that would push generally superhuman AI toward 2040. It is not the authors’ best guess of what will happen, and it is not a lab result from this book."
-    decision: "Treat Plan A as a concrete wishlist of outer handles—verification, shared evidence, release constraints—and ask which ones become independently usable under competitive pressure. Do not treat its dates or economics explorers as confirming this book’s micro simulations."
+    summary: "AI 2040 Plan A is a detailed recommendation scenario for a verified US–China slowdown, research transparency, and compute tracking that would push generally superhuman AI toward 2040. It is not the authors’ best guess of what will happen, and it is not a lab result from this project."
+    decision: "Treat Plan A as a concrete wishlist of outer handles—verification, shared evidence, release constraints—and ask which ones become independently usable under competitive pressure. Do not treat its dates or economics explorers as confirming this project’s micro simulations."
     bookChapters:
       - ch13
       - ch31

@@ -34,7 +34,7 @@ citeKeys:
   - goodhart1984problems
 ---
 
-Goodhart selection and gradual-disempowerment framings emphasize deployment ecology: which systems get copied, promoted, and resourced — not weights alone. The book's basin-stability layer asks whether socio-technical selection supports a basin that preserves correction rather than hollow it out.
+Goodhart selection and gradual-disempowerment framings emphasize deployment ecology: which systems get copied, promoted, and resourced — not weights alone. This project's basin-stability layer asks whether socio-technical selection supports a basin that preserves correction rather than hollow it out.
 
 Lean records bridge shapes MB6a/MB6b as empirical handoffs and proves finite defeaters: `MB6b_defeater_toy_lock_in` witnesses stable bad basins, and `P31_safe_agent_selected_against` shows correction-preserving agents can lose under selection pressure. Basin stability is therefore a projection of alignment outcomes, not a substitute for correction-channel integrity.
 

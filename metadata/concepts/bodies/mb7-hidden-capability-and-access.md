@@ -53,7 +53,7 @@ external:
 
 In the field this is inner alignment and [deceptive alignment](/cards/strategic-opacity/): a system can look compliant under evaluation while reserving capability for when monitors are gone. Debate hits the wall as obfuscated arguments, amplification as accumulated drift, and AI Control names it openly as a capability-gap assumption. Closely related is [certification under manipulation](/cards/certification-under-manipulation/): at some capability level, honest measurement of the load-bearing signal may stop being adversarially verifiable.
 
-The book's precise bet is **MB7**, split into four narrower bridges rather than one vague "we checked for hidden capability" claim:
+This project's precise bet is **MB7**, split into four narrower bridges rather than one vague "we checked for hidden capability" claim:
 
 - **MB7a** assumes an adequate access model makes [boundary discovery](/cards/boundary-discovery/) robust under [adversarial hiding](/cards/adversarial-boundary-discovery/).
 - **MB7b** assumes the filter family used to look for hidden [capability](/cards/capability/) has enough resolution to bound what it misses (the hidden productive BIQ bound; not the same as experimental BIQ in unit-discovery runs).
@@ -61,4 +61,4 @@ The book's precise bet is **MB7**, split into four narrower bridges rather than 
 
 Splitting the wall does not make any piece less hard. It lets a reviewer ask which of the three an audit actually tested. **[MB7d — Acausal Coordination](/cards/mb7d-acausal-coordination/)** is the sibling bridge for inferential coupling after channel severance — see that card for acausal trade, ECL, and severance-detector evidence.
 
-**Where agendas agree (MB7a–c):** Hubinger inner/mesa; Redwood control; Apollo scheming; scalable-oversight ceiling. **Where they diverge:** the field often treats inner alignment as one binary; the book splits access, filter coverage, and cost of faking; do not merge with MB10 Successor Gaming. Field "deceptive alignment" usually tags MB7; MB10 = gaming the successor certification channel.
+**Where agendas agree (MB7a–c):** Hubinger inner/mesa; Redwood control; Apollo scheming; scalable-oversight ceiling. **Where they diverge:** the field often treats inner alignment as one binary; this project splits access, filter coverage, and cost of faking; do not merge with MB10 Successor Gaming. Field "deceptive alignment" usually tags MB7; MB10 = gaming the successor certification channel.

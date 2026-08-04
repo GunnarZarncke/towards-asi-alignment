@@ -26,10 +26,10 @@ The AI Futures and forecasting cluster produces explicit scenario narratives, ti
 - **Primary artifact:** The cluster produces explicit scenario narratives (notably [AI 2027](https://ai-2027.com/)), timeline estimates, and shared prediction infrastructure for tracking AI development trajectories.
 - **Signature vocabulary:** Shared vocabulary includes [AI 2027](https://ai-2027.com/)-style scenarios, [timelines](https://epoch.ai/), [TAI](https://epoch.ai/) thresholds, automation of R&D, and structured scenario planning for policy and strategy audiences.
 - **Stated intent:** Inform high-stakes decisions with explicit, trackable forecasts about when and how advanced AI capabilities may arrive.
-- **Primary crux:** Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—the book uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.
+- **Primary crux:** Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—this project uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.
 - **Field cruxes:** Goodhart Selection (MB6)
 - **Contributes:** Schedule-shaped stress tests for governance and deployment planning (App F)—how [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) pressures might unfold under compressed timelines without claiming to resolve selection mechanics.
-- **Book separates:** A macro scenario about capability arrival does not imply discharge of any typed bridge in the measurement spine; forecasting informs urgency, not [Corrigibility](/cards/mb4-correction-legitimacy/) or [Inner Alignment](/cards/mb7-hidden-capability-and-access/) verdicts.
+- **Project separates:** A macro scenario about capability arrival does not imply discharge of any typed bridge in the measurement spine; forecasting informs urgency, not [Corrigibility](/cards/mb4-correction-legitimacy/) or [Inner Alignment](/cards/mb7-hidden-capability-and-access/) verdicts.
 - **Manuscript hooks:** App C Plan A; App F governance-schedule deferred
 - **Links:** [AI Futures Project](https://ai-2027.com/); [AI 2027 scenario summary](https://ai-2027.com/summary); [Epoch AI](https://epoch.ai/); [Metaculus](https://www.metaculus.com/); [AI Impacts](https://aiimpacts.org/)
 
@@ -45,7 +45,7 @@ Anthropic builds frontier models under staged safety commitments ([RSP](https://
 - **Primary crux:** Can scaling policies and interpretability keep pace with capability growth, including under [strategic opacity](/cards/strategic-opacity/) and [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) pressure?
 - **Field cruxes:** Value Learning (MB2); Value Referent (MB3); Goodhart Selection (MB6); Inner Alignment (MB7); Successor Gaming (MB10); Deployment Safety (MB11)
 - **Contributes:** Industry [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) template, conditioning-predictor failure modes, Goodfire mechanistic-interpretability tooling (Anthropic investment; Apollo and DeepMind MI lineage on team), and cross-lab Neuronpedia infrastructure.
-- **Book separates:** The book requires [correction-channel integrity](/cards/correction-channel-integrity/) and [adversarial verifiability](/cards/certification-under-manipulation/); a lab [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) is not the same as a preservation-layer certificate ([Deployment Safety](/cards/mb11-deployment-safety/)), and interpretability progress does not by itself resolve [Successor Gaming](/cards/mb10-successor-forgeability/) or full [Inner Alignment](/cards/mb7-hidden-capability-and-access/) risk.
+- **Project separates:** This project requires [correction-channel integrity](/cards/correction-channel-integrity/) and [adversarial verifiability](/cards/certification-under-manipulation/); a lab [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) is not the same as a preservation-layer certificate ([Deployment Safety](/cards/mb11-deployment-safety/)), and interpretability progress does not by itself resolve [Successor Gaming](/cards/mb10-successor-forgeability/) or full [Inner Alignment](/cards/mb7-hidden-capability-and-access/) risk.
 - **Manuscript hooks:** ch10 (conditioning); ch43; field-news; App B LLM opacity default
 - **Links:** [Anthropic](https://www.anthropic.com/); [Anthropic Research (index)](https://www.anthropic.com/research); [Bricken et al. 2023 — Towards Monosemanticity](https://transformer-circuits.pub/2023/monosemantic-features); [Templeton et al. 2024 — Scaling Monosemanticity (Claude 3 Sonnet)](https://transformer-circuits.pub/2024/scaling-monosemanticity/); [Goodfire](https://www.goodfire.com/); [Transluce](https://transluce.org/); [Neuronpedia](https://www.neuronpedia.org/); [Frontier Model Forum risk thresholds](https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/); [Lange et al. 2023](https://arxiv.org/abs/2311.17030)
 
@@ -61,7 +61,7 @@ Apart Research runs open research sprints and hackathon-style collaborations tha
 - **Primary crux:** Sprint artifacts and demo prototypes do not imply a load-bearing safety case; exploratory outputs need separate adversarial verification before they warrant deployment trust.
 - **Field cruxes:** —
 - **Contributes:** Experiment prototypes and early empirical lines (including ET-style work reflected in this repo's demos and experiments folders).
-- **Book separates:** Hackathon velocity is complementary to, not a substitute for, typed bridge measurement and formal discharge arguments.
+- **Project separates:** Hackathon velocity is complementary to, not a substitute for, typed bridge measurement and formal discharge arguments.
 - **Manuscript hooks:** demos/experiments lineage
 - **Links:** [Apart Research](https://apartresearch.com/)
 
@@ -77,7 +77,7 @@ Apollo and Truthful AI focus on deception, [scheming](https://www.apolloresearch
 - **Primary crux:** Can we detect [strategic opacity](/cards/strategic-opacity/) and [scheming](https://www.apolloresearch.ai/) before capabilities outpace pre-deployment evaluations ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
 - **Field cruxes:** Goodhart Selection (MB6); Inner Alignment (MB7); Successor Gaming (MB10); Deployment Safety (MB11)
 - **Contributes:** Scheming as a named empirical program; TruthfulQA and SAD lineage; Evans mentee network overlaps Apollo, UK and US AISI, and Anthropic.
-- **Book separates:** Eval success does not imply [correction-channel integrity](/cards/correction-channel-integrity/) or that oversight mechanisms will survive deployment pressure; the book treats [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) on evals and [Deployment Safety](/cards/mb11-deployment-safety/) as separate concerns from detecting deception alone.
+- **Project separates:** Eval success does not imply [correction-channel integrity](/cards/correction-channel-integrity/) or that oversight mechanisms will survive deployment pressure; this project treats [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) on evals and [Deployment Safety](/cards/mb11-deployment-safety/) as separate concerns from detecting deception alone.
 - **Manuscript hooks:** ch10, ch43; METR-adjacent rows in lethality stress test
 - **Links:** [Apollo Research](https://www.apolloresearch.ai/); [Apollo publications index](https://www.apolloresearch.ai/research); [Meinke et al. 2024 — In-context scheming](https://arxiv.org/abs/2412.04984); [Laine et al. 2024 — Situational Awareness Dataset (SAD)](https://arxiv.org/abs/2407.04694); [Berglund et al. 2023 — Situational awareness in LLMs](https://arxiv.org/abs/2309.00667); [Park et al. 2024 — AI deception survey](https://arxiv.org/abs/2308.14752); [Truthful AI](https://truthful.ai/)
 
@@ -93,7 +93,7 @@ ARC formalizes [scalable oversight](/cards/subsumption-debate/) mechanisms, most
 - **Primary crux:** Can oversight elicit [latent knowledge](/cards/subsumption-elk/) directly rather than through a human simulator, and will readout remain faithful under optimization ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
 - **Field cruxes:** Value Learning (MB2); Value Referent (MB3); Inner Alignment (MB7)
 - **Contributes:** [ELK](/cards/subsumption-elk/) as the canonical naming of the latent readout problem in [scalable oversight](/cards/subsumption-debate/).
-- **Book separates:** Successful readout does not imply correction uptake; the book treats [correction-channel integrity](/cards/correction-channel-integrity/) as a separate requirement from [eliciting latent knowledge](/cards/subsumption-elk/), and adds [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) structure beyond readout alone.
+- **Project separates:** Successful readout does not imply correction uptake; this project treats [correction-channel integrity](/cards/correction-channel-integrity/) as a separate requirement from [eliciting latent knowledge](/cards/subsumption-elk/), and adds [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) structure beyond readout alone.
 - **Manuscript hooks:** ch43; App G ELK
 - **Links:** [ARC](https://www.alignment.org/)
 
@@ -109,7 +109,7 @@ BlueDot Impact provides introductory Technical AI Safety and Frontier AI Governa
 - **Primary crux:** Strong pedagogy and career placement do not imply a unified research agenda; courses mainly transmit vocabulary and problem framings rather than resolving technical cruxes.
 - **Field cruxes:** —
 - **Contributes:** A shared preparadigmatic vocabulary layer for new researchers—useful background for reading bridge-crosswalk material but not a technical discharge path.
-- **Book separates:** Training throughput and curriculum quality are independent of whether any particular alignment mechanism can be verified under adversarial pressure.
+- **Project separates:** Training throughput and curriculum quality are independent of whether any particular alignment mechanism can be verified under adversarial pressure.
 - **Manuscript hooks:** none required
 - **Links:** [BlueDot Impact](https://bluedot.org/)
 
@@ -125,7 +125,7 @@ CAIS publishes coordinated risk statements, runs the AISES course, and organizes
 - **Primary crux:** Field-building legitimacy and researcher pipeline growth do not imply a technical solution to alignment; advocacy can succeed while core mechanism questions remain open.
 - **Field cruxes:** —
 - **Contributes:** Legitimacy for AI safety as a research area and a steady pipeline of newcomers entering technical and policy work—meta-infrastructure rather than bridge discharge.
-- **Book separates:** The book's measurement spine is independent of CAIS framing; public statements and standards advocacy do not substitute for typed bridge arguments.
+- **Project separates:** This project's measurement spine is independent of CAIS framing; public statements and standards advocacy do not substitute for typed bridge arguments.
 - **Manuscript hooks:** minimal
 - **Links:** [CAIS](https://safe.ai/)
 
@@ -141,7 +141,7 @@ The Berkeley cluster reorients AI research toward beneficial systems under prefe
 - **Primary crux:** Cooperative reward inference may be underdetermined ([Value Learning](/cards/mb2-bundle-identifiability/)), and a shared research hub does not imply a unified technical agenda.
 - **Field cruxes:** Value Learning (MB2); Value Referent (MB3); Corrigibility (MB4); Inner Alignment (MB7)
 - **Contributes:** Formal assistance-game framing, the [off-switch](/cards/subsumption-shutdown/) game lineage, and FAR as an incubation hub (Gleave CHAI PhD; METR board overlap).
-- **Book separates:** The book adds bundle geometry and bearer maps for [Value Referent](/cards/mb3-bearer-import/), and treats [ELK](/cards/subsumption-elk/)-style latent readout as one subchannel of [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than the whole alignment target.
+- **Project separates:** This project adds bundle geometry and bearer maps for [Value Referent](/cards/mb3-bearer-import/), and treats [ELK](/cards/subsumption-elk/)-style latent readout as one subchannel of [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than the whole alignment target.
 - **Manuscript hooks:** ch04, ch18; App B MB2/MB3; App G CIRL projection
 - **Links:** [CHAI](https://humancompatible.ai/); [CHAI Internship](https://humancompatible.ai/people#interns); [FAR.AI](https://www.far.ai/); [Partitioned human supervision (Yin et al. 2025)](https://arxiv.org/abs/2510.22500)
 
@@ -157,7 +157,7 @@ Paul Christiano's lineage developed [scalable oversight](/cards/subsumption-deba
 - **Primary crux:** Can oversight stay honest when arguments can be obfuscated, judge preferences drift over time, and latent readout may diverge from behavior ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
 - **Field cruxes:** Value Learning (MB2); Value Referent (MB3); Corrigibility (MB4); Inner Alignment (MB7)
 - **Contributes:** The scalable-oversight protocol family (debate, amplification) and the [ELK](/cards/subsumption-elk/) problem statement as a canonical framing of latent readout.
-- **Book separates:** The book separates [correction-channel integrity](/cards/correction-channel-integrity/) from readout: successful latent elicitation does not imply that corrections will be accepted ([Corrigibility](/cards/mb4-correction-legitimacy/)).
+- **Project separates:** This project separates [correction-channel integrity](/cards/correction-channel-integrity/) from readout: successful latent elicitation does not imply that corrections will be accepted ([Corrigibility](/cards/mb4-correction-legitimacy/)).
 - **Manuscript hooks:** ch29, ch41, ch43; App B; projections ELK/debate
 - **Links:** [ARC](https://www.alignment.org/); [Paul Christiano (archive)](https://www.alignmentforum.org/users/paulfchristiano)
 
@@ -173,7 +173,7 @@ CIRIS is a cryptographic and procedural accountability stack for autonomous agen
 - **Primary crux:** CIRIS bets on named identity: if [Verify](https://ciris.ai/architecture/) and [Lens](https://ciris.ai/architecture/) report green on a certified occurrence, does that imply [Corrigibility](/cards/mb4-correction-legitimacy/) on the real intervening loop—[composite agency](/cards/composite-agency/), tools, memory, and incentives included?
 - **Field cruxes:** Embedded Agency (MB1); Corrigibility (MB4); Audit Independence (MB4a); Goodhart Selection (MB6); Inner Alignment (MB7); Grounding Drift (MB9); Deployment Safety (MB11)
 - **Contributes:** Honest operational disclaimers ([Verify](https://ciris.ai/architecture/) certifies authenticity, not ethics; [Lens](https://ciris.ai/architecture/) triages rather than delivering verdicts); unit-tested prohibition, conscience, and proxy fail-closed layers (50/50 smoke battery); and the sharpest falsifier shape for named-identity versus [composite agency](/cards/composite-agency/).
-- **Book separates:** Green attestation does not imply correction uptake; a signed agent record does not imply the real agent; Book IX geometry is aspirational rather than identical to shipped policy enforcement.
+- **Project separates:** Green attestation does not imply correction uptake; a signed agent record does not imply the real agent; Book IX geometry is aspirational rather than identical to shipped policy enforcement.
 - **Review status:** The smoke battery passed 50 of 50 tests (prohibitions, conscience helpers, proxy fail-closed behavior, verify types). Integration testing, hardware attestation, and adversarial gaming have not been run. A key open task is a CIRIS-shaped composite [boundary discovery](/cards/boundary-discovery/) counterexample: [Verify](https://ciris.ai/architecture/) and [Lens](https://ciris.ai/architecture/) green while a Wise-Authority-blind composite evades correction.
 - **Manuscript hooks:** `experiments/TODO.md`; toy T-9 `boundary_decouple`; lab LS-28; MB1/MB4 cards; Accord Book IX compositional limits (NEW-04)
 - **Links:** [CIRIS](https://ciris.ai/); [Architecture](https://ciris.ai/architecture/); [Accord (public text)](https://ciris.ai/ciris_accord.txt); [Accord (PDF)](https://ciris.ai/ciris_accord.pdf); [GitHub org](https://github.com/CIRISAI); [agents.ciris.ai](https://agents.ciris.ai); [AISafety.com map](https://aisafety.com/map)
@@ -190,7 +190,7 @@ CLR researches cooperation under AI competition, [s-risks](https://longtermrisk.
 - **Primary crux:** How do multi-agent failure modes behave under strategic pressure—especially when cooperation breaks down?
 - **Field cruxes:** Goodhart Selection (MB6); Acausal Coordination (MB7d)
 - **Contributes:** Conflict-and-cooperation framing for alignment research, plus [Cooperative AI Foundation](https://www.cooperativeai.com/) work on building cooperative AI under competitive pressure.
-- **Book separates:** Typed measurement of [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) and [Acausal Coordination](/cards/mb7d-acausal-coordination/) differs from narrative multipolar stories that lack the same measurement discipline.
+- **Project separates:** Typed measurement of [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) and [Acausal Coordination](/cards/mb7d-acausal-coordination/) differs from narrative multipolar stories that lack the same measurement discipline.
 - **Manuscript hooks:** ch35, ch02; Critch multipolar cites
 - **Links:** [CLR](https://longtermrisk.org/); [Critch & Krueger 2020 — ARCHES](https://arxiv.org/abs/2006.04948); [Dafoe et al. 2020 — Open Problems in Cooperative AI](https://arxiv.org/abs/2012.08630); [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.com/)
 
@@ -206,7 +206,7 @@ Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed a
 - **Primary crux:** Does emulation-style controllability still imply [corrigibility](/cards/mb4-correction-legitimacy/)—that systems remain open to correction—as capability scales?
 - **Field cruxes:** Inner Alignment (MB7)
 - **Contributes:** An alternative controllability framing; EleutherAI spinoff lineage; a Redwood-adjacent prosaic alignment spirit.
-- **Book separates:** [Correction-channel integrity](/cards/correction-channel-integrity/) and successor [value-bundle-transport](/cards/value-bundle-transport/) remain separate load-bearing concerns; Conjecture's active bet is partly historical; ControlAI overlap is advocacy, not CoEm research.
+- **Project separates:** [Correction-channel integrity](/cards/correction-channel-integrity/) and successor [value-bundle-transport](/cards/value-bundle-transport/) remain separate load-bearing concerns; Conjecture's active bet is partly historical; ControlAI overlap is advocacy, not CoEm research.
 - **Manuscript hooks:** sparse
 - **Links:** [Conjecture](https://www.conjecture.dev/); [Cognitive Emulation proposal](https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal); [EleutherAI](https://www.eleuther.ai/)
 
@@ -222,7 +222,7 @@ Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed a
 - **Primary crux:** Can we enumerate all safety-relevant phenomena in an open world, or will specification coverage always leave gaps ([Grounding Drift](/cards/mb9-grounding-certificate/))?
 - **Field cruxes:** Grounding Drift (MB9); Deployment Safety (MB11)
 - **Contributes:** Treats coverage and specification completeness as the central open wall for formally guaranteed safe systems.
-- **Book separates:** The book emphasizes [grounding viability](/cards/grounding-viability/) and conservative grounding (no silent gaps) rather than demanding full completeness of the specification; [Deployment Safety](/cards/mb11-deployment-safety/) is treated as a cousin agenda, not an identical target.
+- **Project separates:** This project emphasizes [grounding viability](/cards/grounding-viability/) and conservative grounding (no silent gaps) rather than demanding full completeness of the specification; [Deployment Safety](/cards/mb11-deployment-safety/) is treated as a cousin agenda, not an identical target.
 - **Manuscript hooks:** ch43, dynamical guarantee; App B MB9
 - **Links:** [GSAI paper](https://arxiv.org/abs/2405.06624); [Beneficial AI Foundation](https://www.beneficialaifoundation.org/); [LawZero](https://lawzero.org/en)
 
@@ -238,7 +238,7 @@ Google DeepMind integrates safety research into a large capabilities org, produc
 - **Primary crux:** Can oversight and safety research co-scale with capabilities, including under [deceptive alignment](/cards/strategic-opacity/) and [Inner Alignment](/cards/mb7-hidden-capability-and-access/) risk—the same frontier-lab crux shared with other major labs?
 - **Field cruxes:** Embedded Agency (MB1); Inner Alignment (MB7)
 - **Contributes:** Large-scale empirical alignment research capacity and causal agent discovery methods that infer agents from system dynamics.
-- **Book separates:** Corporate safety teams do not replace an independent measurement spine for [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [boundary discovery](/cards/boundary-discovery/); the book treats boundary and inner-alignment questions as only partially addressed by in-house teams.
+- **Project separates:** Corporate safety teams do not replace an independent measurement spine for [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [boundary discovery](/cards/boundary-discovery/); this project treats boundary and inner-alignment questions as only partially addressed by in-house teams.
 - **Manuscript hooks:** ch14 co-scaling; minimal elsewhere
 - **Links:** [Google DeepMind](https://deepmind.google/); [DeepMind Safety Research blog](https://deepmind.google/blog/); [Discovering Agents](https://arxiv.org/abs/2208.08345); [Leike et al. 2018 — Scalable agent oversight](https://arxiv.org/abs/1811.07871)
 
@@ -254,7 +254,7 @@ GovAI and allied institutes connect policy research to frontier evaluation, touc
 - **Primary crux:** Can governance mechanisms and institute evaluations keep pace with capability and actually bind deployment decisions under race pressure?
 - **Field cruxes:** Goodhart Selection (MB6); Inner Alignment (MB7); Grounding Drift (MB9); Deployment Safety (MB11)
 - **Contributes:** A governance research pipeline; EU and US policy translation; gradual disempowerment framing; institutional evaluation capacity; Resolution and Irving lineage via UK AISI; personnel and advisory overlap between GovAI and AISI.
-- **Book separates:** Policy levers and evaluation visibility do not imply [correction-channel integrity](/cards/correction-channel-integrity/).
+- **Project separates:** Policy levers and evaluation visibility do not imply [correction-channel integrity](/cards/correction-channel-integrity/).
 - **Manuscript hooks:** App C institutional translation; App B selection row; ch passive observation; field-news
 - **Links:** [GovAI](https://www.governance.ai/); [Compute governance report](https://www.governance.ai/research-paper/computing-power-and-the-governance-of-artificial-intelligence); [Gradual Disempowerment](https://gradual-disempowerment.ai/); [UK AISI](https://www.aisi.gov.uk/); [UK AISI eval lessons (2024)](https://www.aisi.gov.uk/blog/early-lessons-from-evaluating-frontier-ai-systems); [Frontier AI Trends Report](https://www.aisi.gov.uk/frontier-ai-trends-report); [CAISI / US NIST AI](https://www.nist.gov/artificial-intelligence); [Simon Institute](https://simoninstitute.ch/); [IAPS](https://www.iaps.ai/)
 
@@ -270,13 +270,13 @@ Kairos operates SPAR mentored research, Pathfinder career programs, Global Chall
 - **Primary crux:** Like other training agendas, program throughput and participant quality do not imply resolution of technical alignment cruxes; the bottleneck is still mechanism discovery, not talent discovery.
 - **Field cruxes:** —
 - **Contributes:** A campus-to-research pipeline and SPAR-backed project work that seeds early empirical and conceptual contributions across subfields.
-- **Book separates:** Field-building scale is orthogonal to whether any particular preservation mechanism survives optimization and deployment pressure.
+- **Project separates:** Field-building scale is orthogonal to whether any particular preservation mechanism survives optimization and deployment pressure.
 - **Manuscript hooks:** none
 - **Links:** [Kairos](https://kairos-project.org/); [SPAR](https://sparai.org/); [Pathfinder](https://pathfinder.kairos-project.org/); [Global Challenges Project](https://www.globalchallengesproject.org/)
 
 ### Kosoy / infra-Bayesianism & LTA
 
-Vanessa Kosoy's Infra-Bayesianism sequence and [learning-theoretic agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy) (LTA) build foundations for reasoning under deep uncertainty applicable to alignment. The work types misspecification, inner daemons, and nonrealizability as formal failure modes. Its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/) without replacing the book's System–bundle–correction ontology.
+Vanessa Kosoy's Infra-Bayesianism sequence and [learning-theoretic agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy) (LTA) build foundations for reasoning under deep uncertainty applicable to alignment. The work types misspecification, inner daemons, and nonrealizability as formal failure modes. Its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/) without replacing this project's System–bundle–correction ontology.
 
 - **Type:** Researcher lineage
 - **Carrier:** Vanessa Kosoy (+ Appel; logical-induction neighborhood via Garrabrant)
@@ -286,7 +286,7 @@ Vanessa Kosoy's Infra-Bayesianism sequence and [learning-theoretic agenda](https
 - **Primary crux:** Can learning-theoretic and infra-Bayesian frameworks type real alignment failures—misspecification, inner daemons, and recursive self-improvement?
 - **Field cruxes:** Embedded Agency (MB1); Value Learning (MB2); Tiling (MB5); Inner Alignment (MB7); Grounding Drift (MB9)
 - **Contributes:** Model-class misspecification and grain-of-truth analysis; regret-bounded agents; inner daemons under the [learning-theoretic agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy).
-- **Book separates:** This work does not replace the book's System–bundle–correction ontology; its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Value Learning](/cards/mb2-bundle-identifiability/), [Tiling](/cards/mb5-successor-ontology-shift/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/), with [Acausal Coordination](/cards/mb7d-acausal-coordination/) as a logical-induction neighborhood cousin.
+- **Project separates:** This work does not replace this project's System–bundle–correction ontology; its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Value Learning](/cards/mb2-bundle-identifiability/), [Tiling](/cards/mb5-successor-ontology-shift/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/), with [Acausal Coordination](/cards/mb7d-acausal-coordination/) as a logical-induction neighborhood cousin.
 - **Manuscript hooks:** App B intervention map (logical induction / infra-Bayesian cluster)
 - **Links:** [Infra-Bayesianism (LessWrong)](https://www.lesswrong.com/w/infra-bayesianism); [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)
 
@@ -302,7 +302,7 @@ Vanessa Kosoy's Infra-Bayesianism sequence and [learning-theoretic agenda](https
 - **Primary crux:** Does precursor-utility pointing survive simulation and ontology ambiguity?
 - **Field cruxes:** Value Learning (MB2); Value Referent (MB3); Corrigibility (MB4); Extrapolated Volition (MB8)
 - **Contributes:** A sibling outer-alignment endpoint; an assistance-game cousin reached through a different formal path.
-- **Book separates:** The endpoint alone is not sufficient; [value-bundle-transport](/cards/value-bundle-transport/), [bearer-persistence](/cards/bearer-persistence/), and the correction process remain load-bearing.
+- **Project separates:** The endpoint alone is not sufficient; [value-bundle-transport](/cards/value-bundle-transport/), [bearer-persistence](/cards/bearer-persistence/), and the correction process remain load-bearing.
 - **Manuscript hooks:** bib `kosoy2022predca`; glossary PreDCA row
 - **Links:** [PreDCA (Alignment Forum tag)](https://www.alignmentforum.org/w/predca); [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)
 
@@ -318,7 +318,7 @@ MAI and CIP pursue full-stack alignment through thick values, alignment assembli
 - **Primary crux:** Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?
 - **Field cruxes:** Value Learning (MB2); Audit Independence (MB4a); Goodhart Selection (MB6); Extrapolated Volition (MB8)
 - **Contributes:** Institutional amplification as a failure mode; operational deliberative alignment; counterfactual value commitments distinguished from surface preferences.
-- **Book separates:** A legitimate process does not imply [correction-channel integrity](/cards/correction-channel-integrity/); consensus output does not imply [bearer-persistence](/cards/bearer-persistence/) under optimization.
+- **Project separates:** A legitimate process does not imply [correction-channel integrity](/cards/correction-channel-integrity/); consensus output does not imply [bearer-persistence](/cards/bearer-persistence/) under optimization.
 - **Manuscript hooks:** ch04 value bundles adjacent; App C institutional translation
 - **Links:** [Meaning Alignment Institute](https://www.meaningalignment.org/); [Full-Stack Alignment paper](https://arxiv.org/abs/2512.03399); [Collective Intelligence Project](https://www.cip.org/); [Alignment Assemblies](https://www.cip.org/alignmentassemblies)
 
@@ -334,7 +334,7 @@ MATS runs a twelve-week mentored research program pairing scholars with alignmen
 - **Primary crux:** Mentorship output is intentionally diverse across subfields, which does not collapse into a single unified measurement spine—participants may advance interpretability, control, or governance lines without resolving cross-cutting bridge composition.
 - **Field cruxes:** —
 - **Contributes:** A research talent pipeline that feeds labs, orgs, and independent projects with mentored early-career alignment work.
-- **Book separates:** Fellowship research quality is independent of whether typed bridges compose under explicit adversarial-verifiability assumptions.
+- **Project separates:** Fellowship research quality is independent of whether typed bridges compose under explicit adversarial-verifiability assumptions.
 - **Manuscript hooks:** none required
 - **Links:** [MATS](https://www.matsprogram.org/)
 
@@ -350,7 +350,7 @@ METR measures dangerous autonomous and AI R&D capabilities at the frontier, prod
 - **Primary crux:** Do public capability evaluations track deployment-relevant risk under adversarial pressure and [Goodhart Selection](/cards/mb6-selection-and-basin-stability/)?
 - **Field cruxes:** Goodhart Selection (MB6); Inner Alignment (MB7)
 - **Contributes:** Empirical capability measurement at the frontier, including autonomy and AI R&D evaluations that shape lab and policy timelines.
-- **Book separates:** Capability evaluations do not establish [correction-channel integrity](/cards/correction-channel-integrity/) or [value-bundle transport](/cards/value-bundle-transport/) across deployment; the book treats evals as an indirect signal for [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than a direct guarantee.
+- **Project separates:** Capability evaluations do not establish [correction-channel integrity](/cards/correction-channel-integrity/) or [value-bundle transport](/cards/value-bundle-transport/) across deployment; this project treats evals as an indirect signal for [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than a direct guarantee.
 - **Manuscript hooks:** App B MB7 notes (METR 2026 cite); ch44
 - **Links:** [METR](https://metr.org/); [Kwa et al. 2025 — Measuring AI Ability to Complete Long Tasks](https://arxiv.org/abs/2503.14499); [METR 2026 — Frontier Risk Report](https://metr.org/blog/2026-05-19-frontier-risk-report/); [METR 2026 — Red-teaming Anthropic agent monitoring](https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/); [Barnes 2024 — General capability evaluations update](https://metr.org/blog/2024-08-06-update-on-evaluations/); [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/)
 
@@ -366,7 +366,7 @@ MIRI studies [agent foundations](https://intelligence.org/)—the theoretical pr
 - **Primary crux:** There may be no clean cut between an AI and its environment ([Embedded Agency](/cards/mb1-boundary-estimator-soundness/)); [corrigibility](/cards/mb4-correction-legitimacy/) may be anti-natural; and successor systems may not inherit trust under ontology change ([Tiling](/cards/mb5-successor-ontology-shift/)).
 - **Field cruxes:** Embedded Agency (MB1); Corrigibility (MB4); Tiling (MB5); Extrapolated Volition (MB8)
 - **Contributes:** Canonical problem statements for [embedded agency](/cards/mb1-boundary-estimator-soundness/) and [corrigibility](/cards/mb4-correction-legitimacy/), plus a decision-theoretic lineage that shaped much of the field's early vocabulary.
-- **Book separates:** The book treats [boundary discovery](/cards/boundary-discovery/) as an operational bet on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), and distinguishes trajectory-level [correction-channel integrity](/cards/correction-channel-integrity/) from a single-bit shutdown mechanism.
+- **Project separates:** This project treats [boundary discovery](/cards/boundary-discovery/) as an operational bet on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), and distinguishes trajectory-level [correction-channel integrity](/cards/correction-channel-integrity/) from a single-bit shutdown mechanism.
 - **Manuscript hooks:** App B MB1/MB4/MB5 notes; ch07, ch25, ch28
 - **Links:** [MIRI](https://intelligence.org/); [AI StopWatch](https://aistop.watch/)
 
@@ -382,7 +382,7 @@ AE Studio's *Neglected Approaches* strategy (Berg, Carauleanu, Rosenblatt; Dec 2
 - **Primary crux:** Which neglected routes survive unified optimization pressure—and which portfolio bets compound versus diffuse effort across incompatible outer targets?
 - **Field cruxes:** Embedded Agency (MB1); Value Learning (MB2); Corrigibility (MB4); Goodhart Selection (MB6); Inner Alignment (MB7)
 - **Contributes:** Portfolio meta-strategy and an intervention catalog (`zarncke2025interventions`); Heitzig's human-power outer target; [UAD](https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery) and agency-detect [boundary discovery](/cards/boundary-discovery/); Byrnes's social-cognition and homeostatic hypotheses; the SOO deception-reduction line; and AE's ten-direction menu spanning prosociality, TAI-to-BCI-to-researchers pipelines, value mapping, RLNF, provably safe architectures, field-building, safety businesses, consultancy scale-up, neuroscience crossed with interpretability, and neglected policy.
-- **Book separates:** Portfolio breadth does not imply a single discharge path through the measurement spine; any one outer objective still needs its own adversarial-verifiability argument for [Corrigibility](/cards/mb4-correction-legitimacy/) and [correction-channel integrity](/cards/correction-channel-integrity/).
+- **Project separates:** Portfolio breadth does not imply a single discharge path through the measurement spine; any one outer objective still needs its own adversarial-verifiability argument for [Corrigibility](/cards/mb4-correction-legitimacy/) and [correction-channel integrity](/cards/correction-channel-integrity/).
 - **Manuscript hooks:** App B intervention map source; ch04/ch15/ch25 adjacent
 - **Links:** [Neglected Approaches agenda (AE Studio)](https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach); [Neglected Approaches (LessWrong)](https://www.lesswrong.com/posts/qAdDzcBuDBLexb4fC/the-neglected-approaches-approach-ae-studio-s-alignment); [AE Studio](https://ae.studio/); [AE Studio Alignment](https://ae.studio/alignment); [Unsupervised Agent Discovery](https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery); [agency-detect](https://github.com/GunnarZarncke/agency-detect); [Brain-Like AGI Safety (Byrnes)](https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/); [SOO fine-tuning paper](https://arxiv.org/abs/2412.16325); [Human-power objective (Heitzig)](https://arxiv.org/abs/2508.00159)
 
@@ -398,7 +398,7 @@ Orthogonal is an agent-foundations research community advancing formal alignment
 - **Primary crux:** Can a community-organized research program discharge the same formal walls as MIRI and CHAI—[embedded agency](/cards/mb1-boundary-estimator-soundness/), [corrigibility](/cards/mb4-correction-legitimacy/), and related obstructions?
 - **Field cruxes:** Embedded Agency (MB1); Corrigibility (MB4)
 - **Contributes:** An active agent-foundations research community working on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [Corrigibility](/cards/mb4-correction-legitimacy/).
-- **Book separates:** A typed bridge stack and measurement program distinct from narrative community alignment talk.
+- **Project separates:** A typed bridge stack and measurement program distinct from narrative community alignment talk.
 - **Manuscript hooks:** sparse
 - **Links:** [Orthogonal](https://orxl.org/); [Demski & Garrabrant 2019 — Embedded Agency](https://arxiv.org/abs/1902.09469); [Leake & Persson 2023 — QACI](https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal)
 
@@ -414,7 +414,7 @@ The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and 
 - **Primary crux:** Can advocacy create enforceable slowdown without collateral governance failure?
 - **Field cruxes:** Goodhart Selection (MB6); Extrapolated Volition (MB8)
 - **Contributes:** Schedule shapes for governance stress tests (Appendix F deferred section).
-- **Book separates:** A pause or standards handle does not discharge the full alignment bridge stack from [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) through [Successor Gaming](/cards/mb10-successor-forgeability/); it mainly shapes [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) basin transition conditions, with [Extrapolated Volition](/cards/mb8-cev-process-convergence/) as a secondary route.
+- **Project separates:** A pause or standards handle does not discharge the full alignment bridge stack from [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) through [Successor Gaming](/cards/mb10-successor-forgeability/); it mainly shapes [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) basin transition conditions, with [Extrapolated Volition](/cards/mb8-cev-process-convergence/) as a secondary route.
 - **Manuscript hooks:** App C MIRI hard-pause vs Plan A; ch38 conductive artifacts
 - **Links:** [PauseAI](https://pauseai.info/); [PauseAI policy proposal](https://pauseai.info/proposal); [FLI](https://futureoflife.org/); [ControlAI](https://controlai.org/); [Encode](https://encodeai.org/); [Global AI Moratorium (FLI)](https://futureoflife.org/open-letter/pause-giant-ai-experiments/)
 
@@ -430,7 +430,7 @@ Redwood Research makes safety-under-subversion research legible to labs and gove
 - **Primary crux:** Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
 - **Field cruxes:** Inner Alignment (MB7)
 - **Contributes:** Makes the capability-gap assumption explicit and runs empirical control evaluations under intentional subversion.
-- **Book separates:** The book adds a hidden boundary-intelligence bound and treats [adversarial verifiability](/cards/certification-under-manipulation/) as a prerequisite ([certification under manipulation](/cards/certification-under-manipulation/)), not something control evals alone establish.
+- **Project separates:** This project adds a hidden boundary-intelligence bound and treats [adversarial verifiability](/cards/certification-under-manipulation/) as a prerequisite ([certification under manipulation](/cards/certification-under-manipulation/)), not something control evals alone establish.
 - **Manuscript hooks:** ch10, ch43; App B MB7
 - **Links:** [Redwood Research](https://www.redwoodresearch.org/); [Shlegeris et al. 2023 — AI Control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion); [Greenblatt et al. 2024 — Alignment faking](https://arxiv.org/abs/2412.14093)
 
@@ -446,7 +446,7 @@ Resolution pursues theory and automation for high-confidence alignment, includin
 - **Primary crux:** Can formal and automated pipelines scale to superintelligent alignment?
 - **Field cruxes:** Embedded Agency (MB1); Grounding Drift (MB9); Deployment Safety (MB11)
 - **Contributes:** An automation-first philosophy; UK AISI lineage via Irving.
-- **Book separates:** The book's adversarial-verifiability chokepoint under optimization remains load-bearing despite automation ambitions—related to [certification under manipulation](/cards/certification-under-manipulation/) and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits.
+- **Project separates:** This project's adversarial-verifiability chokepoint under optimization remains load-bearing despite automation ambitions—related to [certification under manipulation](/cards/certification-under-manipulation/) and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits.
 - **Manuscript hooks:** sparse; App B exclude-by-reference for full verification construction
 - **Links:** [Resolution](https://resolution.org/); [Resolution launch essay](https://resolution.org/launch); [Automated alignment is harder than you think](https://arxiv.org/abs/2605.06390); [Timaeus](https://www.timaeus.ai/); [Timaeus SLT position (2025)](https://timaeus.co/research/2025-02-08-position/)
 
@@ -462,7 +462,7 @@ The Safeguarded AI cluster—ARIA, Zeroth Research, Heron AI Security, and conta
 - **Primary crux:** Safety claims are conditional on the declared system boundary; misspecified controllers, emergent coalitions, or agents outside the certified cut can void otherwise correct proofs.
 - **Field cruxes:** Embedded Agency (MB1); Audit Independence (MB4a); Inner Alignment (MB7); Grounding Drift (MB9); Deployment Safety (MB11)
 - **Contributes:** Whole-system formal assurance for agentic deployments; cryptographic attestations of runtime behavior; explicit agentic action boundaries; and architecture-level multi-agent security analysis—directly engaging [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Audit Independence](/cards/mb4a-measured-path-legitimacy/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), [Grounding Drift](/cards/mb9-grounding-certificate/), and [Deployment Safety](/cards/mb11-deployment-safety/).
-- **Book separates:** A green proof certificate does not imply that corrections are actually taken up in the live loop; attestation of declared behavior does not imply that the discovered effective agent matches the certified unit—a cousin tension to [Guaranteed-Safe AI](https://arxiv.org/abs/2405.06624)'s completeness wall versus CIRIS-style operational stacks.
+- **Project separates:** A green proof certificate does not imply that corrections are actually taken up in the live loop; attestation of declared behavior does not imply that the discovered effective agent matches the certified unit—a cousin tension to [Guaranteed-Safe AI](https://arxiv.org/abs/2405.06624)'s completeness wall versus CIRIS-style operational stacks.
 - **Manuscript hooks:** ch43; dynamical guarantee; App B MB9/MB11
 - **Links:** [ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai); [Zeroth Research](https://www.zeroth.org/); [Containment Verification](https://arxiv.org/abs/2605.09045); [Heron AI Security](https://www.heronsec.ai/); [AARM specification](https://heron.ing/aarm); [ZK attestation (Berrang)](https://pascal-berrang.de/projects/zk_ai_security/)
 
@@ -476,7 +476,7 @@ The Safeguarded AI cluster—ARIA, Zeroth Research, Heron AI Security, and conta
 - **Primary crux:** Can typed bridges compose under an explicit adversarial-verifiability antecedent, or do standard non-converses block naive closure arguments?
 - **Field cruxes:** Embedded Agency (MB1); Value Learning (MB2); Value Referent (MB3); Corrigibility (MB4); Audit Independence (MB4a); Tiling (MB5); Goodhart Selection (MB6); Inner Alignment (MB7); Acausal Coordination (MB7d); Extrapolated Volition (MB8); Grounding Drift (MB9); Successor Gaming (MB10); Deployment Safety (MB11)
 - **Contributes:** A typed measurement spine from [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) through [Deployment Safety](/cards/mb11-deployment-safety/); explicit non-converses between field agendas; and [selection environment](/cards/attractor-control/) as a load-bearing variable for [Goodhart Selection](/cards/mb6-selection-and-basin-stability/).
-- **Book separates:** The book does not dissolve disagreements between field agendas—it relocates them into named bridges with testable crux wording rather than rhetorical merger.
+- **Project separates:** The book does not dissolve disagreements between field agendas—it relocates them into named bridges with testable crux wording rather than rhetorical merger.
 - **Manuscript hooks:** full manuscript; App B crosswalk
 - **Links:** [Companion site](https://towards-alignment.com/); [GitHub repo](https://github.com/GunnarZarncke/towards-asi-alignment)
 
@@ -492,13 +492,13 @@ John Wentworth's natural-abstractions lineage develops the [Natural Abstraction 
 - **Primary crux:** Do [natural abstractions](https://www.alignmentforum.org/users/John+Wentworth)—the variables that survive selection—align with value-relevant structure when systems are trained or deployed at scale?
 - **Field cruxes:** Value Learning (MB2); Value Referent (MB3); Embedded Agency (MB1)
 - **Contributes:** The [Natural Abstraction Hypothesis](https://www.alignmentforum.org/users/John+Wentworth) acts as a falsifier for low-dimensional value stories: if the wrong latents are natural, naive [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) targets may misfire even when surface training looks successful (see ch17 WWCTV).
-- **Book separates:** The book types bundle geometry and ontology-shift transport separately; natural-abstraction convergence is informative but is not promoted to a load-bearing spine assumption—[Tiling](/cards/mb5-successor-ontology-shift/) still needs its own discharge argument.
+- **Project separates:** This project types bundle geometry and ontology-shift transport separately; natural-abstraction convergence is informative but is not promoted to a load-bearing spine assumption—[Tiling](/cards/mb5-successor-ontology-shift/) still needs its own discharge argument.
 - **Manuscript hooks:** ch17; App B shard/NAH row
 - **Links:** [John Wentworth](https://www.lesswrong.com/users/johnswentworth)
 
 ---
 
-## Coverage vs book treatment {#coverage-vs-book-treatment}
+## Coverage vs project treatment {#coverage-vs-book-treatment}
 
 The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology.
 

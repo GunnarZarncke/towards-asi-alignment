@@ -20,7 +20,7 @@ related: []
 
 ## Introduction
 
-Vanessa Kosoy's Infra-Bayesianism sequence and [learning-theoretic agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy) (LTA) build foundations for reasoning under deep uncertainty applicable to alignment. The work types misspecification, inner daemons, and nonrealizability as formal failure modes. Its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/) without replacing the book's System–bundle–correction ontology.
+Vanessa Kosoy's Infra-Bayesianism sequence and [learning-theoretic agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy) (LTA) build foundations for reasoning under deep uncertainty applicable to alignment. The work types misspecification, inner daemons, and nonrealizability as formal failure modes. Its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/) without replacing this project's System–bundle–correction ontology.
 
 **Who carries it:** Vanessa Kosoy (+ Appel; logical-induction neighborhood via Garrabrant)
 
@@ -36,7 +36,7 @@ Vanessa Kosoy's Infra-Bayesianism sequence and [learning-theoretic agenda](https
 
 **What they contribute.** Model-class misspecification and grain-of-truth analysis; regret-bounded agents; inner daemons under the [learning-theoretic agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy).
 
-**How this book treats it.** This work does not replace the book's System–bundle–correction ontology; its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Value Learning](/cards/mb2-bundle-identifiability/), [Tiling](/cards/mb5-successor-ontology-shift/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/), with [Acausal Coordination](/cards/mb7d-acausal-coordination/) as a logical-induction neighborhood cousin.
+**How this project treats it.** This work does not replace this project's System–bundle–correction ontology; its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Value Learning](/cards/mb2-bundle-identifiability/), [Tiling](/cards/mb5-successor-ontology-shift/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/), with [Acausal Coordination](/cards/mb7d-acausal-coordination/) as a logical-induction neighborhood cousin.
 
 ## Links
 

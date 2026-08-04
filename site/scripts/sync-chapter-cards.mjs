@@ -182,7 +182,7 @@ async function main() {
         "what-not-claiming"
       ],
       bodyExtra:
-        "This appendix maps each formal bridge (MB1–MB10) to the alignment field's canonical open problems and names where the book shares an agenda versus where it adds structure. Use the crosswalk table for the field mapping; bridge cards, concept cards, and book chapters are in the sidebar."
+        "This appendix maps each formal bridge (MB1–MB10) to the alignment field's canonical open problems and names where this project shares an agenda versus where it adds structure. Use the crosswalk table for the field mapping; bridge cards, concept cards, and book chapters are in the sidebar."
     },
     { id: "appC", file: "appendices/appC-institutional-translation.tex", type: "appendix", title: "Human Institutions as Alignment Translation Guide" },
     {

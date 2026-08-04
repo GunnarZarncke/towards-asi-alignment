@@ -571,7 +571,7 @@ concepts:
     title: Scope and the Correction-Capacity Assumption
     status: framework
     summary: The framework applies only while civilization still has enough capacity to notice, evaluate, and constrain frontier systems — this is a scope condition, not a guarantee.
-    decision: Before applying any tool from this book, ask whether society can still notice relevant changes, interpret evidence, contest it, constrain deployment, and recover from a failed correction attempt.
+    decision: Before applying any tool from this project, ask whether society can still notice relevant changes, interpret evidence, contest it, constrain deployment, and recover from a failed correction attempt.
     bookChapters:
       - ch05
     bookLabels:
@@ -702,7 +702,7 @@ concepts:
     kind: concept
     title: Value Change vs. Value Corruption
     status: framework
-    summary: Not all value change is a threat. The distinction between legitimate value change and corruption is load-bearing for everything the book calls correction.
+    summary: Not all value change is a threat. The distinction between legitimate value change and corruption is load-bearing for everything this project calls correction.
     decision: Before treating a shift in stated or revealed values as evidence of drift, ask whether it moved through processes people would endorse on reflection, or through manipulation, coercion, or dependency.
     bookChapters:
       - ch04

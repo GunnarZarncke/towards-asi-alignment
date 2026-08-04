@@ -125,7 +125,7 @@ function renderAgendaBody(agenda, clusteringRows, bridgeRows) {
     lines.push("");
   }
   if (agenda.bookSeparates) {
-    lines.push(`**How this book treats it.** ${agenda.bookSeparates}`);
+    lines.push(`**How this project treats it.** ${agenda.bookSeparates}`);
     lines.push("");
   }
   if (agenda.reviewStatus) {
@@ -232,7 +232,7 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
       } else if (agenda.bookBridges) lines.push(`- **Field cruxes:** —`);
     }
     if (agenda.contributes) lines.push(`- **Contributes:** ${agenda.contributes}`);
-    if (agenda.bookSeparates) lines.push(`- **Book separates:** ${agenda.bookSeparates}`);
+    if (agenda.bookSeparates) lines.push(`- **Project separates:** ${agenda.bookSeparates}`);
     if (agenda.reviewStatus) lines.push(`- **Review status:** ${agenda.reviewStatus}`);
     if (agenda.manuscriptHooks?.length) lines.push(`- **Manuscript hooks:** ${agenda.manuscriptHooks.join("; ")}`);
     if (agenda.links?.length) {
@@ -242,7 +242,7 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
   }
   lines.push("---");
   lines.push("");
-  lines.push("## Coverage vs book treatment {#coverage-vs-book-treatment}");
+  lines.push("## Coverage vs project treatment {#coverage-vs-book-treatment}");
   lines.push("");
   lines.push(meta.coverageIntro);
   lines.push("");

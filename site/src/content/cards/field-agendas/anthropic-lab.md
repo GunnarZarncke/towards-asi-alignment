@@ -51,7 +51,7 @@ Anthropic builds frontier models under staged safety commitments ([RSP](https://
 
 **What they contribute.** Industry [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) template, conditioning-predictor failure modes, Goodfire mechanistic-interpretability tooling (Anthropic investment; Apollo and DeepMind MI lineage on team), and cross-lab Neuronpedia infrastructure.
 
-**How this book treats it.** The book requires [correction-channel integrity](/cards/correction-channel-integrity/) and [adversarial verifiability](/cards/certification-under-manipulation/); a lab [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) is not the same as a preservation-layer certificate ([Deployment Safety](/cards/mb11-deployment-safety/)), and interpretability progress does not by itself resolve [Successor Gaming](/cards/mb10-successor-forgeability/) or full [Inner Alignment](/cards/mb7-hidden-capability-and-access/) risk.
+**How this project treats it.** This project requires [correction-channel integrity](/cards/correction-channel-integrity/) and [adversarial verifiability](/cards/certification-under-manipulation/); a lab [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) is not the same as a preservation-layer certificate ([Deployment Safety](/cards/mb11-deployment-safety/)), and interpretability progress does not by itself resolve [Successor Gaming](/cards/mb10-successor-forgeability/) or full [Inner Alignment](/cards/mb7-hidden-capability-and-access/) risk.
 
 ## Links
 

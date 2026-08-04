@@ -33,7 +33,7 @@ citeKeys:
   - dalrymple2024gsai
 ---
 
-Deployment safety and safety-case agendas ask whether evidence supports scaling compute, release, or pivotal deployment. The book treats episode-battery pass, regret bounds, and case-green status as projections of deployment-level Safe — not as substitutes for scope discipline.
+Deployment safety and safety-case agendas ask whether evidence supports scaling compute, release, or pivotal deployment. This project treats episode-battery pass, regret bounds, and case-green status as projections of deployment-level Safe — not as substitutes for scope discipline.
 
 Lean proves finite defeaters: `MB11_defeater_toy_scope_exceeded` when case reads green but scope is exceeded, and `zero_regret_not_harm_bound` showing regret alone does not discharge harm bounds. MB11 forward assembly remains an explicit bridge; the separations calibrate what case-green actually certifies.
 

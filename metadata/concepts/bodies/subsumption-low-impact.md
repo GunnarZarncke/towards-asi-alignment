@@ -42,7 +42,7 @@ citeKeys:
   - krakovna2018relative
 ---
 
-AUP and relative reachability are influential side-effect controls: preserve auxiliary goals or stay close to a baseline trajectory. Chapter 27 states the book's separation plainly — preserving those objects does not entail preserving human correction capacity.
+AUP and relative reachability are influential side-effect controls: preserve auxiliary goals or stay close to a baseline trajectory. Chapter 27 states this project's separation plainly — preserving those objects does not entail preserving human correction capacity.
 
 Lean proves conditional forward links when the auxiliary basis tracks correction-relevant options, and multiple non-converse separations on finite graphs and trajectory steps. Low-impact metrics can be useful stress tests inside a deployment gate, but they are not substitutes for correction-channel integrity certificates.
 

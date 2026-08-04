@@ -7,7 +7,7 @@ featuredSpotlight:
   kind: demo
   ref: ch16-value-bundle-simulator
   title: "Value Bundle Simulator"
-  blurb: "An interactive sketch of how environment and social structure shape a value bundle — the book's bundle geometry without reading all of Part IV first."
+  blurb: "An interactive sketch of how environment and social structure shape a value bundle — this project's bundle geometry without reading all of Part IV first."
   primaryLabel: "Open simulator"
   secondary:
     kind: card
@@ -69,11 +69,11 @@ steps:
 
 ## What this path is for
 
-You want to know whether the book earns its metaphysics and its pessimism/optimism balance — not whether a particular audit API is implementable.
+You want to know whether this project earns its metaphysics and its pessimism/optimism balance — not whether a particular audit API is implementable.
 
 **You will leave knowing:**
 
-- Why the book rejects fixed utility functions and one-shot training as the alignment object.
+- Why this project rejects fixed utility functions and one-shot training as the alignment object.
 - How **value-bundle geometry** responds to the worry that human values are too arbitrary to learn.
 - Where **bearer maps** and **ontology shift** break naive value identification.
 - Why **correction** is about preserving a human value-update process, not freezing current endorsements.

@@ -35,7 +35,7 @@ related: []
 
 **What they contribute.** A sibling outer-alignment endpoint; an assistance-game cousin reached through a different formal path.
 
-**How this book treats it.** The endpoint alone is not sufficient; [value-bundle-transport](/cards/value-bundle-transport/), [bearer-persistence](/cards/bearer-persistence/), and the correction process remain load-bearing.
+**How this project treats it.** The endpoint alone is not sufficient; [value-bundle-transport](/cards/value-bundle-transport/), [bearer-persistence](/cards/bearer-persistence/), and the correction process remain load-bearing.
 
 ## Links
 

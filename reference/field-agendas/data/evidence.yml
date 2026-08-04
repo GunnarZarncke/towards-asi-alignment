@@ -851,7 +851,7 @@ evidence:
       - label: Lab simulation findings
         url: https://towards-alignment.com/experiments/findings/lab-simulation/
   - id: 82
-    agenda: Neglected approaches
+    agenda: TSA
     bridges:
       - MB1
     type: S

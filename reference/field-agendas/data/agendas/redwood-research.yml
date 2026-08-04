@@ -30,7 +30,7 @@ contributes: >-
   Makes the capability-gap assumption explicit and runs empirical control evaluations
   under intentional subversion.
 bookSeparates: >-
-  The book adds a hidden boundary-intelligence bound and treats [adversarial
+  This project adds a hidden boundary-intelligence bound and treats [adversarial
   verifiability](/cards/certification-under-manipulation/) as a prerequisite
   ([certification under manipulation](/cards/certification-under-manipulation/)), not
   something control evals alone establish.

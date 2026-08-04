@@ -37,7 +37,7 @@ Google DeepMind integrates safety research into a large capabilities org, produc
 
 **What they contribute.** Large-scale empirical alignment research capacity and causal agent discovery methods that infer agents from system dynamics.
 
-**How this book treats it.** Corporate safety teams do not replace an independent measurement spine for [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [boundary discovery](/cards/boundary-discovery/); the book treats boundary and inner-alignment questions as only partially addressed by in-house teams.
+**How this project treats it.** Corporate safety teams do not replace an independent measurement spine for [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [boundary discovery](/cards/boundary-discovery/); this project treats boundary and inner-alignment questions as only partially addressed by in-house teams.
 
 ## Links
 

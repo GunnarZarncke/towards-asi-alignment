@@ -36,7 +36,7 @@ contributes: >-
 bookSeparates: >-
   Eval success does not imply [correction-channel
   integrity](/cards/correction-channel-integrity/) or that oversight mechanisms will
-  survive deployment pressure; the book treats [Goodhart
+  survive deployment pressure; this project treats [Goodhart
   Selection](/cards/mb6-selection-and-basin-stability/) on evals and [Deployment
   Safety](/cards/mb11-deployment-safety/) as separate concerns from detecting deception
   alone.

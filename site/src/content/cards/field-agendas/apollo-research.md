@@ -45,7 +45,7 @@ Apollo and Truthful AI focus on deception, [scheming](https://www.apolloresearch
 
 **What they contribute.** Scheming as a named empirical program; TruthfulQA and SAD lineage; Evans mentee network overlaps Apollo, UK and US AISI, and Anthropic.
 
-**How this book treats it.** Eval success does not imply [correction-channel integrity](/cards/correction-channel-integrity/) or that oversight mechanisms will survive deployment pressure; the book treats [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) on evals and [Deployment Safety](/cards/mb11-deployment-safety/) as separate concerns from detecting deception alone.
+**How this project treats it.** Eval success does not imply [correction-channel integrity](/cards/correction-channel-integrity/) or that oversight mechanisms will survive deployment pressure; this project treats [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) on evals and [Deployment Safety](/cards/mb11-deployment-safety/) as separate concerns from detecting deception alone.
 
 ## Links
 

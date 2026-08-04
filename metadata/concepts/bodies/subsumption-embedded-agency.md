@@ -33,7 +33,7 @@ citeKeys:
   - demski2019embedded
 ---
 
-Embedded agency denies that the real optimizer sits in a clean Cartesian box separate from the environment. The book treats the agent–environment cut as a measurable object: ε-boundary discovery asks whether the certified unit is the real control locus.
+Embedded agency denies that the real optimizer sits in a clean Cartesian box separate from the environment. This project treats the agent–environment cut as a measurable object: ε-boundary discovery asks whether the certified unit is the real control locus.
 
 Lean proves margin arithmetic that yields ε-boundary certificates on the finite interface, and finite separations that break the converse: a green named measured path can coexist with composite bypass (`green_named_path_with_bypass_not_integrity`), and MB1 estimator-soundness has explicit nonstationary defeaters. MB1 forward discharge remains a bridge assumption, not a rederived theorem from boundary metrics alone.
 

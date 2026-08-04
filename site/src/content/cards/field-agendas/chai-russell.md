@@ -39,7 +39,7 @@ The Berkeley cluster reorients AI research toward beneficial systems under prefe
 
 **What they contribute.** Formal assistance-game framing, the [off-switch](/cards/subsumption-shutdown/) game lineage, and FAR as an incubation hub (Gleave CHAI PhD; METR board overlap).
 
-**How this book treats it.** The book adds bundle geometry and bearer maps for [Value Referent](/cards/mb3-bearer-import/), and treats [ELK](/cards/subsumption-elk/)-style latent readout as one subchannel of [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than the whole alignment target.
+**How this project treats it.** This project adds bundle geometry and bearer maps for [Value Referent](/cards/mb3-bearer-import/), and treats [ELK](/cards/subsumption-elk/)-style latent readout as one subchannel of [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than the whole alignment target.
 
 ## Links
 

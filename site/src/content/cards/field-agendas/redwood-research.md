@@ -34,7 +34,7 @@ Redwood Research makes safety-under-subversion research legible to labs and gove
 
 **What they contribute.** Makes the capability-gap assumption explicit and runs empirical control evaluations under intentional subversion.
 
-**How this book treats it.** The book adds a hidden boundary-intelligence bound and treats [adversarial verifiability](/cards/certification-under-manipulation/) as a prerequisite ([certification under manipulation](/cards/certification-under-manipulation/)), not something control evals alone establish.
+**How this project treats it.** This project adds a hidden boundary-intelligence bound and treats [adversarial verifiability](/cards/certification-under-manipulation/) as a prerequisite ([certification under manipulation](/cards/certification-under-manipulation/)), not something control evals alone establish.
 
 ## Links
 

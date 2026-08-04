@@ -2,7 +2,7 @@
 # Canonical long-form narrative: docs/EXPERIMENTS.md — update this file when tables, links, or headline findings change.
 
 claimStrength: >
-  Methodology-building and sanity checks only. No experiment line validates the full book thesis,
+  Methodology-building and sanity checks only. No experiment line validates the full project thesis,
   proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (MB1–MB10).
 
 negativeResultsFirst: true
@@ -67,9 +67,9 @@ lines:
     firstBuilt: "2026-06-29"
     role: >
       Fast, small-scale alignment toy staging correction that looks compliant but is not, scored across
-      several levels of intervention access, against scripted versions of the book's bridge assumptions.
+      several levels of intervention access, against scripted versions of this project's bridge assumptions.
       It scores [correction-channel integrity](/cards/correction-channel-integrity/) across several levels
-      of intervention access and stages each of the book's [bridge assumptions](/cards/bridge-assumptions/)
+      of intervention access and stages each of this project's [bridge assumptions](/cards/bridge-assumptions/)
       as an explicit, hand-written scenario. Optimized for instrumentation economics, not deployment realism.
     readmePath: experiments/toy-simulation/README.md
     findingsPath: experiments/toy-simulation/results/FINDINGS.md
@@ -166,7 +166,7 @@ lines:
       a referee limited to what it can observe); a first multi-episode selection battery; population growth
       left to run on its own rather than hand-authored; a pre-registered test of whether the detection
       method still works when transplanted onto that grown population (Q1, GL-76); a set of rigs testing
-      each of the book's [bridge assumptions](/cards/bridge-assumptions/) independently (GL-79--GL-85); and
+      each of this project's [bridge assumptions](/cards/bridge-assumptions/) independently (GL-79--GL-85); and
       two attempts at transferring the whole approach to external multi-agent benchmarks this project did not
       build, Orbit (GL-86) and the Collective-Intelligence-Library's `basin_stability` (GL-87/GL-88).
       The first program version is closed (2026-07-15, GL-31). The second version and its follow-up closed
@@ -194,7 +194,7 @@ lines:
 howToRead:
   - lineId: agency-detect
     text: >
-      Grounds the book's [first bridge assumption](/cards/bridge-assumptions/) and the claim that intervention
+      Grounds this project's [first bridge assumption](/cards/bridge-assumptions/) and the claim that intervention
       handles must be tested by intervening, not just observed; does not implement the full set of
       bridge-assumption tests.
   - lineId: deployment-pipeline-simulator
@@ -215,7 +215,7 @@ howToRead:
   - lineId: lab-simulation
     text: >
       Pre-registered batteries and pipeline lab machinery; ET-3 (AI 2027 schedule transfer) closed
-      2026-07-26 with LS-42–48. Coverage of the book's bridge assumptions for extended populations and
+      2026-07-26 with LS-42–48. Coverage of this project's bridge assumptions for extended populations and
       selection basins beyond ET-3 mapping remains deferred.
   - lineId: graded-lab-simulation
     text: >

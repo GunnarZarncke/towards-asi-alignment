@@ -31,6 +31,6 @@ citeKeys:
 
 Quantilization is an early answer to Goodhart under optimization: instead of taking the argmax, sample from the top quantile of a base policy. Taylor's bound limits optimizer-induced risk when eligibility is sound.
 
-The book treats quantile safety as a local projection — useful when paired with trajectory-level correction certificates, insufficient alone. Lean proves soundness transfer lemmas and a finite separation showing quantile-safe local actions can coexist with failed trajectory CCI. Chapter 27 groups quantilization with other tempting weaker invariants that fail the correction-channel stress test.
+This project treats quantile safety as a local projection — useful when paired with trajectory-level correction certificates, insufficient alone. Lean proves soundness transfer lemmas and a finite separation showing quantile-safe local actions can coexist with failed trajectory CCI. Chapter 27 groups quantilization with other tempting weaker invariants that fail the correction-channel stress test.
 
 *What quantilization keeps that this crosswalk does not replace:* a concrete, analyzable sampling mechanism with a quantifiable risk/performance tradeoff. The book offers no closed-form knob of comparable simplicity.

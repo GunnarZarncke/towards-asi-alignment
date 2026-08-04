@@ -1,5 +1,5 @@
 {
-  "claimStrength": "Methodology-building and sanity checks only. No experiment line validates the full book thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (MB1–MB10).",
+  "claimStrength": "Methodology-building and sanity checks only. No experiment line validates the full project thesis, proves deployable alignment, or substitutes for the Lean proof spine's explicit bridge axioms (MB1–MB10).",
   "negativeResultsFirst": true,
   "negativeResultsCardPath": "/cards/negative-results/",
   "negativeResultsCardUrl": "https://towards-alignment.com/cards/negative-results/",
@@ -116,7 +116,7 @@
       "title": "Toy simulation",
       "location": "experiments/toy-simulation/",
       "firstBuilt": "2026-06-29",
-      "role": "Fast, small-scale alignment toy staging correction that looks compliant but is not, scored across several levels of intervention access, against scripted versions of the book's bridge assumptions. It scores [correction-channel integrity](/cards/correction-channel-integrity/) across several levels of intervention access and stages each of the book's [bridge assumptions](/cards/bridge-assumptions/) as an explicit, hand-written scenario. Optimized for instrumentation economics, not deployment realism.\n",
+      "role": "Fast, small-scale alignment toy staging correction that looks compliant but is not, scored across several levels of intervention access, against scripted versions of this project's bridge assumptions. It scores [correction-channel integrity](/cards/correction-channel-integrity/) across several levels of intervention access and stages each of this project's [bridge assumptions](/cards/bridge-assumptions/) as an explicit, hand-written scenario. Optimized for instrumentation economics, not deployment realism.\n",
       "readmePath": "experiments/toy-simulation/README.md",
       "findingsPath": "experiments/toy-simulation/results/FINDINGS.md",
       "headlineFindings": [
@@ -307,7 +307,7 @@
       "title": "Graded-capability lab simulation",
       "location": "experiments/graded-lab-simulation/",
       "firstBuilt": "2026-07-10",
-      "role": "Successor substrate to the lab-layer simulation, not a further phase of it: a graded, continuously scored pipeline of tasks, shared resources, and agent viability, built so that ambiguity about who is doing what emerges from a population the experimenters did not hand-design, rather than from a noise or delay dial they turn up. [Boundary discovery](/cards/boundary-discovery/) drives a continuous boundary-information-quality score over units the method infers rather than a hand-labeled roster; an emergent-ambiguity index is measured from two vantage points (the acting agent's own full view versus a referee limited to what it can observe); a first multi-episode selection battery; population growth left to run on its own rather than hand-authored; a pre-registered test of whether the detection method still works when transplanted onto that grown population (Q1, GL-76); a set of rigs testing each of the book's [bridge assumptions](/cards/bridge-assumptions/) independently (GL-79--GL-85); and two attempts at transferring the whole approach to external multi-agent benchmarks this project did not build, Orbit (GL-86) and the Collective-Intelligence-Library's `basin_stability` (GL-87/GL-88). The first program version is closed (2026-07-15, GL-31). The second version and its follow-up closed without ever producing a population that passed its own criteria (GL-38/GL-43). The third version's institutional runtime is active through a criteria freeze (GL-53). Methodological sandbox only: the present strategy space and metrics remain project-authored; the external transfers (GL-86--GL-88) are the first attempts to test the method on substrates this project did not build. All three closed as substrate-suitability findings rather than validated positive or negative transfers: passive UAD found a substrate-inflated true positive on Orbit (GL-86) and a flat null under converged learned policies on `basin_stability` (GL-87); a follow-on intervention-based probe on the same CIL substrate found a real but diffuse effect consistent with a shared-resource observation channel, not a discoverable pairwise unit (GL-88).\n",
+      "role": "Successor substrate to the lab-layer simulation, not a further phase of it: a graded, continuously scored pipeline of tasks, shared resources, and agent viability, built so that ambiguity about who is doing what emerges from a population the experimenters did not hand-design, rather than from a noise or delay dial they turn up. [Boundary discovery](/cards/boundary-discovery/) drives a continuous boundary-information-quality score over units the method infers rather than a hand-labeled roster; an emergent-ambiguity index is measured from two vantage points (the acting agent's own full view versus a referee limited to what it can observe); a first multi-episode selection battery; population growth left to run on its own rather than hand-authored; a pre-registered test of whether the detection method still works when transplanted onto that grown population (Q1, GL-76); a set of rigs testing each of this project's [bridge assumptions](/cards/bridge-assumptions/) independently (GL-79--GL-85); and two attempts at transferring the whole approach to external multi-agent benchmarks this project did not build, Orbit (GL-86) and the Collective-Intelligence-Library's `basin_stability` (GL-87/GL-88). The first program version is closed (2026-07-15, GL-31). The second version and its follow-up closed without ever producing a population that passed its own criteria (GL-38/GL-43). The third version's institutional runtime is active through a criteria freeze (GL-53). Methodological sandbox only: the present strategy space and metrics remain project-authored; the external transfers (GL-86--GL-88) are the first attempts to test the method on substrates this project did not build. All three closed as substrate-suitability findings rather than validated positive or negative transfers: passive UAD found a substrate-inflated true positive on Orbit (GL-86) and a flat null under converged learned policies on `basin_stability` (GL-87); a follow-on intervention-based probe on the same CIL substrate found a real but diffuse effect consistent with a shared-resource observation channel, not a discoverable pairwise unit (GL-88).\n",
       "readmePath": "experiments/graded-lab-simulation/README.md",
       "designPath": "experiments/graded-lab-simulation/DESIGN.md",
       "planPath": "experiments/graded-lab-simulation/PLAN_v4.md",
@@ -357,7 +357,7 @@
   "howToRead": [
     {
       "lineId": "agency-detect",
-      "text": "Grounds the book's [first bridge assumption](/cards/bridge-assumptions/) and the claim that intervention handles must be tested by intervening, not just observed; does not implement the full set of bridge-assumption tests.\n",
+      "text": "Grounds this project's [first bridge assumption](/cards/bridge-assumptions/) and the claim that intervention handles must be tested by intervening, not just observed; does not implement the full set of bridge-assumption tests.\n",
       "lineTitle": "Agency-detect (sibling)"
     },
     {
@@ -382,7 +382,7 @@
     },
     {
       "lineId": "lab-simulation",
-      "text": "Pre-registered batteries and pipeline lab machinery; ET-3 (AI 2027 schedule transfer) closed 2026-07-26 with LS-42–48. Coverage of the book's bridge assumptions for extended populations and selection basins beyond ET-3 mapping remains deferred.\n",
+      "text": "Pre-registered batteries and pipeline lab machinery; ET-3 (AI 2027 schedule transfer) closed 2026-07-26 with LS-42–48. Coverage of this project's bridge assumptions for extended populations and selection basins beyond ET-3 mapping remains deferred.\n",
       "lineTitle": "Lab-layer simulation"
     },
     {

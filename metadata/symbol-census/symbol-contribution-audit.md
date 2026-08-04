@@ -31,7 +31,7 @@
 
 ### High-rent spine (keep; do not cull)
 
-These symbols form the book's operational backbone. Any removal would break cross-chapter dependency:
+These symbols form this project's operational backbone. Any removal would break cross-chapter dependency:
 
 - **Boundary partition:** $I_t, E_t, S_t, A_t$, $\epsilon$-blanket, $\mathcal{R}(C)$, $C^\star$
 - **Grounding:** $X_{\mathrm{real}}, \alpha, Z, \Gamma, d_V, d_Z, \mathsf{Unc}_\alpha$, $\operatorname{Dom}(\Gamma)$, $\mathcal{C}, \delta$

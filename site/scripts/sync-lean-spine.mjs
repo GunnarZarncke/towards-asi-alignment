@@ -264,13 +264,13 @@ async function main() {
       {
         id: "field",
         title: "Field agenda projections",
-        summary: "External alignment agendas projected into the book's invariants on a shared finite domain.",
+        summary: "External alignment agendas projected into this project's invariants on a shared finite domain.",
         graphSlugs: ["field-subsumptions"]
       },
       {
         id: "bridges",
         title: "Bridge assumptions",
-        summary: "MB1–MB10 connect measured systems to book predicates. Bridges are never hidden inside definitions.",
+        summary: "MB1–MB10 connect measured systems to project predicates. Bridges are never hidden inside definitions.",
         graphSlugs: []
       },
       {

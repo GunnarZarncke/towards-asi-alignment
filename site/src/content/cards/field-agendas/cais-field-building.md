@@ -27,7 +27,7 @@ CAIS publishes coordinated risk statements, runs the AISES course, and organizes
 
 **What they contribute.** Legitimacy for AI safety as a research area and a steady pipeline of newcomers entering technical and policy work—meta-infrastructure rather than bridge discharge.
 
-**How this book treats it.** The book's measurement spine is independent of CAIS framing; public statements and standards advocacy do not substitute for typed bridge arguments.
+**How this project treats it.** This project's measurement spine is independent of CAIS framing; public statements and standards advocacy do not substitute for typed bridge arguments.
 
 ## Links
 

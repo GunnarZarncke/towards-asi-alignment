@@ -40,7 +40,7 @@ Resolution pursues theory and automation for high-confidence alignment, includin
 
 **What they contribute.** An automation-first philosophy; UK AISI lineage via Irving.
 
-**How this book treats it.** The book's adversarial-verifiability chokepoint under optimization remains load-bearing despite automation ambitions—related to [certification under manipulation](/cards/certification-under-manipulation/) and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits.
+**How this project treats it.** This project's adversarial-verifiability chokepoint under optimization remains load-bearing despite automation ambitions—related to [certification under manipulation](/cards/certification-under-manipulation/) and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits.
 
 ## Links
 

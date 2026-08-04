@@ -33,7 +33,7 @@ Kairos operates SPAR mentored research, Pathfinder career programs, Global Chall
 
 **What they contribute.** A campus-to-research pipeline and SPAR-backed project work that seeds early empirical and conceptual contributions across subfields.
 
-**How this book treats it.** Field-building scale is orthogonal to whether any particular preservation mechanism survives optimization and deployment pressure.
+**How this project treats it.** Field-building scale is orthogonal to whether any particular preservation mechanism survives optimization and deployment pressure.
 
 ## Links
 

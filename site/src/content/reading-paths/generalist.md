@@ -64,9 +64,9 @@ You have not followed alignment Twitter, MIRI archives, or this project's prior 
 
 **You will leave knowing:**
 
-- The preservation problems the book treats as load-bearing (boundary, bundles, bearers, correction, successors, selection).
+- The preservation problems this project treats as load-bearing (boundary, bundles, bearers, correction, successors, selection).
 - Why "align the model weights" is often the **wrong object**.
-- What would count as **evidence** here — and what the book explicitly does **not** claim.
+- What would count as **evidence** here — and what this project explicitly does **not** claim.
 - Where to go next if you want formal detail, eval artifacts, or policy translation.
 
 **Time:** about 2–3 hours following the ordered list above.

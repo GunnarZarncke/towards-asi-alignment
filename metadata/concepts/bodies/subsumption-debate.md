@@ -37,8 +37,8 @@ citeKeys:
   - irving2018debate
 ---
 
-Debate is a scalable oversight proposal: two agents argue; a judge picks the winner. The field object is local truth selection under protocol assumptions. The book's worry is familiar from amplification: improving local supervision can fail correction contraction — the judge may lose the handles that make their verdict causally matter.
+Debate is a scalable oversight proposal: two agents argue; a judge picks the winner. The field object is local truth selection under protocol assumptions. This project's worry is familiar from amplification: improving local supervision can fail correction contraction — the judge may lose the handles that make their verdict causally matter.
 
 Lean rederives the native finite debate game (`Field/Finite/DebateGame.lean`): with a correct judge, optimal play tracks truth and one wrong atom flips the outcome. It also records a finite separation when local truth selection persists without judge-channel preservation. The older κ_C-projection lemmas remain as labeled interface toys, not the headline result.
 
-*What debate keeps that this crosswalk does not replace:* a concrete oversight protocol and training/eval procedure. The book names a failure mode of it, not a replacement protocol.
+*What debate keeps that this crosswalk does not replace:* a concrete oversight protocol and training/eval procedure. This project names a failure mode of it, not a replacement protocol.

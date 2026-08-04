@@ -35,7 +35,7 @@ Orthogonal is an agent-foundations research community advancing formal alignment
 
 **What they contribute.** An active agent-foundations research community working on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [Corrigibility](/cards/mb4-correction-legitimacy/).
 
-**How this book treats it.** A typed bridge stack and measurement program distinct from narrative community alignment talk.
+**How this project treats it.** A typed bridge stack and measurement program distinct from narrative community alignment talk.
 
 ## Links
 

@@ -2,7 +2,7 @@
 title: "AI Futures / forecasting cluster"
 type: "agenda"
 status: "reviewed"
-summary: "Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—the book uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms."
+summary: "Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—this project uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms."
 agendaSlug: "ai-futures-forecasting-cluster"
 bookBridges:
   - "MB6"
@@ -28,7 +28,7 @@ The AI Futures and forecasting cluster produces explicit scenario narratives, ti
 
 **What they aim to do.** Inform high-stakes decisions with explicit, trackable forecasts about when and how advanced AI capabilities may arrive.
 
-**The hard question.** Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—the book uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.
+**The hard question.** Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—this project uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.
 
 **What they produce.** The cluster produces explicit scenario narratives (notably [AI 2027](https://ai-2027.com/)), timeline estimates, and shared prediction infrastructure for tracking AI development trajectories.
 
@@ -38,7 +38,7 @@ The AI Futures and forecasting cluster produces explicit scenario narratives, ti
 
 **What they contribute.** Schedule-shaped stress tests for governance and deployment planning (App F)—how [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) pressures might unfold under compressed timelines without claiming to resolve selection mechanics.
 
-**How this book treats it.** A macro scenario about capability arrival does not imply discharge of any typed bridge in the measurement spine; forecasting informs urgency, not [Corrigibility](/cards/mb4-correction-legitimacy/) or [Inner Alignment](/cards/mb7-hidden-capability-and-access/) verdicts.
+**How this project treats it.** A macro scenario about capability arrival does not imply discharge of any typed bridge in the measurement spine; forecasting informs urgency, not [Corrigibility](/cards/mb4-correction-legitimacy/) or [Inner Alignment](/cards/mb7-hidden-capability-and-access/) verdicts.
 
 ## Links
 

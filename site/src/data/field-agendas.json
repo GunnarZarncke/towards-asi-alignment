@@ -198,7 +198,7 @@
     {
       "slug": "ai-futures-forecasting-cluster",
       "title": "AI Futures / forecasting cluster",
-      "summary": "Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—the book uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.",
+      "summary": "Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—this project uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.",
       "bookBridges": [
         "MB6"
       ],

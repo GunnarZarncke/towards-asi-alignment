@@ -2,8 +2,8 @@
 title: "AI 2040 Plan A: a recommended slowdown deal, not a prediction"
 type: "news"
 status: "established"
-summary: "AI 2040 Plan A is a detailed recommendation scenario for a verified US–China slowdown, research transparency, and compute tracking that would push generally superhuman AI toward 2040. It is not the authors’ best guess of what will happen, and it is not a lab result from this book."
-decision: "Treat Plan A as a concrete wishlist of outer handles—verification, shared evidence, release constraints—and ask which ones become independently usable under competitive pressure. Do not treat its dates or economics explorers as confirming this book’s micro simulations."
+summary: "AI 2040 Plan A is a detailed recommendation scenario for a verified US–China slowdown, research transparency, and compute tracking that would push generally superhuman AI toward 2040. It is not the authors’ best guess of what will happen, and it is not a lab result from this project."
+decision: "Treat Plan A as a concrete wishlist of outer handles—verification, shared evidence, release constraints—and ask which ones become independently usable under competitive pressure. Do not treat its dates or economics explorers as confirming this project’s micro simulations."
 releasedAt: "2026-07-30T00:00:00.000Z"
 bookChapters:
   - "ch13"
@@ -31,7 +31,7 @@ The AI 2027 team’s positive plan: delay superintelligence with verification an
 
 In short, they want the United States and China to make a deal that slows the rush to superintelligence, makes frontier AI research much more public, tracks major compute, and uses something like mutually assured compute destruction so cheating is hard. In their story, that deal delays generally superhuman AI until around 2040. They contrast this “verified slowdown” with racing, burning a lead, fighting, or shutting everything down. They say Plan A is not their best guess of what *will* happen — it is a detailed stress-test of a plan they think is worth aiming for.
 
-This card is about that outer plan, not a new lab result from this book.
+This card is about that outer plan, not a new lab result from this project.
 
 **How it connects to earlier news on this site**
 
@@ -48,6 +48,6 @@ This card is about that outer plan, not a new lab result from this book.
 
 From the coordination and selection chapters: private caution does not become collective action by itself ([Ch. 13](/cards/chapters/ch13/), [Ch. 34](/cards/chapters/ch34/)). From the attractor chapters: a pause buys time only if safety-relevant artifacts still reach release gates ([Ch. 37](/cards/chapters/ch37/)–[Ch. 38](/cards/chapters/ch38/)). From [Appendix C](/cards/chapters/appC/): verification, compute access, and licensing are institutional handles — they must bind an uncaptured corrector when competitive pressure rises.
 
-Plan A does not close this book’s open technical bridges. It is a serious field proposal for changing the *selection environment* in which those bridges would have to be earned.
+Plan A does not close this project’s open technical bridges. It is a serious field proposal for changing the *selection environment* in which those bridges would have to be earned.
 
 **Read more in:** [Ch. 13, *The Coordination Bottleneck*](/cards/chapters/ch13/); [Ch. 31, *Conserved Properties Across Successors*](/cards/chapters/ch31/); [Ch. 34, *Alignment Is Selected or Destroyed by Its Environment*](/cards/chapters/ch34/); [Ch. 37, *The Alignment Attractor*](/cards/chapters/ch37/); [Ch. 38, *Conductive Artifacts and Pivotal Processes*](/cards/chapters/ch38/); and [Appendix C, *Human Institutions as Alignment Translation Guide*](/cards/chapters/appC/).

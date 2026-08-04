@@ -29,7 +29,7 @@ citeKeys:
   - dalrymple2024gsai
 ---
 
-Grounding certificates and conservative-abstraction agendas ask monitors to stay tied to value-relevant state as ontologies shift. The book separates class-level coverage from deployment-level safety: a monitor can be green on the certified class while the true environment drifts off-class.
+Grounding certificates and conservative-abstraction agendas ask monitors to stay tied to value-relevant state as ontologies shift. This project separates class-level coverage from deployment-level safety: a monitor can be green on the certified class while the true environment drifts off-class.
 
 Lean proves `class_certificate_not_deployment_safety` on a finite toy: narrow class certificate plus in-class robustness can hold while the true environment is nonrealizable under the represented class and unsafe for the deployed policy. MB9 forward discharge remains a bridge; the separation is load-bearing for claim calibration.
 

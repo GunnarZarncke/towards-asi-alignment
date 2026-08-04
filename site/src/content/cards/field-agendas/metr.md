@@ -41,7 +41,7 @@ METR measures dangerous autonomous and AI R&D capabilities at the frontier, prod
 
 **What they contribute.** Empirical capability measurement at the frontier, including autonomy and AI R&D evaluations that shape lab and policy timelines.
 
-**How this book treats it.** Capability evaluations do not establish [correction-channel integrity](/cards/correction-channel-integrity/) or [value-bundle transport](/cards/value-bundle-transport/) across deployment; the book treats evals as an indirect signal for [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than a direct guarantee.
+**How this project treats it.** Capability evaluations do not establish [correction-channel integrity](/cards/correction-channel-integrity/) or [value-bundle transport](/cards/value-bundle-transport/) across deployment; this project treats evals as an indirect signal for [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than a direct guarantee.
 
 ## Links
 

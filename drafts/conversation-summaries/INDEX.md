@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-04 | **Site book→project wording** — “This project” for TSA program on site; keep “book” for PDF/chapters/manuscript; sync sources + scripts. | [2026-08-04-site-book-to-project-wording.md](2026-08-04-site-book-to-project-wording.md) |
 | 2026-08-04 | **Wentworth profile link** — Agenda page profile link → `lesswrong.com/users/johnswentworth`; YAML source + field-agenda sync. | [2026-08-04-wentworth-profile-link.md](2026-08-04-wentworth-profile-link.md) |
 | 2026-08-04 | **Lean overview ledger status** — Field projections table uses Lean `FieldResultStatus` badges instead of flat proof/counterexample; Debate headline leads with claim-tree rederivation. | [2026-08-04-lean-overview-ledger-status.md](2026-08-04-lean-overview-ledger-status.md) |
 | 2026-08-04 | **Site PDF fetch rate-limit fix** — CI `copy:pdf` failed on unauthenticated Releases API 403; direct release download + token fallback + retries; optional LaTeX PDF CI deferred. | [2026-08-04-site-pdf-fetch-rate-limit.md](2026-08-04-site-pdf-fetch-rate-limit.md) |

@@ -17,7 +17,7 @@ citeKeys: []
 
 In short, they want the United States and China to make a deal that slows the rush to superintelligence, makes frontier AI research much more public, tracks major compute, and uses something like mutually assured compute destruction so cheating is hard. In their story, that deal delays generally superhuman AI until around 2040. They contrast this “verified slowdown” with racing, burning a lead, fighting, or shutting everything down. They say Plan A is not their best guess of what *will* happen — it is a detailed stress-test of a plan they think is worth aiming for.
 
-This card is about that outer plan, not a new lab result from this book.
+This card is about that outer plan, not a new lab result from this project.
 
 **How it connects to earlier news on this site**
 
@@ -34,4 +34,4 @@ This card is about that outer plan, not a new lab result from this book.
 
 From the coordination and selection chapters: private caution does not become collective action by itself ([Ch. 13](/cards/chapters/ch13/), [Ch. 34](/cards/chapters/ch34/)). From the attractor chapters: a pause buys time only if safety-relevant artifacts still reach release gates ([Ch. 37](/cards/chapters/ch37/)–[Ch. 38](/cards/chapters/ch38/)). From [Appendix C](/cards/chapters/appC/): verification, compute access, and licensing are institutional handles — they must bind an uncaptured corrector when competitive pressure rises.
 
-Plan A does not close this book’s open technical bridges. It is a serious field proposal for changing the *selection environment* in which those bridges would have to be earned.
+Plan A does not close this project’s open technical bridges. It is a serious field proposal for changing the *selection environment* in which those bridges would have to be earned.

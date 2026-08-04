@@ -81,7 +81,7 @@ function parseLinks(line) {
 
 function parseAgendaSection(text) {
   const agendas = [];
-  const section = text.match(/## Agendas\n([\s\S]*?)\n---\n\n## Coverage vs book treatment/)?.[1];
+  const section = text.match(/## Agendas\n([\s\S]*?)\n---\n\n## Coverage vs project treatment/)?.[1];
   if (!section) throw new Error("Agendas section not found");
 
   const blocks = section.split(/\n### /).slice(1);
@@ -209,7 +209,7 @@ function parseMeta(text) {
   const kosoyDiagnostic = text.match(/\*\*Kosoy diagnostic:\*\* ([^\n]+)/)?.[1] ?? "";
   const openInterfaces = text.match(/\*\*Open spine interfaces\*\*[^\n]*\n\n([^\n]+)/)?.[1] ?? "";
   const typeLetters = text.match(/\*\*Type letters\*\*[^\n]*\n\n([\s\S]*?)\n\n\| Agenda \|/)?.[1] ?? "";
-  const coverageIntro = text.match(/## Coverage vs book treatment[^\n]*\n\n([\s\S]*?)\n\n### How to read matrix/)?.[1]?.trim() ?? "";
+  const coverageIntro = text.match(/## Coverage vs project treatment[^\n]*\n\n([\s\S]*?)\n\n### How to read matrix/)?.[1]?.trim() ?? "";
   const matrixIntro = text.match(/## Coverage matrix \(agenda × bridge\)\n\n([\s\S]*?)\n\nEach cell lists/)?.[1]?.trim() ?? "";
   const matrixLegend = text.match(/Each cell lists \*\*typed evidence tags\*\*[^\n]*\n\n([\s\S]*?)\n\n\*\*Type letters\*\*/)?.[1]?.trim() ?? "";
   const excludedNote = text.match(/\*\*Excluded from matrix rows\*\*[^\n]*\n\n([^\n]+)/)?.[1] ?? "";

@@ -28,6 +28,6 @@ related:
 
 So far the boundary problem assumed a passive system. Serious alignment cannot assume that. A sufficiently capable system may route control through unmonitored channels, make its internal states look like noise, split into components that each look harmless, or behave differently during evaluation than during opportunity.
 
-The book's response is to work through handles instead of assuming raw access: an observation handle is a log stream, probe, or behavioral trace; an operation handle is a tool removal, delayed reward, or controlled audit condition. The boundary claim then becomes explicitly relative — not "can we find the true boundary" but "what boundary can still be found through these handles."
+This project's response is to work through handles instead of assuming raw access: an observation handle is a log stream, probe, or behavioral trace; an operation handle is a tool removal, delayed reward, or controlled audit condition. The boundary claim then becomes explicitly relative — not "can we find the true boundary" but "what boundary can still be found through these handles."
 
 This has a hard limit. Two different underlying control loops can be indistinguishable if every handle available produces the same readouts and responses — a measurement handle that mixes internal and external variables can make different raw boundaries collapse to the same observed pattern.

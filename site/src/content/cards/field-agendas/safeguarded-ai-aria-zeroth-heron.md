@@ -44,7 +44,7 @@ The Safeguarded AI cluster—ARIA, Zeroth Research, Heron AI Security, and conta
 
 **What they contribute.** Whole-system formal assurance for agentic deployments; cryptographic attestations of runtime behavior; explicit agentic action boundaries; and architecture-level multi-agent security analysis—directly engaging [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Audit Independence](/cards/mb4a-measured-path-legitimacy/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), [Grounding Drift](/cards/mb9-grounding-certificate/), and [Deployment Safety](/cards/mb11-deployment-safety/).
 
-**How this book treats it.** A green proof certificate does not imply that corrections are actually taken up in the live loop; attestation of declared behavior does not imply that the discovered effective agent matches the certified unit—a cousin tension to [Guaranteed-Safe AI](https://arxiv.org/abs/2405.06624)'s completeness wall versus CIRIS-style operational stacks.
+**How this project treats it.** A green proof certificate does not imply that corrections are actually taken up in the live loop; attestation of declared behavior does not imply that the discovered effective agent matches the certified unit—a cousin tension to [Guaranteed-Safe AI](https://arxiv.org/abs/2405.06624)'s completeness wall versus CIRIS-style operational stacks.
 
 ## Links
 

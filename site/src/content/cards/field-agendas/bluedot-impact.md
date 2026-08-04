@@ -27,7 +27,7 @@ BlueDot Impact provides introductory Technical AI Safety and Frontier AI Governa
 
 **What they contribute.** A shared preparadigmatic vocabulary layer for new researchers—useful background for reading bridge-crosswalk material but not a technical discharge path.
 
-**How this book treats it.** Training throughput and curriculum quality are independent of whether any particular alignment mechanism can be verified under adversarial pressure.
+**How this project treats it.** Training throughput and curriculum quality are independent of whether any particular alignment mechanism can be verified under adversarial pressure.
 
 ## Links
 

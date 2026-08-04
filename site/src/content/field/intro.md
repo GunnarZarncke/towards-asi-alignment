@@ -46,4 +46,4 @@ None of these cruxes are solved, but different agendas have made progress to dif
 2. **Coverage matrix** — The main table of agenda ad bridges below. Column headers link to [bridge cards](/badges/type/bridge/); row headers link to agenda cards. Cell tags link to the evidence catalog below.
 3. **Evidence catalog** — citations backing the matrix.
 
-For term disambiguation across agendas, see the [inter-agenda glossary](/glossary/) (manuscript App E is synced separately). For how this book maps bridges to field cruxes, see [Appendix B](/cards/chapters/appB/).
+For term disambiguation across agendas, see the [inter-agenda glossary](/glossary/) (manuscript App E is synced separately). For how this project maps bridges to field cruxes, see [Appendix B](/cards/chapters/appB/).

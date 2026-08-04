@@ -48,7 +48,7 @@ CIRIS is a cryptographic and procedural accountability stack for autonomous agen
 
 **What they contribute.** Honest operational disclaimers ([Verify](https://ciris.ai/architecture/) certifies authenticity, not ethics; [Lens](https://ciris.ai/architecture/) triages rather than delivering verdicts); unit-tested prohibition, conscience, and proxy fail-closed layers (50/50 smoke battery); and the sharpest falsifier shape for named-identity versus [composite agency](/cards/composite-agency/).
 
-**How this book treats it.** Green attestation does not imply correction uptake; a signed agent record does not imply the real agent; Book IX geometry is aspirational rather than identical to shipped policy enforcement.
+**How this project treats it.** Green attestation does not imply correction uptake; a signed agent record does not imply the real agent; Book IX geometry is aspirational rather than identical to shipped policy enforcement.
 
 **Current status.** The smoke battery passed 50 of 50 tests (prohibitions, conscience helpers, proxy fail-closed behavior, verify types). Integration testing, hardware attestation, and adversarial gaming have not been run. A key open task is a CIRIS-shaped composite [boundary discovery](/cards/boundary-discovery/) counterexample: [Verify](https://ciris.ai/architecture/) and [Lens](https://ciris.ai/architecture/) green while a Wise-Authority-blind composite evades correction.
 

@@ -61,7 +61,7 @@ Prioritized by report emphasis. **Drafted** chapters: surgical inserts. **Stub**
 
 | Ch | Suggested additions from report |
 |----|----------------------------------|
-| ch03 | One paragraph on the negative literature result: behavior alignment (RLHF, IRL, corrigibility) gives local signals but fails on identifiability, Goodhart, pluralism, deception; positions the book's transport frame as filling an integration gap. |
+| ch03 | One paragraph on the negative literature result: behavior alignment (RLHF, IRL, corrigibility) gives local signals but fails on identifiability, Goodhart, pluralism, deception; positions this project's transport frame as filling an integration gap. |
 | ch04 | IRL underdetermination (many rewards explain same behavior); CIRL as cooperative game not solution; RLHF limits survey (Casper et al. 2023); sample-complexity warning (Komanduru & Honorio). |
 | ch05 | Crosswalk report's open-problem priority table to Turchin/Yudkowsky coverage audit; note funding gap (interpretability/evals over transport, bearer maps, correction-channel engineering). |
 

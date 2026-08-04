@@ -24,10 +24,10 @@ external:
     url: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/appendices/appB-bridge-crosswalk.tex
 ---
 
-In the field this is **grounding drift** and the incomplete-spec wall: you cannot enumerate every safety-relevant phenomenon, and a capable system will exploit whatever the formal spec omits. Guaranteed-Safe / Open Agency names a cousin worry — open-world specification coverage — but the book's crux is conservativity, not completeness.
+In the field this is **grounding drift** and the incomplete-spec wall: you cannot enumerate every safety-relevant phenomenon, and a capable system will exploit whatever the formal spec omits. Guaranteed-Safe / Open Agency names a cousin worry — open-world specification coverage — but this project's crux is conservativity, not completeness.
 
-The book's precise bet is **MB9**: a certified conservative abstraction is assumed to warrant [grounding viability](/cards/grounding-viability/) in the actual deployment domain. Instead of completeness, the book asks for conservativity: value-relevant change must move the checked abstraction or raise its uncertainty. No silent gaps. That feeds the broader [dynamical guarantee](/cards/dynamical-guarantee/) story: safety is a trajectory claim, not a snapshot.
+This project's precise bet is **MB9**: a certified conservative abstraction is assumed to warrant [grounding viability](/cards/grounding-viability/) in the actual deployment domain. Instead of completeness, this project asks for conservativity: value-relevant change must move the checked abstraction or raise its uncertainty. No silent gaps. That feeds the broader [dynamical guarantee](/cards/dynamical-guarantee/) story: safety is a trajectory claim, not a snapshot.
 
-**Where agendas agree:** shared wall with incomplete-spec / omitted-phenomena worry (GSAI family). **Where they diverge:** GSAI stresses completeness; the book stresses conservativity and no silent drift; Kosoy misspec is an ambient cousin on MB1/MB9. **Homograph:** Grounding Drift (conservativity) ≠ GSAI open-world specification coverage.
+**Where agendas agree:** shared wall with incomplete-spec / omitted-phenomena worry (GSAI family). **Where they diverge:** GSAI stresses completeness; this project stresses conservativity and no silent drift; Kosoy misspec is an ambient cousin on MB1/MB9. **Homograph:** Grounding Drift (conservativity) ≠ GSAI open-world specification coverage.
 
 Its exact failure mode in the experiment suite is the silent gap. Light [correction](/cards/correction-channel-integrity/) instrumentation can look fine while value-relevant state drifts in ways the audit never touches. Diagnostics show this in every light-handle trial, closing only once bearer-welfare tracing is added.

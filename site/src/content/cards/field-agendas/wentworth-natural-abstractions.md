@@ -32,7 +32,7 @@ John Wentworth's natural-abstractions lineage develops the [Natural Abstraction 
 
 **What they contribute.** The [Natural Abstraction Hypothesis](https://www.alignmentforum.org/users/John+Wentworth) acts as a falsifier for low-dimensional value stories: if the wrong latents are natural, naive [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) targets may misfire even when surface training looks successful (see ch17 WWCTV).
 
-**How this book treats it.** The book types bundle geometry and ontology-shift transport separately; natural-abstraction convergence is informative but is not promoted to a load-bearing spine assumption—[Tiling](/cards/mb5-successor-ontology-shift/) still needs its own discharge argument.
+**How this project treats it.** This project types bundle geometry and ontology-shift transport separately; natural-abstraction convergence is informative but is not promoted to a load-bearing spine assumption—[Tiling](/cards/mb5-successor-ontology-shift/) still needs its own discharge argument.
 
 ## Links
 

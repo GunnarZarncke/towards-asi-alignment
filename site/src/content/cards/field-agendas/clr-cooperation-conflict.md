@@ -37,7 +37,7 @@ CLR researches cooperation under AI competition, [s-risks](https://longtermrisk.
 
 **What they contribute.** Conflict-and-cooperation framing for alignment research, plus [Cooperative AI Foundation](https://www.cooperativeai.com/) work on building cooperative AI under competitive pressure.
 
-**How this book treats it.** Typed measurement of [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) and [Acausal Coordination](/cards/mb7d-acausal-coordination/) differs from narrative multipolar stories that lack the same measurement discipline.
+**How this project treats it.** Typed measurement of [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) and [Acausal Coordination](/cards/mb7d-acausal-coordination/) differs from narrative multipolar stories that lack the same measurement discipline.
 
 ## Links
 

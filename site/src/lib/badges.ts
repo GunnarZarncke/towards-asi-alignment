@@ -42,12 +42,12 @@ export const TYPE_META: Record<
   bridge: {
     title: "Bridge",
     description:
-      "Load-bearing assumptions (A-001–A-014 / MB1–MB9) that connect the book's conditional structure to field cruxes."
+      "Load-bearing assumptions (A-001–A-014 / MB1–MB9) that connect this project's conditional structure to field cruxes."
   },
   objection: {
     title: "Objection",
     description:
-      "Hostile readings, failure modes, and counterarguments the book treats as first-class rather than footnotes."
+      "Hostile readings, failure modes, and counterarguments this project treats as first-class rather than footnotes."
   },
   artifact: {
     title: "Artifact",
@@ -103,7 +103,7 @@ export const STATUS_META: Record<
   established: {
     title: "Established",
     description:
-      "Widely accepted background or a result the book treats as settled enough to build on without re-deriving."
+      "Widely accepted background or a result this project treats as settled enough to build on without re-deriving."
   },
   plausible: {
     title: "Plausible",
@@ -123,7 +123,7 @@ export const STATUS_META: Record<
   open: {
     title: "Open",
     description:
-      "Unresolved research problem or falsifier — the book names it explicitly rather than smuggling it in as done."
+      "Unresolved research problem or falsifier — this project names it explicitly rather than smuggling it in as done."
   },
   negative: {
     title: "Negative",

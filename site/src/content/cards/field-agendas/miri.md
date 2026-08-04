@@ -35,7 +35,7 @@ MIRI studies [agent foundations](https://intelligence.org/)—the theoretical pr
 
 **What they contribute.** Canonical problem statements for [embedded agency](/cards/mb1-boundary-estimator-soundness/) and [corrigibility](/cards/mb4-correction-legitimacy/), plus a decision-theoretic lineage that shaped much of the field's early vocabulary.
 
-**How this book treats it.** The book treats [boundary discovery](/cards/boundary-discovery/) as an operational bet on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), and distinguishes trajectory-level [correction-channel integrity](/cards/correction-channel-integrity/) from a single-bit shutdown mechanism.
+**How this project treats it.** This project treats [boundary discovery](/cards/boundary-discovery/) as an operational bet on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), and distinguishes trajectory-level [correction-channel integrity](/cards/correction-channel-integrity/) from a single-bit shutdown mechanism.
 
 ## Links
 
