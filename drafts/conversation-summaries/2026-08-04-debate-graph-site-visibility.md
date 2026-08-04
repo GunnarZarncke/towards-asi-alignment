@@ -15,3 +15,6 @@ Reviewer feedback: field-subsumption graph had no `FINITE → DEB` edge; DEB nod
 ## Verification
 - `npm run sync:projections`, `sync:lean-checks`, `sync:lean-spine`, `npm run build` — 858 pages; `/lean/node/DEB/`, `/lean/check/debate/` present.
 - DEB node source: `formal/AlignmentProofSpine/Field/Finite/DebateGame.lean`.
+
+## Commits
+- `17f49dc8` Surface DebateGame on field graph and Lean site pages.

@@ -22,4 +22,4 @@ User asked to replace **B-IQ** with **BIQ** throughout book and site.
 - `metadata/concepts.yml` — glossary term `Hidden productive BIQ bound`
 
 ## Commits
-- `9044dd6b` Rename B-IQ to BIQ across book and companion site.
+- `afeae62a` Rename B-IQ to BIQ across book and companion site.

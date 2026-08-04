@@ -26,4 +26,4 @@ Reviewer housekeeping: evidence IDs 130, 144, 146 missing from catalog; duplicat
 - `site/src/components/BenchmarkCanary.astro`
 
 ## Commits
-- (pending) Field evidence ID renumber, agenda label fix, HTML training canary.
+- `8f730c82` Fix field evidence catalog gaps and add HTML training canary.

@@ -32,7 +32,7 @@ User: review all field agenda cards on the site; many use technical fragment lan
 - `site/src/pages/cards/[...slug].astro`
 
 ## Commits
-- `87232b89` Rewrite field agenda cards for general alignment readers.
+- `83fbac51` Rewrite field agenda cards for general alignment readers.
 
 ## End of session (2026-08-04)
 - Term-link audit: `check-term-links.py`; fixed Vingean PDF URL, hard pause → MIRI 2024 strategy, precursor agents → PreDCA distilled post, TAI → Epoch.
