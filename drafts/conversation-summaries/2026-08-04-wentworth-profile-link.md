@@ -18,4 +18,4 @@ User asked that the John Wentworth profile link on the Wentworth field agenda pa
 - `site/src/content/cards/field-agendas/wentworth-natural-abstractions.md`
 
 ## Commits
-- (pending) Point Wentworth agenda profile link at LessWrong user page.
+- `4186ab47` Point Wentworth agenda profile link at LessWrong user page.
