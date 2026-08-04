@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-04 | **Field matrix UAD → TSA** — Move evidence #82 (UAD/agency-detect MB1 support) from Neglected approaches row to TSA; re-sync index + site JSON. | [2026-08-04-field-matrix-uad-tsa.md](2026-08-04-field-matrix-uad-tsa.md) |
 | 2026-08-04 | **Site book→project wording** — “This project” for TSA program on site; keep “book” for PDF/chapters/manuscript; sync sources + scripts. | [2026-08-04-site-book-to-project-wording.md](2026-08-04-site-book-to-project-wording.md) |
 | 2026-08-04 | **Wentworth profile link** — Agenda page profile link → `lesswrong.com/users/johnswentworth`; YAML source + field-agenda sync. | [2026-08-04-wentworth-profile-link.md](2026-08-04-wentworth-profile-link.md) |
 | 2026-08-04 | **Lean overview ledger status** — Field projections table uses Lean `FieldResultStatus` badges instead of flat proof/counterexample; Debate headline leads with claim-tree rederivation. | [2026-08-04-lean-overview-ledger-status.md](2026-08-04-lean-overview-ledger-status.md) |

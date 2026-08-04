@@ -1232,14 +1232,7 @@
       {
         "agenda": "Neglected approaches",
         "cells": {
-          "MB1": [
-            {
-              "type": "S",
-              "ids": [
-                82
-              ]
-            }
-          ],
+          "MB1": [],
           "MB2": [
             {
               "type": "O",
@@ -1958,7 +1951,8 @@
             {
               "type": "S",
               "ids": [
-                81
+                81,
+                82
               ]
             },
             {
@@ -3449,7 +3443,7 @@
     },
     {
       "id": 82,
-      "agenda": "Neglected approaches",
+      "agenda": "TSA",
       "bridges": [
         "MB1"
       ],

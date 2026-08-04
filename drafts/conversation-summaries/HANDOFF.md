@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-04 (site book→project wording).
+Last updated: 2026-08-04 (field matrix UAD → TSA row).
 
 ---
 
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference + companion site (2026-08-04):** Field matrix — moved evidence **#82** (UAD / agency-detect, MB1 support) from Neglected approaches row to **TSA** `MB1`; re-synced index + site JSON (`evidence.yml` agenda was already TSA). Log: `2026-08-04-field-matrix-uad-tsa.md`.
 - **Companion site (2026-08-04):** Site wording — use **“this project”** for TSA framework/site/Lean/experiments; keep **“book”** for PDF, chapters, book map, and manuscript-specific references. Sync sources + scripts updated. Log: `2026-08-04-site-book-to-project-wording.md`.
 - **Reference + companion site (2026-08-04):** Wentworth agenda profile link → `lesswrong.com/users/johnswentworth` (YAML source + sync). Log: `2026-08-04-wentworth-profile-link.md`.
 - **Companion site (2026-08-04):** Lean overview ledger column — field projections table shows `FieldResultStatus` badges (`rederivedFinite`, `separationOnly`, `importedAssumption`) instead of flat `proof`; Debate headline leads with claim-tree soundness/completeness/judge-error-flip. Log: `2026-08-04-lean-overview-ledger-status.md`.

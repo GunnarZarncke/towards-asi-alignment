@@ -821,6 +821,7 @@ rows:
         - type: S
           ids:
             - 81
+            - 82
         - type: T
           ids:
             - 80
