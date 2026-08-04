@@ -62,7 +62,7 @@ async function main() {
       agenda: row.agenda,
       headline: row.headline,
       chapters: row.bookChapters,
-      leanStatus: row.leanStatus ?? null
+      ledgerStatuses: row.ledgerStatuses ?? (row.leanStatus ? [row.leanStatus] : [])
     })),
     check,
     mismatches

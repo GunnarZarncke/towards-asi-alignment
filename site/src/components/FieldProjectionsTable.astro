@@ -14,9 +14,9 @@ interface Props {
 const { cardHref, chapterHref, chapterTitle, leanHref } = Astro.props;
 const gemSlugs = new Set(fieldProjectionGems);
 
-const statusVariant = (status: string | undefined) => {
-  if (status === "counterexample") return "negative";
-  if (status === "bridge") return "open";
+const ledgerStatusVariant = (status: string) => {
+  if (status === "separationOnly" || status === "counterexample") return "negative";
+  if (status === "importedAssumption") return "open";
   return "established";
 };
 ---
@@ -26,7 +26,10 @@ const statusVariant = (status: string | undefined) => {
   <p class="side-panel-meta">
     Each external alignment agenda maps to a book-facing projection or separation, proved on a shared finite domain in Lean.
     Every row links to a gem card with the crosswalk formula, Lean symbol, published work, and book chapters.
-    Status ledger and proofs: {leanHref ? <a href={leanHref}>Lean proof spine</a> : "Appendix I (Lean proof spine appendix)"}.
+    Status tags follow Lean's <code>FieldResultStatus</code> ledger
+    (<code>rederivedFinite</code>, <code>separationOnly</code>, <code>importedAssumption</code>);
+    MB defeater rows use <code>counterexample</code>.
+    Ledger and proofs: {leanHref ? <a href={leanHref}>Lean proof spine</a> : "Appendix I (Lean proof spine appendix)"}.
   </p>
   <div class="table-wrap">
     <table>
@@ -34,7 +37,7 @@ const statusVariant = (status: string | undefined) => {
         <tr>
           <th>Agenda</th>
           <th>Book-facing claim</th>
-          <th>Lean</th>
+          <th>Ledger</th>
           <th>Chapters</th>
         </tr>
       </thead>
@@ -49,8 +52,12 @@ const statusVariant = (status: string | undefined) => {
             </td>
             <td>{row.headline}</td>
             <td>
-              {row.leanStatus ? (
-                <Badge label={row.leanStatus} variant={statusVariant(row.leanStatus)} />
+              {row.ledgerStatuses?.length ? (
+                <span class="ledger-badges">
+                  {row.ledgerStatuses.map((status) => (
+                    <Badge label={status} variant={ledgerStatusVariant(status)} />
+                  ))}
+                </span>
               ) : (
                 "—"
               )}
@@ -75,8 +82,18 @@ const statusVariant = (status: string | undefined) => {
     margin-top: 2rem;
   }
 
-  .field-projections-table :global(.badge) {
+  .ledger-badges {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+  }
+
+  .field-projections-table :global(td:first-child .badge) {
     margin-left: 0.35rem;
+  }
+
+  .field-projections-table :global(.badge) {
     vertical-align: middle;
   }
 </style>

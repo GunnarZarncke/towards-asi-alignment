@@ -26,8 +26,8 @@ leanNodes:
     summary: 'Separation: local truth selection without judge correction preservation.'
     module: AlignmentProofSpine/Field/Debate.lean
   - nodeId: debate_truth_is_correction_projection
-    kind: proof
-    summary: 'Interface toy only: assumes truth-capacity/κ_C identification as a hypothesis.'
+    kind: separationOnly
+    summary: 'Interface toy only: assumes truth-capacity/κ_C identification as a hypothesis (ledger: separationOnly).'
     module: AlignmentProofSpine/Field/Debate.lean
   - nodeId: Irving2018_debate_truth_protocol_imported
     kind: definition

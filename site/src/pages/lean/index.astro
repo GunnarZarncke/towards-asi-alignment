@@ -156,8 +156,11 @@ const titleForChapter = (chapterId: string) =>
   <section class="callout warning readable">
     <h2>What Lean checks</h2>
     <p>
-      Three kinds of result appear throughout: <Badge label="proof" variant="established" /> local theorems,
-      <Badge label="counterexample" variant="negative" /> finite separations, and
+      Field projections use Lean's status ledger:
+      <Badge label="rederivedFinite" variant="established" /> finite rederivations,
+      <Badge label="separationOnly" variant="negative" /> interface toys and non-converses,
+      <Badge label="importedAssumption" variant="open" /> source-cited handles, plus
+      <Badge label="counterexample" variant="negative" /> MB defeater toys and
       <Badge label="bridge" variant="open" /> empirical handoffs (MB1–MB11).
       Headline certification theorems depend on explicit bridge records — inspect with <code>#print axioms</code> in the repo.
     </p>

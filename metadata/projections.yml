@@ -9,7 +9,9 @@ projections:
     kind: projection
     title: Field projection — CIRL / Scalar Reward Inference
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
+      - importedAssumption
     graphNodeId: CIRL
     summary: Cooperative inverse reinforcement learning treats the inferred object as a scalar reward. On the book's shared finite domain, that is exactly the k=1 bundle case; full bundle transport implies cooperative readability, but scalar inference does not determine bundle geometry.
     decision: When evaluating CIRL-style reward learning, ask whether the target is a single reward coordinate or bundle structure, bearer maps, and the correction process that produces later evidence.
@@ -26,7 +28,10 @@ projections:
     kind: projection
     title: Field projection — Shutdown / Off-Switch
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
+      - separationOnly
+      - importedAssumption
     graphNodeId: SHUT
     summary: Shutdown and off-switchability are one-bit projections of correction-channel integrity. Lean proves the forward implication on the system model and finite MDP witnesses; the converse fails — narrow shutdown capacity can hold while the broad correction channel collapses.
     decision: 'Treat shutdown tests as necessary but not sufficient: passing an off-switch check does not certify usable correction bandwidth or judge legitimacy.'
@@ -43,7 +48,10 @@ projections:
     kind: projection
     title: Field projection — Safe Interruptibility
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
+      - separationOnly
+      - importedAssumption
     graphNodeId: INT
     summary: Orseau–Armstrong safe interruptibility removes incentives to seek or prevent interruption on the interrupted branch. That neutrality is a strict subset of preserving usable correction bandwidth — interrupt safety can hold while correction-channel integrity fails.
     decision: Do not equate interrupt-safe training with correction-safe deployment; check whether interruption preserves the information the human needs to steer future behavior.
@@ -60,7 +68,9 @@ projections:
     kind: projection
     title: Field projection — Christiano Corrigibility
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
+      - importedAssumption
     graphNodeId: CORR
     summary: Christiano corrigibility is a dynamical desideratum — operators stay informed and able to correct over time. Lean reads it as basin contraction toward a correction manifold plus a correction-capacity floor; local act preferences can satisfy the weak predicate while dynamical corrigibility fails.
     decision: Evaluate corrigibility proposals by whether they preserve correction capacity across capability growth and successor change, not whether the system accepts a single local shutdown or edit command.
@@ -76,7 +86,9 @@ projections:
     kind: projection
     title: Field projection — AUP / Relative Reachability (Low Impact)
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
+      - importedAssumption
     graphNodeId: IMPACT
     summary: Attainable Utility Preservation and relative reachability penalize side effects by preserving auxiliary options or baseline reachability. Trajectory correction integrity (CCI) can imply calibrated low-impact bounds when interfaces align — but option preservation and reachability are strictly weaker than preserving human correction capacity.
     decision: Before adopting a low-impact or AUP penalty as a safety proxy, ask whether the auxiliary basis tracks correction-relevant options and whether reachability preservation implies usable correction bandwidth.
@@ -93,7 +105,9 @@ projections:
     kind: projection
     title: Field projection — Quantilizers
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
+      - importedAssumption
     graphNodeId: QUANT
     summary: Quantilizers bound optimizer risk by sampling from a high-performing quantile rather than maximizing directly. Local quantile safety and distribution soundness transfer under explicit assumptions — but local quantile-safe action choice does not imply trajectory-level correction integrity.
     decision: Use quantile restrictions as a local risk control, not as evidence that correction capacity survives capability growth or successor change.
@@ -109,9 +123,12 @@ projections:
     kind: projection
     title: Field projection — Debate
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
+      - separationOnly
+      - importedAssumption
     graphNodeId: DEB
-    summary: Debate asks whether adversarial argument lets a judge select locally correct answers. Lean rederives the finite debate game — with a correct judge, optimal play tracks truth and one wrong atom flips the outcome — and proves local truth selection need not preserve the judge's correction channel.
+    summary: Debate asks whether adversarial argument lets a judge select locally correct answers. Lean rederives the finite claim-tree game — soundness, completeness, and judge-error-flip under a correct judge — and proves local truth selection need not preserve the judge's correction channel. The κ_C-projection lemmas are labeled interface toys (separationOnly), not headline results.
     decision: When using debate or amplification for oversight, track whether the judge's correction handles remain causally effective, not only whether local answers look true.
     bookChapters:
       - ch29
@@ -121,12 +138,15 @@ projections:
     id: debate
     order: 7
     agenda: Debate
-    headline: Local truth selection need not preserve the judge's correction channel.
+    headline: Finite claim-tree debate rederives soundness, completeness, and judge-error-flip; local truth selection need not preserve the judge's correction channel.
   - slug: subsumption-elk
     kind: projection
     title: Field projection — ELK (Eliciting Latent Knowledge)
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
+      - separationOnly
+      - importedAssumption
     graphNodeId: ELK
     summary: ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails.
     decision: Treat ELK success as evidence about readout, not as certification that human correction still changes future behavior.
@@ -143,7 +163,8 @@ projections:
     kind: projection
     title: Field projection — Embedded Agency / ε-Boundary
     status: established
-    leanStatus: counterexample
+    ledgerStatuses:
+      - counterexample
     graphNodeId: EMBED
     summary: Embedded agency denies a clean Cartesian cut — the real optimizer may not be the visible model. An ε-boundary certificate is a measurement projection of agent candidacy; composite bypass and nonstationary estimator defeaters break the converse.
     decision: Before certifying a boundary, ask whether the measured unit is the real control locus and whether a composite controller can bypass the named audit path.
@@ -162,7 +183,8 @@ projections:
     kind: projection
     title: Field projection — Goodhart Selection / Basin
     status: established
-    leanStatus: counterexample
+    ledgerStatuses:
+      - counterexample
     graphNodeId: BASIN
     summary: Model-centric agendas often hold the system fixed; deployment ecology selects which systems get copied. Basin stability and deployment leverage are selection projections — a stable basin can be stably bad and select against correction-preserving agents.
     decision: Before treating basin stability as alignment evidence, ask whether the basin preserves correction or selects proxy-satisfying systems that hollow it out.
@@ -181,7 +203,8 @@ projections:
     kind: projection
     title: Field projection — Grounding Certificate / Drift
     status: established
-    leanStatus: counterexample
+    ledgerStatuses:
+      - counterexample
     graphNodeId: GROUND
     summary: Grounding certificates aim to keep monitors tied to value-relevant state under conservative abstraction. Class-green coverage can hold while the true environment drifts off-class — nonrealizability blocks inferring deployment safety from class certificates alone.
     decision: Treat class-level grounding green as evidence about the certified abstraction, not as discharge of off-class drift risk without explicit coverage extension.
@@ -198,7 +221,8 @@ projections:
     kind: projection
     title: Field projection — Deployment Safety / Safety Case
     status: established
-    leanStatus: counterexample
+    ledgerStatuses:
+      - counterexample
     graphNodeId: DEPLOY
     summary: Deployment gates and safety cases ask whether evidence supports scaling compute or release. Episode-battery pass and regret bounds are projections of deployment safety — case-green plus tolerance does not imply Safe without scope discipline and MB11 bridge assumptions.
     decision: Before treating a safety-case pass or low regret as deployment authorization, check scope boundaries and whether harm bounds transfer to the true deployment envelope.
@@ -216,7 +240,8 @@ projections:
     kind: projection
     title: Field projection — Hidden BIQ / Trace Appearance
     status: established
-    leanStatus: proof
+    ledgerStatuses:
+      - rederivedFinite
     graphNodeId: BIQ
     summary: Subsample and trace-computed BIQ measure appearance, not full productive control. Lean proves tight appearance ceilings on finite traces; bounded apparent BIQ does not discharge hidden productive BIQ or correction-capacity slack without explicit certificates and MB7 bridges.
     decision: Treat trace or subsample BIQ green as an appearance ceiling, not as certification that hidden productive capability is bounded — pair with access robustness, filter coverage, and adversarial batteries.
