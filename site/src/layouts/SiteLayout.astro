@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "katex/dist/katex.min.css";
+import BenchmarkCanary from "../components/BenchmarkCanary.astro";
 import CloudflareWebAnalytics from "../components/CloudflareWebAnalytics.astro";
 import LinkIndicator from "../components/LinkIndicator.astro";
 import OfflineButton from "../components/OfflineButton.astro";
@@ -152,6 +153,7 @@ const websiteJsonLd = {
     </div>
     <PageWidthToggle />
     <PageQrCode url={canonicalUrl} />
+    <BenchmarkCanary />
     <CloudflareWebAnalytics />
   </body>
 </html>

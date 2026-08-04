@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-04 | **Field evidence housekeeping + HTML canary** — Close catalog gaps at ev 130/144/146; fix duplicate agenda suffixes; add hidden benchmark canary to every site page. | [2026-08-04-field-evidence-housekeeping-canary.md](2026-08-04-field-evidence-housekeeping-canary.md) |
 | 2026-08-04 | **B-IQ → BIQ terminology rename** — User: replace B-IQ with BIQ throughout book and site. Appendices, metadata, formal spine, field glossary, site JSON; extracts... | [2026-08-04-biq-terminology-rename.md](2026-08-04-biq-terminology-rename.md) |
 | 2026-08-04 | **Agenda cards reader prose** — User: review all field agenda cards on the site; many use technical fragment language. Keep seman... | [2026-08-04-agenda-cards-reader-prose.md](2026-08-04-agenda-cards-reader-prose.md) |
 | 2026-08-03 | **Site projection phrasing + formalizations table rename** — User asked to replace remaining site “subsumption” reader-facing phrasing with “projection,” then... | [2026-08-03-site-projection-phrasing.md](2026-08-03-site-projection-phrasing.md) |

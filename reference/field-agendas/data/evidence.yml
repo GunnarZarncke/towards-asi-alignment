@@ -290,26 +290,6 @@ evidence:
       - label: METR red-team of Anthropic monitoring 2026
         url: >-
           https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/
-  - id: 33
-    agenda: Apollo / Truthful AI
-    bridges:
-      - MB6
-      - MB7
-      - MB10
-    type: E
-    evidence: Scheming science and pre-deployment eval agenda
-    sources:
-      - label: Apollo Research
-        url: https://www.apolloresearch.ai/
-  - id: 34
-    agenda: Apollo / Truthful AI
-    bridges:
-      - MB7
-    type: E
-    evidence: Situational awareness and strategic deception measurement
-    sources:
-      - label: Apollo publications
-        url: https://www.apolloresearch.ai/research
   - id: 35
     agenda: Apollo / Truthful AI
     bridges:
@@ -367,9 +347,11 @@ evidence:
     evidence: Neglected-approaches portfolio strategy (AE Studio alignment agenda)
     sources:
       - label: AE Studio alignment agenda
-        url: https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach
+        url: >-
+          https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach
       - label: LessWrong mirror
-        url: https://www.lesswrong.com/posts/qAdDzcBuDBLexb4fC/the-neglected-approaches-approach-ae-studio-s-alignment
+        url: >-
+          https://www.lesswrong.com/posts/qAdDzcBuDBLexb4fC/the-neglected-approaches-approach-ae-studio-s-alignment
       - label: AE Studio Research
         url: https://ae.studio/alignment
   - id: 42
@@ -722,7 +704,7 @@ evidence:
       - label: GovAI publications
         url: https://www.governance.ai/research
   - id: 61
-    agenda: GovAI / UK AISI / UK AISI
+    agenda: GovAI / UK AISI
     bridges:
       - MB6
     type: P
@@ -731,7 +713,7 @@ evidence:
       - label: UK AISI
         url: https://www.aisi.gov.uk/
   - id: 62
-    agenda: GovAI / UK AISI / UK AISI
+    agenda: GovAI / UK AISI
     bridges:
       - MB6
       - MB7
@@ -742,7 +724,7 @@ evidence:
         url: >-
           https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations
   - id: 63
-    agenda: GovAI / UK AISI / UK AISI
+    agenda: GovAI / UK AISI
     bridges:
       - MB6
       - MB9
@@ -753,7 +735,7 @@ evidence:
       - label: US NIST AI
         url: https://www.nist.gov/artificial-intelligence
   - id: 64
-    agenda: GovAI / UK AISI / UK AISI
+    agenda: GovAI / UK AISI
     bridges:
       - MB7
     type: P
@@ -799,15 +781,6 @@ evidence:
       - label: Christiano 2019 (multipolar post)
         url: >-
           https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic
-  - id: 69
-    agenda: CLR
-    bridges:
-      - MB6
-    type: O
-    evidence: Cooperative AI Foundation programs
-    sources:
-      - label: CAIF
-        url: https://www.cooperativeai.org/
   - id: 70
     agenda: CLR
     bridges:
@@ -817,17 +790,8 @@ evidence:
     sources:
       - label: FDT 2017
         url: https://arxiv.org/abs/1710.05060
-  - id: 72
-    agenda: Apollo / Truthful AI / Truthful AI
-    bridges:
-      - MB7
-    type: E
-    evidence: Deception and situational-awareness research program
-    sources:
-      - label: Truthful AI
-        url: https://truthful.ai/
   - id: 73
-    agenda: Apollo / Truthful AI / Truthful AI
+    agenda: Apollo / Truthful AI
     bridges:
       - MB7
     type: E
@@ -835,33 +799,6 @@ evidence:
     sources:
       - label: Park et al. 2024
         url: https://arxiv.org/abs/2308.14752
-  - id: 74
-    agenda: Anthropic / Goodfire / Goodfire
-    bridges:
-      - MB7
-    type: D
-    evidence: Goodfire interpretability and editable-representation tooling
-    sources:
-      - label: Goodfire
-        url: https://www.goodfire.ai/
-  - id: 75
-    agenda: Anthropic / Goodfire / Goodfire
-    bridges:
-      - MB7
-    type: D
-    evidence: Neuronpedia feature/circuit infrastructure
-    sources:
-      - label: Neuronpedia
-        url: https://www.neuronpedia.org/
-  - id: 76
-    agenda: Anthropic / Goodfire / Goodfire
-    bridges:
-      - MB7
-    type: D
-    evidence: Transluce decode / agent-introspection tooling
-    sources:
-      - label: Transluce
-        url: https://transluce.org/
   - id: 77
     agenda: AI Futures
     bridges:
@@ -872,7 +809,7 @@ evidence:
       - label: AI Futures Project
         url: https://ai-2027.com/
   - id: 78
-    agenda: CHAI / FAR.AI / FAR.AI
+    agenda: CHAI / FAR.AI
     bridges:
       - MB7
     type: O
@@ -920,7 +857,8 @@ evidence:
     evidence: UAD / agency-detect (unsupervised boundary discovery from dynamics)
     sources:
       - label: Unsupervised Agent Discovery
-        url: https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery
+        url: >-
+          https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery
       - label: agency-detect repo
         url: https://github.com/GunnarZarncke/agency-detect
   - id: 83
@@ -1060,7 +998,7 @@ evidence:
     bridges:
       - MB7
     type: T
-    evidence: Hidden productive B-IQ bound + adversarial verifiability (A-009, ch43)
+    evidence: Hidden productive BIQ bound + adversarial verifiability (A-009, ch43)
     sources:
       - label: Ch. 43 (companion)
         url: https://towards-alignment.com/cards/chapters/ch43/
@@ -1240,7 +1178,7 @@ evidence:
     sources:
       - label: Resolution
         url: https://resolution.org/
-  - id: 131
+  - id: 130
     agenda: CIRIS
     bridges:
       - MB11
@@ -1253,7 +1191,7 @@ evidence:
         url: https://ciris.ai/
       - label: Accord scope / disclaimers
         url: https://ciris.ai/ciris_accord.txt
-  - id: 132
+  - id: 131
     agenda: MIRI / Yudkowsky
     bridges:
       - MB8
@@ -1262,7 +1200,7 @@ evidence:
     sources:
       - label: Yudkowsky 2004 CEV
         url: https://intelligence.org/files/CEV.pdf
-  - id: 133
+  - id: 132
     agenda: Kosoy / IB & LTA
     bridges:
       - MB1
@@ -1276,7 +1214,7 @@ evidence:
         url: https://www.lesswrong.com/tag/infra-bayesianism
       - label: field-claim plan
         url: ../../drafts/field-claim-formalization-and-bridge-review-plan.md
-  - id: 134
+  - id: 133
     agenda: Google DeepMind
     bridges:
       - MB1
@@ -1285,8 +1223,8 @@ evidence:
     sources:
       - label: Kenton et al. 2022
         url: https://arxiv.org/abs/2208.08345
-  - id: 135
-    agenda: Anthropic / Goodfire / Goodfire
+  - id: 134
+    agenda: Anthropic / Goodfire
     bridges:
       - MB7
     type: E
@@ -1296,7 +1234,7 @@ evidence:
         url: https://arxiv.org/abs/2311.17030
       - label: Georg Lange (Foresight grantee)
         url: https://foresight.org/grantees/2026-georg-lange/
-  - id: 136
+  - id: 135
     agenda: Anthropic / Goodfire (lab)
     bridges:
       - MB11
@@ -1304,17 +1242,20 @@ evidence:
     evidence: Frontier Model Forum risk taxonomy and capability thresholds
     sources:
       - label: FMF risk thresholds report
-        url: https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/
-  - id: 137
-    agenda: GovAI / UK AISI / UK AISI
+        url: >-
+          https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/
+  - id: 136
+    agenda: GovAI / UK AISI
     bridges:
       - MB7
     type: E
-    evidence: Alignment evaluation case study; evaluation-awareness under agentic scaffolds
+    evidence: >-
+      Alignment evaluation case study; evaluation-awareness under agentic
+      scaffolds
     sources:
       - label: UK AISI 2026 alignment eval case study
         url: https://arxiv.org/abs/2604.00788
-  - id: 138
+  - id: 137
     agenda: Safeguarded AI
     bridges:
       - MB9
@@ -1323,8 +1264,9 @@ evidence:
     evidence: ARIA Safeguarded AI programme (world models, specs, proof certificates)
     sources:
       - label: ARIA Safeguarded AI
-        url: https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai
-  - id: 139
+        url: >-
+          https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai
+  - id: 138
     agenda: Safeguarded AI
     bridges:
       - MB1
@@ -1335,7 +1277,7 @@ evidence:
     sources:
       - label: Zeroth Research
         url: https://www.zeroth.org/
-  - id: 140
+  - id: 139
     agenda: Safeguarded AI
     bridges:
       - MB1
@@ -1345,7 +1287,7 @@ evidence:
     sources:
       - label: Hagag et al. 2026
         url: https://arxiv.org/abs/2604.23459
-  - id: 141
+  - id: 140
     agenda: Safeguarded AI
     bridges:
       - MB4a
@@ -1355,7 +1297,7 @@ evidence:
     sources:
       - label: AARM specification
         url: https://heron.ing/aarm
-  - id: 142
+  - id: 141
     agenda: Safeguarded AI
     bridges:
       - MB1
@@ -1365,7 +1307,7 @@ evidence:
     sources:
       - label: Moon & Varshney 2026
         url: https://arxiv.org/abs/2605.09045
-  - id: 143
+  - id: 142
     agenda: Safeguarded AI
     bridges:
       - MB7
@@ -1375,7 +1317,7 @@ evidence:
     sources:
       - label: Berrang ZK AI security
         url: https://pascal-berrang.de/projects/zk_ai_security/
-  - id: 145
+  - id: 143
     agenda: MAI + CIP
     bridges:
       - MB4a
@@ -1385,17 +1327,20 @@ evidence:
     sources:
       - label: CIP Alignment Assemblies
         url: https://www.cip.org/alignmentassemblies
-  - id: 147
+  - id: 144
     agenda: Neglected approaches
     bridges:
       - MB2
       - MB7
     type: C
-    evidence: Brain-like AGI safety (social cognition / homeostatic alignment hypotheses)
+    evidence: >-
+      Brain-like AGI safety (social cognition / homeostatic alignment
+      hypotheses)
     sources:
       - label: Byrnes brain-like AGI sequence
-        url: https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/
-  - id: 148
+        url: >-
+          https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/
+  - id: 145
     agenda: Neglected approaches
     bridges:
       - MB7
@@ -1404,7 +1349,7 @@ evidence:
     sources:
       - label: Carauleanu et al. 2024
         url: https://arxiv.org/abs/2412.16325
-  - id: 149
+  - id: 146
     agenda: GovAI / UK AISI
     bridges:
       - MB6
@@ -1413,7 +1358,7 @@ evidence:
     sources:
       - label: Sharma et al. 2026
         url: https://arxiv.org/abs/2601.19062
-  - id: 150
+  - id: 147
     agenda: Orthogonal
     bridges:
       - MB1
@@ -1422,3 +1367,62 @@ evidence:
     sources:
       - label: Demski & Garrabrant 2019
         url: https://arxiv.org/abs/1902.09469
+  - id: 148
+    agenda: Apollo / Truthful AI
+    bridges:
+      - MB6
+      - MB7
+      - MB10
+      - MB11
+    type: E
+    evidence: >-
+      In-context scheming capabilities in frontier models (pre-deployment eval
+      suite)
+    sources:
+      - label: Meinke et al. 2024
+        url: https://arxiv.org/abs/2412.04984
+  - id: 149
+    agenda: Apollo / Truthful AI
+    bridges:
+      - MB7
+    type: E
+    evidence: Situational Awareness Dataset (SAD) benchmark for LLMs
+    sources:
+      - label: Laine et al. 2024
+        url: https://arxiv.org/abs/2407.04694
+  - id: 150
+    agenda: Apollo / Truthful AI
+    bridges:
+      - MB7
+    type: C
+    evidence: Out-of-context reasoning as foundation for situational awareness
+    sources:
+      - label: Berglund et al. 2023
+        url: https://arxiv.org/abs/2309.00667
+  - id: 151
+    agenda: CLR
+    bridges:
+      - MB6
+    type: C
+    evidence: Cooperative AI research agenda (CAIF lineage)
+    sources:
+      - label: Dafoe et al. 2020
+        url: https://arxiv.org/abs/2012.08630
+  - id: 152
+    agenda: Anthropic / Goodfire
+    bridges:
+      - MB7
+    type: E
+    evidence: Sparse autoencoder monosemantic features (circuits interpretability)
+    sources:
+      - label: Bricken et al. 2023
+        url: https://transformer-circuits.pub/2023/monosemantic-features
+  - id: 153
+    agenda: Anthropic / Goodfire
+    bridges:
+      - MB7
+    type: E
+    evidence: Scaling monosemantic features to Claude 3 Sonnet
+    sources:
+      - label: Templeton et al. 2024
+        url: https://transformer-circuits.pub/2024/scaling-monosemanticity/

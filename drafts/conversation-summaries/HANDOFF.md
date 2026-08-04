@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-04 (B-IQ → BIQ terminology rename).
+Last updated: 2026-08-04 (field evidence housekeeping + HTML canary).
 
 ---
 
@@ -32,6 +32,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference + companion site (2026-08-04):** Field evidence catalog renumber (131–156 → 130–153; closes gaps 130/144/146); duplicate agenda suffixes fixed; benchmark canary on every HTML page via `BenchmarkCanary.astro`. Log: `2026-08-04-field-evidence-housekeeping-canary.md`.
 - **Manuscript + site (2026-08-04):** Renamed **B-IQ** → **BIQ** across appendices, metadata/concepts, formal spine comments, field glossary, site JSON, and lean-spine sync; `context/extracts/` left as source canon. Log: `2026-08-04-biq-terminology-rename.md`.
 - **Companion site + reference (2026-08-04):** All field agenda cards rewritten for general alignment readers — full sentences, concept/bridge links, field nouns instead of MB* on the page; sync labels + sidebar nouns; `term-links.yml` + `link-agenda-terms.py` for signature/prose linking. Log: `2026-08-04-agenda-cards-reader-prose.md`.
 - **Companion site + reference (2026-08-03):** Explicit **MB4a** / **MB7d** bridge cards; matrix column links disambiguated; sibling links from MB4/MB7. Log: `2026-08-03-mb4a-mb7d-bridge-cards.md`.

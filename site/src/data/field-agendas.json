@@ -678,7 +678,7 @@
             {
               "type": "C",
               "ids": [
-                132
+                131
               ]
             }
           ],
@@ -1007,14 +1007,14 @@
               "ids": [
                 25,
                 31,
-                135
+                134
               ]
             },
             {
               "type": "E",
               "ids": [
-                155,
-                156
+                152,
+                153
               ]
             },
             {
@@ -1040,7 +1040,7 @@
               "type": "P",
               "ids": [
                 28,
-                136
+                135
               ]
             }
           ]
@@ -1054,7 +1054,7 @@
             {
               "type": "C",
               "ids": [
-                134
+                133
               ]
             }
           ],
@@ -1093,7 +1093,7 @@
             {
               "type": "E",
               "ids": [
-                151
+                148
               ]
             }
           ],
@@ -1101,8 +1101,8 @@
             {
               "type": "E",
               "ids": [
-                151,
-                152,
+                148,
+                149,
                 35
               ]
             },
@@ -1115,7 +1115,7 @@
             {
               "type": "C",
               "ids": [
-                153
+                150
               ]
             }
           ],
@@ -1126,7 +1126,7 @@
             {
               "type": "E",
               "ids": [
-                151
+                148
               ]
             }
           ],
@@ -1134,7 +1134,7 @@
             {
               "type": "E",
               "ids": [
-                151
+                148
               ]
             }
           ]
@@ -1256,7 +1256,7 @@
             {
               "type": "C",
               "ids": [
-                147
+                144
               ]
             }
           ],
@@ -1283,13 +1283,13 @@
             {
               "type": "C",
               "ids": [
-                147
+                144
               ]
             },
             {
               "type": "E",
               "ids": [
-                148
+                145
               ]
             }
           ],
@@ -1308,7 +1308,7 @@
             {
               "type": "C",
               "ids": [
-                150
+                147
               ]
             }
           ],
@@ -1398,13 +1398,13 @@
               "type": "T",
               "ids": [
                 118,
-                133
+                132
               ]
             },
             {
               "type": "C",
               "ids": [
-                133
+                132
               ]
             }
           ],
@@ -1450,7 +1450,7 @@
               "type": "T",
               "ids": [
                 118,
-                133
+                132
               ]
             }
           ],
@@ -1613,7 +1613,7 @@
               "type": "C",
               "ids": [
                 108,
-                131
+                130
               ]
             },
             {
@@ -1641,7 +1641,7 @@
               "ids": [
                 57,
                 59,
-                149
+                146
               ]
             },
             {
@@ -1671,7 +1671,7 @@
               "type": "E",
               "ids": [
                 62,
-                137
+                136
               ]
             }
           ],
@@ -1758,7 +1758,7 @@
               "ids": [
                 67,
                 68,
-                154
+                151
               ]
             }
           ],
@@ -1837,19 +1837,19 @@
             {
               "type": "P",
               "ids": [
-                139
+                138
               ]
             },
             {
               "type": "E",
               "ids": [
-                140
+                139
               ]
             },
             {
               "type": "T",
               "ids": [
-                142
+                141
               ]
             }
           ],
@@ -1860,7 +1860,7 @@
             {
               "type": "P",
               "ids": [
-                141
+                140
               ]
             }
           ],
@@ -1870,13 +1870,13 @@
             {
               "type": "E",
               "ids": [
-                140
+                139
               ]
             },
             {
               "type": "T",
               "ids": [
-                143
+                142
               ]
             }
           ],
@@ -1886,8 +1886,8 @@
             {
               "type": "T",
               "ids": [
-                138,
-                142
+                137,
+                141
               ]
             }
           ],
@@ -1896,15 +1896,15 @@
             {
               "type": "T",
               "ids": [
+                137,
                 138,
-                139,
-                143
+                142
               ]
             },
             {
               "type": "P",
               "ids": [
-                141
+                140
               ]
             }
           ]
@@ -1929,7 +1929,7 @@
             {
               "type": "P",
               "ids": [
-                145
+                143
               ]
             }
           ],
@@ -1948,7 +1948,7 @@
             {
               "type": "P",
               "ids": [
-                145
+                143
               ]
             }
           ],
@@ -2096,7 +2096,7 @@
               "type": "C",
               "ids": [
                 89,
-                132
+                131
               ]
             }
           ],
@@ -3223,7 +3223,7 @@
     },
     {
       "id": 61,
-      "agenda": "GovAI / UK AISI / UK AISI",
+      "agenda": "GovAI / UK AISI",
       "bridges": [
         "MB6"
       ],
@@ -3238,7 +3238,7 @@
     },
     {
       "id": 62,
-      "agenda": "GovAI / UK AISI / UK AISI",
+      "agenda": "GovAI / UK AISI",
       "bridges": [
         "MB6",
         "MB7"
@@ -3254,7 +3254,7 @@
     },
     {
       "id": 63,
-      "agenda": "GovAI / UK AISI / UK AISI",
+      "agenda": "GovAI / UK AISI",
       "bridges": [
         "MB6",
         "MB9",
@@ -3271,7 +3271,7 @@
     },
     {
       "id": 64,
-      "agenda": "GovAI / UK AISI / UK AISI",
+      "agenda": "GovAI / UK AISI",
       "bridges": [
         "MB7"
       ],
@@ -3362,7 +3362,7 @@
     },
     {
       "id": 73,
-      "agenda": "Apollo / Truthful AI / Truthful AI",
+      "agenda": "Apollo / Truthful AI",
       "bridges": [
         "MB7"
       ],
@@ -3392,7 +3392,7 @@
     },
     {
       "id": 78,
-      "agenda": "CHAI / FAR.AI / FAR.AI",
+      "agenda": "CHAI / FAR.AI",
       "bridges": [
         "MB7"
       ],
@@ -3992,7 +3992,7 @@
       ]
     },
     {
-      "id": 131,
+      "id": 130,
       "agenda": "CIRIS",
       "bridges": [
         "MB11"
@@ -4011,7 +4011,7 @@
       ]
     },
     {
-      "id": 132,
+      "id": 131,
       "agenda": "MIRI / Yudkowsky",
       "bridges": [
         "MB8"
@@ -4026,7 +4026,7 @@
       ]
     },
     {
-      "id": 133,
+      "id": 132,
       "agenda": "Kosoy / IB & LTA",
       "bridges": [
         "MB1",
@@ -4046,7 +4046,7 @@
       ]
     },
     {
-      "id": 134,
+      "id": 133,
       "agenda": "Google DeepMind",
       "bridges": [
         "MB1"
@@ -4061,8 +4061,8 @@
       ]
     },
     {
-      "id": 135,
-      "agenda": "Anthropic / Goodfire / Goodfire",
+      "id": 134,
+      "agenda": "Anthropic / Goodfire",
       "bridges": [
         "MB7"
       ],
@@ -4080,7 +4080,7 @@
       ]
     },
     {
-      "id": 136,
+      "id": 135,
       "agenda": "Anthropic / Goodfire (lab)",
       "bridges": [
         "MB11"
@@ -4095,8 +4095,8 @@
       ]
     },
     {
-      "id": 137,
-      "agenda": "GovAI / UK AISI / UK AISI",
+      "id": 136,
+      "agenda": "GovAI / UK AISI",
       "bridges": [
         "MB7"
       ],
@@ -4110,7 +4110,7 @@
       ]
     },
     {
-      "id": 138,
+      "id": 137,
       "agenda": "Safeguarded AI",
       "bridges": [
         "MB9",
@@ -4126,7 +4126,7 @@
       ]
     },
     {
-      "id": 139,
+      "id": 138,
       "agenda": "Safeguarded AI",
       "bridges": [
         "MB1",
@@ -4143,7 +4143,7 @@
       ]
     },
     {
-      "id": 140,
+      "id": 139,
       "agenda": "Safeguarded AI",
       "bridges": [
         "MB1",
@@ -4159,7 +4159,7 @@
       ]
     },
     {
-      "id": 141,
+      "id": 140,
       "agenda": "Safeguarded AI",
       "bridges": [
         "MB4a",
@@ -4175,7 +4175,7 @@
       ]
     },
     {
-      "id": 142,
+      "id": 141,
       "agenda": "Safeguarded AI",
       "bridges": [
         "MB1",
@@ -4191,7 +4191,7 @@
       ]
     },
     {
-      "id": 143,
+      "id": 142,
       "agenda": "Safeguarded AI",
       "bridges": [
         "MB7",
@@ -4207,7 +4207,7 @@
       ]
     },
     {
-      "id": 145,
+      "id": 143,
       "agenda": "MAI + CIP",
       "bridges": [
         "MB4a",
@@ -4223,7 +4223,7 @@
       ]
     },
     {
-      "id": 147,
+      "id": 144,
       "agenda": "Neglected approaches",
       "bridges": [
         "MB2",
@@ -4239,7 +4239,7 @@
       ]
     },
     {
-      "id": 148,
+      "id": 145,
       "agenda": "Neglected approaches",
       "bridges": [
         "MB7"
@@ -4254,7 +4254,7 @@
       ]
     },
     {
-      "id": 149,
+      "id": 146,
       "agenda": "GovAI / UK AISI",
       "bridges": [
         "MB6"
@@ -4269,7 +4269,7 @@
       ]
     },
     {
-      "id": 150,
+      "id": 147,
       "agenda": "Orthogonal",
       "bridges": [
         "MB1"
@@ -4284,7 +4284,7 @@
       ]
     },
     {
-      "id": 151,
+      "id": 148,
       "agenda": "Apollo / Truthful AI",
       "bridges": [
         "MB6",
@@ -4302,7 +4302,7 @@
       ]
     },
     {
-      "id": 152,
+      "id": 149,
       "agenda": "Apollo / Truthful AI",
       "bridges": [
         "MB7"
@@ -4317,7 +4317,7 @@
       ]
     },
     {
-      "id": 153,
+      "id": 150,
       "agenda": "Apollo / Truthful AI",
       "bridges": [
         "MB7"
@@ -4332,7 +4332,7 @@
       ]
     },
     {
-      "id": 154,
+      "id": 151,
       "agenda": "CLR",
       "bridges": [
         "MB6"
@@ -4347,7 +4347,7 @@
       ]
     },
     {
-      "id": 155,
+      "id": 152,
       "agenda": "Anthropic / Goodfire",
       "bridges": [
         "MB7"
@@ -4362,7 +4362,7 @@
       ]
     },
     {
-      "id": 156,
+      "id": 153,
       "agenda": "Anthropic / Goodfire",
       "bridges": [
         "MB7"

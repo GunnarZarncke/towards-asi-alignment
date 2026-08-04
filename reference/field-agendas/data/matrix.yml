@@ -57,7 +57,7 @@ rows:
       MB8:
         - type: C
           ids:
-            - 132
+            - 131
       MB9: []
       MB10:
         - type: C
@@ -249,17 +249,14 @@ rows:
           ids:
             - 25
             - 31
+            - 134
         - type: E
           ids:
-            - 135
+            - 152
+            - 153
         - type: C
           ids:
             - 29
-        - type: D
-          ids:
-            - 74
-            - 75
-            - 76
       MB7d: []
       MB8: []
       MB9: []
@@ -271,14 +268,14 @@ rows:
         - type: P
           ids:
             - 28
-            - 136
+            - 135
     slug: anthropic-lab
   - agenda: Google DeepMind
     cells:
       MB1:
         - type: C
           ids:
-            - 134
+            - 133
       MB2: []
       MB3: []
       MB4: []
@@ -306,28 +303,30 @@ rows:
       MB6:
         - type: E
           ids:
-            - 33
+            - 148
       MB7:
         - type: E
           ids:
-            - 33
-            - 34
+            - 148
+            - 149
             - 35
         - type: E
           ids:
-            - 72
             - 73
+        - type: C
+          ids:
+            - 150
       MB7d: []
       MB8: []
       MB9: []
       MB10:
         - type: E
           ids:
-            - 33
+            - 148
       MB11:
         - type: E
           ids:
-            - 33
+            - 148
     slug: apollo-research
   - agenda: METR
     cells:
@@ -398,7 +397,7 @@ rows:
             - 42
         - type: C
           ids:
-            - 147
+            - 144
       MB3: []
       MB4:
         - type: T
@@ -413,10 +412,10 @@ rows:
       MB7:
         - type: C
           ids:
-            - 147
+            - 144
         - type: E
           ids:
-            - 148
+            - 145
       MB7d: []
       MB8: []
       MB9: []
@@ -428,7 +427,7 @@ rows:
       MB1:
         - type: C
           ids:
-            - 150
+            - 147
       MB2:
         - type: T
           ids:
@@ -485,10 +484,10 @@ rows:
         - type: T
           ids:
             - 118
-            - 133
+            - 132
         - type: C
           ids:
-            - 133
+            - 132
       MB2:
         - type: T
           ids:
@@ -514,7 +513,7 @@ rows:
         - type: T
           ids:
             - 118
-            - 133
+            - 132
       MB10: []
       MB11: []
     slug: kosoy-infra-bayesianism-lta
@@ -611,7 +610,7 @@ rows:
         - type: C
           ids:
             - 108
-            - 131
+            - 130
         - type: P
           ids:
             - 108
@@ -629,7 +628,7 @@ rows:
           ids:
             - 57
             - 59
-            - 149
+            - 146
         - type: E
           ids:
             - 62
@@ -646,7 +645,7 @@ rows:
         - type: E
           ids:
             - 62
-            - 137
+            - 136
       MB7d: []
       MB8: []
       MB9:
@@ -700,9 +699,7 @@ rows:
           ids:
             - 67
             - 68
-        - type: O
-          ids:
-            - 69
+            - 151
       MB7: []
       MB7d:
         - type: C
@@ -756,46 +753,46 @@ rows:
       MB1:
         - type: P
           ids:
-            - 139
+            - 138
         - type: E
           ids:
-            - 140
+            - 139
         - type: T
           ids:
-            - 142
+            - 141
       MB2: []
       MB3: []
       MB4: []
       MB4a:
         - type: P
           ids:
-            - 141
+            - 140
       MB5: []
       MB6: []
       MB7:
         - type: E
           ids:
-            - 140
+            - 139
         - type: T
           ids:
-            - 143
+            - 142
       MB7d: []
       MB8: []
       MB9:
         - type: T
           ids:
-            - 138
-            - 142
+            - 137
+            - 141
       MB10: []
       MB11:
         - type: T
           ids:
+            - 137
             - 138
-            - 139
-            - 143
+            - 142
         - type: P
           ids:
-            - 141
+            - 140
     slug: safeguarded-ai-aria-zeroth-heron
   - agenda: MAI + CIP
     cells:
@@ -809,7 +806,7 @@ rows:
       MB4a:
         - type: P
           ids:
-            - 145
+            - 143
       MB5: []
       MB6:
         - type: C
@@ -820,7 +817,7 @@ rows:
       MB8:
         - type: P
           ids:
-            - 145
+            - 143
       MB9: []
       MB10: []
       MB11: []
@@ -898,7 +895,7 @@ rows:
         - type: C
           ids:
             - 89
-            - 132
+            - 131
       MB9:
         - type: T
           ids:
