@@ -67,6 +67,7 @@ const isExperimentCard = card.data.type === "experiment";
 const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";
 const isAgendaCard = card.data.type === "agenda";
+const isBridgeCard = card.data.type === "bridge";
 const isProjectionCard = card.id.startsWith("subsumption-");
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
@@ -98,6 +99,7 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const projectionGraphUrl = card.data.graphNodeId
   ? withBase("/lean/graph/field-subsumptions/")
   : null;
+const bridgeGraphUrl = withBase("/field/#bridge-dependencies");
 const cardUrlForTermLinks = `/cards/${card.id}/`;
 const gemHref = badgeGemHref(base);
 const cardHref = (id: string) => buildCardHref(base, id);
@@ -429,6 +431,12 @@ const pageDescription = showFullText
         <>
           <h3>Field graph</h3>
           <p><a href={projectionGraphUrl}>Open in field projections graph</a></p>
+        </>
+      )}
+      {(isBridgeCard || card.id === "bridge-assumptions") && (
+        <>
+          <h3>Related resource</h3>
+          <p><a href={bridgeGraphUrl}>Bridge dependency map</a></p>
         </>
       )}
       {isProjectionCard && (

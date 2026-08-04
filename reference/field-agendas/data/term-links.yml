@@ -62,6 +62,7 @@ terms:
   - { phrase: alignment-as-measurement, url: /cards/alignment-as-measurement/, fields: all }
   - { phrase: alignment as a measurement, url: /cards/alignment-as-measurement/, fields: all }
   - { phrase: bridge assumptions, url: /cards/bridge-assumptions/, fields: all }
+  - { phrase: bridge dependency map, url: /field/#bridge-dependencies, fields: all }
   - { phrase: pivotal process, url: /cards/pivotal-process/, fields: all }
   - { phrase: deployment leverage, url: /cards/attractor-control/, fields: all }
   - { phrase: Field hub, url: /field/, fields: all }

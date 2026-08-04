@@ -11,6 +11,7 @@ src/data/glossary.json
 src/data/field-projections.json
 src/data/field-projection-gems.json
 src/data/lean-checks.json
+src/data/bridge-graph.json
 src/data/term-links-reverse.json
 src/data/field-news.json
 src/data/part-gems.json
@@ -22,6 +23,7 @@ src/content/cards/experiments/
 src/content/cards/reference-index.md
 public/chapter-demos/
 public/lean-graphs/
+public/field-graphs/
 public/towards-superintelligence-alignment.pdf
 
 # Generated from metadata/concepts.yml, metadata/bridges.yml, metadata/projections.yml

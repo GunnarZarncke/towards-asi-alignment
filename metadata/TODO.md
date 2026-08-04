@@ -229,7 +229,7 @@ Companion Astro site: orientation layer (Start Here, cards, paths, FAQ, book map
 
 - [x] **Clickable badges with index pages** — **done 2026-07-04:** `/badges/` index plus `/badges/type/{value}/` and `/badges/status/{value}/`; `Badge.astro` links type/status from card pages; nav adds Badges. Semantics in `site/src/lib/badges.ts`, aligned with `site/src/content.config.ts` and manuscript claim-strength language.
 - [x] **Translation spine on-ramp (Phase 1)** — **done 2026-08-04:** question-first `/lean/` hub; `/lean/check/corrigibility/`; 12 projection rows (4 new: embedded-agency, selection-basin, grounding-drift, deployment-gate); graph→card wiring; reverse term-links on projection/check pages. Log: `drafts/conversation-summaries/2026-08-04-translation-spine-on-ramp.md`.
-- [~] **Translation spine (Phase 2)** — ~~CIRL and ELK check pages; `subsumption-hidden-biq` projection row~~ **Done 2026-08-04:** `/lean/check/cirl/`, `/lean/check/elk/`, `subsumption-hidden-biq` (bound-framed, graph `BIQ`). **Still open:** App G opener with projections table; optional `/glossary/reverse/` hub.
+- [x] **Translation spine (Phase 2)** — **done 2026-08-04:** `/lean/check/cirl/`, `/lean/check/elk/`; `subsumption-hidden-biq`; clickable bridge dependency map on `/field/#bridge-dependencies` (links from bridge-assumptions + MB bridge cards). **Deferred (author):** App G opener mirroring site projections table. **Optional later:** `/glossary/reverse/` hub.
 
 ---
 

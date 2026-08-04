@@ -23,19 +23,20 @@ User feedback: Lean unread due to translation cost, not emptiness; field project
 - Graph SVG: field nodes link to `/cards/subsumption-*/`.
 - **Follow-up (same session):** `declIndex` in `lean-spine.json` (1289 decls) with GitHub `#L` anchors; `LeanDeclLinks.astro` on projection cards (main + sidebar); check page uses same index.
 - **Phase 2 (same day):** `/lean/check/cirl/`, `/lean/check/elk/`; `subsumption-hidden-biq` projection + graph `BIQ`; hero check buttons on `/lean/`.
+- **Bridge dependency map (Phase 2 close-out):** clickable MB1–MB11 graph on `/field/#bridge-dependencies`; `sync-bridge-graph.mjs`; links from bridge-assumptions + bridge card sidebars; disclaimer in prose (not in graph).
 
-## Open / next (Phase 2)
-- ~~Check pages for CIRL and ELK.~~ **Done 2026-08-04 (follow-on):** `/lean/check/cirl/`, `/lean/check/elk/`; hero buttons on `/lean/`.
-- ~~`subsumption-hidden-biq` after Lean work.~~ **Done 2026-08-04 (follow-on):** bound-framed projection card (`leanStatus: proof`); graph node `BIQ`; term-links for trace/hidden BIQ.
-- App G opener mirroring site projections table.
-- Full `/glossary/reverse/` hub (optional).
+## Closed / deferred
+- **Phase 2 closed 2026-08-04.** App G opener mirroring site projections table — **deferred to author** (post manuscript pass).
+- Optional `/glossary/reverse/` hub — not scheduled.
 
 ## Key paths
 - `site/src/pages/lean/index.astro`, `site/src/pages/lean/check/[slug].astro`
 - `metadata/projections.yml`, `metadata/lean-checks/index.yml`
-- `site/scripts/sync-lean-checks.mjs`, `site/scripts/sync-term-links.mjs`
+- `site/scripts/sync-lean-checks.mjs`, `site/scripts/sync-term-links.mjs`, `site/scripts/sync-bridge-graph.mjs`
 - `context/lean_proof_graphs/05-field-subsumptions.dot`
+- `reference/field-agendas/graphs/mb-bridge-dependencies.dot`
 
-## End of session (2026-08-04)
-- Committed translation spine Phases 1–2: field-first `/lean/` on-ramp, check pages (corrigibility, CIRL, ELK), 13 projection rows incl. hidden-BIQ, Lean decl source links, graph→card wiring, reverse term-links.
+## End of session (2026-08-04, phase 2 close-out)
+- Committed translation spine Phases 1–2 + bridge dependency map on Field hub.
+- **Deferred (author):** App G opener mirroring site projections table.
 - **Not staged:** `TSA.png`/`TSA.svg`, LW debate drafts, hackathon entries, `node_modules/`, unrelated session-log commit-hash touch-ups.

@@ -3,10 +3,13 @@ import { getEntry, render } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import FieldAgendaMatrix from "../../components/FieldAgendaMatrix.astro";
 import FieldEvidenceCatalog from "../../components/FieldEvidenceCatalog.astro";
+import FieldBridgeGraph from "../../components/FieldBridgeGraph.astro";
 
 const introEntry = await getEntry("field", "intro");
 if (!introEntry) throw new Error("Missing site/src/content/field/intro.md");
 const { Content: IntroContent } = await render(introEntry);
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 ---
 
 <SiteLayout
@@ -24,6 +27,23 @@ const { Content: IntroContent } = await render(introEntry);
   <article class="field-intro prose-block">
     <IntroContent />
   </article>
+
+  <section id="bridge-dependencies" class="bridge-graph-section readable">
+    <h2>Bridge dependency map</h2>
+    <p class="bridge-graph-lede">
+      How the book's bridge assumptions (MB1–MB11) depend on one another, labeled in field nouns from the coverage matrix below.
+    </p>
+    <p class="bridge-graph-disclaimer side-panel-meta">
+      This map shows logical and safety-case assembly dependencies among named bridge handoffs — not a proof that real systems satisfy them.
+      Lean checks conditional structure when the bridges hold; field evidence, measurement, and deployment class still govern whether each handoff is reliable in practice.
+    </p>
+    <FieldBridgeGraph />
+    <p class="side-panel-meta">
+      Hub card: <a href={withBase("/cards/bridge-assumptions/")}>Bridge assumptions</a>
+      {" · "}
+      Formal spine: <a href={withBase("/lean/")}>Lean proof spine</a>
+    </p>
+  </section>
 
   <FieldAgendaMatrix base={import.meta.env.BASE_URL} />
 
@@ -65,5 +85,22 @@ const { Content: IntroContent } = await render(introEntry);
 
   .field-intro :global(a) {
     color: var(--color-link, #1a5276);
+  }
+
+  .bridge-graph-section {
+    margin-top: 2.5rem;
+    max-width: 52rem;
+  }
+
+  .bridge-graph-lede {
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .bridge-graph-disclaimer {
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--color-border, #c8d4e0);
+    background: var(--color-surface, #fafbfc);
   }
 </style>
