@@ -5,6 +5,7 @@ import LinkIndicator from "../../components/LinkIndicator.astro";
 import LeanOverviewDiagram from "../../components/LeanOverviewDiagram.astro";
 import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
 import leanSpine from "../../data/lean-spine.json";
+import leanChecks from "../../data/lean-checks.json";
 import { bookHref, cardHref } from "../../lib/site-urls";
 import bookIndex from "../../data/book.json";
 
@@ -19,26 +20,26 @@ const titleForChapter = (chapterId: string) =>
 
 <SiteLayout
   title="Lean Proof Spine"
-  description="Interactive map of the Lean 4 proof spine: dependency graphs, modules, and try-it-out snippets."
+  description="Check field alignment claims against what Lean actually proved: projections, separations, and the conditional proof spine."
 >
   <section class="hero">
     <p class="eyebrow">Appendix G on the web</p>
-    <h1>Lean proof spine</h1>
+    <h1>Check a field claim against what Lean proved</h1>
     <p class="lede">
-      A machine-checked conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold,
-      then the certification claims follow. Lean does not prove real systems satisfy the bridges.
+      Start from agendas you already know — CIRL, corrigibility, ELK, shutdown — not this project's specialized ontology.
+      Each row is a machine-checked projection or separation on a shared finite domain.
+      Lean is a conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold,
+      then the certification claims follow. It does not prove real systems satisfy the bridges.
     </p>
     <div class="button-row">
-      <a class="button primary" href={withBase("/lean/graph/overview/")}>Open overview graph</a>
-      <a class="button" href="#overview-diagram">Jump to overview diagram</a>
-      <a class="button" href={`${repoUrl}/AlignmentProofSpine`} target="_blank" rel="noopener noreferrer">View Lean source<LinkIndicator kind="github" /></a>
+      <a class="button primary" href={withBase("/lean/check/corrigibility/")}>Does CCI capture corrigibility?</a>
+      <a class="button" href={withBase("/lean/check/cirl/")}>Is scalar CIRL enough?</a>
+      <a class="button" href={withBase("/lean/check/elk/")}>Does ELK solve alignment?</a>
       <a class="button" href={bookHref(base, "appB")}>Bridge crosswalk (Appendix B)</a>
+      <a class="button" href={`${repoUrl}/AlignmentProofSpine`} target="_blank" rel="noopener noreferrer">View Lean source<LinkIndicator kind="github" /></a>
+      <a class="button" href="#spine-detail">Full spine (optional)</a>
     </div>
   </section>
-
-  <div id="overview-diagram">
-    <LeanOverviewDiagram />
-  </div>
 
   <FieldProjectionsTable
     cardHref={toCardHref}
@@ -46,6 +47,35 @@ const titleForChapter = (chapterId: string) =>
     chapterTitle={titleForChapter}
     leanHref={withBase("/lean/")}
   />
+
+  <section class="callout readable">
+    <h2>Common checks</h2>
+    <p class="side-panel-meta">
+      Structured audit pages: field meaning, book relocation, what Lean checked (and did not), stepping-stone cards.
+    </p>
+    <ul>
+      {leanChecks.checks.map((check) => (
+        <li>
+          <a href={withBase(`/lean/check/${check.slug}/`)}>{check.question}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="spine-detail" class="readable">
+    <h2>Full spine (optional)</h2>
+    <p class="side-panel-meta">
+      Dependency graphs, modules, and try-it-out snippets — for readers who have already paid the translation cost.
+    </p>
+    <div class="button-row">
+      <a class="button" href={withBase("/lean/graph/overview/")}>Open overview graph</a>
+      <a class="button" href="#overview-diagram">Jump to overview diagram</a>
+    </div>
+  </section>
+
+  <div id="overview-diagram">
+    <LeanOverviewDiagram />
+  </div>
 
   {leanSpine.sections.map((section) => (
     <section class="readable">
@@ -127,7 +157,7 @@ const titleForChapter = (chapterId: string) =>
     <p>
       Three kinds of result appear throughout: <Badge label="proof" variant="established" /> local theorems,
       <Badge label="counterexample" variant="negative" /> finite separations, and
-      <Badge label="bridge" variant="open" /> empirical handoffs (MB1–MB10).
+      <Badge label="bridge" variant="open" /> empirical handoffs (MB1–MB11).
       Headline certification theorems depend on explicit bridge records — inspect with <code>#print axioms</code> in the repo.
     </p>
   </section>

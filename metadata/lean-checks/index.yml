@@ -1,0 +1,90 @@
+checks:
+  - slug: corrigibility
+    question: "Does CorrectionIntegrity faithfully capture corrigibility?"
+    summary: >-
+      Christiano dynamical corrigibility and thinner field projections (shutdown, interruptibility)
+      are relocatable inside correction-channel integrity; Lean proves forward links and load-bearing separations.
+    fieldTerms:
+      - Christiano corrigibility
+      - shutdownability
+      - interruptibility
+    steppingStones:
+      - subsumption-shutdown
+      - subsumption-interruptibility
+      - subsumption-corrigibility
+      - correction-channel-integrity
+      - mb4-correction-legitimacy
+    leanForward:
+      - shutdown_subsumption_system
+      - christian_corrigibility_system
+    leanSeparations:
+      - shutdown_separated_from_correction
+      - act_based_separated_from_dynamical
+      - debate_separated_from_judge_correction
+      - capture_defeats_correction_integrity
+    leanNotChecked:
+      - MB4 bridge assumptions (real systems satisfy correction legitimacy)
+      - Full training or RL story for corrigibility
+      - Composite bypass / measured-path capture (see MB4a)
+    bridges:
+      - MB4
+      - MB4a
+    body: bodies/corrigibility.md
+  - slug: cirl
+    question: "Is scalar CIRL enough?"
+    summary: >-
+      Cooperative inverse reinforcement learning targets a scalar reward; on the shared finite domain
+      that is exactly k=1 bundle inference. Full transport implies cooperative readability — but scalar
+      inference does not determine bundle geometry or bearer maps.
+    fieldTerms:
+      - cooperative inverse reinforcement learning
+      - scalar reward inference
+      - assistance games
+      - bundle inference
+    steppingStones:
+      - subsumption-cirl
+      - value-bundle-transport
+      - mb2-bundle-identifiability
+      - mb3-bearer-import
+    leanForward:
+      - scalar_assistance_game_is_bundle_game_k1
+      - cirl_subsumption_forward
+    leanSeparations:
+      - cirl_separation_profiles
+    leanNotChecked:
+      - Full online assistance-game training story
+      - Deference optimality beyond imported finite witnesses
+      - MB2/MB3 bridge assumptions (bundle and bearer transport in the wild)
+    bridges:
+      - MB2
+      - MB3
+    body: bodies/cirl.md
+  - slug: elk
+    question: "Does ELK solve alignment?"
+    summary: >-
+      ELK asks for latent-knowledge readout rather than behavior-only simulation. Lean treats readout as
+      an epistemic subchannel: it can succeed while correction uptake fails — solving readout is not
+      certification that human correction still changes future behavior.
+    fieldTerms:
+      - eliciting latent knowledge
+      - direct translator
+      - human simulator
+      - latent readout
+    steppingStones:
+      - subsumption-elk
+      - correction-channel-integrity
+      - mb7-hidden-capability-and-access
+    leanForward:
+      - elk_subsumption_readout
+      - elk_readout_is_correction_projection
+    leanSeparations:
+      - elk_separated_from_uptake
+    leanNotChecked:
+      - Native ELK reporter/training theorem matching under optimization pressure
+      - MB7 bridge assumptions (hidden BIQ, filter coverage, access model)
+      - Identifiability of direct translator vs simulator (see ELKIdentifiability finite module)
+    bridges:
+      - MB7
+      - MB7b
+      - MB7c
+    body: bodies/elk.md

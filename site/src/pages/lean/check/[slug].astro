@@ -1,0 +1,186 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import Badge from "../../../components/Badge.astro";
+import LinkIndicator from "../../../components/LinkIndicator.astro";
+import TermLinksReverse from "../../../components/TermLinksReverse.astro";
+import leanChecks from "../../../data/lean-checks.json";
+import leanSpine from "../../../data/lean-spine.json";
+import { cardHref } from "../../../lib/site-urls";
+import { resolveLeanDeclLinks } from "../../../lib/lean-decl-hrefs";
+
+export function getStaticPaths() {
+  return leanChecks.checks.map((check) => ({
+    params: { slug: check.slug },
+    props: { check }
+  }));
+}
+
+const { check } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const toCardHref = (slug: string) => cardHref(base, slug);
+const declIndex = leanSpine.declIndex ?? {};
+
+const bridgeCardSlug: Record<string, string> = {
+  MB1: "mb1-boundary-estimator-soundness",
+  MB2: "mb2-bundle-identifiability",
+  MB3: "mb3-bearer-import",
+  MB4: "mb4-correction-legitimacy",
+  MB4a: "mb4a-measured-path-legitimacy",
+  MB5: "mb5-successor-ontology-shift",
+  MB6a: "mb6-selection-and-basin-stability",
+  MB6b: "mb6-selection-and-basin-stability",
+  MB7: "mb7-hidden-capability-and-access",
+  MB8: "mb8-cev-process-convergence",
+  MB9: "mb9-grounding-certificate",
+  MB10: "mb10-successor-forgeability",
+  MB11: "mb11-deployment-safety"
+};
+
+function leanDeclLink(decl: string, moduleGuess = "Correction.lean") {
+  return resolveLeanDeclLinks(decl, `AlignmentProofSpine/${moduleGuess}`, declIndex, base);
+}
+
+const cardUrlForReverse = (slug: string) => `/cards/${slug}/`;
+---
+
+<SiteLayout title={check.question} description={check.summary || check.question}>
+  <article class="two-column">
+    <div class="content-card readable">
+      <p class="eyebrow"><a href={withBase("/lean/")}>Lean proof spine</a> · Common check</p>
+      <h1>{check.question}</h1>
+      {check.summary && <p class="lede">{check.summary}</p>}
+
+      {check.body && (
+        <section>
+          {check.body.split("\n\n").filter(Boolean).map((para) => (
+            <p>{para.replace(/\*\*(.*?)\*\*/g, "$1")}</p>
+          ))}
+        </section>
+      )}
+
+      {check.fieldTerms.length > 0 && (
+        <section>
+          <h2>Field terms</h2>
+          <ul>
+            {check.fieldTerms.map((term) => (
+              <li>{term}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {check.steppingStones.length > 0 && (
+        <section>
+          <h2>Stepping-stone path</h2>
+          <p class="side-panel-meta">Read in order — each step adds one book term, not the whole ontology.</p>
+          <ol>
+            {check.steppingStones.map((slug) => (
+              <li><a href={toCardHref(slug)}>{slug.replace(/^subsumption-/, "").replace(/^mb\d+a?-/, "").replace(/-/g, " ")}</a></li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {check.leanForward.length > 0 && (
+        <section>
+          <h2>What Lean checked (forward)</h2>
+          <ul>
+            {check.leanForward.map((decl) => {
+              const links = leanDeclLink(decl);
+              return (
+                <li>
+                  <code>{decl}</code>
+                  {" — "}
+                  <a href={links.githubUrl} target="_blank" rel="noopener noreferrer">
+                    Lean source<LinkIndicator kind="github" />
+                  </a>
+                  {links.graphNodeHref && (
+                    <>
+                      {" · "}
+                      <a href={links.graphNodeHref}>Spine node</a>
+                    </>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
+      {check.leanSeparations.length > 0 && (
+        <section>
+          <h2>What Lean checked (separations)</h2>
+          <ul>
+            {check.leanSeparations.map((decl) => {
+              const links = leanDeclLink(decl);
+              return (
+                <li>
+                  <code>{decl}</code>
+                  {" — "}
+                  <a href={links.githubUrl} target="_blank" rel="noopener noreferrer">
+                    Lean source<LinkIndicator kind="github" />
+                  </a>
+                  {links.graphNodeHref && (
+                    <>
+                      {" · "}
+                      <a href={links.graphNodeHref}>Spine node</a>
+                    </>
+                  )}
+                  {" "}<Badge label="counterexample" variant="negative" />
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
+      {check.leanNotChecked.length > 0 && (
+        <section class="callout warning">
+          <h2>What Lean did not check</h2>
+          <ul>
+            {check.leanNotChecked.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+
+    <aside class="side-panel" aria-label="Related content">
+      <h2>Related</h2>
+      {check.bridges.length > 0 && (
+        <>
+          <h3>Bridges</h3>
+          <ul>
+            {check.bridges.map((bridge) => {
+              const slug = bridgeCardSlug[bridge];
+              return (
+                <li>
+                  {slug ? (
+                    <a href={toCardHref(slug)}>{bridge}</a>
+                  ) : (
+                    bridge
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      <h3>All checks</h3>
+      <ul>
+        {leanChecks.checks.map((entry) => (
+          <li>
+            {entry.slug === check.slug ? (
+              entry.question
+            ) : (
+              <a href={withBase(`/lean/check/${entry.slug}/`)}>{entry.question}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+      <TermLinksReverse url={cardUrlForReverse(check.steppingStones[check.steppingStones.length - 1] ?? "")} />
+    </aside>
+  </article>
+</SiteLayout>

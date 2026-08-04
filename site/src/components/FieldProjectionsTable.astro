@@ -13,6 +13,12 @@ interface Props {
 
 const { cardHref, chapterHref, chapterTitle, leanHref } = Astro.props;
 const gemSlugs = new Set(fieldProjectionGems);
+
+const statusVariant = (status: string | undefined) => {
+  if (status === "counterexample") return "negative";
+  if (status === "bridge") return "open";
+  return "established";
+};
 ---
 
 <section class="field-projections-table">
@@ -28,6 +34,7 @@ const gemSlugs = new Set(fieldProjectionGems);
         <tr>
           <th>Agenda</th>
           <th>Book-facing claim</th>
+          <th>Lean</th>
           <th>Chapters</th>
         </tr>
       </thead>
@@ -41,6 +48,13 @@ const gemSlugs = new Set(fieldProjectionGems);
               {gemSlugs.has(row.card) && <Badge label="gem" variant="gem" />}
             </td>
             <td>{row.headline}</td>
+            <td>
+              {row.leanStatus ? (
+                <Badge label={row.leanStatus} variant={statusVariant(row.leanStatus)} />
+              ) : (
+                "—"
+              )}
+            </td>
             <td>
               {row.chapters.map((chapterId, i) => (
                 <>

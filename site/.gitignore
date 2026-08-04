@@ -10,6 +10,8 @@ src/data/notation.json
 src/data/glossary.json
 src/data/field-projections.json
 src/data/field-projection-gems.json
+src/data/lean-checks.json
+src/data/term-links-reverse.json
 src/data/field-news.json
 src/data/part-gems.json
 src/data/standalone-claims.json
@@ -92,6 +94,11 @@ src/content/cards/subsumption-interruptibility.md
 src/content/cards/subsumption-low-impact.md
 src/content/cards/subsumption-quantilization.md
 src/content/cards/subsumption-shutdown.md
+src/content/cards/subsumption-embedded-agency.md
+src/content/cards/subsumption-selection-basin.md
+src/content/cards/subsumption-grounding-drift.md
+src/content/cards/subsumption-deployment-gate.md
+src/content/cards/subsumption-hidden-biq.md
 src/content/cards/successor-stability.md
 src/content/cards/the-boundary-error.md
 src/content/cards/unit-discovery-stress-test.md

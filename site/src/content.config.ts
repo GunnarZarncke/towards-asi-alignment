@@ -60,6 +60,8 @@ const card = defineCollection({
     })).default([]),
     related: z.array(z.string()).default([]),
     citeKeys: z.array(z.string()).default([]),
+    /** Field-subsumptions graph node id (projection cards only). */
+    graphNodeId: z.string().optional(),
     external: z.array(z.object({
       label: z.string(),
       url: z.string()

@@ -100,9 +100,33 @@ function bridgeCardSlug(nodeId) {
   return names[key] || null;
 }
 
+const PROJECTION_CARD_SLUG = {
+  CIRL: "subsumption-cirl",
+  SHUT: "subsumption-shutdown",
+  INT: "subsumption-interruptibility",
+  CORR: "subsumption-corrigibility",
+  ELK: "subsumption-elk",
+  DEB: "subsumption-debate",
+  IMPACT: "subsumption-low-impact",
+  QUANT: "subsumption-quantilization",
+  EMBED: "subsumption-embedded-agency",
+  BASIN: "subsumption-selection-basin",
+  GROUND: "subsumption-grounding-drift",
+  DEPLOY: "subsumption-deployment-gate",
+  BIQ: "subsumption-hidden-biq"
+};
+
+function projectionCardSlug(nodeId) {
+  return PROJECTION_CARD_SLUG[nodeId] ?? null;
+}
+
 function normalizeGraphNode(node, cardIndex) {
   const baseId = node.id.replace(/_IN$/, "");
-  const cardSlug = cardIndex.get(baseId) || cardIndex.get(node.id) || bridgeCardSlug(baseId);
+  const cardSlug =
+    cardIndex.get(baseId) ||
+    cardIndex.get(node.id) ||
+    projectionCardSlug(baseId) ||
+    bridgeCardSlug(baseId);
   return {
     ...node,
     kind: nodeKind(baseId),
@@ -251,11 +275,12 @@ async function main() {
   await renderGraphSvgs(graphs);
 
   const nodes = buildNodeRegistry(graphs, ledger, playgrounds, cardIndex);
-  attachSpineSources(nodes, graphs, FORMAL_ROOT, NODE_ALIAS_PATH);
+  const declIndex = attachSpineSources(nodes, graphs, FORMAL_ROOT, NODE_ALIAS_PATH);
 
   const payload = {
     generatedAt: new Date().toISOString(),
     liveBase: "https://live.lean-lang.org/",
+    declIndex,
     sections: [
       {
         id: "field",

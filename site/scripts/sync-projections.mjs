@@ -22,7 +22,8 @@ function publicFieldsFor(row) {
     summary: row.summary,
     decision: row.decision,
     bookChapters: row.bookChapters,
-    bookLabels: row.bookLabels
+    bookLabels: row.bookLabels,
+    graphNodeId: row.graphNodeId
   };
 }
 
@@ -60,7 +61,8 @@ async function main() {
       card: row.slug,
       agenda: row.agenda,
       headline: row.headline,
-      chapters: row.bookChapters
+      chapters: row.bookChapters,
+      leanStatus: row.leanStatus ?? null
     })),
     check,
     mismatches

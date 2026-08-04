@@ -67,7 +67,7 @@ export function renderCard(publicFields, bodyFmFields, bodyText) {
   const simpleKeys = [
     "title", "type", "status", "summary", "decision", "evidence", "bookPageId",
     "overviewOnly", "bibKey", "experimentLineId", "releasedAt", "eventDate", "version",
-    "part", "formalDensity", "claimId"
+    "part", "formalDensity", "claimId", "graphNodeId"
   ];
   for (const key of simpleKeys) {
     if (publicFields[key] === undefined || publicFields[key] === null) continue;

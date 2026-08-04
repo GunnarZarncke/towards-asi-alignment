@@ -8,7 +8,8 @@ import ConceptLogo from "../../components/ConceptLogo.astro";
 import ConceptCardLink from "../../components/ConceptCardLink.astro";
 import BridgeCrosswalkTable from "../../components/BridgeCrosswalkTable.astro";
 import CardSection from "../../components/CardSection.astro";
-import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
+import TermLinksReverse from "../../components/TermLinksReverse.astro";
+import LeanDeclLinks from "../../components/LeanDeclLinks.astro";
 import ReferenceIndex from "../../components/ReferenceIndex.astro";
 import LeanCodeBlock from "../../components/LeanCodeBlock.astro";
 import LeanTryIt from "../../components/LeanTryIt.astro";
@@ -66,6 +67,7 @@ const isExperimentCard = card.data.type === "experiment";
 const isReleaseCard = card.data.type === "release";
 const isNewsCard = card.data.type === "news";
 const isAgendaCard = card.data.type === "agenda";
+const isProjectionCard = card.id.startsWith("subsumption-");
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
 const relatedSlugs = [...new Set([...partGemSlugs, ...card.data.related])];
@@ -93,6 +95,10 @@ const relatedNews =
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const projectionGraphUrl = card.data.graphNodeId
+  ? withBase("/lean/graph/field-subsumptions/")
+  : null;
+const cardUrlForTermLinks = `/cards/${card.id}/`;
 const gemHref = badgeGemHref(base);
 const cardHref = (id: string) => buildCardHref(base, id);
 const refCardHref = (key: string) => buildCardHref(base, `references/${key.toLowerCase()}`);
@@ -122,7 +128,7 @@ const crosswalkChapterIds = [...new Set(crosswalkRows.flatMap((row) => row.chapt
 
 const repoBase = "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main";
 
-function leanSpineNodeId(nodeId: string) {
+function legacySpineNodeId(nodeId: string) {
   return (
     nodeId.match(/^(P\d+[A-Za-z]?)/)?.[1] ||
     nodeId.match(/^(MB\d+[a-z]?)/i)?.[1]?.toUpperCase() ||
@@ -130,14 +136,8 @@ function leanSpineNodeId(nodeId: string) {
   );
 }
 
-function leanSymbolHref(node: { nodeId: string; module: string }) {
-  const spineId = leanSpineNodeId(node.nodeId);
-  if (spineId) return withBase(`/lean/node/${spineId}/`);
-  return `${repoBase}/formal/${node.module}`;
-}
-
 function playgroundForLeanNode(nodeId: string) {
-  const spineId = leanSpineNodeId(nodeId);
+  const spineId = legacySpineNodeId(nodeId);
   if (!spineId) return null;
   return leanSpine.playgrounds.find((pg) => pg.nodeId === spineId) ?? null;
 }
@@ -308,6 +308,15 @@ const pageDescription = showFullText
           ))}
         </section>
       )}
+      {isProjectionCard && card.data.leanNodes.length > 0 && (
+        <section class="lean-source-main">
+          <h2>Lean source</h2>
+          <p class="side-panel-meta">
+            Machine-checked declarations on the shared finite domain — each links to the theorem in the repo.
+          </p>
+          <LeanDeclLinks nodes={card.data.leanNodes} graphNodeId={card.data.graphNodeId} />
+        </section>
+      )}
 
       {card.data.evidence && (
         <section class="callout">
@@ -413,26 +422,17 @@ const pageDescription = showFullText
       {card.data.leanNodes.length > 0 && (
         <>
           <h3>Lean proof spine</h3>
-          <ul>
-            {card.data.leanNodes.map((node) => {
-              const isGithubLink = leanSymbolHref(node).startsWith(repoBase);
-              return (
-              <li>
-                <a
-                  href={leanSymbolHref(node)}
-                  target={isGithubLink ? "_blank" : undefined}
-                  rel={isGithubLink ? "noopener noreferrer" : undefined}
-                >
-                  <code>{node.nodeId}</code>
-                  {isGithubLink && <LinkIndicator kind="github" />}
-                </a>
-                {" "}({node.kind}) &mdash; {node.summary}
-                <br /><span class="side-panel-meta">{node.module}</span>
-              </li>
-              );
-            })}
-          </ul>
+          <LeanDeclLinks nodes={card.data.leanNodes} graphNodeId={card.data.graphNodeId} />
         </>
+      )}
+      {isProjectionCard && projectionGraphUrl && (
+        <>
+          <h3>Field graph</h3>
+          <p><a href={projectionGraphUrl}>Open in field projections graph</a></p>
+        </>
+      )}
+      {isProjectionCard && (
+        <TermLinksReverse url={cardUrlForTermLinks} />
       )}
       {card.data.evidenceNotes.length > 0 && (
         <>

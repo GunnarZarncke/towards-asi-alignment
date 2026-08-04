@@ -157,6 +157,26 @@ terms:
   - { phrase: human simulator, url: /cards/subsumption-elk/, fields: signature }
   - { phrase: direct translator, url: /cards/subsumption-elk/, fields: signature }
   - { phrase: latent knowledge, url: /cards/subsumption-elk/, fields: all }
+  - { phrase: ε-boundary, url: /cards/subsumption-embedded-agency/, fields: all }
+  - { phrase: epsilon-boundary, url: /cards/subsumption-embedded-agency/, fields: all }
+  - { phrase: composite bypass, url: /cards/subsumption-embedded-agency/, fields: all }
+  - { phrase: basin stability, url: /cards/subsumption-selection-basin/, fields: all }
+  - { phrase: Goodhart selection, url: /cards/subsumption-selection-basin/, fields: all }
+  - { phrase: grounding drift, url: /cards/subsumption-grounding-drift/, fields: all }
+  - { phrase: grounding certificate, url: /cards/subsumption-grounding-drift/, fields: all }
+  - { phrase: nonrealizability, url: /cards/subsumption-grounding-drift/, fields: all }
+  - { phrase: deployment gate, url: /cards/subsumption-deployment-gate/, fields: all }
+  - { phrase: safety case, url: /cards/subsumption-deployment-gate/, fields: all }
+  - { phrase: deployment safety, url: /cards/subsumption-deployment-gate/, fields: all }
+  - { phrase: regret bound, url: /cards/subsumption-deployment-gate/, fields: signature }
+  - { phrase: hidden BIQ, url: /cards/subsumption-hidden-biq/, fields: all }
+  - { phrase: hidden productive BIQ, url: /cards/subsumption-hidden-biq/, fields: all }
+  - { phrase: trace BIQ, url: /cards/subsumption-hidden-biq/, fields: all }
+  - { phrase: subsample BIQ, url: /cards/subsumption-hidden-biq/, fields: all }
+  - { phrase: appearance bound, url: /cards/subsumption-hidden-biq/, fields: all }
+  - { phrase: cooperative inverse reinforcement learning, url: /lean/check/cirl/, fields: all }
+  - { phrase: scalar reward inference, url: /lean/check/cirl/, fields: all }
+  - { phrase: latent readout, url: /lean/check/elk/, fields: all }
   - { phrase: world model, url: https://arxiv.org/abs/2405.06624, fields: signature }
   - { phrase: specification coverage, url: https://arxiv.org/abs/2405.06624, fields: signature }
   - { phrase: AARM, url: https://heron.ing/aarm, fields: signature }

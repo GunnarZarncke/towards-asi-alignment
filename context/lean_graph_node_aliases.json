@@ -50,6 +50,12 @@
   "IMPACT": { "decls": ["reachability_not_correction_capacity", "auxiliary_reachability_preserves_correction_reachability"] },
   "FIMPACT": { "decls": ["reachability_not_correction_capacity", "auxiliary_reachability_preserves_correction_reachability"] },
   "QUANT": { "decls": ["quantile_separated_from_trajectory", "quantile_soundness_preserves_trajectory_cci"] },
+  "EMBED": { "decls": ["green_named_path_with_bypass_not_integrity", "MB1_defeater_toy_nonstationary_shift", "positive_margin_implies_epsilon_boundary"] },
+  "BASIN": { "decls": ["MB6b_defeater_toy_lock_in", "P31_safe_agent_selected_against"] },
+  "GROUND": { "decls": ["class_certificate_not_deployment_safety", "epistemic_coverage_finite_shape_not_deployment_safety"] },
+  "DEPLOY": { "decls": ["MB11_defeater_toy_scope_exceeded", "zero_regret_not_harm_bound", "regret_evidence_not_deployment_safe"] },
+  "BIQ": { "decls": ["subsample_biq_le_tight_optimism", "trace_sampling_absolute_appearance_bound", "risk_gap_bound_from_hidden_biq_certificate"] },
+  "DEFEAT": { "kind": "module", "file": "Defeaters.lean" },
   "IN_VB": { "decls": ["P22b_semantic_not_full_transport"] },
   "IN_BND": { "decls": ["P11_capacity_monotone_bound"] }
 }
