@@ -2,25 +2,56 @@ slug: this-project-towards-superintelligence-alignment-tsa
 title: This project - Towards Superintelligence Alignment (TSA)
 type: Research program
 generateCard: false
-matrixLink: https://towards-alignment.com/
-carrier: Gunnar Zarncke — *Towards Superintelligence Alignment* (TSA)
-primaryArtifact: Manuscript + Lean spine + experiment lines
+matrixLink: "https://towards-alignment.com/"
+carrier: "Gunnar Zarncke \u2014 *Towards Superintelligence Alignment* (TSA)"
+primaryArtifact: >-
+  The project ships a book manuscript, a Lean proof spine that types load-bearing
+  assumptions, and multiple experiment lines that stress-test bridge cruxes under partial
+  empirical control.
 signatureVocabulary: >-
-  correction-channel integrity, bundle geometry, bearer maps, adversarial
-  verifiability, deployment leverage, UAD, inferential coupling
+  Signature terms include [correction-channel
+  integrity](/cards/correction-channel-integrity/), bundle geometry, bearer maps,
+  [adversarial verifiability](/cards/certification-under-manipulation/), [deployment
+  leverage](/cards/attractor-control/),
+  [UAD](https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery)
+  ([unsupervised agent
+  discovery](https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery)),
+  and [inferential coupling](/cards/inferential-coupling/).
 statedIntent: >-
-  Preservation of human-correctable value-bearing processes under capability
-  growth, ontology shift, successors, selection pressure
-primaryCrux: Can typed bridges compose under explicit adversarial-verifiability antecedent?
+  Preserve human-correctable value-bearing processes under capability growth, ontology
+  shift, successor replacement, and selection pressure—stated as a measurement program
+  rather than a single training recipe.
+primaryCrux: >-
+  Can typed bridges compose under an explicit adversarial-verifiability antecedent, or do
+  standard non-converses block naive closure arguments?
 bookBridges:
-  - MB1–MB11 incl. MB4a (home)
-contributes: Measurement spine; non-converses; selection environment as load-bearing
-bookSeparates: Does not dissolve field walls; relocates into bridges
+  - MB1
+  - MB2
+  - MB3
+  - MB4
+  - MB4a
+  - MB5
+  - MB6
+  - MB7
+  - MB7d
+  - MB8
+  - MB9
+  - MB10
+  - MB11
+contributes: >-
+  A typed measurement spine from [Embedded
+  Agency](/cards/mb1-boundary-estimator-soundness/) through [Deployment
+  Safety](/cards/mb11-deployment-safety/); explicit non-converses between field agendas;
+  and [selection environment](/cards/attractor-control/) as a load-bearing variable for
+  [Goodhart Selection](/cards/mb6-selection-and-basin-stability/).
+bookSeparates: >-
+  The book does not dissolve disagreements between field agendas—it relocates them into
+  named bridges with testable crux wording rather than rhetorical merger.
 manuscriptHooks:
   - full manuscript
   - App B crosswalk
 links:
-  - label: Companion site
+  - label: "Companion site"
     url: https://towards-alignment.com/
-  - label: GitHub repo
+  - label: "GitHub repo"
     url: https://github.com/GunnarZarncke/towards-asi-alignment

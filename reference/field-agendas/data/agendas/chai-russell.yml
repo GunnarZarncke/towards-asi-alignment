@@ -2,37 +2,49 @@ slug: chai-russell
 title: CHAI / FAR.AI (Berkeley alignment)
 type: Research org cluster (academic + nonprofit hub)
 carrier: >-
-  Center for Human-Compatible AI (UC Berkeley); FAR.AI (Adam Gleave et al.);
-  shared Berkeley alignment community
+  Center for Human-Compatible AI (UC Berkeley); FAR.AI (Adam Gleave et al.); shared
+  Berkeley alignment community
+overview: >-
+  The Berkeley cluster reorients AI research toward beneficial systems under preference
+  uncertainty, combining Stuart Russell's assistance-game formalism with FAR.AI's research
+  and community programs.
 primaryArtifact: >-
-  Assistance games / CIRL framework; beneficial AI reorientation; FAR.Lab
-  research and community programs
+  The assistance-games and [CIRL](/cards/subsumption-cirl/) framework, beneficial-AI
+  reorientation work, and FAR.Lab research and community programs.
 signatureVocabulary: >-
-  CIRL, inverse reward design, assistance games, beneficial AI, FAR.Lab,
-  value learning, scalable oversight cousins
+  Recurring terms include [CIRL](/cards/subsumption-cirl/), [inverse reward
+  design](/cards/subsumption-cirl/), [assistance games](/cards/subsumption-cirl/),
+  [beneficial AI](https://humancompatible.ai/), [FAR.Lab](https://www.far.ai/), [value
+  learning](/cards/mb2-bundle-identifiability/), and scalable-oversight cousins.
 statedIntent: >-
-  Reorient AI research toward beneficial systems under preference uncertainty;
-  host technical alignment research and community
+  Reorient AI research toward beneficial systems under preference uncertainty, and host
+  technical alignment research and community infrastructure.
 primaryCrux: >-
-  Cooperative reward inference underdetermined; community hub ⇏ unified technical
-  agenda
+  Cooperative reward inference may be underdetermined ([Value
+  Learning](/cards/mb2-bundle-identifiability/)), and a shared research hub does not imply
+  a unified technical agenda.
 bookBridges:
   - MB2
   - MB3
   - MB4
-  - MB7 (partial)
+  - MB7
 contributes: >-
-  Formal assistance-game framing; off-switch game lineage; FAR incubation hub
-  (Gleave CHAI PhD; METR board overlap)
-bookSeparates: Bundle geometry + bearer maps; ELK as subchannel not whole target
+  Formal assistance-game framing, the [off-switch](/cards/subsumption-shutdown/) game
+  lineage, and FAR as an incubation hub (Gleave CHAI PhD; METR board overlap).
+bookSeparates: >-
+  The book adds bundle geometry and bearer maps for [Value
+  Referent](/cards/mb3-bearer-import/), and treats [ELK](/cards/subsumption-elk/)-style
+  latent readout as one subchannel of [Inner
+  Alignment](/cards/mb7-hidden-capability-and-access/) rather than the whole alignment
+  target.
 manuscriptHooks:
-  - ch04, ch18
+  - "ch04, ch18"
   - App B MB2/MB3
   - App G CIRL projection
 links:
-  - label: CHAI
+  - label: "CHAI"
     url: https://humancompatible.ai/
-  - label: CHAI Internship
+  - label: "CHAI Internship"
     url: https://humancompatible.ai/people#interns
-  - label: FAR.AI
+  - label: "FAR.AI"
     url: https://www.far.ai/

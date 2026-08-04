@@ -49,62 +49,87 @@ function yamlExternalLinks(links) {
 }
 
 function agendaSummary(agenda) {
-  return agenda.primaryCrux || agenda.statedIntent || agenda.title;
+  const raw = agenda.primaryCrux || agenda.statedIntent || agenda.title;
+  // Strip markdown links for the short card teaser.
+  return String(raw).replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/\s+/g, " ").trim();
+}
+
+function normalizeBridgeKeys(items) {
+  if (!items?.length) return [];
+  const keys = [];
+  for (const item of items) {
+    if (typeof item !== "string") continue;
+    for (const match of item.matchAll(/\bMB\d+[a-z]?\b/g)) {
+      if (!keys.includes(match[0])) keys.push(match[0]);
+    }
+  }
+  return keys;
+}
+
+function formatBridgeLinks(bridgeKeys, bridgeRows) {
+  const byKey = bridgeByKey(bridgeRows);
+  return bridgeKeys
+    .map((key) => {
+      const row = byKey[key];
+      if (!row?.cardSlug) return null;
+      return `[${row.noun}](/cards/${row.cardSlug}/)`;
+    })
+    .filter(Boolean)
+    .join("; ");
 }
 
 function clusteringForSlug(slug, clustering) {
   return clustering.filter((row) => row.rollsUpSlug === slug);
 }
 
-function renderAgendaBody(agenda, clusteringRows) {
+function renderAgendaBody(agenda, clusteringRows, bridgeRows) {
   const lines = [];
+  const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
   lines.push(`## Introduction`);
   lines.push("");
   if (agenda.overview) {
     lines.push(agenda.overview);
     lines.push("");
     if (agenda.carrier) {
-      lines.push(`**Carrier:** ${agenda.carrier}`);
+      lines.push(`**Who carries it:** ${agenda.carrier}`);
       lines.push("");
     }
   } else {
-    lines.push(`**${agenda.title}** is a ${(agenda.type || "research agenda").toLowerCase()} carried by **${agenda.carrier}**.`);
+    lines.push(
+      `**${agenda.title}** is a ${(agenda.type || "research agenda").toLowerCase()} carried by **${agenda.carrier}**.`
+    );
     lines.push("");
   }
   if (agenda.statedIntent) {
-    lines.push(`**Stated intent:** ${agenda.statedIntent}`);
+    lines.push(`**What they aim to do.** ${agenda.statedIntent}`);
     lines.push("");
   }
   if (agenda.primaryCrux) {
-    lines.push(`**Primary crux:** ${agenda.primaryCrux}`);
+    lines.push(`**The hard question.** ${agenda.primaryCrux}`);
     lines.push("");
   }
   if (agenda.primaryArtifact) {
-    lines.push(`**Primary artifact:** ${agenda.primaryArtifact}`);
+    lines.push(`**What they produce.** ${agenda.primaryArtifact}`);
     lines.push("");
   }
   if (agenda.signatureVocabulary) {
-    lines.push(`**Signature vocabulary:** ${agenda.signatureVocabulary}`);
+    lines.push(`**Key terms.** ${agenda.signatureVocabulary}`);
     lines.push("");
   }
-  if (agenda.bookBridges?.length) {
-    lines.push(`**Book bridges:** ${agenda.bookBridges.join(", ")}`);
+  if (bridgeKeys.length) {
+    lines.push(`**Related field cruxes.** ${formatBridgeLinks(bridgeKeys, bridgeRows)}`);
     lines.push("");
   }
   if (agenda.contributes) {
-    lines.push(`**Contributes to the field:** ${agenda.contributes}`);
+    lines.push(`**What they contribute.** ${agenda.contributes}`);
     lines.push("");
   }
   if (agenda.bookSeparates) {
-    lines.push(`**How the book separates:** ${agenda.bookSeparates}`);
+    lines.push(`**How this book treats it.** ${agenda.bookSeparates}`);
     lines.push("");
   }
   if (agenda.reviewStatus) {
-    lines.push(`**Review status:** ${agenda.reviewStatus}`);
-    lines.push("");
-  }
-  if (agenda.manuscriptHooks?.length) {
-    lines.push(`**Manuscript hooks:** ${agenda.manuscriptHooks.join("; ")}`);
+    lines.push(`**Current status.** ${agenda.reviewStatus}`);
     lines.push("");
   }
   if (agenda.links?.length) {
@@ -125,11 +150,14 @@ function renderAgendaBody(agenda, clusteringRows) {
     }
     lines.push("");
   }
-  lines.push(`See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.`);
+  lines.push(
+    `See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.`
+  );
   return lines.join("\n");
 }
 
-function renderAgendaCard(agenda, clusteringRows) {
+function renderAgendaCard(agenda, clusteringRows, bridgeRows) {
+  const bridgeKeys = normalizeBridgeKeys(agenda.bookBridges);
   const fm = [
     "---",
     `title: ${yamlScalar(agenda.title)}`,
@@ -137,12 +165,12 @@ function renderAgendaCard(agenda, clusteringRows) {
     `status: "reviewed"`,
     `summary: ${yamlScalar(agendaSummary(agenda))}`,
     `agendaSlug: ${yamlScalar(agenda.slug)}`,
-    yamlBlockList("bookBridges", agenda.bookBridges ?? []),
+    yamlBlockList("bookBridges", bridgeKeys),
     yamlExternalLinks(agenda.links),
     "related: []",
     "---",
     "",
-    renderAgendaBody(agenda, clusteringRows)
+    renderAgendaBody(agenda, clusteringRows, bridgeRows)
   ].join("\n");
   return fm;
 }
@@ -193,8 +221,16 @@ function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering
     if (agenda.signatureVocabulary) lines.push(`- **Signature vocabulary:** ${agenda.signatureVocabulary}`);
     if (agenda.statedIntent) lines.push(`- **Stated intent:** ${agenda.statedIntent}`);
     if (agenda.primaryCrux) lines.push(`- **Primary crux:** ${agenda.primaryCrux}`);
-    if (agenda.bookBridges?.length) lines.push(`- **Book bridges:** ${agenda.bookBridges.join(", ")}`);
-    else if (agenda.bookBridges) lines.push(`- **Book bridges:** —`);
+    {
+      const keys = normalizeBridgeKeys(agenda.bookBridges);
+      if (keys.length) {
+        const labeled = keys.map((key) => {
+          const row = bridgeMap[key];
+          return row ? `${row.noun} (${key})` : key;
+        });
+        lines.push(`- **Field cruxes:** ${labeled.join("; ")}`);
+      } else if (agenda.bookBridges) lines.push(`- **Field cruxes:** —`);
+    }
     if (agenda.contributes) lines.push(`- **Contributes:** ${agenda.contributes}`);
     if (agenda.bookSeparates) lines.push(`- **Book separates:** ${agenda.bookSeparates}`);
     if (agenda.reviewStatus) lines.push(`- **Review status:** ${agenda.reviewStatus}`);
@@ -322,7 +358,7 @@ async function main() {
   for (const agenda of agendas) {
     if (agenda.generateCard === false) continue;
     const clusterRows = clustering.filter((row) => row.rollsUpSlug === agenda.slug);
-    const card = renderAgendaCard(agenda, clusterRows);
+    const card = renderAgendaCard(agenda, clusterRows, bridgeRows);
     await writeFileCheck(path.join(cardsDir, `${agenda.slug}.md`), card, check, mismatches);
   }
 
@@ -333,7 +369,7 @@ async function main() {
       slug: a.slug,
       title: a.title,
       summary: agendaSummary(a),
-      bookBridges: a.bookBridges ?? [],
+      bookBridges: normalizeBridgeKeys(a.bookBridges),
       inMatrix: roster.find((r) => r.slug === a.slug)?.inMatrix ?? false,
       generateCard: a.generateCard !== false,
       matrixLink: a.matrixLink ?? null

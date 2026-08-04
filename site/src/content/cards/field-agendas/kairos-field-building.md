@@ -2,7 +2,7 @@
 title: "Kairos (field-building)"
 type: "agenda"
 status: "reviewed"
-summary: "Same as other training agendas"
+summary: "Like other training agendas, program throughput and participant quality do not imply resolution of technical alignment cruxes; the bottleneck is still mechanism discovery, not talent discovery."
 agendaSlug: "kairos-field-building"
 bookBridges: []
 external:
@@ -19,21 +19,21 @@ related: []
 
 ## Introduction
 
-**Kairos (field-building)** is a training / field-building org carried by **Kairos**.
+Kairos operates SPAR mentored research, Pathfinder career programs, Global Challenges Project workshops, and Generator Residency placements for emerging AI safety researchers. Like other field-building agendas, program throughput accelerates talent discovery rather than mechanism discovery. Participants seed early work across subfields while the [Field hub](/field/) tracks which technical cruxes—such as [composite agency](/cards/composite-agency/)—remain open.
 
-**Stated intent:** Accelerate talent into AI safety through programs and campus organizing
+**Who carries it:** Kairos
 
-**Primary crux:** Same as other training agendas
+**What they aim to do.** Accelerate talent into AI safety through structured programs, campus organizing, and mentored research placements.
 
-**Primary artifact:** SPAR, Pathfinder, GCP workshops, Generator Residency
+**The hard question.** Like other training agendas, program throughput and participant quality do not imply resolution of technical alignment cruxes; the bottleneck is still mechanism discovery, not talent discovery.
 
-**Signature vocabulary:** SPAR, Pathfinder, university groups, GCP workshops
+**What they produce.** Kairos operates SPAR mentored research projects, Pathfinder career programs, Global Challenges Project workshops, and Generator Residency placements for emerging AI safety researchers.
 
-**Contributes to the field:** Campus pipeline; SPAR research projects
+**Key terms.** Core program names include [SPAR](https://sparai.org/), [Pathfinder](https://pathfinder.kairos-project.org/), university-group organizing, and [Global Challenges Project](https://www.globalchallengesproject.org/) (GCP) workshops.
 
-**How the book separates:** —
+**What they contribute.** A campus-to-research pipeline and SPAR-backed project work that seeds early empirical and conceptual contributions across subfields.
 
-**Manuscript hooks:** none
+**How this book treats it.** Field-building scale is orthogonal to whether any particular preservation mechanism survives optimization and deployment pressure.
 
 ## Links
 
@@ -48,4 +48,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Kairos](https://kairos-project.org/), [SPAR](https://sparai.org/), [Pathfinder](https://pathfinder.kairos-project.org/), GCP → [Kairos](#kairos-field-building)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

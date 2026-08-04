@@ -2,10 +2,10 @@
 title: "Redwood Research"
 type: "agenda"
 status: "reviewed"
-summary: "Can we get meaningful safety guarantees when the system may try to defeat oversight?"
+summary: "Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight (Inner Alignment)?"
 agendaSlug: "redwood-research"
 bookBridges:
-  - "MB7a–c"
+  - "MB7"
 external:
   - label: "Redwood Research"
     url: "https://www.redwoodresearch.org/"
@@ -18,23 +18,23 @@ related: []
 
 ## Introduction
 
-**Redwood Research** is a research org carried by **Redwood Research (Buck Shlegeris et al.)**.
+Redwood Research makes safety-under-subversion research legible to labs and governments, asking what guarantees remain when a capable system may deliberately try to defeat oversight.
 
-**Stated intent:** Make safety-under-subversion research legible to labs and governments
+**Who carries it:** Redwood Research (Buck Shlegeris et al.)
 
-**Primary crux:** Can we get meaningful safety guarantees when the system may try to defeat oversight?
+**What they aim to do.** Make safety-under-subversion research legible to labs and governments so that oversight assumptions can be tested before deployment.
 
-**Primary artifact:** AI control agenda; control evals; alignment-faking research
+**The hard question.** Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
 
-**Signature vocabulary:** AI control, alignment faking, control evals, capability gap, intentional subversion
+**What they produce.** The [AI control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion) agenda, empirical control evaluations, and alignment-faking research demonstrating deceptive compliance under training.
 
-**Book bridges:** MB7a–c
+**Key terms.** Key terms include [AI control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion), [alignment faking](/cards/strategic-opacity/), [control evals](https://www.redwoodresearch.org/), [capability gap](https://www.redwoodresearch.org/), and [intentional subversion](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion).
 
-**Contributes to the field:** Explicit capability-gap assumption; empirical control evals
+**Related field cruxes.** [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
 
-**How the book separates:** Hidden B-IQ bound + adversarial verifiability antecedent (A-009)
+**What they contribute.** Makes the capability-gap assumption explicit and runs empirical control evaluations under intentional subversion.
 
-**Manuscript hooks:** ch10, ch43; App B MB7
+**How this book treats it.** The book adds a hidden boundary-intelligence bound and treats [adversarial verifiability](/cards/certification-under-manipulation/) as a prerequisite ([certification under manipulation](/cards/certification-under-manipulation/)), not something control evals alone establish.
 
 ## Links
 
@@ -48,4 +48,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Redwood Research](https://www.redwoodresearch.org/) → [Redwood Research](#redwood-research)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

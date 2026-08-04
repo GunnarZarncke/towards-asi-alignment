@@ -1,26 +1,48 @@
 slug: christiano-lineage
 title: Christiano lineage
 type: Researcher lineage (distributed)
-carrier: Paul Christiano, ARC-adjacent ELK, former OpenAI alignment
-primaryArtifact: Debate, amplification, ELK posts; corrigibility notes
+carrier: "Paul Christiano, ARC-adjacent ELK, former OpenAI alignment"
+overview: >-
+  Paul Christiano's lineage developed [scalable oversight](/cards/subsumption-debate/)
+  protocols—debate, amplification, [recursive reward
+  modeling](/cards/subsumption-debate/)—and the [ELK](/cards/subsumption-elk/) problem,
+  aiming for oversight that stays honest under optimization pressure.
+primaryArtifact: >-
+  Debate, amplification, and [ELK](/cards/subsumption-elk/) posts;
+  [corrigibility](/cards/mb4-correction-legitimacy/) notes emphasizing dynamical rather
+  than one-shot properties.
 signatureVocabulary: >-
-  debate, amplification, ELK, recursive reward modeling, corrigibility
-  (dynamical), scalable oversight
-statedIntent: Scalable oversight that remains honest under optimization pressure
-primaryCrux: Obfuscated arguments; accumulated judge drift; latent readout vs behavior
+  Signature concepts include [debate](/cards/subsumption-debate/),
+  [amplification](/cards/subsumption-debate/), [ELK](/cards/subsumption-elk/), [recursive
+  reward modeling](/cards/subsumption-debate/),
+  [corrigibility](/cards/mb4-correction-legitimacy/) (understood dynamically), and
+  [scalable oversight](/cards/subsumption-debate/).
+statedIntent: >-
+  Build [scalable oversight](/cards/subsumption-debate/) mechanisms that remain honest
+  under optimization pressure as systems grow more capable.
+primaryCrux: >-
+  Can oversight stay honest when arguments can be obfuscated, judge preferences drift over
+  time, and latent readout may diverge from behavior ([Inner
+  Alignment](/cards/mb7-hidden-capability-and-access/))?
 bookBridges:
   - MB2
   - MB3
-  - MB7a–c
   - MB4
-contributes: Scalable-oversight protocol family; ELK problem statement
-bookSeparates: Correction-channel integrity; readout ⇏ correction uptake
+  - MB7
+contributes: >-
+  The scalable-oversight protocol family (debate, amplification) and the
+  [ELK](/cards/subsumption-elk/) problem statement as a canonical framing of latent
+  readout.
+bookSeparates: >-
+  The book separates [correction-channel integrity](/cards/correction-channel-integrity/)
+  from readout: successful latent elicitation does not imply that corrections will be
+  accepted ([Corrigibility](/cards/mb4-correction-legitimacy/)).
 manuscriptHooks:
-  - ch29, ch41, ch43
+  - "ch29, ch41, ch43"
   - App B
   - projections ELK/debate
 links:
-  - label: ARC
+  - label: "ARC"
     url: https://www.alignment.org/
-  - label: Paul Christiano (archive)
+  - label: "Paul Christiano (archive)"
     url: https://www.alignmentforum.org/users/paulfchristiano

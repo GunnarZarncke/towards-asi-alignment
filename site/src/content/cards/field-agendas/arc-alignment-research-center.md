@@ -2,7 +2,7 @@
 title: "ARC (Alignment Research Center)"
 type: "agenda"
 status: "reviewed"
-summary: "Human simulator vs direct translator; readout under optimization"
+summary: "Can oversight elicit latent knowledge directly rather than through a human simulator, and will readout remain faithful under optimization (Inner Alignment)?"
 agendaSlug: "arc-alignment-research-center"
 bookBridges:
   - "MB2"
@@ -16,26 +16,26 @@ related: []
 
 ## Introduction
 
-**ARC (Alignment Research Center)** is a research org carried by **Alignment Research Center (Geoffrey Irving pre-Resolution; ELK host)**.
+ARC formalizes [scalable oversight](/cards/subsumption-debate/) mechanisms, most prominently the [ELK](/cards/subsumption-elk/) ([Eliciting Latent Knowledge](/cards/subsumption-elk/)) problem, asking whether oversight can read out what a model knows rather than what it simulates.
 
-**Stated intent:** Formalize scalable oversight mechanisms including latent knowledge elicitation
+**Who carries it:** Alignment Research Center (Geoffrey Irving pre-Resolution; ELK host)
 
-**Primary crux:** Human simulator vs direct translator; readout under optimization
+**What they aim to do.** Formalize [scalable oversight](/cards/subsumption-debate/) mechanisms, including [latent knowledge](/cards/subsumption-elk/) elicitation, so that honest readout can be specified and tested.
 
-**Primary artifact:** ELK problem framing; formal oversight research
+**The hard question.** Can oversight elicit [latent knowledge](/cards/subsumption-elk/) directly rather than through a human simulator, and will readout remain faithful under optimization ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
 
-**Signature vocabulary:** ELK, Eliciting Latent Knowledge, human simulator, direct translator
+**What they produce.** [ELK](/cards/subsumption-elk/) problem framing and formal oversight research hosted at the Alignment Research Center.
 
-**Book bridges:** MB2, MB3, MB7
+**Key terms.** Key terms include [ELK](/cards/subsumption-elk/), [Eliciting Latent Knowledge](/cards/subsumption-elk/), [human simulator](/cards/subsumption-elk/), and [direct translator](/cards/subsumption-elk/).
 
-**Contributes to the field:** ELK as canonical naming of latent readout problem
+**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
 
-**How the book separates:** Readout ⇏ correction uptake (Lean separation)
+**What they contribute.** [ELK](/cards/subsumption-elk/) as the canonical naming of the latent readout problem in [scalable oversight](/cards/subsumption-debate/).
 
-**Manuscript hooks:** ch43; App G ELK
+**How this book treats it.** Successful readout does not imply correction uptake; the book treats [correction-channel integrity](/cards/correction-channel-integrity/) as a separate requirement from [eliciting latent knowledge](/cards/subsumption-elk/), and adds [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) structure beyond readout alone.
 
 ## Links
 
 - [ARC](https://www.alignment.org/)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

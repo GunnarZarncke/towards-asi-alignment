@@ -2,7 +2,7 @@
 title: "MATS"
 type: "agenda"
 status: "reviewed"
-summary: "Mentorship output diversity vs unified measurement spine"
+summary: "Mentorship output is intentionally diverse across subfields, which does not collapse into a single unified measurement spine—participants may advance interpretability, control, or governance lines without resolving cross-cutting bridge composition."
 agendaSlug: "mats"
 bookBridges: []
 external:
@@ -13,21 +13,21 @@ related: []
 
 ## Introduction
 
-**MATS** is a training / research program carried by **MATS (Machine Alignment, Transparency, and Security)**.
+MATS runs a twelve-week mentored research program pairing scholars with alignment mentors for empirical and conceptual projects across transparency, security, and related subfields. Fellowship output is intentionally diverse and does not collapse into a single unified measurement spine. The program feeds talent into the broader [Field hub](/field/) while individual projects may advance lines such as [Inner Alignment](/cards/mb7-hidden-capability-and-access/) without resolving cross-cutting bridge composition.
 
-**Stated intent:** Connect scholars to alignment mentors for empirical/conceptual research
+**Who carries it:** MATS (Machine Alignment, Transparency, and Security)
 
-**Primary crux:** Mentorship output diversity vs unified measurement spine
+**What they aim to do.** Connect promising scholars to alignment mentors so they can produce substantive empirical or conceptual research during an intensive fellowship term.
 
-**Primary artifact:** 12-week mentored research + extension track
+**The hard question.** Mentorship output is intentionally diverse across subfields, which does not collapse into a single unified measurement spine—participants may advance interpretability, control, or governance lines without resolving cross-cutting bridge composition.
 
-**Signature vocabulary:** MATS, mentored alignment research, transparency, security
+**What they produce.** MATS runs a twelve-week mentored research program with an extension track, pairing scholars with alignment mentors for empirical and conceptual projects.
 
-**Contributes to the field:** Research talent pipeline
+**Key terms.** Key terms include [MATS](https://www.matsprogram.org/), [mentored research](https://www.matsprogram.org/), [mechanistic interpretability](https://www.anthropic.com/research), [AI control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion), and related technical subfields across transparency and security.
 
-**How the book separates:** —
+**What they contribute.** A research talent pipeline that feeds labs, orgs, and independent projects with mentored early-career alignment work.
 
-**Manuscript hooks:** none required
+**How this book treats it.** Fellowship research quality is independent of whether typed bridges compose under explicit adversarial-verifiability assumptions.
 
 ## Links
 
@@ -39,4 +39,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [MATS](https://www.matsprogram.org/), ARENA, LASR Labs, MARS → [MATS](#mats) / mentored research programs
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

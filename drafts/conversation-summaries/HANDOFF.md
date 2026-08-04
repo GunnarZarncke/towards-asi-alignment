@@ -2,13 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-03 (MB4a/MB7d bridge cards; field matrix homepage prune).
+Last updated: 2026-08-04 (agenda cards reader prose).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Field matrix evidence quality** — Homepage-backed cells pruned (ev 12/30/32/37/44/71); Apollo **33**, Truthful **72**, CAIF **69**, Goodfire cluster **74–76** still in matrix. Anthropic Monosemanticity papers card-only (not matrix). Log: `2026-08-03-field-matrix-homepage-evidence-prune.md`.
+- **Field matrix evidence quality** — Second homepage prune done (ev 33/34/69/72/74–76); replaced with papers (151–156). Residual homepage-style cells elsewhere (Resolution 39, FAR 78, etc.) — grep `evidence.yml` root URLs if tightening further. Log: `2026-08-03-field-matrix-homepage-evidence-prune.md`.
 - **Field agenda matrix (post-restructure)** — 25 matrix rows / 30 agenda records after independence merges and neglected-report folds; TSA row links to companion home (no card). Stale search index until next site build. App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`.
 - **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agree/differ/homograph notes on MB1–MB11 bridge cards; hub crux legend removed 2026-08-02. Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
 - **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
@@ -32,6 +32,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site + reference (2026-08-04):** All field agenda cards rewritten for general alignment readers — full sentences, concept/bridge links, field nouns instead of MB* on the page; sync labels + sidebar nouns; `term-links.yml` + `link-agenda-terms.py` for signature/prose linking. Log: `2026-08-04-agenda-cards-reader-prose.md`.
 - **Companion site + reference (2026-08-03):** Explicit **MB4a** / **MB7d** bridge cards; matrix column links disambiguated; sibling links from MB4/MB7. Log: `2026-08-03-mb4a-mb7d-bridge-cards.md`.
 - **Reference (2026-08-03):** Field matrix homepage evidence prune — removed org landing pages from catalog; agenda cards enriched; Orthogonal MB1 → Demski & Garrabrant (ev-150). Log: `2026-08-03-field-matrix-homepage-evidence-prune.md`.
 - **Companion site (2026-08-03):** Full-width layout toggle — bottom-left `<->` overlay button; `localStorage` persistence; expands `--max-wide` shell. Log: `2026-08-03-site-full-width-toggle.md`.

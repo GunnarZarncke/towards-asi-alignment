@@ -2,13 +2,16 @@
 title: "CIRIS"
 type: "agenda"
 status: "reviewed"
-summary: "**Named-identity bet:** does green Verify+Lens on a certified occurrence imply MB4 correction integrity on the **real intervening loop** (composite / tools / memory / incentives)?"
+summary: "CIRIS bets on named identity: if Verify and Lens report green on a certified occurrence, does that imply Corrigibility on the real intervening loop—composite agency, tools, memory, and incentives included?"
 agendaSlug: "ciris"
 bookBridges:
+  - "MB1"
   - "MB4"
-  - "MB4a (primary test surface — WA"
-  - "deferral"
-  - "emergency shutdown); MB1 (named unit vs discovered boundary); MB6 (federation Orthogonality gate — partial); MB7 (Lens ratchet / Verify disclaimers — adversarial-verifiability subchannel); MB9 (NEW-04 compositional coverage limit); MB11 (honest safety-case scope disclaimers)"
+  - "MB4a"
+  - "MB6"
+  - "MB7"
+  - "MB9"
+  - "MB11"
 external:
   - label: "CIRIS"
     url: "https://ciris.ai/"
@@ -29,25 +32,25 @@ related: []
 
 ## Introduction
 
-**CIRIS** is a institutional protocol / constitutional ops stack (manual add) carried by **CIRIS (Eric Moore et al.); mission-locked L3C; AGPL ecosystem**.
+CIRIS is a cryptographic and procedural accountability stack for autonomous agents, with [Corrigibility](/cards/mb4-correction-legitimacy/) and [Audit Independence](/cards/mb4a-measured-path-legitimacy/) as its primary operational test surfaces.
 
-**Stated intent:** Cryptographic + procedural accountability for autonomous agents **today** (sub-ASI validated scope); **candidate** ASI alignment protocol only after RC gates (CRE, red-team, Book IX validation) — explicitly **not** “prevent ASI”
+**Who carries it:** CIRIS (Eric Moore); mission-locked L3C; AGPL ecosystem
 
-**Primary crux:** **Named-identity bet:** does green Verify+Lens on a certified occurrence imply MB4 correction integrity on the **real intervening loop** (composite / tools / memory / incentives)?
+**What they aim to do.** Provide cryptographic and procedural accountability for autonomous agents in validated sub-ASI scope today, and serve as a candidate ASI alignment protocol only after release-candidate gates (CRE, red-team, Book IX validation)— explicitly not a program to prevent ASI outright.
 
-**Primary artifact:** Constitution (Accord 1.3-RC2 + CEG); CIRISAgent / Verify / Lens / Proxy
+**The hard question.** CIRIS bets on named identity: if [Verify](https://ciris.ai/architecture/) and [Lens](https://ciris.ai/architecture/) report green on a certified occurrence, does that imply [Corrigibility](/cards/mb4-correction-legitimacy/) on the real intervening loop—[composite agency](/cards/composite-agency/), tools, memory, and incentives included?
 
-**Signature vocabulary:** Verify, Lens, Agent, Wise Authority, deferral/shutdown, Coherence Ratchet, M-1, principles-as-identity, signed traces, NEW-04 (compositional limit)
+**What they produce.** The shipped stack centers on the Accord constitution (1.3-RC2 plus CEG) and the CIRISAgent, [Verify](https://ciris.ai/architecture/), [Lens](https://ciris.ai/architecture/), and Proxy components.
 
-**Book bridges:** MB4, MB4a (primary test surface — WA, deferral, emergency shutdown); MB1 (named unit vs discovered boundary); MB6 (federation Orthogonality gate — partial); MB7 (Lens ratchet / Verify disclaimers — adversarial-verifiability subchannel); MB9 (NEW-04 compositional coverage limit); MB11 (honest safety-case scope disclaimers)
+**Key terms.** Core terms include [Verify](https://ciris.ai/architecture/) (authenticity checks), [Lens](https://ciris.ai/architecture/) (triage rather than final verdict), [Agent](/cards/agent-without-anthropomorphism/), [Wise Authority](https://ciris.ai/architecture/), deferral and emergency [shutdown](/cards/subsumption-shutdown/), [Coherence Ratchet](https://ciris.ai/architecture/), M-1 principles-as-identity, signed traces, and NEW-04 compositional limits.
 
-**Contributes to the field:** Honest ops disclaimers (Verify = authenticity ≠ ethics; Lens = triage ≠ verdict); unit-tested prohibition/conscience/proxy fail-closed layers (50/50 smoke battery); sharpest falsifier shape for named-identity vs composite agency
+**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Corrigibility](/cards/mb4-correction-legitimacy/); [Audit Independence](/cards/mb4a-measured-path-legitimacy/); [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/); [Grounding Drift](/cards/mb9-grounding-certificate/); [Deployment Safety](/cards/mb11-deployment-safety/)
 
-**How the book separates:** Attestation green ⇏ correction uptake; signed agent ⇏ real agent; Book IX geometry aspirational vs shipped policy enforcement
+**What they contribute.** Honest operational disclaimers ([Verify](https://ciris.ai/architecture/) certifies authenticity, not ethics; [Lens](https://ciris.ai/architecture/) triages rather than delivering verdicts); unit-tested prohibition, conscience, and proxy fail-closed layers (50/50 smoke battery); and the sharpest falsifier shape for named-identity versus [composite agency](/cards/composite-agency/).
 
-**Review status:** Smoke battery **50/50 passed** (prohibitions, conscience helpers, proxy fail-closed, verify types); integration, hardware attestation, adversarial gaming **not** run; **key task open:** CIRIS-shaped composite / `boundary_decouple` counterexample (Verify+Lens green, WA-blind composite)
+**How this book treats it.** Green attestation does not imply correction uptake; a signed agent record does not imply the real agent; Book IX geometry is aspirational rather than identical to shipped policy enforcement.
 
-**Manuscript hooks:** `experiments/TODO.md`; toy T-9 `boundary_decouple`; lab LS-28; MB1/MB4 cards; Accord Book IX compositional limits (NEW-04)
+**Current status.** The smoke battery passed 50 of 50 tests (prohibitions, conscience helpers, proxy fail-closed behavior, verify types). Integration testing, hardware attestation, and adversarial gaming have not been run. A key open task is a CIRIS-shaped composite [boundary discovery](/cards/boundary-discovery/) counterexample: [Verify](https://ciris.ai/architecture/) and [Lens](https://ciris.ai/architecture/) green while a Wise-Authority-blind composite evades correction.
 
 ## Links
 
@@ -59,4 +62,4 @@ related: []
 - [agents.ciris.ai](https://agents.ciris.ai)
 - [AISafety.com map](https://aisafety.com/map)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

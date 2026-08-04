@@ -2,7 +2,7 @@
 title: "MIRI"
 type: "agenda"
 status: "reviewed"
-summary: "No clean agent–environment cut; corrigibility anti-natural; successor trust under ontology change"
+summary: "There may be no clean cut between an AI and its environment (Embedded Agency); corrigibility may be anti-natural; and successor systems may not inherit trust under ontology change (Tiling)."
 agendaSlug: "miri"
 bookBridges:
   - "MB1"
@@ -19,23 +19,23 @@ related: []
 
 ## Introduction
 
-**MIRI** is a research org / advocacy carried by **Machine Intelligence Research Institute**.
+MIRI studies [agent foundations](https://intelligence.org/)—the theoretical problems that arise when building highly capable AI—and has increasingly emphasized policy advocacy for pause and [off-switch](/cards/subsumption-shutdown/) measures when technical solutions look insufficient.
 
-**Stated intent:** Steer transformative AI away from extinction risk via agent-foundations problem framing and policy priority on pause/off-switch
+**Who carries it:** Machine Intelligence Research Institute
 
-**Primary crux:** No clean agent–environment cut; corrigibility anti-natural; successor trust under ontology change
+**What they aim to do.** Steer transformative AI away from extinction risk by framing alignment as an agent-foundations problem and prioritizing policy measures such as pause and [off-switch](/cards/subsumption-shutdown/) when technical progress stalls.
 
-**Primary artifact:** Agent Foundations technical agenda; Embedded Agency; policy/pause outreach (2024 strategy)
+**The hard question.** There may be no clean cut between an AI and its environment ([Embedded Agency](/cards/mb1-boundary-estimator-soundness/)); [corrigibility](/cards/mb4-correction-legitimacy/) may be anti-natural; and successor systems may not inherit trust under ontology change ([Tiling](/cards/mb5-successor-ontology-shift/)).
 
-**Signature vocabulary:** embedded agency, corrigibility, tiling, Vingean reflection, value learning, hard pause, off-switch
+**What they produce.** The [Agent Foundations](https://intelligence.org/) technical agenda (including [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) work) and policy or pause outreach, notably the 2024 strategy update.
 
-**Book bridges:** MB1, MB4, MB5, MB8
+**Key terms.** Core terms include [embedded agency](/cards/mb1-boundary-estimator-soundness/), [corrigibility](/cards/mb4-correction-legitimacy/), [tiling](/cards/mb5-successor-ontology-shift/), [Vingean reflection](https://intelligence.org/files/VingeanReflection.pdf), [value learning](/cards/mb2-bundle-identifiability/), [hard pause](https://intelligence.org/2024/01/04/miri-2024-mission-and-strategy-update/), and [off-switch](/cards/subsumption-shutdown/).
 
-**Contributes to the field:** Canonical embedded-agency and corrigibility problem statements; decision-theoretic lineage
+**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Corrigibility](/cards/mb4-correction-legitimacy/); [Tiling](/cards/mb5-successor-ontology-shift/); [Extrapolated Volition](/cards/mb8-cev-process-convergence/)
 
-**How the book separates:** Operational boundary discovery bet (MB1); trajectory CCI vs one-bit shutdown
+**What they contribute.** Canonical problem statements for [embedded agency](/cards/mb1-boundary-estimator-soundness/) and [corrigibility](/cards/mb4-correction-legitimacy/), plus a decision-theoretic lineage that shaped much of the field's early vocabulary.
 
-**Manuscript hooks:** App B MB1/MB4/MB5 notes; ch07, ch25, ch28
+**How this book treats it.** The book treats [boundary discovery](/cards/boundary-discovery/) as an operational bet on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), and distinguishes trajectory-level [correction-channel integrity](/cards/correction-channel-integrity/) from a single-bit shutdown mechanism.
 
 ## Links
 
@@ -48,4 +48,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon) → [MIRI](#miri)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

@@ -2,40 +2,52 @@ slug: mai-cip-institutional-alignment
 title: MAI + CIP (institutional alignment)
 type: Research org cluster
 carrier: >-
-  Meaning Alignment Institute (Joe Edelman et al.); Collective Intelligence
-  Project (Divya Siddarth, Saffron Huang et al.)
+  Meaning Alignment Institute (Joe Edelman et al.); Collective Intelligence Project (Divya
+  Siddarth, Saffron Huang et al.)
+overview: >-
+  MAI and CIP pursue full-stack alignment through thick values, alignment assemblies, and
+  collective [constitutional
+  AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback)—aligning
+  AI–institution systems rather than model behavior in isolation. The agenda asks whether
+  deliberative processes stay identifiable and contestable under strategic pressure and AI
+  mediation. Legitimate institutional output does not imply [correction-channel
+  integrity](/cards/correction-channel-integrity/) or institutional-selection-gating that
+  survives optimization.
 primaryArtifact: >-
-  Full-Stack Alignment; alignment assemblies; collective constitutional AI;
-  thick-value / institutional design programmes
+  Full-Stack Alignment research, alignment assemblies, collective [constitutional
+  AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback),
+  and thick-value / institutional design programmes.
 signatureVocabulary: >-
-  full-stack alignment, thick values, alignment assemblies, deliberative
-  alignment, collective constitutional AI
+  Key terms include full-stack alignment, thick values, alignment assemblies, deliberative
+  alignment, and collective [constitutional
+  AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback).
 statedIntent: >-
-  Align AI–institution systems and legitimate value aggregation—not model
-  behavior in isolation
+  Align AI–institution systems and legitimate value aggregation—not model behavior in
+  isolation.
 primaryCrux: >-
-  Can thick values and deliberative processes stay identifiable, contestable, and
-  robust under strategic pressure and AI mediation?
+  Can thick values and deliberative processes stay identifiable, contestable, and robust
+  under strategic pressure and AI mediation?
 bookBridges:
-  - MB2 (partial)
-  - MB4a (partial)
-  - MB6 (partial)
-  - MB8 (partial)
+  - MB2
+  - MB4a
+  - MB6
+  - MB8
 contributes: >-
-  Institutional amplification failure mode; operational deliberative alignment;
-  counterfactual value commitments vs preferences
+  Institutional amplification as a failure mode; operational deliberative alignment;
+  counterfactual value commitments distinguished from surface preferences.
 bookSeparates: >-
-  Legitimate process ⇏ correction-channel integrity; consensus output ⇏ bearer
-  transport under optimization
+  A legitimate process does not imply [correction-channel
+  integrity](/cards/correction-channel-integrity/); consensus output does not imply
+  [bearer-persistence](/cards/bearer-persistence/) under optimization.
 manuscriptHooks:
   - ch04 value bundles adjacent
   - App C institutional translation
 links:
-  - label: Meaning Alignment Institute
+  - label: "Meaning Alignment Institute"
     url: https://www.meaningalignment.org/
-  - label: Full-Stack Alignment paper
+  - label: "Full-Stack Alignment paper"
     url: https://arxiv.org/abs/2512.03399
-  - label: Collective Intelligence Project
+  - label: "Collective Intelligence Project"
     url: https://www.cip.org/
-  - label: Alignment Assemblies
+  - label: "Alignment Assemblies"
     url: https://www.cip.org/alignmentassemblies

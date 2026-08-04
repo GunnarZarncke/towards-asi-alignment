@@ -2,46 +2,74 @@ slug: safeguarded-ai-aria-zeroth-heron
 title: Safeguarded AI (ARIA / Zeroth / Heron)
 type: Research programme cluster
 carrier: >-
-  ARIA Safeguarded AI; Zeroth Research (Luca Arnaboldi, Pascal Berrang); Heron
-  AI Security; Moon & Varshney (Containment Verification)
+  ARIA Safeguarded AI; Zeroth Research (Luca Arnaboldi, Pascal Berrang); Heron AI
+  Security; Moon & Varshney (Containment Verification)
+overview: >-
+  The Safeguarded AI cluster—ARIA, Zeroth Research, Heron AI Security, and
+  containment-verification allies—targets an end-to-end stack pairing world models with
+  formal specifications, machine-checkable proof certificates, and runtime action control.
+  Safety claims are conditional on the declared system boundary; misspecified controllers
+  or agents outside the certified cut can void proofs. The programme engages [Embedded
+  Agency](/cards/mb1-boundary-estimator-soundness/), [Grounding
+  Drift](/cards/mb9-grounding-certificate/), and [Deployment
+  Safety](/cards/mb11-deployment-safety/) in whole-system assurance form.
 primaryArtifact: >-
-  World models + formal specs + proof certificates; end-to-end safeguarded-AI
-  stack; AARM runtime action control; ZK attestation
+  The cluster targets an end-to-end safeguarded-AI stack: world models paired with formal
+  specifications and machine-checkable proof certificates, runtime action control via the
+  AARM specification, and zero-knowledge attestation for privacy-preserving verification
+  of deployed behavior.
 signatureVocabulary: >-
-  safeguarded AI, proof certificates, containment verification, AARM, ZK
-  attestation, multi-agent security
+  Core terms include [safeguarded
+  AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai),
+  [proof
+  certificates](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai),
+  [containment verification](https://arxiv.org/abs/2605.09045),
+  [AARM](https://heron.ing/aarm) runtime action control, [zero-knowledge
+  attestation](https://pascal-berrang.de/projects/zk_ai_security/), and architecture-level
+  multi-agent security.
 statedIntent: >-
-  Assure embedded model–tool–environment systems with formal methods, runtime
-  controls, and privacy-preserving verification
+  Assure embedded model–tool–environment systems using formal methods, runtime controls,
+  and privacy-preserving verification so that safety claims can be checked against an
+  explicit system boundary.
 primaryCrux: >-
-  Safety claims are conditional on the declared system boundary; misspecified
-  controllers or emergent coalitions void otherwise correct proofs
+  Safety claims are conditional on the declared system boundary; misspecified controllers,
+  emergent coalitions, or agents outside the certified cut can void otherwise correct
+  proofs.
 bookBridges:
-  - MB1 (partial)
-  - MB4a (partial)
-  - MB7 (partial)
+  - MB1
+  - MB4a
+  - MB7
   - MB9
   - MB11
 contributes: >-
-  Whole-system formal assurance; cryptographic attestations; agentic action
-  boundaries; architecture-level multi-agent security
+  Whole-system formal assurance for agentic deployments; cryptographic attestations of
+  runtime behavior; explicit agentic action boundaries; and architecture-level multi-agent
+  security analysis—directly engaging [Embedded
+  Agency](/cards/mb1-boundary-estimator-soundness/), [Audit
+  Independence](/cards/mb4a-measured-path-legitimacy/), [Inner
+  Alignment](/cards/mb7-hidden-capability-and-access/), [Grounding
+  Drift](/cards/mb9-grounding-certificate/), and [Deployment
+  Safety](/cards/mb11-deployment-safety/).
 bookSeparates: >-
-  Proof green ⇏ correction uptake; attestation ⇏ discovered effective agent
-  (cousin to GSAI completeness wall vs CIRIS ops stack)
+  A green proof certificate does not imply that corrections are actually taken up in the
+  live loop; attestation of declared behavior does not imply that the discovered effective
+  agent matches the certified unit—a cousin tension to [Guaranteed-Safe
+  AI](https://arxiv.org/abs/2405.06624)'s completeness wall versus CIRIS-style operational
+  stacks.
 manuscriptHooks:
   - ch43
   - dynamical guarantee
   - App B MB9/MB11
 links:
-  - label: ARIA Safeguarded AI
+  - label: "ARIA Safeguarded AI"
     url: https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai
-  - label: Zeroth Research
+  - label: "Zeroth Research"
     url: https://www.zeroth.org/
-  - label: Containment Verification
+  - label: "Containment Verification"
     url: https://arxiv.org/abs/2605.09045
-  - label: Heron AI Security
+  - label: "Heron AI Security"
     url: https://www.heronsec.ai/
-  - label: AARM specification
+  - label: "AARM specification"
     url: https://heron.ing/aarm
-  - label: ZK attestation (Berrang)
+  - label: "ZK attestation (Berrang)"
     url: https://pascal-berrang.de/projects/zk_ai_security/

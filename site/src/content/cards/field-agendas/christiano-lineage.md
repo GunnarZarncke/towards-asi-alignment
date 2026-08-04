@@ -2,13 +2,13 @@
 title: "Christiano lineage"
 type: "agenda"
 status: "reviewed"
-summary: "Obfuscated arguments; accumulated judge drift; latent readout vs behavior"
+summary: "Can oversight stay honest when arguments can be obfuscated, judge preferences drift over time, and latent readout may diverge from behavior (Inner Alignment)?"
 agendaSlug: "christiano-lineage"
 bookBridges:
   - "MB2"
   - "MB3"
-  - "MB7a–c"
   - "MB4"
+  - "MB7"
 external:
   - label: "ARC"
     url: "https://www.alignment.org/"
@@ -19,23 +19,23 @@ related: []
 
 ## Introduction
 
-**Christiano lineage** is a researcher lineage (distributed) carried by **Paul Christiano, ARC-adjacent ELK, former OpenAI alignment**.
+Paul Christiano's lineage developed [scalable oversight](/cards/subsumption-debate/) protocols—debate, amplification, [recursive reward modeling](/cards/subsumption-debate/)—and the [ELK](/cards/subsumption-elk/) problem, aiming for oversight that stays honest under optimization pressure.
 
-**Stated intent:** Scalable oversight that remains honest under optimization pressure
+**Who carries it:** Paul Christiano, ARC-adjacent ELK, former OpenAI alignment
 
-**Primary crux:** Obfuscated arguments; accumulated judge drift; latent readout vs behavior
+**What they aim to do.** Build [scalable oversight](/cards/subsumption-debate/) mechanisms that remain honest under optimization pressure as systems grow more capable.
 
-**Primary artifact:** Debate, amplification, ELK posts; corrigibility notes
+**The hard question.** Can oversight stay honest when arguments can be obfuscated, judge preferences drift over time, and latent readout may diverge from behavior ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
 
-**Signature vocabulary:** debate, amplification, ELK, recursive reward modeling, corrigibility (dynamical), scalable oversight
+**What they produce.** Debate, amplification, and [ELK](/cards/subsumption-elk/) posts; [corrigibility](/cards/mb4-correction-legitimacy/) notes emphasizing dynamical rather than one-shot properties.
 
-**Book bridges:** MB2, MB3, MB7a–c, MB4
+**Key terms.** Signature concepts include [debate](/cards/subsumption-debate/), [amplification](/cards/subsumption-debate/), [ELK](/cards/subsumption-elk/), [recursive reward modeling](/cards/subsumption-debate/), [corrigibility](/cards/mb4-correction-legitimacy/) (understood dynamically), and [scalable oversight](/cards/subsumption-debate/).
 
-**Contributes to the field:** Scalable-oversight protocol family; ELK problem statement
+**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Corrigibility](/cards/mb4-correction-legitimacy/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
 
-**How the book separates:** Correction-channel integrity; readout ⇏ correction uptake
+**What they contribute.** The scalable-oversight protocol family (debate, amplification) and the [ELK](/cards/subsumption-elk/) problem statement as a canonical framing of latent readout.
 
-**Manuscript hooks:** ch29, ch41, ch43; App B; projections ELK/debate
+**How this book treats it.** The book separates [correction-channel integrity](/cards/correction-channel-integrity/) from readout: successful latent elicitation does not imply that corrections will be accepted ([Corrigibility](/cards/mb4-correction-legitimacy/)).
 
 ## Links
 
@@ -48,4 +48,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [ARC](https://www.alignment.org/), [Paul Christiano's Blog](https://www.alignmentforum.org/users/paulfchristiano) → [Christiano lineage](#christiano-lineage)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

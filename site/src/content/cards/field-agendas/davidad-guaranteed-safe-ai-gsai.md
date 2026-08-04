@@ -2,11 +2,11 @@
 title: "davidad / Guaranteed-Safe AI (GSAI)"
 type: "agenda"
 status: "reviewed"
-summary: "Cannot enumerate all safety-relevant phenomena in an open world"
+summary: "Can we enumerate all safety-relevant phenomena in an open world, or will specification coverage always leave gaps (Grounding Drift)?"
 agendaSlug: "davidad-guaranteed-safe-ai-gsai"
 bookBridges:
   - "MB9"
-  - "MB11 (cousin)"
+  - "MB11"
 external:
   - label: "GSAI paper"
     url: "https://arxiv.org/abs/2405.06624"
@@ -19,23 +19,23 @@ related: []
 
 ## Introduction
 
-**davidad / Guaranteed-Safe AI (GSAI)** is a research program (manual add — thin on map) carried by **David Dalrymple et al.; adjacent: LawZero, BAIF (map)**.
+[Guaranteed-Safe AI](https://arxiv.org/abs/2405.06624) seeks formally grounded safety guarantees relative to an explicit specification and world model, treating open-world coverage as the central engineering wall.
 
-**Stated intent:** Engineer AI systems with formal safety guarantees relative to an explicit spec and world model
+**Who carries it:** David Dalrymple et al.; adjacent: LawZero, BAIF (map)
 
-**Primary crux:** Cannot enumerate all safety-relevant phenomena in an open world
+**What they aim to do.** Engineer AI systems with formal safety guarantees relative to an explicit specification and world model.
 
-**Primary artifact:** GSAI / Open Agency specifications; constructivist safety case
+**The hard question.** Can we enumerate all safety-relevant phenomena in an open world, or will specification coverage always leave gaps ([Grounding Drift](/cards/mb9-grounding-certificate/))?
 
-**Signature vocabulary:** guaranteed safe, open agency, world model, specification coverage, Scientist AI
+**What they produce.** [GSAI](https://arxiv.org/abs/2405.06624) and Open Agency specifications, plus a constructivist safety-case methodology for formally guaranteed systems.
 
-**Book bridges:** MB9, MB11 (cousin)
+**Key terms.** Key terms include [guaranteed safe](https://arxiv.org/abs/2405.06624), [open agency](https://arxiv.org/abs/2405.06624), [world model](https://arxiv.org/abs/2405.06624), [specification coverage](https://arxiv.org/abs/2405.06624), and [Scientist AI](https://lawzero.org/en).
 
-**Contributes to the field:** Coverage/spec completeness as the central open wall
+**Related field cruxes.** [Grounding Drift](/cards/mb9-grounding-certificate/); [Deployment Safety](/cards/mb11-deployment-safety/)
 
-**How the book separates:** Grounding conservativity (no silent gaps) vs completeness demand
+**What they contribute.** Treats coverage and specification completeness as the central open wall for formally guaranteed safe systems.
 
-**Manuscript hooks:** ch43, dynamical guarantee; App B MB9
+**How this book treats it.** The book emphasizes [grounding viability](/cards/grounding-viability/) and conservative grounding (no silent gaps) rather than demanding full completeness of the specification; [Deployment Safety](/cards/mb11-deployment-safety/) is treated as a cousin agenda, not an identical target.
 
 ## Links
 
@@ -43,4 +43,4 @@ related: []
 - [Beneficial AI Foundation](https://www.beneficialaifoundation.org/)
 - [LawZero](https://lawzero.org/en)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

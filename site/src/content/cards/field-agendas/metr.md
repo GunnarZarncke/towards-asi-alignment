@@ -2,11 +2,11 @@
 title: "METR"
 type: "agenda"
 status: "reviewed"
-summary: "Do public evals track deployment-relevant risk under adversarial pressure?"
+summary: "Do public capability evaluations track deployment-relevant risk under adversarial pressure and Goodhart Selection?"
 agendaSlug: "metr"
 bookBridges:
-  - "MB7 (partial)"
-  - "MB6 (indirect)"
+  - "MB6"
+  - "MB7"
 external:
   - label: "METR"
     url: "https://metr.org/"
@@ -25,23 +25,23 @@ related: []
 
 ## Introduction
 
-**METR** is a research org (evals) carried by **Model Evaluation & Threat Research**.
+METR measures dangerous autonomous and AI R&D capabilities at the frontier, producing eval-driven forecasting and risk reporting to inform policy and lab decisions.
 
-**Stated intent:** Measure dangerous capabilities to inform policy and lab decisions
+**Who carries it:** Model Evaluation & Threat Research
 
-**Primary crux:** Do public evals track deployment-relevant risk under adversarial pressure?
+**What they aim to do.** Measure dangerous capabilities to inform policy and lab decisions before systems reach deployment-relevant autonomy.
 
-**Primary artifact:** Autonomy evals; AI R&D evals; frontier risk reporting
+**The hard question.** Do public capability evaluations track deployment-relevant risk under adversarial pressure and [Goodhart Selection](/cards/mb6-selection-and-basin-stability/)?
 
-**Signature vocabulary:** autonomous capabilities, AI R&D evals, eval-driven forecasting, entity-based assessment
+**What they produce.** Autonomy evaluations, AI R&D evaluations, and frontier risk reporting including red-teaming of lab monitoring systems.
 
-**Book bridges:** MB7 (partial), MB6 (indirect)
+**Key terms.** Key terms include autonomous capabilities, [AI R&D evals](https://metr.org/), eval-driven forecasting, and [entity-based assessment](https://metr.org/).
 
-**Contributes to the field:** Empirical capability measurement at frontier
+**Related field cruxes.** [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
 
-**How the book separates:** Capability evals ⇏ correction integrity or bearer transport
+**What they contribute.** Empirical capability measurement at the frontier, including autonomy and AI R&D evaluations that shape lab and policy timelines.
 
-**Manuscript hooks:** App B MB7 notes (METR 2026 cite); ch44
+**How this book treats it.** Capability evaluations do not establish [correction-channel integrity](/cards/correction-channel-integrity/) or [value-bundle transport](/cards/value-bundle-transport/) across deployment; the book treats evals as an indirect signal for [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than a direct guarantee.
 
 ## Links
 
@@ -58,4 +58,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [METR](https://metr.org/), [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/) → [METR](#metr) / forecasting adjacent
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

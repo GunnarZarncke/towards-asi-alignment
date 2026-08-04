@@ -1,0 +1,202 @@
+# Phrase → URL for agenda-card prose linking (longer phrases match first).
+# Prefer companion concept/bridge cards; use stable external URLs for field terms
+# without a card. Applied by scripts/link-agenda-terms.py.
+#
+# fields:
+#   signature — only signatureVocabulary (safe for short/jargon tokens)
+#   prose — overview, statedIntent, primaryCrux, primaryArtifact, contributes,
+#           bookSeparates, reviewStatus (longer / unambiguous phrases)
+#   all — both
+# agendas: optional list of agenda slugs; omit = all agendas
+
+terms:
+  # --- Bridge nouns ---
+  - { phrase: Embedded Agency, url: /cards/mb1-boundary-estimator-soundness/, fields: all }
+  - { phrase: embedded agency, url: /cards/mb1-boundary-estimator-soundness/, fields: all }
+  - { phrase: Value Learning, url: /cards/mb2-bundle-identifiability/, fields: all }
+  - { phrase: value learning, url: /cards/mb2-bundle-identifiability/, fields: all }
+  - { phrase: Value Referent, url: /cards/mb3-bearer-import/, fields: all }
+  - { phrase: Audit Independence, url: /cards/mb4a-measured-path-legitimacy/, fields: all }
+  - { phrase: Corrigibility, url: /cards/mb4-correction-legitimacy/, fields: all }
+  - { phrase: corrigibility, url: /cards/mb4-correction-legitimacy/, fields: all }
+  - { phrase: Tiling, url: /cards/mb5-successor-ontology-shift/, fields: all }
+  - { phrase: tiling, url: /cards/mb5-successor-ontology-shift/, fields: all }
+  - { phrase: Goodhart Selection, url: /cards/mb6-selection-and-basin-stability/, fields: all }
+  - { phrase: Inner Alignment, url: /cards/mb7-hidden-capability-and-access/, fields: all }
+  - { phrase: inner alignment, url: /cards/mb7-hidden-capability-and-access/, fields: all }
+  - { phrase: Acausal Coordination, url: /cards/mb7d-acausal-coordination/, fields: all }
+  - { phrase: Extrapolated Volition, url: /cards/mb8-cev-process-convergence/, fields: all }
+  - { phrase: extrapolated volition, url: /cards/mb8-cev-process-convergence/, fields: all }
+  - { phrase: Grounding Drift, url: /cards/mb9-grounding-certificate/, fields: all }
+  - { phrase: Successor Gaming, url: /cards/mb10-successor-forgeability/, fields: all }
+  - { phrase: Deployment Safety, url: /cards/mb11-deployment-safety/, fields: all }
+
+  # --- Book concepts ---
+  - { phrase: correction-channel integrity, url: /cards/correction-channel-integrity/, fields: all }
+  - { phrase: Correction-channel integrity, url: /cards/correction-channel-integrity/, fields: all }
+  - { phrase: correction channel, url: /cards/correction-channel-integrity/, fields: all }
+  - { phrase: adversarial verifiability, url: /cards/certification-under-manipulation/, fields: all }
+  - { phrase: certification under manipulation, url: /cards/certification-under-manipulation/, fields: all }
+  - { phrase: strategic opacity, url: /cards/strategic-opacity/, fields: all }
+  - { phrase: deceptive alignment, url: /cards/strategic-opacity/, fields: all }
+  - { phrase: alignment faking, url: /cards/strategic-opacity/, fields: all }
+  - { phrase: composite agency, url: /cards/composite-agency/, fields: all }
+  - { phrase: boundary discovery, url: /cards/boundary-discovery/, fields: all }
+  - { phrase: the boundary error, url: /cards/the-boundary-error/, fields: all }
+  - { phrase: grounding viability, url: /cards/grounding-viability/, fields: all }
+  - { phrase: value-bundle transport, url: /cards/value-bundle-transport/, fields: all }
+  - { phrase: value-bundle-transport, url: /cards/value-bundle-transport/, fields: all }
+  - { phrase: value bundle, url: /cards/value-bundle-transport/, fields: all }
+  - { phrase: bearer-persistence, url: /cards/bearer-persistence/, fields: all }
+  - { phrase: bearer persistence, url: /cards/bearer-persistence/, fields: all }
+  - { phrase: bearer map, url: /cards/bearer-persistence/, fields: all }
+  - { phrase: inferential coupling, url: /cards/inferential-coupling/, fields: all }
+  - { phrase: dynamical guarantee, url: /cards/dynamical-guarantee/, fields: all }
+  - { phrase: Goodhart as selector, url: /cards/goodhart-as-selector/, fields: all }
+  - { phrase: institutional selection, url: /cards/institutional-selection-gating/, fields: all }
+  - { phrase: selection environment, url: /cards/attractor-control/, fields: all }
+  - { phrase: alignment basin, url: /cards/attractor-control/, fields: all }
+  - { phrase: conserved properties, url: /cards/successor-stability/, fields: all }
+  - { phrase: successor stability, url: /cards/successor-stability/, fields: all }
+  - { phrase: goal inference, url: /cards/goal-inference/, fields: all }
+  - { phrase: alignment-as-measurement, url: /cards/alignment-as-measurement/, fields: all }
+  - { phrase: alignment as a measurement, url: /cards/alignment-as-measurement/, fields: all }
+  - { phrase: bridge assumptions, url: /cards/bridge-assumptions/, fields: all }
+  - { phrase: pivotal process, url: /cards/pivotal-process/, fields: all }
+  - { phrase: deployment leverage, url: /cards/attractor-control/, fields: all }
+  - { phrase: Field hub, url: /field/, fields: all }
+  - { phrase: glossary, url: /glossary/, fields: signature }
+
+  # --- Field projections ---
+  - { phrase: Eliciting Latent Knowledge, url: /cards/subsumption-elk/, fields: all }
+  - { phrase: eliciting latent knowledge, url: /cards/subsumption-elk/, fields: all }
+  - { phrase: ELK, url: /cards/subsumption-elk/, fields: all }
+  - { phrase: assistance games, url: /cards/subsumption-cirl/, fields: all }
+  - { phrase: CIRL, url: /cards/subsumption-cirl/, fields: all }
+  - { phrase: scalable oversight, url: /cards/subsumption-debate/, fields: all }
+  - { phrase: recursive reward modeling, url: /cards/subsumption-debate/, fields: all }
+  - { phrase: amplification, url: /cards/subsumption-debate/, fields: signature }
+  - { phrase: debate, url: /cards/subsumption-debate/, fields: signature }
+  - { phrase: interruptibility, url: /cards/subsumption-interruptibility/, fields: all }
+  - { phrase: off-switch, url: /cards/subsumption-shutdown/, fields: all }
+  - { phrase: shutdown, url: /cards/subsumption-shutdown/, fields: signature }
+
+  # --- Well-known external / agenda artifacts ---
+  - { phrase: AI control, url: https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion, fields: all }
+  - { phrase: control evals, url: https://www.redwoodresearch.org/, fields: signature }
+  - { phrase: intentional subversion, url: https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion, fields: signature }
+  - { phrase: capability gap, url: https://www.redwoodresearch.org/, fields: signature }
+  - { phrase: scheming, url: https://www.apolloresearch.ai/, fields: all }
+  - { phrase: situational awareness, url: https://arxiv.org/abs/2309.00667, fields: all }
+  - { phrase: hidden reasoning, url: https://www.apolloresearch.ai/research, fields: signature }
+  - { phrase: Natural Abstraction Hypothesis, url: https://www.alignmentforum.org/users/John+Wentworth, fields: all }
+  - { phrase: natural abstractions, url: https://www.alignmentforum.org/users/John+Wentworth, fields: all }
+  - { phrase: selection theorems, url: https://www.alignmentforum.org/users/John+Wentworth, fields: all }
+  - { phrase: natural latents, url: https://www.alignmentforum.org/users/John+Wentworth, fields: signature }
+  - { phrase: PreDCA, url: https://www.alignmentforum.org/w/predca, fields: all }
+  - { phrase: infra-Bayesian physicalism, url: https://www.lesswrong.com/w/infra-bayesianism, fields: all }
+  - { phrase: infra-Bayesianism, url: https://www.lesswrong.com/w/infra-bayesianism, fields: all }
+  - { phrase: learning-theoretic agenda, url: https://www.alignmentforum.org/users/Vanessa+Kosoy, fields: all }
+  - { phrase: LTA, url: https://www.alignmentforum.org/users/Vanessa+Kosoy, fields: signature }
+  - { phrase: CEV, url: /cards/mb8-cev-process-convergence/, fields: all }
+  - { phrase: Vingean reflection, url: https://intelligence.org/files/VingeanReflection.pdf, fields: all }
+  - { phrase: agent foundations, url: https://intelligence.org/, fields: all }
+  - { phrase: Agent Foundations, url: https://intelligence.org/, fields: all }
+  - { phrase: Responsible Scaling Policy, url: https://www.anthropic.com/news/anthropics-responsible-scaling-policy, fields: all }
+  - { phrase: RSP, url: https://www.anthropic.com/news/anthropics-responsible-scaling-policy, fields: all }
+  - { phrase: Constitutional AI, url: https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback, fields: all }
+  - { phrase: constitutional AI, url: https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback, fields: all }
+  - { phrase: mechanistic interpretability, url: https://www.anthropic.com/research, fields: all }
+  - { phrase: monosemanticity, url: https://transformer-circuits.pub/2023/monosemantic-features, fields: all }
+  - { phrase: monosemantic, url: https://transformer-circuits.pub/2023/monosemantic-features, fields: signature }
+  - { phrase: circuits, url: https://transformer-circuits.pub/2023/monosemantic-features, fields: signature }
+  - { phrase: causal faithfulness, url: https://arxiv.org/abs/2311.17030, fields: signature }
+  - { phrase: capability thresholds, url: https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/, fields: signature }
+  - { phrase: Guaranteed-Safe AI, url: https://arxiv.org/abs/2405.06624, fields: all }
+  - { phrase: GSAI, url: https://arxiv.org/abs/2405.06624, fields: all }
+  - { phrase: guaranteed safe, url: https://arxiv.org/abs/2405.06624, fields: signature }
+  - { phrase: open agency, url: https://arxiv.org/abs/2405.06624, fields: signature }
+  - { phrase: Scientist AI, url: https://lawzero.org/en, fields: all }
+  - { phrase: Discovering Agents, url: https://arxiv.org/abs/2208.08345, fields: all }
+  - { phrase: discovering agents, url: https://arxiv.org/abs/2208.08345, fields: all }
+  - { phrase: causal agent discovery, url: https://arxiv.org/abs/2208.08345, fields: signature }
+  - { phrase: scalable alignment, url: /cards/subsumption-debate/, fields: signature }
+  - { phrase: AI safety, url: /field/, fields: signature }
+  - { phrase: research sprints, url: https://apartresearch.com/, fields: signature }
+  - { phrase: Frontier AI Governance, url: https://bluedot.org/, fields: signature }
+  - { phrase: Technical AI Safety, url: https://bluedot.org/, fields: signature }
+  - { phrase: mentored research, url: https://www.matsprogram.org/, fields: signature }
+  - { phrase: MATS, url: https://www.matsprogram.org/, fields: signature }
+  - { phrase: Agent, url: /cards/agent-without-anthropomorphism/, fields: signature, agendas: [ciris] }
+  - { phrase: unsupervised agent discovery, url: https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery, fields: all }
+  - { phrase: UAD, url: https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery, fields: all }
+  - { phrase: self-other overlap, url: https://arxiv.org/abs/2412.16325, fields: all }
+  - { phrase: SOO, url: https://arxiv.org/abs/2412.16325, fields: signature }
+  - { phrase: brain-like AGI safety, url: https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/, fields: all }
+  - { phrase: AI 2027, url: https://ai-2027.com/, fields: all }
+  - { phrase: s-risks, url: https://longtermrisk.org/, fields: all }
+  - { phrase: Cooperative AI Foundation, url: https://www.cooperativeai.com/, fields: all }
+  - { phrase: Cooperative AI, url: https://www.cooperativeai.com/, fields: all }
+  - { phrase: CAIF, url: https://www.cooperativeai.com/, fields: signature }
+  - { phrase: hard pause, url: https://intelligence.org/2024/01/04/miri-2024-mission-and-strategy-update/, fields: all }
+  - { phrase: Global AI Moratorium, url: https://futureoflife.org/open-letter/pause-giant-ai-experiments/, fields: all }
+  - { phrase: inverse reward design, url: /cards/subsumption-cirl/, fields: all }
+  - { phrase: beneficial AI, url: https://humancompatible.ai/, fields: signature }
+  - { phrase: containment verification, url: https://arxiv.org/abs/2605.09045, fields: all }
+  - { phrase: proof certificates, url: https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai, fields: signature }
+  - { phrase: safeguarded AI, url: https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai, fields: all }
+  - { phrase: cognitive emulation, url: https://www.conjecture.dev/, fields: all }
+  - { phrase: CoEm, url: https://www.conjecture.dev/, fields: signature }
+  - { phrase: neglected approaches, url: https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach, fields: all }
+  - { phrase: AI Safety Interventions, url: https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions, fields: all }
+  - { phrase: QACI, url: https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal, fields: all }
+  - { phrase: singular learning, url: https://www.timaeus.ai/, fields: all }
+  - { phrase: autonomy evals, url: https://metr.org/, fields: signature }
+  - { phrase: AI R&D evals, url: https://metr.org/, fields: signature }
+  - { phrase: entity-based assessment, url: https://metr.org/, fields: signature }
+  - { phrase: human simulator, url: /cards/subsumption-elk/, fields: signature }
+  - { phrase: direct translator, url: /cards/subsumption-elk/, fields: signature }
+  - { phrase: latent knowledge, url: /cards/subsumption-elk/, fields: all }
+  - { phrase: world model, url: https://arxiv.org/abs/2405.06624, fields: signature }
+  - { phrase: specification coverage, url: https://arxiv.org/abs/2405.06624, fields: signature }
+  - { phrase: AARM, url: https://heron.ing/aarm, fields: signature }
+  - { phrase: ZK attestation, url: https://pascal-berrang.de/projects/zk_ai_security/, fields: signature }
+  - { phrase: zero-knowledge attestation, url: https://pascal-berrang.de/projects/zk_ai_security/, fields: signature }
+  - { phrase: SPAR, url: https://sparai.org/, fields: signature }
+  - { phrase: Pathfinder, url: https://pathfinder.kairos-project.org/, fields: signature }
+  - { phrase: Global Challenges Project, url: https://www.globalchallengesproject.org/, fields: signature }
+  - { phrase: Alignment Assemblies, url: https://www.cip.org/alignmentassemblies, fields: signature }
+  - { phrase: meaning alignment, url: https://www.meaningalignment.org/, fields: signature }
+  - { phrase: multipolar, url: https://arxiv.org/abs/2006.04948, fields: signature }
+  - { phrase: ARCHES, url: https://arxiv.org/abs/2006.04948, fields: signature }
+  - { phrase: TruthfulQA, url: https://truthful.ai/, fields: signature }
+  - { phrase: FAR.Lab, url: https://www.far.ai/, fields: signature }
+  - { phrase: Ember, url: https://www.goodfire.com/, fields: signature }
+  - { phrase: Neuronpedia, url: https://www.neuronpedia.org/, fields: signature }
+  - { phrase: Goodfire, url: https://www.goodfire.com/, fields: signature }
+  - { phrase: Transluce, url: https://transluce.org/, fields: signature }
+  - { phrase: Narrow Path, url: https://controlai.org/, fields: signature }
+  - { phrase: RLNF, url: https://ae.studio/alignment, fields: signature }
+  - { phrase: human-power objective, url: https://arxiv.org/abs/2508.00159, fields: signature }
+  - { phrase: agency-detect, url: https://github.com/GunnarZarncke/agency-detect, fields: signature }
+  - { phrase: precursor agents, url: https://www.alignmentforum.org/posts/vanessa-kosoy-s-predca-distilled, fields: signature }
+  - { phrase: ontology identification, url: /cards/mb5-successor-ontology-shift/, fields: signature }
+  - { phrase: Vingean, url: https://intelligence.org/files/VingeanReflection.pdf, fields: signature }
+
+  # --- Agenda-scoped short tokens ---
+  - { phrase: Wise Authority, url: https://ciris.ai/architecture/, fields: all, agendas: [ciris] }
+  - { phrase: Verify, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
+  - { phrase: Lens, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
+  - { phrase: Coherence Ratchet, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
+  - { phrase: CIRISAgent, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
+  - { phrase: Proxy, url: https://ciris.ai/architecture/, fields: signature, agendas: [ciris] }
+  - { phrase: Accord, url: https://ciris.ai/ciris_accord.txt, fields: signature, agendas: [ciris] }
+  - { phrase: Timaeus, url: https://www.timaeus.ai/, fields: all, agendas: [resolution] }
+  - { phrase: pause, url: https://pauseai.info/, fields: signature, agendas: [pause-standards-advocacy-cluster, miri] }
+  - { phrase: moratorium, url: https://futureoflife.org/open-letter/pause-giant-ai-experiments/, fields: signature, agendas: [pause-standards-advocacy-cluster] }
+  - { phrase: timelines, url: https://epoch.ai/, fields: signature, agendas: [ai-futures-forecasting-cluster] }
+  - { phrase: Metaculus, url: https://www.metaculus.com/, fields: signature, agendas: [ai-futures-forecasting-cluster] }
+  - { phrase: Epoch AI, url: https://epoch.ai/, fields: all, agendas: [ai-futures-forecasting-cluster] }
+  - { phrase: TAI, url: https://epoch.ai/, fields: signature, agendas: [ai-futures-forecasting-cluster] }
+  - { phrase: features, url: https://transformer-circuits.pub/2023/monosemantic-features, fields: signature, agendas: [anthropic-lab] }
+  - { phrase: steering, url: https://www.goodfire.com/, fields: signature, agendas: [anthropic-lab] }

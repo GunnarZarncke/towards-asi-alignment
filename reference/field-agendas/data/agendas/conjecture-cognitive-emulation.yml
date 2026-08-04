@@ -2,28 +2,42 @@ slug: conjecture-cognitive-emulation
 title: Conjecture / EleutherAI (cognitive emulation)
 type: Research org cluster (startup + open-science lineage)
 carrier: >-
-  Conjecture (Connor Leahy, Sid Black, Gabriel Alfour; winding down 2026);
-  EleutherAI open-science institute; Leahy → ControlAI (pause advocacy cousin)
-primaryArtifact: Cognitive Emulation / CoEm; controllable LLM stacks; open LLM lineage
+  Conjecture (Connor Leahy, Sid Black, Gabriel Alfour; winding down 2026); EleutherAI
+  open-science institute; Leahy → ControlAI (pause advocacy cousin)
+overview: >-
+  Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed as
+  emulation rather than opaque end-to-end agents—alongside the EleutherAI open-model
+  lineage. The cluster asks whether emulation-style controllability implies
+  [corrigibility](/cards/mb4-correction-legitimacy/) as capability scales.
+  [Correction-channel integrity](/cards/correction-channel-integrity/) and successor value
+  transport remain separate load-bearing concerns beyond controllability claims.
+primaryArtifact: >-
+  Cognitive Emulation (CoEm) and controllable LLM stacks, plus the EleutherAI open LLM
+  lineage.
 signatureVocabulary: >-
-  cognitive emulation, controllable LLMs, emulation vs alignment, EleutherAI,
-  open models
+  Key terms include [cognitive emulation](https://www.conjecture.dev/), controllable LLMs,
+  emulation versus alignment, EleutherAI, and open models.
 statedIntent: >-
-  Build controllable systems via emulation framing rather than opaque end-to-end
-  agents
-primaryCrux: Does emulation imply corrigibility under scale?
+  Build controllable systems using an emulation framing rather than opaque end-to-end
+  agents.
+primaryCrux: >-
+  Does emulation-style controllability still imply
+  [corrigibility](/cards/mb4-correction-legitimacy/)—that systems remain open to
+  correction—as capability scales?
 bookBridges:
-  - MB7 (partial)
+  - MB7
 contributes: >-
-  Alternative controllability framing; EleutherAI spinoff lineage; Redwood-adjacent
-  prosaic alignment spirit
+  An alternative controllability framing; EleutherAI spinoff lineage; a Redwood-adjacent
+  prosaic alignment spirit.
 bookSeparates: >-
-  CCI + successor transport; Conjecture chapter closing — active bet partly
-  historical; ControlAI overlap is advocacy not CoEm
+  [Correction-channel integrity](/cards/correction-channel-integrity/) and successor
+  [value-bundle-transport](/cards/value-bundle-transport/) remain separate load-bearing
+  concerns; Conjecture's active bet is partly historical; ControlAI overlap is advocacy,
+  not CoEm research.
 manuscriptHooks:
   - sparse
 links:
-  - label: Conjecture
+  - label: "Conjecture"
     url: https://www.conjecture.dev/
-  - label: EleutherAI
+  - label: "EleutherAI"
     url: https://www.eleuther.ai/

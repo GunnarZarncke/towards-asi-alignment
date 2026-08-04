@@ -2,15 +2,36 @@ slug: apart-research
 title: Apart Research
 type: Training / sprint program
 carrier: Apart Research
-primaryArtifact: Open research sprints; hackathon-style collaborations
-signatureVocabulary: research sprints, apart hackathon, rapid prototypes
-statedIntent: Accelerate alignment research through sprints and mentorship
-primaryCrux: Sprint artifacts ⇏ load-bearing safety case
+overview: >-
+  Apart Research runs open research sprints and hackathon-style collaborations that
+  produce rapid prototypes and exploratory write-ups under mentorship. Sprint velocity
+  lowers the barrier to empirical alignment work but does not substitute for adversarial
+  verification or a load-bearing safety case. Outputs often probe [certification under
+  manipulation](/cards/certification-under-manipulation/) and related measurement
+  questions without discharging them.
+primaryArtifact: >-
+  Apart runs open research sprints and hackathon-style collaborations that produce rapid
+  prototypes and exploratory write-ups under mentorship.
+signatureVocabulary: >-
+  The community uses terms like [research sprints](https://apartresearch.com/), Apart
+  hackathons, and rapid prototype cycles to describe short, intensive alignment research
+  bursts.
+statedIntent: >-
+  Accelerate alignment research by lowering the barrier to sprint-style collaboration and
+  connecting participants with mentors and peers.
+primaryCrux: >-
+  Sprint artifacts and demo prototypes do not imply a load-bearing safety case;
+  exploratory outputs need separate adversarial verification before they warrant
+  deployment trust.
 bookBridges: []
-contributes: Experiment prototypes (ET lines in repo)
-bookSeparates: —
+contributes: >-
+  Experiment prototypes and early empirical lines (including ET-style work reflected in
+  this repo's demos and experiments folders).
+bookSeparates: >-
+  Hackathon velocity is complementary to, not a substitute for, typed bridge measurement
+  and formal discharge arguments.
 manuscriptHooks:
   - demos/experiments lineage
 links:
-  - label: Apart Research
+  - label: "Apart Research"
     url: https://apartresearch.com/

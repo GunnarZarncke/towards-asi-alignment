@@ -64,6 +64,9 @@ A filled cell means **field evidence on a crux**, not **automatic discharge to `
 
 ## Maintenance workflow
 
-1. Edit YAML under `data/`.
-2. Run `cd site && npm run sync:field-agendas` (regenerates agenda cards, `field-agendas.json`, and this folder's `field-agenda-index.md`).
-3. Public intro lives in `site/src/content/field/intro.md` (edit separately from agent meta in `data/meta.yml`).
+1. Edit YAML under `data/` (agenda prose in `data/agendas/`).
+2. After changing signature terms or prose that should link, update `data/term-links.yml` if needed, then run:
+   `python3 reference/field-agendas/scripts/link-agenda-terms.py`
+   Use `--relink` to strip and re-apply links after dictionary changes; `--check` for CI-style drift.
+3. Run `cd site && npm run sync:field-agendas` (regenerates agenda cards, `field-agendas.json`, and this folder's `field-agenda-index.md`).
+4. Public intro lives in `site/src/content/field/intro.md` (edit separately from agent meta in `data/meta.yml`).

@@ -2,16 +2,18 @@
 title: "CLR (cooperation / conflict)"
 type: "agenda"
 status: "reviewed"
-summary: "Multi-agent failure modes under strategic pressure"
+summary: "How do multi-agent failure modes behave under strategic pressure—especially when cooperation breaks down?"
 agendaSlug: "clr-cooperation-conflict"
 bookBridges:
   - "MB6"
-  - "MB7d (partial)"
+  - "MB7d"
 external:
   - label: "CLR"
     url: "https://longtermrisk.org/"
   - label: "Critch & Krueger 2020 — ARCHES"
     url: "https://arxiv.org/abs/2006.04948"
+  - label: "Dafoe et al. 2020 — Open Problems in Cooperative AI"
+    url: "https://arxiv.org/abs/2012.08630"
   - label: "Cooperative AI Foundation (CAIF)"
     url: "https://www.cooperativeai.com/"
 related: []
@@ -19,28 +21,29 @@ related: []
 
 ## Introduction
 
-**CLR (cooperation / conflict)** is a research org carried by **Center on Long-Term Risk**.
+CLR researches cooperation under AI competition, [s-risks](https://longtermrisk.org/), and multipolar failure modes, including [Cooperative AI Foundation](https://www.cooperativeai.com/) work. Its conflict-and-cooperation framing asks how multi-agent dynamics behave when cooperation breaks down under strategic pressure. The agenda engages [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) and [Acausal Coordination](/cards/mb7d-acausal-coordination/) as measurement cousins to narrative multipolar stories.
 
-**Stated intent:** Reduce worst-case outcomes from AI competition and conflict
+**Who carries it:** Center on Long-Term Risk
 
-**Primary crux:** Multi-agent failure modes under strategic pressure
+**What they aim to do.** Reduce worst-case outcomes that arise when AI systems compete or come into conflict with one another.
 
-**Primary artifact:** Cooperation under AI competition; s-risks; grants
+**The hard question.** How do multi-agent failure modes behave under strategic pressure—especially when cooperation breaks down?
 
-**Signature vocabulary:** cooperation, conflict, s-risks, multipolar failure, CAIF
+**What they produce.** Research and grantmaking on cooperation under AI competition, [s-risks](https://longtermrisk.org/), and multipolar failure modes, including [Cooperative AI Foundation](https://www.cooperativeai.com/) work.
 
-**Book bridges:** MB6, MB7d (partial)
+**Key terms.** Key terms include cooperation, conflict, [s-risks](https://longtermrisk.org/), [multipolar](https://arxiv.org/abs/2006.04948) failure, and [CAIF](https://www.cooperativeai.com/) ([Cooperative AI Foundation](https://www.cooperativeai.com/)).
 
-**Contributes to the field:** Conflict/cooperation framing; CAIF cooperative AI
+**Related field cruxes.** [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Acausal Coordination](/cards/mb7d-acausal-coordination/)
 
-**How the book separates:** Typed MB6/MB7d measurement vs narrative multipolar stories
+**What they contribute.** Conflict-and-cooperation framing for alignment research, plus [Cooperative AI Foundation](https://www.cooperativeai.com/) work on building cooperative AI under competitive pressure.
 
-**Manuscript hooks:** ch35, ch02; Critch multipolar cites
+**How this book treats it.** Typed measurement of [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) and [Acausal Coordination](/cards/mb7d-acausal-coordination/) differs from narrative multipolar stories that lack the same measurement discipline.
 
 ## Links
 
 - [CLR](https://longtermrisk.org/)
 - [Critch & Krueger 2020 — ARCHES](https://arxiv.org/abs/2006.04948)
+- [Dafoe et al. 2020 — Open Problems in Cooperative AI](https://arxiv.org/abs/2012.08630)
 - [Cooperative AI Foundation (CAIF)](https://www.cooperativeai.com/)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

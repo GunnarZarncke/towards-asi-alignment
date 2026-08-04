@@ -2,30 +2,45 @@ slug: google-deepmind-safety
 title: Google DeepMind (safety)
 type: Capabilities lab + safety team
 carrier: Google DeepMind safety / alignment researchers
-primaryArtifact: Safety research blog; Gemini-era alignment work; Discovering Agents
+overview: >-
+  Google DeepMind integrates safety research into a large capabilities org, producing
+  empirical alignment work and agent-discovery methods alongside Gemini-era deployment.
+primaryArtifact: >-
+  Safety research blog output, Gemini-era alignment work, and the [Discovering
+  Agents](https://arxiv.org/abs/2208.08345) program for causal agent discovery from system
+  dynamics.
 signatureVocabulary: >-
-  scalable alignment, safety research, evaluation, Gemini deployment,
-  discovering agents, causal agent discovery
+  Key terms include [scalable alignment](/cards/subsumption-debate/), safety research,
+  evaluation, Gemini deployment, [discovering agents](https://arxiv.org/abs/2208.08345),
+  and [causal agent discovery](https://arxiv.org/abs/2208.08345).
 statedIntent: >-
-  Build advanced AI with internal safety research integrated into capabilities
-  org
-primaryCrux: 'Same as frontier-lab crux: oversight co-scaling, deceptive alignment'
+  Build advanced AI with internal safety research integrated into the capabilities
+  organization from the start.
+primaryCrux: >-
+  Can oversight and safety research co-scale with capabilities, including under [deceptive
+  alignment](/cards/strategic-opacity/) and [Inner
+  Alignment](/cards/mb7-hidden-capability-and-access/) risk—the same frontier-lab crux
+  shared with other major labs?
 bookBridges:
-  - MB1 (partial)
-  - MB7a–c (partial)
+  - MB1
+  - MB7
 contributes: >-
-  Large-scale empirical alignment research capacity; causal agent discovery from
-  system dynamics
-bookSeparates: Measurement spine not replaced by corporate safety teams
+  Large-scale empirical alignment research capacity and causal agent discovery methods
+  that infer agents from system dynamics.
+bookSeparates: >-
+  Corporate safety teams do not replace an independent measurement spine for [Embedded
+  Agency](/cards/mb1-boundary-estimator-soundness/) and [boundary
+  discovery](/cards/boundary-discovery/); the book treats boundary and inner-alignment
+  questions as only partially addressed by in-house teams.
 manuscriptHooks:
   - ch14 co-scaling
   - minimal elsewhere
 links:
-  - label: Google DeepMind
+  - label: "Google DeepMind"
     url: https://deepmind.google/
-  - label: DeepMind Safety Research blog
+  - label: "DeepMind Safety Research blog"
     url: https://deepmind.google/blog/
-  - label: Discovering Agents
+  - label: "Discovering Agents"
     url: https://arxiv.org/abs/2208.08345
-  - label: Leike et al. 2018 — Scalable agent oversight
+  - label: "Leike et al. 2018 \u2014 Scalable agent oversight"
     url: https://arxiv.org/abs/1811.07871

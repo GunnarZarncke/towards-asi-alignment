@@ -1,29 +1,48 @@
 slug: pause-standards-advocacy-cluster
 title: Pause / standards advocacy cluster
 type: Advocacy coalition
-carrier: PauseAI, FLI, ControlAI, Encode, Stop AI (distinct tactics, shared vocabulary)
-primaryArtifact: Campaigns; SB 53 / RAISE-style bills; Narrow Path (ControlAI)
-signatureVocabulary: pause, moratorium, standards, off-switch priority, verified slowdown
-statedIntent: Change policy and public narrative to reduce extinction risk from advanced AI
+carrier: "PauseAI, FLI, ControlAI, Encode, Stop AI (distinct tactics, shared vocabulary)"
+overview: >-
+  The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and
+  allies—pursues policy campaigns, moratorium advocacy, and verified-slowdown narratives
+  to reduce extinction risk from advanced AI. Its primary lever is schedule and selection
+  ecology rather than mechanism discharge. Advocacy can shape [Goodhart
+  Selection](/cards/mb6-selection-and-basin-stability/) basin transitions without
+  resolving the full bridge stack from [embedded
+  agency](/cards/mb1-boundary-estimator-soundness/) through successor gaming.
+primaryArtifact: >-
+  Policy campaigns, SB 53 / RAISE-style bills, and ControlAI's Narrow Path advocacy
+  programme.
+signatureVocabulary: >-
+  Key terms include [pause](https://pauseai.info/),
+  [moratorium](https://futureoflife.org/open-letter/pause-giant-ai-experiments/),
+  standards, [off-switch](/cards/subsumption-shutdown/) priority, and verified slowdown.
+statedIntent: >-
+  Change policy and public narrative to reduce extinction risk from advanced AI.
 primaryCrux: >-
-  Can advocacy create enforceable slowdown without collateral governance
-  failure?
+  Can advocacy create enforceable slowdown without collateral governance failure?
 bookBridges:
-  - MB6 (selection environment)
-  - MB8 (secondary)
-contributes: Schedule shapes for governance stress tests (App F deferred section)
-bookSeparates: Pause handle ⇏ MB1–MB10 discharge; basin transition conditions
+  - MB6
+  - MB8
+contributes: >-
+  Schedule shapes for governance stress tests (Appendix F deferred section).
+bookSeparates: >-
+  A pause or standards handle does not discharge the full alignment bridge stack from
+  [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) through [Successor
+  Gaming](/cards/mb10-successor-forgeability/); it mainly shapes [Goodhart
+  Selection](/cards/mb6-selection-and-basin-stability/) basin transition conditions, with
+  [Extrapolated Volition](/cards/mb8-cev-process-convergence/) as a secondary route.
 manuscriptHooks:
   - App C MIRI hard-pause vs Plan A
   - ch38 conductive artifacts
 links:
-  - label: PauseAI
+  - label: "PauseAI"
     url: https://pauseai.info/
-  - label: FLI
+  - label: "FLI"
     url: https://futureoflife.org/
-  - label: ControlAI
+  - label: "ControlAI"
     url: https://controlai.org/
-  - label: Encode
+  - label: "Encode"
     url: https://encodeai.org/
-  - label: Global AI Moratorium (FLI)
+  - label: "Global AI Moratorium (FLI)"
     url: https://futureoflife.org/open-letter/pause-giant-ai-experiments/

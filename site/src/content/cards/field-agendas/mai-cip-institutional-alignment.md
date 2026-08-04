@@ -5,10 +5,10 @@ status: "reviewed"
 summary: "Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?"
 agendaSlug: "mai-cip-institutional-alignment"
 bookBridges:
-  - "MB2 (partial)"
-  - "MB4a (partial)"
-  - "MB6 (partial)"
-  - "MB8 (partial)"
+  - "MB2"
+  - "MB4a"
+  - "MB6"
+  - "MB8"
 external:
   - label: "Meaning Alignment Institute"
     url: "https://www.meaningalignment.org/"
@@ -23,23 +23,23 @@ related: []
 
 ## Introduction
 
-**MAI + CIP (institutional alignment)** is a research org cluster carried by **Meaning Alignment Institute (Joe Edelman et al.); Collective Intelligence Project (Divya Siddarth, Saffron Huang et al.)**.
+MAI and CIP pursue full-stack alignment through thick values, alignment assemblies, and collective [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback)—aligning AI–institution systems rather than model behavior in isolation. The agenda asks whether deliberative processes stay identifiable and contestable under strategic pressure and AI mediation. Legitimate institutional output does not imply [correction-channel integrity](/cards/correction-channel-integrity/) or institutional-selection-gating that survives optimization.
 
-**Stated intent:** Align AI–institution systems and legitimate value aggregation—not model behavior in isolation
+**Who carries it:** Meaning Alignment Institute (Joe Edelman et al.); Collective Intelligence Project (Divya Siddarth, Saffron Huang et al.)
 
-**Primary crux:** Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?
+**What they aim to do.** Align AI–institution systems and legitimate value aggregation—not model behavior in isolation.
 
-**Primary artifact:** Full-Stack Alignment; alignment assemblies; collective constitutional AI; thick-value / institutional design programmes
+**The hard question.** Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?
 
-**Signature vocabulary:** full-stack alignment, thick values, alignment assemblies, deliberative alignment, collective constitutional AI
+**What they produce.** Full-Stack Alignment research, alignment assemblies, collective [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback), and thick-value / institutional design programmes.
 
-**Book bridges:** MB2 (partial), MB4a (partial), MB6 (partial), MB8 (partial)
+**Key terms.** Key terms include full-stack alignment, thick values, alignment assemblies, deliberative alignment, and collective [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback).
 
-**Contributes to the field:** Institutional amplification failure mode; operational deliberative alignment; counterfactual value commitments vs preferences
+**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Audit Independence](/cards/mb4a-measured-path-legitimacy/); [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Extrapolated Volition](/cards/mb8-cev-process-convergence/)
 
-**How the book separates:** Legitimate process ⇏ correction-channel integrity; consensus output ⇏ bearer transport under optimization
+**What they contribute.** Institutional amplification as a failure mode; operational deliberative alignment; counterfactual value commitments distinguished from surface preferences.
 
-**Manuscript hooks:** ch04 value bundles adjacent; App C institutional translation
+**How this book treats it.** A legitimate process does not imply [correction-channel integrity](/cards/correction-channel-integrity/); consensus output does not imply [bearer-persistence](/cards/bearer-persistence/) under optimization.
 
 ## Links
 
@@ -54,4 +54,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Meaning Alignment Institute](https://www.meaningalignment.org/), [Collective Intelligence Project](https://www.cip.org/) → [MAI + CIP (institutional alignment)](#mai-cip-institutional-alignment)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

@@ -2,13 +2,13 @@
 title: "CHAI / FAR.AI (Berkeley alignment)"
 type: "agenda"
 status: "reviewed"
-summary: "Cooperative reward inference underdetermined; community hub ⇏ unified technical agenda"
+summary: "Cooperative reward inference may be underdetermined (Value Learning), and a shared research hub does not imply a unified technical agenda."
 agendaSlug: "chai-russell"
 bookBridges:
   - "MB2"
   - "MB3"
   - "MB4"
-  - "MB7 (partial)"
+  - "MB7"
 external:
   - label: "CHAI"
     url: "https://humancompatible.ai/"
@@ -21,23 +21,23 @@ related: []
 
 ## Introduction
 
-**CHAI / FAR.AI (Berkeley alignment)** is a research org cluster (academic + nonprofit hub) carried by **Center for Human-Compatible AI (UC Berkeley); FAR.AI (Adam Gleave et al.); shared Berkeley alignment community**.
+The Berkeley cluster reorients AI research toward beneficial systems under preference uncertainty, combining Stuart Russell's assistance-game formalism with FAR.AI's research and community programs.
 
-**Stated intent:** Reorient AI research toward beneficial systems under preference uncertainty; host technical alignment research and community
+**Who carries it:** Center for Human-Compatible AI (UC Berkeley); FAR.AI (Adam Gleave et al.); shared Berkeley alignment community
 
-**Primary crux:** Cooperative reward inference underdetermined; community hub ⇏ unified technical agenda
+**What they aim to do.** Reorient AI research toward beneficial systems under preference uncertainty, and host technical alignment research and community infrastructure.
 
-**Primary artifact:** Assistance games / CIRL framework; beneficial AI reorientation; FAR.Lab research and community programs
+**The hard question.** Cooperative reward inference may be underdetermined ([Value Learning](/cards/mb2-bundle-identifiability/)), and a shared research hub does not imply a unified technical agenda.
 
-**Signature vocabulary:** CIRL, inverse reward design, assistance games, beneficial AI, FAR.Lab, value learning, scalable oversight cousins
+**What they produce.** The assistance-games and [CIRL](/cards/subsumption-cirl/) framework, beneficial-AI reorientation work, and FAR.Lab research and community programs.
 
-**Book bridges:** MB2, MB3, MB4, MB7 (partial)
+**Key terms.** Recurring terms include [CIRL](/cards/subsumption-cirl/), [inverse reward design](/cards/subsumption-cirl/), [assistance games](/cards/subsumption-cirl/), [beneficial AI](https://humancompatible.ai/), [FAR.Lab](https://www.far.ai/), [value learning](/cards/mb2-bundle-identifiability/), and scalable-oversight cousins.
 
-**Contributes to the field:** Formal assistance-game framing; off-switch game lineage; FAR incubation hub (Gleave CHAI PhD; METR board overlap)
+**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Corrigibility](/cards/mb4-correction-legitimacy/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
 
-**How the book separates:** Bundle geometry + bearer maps; ELK as subchannel not whole target
+**What they contribute.** Formal assistance-game framing, the [off-switch](/cards/subsumption-shutdown/) game lineage, and FAR as an incubation hub (Gleave CHAI PhD; METR board overlap).
 
-**Manuscript hooks:** ch04, ch18; App B MB2/MB3; App G CIRL projection
+**How this book treats it.** The book adds bundle geometry and bearer maps for [Value Referent](/cards/mb3-bearer-import/), and treats [ELK](/cards/subsumption-elk/)-style latent readout as one subchannel of [Inner Alignment](/cards/mb7-hidden-capability-and-access/) rather than the whole alignment target.
 
 ## Links
 
@@ -52,4 +52,4 @@ AISafety.com map listings that roll up to this agenda:
 - [CHAI](https://humancompatible.ai/), CHAI Internship, CORAL, Algorithmic Alignment Group (MIT) → [CHAI / FAR.AI](#chai-russell) cluster
 - [FAR.AI](https://www.far.ai/) → [CHAI / FAR.AI](#chai-russell)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

@@ -2,22 +2,46 @@ slug: kosoy-predca
 title: Kosoy / PreDCA
 type: Researcher lineage (outer-alignment strand)
 carrier: Vanessa Kosoy
-primaryArtifact: PreDCA (precursor detection, classification, assistance)
-signatureVocabulary: PreDCA, precursor agents, infra-Bayesian physicalism (constructive layer)
-statedIntent: Outer-alignment via assisting an aggregate of causal precursors (human user)
-primaryCrux: Does precursor-utility pointing survive simulation / ontology ambiguity?
+overview: >-
+  [PreDCA](https://www.alignmentforum.org/w/predca) (precursor detection, classification,
+  and assistance) is Kosoy's outer-alignment framework built on [infra-Bayesian
+  physicalism](https://www.lesswrong.com/w/infra-bayesianism), targeting assistance to an
+  aggregate of causal precursors. It offers a sibling outer-alignment endpoint reached
+  through a different formal path than [CIRL](/cards/subsumption-cirl/)-style pointing.
+  The endpoint alone does not discharge [value-bundle
+  transport](/cards/value-bundle-transport/) or
+  [bearer-persistence](/cards/bearer-persistence/) under optimization.
+primaryArtifact: >-
+  [PreDCA](https://www.alignmentforum.org/w/predca) (precursor detection, classification,
+  and assistance)—an outer-alignment framework built on [infra-Bayesian
+  physicalism](https://www.lesswrong.com/w/infra-bayesianism).
+signatureVocabulary: >-
+  Key terms include [PreDCA](https://www.alignmentforum.org/w/predca), [precursor
+  agents](https://www.alignmentforum.org/posts/vanessa-kosoy-s-predca-distilled), and
+  [infra-Bayesian physicalism](https://www.lesswrong.com/w/infra-bayesianism) as a
+  constructive layer.
+statedIntent: >-
+  Pursue outer alignment by assisting an aggregate of causal precursors (the human user).
+primaryCrux: >-
+  Does precursor-utility pointing survive simulation and ontology ambiguity?
 bookBridges:
   - MB2
-  - MB3 (peer outer target); MB4/MB8 legitimacy underside
-contributes: Sibling outer endpoint; assistance-game cousin via different formal path
+  - MB3
+  - MB4
+  - MB8
+contributes: >-
+  A sibling outer-alignment endpoint; an assistance-game cousin reached through a
+  different formal path.
 bookSeparates: >-
-  Endpoint not sufficient alone; bundle + bearer + correction process still
-  load-bearing
+  The endpoint alone is not sufficient;
+  [value-bundle-transport](/cards/value-bundle-transport/),
+  [bearer-persistence](/cards/bearer-persistence/), and the correction process remain
+  load-bearing.
 manuscriptHooks:
-  - bib `kosoy2022predca`
+  - "bib `kosoy2022predca`"
   - glossary PreDCA row
 links:
-  - label: PreDCA (Alignment Forum tag)
+  - label: "PreDCA (Alignment Forum tag)"
     url: https://www.alignmentforum.org/w/predca
-  - label: Vanessa Kosoy
+  - label: "Vanessa Kosoy"
     url: https://www.alignmentforum.org/users/Vanessa+Kosoy

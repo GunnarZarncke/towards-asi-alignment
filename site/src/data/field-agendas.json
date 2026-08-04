@@ -198,9 +198,9 @@
     {
       "slug": "ai-futures-forecasting-cluster",
       "title": "AI Futures / forecasting cluster",
-      "summary": "Schedule uncertainty vs mechanism uncertainty (book: schedule cues only)",
+      "summary": "Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—the book uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.",
       "bookBridges": [
-        "MB6 (schedule shapes — not findings)"
+        "MB6"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -209,14 +209,14 @@
     {
       "slug": "anthropic-lab",
       "title": "Anthropic / Goodfire (lab & MI stack)",
-      "summary": "Can scaling policies and interpretability keep pace with capability?",
+      "summary": "Can scaling policies and interpretability keep pace with capability growth, including under strategic opacity and Goodhart Selection pressure?",
       "bookBridges": [
         "MB2",
         "MB3",
         "MB6",
-        "MB7 (partial)",
-        "MB10 (partial)",
-        "MB11 (partial)"
+        "MB7",
+        "MB10",
+        "MB11"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -225,7 +225,7 @@
     {
       "slug": "apart-research",
       "title": "Apart Research",
-      "summary": "Sprint artifacts ⇏ load-bearing safety case",
+      "summary": "Sprint artifacts and demo prototypes do not imply a load-bearing safety case; exploratory outputs need separate adversarial verification before they warrant deployment trust.",
       "bookBridges": [],
       "inMatrix": false,
       "generateCard": true,
@@ -234,12 +234,12 @@
     {
       "slug": "apollo-research",
       "title": "Apollo / Truthful AI (deception & scheming)",
-      "summary": "Can we detect strategic deception before capabilities outpace evals?",
+      "summary": "Can we detect strategic opacity and scheming before capabilities outpace pre-deployment evaluations (Inner Alignment)?",
       "bookBridges": [
-        "MB6 (partial)",
-        "MB7a–c",
+        "MB6",
+        "MB7",
         "MB10",
-        "MB11 (partial)"
+        "MB11"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -248,7 +248,7 @@
     {
       "slug": "arc-alignment-research-center",
       "title": "ARC (Alignment Research Center)",
-      "summary": "Human simulator vs direct translator; readout under optimization",
+      "summary": "Can oversight elicit latent knowledge directly rather than through a human simulator, and will readout remain faithful under optimization (Inner Alignment)?",
       "bookBridges": [
         "MB2",
         "MB3",
@@ -261,7 +261,7 @@
     {
       "slug": "bluedot-impact",
       "title": "BlueDot Impact",
-      "summary": "Pedagogy ⇏ research agenda (vocabulary transmission)",
+      "summary": "Strong pedagogy and career placement do not imply a unified research agenda; courses mainly transmit vocabulary and problem framings rather than resolving technical cruxes.",
       "bookBridges": [],
       "inMatrix": false,
       "generateCard": true,
@@ -270,10 +270,8 @@
     {
       "slug": "cais-field-building",
       "title": "CAIS (field-building)",
-      "summary": "Field-building ⇏ technical solution",
-      "bookBridges": [
-        "— (meta)"
-      ],
+      "summary": "Field-building legitimacy and researcher pipeline growth do not imply a technical solution to alignment; advocacy can succeed while core mechanism questions remain open.",
+      "bookBridges": [],
       "inMatrix": false,
       "generateCard": true,
       "matrixLink": null
@@ -281,12 +279,12 @@
     {
       "slug": "chai-russell",
       "title": "CHAI / FAR.AI (Berkeley alignment)",
-      "summary": "Cooperative reward inference underdetermined; community hub ⇏ unified technical agenda",
+      "summary": "Cooperative reward inference may be underdetermined (Value Learning), and a shared research hub does not imply a unified technical agenda.",
       "bookBridges": [
         "MB2",
         "MB3",
         "MB4",
-        "MB7 (partial)"
+        "MB7"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -295,12 +293,12 @@
     {
       "slug": "christiano-lineage",
       "title": "Christiano lineage",
-      "summary": "Obfuscated arguments; accumulated judge drift; latent readout vs behavior",
+      "summary": "Can oversight stay honest when arguments can be obfuscated, judge preferences drift over time, and latent readout may diverge from behavior (Inner Alignment)?",
       "bookBridges": [
         "MB2",
         "MB3",
-        "MB7a–c",
-        "MB4"
+        "MB4",
+        "MB7"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -309,12 +307,15 @@
     {
       "slug": "ciris",
       "title": "CIRIS",
-      "summary": "**Named-identity bet:** does green Verify+Lens on a certified occurrence imply MB4 correction integrity on the **real intervening loop** (composite / tools / memory / incentives)?",
+      "summary": "CIRIS bets on named identity: if Verify and Lens report green on a certified occurrence, does that imply Corrigibility on the real intervening loop—composite agency, tools, memory, and incentives included?",
       "bookBridges": [
+        "MB1",
         "MB4",
-        "MB4a (primary test surface — WA",
-        "deferral",
-        "emergency shutdown); MB1 (named unit vs discovered boundary); MB6 (federation Orthogonality gate — partial); MB7 (Lens ratchet / Verify disclaimers — adversarial-verifiability subchannel); MB9 (NEW-04 compositional coverage limit); MB11 (honest safety-case scope disclaimers)"
+        "MB4a",
+        "MB6",
+        "MB7",
+        "MB9",
+        "MB11"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -323,10 +324,10 @@
     {
       "slug": "clr-cooperation-conflict",
       "title": "CLR (cooperation / conflict)",
-      "summary": "Multi-agent failure modes under strategic pressure",
+      "summary": "How do multi-agent failure modes behave under strategic pressure—especially when cooperation breaks down?",
       "bookBridges": [
         "MB6",
-        "MB7d (partial)"
+        "MB7d"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -335,9 +336,9 @@
     {
       "slug": "conjecture-cognitive-emulation",
       "title": "Conjecture / EleutherAI (cognitive emulation)",
-      "summary": "Does emulation imply corrigibility under scale?",
+      "summary": "Does emulation-style controllability still imply corrigibility—that systems remain open to correction—as capability scales?",
       "bookBridges": [
-        "MB7 (partial)"
+        "MB7"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -346,10 +347,10 @@
     {
       "slug": "davidad-guaranteed-safe-ai-gsai",
       "title": "davidad / Guaranteed-Safe AI (GSAI)",
-      "summary": "Cannot enumerate all safety-relevant phenomena in an open world",
+      "summary": "Can we enumerate all safety-relevant phenomena in an open world, or will specification coverage always leave gaps (Grounding Drift)?",
       "bookBridges": [
         "MB9",
-        "MB11 (cousin)"
+        "MB11"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -358,10 +359,10 @@
     {
       "slug": "google-deepmind-safety",
       "title": "Google DeepMind (safety)",
-      "summary": "Same as frontier-lab crux: oversight co-scaling, deceptive alignment",
+      "summary": "Can oversight and safety research co-scale with capabilities, including under deceptive alignment and Inner Alignment risk—the same frontier-lab crux shared with other major labs?",
       "bookBridges": [
-        "MB1 (partial)",
-        "MB7a–c (partial)"
+        "MB1",
+        "MB7"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -370,12 +371,12 @@
     {
       "slug": "govai",
       "title": "GovAI / UK AISI (governance & eval)",
-      "summary": "Can governance and institute evals keep pace with capability and bind on deployment under race pressure?",
+      "summary": "Can governance mechanisms and institute evaluations keep pace with capability and actually bind deployment decisions under race pressure?",
       "bookBridges": [
-        "MB6 (institutional)",
-        "MB7 (partial)",
-        "MB9 (partial)",
-        "MB11 (partial)"
+        "MB6",
+        "MB7",
+        "MB9",
+        "MB11"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -384,7 +385,7 @@
     {
       "slug": "kairos-field-building",
       "title": "Kairos (field-building)",
-      "summary": "Same as other training agendas",
+      "summary": "Like other training agendas, program throughput and participant quality do not imply resolution of technical alignment cruxes; the bottleneck is still mechanism discovery, not talent discovery.",
       "bookBridges": [],
       "inMatrix": false,
       "generateCard": true,
@@ -393,13 +394,13 @@
     {
       "slug": "kosoy-infra-bayesianism-lta",
       "title": "Kosoy / infra-Bayesianism & LTA",
-      "summary": "Can learning-theoretic / infra-Bayesian frameworks type real alignment failures (misspec, daemons, RSI)?",
+      "summary": "Can learning-theoretic and infra-Bayesian frameworks type real alignment failures—misspecification, inner daemons, and recursive self-improvement?",
       "bookBridges": [
         "MB1",
         "MB2",
         "MB5",
         "MB7",
-        "MB9 (cousin); MB7d neighborhood — see [spine translation](#spine-translation)"
+        "MB9"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -408,10 +409,12 @@
     {
       "slug": "kosoy-predca",
       "title": "Kosoy / PreDCA",
-      "summary": "Does precursor-utility pointing survive simulation / ontology ambiguity?",
+      "summary": "Does precursor-utility pointing survive simulation and ontology ambiguity?",
       "bookBridges": [
         "MB2",
-        "MB3 (peer outer target); MB4/MB8 legitimacy underside"
+        "MB3",
+        "MB4",
+        "MB8"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -422,10 +425,10 @@
       "title": "MAI + CIP (institutional alignment)",
       "summary": "Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?",
       "bookBridges": [
-        "MB2 (partial)",
-        "MB4a (partial)",
-        "MB6 (partial)",
-        "MB8 (partial)"
+        "MB2",
+        "MB4a",
+        "MB6",
+        "MB8"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -434,7 +437,7 @@
     {
       "slug": "mats",
       "title": "MATS",
-      "summary": "Mentorship output diversity vs unified measurement spine",
+      "summary": "Mentorship output is intentionally diverse across subfields, which does not collapse into a single unified measurement spine—participants may advance interpretability, control, or governance lines without resolving cross-cutting bridge composition.",
       "bookBridges": [],
       "inMatrix": false,
       "generateCard": true,
@@ -443,10 +446,10 @@
     {
       "slug": "metr",
       "title": "METR",
-      "summary": "Do public evals track deployment-relevant risk under adversarial pressure?",
+      "summary": "Do public capability evaluations track deployment-relevant risk under adversarial pressure and Goodhart Selection?",
       "bookBridges": [
-        "MB7 (partial)",
-        "MB6 (indirect)"
+        "MB6",
+        "MB7"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -455,7 +458,7 @@
     {
       "slug": "miri",
       "title": "MIRI",
-      "summary": "No clean agent–environment cut; corrigibility anti-natural; successor trust under ontology change",
+      "summary": "There may be no clean cut between an AI and its environment (Embedded Agency); corrigibility may be anti-natural; and successor systems may not inherit trust under ontology change (Tiling).",
       "bookBridges": [
         "MB1",
         "MB4",
@@ -469,13 +472,13 @@
     {
       "slug": "neglected-approaches-portfolio",
       "title": "Neglected approaches portfolio",
-      "summary": "Which neglected routes survive unified optimization pressure—and which portfolio bets compound vs. diffuse effort?",
+      "summary": "Which neglected routes survive unified optimization pressure—and which portfolio bets compound versus diffuse effort across incompatible outer targets?",
       "bookBridges": [
-        "MB1 (partial)",
+        "MB1",
         "MB2",
         "MB4",
-        "MB6 (partial)",
-        "MB7 (partial)"
+        "MB6",
+        "MB7"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -484,7 +487,7 @@
     {
       "slug": "orthogonal",
       "title": "Orthogonal",
-      "summary": "Same family as MIRI/CHAI formal walls, community-organized",
+      "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
       "bookBridges": [
         "MB1",
         "MB4"
@@ -498,8 +501,8 @@
       "title": "Pause / standards advocacy cluster",
       "summary": "Can advocacy create enforceable slowdown without collateral governance failure?",
       "bookBridges": [
-        "MB6 (selection environment)",
-        "MB8 (secondary)"
+        "MB6",
+        "MB8"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -508,9 +511,9 @@
     {
       "slug": "redwood-research",
       "title": "Redwood Research",
-      "summary": "Can we get meaningful safety guarantees when the system may try to defeat oversight?",
+      "summary": "Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight (Inner Alignment)?",
       "bookBridges": [
-        "MB7a–c"
+        "MB7"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -519,11 +522,11 @@
     {
       "slug": "resolution",
       "title": "Resolution",
-      "summary": "Can formal+automated pipelines scale to superintelligent alignment?",
+      "summary": "Can formal and automated pipelines scale to superintelligent alignment?",
       "bookBridges": [
         "MB1",
-        "MB9 (partial)",
-        "MB11 (cousin)"
+        "MB9",
+        "MB11"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -532,11 +535,11 @@
     {
       "slug": "safeguarded-ai-aria-zeroth-heron",
       "title": "Safeguarded AI (ARIA / Zeroth / Heron)",
-      "summary": "Safety claims are conditional on the declared system boundary; misspecified controllers or emergent coalitions void otherwise correct proofs",
+      "summary": "Safety claims are conditional on the declared system boundary; misspecified controllers, emergent coalitions, or agents outside the certified cut can void otherwise correct proofs.",
       "bookBridges": [
-        "MB1 (partial)",
-        "MB4a (partial)",
-        "MB7 (partial)",
+        "MB1",
+        "MB4a",
+        "MB7",
         "MB9",
         "MB11"
       ],
@@ -547,9 +550,21 @@
     {
       "slug": "this-project-towards-superintelligence-alignment-tsa",
       "title": "This project - Towards Superintelligence Alignment (TSA)",
-      "summary": "Can typed bridges compose under explicit adversarial-verifiability antecedent?",
+      "summary": "Can typed bridges compose under an explicit adversarial-verifiability antecedent, or do standard non-converses block naive closure arguments?",
       "bookBridges": [
-        "MB1–MB11 incl. MB4a (home)"
+        "MB1",
+        "MB2",
+        "MB3",
+        "MB4",
+        "MB4a",
+        "MB5",
+        "MB6",
+        "MB7",
+        "MB7d",
+        "MB8",
+        "MB9",
+        "MB10",
+        "MB11"
       ],
       "inMatrix": true,
       "generateCard": false,
@@ -558,10 +573,10 @@
     {
       "slug": "wentworth-natural-abstractions",
       "title": "Wentworth / natural abstractions",
-      "summary": "Do natural abstractions align with value-relevant structure under optimization?",
+      "summary": "Do natural abstractions—the variables that survive selection—align with value-relevant structure when systems are trained or deployed at scale?",
       "bookBridges": [
         "MB2",
-        "MB3 (partial)",
+        "MB3",
         "MB1"
       ],
       "inMatrix": true,
@@ -991,27 +1006,21 @@
               "type": "E",
               "ids": [
                 25,
-                31
+                31,
+                135
               ]
             },
             {
               "type": "E",
               "ids": [
-                135
+                155,
+                156
               ]
             },
             {
               "type": "C",
               "ids": [
                 29
-              ]
-            },
-            {
-              "type": "D",
-              "ids": [
-                74,
-                75,
-                76
               ]
             }
           ],
@@ -1084,7 +1093,7 @@
             {
               "type": "E",
               "ids": [
-                33
+                151
               ]
             }
           ],
@@ -1092,16 +1101,21 @@
             {
               "type": "E",
               "ids": [
-                33,
-                34,
+                151,
+                152,
                 35
               ]
             },
             {
               "type": "E",
               "ids": [
-                72,
                 73
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                153
               ]
             }
           ],
@@ -1112,7 +1126,7 @@
             {
               "type": "E",
               "ids": [
-                33
+                151
               ]
             }
           ],
@@ -1120,7 +1134,7 @@
             {
               "type": "E",
               "ids": [
-                33
+                151
               ]
             }
           ]
@@ -1743,13 +1757,8 @@
               "type": "C",
               "ids": [
                 67,
-                68
-              ]
-            },
-            {
-              "type": "O",
-              "ids": [
-                69
+                68,
+                154
               ]
             }
           ],
@@ -2573,38 +2582,6 @@
       ]
     },
     {
-      "id": 33,
-      "agenda": "Apollo / Truthful AI",
-      "bridges": [
-        "MB6",
-        "MB7",
-        "MB10"
-      ],
-      "type": "E",
-      "evidence": "Scheming science and pre-deployment eval agenda",
-      "sources": [
-        {
-          "label": "Apollo Research",
-          "url": "https://www.apolloresearch.ai/"
-        }
-      ]
-    },
-    {
-      "id": 34,
-      "agenda": "Apollo / Truthful AI",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "E",
-      "evidence": "Situational awareness and strategic deception measurement",
-      "sources": [
-        {
-          "label": "Apollo publications",
-          "url": "https://www.apolloresearch.ai/research"
-        }
-      ]
-    },
-    {
       "id": 35,
       "agenda": "Apollo / Truthful AI",
       "bridges": [
@@ -3369,21 +3346,6 @@
       ]
     },
     {
-      "id": 69,
-      "agenda": "CLR",
-      "bridges": [
-        "MB6"
-      ],
-      "type": "O",
-      "evidence": "Cooperative AI Foundation programs",
-      "sources": [
-        {
-          "label": "CAIF",
-          "url": "https://www.cooperativeai.org/"
-        }
-      ]
-    },
-    {
       "id": 70,
       "agenda": "CLR",
       "bridges": [
@@ -3399,21 +3361,6 @@
       ]
     },
     {
-      "id": 72,
-      "agenda": "Apollo / Truthful AI / Truthful AI",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "E",
-      "evidence": "Deception and situational-awareness research program",
-      "sources": [
-        {
-          "label": "Truthful AI",
-          "url": "https://truthful.ai/"
-        }
-      ]
-    },
-    {
       "id": 73,
       "agenda": "Apollo / Truthful AI / Truthful AI",
       "bridges": [
@@ -3425,51 +3372,6 @@
         {
           "label": "Park et al. 2024",
           "url": "https://arxiv.org/abs/2308.14752"
-        }
-      ]
-    },
-    {
-      "id": 74,
-      "agenda": "Anthropic / Goodfire / Goodfire",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "D",
-      "evidence": "Goodfire interpretability and editable-representation tooling",
-      "sources": [
-        {
-          "label": "Goodfire",
-          "url": "https://www.goodfire.ai/"
-        }
-      ]
-    },
-    {
-      "id": 75,
-      "agenda": "Anthropic / Goodfire / Goodfire",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "D",
-      "evidence": "Neuronpedia feature/circuit infrastructure",
-      "sources": [
-        {
-          "label": "Neuronpedia",
-          "url": "https://www.neuronpedia.org/"
-        }
-      ]
-    },
-    {
-      "id": 76,
-      "agenda": "Anthropic / Goodfire / Goodfire",
-      "bridges": [
-        "MB7"
-      ],
-      "type": "D",
-      "evidence": "Transluce decode / agent-introspection tooling",
-      "sources": [
-        {
-          "label": "Transluce",
-          "url": "https://transluce.org/"
         }
       ]
     },
@@ -4378,6 +4280,99 @@
         {
           "label": "Demski & Garrabrant 2019",
           "url": "https://arxiv.org/abs/1902.09469"
+        }
+      ]
+    },
+    {
+      "id": 151,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB6",
+        "MB7",
+        "MB10",
+        "MB11"
+      ],
+      "type": "E",
+      "evidence": "In-context scheming capabilities in frontier models (pre-deployment eval suite)",
+      "sources": [
+        {
+          "label": "Meinke et al. 2024",
+          "url": "https://arxiv.org/abs/2412.04984"
+        }
+      ]
+    },
+    {
+      "id": 152,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Situational Awareness Dataset (SAD) benchmark for LLMs",
+      "sources": [
+        {
+          "label": "Laine et al. 2024",
+          "url": "https://arxiv.org/abs/2407.04694"
+        }
+      ]
+    },
+    {
+      "id": 153,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Out-of-context reasoning as foundation for situational awareness",
+      "sources": [
+        {
+          "label": "Berglund et al. 2023",
+          "url": "https://arxiv.org/abs/2309.00667"
+        }
+      ]
+    },
+    {
+      "id": 154,
+      "agenda": "CLR",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "C",
+      "evidence": "Cooperative AI research agenda (CAIF lineage)",
+      "sources": [
+        {
+          "label": "Dafoe et al. 2020",
+          "url": "https://arxiv.org/abs/2012.08630"
+        }
+      ]
+    },
+    {
+      "id": 155,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Sparse autoencoder monosemantic features (circuits interpretability)",
+      "sources": [
+        {
+          "label": "Bricken et al. 2023",
+          "url": "https://transformer-circuits.pub/2023/monosemantic-features"
+        }
+      ]
+    },
+    {
+      "id": 156,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Scaling monosemantic features to Claude 3 Sonnet",
+      "sources": [
+        {
+          "label": "Templeton et al. 2024",
+          "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/"
         }
       ]
     }

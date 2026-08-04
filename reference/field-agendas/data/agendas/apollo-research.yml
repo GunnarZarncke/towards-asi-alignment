@@ -1,32 +1,60 @@
 slug: apollo-research
-title: Apollo / Truthful AI (deception & scheming)
+title: "Apollo / Truthful AI (deception & scheming)"
 type: Research org cluster
 carrier: >-
-  Apollo Research; Truthful AI (Owain Evans); CHAI affiliate network; shared
-  mentee pipeline to AISI/Anthropic
+  Apollo Research; Truthful AI (Owain Evans); CHAI affiliate network; shared mentee
+  pipeline to AISI/Anthropic
+overview: >-
+  Apollo and Truthful AI focus on deception, [scheming](https://www.apolloresearch.ai/),
+  and hidden reasoning as empirical programs, running pre-deployment evaluations and
+  agent-security tooling before systems reach users.
 primaryArtifact: >-
-  Scheming science; pre-deployment evals; agent-security tools; deception,
-  situational awareness, hidden reasoning research
+  Scheming science, pre-deployment evaluations, agent-security tools, and research on
+  deception, [situational awareness](https://arxiv.org/abs/2309.00667), and hidden
+  reasoning.
 signatureVocabulary: >-
-  scheming, pre-deployment evals, situational awareness, agent governance,
-  deception, hidden reasoning, lie detection
+  Recurring terms include [scheming](https://www.apolloresearch.ai/), pre-deployment
+  evals, [situational awareness](https://arxiv.org/abs/2309.00667), agent governance,
+  deception, [hidden reasoning](https://www.apolloresearch.ai/research), and lie
+  detection.
 statedIntent: >-
-  Evaluate and mitigate deception/scheming and hidden reasoning before deployment
-primaryCrux: Can we detect strategic deception before capabilities outpace evals?
+  Evaluate and mitigate deception, [scheming](https://www.apolloresearch.ai/), and hidden
+  reasoning before deployment so that [strategic opacity](/cards/strategic-opacity/) is
+  surfaced early.
+primaryCrux: >-
+  Can we detect [strategic opacity](/cards/strategic-opacity/) and
+  [scheming](https://www.apolloresearch.ai/) before capabilities outpace pre-deployment
+  evaluations ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
 bookBridges:
-  - MB6 (partial)
-  - MB7a–c
+  - MB6
+  - MB7
   - MB10
-  - MB11 (partial)
+  - MB11
 contributes: >-
-  Scheming as named empirical program; TruthfulQA/SAD lineage; Evans mentee
-  network overlaps Apollo, UK/US AISI, Anthropic
-bookSeparates: Eval success ⇏ correction-channel preservation
+  Scheming as a named empirical program; TruthfulQA and SAD lineage; Evans mentee network
+  overlaps Apollo, UK and US AISI, and Anthropic.
+bookSeparates: >-
+  Eval success does not imply [correction-channel
+  integrity](/cards/correction-channel-integrity/) or that oversight mechanisms will
+  survive deployment pressure; the book treats [Goodhart
+  Selection](/cards/mb6-selection-and-basin-stability/) on evals and [Deployment
+  Safety](/cards/mb11-deployment-safety/) as separate concerns from detecting deception
+  alone.
 manuscriptHooks:
-  - ch10, ch43
+  - "ch10, ch43"
   - METR-adjacent rows in lethality stress test
 links:
-  - label: Apollo Research
+  - label: "Apollo Research"
     url: https://www.apolloresearch.ai/
-  - label: Truthful AI
+  - label: "Apollo publications index"
+    url: https://www.apolloresearch.ai/research
+  - label: "Meinke et al. 2024 \u2014 In-context scheming"
+    url: https://arxiv.org/abs/2412.04984
+  - label: "Laine et al. 2024 \u2014 Situational Awareness Dataset (SAD)"
+    url: https://arxiv.org/abs/2407.04694
+  - label: "Berglund et al. 2023 \u2014 Situational awareness in LLMs"
+    url: https://arxiv.org/abs/2309.00667
+  - label: "Park et al. 2024 \u2014 AI deception survey"
+    url: https://arxiv.org/abs/2308.14752
+  - label: "Truthful AI"
     url: https://truthful.ai/

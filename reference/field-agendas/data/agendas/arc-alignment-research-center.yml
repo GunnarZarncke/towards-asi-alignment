@@ -2,19 +2,42 @@ slug: arc-alignment-research-center
 title: ARC (Alignment Research Center)
 type: Research org
 carrier: Alignment Research Center (Geoffrey Irving pre-Resolution; ELK host)
-primaryArtifact: ELK problem framing; formal oversight research
-signatureVocabulary: ELK, Eliciting Latent Knowledge, human simulator, direct translator
-statedIntent: Formalize scalable oversight mechanisms including latent knowledge elicitation
-primaryCrux: Human simulator vs direct translator; readout under optimization
+overview: >-
+  ARC formalizes [scalable oversight](/cards/subsumption-debate/) mechanisms, most
+  prominently the [ELK](/cards/subsumption-elk/) ([Eliciting Latent
+  Knowledge](/cards/subsumption-elk/)) problem, asking whether oversight can read out what
+  a model knows rather than what it simulates.
+primaryArtifact: >-
+  [ELK](/cards/subsumption-elk/) problem framing and formal oversight research hosted at
+  the Alignment Research Center.
+signatureVocabulary: >-
+  Key terms include [ELK](/cards/subsumption-elk/), [Eliciting Latent
+  Knowledge](/cards/subsumption-elk/), [human simulator](/cards/subsumption-elk/), and
+  [direct translator](/cards/subsumption-elk/).
+statedIntent: >-
+  Formalize [scalable oversight](/cards/subsumption-debate/) mechanisms, including [latent
+  knowledge](/cards/subsumption-elk/) elicitation, so that honest readout can be specified
+  and tested.
+primaryCrux: >-
+  Can oversight elicit [latent knowledge](/cards/subsumption-elk/) directly rather than
+  through a human simulator, and will readout remain faithful under optimization ([Inner
+  Alignment](/cards/mb7-hidden-capability-and-access/))?
 bookBridges:
   - MB2
   - MB3
   - MB7
-contributes: ELK as canonical naming of latent readout problem
-bookSeparates: Readout ⇏ correction uptake (Lean separation)
+contributes: >-
+  [ELK](/cards/subsumption-elk/) as the canonical naming of the latent readout problem in
+  [scalable oversight](/cards/subsumption-debate/).
+bookSeparates: >-
+  Successful readout does not imply correction uptake; the book treats [correction-channel
+  integrity](/cards/correction-channel-integrity/) as a separate requirement from
+  [eliciting latent knowledge](/cards/subsumption-elk/), and adds [Value
+  Learning](/cards/mb2-bundle-identifiability/) and [Value
+  Referent](/cards/mb3-bearer-import/) structure beyond readout alone.
 manuscriptHooks:
   - ch43
   - App G ELK
 links:
-  - label: ARC
+  - label: "ARC"
     url: https://www.alignment.org/

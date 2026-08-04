@@ -2,21 +2,43 @@ slug: kairos-field-building
 title: Kairos (field-building)
 type: Training / field-building org
 carrier: Kairos
-primaryArtifact: SPAR, Pathfinder, GCP workshops, Generator Residency
-signatureVocabulary: SPAR, Pathfinder, university groups, GCP workshops
-statedIntent: Accelerate talent into AI safety through programs and campus organizing
-primaryCrux: Same as other training agendas
+overview: >-
+  Kairos operates SPAR mentored research, Pathfinder career programs, Global Challenges
+  Project workshops, and Generator Residency placements for emerging AI safety
+  researchers. Like other field-building agendas, program throughput accelerates talent
+  discovery rather than mechanism discovery. Participants seed early work across subfields
+  while the [Field hub](/field/) tracks which technical cruxes—such as [composite
+  agency](/cards/composite-agency/)—remain open.
+primaryArtifact: >-
+  Kairos operates SPAR mentored research projects, Pathfinder career programs, Global
+  Challenges Project workshops, and Generator Residency placements for emerging AI safety
+  researchers.
+signatureVocabulary: >-
+  Core program names include [SPAR](https://sparai.org/),
+  [Pathfinder](https://pathfinder.kairos-project.org/), university-group organizing, and
+  [Global Challenges Project](https://www.globalchallengesproject.org/) (GCP) workshops.
+statedIntent: >-
+  Accelerate talent into AI safety through structured programs, campus organizing, and
+  mentored research placements.
+primaryCrux: >-
+  Like other training agendas, program throughput and participant quality do not imply
+  resolution of technical alignment cruxes; the bottleneck is still mechanism discovery,
+  not talent discovery.
 bookBridges: []
-contributes: Campus pipeline; SPAR research projects
-bookSeparates: —
+contributes: >-
+  A campus-to-research pipeline and SPAR-backed project work that seeds early empirical
+  and conceptual contributions across subfields.
+bookSeparates: >-
+  Field-building scale is orthogonal to whether any particular preservation mechanism
+  survives optimization and deployment pressure.
 manuscriptHooks:
   - none
 links:
-  - label: Kairos
+  - label: "Kairos"
     url: https://kairos-project.org/
-  - label: SPAR
+  - label: "SPAR"
     url: https://sparai.org/
-  - label: Pathfinder
+  - label: "Pathfinder"
     url: https://pathfinder.kairos-project.org/
-  - label: Global Challenges Project
+  - label: "Global Challenges Project"
     url: https://www.globalchallengesproject.org/

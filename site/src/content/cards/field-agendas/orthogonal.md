@@ -2,7 +2,7 @@
 title: "Orthogonal"
 type: "agenda"
 status: "reviewed"
-summary: "Same family as MIRI/CHAI formal walls, community-organized"
+summary: "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?"
 agendaSlug: "orthogonal"
 bookBridges:
   - "MB1"
@@ -19,23 +19,23 @@ related: []
 
 ## Introduction
 
-**Orthogonal** is a research org carried by **Orthogonal (Tamsin Leake)**.
+Orthogonal is an agent-foundations research community advancing formal alignment work through Discord and papers. It asks whether community-organized research can discharge the same formal walls as established agent-foundations lineages—[embedded agency](/cards/mb1-boundary-estimator-soundness/), [corrigibility](/cards/mb4-correction-legitimacy/), and related obstructions. Active work engages [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [Corrigibility](/cards/mb4-correction-legitimacy/) as typed targets.
 
-**Stated intent:** Advance formal agent-foundations alignment research
+**Who carries it:** Orthogonal (Tamsin Leake)
 
-**Primary crux:** Same family as MIRI/CHAI formal walls, community-organized
+**What they aim to do.** Advance formal agent-foundations alignment research.
 
-**Primary artifact:** Agent-foundations research community (Discord + papers)
+**The hard question.** Can a community-organized research program discharge the same formal walls as MIRI and CHAI—[embedded agency](/cards/mb1-boundary-estimator-soundness/), [corrigibility](/cards/mb4-correction-legitimacy/), and related obstructions?
 
-**Signature vocabulary:** agent foundations, formal alignment, embedded agents
+**What they produce.** An agent-foundations research community (Discord plus papers) advancing formal alignment work.
 
-**Book bridges:** MB1, MB4
+**Key terms.** Key terms include [agent foundations](https://intelligence.org/), formal alignment, and embedded agents.
 
-**Contributes to the field:** Active agent-foundations community
+**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Corrigibility](/cards/mb4-correction-legitimacy/)
 
-**How the book separates:** Typed bridge stack + measurement program
+**What they contribute.** An active agent-foundations research community working on [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [Corrigibility](/cards/mb4-correction-legitimacy/).
 
-**Manuscript hooks:** sparse
+**How this book treats it.** A typed bridge stack and measurement program distinct from narrative community alignment talk.
 
 ## Links
 
@@ -49,4 +49,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Orthogonal](https://orxl.org/) → [Orthogonal](#orthogonal)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

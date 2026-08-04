@@ -2,11 +2,11 @@
 title: "Wentworth / natural abstractions"
 type: "agenda"
 status: "reviewed"
-summary: "Do natural abstractions align with value-relevant structure under optimization?"
+summary: "Do natural abstractions—the variables that survive selection—align with value-relevant structure when systems are trained or deployed at scale?"
 agendaSlug: "wentworth-natural-abstractions"
 bookBridges:
   - "MB2"
-  - "MB3 (partial)"
+  - "MB3"
   - "MB1"
 external:
   - label: "John Wentworth"
@@ -16,26 +16,26 @@ related: []
 
 ## Introduction
 
-**Wentworth / natural abstractions** is a researcher lineage carried by **John Wentworth (+ LessWrong NAH cluster)**.
+John Wentworth's natural-abstractions lineage develops the [Natural Abstraction Hypothesis](https://www.alignmentforum.org/users/John+Wentworth), [selection theorems](https://www.alignmentforum.org/users/John+Wentworth), and a compression-based theory of agency. It asks whether the abstractions that survive optimization align with value-relevant structure at scale. Convergent macro-variables can inform [Value Learning](/cards/mb2-bundle-identifiability/) targets but do not discharge [Tiling](/cards/mb5-successor-ontology-shift/) transport on their own.
 
-**Stated intent:** Mathematical theory of abstractions and agency that could constrain alignment
+**Who carries it:** John Wentworth (+ LessWrong NAH cluster)
 
-**Primary crux:** Do natural abstractions align with value-relevant structure under optimization?
+**What they aim to do.** Develop a mathematical theory of abstractions and agency that could constrain what alignment targets are even learnable under optimization pressure.
 
-**Primary artifact:** Natural Abstraction Hypothesis; selection theorems; agency posts
+**The hard question.** Do [natural abstractions](https://www.alignmentforum.org/users/John+Wentworth)—the variables that survive selection—align with value-relevant structure when systems are trained or deployed at scale?
 
-**Signature vocabulary:** natural abstractions, selection theorems, natural latents, agency as compression
+**What they produce.** The lineage centers on the [Natural Abstraction Hypothesis](https://www.alignmentforum.org/users/John+Wentworth), [selection theorems](https://www.alignmentforum.org/users/John+Wentworth) that predict which abstractions survive optimization, and a compression-based theory of agency.
 
-**Book bridges:** MB2, MB3 (partial), MB1
+**Key terms.** Signature terms include [natural abstractions](https://www.alignmentforum.org/users/John+Wentworth), [selection theorems](https://www.alignmentforum.org/users/John+Wentworth), [natural latents](https://www.alignmentforum.org/users/John+Wentworth), and agency as compression—the idea that useful macro-variables emerge reliably from messy micro-dynamics.
 
-**Contributes to the field:** NAH as falsifier for low-dimensional value story (ch17 WWCTV)
+**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Embedded Agency](/cards/mb1-boundary-estimator-soundness/)
 
-**How the book separates:** Bundle geometry + ontology shift transport; NAH not promoted to spine
+**What they contribute.** The [Natural Abstraction Hypothesis](https://www.alignmentforum.org/users/John+Wentworth) acts as a falsifier for low-dimensional value stories: if the wrong latents are natural, naive [Value Learning](/cards/mb2-bundle-identifiability/) and [Value Referent](/cards/mb3-bearer-import/) targets may misfire even when surface training looks successful (see ch17 WWCTV).
 
-**Manuscript hooks:** ch17; App B shard/NAH row
+**How this book treats it.** The book types bundle geometry and ontology-shift transport separately; natural-abstraction convergence is informative but is not promoted to a load-bearing spine assumption—[Tiling](/cards/mb5-successor-ontology-shift/) still needs its own discharge argument.
 
 ## Links
 
 - [John Wentworth](https://www.alignmentforum.org/users/John+Wentworth)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

@@ -2,11 +2,11 @@
 title: "Google DeepMind (safety)"
 type: "agenda"
 status: "reviewed"
-summary: "Same as frontier-lab crux: oversight co-scaling, deceptive alignment"
+summary: "Can oversight and safety research co-scale with capabilities, including under deceptive alignment and Inner Alignment risk—the same frontier-lab crux shared with other major labs?"
 agendaSlug: "google-deepmind-safety"
 bookBridges:
-  - "MB1 (partial)"
-  - "MB7a–c (partial)"
+  - "MB1"
+  - "MB7"
 external:
   - label: "Google DeepMind"
     url: "https://deepmind.google/"
@@ -21,23 +21,23 @@ related: []
 
 ## Introduction
 
-**Google DeepMind (safety)** is a capabilities lab + safety team carried by **Google DeepMind safety / alignment researchers**.
+Google DeepMind integrates safety research into a large capabilities org, producing empirical alignment work and agent-discovery methods alongside Gemini-era deployment.
 
-**Stated intent:** Build advanced AI with internal safety research integrated into capabilities org
+**Who carries it:** Google DeepMind safety / alignment researchers
 
-**Primary crux:** Same as frontier-lab crux: oversight co-scaling, deceptive alignment
+**What they aim to do.** Build advanced AI with internal safety research integrated into the capabilities organization from the start.
 
-**Primary artifact:** Safety research blog; Gemini-era alignment work; Discovering Agents
+**The hard question.** Can oversight and safety research co-scale with capabilities, including under [deceptive alignment](/cards/strategic-opacity/) and [Inner Alignment](/cards/mb7-hidden-capability-and-access/) risk—the same frontier-lab crux shared with other major labs?
 
-**Signature vocabulary:** scalable alignment, safety research, evaluation, Gemini deployment, discovering agents, causal agent discovery
+**What they produce.** Safety research blog output, Gemini-era alignment work, and the [Discovering Agents](https://arxiv.org/abs/2208.08345) program for causal agent discovery from system dynamics.
 
-**Book bridges:** MB1 (partial), MB7a–c (partial)
+**Key terms.** Key terms include [scalable alignment](/cards/subsumption-debate/), safety research, evaluation, Gemini deployment, [discovering agents](https://arxiv.org/abs/2208.08345), and [causal agent discovery](https://arxiv.org/abs/2208.08345).
 
-**Contributes to the field:** Large-scale empirical alignment research capacity; causal agent discovery from system dynamics
+**Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
 
-**How the book separates:** Measurement spine not replaced by corporate safety teams
+**What they contribute.** Large-scale empirical alignment research capacity and causal agent discovery methods that infer agents from system dynamics.
 
-**Manuscript hooks:** ch14 co-scaling; minimal elsewhere
+**How this book treats it.** Corporate safety teams do not replace an independent measurement spine for [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [boundary discovery](/cards/boundary-discovery/); the book treats boundary and inner-alignment questions as only partially addressed by in-house teams.
 
 ## Links
 
@@ -52,4 +52,4 @@ AISafety.com map listings that roll up to this agenda:
 
 - [Google DeepMind](https://deepmind.google/), DeepMind Safety Research → [Google DeepMind safety](#google-deepmind-safety)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

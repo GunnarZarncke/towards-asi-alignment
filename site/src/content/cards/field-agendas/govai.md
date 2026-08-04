@@ -2,13 +2,13 @@
 title: "GovAI / UK AISI (governance & eval)"
 type: "agenda"
 status: "reviewed"
-summary: "Can governance and institute evals keep pace with capability and bind on deployment under race pressure?"
+summary: "Can governance mechanisms and institute evaluations keep pace with capability and actually bind deployment decisions under race pressure?"
 agendaSlug: "govai"
 bookBridges:
-  - "MB6 (institutional)"
-  - "MB7 (partial)"
-  - "MB9 (partial)"
-  - "MB11 (partial)"
+  - "MB6"
+  - "MB7"
+  - "MB9"
+  - "MB11"
 external:
   - label: "GovAI"
     url: "https://www.governance.ai/"
@@ -27,23 +27,23 @@ related: []
 
 ## Introduction
 
-**GovAI / UK AISI (governance & eval)** is a governance research + gov eval institutes carried by **Centre for the Governance of AI (Oxford); UK AI Security Institute; US CAISI (NIST); Simon Institute; IAPS (policy orbit)**.
+GovAI and allied institutes connect policy research to frontier evaluation, touching [Goodhart Selection](/cards/mb6-selection-and-basin-stability/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Deployment Safety](/cards/mb11-deployment-safety/) in institutional form.
 
-**Stated intent:** Inform decision-makers and test frontier systems via policy research and government-led eval capacity
+**Who carries it:** Centre for the Governance of AI (Oxford); UK AI Security Institute; US CAISI (NIST); Simon Institute; IAPS (policy orbit)
 
-**Primary crux:** Can governance and institute evals keep pace with capability and bind on deployment under race pressure?
+**What they aim to do.** Inform decision-makers and test frontier systems through policy research and government-led evaluation capacity.
 
-**Primary artifact:** Policy-facing research; GovAI Fellowship; gradual disempowerment programme; frontier model testing; standards development; alignment eval case studies
+**The hard question.** Can governance mechanisms and institute evaluations keep pace with capability and actually bind deployment decisions under race pressure?
 
-**Signature vocabulary:** AI governance, compute governance, frontier evals, gradual disempowerment, AI safety institute, pre-deployment testing, evaluation awareness
+**What they produce.** Policy-facing research, the GovAI Fellowship, gradual disempowerment programmes, frontier model testing, standards development, and alignment evaluation case studies.
 
-**Book bridges:** MB6 (institutional), MB7 (partial), MB9 (partial), MB11 (partial)
+**Key terms.** Terms include AI governance, compute governance, frontier evaluations, gradual disempowerment, [AI safety](/field/) institutes, pre-deployment testing, and evaluation awareness.
 
-**Contributes to the field:** Governance research pipeline; EU/US policy translation; gradual disempowerment framing; institutional eval capacity; Resolution/Irving lineage (UK AISI); personnel/advisory overlap between GovAI and AISI
+**Related field cruxes.** [Goodhart Selection](/cards/mb6-selection-and-basin-stability/); [Inner Alignment](/cards/mb7-hidden-capability-and-access/); [Grounding Drift](/cards/mb9-grounding-certificate/); [Deployment Safety](/cards/mb11-deployment-safety/)
 
-**How the book separates:** Policy levers and eval visibility ⇏ correction-channel integrity
+**What they contribute.** A governance research pipeline; EU and US policy translation; gradual disempowerment framing; institutional evaluation capacity; Resolution and Irving lineage via UK AISI; personnel and advisory overlap between GovAI and AISI.
 
-**Manuscript hooks:** App C institutional translation; App B selection row; ch passive observation; field-news
+**How this book treats it.** Policy levers and evaluation visibility do not imply [correction-channel integrity](/cards/correction-channel-integrity/).
 
 ## Links
 
@@ -61,4 +61,4 @@ AISafety.com map listings that roll up to this agenda:
 - [GovAI](https://www.governance.ai/), GovAI Fellowship, [Simon Institute](https://www.simoninstitute.ch/), [IAPS](https://www.iaps.ai/), Oxford AIGI → [GovAI / UK AISI](#govai) cluster
 - [UK AISI](https://www.aisi.gov.uk/), [CAISI](https://www.nist.gov/artificial-intelligence), Beijing-AISI, CnAISDA → [GovAI / UK AISI](#govai) cluster
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

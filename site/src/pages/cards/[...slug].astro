@@ -351,13 +351,19 @@ const pageDescription = showFullText
           </ul>
           {card.data.bookBridges.length > 0 && (
             <>
-              <h3>Book bridges</h3>
+              <h3>Related field cruxes</h3>
               <ul>
                 {card.data.bookBridges.map((mb) => {
-                  const slug = fieldAgendasData.mbBridgeCards[mb as keyof typeof fieldAgendasData.mbBridgeCards];
+                  const bridge = (fieldAgendasData.bridges as Array<{ key: string; noun: string; cardSlug: string }> | undefined)?.find(
+                    (row) => row.key === mb
+                  );
+                  const slug =
+                    bridge?.cardSlug ??
+                    fieldAgendasData.mbBridgeCards[mb as keyof typeof fieldAgendasData.mbBridgeCards];
+                  const label = bridge?.noun ?? mb;
                   return (
                     <li>
-                      {slug ? <a href={cardHref(slug)}>{mb}</a> : mb}
+                      {slug ? <a href={cardHref(slug)}>{label}</a> : label}
                     </li>
                   );
                 })}

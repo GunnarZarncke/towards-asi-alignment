@@ -2,11 +2,13 @@
 title: "Kosoy / PreDCA"
 type: "agenda"
 status: "reviewed"
-summary: "Does precursor-utility pointing survive simulation / ontology ambiguity?"
+summary: "Does precursor-utility pointing survive simulation and ontology ambiguity?"
 agendaSlug: "kosoy-predca"
 bookBridges:
   - "MB2"
-  - "MB3 (peer outer target); MB4/MB8 legitimacy underside"
+  - "MB3"
+  - "MB4"
+  - "MB8"
 external:
   - label: "PreDCA (Alignment Forum tag)"
     url: "https://www.alignmentforum.org/w/predca"
@@ -17,27 +19,27 @@ related: []
 
 ## Introduction
 
-**Kosoy / PreDCA** is a researcher lineage (outer-alignment strand) carried by **Vanessa Kosoy**.
+[PreDCA](https://www.alignmentforum.org/w/predca) (precursor detection, classification, and assistance) is Kosoy's outer-alignment framework built on [infra-Bayesian physicalism](https://www.lesswrong.com/w/infra-bayesianism), targeting assistance to an aggregate of causal precursors. It offers a sibling outer-alignment endpoint reached through a different formal path than [CIRL](/cards/subsumption-cirl/)-style pointing. The endpoint alone does not discharge [value-bundle transport](/cards/value-bundle-transport/) or [bearer-persistence](/cards/bearer-persistence/) under optimization.
 
-**Stated intent:** Outer-alignment via assisting an aggregate of causal precursors (human user)
+**Who carries it:** Vanessa Kosoy
 
-**Primary crux:** Does precursor-utility pointing survive simulation / ontology ambiguity?
+**What they aim to do.** Pursue outer alignment by assisting an aggregate of causal precursors (the human user).
 
-**Primary artifact:** PreDCA (precursor detection, classification, assistance)
+**The hard question.** Does precursor-utility pointing survive simulation and ontology ambiguity?
 
-**Signature vocabulary:** PreDCA, precursor agents, infra-Bayesian physicalism (constructive layer)
+**What they produce.** [PreDCA](https://www.alignmentforum.org/w/predca) (precursor detection, classification, and assistance)—an outer-alignment framework built on [infra-Bayesian physicalism](https://www.lesswrong.com/w/infra-bayesianism).
 
-**Book bridges:** MB2, MB3 (peer outer target); MB4/MB8 legitimacy underside
+**Key terms.** Key terms include [PreDCA](https://www.alignmentforum.org/w/predca), [precursor agents](https://www.alignmentforum.org/posts/vanessa-kosoy-s-predca-distilled), and [infra-Bayesian physicalism](https://www.lesswrong.com/w/infra-bayesianism) as a constructive layer.
 
-**Contributes to the field:** Sibling outer endpoint; assistance-game cousin via different formal path
+**Related field cruxes.** [Value Learning](/cards/mb2-bundle-identifiability/); [Value Referent](/cards/mb3-bearer-import/); [Corrigibility](/cards/mb4-correction-legitimacy/); [Extrapolated Volition](/cards/mb8-cev-process-convergence/)
 
-**How the book separates:** Endpoint not sufficient alone; bundle + bearer + correction process still load-bearing
+**What they contribute.** A sibling outer-alignment endpoint; an assistance-game cousin reached through a different formal path.
 
-**Manuscript hooks:** bib `kosoy2022predca`; glossary PreDCA row
+**How this book treats it.** The endpoint alone is not sufficient; [value-bundle-transport](/cards/value-bundle-transport/), [bearer-persistence](/cards/bearer-persistence/), and the correction process remain load-bearing.
 
 ## Links
 
 - [PreDCA (Alignment Forum tag)](https://www.alignmentforum.org/w/predca)
 - [Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

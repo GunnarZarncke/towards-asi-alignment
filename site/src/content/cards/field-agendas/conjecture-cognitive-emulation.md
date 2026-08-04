@@ -2,10 +2,10 @@
 title: "Conjecture / EleutherAI (cognitive emulation)"
 type: "agenda"
 status: "reviewed"
-summary: "Does emulation imply corrigibility under scale?"
+summary: "Does emulation-style controllability still imply corrigibility—that systems remain open to correction—as capability scales?"
 agendaSlug: "conjecture-cognitive-emulation"
 bookBridges:
-  - "MB7 (partial)"
+  - "MB7"
 external:
   - label: "Conjecture"
     url: "https://www.conjecture.dev/"
@@ -16,27 +16,27 @@ related: []
 
 ## Introduction
 
-**Conjecture / EleutherAI (cognitive emulation)** is a research org cluster (startup + open-science lineage) carried by **Conjecture (Connor Leahy, Sid Black, Gabriel Alfour; winding down 2026); EleutherAI open-science institute; Leahy → ControlAI (pause advocacy cousin)**.
+Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed as emulation rather than opaque end-to-end agents—alongside the EleutherAI open-model lineage. The cluster asks whether emulation-style controllability implies [corrigibility](/cards/mb4-correction-legitimacy/) as capability scales. [Correction-channel integrity](/cards/correction-channel-integrity/) and successor value transport remain separate load-bearing concerns beyond controllability claims.
 
-**Stated intent:** Build controllable systems via emulation framing rather than opaque end-to-end agents
+**Who carries it:** Conjecture (Connor Leahy, Sid Black, Gabriel Alfour; winding down 2026); EleutherAI open-science institute; Leahy → ControlAI (pause advocacy cousin)
 
-**Primary crux:** Does emulation imply corrigibility under scale?
+**What they aim to do.** Build controllable systems using an emulation framing rather than opaque end-to-end agents.
 
-**Primary artifact:** Cognitive Emulation / CoEm; controllable LLM stacks; open LLM lineage
+**The hard question.** Does emulation-style controllability still imply [corrigibility](/cards/mb4-correction-legitimacy/)—that systems remain open to correction—as capability scales?
 
-**Signature vocabulary:** cognitive emulation, controllable LLMs, emulation vs alignment, EleutherAI, open models
+**What they produce.** Cognitive Emulation (CoEm) and controllable LLM stacks, plus the EleutherAI open LLM lineage.
 
-**Book bridges:** MB7 (partial)
+**Key terms.** Key terms include [cognitive emulation](https://www.conjecture.dev/), controllable LLMs, emulation versus alignment, EleutherAI, and open models.
 
-**Contributes to the field:** Alternative controllability framing; EleutherAI spinoff lineage; Redwood-adjacent prosaic alignment spirit
+**Related field cruxes.** [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
 
-**How the book separates:** CCI + successor transport; Conjecture chapter closing — active bet partly historical; ControlAI overlap is advocacy not CoEm
+**What they contribute.** An alternative controllability framing; EleutherAI spinoff lineage; a Redwood-adjacent prosaic alignment spirit.
 
-**Manuscript hooks:** sparse
+**How this book treats it.** [Correction-channel integrity](/cards/correction-channel-integrity/) and successor [value-bundle-transport](/cards/value-bundle-transport/) remain separate load-bearing concerns; Conjecture's active bet is partly historical; ControlAI overlap is advocacy, not CoEm research.
 
 ## Links
 
 - [Conjecture](https://www.conjecture.dev/)
 - [EleutherAI](https://www.eleuther.ai/)
 
-See the [coverage matrix](/field/#coverage-matrix) for bridge-level evidence tagged to this agenda.
+See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.
