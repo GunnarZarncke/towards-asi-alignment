@@ -235,6 +235,7 @@ Companion Astro site: orientation layer (Start Here, cards, paths, FAQ, book map
 
 ## Build / tooling
 
+- [ ] **Optional: LaTeX PDF CI build test** — Add a path-filtered workflow (e.g. `.github/workflows/book-pdf.yml`) that runs `./build.sh` when manuscript inputs change. **Compile gate only:** does not publish to the site; site deploy continues to copy/fetch the latest Release PDF via `site/scripts/copy-book-pdf.mjs`. Expect TeX + biber setup, PAR cache (`docs/BUILD.md`), and ~15–30 min per run. Distinct from folding PDF build into `site.yml` (which would ship HEAD on every deploy).
 - [x] Resolve duplicate LaTeX labels: `sec:self-modeling-transparency`, `sec:example-helpful-assistant` — both now carry unique `-chNN` suffixes; no `multiply defined` warnings.
 - [x] Fix duplicate hyperref destination `page.i` (title page collided with dedication): switched title page to `titlingpage*` (no page-counter reset).
 

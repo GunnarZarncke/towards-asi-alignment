@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-04 | **Site PDF fetch rate-limit fix** — CI `copy:pdf` failed on unauthenticated Releases API 403; direct release download + token fallback + retries; optional LaTeX PDF CI deferred. | [2026-08-04-site-pdf-fetch-rate-limit.md](2026-08-04-site-pdf-fetch-rate-limit.md) |
 | 2026-08-04 | **Debate graph + site visibility** — FINITE→DEB edge on field-subsumption graph; DebateGame leanNodes on debate projection card; `/lean/check/debate/`; Mathlib note calibrated. | [2026-08-04-debate-graph-site-visibility.md](2026-08-04-debate-graph-site-visibility.md) |
 | 2026-08-04 | **Translation spine on-ramp (Phases 1–2)** — Field-first `/lean/`; check pages for corrigibility, CIRL, ELK; 13 projection rows (+ hidden-BIQ); Lean decl source links; graph→card wiring; reverse term-links. | [2026-08-04-translation-spine-on-ramp.md](2026-08-04-translation-spine-on-ramp.md) |
 | 2026-08-04 | **Field evidence housekeeping + HTML canary** — Close catalog gaps at ev 130/144/146; fix duplicate agenda suffixes; add hidden benchmark canary to every site page. | [2026-08-04-field-evidence-housekeeping-canary.md](2026-08-04-field-evidence-housekeeping-canary.md) |

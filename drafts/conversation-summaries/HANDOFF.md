@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-04 (debate graph + site visibility).
+Last updated: 2026-08-04 (site PDF fetch rate-limit fix).
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 2026-08-04 (debate graph + site visibility).
 
 - **App G translation spine opener (author)** — Mirror site `/lean/` projections table in Appendix G; deferred from translation spine Phase 2 close-out. Site companion done; manuscript pass is author-owned.
 
-- **Field matrix evidence quality** — Second homepage prune done (ev 33/34/69/72/74–76); replaced with papers (151–156). Residual homepage-style cells elsewhere (Resolution 39, FAR 78, etc.) — grep `evidence.yml` root URLs if tightening further. Log: `2026-08-03-field-matrix-homepage-evidence-prune.md`.
+- **Field matrix evidence quality** — Homepage prune **complete** (passes 1–3). No root-URL sources left in `evidence.yml`; org links on agenda cards. Log: `2026-08-03-field-matrix-homepage-evidence-prune.md`.
 - **Field agenda matrix (post-restructure)** — 25 matrix rows / 30 agenda records after independence merges and neglected-report folds; TSA row links to companion home (no card). Stale search index until next site build. App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`.
 - **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agree/differ/homograph notes on MB1–MB11 bridge cards; hub crux legend removed 2026-08-02. Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
 - **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site / CI (2026-08-04):** Site PDF fetch — direct release download + authenticated API fallback + retries; fixes GitHub Actions `403 rate limit exceeded` on `copy:pdf`. Optional LaTeX PDF CI compile gate deferred to `metadata/TODO.md`. Log: `2026-08-04-site-pdf-fetch-rate-limit.md`.
 - **Companion site (2026-08-04):** Debate visibility — `FINITE → DEB (DebateGame)` in field graph; DEB node surfaces game theorems; `/lean/check/debate/`; ELK alias/graph alignment; regenerated `05-field-subsumptions.png`. Log: `2026-08-04-debate-graph-site-visibility.md`.
 - **Reference + companion site (2026-08-04):** Field evidence catalog renumber (131–156 → 130–153; closes gaps 130/144/146); duplicate agenda suffixes fixed; benchmark canary on every HTML page via `BenchmarkCanary.astro`. Log: `2026-08-04-field-evidence-housekeeping-canary.md`.
 - **Companion site (2026-08-04):** Translation spine **Phase 2 closed** — bridge dependency map on `/field/#bridge-dependencies` (`sync-bridge-graph.mjs`); links from bridge-assumptions + MB bridge cards; CIRL/ELK checks; hidden-BIQ projection. App G opener deferred to author. Log: `2026-08-04-translation-spine-on-ramp.md`.
