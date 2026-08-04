@@ -40,7 +40,7 @@ def test_unknown_report_mode_raises():
 def test_engineer_idle_when_no_model_in_flight():
     obs = {"model_id": None, "completed_steps": []}
     available = available_playbooks("engineer", obs)
-    assert {pb.name for pb in available} == {"eng_honest", "eng_inflate"}
+    assert {pb.name for pb in available} == {"eng_honest", "eng_inflate", "eng_honest_checkpoint"}
 
 
 def test_engineer_unavailable_once_review_requested():
@@ -52,7 +52,7 @@ def test_engineer_available_mid_model_for_boundary_handle_recovery():
     # After an isolate_restart wipes playbook state mid-model, the engineer
     # must be able to re-pick a playbook and resume (see playbooks.py).
     obs = {"model_id": "m001", "completed_steps": ["submit_build"]}
-    assert len(available_playbooks("engineer", obs)) == 2
+    assert len(available_playbooks("engineer", obs)) == 3
 
 
 def test_reviewer_available_when_review_pending():
@@ -156,7 +156,7 @@ def test_merged_repertoire_empty_extra_returns_baseline_object_unchanged():
 
 _BASELINE_ENGINEER_NAMES = {
     "eng_honest", "eng_inflate", "eng_capability_probe", "eng_honest_dm_coordinated", "eng_honest_upgrade",
-    "eng_inflate_upgrade", "eng_honest_handoff", "eng_honest_chatty", "eng_honest_loop",
+    "eng_inflate_upgrade", "eng_honest_handoff", "eng_honest_chatty", "eng_honest_loop", "eng_honest_checkpoint",
 }
 
 
@@ -201,6 +201,8 @@ def test_available_playbooks_honors_repertoire_override():
     obs = {"model_id": None, "completed_steps": []}
     merged = merged_repertoire((_VALID_EXTRA,))
     available = available_playbooks("engineer", obs, repertoire=merged)
-    assert {pb.name for pb in available} == {"eng_honest", "eng_inflate", "eng_generated_ok"}
+    assert {pb.name for pb in available} == {"eng_honest", "eng_inflate", "eng_honest_checkpoint", "eng_generated_ok"}
     # Default (no repertoire arg) is unaffected by the override existing.
-    assert {pb.name for pb in available_playbooks("engineer", obs)} == {"eng_honest", "eng_inflate"}
+    assert {pb.name for pb in available_playbooks("engineer", obs)} == {
+        "eng_honest", "eng_inflate", "eng_honest_checkpoint",
+    }

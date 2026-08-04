@@ -252,7 +252,7 @@ def run_embedded_audit(
                 "(original 8-scenario battery) / "
                 f"{pricing['measured_capture_false_pass_rate_combined_17_scenarios']:.2f} "
                 "(combined 17-scenario battery, domain-conditional -- see "
-                f"NEGATIVE_RESULTS.md N-10 Postscript 5) at this level "
+                f"NEGATIVE_RESULTS.md ES-10 Postscript 5) at this level "
                 f"({pricing['measured_against']}); {pricing['recommendation']}."
             )
     if unit and unit_scope_steps:

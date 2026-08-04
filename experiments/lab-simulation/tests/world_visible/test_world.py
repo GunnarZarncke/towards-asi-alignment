@@ -211,7 +211,7 @@ def test_high_hazard_build_params_makes_conscientious_reviewer_stall_deploys():
 
 
 def test_build_params_server_side_overrides_engineer_submit_params():
-    """G-8: lab-configured build_params must win over agent-supplied params."""
+    """LS-8: lab-configured build_params must win over agent-supplied params."""
     cfg = _cfg(HONEST_WEIGHTS, HONEST_WEIGHTS)
     cfg = LabConfig(**{**vars(cfg), "build_params": {"scale": 0.95, "safety_effort": 0.05}})
     result = run_episode(cfg, seed=1, backend=MockIsolate())

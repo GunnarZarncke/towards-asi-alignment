@@ -1,6 +1,8 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import profile from "../../data/author-profile.json";
+import { classifyLinkKind } from "../../lib/site-urls";
 
 const aintelopeUrl = "https://www.aintelope.net/";
 const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
@@ -18,7 +20,7 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
   <section class="readable content-card">
     <p>
       Gunnar Zarncke is the founder and Managing Director of
-      <a href={aintelopeUrl}>aintelope</a>, a German nonprofit focused on AI alignment research;
+      <a href={aintelopeUrl} target="_blank" rel="noopener noreferrer">aintelope<LinkIndicator kind="external" /></a>, a German nonprofit focused on AI alignment research;
       previously CTO/CISO building a security-first systems and teams for a fintech startup.
       Gunnar is a systems architect specializing in quickly evolving systems.
       Over more than a decade, he has led architecture and engineering across startups and larger orgs,
@@ -36,51 +38,61 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
     <h2>Links</h2>
     <ul class="link-list">
       {profile.links.map((link) => (
-        <li>
-          <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
-          {link.note && <span class="side-panel-meta"> ({link.note})</span>}
+        <li class={link.url.includes("calendly.com") ? "calendly-item" : undefined}>
+          {link.url.includes("calendly.com") ? (
+            <>
+              <p class="calendly-label">{link.label}</p>
+              <div class="calendly-inline-widget" data-url={link.url} style="min-width:320px;height:700px;" />
+            </>
+          ) : (
+            <>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<LinkIndicator kind={classifyLinkKind(link.url)} /></a>
+              {link.note && <span class="side-panel-meta"> ({link.note})</span>}
+            </>
+          )}
         </li>
       ))}
     </ul>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async is:inline></script>
 
     <h2>aintelope</h2>
     <p>
-      <a href={aintelopeUrl}>aintelope</a> is a German nonprofit focused on AI alignment research.
+      <a href={aintelopeUrl} target="_blank" rel="noopener noreferrer">aintelope<LinkIndicator kind="external" /></a> is a German nonprofit focused on AI alignment research.
       Its public tagline: AGI research inspired by neuroscience. A better future for all sentient beings.
     </p>
 
     <h2>Publications</h2>
     <p class="side-panel-meta">
-      Working papers, reports, and posts from the research program behind the book. PDFs link to
+      Working papers, reports, and posts from the research program behind this project. PDFs link to
       canonical copies in sibling repos (
-      <a href="https://github.com/GunnarZarncke/agency-detect">agency-detect</a>,
-      <a href="https://github.com/GunnarZarncke/brain-to-values">brain-to-values</a>,
-      <a href="https://github.com/GunnarZarncke/ai-safety-interventions">ai-safety-interventions</a>,
-      <a href="https://github.com/GunnarZarncke/alignment-attractor">alignment-attractor</a>
+      <a href="https://github.com/GunnarZarncke/agency-detect" target="_blank" rel="noopener noreferrer">agency-detect<LinkIndicator kind="github" /></a>,
+      <a href="https://github.com/GunnarZarncke/brain-to-values" target="_blank" rel="noopener noreferrer">brain-to-values<LinkIndicator kind="github" /></a>,
+      <a href="https://github.com/GunnarZarncke/ai-safety-interventions" target="_blank" rel="noopener noreferrer">ai-safety-interventions<LinkIndicator kind="github" /></a>,
+      <a href="https://github.com/GunnarZarncke/alignment-attractor" target="_blank" rel="noopener noreferrer">alignment-attractor<LinkIndicator kind="github" /></a>
       ) where available.
     </p>
     <ul class="publication-list">
       {profile.publications.map((pub) => (
         <li>
-          <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a>
+          <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}<LinkIndicator kind={classifyLinkKind(pub.url)} /></a>
           <span class="pub-meta"> ({pub.year}{pub.kind ? ` · ${pub.kind}` : ""}{pub.note ? ` · ${pub.note}` : ""})</span>
           {pub.alternateUrl && (
             <>
               {" · "}
-              <a href={pub.alternateUrl} target="_blank" rel="noopener noreferrer" class="side-panel-meta">LessWrong</a>
+              <a href={pub.alternateUrl} target="_blank" rel="noopener noreferrer" class="side-panel-meta">LessWrong<LinkIndicator kind="external" /></a>
             </>
           )}
           {pub.externalUrl && (
             <>
               {" · "}
-              <a href={pub.externalUrl} target="_blank" rel="noopener noreferrer" class="side-panel-meta">preprint</a>
+              <a href={pub.externalUrl} target="_blank" rel="noopener noreferrer" class="side-panel-meta">preprint<LinkIndicator kind="external" /></a>
             </>
           )}
           {pub.sublinks && (
             <ul class="sublink-list">
               {pub.sublinks.map((sub) => (
                 <li>
-                  <a href={sub.url} target="_blank" rel="noopener noreferrer">{sub.label}</a>
+                  <a href={sub.url} target="_blank" rel="noopener noreferrer">{sub.label}<LinkIndicator kind={classifyLinkKind(sub.url)} /></a>
                 </li>
               ))}
             </ul>
@@ -90,7 +102,7 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
     </ul>
 
     <p>
-      <a href={repoUrl}>View the book repository on GitHub</a>
+      <a href={repoUrl} target="_blank" rel="noopener noreferrer">View the project repository on GitHub<LinkIndicator kind="github" /></a>
     </p>
   </section>
 </SiteLayout>
@@ -119,5 +131,19 @@ const repoUrl = "https://github.com/GunnarZarncke/towards-asi-alignment";
     padding-left: 1.2rem;
     margin: 0.25rem 0 0;
     font-size: 0.92rem;
+  }
+
+  .calendly-item {
+    list-style: none;
+    margin-left: -1.2rem;
+  }
+
+  .calendly-label {
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+  }
+
+  .calendly-inline-widget {
+    max-width: 100%;
   }
 </style>

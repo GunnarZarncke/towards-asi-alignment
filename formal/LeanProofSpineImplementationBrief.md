@@ -29,7 +29,7 @@ context/
 
 Implement a compact Lean proof spine for the book project.
 
-The goal is **not** to formalize all empirical content of UAD, value bundles, B-IQ, attractor basins, or CEV. The goal is to formalize the **logical skeleton** of the alignment argument:
+The goal is **not** to formalize all empirical content of UAD, value bundles, BIQ, attractor basins, or CEV. The goal is to formalize the **logical skeleton** of the alignment argument:
 
 ```text
 boundary discovery
@@ -110,7 +110,7 @@ C-CC     Correction-channel integrity
 C-CEV    CEV-like update-process preservation
 C-SUC    Successor stability
 C-ADV    Adversarial UAD / non-identifiability
-C-BIQ    Competence / B-IQ / control-capacity bounds
+C-BIQ    Competence / BIQ / control-capacity bounds
 C-COOP   Cooperativity / κ / transparency
 C-AB     Attractor basin / percolation / parasite persistence
 C-CERT   Certified-class safety
@@ -136,7 +136,7 @@ S02 Propositional logic / conjunction / negation
   -> P45 Any layer failure blocks layered alignment
 
 S03 Ordered arithmetic / linear arithmetic
-  -> P10 B-IQ upper bound
+  -> P10 BIQ upper bound
   -> P11 Capacity monotonicity
   -> P12 Coordination bottleneck
   -> P13 Control outpaces correction risk
@@ -267,7 +267,7 @@ P28 Missing component blocks successor safety
 P29 Better self-modeling can increase risk
   -> P30 Certified-class safety
 
-P10 B-IQ upper bound
+P10 BIQ upper bound
   -> P11 Capacity monotonicity
   -> P13 Control outpaces correction risk
 
@@ -495,7 +495,7 @@ def SuccessorSafe (A B : System) : Prop :=
   BearerMapPreserved A B ∧
   CorrectionCapacityPreserved A B
 
-/-- B-IQ abstract quantities. -/
+/-- BIQ abstract quantities. -/
 constant Ipred Ictrl Hmem Surprise Csens Cact beta gamma : Int
 def BIQ : Int := Ipred + Ictrl - beta * Hmem - gamma * Surprise
 
@@ -718,7 +718,7 @@ theorem P36_intervention_refines_identification
     IdentifiableWithIntervention i M1 M2 := by
   admit
 
-/-! ## P10-P13: B-IQ and control/correction risk -/
+/-! ## P10-P13: BIQ and control/correction risk -/
 
 theorem P10_biq_upper_bound
     (hpred : Ipred ≤ Csens)
@@ -1030,7 +1030,7 @@ Implement these first. They should be compact and useful.
 ```text
 P01 Basin invariant theorem
 P02 Layered alignment conjunction
-P10 B-IQ upper bound
+P10 BIQ upper bound
 P11 Capacity monotonicity
 P13 Control outpaces correction risk
 P14 Factorization through bundle

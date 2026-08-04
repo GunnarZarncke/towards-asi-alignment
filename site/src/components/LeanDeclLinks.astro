@@ -1,0 +1,65 @@
+---
+import LinkIndicator from "./LinkIndicator.astro";
+import { resolveLeanDeclLinks } from "../lib/lean-decl-hrefs";
+import leanSpine from "../data/lean-spine.json";
+
+interface LeanNode {
+  nodeId: string;
+  kind: string;
+  summary: string;
+  module: string;
+}
+
+interface Props {
+  nodes: LeanNode[];
+  graphNodeId?: string | null;
+}
+
+const { nodes, graphNodeId = null } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const declIndex = (leanSpine as { declIndex?: Record<string, import("../lib/lean-decl-hrefs").LeanDeclEntry> }).declIndex ?? {};
+---
+
+<ul class="lean-decl-list">
+  {nodes.map((node) => {
+    const links = resolveLeanDeclLinks(node.nodeId, node.module, declIndex, base);
+    const graphHref =
+      links.graphNodeHref ||
+      (graphNodeId ? withBase(`/lean/node/${encodeURIComponent(graphNodeId)}/`) : null);
+    return (
+      <li>
+        <code>{node.nodeId}</code>
+        {" "}({node.kind}) — {node.summary}
+        <div class="lean-decl-links side-panel-meta">
+          <a href={links.githubUrl} target="_blank" rel="noopener noreferrer">
+            Lean source<LinkIndicator kind="github" />
+          </a>
+          {graphHref && (
+            <>
+              {" · "}
+              <a href={graphHref}>Spine graph node</a>
+            </>
+          )}
+          <br /><span class="side-panel-meta">{links.file.replace(/^formal\//, "")}</span>
+        </div>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .lean-decl-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .lean-decl-list li + li {
+    margin-top: 0.75rem;
+  }
+
+  .lean-decl-links {
+    margin-top: 0.25rem;
+  }
+</style>

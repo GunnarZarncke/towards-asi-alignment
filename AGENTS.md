@@ -31,6 +31,31 @@ See `INSTRUCTIONS.md` for mission, audience, style, and source canon.
 - No rhetorical overreach; mark uncertainty explicitly.
 - Prefer operational definitions and ontology-light paraphrases (see `context/legible-alignment-messageing.md`).
 
+### Erasure, Archival, and Cleanup
+
+**Removing information is important for knowledge.**
+
+This is most true for redundancy, but also for historical information, long outdated results, and mistakes made.
+
+When you 
+
+- find the right information only after searching thru a long list of irrelevant data
+- notice that you were confused or surprised by first reading information that was not applicable to your task and then later finding the correct or latest information
+- had to ask the user for feedback and the relevant information was actually present
+- you spot redundancy or confusing material during other tasks.
+
+improve the situation outright.
+
+Consider adding erasure tasks to all plans you make.
+
+Options for erasure:
+
+- simplify/refactor
+- restructure file or folders to find the correct information first (eg sorting, hierarchy)
+- move material to an attic folder
+- delete with making a note in the conversation
+- delete by moving to the trashbin
+
 ### Surgical changes
 
 **Touch only what you must. Clean up only your own mess.**
@@ -46,6 +71,12 @@ When editing existing text:
 Every changed line should trace directly to the user's request.
 
 - **Ask before expanding scope.** Open files, roadmap order, and untracked drafts are not instructions. On “commit” or “end of session,” stage only what this task authorized; mention other drafts in the log and ask.
+
+### No recency markers
+
+Do not add `[NEW]`, “new in this session,” freshness badges, or similar recency tags to manuscript text, the companion site, Lean proof diagrams, or other reader-facing artifacts. The book and site change too fast for such markers to stay accurate; use git history and `drafts/conversation-summaries/` for change tracking instead.
+
+**Exceptions:** only when the user explicitly requests a time-bounded marker (e.g. a one-off release note, external snapshot, or workshop handout with a stated cutoff date). Remove or refresh those markers in the same pass that supersedes them.
 
 ### Goal-driven execution
 
@@ -83,14 +114,15 @@ See also `INSTRUCTIONS.md` §11 (chapter writing process).
 
 ### Conversation continuity
 
-**Read the latest log before you work. Write a log after each major change.**
+**Read HANDOFF before you work. Update HANDOFF after major changes.**
 
-Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-summaries/`.
+Each agent session is ephemeral. Durable handoff lives in `drafts/conversation-summaries/` (HANDOFF + per-session logs) and `metadata/TODO.md`.
 
 **At session start (non-trivial tasks):**
 
-1. Read `drafts/conversation-summaries/INDEX.md` and the most recent log file.
-2. Check `metadata/book.yml` for chapter status and the open items in that log.
+1. Read `drafts/conversation-summaries/HANDOFF.md`, then `INDEX.md` or a specific session log if resuming a thread.
+2. Check `metadata/book.yml` and relevant open items in `metadata/TODO.md`.
+3. Use `RECOVERY.md` or git history only for pruned/superseded logs.
 
 **When making a plan in plan mode:**
 
@@ -98,13 +130,17 @@ Write the plan into `drafts/<planname>.md` or a more task specific directory, as
 
 **At session milestones (required when the session changed the repo, drafted text, or made project decisions):**
 
-1. Add `drafts/conversation-summaries/YYYY-MM-DD-short-topic.md` using the template in `drafts/conversation-summaries/README.md`.
-2. Update `INDEX.md` with a new row (most recent first).
-3. Record: trigger, what was done, non-obvious decisions, open/next steps, key paths, and commit hashes if any.
+1. Add or update a per-session log (`drafts/conversation-summaries/YYYY-MM-DD-topic.md`) using the template in `drafts/conversation-summaries/README.md`.
+2. Update `drafts/conversation-summaries/HANDOFF.md` (Open work / Recently shipped) when load-bearing.
+3. Update `drafts/conversation-summaries/INDEX.md` if the session log is new (or run `scripts/archive_conversation_summaries.py`).
 
 Do not rely on chat history alone for resume context.
 
 ## Project layout
+
+### Reference (`reference/`)
+
+- Field agenda roster, inter-agenda term glossary, and anthropic/acausal taxonomy — agent crosswalk material, not manuscript canon. Hub: [`reference/field-agendas/README.md`](reference/field-agendas/README.md).
 
 ### Context (`context/`)
 
@@ -120,11 +156,9 @@ Do not rely on chat history alone for resume context.
 
 ### LaTeX
 
-Place figures in `figures/` and reference as `figures/<file>`. External `.bib` files need `pdflatex → biber → pdflatex ×2`. Add `\usepackage{graphicx}` when including images. Root file: `book.tex`.
-
-Build-time `.tex` fragments (`metadata/global-nocite.tex`, `metadata/notation-index.tex`, `metadata/assumptions-index.tex`, `metadata/axiom-budget-index.tex`, `tables/chapter-map.tex`, `tables/part-roadmap.tex`) are **generated, not checked in** — run `make generate` or `./build.sh` before compiling. See [`docs/BUILD.md`](docs/BUILD.md).
-
-If `biber` fails silently or stops after `Found BibTeX data source ...`, run `./clean.sh` then `make biber` (regenerates fragments, sets up the PAR cache, clears stale `references/*.bib.blg`, runs `pdflatex → biber → pdflatex ×2`). See [`docs/BUILD.md`](docs/BUILD.md).
+Place figures in `figures/` and reference as `figures/<file>`. Add `\usepackage{graphicx}` when
+including images. Root file: `book.tex`. Build fragments and biber troubleshooting are documented
+in [`docs/BUILD.md`](docs/BUILD.md).
 
 **Bibliography summaries:** each `.bib` entry needs a matching `\bibsummary{key}{...}` line in `references/bibliography-summaries.tex` (rendered via `metadata/preamble.tex`). See `references/README.md`. When adding cites, run `python3 scripts/check_bibliography_summaries.py` or `make check`.
 
@@ -144,7 +178,7 @@ Self-contained Lean 4 skeleton of the book's logical dependencies (`lake build` 
 
 ### Experiments (`experiments/`)
 
-Empirical sanity-check codebases that stress-test bridge cruxes. Four in-repo lines (build order): [`toy-simulation/`](experiments/toy-simulation/), [`embedded-simulation/`](experiments/embedded-simulation/), [`goal-agent-simulation/`](experiments/goal-agent-simulation/), [`lab-simulation/`](experiments/lab-simulation/). Narrative map: [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); structured index: [`metadata/experiments.yml`](metadata/experiments.yml). They provide **tentative, partial** support only — never closure. When making or citing an empirical claim, read the relevant experiment's `results/` and **honor recorded negatives**: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) (embedded line); [`experiments/goal-agent-simulation/results/FINDINGS.md`](experiments/goal-agent-simulation/results/FINDINGS.md); [`experiments/lab-simulation/results/FINDINGS.md`](experiments/lab-simulation/results/FINDINGS.md). Add negatives rather than burying them; calibrate prose the same way you calibrate to the Lean spine.
+Empirical sanity-check codebases that stress-test bridge cruxes. Five in-repo lines (build order): [`toy-simulation/`](experiments/toy-simulation/), [`embedded-simulation/`](experiments/embedded-simulation/), [`goal-agent-simulation/`](experiments/goal-agent-simulation/), [`lab-simulation/`](experiments/lab-simulation/), and [`graded-lab-simulation/`](experiments/graded-lab-simulation/). Sibling methodological precursors (outside the repo): [`agency-detect`](https://github.com/GunnarZarncke/agency-detect), [`deployment-pipeline-simulator`](https://github.com/GunnarZarncke/deployment-pipeline-simulator). Narrative map: [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md); structured index: [`metadata/experiments.yml`](metadata/experiments.yml). They provide **tentative, partial** support only — never closure. When making or citing an empirical claim, read the relevant experiment's `results/` and **honor recorded negatives**: [`experiments/embedded-simulation/results/NEGATIVE_RESULTS.md`](experiments/embedded-simulation/results/NEGATIVE_RESULTS.md) (embedded line); [`experiments/goal-agent-simulation/results/FINDINGS.md`](experiments/goal-agent-simulation/results/FINDINGS.md); [`experiments/lab-simulation/results/FINDINGS.md`](experiments/lab-simulation/results/FINDINGS.md). Add negatives rather than burying them; calibrate prose the same way you calibrate to the Lean spine.
 
 ### Companion site (`site/`)
 
@@ -168,9 +202,14 @@ See `README.md` for thesis, manuscript status, chapter map, build instructions, 
 
 ### Conversation logs (`drafts/conversation-summaries/`)
 
-- **`INDEX.md`** — chronological list; read the top entry when resuming work.
-- **`README.md`** — log format and handoff rules.
-- One markdown file per agent session (changes, decisions, open items, commits).
+- **`HANDOFF.md`** — aggregated open work and recent themes; read first when resuming.
+- **`INDEX.md`** — recent session logs; older logs in **`archive/`**.
+- **`RECOVERY.md`** — one-line index of **pruned** logs only (superseded by a later session).
+- **`README.md`** — log template and retention policy.
+- **`INDEX.md`** — pointer to the above.
+- **`README.md`** — maintenance rules.
+
+Per-session `.md` log files are retired.
 
 ## Git
 

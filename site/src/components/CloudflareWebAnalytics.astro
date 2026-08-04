@@ -1,0 +1,17 @@
+---
+import { CF_WEB_ANALYTICS_TOKEN } from "../lib/seo";
+
+const token =
+  import.meta.env.PUBLIC_CF_WEB_ANALYTICS_TOKEN || CF_WEB_ANALYTICS_TOKEN;
+const enabled = !import.meta.env.DEV && Boolean(token);
+---
+
+{
+  enabled && (
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={JSON.stringify({ token })}
+    />
+  )
+}

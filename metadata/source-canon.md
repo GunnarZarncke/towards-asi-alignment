@@ -61,7 +61,7 @@ Prioritized by report emphasis. **Drafted** chapters: surgical inserts. **Stub**
 
 | Ch | Suggested additions from report |
 |----|----------------------------------|
-| ch03 | One paragraph on the negative literature result: behavior alignment (RLHF, IRL, corrigibility) gives local signals but fails on identifiability, Goodhart, pluralism, deception; positions the book's transport frame as filling an integration gap. |
+| ch03 | One paragraph on the negative literature result: behavior alignment (RLHF, IRL, corrigibility) gives local signals but fails on identifiability, Goodhart, pluralism, deception; positions this project's transport frame as filling an integration gap. |
 | ch04 | IRL underdetermination (many rewards explain same behavior); CIRL as cooperative game not solution; RLHF limits survey (Casper et al. 2023); sample-complexity warning (Komanduru & Honorio). |
 | ch05 | Crosswalk report's open-problem priority table to Turchin/Yudkowsky coverage audit; note funding gap (interpretability/evals over transport, bearer maps, correction-channel engineering). |
 
@@ -174,7 +174,7 @@ Canonical LaTeX sources and built PDFs live in sibling repositories (paths relat
 this repo). The `context/*.pdf` copies are book-local snapshots; rebuild from TeX when
 formulas or claims must be verified exactly.
 
-- `../brain-to-values/papers/` — value bundles, free-energy loops, unit-of-caring, consciousness/agency backbone
+- `../brain-to-values/papers/` — value bundles, free-energy loops, unit-of-caring, viability-constrained value formation, consciousness/agency backbone
 - `../agency-detect/docs/papers/` — UAD, capability, intentional stance, attractor basins, construction/successor work
 
 ## Source map
@@ -199,4 +199,5 @@ formulas or claims must be verified exactly.
 | `free_energy_loops.pdf` | `extracts/free-energy-loops.md` | brain-to-values | `../brain-to-values/papers/free-energy-loops/free_energy_loops.tex` | `../brain-to-values/papers/free-energy-loops/free_energy_loops.pdf` |
 | `status_regulation_as_free_energy_loops.pdf` | `extracts/status-regulation-as-free-energy-loops.md` | brain-to-values | `../brain-to-values/papers/status-regulation-loops/status_regulation_as_free_energy_loops.tex` | `../brain-to-values/papers/status-regulation-loops/status_regulation_as_free_energy_loops.pdf` |
 | `consciousness_agency_backbone.pdf` | `extracts/consciousness-agency-backbone.md` | brain-to-values | `../brain-to-values/papers/consciousness-agency-backbone/consciousness_agency_backbone.tex` | `../brain-to-values/papers/consciousness-agency-backbone/consciousness_agency_backbone.pdf` |
+| `embedded-value-formation.pdf` | `extracts/embedded-value-formation.md` | brain-to-values | `../brain-to-values/papers/embedded-value-formation/embedded-value-formation.tex` | `../brain-to-values/papers/embedded-value-formation/embedded-value-formation.pdf` |
 | `Literature Review of Units of Caring, Pain & Suffering Measurement, and Aggregation.pdf` | `extracts/literature-review-of-units-of-caring-pain-suffering-measurement-and-aggregation.md` | — | *(no TeX in canonical repos; context-only)* | — |

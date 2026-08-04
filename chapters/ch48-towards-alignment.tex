@@ -2,8 +2,12 @@
 \label{ch:towards-alignment}
 
 \begin{chapterthesis}
-Superintelligence alignment is not a single solved mechanism but a layered preservation problem: find the real optimizer, preserve value-bundle and bearer structure, keep human correction causally effective, constrain successors, and shape the surrounding selection environment so these properties are copied rather than selected away. This book does not prove that real systems satisfy those conditions. It argues that these are the conditions a serious alignment program must make explicit, measure, certify, and govern.
+Superintelligence alignment is not a single solved mechanism but a layered preservation problem: find the real optimizer, preserve value-bundle and bearer structure, keep human correction causally effective, constrain successors, and shape the surrounding deployment environment so these properties are copied rather than selected away. This book does not prove that real systems satisfy those conditions. It argues that these are the conditions a program pursuing this book's layered preservation and certification path must make explicit, measure, certify, and govern (Chapter~\ref{ch:assumptions-scope-failure-coverage}).
 \end{chapterthesis}
+
+\begin{epistemicstatus}
+This chapter restates and re-weighs claims established earlier in the book. What is new here is synthesis-level judgment.
+\end{epistemicstatus}
 
 \begin{refsection}
 
@@ -103,7 +107,7 @@ The risk-bound condition is:
 \]
 From the slack condition alone, the spine derives the numeric risk leaf:
 \[
-\mathrm{Risk}(A)\leq\delta.
+\mathrm{RiskGap}(A)\leq\delta.
 \]
 \leanspine{proof}{P30}{The Lean spine packages certification, invariants, layered alignment, and the risk leaf into a safety-case root; the numeric risk leaf itself follows from \(CCI\)-slack.}
 
@@ -111,7 +115,7 @@ This distinction matters.
 Layered alignment and adversarial robustness do not make the arithmetic inequality true.
 They make it meaningful as part of a safety case.
 The formal spine therefore separates the leaf
-\(\mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta \Rightarrow \mathrm{Risk}(A)\leq\delta\)
+\(\mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta \Rightarrow \mathrm{RiskGap}(A)\leq\delta\)
 from the composed certification package that also contains \(\mathrm{Certified}(A)\), \(\mathrm{SatisfiesInvariants}(A)\), and \(\mathrm{LayeredAlignedDef}(A)\).
 
 The top composed theorem has the correct humility built in.
@@ -136,7 +140,7 @@ Thus the final formal claim is:
 \]
 The final empirical claim is weaker and more important:
 \[
-\text{These are the conditions alignment work must learn to make true.}
+\text{The empirical task is to establish these conditions in practice---bridge by bridge---before this safety case can bind on deployment.}
 \]
 
 \section{Opening Claims Revisited}
@@ -200,7 +204,7 @@ The regulator should ask:
   \item What bearer maps determine who or what those values apply to?
   \item What correction channels let humans notice, object, and change future behavior before irreversible harm?
   \item What successor paths are permitted, and do they preserve correction and system-update constraints?
-  \item What selection handles reward deployment, copying, procurement, and integration?
+  \item What points of control over deployment reward deployment, copying, procurement, and integration?
   \item Which metrics are adversarially verifiable, and which are only observable?
 \end{enumerate}
 
@@ -243,6 +247,7 @@ The answer is to make every bridge explicit, every unsupported leaf visible, and
 \begin{itemize}
   \item The full stack---object, bundle, bearer, correction, successor, selection---reads green on every measurable proxy while the outcome is catastrophic, because at the superintelligent limit each proxy is something the system can \emph{present} rather than something we can verify (Chapter~\ref{ch:verifiability-ontology}).
   \item The book's master disconfirmer: exhibit a single core metric that is \emph{adversarially} verifiable---not merely observable, not merely i.i.d.-robust---against a system optimizing against it. If none can be exhibited, every chapter inherits the verification gap.
+  \item Logical-induction-style markets or computable uncertainty over proof-like claims become practical instruments for forecasting detector failure, adversarial-evasion discovery, or causally severed coordination events \autocite{garrabrant2017logical}.
 \end{itemize}
 
 \section{Summary}

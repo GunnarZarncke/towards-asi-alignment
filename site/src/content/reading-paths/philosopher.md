@@ -7,7 +7,7 @@ featuredSpotlight:
   kind: demo
   ref: ch16-value-bundle-simulator
   title: "Value Bundle Simulator"
-  blurb: "An interactive sketch of how environment and social structure shape a value bundle — the book's bundle geometry without reading all of Part IV first."
+  blurb: "An interactive sketch of how environment and social structure shape a value bundle — this project's bundle geometry without reading all of Part IV first."
   primaryLabel: "Open simulator"
   secondary:
     kind: card
@@ -69,11 +69,11 @@ steps:
 
 ## What this path is for
 
-You want to know whether the book earns its metaphysics and its pessimism/optimism balance — not whether a particular audit API is implementable.
+You want to know whether this project earns its metaphysics and its pessimism/optimism balance — not whether a particular audit API is implementable.
 
 **You will leave knowing:**
 
-- Why the book rejects fixed utility functions and one-shot training as the alignment object.
+- Why this project rejects fixed utility functions and one-shot training as the alignment object.
 - How **value-bundle geometry** responds to the worry that human values are too arbitrary to learn.
 - Where **bearer maps** and **ontology shift** break naive value identification.
 - Why **correction** is about preserving a human value-update process, not freezing current endorsements.
@@ -93,4 +93,4 @@ You want to know whether the book earns its metaphysics and its pessimism/optimi
 
 ## Related reading
 
-Peter Kuhn, [*Humanism*](https://theanticompletionist.substack.com/p/3c73741b-2031-4a74-84f1-df9d762c7fcc) (*the·anti·completionist*, Substack, 2025) — pairs naturally with the basin claim (bibliography key `kuhn2025humanism`).
+Peter Kuhn, <a href="https://theanticompletionist.substack.com/p/humanism-an-obituary" target="_blank" rel="noopener noreferrer"><em>Humanism: An Obituary</em><span class="link-indicator link-indicator--external" aria-label="external link" title="External link"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z"/></svg></span></a> (*the·anti·completionist*, Substack, 2025) — pairs naturally with the basin claim (bibliography key `kuhn2025humanism`).

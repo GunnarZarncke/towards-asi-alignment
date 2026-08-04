@@ -6,9 +6,12 @@ interface Props {
   graphId: string;
   title: string;
   svgFile?: string;
+  dotFile?: string;
 }
 
-const { graphId, title, svgFile = `lean-graphs/${graphId}.svg` } = Astro.props;
+const { graphId, title, svgFile = `lean-graphs/${graphId}.svg`, dotFile } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const withBase = (assetPath: string) => `${base}${assetPath.replace(/^\/+/, "")}`;
 
 let svgHtml = "";
 try {
@@ -20,8 +23,14 @@ try {
 ---
 
 <div class="lean-graph-wrap">
-  <p class="side-panel-meta lean-graph-hint">
-    Rendered with Graphviz (same sources as the book). Click a node for details; sub-spine boxes (Spine I–IV) open the matching sub-diagram.
+  <p class="lean-graph-hint side-panel-meta">
+    Rendered with Graphviz (same sources as the manuscript). Click a node for details; sub-spine boxes (Spine I–IV) open the matching sub-diagram.
+    {dotFile && (
+      <>
+        {" "}
+        <a class="lean-graph-dot" href={withBase(dotFile)} download>Graphviz source (.dot)</a>
+      </>
+    )}
   </p>
   <div class="lean-graph-svg" role="img" aria-label={title} set:html={svgHtml} />
 </div>
@@ -37,6 +46,10 @@ try {
 
   .lean-graph-hint {
     margin: 0 0 0.65rem;
+  }
+
+  .lean-graph-dot {
+    white-space: nowrap;
   }
 
   .lean-graph-svg :global(svg) {

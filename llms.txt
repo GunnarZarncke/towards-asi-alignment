@@ -2,12 +2,36 @@
 
 > A research manuscript and formal proof-spine project about preserving grounded, human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and socio-technical selection pressure.
 
-This repository is a book-length alignment framework, not a finished proof that superintelligence is safe. It combines manuscript chapters, generated metadata, bibliography, context extracts, and a small Lean 4 proof spine that tracks logical dependencies, counterexamples, and empirical/philosophical bridge assumptions.
+This file is also served at https://towards-alignment.com/llms.txt (generated at site build from this repo-root source). A fuller bundle lives at https://towards-alignment.com/llms-full.txt.
 
-## Start Here
+## Companion Site
+
+Orientation layer for humans and bots at https://towards-alignment.com/ — the PDF remains the canonical long-form artifact.
+
+- [Start Here](https://towards-alignment.com/): homepage, thesis, standalone claims, failure modes.
+- [Guided tour](https://towards-alignment.com/paths/): audience-specific reading paths.
+- [Field hub](https://towards-alignment.com/field/): 32 alignment agendas × MB1–MB11 bridge matrix, evidence catalog.
+- [Concept cards](https://towards-alignment.com/cards/): short cards (concepts, bridges, projections, chapters).
+- [Field news](https://towards-alignment.com/news/): 2026 alignment incidents tied to manuscript chapters.
+- [Updates](https://towards-alignment.com/updates/): versioned release notes.
+- [Glossary](https://towards-alignment.com/glossary/): operational definitions synced with Appendix E.
+- [FAQ](https://towards-alignment.com/faq/): common questions and caveats.
+- [Book map](https://towards-alignment.com/book/): chapter and appendix index with synced excerpts.
+- [Lean spine](https://towards-alignment.com/lean/): proof-spine graphs and playgrounds.
+- [Experiments](https://towards-alignment.com/experiments/): empirical sanity-check lines and coverage.
+- [What we are not claiming](https://towards-alignment.com/cards/what-not-claiming/): scope limits.
+- [Reviewing for agents](https://towards-alignment.com/reviewing-for-agents.md): read-only review guide for LLMs (repo source: `REVIEWING_FOR_AGENTS.md`).
+- [Search index (JSON)](https://towards-alignment.com/search-index.json): flat title/type/summary/url index for programmatic lookup; docs at [/search-index/](https://towards-alignment.com/search-index/).
+- [Sitemap](https://towards-alignment.com/sitemap-index.xml): crawl index for all routes.
+- [PDF](https://towards-alignment.com/towards-superintelligence-alignment.pdf): canonical manuscript.
+- [GitHub repository](https://github.com/GunnarZarncke/towards-asi-alignment): full LaTeX source, Lean spine, experiments.
+
+## Repository (clone / deep review)
 
 - `README.md` - project overview, repository map, build commands.
-- `REVIEWING_FOR_AGENTS.md` - fast orientation for read-only AI/coding agents.
+- `RELEASE_NOTES.md` - versioned release history (current: v1.4.0).
+- `reference/field-agendas/` - field agenda index, inter-agenda glossary, MB coverage matrix (not manuscript canon).
+- `REVIEWING_FOR_AGENTS.md` - fast orientation for read-only AI/coding agents (also at https://towards-alignment.com/reviewing-for-agents.md).
 - `frontmatter/introduction.tex` - thesis, six claims, how to read the book.
 - `frontmatter/executive-overview.tex` - short executive framing.
 - `tables/part-roadmap.tex` - generated part-by-part roadmap.
@@ -49,14 +73,14 @@ Good reviews should:
 - check proof / counterexample / bridge / conjecture / open-problem status;
 - cite concrete files and sections;
 - check whether apparent narrative claims are backed by machinery elsewhere in the book;
-- avoid overlooking the book's deeper delivered results and existing-work subsumptions.
+- avoid overlooking this project's deeper delivered results and existing-work projections.
 - note whether the author already acknowledges an issue before presenting it as a new defect.
 
 Do not treat this as a generic alignment essay. The manuscript contains specific machinery: boundary discovery, bundle/bearer transport, adversarial bundle-geometry measurement, vector CCI, correction channels under adversarial pressure, successor invariants, selection envelopes, conductive artifacts and pivotal processes, cost-of-faking tests, and a Lean dependency spine.
 
-## Existing-Work Subsumptions To Notice
+## Existing-Work Projections To Notice
 
-The book often treats familiar proposals as projections, special cases, or separable subchannels of stronger invariants:
+This project often treats familiar proposals as projections, special cases, or separable subchannels of stronger invariants:
 
 - incentive diagrams and agent tests become boundary-relative;
 - CIRL and reward inference become local projections of bundle/bearer/correction preservation;
@@ -69,7 +93,7 @@ The book often treats familiar proposals as projections, special cases, or separ
 
 ## Empirical Evidence And Source Repos
 
-Do not judge empirical support only from manuscript prose. The book is a synthesis over related project work and mirrored context extracts; empirical validation is work in progress. Check source maps and related work:
+Do not judge empirical support only from manuscript prose. This project is a synthesis over related project work and mirrored context extracts; empirical validation is work in progress. Check source maps and related work:
 
 - `metadata/source-canon.md`
 - `context/extracts/`
@@ -79,6 +103,8 @@ Related repositories:
 
 - `https://github.com/GunnarZarncke/agency-detect`
   - Unsupervised agent discovery, operational agent boundaries, capability, intentional stance, attractor basins, successors.
+- `https://github.com/GunnarZarncke/deployment-pipeline-simulator`
+  - Hidden self-preservation in a simulated deployment/release pipeline; perturbation-based audit of secret loyalties (ET-4 substrate).
 - `https://github.com/GunnarZarncke/brain-to-values`
   - Value bundles, free-energy loops, unit-of-caring, consciousness / agency backbone.
 
@@ -101,9 +127,9 @@ Key distinction:
 
 ## Anti-Patterns
 
-- Do not flatten the book into standard alignment categories.
+- Do not flatten this project into standard alignment categories.
 - Do not treat Lean as proving deployed safety.
-- Do not treat CEV, corrigibility, ELK, debate, quantilization, low impact, shutdownability, or reward learning as identical to the book's invariants.
+- Do not treat CEV, corrigibility, ELK, debate, quantilization, low impact, shutdownability, or reward learning as identical to this project's invariants.
 - Do not add speculative terminology.
 - Do not rewrite source-canon files under `context/`.
 - Do not skip What Would Change This View sections.

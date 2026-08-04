@@ -1,10 +1,26 @@
-\chapter{What Is an Agent Without Anthropomorphism?}
+\chapter{What Is an Agent?}
 \label{ch:agent-without-anthropomorphism}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/illustrations/ch06_systems-flow-through-the-corporate-tower.png}
+\caption{The Organization as Agent}
+\label{fig:ch06-illustration}
+\end{figure}
 
 \begin{chapterthesis}
 An agent is not first a person-like thing.
 It is a bounded control process whose boundary, memory, and action channels make its future more predictable when modeled as controlling something.
 \end{chapterthesis}
+
+\begin{epistemicstatus}
+This chapter assembles existing building blocks into an operational agency criterion. 
+Markov-blanket and free-energy claims about agent-environment boundaries remain actively contested even among sympathetic critics, 
+while minimum-description-length arguments for inferring goals from behavior are comparatively well-established methodology.
+Whether behavioral goal-directedness implies an internal agent-like mechanism is Wentworth's open agent-structure problem. 
+Significant parts of this book depend on the criterion and effectiveness of the method discussed in the next chapter to apply it.  
+This approach, while not the only one approach to agency, is one of the larger bets of this book. 
+\end{epistemicstatus}
 
 \begin{refsection}
 
@@ -126,34 +142,8 @@ These variables might be sensor readings, server logs, neural activations, datab
 We do not begin by assuming which variables belong to which entity.
 That would smuggle in the ontology we are trying to discover.
 
-A candidate agent is a subset or transformation of variables:
-\[
-C \subseteq X,
-\]
-or, more generally, a latent process inferred from the observed variables.
-For a candidate process $C$, we seek a partition:
-\[
-X_t = \left(I_t^C, S_t^C, A_t^C, E_t^C\right),
-\]
-where:
-\begin{description}
-\item[$I_t^C$] are internal states of the candidate process;
-\item[$S_t^C$] are sensory or input states through which the outside affects it;
-\item[$A_t^C$] are active or output states through which it affects the outside;
-\item[$E_t^C$] are external states, meaning the rest of the world relative to $C$.
-\end{description}
-
-The partition is not metaphysical.
-It is a claim about conditional dependence and causal mediation.
-The sensory and active states form the interface through which the internal and external states mostly interact.
-
-The central boundary condition is:
-\[
-\MI\left(I_{t+1}^C; E_{t+1}^C \mid I_t^C,S_t^C,A_t^C\right) \leq \epsilon.
-\]
-Here $\MI(\cdot;\cdot\mid\cdot)$ is conditional mutual information.
-The expression says: once we know the candidate process's current internal state and its interface with the world, the next internal state and next external state share little additional information.
-The boundary screens off the inside from the outside, up to leakage $\epsilon$.
+A candidate agent is a subset or transformation of variables $C \subseteq X$ (or, more generally, a latent process inferred from observed variables), partitioned into internal, sensory, active, and external roles as in Chapter~\ref{ch:wrong-object}.
+The operational boundary test is the mutual-information screening condition of Chapter~\ref{ch:finding-boundary} (Eq.~\eqref{eq:epsilon-boundary-ch07}): once the sensory and active interface is known, internal and external futures share little additional information, up to leakage $\epsilon$.
 
 The tolerance $\epsilon$ matters.
 Real boundaries leak.

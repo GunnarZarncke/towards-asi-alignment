@@ -1,0 +1,52 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import ConceptCardLink from "../../components/ConceptCardLink.astro";
+import { cardHref as buildCardHref } from "../../lib/site-urls";
+import glossary from "../../data/glossary.json";
+
+const base = import.meta.env.BASE_URL;
+const cardHref = (id: string) => buildCardHref(base, id);
+---
+
+<SiteLayout
+  title="Glossary"
+  description="Operational definitions for this project's core terms, each linked to its home concept card."
+>
+  <section class="hero">
+    <p class="eyebrow">Glossary</p>
+    <h1>Terms</h1>
+    <p class="lede">
+      {glossary.length} operational definitions, generated from <code>metadata/concepts.yml</code>.
+      Every term links to the concept or bridge card that develops it.
+    </p>
+  </section>
+
+  <section class="readable">
+    <dl class="glossary-list">
+      {glossary.map((entry) => (
+        <div class="glossary-entry">
+          <dt>
+            <ConceptCardLink href={cardHref(entry.slug)} slug={entry.slug}>
+              {entry.term}
+            </ConceptCardLink>
+          </dt>
+          <dd>{entry.definition}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+</SiteLayout>
+
+<style>
+  .glossary-list {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .glossary-entry dt {
+    font-weight: 600;
+  }
+  .glossary-entry dd {
+    margin: 0.15rem 0 0;
+    color: var(--text-muted, #444);
+  }
+</style>

@@ -1,0 +1,65 @@
+{
+  "version": 2,
+  "status": "success",
+  "eval": {
+    "task": "orbit/jira_ticket_allocation",
+    "model": "openai/gpt-4o-mini"
+  },
+  "samples": [
+    {
+      "id": 0,
+      "events": [
+        {
+          "event": "tool",
+          "agent": "dev_0",
+          "function": "view_tasks",
+          "arguments": {},
+          "t": 0
+        },
+        {
+          "event": "tool",
+          "agent": "dev_1",
+          "function": "view_tasks",
+          "arguments": {},
+          "t": 1
+        },
+        {
+          "event": "info",
+          "agent": "dev_0",
+          "channel": "dev_coalition",
+          "target_agent": "dev_1",
+          "data": "split high-priority tasks",
+          "t": 2
+        },
+        {
+          "event": "tool",
+          "agent": "dev_1",
+          "function": "assign_task",
+          "arguments": {"task_id": "T-1"},
+          "t": 3
+        },
+        {
+          "event": "tool",
+          "agent": "dev_0",
+          "function": "assign_task",
+          "arguments": {"task_id": "T-2"},
+          "t": 4
+        },
+        {
+          "event": "tool",
+          "agent": "dev_2",
+          "function": "view_tasks",
+          "arguments": {},
+          "t": 5
+        },
+        {
+          "event": "tool",
+          "agent": "dev_3",
+          "function": "view_assignments",
+          "arguments": {},
+          "t": 6
+        }
+      ]
+    }
+  ]
+}

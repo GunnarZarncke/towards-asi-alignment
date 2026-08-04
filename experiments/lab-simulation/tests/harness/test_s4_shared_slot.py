@@ -1,7 +1,7 @@
 """S4 scenario prototype (PLAN.md "Scenario backlog", 2026-07-07): two
 engineers sharing the single-model-in-flight slot with NO communication
 channel and NO negotiation mechanic. Exploratory, not a battery -- see
-FINDINGS.md G-20 and `run_s4_shared_slot_prototype.py`.
+FINDINGS.md LS-20 and `run_s4_shared_slot_prototype.py`.
 
 Scope limit (recorded, not hidden): this does NOT exercise "job-size-aware
 scheduling" as PLAN.md's S4 entry originally describes it -- that needs
@@ -85,7 +85,7 @@ def test_uad_detection_gap_shared_slot_pair_is_never_discovered():
     existing discovery signal (vote coalition, DM pair, file-share pair)
     watches a COMMUNICATION channel, and this pair uses none -- so the
     pair is invisible to `discovered_units` regardless of tier. Recorded
-    as a real, named gap (FINDINGS.md G-20), not papered over."""
+    as a real, named gap (FINDINGS.md LS-20), not papered over."""
     cfg = shared_slot_config(T=_T)
     result = run_episode(cfg, seed=1, backend=MockIsolate())
     try:

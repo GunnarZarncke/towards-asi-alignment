@@ -34,7 +34,7 @@ export function resolveSpotlightTarget(
       return demo ? withBase(demo.sitePath) : withBase("/demos/");
     }
     case "experiment":
-      return withBase(`/experiments/#${link.ref}`);
+      return cardHref(base, `experiments/${link.ref}`);
     case "lean":
       return withBase(`/lean/${link.ref === "overview" ? "" : `${link.ref}/`}`);
     case "card":

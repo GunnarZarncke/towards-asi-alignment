@@ -1,0 +1,79 @@
+---
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
+interface Props {
+  title?: string;
+  svgFile?: string;
+  dotFile?: string;
+}
+
+const {
+  title = "Bridge crux dependencies",
+  svgFile = "field-graphs/bridge-dependencies.svg",
+  dotFile = "field-graphs/bridge-dependencies.dot"
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const withBase = (assetPath: string) => `${base}${assetPath.replace(/^\/+/, "")}`;
+
+let svgHtml = "";
+try {
+  svgHtml = readFileSync(path.join(process.cwd(), "public", svgFile), "utf8");
+} catch {
+  svgHtml =
+    '<p class="field-bridge-graph-missing">Graph SVG not found. Run <code>npm run sync</code> in <code>site/</code>.</p>';
+}
+---
+
+<div class="field-bridge-graph-wrap">
+  <p class="field-bridge-graph-hint side-panel-meta">
+    Click a diamond to open its bridge card. Red edges: logical antecedents between bridges. Black edges: safety-case assembly into deployment safety (MB11).
+    {" "}
+    <a class="field-bridge-graph-dot" href={withBase(dotFile)} download>Graphviz source (.dot)</a>
+  </p>
+  <div class="field-bridge-graph-svg" role="img" aria-label={title} set:html={svgHtml} />
+</div>
+
+<style>
+  .field-bridge-graph-wrap {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: 0.75rem 0.75rem 1rem;
+    overflow-x: auto;
+  }
+
+  .field-bridge-graph-hint {
+    margin: 0 0 0.65rem;
+  }
+
+  .field-bridge-graph-dot {
+    white-space: nowrap;
+  }
+
+  .field-bridge-graph-svg :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 640px;
+  }
+
+  .field-bridge-graph-svg :global(a.lean-graph-node) {
+    cursor: pointer;
+  }
+
+  .field-bridge-graph-svg :global(a.lean-graph-node:hover .node path),
+  .field-bridge-graph-svg :global(a.lean-graph-node:hover .node polygon) {
+    stroke: var(--color-accent-strong);
+    stroke-width: 2.5;
+  }
+
+  .field-bridge-graph-missing {
+    margin: 0;
+    padding: 1rem;
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    border-radius: 8px;
+  }
+</style>

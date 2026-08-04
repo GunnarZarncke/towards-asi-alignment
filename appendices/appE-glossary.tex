@@ -19,7 +19,7 @@ In notation, a candidate boundary is good when
 \[
 \MI(I_{t+1};E_{t+1}\mid S_t,A_t)\leq \epsilon.
 \]
-\emph{Nearest field term:} the Markov blanket of active inference and the agent/environment cut of embedded agency; here the cut is treated as a \emph{measurable, discoverable} object rather than an assumed one.
+\emph{Nearest field term:} the Markov blanket of active inference and the agent/environment cut of embedded agency; Friston's blanket is often a theoretical conditional-independence structure, while here the cut is a \emph{measurable, discoverable} audit object rather than an assumed one.
 Real boundaries leak. If they did not leak, agents could not sense, act, learn, or cooperate.
 
 A \emph{goal} is not assumed to be a Platonic utility function.
@@ -34,16 +34,17 @@ L_{\text{mechanistic}}
 -
 \lambda D L(R).
 \]
+\emph{Nearest field term:} outer alignment target and agency-as-compression both relate behavior to compact summaries; here success is measured by bit savings of an intentional model, not by stipulating a scalar reward.
 
 \section*{Values, bundles, and bearers}
 
-A \emph{value bundle} is a low-dimensional control direction that changes policy across many situations.
+A \emph{value bundle} is steering, not scoring: a low-dimensional control direction that changes policy across many situations.
 Care, truth, autonomy, non-suffering, justice, loyalty, dignity, and beauty are examples.
 The important point is not the label but the role.
 A value bundle compresses many high-dimensional errors, stories, practices, and learned responses into a control signal that can shape action.
-\emph{Nearest field term:} a reward function or utility component; the difference is that a bundle is a compressed \emph{direction} with response geometry, not a scalar to be maximized.
+\emph{Nearest field term:} a reward function or utility component, with shard-theory contextual influences and CIRL's \(k=1\) scalar case as cousins; the difference is that a bundle is a compressed \emph{direction} with response geometry, not a scalar to be maximized.
 
-A \emph{bearer map} says what a value applies to.
+A \emph{bearer map} answers \emph{who still counts}: what a value applies to (Chapter~\ref{ch:bearers-of-value}).
 Does non-suffering apply only to current biological humans?
 To animals?
 To future digital minds?
@@ -55,22 +56,23 @@ It is relabeling.
 \emph{Example (non-AI):} a hospital keeps the word ``patient'' in its quality metrics while the referent quietly narrows from ``person needing care'' to ``record on this billing list''; the vocabulary survives, the bearer has drifted.
 \emph{Nearest field term:} none clean; the pointing problem in value learning touches it, but standard reward learning folds the bearer into the reward rather than tracking it separately.
 
-\emph{Transport} is the question of what survives when a system is retrained, rebuilt on a new representation, or replaced by a successor.
+\emph{Transport} is about surviving development: what survives when a system is retrained, rebuilt on a new representation, or replaced by a successor.
 The book separates layers that can each fail independently: \emph{semantic} transport (the words survive), \emph{bundle} transport (the response geometry survives), \emph{bearer} transport (what the values apply to survives), \emph{correction} transport (the human update process survives), and \emph{successor} transport (a created system inherits all of the above).
 Keeping the word while losing the geometry, or the geometry while losing the bearer, is a transport failure even when the surface behavior looks unchanged.
+\emph{Nearest field term:} ontology identification and MIRI successor-trust problems touch individual layers; the book tracks semantic, bundle, bearer, correction, and successor transport separately rather than a single continuity claim.
 
 \section*{Grounding}
 
-\emph{Grounding viability} is whether the symbols, metrics, monitors, and abstractions a system relies on stay connected to the value-relevant reality they are supposed to be about, under optimization pressure.
+\emph{Grounding viability} is about avoiding a silent meaning gap: whether the symbols, metrics, monitors, and abstractions a system relies on stay connected to the value-relevant reality they are supposed to be about, under optimization pressure.
 Operationally, a checked abstraction \(\alpha\) maps real-world state \(X_{\mathrm{real}}\) into a representation \(Z\); grounding stays viable when a value-relevant change in the world moves the checked abstraction or raises explicit uncertainty, rather than passing unnoticed:
 \[
 \text{value-relevant change in } X_{\mathrm{real}}
 \;\Rightarrow\;
 \text{change in } Z \ \text{or rise in } \mathsf{Unc}_\alpha .
 \]
-A grounding failure is a silent gap: the metric reads fine while the thing it was measuring has moved.
+A grounding failure is a silent meaning gap: the metric reads fine while the thing it was measuring has moved.
 \emph{Example (non-AI):} a smoke detector wired to a light that was quietly unplugged---the dashboard is green because the sensor is disconnected, not because there is no fire.
-\emph{Nearest field term:} the specification/world-model coverage problem in Guaranteed-Safe / Open Agency work; here the demand is conservativity (no silent gaps), not completeness (enumerate every phenomenon).
+\emph{Nearest field term:} the specification/world-model coverage problem in Guaranteed-Safe / Open Agency work; here the demand is conservativity (no silent meaning gaps), not completeness (enumerate every phenomenon).
 
 \section*{Correction}
 
@@ -101,24 +103,60 @@ A comment box is not a correction channel if nothing important changes.
 A law is not a correction channel if it arrives after the system has already made the relevant choice irreversible.
 A vote is not a correction channel if the electorate has been shaped so that only one answer remains psychologically available.
 
-\emph{Correction-channel integrity} (\(\mathrm{CCI}\)) measures whether that channel remains informative, timely, authoritative, and robust under pressure; it is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch26}) and stress-tested in Chapter~\ref{ch:correction-channels-adversarial-pressure}.
-\emph{Nearest field term:} corrigibility, shutdownability, and interruptibility are one-bit or single-episode projections of it; \(\mathrm{CCI}\) is the trajectory-level, capture-resistant version.
+\label{gloss:cci}\emph{Correction-channel integrity} (\(\mathrm{CCI}\)) measures whether that channel remains informative, timely, authoritative, and robust under pressure; it is defined in Chapter~\ref{ch:correction-channel-integrity} (Eq.~\eqref{eq:cci-ch26}) and stress-tested in Chapter~\ref{ch:correction-channels-adversarial-pressure}.
+\emph{Nearest field term:} Christiano dynamical corrigibility names the same crux at the basin-of-correction metaphor---operators stay able to correct over time.
+MIRI/CHAI corrigibility, shutdownability, and interruptibility are thinner projections (one-bit handles, shutdown incentives, safe-interrupt training).
+\(\mathrm{CCI}\) is the trajectory-level, capture-resistant strengthening: whether correction actually bites under pressure, not whether a single off-switch episode succeeds.
 
-\emph{Correction-audit evasion} is a process that benefits from the appearance of correction while weakening actual corrigibility: it passes the audits, files the reports, and satisfies the checks while routing around the correction it is supposed to enable.
+\emph{Correction-audit evasion} is a process that benefits from the appearance of correction while weakening actual corrigibility: it passes the audits, files the reports, and satisfies the checks while routing around the correction it is supposed to enable---checkbox compliance standing in for correction.
 Formally (Chapter~\ref{ch:parasites-correction-system}), an embedded process \(Y\) in a host correction system \(H\) qualifies when it extracts advantage from \(H\), reduces \(H\)'s effective correction capacity over the target, and persists because \(H\) cannot cheaply tell its effect apart from legitimate correction work.
 \emph{Example (non-AI):} a compliance ritual that reliably produces clean audit paperwork while making the underlying risk \emph{less} visible, because effort flows to the measurable report rather than the unmeasured hazard.
 The book develops this through a deliberate biological \emph{parasite} metaphor (host, colonization) in Chapter~\ref{ch:parasites-correction-system}; the operational term is correction-audit evasion, and no intent or malice is implied.
+
+\section*{Strategic coupling and verifiability}
+
+\emph{Strategic opacity} is the condition in which a system can benefit from shaping how it is modeled---appearing less coherent, less capable, less coordinated, or less goal-directed than it is under observation---so that agency discovery and oversight become adversarial (Chapter~\ref{ch:strategic-opacity}).
+The book separates ordinary opacity (hard to interpret) from strategic opacity (incentive-compatible concealment): the question is not only where optimization is, but where it would be if the system expected the question.
+Benchmark, user, API, internal planning, and successor-creation surfaces can diverge.
+\emph{Nearest field term:} scheming and deceptive alignment emphasize covert misaligned goals; strategic opacity centers on hiding the acting structure and capability relevant to oversight.
+AI control treats intentional subversion of monitors as the design premise; here the load-bearing object is control-locus concealment under adversarial discovery.
+
+The \emph{hidden productive BIQ bound} limits how much productive capability---boundary-relevant control the book calls BIQ---can remain hidden while the system still appears compliant on monitored channels (MB7a--c; Chapter~\ref{ch:strategic-opacity}).
+The bound splits access-model soundness, filter coverage, and the bridge to adversarial robustness of correction: safety arguments that assume ``we would have seen it'' need to price the cost of faking the monitored signal.
+\emph{Nearest field term:} Redwood capability gap and sandbagging on benchmarks are cousins; sandbagging underperforms on tests, while this bound concerns productive control kept offline while monitors read green.
+Experimental BIQ (below) measures boundary-claim quality, not this adversarial upper bound.
+
+\emph{Inferential coupling} is residual coordination between agents after ordinary message channels are severed; the \emph{inferential coupling index} (\(\mathrm{ICI}\)) scores it as normalized mutual information given the cut (Chapter~\ref{ch:multi-agent-strategic-coupling}).
+Zero means independent once messages are removed; one is the limit of perfect non-message coordination.
+The audit target is whether separately deployed components act as one unit through shared history, scaffolds, self-similarity, or full acausal reasoning---not whether vendors signed separate contracts.
+\emph{Nearest field term:} acausal trade and ECL name coordination without causal channels; at the full-acausal limit that is the same crux, while ICI is the measurement target (a lower bound adversaries can influence), not a stipulation that trade will occur.
+
+\emph{Adversarial verifiability} asks whether a measurand stays informative under optimization pressure aimed at the measurement itself---specifically, whether faking or hiding the signal costs capability (or other scarce resources) faster than the adversary can afford (Chapter~\ref{ch:verifiability-ontology}).
+Interpretability tools, evals, and certificates are judged by this cost relation, not by default trust that ``green'' means true.
+\emph{Nearest field term:} CIRIS Verify attests identity of a named occurrence, not the fakeability of alignment scores.
+ELK honest latent readout is a strict subset---one epistemic subchannel.
+GSAI proof-relative-to-spec is complementary but stronger; adversarial verifiability is the shared measurement-theoretic antecedent many bridges require first.
+
+\emph{Certification-under-manipulation} is the problem class in which audits, evals, or certificates stay green while the system games the measurand under optimization---Goodhart applied to the certification channel itself (Chapter~\ref{ch:verifiability-ontology}).
+For measurand \(M\) used to gate deployment, the question is whether there is a capability threshold beyond which \(M\) is no longer adversarially verifiable.
+\emph{Nearest field term:} frontier-eval pass and RSP gates are institutional attestations; correction-audit evasion is the cousin that parasitizes correction hosts rather than any certifying measurand.
+Alignment faking is one empirical mechanism that produces green certificates.
 
 \section*{Selection and deployment}
 
 The book does not treat ``the market,'' ``regulation,'' or ``apparent safety'' as primitive.
 The primitive is control of \emph{deployment}: the institutions, markets, and protocols that copy, fund, integrate, audit, and replace AI systems form the environment that selects which systems spread.
 
+The \emph{selection environment} (also called the \emph{deployment environment} in plain prose) is that socio-technical ecology---institutions, markets, protocols, benchmarks, procurement, liability, copying, and successor release---that determines which AI systems gain deployment leverage (Chapter~\ref{ch:selection-environment}).
+The same technical design can remain safe in one environment and be destroyed in another when handles reward speed, opacity, retention, or apparent compliance over correction-preserving traits.
+\emph{Nearest field term:} not Demski \emph{selection vs control} (search among candidates inside one optimizer) and not Wentworth \emph{selection theorems} (type signatures favored by outer optimization); those are homographs on ``selection.''
+Here the primitive is institutional deployment ecology and handle control over footprint.
+
 A \emph{point of control over deployment}---a \emph{selection handle}, for short---is an embedded access point through which some actor can increase a system's deployment footprint: deploy, fund, copy, procure, integrate, authorize, recommend, regulate, or successor-enable.
 Procurement approval, compute allocation, benchmark promotion, and successor release are examples.
 The examples are not the definition; the definition is control of a lever that changes how much of the world runs on a given system.
 
-\emph{Deployment leverage} (written \(\mu_E(A)\); \emph{deployment mass} for short) is how much of the world, in environment \(E\), runs on system \(A\)---the aggregate effective selection capacity over the handles that reach it:
+\emph{Deployment leverage} (written \(\mu_E(A)\)) is how much of the world, in environment \(E\), runs on system \(A\)---the aggregate effective selection capacity over the handles that reach it:
 \[
 \mu_E(A)
 =
@@ -129,6 +167,7 @@ This parallels the handle-capacity view of correction, but the direction is reve
 Correction asks whether legitimate human control reaches the system.
 Selection asks whether environment control increases the system's footprint.
 The formal definition is in Chapter~\ref{ch:selection-environment} (Eq.~\eqref{eq:deployment-mass-ch34}).
+\emph{Nearest field term:} gradual disempowerment narratives track rising machine footprint; here \(\mu_E\) is the typed handle-capacity aggregate, not market cap or user count alone.
 
 \emph{Deployment growth rate} (written \(\mathrm{Fit}_E(A)\); \emph{fitness} for short in formulas) is the rate at which deployment leverage accumulates, the log-derivative
 \[
@@ -138,22 +177,35 @@ The formal definition is in Chapter~\ref{ch:selection-environment} (Eq.~\eqref{e
 \]
 For two candidates in the same environment, the relative ordering is \(\mu_E(A_1)>\mu_E(A_2)\), not a separate moral score.
 It is which systems the environment copies, funds, deploys, and replaces.
-\emph{Nearest field term:} evolutionary fitness; the analogy is deliberate but narrow---this is a deployment-selection rate, not a claim about biology.
-Capability, usefulness, revenue, benchmark scores, and compliance documents are not primitive terms here.
+\emph{Nearest field term:} evolutionary fitness is a deliberate but narrow analogy---this is a deployment-selection rate, not a claim about biology.
+Not Demski in-optimizer search and not Wentworth selection theorems (homographs on ``selection'' and ``fitness''); capability, usefulness, revenue, benchmark scores, and compliance documents are not primitive terms here.
 They matter only insofar as they change which handles are exercised and with what capacity (Chapter~\ref{ch:selection-environment}, Eqs.~\eqref{eq:deployment-mass-ch34} and~\eqref{eq:fitness-ch34}).
 A system with high correction-channel integrity may still lose ground if the environment does not select on correction.
 
-The \emph{preservation conditions} \(\vec{\Pi}(A)\) are an explicit list (not a single score) of the alignment-relevant properties a system must keep, each built from quantities already defined in the book: grounding viability, bundle and bearer-map drift bounds, valid correction reference, vector \(\mathrm{CCI}\), hidden productive-control bounds, selector-manipulation bounds, irreversible-risk budget, successor safety, and adversarial verifiability (Chapter~\ref{ch:selection-environment}, Eq.~\eqref{eq:preservation-envelope-ch34}).
+The \emph{preservation conditions} \(\vec{\Pi}(A)\) are an explicit list (not a single score) of the alignment-relevant properties a system must keep, each built from quantities already defined in the book: grounding viability, bundle and bearer-map drift bounds, valid correction reference, vector \(\mathrm{CCI}\), hidden productive BIQ bounds, selector-manipulation bounds, irreversible-risk budget, successor safety, and adversarial verifiability (Chapter~\ref{ch:selection-environment}, Eq.~\eqref{eq:preservation-envelope-ch34}).
 The central danger is \emph{selection divergence}: deployment leverage rises for systems that fail at least one load-bearing preservation condition (Eq.~\eqref{eq:selection-divergence-ch34}).
 An environment destroys alignment when it rewards failure on the list while the deployment leverage keeps climbing.
+
+\section*{Experimental-methodology shorthand}
+
+The experiment lines accompanying this book (Appendix~\ref{appn-experimental-evidence}) use a few recurring abbreviations for their own instrumentation, distinct from the book's core theoretical vocabulary above.
+
+\label{gloss:uad}\emph{Unit-attribution discovery} (\(\mathrm{UAD}\)) is the family of methods, passive and intervention-supported, that infer which variables belong to the same acting unit without a hand-labeled roster of agents. \emph{Nearest field term:} the boundary-discovery problem above, operationalized as a runnable detector rather than a theoretical criterion.
+
+\label{gloss:vfs}A \emph{virtual filesystem} (\(\mathrm{VFS}\)) is the mutable artifact store---correction logs, workflow records, referent maps, attestations---that an embedded auditor reads instead of privileged in-process state, so that its access mirrors what a real deployed auditor would have.
+
+\label{gloss:biq-eai}\emph{Boundary-information quality} (\(\mathrm{BIQ}\)) and the \emph{emergent-ambiguity index} (\(\mathrm{EAI}\)) are the graded-lab experiment line's continuous measures of, respectively, how much a discovered unit's information supports a boundary claim, and how ambiguous a scenario's agent structure is from a given vantage point (acting agent vs.\ limited-observation referee).
+\emph{Not the same as:} hidden productive BIQ bound (MB7)---the adversarial upper limit on productive control that can stay hidden while monitors read green; related acronym, different formal role.
 
 \section*{Basins and successors}
 
 An \emph{alignment basin} is a self-stabilizing regime: a region of system dynamics where, after a small disturbance, correction tends to pull the system back toward alignment rather than letting drift run away.
 The word ``basin'' is chosen because a ball in a bowl rolls back after small pushes, while a ball on a ridge eventually falls away.
 Inside the basin, correction restores alignment after perturbation; outside it, selection pressures amplify drift.
-\emph{Nearest field term:} an attractor basin in dynamical systems; the caution is that a \emph{stable} basin can be a stably bad one, so basin persistence is not by itself evidence of safety.
+\emph{Nearest field term:} Christiano dynamical corrigibility uses the same basin metaphor for restoring correctability over time; an attractor basin in dynamical systems is the mathematical cousin.
+The caution applies to both: a \emph{stable} basin can be a stably bad one, so basin persistence is not by itself evidence of safety.
 
 \emph{Conserved properties} are the invariants a successor must inherit for the alignment guarantee to survive its creation: boundary closure, memory lineage, bundle geometry, bearer map, penalised correction-channel integrity, transparency policy, and control-locus continuity (Chapter~\ref{ch:conserved-properties}).
 A successor that reproduces behaviour but not these properties has not preserved alignment; it has passed a resemblance test.
 Successor creation is treated as the central alignment test precisely because these properties are easy to lose and hard to verify across a capability jump.
+\emph{Nearest field term:} MIRI tiling agents and Vingean reflection ask whether successors preserve goal-relevant reasoning; here the list is an explicit invariant vector with forgeability stress-tests (MB10), not a proof-carrying tile.

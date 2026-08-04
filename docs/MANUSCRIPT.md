@@ -4,7 +4,7 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 **Live draft status:** [`metadata/book.yml`](../metadata/book.yml) (chapter titles, review tags, word targets).
 
-**Read online:** [companion site book index](https://gunnarzarncke.github.io/towards-asi-alignment/book/) · [PDF](https://gunnarzarncke.github.io/towards-asi-alignment/towards-superintelligence-alignment.pdf). Policy-adjacent readers: [institutional translation](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appc/) (Appendix C) and [institutional histories overview](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/) (Appendix D hub with eleven case-study cards; [full text on site](https://gunnarzarncke.github.io/towards-asi-alignment/cards/chapters/appm/full/)).
+**Read online:** [companion site book index](https://towards-alignment.com/book/) · [PDF](https://towards-alignment.com/towards-superintelligence-alignment.pdf) · [Field hub](https://towards-alignment.com/field/) (agenda × bridge matrix). Policy-adjacent readers: [institutional translation](https://towards-alignment.com/cards/chapters/appc/) (Appendix C) and [institutional histories overview](https://towards-alignment.com/cards/chapters/appm/) (Appendix D hub with eleven case-study cards; [full text on site](https://towards-alignment.com/cards/chapters/appm/full/)).
 
 ---
 
@@ -12,18 +12,20 @@ Status, structure, bibliography, and source canon for *Towards Superintelligence
 
 | Item | Status |
 |------|--------|
-| Release | **v1.0.0** — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
-| Milestone | **Third** in progress — all main chapters have first drafts and at least one review pass |
-| Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **8 appendices in the PDF** (A–H; institutional histories is Appendix D, source file `appM-institutional-histories.tex`) + 5 unwired appendix stubs on disk |
+| Release | **v1.4.0** (2026-08-02) — see [`RELEASE_NOTES.md`](../RELEASE_NOTES.md) |
+| Milestone | **Fourth** — field crosswalk hub, legibility pass, external-transfer ET-3/ET-4; all main chapters have first drafts and at least one review pass |
+| Structure | 10 parts, **48 chapters** (`ch01`–`ch48`), **9 appendices in the PDF** (A–I; institutional histories is Appendix D, source file `appM-institutional-histories.tex`; Appendix I is the cross-line experimental-evidence index, source file `appN-experimental-evidence.tex`) + 4 unwired appendix stubs on disk |
 | Chapters | **0 draft**, **48 reviewed**, **0 stub** ([`metadata/book.yml`](../metadata/book.yml); *reviewed* = feedback received, not final) |
-| Bibliography | **~235 entries** across categorized `.bib` files |
+| Bibliography | **~250+ entries** across categorized `.bib` files |
 | Word target | ~350k ([`metadata/book.yml`](../metadata/book.yml)) |
+
+**v1.4.0 themes:** Field agenda crosswalk (`reference/field-agendas/`, companion `/field/`); App B synced to MB1–MB11 incl. MB4a; plain-first terminology demotion + Appendix E ↔ inter-agenda glossary; field-claim Lean (finite defeaters, `FieldInterfaces`); ET-3 closed, ET-4 hackathon paper + replay demo.
 
 **Open gaps:** [`metadata/TODO.md`](../metadata/TODO.md) and [`metadata/book.yml`](../metadata/book.yml) (frontmatter stubs, appendix stubs, citation review).
 
-For agent session continuity: [`drafts/conversation-summaries/INDEX.md`](../drafts/conversation-summaries/INDEX.md).
+For agent session continuity: [`drafts/conversation-summaries/HANDOFF.md`](../drafts/conversation-summaries/HANDOFF.md).
 
-The PDF front matter [*Current Status*](../frontmatter/current-status.tex) summarizes work-in-progress disclaimers only; the full chapter list lives in [`metadata/book.yml`](../metadata/book.yml) and on the [site book index](https://gunnarzarncke.github.io/towards-asi-alignment/book/).
+The PDF front matter [*Current Status*](../frontmatter/current-status.tex) summarizes work-in-progress disclaimers only; the full chapter list lives in [`metadata/book.yml`](../metadata/book.yml) and on the [site book index](https://towards-alignment.com/book/).
 
 ---
 
@@ -44,7 +46,7 @@ The PDF front matter [*Current Status*](../frontmatter/current-status.tex) summa
 
 Full titles and per-chapter status: [`metadata/book.yml`](../metadata/book.yml).
 
-Build-time tables in `tables/chapter-map.tex` and `tables/part-roadmap.tex` are auto-generated for the PDF (`scripts/generate_tables.py`); outsiders should use `book.yml` or the site, not the printed chapter-map table alone.
+The part-roadmap table in `tables/part-roadmap.tex` is auto-generated for the PDF (`scripts/generate_tables.py`); outsiders should use `book.yml` or the site for the chapter list.
 
 ---
 
@@ -55,6 +57,7 @@ Prior work lives in sibling repositories and is mirrored under [`context/`](../c
 | Repo | Topics |
 |------|--------|
 | [`agency-detect`](../agency-detect/docs/papers/) | Unsupervised agent discovery, capability, intentional stance, attractor basins, successors |
+| [`deployment-pipeline-simulator`](https://github.com/GunnarZarncke/deployment-pipeline-simulator) | Hidden self-preservation in a simulated release pipeline; perturbation-based secret-loyalty audit |
 | [`brain-to-values`](../brain-to-values/papers/) | Value bundles, free-energy loops, unit-of-caring, consciousness/agency backbone |
 
 Each PDF under `context/` has a markdown extract in [`context/extracts/`](../context/extracts/) (`python3 scripts/extract_pdf_to_md.py`). Full map: [`metadata/source-canon.md`](../metadata/source-canon.md).
@@ -76,6 +79,21 @@ Citations use **BibLaTeX** (`biblatex` + `biber`). Files are split by category u
 | `philosophy.bib` | Philosophy of mind and ethics |
 
 Refresh from source-map sibling repos: `python3 scripts/import_source_map_refs.py`. Run `make check` to verify cited keys exist.
+
+---
+
+## Field agenda reference
+
+Cross-agenda roster and term translation (not manuscript canon): [`reference/field-agendas/`](../reference/field-agendas/README.md). **Companion site:** [towards-alignment.com/field/](https://towards-alignment.com/field/) — coverage matrix, evidence catalog, 32 agenda cards.
+
+| Path | Role |
+|------|------|
+| [`data/`](../reference/field-agendas/data/) | **Source of truth** — YAML agendas, matrix (MB1–MB11 incl. MB4a), evidence catalog, clustering |
+| [`field-agenda-index.md`](../reference/field-agendas/field-agenda-index.md) | **Generated** agent index (`npm run sync:field-agendas`) |
+| [`inter-agenda-term-glossary.md`](../reference/field-agendas/inter-agenda-term-glossary.md) | ~152 headwords: Definition / why-not-same / cross-agenda tags |
+| [`anthropic-acausal-taxonomy.md`](../reference/field-agendas/anthropic-acausal-taxonomy.md) | Homograph disambiguation for *anthropic* / acausal loads |
+
+Manuscript bridge map: [`appendices/appB-bridge-crosswalk.tex`](../appendices/appB-bridge-crosswalk.tex) (MB1–MB11 incl. MB4a; intervention coverage map at `sec:intervention-coverage-map`).
 
 ---
 

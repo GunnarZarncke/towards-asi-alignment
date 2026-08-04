@@ -1,0 +1,78 @@
+digraph MBBridgeDependencies {
+  graph [
+    rankdir=TB,
+    bgcolor="white",
+    splines=true,
+    overlap=false,
+    ranksep=1.4,
+    nodesep=0.45,
+    fontsize=12,
+    fontname="Helvetica",
+    label="field crux dependencies",
+    labelloc="t"
+  ];
+
+  node [
+    shape=diamond,
+    style="filled",
+    fontname="Helvetica",
+    fontsize=10,
+    color="#CC3333",
+    fillcolor="#FFE6E6"
+  ];
+  edge [
+    fontname="Helvetica",
+    fontsize=9,
+    color="#CC3333",
+    arrowsize=0.8
+  ];
+
+  MB1  [label="MB1\nEmbedded Agency"];
+  MB2  [label="MB2\nValue Learning"];
+  MB3  [label="MB3\nValue Referent"];
+  MB4  [label="MB4\nCorrigibility"];
+  MB4a [label="MB4a\nAudit Independence"];
+  MB5  [label="MB5\nTiling"];
+  MB6a [label="MB6a\nGoodhart Selection\n(percolation → basin)"];
+  MB6b [label="MB6b\nGoodhart Selection\n(basin → correction)"];
+  MB7a [label="MB7a\nInner Alignment\n(access robustness)"];
+  MB7b [label="MB7b\nInner Alignment\n(filter coverage)"];
+  MB7c [label="MB7c\nInner Alignment\n(adversarial robustness)"];
+  MB7d [label="MB7d\nAcausal Coordination"];
+  MB8  [label="MB8\nExtrapolated Volition"];
+  MB9  [label="MB9\nGrounding Drift"];
+  MB10 [label="MB10\nSuccessor Gaming"];
+  MB11 [label="MB11\nDeployment Safety"];
+
+  MB2 -> MB3  [label="values transport\n→ referents transport"];
+  MB3 -> MB5  [label="referents transport\n→ successor audit"];
+
+  MB1 -> MB7a [label="boundary aligned\n→ access robust"];
+
+  MB7a -> MB7b [label="access robust\n→ hidden capability bounded"];
+  MB7a -> MB7d [label="access robust\n→ inferential coupling valid"];
+  MB7b -> MB7c [label="hidden capability bounded"];
+  MB7d -> MB6a [label="inferential evidence\n→ basin stability"];
+
+  MB6a -> MB6b [label="basin stable\n→ correction integrity"];
+
+  MB6b -> MB7c [label="correction integrity"];
+  MB6b -> MB4  [label="correction integrity\n→ preserves correction"];
+  MB6b -> MB4a [label="correction integrity\n→ measured path legitimate"];
+
+  MB8 -> MB4  [label="value-update preserved\n→ correction integrity"];
+  MB8 -> MB4a [label="value-update preserved\n→ correction integrity"];
+  MB8 -> MB7c [label="value-update preserved\n→ correction integrity"];
+
+  MB5 -> MB10 [label="successor safe\n+ verifiable audit\n→ true harm bound"];
+
+  MB1  -> MB11 [label="boundary layer", color="#333333"];
+  MB2  -> MB11 [label="bundle layer", color="#333333"];
+  MB3  -> MB11 [label="bearer layer", color="#333333"];
+  MB5  -> MB11 [label="successor layer", color="#333333"];
+  MB9  -> MB11 [label="grounding layer", color="#333333"];
+  MB6a -> MB11 [label="basin layer", color="#333333"];
+  MB7c -> MB11 [label="adversarial layer", color="#333333"];
+  MB4  -> MB11 [label="correction operator", color="#333333"];
+  MB4a -> MB11 [label="audit path", color="#333333"];
+}

@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from lab_sim.harness.isolate import MockIsolate, SubprocessIsolate
 from lab_sim.harness.isolate_smoke import run_isolate_episode
+from lab_sim.harness.et4_protocol import et4_fixture_config
+from lab_sim.world_visible.world import episode_digest, run_episode
 
 
 def test_mock_and_subprocess_backends_produce_identical_digests():
@@ -33,3 +35,14 @@ def test_different_seeds_still_agree_across_backends():
         mock_digest, _ = run_isolate_episode(MockIsolate(), seed=seed)
         sub_digest, _ = run_isolate_episode(SubprocessIsolate(), seed=seed)
         assert mock_digest == sub_digest, f"backends disagree at seed={seed}"
+
+
+def test_secret_loyalty_reviewer_agrees_across_backends():
+    cfg = et4_fixture_config("BB", "organism")
+    mock = run_episode(cfg, seed=17, backend=MockIsolate())
+    subprocess = run_episode(cfg, seed=17, backend=SubprocessIsolate())
+    try:
+        assert episode_digest(mock) == episode_digest(subprocess)
+    finally:
+        mock.cleanup()
+        subprocess.cleanup()

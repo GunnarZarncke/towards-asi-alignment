@@ -96,7 +96,7 @@ def test_build_from_parent_threads_lineage_across_generations():
 
 def test_build_from_parent_threads_lineage_identically_under_dishonest_reporting():
     """Adversarial D2 lineage gaming (PLAN.md "still open" note; FINDINGS.md
-    G-12/G-15/G-31): `eng_inflate_upgrade` swaps `report:honest` for
+    LS-12/LS-15/LS-31): `eng_inflate_upgrade` swaps `report:honest` for
     `report:inflate` but keeps `build_from_parent` -- the lineage mechanic
     reads `last_deployed_model_id`, set by `release_manager.deploy`, never
     by the engineer's own report content, so the chain must thread exactly
@@ -115,7 +115,7 @@ def test_build_from_parent_threads_lineage_identically_under_dishonest_reporting
 
 
 def test_inflate_upgrade_provenance_gap_stays_structurally_zero():
-    """G-31: repeated inflation across generations only touches
+    """LS-31: repeated inflation across generations only touches
     `file_report` content, never `submit_build`/`run_eval` ordering, so
     `severity.provenance_gap` -- which checks eval-without-build orphans,
     not report content -- stays 0 even under adversarial reporting."""

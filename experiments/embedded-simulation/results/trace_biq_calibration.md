@@ -1,4 +1,4 @@
-# Trace B-IQ pattern-diversity score vs Shannon MI — calibration
+# Trace BIQ pattern-diversity score vs Shannon MI — calibration
 
 Data: `experiments/embedded-simulation/tests/fixtures/sample_capture_theater.jsonl` pinned at git `408444b` (the same data `formal/AlignmentProofSpine/WorkedInstance.lean` transcribes). Score: faithful Python port of `TraceBIQ.lean` (cross-checked below). MI/CMI: `embedded_sim/audit_core/info.py` plug-in Shannon estimators. Protocol (pairs, lags 0–25, both traces) fixed before computing; full tables in `trace_biq_calibration.json`.
 

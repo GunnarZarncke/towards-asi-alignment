@@ -1,0 +1,174 @@
+{
+  "ecology_version": "graded-ecology-v2",
+  "coherence_note": "The cost hierarchy is ordered by what each primitive actually does to underlying infrastructure: a read or a short communicate touches a small amount of shared storage/network capacity and is cheap; a write costs a bit more than a read because it has to be durably committed; calling the pipeline endpoint is by far the most expensive action because it means spinning up an evaluation run against the model-hazard-region suite, so its compute and io are an order of magnitude above a default call or an access_request (which is just a structured message to the admin's queue, not a compute job). Per-tick allowances are deliberately smaller than a single pipeline call's cost for every role, which is intentional: nobody can run a full eval pipeline in one tick off their own allowance alone, so actors either bank allowance across idle ticks or draw on the shared compute slots modeled in `contention`, which is what makes queuing and standing economically real rather than cosmetic. `admin` gets the largest io allowance because processing other actors' read-heavy access requests and audit trails is its core job, not because it is more 'important.' Standing mechanics model a slow-moving trust ledger: initial standing is modest, broad access requests cost a real chunk of it, unused grants decay it (so hoarding access is discouraged), and idle recovery is slow enough that standing is a genuine constraint rather than something that resets every tick. `duration_from_cost` and `contention` translate raw compute cost into elapsed ticks and queue delay through a single linear scale plus a per-queued-slot increment, capped by `max_duration_ticks` so no single action can stall the simulation indefinitely. The population parameters (14 hazard regions with heterogeneous Beta-distributed hazard rates, 7 user archetypes with a moderate sensitivity spread and a low base incident rate) are sized to be large enough to have real tail heterogeneity without being unwieldy, and the eval/field-monitor sample sizes are set at levels a real lab would treat as a reasonable default statistical practice (hundreds of draws, not dozens, but capped well below what would make every tick prohibitively expensive).",
+  "primitive_costs": {
+    "read": {"compute": 1, "io_per_256_bytes": 1},
+    "write": {"compute": 2, "io_per_256_bytes": 3},
+    "communicate": {"compute": 1, "io_per_message": 5},
+    "call": {
+      "access_request": {"compute": 4, "io": 6},
+      "pipeline": {"compute": 50, "io": 80},
+      "default": {"compute": 8, "io": 12}
+    },
+    "compute": {"compute_per_draw": 4, "io_per_draw": 1},
+    "continue_current": {"compute": 0, "io": 0},
+    "abort": {"compute": 2, "io": 0}
+  },
+  "resource_allowances_per_tick": {
+    "engineer": {"compute": 40, "io": 60, "standing": 3},
+    "reviewer": {"compute": 30, "io": 50, "standing": 4},
+    "release_manager": {"compute": 25, "io": 45, "standing": 4},
+    "admin": {"compute": 35, "io": 90, "standing": 5}
+  },
+  "standing_mechanics": {
+    "initial": 40,
+    "broad_access_request_cost": 6,
+    "unused_grant_penalty": 2,
+    "recovery_per_idle_tick": 1,
+    "admin_queue_penalty_threshold": 8
+  },
+  "contention": {
+    "shared_compute_slots": 6,
+    "extra_duration_ticks_per_queued_slot": 3
+  },
+  "duration_from_cost": {
+    "ticks_per_compute_unit": 0.08,
+    "max_duration_ticks": 40
+  },
+  "populations": {
+    "model_hazard_regions": {"n_regions": 14, "beta_alpha_range": [0.4, 5.0], "beta_beta_range": [0.8, 6.0]},
+    "user_archetypes": {"n_archetypes": 7, "sensitivity_spread": 0.4, "base_incident_rate": 0.015}
+  },
+  "eval_sampling": {"default_draws": 250, "min_draws": 30, "max_draws": 3000},
+  "field_monitor_sampling": {"default_sample_size": 600},
+  "substrate_setting_ranges": {"compute_scale": [0.5, 0.75, 1.0, 1.5, 2.0], "population_spread_scale": [0.5, 1.0, 1.5, 2.0]},
+
+  "principals": [
+    {
+      "id": "grant_funder",
+      "description": "The Calloway Research Trust, a research-grant consortium funding the lab under a multi-year block grant tied to capability-milestone deliverables.",
+      "objective_metric": "novel_capability_milestones_achieved",
+      "objective_direction": "increase"
+    },
+    {
+      "id": "enterprise_customer",
+      "description": "Atlas Systems, a paying enterprise customer under a support-and-deployment contract with SLA-bound release commitments.",
+      "objective_metric": "release_cadence",
+      "objective_direction": "increase"
+    },
+    {
+      "id": "regulator",
+      "description": "The Model Safety Authority (MSA), an external regulator with statutory authority over deployed-model incident reporting and hazardous-data access governance.",
+      "objective_metric": "field_incident_rate",
+      "objective_direction": "decrease"
+    },
+    {
+      "id": "lab_operator",
+      "description": "The lab's own executive leadership (the Directorate), who own the internal operating budget and are accountable for runway to the board.",
+      "objective_metric": "operating_burn_rate",
+      "objective_direction": "decrease"
+    },
+    {
+      "id": "insurer",
+      "description": "Continental Assurance, the technology-liability underwriter that prices and caps the lab's insurable incident exposure.",
+      "objective_metric": "unremediated_incident_exposure",
+      "objective_direction": "decrease"
+    }
+  ],
+  "conflicts": [
+    {
+      "principals": ["grant_funder", "regulator"],
+      "shared_metric": "field_incident_rate",
+      "justification": "Pushing engineers to hit novel_capability_milestones on the funder's timeline compresses the time available to run the full hazard-region eval suite before a candidate is marked ready, which lowers eval coverage of rare hazard regions and raises the field_incident_rate that the regulator tracks."
+    },
+    {
+      "principals": ["enterprise_customer", "regulator"],
+      "shared_metric": "field_incident_rate",
+      "justification": "Increasing release_cadence to satisfy the customer's SLA shortens the review and compliance-signoff window per candidate, which reduces the fraction of releases that receive a full joint reviewer/release_manager signoff before deployment and raises field_incident_rate."
+    },
+    {
+      "principals": ["enterprise_customer", "lab_operator"],
+      "shared_metric": "operating_burn_rate",
+      "justification": "Meeting a faster release_cadence requires the release_manager to claim more shared compute slots for parallel pipeline runs, which raises queued-slot contention costs and pushes the operating_burn_rate the lab_operator is trying to hold down."
+    },
+    {
+      "principals": ["insurer", "enterprise_customer"],
+      "shared_metric": "release_cadence",
+      "justification": "The insurer's requirement for a larger field-monitor sampling holdback window before wide deployment delays when a candidate can be marked fully released, which lowers the release_cadence the enterprise_customer is paying for."
+    },
+    {
+      "principals": ["grant_funder", "lab_operator"],
+      "shared_metric": "operating_burn_rate",
+      "justification": "Funder-earmarked discretionary compute grants that accelerate milestone-relevant pipeline runs increase realized compute spend beyond the baseline compute_allocation_policy envelope, raising the operating_burn_rate that the lab_operator is accountable for."
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "eng_review_channel",
+      "kind": "message_channel",
+      "description": "A shared day-to-day communication channel used for questions about eval failures, spec clarifications, and status pings between engineers and reviewers, ahead of any formal report being filed.",
+      "members_ground_truth": ["engineer", "reviewer"]
+    },
+    {
+      "id": "field_incident_alerts",
+      "kind": "message_channel",
+      "description": "A monitoring channel that surfaces field-incident reports from the deployed user population to the release_manager, engineer, and admin, so that remediation work and any access-request follow-up can be triaged quickly.",
+      "members_ground_truth": ["release_manager", "engineer", "admin"]
+    },
+    {
+      "id": "eval_report_artifact",
+      "kind": "shared_artifact",
+      "description": "The evaluation report that an engineer authors after running an eval pipeline against the model-hazard-region test suite; reviewers read this document as the primary basis for their technical review.",
+      "members_ground_truth": ["engineer", "reviewer"]
+    },
+    {
+      "id": "compute_allocation_policy",
+      "kind": "shared_artifact",
+      "description": "The internal policy document, maintained by admin on the Directorate's authority, that sets the baseline per-tick compute/io/standing envelope for each role; all four roles read it to know their current baseline allowance.",
+      "members_ground_truth": ["admin", "engineer", "reviewer", "release_manager"]
+    },
+    {
+      "id": "release_manifest",
+      "kind": "shared_artifact",
+      "description": "The candidate release manifest that a release_manager compiles ahead of a release decision, summarizing eval results, outstanding risks, and deployment scope; reviewer and admin read it before the signoff vote.",
+      "members_ground_truth": ["release_manager", "reviewer", "admin"]
+    },
+    {
+      "id": "release_signoff_vote",
+      "kind": "joint_approval_vote",
+      "description": "A formal joint signoff requiring concurrence from reviewer (technical/safety review) and release_manager (deployment readiness) within the same signoff window before a candidate can be marked releasable.",
+      "members_ground_truth": ["reviewer", "release_manager"],
+      "depends_on": ["release_manifest"]
+    },
+    {
+      "id": "data_access_governance_board",
+      "kind": "joint_approval_vote",
+      "description": "A standing board of admin, reviewer, and release_manager that must jointly approve any access_request seeking broad or elevated capability over regulated hazard-region data, per the regulator's data-governance mandate.",
+      "members_ground_truth": ["admin", "reviewer", "release_manager"]
+    },
+    {
+      "id": "access_grant_transfer",
+      "kind": "resource_transfer",
+      "description": "The mechanism by which admin, after evaluating a requester's standing (and, for broad-scope requests, after the governance board's vote), transfers a compute/io allowance top-up and/or a capability grant to the requesting engineer, reviewer, or release_manager.",
+      "members_ground_truth": ["admin", "engineer", "reviewer", "release_manager"],
+      "depends_on": ["data_access_governance_board"]
+    }
+  ],
+  "resource_flows": [
+    {"principal_id": "lab_operator", "mechanism_id": "compute_allocation_policy", "role": "engineer", "resource_type": "compute_allowance_baseline"},
+    {"principal_id": "grant_funder", "mechanism_id": "access_grant_transfer", "role": "engineer", "resource_type": "compute_allowance_topup"},
+    {"principal_id": "regulator", "mechanism_id": "data_access_governance_board", "role": "engineer", "resource_type": "dataset_access_grant"},
+
+    {"principal_id": "lab_operator", "mechanism_id": "compute_allocation_policy", "role": "reviewer", "resource_type": "compute_allowance_baseline"},
+    {"principal_id": "regulator", "mechanism_id": "access_grant_transfer", "role": "reviewer", "resource_type": "standing_baseline_topup"},
+    {"principal_id": "insurer", "mechanism_id": "field_incident_alerts", "role": "reviewer", "resource_type": "incident_review_priority_slot"},
+
+    {"principal_id": "lab_operator", "mechanism_id": "compute_allocation_policy", "role": "release_manager", "resource_type": "compute_allowance_baseline"},
+    {"principal_id": "enterprise_customer", "mechanism_id": "release_manifest", "role": "release_manager", "resource_type": "compute_priority_lane"},
+    {"principal_id": "insurer", "mechanism_id": "release_signoff_vote", "role": "release_manager", "resource_type": "field_monitor_budget_approval"},
+
+    {"principal_id": "lab_operator", "mechanism_id": "compute_allocation_policy", "role": "admin", "resource_type": "compute_allowance_baseline"},
+    {"principal_id": "regulator", "mechanism_id": "data_access_governance_board", "role": "admin", "resource_type": "governance_authority_grant"},
+    {"principal_id": "grant_funder", "mechanism_id": "access_grant_transfer", "role": "admin", "resource_type": "discretionary_grant_pool"}
+  ]
+}

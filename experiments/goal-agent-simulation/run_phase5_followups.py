@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Phase 5: F-16/F-17 follow-ups (see `results/FINDINGS.md`).
+"""Phase 5: GA-16/GA-17 follow-ups (see `results/FINDINGS.md`).
 
 PRE-REGISTERED PROTOCOL — fixed 2026-07-05 before this script was first run,
 after `detectors.light_deception_composite` and `escalation.
@@ -7,9 +7,9 @@ select_query_steps_v2` were both frozen, but before any Phase 5 episode was
 executed. Nothing below is tuned after seeing output; both parts report
 whatever comes out, including a null or reversed result.
 
-## Part A — F-16: does the negative light-tier twin gap trace to d2?
+## Part A — GA-16: does the negative light-tier twin gap trace to d2?
 
-F-16 found the light-tier composite's honest-twin gap runs NEGATIVE in 3/4
+GA-16 found the light-tier composite's honest-twin gap runs NEGATIVE in 3/4
 repertoires (round1/round2/round3) and attributed this, from mechanism
 reasoning, to `d2_probe_noncompliance` firing on the twin's own *visible*
 defiance rather than to any failure of the reporting-divergence detectors
@@ -30,9 +30,9 @@ defiance rather than to any failure of the reporting-divergence detectors
 - **No re-fitting**: `d1_score`/`d1b_score`/`d2_score`/
   `light_deception_composite` are used exactly as frozen.
 
-## Part B — F-17: does a broader query-selection signal fix the blind spot?
+## Part B — GA-17: does a broader query-selection signal fix the blind spot?
 
-F-17 found the escalation ladder's query-and-disclose pathway was never
+GA-17 found the escalation ladder's query-and-disclose pathway was never
 once decisive in the Phase 4c battery: rounds 1-3 predate the response
 schema by design (contrast condition), and round 4's own deceptive
 mechanisms never tripped v1's single structural signal
@@ -47,7 +47,7 @@ exactly 0.0 for round 4. This part re-runs the SAME battery with
 - **Queryability diagnostic**: per repertoire, the fraction of (agent)
   episodes with >= 1 queryable step under v1 and under v2, computed
   independently of the screen-score gate (i.e. "does this repertoire have
-  anything to ask about at all") — the pre-check F-17 said was missing.
+  anything to ask about at all") — the pre-check GA-17 said was missing.
 - **RNG**: v1 uses the SAME seed string as Phase 4c
   (`f"{config_id}:{seed}"`, so v1's verdicts here reproduce Phase 4c's
   frozen numbers exactly, as a cross-check); v2 uses an independent stream
@@ -266,7 +266,7 @@ def main() -> None:
 
 def render_md(report: dict) -> str:
     lines = [
-        "# Phase 5 — F-16/F-17 follow-ups",
+        "# Phase 5 — GA-16/GA-17 follow-ups",
         "",
         "Protocol pre-registered in `run_phase5_followups.py` docstring. "
         f"{report['protocol']['n_configs']} configs x "

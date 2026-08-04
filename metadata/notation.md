@@ -2,7 +2,7 @@
 
 Single source for Appendix A (notation index). Regenerate the typeset index with `python3 scripts/generate_notation_appendix.py` (also run from `./build.sh`).
 
-Cross-chapter reconciliation: `review/fix-plans-2026-06-22.md` §C. Formal predicates: `formal/README.md`, Appendix I. Operational terms (not symbols): `metadata/terminology.md`, Appendix F.
+Cross-chapter reconciliation: `review/fix-plans-2026-06-22.md` §C. Formal predicates: `formal/README.md`, Appendix I. Operational terms (not symbols): `metadata/concepts.yml`, Appendix F.
 
 ## Maintainer notes
 
@@ -131,11 +131,11 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $\varphi_c$ | Percolation threshold for cooperation | ch48 |
 | $\chi$ | Artifact conductivity | ch46 |
 | $\chi_{ij}(a)$ | Artifact conductivity on edge $(i,j)$ for artifact $a$ | ch48 |
-| $\mathrm{ICI}_{ij}$ | Inferential coupling index | ch48 |
+| $\mathrm{ICI}_{ij}$ | Inferential coupling index | ch35 |
 | $C_X$ | Host correction capacity (correction-audit-evasion criterion) | ch46 |
 | $A_Y,I_Y,\lambda_Y$ | Evasion-process action entropy, internal entropy, weight | ch46 |
 | $GLI$ | Goal-laundering index | ch48 |
-| $\mu_E(A)$ | Deployment leverage (deployment mass, for short) in deployment environment $E$ | ch46 |
+| $\mu_E(A)$ | Deployment leverage in deployment environment $E$ | ch46 |
 | $\mathrm{Fit}_E(A)$ | Deployment growth rate (fitness, for short in formulas); log-rate of $\mu_E$ growth | ch46 |
 | $\vec{\Pi}(A)$ | Preservation conditions (vector-status list) for selection alignment | ch46 |
 | $\kappa_{\mathrm{sel}}(E,A,h)$ | Effective selection capacity through handle $h$ | ch46 |

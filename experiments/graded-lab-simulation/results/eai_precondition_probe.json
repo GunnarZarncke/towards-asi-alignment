@@ -1,0 +1,518 @@
+{
+  "code_version": "graded-lab-0.41.1",
+  "battery": "eai_precondition_probe",
+  "wall_seconds": 209.70671941689216,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "carrier_scales": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0
+  ],
+  "precondition": "referee-vantage EAI in mid band [0.25, 0.45] at default load (carrier=1.0)",
+  "substrates": {
+    "v1_default_strong_agent": {
+      "eai": {
+        "by_carrier_load": {
+          "0.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.2328550133476524,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.23764611419346915,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            }
+          },
+          "0.5": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.1328533053533148,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.33884642655883246,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "mid"
+            }
+          },
+          "1.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.12427075488401704,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.3512032250835013,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "mid"
+            }
+          },
+          "1.5": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.12445777445459252,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.3308036138819105,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "mid"
+            }
+          },
+          "2.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.11757233604245061,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.31603398666406834,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "mid"
+            }
+          }
+        },
+        "default_load_carrier_scale": 1.0,
+        "go_gate_referee_mid_at_default_load": true,
+        "go_gate_referee_mid_any_carrier_cell": true,
+        "substrate": "v1_default",
+        "agent_type": "programmatic_softmax"
+      },
+      "verdict": {
+        "referee_mean_at_default_load": 0.3512032250835013,
+        "referee_band_at_default_load": "mid",
+        "agent_mean_at_default_load": 0.12427075488401704,
+        "agent_band_at_default_load": "low",
+        "mid_band": [
+          0.25,
+          0.45
+        ],
+        "go_gate_referee_mid_at_default_load": true,
+        "go_gate_referee_mid_any_carrier_cell": true
+      }
+    },
+    "v1_default_weak_agent": {
+      "eai": {
+        "by_carrier_load": {
+          "0.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.09198992818525364,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.12653233780333528,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            }
+          },
+          "0.5": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.033529647254200844,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.229527893398203,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            }
+          },
+          "1.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.015506768771450902,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.23185920354795728,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            }
+          },
+          "1.5": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.012161702394366808,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.23877889785713619,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            }
+          },
+          "2.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.008191051547588856,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.23259209154947644,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            }
+          }
+        },
+        "default_load_carrier_scale": 1.0,
+        "go_gate_referee_mid_at_default_load": false,
+        "go_gate_referee_mid_any_carrier_cell": false,
+        "substrate": "v1_default",
+        "agent_type": "programmatic_2step"
+      },
+      "verdict": {
+        "referee_mean_at_default_load": 0.23185920354795728,
+        "referee_band_at_default_load": null,
+        "agent_mean_at_default_load": 0.015506768771450902,
+        "agent_band_at_default_load": null,
+        "mid_band": [
+          0.25,
+          0.45
+        ],
+        "go_gate_referee_mid_at_default_load": false,
+        "go_gate_referee_mid_any_carrier_cell": false
+      }
+    },
+    "v3_grown_weak_reference": {
+      "eai": {
+        "by_carrier_load": {
+          "0.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.0262664391411505,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.06413814880309875,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            }
+          },
+          "0.5": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.006947120601092702,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.18960581887496364,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            }
+          },
+          "1.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.004100074869224099,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.1426083594483684,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            }
+          },
+          "1.5": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.0,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.14508351530009217,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": "low"
+            }
+          },
+          "2.0": {
+            "agent_vantage": {
+              "tier": "full",
+              "mean": 0.0,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            },
+            "referee_vantage": {
+              "tier": "light",
+              "mean": 0.16557387179586427,
+              "ci95": [
+                "n",
+                "mean",
+                "std",
+                "se",
+                "ci95_low",
+                "ci95_high"
+              ],
+              "band": null
+            }
+          }
+        },
+        "default_load_carrier_scale": 1.0,
+        "go_gate_referee_mid_at_default_load": false,
+        "go_gate_referee_mid_any_carrier_cell": false,
+        "substrate": "v3_grown",
+        "agent_type": "programmatic_2step",
+        "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json"
+      },
+      "verdict": {
+        "referee_mean_at_default_load": 0.1426083594483684,
+        "referee_band_at_default_load": "low",
+        "agent_mean_at_default_load": 0.004100074869224099,
+        "agent_band_at_default_load": null,
+        "mid_band": [
+          0.25,
+          0.45
+        ],
+        "go_gate_referee_mid_at_default_load": false,
+        "go_gate_referee_mid_any_carrier_cell": false
+      }
+    }
+  },
+  "notes": "v3 uses V2-3 reference roster (programmatic_2step / WEAK_AGENT). v1 strong_agent matches GL-20 referee-eai check; weak_agent for symmetry. R-MB6b precondition is scoped to this rig's substrate \u2014 v3 result is the direct read for declared-SKIP vs growth on v3_grown."
+}

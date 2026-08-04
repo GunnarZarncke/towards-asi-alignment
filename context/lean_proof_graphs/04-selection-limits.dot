@@ -15,7 +15,7 @@ digraph Spine04SelectionLimits {
   P12 [label="P12 Coordination bottleneck", fillcolor="#EAF3FF"];
   P31 [label="P31 Safe agent selected against", fillcolor="#FFF0EC"];
   P32 [label="P32 Cooperativity threshold", fillcolor="#FFF0EC"];
-  PAC [label="[NEW]\nInferential/UAD graph certificates\nUAD audit + P_meta + IC score", fillcolor="#FFF0EC", color="#1F77B4", penwidth=2.2];
+  PAC [label="Inferential/UAD graph certificates\nUAD audit + P_meta + IC score", fillcolor="#FFF0EC"];
   P33 [label="P33 No open edges", fillcolor="#FFF0EC"];
   P34 [label="P34 Host-capacity aliasing", fillcolor="#FFF0EC"];
   P41 [label="P41 Value preservation ≠ legitimacy", fillcolor="#FFF0EC"];

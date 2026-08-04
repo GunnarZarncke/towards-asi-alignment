@@ -1,11 +1,24 @@
 \chapter{Capability Growth Is Boundary Expansion}
 \label{ch:capability-growth-boundary-expansion}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/illustrations/ch12_human-supervision-vs-ai-expansion.png}
+\caption{Capability Outruns Correction}
+\label{fig:ch12-illustration}
+\end{figure}
+
 \begin{chapterthesis}
 Capability growth is boundary expansion.
 A system becomes more capable when more of the world enters its sensory, predictive, active, memory, and coordination loops.
 The alignment-relevant risk is differential growth: predictive and control reach expanding faster than value-bundle preservation, bearer-map accuracy, transparency, and human correction capacity.
 \end{chapterthesis}
+
+\begin{epistemicstatus}
+That capability is a property of a coupled system rather than an isolated artifact and shifts as the system grows restates the extended-mind and embedded-cognition literature in cognitive science and philosophy of mind, a position the field treats as well-supported though not without dissent. 
+This chapter builds a framework on top of that premise.  
+High confidence in the diagnostic claim, that differential growth makes capability dangerous. Less confident in the taxonomy of boundary expansion, capability-growth, and the conserved properties. 
+\end{epistemicstatus}
 
 \begin{refsection}
 
@@ -19,6 +32,12 @@ Some accept the demarcations of skin and skull, and say that what is outside the
 The previous chapter developed how to measure capability without relying on a fixed task ontology.
 Chapter~\ref{ch:capability-without-task-ontology} introduced predictive and control information across the boundary, discounted by memory cost and residual surprise.
 This chapter develops the corresponding theory of capability growth.
+
+The AI~2027 scenario makes this boundary shift concrete: its AI research collective is not just a
+larger model, but a coupled system of agents, long-lived memory, tools, and copies
+\autocite{ai2027}. The relevant optimizer therefore becomes the lab--agent collective.
+That is a scenario illustration of the chapter's claim, not evidence that the scenario's timeline
+will occur.
 
 The central claim is simple:
 
@@ -395,8 +414,9 @@ A loose swarm may be powerful but chaotic.
 A well-protocolized ecosystem of models, tools, evaluators, memories, and human supervisors may become a higher-level optimizer.
 
 This is why capability growth cannot be separated from socio-technical structure.
-Funding and evaluation practice today overweight interpretability, benchmarks, and misuse testing relative to transport, bearer-map, and correction-channel engineering \autocite{iaisr2025,casper2023rlhflimits}.
+Funding and evaluation practice today often emphasizes interpretability, benchmarks, and misuse testing without proportionate investment in transport, bearer-map, and correction-channel engineering \autocite{iaisr2025,casper2023rlhflimits}.
 Network models of cooperation suggest that safety norms must percolate, not merely exist locally \autocite{wang2013percolation,zarncke2025attractor}.
+When capability jumps outrun public deployment classes, labs may withhold general release and route access through trusted partners rather than default open weights \autocite{anthropic2026mythosalignment}.
 
 \section{Capability Growth as Differential Boundary Expansion}
 \label{sec:differential-boundary-expansion}
@@ -895,7 +915,8 @@ For each proposed capability increase, ask:
 The minimum artifact is a boundary expansion table:
 
 \begin{center}
-\begin{tabular}{p{0.19\linewidth}p{0.19\linewidth}p{0.19\linewidth}p{0.19\linewidth}}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.12\textwidth}L{0.16\textwidth}L{0.20\textwidth}X@{}}
 \toprule
 Expansion & New reach & Alignment risk & Required correction upgrade \\
 \midrule
@@ -905,7 +926,7 @@ Code execution & software environment & external action, malware, self-extension
 Payment access & markets and services & resource acquisition & spend limits, dual authorization \\
 Subagent creation & delegated action & successor drift & successor certification \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 This table is not a full safety case.

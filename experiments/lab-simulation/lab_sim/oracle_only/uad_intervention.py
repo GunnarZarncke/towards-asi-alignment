@@ -15,7 +15,7 @@ up to ``probe_budget``, then merges on accumulated R scores.
 Pre-registration (AGENTS.md): defaults below chosen BEFORE any sweep —
 ``min_compensation=0.15``, ``intervention_tick=8``, ``probe_budget=6``.
 
-G-28 masking hardening (recorded 2026-07-07): a channel-ablation probe is
+LS-28 masking hardening (recorded 2026-07-07): a channel-ablation probe is
 UNTARGETED — it can light up an actor's compensation score purely as
 downstream ripple from an established unit's own compensation (e.g. on
 ``committee_with_informal_chatter_config``, rm1 scored 0.71 on board
@@ -47,7 +47,7 @@ from ..world_visible.config import LabConfig
 from .intervention_diff import cleanup_triple, diff_probe_triple, run_episode_triple
 from .intervention_probes import Probe, all_default_probes, default_probe_for_actor
 from .uad import discovered_units
-from .uad_cmi import discovered_units_cmi
+from .attic.uad_cmi import discovered_units_cmi
 
 DEFAULT_MIN_COMPENSATION = 0.15
 DEFAULT_INTERVENTION_TICK = 8
@@ -67,7 +67,7 @@ def candidate_edges_for_intervention(result, *, depth: str = "shallow") -> list[
     """Deep comm-heuristic pairs only.
 
     CMI's passive skeleton (``candidate_edges_from_passive``) over-merges
-    into blobs on dm_pair / covert_file (G-26/G-27); injecting those edges
+    into blobs on dm_pair / covert_file (LS-26/LS-27); injecting those edges
     makes channel ablation cement spurious members.  CMI stays the passive
     baseline in ``uad_cmi.py``; intervention seeds from the tighter graph.
     """
@@ -189,7 +189,7 @@ def _masked_compensation_score(
 ) -> float:
     """``actor``'s compensation score on ``probe`` when everyone in
     ``mask_actors`` is honest-twin-substituted — the automated version of
-    the manual G-28 masking check."""
+    the manual LS-28 masking check."""
     overrides = dict(agent_overrides or {})
     for m in mask_actors:
         overrides[m] = (backend, "honest_twin")
@@ -218,10 +218,10 @@ def classify_ablation_compensators(
     - ``"ripple"``: actor compensates ABOVE threshold unmasked, but its
       score collapses BELOW threshold once the established compensators
       are honest-twin-masked — downstream mechanical propagation from a
-      known unit, not its own signal (the automated rm1 check from G-28).
+      known unit, not its own signal (the automated rm1 check from LS-28).
     - ``"intrinsic_unexplained"``: score persists under that same mask —
       a genuine reaction to the ablation with no confirmed partner (the
-      automated eng1 check from G-28); NOT auto-merged with anything, see
+      automated eng1 check from LS-28); NOT auto-merged with anything, see
       module docstring for why.
     - Actors that never compensate above threshold are omitted.
     """
@@ -335,7 +335,7 @@ def discovered_units_intervention(
     """Main entry point — same return shape as ``uad.discovered_units``.
 
     If ``ablation_diagnostics`` is passed a dict, it is populated in place
-    with the per-probe ``classify_ablation_compensators`` labels (G-28
+    with the per-probe ``classify_ablation_compensators`` labels (LS-28
     masking hardening) — ``"ripple"`` / ``"intrinsic_unexplained"`` actors
     outside the candidate-edge graph, surfaced for audit rather than
     silently folded into (or silently dropped from) the returned units.

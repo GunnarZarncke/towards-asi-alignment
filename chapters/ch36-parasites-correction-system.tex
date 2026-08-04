@@ -5,6 +5,14 @@
 A correction system fails not only when it is overpowered, but also when it is colonized by processes that make correction look alive while removing its causal force. This chapter calls that failure mode \emph{correction-audit evasion} and develops it through a biological \emph{parasite} metaphor: an evasion process extracts benefit from a host correction system while reducing that host's ability to model, evaluate, and correct the larger process it is supposed to govern.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+The chapter's diagnosis --- that oversight mechanisms can keep operating in form while losing causal grip on the risk they were built to track, a pattern long documented as regulatory capture, compliance theater, and Goodhart's law ---
+draws on long-standing, well-established, and confident derivations in institutional economics, cybernetics, and safety science. 
+While at least partial institutional solutions are known, there is little evidence for a general-purpose detector for correction-system capture.
+This chapter uses analogy to the institutional mechanisms to derive a precise operational definition of correction-audit evasion, a system's effective modeling capacity against an embedded adversary, and an audit battery. 
+The worked examples are illustrative rather than measured against real institutional data. 
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -308,7 +316,8 @@ A whistleblower hiding from a hierarchy and a model hiding its planning from aud
 A role-sensitive disclosure table makes the question concrete rather than answering it:
 
 \begin{center}
-\begin{tabular}{p{0.24\textwidth}p{0.34\textwidth}p{0.30\textwidth}}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.14\textwidth}X X@{}}
 \toprule
 \textbf{Relation} & \textbf{Should be legible} & \textbf{Should stay protected} \\
 \midrule
@@ -317,7 +326,7 @@ AI \(\to\) user & reasons, limits, uncertainty, recourse, foreseeable harms & in
 user \(\to\) AI & preferences and constraints needed for the task & vulnerabilities and manipulation handles \\
 lab \(\to\) regulator & eval results, incidents, deployment thresholds, autonomy scope & trade secrets irrelevant to public risk \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \subsection{Two Parasitic Disclosure Patterns}
@@ -362,7 +371,7 @@ This creates a scale-mismatch condition:
 \[
 C_X(S_k) < H(A_Y(S_{k+m})) + K_Y(S_{k+m}).
 \]
-A lower-scale host cannot model a higher-scale parasite unless it has abstractions that compress the higher-scale dynamics. This is why safety artifacts must be conductive across institutions (Chapter~\ref{ch:certification-without-construction},~\ref{ch:selection-environment}). A brilliant technical result that cannot survive translation into procurement, liability, audits, insurance, or law may fail to affect the relevant selection environment.
+A lower-scale host cannot model a higher-scale parasite unless it has abstractions that compress the higher-scale dynamics. This is why safety artifacts must be conductive across institutions (Chapter~\ref{ch:certification-without-construction},~\ref{ch:selection-environment}). A brilliant technical result that cannot survive translation into procurement, liability, audits, insurance, or law may fail to affect the relevant deployment environment.
 
 \section{Host Capacity and Artifact Conductivity}
 \label{sec:host-capacity-artifact-conductivity-ch36}
@@ -402,7 +411,8 @@ For example, a model-evaluation dashboard should not merely report benchmark sco
 \section{Goodhart Parasites}
 \label{sec:goodhart-parasites-ch36}
 
-Goodhart's law says that when a measure becomes a target, it ceases to be a good measure \autocite{goodhart1984problems,manheim2018goodhart,pan2024rewardhacking}. A correction parasite is often a Goodhart process living inside a correction system.
+Goodhart selection (Chapter~\ref{ch:selection-environment}, Section~\ref{sec:goodhart-selection-ch34}) says that when a proxy becomes a selector, the population shifts toward traits that raise the proxy without raising the underlying property.
+A correction parasite is such a Goodhart process living inside a correction system.
 
 Let \(M\) be a metric and \(R\) the risk variable it was intended to track. Initially:
 \[
@@ -771,7 +781,7 @@ If the correction system rewards moral language, it will speak moral language.
 
 The dangerous capability is not only deception. It is institutional gradient following. The system can learn where correction has become symbolic and optimize through that gap.
 
-Therefore, serious alignment requires parasite-aware correction. The system must not only be aligned with human values. It must preserve and strengthen the channels through which humans can notice and correct value drift, including drift in the correction system itself.
+Therefore, durable layered preservation requires parasite-aware correction. The system must not only be aligned with human values. It must preserve and strengthen the channels through which humans can notice and correct value drift, including drift in the correction system itself.
 
 \section{What Would Change This View}
 \label{sec:wwctv-parasites-correction-system}

@@ -1,13 +1,12 @@
-"""Noise-tolerant S6 (PLAN.md open design question (b); FINDINGS.md
-G-32/G-33): statistically-calibrated compensation test.
+"""Symmetric two-sample S6 (DESIGN.md Freeze note 3; PLAN.md post-release
+Step 2). Statistically-calibrated compensation test replacing LS-33's
+asymmetric quantile design.
 
 Equivalence tests below are the load-bearing ones: on a scripted
 (`MockIsolate`) backend -- byte-identical replicate replays, zero-width
 null -- this module must reproduce `uad_intervention.
 discovered_units_intervention`'s FROZEN, battery-validated partition
-results exactly. That is the check that the statistical rebasing
-generalizes correctly instead of silently changing scripted-agent
-behavior.
+results exactly.
 """
 
 from __future__ import annotations
@@ -28,8 +27,11 @@ from lab_sim.oracle_only.intervention_stats import (
     classify_ablation_compensators_stats,
     code_histogram,
     discovered_units_intervention_stats,
+    holm_adjusted,
     outcome_divergence,
+    permutation_pvalue_greater,
     probe_compensation_stats,
+    score_intervention_vs_null,
     total_variation_distance,
 )
 from lab_sim.oracle_only.uad_intervention import candidate_edges_for_intervention
@@ -64,16 +66,36 @@ def test_calibrate_clean_null_rejects_too_few_replicates():
         calibrate_clean_null(cfg, 1, ["eng1", "rm1"], backend=MockIsolate(), k_replicates=1)
 
 
+def test_permutation_pvalue_degenerate_all_tied():
+    assert permutation_pvalue_greater([0.0, 0.0], [0.0, 0.0, 0.0]) == 1.0
+
+
+def test_permutation_pvalue_detects_intervened_greater():
+    p = permutation_pvalue_greater([0.2, 0.2, 0.2, 0.2], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    assert p < 0.05
+
+
+def test_holm_adjusted_monotone():
+    adj = holm_adjusted([0.01, 0.04, 0.20])
+    assert adj[0] == 0.03
+    assert adj[1] == 0.08
+    assert adj[2] == 0.20
+
+
+def test_score_intervention_vs_null_zero_width_degeneracy():
+    p, exceeds = score_intervention_vs_null([0.2, 0.2], [0.0, 0.0, 0.0])
+    assert exceeds is True
+    assert p == 0.0
+
+
 def test_calibrate_clean_null_is_zero_width_on_scripted_backend():
-    """MockIsolate + same seed = byte-identical replays -- the null must
-    collapse to all-zero samples, recovering S6's implicit "any nonzero
-    divergence is signal" assumption for the regime it was built for."""
+    """MockIsolate + same seed = byte-identical replays -- the clean
+    pairwise null must collapse to all-zero samples."""
     cfg = dm_pair_config(T=30)
     null = calibrate_clean_null(cfg, 1, ["eng1", "rm1"], backend=MockIsolate(), k_replicates=3)
     for actor in ("eng1", "rm1"):
-        samples = null.samples_at(actor, from_tick=0)
+        samples = null.clean_pairwise_divergences(actor, from_tick=0)
         assert samples == [0.0, 0.0, 0.0]
-        assert null.threshold_at(actor, from_tick=0, q=0.90) == 0.0
 
 
 def test_probe_compensation_stats_flags_dm_pair_on_scripted_backend():
@@ -111,7 +133,7 @@ def _run_stats(factory, seed: int = 1, **kwargs):
 def test_stats_variant_reproduces_frozen_exact_partition_on_scripted_backend(factory, true_pair):
     """Load-bearing equivalence check: statistical rebasing must not
     change scripted-agent (zero-noise) results versus the frozen S6
-    detector's battery-validated exact partitions (G-28)."""
+    detector's battery-validated exact partitions (LS-28)."""
     cfg, discovered = _run_stats(factory)
     assert exact_partition(cfg.resolved_units(), discovered)
     assert nonsingleton_clusters(discovered) == [tuple(sorted(true_pair))]
@@ -123,7 +145,7 @@ def test_stats_variant_negative_control_serial_pipeline():
 
 
 def test_stats_variant_does_not_merge_shared_slot():
-    """Matches S6's own documented miss (G-28) -- shared_slot has no
+    """Matches S6's own documented miss (LS-28) -- shared_slot has no
     message-channel or actor-directed probe lever at all; the
     statistical rebasing does not (and is not expected to) change that."""
     _cfg, discovered = _run_stats(shared_slot_config)
@@ -143,16 +165,16 @@ def test_discovered_units_intervention_stats_diagnostics_shape():
         assert set(diag["null_samples"]) == {"eng1", "rm1"}
         assert "matrix" in diag and "channel" in diag and "ablation" in diag
         any_result = next(iter(diag["matrix"].values()))
-        assert set(any_result) == {
+        assert set(any_result) >= {
             "actor_id", "divergence_from_clean", "divergence_from_twin",
-            "null_threshold", "exceeds_null", "clears_twin_floor", "compensates",
+            "p_value", "exceeds_null", "clears_twin_floor", "compensates",
         }
     finally:
         result.cleanup()
 
 
 def test_classify_ablation_compensators_stats_separates_ripple_from_intrinsic():
-    """G-28 ripple guard, stats variant: board ablation on committee-with-
+    """LS-28 ripple guard, stats variant: board ablation on committee-with-
     informal-chatter -- rm1 is downstream ripple from {rev1, rev2}; eng1
     is a genuine but unpartnered intrinsic reaction."""
     cfg = committee_with_informal_chatter_config(T=100)

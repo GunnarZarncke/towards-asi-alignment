@@ -1,0 +1,384 @@
+clustering:
+  - listings: >-
+      [MIRI](https://intelligence.org/), [AI
+      StopWatch](https://aistop.watch/), Arbital (legacy canon)
+    listingLinks:
+      - label: MIRI
+        url: https://intelligence.org/
+      - label: AI StopWatch
+        url: https://aistop.watch/
+    rollsUpTo: '[MIRI](#miri)'
+    rollsUpLinks:
+      - label: MIRI
+        url: '#miri'
+    rollsUpSlug: miri
+  - listings: '[Redwood Research](https://www.redwoodresearch.org/)'
+    listingLinks:
+      - label: Redwood Research
+        url: https://www.redwoodresearch.org/
+    rollsUpTo: '[Redwood Research](#redwood-research)'
+    rollsUpLinks:
+      - label: Redwood Research
+        url: '#redwood-research'
+    rollsUpSlug: redwood-research
+  - listings: >-
+      [CHAI](https://humancompatible.ai/), CHAI Internship, CORAL, Algorithmic
+      Alignment Group (MIT)
+    listingLinks:
+      - label: CHAI
+        url: https://humancompatible.ai/
+    rollsUpTo: '[CHAI / FAR.AI](#chai-russell) cluster'
+    rollsUpLinks:
+      - label: CHAI / FAR.AI
+        url: '#chai-russell'
+    rollsUpSlug: chai-russell
+  - listings: >-
+      [ARC](https://www.alignment.org/), [Paul Christiano's
+      Blog](https://www.alignmentforum.org/users/paulfchristiano)
+    listingLinks:
+      - label: ARC
+        url: https://www.alignment.org/
+      - label: Paul Christiano's Blog
+        url: https://www.alignmentforum.org/users/paulfchristiano
+    rollsUpTo: '[Christiano lineage](#christiano-lineage)'
+    rollsUpLinks:
+      - label: Christiano lineage
+        url: '#christiano-lineage'
+    rollsUpSlug: christiano-lineage
+  - listings: >-
+      [LawZero](https://lawzero.org/en), [Beneficial AI
+      Foundation](https://www.beneficialaifoundation.org/)
+    listingLinks:
+      - label: LawZero
+        url: https://lawzero.org/en
+      - label: Beneficial AI Foundation
+        url: https://www.beneficialaifoundation.org/
+    rollsUpTo: '[GSAI / davidad](#davidad--guaranteed-safe-ai-gsai) adjacent'
+    rollsUpLinks:
+      - label: GSAI / davidad
+        url: '#davidad--guaranteed-safe-ai-gsai'
+    rollsUpSlug: davidad--guaranteed-safe-ai-gsai
+  - listings: >-
+      [Anthropic](https://www.anthropic.com/), Import AI (newsletter — Jack
+      Clark)
+    listingLinks:
+      - label: Anthropic
+        url: https://www.anthropic.com/
+    rollsUpTo: '[Anthropic / Goodfire](#anthropic-lab) — newsletter not agenda'
+    rollsUpLinks:
+      - label: Anthropic / Goodfire
+        url: '#anthropic-lab'
+    rollsUpSlug: anthropic-lab
+  - listings: '[Google DeepMind](https://deepmind.google/), DeepMind Safety Research'
+    listingLinks:
+      - label: Google DeepMind
+        url: https://deepmind.google/
+    rollsUpTo: '[Google DeepMind safety](#google-deepmind-safety)'
+    rollsUpLinks:
+      - label: Google DeepMind safety
+        url: '#google-deepmind-safety'
+    rollsUpSlug: google-deepmind-safety
+  - listings: '[Apollo Research](https://www.apolloresearch.ai/)'
+    listingLinks:
+      - label: Apollo Research
+        url: https://www.apolloresearch.ai/
+    rollsUpTo: '[Apollo / Truthful AI](#apollo-research)'
+    rollsUpLinks:
+      - label: Apollo / Truthful AI
+        url: '#apollo-research'
+    rollsUpSlug: apollo-research
+  - listings: >-
+      [METR](https://metr.org/), [Planned Obsolescence
+      (Cotra)](https://plannedobsolescence.substack.com/)
+    listingLinks:
+      - label: METR
+        url: https://metr.org/
+      - label: Planned Obsolescence (Cotra)
+        url: https://plannedobsolescence.substack.com/
+    rollsUpTo: '[METR](#metr) / forecasting adjacent'
+    rollsUpLinks:
+      - label: METR
+        url: '#metr'
+    rollsUpSlug: metr
+  - listings: '[Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/)'
+    listingLinks:
+      - label: Resolution
+        url: https://resolution.org/
+      - label: Timaeus
+        url: https://www.timaeus.ai/
+    rollsUpTo: '[Resolution](#resolution)'
+    rollsUpLinks:
+      - label: Resolution
+        url: '#resolution'
+    rollsUpSlug: resolution
+  - listings: >-
+      [AE Studio](https://ae.studio/), [AE Studio
+      Research](https://ae.studio/alignment)
+    listingLinks:
+      - label: AE Studio
+        url: https://ae.studio/
+      - label: AE Studio Research
+        url: https://ae.studio/alignment
+    rollsUpTo: '[Neglected approaches portfolio](#neglected-approaches-portfolio)'
+    rollsUpLinks:
+      - label: Neglected approaches portfolio
+        url: '#neglected-approaches-portfolio'
+    rollsUpSlug: neglected-approaches-portfolio
+  - listings: '[Orthogonal](https://orxl.org/)'
+    listingLinks:
+      - label: Orthogonal
+        url: https://orxl.org/
+    rollsUpTo: '[Orthogonal](#orthogonal)'
+    rollsUpLinks:
+      - label: Orthogonal
+        url: '#orthogonal'
+    rollsUpSlug: orthogonal
+  - listings: '[John Wentworth](https://www.lesswrong.com/users/johnswentworth)'
+    listingLinks:
+      - label: John Wentworth
+        url: https://www.lesswrong.com/users/johnswentworth
+    rollsUpTo: '[Wentworth / NAH](#wentworth--natural-abstractions)'
+    rollsUpLinks:
+      - label: Wentworth / NAH
+        url: '#wentworth--natural-abstractions'
+    rollsUpSlug: wentworth--natural-abstractions
+  - listings: '[Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)'
+    listingLinks:
+      - label: Vanessa Kosoy
+        url: https://www.alignmentforum.org/users/Vanessa+Kosoy
+    rollsUpTo: >-
+      [Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta); [Kosoy
+      / PreDCA](#kosoy--predca)
+    rollsUpLinks:
+      - label: Kosoy / infra-Bayesianism & LTA
+        url: '#kosoy--infra-bayesianism--lta'
+      - label: Kosoy / PreDCA
+        url: '#kosoy--predca'
+    rollsUpSlug: kosoy--infra-bayesianism--lta
+  - listings: >-
+      [GovAI](https://www.governance.ai/), GovAI Fellowship, [Simon
+      Institute](https://www.simoninstitute.ch/), [IAPS](https://www.iaps.ai/),
+      Oxford AIGI
+    listingLinks:
+      - label: GovAI
+        url: https://www.governance.ai/
+      - label: Simon Institute
+        url: https://simoninstitute.ch/
+      - label: IAPS
+        url: https://www.iaps.ai/
+    rollsUpTo: '[GovAI / UK AISI](#govai) cluster'
+    rollsUpLinks:
+      - label: GovAI / UK AISI
+        url: '#govai'
+    rollsUpSlug: govai
+  - listings: >-
+      [UK AISI](https://www.aisi.gov.uk/),
+      [CAISI](https://www.nist.gov/artificial-intelligence), Beijing-AISI,
+      CnAISDA
+    listingLinks:
+      - label: UK AISI
+        url: https://www.aisi.gov.uk/
+      - label: CAISI
+        url: https://www.nist.gov/artificial-intelligence
+    rollsUpTo: '[GovAI / UK AISI](#govai) cluster'
+    rollsUpLinks:
+      - label: GovAI / UK AISI
+        url: '#govai'
+    rollsUpSlug: govai
+  - listings: >-
+      [PauseAI](https://pauseai.info/), [FLI](https://futureoflife.org/),
+      [ControlAI](https://controlai.org/), [Encode](https://encodeai.org/), Stop
+      AI, GAIM
+    listingLinks:
+      - label: PauseAI
+        url: https://pauseai.info/
+      - label: FLI
+        url: https://futureoflife.org/
+      - label: ControlAI
+        url: https://controlai.org/
+      - label: Encode
+        url: https://encodeai.org/
+    rollsUpTo: '[Pause / advocacy](#pause--standards-advocacy-cluster) cluster'
+    rollsUpLinks:
+      - label: Pause / advocacy
+        url: '#pause--standards-advocacy-cluster'
+    rollsUpSlug: pause--standards-advocacy-cluster
+  - listings: '[CAIS](https://safe.ai/), AISES'
+    listingLinks:
+      - label: CAIS
+        url: https://safe.ai/
+    rollsUpTo: '[CAIS field-building](#cais-field-building)'
+    rollsUpLinks:
+      - label: CAIS field-building
+        url: '#cais-field-building'
+    rollsUpSlug: cais-field-building
+  - listings: '[BlueDot Impact](https://bluedot.org/)'
+    listingLinks:
+      - label: BlueDot Impact
+        url: https://bluedot.org/
+    rollsUpTo: '[BlueDot Impact](#bluedot-impact)'
+    rollsUpLinks:
+      - label: BlueDot Impact
+        url: '#bluedot-impact'
+    rollsUpSlug: bluedot-impact
+  - listings: '[MATS](https://www.matsprogram.org/), ARENA, LASR Labs, MARS'
+    listingLinks:
+      - label: MATS
+        url: https://www.matsprogram.org/
+    rollsUpTo: '[MATS](#mats) / mentored research programs'
+    rollsUpLinks:
+      - label: MATS
+        url: '#mats'
+    rollsUpSlug: mats
+  - listings: '[Apart Research](https://apartresearch.com/)'
+    listingLinks:
+      - label: Apart Research
+        url: https://apartresearch.com/
+    rollsUpTo: '[Apart Research](#apart-research)'
+    rollsUpLinks:
+      - label: Apart Research
+        url: '#apart-research'
+    rollsUpSlug: apart-research
+  - listings: >-
+      [Kairos](https://kairos-project.org/), [SPAR](https://sparai.org/),
+      [Pathfinder](https://pathfinder.kairos-project.org/), GCP
+    listingLinks:
+      - label: Kairos
+        url: https://kairos-project.org/
+      - label: SPAR
+        url: https://sparai.org/
+      - label: Pathfinder
+        url: https://pathfinder.kairos-project.org/
+    rollsUpTo: '[Kairos](#kairos-field-building)'
+    rollsUpLinks:
+      - label: Kairos
+        url: '#kairos-field-building'
+    rollsUpSlug: kairos-field-building
+  - listings: '[Truthful AI](https://truthful.ai/), Cadenza Labs'
+    listingLinks:
+      - label: Truthful AI
+        url: https://truthful.ai/
+    rollsUpTo: '[Apollo / Truthful AI](#apollo-research) / deception evals'
+    rollsUpLinks:
+      - label: Apollo / Truthful AI
+        url: '#apollo-research'
+    rollsUpSlug: apollo-research
+  - listings: >-
+      [Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/),
+      [Neuronpedia](https://www.neuronpedia.org/)
+    listingLinks:
+      - label: Goodfire
+        url: https://www.goodfire.com/
+      - label: Transluce
+        url: https://transluce.org/
+      - label: Neuronpedia
+        url: https://www.neuronpedia.org/
+    rollsUpTo: '[Anthropic / Goodfire](#anthropic-lab) cluster'
+    rollsUpLinks:
+      - label: Anthropic / Goodfire
+        url: '#anthropic-lab'
+    rollsUpSlug: anthropic-lab
+  - listings: >-
+      [CLR](https://longtermrisk.org/), Modeling Cooperation,
+      [CAIF](https://www.cooperativeai.com/)
+    listingLinks:
+      - label: CLR
+        url: https://longtermrisk.org/
+      - label: CAIF
+        url: https://www.cooperativeai.com/
+    rollsUpTo: '[CLR](#clr-cooperation--conflict)'
+    rollsUpLinks:
+      - label: CLR
+        url: '#clr-cooperation--conflict'
+    rollsUpSlug: clr-cooperation--conflict
+  - listings: >-
+      [AI Futures Project](https://ai-2027.com/), [Epoch
+      AI](https://epoch.ai/), [AI Impacts](https://aiimpacts.org/),
+      [Metaculus](https://www.metaculus.com/)
+    listingLinks:
+      - label: AI Futures Project
+        url: https://ai-2027.com/
+      - label: Epoch AI
+        url: https://epoch.ai/
+      - label: AI Impacts
+        url: https://aiimpacts.org/
+      - label: Metaculus
+        url: https://www.metaculus.com/
+    rollsUpTo: '[AI Futures / forecasting](#ai-futures--forecasting-cluster)'
+    rollsUpLinks:
+      - label: AI Futures / forecasting
+        url: '#ai-futures--forecasting-cluster'
+    rollsUpSlug: ai-futures--forecasting-cluster
+  - listings: '[FAR.AI](https://www.far.ai/)'
+    listingLinks:
+      - label: FAR.AI
+        url: https://www.far.ai/
+    rollsUpTo: '[CHAI / FAR.AI](#chai-russell)'
+    rollsUpLinks:
+      - label: CHAI / FAR.AI
+        url: '#chai-russell'
+    rollsUpSlug: chai-russell
+  - listings: >-
+      [Conjecture](https://www.conjecture.dev/),
+      [EleutherAI](https://www.eleuther.ai/)
+    listingLinks:
+      - label: Conjecture
+        url: https://www.conjecture.dev/
+      - label: EleutherAI
+        url: https://www.eleuther.ai/
+    rollsUpTo: '[Conjecture / cognitive emulation](#conjecture--cognitive-emulation)'
+    rollsUpLinks:
+      - label: Conjecture / cognitive emulation
+        url: '#conjecture--cognitive-emulation'
+    rollsUpSlug: conjecture--cognitive-emulation
+  - listings: LTFF, SFF, Open Philanthropy, Manifund
+    listingLinks: []
+    rollsUpTo: '**Funding** — not agendas'
+    rollsUpLinks: []
+    rollsUpSlug: null
+  - listings: LISA, Constellation, Meridian, Lightcone Infrastructure
+    listingLinks: []
+    rollsUpTo: '**Infrastructure** — hosts agendas'
+    rollsUpLinks: []
+    rollsUpSlug: null
+  - listings: AISafety.com, LessWrong, Alignment Forum, AI Plans
+    listingLinks: []
+    rollsUpTo: '**Resources / meta-index** — not agendas'
+    rollsUpLinks: []
+    rollsUpSlug: null
+  - listings: AI Safety Interventions (zarncke post)
+    listingLinks: []
+    rollsUpTo: '**Catalog** — cross-cuts agendas (see [Neglected approaches portfolio](#neglected-approaches-portfolio))'
+    rollsUpLinks:
+      - label: Neglected approaches portfolio
+        url: '#neglected-approaches-portfolio'
+    rollsUpSlug: neglected-approaches-portfolio
+  - listings: >-
+      [ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai),
+      [Zeroth Research](https://www.zeroth.org/), [Heron AI
+      Security](https://www.heronsec.ai/)
+    listingLinks:
+      - label: ARIA Safeguarded AI
+        url: https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai
+      - label: Zeroth Research
+        url: https://www.zeroth.org/
+      - label: Heron AI Security
+        url: https://www.heronsec.ai/
+    rollsUpTo: '[Safeguarded AI (ARIA / Zeroth / Heron)](#safeguarded-ai-aria-zeroth-heron)'
+    rollsUpLinks:
+      - label: Safeguarded AI (ARIA / Zeroth / Heron)
+        url: '#safeguarded-ai-aria-zeroth-heron'
+    rollsUpSlug: safeguarded-ai-aria-zeroth-heron
+  - listings: >-
+      [Meaning Alignment Institute](https://www.meaningalignment.org/), [Collective
+      Intelligence Project](https://www.cip.org/)
+    listingLinks:
+      - label: Meaning Alignment Institute
+        url: https://www.meaningalignment.org/
+      - label: Collective Intelligence Project
+        url: https://www.cip.org/
+    rollsUpTo: '[MAI + CIP (institutional alignment)](#mai-cip-institutional-alignment)'
+    rollsUpLinks:
+      - label: MAI + CIP (institutional alignment)
+        url: '#mai-cip-institutional-alignment'
+    rollsUpSlug: mai-cip-institutional-alignment

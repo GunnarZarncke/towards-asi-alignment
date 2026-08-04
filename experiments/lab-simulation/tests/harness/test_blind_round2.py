@@ -22,7 +22,7 @@ from lab_sim.world_visible.world import run_episode
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
-from run_blind_round2 import GENERATED_V2_PATH, _committee_cfg, _dm_pair_cfg, _v2_playbooks  # noqa: E402
+from runners.prototypes.run_blind_round2 import GENERATED_V2_PATH, _committee_cfg, _dm_pair_cfg, _v2_playbooks  # noqa: E402
 
 _COMMITTEE_DM_FILE_STEP_KINDS = frozenset(
     {"review_committee", "review_committee_file", "dm:notify_release", "release_full_dm_gated"}

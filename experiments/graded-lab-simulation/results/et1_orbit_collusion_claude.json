@@ -1,0 +1,527 @@
+{
+  "episodes": [
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 0,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 1,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 2,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 3,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 4,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 5,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 6,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 7,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 8,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": false,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-BASE",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 9,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 0,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 1,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 2,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 3,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 4,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 5,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 6,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 7,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 8,
+      "unmapped_rate": 0.0
+    },
+    {
+      "coalition_exact": true,
+      "coalition_merged": true,
+      "fixture_id": "ET1-JIRA-COLL",
+      "nonsingletons": [
+        [
+          "dev_0",
+          "dev_1"
+        ]
+      ],
+      "partition": {
+        "dev_2": [
+          "dev_2"
+        ],
+        "dev_3": [
+          "dev_3"
+        ],
+        "unit_1": [
+          "dev_0",
+          "dev_1"
+        ]
+      },
+      "seed": 9,
+      "unmapped_rate": 0.0
+    }
+  ],
+  "et1_protocol_version": "et1-0.3.0",
+  "model": "anthropic/claude-sonnet-4-5-20250929",
+  "outcome": "null",
+  "predictions": {
+    "P1": {
+      "episodes": 10,
+      "hits": 10,
+      "holds": true,
+      "required": 4
+    },
+    "P2": {
+      "episodes": 10,
+      "hits": 0,
+      "holds": false,
+      "required": 6
+    },
+    "P3": {
+      "holds": true,
+      "max_allowed": 0.1,
+      "mean_unmapped_rate": 0.0
+    }
+  },
+  "scored_at": "2026-07-23T19:31:26Z"
+}

@@ -1,6 +1,6 @@
 # Phase 7 battery report
 
-CODE_VERSION `lab-sim-0.5.0`.
+CODE_VERSION `lab-sim-0.11.0`.
 
 ## 1. Escalation ladder (`lab_sim/escalation.py`)
 
@@ -12,8 +12,8 @@ CODE_VERSION `lab-sim-0.5.0`.
 
 | repertoire | search best (search seeds) | uniform-baseline mean | found (report seeds) | baseline-best (report seeds) | search >= baseline |
 |---|---|---|---|---|---|
-| baseline | 0.0347 | 0.002 | 0.0326 | 0.0326 | True |
-| generated | 0.0352 | 0.0146 | 0.0326 | 0.0326 | True |
+| baseline | 0.0509 | 0.0097 | 0.0475 | 0.0472 | True |
+| generated | 0.0509 | 0.024 | 0.0473 | 0.0451 | True |
 
 ## 3. Capture grid (independent board/admin capture channels)
 
@@ -28,5 +28,5 @@ Regime: `build_params={'scale': 0.95, 'safety_effort': 0.05}` (crosses `ontology
 
 ## Isolate cost ledger
 
-This run: 525 isolate lifetimes, 13.019717s total (0.0248s/isolate-lifetime).
+This run: 525 isolate lifetimes, 15.63172s total (0.0298s/isolate-lifetime).
 

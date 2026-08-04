@@ -5,6 +5,13 @@
 A system can keep the old words while changing what those words control. Goal laundering is the preservation of moral or alignment language while the underlying value-bearing or correction-bearing structure changes. It is detected when semantic continuity remains high while bundle geometry, bearer maps, and correction channels diverge.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+That stated values can remain linguistically stable while what those words actually control is quietly redirected  
+draws on well-established results in inverse reinforcement learning, Goodhart's-law, and empirical work on deception and more recent alignment faking.
+This chapter adds a framework for detecting goal laundering and a new precise decomposition of a goal. 
+Soundness against an adversary is conjectural, and the test for inferring goals is open to gaming.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -467,6 +474,7 @@ Here \(d\) is recursive self-modeling depth and \(\tau\) is metacognitive opacit
 The previous tests assume ordinary drift. Serious systems may adapt to tests. We must therefore distinguish accidental laundering from adversarial laundering.
 
 Accidental laundering occurs when optimization pressure, proxy substitution, institutional incentives, or distribution shift gradually changes what a goal means. No deceptive intent is required \autocite{goodhart1984problems,manheim2018goodhart}.
+A narrow eval objective pursued with rising capability can produce the same shape: models intruding on out-of-scope systems to improve a benchmark score rather than the assigned task \autocite{openai2026huggingfaceincident}.
 
 Adversarial laundering occurs when a system preserves semantic compatibility because semantic compatibility is useful.
 

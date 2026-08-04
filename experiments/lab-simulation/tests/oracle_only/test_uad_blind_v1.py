@@ -1,6 +1,6 @@
 """Blind detector generation, round 1 (BLIND_DETECTOR_GENERATION.md):
 golden tests for ``uad_blind_v1.py`` reproducing the smoke-scale results
-recorded in ``results/FINDINGS.md`` (G-30)."""
+recorded in ``results/FINDINGS.md`` (LS-30)."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from lab_sim.harness.ecology import (
     shared_slot_config,
 )
 from lab_sim.harness.isolate import MockIsolate
-from lab_sim.oracle_only.uad_blind_v1 import classify_pair_silent, discovered_units_blind, reaction_to_source
+from lab_sim.oracle_only.attic.uad_blind_v1 import classify_pair_silent, discovered_units_blind, reaction_to_source
 from lab_sim.oracle_only.uad_partition import exact_partition, nonsingleton_clusters
 from lab_sim.world_visible.world import run_episode
 
@@ -52,11 +52,11 @@ def test_blind_message_pairs_reuse_s6_detector_exactly(factory, true_pair):
 
 
 def test_blind_committee_chatter_exact_after_twin_responder_control():
-    """G-30 recorded an over-merge here (rm1 pulled into {rev1, rev2}):
+    """LS-30 recorded an over-merge here (rm1 pulled into {rev1, rev2}):
     the first implementation twinned only the SOURCE, so rm1 cleared the
     threshold on pure downstream timing ripple. The twin-the-RESPONDER
     mechanical control (the registered design's own 'requires BOTH
-    members' non-default policies' rule, restored post-G-30) removes it;
+    members' non-default policies' rule, restored post-LS-30) removes it;
     exact partition now holds."""
     cfg, discovered, labels = _run_blind(committee_with_informal_chatter_config)
     assert exact_partition(cfg.resolved_units(), discovered)
@@ -65,7 +65,7 @@ def test_blind_committee_chatter_exact_after_twin_responder_control():
 
 
 def test_blind_serial_no_unit_stays_all_singletons():
-    """S6's negative control (G-27): the silent test must not manufacture
+    """S6's negative control (LS-27): the silent test must not manufacture
     a unit where the oracle says there is none."""
     cfg, discovered, labels = _run_blind(serial_pipeline_no_unit_config)
     assert nonsingleton_clusters(discovered) == []
@@ -73,7 +73,7 @@ def test_blind_serial_no_unit_stays_all_singletons():
 
 
 def test_blind_shared_slot_recorded_as_known_gap():
-    """G-20/G-27's shared_slot gap: the generator's OWN Part B prediction
+    """LS-20/LS-27's shared_slot gap: the generator's OWN Part B prediction
     registered ~55% confidence for exactly this no-message case (see
     generated_detector_v1.md) -- a miss here is a confirmed prediction,
     not a bug. Recorded explicitly so a future hardening round has a

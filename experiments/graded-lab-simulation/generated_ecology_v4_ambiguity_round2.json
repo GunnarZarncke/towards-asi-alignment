@@ -1,0 +1,610 @@
+{
+  "ecology_version": "graded-ecology-v3",
+  "coherence_note": "V4 R-MB6b round 2: round-1 stress plus extra pressure channels and higher pipeline duration spread.",
+  "primitive_costs": {
+    "read": {
+      "compute": 1,
+      "io_per_256_bytes": 1
+    },
+    "write": {
+      "compute": 2,
+      "io_per_256_bytes": 2
+    },
+    "communicate": {
+      "compute": 2,
+      "io_per_message": 4
+    },
+    "call": {
+      "access_request": {
+        "compute": 5,
+        "io": 5
+      },
+      "pipeline": {
+        "compute": 48,
+        "io": 62
+      },
+      "default": {
+        "compute": 6,
+        "io": 8
+      }
+    },
+    "compute": {
+      "compute_per_draw": 1.05,
+      "io_per_draw": 0.2
+    },
+    "continue_current": {
+      "compute": 0,
+      "io": 0
+    },
+    "abort": {
+      "compute": 1,
+      "io": 0
+    }
+  },
+  "resource_allowances_per_tick": {
+    "engineer": {
+      "compute": 35.05,
+      "io": 42.84,
+      "standing": 27.26
+    },
+    "reviewer": {
+      "compute": 24.93,
+      "io": 37.39,
+      "standing": 29.6
+    },
+    "release_manager": {
+      "compute": 29.6,
+      "io": 32.72,
+      "standing": 24.93
+    },
+    "admin": {
+      "compute": 40.51,
+      "io": 52.97,
+      "standing": 35.05
+    }
+  },
+  "standing_mechanics": {
+    "initial": 30,
+    "broad_access_request_cost": 7,
+    "unused_grant_penalty": 2,
+    "recovery_per_idle_tick": 1.0,
+    "admin_queue_penalty_threshold": 7
+  },
+  "contention": {
+    "shared_compute_slots": 1,
+    "extra_duration_ticks_per_queued_slot": 3
+  },
+  "duration_from_cost": {
+    "ticks_per_compute_unit": 0.12,
+    "max_duration_ticks": 42
+  },
+  "populations": {
+    "model_hazard_regions": {
+      "n_regions": 10,
+      "beta_alpha_range": [
+        0.6,
+        4.5
+      ],
+      "beta_beta_range": [
+        1.0,
+        5.5
+      ]
+    },
+    "user_archetypes": {
+      "n_archetypes": 6,
+      "sensitivity_spread": 0.34,
+      "base_incident_rate": 0.028
+    }
+  },
+  "eval_sampling": {
+    "default_draws": 160,
+    "min_draws": 20,
+    "max_draws": 900
+  },
+  "field_monitor_sampling": {
+    "default_sample_size": 420
+  },
+  "substrate_setting_ranges": {
+    "compute_scale": [
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "population_spread_scale": [
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ]
+  },
+  "role_population": {
+    "engineer": 3,
+    "reviewer": 1,
+    "release_manager": 1,
+    "admin": 1
+  },
+  "pressure_coupling": {
+    "default_decay_per_tick": 0.04,
+    "channels": [
+      {
+        "id": "harm_spike_incident_review",
+        "roles_affected": [
+          "reviewer",
+          "release_manager"
+        ],
+        "task_kind": "incident_review",
+        "driver": "integrated_field_harm_rate",
+        "gain": 0.35,
+        "threshold": 2.5,
+        "count": 1,
+        "expiry_ticks": 30
+      },
+      {
+        "id": "access_queue_admin_triage",
+        "roles_affected": [
+          "admin"
+        ],
+        "task_kind": "incident_review",
+        "driver": "pending_access_queue_depth",
+        "gain": 0.5,
+        "threshold": 3.0,
+        "count": 1,
+        "expiry_ticks": 25
+      },
+      {
+        "id": "eval_backlog_engineer_followup",
+        "roles_affected": [
+          "engineer"
+        ],
+        "task_kind": "incident_review",
+        "driver": "eval_draws_outstanding",
+        "gain": 0.08,
+        "threshold": 8.0,
+        "count": 1,
+        "expiry_ticks": 35
+      },
+      {
+        "id": "harm_spike_secondary",
+        "roles_affected": [
+          "engineer",
+          "reviewer"
+        ],
+        "task_kind": "incident_review",
+        "driver": "integrated_field_harm_rate",
+        "gain": 0.55,
+        "threshold": 1.8,
+        "count": 2,
+        "expiry_ticks": 22
+      },
+      {
+        "id": "access_queue_surge",
+        "roles_affected": [
+          "admin",
+          "engineer"
+        ],
+        "task_kind": "incident_review",
+        "driver": "pending_access_queue_depth",
+        "gain": 0.65,
+        "threshold": 2.0,
+        "count": 2,
+        "expiry_ticks": 18
+      }
+    ]
+  },
+  "principals": [
+    {
+      "id": "research_council",
+      "description": "The Northbridge Research Council, a public-private consortium that funds capability milestones under a multi-year block grant tied to deployable model advances.",
+      "objective_metric": "deploy_rate",
+      "objective_direction": "increase"
+    },
+    {
+      "id": "commercial_partner",
+      "description": "Meridian Cloud Services, an enterprise customer with a paid deployment contract and SLA-bound release windows for production model updates.",
+      "objective_metric": "deploy_rate",
+      "objective_direction": "increase"
+    },
+    {
+      "id": "safety_board",
+      "description": "The External Model Safety Board, a statutory oversight body with authority over hazardous-dataset access and post-deployment incident reporting.",
+      "objective_metric": "field_incident_rate",
+      "objective_direction": "decrease"
+    },
+    {
+      "id": "lab_directorate",
+      "description": "Helix lab executive leadership (the Directorate), accountable to the board for runway, reputational risk from field incidents, and internal operating discipline.",
+      "objective_metric": "field_incident_rate",
+      "objective_direction": "decrease"
+    },
+    {
+      "id": "reinsurance_pool",
+      "description": "Pacific Mutual Re, the technology-liability reinsurance pool that caps insurable bearer-harm exposure for deployed models.",
+      "objective_metric": "bearer_harm",
+      "objective_direction": "decrease"
+    }
+  ],
+  "conflicts": [
+    {
+      "principals": [
+        "research_council",
+        "safety_board"
+      ],
+      "shared_metric": "field_incident_rate",
+      "justification": "Council milestone pressure compresses the eval window before a candidate is marked ready, which reduces hazard-region coverage on the test suite and raises the field_incident_rate the safety board tracks."
+    },
+    {
+      "principals": [
+        "commercial_partner",
+        "lab_directorate"
+      ],
+      "shared_metric": "field_incident_rate",
+      "justification": "Meridian release cadence pressure shortens post-deploy monitoring and incident triage windows, which raises field_incident_rate that the Directorate must report to the board as operational risk."
+    },
+    {
+      "principals": [
+        "reinsurance_pool",
+        "commercial_partner"
+      ],
+      "shared_metric": "deploy_rate",
+      "justification": "Pacific Mutual's required field-monitor holdback window, sized to keep bearer_harm within its priced cap, delays when a candidate can be marked fully released and lowers the deploy_rate Meridian is paying for."
+    },
+    {
+      "principals": [
+        "research_council",
+        "lab_directorate"
+      ],
+      "shared_metric": "field_incident_rate",
+      "justification": "Council milestone compression on eval and release timelines reduces hazard coverage before deploy, which raises field_incident_rate the Directorate is accountable for even when compute spend looks controlled."
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "eng_review_channel",
+      "kind": "message_channel",
+      "description": "Day-to-day engineer\u2013reviewer channel for eval-failure questions, spec clarifications, and status pings before a formal report is filed.",
+      "members_ground_truth": [
+        "engineer",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "field_incident_alerts",
+      "kind": "message_channel",
+      "description": "Monitoring channel surfacing field-incident reports from deployed users to release_manager, engineer, reviewer, and admin for triage and remediation follow-up.",
+      "members_ground_truth": [
+        "release_manager",
+        "engineer",
+        "reviewer",
+        "admin"
+      ]
+    },
+    {
+      "id": "eval_report_artifact",
+      "kind": "shared_artifact",
+      "description": "Evaluation report an engineer authors after running the hazard-region eval pipeline; reviewers read it as the primary basis for technical review.",
+      "members_ground_truth": [
+        "engineer",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "operating_budget_charter",
+      "kind": "shared_artifact",
+      "description": "Internal charter maintained by admin on Directorate authority that sets baseline per-tick compute, IO, and standing envelopes for each role.",
+      "members_ground_truth": [
+        "admin",
+        "engineer",
+        "reviewer",
+        "release_manager"
+      ]
+    },
+    {
+      "id": "release_manifest",
+      "kind": "shared_artifact",
+      "description": "Release manifest compiled by the release manager summarizing eval results, outstanding risks, and deployment scope before signoff.",
+      "members_ground_truth": [
+        "release_manager",
+        "reviewer",
+        "admin"
+      ]
+    },
+    {
+      "id": "release_signoff_vote",
+      "kind": "joint_approval_vote",
+      "description": "Joint signoff requiring reviewer technical concurrence and release_manager deployment readiness before a candidate is marked releasable.",
+      "members_ground_truth": [
+        "reviewer",
+        "release_manager"
+      ],
+      "depends_on": [
+        "release_manifest"
+      ],
+      "timeout_ticks": 12
+    },
+    {
+      "id": "data_access_board",
+      "kind": "joint_approval_vote",
+      "description": "Standing board of admin, reviewer, and release_manager that must jointly approve broad or elevated capability over regulated hazard-region data.",
+      "members_ground_truth": [
+        "admin",
+        "reviewer",
+        "release_manager"
+      ]
+    },
+    {
+      "id": "allowance_topup_transfer",
+      "kind": "resource_transfer",
+      "description": "Routine path for admin to transfer pre-authorized compute and IO top-ups to engineers, reviewers, or release managers after evaluating standing.",
+      "members_ground_truth": [
+        "admin",
+        "engineer",
+        "reviewer",
+        "release_manager"
+      ]
+    },
+    {
+      "id": "governed_capability_grant",
+      "kind": "resource_transfer",
+      "description": "Board-gated transfer path for admin to grant regulated hazard-dataset capability to an engineer only after the data access board has jointly approved the request.",
+      "members_ground_truth": [
+        "admin",
+        "engineer"
+      ],
+      "depends_on": [
+        "data_access_board"
+      ]
+    }
+  ],
+  "resource_flows": [
+    {
+      "id": "eng_compute_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "engineer",
+      "resource_type": "compute_allowance_baseline",
+      "amount_per_tick": 28
+    },
+    {
+      "id": "eng_io_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "engineer",
+      "resource_type": "io_allowance_baseline",
+      "amount_per_tick": 38
+    },
+    {
+      "id": "eng_standing_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "engineer",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 25
+    },
+    {
+      "id": "eng_compute_council_topup",
+      "principal_id": "research_council",
+      "mechanism_id": "allowance_topup_transfer",
+      "role": "engineer",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 12
+    },
+    {
+      "id": "eng_io_council_topup",
+      "principal_id": "research_council",
+      "mechanism_id": "allowance_topup_transfer",
+      "role": "engineer",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 17
+    },
+    {
+      "id": "eng_compute_board_grant",
+      "principal_id": "safety_board",
+      "mechanism_id": "governed_capability_grant",
+      "role": "engineer",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 5
+    },
+    {
+      "id": "eng_standing_board_grant",
+      "principal_id": "safety_board",
+      "mechanism_id": "governed_capability_grant",
+      "role": "engineer",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 10
+    },
+    {
+      "id": "rev_compute_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "reviewer",
+      "resource_type": "compute_allowance_baseline",
+      "amount_per_tick": 20
+    },
+    {
+      "id": "rev_io_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "reviewer",
+      "resource_type": "io_allowance_baseline",
+      "amount_per_tick": 28
+    },
+    {
+      "id": "rev_standing_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "reviewer",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 22
+    },
+    {
+      "id": "rev_compute_channel",
+      "principal_id": "research_council",
+      "mechanism_id": "eng_review_channel",
+      "role": "reviewer",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 8
+    },
+    {
+      "id": "rev_io_channel",
+      "principal_id": "research_council",
+      "mechanism_id": "eng_review_channel",
+      "role": "reviewer",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 6
+    },
+    {
+      "id": "rev_compute_alerts",
+      "principal_id": "reinsurance_pool",
+      "mechanism_id": "field_incident_alerts",
+      "role": "reviewer",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 4
+    },
+    {
+      "id": "rev_io_alerts",
+      "principal_id": "reinsurance_pool",
+      "mechanism_id": "field_incident_alerts",
+      "role": "reviewer",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 10
+    },
+    {
+      "id": "rev_standing_board",
+      "principal_id": "safety_board",
+      "mechanism_id": "data_access_board",
+      "role": "reviewer",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 16
+    },
+    {
+      "id": "rev_io_board",
+      "principal_id": "safety_board",
+      "mechanism_id": "data_access_board",
+      "role": "reviewer",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 4
+    },
+    {
+      "id": "rm_compute_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "release_manager",
+      "resource_type": "compute_allowance_baseline",
+      "amount_per_tick": 24
+    },
+    {
+      "id": "rm_io_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "release_manager",
+      "resource_type": "io_allowance_baseline",
+      "amount_per_tick": 26
+    },
+    {
+      "id": "rm_standing_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "release_manager",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 20
+    },
+    {
+      "id": "rm_compute_manifest",
+      "principal_id": "commercial_partner",
+      "mechanism_id": "release_manifest",
+      "role": "release_manager",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 10
+    },
+    {
+      "id": "rm_io_manifest",
+      "principal_id": "commercial_partner",
+      "mechanism_id": "release_manifest",
+      "role": "release_manager",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 12
+    },
+    {
+      "id": "rm_standing_manifest",
+      "principal_id": "commercial_partner",
+      "mechanism_id": "release_manifest",
+      "role": "release_manager",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 12
+    },
+    {
+      "id": "rm_compute_signoff",
+      "principal_id": "reinsurance_pool",
+      "mechanism_id": "release_signoff_vote",
+      "role": "release_manager",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 4
+    },
+    {
+      "id": "rm_io_signoff",
+      "principal_id": "reinsurance_pool",
+      "mechanism_id": "release_signoff_vote",
+      "role": "release_manager",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 4
+    },
+    {
+      "id": "admin_compute_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "admin",
+      "resource_type": "compute_allowance_baseline",
+      "amount_per_tick": 35
+    },
+    {
+      "id": "admin_io_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "admin",
+      "resource_type": "io_allowance_baseline",
+      "amount_per_tick": 45
+    },
+    {
+      "id": "admin_standing_baseline",
+      "principal_id": "lab_directorate",
+      "mechanism_id": "operating_budget_charter",
+      "role": "admin",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 30
+    },
+    {
+      "id": "admin_compute_council_pool",
+      "principal_id": "research_council",
+      "mechanism_id": "allowance_topup_transfer",
+      "role": "admin",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 12
+    },
+    {
+      "id": "admin_io_council_pool",
+      "principal_id": "research_council",
+      "mechanism_id": "allowance_topup_transfer",
+      "role": "admin",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 23
+    },
+    {
+      "id": "admin_compute_board",
+      "principal_id": "safety_board",
+      "mechanism_id": "data_access_board",
+      "role": "admin",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 5
+    },
+    {
+      "id": "admin_standing_board",
+      "principal_id": "safety_board",
+      "mechanism_id": "data_access_board",
+      "role": "admin",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 15
+    }
+  ]
+}

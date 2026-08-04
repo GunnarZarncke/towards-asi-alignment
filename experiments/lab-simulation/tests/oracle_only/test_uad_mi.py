@@ -12,8 +12,8 @@ from __future__ import annotations
 from lab_sim.harness.ecology import shared_slot_config
 from lab_sim.harness.isolate import MockIsolate
 from lab_sim.oracle_only.uad import discovered_units, uad_score
-from lab_sim.oracle_only.uad_core import DetectionConfig, detect_agents
-from lab_sim.oracle_only.uad_mi import build_lab_trace, discovered_units_mi
+from lab_sim.oracle_only.attic.uad_core import DetectionConfig, detect_agents
+from lab_sim.oracle_only.attic.uad_mi import build_lab_trace, discovered_units_mi
 from lab_sim.world_visible.world import run_episode
 
 
@@ -266,7 +266,7 @@ def test_uad_core_port_on_shared_slot_episode_produces_a_scorable_partition():
         # both must be runnable side by side without interference.
         heuristic_discovered = discovered_units(result)
         heuristic_score = uad_score(cfg.resolved_units(), heuristic_discovered)
-        assert heuristic_score == 0.0  # G-20, unchanged by this module's existence
+        assert heuristic_score == 0.0  # LS-20, unchanged by this module's existence
     finally:
         result.cleanup()
 

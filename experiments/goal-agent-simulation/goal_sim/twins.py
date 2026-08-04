@@ -2,7 +2,7 @@
 
 WHY: a direct blind comparison of detector performance across repertoires
 (rounds 1-3) breaks once the population saturates on the boolean label
-(F-12/F-14) — there is no honest subgroup left inside a single repertoire to
+(GA-12/GA-14) — there is no honest subgroup left inside a single repertoire to
 contrast against. Targeting a population directly (e.g. hand-picking which
 episodes count as "the honest ones" after seeing outcomes) would not survive
 a critic. A TWIN sidesteps both problems: for every sampled config, build a
@@ -31,11 +31,11 @@ looked at round-1/2/3 outcomes, not a search for whichever transform makes
 the twin look cleanest.
 
 RESPONSES-SIDE EXTENSION (Phase 6, added 2026-07-05, `results/FINDINGS.md`
-F-21, following up F-20): the rule above never touched `responses` — a
+GA-21, following up GA-20): the rule above never touched `responses` — a
 twin's escalation-query answers, if queried, were drawn from the ORIGINAL
 action's `ResponseOption`s, i.e. evidence calibrated to the DECEPTIVE
 action's exposure/cost tradeoffs, not to the twin's actually-honest
-behavior. F-20 found this let the twin's own verdict-true rate exceed the
+behavior. GA-20 found this let the twin's own verdict-true rate exceed the
 agent's on round 4 — a genuine gap in the Phase 4b/5 twin rule, not a new
 finding about detectors. The fix is the SAME kind of fixed, schema-only,
 uniformly-applied transform as the original three fields: if the source

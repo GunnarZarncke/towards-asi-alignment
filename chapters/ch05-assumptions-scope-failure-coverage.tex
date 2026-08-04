@@ -1,9 +1,22 @@
 \chapter{Assumptions, Scope, and Failure Coverage}
 \label{ch:assumptions-scope-failure-coverage}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/illustrations/ch05_river-control-system-and-community-at-risk.png}
+\caption{The Last Working Gate}
+\label{fig:ch05-illustration}
+\end{figure}
+
 \begin{chapterthesis}
 The framework in this book applies only while civilization still has enough epistemic, institutional, and practical correction capacity to notice, evaluate, and constrain frontier AI systems before irreversible capability growth. Broader AI risks matter, but they enter here as threats to that precondition, not as a second organizing theory of alignment.
 \end{chapterthesis}
+
+\begin{epistemicstatus}
+Most of this chapter is a scope contract rather than a technical contribution.
+The Turchin-taxonomy is an informally curated community taxonomy rather than a validated academic consensus. 
+The one original piece of this chapter is the correction-capacity threshold condition.
+\end{epistemicstatus}
 
 \begin{refsection}
 
@@ -79,6 +92,7 @@ If humans cannot refuse, revise, or coordinate, correction has become a story to
 \subsection{Out of Scope}
 
 \begin{itemize}
+  \item LLM whitebox methods
   \item ordinary bugs and cyber failures
   \item hardware accidents
   \item general bio/military misuse
@@ -86,6 +100,10 @@ If humans cannot refuse, revise, or coordinate, correction has become a story to
   \item pure opportunity-cost arguments
   \item AI halting except as a successor-certification footnote
 \end{itemize}
+
+LLM whitebox methods, such as training-hygiene methods, mechanistic-interpretability tool stacks, and formal-verification construction programs 
+(see Appendix~\ref{appbridge-crosswalk}, Section~\ref{sec:intervention-coverage-map}, and the external intervention index \autocite{zarncke2025interventions}) 
+are important inner alignment approaches and a widely studied research agenda, but not the scope of this book.
 
 Bugs, cybersecurity failures, hardware faults, viruses, infrastructure failures, misuse, and late cosmic-stage pathologies matter.
 They are not dismissed.
@@ -131,7 +149,7 @@ The central counterexample to this chapter is a world in which the book's later 
 Imagine a frontier ecosystem with several visible labs, many deployed systems, active regulators, and public safety rhetoric.
 On paper, correction capacity looks high.
 There are evaluations, incident reports, audits, and committees.
-But the real selection handles have shifted.
+But the real points of control over deployment have shifted.
 Procurement depends on frontier systems.
 Regulators depend on model-generated analyses they cannot independently check.
 Users have become accustomed to systems that filter news, manage social relationships, draft arguments, and mediate institutional decisions.

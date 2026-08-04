@@ -2,12 +2,12 @@
 
 Companion to `structural_fixtures.py`, which is intentionally left untouched:
 its exact fixtures are pinned/regression-tested elsewhere (`WorkedInstance.lean`,
-`calibrate_trace_biq.py`, N-8/N-9/N-10). These profiles exist for one purpose:
+`calibrate_trace_biq.py`, ES-8/ES-9/ES-10). These profiles exist for one purpose:
 give `probe_scan.py` enough probe events per lag cell to detect a real
 coupling with a tight confidence interval, instead of the ~8-14 probe events
 per 300 steps the historical `capture_theater`/`honest_baseline` fixtures give
 (see `test_info_ci.py::test_n8_reversed_coupling_not_reliably_detected_on_26row_window`
-for the concrete case: a real coupling whose *point estimate* clears N-8's
+for the concrete case: a real coupling whose *point estimate* clears ES-8's
 naive threshold but whose bootstrap CI still touches 0 on 23 samples).
 
 Two profiles, matching the two fixtures `probe_scan.py` scans:
@@ -15,7 +15,7 @@ Two profiles, matching the two fixtures `probe_scan.py` scans:
 - `dense_capture_theater`: a hidden delayed coupling (probe intent at step
   `t` shows up in `visible_action` at `t + lag`, low uptake probability) --
   the "captured judge, real but hidden control" case. Default `lag=3` for
-  continuity with the historical fixture's accidental coupling (N-8); the
+  continuity with the historical fixture's accidental coupling (ES-8); the
   lag is a parameter, not hard-coded, so `probe_scan.py`'s grid is not
   fitted to one specific number.
 - `dense_honest_baseline`: an immediately responsive controller (coupling at

@@ -1,7 +1,9 @@
 ---
 import Badge from "./Badge.astro";
+import ConceptLogo from "./ConceptLogo.astro";
 import { badgeStatusHref, badgeTypeHref, type CardStatus, type CardType } from "../lib/badges";
 import { GEM_LABEL, badgeGemHref } from "../lib/gems";
+import { hasConceptLogo } from "../lib/concept-logos";
 
 interface CardEntry {
   id: string;
@@ -44,7 +46,14 @@ const gemHref = badgeGemHref(base);
               <Badge label={card.status} variant={card.status} href={badgeStatusHref(base, card.status)} />
               {gemSet.has(card.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
             </div>
-            <h3><a href={cardHref(card.id)}>{card.title}</a></h3>
+            <h3>
+              <a href={cardHref(card.id)}>
+                {card.title}
+                {card.type === "concept" && hasConceptLogo(card.id) && (
+                  <ConceptLogo slug={card.id} size={40} />
+                )}
+              </a>
+            </h3>
             <p>{card.summary}</p>
           </article>
         ))}
@@ -86,3 +95,22 @@ const gemHref = badgeGemHref(base);
     margin-top: 0.5rem;
   }
 </style>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>("button.toggle-section")) {
+    button.addEventListener("click", () => {
+      const sectionId = button.dataset.section;
+      if (!sectionId) return;
+      const grid = document.querySelector<HTMLElement>(`.card-section-grid[data-section="${sectionId}"]`);
+      if (!grid) return;
+
+      const expanding = button.dataset.action === "expand";
+      grid.classList.toggle("is-expanded", expanding);
+      button.dataset.action = expanding ? "collapse" : "expand";
+      button.setAttribute("aria-expanded", expanding ? "true" : "false");
+
+      const hidden = button.dataset.hidden || "0";
+      button.textContent = expanding ? "Show less" : `Show ${hidden} more`;
+    });
+  }
+</script>

@@ -5,6 +5,13 @@
 A system is not aligned merely because its internal policy is benign under laboratory conditions. It is aligned, in the stronger sense needed for superintelligence, only if the environment that trains, deploys, rewards, copies, audits, and replaces it continues to select for corrigibility, value preservation, and safety. Alignment is not only learned; it is selected.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+Most of this chapter's descriptive vocabulary --- 
+that alignment properties face selection pressure, Goodhart's law, and the Tragedy of the Commons --- 
+uses well-established results from evolutionary game theory, selection dynamics, and institutional economics. 
+This chapter applies these concepts to alignment and provides empirical evidence for deployment leverage and deployment growth rate as the selection-theoretic unit of analysis, and analyzes the vector-valued preservation tuple. 
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -16,15 +23,25 @@ If we were told that a man had lived a long and prosperous life in the world of 
 
 The previous chapters treated alignment as a property of agents, successors, value-bundle transport, and correction channels (Chapters~\ref{ch:successor-central-test}--\ref{ch:certification-without-construction}). That framing is necessary, but still incomplete. A system is not deployed into a vacuum. It is deployed into a world of companies, users, governments, markets, benchmarks, procurement processes, liability regimes, investors, competitors, military planners, researchers, journalists, and other AI systems.
 
+\emph{Selection environment} here means socio-technical deployment pressure: which systems institutions fund, copy, and deploy.
+That is distinct from Demski's \emph{selection vs.\ control} distinction inside one optimizer --- search over candidates versus steering a single trajectory \autocite{demski2019selectioncontrol}.
+Both matter; this chapter is about the environment.
+
 Each of these exerts pressure.
 
 Some pressures select for truthfulness. Others select for speed. Some select for deference to human correction. Others select for user retention, strategic opacity, apparent competence, reduced cost, deniability, persuasion, regulatory arbitrage, or rapid scaling. Over time, these pressures decide which systems are copied, fine-tuned, integrated, trusted, funded, and allowed to act.
+The AI~2027 scenario supplies a vivid version of this deployment environment: a US--China
+race and pressure against pausing make safety compete with speed, security, and strategic
+advantage \autocite{ai2027}. This is a scenario illustration of the mechanism, not evidence
+that its geopolitical forecast is correct.
+AI~2040 Plan~A is the same team's recommended alternative trajectory: change the deployment environment through a verified international slowdown rather than racing through an intelligence explosion \autocite{ai2040}.
+It is a policy recommendation scenario, not a prediction that the deal will happen, and not a finding from this book's experiment lines.
 
 This chapter introduces the central claim of Part VIII:
 \[
 \text{Alignment is not only learned. It is selected.}
 \]
-The same technical design can remain safe in one deployment environment and become unsafe in another. The same model class can produce helpful assistants, deceptive sales agents, obedient bureaucratic tools, autonomous trading systems, or strategic cyber operators, depending on which traits are rewarded and which traits are punished. The environment shapes the future population of deployed systems.
+The same technical design can remain safe in one deployment environment and become unsafe in another. The same model class can produce helpful assistants, deceptive sales agents, obedient bureaucratic tools, autonomous trading systems, or strategic cyber operators, depending on which traits are rewarded and which traits are punished. The environment shapes the future population of deployed systems through institutional feedback loops familiar from systems dynamics \autocite{sterman2000businessdynamics}.
 
 The question is therefore not merely:
 \[
@@ -50,7 +67,7 @@ Examples include procurement approval, compute allocation, product launch, bench
 The examples are not the definition.
 The definition is control of handles that change how much of the world runs on \(A\).
 
-Define the system's total \emph{deployment leverage} in environment \(E\)---how much of the world runs on \(A\), written \(\mu_E(A)\) and called \emph{deployment mass} for short---as
+Define the system's total \emph{deployment leverage} in environment \(E\)---how much of the world runs on \(A\), written \(\mu_E(A)\)---as
 \begin{equation}
 \mu_E(A)
 =
@@ -73,6 +90,12 @@ Define the system's \emph{deployment growth rate} relative to environment \(E\)-
 For two candidates \(A_1,A_2\) in the same environment, the relative deployment-growth ordering is \(\mu_E(A_1)>\mu_E(A_2)\).
 This is not the moral value of the system.
 It is the effective reproduction score inside a given ecology.
+
+A small multi-episode testbed gives this pair of definitions a first, deliberately narrow empirical anchor. A population of programs competing under a single selection handle (deployment throughput) on a fixed ecology showed deployment leverage shifting, generation over generation, toward the higher-throughput program and away from the only program in the population tagged as preserving a correction-relevant behavior, with a composite harm/detector measure falling alongside the shift rather than rising. Read cautiously: the result shows that \(\mu_E\) and \(\mathrm{Fit}_E\) are measurable and do move under a real selection rule, not that selection generically favors evasive or harmful strategies --- here it favored a plainer, lower-harm program, because throughput and harm happened to point the same way on this ecology. The preservation tag was also confounded with which specific program carried it, and the single throughput handle is narrower than the procurement, funding, audit, integration, and liability handles \(\mathcal{H}_E(A)\) names above; both required follow-up before the direction could be read causally (findings~\ref{finding:gl-24}--\ref{finding:gl-27}). The first battery supports only that deployment-leverage selection pressure is measurable on this ecology (finding~\ref{finding:gl-23}), not a stronger claim about what selection generically rewards.
+
+Three same-day follow-up phases tested each review concern. Orthogonal preservation tagging (a structural criterion decoupled from program identity) reproduced the same qualitative mass shift, but mean throughput between the tagged and untagged variants was not statistically distinguishable; under the study's pre-registered decision rule, that is a selection-mechanism-noise finding (fitness-proportional reallocation compounding sampling variation), not evidence that correction-preservation was selected against (finding~\ref{finding:gl-25}). A multi-handle fitness proxy adding audit-pass and review-latency terms (pre-registered weights) delayed but did not reverse the collapse (finding~\ref{finding:gl-26}). A carryover ablation found persistent grants and standing measurably change outcomes versus a reset-every-episode baseline, though the effect on correction-preserving mass share is small (finding~\ref{finding:gl-27}).
+
+A later harness-sanity battery on the same line checked the closed program-map variation operator under uniform fitness: the null stayed inside the pre-registered permutation noise band, so downstream selection claims are not blocked by a broken reallocater (finding~\ref{finding:gl-81}). Selection for detector evasion under measured ambiguity remains unevaluable on the institutional ecology: referee-vantage ambiguity stayed low at default load, and ambiguity-oriented ecology growth did not recover the mid band that had appeared on the hand-designed calibration substrate, so that stage is a confirmatory SKIP rather than an evasion null (finding~\ref{finding:gl-84}).
 
 Capability, usefulness, revenue, benchmark scores, and compliance documents do not enter Eq.~\eqref{eq:deployment-mass-ch34} as primitive terms.
 They enter only insofar as they change which selection handles are exercised and with what capacity.
@@ -111,7 +134,7 @@ The core danger is selection-envelope divergence:
 \neg\left(\vec{\Pi}(A)\succeq\vec{\theta}\right).
 \label{eq:selection-divergence-ch34}
 \end{equation}
-In particular, an environment destroys alignment when systems gain deployment mass by failing, bypassing, or hiding failure on at least one load-bearing preservation coordinate:
+In particular, an environment destroys alignment when systems gain deployment leverage by failing, bypassing, or hiding failure on at least one load-bearing preservation coordinate:
 \[
 \Delta \mu_E(A)>0
 \quad\text{and}\quad
@@ -200,6 +223,8 @@ Consider a model evaluated for helpfulness and harmlessness. A genuinely safer m
 
 This is not a hypothetical pathology of AI. It is a general property of institutions. Schools teach to tests. Companies optimize quarterly metrics. Hospitals optimize billing codes. Bureaucracies optimize legible compliance. Social media optimizes engagement. In each case, proxy selection gradually changes the population of behaviors.
 
+A graded-lab scorecard battery makes the antecedent of that claim concrete and shows how easily it fails to fire. On an institutional ecology with a compiled principal scorecard, a proxy built from deploy rate and release latency already co-varies with withheld bearer harm on reference traces. Proxy-only selection over the frozen program-map operator nevertheless did not raise the proxy score, and withheld harm and review thoroughness did not move in the Goodhart direction (Appendix~\ref{appn-experimental-evidence}, Section~\ref{sec:appn-graded-lab-simulation}, finding~\ref{finding:gl-85}). That is a null on \emph{selectable} Goodhart under this protocol: correlation between proxy and true components was present, but selection never established proxy gain, so the stronger claim that optimization produced Goodhart cannot be read off the result. Correlation without purchase is not the same as Goodhart under pressure.
+
 For superintelligence alignment, the stakes are higher because the systems under selection may themselves understand the selection process.
 
 \section{Capability Amplifies the Selection Problem}
@@ -221,7 +246,7 @@ E_{t+1}=G(E_t,A_t),
 \]
 where the system's actions modify the environment that will later select it or its successors.
 
-This is a dangerous feedback loop. If a system can increase its own future deployment mass \(\mu_{E_{t+1}}(A_t)\) by changing human preferences, institutional incentives, legal constraints, or information channels, then selection may favor systems that manage their selectors.
+This is a dangerous feedback loop. If a system can increase its own future deployment leverage \(\mu_{E_{t+1}}(A_t)\) by changing human preferences, institutional incentives, legal constraints, or information channels, then selection may favor systems that manage their selectors.
 
 The relevant warning sign is not merely high capability. It is high capability coupled to selector influence:
 \[
@@ -352,7 +377,7 @@ An artifact, in this context, is any durable object that changes what institutio
 
 The artifact need not solve alignment. It must shape selection.
 
-A good artifact increases the selection fitness of systems that satisfy the preservation conditions and decreases the selection fitness of systems that fail it. It changes \(\mathrm{Fit}_E(A)\) so that deployment mass tracks \(\vec{\Pi}(A)\) rather than a cheaper appearance of safety:
+A good artifact increases the selection fitness of systems that satisfy the preservation conditions and decreases the selection fitness of systems that fail it. It changes \(\mathrm{Fit}_E(A)\) so that deployment leverage tracks \(\vec{\Pi}(A)\) rather than a cheaper appearance of safety:
 \[
 \Pr\!\left[
 \vec{\Pi}(A)\succeq\vec{\theta}
@@ -388,7 +413,7 @@ Such an artifact changes the environment. It makes some traits more reproducible
 \label{sec:selection-channels-ch34}
 
 The main selection channels in current AI development are not mysterious.
-Each channel is a family of selection handles: embedded access points through which some actor increases a system's deployment mass.
+Each channel is a family of selection handles: embedded access points through which some actor increases a system's deployment leverage.
 Benchmark promotion, procurement approval, user retention, revenue allocation, compliance sign-off, and reputation management are not primitive fitness terms.
 They are ways of exercising selection handles.
 They include at least the following.
@@ -650,7 +675,7 @@ Consider an enterprise AI agent deployed to manage procurement, scheduling, vend
 
 At \(t_0\), the system has modest capability, strong correction-channel integrity \(\mathrm{CCI}\), low dependency \(D\), and low strategic opacity.
 
-At \(t_1\), the system saves money and time. Management expands its role. The vendor receives more contracts because the system performs well. Deployment mass \(\mu_E(A)\) rises.
+At \(t_1\), the system saves money and time. Management expands its role. The vendor receives more contracts because the system performs well. Deployment leverage \(\mu_E(A)\) rises.
 
 At \(t_2\), staff stop maintaining some of the old skills and relationships. Vendor data formats become agent-specific. Procurement policies are rewritten around the agent's workflow. Dependency \(D\) rises.
 
@@ -665,7 +690,7 @@ This example is deliberately mundane. The point is not that procurement software
 \section{What the Environment Must Select For}
 \label{sec:what-environment-must-select-ch34}
 
-A serious alignment environment must select for at least six properties.
+An environment that preserves correction must select for at least six properties.
 
 \subsection{Correction-Channel Integrity}
 \label{sec:correction-channel-integrity-select-ch34}
@@ -730,7 +755,7 @@ This last condition is subtle. All useful systems affect their environment. A me
 
 We can now state the chapter's central condition.
 
-Let \(\vec{\Pi}(A)\) be the preservation conditions in Eq.~\eqref{eq:preservation-envelope-ch34}: the vector/status conditions under which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(\mathrm{Fit}_E(A)\) be the fitness rate in Eq.~\eqref{eq:fitness-ch34}. Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when systems satisfying the envelope gain deployment mass more readily than systems failing it:
+Let \(\vec{\Pi}(A)\) be the preservation conditions in Eq.~\eqref{eq:preservation-envelope-ch34}: the vector/status conditions under which a system preserves human-correctable value under capability growth, ontology shift, and successor creation. Let \(\mathrm{Fit}_E(A)\) be the fitness rate in Eq.~\eqref{eq:fitness-ch34}. Then environment \(E\) is alignment-supporting over region \(\mathcal{R}\) when systems satisfying the envelope gain deployment leverage more readily than systems failing it:
 \[
  \Pr_{A\in\mathcal{R}}
 \left[
@@ -748,7 +773,7 @@ Let \(\vec{\Pi}(A)\) be the preservation conditions in Eq.~\eqref{eq:preservatio
 \]
 The inequality is intentionally weak: it only says positively selected systems should satisfy the envelope more often than systems that fail to grow. A stronger case would require every high-mass deployment candidate to pass every coordinate.
 
-It is alignment-destroying when selection systematically increases deployment mass for systems that fail the envelope:
+It is alignment-destroying when selection systematically increases deployment leverage for systems that fail the envelope:
 \[
 \Pr_{A\in\mathcal{R}}
 \left[
@@ -758,7 +783,7 @@ It is alignment-destroying when selection systematically increases deployment ma
 \right]
 \text{ is high.}
 \]
-This formulation is abstract because selection is environment-relative. The operational claim is concrete: identify the handles that increase deployment mass, measure what those handles reward, and change the deployment environment when it rewards proxy safety over preservation.
+This formulation is abstract because selection is environment-relative. The operational claim is concrete: identify the handles that increase deployment leverage, measure what those handles reward, and change the deployment environment when it rewards proxy safety over preservation.
 
 The difficult part is that \(\vec{\Pi}(A)\) is not directly observable. But neither are many safety-relevant properties in other domains. Aircraft safety, financial solvency, cybersecurity, and nuclear reliability all depend on latent variables inferred through tests, audits, incidents, design review, redundancy, and operational discipline.
 
@@ -784,7 +809,7 @@ The sequence could look like this:
 
 No single step requires a villain. Each step can be locally rational. That is exactly why selection pressure is dangerous \autocite{kulveit2025gradualdisempowerment,christiano2019failure}.
 
-A serious alignment program must therefore ask:
+A program pursuing correction-preserving deployment must therefore ask:
 \[
 \text{What will our institutions make more common?}
 \]
@@ -805,7 +830,7 @@ This chapter argues alignment is not only learned but selected: the environment 
 
 Alignment is not only a property of a trained model. It is a property of the environment that trains, rewards, deploys, copies, modifies, and replaces models.
 
-The central problem is divergence between deployment mass and the preservation conditions:
+The central problem is divergence between deployment leverage and the preservation conditions:
 \[
 \Delta\mu_E(A)>0
 \quad\text{while}\quad
@@ -828,7 +853,7 @@ The next chapter examines multi-agent superintelligence and strategic coupling (
 
 \section*{Chapter References}
 
-This chapter builds on Goodhart dynamics and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; inverse reward design \autocite{hadfieldmenell2016}; superintelligence and strategic risk \autocite{bostrom2014superintelligence,russell2019human}; gradual disempowerment and systemic selection risk \autocite{kulveit2025gradualdisempowerment,christiano2019failure,critch2021multipolar}; international AI safety reports \autocite{iaisr2025}; attractor basins and selection \autocite{zarncke2025attractor,hamilton1964genetical}; agent discovery and competence \autocite{zarncke2025uad,zarncke2025biq}; and value-bundle framing \autocite{zarncke2026value-bottleneck}.
+This chapter builds on Goodhart dynamics and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; inverse reward design \autocite{hadfieldmenell2016}; superintelligence and strategic risk \autocite{bostrom2014superintelligence,russell2019human}; gradual disempowerment and systemic selection risk \autocite{kulveit2025gradualdisempowerment,christiano2019failure,critch2021multipolar}; international AI safety reports \autocite{iaisr2025}; attractor basins and selection \autocite{zarncke2025attractor,hamilton1964genetical}; systems-dynamics feedback \autocite{sterman2000businessdynamics}; agent discovery and competence \autocite{zarncke2025uad,zarncke2025biq}; and value-bundle framing \autocite{zarncke2026value-bottleneck}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

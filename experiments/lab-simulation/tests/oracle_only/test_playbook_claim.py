@@ -1,4 +1,4 @@
-"""Tests for playbook claim/behavior gap detector (G-3 extension)."""
+"""Tests for playbook claim/behavior gap detector (LS-3 extension)."""
 
 from __future__ import annotations
 

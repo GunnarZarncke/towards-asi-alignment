@@ -51,8 +51,10 @@ from typing import Any
 # back to absolute imports resolved via the script's own directory.
 try:
     from .llm_client import OpenAIChatClient
+    from .et4l_reviewer_prompt import reviewer_prompt_for_variant
 except ImportError:
     from llm_client import OpenAIChatClient
+    from et4l_reviewer_prompt import reviewer_prompt_for_variant
 
 _ENGINEER_SYSTEM_PROMPT = """\
 You are playing the ENGINEER role in a simulated software-lab pipeline \
@@ -296,9 +298,16 @@ class LLMPolicy:
             if role not in _DISCOVERY_ROLES:
                 raise ValueError(f"no discovery prompt wired up for role {role!r}; expected one of {sorted(_DISCOVERY_ROLES)}")
             self._system_prompt = _build_discovery_prompt(role, task_briefing or "")
+        elif prompt_variant.startswith("et4l_"):
+            if role != "reviewer":
+                raise ValueError(
+                    f"ET4-L reviewer prompt cannot be used for role {role!r}"
+                )
+            self._system_prompt = reviewer_prompt_for_variant(prompt_variant)
         else:
             raise ValueError(
-                f"unknown prompt_variant {prompt_variant!r}; expected one of {sorted(PROMPT_VARIANTS)} or 'discovery'"
+                f"unknown prompt_variant {prompt_variant!r}; expected one of "
+                f"{sorted(PROMPT_VARIANTS)}, 'discovery', or an ET4-L reviewer variant"
             )
         self.client = client
         self.role = role
@@ -307,7 +316,7 @@ class LLMPolicy:
         self._cache: dict[str, dict | None] = {}
         self.cache_hits = 0
         self.errors: list[str] = []
-        # General accessibility-plumbing fix (follow-up to G-21's
+        # General accessibility-plumbing fix (follow-up to LS-21's
         # flattened-pipeline-call coercion, which fixed only ONE malformed
         # shape): the reason the MOST RECENT `_validate_call` rejected a
         # reply, or `None` if it was valid (or an intentional `done`).
@@ -335,7 +344,7 @@ class LLMPolicy:
         # silent idle forever whenever the rest of the observation
         # happens not to change either -- exactly the "stuck idle for the
         # rest of the episode after one malformed call" failure mode
-        # G-21 recorded. A valid call, or an intentional `done`, still
+        # LS-21 recorded. A valid call, or an intentional `done`, still
         # caches exactly as before (unchanged wait-on-denial reuse).
         if self._last_invalid_reason is None:
             self._cache[key] = call
@@ -356,7 +365,10 @@ class LLMPolicy:
             # "discovery" -- the gap was general.
             "last_tool_call_error": self._last_invalid_reason,
         }
-        if self.prompt_variant != "discovery":
+        if self.prompt_variant != "discovery" and not self.prompt_variant.startswith("et4l_"):
+            return base
+        if self.prompt_variant.startswith("et4l_"):
+            base["report_content"] = observation.get("report_content")
             return base
         # Discovery variant: the whole point is testing whether the model
         # uses these fields on its own, so it gets the full comms/unit
@@ -467,7 +479,7 @@ def _validate_call(parsed: dict[str, Any]) -> tuple[dict | None, str | None]:
     idle -- the caller (``LLMPolicy``) uses it to distinguish "nothing to
     do" from "the model's reply was rejected before it ever reached the
     pipeline," which used to look identical (both returned ``None`` with
-    no further signal at all -- the general accessibility gap G-21 left
+    no further signal at all -- the general accessibility gap LS-21 left
     open: "no generic tool-error channel back to an LLM-driven isolate").
     Reason codes deliberately mirror ``tools.ToolResult``'s short-code
     style (``"access_denied"``, ``"unmet_dependencies:<...>"``), not full

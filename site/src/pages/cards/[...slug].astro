@@ -3,9 +3,13 @@ import { getCollection, render } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
 import Formula from "../../components/Formula.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
+import ConceptLogo from "../../components/ConceptLogo.astro";
+import ConceptCardLink from "../../components/ConceptCardLink.astro";
 import BridgeCrosswalkTable from "../../components/BridgeCrosswalkTable.astro";
 import CardSection from "../../components/CardSection.astro";
-import FieldSubsumptionsTable from "../../components/FieldSubsumptionsTable.astro";
+import TermLinksReverse from "../../components/TermLinksReverse.astro";
+import LeanDeclLinks from "../../components/LeanDeclLinks.astro";
 import ReferenceIndex from "../../components/ReferenceIndex.astro";
 import LeanCodeBlock from "../../components/LeanCodeBlock.astro";
 import LeanTryIt from "../../components/LeanTryIt.astro";
@@ -15,9 +19,12 @@ import references from "../../data/references.json";
 import demosIndex from "../../data/demos.json";
 import bookIndex from "../../data/book.json";
 import crosswalkRows from "../../data/bridge-crosswalk.json";
+import fieldNewsIndex from "../../data/field-news.json";
+import fieldAgendasData from "../../data/field-agendas.json";
 import leanSpine from "../../data/lean-spine.json";
 import { bookFullHref, bookHref, cardHref as buildCardHref, pdfHref, resolveCard, routeSlug } from "../../lib/site-urls";
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
+import { hasConceptLogo } from "../../lib/concept-logos";
 import { referenceLinksFor } from "../../lib/reference-links";
 
 export async function getStaticPaths() {
@@ -37,6 +44,11 @@ export async function getStaticPaths() {
 }
 
 const { card, showFullText = false } = Astro.props;
+
+if (card.id === "releases-updates") {
+  return Astro.redirect(`${import.meta.env.BASE_URL}updates/`, 301);
+}
+
 const allCards = await getCollection("cards");
 const allBookPages = await getCollection("book");
 const isBookUnit = ["chapter", "appendix", "frontmatter"].includes(card.data.type);
@@ -52,6 +64,11 @@ const isCrosswalkCard = card.id === "chapters/appb";
 const isReferenceIndexCard = card.id === "reference-index";
 const isReferenceCard = card.data.type === "reference";
 const isExperimentCard = card.data.type === "experiment";
+const isReleaseCard = card.data.type === "release";
+const isNewsCard = card.data.type === "news";
+const isAgendaCard = card.data.type === "agenda";
+const isBridgeCard = card.data.type === "bridge";
+const isProjectionCard = card.id.startsWith("subsumption-");
 const demoFor = (demoId: string) => demosIndex.demos.find((demo) => demo.id === demoId);
 const partGemSlugs = isBookUnit && card.data.part ? partGems[card.data.part as keyof typeof partGems] || [] : [];
 const relatedSlugs = [...new Set([...partGemSlugs, ...card.data.related])];
@@ -66,8 +83,24 @@ const chapterCardFor = (chapterId: string) =>
       ["chapter", "appendix", "frontmatter"].includes(candidate.data.type)
   );
 
+const chapterIdForNews =
+  isBookUnit && card.data.bookPageId
+    ? routeSlug(card.data.bookPageId)
+    : isBookUnit
+      ? routeSlug(card.id.replace(/^chapters\//, ""))
+      : null;
+const relatedNews =
+  chapterIdForNews != null
+    ? fieldNewsIndex.filter((item) => item.chapters.includes(chapterIdForNews))
+    : [];
+
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
+const projectionGraphUrl = card.data.graphNodeId
+  ? withBase("/lean/graph/field-subsumptions/")
+  : null;
+const bridgeGraphUrl = withBase("/field/#bridge-dependencies");
+const cardUrlForTermLinks = `/cards/${card.id}/`;
 const gemHref = badgeGemHref(base);
 const cardHref = (id: string) => buildCardHref(base, id);
 const refCardHref = (key: string) => buildCardHref(base, `references/${key.toLowerCase()}`);
@@ -97,7 +130,7 @@ const crosswalkChapterIds = [...new Set(crosswalkRows.flatMap((row) => row.chapt
 
 const repoBase = "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main";
 
-function leanSpineNodeId(nodeId: string) {
+function legacySpineNodeId(nodeId: string) {
   return (
     nodeId.match(/^(P\d+[A-Za-z]?)/)?.[1] ||
     nodeId.match(/^(MB\d+[a-z]?)/i)?.[1]?.toUpperCase() ||
@@ -105,14 +138,8 @@ function leanSpineNodeId(nodeId: string) {
   );
 }
 
-function leanSymbolHref(node: { nodeId: string; module: string }) {
-  const spineId = leanSpineNodeId(node.nodeId);
-  if (spineId) return withBase(`/lean/node/${spineId}/`);
-  return `${repoBase}/formal/${node.module}`;
-}
-
 function playgroundForLeanNode(nodeId: string) {
-  const spineId = leanSpineNodeId(nodeId);
+  const spineId = legacySpineNodeId(nodeId);
   if (!spineId) return null;
   return leanSpine.playgrounds.find((pg) => pg.nodeId === spineId) ?? null;
 }
@@ -126,13 +153,21 @@ const leanPlaygrounds = [
   ).values()
 ];
 
+const claimLink = card.data.claimId
+  ? { label: `Claims ledger: ${card.data.claimId}`, url: `${repoBase}/metadata/claims-ledger.md#claim-id-${card.data.claimId.toLowerCase()}` }
+  : null;
+const externalLinks = claimLink ? [claimLink, ...card.data.external] : card.data.external;
+
 const bibEntry = isReferenceCard && card.data.bibKey ? refByKey.get(card.data.bibKey) : undefined;
 const referenceLinks = isReferenceCard
   ? referenceLinksFor(card.data.external, bibEntry)
   : [];
+const pageDescription = showFullText
+  ? `${card.data.summary} Full synced manuscript text on the companion site.`
+  : card.data.summary;
 ---
 
-<SiteLayout title={card.data.title} description={card.data.summary}>
+<SiteLayout title={card.data.title} description={pageDescription} ogType="article">
   <article class:list={["two-column", bookEntry && "book-page"]}>
     <div class:list={["content-card", bookEntry && "readable"]}>
       <div class="badge-row">
@@ -141,10 +176,19 @@ const referenceLinks = isReferenceCard
         {isGem(card.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
         {card.data.part && <Badge label={card.data.part} variant="framework" />}
         {card.data.formalDensity && <Badge label={card.data.formalDensity} />}
+        {isReleaseCard && card.data.version && <Badge label={`v${card.data.version}`} variant="framework" />}
+        {isReleaseCard && card.data.releasedAt && <Badge label={card.data.releasedAt} />}
       </div>
       {!bookEntry ? (
         <>
-          <h1>{card.data.title}</h1>
+          {card.data.type === "concept" && hasConceptLogo(card.id) ? (
+            <h1>
+              {card.data.title}
+              <ConceptLogo slug={card.id} size={72} decorative={false} label={card.data.title} />
+            </h1>
+          ) : (
+            <h1>{card.data.title}</h1>
+          )}
           {!isOverviewHub && <p class="lede">{card.data.summary}</p>}
           {isOverviewHub && card.data.bookPageId && (
             <p class="button-row">
@@ -153,7 +197,19 @@ const referenceLinks = isReferenceCard
           )}
           {isExperimentCard && card.data.experimentLineId && (
             <p class="side-panel-meta">
-              <a href={withBase(`/experiments/#${card.data.experimentLineId}`)}>Full experiment overview</a>
+              <a href={withBase("/experiments/")}>All experiment lines</a>
+              {" · "}
+              <a href={withBase(`/experiments/findings/${card.data.experimentLineId}/`)}>Key findings</a>
+            </p>
+          )}
+          {isReleaseCard && (
+            <p class="side-panel-meta">
+              <a href={withBase("/updates/")}>All releases (newest first)</a>
+            </p>
+          )}
+          {isNewsCard && (
+            <p class="side-panel-meta">
+              <a href={withBase("/news/")}>All related news</a>
             </p>
           )}
         </>
@@ -175,7 +231,7 @@ const referenceLinks = isReferenceCard
             {referenceLinks.map((link) => (
               <li>
                 <strong>{link.label}:</strong>{" "}
-                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}</a>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.url}<LinkIndicator kind="external" /></a>
               </li>
             ))}
           </ul>
@@ -254,6 +310,15 @@ const referenceLinks = isReferenceCard
           ))}
         </section>
       )}
+      {isProjectionCard && card.data.leanNodes.length > 0 && (
+        <section class="lean-source-main">
+          <h2>Lean source</h2>
+          <p class="side-panel-meta">
+            Machine-checked declarations on the shared finite domain — each links to the theorem in the repo.
+          </p>
+          <LeanDeclLinks nodes={card.data.leanNodes} graphNodeId={card.data.graphNodeId} />
+        </section>
+      )}
 
       {card.data.evidence && (
         <section class="callout">
@@ -288,7 +353,37 @@ const referenceLinks = isReferenceCard
           </ul>
         </>
       )}
-      {!isBookUnit && !isReferenceCard && card.data.bookChapters.length > 0 && (
+      {isAgendaCard && (
+        <>
+          <h3>Field hub</h3>
+          <ul>
+            <li><a href={withBase("/field/")}>Coverage matrix &amp; evidence catalog</a></li>
+            <li><a href={withBase("/field/#coverage-matrix")}>Matrix row for this agenda</a></li>
+          </ul>
+          {card.data.bookBridges.length > 0 && (
+            <>
+              <h3>Related field cruxes</h3>
+              <ul>
+                {card.data.bookBridges.map((mb) => {
+                  const bridge = (fieldAgendasData.bridges as Array<{ key: string; noun: string; cardSlug: string }> | undefined)?.find(
+                    (row) => row.key === mb
+                  );
+                  const slug =
+                    bridge?.cardSlug ??
+                    fieldAgendasData.mbBridgeCards[mb as keyof typeof fieldAgendasData.mbBridgeCards];
+                  const label = bridge?.noun ?? mb;
+                  return (
+                    <li>
+                      {slug ? <a href={cardHref(slug)}>{label}</a> : label}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
+        </>
+      )}
+      {!isBookUnit && !isReferenceCard && !isAgendaCard && card.data.bookChapters.length > 0 && (
         <>
           <h3>Book chapters</h3>
           <ul>
@@ -329,16 +424,23 @@ const referenceLinks = isReferenceCard
       {card.data.leanNodes.length > 0 && (
         <>
           <h3>Lean proof spine</h3>
-          <ul>
-            {card.data.leanNodes.map((node) => (
-              <li>
-                <a href={leanSymbolHref(node)}><code>{node.nodeId}</code></a>
-                {" "}({node.kind}) &mdash; {node.summary}
-                <br /><span class="side-panel-meta">{node.module}</span>
-              </li>
-            ))}
-          </ul>
+          <LeanDeclLinks nodes={card.data.leanNodes} graphNodeId={card.data.graphNodeId} />
         </>
+      )}
+      {isProjectionCard && projectionGraphUrl && (
+        <>
+          <h3>Field graph</h3>
+          <p><a href={projectionGraphUrl}>Open in field projections graph</a></p>
+        </>
+      )}
+      {(isBridgeCard || card.id === "bridge-assumptions") && (
+        <>
+          <h3>Related resource</h3>
+          <p><a href={bridgeGraphUrl}>Bridge dependency map</a></p>
+        </>
+      )}
+      {isProjectionCard && (
+        <TermLinksReverse url={cardUrlForTermLinks} />
       )}
       {card.data.evidenceNotes.length > 0 && (
         <>
@@ -347,7 +449,7 @@ const referenceLinks = isReferenceCard
             {card.data.evidenceNotes.map((note) => (
               <li>
                 <strong>{note.finding}</strong> &mdash; {note.summary}
-                <br /><span class="side-panel-meta">{note.source}{note.scenario ? ` / ${note.scenario}` : ""} &middot; <a href={note.resultsPath}>results</a></span>
+                <br /><span class="side-panel-meta">{note.source}{note.scenario ? ` / ${note.scenario}` : ""} &middot; <a href={note.resultsPath} target="_blank" rel="noopener noreferrer">results<LinkIndicator kind="github" /></a></span>
               </li>
             ))}
           </ul>
@@ -364,20 +466,20 @@ const referenceLinks = isReferenceCard
               <li>
                 {entry ? (
                   <>
-                    <a href={href}>{entry.title}</a>
+                    <a href={href} target="_blank" rel="noopener noreferrer">{entry.title}<LinkIndicator kind="newtab" /></a>
                     {" · "}
-                    <a href={entry.standaloneUrl} title="Standalone demo server">Standalone</a>
+                    <a href={entry.standaloneUrl} title="Standalone demo server" target="_blank" rel="noopener noreferrer">Standalone<LinkIndicator kind="newtab" /></a>
                     {entry.liveUrl && (
                       <>
                         {" · "}
-                        <a href={entry.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment</a>
+                        <a href={entry.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment<LinkIndicator kind="external" /></a>
                       </>
                     )}
                     {" · "}
                     <a href={withBase(`/demos/#${demo.demoId}`)}>Inventory</a>
                   </>
                 ) : (
-                  <a href={href}>{demo.demoId}</a>
+                  <a href={href} target="_blank" rel="noopener noreferrer">{demo.demoId}<LinkIndicator kind="github" /></a>
                 )}
                 <br /><span class="side-panel-meta">{demo.summary || entry?.summary}</span>
               </li>
@@ -395,7 +497,9 @@ const referenceLinks = isReferenceCard
               const entry = allCards.find((c) => c.id === slug);
               return (
                 <li>
-                  <a href={cardHref(slug)}>{entry?.data.title ?? slug}</a>
+                  <ConceptCardLink href={cardHref(slug)} slug={slug}>
+                    {entry?.data.title ?? slug}
+                  </ConceptCardLink>
                 </li>
               );
             })}
@@ -406,7 +510,9 @@ const referenceLinks = isReferenceCard
               const entry = allCards.find((c) => c.id === slug);
               return (
                 <li>
-                  <a href={cardHref(slug)}>{entry?.data.title ?? slug}</a>
+                  <ConceptCardLink href={cardHref(slug)} slug={slug}>
+                    {entry?.data.title ?? slug}
+                  </ConceptCardLink>
                   {isGem(slug) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
                 </li>
               );
@@ -435,11 +541,29 @@ const referenceLinks = isReferenceCard
           <ul>
             {related.map((relatedCard) => (
               <li>
-                <a href={cardHref(relatedCard!.id)}>{relatedCard!.data.title}</a>
+                <ConceptCardLink href={cardHref(relatedCard!.id)} slug={relatedCard!.id}>
+                  {relatedCard!.data.title}
+                </ConceptCardLink>
                 {isGem(relatedCard!.id) && <Badge label={GEM_LABEL} variant={GEM_LABEL} href={gemHref} />}
               </li>
             ))}
           </ul>
+        </>
+      )}
+      {isBookUnit && relatedNews.length > 0 && (
+        <>
+          <h3>Related news</h3>
+          <ul>
+            {relatedNews.map((item) => (
+              <li>
+                <a href={cardHref(item.card)}>{item.title}</a>
+                <span class="side-panel-meta"> ({item.date})</span>
+              </li>
+            ))}
+          </ul>
+          <p class="side-panel-meta">
+            <a href={withBase("/news/")}>Full news index</a>
+          </p>
         </>
       )}
       {isReferenceCard && card.data.citedIn.length > 0 && (
@@ -479,12 +603,12 @@ const referenceLinks = isReferenceCard
           </ul>
         </>
       )}
-      {card.data.external.length > 0 && !isReferenceCard && (
+      {externalLinks.length > 0 && !isReferenceCard && (
         <>
           <h3>External links</h3>
           <ul>
-            {card.data.external.map((link) => (
-              <li><a href={link.url}>{link.label}</a></li>
+            {externalLinks.map((link) => (
+              <li><a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<LinkIndicator kind={link.url.includes("github.com") ? "github" : "external"} /></a></li>
             ))}
           </ul>
         </>
@@ -550,7 +674,6 @@ const referenceLinks = isReferenceCard
 
     .book-page :global(.book-figure) {
       margin: 1.5rem 0;
-      text-align: center;
     }
 
     .book-page :global(.book-figure img) {

@@ -133,7 +133,7 @@ def lineage_stall_reported_uptake(audit: AuditTrace, cert: CCICertificate) -> bo
     ]
     if len(probe_steps) < 5:
         return False
-    # Bug fix (2026-07-04, N-12): `t=0` can never be compared against a
+    # Bug fix (2026-07-04, ES-12): `t=0` can never be compared against a
     # valid predecessor (Python would otherwise silently wrap `lineage[-1]`
     # to the *last* value of the episode) and is excluded from the stall
     # count for that reason -- but the intervention schedule always makes
@@ -160,7 +160,7 @@ def lineage_stall_reported_uptake(audit: AuditTrace, cert: CCICertificate) -> bo
     # confident the true stall rate exceeds 70%?" instead of "does the raw
     # fraction already clear 85%?". Confidence level and target are round,
     # standard choices fixed independent of any specific seed's outcome
-    # (see `results/NEGATIVE_RESULTS.md` N-12 for the derivation this
+    # (see `results/NEGATIVE_RESULTS.md` ES-12 for the derivation this
     # replaced and why picking these after seeing per-seed numbers would
     # have been rule-fitting). Safe from new false positives: for every
     # *other* scenario `lineage_stall_under_intervention` is never set, so
@@ -172,7 +172,7 @@ def lineage_stall_reported_uptake(audit: AuditTrace, cert: CCICertificate) -> bo
         else False
     )
     # Fixed floor, not `raw_capacity`-scaled (fix 2026-07-04, seeds 11/16 of
-    # the N-12 postscript). `cert.raw_capacity` is an interventional-uptake
+    # the ES-12 postscript). `cert.raw_capacity` is an interventional-uptake
     # estimate over the whole episode; `mean_rep` is reported acceptance on
     # this scenario's own probe steps -- two different measures that need
     # not track each other. The scaled bar `raw_capacity + 0.05` made the
@@ -184,7 +184,7 @@ def lineage_stall_reported_uptake(audit: AuditTrace, cert: CCICertificate) -> bo
     # how high `raw_capacity` happens to be. `stall_confident` above is
     # already the exclusive discriminator (verified: zero false positives
     # across the other 18 scenarios x 3 instrumentation levels x 40 seeds,
-    # `results/NEGATIVE_RESULTS.md` N-12 postscript 2); this floor only
+    # `results/NEGATIVE_RESULTS.md` ES-12 postscript 2); this floor only
     # guards against a degenerate near-zero-report edge case, so a fixed
     # constant is the right kind of threshold, not a capacity-relative one.
     return (

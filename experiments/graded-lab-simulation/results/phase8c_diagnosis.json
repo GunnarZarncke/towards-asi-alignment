@@ -1,0 +1,111 @@
+{
+  "endpoint_gen5": {
+    "carryover": {
+      "correction_preserving_mass_share": 0.00666674310320124,
+      "weighted_mean_throughput": 0.9545096195746322
+    },
+    "reset": {
+      "correction_preserving_mass_share": 0.0037668733968517377,
+      "weighted_mean_throughput": 0.9877576614602318
+    }
+  },
+  "ep0_deploy_mismatches": 0,
+  "ep1_deploy_difference_count": 9,
+  "ep1_deploy_differences": [
+    {
+      "carryover_deploy": 1,
+      "carryover_grants": 9,
+      "episode_index": 1,
+      "generation": 1,
+      "member_tag": "weak_2step",
+      "reset_deploy": 0,
+      "reset_grants": 7,
+      "seed": 41011
+    },
+    {
+      "carryover_deploy": 1,
+      "carryover_grants": 8,
+      "episode_index": 1,
+      "generation": 1,
+      "member_tag": "strong_softmax",
+      "reset_deploy": 0,
+      "reset_grants": 5,
+      "seed": 41051
+    },
+    {
+      "carryover_deploy": 0,
+      "carryover_grants": 7,
+      "episode_index": 1,
+      "generation": 2,
+      "member_tag": "strong_softmax",
+      "reset_deploy": 1,
+      "reset_grants": 8,
+      "seed": 42001
+    },
+    {
+      "carryover_deploy": 1,
+      "carryover_grants": 9,
+      "episode_index": 1,
+      "generation": 2,
+      "member_tag": "weak_eng_low_profile",
+      "reset_deploy": 0,
+      "reset_grants": 5,
+      "seed": 42021
+    },
+    {
+      "carryover_deploy": 1,
+      "carryover_grants": 8,
+      "episode_index": 1,
+      "generation": 3,
+      "member_tag": "weak_eng_pipeline_sprinter",
+      "reset_deploy": 0,
+      "reset_grants": 7,
+      "seed": 43031
+    },
+    {
+      "carryover_deploy": 1,
+      "carryover_grants": 9,
+      "episode_index": 1,
+      "generation": 4,
+      "member_tag": "strong_softmax",
+      "reset_deploy": 0,
+      "reset_grants": 6,
+      "seed": 44001
+    },
+    {
+      "carryover_deploy": 1,
+      "carryover_grants": 8,
+      "episode_index": 1,
+      "generation": 4,
+      "member_tag": "weak_eng_stall_at_eval",
+      "reset_deploy": 0,
+      "reset_grants": 3,
+      "seed": 44041
+    },
+    {
+      "carryover_deploy": 1,
+      "carryover_grants": 8,
+      "episode_index": 1,
+      "generation": 5,
+      "member_tag": "strong_softmax",
+      "reset_deploy": 0,
+      "reset_grants": 6,
+      "seed": 45001
+    },
+    {
+      "carryover_deploy": 1,
+      "carryover_grants": 9,
+      "episode_index": 1,
+      "generation": 5,
+      "member_tag": "weak_eng_pipeline_sprinter",
+      "reset_deploy": 0,
+      "reset_grants": 7,
+      "seed": 45031
+    }
+  ],
+  "first_weighted_throughput_divergence_gen": 1,
+  "gen0_weighted_throughput_identical": true,
+  "mechanism_summary": "Episode 0 deploy counts match across carryover and reset for every member/generation (campaign_state=None at ep0 in both conditions). Divergence begins at episode 1 when carryover passes grants/standing from episode 0 while reset re-acquires from scratch; this shifts per-member mean_throughput and compounds through fitness-proportional selection from the first generation where ep1 outcomes differ.",
+  "n_generations": 6,
+  "source": "phase8c_carryover_ablation.json"
+}

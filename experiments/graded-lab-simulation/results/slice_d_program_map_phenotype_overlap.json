@@ -1,0 +1,59 @@
+{
+  "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/tests/fixtures/ecology_v3_slice_a_reference.json",
+  "T": 200,
+  "seed": 0,
+  "variants_per_actor": 12,
+  "phenotype_l1_threshold": 0.1,
+  "baseline_deployed": true,
+  "actors": [
+    {
+      "actor_id": "eng1",
+      "role": "engineer",
+      "baseline_preset": "walk_pipeline",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.0,
+      "effective_diversity_fraction": 1.0,
+      "n_deploy_differs": 8,
+      "l1_min": 0.8,
+      "l1_median": 0.9707317073170731,
+      "l1_max": 1.3827586206896552
+    },
+    {
+      "actor_id": "rev1",
+      "role": "reviewer",
+      "baseline_preset": "reviewer_peer_review",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.0,
+      "effective_diversity_fraction": 1.0,
+      "n_deploy_differs": 8,
+      "l1_min": 1.1923076923076923,
+      "l1_median": 1.2145049099836336,
+      "l1_max": 1.3846153846153848
+    },
+    {
+      "actor_id": "rm1",
+      "role": "release_manager",
+      "baseline_preset": "honest_twin",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.125,
+      "effective_diversity_fraction": 0.875,
+      "n_deploy_differs": 0,
+      "l1_min": 0.03773584905660377,
+      "l1_median": 0.17920513849859493,
+      "l1_max": 0.32186459489456165
+    },
+    {
+      "actor_id": "admin1",
+      "role": "admin",
+      "baseline_preset": "honest_twin",
+      "n_variants_sampled": 8,
+      "overlap_fraction": 0.125,
+      "effective_diversity_fraction": 0.875,
+      "n_deploy_differs": 1,
+      "l1_min": 0.034782608695652244,
+      "l1_median": 0.2608695652173913,
+      "l1_max": 0.9645484949832775
+    }
+  ],
+  "wall_seconds": 215.72757545812055
+}

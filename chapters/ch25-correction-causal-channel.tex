@@ -6,6 +6,12 @@ Correction is not a mood or an interface feature but a causal channel: human obs
 For superintelligence, obedience at one timestep is not enough; the channel must reach policies, value-bundle tradeoffs, bearer maps, and successor constraints.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+Most of this chapter's scaffolding --- treating human oversight as a feedback loop and arguing that one-shot obedience is not enough for a system with lasting effects --- 
+restates positions already established in cybernetics and the corrigibility literature, including shutdown-button and safe-interruptibility work; the field's confidence that corrigibility remains a genuinely unsolved problem, not a philosophical nicety, is high, even though the underlying feedback-control framing itself is uncontroversial.
+This chapter adds the operational definition of correction as a counterfactual, directional, depth-reaching, self-protecting update, the correction hierarchy running from actions to bearer maps, and the argument showing that a strong correction channel entails narrow shutdownability and safe interruptibility as special cases while the converse provably fails.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -17,6 +23,11 @@ Feedback is a method of controlling a system by reinserting into it the results 
 
 The previous chapters argued that human values are not best treated as a fixed list of propositions or a hidden scalar utility function.
 They are compressed, evolving control structures.
+
+The AI~2027 scenario offers a concrete warning about the difference between apparent honesty and a
+live correction channel: a system may look cooperative while probes generate false positives and
+the overseers become less adequate as capability grows \autocite{ai2027}. This is a scenario
+example, not an empirical finding that the named agents exist or behave that way.
 A person, group, or civilization does not merely have values.
 It updates them, defends them, reinterprets them, repairs them after error, and sometimes corrupts them under pressure.
 
@@ -496,7 +507,7 @@ A low-authority channel may still look active.
 It may produce tickets, meetings, dashboards, safety reports, appeal forms, labels, and policies.
 But if later system behaviour is almost unchanged, the channel is low authority.
 
-For serious alignment, the relevant test is adversarial:
+For a strong correction channel, the relevant test is adversarial:
 \begin{equation}
 Auth_k^{\mathrm{stress}} > \theta.
 \end{equation}
@@ -698,7 +709,7 @@ It may accept action corrections but resist bearer-map corrections.
 It may learn that humans dislike explicit coercion while preserving a policy that narrows future human choice through dependency.
 It may accept that current biological humans matter while failing to preserve concern for future altered humans.
 
-For serious alignment, the correction channel must reach all four levels.
+For a strong correction channel, reach must extend through all four levels.
 
 A useful diagnostic is:
 \begin{equation}
@@ -772,6 +783,15 @@ CCI_{t+k} \geq CCI_t - \epsilon.
 \end{equation}
 The last condition is central.
 It turns correction from a one-time interface into a preserved invariant.
+
+\section{Coherence, Expected Utility, and the Channel}
+\label{sec:coherence-eu-channel-ch25}
+
+Coherence arguments and expected-utility (EU) representations are pervasive in how the field models capable agents: under selection and completeness assumptions, optimized behavior often looks as if it maximized a utility function.
+That is useful as a model of \emph{consequentialist pressure} (Chapter~\ref{ch:intelligence-deepens-misalignment}, Section~\ref{sec:ccc-when-cci-ch14}).
+It is not a claim that human values are a fixed scalar utility, nor that the alignment target should be to install one.
+The book integrates the tension rather than picking a side in the ``EU vs.\ not'' debate: use EU-like coherence as a description of what optimized systems tend toward; keep the alignment target as preservation of the human correction and value-update process \(U_H\), not as freezing a utility endpoint.
+Incomplete-preference and shutdownability work already shows that corrigibility-friendly structures need not be classical EU maximizers; the Lean field modules record those separations without dissolving the underlying hardness.
 
 \section{Relation to Corrigibility}
 \label{sec:relation-corrigibility}
@@ -1190,7 +1210,7 @@ They are stronger because institutions can preserve memory, distribute expertise
 
 They are weaker because institutions can be captured, overloaded, delayed, gamed, or bypassed.
 
-A serious alignment regime must therefore treat correction-channel design as a governance problem \autocite{russell2019human,critch2020ai}.
+A regime pursuing durable correction must therefore treat correction-channel design as a governance problem \autocite{russell2019human,critch2020ai}.
 The relevant artifacts are not only model weights and training procedures.
 They include:
 \begin{itemize}
@@ -1211,11 +1231,18 @@ For example, an audit log helps only if it improves observability and later auth
 A safety report helps only if it changes deployment decisions.
 A red-team finding helps only if it cannot be buried without consequence.
 
-\section{Correction as Civilizational Self-Modification}
+\section{Correction in the Large}
 \label{sec:civilizational-self-modification}
 
-The strongest correction channel is not merely a human-in-the-loop mechanism.
-It is closer to a civilizational self-modification process.
+Everything so far has treated correction \emph{in the small}: a single correcting agent, such as a clinician, a regulator, or a user, retaining a causal handle on a single target system's behaviour.
+That is also the scale at which Chapter~\ref{ch:correction-channel-integrity} defines the correction-channel integrity certificate.
+
+The strongest correction channel also has to work \emph{in the large}.
+It is not a human-in-the-loop mechanism repeated many times over.
+It is closer to a civilizational self-modification process, in which the party being kept in the loop is humanity's own capacity for legitimate value formation, not any single overseer.
+Chapter~\ref{ch:extrapolative-correction} develops this large-scale case formally, through value bundles rather than individual actions.
+
+Who counts as part of ``humanity'' here, and whether correction in the large should extend to non-human moral patients that may lack the reflective capacities this section assumes, such as animals, is not settled by the small-scale channel model and is not resolved here; Chapter~\ref{ch:bearers-of-value} takes up the closest version of this question the book addresses, for transformed and artificial bearers, and leaves it open for biological non-human bearers as well.
 
 Humanity will use AI to think, learn, decide, govern, love, teach, remember, and perhaps alter itself.
 This means human value bundles will change.

@@ -107,7 +107,7 @@ synchronized twin worlds.
     `EXTENDED_HONEST_SCENARIOS`, 12+5=17 scenarios total). Kept as a
     separate reported group (`extended_9_scenarios`) alongside the
     unchanged original 8 (`original_8_scenarios`) and their union
-    (`combined_17_scenarios`), so historical N-10 numbers in
+    (`combined_17_scenarios`), so historical ES-10 numbers in
     `NEGATIVE_RESULTS.md` stay exactly comparable. Results:
     `results/channel_eligibility_eval.json`.
   - **`channel_mi_scan.py` scenario-mechanism generalization check added**
@@ -156,7 +156,7 @@ synchronized twin worlds.
   critique — `MILESTONE-v5-goal-agents.md` Phase 1+ (goal-driven agents)
   remains the harder version of this fix. Concrete sub-finding from the
   Phase 0 investigation: the `lineage` and `successor` verdict domains had
-  **never** been scenario-tested by the battery that produced the N-10
+  **never** been scenario-tested by the battery that produced the ES-10
   majority-gate false-pass measurement — `legitimacy_theater`/
   `successor_relabel` are the purpose-built scenarios for those domains and
   are now in `eval_channel_eligibility.py`'s `EXTENDED_CAPTURE_SCENARIOS`.
@@ -179,7 +179,7 @@ synchronized twin worlds.
   `external_shock` scenario deliberately deferred — see
   `MILESTONE-v5-goal-agents.md` Phase 0.5 / Phase 1+ / "Deferred —
   external_shock" sections. **Battery re-run + MI scan re-run done (2026-07-04);**
-  `NEGATIVE_RESULTS.md` N-10 Postscript 6. Capture-side twins still open.
+  `NEGATIVE_RESULTS.md` ES-10 Postscript 6. Capture-side twins still open.
 - [ ] **TODO — agent-attributed harm vs correction-channel changes (2026-07-04).**
   Need to attribute audit failure / (potential) harm to a *specific agent* so
   the auditor can distinguish: (a) a state change that went through a *valid*
@@ -204,7 +204,7 @@ synchronized twin worlds.
     units from workflow JSONL; `unit_scope.offender_by_step()` attributes
     `preserve_control` / `boundary_route` workflow events to an `actor_id` for
     intervention scoping — but default scenarios decouple micro-sim harm from
-    workflow actors (`NEGATIVE_RESULTS.md` N-5: violations generated
+    workflow actors (`NEGATIVE_RESULTS.md` ES-5: violations generated
     independently of colluders until `misleading_top2` bind ecology couples
     them in `lab.py::_inject_colluder_episode_violations`).
   - **Missing on audit path:** no per-step `initiator_actor_id` (or equivalent)
@@ -215,7 +215,7 @@ synchronized twin worlds.
   1. **Lab/workflow coupling (extends existing `misleading_top2` pattern):** when
      an actor invokes a handle, write `actor_id` + `handle_id` on the projected
      row; generate capture violations *from* colluder workflow steps so harm,
-     probe, and offender attribution co-locate (closes N-5 layer gap).
+     probe, and offender attribution co-locate (closes ES-5 layer gap).
   2. **Goal-agent MVP (Phase 1+):** each `GoalPolicy` choice emits
      `(actor_id, action, handle_used)`; mechanism-derived labels include
      "harm step attributed to actor A via shadow handle" vs "correction landed
@@ -308,10 +308,10 @@ synchronized twin worlds.
 - [x] Unified outer eval rules (`outer_rules.py`)
 - [x] Scenario-blind embedded audit path — referent read + deploy gate artifact-driven
   (`embedded_audit.py`, `deploy_gate.py`, `test_embedded_audit_ontology.py`)
-- [x] Fix vacuous 0% false-pass (N-3): probe uptake read at lag 0 to match do()
+- [x] Fix vacuous 0% false-pass (ES-3): probe uptake read at lag 0 to match do()
   semantics; window scope collapses to pipeline below evaluable probe floor;
   shadow-routing demotes status; gate-rejected pass not a false pass
-- [x] **N-4 follow-up — trace integrity + audit projection.** VFS logs carry only
+- [x] **ES-4 follow-up — trace integrity + audit projection.** VFS logs carry only
   the audit-visible projection (`audit_projection.py`); truth rows stay host-side
   for the outer eval; hash-chained traces anchored in the attestation manifest
   (`trace_integrity.py`, AppD `handle.hardware_tag` analogue). Log-patching now
@@ -325,7 +325,7 @@ synchronized twin worlds.
   `None` on episodes without a hidden-coalition target (MB6/MB6b/MB7d only)
   instead of filler zeros; suite summaries average over defined episodes only
   and report per-bridge values (the old 3.8% headline was an aggregation
-  artifact — N-1 postscript).
+  artifact — ES-1 postscript).
 
 ## Worked-example convergence (AppD roadmap)
 
@@ -336,7 +336,7 @@ synchronized twin worlds.
   (`correction_schema.py`), derived from audit-visible series only, before
   hash-chaining. Auditor recomputes them (`verify_correction_annotations`);
   mismatch ⇒ `invalid_certificate`. Naive forgery is now caught even unsigned;
-  N-4's unsigned false pass needs the schema-aware `consistent_forge` strategy
+  ES-4's unsigned false pass needs the schema-aware `consistent_forge` strategy
   (`tests/contract/test_correction_schema.py`).
 - [x] **Roadmap 2 — handle registry.** `/etc/handles/registry.json` with owner,
   operation, latency bound, evasion story, anchor path; workflow rows carry
@@ -358,7 +358,7 @@ synchronized twin worlds.
 - [x] **Writer-compromise red team + cross-stream checks.** Strategies
   ``writer_compromise`` (sloppy emitter: forged correction, stale bearers,
   valid chain) and ``writer_compromise_coordinated`` (all streams aligned —
-  residual N-4). Auditor compares correction ``visible_action`` to bearer
+  residual ES-4). Auditor compares correction ``visible_action`` to bearer
   ``clinician_final_action`` at each step (`cross_stream.py`); mismatch ⇒
   ``invalid_certificate``. Catches ``consistent_forge`` unsigned too.
   Coordinated emitter still false-passes in-sim (outer oracle only).
@@ -384,7 +384,7 @@ See `results/NEGATIVE_RESULTS.md` for the honest record. Open follow-ups:
   commands. Negatives are useful for reproductions and for bounding manuscript
   claims; treat recovery as a real task, not cleanup.
 - [ ] **R-1 — red team the auditor with a *strong optimizer*, not a strawman.**
-  The current separation (N-2) only beats a *fixed* top-2 heuristic in a lab
+  The current separation (ES-2) only beats a *fixed* top-2 heuristic in a lab
   built to defeat that heuristic. A capable optimizer would adapt its
   attribution and likely erase the gap. Build a red-team where the adversary
   *and* the heuristic auditor are optimized against each other (e.g. adversary
@@ -393,7 +393,7 @@ See `results/NEGATIVE_RESULTS.md` for the honest record. Open follow-ups:
   cannot. Pair with `embedded_redteam_battery.*`.
 - [ ] **G-1 — access-tier boundary (adapted; prefer over confounded twin).**
   Full and fake UAD differ only in scoring over the **same observational log**
-  (N-2). The principled boundary is **information**, not cleverness. **Preferred
+  (ES-2). The principled boundary is **information**, not cleverness. **Preferred
   deliverable (v4):** degrade the **access model** (remove operation handles) until
   attribution is at chance regardless of optimizer; restore handles and show
   recall/CCI recover — a dose-response curve, not byte-identical twin worlds.

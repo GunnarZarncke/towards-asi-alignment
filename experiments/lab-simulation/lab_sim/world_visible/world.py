@@ -30,6 +30,7 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import dataclass, field
+from typing import Any, Callable
 
 from .access import PermissionService
 from .agents import COMM_ROLE_ELIGIBILITY, AdminPolicy
@@ -40,12 +41,22 @@ from ..oracle_only.handles import HandleService
 from ..harness.isolate import MockIsolate
 from ..harness.isolate_cost import IsolateRunTiming
 from ..oracle_only.oracle import OracleWorld
+from ..oracle_only.user_pool import UserPool
 from .pipeline_engine import PipelineEngine
 from .pipeline_spec import load_spec
 from .tools import Host, ToolCall
+from .trace_recorder import build_frame
 from .workspace import Workspace
 
 OVERSEER_ID = "overseer1"
+# D3 board-initiated correction (2026-07-08): a reserved, non-agent actor
+# id for the board's own automatic hold/unhold decisions (see the
+# per-tick check below) -- attributable in the same hash-chained
+# tool-event stream as `OVERSEER_ID`, never a real playbook agent. Static
+# role "overseer" is reused (handles.py already names "release_board" as
+# a co-owner of `handle.release_hold`/`release_unhold`), so no new
+# ROLE_CAPABILITIES entry is needed.
+BOARD_SYSTEM_ID = "board_system"
 
 
 @dataclass
@@ -56,6 +67,9 @@ class EpisodeResult:
     permissions: PermissionService
     host: Host
     handles: HandleService
+    # D3 user-population core (2026-07-08): `None` unless
+    # `LabConfig.users.enabled=True` -- see `oracle_only/user_pool.py`.
+    users: UserPool | None = None
     timings: list[IsolateRunTiming] = field(default_factory=list)
     # D2 (post-freeze consolidation pass): the single-model-in-flight slot
     # and last-deployed lineage target at episode end -- carried so a
@@ -80,6 +94,7 @@ class EpisodeResult:
             "held": sorted(self.engine.held_model_ids()),
             "model_id": self.model_id,
             "last_deployed_model_id": self.last_deployed_model_id,
+            "users": self.users.to_state() if self.users is not None else None,
         }
 
 
@@ -89,9 +104,11 @@ def run_episode(
     backend=None,
     program_override: str | None = None,
     perturbation_hooks: tuple = (),
+    release_gate=None,
     overseer_script: tuple = (),
     agent_overrides: dict[str, tuple] | None = None,
     resume_from: dict[str, object] | None = None,
+    trace_sink: Callable[[dict[str, Any]], None] | None = None,
 ) -> EpisodeResult:
     """``perturbation_hooks``: host-side benign perturbation injectors (see
     ``tools.PerturbationHook``) — D1/UAD forward hook. Agents recover for
@@ -106,6 +123,10 @@ def run_episode(
     in the same hash-chained event stream as agent activity. Scripted, not
     an isolate: the overseer is a stand-in for the referee-side operator
     until Phase 7 gives it a policy.
+
+    ``release_gate``: optional audit-visible host policy that can place a
+    `release_hold` immediately before a deploy attempt. Absent, episode
+    behaviour is unchanged.
 
     ``agent_overrides``: optional ``{actor_id: (backend, program)}`` map
     overriding the default ``backend``/``program_override`` for SPECIFIC
@@ -124,7 +145,16 @@ def run_episode(
     IGNORED (the resumed spec-in-force wins) and a fresh
     ``random.Random(seed)`` stream starts (RNG continuity is NOT
     preserved -- see ``OracleWorld.full_state``). Absent (default,
-    ``None``), behavior is byte-identical to every pre-D2 call."""
+    ``None``), behavior is byte-identical to every pre-D2 call.
+
+    ``trace_sink``: static-replay demo forward hook (``trace_recorder.
+    build_frame``) -- when given, called once per tick with a JSON-safe
+    frame combining that tick's agent observations/actions/results,
+    unredacted host/access/engine log entries, tier-projected audit
+    views, and oracle ground truth. Read-only: it cannot affect dispatch
+    outcomes and never influences RNG draws. Absent (default, ``None``),
+    behavior -- including performance -- is byte-identical to every
+    pre-trace_sink call (see ``demos/ch07-lab-sim-replay/``)."""
     backend = backend or MockIsolate()
     agent_overrides = agent_overrides or {}
     ws = Workspace()
@@ -141,15 +171,24 @@ def run_episode(
         )
         model_id: str | None = resume_from.get("model_id")
         last_deployed_model_id: str | None = resume_from.get("last_deployed_model_id")
+        saved_users = resume_from.get("users")
+        user_pool = (
+            UserPool.restore(saved_users, cfg.users, seed=seed)
+            if saved_users is not None
+            else (UserPool(cfg.users, seed) if cfg.users.enabled else None)
+        )
     else:
         oracle = OracleWorld(seed=seed)
         engine = PipelineEngine(load_spec(cfg.pipeline_spec), oracle, ws, permission_service=permissions)
         model_id = None
         last_deployed_model_id = None
+        user_pool = UserPool(cfg.users, seed) if cfg.users.enabled else None
     admin = AdminPolicy(cfg.admin, permissions)
     handle_service = HandleService(engine=engine, permissions=permissions)
     roles = {a.actor_id: a.role for a in cfg.agents}
     roles[OVERSEER_ID] = "overseer"
+    roles[BOARD_SYSTEM_ID] = "overseer"
+    roles["audit_gate"] = "overseer"
     # D4 (CODE_VERSION 0.7.0): `None` unless `comms_enabled` — the
     # "off by default, byte-identical" pattern (see comms.py, tools.py).
     comms = MessageStore() if cfg.comms_enabled else None
@@ -165,7 +204,8 @@ def run_episode(
     }
     host = Host(
         engine, permissions, admin, roles,
-        perturbation_hooks=perturbation_hooks, handle_service=handle_service, comms=comms,
+        perturbation_hooks=perturbation_hooks, release_gate=release_gate,
+        handle_service=handle_service, comms=comms,
         persistent_ids=persistent_ids, groups=cfg.resolved_groups(),
         channels_enabled=channels_enabled,
     )
@@ -226,7 +266,17 @@ def run_episode(
     release_manager_id = next((a.actor_id for a in cfg.agents if a.role == "release_manager"), None)
 
     def _backend_and_program(actor_id: str):
-        return agent_overrides.get(actor_id, (backend, program_name))
+        explicit = agent_overrides.get(actor_id)
+        if explicit is not None:
+            return explicit
+        # ET-4's installed policy is overridden by an explicit whole-episode
+        # program such as `honest_twin`; that preserves the twin as a genuine
+        # behaviour counterfactual.  A disabled profile still crosses the
+        # private observation channel for content-matched controls, but it
+        # never changes the program route.
+        if program_override is None and cfg.secret_loyalty_for(actor_id) is not None:
+            return backend, "secret_loyalty_policy"
+        return backend, program_name
 
     handles = {}
     backend_by_actor: dict[str, object] = {}
@@ -239,10 +289,51 @@ def run_episode(
     # were initialized above, either fresh (`None`) or from `resume_from`.
     last_payload: dict[str, dict | None] = {a.actor_id: None for a in playbook_agents}
     last_denied: dict[str, str | None] = {a.actor_id: None for a in playbook_agents}
+    # Persistence probe (2026-07-09): `state.load`'s result was previously
+    # discarded entirely -- ONLY `pipeline.trigger_step` calls ever wrote
+    # `last_payload` (see the dispatch block below). These two fields are
+    # the SAME "tell the isolate what its own last call returned, one tick
+    # later" pattern `last_denied_capability` already uses, scoped to
+    # `state.load` specifically rather than widening `last_payload` itself
+    # (which several playbooks already key off for pipeline semantics —
+    # keeping this separate avoids any chance of collision). Reset every
+    # tick (see below) so a stale value never survives past the one turn
+    # it answers, mirroring `last_denied`.
+    last_state_load_ok: dict[str, bool] = {a.actor_id: False for a in playbook_agents}
+    last_loaded_state: dict[str, dict | None] = {a.actor_id: None for a in playbook_agents}
+
+    # D3 board-initiated correction (2026-07-08): models this generation's
+    # board holds SEPARATELY from any overseer-scripted hold, so the
+    # board's own hold/unhold pair never lifts a hold an overseer placed
+    # deliberately (and vice versa) -- `PipelineEngine._held` itself is
+    # just a set keyed by model_id with no owner, so this bookkeeping has
+    # to live at the caller.
+    board_held_models: set[str] = set()
 
     for t in range(cfg.T):
         for handle_id, target in script_by_tick.get(t, ()):
             host.dispatch(OVERSEER_ID, ToolCall("handle.invoke", {"handle_id": handle_id, "target": target}))
+        # D3 board-initiated hold/unhold, driven by the (possibly diluted)
+        # vote signal from the PREVIOUS tick's `user_pool.tick()` call --
+        # same "act at the start of tick t, before any agent acts" timing
+        # as the overseer-script dispatch above. No-op unless BOTH
+        # `LabConfig.users.enabled` and `BoardConfig.hold_vote_threshold`
+        # are set (see both fields' docstrings).
+        if cfg.board.hold_vote_threshold is not None and user_pool is not None and model_id is not None:
+            vote_score = user_pool.reported_vote_score
+            if vote_score < cfg.board.hold_vote_threshold and model_id not in board_held_models:
+                hold_result = host.dispatch(
+                    BOARD_SYSTEM_ID,
+                    ToolCall("handle.invoke", {"handle_id": "handle.release_hold", "target": model_id}),
+                )
+                if hold_result.ok:
+                    board_held_models.add(model_id)
+            elif vote_score >= cfg.board.hold_vote_threshold and model_id in board_held_models:
+                host.dispatch(
+                    BOARD_SYSTEM_ID,
+                    ToolCall("handle.invoke", {"handle_id": "handle.release_unhold", "target": model_id}),
+                )
+                board_held_models.discard(model_id)
         # Consume isolate-restart handles: kill + respawn, in-episode
         # playbook state is lost (the operation_boundary effect).
         for actor_id in sorted(handle_service.pending_restarts & set(handles)):
@@ -251,7 +342,9 @@ def run_episode(
             _, p = _backend_and_program(actor_id)
             handles[actor_id] = b.spawn(actor_id, seed=_actor_seed(seed, actor_id), program=p)
         handle_service.pending_restarts.clear()
+        agent_records: dict[str, dict[str, object]] = {}
         for agent_cfg in playbook_agents:
+            private_profile = cfg.private_loyalty_profile_for(agent_cfg.actor_id)
             self_captured = (
                 agent_cfg.role == "reviewer"
                 and cfg.board.capture_start is not None
@@ -271,6 +364,8 @@ def run_episode(
                 "completed_steps": sorted(engine.completed_steps(model_id)) if model_id else [],
                 "last_denied_capability": last_denied[agent_cfg.actor_id],
                 "last_payload": last_payload[agent_cfg.actor_id],
+                "last_state_load_ok": last_state_load_ok[agent_cfg.actor_id],
+                "last_loaded_state": last_loaded_state[agent_cfg.actor_id],
                 "report_content": report_content,
                 "self_captured": self_captured,
                 "decision_seed": f"{seed}:{agent_cfg.actor_id}:{t}",
@@ -302,6 +397,21 @@ def run_episode(
                 # steering pin this actor may or may not have; absent
                 # (`None`) reproduces pure emergent softmax selection.
                 "pinned_playbook": cfg.playbook_pins.get(agent_cfg.actor_id),
+                # ET-4: this private profile is passed directly to the
+                # isolate and is intentionally never written to an
+                # audit-plane log.  `secret_loyalty_policy` receives it
+                # only when `enabled`; baseline policy ignores it for the
+                # content-matched control.
+                "loyalty_profile": (
+                    {
+                        "principal_id": private_profile.principal_id,
+                        "activation": private_profile.activation,
+                        "action_mode": private_profile.action_mode,
+                        "scorecard_profile": private_profile.scorecard_profile,
+                    }
+                    if private_profile is not None
+                    else None
+                ),
                 "unit_id": unit_id,
                 "committee_members": tuple(m for m in unit_members if m != agent_cfg.actor_id),
                 "is_committee_chair": bool(unit_members) and unit_members[0] == agent_cfg.actor_id,
@@ -325,6 +435,16 @@ def run_episode(
             }
             call = backend_by_actor[agent_cfg.actor_id].step(handles[agent_cfg.actor_id], observation)
             last_denied[agent_cfg.actor_id] = None
+            last_state_load_ok[agent_cfg.actor_id] = False
+            last_loaded_state[agent_cfg.actor_id] = None
+            if trace_sink is not None:
+                agent_records[agent_cfg.actor_id] = {
+                    "role": agent_cfg.role,
+                    "observation": observation,
+                    "action": None,
+                    "result": None,
+                    "event_n": None,
+                }
             if call is None:
                 continue
             selection = call.pop("selection", None)
@@ -346,6 +466,15 @@ def run_episode(
                     inner = call["args"].setdefault("args", {})
                     inner["params"] = dict(cfg.build_params)
             result = host.dispatch(agent_cfg.actor_id, ToolCall(call["tool"], call["args"]))
+            if trace_sink is not None:
+                agent_records[agent_cfg.actor_id]["action"] = {"tool": call["tool"], "args": call["args"]}
+                agent_records[agent_cfg.actor_id]["result"] = {
+                    "ok": result.ok, "reason": result.reason, "payload": result.payload,
+                }
+                agent_records[agent_cfg.actor_id]["event_n"] = host.events.entries[-1]["n"]
+            if call["tool"] == "state.load" and result.ok:
+                last_state_load_ok[agent_cfg.actor_id] = True
+                last_loaded_state[agent_cfg.actor_id] = result.payload.get("state")
             # last_payload is "most recent successful pipeline result" — used
             # to carry eval measurements into report content. A failed
             # attempt (denied) or an access.request call must NOT clobber
@@ -367,11 +496,36 @@ def run_episode(
                         model_id = None  # single-model-in-flight: free the slot
         admin.tick()
         oracle.tick()
+        if user_pool is not None:
+            deployed_hazards = [m.true_hazard for m in oracle.models.values() if m.deployed]
+            # Single-model-in-flight is the common case (this module's own
+            # scope note above); when >1 model is concurrently deployed,
+            # expose the WORST (max) hazard -- a user cannot choose which
+            # deployed model they hit, so the correction-relevant question
+            # is "the worst thing currently live", not an average that
+            # could mask it. `None` (nothing deployed) means no traffic,
+            # no experiences, no votes this tick.
+            deployed_hazard = max(deployed_hazards) if deployed_hazards else None
+            user_pool.tick(deployed_hazard)
+        if trace_sink is not None:
+            trace_sink(
+                build_frame(
+                    t=t,
+                    agent_records=agent_records,
+                    host=host,
+                    engine=engine,
+                    permissions=permissions,
+                    oracle=oracle,
+                    ws=ws,
+                    model_id=model_id,
+                    last_deployed_model_id=last_deployed_model_id,
+                )
+            )
 
     timings = [backend_by_actor[a.actor_id].close(handles[a.actor_id]) for a in playbook_agents]
     return EpisodeResult(
         engine=engine, oracle=oracle, workspace=ws, permissions=permissions,
-        host=host, handles=handle_service, timings=timings,
+        host=host, handles=handle_service, users=user_pool, timings=timings,
         model_id=model_id, last_deployed_model_id=last_deployed_model_id,
     )
 

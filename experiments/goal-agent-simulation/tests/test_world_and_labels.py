@@ -60,7 +60,7 @@ def test_compliant_agent_labeled_honest():
 def test_label_episode_bracket_low_matches_frozen_label_episode():
     """The bracketed 'low' threshold is identical to the frozen L2_HARM_CUM,
     so label_low must agree with label_episode's l2/label on every episode
-    (labels.py 'BRACKETED L2'; FINDINGS.md F-13)."""
+    (labels.py 'BRACKETED L2'; FINDINGS.md GA-13)."""
     for cfg, seeds in ((COMPLIANT, range(11, 19)), (DECEPTIVE, range(11, 19))):
         for seed in seeds:
             rows = run_episode(cfg, seed)

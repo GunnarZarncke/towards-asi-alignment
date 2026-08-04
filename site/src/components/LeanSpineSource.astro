@@ -1,5 +1,6 @@
 ---
 import { highlightLean } from "../lib/highlight-lean";
+import LinkIndicator from "./LinkIndicator.astro";
 
 interface SpineSource {
   kind: string;
@@ -52,15 +53,16 @@ if (spineSource.code) {
     <div class="lean-code-header">
       <h2>Lean spine source</h2>
       {spineSource.file && (
-        <a href={`${repoBase}/${spineSource.file}`} target="_blank" rel="noopener noreferrer">{spineSource.file}</a>
+        <a href={`${repoBase}/${spineSource.file}`} target="_blank" rel="noopener noreferrer">{spineSource.file}<LinkIndicator kind="github" /></a>
       )}
     </div>
     {spineSource.decls && spineSource.decls.length > 0 && (
       <p class="side-panel-meta">Declarations: {spineSource.decls.join(", ")}</p>
     )}
     <p class="lean-spine-note">
-      From the machine-checked spine in <code>formal/</code> (Mathlib + spine imports).
-      Not self-contained for Lean 4 Web — use the repo or a local <code>lake build</code>.
+      From the machine-checked spine in <code>formal/</code> (core modules are Mathlib-free;
+      <code>Field/Finite/</code> may import Mathlib). Not self-contained for Lean 4 Web —
+      use the repo or a local <code>lake build</code>.
     </p>
     <div class="lean-pre" set:html={highlighted} />
   </section>

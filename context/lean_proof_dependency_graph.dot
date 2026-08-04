@@ -21,13 +21,13 @@ digraph LeanProofDependencies {
   P08 [label="P08 Boundary violation blocks candidate\nBoundaryViolation ⇒ ¬BoundaryCandidate", fillcolor="#EAF3FF"];
   P09 [label="P09 Observational non-identifiability\nobs-equivalent models, different goal", fillcolor="#EAF3FF"];
   P09A [label="Access non-identifiability\naccess-equivalent, different goal", fillcolor="#EAF3FF"];
-  PCID [label="[NEW]\nCID incentives\nnot abstraction-invariant", fillcolor="#EAF3FF", color="#1F77B4", penwidth=2.2];
+  PCID [label="CID incentives\nnot abstraction-invariant", fillcolor="#EAF3FF"];
   P09K [label="K-equivalence limit\nsmoothed channel erases raw boundary", fillcolor="#EAF3FF"];
   P36 [label="P36 Handle-operation refinement\nhandle operation distinguishes models", fillcolor="#EAF3FF"];
   P36M [label="Smoothing margin\nΔ > 2δK + 2εest", fillcolor="#EAF3FF"];
 
   // Capability (ch11–14, 33, 36)
-  P10 [label="P10 B-IQ upper bound\nBIQ ≤ Csens + Cact", fillcolor="#EAF3FF"];
+  P10 [label="P10 BIQ upper bound\nBIQ ≤ Csens + Cact", fillcolor="#EAF3FF"];
   P11 [label="P11 Capacity monotonicity\nhigher IO ceiling ⇒ higher max BIQ", fillcolor="#EAF3FF"];
   P12 [label="P12 Coordination bottleneck\ncoordination can cap collective BIQ", fillcolor="#EAF3FF"];
   P13 [label="P13 Control outpaces correction\nRisk = Control − CCI", fillcolor="#EAF3FF"];
@@ -38,11 +38,11 @@ digraph LeanProofDependencies {
   // Bundles (ch15–23)
   P14 [label="P14 Bundle factorization\nsame bundle ⇒ same policy output", fillcolor="#EFFBEA"];
   P15 [label="P15 Same policy ≠ bundle geometry\ncounterexample", fillcolor="#EFFBEA"];
-  P16 [label="[NEW]\nP16 LHV sample window\nK<n<D separates classes", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
+  P16 [label="P16 LHV sample window\nK<n<D separates classes", fillcolor="#EFFBEA"];
   P17 [label="P17 Same labels ≠ bearer map\nontology-shift counterexample", fillcolor="#EFFBEA"];
   P18 [label="P18 Marginals ≠ tradeoffs\ntradeoff counterexample", fillcolor="#EFFBEA"];
   P19 [label="[SUBSUMED]\nP19 Scalar reward as k=1 bundle\nIRL embeds in bundle model", fillcolor="#EFFBEA", color="#2E7D32", penwidth=2.2];
-  FCIRL [label="[NEW]\nField.CIRL final nodes\nscalar_assistance_game_is_bundle_game_k1\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
+  FCIRL [label="Field.CIRL final nodes\nscalar_assistance_game_is_bundle_game_k1\ncirl_separation_profiles", fillcolor="#EFFBEA"];
   P20 [label="P20 Positive intentional gain\nΔL>0 ⇒ MDL prefers intentional model", fillcolor="#EFFBEA"];
   P21 [label="P21 Goal-transport gain\nΔL_transport>0 ⇒ prefer transport model", fillcolor="#EFFBEA"];
   P22a [label="P22a Full transport ⇒ semantic transport", fillcolor="#EFFBEA"];
@@ -53,25 +53,25 @@ digraph LeanProofDependencies {
   P23 [label="P23 No handle control, no correction\nno legitimate reaching handle ⇒ ¬Correction", fillcolor="#FFF0FB"];
   P24 [label="P24 Weakest handle capacity\npath capacity ≤ each link; CCI export", fillcolor="#FFF0FB"];
   FSHUT [label="[SUBSUMED]\nField.Shutdown final nodes\nshutdown_optimal_under_correction_preference\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
-  FINT [label="[NEW]\nField.Interruptibility final nodes\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FIMPACT [label="[NEW]\nField.Impact final nodes\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FQUANT [label="[NEW]\nField.Quantilization final nodes\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FINT [label="Field.Interruptibility final nodes\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB"];
+  FIMPACT [label="Field.Impact final nodes\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB"];
+  FQUANT [label="Field.Quantilization final nodes\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB"];
   P25 [label="P25 Obedience ≠ corrigibility\ncounterexample", fillcolor="#FFF0FB"];
-  FCORR [label="[NEW]\nField.Corrigibility final nodes\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FDEB [label="[NEW]\nField.Debate final nodes\ndebate_truth_is_correction_projection\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  P25A [label="[NEW]\nAmplification\n≠ correction contraction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FELK [label="[NEW]\nField.ELK final nodes\nelk_readout_is_correction_projection\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FCORR [label="Field.Corrigibility final nodes\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB"];
+  FDEB [label="Field.Debate final nodes\ndebate_value_tracks_truth\ndebate_judge_error_flips_outcome\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB"];
+  P25A [label="Amplification\n≠ correction contraction", fillcolor="#FFF0FB"];
+  FELK [label="Field.ELK final nodes\nelk_readout_is_correction_projection\nelk_separated_from_uptake", fillcolor="#FFF0FB"];
   P26 [label="P26 Preserves update without fixed point\ncounterexample", fillcolor="#FFF0FB"];
 
   // Successors (ch28–31)
   P27 [label="P27 Successor invariant chain\nP A₀ ∧ preserved ⇒ ∀ successors P", fillcolor="#F4EEFF"];
   P28 [label="P28 Missing invariant blocks successor safety\nmissing CCIPreserved ⇒ ¬SuccessorSafe", fillcolor="#F4EEFF"];
   P29 [label="P29 Self-control gap increases risk\nmore self-control, same visibility ⇒ higher gap", fillcolor="#F4EEFF"];
-  PFORGE [label="[NEW]\nforgeability_gap\nall-seven-green + Risk≤δ ⇏ TrueHarm≤δ", fillcolor="#F4EEFF", color="#1F77B4", penwidth=2.2];
+  PFORGE [label="forgeability_gap\nall-seven-green + Risk≤δ ⇏ TrueHarm≤δ", fillcolor="#F4EEFF"];
 
   // Adversarial / socio-technical (ch32–37)
   P31 [label="P31 Safe agent selected against\nunsafe agent has higher DeploymentMass", fillcolor="#FFF0EC"];
-  PAC [label="[NEW]\nInferential/UAD graph certificates\nUAD audit + P_meta + IC score", fillcolor="#FFF0EC", color="#1F77B4", penwidth=2.2];
+  PAC [label="Inferential/UAD graph certificates\nUAD audit + P_meta + IC score", fillcolor="#FFF0EC"];
   P33 [label="P33 No open edges, no large component\ncooperation graph lemma", fillcolor="#FFF0EC"];
   P34 [label="P34 Host-capacity aliasing\n|Signal|<|Attack| ⇒ no injective detector", fillcolor="#FFF0EC"];
   P37 [label="P37 Goal laundering\nstated goal = inferred goal counterexample", fillcolor="#FFF0EC"];
@@ -104,7 +104,7 @@ digraph LeanProofDependencies {
   MB7d [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB7d Inferential-UAD detector validity\naccess robust + detector adequacy ⇒ IC valid"];
   MB8 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB8 CEV/process convergence\nupdate operator well-behaved"];
   MB9 [shape=diamond, style="filled", fillcolor="#FFE6E6", color="#CC3333", label="MB9 Grounding certificate soundness\nconservative abstraction ⇒ GroundingViable"];
-  MB10 [shape=diamond, style="filled,dashed", fillcolor="#FFE6E6", color="#1F77B4", penwidth=2.2, label="[NEW] MB10 Conserved-property signature not forged\nSuccessorSafe + verifiable audit + Risk≤δ ⇒ TrueHarm≤δ"];
+  MB10 [shape=diamond, style="filled,dashed", fillcolor="#FFE6E6", color="#CC3333", label="MB10 Conserved-property signature not forged\nSuccessorSafe + verifiable audit + Risk≤δ ⇒ TrueHarm≤δ"];
 
   // Boundary chain
   P05 -> P06 [label="C-BND: blanket implies candidate"];
@@ -151,8 +151,8 @@ digraph LeanProofDependencies {
   P27 -> P28 [label="C-SUC: missing field blocks safety"];
   P28 -> P02 [label="C-LAYER: successor layer"];
   P29 -> P13 [label="C-RISK: self-control gap"];
-  P27 -> PFORGE [label="C-FORGE: motivates verifiability gate", color="#1F77B4"];
-  PFORGE -> MB10 [label="closes gap", style=dashed, color="#1F77B4"];
+  P27 -> PFORGE [label="C-FORGE: motivates verifiability gate", color="#CC3333"];
+  PFORGE -> MB10 [label="closes gap", style=dashed, color="#CC3333"];
 
   // Adversarial measurement
   P09 -> P09A [label="C-ACCESS: weaker observational id"];
@@ -198,8 +198,8 @@ digraph LeanProofDependencies {
   P30 -> P30T [label="C-CERT: bridge-composed top theorem"];
   MB8 -> P02 [label="C-LAYER: correction-process bridge", style=dashed, color="#CC3333"];
   MB9 -> P02 [label="C-LAYER: grounding viability layer", style=dashed, color="#CC3333"];
-  P27 -> MB10 [label="successor-safe step", style=dashed, color="#1F77B4"];
-  MB10 -> P30 [label="true-harm bound alongside Risk ≤ δ (not part of standardBridges)", style=dashed, color="#1F77B4"];
+  P27 -> MB10 [label="successor-safe step", style=dashed, color="#CC3333"];
+  MB10 -> P30 [label="true-harm bound alongside Risk ≤ δ (not part of standardBridges)", style=dashed, color="#CC3333"];
 
   // Bridge gaps into structure
   MB1 -> P05 [label="missing C-UAD-SOUND", style=dashed, color="#CC3333"];

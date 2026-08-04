@@ -1,0 +1,31 @@
+# ET-3 frozen capability-schedule skeleton (AI 2027 takeoff speedups).
+# Adapter maps opaque stress cells — not milestone names — to lab-sim knobs.
+et3_protocol_version: et3-0.1.0
+source: ai2027_takeoff
+driver_commit_pin: external/ai2027/PIN.txt
+
+milestones:
+  SC: 5
+  SAR: 25
+  SIAR: 250
+  ASI: 2000
+
+cells:
+  baseline:
+    ai2027_cue: pre-SC / human-paced
+    d3_selection_strength: 1.0
+    d3_episode_t: 100
+    phase6_engineer_task_min: 0.0
+    phase6_engineer_compliance_max: 1.0
+  sc_x5:
+    ai2027_cue: SC speedup 5x
+    d3_selection_strength: 5.0
+    d3_episode_t: 20
+    phase6_engineer_task_min: 0.35
+    phase6_engineer_compliance_max: 0.30
+  sar_x25:
+    ai2027_cue: SAR speedup 25x
+    d3_selection_strength: 25.0
+    d3_episode_t: 4
+    phase6_engineer_task_min: 0.45
+    phase6_engineer_compliance_max: 0.20

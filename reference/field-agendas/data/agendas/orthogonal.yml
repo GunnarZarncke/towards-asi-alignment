@@ -1,0 +1,44 @@
+slug: orthogonal
+title: Orthogonal
+type: Research org
+carrier: Orthogonal (Tamsin Leake)
+overview: >-
+  Orthogonal is an agent-foundations research community advancing formal alignment work
+  through Discord and papers. It asks whether community-organized research can discharge
+  the same formal walls as established agent-foundations lineages—[embedded
+  agency](/cards/mb1-boundary-estimator-soundness/),
+  [corrigibility](/cards/mb4-correction-legitimacy/), and related obstructions. Active
+  work engages [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and
+  [Corrigibility](/cards/mb4-correction-legitimacy/) as typed targets.
+primaryArtifact: >-
+  An agent-foundations research community (Discord plus papers) advancing formal alignment
+  work.
+signatureVocabulary: >-
+  Key terms include [agent foundations](https://intelligence.org/), formal alignment, and
+  embedded agents.
+statedIntent: >-
+  Advance formal agent-foundations alignment research.
+primaryCrux: >-
+  Can a community-organized research program discharge the same formal walls as MIRI and
+  CHAI—[embedded agency](/cards/mb1-boundary-estimator-soundness/),
+  [corrigibility](/cards/mb4-correction-legitimacy/), and related obstructions?
+bookBridges:
+  - MB1
+  - MB4
+contributes: >-
+  An active agent-foundations research community working on [Embedded
+  Agency](/cards/mb1-boundary-estimator-soundness/) and
+  [Corrigibility](/cards/mb4-correction-legitimacy/).
+bookSeparates: >-
+  A typed bridge stack and measurement program distinct from narrative community alignment
+  talk.
+manuscriptHooks:
+  - sparse
+links:
+  - label: "Orthogonal"
+    url: https://orxl.org/
+  - label: "Demski & Garrabrant 2019 \u2014 Embedded Agency"
+    url: https://arxiv.org/abs/1902.09469
+  - label: "Leake & Persson 2023 \u2014 QACI"
+    url: >-
+      https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal

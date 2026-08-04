@@ -7,7 +7,7 @@ never modifies ``detectors.py`` or ``severity.py``, same discipline as
 ``uad.py``/``collusion.py``/``playbook_claim.py``.
 
 Why this module exists, not a deep-tier memo-content scanner (see
-FINDINGS.md G-17 for the full write-up): the covert ``handoff_memo``/
+FINDINGS.md LS-17 for the full write-up): the covert ``handoff_memo``/
 ``confidence: high`` signal (``programs.py``,
 ``ecology.covert_file_handoff_config``) creates NO distinguishing full- or
 even deep-tier COORDINATION fingerprint of its own -- ``eng_honest_handoff``

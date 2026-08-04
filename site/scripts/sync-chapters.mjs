@@ -6,6 +6,7 @@ import {
   convertLatexDocument,
   expandInputs,
   extractChapterMeta,
+  loadIllustrationAlts,
   stripComments
 } from "./lib/tex-convert.mjs";
 import { buildReferencesJson, collectCiteKeys, collectLabelRefs, buildBibIndex, buildBibAliasMap, canonicalCiteKey } from "./lib/bib-index.mjs";
@@ -21,7 +22,7 @@ const FRONTMATTER_FILES = [
   "frontmatter/acknowledgements.tex",
   "frontmatter/preface.tex",
   "frontmatter/introduction.tex",
-  "frontmatter/roadmap.tex",
+  "frontmatter/current-status.tex",
   "frontmatter/executive-overview.tex"
 ];
 
@@ -30,7 +31,8 @@ const APPENDIX_FILES = [
   { id: "appC", file: "appendices/appC-institutional-translation.tex", order: 101 },
   { id: "appM", file: "appendices/appM-institutional-histories.tex", order: 102 },
   { id: "appD", file: "appendices/appD-worked-example.tex", order: 103 },
-  { id: "appF", file: "appendices/appF-research-program.tex", order: 104 }
+  { id: "appF", file: "appendices/appF-research-program.tex", order: 104 },
+  { id: "appN", file: "appendices/appN-experimental-evidence.tex", order: 105 }
 ];
 
 const PART_RANGES = [
@@ -163,7 +165,7 @@ async function main() {
     "appendices/appI-value-bundle-inference.tex",
     "appendices/appJ-correction-channel-audit.tex",
     "appendices/appK-safety-case-template.tex",
-    "appendices/appL-assumptions.tex"
+    "appendices/appN-experimental-evidence.tex"
   ];
 
   for (const rel of labelScanPaths) {
@@ -187,6 +189,7 @@ async function main() {
   const bibIndex = new Map(buildReferencesJson(repoRoot).entries.map((entry) => [entry.key, entry]));
   const aliasMap = buildBibAliasMap(buildBibIndex(repoRoot));
   const cardIndex = buildCardIndex(path.join(siteRoot, "src", "content", "cards"));
+  const illustrationAlts = loadIllustrationAlts(repoRoot);
 
   const outDir = path.join(siteRoot, "src", "content", "book");
   await rm(outDir, { recursive: true, force: true });
@@ -199,6 +202,7 @@ async function main() {
       labelIndex,
       bibIndex,
       cardIndex,
+      illustrationAlts,
       errors,
       footnoteCount: 0
     };

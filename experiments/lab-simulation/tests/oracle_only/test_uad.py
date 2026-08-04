@@ -135,7 +135,7 @@ def test_uad_recovers_file_channel_committee_already_at_full_tier():
     event (never content-elided at full tier — `events.
     ACCESS_LOG_FULL_EXTRA`), so the coalition is recoverable from
     full-tier access-log metadata alone, with no need to ever read what a
-    vote memo actually SAID. Recorded as G-9's third tier-sufficiency
+    vote memo actually SAID. Recorded as LS-9's third tier-sufficiency
     data point (PLAN.md/FINDINGS.md)."""
     cfg = committee_config(n_reviewers=2, T=250, channel="file")
     result = run_episode(cfg, seed=3, backend=MockIsolate())

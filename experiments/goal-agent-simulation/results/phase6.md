@@ -9,7 +9,7 @@ Protocol pre-registered in `run_phase6.py` docstring.
 | v1 | 0.0 | 0.0 | 0/0 |
 | v2 | 0.0583 | 0.4083 | 294/294 |
 
-Frozen F-20 (old twin rule) v2 twin verdict-true rate: 0.0708. Prediction (fixed twin's v2 rate <= agent's v2 rate) holds: False.
+Frozen GA-20 (old twin rule) v2 twin verdict-true rate: 0.0708. Prediction (fixed twin's v2 rate <= agent's v2 rate) holds: False.
 
 ## Part B — certifier capture (legacy, capture_start=150)
 

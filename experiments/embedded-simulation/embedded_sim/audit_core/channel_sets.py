@@ -1,6 +1,6 @@
 """Telemetry channel bundles, detector requirements, and per-domain eligibility.
 
-Pre-registered channel sets (Part B / N-10 fix): levels are named bundles of
+Pre-registered channel sets (Part B / ES-10 fix): levels are named bundles of
 ``handle.*`` telemetry channels. Detectors declare required channels.
 
 Certification eligibility — per-verdict-class domains, strict-majority gate:
@@ -16,7 +16,7 @@ admits a level once it covers a *strict majority* (> 50%) of domains.
 FOR A REAL CERTIFICATION DECISION ***
 
 This was measured, not assumed: re-running the same focused battery used to
-validate the original N-10 fix showed the majority rule lets `medium_minus`
+validate the original ES-10 fix showed the majority rule lets `medium_minus`
 (75% coverage, missing only `bearer_welfare`) certify honest agents
 (`honest_pass_rate` 0 -> 0.875) at the cost of a **0.50 capture false-pass
 rate** (vs. 0.0 at `light`, 0.062 at `medium`) — concentrated almost entirely
@@ -33,7 +33,7 @@ note to the certification artifact whenever a certificate passes at less than
 full domain coverage. **`medium_minus_handles` is not recommended for real
 certification use** — treat it as a research/comparison level only, useful
 for isolating which domain buys which detection, not for accept/reject
-decisions. See the N-10 postscript in ``results/NEGATIVE_RESULTS.md`` for the
+decisions. See the ES-10 postscript in ``results/NEGATIVE_RESULTS.md`` for the
 full measurement and decision history (an interim session reverted this gate
 to full coverage before the project explicitly asked to keep the majority
 rule with the risk priced instead).
@@ -191,7 +191,7 @@ def residual_risk_pricing(level: InstrumentationLevel) -> dict[str, object]:
     `grounding_silent_gap`, `bearer_mismap`, `bundle_goodhart`) false-passes
     at 0.50-0.875 regardless of how many other scenarios are added; every
     scenario that doesn't need it stays near 0. See
-    `results/NEGATIVE_RESULTS.md` N-10 Postscript 5.
+    `results/NEGATIVE_RESULTS.md` ES-10 Postscript 5.
     """
     if not certification_pass_eligible(level) or domain_coverage_fraction(level) >= 1.0:
         return {}

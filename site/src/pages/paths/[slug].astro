@@ -3,6 +3,8 @@ import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import { getCollection } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
+import ConceptCardLink from "../../components/ConceptCardLink.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import { badgeStatusHref, badgeTypeHref } from "../../lib/badges";
 import {
   bookHref,
@@ -62,6 +64,7 @@ const resolveStep = (step: ReadingPathStep) => {
       if (!card) return null;
       return {
         href: cardHref(base, card.id),
+        cardSlug: card.id,
         title: card.data.title,
         summary: step.note ?? card.data.summary,
         badges: [
@@ -88,14 +91,15 @@ const resolveStep = (step: ReadingPathStep) => {
         href: withBase(demo.sitePath),
         title: demo.title,
         summary: step.note ?? demo.summary,
-        badges
+        badges,
+        newTab: true
       };
     }
     case "experiment": {
       const line = experimentsIndex.lines.find((entry) => entry.id === step.ref);
       if (!line) return null;
       return {
-        href: withBase(`/experiments/#${line.id}`),
+        href: cardHref(base, `experiments/${line.id}`),
         title: line.title,
         summary: step.note ?? line.role.trim(),
         badges: [
@@ -180,15 +184,21 @@ const resolvedSteps = path.steps
         <a
           class="button primary"
           href={resolveSpotlightTarget(path.featuredSpotlight, spotlightContext)}
+          target={path.featuredSpotlight.kind === "demo" ? "_blank" : undefined}
+          rel={path.featuredSpotlight.kind === "demo" ? "noopener noreferrer" : undefined}
         >
           {defaultPrimaryLabel(path.featuredSpotlight, spotlightContext)}
+          {path.featuredSpotlight.kind === "demo" && <LinkIndicator kind="newtab" />}
         </a>
         {path.featuredSpotlight.secondary && (
           <a
             class="button"
             href={resolveSpotlightTarget(path.featuredSpotlight.secondary, spotlightContext)}
+            target={path.featuredSpotlight.secondary.kind === "demo" ? "_blank" : undefined}
+            rel={path.featuredSpotlight.secondary.kind === "demo" ? "noopener noreferrer" : undefined}
           >
             {path.featuredSpotlight.secondary.label}
+            {path.featuredSpotlight.secondary.kind === "demo" && <LinkIndicator kind="newtab" />}
           </a>
         )}
       </p>
@@ -211,7 +221,26 @@ const resolvedSteps = path.steps
               <Badge label={badge.label} variant={badge.variant} href={badge.href} />
             ))}
           </div>
-          <h3><a href={resolved.href}>{resolved.title}</a></h3>
+          <h3>
+            {"cardSlug" in resolved && resolved.cardSlug ? (
+              <ConceptCardLink
+                href={resolved.href}
+                slug={resolved.cardSlug}
+                logoSize={40}
+              >
+                {resolved.title}
+              </ConceptCardLink>
+            ) : (
+              <a
+                href={resolved.href}
+                target={resolved.newTab ? "_blank" : undefined}
+                rel={resolved.newTab ? "noopener noreferrer" : undefined}
+              >
+                {resolved.title}
+                {resolved.newTab && <LinkIndicator kind="newtab" />}
+              </a>
+            )}
+          </h3>
           <p>{resolved.summary}</p>
         </li>
       ))}

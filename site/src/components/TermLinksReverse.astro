@@ -1,0 +1,25 @@
+---
+import termLinksReverse from "../data/term-links-reverse.json";
+
+interface Props {
+  url: string;
+}
+
+const { url } = Astro.props;
+
+function normalizeUrl(path: string) {
+  if (path.startsWith("http")) return path;
+  const pathPart = path.startsWith("/") ? path : `/${path}`;
+  return pathPart.endsWith("/") ? pathPart : `${pathPart}/`;
+}
+
+const key = normalizeUrl(url);
+const entry = termLinksReverse[key as keyof typeof termLinksReverse];
+---
+
+{entry && entry.phrases.length > 0 && (
+  <section class="term-links-reverse">
+    <h3>Linked from field agendas as</h3>
+    <p class="side-panel-meta">{entry.phrases.slice(0, 8).join(" · ")}</p>
+  </section>
+)}

@@ -102,13 +102,14 @@ export function buildSpineSourceIndex(formalRoot, aliasPath) {
   for (const file of files) {
     const source = readFileSync(join(formalRoot, file), "utf8");
     fileCache.set(file, source);
-    for (const line of source.split("\n")) {
-      const match = line.match(DECL_START);
+    const lines = source.split("\n");
+    for (let i = 0; i < lines.length; i++) {
+      const match = lines[i].match(DECL_START);
       if (!match) continue;
       const kind = match[1].replace(/\s+/g, " ");
       const name = match[2];
       if (!declIndex.has(name)) {
-        declIndex.set(name, { file, kind });
+        declIndex.set(name, { file, kind, startLine: i + 1 });
       }
     }
   }
@@ -122,7 +123,7 @@ export function buildSpineSourceIndex(formalRoot, aliasPath) {
     return {
       name: declName,
       kind: meta.kind,
-      file: `formal/${meta.file}`,
+      file: `formal/AlignmentProofSpine/${meta.file}`,
       code
     };
   }
@@ -136,7 +137,7 @@ export function buildSpineSourceIndex(formalRoot, aliasPath) {
       return { kind: "label-only" };
     }
     if (alias?.kind === "module") {
-      const file = `formal/${alias.file}`;
+      const file = `formal/AlignmentProofSpine/${alias.file}`;
       const source = readFileSync(join(formalRoot, alias.file), "utf8");
       const header = source.split("\n").slice(0, 40).join("\n");
       return { kind: "module", file, code: header.trimEnd() };
@@ -154,11 +155,40 @@ export function buildSpineSourceIndex(formalRoot, aliasPath) {
     };
   }
 
-  return { resolveNodeSource, declIndex };
+  return { resolveNodeSource, declIndex, repoDeclIndex: buildRepoDeclIndex(declIndex) };
+}
+
+const REPO_BLOB_BASE = "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main";
+
+/** Serializable decl → GitHub URL map for site cards and check pages. */
+export function buildRepoDeclIndex(declIndex) {
+  const out = {};
+  for (const [name, meta] of declIndex) {
+    const file = `formal/AlignmentProofSpine/${meta.file}`;
+    out[name] = {
+      kind: meta.kind,
+      file,
+      githubUrl: meta.startLine ? `${REPO_BLOB_BASE}/${file}#L${meta.startLine}` : `${REPO_BLOB_BASE}/${file}`
+    };
+  }
+  return out;
+}
+
+export function enrichDeclIndexWithGraphNodes(declIndexJson, nodes) {
+  for (const node of Object.values(nodes)) {
+    const decls = node.spineSource?.decls;
+    if (!decls) continue;
+    for (const declName of decls) {
+      if (declIndexJson[declName]) {
+        declIndexJson[declName].graphNodeId = node.id;
+      }
+    }
+  }
+  return declIndexJson;
 }
 
 export function attachSpineSources(nodes, graphs, formalRoot, aliasPath) {
-  const { resolveNodeSource } = buildSpineSourceIndex(formalRoot, aliasPath);
+  const { resolveNodeSource, declIndex, repoDeclIndex } = buildSpineSourceIndex(formalRoot, aliasPath);
   const labelById = new Map();
   for (const graph of Object.values(graphs)) {
     for (const node of graph.nodes) {
@@ -170,4 +200,7 @@ export function attachSpineSources(nodes, graphs, formalRoot, aliasPath) {
     const spineSource = resolveNodeSource(id, labelById.get(id) || node.label || id);
     if (spineSource) node.spineSource = spineSource;
   }
+
+  enrichDeclIndexWithGraphNodes(repoDeclIndex, nodes);
+  return repoDeclIndex;
 }

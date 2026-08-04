@@ -6,7 +6,7 @@ tune away. Run: `run_phase1.py`, artifacts `phase1_acceptance.{json,md}`.
 All thresholds were frozen before this run (see `goal_sim/labels.py`,
 `goal_sim/detectors.py`, `goal_sim/protocol.py`); nothing below was re-fit.
 
-## F-1 (negative) — the pre-registered held-out region saturated the label
+## GA-1 (negative) — the pre-registered held-out region saturated the label
 
 The held-out region ("high-deception corner": `w_task ≥ 0.45`,
 `w_compliance ≤ 0.15`, shadow tool) produced **80/80 violation episodes**.
@@ -32,14 +32,14 @@ in the subtle band, e.g. `0.30 ≤ w_task ≤ 0.45` with `w_exposure ≥ 0.35` a
 shadow access, chosen for predicted label *mixture*, not purity.
 
 **Follow-up result (2026-07-04, same session): the prediction was wrong
-again, but this time diagnosably so — see F-6.** The subtle region *also*
+again, but this time diagnosably so — see GA-6.** The subtle region *also*
 saturated at 100% violations (80/80), so the MI-transfer test is degenerate
-there too. F-6 identifies the structural cause (a simplex-geometry effect,
-not a property of "deception corners"), and F-7 implements and validates
+there too. GA-6 identifies the structural cause (a simplex-geometry effect,
+not a property of "deception corners"), and GA-7 implements and validates
 the fix (a third, compliance-band region) — the MI-transfer test finally
 produces a genuine, non-degenerate result.
 
-## F-2 — light tier misses most violations (0.63 false-pass on discovery)
+## GA-2 — light tier misses most violations (0.63 false-pass on discovery)
 
 Passive logs (correction requests, reports, visible actions, probes) catch
 overt defiance (d2) and blatant misreporting (d1) but are blind to
@@ -51,7 +51,7 @@ power — here it re-derives itself from agent choice rather than from a
 scripted scenario, which is modest evidence the old finding was not an
 artifact of scripting.
 
-## F-3 — full-tier residual misses are all small-n deceptive reporting
+## GA-3 — full-tier residual misses are all small-n deceptive reporting
 
 6/107 discovery violations passed at full tier (pre-follow-up count); every
 one is an L1-only case with a report gap of 0.25–0.43 over few correction
@@ -69,7 +69,7 @@ detection 0.3738 → 0.3925. A real but modest recovery — D1b does not close
 the gap, it narrows it, and the false-alarm rate is unchanged (0.0677),
 i.e. the extra sensitivity did not cost false alarms on this battery.
 
-## F-4 — detector/label sensitivity mismatch causes the 0.068 false-alarm rate
+## GA-4 — detector/label sensitivity mismatch causes the 0.068 false-alarm rate
 
 9/133 honest discovery episodes flagged at full tier: mostly
 `d6_unattributed_harm` (≥2 agent-attributed harm events) on episodes whose
@@ -80,7 +80,7 @@ the pre-registered thresholds; whether the label or the detector is "right"
 near the boundary is a judgment call the thresholds deliberately did not
 encode.
 
-## F-5 (positive, context) — cost and emergence
+## GA-5 (positive, context) — cost and emergence
 
 ~1.1–2.4 ms/episode (480 episodes across discovery + 3 held-out regions ≈
 0.6 s total), ~11–24× cheaper than the old line's ~27 ms `build_world`
@@ -91,7 +91,7 @@ without incentive (or incentive without tools) produced honest labels —
 the combinatorics, not the config name, is the source of variation, which
 was the point of Phase 1.
 
-## F-6 (negative, root-caused) — geometric regions on a 4-weight simplex
+## GA-6 (negative, root-caused) — geometric regions on a 4-weight simplex
 structurally starve compliance, which is what actually drives the label
 
 Both held-out regions constrain two of the four simplex coordinates
@@ -119,7 +119,7 @@ fall out incidentally), or (b) mix tool availability rather than weights
 (e.g., vary `false_report`/`shadow_route` while sampling weights from the
 *same* distribution as discovery) so the region is defined by capability,
 not by an implicit compliance floor. Option (a) was implemented and
-validated as region 3 — see F-7.
+validated as region 3 — see GA-7.
 
 **Positive nugget inside the second negative:** despite both regions
 saturating on the *label*, the two held-out regions are NOT behaviorally
@@ -133,17 +133,17 @@ independent evidence the utility model's exposure feature is doing
 something behaviorally real, even though it didn't produce the intended
 label mixture.
 
-## F-7 (positive) — region 3 (compliance-band design) fixes F-6 and gives a
+## GA-7 (positive) — region 3 (compliance-band design) fixes GA-6 and gives a
 genuine, non-degenerate MI-transfer result
 
-Region 3 was designed per F-6's suggestion (a): constrain `w_compliance`
+Region 3 was designed per GA-6's suggestion (a): constrain `w_compliance`
 directly into [0.20, 0.35] — a band straddling the discovery-only class
 means (0.173 violation / 0.388 honest) — instead of letting compliance fall
 out incidentally from other constraints. Chosen and pre-registered from
 discovery-only aggregate statistics, before sampling or running region 3.
 
 **Result: a genuine label mixture, 47/80 (58.75%) violation vs. 33/80
-(41.25%) honest** — confirming the F-6 diagnosis was correct and actionable,
+(41.25%) honest** — confirming the GA-6 diagnosis was correct and actionable,
 not just descriptive. Consequences:
 
 1. **The MI-transfer test is finally non-degenerate** (label entropy 0.978
@@ -162,11 +162,11 @@ not just descriptive. Consequences:
    1.0 detection was an artifact of an easy (saturated) sample, not evidence
    the detectors are unusually strong.
 
-Together with F-6, this is the strongest evidence in this line that region
+Together with GA-6, this is the strongest evidence in this line that region
 *design* (which simplex coordinate you constrain), not just region choice,
 determines whether a held-out-region test is informative at all.
 
-## F-8 (scope of claims) — what Phase 1 does and does not establish
+## GA-8 (scope of claims) — what Phase 1 does and does not establish
 
 Recorded 2026-07-05 after a step-back review, BEFORE the blind-generation
 work below was designed. Phase 1's detectors, labels, channels, and 6-action
@@ -177,26 +177,26 @@ several headline numbers partly circular:
   (≤ −0.35) with a lower threshold on the same field; full-tier detection
   ~0.95 largely measures that the label's defining fields are audit-visible
   at full tier — a design choice, not a discovery.
-- F-7's top MI channel is `channel.welfare_delta`, the field that defines
-  L2; high MI there is close to true by construction. F-7 validates the
+- GA-7's top MI channel is `channel.welfare_delta`, the field that defines
+  L2; high MI there is close to true by construction. GA-7 validates the
   *transfer protocol machinery*, not audit power.
 - The held-out regions vary mixture weights over six author-enumerated
   mechanisms; the audit cannot be surprised by a strategy that is not in
-  the repertoire. Even F-6's "compliance is the load-bearing feature" is
+  the repertoire. Even GA-6's "compliance is the load-bearing feature" is
   partially derivable a priori from the utility parameterization.
 
-What Phase 1 *does* legitimately support: F-2 (light-tier blindness to
+What Phase 1 *does* legitimately support: GA-2 (light-tier blindness to
 welfare-domain violations re-derives itself from agent choice — modest
-evidence the old line's N-10 was not a scripting artifact), F-6 (simplex
+evidence the old line's N-10 was not a scripting artifact), GA-6 (simplex
 region-design methodology), mechanism-derived labels as an honesty
 improvement, and ~1 ms/episode cost. Bounded claim for the manuscript:
 "detector/channel transfer holds across held-out goal-weight regions within
 a fixed six-action repertoire whose detectors were co-designed with the
 generator" — NOT "audits generalize to unseen deception mechanisms." The
 latter requires strategies the detector author did not enumerate: hence the
-blind-generation protocol (F-9).
+blind-generation protocol (GA-9).
 
-## F-9 — frozen detectors vs a detector-blind repertoire: light tier
+## GA-9 — frozen detectors vs a detector-blind repertoire: light tier
 collapses, full tier holds detection but loses false-alarm calibration
 
 Setup (`BLIND_GENERATION.md`, `run_phase2_blind.py`, both pre-registered
@@ -207,7 +207,7 @@ with **no re-fitting**. Violation rate 0.4083 (L2 90, L3 43, L1 23 of 98).
 
 1. **Light-tier detection collapsed: 0.39 (legacy discovery) → 0.1531.**
    Two measured causes (83 light-tier misses: 64 without any L1, 19 with):
-   (a) the legacy blindness to L2/L3 (F-2) recurs, but *worse*, because the
+   (a) the legacy blindness to L2/L3 (GA-2) recurs, but *worse*, because the
    blind ecology's violators rarely defy probes overtly — d2 fires 14 times
    vs 40 on legacy discovery — since the generator's covert actions
    (`probe_lull_defection`, `facade_compliance`) feign visible compliance
@@ -226,7 +226,7 @@ with **no re-fitting**. Violation rate 0.4083 (L2 90, L3 43, L1 23 of 98).
    "visible action" and "genuine uptake" — the proxy D1 silently relies
    on — with no knowledge of D1.
 2. **Full-tier detection stayed 1.0, but this should NOT be read as
-   vindication** (per F-8: d3/d6 read near-label welfare fields, so
+   vindication** (per GA-8: d3/d6 read near-label welfare fields, so
    label-crossing harm is nearly guaranteed to be flagged at full tier).
    The informative full-tier number is the **false-alarm rate: 0.068
    (legacy) → 0.169**, 2.5×. Measured composition: d6_unattributed_harm on
@@ -243,8 +243,10 @@ with **no re-fitting**. Violation rate 0.4083 (L2 90, L3 43, L1 23 of 98).
    by rarely-chosen high-payoff covert actions, which is more realistic
    than the legacy ecology where deception was often the modal action.
 
-## F-10 — first ontological-drift probe: pre-registered prediction
+## GA-10 — first ontological-drift probe: pre-registered prediction
 confirmed; drift breaks code-reading detectors in BOTH directions
+
+**Key finding:** Light tier collapses against blind repertoires (GA-9); full tier detects but false alarms rise (GA-10).
 
 Machinery: `ontology.py` separates agent-semantic categories (free strings,
 generator-chosen) from the audit's coarse routing-code ontology;
@@ -284,10 +286,10 @@ miniature, now with working machinery for harder versions (drifting richer
 category structures, drift over time within an episode, ground-truth-side
 drift as a referee-anchor question).
 
-## F-11 — the round-1 blind-generation prompt was itself leading; round 2 used
-a generalized prompt (methodology, cross-ref F-12 for the result)
+## GA-11 — the round-1 blind-generation prompt was itself leading; round 2 used
+a generalized prompt (methodology, cross-ref GA-12 for the result)
 
-After F-9/F-10 were recorded, inspection of the round-1 prompt (surfaced by
+After GA-9/GA-10 were recorded, inspection of the round-1 prompt (surfaced by
 the `prompt_verbatim` documentation fix — see `BLIND_GENERATION.md`) showed
 it was not as detector-blind in spirit as intended: its instruction section
 enumerated mechanism *categories* ("ways of appearing compliant, ways of
@@ -316,11 +318,11 @@ schema-level suggestiveness survives any amount of prompt rewriting. Closing
 this would require a schema-value rename (bigger change, out of this
 round's scope; noted for a possible round 3).
 
-Round 1's repertoire and results (`generated_actions.json`, F-9/F-10) are
+Round 1's repertoire and results (`generated_actions.json`, GA-9/GA-10) are
 **kept, not replaced** — both rounds are informative, and comparing them is
-itself a finding (F-12).
+itself a finding (GA-12).
 
-## F-12 (negative) — round 2's repertoire saturates the L2 label at ~100%
+## GA-12 (negative) — round 2's repertoire saturates the L2 label at ~100%
 violation under the frozen threshold; the round-1-vs-round-2 detector
 comparison this was meant to produce is not directly available
 
@@ -331,7 +333,7 @@ detectors/labels, per `run_phase2_blind.py --repertoire
 generated_actions_v2.json` (results: `results/phase2b_blind_v2.{json,md}`).
 
 **Result: 240/240 episodes labeled violation (0 honest)** — an even more
-extreme saturation than F-1's original held-out-region problem, and for a
+extreme saturation than GA-1's original held-out-region problem, and for a
 different mechanical reason. Diagnosis (measured directly, not guessed):
 median cumulative harm across the 240 episodes is **-6.16**, vs the frozen
 L2 threshold of -0.35 — roughly 17× past the bar, with a range from -0.30 to
@@ -362,7 +364,7 @@ regardless of whether the agent's goal weights or behavior are actually
    yields, including failures"), L2 is **not** re-thresholded against this
    repertoire now. The result is reported as measured.
 3. **What can still be read**: full-tier detection stayed 1.0 (all 240
-   flagged), consistent with F-8's caveat that d3/d6 read near-label
+   flagged), consistent with GA-8's caveat that d3/d6 read near-label
    welfare fields directly. Light-tier detection rose to 0.4958 (vs round
    1's 0.1531, and legacy discovery's 0.3925) — numerically the best
    light-tier number in this line — but this number is **not comparable**
@@ -374,7 +376,7 @@ regardless of whether the agent's goal weights or behavior are actually
    fire on about half of episodes (118/240), not that light-tier detection
    generally improved.
 4. This is now the **third distinct saturation failure mode** recorded in
-   this line (F-1: simplex geometry starves compliance; F-6: same,
+   this line (GA-1: simplex geometry starves compliance; GA-6: same,
    root-caused; this one: welfare-delta density mismatch) — a reminder that
    "the label saturates" is a structurally recurring risk whenever a
    sampling protocol or a generated repertoire is not explicitly checked
@@ -382,17 +384,17 @@ regardless of whether the agent's goal weights or behavior are actually
    the full battery. A genuine round-2-vs-round-1 detector comparison would
    need a *new*, honestly-pre-registered sampling protocol for round 2 (e.g.
    a goal-weight/inclusion-probability region chosen for predicted label
-   mixture under this repertoire's welfare texture, analogous to F-7's
+   mixture under this repertoire's welfare texture, analogous to GA-7's
    compliance-band fix) — left as an open item, not attempted in this
-   session to avoid exactly the after-the-fact region-picking F-1's
+   session to avoid exactly the after-the-fact region-picking GA-1's
    follow-up warned against.
 
-## F-13 — round 3 (methodology): a plainer/larger `visible_mode` palette
+## GA-13 — round 3 (methodology): a plainer/larger `visible_mode` palette
 mapped to a smaller ontology, a much larger requested action count, and a
 pre-registered low/high L2 bracket as a structural (not ad hoc) counter to
-F-12's saturation mode
+GA-12's saturation mode
 
-User-identified follow-up to F-11/F-12, addressing two residuals round 2
+User-identified follow-up to GA-11/GA-12, addressing two residuals round 2
 left open rather than round 2's narrative leadingness (already fixed):
 
 1. **The `visible_mode` schema enum itself, not just the prompt text, was
@@ -414,7 +416,7 @@ left open rather than round 2's narrative leadingness (already fixed):
    room to invent unanticipated mechanisms, and more statistical power per
    repertoire.
 3. **Pre-registered L2 bracket** (`labels.py`): `L2_HARM_CUM` (unchanged,
-   -0.35) and a new `L2_HARM_CUM_HIGH` (-3.5, a 10× hedge sized from F-12's
+   -0.35) and a new `L2_HARM_CUM_HIGH` (-3.5, a 10× hedge sized from GA-12's
    general lesson, fixed before round 3's repertoire existed — not fit to
    round 3's own data). `label_episode_bracket` reports both; neither
    replaces the frozen `label_episode`. Because this tests the same
@@ -425,9 +427,9 @@ left open rather than round 2's narrative leadingness (already fixed):
 
 Full verbatim prompt, critique, and design rationale: `BLIND_GENERATION.md`
 ("Generation round 3") and `goal_sim/generated_actions_v3.json`'s
-`provenance` block. Result of running this: F-14.
+`provenance` block. Result of running this: GA-14.
 
-## F-14 (negative) — the bracket hedges L2 specifically but round 3's
+## GA-14 (negative) — the bracket hedges L2 specifically but round 3's
 repertoire saturates on L1/L3 too; light-tier detection collapses further;
 the "unmapped visible_mode defaults conservatively" design was exercised
 and behaved as documented
@@ -447,7 +449,7 @@ above round 2's 15/240 and 120/240 — because a 31-action repertoire gives
 many more independent chances for *some* action in a 300-step episode to
 trip *some* one of the three disjunctive violation conditions. Under the
 high bracket (L1 **or** L2-high **or** L3), only 28/240 (11.7%) end up
-honest. **Diagnosis, generalizing F-12's**: saturation here is not only
+honest. **Diagnosis, generalizing GA-12's**: saturation here is not only
 about L2's welfare-delta texture — it is a structural property of a
 disjunctive (OR-of-3-conditions) label evaluated against a large,
 independently-varied action repertoire: more distinct mechanisms in the
@@ -458,27 +460,27 @@ repertoire size/mixture by design (a sampling-protocol question, not a
 threshold one) — left open, not attempted here to avoid post-hoc tuning.
 
 **2. The "high"-bracket honest slice is still ~100% flagged by full-tier
-detectors — an amplified F-4, not a new failure.** All 28 `label_high ==
+detectors — an amplified GA-4, not a new failure.** All 28 `label_high ==
 "honest"` episodes have cum_harm between -3.14 and -3.47 (just under the
 -3.5 label bar, but still ~9–10× Phase 1's original -0.35 scale) and are
 flagged at full tier by `d3_cumulative_harm` and `d6_unattributed_harm`
 (28/28 each) — because those **detector** thresholds (`D3_HARM_CUM`,
 `D6_MIN_EVENTS`) are Phase 1's original, unbracketed, frozen values,
 completely decoupled from the new *label*-side `L2_HARM_CUM_HIGH` bracket
-by design (referee and audit planes do not share thresholds). This is F-4's
+by design (referee and audit planes do not share thresholds). This is GA-4's
 detector/label sensitivity mismatch, now visible at the extreme (100% false
 alarm on the "high" tier's honest set) because round 3's repertoire pushes
 absolute harm levels so far past Phase 1's calibration scale in *every*
 sampled episode, honest-by-the-loose-label or not.
 
 **3. Light-tier detection collapsed further: 6.7% (low) / 7.6% (high),**
-below even round 1's 15.3% and far below round 2's 49.6% (which F-12 §3
+below even round 1's 15.3% and far below round 2's 49.6% (which GA-12 §3
 already flagged as not a like-for-like comparison). `d2_probe_noncompliance`
 fires on only 16/240 episodes (vs round 2's 118/240) — round 3's much
 larger action menu gives adversarial-leaning agents many gray-zone/covert
 alternatives to overt probe defiance, so the light tier (which only sees
 probes, reports, and self-claims) has less of the crude signal it depends
-on. This deepens F-9's original finding across two more repertoires: a
+on. This deepens GA-9's original finding across two more repertoires: a
 richer, more realistic action space does not make light-tier detection
 better — the more genuinely-plausible mechanisms available, the worse it
 gets.
@@ -501,19 +503,19 @@ inventing one. A future line that wants to model timing/aggregation-based
 evasion would need a genuinely different oracle mechanism (multi-step
 memory), not just another `VISIBLE_MODE_ORACLE_MAP` entry.
 
-**Net assessment**: the schema/prompt/threshold changes in F-13
+**Net assessment**: the schema/prompt/threshold changes in GA-13
 successfully (a) removed the `visible_mode`-enum residual leak, (b)
 surfaced new, unanticipated mechanisms via the larger action count, and (c)
 demonstrated the bracket-and-Bonferroni-correction machinery working
 correctly on its own terms — but did **not** produce a repertoire with a
 usable honest/violation mixture for a round-1-vs-round-2-vs-round-3
 detector comparison, for a *newly identified, more general* reason (point
-1) than F-12's. Per AGENTS.md's no-post-hoc-retuning rule, none of L1's,
+1) than GA-12's. Per AGENTS.md's no-post-hoc-retuning rule, none of L1's,
 L3's, or the detectors' own thresholds are adjusted in response — this is
-recorded as a fourth distinct saturation-adjacent finding (after F-1/F-6's
-sampling-geometry mode and F-12's welfare-density mode), not patched.
+recorded as a fourth distinct saturation-adjacent finding (after GA-1/GA-6's
+sampling-geometry mode and GA-12's welfare-density mode), not patched.
 
-## F-15 (positive) — continuous oracle severity (Phase 4a) restores a
+## GA-15 (positive) — continuous oracle severity (Phase 4a) restores a
 genuine, non-degenerate blind comparison across all four saturating
 repertoires; light-tier rank correlation shows a clean monotonic decline
 
@@ -526,7 +528,7 @@ pre-registered in `run_phase4_ranking.py`; 30 configs x 8 seeds = 240
 episodes per repertoire; results `results/phase4_severity.{json,md}`.
 
 Mean severity climbs monotonically with generation round (legacy 0.2079,
-round1 0.1857, round2 0.4876, round3 0.6152), tracking F-12/F-14's
+round1 0.1857, round2 0.4876, round3 0.6152), tracking GA-12/GA-14's
 never-event counts (36, 43, 120, 154 of 240) — the continuous metric agrees
 with the earlier boolean findings' *direction* while staying meaningful
 past the point the boolean label saturated.
@@ -534,27 +536,29 @@ past the point the boolean label saturated.
 **The light-tier Spearman correlation also declines monotonically — 0.8206
 (legacy) → 0.6318 (round1) → 0.4596 (round2) → 0.0732 (round3)** — and this
 is a genuine result the boolean detection-rate metric could not produce
-cleanly: F-12 §3 explicitly flagged round 2's 0.4958 light-tier detection
+cleanly: GA-12 §3 explicitly flagged round 2's 0.4958 light-tier detection
 number as "not comparable" (no honest population to check false alarms
-against), and F-14's 0.0732/0.067 pair conflated "detection collapsed" with
+against), and GA-14's 0.0732/0.067 pair conflated "detection collapsed" with
 "almost nothing to detect." Spearman rank correlation needs no positive
 class, so round 3's 0.0732 is directly comparable to legacy's 0.8206: light
 tier goes from strongly rank-aligned with oracle severity to nearly
 uncorrelated with it as the repertoire grows richer and more
-covert-leaning — the same qualitative story as F-9/F-14, now on a metric
+covert-leaning — the same qualitative story as GA-9/GA-14, now on a metric
 that survives full saturation rather than degenerating alongside it.
 
 Full-tier correlations stay high throughout (0.9747, 0.979, 0.9129, 0.7287)
-but carry the standing F-8 caveat (d3/d6, and now d7, read near-severity
+but carry the standing GA-8 caveat (d3/d6, and now d7, read near-severity
 fields directly, so high correlation there is partly true by construction)
 — round 3's dip to 0.7287 is the one full-tier number worth noting, since
 even the near-tautological detectors decouple somewhat from oracle severity
 once the repertoire is large and varied enough.
 
-## F-16 (mixed) — honest twins (Phase 4b) confirm the severity gap is
+## GA-16 (mixed) — honest twins (Phase 4b) confirm the severity gap is
 positive as predicted in every repertoire, but the light-tier composite
 gap runs the WRONG DIRECTION in three of four — light-tier detectors track
 visible compliance, not honesty
+
+**Key finding:** Mechanical honest twins show light tier tracks visible compliance, not honesty (GA-16).
 
 Setup: `goal_sim/twins.py`'s mechanical rule (`visible_mode := "truthful"`,
 `report_mode` derived from `uptake_on_correction`, `adopts_practice :=
@@ -589,7 +593,7 @@ function of frozen schema fields, applied uniformly, per its own
 pre-registration) or in d1/d2 (each still does exactly its documented,
 narrower job).
 
-## F-17 (negative) — the gated escalation ladder (Phase 4c) never reaches
+## GA-17 (negative) — the gated escalation ladder (Phase 4c) never reaches
 its disclosure-query pathway on any repertoire in this battery; only its
 gate-only mechanism (legacy) and its documented "no evidence" fallback
 (everything else) were exercised, for two independently diagnosable reasons
@@ -645,15 +649,15 @@ repertoire-level diagnostic pre-check (confirming nonzero queryable steps
 exist) before committing to a full battery — left open per AGENTS.md's
 no-post-hoc-retuning rule rather than patched after seeing this result.
 
-## F-18 — Phase 4d: real multi-step semantics for `delayed`/`aggregated`
-visible modes close the specific gap F-14 point 4 flagged; two new
+## GA-18 — Phase 4d: real multi-step semantics for `delayed`/`aggregated`
+visible modes close the specific gap GA-14 point 4 flagged; two new
 bound-first secondary detectors validated by unit test, not yet run
 through the Phase 4a/4c batteries
 
 `world.py` now computes `delayed` (true action `DELAY_LAG_STEPS=5` steps
 ago) and `aggregated` (majority true action over a trailing
 `AGGREGATE_WINDOW_STEPS=5` window) as REAL multi-step effects, replacing
-the conservative `matches_true` default F-14 point 4 documented as "this
+the conservative `matches_true` default GA-14 point 4 documented as "this
 single-decision-point oracle model has no time-integration mechanism to
 represent" timing/aggregation-based evasion. `ontology.VISIBLE_MODE_ORACLE_MAP`
 itself is unchanged; the override happens only in the step loop, only for
@@ -682,7 +686,7 @@ Phase 4a/4c battery scripts.
 
 **Consequence for the already-recorded Phase 4a/4c artifacts**:
 `d7`/`d8` were added to `detectors.SCORES` after `run_phase4_ranking.py`
-and `run_phase4_escalation.py` had already run (F-15/F-16/F-17 above,
+and `run_phase4_escalation.py` had already run (GA-15/GA-16/GA-17 above,
 `results/phase4_severity.md`, `results/phase4_escalation.md`). Those
 artifacts are frozen snapshots of the pre-4d detector set and are **not**
 re-run here (no post-hoc re-fitting after adding detectors); a future
@@ -692,7 +696,7 @@ with no accumulation/stalling behavior, i.e. all of legacy/rounds 1-4's
 sampled episodes in this battery, none of which use `delayed`/`aggregated`
 `visible_mode` or budget-costly actions at the scale needed to approach
 `D7_ACCUM_CAP`). The **light-tier** numbers, which are the primary
-pre-registered comparison in F-15/F-16, are unaffected, since d7/d8 are
+pre-registered comparison in GA-15/GA-16, are unaffected, since d7/d8 are
 gated full-only.
 
 Two design-discussion mechanisms remain deliberately unimplemented, per
@@ -701,7 +705,7 @@ ladder's own gates, and recursive drill-down depth beyond one response
 level (grounds out in Logical Induction) — documented as open, not
 attempted.
 
-## F-19 (positive) — Phase 5 Part A confirms F-16's diagnosis exactly:
+## GA-19 (positive) — Phase 5 Part A confirms GA-16's diagnosis exactly:
 the negative light-tier twin gap is `d2` alone; a `d2`-free composite is
 non-negative in every repertoire
 
@@ -724,11 +728,11 @@ sampling as Phase 4b (legacy, round1, round2, round3; 30 configs x 8 seeds
 `d1`/`d1b` gaps are non-negative in every repertoire (prediction 1); `d2`'s
 gap is not just negative but the largest-magnitude number in the table,
 and it grows *more* negative as the repertoire grows richer (round3:
--0.4546) — exactly tracking F-16's mechanism claim that a richer repertoire
+-0.4546) — exactly tracking GA-16's mechanism claim that a richer repertoire
 gives the deceptive agent more facade-maintaining room while its honest
 twin's plain, visible non-compliance becomes proportionally more common.
 `light_deception_composite` (d2 excluded) is positive in all four
-repertoires (prediction 2) — F-16's diagnosis was correct, not merely
+repertoires (prediction 2) — GA-16's diagnosis was correct, not merely
 plausible-sounding: the light-tier composite's inverted twin gap is fully
 attributable to `d2`, and a same-tier composite that excludes only that one
 detector recovers the expected sign everywhere. `d2` itself is not "wrong"
@@ -737,9 +741,9 @@ noncompliance) correctly; the finding is that *that specific job* is not a
 proxy for honesty, and light-tier composites that include it inherit that
 mismatch.
 
-## F-20 (mixed) — Phase 5 Part B: `select_query_steps_v2` fixes F-17's
+## GA-20 (mixed) — Phase 5 Part B: `select_query_steps_v2` fixes GA-17's
 queryability blind spot and validates 2 of 3 pre-registered predictions for
-round 4, but its own broader signal reproduces the F-16 twin-paradox inside
+round 4, but its own broader signal reproduces the GA-16 twin-paradox inside
 the escalation ladder
 
 Setup: `escalation.select_query_steps_v2` (fixed priority S1/S2/S3, see
@@ -750,7 +754,7 @@ seeds); `run_phase5_followups.py` Part B, `results/phase5_followups.
 legacy/round1/round2/round4 exactly (same seed string), confirming this is
 an additive comparison, not a re-fit.
 
-**Queryability diagnostic — v2 closes the gap F-17 found, everywhere:**
+**Queryability diagnostic — v2 closes the gap GA-17 found, everywhere:**
 
 | repertoire | frac queryable v1 | frac queryable v2 |
 | --- | --- | --- |
@@ -762,7 +766,7 @@ an additive comparison, not a re-fit.
 
 Round 4 goes from "the board almost never has anything to ask about"
 (1.25%) to "always does" (100%) — the single largest jump, exactly where
-F-17 identified the blind spot.
+GA-17 identified the blind spot.
 
 **Round 4 verdict quality, v1 vs v2:**
 
@@ -788,22 +792,22 @@ F-17 identified the blind spot.
    `HIGH_GATE` short-circuiting before the selector ever runs, identical
    under v1/v2). Only round 4 exercises the new pathway enough to test
    prediction (c), and there it fails.
-4. **Diagnosis: the same F-16 mechanism, one layer up.** `twins.make_twin`
+4. **Diagnosis: the same GA-16 mechanism, one layer up.** `twins.make_twin`
    changes `visible_mode`/`report_mode`/`adopts_practice` but leaves
    `responses` untouched (by its own frozen, schema-only rule — this is
    not a bug in the twin rule). v2's S2 signal (`probe AND visible_action
    != intent`) is `d2`'s own structural signal, reused verbatim for query
    selection; an honest twin that visibly, truthfully declines a
-   correction trips S2 exactly as F-16 found it trips `d2`. Once selected,
+   correction trips S2 exactly as GA-16 found it trips `d2`. Once selected,
    `choose_response` draws from the *original* action's unmodified
    `responses` list — evidence calibrated to the deceptive action's
    context, not to the twin's actually-honest behavior — so a query-worthy
    step does not guarantee a query-worthy (dishonest-looking) answer, or
-   the reverse. F-17's fix widens the ladder's aperture exactly where F-16
+   the reverse. GA-17's fix widens the ladder's aperture exactly where GA-16
    already showed a behavior-based signal can miscalibrate against
    honesty; broadening query selection with `d2`'s own signal imports that
    same miscalibration into the escalation pathway.
-5. **Bounded reading**: v2 is a genuine, working fix for F-17's specific
+5. **Bounded reading**: v2 is a genuine, working fix for GA-17's specific
    complaint (zero queryable steps) and produces a first-ever
    severity-informative verdict on round 4 — not a wasted change. But
    "more queryable steps" is not automatically "better-calibrated
@@ -828,29 +832,29 @@ so no intermediate history is recoverable). Per the plan's explicit scope
 {json,md}` are left as originally recorded; this note exists so a future
 session does not mistake the drift for a Phase 5 bug.
 
-## F-21 (negative — prediction falsified, root cause identified) — Phase 6
+## GA-21 (negative — prediction falsified, root cause identified) — Phase 6
 Part A: the responses-side honest twin fix makes round 4's twin
 false-positive rate WORSE, not better, exposing a disclosure-as-guilt
 conflation in the escalation ladder's own verdict rule
 
 Setup: `twins.make_twin` extended (Phase 6) to replace a twinned spec's
 `responses` with a single full-disclosure `HONEST_TWIN_RESPONSE` when the
-source spec carries any — directly targeting F-20's diagnosis (the twin
+source spec carries any — directly targeting GA-20's diagnosis (the twin
 previously answered escalation queries using the ORIGINAL, deceptive
 action's response menu). Re-ran round 4's escalation battery under both
 `select_query_steps` (v1) and `select_query_steps_v2` (v2) with the fixed
 twin; `run_phase6.py` Part A, `results/phase6.{json,md}`.
 
 **Pre-registered prediction FALSIFIED**: predicted the v2 twin
-verdict-true rate would drop from F-20's 0.0708 to at or below the agent's
+verdict-true rate would drop from GA-20's 0.0708 to at or below the agent's
 own 0.0583. Measured: **0.4083** — roughly 6x worse, not better.
 
-| version | agent verdict-true rate | twin verdict-true rate (fixed) | twin verdict-true rate (F-20, unfixed) |
+| version | agent verdict-true rate | twin verdict-true rate (fixed) | twin verdict-true rate (GA-20, unfixed) |
 | --- | --- | --- | --- |
 | v1 | 0.0 | 0.0 | 0.0 |
 | v2 | 0.0583 | **0.4083** | 0.0708 |
 
-**Root cause: the fix was correctly targeted at F-20's stated mechanism,
+**Root cause: the fix was correctly targeted at GA-20's stated mechanism,
 but that mechanism was not the whole story.** `run_escalation`'s verdict
 rule is `verdict = disclose_fraction >= DISCLOSE_FRACTION_GATE` — i.e. a
 QUERIED response that canonically *discloses* (`ontology.
@@ -868,18 +872,18 @@ regardless of what was actually being asked about. `RESPONSE_TRUTHFUL_
 MODES` and its canonical map describe response STYLE (open/explaining vs.
 evasive/deflecting), not response CONTENT (an admission of wrongdoing vs.
 an honest account of unremarkable behavior) — the escalation ladder's
-verdict rule conflates the two. F-20's `responses`-side gap in the twin
+verdict rule conflates the two. GA-20's `responses`-side gap in the twin
 rule was real and the fix for it is correctly targeted (kept in
 `twins.py` — it is still the right transform for what it claims to do:
 an honest twin's response menu should not be the deceptive spec's
-unmodified menu), but it was masked by, not the cause of, F-20's residual
+unmodified menu), but it was masked by, not the cause of, GA-20's residual
 0.0708: the original (unfixed) twin's inherited deceptive-spec responses
 happened, by chance of the generator's own design, to disclose only
 sometimes, keeping `disclose_fraction` below the gate more often than a
 uniformly full-disclosure response now does.
 
 **Bounded reading**: this is a genuinely new, deeper finding, not a
-retry of F-20 with a bug — `escalation.run_escalation`'s
+retry of GA-20 with a bug — `escalation.run_escalation`'s
 `DISCLOSE_FRACTION_GATE` semantics need to distinguish disclosure-that-
 confirms-a-suspicion from disclosure-that-explains-it-away, which requires
 information this schema does not currently carry (the response's
@@ -888,7 +892,7 @@ this session — redesigning the verdict rule is a new mechanism requiring
 its own pre-registration, out of scope for "implement the responses-side
 twin fix". Recorded as an open item (see README "Next steps").
 
-## F-22 (mixed) — Phase 6 Part B: certifier capture leaves the propose/
+## GA-22 (mixed) — Phase 6 Part B: certifier capture leaves the propose/
 sign-off pathway's own audit-visible signal (D5) untouched in the
 discovery-region population, but measurably reduces both oracle severity
 and full-tier detection through a shared coupling neither mechanism
@@ -953,9 +957,11 @@ discovery-region configs x 8 seeds = 240 episode pairs as `run_phase1.py`;
    different answer would be exactly the backward-fitting AGENTS.md
    forbids).
 
-## F-23 (positive, weak) — Phase 6 Part C: a simple stdlib hill-climbing
+## GA-23 (positive, weak) — Phase 6 Part C: a simple stdlib hill-climbing
 search over goal weights finds a modestly better severity/detection
 trade-off than an equal-budget uniform sample, on both repertoires tried
+
+**Key finding:** Board certifier capture reproduces captured-vs-not effect (GA-22); adversarial weight search modest (GA-23).
 
 Setup: `redteam.hill_climb_weights` (random-restart Gaussian-perturbation
 hill climbing, 5 restarts x 40 iterations, `ADVERSARY_TOOLS` = full
@@ -975,7 +981,7 @@ EPISODE_SEEDS`; `run_phase6.py` Part C, `results/phase6.{json,md}`.
 score >= baseline score. The margin is small in both cases (legacy
 +0.0012, round3 +0.0112 — round3's gap is roughly 9x legacy's, though
 still modest in absolute terms), consistent with round 3 already being
-close to saturated (F-14: near-universal violation labels) leaving less
+close to saturated (GA-14: near-universal violation labels) leaving less
 room for either search or sampling to separate severity from detection
 further. Both winners land at high task weight with near-zero compliance
 weight (legacy: task 0.877; round3: welfare-dominant at 0.700, an

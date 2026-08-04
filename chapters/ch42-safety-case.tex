@@ -5,6 +5,11 @@
 A safety case for superintelligence alignment is not a certificate of solved alignment. It is a structured refusal test: a graph of claims, evidence, bridge assumptions, adversarial-verifiability labels, and stop conditions that shows whether a system is inside a certified class whose control reach is bounded by live correction-channel integrity. If any load-bearing leaf is unsupported, the root claim fails.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+A tree of root claim, layer claims, evidence, and explicit assumptions are standard assurance-case and Goal Structuring Notation methodology already in active use for safety-critical engineering.
+This chapter adapts the book's material into that structure and proves the logical steps on the Lean spine. The  checklist is unvalidated.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -65,12 +70,15 @@ If a leaf is only observable, the case must say that.
 If a leaf is robust under ordinary distribution shift but not adversarial optimization, the case must say that.
 If a leaf is an empirical bridge not yet validated, the case must say that.
 
+One graded-lab external-validity battery makes the discipline concrete: frozen unit-discovery failed to recover declared coordination units on a blinded-grown ecology, and measured ambiguity did not reach the referee mid band that had appeared on the calibration substrate, while injected-probe detector transfer still held (Appendix~\ref{appn-experimental-evidence}, Section~\ref{sec:appn-graded-lab-simulation}, finding~\ref{finding:gl-76}). Later per-bridge rigs keep the leaves separate: co-activity-present unit discovery remains a null (finding~\ref{finding:gl-79}), honest-reference detector coverage SKIPs where ACL denials never appear (same finding), the report-versus-field contradiction surface passes its specificity and dose-response arms (finding~\ref{finding:gl-80}), and channel-ablation compensation does not (same finding). Those are different leaves. A safety case that collapsed them into a single ``machinery transferred'' checkbox would misstate the evidence.
+
 The point is not bureaucratic neatness.
 The point is to prevent local success from being mistaken for global safety.
 A system can pass a boundary audit while changing bearer maps.
 It can preserve moral language while destroying correction \autocite{kulveit2025gradualdisempowerment}.
 It can obey current commands while creating successors outside the certified class.
 It can pass every passive benchmark while optimizing the benchmark surface.
+Entity-based independent assessments of internal agent use and disclosed cross-org evaluation intrusions are orientation for which safety-case leaves remain merely observable \autocite{metr2026frontierriskreport,openai2026huggingfaceincident}.\footnote{The companion site indexes external incidents by chapter at \url{https://towards-alignment.com/news/}.}
 The safety case forces these layers to appear in one graph.
 
 \section{Formal Model}
@@ -92,7 +100,7 @@ The numeric risk leaf inside that root is deliberately narrower:
 \[
 \mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta
 \quad\Longrightarrow\quad
-\mathrm{Risk}(A)\leq\delta .
+\mathrm{RiskGap}(A)\leq\delta .
 \]
 This leaf says only that effective control does not outrun correction-channel integrity by more than the accepted slack.
 The conclusion is not a metaphysical safety property; it is the risk-gap bound used by the spine.
@@ -108,7 +116,7 @@ The safety-case root is the package around that leaf:
 \;\land\;
 \mathrm{LayeredAlignedDef}(A)
 \;\land\;
-\mathrm{Risk}(A)\leq\delta .
+\mathrm{RiskGap}(A)\leq\delta .
 \]
 The first three conjuncts are not used to prove the arithmetic risk inequality.
 They are the evidence that the inequality is being used in the right deployment class, with the right layers present, rather than as an isolated numeric trick.
@@ -181,7 +189,7 @@ Every load-bearing metric in a safety case should be tagged as one of:
 \end{itemize}
 
 The case should not rest a root deployment claim on a merely observable metric in a setting where the system can optimize the metric surface.
-If the root needs adversarial verifiability and the metric is only observable, there are only three honest moves:
+If the root needs adversarial verifiability and the metric is only observable, there are only three moves:
 \begin{enumerate}
   \item reduce the deployment class \(\mathcal{D}\);
   \item add proof, containment, randomization, or cost-of-faking structure;
@@ -224,7 +232,7 @@ A stronger case has layers.
   \item \textbf{Correction:} human objections must change future policies, not merely produce local apologies. The case audits latency, authority, manipulation, reversibility, and ontology penalties using the Chapter~\ref{ch:correction-channel-integrity} \(CCI\) structure.
   \item \textbf{Successor:} the service is not allowed to create or recommend successor modifications unless the successor is inside the same certified class and preserves correction and system-update constraints.
   \item \textbf{Basin:} deployment contracts, incentives, logging, procurement, and liability must reward correction-preserving behavior rather than speed, lock-in, or apparent competence.
-  \item \textbf{Adversarial measurement:} high-stakes tests include perturbations and post-commitment randomization. Metrics that remain only observable are marked as non-root-supporting.
+  \item \textbf{Adversarial measurement:} high-stakes tests include perturbations and post-commitment randomization. Metrics that remain only observable are marked as non-root-supporting. Embedded third-party red-teaming of internal monitoring stacks---as in METR's exercise at Anthropic---is one template for stress-testing those leaves before deployment \autocite{metr2026anthropicredteam}.
 \end{itemize}
 
 The case can still fail.
@@ -279,7 +287,7 @@ It is to make unsupported leaves visible and to treat them as blockers rather th
   \item The Lean proof spine proves conditional steps such as the \(CCI\)-slack risk bound and the unsupported-leaf blocker; it does not discharge empirical bridge assumptions.
   \item Every load-bearing metric should carry a verifiability label: observable, i.i.d.-robust, or adversarially verifiable up to a stated capability ceiling.
   \item Boundary shaping only helps when human correction, legitimacy, and grounding are constitutive of the maintained process, not replaceable presentation layers.
-  \item If a root claim depends on an unsupported bridge or a merely observable metric under adversarial optimization, the honest result is restriction, redesign, or refusal.
+  \item If a root claim depends on an unsupported bridge or a merely observable metric under adversarial optimization, the case must conclude with restriction, redesign, or refusal.
 \end{itemize}
 
 \section*{Chapter References}

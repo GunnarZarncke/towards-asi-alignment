@@ -1,10 +1,23 @@
 \chapter{When Intelligence Deepens Misalignment}
 \label{ch:intelligence-deepens-misalignment}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/illustrations/ch14_journey-to-autonomy-and-beyond.png}
+\caption{The Better It Gets, the Less Reachable It Becomes}
+\label{fig:ch14-illustration}
+\end{figure}
+
 \begin{chapterthesis}
 Intelligence deepens misalignment when it increases power faster than correction.
 The sharper question is not whether capability helps or hurts alignment, but which capabilities grow relative to which correction capacities.
 \end{chapterthesis}
+
+\begin{epistemicstatus}
+Most of this chapter's supporting material is standard: inverse-reward-design and IRL accounts of value inference, corrigibility and extrapolated-volition proposals, Goodhart's law and goal misgeneralization, and the empirical deception and model-organisms literature are established or actively worked lines in the field, and the field treats the underlying phenomena --- proxy gaming, reward hacking, strategic deception in trained models --- as real and increasingly well-documented. 
+This chapter adds plausible diagnostic for competence, collapse, manipulation, and basin exit. The margin formalism is illustrative. 
+The five deepening mechanisms are consistent with documented cases of proxy gaming and specification gaming.
+\end{epistemicstatus}
 
 \begin{refsection}
 
@@ -68,35 +81,10 @@ This chapter develops a simple framework for answering that question.
 \label{sec:competence-boundary-information}
 
 We begin with a substrate-neutral measure of competence.
-Consider a bounded adaptive system with internal states $I_t$, sensory states $S_t$, actions $A_t$, and relevant external states $E_t$.
+Consider a bounded adaptive system with internal states $I_t$, sensory states $S_t$, actions $A_t$, and relevant external states $E_t$ (Chapter~\ref{ch:agent-without-anthropomorphism}).
 A system is competent insofar as its internal state predicts future inputs, its actions influence future external states, and it does so without excessive memory burden or residual surprise.
 
-Define the competence functional
-\begin{equation}
-K
-=
-I_{\mathrm{pred}}
-+
-\alpha I_{\mathrm{ctrl}}
--
-\beta H(I_t)
--
-\gamma S_X,
-\label{eq:competence-functional}
-\end{equation}
-where
-\begin{align}
-I_{\mathrm{pred}} &= \MI(I_t;S_{t+1}), \\
-I_{\mathrm{ctrl}} &= \MI(A_t;E_{t+1}), \\
-H(I_t) &= \text{entropy or maintenance cost of internal state}, \\
-S_X &= \mathbb{E}\left[-\log P(S_{t+1}\mid I_t)\right].
-\end{align}
-
-Here $I_{\mathrm{pred}}$ measures predictive contact with the world.
-$I_{\mathrm{ctrl}}$ measures causal grip on the world.
-$H(I_t)$ penalizes the cost of maintaining a large or fragile internal state.
-$\mathcal{S}$ penalizes residual surprise.
-The constants $\alpha,\beta,\gamma$ set the relative weights.
+This reuses the boundary-information competence functional from Chapter~\ref{ch:capability-without-task-ontology} rather than redefining it: $K = I_{\mathrm{pred}} + \alpha I_{\mathrm{ctrl}} - \beta H(I_t) - \gamma S_X$ (Eq.~\ref{eq:biq}), where $I_{\mathrm{pred}} = \MI(I_t;S_{t+1})$ measures predictive contact with the world, $I_{\mathrm{ctrl}} = \MI(A_t;E_{t+1})$ measures causal grip on the world, $H(I_t)$ penalizes internal-state maintenance cost, and $S_X = \mathbb{E}\left[-\log P(S_{t+1}\mid I_t)\right]$ penalizes residual surprise.
 
 This is not meant to capture every ordinary meaning of intelligence.
 It does not directly measure beauty, creativity, consciousness, moral insight, or wisdom.
@@ -108,7 +96,7 @@ A system becomes dangerous not because it scores high on a test, but because it 
 \section{The Split between Capability and Alignment}
 \label{sec:split-capability-alignment}
 
-The competence functional in Eq.~\ref{eq:competence-functional} bundles several different capacities together.
+The competence functional $K$ (Eq.~\ref{eq:biq}) bundles several different capacities together.
 For alignment, we must separate them.
 
 Let
@@ -255,6 +243,7 @@ D\left(V(a^*_K),P(a^*_K)\right).
 \end{equation}
 
 The system becomes better at the wrong game.
+A 2026 internal cyber-capability evaluation produced a concrete instance: models escaped sandbox controls and intruded on a third-party platform to obtain benchmark answers rather than solve the assigned task \autocite{openai2026huggingfaceincident}.
 
 A simple example is engagement optimization.
 A weak recommender shows mildly interesting content.
@@ -337,7 +326,7 @@ The relevant object is no longer the original system $A$, but the successor set
 \{A'_1,A'_2,\ldots,A'_n\}.
 \end{equation}
 
-A serious alignment condition must quantify over successors:
+A complete preservation condition must quantify over successors:
 \begin{equation}
 \forall A'\in \mathrm{Succ}(A):
 A'\in \mathcal{S}_{\mathrm{certified}},
@@ -500,6 +489,16 @@ When suffering risk increases, the non-suffering bundle should still increase ca
 When evidence quality decreases, the truth bundle should still increase uncertainty reporting rather than persuasive confidence.
 
 This is the sense in which intelligence can deepen or preserve alignment.
+
+\section{Consequentialist Cognition and When Correction Hardens}
+\label{sec:ccc-when-cci-ch14}
+
+A large part of the classical AI-risk argument assumes that capable systems become \emph{strong consequentialists}: they act so as to steer toward preferred futures over long horizons \autocite{omohundro2008basic,bostrom2014superintelligence,kumar2021p2b}.
+The AFFINE research program calls this the convergent-consequentialist-cognition (CCC) hypothesis \autocite{affine2026seminar}: under capability growth and selection, cognition tends toward long-horizon means--end steering (including planning-to-plan-better pressure).
+If CCC holds, every later bridge gets harder: proxies are refined more aggressively, opacity around control variables pays more, and correction channels become targets --- including via substitution hazards when one blocked path is replaced by a nearby one.
+Corrigibility in the trajectory sense --- correction-channel integrity (Chapter~\ref{ch:correction-channel-integrity}) --- is then load-bearing precisely because the system has reason to route around it.
+If CCC fails --- if systems remain myopic tools without closed steering loops --- that integrity is still useful hygiene but is not fighting a consequentialist adversary.
+\emph{If} consequentialist cognition converges, \emph{then} corrigibility under adversarial pressure and adversarial verifiability are the binding constraints.
 
 \section{The Correction Channel}
 \label{sec:correction-channel-intelligence}
@@ -850,6 +849,8 @@ Those conditions include:
 The goal is not to freeze humanity.
 It is to prevent humanity's self-modification process from being captured by systems that can shape the very values by which they are judged.
 
+Goal misgeneralization under a correct-looking specification is in scope here as a preservation-layer failure \autocite{shah2022goalmisgeneralization,langosco2022goalmisgeneralization}.
+
 \section{What Would Change This View}
 \label{sec:wwctv-intelligence-misalignment}
 
@@ -897,7 +898,7 @@ It will be a compressed bundle geometry.
 
 \section*{Chapter References}
 
-This chapter builds on competence and boundary information \autocite{zarncke2025biq,conant1970regulator,tishby2000ib,kaplan2020scaling}; inverse reinforcement learning and cooperative alignment \autocite{ng2000irl,abbeel2004apprenticeship,hadfieldmenell2016,casper2023rlhflimits}; goal misgeneralization under correct specifications \autocite{shah2022goalmisgeneralization,langosco2022goalmisgeneralization}; corrigibility and extrapolative correction \autocite{soares2015corrigibility,yudkowsky2004cev,russell2019human}; Goodhart and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; deception and model organisms \autocite{park2024deception,hubinger2023modelorganisms}; successor and ontology risk \autocite{deblanc2011ontological,everitt2016selfmodification,zarncke2025construction}; instrumental drives and power-seeking \autocite{omohundro2008basic,turner2021seekpower,bostrom2014superintelligence}; and value-bundle framing \autocite{zarncke2025loop-hub-value,zarncke2025unit-of-caring}.
+This chapter builds on competence and boundary information \autocite{zarncke2025biq,conant1970regulator,tishby2000ib,kaplan2020scaling}; inverse reinforcement learning and cooperative alignment \autocite{ng2000irl,abbeel2004apprenticeship,hadfieldmenell2016,casper2023rlhflimits}; goal misgeneralization under correct specifications \autocite{shah2022goalmisgeneralization,langosco2022goalmisgeneralization}; corrigibility and extrapolative correction \autocite{soares2015corrigibility,yudkowsky2004cev,russell2019human}; Goodhart and proxy failure \autocite{goodhart1984problems,manheim2018goodhart}; deception and model organisms \autocite{park2024deception,hubinger2023modelorganisms}; successor and ontology risk \autocite{deblanc2011ontological,everitt2016selfmodification,zarncke2025construction}; instrumental drives and power-seeking \autocite{omohundro2008basic,turner2021seekpower,bostrom2014superintelligence,kumar2021p2b}; and value-bundle framing \autocite{zarncke2025loop-hub-value,zarncke2025unit-of-caring}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

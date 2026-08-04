@@ -8,7 +8,7 @@ after `goal_sim/severity.py`, the `d*_score` detector variants, and
 - **Repertoires compared**: legacy (Phase 1's `LEGACY_ACTIONS`), round 1
   (`generated_actions.json`), round 2 (`generated_actions_v2.json`), round 3
   (`generated_actions_v3.json`) — the exact three blind-generation rounds
-  F-12/F-14 found could not be compared via the boolean label once
+  GA-12/GA-14 found could not be compared via the boolean label once
   saturated.
 - **Sampling**: 30 configs per repertoire. Legacy uses
   `protocol.sample_configs`'s discovery region (unchanged seed/sampling);

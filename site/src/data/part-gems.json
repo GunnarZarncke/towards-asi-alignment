@@ -1,12 +1,35 @@
 {
-  "part01": ["dynamical-guarantee"],
-  "part02": ["boundary-discovery"],
-  "part03": ["strategic-opacity"],
-  "part04": ["bearer-persistence"],
-  "part05": ["value-bundle-transport"],
-  "part06": ["correction-channel-integrity"],
-  "part07": ["successor-stability"],
-  "part08": ["attractor-control", "inferential-coupling", "civilizational-correction-problem"],
-  "part09": ["grounding-viability", "adversarial-agency-tests"],
-  "part10": ["value-change-vs-corruption"]
+  "part08": [
+    "attractor-control",
+    "civilizational-correction-problem",
+    "inferential-coupling"
+  ],
+  "part04": [
+    "bearer-persistence"
+  ],
+  "part02": [
+    "boundary-discovery"
+  ],
+  "part06": [
+    "correction-channel-integrity"
+  ],
+  "part01": [
+    "dynamical-guarantee"
+  ],
+  "part09": [
+    "adversarial-agency-tests",
+    "grounding-viability"
+  ],
+  "part03": [
+    "strategic-opacity"
+  ],
+  "part07": [
+    "successor-stability"
+  ],
+  "part05": [
+    "value-bundle-transport"
+  ],
+  "part10": [
+    "value-change-vs-corruption"
+  ]
 }

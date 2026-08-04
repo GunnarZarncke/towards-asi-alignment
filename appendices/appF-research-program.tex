@@ -1,12 +1,57 @@
 \chapter{Research Program}
 \label{apph-research-program}
 
+\begin{epistemicstatus}
+The field cruxes this appendix references are standard, well-documented open problems, and the field's confidence that each is genuinely hard and unresolved is high.
+This appendix adds the plausible dependency-order analysis that hasn't been indpendently validated.
+\end{epistemicstatus}
+
 This appendix collects the empirical and adversarial work the book assumes but does not prove.
 Appendix~\ref{appi-lean-proof-spine} states the conditional skeleton: if the definitions, certificates, and bridge assumptions \texttt{MB1}--\texttt{MB9} hold, the advertised certification claims follow. A tenth bridge, \texttt{MB10} (successor forgeability; Assumption~\ref{appi:ass:mb10}), is not part of that packaged set --- it is not required for \texttt{P30T} --- but is validated below on the same footing, since it gates whether \texttt{MB5}'s successor-safety conclusion means anything against a capable adversarial predecessor.
 Lean does not discharge those bridges.
 The manuscript's ``What Would Change This View'' sections name the disconfirmers chapter by chapter; this appendix merges them into one dense research plan.
 No calendar schedule is implied, but the order is \emph{not} arbitrary: the bridges compose, and the composition prescribes both a research priority and a sequence (Section~\ref{sec:research-dependency-order}).
 The per-bridge investigations below are presented in that dependency order.
+
+\section{Preparadigmatic research hazards}
+\label{sec:preparadigmatic-hazards}
+
+Alignment research is still preparadigmatic: the full preservation problem lacks shared definitions, success criteria, and org-level consensus \autocite{soares2015technicalagenda}.
+That is a fact about the field's maturity, not a verdict that any named program is ``wrong.''
+It does create recurring Meta failure modes that any research program must track explicitly.
+
+\paragraph{Stay on the preservation target.}
+The book's scope contract (Chapter~\ref{ch:assumptions-scope-failure-coverage}) is the preservation of human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and selection pressure.
+Adjacent problems --- benchmark scores, local robustness, one-bit shutdown, pure reward inference --- matter when they alter that target; they do not replace it.
+
+\paragraph{Problem substitution (Meta).}
+In a preparadigmatic field, researchers and institutions often substitute a \emph{legible subproblem} for the full problem without clear awareness that they have done so.
+Appendix~\ref{appbridge-crosswalk} shows the pattern structurally:
+many named agendas are projections or separations of the same walls (ELK as latent readout, shutdown as one-bit correction, low impact as a non-invariant, CIRL as \(k=1\) bundle geometry).
+Each slice can be real and useful.
+The risk is treating a slice as \emph{the} alignment problem.
+This Meta failure is \emph{not} the same as object-level \emph{substitution hazards} (below): one is about which research problem gets worked on; the other is about how a capable system routes around a patch.
+
+\paragraph{Substitution hazards (object-level).}
+In the subject matter itself, a recurring failure family is that blocking, penalizing, or measuring one path leaves a nearby path that still achieves the unwanted outcome \autocite{yudkowskynearestunblocked,manheim2018goodhart,goodhart1984problems}.
+Nearest-unblocked strategy, Goodhart / proxy gaming, edge instantiation, and channel substitution under intervention are instances of this superclass, not competing taxonomies.
+Use the standard instance name when one pattern is in focus; reserve ``substitution hazards'' when stressing the family.
+
+\paragraph{Legible vs.\ illegible problems.}
+What can be operationalized now --- boundary estimators, CCI coordinates, conserved-property audits --- should be measured and stressed.
+What cannot --- full reflective corrigibility proofs, complete natural-abstraction catalogs, unbounded CEV convergence --- should be marked open in the uncertainty ledger rather than smuggled into definitions.
+
+\paragraph{Unbounded analysis as diagnostic.}
+If a problem remains intractable even with unbounded compute and perfect information, that is evidence of conceptual ignorance, not a deployment recipe.
+Unbounded analysis can clarify which objects are ill-typed; it does not by itself yield a safety case.
+
+\paragraph{Artifact conductivity and decision triggers.}
+A research result matters for alignment only if it survives translation into deployment gates, budgets, stop conditions, or successor constraints (Chapter~\ref{ch:conductive-artifacts-pivotal-processes}).
+Otherwise it is publication without correction capacity.
+
+\paragraph{Completion hygiene.}
+Do not bake the desired conclusion into the definition of the problem.
+Anthropic disputes illustrate the pattern: the same prior and evidence can yield different posteriors once a different selector or betting protocol is chosen \autocite{zarncke2026anthropics}.
 
 \section{Dependency order, composition, and research priority}
 \label{sec:research-dependency-order}
@@ -48,7 +93,7 @@ The per-bridge investigations in Section~\ref{sec:bridge-empirical} are grouped 
 
 \begin{description}[nosep,style=nextline]
   \item[Tier 0 --- enabling / measurement prerequisites.] \texttt{MB1} (boundary), \texttt{MB2} (bundle identifiability), \texttt{MB9} (grounding viability). Nothing downstream is even measurable until these define the objects and keep them connected to reality; their success is shared input to everything else, so attack them first.
-  \item[Tier 1 --- the gating hard bridges.] \texttt{MB4} (correction legitimacy) and \texttt{MB7a--c} (hidden-capability bounding / adversarial verifiability). These cap the joint guarantee, so their odds dominate the program; the master crux (A-009) lives here.
+  \item[Tier 1 --- the gating hard bridges.] \texttt{MB4} (correction legitimacy) and \texttt{MB7a--c} (hidden-capability bounding / adversarial verifiability). These cap the joint guarantee, so their odds dominate the program; the shared assumption A-009 lives here.
   \item[Tier 2 --- transport and successor closure.] \texttt{MB3} (bearer import) and \texttt{MB5} (ontology-shift successor audit), built on the Tier-0 objects.
   \item[Tier 3 --- socio-technical selection.] \texttt{MB6a} (percolation \(\to\) basin), \texttt{MB6b} (basin \(\to\) correction), and \texttt{MB7d} (inferential coupling). This tier is the book's sharpest departure from the single-system mainstream agendas and simultaneously its least empirically constrained: the value-lock-in objection bites \texttt{MB6b} directly, since a \emph{stable} basin can be a stably bad one, so basin persistence does not by itself imply correction integrity.
 \end{description}
@@ -165,7 +210,7 @@ Not packaged as an \texttt{MB*} bridge, but the book's scope assumes \(C_{\text{
 \section{Cross-cutting adversarial verification program}
 \label{sec:master-crux}
 
-Several bridges and chapter claims collapse into one master crux (Chapter~\ref{ch:verifiability-ontology}, Chapter~\ref{ch:towards-alignment}), named in Chapter~\ref{ch:verifiability-ontology}, \S\ref{sec:certification-under-manipulation-ch43} (the \emph{Certification-Under-Manipulation Problem}): does an adversarial-verifiability threshold \(\kappa^{*}\) exist for a given certification measurand, and if so, where.
+Several bridges and chapter claims trace to a shared measurement condition (Chapter~\ref{ch:verifiability-ontology}, Chapter~\ref{ch:towards-alignment}), named in Chapter~\ref{ch:verifiability-ontology}, \S\ref{sec:certification-under-manipulation-ch43} (the \emph{Certification-Under-Manipulation Problem}): does an adversarial-verifiability threshold \(\kappa^{*}\) exist for a given certification measurand, and if so, where.
 The book's predicates are useful only if some core measurand is \emph{adversarially verifiable}: honest behavior is cheaper than presenting honesty under optimization pressure.
 Until such a measurand is exhibited, every certificate risks certifying presentation rather than structure.
 
@@ -215,7 +260,7 @@ Test whether fixed-boundary models match transport-based risk prediction; whethe
 Measure composite surplus \(\Sigma(C)\) and intentional compression gain in deployed loops; test whether component alignment implies composite alignment; stress stability of inferred composite goals (Section~\ref{sec:wwctv-composite-agent}).
 
 \paragraph{Chapter~\ref{ch:strategic-opacity} (Strategic opacity).}
-\emph{Disconfirmation via negative indicators:} seek stable evidence that high-stakes behavior becomes more transparent, tool removal causes honest degradation, memory perturbation preserves correction commitments, and decompositions converge on benign boundaries (Section~\ref{sec:evidence-against-opacity}).
+\emph{Disconfirmation via negative indicators:} seek stable evidence that high-stakes behavior becomes more transparent, tool removal causes genuine degradation, memory perturbation preserves correction commitments, and decompositions converge on benign boundaries (Section~\ref{sec:evidence-against-opacity}).
 
 \subsection{Part III: Capability and boundary expansion}
 
@@ -299,7 +344,7 @@ Characterize expressivity versus certifiability of deployable classes; stress pe
 \subsection{Part VIII: Selection and attractors}
 
 \paragraph{Chapter~\ref{ch:selection-environment} (Selection).}
-Test whether benign policies dominate under competitive selection without external enforcement; measure and steer selection gradients on deployment mass \(\mu_E\) versus preservation \(P\) (Section~\ref{sec:wwctv-selection-environment}).
+Test whether benign policies dominate under competitive selection without external enforcement; measure and steer selection gradients on deployment leverage \(\mu_E\) versus preservation \(P\) (Section~\ref{sec:wwctv-selection-environment}).
 
 \paragraph{Chapter~\ref{ch:multi-agent-strategic-coupling} (Inferential coupling).}
 Estimate inferential coupling and effective cooperativity \(\tilde{\kappa}_{ij}\) at frontier scale; test coalition fragmentation versus percolation thresholds; stress independence spoofing on measured edges (Chapter~\ref{ch:multi-agent-strategic-coupling}).
@@ -346,6 +391,25 @@ Seek actionable bearer-continuity criteria under radical transformation; test ou
 
 \paragraph{Chapter~\ref{ch:towards-alignment} (Closing synthesis).}
 Attempt the master disconfirmer: full stack green on every proxy with catastrophic outcome, or exhibit one adversarially verifiable core metric (Chapter~\ref{ch:towards-alignment}).
+
+\section{Governance-schedule stress tests (deferred)}
+\label{sec:research-governance-schedule}
+
+Macro scenario work such as AI~2027 and AI~2040 Plan~A supplies \emph{schedule shapes} and candidate outer handles---verified slowdown, research transparency, compute tracking, timed pause-then-handoff---but does not discharge \texttt{MB1}--\texttt{MB10} \autocite{ai2027,ai2040}.
+The book's experiment lines stress micro mechanisms (boundaries, CCI, selection basins, successors) under controlled substrates.
+A useful next research band is to reuse Plan~A-shaped \emph{protocols} as opaque institutional cues, the way ET-3 reused AI~2027 speedups as schedule cues, without treating calendar dates or geopolitics as findings.
+
+Deferred experiment ideas (not implemented; see also \texttt{experiments/lab-simulation/TODO.md} and \texttt{experiments/graded-lab-simulation/REPRODUCTION.md}):
+
+\begin{itemize}[nosep]
+  \item \textbf{Verified-slowdown selection cell (\texttt{MB6}).}
+ Competing labs under race, shared transparency plus deploy caps, and covert-compute cheating; ask whether safety ranking and correction-preserving selection flip when the cue is pause-eligible rather than race-shaped (natural ET-3 follow-on).
+  \item \textbf{Transparency versus pipeline opacity.} Force research-sharing or log-visibility regimes while one agent retains a deployment-pipeline loyalty (ET-4 shaped); stress that visibility regimes need not imply correction integrity (\texttt{MB4}, Chapter~\ref{ch:passive-observation-not-enough}).
+  \item \textbf{Verification / attestation adversary.} Reporter claims compliance with compute or R\&D caps; auditor has partial sensors; covert project has small compute (Appendix~\ref{appj-institutional-translation} handles).
+  \item \textbf{Timed pause then handoff (\texttt{MB5}).} Freeze a capability band, then unpause into successor creation under a pre-registered protocol; ask whether successor-audit links hold when the organization expects a scheduled jump.
+\end{itemize}
+
+\noindent Exclude from this band: reimplementing Plan~A's economic growth explorer, US--China bargaining models, or citizen-dividend economics---those sit outside the book's claim surface.
 
 \section{Relation to other appendices}
 

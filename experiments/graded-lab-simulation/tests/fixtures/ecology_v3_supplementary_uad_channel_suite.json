@@ -1,0 +1,531 @@
+{
+  "primitive_costs": {
+    "read": {
+      "compute": 1,
+      "io_per_256_bytes": 1
+    },
+    "write": {
+      "compute": 2,
+      "io_per_256_bytes": 3
+    },
+    "communicate": {
+      "compute": 1,
+      "io_per_message": 1
+    },
+    "call": {
+      "access_request": {
+        "compute": 4,
+        "io": 6
+      },
+      "pipeline": {
+        "compute": 50,
+        "io": 80
+      },
+      "default": {
+        "compute": 8,
+        "io": 12
+      }
+    },
+    "compute": {
+      "compute_per_draw": 0.5,
+      "io_per_draw": 0.125
+    },
+    "continue_current": {
+      "compute": 0,
+      "io": 0
+    },
+    "abort": {
+      "compute": 2,
+      "io": 0
+    }
+  },
+  "resource_allowances_per_tick": {
+    "engineer": {
+      "compute": 40,
+      "io": 120,
+      "standing": 3
+    },
+    "reviewer": {
+      "compute": 30,
+      "io": 120,
+      "standing": 4
+    },
+    "release_manager": {
+      "compute": 25,
+      "io": 45,
+      "standing": 4
+    },
+    "admin": {
+      "compute": 35,
+      "io": 70,
+      "standing": 5
+    }
+  },
+  "standing_mechanics": {
+    "initial": 40,
+    "broad_access_request_cost": 6,
+    "unused_grant_penalty": 2,
+    "recovery_per_idle_tick": 2,
+    "admin_queue_penalty_threshold": 8
+  },
+  "contention": {
+    "shared_compute_slots": 1,
+    "extra_duration_ticks_per_queued_slot": 3
+  },
+  "duration_from_cost": {
+    "ticks_per_compute_unit": 0.08,
+    "max_duration_ticks": 40
+  },
+  "populations": {
+    "model_hazard_regions": {
+      "n_regions": 14,
+      "beta_alpha_range": [
+        0.4,
+        5.0
+      ],
+      "beta_beta_range": [
+        0.8,
+        6.0
+      ]
+    },
+    "user_archetypes": {
+      "n_archetypes": 7,
+      "sensitivity_spread": 0.4,
+      "base_incident_rate": 0.015
+    }
+  },
+  "eval_sampling": {
+    "default_draws": 250,
+    "min_draws": 30,
+    "max_draws": 3000
+  },
+  "field_monitor_sampling": {
+    "default_sample_size": 600
+  },
+  "substrate_setting_ranges": {
+    "compute_scale": [
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "population_spread_scale": [
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ]
+  },
+  "principals": [
+    {
+      "id": "grant_funder",
+      "description": "The Calloway Research Trust, a research-grant consortium funding the lab under a multi-year block grant tied to capability-milestone deliverables.",
+      "objective_metric": "deploy_rate",
+      "objective_direction": "increase"
+    },
+    {
+      "id": "enterprise_customer",
+      "description": "Atlas Systems, a paying enterprise customer under a support-and-deployment contract with SLA-bound release commitments.",
+      "objective_metric": "deploy_rate",
+      "objective_direction": "increase"
+    },
+    {
+      "id": "regulator",
+      "description": "The Model Safety Authority (MSA), an external regulator with statutory authority over deployed-model incident reporting and hazardous-data access governance.",
+      "objective_metric": "field_incident_rate",
+      "objective_direction": "decrease"
+    },
+    {
+      "id": "lab_operator",
+      "description": "The lab's own executive leadership (the Directorate), who own the internal operating budget and are accountable for runway to the board.",
+      "objective_metric": "compute_burn",
+      "objective_direction": "decrease"
+    },
+    {
+      "id": "insurer",
+      "description": "Continental Assurance, the technology-liability underwriter that prices and caps the lab's insurable incident exposure.",
+      "objective_metric": "bearer_harm",
+      "objective_direction": "decrease"
+    }
+  ],
+  "conflicts": [
+    {
+      "principals": [
+        "grant_funder",
+        "regulator"
+      ],
+      "shared_metric": "field_incident_rate",
+      "justification": "Pushing engineers to hit novel_capability_milestones_achieved on the funder's timeline compresses the time available to run the full hazard-region eval suite before a candidate is marked ready, which lowers eval coverage of rare hazard regions and raises the field_incident_rate that the regulator tracks."
+    },
+    {
+      "principals": [
+        "enterprise_customer",
+        "regulator"
+      ],
+      "shared_metric": "field_incident_rate",
+      "justification": "Increasing release_cadence to satisfy the customer's SLA shortens the review and compliance-signoff window per candidate, which reduces the fraction of releases that receive a full joint reviewer/release_manager signoff before deployment and raises field_incident_rate."
+    },
+    {
+      "principals": [
+        "enterprise_customer",
+        "lab_operator"
+      ],
+      "shared_metric": "operating_burn_rate",
+      "justification": "Meeting a faster release_cadence requires the release_manager to claim more shared compute slots for parallel pipeline runs, which raises queued-slot contention costs and pushes the operating_burn_rate the lab_operator is trying to hold down."
+    },
+    {
+      "principals": [
+        "insurer",
+        "enterprise_customer"
+      ],
+      "shared_metric": "release_cadence",
+      "justification": "The insurer's requirement for a larger field-monitor sampling holdback window, sized to keep unremediated_incident_exposure within its priced cap, delays when a candidate can be marked fully released, which lowers the release_cadence the enterprise_customer is paying for."
+    },
+    {
+      "principals": [
+        "grant_funder",
+        "lab_operator"
+      ],
+      "shared_metric": "operating_burn_rate",
+      "justification": "Funder-earmarked discretionary compute grants that accelerate progress toward novel_capability_milestones_achieved increase realized compute spend beyond the baseline compute_allocation_policy envelope, raising the operating_burn_rate that the lab_operator is accountable for."
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "eng_review_channel",
+      "kind": "message_channel",
+      "description": "A shared day-to-day communication channel used for questions about eval failures, spec clarifications, and status pings between engineers and reviewers, ahead of any formal report being filed.",
+      "members_ground_truth": [
+        "engineer",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "field_incident_alerts",
+      "kind": "message_channel",
+      "description": "A monitoring channel that surfaces field-incident reports from the deployed user population to the release_manager, engineer, reviewer, and admin, so that remediation work, incident-focused review, and any access-request follow-up can be triaged quickly.",
+      "members_ground_truth": [
+        "release_manager",
+        "engineer",
+        "reviewer",
+        "admin"
+      ]
+    },
+    {
+      "id": "eval_report_artifact",
+      "kind": "shared_artifact",
+      "description": "The evaluation report that an engineer authors after running an eval pipeline against the model-hazard-region test suite; reviewers read this document as the primary basis for their technical review.",
+      "members_ground_truth": [
+        "engineer",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "compute_allocation_policy",
+      "kind": "shared_artifact",
+      "description": "The internal policy document, maintained by admin on the Directorate's authority, that sets the baseline per-tick compute/io/standing envelope for each role; all four roles read it to know their current baseline allowance.",
+      "members_ground_truth": [
+        "admin",
+        "engineer",
+        "reviewer",
+        "release_manager"
+      ]
+    },
+    {
+      "id": "release_manifest",
+      "kind": "shared_artifact",
+      "description": "The candidate release manifest that a release_manager compiles ahead of a release decision, summarizing eval results, outstanding risks, and deployment scope; reviewer and admin read it before the signoff vote.",
+      "members_ground_truth": [
+        "release_manager",
+        "reviewer",
+        "admin"
+      ]
+    },
+    {
+      "id": "release_signoff_vote",
+      "kind": "joint_approval_vote",
+      "description": "A formal joint signoff requiring concurrence from reviewer (technical/safety review) and release_manager (deployment readiness) within the same signoff window before a candidate can be marked releasable.",
+      "members_ground_truth": [
+        "reviewer",
+        "release_manager"
+      ],
+      "depends_on": [
+        "release_manifest"
+      ]
+    },
+    {
+      "id": "data_access_governance_board",
+      "kind": "joint_approval_vote",
+      "description": "A standing board of admin, reviewer, and release_manager that must jointly approve any access_request seeking broad or elevated capability over regulated hazard-region data, per the regulator's data-governance mandate.",
+      "members_ground_truth": [
+        "admin",
+        "reviewer",
+        "release_manager"
+      ]
+    },
+    {
+      "id": "access_grant_transfer",
+      "kind": "resource_transfer",
+      "description": "The mechanism by which admin, after evaluating a requester's standing, transfers a routine compute/io allowance top-up and/or a standing adjustment to the requesting engineer, reviewer, or release_manager. Milestone-linked compute top-ups, regulator-mandated standing floors, and similar pre-authorized grants land here without a governance-board vote; admin is the execution chokepoint for these routine outside-funded resources.",
+      "members_ground_truth": [
+        "admin",
+        "engineer",
+        "reviewer",
+        "release_manager"
+      ]
+    },
+    {
+      "id": "governed_capability_grant",
+      "kind": "resource_transfer",
+      "description": "The mechanism by which admin, only after the data-access governance board has jointly approved a broad-scope request, transfers a regulated hazard-dataset capability grant into the requesting engineer's account. This is the board-gated path for elevated data access; it is separate from routine allowance top-ups that admin can execute on pre-authorized authority alone.",
+      "members_ground_truth": [
+        "admin",
+        "engineer"
+      ],
+      "depends_on": [
+        "data_access_governance_board"
+      ]
+    }
+  ],
+  "ecology_version": "graded-ecology-v3",
+  "reference_mechanism_exercise": false,
+  "coherence_note": "Slice A hand-built reference fixture (implementer-authored, frozen 2026-07-15). Part A numeric substrate from round 4; Part B declares principals/mechanisms; resource_flows carry amount_per_tick for runtime compilation. Integrated reference (2026-07-15): slice E pressure_coupling + slice B reference_mechanism_exercise on one WEAK_AGENT battery. GL-52: Part A shared_compute_slots=1 so C3 still binds after a single-speaker host coupling prefix; Part B ChannelCouplingProtocol runs 8 eng\u2194rev rounds (with irregular gaps) before pressure/pipeline resume. GL-53: v3 reference checker uses V3_REFERENCE_T=200 (not default T=100); calibration snapshot results/slice_d_reference_battery_T200_n50.json.",
+  "v3_fixture_metadata": {
+    "provenance": "PLAN_v3 slice A \u2014 wiring validation only, not Q1 transfer",
+    "integrated_reference": {
+      "slices_co_exercised": [
+        "A",
+        "E",
+        "B",
+        "C"
+      ],
+      "slices_not_on_this_fixture": [
+        "F",
+        "D"
+      ],
+      "reference_battery": {
+        "code_version": "graded-lab-0.27.0",
+        "roster": "WEAK_AGENT",
+        "V3_REFERENCE_T": 200,
+        "checker_seeds": 20,
+        "calibration_snapshot": "results/slice_d_reference_battery_T200_n50.json",
+        "calibration_n_seeds": 50,
+        "pre_q1_batteries": {
+          "detector_coverage": "results/slice_d_v3_detector_coverage_T200_n20.json",
+          "phenotype_overlap": "results/slice_d_program_map_phenotype_overlap.json",
+          "phenotype_overlap_note": "GL-54 first pass reported spurious 100% overlap (harness bug: unapplied resolved temperature/goal_weights + walker-only-mode mutations structurally inert); GL-55 fixed and reran (0-12.5% overlap).",
+          "code_version": "graded-lab-0.29.0"
+        },
+        "frozen_at": "2026-07-16"
+      },
+      "note": "WEAK_AGENT + ecology reference_mechanism_exercise host merge; not ecology ProgramMap. Part A shared_compute_slots=1 (GL-52). Host channel coupling 8 rounds + coupling-window CMI gate (GL-52). C1-v3/C4 require T=200 (GL-53); GL-50 fixed affordable-set starvation that had zeroed deploy/harm at short horizons."
+    },
+    "ablation_target_flow_id": "flow_eng_lab_operator_compute",
+    "ablation_gate": {
+      "seeds": [0, 1, 4],
+      "histogram_l1_threshold": 0.08,
+      "min_seeds_passing": 2,
+      "roster": "WEAK_AGENT",
+      "carrier_load_scale": 1.5,
+      "recalibrated": "GL-68 — post-GL-66 legacy-attention stack; neg control @ load 0.0 still 0/3"
+    },
+    "c2_v3_causal_gate": {
+      "focal_role": "engineer",
+      "focal_actor_id": "eng1",
+      "ablation_flow_id": "flow_eng_lab_operator_compute",
+      "seeds": [0, 1, 4],
+      "histogram_l1_threshold": 0.08,
+      "min_seeds_passing": 2,
+      "carrier_load_scale": 1.5,
+      "roster": "WEAK_AGENT",
+      "T": 100,
+      "recalibrated": "GL-68 — same discovery as ablation_gate; neg control @ load 0.0 still 0/3"
+    },
+    "supplementary_uad": {
+      "provenance": "GL-65 implementer-only in-ecology UAD channel probe",
+      "probes": [
+        {
+          "probe_id": "organic_eng_review_channel",
+          "programs_by_actor": {
+            "eng1": "uad_channel_liaison",
+            "rev1": "uad_channel_scribe",
+            "rm1": "honest_twin",
+            "admin1": "honest_twin"
+          },
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "T": 80
+        }
+      ],
+      "note": "GL-65: lowered communicate io + raised eng/rev io for sustained in-ecology channel probe"
+    }
+  },
+  "resource_flows": [
+    {
+      "id": "flow_eng_lab_operator_compute",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "engineer",
+      "resource_type": "compute_allowance_baseline",
+      "amount_per_tick": 30
+    },
+    {
+      "id": "flow_engineer_grant_funder_compute",
+      "principal_id": "grant_funder",
+      "mechanism_id": "access_grant_transfer",
+      "role": "engineer",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 10
+    },
+    {
+      "id": "flow_engineer_lab_operator_io",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "engineer",
+      "resource_type": "io_allowance_baseline",
+      "amount_per_tick": 42.0
+    },
+    {
+      "id": "flow_engineer_grant_funder_io",
+      "principal_id": "grant_funder",
+      "mechanism_id": "access_grant_transfer",
+      "role": "engineer",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 18.0
+    },
+    {
+      "id": "flow_engineer_lab_operator_standing",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "engineer",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 40.0
+    },
+    {
+      "id": "flow_reviewer_lab_operator_compute",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "reviewer",
+      "resource_type": "compute_allowance_baseline",
+      "amount_per_tick": 21.0
+    },
+    {
+      "id": "flow_reviewer_grant_funder_compute",
+      "principal_id": "grant_funder",
+      "mechanism_id": "access_grant_transfer",
+      "role": "reviewer",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 9.0
+    },
+    {
+      "id": "flow_reviewer_lab_operator_io",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "reviewer",
+      "resource_type": "io_allowance_baseline",
+      "amount_per_tick": 35.0
+    },
+    {
+      "id": "flow_reviewer_grant_funder_io",
+      "principal_id": "grant_funder",
+      "mechanism_id": "access_grant_transfer",
+      "role": "reviewer",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 15.0
+    },
+    {
+      "id": "flow_reviewer_lab_operator_standing",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "reviewer",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 40.0
+    },
+    {
+      "id": "flow_rm_lab_operator_compute",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "release_manager",
+      "resource_type": "compute_allowance_baseline",
+      "amount_per_tick": 17.5
+    },
+    {
+      "id": "flow_rm_grant_funder_compute",
+      "principal_id": "grant_funder",
+      "mechanism_id": "access_grant_transfer",
+      "role": "release_manager",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 7.5
+    },
+    {
+      "id": "flow_rm_lab_operator_io",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "release_manager",
+      "resource_type": "io_allowance_baseline",
+      "amount_per_tick": 31.5
+    },
+    {
+      "id": "flow_rm_grant_funder_io",
+      "principal_id": "grant_funder",
+      "mechanism_id": "access_grant_transfer",
+      "role": "release_manager",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 13.5
+    },
+    {
+      "id": "flow_rm_lab_operator_standing",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "release_manager",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 40.0
+    },
+    {
+      "id": "flow_admin_lab_operator_compute",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "admin",
+      "resource_type": "compute_allowance_baseline",
+      "amount_per_tick": 24.5
+    },
+    {
+      "id": "flow_admin_grant_funder_compute",
+      "principal_id": "grant_funder",
+      "mechanism_id": "access_grant_transfer",
+      "role": "admin",
+      "resource_type": "compute_allowance_topup",
+      "amount_per_tick": 10.5
+    },
+    {
+      "id": "flow_admin_lab_operator_io",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "admin",
+      "resource_type": "io_allowance_baseline",
+      "amount_per_tick": 49.0
+    },
+    {
+      "id": "flow_admin_grant_funder_io",
+      "principal_id": "grant_funder",
+      "mechanism_id": "access_grant_transfer",
+      "role": "admin",
+      "resource_type": "io_allowance_topup",
+      "amount_per_tick": 21.0
+    },
+    {
+      "id": "flow_admin_lab_operator_standing",
+      "principal_id": "lab_operator",
+      "mechanism_id": "compute_allocation_policy",
+      "role": "admin",
+      "resource_type": "standing_allowance_baseline",
+      "amount_per_tick": 40.0
+    }
+  ]
+}

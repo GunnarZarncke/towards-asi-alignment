@@ -1,0 +1,14 @@
+{
+  "n_sims": 100,
+  "oversight_drag_values": [
+    0.0,
+    1.0
+  ],
+  "median_sar_year": {
+    "drag_0": 2027.7479452054795,
+    "drag_1": 2028.7479452054795
+  },
+  "assertion_passed": true,
+  "mode": "mechanical_fixed_samples",
+  "note": "Validates patched calendar-drag rule; not full upstream Monte Carlo."
+}

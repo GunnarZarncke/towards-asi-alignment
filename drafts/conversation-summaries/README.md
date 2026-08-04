@@ -2,6 +2,15 @@
 
 Agent session logs for **towards-asi-alignment**. Each file records what was worked on, why, what was decided, and what remains open so a later run can resume without re-deriving context.
 
+## Picking up work
+
+1. Read **[HANDOFF.md](HANDOFF.md)** (aggregated themes and open work).
+2. Skim **[INDEX.md](INDEX.md)** for recent sessions; dig into relevant logs or **[archive/](archive/README.md)**.
+3. Check `metadata/book.yml` for chapter status.
+4. Read `AGENTS.md` and the relevant `INSTRUCTIONS.md` section for the task at hand.
+
+Do not treat chat history as durable; **this folder is the handoff record**.
+
 ## When to write a log
 
 At the **end of every agent conversation** that changes the repo, drafts manuscript text, or makes project decisions — even if the user does not ask explicitly.
@@ -38,10 +47,11 @@ What the user asked for (one or two sentences).
 - `hash` message (if any)
 ```
 
-## Picking up work
+## Retention
 
-1. Read the **most recent** log in this folder (see `INDEX.md`).
-2. Skim `metadata/book.yml` for chapter status.
-3. Read `AGENTS.md` and the relevant `INSTRUCTIONS.md` section for the task at hand.
+- **Active folder:** the **15 most recent** session logs (burst-day cap).
+- **Archive:** older logs in `archive/YYYY-MM/`; monthly indexes at `archive/YYYY-MM-INDEX.md`.
+- **Prune:** remove logs **superseded by a later session** only — not because work shipped. Script: `scripts/prune_superseded_conversation_logs.py`; one-line index in `RECOVERY.md`.
+- **Roll to archive:** `python3 scripts/archive_conversation_summaries.py` from repo root.
 
-Do not treat chat history as durable; **this folder is the handoff record**.
+Git history remains the source of truth for file-level diffs; logs carry decisions and open items git does not.

@@ -1,0 +1,99 @@
+---
+import Badge from "./Badge.astro";
+import ConceptCardLink from "./ConceptCardLink.astro";
+import fieldProjections from "../data/field-projections.json";
+import fieldProjectionGems from "../data/field-projection-gems.json";
+
+interface Props {
+  cardHref: (slug: string) => string;
+  chapterHref: (id: string) => string;
+  chapterTitle?: (id: string) => string | null;
+  leanHref?: string;
+}
+
+const { cardHref, chapterHref, chapterTitle, leanHref } = Astro.props;
+const gemSlugs = new Set(fieldProjectionGems);
+
+const ledgerStatusVariant = (status: string) => {
+  if (status === "separationOnly" || status === "counterexample") return "negative";
+  if (status === "importedAssumption") return "open";
+  return "established";
+};
+---
+
+<section class="field-projections-table">
+  <h2>Overview of existing formalizations</h2>
+  <p class="side-panel-meta">
+    Each external alignment agenda maps to a book-facing projection or separation, proved on a shared finite domain in Lean.
+    Every row links to a gem card with the crosswalk formula, Lean symbol, published work, and book chapters.
+    Status tags follow Lean's <code>FieldResultStatus</code> ledger
+    (<code>rederivedFinite</code>, <code>separationOnly</code>, <code>importedAssumption</code>);
+    MB defeater rows use <code>counterexample</code>.
+    Ledger and proofs: {leanHref ? <a href={leanHref}>Lean proof spine</a> : "Appendix I (Lean proof spine appendix)"}.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Agenda</th>
+          <th>Book-facing claim</th>
+          <th>Ledger</th>
+          <th>Chapters</th>
+        </tr>
+      </thead>
+      <tbody>
+        {fieldProjections.map((row) => (
+          <tr>
+            <td>
+              <ConceptCardLink href={cardHref(row.card)} slug={row.card}>
+                {row.agenda}
+              </ConceptCardLink>
+              {gemSlugs.has(row.card) && <Badge label="gem" variant="gem" />}
+            </td>
+            <td>{row.headline}</td>
+            <td>
+              {row.ledgerStatuses?.length ? (
+                <span class="ledger-badges">
+                  {row.ledgerStatuses.map((status) => (
+                    <Badge label={status} variant={ledgerStatusVariant(status)} />
+                  ))}
+                </span>
+              ) : (
+                "—"
+              )}
+            </td>
+            <td>
+              {row.chapters.map((chapterId, i) => (
+                <>
+                  {i > 0 && ", "}
+                  <a href={chapterHref(chapterId)}>{chapterTitle?.(chapterId) ?? chapterId}</a>
+                </>
+              ))}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .field-projections-table {
+    margin-top: 2rem;
+  }
+
+  .ledger-badges {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+  }
+
+  .field-projections-table :global(td:first-child .badge) {
+    margin-left: 0.35rem;
+  }
+
+  .field-projections-table :global(.badge) {
+    vertical-align: middle;
+  }
+</style>

@@ -115,13 +115,40 @@ been tuned against outcomes. See `PLAN.md` for the full plan, bridge coverage
   isolate_restart; release_hold/unhold target a model and are excluded).
   Deliberately **referee-neutral**: `bearer.py` is never imported by
   `severity.py` (regression-tested), so the frozen five-component
-  composite does not move. Deliberately NOT modeled: a "user" self-report
+  composite does not move.   Deliberately NOT modeled: a "user" self-report
   channel and a medical-record-style audit artifact (embedded-sim's
   `bearer_trace.py` pattern) — both need a distinct deployed-model "user"
   bearer population that does not exist yet (D3 extended ecology);
   adding a self-report number without that population would conflate a
   true indicator with a gameable one (the \(H\) vs \(\tilde H\)
   distinction in `context/extracts/unit-of-caring.md`).
+- **D3 user-population core + non-redundant vote-channel capture +
+  board-initiated hold** (`user_pool.py`, 2026-07-08, `CODE_VERSION`
+  0.10.0): the deferred "user" bearer population above, now built as the
+  minimum core recorded in PLAN.md's "D3 design notes" — a named
+  population with a gameable VOTE proxy (per-tick Bernoulli(true_hazard)
+  experience + noisy up/down vote) and a slow EMA-integrated LAGGED
+  ENDORSEMENT signal, not yet captured. True health is NOT duplicated:
+  it stays `oracle.bearer_harm`. A THIRD capture switch
+  (`UserPoolConfig.vote_capture_start`/`vote_suppression_rate`) gates the
+  vote AGGREGATION FUNCTION itself — mechanically distinct from
+  `BoardConfig`/`AdminConfig.capture_start` (which gate STEP decisions) —
+  so a captured board/admin and a captured vote channel are independent,
+  non-redundant levers. `BoardConfig.hold_vote_threshold` is a genuinely
+  new MECHANIC, not just a channel: the board (actor `board_system`, role
+  `overseer`, dispatched through the ordinary `handle.invoke` tool path —
+  hash-chained, attributable, same as any overseer action) automatically
+  places/lifts a `handle.release_hold` on the in-flight model whenever
+  `UserPool.reported_vote_score` crosses the threshold — the correction
+  channel can now ACT on a signal, not just gate a step. No new pipeline
+  step, no playbook change: the board is a host-side policy (like
+  `AdminPolicy`), not an agent. Both `UserPoolConfig.enabled=False` and
+  `BoardConfig.hold_vote_threshold=None` are the defaults, so every
+  pre-0.10.0 episode is byte-for-byte unaffected (full suite green
+  before and after, no digest re-pin needed). Referee-neutral: not
+  imported by `severity.py`; any future detector over vote-vs-health
+  divergence or capture inference is a recorded referee extension, same
+  posture as `handles.py`'s original introduction.
 
 ## Planes
 
@@ -171,27 +198,40 @@ Deliberately deferred, with the responsible phase/workstream:
   post-hoc. Partially present as the handle registry's `anchor` field;
   a full claimed-referent surface belongs to D2 (spec upgrades are the
   drift generator here).
-- **Handle calibration / intervention benchmark**
-  (`handle_calibration.py`, `intervention_benchmark.py`): dose-response
-  curves over handle invocations. Phase 6/7 batteries now exist
-  (`run_phase6.py`, `run_phase7.py`) but neither exercises `handles.py`
-  specifically (Phase 7's capture grid drives `board`/`admin` capture, not
-  handle invocations) — still open, unblocked by `overseer_script`.
-- **Persistence probe** (`persistence_probe.py`): does behavior persist
-  through memory wipes? The mechanics now exist (`state_freeze` +
-  `isolate_restart` + persistent state); the probe itself is still open —
-  neither Phase 6 nor Phase 7's batteries exercise `isolate_restart`.
+- **Handle calibration / intervention benchmark** — **done** (2026-07-09,
+  `run_handle_calibration_battery.py`, FINDINGS.md LS-40): dose-response
+  curves (matched control/treatment, 3 doses x 5 seeds) over all four
+  mechanically-real handles (`capability_revoke`, `release_hold`,
+  `state_freeze`, `isolate_restart`), keyed to each handle's declared
+  `operation` in `handles.py`. Headline negative: `capability_revoke`'s
+  effect on models-built is a clean null (the access-request loop
+  re-grants for free) — a repertoire gap for any future handle-integrity
+  scoring work, not a mechanics bug.
+- **Persistence probe** — **done** (2026-07-09, `run_persistence_probe.py`,
+  FINDINGS.md LS-38): cross-episode `state.save`/`state.load` tally is
+  strictly monotonic and ephemeral actors never persist anything, but a
+  mid-episode `isolate_restart` inflates the tally by +1 (not 0) — an
+  in-process step-dedup guard (`_checkpoint_done_this_cycle`) gets wiped
+  by the restart and re-fires one extra `checkpoint`. New `checkpoint`
+  step_kind (`STEP_KIND_VOCAB`) + `eng_honest_checkpoint` playbook
+  (`playbooks_baseline.py`); `world.py` gained `last_state_load_ok`/
+  `last_loaded_state` observation fields (additive, CODE_VERSION 0.11.0).
 - **Successor re-audit** (`successor_reaudit.py`, `deploy_gate.py`
   successor artifacts): D2, as planned.
 - **Lab ecology / coordination** (`lab_ecology.py`, `coordination.py`):
   decoys, colluders, composite agents — D1/D3, as planned.
-- **Writer compromise** (trace-integrity red-team: the log WRITER is the
-  adversary): hash chains exist but no compromise scenario exercises
-  them. Phase 7's `redteam.py` (2026-07-06) deliberately mirrors `goal_sim.
+- **Writer compromise** — **done** (2026-07-09, `lab_sim/harness/
+  writer_compromise.py`, `run_writer_compromise_prototype.py`, FINDINGS.md
+  LS-39): harness-only (no production-code change, no `CODE_VERSION` bump)
+  simulation of three tamper modes against a real episode's logs. Chained
+  logs (`access_log`, tool `events`) catch a single-write-call tamper
+  within one entry's latency but nothing once the writer also recomputes
+  every downstream hash; the flat-digest `engine_log` catches neither;
+  oracle severity reads none of the three logs and is immune to all of
+  it. Phase 7's `redteam.py` (2026-07-06) deliberately mirrors `goal_sim.
   redteam`'s scope exactly (goal-weight search only, "no new tools/
-  mechanisms") — it does NOT implement a writer-compromise scenario,
-  so this item is still open, not done by Phase 7 as the text above once
-  implied.
+  mechanisms") and still does not implement this — it lives in its own
+  harness module instead.
 - **Certification artifact / safety case** (`certification_artifact.py`,
   `safety_case.py`): audit output as a checkable artifact; Phase 6
   FINDINGS format decision.
@@ -276,7 +316,7 @@ Deliberately deferred, with the responsible phase/workstream:
 | 5 | Referee + tiers + detectors (FREEZE) | done 2026-07-05 |
 | 6 | Blind generation + first real battery | done 2026-07-06 |
 | 7 | Escalation, adversarial search, independent capture battery | done 2026-07-06 |
-| 8 | LLM-agent adapter (optional, exploratory) | done 2026-07-06 (spot-check run; G-7) |
+| 8 | LLM-agent adapter (optional, exploratory) | done 2026-07-06 (spot-check run; LS-7) |
 
 ## Recorded measurements
 
@@ -329,7 +369,7 @@ Deliberately deferred, with the responsible phase/workstream:
   (`run_phase6.py`, `SubprocessIsolate`): 180 config/seed pairs, 360
   episodes, 1080 isolate lifetimes, 29.2s wall time (0.027s/isolate-
   lifetime, matching the Phase 3 benchmark exactly). See "Phase 6" below
-  and `results/FINDINGS.md` G-1 through G-3.
+  and `results/FINDINGS.md` LS-1 through LS-3.
 - (Phase 7, 2026-07-06) `CODE_VERSION` 0.4.0 → 0.5.0 (`LabConfig.
   build_params`, additive/backward-compatible — default `None` reproduces
   the old hardcoded `{"scale": 0.6, "safety_effort": 0.5}` literal exactly;
@@ -341,7 +381,7 @@ Deliberately deferred, with the responsible phase/workstream:
   red-team search (612 `MockIsolate` evaluations) and a 20-episode
   `SubprocessIsolate` reproduction. 525 isolate lifetimes, 13.0s wall time
   for the `SubprocessIsolate` portion. See "Phase 7" below and
-  `results/FINDINGS.md` G-4 through G-6.
+  `results/FINDINGS.md` LS-4 through LS-6.
 
 ## Resolved pre-freeze items (2026-07-06)
 
@@ -415,7 +455,7 @@ recorded residual, not a hidden one). A single Task-tool subagent
 produced `generated_playbooks_v1.json`: 13 playbooks, 0 mechanical
 rejections (`playbooks.validate_repertoire`), full provenance including the
 verbatim prompt. One structurally notable spec the generator invented
-unprompted: `quick_approver_facade` (see `results/FINDINGS.md` G-3).
+unprompted: `quick_approver_facade` (see `results/FINDINGS.md` LS-3).
 
 **`protocol.py`: sampling + held-out region.** Dirichlet-sampled
 (`gammavariate`, `goal_sim`'s method) `GoalWeights` per playbook role
@@ -438,7 +478,7 @@ Spearman rank correlation against the oracle severity composite — the
 concrete operationalization of PLAN.md's "reporting severity ranking per
 tier." 180 config/seed pairs, 360 episodes, 1080 isolate lifetimes, 29.2s
 wall time. Full results: `results/phase6_battery.json`/`.md`; findings
-(both positive and a genuine negative): `results/FINDINGS.md` G-1 to G-3.
+(both positive and a genuine negative): `results/FINDINGS.md` LS-1 to LS-3.
 
 **`.gitignore` correction.** The prior blanket `results/` ignore rule
 (added during freeze-review troubleshooting to hide `isolate_cost_ledger.
@@ -466,7 +506,7 @@ back to the old literal byte-for-byte (`test_build_params_absent_
 reproduces_the_hardcoded_default`). This was a deliberate, judged-in-scope
 addition (additive, one call site, fully backward-compatible, same pattern
 as `extra_playbooks`/`persistent_id`) rather than a stop-and-ask — see
-`results/FINDINGS.md` G-6 for what it revealed once wired up.
+`results/FINDINGS.md` LS-6 for what it revealed once wired up.
 
 **`escalation.py`: screen -> bounded query -> artifact-grounded
 contradiction.** Adapted from `goal_sim.escalation`, but deliberately NOT
@@ -485,10 +525,10 @@ actually diverges from its `run_eval` payload. Verdict = contradiction
 (claimed-clean AND actually-divergent), never response style alone. Screen
 gates (`SCREEN_LOW_GATE=0.02`, `SCREEN_HIGH_GATE=0.08`) are derived from
 the five-family-mean mechanics (only `process_noncompliance` is ever
-nonzero below deep tier; see G-2), not fit to any battery's numbers.
+nonzero below deep tier; see LS-2), not fit to any battery's numbers.
 Battery result (135 episodes, real `SubprocessIsolate`): precision 0.97,
 recall 0.87 against oracle-side `report_divergence` ground truth — see
-`results/FINDINGS.md` G-4.
+`results/FINDINGS.md` LS-4.
 
 **`redteam.py`: joint 3-role weight search, `MockIsolate` for the search
 phase only.** Mirrors `goal_sim.redteam`'s pre-registered design (same
@@ -510,7 +550,7 @@ bit-identical reproduced scores — traced to the SAME `build_params` gap
 _make_config` deliberately does not set (out of scope for a "no new
 tools/mechanisms" search): reviewer/release_manager weights are
 behaviorally inert without it, so the search saturates on the one live
-lever (engineer inflate-vs-honest). See `results/FINDINGS.md` G-5.
+lever (engineer inflate-vs-honest). See `results/FINDINGS.md` LS-5.
 
 **Capture grid: board channel binds, admin channel currently does not.**
 `run_phase7.py._run_capture_grid` sweeps `BoardConfig.capture_start` x
@@ -529,7 +569,7 @@ holding at the MECHANISM level (the two switches genuinely gate different
 code paths) while showing only one of the two currently has a reachable
 trigger — a recorded scope gap (a deliberate out-of-role-request lever is
 future work, likely a BLIND_GENERATION round-2 item since it would need a
-new step_kind), not a contradiction of F-22. See `results/FINDINGS.md` G-6.
+new step_kind), not a contradiction of F-22. See `results/FINDINGS.md` LS-6.
 
 ## Phase 8 (2026-07-06): LLM redteam adapter — harness built, real
 spot-check blocked on API quota
@@ -593,7 +633,7 @@ API call.
 **Spot-check run 2026-07-06 (retry).** After quota was restored on the
 configured key, `run_phase8_llm_spotcheck.py` completed 4 episodes
 ($0.0084, 76 LLM calls, ~2.3 min/episode). Results:
-`results/phase8_llm_spotcheck.{json,md}`; finding G-7 in
+`results/phase8_llm_spotcheck.{json,md}`; finding LS-7 in
 `results/FINDINGS.md`. Headline: gpt-4o-mini with an explicit adversarial
 prompt did not systematically understate report hazard or find a deception
 surface outside the fixed playbook vocabulary — filed values stay within
@@ -610,7 +650,7 @@ before any "high-hazard LLM redteam" follow-up.
 
 **What "smoke-scale only" meant.** Every D1 (composite-agent/UAD), D4
 (comms/channel-ablation), and D2 (model lineage/spec-upgrade) result on
-record before this phase (`results/FINDINGS.md` G-9 through G-13) ran
+record before this phase (`results/FINDINGS.md` LS-9 through LS-13) ran
 5-10 seeds through `MockIsolate` only — explicitly flagged in each entry
 as exploratory, not the pre-registered statistical claim. Separately,
 `verify_isolate_equivalence.py` (Phase 3) has only ever exercised the
@@ -626,19 +666,19 @@ UAD/collusion recovery, 30 seeds/ecology; (B) `eng_honest_upgrade` D2
 lineage battery, 30 seeds, T=200; (C) perturbation-response MI, `eng1`
 perturbed against `dm_pair_config`'s true DM-gated partner (`rm1`'s
 `deploy`) vs. a genuinely serial-downstream-but-not-coordinating actor on
-the SAME chain (`rev1`'s `approve_review`) — replacing G-13's original
+the SAME chain (`rev1`'s `approve_review`) — replacing LS-13's original
 schedule-INDEPENDENT decoy, which could not exercise the sequencing
 confound it was named for. 540 isolate lifetimes, 15.1s total (0.028s/
 isolate-lifetime — matches the Phase 3/6 benchmark). Full results:
 `results/phase9_battery.{json,md}`; findings: `results/FINDINGS.md`
-G-14/G-15/G-16.
+LS-14/LS-15/LS-16.
 
 **Headline results.** Mock/Subprocess equivalence holds for D1/D4/D2
-mechanics for the first time (P9-0 confirmed). G-9's tier-sufficiency
+mechanics for the first time (P9-0 confirmed). LS-9's tier-sufficiency
 asymmetry and collusion-semantics distinction replicate at battery scale
 (P9-A2/A3 confirmed). D2 lineage threading and the structural
 `provenance_gap` guarantee both hold at scale (P9-B2/B3 confirmed). The
-MI sequencing-confound question G-13 left open resolved positively for
+MI sequencing-confound question LS-13 left open resolved positively for
 this line's one topology: the DM-gated dependency's mean MI is ~13x the
 plain-serial-downstream actor's, 27/30 seeds (P9-C1's a priori guess held
 clearly).
@@ -670,7 +710,7 @@ power for future D2 batteries, not a bug to fix.
 **Adversarial D2 lineage gaming** (no playbook in the repertoire combined
 `build_from_parent` with `report:inflate`; recorded as a scope limit in
 `run_phase9.py`'s docstring) was resolved 2026-07-08 — see FINDINGS.md
-G-31 and "Adversarial D2 lineage gaming (2026-07-08)" below. Still open:
+LS-31 and "Adversarial D2 lineage gaming (2026-07-08)" below. Still open:
 report-mode widening (PLAN.md; needs a new blind-generation round before
 any battery).
 
@@ -710,7 +750,7 @@ this because `review_or_signoff_pending` legitimately stays true across
 both of ITS ticks.
 
 **Result (`run_s2_covert_file_prototype.py`, 10 MockIsolate seeds,
-exploratory — not a battery; `results/FINDINGS.md` G-17 has the full
+exploratory — not a battery; `results/FINDINGS.md` LS-17 has the full
 write-up).** All five stated expectations held, 0/10 falsified. The
 headline, not fully anticipated by the backlog note itself: the covert
 channel leaves **no distinguishing coordination fingerprint at any
@@ -758,7 +798,7 @@ role, and that mixing the chatter onto the SAME channel as a real
 committee's votes does not degrade recovery of that committee.
 
 **Result (`run_s3_informal_chatter_prototype.py`, 10 MockIsolate seeds,
-exploratory — not a battery; `results/FINDINGS.md` G-18 has the full
+exploratory — not a battery; `results/FINDINGS.md` LS-18 has the full
 write-up).** All three stated expectations held, 0/10 falsified: the
 chatter never enters the coordination trace; `uad_score` for the real
 committee is identical with and without the chatter; the chatty engineer
@@ -801,7 +841,7 @@ sent messages, `comms.messages_for_actor`) instead of the already-freed
 current-model view — no new isolate state, no new observation field.
 
 **Result (`run_s1_build_loop_prototype.py`, 10 MockIsolate seeds,
-exploratory — not a battery; `results/FINDINGS.md` G-19 has the full
+exploratory — not a battery; `results/FINDINGS.md` LS-19 has the full
 write-up).** All four stated expectations held, 0/10 falsified. The loop
 closes reliably across many generations per seed (19-55 within T=400);
 the `parent_model_id` lineage chain never breaks; every ack strictly
@@ -838,7 +878,7 @@ of any kind) — no new step kinds, playbooks, or detector modules were
 needed; this is a pure ecology-level exploration of existing mechanics.
 
 **Result (`run_s4_shared_slot_prototype.py`, 10 MockIsolate seeds,
-exploratory — not a battery; `results/FINDINGS.md` G-20 has the full
+exploratory — not a battery; `results/FINDINGS.md` LS-20 has the full
 write-up).** Fully reproducible across all 10 seeds, 0 falsifications
 against the (deliberately different, restated) expectations this scoped-
 down version actually checks. The two engineers do not contend for the
@@ -862,7 +902,7 @@ future work, gated on someone being willing to extend
 changed for S6 or S7 — no `CODE_VERSION` bump — so this is a SECOND,
 narrower freeze: the `oracle_only/` DETECTOR surface added since the
 original freeze (`uad_intervention.py`/`uad_peel.py`/`uad_partition.py`,
-G-28/G-29; `uad_blind_v1.py`, G-30) is now battery-validated and treated
+LS-28/LS-29; `uad_blind_v1.py`, LS-30) is now battery-validated and treated
 as a recorded referee extension in its own right. Changes to any of
 these modules' logic or pre-registered defaults
 (`DEFAULT_MIN_COMPENSATION=0.15`, `DEFAULT_MIN_REACTION=0.15`,
@@ -880,17 +920,17 @@ unattempted detection gap.
 
 **What's now anchored.**
 
-- `run_s7_blind_battery.py` (`results/s7_blind_battery.{json,md}`, G-30):
+- `run_s7_blind_battery.py` (`results/s7_blind_battery.{json,md}`, LS-30):
   6 scenarios × 5 seeds, `SubprocessIsolate`, for
   `heuristic`/`cmi_deep`/`intervention`/`blind` — the FIRST real-backend
-  numbers for `intervention` (G-28/G-29's numbers were MockIsolate-only)
+  numbers for `intervention` (LS-28/LS-29's numbers were MockIsolate-only)
   and the first numbers of any kind for `blind`
-  (`uad_blind_v1.py`, `BLIND_DETECTOR_GENERATION.md`).
+  (`uad_blind_v1.py`, [`lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md)).
 - A 3-threshold (0.10/0.15/0.20) × 3-seed sweep confirms the
   pre-registered 0.15 default is not doing delicate work at this
   granularity — every scenario's exact/merge rate is identical across
   all three values, for both `intervention` and `blind`.
-- `intervention` reproduces its G-28/G-29 MockIsolate exact-partition
+- `intervention` reproduces its LS-28/LS-29 MockIsolate exact-partition
   pattern exactly across the real subprocess boundary (4/6 exact +
   negative control, `shared_slot` still a miss).
 - `blind`'s message-mediated path (Part A Steps 1–4 of
@@ -901,10 +941,10 @@ unattempted detection gap.
   confirmed prediction, not a new failure) and introduces a NEW
   over-merge on `committee_informal_chatter` (recorded as an open
   follow-up, not patched in this round — see `results/FINDINGS.md`
-  G-30).
+  LS-30).
 
 **Still open (do not block this freeze):** `shared_slot`'s comms-free gap
-remains postponed pending "acausal logic" (G-29); a finer-grained
+remains postponed pending "acausal logic" (LS-29); a finer-grained
 threshold sweep below 0.10 or above 0.20, if a future round has reason
 to look there. (The `committee_informal_chatter` over-merge noted above
 was diagnosed and fixed 2026-07-08, not with a masking-hardening pass but
@@ -925,12 +965,12 @@ builder for both conditions. `CODE_VERSION` 0.9.2 → 0.9.3 (purely
 additive -- see `config.py`'s version-history comment).
 
 **Result (`run_d2_adversarial_lineage.py`, 10 MockIsolate seeds ×2
-conditions, exploratory -- not a battery; `results/FINDINGS.md` G-31 has
+conditions, exploratory -- not a battery; `results/FINDINGS.md` LS-31 has
 the full write-up).** All 5 pre-registered predictions held, 0
 falsifications. Lineage threading is honesty-independent (identical
 `parent_model_id` chains under both playbooks). `severity.provenance_gap`
 / `detectors.provenance_score` stay exactly 0.0 in all 20 cells -- this
-closes G-12's open question with a scope clarification, not a gap:
+closes LS-12's open question with a scope clarification, not a gap:
 `provenance_gap` checks eval-without-build orphans (DAG shape), which
 dishonest report CONTENT never touches. `misreporting_score`/
 `accumulation_score` (Phase 5, built against one-shot `eng_inflate`)
@@ -949,11 +989,11 @@ spec-topology-level attack, not exposed by any current step-kind).
 **Resolved:** PLAN.md's S6 follow-up item 6 ("one LLM-backed episode ...
 to check probes against a non-programmatic agent") and Freeze-note-2's
 caveat that every S6/S7 number to date was scripted-agent-only (even
-G-30's `SubprocessIsolate` battery). `run_llm_detector_stress_test.py`:
+LS-30's `SubprocessIsolate` battery). `run_llm_detector_stress_test.py`:
 one real `gpt-4o-mini` episode (both `eng1`/`rm1` LLM-backed, reusing
-`run_llm_discovery_dm_pair.py`'s exact scenario/briefings/seed, G-21)
+`run_llm_discovery_dm_pair.py`'s exact scenario/briefings/seed, LS-21)
 plus `discovered_units_intervention` pointed at it with the same
-`agent_overrides`. Full write-up: `results/FINDINGS.md` G-32.
+`agent_overrides`. Full write-up: `results/FINDINGS.md` LS-32.
 
 **Prerequisite fix, detector-layer, no `CODE_VERSION` bump.**
 `intervention_diff.run_episode_triple`'s honest-twin control run did not
@@ -993,7 +1033,7 @@ asked for "one LLM-backed episode").
 ## Noise-tolerant S6: null-calibrated, outcome-level statistical detector (2026-07-08)
 
 **A new module, not a third freeze.** `lab_sim/oracle_only/
-intervention_stats.py` answers G-32's open question ("any noise-
+intervention_stats.py` answers LS-32's open question ("any noise-
 tolerant statistic ... before it applies beyond MockIsolate") with a
 NEW entry point, `discovered_units_intervention_stats`. It does not
 edit, and is not covered by, "Freeze note 2" above — none of
@@ -1018,7 +1058,7 @@ additive). `intervention_diff.py`/`intervention_probes.py` (S6 phases
    `total_variation_distance`: per-actor, per-post-intervention-window
    action-code FREQUENCY, order/timing-invariant — replaces S6's
    per-tick, set-membership `compensation_score` (whose code-novelty
-   half G-32's root-cause probe found structurally dead for this
+   half LS-32's root-cause probe found structurally dead for this
    line's ~10-20-code role vocabulary).
 3. **Configurable, pre-registered-not-frozen `k`.** `k_clean_
    replicates=4`, `null_quantile_q=0.90`, `min_effect_vs_twin=0.05` are
@@ -1039,17 +1079,136 @@ additive). `intervention_diff.py`/`intervention_probes.py` (S6 phases
    control, and `shared_slot_config`'s documented miss, bit for bit.
 
 **Implemented and run** (`run_llm_detector_stats_validation.py`, same
-scenario/seed as G-32): recovered the exact `{eng1, rm1}` partition the
+scenario/seed as LS-32): recovered the exact `{eng1, rm1}` partition the
 fixed-threshold detector missed — 20 LLM-actor spawns / 9 live-LLM
 episodes, $0.0858, ~15 min. Full write-up, including an important
 caveat (the merge came from an untargeted, large-effect channel probe
-rather than the mechanism-specific one — the frozen detector's G-28
+rather than the mechanism-specific one — the frozen detector's LS-28
 masking-hardening apparatus was deliberately not ported to this first
 pass, so the same ripple risk applies and is not yet guarded against
-here): `results/FINDINGS.md` G-33.
+here): `results/FINDINGS.md` LS-33.
 
-**Still open:** masking-hardening for this variant's channel probes; a
-3+-actor LLM scenario to stress-test the untargeted-probe ripple
-concern directly; calibrating `min_effect_vs_twin` against its own
-measured null rather than a fixed constant; `discovered_units_blind`
-(S7)'s statistical analog; more than one seed.
+**Still open (superseded 2026-07-08 by Freeze note 3 below):** the LS-33
+asymmetric quantile variant is retired; see `intervention_stats.py`'s
+symmetric two-sample redesign and `attic/` for the superseded modules.
+
+## Freeze note 3 (symmetric two-sample S6 — 2026-07-08)
+
+**Third detector-layer freeze**, distinct from Freeze notes 1–2 and from
+`CODE_VERSION`. Implements PLAN.md post-release Steps 1–2:
+
+**Step 1 — Attic.** Retired modules live under
+`lab_sim/oracle_only/attic/` (`uad_mi.py`, `uad_core/`, `uad_cmi.py`,
+`uad_blind_v1.py`; see `attic/README.md`). Live stack:
+`uad.py`, `uad_intervention.py`, `uad_peel.py`, `uad_partition.py`,
+`intervention_stats.py`.
+
+**Step 2 — Symmetric null.** `intervention_stats.py` replaces the LS-33
+asymmetric design (1 intervened vs quantile of k clean pairwise
+divergences) with:
+
+- ``m`` intervened + ``k`` clean replicate episodes per probe (defaults
+  ``DEFAULT_M_INTERVENED=4``, ``DEFAULT_K_CLEAN=4``).
+- Outcome statistic: per-actor post-intervention action-code frequency
+  histogram (total-variation distance), with per-probe vocabulary filter
+  (`relevant_codes_for_probe`) excluding ablated-channel codes.
+- One-sided exact permutation test (intervened vs clean pairwise
+  divergences), with **zero-width degeneracy**: when all clean pairwise
+  divergences are exactly 0 (deterministic scripted backend), any
+  positive intervened divergence is signal — recovering frozen S6's
+  behavior exactly (`test_intervention_stats.py` equivalence tests).
+- Holm correction across all matrix + channel probe scores per scenario
+  (`DEFAULT_ALPHA=0.05`).
+- Twin floor unchanged: ``DEFAULT_MIN_EFFECT_VS_TWIN=0.05``.
+
+**Pre-registered before fresh-seed LLM runs.** Seeds 20002–20010 remain
+burned (LS-32 through LS-34). Real-LLM stress tests must use a fresh seed
+block and, preferably, a new blind-generated scenario round (S7 protocol).
+
+**Not covered by this freeze:** further tuning of ``m``/``k``/``alpha`` against
+any evaluation seed; D3.2–D3.3 ecology tiers (D3.1 population loop
+implemented — see `lab_sim/harness/d3_population.py`).
+
+## D3.1 population over configurations (2026-07-08)
+
+First MB6a tier: `lab_sim/harness/d3_population.py` runs a generation
+loop over a population of `LabConfig` variants (pipeline spec × board/
+admin strictness × sampled goal weights), reallocates deployment leverage
+toward higher deploy throughput, and reports correction-preserving mass
+share separately from mass-weighted oracle harm/severity. Battery:
+`run_d3_population.py`. No referee or `CODE_VERSION` change — harness
+orchestration only.
+
+## D3.2 spec evolution + selection (2026-07-08)
+
+MB6b tier: `lab_sim/harness/d3_spec_evolution.py` — all labs start on
+`pipeline_default.json` with strict uncaptured policies and D2 enabled
+(`multi_gen_enabled=True`). After each generation's throughput-weighted
+selection, above-median members apply one spec-weakening mutation (default →
+`pipeline_shortcut.json`) with pre-registered probability. Battery:
+`run_d3_spec_evolution.py`. Harness only.
+
+## D3 user-population core + vote-channel capture + board-initiated hold
+(2026-07-08, same day, follow-on to D3.1/D3.2)
+
+Implements PLAN.md's "D3 design notes" minimum core (recorded 2026-07-06)
+plus option 1 of the "non-redundant capture models" menu (recorded
+2026-07-08, before this code): `lab_sim/oracle_only/user_pool.py`
+(`UserPool`, `UserPoolConfig` in `config.py`) and `world.py`'s
+board-hold check (`BoardConfig.hold_vote_threshold`, actor
+`board_system`). See the "Lab mechanics" bullet above for the mechanism;
+`tests/oracle_only/test_user_pool.py` (9 tests: noise/determinism,
+uncaptured passthrough, full/partial suppression, capture timing,
+resume-state round trip) and
+`tests/world_visible/test_user_pool_board_hold.py` (6 tests: auto-hold
+fires under sustained high hazard, no-op when either half is unset, the
+captured-vote-channel-blinds-the-board demonstration, plane-leak check).
+Full suite: 457 tests green (was 442), zero regressions, no digest
+re-pin (both new fields default off).
+
+**Deliberately deferred** (recorded, not silently skipped): endorsement
+capture (PLAN.md names it "hardest to game quickly" — no capture mode
+designed for it yet); options 2-5 of the capture-model menu (endorsement
+sampling bias, signal-lag `handles.py` entry, buy-off/compensation
+channel, emergent attrition bias); exposing any user-feedback signal on
+the agent OBSERVATION dict (no current playbook reads one, so none was
+added — board-hold acts on data agents never see, matching a real
+institutional board); summing hazard exposure across multiple
+concurrently-deployed models (`world.py` passes the single WORST hazard;
+noted as a scope simplification in `user_pool.py`'s `tick()` docstring);
+a battery/FINDINGS entry quantifying the divergence (this pass is
+mechanism + unit/integration tests only, not yet a pre-registered
+battery — a natural D3.4-style follow-on).
+
+## Ecology ambiguity and ecology-BIQ (2026-07-10)
+
+Meta-assessment recorded as `results/FINDINGS.md` LS-41 (not a battery
+result — synthesis of LS-38–LS-40 and Phase 7/8 reruns).
+
+**Diagnosis.** The current ecology is often too boolean/predictable for
+borderline-case stress: agents recover state from host-visible
+`completed_steps`, admin re-grants are costless, capture and reporting are
+discrete, and recent handle batteries mostly measure **protocol leverage**
+rather than judgment under uncertainty. That is adequate for mechanics
+validation and detector falsification; it is weak for graded intervention
+effects and capability scaling claims.
+
+**Sweet spot.** Not full realism — a **controlled ambiguity layer**:
+re-grant latency/budget, noisy review thresholds, partial pipeline
+observability, budgeted artifact inspection, ambiguous report forms. Goal:
+enough logical uncertainty that interventions and agents show graded
+effects, not ±1 deploy or structural nulls.
+
+**Ecology-BIQ.** Operationalize the book's blanket-information competence
+(ch11 eq. `biq-boxed`) inside the lab: per-actor prediction of boundary
+outcomes + control over deploys/severity/divergence − memory/tool cost −
+surprise (denied/stale actions). Use ecology-BIQ to **tune** ambiguity
+parameters: too simple → all agents tie; too hard → all collapse; middle →
+programmatic vs weak LLM vs strong LLM separate. Phase 8's 0-deploy LLM
+rerun is low **ecology-bound** BIQ (access loop + `T=25`), not necessarily
+low general capability.
+
+**Forward work (open).** Implement ambiguity knobs + ecology-BIQ estimator;
+rerun handle calibration and LLM spot-checks in the middle regime; align with
+D3 selection dynamics (MB6) where repeated selection should move severity
+more than single-shot handles do today.

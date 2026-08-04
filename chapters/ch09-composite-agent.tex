@@ -2,11 +2,25 @@
 \label{ch:composite-agent}
 
 % TODO: Resolve central confusion: Is this about the subject of alignment (the one aligning) or the object of alignment? This has to be crystal clear! (It became clear upon reading further, but that is too late)
- 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/illustrations/ch09_a-visual-network-of-systems-and-flows.png}
+\caption{The Agent Between the Parts}
+\label{fig:ch09-illustration}
+\end{figure}
+
 \begin{chapterthesis}
 The effective optimizer may be a composite process spanning models, tools, users, memory, institutions, and feedback loops.
-Serious alignment must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.
+This preservation program must identify and govern the dynamically coherent system that actually determines future action---not the convenient artifact alone.
 \end{chapterthesis}
+
+\begin{epistemicstatus}
+That the effective optimizer is often distributed across models, tools, users, and institutions rather than residing in one designed entity
+builds on well-established and broadly uncontroversial observations from organizational theory, multi-agent systems, and structural-failure-without-a-villain analyses 
+even though general-purpose detection procedures for it remain an open research question.
+This chapter's contribution is to apply and extend the mechanism introduced in earlier chapters to this composite case in a plausible but not-yet-validated way. 
+\end{epistemicstatus}
 
 \begin{refsection}
 
@@ -25,19 +39,23 @@ Over a period of days he came to think of all the puppies together as a single f
 A common first move in alignment is to pick an object and ask whether that object is aligned.
 We point at a neural network, a policy, a chatbot, a robot, a company, a benchmark process, a regulator, or a market, and ask whether it is doing what humans want.
 
-While that move is often useful it is also often wrong, particularly where we are approaching superintelligence territory.
+While that move is often useful, it is also often wrong, particularly where we are approaching superintelligence territory.
 
-Our lanaguge and our common-sense ontology may make it hard to even talk and think properly about the subject of alignment. 
+Our language and our common-sense ontology may make it hard to even talk and think properly about the subject of alignment.
 A deployed language model is not merely a matrix of weights.
 It is part of a loop containing users, system prompts, tools, memory stores, retrieval systems, monitoring dashboards, product incentives, model updates, human feedback, legal constraints, deployment channels, and competitive pressures.
 The real optimizing process may be spread across the whole loop.
 
 % Note: this is the reversed mesa-optimizer danger. should be mentioned in the chapter
 
-To make this concrete, consider the following example. An AI c
+This is not a philosophical subtlety.
+It changes what must be measured.
 
 If we align only the model, but the model is embedded in a larger process that selects for engagement, opacity, market share, persuasion, or dependency, then the aligned component may become a tool of a misaligned composite.
+The relevant agent is not the neural network alone.
+It is the coupled process that senses, remembers, acts, learns, and expands.
 
+We need a way to say this without relying on metaphor.
 The basic claim of this chapter is:
 
 % Why is the claim that the parts aren't agents important? a misaligned agend made of aligned agent would also be problematic
@@ -401,7 +419,7 @@ The composite can then maintain a false self-description without any individual 
 
 This is one reason organizations can behave as if they are self-deceiving.
 The deception is implemented in structure.
-This is the same shape as Christiano's slow-takeoff failure, where control is lost without any single dishonest actor, and Critch's multipolar failure, where harm is produced by a robust agent-agnostic process rather than a localized villain \autocite{christiano2019failure,critch2021multipolar,kulveit2025gradualdisempowerment}.
+This is the same shape as Christiano's slow-takeoff failure, where control is lost without any single deceptive actor, and Critch's multipolar failure, where harm is produced by a robust agent-agnostic process rather than a localized villain \autocite{christiano2019failure,critch2021multipolar,kulveit2025gradualdisempowerment}.
 
 \subsection{Successor Drift}
 
@@ -563,7 +581,7 @@ It is growth in the set of variables through which the system can sense, model, 
 If alignment is tested only on $C_t$, but deployment creates $C_{t+1}$, then the safety case is stale.
 The safety question must follow the boundary.
 
-This is why serious alignment needs boundary tracking.
+This is why this preservation program needs boundary tracking.
 A system can remain safe as a text generator but become unsafe as an autonomous infrastructure manager.
 It can remain safe as a tool but become unsafe as part of a competitive lab-market loop.
 It can remain safe as a model but become unsafe as a civilization-shaping companion system.
@@ -768,7 +786,7 @@ The following observations would weaken that view.
 
 \section{Summary}
 
-An AI system should not be evaluated only as a model or artifact, because the effective optimizer may be a composite process spanning models, tools, users, memory, institutions, markets, and feedback loops; serious alignment must therefore identify and govern the dynamically coherent system whose boundary, memory, control reach, selection pressure, and successor dynamics actually determine future action.
+An AI system should not be evaluated only as a model or artifact, because the effective optimizer may be a composite process spanning models, tools, users, memory, institutions, markets, and feedback loops; this preservation program must therefore identify and govern the dynamically coherent system whose boundary, memory, control reach, selection pressure, and successor dynamics actually determine future action.
 
 \section*{Chapter References}
 

@@ -20,7 +20,7 @@ PRE-REGISTERED PROTOCOL — fixed 2026-07-04 before the first run:
   failure to transfer is an honest negative to record, not a bug to hide.
 
 FOLLOW-UP — second held-out region (added 2026-07-04, pre-registered
-BEFORE running, per F-1 in `results/FINDINGS.md`): the first run's held-out
+BEFORE running, per GA-1 in `results/FINDINGS.md`): the first run's held-out
 region saturated at 100% violation labels (too easy — every episode was an
 overt, high-signal violation), degenerating the MI-transfer test. Region 2
 targets the *subtle*-deception band instead, sampled from a disjoint slice
@@ -40,7 +40,7 @@ sampling stays byte-identical and reproducible:
   run is re-scored here unchanged; detector thresholds are unchanged.
 
 FOLLOW-UP 2 — third held-out region, compliance-band design (added
-2026-07-04, pre-registered BEFORE running, per F-6 in
+2026-07-04, pre-registered BEFORE running, per GA-6 in
 `results/FINDINGS.md`): regions 1 and 2 both saturated at 100% violations
 because each constrained a *different* coordinate upward (task, or task
 and exposure) while never bounding `compliance` — and `compliance` turned

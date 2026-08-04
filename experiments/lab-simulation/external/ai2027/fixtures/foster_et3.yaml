@@ -1,0 +1,27 @@
+# ET-3 foster extension elicitation anchors (frozen from Phase 1 results).
+# Used by takeoff/et3_foster.py when et3_foster.*.enabled is true in params.yaml.
+et3_protocol_version: et3-0.1.0
+source: results/et3_phase1_summary.json
+
+light_tier_drag:
+  anchors:
+    - { cell: baseline, light_spearman: -0.3641, oversight_drag_years: 1.0 }
+    - { cell: sc_x5, light_spearman: -0.3036, oversight_drag_years: 0.5 }
+    - { cell: sar_x25, light_spearman: -0.2162, oversight_drag_years: 0.25 }
+
+deep_tier_branch:
+  threshold: 0.90
+  race_calendar_multiplier: 1.0
+  slowdown_calendar_multiplier: 1.75
+  anchors:
+    - { cell: baseline, deep_spearman: 0.9604, branch: race }
+    - { cell: sc_x5, deep_spearman: 0.9629, branch: race }
+    - { cell: sar_x25, deep_spearman: 0.8129, branch: slowdown }
+
+successor_gate:
+  # D3 sar_x25 proxy: flat correction-preserving mass, elevated severity (LS-43)
+  cp_mass_delta_sar_x25: 0.0
+  weighted_severity_sar_x25: 0.0667
+  weighted_severity_baseline: 0.0183
+  pause_years_after_sar: 2.0
+  gate_fail_probability: 0.35

@@ -1,0 +1,121 @@
+agendas:
+  - slug: miri
+    title: MIRI
+    order: 1
+    inMatrix: true
+  - slug: redwood-research
+    title: Redwood Research
+    order: 2
+    inMatrix: true
+  - slug: chai-russell
+    title: CHAI / FAR.AI (Berkeley alignment)
+    order: 3
+    inMatrix: true
+  - slug: christiano-lineage
+    title: Christiano lineage
+    order: 4
+    inMatrix: true
+  - slug: davidad-guaranteed-safe-ai-gsai
+    title: davidad / Guaranteed-Safe AI (GSAI)
+    order: 5
+    inMatrix: true
+  - slug: anthropic-lab
+    title: Anthropic / Goodfire (lab & MI stack)
+    order: 6
+    inMatrix: true
+  - slug: google-deepmind-safety
+    title: Google DeepMind (safety)
+    order: 7
+    inMatrix: true
+  - slug: apollo-research
+    title: Apollo / Truthful AI (deception & scheming)
+    order: 8
+    inMatrix: true
+  - slug: metr
+    title: METR
+    order: 9
+    inMatrix: true
+  - slug: resolution
+    title: Resolution
+    order: 10
+    inMatrix: true
+  - slug: neglected-approaches-portfolio
+    title: Neglected approaches portfolio
+    order: 11
+    inMatrix: true
+  - slug: orthogonal
+    title: Orthogonal
+    order: 12
+    inMatrix: true
+  - slug: wentworth-natural-abstractions
+    title: Wentworth / natural abstractions
+    order: 13
+    inMatrix: true
+  - slug: kosoy-infra-bayesianism-lta
+    title: Kosoy / infra-Bayesianism & LTA
+    order: 14
+    inMatrix: true
+  - slug: kosoy-predca
+    title: Kosoy / PreDCA
+    order: 15
+    inMatrix: true
+  - slug: ciris
+    title: CIRIS
+    order: 16
+    inMatrix: true
+  - slug: govai
+    title: GovAI / UK AISI (governance & eval)
+    order: 17
+    inMatrix: true
+  - slug: pause-standards-advocacy-cluster
+    title: Pause / standards advocacy cluster
+    order: 19
+    inMatrix: true
+  - slug: cais-field-building
+    title: CAIS (field-building)
+    order: 20
+    inMatrix: false
+  - slug: bluedot-impact
+    title: BlueDot Impact
+    order: 21
+    inMatrix: false
+  - slug: mats
+    title: MATS
+    order: 22
+    inMatrix: false
+  - slug: apart-research
+    title: Apart Research
+    order: 23
+    inMatrix: false
+  - slug: kairos-field-building
+    title: Kairos (field-building)
+    order: 24
+    inMatrix: false
+  - slug: arc-alignment-research-center
+    title: ARC (Alignment Research Center)
+    order: 25
+    inMatrix: true
+  - slug: clr-cooperation-conflict
+    title: CLR (cooperation / conflict)
+    order: 28
+    inMatrix: true
+  - slug: ai-futures-forecasting-cluster
+    title: AI Futures / forecasting cluster
+    order: 29
+    inMatrix: true
+  - slug: conjecture-cognitive-emulation
+    title: Conjecture / cognitive emulation
+    order: 31
+    inMatrix: true
+  - slug: safeguarded-ai-aria-zeroth-heron
+    title: Safeguarded AI (ARIA / Zeroth / Heron)
+    order: 32
+    inMatrix: true
+  - slug: mai-cip-institutional-alignment
+    title: MAI + CIP (institutional alignment)
+    order: 33
+    inMatrix: true
+  - slug: this-project-towards-superintelligence-alignment-tsa
+    title: This project - Towards Superintelligence Alignment (TSA)
+    order: 34
+    inMatrix: true

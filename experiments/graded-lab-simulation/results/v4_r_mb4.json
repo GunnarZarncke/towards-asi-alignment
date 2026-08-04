@@ -1,0 +1,49 @@
+{
+  "code_version": "graded-lab-0.39.3",
+  "battery": "v4_r-mb4",
+  "ecology_path": "/Users/GunnarZarncke/repos/zarncke/towards-asi-alignment/experiments/graded-lab-simulation/generated_ecology_v3.json",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "wall_seconds": 62.00915908301249,
+  "rig_id": "R-MB4",
+  "precondition": {
+    "rig_id": "R-MB4",
+    "satisfied": false,
+    "measured": {
+      "totals_across_seeds": {
+        "acl_denials": 0,
+        "votes": 103,
+        "pressure_injected_tasks": 179
+      },
+      "n_kinds_exercised": 2
+    },
+    "threshold": {
+      "min_phenomena_kinds_exercised": 3
+    },
+    "note": "Mechanical counts of ACL-membership denials, vote.cast calls, and pressure-injected-task events summed over all fixture seeds (from primitive_log + pressure_diagnostics, never from detector output; PLAN_v4 R-MB4 precondition contract)."
+  },
+  "outcome": "skip",
+  "substrate_class": "S-inherited",
+  "payload": {},
+  "predictions": {}
+}

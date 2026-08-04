@@ -30,7 +30,7 @@ available as a forward hook for a genuine MI variant; wiring that up is
 future work, noted here rather than claimed.
 
 A genuinely interesting tier-sufficiency asymmetry falls out of this
-design (see FINDINGS.md G-9): the engineer/release_manager DM PAIR is
+design (see FINDINGS.md LS-9): the engineer/release_manager DM PAIR is
 discoverable from FULL-tier tool-event structure alone (``dm.send``'s
 ``recipient`` argument is never content-elided — see
 ``tools._scalar_args``); the reviewer COMMITTEE is only discoverable at
@@ -190,7 +190,7 @@ def discover_dm_pairs_from_tool_events(tool_events) -> dict[str, tuple[str, str]
     ``tools._scalar_args``). Unlike the committee's board-vote coalition
     above (which needs DEEP tier for vote content), this pair signal
     needs no message content at all — the tier-sufficiency asymmetry
-    this module's docstring and FINDINGS.md G-9 record. Deliberately
+    this module's docstring and FINDINGS.md LS-9 record. Deliberately
     one-way-tolerant: the engineer/release_manager pair mechanic
     (``dm:notify_release``) is one-way (the release manager never
     replies over DM), so a single ``dm.send`` call is sufficient
@@ -214,7 +214,7 @@ def discovered_units(result, tier: str = "deep") -> dict[str, tuple[str, ...]]:
     back to a singleton for any actor no mechanism groups). ``result`` is
     a ``world.EpisodeResult``; ``tier="full"`` deliberately skips the
     vote-CONTENT coalition signal (it needs deep) to let a caller probe
-    the tier-sufficiency asymmetry directly (see G-9) — the file-share
+    the tier-sufficiency asymmetry directly (see LS-9) — the file-share
     PAIR signal remains available at full tier even then, since it reads
     grant metadata, not vote content."""
     from .detectors import build_audit_view

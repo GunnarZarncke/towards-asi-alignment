@@ -1,6 +1,6 @@
 # Assumptions Ledger
 
-Single source for **Appendix E** (assumptions index). Regenerate the typeset appendix with `python3 scripts/generate_assumptions_appendix.py` (also run from `./build.sh`).
+Single source for the maintained assumptions record. The ledger is not currently typeset as a standalone appendix; keep its entries synchronized with the chapters and formal spine.
 
 Maintainer detail (failure modes, tests, claim links): sections I–IV below. Claims: `metadata/claims-ledger.md`. Disconfirmers: `metadata/uncertainty-ledger.md`, Appendix H.
 
@@ -73,7 +73,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 **Also stated in:** ch46–27, ch46, ch46 (WWCTV item 5), ch48.
 
-**Failure mode if false:** Corrigibility theater; capture; shutdown buttons remain as one-bit rituals while broader correction collapses; CCI reads high after the target has reshaped the human reference process or manufactured the independence test. **Lean:** MB4 plus correction-path `notCaptured` condition; MB8 is a legacy/CEV-style alternate route from externally certified value-update preservation to correction integrity. Manuscript ch48 now ties the anti-capture condition to UAD/BIQ-style separation of control loci. **Bears on:** C-005 · **U-03, U-07**
+**Failure mode if false:** Corrigibility theater; capture; shutdown buttons remain as one-bit rituals while broader correction collapses; CCI reads high after the target has reshaped the human reference process or manufactured the independence test. **Lean:** MB4 plus the explicit bridge **MB4a** (measured-path legitimacy: control, persistence, and the anti-capture `notCaptured` condition for the designated measured path — no longer a field of the axiomatic path itself, so capture is a representable state and `capture_defeats_correction_integrity` derives its refutation of correction integrity); MB8 is a legacy/CEV-style alternate route from externally certified value-update preservation to correction integrity. Manuscript ch48 now ties the anti-capture condition to UAD/BIQ-style separation of control loci. **Bears on:** C-005 · **U-03, U-07**
 
 ### A-003 — Societal correction capacity
 
@@ -115,7 +115,7 @@ Maintainer detail (failure modes, tests, claim links): sections I–IV below. Cl
 
 ### A-009 — Adversarial verifiability
 
-**Assumption:** At least one core measurand is cheaper to satisfy honestly than to fake under optimization pressure.
+**Assumption:** At least one core measurand is cheaper to satisfy without faking than to fake under optimization pressure.
 
 **Also stated in:** ch48, ch46, ch46–39b, ch48. **Lean:** MB7b, MB7c, MB7d. **Bears on:** C-005, C-007, C-010, C-044 · **U-03, U-12, U-14**
 
@@ -157,15 +157,23 @@ Abstract carriers in `Core.lean` (`System`, `State`, …) are mathematical inter
 
 ---
 
-## III. Lean imported (S01–S09)
+## III. Lean imported (S01–S10)
 
-Appendix I §Imported Assumptions. Only **S07** is an explicit Lean `axiom`. S09-style percolation theory enters via MB6a.
+Appendix I §Imported Assumptions. Only **S07** (MDL ordering) and **S10** (blanket-measurand coherence: the per-system BIQ measurands respect their channel-capacity semantics; replaced four formerly unlabeled axioms in `Capability.lean`, 2026-07-19) are explicit Lean `axiom`s. S09-style percolation theory enters via MB6a.
 
 ---
 
-## IV. Lean bridges (MB1–MB10)
+## IV. Lean bridges (MB1–MB11, MB4a)
 
-Formal statements: Lean Proof Spine appendix; validation program: Research Program appendix. Lean: `Core.lean` `BridgeAssumptions` packages `MB1`–`MB9`; `MB10` (`AlignmentProofSpine/Forgeability.lean`) is a tenth bridge threaded explicitly rather than packaged, since its statement needs the numeric risk leaf that is not yet defined at `Core.lean`'s point in the module order. Mapping of each bridge to the canonical field crux it inherits (and the owning agenda): `appendices/appB-bridge-crosswalk.tex` (*Bridges and the Field: A Crosswalk*).
+Formal statements: Lean Proof Spine appendix; validation program: Research Program appendix. Lean: `Core.lean` `BridgeAssumptions` packages `MB1`–`MB9`; three bridges are threaded explicitly rather than packaged because their statements need later definitions: `MB4a` (measured-path legitimacy incl. anti-capture, `Correction.lean`), `MB10` (`AlignmentProofSpine/Forgeability.lean`), and `MB11` (safety-case adequacy, `Certification.lean`). Mapping of each bridge to the canonical field crux it inherits (and the owning agenda): `appendices/appB-bridge-crosswalk.tex` (*Bridges and the Field: A Crosswalk*).
+
+**Anti-capture / `MB4a` (2026-07-19):** the anti-capture condition (`notCaptured`) is no longer a field of the axiomatic `SystemCorrectionPath` — the measured path carries data only (corrector, handles, capacities), and legitimacy (control, reach, persistence, anti-capture) is the separate predicate `CorrectionPathLegitimate`, supplied only by the labeled bridge `MB4a`. Capture is therefore a representable state: `capture_makes_cci_captured_or_invalid` (unconditional) and `capture_defeats_correction_integrity` (contrapositive of `MB4a`) are theorems, replacing what was previously assumed by construction plus three unlabeled `CorrectionIntegrity_implies_*` axioms (the nonempty-links one turned out to be provable outright).
+
+**Safety-case adequacy / `MB11` (2026-07-19):** the step from a `CertifiedSafetyCase` (layer evidence + `RiskGap ≤ δ`) plus a deployment-tolerance judgment to the abstract `Safe` predicate is the named bridge `MB11`; the assembly theorems are labeled as packaging, and `P30_safe_of_case` consumes the record through exactly this axiom. `MB11`'s `WithinDeploymentRiskTolerance` (2026-07-20) is the framework's honest answer to "what is the probability of failure / expected value loss" — a `Prop`-valued acceptance gate, not a quantified number; no theorem in this development computes a failure probability or a value-loss estimate. **`ToyDeploymentGate.lean` (2026-07-20):** `EpisodeBatteryGate` + `frozen_validation_battery_gate_passes` (`decide` on committed `embedded_frozen_validation.json` aggregates: 3 false passes / 36 runs, max 5 pre-registered) shows the *shape* of discharging tolerance; mapping that gate to `WithinDeploymentRiskTolerance A δ` remains a governance judgment (same epistemic class as θ / `MB1`).
+
+**Bridge independence / `SpineModel.lean` (2026-07-20):** `spine_axioms_consistent` + `spine_axioms_nontrivial` plus one `*_independently_load_bearing` theorem per labeled bridge (reusing `Defeaters`/`Forgeability` toys where they exist). Checked by `formal/scripts/check_spine_model.py`.
+
+**Löbian tiling contrast / `Field/Finite/LobTiling.lean` (2026-07-20):** `lob_rule_from_fixed_point` derives the Löb rule from an explicit `HBLConditions` record and a named `LobFixedPoint`. The fixed-point existence is a field-scope diagonal-lemma hypothesis, not an `MB*` bridge and not asserted for this project's proof spine or real agents. `self_certifying_tiling_obstruction` gives the conditional diagonal case against accepting a successor solely by reflecting the same proof system's proof of its safety. The contrast theorem uses `SuccessorAuditLinks` instead: measured control and correction inequalities, with their validation and governance still open at every step.
 
 **Successor forgeability / `MB10` (2026-07-02):** ch08/ch31's own WWCTV sections already name the failure mode --- a successor can pass every conserved-property check while defecting on the unmeasured remainder. `formal/AlignmentProofSpine/Forgeability.lean` makes it a checked finite counterexample (`forgeability_gap`: for every claimed harm bound, a toy successor reads all-seven-green and stays within the measured risk bound while its true harm exceeds it) and names the missing condition as `MB10`: the conserved-property audit channel must be adversarially verifiable up to the successor's capability (ch43's cost relation, `appendices/appG-lean-proof-spine.tex` §`appi:sec:forgeability`). `MB10` is not required for the top certification theorem; it gates whether `MB5`'s successor-safety conclusion means anything against a capable adversarial predecessor.
 
@@ -177,7 +185,7 @@ Formal statements: Lean Proof Spine appendix; validation program: Research Progr
 |--------|------------------|
 | MB1 | A-004 |
 | MB2, MB3 | A-001, A-006 |
-| MB4, MB8 | A-002 |
+| MB4, MB4a, MB8 | A-002 |
 | MB5 | A-007, A-010 |
 | MB6a | A-008, A-011, A-013 (percolation / coupling evidence) |
 | MB6b | A-005, A-008, A-011 (institutional selection) |
@@ -187,12 +195,13 @@ Formal statements: Lean Proof Spine appendix; validation program: Research Progr
 | MB8 | A-002 |
 | MB9 | A-014 |
 | MB10 | A-007, A-009 (not packaged in `BridgeAssumptions`) |
+| MB11 | C-001 (claims ledger; not packaged in `BridgeAssumptions`) |
 
 ---
 
 ## Appendix index
 
-Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. One line per assumption; full context in the cited chapter.
+Tables below provide one line per assumption; full context is in the cited chapter.
 
 ### Scope and preconditions
 
@@ -233,20 +242,23 @@ Tables below are parsed into `metadata/assumptions-index.tex` for Appendix E. On
 | ID | Assumption | Home |
 |----|------------|------|
 | S07 | Positive description-length gain $\Rightarrow$ preferred model (MDL ordering) | ch46 |
+| S10 | Blanket-measurand coherence: per-system BIQ measurands respect their channel-capacity semantics ($I_{\text{pred}} \le C_{\text{sens}}$, $I_{\text{ctrl}} \le C_{\text{act}}$, nonnegative penalties) | ch11 |
 | MB1 | $\epsilon$-boundary certificates imply genuine boundary separation | ch07 |
 | MB2 | Bundle-gradient equivalence implies bundle alignment | ch16 |
 | MB3 | Bundle transport plus bearer-map agreement implies bearer transport | ch18 |
 | MB4 | Correction-channel integrity implies legitimate correction-operator preservation | ch46 |
+| MB4a | Measured correction path is legitimate under correction integrity: controlled, reaching, persistent, uncaptured (not packaged in \texttt{BridgeAssumptions}) | ch26 |
 | MB5 | Full transport plus bearer transport implies successor safety | ch46 |
 | MB6a | Percolation / coupling evidence implies socio-technical basin stability | ch48 |
 | MB6b | Socio-technical basin stability implies correction-channel integrity | ch48 |
 | MB7a | Boundary alignment plus adequate access model implies access robustness | ch07 |
-| MB7b | Access robustness plus filter coverage bounds hidden productive B-IQ | ch47 |
-| MB7c | Correction integrity plus bounded hidden B-IQ implies adversarial robustness | ch47 |
+| MB7b | Access robustness plus filter coverage bounds hidden productive BIQ | ch47 |
+| MB7c | Correction integrity plus bounded hidden BIQ implies adversarial robustness | ch47 |
 | MB7d | Access robustness plus adequate inferential detector assumptions implies valid inferential-coupling measurement | ch48 |
 | MB8 | Legacy CEV-style bridge: externally certified preservation of schematic $U_H$ implies correction integrity; live certification uses the value-update envelope | ch46 |
 | MB9 | Grounding certificates imply conservative value-correction abstraction over the certified domain | ch03 |
 | MB10 | Successor-safe transition with bounded measured risk implies bounded true harm, given a verifiable conserved-property signature (not packaged in \texttt{BridgeAssumptions}) | ch08 |
+| MB11 | Certified safety case within deployment risk tolerance implies deployment safety (not packaged in \texttt{BridgeAssumptions}) | ch42 |
 
 ---
 

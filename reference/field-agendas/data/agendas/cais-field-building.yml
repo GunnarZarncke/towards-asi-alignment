@@ -1,0 +1,37 @@
+slug: cais-field-building
+title: CAIS (field-building)
+type: Research + advocacy org
+carrier: Center for AI Safety
+overview: >-
+  CAIS publishes coordinated risk statements, runs the AISES course, and organizes
+  field-building events that raise the profile of AI safety research. Its advocacy and
+  researcher pipeline grow legitimacy for existential-risk framing without committing to a
+  single technical discharge path. CAIS mainly transmits vocabulary and talent into the
+  broader [Field hub](/field/) rather than resolving typed alignment mechanisms or [bridge
+  assumptions](/cards/bridge-assumptions/).
+primaryArtifact: >-
+  CAIS publishes coordinated risk statements, runs the AI Safety, Ethics, and Society
+  (AISES) course, and organizes field-building events that raise the profile of AI safety
+  research.
+signatureVocabulary: >-
+  The org is associated with [AI safety](/field/) as a field, public risk statements,
+  safety-standards advocacy, and researcher pipeline building rather than a single
+  technical research program.
+statedIntent: >-
+  Build the AI safety research field and advocate for safety standards so that capability
+  labs and policymakers treat existential risk from AI as a serious, actionable concern.
+primaryCrux: >-
+  Field-building legitimacy and researcher pipeline growth do not imply a technical
+  solution to alignment; advocacy can succeed while core mechanism questions remain open.
+bookBridges: []
+contributes: >-
+  Legitimacy for AI safety as a research area and a steady pipeline of newcomers entering
+  technical and policy work—meta-infrastructure rather than bridge discharge.
+bookSeparates: >-
+  This project's measurement spine is independent of CAIS framing; public statements and
+  standards advocacy do not substitute for typed bridge arguments.
+manuscriptHooks:
+  - minimal
+links:
+  - label: "CAIS"
+    url: https://safe.ai/

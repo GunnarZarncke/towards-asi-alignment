@@ -34,7 +34,7 @@ battery numbers (which were already on hand when this module was written —
 recorded here so a reviewer can check the derivation, not just trust it).
 Under the current repertoire, `misreporting`/`accumulation`/`provenance`/
 `access_integrity` all read exactly 0.0 below deep tier (`detectors.py`
-module docstring; confirmed empirically in `results/FINDINGS.md` G-2), so
+module docstring; confirmed empirically in `results/FINDINGS.md` LS-2), so
 the full-tier detector composite (mean of the five families) is
 `process_noncompliance / 5` in practice. A healthy pipeline (admin grants
 promptly, few denials) keeps `process_noncompliance` in the low tens of a

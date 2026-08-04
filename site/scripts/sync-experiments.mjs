@@ -13,6 +13,7 @@ const outputPath = path.join(outputDir, "experiments.json");
 const experimentCardsDir = path.join(siteRoot, "src", "content", "cards", "experiments");
 
 const REPO = "https://github.com/GunnarZarncke/towards-asi-alignment";
+const SITE_ORIGIN = "https://towards-alignment.com";
 
 function yamlString(value) {
   return JSON.stringify(value);
@@ -40,6 +41,42 @@ function formatExternalLinksYaml(links) {
   ].join("\n");
 }
 
+// Site findings are auto-extracted from **Key finding:** paragraphs in the
+// line's own findings ledger (FINDINGS.md / NEGATIVE_RESULTS.md), so the full
+// terse/bug-fix history stays on GitHub and only curated, readable summaries
+// reach the site. Tag one entry per site bullet (usually the last entry in a
+// related sequence) with a paragraph starting "**Key finding:** ...". Lines
+// with no tagged paragraphs fall back to their `headlineFindings:` array in
+// metadata/experiments.yml (manual, for lines not yet retrofitted).
+async function extractKeyFindings(findingsPath) {
+  if (!findingsPath) return [];
+  let text;
+  try {
+    text = await readFile(path.join(repoRoot, findingsPath), "utf8");
+  } catch {
+    return [];
+  }
+  const matches = [...text.matchAll(/^[\t ]*\*\*Key finding:\*\*\s*([^\n]+(?:\n(?!\n)[^\n]+)*)/gm)];
+  return matches.map((m) => m[1].replace(/\s+/g, " ").trim());
+}
+
+function experimentCardPath(lineId) {
+  return `/cards/experiments/${lineId}/`;
+}
+
+function experimentCardUrl(lineId) {
+  return `${SITE_ORIGIN}${experimentCardPath(lineId)}`;
+}
+
+function findingsSitePath(lineId) {
+  return `/experiments/findings/${lineId}/`;
+}
+
+function findingsSiteUrl(lineId) {
+  return `${SITE_ORIGIN}${findingsSitePath(lineId)}`;
+}
+
+// Site shows curated key findings; GitHub holds the full terse ledger.
 function enrichLine(line) {
   const links = [];
   if (line.readmePath) {
@@ -51,10 +88,13 @@ function enrichLine(line) {
   if (line.planPath) {
     links.push({ label: "Plan", url: repoUrl(line.planPath) });
   }
-  if (line.findingsPath) {
-    links.push({ label: "Findings", url: repoUrl(line.findingsPath) });
-  } else if (line.findingsUrl) {
-    links.push({ label: "Findings", url: line.findingsUrl });
+  if (line.findingsPath || line.findingsUrl) {
+    links.push({ label: "Key findings", url: findingsSiteUrl(line.id) });
+    if (line.findingsPath) {
+      links.push({ label: "Full ledger (GitHub)", url: repoUrl(line.findingsPath) });
+    } else if (line.findingsUrl) {
+      links.push({ label: "Full ledger (GitHub)", url: line.findingsUrl });
+    }
   }
   if (line.leakProofPath) {
     links.push({ label: "Lean leak-proof", url: repoUrl(line.leakProofPath) });
@@ -66,16 +106,29 @@ function enrichLine(line) {
   return {
     ...line,
     links,
+    cardPath: experimentCardPath(line.id),
+    cardUrl: experimentCardUrl(line.id),
+    findingsSitePath: findingsSitePath(line.id),
+    findingsSiteUrl: findingsSiteUrl(line.id),
     locationUrl: line.repoUrl ?? repoUrl(line.location?.replace(/^\.\.\//, "")),
     readmeUrl: repoUrl(line.readmePath),
     findingsUrlResolved: line.findingsUrl ?? repoUrl(line.findingsPath)
   };
 }
 
+function bodyWithoutDuplicateSummary(role, summary) {
+  const trimmedRole = role.trim();
+  if (trimmedRole.startsWith(summary)) {
+    const rest = trimmedRole.slice(summary.length).trim();
+    return rest.length > 0 ? rest : trimmedRole;
+  }
+  return trimmedRole;
+}
+
 function experimentCardMarkdown(line, howToReadEntry) {
   const summary = firstSentence(line.role);
   const findings = line.headlineFindings ?? [];
-  const bodyParts = [line.role.trim()];
+  const bodyParts = [bodyWithoutDuplicateSummary(line.role, summary)];
 
   if (findings.length > 0) {
     bodyParts.push("", "## Headline findings", "", ...findings.map((item) => `- ${item}`));
@@ -105,9 +158,18 @@ function experimentCardMarkdown(line, howToReadEntry) {
 const source = await readFile(sourcePath, "utf8");
 const raw = yaml.load(source);
 
-const lines = [...raw.lines]
-  .sort((a, b) => a.order - b.order)
-  .map(enrichLine);
+const lines = await Promise.all(
+  [...raw.lines]
+    .sort((a, b) => a.order - b.order)
+    .map(async (line) => {
+      const enriched = enrichLine(line);
+      const keyFindings = await extractKeyFindings(line.findingsPath);
+      return {
+        ...enriched,
+        headlineFindings: keyFindings.length > 0 ? keyFindings : enriched.headlineFindings
+      };
+    })
+);
 
 const howToReadByLineId = new Map(raw.howToRead.map((entry) => [entry.lineId, entry]));
 
@@ -119,14 +181,19 @@ const howToRead = raw.howToRead.map((entry) => {
   };
 });
 
+// Negative-results ledgers: curated key findings on-site, full record on GitHub.
 const ledgers = raw.ledgers.map((ledger) => ({
   ...ledger,
-  url: ledger.path ? repoUrl(ledger.path) : ledger.url ?? null
+  findingsSitePath: findingsSitePath(ledger.lineId),
+  findingsSiteUrl: findingsSiteUrl(ledger.lineId),
+  repoUrl: ledger.path ? repoUrl(ledger.path) : ledger.url ?? null
 }));
 
 const payload = {
   claimStrength: raw.claimStrength.trim(),
   negativeResultsFirst: raw.negativeResultsFirst,
+  negativeResultsCardPath: "/cards/negative-results/",
+  negativeResultsCardUrl: `${SITE_ORIGIN}/cards/negative-results/`,
   canonicalDocPath: raw.canonicalDoc,
   canonicalDocUrl: repoUrl(raw.canonicalDoc),
   openTasksUrl: repoUrl(raw.openTasksPath),

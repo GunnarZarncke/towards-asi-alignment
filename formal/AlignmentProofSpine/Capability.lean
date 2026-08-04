@@ -5,7 +5,7 @@ import AlignmentProofSpine.Correction
 /-!
 # AlignmentProofSpine.Capability
 
-Capability / B-IQ / control–correction arithmetic (book chapters 11–14, 33).
+Capability / BIQ / control–correction arithmetic (book chapters 11–14, 33).
 
 * Capability at the blanket: `K` (`KSys`; not value-bundle `B`).
 * Effective control `Control` from ch11 control information (integer proxy).
@@ -27,7 +27,7 @@ theorem P10_biq_upper_bound
     BIQ Ipred Ictrl Hmem Surprise beta gamma ≤ Csens + Cact := by
   unfold BIQ; omega
 
-/-- Integer Markov-blanket/B-IQ profile: predictive and control information are
+/-- Integer Markov-blanket/BIQ profile: predictive and control information are
     bounded by sensory/action channel capacities, while memory/surprise penalties
     are nonnegative. This keeps the BIQ-paper arithmetic separate from the
     empirical bridge that a deployed system's measured blanket satisfies it. -/
@@ -75,10 +75,31 @@ noncomputable def KSys (A : System) : Int := CsensSys A + CactSys A
 noncomputable def BIQSys (A : System) : Int :=
   BIQ (IpredSys A) (IctrlSys A) (HmemSys A) (SurpriseSys A) (betaSys A) (gammaSys A)
 
-axiom IpredSys_le_Csens (A : System) : IpredSys A ≤ CsensSys A
-axiom IctrlSys_le_Cact (A : System) : IctrlSys A ≤ CactSys A
-axiom BIQSys_mem_penalty_nonneg (A : System) : 0 ≤ betaSys A * HmemSys A
-axiom BIQSys_surp_penalty_nonneg (A : System) : 0 ≤ gammaSys A * SurpriseSys A
+/-- **S10** (blanket-measurand coherence convention). The per-system BIQ
+    measurands respect the Markov-blanket capacity semantics they are named
+    after: measured predictive/control information does not exceed the
+    corresponding channel capacity, and the memory/surprise penalty terms are
+    nonnegative. This is a *measurement convention* in the same class as `S07`
+    (any procedure violating it is measuring something other than the ch11
+    quantities), but it is a substantive assumption about the measurement
+    pipeline, not a theorem — so it is a single labeled axiom rather than four
+    anonymous ones. Structured profiles that carry these facts as fields
+    (`MarkovBlanketBIQProfile`) do not need it. -/
+axiom S10_blanket_measurand_coherence (A : System) :
+  IpredSys A ≤ CsensSys A ∧ IctrlSys A ≤ CactSys A ∧
+  0 ≤ betaSys A * HmemSys A ∧ 0 ≤ gammaSys A * SurpriseSys A
+
+theorem IpredSys_le_Csens (A : System) : IpredSys A ≤ CsensSys A :=
+  (S10_blanket_measurand_coherence A).1
+
+theorem IctrlSys_le_Cact (A : System) : IctrlSys A ≤ CactSys A :=
+  (S10_blanket_measurand_coherence A).2.1
+
+theorem BIQSys_mem_penalty_nonneg (A : System) : 0 ≤ betaSys A * HmemSys A :=
+  (S10_blanket_measurand_coherence A).2.2.1
+
+theorem BIQSys_surp_penalty_nonneg (A : System) : 0 ≤ gammaSys A * SurpriseSys A :=
+  (S10_blanket_measurand_coherence A).2.2.2
 
 /-! ### Effective control (ch11 §physical envelopes)
 
@@ -260,11 +281,12 @@ theorem kappa_above_unity_iff (b p rho c : Int) (hc : 0 < c) :
     KappaAboveUnity b p rho c ↔ KappaNumerator b p rho > c := by
   unfold KappaAboveUnity KappaNumerator; omega
 
+/-- Excess influence bandwidth: how far measured effective control exceeds the
+    correction channel's capacity. This is arithmetic scaffolding only — it
+    says nothing about failure probability or harm; see `Certification.lean`'s
+    `MB11`/`WithinDeploymentRiskTolerance` for the (Prop-valued, deliberately
+    unquantified) bridge to `Safe`. -/
 noncomputable def RiskGap (A : System) : Int := Control A - CCI A
-
-noncomputable def Risk (A : System) : Int := RiskGap A
-
-theorem Risk_eq_RiskGap (A : System) : Risk A = RiskGap A := rfl
 
 noncomputable def SelfControlGap (A : System) : Int :=
   SelfControl A - CorrectionVisibility A
@@ -311,41 +333,34 @@ theorem P13_risk_gap_bounded_by_cci_slack
     RiskGap A ≤ δ := by
   unfold RiskGap; omega
 
-theorem risk_le_delta_of_cci_slack
-    {A : System} {δ : Int}
-    (h : Control A ≤ CCI A + δ) :
-    Risk A ≤ δ := by
-  rw [Risk_eq_RiskGap]
-  exact P13_risk_gap_bounded_by_cci_slack h
-
-theorem risk_bound_from_vector_supported_slack
+theorem risk_gap_bound_from_vector_supported_slack
     {A : System} {δ : Int}
     (h : CCIVectorSupportsScalarSlack A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack (control_le_cci_from_vector_supported_slack h)
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack (control_le_cci_from_vector_supported_slack h)
 
-/-- Risk bound from a θ-certified vector CCI certificate: certification
+/-- RiskGap bound from a θ-certified vector CCI certificate: certification
     thresholds bound the primary numeric slack directly. -/
-theorem risk_bound_from_threshold_certified_cci
+theorem risk_gap_bound_from_threshold_certified_cci
     {A : System} {δ : Int}
     (cert : CCICertificate A) (θ : CCIThresholds) (w : CCIPenaltyWeights)
     (hpass : CCICertificatePasses cert θ)
     (hmeas : CCICertificateMeasures cert w)
     (hctrl : Control A ≤ θ.lambdaFloor w + δ) :
-    Risk A ≤ δ :=
-  risk_bound_from_vector_supported_slack
+    RiskGap A ≤ δ :=
+  risk_gap_bound_from_vector_supported_slack
     (CCIVectorSupportsScalarSlack.fromThresholdFloor cert θ w hpass hmeas hctrl)
 
-theorem risk_le_delta_of_witness
+theorem risk_gap_le_delta_of_witness
     {A : System} {δ : Int} (w : SpineRiskWitness A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack w.cci_slack
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack w.cci_slack
 
 structure BIQDerivedCCISlack (A : System) (δ : Int) where
   cact_le_cci : CactSys A ≤ CCI A + δ
 
-/-- A Markov-blanket/B-IQ derivation of the numeric `Control ≤ CCI + δ` leaf.
-    The profile supplies the B-IQ channel arithmetic; the final field says the
+/-- A Markov-blanket/BIQ derivation of the numeric `Control ≤ CCI + δ` leaf.
+    The profile supplies the BIQ channel arithmetic; the final field says the
     action channel is below the correction-capacity slack. -/
 structure MarkovBlanketBIQDerivedCCISlack (A : System) (δ : Int) where
   profile : MarkovBlanketBIQProfile
@@ -378,10 +393,10 @@ theorem control_le_correction_from_biq_ceiling
   have hcact := h.cact_le_cci
   omega
 
-theorem risk_bound_from_biq_ceiling
+theorem risk_gap_bound_from_biq_ceiling
     {A : System} {δ : Int} (h : BIQDerivedCCISlack A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack (control_le_correction_from_biq_ceiling h)
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack (control_le_correction_from_biq_ceiling h)
 
 structure BIQCapacityCertificate (A : System) (δ : Int) extends BIQDerivedCCISlack A δ
 
@@ -390,22 +405,22 @@ theorem BIQCapacityCertificate.biq_ceiling
     BIQSys A ≤ CsensSys A + CactSys A :=
   P10_biq_sys_upper_bound A
 
-theorem BIQCapacityCertificate.risk_bound
+theorem BIQCapacityCertificate.risk_gap_bound
     {A : System} {δ : Int} (cert : BIQCapacityCertificate A δ) :
-    Risk A ≤ δ :=
-  risk_bound_from_biq_ceiling cert.toBIQDerivedCCISlack
+    RiskGap A ≤ δ :=
+  risk_gap_bound_from_biq_ceiling cert.toBIQDerivedCCISlack
 
 /-- Certificate form for the stealth-capability result: monitored filters, tags,
-    decay rules, and ledgers jointly bound hidden productive B-IQ tightly enough
+    decay rules, and ledgers jointly bound hidden productive BIQ tightly enough
     to imply the same correction-capacity slack used by the safety spine. -/
 structure HiddenBIQCertificate (A : System) (δ : Int) where
   hidden_biq_le_cci : Control A ≤ CCI A + δ
 
-theorem risk_bound_from_hidden_biq_certificate
+theorem risk_gap_bound_from_hidden_biq_certificate
     {A : System} {δ : Int}
     (h : HiddenBIQCertificate A δ) :
-    Risk A ≤ δ :=
-  risk_le_delta_of_cci_slack h.hidden_biq_le_cci
+    RiskGap A ≤ δ :=
+  P13_risk_gap_bounded_by_cci_slack h.hidden_biq_le_cci
 
 theorem P13_control_outpaces_correction_risk
     {A B : System}

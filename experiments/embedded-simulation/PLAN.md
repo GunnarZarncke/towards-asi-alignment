@@ -63,7 +63,7 @@ Motivated by a self-critique of the channel MI scan (v4-era work): held-out
 unseen mechanism, and even adding more `SimConfig` scenarios only adds more
 scripted mechanisms. Phase 0 (cheap) wires in 9 already-implemented,
 already-`HELD_OUT_SCENARIOS`-classified scenarios currently unused by the
-N-10 eligibility/MI-scan battery — including a concrete gap found in the
+ES-10 eligibility/MI-scan battery — including a concrete gap found in the
 process (the `lineage`/`successor` verdict domains have never been scenario-
 tested by that battery). Phase 1+ is the harder fix: goal-driven agents whose
 behavior emerges from goal weights × tool/ecology access, tested against a

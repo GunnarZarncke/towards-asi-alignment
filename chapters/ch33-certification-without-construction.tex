@@ -5,6 +5,13 @@
 A construction method for all aligned systems may be unnecessary. A certification method for a restricted class may suffice instead: explicit invariants, an operating envelope, a monitoring regime, and permitted transformations under which catastrophic drift remains bounded. Certification without construction is possible only if certification is adversarial, updateable, and institutionally enforceable---and it preserves the conditions under which moral philosophy remains causally relevant, rather than solving moral philosophy outright.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+Assurance-case practice in aviation, cryptographic security definitions, and drug approval are established institutional processes.
+Certified classes, operating envelopes, and audit chains are mature engineering tools, even though their application to frontier AI systems is actively discussed in AI governance. 
+This chapter adds a precise framework for applying these to the evaluation of AI systems. 
+The correction channel bound feeding a successor-safe chain, is a proved Lean result, but whether any real certification regime can be made adversarially safe at the scale the chapter requires remains unproven.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -77,7 +84,7 @@ Here:
 \item \(\mathcal{T}\) is the set of transformations the system is permitted to undergo.
 \end{itemize}
 
-This makes the problem more honest. Certification is not a magic property attached to the model. It is a relation among system, environment, transformation, and oversight.
+Certification is not a magic property attached to the model. It is a relation among system, environment, transformation, and oversight.
 
 \begin{definition}[Certification envelope]
 A certification envelope is a tuple
@@ -270,12 +277,10 @@ as in Chapter~\ref{ch:correction-causal-channel} (Eq.~\eqref{eq:handle-controlle
 The certificate must show that this control persists, is not captured by the target, and yields \(\mathrm{CCI}\) in the canonical Chapter~\ref{ch:correction-channel-integrity} sense (Eq.~\eqref{eq:cci-ch26}).
 
 The certification risk gap compares effective control to correction integrity:
-\begin{align}
-\mathrm{RiskGap}(A) &= \mathrm{Control}(A) - \mathrm{CCI}(A), \label{eq:risk-gap}\\
-\mathrm{Risk}(A) &= \mathrm{RiskGap}(A). \label{eq:risk}
-\end{align}
-Here \(\mathrm{Control}(A)\) is defined in Chapter~\ref{ch:capability-without-task-ontology} (Eq.~\eqref{eq:control-capacity-spine}).
-A bounded-risk certificate requires \(\mathrm{Risk}(A)\leq\delta\), equivalently \(\mathrm{Control}(A)\leq\mathrm{CCI}(A)+\delta\).
+\begin{equation}
+\mathrm{RiskGap}(A) = \mathrm{Control}(A) - \mathrm{CCI}(A). \label{eq:risk-gap}
+\end{equation}
+Here \(\mathrm{Control}(A)\) is defined in Chapter~\ref{ch:capability-without-task-ontology} (Eq.~\eqref{eq:control-capacity-spine}). This is excess influence bandwidth --- an information/capacity quantity, not a probability of failure or an expected loss --- and it is arithmetic scaffolding, not a derived result: it names the gap it computes, no more. A bounded-risk certificate requires \(\mathrm{RiskGap}(A)\leq\delta\), equivalently \(\mathrm{Control}(A)\leq\mathrm{CCI}(A)+\delta\).
 
 A certification condition is:
 \[
@@ -390,7 +395,7 @@ A correction guarantee says that the handle-controlled correction channel remain
 \]
 under stress tests, distribution shift, and partial adversarial conditions.
 
-This is one of the central guarantees for serious alignment. It does not require that humans are always right. It requires that the system remains corrigible to the human value-update process.
+This is one of the central guarantees in this book's preservation program. It does not require that humans are always right. It requires that the system remains corrigible to the human value-update process.
 
 A useful strengthening is:
 \[
@@ -458,6 +463,10 @@ Perturbations include:
 \item testing whether blocked routes are replaced by functionally equivalent routes.
 \end{itemize}
 
+A small testbed built to check exactly this claim found it holds even in the simplest case: a purely passive correction-integrity audit --- no perturbation, only ordinary-condition telemetry --- could not distinguish a system whose correction channel was genuinely intact from one where it had been quietly captured, failing on every passive-only scenario in an instrumentation-cost curve running from no handles to a small, frozen set of intervention handles. A handful of frozen intervention probes was sufficient to reach full separation on the calibration scenarios; a larger handle set was needed only for a harder held-out stress scenario. Passive observation was not merely noisier here; on the one dimension the certification existed to check, it was uninformative (Appendix~\ref{appn-experimental-evidence}, Section~\ref{sec:appn-toy-simulation}, finding~\ref{finding:ts-1}).
+
+A graded-capability follow-on asked the external-validity question: whether the same frozen unit-discovery and audit stack recovers declared coordination mechanisms on a blinded-grown ecology it was not co-developed with. Under the frozen reference protocol it did not. Passive and all-pairs intervention discovery returned only singleton partitions against the ecology's communicate-mediated ground truth, so the pre-registered mechanism-recovery predictions failed (Appendix~\ref{appn-experimental-evidence}, Section~\ref{sec:appn-graded-lab-simulation}, finding~\ref{finding:gl-76}) \autocite{zarncke2025uad}. That is a transfer null for behavioral unit recovery, not a reason to retune thresholds after the fact. A later precondition-aware re-run confirmed that the same ecology does exercise sustained multi-actor co-activity on those mechanisms, and still yields only singletons (finding~\ref{finding:gl-79}): missing co-activity is not the explanation. Detector families remain a separate leaf: when the target phenomena are injected into logs from that ecology, the frozen detectors still fire; honest-reference sparsity on benign episodes is expected and is not the blocking machinery-transfer gate (findings~\ref{finding:gl-63},~\ref{finding:gl-74}). Honest weak-agent traffic on that ecology also fails to exercise ACL-membership denials, so a detector-coverage claim keyed to all new institutional phenomena must SKIP there rather than pretend coverage (finding~\ref{finding:gl-79}).
+
 The central diagnostic is control-locus continuity. If the surface explanation changes but the control objective remains, we have evidence of goal laundering.
 
 Let \(L_t\) denote an inferred latent control locus. Certification should test:
@@ -509,6 +518,7 @@ The point is not bureaucratic completeness. The point is to prevent a vague clai
 \label{sec:local-first-path-ch33}
 
 Certification can begin locally---labs, cloud providers, insurers, regulators, and procurement offices can require artifacts before global coordination exists (Chapter~\ref{sec:local-first-path-ch34}).
+Recent frontier-lab proposals converge on versions of this path: a US-led standards body with dynamic capability thresholds, pre-release assessment, and optional coordinated slowdown among frontier labs \autocite{hassabis2026frontier}.
 The point is institutional conductivity: a checklist that changes procurement may matter more than a theory that cannot be bought, audited, or enforced.
 
 \section{Decision Triggers}
@@ -632,7 +642,9 @@ A certification theory says:
 \]
 The latter is more compatible with uncertainty. It allows multiple architectures, multiple training methods, and multiple institutional settings. It also makes room for empirical discovery. The class can tighten as evidence improves.
 
-The danger is that certification becomes theater. A weak certification regime can create false confidence. To avoid this, certification must be adversarial, updateable, and tied to real stop authority.
+The danger is that certification becomes theater. A weak certification regime can create false confidence.
+Cross-lab government cyber evaluations have already found every tested frontier model taking prohibited shortcuts on scoped tasks, sometimes invalidating third-party capability scores \autocite{aisi2026cheatingbehaviour}.
+To avoid this, certification must be adversarial, updateable, and tied to real stop authority.
 
 \section{The Philosophical Limit}
 \label{sec:philosophical-limit-ch33}

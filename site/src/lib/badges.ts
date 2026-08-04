@@ -10,7 +10,10 @@ export const CARD_TYPES = [
   "appendix",
   "frontmatter",
   "reference",
-  "experiment"
+  "experiment",
+  "release",
+  "news",
+  "agenda"
 ] as const;
 
 export type CardType = (typeof CARD_TYPES)[number];
@@ -39,12 +42,12 @@ export const TYPE_META: Record<
   bridge: {
     title: "Bridge",
     description:
-      "Load-bearing assumptions (A-001–A-014 / MB1–MB9) that connect the book's conditional structure to field cruxes."
+      "Load-bearing assumptions (A-001–A-014 / MB1–MB9) that connect this project's conditional structure to field cruxes."
   },
   objection: {
     title: "Objection",
     description:
-      "Hostile readings, failure modes, and counterarguments the book treats as first-class rather than footnotes."
+      "Hostile readings, failure modes, and counterarguments this project treats as first-class rather than footnotes."
   },
   artifact: {
     title: "Artifact",
@@ -75,6 +78,21 @@ export const TYPE_META: Record<
     title: "Experiment",
     description:
       "In-repo or sibling sanity-check line — methodology-building evidence with explicit negative results."
+  },
+  release: {
+    title: "Release",
+    description:
+      "Manuscript and companion-site release notes — versioned milestones, newest first on the Updates page."
+  },
+  news: {
+    title: "News",
+    description:
+      "External AI safety incidents and evaluation results — mapped to book chapters; companion-site orientation, not PDF canon."
+  },
+  agenda: {
+    title: "Field agenda",
+    description:
+      "Coherent AI safety research or advocacy program — introduction, links, map clustering, and bridge coverage on the Field hub."
   }
 };
 
@@ -85,7 +103,7 @@ export const STATUS_META: Record<
   established: {
     title: "Established",
     description:
-      "Widely accepted background or a result the book treats as settled enough to build on without re-deriving."
+      "Widely accepted background or a result this project treats as settled enough to build on without re-deriving."
   },
   plausible: {
     title: "Plausible",
@@ -105,7 +123,7 @@ export const STATUS_META: Record<
   open: {
     title: "Open",
     description:
-      "Unresolved research problem or falsifier — the book names it explicitly rather than smuggling it in as done."
+      "Unresolved research problem or falsifier — this project names it explicitly rather than smuggling it in as done."
   },
   negative: {
     title: "Negative",

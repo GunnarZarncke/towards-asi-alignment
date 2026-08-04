@@ -14,29 +14,29 @@ digraph Spine03CorrectionSuccessors {
 
   P23 [label="P23 No handle control ⇒ no correction", fillcolor="#FFF0FB"];
   P24 [label="P24 Weakest handle capacity / CCI", fillcolor="#FFF0FB"];
-  FSHUT [label="[SUBSUMED]\nField.Shutdown final nodes\nshutdown_optimal_under_correction_preference\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
-  FINT [label="[NEW]\nField.Interruptibility final nodes\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FIMPACT [label="[NEW]\nField.Impact final nodes\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FQUANT [label="[NEW]\nField.Quantilization final nodes\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FSHUT [label="[PROJECTED]\nField.Shutdown final nodes\nshutdown_optimal_under_correction_preference\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#2E7D32", penwidth=2.2];
+  FINT [label="Field.Interruptibility final nodes\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB"];
+  FIMPACT [label="Field.Impact final nodes\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB"];
+  FQUANT [label="Field.Quantilization final nodes\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB"];
   P25 [label="P25 Obedience ≠ corrigibility", fillcolor="#FFF0FB"];
-  FCORR [label="[NEW]\nField.Corrigibility final nodes\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FDEB [label="[NEW]\nField.Debate final nodes\ndebate_truth_is_correction_projection\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  P25A [label="[NEW]\nAmplification\n≠ correction contraction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  FELK [label="[NEW]\nField.ELK final nodes\nelk_readout_is_correction_projection\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  FCORR [label="Field.Corrigibility final nodes\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB"];
+  FDEB [label="Field.Debate final nodes\ndebate_value_tracks_truth\ndebate_judge_error_flips_outcome\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB"];
+  P25A [label="Amplification\n≠ correction contraction", fillcolor="#FFF0FB"];
+  FELK [label="Field.ELK final nodes\nelk_readout_is_correction_projection\nelk_separated_from_uptake", fillcolor="#FFF0FB"];
   P26 [label="P26 Update without fixed point", fillcolor="#FFF0FB"];
   P13 [label="P13 Risk = Control − CCI", fillcolor="#EAF3FF"];
   P29 [label="P29 Self-control gap", fillcolor="#F4EEFF"];
   P27 [label="P27 Successor invariant chain", fillcolor="#F4EEFF"];
   P28 [label="P28 Missing invariant blocks safety", fillcolor="#F4EEFF"];
   P22T [label="Syntactic tiling ≠ import-preserving transport", fillcolor="#EFFBEA"];
-  PFORGE [label="[NEW]\nforgeability_gap\nall-seven-green + Risk≤δ\n⇏ TrueHarm≤δ", fillcolor="#F4EEFF", color="#1F77B4", penwidth=2.2];
+  PFORGE [label="forgeability_gap\nall-seven-green + Risk≤δ\n⇏ TrueHarm≤δ", fillcolor="#F4EEFF"];
 
   MB4 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB4 Correction legitimacy"];
   MB5 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB5 Successor audit"];
   MB7b [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB7b (from Spine I)"];
   MB7c [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB7c Adversarial robustness"];
   MB8 [shape=diamond, fillcolor="#FFE6E6", color="#CC3333", label="MB8 CEV / process convergence"];
-  MB10 [shape=diamond, style="filled,dashed", fillcolor="#FFE6E6", color="#1F77B4", penwidth=2.2, label="[NEW] MB10\nConserved-property signature\nnot forged"];
+  MB10 [shape=diamond, style="filled,dashed", fillcolor="#FFE6E6", color="#CC3333", label="MB10\nConserved-property signature\nnot forged"];
 
   IN_VB [shape=octagon, style="filled,dashed", fillcolor="#E8F8E8", color="#336633",
          label="From Spine II:\nP22b transport"];
@@ -68,10 +68,10 @@ digraph Spine03CorrectionSuccessors {
   P25 -> MB8 [style=dashed, color="#CC3333"];
   P26 -> MB8 [style=dashed, color="#CC3333"];
 
-  P27 -> PFORGE [label="motivates gate", color="#1F77B4"];
-  PFORGE -> MB10 [style=dashed, color="#1F77B4", label="closes gap"];
-  P27 -> MB10 [style=dashed, color="#1F77B4"];
-  MB10 -> OUT [style=dashed, color="#1F77B4"];
+  P27 -> PFORGE [label="motivates gate", color="#CC3333"];
+  PFORGE -> MB10 [style=dashed, color="#CC3333", label="closes gap"];
+  P27 -> MB10 [style=dashed, color="#CC3333"];
+  MB10 -> OUT [style=dashed, color="#CC3333"];
 
   IN_BND -> MB7b [style=dashed, color="#CC3333", label="from Spine I"];
   MB7b -> MB7c [style=dashed, color="#CC3333", label="MB7 chain"];

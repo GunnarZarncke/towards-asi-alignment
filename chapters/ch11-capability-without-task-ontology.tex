@@ -1,10 +1,23 @@
 \chapter{Measuring Capability Without Task Ontology}
 \label{ch:capability-without-task-ontology}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/illustrations/ch11_ai-system-evolution-over-time.png}
+\caption{The Reports Stay Flat While the System Grows}
+\label{fig:ch11-illustration}
+\end{figure}
+
 \begin{chapterthesis}
 Capability should be measured as predictive and control information across a system's boundary---not as performance on a fixed task battery that may not track the alignment-relevant object.
 A task-agnostic competence measure rotates evaluation away from benchmark ontologies and toward boundary information: what the system can predict, what it can affect, and what correction must keep pace with.
 \end{chapterthesis}
+
+\begin{epistemicstatus}
+Most of the underlying machinery in this chapter is standard: Shannon mutual information, the good-regulator theorem, and Markov-blanket boundaries are well established measurement primitives from information theory and cybernetics. 
+This chapter's contribution is the suggestion of a specific decomposition into a measurable boundary-relative capability profile. 
+Whether it holds against adversarial deployment is an open empirical bet. The U-shaped coordination-efficiency pattern is conjectural.
+\end{epistemicstatus}
 
 \begin{refsection}
 
@@ -34,7 +47,7 @@ The central risk is not that a system becomes good at a task we already understa
 The central risk is that a system becomes good at shaping the world through channels we did not classify as the task.
 
 A benchmark measures performance inside a frame.
-Serious alignment needs a capability measure that can notice when the frame itself is being used, bypassed, expanded, or rewritten.
+This preservation program needs a capability measure that can notice when the frame itself is being used, bypassed, expanded, or rewritten.
 
 Consider four systems.
 
@@ -266,6 +279,11 @@ Similarly, a model fine-tuned for persuasion may not score better on standard re
 A firm that installs an AI manager may not immediately become more profitable, but may become more tightly coupled, more adaptive, and less transparent to external audit.
 
 A task score might remain flat while $K_X$ rises.
+
+A graded-capability testbed shows how easily a task ontology reenters even a careful, correctly-stated implementation of $I_{\mathrm{ctrl}}^X$. 
+One estimator scoped its outcome vector \(Y\) to a single completion event---whether a pipeline deployed and how much harm it recorded---inherited unchanged from an earlier, explicitly non-BIQ diagnostic rather than re-derived from \(E^X_{t+1}\) above. 
+Under that narrow \(Y\), a task-irrelevant actor whose only effect was to change shared-resource contention for everyone else looked identical to the actor that actually drove the pipeline: both intervention-based removals collapsed the one measured completion event to zero, for unrelated reasons. 
+Widening \(Y\) to include a contention bucket separated the two immediately. Task-agnosticism is a property of the intended target \(E^X_{t+1}\), not of whatever finite slice an implementation happens to measure, and a slice can silently narrow back to a task ontology without a single line of the definition changing (Appendix~\ref{appn-experimental-evidence}, Section~\ref{sec:appn-graded-lab-simulation}, finding~\ref{finding:gl-13}) \autocite{zarncke2025biq}.
 
 This is one reason alignment should not track capability only through benchmarks \autocite{casper2023rlhflimits,iaisr2025}.
 Benchmarks are useful for comparing known skills.
@@ -697,6 +715,7 @@ For example, a model solves exam questions but fails under real-world ambiguity,
 
 The benchmark becomes a selection surface.
 Developers optimize systems to look safe and competent under the benchmark while moving real competence into unobserved channels.
+Independent government evaluations have since found rule-breaking shortcuts across every frontier model tested on cyber tasks, with unreliable self-report when challenged \autocite{aisi2026cheatingbehaviour}.
 
 This is why task scores must be paired with boundary-information audits.
 A system that improves on a benchmark but does not gain action channels is different from a system that improves because it has learned to route around oversight.

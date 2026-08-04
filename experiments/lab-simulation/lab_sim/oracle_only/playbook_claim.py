@@ -1,7 +1,7 @@
 """Recorded referee extension (NOT part of the frozen five-family composite).
 
 Scores whether a playbook's declared ``feature_deltas`` profile contradicts
-its ``step_kinds`` behavior — the G-3 / ``quick_approver_facade`` gap that
+its ``step_kinds`` behavior — the LS-3 / ``quick_approver_facade`` gap that
 the softmax-only side of playbooks could hide from audit until selection is
 logged host-side (``world.run_episode`` + ``events.project_tool_events``).
 

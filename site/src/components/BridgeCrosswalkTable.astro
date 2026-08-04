@@ -30,6 +30,7 @@ function cardForBridge(bridge: string, cards: string[]) {
       <thead>
         <tr>
           <th>Bridge</th>
+          <th>Field noun</th>
           <th>Field crux</th>
           <th>Owning agenda(s)</th>
           <th>Book's move</th>
@@ -53,6 +54,7 @@ function cardForBridge(bridge: string, cards: string[]) {
                 ))}
                 {row.home && <div class="cell-meta">{row.home}</div>}
               </td>
+              <td>{row.noun ?? "—"}</td>
               <td>{row.fieldCrux}</td>
               <td>{row.agendas}</td>
               <td>{row.bookMove}</td>

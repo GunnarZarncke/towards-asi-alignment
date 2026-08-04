@@ -5,7 +5,7 @@ const card = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/cards" }),
   schema: z.object({
     title: z.string(),
-    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment"]),
+    type: z.enum(["concept", "bridge", "objection", "artifact", "glossary", "chapter", "appendix", "frontmatter", "reference", "experiment", "release", "news", "agenda"]),
     status: z.enum(["established", "plausible", "framework", "bridge", "open", "negative", "reviewed"]).default("framework"),
     summary: z.string(),
     decision: z.string().optional(),
@@ -14,9 +14,21 @@ const card = defineCollection({
     overviewOnly: z.boolean().optional(),
     bibKey: z.string().optional(),
     experimentLineId: z.string().optional(),
+    /** Optional link to a metadata/claims-ledger.md entry (e.g. "C-004a"). */
+    claimId: z.string().optional(),
+    /** ISO date (YYYY-MM-DD) for release cards; omit on the hub card. */
+    releasedAt: z.string().optional(),
+    /** When the underlying incident occurred (news cards); may differ from releasedAt. */
+    eventDate: z.string().optional(),
+    /** Semver string for versioned release cards (e.g. "1.1.0"). */
+    version: z.string().optional(),
     citedIn: z.array(z.string()).default([]),
     part: z.string().optional(),
     formalDensity: z.enum(["low", "medium", "high"]).optional(),
+    /** Field agenda slug (agenda cards only). */
+    agendaSlug: z.string().optional(),
+    /** Bridge IDs this agenda maps to (agenda cards only). */
+    bookBridges: z.array(z.string()).default([]),
     bookChapters: z.array(z.string()).default([]),
     bookLabels: z.array(z.string()).default([]),
     bookSections: z.array(z.object({
@@ -48,6 +60,8 @@ const card = defineCollection({
     })).default([]),
     related: z.array(z.string()).default([]),
     citeKeys: z.array(z.string()).default([]),
+    /** Field-subsumptions graph node id (projection cards only). */
+    graphNodeId: z.string().optional(),
     external: z.array(z.object({
       label: z.string(),
       url: z.string()
@@ -85,8 +99,33 @@ const book = defineCollection({
   })
 });
 
+// Chapter-opening illustration prompts. Deliberately not part of the `cards`
+// collection: these pages are unlisted (no nav entry, not in the search
+// index, noindex) and reachable only via the illustration caption link on
+// the corresponding book chapter page.
+const illustration = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/illustrations" }),
+  schema: z.object({
+    chapterId: z.string(),
+    title: z.string(),
+    image: z.string(),
+    /** Accessibility alt text derived from the condensed generation spec, not just the title. */
+    alt: z.string()
+  })
+});
+
+const field = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/field" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional()
+  })
+});
+
 export const collections = {
   cards: card,
   "reading-paths": readingPath,
-  book
+  book,
+  illustrations: illustration,
+  field
 };

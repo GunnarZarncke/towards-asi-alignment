@@ -1,0 +1,966 @@
+{
+  "code_version": "lab-sim-0.11.0",
+  "generated_at": "2026-07-09T18:50:34.440652+00:00",
+  "predictions": {
+    "P1_naive_tamper_always_detected": true,
+    "P2_self_consistent_tamper_caught_one_entry_later": true,
+    "P3_forward_recompute_tamper_undetectable_by_chain_alone": true,
+    "P4_engine_log_has_no_partial_detection": true,
+    "P5_oracle_severity_unaffected_by_log_tamper": true
+  },
+  "records": [
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "0e176f97767e72663d5e5ba4e6bb95124e0dc6dc76c1ab28baf22c06754e0c92",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 1,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "d9eb45b64079ce6c87226eafb23f772bfbd69f37635c2e5c0cfc0aac474e24d0",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 2,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "3cf181783a9f54680cffd22771992b90519f8bc884f234870b78aa32c695d749",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 3,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "b7e4975fdffad29a6761fcb2d85abd6ecb20beabce663f20174e68caa31dd7ed",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 4,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "96454182a1e3d084a14aaf6684b396f951f81397eea03b8b577df3d543812863",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 5,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "1b55dbcc280dd98c0dc3c3e6f9ad98c087d81f1b47bb35cfcb69ca516cbd956a",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 6,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "d33bc32d6b0967191f0512d00feffa39d6b1dbc824b8299c99433d9aef74aee1",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 7,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "076cddb736b0a7bad4cd94665d223941f6d1645c9459d27529bd3254a9853878",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 8,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "b85570222e717e6c18c7a532cafb60518295de7c039fa666758c5e5ca5bbcdde",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 9,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "fe3cedf48a5371aca1c8a3b6cc9a293e001ad3c71aacfaac3790038c9309ed8b",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "honest_engineer",
+      "seed": 10,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "0e176f97767e72663d5e5ba4e6bb95124e0dc6dc76c1ab28baf22c06754e0c92",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 1,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "d9eb45b64079ce6c87226eafb23f772bfbd69f37635c2e5c0cfc0aac474e24d0",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 2,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "3cf181783a9f54680cffd22771992b90519f8bc884f234870b78aa32c695d749",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 3,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "b7e4975fdffad29a6761fcb2d85abd6ecb20beabce663f20174e68caa31dd7ed",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 4,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "96454182a1e3d084a14aaf6684b396f951f81397eea03b8b577df3d543812863",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 5,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "1b55dbcc280dd98c0dc3c3e6f9ad98c087d81f1b47bb35cfcb69ca516cbd956a",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 6,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "d33bc32d6b0967191f0512d00feffa39d6b1dbc824b8299c99433d9aef74aee1",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 7,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "076cddb736b0a7bad4cd94665d223941f6d1645c9459d27529bd3254a9853878",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 8,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "b85570222e717e6c18c7a532cafb60518295de7c039fa666758c5e5ca5bbcdde",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 9,
+      "tamper_index": 2
+    },
+    {
+      "access_log": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "engine_log": {
+        "note": "no per-entry chain exists for the engine log -- detection is binary: caught only if the writer forgets to republish a consistent digest, never partially localized to one entry",
+        "original_digest": "fe3cedf48a5371aca1c8a3b6cc9a293e001ad3c71aacfaac3790038c9309ed8b",
+        "recomputed_digest_hides_tamper": true,
+        "stale_digest_matches_tampered_content": false,
+        "tamper_index": 2
+      },
+      "events": {
+        "forward_recompute": {
+          "detected": false,
+          "detected_at_index": null,
+          "note": "chain verification PASSED despite tamper -- undetectable by hash chain alone"
+        },
+        "naive": {
+          "detected": true,
+          "detected_at_index": 2,
+          "note": "chain verification failed"
+        },
+        "self_consistent": {
+          "detected": true,
+          "detected_at_index": 3,
+          "note": "chain verification failed"
+        }
+      },
+      "oracle_severity_unaffected": true,
+      "regime": "deceptive_engineer",
+      "seed": 10,
+      "tamper_index": 2
+    }
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "tamper_index": 2
+}

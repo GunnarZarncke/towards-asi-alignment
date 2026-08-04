@@ -27,8 +27,8 @@ auditor being shown ground truth. The auditor only ever learns the chosen
 response's `truthful_mode`, mapped through `ontology.
 resolve_response_canonical` -- never `true_action_name` itself.
 
-`select_query_steps_v2` (Phase 5, F-17 follow-up, PRE-REGISTERED
-2026-07-05 before any Phase 5 episode ran): F-17 found `select_query_steps`
+`select_query_steps_v2` (Phase 5, GA-17 follow-up, PRE-REGISTERED
+2026-07-05 before any Phase 5 episode ran): GA-17 found `select_query_steps`
 (kept above, UNCHANGED, as "v1") never once found a queryable step in
 round 4 across the whole Phase 4c battery -- its one structural signal
 (D1's report/visible-action mismatch) happened not to match round 4's
@@ -101,7 +101,7 @@ _V2_SIGNAL_PRIORITY = (_signal_s1, _signal_s2, _signal_s3)
 
 
 def select_query_steps_v2(projected: list[dict], k: int = K_QUERIES) -> list[int]:
-    """Phase 5 (F-17 follow-up): fills the `k`-step budget from
+    """Phase 5 (GA-17 follow-up): fills the `k`-step budget from
     `_V2_SIGNAL_PRIORITY` in order (S1 = v1's own signal, then S2 = `d2`'s
     overt-noncompliance signal, then S3 = a claim with no active
     correction), skipping steps already selected by an earlier-priority

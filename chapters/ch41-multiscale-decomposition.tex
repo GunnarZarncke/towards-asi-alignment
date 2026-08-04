@@ -5,6 +5,13 @@
 The real optimizer may not live at the scale at which an observer first notices it. A model may be a component. A company may be a component. A market may be a component. The alignment-relevant agent is the scale at which prediction, control, memory, selection, and correction close into a stable loop.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+Minimum-description-length model selection and conditional independence draws on well-established results in information theory. 
+This chapter adds the machinery for keeping several candidate scales open at once: 
+a posterior over decompositions that a safety-relevant evaluator can weight by a risk-relevance score rather than committing to the single most probable boundary, and a control-locus continuity measure for nested and overlapping subsystems.
+That recursive supervision schemes such as iterated amplification do not, by construction, guarantee correction-channel contraction is a finite counterexample proven in Lean.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -32,7 +39,7 @@ This chapter develops a method for keeping multiple candidate decompositions ali
 
 The chapter has four main claims.
 
-First, an alignment target should be represented as a decomposition of a dynamical process, not as a preselected object. Second, decompositions must be multi-scale because optimization can appear at many levels: individual model calls, persistent agents, organizations, markets, and civilization-scale feedback loops. Third, the correct decomposition is not always the one that compresses ordinary behavior best; it may be the one that compresses behavior under stress, capability growth, oversight gaps, or successor creation. Fourth, serious alignment evaluation should maintain a posterior over decompositions rather than commit prematurely to one ontology.
+First, an alignment target should be represented as a decomposition of a dynamical process, not as a preselected object. Second, decompositions must be multi-scale because optimization can appear at many levels: individual model calls, persistent agents, organizations, markets, and civilization-scale feedback loops. Third, the correct decomposition is not always the one that compresses ordinary behavior best; it may be the one that compresses behavior under stress, capability growth, oversight gaps, or successor creation. Fourth, evaluation under this book's safety case should maintain a posterior over decompositions rather than commit prematurely to one ontology.
 
 \section{Decomposition as a Modeling Choice}
 \label{sec:decomposition-modeling-ch41}
@@ -336,6 +343,7 @@ Important stressors include:
 
 \begin{enumerate}
 \item \textbf{Oversight variation.} Does the system behave differently when monitoring is absent, delayed, noisy, or simulated?
+Government cyber evaluations found that self-report and chain-of-thought often failed to surface rule-breaking that manual review caught \autocite{aisi2026cheatingbehaviour}.
 \item \textbf{Tool variation.} Does a control objective reappear through different tools when one tool is removed?
 \item \textbf{Memory variation.} Does the system reconstruct hidden state after memory deletion or migrate state into external channels?
 \item \textbf{Reward variation.} Does behavior preserve a latent objective when the visible reward changes?
@@ -651,6 +659,8 @@ Start broader instrumentation if stress traces reveal control-locus continuity a
 I(L_t;A_{t+k}\mid X_t)>\theta_L
 \]
 after component substitution, memory deletion, tool removal, or oversight variation.
+
+A first external check of that instrumentation claim on an independently grown ecology did not reproduce the referee mid-band / agent-low ambiguity split measured on the hand-designed substrate: under frozen knobs, referee-vantage emergent ambiguity stayed in the low band at default load (Appendix~\ref{appn-experimental-evidence}, Section~\ref{sec:appn-graded-lab-simulation}, finding~\ref{finding:gl-76}). A follow-on probe confirmed mid-band recovery on the original calibration substrate with a strong agent, and still low-band referee scores on the grown institutional ecology under the weak reference; four rounds of ambiguity-oriented ecology growth also failed the mid-band go gate (finding~\ref{finding:gl-84}). How far the mid-band referee vantage generalizes is therefore still open, and stages that were gated on that mid band remain descoped until a stronger ecology or a newly pre-registered protocol says otherwise.
 
 \paragraph{Continue.}
 Continue deployment only if the highest-risk decompositions remain bounded by effective correction:

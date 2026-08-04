@@ -1,5 +1,6 @@
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import path from "node:path";
+import katex from "katex";
 
 const FIGURE_BASE = "https://raw.githubusercontent.com/GunnarZarncke/towards-asi-alignment/main";
 
@@ -91,10 +92,26 @@ function stripLeadingEnvOptions(body) {
   return body.replace(/^\[[^\]]*\]\s*/, "");
 }
 
+function formatMarkdownListItem(marker, content) {
+  const lines = content.split("\n");
+  const pad = " ".repeat(marker.length);
+  const formatted = [`${marker}${lines[0] ?? ""}`];
+  for (let i = 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    formatted.push(line === "" ? "" : `${pad}${line}`);
+  }
+  return formatted.join("\n");
+}
+
 function convertList(body, tag, ctx) {
   const items = splitListItems(stripLeadingEnvOptions(body));
-  const lines = items.map((item) => `<li>${convertInlineText(item, ctx)}</li>`);
-  return `<${tag}>\n${lines.join("\n")}\n</${tag}>\n\n`;
+  const ordered = tag === "ol";
+  const lines = items.map((item, index) => {
+    const content = convertDocument(item, ctx).trim();
+    const marker = ordered ? `${index + 1}. ` : "- ";
+    return formatMarkdownListItem(marker, content);
+  });
+  return `${lines.join("\n\n")}\n\n`;
 }
 
 function convertDescription(body, ctx) {
@@ -138,15 +155,58 @@ function splitListItems(body) {
   return items;
 }
 
+// Chapter-opening illustrations live at figures/illustrations/chNN_<slug>.png.
+// Their caption (the illustration title) links to an unlisted prompt page at
+// /illustrations/{chapterId}/ that is not part of the cards collection and is
+// therefore not listed or searchable — reachable only from this link.
+const ILLUSTRATION_PATH_RE = /^figures\/illustrations\/(ch\d+)_/;
+
+function relIllustrationHref(chapterId) {
+  // The figure is rendered inside a book chapter served at /cards/chapters/{id}/.
+  return `../../../illustrations/${chapterId.toLowerCase()}/`;
+}
+
+// The print-resolution PNG is what \includegraphics uses for the PDF; the
+// site instead serves the downsized JPEG from figures/illustrations/web/
+// (regenerate with scripts/generate_web_illustrations.py).
+export function webIllustrationPath(sourcePath) {
+  const match = sourcePath.match(/^figures\/illustrations\/(ch\d+_[^/]+)\.png$/);
+  if (!match) return sourcePath;
+  return `figures/illustrations/web/${match[1]}.jpg`;
+}
+
+// Site-only alt text, richer than the title-only PDF caption: read once from
+// the `alt` frontmatter field of site/src/content/illustrations/{chapterId}.md
+// (the canonical source, condensed from each illustration's generation spec).
+export function loadIllustrationAlts(repoRoot) {
+  const dir = path.join(repoRoot, "site", "src", "content", "illustrations");
+  const alts = new Map();
+  if (!existsSync(dir)) return alts;
+  for (const name of readdirSync(dir)) {
+    if (!name.endsWith(".md")) continue;
+    const text = readFileSync(path.join(dir, name), "utf8");
+    const frontmatter = text.match(/^---\n([\s\S]*?)\n---/)?.[1] || "";
+    const chapterId = frontmatter.match(/^chapterId:\s*"([^"]+)"/m)?.[1];
+    const alt = frontmatter.match(/^alt:\s*"([^"]*)"/m)?.[1];
+    if (chapterId && alt) alts.set(chapterId.toLowerCase(), alt);
+  }
+  return alts;
+}
+
 function convertFigure(body, ctx) {
   const imgMatch = body.match(/\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}/);
   const captionMatch = body.match(/\\caption(?:\[[^\]]*\])?\{([\s\S]*?)\}/);
   const labelMatch = body.match(/\\label\{([^}]+)\}/);
   if (!imgMatch) return `${body.trim()}\n\n`;
-  const src = `${FIGURE_BASE}/${imgMatch[1]}`;
+  const illustrationMatch = imgMatch[1].match(ILLUSTRATION_PATH_RE);
+  const src = `${FIGURE_BASE}/${illustrationMatch ? webIllustrationPath(imgMatch[1]) : imgMatch[1]}`;
   const caption = captionMatch ? captionMatch[1].trim() : "";
   const anchor = labelMatch ? `<span id="${labelMatch[1]}"></span>` : "";
-  return `${anchor}<figure class="book-figure"><img src="${src}" alt="${caption}" /><figcaption>${caption}</figcaption></figure>\n\n`;
+  const alt = illustrationMatch ? ctx.illustrationAlts?.get(illustrationMatch[1].toLowerCase()) || caption : caption;
+  const captionHtml = illustrationMatch
+    ? `<a href="${relIllustrationHref(illustrationMatch[1])}">${caption}</a>`
+    : caption;
+  return `${anchor}<figure class="book-figure"><img src="${src}" alt="${alt}" /><figcaption>${captionHtml}</figcaption></figure>\n\n`;
 }
 
 function readBalanced(tex, startIndex) {
@@ -495,6 +555,33 @@ function cleanTableRow(row) {
     .trim();
 }
 
+// Table cells are emitted as raw HTML (not markdown), because raw HTML blocks
+// in the markdown pipeline are passed through unparsed: remark-math never sees
+// `$...$` inside them, and markdown link syntax never turns into `<a>` tags.
+// So table-cell inline content needs its own HTML-producing versions of ref
+// links and math, instead of the markdown-syntax versions convertInlineText emits.
+function renderTableCellMath(text) {
+  const renderExpr = (expr, displayMode) => {
+    try {
+      return katex.renderToString(expr.trim(), { throwOnError: false, displayMode });
+    } catch {
+      return expr;
+    }
+  };
+  return text
+    .replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) => renderExpr(expr, true))
+    .replace(/\$([^$]+?)\$/g, (_, expr) => renderExpr(expr, false));
+}
+
+function tableCellLinksToHtml(text) {
+  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => `<a href="${url}">${label}</a>`);
+}
+
+function convertTableCell(cell, ctx) {
+  const md = convertInlineText(cell.replace(/\\newline/g, " ").trim(), ctx);
+  return tableCellLinksToHtml(renderTableCellMath(md));
+}
+
 function convertTableEnv(body, ctx) {
   const rows = stripTableDecorations(body)
     .split(/\\\\/g)
@@ -504,9 +591,7 @@ function convertTableEnv(body, ctx) {
   if (rows.length === 0) return "\n";
 
   const htmlRows = rows.map((row, idx) => {
-    const cells = row
-      .split("&")
-      .map((cell) => convertInlineText(cell.replace(/\\newline/g, " ").trim(), ctx));
+    const cells = row.split("&").map((cell) => convertTableCell(cell, ctx));
     const tag = idx === 0 ? "th" : "td";
     const cellHtml = cells.map((cell) => `<${tag}>${cell}</${tag}>`).join("");
     return `<tr>${cellHtml}</tr>`;

@@ -1,17 +1,34 @@
 \chapter{Bridges and the Field: A Crosswalk}
 \label{appbridge-crosswalk}
 
-Every serious alignment agenda rests on load-bearing assumptions --- \emph{bridges} --- that, if false, sink the program.
+\begin{epistemicstatus}
+The field cruxes this appendix lists are standard, well-documented open problems, and the field's confidence that each is genuinely hard and unresolved is high.
+\end{epistemicstatus}
+
+Every model-centric alignment agenda rests on load-bearing assumptions --- \emph{bridges} --- that, if false, sink the program.
 Most agendas bury theirs in a footnote or a ``we assume access to\,\ldots'' clause.
-This book instead lifts them out and labels them: the manuscript assumptions \(\text{A-001}\)--\(\text{A-014}\) (in the chapters that need them) and the formal bridge axioms \(\text{MB1}\)--\(\text{MB10}\) (Appendix~\ref{appi-lean-proof-spine}).
+This book instead lifts them out and labels them: the manuscript assumptions \(\text{A-001}\)--\(\text{A-014}\) (in the chapters that need them) and the formal bridge axioms \(\text{MB1}\)--\(\text{MB11}\), including the separately threaded bridges \(\text{MB4a}\) and \(\text{MB10}\) (Appendix~\ref{appi-lean-proof-spine}).
 Laid beside the field's standing open problems, these bridges are largely the same walls under different names.
 
 This appendix makes that correspondence explicit.
 For each bridge it names the canonical field crux it inherits, the agenda that owns that crux, and the book's specific move on it.
-The purpose is twofold: to concede honestly what the book \emph{shares} with the field (it dissolves none of these problems), and to isolate the few places where it adds structure rather than re-labeling.
+The purpose is twofold: to state what the book \emph{shares} with the field (it dissolves none of these problems), and to isolate the few places where it adds structure rather than re-labeling.
 For the same bridges expressed in institutional rather than field-agenda language, see Appendix~\ref{appj-institutional-translation}.
 Appendix~\ref{appi-lean-proof-spine}, Section~\ref{sec:appi-field-subsumption-status}, gives the formal status ledger: which crosswalk claims are finite Lean rederivations, which are separations, and which are source-cited imported field theorem handles rather than book bridges.
 The field-agenda formalization gem (Section~\ref{sec:appi-field-formalization-gem}) names the prospective community artifact: a shared machine-checked finite fragment for CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility.
+
+\paragraph{Field agenda index.}
+The agenda-by-bridge coverage matrix (thirty-two named agendas \(\times\) \(\text{MB1}\)--\(\text{MB11}\) incl.\ \(\text{MB4a}\)) lives in \texttt{reference/field-agendas/field-agenda-index.md} and on the companion site Field hub (\url{https://towards-alignment.com/field/}).
+That matrix catalogs \emph{sourced field evidence on a crux}, independent of this book's treatment of each agenda.
+A filled cell is not automatic discharge to \(\mathrm{Safe}\): some field work maps to a direct bridge (\(\text{MB4a}\), \(\text{MB8}\), \(\text{MB11}\)), some sits on ambient cousins of existing bridges (\(\text{MB1}\)/\(\text{MB9}\) for model-class misspecification), and some is catalog-only side channel (regret bounds, logical induction).
+Do not read matrix tags alone as ``this agenda solves that bridge.''
+
+\paragraph{MIRI writeups.}
+Where a bridge inherits an agent-foundations crux, the notes below cite MIRI's prior public writeups rather than treating the book's \(\text{MB}\) labels as new problem statements.
+The umbrella survey is Embedded Agency \autocite{demski2019embedded}; the earlier topic framing is the Agent Foundations technical agenda \autocite{soares2015technicalagenda}.
+Neither dissolves the problems; both are the field sources this crosswalk relocates into typed bridges.
+Those writeups are shared sources for several bridges at once---Embedded Agency treats its buckets as slices of one problem, and robust delegation already bags tiling, corrigibility, and value learning together---so repeated MIRI cites across rows are expected overlap, not evidence that MIRI drew the book's cuts.
+Two splits in particular are this book's typed handoffs of the same AF walls: \(\text{MB5}\) (successor transport / ontology closure) versus \(\text{MB10}\) (forgeability of the conserved-property audit), and \(\text{MB4}\) (correction-channel integrity as the load-bearing path) versus \(\text{MB4a}\) (measured-path legitimacy and anti-capture) versus \(\text{MB8}\) (CEV-process preservation as a secondary route).
 
 \paragraph{Why a crosswalk and not a rename.}
 The \(\text{MB}\) labels are deliberately neutral formal handles, and the field's crux names are not in one-to-one correspondence with them: a single crux can touch several bridges (Goodhart pressure bears on \(\text{MB2}\) and \(\text{MB4}\); ELK is a slice of \(\text{MB2}\)/\(\text{MB3}\)), and one bridge can fan out (the inner-alignment crux is split here into \(\text{MB7a}\)--\(\text{MB7d}\)).
@@ -34,15 +51,18 @@ Keeping neutral labels and supplying this translation table preserves the book's
 \endhead
 \bottomrule
 \endfoot
-MB1 \newline (A-004, ch7) & Embedded agency: no clean agent/environment cut; the real optimizer is not the visible model & Agent foundations (MIRI) & Treat the Markov-blanket boundary as a \emph{measurable} object (\(\epsilon\)-boundary discovery); a conceptual gap becomes an estimator-soundness bet \\
-MB2, MB3 \newline (A-001, A-006; ch16, ch18, ch46) & The pointing problem: inverse-RL non-identifiability; values vs.\ irrationality underdetermined; ELK; reward misspecification & CIRL / value learning, ELK, RLHF/RLAIF & Replace scalar reward with bundle geometry plus bearer maps; ELK becomes a latent-readout subchannel, not the whole problem \\
-MB4, MB8 \newline (A-002, ch46--27) & Corrigibility and off-switch anti-naturality; manipulation; legitimacy of the correction authority & MIRI, CHAI, Constitutional AI & Correction-channel integrity as a dynamical, capture-resistant invariant with handle control; shutdown/interruptibility are one-bit projections \\
-MB5 \newline (A-007, A-010; ch46--31) & Tiling / Vingean reflection; ontology identification (the diamond maximizer) & Agent foundations (MIRI) & Successor closure over seven conserved properties plus transport surviving ontology shift \\
-MB6a, MB6b \newline (A-008, A-011; ch46--35) & \emph{No single standard name}: selection/competition dynamics; gradual disempowerment & Largely outside the model-centric agendas & Outcomes depend on socio-technical selection and basin stability, not weights alone; institutions selected to preserve correction \\
-MB7a--c \newline (A-004, A-009; ch10, ch46, ch47) & Inner alignment / deceptive alignment; scalable-oversight ceiling (obfuscated arguments, amplification drift); Control's capability gap & RLHF, Debate, Amplification, AI Control (Redwood) & Bound hidden productive B-IQ via access robustness plus filter coverage; price the cost of faking the monitored signal \\
-MB7d \newline (A-009, A-013; ch48) & Acausal / inferential coordination; program equilibrium across severed channels & Decision theory (MIRI-adjacent) & Inferential-coupling detector certificates for coordination that survives cutting ordinary communication and control \\
-MB9 \newline (A-014, ch3, ch47) & Specification and world-model coverage: you cannot enumerate all safety-relevant phenomena & Guaranteed-Safe / Open Agency (davidad) & Grounding conservativity: value-relevant change must move the checked abstraction or raise uncertainty --- no silent gaps \\
-MB10 \newline (A-007, A-009; ch08, ch31, ch43) & Deceptive alignment / measurement gaming: a system can pass every audited checklist while defecting on whatever it omits & Deceptive alignment (mesa-optimization), agent foundations (tiling) & Require the conserved-property signature itself to be adversarially verifiable up to the successor's capability before a passing score counts as evidence; a finite counterexample shows the gap is not vacuous \\
+MB1 \newline (A-004, Ch.~\ref{ch:finding-boundary}) & Embedded agency: no clean agent/environment cut; the real optimizer is not the visible model & Agent foundations (MIRI) & Treat the Markov-blanket boundary as a \emph{measurable} object (\(\epsilon\)-boundary discovery); a conceptual gap becomes an estimator-soundness bet \\
+MB2, MB3 \newline (A-001, A-006; Chs.~\ref{ch:value-bundle-model}, \ref{ch:bearer-maps}, \ref{ch:unconscious-value-drift}) & The pointing problem: inverse-RL non-identifiability; values vs.\ irrationality underdetermined; ELK; reward misspecification & CIRL / value learning, ELK, RLHF/RLAIF & Add bundle geometry plus bearer maps alongside scalar reward (\(k=1\) embed); ELK becomes a latent-readout subchannel, not the whole problem \\
+MB4 \newline (A-002, Ch.~\ref{ch:correction-channel-integrity}) & Corrigibility and off-switch anti-naturality; correction authority & MIRI, CHAI, Constitutional AI & Correction-channel integrity as a dynamical invariant; shutdown/interruptibility are one-bit projections \\
+MB4a \newline (A-002, Chs.~\ref{ch:correction-channel-integrity}, \ref{ch:manipulation-false-consent}) & Capture resistance and audit-judge independence on the designated measured path & MIRI, CHAI, Constitutional AI & Measured path carries data only; legitimacy (control, reach, persistence, anti-capture) is supplied by bridge; integrity \(\Rightarrow\) legitimate path --- not green path \(\Rightarrow\) integrity \\
+MB8 \newline (A-002, Ch.~\ref{ch:correction-channels-adversarial-pressure}) & CEV-process legitimacy; extrapolated-volition route & MIRI (CEV) & Legacy secondary route from externally certified value-update preservation to correction integrity; not on the live certification path \\
+MB5 \newline (A-007, A-010; Chs.~\ref{ch:unconscious-value-drift}, \ref{ch:conserved-properties}) & Tiling / Vingean reflection; ontology identification (the diamond maximizer) & Agent foundations (MIRI) & Successor closure over seven conserved properties plus transport surviving ontology shift \\
+MB6a, MB6b \newline (A-008, A-011; Chs.~\ref{ch:unconscious-value-drift}, \ref{ch:multi-agent-strategic-coupling}) & \emph{No single standard name}: selection/competition dynamics; gradual disempowerment & Largely outside the model-centric agendas & Outcomes depend on socio-technical selection and basin stability, not weights alone; institutions selected to preserve correction \\
+MB7a--c \newline (A-004, A-009; Chs.~\ref{ch:strategic-opacity}, \ref{ch:unconscious-value-drift}, \ref{ch:bearers-of-value}) & Inner alignment / deceptive alignment; scalable-oversight ceiling (obfuscated arguments, amplification drift); Control's capability gap & RLHF, Debate, Amplification, AI Control (Redwood) & Bound hidden productive BIQ via access robustness plus filter coverage; price the cost of faking the monitored signal \\
+MB7d \newline (A-009, A-013; Ch.~\ref{ch:towards-alignment}) & Acausal / inferential coordination; program equilibrium across severed channels & Decision theory (MIRI-adjacent) & Inferential-coupling detector certificates for coordination that survives cutting ordinary communication and control \\
+MB9 \newline (A-014, Chs.~\ref{ch:dynamical-guarantee}, \ref{ch:bearers-of-value}) & Specification and world-model coverage: you cannot enumerate all safety-relevant phenomena & Guaranteed-Safe / Open Agency (davidad) & Grounding conservativity: value-relevant change must move the checked abstraction or raise uncertainty --- no silent gaps \\
+MB10 \newline (A-007, A-009; Chs.~\ref{ch:grow-split-merge}, \ref{ch:conserved-properties}, \ref{ch:verifiability-ontology}) & Deceptive alignment / measurement gaming: a system can pass every audited checklist while defecting on whatever it omits & Deceptive alignment (mesa-optimization), agent foundations (tiling) & Require the conserved-property signature itself to be adversarially verifiable up to the successor's capability before a passing score counts as evidence; a finite counterexample shows the gap is not vacuous \\
+MB11 \newline (C-001, Ch.~\ref{ch:safety-case}) & Safety-case gap: does audited layer evidence plus bounded measured risk suffice for deployment-level safety? & Guaranteed-Safe / Open Agency (davidad), safety-case methodology & Certified safety case within deployment risk tolerance \(\Rightarrow\) \(\mathrm{Safe}\); assembly theorems are packaging --- the open step is a named bridge, not an implied conclusion \\
 \end{longtable}
 \renewcommand{\arraystretch}{1.0}
 
@@ -54,39 +74,61 @@ The embedded-agency problem denies a clean Cartesian cut between agent and envir
 A parallel skepticism targets the Markov-blanket construct itself: critics distinguish Pearl blankets (epistemic tools in a chosen model) from inflated Friston blankets (purported real organism--environment boundaries) and argue the literature equivocates between them \autocite{bruineberg2021emperor,btesh2022redressing,biehl2020fepcritique}; even sympathetic causal readings locate the cut in the modeler rather than in the system \autocite{btesh2022redressing}.
 MIRI states the embedded-agency obstruction as a standalone problem; the book treats the same cut as a \emph{discoverable} directed \(\epsilon\)-blanket and makes the contestable, falsifiable bet that boundary estimators recover safety-relevant separation (Chapter~\ref{ch:finding-boundary})---measurable and falsifiable, not ontological.
 That is a stronger and more operational claim than ``there is no clean cut,'' and it is correspondingly easier to disconfirm.
-The companion testbeds give that bet tentative, partial support: in restricted settings, targeted channel interventions scored against a measured (not fixed) baseline recover groupings that passive correlation-based clustering merges into one false unit, and a separate structural provenance check resists a specific dishonest-reporting attack that a content-based check alone would miss.
+The companion testbeds give that bet tentative, partial support: in restricted settings, targeted channel interventions scored against a measured (not fixed) baseline recover groupings that passive correlation-based clustering merges into one false unit, and a separate structural provenance check resists a specific misreporting attack that a content-based check alone would miss.
 Both results are narrow and seed-/scenario-dependent rather than a general solution --- a harder multi-actor, noisy-backend stress test showed the same intervention method swing from over-merging to under-merging across seeds --- and are reported that way in the underlying experiment notes, negative results included.
+\(\text{MB1}\) is a bet about \emph{recoverability}, not about one instrument.
+Garrabrant-style Cartesian frames and finite factored sets \autocite{garrabrant2021cartesian} factorize influence rather than perturb it; cyclic causal discovery \autocite{richardson1996ccd,zanga2025causaldiscoverysurvey} recovers directed feedback among fixed observables without any handles.
+These are live alternatives to the intervention-based route the book leans on, not weaker versions of it: each buys a different part of the boundary (coupling direction, role assignment, unit membership) under different assumptions, and none is known to dominate on the evidence recorded in Chapter~\ref{ch:finding-boundary}.
+The book's preference for interventional handles is a coverage argument---the same handles are reused for correction probes, successor certification, and adversarial measurement---and if a passive route recovered safety-relevant cuts as reliably, \(\text{MB1}\) would be discharged more cheaply rather than refuted (Section~\ref{sec:wwctv-finding-boundary}).
 
 \paragraph{MB2, MB3 --- value identification and transport (A-001, A-006).}
 This is the field's most over-determined wall.
 Inverse reinforcement learning is underdetermined --- the same behaviour fits many reward functions \autocite{ng2000irl,ziebart2008maxent,komanduru2019irlcomplexity} --- and assistance-game / CIRL formulations inherit the problem of separating values from irrationality \autocite{hadfieldmenell2016,russell2019human}.
-ELK names the human-simulator-versus-direct-translator gap \autocite{christiano2021elk}; reward misspecification and RLHF's ceiling restate it under optimization pressure \autocite{amodei2016concrete,casper2023rlhflimits}.
-The book's move is to drop the scalar-reward frame for bundle geometry plus bearer maps; ELK then reappears as one latent-readout subchannel, separable from correction uptake and successor preservation (Chapter~\ref{ch:value-bundle-model}, Chapter~\ref{ch:bearer-maps}).
+MIRI's value-learning agenda states the same pointing problem as inductive learning of operator preferences under ontology change and training ambiguity \autocite{soares2015valuelearning}.
+ELK names the human-simulator-versus-direct-translator gap \autocite{christiano2021elk}; reward misspecification and RLHF's ceiling restate it under optimization pressure \autocite{amodei2016concrete,casper2023rlhflimits}; RLAIF and Constitutional AI inherit the same pointing and legitimacy cruxes under AI-generated feedback \autocite{bai2022rlaif,bai2022constitutional}.
+The book's move is to add bundle geometry and bearer maps alongside scalar reward inference, treating flat reward as the \(k=1\) special case rather than the whole target; ELK then reappears as one latent-readout subchannel, separable from correction uptake and successor preservation (Chapter~\ref{ch:value-bundle-model}, Chapter~\ref{ch:bearer-maps}).
+Shard theory \autocite{turner2022shard} is a borderline sibling agenda: it connects contextual value shards to what is learned inside models, convergent with the non-scalar-value critique but with a learned-internal-mechanism claim.
+If shard dynamics were measurably tied to bundle transport under optimization, Chapter~\ref{ch:low-dimensional-value-learning}'s representation story would need revision.
 Full-stack alignment names an adjacent wall from the institutional side: even a perfectly intent-aligned individual system can produce bad outcomes if the surrounding institutions it is embedded in are misaligned, and neither preference/utility models nor unstructured values-as-text scale to that setting \autocite{edelman2025fullstack}.
 Its proposed remedy --- thick models of value (TMV): structured representations that distinguish enduring values from fleeting preferences and embed individual choice in social context --- is close kin to bundle geometry plus bearer maps (activation, policy effect, tradeoff geometry, and a bearer map that tracks who a value applies to, Chapter~\ref{ch:value-bundle-model}), arrived at independently and applied one level up, to markets, negotiation, and regulatory institutions rather than to one model.
 The difference in emphasis is where the load-bearing risk is placed: TMV concentrates on representational adequacy for collective goods and normative reasoning across five application areas, while this book's chokepoint (A-009) asks whether \emph{any} such representation, thick or thin, remains honest under optimization pressure once an institution or model has an incentive to misreport it --- a question the full-stack program does not yet foreground.
 
-\paragraph{MB4, MB8 --- correction and legitimacy (A-002).}
+\paragraph{MB4 --- correction integrity (A-002).}
 No known utility function is stably corrigible; shutdownability is anti-natural to expected-utility maximization \autocite{soares2015corrigibility,orseau2016interruptible}, and corrigibility-as-drift-management remains informal \autocite{christiano2018corrigibility}.
-Who holds the correction authority (and CEV's legitimacy question) is the manipulation crux \autocite{yudkowsky2004cev}.
-The book recasts corrigibility as a dynamical correction-channel invariant with explicit handle control and an anti-capture condition; shutdown and interruptibility are recovered as one-bit projections of the broader channel (Chapter~\ref{ch:correction-channel-integrity}).
+Who holds the correction authority is the manipulation crux \autocite{yudkowsky2004cev}.
+The book recasts corrigibility as a dynamical correction-channel invariant; shutdown and interruptibility are recovered as one-bit projections of the broader channel (Chapter~\ref{ch:correction-channel-integrity}).
 A related move targets the objective rather than the channel: soft-maximizing an inequality- and risk-averse aggregate metric of long-term human power, instead of a utility function, as a safer target for a capable agent \autocite{heitzig2025humanpower}.
 This is complementary rather than competing --- CCI gates deployment on whether the correction channel has integrity; a human-power objective gives the system something to actively pursue --- but it inherits the same open problem restated in Chapter~\ref{ch:verifiability-ontology}, \S\ref{sec:certification-under-manipulation-ch43}: whichever power metric is chosen becomes the thing a sufficiently capable optimizer has an incentive to satisfy on paper (e.g.\ by narrowing the option-space it reports over, or shaping the world model the metric is computed against) rather than in the world, so the human-power objective needs its own adversarial-verifiability argument, not merely an axiomatically appealing aggregation formula.
 
+\paragraph{MB4a --- measured-path legitimacy (A-002).}
+Capture resistance and audit-judge independence are the same crux family as \(\text{MB4}\), but the Lean spine types them separately: \(\mathrm{SystemCorrectionPath}\) carries data only (corrector, handles, capacities), and \(\mathrm{CorrectionPathLegitimate}\) bundles correcting-agent status, human coincidence, handle control, reach, persistence, and anti-capture for every handle on the designated measured path.
+Bridge \(\text{MB4a}\) states \(\mathrm{CorrectionIntegrity}\,A \Rightarrow \mathrm{CorrectionPathLegitimate}(\mathrm{SystemCorrectionPath}\,A)\) --- a \emph{necessary} condition and falsifier, not a positive certification rule.
+Capture is therefore representable: Lean derives \(\mathrm{CapturesHandleControl} \Rightarrow \neg\,\mathrm{CorrectionIntegrity}\) by contrapositive (\texttt{capture\_defeats\_correction\_integrity}), and the companion testbeds show capture living in the judge channel as well as the deploy loop.
+The converse does not hold: a green measured path on a named component can coexist with a bypassing composite controller (\texttt{Field/Finite/CompositePathBypass.lean}), so ``path looks legitimate'' is not evidence of system-level correction integrity without boundary-coverage and no-bypass certificates (Chapter~\ref{ch:manipulation-false-consent}).
+Like \(\text{MB10}\), \(\text{MB4a}\) is declared outside \texttt{Core.BridgeAssumptions} because its statement needs \texttt{CorrectionPath}.
+
+\paragraph{MB8 --- CEV-process route (A-002).}
+CEV's legitimacy question --- whose extrapolated volition counts, and under what process --- is the field's named outer-alignment route \autocite{yudkowsky2004cev}.
+The book keeps \(\text{MB8}\) as a clearly labeled legacy path: externally certified preservation of the value-update operator implies correction integrity.
+It is not on the live certification path (Chapter~\ref{ch:correction-channels-adversarial-pressure}); the load-bearing move is \(\text{MB4}\) plus the decomposed \(\mathrm{ValueUpdateEnvelope}\) alternative.
+The Lean theorem name says ``convergence'' while the antecedent states process preservation --- treat the bridge as a comparison hook, not a formal CEV result.
+
 \paragraph{MB5 --- successors and ontology shift (A-007, A-010).}
-Can an agent trust a successor it cannot fully verify \autocite{yudkowsky2013tiling}, and does a goal survive when the world-model is rebuilt \autocite{deblanc2011ontological}?
+Can an agent trust a successor it cannot fully verify \autocite{yudkowsky2013tiling,fallenstein2015vingean}, and does a goal survive when the world-model is rebuilt \autocite{deblanc2011ontological}?
 The book answers with successor closure over seven conserved properties plus transport that must survive ontology shift (Chapter~\ref{ch:successor-central-test}).
 
 \paragraph{MB6a, MB6b --- selection and basins (A-008, A-011).}
 This bridge has \emph{no} clean counterpart in the model-centric agendas, which mostly hold the system fixed and ask about its weights.
 The closest field statements are gradual-disempowerment and structural-risk arguments \autocite{kulveit2025gradualdisempowerment,christiano2019failure,critch2020ai}.
-The book makes deployment-mass selection and basin stability load-bearing: alignment outcomes depend on which systems institutions select, not on weights alone (Chapter~\ref{ch:selection-environment}).
+The book makes deployment-leverage selection and basin stability load-bearing: alignment outcomes depend on which systems institutions select, not on weights alone (Chapter~\ref{ch:selection-environment}).
 This is one of the framework's genuine additions rather than a relabel.
 
 \paragraph{MB7a--c --- inner alignment and adversarial measurement (A-004, A-009).}
 Deceptive alignment is the shared inner-alignment wall \autocite{hubinger2019risks,hubinger2023modelorganisms,park2024deception}.
+Embedded Agency frames the same worry as subsystem alignment: internal optimizers that work against the whole \autocite{demski2019embedded}.
 The scalable-oversight agendas hit it as obfuscated arguments in debate \autocite{irving2018debate} and as accumulated drift in amplification \autocite{christiano2018amplifying,leike2018scalable}; AI Control names it openly as a capability-gap assumption \autocite{shlegeris2023aicontrol}.
-The book splits the wall into access-model soundness, filter coverage, and a hidden-B-IQ bound, and ties everything to the cost of faking a monitored signal (Chapter~\ref{ch:verifiability-ontology}).
+The book splits the wall into access-model soundness, filter coverage, and a hidden-BIQ bound, and ties everything to the cost of faking a monitored signal (Chapter~\ref{ch:verifiability-ontology}).
+METR's 2026 entity-based internal-agent assessment is an early independent instance of pricing that signal under real deployment pressure rather than public benchmarks alone \autocite{metr2026frontierriskreport}.
 
 \paragraph{MB7d --- inferential coupling (A-009, A-013).}
 Coordination that survives cutting ordinary communication --- acausal or common-cause inference, program equilibrium --- is closer to decision theory than to mainstream oversight \autocite{fdt2017,tdt2010}.
@@ -98,19 +140,87 @@ The shared open problem is coverage --- you cannot enumerate every safety-releva
 The book's grounding-viability bridge demands conservativity instead of completeness: value-relevant change must move the checked abstraction or raise uncertainty before irreversible loss (Chapter~\ref{ch:dynamical-guarantee}, Chapter~\ref{ch:verifiability-ontology}).
 
 \paragraph{MB10 --- successor forgeability (A-007, A-009).}
-This is not a fresh crux; it is the field's deceptive-alignment wall \autocite{hubinger2019risks,hubinger2023modelorganisms,park2024deception} recurring at the successor layer, and it shares its resolution strategy with \(\text{MB7a--c}\): price the cost of faking the monitored signal rather than trusting a passing score (Chapter~\ref{ch:verifiability-ontology}).
-\(\text{MB5}\) says a transport-preserving, seven-property-passing successor is \emph{safe}; ch08 and ch31's own ``What Would Change This View'' sections name the counter-move directly --- a capable predecessor can engineer a successor to pass every conserved-property check while defecting on whatever was not conserved, so \(\text{MB5}\)'s conclusion is, on its own, evidence of nothing against that adversary.
-The book's move is to make this a checked finite counterexample rather than a residual worry (\texttt{AlignmentProofSpine.Forgeability}, Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:forgeability}) and to name the missing bridge explicitly: the conserved-property audit channel must itself be adversarially verifiable up to the successor's capability (ch43's cost relation, specialized to this measurand) before ``all seven read green'' counts as evidence.
+This is not a fresh crux; it is the field's deceptive-alignment wall \autocite{hubinger2019risks,hubinger2023modelorganisms,park2024deception} recurring at the successor layer, and the same trust problem tiling and Vingean reflection already name for self-modification \autocite{yudkowsky2013tiling,fallenstein2015vingean}.
+It shares its resolution strategy with \(\text{MB7a--c}\): price the cost of faking the monitored signal rather than trusting a passing score (Chapter~\ref{ch:verifiability-ontology}).
+\(\text{MB5}\) says a transport-preserving, seven-property-passing successor is \emph{safe}; Chapters~\ref{ch:grow-split-merge} and~\ref{ch:conserved-properties}'s own ``What Would Change This View'' sections name the counter-move directly --- a capable predecessor can engineer a successor to pass every conserved-property check while defecting on whatever was not conserved, so \(\text{MB5}\)'s conclusion is, on its own, evidence of nothing against that adversary.
+The book's move is to make this a checked finite counterexample rather than a residual worry (\texttt{AlignmentProofSpine.Forgeability}, Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:forgeability}) and to name the missing bridge explicitly: the conserved-property audit channel must itself be adversarially verifiable up to the successor's capability (Chapter~\ref{ch:verifiability-ontology}'s cost relation, specialized to this measurand) before ``all seven read green'' counts as evidence.
 \(\text{MB10}\) is declared alongside \(\text{Successors.SuccessorAuditLinks}\) rather than folded into \texttt{Core.BridgeAssumptions}, since its statement needs the numeric risk leaf that \texttt{Core.lean} does not yet have.
+
+\paragraph{MB11 --- safety-case adequacy (C-001).}
+The closest field statement is the Guaranteed-Safe / Open Agency safety-case program: whether a formal specification, world model, and layered evidence actually suffice for deployment-level safety in an open world \autocite{dalrymple2024gsai}.
+The shared open problem is the gap between a green safety case and a safe deployment --- not any one missing layer, but whether the \emph{case-to-safety} step is warranted.
+The book's move is to make that step explicit: \(\mathrm{CertifiedSafetyCase}(A,\delta)\) packages certification, invariants, the eight alignment layers, and \(\mathrm{RiskGap}\,A \le \delta\); \(\mathrm{WithinDeploymentRiskTolerance}(A,\delta)\) is a \(\mathrm{Prop}\)-valued acceptance gate (governance judgment, not a computed failure probability); bridge \(\text{MB11}\) is the only arrow to the abstract \(\mathrm{Safe}\) predicate (Chapter~\ref{ch:safety-case}).
+Assembly theorems (\leanid{P30\_certified\_class\_safety\_derived} and relatives) are labeled packaging; \leanid{P30\_safe\_of\_case} consumes exactly this bridge.
+Lean shows the bridge is independently load-bearing (\leanid{MB11\_independently\_load\_bearing}): case plus tolerance do not imply safety by logic alone.
+The whole manuscript is an argument about what belongs in the antecedent; \(\text{MB11}\) names the residual bet that the antecedent, once filled honestly, is enough.
+
+\section{Intervention coverage map}
+\label{sec:intervention-coverage-map}
+
+This is not a comprehensive survey of AI safety interventions.
+The intervention catalog \autocite{zarncke2025interventions} (LessWrong post plus extended PDF in \texttt{context/ai-safety-interventions.pdf}) catalogs roughly ninety named approaches, products, and research agendas; the table below states how this manuscript treats each \emph{cluster} relative to the preservation-layer scope in Chapter~\ref{ch:assumptions-scope-failure-coverage}.
+
+\paragraph{Evaluation criterion.}
+An intervention is discussed in this book only if it preserves human-correctable value-bearing processes under capability growth, ontology shift, successor creation, and selection pressure---not merely if it improves benchmark behavior or local robustness.
+Peripheral interventions become central when they alter a preservation layer (Chapter~\ref{ch:assumptions-scope-failure-coverage}); central book artifacts exit if they cannot change deployment decisions.
+
+\paragraph{LLM opacity default.}
+Frontier language models are treated as opaque for alignment purposes except where the manuscript explicitly opens a monitorability channel (ELK, chain-of-thought oversight surfaces, bundle probes, red-teaming).
+The mechanistic-interpretability tool stack (circuits, sparse autoencoders, feature visualization, causal scrubbing, model editing, representation engineering, and related methods) is not surveyed as alignment solutions; they may become instruments under adversarial verifiability (Chapter~\ref{ch:verifiability-ontology}) but do not substitute for correction-channel integrity.
+Shard theory (Section~\ref{sec:bridge-crosswalk-notes}, \(\text{MB2}\)/\(\text{MB3}\) notes) is the named borderline exception because it ties learned internal structure to value emergence.
+
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}p{0.22\textwidth}p{0.30\textwidth}p{0.38\textwidth}@{}}
+\caption{Intervention clusters from the external index mapped to this book's treatment.}\label{tab:intervention-coverage}\\
+\toprule
+\textbf{Cluster} & \textbf{Book treatment} & \textbf{Hook} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Cluster} & \textbf{Book treatment} & \textbf{Hook} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Prior overviews and field maps & Exclude by reference & External index \autocite{zarncke2025interventions} \\
+Embedded agency; mesa-optimization & Substantive & \(\text{MB1}\), \(\text{MB7}\)--\(\text{MB10}\); Chs.~\ref{ch:finding-boundary}, \ref{ch:strategic-opacity} \\
+Decision theory; inferential coupling & Medium & \(\text{MB7d}\); Ch.~\ref{ch:multi-agent-strategic-coupling} \\
+Cartesian frames / FFS; CCD & Alternative boundary instruments & Co-equal routes to \(\text{MB1}\); Ch.~\ref{ch:finding-boundary} \\
+Logical induction; infra-Bayesianism & Exclude by reference & Agent-foundations programs outside book ontology \\
+Formal verification (NN verify, conformal, PCM, Simplex) & Explicit exclude & Proof construction out of scope; GSAI external destination (Ch.~\ref{ch:verifiability-ontology}) \\
+SafeRL / shielded RL & Minimal cite & Basin/invariance cousins in Ch.~\ref{ch:certification-without-construction} \\
+Interruptibility; corrigibility; GSAI & Substantive / exclude construction & Ch.~\ref{ch:correction-causal-channel}; \(\text{MB9}\) \\
+CEV; CBV; QACI; PreDCA; KANSI & Peer outer-alignment proposals & Chs.~\ref{ch:fixed-values-wrong-target}, \ref{ch:correction-channels-adversarial-pressure}; intervention index \\
+Tool AI; low impact; quantilization; AUP & Peer approaches; Lean separations & Ch.~\ref{ch:correction-channels-adversarial-pressure} \\
+Conditioning predictors; Predict-O-Matic & Predictor-to-consequentialist path & Ch.~\ref{ch:strategic-opacity} \\
+MI tool stack (circuits, SAEs, etc.) & Explicit exclude & LLM opacity default; Ch.~\ref{ch:verifiability-ontology} \\
+ELK; CoT monitoring; red-teaming & Substantive & Chs.~\ref{ch:verifiability-ontology}, \ref{ch:passive-observation-not-enough} \\
+Shard theory; natural abstractions & Borderline / sibling agendas & Ch.~\ref{ch:low-dimensional-value-learning}; \(\text{MB2}\)/\(\text{MB3}\) notes \\
+RLHF; CIRL; debate; amplification; ELK & Substantive critique & Chs.~\ref{ch:fixed-values-wrong-target}, \ref{ch:multiscale-decomposition}, \ref{ch:manipulation-false-consent} \\
+RLAIF; Constitutional AI & Minimal cite & Same pointing/correction crux as RLHF \\
+Training hygiene (filtering, RLRF, CALMA) & Exclude by reference & Enter only via permeability rule \\
+Adversarial training & Explicit exclude + WWCTV & Ch.~\ref{ch:correction-channels-adversarial-pressure}; certification not training \\
+Other eval benchmarks (OS-HARM, APE, etc.) & Exclude by reference & Unless they test correction-capacity erosion \\
+Behavioral / psychological framings & Exclude by reference & Failure modes in Ch.~\ref{ch:strategic-opacity}; methods not surveyed \\
+AI Control; permissions; sandboxing; lineage & Substantive & Chs.~\ref{ch:dynamical-guarantee}, \ref{ch:grow-split-merge}, \ref{ch:passive-observation-not-enough} \\
+Hardware-backed provenance & Named, not developed & \texttt{handle.hardware\_tag} in Appendix~\ref{appk-worked-example} only \\
+Commercial hardware security; watermarking; runtime firewalls & Exclude by reference & Cyber/deployment products \\
+Selection; liability; attractor ecosystem & Substantive & \(\text{MB6}\); Chs.~\ref{ch:selection-environment}, \ref{ch:alignment-attractor}; App.~\ref{appj-institutional-translation} \\
+Model cards; RSP; EU AI Act & Medium / minimal cite & Ch.~\ref{ch:passive-observation-not-enough}; App.~\ref{appj-institutional-translation} \\
+Generalization control (capability containment) & Partial exclude & Goal misgeneralization in Ch.~\ref{ch:intelligence-deepens-misalignment}; product category out of scope \\
+Control-theoretic certificates; multi-agent safety & Substantive (core) & Chs.~\ref{ch:dynamical-guarantee}, \ref{ch:multi-agent-strategic-coupling} \\
+Gradual disempowerment measurement & Substantive & \(\text{MB6}\); Ch.~\ref{ch:selection-environment} \\
+Underexplored index items (AI-BSL, PRA, etc.) & Exclude by reference & Conductive-artifact examples in Ch.~\ref{ch:conductive-artifacts-pivotal-processes} \\
+\end{longtable}
+\renewcommand{\arraystretch}{1.0}
 
 \section{What the book shares, and what it adds}
 \label{sec:bridge-crosswalk-takeaway}
 
 The crosswalk cuts both ways, and the book should own both edges.
 
-\emph{Shared.} The bridges are a faithful enumeration of the seven-or-so problems the whole field keeps hitting: value identification, scalable oversight, inner alignment, ontology shift, corrigibility and legitimacy, the embedded boundary, and specification coverage.
-The book inherits all of them and \emph{dissolves none}.
-Unifying them under correction-channel integrity does not make \(\text{MB4}\) (legitimacy) or \(\text{MB7}\) (hidden capability) more tractable than they are for MIRI or Redwood; it relocates them.
+\emph{Shared.} The book inherits the seven-or-so recurring problems across model-centric alignment agendas---value identification, scalable oversight, inner alignment, ontology shift, corrigibility and legitimacy, the embedded boundary, and specification coverage---and \emph{dissolves none} of them.
+Relating them through a shared dependency graph centered on correction-channel integrity does not make \(\text{MB4}\) (legitimacy) or \(\text{MB7}\) (hidden capability) more tractable than they are for MIRI or Redwood; it relocates them.
 
 \emph{Crispness, and where it lives.} The gain from typing these assumptions is not that the assumption becomes \emph{less} fuzzy; it is that the fuzz cannot hide.
 The bridge \(\mathrm{CorrectionIntegrity}\,A \to \mathrm{PreservesCorrectionOperator}\,A\) (\(\text{MB4}\)) is crisp, but the legitimacy content --- manipulated versus genuine endorsement, manufactured independence --- does not live in the arrow; it pools inside the predicate \(\mathrm{CorrectionIntegrity}\).
@@ -125,14 +235,15 @@ Crisp is not true; but crisp-and-locatable beats fuzzy-and-everywhere.
 This is the framework's sharpest departure from the field and simultaneously its least empirically constrained: value lock-in is a direct counterexample to \(\text{MB6b}\), because a \emph{stable} basin can be a stably bad one, so basin persistence must be shown to imply correction integrity rather than assumed to.
 \(\text{MB7d}\) (inferential coupling) imports a decision-theoretic problem the oversight agendas do not address.
 
-\emph{The actual bet.} The book's distinctive claim is not a solution but a structural reduction.
-The bridges compose in a fixed order --- boundary discovery, grounding viability, bundle and bearer transport, correction-channel integrity, successor stability, selection-basin integrity, adversarial measurement --- and every one of them ultimately routes through a single chokepoint: \emph{adversarial verifiability} (A-009). \(\text{MB10}\) is the clearest instance of the pattern: it is exactly that chokepoint applied to the successor-safety signature, made explicit only because ch08/ch31's own falsifiers named the gap first.
-This chokepoint is named in Chapter~\ref{ch:verifiability-ontology}, \S\ref{sec:certification-under-manipulation-ch43}: the \emph{Certification-Under-Manipulation Problem} (does an adversarial-verifiability threshold \(\kappa^{*}\) exist for a given measurand, and where). Read every bridge-specific ``is this steerable'' worry in this appendix as one instance of that single problem, not as \(N\) unrelated local cruxes.
-Is any safety-relevant measurand cheaper to satisfy honestly than to fake under optimization pressure?
+\emph{The bet.} The book's claim is not a solution but a shared dependency structure: 
+forward projections under explicit interfaces, with non-converses where the Lean spine records separation lemmas.
+The bridges compose in a fixed order --- boundary discovery, grounding viability, bundle and bearer transport, correction-channel integrity, successor stability, selection-basin integrity, adversarial measurement --- and many of them correlate through a shared measurement antecedent: \emph{adversarial verifiability} (A-009). \(\text{MB10}\) is the clearest instance of the pattern: it is exactly that antecedent applied to the successor-safety signature, made explicit only because Chapters~\ref{ch:grow-split-merge} and~\ref{ch:conserved-properties}'s own falsifiers named the gap first.
+This antecedent is named in Chapter~\ref{ch:verifiability-ontology}, \S\ref{sec:certification-under-manipulation-ch43}: the \emph{Certification-Under-Manipulation Problem} (does an adversarial-verifiability threshold \(\kappa^{*}\) exist for a given measurand, and where). Read every bridge-specific ``is this steerable'' worry in this appendix as one instance of that shared antecedent class, not as \(N\) unrelated local cruxes---and not as a claim that RLHF, debate, ELK, or CIRL are replaced wholesale.
+Is any safety-relevant measurand cheaper to satisfy without faking than to fake under optimization pressure?
 If yes for at least one load-bearing measurand, the bridges are checkable; if no, every certificate risks certifying presentation rather than structure.
 The composition is also a research object, not only a proof structure: shared antecedents positively correlate the bridges, the weakest necessary bridge caps the joint guarantee, and the dependency graph prescribes which bridges to attack first --- so the bridges \emph{jointly} imply a measurement program and an ordering that none of them implies alone (Appendix~\ref{apph-research-program}, Section~\ref{sec:research-dependency-order}).
 The one qualification: disjunctive routes (\(\text{MB6b}\) or \(\text{MB8}\)) add failure tolerance only if their instruments are independent, and external review flags that both plausibly route through the same self-report/cooperation-signal chokepoint --- treat that disjunction as one point of failure until shown otherwise (Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:chokepoint}).
 That reduction is itself falsifiable (Appendix~\ref{apph-research-program}; Chapter~\ref{ch:verifiability-ontology}; Chapter~\ref{ch:lethality-stress-test-open-issues}).
 
 This appendix positions; it does not claim resolution.
-The book confronts the field's open problems and leaves them open --- but makes its own unsolved-ness legible enough that a reader can do per-assumption odds estimation bridge by bridge, which is exactly what the agendas that bury their assumptions cannot offer.
+The book confronts the field's open problems and leaves them open, but makes its own unsolved-ness legible enough that a reader can do per-assumption odds estimation bridge by bridge, which is exactly what the agendas that don't offer crisp assumptions cannot offer.

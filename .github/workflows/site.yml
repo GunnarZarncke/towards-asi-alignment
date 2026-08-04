@@ -40,12 +40,11 @@ jobs:
         working-directory: demos
         run: npm ci
 
-      - name: Fetch book PDF for site
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: node site/scripts/fetch-book-pdf.mjs
-
       - name: Build
         working-directory: site
+        env:
+          PUBLIC_CF_WEB_ANALYTICS_TOKEN: ${{ secrets.PUBLIC_CF_WEB_ANALYTICS_TOKEN }}
+          CI: "true"
         run: npm run build
 
       - name: Deploy to GitHub Pages
@@ -54,3 +53,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site/dist
+          cname: towards-alignment.com

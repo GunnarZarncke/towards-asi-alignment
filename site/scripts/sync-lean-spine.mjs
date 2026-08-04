@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { parseDot } from "./lib/dot-parse.mjs";
 import { buildGraphHrefMap } from "./lib/graph-node-hrefs.mjs";
 import { attachSpineSources } from "./lib/spine-source-index.mjs";
+import { bridgeCardSlug } from "./lib/bridge-card-slug.mjs";
 import { renderDotToSvg } from "./lib/render-graphviz.mjs";
 import {
   buildLean4WebUrl,
@@ -36,7 +37,7 @@ const GRAPH_ORDER = [
 const MODULES = [
   { file: "AlignmentProofSpine/Core.lean", title: "Core carriers and bridges", chapters: "foundations" },
   { file: "AlignmentProofSpine/Boundaries.lean", title: "Boundaries and measurement", chapters: "6–7, 10, 36" },
-  { file: "AlignmentProofSpine/Capability.lean", title: "Capability and B-IQ", chapters: "11–14, 33, 36" },
+  { file: "AlignmentProofSpine/Capability.lean", title: "Capability and BIQ", chapters: "11–14, 33, 36" },
   { file: "AlignmentProofSpine/Bundles.lean", title: "Value bundles and transport", chapters: "15–23, 30" },
   { file: "AlignmentProofSpine/Correction.lean", title: "Correction channels", chapters: "25–29, 41–43" },
   { file: "AlignmentProofSpine/Successors.lean", title: "Successors and continuity", chapters: "28–31" },
@@ -78,28 +79,33 @@ async function loadCardNodeIndex() {
   return index;
 }
 
-function bridgeCardSlug(nodeId) {
-  const mb = nodeId.match(/^MB(\d+)/);
-  if (!mb) return null;
-  const names = {
-    1: "mb1-boundary-estimator-soundness",
-    2: "mb2-bundle-identifiability",
-    3: "mb3-bearer-import",
-    4: "mb4-correction-legitimacy",
-    5: "mb5-successor-ontology-shift",
-    6: "mb6-selection-and-basin-stability",
-    7: "mb7-hidden-capability-and-access",
-    8: "mb8-cev-process-convergence",
-    9: "mb9-grounding-certificate",
-    10: "mb10-successor-forgeability"
-  };
-  const key = nodeId.startsWith("MB6") ? 6 : nodeId.startsWith("MB7") ? 7 : Number(mb[1]);
-  return names[key] || null;
+const PROJECTION_CARD_SLUG = {
+  CIRL: "subsumption-cirl",
+  SHUT: "subsumption-shutdown",
+  INT: "subsumption-interruptibility",
+  CORR: "subsumption-corrigibility",
+  ELK: "subsumption-elk",
+  DEB: "subsumption-debate",
+  IMPACT: "subsumption-low-impact",
+  QUANT: "subsumption-quantilization",
+  EMBED: "subsumption-embedded-agency",
+  BASIN: "subsumption-selection-basin",
+  GROUND: "subsumption-grounding-drift",
+  DEPLOY: "subsumption-deployment-gate",
+  BIQ: "subsumption-hidden-biq"
+};
+
+function projectionCardSlug(nodeId) {
+  return PROJECTION_CARD_SLUG[nodeId] ?? null;
 }
 
 function normalizeGraphNode(node, cardIndex) {
   const baseId = node.id.replace(/_IN$/, "");
-  const cardSlug = cardIndex.get(baseId) || cardIndex.get(node.id) || bridgeCardSlug(baseId);
+  const cardSlug =
+    cardIndex.get(baseId) ||
+    cardIndex.get(node.id) ||
+    projectionCardSlug(baseId) ||
+    bridgeCardSlug(baseId);
   return {
     ...node,
     kind: nodeKind(baseId),
@@ -116,7 +122,7 @@ async function loadGraphs() {
     graphs[spec.slug] = {
       id: spec.slug,
       dotId: spec.id,
-      title: parsed.title || spec.title,
+      title: spec.title || parsed.title,
       nodes: parsed.nodes,
       edges: parsed.edges
     };
@@ -226,7 +232,9 @@ async function renderGraphSvgs(graphs) {
     const hrefMap = buildGraphHrefMap(graph.nodes);
     const svg = await renderDotToSvg(dot, hrefMap);
     await writeFile(path.join(GRAPH_SVG_DIR, `${spec.slug}.svg`), svg, "utf8");
+    await writeFile(path.join(GRAPH_SVG_DIR, `${spec.slug}.dot`), dot, "utf8");
     graph.svgFile = `lean-graphs/${spec.slug}.svg`;
+    graph.dotFile = `lean-graphs/${spec.slug}.dot`;
     graph.clickableNodes = Object.keys(hrefMap).length;
   }
 }
@@ -246,22 +254,23 @@ async function main() {
   await renderGraphSvgs(graphs);
 
   const nodes = buildNodeRegistry(graphs, ledger, playgrounds, cardIndex);
-  attachSpineSources(nodes, graphs, FORMAL_ROOT, NODE_ALIAS_PATH);
+  const declIndex = attachSpineSources(nodes, graphs, FORMAL_ROOT, NODE_ALIAS_PATH);
 
   const payload = {
     generatedAt: new Date().toISOString(),
     liveBase: "https://live.lean-lang.org/",
+    declIndex,
     sections: [
       {
         id: "field",
-        title: "Field results rederived and subsumed",
-        summary: "External alignment agendas projected into the book's invariants on a shared finite domain.",
+        title: "Field agenda projections",
+        summary: "External alignment agendas projected into this project's invariants on a shared finite domain.",
         graphSlugs: ["field-subsumptions"]
       },
       {
         id: "bridges",
         title: "Bridge assumptions",
-        summary: "MB1–MB10 connect measured systems to book predicates. Bridges are never hidden inside definitions.",
+        summary: "MB1–MB10 connect measured systems to project predicates. Bridges are never hidden inside definitions.",
         graphSlugs: []
       },
       {

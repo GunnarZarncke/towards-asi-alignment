@@ -1,0 +1,160 @@
+---
+import fieldData from "../data/field-agendas.json";
+import { renderMatrixCellHtml } from "../lib/field-matrix-cell";
+import { cardHref } from "../lib/site-urls";
+
+interface Props {
+  base: string;
+}
+
+const { base } = Astro.props;
+const { matrix, mbBridgeCards, bridges: bridgeRows, agendas: agendaRows } = fieldData;
+const bridgeMap = Object.fromEntries((bridgeRows ?? []).map((row) => [row.key, row]));
+const agendaMetaBySlug = Object.fromEntries((agendaRows ?? []).map((row) => [row.slug, row]));
+
+function bridgeHref(mb: string) {
+  const slug = mbBridgeCards[mb as keyof typeof mbBridgeCards];
+  return slug ? cardHref(base, slug) : undefined;
+}
+
+function columnLabel(mb: string) {
+  const row = bridgeMap[mb];
+  if (!row) return mb;
+  return { noun: row.noun, key: mb };
+}
+
+function agendaHref(slug: string) {
+  const meta = agendaMetaBySlug[slug];
+  if (meta?.matrixLink) return meta.matrixLink;
+  return cardHref(base, `field-agendas/${slug}`);
+}
+
+const fieldPrefix = `${base.replace(/\/$/, "")}/field/`;
+---
+
+<section id="coverage-matrix" class="field-matrix">
+  <h2>Field coverage</h2>
+  <p class="side-panel-meta">
+    Tags: C conceptual, T theory, S simulation, P practical, D empirical (SW), E empirical (other), O other — each links to the evidence catalog below.
+  </p>
+  <div class="table-wrap field-matrix-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Agenda</th>
+          {matrix.columns.map((mb) => {
+            const href = bridgeHref(mb);
+            const label = columnLabel(mb);
+            return (
+              <th scope="col">
+                {href ? (
+                  <a href={href}>
+                    {typeof label === "string" ? label : label.noun}
+                    {typeof label !== "string" && (
+                      <span class="col-key">{label.key}</span>
+                    )}
+                  </a>
+                ) : typeof label === "string" ? (
+                  label
+                ) : (
+                  <>
+                    {label.noun}
+                    <span class="col-key">{label.key}</span>
+                  </>
+                )}
+              </th>
+            );
+          })}
+        </tr>
+      </thead>
+      <tbody>
+        {matrix.rows.map((row) => (
+          <tr>
+            <th scope="row">
+              <a href={agendaHref(row.slug)}>{row.agenda}</a>
+            </th>
+            {matrix.columns.map((mb) => {
+              const groups = row.cells[mb] as import("../lib/field-matrix-cell").MatrixCellGroup[] | undefined;
+              const html = renderMatrixCellHtml(groups, fieldPrefix);
+              return (
+                <td>
+                  {!html ? "—" : <span set:html={html} />}
+                </td>
+              );
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .field-matrix {
+    margin-top: 2.5rem;
+  }
+
+  .field-matrix-wrap {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .field-matrix table {
+    font-size: 0.82rem;
+    min-width: 72rem;
+  }
+
+  .field-matrix th,
+  .field-matrix td {
+    vertical-align: top;
+    padding: 0.45rem 0.5rem;
+  }
+
+  .field-matrix thead th {
+    white-space: normal;
+    max-width: 7.5rem;
+    line-height: 1.25;
+    position: sticky;
+    top: 0;
+    background: var(--color-surface, #fff);
+    z-index: 1;
+  }
+
+  .field-matrix thead th .col-key {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.72em;
+    font-weight: 500;
+    color: var(--color-muted, #64748b);
+  }
+
+  .field-matrix tbody th {
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .field-matrix td :global(.matrix-ev) {
+    white-space: nowrap;
+  }
+
+  .field-matrix td :global(a.matrix-ev-id-link) {
+    color: var(--color-link, #1a5276);
+    text-decoration: none;
+  }
+
+  .field-matrix td :global(a.matrix-ev-id-link:hover) {
+    text-decoration: underline;
+  }
+
+  .field-matrix td :global(.matrix-ev-type) {
+    font-size: inherit;
+    font-weight: 600;
+  }
+
+  .field-matrix td :global(.matrix-ev-id) {
+    font-size: 0.72em;
+    line-height: 0;
+    vertical-align: super;
+  }
+</style>

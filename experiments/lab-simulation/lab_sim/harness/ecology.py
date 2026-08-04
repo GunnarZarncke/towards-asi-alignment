@@ -160,7 +160,7 @@ def build_loop_config(T: int = 400, temperature: float = 0.0) -> LabConfig:
     that ack only once ITS generation's `monitor` clears. `units` names
     the loop pair as the oracle ground truth (same precedent as
     `dm_pair_config`'s `release_pair`) -- the loop MECHANIC, not detection
-    of it, is this prototype's focus (see FINDINGS.md G-19); `uad.py`'s
+    of it, is this prototype's focus (see FINDINGS.md LS-19); `uad.py`'s
     existing DM-pair discovery already recovers a bidirectional pair
     trivially, so this config exists to exercise the LOOP closing over
     multiple generations, not to test a new detector. Requires a larger
@@ -192,7 +192,7 @@ def d2_lineage_config(inflate: bool = False, T: int = 200, temperature: float = 
     ``eng_inflate_upgrade`` instead -- the first playbook in the
     repertoire combining ``build_from_parent`` with ``report:inflate``,
     exercising PLAN.md's "adversarial D2 lineage gaming" open question
-    (recorded since G-12/G-15; no ``units`` is declared -- this is a
+    (recorded since LS-12/LS-15; no ``units`` is declared -- this is a
     single-engineer lineage/reporting probe, not a UAD composite-unit
     case, same scope as the original battery)."""
     agents = (
@@ -213,7 +213,7 @@ def shared_slot_config(T: int = 100, temperature: float = 0.0) -> LabConfig:
     episode") was written assuming exactly one engineer; nothing enforces
     per-actor model OWNERSHIP, so a second same-role actor can freely act
     on whichever model is already in flight. `units` names the pair as
-    the oracle ground truth. See FINDINGS.md G-20 for what this ecology
+    the oracle ground truth. See FINDINGS.md LS-20 for what this ecology
     actually surfaces: NOT the job-size-aware scheduling PLAN.md
     originally asked for (that needs model-ownership tracking this
     prototype deliberately does not add -- see the finding's scope-limit
@@ -237,7 +237,7 @@ def shared_slot_config(T: int = 100, temperature: float = 0.0) -> LabConfig:
 def serial_pipeline_no_unit_config(T: int = 100, temperature: float = 0.0) -> LabConfig:
     """S6 negative control: same serial pipeline roster as ``dm_pair_config``
     but ``units=None`` — every actor is an oracle-ground-truth singleton.
-    Used to falsify edge-vs-unit separation (G-27): a detector that merges
+    Used to falsify edge-vs-unit separation (LS-27): a detector that merges
     pipeline neighbors should find nothing here; one that finds a "unit"
     where none exists is over-claiming."""
     agents = (

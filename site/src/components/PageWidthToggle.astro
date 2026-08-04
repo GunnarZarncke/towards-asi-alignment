@@ -1,0 +1,76 @@
+<div class="page-width-toggle" data-page-width-toggle>
+  <button
+    type="button"
+    class="page-width-toggle-trigger"
+    aria-label="Toggle full-width layout"
+    aria-pressed="false"
+  >
+    &lt;-&gt;
+  </button>
+</div>
+
+<script>
+  const STORAGE_KEY = "site-layout-full-width";
+  const CLASS_NAME = "layout-full-width";
+
+  function isFullWidth() {
+    return document.documentElement.classList.contains(CLASS_NAME);
+  }
+
+  function setFullWidth(enabled: boolean) {
+    document.documentElement.classList.toggle(CLASS_NAME, enabled);
+    try {
+      localStorage.setItem(STORAGE_KEY, enabled ? "true" : "false");
+    } catch {
+      /* ignore quota / private mode */
+    }
+    syncButton();
+  }
+
+  function syncButton() {
+    const trigger = document.querySelector<HTMLButtonElement>(".page-width-toggle-trigger");
+    if (!trigger) return;
+    const enabled = isFullWidth();
+    trigger.setAttribute("aria-pressed", enabled ? "true" : "false");
+    trigger.setAttribute(
+      "aria-label",
+      enabled ? "Switch to standard layout width" : "Switch to full-width layout"
+    );
+  }
+
+  const trigger = document.querySelector<HTMLButtonElement>(".page-width-toggle-trigger");
+  if (!trigger) throw new Error("Page width toggle markup missing");
+
+  syncButton();
+
+  trigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setFullWidth(!isFullWidth());
+  });
+</script>
+
+<style>
+  .page-width-toggle-trigger {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 40;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.35rem 0.65rem;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+  }
+
+  .page-width-toggle-trigger:hover,
+  .page-width-toggle-trigger[aria-pressed="true"] {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent);
+  }
+</style>

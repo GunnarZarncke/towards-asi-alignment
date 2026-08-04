@@ -1,0 +1,81 @@
+---
+import fieldData from "../data/field-agendas.json";
+import { cardHref } from "../lib/site-urls";
+
+interface Props {
+  base: string;
+}
+
+const { base } = Astro.props;
+const { evidence } = fieldData;
+
+function agendaHref(slug: string) {
+  return cardHref(base, `field-agendas/${slug}`);
+}
+
+function slugForAgendaName(name: string) {
+  const hit = fieldData.agendas.find((a) => a.title === name || a.title.startsWith(name));
+  return hit?.slug;
+}
+---
+
+<section id="coverage-evidence-catalog" class="field-evidence">
+  <h2>Evidence catalog</h2>
+  <p class="side-panel-meta">
+    Primary sources behind matrix tags. External links open in a new tab.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Agenda</th>
+          <th scope="col">Bridge</th>
+          <th scope="col">Type</th>
+          <th scope="col">Evidence</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {evidence.map((entry) => {
+          const slug = slugForAgendaName(entry.agenda);
+          return (
+            <tr id={`ev-${entry.id}`}>
+              <td>{entry.id}</td>
+              <td>
+                {slug ? <a href={agendaHref(slug)}>{entry.agenda}</a> : entry.agenda}
+              </td>
+              <td>{entry.bridges.join(", ")}</td>
+              <td>{entry.type}</td>
+              <td>{entry.evidence}</td>
+              <td>
+                {entry.sources.map((s, i) => (
+                  <>
+                    {i > 0 && "; "}
+                    <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                  </>
+                ))}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .field-evidence {
+    margin-top: 2.5rem;
+  }
+
+  .field-evidence table {
+    font-size: 0.88rem;
+  }
+
+  .field-evidence td,
+  .field-evidence th {
+    vertical-align: top;
+    padding: 0.5rem;
+  }
+</style>

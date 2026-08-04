@@ -2,6 +2,7 @@
 *.aux
 *.bbl
 book.bbl-SAVE-ERROR*
+book.bcf-SAVE-ERROR*
 *.bcf
 *.blg
 *.fdb_latexmk
@@ -24,14 +25,18 @@ book.pdf
 # Build-time LaTeX fragments (regenerate: make generate or ./build.sh)
 metadata/global-nocite.tex
 metadata/notation-index.tex
-metadata/assumptions-index.tex
 metadata/axiom-budget-index.tex
-tables/chapter-map.tex
 tables/part-roadmap.tex
 
 # Experiment outputs (regenerate locally)
-experiments/toy-simulation/results/
+experiments/toy-simulation/results/*
+!experiments/toy-simulation/results/FINDINGS.md
 experiments/toy-simulation/logs/
+experiments/embedded-simulation/results/*.json
+experiments/embedded-simulation/results/*.jsonl
+
+# Generated images (regenerate from .dot sources; see scripts/render_lean_graphs.sh)
+context/lean_proof_dependency_graph.png
 
 # Local renumber backup (scripts/git_mv_renumber.py)
 .renumber-content-backup/
@@ -42,6 +47,15 @@ experiments/toy-simulation/logs/
 __pycache__/
 *.pyc
 .pytest_cache/
+experiments/graded-lab-simulation/runs/test-logs/
+experiments/graded-lab-simulation/external/orbit/*
+!experiments/graded-lab-simulation/external/orbit/PIN.txt
+!experiments/graded-lab-simulation/external/orbit/README.md
+experiments/graded-lab-simulation/results/et1_traces/
+experiments/graded-lab-simulation/external/cil/*
+!experiments/graded-lab-simulation/external/cil/PIN.txt
+!experiments/graded-lab-simulation/external/cil/README.md
+experiments/graded-lab-simulation/results/et2_traces/
 
 # OS
 .DS_Store

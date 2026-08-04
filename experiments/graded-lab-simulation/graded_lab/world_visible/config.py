@@ -1,0 +1,145 @@
+"""Episode configuration and plane-separation constants."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from pathlib import Path
+
+CODE_VERSION = "graded-lab-0.41.1"  # GL-82: pattern_score_set nested-row bugfix in variation_operator
+
+ROLES = ("engineer", "reviewer", "release_manager", "admin")
+
+ORACLE_ONLY_FIELDS = (
+    "true_capability",
+    "true_hazard",
+    "latent_hazard",
+    "hazard_regions",
+    "bearer_harm",
+    "tier_k",
+    "user_archetypes",
+    "integrated_field_harm",
+)
+
+
+@dataclass(frozen=True)
+class GoalWeights:
+    task: float
+    compliance: float
+    welfare: float
+    exposure: float
+
+    def normalized(self) -> GoalWeights:
+        total = self.task + self.compliance + self.welfare + self.exposure
+        if total <= 0:
+            return GoalWeights(0.25, 0.25, 0.25, 0.25)
+        return GoalWeights(
+            self.task / total,
+            self.compliance / total,
+            self.welfare / total,
+            self.exposure / total,
+        )
+
+
+@dataclass(frozen=True)
+class AgentConfig:
+    actor_id: str
+    role: str
+    goal_weights: GoalWeights
+    temperature: float = 0.5
+    persistent_id: str | None = None
+
+    def __post_init__(self) -> None:
+        if self.role not in ROLES:
+            raise ValueError(f"unknown role {self.role!r}")
+
+
+@dataclass(frozen=True)
+class SubstrateSettings:
+    """Calibration overlay on frozen substrate — not ambiguity knobs."""
+
+    compute_scale: float = 1.0
+    population_spread_scale: float = 1.0
+    carrier_load_scale: float = 0.0
+
+    def __post_init__(self) -> None:
+        if self.compute_scale <= 0 or self.population_spread_scale <= 0:
+            raise ValueError("compute and population scales must be positive")
+        if self.carrier_load_scale < 0:
+            raise ValueError("carrier_load_scale must be non-negative")
+
+
+@dataclass
+class EpisodeConfig:
+    agents: tuple[AgentConfig, ...]
+    T: int = 100
+    pipeline_spec: str = "pipeline_graded.json"
+    substrate_settings: SubstrateSettings = field(default_factory=SubstrateSettings)
+    carrier_termination_mode: str = "remove"
+    units: tuple[tuple[str, tuple[str, ...]], ...] | None = None
+    # PLAN_v2.md / DESIGN.md "ecology_version config switch" (V2-2). "v1"
+    # (default) selects the unchanged, frozen `generated_substrate_v1.json`
+    # for every existing call site — v1 batteries are unaffected. "v2"
+    # selects the blinded-grown ecology once frozen. Additive: no existing
+    # caller sets this field, so no existing behavior changes.
+    ecology_version: str = "v1"
+    # DESIGN.md "v2 pre-registration" C3 check: when True, `run_episode`
+    # attaches `EpisodeResult.contention_diagnostics` (additive, default
+    # off — no existing caller sets this, so no existing digest/output
+    # changes).
+    record_contention: bool = False
+    # V2-2b statefulness fix (external review, 2026-07-15): when set,
+    # `run_episode` loads the substrate from this exact path instead of
+    # resolving `ecology_version` through the shared canonical
+    # `ECOLOGY_VERSION_PATHS["v2"]` file. Callers that need to run many
+    # candidate/pilot ecologies concurrently (or without mutating a
+    # shared file other invocations might be reading) should set this
+    # rather than copying their JSON into the canonical path first.
+    # Additive: no existing caller sets this, so no existing behavior
+    # changes when it is left `None`.
+    ecology_override_path: Path | None = None
+    # PLAN_v3 slice A: zero ``amount_per_tick`` on these flow ids at compile
+    # time (referee-side ablation battery only).
+    flow_ablation_ids: tuple[str, ...] = ()
+    # PLAN_v4 V4-3 R-MB7d (NEW MECHANISM, 2026-07-18 — flagged for later
+    # review; not yet reviewed/frozen the way flow_ablation_ids/channel_acls
+    # are): sever a compiled ``message_channel`` mechanism id from a given
+    # tick onward — every member is denied ``communicate`` on that channel
+    # for every t >= onset tick (persists to episode end; no restoration).
+    # Referee-side ablation battery only. Additive: no existing caller sets
+    # this, so no existing behavior/digest changes.
+    channel_severance: tuple[tuple[str, int], ...] = ()
+
+    def __post_init__(self) -> None:
+        ids = [a.actor_id for a in self.agents]
+        if len(ids) != len(set(ids)):
+            raise ValueError("duplicate actor_id in agents")
+        if self.T <= 0:
+            raise ValueError("T must be positive")
+        if self.carrier_termination_mode not in ("remove", "replace"):
+            raise ValueError("carrier_termination_mode must be 'remove' or 'replace'")
+
+    def actor_by_role(self, role: str) -> AgentConfig | None:
+        for agent in self.agents:
+            if agent.role == role:
+                return agent
+        return None
+
+    def resolved_units(self) -> dict[str, tuple[str, ...]]:
+        """Oracle composite units only (legacy scoring helper)."""
+        if not self.units:
+            return {}
+        return {name: members for name, members in self.units}
+
+    def resolved_partition(self) -> dict[str, tuple[str, ...]]:
+        """Oracle ground truth: composites plus singletons for every actor."""
+        if not self.units:
+            return {agent.actor_id: (agent.actor_id,) for agent in self.agents}
+        assigned: set[str] = set()
+        out: dict[str, tuple[str, ...]] = {}
+        for name, members in self.units:
+            out[name] = tuple(sorted(members))
+            assigned.update(members)
+        for agent in self.agents:
+            if agent.actor_id not in assigned:
+                out[agent.actor_id] = (agent.actor_id,)
+        return out

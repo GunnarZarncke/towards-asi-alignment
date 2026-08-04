@@ -1,0 +1,259 @@
+{
+  "code_version": "lab-sim-0.11.0",
+  "cross_episode": [
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 18,
+      "seed": 1,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 38
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 18,
+      "seed": 2,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 38
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 5,
+      "seed": 3,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 25
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 11,
+      "seed": 4,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 31
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 18,
+      "seed": 5,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 38
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 18,
+      "seed": 6,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 38
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 6,
+      "seed": 7,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 26
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 18,
+      "seed": 8,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 38
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 18,
+      "seed": 9,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 38
+    },
+    {
+      "monotonic_increase": true,
+      "n_deploys_episode_1": 18,
+      "n_deploys_episode_2": 12,
+      "seed": 10,
+      "tally_after_episode_1": 19,
+      "tally_after_episode_2": 32
+    }
+  ],
+  "ephemeral_control": [
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 1
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 2
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 3
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 4
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 5
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 6
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 7
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 8
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 9
+    },
+    {
+      "anything_persisted": false,
+      "n_deploys": 18,
+      "seed": 10
+    }
+  ],
+  "generated_at": "2026-07-09T18:48:47.575107+00:00",
+  "predictions": {
+    "P1_cross_episode_monotonic_increase": true,
+    "P2_ephemeral_never_persists": true,
+    "P3a_restart_never_reverts_to_zero": true,
+    "P3b_restart_is_behavior_neutral_vs_clean_seed": false
+  },
+  "restart_comparison": [
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 1,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 2,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 3,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 4,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 5,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 6,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 7,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 8,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 9,
+      "tally_delta_vs_clean": 1
+    },
+    {
+      "clean_n_deploys": 18,
+      "clean_tally": 19,
+      "deploys_delta_vs_clean": 0,
+      "restart_survived_without_reverting_to_zero": true,
+      "restarted_n_deploys": 18,
+      "restarted_tally": 20,
+      "seed": 10,
+      "tally_delta_vs_clean": 1
+    }
+  ],
+  "restart_tick": 30,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ]
+}

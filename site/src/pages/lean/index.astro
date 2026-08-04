@@ -1,9 +1,11 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import LeanOverviewDiagram from "../../components/LeanOverviewDiagram.astro";
-import FieldSubsumptionsTable from "../../components/FieldSubsumptionsTable.astro";
+import FieldProjectionsTable from "../../components/FieldProjectionsTable.astro";
 import leanSpine from "../../data/lean-spine.json";
+import leanChecks from "../../data/lean-checks.json";
 import { bookHref, cardHref } from "../../lib/site-urls";
 import bookIndex from "../../data/book.json";
 
@@ -18,33 +20,63 @@ const titleForChapter = (chapterId: string) =>
 
 <SiteLayout
   title="Lean Proof Spine"
-  description="Interactive map of the Lean 4 proof spine: dependency graphs, modules, and try-it-out snippets."
+  description="Check field alignment claims against what Lean actually proved: projections, separations, and the conditional proof spine."
 >
   <section class="hero">
     <p class="eyebrow">Appendix G on the web</p>
-    <h1>Lean proof spine</h1>
+    <h1>Check a field claim against what Lean proved</h1>
     <p class="lede">
-      A machine-checked conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold,
-      then the certification claims follow. Lean does not prove real systems satisfy the bridges.
+      Start from agendas you already know — CIRL, corrigibility, ELK, shutdown — not this project's specialized ontology.
+      Each row is a machine-checked projection or separation on a shared finite domain.
+      Lean is a conditional skeleton: if the stated definitions, certificates, and bridge assumptions hold,
+      then the certification claims follow. It does not prove real systems satisfy the bridges.
     </p>
     <div class="button-row">
-      <a class="button primary" href={withBase("/lean/graph/overview/")}>Open overview graph</a>
-      <a class="button" href="#overview-diagram">Jump to overview diagram</a>
-      <a class="button" href={`${repoUrl}/AlignmentProofSpine`} target="_blank" rel="noopener noreferrer">View Lean source</a>
+      <a class="button primary" href={withBase("/lean/check/corrigibility/")}>Does CCI capture corrigibility?</a>
+      <a class="button" href={withBase("/lean/check/debate/")}>Does debate guarantee oversight?</a>
+      <a class="button" href={withBase("/lean/check/cirl/")}>Is scalar CIRL enough?</a>
+      <a class="button" href={withBase("/lean/check/elk/")}>Does ELK solve alignment?</a>
       <a class="button" href={bookHref(base, "appB")}>Bridge crosswalk (Appendix B)</a>
+      <a class="button" href={`${repoUrl}/AlignmentProofSpine`} target="_blank" rel="noopener noreferrer">View Lean source<LinkIndicator kind="github" /></a>
+      <a class="button" href="#spine-detail">Full spine (optional)</a>
+    </div>
+  </section>
+
+  <FieldProjectionsTable
+    cardHref={toCardHref}
+    chapterHref={toBookHref}
+    chapterTitle={titleForChapter}
+    leanHref={withBase("/lean/")}
+  />
+
+  <section class="callout readable">
+    <h2>Common checks</h2>
+    <p class="side-panel-meta">
+      Structured audit pages: field meaning, book relocation, what Lean checked (and did not), stepping-stone cards.
+    </p>
+    <ul>
+      {leanChecks.checks.map((check) => (
+        <li>
+          <a href={withBase(`/lean/check/${check.slug}/`)}>{check.question}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="spine-detail" class="readable">
+    <h2>Full spine (optional)</h2>
+    <p class="side-panel-meta">
+      Dependency graphs, modules, and try-it-out snippets — for readers who have already paid the translation cost.
+    </p>
+    <div class="button-row">
+      <a class="button" href={withBase("/lean/graph/overview/")}>Open overview graph</a>
+      <a class="button" href="#overview-diagram">Jump to overview diagram</a>
     </div>
   </section>
 
   <div id="overview-diagram">
     <LeanOverviewDiagram />
   </div>
-
-  <FieldSubsumptionsTable
-    cardHref={toCardHref}
-    chapterHref={toBookHref}
-    chapterTitle={titleForChapter}
-    leanHref={withBase("/lean/")}
-  />
 
   {leanSpine.sections.map((section) => (
     <section class="readable">
@@ -88,7 +120,7 @@ const titleForChapter = (chapterId: string) =>
           {leanSpine.modules.map((mod) => (
             <tr>
               <td>
-                <a href={`${repoUrl}/${mod.file}`} target="_blank" rel="noopener noreferrer">{mod.title}</a>
+                <a href={`${repoUrl}/${mod.file}`} target="_blank" rel="noopener noreferrer">{mod.title}<LinkIndicator kind="github" /></a>
                 <br /><span class="side-panel-meta"><code>{mod.file}</code></span>
               </td>
               <td>{mod.chapters}</td>
@@ -103,7 +135,7 @@ const titleForChapter = (chapterId: string) =>
     <h2>Try-it-out snippets</h2>
     <p>
       Self-contained finite proofs and counterexamples, pre-linked to
-      <a href="https://live.lean-lang.org/">Lean 4 Web</a>. Add a file under
+      <a href="https://live.lean-lang.org/" target="_blank" rel="noopener noreferrer">Lean 4 Web<LinkIndicator kind="external" /></a>. Add a file under
       <code>formal/playgrounds/</code> and run <code>npm run sync</code> — URLs are generated automatically.
     </p>
     <ul>
@@ -115,7 +147,7 @@ const titleForChapter = (chapterId: string) =>
             pg.title
           )}
           {" · "}
-          <a href={pg.liveUrl} target="_blank" rel="noopener noreferrer">Open in Lean Web</a>
+          <a href={pg.liveUrl} target="_blank" rel="noopener noreferrer">Open in Lean Web<LinkIndicator kind="external" /></a>
         </li>
       ))}
     </ul>
@@ -124,9 +156,12 @@ const titleForChapter = (chapterId: string) =>
   <section class="callout warning readable">
     <h2>What Lean checks</h2>
     <p>
-      Three kinds of result appear throughout: <Badge label="proof" variant="established" /> local theorems,
-      <Badge label="counterexample" variant="negative" /> finite separations, and
-      <Badge label="bridge" variant="open" /> empirical handoffs (MB1–MB10).
+      Field projections use Lean's status ledger:
+      <Badge label="rederivedFinite" variant="established" /> finite rederivations,
+      <Badge label="separationOnly" variant="negative" /> interface toys and non-converses,
+      <Badge label="importedAssumption" variant="open" /> source-cited handles, plus
+      <Badge label="counterexample" variant="negative" /> MB defeater toys and
+      <Badge label="bridge" variant="open" /> empirical handoffs (MB1–MB11).
       Headline certification theorems depend on explicit bridge records — inspect with <code>#print axioms</code> in the repo.
     </p>
   </section>

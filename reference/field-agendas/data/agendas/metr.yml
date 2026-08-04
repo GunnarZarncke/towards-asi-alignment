@@ -1,0 +1,47 @@
+slug: metr
+title: METR
+type: Research org (evals)
+carrier: "Model Evaluation & Threat Research"
+overview: >-
+  METR measures dangerous autonomous and AI R&D capabilities at the frontier, producing
+  eval-driven forecasting and risk reporting to inform policy and lab decisions.
+primaryArtifact: >-
+  Autonomy evaluations, AI R&D evaluations, and frontier risk reporting including
+  red-teaming of lab monitoring systems.
+signatureVocabulary: >-
+  Key terms include autonomous capabilities, [AI R&D evals](https://metr.org/),
+  eval-driven forecasting, and [entity-based assessment](https://metr.org/).
+statedIntent: >-
+  Measure dangerous capabilities to inform policy and lab decisions before systems reach
+  deployment-relevant autonomy.
+primaryCrux: >-
+  Do public capability evaluations track deployment-relevant risk under adversarial
+  pressure and [Goodhart Selection](/cards/mb6-selection-and-basin-stability/)?
+bookBridges:
+  - MB6
+  - MB7
+contributes: >-
+  Empirical capability measurement at the frontier, including autonomy and AI R&D
+  evaluations that shape lab and policy timelines.
+bookSeparates: >-
+  Capability evaluations do not establish [correction-channel
+  integrity](/cards/correction-channel-integrity/) or [value-bundle
+  transport](/cards/value-bundle-transport/) across deployment; this project treats evals as
+  an indirect signal for [Inner Alignment](/cards/mb7-hidden-capability-and-access/)
+  rather than a direct guarantee.
+manuscriptHooks:
+  - App B MB7 notes (METR 2026 cite)
+  - ch44
+links:
+  - label: "METR"
+    url: https://metr.org/
+  - label: "Kwa et al. 2025 \u2014 Measuring AI Ability to Complete Long Tasks"
+    url: https://arxiv.org/abs/2503.14499
+  - label: "METR 2026 \u2014 Frontier Risk Report"
+    url: https://metr.org/blog/2026-05-19-frontier-risk-report/
+  - label: "METR 2026 \u2014 Red-teaming Anthropic agent monitoring"
+    url: https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/
+  - label: "Barnes 2024 \u2014 General capability evaluations update"
+    url: https://metr.org/blog/2024-08-06-update-on-evaluations/
+  - label: "Planned Obsolescence (Cotra)"
+    url: https://plannedobsolescence.substack.com/

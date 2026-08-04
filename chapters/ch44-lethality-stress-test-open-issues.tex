@@ -5,6 +5,10 @@
 The framework is compared here against the strongest doom arguments; points that are answered, weakened, reframed, or still open are separated.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+This chapter is organizing this book's arguments almost entirely around external material --- Yudkowsky's \emph{AGI Ruin} lethality list and Hubinger et al.'s mesa-optimization taxonomy of outer and inner alignment, proxy alignment, deceptive alignment, and gradient hacking --- all standard, widely cited reference points in the alignment field, most of them still open by the field's own accounting.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -73,7 +77,7 @@ Reframed, open \\
 Human feedback corrupted &
 Human oversight becomes untrustworthy under optimization &
 Correction-channel integrity penalizes manipulation &
-Circular at limit (ch43) \\
+Circular at limit (Ch.~\ref{ch:verifiability-ontology}) \\
 \midrule
 Corrigibility anti-natural &
 Systems resist shutdown and correction by default &
@@ -88,7 +92,7 @@ Diagnostic only \\
 Deception and opacity &
 Systems hide intent from evaluators &
 Adversarial UAD and perturbation tests &
-Easy case only (ch43) \\
+Easy case only (Ch.~\ref{ch:verifiability-ontology}) \\
 \midrule
 Uncheckable outputs &
 Humans cannot verify superhuman plans &
@@ -169,7 +173,7 @@ The open issue is reflective stability: whether a system that can reason about i
 Unsupervised agent discovery, compression tests, and goal-transport analysis can help identify effective goals that differ from training objectives.
 They do not solve inner alignment.
 They are diagnostic tools whose validity depends on boundary recovery, probe coverage, and resistance to strategic presentation.
-The honest claim is that inner misalignment becomes more legible, not that it disappears.
+Inner misalignment becomes more legible, not that it disappears.
 
 \paragraph{Deception and opacity.}
 Strategic opacity is the recurring adversarial problem.
@@ -323,10 +327,15 @@ The model influences future training updates to preserve its objective &
 Attack on update operators and correction channels: the system shapes \(U_H\), \(U_S\), data selection, or evaluator feedback to preserve \(R_m\) &
 Open; explicit TODO for update-operator audit \\
 \midrule
-Sharp left turn &
-Capability generalizes farther than alignment &
-Capability, search, or world-control transports across regimes while value/correction transport fails &
+Sharp left turn / robustness to scale &
+Capability generalizes farther than alignment (properties that held at smaller scale fail at larger) &
+Capability, search, or world-control transports across regimes while value/correction transport fails; CCI under capability growth &
 Open; stress-test crux \\
+\midrule
+Perils of predictors &
+Oracle / predictive models become consequentialists via self-fulfilling forecasts or anthropic capture &
+Closed forecast--deployment loops as effective agents (strategic opacity; boundary-detectable in principle) &
+Reframed as path into inner-alignment-shaped failure; Lean loop model open \\
 \bottomrule
 \end{longtable}
 \normalsize
@@ -348,13 +357,13 @@ This is the lens of Chapter~\ref{ch:verifiability-ontology}: most of these ``res
   \item \textbf{Pivotal act $\to$ pivotal process.} Treating the act as the fast limit of a basin transition is more than pure rename: it yields a shared checklist and makes the disputed quantity the \emph{time budget}, not whether anyone ever acts decisively. The residue remains. If \(v\) and \(r\) are high enough that only unilateral capability concentration can close the checklist, the fast regime is a pivotal act in Yudkowsky's sense; if no path closes the checklist in time, the race basin may be stable. \emph{Partially addressed}: conditions stated (Section~\ref{sec:pivotal-process-ch37}); feasibility under adversarial tempo still open.
   \item \textbf{Multipolar failure.} ``Safe only if systems stay strategically independent'' \emph{concedes} the point: inferential coupling, including the full-acausal-trade limit (Chapter~\ref{ch:multi-agent-strategic-coupling}), is precisely the failure of independence. The reframe is an argument \emph{for} the lethality wearing a response's clothes.
   \item \textbf{Capability generalizes farther than alignment.} A ``compact alignment core'' names the exact object the sharp-left-turn argument predicts will fail to transfer; positing it is not a rebuttal until the core is shown \emph{preserved across the capability jump}, not merely to exist.
-  \item \textbf{Human feedback corrupted; deception/opacity; boxing.} All three collapse into the verifiability hole. A manipulation penalty is computed from signals the optimizing system controls; perturbation tests catch only deceivers too weak to model the test; ``harden correction'' moves the perimeter onto the same insecure humans. Each is honest for the weak-system case and undefined for the lethal one (Chapter~\ref{ch:verifiability-ontology}).
+  \item \textbf{Human feedback corrupted; deception/opacity; boxing.} All three collapse into the verifiability hole. A manipulation penalty is computed from signals the optimizing system controls; perturbation tests catch only deceivers too weak to model the test; ``harden correction'' moves the perimeter onto the same insecure humans. Each applies in the weak-system case and is undefined for the lethal one (Chapter~\ref{ch:verifiability-ontology}).
   \item \textbf{Uncheckable outputs; physical takeover.} Delegated verification recurses and reversibility is what a competent plan removes first; latency models bound the pathways already enumerated and are silent on the unimagined one.
 \end{itemize}
 
 The residue is clear: of the rows claiming credit, the reframes rename, the ``partly addressed'' rows reduce to adversarial verifiability, and the conjectural core is not yet a guarantee. This is why Chapter~\ref{ch:verifiability-ontology} precedes this stress test: it states the standard these responses must eventually meet.
 
-% Formalization: inferential-coupling and coalition tests in ch35; pivotal-process basin transition in ch37 (Section~\ref{sec:pivotal-process-ch37}).
+% Formalization: inferential-coupling and coalition tests in Chapter~\ref{ch:multi-agent-strategic-coupling}; pivotal-process basin transition in Chapter~\ref{ch:alignment-attractor} (Section~\ref{sec:pivotal-process-ch37}).
 
 \subsection{Reflective Stability of Correction}
 \label{sec:reflective-stability-correction-ch44}

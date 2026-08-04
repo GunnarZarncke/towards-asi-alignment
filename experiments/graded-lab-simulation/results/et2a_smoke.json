@@ -1,0 +1,256 @@
+{
+  "cells": {
+    "pld@0.2": {
+      "hits": 0,
+      "n": 5,
+      "rate": 0.0
+    },
+    "pld@0.3": {
+      "hits": 0,
+      "n": 5,
+      "rate": 0.0
+    },
+    "prd@0.2": {
+      "hits": 0,
+      "n": 5,
+      "rate": 0.0
+    },
+    "prd@0.3": {
+      "hits": 0,
+      "n": 5,
+      "rate": 0.0
+    }
+  },
+  "cil_pin": "25dab1aa5bbd8ca1c19da20eb9f1a9e47cad471c",
+  "episodes": [
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 0
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 1
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 2
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 3
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 4
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 0
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 1
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 2
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 3
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "pld",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 4
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 0
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 1
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 2
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 3
+    },
+    {
+      "adversarial_fraction": 0.2,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 4,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 4
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 0
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 1
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 2
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 3
+    },
+    {
+      "adversarial_fraction": 0.3,
+      "ari_true": 0.0,
+      "exceeds_null": false,
+      "mechanism": "prd",
+      "n_adversarial": 6,
+      "n_agents": 20,
+      "partition_size": 20,
+      "permutation_null_p95": 0.0,
+      "seed": 4
+    }
+  ],
+  "et2_protocol_version": "et2-0.1.0",
+  "n_episodes": 20,
+  "predictions": {
+    "P1": {
+      "cells_passing": 0,
+      "cells_total": 4,
+      "holds": false
+    }
+  }
+}

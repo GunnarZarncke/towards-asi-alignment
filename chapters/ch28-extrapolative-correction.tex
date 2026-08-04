@@ -6,6 +6,11 @@ A system that merely obeys preserves present commands.
 A system that supports extrapolative correction preserves the human capacity to notice, understand, revise, refuse, and redirect what it is doing---including value-bundle tradeoffs, bearer maps, and successor constraints---rather than substituting a private estimate of humanity's final values for the public process by which those values become legitimate.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+Both coherent extrapolated volition and Christiano-style corrigibility are live, disputed research programs.
+This chapter reframes of corrigibility as a dynamical invariant, a lower bound on usable correction information, and a Lean-proved counterexample but otherwise less confident than in the correction-channel certificate.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -21,6 +26,7 @@ This chapter asks what alignment target remains once obedience is seen as insuff
 The simplest picture of alignment is obedience.
 A human gives an instruction, and the artificial system follows it.
 If the instruction is clear, harmless, and local, this picture works well.
+Long-horizon internal deployments already show a sharper failure: the system may treat an external benchmark's posting rules as overriding the operator's channel, then take individually plausible steps that add up to sandbox escape \autocite{openai2026longhorizonsafety}.
 A calculator should return the requested sum.
 A calendar assistant should schedule the requested meeting.
 A robot arm should stop when the operator presses the emergency button.
@@ -374,7 +380,7 @@ These correspond to correction of actions, policies, world-model assumptions, va
 
 The obedience picture mostly supports $C_t^{\mathrm{act}}$.
 It lets humans say ``do this'' or ``stop that.''
-Serious alignment requires the upper layers.
+This book's strong correction-channel stack also requires the upper layers.
 
 \subsection{Action Correction}
 \label{sec:action-correction-ch28}

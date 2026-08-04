@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import Badge from "../../components/Badge.astro";
+import LinkIndicator from "../../components/LinkIndicator.astro";
 import demos from "../../data/demos.json";
 import { bookHref, cardHref } from "../../lib/site-urls";
 
@@ -21,8 +22,8 @@ const demoHref = (sitePath: string) => withBase(sitePath);
       Experimental mini apps that illustrate manuscript ideas. They are not part of the PDF and are not validation of frontier systems — sanity-check toys for intuition.
     </p>
     <div class="button-row">
-      <a class="button primary" href={withBase("/chapter-demos/ch16-value-bundle-simulator/")}>Try a demo</a>
-      <a class="button" href={`${repoUrl}/tree/main/demos`} target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+      <a class="button primary" href={withBase("/chapter-demos/ch16-value-bundle-simulator/")} target="_blank" rel="noopener noreferrer">Try a demo<LinkIndicator kind="newtab" /></a>
+      <a class="button" href={`${repoUrl}/tree/main/demos`} target="_blank" rel="noopener noreferrer">Source on GitHub<LinkIndicator kind="github" /></a>
     </div>
   </section>
 
@@ -42,7 +43,7 @@ const demoHref = (sitePath: string) => withBase(sitePath);
             <Badge label={demo.kind.replace("-", " ")} />
           </div>
           <h3>
-            <a href={demoHref(demo.sitePath)}>{demo.title}</a>
+            <a href={demoHref(demo.sitePath)} target="_blank" rel="noopener noreferrer">{demo.title}<LinkIndicator kind="newtab" /></a>
           </h3>
           {demo.chapterTitle && (
             <p class="side-panel-meta">
@@ -53,15 +54,15 @@ const demoHref = (sitePath: string) => withBase(sitePath);
           )}
           <p>{demo.summary}</p>
           <p>
-            <a class="button" href={demoHref(demo.sitePath)}>Launch demo</a>
+            <a class="button" href={demoHref(demo.sitePath)} target="_blank" rel="noopener noreferrer">Launch demo<LinkIndicator kind="newtab" /></a>
             {" "}
-            <a href={demo.standaloneUrl} title="Standalone demo server">Standalone</a>
+            <a href={demo.standaloneUrl} title="Standalone demo server" target="_blank" rel="noopener noreferrer">Standalone<LinkIndicator kind="newtab" /></a>
             {" · "}
-            <a href={`${repoUrl}/tree/main/${demo.githubPath}`} target="_blank" rel="noopener noreferrer">Source</a>
+            <a href={`${repoUrl}/tree/main/${demo.githubPath}`} target="_blank" rel="noopener noreferrer">Source<LinkIndicator kind="github" /></a>
             {demo.liveUrl && (
               <>
                 {" · "}
-                <a href={demo.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment</a>
+                <a href={demo.liveUrl} target="_blank" rel="noopener noreferrer">Live deployment<LinkIndicator kind="external" /></a>
               </>
             )}
           </p>
@@ -107,7 +108,7 @@ const demoHref = (sitePath: string) => withBase(sitePath);
                 <a href={`#${demo.id}`}>{demo.title}</a>
               </td>
               <td>{demo.kind}</td>
-              <td><a href={demoHref(demo.sitePath)}>Open</a></td>
+              <td><a href={demoHref(demo.sitePath)} target="_blank" rel="noopener noreferrer">Open<LinkIndicator kind="newtab" /></a></td>
             </tr>
           ))}
         </tbody>

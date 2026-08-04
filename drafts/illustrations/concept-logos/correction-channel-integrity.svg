@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 163.3,100.0 L 150.7,120.2 L 134.7,139.3 L 105.0,141.2 L 76.1,138.2 L 60.7,119.5 L 48.4,100.0 L 58.8,79.6 L 75.6,61.1 L 105.0,60.1 L 133.1,62.9 L 149.8,80.3 L 163.3,100.0 Z"/>
+<line x1="30" y1="100" x2="78" y2="100" marker-end="url(#arrow)"/>
+<circle cx="105" cy="100" r="6" fill="currentColor" stroke="none"/>
+  </g>
+</svg>

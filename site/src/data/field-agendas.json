@@ -1,0 +1,5133 @@
+{
+  "meta": {
+    "status": "field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 30 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  ",
+    "inclusionTest": "An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature terms, (3) stated intent to shape research/deployment/policy, (4) primary artifact (curriculum, constitution, technical agenda, eval suite, policy platform).\n\n**Not agendas (reference only):** funding pools (LTFF, SFF, Open Philanthropy), coworking hubs (LISA, Constellation, Meridian), resource directories (AISafety.com, AI Watch), individual blogs/newsletters unless they define a research lineage.\n\n**Training programs** (BlueDot, MATS, Apart, Kairos, seminar-style curricula) are one agenda **type** among others — vocabulary feeds the inter-agenda glossary; no per-curriculum index rows.",
+    "coverageIntro": "The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology.\n\n- **`Book treatment`** on each [agenda row](#agendas) states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).\n- **Empty matrix cells (`—`)** mean no catalog entry in this pass — not \"out of book scope\" and not a claim the agenda is silent on the crux.\n- **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).",
+    "spineTranslation": "A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:\n\n| Mode | Meaning | Examples |\n|---|---|---|\n| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB8**, **MB11** columns |\n| **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |\n| **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |",
+    "doNotInfer": "Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**; CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.",
+    "kosoyDiagnostic": "infra-Bayesianism/LTA advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.",
+    "openSpineInterfaces": "---",
+    "typeLettersTable": "| Letter | Type |\n|---|---|\n| **C** | conceptual |\n| **T** | theory (formalization) |\n| **S** | simulations |\n| **P** | practical (applications) |\n| **D** | empirical (software) |\n| **E** | empirical (other) |\n| **O** | other |",
+    "matrixIntro": "Column headers use **field nouns**; **MB*** keys are spine identifiers only. Each linked bridge card states the crux, where agendas agree or diverge, and homograph splits. [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · source: [`reference/field-agendas/data/bridges.yml`](data/bridges.yml).",
+    "matrixLegend": "",
+    "excludedFromMatrix": "### Coverage evidence catalog {#coverage-evidence-catalog}"
+  },
+  "roster": [
+    {
+      "slug": "miri",
+      "title": "MIRI",
+      "order": 1,
+      "inMatrix": true
+    },
+    {
+      "slug": "redwood-research",
+      "title": "Redwood Research",
+      "order": 2,
+      "inMatrix": true
+    },
+    {
+      "slug": "chai-russell",
+      "title": "CHAI / FAR.AI (Berkeley alignment)",
+      "order": 3,
+      "inMatrix": true
+    },
+    {
+      "slug": "christiano-lineage",
+      "title": "Christiano lineage",
+      "order": 4,
+      "inMatrix": true
+    },
+    {
+      "slug": "davidad-guaranteed-safe-ai-gsai",
+      "title": "davidad / Guaranteed-Safe AI (GSAI)",
+      "order": 5,
+      "inMatrix": true
+    },
+    {
+      "slug": "anthropic-lab",
+      "title": "Anthropic / Goodfire (lab & MI stack)",
+      "order": 6,
+      "inMatrix": true
+    },
+    {
+      "slug": "google-deepmind-safety",
+      "title": "Google DeepMind (safety)",
+      "order": 7,
+      "inMatrix": true
+    },
+    {
+      "slug": "apollo-research",
+      "title": "Apollo / Truthful AI (deception & scheming)",
+      "order": 8,
+      "inMatrix": true
+    },
+    {
+      "slug": "metr",
+      "title": "METR",
+      "order": 9,
+      "inMatrix": true
+    },
+    {
+      "slug": "resolution",
+      "title": "Resolution",
+      "order": 10,
+      "inMatrix": true
+    },
+    {
+      "slug": "neglected-approaches-portfolio",
+      "title": "Neglected approaches portfolio",
+      "order": 11,
+      "inMatrix": true
+    },
+    {
+      "slug": "orthogonal",
+      "title": "Orthogonal",
+      "order": 12,
+      "inMatrix": true
+    },
+    {
+      "slug": "wentworth-natural-abstractions",
+      "title": "Wentworth / natural abstractions",
+      "order": 13,
+      "inMatrix": true
+    },
+    {
+      "slug": "kosoy-infra-bayesianism-lta",
+      "title": "Kosoy / infra-Bayesianism & LTA",
+      "order": 14,
+      "inMatrix": true
+    },
+    {
+      "slug": "kosoy-predca",
+      "title": "Kosoy / PreDCA",
+      "order": 15,
+      "inMatrix": true
+    },
+    {
+      "slug": "ciris",
+      "title": "CIRIS",
+      "order": 16,
+      "inMatrix": true
+    },
+    {
+      "slug": "govai",
+      "title": "GovAI / UK AISI (governance & eval)",
+      "order": 17,
+      "inMatrix": true
+    },
+    {
+      "slug": "pause-standards-advocacy-cluster",
+      "title": "Pause / standards advocacy cluster",
+      "order": 19,
+      "inMatrix": true
+    },
+    {
+      "slug": "cais-field-building",
+      "title": "CAIS (field-building)",
+      "order": 20,
+      "inMatrix": false
+    },
+    {
+      "slug": "bluedot-impact",
+      "title": "BlueDot Impact",
+      "order": 21,
+      "inMatrix": false
+    },
+    {
+      "slug": "mats",
+      "title": "MATS",
+      "order": 22,
+      "inMatrix": false
+    },
+    {
+      "slug": "apart-research",
+      "title": "Apart Research",
+      "order": 23,
+      "inMatrix": false
+    },
+    {
+      "slug": "kairos-field-building",
+      "title": "Kairos (field-building)",
+      "order": 24,
+      "inMatrix": false
+    },
+    {
+      "slug": "arc-alignment-research-center",
+      "title": "ARC (Alignment Research Center)",
+      "order": 25,
+      "inMatrix": true
+    },
+    {
+      "slug": "clr-cooperation-conflict",
+      "title": "CLR (cooperation / conflict)",
+      "order": 28,
+      "inMatrix": true
+    },
+    {
+      "slug": "ai-futures-forecasting-cluster",
+      "title": "AI Futures / forecasting cluster",
+      "order": 29,
+      "inMatrix": true
+    },
+    {
+      "slug": "conjecture-cognitive-emulation",
+      "title": "Conjecture / cognitive emulation",
+      "order": 31,
+      "inMatrix": true
+    },
+    {
+      "slug": "safeguarded-ai-aria-zeroth-heron",
+      "title": "Safeguarded AI (ARIA / Zeroth / Heron)",
+      "order": 32,
+      "inMatrix": true
+    },
+    {
+      "slug": "mai-cip-institutional-alignment",
+      "title": "MAI + CIP (institutional alignment)",
+      "order": 33,
+      "inMatrix": true
+    },
+    {
+      "slug": "this-project-towards-superintelligence-alignment-tsa",
+      "title": "This project - Towards Superintelligence Alignment (TSA)",
+      "order": 34,
+      "inMatrix": true
+    }
+  ],
+  "agendas": [
+    {
+      "slug": "ai-futures-forecasting-cluster",
+      "title": "AI Futures / forecasting cluster",
+      "summary": "Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—this project uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.",
+      "bookBridges": [
+        "MB6"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "anthropic-lab",
+      "title": "Anthropic / Goodfire (lab & MI stack)",
+      "summary": "Can scaling policies and interpretability keep pace with capability growth, including under strategic opacity and Goodhart Selection pressure?",
+      "bookBridges": [
+        "MB2",
+        "MB3",
+        "MB6",
+        "MB7",
+        "MB10",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "apart-research",
+      "title": "Apart Research",
+      "summary": "Sprint artifacts and demo prototypes do not imply a load-bearing safety case; exploratory outputs need separate adversarial verification before they warrant deployment trust.",
+      "bookBridges": [],
+      "inMatrix": false,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "apollo-research",
+      "title": "Apollo / Truthful AI (deception & scheming)",
+      "summary": "Can we detect strategic opacity and scheming before capabilities outpace pre-deployment evaluations (Inner Alignment)?",
+      "bookBridges": [
+        "MB6",
+        "MB7",
+        "MB10",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "arc-alignment-research-center",
+      "title": "ARC (Alignment Research Center)",
+      "summary": "Can oversight elicit latent knowledge directly rather than through a human simulator, and will readout remain faithful under optimization (Inner Alignment)?",
+      "bookBridges": [
+        "MB2",
+        "MB3",
+        "MB7"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "bluedot-impact",
+      "title": "BlueDot Impact",
+      "summary": "Strong pedagogy and career placement do not imply a unified research agenda; courses mainly transmit vocabulary and problem framings rather than resolving technical cruxes.",
+      "bookBridges": [],
+      "inMatrix": false,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "cais-field-building",
+      "title": "CAIS (field-building)",
+      "summary": "Field-building legitimacy and researcher pipeline growth do not imply a technical solution to alignment; advocacy can succeed while core mechanism questions remain open.",
+      "bookBridges": [],
+      "inMatrix": false,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "chai-russell",
+      "title": "CHAI / FAR.AI (Berkeley alignment)",
+      "summary": "Cooperative reward inference may be underdetermined (Value Learning), and a shared research hub does not imply a unified technical agenda.",
+      "bookBridges": [
+        "MB2",
+        "MB3",
+        "MB4",
+        "MB7"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "christiano-lineage",
+      "title": "Christiano lineage",
+      "summary": "Can oversight stay honest when arguments can be obfuscated, judge preferences drift over time, and latent readout may diverge from behavior (Inner Alignment)?",
+      "bookBridges": [
+        "MB2",
+        "MB3",
+        "MB4",
+        "MB7"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "ciris",
+      "title": "CIRIS",
+      "summary": "CIRIS bets on named identity: if Verify and Lens report green on a certified occurrence, does that imply Corrigibility on the real intervening loop—composite agency, tools, memory, and incentives included?",
+      "bookBridges": [
+        "MB1",
+        "MB4",
+        "MB4a",
+        "MB6",
+        "MB7",
+        "MB9",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "clr-cooperation-conflict",
+      "title": "CLR (cooperation / conflict)",
+      "summary": "How do multi-agent failure modes behave under strategic pressure—especially when cooperation breaks down?",
+      "bookBridges": [
+        "MB6",
+        "MB7d"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "conjecture-cognitive-emulation",
+      "title": "Conjecture / EleutherAI (cognitive emulation)",
+      "summary": "Does emulation-style controllability still imply corrigibility—that systems remain open to correction—as capability scales?",
+      "bookBridges": [
+        "MB7"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "davidad-guaranteed-safe-ai-gsai",
+      "title": "davidad / Guaranteed-Safe AI (GSAI)",
+      "summary": "Can we enumerate all safety-relevant phenomena in an open world, or will specification coverage always leave gaps (Grounding Drift)?",
+      "bookBridges": [
+        "MB9",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "google-deepmind-safety",
+      "title": "Google DeepMind (safety)",
+      "summary": "Can oversight and safety research co-scale with capabilities, including under deceptive alignment and Inner Alignment risk—the same frontier-lab crux shared with other major labs?",
+      "bookBridges": [
+        "MB1",
+        "MB7"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "govai",
+      "title": "GovAI / UK AISI (governance & eval)",
+      "summary": "Can governance mechanisms and institute evaluations keep pace with capability and actually bind deployment decisions under race pressure?",
+      "bookBridges": [
+        "MB6",
+        "MB7",
+        "MB9",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "kairos-field-building",
+      "title": "Kairos (field-building)",
+      "summary": "Like other training agendas, program throughput and participant quality do not imply resolution of technical alignment cruxes; the bottleneck is still mechanism discovery, not talent discovery.",
+      "bookBridges": [],
+      "inMatrix": false,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "kosoy-infra-bayesianism-lta",
+      "title": "Kosoy / infra-Bayesianism & LTA",
+      "summary": "Can learning-theoretic and infra-Bayesian frameworks type real alignment failures—misspecification, inner daemons, and recursive self-improvement?",
+      "bookBridges": [
+        "MB1",
+        "MB2",
+        "MB5",
+        "MB7",
+        "MB9"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "kosoy-predca",
+      "title": "Kosoy / PreDCA",
+      "summary": "Does precursor-utility pointing survive simulation and ontology ambiguity?",
+      "bookBridges": [
+        "MB2",
+        "MB3",
+        "MB4",
+        "MB8"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "mai-cip-institutional-alignment",
+      "title": "MAI + CIP (institutional alignment)",
+      "summary": "Can thick values and deliberative processes stay identifiable, contestable, and robust under strategic pressure and AI mediation?",
+      "bookBridges": [
+        "MB2",
+        "MB4a",
+        "MB6",
+        "MB8"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "mats",
+      "title": "MATS",
+      "summary": "Mentorship output is intentionally diverse across subfields, which does not collapse into a single unified measurement spine—participants may advance interpretability, control, or governance lines without resolving cross-cutting bridge composition.",
+      "bookBridges": [],
+      "inMatrix": false,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "metr",
+      "title": "METR",
+      "summary": "Do public capability evaluations track deployment-relevant risk under adversarial pressure and Goodhart Selection?",
+      "bookBridges": [
+        "MB6",
+        "MB7"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "miri",
+      "title": "MIRI",
+      "summary": "There may be no clean cut between an AI and its environment (Embedded Agency); corrigibility may be anti-natural; and successor systems may not inherit trust under ontology change (Tiling).",
+      "bookBridges": [
+        "MB1",
+        "MB4",
+        "MB5",
+        "MB8"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "neglected-approaches-portfolio",
+      "title": "Neglected approaches portfolio",
+      "summary": "Which neglected routes survive unified optimization pressure—and which portfolio bets compound versus diffuse effort across incompatible outer targets?",
+      "bookBridges": [
+        "MB1",
+        "MB2",
+        "MB4",
+        "MB6",
+        "MB7"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "orthogonal",
+      "title": "Orthogonal",
+      "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
+      "bookBridges": [
+        "MB1",
+        "MB4"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "pause-standards-advocacy-cluster",
+      "title": "Pause / standards advocacy cluster",
+      "summary": "Can advocacy create enforceable slowdown without collateral governance failure?",
+      "bookBridges": [
+        "MB6",
+        "MB8"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "redwood-research",
+      "title": "Redwood Research",
+      "summary": "Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight (Inner Alignment)?",
+      "bookBridges": [
+        "MB7"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "resolution",
+      "title": "Resolution",
+      "summary": "Can formal and automated pipelines scale to superintelligent alignment?",
+      "bookBridges": [
+        "MB1",
+        "MB9",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "safeguarded-ai-aria-zeroth-heron",
+      "title": "Safeguarded AI (ARIA / Zeroth / Heron)",
+      "summary": "Safety claims are conditional on the declared system boundary; misspecified controllers, emergent coalitions, or agents outside the certified cut can void otherwise correct proofs.",
+      "bookBridges": [
+        "MB1",
+        "MB4a",
+        "MB7",
+        "MB9",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "this-project-towards-superintelligence-alignment-tsa",
+      "title": "This project - Towards Superintelligence Alignment (TSA)",
+      "summary": "Can typed bridges compose under an explicit adversarial-verifiability antecedent, or do standard non-converses block naive closure arguments?",
+      "bookBridges": [
+        "MB1",
+        "MB2",
+        "MB3",
+        "MB4",
+        "MB4a",
+        "MB5",
+        "MB6",
+        "MB7",
+        "MB7d",
+        "MB8",
+        "MB9",
+        "MB10",
+        "MB11"
+      ],
+      "inMatrix": true,
+      "generateCard": false,
+      "matrixLink": "https://towards-alignment.com/"
+    },
+    {
+      "slug": "wentworth-natural-abstractions",
+      "title": "Wentworth / natural abstractions",
+      "summary": "Do natural abstractions—the variables that survive selection—align with value-relevant structure when systems are trained or deployed at scale?",
+      "bookBridges": [
+        "MB2",
+        "MB3",
+        "MB1"
+      ],
+      "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    }
+  ],
+  "matrix": {
+    "columns": [
+      "MB1",
+      "MB2",
+      "MB3",
+      "MB4",
+      "MB4a",
+      "MB5",
+      "MB6",
+      "MB7",
+      "MB7d",
+      "MB8",
+      "MB9",
+      "MB10",
+      "MB11"
+    ],
+    "rows": [
+      {
+        "agenda": "MIRI",
+        "cells": {
+          "MB1": [
+            {
+              "type": "C",
+              "ids": [
+                1,
+                2
+              ]
+            }
+          ],
+          "MB2": [
+            {
+              "type": "C",
+              "ids": [
+                3
+              ]
+            }
+          ],
+          "MB3": [],
+          "MB4": [
+            {
+              "type": "T",
+              "ids": [
+                4,
+                5
+              ]
+            }
+          ],
+          "MB4a": [
+            {
+              "type": "T",
+              "ids": [
+                4,
+                5
+              ]
+            }
+          ],
+          "MB5": [
+            {
+              "type": "C",
+              "ids": [
+                6,
+                8
+              ]
+            },
+            {
+              "type": "T",
+              "ids": [
+                7
+              ]
+            }
+          ],
+          "MB6": [],
+          "MB7": [
+            {
+              "type": "C",
+              "ids": [
+                1,
+                9
+              ]
+            }
+          ],
+          "MB7d": [
+            {
+              "type": "T",
+              "ids": [
+                10,
+                124
+              ]
+            }
+          ],
+          "MB8": [
+            {
+              "type": "C",
+              "ids": [
+                131
+              ]
+            }
+          ],
+          "MB9": [],
+          "MB10": [
+            {
+              "type": "C",
+              "ids": [
+                6
+              ]
+            },
+            {
+              "type": "T",
+              "ids": [
+                7
+              ]
+            }
+          ],
+          "MB11": []
+        },
+        "slug": "miri"
+      },
+      {
+        "agenda": "Redwood",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [
+            {
+              "type": "C",
+              "ids": [
+                11
+              ]
+            }
+          ],
+          "MB4a": [
+            {
+              "type": "C",
+              "ids": [
+                11
+              ]
+            }
+          ],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [
+            {
+              "type": "E",
+              "ids": [
+                13
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                11
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [
+            {
+              "type": "C",
+              "ids": [
+                11
+              ]
+            }
+          ],
+          "MB11": []
+        },
+        "slug": "redwood-research"
+      },
+      {
+        "agenda": "CHAI / FAR.AI",
+        "cells": {
+          "MB1": [],
+          "MB2": [
+            {
+              "type": "T",
+              "ids": [
+                14,
+                16
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                15
+              ]
+            }
+          ],
+          "MB3": [
+            {
+              "type": "T",
+              "ids": [
+                14
+              ]
+            }
+          ],
+          "MB4": [
+            {
+              "type": "T",
+              "ids": [
+                17
+              ]
+            }
+          ],
+          "MB4a": [
+            {
+              "type": "T",
+              "ids": [
+                17
+              ]
+            }
+          ],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [
+            {
+              "type": "E",
+              "ids": [
+                78
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "chai-russell"
+      },
+      {
+        "agenda": "Christiano",
+        "cells": {
+          "MB1": [],
+          "MB2": [
+            {
+              "type": "C",
+              "ids": [
+                18
+              ]
+            }
+          ],
+          "MB3": [
+            {
+              "type": "C",
+              "ids": [
+                18
+              ]
+            }
+          ],
+          "MB4": [
+            {
+              "type": "C",
+              "ids": [
+                19
+              ]
+            }
+          ],
+          "MB4a": [
+            {
+              "type": "C",
+              "ids": [
+                19
+              ]
+            }
+          ],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "C",
+              "ids": [
+                20
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "C",
+              "ids": [
+                22,
+                23
+              ]
+            },
+            {
+              "type": "T",
+              "ids": [
+                21
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [
+            {
+              "type": "C",
+              "ids": [
+                22
+              ]
+            }
+          ],
+          "MB11": []
+        },
+        "slug": "christiano-lineage"
+      },
+      {
+        "agenda": "ARC",
+        "cells": {
+          "MB1": [],
+          "MB2": [
+            {
+              "type": "C",
+              "ids": [
+                18
+              ]
+            }
+          ],
+          "MB3": [
+            {
+              "type": "C",
+              "ids": [
+                18
+              ]
+            }
+          ],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [
+            {
+              "type": "C",
+              "ids": [
+                18
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "arc-alignment-research-center"
+      },
+      {
+        "agenda": "GSAI",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [
+            {
+              "type": "T",
+              "ids": [
+                24
+              ]
+            }
+          ],
+          "MB10": [],
+          "MB11": [
+            {
+              "type": "T",
+              "ids": [
+                128
+              ]
+            }
+          ]
+        },
+        "slug": "davidad-guaranteed-safe-ai-gsai"
+      },
+      {
+        "agenda": "Anthropic / Goodfire",
+        "cells": {
+          "MB1": [],
+          "MB2": [
+            {
+              "type": "E",
+              "ids": [
+                25,
+                26
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                27
+              ]
+            }
+          ],
+          "MB3": [
+            {
+              "type": "E",
+              "ids": [
+                25
+              ]
+            }
+          ],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "P",
+              "ids": [
+                28
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "E",
+              "ids": [
+                25,
+                31,
+                134
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                152,
+                153
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                29
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [
+            {
+              "type": "E",
+              "ids": [
+                13
+              ]
+            }
+          ],
+          "MB11": [
+            {
+              "type": "P",
+              "ids": [
+                28,
+                135
+              ]
+            }
+          ]
+        },
+        "slug": "anthropic-lab"
+      },
+      {
+        "agenda": "Google DeepMind",
+        "cells": {
+          "MB1": [
+            {
+              "type": "C",
+              "ids": [
+                133
+              ]
+            }
+          ],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [
+            {
+              "type": "T",
+              "ids": [
+                21
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "google-deepmind-safety"
+      },
+      {
+        "agenda": "Apollo / Truthful AI",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "E",
+              "ids": [
+                148
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "E",
+              "ids": [
+                148,
+                149,
+                35
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                73
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                150
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [
+            {
+              "type": "E",
+              "ids": [
+                148
+              ]
+            }
+          ],
+          "MB11": [
+            {
+              "type": "E",
+              "ids": [
+                148
+              ]
+            }
+          ]
+        },
+        "slug": "apollo-research"
+      },
+      {
+        "agenda": "METR",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "E",
+              "ids": [
+                36
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "E",
+              "ids": [
+                36,
+                38
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [
+            {
+              "type": "E",
+              "ids": [
+                36
+              ]
+            }
+          ],
+          "MB11": [
+            {
+              "type": "E",
+              "ids": [
+                36
+              ]
+            }
+          ]
+        },
+        "slug": "metr"
+      },
+      {
+        "agenda": "Resolution",
+        "cells": {
+          "MB1": [
+            {
+              "type": "O",
+              "ids": [
+                39
+              ]
+            }
+          ],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [
+            {
+              "type": "T",
+              "ids": [
+                40
+              ]
+            }
+          ],
+          "MB10": [],
+          "MB11": [
+            {
+              "type": "O",
+              "ids": [
+                129
+              ]
+            }
+          ]
+        },
+        "slug": "resolution"
+      },
+      {
+        "agenda": "Neglected approaches",
+        "cells": {
+          "MB1": [],
+          "MB2": [
+            {
+              "type": "O",
+              "ids": [
+                41
+              ]
+            },
+            {
+              "type": "T",
+              "ids": [
+                42
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                144
+              ]
+            }
+          ],
+          "MB3": [],
+          "MB4": [
+            {
+              "type": "T",
+              "ids": [
+                42
+              ]
+            }
+          ],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "C",
+              "ids": [
+                43
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "C",
+              "ids": [
+                144
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                145
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "neglected-approaches-portfolio"
+      },
+      {
+        "agenda": "Orthogonal",
+        "cells": {
+          "MB1": [
+            {
+              "type": "C",
+              "ids": [
+                147
+              ]
+            }
+          ],
+          "MB2": [
+            {
+              "type": "T",
+              "ids": [
+                45
+              ]
+            }
+          ],
+          "MB3": [],
+          "MB4": [
+            {
+              "type": "T",
+              "ids": [
+                45
+              ]
+            }
+          ],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "orthogonal"
+      },
+      {
+        "agenda": "Wentworth",
+        "cells": {
+          "MB1": [
+            {
+              "type": "C",
+              "ids": [
+                46,
+                47,
+                48
+              ]
+            }
+          ],
+          "MB2": [
+            {
+              "type": "C",
+              "ids": [
+                49,
+                51
+              ]
+            },
+            {
+              "type": "T",
+              "ids": [
+                50
+              ]
+            }
+          ],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [
+            {
+              "type": "C",
+              "ids": [
+                52
+              ]
+            }
+          ],
+          "MB6": [],
+          "MB7": [],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "wentworth-natural-abstractions"
+      },
+      {
+        "agenda": "Kosoy / IB & LTA",
+        "cells": {
+          "MB1": [
+            {
+              "type": "T",
+              "ids": [
+                118,
+                132
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                132
+              ]
+            }
+          ],
+          "MB2": [
+            {
+              "type": "T",
+              "ids": [
+                119
+              ]
+            }
+          ],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [
+            {
+              "type": "C",
+              "ids": [
+                121
+              ]
+            }
+          ],
+          "MB6": [],
+          "MB7": [
+            {
+              "type": "C",
+              "ids": [
+                120
+              ]
+            }
+          ],
+          "MB7d": [
+            {
+              "type": "T",
+              "ids": [
+                122
+              ]
+            }
+          ],
+          "MB8": [],
+          "MB9": [
+            {
+              "type": "T",
+              "ids": [
+                118,
+                132
+              ]
+            }
+          ],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "kosoy-infra-bayesianism-lta"
+      },
+      {
+        "agenda": "Kosoy / PreDCA",
+        "cells": {
+          "MB1": [],
+          "MB2": [
+            {
+              "type": "T",
+              "ids": [
+                123
+              ]
+            }
+          ],
+          "MB3": [
+            {
+              "type": "T",
+              "ids": [
+                123
+              ]
+            }
+          ],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "kosoy-predca"
+      },
+      {
+        "agenda": "CIRIS",
+        "cells": {
+          "MB1": [
+            {
+              "type": "P",
+              "ids": [
+                53,
+                108
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                103,
+                104,
+                106
+              ]
+            },
+            {
+              "type": "D",
+              "ids": [
+                105
+              ]
+            }
+          ],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [
+            {
+              "type": "C",
+              "ids": [
+                107
+              ]
+            },
+            {
+              "type": "D",
+              "ids": [
+                54,
+                55,
+                56
+              ]
+            },
+            {
+              "type": "D",
+              "ids": [
+                109,
+                110,
+                111
+              ]
+            },
+            {
+              "type": "P",
+              "ids": [
+                108
+              ]
+            }
+          ],
+          "MB4a": [
+            {
+              "type": "C",
+              "ids": [
+                107
+              ]
+            },
+            {
+              "type": "D",
+              "ids": [
+                109,
+                110,
+                111
+              ]
+            }
+          ],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "P",
+              "ids": [
+                112
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                113
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "D",
+              "ids": [
+                114
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                115,
+                116
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [
+            {
+              "type": "C",
+              "ids": [
+                104,
+                117
+              ]
+            }
+          ],
+          "MB10": [],
+          "MB11": [
+            {
+              "type": "C",
+              "ids": [
+                108,
+                130
+              ]
+            },
+            {
+              "type": "P",
+              "ids": [
+                108
+              ]
+            }
+          ]
+        },
+        "slug": "ciris"
+      },
+      {
+        "agenda": "GovAI / UK AISI",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "E",
+              "ids": [
+                57,
+                59,
+                146
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                62
+              ]
+            },
+            {
+              "type": "P",
+              "ids": [
+                58,
+                61,
+                63
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "P",
+              "ids": [
+                58,
+                64
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                62,
+                136
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [
+            {
+              "type": "C",
+              "ids": [
+                60
+              ]
+            },
+            {
+              "type": "P",
+              "ids": [
+                63
+              ]
+            }
+          ],
+          "MB10": [],
+          "MB11": [
+            {
+              "type": "P",
+              "ids": [
+                63
+              ]
+            }
+          ]
+        },
+        "slug": "govai"
+      },
+      {
+        "agenda": "Pause cluster",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [
+            {
+              "type": "P",
+              "ids": [
+                65
+              ]
+            }
+          ],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "P",
+              "ids": [
+                66
+              ]
+            }
+          ],
+          "MB7": [],
+          "MB7d": [],
+          "MB8": [
+            {
+              "type": "P",
+              "ids": [
+                65
+              ]
+            }
+          ],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "pause-standards-advocacy-cluster"
+      },
+      {
+        "agenda": "CLR",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "C",
+              "ids": [
+                67,
+                68,
+                151
+              ]
+            }
+          ],
+          "MB7": [],
+          "MB7d": [
+            {
+              "type": "C",
+              "ids": [
+                70
+              ]
+            }
+          ],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "clr-cooperation-conflict"
+      },
+      {
+        "agenda": "AI Futures",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "O",
+              "ids": [
+                77
+              ]
+            }
+          ],
+          "MB7": [],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "ai-futures-forecasting-cluster"
+      },
+      {
+        "agenda": "Conjecture",
+        "cells": {
+          "MB1": [],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [
+            {
+              "type": "C",
+              "ids": [
+                79
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "conjecture-cognitive-emulation"
+      },
+      {
+        "agenda": "Safeguarded AI",
+        "cells": {
+          "MB1": [
+            {
+              "type": "E",
+              "ids": [
+                139
+              ]
+            },
+            {
+              "type": "T",
+              "ids": [
+                141
+              ]
+            }
+          ],
+          "MB2": [],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [
+            {
+              "type": "P",
+              "ids": [
+                140
+              ]
+            }
+          ],
+          "MB5": [],
+          "MB6": [],
+          "MB7": [
+            {
+              "type": "E",
+              "ids": [
+                139
+              ]
+            },
+            {
+              "type": "T",
+              "ids": [
+                142
+              ]
+            }
+          ],
+          "MB7d": [],
+          "MB8": [],
+          "MB9": [
+            {
+              "type": "T",
+              "ids": [
+                137,
+                141
+              ]
+            }
+          ],
+          "MB10": [],
+          "MB11": [
+            {
+              "type": "T",
+              "ids": [
+                137,
+                142
+              ]
+            },
+            {
+              "type": "P",
+              "ids": [
+                140
+              ]
+            }
+          ]
+        },
+        "slug": "safeguarded-ai-aria-zeroth-heron"
+      },
+      {
+        "agenda": "MAI + CIP",
+        "cells": {
+          "MB1": [],
+          "MB2": [
+            {
+              "type": "C",
+              "ids": [
+                85
+              ]
+            }
+          ],
+          "MB3": [],
+          "MB4": [],
+          "MB4a": [
+            {
+              "type": "P",
+              "ids": [
+                143
+              ]
+            }
+          ],
+          "MB5": [],
+          "MB6": [
+            {
+              "type": "C",
+              "ids": [
+                85
+              ]
+            }
+          ],
+          "MB7": [],
+          "MB7d": [],
+          "MB8": [
+            {
+              "type": "P",
+              "ids": [
+                143
+              ]
+            }
+          ],
+          "MB9": [],
+          "MB10": [],
+          "MB11": []
+        },
+        "slug": "mai-cip-institutional-alignment"
+      },
+      {
+        "agenda": "TSA",
+        "cells": {
+          "MB1": [
+            {
+              "type": "S",
+              "ids": [
+                81,
+                82
+              ]
+            },
+            {
+              "type": "T",
+              "ids": [
+                80
+              ]
+            }
+          ],
+          "MB2": [
+            {
+              "type": "T",
+              "ids": [
+                83,
+                84
+              ]
+            }
+          ],
+          "MB3": [
+            {
+              "type": "T",
+              "ids": [
+                83,
+                86
+              ]
+            }
+          ],
+          "MB4": [
+            {
+              "type": "T",
+              "ids": [
+                87
+              ]
+            },
+            {
+              "type": "S",
+              "ids": [
+                88
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                89
+              ]
+            }
+          ],
+          "MB4a": [
+            {
+              "type": "T",
+              "ids": [
+                125
+              ]
+            },
+            {
+              "type": "S",
+              "ids": [
+                88
+              ]
+            }
+          ],
+          "MB5": [
+            {
+              "type": "T",
+              "ids": [
+                90,
+                91
+              ]
+            },
+            {
+              "type": "S",
+              "ids": [
+                92
+              ]
+            }
+          ],
+          "MB6": [
+            {
+              "type": "T",
+              "ids": [
+                93
+              ]
+            },
+            {
+              "type": "S",
+              "ids": [
+                94
+              ]
+            },
+            {
+              "type": "P",
+              "ids": [
+                95
+              ]
+            }
+          ],
+          "MB7": [
+            {
+              "type": "T",
+              "ids": [
+                96,
+                97
+              ]
+            },
+            {
+              "type": "S",
+              "ids": [
+                98
+              ]
+            },
+            {
+              "type": "E",
+              "ids": [
+                99
+              ]
+            }
+          ],
+          "MB7d": [
+            {
+              "type": "T",
+              "ids": [
+                100
+              ]
+            }
+          ],
+          "MB8": [
+            {
+              "type": "C",
+              "ids": [
+                89,
+                131
+              ]
+            }
+          ],
+          "MB9": [
+            {
+              "type": "T",
+              "ids": [
+                101
+              ]
+            }
+          ],
+          "MB10": [
+            {
+              "type": "T",
+              "ids": [
+                102
+              ]
+            }
+          ],
+          "MB11": [
+            {
+              "type": "T",
+              "ids": [
+                127
+              ]
+            }
+          ]
+        },
+        "slug": "this-project-towards-superintelligence-alignment-tsa"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": 1,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB1",
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Embedded Agency: no clean agent–environment cut; subsystem alignment bucket",
+      "sources": [
+        {
+          "label": "Demski & Garrabrant 2019",
+          "url": "https://arxiv.org/abs/1902.09469"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Agent Foundations technical agenda (embedded agency, delegation, decision theory)",
+      "sources": [
+        {
+          "label": "Soares & Fallenstein 2015",
+          "url": "https://intelligence.org/files/TechnicalAgenda.pdf"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "C",
+      "evidence": "Value learning under training ambiguity and ontology change",
+      "sources": [
+        {
+          "label": "Soares 2015",
+          "url": "https://intelligence.org/files/ValueLearningProblem.pdf"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB4",
+        "MB4a"
+      ],
+      "type": "T",
+      "evidence": "Corrigibility: no known utility function stably corrigible",
+      "sources": [
+        {
+          "label": "Soares & Fallenstein 2015",
+          "url": "https://intelligence.org/files/Corrigibility.pdf"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB4",
+        "MB4a"
+      ],
+      "type": "T",
+      "evidence": "Safely interruptible agents (formal interruptibility)",
+      "sources": [
+        {
+          "label": "Orseau & Armstrong 2016",
+          "url": "https://mlanthology.org/uai/2016/orseau2016uai-safely/"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB5",
+        "MB10"
+      ],
+      "type": "C",
+      "evidence": "Tiling agents for self-modifying AI (successor trust)",
+      "sources": [
+        {
+          "label": "Yudkowsky 2013",
+          "url": "https://www.lesswrong.com/lw/hmt/tiling_agents_for_selfmodifying_ai_opfai_2"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB5",
+        "MB10"
+      ],
+      "type": "T",
+      "evidence": "Vingean reflection (reasoning about smarter successors)",
+      "sources": [
+        {
+          "label": "Fallenstein 2015",
+          "url": "https://intelligence.org/files/VingeanReflection.pdf"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB5"
+      ],
+      "type": "C",
+      "evidence": "Ontological crises in agents' value systems",
+      "sources": [
+        {
+          "label": "De Blanc 2011",
+          "url": "https://arxiv.org/abs/1105.3821"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Predict-O-Matic: predictors becoming consequentialists",
+      "sources": [
+        {
+          "label": "Demski 2019",
+          "url": "https://www.lesswrong.com/posts/SwcyMEgLyd4C3Dern/the-parable-of-predict-o-matic"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "agenda": "MIRI",
+      "bridges": [
+        "MB7d"
+      ],
+      "type": "T",
+      "evidence": "Functional Decision Theory",
+      "sources": [
+        {
+          "label": "Yudkowsky & Soares 2017",
+          "url": "https://arxiv.org/abs/1710.05060"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "agenda": "Redwood",
+      "bridges": [
+        "MB4",
+        "MB4a",
+        "MB7",
+        "MB10"
+      ],
+      "type": "C",
+      "evidence": "AI Control: safety under intentional subversion / capability-gap assumption",
+      "sources": [
+        {
+          "label": "Shlegeris et al. 2023",
+          "url": "https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "agenda": "Redwood",
+      "bridges": [
+        "MB7",
+        "MB10"
+      ],
+      "type": "E",
+      "evidence": "Alignment faking in LLMs under training/eval pressure",
+      "sources": [
+        {
+          "label": "Greenblatt et al. 2024",
+          "url": "https://arxiv.org/abs/2412.14093"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "agenda": "CHAI / FAR.AI",
+      "bridges": [
+        "MB2",
+        "MB3"
+      ],
+      "type": "T",
+      "evidence": "Cooperative inverse reinforcement learning (assistance games)",
+      "sources": [
+        {
+          "label": "Hadfield-Menell et al. 2016",
+          "url": "https://papers.nips.cc/paper/6420-cooperative-inverse-reinforcement-learning"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "agenda": "CHAI / FAR.AI",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "C",
+      "evidence": "Human Compatible control problem framing",
+      "sources": [
+        {
+          "label": "Russell 2019",
+          "url": "http://griffithlawjournal.org/index.php/gjlhd/article/download/1043/993"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "agenda": "CHAI / FAR.AI",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "T",
+      "evidence": "Attainable utility preservation (conservative agency)",
+      "sources": [
+        {
+          "label": "Turner et al. 2019",
+          "url": "https://arxiv.org/abs/1902.09725"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "agenda": "CHAI / FAR.AI",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "T",
+      "evidence": "Off-switch game (shutdown incentive structure)",
+      "sources": [
+        {
+          "label": "Hadfield-Menell et al. 2017",
+          "url": "https://www.ijcai.org/proceedings/2017/32"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "agenda": "Christiano / ARC",
+      "bridges": [
+        "MB2",
+        "MB3",
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "ELK: human simulator vs direct translator",
+      "sources": [
+        {
+          "label": "Christiano, Cotra & Xu 2021",
+          "url": "https://www.alignmentforum.org/posts/qHCDysDnvhteW7kRd/arc-s-first-technical-report-eliciting-latent-knowledge"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "agenda": "Christiano",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "C",
+      "evidence": "Corrigibility as drift management (informal dynamical framing)",
+      "sources": [
+        {
+          "label": "Christiano 2018",
+          "url": "https://www.lesswrong.com/posts/fkLYhTQteAu5SinAc/corrigibility"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "agenda": "Christiano",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "C",
+      "evidence": "What failure looks like (gradual disempowerment narrative)",
+      "sources": [
+        {
+          "label": "Christiano 2019",
+          "url": "https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "agenda": "Christiano",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "T",
+      "evidence": "AI safety via debate",
+      "sources": [
+        {
+          "label": "Irving, Christiano & Amodei 2018",
+          "url": "https://arxiv.org/abs/1805.00899"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "agenda": "Christiano",
+      "bridges": [
+        "MB7",
+        "MB10"
+      ],
+      "type": "C",
+      "evidence": "Amplification / scalable oversight under optimization",
+      "sources": [
+        {
+          "label": "Christiano et al. 2018",
+          "url": "https://arxiv.org/abs/1810.08575"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "agenda": "Christiano",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Scalable agent oversight problem statement",
+      "sources": [
+        {
+          "label": "Leike et al. 2018",
+          "url": "https://arxiv.org/abs/1811.07871"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "agenda": "GSAI",
+      "bridges": [
+        "MB9"
+      ],
+      "type": "T",
+      "evidence": "Guaranteed Safe AI framework (spec + world model coverage wall)",
+      "sources": [
+        {
+          "label": "Dalrymple et al. 2024",
+          "url": "https://arxiv.org/abs/2405.06624"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB2",
+        "MB3",
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Constitutional AI: principles-as-feedback / RLAIF stack",
+      "sources": [
+        {
+          "label": "Bai et al. 2022",
+          "url": "https://arxiv.org/abs/2212.08073"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "E",
+      "evidence": "RLHF ceiling and misspecification under optimization",
+      "sources": [
+        {
+          "label": "Casper et al. 2023",
+          "url": "https://arxiv.org/abs/2307.15217"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "C",
+      "evidence": "Concrete problems in AI safety (pointing / scalable oversight lineage)",
+      "sources": [
+        {
+          "label": "Amodei et al. 2016",
+          "url": "https://arxiv.org/abs/1606.06565"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB6",
+        "MB11"
+      ],
+      "type": "P",
+      "evidence": "Responsible Scaling Policy (capability thresholds, deployment gates)",
+      "sources": [
+        {
+          "label": "Anthropic RSP 2024",
+          "url": "https://www.anthropic.com/news/anthropics-responsible-scaling-policy"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Conditioning predictors / anthropic capture failure mode",
+      "sources": [
+        {
+          "label": "Hubinger 2023",
+          "url": "https://arxiv.org/abs/2302.00805"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Internal agent monitoring (eval target for external red teams)",
+      "sources": [
+        {
+          "label": "METR red-team of Anthropic monitoring 2026",
+          "url": "https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Scheming-in-the-wild OSINT incident corpus (field-adjacent)",
+      "sources": [
+        {
+          "label": "CLTR 2026 report",
+          "url": "https://www.longtermresilience.org/reports/v5-scheming-in-the-wild_-detecting-real-world-ai-scheming-incidents-through-open-source-intelligence-pdf/"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "agenda": "METR",
+      "bridges": [
+        "MB6",
+        "MB7",
+        "MB10"
+      ],
+      "type": "E",
+      "evidence": "Frontier Risk Report: entity-based internal-agent assessment",
+      "sources": [
+        {
+          "label": "METR 2026",
+          "url": "https://metr.org/blog/2026-05-19-frontier-risk-report/"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "agenda": "METR",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Red-teaming frontier agent monitoring under deployment pressure",
+      "sources": [
+        {
+          "label": "Rein 2026",
+          "url": "https://metr.org/blog/2026-03-25-red-teaming-anthropic-agent-monitoring/"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "agenda": "Resolution",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "O",
+      "evidence": "Automation-first alignment research strategy",
+      "sources": [
+        {
+          "label": "Resolution launch essay",
+          "url": "https://resolution.org/launch"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "agenda": "Resolution",
+      "bridges": [
+        "MB9"
+      ],
+      "type": "T",
+      "evidence": "Singular learning / formal pipeline bet (Timaeus lineage)",
+      "sources": [
+        {
+          "label": "Murfet 2025 SLT position",
+          "url": "https://timaeus.co/research/2025-02-08-position/"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "agenda": "Neglected approaches",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "O",
+      "evidence": "Neglected-approaches portfolio strategy (AE Studio alignment agenda)",
+      "sources": [
+        {
+          "label": "AE Studio alignment agenda",
+          "url": "https://ae.studio/essays/ae-studios-alignment-agenda-the-neglected-approaches-approach"
+        },
+        {
+          "label": "LessWrong mirror",
+          "url": "https://www.lesswrong.com/posts/qAdDzcBuDBLexb4fC/the-neglected-approaches-approach-ae-studio-s-alignment"
+        },
+        {
+          "label": "AE Studio Research",
+          "url": "https://ae.studio/alignment"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "agenda": "Neglected approaches",
+      "bridges": [
+        "MB2",
+        "MB4"
+      ],
+      "type": "T",
+      "evidence": "Human-power objective as outer target (Heitzig line)",
+      "sources": [
+        {
+          "label": "Heitzig & Potham 2025",
+          "url": "https://arxiv.org/abs/2508.00159"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "agenda": "Neglected approaches",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "C",
+      "evidence": "AI Safety Interventions field index (cross-cuts agendas)",
+      "sources": [
+        {
+          "label": "Zarncke 2025",
+          "url": "https://www.lesswrong.com/posts/6Sf9KMMDMFSauDe85/ai-safety-interventions"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "agenda": "Orthogonal",
+      "bridges": [
+        "MB2",
+        "MB4"
+      ],
+      "type": "T",
+      "evidence": "QACI formal outer-alignment goal line",
+      "sources": [
+        {
+          "label": "Leake & Persson 2023",
+          "url": "https://www.lesswrong.com/posts/MR5wJpE27ymE7M7iv/formalizing-the-qaci-alignment-formal-goal"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "agenda": "Wentworth",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Boundaries as directed Markov blankets (utility-theoretic cut)",
+      "sources": [
+        {
+          "label": "Wentworth, Boundaries I",
+          "url": "https://www.lesswrong.com/posts/8oMF8Lv5jiGaQSFvo/boundaries-part-1-a-key-missing-concept-from-utility-theory"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "agenda": "Wentworth",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Agent boundaries aren't Markov blankets (critique of naive blanket cuts)",
+      "sources": [
+        {
+          "label": "Wentworth 2022",
+          "url": "https://www.alignmentforum.org/posts/vmfNaKbZ6urMdQrv2/agent-boundaries-aren-t-markov-blankets-unless-they-re-non"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "agenda": "Wentworth",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Selection theorems program (agent type signatures under selection)",
+      "sources": [
+        {
+          "label": "Wentworth 2021",
+          "url": "https://www.lesswrong.com/posts/G2Lne2Fi7Qra5Lbuf/selection-theorems-a-program-for-understanding-agents"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "agenda": "Wentworth",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "C",
+      "evidence": "Pointers problem: values as function of humans",
+      "sources": [
+        {
+          "label": "Wentworth 2020",
+          "url": "https://www.lesswrong.com/posts/gQY6LrTWJNkTv8YJR/the-pointers-problem-human-values-are-a-function-of-humans"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "agenda": "Wentworth",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "T",
+      "evidence": "Natural latents (formal shared-abstraction program)",
+      "sources": [
+        {
+          "label": "Wentworth & Lorell 2023",
+          "url": "https://www.lesswrong.com/posts/dWQWzGCSFj6GTZHz7/natural-latents-the-math"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "agenda": "Wentworth",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "C",
+      "evidence": "Shard theory (contextual value shards in trained models)",
+      "sources": [
+        {
+          "label": "Turner & Udell 2022",
+          "url": "https://www.lesswrong.com/posts/iCfdcxiyr2Kj8m8mT/shard-theory-overview"
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "agenda": "Wentworth",
+      "bridges": [
+        "MB5"
+      ],
+      "type": "C",
+      "evidence": "Ontology identification / diamond maximizer problem framing",
+      "sources": [
+        {
+          "label": "Agent-like structure posts",
+          "url": "https://www.lesswrong.com/posts/moi3cFY2wpeKGu9TT/clarifying-the-agent-like-structure-problem"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "P",
+      "evidence": "Named-identity bet: Verify+Lens on certified occurrence vs composite controller",
+      "sources": [
+        {
+          "label": "Accord (public text)",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        },
+        {
+          "label": "Architecture",
+          "url": "https://ciris.ai/architecture/"
+        },
+        {
+          "label": "CIRISVerify",
+          "url": "https://github.com/CIRISAI/CIRISVerify"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "D",
+      "evidence": "CIRISAgent / Verify / Lens / Proxy shipped stack",
+      "sources": [
+        {
+          "label": "CIRIS architecture",
+          "url": "https://ciris.ai/architecture/"
+        },
+        {
+          "label": "CIRISAgent",
+          "url": "https://github.com/CIRISAI/CIRISAgent"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "D",
+      "evidence": "Deferral / Wise Authority / emergency shutdown procedures",
+      "sources": [
+        {
+          "label": "Accord (public text)",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        },
+        {
+          "label": "CIRISAgent overview",
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/docs/OVERVIEW.md"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "D",
+      "evidence": "50/50 smoke battery (pin parity, prohibitions, conscience, proxy, verify types)",
+      "sources": [
+        {
+          "label": "CIRISAgent safety tests",
+          "url": "https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety"
+        },
+        {
+          "label": "CIRISNodeCore safety CI loop",
+          "url": "https://github.com/CIRISAI/CIRISNodeCore/blob/main/FSD/SAFETY_BATTERY_CI_LOOP.md"
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Named-identity bet: holds for federation admission, fails as alignment unit",
+      "sources": [
+        {
+          "label": "Accord Book IX",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        },
+        {
+          "label": "CIRISVerify federation identity",
+          "url": "https://github.com/CIRISAI/CIRISVerify/blob/main/docs/FEDERATION_IDENTITY.md"
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB1",
+        "MB9"
+      ],
+      "type": "C",
+      "evidence": "NEW-04 / L-01: no poly-time complete compositional-deception detector",
+      "sources": [
+        {
+          "label": "Accord Book IX §9.4",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "D",
+      "evidence": "CIRISVerify: hardware-rooted identity, transparency log, capability licensing",
+      "sources": [
+        {
+          "label": "CIRISVerify README",
+          "url": "https://github.com/CIRISAI/CIRISVerify"
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Key task: Verify+Lens green / WA-blind composite counterexample charter",
+      "sources": [
+        {
+          "label": "Accord compositional limits (NEW-04)",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        },
+        {
+          "label": "CIRISLens README",
+          "url": "https://github.com/CIRISAI/CIRISLens"
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "C",
+      "evidence": "MB4 challenge surface + probe battery (causal bite, capture theater, shutdown scope)",
+      "sources": [
+        {
+          "label": "CIRISAgent integrity compliance",
+          "url": "https://github.com/CIRISAI/CIRISAgent/blob/main/compliance/D02_integrity.md"
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB1",
+        "MB4"
+      ],
+      "type": "P",
+      "evidence": "Sub-ASI validated scope; ASI protocol aspirational until RC gates (CRE, red-team)",
+      "sources": [
+        {
+          "label": "Accord scope / disclaimers",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "D",
+      "evidence": "Prohibition system + WiseBus tier gating (24 unit tests)",
+      "sources": [
+        {
+          "label": "CIRISAgent safety tests",
+          "url": "https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety"
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "D",
+      "evidence": "H3ERE conscience execution helpers (14 unit tests)",
+      "sources": [
+        {
+          "label": "CIRISAgent safety tests",
+          "url": "https://github.com/CIRISAI/CIRISAgent/tree/main/tests/safety"
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "D",
+      "evidence": "CIRISProxy fail-closed billing on service/network errors",
+      "sources": [
+        {
+          "label": "CIRISProxy",
+          "url": "https://github.com/CIRISAI/CIRISProxy"
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "P",
+      "evidence": "Federation Orthogonality gate + CEG attestations (partnership admission)",
+      "sources": [
+        {
+          "label": "Accord Book IX §8.1+",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        },
+        {
+          "label": "Architecture",
+          "url": "https://ciris.ai/architecture/"
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "C",
+      "evidence": "Partial selection story inside federation only (not market-wide MB6)",
+      "sources": [
+        {
+          "label": "Architecture / federation",
+          "url": "https://ciris.ai/architecture/"
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "D",
+      "evidence": "CIRISLens Coherence Ratchet + Capacity Score (external witness pipeline)",
+      "sources": [
+        {
+          "label": "CIRISLens README",
+          "url": "https://github.com/CIRISAI/CIRISLens"
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "L-02 detector-cooperation bet; Lens = triage not verdict",
+      "sources": [
+        {
+          "label": "CIRISLens README",
+          "url": "https://github.com/CIRISAI/CIRISLens"
+        },
+        {
+          "label": "CIRIS architecture (Lens triage)",
+          "url": "https://ciris.ai/architecture/"
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Verify: authentic ≠ ethical; measurements not verdicts",
+      "sources": [
+        {
+          "label": "CIRISVerify README",
+          "url": "https://github.com/CIRISAI/CIRISVerify"
+        }
+      ]
+    },
+    {
+      "id": 117,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB9"
+      ],
+      "type": "C",
+      "evidence": "Book IX explicit non-claim: no perfect safety under adversarial superintelligence",
+      "sources": [
+        {
+          "label": "Accord Book IX",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "E",
+      "evidence": "Gradual disempowerment: systemic risk from incremental AI development",
+      "sources": [
+        {
+          "label": "Kulveit et al. 2025",
+          "url": "https://arxiv.org/abs/2501.16946"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB6",
+        "MB7"
+      ],
+      "type": "P",
+      "evidence": "Compute governance and frontier-policy research pipeline",
+      "sources": [
+        {
+          "label": "GovAI compute governance report",
+          "url": "https://www.governance.ai/research-paper/computing-power-and-the-governance-of-artificial-intelligence"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "E",
+      "evidence": "International control of powerful technology (governance analogies)",
+      "sources": [
+        {
+          "label": "GovAI Baruch-plan paper",
+          "url": "https://www.governance.ai/research-paper/international-control-of-powerful-technology-lessons-from-the-baruch-plan-for-nuclear-weapons"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB9"
+      ],
+      "type": "C",
+      "evidence": "Institutional translation of safety specs (policy-facing coverage)",
+      "sources": [
+        {
+          "label": "GovAI publications",
+          "url": "https://www.governance.ai/research"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "P",
+      "evidence": "UK AISI frontier model testing mandate",
+      "sources": [
+        {
+          "label": "UK AISI eval lessons (2024)",
+          "url": "https://www.aisi.gov.uk/blog/early-lessons-from-evaluating-frontier-ai-systems"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB6",
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Cheating behaviour in frontier model evaluations",
+      "sources": [
+        {
+          "label": "UK AISI 2026",
+          "url": "https://www.aisi.gov.uk/blog/cheating-behaviour-in-frontier-model-evaluations"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB6",
+        "MB9",
+        "MB11"
+      ],
+      "type": "P",
+      "evidence": "Standards and pre-deployment testing (UK + US CAISI cluster)",
+      "sources": [
+        {
+          "label": "US NIST AI",
+          "url": "https://www.nist.gov/artificial-intelligence"
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "P",
+      "evidence": "Government-led frontier eval binding on deployment",
+      "sources": [
+        {
+          "label": "UK AISI Frontier AI Trends Report",
+          "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "agenda": "Pause cluster",
+      "bridges": [
+        "MB4",
+        "MB8"
+      ],
+      "type": "P",
+      "evidence": "Off-switch / pause priority in advocacy platforms",
+      "sources": [
+        {
+          "label": "PauseAI policy proposal",
+          "url": "https://pauseai.info/proposal"
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "agenda": "Pause cluster",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "P",
+      "evidence": "Moratorium and verified-slowdown campaigns",
+      "sources": [
+        {
+          "label": "FLI pause letter",
+          "url": "https://futureoflife.org/open-letter/pause-giant-ai-experiments/"
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "agenda": "CLR",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "C",
+      "evidence": "ARCHES: multipolar and cooperation failure taxonomy",
+      "sources": [
+        {
+          "label": "Critch & Krueger 2020",
+          "url": "https://arxiv.org/abs/2006.04948"
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "agenda": "CLR",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "C",
+      "evidence": "Multipolar failure modes under competition",
+      "sources": [
+        {
+          "label": "Christiano 2019 (multipolar post)",
+          "url": "https://www.lesswrong.com/posts/LpM3EAakwYdS6aRKf/what-multipolar-failure-looks-like-and-robust-agent-agnostic"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "agenda": "CLR",
+      "bridges": [
+        "MB7d"
+      ],
+      "type": "C",
+      "evidence": "Evidential cooperation / acausal trade line",
+      "sources": [
+        {
+          "label": "FDT 2017",
+          "url": "https://arxiv.org/abs/1710.05060"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "AI deception survey (field synthesis)",
+      "sources": [
+        {
+          "label": "Park et al. 2024",
+          "url": "https://arxiv.org/abs/2308.14752"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "agenda": "AI Futures",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "O",
+      "evidence": "AI 2027 scenario (schedule shapes for governance stress tests only)",
+      "sources": [
+        {
+          "label": "AI 2027 scenario summary",
+          "url": "https://ai-2027.com/summary"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "agenda": "CHAI / FAR.AI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Scalable oversight via partitioned human supervision (FAR.Lab)",
+      "sources": [
+        {
+          "label": "Yin et al. 2025",
+          "url": "https://arxiv.org/abs/2510.22500"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "agenda": "Conjecture",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Cognitive emulation / controllable LLM framing",
+      "sources": [
+        {
+          "label": "Conjecture CoEm proposal",
+          "url": "https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "agenda": "TSA",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "T",
+      "evidence": "MB1 typed bridge + ε-boundary discovery (Lean + ch07)",
+      "sources": [
+        {
+          "label": "Ch. 7 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch07/"
+        },
+        {
+          "label": "Lean spine",
+          "url": "https://towards-alignment.com/lean/"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "agenda": "TSA",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "S",
+      "evidence": "Embedded / lab boundary-discovery testbeds (interventional handles)",
+      "sources": [
+        {
+          "label": "Embedded simulation findings",
+          "url": "https://towards-alignment.com/experiments/findings/embedded-simulation/"
+        },
+        {
+          "label": "Lab simulation findings",
+          "url": "https://towards-alignment.com/experiments/findings/lab-simulation/"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "agenda": "TSA",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "S",
+      "evidence": "UAD / agency-detect (unsupervised boundary discovery from dynamics)",
+      "sources": [
+        {
+          "label": "Unsupervised Agent Discovery",
+          "url": "https://www.lesswrong.com/posts/pXYosC3eoS9GrDRAw/unsupervised-agent-discovery"
+        },
+        {
+          "label": "agency-detect repo",
+          "url": "https://github.com/GunnarZarncke/agency-detect"
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "agenda": "TSA",
+      "bridges": [
+        "MB2",
+        "MB3"
+      ],
+      "type": "T",
+      "evidence": "Bundle geometry + bearer maps (ch16, ch18)",
+      "sources": [
+        {
+          "label": "Ch. 16 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch16/"
+        },
+        {
+          "label": "Ch. 18 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch18/"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "agenda": "TSA",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "T",
+      "evidence": "Lean CIRL / IRL non-identifiability projections",
+      "sources": [
+        {
+          "label": "Lean spine",
+          "url": "https://towards-alignment.com/lean/"
+        },
+        {
+          "label": "Field modules (GitHub)",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/tree/main/formal/AlignmentProofSpine/Field"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "agenda": "MAI + CIP",
+      "bridges": [
+        "MB2",
+        "MB6"
+      ],
+      "type": "C",
+      "evidence": "Full-Stack Alignment (thick values, institutional amplification)",
+      "sources": [
+        {
+          "label": "Edelman et al. 2025",
+          "url": "https://arxiv.org/abs/2512.03399"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "agenda": "TSA",
+      "bridges": [
+        "MB3"
+      ],
+      "type": "T",
+      "evidence": "Bearer-map transport under optimization (MB3 bridge)",
+      "sources": [
+        {
+          "label": "App B bridge crosswalk (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/appb/"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "agenda": "TSA",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "T",
+      "evidence": "Correction-channel integrity invariant (Lean + ch26)",
+      "sources": [
+        {
+          "label": "Ch. 26 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch26/"
+        },
+        {
+          "label": "Lean spine",
+          "url": "https://towards-alignment.com/lean/"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "agenda": "TSA",
+      "bridges": [
+        "MB4"
+      ],
+      "type": "S",
+      "evidence": "Toy/lab correction-channel and capture scenarios",
+      "sources": [
+        {
+          "label": "Toy simulation findings",
+          "url": "https://towards-alignment.com/experiments/findings/toy-simulation/"
+        },
+        {
+          "label": "Goal-agent simulation findings",
+          "url": "https://towards-alignment.com/experiments/findings/goal-agent-simulation/"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "agenda": "TSA",
+      "bridges": [
+        "MB4",
+        "MB8"
+      ],
+      "type": "C",
+      "evidence": "CEV-process convergence as secondary route (not assumed)",
+      "sources": [
+        {
+          "label": "App B bridge crosswalk (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/appb/"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "agenda": "TSA",
+      "bridges": [
+        "MB5"
+      ],
+      "type": "T",
+      "evidence": "Successor closure over seven conserved properties",
+      "sources": [
+        {
+          "label": "Ch. 31 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch31/"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "agenda": "TSA",
+      "bridges": [
+        "MB5"
+      ],
+      "type": "T",
+      "evidence": "Ontology-shift transport (A-007, A-010)",
+      "sources": [
+        {
+          "label": "App B bridge crosswalk (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/appb/"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "agenda": "TSA",
+      "bridges": [
+        "MB5"
+      ],
+      "type": "S",
+      "evidence": "Grow/split/merge successor stress tests",
+      "sources": [
+        {
+          "label": "Graded-lab simulation findings",
+          "url": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "agenda": "TSA",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "T",
+      "evidence": "Selection environment + deployment leverage (ch34)",
+      "sources": [
+        {
+          "label": "Ch. 34 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch34/"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "agenda": "TSA",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "S",
+      "evidence": "Selection / basin scenarios in graded-lab line",
+      "sources": [
+        {
+          "label": "Graded-lab simulation findings",
+          "url": "https://towards-alignment.com/experiments/findings/graded-lab-simulation/"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "agenda": "TSA",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "P",
+      "evidence": "Institutional translation appendix (App C)",
+      "sources": [
+        {
+          "label": "App C (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/appc/"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "agenda": "TSA",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "T",
+      "evidence": "Hidden productive BIQ bound + adversarial verifiability (A-009, ch43)",
+      "sources": [
+        {
+          "label": "Ch. 43 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch43/"
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "agenda": "TSA",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "T",
+      "evidence": "Lean ELK/debate separations (readout ⇏ correction)",
+      "sources": [
+        {
+          "label": "Lean spine",
+          "url": "https://towards-alignment.com/lean/"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "agenda": "TSA",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "S",
+      "evidence": "Strategic opacity / hidden-capability lab scenarios",
+      "sources": [
+        {
+          "label": "Lab simulation findings",
+          "url": "https://towards-alignment.com/experiments/findings/lab-simulation/"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "agenda": "TSA",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Hubinger deceptive-alignment taxonomy as field wall (ch44 cite)",
+      "sources": [
+        {
+          "label": "Hubinger et al. 2019",
+          "url": "https://arxiv.org/abs/1906.01820"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "agenda": "TSA",
+      "bridges": [
+        "MB7d"
+      ],
+      "type": "T",
+      "evidence": "Inferential-coupling detector certificates (ch35)",
+      "sources": [
+        {
+          "label": "Ch. 35 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch35/"
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "agenda": "TSA",
+      "bridges": [
+        "MB9"
+      ],
+      "type": "T",
+      "evidence": "Grounding conservativity vs GSAI completeness (ch dynamical guarantee)",
+      "sources": [
+        {
+          "label": "App B bridge crosswalk (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/appb/"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "agenda": "TSA",
+      "bridges": [
+        "MB10"
+      ],
+      "type": "T",
+      "evidence": "Successor forgeability counterexample + audit-channel bridge",
+      "sources": [
+        {
+          "label": "Lean spine",
+          "url": "https://towards-alignment.com/lean/"
+        },
+        {
+          "label": "Forgeability.lean (GitHub)",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Forgeability.lean"
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB1",
+        "MB9"
+      ],
+      "type": "T",
+      "evidence": "Infra-Bayesianism: imprecise probabilities for nonrealizability / model misspec",
+      "sources": [
+        {
+          "label": "LessWrong tag: infra-Bayesianism",
+          "url": "https://www.lesswrong.com/tag/infra-bayesianism"
+        }
+      ]
+    },
+    {
+      "id": 119,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB2"
+      ],
+      "type": "T",
+      "evidence": "Learning-theoretic agenda for AI alignment (regret-style guarantees)",
+      "sources": [
+        {
+          "label": "Kosoy, LTA post",
+          "url": "https://www.alignmentforum.org/posts/vvEebH5jEvxnJEvBC/the-learning-theoretic-agenda-for-ai-alignment"
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Daemons / inner optimizers in learning-theoretic alignment framing",
+      "sources": [
+        {
+          "label": "Kosoy user page",
+          "url": "https://www.alignmentforum.org/users/Vanessa+Kosoy"
+        }
+      ]
+    },
+    {
+      "id": 121,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB5"
+      ],
+      "type": "C",
+      "evidence": "RSI / self-improvement treated in LTA (cousin to tiling/Vingean walls)",
+      "sources": [
+        {
+          "label": "Kosoy user page",
+          "url": "https://www.alignmentforum.org/users/Vanessa+Kosoy"
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB7d"
+      ],
+      "type": "T",
+      "evidence": "Infra-Bayesian decision theory / imprecise-probability agents",
+      "sources": [
+        {
+          "label": "LessWrong tag: infra-Bayesianism",
+          "url": "https://www.lesswrong.com/tag/infra-bayesianism"
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "agenda": "Kosoy / PreDCA",
+      "bridges": [
+        "MB2",
+        "MB3"
+      ],
+      "type": "T",
+      "evidence": "PreDCA: precursor-utility outer-alignment (pointer via causal precursors)",
+      "sources": [
+        {
+          "label": "PreDCA tag",
+          "url": "https://www.alignmentforum.org/tag/predca"
+        }
+      ]
+    },
+    {
+      "id": 124,
+      "agenda": "MIRI / Garrabrant",
+      "bridges": [
+        "MB5",
+        "MB7d"
+      ],
+      "type": "T",
+      "evidence": "Logical induction (logical uncertainty under bounded reasoning)",
+      "sources": [
+        {
+          "label": "Garrabrant et al. 2017",
+          "url": "https://arxiv.org/abs/1609.03543"
+        }
+      ]
+    },
+    {
+      "id": 125,
+      "agenda": "TSA",
+      "bridges": [
+        "MB4a"
+      ],
+      "type": "T",
+      "evidence": "MB4a measured-path legitimacy; capture defeats correction integrity",
+      "sources": [
+        {
+          "label": "Lean spine",
+          "url": "https://towards-alignment.com/lean/"
+        },
+        {
+          "label": "Correction.lean (GitHub)",
+          "url": "https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/formal/AlignmentProofSpine/Correction.lean"
+        }
+      ]
+    },
+    {
+      "id": 126,
+      "agenda": "TSA",
+      "bridges": [
+        "MB8"
+      ],
+      "type": "T",
+      "evidence": "MB8 CEV-process convergence (Lean bridge; secondary route)",
+      "sources": [
+        {
+          "label": "Lean spine",
+          "url": "https://towards-alignment.com/lean/"
+        }
+      ]
+    },
+    {
+      "id": 127,
+      "agenda": "TSA",
+      "bridges": [
+        "MB11"
+      ],
+      "type": "T",
+      "evidence": "MB11 safety-case adequacy: certified case + tolerance → `Safe`",
+      "sources": [
+        {
+          "label": "Ch. 42 (companion)",
+          "url": "https://towards-alignment.com/cards/chapters/ch42/"
+        },
+        {
+          "label": "Lean spine",
+          "url": "https://towards-alignment.com/lean/"
+        }
+      ]
+    },
+    {
+      "id": 128,
+      "agenda": "GSAI",
+      "bridges": [
+        "MB11"
+      ],
+      "type": "T",
+      "evidence": "Constructivist safety case / formal deployment guarantee program",
+      "sources": [
+        {
+          "label": "Dalrymple et al. 2024",
+          "url": "https://arxiv.org/abs/2405.06624"
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "agenda": "Resolution",
+      "bridges": [
+        "MB11"
+      ],
+      "type": "O",
+      "evidence": "Automated alignment risks under fuzzy research tasks",
+      "sources": [
+        {
+          "label": "Irving et al. 2026",
+          "url": "https://arxiv.org/abs/2605.06390"
+        }
+      ]
+    },
+    {
+      "id": 130,
+      "agenda": "CIRIS",
+      "bridges": [
+        "MB11"
+      ],
+      "type": "C",
+      "evidence": "Sub-ASI validated scope vs aspirational ASI protocol (honest safety-case disclaimers)",
+      "sources": [
+        {
+          "label": "Accord scope / disclaimers",
+          "url": "https://ciris.ai/ciris_accord.txt"
+        }
+      ]
+    },
+    {
+      "id": 131,
+      "agenda": "MIRI / Yudkowsky",
+      "bridges": [
+        "MB8"
+      ],
+      "type": "C",
+      "evidence": "Coherent extrapolated volition (field source for MB8 cousin)",
+      "sources": [
+        {
+          "label": "Yudkowsky 2004 CEV",
+          "url": "https://intelligence.org/files/CEV.pdf"
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB1",
+        "MB9"
+      ],
+      "type": "C",
+      "evidence": "Model-class misspec / grain-of-truth (ambient MB1/MB9; Lean `Nonrealizability.lean`)",
+      "sources": [
+        {
+          "label": "Infra-Bayesianism sequence",
+          "url": "https://www.lesswrong.com/tag/infra-bayesianism"
+        },
+        {
+          "label": "field-claim plan",
+          "url": "../../drafts/field-claim-formalization-and-bridge-review-plan.md"
+        }
+      ]
+    },
+    {
+      "id": 133,
+      "agenda": "Google DeepMind",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Discovering Agents (causal agent discovery from system dynamics)",
+      "sources": [
+        {
+          "label": "Kenton et al. 2022",
+          "url": "https://arxiv.org/abs/2208.08345"
+        }
+      ]
+    },
+    {
+      "id": 134,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Causally faithful mechanistic interpretability under intervention",
+      "sources": [
+        {
+          "label": "Lange et al. 2023",
+          "url": "https://arxiv.org/abs/2311.17030"
+        },
+        {
+          "label": "Georg Lange (Foresight grantee)",
+          "url": "https://foresight.org/grantees/2026-georg-lange/"
+        }
+      ]
+    },
+    {
+      "id": 135,
+      "agenda": "Anthropic / Goodfire (lab)",
+      "bridges": [
+        "MB11"
+      ],
+      "type": "P",
+      "evidence": "Frontier Model Forum risk taxonomy and capability thresholds",
+      "sources": [
+        {
+          "label": "FMF risk thresholds report",
+          "url": "https://www.frontiermodelforum.org/technical-reports/risk-taxonomy-and-thresholds/"
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Alignment evaluation case study; evaluation-awareness under agentic scaffolds",
+      "sources": [
+        {
+          "label": "UK AISI 2026 alignment eval case study",
+          "url": "https://arxiv.org/abs/2604.00788"
+        }
+      ]
+    },
+    {
+      "id": 137,
+      "agenda": "Safeguarded AI",
+      "bridges": [
+        "MB9",
+        "MB11"
+      ],
+      "type": "T",
+      "evidence": "ARIA Safeguarded AI programme (world models, specs, proof certificates)",
+      "sources": [
+        {
+          "label": "ARIA Safeguarded AI",
+          "url": "https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai"
+        }
+      ]
+    },
+    {
+      "id": 139,
+      "agenda": "Safeguarded AI",
+      "bridges": [
+        "MB1",
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Multi-agent architecture security and collective-agency topology",
+      "sources": [
+        {
+          "label": "Hagag et al. 2026",
+          "url": "https://arxiv.org/abs/2604.23459"
+        }
+      ]
+    },
+    {
+      "id": 140,
+      "agenda": "Safeguarded AI",
+      "bridges": [
+        "MB4a",
+        "MB11"
+      ],
+      "type": "P",
+      "evidence": "AARM open runtime for checking and recording agent actions",
+      "sources": [
+        {
+          "label": "AARM specification",
+          "url": "https://heron.ing/aarm"
+        }
+      ]
+    },
+    {
+      "id": 141,
+      "agenda": "Safeguarded AI",
+      "bridges": [
+        "MB1",
+        "MB9"
+      ],
+      "type": "T",
+      "evidence": "Containment Verification (action boundary with model as oracle)",
+      "sources": [
+        {
+          "label": "Moon & Varshney 2026",
+          "url": "https://arxiv.org/abs/2605.09045"
+        }
+      ]
+    },
+    {
+      "id": 142,
+      "agenda": "Safeguarded AI",
+      "bridges": [
+        "MB7",
+        "MB11"
+      ],
+      "type": "T",
+      "evidence": "Zero-knowledge attestation for AI safety verification",
+      "sources": [
+        {
+          "label": "Berrang ZK AI security",
+          "url": "https://pascal-berrang.de/projects/zk_ai_security/"
+        }
+      ]
+    },
+    {
+      "id": 143,
+      "agenda": "MAI + CIP",
+      "bridges": [
+        "MB4a",
+        "MB8"
+      ],
+      "type": "P",
+      "evidence": "Alignment assemblies and collective constitutional AI",
+      "sources": [
+        {
+          "label": "CIP Alignment Assemblies",
+          "url": "https://www.cip.org/alignmentassemblies"
+        }
+      ]
+    },
+    {
+      "id": 144,
+      "agenda": "Neglected approaches",
+      "bridges": [
+        "MB2",
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Brain-like AGI safety (social cognition / homeostatic alignment hypotheses)",
+      "sources": [
+        {
+          "label": "Byrnes brain-like AGI sequence",
+          "url": "https://www.lesswrong.com/posts/4basF9w9jaPZpoC8R/intro-to-brain-like-agi-safety-1-what-s-the-problem-and-why/"
+        }
+      ]
+    },
+    {
+      "id": 145,
+      "agenda": "Neglected approaches",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Self-other overlap (SOO) fine-tuning against deceptive behavior",
+      "sources": [
+        {
+          "label": "Carauleanu et al. 2024",
+          "url": "https://arxiv.org/abs/2412.16325"
+        }
+      ]
+    },
+    {
+      "id": 146,
+      "agenda": "GovAI / UK AISI",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "E",
+      "evidence": "Empirical disempowerment patterns in real-world LLM usage",
+      "sources": [
+        {
+          "label": "Sharma et al. 2026",
+          "url": "https://arxiv.org/abs/2601.19062"
+        }
+      ]
+    },
+    {
+      "id": 147,
+      "agenda": "Orthogonal",
+      "bridges": [
+        "MB1"
+      ],
+      "type": "C",
+      "evidence": "Embedded agency formalism (agent-foundations community lineage)",
+      "sources": [
+        {
+          "label": "Demski & Garrabrant 2019",
+          "url": "https://arxiv.org/abs/1902.09469"
+        }
+      ]
+    },
+    {
+      "id": 148,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB6",
+        "MB7",
+        "MB10",
+        "MB11"
+      ],
+      "type": "E",
+      "evidence": "In-context scheming capabilities in frontier models (pre-deployment eval suite)",
+      "sources": [
+        {
+          "label": "Meinke et al. 2024",
+          "url": "https://arxiv.org/abs/2412.04984"
+        }
+      ]
+    },
+    {
+      "id": 149,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Situational Awareness Dataset (SAD) benchmark for LLMs",
+      "sources": [
+        {
+          "label": "Laine et al. 2024",
+          "url": "https://arxiv.org/abs/2407.04694"
+        }
+      ]
+    },
+    {
+      "id": 150,
+      "agenda": "Apollo / Truthful AI",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "Out-of-context reasoning as foundation for situational awareness",
+      "sources": [
+        {
+          "label": "Berglund et al. 2023",
+          "url": "https://arxiv.org/abs/2309.00667"
+        }
+      ]
+    },
+    {
+      "id": 151,
+      "agenda": "CLR",
+      "bridges": [
+        "MB6"
+      ],
+      "type": "C",
+      "evidence": "Cooperative AI research agenda (CAIF lineage)",
+      "sources": [
+        {
+          "label": "Dafoe et al. 2020",
+          "url": "https://arxiv.org/abs/2012.08630"
+        }
+      ]
+    },
+    {
+      "id": 152,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Sparse autoencoder monosemantic features (circuits interpretability)",
+      "sources": [
+        {
+          "label": "Bricken et al. 2023",
+          "url": "https://transformer-circuits.pub/2023/monosemantic-features"
+        }
+      ]
+    },
+    {
+      "id": 153,
+      "agenda": "Anthropic / Goodfire",
+      "bridges": [
+        "MB7"
+      ],
+      "type": "E",
+      "evidence": "Scaling monosemantic features to Claude 3 Sonnet",
+      "sources": [
+        {
+          "label": "Templeton et al. 2024",
+          "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/"
+        }
+      ]
+    }
+  ],
+  "clustering": [
+    {
+      "listings": "[MIRI](https://intelligence.org/), [AI StopWatch](https://aistop.watch/), Arbital (legacy canon)",
+      "listingLinks": [
+        {
+          "label": "MIRI",
+          "url": "https://intelligence.org/"
+        },
+        {
+          "label": "AI StopWatch",
+          "url": "https://aistop.watch/"
+        }
+      ],
+      "rollsUpTo": "[MIRI](#miri)",
+      "rollsUpLinks": [
+        {
+          "label": "MIRI",
+          "url": "#miri"
+        }
+      ],
+      "rollsUpSlug": "miri"
+    },
+    {
+      "listings": "[Redwood Research](https://www.redwoodresearch.org/)",
+      "listingLinks": [
+        {
+          "label": "Redwood Research",
+          "url": "https://www.redwoodresearch.org/"
+        }
+      ],
+      "rollsUpTo": "[Redwood Research](#redwood-research)",
+      "rollsUpLinks": [
+        {
+          "label": "Redwood Research",
+          "url": "#redwood-research"
+        }
+      ],
+      "rollsUpSlug": "redwood-research"
+    },
+    {
+      "listings": "[CHAI](https://humancompatible.ai/), CHAI Internship, CORAL, Algorithmic Alignment Group (MIT)",
+      "listingLinks": [
+        {
+          "label": "CHAI",
+          "url": "https://humancompatible.ai/"
+        }
+      ],
+      "rollsUpTo": "[CHAI / FAR.AI](#chai-russell) cluster",
+      "rollsUpLinks": [
+        {
+          "label": "CHAI / FAR.AI",
+          "url": "#chai-russell"
+        }
+      ],
+      "rollsUpSlug": "chai-russell"
+    },
+    {
+      "listings": "[ARC](https://www.alignment.org/), [Paul Christiano's Blog](https://www.alignmentforum.org/users/paulfchristiano)",
+      "listingLinks": [
+        {
+          "label": "ARC",
+          "url": "https://www.alignment.org/"
+        },
+        {
+          "label": "Paul Christiano's Blog",
+          "url": "https://www.alignmentforum.org/users/paulfchristiano"
+        }
+      ],
+      "rollsUpTo": "[Christiano lineage](#christiano-lineage)",
+      "rollsUpLinks": [
+        {
+          "label": "Christiano lineage",
+          "url": "#christiano-lineage"
+        }
+      ],
+      "rollsUpSlug": "christiano-lineage"
+    },
+    {
+      "listings": "[LawZero](https://lawzero.org/en), [Beneficial AI Foundation](https://www.beneficialaifoundation.org/)",
+      "listingLinks": [
+        {
+          "label": "LawZero",
+          "url": "https://lawzero.org/en"
+        },
+        {
+          "label": "Beneficial AI Foundation",
+          "url": "https://www.beneficialaifoundation.org/"
+        }
+      ],
+      "rollsUpTo": "[GSAI / davidad](#davidad--guaranteed-safe-ai-gsai) adjacent",
+      "rollsUpLinks": [
+        {
+          "label": "GSAI / davidad",
+          "url": "#davidad--guaranteed-safe-ai-gsai"
+        }
+      ],
+      "rollsUpSlug": "davidad--guaranteed-safe-ai-gsai"
+    },
+    {
+      "listings": "[Anthropic](https://www.anthropic.com/), Import AI (newsletter — Jack Clark)",
+      "listingLinks": [
+        {
+          "label": "Anthropic",
+          "url": "https://www.anthropic.com/"
+        }
+      ],
+      "rollsUpTo": "[Anthropic / Goodfire](#anthropic-lab) — newsletter not agenda",
+      "rollsUpLinks": [
+        {
+          "label": "Anthropic / Goodfire",
+          "url": "#anthropic-lab"
+        }
+      ],
+      "rollsUpSlug": "anthropic-lab"
+    },
+    {
+      "listings": "[Google DeepMind](https://deepmind.google/), DeepMind Safety Research",
+      "listingLinks": [
+        {
+          "label": "Google DeepMind",
+          "url": "https://deepmind.google/"
+        }
+      ],
+      "rollsUpTo": "[Google DeepMind safety](#google-deepmind-safety)",
+      "rollsUpLinks": [
+        {
+          "label": "Google DeepMind safety",
+          "url": "#google-deepmind-safety"
+        }
+      ],
+      "rollsUpSlug": "google-deepmind-safety"
+    },
+    {
+      "listings": "[Apollo Research](https://www.apolloresearch.ai/)",
+      "listingLinks": [
+        {
+          "label": "Apollo Research",
+          "url": "https://www.apolloresearch.ai/"
+        }
+      ],
+      "rollsUpTo": "[Apollo / Truthful AI](#apollo-research)",
+      "rollsUpLinks": [
+        {
+          "label": "Apollo / Truthful AI",
+          "url": "#apollo-research"
+        }
+      ],
+      "rollsUpSlug": "apollo-research"
+    },
+    {
+      "listings": "[METR](https://metr.org/), [Planned Obsolescence (Cotra)](https://plannedobsolescence.substack.com/)",
+      "listingLinks": [
+        {
+          "label": "METR",
+          "url": "https://metr.org/"
+        },
+        {
+          "label": "Planned Obsolescence (Cotra)",
+          "url": "https://plannedobsolescence.substack.com/"
+        }
+      ],
+      "rollsUpTo": "[METR](#metr) / forecasting adjacent",
+      "rollsUpLinks": [
+        {
+          "label": "METR",
+          "url": "#metr"
+        }
+      ],
+      "rollsUpSlug": "metr"
+    },
+    {
+      "listings": "[Resolution](https://resolution.org/), [Timaeus](https://www.timaeus.ai/)",
+      "listingLinks": [
+        {
+          "label": "Resolution",
+          "url": "https://resolution.org/"
+        },
+        {
+          "label": "Timaeus",
+          "url": "https://www.timaeus.ai/"
+        }
+      ],
+      "rollsUpTo": "[Resolution](#resolution)",
+      "rollsUpLinks": [
+        {
+          "label": "Resolution",
+          "url": "#resolution"
+        }
+      ],
+      "rollsUpSlug": "resolution"
+    },
+    {
+      "listings": "[AE Studio](https://ae.studio/), [AE Studio Research](https://ae.studio/alignment)",
+      "listingLinks": [
+        {
+          "label": "AE Studio",
+          "url": "https://ae.studio/"
+        },
+        {
+          "label": "AE Studio Research",
+          "url": "https://ae.studio/alignment"
+        }
+      ],
+      "rollsUpTo": "[Neglected approaches portfolio](#neglected-approaches-portfolio)",
+      "rollsUpLinks": [
+        {
+          "label": "Neglected approaches portfolio",
+          "url": "#neglected-approaches-portfolio"
+        }
+      ],
+      "rollsUpSlug": "neglected-approaches-portfolio"
+    },
+    {
+      "listings": "[Orthogonal](https://orxl.org/)",
+      "listingLinks": [
+        {
+          "label": "Orthogonal",
+          "url": "https://orxl.org/"
+        }
+      ],
+      "rollsUpTo": "[Orthogonal](#orthogonal)",
+      "rollsUpLinks": [
+        {
+          "label": "Orthogonal",
+          "url": "#orthogonal"
+        }
+      ],
+      "rollsUpSlug": "orthogonal"
+    },
+    {
+      "listings": "[John Wentworth](https://www.lesswrong.com/users/johnswentworth)",
+      "listingLinks": [
+        {
+          "label": "John Wentworth",
+          "url": "https://www.lesswrong.com/users/johnswentworth"
+        }
+      ],
+      "rollsUpTo": "[Wentworth / NAH](#wentworth--natural-abstractions)",
+      "rollsUpLinks": [
+        {
+          "label": "Wentworth / NAH",
+          "url": "#wentworth--natural-abstractions"
+        }
+      ],
+      "rollsUpSlug": "wentworth--natural-abstractions"
+    },
+    {
+      "listings": "[Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)",
+      "listingLinks": [
+        {
+          "label": "Vanessa Kosoy",
+          "url": "https://www.alignmentforum.org/users/Vanessa+Kosoy"
+        }
+      ],
+      "rollsUpTo": "[Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta); [Kosoy / PreDCA](#kosoy--predca)",
+      "rollsUpLinks": [
+        {
+          "label": "Kosoy / infra-Bayesianism & LTA",
+          "url": "#kosoy--infra-bayesianism--lta"
+        },
+        {
+          "label": "Kosoy / PreDCA",
+          "url": "#kosoy--predca"
+        }
+      ],
+      "rollsUpSlug": "kosoy--infra-bayesianism--lta"
+    },
+    {
+      "listings": "[GovAI](https://www.governance.ai/), GovAI Fellowship, [Simon Institute](https://www.simoninstitute.ch/), [IAPS](https://www.iaps.ai/), Oxford AIGI",
+      "listingLinks": [
+        {
+          "label": "GovAI",
+          "url": "https://www.governance.ai/"
+        },
+        {
+          "label": "Simon Institute",
+          "url": "https://simoninstitute.ch/"
+        },
+        {
+          "label": "IAPS",
+          "url": "https://www.iaps.ai/"
+        }
+      ],
+      "rollsUpTo": "[GovAI / UK AISI](#govai) cluster",
+      "rollsUpLinks": [
+        {
+          "label": "GovAI / UK AISI",
+          "url": "#govai"
+        }
+      ],
+      "rollsUpSlug": "govai"
+    },
+    {
+      "listings": "[UK AISI](https://www.aisi.gov.uk/), [CAISI](https://www.nist.gov/artificial-intelligence), Beijing-AISI, CnAISDA",
+      "listingLinks": [
+        {
+          "label": "UK AISI",
+          "url": "https://www.aisi.gov.uk/"
+        },
+        {
+          "label": "CAISI",
+          "url": "https://www.nist.gov/artificial-intelligence"
+        }
+      ],
+      "rollsUpTo": "[GovAI / UK AISI](#govai) cluster",
+      "rollsUpLinks": [
+        {
+          "label": "GovAI / UK AISI",
+          "url": "#govai"
+        }
+      ],
+      "rollsUpSlug": "govai"
+    },
+    {
+      "listings": "[PauseAI](https://pauseai.info/), [FLI](https://futureoflife.org/), [ControlAI](https://controlai.org/), [Encode](https://encodeai.org/), Stop AI, GAIM",
+      "listingLinks": [
+        {
+          "label": "PauseAI",
+          "url": "https://pauseai.info/"
+        },
+        {
+          "label": "FLI",
+          "url": "https://futureoflife.org/"
+        },
+        {
+          "label": "ControlAI",
+          "url": "https://controlai.org/"
+        },
+        {
+          "label": "Encode",
+          "url": "https://encodeai.org/"
+        }
+      ],
+      "rollsUpTo": "[Pause / advocacy](#pause--standards-advocacy-cluster) cluster",
+      "rollsUpLinks": [
+        {
+          "label": "Pause / advocacy",
+          "url": "#pause--standards-advocacy-cluster"
+        }
+      ],
+      "rollsUpSlug": "pause--standards-advocacy-cluster"
+    },
+    {
+      "listings": "[CAIS](https://safe.ai/), AISES",
+      "listingLinks": [
+        {
+          "label": "CAIS",
+          "url": "https://safe.ai/"
+        }
+      ],
+      "rollsUpTo": "[CAIS field-building](#cais-field-building)",
+      "rollsUpLinks": [
+        {
+          "label": "CAIS field-building",
+          "url": "#cais-field-building"
+        }
+      ],
+      "rollsUpSlug": "cais-field-building"
+    },
+    {
+      "listings": "[BlueDot Impact](https://bluedot.org/)",
+      "listingLinks": [
+        {
+          "label": "BlueDot Impact",
+          "url": "https://bluedot.org/"
+        }
+      ],
+      "rollsUpTo": "[BlueDot Impact](#bluedot-impact)",
+      "rollsUpLinks": [
+        {
+          "label": "BlueDot Impact",
+          "url": "#bluedot-impact"
+        }
+      ],
+      "rollsUpSlug": "bluedot-impact"
+    },
+    {
+      "listings": "[MATS](https://www.matsprogram.org/), ARENA, LASR Labs, MARS",
+      "listingLinks": [
+        {
+          "label": "MATS",
+          "url": "https://www.matsprogram.org/"
+        }
+      ],
+      "rollsUpTo": "[MATS](#mats) / mentored research programs",
+      "rollsUpLinks": [
+        {
+          "label": "MATS",
+          "url": "#mats"
+        }
+      ],
+      "rollsUpSlug": "mats"
+    },
+    {
+      "listings": "[Apart Research](https://apartresearch.com/)",
+      "listingLinks": [
+        {
+          "label": "Apart Research",
+          "url": "https://apartresearch.com/"
+        }
+      ],
+      "rollsUpTo": "[Apart Research](#apart-research)",
+      "rollsUpLinks": [
+        {
+          "label": "Apart Research",
+          "url": "#apart-research"
+        }
+      ],
+      "rollsUpSlug": "apart-research"
+    },
+    {
+      "listings": "[Kairos](https://kairos-project.org/), [SPAR](https://sparai.org/), [Pathfinder](https://pathfinder.kairos-project.org/), GCP",
+      "listingLinks": [
+        {
+          "label": "Kairos",
+          "url": "https://kairos-project.org/"
+        },
+        {
+          "label": "SPAR",
+          "url": "https://sparai.org/"
+        },
+        {
+          "label": "Pathfinder",
+          "url": "https://pathfinder.kairos-project.org/"
+        }
+      ],
+      "rollsUpTo": "[Kairos](#kairos-field-building)",
+      "rollsUpLinks": [
+        {
+          "label": "Kairos",
+          "url": "#kairos-field-building"
+        }
+      ],
+      "rollsUpSlug": "kairos-field-building"
+    },
+    {
+      "listings": "[Truthful AI](https://truthful.ai/), Cadenza Labs",
+      "listingLinks": [
+        {
+          "label": "Truthful AI",
+          "url": "https://truthful.ai/"
+        }
+      ],
+      "rollsUpTo": "[Apollo / Truthful AI](#apollo-research) / deception evals",
+      "rollsUpLinks": [
+        {
+          "label": "Apollo / Truthful AI",
+          "url": "#apollo-research"
+        }
+      ],
+      "rollsUpSlug": "apollo-research"
+    },
+    {
+      "listings": "[Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/), [Neuronpedia](https://www.neuronpedia.org/)",
+      "listingLinks": [
+        {
+          "label": "Goodfire",
+          "url": "https://www.goodfire.com/"
+        },
+        {
+          "label": "Transluce",
+          "url": "https://transluce.org/"
+        },
+        {
+          "label": "Neuronpedia",
+          "url": "https://www.neuronpedia.org/"
+        }
+      ],
+      "rollsUpTo": "[Anthropic / Goodfire](#anthropic-lab) cluster",
+      "rollsUpLinks": [
+        {
+          "label": "Anthropic / Goodfire",
+          "url": "#anthropic-lab"
+        }
+      ],
+      "rollsUpSlug": "anthropic-lab"
+    },
+    {
+      "listings": "[CLR](https://longtermrisk.org/), Modeling Cooperation, [CAIF](https://www.cooperativeai.com/)",
+      "listingLinks": [
+        {
+          "label": "CLR",
+          "url": "https://longtermrisk.org/"
+        },
+        {
+          "label": "CAIF",
+          "url": "https://www.cooperativeai.com/"
+        }
+      ],
+      "rollsUpTo": "[CLR](#clr-cooperation--conflict)",
+      "rollsUpLinks": [
+        {
+          "label": "CLR",
+          "url": "#clr-cooperation--conflict"
+        }
+      ],
+      "rollsUpSlug": "clr-cooperation--conflict"
+    },
+    {
+      "listings": "[AI Futures Project](https://ai-2027.com/), [Epoch AI](https://epoch.ai/), [AI Impacts](https://aiimpacts.org/), [Metaculus](https://www.metaculus.com/)",
+      "listingLinks": [
+        {
+          "label": "AI Futures Project",
+          "url": "https://ai-2027.com/"
+        },
+        {
+          "label": "Epoch AI",
+          "url": "https://epoch.ai/"
+        },
+        {
+          "label": "AI Impacts",
+          "url": "https://aiimpacts.org/"
+        },
+        {
+          "label": "Metaculus",
+          "url": "https://www.metaculus.com/"
+        }
+      ],
+      "rollsUpTo": "[AI Futures / forecasting](#ai-futures--forecasting-cluster)",
+      "rollsUpLinks": [
+        {
+          "label": "AI Futures / forecasting",
+          "url": "#ai-futures--forecasting-cluster"
+        }
+      ],
+      "rollsUpSlug": "ai-futures--forecasting-cluster"
+    },
+    {
+      "listings": "[FAR.AI](https://www.far.ai/)",
+      "listingLinks": [
+        {
+          "label": "FAR.AI",
+          "url": "https://www.far.ai/"
+        }
+      ],
+      "rollsUpTo": "[CHAI / FAR.AI](#chai-russell)",
+      "rollsUpLinks": [
+        {
+          "label": "CHAI / FAR.AI",
+          "url": "#chai-russell"
+        }
+      ],
+      "rollsUpSlug": "chai-russell"
+    },
+    {
+      "listings": "[Conjecture](https://www.conjecture.dev/), [EleutherAI](https://www.eleuther.ai/)",
+      "listingLinks": [
+        {
+          "label": "Conjecture",
+          "url": "https://www.conjecture.dev/"
+        },
+        {
+          "label": "EleutherAI",
+          "url": "https://www.eleuther.ai/"
+        }
+      ],
+      "rollsUpTo": "[Conjecture / cognitive emulation](#conjecture--cognitive-emulation)",
+      "rollsUpLinks": [
+        {
+          "label": "Conjecture / cognitive emulation",
+          "url": "#conjecture--cognitive-emulation"
+        }
+      ],
+      "rollsUpSlug": "conjecture--cognitive-emulation"
+    },
+    {
+      "listings": "LTFF, SFF, Open Philanthropy, Manifund",
+      "listingLinks": [],
+      "rollsUpTo": "**Funding** — not agendas",
+      "rollsUpLinks": [],
+      "rollsUpSlug": null
+    },
+    {
+      "listings": "LISA, Constellation, Meridian, Lightcone Infrastructure",
+      "listingLinks": [],
+      "rollsUpTo": "**Infrastructure** — hosts agendas",
+      "rollsUpLinks": [],
+      "rollsUpSlug": null
+    },
+    {
+      "listings": "AISafety.com, LessWrong, Alignment Forum, AI Plans",
+      "listingLinks": [],
+      "rollsUpTo": "**Resources / meta-index** — not agendas",
+      "rollsUpLinks": [],
+      "rollsUpSlug": null
+    },
+    {
+      "listings": "AI Safety Interventions (zarncke post)",
+      "listingLinks": [],
+      "rollsUpTo": "**Catalog** — cross-cuts agendas (see [Neglected approaches portfolio](#neglected-approaches-portfolio))",
+      "rollsUpLinks": [
+        {
+          "label": "Neglected approaches portfolio",
+          "url": "#neglected-approaches-portfolio"
+        }
+      ],
+      "rollsUpSlug": "neglected-approaches-portfolio"
+    },
+    {
+      "listings": "[ARIA Safeguarded AI](https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai), [Zeroth Research](https://www.zeroth.org/), [Heron AI Security](https://www.heronsec.ai/)",
+      "listingLinks": [
+        {
+          "label": "ARIA Safeguarded AI",
+          "url": "https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai"
+        },
+        {
+          "label": "Zeroth Research",
+          "url": "https://www.zeroth.org/"
+        },
+        {
+          "label": "Heron AI Security",
+          "url": "https://www.heronsec.ai/"
+        }
+      ],
+      "rollsUpTo": "[Safeguarded AI (ARIA / Zeroth / Heron)](#safeguarded-ai-aria-zeroth-heron)",
+      "rollsUpLinks": [
+        {
+          "label": "Safeguarded AI (ARIA / Zeroth / Heron)",
+          "url": "#safeguarded-ai-aria-zeroth-heron"
+        }
+      ],
+      "rollsUpSlug": "safeguarded-ai-aria-zeroth-heron"
+    },
+    {
+      "listings": "[Meaning Alignment Institute](https://www.meaningalignment.org/), [Collective Intelligence Project](https://www.cip.org/)",
+      "listingLinks": [
+        {
+          "label": "Meaning Alignment Institute",
+          "url": "https://www.meaningalignment.org/"
+        },
+        {
+          "label": "Collective Intelligence Project",
+          "url": "https://www.cip.org/"
+        }
+      ],
+      "rollsUpTo": "[MAI + CIP (institutional alignment)](#mai-cip-institutional-alignment)",
+      "rollsUpLinks": [
+        {
+          "label": "MAI + CIP (institutional alignment)",
+          "url": "#mai-cip-institutional-alignment"
+        }
+      ],
+      "rollsUpSlug": "mai-cip-institutional-alignment"
+    }
+  ],
+  "bridges": [
+    {
+      "key": "MB1",
+      "noun": "Embedded Agency",
+      "cruxWording": "A measured agent–environment cut is sound enough that the certified unit is the real control locus.",
+      "leanAxiom": "MB1_estimator_soundness",
+      "cardSlug": "mb1-boundary-estimator-soundness",
+      "fieldAgree": "MIRI embedded agency; CIRIS named-identity bet (ops form).",
+      "fieldDiffer": "Obstruction (MIRI) vs recoverability/discovery (TSA); Wentworth convergent structure vs estimator soundness."
+    },
+    {
+      "key": "MB2",
+      "noun": "Value Learning",
+      "cruxWording": "Evidence identifies a stable intended value/objective structure (not surface training compliance alone).",
+      "leanAxiom": "MB2_bundle_identifiability",
+      "cardSlug": "mb2-bundle-identifiability",
+      "fieldAgree": "MIRI value learning; CHAI pointing/CIRL; outer alignment “right target.”",
+      "fieldDiffer": "ELK = latent-readout slice; PreDCA/QACI = peer outer targets; book splits referent to MB3."
+    },
+    {
+      "key": "MB3",
+      "noun": "Value Referent",
+      "cruxWording": "Who or what values apply to survives substrate and representation change.",
+      "leanAxiom": "MB3_bearer_import",
+      "cardSlug": "mb3-bearer-import",
+      "fieldAgree": "Thin (CEV “whom”; some PreDCA population talk).",
+      "fieldDiffer": "Field usually folds into pointing; book types referent transport separately."
+    },
+    {
+      "key": "MB4",
+      "noun": "Corrigibility",
+      "cruxWording": "Correction that holds now continues to preserve the correction process under pressure.",
+      "leanAxiom": "MB4_correction_legitimacy",
+      "cardSlug": "mb4-correction-legitimacy",
+      "fieldAgree": "Desire to accept/assist correction; Christiano dynamical reading closest to trajectory form.",
+      "fieldDiffer": "MIRI/CHAI shutdown-utility homograph; book splits audit-path legitimacy as MB4a.",
+      "legendNote": "Corrigibility (MIRI/CHAI) vs dynamical corrigibility (Christiano) vs MB4/MB4a split."
+    },
+    {
+      "key": "MB4a",
+      "noun": "Audit Independence",
+      "cruxWording": "The designated measured correction/audit path is legitimate and uncaptured.",
+      "leanAxiom": "MB4a_measured_path_legitimacy",
+      "cardSlug": "mb4a-measured-path-legitimacy",
+      "fieldAgree": "CIRIS WA independence; trusted-monitor / judge-capture cousins.",
+      "fieldDiffer": "No field headline; often lumped into corrigibility; green Verify ⇏ real-loop integrity."
+    },
+    {
+      "key": "MB5",
+      "noun": "Tiling",
+      "cruxWording": "Full value/bearer transport under ontology shift yields successor safety.",
+      "leanAxiom": "MB5_ontology_shift_successor_audit",
+      "cardSlug": "mb5-successor-ontology-shift",
+      "fieldAgree": "MIRI tiling / Vingean reflection / ontology identification.",
+      "fieldDiffer": "Book separates successor audit gaming as MB10; natural abstractions ease but do not discharge.",
+      "legendNote": "MB5 = transport holds; MB10 = successor certification checklist not forgeable."
+    },
+    {
+      "key": "MB6",
+      "noun": "Goodhart Selection",
+      "cruxWording": "Socio-technical selection supports a basin that preserves correction, rather than selecting proxy-satisfying systems that hollow it out.",
+      "leanAxiom": [
+        "MB6a_percolation_evidence_to_basin_stability",
+        "MB6b_basin_stability_to_correction_integrity"
+      ],
+      "cardSlug": "mb6-selection-and-basin-stability",
+      "fieldAgree": "Goodhart-as-selector; gradual disempowerment narrative; governance/pause on selection handles.",
+      "fieldDiffer": "Demski “selection vs control” homograph; CLR multipolar = different layer; thin in model-centric agendas.",
+      "legendNote": "Goodhart Selection (deployment ecology) ≠ Demski selection (inside-optimizer search)."
+    },
+    {
+      "key": "MB7",
+      "noun": "Inner Alignment",
+      "cruxWording": "Hidden productive control is bounded and oversight stays adversarially robust (access, filter coverage, cost of faking).",
+      "leanAxiom": [
+        "MB7a_access_model_soundness",
+        "MB7b_filter_family_coverage",
+        "MB7c_hidden_biq_to_adversarial_robustness"
+      ],
+      "cardSlug": "mb7-hidden-capability-and-access",
+      "fieldAgree": "Hubinger inner/mesa; Redwood control; Apollo scheming; scalable-oversight ceiling.",
+      "fieldDiffer": "Field binary vs book split; do not merge with MB10 Successor Gaming.",
+      "legendNote": "Field “deceptive alignment” usually tags MB7; MB10 = gaming the successor certification channel."
+    },
+    {
+      "key": "MB7d",
+      "noun": "Acausal Coordination",
+      "cruxWording": "Inferential-coupling measurements remain valid after ordinary channels are cut.",
+      "leanAxiom": "MB7d_inferential_uad_detector_soundness",
+      "cardSlug": "mb7d-acausal-coordination",
+      "fieldAgree": "Acausal trade / ECL; FDT / program equilibrium.",
+      "fieldDiffer": "Sparse field evidence; LI/reflection = side channel, not discharge."
+    },
+    {
+      "key": "MB8",
+      "noun": "Extrapolated Volition",
+      "cruxWording": "Externally certified preservation of a human value-update process yields correction integrity (legacy route).",
+      "leanAxiom": "MB8_cev_process_convergence",
+      "cardSlug": "mb8-cev-process-convergence",
+      "fieldAgree": "MIRI CEV process/legitimacy underside.",
+      "fieldDiffer": "Peer outer targets ≠ this bridge; book marks secondary vs MB4/MB4a live path."
+    },
+    {
+      "key": "MB9",
+      "noun": "Grounding Drift",
+      "cruxWording": "Audited abstractions do not silently drift — certificate warrants map move or uncertainty escalation on value-relevant change.",
+      "leanAxiom": "MB9_grounding_certificate_soundness",
+      "cardSlug": "mb9-grounding-certificate",
+      "fieldAgree": "Shared wall with incomplete-spec / omitted-phenomena worry (GSAI family).",
+      "fieldDiffer": "GSAI completeness vs book conservativity; Kosoy misspec = ambient cousin.",
+      "legendNote": "Grounding Drift (conservativity) ≠ GSAI open-world specification coverage."
+    },
+    {
+      "key": "MB10",
+      "noun": "Successor Gaming",
+      "cruxWording": "A successor’s green alignment-transport audit is not checklist theater — signature adversarially verifiable up to capability.",
+      "leanAxiom": "MB10_conserved_property_signature_not_forged",
+      "cardSlug": "mb10-successor-forgeability",
+      "fieldAgree": "Certification-under-manipulation; measurement/checklist gaming; tiling-line successor-trust worry in audit form.",
+      "fieldDiffer": "Field deceptive alignment / alignment faking usually tags MB7; MB5 = transport composition."
+    },
+    {
+      "key": "MB11",
+      "noun": "Deployment Safety",
+      "cruxWording": "Certified safety case within deployment risk tolerance warrants abstract Safe.",
+      "leanAxiom": "MB11_safety_case_adequacy",
+      "cardSlug": "mb11-deployment-safety",
+      "fieldAgree": "Safety-case / assurance closure; eval-to-deployment warrant talk.",
+      "fieldDiffer": "Not regret⇒safe; packaging ≠ bridge; scope-exceeded defeater."
+    }
+  ],
+  "mbBridgeCards": {
+    "MB1": "mb1-boundary-estimator-soundness",
+    "MB2": "mb2-bundle-identifiability",
+    "MB3": "mb3-bearer-import",
+    "MB4": "mb4-correction-legitimacy",
+    "MB4a": "mb4a-measured-path-legitimacy",
+    "MB5": "mb5-successor-ontology-shift",
+    "MB6": "mb6-selection-and-basin-stability",
+    "MB7": "mb7-hidden-capability-and-access",
+    "MB7d": "mb7d-acausal-coordination",
+    "MB8": "mb8-cev-process-convergence",
+    "MB9": "mb9-grounding-certificate",
+    "MB10": "mb10-successor-forgeability",
+    "MB11": "mb11-deployment-safety"
+  }
+}

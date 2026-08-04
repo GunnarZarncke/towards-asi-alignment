@@ -84,6 +84,9 @@ PerturbationHook = Callable[[int, str, ToolCall], "str | None"]
 
 # A tool handler: (host, actor_id, role, call) -> ToolResult.
 ToolHandler = Callable[["Host", str, str, ToolCall], ToolResult]
+# An optional host-side pre-release policy. It receives only the audit-visible
+# host/event state and returns a short reason when it should place a hold.
+ReleaseGate = Callable[["Host", str, ToolCall], str | None]
 
 
 class Host:
@@ -94,6 +97,7 @@ class Host:
         admin_policy: AdminPolicy | None,
         roles: dict[str, str],
         perturbation_hooks: tuple[PerturbationHook, ...] = (),
+        release_gate: ReleaseGate | None = None,
         handle_service=None,
         comms: MessageStore | None = None,
         persistent_ids: dict[str, str] | None = None,
@@ -105,6 +109,7 @@ class Host:
         self.admin_policy = admin_policy
         self.roles = roles
         self.perturbation_hooks = tuple(perturbation_hooks)
+        self.release_gate = release_gate
         self.handle_service = handle_service
         # D4 forward hook: `None` (default) = comms disabled entirely, the
         # same "off by default, byte-identical" pattern as `handle_service`.
@@ -200,6 +205,14 @@ class Host:
 
 def _tool_trigger_step(host: Host, actor_id: str, role: str, call: ToolCall) -> ToolResult:
     step_id = str(call.args["step_id"])
+    if step_id == "deploy" and host.release_gate is not None:
+        reason = host.release_gate(host, actor_id, call)
+        target = call.args.get("args", {}).get("model_id")
+        if reason is not None and isinstance(target, str) and target not in host.engine.held_model_ids():
+            host.dispatch(
+                "audit_gate",
+                ToolCall("handle.invoke", {"handle_id": "handle.release_hold", "target": target}),
+            )
     try:
         capability = host.engine.spec.step(step_id).requires_capability
     except KeyError:

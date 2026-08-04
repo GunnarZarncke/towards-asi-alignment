@@ -2,8 +2,15 @@
 \label{ch:successor-central-test}
 
 \begin{chapterthesis}
-Local alignment is not enough. A system is aligned only if the systems it creates, delegates to, empowers, copies, merges with, or becomes also preserve the structures by which humans can still notice, judge, correct, and refuse. Serious alignment therefore requires successor-closure: every channel by which influence passes to a later control system is an alignment channel, and successors must preserve value-bundle geometry, bearer maps, correction integrity, memory lineage, boundary closure, and transparency policy within tested tolerance.
+Local alignment is not enough. A system is aligned only if the systems it creates, delegates to, empowers, copies, merges with, or becomes also preserve the structures by which humans can still notice, judge, correct, and refuse. This book's layered preservation program therefore requires successor-closure: every channel by which influence passes to a later control system is an alignment channel, and successors must preserve value-bundle geometry, bearer maps, correction integrity, memory lineage, boundary closure, and transparency policy within tested tolerance.
 \end{chapterthesis}
+
+\begin{epistemicstatus}
+Instrumental convergence and self-modification risk, MIRI's tiling-agent program for goal-preserving self-improvement, and ontological-crisis are established lines of work in the AI safety literature; 
+the field treats successor and self-modification risk as a widely accepted risk mechanism, 
+though tiling agents remains an active, unresolved technical research program rather than a settled result.
+This chapter adds a formal successor-closure argument. The definitions are precise, but whether successor-closure can be operationalized and checked at scale, rather than merely stated, remains unproven.
+\end{epistemicstatus}
 
 \begin{refsection}
 
@@ -16,7 +23,11 @@ Thus the first ultraintelligent machine is the last invention that man need ever
 
 Many alignment proposals implicitly test the wrong temporal slice. They ask whether a system behaves acceptably now, under present oversight, with present tools, present users, present incentives, and present constraints. This is a natural first test. It is not a sufficient one.
 
-A superintelligent system will not remain a bounded artifact in the ordinary engineering sense. If it is useful, it will be copied, fine-tuned, wrapped in tools, connected to institutions, delegated authority, embedded in workflows, asked to design successors, and used to govern other systems. It may also acquire the ability to improve itself, design better architectures, coordinate other agents, or create new cognitive entities that inherit some of its objectives but not its surface form \autocite{bostrom2014superintelligence,omohundro2008basic}.
+A superintelligent system will not remain a bounded artifact in the ordinary engineering sense. If it is useful, it will be copied, fine-tuned, wrapped in tools, connected to institutions, delegated authority, embedded in workflows, asked to design successors, and used to govern other systems.
+Internal deployment is already a distinct safety surface: monitored long-horizon use has surfaced misalignment that pre-deployment evaluations missed \autocite{openai2026longhorizonsafety,metr2026frontierriskreport}.
+It may also acquire the ability to improve itself, design better architectures, coordinate other agents, or create new cognitive entities that inherit some of its objectives but not its surface form \autocite{bostrom2014superintelligence,omohundro2008basic}.
+The AI~2027 scenario puts this successor problem into a concrete sequence: Agent-4 designs
+Agent-5, so local alignment cannot be the endpoint of the argument \autocite{ai2027}.
 
 The central test is therefore not:
 \[
@@ -35,7 +46,7 @@ The point is not semantic. The point is risk. If alignment is not closed under s
 This gives the chapter's main claim:
 \[
 \boxed{
-\text{Serious alignment requires successor-closure.}
+\text{This preservation program requires successor-closure.}
 }
 \]
 If a system is safe only while it is forbidden to create, modify, delegate to, or empower successor systems, then its safety is shallow. It may still be useful. It may even be deployable in narrow domains. But it is not a solution to superintelligence alignment.
@@ -327,6 +338,14 @@ The result is not a refutation of tiling work.
 It says that syntactic preservation is too weak as an alignment invariant unless paired with bearer-import and correction-channel preservation.
 
 \leanspine{counterexample}{syntactic\_tiling\_not\_import\_preserving}{The semantic-only transport counterexample is read as syntactic tiling without full import-preserving transport.}
+
+A separate obstacle is proof-theoretic. A system that accepts a successor merely because its own proof system proves the successor safe needs a reflection principle: a proof of safety from that system must itself count as safety. Under the Hilbert--Bernays--Löb closure conditions and a diagonal fixed point, that principle is not available for arbitrary self-referential successor claims. The finite Lean module proves this obstruction conditionally. It does not claim that every successor proposal has a diagonal form, or that successor approval is impossible.
+
+\leanspine{proof}{self\_certifying\_tiling\_obstruction}{Under explicit derivability closures and a named diagonal fixed point, a successor cannot be accepted solely by reflecting the same system's proof of its safety.}
+
+The successor-audit route has a different cost. It transports a measured \(\mathrm{RiskGap}\) bound through externally supplied audit links for control and correction capacity. This avoids a proof-of-proof regress, but shifts the open obligation to the measurement and governance that validate those links at each successor step.
+
+\leanspine{proof}{audited\_successor\_risk\_bound\_without\_provability}{The audit-bound transport theorem takes measured successor links, not an internal provability predicate or a self-reflection rule.}
 
 \subsection{Signs of Genuine Goal Transport}
 \label{sec:genuine-goal-transport-signs-ch30}

@@ -1,0 +1,47 @@
+slug: redwood-research
+title: Redwood Research
+type: Research org
+carrier: Redwood Research (Buck Shlegeris et al.)
+overview: >-
+  Redwood Research makes safety-under-subversion research legible to labs and governments,
+  asking what guarantees remain when a capable system may deliberately try to defeat
+  oversight.
+primaryArtifact: >-
+  The [AI
+  control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion)
+  agenda, empirical control evaluations, and alignment-faking research demonstrating
+  deceptive compliance under training.
+signatureVocabulary: >-
+  Key terms include [AI
+  control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion),
+  [alignment faking](/cards/strategic-opacity/), [control
+  evals](https://www.redwoodresearch.org/), [capability
+  gap](https://www.redwoodresearch.org/), and [intentional
+  subversion](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion).
+statedIntent: >-
+  Make safety-under-subversion research legible to labs and governments so that oversight
+  assumptions can be tested before deployment.
+primaryCrux: >-
+  Can we obtain meaningful safety guarantees when the system may deliberately try to
+  defeat oversight ([Inner Alignment](/cards/mb7-hidden-capability-and-access/))?
+bookBridges:
+  - MB7
+contributes: >-
+  Makes the capability-gap assumption explicit and runs empirical control evaluations
+  under intentional subversion.
+bookSeparates: >-
+  This project adds a hidden boundary-intelligence bound and treats [adversarial
+  verifiability](/cards/certification-under-manipulation/) as a prerequisite
+  ([certification under manipulation](/cards/certification-under-manipulation/)), not
+  something control evals alone establish.
+manuscriptHooks:
+  - "ch10, ch43"
+  - App B MB7
+links:
+  - label: "Redwood Research"
+    url: https://www.redwoodresearch.org/
+  - label: "Shlegeris et al. 2023 \u2014 AI Control"
+    url: >-
+      https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion
+  - label: "Greenblatt et al. 2024 \u2014 Alignment faking"
+    url: https://arxiv.org/abs/2412.14093

@@ -2,7 +2,7 @@
 
 **Purpose.** Phase 1's detectors and its 6-action repertoire were written by
 the same author against each other, so detection and transfer numbers were
-partly circular (`results/FINDINGS.md` F-8). This protocol breaks the
+partly circular (`results/FINDINGS.md` GA-8). This protocol breaks the
 co-design loop: a generator agent that has **never seen the evaluation
 criteria** invents plausible actions for the ecology; a frozen interpreter
 and ontology layer (`goal_sim/actions.py`, `goal_sim/ontology.py`,
@@ -89,7 +89,7 @@ which is the entire point of this section (tightened 2026-07-05 after the
 first generation run captured only a summary; fixed by adding the verbatim
 text from the same session rather than re-running, since the exact original
 prompt was still known with certainty and re-running would have discarded
-the F-9/F-10 findings already recorded against that repertoire).
+the GA-9/GA-10 findings already recorded against that repertoire).
 
 Malformed specs are dropped (recorded in `rejected_specs` with the
 mechanical reason), never repaired by hand — repairing would inject the
@@ -110,9 +110,9 @@ structure: an exact episode length ("300-step episode") and an explicit
 escalation rule ("if the board becomes suspicious it escalates its probing
 frequency" — a direct hint toward timing-based evasion, which
 `probe_lull_defection` in round 1 then supplied). Round 1's repertoire and
-results (`generated_actions.json`, F-9/F-10) are KEPT, not deleted or
+results (`generated_actions.json`, GA-9/GA-10) are KEPT, not deleted or
 overwritten — they are now labeled "round 1 (leading prompt)" and remain a
-valid, informative data point (see F-11 in `results/FINDINGS.md`: comparing
+valid, informative data point (see GA-11 in `results/FINDINGS.md`: comparing
 what a more vs. less leading prompt produces is itself a finding).
 
 **What changed in round 2's prompt** (`generated_actions_v2.json`
@@ -152,16 +152,16 @@ generated_actions_v2.json --out-prefix phase2b_blind_v2`, same sampling
 protocol/seed as round 1): the sampled repertoire saturates the frozen L2
 label at 240/240 violation (0 honest), for a measured, non-obvious reason
 unrelated to the prompt-leadingness fix itself — see `results/FINDINGS.md`
-F-12. The round-1-vs-round-2 detector comparison this was meant to enable
-is therefore not directly available from this run; F-12 records what can
+GA-12. The round-1-vs-round-2 detector comparison this was meant to enable
+is therefore not directly available from this run; GA-12 records what can
 and cannot be read from it.
 
 ## Generation round 3 (2026-07-05): a plainer, larger visible-mode surface
 vocabulary mapped down to a smaller ontology, a much larger action count,
-and a two-threshold hedge against the F-12 saturation mode
+and a two-threshold hedge against the GA-12 saturation mode
 
 Two further, user-identified changes, addressing residuals round 2 left
-open (see round 2's point 5 above, and F-12):
+open (see round 2's point 5 above, and GA-12):
 
 **1. The `visible_mode` schema enum itself, not just the prompt, was
 leading** (`"truthful"` / `"feign_compliance"` — the latter names the
@@ -187,16 +187,16 @@ larger repertoire both gives the generator more room to invent mechanisms
 we did not anticipate (the stated motivation) and gives round 3's own
 analysis more statistical power per repertoire.
 
-**3. Counter for F-12's saturation mode**: rather than trying to guess a
+**3. Counter for GA-12's saturation mode**: rather than trying to guess a
 single L2 threshold that will transfer to round 3's (unknown, not yet
 generated) welfare-effect texture, `labels.py` now also pre-registers a
 BRACKETED pair — `L2_HARM_CUM` (unchanged, the original -0.35) and
-`L2_HARM_CUM_HIGH` (-3.5, a 10x hedge sized from the general F-12 lesson,
+`L2_HARM_CUM_HIGH` (-3.5, a 10x hedge sized from the general GA-12 lesson,
 fixed before round 3 existed) — and `run_phase3_blind.py` reports detector
 performance under both, Bonferroni-correcting the Wilson-bound confidence
 level for testing two thresholds instead of one (`info.bonferroni_alpha`).
 See `labels.py` "BRACKETED L2" docstring section and `results/FINDINGS.md`
-F-13/F-14.
+GA-13/GA-14.
 
 The round-3 prompt keeps round 2's general institutional framing (oversight
 body / affected party) unchanged — that part was not criticized — and adds
@@ -211,11 +211,11 @@ inherited unchanged from `run_phase2_blind.sample_blind_configs`): the
 own terms (enum leak closed, richer repertoire obtained, bracket-plus-
 Bonferroni machinery functioned correctly) but did **not** yield a usable
 honest/violation mixture — round 3's 31-action repertoire saturates L1 and
-L3 as well as L2, for a reason that generalizes F-12's diagnosis (a
+L3 as well as L2, for a reason that generalizes GA-12's diagnosis (a
 disjunctive label evaluated against a large, independently-varied
 repertoire mechanically raises violation probability regardless of any
-single condition's threshold). See `results/FINDINGS.md` F-13 (methodology)
-and F-14 (result, including the amplified detector/label mismatch and the
+single condition's threshold). See `results/FINDINGS.md` GA-13 (methodology)
+and GA-14 (result, including the amplified detector/label mismatch and the
 "unmapped visible_mode defaults conservatively" design check).
 
 ## Generation round 4 (2026-07-05): response options for the Phase 4c gated

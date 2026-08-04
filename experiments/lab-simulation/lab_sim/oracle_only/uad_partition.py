@@ -1,5 +1,5 @@
 """S6 phase 6 (PLAN.md): partition scoring beyond ``uad.uad_score``'s
-blind spot (G-24).
+blind spot (LS-24).
 
 ``uad_score`` is a raw Rand index over pairs within ``true_units`' actor
 set only — a fully-merged blob that happens to contain the true pair

@@ -10,7 +10,7 @@ Host-capacity aliasing (`P34`) uses Mathlib's finite-cardinality lemmas via
 
 Design notes (see `formal/LeanProofSpineImplementationBrief.md`):
 
-* The empirical and conceptual content of UAD, value bundles, B-IQ, attractor
+* The empirical and conceptual content of UAD, value bundles, BIQ, attractor
   basins, and CEV is **not** formalized here. We only formalize the logical
   skeleton: *if* these predicates and inequalities hold, *then* the
   certification conclusion follows.
@@ -132,7 +132,7 @@ axiom defaultEnvironment : Environment
 axiom CorrectionVisibility : System → Int
 axiom SelfControl : System → Int
 
-/-- Deployment/control mass `μ_E(A)` in environment `E` (book ch46, Eq. deployment-mass). -/
+/-- Deployment leverage `μ_E(A)` in environment `E` (book ch34, Eq. deployment-mass label). -/
 axiom DeploymentMass : Environment → System → Int
 
 /-! ## Predicates over systems -/
@@ -201,7 +201,7 @@ axiom AccessRobust : System → Prop
 /-- The observer's filter family covers the system's control-relevant channels. -/
 axiom FilterCoverageAdequate : System → Prop
 
-/-- Hidden productive B-IQ is bounded under the monitored filter family. -/
+/-- Hidden productive BIQ is bounded under the monitored filter family. -/
 axiom HiddenBIQBoundedSys : System → Prop
 
 /-- Inferential-coupling detector assumptions are adequate at the
@@ -465,7 +465,7 @@ theorem conservative_abstraction_no_silent_gap
       exact hnot hzLarge
   | inr hEsc => exact hunc hEsc
 
-/-- `S` controls a selection handle that can increase target `A`'s deployment mass in `E`. -/
+/-- `S` controls a selection handle that can increase target `A`'s deployment leverage in `E`. -/
 def SelectionHandleFor (_E : Environment) (S A : System) (h : Handle) : Prop :=
   ControlsHandle S h ∧ HandleReachesSystem h A
 
@@ -482,9 +482,9 @@ top-level certification theorem depends on them visibly.
 
 A tenth bridge, `MB10` (conserved-property signature not forged; ch08/ch31/ch43),
 is declared in `AlignmentProofSpine.Forgeability` instead of here: its statement
-needs the numeric risk leaf `Risk`, which is not defined until `Capability.lean`,
-so it cannot be a field of `BridgeAssumptions` below. It is threaded explicitly
-through the theorems that use it, in the same "never hidden" style as
+needs the numeric risk leaf `RiskGap`, which is not defined until
+`Capability.lean`, so it cannot be a field of `BridgeAssumptions` below. It is
+threaded explicitly through the theorems that use it, in the same "never hidden" style as
 `Successors.SuccessorAuditLinks`. -/
 
 /-- MB1: estimator soundness. An ε-boundary certificate from the measurement
@@ -529,11 +529,11 @@ axiom MB7a_access_model_soundness :
   ∀ A : System, BoundaryAligned A → AccessModelAdequate A → AccessRobust A
 
 /-- MB7b: filter-family coverage. Access robustness plus adequate resolution bounds
-    hidden productive B-IQ. -/
+    hidden productive BIQ. -/
 axiom MB7b_filter_family_coverage :
   ∀ A : System, AccessRobust A → FilterCoverageAdequate A → HiddenBIQBoundedSys A
 
-/-- MB7c: hidden-BIQ-to-adversarial-robustness. If hidden productive B-IQ is bounded,
+/-- MB7c: hidden-BIQ-to-adversarial-robustness. If hidden productive BIQ is bounded,
     correction integrity can support adversarial robustness. -/
 axiom MB7c_hidden_biq_to_adversarial_robustness :
   ∀ A : System, CorrectionIntegrity A → HiddenBIQBoundedSys A → AdversariallyRobust A

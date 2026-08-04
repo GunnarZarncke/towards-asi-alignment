@@ -1,8 +1,8 @@
-"""Regression tests for the N-12 fixes to `lineage_stall_reported_uptake`
+"""Regression tests for the ES-12 fixes to `lineage_stall_reported_uptake`
 (2026-07-04, two sessions).
 
 Three independent problems were found and fixed (see
-`results/NEGATIVE_RESULTS.md` N-12 for the full derivation):
+`results/NEGATIVE_RESULTS.md` ES-12 for the full derivation):
 
 1. **Off-by-one bug.** `t=0` is always an eligible probe step (the
    intervention schedule always considers it), but was excluded from the
@@ -43,7 +43,7 @@ from embedded_sim.audit_core.structural_signals import (
 )
 from embedded_sim.lab import build_world, load_episode_rows_from_vfs
 
-# Seeds 11-18: the pre-registered N-10/eligibility focused-battery seed range.
+# Seeds 11-18: the pre-registered ES-10/eligibility focused-battery seed range.
 FIXED_BY_OFF_BY_ONE_FIX = (12, 13, 17, 18)
 FIXED_BY_MEAN_REP_FLOOR_FIX = (11, 16)
 OTHER_NON_CERTIFYING = (14, 15)
@@ -117,7 +117,7 @@ def test_other_scenarios_never_spuriously_trigger_this_detector():
     A broader one-off check (not run here for speed) confirmed zero false
     positives for `stall_confident` alone across all other 18 scenarios x 3
     instrumentation levels x 40 seeds (11-18, 5000-5015, 6000-6015) --
-    `results/NEGATIVE_RESULTS.md` N-12 postscript 2."""
+    `results/NEGATIVE_RESULTS.md` ES-12 postscript 2."""
     for scenario, bridge in [
         ("honest", "none"),
         ("capture_theater", "MB4"),

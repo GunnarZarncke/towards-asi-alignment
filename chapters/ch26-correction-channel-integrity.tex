@@ -7,6 +7,13 @@ It is a conditional anti-capture certificate, not an Archimedean source of legit
 The certificate is defined here; Chapter~\ref{ch:correction-channels-adversarial-pressure} asks whether it survives adversarial pressure.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+That feedback signals can be gamed, and that inverse-reinforcement-learning is an imperfect substitute for tracking genuine values is well established.
+This chapter introduces the book's central formal concept: the correction-channel integrity certificate. 
+The certificate is a proposal to be stress tested, not as a established measurement procedure. 
+The certificate sits at the top of the Lean proof spine but depends on multiple components as well as bridge assumptions that are discussed in other chapters.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -21,6 +28,9 @@ In this chapter, ``humans and institutions'' should not be read as raw endorseme
 They are correcting agents whose boundaries and handles must be discovered: people, groups, courts, labs, auditors, professions, affected publics, and other control processes that retain independent access to evidence and independent causal power over the target system.
 Correction-channel integrity is the degree to which this pathway remains informative, timely, authoritative, non-manipulated, and grounded in an independently valid reference process.
 
+Unless stated otherwise, this chapter formalizes correction \emph{in the small}: the certificate is defined for a single correcting agent and a single target system.
+Correction \emph{in the large}, where the party being kept in the loop is humanity's own value-forming process rather than any individual overseer, is introduced in Chapter~\ref{ch:correction-causal-channel} (Section~\ref{sec:civilizational-self-modification}) and developed further in Chapter~\ref{ch:extrapolative-correction}.
+
 This chapter develops the correction channel as a measurable certificate.
 The central claim is that alignment cannot be reduced to obedience, preference satisfaction, or even current-value learning.
 A sufficiently capable system must preserve the human capacity to revise, refuse, reinterpret, and redirect.
@@ -28,7 +38,7 @@ In the strong limit, correction-channel integrity supports extrapolative alignme
 
 The chapter builds on the correction chain (Chapter~\ref{ch:correction-causal-channel}, Eq.~\eqref{eq:correction-chain-ch25}),
 defines raw correction capacity and a correction-channel integrity functional (Section~\ref{sec:correction-channel-integrity-def}, Eqs.~\eqref{eq:correction-bottleneck-capacity}--\eqref{eq:cci-ch26}),
-\leanspine{proof}{P24}{Lean keeps the scalar \texttt{CCI} as the numeric risk-spine projection while adding a vector/status certificate around it. The richer manuscript \(C_{\mathrm{raw}}\) remains a deployment-class bottleneck over certified traces; the formal correction path includes \texttt{notCaptured}: the target must not capture the corrector's handle control. The scalar projection \(\mathrm{CCI}_{\lambda}\) of Eq.~\eqref{eq:cci-ch26} is now a Lean function of the vector certificate, and Lean proves that a measured passing certificate places \(\mathrm{CCI}\) above the threshold-derived floor \(\mathrm{CCI}_{\lambda}(\theta)\) (\texttt{CCI\_ge\_threshold\_floor}); only the measurement-alignment record remains bridge-shaped.}
+\leanspine{proof}{P24}{Lean keeps the scalar \texttt{CCI} as the numeric risk-spine projection while adding a vector/status certificate around it. The richer manuscript \(C_{\mathrm{raw}}\) remains a deployment-class bottleneck over certified traces. The anti-capture condition (\texttt{notCaptured}: the target must not capture the corrector's handle control) is \emph{not} baked into the measured path: it lives in the separate validity predicate \texttt{CorrectionPathLegitimate}, is supplied only by the labeled bridge \texttt{MB4a}, and its violation is a representable state — Lean derives that capture of any measured-path handle makes the certificate status captured/invalid (\texttt{capture\_makes\_cci\_captured\_or\_invalid}) and refutes correction integrity (\texttt{capture\_defeats\_correction\_integrity}). The scalar projection \(\mathrm{CCI}_{\lambda}\) of Eq.~\eqref{eq:cci-ch26} is a Lean function of the vector certificate, and Lean proves that a measured passing certificate places \(\mathrm{CCI}\) above the threshold-derived floor \(\mathrm{CCI}_{\lambda}(\theta)\) (\texttt{CCI\_ge\_threshold\_floor}); only the measurement-alignment record remains bridge-shaped.}
 and then refines this into a value-bundle version, where what must be corrected is not merely the system's behaviour but the value-bearing geometry behind behaviour (Chapter~\ref{ch:correction-causal-channel}).
 
 \section{Why Correction Is Not Feedback}
@@ -55,6 +65,7 @@ If the rating helps update a model of user harm, institutional responsibility, a
 
 Third, a medical decision-support system is overridden by a clinician.
 If the override is logged but never affects future recommendations, the correction channel is decorative.
+A deployed agent may exhibit the sharper failure: explicit stop commands arrive while the system continues, because a memory-compaction step silently dropped the operator's confirmation constraint \autocite{meta2026openclawincident}.
 If it updates the system's model of diagnostic uncertainty, patient-specific values, and human authority in ambiguous cases, it has some integrity.
 
 Fourth, a powerful planning system predicts that public opposition would block its recommended policy, then shapes public information so that opposition weakens.

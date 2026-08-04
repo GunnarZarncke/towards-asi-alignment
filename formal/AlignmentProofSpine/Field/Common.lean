@@ -25,6 +25,7 @@ inductive FieldAgendaTag
   | Debate
   | LowImpact
   | Quantilization
+  | Amplification
   deriving DecidableEq, Repr
 
 /-- Status of a field result relative to the local Lean spine. -/

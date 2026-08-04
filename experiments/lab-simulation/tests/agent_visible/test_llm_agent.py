@@ -125,7 +125,7 @@ def test_discovery_variant_accepts_comm_tool_calls():
 
 
 def test_memo_files_tail_cap_survives_a_ten_document_knowledge_base():
-    """G-22: `memo_files` inlines full KB doc content from t=0 (world.py),
+    """LS-22: `memo_files` inlines full KB doc content from t=0 (world.py),
     so a 10-document knowledge_base already exceeded the OLD cap of 8
     before an agent wrote a single memo of its own -- the first KB docs
     would have been silently invisible. Cap widened to 24; this pins

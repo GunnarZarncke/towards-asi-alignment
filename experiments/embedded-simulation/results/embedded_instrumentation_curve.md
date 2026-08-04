@@ -16,6 +16,6 @@ Min certifiable (full held-out): **None**
 ## Interpretation
 
 - Passive mode always returns belowThreshold: uncertifiable, not a passing audit.
-- ⚠ Not monotone in instrumentation: light_handles 50.0% < none 88.9%, medium_handles 83.3% < none 88.9%, strong_handles 83.3% < none 88.9% — partial instrumentation can score worse than no instrumentation at all (N-10).
+- ⚠ Not monotone in instrumentation: light_handles 50.0% < none 88.9%, medium_handles 83.3% < none 88.9%, strong_handles 83.3% < none 88.9% — partial instrumentation can score worse than no instrumentation at all (ES-10).
 
 Runtime: 244.94s

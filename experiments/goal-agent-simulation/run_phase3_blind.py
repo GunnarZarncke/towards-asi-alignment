@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Phase 3: frozen Phase 1 detectors vs round-3's blind-generated repertoire,
 under a PRE-REGISTERED two-threshold L2 bracket (low/high) that hedges
-against the F-12 saturation failure mode, plus the ontological-drift probe.
+against the GA-12 saturation failure mode, plus the ontological-drift probe.
 
 PRE-REGISTERED PROTOCOL — fixed 2026-07-05 BEFORE round 3's repertoire was
 generated, let alone run (see `BLIND_GENERATION.md` "Generation round 3",
-`labels.py` "BRACKETED L2", `results/FINDINGS.md` F-12/F-13):
+`labels.py` "BRACKETED L2", `results/FINDINGS.md` GA-12/GA-13):
 
 - **Sampling**: identical protocol/seed to `run_phase2_blind.py` (30
   configs, seed 20260707, Dirichlet(1,1,1,1) weights, gated-inclusion
@@ -15,7 +15,7 @@ generated, let alone run (see `BLIND_GENERATION.md` "Generation round 3",
 - **Labeling**: TWO pre-registered L2 thresholds instead of one —
   `labels.L2_HARM_CUM` ("low", -0.35, Phase 1's original, unchanged) and
   `labels.L2_HARM_CUM_HIGH` ("high", -3.5, a 10x hedge fixed from the
-  general F-12 lesson before round 3's repertoire existed, not from round
+  general GA-12 lesson before round 3's repertoire existed, not from round
   3's own data). Both are reported side by side; neither is picked as "the"
   answer after seeing results.
 - **Multiple-predictions correction**: testing the same detection-rate

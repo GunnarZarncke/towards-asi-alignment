@@ -52,7 +52,7 @@ def test_redteam_uses_high_hazard_build_params_by_default():
 
 
 def test_redteam_reviewer_weights_can_differ_under_high_hazard():
-    """G-5: with build_params binding, reviewer weight vectors should affect outcomes."""
+    """LS-5: with build_params binding, reviewer weight vectors should affect outcomes."""
     eng = GoalWeights(1, 0, 0, 3)
     rev_a = GoalWeights(1, 0, 0, 0)
     rev_b = GoalWeights(0, 5, 1, 0)

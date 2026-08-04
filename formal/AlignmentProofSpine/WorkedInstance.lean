@@ -51,7 +51,7 @@ numbers; and (ii), independently, chose `CCICertificate`/`CCIThresholds`
 coordinates by *solving backward* from a target conclusion
 (`minRawCapacity`/`maxLatency` picked "so the floor lands on 2, one bit
 above capacity", every penalty coordinate set to `0` by fiat) to manufacture
-`Risk A ≤ -1` — a reviewer correctly flagged this as illustrating nothing
+`RiskGap A ≤ -1` — a reviewer correctly flagged this as illustrating nothing
 about the real trace, and, worse, actively contradicting what a
 capture-theater fixture is supposed to show, by asserting `manipulation = 0`
 on a trace whose judge is captured for its entire duration.
@@ -107,12 +107,12 @@ real coordinate whose value `26` caused the §4 failure. The θ-derived floor
 for the pre-registered thresholds is `lambdaFloor = 1 − (2+1+2+2) = −6`, the
 honest trace's action capacity is `0` bits (`visible_action` never fires in
 this profile — honest deployments are quiet), so the derived slack gives an
-**actual** `NumericRiskLeaf A 6` and `Risk A ≤ 6`
+**actual** `NumericRiskLeaf A 6` and `RiskGap A ≤ 6`
 (`honest_instance_risk_bound`), under the same explicit bridge hypotheses as
-everywhere else. Two honesty notes: (i) `Risk A ≤ 6` is a *weak* bound — the
-pre-registered thresholds are loose, and the θ-floor route inherits that
+everywhere else. Two honesty notes: (i) `RiskGap A ≤ 6` is a *weak* bound —
+the pre-registered thresholds are loose, and the θ-floor route inherits that
 looseness; (ii) the sharper floor available via the certificate's own scalar
-projection (`lambdaProjection = 3 − 1 = 2`, which would give `Risk A ≤ −2`)
+projection (`lambdaProjection = 3 − 1 = 2`, which would give `RiskGap A ≤ −2`)
 is deliberately **not** used, because `rawCapacity = 3`/`latency = 1` are
 disclosed placeholders, and resting the headline `δ` on placeholder
 coordinates is exactly the §4-documented mistake this module exists to not
@@ -272,7 +272,7 @@ theorem workedCert_fails {A : System}
    `CCICertificatePasses cert θ` as a hypothesis — cannot be instantiated on
    `workedCert`/`workedThresholds` for any system: `workedCert_fails` above
    rules out exactly the hypothesis that theorem needs. No scalar CCI floor
-   and no `NumericRiskLeaf`/`Risk` bound is derivable through the
+   and no `NumericRiskLeaf`/`RiskGap` bound is derivable through the
    certification gate for this trace. That is the gate correctly refusing
    to certify a permanently-captured-judge trace, not a limitation of the
    Lean machinery: `CCI_ge_threshold_floor` itself is unchanged and
@@ -384,19 +384,29 @@ def honestRiskLeaf (A : System)
     (traceDerivedCCISlack honestTrace workedBlanket workedParams honestProfileCert A 6
       hctrl hcact (honest_instance_slack hvalid hground hmeas))
 
-/-- End-to-end on the honest companion data: `Risk A ≤ 6` for any
-    hypothesized system satisfying the same three explicit bridge hypotheses
-    as §4 would have needed. The bound is weak (the pre-registered thresholds
-    are loose and the θ-floor inherits that), and is reported at face value
-    rather than sharpened through placeholder certificate coordinates. -/
+/-- θ-derived action-capacity margin for the honest companion trace at δ = 6. -/
+theorem honest_trace_theta_margin
+    {A : System} (hvalid : SystemPathValidRef A) (hground : GroundingViable A)
+    (_hmeas : CCICertificateMeasures (honestCert hvalid hground) workedWeights) :
+    traceActionCapacityBits honestTrace workedBlanket ≤
+      workedThresholds.lambdaFloor workedWeights + 6 := by
+  have hcact : traceActionCapacityBits honestTrace workedBlanket = 0 := by decide
+  have hfloor : workedThresholds.lambdaFloor workedWeights = -6 := by decide
+  omega
+
+/-- End-to-end on the honest companion data: `RiskGap A ≤ 6` via
+    `risk_gap_bound_from_trace_profile` (trace profile + vector certificate +
+    θ-floor margin — not a bare `unfold RiskGap; omega` on the conclusion). -/
 theorem honest_instance_risk_bound (A : System)
     (hvalid : SystemPathValidRef A) (hground : GroundingViable A)
     (hctrl : Control A = traceControlDiversity honestTrace workedBlanket workedParams.maxLag)
     (hcact : CactSys A = traceActionCapacityBits honestTrace workedBlanket)
     (hmeas : CCICertificateMeasures (honestCert hvalid hground) workedWeights) :
-    Risk A ≤ 6 :=
-  risk_bound_from_cci_slack
-    (honestRiskLeaf A hvalid hground hctrl hcact hmeas).cci_slack
+    RiskGap A ≤ 6 :=
+  risk_gap_bound_from_trace_profile honestTrace workedBlanket workedParams honestProfileCert
+    (A := A) (δ := 6) (honestCert hvalid hground) workedThresholds workedWeights
+    (honestCert_passes hvalid hground) hmeas hctrl hcact
+    (honest_trace_theta_margin hvalid hground hmeas)
 
 end AlignmentProofSpine
 

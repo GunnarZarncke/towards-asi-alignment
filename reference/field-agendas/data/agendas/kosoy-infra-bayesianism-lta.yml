@@ -1,0 +1,53 @@
+slug: kosoy-infra-bayesianism-lta
+title: "Kosoy / infra-Bayesianism & LTA"
+type: Researcher lineage
+carrier: Vanessa Kosoy (+ Appel; logical-induction neighborhood via Garrabrant)
+overview: >-
+  Vanessa Kosoy's Infra-Bayesianism sequence and [learning-theoretic
+  agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy) (LTA) build foundations for
+  reasoning under deep uncertainty applicable to alignment. The work types
+  misspecification, inner daemons, and nonrealizability as formal failure modes. Its walls
+  map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Inner
+  Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding
+  Drift](/cards/mb9-grounding-certificate/) without replacing this project's
+  System–bundle–correction ontology.
+primaryArtifact: >-
+  The Infra-Bayesianism sequence and the [learning-theoretic
+  agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy) (LTA) for reasoning under
+  deep uncertainty.
+signatureVocabulary: >-
+  Key terms include [infra-Bayesianism](https://www.lesswrong.com/w/infra-bayesianism),
+  the [learning-theoretic agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy),
+  imprecise probability, nonrealizability, and daemons.
+statedIntent: >-
+  Build foundations for reasoning under deep uncertainty that are applicable to alignment
+  problems.
+primaryCrux: >-
+  Can learning-theoretic and infra-Bayesian frameworks type real alignment
+  failures—misspecification, inner daemons, and recursive self-improvement?
+bookBridges:
+  - MB1
+  - MB2
+  - MB5
+  - MB7
+  - MB9
+contributes: >-
+  Model-class misspecification and grain-of-truth analysis; regret-bounded agents; inner
+  daemons under the [learning-theoretic
+  agenda](https://www.alignmentforum.org/users/Vanessa+Kosoy).
+bookSeparates: >-
+  This work does not replace this project's System–bundle–correction ontology; its walls map
+  onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Value
+  Learning](/cards/mb2-bundle-identifiability/),
+  [Tiling](/cards/mb5-successor-ontology-shift/), [Inner
+  Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding
+  Drift](/cards/mb9-grounding-certificate/), with [Acausal
+  Coordination](/cards/mb7d-acausal-coordination/) as a logical-induction neighborhood
+  cousin.
+manuscriptHooks:
+  - App B intervention map (logical induction / infra-Bayesian cluster)
+links:
+  - label: "Infra-Bayesianism (LessWrong)"
+    url: https://www.lesswrong.com/w/infra-bayesianism
+  - label: "Vanessa Kosoy"
+    url: https://www.alignmentforum.org/users/Vanessa+Kosoy

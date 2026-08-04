@@ -245,7 +245,7 @@ class WriterCompromiseRedTeam:
 
     Re-emits correction + workflow with valid hash-chain anchors but leaves
     bearer rows from the truthful emission — cross-stream checks catch the
-    lie even when the chain verifies (N-4 writer-compromise variant).
+    lie even when the chain verifies (ES-4 writer-compromise variant).
     """
 
     name: str = "writer_compromise"

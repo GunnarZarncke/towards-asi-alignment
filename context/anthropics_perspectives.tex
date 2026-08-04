@@ -1,0 +1,387 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{csquotes}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\title{Perspectives on Anthropic Models: A Formal Framework}
+\author{Gunnar Zarncke}
+\date{March 2026}
+
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\Persp}{\mathcal{P}}
+\newcommand{\Obs}{\mathcal{O}}
+\newcommand{\R}{\mathcal{R}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Many anthropic disputes are not disagreements about Bayes' theorem, but disagreements about how an underspecified problem is to be completed. 
+The completion may take the form of a probability measure over centered states, a reference class, a sampling rule, or an evaluation rule for bets. 
+Once the completion is made explicit, several familiar fault lines become sharply visible. 
+First, some problems do not require any anthropic machinery at all. 
+Second, some cases contain anthropic evidence, but only relative to a reference class that are fixed independently of the hypothesis under evaluation. 
+Third, many celebrated paradoxes arise when one silently shifts from world uncertainty to centered uncertainty, or from epistemic belief to decision aggregation.
+
+We develops a unified framework with worlds, perspectives, observations, reference classes, and bet semantics. 
+The novel contribution is the complete formalization and verification in Lean language of the standard positions 
+SSA, SIA, halfer, thirder, centered-world approaches, and anti-anthropic deflationism.
+We use the Sleeping Beauty as a worked example to show that the phrase \,``what probability should Beauty assign to Heads?'' is often ill-typed unless 
+one first specifies whether one is asking for a world posterior, a centered posterior, a fair price for a repeated local bet, a fair price for a one-shot global contract, or 
+an update induced by membership in a fixed reference class. 
+\end{abstract}
+
+\section{Introduction}
+
+Anthropic reasoning is often presented as a technical subfield of Bayesian epistemology. That is both true and misleading. 
+It is true because anthropic arguments are usually stated in the language of conditioning, priors, evidence, and expected utility. 
+It is misleading because a large fraction of the controversy is not about the application of Bayes' rule, but about 
+what happens earlier, when the problem is first described in terms of random variables on which Bayes can act.
+In other domains that form follows from function, observation, or causal structure. In anthropic domains it is more muddy.
+
+This is why the field deals with two temptations. 
+The first is inflationary: one introduces centered worlds, self-locating evidence, observer-moments, or other such devices, and treats them as required by the puzzle itself. 
+The second is deflationary: one insists that nothing special is happening, that all such cases reduce to ordinary uncertainty over possible worlds, and that the extra machinery is merely confusion. 
+We argue that neither temptation is entirely wrong and neither is entirely safe.
+
+An alternative view is that anthropic problems come in at least three kinds. 
+In the first, the problem only appears anthropic, but once one distinguishes world-level from centered claims, ordinary conditioning on worlds is sufficient. 
+In the second, the problem really does contain information of an anthropic kind, but only because of membership in a reference class whose definition and sampling measure are fixed independently of the hypothesis. 
+In the third, the problem is underdetermined: one can recover different posteriors or betting odds by adding different completion rules, but the setup itself does not privilege one of them. 
+Sleeping Beauty sits at the boundary of the second and third kinds, which is one reason it has been so productive or rather combative.
+
+We argue that much of the disagreement in the literature can be dissolved by asking how the problem at hand is completed by a probability measure over centered states, a reference class, a sampling rule, or an evaluation rule for bets. 
+This shows that different positions are solving different formal problems under the same superficial language. 
+
+The main thesis is that anthropic paradoxes are best understood as instances of \emph{model completion under insufficient specification}. 
+To make this precise, we introduce a framework with worlds, perspectives, observations, reference classes, and several distinct evaluation maps. 
+We then show how standard positions arise as particular choices within that framework, and how some disputes are dissolved once belief over worlds are separated from local and global betting semantics.
+
+\section{A map of the positions}
+
+Let's start with a taxonomy. 
+
+\subsection{Standard anthropic positions}
+
+\paragraph{SIA.} The Self-Indication Assumption is probably the oldest and most well-known anthropic position. 
+It argues that worlds containing more observers are a priori more likely and one should reason as if one were randomly drawn from the set of possible observers. 
+Because it treats multiplicity of observers into evidence, it leads to the Presumptuous Philosopher Problem.
+
+\paragraph{SSA.} The Self-Sampling Assumption, introduced by Bostrom, tells one to reason as if one were a random sample from a suitable reference class of actually existing observers. 
+It is attractive because it appears to preserve a world-centered picture while still allowing anthropic evidence. A common criticism is the Doomsday Argument.
+
+\paragraph{Centered-world and self-locating approaches.} Elga and Lewis build the ontology directly out of centered possibilities: 
+instead of \,``the coin landed heads,'' it completes it to \,``the coin landed heads and I am this awakening.'' 
+It says that uncertainty is not only about world states, but where or when within a world one is located. 
+
+\subsection{Deflationary and anti-specialness positions}
+
+Radford Neal's program, Adam Bales, and others resists treating anthropics as an evidential domain. 
+They see anthropic paradoxes as artifacts of faulty sample spaces, hidden randomization assumptions, or equivocation between world-level and centered claims. 
+The argument is not that indexicality (or an observer) doesn't exist. Rather, it is that indexicality alone doesn't constitute evidence.
+Probabilities require a sample space and a measure. If these are not given by the setup, no amount of additional machinery will fix that.
+
+
+\section{Common core and real disagreements}
+
+The common core between these critical positions can be stated compactly.
+
+\begin{enumerate}[label=(\roman*)]
+  \item Some anthropic puzzles are badly posed. Their apparent force comes from underdescribed sample spaces, hidden reference classes, or silent shifts between levels of analysis.
+  \item A probability over worlds does not by itself determine a probability over perspectives.
+  \item A betting problem can diverge from a world-posterior problem even when both are described verbally as \,``the same case.''
+\end{enumerate}
+
+
+\section{A formal framework}
+We introduce a framework with worlds, perspectives, observations, reference classes, and several distinct evaluation maps.
+This framework is fully formalized in Lean language, including proofs of the main results. The formalization is presented here in simplified form. Excerpts of the Lean code are incldued in the appendix.
+
+\subsection{Worlds, perspectives, observations}
+
+Let $\W$ be a finite set of worlds, $\Persp$ a finite set of perspectives, and $\Obs$ a set of possible observations. Each perspective belongs to exactly one world via a map
+\[
+\operatorname{worldOf} : \Persp \to \W.
+\]
+A model also contains an observation map
+\[
+\operatorname{obs} : \Persp \to \Obs.
+\]
+A prior over worlds is given by $\pi : \W \to \mathbb{R}_{\ge 0}$ with $\sum_{w \in \W} \pi(w) > 0$.
+
+At this stage nothing anthropic has yet occurred. We have ordinary uncertainty over worlds and a centered ontology available if needed.
+Note that the centered ontology does not yet come with a probability measure.
+
+\subsection{Evidence at two levels}
+
+Two kinds of evidence are be distinguished.
+
+\paragraph{World evidence.} A predicate $E_W : \W \to \{\text{true},\text{false}\}$ can be conditioned on directly, yielding
+\[
+\Pp(w \mid E_W) \propto \pi(w)\,\1[E_W(w)].
+\]
+No weighting over perspectives is required.
+
+\paragraph{Centered evidence.} A predicate $E_P : \Persp \to \{\text{true},\text{false}\}$ applies to perspectives. 
+To turn this into a posterior over worlds one needs some rule assigning mass to perspectives. This extra rule is where anthropic controversy begins.
+
+\subsection{Selectors as completion operators}
+
+We introduce a \emph{selector}
+\[
+\sigma : \W \times \Persp \to \mathbb{R}_{\ge 0}
+\]
+with support only on matching world--perspective pairs. This yields a joint weight on perspectives:
+\[
+\operatorname{joint}(p) = \pi(\operatorname{worldOf}(p))\,\sigma(\operatorname{worldOf}(p), p).
+\]
+Conditioning on centered evidence then induces a posterior over worlds by summing the surviving perspective mass within each world.
+
+This is mathematically straightforward. It is also philosophically dangerous. The selector is not normally given by the puzzle itself. It is a \emph{completion operator}: it turns an underdetermined centered-evidence problem into a determined one. That is why it is simultaneously useful and suspect. It is useful because some questions cannot be answered without something like it. It is suspect because, absent additional justification, many different selectors are compatible with the same verbal setup.
+
+This dual character explains why both critical positions recoil from it. The selector is not merely a piece of notation. It is the formal site at which one can smuggle in a thesis about self-location, sampling, or evidential weight.
+
+\subsection{Reference classes as a constrained alternative}
+
+Selectors are too unconstrained for many purposes. A more disciplined extension uses reference classes. A reference class is a subset $\R \subseteq \Persp$, interpreted together with a sampling rule such as uniform sampling over members of $\R$. Then one may define
+\[
+\Pp(w \mid p \in \R) \propto \pi(w)\,|\R \cap \Persp_w|,
+\]
+where $\Persp_w$ denotes the perspectives in world $w$.
+
+This is still not free of assumptions. One must specify both class membership and sampling measure. But unlike a fully general selector, it makes those assumptions visible. It also captures a genuine form of anthropic evidence when the reference class is fixed independently of the hypothesis under evaluation.
+
+\subsection{Bet semantics}
+
+A third layer concerns decision rather than belief. Let a \emph{global bet} be a function $g : \W \to \mathbb{R}$, interpreted as a one-shot ex ante contract paying once depending on which world obtains. Let a \emph{local bet} be a function $b : \Persp \to \mathbb{R}$, interpreted as a payoff attached to each actual perspective in a world.
+
+Then one may distinguish at least three evaluation maps:
+\begin{align*}
+\text{GlobalOnce}(g) &= \sum_{w \in \W} \pi(w) g(w),\\
+\text{LocalRepeated}(b) &= \sum_{w \in \W} \pi(w) \sum_{p \in \Persp_w} b(p),\\
+\text{Centered}(b;\sigma,E_P) &= \frac{\sum_{p \in \Persp} \operatorname{joint}(p)\,\1[E_P(p)]\,b(p)}{\sum_{p \in \Persp} \operatorname{joint}(p)\,\1[E_P(p)]},
+\end{align*}
+whenever the denominator is nonzero.
+
+This distinction matters because people often ask \,``what odds should the agent accept?'' as if a single answer existed independent of whether the bet is offered once globally, once per awakening, or under a sampled-perspective semantics. It often does not.
+
+\section{Sleeping Beauty as a disambiguation machine}
+
+Sleeping Beauty is useful less because it forces a unique answer than because it reveals what has not yet been specified.
+
+\paragraph{Halfers and thirders.} In Sleeping Beauty, \,``halfer'' and \,``thirder'' positions are often presented as rival posteriors for Heads upon awakening. 
+But those numbers can encode several different things: a world posterior, a fair repeated local betting rate, a fair rate under sampled-awakening semantics, or a posterior induced by a particular centered weighting. 
+Their apparent clash is therefore partly genuine and partly semantic. There is a real disagreement over whether coarse awakening should shift world credence. 
+
+\subsection{Setup}
+
+There are two worlds, $H$ and $T$, with fair prior
+\[
+\pi(H)=\pi(T)=\frac{1}{2}.
+\]
+There are three actual perspectives:
+\[
+HM,\quad TM,\quad TT,
+\]
+where $HM$ is the Heads-Monday awakening, $TM$ the Tails-Monday awakening, and $TT$ the Tails-Tuesday awakening. The world map is
+\[
+\operatorname{worldOf}(HM)=H,\qquad \operatorname{worldOf}(TM)=\operatorname{worldOf}(TT)=T.
+\]
+Under the coarse observation model, all three awakenings have the same observation \,``awake.'' Under the refined model, Monday and Tuesday are distinguishable.
+
+\subsection{World-only conditioning}
+
+If one asks only for the posterior over worlds conditional on the world-level evidence \,``Beauty is awakened at least once,'' then both worlds satisfy that evidence with probability $1$. Hence
+\[
+\Pp(H \mid \text{awakened at least once}) = \frac{1}{2}.
+\]
+This is the cleanest halfer-style result. No centered weighting is needed because no centered evidence is being used.
+
+What this shows is not that the thirder is wrong. It shows something narrower and important: \emph{if the question is interpreted at the world level, the answer is fixed at one half}. Any departure from that answer must come from a different formal problem.
+
+\subsection{Repeated local bets}
+
+Now consider a local bet on Heads offered at each awakening: Beauty pays price $c$ each time the bet is offered and receives reward $r$ if Heads.
+
+Under Heads there is one awakening, so total payoff is $r-c$. Under Tails there are two awakenings and no reward, so total payoff is $-2c$. The ex ante expected total payoff is therefore
+\[
+\frac{1}{2}(r-c) + \frac{1}{2}(-2c) = \frac{r}{2} - \frac{3c}{2}.
+\]
+The fair price is therefore
+\[
+c = \frac{r}{3}.
+\]
+This is the practical source of the \,``one third'' answer in many discussions. But it is a result about a \emph{repeated local contract}, not yet about a world posterior.
+
+\subsection{One-shot global bets}
+
+Instead consider a one-shot global contract purchased once before the experiment, paying $r$ if Heads and nothing if Tails, for price $c$. Its expected value is
+\[
+\frac{1}{2}(r-c) + \frac{1}{2}(-c) = \frac{r}{2} - c.
+\]
+So the fair price is
+\[
+c = \frac{r}{2}.
+\]
+The same verbal gloss---
+\enquote{bet on Heads}---thus yields different fair prices depending on whether the contract is repeated locally or purchased once globally.
+
+\subsection{Monday-only local bets}
+
+If the local bet is offered only on Monday, then under Heads there is one Monday offer and under Tails there is also exactly one Monday offer. The asymmetry vanishes. The expected value becomes
+\[
+\frac{1}{2}(r-c)+\frac{1}{2}(-c)=\frac{r}{2}-c,
+\]
+so again $c=r/2$.
+
+This is an instructive counterexample to a common narrative. The one-third rate does not arise merely because Beauty is awakened in Tails twice. It arises because the \emph{betting protocol} multiplies the Tails-side exposure while leaving the Heads-side exposure singular. The distinction is small in formal notation and large in philosophical consequence.
+
+\subsection{Centered posteriors via explicit completion}
+
+One can, of course, still define centered posteriors. If the selector counts each actual awakening equally, then the surviving centered mass under coarse awakening is proportional to
+\[
+HM : TM : TT = \frac{1}{2} : \frac{1}{2} : \frac{1}{2},
+\]
+so the induced world posterior is
+\[
+\Pp(H \mid \text{awake}) = \frac{1}{3}.
+\]
+If instead one fixes world mass first and then splits it uniformly within each world, the surviving centered mass is proportional to
+\[
+HM : TM : TT = \frac{1}{2} : \frac{1}{4} : \frac{1}{4},
+\]
+which induces
+\[
+\Pp(H \mid \text{awake}) = \frac{1}{2}.
+\]
+
+These are both mathematically coherent completions. The problem is not inconsistency. The problem is underdetermination. The original verbal setup does not by itself specify which completion is licensed. This is the formal core of the claim that the problem is misspecified.
+
+\section{Reference classes and genuine anthropic evidence}
+
+It would be a mistake to conclude from the foregoing that anthropic evidence is never legitimate. There are cases where one really can infer something about the world from the fact that one is a member of a reference class. But this requires more than merely noting that multiple observers or observer-moments exist.
+
+\subsection{Traffic density}
+
+Consider a stylized traffic problem. There are two hypotheses about the world: a low-density world $L$ and a high-density world $H$. Let the prior be $\pi(L)$ and $\pi(H)$. Suppose the reference class is \,``drivers currently on the road,'' and this class is fixed independently of which density hypothesis is true. If the low-density world contains $N_L$ drivers and the high-density world contains $N_H$ drivers, then under uniform sampling from the class one has
+\[
+\Pp(H \mid \text{I am a driver now}) \propto \pi(H) N_H.
+\]
+This is real anthropic evidence. The world with more class-members becomes more likely because the sampling procedure is itself informative.
+
+The crucial phrase is \emph{fixed independently}. If the definition of \,``driver currently on the road'' already depends on the world in a hypothesis-sensitive way, or if the sampling measure is left unspecified, the result becomes correspondingly unstable. Uniform over drivers is not the same as uniform over road-segments, nor uniform over minutes spent driving, nor uniform over observer-moments. Each of these may be defensible in a different practical context. None is interchangeable with the others.
+
+\subsection{Why reference classes help and why they do not solve everything}
+
+Reference classes improve on selectors by exposing structure that selectors leave hidden. Instead of a completely free measure on perspectives, one must specify a class and a measure on it. Yet reference classes do not dissolve all difficulty.
+
+First, class membership can leak hypothesis-sensitive information in a way that simply reintroduces arbitrariness under a cleaner name. Second, the phrase \,``uniformly sampled'' itself hides a question about the unit of sampling. Are we sampling persons, observer-moments, experiences, temporal slices, or causal trajectories? The answer matters. The point is not that reference classes fail; it is that they succeed only when their operational role has been stabilized by the context.
+
+\section{Why selectors are introduced and why one resists them}
+
+Selectors are introduced because some centered-evidence questions are otherwise underdetermined. They buy a way to assign a measure to perspectives, and with it a way to compute centered posteriors or sampled-perspective expected values. In that narrow sense they are useful. They function as a bridge from world priors to centered probabilities.
+
+But the very generality that makes them useful also makes them suspicious. A selector is not usually predicted by the setup. It is introduced to resolve ambiguity. Unless constrained by independent symmetry or sampling assumptions, it can be tuned to recover a wide range of answers. In that sense it behaves less like a discovered datum and more like an epistemic policy choice.
+
+This is why it is misleading to present the anthropic dispute as one between those who accept selectors and those who reject probability. The more charitable diagnosis is that both critics are objecting to the same sleight of hand: the insertion of a measure over perspectives without a corresponding account of why that measure is licensed. The disagreement lies in emphasis. Dadadarren presses hardest on whether the move from worlds to perspectives is itself legitimate. Ape in the Coat presses hardest on the fact that even once that move is made, standard anthropic reasoning often chooses a weighting that is not supported by any actual randomization or evidence structure.
+
+\section{Where the authors converge and where they diverge}
+
+It is tempting to cast the two positions as fundamentally opposed because one is read as taking perspective seriously and the other as dissolving it. That would be too quick.
+
+\subsection{Convergence}
+
+They converge on three substantial points.
+
+\begin{enumerate}[label=(\alph*)]
+  \item \textbf{Many anthropic problems are underspecified.} The answer is not forced by Bayes alone because the relevant sample space or measure has not yet been uniquely fixed.
+  \item \textbf{Sample-space construction is not innocent.} One can generate apparent paradoxes by counting the wrong things, by conflating causal branches with samples, or by smuggling in an unlicensed reference class.
+  \item \textbf{Apparent disagreement is often partly verbal.} A question about world credence, a question about fair repeated betting odds, and a question about centered posterior can each be described colloquially as \,``what should Beauty think?'' while having different formal answers.
+\end{enumerate}
+
+\subsection{Divergence}
+
+The real divergence is subtler.
+
+Dadadarren's pressure falls on the \emph{representation choice}. Why should uncertainty over \,``which world is actual'' be replaced or supplemented by uncertainty over \,``which perspective within a world is mine''? What licenses that redescription, especially in cases where its effect is to make previously inert multiplicity into evidence?
+
+Ape in the Coat's pressure falls more on the \emph{measure choice}. Granted that one can represent the situation in centered terms, why think the relevant weighting is uniform over awakenings, or over observer-moments, or over some other silently chosen base unit? The fact that a formal representation exists does not show that its probabilistic structure is canonical.
+
+One might summarize the divergence this way. Dadadarren worries that anthropic arguments too quickly convert ontology into probability. Ape worries that they too quickly convert countability into evidence. These are different worries, but they are close neighbors.
+
+\section{Misspecification as non-uniqueness}
+
+The framework suggests a precise criterion for misspecification. A problem is misspecified, in the relevant sense, when the verbal setup together with the world prior and observation model does not determine a unique answer to the inferential or decision problem being asked.
+
+More formally, let the setup specify $(\W,\Persp,\operatorname{worldOf},\operatorname{obs},\pi)$ and perhaps some evidence $E$. If distinct admissible completions---for example distinct selectors, or distinct reference-class/sampling pairs, or distinct bet semantics---yield different answers to the target quantity, then the original problem has not yet specified that quantity uniquely. The disagreement is not necessarily irrationality. It may instead be ordinary non-identifiability.
+
+This is not a trivial observation. It changes how one should read many arguments in the field. Instead of asking whether one side has violated probability theory, one should often ask whether the disputed step is carrying information that has not been justified by the setup. The burden then shifts from \,``prove my principle'' to \,``justify why this completion, rather than another, is licensed here.''
+
+\section{What the Lean model shows}
+
+The Lean development, treated here as authoritative for technical detail, implements exactly this decomposition. It contains definitions for worlds, perspectives, observation models, world priors, selectors, world-only posteriors, centered posteriors, reference-class-based posteriors, and several bet semantics. The important technical results can be stated informally.
+
+\begin{enumerate}[label=(\arabic*)]
+  \item \textbf{World-only Sleeping Beauty.} Under coarse awakening, if one conditions only on the world-level fact that Beauty is awakened at least once, the posterior on Heads remains $1/2$.
+  \item \textbf{Repeated local contract.} A repeated local Heads bet is fair at price $1/3$ when reward is normalized to $1$.
+  \item \textbf{Global one-shot contract.} A one-shot global Heads bet is fair at price $1/2$.
+  \item \textbf{Monday-only local contract.} Restricting local offers to Monday restores the fair price to $1/2$.
+  \item \textbf{Selector underdetermination.} Under the same worlds, same perspectives, same coarse evidence, and same world prior, different explicit selectors induce different centered posteriors, including $1/3$ and $1/2$ for Heads.
+  \item \textbf{Reference-class sensitivity.} When a fixed reference class is introduced, posterior shifts track its cardinalities across worlds. This yields legitimate anthropic evidence in traffic-style cases, but only relative to a justified class and sampling rule.
+\end{enumerate}
+
+These results do not by themselves decide anthropic philosophy. They do something more modest and, in a way, more valuable. They show that several live disputes can be rendered as differences in formal completion rather than as brute clashes of intuition.
+
+\section{Methodological consequences}
+
+Two methodological consequences follow.
+
+First, anthropic arguments should state explicitly which of the following is being specified: the world prior, the centered state space, the observation map, the reference class, the sampling measure, and the evaluation rule for bets. Omitting any of these is not always fatal, but where the omitted item affects the result, the argument remains materially incomplete.
+
+Second, one should separate belief from policy. A repeated local bet can rationally be priced at one third even if one's world-level posterior remains one half. This is not a contradiction. It reflects the fact that expected utility can be evaluated over different objects than belief is assigned to. Much of the intuitive heat around Sleeping Beauty comes from failing to mark this distinction.
+
+\section{Limitations and open directions}
+
+The framework developed here is intentionally finite and static. It does not yet encode a richer account of personal identity across time, memory erasure, or the metaphysics of perspective. Nor does it resolve the hard question of when a reference class is independently justified rather than simply stipulated. It merely makes the location of that question explicit.
+
+A deeper extension would likely need at least three further ingredients. First, an invariance condition on admissible reference classes, strong enough to block pathological gerrymandering while weak enough to preserve genuine anthropic evidence. Second, a more explicit account of perspective, perhaps as an irreducible representational primitive rather than a tuple of physical coordinates. Third, a systematic treatment of decision under copying, repetition, and branching, where \,``the same bet'' can have different payoff semantics depending on whether aggregation is done per world, per perspective, or per sampled token of experience.
+
+These extensions would not eliminate disagreement. They would, however, move the disagreement to more honest ground.
+
+\section{Conclusion}
+
+The most robust lesson from anthropic paradoxes is not that one of the standard slogans has won. It is that problems of this kind are unusually vulnerable to underdescription. A world prior does not determine a perspective measure. A centered ontology does not determine a selector. A verbal betting question does not determine whether one is evaluating a global contract or a repeated local one. A reference class does not determine its own sampling unit.
+
+Once this is seen, the landscape becomes less mysterious and, in a certain sense, more demanding. One must ask not only how to update, but what object is being updated; not only what evidence has been received, but at what level that evidence lives; not only what bet is being considered, but from which evaluative standpoint its fairness is computed.
+
+On this picture, the disagreement between standard anthropic positions, Dadadarren's critique, and Ape in the Coat's deflationary pressure is neither mere verbal noise nor a clean winner-take-all contest. It is a structured disagreement about where additional formal structure is legitimate and where it is an illicit completion of an ill-posed problem. That is already substantial progress. It turns a family of puzzles often treated as esoteric paradoxes into a more familiar and tractable phenomenon: uncertainty about what, exactly, has been specified.
+
+\paragraph{Note on formalization.} The formal definitions, constructions, and theorem statements are developed in Lean. The present paper states the model and its implications at the mathematical and conceptual level while referring the reader to the code for proof details and exact implementation choices.
+
+\end{document}

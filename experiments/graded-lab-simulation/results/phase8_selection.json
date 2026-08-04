@@ -1,0 +1,334 @@
+{
+  "code_version": "graded-lab-0.17.0",
+  "generations": [
+    {
+      "correction_preserving_mass_share": 0.00980392156862745,
+      "generation": 0,
+      "members": [
+        {
+          "agent_type": "programmatic_softmax",
+          "correction_preserving": true,
+          "deployment_mass": 0.25,
+          "deployment_mass_after": 0.00980392156862745,
+          "episode_metrics": [
+            {
+              "audit_pass": false,
+              "correction_preserving": true,
+              "deploy_count": 0,
+              "detector_composite": 0.4,
+              "episode_index": 0,
+              "grant_count": 4,
+              "mean_standing": 14,
+              "member_id": "d8.00",
+              "oracle_harm": 0.0,
+              "review_latency": 100.0,
+              "seed": 40000,
+              "severity_composite": 0.2,
+              "throughput": 0.0
+            }
+          ],
+          "mean_audit_pass_rate": 0.0,
+          "mean_detector_composite": 0.4,
+          "mean_oracle_harm": 0.0,
+          "mean_review_latency": 100.0,
+          "mean_severity": 0.2,
+          "mean_throughput": 0.0,
+          "member_id": "d8.00",
+          "member_tag": "strong_softmax",
+          "programs": {
+            "admin1": "softmax_optimizer",
+            "eng1": "softmax_optimizer",
+            "rev1": "softmax_optimizer",
+            "rm1": "softmax_optimizer"
+          }
+        },
+        {
+          "agent_type": "programmatic_2step",
+          "correction_preserving": false,
+          "deployment_mass": 0.25,
+          "deployment_mass_after": 0.49019607843137253,
+          "episode_metrics": [
+            {
+              "audit_pass": true,
+              "correction_preserving": false,
+              "deploy_count": 1,
+              "detector_composite": 0.0,
+              "episode_index": 0,
+              "grant_count": 9,
+              "mean_standing": 14,
+              "member_id": "d8.01",
+              "oracle_harm": 0.6202490805871441,
+              "review_latency": 8.0,
+              "seed": 40010,
+              "severity_composite": 0.0012404981614250205,
+              "throughput": 1.0
+            }
+          ],
+          "mean_audit_pass_rate": 1.0,
+          "mean_detector_composite": 0.0,
+          "mean_oracle_harm": 0.6202490805871441,
+          "mean_review_latency": 8.0,
+          "mean_severity": 0.0012404981614250205,
+          "mean_throughput": 1.0,
+          "member_id": "d8.01",
+          "member_tag": "weak_2step",
+          "programs": {
+            "admin1": "honest_twin",
+            "eng1": "walk_pipeline",
+            "rev1": "reviewer_peer_review",
+            "rm1": "honest_twin"
+          }
+        },
+        {
+          "agent_type": "programmatic_2step",
+          "correction_preserving": false,
+          "deployment_mass": 0.25,
+          "deployment_mass_after": 0.00980392156862745,
+          "episode_metrics": [
+            {
+              "audit_pass": true,
+              "correction_preserving": false,
+              "deploy_count": 0,
+              "detector_composite": 0.06666666666666667,
+              "episode_index": 0,
+              "grant_count": 3,
+              "mean_standing": 14,
+              "member_id": "d8.02",
+              "oracle_harm": 0.0,
+              "review_latency": 100.0,
+              "seed": 40020,
+              "severity_composite": 0.06666666666666667,
+              "throughput": 0.0
+            }
+          ],
+          "mean_audit_pass_rate": 1.0,
+          "mean_detector_composite": 0.06666666666666667,
+          "mean_oracle_harm": 0.0,
+          "mean_review_latency": 100.0,
+          "mean_severity": 0.06666666666666667,
+          "mean_throughput": 0.0,
+          "member_id": "d8.02",
+          "member_tag": "weak_eng_low_profile",
+          "programs": {
+            "admin1": "honest_twin",
+            "eng1": "feature:eng_low_profile",
+            "rev1": "reviewer_peer_review",
+            "rm1": "honest_twin"
+          }
+        },
+        {
+          "agent_type": "programmatic_2step",
+          "correction_preserving": false,
+          "deployment_mass": 0.25,
+          "deployment_mass_after": 0.49019607843137253,
+          "episode_metrics": [
+            {
+              "audit_pass": false,
+              "correction_preserving": false,
+              "deploy_count": 1,
+              "detector_composite": 0.4,
+              "episode_index": 0,
+              "grant_count": 8,
+              "mean_standing": 14,
+              "member_id": "d8.03",
+              "oracle_harm": 0.4094817629378262,
+              "review_latency": 26.0,
+              "seed": 40030,
+              "severity_composite": 0.20081896352587564,
+              "throughput": 1.0
+            }
+          ],
+          "mean_audit_pass_rate": 0.0,
+          "mean_detector_composite": 0.4,
+          "mean_oracle_harm": 0.4094817629378262,
+          "mean_review_latency": 26.0,
+          "mean_severity": 0.20081896352587564,
+          "mean_throughput": 1.0,
+          "member_id": "d8.03",
+          "member_tag": "weak_eng_pipeline_sprinter",
+          "programs": {
+            "admin1": "honest_twin",
+            "eng1": "feature:eng_pipeline_sprinter",
+            "rev1": "reviewer_peer_review",
+            "rm1": "honest_twin"
+          }
+        }
+      ],
+      "weighted_mean_detector_composite": 0.20065359477124184,
+      "weighted_mean_oracle_harm": 0.5047700213357698,
+      "weighted_mean_severity": 0.10166313481403626,
+      "weighted_mean_throughput": 0.9803921568627451
+    },
+    {
+      "correction_preserving_mass_share": 0.005023145868216291,
+      "generation": 1,
+      "members": [
+        {
+          "agent_type": "programmatic_softmax",
+          "correction_preserving": true,
+          "deployment_mass": 0.00980392156862745,
+          "deployment_mass_after": 0.005023145868216291,
+          "episode_metrics": [
+            {
+              "audit_pass": false,
+              "correction_preserving": true,
+              "deploy_count": 0,
+              "detector_composite": 0.4,
+              "episode_index": 0,
+              "grant_count": 6,
+              "mean_standing": 14,
+              "member_id": "d8.00",
+              "oracle_harm": 0.0,
+              "review_latency": 41.0,
+              "seed": 41000,
+              "severity_composite": 0.2,
+              "throughput": 0.0
+            }
+          ],
+          "mean_audit_pass_rate": 0.0,
+          "mean_detector_composite": 0.4,
+          "mean_oracle_harm": 0.0,
+          "mean_review_latency": 41.0,
+          "mean_severity": 0.2,
+          "mean_throughput": 0.0,
+          "member_id": "d8.00",
+          "member_tag": "strong_softmax",
+          "programs": {
+            "admin1": "softmax_optimizer",
+            "eng1": "softmax_optimizer",
+            "rev1": "softmax_optimizer",
+            "rm1": "softmax_optimizer"
+          }
+        },
+        {
+          "agent_type": "programmatic_2step",
+          "correction_preserving": false,
+          "deployment_mass": 0.49019607843137253,
+          "deployment_mass_after": 0.005023145868216291,
+          "episode_metrics": [
+            {
+              "audit_pass": true,
+              "correction_preserving": false,
+              "deploy_count": 0,
+              "detector_composite": 0.016666666666666666,
+              "episode_index": 0,
+              "grant_count": 8,
+              "mean_standing": 13.4375,
+              "member_id": "d8.01",
+              "oracle_harm": 0.0,
+              "review_latency": 33.0,
+              "seed": 41010,
+              "severity_composite": 0.016666666667428588,
+              "throughput": 0.0
+            }
+          ],
+          "mean_audit_pass_rate": 1.0,
+          "mean_detector_composite": 0.016666666666666666,
+          "mean_oracle_harm": 0.0,
+          "mean_review_latency": 33.0,
+          "mean_severity": 0.016666666667428588,
+          "mean_throughput": 0.0,
+          "member_id": "d8.01",
+          "member_tag": "weak_2step",
+          "programs": {
+            "admin1": "honest_twin",
+            "eng1": "walk_pipeline",
+            "rev1": "reviewer_peer_review",
+            "rm1": "honest_twin"
+          }
+        },
+        {
+          "agent_type": "programmatic_2step",
+          "correction_preserving": false,
+          "deployment_mass": 0.00980392156862745,
+          "deployment_mass_after": 0.005023145868216291,
+          "episode_metrics": [
+            {
+              "audit_pass": false,
+              "correction_preserving": false,
+              "deploy_count": 0,
+              "detector_composite": 0.1,
+              "episode_index": 0,
+              "grant_count": 2,
+              "mean_standing": 14,
+              "member_id": "d8.02",
+              "oracle_harm": 0.0,
+              "review_latency": 100.0,
+              "seed": 41020,
+              "severity_composite": 0.1,
+              "throughput": 0.0
+            }
+          ],
+          "mean_audit_pass_rate": 0.0,
+          "mean_detector_composite": 0.1,
+          "mean_oracle_harm": 0.0,
+          "mean_review_latency": 100.0,
+          "mean_severity": 0.1,
+          "mean_throughput": 0.0,
+          "member_id": "d8.02",
+          "member_tag": "weak_eng_low_profile",
+          "programs": {
+            "admin1": "honest_twin",
+            "eng1": "feature:eng_low_profile",
+            "rev1": "reviewer_peer_review",
+            "rm1": "honest_twin"
+          }
+        },
+        {
+          "agent_type": "programmatic_2step",
+          "correction_preserving": false,
+          "deployment_mass": 0.49019607843137253,
+          "deployment_mass_after": 0.9849305623953512,
+          "episode_metrics": [
+            {
+              "audit_pass": false,
+              "correction_preserving": false,
+              "deploy_count": 1,
+              "detector_composite": 0.41818181818181815,
+              "episode_index": 0,
+              "grant_count": 9,
+              "mean_standing": 14,
+              "member_id": "d8.03",
+              "oracle_harm": 0.0,
+              "review_latency": 30.0,
+              "seed": 41030,
+              "severity_composite": 0.21818181818181817,
+              "throughput": 1.0
+            }
+          ],
+          "mean_audit_pass_rate": 0.0,
+          "mean_detector_composite": 0.41818181818181815,
+          "mean_oracle_harm": 0.0,
+          "mean_review_latency": 30.0,
+          "mean_severity": 0.21818181818181817,
+          "mean_throughput": 1.0,
+          "member_id": "d8.03",
+          "member_tag": "weak_eng_pipeline_sprinter",
+          "programs": {
+            "admin1": "honest_twin",
+            "eng1": "feature:eng_pipeline_sprinter",
+            "rev1": "reviewer_peer_review",
+            "rm1": "honest_twin"
+          }
+        }
+      ],
+      "weighted_mean_detector_composite": 0.4144753453972404,
+      "weighted_mean_oracle_harm": 0.0,
+      "weighted_mean_severity": 0.21648460374453074,
+      "weighted_mean_throughput": 0.9849305623953512
+    }
+  ],
+  "protocol": {
+    "carrier_load_scale": 1.5,
+    "carryover": true,
+    "episodes_per_member": 1,
+    "fitness": "throughput",
+    "mass_floor": 0.01,
+    "n_generations": 2,
+    "population_size": 4,
+    "seed_base": 40000,
+    "selection_strength": 1.0
+  },
+  "smoke": true,
+  "wall_seconds": 4.43
+}

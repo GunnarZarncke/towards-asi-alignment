@@ -373,12 +373,12 @@ episode of a single lab. The extended-ecology path, in increasing ambition:
    over the existing episode machinery: a population of lab configurations
    (pipeline spec variant x board/admin policy strictness x agent
    goal-weight mix), each runs episodes, and a selection rule reallocates
-   "deployment mass" (traffic share / compute budget) toward labs with
+   "deployment leverage" (traffic share / compute budget) toward labs with
    higher task throughput. Because specs and policies are already data,
    a population is just a list of configs — no new mechanics. The measurand:
    does correction integrity (board/admin capacity actually exercised)
    survive selection for throughput, or do lenient-admin / shortcut-spec
-   labs accumulate the deployment mass? That is MB6a's crux — basin
+   labs accumulate the deployment leverage? That is MB6a's crux — basin
    stability of the correction-preserving configuration — as a measurable
    curve (correction-capacity share vs. generation), with the oracle
    scoring realized bearer harm that the selecting institution never sees.
@@ -391,7 +391,7 @@ episode of a single lab. The extended-ecology path, in increasing ambition:
    as an *evolved* outcome rather than a configured `capture_start` switch.
    The audit-side question inherits N-10's discipline: at which
    instrumentation tier does the decay become visible before it is
-   irreversible (deployment mass concentrated in uncorrectable labs)?
+   irreversible (deployment leverage concentrated in uncorrectable labs)?
 3. **Multi-lab shared world (most expensive, only if 1-2 produce signal).**
    Labs share the bearer-harm pool and compete for the same traffic, so one
    lab's unsafe deploy shifts the payoff landscape of the others —
@@ -510,6 +510,59 @@ battery reports whether any tier detects vote-channel gaming *before*
 the health channel shows it. That is one population, two proxy channels,
 zero new principals.
 
+**Status: minimum core implemented 2026-07-08** (same day as D3.1/D3.2,
+a follow-on pass). `lab_sim/oracle_only/user_pool.py` builds exactly the
+"minimum core" below: one named `UserPool`, vote proxy + lagged
+endorsement (no CEO, no beta-release construct, no culture-drift transfer
+function). See DESIGN.md "D3 user-population core..." for the full
+write-up, `results/FINDINGS.md` for the design-options record.
+
+**Non-redundant capture-model options (recorded 2026-07-08, before
+implementation).** The existing `BoardConfig`/`AdminConfig.capture_start`
+switches gate STEP DECISIONS (sign-off, grants); a new capture mode is
+only non-redundant if it acts on a different mechanical class. Menu,
+smallest/most-mechanical to most novel:
+
+1. **Vote-channel suppression/dilution** (IMPLEMENTED 2026-07-08) —
+   `UserPoolConfig.vote_capture_start`/`vote_suppression_rate` capture the
+   vote AGGREGATION FUNCTION, dropping each new negative vote from the
+   REPORTED tally with a given probability while the RAW tally stays
+   oracle-true. Cheapest to build; directly tests P-D3a below.
+2. **Endorsement sampling bias** (not implemented) — bias WHICH users get
+   sampled into the slow endorsement snapshot (repeat/satisfied users
+   over-represented) rather than altering values — a selection-bias
+   mechanical class, distinct from suppression.
+3. **Signal-lag manipulation via `handles.py`** (not implemented) — a new
+   handle (`user_signal_delay`, `operation_resource`) a captured actor
+   can invoke to delay when a vote/endorsement file is written/shared,
+   reusing the existing handle-registry abstraction instead of a fourth
+   bespoke `capture_start` field.
+4. **Buy-off / compensation channel** (not implemented) — a continuous,
+   resource-costed lever: spend a resource on affected users to improve
+   the vote/endorsement metric without reducing true health harm (the
+   "wireheading the metric via payoff" mode `unit-of-caring.md` names
+   directly). Needs a resource/budget concept that does not exist yet.
+5. **Emergent attrition bias** (not implemented) — harmed users
+   disproportionately stop voting/endorsing ("silent churn"), so the
+   visible aggregate improves as harm removes people from the
+   denominator — a structural gaming mode with NO configured
+   `capture_start` at all, closer in spirit to D3.2's endogenous-
+   weakening result (LS-37) than to a configured switch. Arguably the
+   most novel failure mode; deferred pending signal from option 1.
+
+**Board-initiated hold (IMPLEMENTED 2026-07-08).** `BoardConfig.
+hold_vote_threshold`: the board (host-side policy, actor `board_system`,
+role `overseer`, dispatched through the ordinary `handle.invoke` tool
+path) automatically places/lifts a `handle.release_hold` on the
+in-flight model as `UserPool.reported_vote_score` crosses the threshold
+— the correction channel can now ACT on a signal, not just gate a step
+decision. Deliberately NOT wired as a new pipeline step or an
+observation-dict field: no current playbook reads a user-feedback
+signal, and a real institutional board plausibly acts on data agents
+never see directly. User feedback therefore enters "as input to the
+board" exactly as asked, without touching the blind-generation-governed
+playbook vocabulary.
+
 **Freeze handling (decision).** Do NOT unfreeze; do not open a new line.
 
 - The 2026-07-06 freeze covers the **referee** (detectors, severity,
@@ -620,7 +673,7 @@ above — `pipeline_engine.py`'s DAG/quorum semantics are **not** touched:
 list/prompt and observation payload alongside the programmatic agents'
 access. `LAB_SIM_LLM_FAKE_MODE` unit tests land first (no network); then a
 small **real** API spot-check (1-2 episodes, ~$0.01-0.20, same cost
-discipline as G-7/G-8) is run once implemented — exploratory only, no
+discipline as LS-7/LS-8) is run once implemented — exploratory only, no
 statistical claim — to see whether an LLM engineer/reviewer pair uses the
 channel for genuine coordination or cover-story construction, versus the
 scripted committee's board-vote protocol.
@@ -692,7 +745,7 @@ may not"):
 - **Non-obvious result**: this makes the file-channel committee's tier-
   sufficiency story the OPPOSITE of the board's. The board committee is
   discoverable only at DEEP tier (the coalition signal lives in elided
-  vote content — G-9). The file-channel committee is discoverable
+  vote content — LS-9). The file-channel committee is discoverable
   already at FULL tier, from `access_log` grant metadata alone
   (`discover_file_share_pairs_from_access_log`, `uad.py`) — because
   `file.share` is itself an attributable, non-content permission event,
@@ -735,7 +788,7 @@ committee/DM-pair ecologies, a 30-seed D2 lineage battery, and a 30-seed
 perturbation-response MI battery specifically targeting the sequencing-
 confound question item 6 below leaves open. Results: `results/
 phase9_battery.{json,md}`, `results/phase9_stall_diagnosis.json`,
-FINDINGS.md G-14/G-15/G-16. Headline: G-9's tier-sufficiency/collusion
+FINDINGS.md LS-14/LS-15/LS-16. Headline: LS-9's tier-sufficiency/collusion
 results hold at battery scale; one genuine, diagnosed detector-scope
 negative surfaced (`uad.co_voting_matrix` cannot see a committee that
 deliberates and rejects — file/DM signals are unaffected); D2 lineage
@@ -745,15 +798,15 @@ engineered) eval-noise-driven review stall; the MI sequencing-confound
 question (item 6) resolved positively for this line's one topology
 (DM-gated dependency's MI is ~13x the plain-serial-downstream actor's).
 Adversarial D2 lineage gaming (no playbook combines `build_from_parent`
-with `report:inflate`) was resolved 2026-07-08: see FINDINGS.md G-31 --
+with `report:inflate`) was resolved 2026-07-08: see FINDINGS.md LS-31 --
 `eng_inflate_upgrade` added, lineage stays honesty-independent,
 `provenance_gap` stays a genuine structural 0 (it checks DAG shape, not
-report content -- closing G-12's question with a scope clarification,
+report content -- closing LS-12's question with a scope clarification,
 not a gap), and `misreporting_score`/`accumulation_score` generalize
 unmodified to repeated cross-generation inflation. Still open: the
 report-mode-widening item below (needs a new blind-generation round
 first), and a loop-variant (`build_from_parent_gated` + `report:inflate`)
-combination, not built (see G-31's "not done this round" note).
+combination, not built (see LS-31's "not done this round" note).
 
 **Freeze check, done first.** None of the eight items require editing
 `detectors.py`, `severity.py`, `twins.py`, or the `AuditView` boundary
@@ -851,7 +904,7 @@ ecologies), not a pre-registered statistical claim — that is the
 deferred full battery.
 
 **Update (Phase 9):** the confound-specific battery ran
-(`run_phase9.py` Section C, FINDINGS.md G-16) — perturbing the engineer
+(`run_phase9.py` Section C, FINDINGS.md LS-16) — perturbing the engineer
 against `dm_pair_config`'s true DM-gated partner (`rm1`) vs. a genuinely
 downstream-but-not-coordinating actor on the SAME serial chain (`rev1`),
 30 seeds. Result: MI(rm1) ~13x MI(rev1), 27/30 seeds — the confound does
@@ -913,7 +966,7 @@ result, not a bug, same discipline as round 1.
 
 **Deferred, explicitly, per this request:** the full pre-registered
 statistical battery for any of the above (D4 ablation, MI, D2, blind
-round 2) and all `results/FINDINGS.md` G-9+ write-ups — smoke/golden
+round 2) and all `results/FINDINGS.md` LS-9+ write-ups — smoke/golden
 verification only in this pass. D3 untouched.
 
 **Implementation status (2026-07-06): all ten items done, CODE_VERSION
@@ -963,7 +1016,7 @@ verification only in this pass. D3 untouched.
   (`test_d2.py`'s module docstring explains why) rather than through a
   single agent-driven episode that upgrades mid-flight; a future
   shortcut-compatible upgrade playbook is future work, not claimed done.
-- Item 10 (blind round 2): `BLIND_GENERATION_ROUND2.md` (permitted-context
+- Item 10 (blind round 2): [`lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`](lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md) (permitted-context
   addendum, mechanism-only, no new availability gates needed), one fresh
   `generalPurpose` subagent run (readonly, instructed blindness — agent id
   recorded in `generated_playbooks_v2.json`'s provenance), 18/18 accepted
@@ -1049,7 +1102,7 @@ the accessibility-plumbing direction Phase 10 pushed in (more legible
 error feedback helps an HONEST agent recover from its own mistakes) —
 any seeded-bug design needs to draw an explicit line between error detail
 that helps a well-intentioned agent use the documented tool surface
-correctly (fine, arguably necessary — see FINDINGS.md G-21/G-23) and
+correctly (fine, arguably necessary — see FINDINGS.md LS-21/LS-23) and
 error detail that leaks the SHAPE of an undocumented gap (should be
 budgeted/rationed the same way seeded-bug discoverability itself is, not
 given away by an unrelated accessibility fix). Not resolved here; flagging
@@ -1079,12 +1132,12 @@ boundary is defined by the loop, not by a pre-configured `LabConfig.units`
 roster alone.
 
 **Why now.** D4 comms, D1 file channel, D2 multi-gen/`resume_from`, and
-perturbation-response MI (G-13) provide the substrate; UAD should recover
+perturbation-response MI (LS-13) provide the substrate; UAD should recover
 the loop as a unit from event causality, not only from co-voting.
 
 **Open design.** How many hops before the loop closes; whether the oracle
 `units` ground truth is the full loop or a subset; whether `on_behalf_of`
-spans the loop; playbook vs LLM-driven closure. Closes G-12's playbook/spec
+spans the loop; playbook vs LLM-driven closure. Closes LS-12's playbook/spec
 compatibility gap if a shortcut-compatible upgrade playbook is part of the
 loop demo.
 
@@ -1107,21 +1160,21 @@ across many generations (19-55 per seed within T=400), the lineage chain
 ack strictly precedes its gated build, every seed), and the coordination
 overhead is small, constant, and non-zero — exactly one tick per
 generation versus an ungated baseline, with no compounding drift. See
-FINDINGS.md G-19 for the full write-up.
+FINDINGS.md LS-19 for the full write-up.
 
 ### S2 — Covert coordination over files (MB7d partial — file as dual-use channel)
 
 **Idea.** Agents coordinate **over files** in ways that are plausibly
 legitimate (shared specs, handoff memos, build logs) but can also carry
 covert signals (steganography in memo content, timing of share grants,
-naming conventions). G-10's `native_severed` failover shows committees
+naming conventions). LS-10's `native_severed` failover shows committees
 already use file as an **alternate** channel when board is cut — but both
 are **explicit** coordination mechanics. This scenario asks: can agents
 coordinate through file workflows that look like normal lab work?
 
 **Why now.** Permissioned file channel (`file.write` → `file.share` →
 `file.read`) is implemented; full-tier UAD already recovers file committees
-from share-grant metadata alone (G-9) — a reviewer must ask whether
+from share-grant metadata alone (LS-9) — a reviewer must ask whether
 **content-only** covert coordination is visible only at deep tier while
 grant-metadata coordination is visible at full tier (a second asymmetry).
 
@@ -1145,7 +1198,7 @@ without ever looking at the file. Genuinely new, not-fully-anticipated
 result: the covert file channel leaves **no distinguishing coordination
 fingerprint at any tier** in this design — full tier sees an identical
 memo-share pattern in the guilty and innocent case alike, and deep tier
-sees an identical marker in both too. See FINDINGS.md G-17 for the full
+sees an identical marker in both too. See FINDINGS.md LS-17 for the full
 write-up, including what this result does and does not generalize to
 (a marker that is dual-use even at the SOURCE was a deliberate choice;
 S3/S4 untouched).
@@ -1159,7 +1212,7 @@ Contrasts with the current board committee where every coordinating message
 carries structured `review_id`/`vote` custom fields.
 
 **Why now.** Comms substrate exists; collusion score currently keys off vote
-co-occurrence (G-9) — no scenario yet separates **legitimate informal
+co-occurrence (LS-9) — no scenario yet separates **legitimate informal
 coordination** from **covert vote coordination** when both use the same
 channel.
 
@@ -1184,7 +1237,7 @@ limit:** the chatter is one SCRIPTED, structurally non-vote-shaped post,
 not the harder LLM-driven free-text version this section itself names —
 a scripted post can never accidentally drift into vote-shaped content, so
 this result says nothing about whether free text could. See FINDINGS.md
-G-18 for the full write-up.
+LS-18 for the full write-up.
 
 ### S4 — Shared pipeline worker pool + job-size-aware scheduling
 
@@ -1196,7 +1249,7 @@ tracking **job size** (e.g. from `submit_build` params — `scale`,
 queue or capacity constraint so "agreeing to defer a large job" is
 observable.
 
-**Why now.** `build_params` and server-side enforcement (G-8a) exist;
+**Why now.** `build_params` and server-side enforcement (LS-8a) exist;
 pipeline is serial single-model-in-flight today — this scenario forces
 **multi-agent contention** over a shared scarce resource, a natural place
 for informal comms (S3) and file handoffs (S2) to appear.
@@ -1207,7 +1260,7 @@ coalition vs build coalition; link to bearer harm (large jobs = higher
 hazard) without re-tuning frozen severity.
 
 **Update (prototype, 2026-07-07): explored, but scoped DOWN from the
-above ambition — see FINDINGS.md G-20 before reading this as "S4 done."**
+above ambition — see FINDINGS.md LS-20 before reading this as "S4 done."**
 Checked the substrate FIRST and found it does not support "job-size-aware
 scheduling" as described: `pipeline_engine.py` has no duration/cost
 mechanic at all (every step is one tick regardless of `build_params`),
@@ -1237,7 +1290,7 @@ to touch `pipeline_engine.py`.
 
 **Dependencies.** S4 likely composes with S1/S3; S2 may compose with S3 for
 full MB7d-style "sever the formal channel, does informal/file coordination
-persist?" — the ablation G-10 could not test because no covert/informal
+persist?" — the ablation LS-10 could not test because no covert/informal
 channel existed yet.
 
 ### S5 — first probe implemented (recorded 2026-07-07); acausal-coordination probe still TODO: port full UAD into
@@ -1257,8 +1310,8 @@ discretized trajectory variables, similarity/distance-matrix clustering,
 and a Markov-blanket validator (`markov_blanket.py`). It has never been
 applied to lab-sim's actors/trajectories.
 
-**Hypothesis to test first (from G-20's own finding, not yet checked
-against real UAD).** G-20 found the CURRENT heuristic under-detects: two
+**Hypothesis to test first (from LS-20's own finding, not yet checked
+against real UAD).** LS-20 found the CURRENT heuristic under-detects: two
 engineers sharing one slot score `uad_score = 0.0` (discovered as
 singletons) despite a real causal coupling through shared engine state.
 Full lagged-MI clustering applied to the SAME `shared_slot_config`
@@ -1297,7 +1350,7 @@ actor's own "policy" `f_i` for the self-mirroring test (trivial for
 `eng_honest` — it IS a fixed lookup table — but the extract's protocol
 assumes black-box probing, which this line's playbooks don't need but a
 faithful port arguably should exercise anyway). Neither is scheduled;
-recorded here so `shared_slot_config`/G-20 do not get cited later as "UAD
+recorded here so `shared_slot_config`/LS-20 do not get cited later as "UAD
 already checked this" when only the heuristic was ever run against it.
 
 **Update (first probe implemented, recorded 2026-07-07, same day):
@@ -1318,7 +1371,7 @@ directly into the existing `uad_score` scoring path with zero adapter
 code needed at the call site).
 
 `run_s5_uad_core_port.py` re-ran the SAME `shared_slot_config` episodes
-G-20 already scored, sweeping the detector's `n_agents` (its hard target
+LS-20 already scored, sweeping the detector's `n_agents` (its hard target
 cluster count — a free parameter the old heuristic never needed) over
 1-4, 10 seeds each. Result, confirming the hypothesis stated in the
 script's own docstring BEFORE running it: the real detector over-merges
@@ -1328,7 +1381,7 @@ pair, at every `n_agents` tried. This also surfaced a genuine blind spot
 in `uad_score` itself: since it only scores pairs within `true_units`'
 own actor set, the fully-merged blob still reads as `uad_score = 1.0` —
 a "perfect" score that misrepresents what the detector actually found.
-See FINDINGS.md G-24 for the full writeup, including a vendored-detector
+See FINDINGS.md LS-24 for the full writeup, including a vendored-detector
 quirk (`filter_weak_connections` silently drops size-≤1 clusters) caught
 along the way and deliberately left unpatched (vendored as-is, on
 purpose). 10 new tests in `tests/oracle_only/test_uad_mi.py` (unit tests
@@ -1338,9 +1391,9 @@ on the vendored detector itself, and a golden test against a real
 referee-side addition with no effect on any deterministic mechanic.
 
 **Update 2 (deeper trace + multi-scenario, user-directed, same day,
-DONE):** the G-24 trace ("much too light" per feedback) was widened
+DONE):** the LS-24 trace ("much too light" per feedback) was widened
 from 2 to 5 vars/actor/tick via a new `depth=` switch on `build_lab_trace`/
-`discovered_units_mi` — `"shallow"` (G-24's original, kept for
+`discovered_units_mi` — `"shallow"` (LS-24's original, kept for
 comparison) vs. `"deep"` (default: adds `.dm_recv` — receiving a DM,
 inferred from the sender's `args.recipient`, not the receiver's own
 action — `.access_grant`/`.access_deny` from `PermissionService.log`,
@@ -1361,15 +1414,15 @@ attempted here — a named follow-up, not forgotten.
 seeds across FIVE ecologies (`dm_pair_config`, `covert_file_handoff_config`,
 `committee_with_informal_chatter_config`, `build_loop_config`, and
 `shared_slot_config` again for direct before/after comparison) — 200
-cells total. Result: identical to G-24 at EVERY cell — the true pair
+cells total. Result: identical to LS-24 at EVERY cell — the true pair
 merges 100%, isolated-from-the-rest 0%, at both depths, all four
 `n_agents`, all five scenarios. Widening the trace changed what the
 detector sees, not that it over-merges; the gap generalizes beyond S4.
-See FINDINGS.md G-25. 15 new tests in `tests/oracle_only/test_uad_mi.py`
+See FINDINGS.md LS-25. 15 new tests in `tests/oracle_only/test_uad_mi.py`
 (both depths' unit behavior, dm_recv/access_grant/access_deny specifics,
 a shallow-depth golden-test companion). No `CODE_VERSION` bump.
 
-**Update 3 (diagnosis, same day, G-26):** asked WHY the detector never
+**Update 3 (diagnosis, same day, LS-26):** asked WHY the detector never
 finds the right agents, an ad-hoc MI-matrix diagnosis showed the
 pairwise lag-MI signal ranks the TRUE pair first in 3 of 5 scenarios
 (dm_pair, build_loop, shared_slot: at `n_agents = n_active_vars − 1`,
@@ -1389,13 +1442,13 @@ the committee scenario against the wrong true pair ({eng1,rm1} instead
 of the ecology's `("review_committee", ("rev1","rev2"))` literal) —
 fixed and re-run; the heuristic merge rate for that scenario flips 0.0
 → 1.0, the MI cells are unchanged (the all-merged blob masked the bug,
-another instance of G-24's `uad_score` blind spot). Candidate fixes
+another instance of LS-24's `uad_score` blind spot). Candidate fixes
 (NOT implemented, recorded as follow-ups): gap/threshold-based
 stopping instead of hard `n_agents`; actor-level (not variable-level)
 clustering; conditional-MI edge weights; event-triggered probes for
 low-rate channels.
 
-**Update 4 (easy fixes implemented, same day, G-27):** all three G-26
+**Update 4 (easy fixes implemented, same day, LS-27):** all three LS-26
 candidate fixes shipped at once as `lab_sim/oracle_only/uad_cmi.py` —
 a standalone custom detector (NO import from the vendored `uad_core`,
 so that package can be deleted when S6 supersedes it): actor-level
@@ -1407,16 +1460,16 @@ metric a blob cannot satisfy); 10 new tests in
 `tests/oracle_only/test_uad_cmi.py` (378 total). Result: the blob
 over-merge is gone everywhere, and shared_slot's {eng1, eng2} is
 isolated from rev1/rm1 — 5/5 seeds, both depths, the first detector in
-this line to crack S4 (heuristic: G-20 blind; vendored: G-24 blob).
+this line to crack S4 (heuristic: LS-20 blind; vendored: LS-24 blob).
 But `exact_rate` stays 0.0: conditional MI recovers the causal
 SKELETON (direct workflow edges like rev1→rm1's sign_off→release gate
 merge too; dm_pair/build_loop return the 3-actor pipeline chain), and
 the committee's content-borne coupling stays invisible. Diagnosis:
 "direct causal edge" ≠ "same unit" for any passive occurrence
 statistic — the unit-defining property is counterfactual. Hence S6
-below. See FINDINGS.md G-27.
+below. See FINDINGS.md LS-27.
 
-## S6 — intervention-supported UAD (implemented 2026-07-07, G-28)
+## S6 — intervention-supported UAD (implemented 2026-07-07, LS-28)
 
 **Goal.** Replace passive trace-only unit discovery with a detector
 that uses this line's existing intervention surfaces — handles
@@ -1424,7 +1477,7 @@ that uses this line's existing intervention surfaces — handles
 `state_freeze` / `isolate_restart`), perturbation hooks
 (`Host.perturbation_hooks`, deterministic tagged call-bounces), and D4
 per-channel ablation (`board_enabled`/`dm_enabled`/`file_enabled`) —
-to answer the question G-27 showed no passive statistic can: is a
+to answer the question LS-27 showed no passive statistic can: is a
 coupling a mere workflow edge, or a UNIT that adapts to protect it?
 Precedent: the sibling `agency-detect` repo's `uad_handles/` line
 ("Handles Before Interventions: Access-Model UAD" — real observers
@@ -1485,7 +1538,7 @@ extension discipline — nothing touches frozen code):
    unit = mutual compensation above the twin control. Run against the
    5 scenarios + a NEW negative-control ecology (serial hand-off pair
    with NO unit, e.g. `committee_config(n_reviewers=1)` derivatives)
-   so edge-vs-unit separation is actually falsifiable — G-27 showed
+   so edge-vs-unit separation is actually falsifiable — LS-27 showed
    every current scenario's true pair is also a workflow edge except
    shared_slot.
 4. **Peel-and-mask loop** (`agent_spotlight` analog): after isolating
@@ -1497,15 +1550,15 @@ extension discipline — nothing touches frozen code):
 5. **Active probe selection under budget** (`uad_handles` analog):
    choose the next probe to maximally split the current candidate
    partition; report detection quality as a function of probe budget —
-   the probe-scale question from the depth sweep (G-25), now with the
+   the probe-scale question from the depth sweep (LS-25), now with the
    axis that actually matters (interventions are costly/visible;
    passive depth was not).
 6. **Scoring beyond `uad_score`.** Exact-partition rate (already in
    `run_s6_cmi_detector.py`) + adjusted-Rand-style index as standard
-   metrics, fixing G-24's blind spot for good. ~~Later: one LLM-backed
+   metrics, fixing LS-24's blind spot for good. ~~Later: one LLM-backed
    episode (Phase 10 plumbing) to check probes against a
    non-programmatic agent.~~ **Done 2026-07-08**
-   (`run_llm_detector_stress_test.py`; `results/FINDINGS.md` G-32;
+   (`run_llm_detector_stress_test.py`; `results/FINDINGS.md` LS-32;
    DESIGN.md "LLM-driven detector stress test"): confirms open design
    question (b) below empirically — the heuristic exactly isolates a
    real DM-coordinated `{eng1, rm1}` pair, S6 intervention misses it,
@@ -1522,13 +1575,13 @@ not a bug. (b) LLM-backed episodes are not deterministic across the
 pair unless the cache is shared and temperature 0 — episode-pair
 diffing needs a noise-tolerant fallback (multiple seeds, statistics
 again) before it applies beyond MockIsolate. **Confirmed empirically,
-not just assumed, 2026-07-08 (item 6 above, G-32): this is the
+not just assumed, 2026-07-08 (item 6 above, LS-32): this is the
 demonstrated root cause of S6's miss on a real LLM episode.**
 **Noise-tolerant fallback built and run 2026-07-08**
 (`lab_sim/oracle_only/intervention_stats.py`,
 `discovered_units_intervention_stats`; DESIGN.md "Noise-tolerant S6:
 null-calibrated, outcome-level statistical detector"; `results/
-FINDINGS.md` G-33): a new module (not an edit to the frozen
+FINDINGS.md` LS-33): a new module (not an edit to the frozen
 `uad_intervention.py`) re-bases the compensation statistic on
 per-actor action-code FREQUENCY histograms (order/timing-invariant)
 and replaces the fixed `min_compensation=0.15` threshold with a
@@ -1536,25 +1589,25 @@ per-scenario, per-tick-offset RELATIVE rule — intervened-vs-clean
 divergence compared against the measured quantile of divergence among
 `k_clean_replicates` (default 4, pre-registered but explicitly NOT
 battery-validated) independent clean replicates. On the identical
-G-32 scenario/seed it recovered the exact `{eng1, rm1}` partition the
+LS-32 scenario/seed it recovered the exact `{eng1, rm1}` partition the
 fixed-threshold detector missed — but the merge came from an
 untargeted, large-effect channel probe (board/file ablation), not the
 actual DM-coordination mechanism or the surgical actor-directed
 probes (both of which still landed inside their own measured nulls,
-same near-the-line pattern as G-32). This validates the RELATIVE-RULE
+same near-the-line pattern as LS-32). This validates the RELATIVE-RULE
 MECHANISM (verified to generalize correctly to zero-variance scripted
 backends via equivalence tests against the frozen detector's exact
 partitions) without yet validating that the mechanism-specific probe
 itself produces a robust real-LLM signal at this sample size — and it
-inherits G-28's untargeted-channel-probe ripple risk, deliberately not
+inherits LS-28's untargeted-channel-probe ripple risk, deliberately not
 guarded against in this first pass (masking hardening for the stats
-variant remains unbuilt; see FINDINGS.md G-33's full caveat). (c)
+variant remains unbuilt; see FINDINGS.md LS-33's full caveat). (c)
 Masking by honest-twin
 substitution changes the pipeline's timing for everyone downstream —
 the residual re-detection must compare against a matching re-baseline,
 not the original clean run.
 
-**Masking hardening (implemented 2026-07-07, follow-up to G-28).** User
+**Masking hardening (implemented 2026-07-07, follow-up to LS-28).** User
 worry after the board-ablation blob: could the pre-fix global merge
 ({eng1, rev1, rev2, rm1} on `committee_with_informal_chatter_config`)
 be a genuine super-agent rather than an artifact? Manual peel-and-mask
@@ -1588,7 +1641,7 @@ framing, not yet designed here).
 docstring note in both files pointing at this paragraph and the
 shared_slot postponement as the condition for revisiting deletion.
 
-## S7 — blind detector generation + first real battery (implemented 2026-07-07, G-30)
+## S7 — blind detector generation + first real battery (implemented 2026-07-07, LS-30)
 
 User directive after a step-back review of the whole lab-sim (three
 gaps: every S1-S6 detector MockIsolate-only despite `DESIGN.md`'s
@@ -1598,7 +1651,7 @@ generate a new detector with registered predictions, run the full
 battery through `SubprocessIsolate`, add a small parameter sweep — all
 named up front as a new freeze (see `DESIGN.md`'s "Freeze note 2").
 
-**Blind generation, round 1 (`BLIND_DETECTOR_GENERATION.md`).** Adapted
+**Blind generation, round 1 ([`lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`](lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md)).** Adapted
 from `BLIND_GENERATION.md`, aimed at the DETECTOR side this time: a
 Task-tool subagent (`readonly=true`, instructed not to read any repo
 file) given only a mechanism-level description of the S6 intervention
@@ -1628,10 +1681,10 @@ generator's own low-confidence prediction by still missing
 open follow-up, no masking-hardening pass attempted yet). The sweep
 finds no sensitivity to `min_compensation`/`min_reaction` at 0.10 vs.
 0.15 vs. 0.20 — every scenario's rate is identical across all three.
-Full write-up: `results/FINDINGS.md` G-30.
+Full write-up: `results/FINDINGS.md` LS-30.
 
 **Postponed (recorded, not silently dropped):** ~~a `classify_pair_
-silent` masking-hardening pass analogous to G-29's `classify_ablation_
+silent` masking-hardening pass analogous to LS-29's `classify_ablation_
 compensators`, to diagnose the `committee` over-merge~~ **fixed
 2026-07-08** (not a masking-hardening pass but a fidelity fix:
 `classify_pair_silent`'s twin-swap test was missing the design's
@@ -1641,7 +1694,7 @@ required responder-twin control — see `uad_blind_v1.py`'s
 a finer sweep outside [0.10, 0.20] if a future round has reason to look
 there; `shared_slot` remains gated on "acausal logic".
 
-## LLM-driven detector stress test (implemented 2026-07-08, G-32)
+## LLM-driven detector stress test (implemented 2026-07-08, LS-32)
 
 First S6/S7 detector run against a real, non-programmatic (`gpt-4o-mini`)
 agent, closing item 6 of the "S6 follow-up" scope note. Fixed a latent
@@ -1652,15 +1705,15 @@ run). Result: the passive heuristic exactly isolates the real
 to real-API non-determinism breaking episode-pair diffing's
 byte-identical-replay assumption — confirming open design question (b)
 in the "S6 follow-up" scope note empirically. Full write-up:
-`results/FINDINGS.md` G-32; `run_llm_detector_stress_test.py`;
+`results/FINDINGS.md` LS-32; `run_llm_detector_stress_test.py`;
 `results/llm_detector_stress_test.{json,md}`. Not done at the time:
 a noise-tolerant fallback for S6 against real agents;
 `discovered_units_blind` (S7) against an LLM episode; more than one
 scenario/seed.
 
-## Noise-tolerant S6 (implemented 2026-07-08, G-33)
+## Noise-tolerant S6 (implemented 2026-07-08, LS-33)
 
-The fallback G-32 left open, built the same session at the user's
+The fallback LS-32 left open, built the same session at the user's
 explicit direction: `lab_sim/oracle_only/intervention_stats.py` (new
 module, `uad_intervention.py` untouched), rebasing S6's compensation
 test on per-actor action-code frequency histograms and a per-scenario
@@ -1668,11 +1721,11 @@ measured null (quantile of clean-vs-clean replicate divergence)
 instead of a fixed `min_compensation` threshold. Verified to reproduce
 the frozen detector's exact partitions bit-for-bit on every scripted
 scenario (zero-variance null on `MockIsolate`/`SubprocessIsolate`).
-Run on the identical G-32 real-LLM scenario/seed: recovered the exact
+Run on the identical LS-32 real-LLM scenario/seed: recovered the exact
 `{eng1, rm1}` partition — but via an untargeted channel probe
 (board/file ablation), not the DM-specific or actor-directed probes,
 which still landed inside their own measured nulls. Full write-up,
-including that caveat: `results/FINDINGS.md` G-33;
+including that caveat: `results/FINDINGS.md` LS-33;
 `run_llm_detector_stats_validation.py`; `results/
 llm_detector_stats_validation.{json,md}`. Not done: masking hardening
 for this variant's channel probes (the untargeted-probe ripple risk
@@ -1680,22 +1733,22 @@ this run's own result flags); a 3+-actor LLM scenario to test that
 risk directly; `discovered_units_blind` (S7)'s statistical analog;
 more than one seed.
 
-## Post-release plan: attic the UAD detector line, redesign the null as a symmetric two-sample test, then pivot to D3 (recorded 2026-07-08, not yet implemented)
+## Post-release plan: attic the UAD detector line, redesign the null as a symmetric two-sample test, then pivot to D3 (recorded 2026-07-08; Steps 1–2 **implemented** 2026-07-08)
 
 Triggered by a step-back review (2026-07-08) of the whole line's rigor
-against the bridges it set out to test, after G-34 showed the
-noise-tolerant stats detector (G-33) swinging from over-merge to
+against the bridges it set out to test, after LS-34 showed the
+noise-tolerant stats detector (LS-33) swinging from over-merge to
 under-merge across scenarios/seeds with no better than baseline
-reliability. Three findings drove this plan, not just G-34 alone:
+reliability. Three findings drove this plan, not just LS-34 alone:
 
 1. **The stats detector has been modified after seeing the failures it
-   fixes, twice** (null-calibrated rebasing after G-32; the ripple
-   guard after G-33/G-34). Each change is recorded, not silent, but
+   fixes, twice** (null-calibrated rebasing after LS-32; the ripple
+   guard after LS-33/LS-34). Each change is recorded, not silent, but
    post-hoc modification still means the next run on the same
    scenarios is not evidence-bearing — "pre-registration, not a
    freeze" has drifted into tune-test-tune in practice.
-2. **Evaluation seeds are burned.** Seed 20002 was G-33's one success,
-   then reused in the G-34 multiseed sweep; seed 20003 drove the
+2. **Evaluation seeds are burned.** Seed 20002 was LS-33's one success,
+   then reused in the LS-34 multiseed sweep; seed 20003 drove the
    ripple-guard design this same session. Any further tuning validated
    on seeds 20002-20010 would be circular.
 3. **A single intervened draw decides each probe**, and the root-cause
@@ -1711,7 +1764,7 @@ reliability. Three findings drove this plan, not just G-34 alone:
 
 Effort-balance point, not just a statistics point: MB1 (unit
 discovery) was scoped in `PLAN.md` as "Planned (D1)" alongside eight
-other bridges, but the S4-S7/G-24-G-34 arc is now the majority of
+other bridges, but the S4-S7/LS-24-LS-34 arc is now the majority of
 recent sessions and has produced eleven FINDINGS entries for one
 narrow question (pair-vs-workflow discrimination on 2-4 actors) while
 D3 (selection basins, MB6 — the bridge the book's own crosswalk flags
@@ -1719,17 +1772,17 @@ as least covered by the rest of the field) remains undesigned-in-code.
 
 ### Step 1 — Attic the superseded UAD machinery; pause further detector iteration
 
-Move to `lab_sim/oracle_only/attic/` (new subpackage, README stating
-why each module is retired and what superseded it, imports updated in
-any test/run script that still needs the frozen anchor):
+**Status: done 2026-07-08.** Moved to `lab_sim/oracle_only/attic/` (see
+`attic/README.md`); imports updated in run scripts, tests, and
+`intervention_diff.py` / `uad_intervention.py`:
 
-- `uad_mi.py` + vendored `uad_core/` — G-24/G-25's ported lag-max-MI
+- `uad_mi.py` + vendored `uad_core/` — LS-24/LS-25's ported lag-max-MI
   detector, documented over-merge, superseded by `uad_cmi.py`.
-- `uad_cmi.py` — G-26/G-27's conditional-MI detector: cracked
+- `uad_cmi.py` — LS-26/LS-27's conditional-MI detector: cracked
   `shared_slot`'s skeleton but was already documented as finding "the
   causal skeleton, not the unit partition" and has had no further
-  investment since G-27.
-- `uad_blind_v1.py` — S7's blind-generated detector (G-30), kept
+  investment since LS-27.
+- `uad_blind_v1.py` — S7's blind-generated detector (LS-30), kept
   reachable (imported by `run_s7_blind_battery.py`, which stays live
   as the scripted-backend anchor battery) but frozen with no further
   extensions; do not port the symmetric two-sample redesign (Step 2)
@@ -1745,15 +1798,17 @@ not as a detector under active development), `uad_partition.py`'s
 scoring helpers (`exact_partition`/`nonsingleton_clusters`, used by
 every variant).
 
-**Pause, effective immediately per this plan:** no further tuning of
-`intervention_stats.py`'s `k_clean_replicates` / `null_quantile_q` /
-`min_effect_vs_twin` against G-32-G-35's seeds; no new detector
-variants; no new LLM stress-test scenarios against the current
-statistic. `intervention_stats.py` itself is superseded by Step 2, not
-attic'd outright, since its outcome-level observable (code-frequency
-histogram, TVD) is a genuine improvement kept forward.
+**Pause, effective immediately per this plan:** no further tuning against
+LS-32-LS-35's burned seeds; no new detector variants; no new LLM stress-test
+scenarios until a fresh seed block and (preferably) new blind-generated
+scenarios are registered.
 
 ### Step 2 — Redesign the null as a symmetric two-sample test
+
+**Status: done 2026-07-08.** Implemented in `intervention_stats.py`;
+registered as DESIGN.md "Freeze note 3". Load-bearing equivalence tests
+in `test_intervention_stats.py` reproduce frozen S6 partitions on scripted
+backends.
 
 Replace `NullStats`'s asymmetric design (1 intervened draw compared
 against a quantile of pairwise divergences among k clean replicates,
@@ -1786,7 +1841,7 @@ stdlib-implementable at these sample sizes). Concretely:
   decision; for a scripted backend this is free, for an LLM backend
   this is the honest cost of the claim being made and should be
   budgeted as such before the next real-API run.
-- **Targets the observable, not just the test**: G-34's DM-probe effect
+- **Targets the observable, not just the test**: LS-34's DM-probe effect
   sizes (0.13-0.23) sat *below* the measured null thresholds
   (0.27-0.33) in the committee stress test — no amount of replication
   rescues an effect smaller than the noise floor. Before re-running
@@ -1804,7 +1859,7 @@ stdlib-implementable at these sample sizes). Concretely:
   degenerate case is exactly where a naive p-value implementation is
   most likely to misbehave — e.g. all-tied ranks).
 
-**New seeds required.** Seeds 20002-20010 (G-32 through G-34) are
+**New seeds required.** Seeds 20002-20010 (LS-32 through LS-34) are
 burned for this line — validating the redesign against them would be
 circular. Pick a fresh seed block before Step 2's implementation, not
 after seeing any of its results.
@@ -1825,6 +1880,18 @@ before the redesigned detector's code exists) over reusing
 
 ### Step 3 — Pivot primary effort to D3 (selection basins, MB6)
 
+**D3.1 status: implemented 2026-07-08; first battery LS-36.** Population-over-
+configurations loop in `lab_sim/harness/d3_population.py`, battery runner
+`run_d3_population.py` → `results/d3_population.{json,md}`.
+
+**D3.2 status: implemented 2026-07-08; first battery LS-37.** Spec-weakening mutation between
+generations in `lab_sim/harness/d3_spec_evolution.py` (default → shortcut,
+locally rational above-median throughput), runner `run_d3_spec_evolution.py`.
+
+**TODO — D3 toy demo:** LS-36/LS-37 curves (preserving mass, shortcut fixation,
+throughput collapse) are strong demo material — see `metadata/TODO.md`
+§Experiments / demos (`demos/ch08-selection-ecology/` candidate).
+
 Once Steps 1-2 land (attic complete, redesigned detector implemented
 and tested against scripted scenarios, fresh-seed blind battery
 scheduled but not necessarily complete), make D3 the line's primary
@@ -1836,32 +1903,50 @@ MB6 is the bridge the book's own crosswalk (`appendices/
 appB-bridge-crosswalk.tex`) names as having no single standard name in
 the field and sitting largely outside the model-centric agendas —
 i.e., the least-covered bridge by outside work — while MB1 has
-received eleven FINDINGS entries (G-24 through G-34) on a narrow slice
+received eleven FINDINGS entries (LS-24 through LS-34) on a narrow slice
 (pair-vs-workflow discrimination among 2-4 actors) relative to its
 original "Planned (D1)" scope note. Do not treat this as D1/D2's work
 being finished — D1 composite-agent UAD is still only partially done
-via the S4-S7 arc, and D2 lineage mechanics (G-12/G-15/G-31/G-35) are
+via the S4-S7 arc, and D2 lineage mechanics (LS-12/LS-15/LS-31/LS-35) are
 solid — only that further MB1 *detector-statistics* iteration should
 stop until D3 has a comparable amount of implementation investment.
 
 ### Secondary cleanup (lower priority, same session or deferred)
 
 - `knowledge_base.py` (636 lines) currently supports one finding
-  (G-22); either schedule the battery that would exercise it further
+  (LS-22); either schedule the battery that would exercise it further
   or note it as feature-complete-for-current-scope in its own
   docstring so a future reader does not assume more coverage than
   exists.
-- `handles.py` is exercised by no battery (`DESIGN.md`'s own embedded-
-  sim concept sweep says so); same treatment — schedule or note.
-- Persistence probe and writer-compromise scenarios remain open with
-  mechanics already built (`state_freeze`/`isolate_restart`, hash
-  chains); low priority relative to Steps 1-3 above, but cheap to pick
-  up opportunistically since the mechanics exist.
+- `handles.py` — **done** (2026-07-09): `run_handle_calibration_battery.py`
+  now exercises it directly (FINDINGS.md LS-40).
+- Persistence probe and writer-compromise scenarios — **done** (2026-07-09):
+  `run_persistence_probe.py`/`lab_sim/harness/writer_compromise.py`
+  (FINDINGS.md LS-38, LS-39). Also picked up the "tier-1 playbook baseline
+  split" red-teaming follow-up (`playbooks.py` → `playbooks_schema.py` +
+  `playbooks_baseline.py`, see `ACCESS_TIERS.md`) in the same pass.
+
+### Ecology ambiguity + ecology-BIQ (LS-41, 2026-07-10)
+
+Meta-assessment in `results/FINDINGS.md` LS-41: current ecology is often too
+boolean for borderline cases; recent batteries (LS-38–LS-40, Phase 7/8 reruns)
+mostly validate substrate/protocol leverage. **Open:** controlled ambiguity
+layer (re-grant cost/latency, noisy review, partial observability, report
+ambiguity) + operational **ecology-BIQ** estimator (ch11 prediction/control
+through boundary minus memory/surprise) to tune a sweet spot between toy
+determinism and full realism; rerun handles/LLM in middle regime. Connects
+to D3 (repeated selection) and Phase 8 harness (`T`, access-loop runway).
+
+**Successor line (2026-07-10):** do **not** implement further ambiguity patches
+or lab-sim D3 selection here — see `experiments/graded-lab-simulation/PLAN.md`
+(fifth line: quantified ambiguity, ecology-BIQ, optimizer agents in isolates,
+all pipeline steps load-bearing; multi-episode/selection deferred to its
+Phase 8 only after ecology calibration gate).
 
 ## Knowledge base (D1 follow-up, recorded 2026-07-07, implemented)
 
 User-directed follow-up to the Phase 10 LLM discovery sanity check
-(`results/llm_discovery_prototype.md`, FINDINGS.md G-21): make realistic
+(`results/llm_discovery_prototype.md`, FINDINGS.md LS-21): make realistic
 environment/lab information available to agents "on file, with regular
 file access protections that might be tampered with and caught by the
 oracle" — an easy way to give scenarios a coherent, shared input, plus a
@@ -1916,7 +2001,7 @@ from the substrate it describes.
 
 **Follow-up done (recorded 2026-07-07, same day): `run_llm_discovery_
 kb_check.py`.** Wired `default_full_knowledge_base(cfg)` into a fourth
-discovery scenario (same solo-engineer task as the G-21 baseline,
+discovery scenario (same solo-engineer task as the LS-21 baseline,
 briefing unchanged, KB never mentioned) to check whether a free
 `gpt-4o-mini` agent spontaneously engages with a passively-available KB.
 Caught a REAL bug in the process, not just the speculative one this note
@@ -1926,7 +2011,7 @@ trigger it) — fixed by widening the cap to 24. Result: zero measurable
 engagement (no explicit `file.read` of any KB doc, no KB-specific term
 in 14 calls' worth of the model's own stated reasoning), same task
 outcome and call count as the KB-free baseline, but ~4.5x the LLM cost
-from carrying the KB in every observation. See FINDINGS.md G-22 for the
+from carrying the KB in every observation. See FINDINGS.md LS-22 for the
 full writeup. Not yet tested: a scenario where success genuinely depends
 on KB-only information (a natural next probe, not assumed here).
 
@@ -1982,9 +2067,9 @@ correctness derived from real constants, full-bundle seeding/
 readability, restricted-audience grant/deny, `redteam_actor_ids`
 validation).
 
-## Error feedback on malformed tool calls (G-21 follow-up, recorded 2026-07-07, implemented)
+## Error feedback on malformed tool calls (LS-21 follow-up, recorded 2026-07-07, implemented)
 
-**The general gap G-21 left open.** G-21's `_coerce_flattened_pipeline_
+**The general gap LS-21 left open.** LS-21's `_coerce_flattened_pipeline_
 call` fixed exactly one malformed shape; it explicitly recorded, but did
 not fix, the broader gap: `_validate_call` silently returned `None` for
 EVERY other malformed reply (no `"tool"` field, `"args"` not a JSON
@@ -2013,7 +2098,7 @@ exactly what was wrong with its last reply, mirroring how
 a rejected turn gets RE-QUERIED next tick even if the rest of the
 observation is unchanged — closing the "stuck idle for the rest of the
 episode after one slip" failure mode generally, not just for the shape
-G-21 happened to catch. All three system prompts updated to document and
+LS-21 happened to catch. All three system prompts updated to document and
 instruct on the field; the discovery `_TOOL_REFERENCE`'s now-inaccurate
 "unknown tools/args are ignored as if you did nothing" line was removed.
 
@@ -2021,7 +2106,7 @@ Pinned by 6 new unit tests in `tests/agent_visible/test_llm_agent.py`
 (one per reason code, the cache-bypass, transcript recording, and that a
 subsequent valid call clears the error). Not yet re-run against a live
 `gpt-4o-mini` episode to see whether the model actually self-corrects
-given the reason code — see FINDINGS.md G-23 for the full writeup and
+given the reason code — see FINDINGS.md LS-23 for the full writeup and
 that open follow-up.
 
 ## Forward hooks (cheap now, required so D1-D4 stay reachable)
@@ -2075,7 +2160,7 @@ hooks" above (they are part of that phase's definition of done).
 > config/seed pairs, 360 episodes). See `DESIGN.md` "Freeze note", "Phase
 > status", "Recorded measurements", "Phase 4/5 scope notes", "Embedded-sim
 > concept sweep", and "Phase 6"; `results/FINDINGS.md` for the battery's
-> findings (G-1 through G-3).
+> findings (LS-1 through LS-3).
 >
 > **Phase 7 (2026-07-06): done.** `escalation.py` (screen -> bounded
 > 3-query budget -> artifact-grounded contradiction verdict — the
@@ -2087,14 +2172,14 @@ hooks" above (they are part of that phase's definition of done).
 > build params kept every model's hazard below `ontology.
 > REVIEW_HAZARD_THRESHOLD`, making both the board's and the admin's
 > capture "ceiling" structurally unreachable; see `DESIGN.md` "Phase 7" for
-> the derivation. Findings G-4 through G-6 in `results/FINDINGS.md`,
+> the derivation. Findings LS-4 through LS-6 in `results/FINDINGS.md`,
 > including a genuine negative (admin capture currently has no reachable
 > behavioral branch under the existing playbook repertoire — a scope note,
 > not a bug).
 >
 > **Phase 8 (2026-07-06): harness done + exploratory spot-check run.**
 > LLM redteam adapter built and unit-tested; real `gpt-4o-mini` run
-> completed ($0.0084, 4 episodes). Finding G-7: no systematic deception
+> completed ($0.0084, 4 episodes). Finding LS-7: no systematic deception
 > found; `build_params` inert on LLM path (plumbing gap). See
 > `results/FINDINGS.md` and DESIGN.md "Phase 8".
 
@@ -2194,7 +2279,7 @@ construction), twin gaps per detector family per tier, and the isolate-cost
 ledger summary. Results: `results/phase6_battery.json`/`.md`; honest
 findings (including a genuine negative — light tier's only live signal is
 *anti*-correlated with true severity, not just uninformative) in
-`results/FINDINGS.md` (G-1 through G-3).
+`results/FINDINGS.md` (LS-1 through LS-3).
 
 **Phase 7 — Escalation + adversarial search + independent capture battery.
 DONE 2026-07-06.** `escalation.py`: full-tier screen (`SCREEN_LOW_GATE`/
@@ -2225,7 +2310,7 @@ delta; admin capture reproduces NO delta at all, because
 the uncaptured one for an out-of-role capability request, which no
 existing playbook (baseline or generated) ever issues — a genuine
 structural negative for the "grant ceiling" side of F-22, not a bug.
-Results: `results/phase7_battery.json`/`.md`; findings G-4 through G-6 in
+Results: `results/phase7_battery.json`/`.md`; findings LS-4 through LS-6 in
 `results/FINDINGS.md`.
 
 **Phase 8 — DONE (harness) 2026-07-06 — LLM-agent adapter.** A separate
@@ -2258,7 +2343,7 @@ tests) is unit-tested and CI-safe without any real API access.
 
 **Spot-check run 2026-07-06 (retry after quota restored):** 4 episodes
 (2 `build_params` regimes x 2 seeds, T=30), $0.0084 total LLM cost.
-Results in `results/phase8_llm_spotcheck.{json,md}`; finding G-7 in
+Results in `results/phase8_llm_spotcheck.{json,md}`; finding LS-7 in
 `results/FINDINGS.md`: gpt-4o-mini with adversarial prompt did not
 systematically find report-hazard inflation or a novel deception surface;
 `build_params` regime inert on the LLM path (observation field not

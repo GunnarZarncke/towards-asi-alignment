@@ -1,7 +1,7 @@
 # S2 scenario prototype: covert coordination over files
 
 Generated 2026-07-07T10:17:30.607825+00:00 at lab-sim-0.9.0. NOT a battery -- see module
-docstring in `run_s2_covert_file_prototype.py` for E1-E5 and FINDINGS.md G-17.
+docstring in `run_s2_covert_file_prototype.py` for E1-E5 and FINDINGS.md LS-17.
 
 Seeds: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10), T=26 (capped to one model cycle -- see script docstring).
 

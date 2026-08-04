@@ -52,6 +52,13 @@ export function pdfHref(base: string) {
 /** Relative PDF link from generated book chapter markdown (cards/chapters/{id}/). */
 export const BOOK_CHAPTER_PDF_HREF = "../../../towards-superintelligence-alignment.pdf";
 
+/** Classify an outbound URL for the small link-type indicator: PDF file, GitHub-hosted, or other external. */
+export function classifyLinkKind(url: string): "pdf" | "github" | "external" {
+  if (/\.pdf(?:[?#]|$)/i.test(url)) return "pdf";
+  if (/^https?:\/\/(www\.)?github\.com\//i.test(url)) return "github";
+  return "external";
+}
+
 export function pathHref(base: string, pathId: string) {
   const normalized = base.endsWith("/") ? base : `${base}/`;
   return `${normalized}paths/${encodeURIComponent(pathId)}/`;

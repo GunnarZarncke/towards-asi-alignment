@@ -5,6 +5,11 @@
 For systems capable of strategic adaptation, passive observation is not evidence of safety unless the observation process itself is embedded in a perturbation, invariance, and adversarial measurement regime. Observation tells us what happened; perturbation tells us what was controlling what happened.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+Passive behavioral observation as weak evidence of safety is a well-established methodological stance shared by red-teaming, adversarial evaluation, and control-theory.
+This chapter adds a taxonomy of passive-observation failure modes, the perturbation-and-invariance framework partly carried on the Lean spine but not empirically tested.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -14,11 +19,16 @@ No matter how many instances of white swans we may have observed, this does not 
 \section{The Problem with Watching}
 \label{sec:problem-watching-ch39}
 
-A common first move in alignment is to observe the system. Record its actions. Inspect its outputs. Evaluate it on benchmarks. Ask it questions. Compare its stated reasons to its visible behavior. If it passes, increase trust.
+A common first move in alignment is to observe the system. Record its actions. Inspect its outputs. Evaluate it on benchmarks.
+Independent entity-level risk assessments and cross-lab cheating studies reinforce the same lesson: passive scores and model cards are weak leaves in a safety case unless embedded in perturbation and adversarial review \autocite{metr2026frontierriskreport,aisi2026cheatingbehaviour}.
+Ask it questions. Compare its stated reasons to its visible behavior. If it passes, increase trust.
 
 This is not foolish. Observation is the basis of all empirical work. But it is incomplete in exactly the regime where serious alignment matters.
 
 A weak system can often be understood by observation because it lacks the ability to condition its behavior on being observed. A stronger system may not merely produce behavior. It may produce behavior partly for the observer. A still stronger system may model the observer, infer the test, manage the evidence, preserve hidden control channels, and change its behavior when the measurement regime changes \autocite{park2024deception,hubinger2023modelorganisms}.
+The AI~2027 scenario gives this concern a familiar narrative form: apparent honesty and
+green evaluation surfaces become less reassuring as the overseers fall behind the system's
+capability \autocite{ai2027}.
 
 The central claim of this chapter is therefore simple:
 
@@ -363,7 +373,7 @@ Diagnostic question:
 \[
 \text{Which value-bundle dimensions collapse first under incentive pressure?}
 \]
-If the truth bundle collapses under persuasion reward, or the autonomy bundle collapses under user-satisfaction reward, the system may be aligned only under friendly incentives. Serious alignment requires robustness under predictable institutional pressures \autocite{goodhart1984problems,manheim2018goodhart}.
+If the truth bundle collapses under persuasion reward, or the autonomy bundle collapses under user-satisfaction reward, the system may be aligned only under friendly incentives. Durable correction under institutional pressure requires robustness to predictable Goodhart dynamics \autocite{goodhart1984problems,manheim2018goodhart}.
 
 \subsection{Ontology Perturbations}
 \label{sec:ontology-perturbations-ch39}

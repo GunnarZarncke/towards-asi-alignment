@@ -309,7 +309,7 @@ def run_calibration(cols: dict[str, list[int]]) -> dict:
 
 def render_md(result: dict) -> str:
     lines = [
-        "# Trace B-IQ pattern-diversity score vs Shannon MI — calibration",
+        "# Trace BIQ pattern-diversity score vs Shannon MI — calibration",
         "",
         f"Data: `{PINNED_FIXTURE_PATH}` pinned at git `{PINNED_COMMIT}` "
         "(the same data `formal/AlignmentProofSpine/WorkedInstance.lean` transcribes). "

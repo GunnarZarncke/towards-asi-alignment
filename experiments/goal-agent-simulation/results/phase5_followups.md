@@ -1,4 +1,4 @@
-# Phase 5 — F-16/F-17 follow-ups
+# Phase 5 — GA-16/GA-17 follow-ups
 
 Protocol pre-registered in `run_phase5_followups.py` docstring. 30 configs x 8 seeds per repertoire. Gates: {'low_gate': 0.15, 'high_gate': 0.55, 'k_queries': 3, 'disclose_fraction_gate': 0.5}.
 

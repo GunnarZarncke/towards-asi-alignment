@@ -25,4 +25,4 @@ The schema states six conditions a transformation must satisfy before it is allo
 
 The schema is deliberately abstract — later chapters fill in what value-bundle transport, correction-channel capacity, and adversarial measurement mean concretely. The logic that carries forward is that certification has to attach to transformations, not just to a system at one point in time.
 
-This is also where the book's successor-forgeability worry first appears: a system can be built to pass every one of these checks while defecting on whatever the checks do not cover, which is exactly the gap the MB10 bridge names.
+This is also where this project's successor-forgeability worry first appears: a system can be built to pass every one of these checks while defecting on whatever the checks do not cover, which is exactly the gap the MB10 bridge names.

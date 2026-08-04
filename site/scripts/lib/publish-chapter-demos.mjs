@@ -11,7 +11,7 @@ const demosSrc = demosRoot;
 const demosPublic = path.join(siteRoot, "public", "chapter-demos");
 
 const STATIC_COPY = new Set([".html", ".js", ".css", ".json", ".svg", ".png", ".webp", ".ico"]);
-const SKIP_DIRS = new Set(["tests", "__pycache__", "node_modules"]);
+const SKIP_DIRS = new Set(["tests", "__pycache__", "node_modules", ".pytest_cache", ".venv"]);
 
 function runBuildDemos() {
   return new Promise((resolve, reject) => {
@@ -51,21 +51,28 @@ async function isHybridBackend(demoDir) {
   }
 }
 
-async function copyStaticDemo(demoId, demoDir) {
-  const outDir = path.join(demosPublic, demoId);
+async function copyStaticDemoDir(srcDir, outDir) {
   await mkdir(outDir, { recursive: true });
-  const entries = await readdir(demoDir, { withFileTypes: true });
+  const entries = await readdir(srcDir, { withFileTypes: true });
 
   for (const entry of entries) {
     if (entry.isDirectory()) {
-      if (SKIP_DIRS.has(entry.name)) continue;
+      // Recurse (e.g. a demo's own `data/` folder of precomputed static
+      // assets, like ch07-lab-sim-replay/data/episode_trace.json) -- but
+      // never into dev-only clutter (tests, venvs, caches).
+      if (SKIP_DIRS.has(entry.name) || entry.name.startsWith(".")) continue;
+      await copyStaticDemoDir(path.join(srcDir, entry.name), path.join(outDir, entry.name));
       continue;
     }
     const ext = path.extname(entry.name).toLowerCase();
     if (!STATIC_COPY.has(ext)) continue;
     if (entry.name.endsWith(".test.js")) continue;
-    await cp(path.join(demoDir, entry.name), path.join(outDir, entry.name));
+    await cp(path.join(srcDir, entry.name), path.join(outDir, entry.name));
   }
+}
+
+async function copyStaticDemo(demoId, demoDir) {
+  await copyStaticDemoDir(demoDir, path.join(demosPublic, demoId));
 }
 
 async function writeBackendFallback(demoId, title, backendPort) {

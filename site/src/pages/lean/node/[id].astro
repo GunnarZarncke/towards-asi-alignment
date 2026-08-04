@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import Badge from "../../../components/Badge.astro";
+import LinkIndicator from "../../../components/LinkIndicator.astro";
 import LeanTryIt from "../../../components/LeanTryIt.astro";
 import LeanCodeBlock from "../../../components/LeanCodeBlock.astro";
 import LeanSpineSource from "../../../components/LeanSpineSource.astro";
@@ -26,7 +27,10 @@ const graphsWithNode = leanSpine.graphOrder.filter((slug) => {
 
 <SiteLayout
   title={node.label.replace(/\n/g, " ")}
-  description={node.gloss || node.label.replace(/\n/g, " ")}
+  description={
+    node.gloss ||
+    `Lean proof spine node (${node.kind ?? "spine"}): ${node.label.replace(/\n/g, " ")}`
+  }
 >
   <article class="two-column">
     <div class="content-card readable">
@@ -55,7 +59,7 @@ const graphsWithNode = leanSpine.graphOrder.filter((slug) => {
         <section class="callout">
           <p>
             No extracted Lean snippet yet for this graph node. Browse
-            <a href={`${repoBase}/formal/`} target="_blank" rel="noopener noreferrer">formal/</a>
+            <a href={`${repoBase}/formal/`} target="_blank" rel="noopener noreferrer">formal/<LinkIndicator kind="github" /></a>
             {node.theorem && (
               <> — theorem <code>{node.theorem}</code> is named in the axiom ledger.</>
             )}
@@ -102,16 +106,16 @@ const graphsWithNode = leanSpine.graphOrder.filter((slug) => {
           <ul>
             {playground && (
               <li>
-                <a href={`${repoBase}/${playground.file}`} target="_blank" rel="noopener noreferrer">Playground file</a>
+                <a href={`${repoBase}/${playground.file}`} target="_blank" rel="noopener noreferrer">Playground file<LinkIndicator kind="github" /></a>
               </li>
             )}
             {node.spineSource?.file && (
               <li>
-                <a href={`${repoBase}/${node.spineSource.file}`} target="_blank" rel="noopener noreferrer">Spine module</a>
+                <a href={`${repoBase}/${node.spineSource.file}`} target="_blank" rel="noopener noreferrer">Spine module<LinkIndicator kind="github" /></a>
               </li>
             )}
             <li>
-              <a href={`${repoBase}/formal/`} target="_blank" rel="noopener noreferrer">Formal spine modules</a>
+              <a href={`${repoBase}/formal/`} target="_blank" rel="noopener noreferrer">Formal spine modules<LinkIndicator kind="github" /></a>
             </li>
           </ul>
         </>

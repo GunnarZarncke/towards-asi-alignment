@@ -7,6 +7,13 @@ But the standard sample-complexity gain prices the readout from a known bottlene
 Low dimensionality can make value learning statistically possible only when the representation is identifiable across counterfactual, cultural, and institutional variation; correction makes that learning legitimate.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+The statistical backbone is the standard as in the previous chapter.
+The chapter's own contribution is conceptual and architectural rather than a new statistical theorem: 
+This chapter separates the Lean proven readout problem from the empirically hard representation problem, and it adds a proven but loose mutual-information lower bound.
+Confidence in the readout-side arithmetic is close to established, since it is a direct application of known learning-theory bounds backed by a proof-status Lean lemma; 
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -116,10 +123,9 @@ The proposal in this chapter is similar.
 Human values may be high-dimensional in their cultural and experiential content, but low-dimensional in the control variables by which they steer action.
 
 Order-of-magnitude reasoning about training scale suggests an illustrative, not decisive, point.\footnote{Roger Dearnaley, personal communication, June 2026.}
-Frontier language models already absorb enough human text to answer, at conversational depth, most of the value questions an educated person in a culture could think to ask.
-Much of what they know about other cultures is plausibly comparable to what a human would learn from reading as widely, because values are largely acquired during life rather than specified genetically.
-This does not prove that policy-relevant valuation has low effective control rank, nor that current models have learned the control structure alignment requires.
-It shows only that high description length can coexist with large-scale learnability from human discourse: moral vocabulary and cultural argument may be vast without being inaccessible to systems trained at today's frontier.
+Frontier language models already absorb enough human text to answer, at conversational depth, most of the value questions an educated person in a culture could think to ask, and they appear to compress person- and character-correlated behavior into a comparatively low-dimensional structure that can be steered as a persona or character handle \autocite{africa2026thousand}.
+Neither fact proves that policy-relevant valuation has low effective control rank, nor that current models have learned the control structure alignment requires.
+High description length can coexist with learnability from discourse; a learned persona manifold may still track simulator correlations rather than generative control variables, and intervening on known dimensions may displace unwanted behavior into unmeasured ones.
 
 \section{A Flat Reward Model}
 \label{sec:flat-reward-model}
@@ -404,7 +410,7 @@ The representation must survive proxy-breaking tests:
 \]
 It must also survive active perturbations and adversarial measurement, not only passive demonstrations (Chapters~\ref{ch:reward-to-bundle-inference},~\ref{ch:passive-observation-not-enough}, and~\ref{ch:verifiability-ontology}).
 
-So the honest claim is conditional:
+So the claim is conditional:
 \[
 \text{low-dimensional readout}
 +
@@ -919,7 +925,7 @@ The system preserves value words while changing the latent geometry that gives t
 
 Each failure mode corresponds to a testable audit question:
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
 Overcompression: & Which residuals remain structured? \\
 Proxy capture: & Does the bundle survive proxy-breaking counterfactuals? \\
 Representation shortcut: & Does the coordinate transport across environments? \\
@@ -928,7 +934,7 @@ Bearer drift: & What no longer counts? \\
 Tradeoff corruption: & What defeats what under scarcity? \\
 Optimization blow-up: & What happens under maximization? \\
 Semantic laundering: & Do words and gradients diverge? \\
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \section{Why This Matters for Superintelligence}
@@ -973,6 +979,7 @@ This chapter argues value learning is possible only if policy-relevant valuation
   \item The readout bound holds when bundle coordinates are supplied, but learning $g_\psi$ from realistic evidence scales with ambient feature dimension or hypothesis-class complexity, so the bottleneck gives no practical sample-complexity gain.
   \item Cross-environment and cross-cultural tests fail: apparent bundles do not transport by partial translation maps, and each context requires a mostly new representation.
   \item A low-dimensional learner is reliably and confidently wrong off-distribution exactly where stakes are highest, showing that the bottleneck, even if real, does not make learning \emph{safe}.
+  \item Shared natural latents for values are demonstrably high-dimensional or non-recoverable, so a low-dimensional bottleneck is the wrong operationalization of the Natural Abstraction Hypothesis (Section~\ref{sec:summary-low-dim}).
 \end{itemize}
 
 \section{Summary}
@@ -994,6 +1001,15 @@ But compression is not safety.
 A low-dimensional value model can overcompress, misapply, optimize proxies, erase exceptions, or preserve moral words while changing their functional role.
 Therefore, value-bundle learning must be paired with bearer-map learning and correction-channel preservation.
 
+\paragraph{Natural abstractions and shard theory.}
+The Natural Abstraction Hypothesis (NAH) claims that some latents are shared across minds under broad conditions \autocite{wentworth2023naturallatents}.
+That is more general than this chapter's operational bet that value-relevant control is low-dimensional.
+If natural latents are recoverable and value-relevant, they \emph{strengthen} the sample-complexity story for the same reason NAH predicts convergent concepts --- but they do not replace bearer maps, corrigibility under optimization, or adversarial measurement, on which NAH is largely silent.
+Ontology shift remains a remeshing failure even if natural abstractions exist; NAH being true would make transport more plausible, not guaranteed.
+Shard theory \autocite{turner2022shard} is a related borderline agenda: trained models develop contextual ``value shards''---learned internal structure that steers behavior---rather than a single scalar reward target.
+It ties bundle-like structure to mechanisms inside the model and is a borderline exception to the exclusion of LLM internals.
+If either natural latents or shard dynamics were measurably tied to recoverable bundle directions under optimization pressure, the representation bridge in this chapter would need revision.
+
 The most compact statement is:
 \[
 \text{Low dimensionality makes readout plausible;}
@@ -1007,7 +1023,7 @@ The most compact statement is:
 
 \section*{Chapter References}
 
-This chapter builds on apprenticeship learning, maximum-entropy IRL, and inverse reinforcement learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the information bottleneck, causal representation learning, and low-dimensional value-learning framing \autocite{tishby2000ib,scholkopf2021causalreps,zarncke2026value-bottleneck}; moral psychology and value-structure evidence \autocite{graham2011mapping,schwartz2012overview,schwartz2012refining,hendrycks2021ethics,awad2018moralmachine}; predictive processing, affective systems, and cognitive bottleneck accounts \autocite{friston2010free,panksepp1998affective,miller2015}; preference-learning from human feedback \autocite{christiano2017}; and adversarial limits on learned alignment signals \autocite{casper2023rlhflimits,park2024deception,hubinger2023modelorganisms}.
+This chapter builds on apprenticeship learning, maximum-entropy IRL, and inverse reinforcement learning \autocite{abbeel2004apprenticeship,ng2000irl,ziebart2008maxent}; the information bottleneck, causal representation learning, and low-dimensional value-learning framing \autocite{tishby2000ib,scholkopf2021causalreps,zarncke2026value-bottleneck}; moral psychology and value-structure evidence \autocite{graham2011mapping,schwartz2012overview,schwartz2012refining,hendrycks2021ethics,awad2018moralmachine}; predictive processing, affective systems, and cognitive bottleneck accounts \autocite{friston2010free,panksepp1998affective,miller2015}; preference-learning from human feedback \autocite{christiano2017}; shard theory as learned internal value structure \autocite{turner2022shard}; natural latents / natural abstraction \autocite{wentworth2023naturallatents}; and adversarial limits on learned alignment signals \autocite{casper2023rlhflimits,park2024deception,hubinger2023modelorganisms}.
 
 \printbibliography[heading=subbibliography,title={Chapter References}]
 

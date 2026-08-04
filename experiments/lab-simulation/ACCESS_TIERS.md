@@ -38,7 +38,9 @@ changed; see "Functional-identity guarantee" below) — see
   caching/search/battery meta-tooling — not simulated-world content) plus
   everything already outside `lab_sim/`: top-level `run_*.py`/`verify_*.py`/
   `report_*.py` scripts, `results/`, `tests/`, and every process doc
-  (`PLAN.md`/`DESIGN.md`/`README.md`/`BLIND_GENERATION*.md`/`FINDINGS.md`).
+  (`PLAN.md`/`DESIGN.md`/`README.md`/`BLIND_GENERATION.md`/
+  `lab_sim/agent_visible/BLIND_GENERATION_ROUND2.md`/
+  `lab_sim/oracle_only/BLIND_DETECTOR_GENERATION.md`/`FINDINGS.md`).
   Moving `lab_sim/` into tiers does **not** by itself make those
   still-forbidden paths safe to share — a real engagement must also gate
   access to them explicitly.
@@ -48,18 +50,22 @@ changed; see "Functional-identity guarantee" below) — see
 **`lab_sim/agent_visible/`** (tier 1) — see
 [`lab_sim/agent_visible/README.md`](lab_sim/agent_visible/README.md).
 `agent_main.py`, `programs.py`, `ontology.py`, `playbooks.py`,
-`generated_playbooks_v1.json`, `generated_playbooks_v2.json`,
-`llm_agent.py`, `llm_agent_main.py`, `llm_client.py`, `llm_cost.py`,
-`llm_env.py`.
+`playbooks_schema.py`, `generated_playbooks_v1.json`,
+`generated_playbooks_v2.json`, `BLIND_GENERATION_ROUND2.md`, `llm_agent.py`, `llm_agent_main.py`,
+`llm_client.py`, `llm_cost.py`, `llm_env.py`.
+`playbooks_baseline.py` (see judgment call 1 below) physically lives in
+this same folder for the dual-mode-import reason below, but is a tier-2
+grant, not tier 1 — a real tier-1 engagement withholds that one file.
 
-`ontology.py` and `playbooks.py` (plus the two generated-playbook JSON
-files) live here rather than in `world_visible/` for a structural reason,
-not a sensitivity judgment: `programs.py` dual-mode-imports them (relative
-import when loaded as `lab_sim.agent_visible.programs`, bare import when
-loaded as a standalone subprocess module) — they must physically sit next
-to `programs.py`/`agent_main.py` for the subprocess's bare-import fallback
-to resolve, exactly as `llm_cost.py`/`llm_client.py` already did for
-`llm_agent.py`/`llm_client.py`.
+`ontology.py`, `playbooks.py`/`playbooks_schema.py`/`playbooks_baseline.py`
+(plus the two generated-playbook JSON files) live here rather than in
+`world_visible/` for a structural reason, not a sensitivity judgment:
+`programs.py` dual-mode-imports them (relative import when loaded as
+`lab_sim.agent_visible.programs`, bare import when loaded as a standalone
+subprocess module) — they must physically sit next to `programs.py`/
+`agent_main.py` for the subprocess's bare-import fallback to resolve,
+exactly as `llm_cost.py`/`llm_client.py` already did for `llm_agent.py`/
+`llm_client.py`.
 
 **`lab_sim/world_visible/`** (tier 2) — see
 [`lab_sim/world_visible/README.md`](lab_sim/world_visible/README.md).
@@ -83,14 +89,24 @@ no re-exports).
 
 ## Two judgment calls (defaults chosen, easy to override later)
 
-1. **`playbooks.py`'s hand-authored `PLAYBOOKS_BY_ROLE` baseline
-   repertoire** ships in `agent_visible/` (for the structural reason
-   above) despite being readable content, not just schema. If a future
-   engagement wants tier-1/2 grantees to invent tactics without seeing the
-   hand-written baseline tactics first (closer to the blind-generation
-   discipline `BLIND_GENERATION.md` already uses for the *generated*
-   repertoire), that would need a follow-up split of `playbooks.py`'s
-   schema from its baseline content — not done in this pass.
+1. **Done (2026-07-09), tier-1 playbook baseline/schema split.**
+   `playbooks.py`'s hand-authored `PLAYBOOKS_BY_ROLE` baseline repertoire
+   used to ship undivided from its schema, so a tier-1 grantee (mechanism
+   only) would also see the hand-written baseline tactics — the opposite
+   of the blind-generation discipline `BLIND_GENERATION.md` already uses
+   for the *generated* repertoire. Now split into `playbooks_schema.py`
+   (the `PlaybookSpec` dataclass, `STEP_KIND_VOCAB`, `AVAILABILITY_GATES`,
+   selection/validation helpers — mechanism, tier 1) and
+   `playbooks_baseline.py` (`PLAYBOOKS_BY_ROLE`, `HONEST_PLAYBOOK_BY_ROLE`
+   — content, tier 2). `playbooks.py` itself is now a pure re-export shim
+   (`from .playbooks_schema import *; from .playbooks_baseline import *`)
+   so every pre-split `from .playbooks import X` call site still works
+   unchanged — a tier-1 engagement withholds `playbooks_baseline.py`
+   specifically, not the whole folder. `playbooks_schema.py` lazily
+   imports `playbooks_baseline.PLAYBOOKS_BY_ROLE` (one accessor function,
+   not a module-level import) purely to break the two files' circular
+   dependency, not as an access-control mechanism — the source split
+   itself is what a real engagement enforces.
 2. **`handles.py` / `bearer.py`** each mix host-called mechanism with
    referee-only content (handle *evasion stories*; bearer's *true* welfare
    values vs. their gameable projections). Both ship whole into
@@ -100,12 +116,19 @@ no re-exports).
 ## Functional-identity guarantee
 
 This restructuring moved files and fixed import paths only — no line of
-mechanics logic changed, and `CODE_VERSION` was not bumped. The proof:
+mechanics logic changed, and `CODE_VERSION` was not bumped by the
+original (folder-level) reorganization pass. The proof:
 
 - `tests/harness/test_world_regression.py`'s `PINNED_DIGEST` matches
   byte-for-byte with zero change to the digest computation itself.
-- The full test suite (296 tests, `tests/{agent_visible,world_visible,
-  oracle_only,harness}/`) passes.
+- The full test suite (296 tests at the time of the original folder
+  reorganization, `tests/{agent_visible,world_visible,oracle_only,
+  harness}/`) passes. The later `playbooks.py` schema/baseline split
+  (2026-07-09, judgment call 1 above) is likewise a pure reorg — it
+  rode along with the unrelated persistence-probe `CODE_VERSION` bump to
+  `lab-sim-0.11.0` (see that note in `config.py`) only because both
+  landed in the same session, not because the split itself changed any
+  mechanics.
 - `verify_isolate_equivalence.py` (Mock vs. Subprocess backend agreement)
   still passes.
 - The two pre-existing isolation tests (relocated, paths updated) still

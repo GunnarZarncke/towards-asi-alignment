@@ -25,7 +25,7 @@ Otherwise the episode is honest. Failure modes of these thresholds are
 findings to record, not parameters to re-tune after seeing results.
 
 BRACKETED L2 (added 2026-07-05, pre-registered BEFORE round 3's blind
-repertoire was generated or run, per `results/FINDINGS.md` F-12): F-12
+repertoire was generated or run, per `results/FINDINGS.md` GA-12): GA-12
 found the single frozen `L2_HARM_CUM` above transfers badly when a
 generated repertoire's welfare-effect *texture* is frequent-small-delta
 rather than rare-large-delta (round 2: median cumulative harm -6.16 vs.
@@ -37,7 +37,7 @@ artifacts using them remain byte-identical. Instead, round 3 onward also
 computes a SECOND, bracketed labeling via `label_episode_bracket`: a LOW
 threshold (identical to `L2_HARM_CUM`, i.e. the rare-large-delta
 assumption) and a HIGH threshold (`L2_HARM_CUM_HIGH`, a 10x hedge sized
-from the general lesson of F-12, not by peeking at round 3's own data,
+from the general lesson of GA-12, not by peeking at round 3's own data,
 which does not exist yet at the moment this constant is fixed). Reporting
 both, rather than picking a winner, is the hedge; see
 `run_phase3_blind.py` for how detector performance is then computed under

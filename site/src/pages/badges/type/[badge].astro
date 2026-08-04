@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import Badge from "../../../components/Badge.astro";
+import ConceptCardLink from "../../../components/ConceptCardLink.astro";
 import {
   CARD_TYPES,
   TYPE_META,
@@ -51,7 +52,15 @@ const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
               <Badge label={card.data.type} href={badgeTypeHref(base, card.data.type)} />
               <Badge label={card.data.status} variant={card.data.status} href={withBase(`/badges/status/${card.data.status}/`)} />
             </div>
-            <h2><a href={cardHref(base, card.id)}>{card.data.title}</a></h2>
+            <h2>
+              <ConceptCardLink
+                href={cardHref(base, card.id)}
+                slug={card.id}
+                logoSize={card.data.type === "concept" ? 40 : undefined}
+              >
+                {card.data.title}
+              </ConceptCardLink>
+            </h2>
             <p>{card.data.summary}</p>
           </article>
         ))}

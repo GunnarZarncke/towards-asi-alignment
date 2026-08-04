@@ -7,3 +7,4 @@ results/episode_cache/
 results/isolate_cost_ledger.json
 results/llm_cost_ledger.json
 results/llm_cost_ledger.md
+external/ai2027/.venv/

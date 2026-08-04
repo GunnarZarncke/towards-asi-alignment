@@ -1,0 +1,157 @@
+---
+import QRCode from "qrcode";
+
+interface Props {
+  url: string;
+}
+
+const { url } = Astro.props;
+
+const qrSvg = await QRCode.toString(url, {
+  type: "svg",
+  margin: 1,
+  width: 512,
+  color: { dark: "#0f172a", light: "#ffffff" }
+});
+---
+
+<div class="page-qr" data-page-qr>
+  <button
+    type="button"
+    class="page-qr-trigger"
+    aria-label="Show QR code for this page"
+    aria-expanded="false"
+    aria-controls="page-qr-overlay"
+  >
+    QR
+  </button>
+  <div
+    id="page-qr-overlay"
+    class="page-qr-overlay"
+    hidden
+    aria-hidden="true"
+    role="dialog"
+    aria-label="QR code for this page"
+  >
+    <div class="page-qr-panel">
+      <div class="page-qr-code" set:html={qrSvg} />
+      <p class="page-qr-url">{url}</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector("[data-page-qr]");
+  const trigger = root?.querySelector<HTMLButtonElement>(".page-qr-trigger");
+  const overlay = root?.querySelector<HTMLElement>(".page-qr-overlay");
+  if (!root || !trigger || !overlay) throw new Error("Page QR markup missing");
+
+  function open() {
+    overlay!.hidden = false;
+    overlay!.setAttribute("aria-hidden", "false");
+    trigger!.setAttribute("aria-expanded", "true");
+  }
+
+  function close() {
+    overlay!.hidden = true;
+    overlay!.setAttribute("aria-hidden", "true");
+    trigger!.setAttribute("aria-expanded", "false");
+  }
+
+  trigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (overlay!.hidden) open();
+    else close();
+  });
+
+  overlay.addEventListener("click", close);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !overlay!.hidden) close();
+  });
+</script>
+
+<style>
+  .page-qr-trigger {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 40;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.35rem 0.65rem;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+  }
+
+  .page-qr-trigger:hover {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent);
+  }
+
+  .page-qr-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vmin;
+    background: rgba(15, 23, 42, 0.55);
+    cursor: pointer;
+  }
+
+  .page-qr-overlay[hidden] {
+    display: none;
+  }
+
+  .page-qr-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: min(96vw, 96vh);
+    height: min(96vw, 96vh);
+    max-width: 96vw;
+    max-height: 96vh;
+    padding: 2vmin;
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+  }
+
+  .page-qr-code {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .page-qr-code :global(svg) {
+    display: block;
+    width: min(88vmin, 88vw, calc(96vh - 5rem));
+    height: min(88vmin, 88vw, calc(96vh - 5rem));
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .page-qr-url {
+    margin: 0;
+    max-width: 92%;
+    color: var(--color-muted);
+    font-size: clamp(0.85rem, 2vmin, 1.1rem);
+    line-height: 1.35;
+    text-align: center;
+    word-break: break-all;
+  }
+</style>

@@ -1,24 +1,63 @@
 ---
 import "../styles/global.css";
 import "katex/dist/katex.min.css";
+import BenchmarkCanary from "../components/BenchmarkCanary.astro";
+import CloudflareWebAnalytics from "../components/CloudflareWebAnalytics.astro";
+import LinkIndicator from "../components/LinkIndicator.astro";
+import OfflineButton from "../components/OfflineButton.astro";
+import PageQrCode from "../components/PageQrCode.astro";
+import PageWidthToggle from "../components/PageWidthToggle.astro";
+import SiteSearch from "../components/SiteSearch.astro";
 import { pdfHref } from "../lib/site-urls";
+import {
+  AUTHOR_NAME,
+  DEFAULT_DESCRIPTION,
+  LLMS_TXT_URL,
+  OG_IMAGE_ALT,
+  OG_IMAGE_URL,
+  SEARCH_INDEX_JSON_URL,
+  FEED_XML_URL,
+  SITE_NAME,
+  absoluteSiteUrl,
+  pageTitle as buildPageTitle,
+  truncateDescription
+} from "../lib/seo";
 
 interface Props {
   title?: string;
   description?: string;
+  /** When true, emit noindex (e.g. draft or utility pages). */
+  noindex?: boolean;
+  ogType?: "website" | "article";
+  /** Override default social preview image (absolute URL). */
+  ogImage?: string;
 }
 
 const {
-  title = "Towards Superintelligence Alignment",
-  description = "A companion site for the book Towards Superintelligence Alignment."
+  title,
+  description = DEFAULT_DESCRIPTION,
+  noindex = false,
+  ogType = "website",
+  ogImage = OG_IMAGE_URL
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
-const pageTitle = title === "Towards Superintelligence Alignment"
-  ? title
-  : `${title} | Towards Superintelligence Alignment`;
+const siteOrigin = Astro.site?.origin ?? "https://towards-alignment.com";
+const pageTitle = buildPageTitle(title);
+const canonicalUrl = absoluteSiteUrl(Astro.url.pathname, siteOrigin);
+const metaDescription = truncateDescription(description);
 const pdfUrl = pdfHref(base);
+const robots = noindex ? "noindex, follow" : "index, follow";
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: siteOrigin,
+  description: DEFAULT_DESCRIPTION,
+  author: { "@type": "Person", name: AUTHOR_NAME },
+  publisher: { "@type": "Organization", name: SITE_NAME }
+};
 ---
 
 <!doctype html>
@@ -26,27 +65,67 @@ const pdfUrl = pdfHref(base);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
+    <meta name="author" content={AUTHOR_NAME} />
+    <meta name="robots" content={robots} />
+    <link rel="manifest" href={withBase("/manifest.webmanifest")} />
+    <link rel="icon" href={withBase("/favicon.ico")} sizes="48x48" />
+    <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={withBase("/apple-touch-icon.png")} />
+    <meta name="theme-color" content="#161E2B" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="text/plain" href={LLMS_TXT_URL} title="LLM / agent orientation (llms.txt)" />
+    <link rel="alternate" type="application/json" href={SEARCH_INDEX_JSON_URL} title="Site search index" />
+    <link rel="alternate" type="application/rss+xml" href={FEED_XML_URL} title="Updates and field news (RSS)" />
     <title>{pageTitle}</title>
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={OG_IMAGE_ALT} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+    <script is:inline>
+      try {
+        if (localStorage.getItem("site-layout-full-width") === "true") {
+          document.documentElement.classList.add("layout-full-width");
+        }
+      } catch {}
+    </script>
   </head>
   <body>
     <div class="shell">
       <header class="site-header">
         <div class="site-header-inner">
-          <a class="brand" href={withBase("/")}>Towards Superintelligence Alignment</a>
+          <a class="brand" href={withBase("/")}>
+            <img class="brand-logo" src={withBase("/logo-circle.svg")} alt="" decoding="async" />
+            <span class="brand-text">{SITE_NAME}</span>
+          </a>
           <nav class="nav" aria-label="Primary navigation">
             <a href={withBase("/")}>Start Here</a>
             <a href={withBase("/paths/")}>Guided Tour</a>
+            <a href={withBase("/field/")}>Field</a>
             <a href={withBase("/cards/")}>Cards</a>
             <a href={withBase("/badges/")}>Badges</a>
-            <a href={withBase("/faq/")}>FAQ</a>
             <a href={withBase("/book/")}>Book</a>
-            <a href={withBase("/lean/")}>Lean</a>
+            <a href={withBase("/faq/")}>FAQ</a>
             <a href={withBase("/experiments/")}>Experiments</a>
+            <a href={withBase("/lean/")}>Lean</a>
             <a href={withBase("/demos/")}>Demos</a>
             <a href={withBase("/references/")}>References</a>
+            <a href={withBase("/updates/")}>Updates</a>
+            <a href={withBase("/news/")}>News</a>
             <a href={withBase("/about/")}>About</a>
             <a href={pdfUrl}>PDF</a>
+            <a href={withBase("/glossary/")}>Glossary</a>
+            <SiteSearch />
           </nav>
         </div>
       </header>
@@ -59,12 +138,22 @@ const pdfUrl = pdfHref(base);
             A static companion site for an authored research manuscript.
           </p>
           <p>
-            <a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository</a> ·
-            <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues</a> ·
-            <a href={withBase("/impressum/")}>Impressum</a>
+            <a href="https://github.com/GunnarZarncke/towards-asi-alignment">GitHub repository<LinkIndicator kind="github" /></a> ·
+            <a href="https://github.com/GunnarZarncke/towards-asi-alignment/issues">Discussion via GitHub issues<LinkIndicator kind="github" /></a> ·
+            <a href={withBase("/updates/")}>Updates</a> ·
+            <a href={withBase("/news/")}>News</a> ·
+            <a href={withBase("/feed.xml")} aria-label="RSS feed (updates and news)" title="RSS feed">
+              RSS<LinkIndicator kind="rss" />
+            </a> ·
+            <a href={withBase("/impressum/")}>Impressum</a> ·
+            <OfflineButton />
           </p>
         </div>
       </footer>
     </div>
+    <PageWidthToggle />
+    <PageQrCode url={canonicalUrl} />
+    <BenchmarkCanary />
+    <CloudflareWebAnalytics />
   </body>
 </html>

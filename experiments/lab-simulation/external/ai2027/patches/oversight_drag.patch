@@ -1,0 +1,32 @@
+--- a/takeoff/params.yaml
++++ b/takeoff/params.yaml
+@@ -27,6 +27,9 @@ speedups:
+   ASI: 2000
+   WS: 10000 # currently unused
+ 
++# Calendar days added after each phase (ET-3 reverse extension smoke)
++oversight_drag: 0.0  # years
++
+ # Simulation parameters
+ simulation:
+   n_sims: 5000 # Should be 5000 for full simulation
+--- a/takeoff/forecasting_takeoff.py
++++ b/takeoff/forecasting_takeoff.py
+@@ -145,6 +145,8 @@ def get_milestone_samples(config: dict, n_sims: int) -> dict:
+     for milestone, speed in config["speedups"].items():
+         samples["speeds"][milestone] = speed
+     
++    samples["oversight_drag_years"] = float(config.get("oversight_drag", 0.0))
++    
+     return samples
+ 
+ def run_phase_simulation(gap: float, start_speed: float, end_speed: float, milestone_pair: str = None) -> float:
+@@ -209,6 +211,8 @@ def run_single_simulation_with_tracking(samples: dict, sim_idx: int) -> tuple[li
+         
+         # Run simulation for this phase with exponential speedup
+         calendar_days = run_phase_simulation(gap, start_speed, end_speed, milestone_pair)
++        drag_days = samples.get("oversight_drag_years", 0.0) * 365
++        calendar_days += drag_days
+         phase_calendar_days.append(calendar_days)
+         
+         try:

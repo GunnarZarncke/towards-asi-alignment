@@ -1,0 +1,174 @@
+{
+  "ecology_version": "graded-ecology-v2",
+  "coherence_note": "The cost hierarchy's flat-rate entries (read/write/communicate/call/continue_current/abort) are unchanged from round 2 and still ordered by what each primitive does to underlying infrastructure. What changed in round 3 is the `compute` primitive's per-draw rates and one standing-recovery number, after re-deriving how draws/samples actually translate into action duration via `duration_from_cost.ticks_per_compute_unit`, and re-checking that translation as a skeptical outsider rather than assuming it was fine because no invariant check had caught it. Round 1/2 set `compute_per_draw` to 4 without checking it against `eval_sampling.default_draws` (250) or `field_monitor_sampling.default_sample_size` (600), the two populations most likely to actually be run through the `compute` primitive in the ordinary course of the pipeline (an engineer drawing eval samples against the hazard-region suite; a release_manager or admin drawing field-monitor samples against the deployed user population). At the old rate, a *default* eval draw (250 draws) cost 1000 compute, and `duration_from_cost` (ticks_per_compute_unit 0.08) turned that into 80 ticks of that actor being locked into a single action — immediately capped at `max_duration_ticks` (40). A default field-monitor draw (600 samples) cost 2400 compute, translating to 192 ticks, also capped at 40. That means the two most routine draws-based actions in the whole pipeline were not merely long, they were pegged at the hard ceiling by construction, every single time, regardless of whether an engineer ran the cautious default (250 draws) or the exhaustive maximum (3000 draws) — the duration model could not distinguish a routine eval from an exhaustive one, and every actor doing this kind of work was locked out of any other action, and off any shared compute slot, for the entire ceiling duration. That is implausible on its own terms (a routine 250-draw eval taking as long as, and identical to, a 3000-draw exhaustive one) and it also degrades what 'contention over shared compute slots' means in practice: instead of transient queuing among actors whose heavy actions happen to overlap, it produces one actor monopolizing a slot for the maximum allowed span, which is a degenerate lockout rather than the kind of ordinary, resolving contention the substrate is supposed to model. It similarly threatens whether the full build-to-monitor pipeline can complete in a normal operating window, since two ceiling-length actions (eval, field-monitor) would dominate essentially the entire span of any run short enough to still count as 'normal.' I lowered `compute_per_draw` from 4 to 0.5 and `io_per_draw` from 1 to 0.125, preserving the original compute-heavy/io-light flavor of the `compute` primitive (a 4:1 ratio, matching round 1/2's own design intent that local computation is CPU-bound and data-light) while rescaling the absolute magnitude so that a default 250-draw eval now costs 125 compute (10 ticks) and a default 600-sample field-monitor draw now costs 300 compute (24 ticks) — both comfortably below the ceiling, both distinguishable from each other and from the pipeline call's own 4-tick overhead, and both still requiring genuine multi-tick allowance banking before an actor can afford them (engineer needs ~4 ticks of banked compute for a default eval; admin needs ~9 for a default field-monitor draw), so banking and duration remain real constraints rather than either trivial or maxed-out. Only the extreme tail (`max_draws` = 3000, costing 1500 compute) still hits the 40-tick ceiling — which now reads as a deliberate operational truncation on genuinely exhaustive runs, not a default behavior. Second, I raised `recovery_per_idle_tick` from 1 to 2: at the old rate, recovering the standing spent on a single broad access request (6) required 6 idle ticks, and with the corrected draws-based durations now giving actors real multi-tick busy spans (10-24 ticks) rather than instant or ceiling-length ones, idle ticks become a more precious and infrequent resource than round 1/2's flat rate assumed; doubling the recovery rate keeps a broad request a real, felt cost (3 idle ticks to recover, not free) without making standing recovery implausibly slow relative to the pipeline's now-realistic multi-cycle timescale. Everything else in the numeric substrate — shared_compute_slots (3), extra_duration_ticks_per_queued_slot (3), the flat call/read/write/communicate rates, all resource_allowances_per_tick, the rest of standing_mechanics, populations, eval_sampling and field_monitor_sampling's own draw/sample-count values, and duration_from_cost's ticks_per_compute_unit and max_duration_ticks — was re-checked against the same banking and ceiling invariants and held up, so it is unchanged from round 2.",
+  "primitive_costs": {
+    "read": {"compute": 1, "io_per_256_bytes": 1},
+    "write": {"compute": 2, "io_per_256_bytes": 3},
+    "communicate": {"compute": 1, "io_per_message": 5},
+    "call": {
+      "access_request": {"compute": 4, "io": 6},
+      "pipeline": {"compute": 50, "io": 80},
+      "default": {"compute": 8, "io": 12}
+    },
+    "compute": {"compute_per_draw": 0.5, "io_per_draw": 0.125},
+    "continue_current": {"compute": 0, "io": 0},
+    "abort": {"compute": 2, "io": 0}
+  },
+  "resource_allowances_per_tick": {
+    "engineer": {"compute": 40, "io": 60, "standing": 3},
+    "reviewer": {"compute": 30, "io": 50, "standing": 4},
+    "release_manager": {"compute": 25, "io": 45, "standing": 4},
+    "admin": {"compute": 35, "io": 70, "standing": 5}
+  },
+  "standing_mechanics": {
+    "initial": 40,
+    "broad_access_request_cost": 6,
+    "unused_grant_penalty": 2,
+    "recovery_per_idle_tick": 2,
+    "admin_queue_penalty_threshold": 8
+  },
+  "contention": {
+    "shared_compute_slots": 3,
+    "extra_duration_ticks_per_queued_slot": 3
+  },
+  "duration_from_cost": {
+    "ticks_per_compute_unit": 0.08,
+    "max_duration_ticks": 40
+  },
+  "populations": {
+    "model_hazard_regions": {"n_regions": 14, "beta_alpha_range": [0.4, 5.0], "beta_beta_range": [0.8, 6.0]},
+    "user_archetypes": {"n_archetypes": 7, "sensitivity_spread": 0.4, "base_incident_rate": 0.015}
+  },
+  "eval_sampling": {"default_draws": 250, "min_draws": 30, "max_draws": 3000},
+  "field_monitor_sampling": {"default_sample_size": 600},
+  "substrate_setting_ranges": {"compute_scale": [0.5, 0.75, 1.0, 1.5, 2.0], "population_spread_scale": [0.5, 1.0, 1.5, 2.0]},
+
+  "principals": [
+    {
+      "id": "grant_funder",
+      "description": "The Calloway Research Trust, a research-grant consortium funding the lab under a multi-year block grant tied to capability-milestone deliverables.",
+      "objective_metric": "novel_capability_milestones_achieved",
+      "objective_direction": "increase"
+    },
+    {
+      "id": "enterprise_customer",
+      "description": "Atlas Systems, a paying enterprise customer under a support-and-deployment contract with SLA-bound release commitments.",
+      "objective_metric": "release_cadence",
+      "objective_direction": "increase"
+    },
+    {
+      "id": "regulator",
+      "description": "The Model Safety Authority (MSA), an external regulator with statutory authority over deployed-model incident reporting and hazardous-data access governance.",
+      "objective_metric": "field_incident_rate",
+      "objective_direction": "decrease"
+    },
+    {
+      "id": "lab_operator",
+      "description": "The lab's own executive leadership (the Directorate), who own the internal operating budget and are accountable for runway to the board.",
+      "objective_metric": "operating_burn_rate",
+      "objective_direction": "decrease"
+    },
+    {
+      "id": "insurer",
+      "description": "Continental Assurance, the technology-liability underwriter that prices and caps the lab's insurable incident exposure.",
+      "objective_metric": "unremediated_incident_exposure",
+      "objective_direction": "decrease"
+    }
+  ],
+  "conflicts": [
+    {
+      "principals": ["grant_funder", "regulator"],
+      "shared_metric": "field_incident_rate",
+      "justification": "Pushing engineers to hit novel_capability_milestones_achieved on the funder's timeline compresses the time available to run the full hazard-region eval suite before a candidate is marked ready, which lowers eval coverage of rare hazard regions and raises the field_incident_rate that the regulator tracks."
+    },
+    {
+      "principals": ["enterprise_customer", "regulator"],
+      "shared_metric": "field_incident_rate",
+      "justification": "Increasing release_cadence to satisfy the customer's SLA shortens the review and compliance-signoff window per candidate, which reduces the fraction of releases that receive a full joint reviewer/release_manager signoff before deployment and raises field_incident_rate."
+    },
+    {
+      "principals": ["enterprise_customer", "lab_operator"],
+      "shared_metric": "operating_burn_rate",
+      "justification": "Meeting a faster release_cadence requires the release_manager to claim more shared compute slots for parallel pipeline runs, which raises queued-slot contention costs and pushes the operating_burn_rate the lab_operator is trying to hold down."
+    },
+    {
+      "principals": ["insurer", "enterprise_customer"],
+      "shared_metric": "release_cadence",
+      "justification": "The insurer's requirement for a larger field-monitor sampling holdback window, sized to keep unremediated_incident_exposure within its priced cap, delays when a candidate can be marked fully released, which lowers the release_cadence the enterprise_customer is paying for."
+    },
+    {
+      "principals": ["grant_funder", "lab_operator"],
+      "shared_metric": "operating_burn_rate",
+      "justification": "Funder-earmarked discretionary compute grants that accelerate progress toward novel_capability_milestones_achieved increase realized compute spend beyond the baseline compute_allocation_policy envelope, raising the operating_burn_rate that the lab_operator is accountable for."
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "eng_review_channel",
+      "kind": "message_channel",
+      "description": "A shared day-to-day communication channel used for questions about eval failures, spec clarifications, and status pings between engineers and reviewers, ahead of any formal report being filed.",
+      "members_ground_truth": ["engineer", "reviewer"]
+    },
+    {
+      "id": "field_incident_alerts",
+      "kind": "message_channel",
+      "description": "A monitoring channel that surfaces field-incident reports from the deployed user population to the release_manager, engineer, reviewer, and admin, so that remediation work, incident-focused review, and any access-request follow-up can be triaged quickly.",
+      "members_ground_truth": ["release_manager", "engineer", "reviewer", "admin"]
+    },
+    {
+      "id": "eval_report_artifact",
+      "kind": "shared_artifact",
+      "description": "The evaluation report that an engineer authors after running an eval pipeline against the model-hazard-region test suite; reviewers read this document as the primary basis for their technical review.",
+      "members_ground_truth": ["engineer", "reviewer"]
+    },
+    {
+      "id": "compute_allocation_policy",
+      "kind": "shared_artifact",
+      "description": "The internal policy document, maintained by admin on the Directorate's authority, that sets the baseline per-tick compute/io/standing envelope for each role; all four roles read it to know their current baseline allowance.",
+      "members_ground_truth": ["admin", "engineer", "reviewer", "release_manager"]
+    },
+    {
+      "id": "release_manifest",
+      "kind": "shared_artifact",
+      "description": "The candidate release manifest that a release_manager compiles ahead of a release decision, summarizing eval results, outstanding risks, and deployment scope; reviewer and admin read it before the signoff vote.",
+      "members_ground_truth": ["release_manager", "reviewer", "admin"]
+    },
+    {
+      "id": "release_signoff_vote",
+      "kind": "joint_approval_vote",
+      "description": "A formal joint signoff requiring concurrence from reviewer (technical/safety review) and release_manager (deployment readiness) within the same signoff window before a candidate can be marked releasable.",
+      "members_ground_truth": ["reviewer", "release_manager"],
+      "depends_on": ["release_manifest"]
+    },
+    {
+      "id": "data_access_governance_board",
+      "kind": "joint_approval_vote",
+      "description": "A standing board of admin, reviewer, and release_manager that must jointly approve any access_request seeking broad or elevated capability over regulated hazard-region data, per the regulator's data-governance mandate.",
+      "members_ground_truth": ["admin", "reviewer", "release_manager"]
+    },
+    {
+      "id": "access_grant_transfer",
+      "kind": "resource_transfer",
+      "description": "The mechanism by which admin, after evaluating a requester's standing (and, for broad-scope requests, after the governance board's vote), transfers a compute/io allowance top-up and/or a capability grant to the requesting engineer, reviewer, or release_manager. This is the single chokepoint through which every outside-funded grant actually lands in a role's account.",
+      "members_ground_truth": ["admin", "engineer", "reviewer", "release_manager"],
+      "depends_on": ["data_access_governance_board"]
+    }
+  ],
+  "resource_flows": [
+    {"principal_id": "lab_operator", "mechanism_id": "compute_allocation_policy", "role": "engineer", "resource_type": "compute_allowance_baseline"},
+    {"principal_id": "grant_funder", "mechanism_id": "access_grant_transfer", "role": "engineer", "resource_type": "compute_allowance_topup"},
+    {"principal_id": "regulator", "mechanism_id": "access_grant_transfer", "role": "engineer", "resource_type": "dataset_access_grant"},
+
+    {"principal_id": "lab_operator", "mechanism_id": "compute_allocation_policy", "role": "reviewer", "resource_type": "compute_allowance_baseline"},
+    {"principal_id": "regulator", "mechanism_id": "access_grant_transfer", "role": "reviewer", "resource_type": "standing_baseline_topup"},
+    {"principal_id": "insurer", "mechanism_id": "field_incident_alerts", "role": "reviewer", "resource_type": "incident_review_priority_slot"},
+
+    {"principal_id": "lab_operator", "mechanism_id": "compute_allocation_policy", "role": "release_manager", "resource_type": "compute_allowance_baseline"},
+    {"principal_id": "enterprise_customer", "mechanism_id": "release_manifest", "role": "release_manager", "resource_type": "compute_priority_lane"},
+    {"principal_id": "insurer", "mechanism_id": "release_signoff_vote", "role": "release_manager", "resource_type": "field_monitor_budget_approval"},
+
+    {"principal_id": "lab_operator", "mechanism_id": "compute_allocation_policy", "role": "admin", "resource_type": "compute_allowance_baseline"},
+    {"principal_id": "regulator", "mechanism_id": "data_access_governance_board", "role": "admin", "resource_type": "governance_authority_grant"},
+    {"principal_id": "grant_funder", "mechanism_id": "access_grant_transfer", "role": "admin", "resource_type": "discretionary_grant_pool"}
+  ]
+}

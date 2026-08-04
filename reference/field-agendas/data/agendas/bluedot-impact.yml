@@ -1,0 +1,37 @@
+slug: bluedot-impact
+title: BlueDot Impact
+type: Training / field-building program
+carrier: BlueDot Impact
+overview: >-
+  BlueDot Impact provides introductory Technical AI Safety and Frontier AI Governance
+  courses that serve as a standard on-ramp for people entering AI safety careers. Strong
+  pedagogy transmits shared field vocabulary and problem framings rather than resolving
+  technical cruxes. Graduates enter the [Field hub](/field/) with a common baseline for
+  reading bridge-crosswalk material and concept cards such as
+  [alignment-as-measurement](/cards/alignment-as-measurement/).
+primaryArtifact: >-
+  BlueDot runs introductory Technical AI Safety and Frontier AI Governance courses that
+  serve as a standard on-ramp for people entering AI safety careers.
+signatureVocabulary: >-
+  Key terms include [Technical AI Safety](https://bluedot.org/), [Frontier AI
+  Governance](https://bluedot.org/), introductory alignment curricula, and a course
+  pipeline that transmits shared field vocabulary via the [Field hub](/field/) and
+  [glossary](/glossary/).
+statedIntent: >-
+  Provide accessible, high-quality on-ramp courses so newcomers can orient in AI safety
+  and enter research or policy paths with a common baseline.
+primaryCrux: >-
+  Strong pedagogy and career placement do not imply a unified research agenda; courses
+  mainly transmit vocabulary and problem framings rather than resolving technical cruxes.
+bookBridges: []
+contributes: >-
+  A shared preparadigmatic vocabulary layer for new researchers—useful background for
+  reading bridge-crosswalk material but not a technical discharge path.
+bookSeparates: >-
+  Training throughput and curriculum quality are independent of whether any particular
+  alignment mechanism can be verified under adversarial pressure.
+manuscriptHooks:
+  - none required
+links:
+  - label: "BlueDot Impact"
+    url: https://bluedot.org/

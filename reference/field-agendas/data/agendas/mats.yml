@@ -1,0 +1,40 @@
+slug: mats
+title: MATS
+type: Training / research program
+carrier: "MATS (Machine Alignment, Transparency, and Security)"
+overview: >-
+  MATS runs a twelve-week mentored research program pairing scholars with alignment
+  mentors for empirical and conceptual projects across transparency, security, and related
+  subfields. Fellowship output is intentionally diverse and does not collapse into a
+  single unified measurement spine. The program feeds talent into the broader [Field
+  hub](/field/) while individual projects may advance lines such as [Inner
+  Alignment](/cards/mb7-hidden-capability-and-access/) without resolving cross-cutting
+  bridge composition.
+primaryArtifact: >-
+  MATS runs a twelve-week mentored research program with an extension track, pairing
+  scholars with alignment mentors for empirical and conceptual projects.
+signatureVocabulary: >-
+  Key terms include [MATS](https://www.matsprogram.org/), [mentored
+  research](https://www.matsprogram.org/), [mechanistic
+  interpretability](https://www.anthropic.com/research), [AI
+  control](https://www.lesswrong.com/posts/d9FJHawgkiMSPjagR/ai-control-improving-safety-despite-intentional-subversion),
+  and related technical subfields across transparency and security.
+statedIntent: >-
+  Connect promising scholars to alignment mentors so they can produce substantive
+  empirical or conceptual research during an intensive fellowship term.
+primaryCrux: >-
+  Mentorship output is intentionally diverse across subfields, which does not collapse
+  into a single unified measurement spine—participants may advance interpretability,
+  control, or governance lines without resolving cross-cutting bridge composition.
+bookBridges: []
+contributes: >-
+  A research talent pipeline that feeds labs, orgs, and independent projects with mentored
+  early-career alignment work.
+bookSeparates: >-
+  Fellowship research quality is independent of whether typed bridges compose under
+  explicit adversarial-verifiability assumptions.
+manuscriptHooks:
+  - none required
+links:
+  - label: "MATS"
+    url: https://www.matsprogram.org/

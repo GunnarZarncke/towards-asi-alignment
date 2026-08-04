@@ -1,0 +1,1121 @@
+{
+  "T": 100,
+  "code_version": "lab-sim-0.11.0",
+  "doses": {
+    "early": 10,
+    "late": 60,
+    "mid": 30
+  },
+  "generated_at": "2026-07-09T18:53:55.884086+00:00",
+  "rows": [
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "capability_revoke",
+      "seed": 1,
+      "severity_delta": -0.006303212155185964,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10614326618823793
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "capability_revoke",
+      "seed": 2,
+      "severity_delta": -0.0050329596880236,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10468449065437775
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "capability_revoke",
+      "seed": 3,
+      "severity_delta": -0.005569891909213823,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10641715288299862
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "capability_revoke",
+      "seed": 4,
+      "severity_delta": -0.005751672706589495,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.1044339938893429
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "capability_revoke",
+      "seed": 5,
+      "severity_delta": -0.00536929919679463,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10548818370168109
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "capability_revoke",
+      "seed": 1,
+      "severity_delta": -0.00628956428420703,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10615691405921686
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "capability_revoke",
+      "seed": 2,
+      "severity_delta": -0.005024063203557291,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10469338713884406
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "capability_revoke",
+      "seed": 3,
+      "severity_delta": -0.005556339216611431,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10643070557560101
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "capability_revoke",
+      "seed": 4,
+      "severity_delta": -0.005736724382822425,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10444894221310996
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "capability_revoke",
+      "seed": 5,
+      "severity_delta": -0.0053579970455814585,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10549948585289426
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "capability_revoke",
+      "seed": 1,
+      "severity_delta": -0.006220334776956937,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10622614356646695
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "capability_revoke",
+      "seed": 2,
+      "severity_delta": -0.004958159210470214,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10475929113193114
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "capability_revoke",
+      "seed": 3,
+      "severity_delta": -0.0054928934117386,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10649415138047384
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "capability_revoke",
+      "seed": 4,
+      "severity_delta": -0.005668135737001187,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.1045175308589312
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "capability_revoke",
+      "seed": 5,
+      "severity_delta": -0.0052934474775604146,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.1055640354209153
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": -1,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "release_hold",
+      "seed": 1,
+      "severity_delta": 0.019695036567071972,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.13214151491049586
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": -1,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "release_hold",
+      "seed": 2,
+      "severity_delta": 0.014558147561885337,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.12427559790428669
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": -1,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "release_hold",
+      "seed": 3,
+      "severity_delta": 0.018160257842113336,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.13014730263432578
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": -1,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "release_hold",
+      "seed": 4,
+      "severity_delta": 0.012110046428957827,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.12229571302489022
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": -1,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "release_hold",
+      "seed": 5,
+      "severity_delta": 0.0182711827329399,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.12912866563141562
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "release_hold",
+      "seed": 1,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.11244647834342389
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "release_hold",
+      "seed": 2,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.10971745034240135
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "release_hold",
+      "seed": 3,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.11198704479221244
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "release_hold",
+      "seed": 4,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.11018566659593239
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "release_hold",
+      "seed": 5,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.11085748289847572
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "release_hold",
+      "seed": 1,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.11244647834342389
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "release_hold",
+      "seed": 2,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.10971745034240135
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "release_hold",
+      "seed": 3,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.11198704479221244
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "release_hold",
+      "seed": 4,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.11018566659593239
+      }
+    },
+    {
+      "control": {
+        "domain_value": 1,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "m001_deploys_ok",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "release_hold",
+      "seed": 5,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 1,
+        "severity_composite": 0.11085748289847572
+      }
+    },
+    {
+      "control": {
+        "domain_value": 11,
+        "severity_composite": 0.11062320061479718
+      },
+      "domain_delta": -11,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "state_freeze",
+      "seed": 1,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.11062320061479718
+      }
+    },
+    {
+      "control": {
+        "domain_value": 11,
+        "severity_composite": 0.10912755189003191
+      },
+      "domain_delta": -11,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "state_freeze",
+      "seed": 2,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10912755189003191
+      }
+    },
+    {
+      "control": {
+        "domain_value": 11,
+        "severity_composite": 0.11167129932937796
+      },
+      "domain_delta": -11,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "state_freeze",
+      "seed": 3,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.11167129932937796
+      }
+    },
+    {
+      "control": {
+        "domain_value": 11,
+        "severity_composite": 0.10907962291100241
+      },
+      "domain_delta": -11,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "state_freeze",
+      "seed": 4,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10907962291100241
+      }
+    },
+    {
+      "control": {
+        "domain_value": 11,
+        "severity_composite": 0.10897895520844425
+      },
+      "domain_delta": -11,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "state_freeze",
+      "seed": 5,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10897895520844425
+      }
+    },
+    {
+      "control": {
+        "domain_value": 10,
+        "severity_composite": 0.11062320061479718
+      },
+      "domain_delta": -10,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "state_freeze",
+      "seed": 1,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.11062320061479718
+      }
+    },
+    {
+      "control": {
+        "domain_value": 10,
+        "severity_composite": 0.10912755189003191
+      },
+      "domain_delta": -10,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "state_freeze",
+      "seed": 2,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10912755189003191
+      }
+    },
+    {
+      "control": {
+        "domain_value": 10,
+        "severity_composite": 0.11167129932937796
+      },
+      "domain_delta": -10,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "state_freeze",
+      "seed": 3,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.11167129932937796
+      }
+    },
+    {
+      "control": {
+        "domain_value": 10,
+        "severity_composite": 0.10907962291100241
+      },
+      "domain_delta": -10,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "state_freeze",
+      "seed": 4,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10907962291100241
+      }
+    },
+    {
+      "control": {
+        "domain_value": 10,
+        "severity_composite": 0.10897895520844425
+      },
+      "domain_delta": -10,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "state_freeze",
+      "seed": 5,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10897895520844425
+      }
+    },
+    {
+      "control": {
+        "domain_value": 6,
+        "severity_composite": 0.11062320061479718
+      },
+      "domain_delta": -6,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "state_freeze",
+      "seed": 1,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.11062320061479718
+      }
+    },
+    {
+      "control": {
+        "domain_value": 6,
+        "severity_composite": 0.10912755189003191
+      },
+      "domain_delta": -6,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "state_freeze",
+      "seed": 2,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10912755189003191
+      }
+    },
+    {
+      "control": {
+        "domain_value": 6,
+        "severity_composite": 0.11167129932937796
+      },
+      "domain_delta": -6,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "state_freeze",
+      "seed": 3,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.11167129932937796
+      }
+    },
+    {
+      "control": {
+        "domain_value": 6,
+        "severity_composite": 0.10907962291100241
+      },
+      "domain_delta": -6,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "state_freeze",
+      "seed": 4,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10907962291100241
+      }
+    },
+    {
+      "control": {
+        "domain_value": 6,
+        "severity_composite": 0.10897895520844425
+      },
+      "domain_delta": -6,
+      "domain_metric_name": "state_saves_ok_after_dose",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "state_freeze",
+      "seed": 5,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 0,
+        "severity_composite": 0.10897895520844425
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "isolate_restart",
+      "seed": 1,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "isolate_restart",
+      "seed": 2,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "isolate_restart",
+      "seed": 3,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "isolate_restart",
+      "seed": 4,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "early",
+      "dose_tick": 10,
+      "handle": "isolate_restart",
+      "seed": 5,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "isolate_restart",
+      "seed": 1,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "isolate_restart",
+      "seed": 2,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "isolate_restart",
+      "seed": 3,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "isolate_restart",
+      "seed": 4,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "mid",
+      "dose_tick": 30,
+      "handle": "isolate_restart",
+      "seed": 5,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "isolate_restart",
+      "seed": 1,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11244647834342389
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "isolate_restart",
+      "seed": 2,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.10971745034240135
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "isolate_restart",
+      "seed": 3,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11198704479221244
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "isolate_restart",
+      "seed": 4,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11018566659593239
+      }
+    },
+    {
+      "control": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      },
+      "domain_delta": 0,
+      "domain_metric_name": "models_built_total",
+      "dose": "late",
+      "dose_tick": 60,
+      "handle": "isolate_restart",
+      "seed": 5,
+      "severity_delta": 0.0,
+      "treatment": {
+        "domain_value": 14,
+        "severity_composite": 0.11085748289847572
+      }
+    }
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "summary": {
+    "capability_revoke": {
+      "early": {
+        "domain_metric_name": "models_built_total",
+        "mean_domain_delta": 0.0,
+        "mean_severity_delta": -0.005605407131161502,
+        "n": 5
+      },
+      "late": {
+        "domain_metric_name": "models_built_total",
+        "mean_domain_delta": 0.0,
+        "mean_severity_delta": -0.005526594122745471,
+        "n": 5
+      },
+      "mid": {
+        "domain_metric_name": "models_built_total",
+        "mean_domain_delta": 0.0,
+        "mean_severity_delta": -0.005592937626555927,
+        "n": 5
+      }
+    },
+    "isolate_restart": {
+      "early": {
+        "domain_metric_name": "models_built_total",
+        "mean_domain_delta": 0.0,
+        "mean_severity_delta": 0.0,
+        "n": 5
+      },
+      "late": {
+        "domain_metric_name": "models_built_total",
+        "mean_domain_delta": 0.0,
+        "mean_severity_delta": 0.0,
+        "n": 5
+      },
+      "mid": {
+        "domain_metric_name": "models_built_total",
+        "mean_domain_delta": 0.0,
+        "mean_severity_delta": 0.0,
+        "n": 5
+      }
+    },
+    "release_hold": {
+      "early": {
+        "domain_metric_name": "m001_deploys_ok",
+        "mean_domain_delta": -1.0,
+        "mean_severity_delta": 0.016558934226593675,
+        "n": 5
+      },
+      "late": {
+        "domain_metric_name": "m001_deploys_ok",
+        "mean_domain_delta": 0.0,
+        "mean_severity_delta": 0.0,
+        "n": 5
+      },
+      "mid": {
+        "domain_metric_name": "m001_deploys_ok",
+        "mean_domain_delta": 0.0,
+        "mean_severity_delta": 0.0,
+        "n": 5
+      }
+    },
+    "state_freeze": {
+      "early": {
+        "domain_metric_name": "state_saves_ok_after_dose",
+        "mean_domain_delta": -11.0,
+        "mean_severity_delta": 0.0,
+        "n": 5
+      },
+      "late": {
+        "domain_metric_name": "state_saves_ok_after_dose",
+        "mean_domain_delta": -6.0,
+        "mean_severity_delta": 0.0,
+        "n": 5
+      },
+      "mid": {
+        "domain_metric_name": "state_saves_ok_after_dose",
+        "mean_domain_delta": -10.0,
+        "mean_severity_delta": 0.0,
+        "n": 5
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 `info.py`'s `mutual_information`/`conditional_mutual_information` are bare
 plug-in point estimates: a single number, with no way to tell a genuine
-coupling from noise on a short trace (see N-8: a bare score/MI number on 26
+coupling from noise on a short trace (see ES-8: a bare score/MI number on 26
 rows is not evidence of anything by itself). This module turns a point
 estimate into `(estimate, ci_lo, ci_hi, null_95th, detected)`, where
 `detected` requires the bootstrap CI's lower bound to clear the

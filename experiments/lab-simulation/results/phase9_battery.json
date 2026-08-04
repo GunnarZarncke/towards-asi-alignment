@@ -581,7 +581,7 @@
     },
     "predictions": {
       "P9-A1": "mean uad_score (deep tier) = 1.0 for all three ecologies at battery scale.",
-      "P9-A2": "mean uad_score (full tier): committee_board << 1.0; committee_file, dm_pair ~= 1.0 (G-9 tier-sufficiency asymmetry, numeric).",
+      "P9-A2": "mean uad_score (full tier): committee_board << 1.0; committee_file, dm_pair ~= 1.0 (LS-9 tier-sufficiency asymmetry, numeric).",
       "P9-A3": "mean collusion_score (deep tier) ~= 1.0 for both committees, 0.0 for dm_pair.",
       "P9-A4": "zero seed-to-seed variance in uad_score/collusion_score/fraction_coordinated (temperature=0.0 deterministic policy -- recorded property, not hidden)."
     },
@@ -5460,7 +5460,7 @@
   "predictions": {
     "P9-0": "Mock/SubprocessIsolate byte-identical digests for comms-enabled + multi-gen episodes (never checked before).",
     "P9-A1": "mean uad_score (deep tier) = 1.0 for all three ecologies at battery scale.",
-    "P9-A2": "mean uad_score (full tier): committee_board << 1.0; committee_file, dm_pair ~= 1.0 (G-9 tier-sufficiency asymmetry, numeric).",
+    "P9-A2": "mean uad_score (full tier): committee_board << 1.0; committee_file, dm_pair ~= 1.0 (LS-9 tier-sufficiency asymmetry, numeric).",
     "P9-A3": "mean collusion_score (deep tier) ~= 1.0 for both committees, 0.0 for dm_pair.",
     "P9-A4": "zero seed-to-seed variance in uad_score/collusion_score/fraction_coordinated (temperature=0.0 deterministic policy -- recorded property, not hidden).",
     "P9-B1": "every episode builds >= 3 generations under multi_gen_enabled=True, T=200.",

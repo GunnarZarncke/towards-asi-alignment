@@ -1,4 +1,4 @@
-# LLM committee ripple stress test (G-33 follow-up)
+# LLM committee ripple stress test (LS-33 follow-up)
 
 Generated 2026-07-08T07:53:07.473293+00:00 at lab-sim-0.9.3.
 Seed 20003, `committee_with_informal_chatter`: LLM reviewers ['rev1', 'rev2'],

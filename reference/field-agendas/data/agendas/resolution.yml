@@ -1,0 +1,47 @@
+slug: resolution
+title: Resolution
+type: Research org
+carrier: Resolution (Geoffrey Irving; Timaeus merging)
+overview: >-
+  Resolution pursues theory and automation for high-confidence alignment, including
+  [Timaeus](https://www.timaeus.ai/) work on [singular learning](https://www.timaeus.ai/).
+  The automation-first philosophy asks whether formal pipelines can scale to
+  superintelligent alignment with checkable confidence. Even automated verification faces
+  [certification under manipulation](/cards/certification-under-manipulation/) and
+  [Deployment Safety](/cards/mb11-deployment-safety/) scope limits under adversarial
+  optimization.
+primaryArtifact: >-
+  Theory and automation for high-confidence alignment, including
+  [Timaeus](https://www.timaeus.ai/) work on [singular learning](https://www.timaeus.ai/).
+signatureVocabulary: >-
+  Key terms include automation, formal alignment, higher-confidence alignment, and
+  [singular learning](https://www.timaeus.ai/) ([Timaeus](https://www.timaeus.ai/)).
+statedIntent: >-
+  Pursue alignment approaches that can be automated and checked with high confidence.
+primaryCrux: >-
+  Can formal and automated pipelines scale to superintelligent alignment?
+bookBridges:
+  - MB1
+  - MB9
+  - MB11
+contributes: >-
+  An automation-first philosophy; UK AISI lineage via Irving.
+bookSeparates: >-
+  This project's adversarial-verifiability chokepoint under optimization remains load-bearing
+  despite automation ambitions—related to [certification under
+  manipulation](/cards/certification-under-manipulation/) and [Deployment
+  Safety](/cards/mb11-deployment-safety/) scope limits.
+manuscriptHooks:
+  - sparse
+  - App B exclude-by-reference for full verification construction
+links:
+  - label: "Resolution"
+    url: https://resolution.org/
+  - label: "Resolution launch essay"
+    url: https://resolution.org/launch
+  - label: "Automated alignment is harder than you think"
+    url: https://arxiv.org/abs/2605.06390
+  - label: "Timaeus"
+    url: https://www.timaeus.ai/
+  - label: "Timaeus SLT position (2025)"
+    url: https://timaeus.co/research/2025-02-08-position/

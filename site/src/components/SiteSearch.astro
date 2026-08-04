@@ -1,0 +1,289 @@
+---
+// Client-side search over public/search-index.json (built by
+// scripts/build-search-index.mjs from concepts, chapters/appendices,
+// experiments, and notation). Fetches the index lazily on first interaction
+// and filters in the browser; there is no server, so this is deliberately a
+// simple substring match rather than a full-text search backend.
+const base = import.meta.env.BASE_URL;
+---
+
+<div class="site-search" data-base={base}>
+  <label class="visually-hidden" for="site-search-input">Search the site</label>
+  <input
+    id="site-search-input"
+    class="site-search-input"
+    type="search"
+    placeholder="Search…"
+    autocomplete="off"
+    role="combobox"
+    aria-expanded="false"
+    aria-controls="site-search-results"
+    aria-autocomplete="list"
+  />
+  <ul id="site-search-results" class="site-search-results" role="listbox" hidden></ul>
+</div>
+
+<script>
+  type SearchEntry = { title: string; type: string; summary: string; url: string };
+
+  const root = document.querySelector<HTMLElement>(".site-search");
+  const input = document.querySelector<HTMLInputElement>("#site-search-input");
+  const resultsEl = document.querySelector<HTMLUListElement>("#site-search-results");
+  if (!root || !input || !resultsEl) throw new Error("Site search markup missing");
+
+  const base = root.dataset.base ?? "/";
+  const MAX_RESULTS = 20;
+  let index: SearchEntry[] | null = null;
+  let indexPromise: Promise<SearchEntry[]> | null = null;
+
+  function loadIndex() {
+    if (!indexPromise) {
+      indexPromise = fetch(`${base}search-index.json`.replace(/\/\//g, "/"))
+        .then((res) => res.json())
+        .then((data: SearchEntry[] | { entries?: SearchEntry[] }) => {
+          index = Array.isArray(data) ? data : (data.entries ?? []);
+          return index;
+        })
+        .catch(() => {
+          index = [];
+          return [] as SearchEntry[];
+        });
+    }
+    return indexPromise;
+  }
+
+  function withBase(url: string) {
+    if (/^https?:\/\//.test(url)) return url;
+    return `${base}${url.replace(/^\/+/, "")}`.replace(/\/\//g, "/");
+  }
+
+  function render(entries: SearchEntry[], query: string) {
+    resultsEl!.innerHTML = "";
+    if (entries.length === 0) {
+      const li = document.createElement("li");
+      li.className = "site-search-empty";
+      li.textContent = query.trim() ? "No matches." : "";
+      resultsEl!.appendChild(li);
+      resultsEl!.hidden = query.trim().length === 0;
+      input!.setAttribute("aria-expanded", String(!resultsEl!.hidden));
+      return;
+    }
+    for (const entry of entries) {
+      const li = document.createElement("li");
+      li.setAttribute("role", "option");
+      const a = document.createElement("a");
+      a.href = withBase(entry.url);
+      const title = document.createElement("span");
+      title.className = "site-search-result-title";
+      title.textContent = entry.title;
+      const badge = document.createElement("span");
+      badge.className = "site-search-result-badge badge";
+      badge.textContent = entry.type;
+      a.append(title, badge);
+      li.appendChild(a);
+      resultsEl!.appendChild(li);
+    }
+    resultsEl!.hidden = false;
+    input!.setAttribute("aria-expanded", "true");
+  }
+
+  function scoreTerm(entry: SearchEntry, term: string): number | null {
+    const t = term.toLowerCase();
+    if (!t) return null;
+    const titleIdx = entry.title.toLowerCase().indexOf(t);
+    const typeIdx = entry.type.toLowerCase().indexOf(t);
+    const summaryIdx = entry.summary.toLowerCase().indexOf(t);
+    const scores: number[] = [];
+    // Title matches rank best, then type badge, then summary blurb.
+    if (titleIdx !== -1) scores.push(titleIdx);
+    if (typeIdx !== -1) scores.push(50 + typeIdx);
+    if (summaryIdx !== -1) scores.push(100 + summaryIdx);
+    return scores.length ? Math.min(...scores) : null;
+  }
+
+  function search(query: string, entries: SearchEntry[]) {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+
+    type Ranked = { entry: SearchEntry; score: number; matchedWords: number };
+
+    // Phase 1: treat the whole query as one substring (title, type, or summary).
+    let ranked: Ranked[] = entries
+      .map((entry) => {
+        const score = scoreTerm(entry, q);
+        return score === null ? null : { entry, score, matchedWords: 1 };
+      })
+      .filter((x): x is Ranked => x !== null)
+      .sort((a, b) => a.score - b.score);
+
+    // Phase 2: multi-word fallback — score each word separately and sum.
+    if (ranked.length === 0) {
+      const words = q.split(/\s+/).filter(Boolean);
+      if (words.length > 1) {
+        const missPenalty = 500;
+        ranked = entries
+          .map((entry) => {
+            let score = 0;
+            let matchedWords = 0;
+            for (const word of words) {
+              const wordScore = scoreTerm(entry, word);
+              if (wordScore === null) score += missPenalty;
+              else {
+                matchedWords += 1;
+                score += wordScore;
+              }
+            }
+            return matchedWords === 0 ? null : { entry, score, matchedWords };
+          })
+          .filter((x): x is Ranked => x !== null)
+          .sort((a, b) => b.matchedWords - a.matchedWords || a.score - b.score);
+      }
+    }
+
+    return ranked.slice(0, MAX_RESULTS).map((x) => x.entry);
+  }
+
+  function close() {
+    resultsEl!.hidden = true;
+    input!.setAttribute("aria-expanded", "false");
+  }
+
+  input.addEventListener("focus", () => {
+    loadIndex().then(() => {
+      if (input!.value.trim()) render(search(input!.value, index ?? []), input!.value);
+    });
+  });
+
+  input.addEventListener("input", async () => {
+    const entries = index ?? (await loadIndex());
+    render(search(input!.value, entries), input!.value);
+  });
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      close();
+      input!.blur();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!root!.contains(event.target as Node)) close();
+  });
+</script>
+
+<style>
+  .site-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .site-search-input {
+    width: 9.5rem;
+    max-width: 100%;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-header-border);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-header-text);
+    font: inherit;
+    font-size: 0.94rem;
+    line-height: 1.4;
+  }
+
+  .site-search-input::placeholder {
+    color: var(--color-header-muted);
+  }
+
+  .site-search-input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+
+  .site-search-results {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 0.35rem);
+    right: 0;
+    width: min(26rem, 92vw);
+    max-height: min(70vh, 28rem);
+    overflow-y: auto;
+    margin: 0;
+    padding: 0.25rem 0;
+    list-style: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .site-search-results li {
+    margin: 0;
+  }
+
+  .site-search-results li + li {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .site-search-results a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.65rem;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .site-search-results a:hover {
+    background: var(--color-surface-muted);
+  }
+
+  .site-search-result-title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .site-search-result-badge {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    padding: 0.12rem 0.45rem;
+  }
+
+  .site-search-empty {
+    padding: 0.45rem 0.65rem;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    .site-search {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+
+    .site-search-input {
+      width: 100%;
+    }
+
+    .site-search-results {
+      right: auto;
+      left: 0;
+      width: 100%;
+    }
+  }
+</style>

@@ -18,11 +18,11 @@ digraph Spine01BoundaryMeasurement {
   P08 [label="P08 Violation blocks candidate", fillcolor="#EAF3FF"];
   P09 [label="P09 Observational non-id.", fillcolor="#EAF3FF"];
   P09A [label="Access non-id.", fillcolor="#EAF3FF"];
-  PCID [label="[NEW]\nCID incentives\nnot abstraction-invariant", fillcolor="#EAF3FF", color="#1F77B4", penwidth=2.2];
+  PCID [label="CID incentives\nnot abstraction-invariant", fillcolor="#EAF3FF"];
   P09K [label="K-equivalence limit", fillcolor="#EAF3FF"];
   P36 [label="P36 Handle-operation ref.", fillcolor="#EAF3FF"];
   P36M [label="Smoothing margin", fillcolor="#EAF3FF"];
-  P10 [label="P10 B-IQ upper bound", fillcolor="#EAF3FF"];
+  P10 [label="P10 BIQ upper bound", fillcolor="#EAF3FF"];
   P11 [label="P11 Capacity monotonicity", fillcolor="#EAF3FF"];
   P34 [label="P34 Host-capacity aliasing", fillcolor="#EAF3FF"];
   P43H [label="Hidden-rate accumulation", fillcolor="#EAF3FF"];

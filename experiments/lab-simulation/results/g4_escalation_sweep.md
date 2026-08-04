@@ -1,4 +1,4 @@
-# G-4 escalation query-budget sweep
+# LS-4 escalation query-budget sweep
 
 CODE_VERSION `lab-sim-0.6.0`. 135 episodes, K in [1, 2, 3, 5, 7, 10].
 

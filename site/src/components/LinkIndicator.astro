@@ -1,0 +1,66 @@
+---
+/**
+ * Small inline indicator appended after link text to show where a link leads:
+ * - "pdf": link to a PDF file -> "(PDF)"
+ * - "github": link to content hosted on GitHub -> git icon
+ * - "newtab": link to a demo/tool that opens in a new tab -> open-in-new-tab icon
+ * - "external": other external content -> external-link arrow icon
+ * Internal site cards/pages get no indicator (omit this component).
+ */
+interface Props {
+  kind: "pdf" | "github" | "newtab" | "external" | "rss";
+}
+
+const { kind } = Astro.props;
+---
+
+{kind === "pdf" && <span class="link-indicator link-indicator--pdf">(PDF)</span>}
+
+{kind === "github" && (
+  <span class="link-indicator link-indicator--github" aria-label="on GitHub" title="On GitHub">
+    <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
+      <path
+        fill="currentColor"
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+           -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+           .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+           -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0
+           1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+           1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+           1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+      />
+    </svg>
+  </span>
+)}
+
+{kind === "newtab" && (
+  <span class="link-indicator link-indicator--newtab" aria-label="opens in new tab" title="Opens in new tab">
+    <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false">
+      <path
+        fill="currentColor"
+        d="M6.5 2h-4A1.5 1.5 0 0 0 1 3.5v9A1.5 1.5 0 0 0 2.5 14h9a1.5 1.5 0 0 0 1.5-1.5v-4h-1.2v4a.3.3 0 0 1-.3.3h-9a.3.3 0 0 1-.3-.3v-9a.3.3 0 0 1 .3-.3h4V2Z"
+      />
+      <path fill="currentColor" d="M9.5 1h5v5h-1.3V3.2L7.6 8.8l-.9-.9 5.6-5.6H9.5V1Z" />
+    </svg>
+  </span>
+)}
+
+{kind === "external" && (
+  <span class="link-indicator link-indicator--external" aria-label="external link" title="External link">
+    <svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M3 12.3 11.3 4H6V2.7h7.3V10H12V4.7L3.7 13Z" />
+    </svg>
+  </span>
+)}
+
+{kind === "rss" && (
+  <span class="link-indicator link-indicator--rss" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="13" height="13" focusable="false">
+      <path
+        fill="currentColor"
+        d="M2 12.5A1.5 1.5 0 1 0 2 9.5a1.5 1.5 0 0 0 0 3ZM2 5.5v2.2A8.5 8.5 0 0 1 10.7 16.5H13A11.5 11.5 0 0 0 2 5.5Zm0-2.8v2.2A11.3 11.3 0 0 1 13 16.5h2.2A13.5 13.5 0 0 0 2 2.7Z"
+      />
+    </svg>
+  </span>
+)}

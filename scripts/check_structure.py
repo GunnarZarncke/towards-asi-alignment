@@ -18,7 +18,6 @@ REQUIRED = [
     "metadata/preamble.tex",
     "frontmatter/titlepage.tex",
     "frontmatter/executive-overview.tex",
-    "tables/chapter-map.tex",
     "tables/part-roadmap.tex",
     "references/main.bib",
 ]

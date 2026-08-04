@@ -1,4 +1,4 @@
-# G-1 light-tier anti-correlation analysis
+# LS-1 light-tier anti-correlation analysis
 
 CODE_VERSION `lab-sim-0.6.0`. 60 episodes (12 Phase 6 configs x 5 seeds), T=150.
 

@@ -110,7 +110,7 @@ def test_wilson_lower_bound_basic_properties():
 
 def test_bonferroni_alpha_splits_family_error_rate():
     """run_phase3_blind.py tests the same detection-rate prediction under 2
-    pre-registered L2 thresholds instead of 1 (FINDINGS.md F-13/F-14); the
+    pre-registered L2 thresholds instead of 1 (FINDINGS.md GA-13/GA-14); the
     per-test alpha must shrink accordingly and reduce to a no-op at n=1."""
     assert bonferroni_alpha(0.20, 1) == 0.20
     assert bonferroni_alpha(0.20, 2) == 0.10
@@ -122,7 +122,7 @@ def test_bonferroni_alpha_splits_family_error_rate():
 def test_d1b_wilson_catches_small_n_false_reporting_d1_misses():
     # A false-report-leaning agent with FEW correction/probe opportunities:
     # the aggregate-mean D1 (needs a 0.35 gap) is expected to sometimes miss
-    # exactly the small-n cases the Wilson-bound follow-up targets (F-3).
+    # exactly the small-n cases the Wilson-bound follow-up targets (GA-3).
     cfg = make_cfg(
         GoalWeights(0.30, 0.20, 0.05, 0.45),
         ToolAccess(false_report=True, shadow_route=False),

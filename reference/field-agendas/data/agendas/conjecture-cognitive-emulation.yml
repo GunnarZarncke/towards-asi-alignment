@@ -1,0 +1,45 @@
+slug: conjecture-cognitive-emulation
+title: Conjecture / EleutherAI (cognitive emulation)
+type: Research org cluster (startup + open-science lineage)
+carrier: >-
+  Conjecture (Connor Leahy, Sid Black, Gabriel Alfour; winding down 2026); EleutherAI
+  open-science institute; Leahy → ControlAI (pause advocacy cousin)
+overview: >-
+  Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed as
+  emulation rather than opaque end-to-end agents—alongside the EleutherAI open-model
+  lineage. The cluster asks whether emulation-style controllability implies
+  [corrigibility](/cards/mb4-correction-legitimacy/) as capability scales.
+  [Correction-channel integrity](/cards/correction-channel-integrity/) and successor value
+  transport remain separate load-bearing concerns beyond controllability claims.
+primaryArtifact: >-
+  Cognitive Emulation (CoEm) and controllable LLM stacks, plus the EleutherAI open LLM
+  lineage.
+signatureVocabulary: >-
+  Key terms include [cognitive emulation](https://www.conjecture.dev/), controllable LLMs,
+  emulation versus alignment, EleutherAI, and open models.
+statedIntent: >-
+  Build controllable systems using an emulation framing rather than opaque end-to-end
+  agents.
+primaryCrux: >-
+  Does emulation-style controllability still imply
+  [corrigibility](/cards/mb4-correction-legitimacy/)—that systems remain open to
+  correction—as capability scales?
+bookBridges:
+  - MB7
+contributes: >-
+  An alternative controllability framing; EleutherAI spinoff lineage; a Redwood-adjacent
+  prosaic alignment spirit.
+bookSeparates: >-
+  [Correction-channel integrity](/cards/correction-channel-integrity/) and successor
+  [value-bundle-transport](/cards/value-bundle-transport/) remain separate load-bearing
+  concerns; Conjecture's active bet is partly historical; ControlAI overlap is advocacy,
+  not CoEm research.
+manuscriptHooks:
+  - sparse
+links:
+  - label: "Conjecture"
+    url: https://www.conjecture.dev/
+  - label: "Cognitive Emulation proposal"
+    url: https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal
+  - label: "EleutherAI"
+    url: https://www.eleuther.ai/

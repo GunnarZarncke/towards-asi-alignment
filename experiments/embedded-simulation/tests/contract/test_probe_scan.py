@@ -1,7 +1,7 @@
 """Contract test for the pre-registered probe_scan.py lag/direction grid.
 
 Pins the acceptance criteria from `probe_scan.py`'s module docstring: the
-scan must rediscover the known lag-3 coupling (N-8) on both
+scan must rediscover the known lag-3 coupling (ES-8) on both
 `capture_theater` datasets and must not raise false positives on either
 `honest_baseline` dataset, aside from the real, expected lag-0 control-loop
 response (which appears at *both* `forward` and `reverse` labels at lag 0

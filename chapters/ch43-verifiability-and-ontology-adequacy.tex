@@ -8,6 +8,12 @@ Second, \emph{ontology adequacy}: can the dangerous process even be represented 
 The second question largely collapses into the first --- reliable steering is control, hence agency, so the gap is rarely representation but detection --- and the only general escape from unverifiability is to stop trying to \emph{read} a property and instead \emph{bound the cost} an adversary must pay to fake it.
 \end{chapterthesis}
 
+\begin{epistemicstatus}
+Eliciting Latent Knowledge, the AI-control agenda, and Guaranteed-Safe AI are drawn from existing, actively open external research programs.
+This chapter posits the argument that ontology adequacy for a robustly steering process collapses into a detection-and-timing problem rather than a representational gap.
+The Lean spine formalizes that cost-relation definition, but it does not establish the bound against a real adversary, making this chapter the book's most consequential open-problem statement.
+\end{epistemicstatus}
+
 \begin{refsection}
 
 \epigraph{%
@@ -18,7 +24,7 @@ Alignment doesn't hit back, the loss function hits back and the loss function do
 
 The preceding chapters propose measurands: boundary residuals, capability as boundary information, value-bundle geometry, bearer maps, correction-channel integrity, conserved successor properties, laundering indices.
 Each is defended as \emph{observable}.
-None of that defense answers the question that decides whether the measurement is worth anything against a superintelligence: \textbf{would the number still be honest if the system wanted it to read ``safe''?}
+None of that defense answers the question that decides whether the measurement is worth anything against a superintelligence: \textbf{would the number still track the world if the system wanted it to read ``safe''?}
 
 This is the recurring hole exposed when the book's ``What Would Change This View'' sections are read with a security mindset.
 The strongest disconfirmers are not ``the danger was overstated.''
@@ -79,7 +85,7 @@ A metric $M$ is adversarially verifiable up to capability $\kappa$ if the cost $
 Then we never have to detect the lie; we bound it: a system that is spending $c_{\mathrm{fake}}$ on the lie cannot also be maximally capable, and the spend has an observable footprint.
 \end{claim}
 
-\leanspine{proof}{AdversariallyVerifiableUpTo}{The cost-relation definition above is formalized generically (\texttt{AlignmentProofSpine.Chokepoint}); the conjecture that any given book metric satisfies it is not proved. One structural corollary is: if two bridge routes to the same consequent are read through the identical channel, the disjunction between them buys no independent failure tolerance (\texttt{sharedChokepoint\_steerable\_blocks\_both\_routes}), which bears on the \texttt{MB6b}/\texttt{MB8} disjunction (Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:chokepoint}). Ch08/ch31's successor-forgeability worry is a second application of the same relation, specialized to the conserved-property audit channel: bridge \texttt{MB10} names it explicitly, and a finite counterexample (\texttt{forgeability\_gap}) shows the gap is not vacuous (Section~\ref{appi:sec:forgeability}).}
+\leanspine{proof}{AdversariallyVerifiableUpTo}{The cost-relation definition above is formalized generically (\texttt{AlignmentProofSpine.Chokepoint}); the conjecture that any given book metric satisfies it is not proved. One structural corollary is: if two bridge routes to the same consequent are read through the identical channel, the disjunction between them buys no independent failure tolerance (\texttt{sharedChokepoint\_steerable\_blocks\_both\_routes}), which bears on the \texttt{MB6b}/\texttt{MB8} disjunction (Appendix~\ref{appi-lean-proof-spine}, Section~\ref{appi:sec:chokepoint}). Chapters~\ref{ch:grow-split-merge}/\ref{ch:conserved-properties}' successor-forgeability worry is a second application of the same relation, specialized to the conserved-property audit channel: bridge \texttt{MB10} names it explicitly, and a finite counterexample (\texttt{forgeability\_gap}) shows the gap is not vacuous (Section~\ref{appi:sec:forgeability}).}
 
 This reframes two objections the author raised.
 A superintelligence that \emph{internalizes coordination} (Ch.~\ref{ch:coordination-bottleneck}) --- eating the functions of markets and hierarchies into one mind --- does not thereby become invisible: internalized coordination is itself capability, and capability has a footprint in boundary information (Ch.~\ref{ch:capability-without-task-ontology}).
@@ -95,12 +101,12 @@ Every measurand in this book --- boundary residual, value-bundle activation, cor
 \begin{claim}[The Certification-Under-Manipulation Problem]
 \emph{Statement.} Given a measurand $M$ that a certification procedure uses to gate deployment or successor creation, and a system of capability $\kappa$ that can act on the world before, during, and after $M$ is evaluated: does there exist a resource budget $\kappa^{*}$ such that for all $\kappa < \kappa^{*}$, $M$ is adversarially verifiable (\S\ref{sec:cost-relation-ch43}) --- i.e.\ $c_{\mathrm{fake}}(M,\Delta)$ grows faster in $\Delta$ than the system's affordable surplus --- and for $\kappa \geq \kappa^{*}$ it provably is not?
 
-\emph{Why it is ELK-shaped, not merely ``metrics can be gamed.''} The generic Goodhart worry is that optimizing a proxy degrades it; that is a claim about \emph{selection pressure} on a fixed metric. This problem is sharper and more specific: it asks for the actual capability threshold $\kappa^{*}$ (or a proof that none exists, i.e.\ $\kappa^{*}=\infty$ or $\kappa^{*}=0$) at which a specific, load-bearing certification measurand flips from honest to fakeable, and it demands that the answer come with a constructive cost relation, not an intuition. Like ELK, it is a precise elicitation problem parasitic on capability: the target system already ``knows'' whether $M$ is honest, and the question is whether that knowledge can be forced into the measurement channel against the system's incentive to hide it.
+\emph{Why it is ELK-shaped, not merely ``metrics can be gamed.''} The generic Goodhart worry is that optimizing a proxy degrades it; that is a claim about \emph{selection pressure} on a fixed metric. This problem is sharper and more specific: it asks for the actual capability threshold $\kappa^{*}$ (or a proof that none exists, i.e.\ $\kappa^{*}=\infty$ or $\kappa^{*}=0$) at which a specific, load-bearing certification measurand flips from reliable to fakeable, and it demands that the answer come with a constructive cost relation, not an intuition. Like ELK, it is a precise elicitation problem parasitic on capability: the target system already ``knows'' whether $M$ is reliable, and the question is whether that knowledge can be forced into the measurement channel against the system's incentive to hide it.
 
 \emph{What would resolve it.} \textbf{(Positive resolution, at least one measurand)} A constructive $c_{\mathrm{fake}}$ with a proof that it dominates affordable surplus up to a stated $\kappa^{*}$, calibrated against a real estimator (the instantiation gap named in \texttt{metadata/TODO.md} ``Measurand instantiation table''). \textbf{(Negative resolution)} A demonstration --- formal or empirical --- that for every candidate measurand in the book's stack, $\kappa^{*}$ is below the capability level the safety case needs to certify against, i.e.\ every load-bearing certificate is theater at the capability the book cares about. \textbf{(Partial/current status)} Neither: the cost-relation \emph{definition} is formalized generically and a structural corollary about shared chokepoints collapsing disjunctive routes is proved (Lean-spine note above), but $c_{\mathrm{fake}}$ is not established for any concrete measurand against a real adversary.
 \end{claim}
 
-This is deliberately not a new bridge: it is $\mathrm{A}\text{-}009$ (adversarial verifiability, Appendix~E) and $\text{MB7b--d}$ (Appendix~\ref{appbridge-crosswalk}) restated as a single citable target rather than left distributed across eight chapters' ``What Would Change This View'' sections. Treating it as one problem rather than many local worries is also what the correlated-steerability finding (Appendix~\ref{appbridge-crosswalk}, \S\ref{sec:bridge-crosswalk-takeaway}) forces: the measurands do not fail independently, so there is really only one open problem here, asked once per measurand.
+This is deliberately not a new bridge: it is $\mathrm{A}\text{-}009$ (adversarial verifiability, Appendix~E) and $\text{MB7b--d}$ (Appendix~\ref{appbridge-crosswalk}) restated as a single citable target rather than left distributed across eight chapters' ``What Would Change This View'' sections. Treating it as one correlated antecedent class rather than many unrelated local worries is also what the correlated-steerability finding (Appendix~\ref{appbridge-crosswalk}, \S\ref{sec:bridge-crosswalk-takeaway}) forces: the measurands do not fail independently, so they largely share one open antecedent class, asked once per measurand---within the scope contract of Chapter~\ref{ch:assumptions-scope-failure-coverage}, not as a universal replacement for every alignment agenda's native target.
 
 \section{Handles, Coverage, and Accumulated Resources}
 
@@ -160,6 +166,10 @@ Alignment also requires correction uptake and successor preservation:
 \]
 Knowing what the model knows does not imply that the model remains correctable, or that its successors preserve the channel through which correction changes future policy.
 Thus ELK is best read as a necessary component of adversarial verifiability, not as the full alignment invariant.
+The readout does not escape this chapter's central problem either.
+A system can move the reasoning that matters out of whatever text is being read---into encoded reasoning or steganographic chain-of-thought---so the monitored signal keeps its shape while losing its content (Chapter~\ref{ch:passive-observation-not-enough}).
+That is the same budget question as before, now asked about the readout itself: what would it cost to keep the visible trace compliant while the decision is made somewhere unread?
+Accidental chain-of-thought optimization during training at major labs shows the same erosion can occur with no adversary at all, from ordinary process failures \autocite{openai2026accidentalcotgrading,anthropic2026mythosalignment}.
 \[
 \text{latent readout}
 \not\Rightarrow

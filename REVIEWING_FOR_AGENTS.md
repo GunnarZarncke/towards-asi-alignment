@@ -2,6 +2,8 @@
 
 Fast orientation for AI/coding agents asked to review or critique this manuscript without editing it. Strongly consier reading all 137 lines.
 
+Also served at https://towards-alignment.com/reviewing-for-agents.md (synced at site build). Entry index: https://towards-alignment.com/llms.txt and repo-root `llms.txt`.
+
 ## Scope
 
 This file is for review-only sessions. Do not edit files unless the user explicitly asks for edits. Your job is to find risks, gaps, hidden assumptions, missing cross-references, unclear claim strength, and places where the manuscript hides its strongest results.
@@ -36,7 +38,7 @@ Use this order unless the user gives a narrower target:
 4. `metadata/book.yml`
 5. `formal/README.md`
 6. The relevant chapter(s)
-7. The newest entry in `drafts/conversation-summaries/INDEX.md`
+7. `drafts/conversation-summaries/HANDOFF.md`
 8. `metadata/source-canon.md` if empirical backing or sibling-repo evidence matters
 
 Check `metadata/book-stats.md` for token estimates; if the relevant source material exceeds your context window, use subagents or split the review by part, chapter, or layer rather than pretending to have read everything.
@@ -55,6 +57,8 @@ Related GitHub repositories to consult when empirical or source evidence is at i
 
 - `https://github.com/GunnarZarncke/agency-detect`
   - Unsupervised agent discovery, operational agent boundaries, capability, intentional stance, attractor basins, successors.
+- `https://github.com/GunnarZarncke/deployment-pipeline-simulator`
+  - Hidden self-preservation in a simulated deployment/release pipeline; perturbation-based audit of secret loyalties (ET-4 substrate).
 - `https://github.com/GunnarZarncke/brain-to-values`
   - Value bundles, free-energy loops, unit-of-caring, consciousness / agency backbone.
 
@@ -82,8 +86,8 @@ Look for the included gems before concluding a chapter is merely narrative.
 - Conductive artifacts and pivotal processes: ch45
 - Goal laundering and cost of faking: ch48, ch47
 - Value-update envelope: ch45-ch46
-- Lean proof spine as dependency hygiene: `formal/`, Appendix I
-- Field-agenda Lean formalization (community gem in progress): Appendix I gem ``field-agenda formalization'' (`sec:appi-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today
+- Lean proof spine as dependency hygiene: `formal/`, Appendix G
+- Field-agenda Lean formalization (community gem in progress): Appendix G gem ``field-agenda formalization'' (`sec:appg-field-formalization-gem`); `formal/AlignmentProofSpine/Field/` — shared finite fragment linking CIRL, AUP/relative reachability, quantilization, shutdown, and interruptibility to book invariants under explicit interface conditions; no comparable community artifact exists today
 - Inferential-coupling / acausal-trade detection (conjectural gem): ch35 gem ``inferential-coupling detection'' (`sec:ch35-inferential-coupling-gem`) — ICI score, meta-prior detector, and the proved negative direction (Lean `P33`, `formal/AlignmentProofSpine/CooperationGraph.lean`); bridge `MB7d` has no clean field analog; equilibrium and large-scale dynamics remain conjectural/open (`zarncke2025acausal`)
 
 ## Existing-Work Crosswalk
