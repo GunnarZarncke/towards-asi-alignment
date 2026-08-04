@@ -66,7 +66,7 @@
 <polygon fill="#555555" stroke="#555555" points="482.01,-373.68 486.05,-367.46 479.01,-369.8 482.01,-373.68"/>
 </g>
 <!-- MB7d -->
-<a xlink:href="../../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node14" class="node"><title>MB7d</title>
+<a xlink:href="../../cards/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node14" class="node"><title>MB7d</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M291.9,-364.57C291.9,-364.57 175.93,-349.64 175.93,-349.64 169.98,-348.87 169.98,-347.34 175.93,-346.57 175.93,-346.57 291.9,-331.64 291.9,-331.64 297.85,-330.87 309.75,-330.87 315.7,-331.64 315.7,-331.64 431.66,-346.57 431.66,-346.57 437.61,-347.34 437.61,-348.87 431.66,-349.64 431.66,-349.64 315.7,-364.57 315.7,-364.57 309.75,-365.34 297.85,-365.34 291.9,-364.57"/>
 <text xml:space="preserve" text-anchor="middle" x="303.8" y="-345.41" font-family="Helvetica,sans-Serif" font-size="9.00">MB7d Inferential&#45;UAD detector validity</text>
 </g></a>

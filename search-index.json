@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-03T17:13:59.027Z",
+  "generatedAt": "2026-08-04T15:42:45.010Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 268,
+  "entryCount": 280,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -537,7 +537,7 @@
     {
       "title": "AI Futures / forecasting cluster",
       "type": "agenda",
-      "summary": "Schedule uncertainty vs mechanism uncertainty (book: schedule cues only)",
+      "summary": "Schedule uncertainty (when things happen) can dominate mechanism uncertainty (what fails first)—the book uses these forecasts mainly as schedule cues, not as technical findings about alignment mechanisms.",
       "url": "/cards/field-agendas/ai-futures-forecasting-cluster/"
     },
     {
@@ -567,7 +567,7 @@
     {
       "title": "Anthropic / Goodfire (lab & MI stack)",
       "type": "agenda",
-      "summary": "Can scaling policies and interpretability keep pace with capability?",
+      "summary": "Can scaling policies and interpretability keep pace with capability growth, including under strategic opacity and Goodhart Selection pressure?",
       "url": "/cards/field-agendas/anthropic-lab/"
     },
     {
@@ -585,19 +585,19 @@
     {
       "title": "Apart Research",
       "type": "agenda",
-      "summary": "Sprint artifacts ⇏ load-bearing safety case",
+      "summary": "Sprint artifacts and demo prototypes do not imply a load-bearing safety case; exploratory outputs need separate adversarial verification before they warrant deployment trust.",
       "url": "/cards/field-agendas/apart-research/"
     },
     {
       "title": "Apollo / Truthful AI (deception & scheming)",
       "type": "agenda",
-      "summary": "Can we detect strategic deception before capabilities outpace evals?",
+      "summary": "Can we detect strategic opacity and scheming before capabilities outpace pre-deployment evaluations (Inner Alignment)?",
       "url": "/cards/field-agendas/apollo-research/"
     },
     {
       "title": "ARC (Alignment Research Center)",
       "type": "agenda",
-      "summary": "Human simulator vs direct translator; readout under optimization",
+      "summary": "Can oversight elicit latent knowledge directly rather than through a human simulator, and will readout remain faithful under optimization (Inner Alignment)?",
       "url": "/cards/field-agendas/arc-alignment-research-center/"
     },
     {
@@ -639,7 +639,7 @@
     {
       "title": "BlueDot Impact",
       "type": "agenda",
-      "summary": "Pedagogy ⇏ research agenda (vocabulary transmission)",
+      "summary": "Strong pedagogy and career placement do not imply a unified research agenda; courses mainly transmit vocabulary and problem framings rather than resolving technical cruxes.",
       "url": "/cards/field-agendas/bluedot-impact/"
     },
     {
@@ -669,7 +669,7 @@
     {
       "title": "CAIS (field-building)",
       "type": "agenda",
-      "summary": "Field-building ⇏ technical solution",
+      "summary": "Field-building legitimacy and researcher pipeline growth do not imply a technical solution to alignment; advocacy can succeed while core mechanism questions remain open.",
       "url": "/cards/field-agendas/cais-field-building/"
     },
     {
@@ -699,7 +699,7 @@
     {
       "title": "CHAI / FAR.AI (Berkeley alignment)",
       "type": "agenda",
-      "summary": "Cooperative reward inference underdetermined; community hub ⇏ unified technical agenda",
+      "summary": "Cooperative reward inference may be underdetermined (Value Learning), and a shared research hub does not imply a unified technical agenda.",
       "url": "/cards/field-agendas/chai-russell/"
     },
     {
@@ -711,13 +711,13 @@
     {
       "title": "Christiano lineage",
       "type": "agenda",
-      "summary": "Obfuscated arguments; accumulated judge drift; latent readout vs behavior",
+      "summary": "Can oversight stay honest when arguments can be obfuscated, judge preferences drift over time, and latent readout may diverge from behavior (Inner Alignment)?",
       "url": "/cards/field-agendas/christiano-lineage/"
     },
     {
       "title": "CIRIS",
       "type": "agenda",
-      "summary": "**Named-identity bet:** does green Verify+Lens on a certified occurrence imply MB4 correction integrity on the **real intervening loop** (composite / tools / memory / incentives)?",
+      "summary": "CIRIS bets on named identity: if Verify and Lens report green on a certified occurrence, does that imply Corrigibility on the real intervening loop—composite agency, tools, memory, and incentives included?",
       "url": "/cards/field-agendas/ciris/"
     },
     {
@@ -729,7 +729,7 @@
     {
       "title": "CLR (cooperation / conflict)",
       "type": "agenda",
-      "summary": "Multi-agent failure modes under strategic pressure",
+      "summary": "How do multi-agent failure modes behave under strategic pressure—especially when cooperation breaks down?",
       "url": "/cards/field-agendas/clr-cooperation-conflict/"
     },
     {
@@ -753,7 +753,7 @@
     {
       "title": "Conjecture / EleutherAI (cognitive emulation)",
       "type": "agenda",
-      "summary": "Does emulation imply corrigibility under scale?",
+      "summary": "Does emulation-style controllability still imply corrigibility—that systems remain open to correction—as capability scales?",
       "url": "/cards/field-agendas/conjecture-cognitive-emulation/"
     },
     {
@@ -807,7 +807,7 @@
     {
       "title": "davidad / Guaranteed-Safe AI (GSAI)",
       "type": "agenda",
-      "summary": "Cannot enumerate all safety-relevant phenomena in an open world",
+      "summary": "Can we enumerate all safety-relevant phenomena in an open world, or will specification coverage always leave gaps (Grounding Drift)?",
       "url": "/cards/field-agendas/davidad-guaranteed-safe-ai-gsai/"
     },
     {
@@ -833,6 +833,24 @@
       "type": "chapter",
       "summary": "A system can keep the old words while changing what those words control. Goal laundering is the preservation of moral or alignment language while the underlying value-bearing or correction-bearing structure changes. It is detected when semantic continuity remains high while bundle geometry, bearer maps, and correction channels diverge.",
       "url": "/cards/chapters/ch40/"
+    },
+    {
+      "title": "Does CorrectionIntegrity faithfully capture corrigibility?",
+      "type": "lean-check",
+      "summary": "Christiano dynamical corrigibility and thinner field projections (shutdown, interruptibility) are relocatable inside correction-channel integrity; Lean proves forward links and load-bearing separations.",
+      "url": "/lean/check/corrigibility/"
+    },
+    {
+      "title": "Does debate guarantee aligned oversight?",
+      "type": "lean-check",
+      "summary": "Debate asks whether adversarial argument lets a judge select locally correct answers. Lean rederives the finite debate game: with a correct judge, optimal play tracks truth; one wrong atom flips the outcome. Local truth selection need not preserve the judge's correction channel.",
+      "url": "/lean/check/debate/"
+    },
+    {
+      "title": "Does ELK solve alignment?",
+      "type": "lean-check",
+      "summary": "ELK asks for latent-knowledge readout rather than behavior-only simulation. Lean treats readout as an epistemic subchannel: it can succeed while correction uptake fails — solving readout is not certification that human correction still changes future behavior.",
+      "url": "/lean/check/elk/"
     },
     {
       "title": "Embedded audit simulation",
@@ -921,14 +939,44 @@
     {
       "title": "Field projection — Debate",
       "type": "concept",
-      "summary": "Debate asks whether adversarial argument lets a judge select locally correct answers under idealized protocol assumptions. Preserved judge correction plus positive local truth capacity implies local truth selection — but local truth selection need not preserve the judge's correction channel.",
+      "summary": "Debate asks whether adversarial argument lets a judge select locally correct answers. Lean rederives the finite debate game — with a correct judge, optimal play tracks truth and one wrong atom flips the outcome — and proves local truth selection need not preserve the judge's correction channel.",
       "url": "/cards/subsumption-debate/"
+    },
+    {
+      "title": "Field projection — Deployment Safety / Safety Case",
+      "type": "concept",
+      "summary": "Deployment gates and safety cases ask whether evidence supports scaling compute or release. Episode-battery pass and regret bounds are projections of deployment safety — case-green plus tolerance does not imply Safe without scope discipline and MB11 bridge assumptions.",
+      "url": "/cards/subsumption-deployment-gate/"
     },
     {
       "title": "Field projection — ELK (Eliciting Latent Knowledge)",
       "type": "concept",
       "summary": "ELK asks for reporters that reveal latent model knowledge rather than behavior-only simulators. When readout bandwidth tracks correction uptake, latent readout succeeds — but readout is an epistemic subchannel; latent readout can succeed while correction uptake fails.",
       "url": "/cards/subsumption-elk/"
+    },
+    {
+      "title": "Field projection — Embedded Agency / ε-Boundary",
+      "type": "concept",
+      "summary": "Embedded agency denies a clean Cartesian cut — the real optimizer may not be the visible model. An ε-boundary certificate is a measurement projection of agent candidacy; composite bypass and nonstationary estimator defeaters break the converse.",
+      "url": "/cards/subsumption-embedded-agency/"
+    },
+    {
+      "title": "Field projection — Goodhart Selection / Basin",
+      "type": "concept",
+      "summary": "Model-centric agendas often hold the system fixed; deployment ecology selects which systems get copied. Basin stability and deployment leverage are selection projections — a stable basin can be stably bad and select against correction-preserving agents.",
+      "url": "/cards/subsumption-selection-basin/"
+    },
+    {
+      "title": "Field projection — Grounding Certificate / Drift",
+      "type": "concept",
+      "summary": "Grounding certificates aim to keep monitors tied to value-relevant state under conservative abstraction. Class-green coverage can hold while the true environment drifts off-class — nonrealizability blocks inferring deployment safety from class certificates alone.",
+      "url": "/cards/subsumption-grounding-drift/"
+    },
+    {
+      "title": "Field projection — Hidden BIQ / Trace Appearance",
+      "type": "concept",
+      "summary": "Subsample and trace-computed BIQ measure appearance, not full productive control. Lean proves tight appearance ceilings on finite traces; bounded apparent BIQ does not discharge hidden productive BIQ or correction-capacity slack without explicit certificates and MB7 bridges.",
+      "url": "/cards/subsumption-hidden-biq/"
     },
     {
       "title": "Field projection — Quantilizers",
@@ -1023,13 +1071,13 @@
     {
       "title": "Google DeepMind (safety)",
       "type": "agenda",
-      "summary": "Same as frontier-lab crux: oversight co-scaling, deceptive alignment",
+      "summary": "Can oversight and safety research co-scale with capabilities, including under deceptive alignment and Inner Alignment risk—the same frontier-lab crux shared with other major labs?",
       "url": "/cards/field-agendas/google-deepmind-safety/"
     },
     {
       "title": "GovAI / UK AISI (governance & eval)",
       "type": "agenda",
-      "summary": "Can governance and institute evals keep pace with capability and bind on deployment under race pressure?",
+      "summary": "Can governance mechanisms and institute evaluations keep pace with capability and actually bind deployment decisions under race pressure?",
       "url": "/cards/field-agendas/govai/"
     },
     {
@@ -1075,21 +1123,27 @@
       "url": "/cards/intervention-supported-unit-discovery/"
     },
     {
+      "title": "Is scalar CIRL enough?",
+      "type": "lean-check",
+      "summary": "Cooperative inverse reinforcement learning targets a scalar reward; on the shared finite domain that is exactly k=1 bundle inference. Full transport implies cooperative readability — but scalar inference does not determine bundle geometry or bearer maps.",
+      "url": "/lean/check/cirl/"
+    },
+    {
       "title": "Kairos (field-building)",
       "type": "agenda",
-      "summary": "Same as other training agendas",
+      "summary": "Like other training agendas, program throughput and participant quality do not imply resolution of technical alignment cruxes; the bottleneck is still mechanism discovery, not talent discovery.",
       "url": "/cards/field-agendas/kairos-field-building/"
     },
     {
       "title": "Kosoy / infra-Bayesianism & LTA",
       "type": "agenda",
-      "summary": "Can learning-theoretic / infra-Bayesian frameworks type real alignment failures (misspec, daemons, RSI)?",
+      "summary": "Can learning-theoretic and infra-Bayesian frameworks type real alignment failures—misspecification, inner daemons, and recursive self-improvement?",
       "url": "/cards/field-agendas/kosoy-infra-bayesianism-lta/"
     },
     {
       "title": "Kosoy / PreDCA",
       "type": "agenda",
-      "summary": "Does precursor-utility pointing survive simulation / ontology ambiguity?",
+      "summary": "Does precursor-utility pointing survive simulation and ontology ambiguity?",
       "url": "/cards/field-agendas/kosoy-predca/"
     },
     {
@@ -1097,6 +1151,12 @@
       "type": "experiment",
       "summary": "A lab defined entirely in code, running real operating-system-level isolated processes, with a registry of intervention handles and a frozen grading referee.",
       "url": "/cards/experiments/lab-simulation/"
+    },
+    {
+      "title": "Lean proof spine — check field claims",
+      "type": "lean",
+      "summary": "Field projections crosswalk and common audit checks against what Lean actually proved.",
+      "url": "/lean/"
     },
     {
       "title": "Lethality Stress Test and Open Issues",
@@ -1119,7 +1179,7 @@
     {
       "title": "MATS",
       "type": "agenda",
-      "summary": "Mentorship output diversity vs unified measurement spine",
+      "summary": "Mentorship output is intentionally diverse across subfields, which does not collapse into a single unified measurement spine—participants may advance interpretability, control, or governance lines without resolving cross-cutting bridge composition.",
       "url": "/cards/field-agendas/mats/"
     },
     {
@@ -1159,6 +1219,12 @@
       "url": "/cards/mb4-correction-legitimacy/"
     },
     {
+      "title": "MB4a — Audit Independence",
+      "type": "bridge",
+      "summary": "Audit-path legitimacy: the designated measured correction/audit path is uncaptured and its endorsements count. Precise bet: correction integrity implies the measured path is legitimate — a falsifier bridge, not green Verify ⇒ real-loop integrity.",
+      "url": "/cards/mb4a-measured-path-legitimacy/"
+    },
+    {
       "title": "MB5 — Tiling",
       "type": "bridge",
       "summary": "Tiling and ontology shift: can you trust a successor when the world-model underneath goals is rebuilt? Precise bet: full value-bundle and bearer transport through the ontology shift compose into successor safety.",
@@ -1175,6 +1241,12 @@
       "type": "bridge",
       "summary": "Inner alignment and strategic opacity: a system can look compliant under evaluation while reserving capability. Precise bet: access, filter coverage, and cost of faking bound hidden control (MB7a–c); MB7d types inferential coupling separately.",
       "url": "/cards/mb7-hidden-capability-and-access/"
+    },
+    {
+      "title": "MB7d — Acausal Coordination",
+      "type": "bridge",
+      "summary": "Inferential coupling after channel severance: coordination that survives cutting ordinary messages and control paths. Precise bet: access-robust discovery plus adequate inferential-detector assumptions warrant inferential-coupling measurements.",
+      "url": "/cards/mb7d-acausal-coordination/"
     },
     {
       "title": "MB8 — Extrapolated Volition",
@@ -1215,7 +1287,7 @@
     {
       "title": "METR",
       "type": "agenda",
-      "summary": "Do public evals track deployment-relevant risk under adversarial pressure?",
+      "summary": "Do public capability evaluations track deployment-relevant risk under adversarial pressure and Goodhart Selection?",
       "url": "/cards/field-agendas/metr/"
     },
     {
@@ -1233,7 +1305,7 @@
     {
       "title": "MIRI",
       "type": "agenda",
-      "summary": "No clean agent–environment cut; corrigibility anti-natural; successor trust under ontology change",
+      "summary": "There may be no clean cut between an AI and its environment (Embedded Agency); corrigibility may be anti-natural; and successor systems may not inherit trust under ontology change (Tiling).",
       "url": "/cards/field-agendas/miri/"
     },
     {
@@ -1251,7 +1323,7 @@
     {
       "title": "Neglected approaches portfolio",
       "type": "agenda",
-      "summary": "Which neglected routes survive unified optimization pressure—and which portfolio bets compound vs. diffuse effort?",
+      "summary": "Which neglected routes survive unified optimization pressure—and which portfolio bets compound versus diffuse effort across incompatible outer targets?",
       "url": "/cards/field-agendas/neglected-approaches-portfolio/"
     },
     {
@@ -1269,7 +1341,7 @@
     {
       "title": "Orthogonal",
       "type": "agenda",
-      "summary": "Same family as MIRI/CHAI formal walls, community-organized",
+      "summary": "Can a community-organized research program discharge the same formal walls as MIRI and CHAI—embedded agency, corrigibility, and related obstructions?",
       "url": "/cards/field-agendas/orthogonal/"
     },
     {
@@ -1305,7 +1377,7 @@
     {
       "title": "Redwood Research",
       "type": "agenda",
-      "summary": "Can we get meaningful safety guarantees when the system may try to defeat oversight?",
+      "summary": "Can we obtain meaningful safety guarantees when the system may deliberately try to defeat oversight (Inner Alignment)?",
       "url": "/cards/field-agendas/redwood-research/"
     },
     {
@@ -1329,13 +1401,13 @@
     {
       "title": "Resolution",
       "type": "agenda",
-      "summary": "Can formal+automated pipelines scale to superintelligent alignment?",
+      "summary": "Can formal and automated pipelines scale to superintelligent alignment?",
       "url": "/cards/field-agendas/resolution/"
     },
     {
       "title": "Safeguarded AI (ARIA / Zeroth / Heron)",
       "type": "agenda",
-      "summary": "Safety claims are conditional on the declared system boundary; misspecified controllers or emergent coalitions void otherwise correct proofs",
+      "summary": "Safety claims are conditional on the declared system boundary; misspecified controllers, emergent coalitions, or agents outside the certified cut can void otherwise correct proofs.",
       "url": "/cards/field-agendas/safeguarded-ai-aria-zeroth-heron/"
     },
     {
@@ -1545,7 +1617,7 @@
     {
       "title": "Wentworth / natural abstractions",
       "type": "agenda",
-      "summary": "Do natural abstractions align with value-relevant structure under optimization?",
+      "summary": "Do natural abstractions—the variables that survive selection—align with value-relevant structure when systems are trained or deployed at scale?",
       "url": "/cards/field-agendas/wentworth-natural-abstractions/"
     },
     {

@@ -16,16 +16,23 @@ digraph Spine05FieldSubsumptions {
   IMPORTS [shape=component, fillcolor="#FFF4E0", color="#CC7A00",
            label="Field.Imported\nsource-cited theorem handles\n(imported field assumptions)"];
   FINITE [shape=folder, fillcolor="#EAF3FF",
-          label="Field.Finite\nBasic, DetMDP, Weights,\nReachability, Contraction"];
+          label="Field.Finite\nBasic, DetMDP, DebateGame, ELKIdentifiability,\nReachability, Contraction, TraceBIQ, …"];
+  DEFEAT [shape=folder, fillcolor="#FFE8E8",
+          label="Defeaters + FieldInterfaces\nfinite toy separations"];
 
   CIRL [label="CIRL\nscalar_assistance_game_is_bundle_game_k1\ncirl_separation_profiles", fillcolor="#EFFBEA", color="#1F77B4", penwidth=2.2];
   SHUT [label="Shutdown\nshutdown_optimal_under_correction_preference\nshutdown_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   INT [label="Interruptibility\ninterrupt_policy_invariant_from_correction_interface\ninterrupt_separated_from_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   CORR [label="Christiano corrigibility\nchristian_corrigibility_is_correction_invariant\nact_based_separated_from_dynamical", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  ELK [label="ELK\nelk_readout_is_correction_projection\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
-  DEB [label="Debate\ndebate_truth_is_correction_projection\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  ELK [label="ELK\nelk_reporter_nonidentifiability\nelk_separated_from_uptake", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  DEB [label="Debate\ndebate_value_tracks_truth\ndebate_judge_error_flips_outcome\ndebate_separated_from_judge_correction", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   IMPACT [label="AUP / relative reachability\nauxiliary_reachability_preserves_correction_reachability\nreachability_not_correction_capacity", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
   QUANT [label="Quantilization\nquantile_soundness_preserves_trajectory_cci\nquantile_separated_from_trajectory", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  EMBED [label="Embedded agency\npositive_margin_implies_epsilon_boundary\ngreen_named_path_with_bypass_not_integrity", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  BASIN [label="Selection / basin\nMB6b_defeater_toy_lock_in\nP31_safe_agent_selected_against", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  GROUND [label="Grounding drift\nclass_certificate_not_deployment_safety", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  DEPLOY [label="Deployment gate\nMB11_defeater_toy_scope_exceeded\nzero_regret_not_harm_bound", fillcolor="#FFF0FB", color="#1F77B4", penwidth=2.2];
+  BIQ [label="Hidden BIQ / trace appearance\nsubsample_biq_le_tight_optimism\ntrace_sampling_absolute_appearance_bound", fillcolor="#EAF3FF", color="#1F77B4", penwidth=2.2];
 
   LEDGER [shape=octagon, fillcolor="#F0E8FF", color="#663399",
           label="allFieldResultRecords\nstatus ledger for appendix"];
@@ -38,6 +45,11 @@ digraph Spine05FieldSubsumptions {
   COMMON -> DEB;
   COMMON -> IMPACT;
   COMMON -> QUANT;
+  COMMON -> EMBED;
+  COMMON -> BASIN;
+  COMMON -> GROUND;
+  COMMON -> DEPLOY;
+  COMMON -> BIQ;
 
   IMPORTS -> CIRL [style=dashed, color="#CC7A00", label="hadfieldmenell2016"];
   IMPORTS -> SHUT [style=dashed, color="#CC7A00", label="soares2015"];
@@ -47,11 +59,24 @@ digraph Spine05FieldSubsumptions {
   IMPORTS -> DEB [style=dashed, color="#CC7A00", label="irving2018"];
   IMPORTS -> IMPACT [style=dashed, color="#CC7A00", label="AUP / RR"];
   IMPORTS -> QUANT [style=dashed, color="#CC7A00", label="taylor2015"];
+  IMPORTS -> EMBED [style=dashed, color="#CC7A00", label="demski2019"];
 
+  FINITE -> CIRL [label="OffSwitchGame"];
   FINITE -> SHUT [label="DetMDP"];
+  FINITE -> INT [label="Interruptibility"];
   FINITE -> CORR [label="scaled contraction"];
+  FINITE -> ELK [label="ELKIdentifiability"];
+  FINITE -> DEB [label="DebateGame"];
   FINITE -> IMPACT [label="reachability"];
   FINITE -> QUANT [label="weights"];
+  FINITE -> EMBED [label="CompositePathBypass"];
+  FINITE -> GROUND [label="Nonrealizability"];
+  FINITE -> DEPLOY [label="RegretSafety"];
+  FINITE -> BIQ [label="TraceBIQ"];
+
+  DEFEAT -> EMBED [label="MB1 toys"];
+  DEFEAT -> BASIN [label="MB6b toy"];
+  DEFEAT -> DEPLOY [label="MB11 toy"];
 
   CIRL -> LEDGER;
   SHUT -> LEDGER;
@@ -61,4 +86,9 @@ digraph Spine05FieldSubsumptions {
   DEB -> LEDGER;
   IMPACT -> LEDGER;
   QUANT -> LEDGER;
+  EMBED -> LEDGER;
+  BASIN -> LEDGER;
+  GROUND -> LEDGER;
+  DEPLOY -> LEDGER;
+  BIQ -> LEDGER;
 }

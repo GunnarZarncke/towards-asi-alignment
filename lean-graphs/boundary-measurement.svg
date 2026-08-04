@@ -17,30 +17,30 @@
 </g></a>
 <!-- P06 -->
 <a xlink:href="../../node/P06/" class="lean-graph-node"><g id="node2" class="node"><title>P06</title>
-<path fill="#eaf3ff" stroke="#444444" d="M913.06,-307.71C913.06,-307.71 812.99,-307.71 812.99,-307.71 806.99,-307.71 800.99,-301.71 800.99,-295.71 800.99,-295.71 800.99,-283.71 800.99,-283.71 800.99,-277.71 806.99,-271.71 812.99,-271.71 812.99,-271.71 913.06,-271.71 913.06,-271.71 919.06,-271.71 925.06,-277.71 925.06,-283.71 925.06,-283.71 925.06,-295.71 925.06,-295.71 925.06,-301.71 919.06,-307.71 913.06,-307.71"/>
-<text xml:space="preserve" text-anchor="middle" x="863.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P06 Blanket / no extra gain</text>
+<path fill="#eaf3ff" stroke="#444444" d="M912.06,-307.71C912.06,-307.71 811.99,-307.71 811.99,-307.71 805.99,-307.71 799.99,-301.71 799.99,-295.71 799.99,-295.71 799.99,-283.71 799.99,-283.71 799.99,-277.71 805.99,-271.71 811.99,-271.71 811.99,-271.71 912.06,-271.71 912.06,-271.71 918.06,-271.71 924.06,-277.71 924.06,-283.71 924.06,-283.71 924.06,-295.71 924.06,-295.71 924.06,-301.71 918.06,-307.71 912.06,-307.71"/>
+<text xml:space="preserve" text-anchor="middle" x="862.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P06 Blanket / no extra gain</text>
 </g></a>
 <!-- P05&#45;&gt;P06 -->
 <g id="edge1" class="edge">
 <title>P05&#45;&gt;P06</title>
-<path fill="none" stroke="#555555" d="M751.69,-379.44C774.39,-361.34 810.15,-332.85 834.99,-313.05"/>
-<polygon fill="#555555" stroke="#555555" points="836.24,-315.19 840.19,-308.91 833.19,-311.35 836.24,-315.19"/>
+<path fill="none" stroke="#555555" d="M751.53,-379.44C774.06,-361.34 809.55,-332.85 834.2,-313.05"/>
+<polygon fill="#555555" stroke="#555555" points="835.43,-315.21 839.35,-308.91 832.36,-311.39 835.43,-315.21"/>
 </g>
 <!-- P08 -->
 <a xlink:href="../../node/P08/" class="lean-graph-node"><g id="node4" class="node"><title>P08</title>
-<path fill="#eaf3ff" stroke="#444444" d="M1069.32,-307.71C1069.32,-307.71 954.74,-307.71 954.74,-307.71 948.74,-307.71 942.74,-301.71 942.74,-295.71 942.74,-295.71 942.74,-283.71 942.74,-283.71 942.74,-277.71 948.74,-271.71 954.74,-271.71 954.74,-271.71 1069.32,-271.71 1069.32,-271.71 1075.32,-271.71 1081.32,-277.71 1081.32,-283.71 1081.32,-283.71 1081.32,-295.71 1081.32,-295.71 1081.32,-301.71 1075.32,-307.71 1069.32,-307.71"/>
-<text xml:space="preserve" text-anchor="middle" x="1012.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P08 Violation blocks candidate</text>
+<path fill="#eaf3ff" stroke="#444444" d="M1068.32,-307.71C1068.32,-307.71 953.74,-307.71 953.74,-307.71 947.74,-307.71 941.74,-301.71 941.74,-295.71 941.74,-295.71 941.74,-283.71 941.74,-283.71 941.74,-277.71 947.74,-271.71 953.74,-271.71 953.74,-271.71 1068.32,-271.71 1068.32,-271.71 1074.32,-271.71 1080.32,-277.71 1080.32,-283.71 1080.32,-283.71 1080.32,-295.71 1080.32,-295.71 1080.32,-301.71 1074.32,-307.71 1068.32,-307.71"/>
+<text xml:space="preserve" text-anchor="middle" x="1011.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P08 Violation blocks candidate</text>
 </g></a>
 <!-- P05&#45;&gt;P08 -->
 <g id="edge3" class="edge">
 <title>P05&#45;&gt;P08</title>
-<path fill="none" stroke="#555555" d="M776.28,-379.32C826.07,-360.61 905.19,-330.86 957.86,-311.07"/>
-<polygon fill="#555555" stroke="#555555" points="958.64,-313.39 964.33,-308.63 956.92,-308.8 958.64,-313.39"/>
+<path fill="none" stroke="#555555" d="M776.11,-379.32C825.73,-360.61 904.57,-330.86 957.05,-311.07"/>
+<polygon fill="#555555" stroke="#555555" points="957.81,-313.4 963.5,-308.63 956.08,-308.81 957.81,-313.4"/>
 </g>
 <!-- P10 -->
 <a xlink:href="../../node/P10/" class="lean-graph-node"><g id="node11" class="node"><title>P10</title>
-<path fill="#eaf3ff" stroke="#444444" d="M771.06,-307.71C771.06,-307.71 689,-307.71 689,-307.71 683,-307.71 677,-301.71 677,-295.71 677,-295.71 677,-283.71 677,-283.71 677,-277.71 683,-271.71 689,-271.71 689,-271.71 771.06,-271.71 771.06,-271.71 777.06,-271.71 783.06,-277.71 783.06,-283.71 783.06,-283.71 783.06,-295.71 783.06,-295.71 783.06,-301.71 777.06,-307.71 771.06,-307.71"/>
-<text xml:space="preserve" text-anchor="middle" x="730.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P10 B&#45;IQ upper bound</text>
+<path fill="#eaf3ff" stroke="#444444" d="M769.56,-307.71C769.56,-307.71 690.49,-307.71 690.49,-307.71 684.49,-307.71 678.49,-301.71 678.49,-295.71 678.49,-295.71 678.49,-283.71 678.49,-283.71 678.49,-277.71 684.49,-271.71 690.49,-271.71 690.49,-271.71 769.56,-271.71 769.56,-271.71 775.56,-271.71 781.56,-277.71 781.56,-283.71 781.56,-283.71 781.56,-295.71 781.56,-295.71 781.56,-301.71 775.56,-307.71 769.56,-307.71"/>
+<text xml:space="preserve" text-anchor="middle" x="730.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">P10 BIQ upper bound</text>
 </g></a>
 <!-- P05&#45;&gt;P10 -->
 <g id="edge4" class="edge">
@@ -67,8 +67,8 @@
 <!-- P06&#45;&gt;P07 -->
 <g id="edge2" class="edge">
 <title>P06&#45;&gt;P07</title>
-<path fill="none" stroke="#555555" d="M863.17,-271.35C863.34,-251.72 863.61,-219.56 863.81,-196.97"/>
-<polygon fill="#555555" stroke="#555555" points="866.26,-197.06 863.87,-190.04 861.36,-197.02 866.26,-197.06"/>
+<path fill="none" stroke="#555555" d="M862.32,-271.35C862.66,-251.72 863.2,-219.56 863.59,-196.97"/>
+<polygon fill="#555555" stroke="#555555" points="866.04,-197.08 863.7,-190.04 861.14,-197 866.04,-197.08"/>
 </g>
 <!-- P09 -->
 <a xlink:href="../../node/P09/" class="lean-graph-node"><g id="node5" class="node"><title>P09</title>
@@ -249,7 +249,7 @@
 <text xml:space="preserve" text-anchor="middle" x="424.42" y="-233.31" font-family="Helvetica,sans-Serif" font-size="8.00">MB7 chain</text>
 </g>
 <!-- MB7d_IN -->
-<a xlink:href="../../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node18" class="node"><title>MB7d_IN</title>
+<a xlink:href="../../cards/mb7d-acausal-coordination/" class="lean-graph-node"><g id="node18" class="node"><title>MB7d_IN</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" stroke-dasharray="5,2" points="457.03,-199.71 336.47,-170.11 457.03,-140.51 577.58,-170.11 457.03,-199.71"/>
 <text xml:space="preserve" text-anchor="middle" x="457.03" y="-172.81" font-family="Helvetica,sans-Serif" font-size="9.00">To MB7d</text>
 <text xml:space="preserve" text-anchor="middle" x="457.03" y="-162.01" font-family="Helvetica,sans-Serif" font-size="9.00">Inferential detector validity</text>
