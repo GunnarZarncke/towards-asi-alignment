@@ -26,4 +26,4 @@ Reviewer feedback on the Lean overview / field projections table: the status col
 - `context/lean_proof_graphs/05-field-subsumptions.dot`
 
 ## Commits
-- (this session)
+- `d5d6de41` Show FieldResultStatus ledger badges on Lean overview table.
