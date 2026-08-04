@@ -801,7 +801,7 @@
           "MB6": [],
           "MB7": [
             {
-              "type": "O",
+              "type": "E",
               "ids": [
                 78
               ]
@@ -1835,12 +1835,6 @@
         "cells": {
           "MB1": [
             {
-              "type": "P",
-              "ids": [
-                138
-              ]
-            },
-            {
               "type": "E",
               "ids": [
                 139
@@ -1897,7 +1891,6 @@
               "type": "T",
               "ids": [
                 137,
-                138,
                 142
               ]
             },
@@ -2638,8 +2631,8 @@
       "evidence": "Automation-first alignment research strategy",
       "sources": [
         {
-          "label": "Resolution",
-          "url": "https://resolution.org/"
+          "label": "Resolution launch essay",
+          "url": "https://resolution.org/launch"
         }
       ]
     },
@@ -2653,8 +2646,8 @@
       "evidence": "Singular learning / formal pipeline bet (Timaeus lineage)",
       "sources": [
         {
-          "label": "Timaeus",
-          "url": "https://timaeus.ai/"
+          "label": "Murfet 2025 SLT position",
+          "url": "https://timaeus.co/research/2025-02-08-position/"
         }
       ]
     },
@@ -2866,8 +2859,8 @@
       "evidence": "CIRISAgent / Verify / Lens / Proxy shipped stack",
       "sources": [
         {
-          "label": "CIRIS",
-          "url": "https://ciris.ai/"
+          "label": "CIRIS architecture",
+          "url": "https://ciris.ai/architecture/"
         },
         {
           "label": "CIRISAgent",
@@ -3008,10 +3001,6 @@
       "evidence": "Sub-ASI validated scope; ASI protocol aspirational until RC gates (CRE, red-team)",
       "sources": [
         {
-          "label": "CIRIS hub",
-          "url": "https://ciris.ai/"
-        },
-        {
           "label": "Accord scope / disclaimers",
           "url": "https://ciris.ai/ciris_accord.txt"
         }
@@ -3125,8 +3114,8 @@
           "url": "https://github.com/CIRISAI/CIRISLens"
         },
         {
-          "label": "Coherence Ratchet (ciris.ai)",
-          "url": "https://ciris.ai/"
+          "label": "CIRIS architecture (Lens triage)",
+          "url": "https://ciris.ai/architecture/"
         }
       ]
     },
@@ -3186,8 +3175,8 @@
       "evidence": "Compute governance and frontier-policy research pipeline",
       "sources": [
         {
-          "label": "GovAI",
-          "url": "https://www.governance.ai/"
+          "label": "GovAI compute governance report",
+          "url": "https://www.governance.ai/research-paper/computing-power-and-the-governance-of-artificial-intelligence"
         }
       ]
     },
@@ -3231,8 +3220,8 @@
       "evidence": "UK AISI frontier model testing mandate",
       "sources": [
         {
-          "label": "UK AISI",
-          "url": "https://www.aisi.gov.uk/"
+          "label": "UK AISI eval lessons (2024)",
+          "url": "https://www.aisi.gov.uk/blog/early-lessons-from-evaluating-frontier-ai-systems"
         }
       ]
     },
@@ -3279,8 +3268,8 @@
       "evidence": "Government-led frontier eval binding on deployment",
       "sources": [
         {
-          "label": "UK AISI evaluations",
-          "url": "https://www.aisi.gov.uk/"
+          "label": "UK AISI Frontier AI Trends Report",
+          "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
         }
       ]
     },
@@ -3295,8 +3284,8 @@
       "evidence": "Off-switch / pause priority in advocacy platforms",
       "sources": [
         {
-          "label": "PauseAI",
-          "url": "https://www.pauseai.info/"
+          "label": "PauseAI policy proposal",
+          "url": "https://pauseai.info/proposal"
         }
       ]
     },
@@ -3385,8 +3374,8 @@
       "evidence": "AI 2027 scenario (schedule shapes for governance stress tests only)",
       "sources": [
         {
-          "label": "AI Futures Project",
-          "url": "https://ai-2027.com/"
+          "label": "AI 2027 scenario summary",
+          "url": "https://ai-2027.com/summary"
         }
       ]
     },
@@ -3396,12 +3385,12 @@
       "bridges": [
         "MB7"
       ],
-      "type": "O",
-      "evidence": "FAR.Lab community research hosting",
+      "type": "E",
+      "evidence": "Scalable oversight via partitioned human supervision (FAR.Lab)",
       "sources": [
         {
-          "label": "FAR.AI",
-          "url": "https://www.far.ai/"
+          "label": "Yin et al. 2025",
+          "url": "https://arxiv.org/abs/2510.22500"
         }
       ]
     },
@@ -3415,8 +3404,8 @@
       "evidence": "Cognitive emulation / controllable LLM framing",
       "sources": [
         {
-          "label": "Conjecture",
-          "url": "https://conjecture.dev/"
+          "label": "Conjecture CoEm proposal",
+          "url": "https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal"
         }
       ]
     },
@@ -3983,11 +3972,11 @@
         "MB11"
       ],
       "type": "O",
-      "evidence": "Automation-first high-confidence alignment pipeline",
+      "evidence": "Automated alignment risks under fuzzy research tasks",
       "sources": [
         {
-          "label": "Resolution",
-          "url": "https://resolution.org/"
+          "label": "Irving et al. 2026",
+          "url": "https://arxiv.org/abs/2605.06390"
         }
       ]
     },
@@ -4000,10 +3989,6 @@
       "type": "C",
       "evidence": "Sub-ASI validated scope vs aspirational ASI protocol (honest safety-case disclaimers)",
       "sources": [
-        {
-          "label": "CIRIS hub",
-          "url": "https://ciris.ai/"
-        },
         {
           "label": "Accord scope / disclaimers",
           "url": "https://ciris.ai/ciris_accord.txt"
@@ -4122,23 +4107,6 @@
         {
           "label": "ARIA Safeguarded AI",
           "url": "https://aria.org.uk/opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai"
-        }
-      ]
-    },
-    {
-      "id": 138,
-      "agenda": "Safeguarded AI",
-      "bridges": [
-        "MB1",
-        "MB9",
-        "MB11"
-      ],
-      "type": "P",
-      "evidence": "Zeroth Research end-to-end safeguarded-AI verification stack",
-      "sources": [
-        {
-          "label": "Zeroth Research",
-          "url": "https://www.zeroth.org/"
         }
       ]
     },

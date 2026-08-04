@@ -16,6 +16,8 @@ external:
     url: "https://humancompatible.ai/people#interns"
   - label: "FAR.AI"
     url: "https://www.far.ai/"
+  - label: "Partitioned human supervision (Yin et al. 2025)"
+    url: "https://arxiv.org/abs/2510.22500"
 related: []
 ---
 
@@ -44,6 +46,7 @@ The Berkeley cluster reorients AI research toward beneficial systems under prefe
 - [CHAI](https://humancompatible.ai/)
 - [CHAI Internship](https://humancompatible.ai/people#interns)
 - [FAR.AI](https://www.far.ai/)
+- [Partitioned human supervision (Yin et al. 2025)](https://arxiv.org/abs/2510.22500)
 
 ## Map clustering
 

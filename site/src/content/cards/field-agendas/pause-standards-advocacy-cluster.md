@@ -10,6 +10,8 @@ bookBridges:
 external:
   - label: "PauseAI"
     url: "https://pauseai.info/"
+  - label: "PauseAI policy proposal"
+    url: "https://pauseai.info/proposal"
   - label: "FLI"
     url: "https://futureoflife.org/"
   - label: "ControlAI"
@@ -44,6 +46,7 @@ The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and 
 ## Links
 
 - [PauseAI](https://pauseai.info/)
+- [PauseAI policy proposal](https://pauseai.info/proposal)
 - [FLI](https://futureoflife.org/)
 - [ControlAI](https://controlai.org/)
 - [Encode](https://encodeai.org/)

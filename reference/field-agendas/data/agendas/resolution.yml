@@ -37,5 +37,11 @@ manuscriptHooks:
 links:
   - label: "Resolution"
     url: https://resolution.org/
+  - label: "Resolution launch essay"
+    url: https://resolution.org/launch
+  - label: "Automated alignment is harder than you think"
+    url: https://arxiv.org/abs/2605.06390
   - label: "Timaeus"
     url: https://www.timaeus.ai/
+  - label: "Timaeus SLT position (2025)"
+    url: https://timaeus.co/research/2025-02-08-position/

@@ -9,6 +9,8 @@ bookBridges:
 external:
   - label: "AI Futures Project"
     url: "https://ai-2027.com/"
+  - label: "AI 2027 scenario summary"
+    url: "https://ai-2027.com/summary"
   - label: "Epoch AI"
     url: "https://epoch.ai/"
   - label: "Metaculus"
@@ -41,6 +43,7 @@ The AI Futures and forecasting cluster produces explicit scenario narratives, ti
 ## Links
 
 - [AI Futures Project](https://ai-2027.com/)
+- [AI 2027 scenario summary](https://ai-2027.com/summary)
 - [Epoch AI](https://epoch.ai/)
 - [Metaculus](https://www.metaculus.com/)
 - [AI Impacts](https://aiimpacts.org/)

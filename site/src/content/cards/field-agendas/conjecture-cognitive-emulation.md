@@ -9,6 +9,8 @@ bookBridges:
 external:
   - label: "Conjecture"
     url: "https://www.conjecture.dev/"
+  - label: "Cognitive Emulation proposal"
+    url: "https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal"
   - label: "EleutherAI"
     url: "https://www.eleuther.ai/"
 related: []
@@ -37,6 +39,7 @@ Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed a
 ## Links
 
 - [Conjecture](https://www.conjecture.dev/)
+- [Cognitive Emulation proposal](https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal)
 - [EleutherAI](https://www.eleuther.ai/)
 
 See the [coverage matrix](/field/#coverage-matrix) for evidence tagged to this agenda, and the [glossary](/glossary/) for shared terms.

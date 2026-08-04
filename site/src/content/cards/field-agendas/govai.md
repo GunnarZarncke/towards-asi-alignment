@@ -12,10 +12,16 @@ bookBridges:
 external:
   - label: "GovAI"
     url: "https://www.governance.ai/"
+  - label: "Compute governance report"
+    url: "https://www.governance.ai/research-paper/computing-power-and-the-governance-of-artificial-intelligence"
   - label: "Gradual Disempowerment"
     url: "https://gradual-disempowerment.ai/"
   - label: "UK AISI"
     url: "https://www.aisi.gov.uk/"
+  - label: "UK AISI eval lessons (2024)"
+    url: "https://www.aisi.gov.uk/blog/early-lessons-from-evaluating-frontier-ai-systems"
+  - label: "Frontier AI Trends Report"
+    url: "https://www.aisi.gov.uk/frontier-ai-trends-report"
   - label: "CAISI / US NIST AI"
     url: "https://www.nist.gov/artificial-intelligence"
   - label: "Simon Institute"
@@ -48,8 +54,11 @@ GovAI and allied institutes connect policy research to frontier evaluation, touc
 ## Links
 
 - [GovAI](https://www.governance.ai/)
+- [Compute governance report](https://www.governance.ai/research-paper/computing-power-and-the-governance-of-artificial-intelligence)
 - [Gradual Disempowerment](https://gradual-disempowerment.ai/)
 - [UK AISI](https://www.aisi.gov.uk/)
+- [UK AISI eval lessons (2024)](https://www.aisi.gov.uk/blog/early-lessons-from-evaluating-frontier-ai-systems)
+- [Frontier AI Trends Report](https://www.aisi.gov.uk/frontier-ai-trends-report)
 - [CAISI / US NIST AI](https://www.nist.gov/artificial-intelligence)
 - [Simon Institute](https://simoninstitute.ch/)
 - [IAPS](https://www.iaps.ai/)

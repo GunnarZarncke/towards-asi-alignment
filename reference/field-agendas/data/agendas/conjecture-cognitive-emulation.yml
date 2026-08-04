@@ -39,5 +39,7 @@ manuscriptHooks:
 links:
   - label: "Conjecture"
     url: https://www.conjecture.dev/
+  - label: "Cognitive Emulation proposal"
+    url: https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal
   - label: "EleutherAI"
     url: https://www.eleuther.ai/

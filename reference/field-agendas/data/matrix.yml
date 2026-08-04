@@ -125,7 +125,7 @@ rows:
       MB5: []
       MB6: []
       MB7:
-        - type: O
+        - type: E
           ids:
             - 78
       MB7d: []
@@ -751,9 +751,6 @@ rows:
   - agenda: Safeguarded AI
     cells:
       MB1:
-        - type: P
-          ids:
-            - 138
         - type: E
           ids:
             - 139
@@ -788,7 +785,6 @@ rows:
         - type: T
           ids:
             - 137
-            - 138
             - 142
         - type: P
           ids:

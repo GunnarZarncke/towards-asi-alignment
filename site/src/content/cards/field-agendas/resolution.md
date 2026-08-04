@@ -11,8 +11,14 @@ bookBridges:
 external:
   - label: "Resolution"
     url: "https://resolution.org/"
+  - label: "Resolution launch essay"
+    url: "https://resolution.org/launch"
+  - label: "Automated alignment is harder than you think"
+    url: "https://arxiv.org/abs/2605.06390"
   - label: "Timaeus"
     url: "https://www.timaeus.ai/"
+  - label: "Timaeus SLT position (2025)"
+    url: "https://timaeus.co/research/2025-02-08-position/"
 related: []
 ---
 
@@ -39,7 +45,10 @@ Resolution pursues theory and automation for high-confidence alignment, includin
 ## Links
 
 - [Resolution](https://resolution.org/)
+- [Resolution launch essay](https://resolution.org/launch)
+- [Automated alignment is harder than you think](https://arxiv.org/abs/2605.06390)
 - [Timaeus](https://www.timaeus.ai/)
+- [Timaeus SLT position (2025)](https://timaeus.co/research/2025-02-08-position/)
 
 ## Map clustering
 
