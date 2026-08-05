@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (Kosoy evidence merge).
+Last updated: 2026-08-05 (subsumption-debate lean kind CI fix).
 
 ---
 
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site / CI (2026-08-05):** Fixed Astro build — `subsumption-debate` leanNode used Lean ledger status `separationOnly` instead of schema kind; set to `bridge`, ledger note kept in summary. Log: `2026-08-05-subsumption-debate-lean-kind-fix.md`.
 - **Reference + companion site (2026-08-05):** Kosoy field agenda — merged PreDCA into infra-Bayesianism & LTA after literature review; upgraded evidence (ev 154–157); fixed AF profile URLs; 29 agenda cards. Log: `2026-08-05-kosoy-evidence-merge.md`.
 - **CIRIS falsifier plan (2026-08-04):** Phased named-identity / composite-agency counterexample — Phase 1 mock + memo; Lens cohort deferred to Phase 3; C2 tool-scout locked; cross-agent divergence documented as negative-control not kill signal. Charter updated in sibling `ciris/review/`; `experiments/TODO.md` synced. Log: `2026-08-04-ciris-falsifier-phased-plan.md`.
 - **Reference + companion site (2026-08-04):** Field matrix — moved evidence **#82** (UAD / agency-detect, MB1 support) from Neglected approaches row to **TSA** `MB1`; re-synced index + site JSON (`evidence.yml` agenda was already TSA). Log: `2026-08-04-field-matrix-uad-tsa.md`.
