@@ -250,6 +250,22 @@ clustering:
       - label: Kairos
         url: '#kairos-field-building'
     rollsUpSlug: kairos-field-building
+  - listings: >-
+      [Iliad](https://www.iliad.ac/), [Textbook from the
+      Future](https://textbookfromthefuture.org/), [ILIAD
+      Conference](https://www.iliadconference.com/)
+    listingLinks:
+      - label: Iliad
+        url: https://www.iliad.ac/
+      - label: Textbook from the Future
+        url: https://textbookfromthefuture.org/
+      - label: ILIAD Conference
+        url: https://www.iliadconference.com/
+    rollsUpTo: '[Iliad / Textbook from the Future](#iliad-textbook-from-the-future)'
+    rollsUpLinks:
+      - label: Iliad / Textbook from the Future
+        url: '#iliad-textbook-from-the-future'
+    rollsUpSlug: iliad-textbook-from-the-future
   - listings: '[Truthful AI](https://truthful.ai/), Cadenza Labs'
     listingLinks:
       - label: Truthful AI

@@ -40,7 +40,7 @@ Resolution pursues theory and automation for high-confidence alignment, includin
 
 **Related field cruxes.** [Embedded Agency](/cards/mb1-boundary-estimator-soundness/); [Grounding Drift](/cards/mb9-grounding-certificate/); [Deployment Safety](/cards/mb11-deployment-safety/)
 
-**What they contribute.** An automation-first philosophy; UK AISI lineage via Irving.
+**What they contribute.** An automation-first philosophy; UK AISI lineage via Irving. [Iliad](#iliad-textbook-from-the-future) (which helped found Timaeus) runs the overlapping Textbook from the Future synthesis megaproject.
 
 **How this project treats it.** This project's adversarial-verifiability chokepoint under optimization remains load-bearing despite automation ambitions—related to [certification under manipulation](/cards/certification-under-manipulation/) and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits.
 

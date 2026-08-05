@@ -2,7 +2,7 @@
 
 # Field agenda index
 
-**Status:** field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 30 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  
+**Status:** field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 31 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  
 **Term glossary:** [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) (alphabetical; TSA integration deferred)
 **Bridge map:** [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · LaTeX source: [`appendices/appB-bridge-crosswalk.tex`](../../appendices/appB-bridge-crosswalk.tex)
 **Field hub (companion):** [towards-alignment.com/field/](https://towards-alignment.com/field/)
@@ -260,6 +260,22 @@ GovAI and allied institutes connect policy research to frontier evaluation, touc
 - **Manuscript hooks:** App C institutional translation; App B selection row; ch passive observation; field-news
 - **Links:** [GovAI](https://www.governance.ai/); [Compute governance report](https://www.governance.ai/research-paper/computing-power-and-the-governance-of-artificial-intelligence); [Gradual Disempowerment](https://gradual-disempowerment.ai/); [UK AISI](https://www.aisi.gov.uk/); [UK AISI eval lessons (2024)](https://www.aisi.gov.uk/blog/early-lessons-from-evaluating-frontier-ai-systems); [Frontier AI Trends Report](https://www.aisi.gov.uk/frontier-ai-trends-report); [CAISI / US NIST AI](https://www.nist.gov/artificial-intelligence); [Simon Institute](https://simoninstitute.ch/); [IAPS](https://www.iaps.ai/)
 
+### Iliad / Textbook from the Future
+
+Iliad runs the ILIAD conference series, Iliad Intensive and Fellowship programs, Alignment Journal, and the [Textbook from the Future](https://textbookfromthefuture.org/) megaproject—a communal, living textbook meant to sketch foundational alignment theory before the answers are known. The FAQ frames it as a coordination instrument and selective synthesis of theory-driven agendas (ARC, Timaeus/devInterp, debate, Simplex, agent foundations, and others), explicitly focused on alignment rather than control. Like other field-building efforts, shared canon and onboarding do not by themselves discharge typed [bridge assumptions](/cards/bridge-assumptions/).
+
+- **Type:** Field-building / theory-synthesis megaproject
+- **Carrier:** Iliad (Principles of Intelligence affiliate)
+- **Primary artifact:** The [Textbook from the Future](https://textbookfromthefuture.org/)—a communal table of contents and research-automation programme for foundational alignment theory, plus Iliad Intensive curriculum, fellowship, and conference infrastructure.
+- **Signature vocabulary:** Textbook from the future (Yudkowsky metaphor), selective synthesis, coordination instrument, megaproject, theory-driven research programme, Iliad Intensive, ILIAD conference.
+- **Stated intent:** Establish coherent shared context for foundational alignment research—onboarding researchers, experts from other fields, and AIs—through a communal textbook skeleton and field-building programs.
+- **Primary crux:** Can a communal TOC plus research automation scale theory faster than artisanal research—and without substituting shared canon for adversarial verification?
+- **Field cruxes:** —
+- **Contributes:** Field coordination infrastructure: conference series, intensive curriculum, fellowship pipeline, and a breadth-first synthesis agenda cataloguing major theory lines.
+- **Project separates:** Selective synthesis and shared context are not typed bridge discharge; coordination instruments can succeed while [certification under manipulation](/cards/certification-under-manipulation/) and named bridge cruxes remain open. Contrast [This project - TSA](#this-project-towards-superintelligence-alignment-tsa): depth-first measurement spine vs breadth-first communal TOC.
+- **Manuscript hooks:** none
+- **Links:** [Textbook from the Future](https://textbookfromthefuture.org/); [Textbook from the Future FAQ](https://textbookfromthefuture.org/faq.html); [Iliad](https://www.iliad.ac/); [ILIAD Conference](https://www.iliadconference.com/); [Principles of Intelligence](https://princint.ai/)
+
 ### Kairos (field-building)
 
 Kairos operates SPAR mentored research, Pathfinder career programs, Global Challenges Project workshops, and Generator Residency placements for emerging AI safety researchers. Like other field-building agendas, program throughput accelerates talent discovery rather than mechanism discovery. Participants seed early work across subfields while the [Field hub](/field/) tracks which technical cruxes—such as [composite agency](/cards/composite-agency/)—remain open.
@@ -431,7 +447,7 @@ Resolution pursues theory and automation for high-confidence alignment, includin
 - **Stated intent:** Pursue alignment approaches that can be automated and checked with high confidence.
 - **Primary crux:** Can formal and automated pipelines scale to superintelligent alignment?
 - **Field cruxes:** Embedded Agency (MB1); Grounding Drift (MB9); Deployment Safety (MB11)
-- **Contributes:** An automation-first philosophy; UK AISI lineage via Irving.
+- **Contributes:** An automation-first philosophy; UK AISI lineage via Irving. [Iliad](#iliad-textbook-from-the-future) (which helped found Timaeus) runs the overlapping Textbook from the Future synthesis megaproject.
 - **Project separates:** This project's adversarial-verifiability chokepoint under optimization remains load-bearing despite automation ambitions—related to [certification under manipulation](/cards/certification-under-manipulation/) and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits.
 - **Manuscript hooks:** sparse; App B exclude-by-reference for full verification construction
 - **Links:** [Resolution](https://resolution.org/); [Resolution launch essay](https://resolution.org/launch); [Automated alignment is harder than you think](https://arxiv.org/abs/2605.06390); [Timaeus](https://www.timaeus.ai/); [Timaeus SLT position (2025)](https://timaeus.co/research/2025-02-08-position/)
@@ -462,7 +478,7 @@ The Safeguarded AI cluster—ARIA, Zeroth Research, Heron AI Security, and conta
 - **Primary crux:** Can typed bridges compose under an explicit adversarial-verifiability antecedent, or do standard non-converses block naive closure arguments?
 - **Field cruxes:** Embedded Agency (MB1); Value Learning (MB2); Value Referent (MB3); Corrigibility (MB4); Audit Independence (MB4a); Tiling (MB5); Goodhart Selection (MB6); Inner Alignment (MB7); Acausal Coordination (MB7d); Extrapolated Volition (MB8); Grounding Drift (MB9); Successor Gaming (MB10); Deployment Safety (MB11)
 - **Contributes:** A typed measurement spine from [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) through [Deployment Safety](/cards/mb11-deployment-safety/); explicit non-converses between field agendas; and [selection environment](/cards/attractor-control/) as a load-bearing variable for [Goodhart Selection](/cards/mb6-selection-and-basin-stability/).
-- **Project separates:** The book does not dissolve disagreements between field agendas—it relocates them into named bridges with testable crux wording rather than rhetorical merger.
+- **Project separates:** The book does not dissolve disagreements between field agendas—it relocates them into named bridges with testable crux wording rather than rhetorical merger. Contrast [Iliad / Textbook from the Future](#iliad-textbook-from-the-future): a breadth-first communal TOC and selective synthesis programme; TSA is depth-first typed bridges and explicit non-converses.
 - **Manuscript hooks:** full manuscript; App B crosswalk
 - **Links:** [Companion site](https://towards-alignment.com/); [GitHub repo](https://github.com/GunnarZarncke/towards-asi-alignment)
 
@@ -733,6 +749,7 @@ Column headers use **field nouns**; **MB*** keys are spine identifiers only. Eac
 | [MATS](https://www.matsprogram.org/), ARENA, LASR Labs, MARS | [MATS](#mats) / mentored research programs |
 | [Apart Research](https://apartresearch.com/) | [Apart Research](#apart-research) |
 | [Kairos](https://kairos-project.org/), [SPAR](https://sparai.org/), [Pathfinder](https://pathfinder.kairos-project.org/), GCP | [Kairos](#kairos-field-building) |
+| [Iliad](https://www.iliad.ac/), [Textbook from the Future](https://textbookfromthefuture.org/), [ILIAD Conference](https://www.iliadconference.com/) | [Iliad / Textbook from the Future](#iliad-textbook-from-the-future) |
 | [Truthful AI](https://truthful.ai/), Cadenza Labs | [Apollo / Truthful AI](#apollo-research) / deception evals |
 | [Goodfire](https://www.goodfire.com/), [Transluce](https://transluce.org/), [Neuronpedia](https://www.neuronpedia.org/) | [Anthropic / Goodfire](#anthropic-lab) cluster |
 | [CLR](https://longtermrisk.org/), Modeling Cooperation, [CAIF](https://www.cooperativeai.com/) | [CLR](#clr-cooperation--conflict) |

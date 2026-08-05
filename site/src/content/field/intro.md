@@ -35,6 +35,7 @@ Useful starting points:
 - **[AI Alignment Forum](https://www.alignmentforum.org/)** / [LessWrong](https://www.lesswrong.com/) — long-form research discourse and tag-based archives.
 - **[Human Compatible](https://humancompatible.ai/)** (Russell, 2019) — assistance-games framing of beneficial AI under preference uncertainty.
 - **[International AI Safety Report](https://internationalaisafetyreport.org/)** — periodic synthesis for policymakers (complementary to researcher-native maps).
+- **[Textbook from the Future](https://textbookfromthefuture.org/)** (Iliad) — theory megaproject and coordination instrument sketching a communal table of contents for foundational alignment; [agenda card](/cards/field-agendas/iliad-textbook-from-the-future/).
 
 This site adds an overview of who the major agendas are, the cruxes of the field, and what evidence each has published on the cruxes. The cruxes are presented them as **bridges**, named conditional handoffs between the cruxes and toward overall alignment. 
 For example, [Embedded Agency/MB1](/cards/mb1-boundary-estimator-soundness/) asks whether an agent–environment boundary is sound enough to trust, i.e., the embedded-agency point of the missing clear cut between "the model" and "the optimizer". 

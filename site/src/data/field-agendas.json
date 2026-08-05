@@ -1,6 +1,6 @@
 {
   "meta": {
-    "status": "field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 30 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  ",
+    "status": "field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 31 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  ",
     "inclusionTest": "An **agenda** row requires: (1) carrier org/program/person, (2) 3–7 signature terms, (3) stated intent to shape research/deployment/policy, (4) primary artifact (curriculum, constitution, technical agenda, eval suite, policy platform).\n\n**Not agendas (reference only):** funding pools (LTFF, SFF, Open Philanthropy), coworking hubs (LISA, Constellation, Meridian), resource directories (AISafety.com, AI Watch), individual blogs/newsletters unless they define a research lineage.\n\n**Training programs** (BlueDot, MATS, Apart, Kairos, seminar-style curricula) are one agenda **type** among others — vocabulary feeds the inter-agenda glossary; no per-curriculum index rows.",
     "coverageIntro": "The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology.\n\n- **`Book treatment`** on each [agenda row](#agendas) states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).\n- **Empty matrix cells (`—`)** mean no catalog entry in this pass — not \"out of book scope\" and not a claim the agenda is silent on the crux.\n- **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).",
     "spineTranslation": "A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:\n\n| Mode | Meaning | Examples |\n|---|---|---|\n| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB8**, **MB11** columns |\n| **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |\n| **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |",
@@ -186,6 +186,12 @@
       "title": "This project - Towards Superintelligence Alignment (TSA)",
       "order": 34,
       "inMatrix": true
+    },
+    {
+      "slug": "iliad-textbook-from-the-future",
+      "title": "Iliad / Textbook from the Future",
+      "order": 35,
+      "inMatrix": false
     }
   ],
   "agendas": [
@@ -373,6 +379,15 @@
         "MB11"
       ],
       "inMatrix": true,
+      "generateCard": true,
+      "matrixLink": null
+    },
+    {
+      "slug": "iliad-textbook-from-the-future",
+      "title": "Iliad / Textbook from the Future",
+      "summary": "Can a communal TOC plus research automation scale theory faster than artisanal research—and without substituting shared canon for adversarial verification?",
+      "bookBridges": [],
+      "inMatrix": false,
       "generateCard": true,
       "matrixLink": null
     },
@@ -4851,6 +4866,31 @@
         }
       ],
       "rollsUpSlug": "kairos-field-building"
+    },
+    {
+      "listings": "[Iliad](https://www.iliad.ac/), [Textbook from the Future](https://textbookfromthefuture.org/), [ILIAD Conference](https://www.iliadconference.com/)",
+      "listingLinks": [
+        {
+          "label": "Iliad",
+          "url": "https://www.iliad.ac/"
+        },
+        {
+          "label": "Textbook from the Future",
+          "url": "https://textbookfromthefuture.org/"
+        },
+        {
+          "label": "ILIAD Conference",
+          "url": "https://www.iliadconference.com/"
+        }
+      ],
+      "rollsUpTo": "[Iliad / Textbook from the Future](#iliad-textbook-from-the-future)",
+      "rollsUpLinks": [
+        {
+          "label": "Iliad / Textbook from the Future",
+          "url": "#iliad-textbook-from-the-future"
+        }
+      ],
+      "rollsUpSlug": "iliad-textbook-from-the-future"
     },
     {
       "listings": "[Truthful AI](https://truthful.ai/), Cadenza Labs",

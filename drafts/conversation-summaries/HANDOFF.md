@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (jailbreak disclosure field news).
+Last updated: 2026-08-05 (Iliad / Textbook from the Future field agenda).
 
 ---
 
@@ -11,7 +11,7 @@ Last updated: 2026-08-05 (jailbreak disclosure field news).
 - **App G translation spine opener (author)** — Mirror site `/lean/` projections table in Appendix G; deferred from translation spine Phase 2 close-out. Site companion done; manuscript pass is author-owned.
 
 - **Field matrix evidence quality** — Homepage prune **complete** (passes 1–3). Kosoy row upgraded 2026-08-05 (merged PreDCA into LTA; primary sources ev 154–157). Log: `2026-08-05-kosoy-evidence-merge.md`.
-- **Field agenda matrix (post-restructure)** — 24 matrix rows / 29 agenda records after Kosoy PreDCA merge (2026-08-05); prior independence merges and neglected-report folds. TSA row links to companion home (no card). App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`, `2026-08-05-kosoy-evidence-merge.md`.
+- **Field agenda matrix (post-restructure)** — 24 matrix rows / 31 agenda records (2026-08-05; +Iliad/TftF off-matrix). Prior independence merges and neglected-report folds. TSA row links to companion home (no card). App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`, `2026-08-05-kosoy-evidence-merge.md`, `2026-08-05-iliad-textbook-from-the-future-agenda.md`.
 - **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agree/differ/homograph notes on MB1–MB11 bridge cards; hub crux legend removed 2026-08-02. Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
 - **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
 - **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk core sync 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference + site (2026-08-05):** Iliad / Textbook from the Future — new off-matrix field agenda; TSA `bookSeparates` contrast; Resolution Timaeus/Iliad cross-link; Field hub intro bullet; clustering roll-up. Log: `2026-08-05-iliad-textbook-from-the-future-agenda.md`.
 - **Companion site (2026-08-05):** Field news — jailbreak disclosure commentary (AI Frontiers); CASP Boko Haram + Anthropic Fable 5 examples linked to primary sources and Zvi writeups; RSS subscribe CTA on `/news/`. Log: `2026-08-05-jailbreak-disclosure-news.md`.
 - **Reference + site (2026-08-05):** GSAI agenda card — davidad LW profile + GSAI Google Group mailing list links (YAML source + sync). Log: `2026-08-05-davidad-profile-mailing-list.md`.
 - **Reference + site (2026-08-05):** Field agenda generated outputs now carry `GENERATED FILE` banners (sync script + 28 cards + index); deferred TODO for build-time-only generation. Log: `2026-08-05-field-agenda-generated-banners.md`.

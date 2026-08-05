@@ -115,3 +115,7 @@ agendas:
     title: This project - Towards Superintelligence Alignment (TSA)
     order: 34
     inMatrix: true
+  - slug: iliad-textbook-from-the-future
+    title: Iliad / Textbook from the Future
+    order: 35
+    inMatrix: false

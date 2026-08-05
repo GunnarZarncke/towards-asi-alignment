@@ -1,0 +1,52 @@
+slug: iliad-textbook-from-the-future
+title: Iliad / Textbook from the Future
+type: Field-building / theory-synthesis megaproject
+carrier: Iliad (Principles of Intelligence affiliate)
+overview: >-
+  Iliad runs the ILIAD conference series, Iliad Intensive and Fellowship programs,
+  Alignment Journal, and the [Textbook from the
+  Future](https://textbookfromthefuture.org/) megaproject—a communal, living textbook
+  meant to sketch foundational alignment theory before the answers are known. The FAQ
+  frames it as a coordination instrument and selective synthesis of theory-driven agendas
+  (ARC, Timaeus/devInterp, debate, Simplex, agent foundations, and others), explicitly
+  focused on alignment rather than control. Like other field-building efforts, shared canon
+  and onboarding do not by themselves discharge typed [bridge
+  assumptions](/cards/bridge-assumptions/).
+primaryArtifact: >-
+  The [Textbook from the Future](https://textbookfromthefuture.org/)—a communal table of
+  contents and research-automation programme for foundational alignment theory, plus Iliad
+  Intensive curriculum, fellowship, and conference infrastructure.
+signatureVocabulary: >-
+  Textbook from the future (Yudkowsky metaphor), selective synthesis, coordination
+  instrument, megaproject, theory-driven research programme, Iliad Intensive, ILIAD
+  conference.
+statedIntent: >-
+  Establish coherent shared context for foundational alignment research—onboarding
+  researchers, experts from other fields, and AIs—through a communal textbook skeleton
+  and field-building programs.
+primaryCrux: >-
+  Can a communal TOC plus research automation scale theory faster than artisanal
+  research—and without substituting shared canon for adversarial verification?
+bookBridges: []
+contributes: >-
+  Field coordination infrastructure: conference series, intensive curriculum, fellowship
+  pipeline, and a breadth-first synthesis agenda cataloguing major theory lines.
+bookSeparates: >-
+  Selective synthesis and shared context are not typed bridge discharge; coordination
+  instruments can succeed while [certification under
+  manipulation](/cards/certification-under-manipulation/) and named bridge cruxes remain
+  open. Contrast [This project - TSA](#this-project-towards-superintelligence-alignment-tsa):
+  depth-first measurement spine vs breadth-first communal TOC.
+manuscriptHooks:
+  - none
+links:
+  - label: "Textbook from the Future"
+    url: https://textbookfromthefuture.org/
+  - label: "Textbook from the Future FAQ"
+    url: https://textbookfromthefuture.org/faq.html
+  - label: "Iliad"
+    url: https://www.iliad.ac/
+  - label: "ILIAD Conference"
+    url: https://www.iliadconference.com/
+  - label: "Principles of Intelligence"
+    url: https://princint.ai/
