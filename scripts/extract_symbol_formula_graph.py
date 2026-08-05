@@ -2337,15 +2337,16 @@ def main() -> None:
     print(f"Wrote {args.out} ({visible_count} labeled-eq nodes in reachability graph; {len(all_formulas)} parsed total)")
     print(f"Wrote {args.coverage}")
 
-    # Chapter prerequisite DAG (symbol def/use → reading paths)
+    # Chapter prerequisite DAGs (symbol, informal, combined reading paths)
     try:
-        from build_chapter_symbol_dependency import build_from_manuscript
+        from build_chapter_symbol_dependency import MODES, build_from_manuscript
 
-        dep_dot, dep_md = build_from_manuscript(rankdir="TB")
-        print(f"Wrote {dep_dot}")
-        print(f"Wrote {dep_md}")
+        for dep_mode in MODES:
+            dep_dot, dep_md = build_from_manuscript(rankdir="TB", mode=dep_mode)
+            print(f"Wrote {dep_dot}")
+            print(f"Wrote {dep_md}")
     except Exception as exc:  # pragma: no cover
-        print(f"Warning: chapter symbol dependency graph skipped: {exc}", file=sys.stderr)
+        print(f"Warning: chapter dependency graphs skipped: {exc}", file=sys.stderr)
 
 
 if __name__ == "__main__":

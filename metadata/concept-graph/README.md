@@ -14,9 +14,11 @@ graphs, which trace **symbols and equation definition chains**.
 |-------|----------|
 | [`section-reference-graph-units.dot`](section-reference-graph-units.dot) | **Chapter/appendix overview** (~55 units, citation-driven ranks). |
 | [`chapter-symbol-dependency.dot`](chapter-symbol-dependency.dot) | **Symbol-prerequisite chapters** — eq-chain bridge symbols (transitively thinned). |
+| [`chapter-informal-dependency.dot`](chapter-informal-dependency.dot) | **Informal concept prerequisites** — curated YAML for no-symbol chapters. |
+| [`chapter-reading-dependency.dot`](chapter-reading-dependency.dot) | **Combined reading DAG** — symbols + informal concepts (all 48 chapters as nodes). |
 | [`section-reference-graph.dot`](section-reference-graph.dot) | **Section drill-down** (~400 xref/glossary sections + cited eqs). |
 
-Both are built by `scripts/build_section_reference_graph.py`.
+Section/chapter cite graphs: `scripts/build_section_reference_graph.py`. Chapter reading DAGs: `scripts/build_chapter_symbol_dependency.py` (see [`chapter-informal-edges.yml`](chapter-informal-edges.yml)).
 
 ### What question these answer
 
@@ -82,15 +84,23 @@ Unresolved `\ref{sec:appm-*}` (appendix files outside `chapters/*.tex`) are a kn
 
 ```bash
 python3 scripts/build_section_reference_graph.py
-python3 scripts/build_chapter_symbol_dependency.py
+python3 scripts/build_chapter_symbol_dependency.py --all-modes
 
 # Chapter-level overview (prose \\ref{ch:…} cites):
 dot -Tsvg metadata/concept-graph/section-reference-graph-units.dot \
   -o metadata/concept-graph/section-reference-graph-units.svg
 
-# Symbol-prerequisite chapters (eq-chain bridge symbols, vertical):
+# Symbol bridge chapters only:
 dot -Tsvg metadata/concept-graph/chapter-symbol-dependency.dot \
   -o metadata/concept-graph/chapter-symbol-dependency.svg
+
+# Informal concept prerequisites (no-symbol chapters):
+dot -Tsvg metadata/concept-graph/chapter-informal-dependency.dot \
+  -o metadata/concept-graph/chapter-informal-dependency.svg
+
+# Combined reading DAG (recommended for reading paths):
+dot -Tsvg metadata/concept-graph/chapter-reading-dependency.dot \
+  -o metadata/concept-graph/chapter-reading-dependency.svg
 
 # Section drill-down (large — prefer sfdp):
 sfdp -Goverlap=prism -Gsep="+25" -GK=2 -Gmaxiter=400 -Tsvg \
@@ -106,6 +116,8 @@ Layered alternative (can be tall): `dot -Tsvg section-reference-graph.dot -o sec
 |---------|--------|
 | Section/chapter narrative cites | **here** (`section-reference-graph`) |
 | Symbol **definition vs use** chains | `symbol-census/graphs/equation-chain-graph.dot` |
-| Chapter **symbol prerequisites** (reading paths) | **here** (`chapter-symbol-dependency.dot` + `.md`) |
+| Chapter **symbol prerequisites** | **here** (`chapter-symbol-dependency.dot` + `.md`) |
+| Chapter **informal concept prerequisites** | **here** (`chapter-informal-edges.yml`, `chapter-informal-dependency.*`) |
+| **Combined reading paths** (symbols + informal) | **here** (`chapter-reading-dependency.dot` + `.md`) |
 | Symbol appears anywhere in math | `symbol-census/graphs/symbol-formula-graph.dot` |
 | Manuscript → Lean | `symbol-census/graphs/manuscript-lean-crosswalk-graph.dot` |

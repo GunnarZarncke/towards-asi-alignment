@@ -1,0 +1,244 @@
+# Curated informal chapter prerequisites (no cross-chapter bridge symbols).
+#
+# Semantics: provider introduces concepts that consumer assumes in prose or formalism.
+# Only **outgoing** edges from no-symbol chapters (or concept-home chapters) are listed here;
+# symbol-bridge edges stay in the eq-chain extractor.
+#
+# Regenerate graphs: python3 scripts/build_chapter_symbol_dependency.py --mode combined
+#
+version: 1
+
+edges:
+  # Part I — reframe alignment object
+  - provider: ch01
+    consumer: ch07
+    concepts: [alignment-as-measurement, the-boundary-error]
+  - provider: ch01
+    consumer: ch09
+    concepts: [alignment-as-measurement, scaffold-misuse]
+  - provider: ch01
+    consumer: ch16
+    concepts: [alignment-as-measurement]
+  - provider: ch02
+    consumer: ch30
+    concepts: [artificial-civilization, civilizational-correction-problem]
+  - provider: ch02
+    consumer: ch34
+    concepts: [artificial-civilization, attractor-control]
+  - provider: ch02
+    consumer: ch38
+    concepts: [artificial-civilization]
+  - provider: ch03
+    consumer: ch26
+    concepts: [dynamical-guarantee]
+  - provider: ch03
+    consumer: ch34
+    concepts: [dynamical-guarantee, attractor-control]
+  - provider: ch03
+    consumer: ch37
+    concepts: [dynamical-guarantee]
+  - provider: ch03
+    consumer: ch42
+    concepts: [dynamical-guarantee, grounding-viability]
+  - provider: ch04
+    consumer: ch16
+    concepts: [static-target-trap, value-change-vs-corruption]
+  - provider: ch04
+    consumer: ch19
+    concepts: [static-target-trap]
+  - provider: ch05
+    consumer: ch07
+    concepts: [scope-and-correction-capacity]
+  - provider: ch05
+    consumer: ch25
+    concepts: [scope-and-correction-capacity]
+  - provider: ch05
+    consumer: ch42
+    concepts: [evidence-and-uncertainty, what-not-claiming]
+  - provider: ch05
+    consumer: ch44
+    concepts: [evidence-and-uncertainty, what-not-claiming]
+  - provider: ch05
+    consumer: ch48
+    concepts: [what-not-claiming]
+  - provider: ch06
+    consumer: ch07
+    concepts: [agent-without-anthropomorphism, boundary-discovery]
+  - provider: ch06
+    consumer: ch08
+    concepts: [agent-without-anthropomorphism]
+  - provider: ch06
+    consumer: ch09
+    concepts: [agent-without-anthropomorphism, composite-agency]
+  - provider: ch06
+    consumer: ch10
+    concepts: [agent-without-anthropomorphism]
+
+  # Part IV — value bundles (prose spine before ch16 symbols)
+  - provider: ch15
+    consumer: ch16
+    concepts: [value-bundle-transport]
+  - provider: ch15
+    consumer: ch17
+    concepts: [value-bundle-transport]
+  - provider: ch18
+    consumer: ch16
+    concepts: [bearer-persistence]
+  - provider: ch18
+    consumer: ch24
+    concepts: [bearer-persistence, bearer-map-commutation-failure]
+  - provider: ch18
+    consumer: ch31
+    concepts: [bearer-map-commutation-failure]
+  - provider: ch18
+    consumer: ch40
+    concepts: [bearer-persistence]
+  - provider: ch18
+    consumer: ch47
+    concepts: [bearer-persistence]
+  - provider: ch19
+    consumer: ch16
+    concepts: [bundle-geometry]
+  - provider: ch19
+    consumer: ch20
+    concepts: [bundle-geometry]
+  - provider: ch19
+    consumer: ch22
+    concepts: [bundle-geometry]
+  - provider: ch20
+    consumer: ch22
+    concepts: [bundle-measurement]
+  - provider: ch20
+    consumer: ch24
+    concepts: [bundle-measurement]
+  - provider: ch20
+    consumer: ch40
+    concepts: [bundle-measurement]
+  - provider: ch21
+    consumer: ch22
+    concepts: [reward-to-bundle-inference]
+  - provider: ch21
+    consumer: ch23
+    concepts: [reward-to-bundle-inference]
+  - provider: ch21
+    consumer: ch24
+    concepts: [reward-to-bundle-inference]
+
+  # Part VI–VII — correction capture, successors
+  - provider: ch29
+    consumer: ch26
+    concepts: [anti-capture-correction-validity]
+  - provider: ch29
+    consumer: ch27
+    concepts: [anti-capture-correction-validity, manipulation-false-consent]
+  - provider: ch29
+    consumer: ch28
+    concepts: [manipulation-false-consent]
+  - provider: ch30
+    consumer: ch31
+    concepts: [successor-stability]
+  - provider: ch30
+    consumer: ch32
+    concepts: [successor-stability]
+  - provider: ch30
+    consumer: ch33
+    concepts: [successor-stability]
+  - provider: ch30
+    consumer: ch34
+    concepts: [successor-stability]
+  - provider: ch31
+    consumer: ch32
+    concepts: [conserved-properties]
+  - provider: ch31
+    consumer: ch33
+    concepts: [conserved-properties]
+  - provider: ch31
+    consumer: ch42
+    concepts: [conserved-properties]
+  - provider: ch31
+    consumer: ch44
+    concepts: [conserved-properties]
+
+  # Part VIII — selection, attractors, artifacts
+  - provider: ch36
+    consumer: ch26
+    concepts: [correction-parasites]
+  - provider: ch36
+    consumer: ch27
+    concepts: [correction-parasites]
+  - provider: ch36
+    consumer: ch42
+    concepts: [correction-parasites]
+  - provider: ch37
+    consumer: ch34
+    concepts: [alignment-attractor]
+  - provider: ch37
+    consumer: ch38
+    concepts: [alignment-attractor, pivotal-process]
+  - provider: ch38
+    consumer: ch33
+    concepts: [conductive-artifacts, certified-basin]
+  - provider: ch38
+    consumer: ch34
+    concepts: [conductive-artifacts]
+  - provider: ch38
+    consumer: ch42
+    concepts: [conductive-artifacts]
+
+  # Part IX — adversarial measurement
+  - provider: ch39
+    consumer: ch07
+    concepts: [passive-observation-limit]
+  - provider: ch39
+    consumer: ch11
+    concepts: [passive-observation-limit]
+  - provider: ch39
+    consumer: ch33
+    concepts: [passive-observation-limit]
+  - provider: ch39
+    consumer: ch41
+    concepts: [passive-observation-limit]
+  - provider: ch41
+    consumer: ch33
+    concepts: [multiscale-decomposition]
+  - provider: ch41
+    consumer: ch40
+    concepts: [multiscale-decomposition]
+  - provider: ch41
+    consumer: ch42
+    concepts: [multiscale-decomposition]
+  - provider: ch43
+    consumer: ch33
+    concepts: [certification-under-manipulation]
+  - provider: ch43
+    consumer: ch40
+    concepts: [certification-under-manipulation]
+  - provider: ch43
+    consumer: ch42
+    concepts: [certification-under-manipulation]
+  - provider: ch43
+    consumer: ch44
+    concepts: [certification-under-manipulation]
+  - provider: ch43
+    consumer: ch48
+    concepts: [certification-under-manipulation]
+
+  # Part X — civilizational value update
+  - provider: ch45
+    consumer: ch28
+    concepts: [value-change-at-stake]
+  - provider: ch45
+    consumer: ch47
+    concepts: [value-change-at-stake]
+  - provider: ch46
+    consumer: ch24
+    concepts: [unconscious-value-drift]
+  - provider: ch46
+    consumer: ch47
+    concepts: [unconscious-value-drift]
+  - provider: ch47
+    consumer: ch24
+    concepts: [bearers-of-value]
+  - provider: ch47
+    consumer: ch48
+    concepts: [bearers-of-value]
