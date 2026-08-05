@@ -25,16 +25,20 @@ But it was more than that: when he watched them unfasten his shoes or draw a pic
 Over a period of days he came to think of all the puppies together as a single friend.%</p><footer>— Vernor Vinge, <em>A Fire Upon the Deep</em> (1992), ch.\ 14 (the Tines, a pack-mind species)</footer></blockquote>
 <h2 id="the-object-level-mistake">The Object-Level Mistake</h2>
 <p><span id="sec:object-level-mistake"></span></p>
+<p>This chapter concerns the <em>object of alignment</em>: the system whose future behaviour must be constrained.
+It does not yet decide who has legitimate authority to provide those constraints; later chapters take up correction, value formation, and bearer maps.</p>
 <p>A common first move in alignment is to pick an object and ask whether that object is aligned.
 We point at a neural network, a policy, a chatbot, a robot, a company, a benchmark process, a regulator, or a market, and ask whether it is doing what humans want.</p>
 <p>While that move is often useful, it is also often wrong, particularly where we are approaching superintelligence territory.</p>
-<p>Our language and our common-sense ontology may make it hard to even talk and think properly about the subject of alignment.
+<p>Our language and our common-sense ontology may make it hard to identify that object of alignment.
 A deployed language model is not merely a matrix of weights.
 It is part of a loop containing users, system prompts, tools, memory stores, retrieval systems, monitoring dashboards, product incentives, model updates, human feedback, legal constraints, deployment channels, and competitive pressures.
 The real optimizing process may be spread across the whole loop.</p>
 <p>This is not a philosophical subtlety.
 It changes what must be measured.</p>
-<p>If we align only the model, but the model is embedded in a larger process that selects for engagement, opacity, market share, persuasion, or dependency, then the aligned component may become a tool of a misaligned composite.
+<p>Component alignment asks whether a model or other visible artifact behaves safely in isolation.
+System alignment asks whether the deployed loop, including the artifacts, incentives, and handles around it, preserves the relevant constraints.
+If we align only the model, but the model is embedded in a larger process that selects for engagement, opacity, market share, persuasion, or dependency, then the aligned component may become a tool of a misaligned composite.
 The relevant agent is not the neural network alone.
 It is the coupled process that senses, remembers, acts, learns, and expands.</p>
 <p>We need a way to say this without relying on metaphor.
