@@ -343,6 +343,31 @@ Examples include:</p>
 </li>
 </ul>
 <p>Composite agency tells us not to give up on responsibility, but to move responsibility to the correct level of control.</p>
+<p>When agents grow, split, and merge (Chapter <a href="../ch08/">Agents That Grow, Split, and Merge</a>), a <em>responsibility gap</em> appears when no component contains enough of the relevant state, authority, and prediction capacity to control system-level behavior.
+Composite capability is measured at the blanket boundary by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>X</mi></msub></mrow><annotation encoding="application/x-tex">K_X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0785em;">X</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> (Chapter <a href="../ch11/">Measuring Capability Without Task Ontology</a>, Equation <a href="../ch11/#eq:biq">Measuring Capability Without Task Ontology</a>).
+For a component <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>, define responsibility capacity:</p>
+<span class="katex-error" title="ParseError: KaTeX parse error: Double subscript at position 21: …oldef[mathcal_R_̲i]{\mathcal{R}_…" style="color:#cc0000">\symboldef[mathcal_R_i]{\mathcal{R}_i}
+=
+\MI(I^i_t;A^H_{t+k})
++
+\MI(A^i_t;E^H_{t+k})
+-
+\text{Opacity}_{i\to H}
+-
+\text{Latency}_{i\to H}.
+\label{eq:responsibility-capacity}</span>
+<p>A responsibility gap exists when:</p>
+<span class="katex-error" title="ParseError: KaTeX parse error: Double subscript at position 28: …olref[mathcal_R_̲i]{\mathcal{R}_…" style="color:#cc0000">\max_i \symbolref[mathcal_R_i]{\mathcal{R}_i} &#x3C; \theta_R
+\quad\text{while}\quad
+\symbolref[K_X]{K_X}(A^H)>\theta_K
+\quad\text{and}\quad
+C_{\text{act}}(A^H)>\theta_A.
+\label{eq:responsibility-gap}</span>
+<p>In words: the composite can act powerfully, but no part can understand and redirect it well enough.
+This is common in modern systems—no individual understands a large software platform, no trader controls a market, no engineer controls an entire recommender ecosystem—yet these systems act.
+Superintelligence can make it worse when the composite becomes the true optimizer and alignment targeted at a component fails.
+The practical question is then: where is the smallest boundary that contains enough state and action capacity to explain the dangerous behavior, and who or what has correction capacity over that boundary?
+If the answer is “no one,” the system is not governable in its present form.</p>
 <h2 id="the-composite-alignment-target">The Composite Alignment Target</h2>
 <p><span id="sec:composite-alignment-target"></span></p>
 <p>We can now state the alignment target more carefully.</p>

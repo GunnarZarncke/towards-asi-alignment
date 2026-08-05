@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-05T10:01:16.801Z",
+  "generatedAt": "2026-08-05T18:16:02.447Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 281,
+  "entryCount": 293,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -124,7 +124,7 @@
       "title": "$\\mathcal{H}_t$",
       "type": "notation",
       "summary": "Handle set controlled by $G_t$",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch25/"
     },
     {
       "title": "$\\mathrm{Control}(A)$",
@@ -136,7 +136,7 @@
       "title": "$\\mathrm{Fit}_E(A)$",
       "type": "notation",
       "summary": "Deployment growth rate (fitness, for short in formulas); log-rate of $\\mu_E$ growth",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch34/"
     },
     {
       "title": "$\\mathrm{ICI}_{ij}$",
@@ -154,13 +154,13 @@
       "title": "$\\mathrm{RiskGap}(A)$",
       "type": "notation",
       "summary": "$\\mathrm{Control}(A)-\\mathrm{CCI}(A)$",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapters/ch33/"
     },
     {
       "title": "$\\mathrm{SelfControlGap}(A)$",
       "type": "notation",
       "summary": "Self-control minus correction demand",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch32/"
     },
     {
       "title": "$\\mathsf{Unc}_{\\alpha}$",
@@ -169,16 +169,28 @@
       "url": "/cards/chapters/ch03/"
     },
     {
+      "title": "$\\mathsf{VB}_i$",
+      "type": "notation",
+      "summary": "Value-bundle pair $(B_i,\\Phi_i)$",
+      "url": "/cards/chapters/ch19/"
+    },
+    {
       "title": "$\\mu_E(A)$",
       "type": "notation",
       "summary": "Deployment leverage in deployment environment $E$",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch34/"
     },
     {
       "title": "$\\Omega_{\\text{coord}}$",
       "type": "notation",
       "summary": "Collective coordination loss",
       "url": "/cards/chapters/ch13/"
+    },
+    {
+      "title": "$\\Omega_Q$",
+      "type": "notation",
+      "summary": "Selective opacity score",
+      "url": "/cards/chapters/ch10/"
     },
     {
       "title": "$\\operatorname{Dom}(\\Gamma)$",
@@ -196,7 +208,7 @@
       "title": "$\\tau$",
       "type": "notation",
       "summary": "Self-transparency $1-I(M;\\hat M)/H(M)$",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch32/"
     },
     {
       "title": "$\\text{Succ}(A)$",
@@ -220,7 +232,7 @@
       "title": "$\\vec{\\Pi}(A)$",
       "type": "notation",
       "summary": "Preservation conditions (vector-status list) for selection alignment",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch34/"
     },
     {
       "title": "$A_t$",
@@ -235,16 +247,58 @@
       "url": "/cards/chapters/ch46/"
     },
     {
+      "title": "$B_{\\mathrm{align}}$",
+      "type": "notation",
+      "summary": "Alignment attractor basin",
+      "url": "/cards/chapters/ch37/"
+    },
+    {
+      "title": "$B_{\\mathrm{bearer}}$",
+      "type": "notation",
+      "summary": "Bearer set after transformation",
+      "url": "/cards/chapters/ch47/"
+    },
+    {
+      "title": "$B_{\\mathrm{certified}}$",
+      "type": "notation",
+      "summary": "Certified-deployment basin ($\\mathbb{B}_{\\mathrm{certified}}$)",
+      "url": "/cards/chapters/ch38/"
+    },
+    {
+      "title": "$B_{\\mathrm{corr}}$",
+      "type": "notation",
+      "summary": "Human-correctable basin",
+      "url": "/cards/chapters/ch14/"
+    },
+    {
+      "title": "$B_{\\mathrm{race}}$",
+      "type": "notation",
+      "summary": "Race selection basin ($\\mathbb{B}_{\\mathrm{race}}$ in typeset math)",
+      "url": "/cards/chapters/ch38/"
+    },
+    {
+      "title": "$B_{\\mathrm{safe}}$",
+      "type": "notation",
+      "summary": "Safety basin (subscripted; generic ch03 basin may appear as bare $\\mathcal{B}$)",
+      "url": "/cards/chapters/ch33/"
+    },
+    {
+      "title": "$B_i$",
+      "type": "notation",
+      "summary": "Local competence of component $i$ (distinct from value-bundle coordinate $B_i$ in ch16)",
+      "url": "/cards/chapters/ch13/"
+    },
+    {
       "title": "$B$",
       "type": "notation",
       "summary": "Value bundle (low-dimensional control direction); $B_i$ = dimension $i$",
       "url": "/cards/chapters/ch16/"
     },
     {
-      "title": "$C_{\\text{raw}}$",
+      "title": "$C_{\\mathrm{raw}}$",
       "type": "notation",
       "summary": "Weakest required correction case after bottlenecking over certified correction traces",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch25/"
     },
     {
       "title": "$C_H$",
@@ -262,13 +316,19 @@
       "title": "$CCI_\\lambda$",
       "type": "notation",
       "summary": "Scalar projection of the CCI vector for exposition, not the certification object",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch26/"
     },
     {
       "title": "$CCI$",
       "type": "notation",
       "summary": "Correction-channel integrity as a vector/status certificate with validity and per-coordinate thresholds",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch26/"
+    },
+    {
+      "title": "$D_G$",
+      "type": "notation",
+      "summary": "Goal-layer divergence score",
+      "url": "/cards/chapters/ch40/"
     },
     {
       "title": "$d_V$",
@@ -322,13 +382,13 @@
       "title": "$G_t$",
       "type": "notation",
       "summary": "Correcting agent at time $t$",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch25/"
     },
     {
       "title": "$GLI$",
       "type": "notation",
       "summary": "Goal-laundering index",
-      "url": "/cards/chapters/ch48/"
+      "url": "/cards/chapters/ch40/"
     },
     {
       "title": "$H_B$",
@@ -365,6 +425,12 @@
       "type": "notation",
       "summary": "Conditional mutual information",
       "url": "/cards/chapters/ch07/"
+    },
+    {
+      "title": "$K_{\\mathrm{coll}}$",
+      "type": "notation",
+      "summary": "Effective collective competence",
+      "url": "/cards/chapters/ch13/"
     },
     {
       "title": "$k$",
@@ -442,7 +508,7 @@
       "title": "$W_t\\to O_t\\to J_t\\to D_t\\to C_t\\to U_{t+1}\\to A_{t+k}$",
       "type": "notation",
       "summary": "Correction trace induced by controlled handles",
-      "url": "/cards/chapters/ch46/"
+      "url": "/cards/chapters/ch25/"
     },
     {
       "title": "$W$",
@@ -701,6 +767,12 @@
       "type": "agenda",
       "summary": "Cooperative reward inference may be underdetermined (Value Learning), and a shared research hub does not imply a unified technical agenda.",
       "url": "/cards/field-agendas/chai-russell/"
+    },
+    {
+      "title": "Chapter Reading Dependency Graph",
+      "type": "artifact",
+      "summary": "Combined symbol-bridge and informal-concept prerequisites for all 48 chapters — a scroll-friendly alternative to strict PDF order.",
+      "url": "/cards/chapter-reading-dependency/"
     },
     {
       "title": "Checking a System at Every Level",
