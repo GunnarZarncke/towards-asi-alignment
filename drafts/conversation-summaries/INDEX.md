@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **Jailbreak disclosure field news** — General-audience news card for AI Frontiers jailbreak disclosure essay; CASP + Fable 5 examples linked to primary sources and Zvi. | [2026-08-05-jailbreak-disclosure-news.md](2026-08-05-jailbreak-disclosure-news.md) |
+| 2026-08-05 | **MacKinlay Agency WTF relation** — Map unpublished deck to TSA (MB1, composite agency, field crosswalk); TODO to check when published. | [2026-08-05-mackinlay-agency-wtf-relation.md](2026-08-05-mackinlay-agency-wtf-relation.md) |
 | 2026-08-05 | **davidad profile + GSAI mailing list** — Add LW profile and Google Group links to GSAI field agenda card; YAML source + sync. | [2026-08-05-davidad-profile-mailing-list.md](2026-08-05-davidad-profile-mailing-list.md) |
 | 2026-08-05 | **Field agenda generated banners** — Mark sync outputs as generated (28 cards + index); keep YAML source; deferred TODO for build-time-only codegen. | [2026-08-05-field-agenda-generated-banners.md](2026-08-05-field-agenda-generated-banners.md) |
 | 2026-08-05 | **Subsumption-debate lean kind CI fix** — Astro build failed on invalid `leanNodes.kind: separationOnly`; fixed source body to `bridge`; ledger note in summary. | [2026-08-05-subsumption-debate-lean-kind-fix.md](2026-08-05-subsumption-debate-lean-kind-fix.md) |

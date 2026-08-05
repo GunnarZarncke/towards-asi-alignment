@@ -2,6 +2,24 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-jailbreak-disclosure-aug-2026
+    date: 2026-08-03
+    kind: policy
+    title: "Who do you tell when an AI safety guard fails?"
+    hook: "Researchers who find ways to bypass frontier-model safeguards often have no safe channel to report them."
+    summary: "A policy commentary argues that jailbreak reporting is broken: many labs offer no route, existing programs bind researchers with broad NDAs, and vendors self-grade findings with opaque rubrics. The authors propose cybersecurity-style coordinated disclosure—public rubrics, year-round programs, cross-vendor sharing, and eventually an independent clearinghouse."
+    decision: "When evaluating a model's safety claims, ask whether an independent researcher can report a bypass, whether the report reaches someone with authority to fix it, and whether severity grading is transparent—not only whether pre-deployment testing occurred."
+    bookChapters:
+      - ch27
+      - ch33
+      - ch38
+      - ch39
+      - appC
+    bridges:
+      - MB4
+      - MB6
+    body: bodies/jailbreak-disclosure-aug-2026.md
+    order: 0
   - slug: field-news-ai2040-plan-a-jul-2026
     date: 2026-07-30
     kind: policy
