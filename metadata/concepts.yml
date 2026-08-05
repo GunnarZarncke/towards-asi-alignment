@@ -71,6 +71,8 @@ concepts:
       - ch42
     bookLabels:
       - ch:correction-channel-integrity
+      - sec:correction-channel-integrity-def
+      - sec:coerced-correction
     body: bodies/anti-capture-correction-validity.md
     glossaryTerms:
       - term: Capture of grounding
@@ -105,12 +107,18 @@ concepts:
     featured: true
     part: part08
     claimId: C-007
+    bookLabels:
+      - ch:selection-environment
+      - sec:selection-turn-ch34
+      - sec:selection-channels-ch34
+      - sec:minimal-model-selection-ch34
+      - sec:safety-sets-bad-sets-basins
     body: bodies/attractor-control.md
     glossaryTerms:
       - term: Selection environment
         definition: 'The deployment environment — institutions, markets, protocols, benchmarks, procurement, liability, copying, and successor release that determine which systems gain deployment leverage. Not Demski selection-vs-control or Wentworth selection theorems (homographs on "selection"). Formal home: **ch34**.'
       - term: Point of control over deployment
-        definition: 'A selection handle — an embedded access point through which some actor increases a system''s deployment footprint (deploy, fund, copy, procure, integrate, authorize, recommend, regulate, successor-enable). **ch34**.'
+        definition: 'A selection handle — an embedded access point through which some actor increases a system''s deployment footprint (deploy, fund, copy, procure, integrate, authorize, recommend, regulate, successor-enable). **ch34** (`sec:selection-channels-ch34`).'
       - term: Deployment leverage
         definition: 'How much of environment \(E\) runs on system \(A\): aggregate effective selection capacity \(\mu_E(A)=\sum_{h\in\mathcal{H}_E(A)}\kappa_{\mathrm{sel}}(E,A,h)\). Not market cap or user count alone. Formal definition: **ch34** (`eq:deployment-mass-ch34`).'
       - term: Deployment growth rate
@@ -118,7 +126,7 @@ concepts:
       - term: Preservation conditions
         definition: 'Explicit list \(\vec{\Pi}(A)\) of alignment-relevant properties under selection — grounding, bundle/bearer drift bounds, valid correction reference, vector CCI, hidden productive BIQ bounds, selector manipulation, irreversibility budget, successor safety, adversarial verifiability. Not a scalar score. **ch34** (`eq:preservation-envelope-ch34`).'
       - term: Alignment basin
-        definition: 'Self-stabilizing regime where correction tends to restore alignment after perturbation; outside it, selection amplifies drift. Christiano dynamical corrigibility uses the same basin metaphor. A stable basin can be stably bad — persistence is not safety.'
+        definition: 'Self-stabilizing regime where correction tends to restore alignment after perturbation; outside it, selection amplifies drift. Christiano dynamical corrigibility uses the same basin metaphor. A stable basin can be stably bad — persistence is not safety. **ch03** (`sec:safety-sets-bad-sets-basins`).'
   - slug: bearer-map-commutation-failure
     kind: standalone-claim
     title: Bearer-Map Commutation Failure
@@ -147,6 +155,9 @@ concepts:
       - ch47
     featured: true
     part: part04
+    bookLabels:
+      - ch:bearer-maps
+      - sec:bearer-maps-sufficient-statistics
     body: bodies/bearer-persistence.md
     glossaryTerms:
       - term: Bearer map
@@ -167,6 +178,8 @@ concepts:
     bookLabels:
       - ch:finding-boundary
       - ch:agent-without-anthropomorphism
+      - sec:hidden-boundary
+      - sec:colder-definition
     featured: true
     part: part02
     claimId: C-003
@@ -194,6 +207,9 @@ concepts:
     status: framework
     term: Capability
     summary: The degree to which a system can predict and control relevant future states through its boundary, after accounting for memory cost and surprise.
+    bookLabels:
+      - ch:capability-without-task-ontology
+      - sec:capability-before-goals
     body: bodies/capability.md
   - slug: certification-under-manipulation
     kind: standalone-claim
@@ -209,6 +225,7 @@ concepts:
       - ch48
     bookLabels:
       - ch:verifiability-ontology
+      - sec:certification-under-manipulation-ch43
     body: bodies/certification-under-manipulation.md
     glossaryTerms:
       - term: Adversarial verifiability
@@ -272,6 +289,9 @@ concepts:
       - ch42
     bookLabels:
       - ch:correction-channel-integrity
+      - sec:correction-channel-integrity-def
+      - sec:minimal-causal-model
+      - sec:operational-definition-ch36
     featured: true
     part: part06
     claimId: C-005
@@ -343,6 +363,9 @@ concepts:
     status: framework
     term: Goal inference
     summary: Finding latent objectives or value-bundle structures that make observed behavior more compressible.
+    bookLabels:
+      - ch:reward-to-bundle-inference
+      - sec:why-goal-inference-not-enough
     body: bodies/goal-inference.md
   - slug: goodhart-as-selector
     kind: standalone-claim
@@ -548,12 +571,17 @@ concepts:
     status: framework
     term: Paternalism boundary
     summary: Care improvements that reduce autonomy, agency, or future correction capacity ($\Delta B_{\text{care}}>0$ but $\Delta B_{\text{autonomy}}, \Delta C_{\text{corr}}<0$).
+    bookLabels:
+      - ch:manipulation-false-consent
     body: bodies/paternalism-boundary.md
   - slug: pivotal-process
     kind: glossary
     status: framework
     term: Pivotal process
     summary: A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act.
+    bookLabels:
+      - ch:conductive-artifacts-pivotal-processes
+      - sec:pivotal-process-ch37
     body: bodies/pivotal-process.md
   - slug: scaffold-misuse
     kind: concept
@@ -638,6 +666,11 @@ concepts:
     featured: true
     part: part07
     claimId: C-006
+    bookLabels:
+      - ch:successor-central-test
+      - ch:conserved-properties
+      - sec:successor-problem-ch31
+      - sec:seven-conserved-properties-ch31
     body: bodies/successor-stability.md
     glossaryTerms:
       - term: Successor
@@ -688,16 +721,23 @@ concepts:
     featured: true
     part: part05
     claimId: C-004
+    bookLabels:
+      - ch:value-bundle-model
+      - ch:transport-types
+      - ch:goal-transport
+      - sec:four-part-definition
+      - sec:four-layers-transport
+      - sec:goal-transport-def
     body: bodies/value-bundle-transport.md
     glossaryTerms:
       - term: Value bundle
-        definition: 'Low-dimensional control direction that changes policy across contexts — steering, not scoring. Cousin to reward components, shard-theory influences, and CIRL \(k=1\) scalar case; not a single utility to maximize.'
+        definition: 'Low-dimensional control direction that changes policy across contexts — steering, not scoring. Cousin to reward components, shard-theory influences, and CIRL \(k=1\) scalar case; not a single utility to maximize. **ch16** (`sec:four-part-definition`).'
       - term: Value-bundle geometry
-        definition: The pattern by which latent value dimensions and their tradeoffs change policy across contexts — not merely which labels appear, but how bundles activate and compete.
+        definition: 'The pattern by which latent value dimensions and their tradeoffs change policy across contexts — not merely which labels appear, but how bundles activate and compete. **ch16** (`sec:bundle-policy-effect`).'
       - term: Transport
-        definition: 'What survives retraining, rebuild, or successor creation: semantic (words), bundle (response geometry), bearer (who counts), correction (human update process), and successor layers — tracked separately rather than as one continuity claim.'
+        definition: 'What survives retraining, rebuild, or successor creation: semantic (words), bundle (response geometry), bearer (who counts), correction (human update process), and successor layers — tracked separately rather than as one continuity claim. **ch24** (`sec:four-layers-transport`).'
       - term: Goal transport
-        definition: Preservation of goal-relevant structure across transformation.
+        definition: 'Preservation of goal-relevant structure across transformation. **ch23** (`sec:goal-transport-def`).'
   - slug: value-change-vs-corruption
     kind: concept
     title: Value Change vs. Value Corruption

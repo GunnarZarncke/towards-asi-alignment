@@ -19,6 +19,7 @@ python3 scripts/extract_symbol_formula_graph.py --chapter ch14 --out metadata/sy
 | `symbol-formula-graph.dot` | **Reachability graph**: 166 labeled `eq:...` nodes + chapter-level `chcite`/`chref` hubs (not every `chNN:unlabeled` / `chNN:prose` line) |
 | `symbol-formula-graph-detailed.dot` | Optional (`--detailed`): all 1004 parsed nodes including unlabeled blocks and per-line prose refs — debug only |
 | `symbol-formula-graph-ch14.dot` | ch14 reachability subgraph (labeled eq only) |
+| `equation-chain-graph.dot` | **Minimal eq→sym→eq chains** (def vs use; no sections/cites) |
 | `../symbol-formula-coverage.md` | Per-chapter tables: symbol → list of formulas, plus Lean spine coverage and text cross-reference sections |
 | `symbol-formula-graph-ch14.svg` | Rendered ch14 graph (after `dot`) |
 | `lean-dependency-graph.dot` | **Lean-only** declaration graph, parsed from `formal/AlignmentProofSpine/**/*.lean` (1016 declarations, 37 files) |
@@ -54,22 +55,19 @@ declaration — these are manuscript claims naming Lean nodes that either aren't
 under that name, or use a naming convention the alias resolver doesn't cover; check
 `metadata/TODO.md`'s Lean proof-spine gap list.
 
-## Text-only cross-references are now edges too
+## Text-only cross-references (concept-graph)
 
-The first two passes only turned `\eqref{eq:...}` / `\ref{eq:...}` into edges. But the
-manuscript's dominant citation style is chapter/section-level prose — "Chapter~\ref{ch:foo}",
-"Section~\ref{sec:bar-ch15}" — which outnumbers per-equation refs by roughly 8:1 (536 `ch:`/`sec:`
-refs vs ~70 `eq:` refs). A human reading "this reuses the boundary-information competence
-functional from Chapter 11" can see the dependency; the old parser couldn't, because no
-`\eqref` existed to record it. The extractor now also parses `\label{ch:...}` / `\label{sec:...}`
-(to know which chapter owns each label) and `\ref{ch:...}` / `\ref{sec:...}` anywhere in the
-text, and resolves each to the chapter it targets (`resolve_text_ref()` in the script). This
-adds a `chref:chNN` node per referenced chapter and a dashed amber `text-ref` edge from the
-citing formula/prose line to it (edge label carries the specific `sec:...` id when the ref was
-section-level, so you can still tell *which* section was meant, not just which chapter).
-524 of 536 occurrences resolve; the 9 unresolved ones point at appendix labels
-(`sec:appm-*`) that live outside `chapters/*.tex` and so aren't in the parsed label set — see
-the "Text cross-references" section of `../symbol-formula-coverage.md` for the full list.
+Chapter/section prose citations (`\ref{ch:...}`, `\ref{sec:...}`) live in
+[`metadata/concept-graph/section-reference-graph.dot`](../../concept-graph/section-reference-graph.dot)
+(one edge per citing **section** → target **section/chapter** label). Regenerate with
+`python3 scripts/build_section_reference_graph.py`.
+
+**Equation references** (`\eqref{eq:...}` / `\ref{eq:...}`) also appear there as green
+**section → eq** edges, plus **eq line-order spines** within each chapter. This graph
+restores **`eqcite:chNN → eq:...`** hubs here (prose `\eqref` aggregation only) — not
+the removed `chcite`/`chref` chapter hairball.
+
+The `--detailed` flag still emits per-line prose nodes for equation-level debugging only.
 
 ## Graph semantics
 
@@ -82,8 +80,9 @@ the "Text cross-references" section of `../symbol-formula-coverage.md` for the f
 | Box (purple) | `ch14:unlabeled:177` | Unlabeled `equation`/`align` block — **only in `--detailed` graph** |
 | Octagon (dashed, red) | `ghost:eq:cci-ch26` | Referenced equation defined elsewhere |
 | Note (gray) | `ch14:prose:394` | Prose line containing `\eqref`/`\ref` — **only in `--detailed` graph** |
-| CDS/tab (amber) | `chref:ch11` | Target chapter of a text cross-reference |
-| Folder (amber) | `chcite:ch44` | Citing chapter hub (aggregates all `\ref{ch:...}`/`\ref{sec:...}` from that chapter's prose) |
+| Folder (green) | `eqcite:ch44` | Prose `\eqref{eq:...}` hub for citing chapter (eq refs only) |
+| CDS/tab (amber) | `chref:ch11` | *(removed from default graph)* — see `metadata/concept-graph/` |
+| Folder (amber) | `chcite:ch44` | *(removed from default graph)* — see `metadata/concept-graph/` |
 | Octagon (dashed, red) | `textref:sec:appm-constraint-inheritance` | Text-ref target that doesn't resolve to any parsed `\label` |
 
 **Edge types**
@@ -91,8 +90,9 @@ the "Text cross-references" section of `../symbol-formula-coverage.md` for the f
 | Color | Label | Direction | Meaning |
 |-------|-------|-----------|---------|
 | Blue, thinned (`penwidth=0.4`, ~40% opacity), unlabeled | — | symbol → formula | Symbol appears in that formula block. Thinned/unlabeled deliberately: this is by far the highest-count edge type (~3000+) and the least interesting to trace visually — a fixed `"in"` label on every one of them used to render as a fog of identical text. Color still identifies it. |
-| Green, unlabeled | — | formula → formula | `\eqref` / `\ref{eq:...}` dependency (label dropped for the same reason: it was always the literal word `"ref"`) |
-| Amber (dashed), labeled only when informative | `sec:...` (section id) or unlabeled | `chcite:chNN` → `chref:chMM` | Chapter-level text cross-reference (aggregated from all prose lines in the citing chapter) |
+| Green, unlabeled | — | formula → formula | `\eqref` / `\ref{eq:...}` from labeled eq blocks |
+| Green, dashed | — | `eqcite:chNN` → formula | prose `\eqref{eq:...}` (aggregated per citing chapter) |
+| Amber (dashed), labeled only when informative | `sec:...` (section id) or unlabeled | *(removed)* — section DAG in `metadata/concept-graph/` |
 
 **If you edit `build_dot`/`build_combined_dot`/`build_lean_dot`:** don't add a fixed/constant
 `label=` to a bulk edge type again — with 1000+ nodes, any label that is the same string on
@@ -132,6 +132,10 @@ are large, so use the browser's zoom/pan or Graphviz's SVG pan-zoom rather than 
 single screen-sized view). To regenerate after editing chapters or `formal/`:
 
 ```bash
+# Equation chains only (eq defines sym, sym uses eq — start here for a clean view):
+dot -Tsvg metadata/symbol-census/graphs/equation-chain-graph.dot \
+  -o metadata/symbol-census/graphs/equation-chain-graph.svg
+
 # ch14 subgraph only (small, ~350 lines): dot's layered ranking works fine
 dot -Tsvg symbol-formula-graph-ch14.dot -o symbol-formula-graph-ch14.svg
 ```

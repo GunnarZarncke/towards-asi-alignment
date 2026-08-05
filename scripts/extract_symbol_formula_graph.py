@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import re
 import textwrap
+from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -106,6 +107,8 @@ class Formula:
     env: str
     raw: str
     symbols: set[str] = field(default_factory=set)
+    defined_symbols: set[str] = field(default_factory=set)
+    used_symbols: set[str] = field(default_factory=set)
     refs: set[str] = field(default_factory=set)
     text_refs: set[str] = field(default_factory=set)  # \ref{ch:...} / \ref{sec:...}
 
@@ -341,6 +344,109 @@ def normalize_sub(s: str) -> str:
     return s.replace(" ", "").replace("/", "-")
 
 
+def _strip_math_env(block: str) -> str:
+    s = block
+    s = re.sub(r"\\begin\{[^}]+\}", "", s)
+    s = re.sub(r"\\end\{[^}]+\}", "", s)
+    s = re.sub(r"\\label\{[^}]+\}", "", s)
+    s = re.sub(r"\\tag\{[^}]+\}", "", s)
+    return s
+
+
+def _split_depth0(s: str, sep: str) -> list[str]:
+    parts: list[str] = []
+    depth = 0
+    start = 0
+    for i, c in enumerate(s):
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth = max(0, depth - 1)
+        elif c == sep and depth == 0:
+            parts.append(s[start:i])
+            start = i + 1
+    parts.append(s[start:])
+    return parts
+
+
+def _split_first_equals(line: str) -> tuple[str, str] | None:
+    depth = 0
+    for i, c in enumerate(line):
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth = max(0, depth - 1)
+        elif c == "=" and depth == 0:
+            return line[:i].strip(), line[i + 1 :].strip()
+    return None
+
+
+def _tuple_list_defined(rhs: str) -> set[str]:
+    """Symbols in RHS of ``X = (a, b, c)`` or ``X = \\left(a, b, c\\right)``."""
+    rhs = rhs.strip().rstrip(".")
+    inner: str | None = None
+    m = re.match(r"\\left\((.*)\\right\)\s*\.?$", rhs, re.DOTALL)
+    if m:
+        inner = m.group(1)
+    elif rhs.startswith("("):
+        depth = 0
+        close = -1
+        for i, c in enumerate(rhs):
+            if c == "(":
+                depth += 1
+            elif c == ")":
+                depth -= 1
+                if depth == 0:
+                    close = i
+                    break
+        if close == len(rhs.rstrip()) - 1:
+            inner = rhs[1:close]
+    if inner is None:
+        return set()
+    out: set[str] = set()
+    for part in _split_depth0(inner, ","):
+        part = part.strip()
+        if part:
+            out.update(extract_symbols_from_math(part))
+    return out
+
+
+def split_defined_used_symbols(block: str) -> tuple[set[str], set[str]]:
+    """Split display-math symbols into defined (LHS of ``='') vs used (RHS / no ``='')."""
+    body = _strip_math_env(block)
+    body = re.sub(r"\s*\n\s*", " ", body)
+    defined: set[str] = set()
+    used: set[str] = set()
+
+    for segment in re.split(r"\\\\", body):
+        segment = segment.strip().rstrip(",")
+        if not segment:
+            continue
+
+        if "&" in segment:
+            parts = _split_depth0(segment, "&")
+            lhs = parts[0].strip()
+            rhs = parts[-1].strip() if len(parts) > 1 else ""
+            if rhs.startswith("="):
+                rhs = rhs[1:].strip()
+        else:
+            eq_parts = _split_first_equals(segment)
+            if eq_parts is None:
+                used.update(extract_symbols_from_math(segment))
+                continue
+            lhs, rhs = eq_parts
+
+        line_defined = extract_symbols_from_math(lhs) if lhs else set()
+        line_used = extract_symbols_from_math(rhs) if rhs else set()
+        if rhs:
+            line_defined |= _tuple_list_defined(rhs)
+
+        defined |= line_defined
+        used |= line_used - line_defined
+
+    return defined, used
+
+
 def extract_symbols_from_math(math: str, _depth: int = 0) -> set[str]:
     """Heuristic symbol extraction from LaTeX math."""
     syms: set[str] = set()
@@ -425,11 +531,11 @@ def extract_symbols_from_math(math: str, _depth: int = 0) -> set[str]:
                 continue  # handled above
             syms.add(cmd)
 
-    # Subscripted identifiers
+    # Subscripted identifiers (base must not be tail of a \command name)
     for m in re.finditer(
-        r"([A-Za-z])_\{(?:\\(?:mathrm|text)\{)?([^}]+)\}?(?:\})?"
-        r"|([A-Za-z])_\{([^}]+)\}"
-        r"|([A-Za-z])_([A-Za-z0-9]+)",
+        r"(?<![A-Za-z])([A-Za-z])_\{(?:\\(?:mathrm|text)\{)?([^}]+)\}?(?:\})?"
+        r"|(?<![A-Za-z])([A-Za-z])_\{([^}]+)\}"
+        r"|(?<![A-Za-z])([A-Za-z])_([A-Za-z0-9]+)",
         math,
     ):
         base = m.group(1) or m.group(3) or m.group(5)
@@ -536,7 +642,8 @@ def parse_chapter(
 
         refs = set(EQREF.findall(block))
         text_refs = set(TEXTREF.findall(block))
-        syms = extract_symbols_from_math(block)
+        defined, used = split_defined_used_symbols(block)
+        syms = defined | used
 
         formulas.append(
             Formula(
@@ -548,6 +655,8 @@ def parse_chapter(
                 env=env,
                 raw=block[:500],
                 symbols=syms,
+                defined_symbols=defined,
+                used_symbols=used,
                 refs=refs,
                 text_refs=text_refs,
             )
@@ -662,6 +771,45 @@ def collect_prose_eq_refs(
             if ref not in labeled_refs.get(f.chapter, set()):
                 prose_refs.setdefault(f.chapter, set()).add(ref)
     return prose_refs
+
+
+def emit_prose_eq_ref_edges(
+    lines: list[str],
+    all_formulas: list[Formula],
+    known_fids: set[str],
+) -> None:
+    """Restore ``\\eqref{eq:...}`` edges from prose (not emitted on labeled eq nodes).
+
+    Uses one ``eqcite:chNN`` hub per citing chapter — same aggregation as the old
+    ``chcite → eq`` spokes, without re-adding chapter/section ``\\ref`` hairballs.
+    """
+    labeled = [f for f in all_formulas if f.fid.startswith("eq:")]
+    prose_eq = collect_prose_eq_refs(all_formulas, labeled)
+    if not prose_eq:
+        return
+
+    lines.append("  // Prose equation refs (\\\\eqref / \\\\ref{eq:...}; aggregated per citing chapter)")
+    emitted_hubs: set[str] = set()
+    for src in sorted(prose_eq, key=lambda c: int(c[2:]) if c[2:].isdigit() else 999):
+        hub = f"eqcite:{src}"
+        if hub not in emitted_hubs:
+            lines.append(
+                f'  "{hub}" [shape=folder, style=filled, fillcolor="#ecfdf5", '
+                f'color="#047857", label="{src}\\neqref"];'
+            )
+            emitted_hubs.add(hub)
+        for ref in sorted(prose_eq[src]):
+            if ref in known_fids:
+                lines.append(f'  "{hub}" -> "{ref}" [{LOW_WEIGHT_EQREF_ATTRS}];')
+            else:
+                ghost = f"ghost:{ref}"
+                if ghost not in known_fids:
+                    lines.append(
+                        f'  "{ghost}" [shape=octagon, style=dashed, fillcolor="#fee2e2", '
+                        f'label="{dot_escape(ref)}\\n(external)"];'
+                    )
+                    known_fids.add(ghost)
+                lines.append(f'  "{hub}" -> "{ghost}" [color="#dc2626", style=dashed];')
 
 
 def emit_aggregated_text_ref_edges(
@@ -782,12 +930,139 @@ def emit_text_ref_edges(
                 lines.append(f'  "{f.fid}" -> "{node}" [color="#d97706", style=dashed];')
 
 
+READING_ORDER_RANK_ATTRS = "style=invis, weight=1, constraint=true"
+SYMBOL_SPINE_ATTRS = "color=#2c5282, penwidth=1.0, weight=80, constraint=true"
+LOW_WEIGHT_EQREF_ATTRS = "color=#059669, style=dashed, penwidth=0.6, weight=0.5, constraint=false"
+EQ_CHAIN_SYM_TO_EQ_ATTRS = 'color="#2563eb", penwidth=1.2, weight=80, constraint=true'
+EQ_CHAIN_EQ_DEF_SYM_ATTRS = 'color="#7c3aed", penwidth=1.2, weight=80, constraint=true'
+EQ_CHAIN_SPINE_ATTRS = "style=invis, weight=60, constraint=true"
+
+
+def _formula_order_key(f: Formula) -> tuple[str, int, str]:
+    return (f.chapter, f.line_start, f.fid)
+
+
+def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
+    """Minimal eq→sym→eq chain graph: definitions (LHS) vs uses (RHS).
+
+    Purple eq→sym: equation defines the symbol (LHS of ``='' or tuple component).
+    Blue sym→eq: symbol is used in a later equation (RHS only).
+    """
+    labeled = [f for f in all_formulas if f.fid.startswith("eq:")]
+    by_fid = {f.fid: f for f in labeled}
+    ordered = sorted(labeled, key=_formula_order_key)
+
+    sym_def_eqs: dict[str, set[str]] = defaultdict(set)
+    sym_use_eqs: dict[str, set[str]] = defaultdict(set)
+    for f in labeled:
+        for sym in f.defined_symbols:
+            sym_def_eqs[sym].add(f.fid)
+        for sym in f.used_symbols:
+            sym_use_eqs[sym].add(f.fid)
+
+    first_def_order: dict[str, tuple[str, int, str]] = {}
+    for f in ordered:
+        for sym in f.defined_symbols:
+            if sym not in first_def_order:
+                first_def_order[sym] = _formula_order_key(f)
+
+    # Bridge symbols: defined in ≥1 eq, used in ≥1 other eq (manuscript order).
+    chain_syms: set[str] = set()
+    for sym, def_eqs in sym_def_eqs.items():
+        use_eqs = sym_use_eqs.get(sym, set())
+        if not use_eqs:
+            continue
+        for use_fid in use_eqs:
+            use_f = by_fid[use_fid]
+            if sym in use_f.defined_symbols:
+                continue
+            if sym not in first_def_order:
+                continue
+            if _formula_order_key(use_f) <= first_def_order[sym]:
+                continue
+            chain_syms.add(sym)
+            break
+
+    kept_eqs: set[str] = set()
+    for sym in chain_syms:
+        kept_eqs |= sym_def_eqs[sym]
+        kept_eqs |= {e for e in sym_use_eqs[sym] if sym in by_fid[e].used_symbols}
+
+    lines = [
+        "digraph EquationChainGraph {",
+        '  graph [rankdir=LR, fontsize=10, overlap=prism, sep="+20",',
+        '    label="Equation chains (eq→sym defines, sym→eq uses)", labelloc=t];',
+        "  node [fontname=Helvetica, fontsize=9];",
+        "  edge [fontname=Helvetica, fontsize=8];",
+        "",
+    ]
+
+    for fid in sorted(kept_eqs, key=lambda e: (_formula_order_key(by_fid[e]))):
+        f = by_fid[fid]
+        label = fid[3:].replace("-", "\\n")
+        ch = f.chapter.replace("ch", "")
+        lines.append(
+            f'  "{fid}" [shape=box, style=filled, fillcolor="#d1fae5", '
+            f'label="{dot_escape(label)}\\n({ch})"];'
+        )
+
+    for sym in sorted(chain_syms, key=lambda s: s.lower()):
+        lines.append(
+            f'  "sym:{sym}" [shape=ellipse, style=filled, fillcolor="#dbeafe", '
+            f'label="{dot_escape(sym)}"];'
+        )
+
+    lines.append("")
+    lines.append("  // eq → sym (definition on LHS or tuple intro)")
+    n_def = 0
+    for sym in sorted(chain_syms, key=lambda s: s.lower()):
+        for fid in sorted(sym_def_eqs[sym] & kept_eqs):
+            lines.append(f'  "{fid}" -> "sym:{sym}" [{EQ_CHAIN_EQ_DEF_SYM_ATTRS}];')
+            n_def += 1
+
+    lines.append("")
+    lines.append("  // sym → eq (use on RHS, after first definition)")
+    n_use = 0
+    for sym in sorted(chain_syms, key=lambda s: s.lower()):
+        for fid in sorted(sym_use_eqs[sym] & kept_eqs):
+            use_f = by_fid[fid]
+            if sym in use_f.defined_symbols:
+                continue
+            if sym not in first_def_order:
+                continue
+            if _formula_order_key(use_f) <= first_def_order[sym]:
+                continue
+            lines.append(f'  "sym:{sym}" -> "{fid}" [{EQ_CHAIN_SYM_TO_EQ_ATTRS}];')
+            n_use += 1
+
+    by_ch: dict[str, list[Formula]] = defaultdict(list)
+    for fid in kept_eqs:
+        by_ch[by_fid[fid].chapter].append(by_fid[fid])
+    lines.append("")
+    lines.append("  // Within-chapter equation line-order (invis layout spine)")
+    n_spine = 0
+    for ch in sorted(by_ch):
+        eqs = sorted(by_ch[ch], key=lambda f: f.line_start)
+        for a, b in zip(eqs, eqs[1:]):
+            lines.append(f'  "{a.fid}" -> "{b.fid}" [{EQ_CHAIN_SPINE_ATTRS}];')
+            n_spine += 1
+    lines.append(
+        f"  // ({len(kept_eqs)} eq nodes, {len(chain_syms)} bridge symbols, "
+        f"{n_def} def, {n_use} use, {n_spine} spine edges)"
+    )
+
+    lines.append("}")
+    return "\n".join(lines)
+
+
 def build_dot(
     all_formulas: list[Formula],
     chapter_filter: str | None = None,
     ch_owner: dict[str, str] | None = None,
     sec_owner: dict[str, str] | None = None,
     detailed: bool = False,
+    *,
+    sym_spine_layout: bool = True,
 ) -> str:
     visible = graph_formula_nodes(all_formulas, detailed)
     if chapter_filter:
@@ -854,18 +1129,25 @@ def build_dot(
 
     known_fids = {f.fid for f in visible}
 
-    lines.append("  // Symbol used in formula (thinned: this is the highest-count, least-traced edge type)")
-    lines.append('  edge [penwidth=0.4, arrowsize=0.4];')
-    for f in visible:
-        for sym in sorted(f.symbols):
-            lines.append(f'  "sym:{sym}" -> "{f.fid}" [color="#2c528266"];')
-    lines.append('  edge [penwidth=1.0, arrowsize=1.0];')
+    lines.append("  // Symbol → formula (primary layout spine: sym→eq→sym→eq chains)")
+    if sym_spine_layout:
+        for f in visible:
+            for sym in sorted(f.symbols):
+                lines.append(f'  "sym:{sym}" -> "{f.fid}" [{SYMBOL_SPINE_ATTRS}];')
+    else:
+        lines.append('  edge [penwidth=0.4, arrowsize=0.4];')
+        for f in visible:
+            for sym in sorted(f.symbols):
+                lines.append(f'  "sym:{sym}" -> "{f.fid}" [color="#2c528266"];')
+        lines.append('  edge [penwidth=1.0, arrowsize=1.0];')
 
-    lines.append("  // Formula references formula")
+    lines.append("  // Formula references formula (labeled eq blocks; medium weight)")
     for f in visible:
         for ref in sorted(f.refs):
             if ref in known_fids:
-                lines.append(f'  "{f.fid}" -> "{ref}" [color="#059669"];')
+                lines.append(
+                    f'  "{f.fid}" -> "{ref}" [color="#059669", weight=2, constraint=true];'
+                )
             else:
                 ghost = f"ghost:{ref}"
                 if ghost not in known_fids:
@@ -878,13 +1160,14 @@ def build_dot(
                     f'  "{f.fid}" -> "{ghost}" [color="#dc2626", style=dashed];'
                 )
 
-    if ch_owner is not None and sec_owner is not None:
-        if detailed:
-            emit_text_ref_edges(lines, all_formulas, ch_owner, sec_owner)
-        else:
-            emit_aggregated_text_ref_edges(
-                lines, all_formulas, ch_owner, sec_owner, known_fids
-            )
+    # Prose \\eqref{eq:...} (dominant style) — restored after chcite removal; section/ch
+    # prose refs stay in metadata/concept-graph/section-reference-graph.dot.
+    if not detailed:
+        emit_prose_eq_ref_edges(lines, all_formulas, known_fids)
+
+    # Chapter/section prose refs live in metadata/concept-graph/section-reference-graph.dot
+    if detailed and ch_owner is not None and sec_owner is not None:
+        emit_text_ref_edges(lines, all_formulas, ch_owner, sec_owner)
 
     lines.append("}")
     return "\n".join(lines)
@@ -1022,6 +1305,8 @@ def build_combined_dot(
         for ref in sorted(f.refs):
             if ref in known_fids:
                 lines.append(f'  "{f.fid}" -> "{ref}" [color="#059669"];')
+    if not detailed:
+        emit_prose_eq_ref_edges(lines, all_formulas, known_fids)
 
     lines.append("  // Manuscript formula -> leanspine anchor (nearest labeled eq before anchor line)")
     for r in leanspine_refs:
@@ -1055,13 +1340,9 @@ def build_combined_dot(
         for used in sorted(d.uses):
             lines.append(f'  "lean:{d.name}" -> "lean:{used}" [color="#059669"];')
 
-    if ch_owner is not None and sec_owner is not None:
-        if detailed:
-            emit_text_ref_edges(lines, all_formulas, ch_owner, sec_owner)
-        else:
-            emit_aggregated_text_ref_edges(
-                lines, all_formulas, ch_owner, sec_owner, known_fids
-            )
+    # Section/chapter prose refs: see metadata/concept-graph/ (not duplicated here).
+    if detailed and ch_owner is not None and sec_owner is not None:
+        emit_text_ref_edges(lines, all_formulas, ch_owner, sec_owner)
 
     lines.append("}")
     return "\n".join(lines)
@@ -1177,17 +1458,16 @@ def build_coverage_md(
         lines.extend([
             "## Text cross-references (`\\ref{ch:...}` / `\\ref{sec:...}`, not `\\eqref`)",
             "",
-            "The manuscript's dominant citation style is chapter/section-level prose "
-            "(e.g. \"Chapter~\\ref{ch:foo}\", \"Section~\\ref{sec:bar-ch15}\"), not "
-            "per-equation `\\eqref`. These are now extracted as `text-ref` edges "
-            "(dashed amber: `chcite:chNN` hub → `chref:chMM` target in the default "
-            "reachability graph; per-line `chNN:prose:LINE` nodes only in "
-            "`symbol-formula-graph-detailed.dot` with `--detailed`) in addition to the "
-            "green `ref` edges for `\\eqref{eq:...}`.",
+            "Chapter/section prose citations are **not** edges in the symbol→formula graph",
+            "(they produced unreadable per-line `chNN:prose:LINE` hairballs). They are",
+            "aggregated in `metadata/concept-graph/section-reference-graph.dot` via",
+            "`scripts/build_section_reference_graph.py` — one edge per citing section →",
+            "target `sec:`/`ch:` label. The symbol graph keeps green `ref` edges for",
+            "`\\eqref{eq:...}` only.",
             "",
-            f"- `\\ref{{ch:...}}` / `\\ref{{sec:...}}` occurrences found: {text_ref_count}",
-            f"- Resolved to a known chapter: {resolved}",
-            f"- Unresolved (label not found in any parsed chapter): {len(unresolved_refs)}",
+            f"- `\\ref{{ch:...}}` / `\\ref{{sec:...}}` occurrences in manuscript: {text_ref_count}",
+            f"- Resolved to a known chapter (legacy count): {resolved}",
+            f"- Unresolved (label not found in parsed sources): {len(unresolved_refs)}",
             "",
         ])
         if unresolved_refs:
@@ -1223,7 +1503,13 @@ def main() -> None:
         action="store_true",
         help="Also emit symbol-formula-graph-detailed.dot with every unlabeled/prose node",
     )
+    parser.add_argument(
+        "--no-sym-spine-layout",
+        action="store_true",
+        help="Use faint sym→eq edges (old style) instead of high-weight layout spine",
+    )
     args = parser.parse_args()
+    sym_spine = not args.no_sym_spine_layout
 
     paths = sorted(CHAPTERS_DIR.glob("ch*.tex"))
     all_formulas: list[Formula] = []
@@ -1245,12 +1531,22 @@ def main() -> None:
             chapter_filter=args.chapter,
             ch_owner=ch_owner,
             sec_owner=sec_owner,
+            sym_spine_layout=sym_spine,
         )
     else:
-        dot = build_dot(all_formulas, ch_owner=ch_owner, sec_owner=sec_owner)
+        dot = build_dot(
+            all_formulas,
+            ch_owner=ch_owner,
+            sec_owner=sec_owner,
+            sym_spine_layout=sym_spine,
+        )
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(dot, encoding="utf-8")
+
+    eq_chain_path = args.out.with_name("equation-chain-graph.dot")
+    eq_chain_path.write_text(build_eq_chain_dot(all_formulas), encoding="utf-8")
+    print(f"Wrote {eq_chain_path}")
 
     if args.detailed and not args.chapter:
         detailed_path = args.out.with_name("symbol-formula-graph-detailed.dot")
@@ -1260,6 +1556,7 @@ def main() -> None:
                 ch_owner=ch_owner,
                 sec_owner=sec_owner,
                 detailed=True,
+                sym_spine_layout=sym_spine,
             ),
             encoding="utf-8",
         )
@@ -1293,7 +1590,13 @@ def main() -> None:
 
     # Chapter-filtered companion graph
     if not args.chapter:
-        ch14_dot = build_dot(all_formulas, chapter_filter="ch14", ch_owner=ch_owner, sec_owner=sec_owner)
+        ch14_dot = build_dot(
+            all_formulas,
+            chapter_filter="ch14",
+            ch_owner=ch_owner,
+            sec_owner=sec_owner,
+            sym_spine_layout=sym_spine,
+        )
         ch14_path = args.out.with_name("symbol-formula-graph-ch14.dot")
         ch14_path.write_text(ch14_dot, encoding="utf-8")
         print(f"Wrote {ch14_path}")

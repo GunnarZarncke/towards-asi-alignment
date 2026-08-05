@@ -61,9 +61,8 @@ when a new review pass changes a symbol's recommended action.
 - 26 chapters have zero `\leanspine{}` anchors at all (see `graphs/README.md` point 6) — every
   formula in those chapters is a dead end in the combined graph until anchors are added.
 - Chapter/section-level cross-references (`\ref{ch:...}`, `\ref{sec:...}` — the manuscript's
-  dominant citation style, ~536 occurrences) are now graph edges (`text-ref`, dashed amber,
-  target `chref:chNN`), not just `\eqref{eq:...}` (~70 occurrences). See `graphs/README.md`'s
-  "Text-only cross-references are now edges too" section. 9 of 536 don't resolve because they
-  target appendix `sec:` labels outside `chapters/*.tex`.
+  dominant citation style, ~536 occurrences) live in [`metadata/concept-graph/`](../concept-graph/)
+  (`section-reference-graph.dot`), not in the symbol→formula graph. See that folder's README and
+  `glossary-section-audit.md`. Unresolved appendix `sec:` labels remain a parser gap.
 - Most of the audit's ~42 **reduce** and ~8 **remove** rows are still open; the 2026-07-17 pass
   applied 5 of them (see the "Applied" note at the top of `symbol-contribution-audit.md`).

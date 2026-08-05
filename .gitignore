@@ -38,6 +38,13 @@ experiments/embedded-simulation/results/*.jsonl
 # Generated images (regenerate from .dot sources; see scripts/render_lean_graphs.sh)
 context/lean_proof_dependency_graph.png
 
+# Symbol census + concept graph (regenerate: extract_symbol_formula_graph.py, build_section_reference_graph.py)
+metadata/symbol-census/graphs/*.dot
+metadata/symbol-census/graphs/*.svg
+metadata/symbol-census/symbol-formula-coverage.md
+metadata/concept-graph/*.dot
+metadata/concept-graph/*.svg
+
 # Local renumber backup (scripts/git_mv_renumber.py)
 .renumber-content-backup/
 
