@@ -142,6 +142,13 @@ These are not four free sociological numbers.
 They are summaries of boundary-relative evidence: causal reach across discovered interfaces, benefit to the receiving control locus, objective/value-bundle/incentive similarity, and cost to the disclosing or cooperating locus.
 If UAD later merges two apparent vertices into one composite optimizer, the graph must be rebuilt before any percolation conclusion is trusted.
 If UAD splits a nominal actor into several control loci, the edge inputs attach to those loci, not to the label on the organization or model.
+Each discovered blanket must satisfy the directed $\epsilon$-screening test (Chapter~\ref{ch:finding-boundary}, Eq.~\eqref{eq:epsilon-boundary-ch07}):
+\begin{equation}
+\MI(I^i_{t+1}; E^i_{t+1} \mid S^i_t, A^i_t)
+\leq
+\symbolref[epsilon]{\epsilon}.
+\label{eq:uad-epsilon-screen-ch35}
+\end{equation}
 
 \emph{Inferential coupling index.} Cut ordinary communication and control channels between $i$ and $j$ at the audit's resolution (so $p_{ij}=0$) and ask how predictable $j$'s action $A_j$ remains from $i$'s action $A_i$ through shared inference structure alone. The intervention does not erase shared history; it tests whether that history still produces action-relevant dependence without a fresh message. Writing $\mathrm{cut}$ for that intervention,
 \begin{equation}
@@ -157,7 +164,7 @@ Even when $p_{ij}=0$, $\mathrm{ICI}_{ij}$ can remain large if the severed pair s
 
 With inferential coupling index $\mathrm{ICI}_{ij}$,
 \begin{equation}
-\tilde{\kappa}_{ij}
+\symboldef[kappa_tilde]{\tilde{\kappa}_{ij}}
 =
 \frac{
 b_{ij}
@@ -167,7 +174,11 @@ p_{ij}+(1-p_{ij})\symbolref[ICI]{\mathrm{ICI}_{ij}}
 \rho_{ij}
 }{
 c_{ij}
-}.
+},
+\qquad
+\text{extends }\symbolref[kappa_ij]{\kappa_{ij}}
+\text{ by replacing } p_{ij}
+\text{ with } p_{ij}+(1-p_{ij})\mathrm{ICI}_{ij}.
 \label{eq:uad-inferential-kappa-ch35}
 \end{equation}
 Key claim: $p_{ij}=0$ does not imply $\tilde{\kappa}_{ij}=0$.

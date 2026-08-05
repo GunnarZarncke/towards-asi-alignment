@@ -13,7 +13,7 @@ Research directions and unresolved questions for the book project.
 ## Theory
 
 - Sufficient conditions for alignment basin stability
-- Pivotal process: conditions for $\mathbb{B}_{\mathrm{race}} \to \mathbb{B}_{\mathrm{certified}}$ without unilateral decisive action
+- Pivotal process: conditions for $\mathbb{B}_{\mathrm{race}} \to \mathbb{B}_{\mathrm{certified}}$ without unilateral decisive action — **ch38** (`eq:race-certified-basins-ch37`) currently uses loose set descriptions only; `% TODO[formalize]` there calls for percolation ($\tilde{\kappa}$), selection envelope ($\mu_E$), and basin-stability predicates (track: `metadata/TODO.md` Formalization tracks, notation C12)
 - Inferential coupling indices and detection of effective AI coalitions
 - Conservative abstraction criteria for value-bundle and correction maps
 - Bearer-map transport across radical ontology shift

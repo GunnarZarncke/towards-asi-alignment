@@ -147,10 +147,16 @@ When \(D_{\mathrm{trans}}>0\), the system has gained private self-control faster
 
 For the Lean proof spine (Appendix~\ref{appi-lean-proof-spine}), compress the gap between self-control and correction visibility as
 \begin{equation}
-\symboldef[SelfControlGap]{\mathrm{SelfControlGap}(A)} \approx C_{\mathrm{self}}(A) - T_{\mathrm{corr}}(A).
+\symboldef[SelfControlGap]{\mathrm{SelfControlGap}(A)} \coloneqq C_{\mathrm{self}}(A) - T_{\mathrm{corr}}(A).
 \label{eq:self-control-gap}
 \end{equation}
 Higher self-control with flat or declining \(T_{\mathrm{corr}}\) raises \symbolref[SelfControlGap]{\mathrm{SelfControlGap}(A)}.
+The audit-side variant in Chapter~\ref{ch:compression-test-intention} (Eq.~\eqref{eq:self-control-audit-dynamics-ch22}) is the same failure shape with \(T_{\mathrm{corr}}\) replaced by \(C_{\mathrm{audit}}\):
+\begin{equation}
+\symbolref[SelfControlGap]{\mathrm{SelfControlGap}(A)}
+\ \text{names the audit-side gap (Eq.~\eqref{eq:self-control-audit-dynamics-ch22}).}
+\label{eq:self-control-gap-audit-bridge-ch32}
+\end{equation}
 
 The severe failure condition is:
 \[

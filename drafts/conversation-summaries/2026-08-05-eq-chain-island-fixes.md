@@ -18,11 +18,11 @@ Continue eq-chain editorial pass: tighten loose basin defs (TODO only), repair K
 - Basins stay expositional until percolation / `\mu_E` machinery exists — no forced inequalities or fake graph edges.
 - ch13→ch35 κ prose cross-ref skipped (user).
 - GLI stays four-term; `D_G` linked via `cf.` in `eq:gli-ch40`, not as summand.
-- ICI remains a small ch35-local island (3 nodes) — no external deps yet; ordering fix is sufficient for now.
+- ICI remains wired to κ̃ and main-spine κ via `\symbolref[kappa_ij]` (not a separate island after follow-up pass).
 
 ## Open / next
 - Operationalize macro basins (C12); concept cards for `\mathbb{B}_{\mathrm{race}}` / `\mathbb{B}_{\mathrm{certified}}`.
-- Remaining islands: basins (4), ICI cluster (3), plus any ch08 split-transport locals.
+- Remaining island: **basins only** (5 nodes) until percolation/$\mu_E$ machinery.
 - Forward-ref policy: ch09 `eq:responsibility-gap` still uses `K_X` before ch11 in PDF order (bridge eq is the post-def spine link).
 - Untracked drafts in tree (`lw-*`, `TSA.png`, etc.) — not part of this commit.
 
@@ -33,4 +33,15 @@ Continue eq-chain editorial pass: tighten loose basin defs (TODO only), repair K
 - `drafts/editorial-guidance-eq-chain-placement.md`
 
 ## Commits
+- `18612c8a` Eq-chain island fixes: K_coll, ICI order, 𝓡_i/K_X bridge, extractor.
+
+## Follow-up (same day)
+- **ε boundary:** ch07 flip `\epsilon \geq \MI(...)` with `\symboldef[epsilon]` on LHS; ch35 `eq:uad-epsilon-screen-ch35` ties UAD blankets to `\symbolref[epsilon]`.
+- **SelfControlGap:** ch22 dynamics eq without forward `\symbolref`; ch32 `eq:self-control-gap-audit-bridge-ch32` post-def link to ch22; ch33 `eq:risk-gap` keeps `cf.` ref.
+- **κ → κ̃:** `\symboldef[kappa_ij]` on ch13 `eq:kappa-coordination`; `\symboldef[kappa_tilde]` + extends `\symbolref[kappa_ij]` on `eq:uad-inferential-kappa-ch35` (deferred percolation draft connection).
+- **Extractor:** `_split_first_def_relation` for `\coloneqq`, `\approx`, `\geq`, `\leq`.
+- **open-problems.md:** basin TODO pointer on pivotal-process bullet.
+- Graph: **2 components** (main ~226 nodes + basins island 5).
+
+## Commits (follow-up)
 - (this session)

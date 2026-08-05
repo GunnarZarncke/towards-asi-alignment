@@ -610,16 +610,32 @@ def _split_depth0(s: str, sep: str) -> list[str]:
     return parts
 
 
-def _split_first_equals(line: str) -> tuple[str, str] | None:
+def _split_first_def_relation(line: str) -> tuple[str, str] | None:
+    """Split on first top-level definitional relation (``=``, ``\\coloneqq``, etc.)."""
     depth = 0
-    for i, c in enumerate(line):
+    i = 0
+    relations = ("\\coloneqq", "\\approx", "\\geq", "\\leq", "=")
+    while i < len(line):
+        c = line[i]
         if c == "{":
             depth += 1
-        elif c == "}":
+            i += 1
+            continue
+        if c == "}":
             depth = max(0, depth - 1)
-        elif c == "=" and depth == 0:
-            return line[:i].strip(), line[i + 1 :].strip()
+            i += 1
+            continue
+        if depth == 0:
+            for token in relations:
+                if line.startswith(token, i):
+                    return line[:i].strip(), line[i + len(token) :].strip()
+        i += 1
     return None
+
+
+def _split_first_equals(line: str) -> tuple[str, str] | None:
+    """Backward-compatible wrapper."""
+    return _split_first_def_relation(line)
 
 
 def _tuple_list_defined(rhs: str) -> set[str]:
@@ -705,7 +721,7 @@ def split_defined_used_symbols(block: str) -> tuple[set[str], set[str]]:
             if rhs.startswith("="):
                 rhs = rhs[1:].strip()
         else:
-            eq_parts = _split_first_equals(segment)
+            eq_parts = _split_first_def_relation(segment)
             if eq_parts is None:
                 used.update(extract_symbols_from_math(segment))
                 continue
