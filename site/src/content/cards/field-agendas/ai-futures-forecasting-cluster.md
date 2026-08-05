@@ -20,6 +20,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/ai-futures-forecasting-cluster.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 The AI Futures and forecasting cluster produces explicit scenario narratives, timeline estimates, and shared prediction infrastructure for tracking advanced AI development. Its work informs policy urgency and schedule-shaped governance stress tests without claiming to resolve alignment mechanism questions. Forecasts interact with [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) mainly as timing cues for deployment ecology, not as technical discharge of typed bridges.

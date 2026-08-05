@@ -17,6 +17,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/orthogonal.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Orthogonal is an agent-foundations research community advancing formal alignment work through Discord and papers. It asks whether community-organized research can discharge the same formal walls as established agent-foundations lineages—[embedded agency](/cards/mb1-boundary-estimator-soundness/), [corrigibility](/cards/mb4-correction-legitimacy/), and related obstructions. Active work engages [Embedded Agency](/cards/mb1-boundary-estimator-soundness/) and [Corrigibility](/cards/mb4-correction-legitimacy/) as typed targets.

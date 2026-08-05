@@ -17,6 +17,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/davidad-guaranteed-safe-ai-gsai.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 [Guaranteed-Safe AI](https://arxiv.org/abs/2405.06624) seeks formally grounded safety guarantees relative to an explicit specification and world model, treating open-world coverage as the central engineering wall.

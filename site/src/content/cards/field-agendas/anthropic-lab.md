@@ -33,6 +33,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/anthropic-lab.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Anthropic builds frontier models under staged safety commitments ([RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy)), while adjacent teams and investments pursue [mechanistic interpretability](https://www.anthropic.com/research), editable internal representations, and cross-lab tooling infrastructure.

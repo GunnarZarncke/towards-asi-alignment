@@ -25,6 +25,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/kosoy-infra-bayesianism-lta.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Vanessa Kosoy's [learning-theoretic agenda](https://www.alignmentforum.org/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda) (LTA) builds a mathematical theory of intelligence and alignment grounded in regret bounds, daemons, and [nonrealizability](/cards/subsumption-grounding-drift/). [Infra-Bayesianism](https://www.lesswrong.com/w/infra-bayesianism) and [infra-Bayesian physicalism](https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized) are major constructive layers—not the whole agenda. The outer-alignment strand [Physicalist Superimitation](https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023) (formerly [PreDCA](https://www.alignmentforum.org/w/predca)) proposes precursor-utility pointing via the bridge transform. Its walls map onto [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Value Learning](/cards/mb2-bundle-identifiability/), [Value Referent](/cards/mb3-bearer-import/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Grounding Drift](/cards/mb9-grounding-certificate/) without replacing this project's System–bundle–correction ontology.

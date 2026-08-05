@@ -16,6 +16,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/conjecture-cognitive-emulation.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed as emulation rather than opaque end-to-end agents—alongside the EleutherAI open-model lineage. The cluster asks whether emulation-style controllability implies [corrigibility](/cards/mb4-correction-legitimacy/) as capability scales. [Correction-channel integrity](/cards/correction-channel-integrity/) and successor value transport remain separate load-bearing concerns beyond controllability claims.

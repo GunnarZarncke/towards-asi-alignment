@@ -27,6 +27,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/apollo-research.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Apollo and Truthful AI focus on deception, [scheming](https://www.apolloresearch.ai/), and hidden reasoning as empirical programs, running pre-deployment evaluations and agent-security tooling before systems reach users.

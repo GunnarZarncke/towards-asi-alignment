@@ -11,6 +11,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/mats.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 MATS runs a twelve-week mentored research program pairing scholars with alignment mentors for empirical and conceptual projects across transparency, security, and related subfields. Fellowship output is intentionally diverse and does not collapse into a single unified measurement spine. The program feeds talent into the broader [Field hub](/field/) while individual projects may advance lines such as [Inner Alignment](/cards/mb7-hidden-capability-and-access/) without resolving cross-cutting bridge composition.

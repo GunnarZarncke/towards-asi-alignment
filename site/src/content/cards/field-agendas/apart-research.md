@@ -11,6 +11,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/apart-research.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Apart Research runs open research sprints and hackathon-style collaborations that produce rapid prototypes and exploratory write-ups under mentorship. Sprint velocity lowers the barrier to empirical alignment work but does not substitute for adversarial verification or a load-bearing safety case. Outputs often probe [certification under manipulation](/cards/certification-under-manipulation/) and related measurement questions without discharging them.

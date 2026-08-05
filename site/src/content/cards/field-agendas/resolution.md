@@ -22,6 +22,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/resolution.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Resolution pursues theory and automation for high-confidence alignment, including [Timaeus](https://www.timaeus.ai/) work on [singular learning](https://www.timaeus.ai/). The automation-first philosophy asks whether formal pipelines can scale to superintelligent alignment with checkable confidence. Even automated verification faces [certification under manipulation](/cards/certification-under-manipulation/) and [Deployment Safety](/cards/mb11-deployment-safety/) scope limits under adversarial optimization.

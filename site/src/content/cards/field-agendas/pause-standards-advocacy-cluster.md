@@ -23,6 +23,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/pause-standards-advocacy-cluster.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 The pause and standards advocacy cluster—PauseAI, FLI, ControlAI, Encode, and allies—pursues policy campaigns, moratorium advocacy, and verified-slowdown narratives to reduce extinction risk from advanced AI. Its primary lever is schedule and selection ecology rather than mechanism discharge. Advocacy can shape [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) basin transitions without resolving the full bridge stack from [embedded agency](/cards/mb1-boundary-estimator-soundness/) through successor gaming.

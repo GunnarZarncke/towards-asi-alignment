@@ -21,6 +21,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/chai-russell.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 The Berkeley cluster reorients AI research toward beneficial systems under preference uncertainty, combining Stuart Russell's assistance-game formalism with FAR.AI's research and community programs.

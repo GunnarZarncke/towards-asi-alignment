@@ -32,6 +32,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/neglected-approaches-portfolio.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 AE Studio's *Neglected Approaches* strategy (Berg, Carauleanu, Rosenblatt; Dec 2023 / Jan 2024) treats alignment as a vast, still largely unexplored space where dominant agendas may sit on local maxima. The bet is **many low-probability, high-upside shots on goal**: parallel pursuit of creative, plausible directions underused by the field, especially where AE's BCI, neuroscience, and consulting-scale engineering stack is a comparative advantage. AE bootstrapped from a profitable consultancy reinvesting toward human-agency technologies (originally BCI-first); shortening timelines shifted emphasis toward direct technical alignment while keeping the portfolio logic. The published ten-direction menu is explicitly **evolving first-pass guesses**, not a fixed official agenda—and many items are community-wide neglected ideas AE may not be best placed to implement alone.

@@ -81,7 +81,7 @@ Output: `site/dist/`
 | `scripts/sync-concepts.mjs` | Generates cards from `concepts.yml` plus `src/data/{glossary,part-gems,standalone-claims}.json`; `--check` diffs without writing |
 | `scripts/sync-bridges.mjs` | Generates bridge cards from `bridges.yml` (+ appB parse); `--check` diffs without writing |
 | `scripts/sync-projections.mjs` | Generates projection cards from `projections.yml` plus `src/data/field-projection{,-gems}.json`; `--check` diffs without writing |
-| `scripts/sync-field-agendas.mjs` | Generates agenda cards from `reference/field-agendas/data/` plus `src/data/field-agendas.json`; regenerates `field-agenda-index.md`; `--check` diffs without writing |
+| `scripts/sync-field-agendas.mjs` | Generates agenda cards from `reference/field-agendas/data/` plus `src/data/field-agendas.json`; regenerates `field-agenda-index.md` (outputs carry a `GENERATED FILE` banner — edit YAML only); `--check` diffs without writing |
 | `scripts/sync-field-news.mjs` | Generates related-news cards from `field-news.yml` plus `src/data/field-news.json`; `--check` diffs without writing |
 | `scripts/sync-notation.mjs` | Generates `src/data/notation.json` for `/notation/` from `metadata/notation.md` (no per-symbol cards) |
 | `scripts/sync-releases.mjs` | Generates release cards + the `/updates/` hub card from `RELEASE_NOTES.md` |

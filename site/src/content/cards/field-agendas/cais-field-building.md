@@ -11,6 +11,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/cais-field-building.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 CAIS publishes coordinated risk statements, runs the AISES course, and organizes field-building events that raise the profile of AI safety research. Its advocacy and researcher pipeline grow legitimacy for existential-risk framing without committing to a single technical discharge path. CAIS mainly transmits vocabulary and talent into the broader [Field hub](/field/) rather than resolving typed alignment mechanisms or [bridge assumptions](/cards/bridge-assumptions/).

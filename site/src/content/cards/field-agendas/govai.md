@@ -31,6 +31,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/govai.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 GovAI and allied institutes connect policy research to frontier evaluation, touching [Goodhart Selection](/cards/mb6-selection-and-basin-stability/), [Inner Alignment](/cards/mb7-hidden-capability-and-access/), and [Deployment Safety](/cards/mb11-deployment-safety/) in institutional form.

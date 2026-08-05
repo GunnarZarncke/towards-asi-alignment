@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **Field agenda generated banners** — Mark sync outputs as generated (28 cards + index); keep YAML source; deferred TODO for build-time-only codegen. | [2026-08-05-field-agenda-generated-banners.md](2026-08-05-field-agenda-generated-banners.md) |
 | 2026-08-05 | **Subsumption-debate lean kind CI fix** — Astro build failed on invalid `leanNodes.kind: separationOnly`; fixed source body to `bridge`; ledger note in summary. | [2026-08-05-subsumption-debate-lean-kind-fix.md](2026-08-05-subsumption-debate-lean-kind-fix.md) |
 | 2026-08-05 | **Kosoy evidence merge** — Review Kosoy LTA/IB/PreDCA sources; merge PreDCA into single agenda row; upgrade matrix evidence; fix AF profile URLs. | [2026-08-05-kosoy-evidence-merge.md](2026-08-05-kosoy-evidence-merge.md) |
 | 2026-08-04 | **CIRIS falsifier phased plan** — Named-identity/composite-agency counterexample: Phase 1 mock + Eric memo; Lens cohort Phase 3 deferred; C2 tool-scout; charter updated in sibling `ciris/review/`. | [2026-08-04-ciris-falsifier-phased-plan.md](2026-08-04-ciris-falsifier-phased-plan.md) |

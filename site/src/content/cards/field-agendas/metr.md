@@ -23,6 +23,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/metr.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 METR measures dangerous autonomous and AI R&D capabilities at the frontier, producing eval-driven forecasting and risk reporting to inform policy and lab decisions.

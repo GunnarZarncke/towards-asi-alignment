@@ -1,3 +1,5 @@
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/. Regenerate: cd site && npm run sync:field-agendas -->
+
 # Field agenda index
 
 **Status:** field reference (2026-08-02 MB11 matrix pass) — clustered from [AISafety.com map](https://www.aisafety.com/map) (~352 listings → 25 matrix agendas after independence merges; 30 agenda records incl. field-building off-matrix). includes **Links** (official sites; map listings roll up in the clustering table). **Coverage matrix** below maps agenda × bridge cells to numbered, typed, sourced evidence. **Not** manuscript canon.  

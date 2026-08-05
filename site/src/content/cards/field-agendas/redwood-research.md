@@ -16,6 +16,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/redwood-research.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Redwood Research makes safety-under-subversion research legible to labs and governments, asking what guarantees remain when a capable system may deliberately try to defeat oversight.

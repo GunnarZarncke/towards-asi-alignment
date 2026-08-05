@@ -30,6 +30,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/ciris.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 CIRIS is a cryptographic and procedural accountability stack for autonomous agents, with [Corrigibility](/cards/mb4-correction-legitimacy/) and [Audit Independence](/cards/mb4a-measured-path-legitimacy/) as its primary operational test surfaces.

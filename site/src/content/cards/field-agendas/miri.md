@@ -17,6 +17,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/miri.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 MIRI studies [agent foundations](https://intelligence.org/)—the theoretical problems that arise when building highly capable AI—and has increasingly emphasized policy advocacy for pause and [off-switch](/cards/subsumption-shutdown/) measures when technical solutions look insufficient.

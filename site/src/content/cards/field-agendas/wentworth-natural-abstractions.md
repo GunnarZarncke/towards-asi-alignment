@@ -14,6 +14,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/wentworth-natural-abstractions.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 John Wentworth's natural-abstractions lineage develops the [Natural Abstraction Hypothesis](https://www.alignmentforum.org/users/John+Wentworth), [selection theorems](https://www.alignmentforum.org/users/John+Wentworth), and a compression-based theory of agency. It asks whether the abstractions that survive optimization align with value-relevant structure at scale. Convergent macro-variables can inform [Value Learning](/cards/mb2-bundle-identifiability/) targets but do not discharge [Tiling](/cards/mb5-successor-ontology-shift/) transport on their own.

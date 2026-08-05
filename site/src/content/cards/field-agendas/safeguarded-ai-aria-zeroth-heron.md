@@ -26,6 +26,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/safeguarded-ai-aria-zeroth-heron.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 The Safeguarded AI cluster—ARIA, Zeroth Research, Heron AI Security, and containment-verification allies—targets an end-to-end stack pairing world models with formal specifications, machine-checkable proof certificates, and runtime action control. Safety claims are conditional on the declared system boundary; misspecified controllers or agents outside the certified cut can void proofs. The programme engages [Embedded Agency](/cards/mb1-boundary-estimator-soundness/), [Grounding Drift](/cards/mb9-grounding-certificate/), and [Deployment Safety](/cards/mb11-deployment-safety/) in whole-system assurance form.

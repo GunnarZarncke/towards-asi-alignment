@@ -19,6 +19,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/clr-cooperation-conflict.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 CLR researches cooperation under AI competition, [s-risks](https://longtermrisk.org/), and multipolar failure modes, including [Cooperative AI Foundation](https://www.cooperativeai.com/) work. Its conflict-and-cooperation framing asks how multi-agent dynamics behave when cooperation breaks down under strategic pressure. The agenda engages [Goodhart Selection](/cards/mb6-selection-and-basin-stability/) and [Acausal Coordination](/cards/mb7d-acausal-coordination/) as measurement cousins to narrative multipolar stories.

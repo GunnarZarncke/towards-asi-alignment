@@ -10,7 +10,8 @@ Agent-oriented crosswalk material for comparing alignment agendas and vocabulary
 | [`data/bridges.yml`](data/bridges.yml) | Field nouns + semantic crux wording per `MB*` (matrix headers + legend) |
 | [`data/evidence.yml`](data/evidence.yml) | Sourced evidence catalog |
 | [`data/clustering.yml`](data/clustering.yml) | AISafety.com map → agenda roll-ups |
-| [`field-agenda-index.md`](field-agenda-index.md) | **Generated** agent index (run `sync:field-agendas`) |
+| [`field-agenda-index.md`](field-agenda-index.md) | **Generated** agent index (run `sync:field-agendas`; carries `GENERATED FILE` banner) |
+| [`site/src/content/cards/field-agendas/*.md`](../../site/src/content/cards/field-agendas/) | **Generated** companion agenda cards (edit YAML only) |
 | [`MAINTAINER.md`](MAINTAINER.md) | Agent-only matrix reading rules (not on public `/field/` page) |
 | [`site/src/content/field/intro.md`](../../site/src/content/field/intro.md) | Public Field hub introduction |
 | [`inter-agenda-term-glossary.md`](inter-agenda-term-glossary.md) | Alphabetical terms by source agenda |
@@ -25,4 +26,4 @@ Agent-oriented crosswalk material for comparing alignment agendas and vocabulary
 
 1. Edit YAML under `data/` (add agenda file, evidence row, matrix cell, bridge noun/crux in `bridges.yml`, etc.).
 2. Optionally refresh from the legacy markdown index: `node reference/field-agendas/scripts/extract-from-index.mjs` (one-way import).
-3. Regenerate site cards and index markdown: `cd site && npm run sync:field-agendas`.
+3. Regenerate site cards and index markdown: `cd site && npm run sync:field-agendas`. Do not edit generated `.md` files — they include a `GENERATED FILE` banner.

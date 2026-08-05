@@ -21,6 +21,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/mai-cip-institutional-alignment.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 MAI and CIP pursue full-stack alignment through thick values, alignment assemblies, and collective [constitutional AI](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback)—aligning AI–institution systems rather than model behavior in isolation. The agenda asks whether deliberative processes stay identifiable and contestable under strategic pressure and AI mediation. Legitimate institutional output does not imply [correction-channel integrity](/cards/correction-channel-integrity/) or institutional-selection-gating that survives optimization.

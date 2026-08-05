@@ -19,6 +19,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/google-deepmind-safety.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Google DeepMind integrates safety research into a large capabilities org, producing empirical alignment work and agent-discovery methods alongside Gemini-era deployment.

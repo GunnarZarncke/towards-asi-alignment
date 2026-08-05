@@ -11,6 +11,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/bluedot-impact.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 BlueDot Impact provides introductory Technical AI Safety and Frontier AI Governance courses that serve as a standard on-ramp for people entering AI safety careers. Strong pedagogy transmits shared field vocabulary and problem framings rather than resolving technical cruxes. Graduates enter the [Field hub](/field/) with a common baseline for reading bridge-crosswalk material and concept cards such as [alignment-as-measurement](/cards/alignment-as-measurement/).

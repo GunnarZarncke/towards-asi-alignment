@@ -18,6 +18,19 @@ const repoRoot = path.resolve(siteRoot, "..");
 const dataRoot = path.join(repoRoot, "reference", "field-agendas", "data");
 const cardsDir = path.join(siteRoot, "src", "content", "cards", "field-agendas");
 const indexPath = path.join(repoRoot, "reference", "field-agendas", "field-agenda-index.md");
+const SYNC_CMD = "cd site && npm run sync:field-agendas";
+
+function generatedBanner(source) {
+  return `<!-- GENERATED FILE — do not edit. Source: ${source}. Regenerate: ${SYNC_CMD} -->`;
+}
+
+function agendaCardBanner(slug) {
+  return generatedBanner(`reference/field-agendas/data/agendas/${slug}.yml`);
+}
+
+function indexBanner() {
+  return generatedBanner("reference/field-agendas/data/");
+}
 
 function buildMbBridgeCards(bridgeRows) {
   const map = {};
@@ -170,6 +183,8 @@ function renderAgendaCard(agenda, clusteringRows, bridgeRows) {
     "related: []",
     "---",
     "",
+    agendaCardBanner(agenda.slug),
+    "",
     renderAgendaBody(agenda, clusteringRows, bridgeRows)
   ].join("\n");
   return fm;
@@ -193,6 +208,8 @@ async function loadYaml(name) {
 function renderIndexMarkdown(meta, roster, agendas, matrix, evidence, clustering, bridgeRows) {
   const bridgeMap = bridgeByKey(bridgeRows);
   const lines = [];
+  lines.push(indexBanner());
+  lines.push("");
   lines.push("# Field agenda index");
   lines.push("");
   lines.push(`**Status:** ${meta.status}`);

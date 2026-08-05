@@ -17,6 +17,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/christiano-lineage.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Paul Christiano's lineage developed [scalable oversight](/cards/subsumption-debate/) protocols—debate, amplification, [recursive reward modeling](/cards/subsumption-debate/)—and the [ELK](/cards/subsumption-elk/) problem, aiming for oversight that stays honest under optimization pressure.

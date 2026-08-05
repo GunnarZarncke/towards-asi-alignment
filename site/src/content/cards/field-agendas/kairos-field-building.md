@@ -17,6 +17,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/kairos-field-building.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 Kairos operates SPAR mentored research, Pathfinder career programs, Global Challenges Project workshops, and Generator Residency placements for emerging AI safety researchers. Like other field-building agendas, program throughput accelerates talent discovery rather than mechanism discovery. Participants seed early work across subfields while the [Field hub](/field/) tracks which technical cruxes—such as [composite agency](/cards/composite-agency/)—remain open.

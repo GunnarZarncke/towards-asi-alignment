@@ -14,6 +14,8 @@ external:
 related: []
 ---
 
+<!-- GENERATED FILE — do not edit. Source: reference/field-agendas/data/agendas/arc-alignment-research-center.yml. Regenerate: cd site && npm run sync:field-agendas -->
+
 ## Introduction
 
 ARC formalizes [scalable oversight](/cards/subsumption-debate/) mechanisms, most prominently the [ELK](/cards/subsumption-elk/) ([Eliciting Latent Knowledge](/cards/subsumption-elk/)) problem, asking whether oversight can read out what a model knows rather than what it simulates.
