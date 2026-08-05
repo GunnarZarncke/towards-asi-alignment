@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-05T09:52:49.074Z",
+  "generatedAt": "2026-08-05T10:01:16.801Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 280,
+  "entryCount": 281,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1103,6 +1103,12 @@
       "type": "appendix",
       "summary": "Human Institutions as Alignment Translation Guide",
       "url": "/cards/chapters/appc/"
+    },
+    {
+      "title": "Iliad / Textbook from the Future",
+      "type": "agenda",
+      "summary": "Can a communal TOC plus research automation scale theory faster than artisanal research—and without substituting shared canon for adversarial verification?",
+      "url": "/cards/field-agendas/iliad-textbook-from-the-future/"
     },
     {
       "title": "Inferential Coupling and Acausal-Trade Detection",
