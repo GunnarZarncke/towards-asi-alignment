@@ -2,13 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (chapter reading guide Phase 0).
+Last updated: 2026-08-05 (chapter reading guide Phase 4 audit complete).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Chapter `readingguide` (Before You Read)** — Phase 0 **done** (env, intro, INSTRUCTIONS §6, tex-convert, `--emit-reading-checklists`). **Phase 1 next:** pilot ch25 / ch40 / ch07 after bridge audit. Checklists: `metadata/concept-graph/chapter-reading-checklists/`. Log: `2026-08-05-chapter-reading-guide-phase0.md`.
+- **Chapter `readingguide` (Prerequisites)** — Full rollout **done**. Blocks exist only in ch07 (ch05 correction-capacity scope) and ch38 (ch02 artificial-civilizational control loop); all other audited chapters were adequately bridged, self-defining, forward in PDF order, or introduced after the chapter opening. ch09 also disambiguates the object of alignment from the authority that supplies constraints, and distinguishes component from deployed-system alignment. Informal DAG edges can run backward in PDF order (e.g. ch38 → ch34), so treat all graph edges as audit prompts, not automatic entry prerequisites. Re-audit only when an opening, prior close, or DAG edge changes. PDF and site builds pass; the PDF pass also repaired the project `\symboldef` / `\symbolref` markers to coexist with loaded commands and fixed two nested-math marker calls (ch26/ch28). Checklists: `metadata/concept-graph/chapter-reading-checklists/`. Logs: `2026-08-05-chapter-reading-guide-phase0.md`, `2026-08-05-chapter-reading-guide-phase1-pilots.md`, `2026-08-05-chapter-reading-guide-phase2-easy.md`, `2026-08-05-chapter-reading-guide-phase3-medium.md`, `2026-08-05-chapter-reading-guide-phase4-hard.md`.
 
 - **Eq-chain editorial** — island pass + spine connections (2026-08-05): K_coll, ICI→κ̃→κ, ε/UAD screen, SelfControlGap post-def bridge, 𝓡_i/K_X; **2 graph components** (main ~226 + basins). **Chapter reading DAG** — symbol (24 ch) + informal YAML + combined **48/48 ch** (`chapter-reading-dependency.md`). Remaining: **C12 basin operationalization** (ch38 loose set defs); refine `chapter-informal-edges.yml`; latent `p_\theta` vs MI `\theta` hub collision. Logs: `2026-08-05-chapter-informal-reading-dag.md`, `2026-08-05-chapter-symbol-dependency-dag.md`, `drafts/editorial-guidance-eq-chain-placement.md`.
 

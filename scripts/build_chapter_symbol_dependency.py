@@ -785,7 +785,6 @@ def build_reading_checklist_md(
             "",
             "```latex",
             "\\begin{readingguide}",
-            "\\textbf{Prerequisites.}",
             "\\begin{itemize}",
             "  \\item \\textbf{...} --- ...; Chapter~\\ref{ch:...}.",
             "\\end{itemize}",

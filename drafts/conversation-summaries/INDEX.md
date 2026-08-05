@@ -6,6 +6,10 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **Chapter reading guide Phase 4** — High-fan-in/synthesis audit; no additional blocks. | [2026-08-05-chapter-reading-guide-phase4-hard.md](2026-08-05-chapter-reading-guide-phase4-hard.md) |
+| 2026-08-05 | **Chapter reading guide Phase 3** — Medium audit; ch38 gets ch02 civilizational-loop prerequisite. | [2026-08-05-chapter-reading-guide-phase3-medium.md](2026-08-05-chapter-reading-guide-phase3-medium.md) |
+| 2026-08-05 | **Chapter reading guide Phase 2** — Audit zero/one-edge chapters plus ch09; no new blocks. | [2026-08-05-chapter-reading-guide-phase2-easy.md](2026-08-05-chapter-reading-guide-phase2-easy.md) |
+| 2026-08-05 | **Chapter reading guide Phase 1 pilots** — Bridge audit: ch25/ch40 omit; ch07 gets ch05 scope prerequisite. | [2026-08-05-chapter-reading-guide-phase1-pilots.md](2026-08-05-chapter-reading-guide-phase1-pilots.md) |
 | 2026-08-05 | **Chapter reading guide Phase 0** — `readingguide` env, intro/INSTRUCTIONS, site convert, checklist script. | [2026-08-05-chapter-reading-guide-phase0.md](2026-08-05-chapter-reading-guide-phase0.md) |
 | 2026-08-05 | **Chapter reading graph on site** — Clickable combined DAG; guided-paths link; lean build + label newline fixes. | [2026-08-05-chapter-reading-graph-site.md](2026-08-05-chapter-reading-graph-site.md) |
 | 2026-08-05 | **Informal + combined reading DAG** — `chapter-informal-edges.yml`; symbol/informal/combined modes; 48/48 chapters covered. | [2026-08-05-chapter-informal-reading-dag.md](2026-08-05-chapter-informal-reading-dag.md) |

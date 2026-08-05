@@ -36,7 +36,7 @@ const ENV_HANDLERS = {
     const graphHref = "/paths/chapter-reading-graph/";
     return (
       `<details class="reading-guide callout">` +
-      `<summary>Before you read</summary>` +
+      `<summary>Prerequisites</summary>` +
       `<div class="reading-guide-body">${inner}</div>` +
       `<p class="reading-guide-graph side-panel-meta">` +
       `<a href="${graphHref}">Chapter reading graph</a> — prerequisite map across all chapters.` +

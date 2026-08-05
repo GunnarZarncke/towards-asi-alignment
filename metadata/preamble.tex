@@ -28,7 +28,7 @@
   colback=green!4!white,
   colframe=green!45!black,
   fonttitle=\bfseries,
-  title=Before You Read
+  title=Prerequisites
 }
 
 \theoremstyle{definition}
@@ -50,17 +50,17 @@
 % Explicit symbol definition marker (metadata/symbol-census/ equation-chain graphs).
 % \symboldef{math} or \symboldef[canonical-id]{math} — canonical-id matches metadata/notation.md.
 \makeatletter
-\newcommand{\symboldef}{%
+\def\symboldef{%
   \@ifnextchar[{\symboldef@opt}{\symboldef@plain}%
 }
-\newcommand{\symboldef@opt}[2][]{#2}
-\newcommand{\symboldef@plain}[1]{#1}
+\def\symboldef@opt[#1]#2{\ensuremath{#2}}
+\def\symboldef@plain#1{\ensuremath{#1}}
 % Explicit symbol use marker (equation-chain graphs): unlabeled display math, prose.
-\newcommand{\symbolref}{%
+\def\symbolref{%
   \@ifnextchar[{\symbolref@opt}{\symbolref@plain}%
 }
-\newcommand{\symbolref@opt}[2][]{#2}
-\newcommand{\symbolref@plain}[1]{#1}
+\def\symbolref@opt[#1]#2{\ensuremath{#2}}
+\def\symbolref@plain#1{\ensuremath{#1}}
 \makeatother
 
 % Bibliography entries start with a one-line reader-facing gloss, keyed by

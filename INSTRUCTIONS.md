@@ -180,13 +180,12 @@ Every chapter must include:
 6. A summary (roughly 5–8 bullets or equivalent).
 7. BibLaTeX citations; per-chapter `refsection` + `\printbibliography[heading=subbibliography,title={Chapter References}]`.
 
-**Optional `readingguide` (Before You Read):** include only when a **bridge audit** leaves load-bearing prerequisites not already covered in the chapter opening (~first `\section`) or the **previous chapter's closing**. Omit the entire block when the chapter has no incoming edges in the combined reading DAG ([`metadata/concept-graph/chapter-reading-dependency.md`](metadata/concept-graph/chapter-reading-dependency.md)) or when the audit is empty. Place after `chapterthesis`, before `epistemicstatus`.
+**Optional `readingguide` (Prerequisites):** include only when a **bridge audit** leaves load-bearing prerequisites not already covered in the chapter opening (~first `\section`) or the **previous chapter's closing**. Omit the entire block when the chapter has no incoming edges in the combined reading DAG ([`metadata/concept-graph/chapter-reading-dependency.md`](metadata/concept-graph/chapter-reading-dependency.md)) or when the audit is empty. Place after `chapterthesis`, before `epistemicstatus`. The box title is supplied by the environment; do not repeat `\textbf{Prerequisites.}` in the body.
 
 Template:
 
 ```latex
 \begin{readingguide}
-\textbf{Prerequisites.}
 \begin{itemize}
   \item \textbf{Term name} --- one-line operational reminder; Chapter~\ref{ch:home-label}.
 \end{itemize}

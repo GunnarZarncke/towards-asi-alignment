@@ -102,7 +102,7 @@ dot -Tsvg metadata/concept-graph/chapter-informal-dependency.dot \
 dot -Tsvg metadata/concept-graph/chapter-reading-dependency.dot \
   -o metadata/concept-graph/chapter-reading-dependency.svg
 
-# Per-chapter readingguide authoring checklists (Before You Read boxes):
+# Per-chapter readingguide authoring checklists (Prerequisites boxes):
 python3 scripts/build_chapter_symbol_dependency.py --emit-reading-checklists
 # → metadata/concept-graph/chapter-reading-checklists/
 
