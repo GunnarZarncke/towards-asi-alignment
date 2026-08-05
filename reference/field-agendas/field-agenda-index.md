@@ -226,7 +226,7 @@ Conjecture pursued Cognitive Emulation (CoEm)—controllable LLM stacks framed a
 - **Contributes:** Treats coverage and specification completeness as the central open wall for formally guaranteed safe systems.
 - **Project separates:** This project emphasizes [grounding viability](/cards/grounding-viability/) and conservative grounding (no silent gaps) rather than demanding full completeness of the specification; [Deployment Safety](/cards/mb11-deployment-safety/) is treated as a cousin agenda, not an identical target.
 - **Manuscript hooks:** ch43, dynamical guarantee; App B MB9
-- **Links:** [GSAI paper](https://arxiv.org/abs/2405.06624); [Beneficial AI Foundation](https://www.beneficialaifoundation.org/); [LawZero](https://lawzero.org/en)
+- **Links:** [GSAI paper](https://arxiv.org/abs/2405.06624); [davidad](https://www.lesswrong.com/users/davidad); [GSAI mailing list](https://groups.google.com/g/guaranteed-safe-ai); [Beneficial AI Foundation](https://www.beneficialaifoundation.org/); [LawZero](https://lawzero.org/en)
 
 ### Google DeepMind (safety)
 

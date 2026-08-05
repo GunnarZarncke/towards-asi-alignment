@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **davidad profile + GSAI mailing list** — Add LW profile and Google Group links to GSAI field agenda card; YAML source + sync. | [2026-08-05-davidad-profile-mailing-list.md](2026-08-05-davidad-profile-mailing-list.md) |
 | 2026-08-05 | **Field agenda generated banners** — Mark sync outputs as generated (28 cards + index); keep YAML source; deferred TODO for build-time-only codegen. | [2026-08-05-field-agenda-generated-banners.md](2026-08-05-field-agenda-generated-banners.md) |
 | 2026-08-05 | **Subsumption-debate lean kind CI fix** — Astro build failed on invalid `leanNodes.kind: separationOnly`; fixed source body to `bridge`; ledger note in summary. | [2026-08-05-subsumption-debate-lean-kind-fix.md](2026-08-05-subsumption-debate-lean-kind-fix.md) |
 | 2026-08-05 | **Kosoy evidence merge** — Review Kosoy LTA/IB/PreDCA sources; merge PreDCA into single agenda row; upgrade matrix evidence; fix AF profile URLs. | [2026-08-05-kosoy-evidence-merge.md](2026-08-05-kosoy-evidence-merge.md) |

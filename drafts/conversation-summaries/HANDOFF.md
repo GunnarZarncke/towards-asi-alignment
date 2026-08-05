@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (field agenda generated banners).
+Last updated: 2026-08-05 (davidad profile + GSAI mailing list links).
 
 ---
 
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference + site (2026-08-05):** GSAI agenda card — davidad LW profile + GSAI Google Group mailing list links (YAML source + sync). Log: `2026-08-05-davidad-profile-mailing-list.md`.
 - **Reference + site (2026-08-05):** Field agenda generated outputs now carry `GENERATED FILE` banners (sync script + 28 cards + index); deferred TODO for build-time-only generation. Log: `2026-08-05-field-agenda-generated-banners.md`.
 - **Companion site / CI (2026-08-05):** Fixed Astro build — `subsumption-debate` leanNode used Lean ledger status `separationOnly` instead of schema kind; set to `bridge`, ledger note kept in summary. Log: `2026-08-05-subsumption-debate-lean-kind-fix.md`.
 - **Reference + companion site (2026-08-05):** Kosoy field agenda — merged PreDCA into infra-Bayesianism & LTA after literature review; upgraded evidence (ev 154–157); fixed AF profile URLs; 29 agenda cards. Log: `2026-08-05-kosoy-evidence-merge.md`.

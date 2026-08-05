@@ -10,6 +10,10 @@ bookBridges:
 external:
   - label: "GSAI paper"
     url: "https://arxiv.org/abs/2405.06624"
+  - label: "davidad"
+    url: "https://www.lesswrong.com/users/davidad"
+  - label: "GSAI mailing list"
+    url: "https://groups.google.com/g/guaranteed-safe-ai"
   - label: "Beneficial AI Foundation"
     url: "https://www.beneficialaifoundation.org/"
   - label: "LawZero"
@@ -42,6 +46,8 @@ related: []
 ## Links
 
 - [GSAI paper](https://arxiv.org/abs/2405.06624)
+- [davidad](https://www.lesswrong.com/users/davidad)
+- [GSAI mailing list](https://groups.google.com/g/guaranteed-safe-ai)
 - [Beneficial AI Foundation](https://www.beneficialaifoundation.org/)
 - [LawZero](https://lawzero.org/en)
 
