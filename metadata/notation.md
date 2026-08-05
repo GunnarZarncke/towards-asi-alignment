@@ -8,11 +8,11 @@ Cross-chapter reconciliation: `review/fix-plans-2026-06-22.md` §C. Formal predi
 
 **Status (2026-06-23):** Canonical target notation after §C reconciliation. Rows marked **⟳** in Home are not yet fully propagated in the manuscript.
 
-**Propagation done (2026-06-23):** C1 (ΔL sign, intro), C2 ($g_B$/$H_B$/$G_B$ + retire $T_{ij}$), C4/C16 ($C_{\text{raw}}$/$CCI$), C5 ($K$ vs $B$), C6 ($\eta_g$/$\eta_c$, $G_{\text{coord}}$/$\Omega_{\text{coord}}$), C7 ($U_H$, roman $V_t$; $U_S$), C8 ($F$, $k$), C10 ($C_X$), C11 ($\chi_{ij}(a)$), C15 (`\MI`).
+**Propagation done (2026-06-23):** C1 (ΔL sign, intro), C2 ($g_B$/$H_B$/$G_B$ + retire $T_{ij}$), C4/C16 ($C_{\mathrm{raw}}$/$CCI$), C5 ($K$ vs $B$), C6 ($\eta_g$/$\eta_c$, $G_{\text{coord}}$/$\Omega_{\text{coord}}$), C7 ($U_H$, roman $V_t$; $U_S$), C8 ($F$, $k$), C10 ($C_X$), C11 ($\chi_{ij}(a)$), C15 (`\MI`).
 
-**Still pending:** C12 pivotal-process basins — notation rows added (ch38); propagate $\mathbb{B}_{\mathrm{race}}$ / $\mathbb{B}_{\mathrm{certified}}$ in synced concept cards; $C_H$ vs $C^H_t$ convention; $\mathcal V$ (ch19 value-representation set) vs $V_t$ tuple.
+**Still pending:** C12 pivotal-process basins — notation rows added (ch38); **operationalize** $\mathbb{B}_{\mathrm{race}}$ / $\mathbb{B}_{\mathrm{certified}}$ beyond loose set descriptions (percolation/$\tilde{\kappa}$, $\mu_E$, basin-stability predicates; see `metadata/TODO.md`); propagate in synced concept cards; $C_H$ vs $C^H_t$ convention; $\mathcal V$ (ch19 value-representation set) vs $V_t$ tuple.
 
-**§C16 terminology:** *capacity* = $C_{\text{raw}}$; *integrity* = vector/status $CCI$; scalar projections should be marked $CCI_\lambda$. Retired: $C_{\text{corr}}$ (except ch05 $C_{\text{corr}}^{\text{society}}$). Goodharting lowers integrity via $M$ or invalidates grounding; residual ontology translation loss is \(O_{\mathrm{trans}}\).
+**§C16 terminology:** *capacity* = $C_{\mathrm{raw}}$; *integrity* = vector/status $CCI$; scalar projections should be marked $CCI_\lambda$. Retired: $C_{\text{corr}}$ (except ch05 $C_{\text{corr}}^{\text{society}}$). Goodharting lowers integrity via $M$ or invalidates grounding; residual ontology translation loss is \(O_{\mathrm{trans}}\).
 
 **Seven conserved successor properties (ch48):** boundary closure, memory lineage, bundle response geometry, bearer-map continuity, correction-channel capacity, transparency policy, control-locus continuity — defined in ch48; ch48 groups them for audit.
 
@@ -45,6 +45,8 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $S$ | Structure / complexity term in $K$ (distinct from $S_t$, $S_X$) | ch11 |
 | $\eta_g$ | Growth efficiency | ch13 |
 | $\eta_c$ | Coordination efficiency | ch13 |
+| $B_i$ | Local competence of component $i$ (distinct from value-bundle coordinate $B_i$ in ch16) | ch13 |
+| $K_{\mathrm{coll}}$ | Effective collective competence | ch13 |
 | $G_{\text{coord}}$ | Collective coordination gain | ch13 |
 | $\Omega_{\text{coord}}$ | Collective coordination loss | ch13 |
 | $S_X$ | Residual surprise across boundary $X$ | ch11 |
@@ -99,7 +101,7 @@ Tables below are parsed into `metadata/notation-index.tex` for Appendix A. Keep 
 | $G_t$ | Correcting agent at time $t$ | ch25 |
 | $\mathcal{H}_t$ | Handle set controlled by $G_t$ | ch25 |
 | $W_t\to O_t\to J_t\to D_t\to C_t\to U_{t+1}\to A_{t+k}$ | Correction trace induced by controlled handles | ch25 |
-| $C_{\text{raw}}$ | Weakest required correction case after bottlenecking over certified correction traces | ch25 |
+| $C_{\mathrm{raw}}$ | Weakest required correction case after bottlenecking over certified correction traces | ch25 |
 | $CCI$ | Correction-channel integrity as a vector/status certificate with validity and per-coordinate thresholds | ch26 |
 | $CCI_\lambda$ | Scalar projection of the CCI vector for exposition, not the certification object | ch26 |
 | $\mathrm{Control}(A)$ | Effective actuator control capacity | ch11 |

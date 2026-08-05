@@ -84,7 +84,7 @@ It applies to neural systems, software systems, firms, markets, states, and huma
 
 Let a bounded process $i$ have a local competence measure
 \begin{equation}
-B_i
+\symboldef[B_i]{B_i}
 =
 I_{\mathrm{pred}}^{(i)}
 +
@@ -99,6 +99,7 @@ where $I_{\mathrm{pred}}^{(i)}$ is predictive information, $I_{\mathrm{ctrl}}^{(
 This expression should not be read as a complete theory of intelligence.
 It is a bookkeeping device in the spirit of the project's blanket-information measure of competence \autocite{zarncke2025biq,zarncke2025uad}.
 It says that competence consists in useful prediction and useful control, discounted by storage cost and unexplained surprise.
+In the collective formulas below, write $K_i := B_i$ for each component~$i$.
 
 If there are $n$ such processes, the tempting aggregate is
 \begin{equation}
@@ -119,13 +120,13 @@ And they do not automatically preserve the truthfulness of signals when those si
 
 Thus the effective collective competence is better written as
 \begin{equation}
-K_{\mathrm{coll}}
+\symboldef[K_coll]{K_{\mathrm{coll}}}
 =
-\sum_{i=1}^{n} \omega_i K_i
+\sum_{i=1}^{n} \omega_i \symbolref[B_i]{B_i}
 +
-G_{\mathrm{coord}}
+\symboldef[G_coord]{G_{\mathrm{coord}}}
 -
-\Omega_{\mathrm{coord}},
+\symboldef[Omega_coord]{\Omega_{\mathrm{coord}}},
 \label{eq:collective-competence}
 \end{equation}
 where $\omega_i$ weights how much component $i$'s competence is actually connected to system-level action, $G_{\mathrm{coord}}$ is the gain from coordination, and $\Omega_{\mathrm{coord}}$ is the loss from coordination overhead and distortion.
@@ -138,7 +139,7 @@ This gives a first definition.
 \paragraph{Definition.}
 A \emph{coordination bottleneck} exists when an increase in local competence fails to increase, or even decreases, effective collective competence:
 \begin{equation}
-\frac{\partial K_{\mathrm{coll}}}{\partial K_i} \leq 0
+\frac{\partial \symbolref[K_coll]{K_{\mathrm{coll}}}}{\partial \symbolref[B_i]{B_i}} \leq 0
 \quad
 \text{for some relevant component } i .
 \label{eq:coordination-bottleneck}
@@ -310,7 +311,11 @@ A reversible mistake can be corrected after better information arrives.
 An irreversible mistake cannot.
 
 Let $R(a)$ be the reversibility of action $a$, with $R(a)=1$ for fully reversible actions and $R(a)=0$ for irreversible actions.
-A safety-relevant system should couple low reversibility to high correction capacity: $R(a) \downarrow \Rightarrow C_{\mathrm{raw}}(a) \uparrow$.
+A safety-relevant system should couple low reversibility to high correction capacity:
+\begin{equation}
+R(a) \downarrow \;\Longrightarrow\; \symbolref[C_raw]{C_{\mathrm{raw}}}(a) \uparrow.
+\label{eq:reversibility-correction-coupling-ch13}
+\end{equation}
 
 If a system allows low-reversibility actions through low-capacity correction channels, it has a structural alignment defect.
 

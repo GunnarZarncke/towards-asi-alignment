@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **Eq-chain island fixes** — K_coll spine; ICI order; 𝓡_i/K_X bridge; CCI_λ extractor; SelfControlGap; basins TODO; 5 graph components. | [2026-08-05-eq-chain-island-fixes.md](2026-08-05-eq-chain-island-fixes.md) |
 | 2026-08-05 | **Eq-chain graph cleanup** — Optional `--cooccur`; C_t/θ disambiguation; layout spacing; `\symboldef`/`\symbolref` integration. | [2026-08-05-eq-chain-graph-cleanup.md](2026-08-05-eq-chain-graph-cleanup.md) |
 | 2026-08-05 | **Eq-chain editorial placement** — Chapter moves, basin notation, Control/D_G/Omega_Q, CCI split, notation homes, site spines. | [2026-08-05-eq-chain-editorial-placement.md](2026-08-05-eq-chain-editorial-placement.md) |
 | 2026-08-05 | **Equation-chain node labels** — Fix visible `\n`; add ch/line/eq label on eq and sym nodes for source lookup. | [2026-08-05-equation-chain-node-labels.md](2026-08-05-equation-chain-node-labels.md) |

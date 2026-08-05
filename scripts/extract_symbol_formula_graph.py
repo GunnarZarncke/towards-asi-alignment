@@ -652,6 +652,40 @@ def _tuple_list_defined(rhs: str) -> set[str]:
     return out
 
 
+def _symboldef_canonical_ids(fragment: str) -> set[str]:
+    """Canonical ids from ``\\symboldef[...]{...}`` in a math fragment."""
+    ids: set[str] = set()
+    for explicit, math_raw, _pos in _iter_symboldefs(fragment):
+        cid = canonical_symbol_id(explicit, math_raw)
+        if cid:
+            ids.add(normalize_chain_sym_id(cid))
+    return ids
+
+
+def _apply_symboldef_lhs_overrides(line_defined: set[str], lhs: str) -> set[str]:
+    """Prefer ``\\symboldef`` canonical ids on the LHS over heuristic subscript tokens."""
+    symdef_ids = _symboldef_canonical_ids(lhs)
+    if not symdef_ids:
+        return line_defined
+    out = line_defined | symdef_ids
+    for sid in symdef_ids:
+        if "_" in sid:
+            out.discard(sid.split("_", 1)[1])
+        base = sid.split("_", 1)[0]
+        out = {s for s in out if not (s != sid and s.startswith(f"{base}_"))}
+    return out
+
+
+def _symbolref_canonical_ids(fragment: str) -> set[str]:
+    """Canonical ids from ``\\symbolref[...]{...}`` in a math fragment."""
+    ids: set[str] = set()
+    for explicit, math_raw, _pos in _iter_symbol_markers(fragment, SYMBOLREF_CMD):
+        cid = canonical_symbol_id(explicit, math_raw)
+        if cid:
+            ids.add(normalize_chain_sym_id(cid))
+    return ids
+
+
 def split_defined_used_symbols(block: str) -> tuple[set[str], set[str]]:
     """Split display-math symbols into defined (LHS of ``='') vs used (RHS / no ``='')."""
     body = _strip_math_env(block)
@@ -678,6 +712,7 @@ def split_defined_used_symbols(block: str) -> tuple[set[str], set[str]]:
             lhs, rhs = eq_parts
 
         line_defined = extract_symbols_from_math(lhs) if lhs else set()
+        line_defined = _apply_symboldef_lhs_overrides(line_defined, lhs)
         line_used = extract_symbols_from_math(rhs) if rhs else set()
         if rhs:
             line_defined |= _tuple_list_defined(rhs)
@@ -943,6 +978,7 @@ def parse_chapter(
         refs = set(EQREF.findall(block))
         text_refs = set(TEXTREF.findall(block))
         defined, used = split_defined_used_symbols(block)
+        used |= _symbolref_canonical_ids(block)
         syms = defined | used
 
         formulas.append(

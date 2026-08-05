@@ -2,13 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (eq-chain graph cleanup).
+Last updated: 2026-08-05 (eq-chain island fixes).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Eq-chain editorial** — chapter moves, basin notation, C_t/θ disambiguation, co-occur optional shipped; see `drafts/editorial-guidance-eq-chain-placement.md`, `2026-08-05-eq-chain-editorial-placement.md`, `2026-08-05-eq-chain-graph-cleanup.md`. Remaining: concept bodies / open-problems for old `\mathcal{B}_{\text{race}}` strings; latent `p_\theta` vs MI `\theta` hub collision.
+- **Eq-chain editorial** — chapter moves, basin notation, C_t/θ disambiguation shipped; **island pass (2026-08-05):** K_coll, ICI order, 𝓡_i/K_X bridge, CCI_λ extractor, SelfControlGap ref; **5 graph components** (main ~199 nodes). Remaining: **C12 basin operationalization** (loose set defs in ch38); ICI/basins small islands; concept bodies for old `\mathcal{B}_{\text{race}}` strings; latent `p_\theta` vs MI `\theta` hub collision. Logs: `2026-08-05-eq-chain-island-fixes.md`, `2026-08-05-eq-chain-graph-cleanup.md`, `drafts/editorial-guidance-eq-chain-placement.md`.
 
 - **`\symbolref` (partial)** — use-site markers shipped for C_t tuple sites; more unlabeled blocks (e.g. RiskGap) still open. Log: `2026-08-05-symboldef-macro.md`.
 
@@ -38,6 +38,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Eq-chain island fixes (2026-08-05):** K_coll spine (ch13); ICI def-before-κ (ch35); 𝓡_i/K_X bridge (ch09/ch11); CCI_λ + symbolref-in-eq extractor fixes; SelfControlGap on `eq:risk-gap`; C_raw `\mathrm{raw}` pass; basins TODO (ch38). Log: `2026-08-05-eq-chain-island-fixes.md`.
 - **Eq-chain graph cleanup (2026-08-05):** Optional `--cooccur`; layout ranksep/nodesep; canonical `C_t` (ch25 `\symboldef`, `\mathcal{C}_t` boundary); `\theta_{\mathrm{reach}}` vs MI `\theta`. Log: `2026-08-05-eq-chain-graph-cleanup.md`.
 - **Eq-chain editorial (2026-08-05):** Extractor subscript basins; Control/D_G/Omega_Q placement; ch08→ch09 responsibility; ch10→ch40 D_G; ch26 CCI split; notation homes; site dependency spines. Log: `2026-08-05-eq-chain-editorial-placement.md`.
 - **Metadata graphs (2026-08-05):** `\symboldef` macro + eq-chain integration — opt-in definition anchors (`symdef:chNN:line` note nodes); pilot marks for CCI, Control, epsilon, mu_E, RiskGap. Log: `2026-08-05-symboldef-macro.md`.

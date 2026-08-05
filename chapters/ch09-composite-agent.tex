@@ -482,7 +482,7 @@ When agents grow, split, and merge (Chapter~\ref{ch:grow-split-merge}), a \emph{
 Composite capability is measured at the blanket boundary by $K_X$ (Chapter~\ref{ch:capability-without-task-ontology}, Equation~\eqref{eq:biq}).
 For a component $i$, define responsibility capacity:
 \begin{equation}
-\mathcal{R}_i
+\symboldef[mathcal_R_i]{\mathcal{R}_i}
 =
 \MI(I^i_t;A^H_{t+k})
 +
@@ -495,9 +495,9 @@ For a component $i$, define responsibility capacity:
 \end{equation}
 A responsibility gap exists when:
 \begin{equation}
-\max_i \mathcal{R}_i < \theta_R
+\max_i \symbolref[mathcal_R_i]{\mathcal{R}_i} < \theta_R
 \quad\text{while}\quad
-K_X(A^H)>\theta_K
+\symbolref[K_X]{K_X}(A^H)>\theta_K
 \quad\text{and}\quad
 C_{\text{act}}(A^H)>\theta_A.
 \label{eq:responsibility-gap}

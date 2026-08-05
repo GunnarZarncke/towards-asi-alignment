@@ -224,7 +224,7 @@ High residual surprise means that the system is not merely uncertain in a calibr
 
 Putting the terms together gives a boundary-information competence measure:
 \begin{equation}
-K_X
+\symboldef[K_X]{K_X}
 =
 I_{\mathrm{pred}}^X
 +
@@ -262,6 +262,15 @@ Call this \emph{blanket-information competence}.
 The name is less important than the decomposition.
 
 It says that a capable system is one whose inside helps predict what reaches it, whose actions help determine what happens outside it, whose internal state is not gratuitously bloated, and whose boundary is not flooded by unmodeled surprise.
+
+At a composite blanket boundary $A^H$, the same measure applies (Chapter~\ref{ch:composite-agent}, Section~\ref{sec:composite-responsibility}).
+A \emph{responsibility gap} opens when no component's responsibility capacity keeps pace with composite competence:
+\begin{equation}
+\max_i \symbolref[mathcal_R_i]{\mathcal{R}_i} < \theta_R
+\quad\text{while}\quad
+\symbolref[K_X]{K_X}(A^H) > \theta_K.
+\label{eq:responsibility-gap-bridge-ch11}
+\end{equation}
 
 \section{Why This Is Task-Agnostic but Not Ontology-Free}
 \label{sec:task-agnostic-not-ontology-free}
