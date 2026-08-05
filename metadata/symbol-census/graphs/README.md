@@ -134,6 +134,7 @@ single screen-sized view). To regenerate after editing chapters or `formal/`:
 
 ```bash
 # Equation chains only (eq defines sym, sym uses eq — start here for a clean view):
+# Node labels: slug, chNN · Lline, eq:label (equations); sym + def eq + line (symbols).
 dot -Tsvg metadata/symbol-census/graphs/equation-chain-graph.dot \
   -o metadata/symbol-census/graphs/equation-chain-graph.svg
 

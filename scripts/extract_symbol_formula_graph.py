@@ -695,7 +695,42 @@ def parse_chapter(
 
 
 def dot_escape(s: str) -> str:
+    """Escape for single-line Graphviz attributes (no line breaks)."""
     return s.replace("\\", "\\\\").replace('"', '\\"').replace("\n", " ")
+
+
+def dot_label(s: str) -> str:
+    """Escape a multi-line Graphviz node label (newlines render as line breaks)."""
+    if not s:
+        return ""
+    return "\\n".join(
+        line.replace("\\", "\\\\").replace('"', '\\"') for line in s.split("\n")
+    )
+
+
+def _eq_chain_eq_label(f: Formula) -> str:
+    slug = f.fid[3:] if f.fid.startswith("eq:") else f.fid
+    ch_num = f.chapter.replace("ch", "")
+    return f"{slug}\nch{ch_num} · L{f.line_start}\n{f.fid}"
+
+
+def _eq_chain_sym_label(sym: str, core: EqChainCore) -> str:
+    order = core.first_def_order.get(sym)
+    if not order:
+        return sym
+    _ch, line, fid = order
+    slug = fid[3:] if fid.startswith("eq:") else fid
+    ch_num = _ch.replace("ch", "")
+    return f"{sym}\ndef {slug}\nch{ch_num} · L{line}"
+
+
+def _eq_chain_chapter_label(ch: str, core: EqChainCore, anchor_fid: str | None) -> str:
+    num = ch.replace("ch", "")
+    if not anchor_fid or anchor_fid not in core.by_fid:
+        return f"ch{num}"
+    f = core.by_fid[anchor_fid]
+    slug = anchor_fid[3:] if anchor_fid.startswith("eq:") else anchor_fid
+    return f"ch{num}\nanchor {slug}\nL{f.line_start} · {f.chapter_file}"
 
 
 def resolve_text_ref(ref: str, ch_owner: dict[str, str], sec_owner: dict[str, str]) -> str | None:
@@ -1015,17 +1050,15 @@ def _append_eq_chain_nodes_edges(
     """Emit eq/sym nodes, def/use edges, and within-chapter spine."""
     for fid in sorted(core.kept_eqs, key=lambda e: _formula_order_key(core.by_fid[e])):
         f = core.by_fid[fid]
-        label = fid[3:].replace("-", "\\n")
-        ch = f.chapter.replace("ch", "")
         lines.append(
             f'  "{fid}" [shape=box, style=filled, fillcolor="#d1fae5", '
-            f'label="{dot_escape(label)}\\n({ch})"];'
+            f'label="{dot_label(_eq_chain_eq_label(f))}"];'
         )
 
     for sym in sorted(core.chain_syms, key=lambda s: s.lower()):
         lines.append(
             f'  "sym:{sym}" [shape=ellipse, style=filled, fillcolor="#dbeafe", '
-            f'label="{dot_escape(sym)}"];'
+            f'label="{dot_label(_eq_chain_sym_label(sym, core))}"];'
         )
 
     lines.append("")
@@ -1131,10 +1164,9 @@ def build_eq_chain_chapters_dot(all_formulas: list[Formula]) -> str:
     ]
 
     for ch in sorted(ch_anchors, key=lambda c: int(c[2:]) if c[2:].isdigit() else 999):
-        num = ch.replace("ch", "")
         lines.append(
             f'  "unit:{ch}" [shape=folder, style=filled, fillcolor="#fef3c7", '
-            f'label="ch{dot_escape(num)}"];'
+            f'label="{dot_label(_eq_chain_chapter_label(ch, core, ch_anchors.get(ch)))}"];'
         )
 
     n_def, n_use, n_spine = _append_eq_chain_nodes_edges(lines, core)
