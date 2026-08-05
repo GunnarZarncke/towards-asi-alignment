@@ -27,4 +27,4 @@ User asked to keep rolled-out bridge-audit checklists in attic after reading-gui
 
 ## Commits
 
-- Pending this session.
+- `0f22a4db` Archive bridge-audit checklists and clarify build paths
