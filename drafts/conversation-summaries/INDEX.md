@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **Chapter reading guide Phase 0** — `readingguide` env, intro/INSTRUCTIONS, site convert, checklist script. | [2026-08-05-chapter-reading-guide-phase0.md](2026-08-05-chapter-reading-guide-phase0.md) |
 | 2026-08-05 | **Chapter reading graph on site** — Clickable combined DAG; guided-paths link; lean build + label newline fixes. | [2026-08-05-chapter-reading-graph-site.md](2026-08-05-chapter-reading-graph-site.md) |
 | 2026-08-05 | **Informal + combined reading DAG** — `chapter-informal-edges.yml`; symbol/informal/combined modes; 48/48 chapters covered. | [2026-08-05-chapter-informal-reading-dag.md](2026-08-05-chapter-informal-reading-dag.md) |
 | 2026-08-05 | **Chapter symbol dependency DAG** — Vertical eq-chain (TB); chapter prereq graph from bridge symbols; transitive thinning (69→26 edges); reading-path layers. | [2026-08-05-chapter-symbol-dependency-dag.md](2026-08-05-chapter-symbol-dependency-dag.md) |

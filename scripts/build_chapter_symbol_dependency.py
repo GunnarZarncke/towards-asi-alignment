@@ -14,6 +14,7 @@ Usage:
   python3 scripts/build_chapter_symbol_dependency.py
   python3 scripts/build_chapter_symbol_dependency.py --mode combined
   python3 scripts/build_chapter_symbol_dependency.py --mode informal --rankdir LR
+  python3 scripts/build_chapter_symbol_dependency.py --emit-reading-checklists
 """
 
 from __future__ import annotations
@@ -558,6 +559,302 @@ def build_from_manuscript(
     return dot_path, md_path
 
 
+CHECKLIST_DIR = OUT_DIR / "chapter-reading-checklists"
+NOTATION_MD = ROOT / "metadata" / "notation.md"
+CONCEPTS_YML = ROOT / "metadata" / "concepts.yml"
+CHAPTERS_DIR = ROOT / "chapters"
+
+
+def load_chapter_labels() -> dict[str, str]:
+    labels: dict[str, str] = {}
+    for path in sorted(CHAPTERS_DIR.glob("ch*.tex")):
+        ch = path.name.split("-")[0]
+        m = re.search(r"\\label\{(ch:[^}]+)\}", path.read_text(encoding="utf-8"))
+        if m:
+            labels[ch] = m.group(1)
+    return labels
+
+
+def chapter_tex_path(ch: str) -> Path | None:
+    matches = sorted(CHAPTERS_DIR.glob(f"{ch}-*.tex"))
+    return matches[0] if matches else None
+
+
+def parse_notation_glosses() -> dict[str, tuple[str, str]]:
+    """Map normalized symbol key -> (definition, home chNN)."""
+    if not NOTATION_MD.exists():
+        return {}
+    glosses: dict[str, tuple[str, str]] = {}
+    for line in NOTATION_MD.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("| `$") and not line.startswith("| $\\"):
+            continue
+        parts = [p.strip() for p in line.split("|")]
+        if len(parts) < 4:
+            continue
+        sym_raw = parts[1].strip("`")
+        sym_raw = sym_raw.removeprefix("$").removesuffix("$").strip()
+        definition = parts[2]
+        home = parts[3].strip()
+        if not home.startswith("ch"):
+            continue
+        key = re.sub(r"\\[a-zA-Z]+(\{[^}]*\})?", "", sym_raw)
+        key = key.replace("{", "").replace("}", "").replace("\\", "").strip()
+        for alias in (sym_raw, key, key.replace("_", "")):
+            if alias:
+                glosses[alias.lower()] = (definition, home)
+    return glosses
+
+
+def load_concept_summaries() -> dict[str, str]:
+    if not CONCEPTS_YML.exists():
+        return {}
+    try:
+        import yaml
+    except ImportError as exc:
+        raise SystemExit("PyYAML required: pip install pyyaml") from exc
+
+    raw = yaml.safe_load(CONCEPTS_YML.read_text(encoding="utf-8"))
+    out: dict[str, str] = {}
+    for item in raw.get("concepts") or []:
+        slug = item.get("slug")
+        summary = item.get("summary")
+        if slug and summary:
+            out[str(slug)] = str(summary).strip()
+    return out
+
+
+def gloss_for_tag(tag: str, notation: dict[str, tuple[str, str]], concepts: dict[str, str]) -> str:
+    if tag in concepts:
+        return concepts[tag]
+    low = tag.lower()
+    if low in concepts:
+        return concepts[low]
+    for key, (definition, _home) in notation.items():
+        if key == low or key.replace("_", "") == low.replace("_", ""):
+            return definition
+    return ""
+
+
+def symbols_home_defined_in(chapter: str, core) -> list[str]:
+    syms: list[str] = []
+    for sym, home in core.first_def_chapter.items():
+        if home == chapter and sym in core.chain_syms:
+            syms.append(sym)
+    return sorted(set(syms), key=str.lower)
+
+
+def extract_opening_prose(ch: str, *, max_chars: int = 9000) -> str:
+    path = chapter_tex_path(ch)
+    if not path:
+        return ""
+    tex = path.read_text(encoding="utf-8")
+    start = 0
+    m = re.search(r"\\begin\{refsection\}", tex)
+    if m:
+        start = m.end()
+    sec = re.search(r"\\section\{", tex[start:])
+    if not sec:
+        return tex[start : start + max_chars]
+    sec_start = start + sec.start()
+    rest = tex[sec_start + 10 :]
+    sec2 = re.search(r"\\section\{", rest)
+    end = sec_start + 10 + sec2.start() if sec2 else sec_start + max_chars
+    return tex[sec_start : min(end, sec_start + max_chars)]
+
+
+def extract_prior_closing(ch: str, titles: dict[str, str], *, tail_chars: int = 2800) -> str:
+    ordered = chapters_in_book_order(titles)
+    if ch not in ordered:
+        return ""
+    idx = ordered.index(ch)
+    if idx == 0:
+        return ""
+    prior = ordered[idx - 1]
+    path = chapter_tex_path(prior)
+    if not path:
+        return ""
+    tex = path.read_text(encoding="utf-8")
+    m = re.search(r"\\end\{refsection\}", tex)
+    end = m.start() if m else len(tex)
+    return tex[max(0, end - tail_chars) : end]
+
+
+def edge_likely_bridged(
+    opening: str,
+    prior_closing: str,
+    edge: ReadingDepEdge,
+    provider_label: str,
+) -> bool:
+    hay = opening + "\n" + prior_closing
+    hay_lower = hay.lower()
+    if provider_label and f"\\ref{{{provider_label}}}" in hay:
+        return True
+    for tag in edge.tags:
+        t = tag.lower()
+        if t in hay_lower:
+            return True
+        phrase = t.replace("-", " ")
+        if phrase in hay_lower:
+            return True
+        if t.replace("_", "") in hay_lower.replace("_", ""):
+            return True
+    return False
+
+
+def incoming_by_consumer(
+    edges: dict[tuple[str, str], ReadingDepEdge],
+) -> dict[str, list[tuple[str, ReadingDepEdge]]]:
+    inc: dict[str, list[tuple[str, ReadingDepEdge]]] = defaultdict(list)
+    for (prov, cons), edge in edges.items():
+        inc[cons].append((prov, edge))
+    for cons in inc:
+        inc[cons].sort(key=lambda x: ch_sort_key(x[0]))
+    return inc
+
+
+def build_reading_checklist_md(
+    ch: str,
+    title: str,
+    *,
+    layer: int | None,
+    incoming: list[tuple[str, ReadingDepEdge]],
+    defines: list[str],
+    ch_labels: dict[str, str],
+    titles: dict[str, str],
+    notation: dict[str, tuple[str, str]],
+    concepts: dict[str, str],
+    opening: str,
+    prior_closing: str,
+) -> str:
+    lines = [
+        f"# Reading guide checklist — {ch}",
+        "",
+        f"**{title}**",
+        "",
+        f"Topological layer: {layer if layer is not None else '?'}. "
+        f"Direct incoming edges: {len(incoming)}.",
+        "",
+        "Bridge audit: read opening (~first section) + prior chapter closing; "
+        "subtract items flagged **likely bridged** below. "
+        "If nothing remains, omit `readingguide` entirely.",
+        "",
+    ]
+    if not incoming:
+        lines.extend(
+            [
+                "## Prerequisites",
+                "",
+                "No direct incoming edges — **omit `readingguide` block**.",
+                "",
+            ]
+        )
+    else:
+        lines.extend(["## Direct prerequisites (post-audit candidates)", ""])
+        for prov, edge in incoming:
+            prov_title = titles.get(prov, prov)
+            prov_label = ch_labels.get(prov, "")
+            bridged = edge_likely_bridged(opening, prior_closing, edge, prov_label)
+            flag = " **likely bridged**" if bridged else ""
+            tag_bits = []
+            for tag in sorted(edge.tags):
+                gloss = gloss_for_tag(tag, notation, concepts)
+                if gloss:
+                    tag_bits.append(f"`{tag}` — {gloss}")
+                else:
+                    tag_bits.append(f"`{tag}`")
+            lines.append(f"- **{prov}** ({prov_title}) [{edge.kind}]{flag}")
+            for bit in tag_bits:
+                lines.append(f"  - {bit}")
+            if prov_label:
+                lines.append(f"  - Home ref: `\\ref{{{prov_label}}}`")
+        lines.append("")
+
+    if defines:
+        lines.extend(
+            [
+                "## Defines here (names only, if block included)",
+                "",
+                ", ".join(f"`{s}`" for s in defines),
+                "",
+            ]
+        )
+
+    lines.extend(
+        [
+            "## Draft `readingguide` (edit after audit)",
+            "",
+            "```latex",
+            "\\begin{readingguide}",
+            "\\textbf{Prerequisites.}",
+            "\\begin{itemize}",
+            "  \\item \\textbf{...} --- ...; Chapter~\\ref{ch:...}.",
+            "\\end{itemize}",
+            "",
+            "\\textbf{Defines here:} ...",
+            "\\end{readingguide}",
+            "```",
+            "",
+            "Regenerate: `python3 scripts/build_chapter_symbol_dependency.py --emit-reading-checklists`",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def emit_reading_checklists() -> Path:
+    titles = load_chapter_titles()
+    ch_labels = load_chapter_labels()
+    edges = build_edges_for_mode("combined")
+    incoming_map = incoming_by_consumer(edges)
+    layers, _cycles = topological_layers(set(titles.keys()), edges)
+    layer_of = {ch: i + 1 for i, layer in enumerate(layers) for ch in layer}
+
+    paths = sorted(CHAPTERS_DIR.glob("ch*.tex"))
+    all_formulas: list = []
+    for p in paths:
+        all_formulas.extend(parse_chapter(p))
+    core = _compute_eq_chain_core(
+        all_formulas, parse_symboldefs(paths), parse_symbolrefs(paths)
+    )
+
+    notation = parse_notation_glosses()
+    concepts = load_concept_summaries()
+
+    CHECKLIST_DIR.mkdir(parents=True, exist_ok=True)
+    for ch in chapters_in_book_order(titles):
+        inc = incoming_map.get(ch, [])
+        defines = symbols_home_defined_in(ch, core)
+        opening = extract_opening_prose(ch)
+        prior_closing = extract_prior_closing(ch, titles)
+        md = build_reading_checklist_md(
+            ch,
+            titles.get(ch, ch),
+            layer=layer_of.get(ch),
+            incoming=inc,
+            defines=defines,
+            ch_labels=ch_labels,
+            titles=titles,
+            notation=notation,
+            concepts=concepts,
+            opening=opening,
+            prior_closing=prior_closing,
+        )
+        (CHECKLIST_DIR / f"{ch}.md").write_text(md, encoding="utf-8")
+
+    index_lines = [
+        "# Chapter reading guide checklists",
+        "",
+        "Advisory drafts for hand-authored `readingguide` blocks. "
+        "Regenerate: `python3 scripts/build_chapter_symbol_dependency.py --emit-reading-checklists`.",
+        "",
+    ]
+    for ch in chapters_in_book_order(titles):
+        n = len(incoming_map.get(ch, []))
+        index_lines.append(f"- [{ch}]({ch}.md) ({titles.get(ch, ch)}) — {n} direct edge(s)")
+    (CHECKLIST_DIR / "README.md").write_text("\n".join(index_lines) + "\n", encoding="utf-8")
+    return CHECKLIST_DIR
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -577,7 +874,17 @@ def main() -> None:
         action="store_true",
         help="Write symbol, informal, and combined outputs",
     )
+    parser.add_argument(
+        "--emit-reading-checklists",
+        action="store_true",
+        help="Write metadata/concept-graph/chapter-reading-checklists/*.md",
+    )
     args = parser.parse_args()
+
+    if args.emit_reading_checklists:
+        out = emit_reading_checklists()
+        print(f"Wrote reading checklists to {out}")
+        return
 
     modes = MODES if args.all_modes else (args.mode,)
     last: tuple[Path, Path] | None = None

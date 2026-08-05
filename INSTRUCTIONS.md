@@ -180,6 +180,23 @@ Every chapter must include:
 6. A summary (roughly 5–8 bullets or equivalent).
 7. BibLaTeX citations; per-chapter `refsection` + `\printbibliography[heading=subbibliography,title={Chapter References}]`.
 
+**Optional `readingguide` (Before You Read):** include only when a **bridge audit** leaves load-bearing prerequisites not already covered in the chapter opening (~first `\section`) or the **previous chapter's closing**. Omit the entire block when the chapter has no incoming edges in the combined reading DAG ([`metadata/concept-graph/chapter-reading-dependency.md`](metadata/concept-graph/chapter-reading-dependency.md)) or when the audit is empty. Place after `chapterthesis`, before `epistemicstatus`.
+
+Template:
+
+```latex
+\begin{readingguide}
+\textbf{Prerequisites.}
+\begin{itemize}
+  \item \textbf{Term name} --- one-line operational reminder; Chapter~\ref{ch:home-label}.
+\end{itemize}
+
+\textbf{Defines here:} $Sym$, plain term name, another symbol.
+\end{readingguide}
+```
+
+Rules: one list entry per remaining prior (name + reminder + `\ref`); do not repeat nouns the opening already orients; no optional prereqs; **Defines here** is names only (no glosses); no companion-site URLs in LaTeX. Draft from `python3 scripts/build_chapter_symbol_dependency.py --emit-reading-checklists`.
+
 **Shape A (new stub):** optional scaffold sections (Why This Matters, Plain-Language Model, Formal Model, Worked Example, …).
 
 **Shape B (integrated draft):** keep native narrative structure; do not force Shape A splits. Still satisfy all required elements above.
