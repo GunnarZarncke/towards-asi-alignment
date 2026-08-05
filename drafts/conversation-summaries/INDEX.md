@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **Chapter symbol dependency DAG** — Vertical eq-chain (TB); chapter prereq graph from bridge symbols; transitive thinning (69→26 edges); reading-path layers. | [2026-08-05-chapter-symbol-dependency-dag.md](2026-08-05-chapter-symbol-dependency-dag.md) |
 | 2026-08-05 | **Eq-chain island fixes + spine** — K_coll, κ→κ̃+ICI, ε/UAD, SelfControlGap bridge; 2 graph components. | [2026-08-05-eq-chain-island-fixes.md](2026-08-05-eq-chain-island-fixes.md) |
 | 2026-08-05 | **Eq-chain graph cleanup** — Optional `--cooccur`; C_t/θ disambiguation; layout spacing; `\symboldef`/`\symbolref` integration. | [2026-08-05-eq-chain-graph-cleanup.md](2026-08-05-eq-chain-graph-cleanup.md) |
 | 2026-08-05 | **Eq-chain editorial placement** — Chapter moves, basin notation, Control/D_G/Omega_Q, CCI split, notation homes, site spines. | [2026-08-05-eq-chain-editorial-placement.md](2026-08-05-eq-chain-editorial-placement.md) |

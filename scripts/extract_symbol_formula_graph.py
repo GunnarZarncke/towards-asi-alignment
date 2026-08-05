@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import sys
 import textwrap
 from collections import defaultdict
 from dataclasses import dataclass, field
@@ -1342,6 +1343,21 @@ EQ_CHAIN_SYM_COOCCUR_ATTRS = (
 EQ_CHAIN_GRAPH_SEP = "+24"  # node margin for dot overlap=prism (was +20; +20% hspace Aug 2026)
 EQ_CHAIN_GRAPH_RANKSEP = "1.4"  # rankdir=LR: horizontal space between ranks
 EQ_CHAIN_GRAPH_NODESEP = "0.45"  # rankdir=LR: vertical space within a rank
+EQ_CHAIN_GRAPH_RANKSEP_TB = "1.2"  # rankdir=TB: vertical space between ranks
+EQ_CHAIN_GRAPH_NODESEP_TB = "0.55"  # rankdir=TB: horizontal space within a rank
+
+
+def _eq_chain_graph_attrs(rankdir: str) -> str:
+    """Graphviz ``graph [...]`` attribute string for eq-chain layout."""
+    if rankdir.upper() == "TB":
+        return (
+            f'  graph [rankdir=TB, fontsize=10, overlap=prism, sep="{EQ_CHAIN_GRAPH_SEP}", '
+            f"ranksep={EQ_CHAIN_GRAPH_RANKSEP_TB}, nodesep={EQ_CHAIN_GRAPH_NODESEP_TB},"
+        )
+    return (
+        f'  graph [rankdir=LR, fontsize=10, overlap=prism, sep="{EQ_CHAIN_GRAPH_SEP}", '
+        f"ranksep={EQ_CHAIN_GRAPH_RANKSEP}, nodesep={EQ_CHAIN_GRAPH_NODESEP},"
+    )
 
 
 def _anchor_covered_by_kept_eq(
@@ -1622,6 +1638,7 @@ def build_eq_chain_dot(
     symbol_refs: list[SymbolRef] | None = None,
     *,
     include_cooccur: bool = False,
+    rankdir: str = "LR",
 ) -> str:
     """Minimal eq→sym→eq chain graph: definitions (LHS) vs uses (RHS).
 
@@ -1631,11 +1648,11 @@ def build_eq_chain_dot(
     ``\\symbolref`` site.
     """
     core = _compute_eq_chain_core(all_formulas, symbol_defs, symbol_refs)
+    orient = "vertical" if rankdir.upper() == "TB" else "horizontal"
     lines = [
         "digraph EquationChainGraph {",
-        f'  graph [rankdir=LR, fontsize=10, overlap=prism, sep="{EQ_CHAIN_GRAPH_SEP}", '
-        f"ranksep={EQ_CHAIN_GRAPH_RANKSEP}, nodesep={EQ_CHAIN_GRAPH_NODESEP},",
-        '    label="Equation chains (eq|symdef→sym defines, sym→eq|symref uses)", labelloc=t];',
+        _eq_chain_graph_attrs(rankdir),
+        f'    label="Equation chains ({orient}; eq|symdef→sym defines, sym→eq|symref uses)", labelloc=t];',
         "  node [fontname=Helvetica, fontsize=9];",
         "  edge [fontname=Helvetica, fontsize=8];",
         "",
@@ -1658,6 +1675,7 @@ def build_eq_chain_chapters_dot(
     symbol_refs: list[SymbolRef] | None = None,
     *,
     include_cooccur: bool = False,
+    rankdir: str = "LR",
 ) -> str:
     """Eq-chain graph plus one chapter→equation link per defining chapter.
 
@@ -1673,11 +1691,11 @@ def build_eq_chain_chapters_dot(
         if anchor:
             ch_anchors[ch] = anchor
 
+    orient = "vertical" if rankdir.upper() == "TB" else "horizontal"
     lines = [
         "digraph EquationChainGraphWithChapters {",
-        f'  graph [rankdir=LR, fontsize=10, overlap=prism, sep="{EQ_CHAIN_GRAPH_SEP}", '
-        f"ranksep={EQ_CHAIN_GRAPH_RANKSEP}, nodesep={EQ_CHAIN_GRAPH_NODESEP},",
-        '    label="Equation chains + chapter→first-def eq (one per chapter)", labelloc=t];',
+        _eq_chain_graph_attrs(rankdir),
+        f'    label="Equation chains + chapter→first-def eq ({orient})", labelloc=t];',
         "  node [fontname=Helvetica, fontsize=9];",
         "  edge [fontname=Helvetica, fontsize=8];",
         "",
@@ -2234,6 +2252,34 @@ def main() -> None:
     )
     print(f"Wrote {eq_chain_ch_path}")
 
+    eq_chain_vert_path = args.out.with_name("equation-chain-graph-vertical.dot")
+    eq_chain_vert_path.write_text(
+        build_eq_chain_dot(
+            all_formulas,
+            symbol_defs,
+            symbol_refs,
+            include_cooccur=args.cooccur,
+            rankdir="TB",
+        ),
+        encoding="utf-8",
+    )
+    print(f"Wrote {eq_chain_vert_path}")
+
+    eq_chain_ch_vert_path = args.out.with_name(
+        "equation-chain-graph-chapters-vertical.dot"
+    )
+    eq_chain_ch_vert_path.write_text(
+        build_eq_chain_chapters_dot(
+            all_formulas,
+            symbol_defs,
+            symbol_refs,
+            include_cooccur=args.cooccur,
+            rankdir="TB",
+        ),
+        encoding="utf-8",
+    )
+    print(f"Wrote {eq_chain_ch_vert_path}")
+
     if args.detailed and not args.chapter:
         detailed_path = args.out.with_name("symbol-formula-graph-detailed.dot")
         detailed_path.write_text(
@@ -2290,6 +2336,16 @@ def main() -> None:
     visible_count = len(graph_formula_nodes(all_formulas, detailed=False))
     print(f"Wrote {args.out} ({visible_count} labeled-eq nodes in reachability graph; {len(all_formulas)} parsed total)")
     print(f"Wrote {args.coverage}")
+
+    # Chapter prerequisite DAG (symbol def/use → reading paths)
+    try:
+        from build_chapter_symbol_dependency import build_from_manuscript
+
+        dep_dot, dep_md = build_from_manuscript(rankdir="TB")
+        print(f"Wrote {dep_dot}")
+        print(f"Wrote {dep_md}")
+    except Exception as exc:  # pragma: no cover
+        print(f"Warning: chapter symbol dependency graph skipped: {exc}", file=sys.stderr)
 
 
 if __name__ == "__main__":

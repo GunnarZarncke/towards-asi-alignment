@@ -44,4 +44,4 @@ Continue eq-chain editorial pass: tighten loose basin defs (TODO only), repair K
 - Graph: **2 components** (main ~226 nodes + basins island 5).
 
 ## Commits (follow-up)
-- (this session)
+- `c7b77155` Eq-chain spine: epsilon, kappa→kappa_tilde, SelfControlGap bridge.

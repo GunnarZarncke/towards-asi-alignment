@@ -14,6 +14,8 @@ Section/chapter prose citations live separately in [`metadata/concept-graph/`](.
 |-------|--------|----------|
 | [`equation-chain-graph.dot`](equation-chain-graph.dot) | `extract_symbol_formula_graph.py` | **Start here.** Symbol definition chains only (`eq→sym→eq`). |
 | [`equation-chain-graph-chapters.dot`](equation-chain-graph-chapters.dot) | same | Same chains + one **chapter → anchor eq** link per defining chapter. |
+| [`equation-chain-graph-vertical.dot`](equation-chain-graph-vertical.dot) | same | Same as eq-chain, **top-to-bottom** layout (`rankdir=TB`). |
+| [`equation-chain-graph-chapters-vertical.dot`](equation-chain-graph-chapters-vertical.dot) | same | Chapters variant, **vertical** layout. |
 | [`symbol-formula-graph.dot`](symbol-formula-graph.dot) | same | Full symbol↔formula reachability + sparse `\eqref` + prose `\eqref` hubs. |
 | [`lean-dependency-graph.dot`](lean-dependency-graph.dot) | same | Lean declaration `uses` graph only. |
 | [`manuscript-lean-crosswalk-graph.dot`](manuscript-lean-crosswalk-graph.dot) | same | Manuscript symbols/formulas wired to `\leanspine{}` → Lean. |
@@ -185,6 +187,8 @@ python3 scripts/extract_symbol_formula_graph.py --chapter ch14 --out metadata/sy
 | `symbol-formula-graph-ch14.dot` | ch14 reachability subgraph (labeled eq only) |
 | `equation-chain-graph.dot` | **Minimal eq→sym→eq chains** (def vs use; no sections/cites) |
 | `equation-chain-graph-chapters.dot` | Same + **one unit:chNN → eq** (earliest first-def eq in chapter; no inter-chapter edges) |
+| `equation-chain-graph-vertical.dot` | Eq-chain only, **vertical** (`rankdir=TB`) |
+| `equation-chain-graph-chapters-vertical.dot` | Chapters variant, **vertical** |
 | `../symbol-formula-coverage.md` | Per-chapter tables: symbol → list of formulas, plus Lean spine coverage and text cross-reference sections |
 | `symbol-formula-graph-ch14.svg` | Rendered ch14 graph (after `dot`) |
 | `lean-dependency-graph.dot` | **Lean-only** declaration graph, parsed from `formal/AlignmentProofSpine/**/*.lean` (1016 declarations, 37 files) |
@@ -302,6 +306,12 @@ dot -Tsvg metadata/symbol-census/graphs/equation-chain-graph.dot \
 # With chapter → first-defining equation in that chapter (one edge per chapter):
 dot -Tsvg metadata/symbol-census/graphs/equation-chain-graph-chapters.dot \
   -o metadata/symbol-census/graphs/equation-chain-graph-chapters.svg
+
+# Vertical (top-to-bottom) variants:
+dot -Tsvg metadata/symbol-census/graphs/equation-chain-graph-vertical.dot \
+  -o metadata/symbol-census/graphs/equation-chain-graph-vertical.svg
+dot -Tsvg metadata/symbol-census/graphs/equation-chain-graph-chapters-vertical.dot \
+  -o metadata/symbol-census/graphs/equation-chain-graph-chapters-vertical.svg
 
 # ch14 subgraph only (small, ~350 lines): dot's layered ranking works fine
 dot -Tsvg symbol-formula-graph-ch14.dot -o symbol-formula-graph-ch14.svg

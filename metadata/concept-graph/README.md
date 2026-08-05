@@ -13,6 +13,7 @@ graphs, which trace **symbols and equation definition chains**.
 | Graph | Best for |
 |-------|----------|
 | [`section-reference-graph-units.dot`](section-reference-graph-units.dot) | **Chapter/appendix overview** (~55 units, citation-driven ranks). |
+| [`chapter-symbol-dependency.dot`](chapter-symbol-dependency.dot) | **Symbol-prerequisite chapters** — eq-chain bridge symbols (transitively thinned). |
 | [`section-reference-graph.dot`](section-reference-graph.dot) | **Section drill-down** (~400 xref/glossary sections + cited eqs). |
 
 Both are built by `scripts/build_section_reference_graph.py`.
@@ -81,10 +82,15 @@ Unresolved `\ref{sec:appm-*}` (appendix files outside `chapters/*.tex`) are a kn
 
 ```bash
 python3 scripts/build_section_reference_graph.py
+python3 scripts/build_chapter_symbol_dependency.py
 
-# Chapter-level overview:
+# Chapter-level overview (prose \\ref{ch:…} cites):
 dot -Tsvg metadata/concept-graph/section-reference-graph-units.dot \
   -o metadata/concept-graph/section-reference-graph-units.svg
+
+# Symbol-prerequisite chapters (eq-chain bridge symbols, vertical):
+dot -Tsvg metadata/concept-graph/chapter-symbol-dependency.dot \
+  -o metadata/concept-graph/chapter-symbol-dependency.svg
 
 # Section drill-down (large — prefer sfdp):
 sfdp -Goverlap=prism -Gsep="+25" -GK=2 -Gmaxiter=400 -Tsvg \
@@ -100,5 +106,6 @@ Layered alternative (can be tall): `dot -Tsvg section-reference-graph.dot -o sec
 |---------|--------|
 | Section/chapter narrative cites | **here** (`section-reference-graph`) |
 | Symbol **definition vs use** chains | `symbol-census/graphs/equation-chain-graph.dot` |
+| Chapter **symbol prerequisites** (reading paths) | **here** (`chapter-symbol-dependency.dot` + `.md`) |
 | Symbol appears anywhere in math | `symbol-census/graphs/symbol-formula-graph.dot` |
 | Manuscript → Lean | `symbol-census/graphs/manuscript-lean-crosswalk-graph.dot` |

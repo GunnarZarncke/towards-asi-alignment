@@ -2,13 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (eq-chain spine connections).
+Last updated: 2026-08-05 (chapter symbol dependency DAG + vertical eq-chain).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Eq-chain editorial** — island pass + spine connections (2026-08-05): K_coll, ICI→κ̃→κ, ε/UAD screen, SelfControlGap post-def bridge, 𝓡_i/K_X; **2 graph components** (main ~226 + basins). Remaining: **C12 basin operationalization** (ch38 loose set defs); concept bodies for old `\mathcal{B}_{\text{race}}` strings; latent `p_\theta` vs MI `\theta` hub collision. Logs: `2026-08-05-eq-chain-island-fixes.md`, `drafts/editorial-guidance-eq-chain-placement.md`.
+- **Eq-chain editorial** — island pass + spine connections (2026-08-05): K_coll, ICI→κ̃→κ, ε/UAD screen, SelfControlGap post-def bridge, 𝓡_i/K_X; **2 graph components** (main ~226 + basins). **Chapter symbol DAG** (24 ch, 26 thinned edges) in `metadata/concept-graph/chapter-symbol-dependency.md`. Remaining: **C12 basin operationalization** (ch38 loose set defs); concept bodies for old `\mathcal{B}_{\text{race}}` strings; latent `p_\theta` vs MI `\theta` hub collision. Logs: `2026-08-05-eq-chain-island-fixes.md`, `2026-08-05-chapter-symbol-dependency-dag.md`, `drafts/editorial-guidance-eq-chain-placement.md`.
 
 - **`\symbolref` (partial)** — use-site markers shipped for C_t tuple sites; more unlabeled blocks (e.g. RiskGap) still open. Log: `2026-08-05-symboldef-macro.md`.
 
@@ -38,6 +38,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Chapter symbol dependency DAG (2026-08-05):** Vertical eq-chain variants (TB); `build_chapter_symbol_dependency.py`; transitively thinned 26-edge chapter prereq graph + topo layers for reading paths. Log: `2026-08-05-chapter-symbol-dependency-dag.md`.
 - **Eq-chain spine connections (2026-08-05):** ε/UAD screen; κ_ij→κ̃+ICI; SelfControlGap ch32 bridge; def-relation extractor; 2 graph components. Log: `2026-08-05-eq-chain-island-fixes.md` (follow-up section).
 - **Eq-chain island fixes (2026-08-05):** K_coll spine (ch13); ICI def-before-κ (ch35); 𝓡_i/K_X bridge (ch09/ch11); CCI_λ + symbolref-in-eq extractor fixes; SelfControlGap on `eq:risk-gap`; C_raw `\mathrm{raw}` pass; basins TODO (ch38). Log: `2026-08-05-eq-chain-island-fixes.md`.
 - **Eq-chain graph cleanup (2026-08-05):** Optional `--cooccur`; layout ranksep/nodesep; canonical `C_t` (ch25 `\symboldef`, `\mathcal{C}_t` boundary); `\theta_{\mathrm{reach}}` vs MI `\theta`. Log: `2026-08-05-eq-chain-graph-cleanup.md`.
