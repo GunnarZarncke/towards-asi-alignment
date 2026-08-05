@@ -1,15 +1,15 @@
 slug: anthropic-lab
 title: "Anthropic / Goodfire (lab & MI stack)"
-type: Capabilities lab + MI tooling cluster
+type: Capabilities lab + mechanistic interpretability tooling cluster
 carrier: >-
   Anthropic PBC; Goodfire; Transluce; Neuronpedia (infra); Georg Lange
   (causal-faithfulness seam)
 overview: >-
   Anthropic builds frontier models under staged safety commitments
   ([RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy)), while
-  adjacent teams and investments pursue [mechanistic
-  interpretability](https://www.anthropic.com/research), editable internal
-  representations, and cross-lab tooling infrastructure.
+  adjacent teams and investments pursue the **MI stack**—[mechanistic
+  interpretability](https://www.anthropic.com/research) research, editable internal
+  representations, and cross-lab tooling infrastructure (Goodfire, Transluce, Neuronpedia).
 primaryArtifact: >-
   The [Responsible Scaling
   Policy](https://www.anthropic.com/news/anthropics-responsible-scaling-policy)
@@ -46,7 +46,8 @@ bookBridges:
 contributes: >-
   Industry [RSP](https://www.anthropic.com/news/anthropics-responsible-scaling-policy)
   template, conditioning-predictor failure modes, Goodfire mechanistic-interpretability
-  tooling (Anthropic investment; Apollo and DeepMind MI lineage on team), and cross-lab
+  tooling (Anthropic investment; Apollo and DeepMind [mechanistic
+  interpretability](https://www.anthropic.com/research) lineage on team), and cross-lab
   Neuronpedia infrastructure.
 bookSeparates: >-
   This project requires [correction-channel integrity](/cards/correction-channel-integrity/)

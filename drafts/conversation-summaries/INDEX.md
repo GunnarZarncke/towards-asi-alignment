@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **Anthropic lab MI stack gloss** — Define and link MI stack (mechanistic interpretability) on Anthropic/Goodfire field agenda card intro; YAML source + sync. | [2026-08-05-anthropic-lab-mi-stack-gloss.md](2026-08-05-anthropic-lab-mi-stack-gloss.md) |
 | 2026-08-05 | **Equation-chain def/use graphs** — Section ref DAG in `concept-graph/`; eq→sym defines / sym→eq uses in equation-chain graph; gitignore generated graph outputs. | [2026-08-05-equation-chain-def-use-graphs.md](2026-08-05-equation-chain-def-use-graphs.md) |
 | 2026-08-05 | **Iliad / Textbook from the Future agenda** — Off-matrix field agenda for Iliad synthesis megaproject; TSA contrast; Resolution cross-link; Field hub bullet. | [2026-08-05-iliad-textbook-from-the-future-agenda.md](2026-08-05-iliad-textbook-from-the-future-agenda.md) |
 | 2026-08-05 | **Jailbreak disclosure field news** — General-audience news card for AI Frontiers jailbreak disclosure essay; CASP + Fable 5 examples linked to primary sources and Zvi. | [2026-08-05-jailbreak-disclosure-news.md](2026-08-05-jailbreak-disclosure-news.md) |
