@@ -102,10 +102,6 @@ dot -Tsvg metadata/concept-graph/chapter-informal-dependency.dot \
 dot -Tsvg metadata/concept-graph/chapter-reading-dependency.dot \
   -o metadata/concept-graph/chapter-reading-dependency.svg
 
-# Per-chapter readingguide authoring checklists (Prerequisites boxes):
-python3 scripts/build_chapter_symbol_dependency.py --emit-reading-checklists
-# → metadata/concept-graph/chapter-reading-checklists/
-
 # Section drill-down (large — prefer sfdp):
 sfdp -Goverlap=prism -Gsep="+25" -GK=2 -Gmaxiter=400 -Tsvg \
   metadata/concept-graph/section-reference-graph.dot \
@@ -123,6 +119,5 @@ Layered alternative (can be tall): `dot -Tsvg section-reference-graph.dot -o sec
 | Chapter **symbol prerequisites** | **here** (`chapter-symbol-dependency.dot` + `.md`) |
 | Chapter **informal concept prerequisites** | **here** (`chapter-informal-edges.yml`, `chapter-informal-dependency.*`) |
 | **Combined reading paths** (symbols + informal) | **here** (`chapter-reading-dependency.dot` + `.md`) |
-| **`readingguide` authoring checklists** | **here** (`chapter-reading-checklists/` via `--emit-reading-checklists`) |
 | Symbol appears anywhere in math | `symbol-census/graphs/symbol-formula-graph.dot` |
 | Manuscript → Lean | `symbol-census/graphs/manuscript-lean-crosswalk-graph.dot` |

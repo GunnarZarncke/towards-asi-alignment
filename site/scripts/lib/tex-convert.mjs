@@ -31,18 +31,6 @@ const MATH_ENVS = new Set([
 const ENV_HANDLERS = {
   chapterthesis: (body, ctx) =>
     `<div class="callout chapter-thesis"><strong>Chapter thesis.</strong> ${convertInlineText(body, ctx)}</div>\n\n`,
-  readingguide: (body, ctx) => {
-    const inner = convertDocument(body, ctx);
-    const graphHref = "/paths/chapter-reading-graph/";
-    return (
-      `<details class="reading-guide callout">` +
-      `<summary>Prerequisites</summary>` +
-      `<div class="reading-guide-body">${inner}</div>` +
-      `<p class="reading-guide-graph side-panel-meta">` +
-      `<a href="${graphHref}">Chapter reading graph</a> — prerequisite map across all chapters.` +
-      `</p></details>\n\n`
-    );
-  },
   quote: (body, ctx) => `> ${convertInlineText(body, ctx).replace(/\n+/g, "\n> ")}\n\n`,
   itemize: (body, ctx) => convertList(body, "ul", ctx),
   enumerate: (body, ctx) => convertList(body, "ol", ctx),
