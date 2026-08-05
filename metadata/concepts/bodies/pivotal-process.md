@@ -1,1 +1,1 @@
-A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$); not a single unilateral decisive act.
+A socio-technical basin transition from race dynamics to certified-deployment dynamics ($\mathbb{B}_{\mathrm{race}} \to \mathbb{B}_{\mathrm{certified}}$); not a single unilateral decisive act.

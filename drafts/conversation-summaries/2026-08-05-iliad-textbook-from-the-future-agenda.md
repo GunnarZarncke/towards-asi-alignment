@@ -27,4 +27,4 @@ User asked which agenda and team owns [textbookfromthefuture.org/faq.html](https
 - `site/src/content/field/intro.md`
 
 ## Commits
-- (this session)
+- `d0185b7f` Add Iliad / Textbook from the Future as off-matrix field agenda.

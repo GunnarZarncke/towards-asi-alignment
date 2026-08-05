@@ -13,7 +13,7 @@ Research directions and unresolved questions for the book project.
 ## Theory
 
 - Sufficient conditions for alignment basin stability
-- Pivotal process: conditions for $\mathcal{B}_{\text{race}} \to \mathcal{B}_{\text{certified deployment}}$ without unilateral decisive action
+- Pivotal process: conditions for $\mathbb{B}_{\mathrm{race}} \to \mathbb{B}_{\mathrm{certified}}$ without unilateral decisive action
 - Inferential coupling indices and detection of effective AI coalitions
 - Conservative abstraction criteria for value-bundle and correction maps
 - Bearer-map transport across radical ontology shift

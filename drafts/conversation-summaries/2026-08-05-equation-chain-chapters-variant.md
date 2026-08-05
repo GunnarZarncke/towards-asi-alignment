@@ -22,4 +22,4 @@ Add a chapter-aware variant of the equation-chain graph: link each chapter to sy
 - `metadata/symbol-census/graphs/equation-chain-graph-chapters.dot` (gitignored; regen locally)
 
 ## Commits
-- (this session)
+- `9481ecde` Add equation-chain chapters variant with one anchor eq per chapter.

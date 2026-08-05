@@ -20,4 +20,4 @@ User asked to add davidad's LessWrong profile and the Guaranteed Safe AI Google 
 - `site/src/content/cards/field-agendas/davidad-guaranteed-safe-ai-gsai.md`
 
 ## Commits
-- (pending)
+- `3e0e84da` Add davidad profile and GSAI mailing list to field agenda card.

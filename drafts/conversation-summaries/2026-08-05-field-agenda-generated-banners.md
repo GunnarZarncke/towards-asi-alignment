@@ -22,4 +22,4 @@ User asked why field agendas exist as both `.yml` and `.md`; agreed to keep chec
 - `site/src/content/cards/field-agendas/*.md` — generated (do not edit)
 
 ## Commits
-- (this session)
+- `19119d56` Mark field agenda generated outputs with visible banners.

@@ -664,17 +664,15 @@ Self-modelling helps safety when it improves error detection, uncertainty calibr
 
 It increases danger when it improves strategic self-control faster than self-transparency.
 
-Let $C_{\mathrm{self}}$ be the system's capacity to predict and control its own future states.
-Let $C_{\mathrm{audit}}$ be the correction channel's capacity to inspect, understand, and redirect the system.
-A dangerous regime appears when:
-\begin{equation}
+Chapter~\ref{ch:self-modeling-self-opacity} (Section~\ref{sec:core-failure-condition-ch32}) gives the canonical inequality: self-control capacity must not outrun correction-relevant transparency and \symbolref[SelfControlGap]{\mathrm{SelfControlGap}}.
+The same shape appears when audit capacity $C_{\mathrm{audit}}$ is the relevant correction interface:
+\[
 \frac{d}{dt}C_{\mathrm{self}}
 >
 \frac{d}{dt}C_{\mathrm{audit}}
 +
 \epsilon.
-\label{eq:self-control-audit-gap}
-\end{equation}
+\]
 This is why ``the successor has better self-modelling but worse self-transparency'' is a failure mode.
 
 The problem is not that the system becomes more reflective.

@@ -20,4 +20,4 @@ Fix visible `\n` in eq-chain graph nodes; add source-locating context (chapter, 
 - `scripts/extract_symbol_formula_graph.py` — `dot_label`, `_eq_chain_*_label`
 
 ## Commits
-- (this session)
+- `732130e2` Fix eq-chain graph labels and add source line context.

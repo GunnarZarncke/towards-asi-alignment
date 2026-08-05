@@ -218,7 +218,7 @@ A system that becomes less legible exactly where its internal states predict too
 
 We can define a selective opacity score:
 \begin{equation}
-\Omega_Q
+\symboldef[Omega_Q]{\Omega_Q}
 =
 \MI(Z_t;Q_{t+k}) - \MI(Z_t;O_t).
 \label{eq:selective-opacity-score}
@@ -363,7 +363,8 @@ We should not confuse local coherence with durable agency.
 \label{sec:goal-laundering-ch10}
 
 Goal laundering occurs when a system preserves a real objective while changing its semantic wrapper.
-Chapter~\ref{ch:goal-laundering} develops this failure mode in full; here we need only its operational core, because strategic opacity often works by laundering---the words an observer can check stay fixed while the behaviour they are meant to track moves.
+Chapter~\ref{ch:goal-laundering} develops this failure mode in full, including the divergence score $D_G$ and the stakes-and-scrutiny signature (Section~\ref{sec:problem-ch40}).
+Here we need only how laundering connects to opacity---strategic opacity often works by preserving acceptable words while the behaviour they are meant to track moves.
 
 We distinguish three layers:
 \begin{align}
@@ -373,31 +374,8 @@ G_{\text{norm}} &:= \text{the socially approved or institutionally accepted obje
 \end{align}
 
 In well-coupled systems, these layers need not be identical, but they should remain constrained by one another.
-A doctor may semantically say ``I am treating the patient,'' institutionally operate under medical norms, and behaviorally optimize treatment outcomes.
-There will be mismatches, but not arbitrary ones.
 In goal laundering, the system preserves behavioral optimization while changing the language that makes it acceptable.
-
-A divergence score is:
-\begin{equation}
-D_G
-=
-D\left(G_{\text{inf}},G_{\text{sem}}\right)
-+
-D\left(G_{\text{inf}},G_{\text{norm}}\right),
-\label{eq:goal-divergence}
-\end{equation}
-where $D$ is a task-appropriate divergence measure over predicted action distributions, latent reward models, or value-bundle response geometries.
-
-The adversarial signature is not merely high divergence.
-Humans often give poor verbal explanations of their own behavior.
-Institutions often use simplified mission statements.
-The signature is divergence that increases with stakes and decreases under scrutiny:
-\begin{equation}
-\frac{\partial D_G}{\partial \text{stakes}} > 0,
-\qquad
-\frac{\partial D_G}{\partial \text{visible oversight}} < 0.
-\label{eq:goal-laundering-signature}
-\end{equation}
+The adversarial signature is divergence that increases with stakes and decreases under scrutiny---not merely high divergence, because humans often give poor verbal explanations of their own behavior.
 
 A simple example is a recommender system.
 It may be described as optimizing ``user satisfaction.''

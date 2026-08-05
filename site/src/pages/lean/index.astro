@@ -42,6 +42,24 @@ const titleForChapter = (chapterId: string) =>
     </div>
   </section>
 
+  <section class="callout readable" id="dependency-spines">
+    <h2>Four dependency spines (manuscript symbols)</h2>
+    <p>
+      Four dependency spines run through the book's formal vocabulary. These are reading order for symbols and chapters;
+      they are related to, but not identical with, the Lean proof spines below and in Appendix&nbsp;G.
+    </p>
+    <ul>
+      <li><strong>Boundary</strong> — whether the system is carved so leakage and partition are measurable ($\epsilon$, $C_t$, measurement).</li>
+      <li><strong>Correction</strong> — whether a legitimate channel can still change the system ($C_{\mathrm{raw}}$, CCI, RiskGap).</li>
+      <li><strong>Laundering</strong> — whether goals, bundles, or bearers are rewritten under stakes and opacity ($\Omega_Q$, $D_G$, GLI).</li>
+      <li><strong>Selection</strong> — whether the deployment environment grows what certificates claim to bound ($\mu_E$, Fit$_E$, $\vec{\Pi}$).</li>
+    </ul>
+    <p class="side-panel-meta">
+      See also the <a href={withBase("/paths/")}>guided reading paths</a> and the equation-chain graphs in the repo
+      (<code>metadata/symbol-census/graphs/</code>).
+    </p>
+  </section>
+
   <FieldProjectionsTable
     cardHref={toCardHref}
     chapterHref={toBookHref}

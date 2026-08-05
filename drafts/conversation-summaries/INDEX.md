@@ -6,6 +6,8 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-05 | **Eq-chain graph cleanup** — Optional `--cooccur`; C_t/θ disambiguation; layout spacing; `\symboldef`/`\symbolref` integration. | [2026-08-05-eq-chain-graph-cleanup.md](2026-08-05-eq-chain-graph-cleanup.md) |
+| 2026-08-05 | **Eq-chain editorial placement** — Chapter moves, basin notation, Control/D_G/Omega_Q, CCI split, notation homes, site spines. | [2026-08-05-eq-chain-editorial-placement.md](2026-08-05-eq-chain-editorial-placement.md) |
 | 2026-08-05 | **Equation-chain node labels** — Fix visible `\n`; add ch/line/eq label on eq and sym nodes for source lookup. | [2026-08-05-equation-chain-node-labels.md](2026-08-05-equation-chain-node-labels.md) |
 | 2026-08-05 | **Equation-chain chapters variant** — One unit:chNN→eq anchor per chapter; layout fix; drop ch→sym fan-out. | [2026-08-05-equation-chain-chapters-variant.md](2026-08-05-equation-chain-chapters-variant.md) |
 | 2026-08-05 | **Anthropic lab MI stack gloss** — Define and link MI stack (mechanistic interpretability) on Anthropic/Goodfire field agenda card intro; YAML source + sync. | [2026-08-05-anthropic-lab-mi-stack-gloss.md](2026-08-05-anthropic-lab-mi-stack-gloss.md) |

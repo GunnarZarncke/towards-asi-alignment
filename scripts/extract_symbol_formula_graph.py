@@ -29,6 +29,10 @@ LEANSPINE = re.compile(
     r"\\leanspine\{(proof|counterexample|bridge)\}\{([^}]+)\}\{([^}]*)\}"
 )
 
+# \symboldef / \symbolref{math} or [canonical-id]{math} — brace-balanced scan in helpers below.
+SYMBOLDEF_CMD = "\\symboldef"
+SYMBOLREF_CMD = "\\symbolref"
+
 LEAN_IMPORT = re.compile(r"^import\s+([A-Za-z0-9_.]+)")
 LEAN_DECL_KEYWORDS = (
     "theorem", "lemma", "def", "noncomputable def", "abbrev",
@@ -65,7 +69,7 @@ SKIP_CMDS = {
     "times", "leq", "geq", "neq", "approx", "equiv", "propto", "sim",
     "in", "notin", "forall", "exists", "partial", "nabla", "infty",
     "arg", "max", "min", "log", "exp", "Pr", "mathbb", "mathrm",
-    "MI", "DL", "CCI", "GLI", "Correctable", "leanspine",
+    "MI", "DL", "CCI", "Correctable", "leanspine", "symboldef", "symbolref",
     "label", "ref", "eqref", "autocite", "cite", "emph", "textbf",
     "begin", "end", "frac", "sqrt", "sum", "prod", "int", "lim",
     "to", "mapsto", "longrightarrow", "rightarrow", "Rightarrow",
@@ -133,6 +137,64 @@ class LeanSpineRef:
     kind: str  # proof/counterexample/bridge
     node: str  # Lean node id (underscores unescaped)
     gloss: str
+
+
+@dataclass
+class SymbolDef:
+    """One \\symboldef[canonical-id]{math} explicit definition site."""
+
+    chapter: str
+    line: int
+    sym: str  # canonical symbol id (notation.md tokens)
+    math_raw: str
+    chapter_file: str
+
+    @property
+    def fid(self) -> str:
+        return f"symdef:{self.chapter}:{self.line}"
+
+    def as_formula(self) -> Formula:
+        return Formula(
+            fid=self.fid,
+            chapter=self.chapter,
+            chapter_file=self.chapter_file,
+            line_start=self.line,
+            line_end=self.line,
+            env="symboldef",
+            raw=self.math_raw[:200],
+            symbols={self.sym},
+            defined_symbols={self.sym},
+            used_symbols=set(),
+        )
+
+
+@dataclass
+class SymbolRef:
+    """One \\symbolref[canonical-id]{math} explicit use site."""
+
+    chapter: str
+    line: int
+    sym: str
+    math_raw: str
+    chapter_file: str
+
+    @property
+    def fid(self) -> str:
+        return f"symref:{self.chapter}:{self.line}"
+
+    def as_formula(self) -> Formula:
+        return Formula(
+            fid=self.fid,
+            chapter=self.chapter,
+            chapter_file=self.chapter_file,
+            line_start=self.line,
+            line_end=self.line,
+            env="symbolref",
+            raw=self.math_raw[:200],
+            symbols={self.sym},
+            defined_symbols=set(),
+            used_symbols={self.sym},
+        )
 
 
 def strip_lean_comments(text: str) -> str:
@@ -299,6 +361,176 @@ def parse_leanspine_refs(chapters: list[Path]) -> list[LeanSpineRef]:
     return refs
 
 
+def _parse_braced_arg(text: str, open_brace: int) -> tuple[str, int] | None:
+    """Return (inner, index after closing ``}``) when ``text[open_brace] == '{'``."""
+    if open_brace >= len(text) or text[open_brace] != "{":
+        return None
+    depth = 0
+    inner_start = open_brace + 1
+    for i in range(open_brace, len(text)):
+        if text[i] == "{":
+            depth += 1
+            if depth == 1:
+                inner_start = i + 1
+        elif text[i] == "}":
+            depth -= 1
+            if depth == 0:
+                return text[inner_start:i], i + 1
+    return None
+
+
+def _iter_symbol_markers(text: str, cmd: str) -> list[tuple[str | None, str, int]]:
+    """Yield (optional canonical id, math inner, start index) for ``\\symboldef`` / ``\\symbolref``."""
+    found: list[tuple[str | None, str, int]] = []
+    i = 0
+    while True:
+        j = text.find(cmd, i)
+        if j == -1:
+            break
+        k = j + len(cmd)
+        explicit: str | None = None
+        if k < len(text) and text[k] == "[":
+            end = text.find("]", k)
+            if end == -1:
+                i = j + 1
+                continue
+            explicit = text[k + 1 : end]
+            k = end + 1
+        if k >= len(text) or text[k] != "{":
+            i = j + 1
+            continue
+        parsed = _parse_braced_arg(text, k)
+        if not parsed:
+            i = j + 1
+            continue
+        inner, after = parsed
+        found.append((explicit, inner, j))
+        i = after
+    return found
+
+
+def _iter_symboldefs(text: str) -> list[tuple[str | None, str, int]]:
+    return _iter_symbol_markers(text, SYMBOLDEF_CMD)
+
+
+def _unwrap_symbol_marker(math: str, cmd: str) -> str:
+    """Replace \\cmd[...]{inner} with inner for symbol extraction."""
+    out: list[str] = []
+    i = 0
+    text = math
+    while i < len(text):
+        j = text.find(cmd, i)
+        if j == -1:
+            out.append(text[i:])
+            break
+        out.append(text[i:j])
+        k = j + len(cmd)
+        if k < len(text) and text[k] == "[":
+            end = text.find("]", k)
+            if end == -1:
+                out.append(text[j])
+                i = j + 1
+                continue
+            k = end + 1
+        if k < len(text) and text[k] == "{":
+            parsed = _parse_braced_arg(text, k)
+            if parsed:
+                inner, after = parsed
+                out.append(inner)
+                i = after
+                continue
+        out.append(text[j])
+        i = j + 1
+    return "".join(out)
+
+
+def _unwrap_symbol_anchors(math: str) -> str:
+    """Strip \\symboldef and \\symbolref wrappers before symbol extraction."""
+    s = _unwrap_symbol_marker(math, SYMBOLDEF_CMD)
+    return _unwrap_symbol_marker(s, SYMBOLREF_CMD)
+
+
+def _unwrap_symboldef(math: str) -> str:
+    """Replace \\symboldef[...]{inner} with inner for symbol extraction."""
+    return _unwrap_symbol_anchors(math)
+
+
+def canonical_symbol_id(explicit: str | None, math: str) -> str | None:
+    """Resolve \\symboldef optional canonical id or infer from math."""
+    if explicit is not None and explicit.strip():
+        return normalize_sub(explicit.strip())
+
+    syms = extract_symbols_from_math(_unwrap_symboldef(math))
+    if not syms:
+        return None
+
+    for pref in ("RiskGap", "SelfControlGap", "ValueUpdateEnvelope", "Fit_E"):
+        if pref in syms:
+            return pref
+
+    bare = {s for s in syms if "{" not in s and "_" not in s}
+    if len(bare) == 1:
+        return next(iter(bare))
+
+    for base in ("CCI", "Control", "BIQ", "GLI", "ICI", "epsilon"):
+        if base in syms:
+            return base
+
+    # Projection subscripts: CCI_{lambda} → CCI when vector/scalar family matches.
+    for s in syms:
+        m = re.match(r"^([A-Za-z]+)_\{([^}]+)\}$", s)
+        if m and m.group(1) in ("CCI", "BIQ", "GLI", "ICI"):
+            return m.group(1)
+
+    return sorted(syms, key=lambda x: (len(x), x.lower()))[0]
+
+
+def parse_symboldefs(chapters: list[Path]) -> list[SymbolDef]:
+    """Collect \\symboldef[canonical-id]{math} anchors from manuscript chapters."""
+    defs: list[SymbolDef] = []
+    for path in chapters:
+        ch = chapter_id(path)
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        for idx, line in enumerate(text.splitlines(), 1):
+            for explicit, math_raw, _pos in _iter_symboldefs(line):
+                sym = canonical_symbol_id(explicit, math_raw)
+                if not sym:
+                    continue
+                defs.append(
+                    SymbolDef(
+                        chapter=ch,
+                        line=idx,
+                        sym=sym,
+                        math_raw=math_raw.strip(),
+                        chapter_file=path.name,
+                    )
+                )
+    return defs
+
+
+def parse_symbolrefs(chapters: list[Path]) -> list[SymbolRef]:
+    """Collect \\symbolref[canonical-id]{math} use anchors from manuscript chapters."""
+    refs: list[SymbolRef] = []
+    for path in chapters:
+        ch = chapter_id(path)
+        text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
+        for idx, line in enumerate(text.splitlines(), 1):
+            for explicit, math_raw, _pos in _iter_symbol_markers(line, SYMBOLREF_CMD):
+                sym = canonical_symbol_id(explicit, math_raw)
+                if not sym:
+                    continue
+                refs.append(
+                    SymbolRef(
+                        chapter=ch,
+                        line=idx,
+                        sym=sym,
+                        math_raw=math_raw.strip(),
+                        chapter_file=path.name,
+                    )
+                )
+    return refs
+
+
 def resolve_lean_alias(node: str, known_names: set[str]) -> str | None:
     """Resolve a short proof-spine id (P13, MB8, ...) to the actual Lean
     declaration name (P10_biq_upper_bound, MB1_estimator_soundness, ...) via
@@ -342,6 +574,15 @@ def normalize_sub(s: str) -> str:
     s = re.sub(r"\\mathrm\{([^}]+)\}", r"\1", s)
     s = re.sub(r"\\text\{([^}]+)\}", r"\1", s)
     return s.replace(" ", "").replace("/", "-")
+
+
+def normalize_chain_sym_id(sym: str) -> str:
+    """Unify ``\\symboldef`` ids with extractor tokens (e.g. ``D_{G}`` → ``D_G``)."""
+    sym = sym.strip()
+    m = re.match(r"^([A-Za-z]+)_\{([^}]+)\}$", sym)
+    if m:
+        return f"{m.group(1)}_{normalize_sub(m.group(2))}"
+    return sym
 
 
 def _strip_math_env(block: str) -> str:
@@ -449,6 +690,7 @@ def split_defined_used_symbols(block: str) -> tuple[set[str], set[str]]:
 
 def extract_symbols_from_math(math: str, _depth: int = 0) -> set[str]:
     """Heuristic symbol extraction from LaTeX math."""
+    math = _unwrap_symboldef(math)
     syms: set[str] = set()
     if _depth > 3:
         return syms
@@ -512,23 +754,81 @@ def extract_symbols_from_math(math: str, _depth: int = 0) -> set[str]:
         if name:
             syms.add(name)
 
-    # Standalone \mathrm{...} / \mathcal{...} names
+    # Font-wrapped identifiers with sub/superscript: \mathbb{B}_{race} → B_{race};
+    # \mathcal{C}_t → mathcal_C_{t} (distinct from bare correction C_t).
+    font_sub_spans: list[tuple[int, int]] = []
+    for m in re.finditer(
+        r"\\(mathrm|operatorname|mathcal|mathfrak|mathbb)\{([A-Za-z])\}"
+        r"(?:_\{(?:\\(?:mathrm|text)\{)?([^}]+)\}?(?:\})?"
+        r"|_\{([^}]+)\}"
+        r"|_([A-Za-z0-9]+)"
+        r"|\^\{(?:\\(?:mathrm|text)\{)?([^}]+)\}?(?:\})?"
+        r"|\^\{([^}]+)\}"
+        r"|\^([A-Za-z0-9]))",
+        math,
+    ):
+        font = m.group(1)
+        base = m.group(2)
+        sub = m.group(3) or m.group(4) or m.group(5)
+        sup = m.group(6) or m.group(7) or m.group(8)
+        if sub:
+            sid = f"{base}_{{{normalize_sub(sub)}}}"
+            if font in ("mathcal", "mathfrak"):
+                sid = f"{font}_{sid}"
+            syms.add(sid)
+        elif sup:
+            sid = f"{base}^{{{normalize_sub(sup)}}}"
+            if font in ("mathcal", "mathfrak"):
+                sid = f"{font}_{sid}"
+            syms.add(sid)
+        font_sub_spans.append((m.start(), m.end()))
+
+    # Standalone \mathrm{...} / \mathcal{...} names (skip if sub/sup handled above)
     for m in re.finditer(
         r"\\(?:mathrm|operatorname|mathcal|mathfrak|mathbb)\{([^}]+)\}",
         math,
     ):
+        if any(s <= m.start() < e for s, e in font_sub_spans):
+            continue
         name = normalize_sub(m.group(1))
         if name and name not in SKIP_CMDS:
             syms.add(name)
 
+    # Book-specific compound symbols (metadata/notation.md)
+    if re.search(r"\\mu_E\b", math):
+        syms.add("mu_E")
+    if re.search(r"\\mathrm\{Fit\}_E", math) or re.search(r"\\Fit_E\b", math):
+        syms.add("Fit_E")
+    if re.search(r"\\kappa_\{\\(?:mathrm|text)\{sel\}\}", math):
+        syms.add("kappa_sel")
+
+    # Greek letter + subscript: \epsilon_B, \epsilon_{\Phi}, \epsilon_\Phi
+    greek_pat = "|".join(sorted(GREEK, key=len, reverse=True))
+    for m in re.finditer(
+        rf"\\({greek_pat})(?:_\{{([^}}]+)\}}|_([A-Za-z0-9]+))",
+        math,
+    ):
+        greek = m.group(1)
+        sub = normalize_sub(m.group(2) or m.group(3))
+        syms.add(f"{greek}_{{{sub}}}")
+    for m in re.finditer(rf"\\({greek_pat})_\\([A-Za-z]+)", math):
+        syms.add(f"{m.group(1)}_{{{m.group(2)}}}")
+
     # Bare command symbols
     for m in re.finditer(r"\\([A-Za-z]+)", math):
         cmd = m.group(1)
+        end = m.end()
         if cmd in GREEK:
+            if cmd == "mu" and re.search(r"\\mu_E\b", math):
+                continue
+            if end < len(math) and math[end] == "_":
+                continue
             syms.add(cmd)
-        elif cmd in ("CCI", "GLI", "DL", "MI", "Phi", "Gamma", "Delta"):
+        elif cmd in ("CCI", "GLI", "DL", "MI", "Phi", "Gamma", "Delta", "Fit"):
             if cmd == "Delta":
                 continue  # handled above
+            if cmd == "Fit" and re.search(r"\\mathrm\{Fit\}_E", math):
+                continue
             syms.add(cmd)
 
     # Subscripted identifiers (base must not be tail of a \command name)
@@ -709,6 +1009,14 @@ def dot_label(s: str) -> str:
 
 
 def _eq_chain_eq_label(f: Formula) -> str:
+    if f.env == "symboldef":
+        sym = next(iter(f.defined_symbols), "?")
+        ch_num = f.chapter.replace("ch", "")
+        return f"{sym} (def anchor)\nch{ch_num} · L{f.line_start}\n{f.fid}"
+    if f.env == "symbolref":
+        sym = next(iter(f.used_symbols), "?")
+        ch_num = f.chapter.replace("ch", "")
+        return f"{sym} (use anchor)\nch{ch_num} · L{f.line_start}\n{f.fid}"
     slug = f.fid[3:] if f.fid.startswith("eq:") else f.fid
     ch_num = f.chapter.replace("ch", "")
     return f"{slug}\nch{ch_num} · L{f.line_start}\n{f.fid}"
@@ -719,7 +1027,12 @@ def _eq_chain_sym_label(sym: str, core: EqChainCore) -> str:
     if not order:
         return sym
     _ch, line, fid = order
-    slug = fid[3:] if fid.startswith("eq:") else fid
+    if fid.startswith("symdef:"):
+        slug = fid
+    elif fid.startswith("eq:"):
+        slug = fid[3:]
+    else:
+        slug = fid
     ch_num = _ch.replace("ch", "")
     return f"{sym}\ndef {slug}\nch{ch_num} · L{line}"
 
@@ -729,7 +1042,10 @@ def _eq_chain_chapter_label(ch: str, core: EqChainCore, anchor_fid: str | None) 
     if not anchor_fid or anchor_fid not in core.by_fid:
         return f"ch{num}"
     f = core.by_fid[anchor_fid]
-    slug = anchor_fid[3:] if anchor_fid.startswith("eq:") else anchor_fid
+    if anchor_fid.startswith("eq:"):
+        slug = anchor_fid[3:]
+    else:
+        slug = anchor_fid
     return f"ch{num}\nanchor {slug}\nL{f.line_start} · {f.chapter_file}"
 
 
@@ -968,6 +1284,50 @@ def emit_text_ref_edges(
 READING_ORDER_RANK_ATTRS = "style=invis, weight=1, constraint=true"
 SYMBOL_SPINE_ATTRS = "color=#2c5282, penwidth=1.0, weight=80, constraint=true"
 LOW_WEIGHT_EQREF_ATTRS = "color=#059669, style=dashed, penwidth=0.6, weight=0.5, constraint=false"
+EQ_CHAIN_SYM_COOCCUR_ATTRS = (
+    'color="#94a3b8", style=dashed, dir=both, constraint=false, penwidth=1.0'
+)
+EQ_CHAIN_GRAPH_SEP = "+24"  # node margin for dot overlap=prism (was +20; +20% hspace Aug 2026)
+EQ_CHAIN_GRAPH_RANKSEP = "1.4"  # rankdir=LR: horizontal space between ranks
+EQ_CHAIN_GRAPH_NODESEP = "0.45"  # rankdir=LR: vertical space within a rank
+
+
+def _anchor_covered_by_kept_eq(
+    anchor_fid: str, core: "EqChainCore"
+) -> bool:
+    """True when a symdef/symref line sits inside a kept labeled equation block."""
+    if anchor_fid not in core.by_fid:
+        return False
+    anchor = core.by_fid[anchor_fid]
+    if anchor.env not in ("symboldef", "symbolref"):
+        return False
+    for fid in core.kept_eqs:
+        if not fid.startswith("eq:"):
+            continue
+        f = core.by_fid[fid]
+        if f.chapter != anchor.chapter:
+            continue
+        if f.line_start <= anchor.line_start <= f.line_end:
+            return True
+    return False
+
+
+def _record_sym_eq(
+    bucket: dict[str, set[str]], sym: str, fid: str
+) -> None:
+    bucket[normalize_chain_sym_id(sym)].add(fid)
+
+
+def _formula_defines_sym(f: Formula, sym: str) -> bool:
+    norm = normalize_chain_sym_id(sym)
+    return norm in {normalize_chain_sym_id(s) for s in f.defined_symbols}
+
+
+def _formula_uses_sym(f: Formula, sym: str) -> bool:
+    norm = normalize_chain_sym_id(sym)
+    return norm in {normalize_chain_sym_id(s) for s in f.used_symbols}
+
+
 EQ_CHAIN_SYM_TO_EQ_ATTRS = 'color="#2563eb", penwidth=1.2, weight=80, constraint=true'
 EQ_CHAIN_EQ_DEF_SYM_ATTRS = 'color="#7c3aed", penwidth=1.2, weight=80, constraint=true'
 EQ_CHAIN_CH_DEF_EQ_ATTRS = (
@@ -991,26 +1351,43 @@ class EqChainCore:
     by_fid: dict[str, Formula]
 
 
-def _compute_eq_chain_core(all_formulas: list[Formula]) -> EqChainCore:
+def _compute_eq_chain_core(
+    all_formulas: list[Formula],
+    symbol_defs: list[SymbolDef] | None = None,
+    symbol_refs: list[SymbolRef] | None = None,
+) -> EqChainCore:
     labeled = [f for f in all_formulas if f.fid.startswith("eq:")]
     by_fid = {f.fid: f for f in labeled}
+    for sd in symbol_defs or []:
+        by_fid[sd.fid] = sd.as_formula()
+    for sr in symbol_refs or []:
+        by_fid[sr.fid] = sr.as_formula()
     ordered = sorted(labeled, key=_formula_order_key)
 
     sym_def_eqs: dict[str, set[str]] = defaultdict(set)
     sym_use_eqs: dict[str, set[str]] = defaultdict(set)
     for f in labeled:
         for sym in f.defined_symbols:
-            sym_def_eqs[sym].add(f.fid)
+            _record_sym_eq(sym_def_eqs, sym, f.fid)
         for sym in f.used_symbols:
-            sym_use_eqs[sym].add(f.fid)
+            _record_sym_eq(sym_use_eqs, sym, f.fid)
+    for sd in symbol_defs or []:
+        _record_sym_eq(sym_def_eqs, sd.sym, sd.fid)
+    for sr in symbol_refs or []:
+        _record_sym_eq(sym_use_eqs, sr.sym, sr.fid)
 
     first_def_order: dict[str, tuple[str, int, str]] = {}
     first_def_chapter: dict[str, str] = {}
+    def_events: list[tuple[str, int, str, str]] = []
     for f in ordered:
         for sym in f.defined_symbols:
-            if sym not in first_def_order:
-                first_def_order[sym] = _formula_order_key(f)
-                first_def_chapter[sym] = f.chapter
+            def_events.append((f.chapter, f.line_start, f.fid, normalize_chain_sym_id(sym)))
+    for sd in symbol_defs or []:
+        def_events.append((sd.chapter, sd.line, sd.fid, normalize_chain_sym_id(sd.sym)))
+    for ch, line, fid, sym in sorted(def_events, key=lambda e: (e[0], e[1], e[2])):
+        if sym not in first_def_order:
+            first_def_order[sym] = (ch, line, fid)
+            first_def_chapter[sym] = ch
 
     chain_syms: set[str] = set()
     for sym in sym_def_eqs:
@@ -1019,7 +1396,7 @@ def _compute_eq_chain_core(all_formulas: list[Formula]) -> EqChainCore:
             continue
         for use_fid in use_eqs:
             use_f = by_fid[use_fid]
-            if sym in use_f.defined_symbols:
+            if _formula_defines_sym(use_f, sym):
                 continue
             if sym not in first_def_order:
                 continue
@@ -1031,7 +1408,9 @@ def _compute_eq_chain_core(all_formulas: list[Formula]) -> EqChainCore:
     kept_eqs: set[str] = set()
     for sym in chain_syms:
         kept_eqs |= sym_def_eqs[sym]
-        kept_eqs |= {e for e in sym_use_eqs[sym] if sym in by_fid[e].used_symbols}
+        kept_eqs |= {
+            e for e in sym_use_eqs[sym] if _formula_uses_sym(by_fid[e], sym)
+        }
 
     return EqChainCore(
         chain_syms=chain_syms,
@@ -1045,13 +1424,25 @@ def _compute_eq_chain_core(all_formulas: list[Formula]) -> EqChainCore:
 
 
 def _append_eq_chain_nodes_edges(
-    lines: list[str], core: EqChainCore
-) -> tuple[int, int, int]:
-    """Emit eq/sym nodes, def/use edges, and within-chapter spine."""
+    lines: list[str], core: EqChainCore, *, include_cooccur: bool = False
+) -> tuple[int, int, int, int]:
+    """Emit eq/sym nodes, def/use edges, spine, and optional sym co-occurrence edges."""
+    visible_fids: set[str] = set()
     for fid in sorted(core.kept_eqs, key=lambda e: _formula_order_key(core.by_fid[e])):
+        if fid.startswith(("symdef:", "symref:")) and _anchor_covered_by_kept_eq(
+            fid, core
+        ):
+            continue
+        visible_fids.add(fid)
         f = core.by_fid[fid]
+        if f.env == "symboldef":
+            node_attrs = 'shape=note, style=filled, fillcolor="#fef3c7"'
+        elif f.env == "symbolref":
+            node_attrs = 'shape=note, style=filled, fillcolor="#e0f2fe"'
+        else:
+            node_attrs = 'shape=box, style=filled, fillcolor="#d1fae5"'
         lines.append(
-            f'  "{fid}" [shape=box, style=filled, fillcolor="#d1fae5", '
+            f'  "{fid}" [{node_attrs}, '
             f'label="{dot_label(_eq_chain_eq_label(f))}"];'
         )
 
@@ -1062,20 +1453,24 @@ def _append_eq_chain_nodes_edges(
         )
 
     lines.append("")
-    lines.append("  // eq → sym (definition on LHS or tuple intro)")
+    lines.append("  // eq|symdef → sym (definition on LHS, tuple intro, or \\symboldef)")
     n_def = 0
     for sym in sorted(core.chain_syms, key=lambda s: s.lower()):
         for fid in sorted(core.sym_def_eqs[sym] & core.kept_eqs):
+            if fid not in visible_fids:
+                continue
             lines.append(f'  "{fid}" -> "sym:{sym}" [{EQ_CHAIN_EQ_DEF_SYM_ATTRS}];')
             n_def += 1
 
     lines.append("")
-    lines.append("  // sym → eq (use on RHS, after first definition)")
+    lines.append("  // sym → eq|symref (use on RHS or \\symbolref, after first definition)")
     n_use = 0
     for sym in sorted(core.chain_syms, key=lambda s: s.lower()):
         for fid in sorted(core.sym_use_eqs[sym] & core.kept_eqs):
+            if fid not in visible_fids:
+                continue
             use_f = core.by_fid[fid]
-            if sym in use_f.defined_symbols:
+            if _formula_defines_sym(use_f, sym):
                 continue
             if sym not in core.first_def_order:
                 continue
@@ -1085,8 +1480,11 @@ def _append_eq_chain_nodes_edges(
             n_use += 1
 
     by_ch: dict[str, list[Formula]] = defaultdict(list)
-    for fid in core.kept_eqs:
-        by_ch[core.by_fid[fid].chapter].append(core.by_fid[fid])
+    for fid in visible_fids:
+        f = core.by_fid[fid]
+        if f.env in ("symboldef", "symbolref") or not fid.startswith("eq:"):
+            continue
+        by_ch[f.chapter].append(f)
     lines.append("")
     lines.append("  // Within-chapter equation line-order (invis layout spine)")
     n_spine = 0
@@ -1095,11 +1493,62 @@ def _append_eq_chain_nodes_edges(
         for a, b in zip(eqs, eqs[1:]):
             lines.append(f'  "{a.fid}" -> "{b.fid}" [{EQ_CHAIN_SPINE_ATTRS}];')
             n_spine += 1
-    return n_def, n_use, n_spine
+
+    n_co = 0
+    if include_cooccur:
+        lines.append("")
+        lines.append("  // sym↔sym co-occurrence in the same kept labeled equation")
+        for fid in sorted(visible_fids):
+            if not fid.startswith("eq:"):
+                continue
+            f = core.by_fid[fid]
+            present = sorted(
+                {
+                    normalize_chain_sym_id(s)
+                    for s in f.defined_symbols | f.used_symbols
+                    if normalize_chain_sym_id(s) in core.chain_syms
+                },
+                key=str.lower,
+            )
+            for i, a in enumerate(present):
+                for b in present[i + 1 :]:
+                    lines.append(
+                        f'  "sym:{a}" -> "sym:{b}" [{EQ_CHAIN_SYM_COOCCUR_ATTRS}];'
+                    )
+                    n_co += 1
+    return n_def, n_use, n_spine, n_co
+
+
+def _visible_eq_chain_fid(fid: str, core: EqChainCore) -> bool:
+    if fid not in core.kept_eqs:
+        return False
+    if fid.startswith(("symdef:", "symref:")) and _anchor_covered_by_kept_eq(
+        fid, core
+    ):
+        return False
+    return True
+
+
+def _resolve_chapter_anchor(anchor: str, ch: str, core: EqChainCore) -> str:
+    """Prefer labeled eq over symdef/symref when anchor sits inside that eq."""
+    if not anchor.startswith(("symdef:", "symref:")):
+        return anchor
+    if not _anchor_covered_by_kept_eq(anchor, core):
+        return anchor
+    anchor_f = core.by_fid[anchor]
+    for fid in sorted(core.kept_eqs):
+        if not fid.startswith("eq:"):
+            continue
+        f = core.by_fid[fid]
+        if f.chapter != ch:
+            continue
+        if f.line_start <= anchor_f.line_start <= f.line_end:
+            return fid
+    return anchor
 
 
 def _chapter_anchor_eq(core: EqChainCore, ch: str) -> str | None:
-    """Earliest kept equation in ``ch`` that first-defines a bridge symbol."""
+    """Earliest kept def site (eq or symdef) in ``ch`` that first-defines a bridge symbol."""
     best_fid: str | None = None
     best_key: tuple[str, int, str] | None = None
     for sym in core.chain_syms:
@@ -1115,38 +1564,56 @@ def _chapter_anchor_eq(core: EqChainCore, ch: str) -> str | None:
     return best_fid
 
 
-def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
+def build_eq_chain_dot(
+    all_formulas: list[Formula],
+    symbol_defs: list[SymbolDef] | None = None,
+    symbol_refs: list[SymbolRef] | None = None,
+    *,
+    include_cooccur: bool = False,
+) -> str:
     """Minimal eq→sym→eq chain graph: definitions (LHS) vs uses (RHS).
 
-    Purple eq→sym: equation defines the symbol (LHS of ``='' or tuple component).
-    Blue sym→eq: symbol is used in a later equation (RHS only).
+    Purple eq|symdef→sym: equation defines the symbol (LHS of ``='' or tuple
+    component), or an explicit ``\\symboldef`` anchor.
+    Blue sym→eq|symref: symbol is used in a later equation (RHS only) or
+    ``\\symbolref`` site.
     """
-    core = _compute_eq_chain_core(all_formulas)
+    core = _compute_eq_chain_core(all_formulas, symbol_defs, symbol_refs)
     lines = [
         "digraph EquationChainGraph {",
-        '  graph [rankdir=LR, fontsize=10, overlap=prism, sep="+20",',
-        '    label="Equation chains (eq→sym defines, sym→eq uses)", labelloc=t];',
+        f'  graph [rankdir=LR, fontsize=10, overlap=prism, sep="{EQ_CHAIN_GRAPH_SEP}", '
+        f"ranksep={EQ_CHAIN_GRAPH_RANKSEP}, nodesep={EQ_CHAIN_GRAPH_NODESEP},",
+        '    label="Equation chains (eq|symdef→sym defines, sym→eq|symref uses)", labelloc=t];',
         "  node [fontname=Helvetica, fontsize=9];",
         "  edge [fontname=Helvetica, fontsize=8];",
         "",
     ]
-    n_def, n_use, n_spine = _append_eq_chain_nodes_edges(lines, core)
+    n_def, n_use, n_spine, n_co = _append_eq_chain_nodes_edges(
+        lines, core, include_cooccur=include_cooccur
+    )
+    co_note = f", {n_co} co-occur edges" if include_cooccur else ""
     lines.append(
         f"  // ({len(core.kept_eqs)} eq nodes, {len(core.chain_syms)} bridge symbols, "
-        f"{n_def} def, {n_use} use, {n_spine} spine edges)"
+        f"{n_def} def, {n_use} use, {n_spine} spine{co_note})"
     )
     lines.append("}")
     return "\n".join(lines)
 
 
-def build_eq_chain_chapters_dot(all_formulas: list[Formula]) -> str:
+def build_eq_chain_chapters_dot(
+    all_formulas: list[Formula],
+    symbol_defs: list[SymbolDef] | None = None,
+    symbol_refs: list[SymbolRef] | None = None,
+    *,
+    include_cooccur: bool = False,
+) -> str:
     """Eq-chain graph plus one chapter→equation link per defining chapter.
 
-    Each ``unit:chNN`` connects to the earliest kept equation in that chapter that
+    Each ``unit:chNN`` connects to the earliest kept def site in that chapter that
     first-defines a bridge symbol (constraining layout). Symbol defs remain
-    eq→sym; no chapter→symbol fan-out and no inter-chapter edges.
+    eq|symdef→sym; uses include ``\\symbolref`` sites; no chapter→symbol fan-out.
     """
-    core = _compute_eq_chain_core(all_formulas)
+    core = _compute_eq_chain_core(all_formulas, symbol_defs, symbol_refs)
     def_chapters = {core.first_def_chapter[sym] for sym in core.chain_syms}
     ch_anchors: dict[str, str] = {}
     for ch in def_chapters:
@@ -1156,7 +1623,8 @@ def build_eq_chain_chapters_dot(all_formulas: list[Formula]) -> str:
 
     lines = [
         "digraph EquationChainGraphWithChapters {",
-        '  graph [rankdir=LR, fontsize=10, overlap=prism, sep="+20",',
+        f'  graph [rankdir=LR, fontsize=10, overlap=prism, sep="{EQ_CHAIN_GRAPH_SEP}", '
+        f"ranksep={EQ_CHAIN_GRAPH_RANKSEP}, nodesep={EQ_CHAIN_GRAPH_NODESEP},",
         '    label="Equation chains + chapter→first-def eq (one per chapter)", labelloc=t];',
         "  node [fontname=Helvetica, fontsize=9];",
         "  edge [fontname=Helvetica, fontsize=8];",
@@ -1169,20 +1637,23 @@ def build_eq_chain_chapters_dot(all_formulas: list[Formula]) -> str:
             f'label="{dot_label(_eq_chain_chapter_label(ch, core, ch_anchors.get(ch)))}"];'
         )
 
-    n_def, n_use, n_spine = _append_eq_chain_nodes_edges(lines, core)
+    n_def, n_use, n_spine, n_co = _append_eq_chain_nodes_edges(
+        lines, core, include_cooccur=include_cooccur
+    )
 
     lines.append("")
-    lines.append("  // unit:chNN → earliest first-def equation in chapter (layout + label)")
+    lines.append("  // unit:chNN → earliest first-def site in chapter (eq or symdef)")
     n_ch = 0
     for ch in sorted(ch_anchors, key=lambda c: int(c[2:]) if c[2:].isdigit() else 999):
-        anchor = ch_anchors[ch]
+        anchor = _resolve_chapter_anchor(ch_anchors[ch], ch, core)
         lines.append(f'  "unit:{ch}" -> "{anchor}" [{EQ_CHAIN_CH_DEF_EQ_ATTRS}];')
         n_ch += 1
 
+    co_note = f", {n_co} co-occur" if include_cooccur else ""
     lines.append(
         f"  // ({len(ch_anchors)} chapter nodes, {len(core.kept_eqs)} eq, "
         f"{len(core.chain_syms)} bridge symbols, {n_ch} ch→eq, "
-        f"{n_def} eq→sym, {n_use} sym→eq, {n_spine} spine)"
+        f"{n_def} eq→sym, {n_use} sym→eq, {n_spine} spine{co_note})"
     )
     lines.append("}")
     return "\n".join(lines)
@@ -1641,6 +2112,11 @@ def main() -> None:
         action="store_true",
         help="Use faint sym→eq edges (old style) instead of high-weight layout spine",
     )
+    parser.add_argument(
+        "--cooccur",
+        action="store_true",
+        help="Emit dashed sym↔sym co-occurrence edges in eq-chain graphs (off by default)",
+    )
     args = parser.parse_args()
     sym_spine = not args.no_sym_spine_layout
 
@@ -1650,6 +2126,11 @@ def main() -> None:
     sec_owner: dict[str, str] = {}
     for p in paths:
         all_formulas.extend(parse_chapter(p, ch_owner=ch_owner, sec_owner=sec_owner))
+
+    symbol_defs = parse_symboldefs(paths)
+    print(f"  {len(symbol_defs)} \\symboldef{{}} definition anchors in manuscript")
+    symbol_refs = parse_symbolrefs(paths)
+    print(f"  {len(symbol_refs)} \\symbolref{{}} use anchors in manuscript")
 
     # Full graph uses all formulas; resolve refs globally
     full_fids = {f.fid for f in all_formulas}
@@ -1678,11 +2159,27 @@ def main() -> None:
     args.out.write_text(dot, encoding="utf-8")
 
     eq_chain_path = args.out.with_name("equation-chain-graph.dot")
-    eq_chain_path.write_text(build_eq_chain_dot(all_formulas), encoding="utf-8")
+    eq_chain_path.write_text(
+        build_eq_chain_dot(
+            all_formulas,
+            symbol_defs,
+            symbol_refs,
+            include_cooccur=args.cooccur,
+        ),
+        encoding="utf-8",
+    )
     print(f"Wrote {eq_chain_path}")
 
     eq_chain_ch_path = args.out.with_name("equation-chain-graph-chapters.dot")
-    eq_chain_ch_path.write_text(build_eq_chain_chapters_dot(all_formulas), encoding="utf-8")
+    eq_chain_ch_path.write_text(
+        build_eq_chain_chapters_dot(
+            all_formulas,
+            symbol_defs,
+            symbol_refs,
+            include_cooccur=args.cooccur,
+        ),
+        encoding="utf-8",
+    )
     print(f"Wrote {eq_chain_ch_path}")
 
     if args.detailed and not args.chapter:

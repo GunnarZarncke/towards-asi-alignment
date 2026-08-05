@@ -106,9 +106,10 @@ The risk-bound condition is:
 \mathrm{Control}(A)\leq \mathrm{CCI}(A)+\delta.
 \]
 From the slack condition alone, the spine derives the numeric risk leaf:
-\[
+\begin{equation}
 \mathrm{RiskGap}(A)\leq\delta.
-\]
+\label{eq:risk-gap-leaf-ch48}
+\end{equation}
 \leanspine{proof}{P30}{The Lean spine packages certification, invariants, layered alignment, and the risk leaf into a safety-case root; the numeric risk leaf itself follows from \(CCI\)-slack.}
 
 This distinction matters.

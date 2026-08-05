@@ -2,12 +2,176 @@
 
 Machine-generated coverage of manuscript symbols and the formulas they appear in, plus the Lean proof-spine dependency graph and the combined manuscript↔Lean crosswalk. Part of the [symbol census](../README.md) — see that file for how this fits with the contribution audit and coverage tables.
 
+**Generated `.dot` / `.svg` files in this folder are gitignored** — regenerate locally after editing `chapters/` or `formal/` (see below).
+
+Section/chapter prose citations live separately in [`metadata/concept-graph/`](../../concept-graph/README.md).
+
+---
+
+## Graph catalog — how each graph works
+
+| Graph | Script | Best for |
+|-------|--------|----------|
+| [`equation-chain-graph.dot`](equation-chain-graph.dot) | `extract_symbol_formula_graph.py` | **Start here.** Symbol definition chains only (`eq→sym→eq`). |
+| [`equation-chain-graph-chapters.dot`](equation-chain-graph-chapters.dot) | same | Same chains + one **chapter → anchor eq** link per defining chapter. |
+| [`symbol-formula-graph.dot`](symbol-formula-graph.dot) | same | Full symbol↔formula reachability + sparse `\eqref` + prose `\eqref` hubs. |
+| [`lean-dependency-graph.dot`](lean-dependency-graph.dot) | same | Lean declaration `uses` graph only. |
+| [`manuscript-lean-crosswalk-graph.dot`](manuscript-lean-crosswalk-graph.dot) | same | Manuscript symbols/formulas wired to `\leanspine{}` → Lean. |
+| [`section-reference-graph*.dot`](../../concept-graph/) | `build_section_reference_graph.py` | Section/chapter `\ref` DAG (narrative structure, not symbols). |
+
+### `equation-chain-graph.dot` — definition chains
+
+**Question it answers:** Which labeled equations *define* a symbol (LHS of `=`, or tuple
+intro), and where is that symbol *reused* later (RHS only)?
+
+**Included nodes**
+
+- **`eq:…`** — labeled display equations that participate in at least one bridge symbol chain.
+- **`symdef:chNN:line`** — explicit `\symboldef[canonical-id]{math}` definition sites (amber note nodes).
+- **`symref:chNN:line`** — explicit `\symbolref[canonical-id]{math}` use sites (light-blue note nodes).
+- **`sym:…`** — symbols **defined** in ≥1 eq/symdef and **used** in ≥1 later eq/symref (manuscript
+  order). Re-statements on the LHS of a later eq do not count as “use.”
+
+**Visible edges**
+
+| Color | Direction | Meaning |
+|-------|-----------|---------|
+| Purple | `eq \| symdef → sym` | **Definition** — symbol on LHS of `=`, tuple intro, or marked with `\symboldef`. |
+| Blue | `sym → eq \| symref` | **Use** — symbol on RHS of a later labeled eq, or marked with `\symbolref`. |
+
+**Invisible edges (layout only — not drawn in SVG)**
+
+| Style | Direction | Meaning |
+|-------|-----------|---------|
+| `style=invis, weight=60, constraint=true` | `eq → eq` within each chapter | **Line-order spine** — consecutive kept equations in source file order. Pulls same-chapter eqs into a readable left-to-right band even when they are not linked by def/use. |
+
+**Node labels** (three lines): equation slug · `chNN · Lline` · `eq:label`; symbol name ·
+`def <slug>` · first-def chapter/line. `Lline` is the `\label{eq:…}` line in the `.tex` file
+(jump target in your editor), not a PDF equation number.
+
+**Layout quirks**
+
+- An equation can appear **with no visible edges** (~14 in the full book) but still sit near
+  neighbors: it is kept because a bridge symbol references it, while the **use edge is suppressed**
+  (symbol used *before* its first definition in source order), and the **invis spine** still
+  ranks it among same-chapter equations. Example: `eq:reproduction-guarantee` (used by `sym:R`
+  at L541, but `R` is first defined at L671).
+- Cross-chapter **use** edges (`sym → eq`) are weaker for layout than the within-chapter invis
+  spine — e.g. `sym:L_{t}` (defined ch08) → `eq:control-locus-ch10` (ch10) can look far from
+  the symbol while the eq sits next to `eq:goal-divergence` on the ch10 spine.
+
+**Not included:** sections, chapters, `\ref{ch:…}`, `\ref{sec:…}`, Lean, prose `\eqref` hubs.
+
+### `equation-chain-graph-chapters.dot` — chains + chapter anchors
+
+Everything in **`equation-chain-graph.dot`**, plus:
+
+**Extra nodes**
+
+- **`unit:chNN`** — folder node for each chapter that first-defines at least one bridge symbol.
+
+**Extra visible edge**
+
+| Color | Direction | Meaning |
+|-------|-----------|---------|
+| Amber | `unit:chNN → eq \| symdef` | **One edge per chapter** to the **earliest** first-def site in that chapter (`constraint=true`). |
+
+Chapter label: `chNN` · anchor slug · `Lline · filename.tex`.
+
+**Not included:** inter-chapter links, chapter→symbol fan-out (removed after it cluttered layout).
+
+**Symbol id normalization:** `\symboldef[D_G]` and equation extraction both map to hub id `D_G`
+(extractor may emit `D_{G}` before normalization). Same for `Omega_Q` / `Omega_{Q}`, `B_race` /
+`\mathbb{B}_{\mathrm{race}}`, etc. Boundary partitions `\mathcal{C}_t` (ch08) extract as
+`mathcal_C_{t}`, distinct from correction signal `C_t` (ch25 `\symboldef`).
+
+**Isolated clusters:** A bridge symbol appears disconnected when its def/use chain never shares a
+**labeled** `eq:…` with another bridge symbol. Examples: `ICI` (only `eq:ici-ch35`; κ̃ and UAD live
+in unlabeled `\[…\]` blocks); `R_i` (uses `C_{act}` / MI, not `K_X`); `B_race`/`B_certified`
+(selection basins, not value bundle `B_i`). Fix by labeling a shared equation, adding `\symbolref`
+in a labeled eq, or accepting intentional isolation. Optional dashed gray **sym↔sym** co-occurrence
+edges (same labeled equation) are available with `--cooccur`; omitted by default.
+
+**Anchor note labels:** `symdef`/`symref` nodes show `ICI (def anchor)` / `ICI (use anchor)`, not
+`\symbolref ICI`. When an anchor sits inside a labeled equation, the eq box is shown and the
+duplicate note is suppressed.
+
+### Marking definitions with `\symboldef`
+
+Opt-in macro in `metadata/preamble.tex` (like `\leanspine`):
+
+```tex
+\symboldef{\mathrm{CCI}}                    % canonical id inferred from math
+\symboldef[CCI]{\vec{\mathrm{CCI}}}         % explicit id (matches metadata/notation.md)
+\symboldef[mu_E]{\mu_E(A)}
+```
+
+Use when a symbol is defined in prose or display math without a clean labeled-eq LHS, or when
+the canonical home should be recorded explicitly. Renders as the inner math only (no visible
+marker).
+
+### Marking uses with `\symbolref`
+
+Opt-in use-site marker (pair with `\symboldef` or a labeled-eq definition):
+
+```tex
+\symbolref[RiskGap]{\mathrm{RiskGap}(A)\leq\delta}
+\symbolref[Fit_E]{\mathrm{Fit}_E(A)}
+```
+
+Light-blue `symref:chNN:line` note nodes in the eq-chain graph; blue `sym → symref` edges count
+as **uses** for bridge-symbol admission (same rules as labeled-eq RHS uses: after first def,
+not a re-definition). Prefer `\label{eq:…}` when the display is already a theorem leaf; use
+`\symbolref` for unlabeled `\[…\]` or inline math only.
+
+### `symbol-formula-graph.dot` — full manuscript reachability
+
+**Question it answers:** Where does each extracted symbol appear, and what do labeled equations
+cite via `\eqref`?
+
+**Nodes:** all labeled `eq:…` plus `sym:…` that appear in them; optional `ghost:eq:…` for
+missing targets; `eqcite:chNN` hubs aggregating prose `\eqref{eq:…}` per citing chapter.
+
+**Edges:** thinned blue **symbol → formula** (any appearance, not def/use split); green
+**formula → formula** (`\eqref` inside labeled eq blocks); dashed green **eqcite → formula**
+(prose `\eqref`). Chapter/section `\ref` edges were **removed** from this graph — see
+concept-graph.
+
+**Layout:** `sfdp` force-directed (too large/cyclic for `dot`). No within-chapter invis spine.
+
+### `lean-dependency-graph.dot` — Lean spine only
+
+**Question it answers:** Which Lean declarations reference which others (heuristic body scan)?
+
+**Nodes:** `lean:DeclarationName` from `formal/AlignmentProofSpine/**/*.lean`.
+
+**Edges:** green **`uses`** — whole-name token match in declaration body (coarse, not elaborator-accurate).
+
+**Layout:** `sfdp`. No manuscript nodes.
+
+### `manuscript-lean-crosswalk-graph.dot` — manuscript ↔ Lean
+
+**Question it answers:** Can I trace from a manuscript symbol/formula to a Lean theorem?
+
+**Nodes:** manuscript `sym:`, `eq:`, prose lines, `\leanspine{kind}{node}{gloss}` diamonds,
+`lean:` boxes.
+
+**Edges:** symbol→formula (blue), formula refs (green), leanspine→lean (purple, labeled
+`proof` / `counterexample` / `bridge`), lean→lean (`uses`). Chapters with **zero**
+`\leanspine{}` anchors are genuine dead ends until anchors are added.
+
+**Layout:** `sfdp`. See [coverage limits](#coverage-limits) for anchor gaps.
+
+---
+
 ## Regenerate
 
 Run from the repo root:
 
 ```bash
 python3 scripts/extract_symbol_formula_graph.py
+# optional co-occurrence overlay on eq-chain graphs:
+python3 scripts/extract_symbol_formula_graph.py --cooccur
 # single chapter:
 python3 scripts/extract_symbol_formula_graph.py --chapter ch14 --out metadata/symbol-census/graphs/symbol-formula-graph-ch14.dot
 ```
@@ -58,19 +222,16 @@ under that name, or use a naming convention the alias resolver doesn't cover; ch
 
 ## Text-only cross-references (concept-graph)
 
-Chapter/section prose citations (`\ref{ch:...}`, `\ref{sec:...}`) live in
-[`metadata/concept-graph/section-reference-graph.dot`](../../concept-graph/section-reference-graph.dot)
-(one edge per citing **section** → target **section/chapter** label). Regenerate with
-`python3 scripts/build_section_reference_graph.py`.
+Chapter/section prose citations (`\ref{ch:...}`, `\ref{sec:...}`) and the section-level DAG
+(invis spines, back-ref rank thinning, glossary validation) are documented in
+[`metadata/concept-graph/README.md`](../../concept-graph/README.md).
 
-**Equation references** (`\eqref{eq:...}` / `\ref{eq:...}`) also appear there as green
-**section → eq** edges, plus **eq line-order spines** within each chapter. This graph
-restores **`eqcite:chNN → eq:...`** hubs here (prose `\eqref` aggregation only) — not
-the removed `chcite`/`chref` chapter hairball.
+**Equation references** in prose (`\eqref{eq:...}`) appear there as green **section → eq**
+edges. This folder keeps sparse **`eqcite:chNN → eq`** hubs in `symbol-formula-graph.dot` only.
 
 The `--detailed` flag still emits per-line prose nodes for equation-level debugging only.
 
-## Graph semantics
+## Graph semantics (symbol-formula + Lean graphs)
 
 **Node types**
 
@@ -162,7 +323,7 @@ sfdp -Goverlap=prism -Gsep="+15" -GK=1.5 -Gmaxiter=300 -Tsvg lean-dependency-gra
 
 `-Goverlap=prism` removes node overlaps (default sfdp overlap removal is weaker); `-GK` sets the
 ideal edge length (higher = more spread, 2–2.5 works well at this density; the Lean-only graph
-needs less since it has no giant symbol cluster); `-Gsep="+20"` adds extra margin around nodes
+needs less since it has no giant symbol cluster); `-Gsep="+24"` adds extra margin around nodes
 during overlap removal; `-Gmaxiter=300` gives the force-directed solver enough iterations to
 settle at this size. This roughly quadruples the canvas area (e.g. the full manuscript graph
 went from a ~2400×1900pt viewBox to ~10000×6000pt) — that is the point, not a bug; open the SVG

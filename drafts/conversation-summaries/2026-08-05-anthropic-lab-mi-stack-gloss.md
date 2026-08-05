@@ -18,4 +18,4 @@ User flagged the Anthropic / Goodfire field agenda card: title says "MI stack" b
 - `site/src/content/cards/field-agendas/anthropic-lab.md`
 
 ## Commits
-- (this session)
+- `6d37e99b` Gloss MI stack on Anthropic/Goodfire field agenda card.

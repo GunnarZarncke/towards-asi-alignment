@@ -2,11 +2,15 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (equation-chain node labels).
+Last updated: 2026-08-05 (eq-chain graph cleanup).
 
 ---
 
 ## Open work (load-bearing)
+
+- **Eq-chain editorial** — chapter moves, basin notation, C_t/θ disambiguation, co-occur optional shipped; see `drafts/editorial-guidance-eq-chain-placement.md`, `2026-08-05-eq-chain-editorial-placement.md`, `2026-08-05-eq-chain-graph-cleanup.md`. Remaining: concept bodies / open-problems for old `\mathcal{B}_{\text{race}}` strings; latent `p_\theta` vs MI `\theta` hub collision.
+
+- **`\symbolref` (partial)** — use-site markers shipped for C_t tuple sites; more unlabeled blocks (e.g. RiskGap) still open. Log: `2026-08-05-symboldef-macro.md`.
 
 - **App G translation spine opener (author)** — Mirror site `/lean/` projections table in Appendix G; deferred from translation spine Phase 2 close-out. Site companion done; manuscript pass is author-owned.
 
@@ -34,6 +38,9 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Eq-chain graph cleanup (2026-08-05):** Optional `--cooccur`; layout ranksep/nodesep; canonical `C_t` (ch25 `\symboldef`, `\mathcal{C}_t` boundary); `\theta_{\mathrm{reach}}` vs MI `\theta`. Log: `2026-08-05-eq-chain-graph-cleanup.md`.
+- **Eq-chain editorial (2026-08-05):** Extractor subscript basins; Control/D_G/Omega_Q placement; ch08→ch09 responsibility; ch10→ch40 D_G; ch26 CCI split; notation homes; site dependency spines. Log: `2026-08-05-eq-chain-editorial-placement.md`.
+- **Metadata graphs (2026-08-05):** `\symboldef` macro + eq-chain integration — opt-in definition anchors (`symdef:chNN:line` note nodes); pilot marks for CCI, Control, epsilon, mu_E, RiskGap. Log: `2026-08-05-symboldef-macro.md`.
 - **Metadata graphs (2026-08-05):** Eq-chain node labels — fix literal `\n`; eq/sym/chapter nodes show `chNN · Lline`, `eq:label`, def site. Log: `2026-08-05-equation-chain-node-labels.md`.
 - **Metadata graphs (2026-08-05):** Equation-chain **chapters variant** — one `unit:chNN→eq` anchor per chapter (layout-constraining); shared `EqChainCore` refactor. Log: `2026-08-05-equation-chain-chapters-variant.md`.
 - **Reference + site (2026-08-05):** Anthropic / Goodfire agenda — gloss **MI stack** on first use (mechanistic interpretability link + Goodfire/Transluce/Neuronpedia); contributes line links DeepMind MI lineage. Log: `2026-08-05-anthropic-lab-mi-stack-gloss.md`.

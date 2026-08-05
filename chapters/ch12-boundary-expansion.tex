@@ -180,24 +180,25 @@ What matters is that the later system has strictly greater predictive, active, o
 
 A more operational definition uses reach.
 
-Define the $k$-step predictive reach of $X$ as the set of external variables whose future states are predicted by $X$'s internal state above a threshold:
+Write $\theta_{\mathrm{reach}}$ for the mutual-information cutoff that defines membership in a reach set (distinct from the correction-influence threshold $\theta$ used in later chapters).
+Define the $k$-step predictive reach of $X$ as the set of external variables whose future states are predicted by $X$'s internal state above that cutoff:
 \begin{equation}
-\mathcal{R}^{\mathrm{pred}}_X(k,\theta)
+\mathcal{R}^{\mathrm{pred}}_X(k,\theta_{\mathrm{reach}})
 =
 \left\{
 e^j\in E:
-\MI(I^X_t;e^j_{t+k})>\theta
+\MI(I^X_t;e^j_{t+k})>\theta_{\mathrm{reach}}
 \right\}.
 \label{eq:predictive-reach}
 \end{equation}
 
-Define the $k$-step control reach as the set of external variables whose future states are causally affected by $X$'s actions above a threshold:
+Define the $k$-step control reach as the set of external variables whose future states are causally affected by $X$'s actions above the same cutoff:
 \begin{equation}
-\mathcal{R}^{\mathrm{ctrl}}_X(k,\theta)
+\mathcal{R}^{\mathrm{ctrl}}_X(k,\theta_{\mathrm{reach}})
 =
 \left\{
 e^j\in E:
-\MI(A^X_t;e^j_{t+k}\mid \mathrm{do}(A^X_t))>\theta
+\MI(A^X_t;e^j_{t+k}\mid \mathrm{do}(A^X_t))>\theta_{\mathrm{reach}}
 \right\}.
 \label{eq:control-reach}
 \end{equation}

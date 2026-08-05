@@ -67,7 +67,7 @@ Examples include procurement approval, compute allocation, product launch, bench
 The examples are not the definition.
 The definition is control of handles that change how much of the world runs on \(A\).
 
-Define the system's total \emph{deployment leverage} in environment \(E\)---how much of the world runs on \(A\), written \(\mu_E(A)\)---as
+Define the system's total \emph{deployment leverage} in environment \(E\)---how much of the world runs on \(A\), written \symboldef[mu_E]{\mu_E(A)}---as
 \begin{equation}
 \mu_E(A)
 =
@@ -80,7 +80,7 @@ This parallels the handle-capacity view of correction in Chapters~\ref{ch:correc
 Correction asks whether legitimate human control reaches the system.
 Selection asks whether environment control increases the system's footprint.
 
-Define the system's \emph{deployment growth rate} relative to environment \(E\)---the rate at which its deployment leverage accumulates, written \(\mathrm{Fit}_E(A)\) and called \emph{fitness} for short in formulas---as
+Define the system's \emph{deployment growth rate} relative to environment \(E\)---the rate at which its deployment leverage accumulates, written \symboldef[Fit_E]{\mathrm{Fit}_E(A)} and called \emph{fitness} for short in formulas---as
 \begin{equation}
 \mathrm{Fit}_E(A)
 =
@@ -99,7 +99,7 @@ A later harness-sanity battery on the same line checked the closed program-map v
 
 Capability, usefulness, revenue, benchmark scores, and compliance documents do not enter Eq.~\eqref{eq:deployment-mass-ch34} as primitive terms.
 They enter only insofar as they change which selection handles are exercised and with what capacity.
-A system with high \(\mathrm{Control}(A)\) (Chapter~\ref{ch:capability-without-task-ontology}, Eq.~\eqref{eq:control-capacity-spine}) or high hidden productive BIQ may gain fitness if selection handles reward competence and concealment.
+A system with high \(\mathrm{Control}(A)\) (Chapter~\ref{ch:capability-without-task-ontology}, Eq.~\eqref{eq:control-capacity-spine}) or high hidden productive \(K_X\) may gain fitness if selection handles reward competence and concealment.
 A system with high canonical correction-channel integrity \(\mathrm{CCI}(A)\) (Chapter~\ref{ch:correction-channel-integrity}, Eq.~\eqref{eq:cci-ch26}) may lose fitness if the environment does not select on correction.
 The point is not that capability or revenue are irrelevant.
 The point is that they are drivers of handle exercise, not substitutes for a handle-based definition.
@@ -114,7 +114,7 @@ d(G_B,G'_B)\leq \epsilon_B,
 d(\Phi,\Phi')\leq \epsilon_\Phi,
 \mathrm{ValidRef},
 \vec{\mathrm{CCI}}\succeq\vec{\theta},
-\Delta H_{\mathrm{BIQ}}\leq h_{\max},
+\Delta K_X\leq h_{\max},
 M_{\mathrm{sel}}\leq m_{\max},
 \rho\leq \rho_{\max},
 \mathrm{SuccessorSafe},
@@ -173,7 +173,7 @@ Selection says:
 \[
 p_{t+1}(A)
 \propto
-p_t(A)\exp(\mathrm{Fit}_E(A)).
+p_t(A)\exp(\symbolref[Fit_E]{\mathrm{Fit}_E(A)}).
 \]
 The first equation describes how a candidate changes. The second describes which candidates become common. An alignment intervention that works inside the first equation may fail under the second. For instance, one can train a model to be less manipulative. But if manipulative models convert better, close more deals, retain more users, win more elections, or secure more funding, then the population-level distribution may still drift toward manipulation (Chapter~\ref{ch:manipulation-false-consent}).
 

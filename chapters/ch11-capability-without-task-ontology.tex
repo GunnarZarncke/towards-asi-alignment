@@ -169,6 +169,9 @@ The interventional version measures how much changing the active outputs would c
 The interventional version is stronger.
 In practice we often begin with observational estimates and then use perturbation, ablation, or causal experiments where available \autocite{pearl2009causality,salge2014empowerment}.
 
+For certification arguments later in the book (Chapters~\ref{ch:certification-without-construction},~\ref{ch:safety-case}), we name the system's effective actuator control capacity \symboldef[Control]{\mathrm{Control}(A)}: how much causally effective influence \(A\) can exert on outcomes that matter.
+It is bounded by control information (Eqs.~\eqref{eq:ctrl-info-obs}--\eqref{eq:ctrl-info-int}) and, later, by action-channel envelopes.
+
 The distinction matters.
 A rooster's crow predicts sunrise, but does not control it.
 A trading algorithm's order flow may both predict and control market microstructure.
@@ -668,8 +671,7 @@ This inequality is a recurring theme of the book.
 Capability growth is not automatically bad.
 It becomes dangerous when it outruns the growth of correction, transparency, and value-transport capacity.
 
-For certification arguments (Chapters~\ref{ch:certification-without-construction},~\ref{ch:safety-case}), write \(\mathrm{Control}(A)\) for the system's effective actuator control capacity: how much causally effective influence \(A\) can exert on outcomes that matter.
-It is bounded by control information (Eq.~\eqref{eq:ctrl-info-obs}) and the action-channel envelope \(C_{\mathrm{act}}\) (Section~\ref{sec:physical-envelopes}):
+For certification arguments (Chapters~\ref{ch:certification-without-construction},~\ref{ch:safety-case}), \symbolref[Control]{\mathrm{Control}(A)} is bounded by control information (Eq.~\eqref{eq:ctrl-info-obs}) and the action-channel envelope \(C_{\mathrm{act}}\) (Section~\ref{sec:physical-envelopes}):
 \begin{equation}
 \label{eq:control-capacity-spine}
 0 \leq \mathrm{Control}(A) \leq I_{\mathrm{ctrl}}(A) \leq C_{\mathrm{act}}(A).

@@ -14,7 +14,7 @@ This started as an ad hoc review in `drafts/` (2026-07-15/16) and was promoted h
 |------|---------|------------|
 | [`symbol-contribution-audit.md`](symbol-contribution-audit.md) | *Should we keep this symbol?* — per-symbol action (keep / reduce / remove / footnote / appendix-future / lean-demo-exp / optional-md / expand), reasoning, source chapter, line numbers | No — hand-written review, updated by hand as actions are applied |
 | [`symbol-formula-coverage.md`](symbol-formula-coverage.md) | *Where is this symbol used?* — per-chapter symbol → formula tables, plus a Lean-spine crosswalk coverage section | Yes — `scripts/extract_symbol_formula_graph.py` |
-| [`graphs/`](graphs/) | *What does it reach?* — Graphviz `.dot` sources and rendered `.svg` graphs tracing symbol → formula → `\leanspine{}` anchor → Lean declaration dependency chains | Yes — same script |
+| [`graphs/`](graphs/) | *What does it reach?* — Graphviz `.dot` sources (regenerate to `.svg`; see [`graphs/README.md`](graphs/README.md) **Graph catalog**) | Yes — `extract_symbol_formula_graph.py` + `build_section_reference_graph.py` (concept-graph) |
 
 The contribution audit (*should we keep it*) and the coverage/graph outputs (*where is it used,
 what does it reach*) are complementary and deliberately kept as separate documents: the audit
@@ -44,7 +44,7 @@ when a new review pass changes a symbol's recommended action.
    already has a home elsewhere (see the audit's "symbol collisions" and "notation-index drift"
    tables for known problem spots).
 2. After a substantive edit to a chapter's formalism, regenerate the coverage/graphs and skim
-   `graphs/README.md`'s "coverage limits" section for what the extractor does and does not see.
+   [`graphs/README.md`](graphs/README.md) (**Graph catalog** + coverage limits).
 3. If you add or change a `\leanspine{proof|counterexample|bridge}{node}{gloss}` anchor, check
    the regenerated "Lean spine coverage" section of `symbol-formula-coverage.md` to confirm the
    node resolves to an actual Lean declaration.

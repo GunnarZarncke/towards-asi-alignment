@@ -478,6 +478,36 @@ Examples include:
 
 Composite agency tells us not to give up on responsibility, but to move responsibility to the correct level of control.
 
+When agents grow, split, and merge (Chapter~\ref{ch:grow-split-merge}), a \emph{responsibility gap} appears when no component contains enough of the relevant state, authority, and prediction capacity to control system-level behavior.
+Composite capability is measured at the blanket boundary by $K_X$ (Chapter~\ref{ch:capability-without-task-ontology}, Equation~\eqref{eq:biq}).
+For a component $i$, define responsibility capacity:
+\begin{equation}
+\mathcal{R}_i
+=
+\MI(I^i_t;A^H_{t+k})
++
+\MI(A^i_t;E^H_{t+k})
+-
+\text{Opacity}_{i\to H}
+-
+\text{Latency}_{i\to H}.
+\label{eq:responsibility-capacity}
+\end{equation}
+A responsibility gap exists when:
+\begin{equation}
+\max_i \mathcal{R}_i < \theta_R
+\quad\text{while}\quad
+K_X(A^H)>\theta_K
+\quad\text{and}\quad
+C_{\text{act}}(A^H)>\theta_A.
+\label{eq:responsibility-gap}
+\end{equation}
+In words: the composite can act powerfully, but no part can understand and redirect it well enough.
+This is common in modern systems---no individual understands a large software platform, no trader controls a market, no engineer controls an entire recommender ecosystem---yet these systems act.
+Superintelligence can make it worse when the composite becomes the true optimizer and alignment targeted at a component fails.
+The practical question is then: where is the smallest boundary that contains enough state and action capacity to explain the dangerous behavior, and who or what has correction capacity over that boundary?
+If the answer is ``no one,'' the system is not governable in its present form.
+
 \section{The Composite Alignment Target}
 \label{sec:composite-alignment-target}
 

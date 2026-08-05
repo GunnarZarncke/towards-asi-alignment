@@ -29,4 +29,4 @@ Build manuscript dependency graphs: section/chapter refs in `concept-graph/`, sy
 - `metadata/symbol-census/graphs/README.md`
 
 ## Commits
-- (this session)
+- `226783e9` Add def/use equation chains and section reference graph scripts.

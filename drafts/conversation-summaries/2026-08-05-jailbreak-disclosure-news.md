@@ -25,4 +25,4 @@ User asked for a general-audience news entry on the AI Frontiers article “AI J
 
 ## Commits
 - `444ed2f7` Add jailbreak disclosure field news with sourced examples.
-- (pending) Add RSS subscribe CTA on news index.
+- `5b7a3c54` Add RSS subscribe call-to-action on the news index.

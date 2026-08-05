@@ -87,13 +87,13 @@ X_t = I_t \cup S_t \cup A_t \cup E_t,
 where $I_t$ denotes internal states, $S_t$ sensory interface states, $A_t$ active interface states, and $E_t$ external states.
 A useful approximate boundary is one where, after conditioning on the interface, internal and external futures are nearly independent:
 \begin{equation}
-\ell(C_t)
+\ell(\mathcal{C}_t)
 =
 \MI(I_{t+1};E_{t+1}\mid I_t,S_t,A_t)
 \leq \epsilon .
 \label{eq:blanket-leakage}
 \end{equation}
-Here $C_t=(I_t,S_t,A_t,E_t)$ denotes the candidate partition at time $t$, $\MI(\cdot;\cdot\mid\cdot)$ is conditional mutual information, and $\epsilon$ is the tolerated leakage.
+Here $\mathcal{C}_t=(I_t,S_t,A_t,E_t)$ denotes the candidate partition at time $t$, $\MI(\cdot;\cdot\mid\cdot)$ is conditional mutual information, and $\epsilon$ is the tolerated leakage.
 
 This condition should not be read as metaphysics.
 It is a modeling criterion.
@@ -105,11 +105,11 @@ It is a process that maintains or changes its own boundary over time.
 
 So we need a time-indexed boundary sequence:
 \[
-\mathcal{C}_{1:T} = (C_1,C_2,\ldots,C_T).
+\mathcal{C}_{1:T} = (\mathcal{C}_1,\mathcal{C}_2,\ldots,\mathcal{C}_T).
 \]
 The stationary case is the simple limit:
 \[
-C_t=C_{t+1}
+\mathcal{C}_t=\mathcal{C}_{t+1}
 \quad\text{for all }t.
 \]
 Most interesting agents violate this.
@@ -121,7 +121,7 @@ If we require literal equality of variables, all these systems become different 
 That is too brittle.
 Instead, we should ask whether there exists a transformation map
 \[
-T_t:C_t\rightarrow C_{t+1}
+T_t:\mathcal{C}_t\rightarrow \mathcal{C}_{t+1}
 \]
 such that the relevant agent-properties are approximately conserved.
 In the simplest case, $T_t$ maps yesterday's boundary variables into today's boundary variables.
@@ -129,7 +129,7 @@ In more complex cases, it maps old variables into compressed summaries, successo
 
 Agent identity then becomes a claim about transport:
 \begin{equation}
-T_t(C_t)\sim C_{t+1}.
+T_t(\mathcal{C}_t)\sim \mathcal{C}_{t+1}.
 \label{eq:boundary-transport}
 \end{equation}
 The symbol $\sim$ does not mean equality.
@@ -217,7 +217,7 @@ It is a lineage of bounded control processes linked by sufficiently low transpor
 Growth is boundary expansion that preserves enough control coherence.
 
 A system grows when it incorporates new variables, tools, memories, interfaces, or subagents into its effective boundary.
-Let $C_t$ be the old boundary and $C_{t+1}$ the new boundary.
+Let $\mathcal{C}_t$ be the old boundary and $\mathcal{C}_{t+1}$ the new boundary.
 A pure expansion has:
 \[
 I_t\cup S_t\cup A_t \subseteq I_{t+1}\cup S_{t+1}\cup A_{t+1}.
@@ -235,7 +235,7 @@ A new variable $Y_t$ becomes part of the agentic boundary when adding it to the 
 \Delta_{\text{integrate}}(Y)
 =
 \left[
-\ell(C_t)-\ell(C_t\cup Y)
+\ell(\mathcal{C}_t)-\ell(\mathcal{C}_t\cup Y)
 \right]
 +
 \alpha\,\Delta I_{\text{ctrl}}(Y)
@@ -658,61 +658,8 @@ It is a merged socio-technical agent.
 This is not necessarily bad.
 But it must be recognized.
 
-\section{Composite Agents and Responsibility Gaps}
-\label{sec:responsibility-gaps}
-
-When agents grow, split, and merge, responsibility becomes harder to assign.
-This is not merely a legal inconvenience.
-It is a safety problem.
-
-A responsibility gap appears when no component contains enough of the relevant state, authority, and prediction capacity to control the system-level behavior.
-
-For a component $i$, define responsibility capacity:
-\begin{equation}
-\mathcal{R}_i
-=
-\MI(I^i_t;A^H_{t+k})
-+
-\MI(A^i_t;E^H_{t+k})
--
-\text{Opacity}_{i\to H}
--
-\text{Latency}_{i\to H}.
-\label{eq:responsibility-capacity}
-\end{equation}
-A responsibility gap exists when:
-\begin{equation}
-\max_i \mathcal{R}_i < \theta_R
-\quad\text{while}\quad
-C_{\text{act}}(A^H)>\theta_A.
-\label{eq:responsibility-gap}
-\end{equation}
-In words: the composite can act powerfully, but no part can understand and redirect it well enough.
-
-This is common in modern systems.
-No individual understands a large software platform.
-No trader controls a market.
-No engineer controls an entire recommender ecosystem.
-No official fully controls a bureaucracy.
-Yet these systems act.
-
-Superintelligence can make this worse.
-The system may be distributed across models, tools, institutions, incentives, and human dependencies.
-If the composite becomes the true optimizer, then alignment targeted at a component will fail.
-
-A practical alignment program must therefore ask:
-
-\begin{quote}
-Where is the smallest boundary that contains enough state and action capacity to explain the dangerous behavior?
-\end{quote}
-
-Then it must ask:
-
-\begin{quote}
-Who or what has correction capacity over that boundary?
-\end{quote}
-
-If the answer is ``no one,'' the system is not governable in its present form.
+After merging, the composite may act powerfully while no single component can steer it well enough.
+Chapter~\ref{ch:composite-agent} (Section~\ref{sec:composite-responsibility}) defines responsibility capacity and the responsibility gap formally.
 
 \section{Conserved Properties}
 \label{sec:conserved-properties}
@@ -733,7 +680,7 @@ Chapter~\ref{ch:conserved-properties} names them canonically and tests them join
 
 The successor or composite should still have an identifiable low-leakage boundary:
 \[
-\ell(C_{t+1})\leq \epsilon.
+\ell(\mathcal{C}_{t+1})\leq \epsilon.
 \]
 If boundary leakage rises too much, the system may no longer be analyzable as a bounded agent.
 Or worse, the true boundary may have expanded beyond the certified object.
@@ -980,7 +927,7 @@ A system $A_t$ may undergo transformation $T_t$ only if the following hold.
 \paragraph{Boundary condition.}
 The post-transformation system has an identifiable boundary with leakage below threshold:
 \[
-\ell(C_{t+1})\leq \epsilon.
+\ell(\mathcal{C}_{t+1})\leq \epsilon.
 \]
 
 \paragraph{Transport condition.}
@@ -1118,9 +1065,9 @@ The successor may preserve the words but not the correction channel.
 
 The core formal shift is:
 \[
-C_t=C_{t+1}
+\mathcal{C}_t=\mathcal{C}_{t+1}
 \quad\longrightarrow\quad
-T_t(C_t)\sim C_{t+1}.
+T_t(\mathcal{C}_t)\sim \mathcal{C}_{t+1}.
 \]
 Agent identity becomes transport of conserved properties across transformation.
 
