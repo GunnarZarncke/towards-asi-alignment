@@ -7,6 +7,7 @@ User asked for a general-audience news entry on the AI Frontiers article “AI J
 - Added `field-news-jailbreak-disclosure-aug-2026` (`kind: policy`, date 2026-08-03): body, roster entry, synced site card.
 - Linked stakes paragraph to CASP Boko Haram report, Anthropic Fable suspension statement, and three Zvi posts (AI #177, Fable takedown, “Fix This Code” follow-up).
 - Ran `npm run sync:field-news`.
+- Added RSS subscribe CTA on `/news/` index below the lede (`site/src/pages/news/index.astro`).
 
 ## Decisions
 - Site-only; no manuscript cite or bib key.
@@ -23,4 +24,5 @@ User asked for a general-audience news entry on the AI Frontiers article “AI J
 - `site/src/content/cards/field-news-jailbreak-disclosure-aug-2026.md`
 
 ## Commits
-- (pending) Add jailbreak disclosure field news with sourced examples.
+- `444ed2f7` Add jailbreak disclosure field news with sourced examples.
+- (pending) Add RSS subscribe CTA on news index.

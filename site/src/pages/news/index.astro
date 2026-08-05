@@ -31,6 +31,9 @@ const kindLabel: Record<string, string> = {
     <p class="lede">
       AI incidents, lab disclosures, and independent evaluations with a relation to this project.
     </p>
+    <p class="rss-cta">
+      <a href={withBase("/feed.xml")}>Add the RSS feed</a><LinkIndicator kind="rss" /> to your reader for new entries as they are posted.
+    </p>
   </section>
 
   <section class="readable">
@@ -98,5 +101,11 @@ const kindLabel: Record<string, string> = {
     font-size: 0.85rem;
     opacity: 0.85;
     margin: 0;
+  }
+  .rss-cta {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    max-width: 49rem;
+    margin: 0.75rem 0 0;
   }
 </style>

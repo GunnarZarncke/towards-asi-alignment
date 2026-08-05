@@ -34,7 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
-- **Companion site (2026-08-05):** Field news — jailbreak disclosure commentary (AI Frontiers); CASP Boko Haram + Anthropic Fable 5 examples linked to primary sources and Zvi writeups. Log: `2026-08-05-jailbreak-disclosure-news.md`.
+- **Companion site (2026-08-05):** Field news — jailbreak disclosure commentary (AI Frontiers); CASP Boko Haram + Anthropic Fable 5 examples linked to primary sources and Zvi writeups; RSS subscribe CTA on `/news/`. Log: `2026-08-05-jailbreak-disclosure-news.md`.
 - **Reference + site (2026-08-05):** GSAI agenda card — davidad LW profile + GSAI Google Group mailing list links (YAML source + sync). Log: `2026-08-05-davidad-profile-mailing-list.md`.
 - **Reference + site (2026-08-05):** Field agenda generated outputs now carry `GENERATED FILE` banners (sync script + 28 cards + index); deferred TODO for build-time-only generation. Log: `2026-08-05-field-agenda-generated-banners.md`.
 - **Companion site / CI (2026-08-05):** Fixed Astro build — `subsumption-debate` leanNode used Lean ledger status `separationOnly` instead of schema kind; set to `bridge`, ledger note kept in summary. Log: `2026-08-05-subsumption-debate-lean-kind-fix.md`.
