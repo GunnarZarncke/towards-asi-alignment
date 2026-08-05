@@ -1070,6 +1070,9 @@ evidence:
       Infra-Bayesianism: imprecise probabilities for nonrealizability / model
       misspec
     sources:
+      - label: Infra-Bayesianism sequence intro
+        url: >-
+          https://www.lesswrong.com/posts/zB4f7QqKhBHa5b37a/introduction-to-the-infra-bayesianism-sequence
       - label: 'LessWrong tag: infra-Bayesianism'
         url: https://www.lesswrong.com/tag/infra-bayesianism
   - id: 119
@@ -1079,9 +1082,12 @@ evidence:
     type: T
     evidence: Learning-theoretic agenda for AI alignment (regret-style guarantees)
     sources:
-      - label: Kosoy, LTA post
+      - label: Kosoy, LTA overview (2018)
         url: >-
-          https://www.alignmentforum.org/posts/vvEebH5jEvxnJEvBC/the-learning-theoretic-agenda-for-ai-alignment
+          https://www.alignmentforum.org/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda
+      - label: Kosoy, LTA status (2023)
+        url: >-
+          https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023
   - id: 120
     agenda: Kosoy / IB & LTA
     bridges:
@@ -1089,8 +1095,12 @@ evidence:
     type: C
     evidence: Daemons / inner optimizers in learning-theoretic alignment framing
     sources:
-      - label: Kosoy user page
-        url: https://www.alignmentforum.org/users/Vanessa+Kosoy
+      - label: Kosoy, Taming daemons (2018 LTA)
+        url: >-
+          https://www.lesswrong.com/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda#Taming_daemons
+      - label: Kosoy, LTA status (2023)
+        url: >-
+          https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023
   - id: 121
     agenda: Kosoy / IB & LTA
     bridges:
@@ -1098,8 +1108,12 @@ evidence:
     type: C
     evidence: RSI / self-improvement treated in LTA (cousin to tiling/Vingean walls)
     sources:
-      - label: Kosoy user page
-        url: https://www.alignmentforum.org/users/Vanessa+Kosoy
+      - label: Kosoy, Recursive self-improvement (2018 LTA)
+        url: >-
+          https://www.lesswrong.com/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda#Recursive_self_improvement
+      - label: Kosoy, LTA status (2023)
+        url: >-
+          https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023
   - id: 122
     agenda: Kosoy / IB & LTA
     bridges:
@@ -1107,18 +1121,28 @@ evidence:
     type: T
     evidence: Infra-Bayesian decision theory / imprecise-probability agents
     sources:
+      - label: Infra-Bayesianism sequence intro
+        url: >-
+          https://www.lesswrong.com/posts/zB4f7QqKhBHa5b37a/introduction-to-the-infra-bayesianism-sequence
       - label: 'LessWrong tag: infra-Bayesianism'
         url: https://www.lesswrong.com/tag/infra-bayesianism
   - id: 123
-    agenda: Kosoy / PreDCA
+    agenda: Kosoy / IB & LTA
     bridges:
       - MB2
       - MB3
     type: T
-    evidence: 'PreDCA: precursor-utility outer-alignment (pointer via causal precursors)'
+    evidence: >-
+      PreDCA / Physicalist Superimitation: precursor-utility outer-alignment
+      (pointer via causal precursors)
     sources:
       - label: PreDCA tag
-        url: https://www.alignmentforum.org/tag/predca
+        url: https://www.alignmentforum.org/w/predca
+      - label: Kosoy, PSI section (LTA status 2023)
+        url: >-
+          https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023
+      - label: Kosoy, PreDCA shortform (2022)
+        url: https://www.lesswrong.com/posts/33EKjmAdKFn3pbKPJ
   - id: 124
     agenda: MIRI / Garrabrant
     bridges:
@@ -1211,6 +1235,8 @@ evidence:
     sources:
       - label: Infra-Bayesianism sequence
         url: https://www.lesswrong.com/tag/infra-bayesianism
+      - label: Appel & Kosoy 2025 (robust regret)
+        url: https://arxiv.org/abs/2504.06820
       - label: field-claim plan
         url: ../../drafts/field-claim-formalization-and-bridge-review-plan.md
   - id: 133
@@ -1414,3 +1440,58 @@ evidence:
     sources:
       - label: Templeton et al. 2024
         url: https://transformer-circuits.pub/2024/scaling-monosemanticity/
+  - id: 154
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB1
+      - MB3
+      - MB9
+    type: T
+    evidence: >-
+      Infra-Bayesian physicalism: bridge transform locates agent computations in
+      a bird's-eye physical ontology
+    sources:
+      - label: Kosoy, Infra-Bayesian Physicalism
+        url: >-
+          https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized
+  - id: 155
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB1
+      - MB2
+      - MB9
+    type: T
+    evidence: >-
+      Regret bounds for robust (multivalued / infra-Bayesian) online decision
+      making under weak realizability
+    sources:
+      - label: Appel & Kosoy 2025 (COLT)
+        url: https://arxiv.org/abs/2504.06820
+  - id: 156
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB2
+      - MB3
+      - MB5
+      - MB7
+    type: C
+    evidence: >-
+      LTA status 2023 integrative map (infra-Bayesianism ≠ whole agenda;
+      Physicalist Superimitation / PreDCA outer strand)
+    sources:
+      - label: Kosoy, LTA status (2023)
+        url: >-
+          https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023
+  - id: 157
+    agenda: Kosoy / IB & LTA
+    bridges:
+      - MB2
+      - MB3
+    type: C
+    evidence: >-
+      Community distillation of PreDCA protocol (precursor detection,
+      classification, assistance)
+    sources:
+      - label: Soto, PreDCA distilled (2022)
+        url: >-
+          https://www.alignmentforum.org/posts/EFrJdhKPZXa4MA3Gr/vanessa-kosoy-s-predca-distilled

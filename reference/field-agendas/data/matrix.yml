@@ -481,7 +481,8 @@ rows:
         - type: T
           ids:
             - 118
-            - 132
+            - 154
+            - 155
         - type: C
           ids:
             - 132
@@ -489,18 +490,34 @@ rows:
         - type: T
           ids:
             - 119
-      MB3: []
+            - 123
+            - 155
+        - type: C
+          ids:
+            - 156
+            - 157
+      MB3:
+        - type: T
+          ids:
+            - 123
+            - 154
+        - type: C
+          ids:
+            - 156
+            - 157
       MB4: []
       MB4a: []
       MB5:
         - type: C
           ids:
             - 121
+            - 156
       MB6: []
       MB7:
         - type: C
           ids:
             - 120
+            - 156
       MB7d:
         - type: T
           ids:
@@ -510,32 +527,14 @@ rows:
         - type: T
           ids:
             - 118
+            - 154
+            - 155
+        - type: C
+          ids:
             - 132
       MB10: []
       MB11: []
     slug: kosoy-infra-bayesianism-lta
-  - agenda: Kosoy / PreDCA
-    cells:
-      MB1: []
-      MB2:
-        - type: T
-          ids:
-            - 123
-      MB3:
-        - type: T
-          ids:
-            - 123
-      MB4: []
-      MB4a: []
-      MB5: []
-      MB6: []
-      MB7: []
-      MB7d: []
-      MB8: []
-      MB9: []
-      MB10: []
-      MB11: []
-    slug: kosoy-predca
   - agenda: CIRIS
     cells:
       MB1:

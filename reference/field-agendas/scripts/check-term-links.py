@@ -60,7 +60,7 @@ ORG_HOME_OK = {
     "https://www.apolloresearch.ai/",
     "https://www.apolloresearch.ai/research",
     "https://www.alignmentforum.org/users/John+Wentworth",
-    "https://www.alignmentforum.org/users/Vanessa+Kosoy",
+    "https://www.alignmentforum.org/users/vanessa-kosoy",
     "https://intelligence.org/",
     "https://www.anthropic.com/research",
     "https://metr.org/",

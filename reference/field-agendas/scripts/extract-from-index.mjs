@@ -34,7 +34,6 @@ const MATRIX_AGENDA_SLUG = {
   Orthogonal: "orthogonal",
   Wentworth: "wentworth-natural-abstractions",
   "Kosoy / IB & LTA": "kosoy-infra-bayesianism-lta",
-  "Kosoy / PreDCA": "kosoy-predca",
   CIRIS: "ciris",
   GovAI: "govai",
   "GovAI / UK AISI": "govai",

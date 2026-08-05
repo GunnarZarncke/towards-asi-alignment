@@ -5,7 +5,7 @@
     "coverageIntro": "The **coverage matrix** catalogs **sourced evidence that an agenda advances a bridge crux**, independent of whether TSA adopts that agenda's constructive bet or ontology.\n\n- **`Book treatment`** on each [agenda row](#agendas) states how *Towards Superintelligence Alignment* handles the agenda (substantive, peer, borderline, exclude-by-reference, etc.).\n- **Empty matrix cells (`—`)** mean no catalog entry in this pass — not \"out of book scope\" and not a claim the agenda is silent on the crux.\n- **Lean spine** carries bridges **`MB1`–`MB11`** incl. **`MB4a`**; App B crosswalk prose currently lists **`MB1`–`MB10`** only (App B update deferred).",
     "spineTranslation": "A filled cell means **field evidence on a crux**, not **automatic discharge to `Safe`**. After the 2026-08-02 Lean review ([`drafts/field-claim-formalization-and-bridge-review-plan.md`](../../drafts/field-claim-formalization-and-bridge-review-plan.md)), partial field claims map in three ways — **no new `MB*` column was added**:\n\n| Mode | Meaning | Examples |\n|---|---|---|\n| **Direct bridge** | Field work maps to a numbered bridge the spine consumes | **MB4a**, **MB8**, **MB11** columns |\n| **Ambient cousin** | Evidence on existing columns; validity stays those bridges + defeaters | Kosoy misspec on **MB1**/**MB9** (`Nonrealizability.lean`; falsifiers in `Defeaters.lean`) |\n| **Catalog / side channel** | Field crux neighborhood; not a safety-case discharge path | Kosoy regret on **MB2** (≠ **MB11**/`RiskGap`; `RegretSafety.lean`); LI on **MB5**/**MB7d** (exclude-by-reference) |",
     "doNotInfer": "Kosoy **MB1**/**MB9** ⇒ misspec solved; Kosoy **MB2** ⇒ regret ⇒ **`Safe`**; CIRIS **MB4a** ⇒ correction integrity without coverage/no-bypass (`CompositePathBypass.lean`); any **MB9** tag ⇒ off-class safety.",
-    "kosoyDiagnostic": "infra-Bayesianism/LTA advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.",
+    "kosoyDiagnostic": "One Kosoy lineage: LTA foundations (regret, daemons, RSI) plus infra-Bayesianism and Physicalist Superimitation / PreDCA as an outer-alignment strand—not separate agendas. Advances **MB1–MB9** cousins, not a missing **MB11**. PreDCA/PSI is a **peer outer target** on **MB2/MB3**, not a separate bridge. **MB2** (LTA/regret) is a value-learning cousin — **MB11** stays **—** for Kosoy.",
     "openSpineInterfaces": "---",
     "typeLettersTable": "| Letter | Type |\n|---|---|\n| **C** | conceptual |\n| **T** | theory (formalization) |\n| **S** | simulations |\n| **P** | practical (applications) |\n| **D** | empirical (software) |\n| **E** | empirical (other) |\n| **O** | other |",
     "matrixIntro": "Column headers use **field nouns**; **MB*** keys are spine identifiers only. Each linked bridge card states the crux, where agendas agree or diverge, and homograph splits. [App B (companion)](https://towards-alignment.com/cards/chapters/appb/) · [Lean spine](https://towards-alignment.com/lean/) · source: [`reference/field-agendas/data/bridges.yml`](data/bridges.yml).",
@@ -95,12 +95,6 @@
       "slug": "kosoy-infra-bayesianism-lta",
       "title": "Kosoy / infra-Bayesianism & LTA",
       "order": 14,
-      "inMatrix": true
-    },
-    {
-      "slug": "kosoy-predca",
-      "title": "Kosoy / PreDCA",
-      "order": 15,
       "inMatrix": true
     },
     {
@@ -394,27 +388,14 @@
     {
       "slug": "kosoy-infra-bayesianism-lta",
       "title": "Kosoy / infra-Bayesianism & LTA",
-      "summary": "Can learning-theoretic and infra-Bayesian frameworks type real alignment failures—misspecification, inner daemons, and recursive self-improvement?",
+      "summary": "Can learning-theoretic and infra-Bayesian frameworks type real alignment failures—misspecification, inner daemons, recursive self-improvement—and does precursor-utility pointing survive simulation and ontology ambiguity?",
       "bookBridges": [
         "MB1",
         "MB2",
+        "MB3",
         "MB5",
         "MB7",
         "MB9"
-      ],
-      "inMatrix": true,
-      "generateCard": true,
-      "matrixLink": null
-    },
-    {
-      "slug": "kosoy-predca",
-      "title": "Kosoy / PreDCA",
-      "summary": "Does precursor-utility pointing survive simulation and ontology ambiguity?",
-      "bookBridges": [
-        "MB2",
-        "MB3",
-        "MB4",
-        "MB8"
       ],
       "inMatrix": true,
       "generateCard": true,
@@ -1391,7 +1372,8 @@
               "type": "T",
               "ids": [
                 118,
-                132
+                154,
+                155
               ]
             },
             {
@@ -1405,18 +1387,43 @@
             {
               "type": "T",
               "ids": [
-                119
+                119,
+                123,
+                155
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                156,
+                157
               ]
             }
           ],
-          "MB3": [],
+          "MB3": [
+            {
+              "type": "T",
+              "ids": [
+                123,
+                154
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
+                156,
+                157
+              ]
+            }
+          ],
           "MB4": [],
           "MB4a": [],
           "MB5": [
             {
               "type": "C",
               "ids": [
-                121
+                121,
+                156
               ]
             }
           ],
@@ -1425,7 +1432,8 @@
             {
               "type": "C",
               "ids": [
-                120
+                120,
+                156
               ]
             }
           ],
@@ -1443,6 +1451,13 @@
               "type": "T",
               "ids": [
                 118,
+                154,
+                155
+              ]
+            },
+            {
+              "type": "C",
+              "ids": [
                 132
               ]
             }
@@ -1451,39 +1466,6 @@
           "MB11": []
         },
         "slug": "kosoy-infra-bayesianism-lta"
-      },
-      {
-        "agenda": "Kosoy / PreDCA",
-        "cells": {
-          "MB1": [],
-          "MB2": [
-            {
-              "type": "T",
-              "ids": [
-                123
-              ]
-            }
-          ],
-          "MB3": [
-            {
-              "type": "T",
-              "ids": [
-                123
-              ]
-            }
-          ],
-          "MB4": [],
-          "MB4a": [],
-          "MB5": [],
-          "MB6": [],
-          "MB7": [],
-          "MB7d": [],
-          "MB8": [],
-          "MB9": [],
-          "MB10": [],
-          "MB11": []
-        },
-        "slug": "kosoy-predca"
       },
       {
         "agenda": "CIRIS",
@@ -3794,6 +3776,10 @@
       "evidence": "Infra-Bayesianism: imprecise probabilities for nonrealizability / model misspec",
       "sources": [
         {
+          "label": "Infra-Bayesianism sequence intro",
+          "url": "https://www.lesswrong.com/posts/zB4f7QqKhBHa5b37a/introduction-to-the-infra-bayesianism-sequence"
+        },
+        {
           "label": "LessWrong tag: infra-Bayesianism",
           "url": "https://www.lesswrong.com/tag/infra-bayesianism"
         }
@@ -3809,8 +3795,12 @@
       "evidence": "Learning-theoretic agenda for AI alignment (regret-style guarantees)",
       "sources": [
         {
-          "label": "Kosoy, LTA post",
-          "url": "https://www.alignmentforum.org/posts/vvEebH5jEvxnJEvBC/the-learning-theoretic-agenda-for-ai-alignment"
+          "label": "Kosoy, LTA overview (2018)",
+          "url": "https://www.alignmentforum.org/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda"
+        },
+        {
+          "label": "Kosoy, LTA status (2023)",
+          "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
         }
       ]
     },
@@ -3824,8 +3814,12 @@
       "evidence": "Daemons / inner optimizers in learning-theoretic alignment framing",
       "sources": [
         {
-          "label": "Kosoy user page",
-          "url": "https://www.alignmentforum.org/users/Vanessa+Kosoy"
+          "label": "Kosoy, Taming daemons (2018 LTA)",
+          "url": "https://www.lesswrong.com/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda#Taming_daemons"
+        },
+        {
+          "label": "Kosoy, LTA status (2023)",
+          "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
         }
       ]
     },
@@ -3839,8 +3833,12 @@
       "evidence": "RSI / self-improvement treated in LTA (cousin to tiling/Vingean walls)",
       "sources": [
         {
-          "label": "Kosoy user page",
-          "url": "https://www.alignmentforum.org/users/Vanessa+Kosoy"
+          "label": "Kosoy, Recursive self-improvement (2018 LTA)",
+          "url": "https://www.lesswrong.com/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda#Recursive_self_improvement"
+        },
+        {
+          "label": "Kosoy, LTA status (2023)",
+          "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
         }
       ]
     },
@@ -3854,6 +3852,10 @@
       "evidence": "Infra-Bayesian decision theory / imprecise-probability agents",
       "sources": [
         {
+          "label": "Infra-Bayesianism sequence intro",
+          "url": "https://www.lesswrong.com/posts/zB4f7QqKhBHa5b37a/introduction-to-the-infra-bayesianism-sequence"
+        },
+        {
           "label": "LessWrong tag: infra-Bayesianism",
           "url": "https://www.lesswrong.com/tag/infra-bayesianism"
         }
@@ -3861,17 +3863,25 @@
     },
     {
       "id": 123,
-      "agenda": "Kosoy / PreDCA",
+      "agenda": "Kosoy / IB & LTA",
       "bridges": [
         "MB2",
         "MB3"
       ],
       "type": "T",
-      "evidence": "PreDCA: precursor-utility outer-alignment (pointer via causal precursors)",
+      "evidence": "PreDCA / Physicalist Superimitation: precursor-utility outer-alignment (pointer via causal precursors)",
       "sources": [
         {
           "label": "PreDCA tag",
-          "url": "https://www.alignmentforum.org/tag/predca"
+          "url": "https://www.alignmentforum.org/w/predca"
+        },
+        {
+          "label": "Kosoy, PSI section (LTA status 2023)",
+          "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
+        },
+        {
+          "label": "Kosoy, PreDCA shortform (2022)",
+          "url": "https://www.lesswrong.com/posts/33EKjmAdKFn3pbKPJ"
         }
       ]
     },
@@ -4017,6 +4027,10 @@
         {
           "label": "Infra-Bayesianism sequence",
           "url": "https://www.lesswrong.com/tag/infra-bayesianism"
+        },
+        {
+          "label": "Appel & Kosoy 2025 (robust regret)",
+          "url": "https://arxiv.org/abs/2504.06820"
         },
         {
           "label": "field-claim plan",
@@ -4337,6 +4351,74 @@
           "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/"
         }
       ]
+    },
+    {
+      "id": 154,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB1",
+        "MB3",
+        "MB9"
+      ],
+      "type": "T",
+      "evidence": "Infra-Bayesian physicalism: bridge transform locates agent computations in a bird's-eye physical ontology",
+      "sources": [
+        {
+          "label": "Kosoy, Infra-Bayesian Physicalism",
+          "url": "https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized"
+        }
+      ]
+    },
+    {
+      "id": 155,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB1",
+        "MB2",
+        "MB9"
+      ],
+      "type": "T",
+      "evidence": "Regret bounds for robust (multivalued / infra-Bayesian) online decision making under weak realizability",
+      "sources": [
+        {
+          "label": "Appel & Kosoy 2025 (COLT)",
+          "url": "https://arxiv.org/abs/2504.06820"
+        }
+      ]
+    },
+    {
+      "id": 156,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB2",
+        "MB3",
+        "MB5",
+        "MB7"
+      ],
+      "type": "C",
+      "evidence": "LTA status 2023 integrative map (infra-Bayesianism ≠ whole agenda; Physicalist Superimitation / PreDCA outer strand)",
+      "sources": [
+        {
+          "label": "Kosoy, LTA status (2023)",
+          "url": "https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023"
+        }
+      ]
+    },
+    {
+      "id": 157,
+      "agenda": "Kosoy / IB & LTA",
+      "bridges": [
+        "MB2",
+        "MB3"
+      ],
+      "type": "C",
+      "evidence": "Community distillation of PreDCA protocol (precursor detection, classification, assistance)",
+      "sources": [
+        {
+          "label": "Soto, PreDCA distilled (2022)",
+          "url": "https://www.alignmentforum.org/posts/EFrJdhKPZXa4MA3Gr/vanessa-kosoy-s-predca-distilled"
+        }
+      ]
     }
   ],
   "clustering": [
@@ -4586,22 +4668,18 @@
       "rollsUpSlug": "wentworth--natural-abstractions"
     },
     {
-      "listings": "[Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)",
+      "listings": "[Vanessa Kosoy](https://www.alignmentforum.org/users/vanessa-kosoy)",
       "listingLinks": [
         {
           "label": "Vanessa Kosoy",
-          "url": "https://www.alignmentforum.org/users/Vanessa+Kosoy"
+          "url": "https://www.alignmentforum.org/users/vanessa-kosoy"
         }
       ],
-      "rollsUpTo": "[Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta); [Kosoy / PreDCA](#kosoy--predca)",
+      "rollsUpTo": "[Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta)",
       "rollsUpLinks": [
         {
           "label": "Kosoy / infra-Bayesianism & LTA",
           "url": "#kosoy--infra-bayesianism--lta"
-        },
-        {
-          "label": "Kosoy / PreDCA",
-          "url": "#kosoy--predca"
         }
       ],
       "rollsUpSlug": "kosoy--infra-bayesianism--lta"

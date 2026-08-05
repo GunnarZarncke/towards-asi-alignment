@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-04 (CIRIS falsifier phased plan).
+Last updated: 2026-08-05 (Kosoy evidence merge).
 
 ---
 
@@ -10,8 +10,8 @@ Last updated: 2026-08-04 (CIRIS falsifier phased plan).
 
 - **App G translation spine opener (author)** — Mirror site `/lean/` projections table in Appendix G; deferred from translation spine Phase 2 close-out. Site companion done; manuscript pass is author-owned.
 
-- **Field matrix evidence quality** — Homepage prune **complete** (passes 1–3). No root-URL sources left in `evidence.yml`; org links on agenda cards. Log: `2026-08-03-field-matrix-homepage-evidence-prune.md`.
-- **Field agenda matrix (post-restructure)** — 25 matrix rows / 30 agenda records after independence merges and neglected-report folds; TSA row links to companion home (no card). Stale search index until next site build. App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`.
+- **Field matrix evidence quality** — Homepage prune **complete** (passes 1–3). Kosoy row upgraded 2026-08-05 (merged PreDCA into LTA; primary sources ev 154–157). Log: `2026-08-05-kosoy-evidence-merge.md`.
+- **Field agenda matrix (post-restructure)** — 24 matrix rows / 29 agenda records after Kosoy PreDCA merge (2026-08-05); prior independence merges and neglected-report folds. TSA row links to companion home (no card). App B crosswalk not updated for merged row names. Source: `reference/field-agendas/data/`. Log: `2026-08-02-field-agenda-restructure-merges.md`, `2026-08-05-kosoy-evidence-merge.md`.
 - **Field crux divergence (Track 2)** — matrix nouns locked in `reference/field-agendas/data/bridges.yml`; agree/differ/homograph notes on MB1–MB11 bridge cards; hub crux legend removed 2026-08-02. Plan: `drafts/field-crux-divergence-plan.md`. Track 1 done 2026-08-02.
 - **Field-claim formalization** — Phase 3 decided; App B core sync **done 2026-08-02** (MB4a/MB11 + field-index pointer). Secondary App B prose deferred (`metadata/TODO.md`). Plan: `drafts/field-claim-formalization-and-bridge-review-plan.md`.
 - **Field agenda matrix (MB11 pass)** — Index matrix MB1–MB11 incl. MB4a; Field hub shipped. App B crosswalk core sync 2026-08-02. Log: `2026-08-02-appb-field-agenda-sync.md`.
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Reference + companion site (2026-08-05):** Kosoy field agenda — merged PreDCA into infra-Bayesianism & LTA after literature review; upgraded evidence (ev 154–157); fixed AF profile URLs; 29 agenda cards. Log: `2026-08-05-kosoy-evidence-merge.md`.
 - **CIRIS falsifier plan (2026-08-04):** Phased named-identity / composite-agency counterexample — Phase 1 mock + memo; Lens cohort deferred to Phase 3; C2 tool-scout locked; cross-agent divergence documented as negative-control not kill signal. Charter updated in sibling `ciris/review/`; `experiments/TODO.md` synced. Log: `2026-08-04-ciris-falsifier-phased-plan.md`.
 - **Reference + companion site (2026-08-04):** Field matrix — moved evidence **#82** (UAD / agency-detect, MB1 support) from Neglected approaches row to **TSA** `MB1`; re-synced index + site JSON (`evidence.yml` agenda was already TSA). Log: `2026-08-04-field-matrix-uad-tsa.md`.
 - **Companion site (2026-08-04):** Site wording — use **“this project”** for TSA framework/site/Lean/experiments; keep **“book”** for PDF, chapters, book map, and manuscript-specific references. Sync sources + scripts updated. Log: `2026-08-04-site-book-to-project-wording.md`.

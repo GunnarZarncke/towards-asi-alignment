@@ -95,10 +95,11 @@ terms:
   - { phrase: selection theorems, url: https://www.alignmentforum.org/users/John+Wentworth, fields: all }
   - { phrase: natural latents, url: https://www.alignmentforum.org/users/John+Wentworth, fields: signature }
   - { phrase: PreDCA, url: https://www.alignmentforum.org/w/predca, fields: all }
-  - { phrase: infra-Bayesian physicalism, url: https://www.lesswrong.com/w/infra-bayesianism, fields: all }
+  - { phrase: Physicalist Superimitation, url: https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023, fields: all }
+  - { phrase: infra-Bayesian physicalism, url: https://www.lesswrong.com/posts/gHgs2e2J5azvGFatb/infra-bayesian-physicalism-a-formal-theory-of-naturalized, fields: all }
   - { phrase: infra-Bayesianism, url: https://www.lesswrong.com/w/infra-bayesianism, fields: all }
-  - { phrase: learning-theoretic agenda, url: https://www.alignmentforum.org/users/Vanessa+Kosoy, fields: all }
-  - { phrase: LTA, url: https://www.alignmentforum.org/users/Vanessa+Kosoy, fields: signature }
+  - { phrase: learning-theoretic agenda, url: https://www.alignmentforum.org/posts/5bd75cc58225bf0670375575/the-learning-theoretic-ai-alignment-research-agenda, fields: all }
+  - { phrase: LTA, url: https://www.alignmentforum.org/posts/ZwshvqiqCvXPsZEct/the-learning-theoretic-agenda-status-2023, fields: signature }
   - { phrase: CEV, url: /cards/mb8-cev-process-convergence/, fields: all }
   - { phrase: Vingean reflection, url: https://intelligence.org/files/VingeanReflection.pdf, fields: all }
   - { phrase: agent foundations, url: https://intelligence.org/, fields: all }

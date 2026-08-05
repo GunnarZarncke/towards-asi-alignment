@@ -55,10 +55,6 @@ agendas:
     title: Kosoy / infra-Bayesianism & LTA
     order: 14
     inMatrix: true
-  - slug: kosoy-predca
-    title: Kosoy / PreDCA
-    order: 15
-    inMatrix: true
   - slug: ciris
     title: CIRIS
     order: 16

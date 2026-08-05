@@ -142,18 +142,14 @@ clustering:
       - label: Wentworth / NAH
         url: '#wentworth--natural-abstractions'
     rollsUpSlug: wentworth--natural-abstractions
-  - listings: '[Vanessa Kosoy](https://www.alignmentforum.org/users/Vanessa+Kosoy)'
+  - listings: '[Vanessa Kosoy](https://www.alignmentforum.org/users/vanessa-kosoy)'
     listingLinks:
       - label: Vanessa Kosoy
-        url: https://www.alignmentforum.org/users/Vanessa+Kosoy
-    rollsUpTo: >-
-      [Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta); [Kosoy
-      / PreDCA](#kosoy--predca)
+        url: https://www.alignmentforum.org/users/vanessa-kosoy
+    rollsUpTo: '[Kosoy / infra-Bayesianism & LTA](#kosoy--infra-bayesianism--lta)'
     rollsUpLinks:
       - label: Kosoy / infra-Bayesianism & LTA
         url: '#kosoy--infra-bayesianism--lta'
-      - label: Kosoy / PreDCA
-        url: '#kosoy--predca'
     rollsUpSlug: kosoy--infra-bayesianism--lta
   - listings: >-
       [GovAI](https://www.governance.ai/), GovAI Fellowship, [Simon
