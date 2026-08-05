@@ -23,12 +23,12 @@ export function parseDot(text) {
   const nodes = new Map();
   const edges = [];
 
-  const nodeRe = /^\s*([A-Za-z_][\w]*)\s*\[([^\]]+)\]\s*;?\s*$/gm;
+  const nodeRe = /^\s*(?:"([^"]+)"|([A-Za-z_][\w]*))\s*\[([^\]]+)\]\s*;?\s*$/gm;
   let match;
   while ((match = nodeRe.exec(text)) !== null) {
-    const id = match[1];
+    const id = match[1] || match[2];
     if (id === "graph" || id === "node" || id === "edge") continue;
-    const attrs = parseAttrs(match[2]);
+    const attrs = parseAttrs(match[3]);
     nodes.set(id, {
       id,
       label: attrs.label || id,
@@ -39,18 +39,21 @@ export function parseDot(text) {
     });
   }
 
-  const edgeRe = /^\s*([A-Za-z_][\w]*)\s*->\s*([A-Za-z_][\w]*)(?:\s*\[([^\]]+)\])?\s*;?\s*$/gm;
+  const edgeRe =
+    /^\s*(?:"([^"]+)"|([A-Za-z_][\w]*))\s*->\s*(?:"([^"]+)"|([A-Za-z_][\w]*))(?:\s*\[([^\]]+)\])?\s*;?\s*$/gm;
   while ((match = edgeRe.exec(text)) !== null) {
-    const attrs = parseAttrs(match[3] || "");
+    const from = match[1] || match[2];
+    const to = match[3] || match[4];
+    const attrs = parseAttrs(match[5] || "");
     edges.push({
-      from: match[1],
-      to: match[2],
+      from,
+      to,
       label: attrs.label || "",
       dashed: (attrs.style || "").includes("dashed"),
       color: attrs.color || ""
     });
-    if (!nodes.has(match[1])) nodes.set(match[1], { id: match[1], label: match[1] });
-    if (!nodes.has(match[2])) nodes.set(match[2], { id: match[2], label: match[2] });
+    if (!nodes.has(from)) nodes.set(from, { id: from, label: from });
+    if (!nodes.has(to)) nodes.set(to, { id: to, label: to });
   }
 
   const graphMatch = text.match(/label\s*=\s*"([^"]*(?:\\.[^"]*)*)"/);

@@ -1,0 +1,915 @@
+{
+  "sourceDot": "metadata/concept-graph/chapter-reading-dependency.dot",
+  "title": "Chapter prerequisites (symbols + informal concepts, vertical)",
+  "chapterCount": 48,
+  "edgeCount": 67,
+  "nodes": [
+    {
+      "id": "unit:ch01",
+      "label": "Ch 01\nThe Wrong Object of Alignment",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch01"
+    },
+    {
+      "id": "unit:ch02",
+      "label": "Ch 02\nFrom Artificial Intelligence to Arti…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch02"
+    },
+    {
+      "id": "unit:ch03",
+      "label": "Ch 03\nAlignment as a Dynamical Guarantee",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch03"
+    },
+    {
+      "id": "unit:ch04",
+      "label": "Ch 04\nWhy Fixed Values Are the Wrong Targe…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch04"
+    },
+    {
+      "id": "unit:ch05",
+      "label": "Ch 05\nAssumptions, Scope, and Failure Cove…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch05"
+    },
+    {
+      "id": "unit:ch06",
+      "label": "Ch 06\nWhat Is an Agent Without Anthropomor…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch06"
+    },
+    {
+      "id": "unit:ch07",
+      "label": "Ch 07\nFinding the Boundary",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch07"
+    },
+    {
+      "id": "unit:ch08",
+      "label": "Ch 08\nAgents That Grow, Split, and Merge",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch08"
+    },
+    {
+      "id": "unit:ch09",
+      "label": "Ch 09\nThe Real Agent May Be Composite",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch09"
+    },
+    {
+      "id": "unit:ch10",
+      "label": "Ch 10\nAgency Under Strategic Opacity",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch10"
+    },
+    {
+      "id": "unit:ch11",
+      "label": "Ch 11\nMeasuring Capability Without Task On…",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch11"
+    },
+    {
+      "id": "unit:ch12",
+      "label": "Ch 12\nCapability Growth Is Boundary Expans…",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch12"
+    },
+    {
+      "id": "unit:ch13",
+      "label": "Ch 13\nThe Coordination Bottleneck",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch13"
+    },
+    {
+      "id": "unit:ch14",
+      "label": "Ch 14\nWhen Intelligence Deepens Misalignme…",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch14"
+    },
+    {
+      "id": "unit:ch15",
+      "label": "Ch 15\nValues Are Compressed Control Signal…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch15"
+    },
+    {
+      "id": "unit:ch16",
+      "label": "Ch 16\nThe Value-Bundle Model",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch16"
+    },
+    {
+      "id": "unit:ch17",
+      "label": "Ch 17\nWhen Low Dimensionality Helps Value …",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch17"
+    },
+    {
+      "id": "unit:ch18",
+      "label": "Ch 18\nWhat Values Apply To",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch18"
+    },
+    {
+      "id": "unit:ch19",
+      "label": "Ch 19\nTradeoffs and Bundle Geometry",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch19"
+    },
+    {
+      "id": "unit:ch20",
+      "label": "Ch 20\nMeasuring and Stress-Testing Bundle …",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch20"
+    },
+    {
+      "id": "unit:ch21",
+      "label": "Ch 21\nFrom Rewards to Values",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch21"
+    },
+    {
+      "id": "unit:ch22",
+      "label": "Ch 22\nThe Compression Test for Intention",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch22"
+    },
+    {
+      "id": "unit:ch23",
+      "label": "Ch 23\nHas the Goal Really Survived?",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch23"
+    },
+    {
+      "id": "unit:ch24",
+      "label": "Ch 24\nWhen the Words Survive but the Meani…",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch24"
+    },
+    {
+      "id": "unit:ch25",
+      "label": "Ch 25\nCorrection Is a Causal Channel",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch25"
+    },
+    {
+      "id": "unit:ch26",
+      "label": "Ch 26\nCorrection-Channel Integrity",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch26"
+    },
+    {
+      "id": "unit:ch27",
+      "label": "Ch 27\nCorrection Channels under Adversaria…",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch27"
+    },
+    {
+      "id": "unit:ch28",
+      "label": "Ch 28\nBeyond Following Instruction",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch28"
+    },
+    {
+      "id": "unit:ch29",
+      "label": "Ch 29\nManipulation, Domestication, and Fal…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch29"
+    },
+    {
+      "id": "unit:ch30",
+      "label": "Ch 30\nSuccessor Creation as the Central Al…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch30"
+    },
+    {
+      "id": "unit:ch31",
+      "label": "Ch 31\nConserved Properties Across Successo…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch31"
+    },
+    {
+      "id": "unit:ch32",
+      "label": "Ch 32\nBetter Self-Modeling Can Be Worse",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch32"
+    },
+    {
+      "id": "unit:ch33",
+      "label": "Ch 33\nCertification Without Construction",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch33"
+    },
+    {
+      "id": "unit:ch34",
+      "label": "Ch 34\nAlignment Is Selected or Destroyed b…",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch34"
+    },
+    {
+      "id": "unit:ch35",
+      "label": "Ch 35\nMulti-Agent Superintelligence and In…",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch35"
+    },
+    {
+      "id": "unit:ch36",
+      "label": "Ch 36\nParasites in the Correction System",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch36"
+    },
+    {
+      "id": "unit:ch37",
+      "label": "Ch 37\nThe Alignment Attractor",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch37"
+    },
+    {
+      "id": "unit:ch38",
+      "label": "Ch 38\nConductive Artifacts and Pivotal Pro…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch38"
+    },
+    {
+      "id": "unit:ch39",
+      "label": "Ch 39\nPassive Observation Is Not Enough",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch39"
+    },
+    {
+      "id": "unit:ch40",
+      "label": "Ch 40\nDetecting Goal Laundering",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch40"
+    },
+    {
+      "id": "unit:ch41",
+      "label": "Ch 41\nChecking a System at Every Level",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch41"
+    },
+    {
+      "id": "unit:ch42",
+      "label": "Ch 42\nA Safety Case for Superintelligence …",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch42"
+    },
+    {
+      "id": "unit:ch43",
+      "label": "Ch 43\nWhat Survives an Adversary: Verifiab…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch43"
+    },
+    {
+      "id": "unit:ch44",
+      "label": "Ch 44\nLethality Stress Test and Open Issue…",
+      "shape": "box",
+      "fillcolor": "#fed7aa",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch44"
+    },
+    {
+      "id": "unit:ch45",
+      "label": "Ch 45\nWhen Value Change Is the Thing at St…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch45"
+    },
+    {
+      "id": "unit:ch46",
+      "label": "Ch 46\nThe End of Unconscious Value Drift",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch46"
+    },
+    {
+      "id": "unit:ch47",
+      "label": "Ch 47\nWho Still Counts After Transformatio…",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch47"
+    },
+    {
+      "id": "unit:ch48",
+      "label": "Ch 48\nTowards Superintelligence Alignment",
+      "shape": "box",
+      "fillcolor": "#bfdbfe",
+      "style": "",
+      "penwidth": "",
+      "chapterId": "ch48"
+    }
+  ],
+  "graphEdges": [
+    {
+      "from": "unit:ch01",
+      "to": "unit:ch07",
+      "label": "2 concept\nalignment-as-measurement, the-boundary-error",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch01",
+      "to": "unit:ch09",
+      "label": "2 concept\nalignment-as-measurement, scaffold-misuse",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch02",
+      "to": "unit:ch30",
+      "label": "2 concept\nartificial-civilization, civilizational-correction-problem",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch02",
+      "to": "unit:ch38",
+      "label": "1 concept\nartificial-civilization",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch03",
+      "to": "unit:ch26",
+      "label": "1 concept\ndynamical-guarantee",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch03",
+      "to": "unit:ch37",
+      "label": "1 concept\ndynamical-guarantee",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch04",
+      "to": "unit:ch19",
+      "label": "1 concept\nstatic-target-trap",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch05",
+      "to": "unit:ch07",
+      "label": "1 concept\nscope-and-correction-capacity",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch05",
+      "to": "unit:ch48",
+      "label": "1 concept\nwhat-not-claiming",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch06",
+      "to": "unit:ch07",
+      "label": "2 concept\nagent-without-anthropomorphism, boundary-discovery",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch06",
+      "to": "unit:ch09",
+      "label": "2 concept\nagent-without-anthropomorphism, composite-agency",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch07",
+      "to": "unit:ch08",
+      "label": "1 sym\nepsilon",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch07",
+      "to": "unit:ch17",
+      "label": "1 sym\nepsilon",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch08",
+      "to": "unit:ch10",
+      "label": "2 sym\nA_t+k, L_t",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch08",
+      "to": "unit:ch11",
+      "label": "1 sym\nI_pred",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch09",
+      "to": "unit:ch11",
+      "label": "1 sym\nmathcal_R_i",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch10",
+      "to": "unit:ch22",
+      "label": "1 sym\nX_1:T",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch10",
+      "to": "unit:ch35",
+      "label": "1 sym\nkappa_ij",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch11",
+      "to": "unit:ch12",
+      "label": "1 sym\nS_X",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch12",
+      "to": "unit:ch13",
+      "label": "1 sym\nrho",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch13",
+      "to": "unit:ch14",
+      "label": "1 sym\nC_raw",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch13",
+      "to": "unit:ch16",
+      "label": "1 sym\nB_i",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch14",
+      "to": "unit:ch22",
+      "label": "2 sym\nG_B, d_bundle",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch15",
+      "to": "unit:ch16",
+      "label": "1 concept\nvalue-bundle-transport",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch15",
+      "to": "unit:ch17",
+      "label": "1 concept\nvalue-bundle-transport",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch16",
+      "to": "unit:ch22",
+      "label": "2 sym\nPhi, theta",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch16",
+      "to": "unit:ch34",
+      "label": "1 sym\ntheta",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch18",
+      "to": "unit:ch16",
+      "label": "1 concept\nbearer-persistence",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch18",
+      "to": "unit:ch31",
+      "label": "1 concept\nbearer-map-commutation-failure",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch18",
+      "to": "unit:ch47",
+      "label": "1 concept\nbearer-persistence",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch19",
+      "to": "unit:ch16",
+      "label": "1 concept\nbundle-geometry",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch19",
+      "to": "unit:ch20",
+      "label": "1 concept\nbundle-geometry",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch20",
+      "to": "unit:ch22",
+      "label": "1 concept\nbundle-measurement",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch21",
+      "to": "unit:ch22",
+      "label": "1 concept\nreward-to-bundle-inference",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch22",
+      "to": "unit:ch23",
+      "label": "5 sym\nDelta_L_{bearer}, Delta_L_{bundle}, L_bearer, L_bundle, +1",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch22",
+      "to": "unit:ch40",
+      "label": "1 sym\nbearer",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch23",
+      "to": "unit:ch24",
+      "label": "5 sym\nB^{A}, Delta_L_{correction}, Delta_L_{semantic}, L_correction, +1",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch24",
+      "to": "unit:ch25",
+      "label": "1 sym\npi",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch25",
+      "to": "unit:ch26",
+      "label": "1 sym\nC_t",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch26",
+      "to": "unit:ch27",
+      "label": "1 sym\nCCI",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch26",
+      "to": "unit:ch33",
+      "label": "1 sym\nCCI",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch26",
+      "to": "unit:ch44",
+      "label": "1 sym\nCCI",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch27",
+      "to": "unit:ch28",
+      "label": "1 sym\nSucc",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch29",
+      "to": "unit:ch26",
+      "label": "1 concept\nanti-capture-correction-validity",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch30",
+      "to": "unit:ch31",
+      "label": "1 concept\nsuccessor-stability",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch30",
+      "to": "unit:ch34",
+      "label": "1 concept\nsuccessor-stability",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch31",
+      "to": "unit:ch32",
+      "label": "1 concept\nconserved-properties",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch31",
+      "to": "unit:ch44",
+      "label": "1 concept\nconserved-properties",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch32",
+      "to": "unit:ch33",
+      "label": "1 sym\nSelfControlGap",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch33",
+      "to": "unit:ch42",
+      "label": "1 sym\nRiskGap",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch34",
+      "to": "unit:ch44",
+      "label": "1 sym\nSuccessorSafe",
+      "dashed": false,
+      "color": "#2563eb"
+    },
+    {
+      "from": "unit:ch36",
+      "to": "unit:ch26",
+      "label": "1 concept\ncorrection-parasites",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch37",
+      "to": "unit:ch38",
+      "label": "2 concept\nalignment-attractor, pivotal-process",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch38",
+      "to": "unit:ch33",
+      "label": "2 concept\ncertified-basin, conductive-artifacts",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch38",
+      "to": "unit:ch34",
+      "label": "1 concept\nconductive-artifacts",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch39",
+      "to": "unit:ch07",
+      "label": "1 concept\npassive-observation-limit",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch39",
+      "to": "unit:ch41",
+      "label": "1 concept\npassive-observation-limit",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch41",
+      "to": "unit:ch33",
+      "label": "1 concept\nmultiscale-decomposition",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch41",
+      "to": "unit:ch40",
+      "label": "1 concept\nmultiscale-decomposition",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch43",
+      "to": "unit:ch33",
+      "label": "1 concept\ncertification-under-manipulation",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch43",
+      "to": "unit:ch40",
+      "label": "1 concept\ncertification-under-manipulation",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch43",
+      "to": "unit:ch44",
+      "label": "1 concept\ncertification-under-manipulation",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch43",
+      "to": "unit:ch48",
+      "label": "1 concept\ncertification-under-manipulation",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch45",
+      "to": "unit:ch47",
+      "label": "1 concept\nvalue-change-at-stake",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch46",
+      "to": "unit:ch47",
+      "label": "1 concept\nunconscious-value-drift",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch47",
+      "to": "unit:ch24",
+      "label": "1 concept\nbearers-of-value",
+      "dashed": true,
+      "color": "#16a34a"
+    },
+    {
+      "from": "unit:ch47",
+      "to": "unit:ch48",
+      "label": "1 concept\nbearers-of-value",
+      "dashed": true,
+      "color": "#16a34a"
+    }
+  ],
+  "svgFile": "path-graphs/chapter-reading-dependency.svg",
+  "dotFile": "path-graphs/chapter-reading-dependency.dot",
+  "clickableNodes": 48,
+  "generatedAt": "2026-08-05T18:09:01.836Z"
+}

@@ -1,0 +1,98 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import ChapterReadingGraph from "../../components/ChapterReadingGraph.astro";
+import { bookHref, cardHref } from "../../lib/site-urls";
+import graph from "../../data/chapter-reading-graph.json";
+import bookIndex from "../../data/book.json";
+
+const base = import.meta.env.BASE_URL;
+const withBase = (route: string) => `${base}${route.replace(/^\/+/, "")}`;
+const titleForChapter = (chapterId: string) =>
+  bookIndex.chapters.find((ch: { id: string; title: string }) => ch.id === chapterId)?.title ??
+  chapterId;
+
+const chapterNodes = graph.nodes
+  .filter((node) => node.chapterId)
+  .sort((a, b) => {
+    const na = Number(a.chapterId!.replace("ch", ""));
+    const nb = Number(b.chapterId!.replace("ch", ""));
+    return na - nb;
+  });
+---
+
+<SiteLayout
+  title="Chapter reading graph"
+  description="Combined symbol and informal concept prerequisites across all 48 manuscript chapters."
+>
+  <article class="readable">
+    <p class="eyebrow"><a href={withBase("/paths/")}>Guided tour</a></p>
+    <h1>Chapter reading graph</h1>
+    <p class="lede">
+      A scroll-friendly map of when to read each chapter for symbol continuity and informal concept flow —
+      not the same as prose <code>\ref{"{ch:…}"}</code> cites or role-based guided paths.
+    </p>
+
+    <section class="callout">
+      <h2>How to read this graph</h2>
+      <ul>
+        <li>
+          <strong>Symbol edges (blue solid):</strong> chapter B uses a bridge symbol whose canonical home is chapter A.
+        </li>
+        <li>
+          <strong>Informal edges (green dashed):</strong> chapter A introduces concepts chapter B assumes — curated in
+          <code>metadata/concept-graph/chapter-informal-edges.yml</code>.
+        </li>
+        <li>
+          <strong>Sparse graph:</strong> Transitive edges between chapters are not shown, i.e. when a later chapter needs a concept an inbetween chapter also used, the connection is not shown again.
+        </li>
+        <li>
+          <strong>Card:</strong>{" "}
+          <a href={cardHref(base, "chapter-reading-dependency")}>Chapter reading dependency</a> — summary and repo pointers.
+        </li>
+      </ul>
+      {graph.chapterCount != null && graph.edgeCount != null && (
+        <p class="side-panel-meta">
+          {graph.chapterCount} chapters · {graph.edgeCount} thinned edges · {graph.clickableNodes} clickable nodes
+        </p>
+      )}
+    </section>
+
+    <ChapterReadingGraph title={graph.title} svgFile={graph.svgFile} dotFile={graph.dotFile} />
+
+    <section>
+      <h2>All chapters (clickable in graph above)</h2>
+      <ul class="chapter-link-grid">
+        {chapterNodes.map((node) => (
+          <li>
+            <a href={bookHref(base, node.chapterId!)}>
+              {node.label.replace(/\\n/g, " — ")}
+            </a>
+            <span class="side-panel-meta">{titleForChapter(node.chapterId!)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <p class="side-panel-meta">
+      Regenerate: <code>python3 scripts/build_chapter_symbol_dependency.py --mode combined</code> then{" "}
+      <code>npm run sync:chapter-reading-graph</code> in <code>site/</code>.
+      Markdown report: <code>metadata/concept-graph/chapter-reading-dependency.md</code>.
+    </p>
+  </article>
+</SiteLayout>
+
+<style>
+  .chapter-link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 0.35rem 1.25rem;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .chapter-link-grid li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+</style>

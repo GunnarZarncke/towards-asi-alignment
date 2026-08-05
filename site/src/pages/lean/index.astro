@@ -16,6 +16,26 @@ const toCardHref = (id: string) => cardHref(base, id);
 const toBookHref = (id: string) => bookHref(base, id);
 const titleForChapter = (chapterId: string) =>
   bookIndex.chapters.find((ch: { id: string; title: string }) => ch.id === chapterId)?.title ?? chapterId;
+
+/** LaTeX in HTML would parse `\t`, `\r`, `\v` as JS escapes — keep in String.raw. */
+const dependencySpines = [
+  {
+    name: "Boundary",
+    detail: String.raw`whether the system is carved so leakage and partition are measurable ($\epsilon$, $C_t$, measurement).`
+  },
+  {
+    name: "Correction",
+    detail: String.raw`whether a legitimate channel can still change the system ($C_{\mathrm{raw}}$, CCI, RiskGap).`
+  },
+  {
+    name: "Laundering",
+    detail: String.raw`whether goals, bundles, or bearers are rewritten under stakes and opacity ($\Omega_Q$, $D_G$, GLI).`
+  },
+  {
+    name: "Selection",
+    detail: String.raw`whether the deployment environment grows what certificates claim to bound ($\mu_E$, Fit$_E$, $\vec{\Pi}$).`
+  }
+] as const;
 ---
 
 <SiteLayout
@@ -49,10 +69,11 @@ const titleForChapter = (chapterId: string) =>
       they are related to, but not identical with, the Lean proof spines below and in Appendix&nbsp;G.
     </p>
     <ul>
-      <li><strong>Boundary</strong> — whether the system is carved so leakage and partition are measurable ($\epsilon$, $C_t$, measurement).</li>
-      <li><strong>Correction</strong> — whether a legitimate channel can still change the system ($C_{\mathrm{raw}}$, CCI, RiskGap).</li>
-      <li><strong>Laundering</strong> — whether goals, bundles, or bearers are rewritten under stakes and opacity ($\Omega_Q$, $D_G$, GLI).</li>
-      <li><strong>Selection</strong> — whether the deployment environment grows what certificates claim to bound ($\mu_E$, Fit$_E$, $\vec{\Pi}$).</li>
+      {dependencySpines.map((spine) => (
+        <li>
+          <strong>{spine.name}</strong> — {spine.detail}
+        </li>
+      ))}
     </ul>
     <p class="side-panel-meta">
       See also the <a href={withBase("/paths/")}>guided reading paths</a> and the equation-chain graphs in the repo

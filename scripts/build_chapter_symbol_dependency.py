@@ -303,7 +303,7 @@ def build_dependency_dot(
             color = "#fed7aa"
             border = "#92400e"
         lines.append(
-            f'  "unit:{ch}" [label="{dot_label(f"Ch {num}\\n{slug}")}", '
+            f'  "unit:{ch}" [label="{dot_label(f"Ch {num}\n{slug}")}", '
             f'fillcolor="{color}", color="{border}"];'
         )
 
@@ -328,7 +328,7 @@ def build_dependency_dot(
             label = f"mixed ({len(edge.tags)})"
             estyle = mix_style
         if preview:
-            label += f"\\n{preview}"
+            label += f"\n{preview}"
         lines.append(
             f'  "unit:{prov}" -> "unit:{cons}" [label="{dot_label(label)}", {estyle}];'
         )

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (informal + combined chapter reading DAG).
+Last updated: 2026-08-05 (chapter reading graph on site).
 
 ---
 
@@ -38,7 +38,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
-- **Informal + combined reading DAG (2026-08-05):** `chapter-informal-edges.yml`; symbol/informal/combined modes; 48/48 chapters in combined graph. Log: `2026-08-05-chapter-informal-reading-dag.md`.
+- **Informal + combined reading DAG (2026-08-05):** `chapter-informal-edges.yml`; symbol/informal/combined modes; 48/48 chapters in combined graph. **Site:** `/paths/chapter-reading-graph/` (clickable SVG) + card. Log: `2026-08-05-chapter-reading-graph-site.md`, `2026-08-05-chapter-informal-reading-dag.md`.
 - **Chapter symbol dependency DAG (2026-08-05):** Vertical eq-chain variants (TB); `build_chapter_symbol_dependency.py`; transitively thinned 26-edge chapter prereq graph + topo layers for reading paths. Log: `2026-08-05-chapter-symbol-dependency-dag.md`.
 - **Eq-chain spine connections (2026-08-05):** ε/UAD screen; κ_ij→κ̃+ICI; SelfControlGap ch32 bridge; def-relation extractor; 2 graph components. Log: `2026-08-05-eq-chain-island-fixes.md` (follow-up section).
 - **Eq-chain island fixes (2026-08-05):** K_coll spine (ch13); ICI def-before-κ (ch35); 𝓡_i/K_X bridge (ch09/ch11); CCI_λ + symbolref-in-eq extractor fixes; SelfControlGap on `eq:risk-gap`; C_raw `\mathrm{raw}` pass; basins TODO (ch38). Log: `2026-08-05-eq-chain-island-fixes.md`.

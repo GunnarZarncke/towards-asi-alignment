@@ -1,0 +1,80 @@
+---
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
+interface Props {
+  title?: string;
+  svgFile?: string;
+  dotFile?: string;
+}
+
+const {
+  title = "Chapter reading prerequisites",
+  svgFile = "path-graphs/chapter-reading-dependency.svg",
+  dotFile = "path-graphs/chapter-reading-dependency.dot"
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const withBase = (assetPath: string) => `${base}${assetPath.replace(/^\/+/, "")}`;
+
+let svgHtml = "";
+try {
+  svgHtml = readFileSync(path.join(process.cwd(), "public", svgFile), "utf8");
+} catch {
+  svgHtml =
+    '<p class="chapter-reading-graph-missing">Graph SVG not found. Run <code>npm run sync</code> in <code>site/</code>.</p>';
+}
+---
+
+<div class="chapter-reading-graph-wrap">
+  <p class="chapter-reading-graph-hint side-panel-meta">
+    Click a chapter box to open its chapter card. Orange: symbol-bridge participants; light blue: informal-concept-only chapters.
+    Blue solid edges: cross-chapter math symbols; green dashed edges: curated concept prerequisites.
+    {" "}
+    <a class="chapter-reading-graph-dot" href={withBase(dotFile)} download>Graphviz source (.dot)</a>
+  </p>
+  <div class="chapter-reading-graph-svg" role="img" aria-label={title} set:html={svgHtml} />
+</div>
+
+<style>
+  .chapter-reading-graph-wrap {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: 0.75rem 0.75rem 1rem;
+    overflow-x: auto;
+  }
+
+  .chapter-reading-graph-hint {
+    margin: 0 0 0.65rem;
+  }
+
+  .chapter-reading-graph-dot {
+    white-space: nowrap;
+  }
+
+  .chapter-reading-graph-svg :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 720px;
+  }
+
+  .chapter-reading-graph-svg :global(a.lean-graph-node) {
+    cursor: pointer;
+  }
+
+  .chapter-reading-graph-svg :global(a.lean-graph-node:hover .node path),
+  .chapter-reading-graph-svg :global(a.lean-graph-node:hover .node polygon) {
+    stroke: var(--color-accent-strong);
+    stroke-width: 2.5;
+  }
+
+  .chapter-reading-graph-missing {
+    margin: 0;
+    padding: 1rem;
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    border-radius: 8px;
+  }
+</style>
