@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 02 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] Who do you tell when an AI safety guard fails?</title>
+      <link>https://towards-alignment.com/cards/field-news-jailbreak-disclosure-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-jailbreak-disclosure-aug-2026/</guid>
+      <pubDate>Mon, 03 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Researchers who find ways to bypass frontier-model safeguards often have no safe channel to report them.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[Release] v1.4.0 — Field crosswalk hub, legibility pass, and external-transfer ET-3/ET-4</title>
       <link>https://towards-alignment.com/cards/release-v1-4-0/</link>

@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-05T08:47:11.853Z",
+  "generatedAt": "2026-08-05T09:52:49.074Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 279,
+  "entryCount": 280,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1661,6 +1661,12 @@
       "type": "chapter",
       "summary": "The deepest alignment question is not whether an artificial system preserves human values, but whether humanity can consciously govern changes to its own value-generating process under artificial cognitive amplification. Humanity does not need to prevent value change. It needs to remain capable of noticing, judging, and authoring the changes by which it becomes something else.",
       "url": "/cards/chapters/ch45/"
+    },
+    {
+      "title": "Who do you tell when an AI safety guard fails?",
+      "type": "news",
+      "summary": "A policy commentary argues that jailbreak reporting is broken: many labs offer no route, existing programs bind researchers with broad NDAs, and vendors self-grade findings with opaque rubrics. The authors propose cybersecurity-style coordinated disclosure—public rubrics, year-round programs, cross-vendor sharing, and eventually an independent clearinghouse.",
+      "url": "/cards/field-news-jailbreak-disclosure-aug-2026/"
     },
     {
       "title": "Who pays when an AI safety audit is wrong?",
