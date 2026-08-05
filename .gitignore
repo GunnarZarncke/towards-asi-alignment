@@ -54,6 +54,10 @@ metadata/concept-graph/*.svg
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Stray npm artifacts at repo root (no root package.json — use site/ or demos/)
+/node_modules/
+/.astro/
 experiments/graded-lab-simulation/runs/test-logs/
 experiments/graded-lab-simulation/external/orbit/*
 !experiments/graded-lab-simulation/external/orbit/PIN.txt

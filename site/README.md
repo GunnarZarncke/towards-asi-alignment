@@ -2,6 +2,8 @@
 
 Static Astro site for *Towards Superintelligence Alignment*. The PDF remains the canonical long-form artifact; this site is an orientation layer (Start Here, [Field hub](https://towards-alignment.com/field/), cards, paths, field news, FAQ, book map).
 
+**Working directory:** all npm commands below assume `cd site` first. This repo has no root `package.json`; a `node_modules/` folder at repo root is stray and safe to delete. See [`docs/BUILD.md`](../docs/BUILD.md) for the full build map.
+
 ## Why not open `dist/index.html` directly?
 
 Built HTML expects a web server. Opening a file in the browser (`file://`) has no server at that path, so CSS and internal links break.

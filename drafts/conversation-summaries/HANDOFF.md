@@ -2,13 +2,13 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (chapter reading guides removed after rollout audit).
+Last updated: 2026-08-06 (build path docs; checklist attic).
 
 ---
 
 ## Open work (load-bearing)
 
-- **Modular chapter orientation** — The reading-DAG audit found only two unmet prerequisites, now integrated into the prose: ch07 introduces correction capacity as its scope condition, and ch38 names the artificial-civilizational control loop. The separate `readingguide` environment, converter support, checklist generator, and generated checklists were removed because two boxes did not justify the standing infrastructure. ch09 disambiguates the object of alignment from the authority that supplies constraints, and distinguishes component from deployed-system alignment. Treat informal DAG edges (which can run backward in PDF order, e.g. ch38 → ch34) as audit prompts rather than automatic entry prerequisites. Re-audit prose when an opening, prior close, or DAG edge changes. Log: `2026-08-05-chapter-reading-guide-removal.md`.
+- **Modular chapter orientation** — The reading-DAG audit found only two unmet prerequisites, now integrated into the prose: ch07 introduces correction capacity as its scope condition, and ch38 names the artificial-civilizational control loop. The separate `readingguide` environment, converter support, and checklist generator were removed because two boxes did not justify the standing infrastructure; the Phase 0–4 bridge-audit snapshots live in `metadata/concept-graph/attic/chapter-reading-checklists/`. ch09 disambiguates the object of alignment from the authority that supplies constraints, and distinguishes component from deployed-system alignment. Treat informal DAG edges (which can run backward in PDF order, e.g. ch38 → ch34) as audit prompts rather than automatic entry prerequisites. Re-audit prose when an opening, prior close, or DAG edge changes. Log: `2026-08-05-chapter-reading-guide-removal.md`.
 
 - **Eq-chain editorial** — island pass + spine connections (2026-08-05): K_coll, ICI→κ̃→κ, ε/UAD screen, SelfControlGap post-def bridge, 𝓡_i/K_X; **2 graph components** (main ~226 + basins). **Chapter reading DAG** — symbol (24 ch) + informal YAML + combined **48/48 ch** (`chapter-reading-dependency.md`). Remaining: **C12 basin operationalization** (ch38 loose set defs); refine `chapter-informal-edges.yml`; latent `p_\theta` vs MI `\theta` hub collision. Logs: `2026-08-05-chapter-informal-reading-dag.md`, `2026-08-05-chapter-symbol-dependency-dag.md`, `drafts/editorial-guidance-eq-chain-placement.md`.
 

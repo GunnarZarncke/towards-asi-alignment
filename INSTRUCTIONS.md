@@ -274,7 +274,7 @@ For each new or revised chapter:
 5. Add worked example and counterexample.
 6. Add `\section{What Would Change This View}`.
 7. Add references; update ledgers if load-bearing.
-8. Run `./build.sh` and `make check`.
+8. Run `./build.sh` and `make check` from repo root. If the change affects site-rendered chapter text or cards, also run `./serve-site.sh --preview` or `cd site && npm run build` (see [`docs/BUILD.md`](docs/BUILD.md) — npm commands belong in `site/`, not repo root).
 
 See `AGENTS.md` for session logs, git rules, and surgical-edit constraints.
 

@@ -164,13 +164,17 @@ in [`docs/BUILD.md`](docs/BUILD.md).
 
 ### Build scripts
 
+Run from **repo root** unless noted. There is no root `package.json`; npm lives under `site/` and `demos/` only. See [`docs/BUILD.md`](docs/BUILD.md) for the full build map.
+
 ```bash
-./build.sh        # or: make pdf
+./build.sh        # or: make pdf  → dist/pdf/towards-superintelligence-alignment.pdf
 ./clean.sh        # or: make clean
 make check        # structure + citation + bibliography-summary checks
+./serve-site.sh   # companion site dev (auto npm install in site/)
+./serve-demos.sh  # chapter demo static server
 ```
 
-Output: `dist/pdf/towards-superintelligence-alignment.pdf`
+**Do not** run `npm install` or `npm exec` from repo root — that creates a stray root `node_modules/` that nothing uses.
 
 ### Formal proof spine (`formal/`)
 
@@ -182,7 +186,7 @@ Empirical sanity-check codebases that stress-test bridge cruxes. Five in-repo li
 
 ### Companion site (`site/`)
 
-Astro publication layer: guided paths, concept cards, chapter pages, Lean playgrounds, synced demos. Build: [`site/README.md`](site/README.md), [`docs/BUILD.md`](docs/BUILD.md). Run `./serve-site.sh` locally. Some appendices use an **overview hub** on the site (case-study cards at `/cards/chapters/{id}/`, full synced text at `/full/` — see `appM` institutional histories).
+Astro publication layer: guided paths, concept cards, chapter pages, Lean playgrounds, synced demos. Build from repo root with `./serve-site.sh` (preferred) or from `site/` with `npm run build`. Full path map: [`docs/BUILD.md`](docs/BUILD.md). Some appendices use an **overview hub** on the site (case-study cards at `/cards/chapters/{id}/`, full synced text at `/full/` — see `appM` institutional histories).
 
 ### Chapter demos (`demos/`)
 

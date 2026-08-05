@@ -45,6 +45,8 @@ already up to date, or `--no-open` to skip the browser tab.
 
 ## Develop
 
+All npm commands run from **`demos/`** (not repo root). See [`docs/BUILD.md`](../docs/BUILD.md).
+
 ```bash
 cd demos
 npm install          # once

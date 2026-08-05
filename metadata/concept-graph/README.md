@@ -119,5 +119,6 @@ Layered alternative (can be tall): `dot -Tsvg section-reference-graph.dot -o sec
 | Chapter **symbol prerequisites** | **here** (`chapter-symbol-dependency.dot` + `.md`) |
 | Chapter **informal concept prerequisites** | **here** (`chapter-informal-edges.yml`, `chapter-informal-dependency.*`) |
 | **Combined reading paths** (symbols + informal) | **here** (`chapter-reading-dependency.dot` + `.md`) |
+| **Bridge-audit checklists** (archived rollout snapshot) | [`attic/chapter-reading-checklists/`](attic/chapter-reading-checklists/) |
 | Symbol appears anywhere in math | `symbol-census/graphs/symbol-formula-graph.dot` |
 | Manuscript → Lean | `symbol-census/graphs/manuscript-lean-crosswalk-graph.dot` |

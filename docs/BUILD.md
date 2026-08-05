@@ -2,6 +2,36 @@
 
 **Requirements:** TeX distribution with `latexmk`, `pdflatex`, `biber`, and the `memoir` class.
 
+## Build map (read this first)
+
+This repo has **separate build roots**. There is **no** root `package.json`; npm commands belong in subdirectories only.
+
+| What | Working directory | Command | Output |
+|------|-------------------|---------|--------|
+| **PDF (manuscript)** | repo root | `./build.sh` or `make pdf` | `dist/pdf/towards-superintelligence-alignment.pdf` |
+| **Manuscript checks** | repo root | `make check` | (stdout) |
+| **Companion site** | repo root *or* `site/` | `./serve-site.sh` (dev) · `./serve-site.sh --preview` (prod-like) | `site/dist/` |
+| **Site build only** | `site/` | `npm ci && npm run build` | `site/dist/` |
+| **Chapter demos** | repo root *or* `demos/` | `./serve-demos.sh` | static server on `:8765` |
+| **Demo TS rebuild** | `demos/` | `npm ci && npm run build` | `demos/chNN-*/` compiled `.js` |
+| **Lean spine** | `formal/` | `lake exe cache get && lake build` | `.lake/` build cache |
+
+**`node_modules` locations (gitignored, never committed):**
+
+- `site/node_modules/` — Astro companion site (**expected** after `cd site && npm ci`)
+- `demos/node_modules/` — esbuild/vitest for demo bundles (**optional** unless editing TypeScript)
+- **Repo-root `node_modules/`** — **not expected**. Usually created by mistake (`npm install`, `npm exec`, or `npx` run from the repo root). Safe to delete; nothing in this project uses it.
+
+**Common mistakes**
+
+- Running `npm install` or `npm exec astro …` from the repo root → creates stray root `node_modules/`
+- Running `npm run build` without `cd site` first
+- Opening `site/dist/index.html` directly — use `./serve-site.sh` or `npm run preview` in `site/`
+
+From repo root, prefer wrapper scripts: `./build.sh` (PDF), `./serve-site.sh` (site), `./serve-demos.sh` (demos).
+
+---
+
 ```bash
 make generate       # emit build-time .tex fragments (not in git)
 ./build.sh          # or: make pdf  (generate + full latexmk build)
@@ -53,9 +83,17 @@ See [`formal/README.md`](../formal/README.md) and [`formal/LeanProofSpineImpleme
 
 ## Companion site
 
+From repo root (recommended — installs `site/node_modules` if missing):
+
+```bash
+./serve-site.sh              # dev server
+./serve-site.sh --preview    # production-like preview
+```
+
+Manual equivalent (`site/` only — do **not** run npm from repo root):
+
 ```bash
 cd site && npm ci && npm run build
-./serve-site.sh     # from repo root
 ```
 
 `npm run sync` (and `prebuild`) runs `../scripts/generate_manuscript_tex.sh` first so gitignored build-time `.tex` fragments exist before chapter sync resolves `\label`/`\ref` targets (e.g. `tab:appi-axiom-budget` in Appendix G).

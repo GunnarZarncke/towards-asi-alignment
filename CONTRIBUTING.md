@@ -99,7 +99,9 @@ The **official companion site** is deployed from this repository:
 
 **https://towards-alignment.com/**
 
-It hosts guided reading paths, concept cards, rendered chapter pages, Lean playgrounds, chapter demos, and an in-browser PDF copy. Build locally: [`site/README.md`](site/README.md) and [`docs/BUILD.md`](docs/BUILD.md).
+It hosts guided reading paths, concept cards, rendered chapter pages, Lean playgrounds, chapter demos, and an in-browser PDF copy.
+
+From repo root: `./serve-site.sh` (dev) or `./serve-site.sh --preview` (production-like). Do **not** run `npm install` at repo root — dependencies live in `site/node_modules/` only. Details: [`site/README.md`](site/README.md) and [`docs/BUILD.md`](docs/BUILD.md).
 
 You may also:
 
