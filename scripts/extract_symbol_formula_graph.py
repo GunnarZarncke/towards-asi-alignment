@@ -935,6 +935,9 @@ SYMBOL_SPINE_ATTRS = "color=#2c5282, penwidth=1.0, weight=80, constraint=true"
 LOW_WEIGHT_EQREF_ATTRS = "color=#059669, style=dashed, penwidth=0.6, weight=0.5, constraint=false"
 EQ_CHAIN_SYM_TO_EQ_ATTRS = 'color="#2563eb", penwidth=1.2, weight=80, constraint=true'
 EQ_CHAIN_EQ_DEF_SYM_ATTRS = 'color="#7c3aed", penwidth=1.2, weight=80, constraint=true'
+EQ_CHAIN_CH_DEF_EQ_ATTRS = (
+    'color="#b45309", penwidth=1.2, weight=80, constraint=true'
+)
 EQ_CHAIN_SPINE_ATTRS = "style=invis, weight=60, constraint=true"
 
 
@@ -942,12 +945,18 @@ def _formula_order_key(f: Formula) -> tuple[str, int, str]:
     return (f.chapter, f.line_start, f.fid)
 
 
-def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
-    """Minimal eq→sym→eq chain graph: definitions (LHS) vs uses (RHS).
+@dataclass
+class EqChainCore:
+    chain_syms: set[str]
+    kept_eqs: set[str]
+    sym_def_eqs: dict[str, set[str]]
+    sym_use_eqs: dict[str, set[str]]
+    first_def_order: dict[str, tuple[str, int, str]]
+    first_def_chapter: dict[str, str]
+    by_fid: dict[str, Formula]
 
-    Purple eq→sym: equation defines the symbol (LHS of ``='' or tuple component).
-    Blue sym→eq: symbol is used in a later equation (RHS only).
-    """
+
+def _compute_eq_chain_core(all_formulas: list[Formula]) -> EqChainCore:
     labeled = [f for f in all_formulas if f.fid.startswith("eq:")]
     by_fid = {f.fid: f for f in labeled}
     ordered = sorted(labeled, key=_formula_order_key)
@@ -961,14 +970,15 @@ def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
             sym_use_eqs[sym].add(f.fid)
 
     first_def_order: dict[str, tuple[str, int, str]] = {}
+    first_def_chapter: dict[str, str] = {}
     for f in ordered:
         for sym in f.defined_symbols:
             if sym not in first_def_order:
                 first_def_order[sym] = _formula_order_key(f)
+                first_def_chapter[sym] = f.chapter
 
-    # Bridge symbols: defined in ≥1 eq, used in ≥1 other eq (manuscript order).
     chain_syms: set[str] = set()
-    for sym, def_eqs in sym_def_eqs.items():
+    for sym in sym_def_eqs:
         use_eqs = sym_use_eqs.get(sym, set())
         if not use_eqs:
             continue
@@ -988,17 +998,23 @@ def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
         kept_eqs |= sym_def_eqs[sym]
         kept_eqs |= {e for e in sym_use_eqs[sym] if sym in by_fid[e].used_symbols}
 
-    lines = [
-        "digraph EquationChainGraph {",
-        '  graph [rankdir=LR, fontsize=10, overlap=prism, sep="+20",',
-        '    label="Equation chains (eq→sym defines, sym→eq uses)", labelloc=t];',
-        "  node [fontname=Helvetica, fontsize=9];",
-        "  edge [fontname=Helvetica, fontsize=8];",
-        "",
-    ]
+    return EqChainCore(
+        chain_syms=chain_syms,
+        kept_eqs=kept_eqs,
+        sym_def_eqs=sym_def_eqs,
+        sym_use_eqs=sym_use_eqs,
+        first_def_order=first_def_order,
+        first_def_chapter=first_def_chapter,
+        by_fid=by_fid,
+    )
 
-    for fid in sorted(kept_eqs, key=lambda e: (_formula_order_key(by_fid[e]))):
-        f = by_fid[fid]
+
+def _append_eq_chain_nodes_edges(
+    lines: list[str], core: EqChainCore
+) -> tuple[int, int, int]:
+    """Emit eq/sym nodes, def/use edges, and within-chapter spine."""
+    for fid in sorted(core.kept_eqs, key=lambda e: _formula_order_key(core.by_fid[e])):
+        f = core.by_fid[fid]
         label = fid[3:].replace("-", "\\n")
         ch = f.chapter.replace("ch", "")
         lines.append(
@@ -1006,7 +1022,7 @@ def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
             f'label="{dot_escape(label)}\\n({ch})"];'
         )
 
-    for sym in sorted(chain_syms, key=lambda s: s.lower()):
+    for sym in sorted(core.chain_syms, key=lambda s: s.lower()):
         lines.append(
             f'  "sym:{sym}" [shape=ellipse, style=filled, fillcolor="#dbeafe", '
             f'label="{dot_escape(sym)}"];'
@@ -1015,29 +1031,29 @@ def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
     lines.append("")
     lines.append("  // eq → sym (definition on LHS or tuple intro)")
     n_def = 0
-    for sym in sorted(chain_syms, key=lambda s: s.lower()):
-        for fid in sorted(sym_def_eqs[sym] & kept_eqs):
+    for sym in sorted(core.chain_syms, key=lambda s: s.lower()):
+        for fid in sorted(core.sym_def_eqs[sym] & core.kept_eqs):
             lines.append(f'  "{fid}" -> "sym:{sym}" [{EQ_CHAIN_EQ_DEF_SYM_ATTRS}];')
             n_def += 1
 
     lines.append("")
     lines.append("  // sym → eq (use on RHS, after first definition)")
     n_use = 0
-    for sym in sorted(chain_syms, key=lambda s: s.lower()):
-        for fid in sorted(sym_use_eqs[sym] & kept_eqs):
-            use_f = by_fid[fid]
+    for sym in sorted(core.chain_syms, key=lambda s: s.lower()):
+        for fid in sorted(core.sym_use_eqs[sym] & core.kept_eqs):
+            use_f = core.by_fid[fid]
             if sym in use_f.defined_symbols:
                 continue
-            if sym not in first_def_order:
+            if sym not in core.first_def_order:
                 continue
-            if _formula_order_key(use_f) <= first_def_order[sym]:
+            if _formula_order_key(use_f) <= core.first_def_order[sym]:
                 continue
             lines.append(f'  "sym:{sym}" -> "{fid}" [{EQ_CHAIN_SYM_TO_EQ_ATTRS}];')
             n_use += 1
 
     by_ch: dict[str, list[Formula]] = defaultdict(list)
-    for fid in kept_eqs:
-        by_ch[by_fid[fid].chapter].append(by_fid[fid])
+    for fid in core.kept_eqs:
+        by_ch[core.by_fid[fid].chapter].append(core.by_fid[fid])
     lines.append("")
     lines.append("  // Within-chapter equation line-order (invis layout spine)")
     n_spine = 0
@@ -1046,11 +1062,96 @@ def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
         for a, b in zip(eqs, eqs[1:]):
             lines.append(f'  "{a.fid}" -> "{b.fid}" [{EQ_CHAIN_SPINE_ATTRS}];')
             n_spine += 1
+    return n_def, n_use, n_spine
+
+
+def _chapter_anchor_eq(core: EqChainCore, ch: str) -> str | None:
+    """Earliest kept equation in ``ch`` that first-defines a bridge symbol."""
+    best_fid: str | None = None
+    best_key: tuple[str, int, str] | None = None
+    for sym in core.chain_syms:
+        if core.first_def_chapter.get(sym) != ch:
+            continue
+        key = core.first_def_order[sym]
+        fid = key[2]
+        if fid not in core.kept_eqs:
+            continue
+        if best_key is None or key < best_key:
+            best_key = key
+            best_fid = fid
+    return best_fid
+
+
+def build_eq_chain_dot(all_formulas: list[Formula]) -> str:
+    """Minimal eq→sym→eq chain graph: definitions (LHS) vs uses (RHS).
+
+    Purple eq→sym: equation defines the symbol (LHS of ``='' or tuple component).
+    Blue sym→eq: symbol is used in a later equation (RHS only).
+    """
+    core = _compute_eq_chain_core(all_formulas)
+    lines = [
+        "digraph EquationChainGraph {",
+        '  graph [rankdir=LR, fontsize=10, overlap=prism, sep="+20",',
+        '    label="Equation chains (eq→sym defines, sym→eq uses)", labelloc=t];',
+        "  node [fontname=Helvetica, fontsize=9];",
+        "  edge [fontname=Helvetica, fontsize=8];",
+        "",
+    ]
+    n_def, n_use, n_spine = _append_eq_chain_nodes_edges(lines, core)
     lines.append(
-        f"  // ({len(kept_eqs)} eq nodes, {len(chain_syms)} bridge symbols, "
+        f"  // ({len(core.kept_eqs)} eq nodes, {len(core.chain_syms)} bridge symbols, "
         f"{n_def} def, {n_use} use, {n_spine} spine edges)"
     )
+    lines.append("}")
+    return "\n".join(lines)
 
+
+def build_eq_chain_chapters_dot(all_formulas: list[Formula]) -> str:
+    """Eq-chain graph plus one chapter→equation link per defining chapter.
+
+    Each ``unit:chNN`` connects to the earliest kept equation in that chapter that
+    first-defines a bridge symbol (constraining layout). Symbol defs remain
+    eq→sym; no chapter→symbol fan-out and no inter-chapter edges.
+    """
+    core = _compute_eq_chain_core(all_formulas)
+    def_chapters = {core.first_def_chapter[sym] for sym in core.chain_syms}
+    ch_anchors: dict[str, str] = {}
+    for ch in def_chapters:
+        anchor = _chapter_anchor_eq(core, ch)
+        if anchor:
+            ch_anchors[ch] = anchor
+
+    lines = [
+        "digraph EquationChainGraphWithChapters {",
+        '  graph [rankdir=LR, fontsize=10, overlap=prism, sep="+20",',
+        '    label="Equation chains + chapter→first-def eq (one per chapter)", labelloc=t];',
+        "  node [fontname=Helvetica, fontsize=9];",
+        "  edge [fontname=Helvetica, fontsize=8];",
+        "",
+    ]
+
+    for ch in sorted(ch_anchors, key=lambda c: int(c[2:]) if c[2:].isdigit() else 999):
+        num = ch.replace("ch", "")
+        lines.append(
+            f'  "unit:{ch}" [shape=folder, style=filled, fillcolor="#fef3c7", '
+            f'label="ch{dot_escape(num)}"];'
+        )
+
+    n_def, n_use, n_spine = _append_eq_chain_nodes_edges(lines, core)
+
+    lines.append("")
+    lines.append("  // unit:chNN → earliest first-def equation in chapter (layout + label)")
+    n_ch = 0
+    for ch in sorted(ch_anchors, key=lambda c: int(c[2:]) if c[2:].isdigit() else 999):
+        anchor = ch_anchors[ch]
+        lines.append(f'  "unit:{ch}" -> "{anchor}" [{EQ_CHAIN_CH_DEF_EQ_ATTRS}];')
+        n_ch += 1
+
+    lines.append(
+        f"  // ({len(ch_anchors)} chapter nodes, {len(core.kept_eqs)} eq, "
+        f"{len(core.chain_syms)} bridge symbols, {n_ch} ch→eq, "
+        f"{n_def} eq→sym, {n_use} sym→eq, {n_spine} spine)"
+    )
     lines.append("}")
     return "\n".join(lines)
 
@@ -1547,6 +1648,10 @@ def main() -> None:
     eq_chain_path = args.out.with_name("equation-chain-graph.dot")
     eq_chain_path.write_text(build_eq_chain_dot(all_formulas), encoding="utf-8")
     print(f"Wrote {eq_chain_path}")
+
+    eq_chain_ch_path = args.out.with_name("equation-chain-graph-chapters.dot")
+    eq_chain_ch_path.write_text(build_eq_chain_chapters_dot(all_formulas), encoding="utf-8")
+    print(f"Wrote {eq_chain_ch_path}")
 
     if args.detailed and not args.chapter:
         detailed_path = args.out.with_name("symbol-formula-graph-detailed.dot")

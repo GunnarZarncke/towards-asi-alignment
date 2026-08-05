@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-05 (anthropic-lab MI stack gloss).
+Last updated: 2026-08-05 (equation-chain chapters variant).
 
 ---
 
@@ -34,6 +34,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Metadata graphs (2026-08-05):** Equation-chain **chapters variant** — one `unit:chNN→eq` anchor per chapter (layout-constraining); shared `EqChainCore` refactor. Log: `2026-08-05-equation-chain-chapters-variant.md`.
 - **Reference + site (2026-08-05):** Anthropic / Goodfire agenda — gloss **MI stack** on first use (mechanistic interpretability link + Goodfire/Transluce/Neuronpedia); contributes line links DeepMind MI lineage. Log: `2026-08-05-anthropic-lab-mi-stack-gloss.md`.
 - **Metadata graphs (2026-08-05):** Section/chapter ref DAG (`scripts/build_section_reference_graph.py` → `metadata/concept-graph/`); equation-chain graph with **def vs use** edges (`eq→sym` define, `sym→eq` use) in `extract_symbol_formula_graph.py`; generated `.dot`/`.svg` gitignored. Log: `2026-08-05-equation-chain-def-use-graphs.md`.
 - **Reference + site (2026-08-05):** Iliad / Textbook from the Future — new off-matrix field agenda; TSA `bookSeparates` contrast; Resolution Timaeus/Iliad cross-link; Field hub intro bullet; clustering roll-up. Log: `2026-08-05-iliad-textbook-from-the-future-agenda.md`.

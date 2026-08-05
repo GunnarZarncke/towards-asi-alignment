@@ -20,6 +20,7 @@ python3 scripts/extract_symbol_formula_graph.py --chapter ch14 --out metadata/sy
 | `symbol-formula-graph-detailed.dot` | Optional (`--detailed`): all 1004 parsed nodes including unlabeled blocks and per-line prose refs — debug only |
 | `symbol-formula-graph-ch14.dot` | ch14 reachability subgraph (labeled eq only) |
 | `equation-chain-graph.dot` | **Minimal eq→sym→eq chains** (def vs use; no sections/cites) |
+| `equation-chain-graph-chapters.dot` | Same + **one unit:chNN → eq** (earliest first-def eq in chapter; no inter-chapter edges) |
 | `../symbol-formula-coverage.md` | Per-chapter tables: symbol → list of formulas, plus Lean spine coverage and text cross-reference sections |
 | `symbol-formula-graph-ch14.svg` | Rendered ch14 graph (after `dot`) |
 | `lean-dependency-graph.dot` | **Lean-only** declaration graph, parsed from `formal/AlignmentProofSpine/**/*.lean` (1016 declarations, 37 files) |
@@ -135,6 +136,10 @@ single screen-sized view). To regenerate after editing chapters or `formal/`:
 # Equation chains only (eq defines sym, sym uses eq — start here for a clean view):
 dot -Tsvg metadata/symbol-census/graphs/equation-chain-graph.dot \
   -o metadata/symbol-census/graphs/equation-chain-graph.svg
+
+# With chapter → first-defining equation in that chapter (one edge per chapter):
+dot -Tsvg metadata/symbol-census/graphs/equation-chain-graph-chapters.dot \
+  -o metadata/symbol-census/graphs/equation-chain-graph-chapters.svg
 
 # ch14 subgraph only (small, ~350 lines): dot's layered ranking works fine
 dot -Tsvg symbol-formula-graph-ch14.dot -o symbol-formula-graph-ch14.svg
