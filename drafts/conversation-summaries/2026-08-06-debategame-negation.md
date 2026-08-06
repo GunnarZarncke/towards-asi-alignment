@@ -24,4 +24,4 @@ Hostile feedback: `Claim` had only `atom`/`conj`/`disj` (monotone), so `debate_t
 - `appendices/appG-lean-proof-spine.tex`
 
 ## Commits
-- (pending end-of-session commit)
+- `1e82c95f` Add negation with role-swap to the finite debate game.
