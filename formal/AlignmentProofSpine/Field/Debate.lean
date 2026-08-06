@@ -7,7 +7,8 @@ import AlignmentProofSpine.Correction
 # AlignmentProofSpine.Field.Debate
 
 Debate: the two-prover argument game rederived finitely
-(`Field.Finite.DebateGame`), plus the older judge-channel interface toys.
+(`Field.Finite.DebateGame` — claim trees with ∧/∨/¬ and role-swap under
+negation), plus the older judge-channel interface toys.
 
 The substantive relation to the book is **conditional**, not a subsumption:
 debate's soundness/completeness guarantee is proved *given* a judge that

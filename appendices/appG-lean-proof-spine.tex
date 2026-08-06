@@ -336,7 +336,7 @@ Debate asks whether adversarial argument lets a judge select locally correct ans
 Handle \leanid{Irving2018_debate_truth_protocol_imported}: under idealized debate conditions, adversarial argument can make truth easier for a judge to select \autocite{irving2018debate} (protocol assumption).
 
 \paragraph{Rederived in Lean (native debate game).}
-The native game (\texttt{Field/Finite/DebateGame.lean}) is a two-player zero-sum argument game over finite claim trees (conjunction/disjunction over atoms), with the defender picking disjuncts, the challenger picking conjuncts, and the judge ruling the atom reached.
+The native game (\texttt{Field/Finite/DebateGame.lean}) is a two-player zero-sum argument game over finite claim trees (conjunction, disjunction, and negation over atoms), with the defender picking disjuncts, the challenger picking conjuncts, roles swapping under negation, and the judge ruling the atom reached.
 With a correct judge the min-max game value equals the claim's truth value for every tree (\leanid{debate\_value\_tracks\_truth}), and in strategy form the defender has a winning strategy exactly for true claims and the challenger exactly for false ones (\leanid{debate\_defender\_wins\_iff\_true}, \leanid{debate\_challenger\_wins\_iff\_false}), with the honest strategies exhibited constructively.
 The conditionality is equally exact: a judge wrong on a single atom certifies a false claim, and dually rejects a true one (\leanid{debate\_judge\_error\_flips\_outcome}) --- debate amplifies judge correctness, it cannot create it.
 Debater compute limits, argument-length asymmetries, and the probabilistic judge remain with the source.
