@@ -356,12 +356,12 @@
 <polygon fill="#cc3333" stroke="#cc3333" points="1252.68,-330.65 1251.14,-323.39 1247.82,-330.02 1252.68,-330.65"/>
 </g>
 <!-- MB7b -->
-<a xlink:href="../../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node21" class="node"><title>MB7b</title>
+<a xlink:href="../../cards/mb7b-filter-coverage/" class="lean-graph-node"><g id="node21" class="node"><title>MB7b</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M661.85,-318.94C661.85,-318.94 605.23,-306.21 605.23,-306.21 599.37,-304.89 599.37,-302.26 605.23,-300.94 605.23,-300.94 661.85,-288.21 661.85,-288.21 667.7,-286.89 679.41,-286.89 685.26,-288.21 685.26,-288.21 741.88,-300.94 741.88,-300.94 747.73,-302.26 747.73,-304.89 741.88,-306.21 741.88,-306.21 685.26,-318.94 685.26,-318.94 679.41,-320.26 667.7,-320.26 661.85,-318.94"/>
 <text xml:space="preserve" text-anchor="middle" x="673.55" y="-300.87" font-family="Helvetica,sans-Serif" font-size="9.00">MB7b (from Spine I)</text>
 </g></a>
 <!-- MB7c -->
-<a xlink:href="../../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node22" class="node"><title>MB7c</title>
+<a xlink:href="../../cards/mb7c-bounded-hidden-capability/" class="lean-graph-node"><g id="node22" class="node"><title>MB7c</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M676.71,-171.84C676.71,-171.84 590.08,-157.71 590.08,-157.71 584.16,-156.74 584.16,-154.81 590.08,-153.84 590.08,-153.84 676.71,-139.71 676.71,-139.71 682.63,-138.74 694.47,-138.74 700.4,-139.71 700.4,-139.71 787.03,-153.84 787.03,-153.84 792.95,-154.81 792.95,-156.74 787.03,-157.71 787.03,-157.71 700.4,-171.84 700.4,-171.84 694.47,-172.81 682.63,-172.81 676.71,-171.84"/>
 <text xml:space="preserve" text-anchor="middle" x="688.55" y="-153.07" font-family="Helvetica,sans-Serif" font-size="9.00">MB7c Adversarial robustness</text>
 </g></a>

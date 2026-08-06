@@ -49,7 +49,7 @@
 <polygon fill="#555555" stroke="#555555" points="732.48,-316.56 730.03,-309.56 727.58,-316.56 732.48,-316.56"/>
 </g>
 <!-- MB7a -->
-<a xlink:href="../../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node16" class="node"><title>MB7a</title>
+<a xlink:href="../../cards/mb7a-access-model-soundness/" class="lean-graph-node"><g id="node16" class="node"><title>MB7a</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M486.16,-305.92C486.16,-305.92 390.03,-291.49 390.03,-291.49 384.1,-290.6 384.1,-288.81 390.03,-287.92 390.03,-287.92 486.16,-273.49 486.16,-273.49 492.09,-272.6 503.96,-272.6 509.89,-273.49 509.89,-273.49 606.02,-287.92 606.02,-287.92 611.96,-288.81 611.96,-290.6 606.02,-291.49 606.02,-291.49 509.89,-305.92 509.89,-305.92 503.96,-306.81 492.09,-306.81 486.16,-305.92"/>
 <text xml:space="preserve" text-anchor="middle" x="498.03" y="-287.01" font-family="Helvetica,sans-Serif" font-size="9.00">MB7a Access&#45;model soundness</text>
 </g></a>
@@ -154,7 +154,7 @@
 <polygon fill="#555555" stroke="#555555" points="161.74,-313.6 155.63,-309.4 157.79,-316.49 161.74,-313.6"/>
 </g>
 <!-- MB7b -->
-<a xlink:href="../../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node17" class="node"><title>MB7b</title>
+<a xlink:href="../../cards/mb7b-filter-coverage/" class="lean-graph-node"><g id="node17" class="node"><title>MB7b</title>
 <path fill="#ffe6e6" stroke="#cc3333" d="M200.2,-186.1C200.2,-186.1 117.7,-172.11 117.7,-172.11 111.78,-171.11 111.78,-169.1 117.7,-168.1 117.7,-168.1 200.2,-154.11 200.2,-154.11 206.11,-153.11 217.94,-153.11 223.86,-154.11 223.86,-154.11 306.35,-168.1 306.35,-168.1 312.27,-169.1 312.27,-171.11 306.35,-172.11 306.35,-172.11 223.86,-186.1 223.86,-186.1 217.94,-187.1 206.11,-187.1 200.2,-186.1"/>
 <text xml:space="preserve" text-anchor="middle" x="212.03" y="-167.41" font-family="Helvetica,sans-Serif" font-size="9.00">MB7b Filter&#45;family coverage</text>
 </g></a>

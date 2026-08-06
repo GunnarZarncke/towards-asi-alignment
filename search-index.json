@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-05T21:11:40.674Z",
+  "generatedAt": "2026-08-06T12:53:48.458Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 293,
+  "entryCount": 296,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -1313,6 +1313,24 @@
       "type": "bridge",
       "summary": "Inner alignment and strategic opacity: a system can look compliant under evaluation while reserving capability. Precise bet: access, filter coverage, and cost of faking bound hidden control (MB7a–c); MB7d types inferential coupling separately.",
       "url": "/cards/mb7-hidden-capability-and-access/"
+    },
+    {
+      "title": "MB7a — Access-Model Soundness",
+      "type": "bridge",
+      "summary": "Access-model soundness: boundary alignment plus adequate handles is assumed to yield access-robust boundary discovery under adversarial hiding.",
+      "url": "/cards/mb7a-access-model-soundness/"
+    },
+    {
+      "title": "MB7b — Filter Coverage",
+      "type": "bridge",
+      "summary": "Filter-family coverage: access robustness plus adequate resolution is assumed to bound hidden productive boundary information (BIQ).",
+      "url": "/cards/mb7b-filter-coverage/"
+    },
+    {
+      "title": "MB7c — Bounded Hidden Capability",
+      "type": "bridge",
+      "summary": "Hidden-BIQ-to-adversarial-robustness: if hidden productive BIQ is bounded, correction integrity is assumed to support adversarially robust oversight (cost of faking the monitored signal).",
+      "url": "/cards/mb7c-bounded-hidden-capability/"
     },
     {
       "title": "MB7d — Acausal Coordination",

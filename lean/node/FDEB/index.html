@@ -19,9 +19,11 @@
 <span class="line"><span style="color:#24292E">  | atom f => rfl</span></span>
 <span class="line"><span style="color:#24292E">  | conj l r ihl ihr => simp [debateValue, Claim.eval, ihl, ihr]</span></span>
 <span class="line"><span style="color:#24292E">  | disj l r ihl ihr => simp [debateValue, Claim.eval, ihl, ihr]</span></span>
+<span class="line"><span style="color:#24292E">  | neg c ih => simp [debateValue, Claim.eval, ih]</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A737D">/-- The honest defender: at a disjunction, defend a disjunct whose subgame</span></span>
-<span class="line"><span style="color:#6A737D">    value is `true` (prefer the left one). -/</span></span>
+<span class="line"><span style="color:#6A737D">/-- Honest play at both roles: at a disjunction defend a true-valued</span></span>
+<span class="line"><span style="color:#6A737D">    disjunct; at a conjunction attack a false-valued conjunct. One function</span></span>
+<span class="line"><span style="color:#6A737D">    serves both roles so that role-swap under negation stays honest. -/</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#D73A49">theorem</span><span style="color:#6F42C1"> erring_judge_flips_debate</span><span style="color:#24292E"> :</span></span>
 <span class="line"><span style="color:#24292E">    cexFalseClaim.eval cexTruth = </span><span style="color:#005CC5">false</span><span style="color:#24292E"> ∧</span></span>

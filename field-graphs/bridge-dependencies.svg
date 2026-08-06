@@ -17,7 +17,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1291.48" y="-1321.8" font-family="Helvetica,sans-Serif" font-size="10.00">Embedded Agency</text>
 </g></a>
 <!-- MB7a -->
-<a xlink:href="../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node9" class="node"><title>MB7a</title>
+<a xlink:href="../cards/mb7a-access-model-soundness/" class="lean-graph-node"><g id="node9" class="node"><title>MB7a</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="1214.48,-1175.2 1109,-1131.2 1214.48,-1087.2 1319.96,-1131.2 1214.48,-1175.2"/>
 <text xml:space="preserve" text-anchor="middle" x="1214.48" y="-1140.2" font-family="Helvetica,sans-Serif" font-size="10.00">MB7a</text>
 <text xml:space="preserve" text-anchor="middle" x="1214.48" y="-1128.2" font-family="Helvetica,sans-Serif" font-size="10.00">Inner Alignment</text>
@@ -186,7 +186,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1032.02" y="-340.1" font-family="Helvetica,sans-Serif" font-size="9.00">→ measured path legitimate</text>
 </g>
 <!-- MB7c -->
-<a xlink:href="../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node11" class="node"><title>MB7c</title>
+<a xlink:href="../cards/mb7c-bounded-hidden-capability/" class="lean-graph-node"><g id="node11" class="node"><title>MB7c</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="967.48,-286.4 844.21,-242.4 967.48,-198.4 1090.74,-242.4 967.48,-286.4"/>
 <text xml:space="preserve" text-anchor="middle" x="967.48" y="-251.4" font-family="Helvetica,sans-Serif" font-size="10.00">MB7c</text>
 <text xml:space="preserve" text-anchor="middle" x="967.48" y="-239.4" font-family="Helvetica,sans-Serif" font-size="10.00">Inner Alignment</text>
@@ -200,7 +200,7 @@
 <text xml:space="preserve" text-anchor="middle" x="1151.33" y="-345.5" font-family="Helvetica,sans-Serif" font-size="9.00">correction integrity</text>
 </g>
 <!-- MB7b -->
-<a xlink:href="../cards/mb7-hidden-capability-and-access/" class="lean-graph-node"><g id="node10" class="node"><title>MB7b</title>
+<a xlink:href="../cards/mb7b-filter-coverage/" class="lean-graph-node"><g id="node10" class="node"><title>MB7b</title>
 <polygon fill="#ffe6e6" stroke="#cc3333" points="1232.48,-848.6 1146.44,-804.6 1232.48,-760.6 1318.52,-804.6 1232.48,-848.6"/>
 <text xml:space="preserve" text-anchor="middle" x="1232.48" y="-813.6" font-family="Helvetica,sans-Serif" font-size="10.00">MB7b</text>
 <text xml:space="preserve" text-anchor="middle" x="1232.48" y="-801.6" font-family="Helvetica,sans-Serif" font-size="10.00">Inner Alignment</text>
