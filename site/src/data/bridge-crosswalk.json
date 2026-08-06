@@ -70,14 +70,44 @@
     "chapters": ["ch35", "ch36", "ch37"]
   },
   {
-    "bridges": ["MB7a", "MB7b", "MB7c"],
+    "bridges": ["MB7"],
     "noun": "Inner Alignment",
     "home": "A-004, A-009; ch10, ch43, ch47",
     "fieldCrux": "Hidden productive control is bounded and oversight stays adversarially robust (access, filter coverage, cost of faking).",
     "agendas": "RLHF, Debate, Amplification, AI Control (Redwood)",
-    "bookMove": "Bound hidden productive BIQ via access robustness plus filter coverage; price the cost of faking the monitored signal",
+    "bookMove": "Split inner alignment into MB7a–c plus MB7d; see sub-bridge cards for each handoff",
     "cards": ["mb7-hidden-capability-and-access", "adversarial-agency-tests", "strategic-opacity"],
     "chapters": ["ch10", "ch43", "ch47"]
+  },
+  {
+    "bridges": ["MB7a"],
+    "noun": "Access-Model Soundness",
+    "home": "A-004, A-009; ch10–ch13",
+    "fieldCrux": "An adequate access model makes boundary discovery robust under adversarial hiding.",
+    "agendas": "RLHF, Debate, Amplification, AI Control (Redwood); embedded agency (MIRI)",
+    "bookMove": "Boundary alignment plus access-model adequacy ⇒ access-robust discovery",
+    "cards": ["mb7a-access-model-soundness", "boundary-discovery", "adversarial-boundary-discovery"],
+    "chapters": ["ch10", "ch11", "ch12", "ch13"]
+  },
+  {
+    "bridges": ["MB7b"],
+    "noun": "Filter Coverage",
+    "home": "A-009; ch10, ch13, ch43",
+    "fieldCrux": "The oversight filter family has adequate resolution to bound what audits miss.",
+    "agendas": "RLHF, Debate, Amplification, AI Control (Redwood)",
+    "bookMove": "Access robustness plus filter coverage ⇒ hidden productive BIQ bounded",
+    "cards": ["mb7b-filter-coverage", "strategic-opacity", "certification-under-manipulation"],
+    "chapters": ["ch10", "ch13", "ch43"]
+  },
+  {
+    "bridges": ["MB7c"],
+    "noun": "Bounded Hidden Capability",
+    "home": "A-009; ch13, ch43, ch44",
+    "fieldCrux": "Bounded hidden productive control plus correction integrity supports adversarially robust oversight.",
+    "agendas": "RLHF, Debate, Amplification, AI Control (Redwood)",
+    "bookMove": "Hidden BIQ bounded plus correction integrity ⇒ adversarial robustness (cost of faking)",
+    "cards": ["mb7c-bounded-hidden-capability", "correction-channel-integrity", "certification-under-manipulation"],
+    "chapters": ["ch13", "ch43", "ch44"]
   },
   {
     "bridges": ["MB7d"],

@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-06 | **MB7a–c bridge cards** — Explicit sub-bridge cards with book names; MB7 overview links; crosswalk + field matrix sync. | [2026-08-06-mb7a-c-bridge-cards.md](2026-08-06-mb7a-c-bridge-cards.md) |
 | 2026-08-06 | **Build path docs + checklist attic** — Build map in docs/BUILD.md; bridge-audit checklists archived under concept-graph/attic. | [2026-08-06-build-path-and-checklist-attic.md](2026-08-06-build-path-and-checklist-attic.md) |
 | 2026-08-05 | **Chapter reading guide removal** — Folded the two unmet prerequisites into ch07/ch38 prose and removed unused guide infrastructure. | [2026-08-05-chapter-reading-guide-removal.md](2026-08-05-chapter-reading-guide-removal.md) |
 | 2026-08-05 | **Chapter reading guide Phase 4** — High-fan-in/synthesis audit; no additional blocks. | [2026-08-05-chapter-reading-guide-phase4-hard.md](2026-08-05-chapter-reading-guide-phase4-hard.md) |

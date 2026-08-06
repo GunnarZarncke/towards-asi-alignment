@@ -2,6 +2,9 @@
 
 export function bridgeCardSlug(nodeId) {
   if (nodeId.startsWith("MB4a")) return "mb4a-measured-path-legitimacy";
+  if (nodeId.startsWith("MB7a")) return "mb7a-access-model-soundness";
+  if (nodeId.startsWith("MB7b")) return "mb7b-filter-coverage";
+  if (nodeId.startsWith("MB7c")) return "mb7c-bounded-hidden-capability";
   if (nodeId.startsWith("MB7d")) return "mb7d-acausal-coordination";
   const mb = nodeId.match(/^MB(\d+)/);
   if (!mb) return null;

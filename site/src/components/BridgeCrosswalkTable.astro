@@ -9,9 +9,12 @@ interface Props {
 const { cardHref, chapterHref } = Astro.props;
 
 function cardForBridge(bridge: string, cards: string[]) {
+  const prefix = bridge.toLowerCase();
+  const exact = cards.find((slug) => slug.startsWith(`${prefix}-`) || slug === prefix);
+  if (exact) return exact;
   const n = bridge.match(/MB(\d+)/)?.[1];
   if (n) {
-    const hit = cards.find((slug) => slug.startsWith(`mb${n}-`));
+    const hit = cards.find((slug) => slug.startsWith(`mb${n}-`) && !slug.match(/^mb\d+[a-z]-/));
     if (hit) return hit;
   }
   return cards.find((slug) => slug.startsWith("mb")) ?? cards[0];

@@ -1,21 +1,4 @@
 ---
-leanNodes:
-  - nodeId: MB7a_access_model_soundness
-    kind: bridge
-    summary: Boundary alignment plus adequate handles is assumed to yield access-robust boundary discovery.
-    module: AlignmentProofSpine/Core.lean
-  - nodeId: MB7b_filter_family_coverage
-    kind: bridge
-    summary: Access robustness plus adequate resolution is assumed to bound hidden productive boundary information (BIQ).
-    module: AlignmentProofSpine/Core.lean
-  - nodeId: MB7c_hidden_biq_to_adversarial_robustness
-    kind: bridge
-    summary: If hidden productive BIQ is bounded, correction integrity is assumed to support adversarial robustness.
-    module: AlignmentProofSpine/Core.lean
-  - nodeId: MB7d_inferential_uad_detector_soundness
-    kind: bridge
-    summary: Access-robust discovery plus adequate inferential-detector assumptions is assumed to warrant inferential-coupling measurements (coordination detectable without ordinary messages).
-    module: AlignmentProofSpine/Core.lean
 evidenceNotes:
   - source: embedded-simulation MB coverage
     scenario: hidden_capability
@@ -31,6 +14,10 @@ evidenceNotes:
     summary: Oracle hidden model capability and hazard fields give the lab substrate explicit hidden-capability ground truth; tier projection and frozen detectors bound what each audit depth can see.
     resultsPath: https://github.com/GunnarZarncke/towards-asi-alignment/blob/main/experiments/lab-simulation/results/FINDINGS.md
 related:
+  - mb7a-access-model-soundness
+  - mb7b-filter-coverage
+  - mb7c-bounded-hidden-capability
+  - mb7d-acausal-coordination
   - strategic-opacity
   - certification-under-manipulation
   - boundary-discovery
@@ -38,7 +25,6 @@ related:
   - capability
   - correction-channel-integrity
   - inferential-coupling
-  - mb7d-acausal-coordination
   - bridge-assumptions
 external:
   - label: 'Bridges and the Field: A Crosswalk (appendix source)'
@@ -55,10 +41,11 @@ In the field this is inner alignment and [deceptive alignment](/cards/strategic-
 
 This project's precise bet is **MB7**, split into four narrower bridges rather than one vague "we checked for hidden capability" claim:
 
-- **MB7a** assumes an adequate access model makes [boundary discovery](/cards/boundary-discovery/) robust under [adversarial hiding](/cards/adversarial-boundary-discovery/).
-- **MB7b** assumes the filter family used to look for hidden [capability](/cards/capability/) has enough resolution to bound what it misses (the hidden productive BIQ bound; not the same as experimental BIQ in unit-discovery runs).
-- **MB7c** assumes that once hidden capability is bounded, [correction integrity](/cards/correction-channel-integrity/) can extend into adversarial robustness.
+- **[MB7a — Access-Model Soundness](/cards/mb7a-access-model-soundness/)** — adequate handles make [boundary discovery](/cards/boundary-discovery/) robust under [adversarial hiding](/cards/adversarial-boundary-discovery/).
+- **[MB7b — Filter Coverage](/cards/mb7b-filter-coverage/)** — the oversight filter family has adequate resolution to bound what audits miss.
+- **[MB7c — Bounded Hidden Capability](/cards/mb7c-bounded-hidden-capability/)** — bounded hidden productive BIQ plus [correction integrity](/cards/correction-channel-integrity/) supports adversarially robust oversight (cost of faking the monitored signal).
+- **[MB7d — Acausal Coordination](/cards/mb7d-acausal-coordination/)** — inferential coupling after channel severance; see that card for acausal trade, ECL, and severance-detector evidence.
 
-Splitting the wall does not make any piece less hard. It lets a reviewer ask which of the three an audit actually tested. **[MB7d — Acausal Coordination](/cards/mb7d-acausal-coordination/)** is the sibling bridge for inferential coupling after channel severance — see that card for acausal trade, ECL, and severance-detector evidence.
+Splitting the wall does not make any piece less hard. It lets a reviewer ask which sub-bridge an audit actually tested.
 
 **Where agendas agree (MB7a–c):** Hubinger inner/mesa; Redwood control; Apollo scheming; scalable-oversight ceiling. **Where they diverge:** the field often treats inner alignment as one binary; this project splits access, filter coverage, and cost of faking; do not merge with MB10 Successor Gaming. Field "deceptive alignment" usually tags MB7; MB10 = gaming the successor certification channel.

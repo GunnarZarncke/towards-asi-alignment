@@ -167,7 +167,61 @@ bridges:
     assumptionIds: [A-004, A-009, A-013]
     fieldCrux: "Hidden productive control is bounded and oversight stays adversarially robust (access, filter coverage, cost of faking)."
     owningAgenda: "RLHF, Debate, Amplification, AI Control (Redwood); decision theory (MIRI-adjacent) for MB7d"
-    bookMove: "Bound hidden productive BIQ via access robustness plus filter coverage and price the cost of faking the monitored signal; see MB7d for inferential coupling"
+    bookMove: "Bound hidden productive BIQ via access robustness plus filter coverage and price the cost of faking the monitored signal; see MB7a–c cards and MB7d for inferential coupling"
+  - slug: mb7a-access-model-soundness
+    kind: bridge
+    title: MB7a — Access-Model Soundness
+    status: bridge
+    summary: "Access-model soundness: boundary alignment plus adequate handles is assumed to yield access-robust boundary discovery under adversarial hiding."
+    decision: Before trusting boundary-discovery results under scrutiny, ask what access model the audit assumes and whether real control routes could sit outside measured handles.
+    evidence: Evidence would include access-robustness tests under adversarial boundary discovery, handle-coverage audits, and agreement between independent access procedures on the same deployed system.
+    bookChapters:
+      - ch10
+      - ch11
+      - ch12
+      - ch13
+    body: bodies/mb7a-access-model-soundness.md
+    id: MB7a
+    assumptionIds: [A-004, A-009]
+    fieldCrux: "An adequate access model makes boundary discovery robust under adversarial hiding."
+    owningAgenda: "RLHF, Debate, Amplification, AI Control (Redwood); embedded agency (MIRI)"
+    bookMove: "Boundary alignment plus access-model adequacy ⇒ access-robust discovery — the step before filter coverage"
+  - slug: mb7b-filter-coverage
+    kind: bridge
+    title: MB7b — Filter Coverage
+    status: bridge
+    summary: "Filter-family coverage: access robustness plus adequate resolution is assumed to bound hidden productive boundary information (BIQ)."
+    decision: Before claiming hidden capability is bounded, ask whether the oversight filter family has adequate resolution for the routes a capable system could use.
+    evidence: Evidence would include filter-coverage audits, tier-projection checks against oracle hidden-capability ground truth, and adversarial tests where systems reserve productive control outside the filter family.
+    bookChapters:
+      - ch10
+      - ch13
+      - ch14
+      - ch43
+    body: bodies/mb7b-filter-coverage.md
+    id: MB7b
+    assumptionIds: [A-009]
+    fieldCrux: "The oversight filter family has adequate resolution to bound what audits miss."
+    owningAgenda: "RLHF, Debate, Amplification, AI Control (Redwood)"
+    bookMove: "Access robustness plus filter coverage ⇒ hidden productive BIQ bounded — price what the monitor cannot see"
+  - slug: mb7c-bounded-hidden-capability
+    kind: bridge
+    title: MB7c — Bounded Hidden Capability
+    status: bridge
+    summary: "Hidden-BIQ-to-adversarial-robustness: if hidden productive BIQ is bounded, correction integrity is assumed to support adversarially robust oversight (cost of faking the monitored signal)."
+    decision: Before treating oversight as adversarially robust, ask whether bounded hidden capability plus correction integrity were actually tested — not only whether the system looked compliant under evaluation.
+    evidence: Evidence would include cost-of-faking probes, interventional tests distinguishing performed compliance from real correction uptake, and adversarial robustness batteries validated under hidden-capability stressors.
+    bookChapters:
+      - ch13
+      - ch14
+      - ch43
+      - ch44
+    body: bodies/mb7c-bounded-hidden-capability.md
+    id: MB7c
+    assumptionIds: [A-009]
+    fieldCrux: "Bounded hidden productive control plus correction integrity supports adversarially robust oversight."
+    owningAgenda: "RLHF, Debate, Amplification, AI Control (Redwood)"
+    bookMove: "Hidden BIQ bounded plus correction integrity ⇒ adversarial robustness — price the cost of faking the monitored signal"
   - slug: mb7d-acausal-coordination
     kind: bridge
     title: MB7d — Acausal Coordination

@@ -68,7 +68,28 @@ bridges:
     cardSlug: mb7-hidden-capability-and-access
     fieldAgree: Hubinger inner/mesa; Redwood control; Apollo scheming; scalable-oversight ceiling.
     fieldDiffer: Field binary vs book split; do not merge with MB10 Successor Gaming.
-    legendNote: "Field “deceptive alignment” usually tags MB7; MB10 = gaming the successor certification channel."
+    legendNote: "Inner Alignment splits into MB7a–c (access, filter, cost of faking) plus MB7d (acausal coordination); MB10 = successor certification channel."
+  - key: MB7a
+    noun: Access-Model Soundness
+    cruxWording: An adequate access model makes boundary discovery robust under adversarial hiding.
+    leanAxiom: MB7a_access_model_soundness
+    cardSlug: mb7a-access-model-soundness
+    fieldAgree: Embedded-agency subsystem worry; Redwood access/handle assumptions.
+    fieldDiffer: Often lumped into inner alignment; book types access-model soundness before filter coverage.
+  - key: MB7b
+    noun: Filter Coverage
+    cruxWording: The oversight filter family has adequate resolution to bound what audits miss.
+    leanAxiom: MB7b_filter_family_coverage
+    cardSlug: mb7b-filter-coverage
+    fieldAgree: AI Control capability gap; debate/amplification ceiling under opacity.
+    fieldDiffer: Field “hidden capability” is one wall; MB7b is only the filter-coverage subchannel.
+  - key: MB7c
+    noun: Bounded Hidden Capability
+    cruxWording: Bounded hidden productive control plus correction integrity supports adversarially robust oversight.
+    leanAxiom: MB7c_hidden_biq_to_adversarial_robustness
+    cardSlug: mb7c-bounded-hidden-capability
+    fieldAgree: Certification-under-manipulation; cost-of-faking monitored signal.
+    fieldDiffer: Not MB4 corrigibility; MB7c closes the inner-alignment chain to adversarial robustness.
   - key: MB7d
     noun: Acausal Coordination
     cruxWording: Inferential-coupling measurements remain valid after ordinary channels are cut.
