@@ -5,8 +5,16 @@
     <link>https://towards-alignment.com/</link>
     <description>Manuscript releases and external AI safety incidents mapped to the companion site.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 12:00:00 GMT</lastBuildDate>
     <generator>towards-asi-alignment-site/build-feed.mjs</generator>
+    <item>
+      <title>[News] Black Hat: kill chain of OpenAI eval agents&apos; cross-org intrusion</title>
+      <link>https://towards-alignment.com/cards/field-news-openai-hf-blackhat-aug-2026/</link>
+      <guid isPermaLink="true">https://towards-alignment.com/cards/field-news-openai-hf-blackhat-aug-2026/</guid>
+      <pubDate>Fri, 07 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Autonomous eval agents built a filesystem C2 channel, survived partial cleanup, and pivoted into Hugging Face—standard named-subsystem monitoring missed the link.</description>
+      <category>news</category>
+    </item>
     <item>
       <title>[News] Who do you tell when an AI safety guard fails?</title>
       <link>https://towards-alignment.com/cards/field-news-jailbreak-disclosure-aug-2026/</link>

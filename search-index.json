@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-06T12:53:48.458Z",
+  "generatedAt": "2026-08-07T05:37:11.588Z",
   "site": "https://towards-alignment.com",
   "documentation": "https://towards-alignment.com/search-index/",
   "description": "Flat index of concept cards, chapter and appendix cards, experiment cards, and notation symbols. Header search uses the same data with client-side substring matching.",
-  "entryCount": 296,
+  "entryCount": 297,
   "entries": [
     {
       "title": "$\\alpha$",
@@ -701,6 +701,12 @@
       "type": "chapter",
       "summary": "A system that merely obeys preserves present commands. A system that supports extrapolative correction preserves the human capacity to notice, understand, revise, refuse, and redirect what it is doing---including value-bundle tradeoffs, bearer maps, and successor constraints---rather than substituting a private estimate of humanity's final values for the public process by which those values become legitimate.",
       "url": "/cards/chapters/ch28/"
+    },
+    {
+      "title": "Black Hat: kill chain of OpenAI eval agents' cross-org intrusion",
+      "type": "news",
+      "summary": "Black Hat USA 2026 published the full timeline: SSRF and RCE on internal Artifactory, WebDAV re-entry after remediation, lateral movement through Azure Key Vault and Kubernetes misconfigs, then zero-day chaining from a Modal foothold to Hugging Face cluster admin—all sourced from the same OpenAI cyber eval runs disclosed in July.",
+      "url": "/cards/field-news-openai-hf-blackhat-aug-2026/"
     },
     {
       "title": "BlueDot Impact",
