@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-07 (Lean Astro Unicode escape CI diagnosis).
+Last updated: 2026-08-07 (page notes overlay on companion site).
 
 ---
 
@@ -42,6 +42,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site (2026-08-07):** Page notes overlay — ✎ button bottom-right (right of QR); localStorage draft + saved notes; save/copy/export/download/select-with-edit-buffer; 60vh expand toggle; trailing newline on selection insert. Log: `2026-08-07-page-notes-overlay.md`.
 - **Companion site / CI (2026-08-07):** Lean `/lean/` index — inline LaTeX in HTML caused Astro `Invalid Unicode escape sequence` (`\mathrm`, `\vec`, etc.); fixed in `150f406b` via `String.raw` frontmatter strings. Diagnosis-only session; rebuild verified. Log: `2026-08-07-lean-astro-unicode-escape.md`.
 - **Companion site (2026-08-07):** Field news — Black Hat USA talk full kill chain for OpenAI cyber-eval → Hugging Face intrusion; security/IT framing; cross-links July HF card, AISI/METR; MB7a/UAD hooks. Log: `2026-08-07-openai-hf-blackhat-news.md`.
 - **Lean DebateGame negation (2026-08-06):** `Claim.neg` with defender/challenger role-swap; joint `honest_optimal`; App G + LW draft sync. Optional leftover: site projection wording if any stale "∧/∨ only" prose. Log: `2026-08-06-debategame-negation.md`.

@@ -1,0 +1,645 @@
+<div class="page-notes" data-page-notes>
+  <button
+    type="button"
+    class="page-notes-trigger"
+    aria-label="Open notes"
+    aria-expanded="false"
+    aria-controls="page-notes-panel"
+  >
+    ✎
+  </button>
+  <div
+    id="page-notes-panel"
+    class="page-notes-overlay"
+    hidden
+    aria-hidden="true"
+    role="dialog"
+    aria-label="Page notes"
+  >
+    <div class="page-notes-panel">
+      <div class="page-notes-header">
+        <span class="page-notes-title">Notes</span>
+        <button
+          type="button"
+          class="page-notes-expand"
+          aria-label="Expand panel"
+          aria-pressed="false"
+          title="Expand panel"
+        >
+          ⤢
+        </button>
+        <button type="button" class="page-notes-close" aria-label="Close notes">✕</button>
+      </div>
+      <textarea
+        class="page-notes-input"
+        rows="3"
+        spellcheck="true"
+        aria-label="Note text"
+      ></textarea>
+      <div class="page-notes-actions">
+        <button type="button" class="page-notes-action" data-action="save" title="Save note">✓</button>
+        <button type="button" class="page-notes-action" data-action="copy" title="Insert page selection">⎘</button>
+        <button type="button" class="page-notes-action" data-action="export" title="Copy all notes">📋</button>
+        <button type="button" class="page-notes-action" data-action="download" title="Download all notes">⬇</button>
+        <button type="button" class="page-notes-action" data-action="select" title="Select saved note">☰</button>
+      </div>
+      <div class="page-notes-select" hidden aria-hidden="true">
+        <div class="page-notes-select-header">
+          <span>Saved notes</span>
+          <button type="button" class="page-notes-select-cancel" aria-label="Cancel selection">✕</button>
+        </div>
+        <ul class="page-notes-select-list" role="listbox" aria-label="Saved notes"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = "site-page-notes";
+  const EXPANDED_STORAGE_KEY = "site-page-notes-expanded";
+
+  type SavedNote = { id: string; text: string };
+
+  type StoredNotes = {
+    draft: string;
+    notes: SavedNote[];
+  };
+
+  function loadStored(): StoredNotes {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { draft: "", notes: [] };
+      const parsed = JSON.parse(raw) as Partial<StoredNotes>;
+      return {
+        draft: typeof parsed.draft === "string" ? parsed.draft : "",
+        notes: Array.isArray(parsed.notes)
+          ? parsed.notes.filter(
+              (n): n is SavedNote =>
+                !!n &&
+                typeof n === "object" &&
+                typeof n.id === "string" &&
+                typeof n.text === "string"
+            )
+          : []
+      };
+    } catch {
+      return { draft: "", notes: [] };
+    }
+  }
+
+  function saveStored(data: StoredNotes) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch {
+      /* ignore quota / private mode */
+    }
+  }
+
+  function getPageSelection(): string {
+    return window.getSelection()?.toString() ?? "";
+  }
+
+  function ensureTrailingNewline(text: string): string {
+    if (!text) return text;
+    return text.endsWith("\n") ? text : `${text}\n`;
+  }
+
+  function isExpanded(): boolean {
+    return panel.classList.contains("is-expanded");
+  }
+
+  function loadExpanded(): boolean {
+    try {
+      return localStorage.getItem(EXPANDED_STORAGE_KEY) === "true";
+    } catch {
+      return false;
+    }
+  }
+
+  function setExpanded(expanded: boolean) {
+    panel.classList.toggle("is-expanded", expanded);
+    try {
+      localStorage.setItem(EXPANDED_STORAGE_KEY, expanded ? "true" : "false");
+    } catch {
+      /* ignore quota / private mode */
+    }
+    syncExpandButton();
+  }
+
+  function syncExpandButton() {
+    const expanded = isExpanded();
+    expandBtn.setAttribute("aria-pressed", expanded ? "true" : "false");
+    expandBtn.setAttribute("aria-label", expanded ? "Collapse panel" : "Expand panel");
+    expandBtn.title = expanded ? "Collapse panel" : "Expand panel";
+    expandBtn.textContent = expanded ? "⤡" : "⤢";
+  }
+
+  function insertAtCursor(textarea: HTMLTextAreaElement, text: string) {
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const value = textarea.value;
+    textarea.value = value.slice(0, start) + text + value.slice(end);
+    const cursor = start + text.length;
+    textarea.selectionStart = cursor;
+    textarea.selectionEnd = cursor;
+  }
+
+  function notesExportText(notes: SavedNote[]): string {
+    return notes.map((n) => n.text).join("\n\n");
+  }
+
+  function downloadText(filename: string, text: string) {
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = filename;
+    anchor.click();
+    URL.revokeObjectURL(url);
+  }
+
+  async function copyToClipboard(text: string): Promise<boolean> {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function newNoteId(): string {
+    return crypto.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+
+  const root = document.querySelector<HTMLElement>("[data-page-notes]");
+  const trigger = root?.querySelector<HTMLButtonElement>(".page-notes-trigger");
+  const overlay = root?.querySelector<HTMLElement>(".page-notes-overlay");
+  const panel = root?.querySelector<HTMLElement>(".page-notes-panel");
+  const closeBtn = root?.querySelector<HTMLButtonElement>(".page-notes-close");
+  const expandBtn = root?.querySelector<HTMLButtonElement>(".page-notes-expand");
+  const input = root?.querySelector<HTMLTextAreaElement>(".page-notes-input");
+  const selectPane = root?.querySelector<HTMLElement>(".page-notes-select");
+  const selectList = root?.querySelector<HTMLUListElement>(".page-notes-select-list");
+  const selectCancel = root?.querySelector<HTMLButtonElement>(".page-notes-select-cancel");
+  const actionButtons = root?.querySelectorAll<HTMLButtonElement>("[data-action]");
+
+  if (
+    !root ||
+    !trigger ||
+    !overlay ||
+    !panel ||
+    !closeBtn ||
+    !expandBtn ||
+    !input ||
+    !selectPane ||
+    !selectList ||
+    !selectCancel
+  ) {
+    throw new Error("Page notes markup missing");
+  }
+
+  setExpanded(loadExpanded());
+
+  let stored = loadStored();
+  let currentNoteId: string | null = null;
+  let draftBuffer: string | null = null;
+
+  function persistDraft() {
+    stored.draft = input.value;
+    saveStored(stored);
+  }
+
+  function isEditing(): boolean {
+    return currentNoteId !== null;
+  }
+
+  function cancelEdit() {
+    if (draftBuffer !== null) {
+      input.value = draftBuffer;
+      draftBuffer = null;
+    }
+    currentNoteId = null;
+    hideSelectPane();
+  }
+
+  function hideSelectPane() {
+    selectPane.hidden = true;
+    selectPane.setAttribute("aria-hidden", "true");
+  }
+
+  function showSelectPane() {
+    selectPane.hidden = false;
+    selectPane.setAttribute("aria-hidden", "false");
+  }
+
+  function renderSelectList() {
+    selectList.replaceChildren();
+    if (stored.notes.length === 0) {
+      const empty = document.createElement("li");
+      empty.className = "page-notes-select-empty";
+      empty.textContent = "No saved notes yet.";
+      selectList.append(empty);
+      return;
+    }
+    for (const note of stored.notes) {
+      const item = document.createElement("li");
+      item.className = "page-notes-select-item";
+      if (note.id === currentNoteId) item.classList.add("is-active");
+      item.setAttribute("role", "option");
+      item.tabIndex = 0;
+      const preview =
+        note.text.length > 120 ? `${note.text.slice(0, 117).trimEnd()}…` : note.text;
+      item.textContent = preview || "(empty note)";
+      item.title = note.text;
+      item.addEventListener("click", () => chooseNote(note.id));
+      item.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          chooseNote(note.id);
+        }
+      });
+      selectList.append(item);
+    }
+  }
+
+  function chooseNote(id: string) {
+    if (currentNoteId === id) {
+      hideSelectPane();
+      return;
+    }
+    if (isEditing()) cancelEdit();
+    draftBuffer = input.value;
+    const note = stored.notes.find((n) => n.id === id);
+    if (!note) return;
+    input.value = note.text;
+    currentNoteId = id;
+    hideSelectPane();
+    input.focus();
+  }
+
+  function saveNote() {
+    const text = input.value;
+    if (!text.trim() && !isEditing()) return;
+
+    if (currentNoteId) {
+      const idx = stored.notes.findIndex((n) => n.id === currentNoteId);
+      if (idx >= 0) {
+        if (text.trim()) stored.notes[idx] = { id: currentNoteId, text };
+        else stored.notes.splice(idx, 1);
+      }
+    } else if (text.trim()) {
+      stored.notes.push({ id: newNoteId(), text });
+    }
+
+    if (draftBuffer !== null) {
+      input.value = draftBuffer;
+      draftBuffer = null;
+    } else {
+      input.value = "";
+    }
+    currentNoteId = null;
+    stored.draft = input.value;
+    saveStored(stored);
+    hideSelectPane();
+    input.focus();
+  }
+
+  function open() {
+    input.value = stored.draft;
+    currentNoteId = null;
+    draftBuffer = null;
+    hideSelectPane();
+
+    if (!input.value.trim()) {
+      const selection = getPageSelection().trim();
+      if (selection) input.value = ensureTrailingNewline(selection);
+    }
+
+    overlay.hidden = false;
+    overlay.setAttribute("aria-hidden", "false");
+    trigger.setAttribute("aria-expanded", "true");
+    input.focus();
+  }
+
+  function close() {
+    if (isEditing()) cancelEdit();
+    persistDraft();
+    hideSelectPane();
+    overlay.hidden = true;
+    overlay.setAttribute("aria-hidden", "true");
+    trigger.setAttribute("aria-expanded", "false");
+  }
+
+  trigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (overlay.hidden) open();
+    else close();
+  });
+
+  closeBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    close();
+  });
+
+  expandBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setExpanded(!isExpanded());
+    input.focus();
+  });
+
+  panel.addEventListener("click", (event) => event.stopPropagation());
+  overlay.addEventListener("click", close);
+
+  selectCancel.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (isEditing()) cancelEdit();
+    hideSelectPane();
+    input.focus();
+  });
+
+  input.addEventListener("input", persistDraft);
+
+  actionButtons?.forEach((button) => {
+    button.addEventListener("click", async (event) => {
+      event.stopPropagation();
+      const action = button.dataset.action;
+      if (action === "save") {
+        saveNote();
+        return;
+      }
+      if (action === "copy") {
+        const selection = getPageSelection();
+        if (selection) insertAtCursor(input, ensureTrailingNewline(selection));
+        persistDraft();
+        input.focus();
+        return;
+      }
+      if (action === "export") {
+        if (stored.notes.length === 0) return;
+        await copyToClipboard(notesExportText(stored.notes));
+        return;
+      }
+      if (action === "download") {
+        if (stored.notes.length === 0) return;
+        downloadText("page-notes.txt", notesExportText(stored.notes));
+        return;
+      }
+      if (action === "select") {
+        renderSelectList();
+        showSelectPane();
+        return;
+      }
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !overlay.hidden) {
+      if (!selectPane.hidden) {
+        if (isEditing()) cancelEdit();
+        hideSelectPane();
+        event.stopPropagation();
+        return;
+      }
+      close();
+    }
+  });
+</script>
+
+<style>
+  .page-notes-trigger {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 40;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.35rem 0.65rem;
+    font: inherit;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+  }
+
+  .page-notes-trigger:hover {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent);
+  }
+
+  .page-notes-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.35);
+  }
+
+  .page-notes-overlay[hidden] {
+    display: none;
+  }
+
+  .page-notes-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: min(80ch, calc(100vw - 2rem));
+    max-height: min(70vh, 32rem);
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .page-notes-panel.is-expanded {
+    height: 60vh;
+    max-height: 60vh;
+  }
+
+  .page-notes-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .page-notes-title {
+    justify-self: start;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .page-notes-expand {
+    justify-self: center;
+    border: 1px solid var(--color-border);
+    border-radius: 0.45rem;
+    padding: 0.15rem 0.45rem;
+    font: inherit;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    cursor: pointer;
+  }
+
+  .page-notes-expand:hover,
+  .page-notes-expand[aria-pressed="true"] {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent);
+  }
+
+  .page-notes-close {
+    justify-self: end;
+    border: 0;
+    padding: 0.15rem 0.35rem;
+    font: inherit;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--color-muted);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .page-notes-close:hover {
+    color: var(--color-accent-strong);
+  }
+
+  .page-notes-input {
+    width: 100%;
+    min-height: calc(3 * 1.45em + 0.75rem);
+    max-height: 12rem;
+    margin: 0;
+    padding: 0.45rem 0.55rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.45rem;
+    resize: vertical;
+    overflow: auto;
+    font: inherit;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--color-text);
+    background: var(--color-surface-muted);
+  }
+
+  .page-notes-panel.is-expanded .page-notes-input {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+    resize: none;
+  }
+
+  .page-notes-panel.is-expanded .page-notes-select-list {
+    flex: 1;
+    max-height: none;
+  }
+
+  .page-notes-input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+
+  .page-notes-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.35rem;
+  }
+
+  .page-notes-action {
+    border: 1px solid var(--color-border);
+    border-radius: 0.45rem;
+    padding: 0.3rem 0.55rem;
+    font: inherit;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    cursor: pointer;
+  }
+
+  .page-notes-action:hover {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent);
+  }
+
+  .page-notes-select {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-height: 0;
+  }
+
+  .page-notes-select[hidden] {
+    display: none;
+  }
+
+  .page-notes-select-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+
+  .page-notes-select-cancel {
+    border: 0;
+    padding: 0.1rem 0.3rem;
+    font: inherit;
+    font-size: 0.9rem;
+    line-height: 1;
+    color: var(--color-muted);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .page-notes-select-cancel:hover {
+    color: var(--color-accent-strong);
+  }
+
+  .page-notes-select-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+    max-height: 10rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.45rem;
+    background: var(--color-surface-muted);
+  }
+
+  .page-notes-select-item {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.88rem;
+    line-height: 1.35;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .page-notes-select-item:last-child {
+    border-bottom: 0;
+  }
+
+  .page-notes-select-item:hover,
+  .page-notes-select-item.is-active {
+    background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface-muted));
+  }
+
+  .page-notes-select-empty {
+    padding: 0.55rem;
+    font-size: 0.88rem;
+    color: var(--color-muted);
+  }
+</style>
