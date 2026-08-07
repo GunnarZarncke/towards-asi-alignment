@@ -8,9 +8,7 @@ const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${base}${path.replace(/^\/+/, "")}`;
 const cardHref = (id: string) => buildCardHref(base, id);
 
-const items = [...fieldNewsIndex].sort((a, b) =>
-  (b.eventDate ?? b.date).localeCompare(a.eventDate ?? a.date)
-);
+const items = [...fieldNewsIndex].sort((a, b) => b.date.localeCompare(a.date));
 
 const kindLabel: Record<string, string> = {
   incident: "Incident",

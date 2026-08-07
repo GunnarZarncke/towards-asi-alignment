@@ -91,7 +91,9 @@ const chapterIdForNews =
       : null;
 const relatedNews =
   chapterIdForNews != null
-    ? fieldNewsIndex.filter((item) => item.chapters.includes(chapterIdForNews))
+    ? [...fieldNewsIndex]
+        .filter((item) => item.chapters.includes(chapterIdForNews))
+        .sort((a, b) => b.date.localeCompare(a.date))
     : [];
 
 const base = import.meta.env.BASE_URL;
