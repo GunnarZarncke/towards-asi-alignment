@@ -1,15 +1,6 @@
 <div class="page-notes" data-page-notes>
   <button
     type="button"
-    class="page-notes-highlight-trigger"
-    aria-label="Toggle note highlights on this page"
-    aria-pressed="false"
-    title="Toggle note highlights"
-  >
-    ▦
-  </button>
-  <button
-    type="button"
     class="page-notes-trigger"
     aria-label="Open notes"
     aria-expanded="false"
@@ -52,6 +43,15 @@
           <button type="button" class="page-notes-action" data-action="export" title="Copy all notes">📋</button>
           <button type="button" class="page-notes-action" data-action="download" title="Download all notes">⬇</button>
           <button type="button" class="page-notes-action" data-action="select" title="Select saved note">☰</button>
+          <button
+            type="button"
+            class="page-notes-action page-notes-highlight-trigger"
+            data-action="highlight"
+            aria-pressed="false"
+            title="Toggle note highlights"
+          >
+            ▦
+          </button>
         </div>
       </div>
       <div class="page-notes-select" hidden aria-hidden="true">
@@ -241,6 +241,10 @@
   ) {
     throw new Error("Page notes markup missing");
   }
+
+  // Keep the full-screen overlay out of the fixed FAB cluster so mobile browsers
+  // don't clip it to the corner button box.
+  document.body.appendChild(overlay);
 
   setExpanded(loadExpanded());
 
@@ -493,8 +497,12 @@
     overlay.hidden = false;
     overlay.setAttribute("aria-hidden", "false");
     trigger.setAttribute("aria-expanded", "true");
+    trigger.classList.add("is-open");
     syncOverlayLayout();
-    input.focus();
+    requestAnimationFrame(() => {
+      syncOverlayLayout();
+      input.focus({ preventScroll: true });
+    });
   }
 
   function close() {
@@ -504,14 +512,23 @@
     overlay.hidden = true;
     overlay.setAttribute("aria-hidden", "true");
     trigger.setAttribute("aria-expanded", "false");
+    trigger.classList.remove("is-open");
     resetOverlayLayout();
   }
 
   function resetOverlayLayout() {
-    overlay.style.paddingBottom = "";
-    overlay.style.paddingLeft = "";
-    overlay.style.paddingRight = "";
+    overlay.style.top = "";
+    overlay.style.left = "";
+    overlay.style.right = "";
+    overlay.style.bottom = "";
+    overlay.style.width = "";
+    overlay.style.height = "";
+    overlay.style.padding = "";
     panel.style.maxHeight = "";
+  }
+
+  function isMobileLayout(): boolean {
+    return window.matchMedia("(max-width: 760px)").matches;
   }
 
   function syncOverlayLayout() {
@@ -520,27 +537,32 @@
     if (!vv) return;
 
     const edgeGap = 12;
-    const keyboardInset = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
-    const sideInset = Math.max(0, window.innerWidth - vv.width - vv.offsetLeft);
+    const keyboardOpen = window.innerHeight - vv.height - vv.offsetTop > 80;
+    const useVisualViewport = isMobileLayout() || keyboardOpen;
 
-    overlay.style.paddingBottom = `${Math.max(edgeGap, keyboardInset + edgeGap)}px`;
-    overlay.style.paddingRight = `${Math.max(edgeGap, sideInset + edgeGap)}px`;
-    overlay.style.paddingLeft = `${Math.max(edgeGap, vv.offsetLeft + edgeGap)}px`;
+    if (useVisualViewport) {
+      overlay.style.top = `${vv.offsetTop}px`;
+      overlay.style.left = `${vv.offsetLeft}px`;
+      overlay.style.right = "auto";
+      overlay.style.bottom = "auto";
+      overlay.style.width = `${vv.width}px`;
+      overlay.style.height = `${vv.height}px`;
+      overlay.style.padding = `${edgeGap}px`;
 
-    const expanded = isExpanded();
-    const preferred = expanded ? vv.height * 0.6 : Math.min(vv.height * 0.7, 32 * 16);
-    panel.style.maxHeight = `${Math.min(preferred, vv.height - edgeGap * 2)}px`;
+      const available = vv.height - edgeGap * 2;
+      const expanded = isExpanded();
+      const preferred = expanded ? available * 0.6 : Math.min(available * 0.7, 512);
+      panel.style.maxHeight = `${Math.max(140, Math.min(preferred, available))}px`;
+      return;
+    }
+
+    resetOverlayLayout();
   }
 
   trigger.addEventListener("click", (event) => {
     event.stopPropagation();
     if (overlay.hidden) open();
     else close();
-  });
-
-  highlightTrigger.addEventListener("click", (event) => {
-    event.stopPropagation();
-    setHighlightMode(!highlightMode);
   });
 
   closeBtn.addEventListener("click", (event) => {
@@ -601,6 +623,10 @@
         showSelectPane();
         return;
       }
+      if (action === "highlight") {
+        setHighlightMode(!highlightMode);
+        return;
+      }
     });
   });
 
@@ -618,7 +644,6 @@
 </script>
 
 <style>
-  .page-notes-highlight-trigger,
   .page-notes-trigger {
     border: 1px solid var(--color-border);
     border-radius: 999px;
@@ -632,17 +657,10 @@
     cursor: pointer;
   }
 
-  .page-notes-highlight-trigger:hover,
-  .page-notes-highlight-trigger.is-active,
-  .page-notes-trigger:hover {
+  .page-notes-trigger:hover,
+  .page-notes-trigger.is-open {
     color: var(--color-accent-strong);
     border-color: var(--color-accent);
-  }
-
-  .page-notes-highlight-trigger.is-active {
-    background: #fef08a;
-    color: #713f12;
-    border-color: #eab308;
   }
 
   :global(mark.page-notes-highlight) {
@@ -657,7 +675,7 @@
   .page-notes-overlay {
     position: fixed;
     inset: 0;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -814,6 +832,12 @@
     border-color: var(--color-accent);
   }
 
+  .page-notes-highlight-trigger.is-active {
+    background: #fef08a;
+    color: #713f12;
+    border-color: #eab308;
+  }
+
   .page-notes-select {
     display: flex;
     flex-direction: column;
@@ -909,19 +933,9 @@
   }
 
   @media (max-width: 760px) {
-    .page-notes-overlay {
-      align-items: stretch;
-      justify-content: stretch;
-    }
-
     .page-notes-panel {
       width: 100%;
       max-width: none;
-    }
-
-    .page-notes-panel.is-expanded {
-      height: auto;
-      max-height: none;
     }
   }
 </style>
