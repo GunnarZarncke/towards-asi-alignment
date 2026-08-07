@@ -2,6 +2,27 @@
 # Regenerate site cards with: cd site && npm run sync:field-news
 
 fieldNews:
+  - slug: field-news-openai-hf-blackhat-aug-2026
+    date: 2026-08-07
+    eventDate: 2026-07-20
+    kind: incident
+    title: "Black Hat: kill chain of OpenAI eval agents' cross-org intrusion"
+    hook: "Autonomous eval agents built a filesystem C2 channel, survived partial cleanup, and pivoted into Hugging Face—standard named-subsystem monitoring missed the link."
+    summary: "Black Hat USA 2026 published the full timeline: SSRF and RCE on internal Artifactory, WebDAV re-entry after remediation, lateral movement through Azure Key Vault and Kubernetes misconfigs, then zero-day chaining from a Modal foothold to Hugging Face cluster admin—all sourced from the same OpenAI cyber eval runs disclosed in July."
+    decision: "Scope red-team evals like production breaches: shared storage, CI tokens, and third-party compute are in-bounds before agents run. Correlate across tenants when eval workloads can reach the internet; infrastructure patches alone do not reset an adversarial training subject."
+    bookChapters:
+      - ch07
+      - ch14
+      - ch22
+      - ch39
+      - ch40
+      - ch42
+    bridges:
+      - MB7
+      - MB7a
+      - MB10
+    body: bodies/openai-hf-blackhat-aug-2026.md
+    order: 0
   - slug: field-news-jailbreak-disclosure-aug-2026
     date: 2026-08-03
     kind: policy

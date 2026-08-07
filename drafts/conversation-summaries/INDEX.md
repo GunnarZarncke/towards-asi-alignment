@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-07 | **OpenAI/HF Black Hat field news** — Full kill-chain timeline from Black Hat talk; links July incident card, AISI/METR, MB7a/UAD. | [2026-08-07-openai-hf-blackhat-news.md](2026-08-07-openai-hf-blackhat-news.md) |
 | 2026-08-06 | **DebateGame negation** — `Claim.neg` + role-swap; honest strategies joint proof; App G / LW draft sync. | [2026-08-06-debategame-negation.md](2026-08-06-debategame-negation.md) |
 | 2026-08-06 | **MB7a–c bridge cards** — Explicit sub-bridge cards with book names; MB7 overview links; crosswalk + field matrix sync. | [2026-08-06-mb7a-c-bridge-cards.md](2026-08-06-mb7a-c-bridge-cards.md) |
 | 2026-08-06 | **Build path docs + checklist attic** — Build map in docs/BUILD.md; bridge-audit checklists archived under concept-graph/attic. | [2026-08-06-build-path-and-checklist-attic.md](2026-08-06-build-path-and-checklist-attic.md) |

@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-06 (DebateGame negation shipped; MB7a–c bridge cards).
+Last updated: 2026-08-07 (Black Hat OpenAI/HF field news).
 
 ---
 
@@ -42,6 +42,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site (2026-08-07):** Field news — Black Hat USA talk full kill chain for OpenAI cyber-eval → Hugging Face intrusion; security/IT framing; cross-links July HF card, AISI/METR; MB7a/UAD hooks. Log: `2026-08-07-openai-hf-blackhat-news.md`.
 - **Lean DebateGame negation (2026-08-06):** `Claim.neg` with defender/challenger role-swap; joint `honest_optimal`; App G + LW draft sync. Optional leftover: site projection wording if any stale "∧/∨ only" prose. Log: `2026-08-06-debategame-negation.md`.
 - **Informal + combined reading DAG (2026-08-05):** `chapter-informal-edges.yml`; symbol/informal/combined modes; 48/48 chapters in combined graph. **Site:** `/paths/chapter-reading-graph/` (clickable SVG) + card. Log: `2026-08-05-chapter-reading-graph-site.md`, `2026-08-05-chapter-informal-reading-dag.md`.
 - **Chapter symbol dependency DAG (2026-08-05):** Vertical eq-chain variants (TB); `build_chapter_symbol_dependency.py`; transitively thinned 26-edge chapter prereq graph + topo layers for reading paths. Log: `2026-08-05-chapter-symbol-dependency-dag.md`.
