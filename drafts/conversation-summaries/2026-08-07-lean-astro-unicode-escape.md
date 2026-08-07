@@ -22,4 +22,4 @@ Site CI failed on Astro build: `Invalid Unicode escape sequence` at `site/src/pa
 - `.github/workflows/site.yml`
 
 ## Commits
-- `857dbd3c` Log Lean Astro Unicode escape CI diagnosis session.
+- `0aa59e0b` Log Lean Astro Unicode escape CI diagnosis session.
