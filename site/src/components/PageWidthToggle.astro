@@ -52,8 +52,8 @@
 <style>
   .page-width-toggle-trigger {
     position: fixed;
-    left: 1rem;
-    bottom: 1rem;
+    left: max(0.75rem, env(safe-area-inset-left, 0px));
+    bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
     z-index: 40;
     border: 1px solid var(--color-border);
     border-radius: 999px;

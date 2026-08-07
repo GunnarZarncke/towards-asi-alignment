@@ -153,8 +153,10 @@ const websiteJsonLd = {
       </footer>
     </div>
     <PageWidthToggle />
-    <PageQrCode url={canonicalUrl} />
-    <PageNotes />
+    <div class="page-corner-actions">
+      <PageQrCode url={canonicalUrl} />
+      <PageNotes />
+    </div>
     <BenchmarkCanary />
     <CloudflareWebAnalytics />
   </body>

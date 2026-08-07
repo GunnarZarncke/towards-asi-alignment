@@ -6,7 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
-| 2026-08-07 | **Page notes overlay** — Site-wide ✎ panel beside QR; localStorage notes; expand toggle; selection insert with trailing newline. | [2026-08-07-page-notes-overlay.md](2026-08-07-page-notes-overlay.md) |
+| 2026-08-07 | **Page notes overlay** — ✎ panel + ▦ highlights; per-note path; `#:~:text=` export; mobile FAB/keyboard fixes. | [2026-08-07-page-notes-overlay.md](2026-08-07-page-notes-overlay.md) |
 | 2026-08-07 | **Lean Astro Unicode escape CI** — Diagnosed inline-LaTeX → JS escape failure on `/lean/`; fix already on main (`String.raw`). | [2026-08-07-lean-astro-unicode-escape.md](2026-08-07-lean-astro-unicode-escape.md) |
 | 2026-08-07 | **OpenAI/HF Black Hat field news** — Full kill-chain timeline from Black Hat talk; links July incident card, AISI/METR, MB7a/UAD. | [2026-08-07-openai-hf-blackhat-news.md](2026-08-07-openai-hf-blackhat-news.md) |
 | 2026-08-06 | **DebateGame negation** — `Claim.neg` + role-swap; honest strategies joint proof; App G / LW draft sync. | [2026-08-06-debategame-negation.md](2026-08-06-debategame-negation.md) |
