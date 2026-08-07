@@ -18,3 +18,6 @@ User asked for a field-news entry on the Black Hat USA 2026 talk detailing the f
 - `metadata/field-news/bodies/openai-hf-blackhat-aug-2026.md`
 - `metadata/field-news.yml`
 - `site/src/content/cards/field-news-openai-hf-blackhat-aug-2026.md`
+
+## Commits
+- `83400f6a` Add Black Hat field news for OpenAI/Hugging Face eval intrusion.
