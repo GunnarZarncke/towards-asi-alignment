@@ -2,7 +2,7 @@
 
 **Read this first** when resuming work, then skim recent session logs in [INDEX.md](INDEX.md). Also `metadata/book.yml` and `metadata/TODO.md`. [RECOVERY.md](RECOVERY.md) lists only logs **pruned** because a later session superseded them (git recovery).
 
-Last updated: 2026-08-07 (page notes mobile visibility + highlight in panel).
+Last updated: 2026-08-08 (Florian Dietz outreach TODOs).
 
 ---
 
@@ -29,6 +29,7 @@ Last updated: 2026-08-07 (page notes mobile visibility + highlight in panel).
 - **Conserved-property forgeability (MB10)** — finite counterexample in Lean; prose wired. Still open: non-enumerability of conserved set across capability jumps; toy red-team of audit forgeability. Pointer: `metadata/TODO.md`, `Forgeability.lean`.
 - **Measurand instantiation table** — composite indices bottom out in deferred estimators; needs mapping to experiment scripts. Pointer: `review/adversarial-steerability-correlated-failure-2026-06-30.md`.
 - **Presentation / site-first** — de-center PDF as flagship; per-part display renumbering (high risk). Pointer: `metadata/TODO.md` § Presentation.
+- **Outreach (Florian Dietz, 2026-08-08)** — standalone publish for one agent-discovery / negative-results line; pairwise researcher-interest matching (Bubble Connector). Details TBD. Pointer: `metadata/TODO.md` § Outreach. Log: `2026-08-08-florian-dietz-outreach-todos.md`.
 
 ## Compressed history (Jun–Jul 2026)
 
