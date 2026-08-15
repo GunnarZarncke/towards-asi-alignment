@@ -1,0 +1,439 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{caption}
+
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxbibnames=99,
+  giveninits=true,
+  uniquename=false,
+  doi=true,
+  url=true,
+  eprint=true,
+]{biblatex}
+\addbibresource{feedback-horizon-gap.bib}
+
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={When Optimization Outruns Feedback},
+  pdfauthor={Gunnar Zarncke}
+}
+
+\newcommand{\tauG}{\tau_{\mathrm{G}}}
+\newcommand{\tauP}{\tau_{\mathrm{P}}}
+\newcommand{\tauT}{\tau_{\mathrm{T}}}
+\newcommand{\tauC}{\tau_{\mathrm{C}}}
+\newcommand{\LT}{L_{\mathrm{T}}}
+\newcommand{\LP}{L_{\mathrm{P}}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+
+\title{\textbf{When Optimization Outruns Feedback}\\
+\large The Feedback Horizon Gap in AI Optimization}
+\author{Gunnar Zarncke}
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+AI systems increasingly improve by running fast generate--evaluate--update loops against formal verifiers, tests, reward models, benchmarks, simulations, or other evaluators. Some of these evaluators are close to the target of interest. Others are proxies whose important errors become visible only later. We isolate a simple quantity that is usually hidden by the word ``feedback'': the number \(K\) of proxy-guided optimization updates that can occur before sufficiently independent target-level evidence becomes available. When updates are approximately periodic, \(K \approx \tauT/\tauP\), where \(\tauP\) is the proxy-feedback latency and \(\tauT\) the target-evidence latency. The formal core is deliberately minimal:
+\[
+\LT(\theta_K)-\LT(\theta_0)
+=
+\sum_{i=0}^{K-1}
+\bigl[\LT(\theta_{i+1})-\LT(\theta_i)\bigr].
+\]
+This identity does not imply that large \(K\) is harmful. It says that any systematic proxy error can accumulate for \(K\) selected updates before independent evidence can correct the process. We show why this distinction matters using reward-model overoptimization as the clearest direct AI example, formal theorem proving and executable code as counterexamples where rapid verification is unusually trustworthy, and weather forecasting, autonomous laboratories, and surrogate clinical endpoints as matched cases in which optimization and target evidence operate on very different clocks. The available evidence supports the existence and practical importance of feedback-horizon gaps, but not a universal law mapping \(K\) to harm. The main implication is therefore diagnostic: as optimization becomes faster, safety analysis should track how many consequential updates occur between independent target checks, not merely how quickly an evaluator returns a score.
+\end{abstract}
+
+\paragraph{Epistemic status.}
+High confidence in the operational distinction between proxy-feedback latency and target-evidence latency, and in the existence of systems where many proxy-guided updates occur before independent target checks. High confidence that reward-model overoptimization demonstrates systematic divergence under continued proxy optimization. Moderate confidence that the same variable is useful across scientific and institutional domains. Low confidence in any universal quantitative risk law based on \(K\) alone.
+
+\section{Introduction}
+
+Problems with clear, cheap verification are unusually friendly to optimization. A compiler rejects invalid syntax. A unit test can reject a broken implementation. Lean rejects an invalid formal proof. A game engine returns an exact win or loss. In each case, candidate generation can be coupled to a short feedback loop whose output is strongly connected to the local target.
+
+Many important problems do not have this structure. A reward model can score a response immediately while human preference outside the reward model's training distribution is only sampled occasionally. A weather model can produce a ten-day forecast in under a minute while the ten-day atmosphere still takes ten days to occur \parencite{lam2023graphcast}. A drug may improve a surrogate endpoint months or years before its effect on survival or quality of life is known, and confirmatory evidence can arrive years after an accelerated approval \parencite{gyawali2019accelerated,liu2024clinicalbenefit}. In these cases, ``feedback speed'' is not one number.
+
+This paper isolates the gap between the loop used for optimization and the loop that can independently reveal whether the target of interest was actually improved. The central quantity is not latency by itself, but the number of \emph{selected optimization updates} that can occur between independent target checks.
+
+Let \(K\) denote that count. If proxy updates occur at roughly regular intervals \(\tauP\) and informative target evidence arrives every \(\tauT\), then
+\begin{equation}
+K \approx \left\lfloor \frac{\tauT}{\tauP} \right\rfloor.
+\label{eq:Kratio}
+\end{equation}
+This ratio is only an approximation. Parallel search, batching, asynchronous evaluation, and variable update sizes can make wall-clock time misleading. The count \(K\) is the more primitive object.
+
+The claim is intentionally narrow. A large \(K\) is not itself evidence of failure. If the proxy evaluator is effectively identical to the target criterion, millions of updates may be safe. Formal theorem proving is an important positive control: AlphaProof uses Lean-verified outcomes as grounded feedback and can learn from millions of formally checked problems \parencite{hubert2025alphaproof}. The danger appears when repeated selection acts on an imperfect proxy and the proxy's error is not independently exposed for many updates.
+
+This reframing separates three questions that are often mixed together:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+    \item How fast can candidates be generated?
+    \item How fast can the signal used for optimization be computed?
+    \item How fast can sufficiently independent evidence about the target become available?
+\end{enumerate}
+AI can compress the first two by orders of magnitude without necessarily compressing the third.
+
+\section{A Minimal Accumulation Model}
+
+\subsection{Four timescales}
+
+We distinguish four latencies:
+\begin{align}
+\tauG &= \text{candidate-generation latency},\\
+\tauP &= \text{latency of feedback actually used for optimization},\\
+\tauT &= \text{latency until informative target-level evidence is available},\\
+\tauC &= \text{latency until that evidence can materially correct the optimizer or system}.
+\end{align}
+
+The target need not be metaphysical ``ground truth.'' It is the outcome we actually care about for the analysis. The key requirement is that target evidence have at least partially independent failure modes from the proxy used to select updates. For a reward model, a fresh human evaluation can serve as target evidence. For a ten-day weather forecast, the realized atmosphere does. For an accelerated drug approval based on tumor response, overall survival or quality of life can provide a more target-relevant endpoint.
+
+Usually, but not always,
+\[
+\tauG \leq \tauP \leq \tauT \leq \tauC.
+\]
+The inequalities are not definitions. A slow proxy evaluator can have \(\tauP>\tauT\), and target evidence may exist before an institution notices or acts on it.
+
+\subsection{The feedback horizon}
+
+Let \(\theta_i\) be the system state after the \(i\)-th proxy-guided update following an independent target check. Define
+\begin{equation}
+K =
+\text{number of proxy-guided updates before the next independent target check}.
+\end{equation}
+Equation~\eqref{eq:Kratio} follows only for approximately regular sequential updates.
+
+The distinction matters for AI systems because a million candidates may be generated and filtered in parallel during one hour. Wall-clock latency says ``one hour.'' The relevant exposure can be closer to one million selected comparisons or update opportunities.
+
+\subsection{Accumulation identity}
+
+Let \(\LT(\theta)\) denote target loss, with lower values better. Define the target effect of proxy-guided update \(i\) as
+\[
+\Delta_i
+=
+\LT(\theta_{i+1})-\LT(\theta_i).
+\]
+Then exactly,
+\begin{equation}
+\boxed{
+\LT(\theta_K)-\LT(\theta_0)
+=
+\sum_{i=0}^{K-1}\Delta_i.
+}
+\label{eq:accumulation}
+\end{equation}
+
+This is almost tautological. That is useful. It introduces no assumption about the optimizer, the proxy, linear response, smoothness, stationarity, or whether the target is observable during optimization.
+
+Equation~\eqref{eq:accumulation} separates the \emph{opportunity to accumulate} from the \emph{direction of accumulation}. If the evaluator is perfect for the target, proxy-selected updates can satisfy \(\Delta_i\leq0\), and a large \(K\) is harmless or beneficial. If the proxy has a systematic exploitable error, positive \(\Delta_i\) can accumulate for many selected updates before independent evidence arrives.
+
+Under the additional assumption that \(\Delta_i\) are identically distributed with mean \(\mu\),
+\begin{equation}
+\E\!\left[\LT(\theta_K)-\LT(\theta_0)\right]
+=
+K\mu.
+\label{eq:mean}
+\end{equation}
+This is not a universal law. It is a conditional statement: systematic per-update target drift accumulates linearly in the number of unchecked updates.
+
+If \(\mu=0\), \(\Var(\Delta_i)=\sigma^2\), and the errors are independent,
+\begin{equation}
+\mathrm{SD}\!\left(\sum_i\Delta_i\right)
+=
+\sigma\sqrt{K}.
+\end{equation}
+More generally, for weakly stationary update effects with autocovariance \(\gamma_h=\Cov(\Delta_i,\Delta_{i+h})\),
+\begin{equation}
+\Var\!\left(\sum_{i=0}^{K-1}\Delta_i\right)
+=
+K\sigma^2
++
+2\sum_{h=1}^{K-1}(K-h)\gamma_h.
+\label{eq:correlation}
+\end{equation}
+Persistent positive correlation in proxy errors therefore makes repeated optimization more dangerous than independent noise. This is the regime one would expect when an optimizer repeatedly exploits the same evaluator blind spot.
+
+\subsection{\(K\) measures exposure, not risk}
+
+A theorem checker and a learned reward model can have the same \(K\) but radically different reliability. \(K\) therefore should not be multiplied by an arbitrary universal ``risk coefficient.'' At minimum, interpretation requires asking:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Fidelity:} how informative is proxy improvement about target improvement?
+    \item \textbf{Independence:} are later target checks genuinely independent, or do they reuse the same blind spots?
+    \item \textbf{Reversibility:} can proxy-driven changes be cheaply undone?
+    \item \textbf{Decomposability:} can target failure be detected locally before the full target horizon?
+    \item \textbf{Consequence per update:} how far can one accepted update move the deployed system?
+\end{itemize}
+
+The paper's proposal is therefore a measurement axis, not a complete safety score.
+
+\section{Direct Evidence: Reward-Model Overoptimization}
+
+Reward-model optimization is the clearest direct instance of the mechanism in Equation~\eqref{eq:accumulation}. In standard RLHF, a learned reward model predicts human preferences and is then optimized by a policy. The reward model is cheaper to query than humans and therefore becomes the fast proxy loop.
+
+Gao, Schulman, and Hilton constructed a controlled setting in which a fixed ``gold'' reward model supplied labels used to train a weaker proxy reward model \parencite{gao2022overoptimization}. They then optimized the policy against the proxy using reinforcement learning or best-of-\(n\) sampling. As proxy optimization increased, gold-model performance eventually degraded. The important fact for the present argument is not the exact functional form of their scaling laws. It is the empirical separation:
+\[
+\text{proxy score}\uparrow
+\qquad\text{while}\qquad
+\text{independent target proxy}\downarrow.
+\]
+The optimizer had enough search power to discover outputs that scored well according to the learned evaluator but worse according to the independently held reference evaluator.
+
+Rafailov et al.\ extended the observation to direct alignment algorithms such as DPO, which do not expose a separate learned reward model during optimization \parencite{rafailov2024direct}. They found analogous deterioration at higher optimization budgets and reported that degradation could occur before one full epoch of the preference dataset was completed. This matters because it weakens a narrow interpretation in which overoptimization is merely an implementation bug caused by explicitly training against a separate scalar reward network. Repeated selection against a finite preference signal can itself move the policy into regions where the optimization signal ceases to track the broader evaluation criterion.
+
+More recent work interprets the same phenomenon partly as distribution shift. Ackermann, Ishida, and Sugiyama show that as the optimized policy moves away from the reward model's training distribution, the reward-model parameter estimate and resulting policy gradient can become inconsistent; an off-policy correction improves final policy quality in their experiments \parencite{ackermann2025offpolicy}. Iterated RLHF can reduce overoptimization when new reward models better approximate the target distribution, but early overoptimization is not always fully recovered \parencite{wolf2025iterated}.
+
+In the present notation, reward-model training creates a fast evaluator \(P\). Policy optimization can then perform many updates before fresh human labels or otherwise independent target checks update \(P\). The evidence does not identify a universal wall-clock \(\tauT\), because RLHF pipelines differ. It does support the core qualitative mechanism: continued optimization against a fixed imperfect evaluator can increase the accumulated target error before the evaluator itself is corrected.
+
+This also clarifies what the Feedback Horizon Gap adds to the usual Goodhart framing. Goodhart's law identifies proxy-target divergence. The feedback horizon asks how much \emph{selection} can occur before that divergence is independently exposed.
+
+\section{Positive Controls: Large \(K\) with Strong Verifiers}
+
+If \(K\) alone predicted failure, then the framework would be wrong. Formal theorem proving and executable software provide useful counterexamples.
+
+\subsection{Formal theorem proving}
+
+Formal proof assistants sharply separate candidate generation from verification. Lean can reject an invalid tactic or proof according to a fixed formal semantics. AlphaProof turns this into an RL environment: tactics are actions, Lean states are observations, and Lean-verified proof, disproof, or timeout outcomes provide grounded feedback \parencite{hubert2025alphaproof}. Its training uses millions of auto-formalized problems, and its test-time RL can generate and learn from millions of related variants. At the 2024 IMO, the AlphaProof-centered system solved three non-geometry problems, with difficult solutions requiring two to three days of test-time RL \parencite{hubert2025alphaproof}.
+
+This is a large-\(K\) regime by construction. The system can make enormous numbers of search and learning moves before any human reads the final proof. Yet the relevant local target, formal validity in Lean, is checked inside the fast loop itself.
+
+The caveat is equally important. Formal verification only verifies the formal statement. If the formalization does not express the intended natural-language problem, the verifier can be perfectly reliable about the wrong target. AlphaProof therefore illustrates both sides of the framework:
+\begin{align*}
+\text{proof validity:}&\quad \tauP \approx \tauT \quad \text{once formalized},\\
+\text{faithful formalization:}&\quad \tauT \text{ may require separate human or semantic checking}.
+\end{align*}
+
+\subsection{Executable software}
+
+Execution feedback gives code generation a similarly short local loop. Chen et al.\ showed that LLM self-debugging using execution results and feedback messages improves code-generation performance by up to 12 percentage points on benchmarks with unit tests and can match or exceed baselines generating over ten times as many candidate programs \parencite{chen2023selfdebug}. Here the test harness supplies dense, actionable information about some classes of failure.
+
+Human development benefits from the same structure. In a randomized experiment with 95 professional developers implementing the same JavaScript HTTP server, developers using GitHub Copilot completed the task in an average of 1 hour 11 minutes versus 2 hours 41 minutes without Copilot, a 55.8\% reduction in completion time \parencite{peng2023copilot}. The submissions were evaluated with a test suite.
+
+But tests again define only a partial target. Security, maintainability, and behavior outside test coverage can have much longer evidence horizons. Empirical analysis of AI-generated code has found security weaknesses that are not captured by basic functional success criteria \parencite{fu2023security}. Software therefore contains both regimes in one domain:
+\[
+\text{fast trusted feedback for covered properties}
+\quad+\quad
+\text{slow or missing feedback for uncovered properties}.
+\]
+
+The lesson is not that code is ``easy.'' It is that parts of software engineering have unusually good local verifiers.
+
+\section{Matched Feedback Horizons}
+
+Table~\ref{tab:matched} summarizes representative domains. The numbers are deliberately conservative. ``Measured'' means directly reported in the cited source; ``derived'' means simple arithmetic from reported quantities; ``estimated'' means a workflow-scale range not directly measured by the cited study. Where the literature does not support a defensible number, the table says so rather than inventing precision.
+
+\begin{table}[ht]
+\centering
+\caption{Representative feedback horizons. The rows are not intended as a universal ranking of domains. They show that candidate generation, proxy feedback, and target evidence can sit on different clocks.}
+\label{tab:matched}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}p{2.4cm}X X X@{}}
+\toprule
+\textbf{Domain} & \textbf{AI / current optimization loop} & \textbf{Human / classical comparison} & \textbf{Target evidence and interpretation}\\
+\midrule
+
+Formal proof
+&
+AlphaProof receives Lean-verified feedback throughout search and learning. Difficult IMO 2024 solutions required 2--3 days end-to-end test-time RL [measured] \parencite{hubert2025alphaproof}.
+&
+Human IMO contestants receive 4.5 hours per competition session; expert proof checking is slower than machine checking [measured competition format, not a matched workflow].
+&
+Formal validity is available immediately once a proof is checked by Lean. Large search depth is therefore compatible with reliable local feedback. Semantic faithfulness of the formalization remains a separate target.
+
+\\[4pt]
+
+Software
+&
+LLM self-debugging can iterate against execution and unit-test feedback; exact per-cycle latency is implementation-dependent [not standardized] \parencite{chen2023selfdebug}.
+&
+Copilot experiment: 1 h 11 min versus 2 h 41 min average task completion [measured] \parencite{peng2023copilot}.
+&
+Covered functional properties can be checked in seconds to minutes [workflow estimate]. Security and maintainability can remain latent for days to months; test coverage determines whether \(\tauP\approx\tauT\).
+
+\\[4pt]
+
+Weather forecasting
+&
+GraphCast generates a 10-day global forecast in under 60 s [measured] \parencite{lam2023graphcast}.
+&
+The cited comparison reports traditional HRES requiring hours on a supercomputer for a 10-day forecast [measured] \parencite{lam2023graphcast}.
+&
+The realized 6-hour state requires about 6 hours; the full 10-day trajectory requires 10 days. Computation can shrink while outcome time cannot.
+
+\\[4pt]
+
+Autonomous materials science
+&
+A-Lab performed 353 synthesis experiments over 17 days, about 20.8 experiments/day across the platform [derived] \parencite{szymanski2023alab}.
+&
+The study's claim is acceleration relative to conventional synthesis, but it does not supply a clean matched human cycle time [not quantified].
+&
+X-ray diffraction and yield measurements close the laboratory loop after each physical experiment. The lower bound is increasingly set by handling, heating, reaction, and characterization rather than model inference.
+
+\\[4pt]
+
+Closed-loop chemistry
+&
+AlphaFlow used in-situ spectroscopy and roughly 700 injection steps per campaign, yielding over 9000 experimental conditions for learning [measured] \parencite{volk2023alphaflow}.
+&
+Conventional experiment selection requires human transfer between measurement and next-design steps in a piecewise loop \parencite{volk2024metrics}.
+&
+Automation compresses \(\tauP\) by removing human handoff, but chemical kinetics and physical manipulation remain part of \(\tauT\).
+
+\\[4pt]
+
+Clinical medicine
+&
+AI can accelerate candidate generation, but the key fast proxy may be a surrogate endpoint rather than the generator itself.
+&
+Accelerated approval explicitly permits decisions based on surrogate endpoints expected to predict clinical benefit \parencite{gyawali2019accelerated}.
+&
+For 2009--2013 accelerated approvals, half of required postapproval studies were completed only after at least 3 years [measured] \parencite{naci2017accelerated}. In a 2013--2023 oncology cohort, many approvals still lacked demonstrated survival or quality-of-life benefit after \(>5\) years \parencite{liu2024clinicalbenefit}. This is a strong fast-proxy/slow-target case.
+
+\\[4pt]
+
+Reward-model alignment
+&
+Proxy reward is available at every optimization step; independent human or gold-model evaluation is intermittent. Absolute latency is pipeline-specific.
+&
+Human preference evaluation is expensive and therefore commonly distilled into a learned reward model \parencite{gao2022overoptimization}.
+&
+Independent quality can first rise and then fall while proxy reward continues to improve \parencite{gao2022overoptimization,rafailov2024direct}. \(K\) is better measured in optimization steps or KL budget than wall-clock seconds.
+
+\\[4pt]
+
+Benchmarks
+&
+Public benchmark scores can be computed immediately and optimized repeatedly.
+&
+Human exams and scientific metrics create analogous short feedback loops.
+&
+External validity can remain unknown until held-out or real-world evaluation. Modern benchmark designers therefore keep private test sets partly to reduce contamination and leaderboard gaming \parencite{facts2024}.
+
+\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The table suggests two distinct acceleration regimes.
+
+First, AI can shrink both candidate-generation and target-verification time when the target is computationally checkable. Formal proof and covered software properties are the clean cases.
+
+Second, AI can shrink candidate generation or proxy evaluation while leaving target evidence nearly unchanged. Weather, physical experimentation, clinical outcomes, and long-run deployment properties have components whose latency is set by the environment rather than inference speed.
+
+The second regime is where \(K\) can grow mechanically as optimization improves.
+
+\section{What the Human Feedback Literature Does and Does Not Support}
+
+It would be tempting to generalize the argument into ``faster feedback causes faster progress.'' The human learning literature does not support such a simple law.
+
+A large meta-analysis of educational feedback covering 435 studies and more than 61,000 learners found a medium mean effect (\(d=0.48\)) but substantial heterogeneity; information content strongly moderated the effect, and some forms of feedback were much more useful than others \parencite{wisniewski2020feedback}. An earlier meta-analysis of the timing of knowledge of results in motor learning found statistically significant effects of feedback timing in some acquisition measures, but the effect sizes were comparatively small \parencite{travlos1995timing}. In other settings, delayed judgments improve metacognitive accuracy because the delay makes more diagnostic information available from long-term memory \parencite{rhodes2011delayed}. Some test-learning experiments even find delayed feedback superior to immediate feedback \parencite{butler2008feedback}.
+
+These findings reinforce rather than weaken the narrow model. \(\tauP\) alone is not the relevant variable. A fast signal that contains little target information can be worse than a slower but more diagnostic signal.
+
+The closest human analogue to the present distinction is therefore not ``immediate feedback is good.'' It is:
+\[
+\text{learning depends on the information carried by feedback,}
+\]
+and timing changes how much misleading optimization can occur before better information arrives.
+
+\section{Why AI Changes the Gap}
+
+AI changes the feedback geometry in a specific way. It can reduce \(\tauG\), reduce some forms of \(\tauP\), and increase parallel search capacity without changing the rate at which external reality produces independent evidence.
+
+GraphCast is a clean illustration. A ten-day global forecast can be generated in under one minute, but the atmosphere cannot reveal the full ten-day error in under ten days \parencite{lam2023graphcast}. The compute-to-reality ratio has changed by orders of magnitude even though the physical target horizon has not.
+
+Self-driving laboratories show a different response. Instead of merely accepting the physical delay, they attack it. A-Lab integrates planning, robotics, synthesis, characterization, and active learning in one loop, performing 353 experiments in 17 days \parencite{szymanski2023alab}. AlphaFlow uses in-situ measurements to turn intermediate physical states into feedback for subsequent experimental choices \parencite{volk2023alphaflow}. These systems reduce the feedback horizon by building better measurement infrastructure around the physical process.
+
+Clinical medicine shows the hard case. Surrogate endpoints are intentionally used because patient-centered endpoints can take much longer to observe. But faster surrogate feedback is only useful to the degree that the surrogate predicts survival, function, or quality of life. Reviews of accelerated oncology approvals show that many drugs approved on surrogate evidence do not later demonstrate improvements in those patient-centered outcomes, or remain uncertain years later \parencite{gyawali2019accelerated,liu2024clinicalbenefit}. Faster optimization has not removed the target horizon; it has moved decision-making onto an imperfect earlier signal.
+
+The alignment case has the same structural possibility. Behavioral evals, preference models, constitutional graders, and automated red teams can provide rapid signals. If the property of interest is robustness under future capability growth, distribution shift, strategic behavior, or long deployment, the existence of a fast eval does not imply a short target horizon. A one-second score can still be a proxy for a one-year claim.
+
+\section{Limits of the Framework}
+
+\subsection{Perfect or sufficient proxies}
+
+If proxy feedback is sufficient for the target, a long horizon gap is harmless. Formal theorem checking approximates this case for validity of a fixed formal statement. Any paper that treats large \(K\) as intrinsically dangerous would be falsified by such examples.
+
+\subsection{Search difficulty can dominate}
+
+Some problems remain hard despite cheap verification. Formal proofs can be easy to check and extremely difficult to find. NP-hard search problems offer the same asymmetry. The Feedback Horizon Gap is therefore not a theory of total problem difficulty.
+
+\subsection{Target evidence may be plural}
+
+For social welfare, governance, or alignment, there may be no single scalar \(L_T\). The framework still applies if ``target evidence'' is understood operationally as an independent check against outcomes or criteria we care about, but the resulting \(K\) can depend on which target dimension is chosen.
+
+\subsection{Parallelism complicates time ratios}
+
+The ratio \(\tauT/\tauP\) can understate exposure when many candidates are evaluated in parallel and overstate it when updates are tiny or reversible. The direct count of consequential proxy-guided updates between target checks is preferable.
+
+\subsection{Evidence for a universal quantitative law is absent}
+
+Reward-model overoptimization directly supports divergence under continued optimization. Human feedback studies support the importance of feedback information and show that timing effects are heterogeneous. Cross-domain examples establish that large feedback-horizon differences exist. None of these results establishes a domain-independent function
+\[
+\text{harm}=f(K).
+\]
+The present contribution is a decomposition and measurement proposal, not an established causal law.
+
+\section{Discussion}
+
+The central axis is not ``easy versus hard problems.'' It is whether optimization occurs inside a feedback loop whose evaluator is both fast and sufficiently connected to the target.
+
+This helps explain why AI progress can be unusually rapid in formal mathematics, games, and software properties covered by tests. Candidate generation is becoming cheap, and these domains already contain reliable selection mechanisms. AlphaProof can perform large-scale RL because Lean supplies grounded proof feedback \parencite{hubert2025alphaproof}. Code models can self-debug because execution makes some errors legible \parencite{chen2023selfdebug}. The verifier does not need to understand how the candidate was generated.
+
+The same mechanism creates the opposite risk when the evaluator is imperfect. Gao et al.\ show that continued optimization against a learned reward model can improve the proxy while degrading an independent evaluation \parencite{gao2022overoptimization}. The accumulation model says only that such per-update errors can sum for as many updates as the system is allowed to take before correction. Faster optimization increases that number unless independent evaluation scales with it.
+
+This suggests a precise replacement for a common but vague concern that ``capabilities may outrun alignment.'' The relevant local question is:
+\begin{quote}
+How many consequential optimization updates can occur before an evaluator with sufficiently independent failure modes gets to reject the direction of travel?
+\end{quote}
+
+Sometimes the answer is effectively one. A failed Lean proof is rejected immediately. Sometimes it is millions. A fixed reward model may guide a long RL run before fresh human preference data arrives. Sometimes the answer is set by physics. A ten-day forecast needs a ten-day world. Sometimes it is set by biology or institutions. A surrogate endpoint can arrive years before patient-centered clinical evidence.
+
+This also reframes the role of evaluation research. A faster evaluator is useful only if it shortens the \emph{target-relevant} horizon. If it merely produces a faster proxy score, it can increase optimization speed without increasing correction speed.
+
+\section{Conclusion}
+
+The Feedback Horizon Gap is a simple quantity:
+\[
+K=
+\text{proxy-guided optimization updates between independent target checks}.
+\]
+For regular sequential systems, \(K\approx\tauT/\tauP\). Its significance follows from the accumulation identity
+\[
+\LT(\theta_K)-\LT(\theta_0)=\sum_i\Delta_i.
+\]
+If proxy-guided updates are target-safe, large \(K\) is harmless. If they carry systematic or correlated target error, that error can accumulate until independent evidence arrives.
+
+The strongest current evidence is asymmetric. Reward-model overoptimization shows the failure mode directly. Formal theorem proving and execution-tested software show that enormous optimization throughput can be safe when the verifier is strong. Weather forecasting, autonomous laboratories, and clinical surrogate endpoints show why optimization and target evidence often live on different clocks.
+
+The claim should therefore remain narrow:
+
+\begin{quote}
+As optimization becomes faster, reliability depends not only on how quickly an evaluator returns feedback, but on how many consequential updates can be selected before sufficiently independent evidence about the target becomes available.
+\end{quote}
+
+That quantity is measurable in many AI systems today. Whether it predicts failures across domains, beyond the already observed reward-overoptimization cases, is an empirical question rather than an assumption.
+
+\printbibliography
+
+\end{document}

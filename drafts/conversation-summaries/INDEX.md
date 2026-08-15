@@ -6,6 +6,7 @@
 
 | Date | Topic | Log |
 |------|-------|-----|
+| 2026-08-15 | **Feedback horizon gap paper** — Spin-out folder, external bib, biblatex build, frozen PDF. | [2026-08-15-feedback-horizon-gap-paper.md](2026-08-15-feedback-horizon-gap-paper.md) |
 | 2026-08-08 | **Florian Dietz outreach TODOs** — Stub items: standalone agent-discovery/negatives publish; pairwise researcher matching (Bubble Connector). | [2026-08-08-florian-dietz-outreach-todos.md](2026-08-08-florian-dietz-outreach-todos.md) |
 | 2026-08-07 | **Page notes overlay** — Mobile panel fix (overlay on body); ▦ highlight moved into panel action row. | [2026-08-07-page-notes-overlay.md](2026-08-07-page-notes-overlay.md) |
 | 2026-08-07 | **Lean Astro Unicode escape CI** — Diagnosed inline-LaTeX → JS escape failure on `/lean/`; fix already on main (`String.raw`). | [2026-08-07-lean-astro-unicode-escape.md](2026-08-07-lean-astro-unicode-escape.md) |
