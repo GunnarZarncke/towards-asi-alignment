@@ -43,6 +43,7 @@ Theme rollup only — per-session detail stays in `archive/` and recent logs in 
 
 ## Recently shipped (Jul–Aug 2026 themes)
 
+- **Companion site / CI (2026-08-15):** Unresolved `zaman2014` in chapter sync — entry copied from the alignment-under-selection paper bib into `references/manuscript-citations.bib`. Log: `2026-08-15-zaman2014-site-cite.md`.
 - **Companion site (2026-08-15):** **ET external transfer** concept card — `/cards/et-external-transfer/` now covers ET-1 through ET-4 (status table, per-annex narrative, five evidence notes, plan links); metadata source in `metadata/concepts/bodies/et-external-transfer.md`. Log: `2026-08-15-et-external-transfer-card.md`.
 - **Companion site (2026-08-15):** **Unsupervised Agent Discovery** concept card — `/cards/unsupervised-agent-discovery/`; links Boundary Discovery, LW post, agency-detect + embedded/lab/graded-lab experiment lines; bidirectional related on mb1, inferential-coupling, boundary-discovery. Log: `2026-08-15-uad-concept-card.md`.
 - **Lean debate / Harfe response (2026-08-15):** General `exists_claim_judge_differs_from_truth`; renamed κ_C debate-slot witnesses (`local_truth_capacity_*`); Field ledger `separationOnly` fixes; three-bucket axiom guide in Core/README; App G + ch29 leanids; axiom budget 40 theorems. Log: `2026-08-15-debate-lean-harfe-response.md`.
